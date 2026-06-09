@@ -4,72 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68943CD8CB2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 16:28:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67753CD8CB9
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 16:32:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MUOhB/NTfNP0OFCphdwB1NHwMOnBGeal+syoIKmgM58=; b=a4xUe7HN5Khz2N4jo7lLMheAUw
-	A6/2cMO8XrrATvwWr6DTn9dZ3XWJLjqsLMgs5TtNz3FtRrRSYVjS4j9t5XjLOUJf1wYQhrTCfrOGY
-	OxKk/0Z0rup8LQVOkqeswwm3dHE6IdqGKt2L3c63DzmVVNkN/69SqqnORv7LprCFDJZs+cOfEB+34
-	usT4fdOplqsz26HWi0ynZN55x1gPOA8kI7Qo996uMVTqSYHbE4aomk+blamrgjinOnERcoDLrIRv7
-	YEMd5yo6BCxpecXXhN6ROn7dnMKmhQfat22Kr1oJAIcRprMihIaiC4XzoggOQ0MsmuJ6CDMWiT57O
-	5J2LTxqQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LwMaxXT2YZZJ56pogrr1XGsQkG9BXU8jkdq8XgjgYWo=; b=quGJ/A9N+YC6xH
+	pG/jloYsPULKZ6w4wxm7z0q973YddCEVjHKvmSFNOLpHdUvJEuvPH4/GzwO0HmDnljzjGz/lH3bPH
+	R1ZqijjPiTYT0wnVRIX8PAPe/L4itrftYZgochv3h149eEcXejXvZ1tglVPg5NKe2AQnA0DzqsnuR
+	PBeNl203I9IonbTwmvAn5vvElqELoQR9JXeG4sFNLc2lz/9zjXqStBAFIsQODPlLcLzWLnLJa26BN
+	EaUmMLPswlbyn6wAQ9ZphPpnUbx4QoSp7/gleOW0Agj3AhtvOTjYD04hBOnHa2OhanQVW7mzLh1+x
+	xwZ4OHdvDwHnkHDYkXQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWzJW-000000062a0-3P5C;
-	Tue, 09 Jun 2026 16:28:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wWzNg-0000000632G-1QIM;
+	Tue, 09 Jun 2026 16:32:48 +0000
+Received: from out-188.mta0.migadu.com ([2001:41d0:1004:224b::bc])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWzJU-000000062ZZ-1qiy;
-	Tue, 09 Jun 2026 16:28:28 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E866E40A53;
-	Tue,  9 Jun 2026 16:28:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 871F31F00893;
-	Tue,  9 Jun 2026 16:28:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781022507;
-	bh=mnBqr/oojprozlQZfNYplJlBKL2vf9+PvY5mWTT3dsc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=CGnbzpbq2ir2U0YUoU/MVcUkdXc64ZBJ+JQYXxd1mlBrNLidxG0iEGQtF794/JCSf
-	 Cm87Zv+Kr0eeLuesxsB5NlkuHMBtBXm+Rl4JQvFG8eE4dXoCjapRwJCfklohYejAsN
-	 Kl1bnCQmucj/MxHTBB8rqq1uRx5WVM8asYTBPM+OxIDwvzWxka4jWUJvTZQmKk3WWt
-	 +YgG7EHJyx8UW0IIV9gZNkI+gzoBTNNSSfrDASZ33xMKUMu2Qgz0WP+P5J2GZbyk/t
-	 gk/w5WmaVZ0OSwl/wWMwuEKu0Jo5cLTUzjIwysY9xH8sK/9E31SKoQqaqmVcBxoKYM
-	 5uamaEaf/Nl5w==
-Date: Tue, 9 Jun 2026 17:28:21 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jacky Huang <ychuang3@nuvoton.com>,
-	Shan-Chun Hung <schung@nuvoton.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Aaro Koskinen <aaro.koskinen@iki.fi>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Roger Quadros <rogerq@kernel.org>, Tony Lindgren <tony@atomide.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org
-Subject: Re: [PATCH v3 2/3] dt-bindings: mfd: syscon: Drop custom select for
- older dtschema
-Message-ID: <20260609-vertical-antarctic-e18a7ec91685@spud>
-References: <20260608-n-dt-bindings-simple-bus-syscon-v3-0-4eba9ec1212a@oss.qualcomm.com>
- <20260608-n-dt-bindings-simple-bus-syscon-v3-2-4eba9ec1212a@oss.qualcomm.com>
-MIME-Version: 1.0
-In-Reply-To: <20260608-n-dt-bindings-simple-bus-syscon-v3-2-4eba9ec1212a@oss.qualcomm.com>
+	id 1wWzNc-0000000631f-40AL
+	for linux-rockchip@lists.infradead.org;
+	Tue, 09 Jun 2026 16:32:47 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1781022750;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=GU6hxEB3LrImYHmp13AtCCpp8e8bRkCTpxK/TD8cOpY=;
+	b=QOUagz86dzoPrDjhHrSwN/06Sdmkq2iGHnAcJWwwkB4jGy9cpZbeuBVKzUQ2wMbiBEhNfS
+	fkXZcqO/FX8Da8Q0Jb9q0Ri64dwxeIwsei3wq03ji5x/sDo2a0B2GzHSiIlmdfbqDYKmid
+	EBrn1SB3ts5kXNKC6WG9f27WKnnLVyBVAsiozmaoQqJlJEKXdh+T01Ds0t55ucLSSadvdw
+	uUknq9hMXc6S/2Q00PMkA2/C5aaG+6n43UK9L2qDQhzLWDO7kxIpqzKkWDvYmcreWWk91w
+	ytsziuJNh2KWUV6GtxJWxrmErpQ4KJkuERcFgsEFkG1uOfZG+MkDxu5o+509UA==
+Date: Tue, 09 Jun 2026 18:32:16 +0200
+Message-Id: <DJ4NVA328NUV.LSPMVBFE0PD8@cknow-tech.com>
+Subject: Re: [PATCH 1/2] dt-bindings: usb: Add Rockchip RK3568 compatible
+ for EHCI and OHCI
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Jonas Karlman" <jonas@kwiboo.se>, "Heiko Stuebner" <heiko@sntech.de>,
+ "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>
+Cc: "Diederik de Haas" <diederik@cknow-tech.com>,
+ <devicetree@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>
+References: <20260609154124.445182-1-jonas@kwiboo.se>
+ <20260609154124.445182-2-jonas@kwiboo.se>
+In-Reply-To: <20260609154124.445182-2-jonas@kwiboo.se>
+X-Migadu-Flow: FLOW_OUT
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260609_093245_599045_D1E25F6F 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,235 +72,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7215667476892062631=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Jonas,
 
---===============7215667476892062631==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ht75Ke9Mrmo6QJOk"
-Content-Disposition: inline
+On Tue Jun 9, 2026 at 5:41 PM CEST, Jonas Karlman wrote:
+> The Rockchip RK3568 EHCI/OHCI controller depends on clk_usbphy1_480m
+> being enabled, or the system may freeze when registers are accessed.
+>
+> Add Rockchip RK3568 EHCI and OHCI compatibles with a similar four-clock
+> constraint as RK3588.
+>
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+> Existing DTs for RK3568 use the plain generic-ehci/ohci compatible,
+> next patch make use of these new compatibles and adds the missing
+> clk_usbphy1_480m clock references.
+> ---
+>  .../devicetree/bindings/usb/generic-ehci.yaml          | 10 ++++++++++
+>  .../devicetree/bindings/usb/generic-ohci.yaml          |  5 ++++-
+>  2 files changed, 14 insertions(+), 1 deletion(-)
+>
+> diff --git a/Documentation/devicetree/bindings/usb/generic-ehci.yaml b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
+> index 55a5aa7d7a54..c49a1bbc8cfd 100644
+> --- a/Documentation/devicetree/bindings/usb/generic-ehci.yaml
+> +++ b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
+> @@ -52,6 +52,7 @@ properties:
+>                - ibm,476gtr-ehci
+>                - nxp,lpc1850-ehci
+>                - qca,ar7100-ehci
+> +              - rockchip,rk3568-ehci
+>                - rockchip,rk3588-ehci
+>                - snps,hsdk-v1.0-ehci
+>                - socionext,uniphier-ehci
+> @@ -186,6 +187,15 @@ allOf:
+>        required:
+>          - clocks
+>          - clock-names
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3568-ehci
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 4
 
+I think that the constraint for rk3588 is this:
+- minItems: 1
+- maxItems: 4
 
---ht75Ke9Mrmo6QJOk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Like ~ every other compatible; there's no 'branch' for rk3588-ehci.
 
-On Mon, Jun 08, 2026 at 10:44:25PM +0200, Krzysztof Kozlowski wrote:
-> Older dtschema <2024.02 required custom select to avoid applying this
-> binding to anything having "syscon" compatible.  That's not the case
-> anymore and this additional select has two headaches:
->=20
-> 1. Duplicates all the compatibles listed in the schema.
->=20
-> 2. Is error-prone, because it requires contributor to add the compatible
->    in two places, otherwise the schema will be silently ignored.
->    The select list already misses mentioning compatibles:
->    mediatek,mt8365-infracfg-nao and renesas,r9a08g046-lvds-cmn (with the
->    latter being reverted for different reasons).
->=20
-> This requires bumping minimum dtschema requirement to v2024.04, which
-> feels old enough to be a safe requirement.
+That's different from what you add for rk3568. Is that deliberate?
+Because from the commit message I assumed they should be the same.
 
-I agree, seems reasonable enough given it's a jump from 2023.09 and not
-some large jump.
-The diff is nice too!
-I assume Rob will be taking it, but just in case..
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+>  unevaluatedProperties: false
+>  
+> diff --git a/Documentation/devicetree/bindings/usb/generic-ohci.yaml b/Documentation/devicetree/bindings/usb/generic-ohci.yaml
+> index d42f448fa204..5f1b4d2bff89 100644
+> --- a/Documentation/devicetree/bindings/usb/generic-ohci.yaml
+> +++ b/Documentation/devicetree/bindings/usb/generic-ohci.yaml
+> @@ -47,6 +47,7 @@ properties:
+>                - hpe,gxp-ohci
+>                - ibm,476gtr-ohci
+>                - ingenic,jz4740-ohci
+> +              - rockchip,rk3568-ohci
+>                - rockchip,rk3588-ohci
+>                - snps,hsdk-v1.0-ohci
+>            - const: generic-ohci
+> @@ -198,7 +199,9 @@ allOf:
+>        properties:
+>          compatible:
+>            contains:
+> -            const: rockchip,rk3588-ohci
+> +            enum:
+> +              - rockchip,rk3568-ohci
+> +              - rockchip,rk3588-ohci
+
+Here they clearly do have the same constraint.
 
 Cheers,
-Conor.
+  Diederik
 
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
->=20
-> ---
->=20
-> Changes in v3:
-> 1. Bump dtschema requirement
->=20
-> Changes in v2:
-> 1. New patch
-> ---
->  Documentation/devicetree/bindings/Makefile        |   2 +-
->  Documentation/devicetree/bindings/mfd/syscon.yaml | 116 ----------------=
-------
->  2 files changed, 1 insertion(+), 117 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/Makefile b/Documentation/d=
-evicetree/bindings/Makefile
-> index 7b668f7fd400..40c2094f47c2 100644
-> --- a/Documentation/devicetree/bindings/Makefile
-> +++ b/Documentation/devicetree/bindings/Makefile
-> @@ -6,7 +6,7 @@ DT_MK_SCHEMA ?=3D dt-mk-schema
->  DT_SCHEMA_LINT =3D $(shell which yamllint || \
->    echo "warning: python package 'yamllint' not installed, skipping" >&2)
-> =20
-> -DT_SCHEMA_MIN_VERSION =3D 2023.9
-> +DT_SCHEMA_MIN_VERSION =3D 2024.4
-> =20
->  PHONY +=3D check_dtschema_version
->  check_dtschema_version:
-> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Document=
-ation/devicetree/bindings/mfd/syscon.yaml
-> index 9c81010d5a74..b70018bf1bcf 100644
-> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-> @@ -19,122 +19,6 @@ description: |
->  maintainers:
->    - Lee Jones <lee@kernel.org>
-> =20
-> -# Need a select with all compatibles listed for compatibility with older
-> -# dtschema (<2024.02), so this will not be selected for other schemas ha=
-ving
-> -# syscon fallback.
-> -select:
-> -  properties:
-> -    compatible:
-> -      contains:
-> -        enum:
-> -          - airoha,en7581-pbus-csr
-> -          - al,alpine-sysfabric-service
-> -          - allwinner,sun8i-a83t-system-controller
-> -          - allwinner,sun8i-h3-system-controller
-> -          - allwinner,sun8i-v3s-system-controller
-> -          - allwinner,sun50i-a64-system-controller
-> -          - altr,l3regs
-> -          - altr,sdr-ctl
-> -          - amd,pensando-elba-syscon
-> -          - amlogic,meson-mx-assist
-> -          - amlogic,meson-mx-bootrom
-> -          - amlogic,meson8-analog-top
-> -          - amlogic,meson8b-analog-top
-> -          - amlogic,meson8-pmu
-> -          - amlogic,meson8b-pmu
-> -          - apm,merlin-poweroff-mailbox
-> -          - apm,mustang-poweroff-mailbox
-> -          - apm,xgene-csw
-> -          - apm,xgene-efuse
-> -          - apm,xgene-mcb
-> -          - apm,xgene-rb
-> -          - apm,xgene-scu
-> -          - atmel,sama5d2-sfrbu
-> -          - atmel,sama5d3-nfc-io
-> -          - atmel,sama5d3-sfrbu
-> -          - atmel,sama5d4-sfrbu
-> -          - axis,artpec6-syscon
-> -          - brcm,cru-clkset
-> -          - brcm,sr-cdru
-> -          - brcm,sr-mhb
-> -          - cirrus,ep7209-syscon1
-> -          - cirrus,ep7209-syscon2
-> -          - cirrus,ep7209-syscon3
-> -          - cnxt,cx92755-uc
-> -          - econet,en751221-chip-scu
-> -          - freecom,fsg-cs2-system-controller
-> -          - fsl,imx93-aonmix-ns-syscfg
-> -          - fsl,imx93-wakeupmix-syscfg
-> -          - fsl,ls1088a-reset
-> -          - fsl,vf610-anatop
-> -          - fsl,vf610-mscm-cpucfg
-> -          - hisilicon,dsa-subctrl
-> -          - hisilicon,hi6220-sramctrl
-> -          - hisilicon,hip04-ppe
-> -          - hisilicon,pcie-sas-subctrl
-> -          - hisilicon,peri-subctrl
-> -          - hpe,gxp-sysreg
-> -          - loongson,ls1b-syscon
-> -          - loongson,ls1c-syscon
-> -          - lsi,axxia-syscon
-> -          - marvell,armada-3700-cpu-misc
-> -          - marvell,armada-3700-nb-pm
-> -          - marvell,armada-3700-avs
-> -          - marvell,armada-3700-usb2-host-device-misc
-> -          - marvell,armada-3700-usb2-host-misc
-> -          - marvell,dove-global-config
-> -          - mediatek,mt2701-pctl-a-syscfg
-> -          - mediatek,mt2712-pctl-a-syscfg
-> -          - mediatek,mt6397-pctl-pmic-syscfg
-> -          - mediatek,mt7981-topmisc
-> -          - mediatek,mt7988-topmisc
-> -          - mediatek,mt8135-pctl-a-syscfg
-> -          - mediatek,mt8135-pctl-b-syscfg
-> -          - mediatek,mt8173-pctl-a-syscfg
-> -          - mediatek,mt8365-syscfg
-> -          - microchip,lan966x-cpu-syscon
-> -          - microchip,mpfs-control-scb
-> -          - microchip,mpfs-sysreg-scb
-> -          - microchip,sam9x60-sfr
-> -          - microchip,sama7d65-ddr3phy
-> -          - microchip,sama7d65-sfrbu
-> -          - microchip,sama7g5-ddr3phy
-> -          - mscc,ocelot-cpu-syscon
-> -          - mstar,msc313-pmsleep
-> -          - nuvoton,ma35d1-sys
-> -          - nuvoton,wpcm450-shm
-> -          - nxp,s32g2-gpr
-> -          - nxp,s32g3-gpr
-> -          - qcom,apq8064-mmss-sfpb
-> -          - qcom,apq8064-sps-sic
-> -          - rockchip,px30-qos
-> -          - rockchip,rk3036-qos
-> -          - rockchip,rk3066-qos
-> -          - rockchip,rk3128-qos
-> -          - rockchip,rk3228-qos
-> -          - rockchip,rk3288-qos
-> -          - rockchip,rk3368-qos
-> -          - rockchip,rk3399-qos
-> -          - rockchip,rk3528-qos
-> -          - rockchip,rk3562-qos
-> -          - rockchip,rk3568-qos
-> -          - rockchip,rk3576-qos
-> -          - rockchip,rk3588-qos
-> -          - rockchip,rv1126-qos
-> -          - st,spear1340-misc
-> -          - stericsson,nomadik-pmu
-> -          - starfive,jh7100-sysmain
-> -          - ti,am62-opp-efuse-table
-> -          - ti,am62-usb-phy-ctrl
-> -          - ti,am625-dss-oldi-io-ctrl
-> -          - ti,am62p-cpsw-mac-efuse
-> -          - ti,am654-dss-oldi-io-ctrl
-> -          - ti,j784s4-acspcie-proxy-ctrl
-> -          - ti,j784s4-pcie-ctrl
-> -          - ti,keystone-pllctrl
-> -  required:
-> -    - compatible
-> -
->  properties:
->    compatible:
->      oneOf:
->=20
-> --=20
-> 2.53.0
->=20
+>      then:
+>        properties:
+>          clocks:
 
---ht75Ke9Mrmo6QJOk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaig/JQAKCRB4tDGHoIJi
-0oLlAQCHwNbINj7drMDGPuJbu0+4qMK+maKGF6EB/ix0tWHZuAEA142K2XiPf6pe
-EJkgVBoshBZ7NIiPUqXP5uO/FD3ooQM=
-=4Xd/
------END PGP SIGNATURE-----
-
---ht75Ke9Mrmo6QJOk--
-
-
---===============7215667476892062631==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7215667476892062631==--
-
