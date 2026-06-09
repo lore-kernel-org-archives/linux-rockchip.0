@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB4DECD8C92
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 12:47:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEF99CD8CA8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 12:47:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+V23qko3As/PHPqZjxZMTevv9ihdu2tvqSaT0fncj0o=; b=yj+vN7SkirnidK
-	O0n6B3aCgMxKHxu0ch4Vh0NWkHD1wPMErsN/NJM7eEhocD+wLx6w1ahbLp+/wjRSk4Uu5bx/+HJNR
-	DG8rUr4N+G0eXYMMk/uuiSxtvyJ5mUwSZ4XHXqMXAqTHCVkSwXqgEFkEPBfJBNP5By5o4tFiKmHgD
-	23JV2SYJWZs55dDC1/UfYy79kPzHpA5/dMg9bJOZnRN7q0QYLczkK4ZSwoN1i0giD+0VFqE/z9yPm
-	6tFZBb5BRuzHw/8iIjmJrbCkyGFMinXDKJQWQ2LGrHlZemrJIYAvqxFBkIDbKqnW1PJdiNv0xR+lh
-	QpLj3X5VSrIMiV7Vb1EQ==;
+	List-Owner; bh=Pe6Dj8PMlaSRO2PR0K4Lct9WmawvIhekfcUh7soDsYM=; b=fX5olF4FCFnLee
+	6zISO4yCHz6lWyQU6wSa6QPpMPmmDJNq3PKTnz3gP5PGwr2ZZxa2D7qUVtW4x/BqSQQVEPxj/DwcF
+	dSeQmgSD6eAvyjiCPsxVPM9W6+3wssrimi4KOdGu/E/m3HbOCPg0N8tWkmgHPIQj8VD2ipXohrOUS
+	t88qiolwC/9m26uF5nPDNb+a2QI2bJWuRFSsTk32qFy74ynNT1bNR8npkwdFPc725/3OPiLZds/1l
+	y94oIsSbwCCRtknUie5oWjV2LL2sNgwgECcnmXESlxCEDXdJylo5QlguCJbayhN4L/rjezMwL79lp
+	19BiraTBaqpkRAQ3mI8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWvrk-00000005ZI8-2zvk;
-	Tue, 09 Jun 2026 12:47:36 +0000
+	id 1wWvrv-00000005ZUY-2WE9;
+	Tue, 09 Jun 2026 12:47:47 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWvrf-00000005ZD5-2Q7f;
-	Tue, 09 Jun 2026 12:47:35 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1781009220; cv=none; 
+	id 1wWvrr-00000005ZQ8-3Lca;
+	Tue, 09 Jun 2026 12:47:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1781009228; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Ghb6usqO2wHxAMjnHigN4rE1kUO3CvqRaFxPuTZRXZNNqIEb2A3bJoMbAzRF05P42zKutthG/PAdLvH6o9dYS8NvouzoO06I4mL2a3OOTgAdBIq9DVaN3oC1DKdBjg52Gzn0mF6rzqNDCVNEe27dD6HiFUQ5ARXsKVe8SbZp2Ro=
+	b=bsfboea6G5vI0xOEWFQ88Ev/r4Z/11zOoD6o/4IeLx0V5p9zOGzEHQ6SB1JUJcZEWmjfbP/c9Wch69xyaEmOPGM0QhiRpR+UAfLxH0ZDXziM7KxeA6qHc9g7fFEeKOTfri47j2LqewS7WR0BMwvxqcpTQLSDYQfsdB3oFmvNvi4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1781009220; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=8uhvifl0KjV7h78DpGOaJw8xIKxgprEXatY1NDwlp1s=; 
-	b=aX671Ikl1fB8mYVEpeI9jq2l7NedXdi46S8dTYe5p8z191TFgloQCCDlanTZv27q7TP+WDg82Mh6CBG0besEFNxqMGtr8KbjsGmzyj1hKazbD94R6sS1vgxdayXQ+A/e+I3WQpbzayN7oLujcmKvgDXYCrWZ+riDYEFQVqlp2xo=
+	t=1781009228; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=D7OkGrx5RITojvZL5wh8fRAx5u92UWvLcmHWUyxRNHY=; 
+	b=JWyTsxf+Tg+0wblwoEIUJNvn1fHh42xiOqKMFusEDrT1tfEBmZXLyZkd7s1lW3Ihb6hHuNCMyajVL1Y2jb/zG1eM2elPUgd23AWC+01ScvXu6aDOr4YelgqjHOHONZu5ZurtjyxQqqflWtwdd/Hf46RXu1Ciz3xsY3jXSERFHqc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1781009220;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1781009228;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=8uhvifl0KjV7h78DpGOaJw8xIKxgprEXatY1NDwlp1s=;
-	b=dUdUnwl/h/U7I3GNWlwoJqHlGElMcw+dE7OClSs27eLj11ziN2cwn8s0XDDzw0Tj
-	YZTmF7pF0hm5Qd71pX7Vz59LTjzpWWNpQHieBXwQFc9GbsjNIOIoo9hhujhnANrpcGn
-	9+kMdULqNJyvAv4Go3Cc6TwsfIfPviKTKccVspYc=
-Received: by mx.zohomail.com with SMTPS id 1781009217953519.0504266425163;
-	Tue, 9 Jun 2026 05:46:57 -0700 (PDT)
+	bh=D7OkGrx5RITojvZL5wh8fRAx5u92UWvLcmHWUyxRNHY=;
+	b=FrmFdary03ftKUeD3RGpPC6bNeqU5RbO3YkJThWZd4s0g+FVOd6R+8/FU9NZQ6uB
+	wGxbvrm/SPR2g12B5bbJ+BNg45riE52wWAPLUAO00mUo3p4vMuqn7Z/axyXbT14gYSE
+	333Knk5iBenRSAAGbHOVgiZcrNyCgvvjV6LYMWRc=
+Received: by mx.zohomail.com with SMTPS id 17810092273981019.8164379359182;
+	Tue, 9 Jun 2026 05:47:07 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 09 Jun 2026 14:44:04 +0200
-Subject: [PATCH v17 17/28] drm/rockchip: dw_hdmi_qp: Set supported_formats
- platdata
+Date: Tue, 09 Jun 2026 14:44:05 +0200
+Subject: [PATCH v17 18/28] drm/connector: Register color format property on
+ HDMI connectors
 MIME-Version: 1.0
-Message-Id: <20260609-color-format-v17-17-35739b5782cc@collabora.com>
+Message-Id: <20260609-color-format-v17-18-35739b5782cc@collabora.com>
 References: <20260609-color-format-v17-0-35739b5782cc@collabora.com>
 In-Reply-To: <20260609-color-format-v17-0-35739b5782cc@collabora.com>
 To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
@@ -75,9 +75,16 @@ To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
  Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
  Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
  Daniel Stone <daniel@fooishbar.org>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ linux-doc@vger.kernel.org, wayland-devel@lists.freedesktop.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260609_054731_687161_0C72FD74 
+X-CRM114-CacheID: sfid-20260609_054743_927715_6B1CA466 
 X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,44 +97,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wayland-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, kernel@collabora.com, intel-xe@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With the introduction of the supported_formats member in the
-dw-hdmi-qp platform data struct, drivers that have access to this
-information should now set it.
+The drmm_connector_hdmi_init function can figure out what DRM color
+formats are supported by a particular connector based on the supported
+HDMI format bitmask that's passed in.
 
-Set it in the rockchip dw_hdmi_qp glue driver.
+Use it to register the drm color format property.
 
-This allows this information to be passed down to the dw-hdmi-qp core,
-which sets it in the bridge it creates, and consequently will allow the
-common HDMI bridge code to act on it.
-
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Reviewed-by: Daniel Stone <daniel@fooishbar.org>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 4 ++++
+ drivers/gpu/drm/drm_connector.c | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index b77ef92ae954..815f9ea7bcbe 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -602,6 +602,10 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	plat_data.phy_data = hdmi;
- 	plat_data.max_bpc = 10;
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index 95c65ed18709..26d7449d0feb 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -636,6 +636,10 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+ 	if (max_bpc > 8)
+ 		drm_connector_attach_hdr_output_metadata_property(connector);
  
-+	plat_data.supported_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444) |
-+				      BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) |
-+				      BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
++	ret = drm_connector_attach_color_format_property(connector, supported_formats);
++	if (ret)
++		return ret;
 +
- 	encoder = &hdmi->encoder.encoder;
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
+ 	connector->hdmi.funcs = hdmi_funcs;
  
+ 	return 0;
 
 -- 
 2.54.0
