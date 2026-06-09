@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF948CD8CA4
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 12:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AC92CD8CA4
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 12:47:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mFUkAHJ6DnDgsB1RSGsrfuWqZRXIrKdR7BTkNqBHAz8=; b=lxRt4husMyxCD7
-	JqpJk2n9PT7h4LwAk012cUqWB4luTNCCOqQlWAmSihnxhDF0rl35AXhOzDQN8WiOvGdgm9vxmesOV
-	GqCpw/aFfiubiN0dD1l3GPaCDizo0QpdFcZr0vXLDdaf+9wWDE3Tprj+cnYMuT+s0oB+7Qwar8oAT
-	BW2MYeyyULvJJL+7ogVWbBjEtjO47B7yNdkgunlkPbq/I9Gf57tHrD6lww8r6prmgjgtgkafvwriA
-	zN77kjUhkFdyTy5aNu+hkI7+nNMIdIIv/uVA2mI5l9a6lFpZ/dcSb9CO57H4qYn9PC1gkeg9TJ78G
-	uqsSZi2mRqvu6lEWL9YA==;
+	List-Owner; bh=VIoHzsDDavRieNWM/LnAL1cTuG7Rh78Sa0IOjbY7Vzc=; b=MNcNWndd8cxaR+
+	x6vlZbYqCyvOEGzxualdgj/jXxYPQl7+XKns9qzLEOB/RLH4Ys8TAthVtsy5VjMB4Xx3mEj/cD5mN
+	cIDZi104ZcnaO5lnEgKqD6AzezzqIOEKrSaQXW5TwSy7XA9ovVrQboFHrXFiNS/gIp41pcet7LJYc
+	LQNsnLYQPl83caXEHT83mgmMr3ky1CQ0qEXxhPN1YocBbb2OtDVPspavgvcooEGUb5VfkFqAm5VI6
+	RE9AhuTiQWOzbb2J7+VnNotZcull+Efjuejnu59yXXZy2Py6TvyQEzFyHV8PmyxDkkAiYkXTtIbqI
+	dgPJK1B4AnvWyMxnlSkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWvr1-00000005YYm-1p5t;
-	Tue, 09 Jun 2026 12:46:51 +0000
+	id 1wWvrF-00000005YkO-0O5k;
+	Tue, 09 Jun 2026 12:47:05 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWvqy-00000005YUF-0ILK;
-	Tue, 09 Jun 2026 12:46:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1781009172; cv=none; 
+	id 1wWvr4-00000005YbQ-2ENS;
+	Tue, 09 Jun 2026 12:46:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1781009182; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=W4UkEXWDoFbHVKHiEHcQQBYXPeLRXLUR+4jx7SPRrqu4ZOjgMTeNwiWy0k0uu835neRxx2DnTdV45OkQ3KCmBfLGLIPeBJrbcBbrhcA5jm/D1XOLqLl7M4yGpcSqke8lVKG2XKs15lfK0cgKiXKSGdWhVh724gJ9kJF3t2FL/G8=
+	b=nw+jpieMRzbySSOsDs8UjoOOF9cKoqbhc2gfXmCcSA1D/wJVw3S42ZscAxP9noE/rRtiAT9T3DPf+fMUehwaRHdlYq9BO+LQhQJTFLun5v9CKIaeNjLBYi+TVsLsZ6yI7bcqsdijrXDxtqV5VDc+cl+9EuBoowNsRrqdlCm9kkc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1781009172; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=0cF5uKMWfi7NxXb4LC2xP8wPestzRKGCV14XnKx612A=; 
-	b=iFm3oiW2LZBArXxSFNwZPsu2UJdVg3rsUexCOT0hUqwyYoQEPmSBlN0CkOxQFee/bJm7x2jaRkAOxtO4OJdf447TtScWFiCJM2ud2UL+QNDE7tQvurDlO1OlfBwQYkTs8DSpZpyBO6pV9FK5gY30JHsPZqcwDDqCQd3wGfMUG6o=
+	t=1781009182; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=SChu0J3DJvJoXhWUxdgRxQlJ8WknqsXxC3OLvWADNVs=; 
+	b=iKJ6XTskzLHQGH+utwY8KDgbVMuV2BSpILNqUhZ8cybmgIhZvDlgKAaXir05DNioQu2QIrKQkcyndseGxBccmOwp+lWZg9W6oOBo7shwviUL1vANqoW9tjqzgcK4fEjOS+oAauTxEkLD0kmAvs9x2+Qh9EIDQcRfebyySsxn1vM=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1781009172;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1781009182;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=0cF5uKMWfi7NxXb4LC2xP8wPestzRKGCV14XnKx612A=;
-	b=BE0VBTelRzpmqFp7T2DjBmiufMSAfkIQCxlMPu8i9tF1BseIeSsr2DmY/Pl1/dqb
-	wkgHJTOtI/7lncz2rhq8NwRNBVqpMhIi4/eIPajr2hJLUn//ylmIL0NsWKxtK7XkW/b
-	c0aEyGQ2Uz8y3oN9LkSqeS11WDwJWY23PIE1pO1k=
-Received: by mx.zohomail.com with SMTPS id 178100917045970.63023656147607;
-	Tue, 9 Jun 2026 05:46:10 -0700 (PDT)
+	bh=SChu0J3DJvJoXhWUxdgRxQlJ8WknqsXxC3OLvWADNVs=;
+	b=bWhwT80TbOafRGNmgYtA0BNqchuGLJs+5dU9/XC+G5JYWH0MilP1GJsigPlegbj9
+	Fc0yio+e41PlACxUtBKEQemblW/dzAep6AzERSRvyOg6VjRkbaIV/wg4zmmFurFRNVO
+	G7s25eVK5we0mXEVqbxgQKQJILa+hfJ+VMuT6apM=
+Received: by mx.zohomail.com with SMTPS id 1781009179890860.0573231065;
+	Tue, 9 Jun 2026 05:46:19 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 09 Jun 2026 14:43:59 +0200
-Subject: [PATCH v17 12/28] drm/rockchip: vop2: Add RK3576 to the RG swap
- special case
+Date: Tue, 09 Jun 2026 14:44:00 +0200
+Subject: [PATCH v17 13/28] drm/rockchip: vop2: Recognise 10-bit YUV422 as
+ YUV format
 MIME-Version: 1.0
-Message-Id: <20260609-color-format-v17-12-35739b5782cc@collabora.com>
+Message-Id: <20260609-color-format-v17-13-35739b5782cc@collabora.com>
 References: <20260609-color-format-v17-0-35739b5782cc@collabora.com>
 In-Reply-To: <20260609-color-format-v17-0-35739b5782cc@collabora.com>
 To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
@@ -75,17 +75,10 @@ To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
  Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
  Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
  Daniel Stone <daniel@fooishbar.org>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
- linux-doc@vger.kernel.org, wayland-devel@lists.freedesktop.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Andy Yan <andyshrk@163.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260609_054648_185913_807189D1 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20260609_054654_677555_485267AF 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,39 +90,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: linux-doc@vger.kernel.org, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wayland-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, kernel@collabora.com, intel-xe@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Much like RK3588, RK3576 requires an RG swap to be performed for YUV444
-8-bit and YUV444 10-bit bus formats.
+The Rockchip VOP2 video output driver has a "is_yuv_output" function,
+which returns true when a given bus format is a YUV format, and false
+otherwise.
 
-Add its version to the already existing check for RK3588, so that YUV444
-output is correct on this platform.
+This switch statement is lacking the bus format used for YUV422 10-bit.
 
-Fixes: 944757a4cba6 ("drm/rockchip: vop2: Add support for rk3576")
-Reviewed-by: Andy Yan <andyshrk@163.com>
+Add the two component orderings of the YUV422 10-bit bus formats to the
+switch statement.
+
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Reviewed-by: Daniel Stone <daniel@fooishbar.org>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 9b261f0c7eec..6230735bbabc 100644
+index 6230735bbabc..3fad79fe2d89 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -337,7 +337,8 @@ static bool vop2_output_uv_swap(u32 bus_format, u32 output_mode)
- 
- static bool vop2_output_rg_swap(struct vop2 *vop2, u32 bus_format)
- {
--	if (vop2->version == VOP_VERSION_RK3588) {
-+	if (vop2->version == VOP_VERSION_RK3588 ||
-+	    vop2->version == VOP_VERSION_RK3576) {
- 		if (bus_format == MEDIA_BUS_FMT_YUV8_1X24 ||
- 		    bus_format == MEDIA_BUS_FMT_YUV10_1X30)
- 			return true;
+@@ -352,6 +352,8 @@ static bool is_yuv_output(u32 bus_format)
+ 	switch (bus_format) {
+ 	case MEDIA_BUS_FMT_YUV8_1X24:
+ 	case MEDIA_BUS_FMT_YUV10_1X30:
++	case MEDIA_BUS_FMT_YUYV10_1X20:
++	case MEDIA_BUS_FMT_UYVY10_1X20:
+ 	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
+ 	case MEDIA_BUS_FMT_UYYVYY10_0_5X30:
+ 	case MEDIA_BUS_FMT_YUYV8_2X8:
 
 -- 
 2.54.0
