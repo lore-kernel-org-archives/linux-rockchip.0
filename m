@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD243CD98C5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 15:41:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28826CD98C5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 15:41:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jlXSe9LCBAKg8KlauNyvkBvvb+lWxaFPB9VHXCPMWms=; b=ug5vJyCIDpo3wN
-	lxQ7fh1qW93owJBezv2sTablOuz/atHkDvK2/ENz88/pyijy3MDDIaMBz7kPR5w7xHbtPAiwVsQFn
-	iGdYQ0BuZ0yFmHWh0hXvPPA5cMFuam/RVbpI5WvOFQrscXBSwJYfcaHYvvMWMFXlfYYHzaEESLPiv
-	bMewEc/3P1UmOF7n70NCWoI3FM9dsXxlKAfu5wy4kv6/ldD1tZT9F+2g3ySRhf2sNAJajJ0gv4jiu
-	oDuYoWsaChgAJLzfvDb4/hQ5fDabUrtaGdHAGHBDGxfHZKURkPMYjrl2OxApjG8Tffx52GOQSDFQS
-	H9E94E0CBipQSFMkW7pg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xUv3xCe2lAVwyoX7GUR/zcgb5gAzwfnq1KJZVrp0boI=; b=B4z/rDJezWLBDn
+	TZx1QN2RzFWJURCnQ6PXAVVZZpzmeV5ywPvXMv2ITVMkGgUvvq61xc484z1P0TOJsLNUUz+5+zQUj
+	t325AJmOIOyCKTDAx4Sn+CDWTLBYhTS6ly0+jR+tiXBDKkS93cJPC2hwBNZo5vvQPESniB2YAeJBs
+	h2jMu7+HW/i7lyGqQbzalQkvpKgBKO8gARnzXp/OETG6TnGlX3p3OuUN5LO8oSm8SYwBd4S1gANti
+	34Gib8M/ylI7YcT+yfz9hvbXdkBaEtzaMKAX7fCJdlE7HssEQD7P6D5LWIWIHt/2aOywn4P5xrqlq
+	Zu+3Hyblhh0bySZWYg6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWya9-00000005wdz-1zys;
-	Tue, 09 Jun 2026 15:41:37 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1wWyaG-00000005wiu-3rNf;
+	Tue, 09 Jun 2026 15:41:44 +0000
+Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWya6-00000005wcN-2d5l
+	id 1wWyaC-00000005wfM-3ap3
 	for linux-rockchip@lists.infradead.org;
-	Tue, 09 Jun 2026 15:41:36 +0000
+	Tue, 09 Jun 2026 15:41:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1781019693;
- bh=eW0rDfpFsySPqf1AUB4FLAgQw5OmaNrmK8cpMyCc6Kc=;
- b=ciIobUvlK9GjQCKoGxpAIsfVG4wFq/iaUuqss8vL74PeJgF9/R7c/1xcsRp+sfkCmiiooT1I1
- eSxRKT/LLG6wi79dIkZqEpVNrebuE3ww0cwKPEgiF1gcOn4uSakXAmCR6jpSGWx30B+SZuoi9GW
- hbci+LgecDdQGgUcIPd7QWR2GrP3l23/QExzurHl53qa45oOyxqOmp9AMHYM+FSI+wT+N8Bgxd0
- fVycxKWlCSRa9LBh0S9bp2O4+llUXBBq4nZcmIfqj4BGr59gJ4GMO2VwrF1FbVtvgrmbPYJysxw
- 3mpzbfnohHPE6FB/fWjzkj9d+nRbhgu/g6uGCvh7FVvA==
-X-Forward-Email-ID: 6a28342a2d71d6ad28f66de9
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1781019700; bh=k2mNfNUmklU9bFAjBbAD3Iaxi1EmNNL5ROjmhSuGaNU=;
+ b=VP0iU4X0YnpJWV9ZE1olCfIxnFo6PNZbXcbM4p7xV+Ti//lyU4/BMCxQSIurnLiMyygaT4yJy
+ y0VVqonBlZmQ1NbOOejKdj7SFDbutxdZMV9Mt8H+6qHPQwLd+o6t2Y2zSOuCXb8+x6+/hFo6v6w
+ M3Ur4TgGV+5bpoPLiyeeZD3BlQGELelY86DaVUVQxRNcj2J9bLB5fMRxKwADCPefpoLeCM7Kxun
+ B9YFZhHoM2ey5v9DHC+9XHdxDipf2KdoRfj41uhLgdP3rsDBz+nLjsiVwXEQVd/10G37iiCJ+Yr
+ Wefp6oX3BaJY7Pr3vrp0y6dIGtLK0YEVREzRgVQaE3hg==
+X-Forward-Email-ID: 6a2834322d71d6ad28f66e5b
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
+ 121.127.44.66
 X-Forward-Email-Version: 2.8.22
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -48,7 +48,9 @@ From: Jonas Karlman <jonas@kwiboo.se>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
+	Conor Dooley <conor+dt@kernel.org>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Michael Riesch <michael.riesch@collabora.com>
 Cc: Diederik de Haas <diederik@cknow-tech.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	devicetree@vger.kernel.org,
@@ -57,15 +59,16 @@ Cc: Diederik de Haas <diederik@cknow-tech.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 0/2] rockchip: Fix devices suspend freeze on RK3568/RK3566
-Date: Tue,  9 Jun 2026 15:41:21 +0000
-Message-ID: <20260609154124.445182-1-jonas@kwiboo.se>
+Subject: [PATCH 2/2] arm64: dts: rockchip: Fix devices suspend freeze on RK3568/RK3566
+Date: Tue,  9 Jun 2026 15:41:23 +0000
+Message-ID: <20260609154124.445182-3-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260609154124.445182-1-jonas@kwiboo.se>
+References: <20260609154124.445182-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260609_084135_076083_77AFEF1E 
-X-CRM114-Status: UNSURE (   6.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260609_084141_168015_88E186BF 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,12 +85,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series fixes a system freeze during suspend in ohci_suspend() due
-to clk_usbphy1_480m not being enabled when EHCI/OHCI registers are
-accessed on e.g. a Raxa ROCK 3C board.
+The EHCI/OHCI controller depends on clk_usbphy1_480m being enabled, or
+the system may freeze when registers are accessed, i.e. during suspend
+in ohci_suspend().
 
-Following pm_test modes work on my ROCK 3C with the missing usbphy clk
-refs added:
+Add the missing clk_usbphy1_480m clocks reference to EHCI/OHCI
+controllers to ensure the clock is enabled when ECHI/OHCI registers are
+accessed to prevent a system freeze.
+
+Fixes suspend pm_test issue with EHCI/OHCI devices due to the missing
+clk_usbphy1_480m reference and makes following pm_test modes work:
 
   echo N > /sys/module/printk/parameters/console_suspend
 
@@ -98,15 +105,70 @@ refs added:
 
   echo mem > /sys/power/state
 
-Jonas Karlman (2):
-  dt-bindings: usb: Add Rockchip RK3568 compatible for EHCI and OHCI
-  arm64: dts: rockchip: Fix devices suspend freeze on RK3568/RK3566
+Fixes: 91c4c3e06a25 ("arm64: dts: rockchip: add usb2 nodes to rk3568 device tree")
+Fixes: 78f7186095db ("arm64: dts: rockchip: rename and sort the rk356x usb2 phy handles")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
- .../devicetree/bindings/usb/generic-ehci.yaml    | 10 ++++++++++
- .../devicetree/bindings/usb/generic-ohci.yaml    |  5 ++++-
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi    | 16 ++++++++--------
- 3 files changed, 22 insertions(+), 9 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index a5832895bd39..c930a6fd6ea0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -321,44 +321,44 @@ its: msi-controller@fd440000 {
+ 	};
+ 
+ 	usb_host0_ehci: usb@fd800000 {
+-		compatible = "generic-ehci";
++		compatible = "rockchip,rk3568-ehci", "generic-ehci";
+ 		reg = <0x0 0xfd800000 0x0 0x40000>;
+ 		interrupts = <GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru HCLK_USB2HOST0>, <&cru HCLK_USB2HOST0_ARB>,
+-			 <&cru PCLK_USB>;
++			 <&cru PCLK_USB>, <&usb2phy1>;
+ 		phys = <&usb2phy1_otg>;
+ 		phy-names = "usb";
+ 		status = "disabled";
+ 	};
+ 
+ 	usb_host0_ohci: usb@fd840000 {
+-		compatible = "generic-ohci";
++		compatible = "rockchip,rk3568-ohci", "generic-ohci";
+ 		reg = <0x0 0xfd840000 0x0 0x40000>;
+ 		interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru HCLK_USB2HOST0>, <&cru HCLK_USB2HOST0_ARB>,
+-			 <&cru PCLK_USB>;
++			 <&cru PCLK_USB>, <&usb2phy1>;
+ 		phys = <&usb2phy1_otg>;
+ 		phy-names = "usb";
+ 		status = "disabled";
+ 	};
+ 
+ 	usb_host1_ehci: usb@fd880000 {
+-		compatible = "generic-ehci";
++		compatible = "rockchip,rk3568-ehci", "generic-ehci";
+ 		reg = <0x0 0xfd880000 0x0 0x40000>;
+ 		interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru HCLK_USB2HOST1>, <&cru HCLK_USB2HOST1_ARB>,
+-			 <&cru PCLK_USB>;
++			 <&cru PCLK_USB>, <&usb2phy1>;
+ 		phys = <&usb2phy1_host>;
+ 		phy-names = "usb";
+ 		status = "disabled";
+ 	};
+ 
+ 	usb_host1_ohci: usb@fd8c0000 {
+-		compatible = "generic-ohci";
++		compatible = "rockchip,rk3568-ohci", "generic-ohci";
+ 		reg = <0x0 0xfd8c0000 0x0 0x40000>;
+ 		interrupts = <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru HCLK_USB2HOST1>, <&cru HCLK_USB2HOST1_ARB>,
+-			 <&cru PCLK_USB>;
++			 <&cru PCLK_USB>, <&usb2phy1>;
+ 		phys = <&usb2phy1_host>;
+ 		phy-names = "usb";
+ 		status = "disabled";
 -- 
 2.54.0
 
