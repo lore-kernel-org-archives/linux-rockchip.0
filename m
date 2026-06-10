@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14EE0CD98CF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jun 2026 14:34:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FCAECD8CB9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jun 2026 14:34:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3eSPBFHmp0N1z1w+t4+AOgyB08vNlrgkRbHPZ2fQrL0=; b=cexem5ann5vcDc
-	9+GMZkK2Wsv0+n0dhLc8LDpBUquCwvz3g4V2g9CxAUJdMcefk+gEKtm/OrSLFu50OxAf53qOm5Q6u
-	2mofAJSx0i2ZquL+lfWkf4SVq8B5jE43oinnROfiUT//k/FPjFcHIWCxs72OkojqbRuG73Xpibctv
-	tqr4/IyNbbOM495w2+OolSNcai5euNGKdwHOWqoyPZ5SxxRm2JN9ZJTMHkDrT1BcVEKXIuHY7d7jb
-	INqXdZskruXyGpkOBM3MqmG/J/25tfleASvLtfnXORaAoNTP4I8vpXKIgfKsjHz9Xvx4sMPo5Aoq2
-	8q9L6I4cI8xtlwe77IxA==;
+	List-Owner; bh=e6+5GPYYtuJHzGeb0nS4Xx6VVmmz0XXplCBGMMi0uYM=; b=zylHyAFfuwnUhI
+	qpVj41vaTXVHJHO30SYbq3+BYXOOuaIxxWigHgLU7UGS4eIldHBkxl6/pSNST89lq4XT7qBzwWerE
+	LeMAsP4bMLB7maorRarELCrohteAGcrroJWik5EXP3ftPsKrOQ1MmCXpom1Nm/c2uBZQXg7BS7i9L
+	hygxwd6GO0tQL+6oyIxvCyiLfjQ+gejohvFa3e7xcTEBXFNVxcZI3v1BMEiX6lkYui/rUnJS2dlXS
+	+P4MtmB7HXhdRWLT0SQmwTqsri8D9ABoFANRbB3GhAw9yVc0e+rOTwzxHmjpN2cYArFqw7A41PacN
+	YWQklqL4EclcFEP5kK3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXK0n-00000007uv4-3PgV;
-	Wed, 10 Jun 2026 14:34:33 +0000
+	id 1wXK0r-00000007v0d-0pGr;
+	Wed, 10 Jun 2026 14:34:37 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXK0i-00000007ugS-1LUh;
-	Wed, 10 Jun 2026 14:34:29 +0000
+	id 1wXK0j-00000007uib-47sj;
+	Wed, 10 Jun 2026 14:34:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1781102065;
-	bh=imIJfpRcOAXZkKMN35QT7SUgXw4VKmoxeFQ2uczhIcg=;
+	s=mail; t=1781102067;
+	bh=buWzY0LM2eBzVDux6FwBX3Iv5Uvnb04/g09QnKbCclg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fFW6RbZSPilm5GxZYrBFfAt7g7lwLPUUIKf0dJGMrgXVngRFn6RzJdpzpkcLEQdjb
-	 N2jI1RbHnxKhNNtHPZR2+nMFAFOzwnDBs6yjZK7WALOmFEecwGDmVH0eptfAXp5vab
-	 63CrE6aYFmJvlIZmGb3YEjXQM2pV0tQLIQ/umgRXVQE2v5vtcBiwTcY7zMSOyBoydi
-	 N3RcHJH68fS4LjplhVUI8b3Rnv7oebKJ+cZ+h28nkl5gY8WqK3D1AEPWZ86OghOXms
-	 hUyCRrVk9AvaK3eDG1CgF8+8JlnxwkvKmfr8W09O0/Dcd3coq1S87glW8OYgVVmUPE
-	 sb0CXxPppt27Q==
+	b=KT1t72BXfj58snpFIw5YXgBpFC2bpxE+moW/BmKWtzJ6XZc+ZolVxCWLP7OYiAOXJ
+	 +/Q8wXqCW4a4bROEJP+CqgSbsPquhTVm7038tDPxTfKIhQRINaV1Sw8yTr2mLgFexc
+	 4MPO2jN0wzqGNfsjtplSPsXiW2W25/9J6cYyZIeEAq9Z+jIw7eZovd+i64OMdYLr97
+	 OewOvLVHLhC7oOhYoldlkS9ELzFRwhBxy6fx7Kj0EY5+htLioBAQxlAhEah5SsL/Xe
+	 xXvSs1iRpYoRAMutPaaTUrsWuCR9zU0MchoPBNgSpufHqAykD7SXeUgHgV1wZwDuQ5
+	 1L3CgcqVdKOMQ==
 Received: from [192.168.0.15] (unknown [100.64.0.170])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9A2C017E1168;
-	Wed, 10 Jun 2026 16:34:23 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E5E3F17E11FB;
+	Wed, 10 Jun 2026 16:34:25 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
-Date: Wed, 10 Jun 2026 10:33:37 -0400
-Subject: [PATCH v2 7/9] media: Add stream on/off traces and run them in the
- ioctl
+Date: Wed, 10 Jun 2026 10:33:38 -0400
+Subject: [PATCH v2 8/9] media: Add HW run/done trace events
 MIME-Version: 1.0
-Message-Id: <20260610-v4l2-add-ftrace-v2-7-9756edf72ac1@collabora.com>
+Message-Id: <20260610-v4l2-add-ftrace-v2-8-9756edf72ac1@collabora.com>
 References: <20260610-v4l2-add-ftrace-v2-0-9756edf72ac1@collabora.com>
 In-Reply-To: <20260610-v4l2-add-ftrace-v2-0-9756edf72ac1@collabora.com>
 To: Daniel Almeida <daniel.almeida@collabora.com>, 
@@ -65,8 +64,8 @@ Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_073428_595946_107DD445 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20260610_073430_259928_4CAE2426 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,93 +82,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This will automatically add stream on/off tracing for all v4l2 drivers.
+The events can be fired by drivers when the hardware is run and when it
+is done.
+That can be used by userspace tracers to see HW performance and usage.
+
+The hw_done event allows setting the number of clock cycles the HW needed
+to do the work, to help tools evaluate performances.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- drivers/media/v4l2-core/v4l2-ioctl.c | 20 +++++++++++++++++--
- include/trace/events/v4l2.h          | 37 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 55 insertions(+), 2 deletions(-)
+ drivers/media/v4l2-core/v4l2-trace.c |  3 +++
+ include/trace/events/v4l2.h          | 40 ++++++++++++++++++++++++++++++++++++
+ 2 files changed, 43 insertions(+)
 
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index c8746a1637f5..b09489baff3e 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1963,13 +1963,29 @@ static int v4l_try_fmt(const struct v4l2_ioctl_ops *ops, struct file *file,
- static int v4l_streamon(const struct v4l2_ioctl_ops *ops, struct file *file,
- 			void *arg)
- {
--	return ops->vidioc_streamon(file, NULL, *(unsigned int *)arg);
-+	struct v4l2_fh *fh = file_to_v4l2_fh(file);
-+	int err;
-+
-+	err = ops->vidioc_streamon(file, NULL, *(unsigned int *)arg);
-+
-+	if (!err)
-+		trace_v4l2_streamon(fh->tgid, fh->fd);
-+
-+	return err;
- }
+diff --git a/drivers/media/v4l2-core/v4l2-trace.c b/drivers/media/v4l2-core/v4l2-trace.c
+index 183d5ecb49c5..59cf6f8807ac 100644
+--- a/drivers/media/v4l2-core/v4l2-trace.c
++++ b/drivers/media/v4l2-core/v4l2-trace.c
+@@ -12,6 +12,9 @@ EXPORT_TRACEPOINT_SYMBOL_GPL(vb2_v4l2_buf_queue);
+ EXPORT_TRACEPOINT_SYMBOL_GPL(vb2_v4l2_dqbuf);
+ EXPORT_TRACEPOINT_SYMBOL_GPL(vb2_v4l2_qbuf);
  
- static int v4l_streamoff(const struct v4l2_ioctl_ops *ops, struct file *file,
- 			 void *arg)
- {
--	return ops->vidioc_streamoff(file, NULL, *(unsigned int *)arg);
-+	struct v4l2_fh *fh = file_to_v4l2_fh(file);
-+	int err;
++EXPORT_TRACEPOINT_SYMBOL_GPL(v4l2_hw_run);
++EXPORT_TRACEPOINT_SYMBOL_GPL(v4l2_hw_done);
 +
-+	err = ops->vidioc_streamoff(file, NULL, *(unsigned int *)arg);
-+
-+	if (!err)
-+		trace_v4l2_streamoff(fh->tgid, fh->fd);
-+
-+	return err;
- }
- 
- static int v4l_g_tuner(const struct v4l2_ioctl_ops *ops, struct file *file,
+ /* Export AV1 controls */
+ EXPORT_TRACEPOINT_SYMBOL_GPL(v4l2_ctrl_av1_sequence);
+ EXPORT_TRACEPOINT_SYMBOL_GPL(v4l2_ctrl_av1_frame);
 diff --git a/include/trace/events/v4l2.h b/include/trace/events/v4l2.h
-index 248bc09bfc99..e5b80aeecc30 100644
+index e5b80aeecc30..6f1bbb085cb0 100644
 --- a/include/trace/events/v4l2.h
 +++ b/include/trace/events/v4l2.h
-@@ -262,6 +262,43 @@ DEFINE_EVENT(vb2_v4l2_event_class, vb2_v4l2_qbuf,
- 	TP_ARGS(q, vb)
+@@ -299,6 +299,46 @@ DEFINE_EVENT(v4l2_stream_class, v4l2_streamoff,
+ 	TP_ARGS(tgid, fd)
  );
  
 +
-+/* Events for stream on/off.
++/* Events for hardware run/done.
 + *
-+ * These events will be fired every time userspace starts or stops a stream.
-+ * tgid and fd are used to identify the process that opened the video device.
++ * These events will be fired respectively when the hardware is run (v4l2_hw_run) and done
++ * (v4l2_hw_done).
++ * As for other events, tgid and fd are used to identify the process that opened the video device.
 + *
-+ * Note that this even can be fired multiple times for a given tgid/fd pair.
-+ * E.g.: mem2mem drivers expect stream on/off on both output and capture queues.
++ * The v4l2_hw_done event also includes the number of hardware cycles taken by the hardware to
++ * process the command.
 + */
-+DECLARE_EVENT_CLASS(v4l2_stream_class,
++DEFINE_EVENT(v4l2_stream_class, v4l2_hw_run,
 +	TP_PROTO(u32 tgid, u32 fd),
-+	TP_ARGS(tgid, fd),
++	TP_ARGS(tgid, fd)
++);
++
++DECLARE_EVENT_CLASS(v4l2_hw_done_class,
++	TP_PROTO(u32 tgid, u32 fd, u32 hw_cycles),
++	TP_ARGS(tgid, fd, hw_cycles),
 +
 +	TP_STRUCT__entry(
 +		__field(u32, tgid)
 +		__field(u32, fd)
++		__field(u32, hw_cycles)
 +	),
 +
 +	TP_fast_assign(
 +		__entry->tgid = tgid;
 +		__entry->fd = fd;
++		__entry->hw_cycles = hw_cycles;
 +	),
 +
-+	TP_printk("tgid = %u, fd = %u",
-+		  __entry->tgid, __entry->fd)
++	TP_printk("tgid = %u, fd = %u, hw_cycles = %u",
++		  __entry->tgid, __entry->fd, __entry->hw_cycles)
 +);
 +
-+DEFINE_EVENT(v4l2_stream_class, v4l2_streamon,
-+	TP_PROTO(u32 tgid, u32 fd),
-+	TP_ARGS(tgid, fd)
-+);
-+
-+DEFINE_EVENT(v4l2_stream_class, v4l2_streamoff,
-+	TP_PROTO(u32 tgid, u32 fd),
-+	TP_ARGS(tgid, fd)
++DEFINE_EVENT(v4l2_hw_done_class, v4l2_hw_done,
++	TP_PROTO(u32 tgid, u32 fd, u32 hw_cycles),
++	TP_ARGS(tgid, fd, hw_cycles)
 +);
 +
  #endif /* if !defined(_TRACE_V4L2_H) || defined(TRACE_HEADER_MULTI_READ) */
