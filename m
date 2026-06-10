@@ -4,57 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5C3FCD8CB9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jun 2026 10:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9714CD98C7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jun 2026 10:06:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JwAnT/Nvg8W/aZZALpVITWxj7FTkUaLQpqhJKnuyXtE=; b=VEK5YjMJPmEFl8
-	SQJW0+ENnnHAVw3FAKQbOrhJOgiFvJ/NGt039zbd34j3hPFbOLOF0ut8NpmhbiXg8hQu2BnNwvYbG
-	0bqBOE5xtXrEaZnSQ4R6rAy2gLCGMtmqqwyzKXqWmrVgimVjmJJl1F1+/PH9R4XtFynOe9Ao+JNjB
-	uG9RR3eQGdZ8lfCk1i/0ALoG53Vo2OwNjyPdABZfzNINSzP0BQK805IWZU36PXC2vGQVjXMQpsrpS
-	fMQgnNTkwqt2rHApsJ/OUP+hG+aCBBOhjJhQukM2iMkhcmdB2vH0G/J9fw6UxVAiAVKl9yjXVVNEs
-	iRel4iCrf2DMhOcC0GJQ==;
+	List-Owner; bh=eITNMkW8mBSackJaAab8azoRJVWx3oRW/NIXJU7d+Vk=; b=E3+wn1QhciRXCt
+	ScVIlZRW/HOwKuHy7jXiNRa2RwnoAkt+3+C9cKT7f1Wy86RBp0YBOkXkTV6A1SkKxxAeub1FzAkcw
+	ny5Pg8kRl5cWdoqp94czjmRqsl7qU6NELMCLxmrxyODqkThZDq3MsMU0pLXfaMUn/XGfqeu+9/Vc+
+	87Jo2dXWlbSUB7W4bPem3Fkr/dEbe5++BKsslsVe/1yJ24+z65uqJcCXu6VTOd7cxM77Xi7fl+FqD
+	HCVZlMhgZGneeYeOLDCosp81KJtWd2AEWwU9AESPbGsgMN3xYTjo+iJhVpZmYkFKuieMbWthAgTuT
+	hYKFR/7+bCW7AVmfRe4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXFjZ-00000007KPt-1Z7u;
-	Wed, 10 Jun 2026 10:00:29 +0000
-Received: from mail-m83217.xmail.ntesmail.com ([156.224.83.217])
+	id 1wXFou-00000007Laj-2IJl;
+	Wed, 10 Jun 2026 10:06:00 +0000
+Received: from out-186.mta0.migadu.com ([91.218.175.186])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXFjU-00000007KL4-2KJQ;
-	Wed, 10 Jun 2026 10:00:28 +0000
-Received: from Vostro-3710.. (unknown [113.80.141.92])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 41d5b4a7e;
-	Wed, 10 Jun 2026 18:00:18 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Add HINLINK H28K
-Date: Wed, 10 Jun 2026 18:00:06 +0800
-Message-Id: <20260610100006.366963-3-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260610100006.366963-1-amadeus@jmu.edu.cn>
-References: <20260610100006.366963-1-amadeus@jmu.edu.cn>
-MIME-Version: 1.0
-X-HM-Tid: 0a9eb0f9c1f003a2kunmd062ac7916b4ed
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZSkxLVkMZHR1MThlJH0lLSlYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKSkhVQ0tVSk9KVUJJWVdZFhoPEhUdFFlBWU9LSFVKS0hLSk
-	xLVUpLS1VLWQY+
+	id 1wXFor-00000007LZr-1SBY
+	for linux-rockchip@lists.infradead.org;
+	Wed, 10 Jun 2026 10:05:59 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1781085953;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=YXhOcqMPHO+S5QqlHxh7fMeK781ZP72bMnS5EH8zaug=;
+	b=X3cX35ljKdPrn8ghjGraHP1nRfUjKOzodTDZBQC8Bodbl4K5BZ3SeQCEUQYnIQHXomWMv2
+	GDYsnnYDG6qC9nxUOC6skm9sE/n1P6wkH55bWQZjwRr28gq4kBZemajTf/2mM0CPe52B5u
+	4IASRmUHKLwqpGKX38uLjYe3EMrnhDqZppAtJmbn8Ed7cp/1gIkFPaAccACARsT97Bxzcs
+	HPydH1A3PBbFf0pU8obu+92IEPA+vLo2RX0wsIfwwIjfCjhrfZQFDAtSiiSsMaiiVXOyM+
+	irD1BK2deVH2yC9tmxTdbTJXa+lrr3N7jnjiUNuYuTEjOYBkP69T0tsjKXcRaA==
+Date: Wed, 10 Jun 2026 12:05:49 +0200
+Message-Id: <DJ5A9XL183RZ.20J3ASQ3EWUZ6@cknow-tech.com>
+Cc: <tomeu@tomeuvizoso.net>, <ogabbay@kernel.org>, <heiko@sntech.de>,
+ <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+ <joro@8bytes.org>, <will@kernel.org>, <robin.murphy@arm.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-rockchip@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>, "Simon Xue"
+ <xxm@rock-chips.com>, "Finley Xiao" <finley.xiao@rock-chips.com>, "Jonas
+ Karlman" <jonas@kwiboo.se>
+Subject: Re: [RFC PATCH v3 0/9] accel: rocket: Add RK3568 NPU support
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Chaoyi Chen" <chaoyi.chen@rock-chips.com>, "Midgy Balon"
+ <midgy971@gmail.com>
+References: <20260604135255.62682-1-midgy971@gmail.com>
+ <3d99569e-9c3a-49d1-93fb-1335382523e9@rock-chips.com>
+ <CA+GS1Y1s78PwN63X2YJoS8VEGp7CpTERo_K65yKs00U4VRAw4Q@mail.gmail.com>
+ <e5058919-9485-4de5-8eea-331ebfc2987c@rock-chips.com>
+ <CA+GS1Y3ysdWZ3qCq3ip_Pbw+v4LxHZd95aBo=jwB+orYaMBBNw@mail.gmail.com>
+ <CA+GS1Y0kAM_XGLQuKPTphif2HcQg18ZXhd8RHHr2xPOEMCDvXA@mail.gmail.com>
+ <bcedaff0-abf8-4585-a0ea-057062cd0411@rock-chips.com>
+ <CA+GS1Y2-hRqpGgsknh+oOX+-uZ3DZtdekdP9viTP6a40zhhUhg@mail.gmail.com>
+ <b05f7154-e85f-4207-80ae-f080282ba780@rock-chips.com>
+In-Reply-To: <b05f7154-e85f-4207-80ae-f080282ba780@rock-chips.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_030024_888168_5C73B6FB 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20260610_030557_748696_1550CDD3 
+X-CRM114-Status: GOOD (  24.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,361 +85,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HINLINK H28K (LinkStar H28K) is a SBC with the
-Rockchip RK3528 SoC. It has the following features:
+Hi,
 
-- 1x USB 2.0
-- 8/32GB eMMC
-- 1/2/4GB LPDDR4
-- MicroSD card slot
-- 1x 1GbE RTL8111H Ethernet
-- 1x 1GbE RTL8211F Ethernet
+On Wed Jun 10, 2026 at 3:14 AM CEST, Chaoyi Chen wrote:
+> Hi Midgy,
+>
+> On 6/9/2026 7:11 PM, Midgy Balon wrote:
+>> Hello Chaoyi,
+>> 
+>> You were right - building rocket as a module fixes it. Thanks for the pointer.
+>> 
+>> I rebuilt with CONFIG_DRM_ACCEL_ROCKET=m (everything else the same:
+>> need_regulator on
+>> the RK3568 NPU power domain via a DOMAIN_M_R variant, domain-supply =
+>> <&vdd_npu>, and the
+>> regulator-always-on workaround dropped). The board now boots cleanly
+>> and, more importantly,
+>> an NPU job submit no longer hangs: I ran the test workload five times
+>> with no RCU stall and
+>> no freeze.
+>> 
+>> So with rocket=m the need_regulator approach works on RK3568, and I'll
+>> keep it for v4
+>> (domain-supply + need_regulator, instead of marking vdd_npu
+>> always-on). rocket=m is the
+>> normal configuration anyway; my earlier hang came from building it =y
+>> in a self-contained
+>> image, so it probed in the initcalls (around 2 s) and the genpd ->
+>> I2C-PMIC regulator
+>> transition ran before the system was ready. As a module it loads from
+>> udev much later
+>> (~6.8 s here), after the I2C controller and regulator core are fully up.
+>> 
+>> On your question of when the device-link error is printed - it is at
+>> power-domain
+>> controller probe, not at the rocket probe:
+>> 
+>>   [    2.700618] vdd_npu: Bringing 500000uV into 825000-825000uV
+>>   [    2.749637] rockchip-pm-domain fdd90000.power-management:power-controller:
+>>                  Failed to create device link (0x180) with supplier 0-0020 for
+>>                  /power-management@fdd90000/power-controller/power-domain@6
+>>   [    2.945955] platform fde40000.npu: Adding to iommu group 3
+>>   ...
+>>   [    6.840374] rocket: loading out-of-tree module taints kernel.
+>>   [    6.877647] [drm] Initialized rocket 0.0.0 for rknn on minor 0
+>>   [    6.879950] rocket fde40000.npu: Rockchip NPU core 0 version: 0
+>> 
+>> So the device-link to the rk809 PMIC (0-0020) fails to form at ~2.75
+>> s, well before rocket
+>> loads at ~6.8 s. It is non-fatal here - the vdd_npu rail is brought up
+>> by the regulator core
+>> and all jobs run - and there is no "failed to get ack on domain npu"
+>> NoC warning this boot
+>> (the always-on kernel had one). The complete boot log is attached.
+>> 
+>> Two notes / one question:
+>> - This boot used fw_devlink=permissive on the command line. Is the
+>> "Failed to create device
+>>   link ... supplier 0-0020" at pmdomain probe expected/benign, or is
+>> there a clean way to make
+>>   it order correctly (so it also works without permissive, and a =y
+>> build wouldn't deadlock in
+>>   the initcalls)?
+>
+> We encountered the same issue on the RK3588 NPU before. And it was
+> resolved with the following patch at that time.
+>
+> https://lore.kernel.org/all/20251216055247.13150-1-rmxpzlb@gmail.com/
+>
+> Please compare the differences in NPU pmdomain and DTS configuration
+> between the RK3568 and RK3588.
 
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
----
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3528-hinlink-h28k.dts | 318 ++++++++++++++++++
- 2 files changed, 319 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts
+About a month ago on #linux-rockchip we were discussing PM 'stuff':
+https://libera.catirclogs.org/linux-rockchip/2026-05-15#39939137;
+which references this paste
+https://paste.sr.ht/~diederik/89d9f84e22474e837b55286d213b67f03859ce2e
+I've since removed the DCDC_REG2 for PineTab2 and the 'fix' should likely
+be extended to cover all RK3566/RK3568 devices though.
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 761d82b4f4f2..a68d07296c9f 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -92,6 +92,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-armsom-sige1.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-hinlink-h28k.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-nanopi-zero2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-radxa-e20c.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-rock-2a.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts b/arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts
-new file mode 100644
-index 000000000000..0ec50e9156eb
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts
-@@ -0,0 +1,318 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pwm/pwm.h>
-+#include "rk3528.dtsi"
-+
-+/ {
-+	model = "HINLINK H28K";
-+	compatible = "hinlink,h28k", "rockchip,rk3528";
-+
-+	aliases {
-+		ethernet0 = &gmac1;
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc;
-+		serial0 = &uart0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:1500000n8";
-+	};
-+
-+	keys {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 0>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <1800000>;
-+		poll-interval = <100>;
-+
-+		button-boot {
-+			label = "BOOT";
-+			linux,code = <KEY_SETUP>;
-+			press-threshold-microvolt = <0>;
-+		};
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&lan_led>, <&wan_led>, <&work_led>;
-+
-+		led-0 {
-+			color = <LED_COLOR_ID_AMBER>;
-+			function = LED_FUNCTION_LAN;
-+			gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "netdev";
-+		};
-+
-+		led-1 {
-+			color = <LED_COLOR_ID_BLUE>;
-+			function = LED_FUNCTION_WAN;
-+			gpios = <&gpio4 RK_PC0 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "netdev";
-+		};
-+
-+		led-2 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio4 RK_PB7 GPIO_ACTIVE_LOW>;
-+			linux,default-trigger = "default-on";
-+		};
-+	};
-+
-+	vdd_0v9: regulator-0v9-vdd {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_0v9";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_ddr: regulator-1v1-vcc-ddr {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_ddr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1100000>;
-+		regulator-max-microvolt = <1100000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_1v8: regulator-1v8-vcc {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc_3v3>;
-+	};
-+
-+	vcc_3v3: regulator-3v3-vcc {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_3v3";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc3v3_sd: regulator-3v3-vcc-sd {
-+		compatible = "regulator-fixed";
-+		gpios = <&gpio4 RK_PA1 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc_pwren_l>;
-+		regulator-name = "vcc3v3_sd";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_3v3>;
-+	};
-+
-+	vcc5v0_sys: regulator-5v0-vcc-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+
-+	vccio_sd: regulator-vccio-sd {
-+		compatible = "regulator-gpio";
-+		gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc_vol_ctrl_h>;
-+		regulator-name = "vccio_sd";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <3300000>;
-+		states = <1800000 0x0>, <3300000 0x1>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_arm: regulator-vdd-arm {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm1 0 5000 PWM_POLARITY_INVERTED>;
-+		pwm-supply = <&vcc5v0_sys>;
-+		regulator-name = "vdd_arm";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <746000>;
-+		regulator-max-microvolt = <1201000>;
-+		regulator-settling-time-up-us = <250>;
-+	};
-+
-+	vdd_logic: regulator-vdd-logic {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm2 0 5000 PWM_POLARITY_INVERTED>;
-+		pwm-supply = <&vcc5v0_sys>;
-+		regulator-name = "vdd_logic";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <705000>;
-+		regulator-max-microvolt = <1006000>;
-+		regulator-settling-time-up-us = <250>;
-+	};
-+};
-+
-+&combphy {
-+	status = "okay";
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&gmac1 {
-+	clock_in_out = "output";
-+	phy-handle = <&rgmii_phy>;
-+	phy-mode = "rgmii-id";
-+	phy-supply = <&vcc_3v3>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmii_miim>,
-+		    <&rgmii_tx_bus2>,
-+		    <&rgmii_rx_bus2>,
-+		    <&rgmii_rgmii_clk>,
-+		    <&rgmii_rgmii_bus>;
-+	status = "okay";
-+};
-+
-+&gpu {
-+	mali-supply = <&vdd_logic>;
-+	status = "okay";
-+};
-+
-+&mdio1 {
-+	rgmii_phy: ethernet-phy@1 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&gmac1_rstn_l>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&pcie {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rtl8111hs_isolateb_l>;
-+	reset-gpios = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc_3v3>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	gmac {
-+		gmac1_rstn_l: gmac1-rstn-l {
-+			rockchip,pins = <4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		lan_led: lan-led {
-+			rockchip,pins = <4 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		wan_led: wan-led {
-+			rockchip,pins = <4 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		work_led: work-led {
-+			rockchip,pins = <4 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pcie {
-+		rtl8111hs_isolateb_l: rtl8111hs-isolateb-l {
-+			rockchip,pins = <4 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	sdmmc {
-+		sdmmc_pwren_l: sdmmc-pwren-l {
-+			rockchip,pins = <4 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		sdmmc_vol_ctrl_h: sdmmc-vol-ctrl-h {
-+			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pwm1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm1m0_pins>;
-+	status = "okay";
-+};
-+
-+&pwm2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pwm2m0_pins>;
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	mmc-hs200-1_8v;
-+	non-removable;
-+	vmmc-supply = <&vcc_3v3>;
-+	vqmmc-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc3v3_sd>;
-+	vqmmc-supply = <&vccio_sd>;
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0m0_xfer>;
-+	status = "okay";
-+};
-+
-+&usb2phy {
-+	status = "okay";
-+};
-+
-+&usb2phy_host {
-+	phy-supply = <&vcc5v0_sys>;
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
--- 
-2.34.1
+It's what I made at the time hoping to fix a suspend/resume issue when
+trying upstream TF-A. It didn't fix the issue at the time, but may still
+be useful/needed and I think it's what Chaoyi hinted at.
+
+Just yesterday, Jonas posted this patch which may be useful/needed too:
+https://lore.kernel.org/linux-rockchip/20260609154124.445182-1-jonas@kwiboo.se/
+
+HTH,
+  Diederik
+
+>> - (The convolution output is still uniform zero-point / the job times
+>> out - that is the
+>>   separate NPU compute-completion issue, unrelated to the power-domain
+>> work. Finley, that is
+>>   the one I flagged earlier re PVTPLL/NoC.)
+>> 
+>> Kind regards,
+>> Midgy
+>> 
 
 
 _______________________________________________
