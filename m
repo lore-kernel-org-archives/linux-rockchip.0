@@ -4,71 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9714CD98C7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jun 2026 10:06:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFBFDCD8CB9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Jun 2026 10:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eITNMkW8mBSackJaAab8azoRJVWx3oRW/NIXJU7d+Vk=; b=E3+wn1QhciRXCt
-	ScVIlZRW/HOwKuHy7jXiNRa2RwnoAkt+3+C9cKT7f1Wy86RBp0YBOkXkTV6A1SkKxxAeub1FzAkcw
-	ny5Pg8kRl5cWdoqp94czjmRqsl7qU6NELMCLxmrxyODqkThZDq3MsMU0pLXfaMUn/XGfqeu+9/Vc+
-	87Jo2dXWlbSUB7W4bPem3Fkr/dEbe5++BKsslsVe/1yJ24+z65uqJcCXu6VTOd7cxM77Xi7fl+FqD
-	HCVZlMhgZGneeYeOLDCosp81KJtWd2AEWwU9AESPbGsgMN3xYTjo+iJhVpZmYkFKuieMbWthAgTuT
-	hYKFR/7+bCW7AVmfRe4A==;
+	List-Owner; bh=pE/pIaySwt2ZuK3OVedYJeZKKMoIc0RKGi5O15R9Cmc=; b=Qy1qlp3DoGfaEt
+	W7D/+9NkL4VZuodhumjWAlLQWUOIzZ9UxKtvpE415aJRUhHV0u2Z9x63pay6hjKFWQw3GqHLkr6vF
+	IA80cq6/0zqTn1E7rtIp9T+ZuZyFdaaYmX+/GZ8aG1W36LDHTvfKmipWcooUgHW37gc1aGkRzZxJB
+	BYWKcJnjRr6DsHRzBGbE5aoUUcniAJM7MA/87crptFj2bTMQ5tcVxwMOIi6I+sQt3IbBDFZR6vkNc
+	6/WCzOhso5Qc2v+7FaED6jl8vnDO46ca/B128AH0U4jqqXbBEWl0q6IT/HF2kDx1bKBzXjJzp2IsW
+	+mHBrCjV2dNNf0IEHjfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXFou-00000007Laj-2IJl;
-	Wed, 10 Jun 2026 10:06:00 +0000
-Received: from out-186.mta0.migadu.com ([91.218.175.186])
+	id 1wXG4M-00000007Nq3-0yHA;
+	Wed, 10 Jun 2026 10:21:58 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXFor-00000007LZr-1SBY
+	id 1wXG4J-00000007NoC-2oCP
 	for linux-rockchip@lists.infradead.org;
-	Wed, 10 Jun 2026 10:05:59 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1781085953;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=YXhOcqMPHO+S5QqlHxh7fMeK781ZP72bMnS5EH8zaug=;
-	b=X3cX35ljKdPrn8ghjGraHP1nRfUjKOzodTDZBQC8Bodbl4K5BZ3SeQCEUQYnIQHXomWMv2
-	GDYsnnYDG6qC9nxUOC6skm9sE/n1P6wkH55bWQZjwRr28gq4kBZemajTf/2mM0CPe52B5u
-	4IASRmUHKLwqpGKX38uLjYe3EMrnhDqZppAtJmbn8Ed7cp/1gIkFPaAccACARsT97Bxzcs
-	HPydH1A3PBbFf0pU8obu+92IEPA+vLo2RX0wsIfwwIjfCjhrfZQFDAtSiiSsMaiiVXOyM+
-	irD1BK2deVH2yC9tmxTdbTJXa+lrr3N7jnjiUNuYuTEjOYBkP69T0tsjKXcRaA==
-Date: Wed, 10 Jun 2026 12:05:49 +0200
-Message-Id: <DJ5A9XL183RZ.20J3ASQ3EWUZ6@cknow-tech.com>
-Cc: <tomeu@tomeuvizoso.net>, <ogabbay@kernel.org>, <heiko@sntech.de>,
- <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
- <joro@8bytes.org>, <will@kernel.org>, <robin.murphy@arm.com>,
- <dri-devel@lists.freedesktop.org>, <linux-rockchip@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <iommu@lists.linux.dev>, <linux-kernel@vger.kernel.org>, "Simon Xue"
- <xxm@rock-chips.com>, "Finley Xiao" <finley.xiao@rock-chips.com>, "Jonas
- Karlman" <jonas@kwiboo.se>
-Subject: Re: [RFC PATCH v3 0/9] accel: rocket: Add RK3568 NPU support
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Chaoyi Chen" <chaoyi.chen@rock-chips.com>, "Midgy Balon"
- <midgy971@gmail.com>
-References: <20260604135255.62682-1-midgy971@gmail.com>
- <3d99569e-9c3a-49d1-93fb-1335382523e9@rock-chips.com>
- <CA+GS1Y1s78PwN63X2YJoS8VEGp7CpTERo_K65yKs00U4VRAw4Q@mail.gmail.com>
- <e5058919-9485-4de5-8eea-331ebfc2987c@rock-chips.com>
- <CA+GS1Y3ysdWZ3qCq3ip_Pbw+v4LxHZd95aBo=jwB+orYaMBBNw@mail.gmail.com>
- <CA+GS1Y0kAM_XGLQuKPTphif2HcQg18ZXhd8RHHr2xPOEMCDvXA@mail.gmail.com>
- <bcedaff0-abf8-4585-a0ea-057062cd0411@rock-chips.com>
- <CA+GS1Y2-hRqpGgsknh+oOX+-uZ3DZtdekdP9viTP6a40zhhUhg@mail.gmail.com>
- <b05f7154-e85f-4207-80ae-f080282ba780@rock-chips.com>
-In-Reply-To: <b05f7154-e85f-4207-80ae-f080282ba780@rock-chips.com>
-X-Migadu-Flow: FLOW_OUT
+	Wed, 10 Jun 2026 10:21:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=W1xAQ3kxXWEPxj+qDrh+a29AP/hJ8tSPkUteLT00sjA=; b=NBbmW+NbmS3pkIic+2TuPDqcoo
+	t2jUBrBIgVIx6LJ8uC9jB9//B/SrpqbhMSLq+LUbvWvy7fGD/JTWiubTYAqoq5s21K85bVvQ1iY98
+	lNRl9Fb9Q02gwBrCs5wKnYoCcQsorqPmobTs4tCS1FHfQ0dTNfI0Xsv5Vhb29OscdaSIhvjDfGGDw
+	FA4njdisxO4Ym2HEofLetBXTvVX4UYZNEGffSqgqZ7yfEZ8+4xR7wKOUw72J25jrm4GWJLTUlGZjr
+	1lKz89WxeufpcbkmlXxZ0yWMXsijMMvsGkzxXwo10SACxDaC/wabpw+1jVEnMuiNGnC8ac757E2aj
+	D28giIvQ==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Oren Klopfer <oklopfer37@gmail.com>, linux-rockchip@lists.infradead.org,
+ Thorsten Leemhuis <regressions@leemhuis.info>
+Cc: regressions@lists.linux.dev, pbrobinson@gmail.com, guptarud@gmail.com,
+ megi@xff.cz
+Subject: Re: [REGRESSION][BISECTED] wireless networking broken on Pinephone Pro
+Date: Wed, 10 Jun 2026 12:21:50 +0200
+Message-ID: <3761289.R56niFO833@diego>
+In-Reply-To: <b68dc2ab-ab54-435f-a4e5-05b1b8397505@leemhuis.info>
+References: <20260607225901.64019-1-oklopfer37@gmail.com>
+ <b68dc2ab-ab54-435f-a4e5-05b1b8397505@leemhuis.info>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_030557_748696_1550CDD3 
-X-CRM114-Status: GOOD (  24.59  )
+X-CRM114-CacheID: sfid-20260610_032155_774284_1A391DF1 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,111 +62,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Wed Jun 10, 2026 at 3:14 AM CEST, Chaoyi Chen wrote:
-> Hi Midgy,
->
-> On 6/9/2026 7:11 PM, Midgy Balon wrote:
->> Hello Chaoyi,
->> 
->> You were right - building rocket as a module fixes it. Thanks for the pointer.
->> 
->> I rebuilt with CONFIG_DRM_ACCEL_ROCKET=m (everything else the same:
->> need_regulator on
->> the RK3568 NPU power domain via a DOMAIN_M_R variant, domain-supply =
->> <&vdd_npu>, and the
->> regulator-always-on workaround dropped). The board now boots cleanly
->> and, more importantly,
->> an NPU job submit no longer hangs: I ran the test workload five times
->> with no RCU stall and
->> no freeze.
->> 
->> So with rocket=m the need_regulator approach works on RK3568, and I'll
->> keep it for v4
->> (domain-supply + need_regulator, instead of marking vdd_npu
->> always-on). rocket=m is the
->> normal configuration anyway; my earlier hang came from building it =y
->> in a self-contained
->> image, so it probed in the initcalls (around 2 s) and the genpd ->
->> I2C-PMIC regulator
->> transition ran before the system was ready. As a module it loads from
->> udev much later
->> (~6.8 s here), after the I2C controller and regulator core are fully up.
->> 
->> On your question of when the device-link error is printed - it is at
->> power-domain
->> controller probe, not at the rocket probe:
->> 
->>   [    2.700618] vdd_npu: Bringing 500000uV into 825000-825000uV
->>   [    2.749637] rockchip-pm-domain fdd90000.power-management:power-controller:
->>                  Failed to create device link (0x180) with supplier 0-0020 for
->>                  /power-management@fdd90000/power-controller/power-domain@6
->>   [    2.945955] platform fde40000.npu: Adding to iommu group 3
->>   ...
->>   [    6.840374] rocket: loading out-of-tree module taints kernel.
->>   [    6.877647] [drm] Initialized rocket 0.0.0 for rknn on minor 0
->>   [    6.879950] rocket fde40000.npu: Rockchip NPU core 0 version: 0
->> 
->> So the device-link to the rk809 PMIC (0-0020) fails to form at ~2.75
->> s, well before rocket
->> loads at ~6.8 s. It is non-fatal here - the vdd_npu rail is brought up
->> by the regulator core
->> and all jobs run - and there is no "failed to get ack on domain npu"
->> NoC warning this boot
->> (the always-on kernel had one). The complete boot log is attached.
->> 
->> Two notes / one question:
->> - This boot used fw_devlink=permissive on the command line. Is the
->> "Failed to create device
->>   link ... supplier 0-0020" at pmdomain probe expected/benign, or is
->> there a clean way to make
->>   it order correctly (so it also works without permissive, and a =y
->> build wouldn't deadlock in
->>   the initcalls)?
->
-> We encountered the same issue on the RK3588 NPU before. And it was
-> resolved with the following patch at that time.
->
-> https://lore.kernel.org/all/20251216055247.13150-1-rmxpzlb@gmail.com/
->
-> Please compare the differences in NPU pmdomain and DTS configuration
-> between the RK3568 and RK3588.
-
-About a month ago on #linux-rockchip we were discussing PM 'stuff':
-https://libera.catirclogs.org/linux-rockchip/2026-05-15#39939137;
-which references this paste
-https://paste.sr.ht/~diederik/89d9f84e22474e837b55286d213b67f03859ce2e
-I've since removed the DCDC_REG2 for PineTab2 and the 'fix' should likely
-be extended to cover all RK3566/RK3568 devices though.
-
-It's what I made at the time hoping to fix a suspend/resume issue when
-trying upstream TF-A. It didn't fix the issue at the time, but may still
-be useful/needed and I think it's what Chaoyi hinted at.
-
-Just yesterday, Jonas posted this patch which may be useful/needed too:
-https://lore.kernel.org/linux-rockchip/20260609154124.445182-1-jonas@kwiboo.se/
-
-HTH,
-  Diederik
-
->> - (The convolution output is still uniform zero-point / the job times
->> out - that is the
->>   separate NPU compute-completion issue, unrelated to the power-domain
->> work. Finley, that is
->>   the one I flagged earlier re PVTPLL/NoC.)
->> 
->> Kind regards,
->> Midgy
->> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTWl0dHdvY2gsIDEwLiBKdW5pIDIwMjYsIDExOjI4OjAzIE1pdHRlbGV1cm9ww6Rpc2NoZSBT
+b21tZXJ6ZWl0IHNjaHJpZWIgVGhvcnN0ZW4gTGVlbWh1aXM6Cj4gT24gNi84LzI2IDAwOjU5LCBP
+cmVuIEtsb3BmZXIgd3JvdGU6Cj4gPiBBcG9sb2dpZXMgaWYgdGhpcyBpcyBub3QgZm9ybWF0dGVk
+IHByb3Blcmx5LCB0aGlzIGlzIG15IGZpcnN0Cj4gPiBzdWJtaXNzaW9uIHRvIHRoZSBrZXJuZWwg
+bWFpbGluZyBsaXN0LiBXaUZpIHNwZWNpZmljYXRpb25zIHdlcmUKPiA+IGludHJvZHVjZWQgaW50
+byB0aGUgUGluZXBob25lIFBybyBkZXZpY2UgdHJlZSBpbgo+ID4gMDk2YmQ4YzY3OTE4NWY4OThj
+YWU5OTMzYzZhNjg2NTBmYTI2ZWE0ZiwgYnV0IHRoaXMgY2F1c2VzIGNvbXBsZXRlCj4gPiBuZXR3
+b3JraW5nIGZhaWx1cmUgb24gc29tZSBkZXZpY2VzLiBUaGUgcmVncmVzc2lvbiBhZmZlY3RzIGFs
+bAo+ID4gdmVyc2lvbnMgdjYuMTgtcmMxLi52Ny4xLXJjNi4KPiA+IAo+ID4gQW4gaWRlbnRpY2Fs
+IGlzc3VlIHdhcyByZXBvcnRlZCBmb3IgdGhlIFBpbmVib29rIFBybyBhdCBodHRwczovLwo+ID4g
+bG9yZS5rZXJuZWwub3JnL2FsbC9hVUtPbGotUnZUWWxycGlTQHJvY2suZ3J6YWRrYS87IHRoZSBy
+ZWdyZXNzaW9uCj4gPiB3YXMgcmV2ZXJ0ZWQgaW4gMjlkMWY1NmM0ZjMwMDFiN2Y1NDcxMjNlMGEz
+MDdjMDA5YWM3MTdmOC4gVGhlIGVycm9ycwo+ID4gZmFjZWQgb24gdGhlIFBpbmVwaG9uZSBQcm8g
+YXJlIGV4YWN0bHkgdGhlIHNhbWUgYXMgd2VyZSByZXBvcnRlZCBmb3IKPiA+IHRoZSBQaW5lYm9v
+ayBQcm8gcmVncmVzc2lvbi4KPiA+IAo+ID4gQSBwcmV2aW91cyBwYXRjaCBhdCBodHRwczovL2xv
+cmUua2VybmVsLm9yZy9hbGwvMjAyNjAxMTItCj4gPiBwcHBfY29ubmVjdGl2aXR5LXYxLTMtMjg0
+ZDZlODNiMjEyQGdtYWlsLmNvbS8gYXR0ZW1wdGVkIHRvIHJlc29sdmUKPiA+IHRoaXMgaXNzdWUg
+YnV0IG5ldmVyIGVuZGVkIHVwIGJlaW5nIG1lcmdlZC4KPiA+IAo+ID4gMDk2YmQ4YzY3OTE4NWY4
+OThjYWU5OTMzYzZhNjg2NTBmYTI2ZWE0ZiBpcyB0aGUgZmlyc3QgYmFkIGNvbW1pdAo+ID4gY29t
+bWl0IDA5NmJkOGM2NzkxODVmODk4Y2FlOTkzM2M2YTY4NjUwZmEyNmVhNGYKPiA+IEF1dGhvcjog
+UGV0ZXIgUm9iaW5zb24gPHBicm9iaW5zb25AZ21haWwuY29tPgo+ID4gRGF0ZTogICBGcmkgQXVn
+IDI5IDEyOjM4OjI0IDIwMjUgKzAxMDAKPiA+IAo+ID4gICAgIGFybTY0OiBkdHM6IHJvY2tjaGlw
+OiBGdXJ0aGVyIGRlc2NyaWJlIHRoZSBXaUZpIGZvciB0aGUgUGluZXBob25lIFBybwo+ID4gWy4u
+Ll0KPiA+IAo+ID4gUmV2ZXJ0aW5nIHRoZSBjb21taXQgYWxsb3dzIHdpcmVsZXNzIGNvbm5lY3Rp
+b24gdG8gZnVuY3Rpb24gYWdhaW4uIEkKPiA+IGFtIG5vdCByZWFsbHkgZmFtaWxpYXIgd2l0aCB0
+aGUgcHJvY2VzcyBvZiBzdWJtaXR0aW5nIGEgcmV2ZXJ0Cj4gPiBwYXRjaCwgYnV0IEknZCByZXF1
+ZXN0IHRoYXQgdGhpcyBiZSBkb25lIG9uIGFsbCBvZiA2LjE4IChMVFMpLCA3LjAKPiA+IChTdGFi
+bGUpLCA3LjEgKE1haW5saW5lKS4gVGhhbmtzIQo+IFRoeCBmb3IgdGhlIHJlcG9ydC4gU291bmRz
+IGxpa2UgYSByZXZlcnQgaXMgdGhlIHJpZ2h0IGNvdXJzZSBvZiBhY3Rpb24KPiBoZXJlLiBDb3Vs
+ZCB5b3Ugc3VibWl0IG9uZSB3aXRoIGEgc3RhYmxlIHRhZyB0byBlbnN1cmUgYmFja3BvcnRpbmc/
+IFRoYXQKPiBtaWdodCBiZSB0aGUgZmFzdGVzdCB3YXkgdG8gcmVzb2x2ZSB0aGlzLCBhcyB0aGF0
+IG1ha2VzIGl0IGVhc3kgdG8KPiBwcm9jZXNzIGZvciB0aGUgbWFpbnRhaW5lcnMgdG8gcHJvY2Vz
+cyB0aGlzLgoKV2FzIGNvbmZ1c2VkIGZvciBsaWtlIDUgbWludXRlcyBiZWNhdXNlICJkaWRuJ3Qg
+d2UgZG8gdGhhdCBqdXN0IHJlY2VudGx5IiwKdW50aWwgcmVhbGl6aW5nLCB0aGF0IGl0J3MgdGhl
+IFBpbmVwaG9uZSB0aGlzIHRpbWUsIG5vdCB0aGUgUGluZWJvb2suCgpTbyB3ZSdkIG5lZWQgYSBz
+aW1pbGFyIG9uZSB0bwpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVs
+L2dpdC9zb2Mvc29jLmdpdC9jb21taXQvP2g9Zm9yLW5leHQmaWQ9MjlkMWY1NmM0ZjMwMDFiN2Y1
+NDcxMjNlMGEzMDdjMDA5YWM3MTdmOAoKCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
