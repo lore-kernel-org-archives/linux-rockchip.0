@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9890BCD98D2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 08:26:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 681CCCD98D2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 09:24:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xwmY2OLbix9Z1Z9SgAxg8fib0b5XoM8RTBAQC9KM0dI=; b=u9JJwm1XbW/1Bg
-	lNU5mNhQKe4KEYM2U2dme8OWrW5wvdMwIOKhyihyIzhHKFGmW9SmQNMYqU48eb/6Ke/x/ZDnTxne7
-	AZlOq3100kRqKQNZoS1i0JPkmTAHS2LoK9+N1UR/nnmpAFmHnUkHRVoj53viVNRwfPseDkkBjeB6n
-	d+djnm+q9zKb9UXRCXjUdnJXcqk/VGCA3c3CLdU5YwQm5posiuic1EKZHj3lWM3rWW8e7WHApktTZ
-	rdeBn2lviQUIcPFGk/EVSszbMgSU68IK4W3QMrSAn4/5eKLyiYuRRcSJBJ8dlEaGcNzK4EnqaAv95
-	MB/MXyUOxRIFDQHUBE4w==;
+	List-Owner; bh=3RLIWce8AZVrUTUsaMISKZhen4M30AlUdkLND+SeK2A=; b=e7cdTkBJeJ844G
+	aEOR0thSpshCfhuZJwFz5fWX3d3PFFbZ5P5SHugHrGChs984Xd6IVWXa4NcDJjc/+WZfcQJ+yRzI3
+	eG+i7dp6ilvsyb3inIC/KI3NTpoHAyqc3E7pMutju2QBrIprdm5rkCx2hYs3C2JV2gkpCojyzyy2d
+	smlwrdXP4eL2F7XWDWe9B5IxhkIBCBsX5AcnlrE0MiwHrwFzbsPvmQCvN75UmSpjz//TiG7am5Pza
+	pFBwyXm9TASnl2zTdCptjdCqwwBwGixZi6ykQAs8XH4oNyXgwbmU1uR3++HajNtTekLVsvdPTqGDb
+	tebs9rKT2u12ARskknLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXak9-000000090TS-2YEe;
-	Thu, 11 Jun 2026 08:26:29 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1wXbe2-000000097a6-2Qxh;
+	Thu, 11 Jun 2026 09:24:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXak4-000000090QR-07iN
+	id 1wXbe1-000000097Zw-36AL
 	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Jun 2026 08:26:28 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260611082616euoutp016ab031b91f9e517f7415249a95092350~3_WHQp6Ft2060020600euoutp01j
-	for <linux-rockchip@lists.infradead.org>; Thu, 11 Jun 2026 08:26:16 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260611082616euoutp016ab031b91f9e517f7415249a95092350~3_WHQp6Ft2060020600euoutp01j
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1781166376;
-	bh=DhwGhRTjppBgNw8HHFKEmC3YfseR6UOeLF4WLAZNcaw=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=WP5fVf7bqkbo4VdgHWn8qqtBKF+RHRqV6LI00ZwUCFzhaBP9Eq70e7Py9u09YikTW
-	 Fm6zSKjRTYXbF6SnqgLbnVCAvgIU09OXFAIR8ifTes5554DpJgawudUQOPqaZxhgZJ
-	 BjdWLYKrK2SjvkVRm9a5LiwWmJee0pVSsXSXo/Mo=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20260611082615eucas1p2e0d075707c644743cc2b745ed838d646~3_WGwPZ402819828198eucas1p2c;
-	Thu, 11 Jun 2026 08:26:15 +0000 (GMT)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20260611082614eusmtip15addb285747362b715188d44fa381fda~3_WGD3M962800828008eusmtip1H;
-	Thu, 11 Jun 2026 08:26:14 +0000 (GMT)
-Message-ID: <184d315b-a0a1-4792-8a40-1b4967025916@samsung.com>
-Date: Thu, 11 Jun 2026 10:26:14 +0200
+	Thu, 11 Jun 2026 09:24:13 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id E65F5600AA;
+	Thu, 11 Jun 2026 09:24:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F7A51F00893;
+	Thu, 11 Jun 2026 09:24:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781169852;
+	bh=kaDbe2Wtadm1CovoX1M+pm7BWifn8mTlFUxuaDqLi0Y=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=WnTU/27NgzOoYes/IzeMe1761wQ9wdP19YpDfXsYUpxxGG6XZMQ25Hl4AFte7UTPd
+	 BL8I0iSXCAKoGHxIb9Ayper7xIpPamXXxwv5m5VsIiasCQHvnvOZuqv9I5+4qGtxV3
+	 XbwKGgLUZRH+j7fA58Q7D/JhvHB0y0wcsc6r2X3U98aesHk1zaDTi+9qcueDmAeR+J
+	 uAZns5DnSAzUES0mpChef3CG3k+CVsNG+l2VlDg1dyvN6UstFwo7GOoSJ0aO6k7pYP
+	 puMZojS8gK/7CxwD2v0LuFfPk9L1CJ7Si0BZmcwSj1+lCPXpKE5+MQ1KAquwU90sVk
+	 P5Dpa3PvD9p2w==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Michael Zhang <zhangyi@everest-semi.com>, 
+ Diederik de Haas <diederik@cknow-tech.com>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+In-Reply-To: <20260607105913.355966-1-diederik@cknow-tech.com>
+References: <20260607105913.355966-1-diederik@cknow-tech.com>
+Subject: Re: [PATCH] ASoC: dt-bindings: everest,es8389: Document audio
+ graph port
+Message-Id: <178108992684.232889.2776738169377861702.b4-ty@b4>
+Date: Wed, 10 Jun 2026 12:12:06 +0100
 MIME-Version: 1.0
-User-Agent: Betterbird (Windows)
-Subject: Re: [PATCH 0/2] gpio: fix sleeping-in-atomic in shared-proxy;
- restore meson non-sleeping
-To: Viacheslav Bocharov <v@baodeep.com>, Linus Walleij <linusw@kernel.org>,
-	Bartosz Golaszewski <brgl@kernel.org>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman
-	<khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin
-	Blumenstingl <martin.blumenstingl@googlemail.com>, Robin Murphy
-	<robin.murphy@arm.com>, Diederik de Haas <diederik@cknow-tech.com>,
-	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
-Content-Language: en-US
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <20260610153329.937833-1-v@baodeep.com>
-X-CMS-MailID: 20260611082615eucas1p2e0d075707c644743cc2b745ed838d646
-X-Msg-Generator: CA
-X-RootMTR: 20260610153425eucas1p29d20a835114a28b15cb12ea00534e074
-X-EPHeader: CA
-X-CMS-RootMailID: 20260610153425eucas1p29d20a835114a28b15cb12ea00534e074
-References: <CGME20260610153425eucas1p29d20a835114a28b15cb12ea00534e074@eucas1p2.samsung.com>
-	<20260610153329.937833-1-v@baodeep.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_012625_472974_48AA3E22 
-X-CRM114-Status: GOOD (  16.65  )
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1142; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=mfT8gSVDCWk4JyRaaMo+/qGlPesjAc/rwMATv4G2nsg=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqKn65dqvazU4B177fGwRd8nxToenUhgxdKVsld
+ sQPpxJGuxuJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaip+uQAKCRAk1otyXVSH
+ 0F0bB/9PSDgrxCKFj6Vx5OG4742eNYZfdMZGWRmtZMqx1jEsWbsOTc1La2BjnRVl1v3bTjNqWTT
+ o6OyxjkETr5eVJG+c6mpNoJYNumnURYwFUK9NKXk0eHHcLxw2LN62kTG1il1q4kOemlEGKb5CT3
+ OCM98D214M1rKGCcpeR+A50ik03quJF8PL0hBYuTfgpczE/pOXGDSJKanc50sAq2bdnRTWZPbpr
+ 5eDQxgiESXTCYokAEvP+SExqeDHFdz8g5NLcy4C2Je93hx8+x9hcaTVkSAgjC+JB9srp6dwIrp7
+ Tj2XVH18GBsUMlpB/cJ9mj9CStveBRbsE+xJYp4NQTRBXHP8
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,63 +85,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Viachesla,
+On Sun, 07 Jun 2026 12:58:49 +0200, Diederik de Haas wrote:
+> ASoC: dt-bindings: everest,es8389: Document audio graph port
 
-On 10.06.2026 17:32, Viacheslav Bocharov wrote:
-> gpio-shared-proxy chooses its descriptor lock (mutex vs spinlock) from
-> the underlying chip's can_sleep, but under that lock it calls config and
-> direction ops that reach sleeping pinctrl paths. On a controller with
-> non-sleeping MMIO value ops the lock is a spinlock, so a sleeping call
-> runs from atomic context:
->
->   BUG: sleeping function called from invalid context
->     ... pinctrl_gpio_set_config <- gpiochip_generic_config
->     <- gpio_shared_proxy_set_config (voting spinlock held)
->     <- ... <- mmc_pwrseq_simple_probe
->
-> This was reported on Khadas VIM3 and worked around for Amlogic by
-> commit 28f240683871 ("pinctrl: meson: mark the GPIO controller as
-> sleeping"), which marked the whole meson controller sleeping. That
-> workaround broke atomic value-path consumers: w1-gpio (1-Wire bitbang)
-> no longer detects devices, because its IRQ-disabled read slot calls the
-> non-cansleep gpiod_*_value() and now hits WARN_ON(can_sleep) per bit.
->
-> Patch 1 fixes the proxy locking generically (always a sleeping mutex).
-> Patch 2 then restores meson can_sleep=false, fixing 1-Wire.
->
-> Patch 1 has a trade-off: a proxied GPIO becomes sleeping, so consumers
-> gating on gpiod_cansleep() change behaviour. No current device needs
-> atomic (non-cansleep) value access on a shared GPIO -- every report
-> (Khadas VIM3, ODROID-M1, my test on JetHub D1+) is a shared reset line
-> (eMMC/SDIO pwrseq or PCIe reset) driven through the cansleep accessors,
-> which is what the proxy exists to vote on. An alternative that keeps
-> atomic value access (split locking) is possible but adds a second lock
-> and new race windows. I went with the simpler, verified approach and
-> would appreciate guidance on whether the atomic value path must be
-> preserved.
->
-> The two are a unit: patch 2 must not be applied without patch 1,
-> otherwise the original VIM3 splat returns on boards that share a meson
-> GPIO -- please keep the order. I have not Cc'd stable; I will request
-> stable backports separately once both patches have landed.
->
-> Viacheslav Bocharov (2):
->   gpio: shared-proxy: always serialize with a sleeping mutex
->   pinctrl: meson: restore non-sleeping GPIO access
+Applied to
 
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
 
-This probably also affects the similar changes in Rockchip GPIO driver done
-by the following commits:
-20cf2aed89ac ("gpio: rockchip: mark the GPIO controller as sleeping")
-7ca497be0016 ("gpio: rockchip: Stop calling pinctrl for set_direction")
+Thanks!
 
-I've checked this patchset with these two reverted and no warning was reported.
+[1/1] ASoC: dt-bindings: everest,es8389: Document audio graph port
+      https://git.kernel.org/broonie/sound/c/aa283db3bb8d
 
-Best regards
--- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
