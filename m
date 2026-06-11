@@ -4,89 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DEB5CD8C9D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 20:04:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58383CD8C9D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 20:28:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sN+kk5Hq3aQHcCte5ZISFWzaFY9Cmp0oJR2pnsbkHJU=; b=Ky05HC4ZoMvEad
-	N2QaF5Am51hQJkRnATQCnNEHcD8Ir4T1qF1bSZU8OHamg2QJgJZR5GimHzBJr7P2+hXHlzBTYM3hY
-	P36suI2C8e8xcT6vMCwLcxnOhpFbWECsdf7M8BWnYt+7c0bQ8dcmfSSWpULhtD3615tB+5AX08GcR
-	2bptIdE7wS7M9LhFThVVd1oBS2TzqjSR3pt6a9lmQ8fxMaHFznLlgtCqZMzl21I7c5BbiQ5maAKAN
-	DnJHoC4a2b8cgzaSQmlYPoHAJXS1ZRsQcn/4JYRUWriXq85npGnMwRkiaHXWJ1NfpN3kfAG9+4GuJ
-	vNulUErVSIi9/fxyjQ7Q==;
+	List-Owner; bh=7UlIqkfsBlheCSHoOKgvSDWn/YQ9FB4iCyH900/hvpw=; b=lRAJ3uD4nLZpPo
+	H6zfp9LABQFTExY0nTOLMvkZz7YHzrIbtgqhjURSVRiEbMtub4BgMozeOe8C2u9FqI5Qlr4F5EiCO
+	F7x+lHKtqUXb6F70xFNaLIhIxVsLJ/jE+DII9Nu6Er8gegfxgWsNteuh96ob99qW01Oh4uczNOjcs
+	AA0lZXj2N4cvqQKHb6FjE09alcJ/YS8GypjiV3Oze0jDiJo5ud0fYvFx6tZsKZI4v/NjvFOCkCGoq
+	g32xpq9KqfZkxmCisDqs5RfaVPl2/1Z7ag4kgdbw+sIJeYdT/BDCR7dp7LhCDLDqiB0aksQK6O0/e
+	MWpd/GzNIJu1BGbaaFMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXldg-00000009znB-1aYd;
-	Thu, 11 Jun 2026 20:04:32 +0000
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+	id 1wXm0z-0000000A2u3-3O9t;
+	Thu, 11 Jun 2026 20:28:37 +0000
+Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXlde-00000009zle-1LiT
+	id 1wXm0y-0000000A2tR-00Fa
 	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Jun 2026 20:04:31 +0000
-Received: by mail-qt1-x834.google.com with SMTP id d75a77b69052e-5175b6c4e19so1625741cf.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 11 Jun 2026 13:04:29 -0700 (PDT)
+	Thu, 11 Jun 2026 20:28:37 +0000
+Received: by mail-oo1-xc2f.google.com with SMTP id 006d021491bc7-69e1eba21a6so214002eaf.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 11 Jun 2026 13:28:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781208269; x=1781813069; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=QPHgBrADPApAfZtc/YSxupn+3CjApqMQNAHkj/6KsE0=;
-        b=G8Ud0rBmPdef1/2/zeaBUL+3t366ENTNl8z7ogyKuQaAlahYPRhi4a46pIpLRZ/5b0
-         M8hNPVn+cEvxWL/kWMd6rflnasvfvNMm2czUTJ5BUbE6AbwcitS3qbLZwbwu8rvBx2j7
-         /233heGiM5KzBRxyT73c8lf//bGd8GO74EzJsdSj9ME99Uf6vJpvD1CV2Sr3joWm69Yr
-         2E55pM3baMrfFnZM4eNqa096Gm+zXlPFzFeF9tXvtv7OF1IQWWlZnjL+4ucMAR1Ify6v
-         4AQ0Tpn1M0KEZ/9nL8jk3HrzTITRvgpQnWda2zp10wmmFlI7IGm+T6OWciyeRFF0Szmy
-         isOA==
+        d=gmail.com; s=20251104; t=1781209715; x=1781814515; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=WAmm4pXSO5kuAM6+Xi7zRS9eN83dbyRfXtVmfRyxtLRO4v/XU+99QNNsGi7BVON2Fu
+         WndBa71fPr/pRv5GLi3bOw+u82wOQRshwrpNx5AYLRdCA1zvfsgQFjLmZ40P/cIAjvQw
+         yXnVGCEnNA/u0J5E2/yuo/E5rG3opQCht33/aLHHIQTwxeEq23oKwfTrUbPL0HMK3GME
+         /11Bt0947vpqoO/YUCGWUsD4Pd4YDTUo42RfovTpDJ3wYPMN5mfIicas42mB1M/Nln6S
+         QmawRm75mH8iMZ8ewTjZG2fa9yFUW86X990hDx9Cwp5RVL5RIEXvGGHE29vyRuIbPDXa
+         uQJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781208269; x=1781813069;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=QPHgBrADPApAfZtc/YSxupn+3CjApqMQNAHkj/6KsE0=;
-        b=Go37I4IFykXaby8OtbXsPnq/60jShN7TtPMon7BPrYr3zUXtxxdU9A02Knvbssnu+4
-         zJV1+3OWFehVgt1a8JgORbucEAr/yAIiWcUZ4YAPkOvzzOvEJYAszAqf4InXleWqUoXI
-         uChsliqywxGiwZCAVGRqs/GRGEdEljg7fgKsn6rHQN0QnVRAKZG4T2rLbi8mOFnRuZzt
-         SaAZOWMXjup0N7kDPgsZbomfug5P36NbinkaEu641RBtABqgwdpfHJLsR4UEIURabXij
-         +amYMnLMJtGvy/F3wTDwi6pUn+MOW968TQOtG2q9L4nCAM1bl166qFughhYYgAE56YlE
-         shhA==
-X-Gm-Message-State: AOJu0Yy9aRHRd/wjCTLNOyY+vyCbvBq7nleJ0e+ESZTjx/mp6wqAtOER
-	bsEXDEwtIAwihyDbPukRmeXn8V9d8MF+VqKYQERML441SeecGqlotTHO
-X-Gm-Gg: Acq92OEshC8afaxdw2BdZqe6fqo2UolXxV8xz5wpG+EM+VqYR6KcYaHbYwjFSgAbhmI
-	wpp1G07lC2Zc++vLfjJNf9QhfAImagfGB8g91hy11KxiZ7odl1cs4DjP7imExeUq76vb/nkha2u
-	0I4VJfNwko+6HrApThGz8M+aTI9rdoj5KwpoPzPF1Kwt/NLPZxQNf9umETFjC/oAM4RNAdd7HFn
-	W3xXu4oX3U4kLrhgP51PsMrF1KZYwnk1DoBen77369oZ3j98uZUCab33KI+NA9O4tTopwVMM35G
-	Xy+rJ1l5TByhgVAntyLExQvGZcceW2mTDsQsRFQ7Fj5mWwHXBnolBFoia8Tdi4qMZaLWQRQ0/Ik
-	76vvTqGGqBzB8+hiUjgQQKAX8nS3refuOOwNcq3LU8BXvdW7+v2wLdiypGeGMOLUAAPFBJ34Q5I
-	YDQzL36Txr
-X-Received: by 2002:ac8:5e4d:0:b0:516:ddfa:23a4 with SMTP id d75a77b69052e-517ee27dfa4mr66606851cf.41.1781208268618;
-        Thu, 11 Jun 2026 13:04:28 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:f09::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8d300f6b962sm3322496d6.9.2026.06.11.13.04.24
+        d=1e100.net; s=20251104; t=1781209715; x=1781814515;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=HCqDUqf3DbDa3EAfnD1q2zk0sSYCigyWyCgpmRRZly5eBWZ4SJoHD/2CXj4VGKb/Am
+         htrQPuv93HxJ4FMPoVCIEqBgNE2MFO3GVCgLVL4Tx3RMsGtZbu+G+iTB9eo/TKnmAwfP
+         pmemz1Dq8xAKOquLD71G3Hv9i7IBFwlfwlXj+TNkclSgmKsy0r58SzEVtCDtBXEIXY5s
+         0SZ3wD7fJJzHrZrPVBrAnAUsS9lngDdtZkLmnQl2ocatxMsle8P8WsOXMIBut24WeYsj
+         1aqxotL/tvqdwnYER7ubOFLZt66sqzuPSB3egy23n2CkpgeS+SOd0wo8u6xT8V03sd3N
+         uJ1A==
+X-Forwarded-Encrypted: i=1; AFNElJ/2FLjuhRFUqJL8/JuyjKldzSO0Cl0+LqpiP5xcC2S7kYTjeVMbKOb9XDlaZuKj0xH+AXHGiO4R9l/QFh8/JQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxygDcu35Dp393sLCs+kZBTRX/tmkSeYxyU3ce/2VulSh3PewmT
+	ZABpn020y+Ac0HK63nEoaL46ZRMdAFqoLdp3YltUFKkMcyH7P0oE8aBM
+X-Gm-Gg: Acq92OHrIWKnoc5aGJPCCB3YSexYt79vyG8RSNoCMkqmljLHRilSE9Q51d7mor+A/8z
+	hr39AZsjGBnPyJ6YaFuVU2QaMIcUHYIuSQ7IJ0BNWRmV9CFDriKvqvPtzbsf7YmPgAac/QQdMhN
+	vq8QR3bhWHxvm9YPghf77QqnFo00e2uAi/InYmOdfwCyXZ2b4hElOCt37ggNo4iRuU8LRiQIe90
+	4sXb2bXr83RkUd8JGGCH4aW3n6VPLUQLI14kGFtBySBEQNAnpxLTioL0RgKSAN0VK2qs6gUDtuB
+	+npMpd2zzaijiwsBvyz0GYa4lHcd0VxbSvdBLHWvZ6PSlLuqY5XCLnWqkPhRXTGt+UntGQK0ruK
+	DwflExu4yJymTNxYUtgKBOAKg6X7JELyu6kQmxrOtaUL4ycA45JjzcW20QKzQS17M40poD/U1JV
+	3lzkEIlSvKwsiyyWuJYkhdfom1noO2eDSf
+X-Received: by 2002:a05:6820:16a2:b0:69e:2cc3:16c4 with SMTP id 006d021491bc7-69ecadbf2ccmr3008961eaf.8.1781209715020;
+        Thu, 11 Jun 2026 13:28:35 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-44244cd05c9sm1796134fac.18.2026.06.11.13.28.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Jun 2026 13:04:28 -0700 (PDT)
-Date: Thu, 11 Jun 2026 17:04:22 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>
-Cc: linux-rockchip@lists.infradead.org,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Geraldo Nascimento <geraldogabriel@gmail.com>
-Subject: [PATCH v6 3/3] PCI: rockchip: drive at 2.5 GT/s, error other speeds
-Message-ID: <4ac5cd7d2271df375ed6307f5c394247721395d9.1781207474.git.geraldogabriel@gmail.com>
-References: <cover.1781207474.git.geraldogabriel@gmail.com>
+        Thu, 11 Jun 2026 13:28:34 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-iio@vger.kernel.org
+Cc: andy@kernel.org,
+	nuno.sa@analog.com,
+	dlechner@baylibre.com,
+	jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	andriy.shevchenko@intel.com,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH V12 1/9] dt-bindings: iio: imu: icm42600: Add mount-matrix to icm42600
+Date: Thu, 11 Jun 2026 15:25:58 -0500
+Message-ID: <20260611202607.85376-2-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260611202607.85376-1-macroalpha82@gmail.com>
+References: <20260611202607.85376-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1781207474.git.geraldogabriel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_130430_367513_D2B4F1E0 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20260611_132836_033286_22E53902 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,92 +112,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Configure the core to be driven at 2.5 GT/s Link Speed and ignore
-any other speed with a warning. Also drop the 5.0 GT/s Link Speed
-defines from Rockchip PCIe header.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-The reason is that Shawn Lin from Rockchip has reiterated that there
-may be danger of "catastrophic failure" in using their PCIe with
-5.0 GT/s speeds.
+Add mount-matrix attribute to schema. This attribute has been supported
+since the first revision of this driver, but was not documented.
 
-While Rockchip has done so informally without issuing a proper errata,
-and the particulars are thus unknown, this may cause data loss or
-worse.
-
-This change is corroborated by RK3399 official datasheet [1], which
-states maximum link speed for this platform is 2.5 GT/s.
-
-[1] https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
-
-Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
-Link: https://lore.kernel.org/all/ffd05070-9879-4468-94e3-b88968b4c21b@rock-chips.com/
-Cc: stable@vger.kernel.org
-Reported-by: Dragan Simic <dsimic@manjaro.org>
-Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
- drivers/pci/controller/pcie-rockchip.c | 16 +++++++++-------
- drivers/pci/controller/pcie-rockchip.h |  3 ---
- 2 files changed, 9 insertions(+), 10 deletions(-)
+ .../devicetree/bindings/iio/imu/invensense,icm42600.yaml        | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index 0f88da3788054..5a2876d7c8547 100644
---- a/drivers/pci/controller/pcie-rockchip.c
-+++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -66,8 +66,10 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 	}
+diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+index 119e28a833fd..9b2af104f186 100644
+--- a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
++++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+@@ -53,6 +53,8 @@ properties:
+   drive-open-drain:
+     type: boolean
  
- 	rockchip->link_gen = of_pci_get_max_link_speed(node);
--	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
--		rockchip->link_gen = 2;
-+	if (rockchip->link_gen < 0 || rockchip->link_gen >= 2) {
-+		rockchip->link_gen = 1;
-+		dev_warn(dev, "invalid max-link-speed, limited to 2.5 GT/s\n");
-+	}
- 
- 	for (i = 0; i < ROCKCHIP_NUM_PM_RSTS; i++)
- 		rockchip->pm_rsts[i].id = rockchip_pci_pm_rsts[i];
-@@ -147,12 +149,12 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
- 		goto err_exit_phy;
- 	}
- 
-+	/* 5.0 GT/s may cause catastrophic failure for this core */
- 	if (rockchip->link_gen == 2)
--		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
--				    PCIE_CLIENT_CONFIG);
--	else
--		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_1,
--				    PCIE_CLIENT_CONFIG);
-+		dev_warn(dev, "5.0 GT/s may cause data loss or worse\n");
++  mount-matrix: true
 +
-+	rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_1,
-+			    PCIE_CLIENT_CONFIG);
+   vdd-supply:
+     description: Regulator that provides power to the sensor
  
- 	regs = PCIE_CLIENT_ARI_ENABLE |
- 	       PCIE_CLIENT_CONF_LANE_NUM(rockchip->lanes);
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 3e82a69b9c006..b5da15601b585 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -42,7 +42,6 @@
- #define   PCIE_CLIENT_MODE_RC			HWORD_SET_BIT(0x0040)
- #define   PCIE_CLIENT_MODE_EP			HWORD_CLR_BIT(0x0040)
- #define   PCIE_CLIENT_GEN_SEL_1			HWORD_CLR_BIT(0x0080)
--#define   PCIE_CLIENT_GEN_SEL_2			HWORD_SET_BIT(0x0080)
- #define PCIE_CLIENT_LEGACY_INT_CTRL	(PCIE_CLIENT_BASE + 0x0c)
- #define   PCIE_CLIENT_INT_IN_ASSERT		HWORD_SET_BIT(0x0002)
- #define   PCIE_CLIENT_INT_IN_DEASSERT		HWORD_CLR_BIT(0x0002)
-@@ -197,8 +196,6 @@
- 	(((x) & PCIE_CORE_PL_CONF_LS_MASK) == PCIE_CORE_PL_CONF_LS_READY)
- #define PCIE_LINK_UP(x) \
- 	(((x) & PCIE_CLIENT_LINK_STATUS_MASK) == PCIE_CLIENT_LINK_STATUS_UP)
--#define PCIE_LINK_IS_GEN2(x) \
--	(((x) & PCIE_CORE_PL_CONF_SPEED_MASK) == PCIE_CORE_PL_CONF_SPEED_5G)
- 
- #define RC_REGION_0_ADDR_TRANS_H		0x00000000
- #define RC_REGION_0_ADDR_TRANS_L		0x00000000
 -- 
-2.54.0
+2.43.0
 
 
 _______________________________________________
