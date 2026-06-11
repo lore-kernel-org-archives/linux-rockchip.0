@@ -4,62 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 697A1CD98CE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 15:32:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 971DFCD98CE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 15:36:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
-	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Gq+u3dukSNDDCwnO+tj37Lg/tUZbveRklugZGvOMkw=; b=F2oeKHnyPH+ZzZ
-	JKzyY6M3NyZMQTs7iNZ/ZkoJFkYYWTbmtse3Juwq0H4B5TB8ZbUX9243gFMY4R5tFYg91VYHnFIJ4
-	rKw3tgyKt5BczV+G5J6cnicQA24eyYn+SlTtdDT+asRb1VxAu2X6SX5RFfoVLkzZxllrn6KSTGcCd
-	8xSV3Qg1aHBMa8eg7Yvcg+bgNa4zNt9nKZxHSXHh+eIQ1YLpHCRRk0ZANTo3SXX61rf6ZtHYZaJFH
-	tp4eYwp2L+2VitVCcAcCRhGbvKDo1hNA5NZa1n8cWXbsotm3tROa4BiXYHqikS6UnnHztyGOaL8n7
-	SMgDcKEbb/I0u2UaEOPg==;
+	List-Owner; bh=441Xzqo+pGwn7cC/b3YV+wDE1NZ1pfyr4bdAos4Ra3I=; b=TyJUA2hIPtPBfv
+	T4NDADoPIzFyLwFR9MYB5Emp2/+ug55LcUj3d3q5Jrhie33rBcio3H6S22U+vrlCgbjMaQPS6kiy2
+	TCH+DvfNWP0PdhvFchR4CndnxoO4M1R6AtsHGjUEAKY2XuL9PFTWsW3AzJGZz2XFG+nEQS+m8Ut4y
+	SV/TkRfr1INAEaCaej3vmseLEq0AO0VZVTTFMo5dnCzB+BLm7XNs0/QMoHbKkGgHzU/gPFYWkYfbA
+	aED28p+FqtCFqRXQZmuPfW8ENSJYdyIBYwyVAQMNsll4/aYRz4Dnh9wO4TCY4kEsKlrccWieXr1f4
+	32qyjCDZ0/ONvOlf0E4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXhOU-00000009gZB-0dGi;
-	Thu, 11 Jun 2026 15:32:34 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wXhRn-00000009gwm-0VDf;
+	Thu, 11 Jun 2026 15:35:59 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXhOR-00000009gYx-49iQ;
-	Thu, 11 Jun 2026 15:32:32 +0000
+	id 1wXhRm-00000009gw2-1tAO;
+	Thu, 11 Jun 2026 15:35:58 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3987643EFE;
-	Thu, 11 Jun 2026 15:32:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 909911F00898;
-	Thu, 11 Jun 2026 15:32:30 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E238E600AF;
+	Thu, 11 Jun 2026 15:35:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 639191F00898;
+	Thu, 11 Jun 2026 15:35:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781191951;
-	bh=U4b25Ho+ItGseHhBRS5Gh6L3AIi5GEWNlEQHnamaQOA=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc;
-	b=E6JjFmTK8d6ee2miRza2BirHt4M4zPh9No880YNmvw71uiXJBxvX+x0l9rXMttYiC
-	 prAz09+HQg9HHMF5DCr1VpHUBmIJ4Ecr/zs6elMSjCJVDdYOb5N5SyKiXVcvwNSkNm
-	 7Fz12vNMMbZCIUaIZqmqK0ni+LILRQ7KF/BsTAz51C7DXbOCkyrTfPy+e5bnlTZMeu
-	 KLKRp7XIOakTjjiSS7LVV8z2jl5vjHhQV8bSM3ZPasaNtr/y3NJju+bFEULpcIHgvR
-	 S2C4+Tw84D0+G76skiHhglYVs0le53rQmRNjUfa4rdvl2M0kcB0pZzRyqwh4+yjVyj
-	 n1JE2r2MJnESg==
-Message-ID: <e6d0f078ffe3425dfbcd36a42ba9053a@kernel.org>
-Date: Thu, 11 Jun 2026 15:32:27 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
-Subject: Re: [PATCH v7 24/30] drm/vc4: hdmi: Use common TMDS char rate
- constants
-In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-24-445eb54ee1ed@collabora.com>
-References: <20260602-dw-hdmi-qp-scramb-v7-24-445eb54ee1ed@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, "Andrzej
- Hajda" <andrzej.hajda@intel.com>, "Andy Yan" <andy.yan@rock-chips.com>, "Daniel
- Stone" <daniels@collabora.com>, "Dave Stevenson" <dave.stevenson@raspberrypi.com>, "David
- Airlie" <airlied@gmail.com>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jernej
- Skrabec" <jernej.skrabec@gmail.com>, "Jonas Karlman" <jonas@kwiboo.se>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- =?utf-8?b?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Raspberry
- Pi Kernel Maintenance" <kernel-list@raspberrypi.com>, "Robert Foss" <rfoss@kernel.org>, "Sandy
- Huang" <hjc@rock-chips.com>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
- Zimmermann" <tzimmermann@suse.de>
+	s=k20260515; t=1781192157;
+	bh=lTh3gak2OlqNapbhLUv8xX/8vtksD36ETk2Ye1RapUg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=EBoJhAcmgzBjRcX8N4qApsGdnmzn/aIvaeCzfI0z2lvhr7IJZn+2kl6knENc8Gk5g
+	 Hay9dBH72lbf6Zjx9VyAqPddfY0PsYW6nk2DcqVa7jIwOcY4pdZHQHfDnfYKFrbqeW
+	 vB/6cV4hNiQKLjVMfZURiasdSjFJXxii00M3lNkgi1yZNjmDZVemhBI3MMKGD/Q32p
+	 4tfSacB4WKBxr1zufxrxQwZSWseSp791FWqEVqgO+oJGDRd9YvDxLhk/aZFaOmk3bA
+	 u1wAOMZlSBV5kbtjAk9mE/RFZWP1tZCQnLnsVHscjJRWivP/ZF/BtgeMtYx3JnihPG
+	 qic5kYF1iXWNg==
+From: Vinod Koul <vkoul@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: neil.armstrong@linaro.org, jonas@kwiboo.se, 
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel test robot <lkp@intel.com>
+In-Reply-To: <20260520102859.1357411-1-heiko@sntech.de>
+References: <20260520102859.1357411-1-heiko@sntech.de>
+Subject: Re: [PATCH] phy: rockchip: inno-usb2: Add missing clkout_ctl_phy
+ kerneldoc
+Message-Id: <178119215503.568088.10282212626375144435.b4-ty@kernel.org>
+Date: Thu, 11 Jun 2026 21:05:55 +0530
+MIME-Version: 1.0
+X-Mailer: b4 0.13.0
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,25 +66,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2 Jun 2026 01:44:24 +0300, Cristian Ciocaltea wrote:
-> Replace HDMI_14_MAX_TMDS_CLK defined locally with
-> HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ provided by linux/hdmi.h.  Note this
-> incorrectly referenced HDMI 1.4, as the 340 MHz maximum TMDS character
-> rate was actually introduced in HDMI 1.3.
+
+On Wed, 20 May 2026 12:28:59 +0200, Heiko Stuebner wrote:
+> Add the missing documentation for the newly added clkout_ctl_phy field.
 > 
 > 
-> [ ... ]
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
+Applied, thanks!
 
-Thanks!
-Maxime
+[1/1] phy: rockchip: inno-usb2: Add missing clkout_ctl_phy kerneldoc
+      commit: 2ace2e949979b82f82f12dd76d7c5a6145246ca3
+
+Best regards,
+-- 
+~Vinod
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
