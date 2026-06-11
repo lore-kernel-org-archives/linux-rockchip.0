@@ -4,138 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F338BCD98C6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 06:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEC2DCD98CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 07:36:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=b6Hgq0ANxoU0yf/cMhrGolb/jQG3Hyp1I++6S+zwLAw=; b=U/sVeqACz+L80VgZbZlkWz0/r2
-	BzWgg9wVHdFWMBrfci2k0LqTIZUlFhVzDJVi7OKJeNL7EFLnC0smxv3BkIsOO38EGug+7IMzBFsZs
-	tHy6w7zvjm4s1GSyZlJeEdWKRtVLD0CPXcivH0kVoUhC4W4OrW68x7BuJsE5eDSU0D1TdsOQ8ODV+
-	0guxdFDAtN6kb30Bk67QDm+CuIgEbi8uReK4KVzL134kfLnd2ViZZcrw7TgWBEL71jUWTidJ86sde
-	dNmhRA2RLX3x+zk3M8aggkfuBvl6cFVfSeYrMOHBSrk9/vYE0NNJ5WLzFuYsZaiaSxUX51pSerVQh
-	o4OlSEgw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7XuD+iKQ/hykJ9NF7/TzlL+s6GGCjDtsCBpkXSQZ/Cs=; b=c3EMtl+oInlyqQ
+	kqyzdXnQxxDz06zW/oR6NFIaH3qDs+IPVE8M4/DZ6DwqAMDiu78i7VwKFLUvedsDzT08+BFmMGa7f
+	KHgVBtasp4UCD/MRwg259IXKI/EPwwmaIqaoQZaT8B/m6WSXnesFhiix9P8K6bHGOqY2vf3W77O1D
+	UBihLWcK5hcXVOxKIQ3z8Qqro3p9b4psvjBbXAn5JSp4KoE/w860ShlXTZG4vX71b2t9mPIx7cRrE
+	BsBa9x8GgdFH2jTPrS06EE54AieWsbMl8igVrTl2y+kKhou43WfSwAiGqaN5dzzHxJY4BDtXDdFzc
+	iE1n9ATvBnjETSZsKybw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXYhL-00000008nJP-2g7p;
-	Thu, 11 Jun 2026 06:15:27 +0000
-Received: from mail-australiaeastazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c40d::1] helo=SY8PR01CU002.outbound.protection.outlook.com)
+	id 1wXZxH-00000008syA-255P;
+	Thu, 11 Jun 2026 07:35:59 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXYhJ-00000008nIO-2D7z
+	id 1wXZxE-00000008sxJ-2cgJ
 	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Jun 2026 06:15:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=w47XS4HSJ1jmbfMzzl7IYwZo7mzprKD4avHdibFv0BWiJgwZO3o34jSJMVZcuD4aKmCixdTi079QavyO3W952RmS9HmAY8Tizm3qCwsoX5zetZ7b6nDyFTOLWKzZ+jEzh1bE5AcTl+sG3ZnXE5L+Zi46dfBtUfLbYXFoVPv7pFHUwgjhyyn+Rv5YMA/rUFzGNDM1qtZA0y88ZA/CVNI8VOyfUeapxm7go66H2ptoXVYSQm20xxG+K/YgGNVw7pFQthmAiab/LdC0C+FbbygXrqPMeLKdRv6NuXtv3ummKATed0ip1ZpTR5ODoWyoFNYeO6yZ2dMBpMNx/vmYoCx6Xg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gi5KnmZcFPb7OLvmV6VyDVj7eemRIT+ZyY2EnvLU5Ns=;
- b=OqvQ2YvLJvCIkEosj5fpcWd4FF/BL8RozYeSE8HOvmNOz7em9sBesWBWluInDx4/6JMlSQZu6C2DBUeN5v2iawiRnu7TIi3czQh1xjhGzsuySFSQ0IkQMEdTorOfRzlhRz2ENO2YOjYmoSXe0atnlkEiZTBihgr1dDWtvPcrH1WH9XqR7vsBCZHeK0icQXvi8Xwxy1XZ1W+Tds/f+Bh8DA5+odSUKrFJjzK9vbq/bAvtULQw3+tet8UFxKn0/SftGMk9aWPTmLPOoqtXYyQyslHLZvkmrYIWovOmZ2ffWaz62yxlw2nm1P3TEZDhQDC5Y3YA7AHc4lEyWZv+se2RsA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=symple.nz; dmarc=pass action=none header.from=symple.nz;
- dkim=pass header.d=symple.nz; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=symple.nz;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gi5KnmZcFPb7OLvmV6VyDVj7eemRIT+ZyY2EnvLU5Ns=;
- b=Q7AVxd3ZEJJOcR5x4IMm+OCNBs1b5rqN4gZpqj09GufnGHoE95k6ZIUjFBKoPih9c+ebgaqE7lBTwCeCzE0gwCso2O2LWb5C8Zi16dnJREd/wuB+TaDVzX2v+bAdffJ2lowXbUeolBp1L8DCkIjsfsTkMDhcNLB5F3vwFOqm1ZLxBZPivSc+wdYmFS4qcx3DXbRjf1AYnMEGUPd0+T1/GR/ZLB4bacEbJSY7rVtgM4OAPmop5KZSdEuoY/ZQczaJguNSF9oh3BNZb+CUzlRoyNf9lcCJGbXg4gcGC7asEH0bjAJq/v8V87Ywl4ZrFWtPtaI0C+VVVu14DTxQp7QWrg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=symple.nz;
-Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:b2::11)
- by ME3P282MB1587.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:ab::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.13; Thu, 11 Jun
- 2026 06:15:08 +0000
-Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
- ([fe80::4619:bdb0:3293:3834]) by ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
- ([fe80::4619:bdb0:3293:3834%5]) with mapi id 15.21.0113.011; Thu, 11 Jun 2026
- 06:15:07 +0000
-Message-ID: <1f178828-2cba-4120-bc6d-bb3be7b24073@symple.nz>
-Date: Thu, 11 Jun 2026 18:15:02 +1200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [BUG] rkvdec-vdpu383-h264: wrong pixels at horizontal de-blocking
- edges y=4 and y=12
-To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Detlev Casanova <detlev.casanova@collabora.com>
-References: <52a01f1f-5b36-429b-96cf-f1a0a1c8f5e4@symple.nz>
- <5939C396-3A70-458F-8E6B-A55319929564@gmail.com>
- <4b3a9f32-807a-4b9e-8df2-d22f872d288e@symple.nz>
- <2CB1844A-3DB7-4973-98E0-0C141DD38B45@gmail.com>
-Content-Language: en-NZ
-From: Simon Wright <simon@symple.nz>
-In-Reply-To: <2CB1844A-3DB7-4973-98E0-0C141DD38B45@gmail.com>
-X-ClientProxiedBy: AK1P299CA0016.NZLP299.PROD.OUTLOOK.COM
- (2603:10c6:108:17::27) To ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
- (2603:10c6:220:b2::11)
+	Thu, 11 Jun 2026 07:35:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1781163357; x=1812699357;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=eUTaZdcVlZ7mbhJNGVeR+srWl7fhfY1SzOK+RRIWYq0=;
+  b=gzaYCFD37NuMngSWFs8oLXPahJ6tYbfK/QNvJfMTc92eXhKtPgG/o52/
+   k1aMO2qbWUtL1i8r+g6aD2qP+7KZgHVxuu6phSR3LOXoYSdbIl/ifwhE+
+   4Jz5pqYlDn/2PQmBEw7Myq/Gr/vUosIrITDuc/kphwQfTlYtXfMf9RESt
+   CmEH5GB0TCjteJzP+5Im4GDGrU3KQXHZTReeLpyuOEw0hTIy6cr7/VgTJ
+   nISW43xKKdETfZsPEUeOFyNiT7Eo3TAy6H0FzEbFVQNmjgjNUzUda5vcv
+   nEMHbo5gtDn3oNBIRhb7nyYyyC8+APIANFlfKc3NLRvmo+3M5bqmx8pRx
+   g==;
+X-CSE-ConnectionGUID: 0v6rqmEySmmRYQ/Ikcr5vw==
+X-CSE-MsgGUID: 3yBOCzQMSTO4WqaFowbyKQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11813"; a="99393280"
+X-IronPort-AV: E=Sophos;i="6.24,198,1774335600"; 
+   d="scan'208";a="99393280"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jun 2026 00:35:56 -0700
+X-CSE-ConnectionGUID: gc9XZ82lQ06NICssykO0vQ==
+X-CSE-MsgGUID: mjaJF0ZNR6i0VLMXbF0kdg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,198,1774335600"; 
+   d="scan'208";a="276595139"
+Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.244.123])
+  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jun 2026 00:35:53 -0700
+Date: Thu, 11 Jun 2026 10:35:49 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+	dlechner@baylibre.com, jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V11 3/9] iio: imu: inv_icm42607: Add inv_icm42607 Core
+ Driver
+Message-ID: <aiplVZRI-0TCDnjL@ashevche-desk.local>
+References: <20260610175455.19006-1-macroalpha82@gmail.com>
+ <20260610175455.19006-4-macroalpha82@gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: ME3P282MB2196:EE_|ME3P282MB1587:EE_
-X-MS-Office365-Filtering-Correlation-Id: eccf992c-4bc6-44e8-cf58-08dec780c78a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|23010399003|376014|366016|4143699003|18002099003|22082099003|56012099006;
-X-Microsoft-Antispam-Message-Info: VSfx+C6f35fyB23iuFa1iXMBMTxB5Kgbr1c/8aaM3PODgD1G+6un0ZgE8mwc/aJWk+UXCohDKNUVIh2XMvklcpyKMS4tnxz4vEurv2IfL39r9PvS6yNuSn6uNhhd7ePfL7WirecbaeB99bpaikHLD77DTXYqg8RAKJSWv7AybfSrUn4r6fdQobV+JfIXL/18mJ/meTsRR9Wz9AOmIDH+jNNhjlimR1rysdQoFb7ARUsVN4cNxJbpwB6OcDJM16ns5EdOSPTA7o1e7WcCknaoYkea07QdNVVIyH8woe97J8zLoFKQBK9uJ9LEkeWDEd3OXjDRwDA68QJTM4cs6xPMt6lz7XLSdtBr8bn3m2TbeyB/FRDVKuzRmwU38zqZTHQf7/nOTrEVA70mdXdAr0fEQPeIesk2hHa7E204lanjcQDl8kTVUaZ0CCyHgnnheT0dHvyLdkf0p06QMsdOA7Cp0iaJI9Fj66spsP/PDtHM35J9s8ApuTJUMdj0eSKrTIYoPP6Dbxu3CzCPiSxPI5/HpcieaT3x5eet6/H9nt67COqE9TtMecmq6Ujmr15BgcrBer3dXrg+f2A/mY/7b6XwlcNSk+1Cr/+SB71q904IpcG4HtClGCuVwm/sF7pxkx2LODCKXyO7Rdv653dCUhJgWBYGfoKzVHdG+PF/gxKPjDtUao8eEYsDS0+ls/cyWJkkq77hBOSo0t4P+0m13FtyBw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(23010399003)(376014)(366016)(4143699003)(18002099003)(22082099003)(56012099006);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?R3gxUmdtVGZEK21vdTZWVEJKVGlhWWovUjBVcXZXYk9EU1IrYjR3bENiZXV0?=
- =?utf-8?B?bWZKek1palJGRGtwcW01d3lxbjBrL245NTFsNjNmM2ZxaVQvQmkxeWpmSlJR?=
- =?utf-8?B?RkFyeThLODZ0OHNuOFdMS1F2OEQybERNZEtkYS9vYlFVQmFuQVVCaGovMHVV?=
- =?utf-8?B?dkZGWjZndlFmdTN5d2w3ek1OUjBld2YzUHY1em9Dc3pNMWZLdE9SMnk0Mks3?=
- =?utf-8?B?dHFuNG5WWXpFdWVlSjlNam42RGtzNzBHbEd2aFVpWFVyRzNvSGJlVFhpbE9p?=
- =?utf-8?B?dFlsWUdwQXdTSlBmdEN0eFVjMmtpRnNNcUJIMTFJSmVpNERBVm5leVFtTSt3?=
- =?utf-8?B?azh1MURLblkyYmhxK0Y2UGdzRlFwbVVSL3VjRUVZaTBuZGt4YkxMSEpPMFEw?=
- =?utf-8?B?WjFRaEdhTTlZeHNIbWVqaHNQTEtnMW5oRUpraDRKMWxJclhOTHlVM1JNcXJn?=
- =?utf-8?B?eVE1K1ZyQ1ZwMGltalRXaDVrekljT3lvcjU0VlBQVVc0blNNaFBGL3R2akdh?=
- =?utf-8?B?N2M2WlA2bDNNSEdhakhobTIvWmNQSzRsY014Ullkem04RGVMbDkzOUlpOGgy?=
- =?utf-8?B?RkNZdmJKODAxQysvZkRiVlJLcU9DMm93cVlmWXVwek5zVGRBZXpMNEEyR2Rs?=
- =?utf-8?B?UEd5MmgwTjlGL0hxbXFNQXU4VC9wS1BJcWorc0hyeEtXOFRPSGRGUHU3QXNK?=
- =?utf-8?B?QTVrcXVSdEpONXJxWVlXcTUzWUVjM2VmazkxeFZXTHRNKzU1ek1oSG05YllT?=
- =?utf-8?B?M1lnTnF0TFdTMlFTMUR0TG1xdGxVV0wrZzUyUXlmK3F3VDJZODlzV214ejZt?=
- =?utf-8?B?MEYzc3NvMmhUbWErV1d4L0dUTzRRYVRTUHdpSDk4YmlIMThQN01WYmV3bzNs?=
- =?utf-8?B?bkJkOVczays2SlNycTJ6dWhTSlpCSXZyWU51K3BoSEtHYjNZeDFMWWFrTXo5?=
- =?utf-8?B?NGJNZGJKOUxxazY3K21qeEZkVlh3RlZTUkpTMDVNejVSOHZKQ2tYSVAzK2N6?=
- =?utf-8?B?dFdKVG9aclF0ZmR5bnZQcXMvMEVHejZwSUx5em1rWncwRDZnQVU4ZmNPWitl?=
- =?utf-8?B?cjNJbFZDVjhMSkhHMm1ZWlVEcDIyN1gxbzU5akp3cklrQkN4aWlhVHpZdlBT?=
- =?utf-8?B?bCtDT21adzRzRTZhN2R0dG0rYStSM2Q0am9CaGoxOEx5dCtVSjI1ODNMbkxY?=
- =?utf-8?B?SFd0ZXJZU29GaE4ySmY4SjY1Nnk4U2kzVzU2R2RuV2Eyc2NlOGZ0V3lEU0di?=
- =?utf-8?B?VmpGRnFqd2hPVjZhWmlkMnVXbnpSTW9BUDI3aUNIcUpWNU5vck1EMU0xOVcr?=
- =?utf-8?B?cVc5MTVtM1prZWFFVmxISGlkTVVBVHl2ejN5ZUR1dFdEME9jZDF6NFl0b0xG?=
- =?utf-8?B?N0VPTWZxRDhTc0JWZlhmejNaeHdCenVrdDd4M2RrOFBSN0F6aFZTb1VNQ1hy?=
- =?utf-8?B?eTVkelNZcGs5N1NkQVA2L1hXVGtwaVpob3puM3g3UFhxdXEzblRJUUY3aDJ5?=
- =?utf-8?B?YkJWV3doQ2Q1Q0FDSmxldDNtL2lna1dnLzRVdFJPNENIQ0xtMFFUQWZCSzgz?=
- =?utf-8?B?eVJXZWpVNTVVM0N6T3duenZyRnRVYVA1MkJ5aGlUM1dxVTFyQm82eXBqWmNN?=
- =?utf-8?B?WThDalJtd3ExdE5CczhrekF4ZlMzVVh3dUEyRW5Hb04zUkR1VEt4K2UrNnVD?=
- =?utf-8?B?eHBlMzBIL3M4Q0NpS2gyK0pNUlhTT1REYUpobTdDNzRjRHVkY2pQU0RzWlp0?=
- =?utf-8?B?Wm1mOUZvUUZzTWpneU9zZk1ndHJRSStGdkJXdHZ4TGZpcnRoTzd4aXNTaW44?=
- =?utf-8?B?Vy9WSlpEcElDcm9EWEk2UkNzdFMxdjJwTEdRMFQ4TzNabDQwTERWakdkaG03?=
- =?utf-8?B?bUt3UTJGVkxkaTBGN1BBdXdQVUNXV2pBaG1OeXBTLzV4OTh2SVNMQTRja0NS?=
- =?utf-8?B?TXVjckNrNlRDVzdrcXBaWVg4T3kyV0NuN0FUSVlVa3pTRmtNeDN3VERraGdU?=
- =?utf-8?B?aUcyZWFXN3ZTcDdLRUxKSG5EVjYxTnFQUUw4MmZvYXd2YjcvazFUVFFscnZE?=
- =?utf-8?B?QWw3L3poU2VhclJnUDNlbTQweGlLMjh4cVFFN3I1UVdqVkR6NndNTHpIRmNy?=
- =?utf-8?B?b1VaVG02YzlEVFFYZFpnWWg3dVlkWEdDZVNEOHhlNEZlSjR3dm9yeGNhd1Bw?=
- =?utf-8?B?Z1NwbzVoVXFDc1M4L1BZbE15eFhxKyt5WkVVNStaNmpSajJYWWNSQnhrV2Z0?=
- =?utf-8?B?K1ZlTW4xYzBrNFFETmxLNHBkOFVGeUo1TnJ4a1ZueUQ2VGMrNUlQZnBESFls?=
- =?utf-8?Q?1pLT40wqD7O5mVieSO?=
-X-OriginatorOrg: symple.nz
-X-MS-Exchange-CrossTenant-Network-Message-Id: eccf992c-4bc6-44e8-cf58-08dec780c78a
-X-MS-Exchange-CrossTenant-AuthSource: ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jun 2026 06:15:07.3439
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 9531f271-068a-4210-b471-bd8da91491c5
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: u5HjKTsxq4evv3ZOXiZI/7NVxGbwOnMSKVZu+InSGmgyEFZyLWMZfbb8iCJ4F4Jf
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: ME3P282MB1587
+Content-Disposition: inline
+In-Reply-To: <20260610175455.19006-4-macroalpha82@gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260610_231525_617239_59A0A476 
-X-CRM114-Status: UNSURE (   9.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260611_003556_717986_DDA7E8DE 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,43 +92,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Piotr,
+On Wed, Jun 10, 2026 at 12:54:47PM -0500, Chris Morgan wrote:
 
-Short version: the in-tree port didn't actually have the warmup running (it needs a
-probe-time buffer alloc + a pm_runtime_resume hook, not just the decode code). Rather
-than pick that apart, here's a clean patch that wires it properly - and I've now
-validated it on hardware.
+> Add the core component of a new inv_icm42607 driver. This includes
+> a few setup functions and the full register definition in the
+> header file.
 
-The patch is self-contained and needs no devicetree change (mainline already maps the
-"link" register bank it uses); git apply-clean on 7.0 and 7.1-rc7:
+...
 
-    https://github.com/SympleNZ/rkvdec-vdpu383-h264-bug/tree/master/fix
+>  2 files changed, 531 insertions(+)
+>  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
+>  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
 
-    git apply fix/0001-media-rkvdec-prime-VDPU383-deblock-warmup-rk3576.patch
+I'm not sure this is correct split by files. These files are not:
+- being build
+- being mentioned in MAINTAINERS
 
-It adds one file (rkvdec-rk3576-workaround.c) plus a probe + pm_runtime_resume hook,
-scoped to the RK3576/VDPU383 variant. Confirm it's actually active before judging it:
+...
 
-    dmesg | grep -i "deblock-priming"
-    # expect: "RK3576 H.264 deblock-priming workaround enabled"
+> +#ifndef INV_ICM42607_H_
+> +#define INV_ICM42607_H_
+> +
+> +#include <linux/bits.h>
+> +#include <linux/iio/iio.h>
+> +#include <linux/mutex.h>
 
-I validated it on the two RK3576 boards here: on a NanoPi R76S the warmup takes BBB
-from ~18% of decodes corrupt to 0/40; on an ArmSoM Sige5 the unpatched HW decode is
-100% corrupt, and the corruption looks exactly like the photo you shared. Before/after
-captures:
+mutex_types.h ?
 
-    https://github.com/SympleNZ/rkvdec-vdpu383-h264-bug#what-it-looks-like
+> +#include <linux/regmap.h>
+> +#include <linux/types.h>
 
-Your board spread (nanopi M5/R76S, rock4d 20-40%) and ours (R76S 18%, Sige5 100%) are the
-same timing-marginal race the priming settles, so I'd expect it to clear on your
-boards once it's firing.
+Do you need forward declaration for regulator data type?
 
-If you get it built, a quick "builds + the line shows up", and a Tested-by across your
-devices, would strengthen this for upstream - multi-board confirmation on a hardware
-workaround is exactly what the maintainers want.
+...
 
-Regards,
-Simon
+> +#define INV_ICM42607_POWER_UP_TIME_US			100000
+
+100 * USEC_PER_MSEC (will require time.h)?
+
+...
+
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+
++ bitfields.h
+
+> +#include <linux/delay.h>
+> +#include <linux/dev_printk.h>
+
++ device/devres.h
++ err.h
+
+> +#include <linux/iio/iio.h>
+> +#include <linux/module.h>
+> +#include <linux/mutex.h>
+> +#include <linux/regmap.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/time.h>
+
+Also check if you need types.h.
+
+...
+
+> +	fsleep(INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC);
+> +
+> +	/*
+> +	 * No polling interval specified in datasheet, so use reset time as
+> +	 * polling interval and 10x reset time as timeout period.
+> +	 */
+> +	ret = regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
+> +				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
+> +				       (INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC),
+> +				       (INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC * 10));
+
+Besides too many parentheses, this can be switched to regular patter of "num * what".
+Also, TBH, the plain values would be better here
+
+	fsleep(1 * USEC_PER_MSEC);
+
+	/*
+	 * No polling interval specified in datasheet, so use reset time as
+	 * polling interval and 10x reset time as timeout period.
+	 */
+	ret = regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
+				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
+				       1 * USEC_PER_MSEC, 10 * USEC_PER_MSEC);
+
+And in the similar way in other fsleep() / _read_poll_timeout() cases.
+
+> +	if (ret)
+> +		return dev_err_probe(dev, ret,
+> +				     "reset error, reset done bit not set\n");
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
