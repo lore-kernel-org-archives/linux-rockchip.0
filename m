@@ -4,78 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEC2DCD98CC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 07:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AA5DCD8CB9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 07:40:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7XuD+iKQ/hykJ9NF7/TzlL+s6GGCjDtsCBpkXSQZ/Cs=; b=c3EMtl+oInlyqQ
-	kqyzdXnQxxDz06zW/oR6NFIaH3qDs+IPVE8M4/DZ6DwqAMDiu78i7VwKFLUvedsDzT08+BFmMGa7f
-	KHgVBtasp4UCD/MRwg259IXKI/EPwwmaIqaoQZaT8B/m6WSXnesFhiix9P8K6bHGOqY2vf3W77O1D
-	UBihLWcK5hcXVOxKIQ3z8Qqro3p9b4psvjBbXAn5JSp4KoE/w860ShlXTZG4vX71b2t9mPIx7cRrE
-	BsBa9x8GgdFH2jTPrS06EE54AieWsbMl8igVrTl2y+kKhou43WfSwAiGqaN5dzzHxJY4BDtXDdFzc
-	iE1n9ATvBnjETSZsKybw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OkHqPwS0JzRvSKfhNZBhkfhqEb4AfF7skJ1fdAzSI/U=; b=ZRqQMhRrovEGR8
+	986sKZsqDf2CLS7acnF7HXLQp7+nFnR2Ly3ynikMQnGEYqPAOFcP7YSA/2RLWPkALjUapgG6errP/
+	FhoNTvJI18OnDbQDkYYQIIYL1LHCteifFt7BV9WOWnE3pyKIFraTzRH70kZugyO6kgZ1sNAMEQMpD
+	ylOZCV6kJskeSM7BrQjaLXGlUDkrDFOU5+i7A9vuxsvTT28pSzfxSh6WbXGgQeIB4np0r7xVgjucU
+	/la51MNKI2Akc84t9GDjdxoy7dz4Tr4qs02WPiq2G+B7CSAI8SQBrQeAl0VCbXgX7Qv2q5P22Z38X
+	PaiNf8IYKSgN0EGA/0yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXZxH-00000008syA-255P;
-	Thu, 11 Jun 2026 07:35:59 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1wXa24-00000008tKL-2HhX;
+	Thu, 11 Jun 2026 07:40:56 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXZxE-00000008sxJ-2cgJ
+	id 1wXa22-00000008tJ1-1MeZ
 	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Jun 2026 07:35:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781163357; x=1812699357;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=eUTaZdcVlZ7mbhJNGVeR+srWl7fhfY1SzOK+RRIWYq0=;
-  b=gzaYCFD37NuMngSWFs8oLXPahJ6tYbfK/QNvJfMTc92eXhKtPgG/o52/
-   k1aMO2qbWUtL1i8r+g6aD2qP+7KZgHVxuu6phSR3LOXoYSdbIl/ifwhE+
-   4Jz5pqYlDn/2PQmBEw7Myq/Gr/vUosIrITDuc/kphwQfTlYtXfMf9RESt
-   CmEH5GB0TCjteJzP+5Im4GDGrU3KQXHZTReeLpyuOEw0hTIy6cr7/VgTJ
-   nISW43xKKdETfZsPEUeOFyNiT7Eo3TAy6H0FzEbFVQNmjgjNUzUda5vcv
-   nEMHbo5gtDn3oNBIRhb7nyYyyC8+APIANFlfKc3NLRvmo+3M5bqmx8pRx
-   g==;
-X-CSE-ConnectionGUID: 0v6rqmEySmmRYQ/Ikcr5vw==
-X-CSE-MsgGUID: 3yBOCzQMSTO4WqaFowbyKQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11813"; a="99393280"
-X-IronPort-AV: E=Sophos;i="6.24,198,1774335600"; 
-   d="scan'208";a="99393280"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jun 2026 00:35:56 -0700
-X-CSE-ConnectionGUID: gc9XZ82lQ06NICssykO0vQ==
-X-CSE-MsgGUID: mjaJF0ZNR6i0VLMXbF0kdg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,198,1774335600"; 
-   d="scan'208";a="276595139"
-Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.244.123])
-  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Jun 2026 00:35:53 -0700
-Date: Thu, 11 Jun 2026 10:35:49 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
-	dlechner@baylibre.com, jic23@kernel.org,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V11 3/9] iio: imu: inv_icm42607: Add inv_icm42607 Core
- Driver
-Message-ID: <aiplVZRI-0TCDnjL@ashevche-desk.local>
-References: <20260610175455.19006-1-macroalpha82@gmail.com>
- <20260610175455.19006-4-macroalpha82@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260610175455.19006-4-macroalpha82@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+	Thu, 11 Jun 2026 07:40:55 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-691c5776f95so1612881a12.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 11 Jun 2026 00:40:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781163652; x=1781768452; darn=lists.infradead.org;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Ac4jiWO7qGzODHYdUaXq5mQJG2QTT2zWwIpoN1/P2z4=;
+        b=LGmnBXJHz8Hqzck7p0+eg2SPu7qs0U08eW2gAj080WwvPuxNdgjDozD7MmotjvsuaQ
+         D1tNc/7mnXCnaWyHSaAQrtYAUuYiglBUGIIU+F7uFEXDA+yL6tbwaso55QPrZ+MD0sb9
+         sk5JS2nzPD5+12xKQrxAN5qAkcSiO5CjNQY7dEvERsjCylM9M9RIFyCnWl2sJXiL06/p
+         9teliZFs9qZRD3xT31nvKM3FU9eOE2/BfzmshtfuhrOFIpDs1nJ5wRseTYho4tV4tMTX
+         JYxJEcF/C59+NlZxv4x2s6vmeCWZQSvZMHqn34zz0GP4JzTitbbq6n9vKCACB8zb7kiA
+         YVqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781163652; x=1781768452;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:x-gm-gg:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Ac4jiWO7qGzODHYdUaXq5mQJG2QTT2zWwIpoN1/P2z4=;
+        b=syWIIApCvvwehcmdiI139r8Mq+i+753ERrZFINu848uAHIpgc9tITWuUo4VMGwB3VA
+         IwsnerILQ2ZxeF61swWCNzkAJuvnS9ejoNraFJ/vIoMBjy2pZkmeBgmJMZgLx2SVQ1wC
+         CR3mDmqNzGVEP/1Yl0YaFqYEyZJvhK/TCLH/WjdasuiE1+MoXuhhlDAZ2/CYPbVyvtVU
+         6jG7PTXLogcd+vjW/BehITdXSEV3XD9qkEzjmZiANBUYQMRZBuZ/pWEJGlwQMYDyytkI
+         oC976Xr6utQcJvW9mNe9wt8OdveQdAmxZIzTN5FEJuQvNB9Uu8b6vpCxwFH+h9NmIOCh
+         7O8w==
+X-Forwarded-Encrypted: i=1; AFNElJ9wY8KQXLoogC2WhXCVYEOuHxSaWt2AJPtgohRt8Ban4LQZhKZ+eRd61KMhb5S2Xxkrng7m1L7stVvsJcezjw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwEz4PC5L3tsxV7feXj9HgUvRyH80DgfhusZQx7gw3tlOgHuEn4
+	mEJ/DdJsRSqQdRp+mImvj7CkK/EAad3xDjh248EUb7j7co7oWoaBkfdC
+X-Gm-Gg: Acq92OHW8cjhXCLdxlOT0xhpVqaaFKF7ocszuV/1tDqdzRhZ/WoPPcgWVqNEOHDqV9O
+	kBFVAGmz8dLLsKlfF1wY/Whnm9MMGDPpM+tXdA27rpv0eLZS5KhvxbKWuoIYOUm0LMMyWLkofuI
+	Z2/XTvjTZW83PgbA4fEP3VJVssV4+E6TQ/USqJFcOEq0yzXhyw1hse1PK/ntXz45lm2TpeVpqgA
+	yJWU7ekrpvzw52+UFvAHzeKvtQEzuzLMxEzEn5RvMHB4LgIF7mOSoF0vVP0c1mXeJsf7qrMjttU
+	Eo3vS6znV6KPeXM4cRGaVw4T9rbYzs7QgdcKwcia4k7ATZdsWbla+wJU7IUlHtXwmGF6CEkzGzK
+	8f/x70f9tQ+//w5LJdm7vyVOhawMWx5cy9MtoebUu6Wyhv4HpWrdD2aa39ALwVHVqVanaB2G1cL
+	q7HThxxNUTUptswyMwLN6CTl7KG8Qgp1i0NuAamPgNj1tQpYdnHhqRP9wFXSIg4/O9LW2fcdqVp
+	t45Y/Pv7pv0VRvzOb+0
+X-Received: by 2002:a17:907:9726:b0:bd5:1482:930a with SMTP id a640c23a62f3a-bfc87bfca4emr70689766b.39.1781163652094;
+        Thu, 11 Jun 2026 00:40:52 -0700 (PDT)
+Received: from smtpclient.apple (89-66-237-154.dynamic.play.pl. [89.66.237.154])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-bfcb0f14315sm23828666b.10.2026.06.11.00.40.51
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Jun 2026 00:40:51 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.600.51.1.1\))
+Subject: Re: [BUG] rkvdec-vdpu383-h264: wrong pixels at horizontal de-blocking
+ edges y=4 and y=12
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <1f178828-2cba-4120-bc6d-bb3be7b24073@symple.nz>
+Date: Thu, 11 Jun 2026 09:40:40 +0200
+Cc: linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ Detlev Casanova <detlev.casanova@collabora.com>
+Message-Id: <8673B89B-0F1F-400D-BD0B-31FC1647167A@gmail.com>
+References: <52a01f1f-5b36-429b-96cf-f1a0a1c8f5e4@symple.nz>
+ <5939C396-3A70-458F-8E6B-A55319929564@gmail.com>
+ <4b3a9f32-807a-4b9e-8df2-d22f872d288e@symple.nz>
+ <2CB1844A-3DB7-4973-98E0-0C141DD38B45@gmail.com>
+ <1f178828-2cba-4120-bc6d-bb3be7b24073@symple.nz>
+To: Simon Wright <simon@symple.nz>
+X-Mailer: Apple Mail (2.3864.600.51.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260611_003556_717986_DDA7E8DE 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20260611_004054_381869_DFEBCDB4 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,109 +101,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 10, 2026 at 12:54:47PM -0500, Chris Morgan wrote:
-
-> Add the core component of a new inv_icm42607 driver. This includes
-> a few setup functions and the full register definition in the
-> header file.
-
-...
-
->  2 files changed, 531 insertions(+)
->  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
->  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-
-I'm not sure this is correct split by files. These files are not:
-- being build
-- being mentioned in MAINTAINERS
-
-...
-
-> +#ifndef INV_ICM42607_H_
-> +#define INV_ICM42607_H_
-> +
-> +#include <linux/bits.h>
-> +#include <linux/iio/iio.h>
-> +#include <linux/mutex.h>
-
-mutex_types.h ?
-
-> +#include <linux/regmap.h>
-> +#include <linux/types.h>
-
-Do you need forward declaration for regulator data type?
-
-...
-
-> +#define INV_ICM42607_POWER_UP_TIME_US			100000
-
-100 * USEC_PER_MSEC (will require time.h)?
-
-...
-
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-
-+ bitfields.h
-
-> +#include <linux/delay.h>
-> +#include <linux/dev_printk.h>
-
-+ device/devres.h
-+ err.h
-
-> +#include <linux/iio/iio.h>
-> +#include <linux/module.h>
-> +#include <linux/mutex.h>
-> +#include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
-> +#include <linux/time.h>
-
-Also check if you need types.h.
-
-...
-
-> +	fsleep(INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC);
-> +
-> +	/*
-> +	 * No polling interval specified in datasheet, so use reset time as
-> +	 * polling interval and 10x reset time as timeout period.
-> +	 */
-> +	ret = regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
-> +				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
-> +				       (INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC),
-> +				       (INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC * 10));
-
-Besides too many parentheses, this can be switched to regular patter of "num * what".
-Also, TBH, the plain values would be better here
-
-	fsleep(1 * USEC_PER_MSEC);
-
-	/*
-	 * No polling interval specified in datasheet, so use reset time as
-	 * polling interval and 10x reset time as timeout period.
-	 */
-	ret = regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
-				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
-				       1 * USEC_PER_MSEC, 10 * USEC_PER_MSEC);
-
-And in the similar way in other fsleep() / _read_poll_timeout() cases.
-
-> +	if (ret)
-> +		return dev_err_probe(dev, ret,
-> +				     "reset error, reset done bit not set\n");
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFNpbW9uIFdyaWdodCA8c2ltb25Ac3ltcGxl
+Lm56PiB3IGRuaXUgMTEgY3plIDIwMjYsIG8gZ29kei4gMDg6MTU6Cj4gCj4gSGkgUGlvdHIsCj4g
+Cj4gU2hvcnQgdmVyc2lvbjogdGhlIGluLXRyZWUgcG9ydCBkaWRuJ3QgYWN0dWFsbHkgaGF2ZSB0
+aGUgd2FybXVwIHJ1bm5pbmcgKGl0IG5lZWRzIGEKPiBwcm9iZS10aW1lIGJ1ZmZlciBhbGxvYyAr
+IGEgcG1fcnVudGltZV9yZXN1bWUgaG9vaywgbm90IGp1c3QgdGhlIGRlY29kZSBjb2RlKS4gUmF0
+aGVyCj4gdGhhbiBwaWNrIHRoYXQgYXBhcnQsIGhlcmUncyBhIGNsZWFuIHBhdGNoIHRoYXQgd2ly
+ZXMgaXQgcHJvcGVybHkgLSBhbmQgSSd2ZSBub3cKPiB2YWxpZGF0ZWQgaXQgb24gaGFyZHdhcmUu
+CgpIYXBweSB0byBoZWFyIHRoYXQuCihJIHdhcyBhZnJhaWQgeW91ciBleGNlbGxlbnQgd29yayB3
+aWxsIG5vdCBzb2x2ZSBteSBpc3N1ZeKApikKCj4gCj4gVGhlIHBhdGNoIGlzIHNlbGYtY29udGFp
+bmVkIGFuZCBuZWVkcyBubyBkZXZpY2V0cmVlIGNoYW5nZSAobWFpbmxpbmUgYWxyZWFkeSBtYXBz
+IHRoZQo+ICJsaW5rIiByZWdpc3RlciBiYW5rIGl0IHVzZXMpOyBnaXQgYXBwbHktY2xlYW4gb24g
+Ny4wIGFuZCA3LjEtcmM3Ogo+IAo+IAo+ICAgIGRtZXNnIHwgZ3JlcCAtaSAiZGVibG9jay1wcmlt
+aW5nIgo+ICAgICMgZXhwZWN0OiAiUkszNTc2IEguMjY0IGRlYmxvY2stcHJpbWluZyB3b3JrYXJv
+dW5kIGVuYWJsZWQiCj4gCgpJbSBzZWVpbmcgdGhpcyBzbyBhbGwgZ29vZC4KCj4gSSB2YWxpZGF0
+ZWQgaXQgb24gdGhlIHR3byBSSzM1NzYgYm9hcmRzIGhlcmU6IG9uIGEgTmFub1BpIFI3NlMgdGhl
+IHdhcm11cCB0YWtlcyBCQkIKPiBmcm9tIH4xOCUgb2YgZGVjb2RlcyBjb3JydXB0IHRvIDAvNDA7
+IG9uIGFuIEFybVNvTSBTaWdlNSB0aGUgdW5wYXRjaGVkIEhXIGRlY29kZSBpcwo+IDEwMCUgY29y
+cnVwdCwgYW5kIHRoZSBjb3JydXB0aW9uIGxvb2tzIGV4YWN0bHkgbGlrZSB0aGUgcGhvdG8geW91
+IHNoYXJlZC4gQmVmb3JlL2FmdGVyCj4gY2FwdHVyZXM6CgpQbHMgZ2l2ZSBtZSBmZXcgZGF5cyAt
+IEkgYXNrIHRlc3QgdXNlcnMgdG8gZ2l2ZSBkYWlseSB1c2FnZSB0ZXN0IHJ1bnMgdG8gbWFrZSBz
+dXJlIHVzZXJzIHdpbGwgYmUgaGFwcHkKKFNvIGZhciBteSBzaG9ydCBsYWIgdGVzdHMgc2hvd2lu
+ZyBhbGwgZ29vZCkKClNpbW9uOiBmYW50YXN0aWMgd29yayEKCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
