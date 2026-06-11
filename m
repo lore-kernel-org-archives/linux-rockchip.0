@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2783CD98CE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 15:19:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E11CD98CE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 15:25:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
-	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JoY0JKBffDTXi54hCfiYZXlwhi59Nt7vCzj8FKgevl8=; b=eBXCaGXMCNphCQ
-	Et6oteUhHzWjrgMNbnD75fxVX6a3PCZECjjbbKi6+KtS0mD7+I47tVk9m7IC4k4jCpAbyJ17+LYmp
-	b985yrp1uKTgn21jp452P4JWWsFXb1DIIeHhpenQZS0yWFgumMqHKicQNdgXiEtv9v9j/kJu66eK8
-	18kVp9lSYWayu87/I5sy5eAYvv1V8O1S9/ekc+w6oizbHsBaQGLmuRqAJRBQIAGvfC8/3ndwNe9yM
-	swPx76aj5ZSGp0FeZGxyvMF77c6C/MEjR7xW5Gd6MfAaksuR1kTmQAKEgbRqI8ZUnU+JpFwerIfKj
-	U3zcE8fpVdRIfIqxPyTg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BUxNbN3rB7Hw0nwntvM+7q6Rwbd+2Az0PwrJQgpKbSA=; b=3eUhjdjjAG0Gnrik42jFusFERP
+	4tvPzvNDm+bYetLrCNmYSEUZWG0+OkJBR9Kg6FbsKsgdHFK/3AtMdlCmWvRc8vOBWk0uU2uYngzG2
+	s0Ipse3FoeaaolMfUNML7JYkGBnEKMbAoRD23rLlMv6r31yMtzd/1fwSyB2RLhodDzQhK/WV1WRZe
+	2yjiOaIWyqFFeu+aTJFXts8ys0obXQ34K3dWheDRcOehuM0KnvXRg0NVscg0A/EZuegGj9wq7A6ZU
+	yTimGbtVoNGwsBdzd0GZnp7V1xZh7oHscIPe5NyByKS+S+ub9j0q9GVTsHdW8VEtUlHtUH4qGfRRA
+	EzSvanhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXhBz-00000009fTt-3vMj;
-	Thu, 11 Jun 2026 15:19:39 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wXhHy-00000009g3d-0d5b;
+	Thu, 11 Jun 2026 15:25:50 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXhBy-00000009fTZ-2Eoi;
-	Thu, 11 Jun 2026 15:19:38 +0000
+	id 1wXhHw-00000009g3L-3EgK;
+	Thu, 11 Jun 2026 15:25:48 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 59586600AA;
-	Thu, 11 Jun 2026 15:19:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84F7A1F00898;
-	Thu, 11 Jun 2026 15:19:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 02FB16001A;
+	Thu, 11 Jun 2026 15:25:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31B8A1F00893;
+	Thu, 11 Jun 2026 15:25:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781191177;
-	bh=28c7kE48N7xjxdMBXG72aK5f+72+xxiC+Mf8uQsdzvY=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc;
-	b=Sg9gAoyR72sLzbmyaHYiKZePL+6yRvjflirMaehl2jqek7CuVSbv97qgN+zz4tc5V
-	 dDN8CgNOySokjqRq0Y6JYB6pF+KY4FR8917omVcSeer5b2DiflwT6icPRAI9FGKr4v
-	 70alWR0susjbOymSmjfofooZ02DFXEjagsWLwUlLOIQRXSn71pE2XoJ6fU4zBolehm
-	 SiJdVYOWz23MHn8SD1TW32sgbpvSm4m8i0anxDw0sOzLBNhhWBpY/LqusCqQ0UAs+m
-	 H9y9WcOZLpkaXLCD6MVHksd+iUWnr8hAKWOvFCUaHthnJIBnW56PJFGi0Or7AbTXKQ
-	 w3FjaM+Fdir1w==
-Message-ID: <404cdc5ee5da868c0f0cb17d19dcebd8@kernel.org>
-Date: Thu, 11 Jun 2026 15:19:34 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
-Subject: Re: [PATCH v7 03/30] drm/display: scdc_helper: Add macro for
- connector-prefixed debug messages
-In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-3-445eb54ee1ed@collabora.com>
-References: <20260602-dw-hdmi-qp-scramb-v7-3-445eb54ee1ed@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, "Andrzej
- Hajda" <andrzej.hajda@intel.com>, "Andy Yan" <andy.yan@rock-chips.com>, "Daniel
- Stone" <daniels@collabora.com>, "Dave Stevenson" <dave.stevenson@raspberrypi.com>, "David
- Airlie" <airlied@gmail.com>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jernej
- Skrabec" <jernej.skrabec@gmail.com>, "Jonas Karlman" <jonas@kwiboo.se>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- =?utf-8?b?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Raspberry
- Pi Kernel Maintenance" <kernel-list@raspberrypi.com>, "Robert Foss" <rfoss@kernel.org>, "Sandy
- Huang" <hjc@rock-chips.com>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
- Zimmermann" <tzimmermann@suse.de>
+	s=k20260515; t=1781191547;
+	bh=mhFLm71X92FL118QA8FEpaxBUkL83s1nkTgYywytZos=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=FVoJktWRB4BpBFjzq6/mujqQLGVtrI0ZHlTxMtXCKnFo7w+N16/OHcMSQ8zDW2Num
+	 RubUYyYFUfjqwbPXbo18frl4f/oatqGS6kKjSAE9CkmJcyuqkJyo2YOYgn5PwRYIeS
+	 N1XGVvmMcSPFtKTok2tzjnCHRx95MGJuZnclqYYgHL5JqiXaqac1MAeXSx/wB4hzdg
+	 2QQsFlVNxOqPfuKMeyVTGWpi2q/zZ0abw/pP4zd1fKakWuEggGKJBlq8ZjG6TNviWw
+	 r6RgDGhQzvu0Omf5nGXOzNXiVO1WiVTUODo7WuC+p1Gn+9CygSg06gcNICkMGZvTqp
+	 pRDEpI+v9gJtQ==
+Date: Thu, 11 Jun 2026 17:25:45 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v7 05/30] drm/display: hdmi_state_helper: Add ctx-aware
+ hotplug helper for SCDC sync
+Message-ID: <20260611-refined-idealistic-sunfish-3df3a4@houat>
+References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
+ <20260602-dw-hdmi-qp-scramb-v7-5-445eb54ee1ed@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-5-445eb54ee1ed@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,27 +74,199 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============9068985179565384520=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2 Jun 2026 01:44:03 +0300, Cristian Ciocaltea wrote:
-> Introduce the drm_scdc_dbg() wrapper over drm_dbg_kms() to help getting
-> rid of the boilerplate around prefixing the debug messages with the
-> connector information.
-> 
+
+--===============9068985179565384520==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="gjbiabifu3smofwv"
+Content-Disposition: inline
+
+
+--gjbiabifu3smofwv
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v7 05/30] drm/display: hdmi_state_helper: Add ctx-aware
+ hotplug helper for SCDC sync
+MIME-Version: 1.0
+
+On Tue, Jun 02, 2026 at 01:44:05AM +0300, Cristian Ciocaltea wrote:
+> Introduce drm_atomic_helper_connector_hdmi_hotplug_ctx(), a variant of
+> drm_atomic_helper_connector_hdmi_hotplug() that accepts a
+> drm_modeset_acquire_ctx.
+>=20
+> This enables SCDC status synchronization on hotplug events, which
+> requires lock acquisition context for performing the CRTC reset
+> triggered by drm_scdc_sync_status().
+>=20
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> 
-> [ ... ]
+> ---
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 40 +++++++++++++++++++=
++-----
+>  include/drm/display/drm_hdmi_state_helper.h     |  4 +++
+>  2 files changed, 37 insertions(+), 7 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gp=
+u/drm/display/drm_hdmi_state_helper.c
+> index a331ebdd65af..a96d81cbf94f 100644
+> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> @@ -12,6 +12,7 @@
+>  #include <drm/display/drm_hdmi_cec_helper.h>
+>  #include <drm/display/drm_hdmi_helper.h>
+>  #include <drm/display/drm_hdmi_state_helper.h>
+> +#include <drm/display/drm_scdc_helper.h>
+> =20
+>  /**
+>   * DOC: hdmi helpers
+> @@ -1150,18 +1151,20 @@ drm_atomic_helper_connector_hdmi_clear_audio_info=
+frame(struct drm_connector *con
+>  }
+>  EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_clear_audio_infoframe);
+> =20
+> -static void
+> +static int
+>  drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
+> -					enum drm_connector_status status)
+> +					enum drm_connector_status status,
+> +					struct drm_modeset_acquire_ctx *ctx)
+>  {
+>  	const struct drm_edid *drm_edid;
+> +	int ret =3D 0;
+> =20
+>  	if (status =3D=3D connector_status_disconnected) {
+> -		// TODO: also handle scramber, HDMI sink disconnected.
+> +		ret =3D drm_scdc_sync_status(connector, false, ctx);
+>  		drm_connector_hdmi_audio_plugged_notify(connector, false);
+>  		drm_edid_connector_update(connector, NULL);
+>  		drm_connector_cec_phys_addr_invalidate(connector);
+> -		return;
+> +		return ret;
+>  	}
+> =20
+>  	if (connector->hdmi.funcs->read_edid)
+> @@ -1174,10 +1177,12 @@ drm_atomic_helper_connector_hdmi_update(struct dr=
+m_connector *connector,
+>  	drm_edid_free(drm_edid);
+> =20
+>  	if (status =3D=3D connector_status_connected) {
+> -		// TODO: also handle scramber, HDMI sink is now connected.
+> +		ret =3D drm_scdc_sync_status(connector, true, ctx);
+>  		drm_connector_hdmi_audio_plugged_notify(connector, true);
+>  		drm_connector_cec_phys_addr_set(connector);
+>  	}
+> +
+> +	return ret;
+>  }
+> =20
+>  /**
+> @@ -1191,10 +1196,31 @@ drm_atomic_helper_connector_hdmi_update(struct dr=
+m_connector *connector,
+>  void drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *conn=
+ector,
+>  					      enum drm_connector_status status)
+>  {
+> -	drm_atomic_helper_connector_hdmi_update(connector, status);
+> +	drm_atomic_helper_connector_hdmi_update(connector, status, NULL);
+>  }
+>  EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug);
+> =20
+> +/**
+> + * drm_atomic_helper_connector_hdmi_hotplug_ctx - Handle the hotplug eve=
+nt for the HDMI connector
+> + * @connector: A pointer to the HDMI connector
+> + * @status: Connection status
+> + * @ctx: Lock acquisition context to be used for resetting CRTC
+> + *
+> + * This function should be called as a part of the .detect() / .detect_c=
+tx()
+> + * callbacks for all status changes.
+> + *
+> + * Returns:
+> + * Zero on success, error code on failure.
+> + * If @ctx is set, it might also return -EDEADLK.
+> + */
+> +int drm_atomic_helper_connector_hdmi_hotplug_ctx(struct drm_connector *c=
+onnector,
+> +						 enum drm_connector_status status,
+> +						 struct drm_modeset_acquire_ctx *ctx)
+> +{
+> +	return drm_atomic_helper_connector_hdmi_update(connector, status, ctx);
+> +}
+> +EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug_ctx);
+> +
+>  /**
+>   * drm_atomic_helper_connector_hdmi_force - HDMI Connector implementatio=
+n of the force callback
+>   * @connector: A pointer to the HDMI connector
+> @@ -1206,6 +1232,6 @@ EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotp=
+lug);
+>   */
+>  void drm_atomic_helper_connector_hdmi_force(struct drm_connector *connec=
+tor)
+>  {
+> -	drm_atomic_helper_connector_hdmi_update(connector, connector->status);
+> +	drm_atomic_helper_connector_hdmi_update(connector, connector->status, N=
+ULL);
+>  }
+>  EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_force);
+> diff --git a/include/drm/display/drm_hdmi_state_helper.h b/include/drm/di=
+splay/drm_hdmi_state_helper.h
+> index 13375bd0f4ae..75fedd4a3ba8 100644
+> --- a/include/drm/display/drm_hdmi_state_helper.h
+> +++ b/include/drm/display/drm_hdmi_state_helper.h
+> @@ -7,6 +7,7 @@ struct drm_atomic_commit;
+>  struct drm_connector;
+>  struct drm_connector_state;
+>  struct drm_display_mode;
+> +struct drm_modeset_acquire_ctx;
+>  struct hdmi_audio_infoframe;
+> =20
+>  enum drm_connector_status;
+> @@ -24,6 +25,9 @@ int drm_atomic_helper_connector_hdmi_update_infoframes(=
+struct drm_connector *con
+>  						       struct drm_atomic_commit *state);
+>  void drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *conn=
+ector,
+>  					      enum drm_connector_status status);
+> +int drm_atomic_helper_connector_hdmi_hotplug_ctx(struct drm_connector *c=
+onnector,
+> +						 enum drm_connector_status status,
+> +						 struct drm_modeset_acquire_ctx *ctx);
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
+There's not a lot of users, so I'd prefer if we were just changing the
+prototype of drm_atomic_helper_connector_hdmi_hotplug()
 
-Thanks!
 Maxime
+
+--gjbiabifu3smofwv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCairTagAKCRAnX84Zoj2+
+dsYXAX9HanpXkiMI5tOPJUZC7je0MQw3xTc6fBIEQJvGlvqrcMcKcMe8FoWPDcgx
+94KD2aoBgOPv4oXQWtkqDBZedZI5wKgHmkMBRWVz/5E+nvZwPFbJ+olpEqBo4c3w
+IAVzRl2XUg==
+=tkXr
+-----END PGP SIGNATURE-----
+
+--gjbiabifu3smofwv--
+
+
+--===============9068985179565384520==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============9068985179565384520==--
+
