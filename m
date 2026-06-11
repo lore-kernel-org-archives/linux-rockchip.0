@@ -4,71 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 681CCCD98D2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 09:24:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1109ECD98C7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Jun 2026 09:28:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3RLIWce8AZVrUTUsaMISKZhen4M30AlUdkLND+SeK2A=; b=e7cdTkBJeJ844G
-	aEOR0thSpshCfhuZJwFz5fWX3d3PFFbZ5P5SHugHrGChs984Xd6IVWXa4NcDJjc/+WZfcQJ+yRzI3
-	eG+i7dp6ilvsyb3inIC/KI3NTpoHAyqc3E7pMutju2QBrIprdm5rkCx2hYs3C2JV2gkpCojyzyy2d
-	smlwrdXP4eL2F7XWDWe9B5IxhkIBCBsX5AcnlrE0MiwHrwFzbsPvmQCvN75UmSpjz//TiG7am5Pza
-	pFBwyXm9TASnl2zTdCptjdCqwwBwGixZi6ykQAs8XH4oNyXgwbmU1uR3++HajNtTekLVsvdPTqGDb
-	tebs9rKT2u12ARskknLg==;
+	List-Owner; bh=vU3eiYQPjGH+VCdCMOQg5N8ZtfEUl7oPFTSzC3AVw3s=; b=uLOZwurdpDPUMW
+	3EVKgWp/9LqSPX8OoTXVk9/PY4MlCRpY8EXuvZWs2YqAuyjStydgNmm66TsQfuMzx09+UJl5KtY4P
+	8UNDP6c5V5g97I7JN9mF7PqJX0MR25SaoIA+cCyTTT79EPX9PfYR6bkwOid8RQWOfhPCC5WBWxEeX
+	N2/IALv8dHnYzGperMuEwYHFOt9BkW5RYd/pP3HW9u/QIvY8Ayt190uLUlTVbLnzXyg02JUW9D9oK
+	YxhV0cD+gtFX7Tac+ixbkPY6rb12KslqZXh8QCbwLC7Icci1GERilyYQ0uAJwyJpK+rVCWJIxpJmB
+	Phb43+aHzhFmAjejQVQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXbe2-000000097a6-2Qxh;
-	Thu, 11 Jun 2026 09:24:14 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wXbhk-000000097lL-0JcK;
+	Thu, 11 Jun 2026 09:28:04 +0000
+Received: from mx.adeep.su ([185.250.0.168])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXbe1-000000097Zw-36AL
-	for linux-rockchip@lists.infradead.org;
-	Thu, 11 Jun 2026 09:24:13 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E65F5600AA;
-	Thu, 11 Jun 2026 09:24:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F7A51F00893;
-	Thu, 11 Jun 2026 09:24:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781169852;
-	bh=kaDbe2Wtadm1CovoX1M+pm7BWifn8mTlFUxuaDqLi0Y=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=WnTU/27NgzOoYes/IzeMe1761wQ9wdP19YpDfXsYUpxxGG6XZMQ25Hl4AFte7UTPd
-	 BL8I0iSXCAKoGHxIb9Ayper7xIpPamXXxwv5m5VsIiasCQHvnvOZuqv9I5+4qGtxV3
-	 XbwKGgLUZRH+j7fA58Q7D/JhvHB0y0wcsc6r2X3U98aesHk1zaDTi+9qcueDmAeR+J
-	 uAZns5DnSAzUES0mpChef3CG3k+CVsNG+l2VlDg1dyvN6UstFwo7GOoSJ0aO6k7pYP
-	 puMZojS8gK/7CxwD2v0LuFfPk9L1CJ7Si0BZmcwSj1+lCPXpKE5+MQ1KAquwU90sVk
-	 P5Dpa3PvD9p2w==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Michael Zhang <zhangyi@everest-semi.com>, 
- Diederik de Haas <diederik@cknow-tech.com>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-In-Reply-To: <20260607105913.355966-1-diederik@cknow-tech.com>
-References: <20260607105913.355966-1-diederik@cknow-tech.com>
-Subject: Re: [PATCH] ASoC: dt-bindings: everest,es8389: Document audio
- graph port
-Message-Id: <178108992684.232889.2776738169377861702.b4-ty@b4>
-Date: Wed, 10 Jun 2026 12:12:06 +0100
+	id 1wXbhg-000000097kl-1igL;
+	Thu, 11 Jun 2026 09:28:02 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 3795413F6A;
+	Thu, 11 Jun 2026 12:27:41 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=baodeep.com; s=dkim;
+	t=1781170076; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=RlMltLney+5FO6rJ24VqCkuZLI37qXL5DCduKEsVMiM=;
+	b=OsmJNX00sah5SQTArdDrms3Rb0W7fi4r6DOlhQvQXdUuRazcr+SEqPNUGaHXocZfYy+gu4
+	IGF3xiapUHEvQ+QIIU1/Xvj77PaS5uJkv3ouSDmAGSoc9+5lj86nC1M87sFfXSU9YRaEnP
+	7KU7jBYUeTVoAMhpOXoOyspipaSFOBBJFEgyL8bwYH/V4MkAveCj8M6t8oK2GKmUC3Dpju
+	DqIa/0fUnSZ9GATWzSFdFaLUmMr4xNXbzgNhnqxdZGeZiyTzI1FkSQWnlBhaV2hrzdXwnn
+	Sc0tftfC5oFZ+ad91M8CU18DYycUQYjaav5i2FYZTf2/Y/FWmsuwcUTv9ciRpQ==
+Message-ID: <a523e854-c1d8-4f9d-a184-70ebee5fd630@baodeep.com>
+Date: Thu, 11 Jun 2026 12:27:23 +0300
 MIME-Version: 1.0
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1142; i=broonie@kernel.org;
- h=from:subject:message-id; bh=mfT8gSVDCWk4JyRaaMo+/qGlPesjAc/rwMATv4G2nsg=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqKn65dqvazU4B177fGwRd8nxToenUhgxdKVsld
- sQPpxJGuxuJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaip+uQAKCRAk1otyXVSH
- 0F0bB/9PSDgrxCKFj6Vx5OG4742eNYZfdMZGWRmtZMqx1jEsWbsOTc1La2BjnRVl1v3bTjNqWTT
- o6OyxjkETr5eVJG+c6mpNoJYNumnURYwFUK9NKXk0eHHcLxw2LN62kTG1il1q4kOemlEGKb5CT3
- OCM98D214M1rKGCcpeR+A50ik03quJF8PL0hBYuTfgpczE/pOXGDSJKanc50sAq2bdnRTWZPbpr
- 5eDQxgiESXTCYokAEvP+SExqeDHFdz8g5NLcy4C2Je93hx8+x9hcaTVkSAgjC+JB9srp6dwIrp7
- Tj2XVH18GBsUMlpB/cJ9mj9CStveBRbsE+xJYp4NQTRBXHP8
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] gpio: fix sleeping-in-atomic in shared-proxy; restore
+ meson non-sleeping
+To: Marek Szyprowski <m.szyprowski@samsung.com>,
+ Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Diederik de Haas <diederik@cknow-tech.com>, linux-gpio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Heiko Stuebner <heiko@sntech.de>
+References: <CGME20260610153425eucas1p29d20a835114a28b15cb12ea00534e074@eucas1p2.samsung.com>
+ <20260610153329.937833-1-v@baodeep.com>
+ <184d315b-a0a1-4792-8a40-1b4967025916@samsung.com>
+Content-Language: ru
+From: Viacheslav <v@baodeep.com>
+In-Reply-To: <184d315b-a0a1-4792-8a40-1b4967025916@samsung.com>
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260611_022800_958961_47BB9CDC 
+X-CRM114-Status: UNSURE (   6.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +75,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 07 Jun 2026 12:58:49 +0200, Diederik de Haas wrote:
-> ASoC: dt-bindings: everest,es8389: Document audio graph port
+Hi, Marek!
 
-Applied to
+11.06.2026 11:26, Marek Szyprowski wrote:
+> Hi Viachesla,
+> 
+> On 10.06.2026 17:32, Viacheslav Bocharov wrote:
+> 
+> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> 
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
+Thanks for testing.
 
-Thanks!
+> This probably also affects the similar changes in Rockchip GPIO driver done
+> by the following commits:
+> 20cf2aed89ac ("gpio: rockchip: mark the GPIO controller as sleeping")
+> 7ca497be0016 ("gpio: rockchip: Stop calling pinctrl for set_direction")
+> 
 
-[1/1] ASoC: dt-bindings: everest,es8389: Document audio graph port
-      https://git.kernel.org/broonie/sound/c/aa283db3bb8d
+Yeah, we also need to revert can_sleep=true on rockchip and amlogic-a4 
+(d6df4abe95a4).
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Best regards
+--
+Viacheslav Bocharov
+Shenzhen JetHome Technology Co., Ltd.
 
 _______________________________________________
 Linux-rockchip mailing list
