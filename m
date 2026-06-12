@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D1FCD98CE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 12:06:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68453CD98CE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 13:43:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sVzrM3J70NMGOF9lHgULlKQPshA8cMrNWKXYBR55m2I=; b=hEjRobt+J9dTPD0brnJQSuKLIQ
-	LsM86A/k7h/LWAW9icn0OtaA9jkLJOQ2WcDFrcmgvASgc7h8Cz3oiwWOMRFAApIms/JuDIKwpUGwh
-	sqxVnYgXKtxfbfKmL9rPJW68k0kLASQZzaKMc3EHGFWbii2HYh7HWCwaQdhbT24cudhz4g6ai2+zy
-	juUAIQuiDo3YXAL517DQvhrhUzHRnRcL5cAGMznurBxvG1C+hF13Obc+WPsEyMIYvePSJlPeURaby
-	7S3d6OJQ1rOwQERKrDsZYsGw37T+T8QdNjSewsP2CnZ/qmKYR2KdWr2D+CPArpCItExqVmIievy/5
-	iYr8klgQ==;
+	bh=6x74M29/aF4enc1wv9AVbfImJCaN6GgGriB3FywGl9Q=; b=BBE0hJ39SdD4evr0ulOfDH+3Cy
+	g3g50OOsLUNsKbwuOaUNoxJsDyTIc0cNuRgBYi7gq6pKFAQMPv2CM5diFTA8H2SGBOTIM9YdGLSQa
+	CFkg/g515i517jpzL2NKXC6bimdnUHltz2nBNqDxj86my5YxWsVS5zmLQlRrXcBUlZoVolEPfMZq6
+	RxLfyIZ8ZTvfP3AkLpu4vr6FpUXYThOfnZB7rv3KzlJcKdGP0+Zo2uv1I7pDT+RarnEYw4wBgv+9n
+	aCIHuU/u/5eTlQBMCzcCsUtJkIB9q6sglKBYuePjqK3MHEyaRmL8EY3/ZbboRcE0sXE6Y+yptoN5y
+	RLHkC31g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY0eh-0000000Aquj-12Lf;
-	Fri, 12 Jun 2026 12:06:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wY2AC-0000000Azxw-1S7f;
+	Fri, 12 Jun 2026 13:43:12 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY0ef-0000000Aqu3-0HHZ;
-	Fri, 12 Jun 2026 12:06:33 +0000
+	id 1wY2AA-0000000AzxM-2uLJ;
+	Fri, 12 Jun 2026 13:43:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 252E5600AB;
-	Fri, 12 Jun 2026 12:06:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FB3D1F000E9;
-	Fri, 12 Jun 2026 12:06:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A2E6460008;
+	Fri, 12 Jun 2026 13:43:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD6361F000E9;
+	Fri, 12 Jun 2026 13:43:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781265991;
-	bh=jR50a81IxiDBn56oWWFPyUlJDk//wHbnB3DYWlUT9x4=;
+	s=k20260515; t=1781271789;
+	bh=p/8CtmD9b1H19ZygvRiFJ4cHW08uI2Wy+HwdBYB08uQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=kMSkzSzWMeXL+OsB2eVrT0bTnlZbCubqG6qaotFF+XT8pDdgAl8WSLM7+t2LOo89z
-	 zPVoLtejnkGzduXs/OfewzZod/fU+tAOwXjuaz2MiKC3hGyO7RC+WkntXyXlNfN3fl
-	 ykLX0Ozk1e11viX7u0vwr01fIZimt/x8nbK4LKCMVbfNgtGhLZAXsWAl1pOP22ebja
-	 L194BJfYnSz1Lm0Q27SHehbwkutHe/Ml6HnmCW6bFsdluS1U7bF3KJvJhytn5VpZrP
-	 G4KqFKEY74W3fFOgIMxXhDuTgnhrzvppBRMzYEtQzNE43xgtkZFdXD1PbW896dEnK4
-	 TLpXWpUx8edNw==
-Date: Fri, 12 Jun 2026 14:06:29 +0200
+	b=FZ/YZzmt7kU/1ArFPLGhIQSFq6jOlFhIBpHUwLpkPHmBwd+KU5rvmZ6dGkzA0iDhz
+	 GJvnztP/FfBcb3jY+cyeyeU+UipKXBVYtei2TA7HQIE5YbjyFk0IGBgRHE2RjdSw8A
+	 Yunpt/buhFFE1IgdkjZnGttJVNRWMAOqB+B3y8qYosXpl3jhGN0vVAFzy+0c/1Zlfp
+	 HOBTCdT6rW/jTGxa2KxtLSAlAcAoakIurLMMEknZMKb3UjcpfdjrpxzjJtZeatF0mB
+	 PUsxE48/qU9aNJfe2zEWD9JZQwtj1j0QGZ7QpaNhhdNBfc3L4jrnUMp4TJ3xQ3hdVE
+	 ykgjSR2yQIFow==
+Date: Fri, 12 Jun 2026 15:43:06 +0200
 From: Maxime Ripard <mripard@kernel.org>
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -56,13 +56,13 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 02/30] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-Message-ID: <20260612-subtle-shapeless-rattlesnake-4b6af8@houat>
+Subject: Re: [PATCH v7 04/30] drm/display: scdc_helper: Add HDMI 2.0
+ scrambling management helpers
+Message-ID: <20260612-cordial-steadfast-cow-fcaf01@houat>
 References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
- <20260602-dw-hdmi-qp-scramb-v7-2-445eb54ee1ed@collabora.com>
+ <20260602-dw-hdmi-qp-scramb-v7-4-445eb54ee1ed@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-2-445eb54ee1ed@collabora.com>
+In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-4-445eb54ee1ed@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,215 +74,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4021211640114567352=="
+Content-Type: multipart/mixed; boundary="===============7166387682687134413=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============4021211640114567352==
+--===============7166387682687134413==
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="jvytzggqrwbv5ab3"
+	protocol="application/pgp-signature"; boundary="brdajz4ircx43s3r"
 Content-Disposition: inline
 
 
---jvytzggqrwbv5ab3
+--brdajz4ircx43s3r
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 02/30] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
+Subject: Re: [PATCH v7 04/30] drm/display: scdc_helper: Add HDMI 2.0
+ scrambling management helpers
 MIME-Version: 1.0
 
-On Tue, Jun 02, 2026 at 01:44:02AM +0300, Cristian Ciocaltea wrote:
-> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
->=20
-> - A scrambler_supported flag to indicate whether the source supports the
->   scrambling capability, in which case the newly introduced
->   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_funcs
->   are mandatory
-> - A scrambler_needed flag to be managed by the hdmi state helpers based
->   on the negotiated TMDS character rate and the source/sink scrambling
->   capabilities
-> - A scrambler_enabled flag to track whether scrambling is currently
->   active
-> - A delayed work item (scdc_work) with an associated callback (scdc_cb)
->   to monitor sink-side scrambling status and retry the setup if the sink
->   resets it
->=20
-> These are intended to be used by SCDC scrambling helpers to coordinate
-> scrambling setup and teardown between the source driver and the DRM
-> core.
->=20
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  drivers/gpu/drm/drm_connector.c | 18 +++++++++
->  include/drm/drm_connector.h     | 81 +++++++++++++++++++++++++++++++++++=
-++++++
->  2 files changed, 99 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connec=
-tor.c
-> index a5d13b92b665..526dc2931b8a 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -220,6 +220,19 @@ void drm_connector_free_work_fn(struct work_struct *=
-work)
->  	}
->  }
-> =20
-> +static void drm_connector_hdmi_scdc_work(struct work_struct *work)
+On Tue, Jun 02, 2026 at 01:44:04AM +0300, Cristian Ciocaltea wrote:
+> +/**
+> + * drm_scdc_start_scrambling - activate scrambling and monitor SCDC status
+> + * @connector: connector
+> + *
+> + * Enables scrambling and high TMDS clock ratio on both source and sink sides.
+> + * Additionally, use a delayed work item to monitor the scrambling status on
+> + * the sink side and retry the operation, as some displays refuse to set the
+> + * scrambling bit right away.
+> + *
+> + * Returns:
+> + * Zero if scrambling is set successfully, an error code otherwise.
+> + */
+> +int drm_scdc_start_scrambling(struct drm_connector *connector)
 > +{
-> +	struct drm_connector *connector;
-> +	struct drm_connector_hdmi *hdmi;
+> +	struct drm_display_info *info = &connector->display_info;
+> +	struct drm_connector_hdmi *hdmi = &connector->hdmi;
+> +	int ret;
+> +	u8 ver;
 > +
-> +	hdmi =3D container_of(to_delayed_work(work), struct drm_connector_hdmi,
-> +			    scdc_work);
-> +	connector =3D container_of(hdmi, struct drm_connector, hdmi);
-> +
-> +	if (hdmi->scdc_cb)
-> +		hdmi->scdc_cb(connector);
-> +}
-> +
->  static int drm_connector_init_only(struct drm_device *dev,
->  				   struct drm_connector *connector,
->  				   const struct drm_connector_funcs *funcs,
-> @@ -285,6 +298,7 @@ static int drm_connector_init_only(struct drm_device =
-*dev,
->  	mutex_init(&connector->edid_override_mutex);
->  	mutex_init(&connector->hdmi.infoframes.lock);
->  	mutex_init(&connector->hdmi_audio.lock);
-> +	INIT_DELAYED_WORK(&connector->hdmi.scdc_work, drm_connector_hdmi_scdc_w=
-ork);
->  	connector->edid_blob_ptr =3D NULL;
->  	connector->epoch_counter =3D 0;
->  	connector->tile_blob_ptr =3D NULL;
-> @@ -606,6 +620,10 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
->  	    !hdmi_funcs->hdmi.write_infoframe)
->  		return -EINVAL;
-> =20
-> +	if (connector->hdmi.scrambler_supported &&
-> +	    (!hdmi_funcs->scrambler_enable || !hdmi_funcs->scrambler_disable))
+> +	if (!hdmi->scrambler_supported) {
+> +		drm_scdc_dbg(connector, "Scrambler not supported, bailing.\n");
 > +		return -EINVAL;
+> +	}
 > +
->  	ret =3D drmm_connector_init(dev, connector, funcs, connector_type, ddc);
->  	if (ret)
->  		return ret;
-> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> index 529755c2e862..f1c5c15a6cce 100644
-> --- a/include/drm/drm_connector.h
-> +++ b/include/drm/drm_connector.h
-> @@ -28,6 +28,7 @@
->  #include <linux/ctype.h>
->  #include <linux/hdmi.h>
->  #include <linux/notifier.h>
-> +#include <linux/workqueue.h>
->  #include <drm/drm_mode_object.h>
->  #include <drm/drm_util.h>
->  #include <drm/drm_property.h>
-> @@ -1057,6 +1058,19 @@ struct drm_connector_hdmi_state {
->  	 * @tmds_char_rate: TMDS Character Rate, in Hz.
->  	 */
->  	unsigned long long tmds_char_rate;
+> +	if (!info->is_hdmi ||
+> +	    !info->hdmi.scdc.supported ||
+> +	    !info->hdmi.scdc.scrambling.supported) {
+> +		drm_scdc_dbg(connector, "Sink doesn't support scrambling.\n");
+> +		return -EINVAL;
+> +	}
 > +
-> +	/**
-> +	 * @scrambler_needed: Whether HDMI 2.0 SCDC scrambling is required
-> +	 * for the negotiated mode/bpc/format.
-> +	 *
-> +	 * Computed by drm_atomic_helper_connector_hdmi_check() from
-> +	 * @tmds_char_rate and the source/sink scrambling capabilities.
-> +	 *
-> +	 * Per HDMI 2.0, scrambling is mandatory above 340 MHz TMDS
-> +	 * character rate. Optional scrambling at lower rates is
-> +	 * deliberately not requested by the helper.
-> +	 */
-> +	bool scrambler_needed;
->  };
-> =20
->  /**
-> @@ -1358,6 +1372,36 @@ struct drm_connector_hdmi_funcs {
->  	 */
->  	const struct drm_edid *(*read_edid)(struct drm_connector *connector);
-> =20
-> +	/**
-> +	 * @scrambler_enable:
-> +	 *
-> +	 * This callback is invoked through @drm_scdc_start_scrambling during
-> +	 * a commit to setup SCDC scrambling and high TMDS clock ratio on
-> +	 * source side.
-> +	 *
-> +	 * The @scrambler_enable callback is mandatory if HDMI 2.0 is to be
-> +	 * supported.
-> +	 *
-> +	 * Returns:
-> +	 * 0 on success, a negative error code otherwise
-> +	 */
-> +	int (*scrambler_enable)(struct drm_connector *connector);
+> +	drm_scdc_dbg(connector, "Enabling scrambling\n");
 > +
-> +	/**
-> +	 * @scrambler_disable:
-> +	 *
-> +	 * This callback is invoked through @drm_scdc_stop_scrambling during
-> +	 * a commit to disable SCDC scrambling and high TMDS clock ratio on
-> +	 * source side.
-> +	 *
-> +	 * The @scrambler_disable callback is mandatory if HDMI 2.0 is to be
-> +	 * supported.
-> +	 *
-> +	 * Returns:
-> +	 * 0 on success, a negative error code otherwise
-> +	 */
-> +	int (*scrambler_disable)(struct drm_connector *connector);
+> +	ret = drm_scdc_readb(connector->ddc, SCDC_SINK_VERSION, &ver);
+> +	if (ret) {
+> +		drm_scdc_dbg(connector, "Failed to read SCDC_SINK_VERSION: %d\n", ret);
+> +		return ret;
+> +	}
 > +
->  	/**
->  	 * @avi:
->  	 *
-> @@ -1960,6 +2004,43 @@ struct drm_connector_hdmi {
->  	 */
->  	unsigned long supported_formats;
-> =20
-> +	/**
-> +	 * @scrambler_supported: Indicates whether the HDMI controller
-> +	 * (source) supports HDMI 2.0 SCDC scrambling.
-> +	 *
-> +	 * When true, @drm_connector_hdmi_funcs.scrambler_enable and
-> +	 * @drm_connector_hdmi_funcs.scrambler_disable are mandatory.
-> +	 * This is enforced by drmm_connector_hdmi_init().
-> +	 *
-> +	 * For HDMI bridge based drivers using drm_bridge_connector_init(),
-> +	 * this is propagated automatically from bridges that set the
-> +	 * DRM_BRIDGE_OP_HDMI_SCRAMBLER flag in their &drm_bridge->ops.
-> +	 * Other drivers must set this field on @connector->hdmi before calling
-> +	 * drmm_connector_hdmi_init().
-> +	 */
-> +	bool scrambler_supported;
+> +	ret = drm_scdc_writeb(connector->ddc, SCDC_SOURCE_VERSION,
+> +			      min_t(u8, ver, SCDC_MAX_SOURCE_VERSION));
+> +	if (ret) {
+> +		drm_scdc_dbg(connector, "Failed to write SCDC_SOURCE_VERSION: %d\n", ret);
+> +		return ret;
+> +	}
 > +
-> +	/**
-> +	 * @scrambler_enabled: Tracks whether HDMI 2.0 scrambler is currently e=
-nabled.
-> +	 */
-> +	bool scrambler_enabled;
+> +	hdmi->scdc_cb = drm_scdc_monitor_scrambler;
+> +	WRITE_ONCE(hdmi->scrambler_enabled, true);
+> +
+> +	ret = drm_scdc_try_scrambling_setup(connector);
+> +	if (!ret)
+> +		ret = hdmi->funcs->scrambler_enable(connector);
+> +
+> +	if (ret) {
+> +		WRITE_ONCE(hdmi->scrambler_enabled, false);
+> +		cancel_delayed_work_sync(&hdmi->scdc_work);
+> +		hdmi->scdc_cb = NULL;
+> +
+> +		drm_scdc_set_scrambling(connector, false);
+> +		drm_scdc_set_high_tmds_clock_ratio(connector, false);
+> +	}
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL(drm_scdc_start_scrambling);
 
-This is already in the state. Why do you need to copy it over here, and
-if you do, you'll need a lock.
+This is also pretty significantly different than what vc4 implemented. I
+don't necessarily mind, but claiming that it's functionally equivalent
+isn't true. I think it would be a much better strategy to turn the vc4
+code into helpers as is because it's been merged 4 years ago and we know
+it's solid.
+
+Then, if you want to add additional checks and constraints (like the
+SCDC_SINK_VERSION) that's fine, but it should come on top, and with its
+own explanation.
 
 Maxime
 
---jvytzggqrwbv5ab3
+--brdajz4ircx43s3r
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaiv2RQAKCRAnX84Zoj2+
-dpOzAX9fWVyZgzIa+Lwod4+RU9bVyTQIx/zbt9tFgexdmHs0vTf1n0ZU73nrvkpF
-RDnEJ6EBfAztXT42zpjOHCEXHtNxA/RtY+modkrjS8RhNEgWKZ1SifKU6JxOd1OF
-1sNJW47dJQ==
-=ViGe
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaiwM4AAKCRAnX84Zoj2+
+drsqAYCg44ILVaYXrmkSWguKwKZ0rf61WM5w16Gd3nnf1ak+1Ripg6zsXz2SN8CF
+cqVRm2cBgM3rf8LNkOajtmtAsPxLazMFX22jugzFFSVhwKCKm/fozOES8Js+s8ud
+2ikvX5BRKA==
+=Vzl4
 -----END PGP SIGNATURE-----
 
---jvytzggqrwbv5ab3--
+--brdajz4ircx43s3r--
 
 
---===============4021211640114567352==
+--===============7166387682687134413==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -293,5 +197,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============4021211640114567352==--
+--===============7166387682687134413==--
 
