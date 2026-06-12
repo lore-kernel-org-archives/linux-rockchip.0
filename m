@@ -4,76 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A45EFCD98CF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 20:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39753CD98CF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 21:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+F6KUi9HBdF6ZMniCmwmrRN512qo3UcJn65geOj/cAY=; b=ha+ig1ZIFfgnXV
-	7s/Qo8vzyhfAeRqUdriV0c1TcBM0YZVQyMXVDY1RVUFoPLqr+s6xQZZ1PVnUlTU4dLxfT7mOiKiXf
-	+imgbB2HScgrlAB11m2RPABVObIVztgkrrkvL+L18LpdJvvZLWeyhDG8V6ecpi5XeEGgKNmO8hk7B
-	/sZoKzM+lQzv8b19hJe/jc/Dpn7wMblzYw1XIlE2ixIaCF2qL4vNRCRspqwYWXID4kIPs+bTetvHe
-	BDDa9lkdptMM20WHWtbKRcVAryyLDlrQWCFXhd3NAmEklw1gwTwKKLOr9AG7f8GIB2boknr0TCmeS
-	eM3VI36HzDrRwPGx5s0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RiBrbHh0LsIfc5IDL8+DvcOvKBtlEZ4IgK2jJDEu2x4=; b=ev1HvcCpm3bO52bugGSS/lHq/d
+	0zeSoUjFk8SjHSPbD0bsRns8kQAaxbq3O02KCMuPHK/Dcql9bdaZqlhgI6Fc+VfbG3nL2zmgJlkuT
+	kaUv3wtejJy8ENE0624Vu3wgLlDHbc+bP4rUraeuGlt4qVgDQc+RkL/lTQOQkAY0z741tx1dJikk5
+	25dtNrfwQ8x60/tKu+M9ihKLyhq/uHhBBWe3Dyg56FA37Hx7mVbrLSMQExoQBzzO3HbopdofOy55c
+	1IWV9NyLlrl7METgGlu7UenpWVazHAD5eRlHgeBYOKHvVjyxAUt3NSV1GoFXA/rUqIUXyzeIyyYE3
+	Dl4MGOsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY8hi-0000000BYj5-0IAn;
-	Fri, 12 Jun 2026 20:42:14 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wY9GK-0000000BbHu-3TmJ;
+	Fri, 12 Jun 2026 21:18:00 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY8he-0000000BYie-3qhS;
-	Fri, 12 Jun 2026 20:42:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1781296927;
-	bh=EwJnim2UySXl/C8gGWgVbYK2jiPjZuEGJl0kKvx+JJQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jJWzVQuRji0oWgxnebSLfoQRnObVZavrZh4J1bnyxVeYBDwKTJ+Hp1hFy6PJtV/8J
-	 n0DCJQEtId+w0/MRGmPfPBGYYip+crbavyBzp8vo3aXyXcCAyHJk7IAQhNOIvkFgIG
-	 GahQ/csYaccDz1y7/V99iAYRa0t9BCIFeSBKvQnb4L1pKZUo1Gy2yEShSB3J0eiR3Q
-	 Z8D97yKABYROKzZV+hUT/ong/MpjaSqxKrepBm9ZjTD8Is7ZYrIk9oazCHHwfLbQMX
-	 9fXZU8vBVOjzN/YahJhPFk0J12CJ3jNPRY73c//o/kapbTUvMuI8jvPsygJpl84XNp
-	 It4MArU596hhw==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F0BD717E03D7;
-	Fri, 12 Jun 2026 22:42:06 +0200 (CEST)
-Message-ID: <b14af457-0799-43cc-80b5-7ffff5901f24@collabora.com>
-Date: Fri, 12 Jun 2026 23:42:06 +0300
+	id 1wY9GH-0000000BbHC-3S1W;
+	Fri, 12 Jun 2026 21:17:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1781298940; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=OKS40WmHs9HXccer99KYn6oZOd3s7A/QcRyaoSg61l8t/e7/tucKewZS3PjGEb51f1QDfNRq1j6o2EzPQ60ZsxkLkl8tfK7BdcwjWn/idwkDYas2VQ8K/Uv8C3Sy4tVeF+L5iKTH+2cBq6K4m684P//duvIajUSHyz/h48uHfYg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1781298940; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=tv6LplnDGDFs2tsuGoRHCdXAYO7jI7MN//DIkYHWNuY=; 
+	b=MNzNQk69za9Qm2cSQJjVXXgqym5J4Sc5mNe79Ajt9yQHQalaVah+IFLVPRtuRe4T1JQxTr0Z//Zt/vxlz1jUQHyRusAU67ZW2Wmo7J8YZwIa+Po20ZuPntfURGbIe5ZeeG/n/9CWaL8boObo0ZnhrZcqoTp8Gyzvf1GqzFGrr4E=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1781298940;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=tv6LplnDGDFs2tsuGoRHCdXAYO7jI7MN//DIkYHWNuY=;
+	b=M6v8BK5vtjyj0S/NYEsQvgb9mF43z2OvICcosRQ+DQPiPzgBLXD7nzwVSZMAbbCL
+	SGrCvnllAHVCxUC+DlrWRahMKKSy7ohP2m6o4vJpEjLMp5aLA2V9Hj+HdyPldQEH6+U
+	MZ2QxYCzXtsj8E+IVm+alsZV3gSxsGWOetKsyUic=
+Received: by mx.zohomail.com with SMTPS id 1781298939699370.6870059309615;
+	Fri, 12 Jun 2026 14:15:39 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 5638C180674; Fri, 12 Jun 2026 23:15:34 +0200 (CEST)
+Date: Fri, 12 Jun 2026 23:15:34 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Diederik de Haas <diederik@cknow-tech.com>
+Cc: Midgy Balon <midgy971@gmail.com>, 
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>, tomeu@tomeuvizoso.net, ogabbay@kernel.org, heiko@sntech.de, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, joro@8bytes.org, 
+	will@kernel.org, robin.murphy@arm.com, dri-devel@lists.freedesktop.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	iommu@lists.linux.dev, linux-kernel@vger.kernel.org, Simon Xue <xxm@rock-chips.com>, 
+	Finley Xiao <finley.xiao@rock-chips.com>, Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [RFC PATCH v3 0/9] accel: rocket: Add RK3568 NPU support
+Message-ID: <aixze8zFboY3huSf@venus>
+References: <CA+GS1Y1s78PwN63X2YJoS8VEGp7CpTERo_K65yKs00U4VRAw4Q@mail.gmail.com>
+ <e5058919-9485-4de5-8eea-331ebfc2987c@rock-chips.com>
+ <CA+GS1Y3ysdWZ3qCq3ip_Pbw+v4LxHZd95aBo=jwB+orYaMBBNw@mail.gmail.com>
+ <CA+GS1Y0kAM_XGLQuKPTphif2HcQg18ZXhd8RHHr2xPOEMCDvXA@mail.gmail.com>
+ <bcedaff0-abf8-4585-a0ea-057062cd0411@rock-chips.com>
+ <CA+GS1Y2-hRqpGgsknh+oOX+-uZ3DZtdekdP9viTP6a40zhhUhg@mail.gmail.com>
+ <b05f7154-e85f-4207-80ae-f080282ba780@rock-chips.com>
+ <DJ5A9XL183RZ.20J3ASQ3EWUZ6@cknow-tech.com>
+ <CA+GS1Y1xAq-9eMyMmoVE6NG9KLG7XRxgPoSr5RkW=6fT5D820g@mail.gmail.com>
+ <DJ5FUW50YM2N.6ZTY4WK27ZP5@cknow-tech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 11/30] drm/display: bridge_connector: Wire up HDMI 2.0
- scrambler callbacks
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
- <20260602-dw-hdmi-qp-scramb-v7-11-445eb54ee1ed@collabora.com>
- <20260612-attractive-dashing-mule-309598@houat>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260612-attractive-dashing-mule-309598@houat>
+In-Reply-To: <DJ5FUW50YM2N.6ZTY4WK27ZP5@cknow-tech.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/281.294.11
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_134211_143180_37BA8AA1 
-X-CRM114-Status: GOOD (  25.94  )
+X-CRM114-CacheID: sfid-20260612_141757_898394_6FADD4FF 
+X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,152 +89,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4076029721376566282=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/12/26 11:52 AM, Maxime Ripard wrote:
-> On Tue, Jun 02, 2026 at 01:44:11AM +0300, Cristian Ciocaltea wrote:
->> Connect the bridge connector's .scrambler_{enable|disable} callbacks to
->> the underlying bridge's .hdmi_scrambler_{enable|disable} funcs when
->> DRM_BRIDGE_OP_HDMI_SCRAMBLER is advertised.
->>
->> This completes the bridge connector plumbing so that the SCDC
->> scrambling helpers can control source-side scrambling through the
->> bridge chain.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/gpu/drm/display/drm_bridge_connector.c | 41 +++++++++++++++++++++++++-
->>  1 file changed, 40 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
->> index 9d21b1b57b0d..d048ab49eade 100644
->> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
->> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
->> @@ -555,6 +555,32 @@ static int drm_bridge_connector_write_spd_infoframe(struct drm_connector *connec
->>  	return bridge->funcs->hdmi_write_spd_infoframe(bridge, buffer, len);
->>  }
->>  
->> +static int drm_bridge_connector_scrambler_enable(struct drm_connector *connector)
->> +{
->> +	struct drm_bridge_connector *bridge_connector =
->> +		to_drm_bridge_connector(connector);
->> +	struct drm_bridge *bridge;
->> +
->> +	bridge = bridge_connector->bridge_hdmi;
->> +	if (!bridge)
->> +		return -EINVAL;
->> +
->> +	return bridge->funcs->hdmi_scrambler_enable(bridge);
->> +}
->> +
->> +static int drm_bridge_connector_scrambler_disable(struct drm_connector *connector)
->> +{
->> +	struct drm_bridge_connector *bridge_connector =
->> +		to_drm_bridge_connector(connector);
->> +	struct drm_bridge *bridge;
->> +
->> +	bridge = bridge_connector->bridge_hdmi;
->> +	if (!bridge)
->> +		return -EINVAL;
->> +
->> +	return bridge->funcs->hdmi_scrambler_disable(bridge);
->> +}
->> +
->>  static const struct drm_edid *
->>  drm_bridge_connector_read_edid(struct drm_connector *connector)
->>  {
->> @@ -580,7 +606,7 @@ static const struct drm_connector_hdmi_funcs drm_bridge_connector_hdmi_funcs = {
->>  		.clear_infoframe = drm_bridge_connector_clear_hdmi_infoframe,
->>  		.write_infoframe = drm_bridge_connector_write_hdmi_infoframe,
->>  	},
->> -	/* audio, hdr_drm and spd are set dynamically during init */
->> +	/* scrambler, audio, hdr_drm and spd are set dynamically during init */
->>  };
->>  
->>  static const struct drm_connector_infoframe_funcs drm_bridge_connector_hdmi_audio_infoframe = {
->> @@ -886,6 +912,11 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
->>  			     !bridge->funcs->hdmi_clear_spd_infoframe))
->>  				return ERR_PTR(-EINVAL);
->>  
->> +			if (bridge->ops & DRM_BRIDGE_OP_HDMI_SCRAMBLER &&
->> +			    (!bridge->funcs->hdmi_scrambler_enable ||
->> +			     !bridge->funcs->hdmi_scrambler_disable))
->> +				return ERR_PTR(-EINVAL);
->> +
->>  			bridge_connector->bridge_hdmi = drm_bridge_get(bridge);
->>  
->>  			if (bridge->supported_formats)
->> @@ -990,6 +1021,14 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
->>  			bridge_connector->hdmi_funcs.spd =
->>  				drm_bridge_connector_hdmi_spd_infoframe;
->>  
->> +		if (bridge_connector->bridge_hdmi->ops & DRM_BRIDGE_OP_HDMI_SCRAMBLER) {
->> +			bridge_connector->hdmi_funcs.scrambler_enable =
->> +				drm_bridge_connector_scrambler_enable;
->> +			bridge_connector->hdmi_funcs.scrambler_disable =
->> +				drm_bridge_connector_scrambler_disable;
->> +			connector->hdmi.scrambler_supported = true;
->> +		}
->> +
-> 
-> I think we're taking this backwards. The scrambler support isn't
-> optional: either the controller supports HDMI < 2.0, and then it doesn't
-> exist, or it supports >= 2.0 and then it's mandatory.
-> 
-> You're considering it optional here, when it's never actually optional
-> (unlike YUV420 for example)
-> 
-> I still think we should list, somehow, the capabilities of the
-> controller to the helpers, like max tmds rate supported, formats, etc.
-> We've so far put everything as an argument to drmm_connector_hdmi_init
-> but it becomes a bit overloaded, and I wonder if introducing a callback
-> wouldn't solve this, kind of like what we have for planes and formats.
+
+--===============4076029721376566282==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="73c7cnokjssbpj3q"
+Content-Disposition: inline
 
 
-What about introducing something like:
+--73c7cnokjssbpj3q
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [RFC PATCH v3 0/9] accel: rocket: Add RK3568 NPU support
+MIME-Version: 1.0
 
-struct drm_connector_hdmi_caps {
-    ...
-    unsigned int supported_formats;
-    enum hdmi_version supported_hdmi_ver;
-};
+Hi,
 
-struct drm_connector_hdmi_funcs {
-    ...
-    int (*get_caps)(struct drm_connector *connector,
-                    struct drm_connector_hdmi_caps *caps);
-    ...
-};
+On Wed, Jun 10, 2026 at 04:28:17PM +0200, Diederik de Haas wrote:
+> On Wed Jun 10, 2026 at 3:36 PM CEST, Midgy Balon wrote:
+> [    2.110935] rockchip-pm-domain fd8d8000.power-management:power-control=
+ler: Failed to create device link (0x180) with supplier 2-0042 for /power-m=
+anagement@fd8d8000/power-controller/power-domain@8
+> [    2.557459] sdhci-dwcmshc fe2e0000.mmc: Can't reduce the clock below 5=
+2MHz in HS200/HS400 mode
+> [    2.647174] rockchip-pm-domain fd8d8000.power-management:power-control=
+ler: Failed to create device link (0x180) with supplier 2-0042 for /power-m=
+anagement@fd8d8000/power-controller/power-domain@8
+> [    2.945089] rockchip-pm-domain fd8d8000.power-management:power-control=
+ler: Failed to create device link (0x180) with supplier spi2.0 for /power-m=
+anagement@fd8d8000/power-controller/power-domain@12
+>=20
+> 8 =3D NPU; 12 =3D GPU
+>=20
+> on both nanopc-t6-lts and nanopc-t6-plus (both RK3588).
+> And on a 6.18 dmesg output I have for Rock 5B, I see the ~ same, but then
+> it's 1-0042 instead of 2-0042.=20
+>=20
+> I don't know if it's bad or harmless, but it is consistent.
 
-int drmm_connector_hdmi_init(struct drm_device *dev, ...)
-{
-    ...
-    if (hdmi_funcs->get_caps) {
-        struct drm_connector_hdmi_caps caps = { };
+The fw_devlink framework tries to figure out a sensible probe order
+by analyzing links between devices. The warning is because there is
+a cyclic dependency. This happens because all power domains are
+provided by one device (power-controller).
 
-        ret = hdmi_funcs->get_caps(connector, &caps);
-        if (ret)
-            return ret;
+Now if you want to probe the I2C regulator 2-0042, you need the
+I2C controller and to probe the I2C controller you need the I2C
+power domain and for that you need the power-controller. But for
+the power-controller you need 2-0042 (for the NPU power-domain).
+At this point fw_devlink gives up and prints the warning.
 
-        connector->hdmi.supported_formats  = caps.supported_formats;
-        ...
-        if (caps.supported_hdmi_ver > HDMI_2_0)
-            connector->hdmi.frl_supported = true;
-        else if (caps.supported_hdmi_ver == HDMI_2_0)
-            connector->hdmi.scrambler_supported = true;
-    }
-    ...
-}
+Apart from the warning this results in the kernel missing dependency
+information, so there might be some extra probe calls ending in
+-EPROBE_DEFER (which wastes CPU power and delays the boot process).
 
-Not sure if max_tmds_char_rate should be listed as a capability, as we already
-have the .tmds_char_rate_valid() callback.
+So it's neither super bad, nor completely harmless. Fixing this
+properly requires some heavy restructuring of the Rockchip
+power-controller driver.
 
-Cristian
+Greetings,
+
+-- Sebastian
+
+--73c7cnokjssbpj3q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmosdvIACgkQ2O7X88g7
++poq+Q//WNiAZeCgn2HpeHzvi+tZUbRlCrs91vnfbyyp+MgI5k47fApfmuGuVIcL
+a7FntM6Sm6vK5x1JfXt5tL6Zcvmhpm0YVz3FNvIMn6XMaq25w+qoyyD+Cah7iazS
+hdYmaxEfOq6AaQmAJ0DIvg98xzBovOhk5j94r/CymBTfskaVGJ0kvnleQe4xmTUS
+HOUKdwQSz4BJ8xEIamPZ6kDCyDroQkqgbSlS6T+JjrhYtEYuj4K3B9eYNRZQTYN9
+cdpKUZCoiJz0pRtoi+SKNS7KRYBNPtqHD6KZgctqhjjTB/ZBkwpkawQcct0/JUR1
+2JFNz8EsoYsJdqEvHeFhcpCJYUc6E4+/5tQRPZUaeDW9774A005T6iDbohCKWynG
+fW5i+psb3BOmTyTYFaLduwo9tmGnOX4h13de38FGuGmZX5VrOxLU2urruLVXAeoQ
+gsldVMOQ3ptd47lBH4d7rHe+oRZqs9Qhc9dgg0qFdC705L8tL9vxVsTdySk2zW7V
+N0ojS11VP/1RVFOVcrl9NXFWFojuAKTLlXvEj0u80JHyP1OjjaGTKr2BPGS4G0kI
+5LFZZdwSLbsTpUsXbUyRvz++myq/HlepUhpUTu9RriXFmWRbcXvxfOE84EtvPST9
+fv7vfqWZrycpFf4hqNwXFsEzP8iWPacUFw+Bbn0KW5waxsnQqRI=
+=xMTH
+-----END PGP SIGNATURE-----
+
+--73c7cnokjssbpj3q--
+
+
+--===============4076029721376566282==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4076029721376566282==--
+
