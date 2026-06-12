@@ -4,136 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E32DCD98CE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 15:38:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D523CD98CF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 15:58:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e2UIc/pc9GhAFMCw7kE8AMA+04yzyGE4zoeIz/hS5QI=; b=HQtvgesFlA+/7DTFQBhhZhk3Uf
-	XhXl2YAmg+s4FYvbdNAjZfVy+PuIY9e9ZqaPsxWeEHgaielBxiBS87iyvDmJ7ukovl4LuhvIMywYJ
-	if3RzYBqxEvMcPdNbsWPF/uofAbzoFa1IPdz8+BbFq1lg+UB/07NugEd8lyY8OJErldHtb350hL6q
-	t2yjzzsyrnJ67GyIkdPMAJJDPTcCNnAhLP/lNgJv1YE396bcPK77xW5Tc/wnlsAGnLsMrrsvoyil0
-	a62wSJ5O7uUA6avLsBcwLu+MPGauT+9uiJ38yQrT0o69X1wyEZHFQejdDgfwpsjiq0chHrZ45QCGf
-	/9T90/mA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ja63as4Pgzvy1y9bGMhK0sZF5RvNfWwYL4G1P0z9vXE=; b=CA84mKOdDrij7lHbAW9r1ug/Fg
+	qt/ttIZPQm9apEvZaQPJFzerabd2dbqstJEhG8U/q3aXPLYnsLDWJheeBsIjuXXOy8v/evM8HpFCA
+	CeMLEhwvZwUu7WOi1U3GTYU4TDv735xMKyjri/uQmJAYruL/HthzGSL3ZC8fj8OaJZteqEjARGVux
+	hoZfSja95V7B42kIRrstrJ3EjROOSgBjx+/jpaWUGwL95mTzMBpuIcbn1FMLL/UH6qYyIQcSXnBMz
+	0Z1+VhRAEdIYu4xSPXcbqQxX/yGjF2cfeES/OUcOamhmP2UzdYvqDfOFsPbTxJcArvkDU3ttqwKtr
+	BvGK52bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY3xr-0000000BAZj-2Jwf;
-	Fri, 12 Jun 2026 15:38:35 +0000
-Received: from mail-westeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c201::1] helo=AM0PR83CU005.outbound.protection.outlook.com)
+	id 1wY4Gh-0000000BCH2-413M;
+	Fri, 12 Jun 2026 15:58:03 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY3xo-0000000BAZ3-2ypd;
-	Fri, 12 Jun 2026 15:38:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=eqhndKni74jVAimBa3RoFnZalIWf+OF+DzYTx1hL7I6c1M7VxcobzdYrMxkdVyQw518Nd1BSF9CULASqs9h0aTkJH1+Lc7YCNuiGVclB1uw2gNGKYczaytfajhK2IFho0SKJh+zww4B6YyMSMkR5MgRP2HE4ckhUcXqDZKt2ak3vgsABmdJc5py6nZZwEJt1jVBf2HCrzEqkGfnlqIq8CQGMCbhxVWUE8IVkicBWINiDUzyUUnKXP0g++mKAz/BQlBhIou4vHscgk8sFU1RiBZS+FGu8FcPklrBl/ckc+G91f5zb0E2xoRDWgRpCEu1VGrnKZnHyYw+Ztfc91/4Qjg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=D0So+8JPsbzXZdKea5ZjRU+5S2j6kVx66qOfXBHToJQ=;
- b=lvlIG2+tQUTaac4/RVLh513jnbPwGV4aTJRomhsGOjWqNuiJOn60gpzPfNeYEewHFUWkvPYQtCKZ3bSFrfGUT+I4zaUmSdWyC2OscYTzJk3NN5yxWqBdJiKfPcQJOW0oGiCRbS2vzvXQGentRc4hHR23NKR+UL9qgjMAE6n6zFr63LI5zcwqA4W3LPqhtGcs6Uk2/PHaQTT7WoLeFzKYJSypA1Wf+qqC79338nCFlRRL8vUc6Dd+KMrykTqTSr1scx3kf/44s/qmESI7loCkHWeyJiXneGB0Ns4ZRI6bPj0MuDTdpkwsNGy5hF0fh/s44tVqKLHkzSs+WfS2LwdbaQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=D0So+8JPsbzXZdKea5ZjRU+5S2j6kVx66qOfXBHToJQ=;
- b=LYeqdXbPOspIglC8VAUk0PMyY5he+k/Df1Zxd5aEBIhzx7b3gT3DjKALFl8HBjYz59hp8g9JbviArWuPifjURfNnh1YQUF7IbEc0dct6KviNpqRSsSzkyzoNROjfnr2Hr1P4udPxM62Ew48ufzi3ouj1OtFwOP2HejTOWFY6bIU=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from PA4PR04MB7743.eurprd04.prod.outlook.com (2603:10a6:102:b8::20)
- by AM9PR04MB8180.eurprd04.prod.outlook.com (2603:10a6:20b:3e2::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.14; Fri, 12 Jun
- 2026 15:38:26 +0000
-Received: from PA4PR04MB7743.eurprd04.prod.outlook.com
- ([fe80::9a4e:252f:2fd:97b7]) by PA4PR04MB7743.eurprd04.prod.outlook.com
- ([fe80::9a4e:252f:2fd:97b7%6]) with mapi id 15.21.0071.010; Fri, 12 Jun 2026
- 15:38:26 +0000
-Message-ID: <2710972a-ba6a-48d3-8551-1db5639d7d98@cherry.de>
-Date: Fri, 12 Jun 2026 17:38:25 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] arm64: dts: rockchip: fix emmc reset polarity on
- px30-cobra
-To: Jakob Unterwurzacher <jakobunt@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
-Cc: stable@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260609081728.30616-2-jakobunt@gmail.com>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20260609081728.30616-2-jakobunt@gmail.com>
-X-ClientProxiedBy: FR0P281CA0151.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:b3::19) To PA4PR04MB7743.eurprd04.prod.outlook.com
- (2603:10a6:102:b8::20)
+	id 1wY4Gg-0000000BCG8-148D;
+	Fri, 12 Jun 2026 15:58:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1781279867; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=nGvzkeuAayjdmBeqtxbjSWHbdPj8/CMrlnp4k5a07CEE11tERyT42JuG3FEpYN8ArfOh7vM3wdb6O43o0CUsmtS83AC6EEJAksu+JBIs+/WKYNjW3XFwZt4WrcEi1ueQR6dotr75yvNLK/ehDEhQJDj+lIZXuNRvjcmrmdRfidE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1781279867; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=vzdJ9w2taUV525sIaNdL6rwORL1fnnyeOFL2zOPHUvc=; 
+	b=I64hqWs9kfidq6Sua/Ter/ug4SFISdzHpkNJx3kT4lVm3a19ejchBMK8Z0vw07KYDpEV284wpcIsQomhzLp8PuxSHaczeMU3gVGwmtLJd6OO4+uKFXvrkbH7U8/Q/r+GbHdO7RuqK/R8VMr58hKsXqLd7SKZqM+5nwW4LfeEibM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1781279867;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=vzdJ9w2taUV525sIaNdL6rwORL1fnnyeOFL2zOPHUvc=;
+	b=VRN6z7S5+7K9JM9iR+cBluY6aRs1RVeyf7/gayIkp58AnkAg7LGrPlgwMJDWyn1J
+	UuIoGA42i+Jrdm5cqL2X/7ll9Ac+t8wr/HjSVA6URfHh1sHeOuw9QQXw7y76+VZ4b1R
+	AofejKoL13MDuLMr2GbhM8nGZdaZ9U9VQbkoWxS0=
+Received: by mx.zohomail.com with SMTPS id 1781279864587114.40647436656968;
+	Fri, 12 Jun 2026 08:57:44 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id D5B15180674; Fri, 12 Jun 2026 17:57:39 +0200 (CEST)
+Date: Fri, 12 Jun 2026 17:57:39 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Neil Armstrong <neil.armstrong@linaro.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
+	Yubing Zhang <yubing.zhang@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, 
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com, 
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v4 07/16] phy: rockchip: usbdp: Support single-lane DP
+Message-ID: <aiwrNQhPsqlqDB-Z@venus>
+References: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
+ <20260428-rockchip-usbdp-cleanup-v4-7-7775671ece22@collabora.com>
+ <f29df43b-111d-471b-8579-0196596fc32b@linaro.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB7743:EE_|AM9PR04MB8180:EE_
-X-MS-Office365-Filtering-Correlation-Id: efd90c59-aa3b-42f1-1250-08dec898a4d3
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016|7416014|23010399003|18002099003|22082099003|11063799006|56012099006;
-X-Microsoft-Antispam-Message-Info: 9qpOl96E49VuQx6/9WNP2jAH1jNKk4fxaHcY/4OgoPAoTEDCEWA0QdvXfTRn+ajy4FkSFfrN/H+9DboQcePPp0sm3wQ/puZ+mRxpHx3wP2XGtPZgMXjox5jeUjgXFyaslFk4GBllHujmh8kUolMsGajIUHavftXf6E02Db2kgD0JmETmj2Hd/0ZD9uzMDOqQRaSE4UQ+Y5bL8t80o1dSQQBe26J24KPJY5oDwgF3esNVczfaFkayxeOOFDh52tER4KLaoG0zR4fby9Qu80+jqRHpNjTC2lNhorV5OGqQk9d291qTOlYzFynZtmECziOx+Zlsih6L8nVBQLvBi04QYphiPfi+A8j8wnM0POzNq5bZSII5zSFGQDtsUjnIyVjVxxOt50ILGXk6YHipnMY3CKZSmyN6PYWTzSN65/7GpoBk0tcz9QuIpgY4NqFzTxvIbqlHZQdjpqniMkb9HF7lc1rXRbYrHUE9H3NDvNQPbHaEC77OCtLCwimjhr6+1rLen9d1TSLYFAWpknv29fGVW4+Juk/d5rGLA4qkrkxdQP0cPPqKfR1nBCb+YcXd6BS3A9vd2eAo6TYYGJgY0poicFmnPmEjK/BmoqPN+s9pgwN956pGD4I4sMlh9fCfA4VE2tBZw1ThmILDEYUlgV8WS8DbgestZBwEgqjQ+sc9tdatw9dSDknoDkB0bIcVit3/
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB7743.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016)(7416014)(23010399003)(18002099003)(22082099003)(11063799006)(56012099006);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ejZPOW5TeXdPMWc0VG5xbnIwSVFxb3pid1JJMExHdm5xWkQrei8rVEsyeStP?=
- =?utf-8?B?Qm9IeGl0dVVaMityaWc3dXJxNHhXbkNTVFJSSzYzSWd0U3JJLzAwUWsyeis0?=
- =?utf-8?B?ZXdYN2p1Z25WLzhWTDVVcGloQ0FtZ0hKaEJFOWF6R2lyM2pUR2FkazI5NTJz?=
- =?utf-8?B?YWREZEtjL1N6YUMrOXUzUTNDamdMc2ZFdXNPS0xORDFkdW9oN1B1OHpBWjYw?=
- =?utf-8?B?Rk5xbHF3Wk9IOVUzZzJIMk01N2xUWXdZS0VVT28zSU54YzFwUi8rQzcvN0Jm?=
- =?utf-8?B?TUkwU0JLaW80MWlGNTdhc1I4amFtZ1lpc2JMVVlBMWx5YVpHTlRBT1hGUTIx?=
- =?utf-8?B?dktJMXNPTFpDRnBzNkVxNG5ubDVUNEdWcWw2Y2Y1VkJkSTMyRlY2d3YzRXFk?=
- =?utf-8?B?Ri9EUGgrTGx2MDFvdmI4VVFzWW1Ob254U0ZsMGIwQ0FBdk9nOEt0dTh3THBa?=
- =?utf-8?B?SnYxRFlvc1drblJzWXQvSWl0SGN4TklDTXBSVFpJcy8vc1ZIMWVSb0c4dHhh?=
- =?utf-8?B?OEYyanFUNXc4NmdXdzI0Tm9wNTAwdUg1cWppaGNraXJEcEROUXBVRjVJc3Ew?=
- =?utf-8?B?UGRRa21GQkhUcEc1K3hxblF2MG9tWnZMSURqUkdJbHVtZFZNR1JOVXpBdE9n?=
- =?utf-8?B?L3lWNll6OWVpZXExT3FZbWVRRkVOajFacXRMb2tkVXgzTlpucFZPdUNSakhq?=
- =?utf-8?B?bkV0NTZ6Tk44NFRKUTlOcFNnZU1Ka3NNTUVnM1BrOTNkZjAvRzhETFpiRzFU?=
- =?utf-8?B?WVp2dkhqWlNCSU5EUDVseXBwa3RwempFMWhTcDFrdXNIelh1VnNOYXJZeVhy?=
- =?utf-8?B?dEE0YWYvbVY5a0d0N1BNN3dueE5XcVg1MEpjaGduMHBHRWkraTJBd2U2TnVD?=
- =?utf-8?B?R1lhaXVpMWl0K3VzTUJ3dFE4bVcwajlaU3ZpOU5nVTIyRElwalU2MjY0clg0?=
- =?utf-8?B?ZjVnZDI2b2xpQmk5UVM3V3hvSmJwL1pMTmVKMDFSMFF1OTlCSy9Ya3RKTWxS?=
- =?utf-8?B?bnlKSG80ckloRFFDZ1FmZGZXdmlkQ3UrM01ReFhNN0xhUTNvRThRS09VenJn?=
- =?utf-8?B?UUhHTWhJbGVXTVQ3bk1URllLU2tKYmhZZXhoempEMEF5ZnRKVXhFQTFLMzFm?=
- =?utf-8?B?cXlraGVXSDZ6cWhDdzRsUzZXYUV1eGFmRXcvanYrWDJKNFc1c2VOaDcyYVlN?=
- =?utf-8?B?bnBnMU9HSXZ4bnRlemF1eWZxSU4yZXRDVWRuTGtZTWdEZm1hQkFnRnhZZGFi?=
- =?utf-8?B?YWpDZmpqb29JdGRlbzlyaXBmQkZlTmdGZStxVjFQZG1wVnBWcUsrWmZVdVB2?=
- =?utf-8?B?bWR3TlNSSWFoU0NRSE83eGlTdmJKRGJMazFkSTVDV2crcnZ6QzR4SnpMMDMz?=
- =?utf-8?B?SnF0c2FWbmNxMHhWUTA1Nzdna0h1RXArbVptVEJ4U3phT25KbWU1c3hjSWpk?=
- =?utf-8?B?UUMvYUhOSGw5QUp3RkZJOFNMYUZSMFJCQ21rT2kxb3EzakVyTzRSbG01ZzRD?=
- =?utf-8?B?dmdLVjF1aEs1SEZ0RFFjY2hURnhMQVcraGlJTi9Cb1ZpaXVJYkNubmNueWJZ?=
- =?utf-8?B?WEZySjJ3aDFBTzFRdUdJdlJFTmNvMUo3cUlDaGplSXVFWHBzYzZSZFhVVk5J?=
- =?utf-8?B?TnhiQlNHaENtY3g1WFZuMlp1UmI1cTZ1bmY5cEtkc1ZKRi9EeCs3UUNobWMz?=
- =?utf-8?B?dm9TaUpWRkdMaXFlek05dHBVRmNTWlRCeTFnTnYxZ2dyWVZMZUVlWmVUUjlX?=
- =?utf-8?B?WFVkZnhHcHRzeXJ4V0d3V2l4aVhMK09IcWFGVjg3dnBVVWxidE9aQ1daOFFP?=
- =?utf-8?B?QzVNR2J4RXBtNEZqOXRwWFh5bjVhUTNmOHlueEVLSWU4cnFVNCtZNUViSFFi?=
- =?utf-8?B?NkxFd0dYc3kvWmE5KzBIS2k5S0pldm8rK2tHc0dMWEp2WEUwN1hOY2g3dTl5?=
- =?utf-8?B?dkRlcU5LWXo1ZDUzclBtNkxaOTBXRC9qRTZuOXk0bFNveEFYNDZtcXRQd3BX?=
- =?utf-8?B?Wk9jcThDb01mN0p5eTJzS2pXeWs2NWdZdDJ4YlFZK0FNVlU3ZDlHb1N3OVM2?=
- =?utf-8?B?eDJ6TEhMT2pVUm4yNlVuRzVpRjlKV1o0S1hUenRyV2JnNm5XaUR6SE5CZzZI?=
- =?utf-8?B?TDZhVysxdXU3R1JQdEpCZnFtZlhrUmp2aUhIdFM1UTM4SVBwTlIvTHlCSEhr?=
- =?utf-8?B?aWEvYjlUQ1ZVWDVCay9kd3N3Njk5OXBXRkpCbTdrWlAyK3QvanVURHpic3ls?=
- =?utf-8?B?Zk91NFlHU0FuR0JJM1NnL1VQTkY3M2NIM2tRNXpZR0RYTUQzdzZiQnJOUE1l?=
- =?utf-8?B?SEVMS3FUcXAwNkQwQ1ZZaG8zWGJKOEN2YjNrdTBKL3k2cEFVK2NLdz09?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: efd90c59-aa3b-42f1-1250-08dec898a4d3
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB7743.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jun 2026 15:38:26.0245
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ceLR4HtpxOpVMnADfu+qMnnqDYJKbfnEwKc6rURlw38ibRMMTof3B2n0/kfZsLMLVi31gaLUutWlyjL2xfdv7OJRK7tR3owYei0spDSMoc4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8180
+In-Reply-To: <f29df43b-111d-471b-8579-0196596fc32b@linaro.org>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/281.270.71
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_083832_806083_47114724 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20260612_085802_323987_E266A16A 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,36 +83,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============4144801225022396365=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jakob,
 
-On 6/9/26 10:17 AM, Jakob Unterwurzacher wrote:
-> From: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
-> 
-> Technically, the reset signal is active low - it's called RST_n after all.
-> 
-> But it is ignored completely unless RST_n_FUNCTION=1 (byte 162 in extcsd)
-> is set in the emmc. It is 0 per default.
-> 
-> For emmcs that have RST_n_FUNCTION=1 we failed like this:
-> 
-> 	[    3.074480] mmc1: Failed to initialize a non-removable card
-> 
-> With this change they work normally.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: bb510ddc9d3e ("arm64: dts: rockchip: add px30-cobra base dtsi and board variants")
+--===============4144801225022396365==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="rchdwn5oprkndp3s"
+Content-Disposition: inline
 
-Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
 
-Thanks!
-Quentin
+--rchdwn5oprkndp3s
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 07/16] phy: rockchip: usbdp: Support single-lane DP
+MIME-Version: 1.0
+
+Hi,
+
+On Wed, May 06, 2026 at 04:53:07PM +0200, Neil Armstrong wrote:
+> > @@ -537,6 +538,13 @@ static void rk_udphy_usb_bvalid_enable(struct rk_u=
+dphy *udphy, u8 enable)
+> >    * <0 1>                  dpln0         dpln1       usbrx         usb=
+tx
+> >    * <2 3>                  usbrx         usbtx       dpln0         dpl=
+n1
+> >    * ------------------------------------------------------------------=
+---------
+> > + * if 1 lane for dp function, 2 lane for usb function, define rockchip=
+,dp-lane-mux =3D <x>;
+> > + * sample as follow:
+> > + * -------------------------------------------------------------------=
+--------
+> > + *                        B11-B10       A2-A3       A11-A10       B2-B3
+> > + * rockchip,dp-lane-mux   ln0(tx/rx)    ln1(tx)     ln2(tx/rx)    ln3(=
+tx)
+> > + * <0>                    dpln0         \           usbrx         usbtx
+> > + * -------------------------------------------------------------------=
+--------
+> >    */
+> >   static void rk_udphy_dplane_select(struct rk_udphy *udphy)
+> > @@ -544,18 +552,18 @@ static void rk_udphy_dplane_select(struct rk_udph=
+y *udphy)
+> >   	const struct rk_udphy_cfg *cfg =3D udphy->cfgs;
+> >   	u32 value =3D 0;
+> > -	switch (udphy->mode) {
+> > -	case UDPHY_MODE_DP:
+> > -		value |=3D 2 << udphy->dp_lane_sel[2] * 2;
+> > +	switch (udphy->dp_lanes) {
+> > +	case 4:
+> >   		value |=3D 3 << udphy->dp_lane_sel[3] * 2;
+> > +		value |=3D 2 << udphy->dp_lane_sel[2] * 2;
+> >   		fallthrough;
+> > -	case UDPHY_MODE_DP_USB:
+> > -		value |=3D 0 << udphy->dp_lane_sel[0] * 2;
+> > +	case 2:
+> >   		value |=3D 1 << udphy->dp_lane_sel[1] * 2;
+> > -		break;
+> > +		fallthrough;
+> > -	case UDPHY_MODE_USB:
+> > +	case 1:
+> > +		value |=3D 0 << udphy->dp_lane_sel[0] * 2;
+>=20
+> What's the point of keeping this no-op calculation ?
+
+This function is cleaned up in a later patch to no longer have the
+switch/case at all ("Cleanup DP lane selection function"). I kept
+the no-op calculation here, since it IMHO makes it easier to understand
+the cleanup patch and will be optimized away by the compiler anyways.
+
+(I will send out a new patch series in a jiffy)
+
+Greetings,
+
+-- Sebastian
+
+--rchdwn5oprkndp3s
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmosLG8ACgkQ2O7X88g7
++powOhAAjGKDnrFO/NogQjJApKysPt9NuuN6z1D58zENDmEHAdPNtxLZl9DsyK1f
+bhNbIb/kv9nN3HuJgCHsT3/5FiG7xUMq/FzE/LZXkYv70AA9TC1uH8hd6/JvTxzi
+jVzUVU9Kgxg0Q5RxfOlFF9pC1NhT+BWzbT5vAbdF367hEKzPataR01oYpn/jgEmg
+v7otspxo6li0UWm/kYndVpql9nwDTWTn7upSLcUUNC2JOqVq/JRw9IhX4E+4Q7yO
+05uATUwjSXCsWlP2fvLGTuyouPEnpT4vIZEE5yC4MiY4ZMZJECvluWweAhBsrVf6
+mcztycUWmsTqEtqfAR02KxwtNJS0cmGpCdKfA/n+GulU4TgsCzD3vsUNQcs4sU6V
+rVGb/v4Wh6QJbMBzw8Y+t2ts2coGC27fZUx8f3cSX0KOTqlg2t704/dHvcA9ooAK
+rMUekMp8P4TVtXYf2MHtGU4QwviQUqkXGe2STukCIX/fgNYMGPmDrQKo0NUb1BgU
+UzApK1gna3wOUBXojV1efN/JEpxQqBbEcy8DJeVu31jBO2ymYObn9PKf2hqjSnIG
+HJ/35QT9khXiDj9zcg/pxt7abqwVJVRfIad0nsJ+tIsCYHTlmOzkJTqxauq3A8Zl
+Qqjgl0LYeZotsiZ4PCrEiDJyVqxUwdE9+EQR3gyVNoCUcARsNhw=
+=+Cjz
+-----END PGP SIGNATURE-----
+
+--rchdwn5oprkndp3s--
+
+
+--===============4144801225022396365==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4144801225022396365==--
+
