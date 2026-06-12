@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BA77CD98DC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 18:01:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58584CD98DF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 18:01:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JtAyEh/tS8v3G6bUWkHpUOHBBcRQWtSqIwWEe8ni9wg=; b=zmO2l6k/Q2ZDy0
-	p/bSAI+Ckez5xe+cjLZ/mNQQ8rwrBx1Eu3komzbdR5WTeyXe6C9opzAiLqLNK+YhPnsV2FN2N7px4
-	dT8pHvlp+33g3Y9+eiv9gLBT3XCrakLFUL3RLiCSjNXoujdEdeTtdGhRCfE0QMPn4oXDd8Rqxlu95
-	Uz/N2ZtJINR9mlKyXcN5PPhcrH5sGhts89A/Uc/WYBzDvMIEyDpOU6nZgCIfkkB6ZgAek25iDPO7g
-	3oX8UBoNXkz3mpnd6BfqM3r1TS3saPiiVJK+qmsQ4FUz6y6afGrLtpAESWXh1o/xpBXLR7Lp8O5rU
-	0+BB+N+dY71rscIHrLFw==;
+	List-Owner; bh=B50zLHtDUJvYlWglhX83J+eVv0+ssktBAqZTl2AxOPk=; b=BhfB5OZzv+Pr5p
+	h0wP2Prp4FcLFsqMtewL+jQmkZf+jzWp5L6s88uprROxLIBz1izKYqujIAy7SAIo/pIwNaP/LqEWb
+	/8tJuxbNQufkvCBO5sp0Tb+fTdro6vpEoIdbF2VyBPjLbCW3uuHhAWMMCQDV76Zljj+KvwtUg/yIe
+	GjvcFHwQxupHU9hvnkJenNiLrXnI9zYzWa2YJRt8qqQwVZUgZ71J57L6b8G1px1uwbyEXXFnjpSFf
+	6BTtFPZUDpPb5Wwb81XfW6L9GvDo3d6WiVqxoNJqw8HED/36hGSso4ivjxdH6EZkgQ6mv9HtbiLEU
+	ZaEiVEl6hu61tfTvDD1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY6Bo-0000000BNNy-37Zi;
-	Fri, 12 Jun 2026 18:01:08 +0000
+	id 1wY6Bq-0000000BNSE-0GJT;
+	Fri, 12 Jun 2026 18:01:10 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY6Bg-0000000BND2-3Ren;
-	Fri, 12 Jun 2026 18:01:03 +0000
+	id 1wY6Bh-0000000BNDd-0rOr;
+	Fri, 12 Jun 2026 18:01:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1781287253;
-	bh=BXeARZ0ujZDNhdquS/qJc3J32JsHagxLqC8adFmTGE8=;
+	bh=dL3GvBpUWK60QI4BRVYXqTeextgd6JG8E3Id1W/JV98=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=HgIBIhPvknd1Q2ddj2XeDUcvA1Oic44+kMbKstN6zOtQY1pPo94fisndk5qVE37iP
-	 0JyrxmG1pRZLCLSdLUXTMeE6/jrKbL7mTy+Cq0CO0J6mZqq9ZSguDtc3MqZWFalvQh
-	 fRIO5LGjLj7PGZTpWRP+YgUowsh3puQ2VUMWZrv8zhkvfwtWlPLevXzoUF6aB/YZZh
-	 9+/k1AjfbagPokcwk2i1KFQNqqHT7HonyMZFnhMwaobrd55S8FtxqQ+EChVXcJpSlI
-	 Cu56CRvFThelAw/15BsOVOxsEei2k/EtA2eBrEswq3bVNephE/H9r/AUgsXR+s5juX
-	 AgZHyQWnEBh9w==
+	b=qCZY8qjQuDqp+h/kEMMGZnL/4b1hYab8tzWjNyW6N+GsTPBykrMigp/YQQsC4ZVop
+	 NZTPWpwIW5KJ1MSOUd0f8bo8RmThUyHQ3p2R9iHbcyknVP7jo/GgRrqu+HyfUmPmOb
+	 O87C/MNb1fDky+3QgSI3x7+BtbVICFBEvTSaG5kBx99U7CjJ1kaXJtdFx+5Ub4EbQc
+	 9yU4mH5AVxSDSKAsrszlQfnaJyZZXTutpCybmjFlB+0anCiQ2nzCNyqQ+xwSzsOcTE
+	 ggdnL30es6KAQfmj+FaRU/Poa+6uqX36+pzL9YAZlRdo8sZiE5fiCdFyYqrI8MumYj
+	 1Gof4xA8cinTQ==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3F05817E0FD0;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1DB9317E0D9D;
 	Fri, 12 Jun 2026 20:00:53 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 8530548003A; Fri, 12 Jun 2026 20:00:52 +0200 (CEST)
+	id 7F00B480030; Fri, 12 Jun 2026 20:00:52 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 12 Jun 2026 20:00:55 +0200
-Subject: [PATCH RFC v3 09/10] dt-bindings: display: rockchip: dw-dp: fix
- sound DAI cells
+Date: Fri, 12 Jun 2026 20:00:51 +0200
+Subject: [PATCH v3 05/10] drm/bridge: synopsys: dw-dp: Support software
+ triggered OOB HPD
 MIME-Version: 1.0
-Message-Id: <20260612-synopsys-dw-dp-improvements-v3-9-dc61e6352508@collabora.com>
+Message-Id: <20260612-synopsys-dw-dp-improvements-v3-5-dc61e6352508@collabora.com>
 References: <20260612-synopsys-dw-dp-improvements-v3-0-dc61e6352508@collabora.com>
 In-Reply-To: <20260612-synopsys-dw-dp-improvements-v3-0-dc61e6352508@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,26 +68,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2725;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3782;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=BXeARZ0ujZDNhdquS/qJc3J32JsHagxLqC8adFmTGE8=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGosSVQEh5sbWtkeYdrxD50JXY18L37a17k8i
- beMkIXjL4spU4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqLElUAAoJENju1/PI
- O/qaE1oP/2MuS9HVQpUsHqvwtYb1JPn63Ve2KXPsy1UNEzcvcT6mX0O6uR5IJq2J1jFcHws8pMe
- gZxd8DxzxeDnwh0PdmtvM4Lh+E97IOikzqdMAC5CHvoHrtWqKVIqHnBLO62DZSveFvPCmPm3Sei
- bcwXx8Py7KHzMLVd8ABHDEudhXh2b5v93bskRJ0HEz5q4au5reAnJe8VXIs7Ff/oGYgtlN/NzuT
- n34m9PeCzwAeZ53MmKjlZcd65E9CzeMEkRLy9jWEcmgV8xwm5MvRoo0oHR9ZT/jkEXl3wz4VNlC
- Xo7cWuUaELX+NQ3az6V3kJRMJ8xCjm/w74v1mZjg+uTvhrEstyIgOFHlDdi9b33Kw6g70Cdww10
- pCNQYtKrl3qMtRILX/L1r5PtXedhRs2UWh7uvtqbJgOA88HoYFfwaF45RkhPNN6VDVUJCueFYEB
- xEk179zQoWB57GrDPTOoVBppmhhTKiEBeT6vuiq4+z8yyziQQCZcZsGOQnJ3jPGP4emExR7aASo
- eBGeNJAxh8XoyTXc11zeHGvXAReYFFCXmdxus7811yGXUT/nUVY77XHvX09ur8W+oqDoN7THLqv
- /bW15G0oM7ULw5nmasvLj9CJI2Y0pJvJUkBNpRNujICox787KpfXjJXR6eZ7SJz3aKKczWyGstY
- mIy34KEA7E4F0f516JCE1IA==
+ bh=dL3GvBpUWK60QI4BRVYXqTeextgd6JG8E3Id1W/JV98=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGosSVT5yJsFm/XmeGt4/9u012HhK7UGTwSIo
+ /6bOogz3cLLUIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqLElUAAoJENju1/PI
+ O/qauaUQAKTREDvPsMiDBcZFeiVnb7HHdePTjp4HUsgoCNjf05kXSIFKb4C6UwoTlSE4uu9U6h/
+ IzGNpTCVUitn5ZBTMi+3bgDrXoPoP/7GDMo0nx+OAnKdfDX6u6DJTGRTSfV5RW03xvQo18QrKnx
+ h+5kcdU/K2wBqgTnYcdviDINJNVtfuDpeSh/NCiSvmwuOPmc0fgVSwcJMBQdJBzjpHJ78RS1v6D
+ KpwGubOUr6YXJVokqrRuOi5YQNoc39+v2LYDo04koEdrA+TlX8JByV9UaPnBdhV/MsTtvQ/k/iM
+ uFz29OygLZkh4cFQVmQEt3HFxi1+odkVS6WlMh3Lp40EpxG16eevjbRn+oQvJJ0tUmyAkhgwbOR
+ l/LEVjqCOsJVCsuwi3izaimqsNYXTD8WIVhzfDiWbr33ZAV0/nkr/F2mSIL4G3XJ/IeQbJP0b4J
+ 2n53uyAi+qzzuD5qLLWOb2kUokc8XwQwFw+9v7pMGySBPhKAAVT8kjXx9Gi7MFms8a7wKnADR2O
+ lUZcgHisDfvyqHz9vu5aBe/me2HhHeqN7Nqh4XDeHKkHD4EWzg6So/wCMjvJyQ+27bOWnWY/fGs
+ jp+U9C4kJfQxKnZpnWFLAAp9hqois+9yfjiztvTiItCeQ+2Jb8s+wE3vLH7jMKra6BDV1ma+NDf
+ HrYxqdz0z5Qnsdu+gDeEyVA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_110101_036242_0F8BD4BF 
-X-CRM114-Status: GOOD (  18.29  )
+X-CRM114-CacheID: sfid-20260612_110101_406917_DE0305FA 
+X-CRM114-Status: GOOD (  16.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,68 +105,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 and RK3576 DesignWare DisplayPort controllers both have two
-possible DAI interfaces: I2S and S/PDIF. Thus it is needed to have an
-argument to select the right interface.
-
-In case of RK3576 this is not enough though. The RK3576 has the same IP
-as RK3588, but configured with Multi Stream Transport (MST) enabled for
-up to 3 displays and thus has a total of 6 DAI interfaces (I2S and
-S/PDIF for each possible stream. Meanwhile the RK3588 does not support
-MST and thus has only 2 DAI interfaces.
-
-The binding update right now only supports the simple single stream
-transport (SST) setup. To avoid further DT ABI breakage (or complicated
-bindings supporting different number of arguments), it's probably a good
-idea to take MST into account now even though the upstream Linux driver
-does not yet support it.
-
-I see two options:
-
-1. Adding yet another cell, so that we have the following:
-   <&dp_ctrl [display_stream] [i2s_or_spdif]>; potentially append
-   extra input ports for MST video data to existing ports node
-   (e.g. port@2). I would only handle the sound DAI part in my
-   patch and basically use '0' for the display stream and just
-   leave the option of using '1' or '2' once MST support is added.
-
-2. The vendor kernel creates a sub-node for each supported display
-   stream and puts the ports mapping as well as the DAI reference
-   into that. This bundles all information for one display stream
-   together, which creates a clean look but the subnode does not
-   really describe any real thing in the hardware.
-
-As upstream MST support seems to be quite limited, I wish for some
-feedback about the preferred way to handle this.
+Add support for USB-C DP AltMode out-of-band hotplug handling. The
+handling itself is implemented in the platform specific driver as the
+registers to force HPD state are not part of the Designware DisplayPort
+IP itself. Instead the platform integration might provide the necessary
+functionality to mux the HPD signal.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml         | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 38 ++++++++++++++++++++++++++++++++-
+ include/drm/bridge/dw_dp.h              |  3 +++
+ 2 files changed, 40 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-index 2b0d9e23e943..1303d0e2145a 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-@@ -83,7 +83,8 @@ properties:
-     maxItems: 1
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+index 98cff435dfb8..7fa38145e35c 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+@@ -1817,6 +1817,19 @@ static struct drm_bridge_state *dw_dp_bridge_atomic_duplicate_state(struct drm_b
+ 	return &state->base;
+ }
  
-   "#sound-dai-cells":
--    const: 0
-+    const: 1
-+    description: 0 for I2S, 1 for SPDIF
++static void dw_dp_bridge_oob_notify(struct drm_bridge *bridge,
++				    struct drm_connector *connector,
++				    enum drm_connector_status status)
++{
++	bool hpd_high = status != connector_status_disconnected;
++	struct dw_dp *dp = bridge_to_dp(bridge);
++
++	if (dp->plat_data.hpd_sw_cfg)
++		dp->plat_data.hpd_sw_cfg(dp->plat_data.data, hpd_high);
++	else
++		dev_err_once(dp->dev, "Missing platform handler for OOB HPD handling\n");
++}
++
+ static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
+ 	.atomic_duplicate_state = dw_dp_bridge_atomic_duplicate_state,
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+@@ -1829,6 +1842,7 @@ static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
+ 	.atomic_disable = dw_dp_bridge_atomic_disable,
+ 	.detect = dw_dp_bridge_detect,
+ 	.edid_read = dw_dp_bridge_edid_read,
++	.oob_notify = dw_dp_bridge_oob_notify,
+ };
  
- required:
-   - compatible
-@@ -144,7 +145,7 @@ examples:
-         resets = <&cru SRST_DP0>;
-         phys = <&usbdp_phy0 PHY_TYPE_DP>;
-         power-domains = <&power RK3588_PD_VO0>;
--        #sound-dai-cells = <0>;
-+        #sound-dai-cells = <1>;
+ static int dw_dp_link_retrain(struct dw_dp *dp)
+@@ -1965,6 +1979,19 @@ static void dw_dp_phy_exit(void *data)
+ 	phy_exit(dp->phy);
+ }
  
-         ports {
-           #address-cells = <1>;
++static bool dw_dp_is_routed_to_usb_c(struct drm_encoder *encoder)
++{
++	struct drm_bridge *last_bridge __free(drm_bridge_put) = NULL;
++	struct fwnode_handle *fwnode;
++
++	last_bridge = drm_bridge_chain_get_last_bridge(encoder);
++	if (!last_bridge)
++		return false;
++
++	fwnode = of_fwnode_handle(last_bridge->of_node);
++	return fwnode_device_is_compatible(fwnode, "usb-c-connector");
++}
++
+ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ 			 const struct dw_dp_plat_data *plat_data)
+ {
+@@ -1980,7 +2007,9 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ 
+ 	dp->dev = dev;
+ 	dp->pixel_mode = plat_data->pixel_mode;
+-
++	dp->plat_data.hpd_sw_sel = plat_data->hpd_sw_sel;
++	dp->plat_data.hpd_sw_cfg = plat_data->hpd_sw_cfg;
++	dp->plat_data.data = plat_data->data;
+ 	dp->plat_data.max_link_rate = plat_data->max_link_rate;
+ 	bridge = &dp->bridge;
+ 	mutex_init(&dp->irq_lock);
+@@ -2078,6 +2107,13 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ 		goto unregister_aux;
+ 	}
+ 
++	if (dw_dp_is_routed_to_usb_c(encoder)) {
++		dev_dbg(dev, "USB-C mode\n");
++
++		if (dp->plat_data.hpd_sw_sel)
++			dp->plat_data.hpd_sw_sel(dp->plat_data.data, 1);
++	}
++
+ 	dw_dp_init_hw(dp);
+ 
+ 	ret = phy_init(dp->phy);
+diff --git a/include/drm/bridge/dw_dp.h b/include/drm/bridge/dw_dp.h
+index 22105c3e8e4d..2127afa26b2c 100644
+--- a/include/drm/bridge/dw_dp.h
++++ b/include/drm/bridge/dw_dp.h
+@@ -20,6 +20,9 @@ enum {
+ struct dw_dp_plat_data {
+ 	u32 max_link_rate;
+ 	u8 pixel_mode;
++	void *data;
++	void (*hpd_sw_sel)(void *data, bool hpd);
++	void (*hpd_sw_cfg)(void *data, bool hpd);
+ };
+ 
+ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
 
 -- 
 2.53.0
