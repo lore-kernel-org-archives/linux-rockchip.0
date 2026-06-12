@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D1EDCD4F2C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 08:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99048CD8CA8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 10:01:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R2NtaC882nJsREUwIhdrMI6hL+QqRqzKMBkERYGxyNA=; b=oAptbM38mBNYjM/tWE5wDBy6vj
-	mI6qMIZWLCh0REoVSyK4R/1o9aq/nGXAag456y4ZZjmZuzBBqzpCps/ctEtgEBdEJ5XiU0msBbs2V
-	OB3n5QgAACafYSQ5hi2YK1ufVWtj+BiovwOYtV/MFEDlOV7KJR6qhvGKPwGAvuSEwJKfbVq72d4vP
-	JNJPo63Mftw/yMWJrn6gMEho/Ws41Q1E0wwgJno2qK9q15UAGv2I2z4LIKBM3YFNMOjcn4HfEQluo
-	DmReXX1huUN3y0UnCIdE4tRWLDu7PZp7Co3FeEd0jwW1J8mkYGGqU0xxxSUID3SYzkcyzP+h2fAl4
-	NBHu35+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wqmkHUJvYNjwvagbTsE8CxQoXm0nqOKuEH6fWAjlA9I=; b=Pk1D4j2mpZ6K2d
+	ieX7ZWci2zJ4dJt0PhNYNqF37t+XFqWz1uEtBLndeSyY1ctboibJu4lPT4G9fju6DxweG2wVrmPHm
+	8OfMgLQXzEInelKBGVSByGoD7gQoStm2HdoFJq+2qAILtXbJ2UbRVo8WddFxJQUz6Ml6bnqLIim42
+	QQTxoTgLtXc+eo5pxpnGdqf5leZr6uLFNHPUIszcKRocclNT9BUIWYMD0SZr3x5esYHGsW7JRWAdV
+	+BZxBGdCcQC1JSrDkK1pI1r0PaRWgSTJQ2ZrE4O4xHDBzFA/nQOJar+5d4hHrnmxVxAEOAwDN89Gg
+	7k8pBVVp8bYUFqfKfKxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXxd7-0000000AcaQ-1c3a;
-	Fri, 12 Jun 2026 08:52:45 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wXyhs-0000000AinT-3yZS;
+	Fri, 12 Jun 2026 10:01:44 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wXxd5-0000000AcZg-2Mzq;
-	Fri, 12 Jun 2026 08:52:43 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id BF1B66001D;
-	Fri, 12 Jun 2026 08:52:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0521F1F000E9;
-	Fri, 12 Jun 2026 08:52:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781254362;
-	bh=TPkdhlgzPHHsct9ezuzkSQahztwh9VczlulLvUBbC1M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=fnzI4Pi50orwHTMhV/ElwoVGbT2CuXdGZbLIbpI2f2mYiWzkBxxKgvbrGDKyxKfQz
-	 B+xAoWfzeGMboDHMW51JUXHnS9xXolBzAP2iP0tE/CX3pBqA1qIJ1sheqwYbcjY8iN
-	 IBLlE0ReenW2dD5tk1xezEq2z4OujuFVyVk4m1+YUMERXvrRPwLLcawPZAuEydThf+
-	 LbRTb8470Ps0M2GyzLNIGBuh4EHF4QdBhPuzZdfsa5MRaMqcY254TTinnx/D906VTL
-	 XfhmZupO8q0JKg+I60oQCrFwPnKHxUtoLRzgvjaEf6Qiv7toDcyUe50LH1uHi+MKZr
-	 +ZZI/hhHKMEwg==
-Date: Fri, 12 Jun 2026 10:52:38 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 11/30] drm/display: bridge_connector: Wire up HDMI 2.0
- scrambler callbacks
-Message-ID: <20260612-attractive-dashing-mule-309598@houat>
-References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
- <20260602-dw-hdmi-qp-scramb-v7-11-445eb54ee1ed@collabora.com>
+	id 1wXyhq-0000000Aimd-1uuM;
+	Fri, 12 Jun 2026 10:01:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1781258499;
+	bh=QWz/NnIpQ/tgJMgqCseSLhJn4QG66Z8YNoUhv7tJ5QM=;
+	h=From:Date:Subject:To:Cc:From;
+	b=Nxo8nx+spDC7UmghhkCZl8ZY3C7oc3KJfPG4xTDCYVKEYprVsqaXiObzNC+S+m15m
+	 SV8BzD3oyElpJQ6bA8p19cScZPEtlXZ/iG6j4Pi/n16IaYRrtwOoFCUE/c8/+XJDxk
+	 JRI9InulItPIEj8E7Plp7mSridItdSOaEXfYpeqWqMhyGOknBifxIXHOjIvtVA6SZ9
+	 38ewavdMix/Js4vQkXujL92F/dFEsYW3DQGnMWM1dnTcpKvnTb82zn4+Rr3iCDfXEM
+	 XoQ2hyilabflOyiyjI7i/7e6WE1XrySNxufaik7CuN44OK8pQt8Kfulj18E5Ji6z4M
+	 Thqsl4atsANxw==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AD7EB17E00FE;
+	Fri, 12 Jun 2026 12:01:39 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Fri, 12 Jun 2026 13:01:29 +0300
+Subject: [PATCH v2] MAINTAINERS: Track dw-hdmi-qp under Rockchip DRM
+ drivers
 MIME-Version: 1.0
-In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-11-445eb54ee1ed@collabora.com>
+Message-Id: <20260612-maintainers-rk-drm-upd-v2-1-3ff65fc41a93@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WNQQ6CMBBFr0Jm7ZhSoARX3sOwaMsgVaFkCkRDu
+ LsFD+DiL17y/38rBGJHAS7JCkyLC84PEeQpAdvp4U7omsgghVSiEAp77YYphjggP7HhHuexQZu
+ rrFVG5KWqII5Hpta9j+Nb/eMwmwfZaX/bG50Lk+fPYV7SvfdXsqSYYqvKIitNboysrta/Xtp41
+ mfre6i3bfsCbVAimNIAAAA=
+X-Change-ID: 20260506-maintainers-rk-drm-upd-c463f6b04769
+To: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, 
+ Andy Yan <andy.yan@rock-chips.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ kernel@collabora.com
+X-Mailer: b4 0.15.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260612_030142_662292_448EEE7A 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,160 +81,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3284659134126200104=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============3284659134126200104==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="n3vxqpt35grsghxl"
-Content-Disposition: inline
-
-
---n3vxqpt35grsghxl
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 11/30] drm/display: bridge_connector: Wire up HDMI 2.0
- scrambler callbacks
-MIME-Version: 1.0
-
-On Tue, Jun 02, 2026 at 01:44:11AM +0300, Cristian Ciocaltea wrote:
-> Connect the bridge connector's .scrambler_{enable|disable} callbacks to
-> the underlying bridge's .hdmi_scrambler_{enable|disable} funcs when
-> DRM_BRIDGE_OP_HDMI_SCRAMBLER is advertised.
->=20
-> This completes the bridge connector plumbing so that the SCDC
-> scrambling helpers can control source-side scrambling through the
-> bridge chain.
->=20
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  drivers/gpu/drm/display/drm_bridge_connector.c | 41 ++++++++++++++++++++=
-+++++-
->  1 file changed, 40 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu=
-/drm/display/drm_bridge_connector.c
-> index 9d21b1b57b0d..d048ab49eade 100644
-> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
-> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-> @@ -555,6 +555,32 @@ static int drm_bridge_connector_write_spd_infoframe(=
-struct drm_connector *connec
->  	return bridge->funcs->hdmi_write_spd_infoframe(bridge, buffer, len);
->  }
-> =20
-> +static int drm_bridge_connector_scrambler_enable(struct drm_connector *c=
-onnector)
-> +{
-> +	struct drm_bridge_connector *bridge_connector =3D
-> +		to_drm_bridge_connector(connector);
-> +	struct drm_bridge *bridge;
-> +
-> +	bridge =3D bridge_connector->bridge_hdmi;
-> +	if (!bridge)
-> +		return -EINVAL;
-> +
-> +	return bridge->funcs->hdmi_scrambler_enable(bridge);
-> +}
-> +
-> +static int drm_bridge_connector_scrambler_disable(struct drm_connector *=
-connector)
-> +{
-> +	struct drm_bridge_connector *bridge_connector =3D
-> +		to_drm_bridge_connector(connector);
-> +	struct drm_bridge *bridge;
-> +
-> +	bridge =3D bridge_connector->bridge_hdmi;
-> +	if (!bridge)
-> +		return -EINVAL;
-> +
-> +	return bridge->funcs->hdmi_scrambler_disable(bridge);
-> +}
-> +
->  static const struct drm_edid *
->  drm_bridge_connector_read_edid(struct drm_connector *connector)
->  {
-> @@ -580,7 +606,7 @@ static const struct drm_connector_hdmi_funcs drm_brid=
-ge_connector_hdmi_funcs =3D {
->  		.clear_infoframe =3D drm_bridge_connector_clear_hdmi_infoframe,
->  		.write_infoframe =3D drm_bridge_connector_write_hdmi_infoframe,
->  	},
-> -	/* audio, hdr_drm and spd are set dynamically during init */
-> +	/* scrambler, audio, hdr_drm and spd are set dynamically during init */
->  };
-> =20
->  static const struct drm_connector_infoframe_funcs drm_bridge_connector_h=
-dmi_audio_infoframe =3D {
-> @@ -886,6 +912,11 @@ struct drm_connector *drm_bridge_connector_init(stru=
-ct drm_device *drm,
->  			     !bridge->funcs->hdmi_clear_spd_infoframe))
->  				return ERR_PTR(-EINVAL);
-> =20
-> +			if (bridge->ops & DRM_BRIDGE_OP_HDMI_SCRAMBLER &&
-> +			    (!bridge->funcs->hdmi_scrambler_enable ||
-> +			     !bridge->funcs->hdmi_scrambler_disable))
-> +				return ERR_PTR(-EINVAL);
-> +
->  			bridge_connector->bridge_hdmi =3D drm_bridge_get(bridge);
-> =20
->  			if (bridge->supported_formats)
-> @@ -990,6 +1021,14 @@ struct drm_connector *drm_bridge_connector_init(str=
-uct drm_device *drm,
->  			bridge_connector->hdmi_funcs.spd =3D
->  				drm_bridge_connector_hdmi_spd_infoframe;
-> =20
-> +		if (bridge_connector->bridge_hdmi->ops & DRM_BRIDGE_OP_HDMI_SCRAMBLER)=
- {
-> +			bridge_connector->hdmi_funcs.scrambler_enable =3D
-> +				drm_bridge_connector_scrambler_enable;
-> +			bridge_connector->hdmi_funcs.scrambler_disable =3D
-> +				drm_bridge_connector_scrambler_disable;
-> +			connector->hdmi.scrambler_supported =3D true;
-> +		}
-> +
-
-I think we're taking this backwards. The scrambler support isn't
-optional: either the controller supports HDMI < 2.0, and then it doesn't
-exist, or it supports >=3D 2.0 and then it's mandatory.
-
-You're considering it optional here, when it's never actually optional
-(unlike YUV420 for example)
-
-I still think we should list, somehow, the capabilities of the
-controller to the helpers, like max tmds rate supported, formats, etc.
-We've so far put everything as an argument to drmm_connector_hdmi_init
-but it becomes a bit overloaded, and I wonder if introducing a callback
-wouldn't solve this, kind of like what we have for planes and formats.
-
-Maxime
-
---n3vxqpt35grsghxl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaivI1gAKCRAnX84Zoj2+
-djIfAX4gl/jF11O1U0ipeE3tq/q2Sw/0AAkRlpfSHPqNctwzsSxvOTiUiwPjtCQz
-g6B1o6cBgIlXb4HKuDws04ZRr/4a69WIrsit4rx0g7J3HAYwwOScp4GwzYIKWTP0
-ePF52hyZCw==
-=gRuq
------END PGP SIGNATURE-----
-
---n3vxqpt35grsghxl--
-
-
---===============3284659134126200104==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3284659134126200104==--
-
+VGhlIERXIEhETUkgUVAgVFggbGlicmFyeSB3YXMgZGV2ZWxvcGVkIGZvciBhbmQgaXMgY3VycmVu
+dGx5IG9ubHkgdXNlZApieSBSb2NrY2hpcCBwbGF0Zm9ybXMuICBBZGQgaXQgdG8gdGhlIFJvY2tj
+aGlwIERSTSBkcml2ZXJzIHNlY3Rpb24gdG8KZW5zdXJlIGFsbCByZWxldmFudCBwYXJ0aWVzIGFy
+ZSBrZXB0IGluIHRoZSBsb29wIG9uIGFueSBjaGFuZ2VzLgoKQXMgaXRzIGZpbGUgcGF0aHMgZmFs
+bCBvdXRzaWRlIHRoZSBnZW5lcmljIHdpbGRjYXJkIHBhdHRlcm5zIGRlZmluZWQgaW4KdGhlIEFS
+TS9Sb2NrY2hpcCBTb0Mgc3VwcG9ydCBzZWN0aW9uLCBhbHNvIGFkZCB0aGUKbGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZyBtYWlsaW5nIGxpc3QgdG8gYXZvaWQgYW55Cm5vdGlmaWNh
+dGlvbiBnYXBzLgoKQWNrZWQtYnk6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4K
+U2lnbmVkLW9mZi1ieTogQ3Jpc3RpYW4gQ2lvY2FsdGVhIDxjcmlzdGlhbi5jaW9jYWx0ZWFAY29s
+bGFib3JhLmNvbT4KLS0tCkNoYW5nZXMgaW4gdjI6Ci0gQ29sbGVjdGVkIEFja2VkLWJ5IGZyb20g
+QW5keQotIFJlbW92ZWQgdGhlIFJGQyBwcmVmaXgKLSBSZWJhc2VkIG9udG8gbmV4dC0yMDI2MDYx
+MQotIExpbmsgdG8gdjE6IGh0dHBzOi8vcGF0Y2gubXNnaWQubGluay8yMDI2MDUwNi1tYWludGFp
+bmVycy1yay1kcm0tdXBkLXYxLTEtZjY3NTM3YjRiYjI5QGNvbGxhYm9yYS5jb20KLS0tCiBNQUlO
+VEFJTkVSUyB8IDMgKysrCiAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspCgpkaWZmIC0t
+Z2l0IGEvTUFJTlRBSU5FUlMgYi9NQUlOVEFJTkVSUwppbmRleCBmMWNhYTZlNTE5OGIuLmFjNjhm
+ZGQ5ODc5ZSAxMDA2NDQKLS0tIGEvTUFJTlRBSU5FUlMKKysrIGIvTUFJTlRBSU5FUlMKQEAgLTg4
+NDksMTEgKzg4NDksMTQgQEAgTToJU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KIE06
+CUhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+CiBNOglBbmR5IFlhbiA8YW5keS55YW5A
+cm9jay1jaGlwcy5jb20+CiBMOglkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCitMOgls
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCiBTOglNYWludGFpbmVkCiBUOglnaXQg
+aHR0cHM6Ly9naXRsYWIuZnJlZWRlc2t0b3Aub3JnL2RybS9taXNjL2tlcm5lbC5naXQKIEY6CURv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwLworRjoJZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLXFwLioKIEY6CWRyaXZlcnMvZ3B1
+L2RybS9jaS94ZmFpbHMvcm9ja2NoaXAqCiBGOglkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvCitG
+OglpbmNsdWRlL2RybS9icmlkZ2UvZHdfaGRtaV9xcC5oCiAKIERSTSBEUklWRVJTIEZPUiBTVEkK
+IE06CUFsYWluIFZvbG1hdCA8YWxhaW4udm9sbWF0QGZvc3Muc3QuY29tPgoKLS0tCmJhc2UtY29t
+bWl0OiBlYzAzOTEyNmI3ZmFjNGUzYWYzNWViY2NhYTdjNmY5YjY4NzViYTgxCmNoYW5nZS1pZDog
+MjAyNjA1MDYtbWFpbnRhaW5lcnMtcmstZHJtLXVwZC1jNDYzZjZiMDQ3NjkKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
