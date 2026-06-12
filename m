@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A29A6CD98CF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 16:43:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6471CD98CE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 16:47:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1UYGortajSwMX2d4qQgE20BWzxg6VXroRLqwYMYalPU=; b=idfSXIahnl/J7ytOCBb4Wp9Uv6
-	vNnKIio80XcgKKELVG0UfdFAfE7LEhYxfZxVkgjfG+plqto5eWXfahN6AXKsmHihkLDt3vvjAZ6wn
-	9EUOFlFiypiaut5XnZARwboZlk6Bkh/0Pk7i0dhLGZ4TzLRVDw5MQ551691AHhZkfSMFcFCmPXt55
-	twVPU4PQ93z2dlcWc3zIEtebynjGkfnfpx833lMCZXZ7IiPK+a4+Z0GJTY7+hZs65I+l+/G+WqQVm
-	NNVLUUbbi7PBPkYxn12THEPMU3Yb6Kdten1QeqjXHUeADvd66JkaiMLUbB7lSTdzznDcXC0d2HuB8
-	mv0SYHhA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jzZt4bfEh1/lXXTJyy/haD3/22F/yLFY8IEbIIupKXo=; b=KzUIjCTCaDjCSx
+	mdWuAGhpRqvLoWKZpq9OTC/jyFuHmll3rS6A9GzEV9qGZ6cEUB6pmQKGU1GtHHsSMRhob9nnoi1xV
+	t3JSBVssPObg1dhkU5owuFXRZXF9iO+CfTDRAkwyKHELGcWkBl0Y8FwSS+R7dS1NX/EIPLXhWHqqD
+	yomev1MTbGRML2pBb+uPZk1rqjJCFoU8tKaRvqR0gcjTHn9y+S9MBtq8IEkqUMr+nMYcPsL9LR+JR
+	0R7Wzp6+j/Qt4kFnppg+eplA5oEucns3xDE9obr0nlWemnV2ogMDjmqWFXmmorX7goHVPvZWMYT1F
+	vhiqZqUkYSYuQfCMOi3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY4yM-0000000BIb6-3coF;
-	Fri, 12 Jun 2026 16:43:10 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wY52u-0000000BIrm-1dFx;
+	Fri, 12 Jun 2026 16:47:52 +0000
+Received: from smtp-190d.mail.infomaniak.ch ([2001:1600:19:d548::190d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY4yL-0000000BIar-3v53;
-	Fri, 12 Jun 2026 16:43:09 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3FDD240227;
-	Fri, 12 Jun 2026 16:43:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0D5B1F000E9;
-	Fri, 12 Jun 2026 16:43:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781282589;
-	bh=2hFyVOX9Qmybv7o9zWJHJ1lJ4C6SjaRoYYblpegTOC4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=YiGkM6CC07SFtI9wZ0wjQa/gXrGWyQ+xZpvGN+3va/PktFSC1lkT4ca964e7445x3
-	 6EmLTGld75Hj/5ci4q4mo3Zl0Bx34ghY265Kew/PZ/jbc+HqHxFFnbemRyN5MfaMCz
-	 7NJGzqq5fj3wxOZHlCA/MTrh0peW1JEb/zbiX+tad+/qGkleQ0VSEkDJT9I+TDmPJH
-	 VR3IOL4mkxGtm1t+fizrTHD1AYpjeVqyupkdSGg1Sw8Ixy0l7XU1U0sYcq/r2RpoxT
-	 oA7AB0qx2H59oO4kBQuqJTjKx4GTTgpTF+QGRZ7+x3zss/D/t2np+Uk+8KVYON0BoL
-	 qd3Udmhnqh3WQ==
-Date: Fri, 12 Jun 2026 17:43:04 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Alexey Charkov <alchark@flipper.net>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/4] dt-bindings: vendor-prefixes: Add Ugreen Group
- Limited
-Message-ID: <20260612-chirping-catacomb-acb53680c4c4@spud>
-References: <20260612-dh2300-mcu-v1-0-ab8db1617bc0@flipper.net>
- <20260612-dh2300-mcu-v1-1-ab8db1617bc0@flipper.net>
+	id 1wY52q-0000000BIqx-3kYc
+	for linux-rockchip@lists.infradead.org;
+	Fri, 12 Jun 2026 16:47:51 +0000
+Received: from smtp-3-0001.mail.infomaniak.ch (smtp-3-0001.mail.infomaniak.ch [10.4.36.108])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4gcQRh0QGvzRHq;
+	Fri, 12 Jun 2026 18:47:44 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
+	s=20231125; t=1781282863;
+	bh=KlkjIw4bcij3LG7og0awnfmQnaK8D+NfJs+ZdxoZ9/E=;
+	h=From:Date:Subject:To:Cc:From;
+	b=XYXTpnAdoYDQ4BIdWgGbSu88PkILVJiWZD2BaXXkBHB9i0y5jLAPt3r8FpvawhVAR
+	 habuO6wlTnX4v1o/o6mHsYajQTF9Qlh+MyJZZEeNAx0shUtMdxXtf0KK9AOCoz4yOi
+	 au0aUm+R5dgv/mEOsu/6GzHKfskPOHHMcOnyJiAYGPzy6neKK+Nv/B5wntxWuLVHgl
+	 gRrn9yE8fWMogFwYUNeos6JwG+resk74nav2SIXlSpJG/oYL0o0MUNaXcuRTaG89Cf
+	 BWqN7FMPrmDGJ101s8YvY1QvXuQsFYA91MOKfpCmYgFfXe0o4h5P05Wza6GlTXnlmg
+	 elmr1beE+6X6A==
+Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4gcQRf5dcSzrnk;
+	Fri, 12 Jun 2026 18:47:42 +0200 (CEST)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Fri, 12 Jun 2026 18:47:34 +0200
+Subject: [PATCH] arm64: dts: rockchip: fix eMMC reset polarity on PP-1516
 MIME-Version: 1.0
-In-Reply-To: <20260612-dh2300-mcu-v1-1-ab8db1617bc0@flipper.net>
+Message-Id: <20260612-pp1516-emmc-polarity-v1-1-4816c1c909f7@cherry.de>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMTQqDMBBA4avIrB1wQhPRq4iLJI7tFH9CYkuLe
+ PdGu/wW7+2QOAonaIsdIr8lybpkUFmAf9jlzihDNqhKmcqQwhBIk0GeZ49hnWyU7Yva1qPTt8E
+ 1VENOQ+RRPte26/9OL/dkv50vOI4fc4OQ4XgAAAA=
+X-Change-ID: 20260612-pp1516-emmc-polarity-5a7fb54db917
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Heiko Stuebner <heiko.stuebner@cherry.de>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, 
+ stable@vger.kernel.org
+X-Mailer: b4 0.15-dev-47773
+X-Infomaniak-Routing: alpha
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260612_094749_371729_8B688EDF 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,48 +73,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6982691483568771309=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
---===============6982691483568771309==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="LCPj24h9H5nR0ZzC"
-Content-Disposition: inline
+According to the Jedec 5.1 specification, the device is held in reset
+when RST_n is low, therefore the polarity of the line must be that, as
+specified in the Device Tree binding (mmc/mmc-pwrseq-emmc.yaml).
 
+Due to the wrong polarity, eMMC devices with RST_n_FUNCTION[162]
+bitfield [1:0] set to 0x1 (the default is 0x0) will be held in reset
+forever.
 
---LCPj24h9H5nR0ZzC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Cc: stable@vger.kernel.org
+Fixes: 56198acdbf0d ("arm64: dts: rockchip: add px30-pp1516 base dtsi and board variants")
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+PP-1516 is affected by the same issue that Cobra has and for which a
+patch[1] has already been sent.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+[1] https://lore.kernel.org/linux-rockchip/20260609081728.30616-2-jakobunt@gmail.com/
+---
+ arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---LCPj24h9H5nR0ZzC
-Content-Type: application/pgp-signature; name="signature.asc"
+diff --git a/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
+index 192791993f059..02200de695d31 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
+@@ -33,7 +33,7 @@ emmc_pwrseq: emmc-pwrseq {
+ 		compatible = "mmc-pwrseq-emmc";
+ 		pinctrl-0 = <&emmc_reset>;
+ 		pinctrl-names = "default";
+-		reset-gpios = <&gpio1 RK_PB3 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&gpio1 RK_PB3 GPIO_ACTIVE_LOW>;
+ 	};
+ 
+ 	gpio-leds {
 
------BEGIN PGP SIGNATURE-----
+---
+base-commit: 2b414a95b8f7307d42173ba9e580d6d3e2bcbfce
+change-id: 20260612-pp1516-emmc-polarity-5a7fb54db917
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaiw3GAAKCRB4tDGHoIJi
-0g1HAQCHsYPbaaUh4VsV+wWpDkVCfINVcMH7yGed6ikRWQWSCAD/fAcDGvCEesZH
-Fede79+bUvv0bfmFqBdw3x7lVOY3FQg=
-=XgWn
------END PGP SIGNATURE-----
+Best regards,
+--  
+Quentin Schulz <quentin.schulz@cherry.de>
 
---LCPj24h9H5nR0ZzC--
-
-
---===============6982691483568771309==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6982691483568771309==--
-
