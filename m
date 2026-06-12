@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BAE2CD98D6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38C81CD98DD
 	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 14:26:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PWigsYjljotUZ5DIBRe4x5S75Y3cE5d0Gri0F7/IAsI=; b=frUJv9/U2Ywuqa
-	LCjtvZ6gpJ/b4BApe7CGzQMsKgKZ0ZgpSyCakDG3WkjNxSEdUSjbWijb0PVJVlSgudLULQM8YuUrC
-	XTsywU2uhLl5fCt1YGoWjT2wAbmU/tQR8vUC6dZHgtwDK584LVM90hHQXb2EcFDLg6p5yWnV4/gB1
-	2BBj672I3iWfZqSeLuseCBtO9fdH4UG3VDFS3e791XYDTWHFhTmnvehlfhaM7SxY+OEh91lfK3Cvk
-	+ySOltLMJJbp8yqALJwSPIrUzYjJD7jX9AEWbTNS84EU+/3FaE0Ob3KVadK4cuck6HjcGpPY0/vuA
-	lggwrvxIIv5NKHLq6vaA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GmV6JxhPnwLNuv5hdWgi43gSuO4NLD3u+No3VRtn4Ls=; b=aqzq9MQ7Xtcfuq
+	g24YkzPbf1MQ0yn1c5n3Y578oYYff8frtG60TNzlvmQtUCp5UD5CDlBAC/X4lS5wgX/HpURDgCBxN
+	2hC/dWCL0LrkSwxKjyQqVsY5MXyBbxtWxMqOEbkyOFEPdwmsqEivWrftbD3THS+UE8ob+XbRcHq8T
+	MoTVKW9Bx1mqgY5NeLKuwti/ZL4bjGfcWudaQpRpHuAW6GAgIP5CEdNNKEOCdTgzj0R6GQsYWwUPM
+	HwZvlE7eGsPeFbyZa8T6gik2HPvhcEnxSWd251E/aGa6kJbDgnUg+107Y0K5DYYC2rZz0hSzyCTO9
+	f6pCVTpl0ssb4CkzTYIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY2qL-0000000B3kp-1V9s;
+	id 1wY2qL-0000000B3kt-1pLe;
 	Fri, 12 Jun 2026 14:26:45 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY2qI-0000000B3je-3B7Y
+	id 1wY2qI-0000000B3jd-35E9
 	for linux-rockchip@lists.infradead.org;
 	Fri, 12 Jun 2026 14:26:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1781274400;
-	bh=FABDxv4lHTYBByMlOCppusyHS79PePlZmwh5TvT0nmA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FjDnNoxWUT0sqITH/tw4NUUPDpyJUI8nnq4QE0kBG58+uQO1eHAHsP25Kqjc0Mfn7
-	 LRdJ+6GjJk22ntO1PjgLjI4i1JxNvntoF6ZWPqFhHF1Dj/YOxaKdX7TQlVrRXODoRf
-	 ca4455/KamvTOzAt/AD09zbcADdtiI7FlgMJedTQw40lMaQO9V2pmXAuPFkH0FcNtT
-	 5OC/5qXBKse1SsbArBO64I6TNw9CqzWupR43vd+M1J1f5/xP6LVgi2L6r8I/jh0vYs
-	 9Z/M1gc7MR2EGL2Lw8FzqHUFaZZFoYiQhsjaEMezoewxTJ8Q/iDlnxcH8oK2EVfV19
-	 9bpJpdy1TrR0w==
+	s=mail; t=1781274398;
+	bh=nqhbl4w0DHWLcyrWk2QyBKWcj55aVfVDCiblKdSoOWQ=;
+	h=From:Subject:Date:To:Cc:From;
+	b=ebNFjzIwS5EalYroWxun8G7UD0zFRZujG4dxYZi0xjfXfSJHRuo+x359oEu5jGG9m
+	 jNBXFJKAR8OodTRwTQyo02lO8z829vqDdrpBjl6yYuOMVybBVQR/3Pl54blOY32zEq
+	 fkagXvqbL1MW27NNBHEzA+77RcF/R71w8aihqISAnD+3AIb2txmXWzArUjxkQ0E2VL
+	 DqFNz9T/yiov4iLqRU/3OpyV+2Q58/8/121r6tKZD7+pyAw70wtmuQpUE50II0ffDc
+	 PJ/dpLk2HvDiptQbQMtV+M5b7Cja2riPYdJOOW2ka5n/M4sKyOT6vjUvD8Rk32iBiA
+	 xilS9dApx8LNA==
 Received: from [192.168.0.15] (unknown [100.64.0.170])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 05E1C17E052F;
-	Fri, 12 Jun 2026 16:26:38 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 78A8B17E040C;
+	Fri, 12 Jun 2026 16:26:37 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
-Date: Fri, 12 Jun 2026 10:26:22 -0400
-Subject: [PATCH 1/3] media: v4l2: Add callback for show_fdinfo
+Subject: [PATCH 0/3] media: Add fdinfo support for v4l2 drivers
+Date: Fri, 12 Jun 2026 10:26:21 -0400
+Message-Id: <20260612-v4l2-add-fdinfo-v1-0-723211abc861@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20260612-v4l2-add-fdinfo-v1-1-723211abc861@collabora.com>
-References: <20260612-v4l2-add-fdinfo-v1-0-723211abc861@collabora.com>
-In-Reply-To: <20260612-v4l2-add-fdinfo-v1-0-723211abc861@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQ5AMBBA0avIrE1SJYSriEW1U0akpEUk4u6K5
+ Vv8f0EgzxSgSS7wdHDgxUVkaQJ6VG4gZBMNUshSlJnAo5glKmPQGnZ2QVXVwmpSfS5riNXqyfL
+ 5Hdvud9j7ifT2buC+H2CRriJzAAAA
+X-Change-ID: 20260610-v4l2-add-fdinfo-a790fceab329
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>
 Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-rockchip@lists.infradead.org, kernel@collabora.com, 
- Detlev Casanova <detlev.casanova@collabora.com>
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Christopher Healy <healych@amazon.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_072642_947395_E933FB4B 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20260612_072642_937819_BB67FFB8 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +82,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Allow v4l2 drivers to add information in the fdinfo file matching the
-opened /dev/videoX file.
+fdinfo is useful to poll information from the driver.
+Unlike the ftrace interface, it lets userspace tools get a snapshot of
+the state of the driver at their own pace, instead of getting events for
+each driver status change.
+
+This works better to get information like HW usage time or clock
+frequencies, as well as memory usage.
+This patch set focuses on mem2mem drivers that are per-frame based and
+an implementation is proposed for the Verisilicon Hantro driver, limited
+to clock frequencies and HW usage time.
+
+An example of usage of this from userspace is implemented in v4l2top:
+
+https://github.com/cazou/v4l2top
+
+checkpatch.pl warning: The 2 arguments in the show_fdinfo callback
+definition are kept unnamed to match with the rest of the struct
+definition.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- drivers/media/v4l2-core/v4l2-dev.c | 10 ++++++++++
- include/media/v4l2-dev.h           |  1 +
- 2 files changed, 11 insertions(+)
+Christopher Healy (2):
+      docs: media: add documentation for media client usage stats
+      media: hantro: add per-context fdinfo usage stats
 
-diff --git a/drivers/media/v4l2-core/v4l2-dev.c b/drivers/media/v4l2-core/v4l2-dev.c
-index 6ce623a1245a..3878fa2ff73e 100644
---- a/drivers/media/v4l2-core/v4l2-dev.c
-+++ b/drivers/media/v4l2-core/v4l2-dev.c
-@@ -481,6 +481,15 @@ static int v4l2_release(struct inode *inode, struct file *filp)
- 	return ret;
- }
- 
-+/* Override for the show_fdinfo function */
-+static void v4l2_show_fdinfo(struct seq_file *m, struct file *filp)
-+{
-+	struct video_device *vdev = video_devdata(filp);
-+
-+	if (vdev->fops->show_fdinfo)
-+		vdev->fops->show_fdinfo(m, filp);
-+}
-+
- static const struct file_operations v4l2_fops = {
- 	.owner = THIS_MODULE,
- 	.read = v4l2_read,
-@@ -494,6 +503,7 @@ static const struct file_operations v4l2_fops = {
- #endif
- 	.release = v4l2_release,
- 	.poll = v4l2_poll,
-+	.show_fdinfo = v4l2_show_fdinfo,
- };
- 
- /**
-diff --git a/include/media/v4l2-dev.h b/include/media/v4l2-dev.h
-index 2e0f6d2e6a78..1635ab186f21 100644
---- a/include/media/v4l2-dev.h
-+++ b/include/media/v4l2-dev.h
-@@ -212,6 +212,7 @@ struct v4l2_file_operations {
- 	int (*mmap) (struct file *, struct vm_area_struct *);
- 	int (*open) (struct file *);
- 	int (*release) (struct file *);
-+	void (*show_fdinfo)(struct seq_file *, struct file *);
- };
- 
- /*
+Detlev Casanova (1):
+      media: v4l2: Add callback for show_fdinfo
 
--- 
-2.54.0
+ .../userspace-api/media/drivers/index.rst          |  1 +
+ .../media/drivers/media-usage-stats.rst            | 84 ++++++++++++++++++++++
+ drivers/media/platform/verisilicon/hantro.h        |  5 ++
+ drivers/media/platform/verisilicon/hantro_drv.c    | 22 ++++++
+ drivers/media/v4l2-core/v4l2-dev.c                 | 10 +++
+ include/media/v4l2-dev.h                           |  1 +
+ 6 files changed, 123 insertions(+)
+---
+base-commit: acb7500801e98639f6d8c2d796ed9f64cba83d3a
+change-id: 20260610-v4l2-add-fdinfo-a790fceab329
+
+Best regards,
+--  
+Detlev Casanova <detlev.casanova@collabora.com>
 
 
 _______________________________________________
