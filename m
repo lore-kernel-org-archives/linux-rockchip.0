@@ -4,65 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68453CD98CE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 13:43:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9589CCD98CE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 13:59:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6x74M29/aF4enc1wv9AVbfImJCaN6GgGriB3FywGl9Q=; b=BBE0hJ39SdD4evr0ulOfDH+3Cy
-	g3g50OOsLUNsKbwuOaUNoxJsDyTIc0cNuRgBYi7gq6pKFAQMPv2CM5diFTA8H2SGBOTIM9YdGLSQa
-	CFkg/g515i517jpzL2NKXC6bimdnUHltz2nBNqDxj86my5YxWsVS5zmLQlRrXcBUlZoVolEPfMZq6
-	RxLfyIZ8ZTvfP3AkLpu4vr6FpUXYThOfnZB7rv3KzlJcKdGP0+Zo2uv1I7pDT+RarnEYw4wBgv+9n
-	aCIHuU/u/5eTlQBMCzcCsUtJkIB9q6sglKBYuePjqK3MHEyaRmL8EY3/ZbboRcE0sXE6Y+yptoN5y
-	RLHkC31g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sPbVThWScUwle6oJLhM6KApAPWxSgtVPPL3ZYxoe9jo=; b=gvzXkf5iu1Z9Ed
+	plnjKOSON2wUfZqCAcn17tCg9byP1cCe9OnNargpfrw4yra+yVkQtVMeG64y12nnZH5BY4qCNhmr8
+	QaYv0USFbJvc+kngJJjBwx3nwSBl5e/fKAT8FV6I5QBWeP3ODAjla8IkYNThPhE9DFeK8xXc3+/aG
+	TszZuTk0+Rw6l3yDS0VP7YKmg9uOjoVrJQDqb1jCQ9gmMIsWymB+Pa9SF5sO4AbUcbgKXrDenayp3
+	75HV5q0FoLlQvqQrXRikhpJpCFmZdr7Qoni3TB6lzeQ+QlFMVUdP3YW2MipviA8YDERrHPx1DgRPm
+	PSptYEOLl9fBfz9Dx19g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY2AC-0000000Azxw-1S7f;
-	Fri, 12 Jun 2026 13:43:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wY2Pp-0000000B1nG-0X7m;
+	Fri, 12 Jun 2026 13:59:21 +0000
+Received: from mail-westusazolkn190100003.outbound.protection.outlook.com ([2a01:111:f403:d001::3] helo=BYAPR05CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY2AA-0000000AzxM-2uLJ;
-	Fri, 12 Jun 2026 13:43:10 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A2E6460008;
-	Fri, 12 Jun 2026 13:43:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD6361F000E9;
-	Fri, 12 Jun 2026 13:43:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781271789;
-	bh=p/8CtmD9b1H19ZygvRiFJ4cHW08uI2Wy+HwdBYB08uQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=FZ/YZzmt7kU/1ArFPLGhIQSFq6jOlFhIBpHUwLpkPHmBwd+KU5rvmZ6dGkzA0iDhz
-	 GJvnztP/FfBcb3jY+cyeyeU+UipKXBVYtei2TA7HQIE5YbjyFk0IGBgRHE2RjdSw8A
-	 Yunpt/buhFFE1IgdkjZnGttJVNRWMAOqB+B3y8qYosXpl3jhGN0vVAFzy+0c/1Zlfp
-	 HOBTCdT6rW/jTGxa2KxtLSAlAcAoakIurLMMEknZMKb3UjcpfdjrpxzjJtZeatF0mB
-	 PUsxE48/qU9aNJfe2zEWD9JZQwtj1j0QGZ7QpaNhhdNBfc3L4jrnUMp4TJ3xQ3hdVE
-	 ykgjSR2yQIFow==
-Date: Fri, 12 Jun 2026 15:43:06 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 04/30] drm/display: scdc_helper: Add HDMI 2.0
- scrambling management helpers
-Message-ID: <20260612-cordial-steadfast-cow-fcaf01@houat>
-References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
- <20260602-dw-hdmi-qp-scramb-v7-4-445eb54ee1ed@collabora.com>
+	id 1wY2Pm-0000000B1m3-0daB
+	for linux-rockchip@lists.infradead.org;
+	Fri, 12 Jun 2026 13:59:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=aBiZHdwElIx1IViMkFC8Y36MUDSXC0T5DazZdktTXq9ifdGOb45WfhrmSFMvwLW8kJOaWpCt6YbOd5vyhXS/fYA8mAqKEVpA05KektBVNLSSzpC+XhUJ6H+V6wFFg1nD8gSEFIdlYEZJgpwBW7BYaRxBqjASyz8X64pFi2EnTVl3ACMtrcZQWGljou1KKbwpdvuSi9pcgQakAwPxgOzlu49AnU1zRA8wubF3IdnqDzvp8YQQROO2oaO98Kn25fPtdkIDeiKENN2iklX+ZYzNyaWmlhbdbrqvJRRTyKEre70B0bgz8wNVPqZfOAbpGEyFD+yh0dR6/qJbyjfGVpLi2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=RD9NDIL9w76waOF+od2YWX0b1tFCVFeKcm8vtwJTqTo=;
+ b=viyK5QPpDLgxNI3nxIQJ6K+NYh3qSZvlUaVYA89hJhqxGMDWrHeOSbsdWnELulm7HzsXt9toWCa2/1UDm/CUd6xs0ZfQmZmbACxhUQX6sfISH1UbAA3rCEXVngs1XKi9v0UL8I+O/PoZG+Q6eCxLm09cX9OQaYUi+o6hMZj6QLxUyYiFQ+GisFozFmYju+PM1KRO4+NAOCgPxxjyDA4waN4rdo5X7YB4tUPG7BRiQtyIeovTjh9t6QVhWbr490GU2G8QhmGBUH45j7rn7ynScMWckWUVN7Y2p6UxgkdJ5Ca8WaBsmvE96s952x+HNKOs156FtjRNBlMV5CetV+EjMA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RD9NDIL9w76waOF+od2YWX0b1tFCVFeKcm8vtwJTqTo=;
+ b=Hr/aTVGV6cyvVstsLbaHMRpJZsqz7g9KkoN8oTmXFvtR1jAWHXPNBi9yKusYR7uZyo+AOKdg88w/01YiW8ao2dEbqv4kOshrNmyjgOOLs1t6Clynv+wHfE4KRwRxzgyhSAD1a8Q8SPm+E+teZ6LnMUoW4ebK5dcESbFP99IKDZQmMBLx/D/Fmbynem/GQiMr6lU8F5ih/w0+IBkcm4Mz9Ea5uYKv8kObhipe2xOj9tmaLsZvlUMUWtOZMUIdRfezL6E0EEzxHxuTFJY0sR3+sEwQMbdtm8NX7n9PDFwElpFjA7E5X5SeCvENI5egh/sAsd9IhI9G6YuGIW+7BWr0zQ==
+Received: from PH0PR19MB997338.namprd19.prod.outlook.com
+ (2603:10b6:510:3b1::18) by CYXPR19MB8402.namprd19.prod.outlook.com
+ (2603:10b6:930:de::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.14; Fri, 12 Jun
+ 2026 13:59:12 +0000
+Received: from PH0PR19MB997338.namprd19.prod.outlook.com
+ ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
+ ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.21.0113.014; Fri, 12 Jun 2026
+ 13:59:12 +0000
+Date: Fri, 12 Jun 2026 08:59:11 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
+Subject: Re: [PATCH V11 3/9] iio: imu: inv_icm42607: Add inv_icm42607 Core
+ Driver
+Message-ID: <PH0PR19MB997338A8FD439C0528B96048BDA5182@PH0PR19MB997338.namprd19.prod.outlook.com>
+References: <20260610175455.19006-1-macroalpha82@gmail.com>
+ <20260610175455.19006-4-macroalpha82@gmail.com>
+ <20260611120943.7119975b@jic23-huawei>
+ <PH0PR19MB9973387E29375D4E8F28C6B9D9A51B2@PH0PR19MB997338.namprd19.prod.outlook.com>
+ <20260611172022.4d138820@jic23-huawei>
+ <PH0PR19MB997338CE11110E16E7FB668E3BA51B2@PH0PR19MB997338.namprd19.prod.outlook.com>
+ <20260612114230.0fd2f391@jic23-huawei>
+Content-Disposition: inline
+In-Reply-To: <20260612114230.0fd2f391@jic23-huawei>
+X-ClientProxiedBy: SA9PR13CA0065.namprd13.prod.outlook.com
+ (2603:10b6:806:23::10) To PH0PR19MB997338.namprd19.prod.outlook.com
+ (2603:10b6:510:3b1::18)
+X-Microsoft-Original-Message-ID: <aiwQr1dWaDzxU3VJ@wintermute.localhost.fail>
 MIME-Version: 1.0
-In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-4-445eb54ee1ed@collabora.com>
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|CYXPR19MB8402:EE_
+X-MS-Office365-Filtering-Correlation-Id: b2e0d335-54df-45b3-22d5-08dec88ac860
+X-Microsoft-Antispam: BCL:0;ARA:14566002|5072599009|24021099003|13031999006|25031999004|23021999003|37011999003|51005399006|15080799012|41001999006|6090799003|19110799012|8060799015|440099028|3412199025|40105399003;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?i8vH+ONnaZYHJwsxtyBjJ/86tL39Fzd2T0RlkpzZe0PwPFaMkLsVuRv6CIYU?=
+ =?us-ascii?Q?ZlPAaMRVmKmBoXA3itMTXr5zA+kRzfVvEaiNKXIe8jzZsUA2q/j8Zc1JqyWi?=
+ =?us-ascii?Q?tGzm6wMZvNCiSGjCZhExOiOxdrSXkrqEyL0jwLMAcHtyd5KGWzWLysiHBJjd?=
+ =?us-ascii?Q?/+5exk/1dWBt7waVtswsFeKa8/yekVhGR7zGE9hjddEulddvBJWW84YW438d?=
+ =?us-ascii?Q?rhPn/am/oNrf9GW4hmyWrNsimtLeIjr5d83qUu1gYIpyNBrw7g3DbGlWvEl0?=
+ =?us-ascii?Q?v/6EAdOgvjCY+Org/ZDvkxbf5eXcJlYN0/Y87nJyPiJxRrW7Dry3yLnbDCmh?=
+ =?us-ascii?Q?l8Qi2fm0q9ISSLeRvmAvAPKIt/If7/fS/aRtJ1SsQ7GohBkZaPT3wWeyUfWb?=
+ =?us-ascii?Q?ipIvZMOhomQXvN/qSEuIUl1cTn2+b4ZHpQvLhFReMKn3mlFuqCSWb0dVcMYt?=
+ =?us-ascii?Q?qVj/+nfCrvArJChMOEtXVgOS4vnylCjQDA2yV8knSUhknkpVcI2qbrV29vka?=
+ =?us-ascii?Q?igYA2zaSmfjsO2uiZsFypF1Qn8dv+IDlHMdGLFU3jv75uKHnu3HR4bC2aNzE?=
+ =?us-ascii?Q?Vur423CkDWP5cgbeOGzrYfKR48MNf5aOEyJLoW6d+EbjEQuElyfl30ehbl4x?=
+ =?us-ascii?Q?skzMXBrNUzzoGZmaeOCqi8EDGLNF9D/AYStA0FwEogJAU6HLx6VooURtl2f1?=
+ =?us-ascii?Q?Nb0gaTZL1SwZkV/TjcnjTsVMXi6kqnSfLwoA/FPChf3Y3a/8kCjO7/ewo7Vy?=
+ =?us-ascii?Q?4veIn/KrrY32p9aqxRoLbHsNtZZY1w5zq3/AyiDBboC6/U67+MCib4NiKBai?=
+ =?us-ascii?Q?gFHttyzvqGomuQ/qyMXIILTCAcvIRQLA3GL2UiZZjwF83Gql9UaRGUGV3qlo?=
+ =?us-ascii?Q?b+mJ/Xq4d3GpX0MZspuUwrLhIZ7ZVWLox8O9cKHcZE36EgI2rKCmUM80NnYi?=
+ =?us-ascii?Q?dXf7igKqGzw/dvVgLeOY9pgmF6odLTEWeVEqPGAC7Btg58KulH2+tzvlSW1k?=
+ =?us-ascii?Q?hpHYmuaPIuKAkSZdbnBmC4EMH4+5HhLxFboL3LHGmZcYGuERNjx85j98G/la?=
+ =?us-ascii?Q?SqJX0rZaUObPwOLmxOMgy29+h3un+A=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+IFLsarxVjSxeRX2nUtBKp8XcYtCuEM+W18jKcbHrZOG818b0RAKZ3Lv/flL?=
+ =?us-ascii?Q?DBFnltXjhdw8Aon5COJ4lDufxRLOuAYB6FTp0rlRO73vRpdjhdtCop+uY0o1?=
+ =?us-ascii?Q?fjpzFSbW6opIR0UoEc6DFZgIUreToqp3fBa1L2yGj6oHjhp5Dq252MYATx4x?=
+ =?us-ascii?Q?DbYnf3nBIphCGKZr9ieqG7PUdZ+YpbZLBosmzpRulNntgXn7lBc1ytB64Nmi?=
+ =?us-ascii?Q?1C5UK+bM69hMhPzRxu7w5AqJI1O72mRKybzkrKAvrRuEm7ZYM8y1TYBm1ROQ?=
+ =?us-ascii?Q?RQwaApR8ly5tvkKOFsb68KS00NRPlrZr6yKM8iUftsTYxc8/DPIAvch4VDht?=
+ =?us-ascii?Q?ytydv493EifIswkCR6KF7OPpkeaJyV1gec9S4WrpgO2tW2MYpojb0sE8JUMU?=
+ =?us-ascii?Q?7wTHcmhWGBciNw6dZUysG/cGM1Q3gx9kBNzysV/ZNPBX4rk8mFT0MDJjYtVA?=
+ =?us-ascii?Q?ps+OKrluSmYK+XSwj444m/Pjn3nMly16kFrOnxk/4rY7jPMBJRa1uk/c2Qoc?=
+ =?us-ascii?Q?fg4diVRKkIXFrN9/qT8QrL4JdwEU1/UyrFFno4Uf9t66ZMVr5fhIY1vnXF5e?=
+ =?us-ascii?Q?bda10OtAMGyVxE/23G3cvN9iqroGam33zmYkkD8tlf8LTUwWxAAD4fy8JjGy?=
+ =?us-ascii?Q?iLaHooGK5ZHIMDIMlW5qdJlpR+TB3Hs+463mqMAyESGRAcglkj0xgneMxwqk?=
+ =?us-ascii?Q?nXB25M44kDPlEHE6lfsJK6L3OyMxVHDw8teeaNkj7o3s/g9O4gzts36IsAu+?=
+ =?us-ascii?Q?yJ/1qi8OkMMr2D8qm4ARZe0idgxsBYkQ1rQq9oro3oHh7J9WaCCpZMX8/xH3?=
+ =?us-ascii?Q?fl+T7+6qYt51cA5HVxn2JJKvQnZz7bRM9KUdU7Yknfbj2SZ5k9Y53DZoyuqq?=
+ =?us-ascii?Q?SRuyStXUpMFlAXHZ1WU1wpgamseh9WFUvQC5TU5xJ4hOUa416ew4XVG6mJ9I?=
+ =?us-ascii?Q?IWDlPW0miOPthTH7FTRuAovNA1A8+w+qbQA44HmMyOpAJA5bKZnTQwZYKH+r?=
+ =?us-ascii?Q?IHYaBWk39nXBE0DqrMVm4dkG3zMOq6BlFezlK3qzBja2wmTDZbFjpv9WgW6w?=
+ =?us-ascii?Q?Q3Dv+RGE45bS3Un/bC7kG3kKQimiXlCDWsnx41MrC0QXmV4JxtJv0SbHdQff?=
+ =?us-ascii?Q?jHqUhzFt2ZicDz5LupGsPHVsGmKnOalUKElhgQmCuTuMfQZK+uUhibwL0+fD?=
+ =?us-ascii?Q?WMyjJo6FOh4YMbjOPCRXcegmgNo0FweLIFugirs9QSOXbgzmyBLFgSS1muC0?=
+ =?us-ascii?Q?8uFpB62c5+ueHRXQ1ezKWSmbJLeA0xl/43UJvh40O8IdmbH53nCn5Me4BubW?=
+ =?us-ascii?Q?RkLQmIrWfQLH/W0bVFMiFuEJJMJNhXJANoe5zRiAw4ZEKpxRaeMEt/hV+BXG?=
+ =?us-ascii?Q?jmP5Jjw8kpFreGWyXhmFqrCXXXOZb1J7twMREB6fUScf6c7YqqsrD4uIEHii?=
+ =?us-ascii?Q?JbKSv3/nJkgjBZAZ0VqRngkvRtC0C/Wx?=
+X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: b2e0d335-54df-45b3-22d5-08dec88ac860
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jun 2026 13:59:12.8199
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYXPR19MB8402
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260612_065918_400107_5B422289 
+X-CRM114-Status: GOOD (  54.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,128 +149,157 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7166387682687134413=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jun 12, 2026 at 11:42:30AM +0100, Jonathan Cameron wrote:
+> On Thu, 11 Jun 2026 11:31:09 -0500
+> Chris Morgan <macromorgan@hotmail.com> wrote:
+> 
+> > On Thu, Jun 11, 2026 at 05:20:22PM +0100, Jonathan Cameron wrote:
+> > > On Thu, 11 Jun 2026 09:32:38 -0500
+> > > Chris Morgan <macromorgan@hotmail.com> wrote:
+> > >   
+> > > > On Thu, Jun 11, 2026 at 12:09:43PM +0100, Jonathan Cameron wrote:  
+> > > > > On Wed, 10 Jun 2026 12:54:47 -0500
+> > > > > Chris Morgan <macroalpha82@gmail.com> wrote:
+> > > > >     
+> > > > > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > > > > 
+> > > > > > Add the core component of a new inv_icm42607 driver. This includes
+> > > > > > a few setup functions and the full register definition in the
+> > > > > > header file.
+> > > > > > 
+> > > > > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>    
+> > > > > Hi Chris,
+> > > > > 
+> > > > > A couple more minor things from a fresh read.
+> > > > > 
+> > > > > Thanks
+> > > > > 
+> > > > > Jonathan
+> > > > >     
+> > > > > > ---
+> > > > > >  drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 334 ++++++++++++++++++
+> > > > > >  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 197 +++++++++++
+> > > > > >  2 files changed, 531 insertions(+)
+> > > > > >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> > > > > >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > > > > > 
+> > > > > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> > > > > > new file mode 100644
+> > > > > > index 000000000000..716fc0f1c3fd
+> > > > > > --- /dev/null
+> > > > > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h    
+> > > > >     
+> > > > > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > > > > > new file mode 100644
+> > > > > > index 000000000000..334264120b42
+> > > > > > --- /dev/null
+> > > > > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c    
+> > > > >     
+> > > > > > +
+> > > > > > +static int inv_icm42607_setup(struct inv_icm42607_state *st,
+> > > > > > +			      inv_icm42607_bus_setup inv_icm42607_bus_setup)
+> > > > > > +{
+> > > > > > +	const struct device *dev = regmap_get_device(st->map);
+> > > > > > +	unsigned int val;
+> > > > > > +	int ret;
+> > > > > > +
+> > > > > > +	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
+> > > > > > +	if (ret)
+> > > > > > +		return ret;
+> > > > > > +
+> > > > > > +	/* Warn, but don't fail. */
+> > > > > > +	if (val != st->hw->whoami)
+> > > > > > +		dev_warn(dev, "Unknown whoami %#02x expected %#02x (%s)\n",
+> > > > > > +			 val, st->hw->whoami, st->hw->name);
+> > > > > > +
+> > > > > > +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
+> > > > > > +			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
+> > > > > > +	if (ret)
+> > > > > > +		return ret;
+> > > > > > +
+> > > > > > +	fsleep(INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC);
+> > > > > > +
+> > > > > > +	/*
+> > > > > > +	 * No polling interval specified in datasheet, so use reset time as
+> > > > > > +	 * polling interval and 10x reset time as timeout period.
+> > > > > > +	 */
+> > > > > > +	ret = regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
+> > > > > > +				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
+> > > > > > +				       (INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC),
+> > > > > > +				       (INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC * 10));
+> > > > > > +	if (ret)
+> > > > > > +		return dev_err_probe(dev, ret,
+> > > > > > +				     "reset error, reset done bit not set\n");
+> > > > > > +
+> > > > > > +	/* Sync the regcache again after a reset. */
+> > > > > > +	regcache_mark_dirty(st->map);
+> > > > > > +	ret = regcache_sync(st->map);    
+> > > > > 
+> > > > > Sashiko raised the point that you don't have a writeable register list for the regmap
+> > > > > and so potentially we at very least write a bunch of stuff that isn't needed.
+> > > > > I doubt it's actually a problem or you would have seen it, but nice little optimization
+> > > > > to reduce what is written.    
+> > > > 
+> > > > I will add such a list, I'd put it in patch 4 unless you think I should
+> > > > merge patch 3 and 4 to make the driver compileable at the first commit
+> > > > of code (will push the number of lines to the ~850/900 range though).
+> > > >   
+> > > I'm fine with them split but don't mind if Andy prefers them combined.
+> > > His comment on adding a COMPILE_TEST option would allow that to be
+> > > built, but it is a bit odd to do it just for that purpose.
+> > > 
+> > > Jonathan
+> > >   
+> > 
+> > I'm going to add the i2c stuff to this series, and then do the SPI
+> > on the next patch. That should add only a little bit to this one but
+> > still ensure the very first (code) commit has something to compile.
+> > I'm going to avoid doing COMPILE_TEST unless collectively you all
+> > think I should.
+> > 
+> > I'm still racing to try and get this one done before the merge
+> > window opens up, but I'm pretty sure it's already too late at
+> > this point. I'll refrain from submitting updates once the window opens
+> > though.
+> Unfortunately you are correct. IIO in practice closes around 10 days before
+> the merge window to give time to both expose new things to testing in linux-next
+> and to allow time for Greg KH to merge my pull request into char-misc (which
+> is the path IIO takes to upstream)
+> 
+> Sorry about that, and whilst no need to rush as a result, we also don't
+> stop merging IIO stuff in the merge window, it just sits in the testing
+> branch until I can rebase that on rc1 and then push it out for linux-next
+> to pick up.
+> 
+> Thanks,
 
---===============7166387682687134413==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="brdajz4ircx43s3r"
-Content-Disposition: inline
+No worries. I think I'm down to 2 bugs with sashiko that I'll try to
+quash, then I can move on to other stuff. Note that when it complains
+about the temperature sensor and power management that's a false
+positive. I tried to put a note there to give it a hint but it doesn't
+seem to want to take it.
 
+If I haven't communicated it previously, thank you again for your help
+with this. I thought adding an accelerometer to my handheld would be
+easy, but I do appreciate everything you and the other maintainers have
+helped me with.
 
---brdajz4ircx43s3r
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Subject: Re: [PATCH v7 04/30] drm/display: scdc_helper: Add HDMI 2.0
- scrambling management helpers
-MIME-Version: 1.0
+Chris
 
-On Tue, Jun 02, 2026 at 01:44:04AM +0300, Cristian Ciocaltea wrote:
-> +/**
-> + * drm_scdc_start_scrambling - activate scrambling and monitor SCDC status
-> + * @connector: connector
-> + *
-> + * Enables scrambling and high TMDS clock ratio on both source and sink sides.
-> + * Additionally, use a delayed work item to monitor the scrambling status on
-> + * the sink side and retry the operation, as some displays refuse to set the
-> + * scrambling bit right away.
-> + *
-> + * Returns:
-> + * Zero if scrambling is set successfully, an error code otherwise.
-> + */
-> +int drm_scdc_start_scrambling(struct drm_connector *connector)
-> +{
-> +	struct drm_display_info *info = &connector->display_info;
-> +	struct drm_connector_hdmi *hdmi = &connector->hdmi;
-> +	int ret;
-> +	u8 ver;
-> +
-> +	if (!hdmi->scrambler_supported) {
-> +		drm_scdc_dbg(connector, "Scrambler not supported, bailing.\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (!info->is_hdmi ||
-> +	    !info->hdmi.scdc.supported ||
-> +	    !info->hdmi.scdc.scrambling.supported) {
-> +		drm_scdc_dbg(connector, "Sink doesn't support scrambling.\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	drm_scdc_dbg(connector, "Enabling scrambling\n");
-> +
-> +	ret = drm_scdc_readb(connector->ddc, SCDC_SINK_VERSION, &ver);
-> +	if (ret) {
-> +		drm_scdc_dbg(connector, "Failed to read SCDC_SINK_VERSION: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = drm_scdc_writeb(connector->ddc, SCDC_SOURCE_VERSION,
-> +			      min_t(u8, ver, SCDC_MAX_SOURCE_VERSION));
-> +	if (ret) {
-> +		drm_scdc_dbg(connector, "Failed to write SCDC_SOURCE_VERSION: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	hdmi->scdc_cb = drm_scdc_monitor_scrambler;
-> +	WRITE_ONCE(hdmi->scrambler_enabled, true);
-> +
-> +	ret = drm_scdc_try_scrambling_setup(connector);
-> +	if (!ret)
-> +		ret = hdmi->funcs->scrambler_enable(connector);
-> +
-> +	if (ret) {
-> +		WRITE_ONCE(hdmi->scrambler_enabled, false);
-> +		cancel_delayed_work_sync(&hdmi->scdc_work);
-> +		hdmi->scdc_cb = NULL;
-> +
-> +		drm_scdc_set_scrambling(connector, false);
-> +		drm_scdc_set_high_tmds_clock_ratio(connector, false);
-> +	}
-> +
-> +	return ret;
-> +}
-> +EXPORT_SYMBOL(drm_scdc_start_scrambling);
-
-This is also pretty significantly different than what vc4 implemented. I
-don't necessarily mind, but claiming that it's functionally equivalent
-isn't true. I think it would be a much better strategy to turn the vc4
-code into helpers as is because it's been merged 4 years ago and we know
-it's solid.
-
-Then, if you want to add additional checks and constraints (like the
-SCDC_SINK_VERSION) that's fine, but it should come on top, and with its
-own explanation.
-
-Maxime
-
---brdajz4ircx43s3r
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaiwM4AAKCRAnX84Zoj2+
-drsqAYCg44ILVaYXrmkSWguKwKZ0rf61WM5w16Gd3nnf1ak+1Ripg6zsXz2SN8CF
-cqVRm2cBgM3rf8LNkOajtmtAsPxLazMFX22jugzFFSVhwKCKm/fozOES8Js+s8ud
-2ikvX5BRKA==
-=Vzl4
------END PGP SIGNATURE-----
-
---brdajz4ircx43s3r--
-
-
---===============7166387682687134413==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> 
+> Jonathan
+> > 
+> > Thank you,
+> > Chris
+> > 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7166387682687134413==--
-
