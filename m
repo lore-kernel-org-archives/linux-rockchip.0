@@ -4,140 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9589CCD98CE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 13:59:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC53CD8CA8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Jun 2026 14:12:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sPbVThWScUwle6oJLhM6KApAPWxSgtVPPL3ZYxoe9jo=; b=gvzXkf5iu1Z9Ed
-	plnjKOSON2wUfZqCAcn17tCg9byP1cCe9OnNargpfrw4yra+yVkQtVMeG64y12nnZH5BY4qCNhmr8
-	QaYv0USFbJvc+kngJJjBwx3nwSBl5e/fKAT8FV6I5QBWeP3ODAjla8IkYNThPhE9DFeK8xXc3+/aG
-	TszZuTk0+Rw6l3yDS0VP7YKmg9uOjoVrJQDqb1jCQ9gmMIsWymB+Pa9SF5sO4AbUcbgKXrDenayp3
-	75HV5q0FoLlQvqQrXRikhpJpCFmZdr7Qoni3TB6lzeQ+QlFMVUdP3YW2MipviA8YDERrHPx1DgRPm
-	PSptYEOLl9fBfz9Dx19g==;
+	List-Owner; bh=VpmcHV9Jgy4kPKx+WKXfKax3DKynCoXbwc+65081ILU=; b=iRy4lngQsGOJxO
+	d1QxZmdzCdkdJa4xesSamgdYcVYTOr7J43QgQklRZk1aNW2lC6+50KaFTuJLkY/MS5sI3CRBf94Cv
+	AMJh8g0K/65afN8U8nMXgbYJUO1rhy4YmayDLNjmSQw6SVJ4YVPTC+Wco2u1hkzuKlosENMyvQ6ZQ
+	30TsAm+zEWTFFedUQI7YjOseGgLFj4E6L3+th6464wH/Bc78k4UR+wdj0gZ8c/QOfRjrP2i2qlgvk
+	CltRRYgqpPhVi9tTcra0djWrAAq8pvdfLGys32mazTsIuGs/9lBi1u5tQXY2YH2g4uA/S32aBPvYb
+	sMkH/pXufP7A2SQkoCfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY2Pp-0000000B1nG-0X7m;
-	Fri, 12 Jun 2026 13:59:21 +0000
-Received: from mail-westusazolkn190100003.outbound.protection.outlook.com ([2a01:111:f403:d001::3] helo=BYAPR05CU005.outbound.protection.outlook.com)
+	id 1wY2cK-0000000B2J2-0obr;
+	Fri, 12 Jun 2026 14:12:16 +0000
+Received: from smtp-out2.suse.de ([195.135.223.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wY2Pm-0000000B1m3-0daB
+	id 1wY2cH-0000000B2Hr-0Dyt
 	for linux-rockchip@lists.infradead.org;
-	Fri, 12 Jun 2026 13:59:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=aBiZHdwElIx1IViMkFC8Y36MUDSXC0T5DazZdktTXq9ifdGOb45WfhrmSFMvwLW8kJOaWpCt6YbOd5vyhXS/fYA8mAqKEVpA05KektBVNLSSzpC+XhUJ6H+V6wFFg1nD8gSEFIdlYEZJgpwBW7BYaRxBqjASyz8X64pFi2EnTVl3ACMtrcZQWGljou1KKbwpdvuSi9pcgQakAwPxgOzlu49AnU1zRA8wubF3IdnqDzvp8YQQROO2oaO98Kn25fPtdkIDeiKENN2iklX+ZYzNyaWmlhbdbrqvJRRTyKEre70B0bgz8wNVPqZfOAbpGEyFD+yh0dR6/qJbyjfGVpLi2g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RD9NDIL9w76waOF+od2YWX0b1tFCVFeKcm8vtwJTqTo=;
- b=viyK5QPpDLgxNI3nxIQJ6K+NYh3qSZvlUaVYA89hJhqxGMDWrHeOSbsdWnELulm7HzsXt9toWCa2/1UDm/CUd6xs0ZfQmZmbACxhUQX6sfISH1UbAA3rCEXVngs1XKi9v0UL8I+O/PoZG+Q6eCxLm09cX9OQaYUi+o6hMZj6QLxUyYiFQ+GisFozFmYju+PM1KRO4+NAOCgPxxjyDA4waN4rdo5X7YB4tUPG7BRiQtyIeovTjh9t6QVhWbr490GU2G8QhmGBUH45j7rn7ynScMWckWUVN7Y2p6UxgkdJ5Ca8WaBsmvE96s952x+HNKOs156FtjRNBlMV5CetV+EjMA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RD9NDIL9w76waOF+od2YWX0b1tFCVFeKcm8vtwJTqTo=;
- b=Hr/aTVGV6cyvVstsLbaHMRpJZsqz7g9KkoN8oTmXFvtR1jAWHXPNBi9yKusYR7uZyo+AOKdg88w/01YiW8ao2dEbqv4kOshrNmyjgOOLs1t6Clynv+wHfE4KRwRxzgyhSAD1a8Q8SPm+E+teZ6LnMUoW4ebK5dcESbFP99IKDZQmMBLx/D/Fmbynem/GQiMr6lU8F5ih/w0+IBkcm4Mz9Ea5uYKv8kObhipe2xOj9tmaLsZvlUMUWtOZMUIdRfezL6E0EEzxHxuTFJY0sR3+sEwQMbdtm8NX7n9PDFwElpFjA7E5X5SeCvENI5egh/sAsd9IhI9G6YuGIW+7BWr0zQ==
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18) by CYXPR19MB8402.namprd19.prod.outlook.com
- (2603:10b6:930:de::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.14; Fri, 12 Jun
- 2026 13:59:12 +0000
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.21.0113.014; Fri, 12 Jun 2026
- 13:59:12 +0000
-Date: Fri, 12 Jun 2026 08:59:11 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
-	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
-Subject: Re: [PATCH V11 3/9] iio: imu: inv_icm42607: Add inv_icm42607 Core
- Driver
-Message-ID: <PH0PR19MB997338A8FD439C0528B96048BDA5182@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20260610175455.19006-1-macroalpha82@gmail.com>
- <20260610175455.19006-4-macroalpha82@gmail.com>
- <20260611120943.7119975b@jic23-huawei>
- <PH0PR19MB9973387E29375D4E8F28C6B9D9A51B2@PH0PR19MB997338.namprd19.prod.outlook.com>
- <20260611172022.4d138820@jic23-huawei>
- <PH0PR19MB997338CE11110E16E7FB668E3BA51B2@PH0PR19MB997338.namprd19.prod.outlook.com>
- <20260612114230.0fd2f391@jic23-huawei>
-Content-Disposition: inline
-In-Reply-To: <20260612114230.0fd2f391@jic23-huawei>
-X-ClientProxiedBy: SA9PR13CA0065.namprd13.prod.outlook.com
- (2603:10b6:806:23::10) To PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18)
-X-Microsoft-Original-Message-ID: <aiwQr1dWaDzxU3VJ@wintermute.localhost.fail>
+	Fri, 12 Jun 2026 14:12:14 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 08EC76E137;
+	Fri, 12 Jun 2026 13:46:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1781271983; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=c/FmAs6vbDcwp7q5Sv1XH6dsatQVIdKLtjBr9BuZXg0=;
+	b=mf9mLtBCR7JOIRxwuBb+hbK4//s6FoScuSYdg1aShETwjHr1zwyuKAd+nCg/8RSvxAuq78
+	urUv8o0A+mfQmE5wl1nluyqaCsW0d7t1TNNYpofdGHmFugQzdDDDTwutFJ8skTgI3TL20C
+	rgTwBDOBvr4mA8d1NE5eunEUj8PYZI4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1781271983;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=c/FmAs6vbDcwp7q5Sv1XH6dsatQVIdKLtjBr9BuZXg0=;
+	b=Q/MmAbnQN88XvRYp5pnye3I7l8v98aYnkhuYBf9RheyH5aImYKndL933PFHbA1Oaoyl6r2
+	V304vENaYJW7klDA==
+Authentication-Results: smtp-out2.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1781271983; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=c/FmAs6vbDcwp7q5Sv1XH6dsatQVIdKLtjBr9BuZXg0=;
+	b=mf9mLtBCR7JOIRxwuBb+hbK4//s6FoScuSYdg1aShETwjHr1zwyuKAd+nCg/8RSvxAuq78
+	urUv8o0A+mfQmE5wl1nluyqaCsW0d7t1TNNYpofdGHmFugQzdDDDTwutFJ8skTgI3TL20C
+	rgTwBDOBvr4mA8d1NE5eunEUj8PYZI4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1781271983;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=c/FmAs6vbDcwp7q5Sv1XH6dsatQVIdKLtjBr9BuZXg0=;
+	b=Q/MmAbnQN88XvRYp5pnye3I7l8v98aYnkhuYBf9RheyH5aImYKndL933PFHbA1Oaoyl6r2
+	V304vENaYJW7klDA==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 63E66779A7;
+	Fri, 12 Jun 2026 13:46:22 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id G+T6Fq4NLGqzeAAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Fri, 12 Jun 2026 13:46:22 +0000
+Message-ID: <c7866bc4-bf37-4f8c-ae64-2d1d3a23f1ef@suse.de>
+Date: Fri, 12 Jun 2026 15:46:21 +0200
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|CYXPR19MB8402:EE_
-X-MS-Office365-Filtering-Correlation-Id: b2e0d335-54df-45b3-22d5-08dec88ac860
-X-Microsoft-Antispam: BCL:0;ARA:14566002|5072599009|24021099003|13031999006|25031999004|23021999003|37011999003|51005399006|15080799012|41001999006|6090799003|19110799012|8060799015|440099028|3412199025|40105399003;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?i8vH+ONnaZYHJwsxtyBjJ/86tL39Fzd2T0RlkpzZe0PwPFaMkLsVuRv6CIYU?=
- =?us-ascii?Q?ZlPAaMRVmKmBoXA3itMTXr5zA+kRzfVvEaiNKXIe8jzZsUA2q/j8Zc1JqyWi?=
- =?us-ascii?Q?tGzm6wMZvNCiSGjCZhExOiOxdrSXkrqEyL0jwLMAcHtyd5KGWzWLysiHBJjd?=
- =?us-ascii?Q?/+5exk/1dWBt7waVtswsFeKa8/yekVhGR7zGE9hjddEulddvBJWW84YW438d?=
- =?us-ascii?Q?rhPn/am/oNrf9GW4hmyWrNsimtLeIjr5d83qUu1gYIpyNBrw7g3DbGlWvEl0?=
- =?us-ascii?Q?v/6EAdOgvjCY+Org/ZDvkxbf5eXcJlYN0/Y87nJyPiJxRrW7Dry3yLnbDCmh?=
- =?us-ascii?Q?l8Qi2fm0q9ISSLeRvmAvAPKIt/If7/fS/aRtJ1SsQ7GohBkZaPT3wWeyUfWb?=
- =?us-ascii?Q?ipIvZMOhomQXvN/qSEuIUl1cTn2+b4ZHpQvLhFReMKn3mlFuqCSWb0dVcMYt?=
- =?us-ascii?Q?qVj/+nfCrvArJChMOEtXVgOS4vnylCjQDA2yV8knSUhknkpVcI2qbrV29vka?=
- =?us-ascii?Q?igYA2zaSmfjsO2uiZsFypF1Qn8dv+IDlHMdGLFU3jv75uKHnu3HR4bC2aNzE?=
- =?us-ascii?Q?Vur423CkDWP5cgbeOGzrYfKR48MNf5aOEyJLoW6d+EbjEQuElyfl30ehbl4x?=
- =?us-ascii?Q?skzMXBrNUzzoGZmaeOCqi8EDGLNF9D/AYStA0FwEogJAU6HLx6VooURtl2f1?=
- =?us-ascii?Q?Nb0gaTZL1SwZkV/TjcnjTsVMXi6kqnSfLwoA/FPChf3Y3a/8kCjO7/ewo7Vy?=
- =?us-ascii?Q?4veIn/KrrY32p9aqxRoLbHsNtZZY1w5zq3/AyiDBboC6/U67+MCib4NiKBai?=
- =?us-ascii?Q?gFHttyzvqGomuQ/qyMXIILTCAcvIRQLA3GL2UiZZjwF83Gql9UaRGUGV3qlo?=
- =?us-ascii?Q?b+mJ/Xq4d3GpX0MZspuUwrLhIZ7ZVWLox8O9cKHcZE36EgI2rKCmUM80NnYi?=
- =?us-ascii?Q?dXf7igKqGzw/dvVgLeOY9pgmF6odLTEWeVEqPGAC7Btg58KulH2+tzvlSW1k?=
- =?us-ascii?Q?hpHYmuaPIuKAkSZdbnBmC4EMH4+5HhLxFboL3LHGmZcYGuERNjx85j98G/la?=
- =?us-ascii?Q?SqJX0rZaUObPwOLmxOMgy29+h3un+A=3D=3D?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+IFLsarxVjSxeRX2nUtBKp8XcYtCuEM+W18jKcbHrZOG818b0RAKZ3Lv/flL?=
- =?us-ascii?Q?DBFnltXjhdw8Aon5COJ4lDufxRLOuAYB6FTp0rlRO73vRpdjhdtCop+uY0o1?=
- =?us-ascii?Q?fjpzFSbW6opIR0UoEc6DFZgIUreToqp3fBa1L2yGj6oHjhp5Dq252MYATx4x?=
- =?us-ascii?Q?DbYnf3nBIphCGKZr9ieqG7PUdZ+YpbZLBosmzpRulNntgXn7lBc1ytB64Nmi?=
- =?us-ascii?Q?1C5UK+bM69hMhPzRxu7w5AqJI1O72mRKybzkrKAvrRuEm7ZYM8y1TYBm1ROQ?=
- =?us-ascii?Q?RQwaApR8ly5tvkKOFsb68KS00NRPlrZr6yKM8iUftsTYxc8/DPIAvch4VDht?=
- =?us-ascii?Q?ytydv493EifIswkCR6KF7OPpkeaJyV1gec9S4WrpgO2tW2MYpojb0sE8JUMU?=
- =?us-ascii?Q?7wTHcmhWGBciNw6dZUysG/cGM1Q3gx9kBNzysV/ZNPBX4rk8mFT0MDJjYtVA?=
- =?us-ascii?Q?ps+OKrluSmYK+XSwj444m/Pjn3nMly16kFrOnxk/4rY7jPMBJRa1uk/c2Qoc?=
- =?us-ascii?Q?fg4diVRKkIXFrN9/qT8QrL4JdwEU1/UyrFFno4Uf9t66ZMVr5fhIY1vnXF5e?=
- =?us-ascii?Q?bda10OtAMGyVxE/23G3cvN9iqroGam33zmYkkD8tlf8LTUwWxAAD4fy8JjGy?=
- =?us-ascii?Q?iLaHooGK5ZHIMDIMlW5qdJlpR+TB3Hs+463mqMAyESGRAcglkj0xgneMxwqk?=
- =?us-ascii?Q?nXB25M44kDPlEHE6lfsJK6L3OyMxVHDw8teeaNkj7o3s/g9O4gzts36IsAu+?=
- =?us-ascii?Q?yJ/1qi8OkMMr2D8qm4ARZe0idgxsBYkQ1rQq9oro3oHh7J9WaCCpZMX8/xH3?=
- =?us-ascii?Q?fl+T7+6qYt51cA5HVxn2JJKvQnZz7bRM9KUdU7Yknfbj2SZ5k9Y53DZoyuqq?=
- =?us-ascii?Q?SRuyStXUpMFlAXHZ1WU1wpgamseh9WFUvQC5TU5xJ4hOUa416ew4XVG6mJ9I?=
- =?us-ascii?Q?IWDlPW0miOPthTH7FTRuAovNA1A8+w+qbQA44HmMyOpAJA5bKZnTQwZYKH+r?=
- =?us-ascii?Q?IHYaBWk39nXBE0DqrMVm4dkG3zMOq6BlFezlK3qzBja2wmTDZbFjpv9WgW6w?=
- =?us-ascii?Q?Q3Dv+RGE45bS3Un/bC7kG3kKQimiXlCDWsnx41MrC0QXmV4JxtJv0SbHdQff?=
- =?us-ascii?Q?jHqUhzFt2ZicDz5LupGsPHVsGmKnOalUKElhgQmCuTuMfQZK+uUhibwL0+fD?=
- =?us-ascii?Q?WMyjJo6FOh4YMbjOPCRXcegmgNo0FweLIFugirs9QSOXbgzmyBLFgSS1muC0?=
- =?us-ascii?Q?8uFpB62c5+ueHRXQ1ezKWSmbJLeA0xl/43UJvh40O8IdmbH53nCn5Me4BubW?=
- =?us-ascii?Q?RkLQmIrWfQLH/W0bVFMiFuEJJMJNhXJANoe5zRiAw4ZEKpxRaeMEt/hV+BXG?=
- =?us-ascii?Q?jmP5Jjw8kpFreGWyXhmFqrCXXXOZb1J7twMREB6fUScf6c7YqqsrD4uIEHii?=
- =?us-ascii?Q?JbKSv3/nJkgjBZAZ0VqRngkvRtC0C/Wx?=
-X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: b2e0d335-54df-45b3-22d5-08dec88ac860
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jun 2026 13:59:12.8199
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYXPR19MB8402
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 01/30] drm/fb-helper: Remove unused local variable in
+ hotplug_event()
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
+ <20260602-dw-hdmi-qp-scramb-v7-1-445eb54ee1ed@collabora.com>
+Content-Language: en-US
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-1-445eb54ee1ed@collabora.com>
+X-Spamd-Result: default: False [-2.80 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	TAGGED_RCPT(0.00)[];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	MIME_TRACE(0.00)[0:+];
+	RCPT_COUNT_TWELVE(0.00)[24];
+	ARC_NA(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FREEMAIL_TO(0.00)[collabora.com,linux.intel.com,kernel.org,gmail.com,ffwll.ch,intel.com,linaro.org,ideasonboard.com,kwiboo.se,bootlin.com,rock-chips.com,sntech.de,raspberrypi.com,igalia.com];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	TO_DN_SOME(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:mid,suse.com:url,imap1.dmz-prg2.suse.org:helo]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260612_065918_400107_5B422289 
-X-CRM114-Status: GOOD (  54.18  )
+X-CRM114-CacheID: sfid-20260612_071213_405189_F9A6C3A7 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,157 +169,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 12, 2026 at 11:42:30AM +0100, Jonathan Cameron wrote:
-> On Thu, 11 Jun 2026 11:31:09 -0500
-> Chris Morgan <macromorgan@hotmail.com> wrote:
-> 
-> > On Thu, Jun 11, 2026 at 05:20:22PM +0100, Jonathan Cameron wrote:
-> > > On Thu, 11 Jun 2026 09:32:38 -0500
-> > > Chris Morgan <macromorgan@hotmail.com> wrote:
-> > >   
-> > > > On Thu, Jun 11, 2026 at 12:09:43PM +0100, Jonathan Cameron wrote:  
-> > > > > On Wed, 10 Jun 2026 12:54:47 -0500
-> > > > > Chris Morgan <macroalpha82@gmail.com> wrote:
-> > > > >     
-> > > > > > From: Chris Morgan <macromorgan@hotmail.com>
-> > > > > > 
-> > > > > > Add the core component of a new inv_icm42607 driver. This includes
-> > > > > > a few setup functions and the full register definition in the
-> > > > > > header file.
-> > > > > > 
-> > > > > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>    
-> > > > > Hi Chris,
-> > > > > 
-> > > > > A couple more minor things from a fresh read.
-> > > > > 
-> > > > > Thanks
-> > > > > 
-> > > > > Jonathan
-> > > > >     
-> > > > > > ---
-> > > > > >  drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 334 ++++++++++++++++++
-> > > > > >  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 197 +++++++++++
-> > > > > >  2 files changed, 531 insertions(+)
-> > > > > >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> > > > > >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > > > > > 
-> > > > > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> > > > > > new file mode 100644
-> > > > > > index 000000000000..716fc0f1c3fd
-> > > > > > --- /dev/null
-> > > > > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h    
-> > > > >     
-> > > > > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > > > > > new file mode 100644
-> > > > > > index 000000000000..334264120b42
-> > > > > > --- /dev/null
-> > > > > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c    
-> > > > >     
-> > > > > > +
-> > > > > > +static int inv_icm42607_setup(struct inv_icm42607_state *st,
-> > > > > > +			      inv_icm42607_bus_setup inv_icm42607_bus_setup)
-> > > > > > +{
-> > > > > > +	const struct device *dev = regmap_get_device(st->map);
-> > > > > > +	unsigned int val;
-> > > > > > +	int ret;
-> > > > > > +
-> > > > > > +	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
-> > > > > > +	if (ret)
-> > > > > > +		return ret;
-> > > > > > +
-> > > > > > +	/* Warn, but don't fail. */
-> > > > > > +	if (val != st->hw->whoami)
-> > > > > > +		dev_warn(dev, "Unknown whoami %#02x expected %#02x (%s)\n",
-> > > > > > +			 val, st->hw->whoami, st->hw->name);
-> > > > > > +
-> > > > > > +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
-> > > > > > +			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
-> > > > > > +	if (ret)
-> > > > > > +		return ret;
-> > > > > > +
-> > > > > > +	fsleep(INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC);
-> > > > > > +
-> > > > > > +	/*
-> > > > > > +	 * No polling interval specified in datasheet, so use reset time as
-> > > > > > +	 * polling interval and 10x reset time as timeout period.
-> > > > > > +	 */
-> > > > > > +	ret = regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
-> > > > > > +				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
-> > > > > > +				       (INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC),
-> > > > > > +				       (INV_ICM42607_RESET_TIME_MS * USEC_PER_MSEC * 10));
-> > > > > > +	if (ret)
-> > > > > > +		return dev_err_probe(dev, ret,
-> > > > > > +				     "reset error, reset done bit not set\n");
-> > > > > > +
-> > > > > > +	/* Sync the regcache again after a reset. */
-> > > > > > +	regcache_mark_dirty(st->map);
-> > > > > > +	ret = regcache_sync(st->map);    
-> > > > > 
-> > > > > Sashiko raised the point that you don't have a writeable register list for the regmap
-> > > > > and so potentially we at very least write a bunch of stuff that isn't needed.
-> > > > > I doubt it's actually a problem or you would have seen it, but nice little optimization
-> > > > > to reduce what is written.    
-> > > > 
-> > > > I will add such a list, I'd put it in patch 4 unless you think I should
-> > > > merge patch 3 and 4 to make the driver compileable at the first commit
-> > > > of code (will push the number of lines to the ~850/900 range though).
-> > > >   
-> > > I'm fine with them split but don't mind if Andy prefers them combined.
-> > > His comment on adding a COMPILE_TEST option would allow that to be
-> > > built, but it is a bit odd to do it just for that purpose.
-> > > 
-> > > Jonathan
-> > >   
-> > 
-> > I'm going to add the i2c stuff to this series, and then do the SPI
-> > on the next patch. That should add only a little bit to this one but
-> > still ensure the very first (code) commit has something to compile.
-> > I'm going to avoid doing COMPILE_TEST unless collectively you all
-> > think I should.
-> > 
-> > I'm still racing to try and get this one done before the merge
-> > window opens up, but I'm pretty sure it's already too late at
-> > this point. I'll refrain from submitting updates once the window opens
-> > though.
-> Unfortunately you are correct. IIO in practice closes around 10 days before
-> the merge window to give time to both expose new things to testing in linux-next
-> and to allow time for Greg KH to merge my pull request into char-misc (which
-> is the path IIO takes to upstream)
-> 
-> Sorry about that, and whilst no need to rush as a result, we also don't
-> stop merging IIO stuff in the merge window, it just sits in the testing
-> branch until I can rebase that on rc1 and then push it out for linux-next
-> to pick up.
-> 
-> Thanks,
-
-No worries. I think I'm down to 2 bugs with sashiko that I'll try to
-quash, then I can move on to other stuff. Note that when it complains
-about the temperature sensor and power management that's a false
-positive. I tried to put a note there to give it a hint but it doesn't
-seem to want to take it.
-
-If I haven't communicated it previously, thank you again for your help
-with this. I thought adding an accelerometer to my handheld would be
-easy, but I do appreciate everything you and the other maintainers have
-helped me with.
-
-Chris
-
-> 
-> Jonathan
-> > 
-> > Thank you,
-> > Chris
-> > 
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpBbSAwMi4wNi4yNiB1bSAwMDo0NCBzY2hyaWViIENyaXN0aWFuIENpb2NhbHRlYToKPiBSZW1v
+dmUgdGhlICdlcnInIGxvY2FsIHZhcmlhYmxlIGluIGRybV9mYl9oZWxwZXJfaG90cGx1Z19ldmVu
+dCgpIHdoaWNoCj4gb25seSBzdG9yZXMgYSByZXR1cm4gdmFsdWUgdGhhdCBpcyBuZXZlciB1c2Vk
+IGJleW9uZCB0aGUgaW1tZWRpYXRlCj4gcmV0dXJuIHN0YXRlbWVudC4gIFRoaXMgc2ltcGxpZmll
+cyB0aGUgY29kZSB3aXRob3V0IGJlaGF2aW9yIGNoYW5nZXMuCj4KPiBTaWduZWQtb2ZmLWJ5OiBD
+cmlzdGlhbiBDaW9jYWx0ZWEgPGNyaXN0aWFuLmNpb2NhbHRlYUBjb2xsYWJvcmEuY29tPgoKUmV2
+aWV3ZWQtYnk6IFRob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPgoKQnV0IHdo
+eSBpcyB0aGlzIHBhdGNoIGhpZGRlbiBpbiB0aGlzIHNlcmllcz8gSXQgaGFzIG5vdGhpbmcgdG8g
+ZG8gd2l0aCAKSERNSSBzdXBwb3J0LgoKPiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9kcm1fZmJf
+aGVscGVyLmMgfCAxMSArKystLS0tLS0tLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9u
+cygrKSwgOCBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJt
+X2ZiX2hlbHBlci5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9mYl9oZWxwZXIuYwo+IGluZGV4IDdi
+MTFhNTgyZjhlYy4uMzMxNmJiMDBhNjYyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9k
+cm1fZmJfaGVscGVyLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2ZiX2hlbHBlci5jCj4g
+QEAgLTE3NDQsMjEgKzE3NDQsMTcgQEAgRVhQT1JUX1NZTUJPTChkcm1fZmJfaGVscGVyX2luaXRp
+YWxfY29uZmlnKTsKPiAgICAqLwo+ICAgaW50IGRybV9mYl9oZWxwZXJfaG90cGx1Z19ldmVudChz
+dHJ1Y3QgZHJtX2ZiX2hlbHBlciAqZmJfaGVscGVyKQo+ICAgewo+IC0JaW50IGVyciA9IDA7Cj4g
+LQo+ICAgCWlmICghZHJtX2ZiZGV2X2VtdWxhdGlvbiB8fCAhZmJfaGVscGVyKQo+ICAgCQlyZXR1
+cm4gMDsKPiAgIAo+ICAgCW11dGV4X2xvY2soJmZiX2hlbHBlci0+bG9jayk7Cj4gLQlpZiAoZmJf
+aGVscGVyLT5kZWZlcnJlZF9zZXR1cCkgewo+IC0JCWVyciA9IF9fZHJtX2ZiX2hlbHBlcl9pbml0
+aWFsX2NvbmZpZ19hbmRfdW5sb2NrKGZiX2hlbHBlcik7Cj4gLQkJcmV0dXJuIGVycjsKPiAtCX0K
+PiArCWlmIChmYl9oZWxwZXItPmRlZmVycmVkX3NldHVwKQo+ICsJCXJldHVybiBfX2RybV9mYl9o
+ZWxwZXJfaW5pdGlhbF9jb25maWdfYW5kX3VubG9jayhmYl9oZWxwZXIpOwo+ICAgCj4gICAJaWYg
+KCFmYl9oZWxwZXItPmZiIHx8ICFkcm1fbWFzdGVyX2ludGVybmFsX2FjcXVpcmUoZmJfaGVscGVy
+LT5kZXYpKSB7Cj4gICAJCWZiX2hlbHBlci0+ZGVsYXllZF9ob3RwbHVnID0gdHJ1ZTsKPiAgIAkJ
+bXV0ZXhfdW5sb2NrKCZmYl9oZWxwZXItPmxvY2spOwo+IC0JCXJldHVybiBlcnI7Cj4gKwkJcmV0
+dXJuIDA7Cj4gICAJfQo+ICAgCj4gICAJZHJtX21hc3Rlcl9pbnRlcm5hbF9yZWxlYXNlKGZiX2hl
+bHBlci0+ZGV2KTsKPiBAQCAtMTgwMiw0ICsxNzk4LDMgQEAgYm9vbCBkcm1fZmJfaGVscGVyX2dl
+bV9pc19mYihjb25zdCBzdHJ1Y3QgZHJtX2ZiX2hlbHBlciAqZmJfaGVscGVyLAo+ICAgCXJldHVy
+biBnZW0gPT0gb2JqOwo+ICAgfQo+ICAgRVhQT1JUX1NZTUJPTF9HUEwoZHJtX2ZiX2hlbHBlcl9n
+ZW1faXNfZmIpOwo+IC0KPgoKLS0gCi0tClRob21hcyBaaW1tZXJtYW5uCkdyYXBoaWNzIERyaXZl
+ciBEZXZlbG9wZXIKU1VTRSBTb2Z0d2FyZSBTb2x1dGlvbnMgR2VybWFueSBHbWJICkZyYW5rZW5z
+dHIuIDE0NiwgOTA0NjEgTsO8cm5iZXJnLCBHZXJtYW55LCB3d3cuc3VzZS5jb20KR0Y6IEpvY2hl
+biBKYXNlciwgQW5kcmV3IE1jRG9uYWxkLCBXZXJuZXIgS25vYmxpY2gsIChIUkIgMzY4MDksIEFH
+IE7DvHJuYmVyZykKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
