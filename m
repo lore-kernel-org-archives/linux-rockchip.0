@@ -4,58 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD4DCD98C5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Jun 2026 10:44:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B905CD98C5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Jun 2026 22:55:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sF/kGX6ihN/iSk5vVQbpwyY3o/BMY3I+AJv0rar7qkM=; b=NP3QyQLi5kvtm7
-	TB82GOQhsHKbjA6W/wuX1zXUN3E+k8ILFtoWQ4PBeJDuXf9TADwZLKsYN3SNG1fAHiAm4MtkqV+Nz
-	qqTF+Jwv1KZT26bZGc/5vXgmhteHnwSaUmkqHuTiH6eR4nR//4ycYURWkWCkbRF2qfqQzill08AxC
-	VkxKObs6rdeFLx3LKJ+C/LMMeAVSRToR7JZmnstAL+qCNlr/nAdkcII+azzoOp4RxChYprogKDMRo
-	xX5xUx3nsQYX80guA8mOR51wODCgW+NOFA0kUmyupz/nGlF6vYzVfEI8N0RJjHF8u8Hmf8OWxPvtU
-	te/RBx7WUyBKg94Xxgig==;
+	List-Owner; bh=da/ZaCHYiX8OqS0HoSzF3PE6zXPAzassFBtZka0GpA8=; b=jdQxSLh3Rxkb8R
+	Qy2LYVDRh5gED7F1DBG/p/e1k5znAeDksRZuPYvmU4p5j/fxH9fLeRwobfbNz8lizaR4TJhlHBb+i
+	VfZ7mVNiwlFiREiZDmXAKKBAixFpqOnl4giLPTdb8Cs7YJljCDmfUt4Fag/FHihtrPs+dzWxdwlPM
+	JRxPjYYjBrcbgckCYAMmE6dOLRl+2ibOhtmeDGNywf1m8LJgG7dWv885CUSCXp0TxYgYLKB77O/dy
+	zjxuIX/Lz7U3qWmjw/R8pMK3Q9IdSUSkBHFpPS1Kq15YbN4St3IfbPHWVzj4eE/tGPZF+qkG4uB+X
+	nl/b66Uhv80BInbs6gAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYLqW-0000000CCKC-0fd4;
-	Sat, 13 Jun 2026 10:44:12 +0000
+	id 1wYXFo-0000000CakZ-3xRQ;
+	Sat, 13 Jun 2026 22:55:04 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYLqV-0000000CCJw-067J;
-	Sat, 13 Jun 2026 10:44:11 +0000
+	id 1wYXFn-0000000CakN-0uZW
+	for linux-rockchip@lists.infradead.org;
+	Sat, 13 Jun 2026 22:55:03 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6D41140790;
-	Sat, 13 Jun 2026 10:44:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B53281F000E9;
-	Sat, 13 Jun 2026 10:44:09 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8DFD244277;
+	Sat, 13 Jun 2026 22:55:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60B511F000E9;
+	Sat, 13 Jun 2026 22:55:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781347450;
-	bh=v6feVhl/WbyW4RkUuMaZ8jTOMx0aNRMOaPCXk+NnkC0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=JeL2B7Il2rkaurY5b0dmZaGG8qobcTRBQhgHikVn7zb533OB+VLpUBGDs7qBVTsCr
-	 morceHXuyslii8vyuIBw6tyCPTNxc4hbwERlc8drfYOUR5alFzaQLOXu5jlTeMCdSd
-	 nP5LhF+p43EqamQdLhSIYh0C5hxidJnwHmErghpr1TIYW0nhY0zddPB2Cr43oiN0C6
-	 TUD+S5mTzQMc0L4ZJE24PB1XowFts1DaXpxyy/fYptfGk40C4dM9aSB16ekjZ9W1i5
-	 Ef5mh9rscvxljyuhr+7kJLh3rjZQyA0p6mtISWzG4BWDrsKu7eWXdG7pDY3/E+Mq9w
-	 RgWaU8nL+PtBQ==
-Date: Sat, 13 Jun 2026 12:44:07 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Alexey Charkov <alchark@flipper.net>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 2/4] dt-bindings: mfd: Add UGREEN NASync DH2300 MCU
-Message-ID: <20260613-elite-panda-of-success-75eecd@quoll>
-References: <20260612-dh2300-mcu-v1-0-ab8db1617bc0@flipper.net>
- <20260612-dh2300-mcu-v1-2-ab8db1617bc0@flipper.net>
+	s=k20260515; t=1781391302;
+	bh=SjUBfdi4LdjoTQHtLZhEUMBg8a67K1Nl1TJEtZTwpOY=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date;
+	b=XLjmhtL+V6hC4vaJcQsI5KZshRXmFOZJw5VjKH8kQLN6h3/UbtSEj1E1zMBtX4Kgg
+	 wrx3dE3YiYP69EXVmwxsgfuPedn/hFJqExE9cH8vqsj11SVr4CY008c51GvSPf6Hv3
+	 /SGGPzLB6NOnN2lSM2mMUejMxrSoxIocTUmP5KeKBJUhP7+u1oC6kVKmV3y4dcdoEj
+	 3WvNH+sg2grIxpZ6hpAdvUprZjbzjjQMYOFlnVix7faU5TVeF8cSj/SXI7d/V2eHTv
+	 SzAlKdiTEKuK6p0JFLYAg5x7bKioJUFdg226i54K1yfSWie2iZszlsKe7qP8Z2bmu/
+	 td4MicSBqa4Pg==
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260612-dh2300-mcu-v1-2-ab8db1617bc0@flipper.net>
+In-Reply-To: <4272848.9fHWaBTJ5E@phil>
+References: <4272848.9fHWaBTJ5E@phil>
+Subject: Re: [GIT PULL] Rockchip clock changes for 7.2 #1
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
+Date: Sat, 13 Jun 2026 14:51:04 -0700
+Message-ID: <178138746455.819343.17093210868169147733@localhost.localdomain>
+User-Agent: alot/0.12
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,73 +68,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 12, 2026 at 07:34:15PM +0400, Alexey Charkov wrote:
-> Document the UGREEN NASync DH2300 embedded controller (HC32F005 MCU),
-> which is responsible for gating the SATA drive-bay power rail and
-> providing a hardware watchdog.
+Quoting Heiko Stuebner (2026-06-07 13:59:31)
+> Hi Mike, Stephen,
 > 
-> This is based on disassebly of a GPL binary from vendor firmware for which
-> no source code could be found, so parts of it can be inaccurate. Only
-> the power gating function is confirmed.
+> please find below a pull-request with a Rockchip clock change for 7.2
 > 
-> Signed-off-by: Alexey Charkov <alchark@flipper.net>
-> ---
->  .../devicetree/bindings/mfd/ugreen,dh2300-mcu.yaml | 62 ++++++++++++++++++++++
->  MAINTAINERS                                        |  5 ++
->  2 files changed, 67 insertions(+)
+> Please pull.
 > 
-> diff --git a/Documentation/devicetree/bindings/mfd/ugreen,dh2300-mcu.yaml b/Documentation/devicetree/bindings/mfd/ugreen,dh2300-mcu.yaml
-> new file mode 100644
-> index 000000000000..847970c609cd
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/ugreen,dh2300-mcu.yaml
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit 254f49634ee16a731174d2ae34bc50bd5f45e731:
+> 
+>   Linux 7.1-rc1 (2026-04-26 14:19:00 -0700)
+> 
+> are available in the Git repository at:
+> 
+>   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.2-rockchip-clk1
+> 
+> for you to fetch changes up to 7edfb7fb58ee058298e18fde76a6077ef17d19d8:
+> 
+>   clk: rockchip: allow COMPILE_TEST builds (2026-05-13 12:35:57 +0200)
+> 
+> ----------------------------------------------------------------
 
-Place it in embedded-controller
-
-> @@ -0,0 +1,62 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/ugreen,dh2300-mcu.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: UGREEN NASync DH2300 embedded controller
-> +
-> +maintainers:
-> +  - Alexey Charkov <alchark@flipper.net>
-> +
-> +description:
-> +  The UGREEN NASync DH2300 NAS carries a HC32F005 microcontroller on I2C that
-> +  acts as a board embedded controller. It gates power to the SATA drive bays
-> +  through an internal register and apparently also serves as a watchdog
-> +  (unconfirmed, as vendor kernel sources are unavailable, works without it)
-> +
-> +properties:
-> +  compatible:
-> +    const: ugreen,dh2300-mcu
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  regulator:
-
-This should have specific name matching the actual regulator name, e.g.
-pin.
-
-> +    type: object
-> +    $ref: /schemas/regulator/regulator.yaml#
-> +    unevaluatedProperties: false
-> +    description:
-> +      The SATA drive-bay power gate controlled by the MCU.
-> +
-> +  watchdog-gpios:
-> +    description:
-> +      Optional GPIO line used to ping the hardware watchdog function of the MCU
-> +    maxItems: 1
-
-Best regards,
-Krzysztof
-
+Thanks. Pulled into clk-next
 
 _______________________________________________
 Linux-rockchip mailing list
