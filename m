@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0C21CD98E0
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C80A7CD98D8
 	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jun 2026 15:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,64 +12,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5xKzoHgYMxXgdf0lYZx3i6MLGXtE2iXyOgGx1/o6eOo=; b=sfxnDpSO2igB4Y
-	KA/a8MkFAL/NvrelHh3CfDAM/MFa92w9mhdut/1653X7JWOL2oF40lTh8VvGby1SpuXCyygikTcdK
-	KL+mRIqDsesfjrXJF+i4CXVtimbEhmH7jmIqNBfuPy1tp+4Z7/f6l3rtPqh1wnb8C5L00YVsTmBQQ
-	q4FLtjLJDyF4uyCbhRzkBEGCDbY+NwdpFgyJyZa0gZ7hQlANwTyRfP5u6oLCztF2YOZNgcrCJWuFW
-	oAZ0U0N6k7XWEfmcnvrSVWn4LAXC27dbCtXYNr2XucA2zDjk2E70/+R4EWO2RTl3Vau9Emk1vYuEy
-	nW/eBrMiDa7m6kiaPOpw==;
+	List-Owner; bh=AYGlTZCBu7uU1Qf7zI873V4uA6T09EYcqG29Ivthq2M=; b=Tcdh+ioKOGw+9r
+	zwsDpg4gq01NPy1k0wPJOGuU7ZoBZ4A4x8rEES7lT+3dtpkzC9xzKRDMCv7bDq2vhxckJeo6GU4mG
+	cH8qZ+hMsM3TnArJ3S9QUvJhGkksu4rMCo3B6IhG4HnpUNXHJwfJeu0thm94VmF45strFOWv98zTJ
+	XAwUH2dHFr+g32R7yEYnNcvx7G7pnEzhqEd4tF17ieT1AQXABsVXSZh1uTww02fOer7CTUxa4XrB/
+	Z5y5DQWykuqZM66/XKfSFwJwC+NFw0iV0QQERAWsV9wR71D5RvAx6gES/Xf6MP354Y9al2h0cd8K7
+	IewgrFKSDmPs10uQo2IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYnC7-0000000D9YG-1x82;
+	id 1wYnC7-0000000D9Y5-1MnS;
 	Sun, 14 Jun 2026 15:56:19 +0000
-Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYnC5-0000000D9Wg-2Hgy
+	id 1wYnC4-0000000D9Vv-00lR
 	for linux-rockchip@lists.infradead.org;
-	Sun, 14 Jun 2026 15:56:18 +0000
-Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-8ced8f44da0so30255726d6.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 14 Jun 2026 08:56:17 -0700 (PDT)
+	Sun, 14 Jun 2026 15:56:17 +0000
+Received: by mail-qv1-xf35.google.com with SMTP id 6a1803df08f44-8ce9df49c5fso42698356d6.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 14 Jun 2026 08:56:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781452576; x=1782057376; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1781452575; x=1782057375; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=z35bHdhSh8a/Z8G1ETcqSJjtROGT6H3Pl9v+4lJ8nHY=;
-        b=GBRdwVM1J1qjW9f1O3+eKycj7mwECZpZUEgLgQ1BCfMqLQrTAwqUqvXzfC1Q+WkLJM
-         Koy2dyziaJ0CTP8cYawFVpFIdHNimMSDSWUb0Ti2eDWMMMs1JJf1/mtFWg62WAEDVsbW
-         4fwQZ9a53q+OxMr0kEbVC5fZOp/IDWwMfXb0O/vNVOXUf/++YwpwBIIhd6xO8wW0V+AK
-         z4WrMhaat+J7UkQ1fLnJ66i/uPF8vrfEynEwfBnthx1ADIAf3Epj9YFonOXwwZo4nt5M
-         JC2fd9MpU6uBwkInhyEjdmqIk0cWLg9O7nK1WDVdcL/3WhKpxq3H2u6OreQfWopcqRbQ
-         +wLw==
+        bh=0ElgwnBNirjLiswOhHY1Csa+P9LjdxoJoEu8lkda184=;
+        b=N955MgIBF3k+oMtpEOQHmLM5DeVMbyrN1PeO5Z8RZ///58nstpUI8AVLArXfYwEayY
+         PCWIhgvFHEIqMEzcs6zEapmQs1OpszYfvpeY0Vpf1eLCC4nV9r5iwsEh4MoigSflcVul
+         E/hWF90jQ0MZq/diX5eUHBBYm2ffVCKTEnRMqYlMRPBZDZoAGMwRJ0IUiK6ZvhN61IQr
+         mg22nKbdzKzzsMMLYAtN6Acm3yquxVo150yZQVVRQnvmA7Dimd38hG+oapUIW3baGJeJ
+         OR5pp/qfyxUyGzhW0LmfvBOatgVED24NvsXFOqp+IL8FuQfpn4d23AhjvLGE4RK+PNFM
+         /a5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781452576; x=1782057376;
+        d=1e100.net; s=20251104; t=1781452575; x=1782057375;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=z35bHdhSh8a/Z8G1ETcqSJjtROGT6H3Pl9v+4lJ8nHY=;
-        b=qgtPj846xAI3yw2+919EF9zCxCkmLjNUmfyHJzzM1iJ8IcN0dwLOIzOZTgvkydXYCO
-         4Vz+YjLnhtX0h+7H45nPXS1UgAds99ZZ4TvR07U7/lIINbpLR69xjGyjlk7sk2tIKqHQ
-         cBJSChtrpUOzNmaQyBcv8AvQ9NU7KCSy0xxeSUCaNl/wKJvOPV4tHEchw3/5dlwr2afL
-         xZ2NUfIlIOlbJRss/FlUC2GMljCgNSPEl4GUTNVfCmVHUm5rTPOx4SZlCycWzmyVPnDC
-         fAGQNj7LN/P6EDKGxGmaavyuIWBA3ZzPT/1GW3AkAO0ESsf68jPevtc1ReBQugbmN7B5
-         1L0w==
-X-Forwarded-Encrypted: i=1; AFNElJ+LiqkfmXGSwZVD2NQrxlhd1rPZc7yjOvxWmCBygawhis3mrxkgQupMMRYdfbxUtFZM1k4H7CQAEewrUKZpHQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzUtnD5Qu4Xtn7vcJkdWASR5TnMNVyGLpUAuvizht1zDidcUK3R
-	ZaWWCs25S2/8+B/33z7sliEpunKjQpFkOoaASRN8Uqa+YrGS96iRPo/K
-X-Gm-Gg: Acq92OGI5r9MTNshpLjJsrTDChMP/njy808WsjALd0nf4Q6cMPasaHEI4XEQt0HUKg/
-	ja8URUfuBsBPF7fFt/s+KMkxvQL9vOp4FNF4hRb0opEUpuq2SZb1pKU2qlegIF2yBcaptFRBcIS
-	AC7K2fS9YrbsW7cacRXrNVAgKFdhTQKUW6NSJT2I1QtUDKoBaPMYnUQkDOiC8K5CyZpMVuvlbN8
-	/ngFZJgUrbRsKlXhBo14H3irh9phpRssIsZ0OTQHCicSV1HdtnwlSWnT8C3/qAoWQ2XPJinPDbq
-	vCiZSSGsW7MnBkY5RhGal22QH6lto9xzltIJDVeyVPl7uCUrjLhIbyW/uY+Ao6Qc9vSziRp5HLn
-	5E9zQYdghdPHyoSmQFB3mR4+7Zj/u7qxdS5c28A/Nl4Cjg4wdlYajP+ITo53JPWs4sKq5Z9QO2X
-	UhCBJnimuG5YP1aAPsWngWYQXfJ2C/XSkUQHL1GcvVs2sQ3aC4hZLzNvwzg2UMXFPUJ2eaxUlHo
-	/pictlyfMaYu9Yi3DNiFb6u73hXZXqqTYp9rjdQW/A=
-X-Received: by 2002:ad4:596a:0:b0:8cc:e8f4:1630 with SMTP id 6a1803df08f44-8d32e50112cmr179007736d6.30.1781452576150;
-        Sun, 14 Jun 2026 08:56:16 -0700 (PDT)
+        bh=0ElgwnBNirjLiswOhHY1Csa+P9LjdxoJoEu8lkda184=;
+        b=OwMLoLDeQvtBcQZf8Xw30hsZNtbP3OBwU48u7MRMfjco4hqjJF40rEHcD9yRn1baER
+         gQtK+hJCfbLXcjsRSSwHPlHvy11wGjBvbvNLk+dRDaJRSE6Esm3ToTh41qro9JCl1PY1
+         6oWPqAoPS7QEMUlVEZOIVNPHA73lnzyiT1g0NVqRhggDPeOfi2WsasFMGFDku6PLInNw
+         d40Ojyb+Yg68zN+fTj5rdiBh5BAR8IJm1PkNbCATMEU04nhDe+ggtk2i6Fj0PPJN/fDV
+         PQqCiZJlx9t4HojZa3gamKmtbWS5nsijplE+gUKqEsiF3PzkGbpqREsUuiU5yrogv0e5
+         Qe0A==
+X-Forwarded-Encrypted: i=1; AFNElJ8WIa32avNJs5dY72EKzjpKXHHfura9qZB0jZAIQT+o6b6OOSDFWln1vHVuTe9roAfeo8yH++gDRKuIBZEJLw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YziDIW3xxO4nG6z4Q7qRtzoCj0t2tdaVXZnT/un747O473zuwaF
+	C/RITjl0AG4jVa6OuD1ySN6GNEEYJyiHmCru0dIlkAaIVtF5WT7s42HT
+X-Gm-Gg: Acq92OH4YCxys5e+Ufak4vo9NUwyRuCwWiQwgMI2vwbgiwp6nfkAuDGNpooAv4Jy+je
+	klgykiSskKlFRkjlk7zfoxI+vmc3cT5t0nTrey9xR+ZLXnVeWs37mYiUgyfK030zbe8L1jawBa1
+	a9MJSaCYn54bBHS3wm6O8mzlTNK7elTw0y9z+IEGi9TlwCTXwujjHExXa/+eSNUecmViZNo5/8P
+	CbYaZ/x/Os4yN0bYCeIBt72uLocjUgY8/cIgB6St3vKM9h3rPlfz07aSyxrtNzycAIJaOGN80Q4
+	9AUZYj34idJF+uXJd2R0EfjcszuUjzowUFOgZL6gHdO6+nZ5jFN157wqZwRYMaZxUOxyu220w4Y
+	afOjpwiylKN9GVCPOJkidgkj7U+fHLlcfrmbmAFcdx8hfYfNEm+BYlk4QIY35QYbhRZxvP2p1o7
+	aA0wU1dQe2cnx+v5ZZKIJShaN4ORKaqdQb56e44I3HYpI7b9iroLV569M8UTURLcSbVU7JFRAVY
+	JbCJ9BNOrZCjhjhX3Em6CBivWlunkIX/z7YVpLxA3g=
+X-Received: by 2002:a05:6214:3993:b0:8ce:b018:89ff with SMTP id 6a1803df08f44-8d44f8fc7a0mr121880556d6.36.1781452574638;
+        Sun, 14 Jun 2026 08:56:14 -0700 (PDT)
 Received: from server0.tail6e7dd.ts.net (c-68-48-65-54.hsd1.mi.comcast.net. [68.48.65.54])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8d30522cbeasm82008446d6.44.2026.06.14.08.56.14
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8d30522cbeasm82008446d6.44.2026.06.14.08.56.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 14 Jun 2026 08:56:15 -0700 (PDT)
+        Sun, 14 Jun 2026 08:56:14 -0700 (PDT)
 From: Michael Bommarito <michael.bommarito@gmail.com>
 To: Hans Verkuil <hverkuil@kernel.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -87,16 +87,16 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/6] media: rkvdec: bound HEVC tile loops and PPS id to the array capacity
-Date: Sun, 14 Jun 2026 11:56:04 -0400
-Message-ID: <20260614155609.3107600-3-michael.bommarito@gmail.com>
+Subject: [PATCH v2 1/6] media: v4l2-ctrls: validate HEVC and AV1 tile counts
+Date: Sun, 14 Jun 2026 11:56:03 -0400
+Message-ID: <20260614155609.3107600-2-michael.bommarito@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260614155609.3107600-1-michael.bommarito@gmail.com>
 References: <20260614155609.3107600-1-michael.bommarito@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_085617_605861_E2C3CDD2 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20260614_085616_081457_367E8FC7 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,120 +113,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-compute_tiles_uniform() / compute_tiles_non_uniform() and assemble_hw_pps()
-loop over num_tile_columns_minus1 / num_tile_rows_minus1 to write the
-per-tile column_width[] / row_height[] arrays, sized to the PPS uAPI arrays
-column_width_minus1[20] / row_height_minus1[22]; bound the loops to that
-capacity. assemble_hw_pps() also indexes the fixed param_set[] table by
-pic_parameter_set_id, a driver-interpreted index the core does not reject;
-bound it to the table size before the access.
+The stateless HEVC and AV1 controls carry tile counts that several SoC
+decoder drivers consume as loop bounds when laying out fixed-size hardware
+descriptor buffers, but std_validate_compound() does not bound them.
 
-Fixes: 3595375c2301 ("media: rkvdec: Add HEVC backend")
-Fixes: c9a59dc2acc7 ("media: rkvdec: Add HEVC support for the VDPU381 variant")
+For V4L2_CTRL_TYPE_HEVC_PPS with tiling enabled, num_tile_columns_minus1
+and num_tile_rows_minus1 (u8) drive loops over column_width_minus1[20] and
+row_height_minus1[22]. For V4L2_CTRL_TYPE_AV1_FRAME, tile_info.tile_cols
+and tile_rows (u8) bound loops over the mi_*_starts[] / *_in_sbs_minus_1[]
+arrays. Reject counts beyond the uAPI array capacity with -EINVAL.
+
+These are active-count fields (loop bounds), so bounding the upper limit
+here mirrors the existing num_active_dpb_entries check. Only the upper
+bound is enforced; a zero tile count is left to the consuming driver, so
+the zero-initialised AV1 frame control that existing userspace submits is
+not rejected, and the AV1 divisor (context_update_tile_id / tile_cols) is
+guarded where it is used in the rockchip decoder (patch 4).
+
+Driver-interpreted index values (HEVC pic_parameter_set_id, AV1
+context_update_tile_id) are bounded in the consuming drivers instead
+(patches 2 and 4).
+
+Fixes: 256fa3920874 ("media: v4l: Add definitions for HEVC stateless decoding")
+Fixes: 9de30f579980 ("media: Add AV1 uAPI")
 Signed-off-by: Michael Bommarito <michael.bommarito@gmail.com>
 Assisted-by: Claude:claude-opus-4-8
 ---
- .../rockchip/rkvdec/rkvdec-hevc-common.c      | 22 +++++++++++++++----
- .../platform/rockchip/rkvdec/rkvdec-hevc.c    |  8 +++++--
- .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     |  2 ++
- 3 files changed, 26 insertions(+), 6 deletions(-)
+ drivers/media/v4l2-core/v4l2-ctrls-core.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
-index 3119f3bc9f98b..d0f26f736a763 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
-@@ -37,15 +37,22 @@ void compute_tiles_uniform(struct rkvdec_hevc_run *run, u16 log2_min_cb_size,
- 			   s32 pic_in_cts_height, u16 *column_width, u16 *row_height)
- {
- 	const struct v4l2_ctrl_hevc_pps *pps = run->pps;
-+	unsigned int num_cols, num_rows;
- 	int i;
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+index 6b375720e395c..58e2eb7002a19 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+@@ -790,10 +790,25 @@ static int validate_av1_film_grain(struct v4l2_ctrl_av1_film_grain *fg)
+ 	return 0;
+ }
  
--	for (i = 0; i < pps->num_tile_columns_minus1 + 1; i++)
-+	/* Bound the loops to the column_width[]/row_height[] capacity. */
-+	num_cols = min_t(unsigned int, pps->num_tile_columns_minus1 + 1,
-+			 ARRAY_SIZE(pps->column_width_minus1));
-+	num_rows = min_t(unsigned int, pps->num_tile_rows_minus1 + 1,
-+			 ARRAY_SIZE(pps->row_height_minus1));
++static int validate_av1_tile_info(struct v4l2_av1_tile_info *t)
++{
++	/* Loop bounds in the stateless AV1 drivers. */
++	if (t->tile_cols > V4L2_AV1_MAX_TILE_COLS)
++		return -EINVAL;
 +
-+	for (i = 0; i < num_cols; i++)
- 		column_width[i] = ((i + 1) * pic_in_cts_width) /
- 				  (pps->num_tile_columns_minus1 + 1) -
- 				  (i * pic_in_cts_width) /
- 				  (pps->num_tile_columns_minus1 + 1);
- 
--	for (i = 0; i < pps->num_tile_rows_minus1 + 1; i++)
-+	for (i = 0; i < num_rows; i++)
- 		row_height[i] = ((i + 1) * pic_in_cts_height) /
- 				(pps->num_tile_rows_minus1 + 1) -
- 				(i * pic_in_cts_height) /
-@@ -57,17 +64,24 @@ void compute_tiles_non_uniform(struct rkvdec_hevc_run *run, u16 log2_min_cb_size
- 			       s32 pic_in_cts_height, u16 *column_width, u16 *row_height)
- {
- 	const struct v4l2_ctrl_hevc_pps *pps = run->pps;
-+	unsigned int num_cols, num_rows;
- 	s32 sum = 0;
- 	int i;
- 
--	for (i = 0; i < pps->num_tile_columns_minus1; i++) {
-+	/* Leave one slot for the trailing last-tile entry written below. */
-+	num_cols = min_t(unsigned int, pps->num_tile_columns_minus1,
-+			 ARRAY_SIZE(pps->column_width_minus1) - 1);
-+	num_rows = min_t(unsigned int, pps->num_tile_rows_minus1,
-+			 ARRAY_SIZE(pps->row_height_minus1) - 1);
++	if (t->tile_rows > V4L2_AV1_MAX_TILE_ROWS)
++		return -EINVAL;
 +
-+	for (i = 0; i < num_cols; i++) {
- 		column_width[i] = pps->column_width_minus1[i] + 1;
- 		sum += column_width[i];
- 	}
- 	column_width[i] = pic_in_cts_width - sum;
++	return 0;
++}
++
+ static int validate_av1_frame(struct v4l2_ctrl_av1_frame *f)
+ {
+ 	int ret = 0;
  
- 	sum = 0;
--	for (i = 0; i < pps->num_tile_rows_minus1; i++) {
-+	for (i = 0; i < num_rows; i++) {
- 		row_height[i] = pps->row_height_minus1[i] + 1;
- 		sum += row_height[i];
- 	}
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-index ac8b825d080a2..29b5adb509727 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-@@ -156,6 +156,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
- 	 * packet unit). so the driver copy SPS/PPS information to the exact PPS
- 	 * packet unit for HW accessing.
- 	 */
-+	if (pps->pic_parameter_set_id >= ARRAY_SIZE(priv_tbl->param_set))
-+		return;
- 	hw_ps = &priv_tbl->param_set[pps->pic_parameter_set_id];
- 	memset(hw_ps, 0, sizeof(*hw_ps));
++	ret = validate_av1_tile_info(&f->tile_info);
++	if (ret)
++		return ret;
+ 	ret = validate_av1_quantization(&f->quantization);
+ 	if (ret)
+ 		return ret;
+@@ -1242,6 +1257,14 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
  
-@@ -274,9 +276,11 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+ 			p_hevc_pps->flags &=
+ 				~V4L2_HEVC_PPS_FLAG_LOOP_FILTER_ACROSS_TILES_ENABLED;
++		} else {
++			/* Loop bounds in the stateless HEVC drivers. */
++			if (p_hevc_pps->num_tile_columns_minus1 >=
++			    ARRAY_SIZE(p_hevc_pps->column_width_minus1))
++				return -EINVAL;
++			if (p_hevc_pps->num_tile_rows_minus1 >=
++			    ARRAY_SIZE(p_hevc_pps->row_height_minus1))
++				return -EINVAL;
+ 		}
  
- 	if (pps->flags & V4L2_HEVC_PPS_FLAG_TILES_ENABLED) {
- 		/* Userspace also provide column width and row height for uniform spacing */
--		for (i = 0; i <= pps->num_tile_columns_minus1; i++)
-+		for (i = 0; i <= pps->num_tile_columns_minus1 &&
-+		     i < ARRAY_SIZE(pps->column_width_minus1); i++)
- 			WRITE_PPS(pps->column_width_minus1[i], COLUMN_WIDTH(i));
--		for (i = 0; i <= pps->num_tile_rows_minus1; i++)
-+		for (i = 0; i <= pps->num_tile_rows_minus1 &&
-+		     i < ARRAY_SIZE(pps->row_height_minus1); i++)
- 			WRITE_PPS(pps->row_height_minus1[i], ROW_HEIGHT(i));
- 	} else {
- 		WRITE_PPS(((sps->pic_width_in_luma_samples + ctb_size_y - 1) / ctb_size_y) - 1,
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
-index fe6414a175510..6dafa1dd28507 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
-@@ -145,6 +145,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
- 	 * packet unit). so the driver copy SPS/PPS information to the exact PPS
- 	 * packet unit for HW accessing.
- 	 */
-+	if (pps->pic_parameter_set_id >= ARRAY_SIZE(priv_tbl->param_set))
-+		return;
- 	hw_ps = &priv_tbl->param_set[pps->pic_parameter_set_id];
- 	memset(hw_ps, 0, sizeof(*hw_ps));
- 
+ 		if (p_hevc_pps->flags &
 -- 
 2.53.0
 
