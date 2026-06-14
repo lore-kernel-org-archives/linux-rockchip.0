@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28FAACD98E3
-	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jun 2026 13:10:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6668CD98C5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Jun 2026 15:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4SUomfsLwOCZVI7l2eSO6ipv0Fs0NfpLY7jNXqZfV3g=; b=u2ooEZ4odgGfar
-	FgAhm0EXVm/edztuPRYDv4y7tVQ5hjil6a7R+h5sLmiGkWJvdwF9PdsYR/N6cVKiYpUx8/GLtrkF8
-	kWDczmmvPlngue8oJ2XtPNoyP8RbblBEA37/YcI+TYVYDcuKn3CLMylk0OBAfWZ2exQTiolGIAUh2
-	dEoXnpGFYgQU3VSIXDIi9BdwYsLMGvK5qo08glyWzbYZ6iH46XMnfH0T9hzu2kqmU/OQK7gSyVjGs
-	NR0GKxIfZY2DtRRF9nhVy6DG+UgsecwOag6Fg32+AcikuZ3+updJo9ieYKyb37qar/l8sxjRhL/Hk
-	NalgWFFGJrlTnMseuzww==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZWvW7+iaEsU712rljX1f/j4dNc2JIEYkavu3YXMKvrM=; b=PKR1BB8qhmmMou
+	hNWJ+7Qv+dp2JAN7Cn5TggcE7+IQk+c6ZiaRGior/wREWF735SRVIWstn41l7dQwaHR6TYZB7p16G
+	l2s2Jmo8GKxc7IctVa5/7HNv31Sk4E7ud8UMckFhnEdo8pqwbdJOb7Vvm1/nf5y022KSdWJ6ivZe1
+	UQPO2r+ZOL/Tq5dRvee9GZmNdQXzQTS+eOPEYqtbVXon5GlCOynhllzi5REuxomvRhklIxcC6M8iV
+	t1bhrxg+nc11pzmusQsMrVOBu1Ub/VuIQHarpJwgUYntgmo/F8ctSsGqJTm7LJifaYwJ+JLBc8Iqc
+	rfXow+aZsA21LcfzYtgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYkbU-0000000D0OG-4A1U;
-	Sun, 14 Jun 2026 13:10:21 +0000
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	id 1wYnC6-0000000D9XR-18jB;
+	Sun, 14 Jun 2026 15:56:18 +0000
+Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYkbS-0000000D0Hz-0bf4
+	id 1wYnC2-0000000D9VN-3u3b
 	for linux-rockchip@lists.infradead.org;
-	Sun, 14 Jun 2026 13:10:19 +0000
-Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-915b5ce94c7so266484285a.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 14 Jun 2026 06:10:17 -0700 (PDT)
+	Sun, 14 Jun 2026 15:56:16 +0000
+Received: by mail-qv1-xf2b.google.com with SMTP id 6a1803df08f44-8ccce57762cso31592686d6.3
+        for <linux-rockchip@lists.infradead.org>; Sun, 14 Jun 2026 08:56:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781442617; x=1782047417; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eJpu5i70KzzzFRdB2RQuMRBjZ2Ekssr7dUppZeDYSDo=;
-        b=lzn4gtLLsJPue3PBfAGUtC1o3k/qmClfdKT8am3nLUK/wQbJnbZuUVbEvku0Gai6V5
-         Y2SH4p3cbhMiWS8pGQypVN/ueZGr9gLYp0mdcCBOCM6ORQmzjQyHrRFhjgtj7j/sWWU3
-         xGlkS0/aYqpRl1UGkOtg4TKl4N3UUZq2ivScCFTboAq+ULBVJIW4w4gS3eCbMYCZGqJQ
-         QVvCK0PfLeCPqq2vk46a2AW7yJeJ7h5N7xk0X6lvJBViSQj9aREBB9jRxEp8WZ8amIPC
-         hQ26GsHKaZ/0sUIK0/3vhxC3Uiu/nRGpOc+dSyvm8pf0/BhokwF7pE/neDWeea1mDHAE
-         tJ+g==
+        d=gmail.com; s=20251104; t=1781452573; x=1782057373; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=U0kPJubfXi7k53ak7UhChAyiQgIHcIYyeOvCqkt9GAU=;
+        b=CjMHP/xyeOvhFMnUSlgcXkMr5C2YKGmJlWm9vY/cEVLpT19dLUR/Gt7n+3BMLt66OH
+         RYNGM3cGX1QwVncAOdl+vY3TIylEuNOxObHwIFuFgiUItsx18ZV6Y46ej1rirX0B7Jag
+         CUmIKDPGzg0Rj6vq9JgIaSmWTsstPsFlR5pmmkYNkkTSR9gKZhJXQ267E4BftGvee2Km
+         xlTUOrUdF0zJtXuxw24aSYU2/MUtdu0TOalDEx9Q92WTqOI2gqflSCjHB/HgGSxZdahs
+         OYg9u62hxb/bETPcVAcYQo0IClOITJyxXSGh3flN6ptYxYo3f+in+D8w9B2KvSSXfSkI
+         3pkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781442617; x=1782047417;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=eJpu5i70KzzzFRdB2RQuMRBjZ2Ekssr7dUppZeDYSDo=;
-        b=mB1xRgFFRCBGcggXxhktkdLi2F8k3HcZvPakv+AcTlEdF2zV9jOuDk7SJQIeBf1t4M
-         GPgNqD16HfDF9zviLFxxfmGUzLTcOwM1JABsNcRoqqmizqsgicIB0UswcmnlPq4YLdmP
-         Gz5GLpO1+4PjsLGRYZqokXCH1Wh4cLLqCer7kZZ3qCd9YuqWk7KKXv8opkZGWCqJ7A6T
-         NksIyTHsWcfhZkAFNSOSiZ2VPQ7JoYC+TE8HTZohOzRBYMAKs5EmSiq/+guQqhRdJsfZ
-         Hb/KuUGYRb+z0LcsMRnN40tlUspXngk6MnbtyvHYPc7FVWdUYf1ma3RNPQOuH6PMKgXX
-         aezw==
-X-Forwarded-Encrypted: i=1; AFNElJ/2qBLBW0a5gUhdZSwEd7zhBEcLsrAZaYbxj9IIZpgGji1AU16fGQ7M571nqB5yCsqBdfiWkgooXcMXARrxAA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyWolZkGTKwoCutlhgVZQ3jWDcTvgEkGRHrkDs6zoYp7bZBrsgM
-	uZc+6NTlHko2NRfmCk8GGlHT5GwOyc4hEaPJN3mw2GVvS8tuvOXgjPrd
-X-Gm-Gg: Acq92OHTM9SfOYQWRWpg/ZIf64VDM2MWhCuXBMEU6IY0DavczCQLojau0Ea0Sd6K10c
-	liXJxotZiO7KeEs7qPQtIIWg+nb6VT+JroE0sTC6UIX6NIX80TkxWROr90t6CEfiPZ7aTPHpzIG
-	Y1S28/oP4HRudFxH7C9fXCWAm0YoWX1YAkNOC2qp3EWzegZLoC8Gv7U3/wKrPl8AE8xuLrzkdPS
-	NdYOsaXTu1PHTspNpMJdoVaFQxaW7S2PY/F0EerXVLr5Iv2lv7G3FMY31CQCweR3gjB5WHDWkgp
-	2ivaNgGzgJ9BmYq8ZV3ZdBgkkW8kqYfi6Bw9nznEYHINm0ectT6A/M+bKgqBsw8Y5W3S25uWtyi
-	Chx/h/OnaXXdRl7pJ/4VgmsddhW7H13qS5//w3zHeiJN2IK8mW0hekv8nK8vIcxRPGfbX7xVs5c
-	J1VrqT1QHFz4GPATyh8CL3eKFLUgVbcAnRQW/Fkut9qyfEUXYnGVCBz2wZP25DgRWZqdilmnS3y
-	SSVMzB6RpmFz9dgt//eFl43SNVB4/71BWbzBtUv9Pg=
-X-Received: by 2002:a05:620a:414a:b0:915:6e30:5bd8 with SMTP id af79cd13be357-917ee4d8cf8mr1102847085a.11.1781442616705;
-        Sun, 14 Jun 2026 06:10:16 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1781452573; x=1782057373;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=U0kPJubfXi7k53ak7UhChAyiQgIHcIYyeOvCqkt9GAU=;
+        b=UtJDVDtTJAMCOPuhKqvFEHaQGn9LV8iaw1kNeNr6vqo7xuO35Zq54dvPeMcCyAlky/
+         X0h9QKf1w19xLHUEn34WQbDHONpwexEuR9GvX9HZF++CeqVUZDw4cJCage1qz5UYXfPa
+         8k3AobItzfgENYQliqYRYnCI2CgjGdI+FStKO9HAPjloUCqhwaV76Qfyk3+LHi5wcark
+         xBRLgF145OchwwuNojfQnEuJTcnPt8WeX6/fI4AsCSprzUPRuV3PlYaH1S5X8P6lDb8g
+         XqMQMnoIVaDsNDkfJUiTstRIKgRURZkq4jfXwAjOL30rRgPUBu31hOWVo8j3faAjgP4k
+         iJyg==
+X-Forwarded-Encrypted: i=1; AFNElJ+cipjwe+MW0oNEOqAOkdJPDdjQiGDEkGyyMHtQo2cuMp1WPBYwxxropir+p5EJo4nLCpF5DZEFZoE+PgwLBQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzgWzT+ikzAsCl47qqTgF0QAMhoYGBr6Ol/4lTULmnBNSY381ca
+	adhHc9P+pPr+3DZWve3TV2wIe3jTX/yUIVyKdIua7PazY2jRv4UXfTpr
+X-Gm-Gg: Acq92OGk78jMqzpS1H89dli67+lk/cMtGZPjz8q6LoUGQHFwEe0kDVCLjK0zLHTGv9b
+	/fY8yk1GAEn0KZTWO0pyJ/p8RkWsn4nuXYj7/T4jBKEExQkULFmIdlXGmjgoUGXHxjLLmuOGNz9
+	VK9I02ciZQw3YpPCI4F/mxwiqjbyp/1jsu51JifDcnqsKxjTtpUpMcLTbyeUs6Z96I7HjNylcYe
+	o2FxCytMb/Us+OdMv/RCQXq5JyBTAtLQPbYDN3ZyaE0NgxdG0Q5vNFyQlpnAyo9IeoRPfC5cTcZ
+	sbdPiUyWXFFJTc7HVPQ/+Fx2f3+uRZCaQj5iNLTIjghfwsKZRGywh/ga7PL4TnkAEXtVcV5BAyk
+	VMeKjNF0FSMXFym0TWLcoGk7A5mp7k61sIzzU1L7oezYUGRy6NkPIBLBUPOxCVzrLvEvInbkoNH
+	bpVRdCWlMCxieEZ2rx3j0GO1wb/zBGaPEc5O4UqBPQoVcJyFb5HOB7IrFrys4Aox6r/j6EVvclk
+	3JsI6lpzv1Y4HeyD2s/euQtvEHzpgb4LhJu1JOMz74=
+X-Received: by 2002:a05:6214:1c4a:b0:8ac:a6a5:1f41 with SMTP id 6a1803df08f44-8d44e97d5d1mr119072016d6.27.1781452573124;
+        Sun, 14 Jun 2026 08:56:13 -0700 (PDT)
 Received: from server0.tail6e7dd.ts.net (c-68-48-65-54.hsd1.mi.comcast.net. [68.48.65.54])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-91619f1b400sm752878985a.15.2026.06.14.06.10.15
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8d30522cbeasm82008446d6.44.2026.06.14.08.56.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 14 Jun 2026 06:10:16 -0700 (PDT)
+        Sun, 14 Jun 2026 08:56:12 -0700 (PDT)
 From: Michael Bommarito <michael.bommarito@gmail.com>
 To: Hans Verkuil <hverkuil@kernel.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	Detlev Casanova <detlev.casanova@collabora.com>,
@@ -88,16 +86,14 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 6/6] media: v4l2-ctrls: add KUnit tests for compound control tile validation
-Date: Sun, 14 Jun 2026 09:10:03 -0400
-Message-ID: <20260614131003.2524025-7-michael.bommarito@gmail.com>
+Subject: [PATCH v2 0/6] media: v4l2-ctrls: bound stateless HEVC/AV1 tile counts
+Date: Sun, 14 Jun 2026 11:56:02 -0400
+Message-ID: <20260614155609.3107600-1-michael.bommarito@gmail.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260614131003.2524025-1-michael.bommarito@gmail.com>
-References: <20260614131003.2524025-1-michael.bommarito@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_061018_237854_44882CB9 
-X-CRM114-Status: GOOD (  17.25  )
+X-CRM114-CacheID: sfid-20260614_085615_007773_439BDB2A 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,185 +110,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Drive std_validate_compound() with crafted HEVC PPS and AV1 frame controls
-and assert that out-of-range tile counts and a zero AV1 tile_cols are
-rejected with -EINVAL while in-range values pass. The tests are #included
-at the end of v4l2-ctrls-core.c to reach the static helper, gated by
-CONFIG_V4L2_CTRLS_KUNIT_TEST.
+The stateless HEVC and AV1 V4L2 controls carry tile counts that several SoC
+decoder drivers consume as loop bounds when laying out fixed-size hardware
+descriptor buffers, but std_validate_compound() does not bound them. A
+process with access to a /dev/videoN stateless decoder (on a typical desktop
+or SBC, the active-seat local user via the logind/udev uaccess ACL, no extra
+capability) can set a HEVC PPS or AV1 frame control with a tile count far
+beyond the array capacity the drivers assume, making them loop past their
+fixed buffers.
 
-Signed-off-by: Michael Bommarito <michael.bommarito@gmail.com>
-Assisted-by: Claude:claude-opus-4-8
----
-The tests are #included at the end of v4l2-ctrls-core.c so they can reach
-the static helper, gated by CONFIG_V4L2_CTRLS_KUNIT_TEST. Run under KASAN
-on x86_64 they fail on the stock validator and pass after patch 1.
+Patch 1 caps the HEVC and AV1 tile counts to the uAPI array capacity in the
+core. Patches 2-5 add matching bounds in the consuming driver loops (and
+bound the driver-interpreted HEVC pic_parameter_set_id / AV1
+context_update_tile_id indices the core does not reject). Patch 6 adds KUnit
+tests for the core validation.
 
+I did my best to reproduce these with the hardware I have, but apologies in
+advance if I missed something because the soft repro.
+
+Test matrix: patch 1 + patch 6 run the real std_validate_compound() under
+KASAN on x86_64 (rejects out-of-range counts, in-range and the zeroed
+default pass, stock and patched); all objects build clean W=1; the ARM SoC
+decoders are not reachable on the x86 host, so the per-driver writes are not
+reproduced here.
+
+Changes since v1:
+ - Patch 1: only reject AV1 tile_cols/tile_rows above the array capacity;
+   do not reject a zero count. v1 also rejected tile_cols < 1, which made
+   std_validate_compound() return -EINVAL for the zero-initialised AV1
+   frame control that userspace and v4l2-compliance submit, regressing the
+   visl compliance run (reported by the linux-media CI). The divide-by-zero
+   that a zero tile_cols would cause is guarded where the divisor is used in
+   the rockchip decoder (patch 4), so no functional protection is lost.
+ - Patch 6: drop the "zero tile_cols is rejected" KUnit case (no longer the
+   core's behaviour) and add a benign case asserting the zero-initialised
+   AV1 frame still validates, plus a tile_rows upper-bound case.
+ - No changes to patches 2-5.
+
+Michael Bommarito (6):
+  media: v4l2-ctrls: validate HEVC and AV1 tile counts
+  media: rkvdec: bound HEVC tile loops and PPS id to the array capacity
+  media: verisilicon: hantro: bound G2 HEVC tile loop to the buffer
+    capacity
+  media: verisilicon: rockchip: bound VPU981 AV1 tile loop and guard
+    divisor
+  media: mediatek: vcodec: bound AV1 tile-start copy to the array
+    capacity
+  media: v4l2-ctrls: add KUnit tests for compound control tile
+    validation
+
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c |   5 +-
+ .../rockchip/rkvdec/rkvdec-hevc-common.c      |  22 ++-
+ .../platform/rockchip/rkvdec/rkvdec-hevc.c    |   8 +-
+ .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     |   2 +
+ .../platform/verisilicon/hantro_g2_hevc_dec.c |   6 +
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c  |  29 ++--
  drivers/media/v4l2-core/Kconfig               |  12 ++
- .../media/v4l2-core/v4l2-ctrls-core-test.c    | 119 ++++++++++++++++++
- drivers/media/v4l2-core/v4l2-ctrls-core.c     |   4 +
- 3 files changed, 135 insertions(+)
+ .../media/v4l2-core/v4l2-ctrls-core-test.c    | 130 ++++++++++++++++++
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     |  27 ++++
+ 9 files changed, 224 insertions(+), 17 deletions(-)
  create mode 100644 drivers/media/v4l2-core/v4l2-ctrls-core-test.c
 
-diff --git a/drivers/media/v4l2-core/Kconfig b/drivers/media/v4l2-core/Kconfig
-index d50ccac..04b15d8 100644
---- a/drivers/media/v4l2-core/Kconfig
-+++ b/drivers/media/v4l2-core/Kconfig
-@@ -3,6 +3,18 @@
- # Generic video config states
- #
- 
-+config V4L2_CTRLS_KUNIT_TEST
-+	bool "KUnit tests for V4L2 compound control validation" if !KUNIT_ALL_TESTS
-+	depends on VIDEO_DEV && KUNIT=y
-+	default KUNIT_ALL_TESTS
-+	help
-+	  This builds KUnit tests for the stateless-codec compound control
-+	  validation in std_validate_compound(). They check that out-of-range
-+	  HEVC/AV1 tile counts and parameter-set / tile indices are rejected
-+	  before driver code consumes them as array indices or loop bounds.
-+
-+	  If unsure, say N.
-+
- config VIDEO_V4L2_I2C
- 	bool
- 	depends on I2C && VIDEO_DEV
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core-test.c b/drivers/media/v4l2-core/v4l2-ctrls-core-test.c
-new file mode 100644
-index 0000000..6ec48fc
---- /dev/null
-+++ b/drivers/media/v4l2-core/v4l2-ctrls-core-test.c
-@@ -0,0 +1,119 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * KUnit tests for HEVC/AV1 tile-count validation in std_validate_compound().
-+ * #included at the end of v4l2-ctrls-core.c to reach the static helper.
-+ */
-+
-+#include <kunit/test.h>
-+
-+static int call_validate_compound(enum v4l2_ctrl_type type, void *payload,
-+				  u32 elem_size)
-+{
-+	struct v4l2_ctrl ctrl = {
-+		.type = type,
-+		.elem_size = elem_size,
-+	};
-+	union v4l2_ctrl_ptr ptr = { .p = payload };
-+
-+	return std_validate_compound(&ctrl, 0, ptr);
-+}
-+
-+/* HEVC PPS: num_tile_columns_minus1 / num_tile_rows_minus1 bounds. */
-+static void v4l2_ctrls_hevc_pps_tile_cols(struct kunit *test)
-+{
-+	struct v4l2_ctrl_hevc_pps *pps;
-+
-+	pps = kunit_kzalloc(test, sizeof(*pps), GFP_KERNEL);
-+	KUNIT_ASSERT_NOT_NULL(test, pps);
-+
-+	pps->flags = V4L2_HEVC_PPS_FLAG_TILES_ENABLED;
-+
-+	/* In range: count == array capacity (minus1 == capacity - 1). */
-+	pps->num_tile_columns_minus1 = ARRAY_SIZE(pps->column_width_minus1) - 1;
-+	pps->num_tile_rows_minus1 = ARRAY_SIZE(pps->row_height_minus1) - 1;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_HEVC_PPS, pps,
-+					       sizeof(*pps)),
-+			0);
-+
-+	/* Out of range: one past the column array. */
-+	pps->num_tile_columns_minus1 = ARRAY_SIZE(pps->column_width_minus1);
-+	pps->num_tile_rows_minus1 = 0;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_HEVC_PPS, pps,
-+					       sizeof(*pps)),
-+			-EINVAL);
-+
-+	/* Out of range: maximal attacker value. */
-+	pps->num_tile_columns_minus1 = 0xff;
-+	pps->num_tile_rows_minus1 = 0xff;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_HEVC_PPS, pps,
-+					       sizeof(*pps)),
-+			-EINVAL);
-+}
-+
-+/* AV1 frame: tile_cols / tile_rows bounds and non-zero requirement. */
-+static void v4l2_ctrls_av1_frame_tile(struct kunit *test)
-+{
-+	struct v4l2_ctrl_av1_frame *f;
-+
-+	f = kunit_kzalloc(test, sizeof(*f), GFP_KERNEL);
-+	KUNIT_ASSERT_NOT_NULL(test, f);
-+
-+	/* In range: a 1x1 tiling (a zeroed frame is otherwise valid). */
-+	f->tile_info.tile_cols = 1;
-+	f->tile_info.tile_rows = 1;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			0);
-+
-+	/* In range: maximal legal tile_cols / tile_rows. */
-+	f->tile_info.tile_cols = V4L2_AV1_MAX_TILE_COLS;
-+	f->tile_info.tile_rows = V4L2_AV1_MAX_TILE_ROWS;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			0);
-+
-+	/* Out of range: tile_cols past the array. */
-+	f->tile_info.tile_cols = V4L2_AV1_MAX_TILE_COLS + 1;
-+	f->tile_info.tile_rows = 1;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			-EINVAL);
-+
-+	/* Out of range: maximal attacker value. */
-+	f->tile_info.tile_cols = 0xff;
-+	f->tile_info.tile_rows = 0xff;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			-EINVAL);
-+
-+	/* Divide-by-zero guard: tile_cols == 0 must be rejected. */
-+	f->tile_info.tile_cols = 0;
-+	f->tile_info.tile_rows = 1;
-+	KUNIT_EXPECT_EQ(test,
-+			call_validate_compound(V4L2_CTRL_TYPE_AV1_FRAME, f,
-+					       sizeof(*f)),
-+			-EINVAL);
-+}
-+
-+static struct kunit_case v4l2_ctrls_test_cases[] = {
-+	KUNIT_CASE(v4l2_ctrls_hevc_pps_tile_cols),
-+	KUNIT_CASE(v4l2_ctrls_av1_frame_tile),
-+	{}
-+};
-+
-+static struct kunit_suite v4l2_ctrls_test_suite = {
-+	.name = "v4l2-ctrls-compound",
-+	.test_cases = v4l2_ctrls_test_cases,
-+};
-+
-+kunit_test_suite(v4l2_ctrls_test_suite);
-+
-+MODULE_DESCRIPTION("KUnit tests for V4L2 stateless-codec compound control validation");
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-index 25227d9..8debd0e 100644
---- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-+++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-@@ -2851,3 +2851,7 @@ int v4l2_ctrl_new_fwnode_properties(struct v4l2_ctrl_handler *hdl,
- 	return hdl->error;
- }
- EXPORT_SYMBOL(v4l2_ctrl_new_fwnode_properties);
-+
-+#if IS_ENABLED(CONFIG_V4L2_CTRLS_KUNIT_TEST)
-+#include "v4l2-ctrls-core-test.c"
-+#endif
+
+base-commit: 5200f5f493f79f14bbdc349e402a40dfb32f23c8
 -- 
 2.53.0
 
