@@ -4,135 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85084CD8CA8
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 02:13:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3BADCD98C5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 08:19:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HYfx4N81jjVFrmI0kXXOD1Da5a1tzlDGyQG6AN5Qwao=; b=a870d+cnZSZjA+
-	3X/uAGiv3H+t+QiN1MaT9ec7fMLZsWXRCS+0r5RLl2AXpkG67s17qcKQfvz4FAV0fbCh8iQVHJnI9
-	/ptvTgaQS21IwxLg5RDE/AAhV8zT+51fBHBw9kSeOydV6CKrz+zsoNm82bzib9VeeRAMafImxOpBd
-	epVIY2l3ql1OhjEGeloef9uW3rN1eob5w5iFv8CmK5JdxXZ/50SP5HDRwDoiLxpj1H2vKKodu8mrX
-	/PoEOwMC4DV+5x6Fm+/i+WFDI2k2ievsbz806d2v7EmNBVqi4r8qooVE9vihumVtEPJasoaLUmrZc
-	NhZRFvWadrrmJHbZLreA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c++dd8en//2ny2EVsnK9WbDf+b2DsB0poCf4aFGf59I=; b=fmIbidnLOaaKGFK1e6gX8+UZY+
+	5aXFcB1Fw5tH0JO9+SkimQz9v9pkNPWya3BRBICrs3/wJAJtS2+ZswwX/ILZeVWuYZIHaNXR/AO/V
+	nGj250F2Vm3HT6GGtevXMV4l5d1dKHKtquwOoL4zEAYoHNq4DtZZvy8LDdlijNTI8LU0JEJLxaZas
+	ch9rvU3v21D7Qay8t/IX6f6d9Jc9STWkf5kpG7kxeZr4+haT7X1UKMg9mv9Ot9vEZzLrWXfPWBOiF
+	uGh2aNbiOH7gLa8NYZWndknDBJH3KPUnUrQtOAhTcaAId3mb0B4fzZZSwdN3mE4baKJ9c2Ihrb23/
+	cHnbzvAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYwp7-0000000DSXy-38cs;
-	Mon, 15 Jun 2026 02:13:13 +0000
-Received: from mail-southcentralusazolkn190120000.outbound.protection.outlook.com ([2a01:111:f403:d114::] helo=SN4PR2101CU001.outbound.protection.outlook.com)
+	id 1wZ2XC-0000000Dqq4-1c4Q;
+	Mon, 15 Jun 2026 08:19:06 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wYwp5-0000000DSXb-08wI
+	id 1wZ2X8-0000000DqpG-3DA4
 	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Jun 2026 02:13:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=sRmlniWH75mDxHDFSshD0Cl2baopahIMHuxB1Mseb9ppMRebYamWLfWZg/ru3jjXk/gAtMl+GQN61nP/lFmtExMsB+Vy/2wAl2TtA/Onr55cYDQW6GXJeQMbWFZt3f+6K0jJWp1psvmzfBmdOByg4sNWrINatxS9IRq3SLhqtvZy0qtVChhGWAYAFl+XGo3DizvNaRfOORpvJRwGuay5dZzd7k68wVkOT9icNbep/r4TTSx1IS6ogxzDhjhhCGWpW3GGIsalG/wkBGUyrt0dQEsxhqM1tVWAIl14Z+IPEqQjK2fM9RzxZwvsYU8+/1coY24HaYi14AnLMDxCeUMraw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UzQelQw2CPH8k6VowmIJKAkskf0ba6DrcJCugJl/Hnk=;
- b=iuOgzy+y/W6vxWwlrxbJmHfEa4iiWTvBigJqC5ty4WKnfq4D3R5fqRS3VRRP5eWKLmM8/5nE3EWDd7PVsSgk3m/4EWIX+Mcfw8BoAToT+lDSSyC7FDVd42Kp4bL9QIMRtuieZXcyWvaiY/n89aKX5826y4Zqux0YPkcgOqE+Pj06vchemecU4w/sUu1j3xpP/MxYSnvQ6UN562QNbMXudXNEaWZJbfKvuG3CxO8z//jvwkpEt3ZJChh6VHxG4aBISE1ckE175JvVRebv/RPuadOghU2n2f0XnF4UxtUrx3L5Z98f/ErJe74NSKyyoCm+Vmh2Xk0nQUVmQLr2NeFe/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UzQelQw2CPH8k6VowmIJKAkskf0ba6DrcJCugJl/Hnk=;
- b=K5yxaqPASen3hkwx4btvVqmON1HqAoygmuJLsRHLgBu5L64zKV9fGAntd5ybkUvn/MhEDHTuOwqc62W6fEFKptOe+HrCM5yn5NaWLbBZx++TtrsC7oNVsLEXS1W3nkIfj/Nvg2pUGtnApm77ZF/3LCNo7UIJjsXzBL7YsTOj+LGwfC68YWgiKOMVXjPfRuAlP+fmUEpryhWvwHSaJnpGEZPW4d4Z4Qht6UFlOzYIwN89dI8PskTePgAoYIVxAKOPlTbjuivGSM/gqsEIAPjsU3nnafHwKQ72NnbzNpMVj6CFl0R6RTt5mzde1FL9ltSDKnAm8uFXknU8bRDmI/OyOg==
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18) by SJ1PR19MB6404.namprd19.prod.outlook.com
- (2603:10b6:a03:455::21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.18; Mon, 15 Jun
- 2026 02:12:57 +0000
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.21.0113.015; Mon, 15 Jun 2026
- 02:12:57 +0000
-Date: Sun, 14 Jun 2026 21:12:56 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
-	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
-Subject: Re: [PATCH V12 3/9] iio: imu: inv_icm42607: Add inv_icm42607 Core
- Driver
-Message-ID: <PH0PR19MB9973389B1648F13113B00B3E3EA5E62@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20260611202607.85376-1-macroalpha82@gmail.com>
- <20260611202607.85376-4-macroalpha82@gmail.com>
- <20260614171847.3c412ca3@jic23-huawei>
-Content-Disposition: inline
-In-Reply-To: <20260614171847.3c412ca3@jic23-huawei>
-X-ClientProxiedBy: SA0PR11CA0035.namprd11.prod.outlook.com
- (2603:10b6:806:d0::10) To PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18)
-X-Microsoft-Original-Message-ID: <ai9fqI7Ob9_BbUnK@wintermute.localhost.fail>
+	Mon, 15 Jun 2026 08:19:05 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-490b613a17bso26665045e9.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 15 Jun 2026 01:19:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1781511540; x=1782116340; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=sfhjXkFiPTY3eVrBVWFAPyRxScSGPxMn/4MzjCSybWI=;
+        b=oIVALVjPGs4GGAO805KsMUWo15hTjWe9N1h+PujRaZ1hZZpBzcnJKno9SRXB34h+jy
+         52WdyhFT3MfzBeDJyH+XXsalYmxJkR1o2evmh4v6LTEfudqoAG6FFJ5igiO+d5snmgLe
+         Y9FxBVjaxo/RsG0yGVDrmpvCyfEhLaZ8CEKg8nI2BgEVUiO1xJ0UV8eCHtn9CeCqxpB+
+         qiKuEXdhNfYPnzHCaoj+tfVSWISPFTw6EIbvzeM3JcTyAAE7qk7Jax/DVkDDuL9uANtu
+         qqJ//80raZb/TEpf9DMn816AsLtK7Ajg4BkkJiRq/qNupEOmQLa3CQPe8g/26QqKDrb2
+         7nCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781511540; x=1782116340;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:references:cc:to:subject:reply-to:from:user-agent
+         :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=sfhjXkFiPTY3eVrBVWFAPyRxScSGPxMn/4MzjCSybWI=;
+        b=OeJlUpxlwy4nktlpDXw4V8PLo3If0N/5wKPODyI9Dsg8m9tCf6a5NOV6hNGY+r3Lut
+         zjH4IotTxFlgawMVSnJ1ZJ8f2TH123YLCKbyoaJ4AFb45x59SzI+4QyonsP41KEvWR5l
+         ffJD/BKqNSGX3My5CqhbKxJgnSZwWrlIhH4+a9+kjSZpwA97Jo8F+CY4MsFlcnvmKb6n
+         5mkKUz6d44lBpA+uuoR3sM/Ycc6MSU0BH/Ty0rQK6pSEpXcKvEiXsvdtkazmqnzYgdsP
+         dTe2F4xBltL4I2bEkfv51Mpu6697fuSANEJE0BvLog7F55lzfI3R1hDlsKVuLuIAZQ1j
+         0YVA==
+X-Forwarded-Encrypted: i=1; AFNElJ+kfdJsQ2YdP2+j6XgfykxFTTjXuDxc22nTslkhsQuSTQQBDXAS3KWM2VyRuBU/4mxxlQdlFMkmwoVeax1hBw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxIdWkURwIOP3PS9khnWQIQA0okcnEJafmcpLWu/ghqPhMydQL+
+	ATlj/U/FjKnqFpUH6TRQLfT3ecyitxb/4EeVRueRX3kBx8/8F6kO76HNLjWnL9l0N9odQUm1kIx
+	g8R+MFhI=
+X-Gm-Gg: Acq92OGMrjFF1kX6clQ1zVlYSmU4WzOZOIf9CrvvE6w0t1vH0I3y2zPfS6t0lQ6FlxJ
+	Mp2ngzyJqyKmII+7vKQbWbdk/ypDwYaAanQy1jt0TlWHzojx8FHDHj/ouU8ZdK0mU7BroR8P7B0
+	ZiWk50vHs6c4sC7ZWgl5CVk5273ArGJ1RchtGXouucaRJwKOPcALETxaQz2PUhCggsxKG+Ad5Vo
+	I3XlcrnDyRky0OkZcDU6T221pIRtDBoY5jrVJoCQ+0/c0h2wuqYlnZ6OXsdMjvi8AUVD8xA8JKz
+	ZAX64Why+LFBCg952ufz3MR1+alhVG7rbpMBWmki4taJ2dkp95GVXQFlOvGX21OistMXkpnPANU
+	jfBLhxHbpw5lDKkuIrs4Obr4O2b9TOREDTCt77lrqNuoJXQXitxB1Liho4zYe0HCcAx4/cJo9IK
+	RBSrWGfc8SJL1bNFLMLHGRmHO3APyaiOvrj8ga8oO2/+lFZz0pKPsbO1664uxVdIysjOkHlyr2L
+	YDRGd0=
+X-Received: by 2002:a05:600c:81c5:b0:490:44eb:c1e0 with SMTP id 5b1f17b1804b1-490ec5019b9mr142128755e9.21.1781511539739;
+        Mon, 15 Jun 2026 01:18:59 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:106d:1080:fdaf:c588:880d:106a? ([2a01:e0a:106d:1080:fdaf:c588:880d:106a])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-492202edf89sm249136335e9.1.2026.06.15.01.18.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 15 Jun 2026 01:18:59 -0700 (PDT)
+Message-ID: <8c0c992e-5e41-4a2c-bf4b-0b6755b9659a@linaro.org>
+Date: Mon, 15 Jun 2026 10:18:58 +0200
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|SJ1PR19MB6404:EE_
-X-MS-Office365-Filtering-Correlation-Id: b8026358-9168-45f8-f4fa-08deca839e19
-X-Microsoft-Antispam: BCL:0;ARA:14566002|41001999006|6090799003|51005399006|25031999004|37011999003|23021999003|19110799012|8060799015|15080799012|24021099003|5072599009|40105399003|440099028|3412199025;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?xnnA5YAGRuBM78Hn7Ly89/p+vr9cuCHgsgv91j7Qw3CP722LQJgixlos9qY+?=
- =?us-ascii?Q?q7FSkLGqC7tH0G7Va03HvcKqcyPFbCxtAIrq0yK9zYGF0753ti7nh2z08wy4?=
- =?us-ascii?Q?Tgv+iH0urTmw5QbNvXhXw+5jk9JiMCtSTZeLghrb4ABz4YYEs7hD9zC/d6B6?=
- =?us-ascii?Q?rSHqlwy2nCpLtmSq7Q+/oq+X4+CMzf9t2tqAl2oW/jRtwBdrUVS8VwVYpnTd?=
- =?us-ascii?Q?UpBekcSSFregR6b7/i66mwRvj3i97cYbXEwRnxwvJdGiNfWPMJWXkzmpaggt?=
- =?us-ascii?Q?WPYLS8gT2cdxo4fRuoqR8VTauSmvng8zdBcBVZlSucYf5yXvVeEs66yDJVjf?=
- =?us-ascii?Q?bGFrEoBwO6vu7oBQWNwFVIUBGDMZnU7GRCqqxqorWu58mR6gHqQyl3jZikdZ?=
- =?us-ascii?Q?5r7pnNDI29S5cSFNgNajEQ4iiAmDnn+BQfNRI5ZwkIjGTWybbEY/sVX0yp5r?=
- =?us-ascii?Q?Txo3vZWRVugy4OOzXo2nBA5l2wpw8WHdKD3cmsGmJ/mmy5jWw6Xg2rzHr7Yy?=
- =?us-ascii?Q?N8JQCJExTbUHYH0+RLxzsJ7k7JjKZhTYJ/RfbMTPJdf26RxradyvHu0jIwwU?=
- =?us-ascii?Q?CpFALl5QWpRkLqzwKivCe/K/pjp7ap5YTivnp9U3Xp5A0JpM3mmXHFjIXlNu?=
- =?us-ascii?Q?wfSTs5/XYLUkCDLMYNbg9n2yFslBa0iobR2dKxfTasFuMk7vCLvB964AX7mL?=
- =?us-ascii?Q?MkhZZHc0O2Skc+8i1e2JOs1Rl1B8zLiFuGg0aiwfg8beXduuM+28commNS5e?=
- =?us-ascii?Q?8xxICVjtg026JnR4J8bUiITeFcdCUfSkqwZNKXXx61+NDUJlH1PiU4W+6GwZ?=
- =?us-ascii?Q?KCPWu4XQINmOTxuKQlqzKSw0gkY1bl534WxA0dAIawjDye53uBw5nskiQnyX?=
- =?us-ascii?Q?JhbhYR118roio+sfw8PXErr11V24GMBNwPc1CsAfLql/6i28Pvs2BUZXSjPI?=
- =?us-ascii?Q?w23L9DpOw2H+Uu/VYvtVawrHNNgu92yVf5g6wowN2gStK+otwuWOcgpoiFub?=
- =?us-ascii?Q?evMIsm1e0KRWPch1JZoKpfigFqLN4joptup7sk36VvLNlnEwScGCyLGqz3pi?=
- =?us-ascii?Q?0IU2GHB9?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cgEznOPGUuzNOoIhsg0hoap+DIH0qDJCbS1R3uYDUOQKUafmLMYTCq9EianD?=
- =?us-ascii?Q?f9VuYEdSMG86vkoZrtBCvuWhd+hv/DeBWYauqVp3fuWhErV0LrsBxGc4POq+?=
- =?us-ascii?Q?F+L5EjWNt9VnOByU/NuDmLTQAOZXPS/waK25snTD5C/teRp9mNXVru3PWidZ?=
- =?us-ascii?Q?oulaHLy6lnPLmi4fxHarlo/ZbqtshhWzMtKi42UPkSiEWwY93moYlRZKPdh7?=
- =?us-ascii?Q?pZVGRIaVRjLxVgEYMjILKClx7BZXr+RBm5PVqeozAo5hm+5sQnPqx7vwzTDw?=
- =?us-ascii?Q?fR2wwEWaR4r3xYOpbJqE+GltWZRaYR1kjMZmGyAJN/yKPpdUSBGB+r3MINJ4?=
- =?us-ascii?Q?34BFrLyY4f6PEJFKB59lrJbIM2mb/Z9BHbDORy4F6pJXnFtMg6E1W9aMP2IF?=
- =?us-ascii?Q?SnKaY8/rlbx9LmDzPDbTBHjoD+mtHvYDcAzfnEm5z6PXoEPGCWcoWunMBjZR?=
- =?us-ascii?Q?JwSorYPUYAyveLNAVj4k4p5rBsmugTcMLTbwdt5g1uvqAA3YNtU4sMtc7Bim?=
- =?us-ascii?Q?qi95a31getApnH1LLlytV+s8yvBQEA2lc0ltBVmdLCjlI/ljqodyl9gJAJX2?=
- =?us-ascii?Q?WKQmKi4A8oXXCD3KfOa41lXHI9Z9mmgPn5xJmFEZ1mt1OPuoqthZPOX6cFf8?=
- =?us-ascii?Q?W6povZpi0y/UY7PWkbFvDzMmzyJXUmfEOenekGVvCTXEpcKIw3vPwnve7FdP?=
- =?us-ascii?Q?ehFKZoP7dJizSnKP5MbtKcCYiMDbjKSEKkQ4Qy9QHN+G/T3Exs8mr/P5+Qcm?=
- =?us-ascii?Q?al0nxze8FG5f2Nr1qIRCJb59ONGe+gSiYzTN9Z6LKFtnwHpuFFJwf24W7c1P?=
- =?us-ascii?Q?6PIqqm0zP9W6A9TYG5H+V0XOcHA86wB+FurgYutYnNBqNnB6f0EP7HUfWQCp?=
- =?us-ascii?Q?77jeyjnMkP7iZEG+fUXMRsaNfycAjNLzFDLLGA11XNkMAF8yNq0dvSZm+xzC?=
- =?us-ascii?Q?TrJ+JJbwDx9QLeZiam85j/j8tysM6//CFPKEVuI84Z6Yqdl5Em1fWXYYy/2g?=
- =?us-ascii?Q?40CVAcZyJLo5QLjpt2qpomTljO6p7uX9U2vHLOsDeDb+aQ7YtyiYOg9y4Dvi?=
- =?us-ascii?Q?qh292b6poxTyNTjImxwJ5+/p+5mCfZJVrPuxi9UDedMKGTIla7jNBPohhkqF?=
- =?us-ascii?Q?WabbjUXkYCWCUcewMdZ3ZTjJ9uiU3BxjD8CePb5sks66pPUAAtp+OvAD/vyI?=
- =?us-ascii?Q?ip5CHieK/oMpwt4NAXlhqKk9AkvPy6ZQd5XuW5xZNX+w4XGu1vWgsZUz07ZN?=
- =?us-ascii?Q?aP754ECMPPqRPTRjGc48F2vNuTmAD0RcWrcpsdFyf6/wYZ/e1HoFpJslNzGk?=
- =?us-ascii?Q?5a+gIhKwKlDXyvM3o5UY0J2OFrLeocNoia1F0RX/PR8ouotJg6ruIhPvvqHX?=
- =?us-ascii?Q?vUz/JiXV1TYDjbXgUx0uJMgPqQfvytMv+vtphxxaY31UhaBhZA=3D=3D?=
-X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: b8026358-9168-45f8-f4fa-08deca839e19
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2026 02:12:57.7587
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ1PR19MB6404
+User-Agent: Mozilla Thunderbird
+From: neil.armstrong@linaro.org
+Subject: Re: [PATCH V7 4/6] drm/panel: anbernic-td4310: Add RG Vita Pro panel
+To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, xsf@rock-chips.com, sre@kernel.org,
+ simona@ffwll.ch, airlied@gmail.com, tzimmermann@suse.de, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com, jesszhan0024@gmail.com, heiko@sntech.de,
+ conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+References: <20260610144407.438846-1-macroalpha82@gmail.com>
+ <20260610144407.438846-5-macroalpha82@gmail.com>
+Content-Language: en-US, fr
+Autocrypt: addr=neil.armstrong@linaro.org; keydata=
+ xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
+ OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
+ Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
+ YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
+ GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
+ UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
+ GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
+ yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
+ QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
+ SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
+ 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
+ Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
+ oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
+ M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
+ 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
+ KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
+ 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
+ QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
+Organization: Linaro
+In-Reply-To: <20260610144407.438846-5-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260614_191311_084962_1E702D11 
-X-CRM114-Status: GOOD (  30.14  )
+X-CRM114-CacheID: sfid-20260615_011902_873254_4EDC64D9 
+X-CRM114-Status: GOOD (  25.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,112 +128,327 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 14, 2026 at 05:18:47PM +0100, Jonathan Cameron wrote:
-> On Thu, 11 Jun 2026 15:26:00 -0500
-> Chris Morgan <macroalpha82@gmail.com> wrote:
+On 6/10/26 16:44, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> > From: Chris Morgan <macromorgan@hotmail.com>
-> > 
-> > Add the core component of a new inv_icm42607 driver. This includes
-> > a few setup functions and the full register definition in the
-> > header file, as well as the bits necessary to compile and probe the
-> > device when used on an i2c bus.
-> > 
-> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Hi Chris,
+> The panel used by Anbernic in the RG Vita-Pro is a DSI panel based
+> on the TD4310 controller IC. It measures approximately 5.5 inches
+> diagonally and is 1080x1920 in resolution.
 > 
-> Given this is nearly ready to merge I took a look at Sashiko and
-> seems it has found a few more things.
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>   drivers/gpu/drm/panel/Kconfig                 |  10 +
+>   drivers/gpu/drm/panel/Makefile                |   1 +
+>   drivers/gpu/drm/panel/panel-anbernic-td4310.c | 257 ++++++++++++++++++
+>   3 files changed, 268 insertions(+)
+>   create mode 100644 drivers/gpu/drm/panel/panel-anbernic-td4310.c
 > 
-> Other than those, looks good to me.
-> 
-> Jonathan
+> diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
+> index d592f4f4b939..61dd00297ecc 100644
+> --- a/drivers/gpu/drm/panel/Kconfig
+> +++ b/drivers/gpu/drm/panel/Kconfig
+> @@ -17,6 +17,16 @@ config DRM_PANEL_ABT_Y030XX067A
+>   	  Y030XX067A 320x480 3.0" panel as found in the YLM RG-280M, RG-300
+>   	  and RG-99 handheld gaming consoles.
+>   
+> +config DRM_PANEL_ANBERNIC_TD4310
+> +	tristate "Anbernic TD4310 LCD panel"
+> +	depends on GPIOLIB && OF
+> +	depends on DRM_MIPI_DSI
+> +	depends on BACKLIGHT_CLASS_DEVICE
+> +	help
+> +	  Say Y here to enable support for Anbernic designed panels with the
+> +	  TD4310 panel controller such as the ones used on the Anbernic RG
+> +	  Vita Pro.
+> +
+>   config DRM_PANEL_ARM_VERSATILE
+>   	tristate "ARM Versatile panel driver"
+>   	depends on OF
+> diff --git a/drivers/gpu/drm/panel/Makefile b/drivers/gpu/drm/panel/Makefile
+> index a4291dc3905b..9d8f70c9de3e 100644
+> --- a/drivers/gpu/drm/panel/Makefile
+> +++ b/drivers/gpu/drm/panel/Makefile
+> @@ -1,5 +1,6 @@
+>   # SPDX-License-Identifier: GPL-2.0
+>   obj-$(CONFIG_DRM_PANEL_ABT_Y030XX067A) += panel-abt-y030xx067a.o
+> +obj-$(CONFIG_DRM_PANEL_ANBERNIC_TD4310) += panel-anbernic-td4310.o
+>   obj-$(CONFIG_DRM_PANEL_ARM_VERSATILE) += panel-arm-versatile.o
+>   obj-$(CONFIG_DRM_PANEL_ASUS_Z00T_TM5P5_NT35596) += panel-asus-z00t-tm5p5-n35596.o
+>   obj-$(CONFIG_DRM_PANEL_AUO_A030JTN01) += panel-auo-a030jtn01.o
+> diff --git a/drivers/gpu/drm/panel/panel-anbernic-td4310.c b/drivers/gpu/drm/panel/panel-anbernic-td4310.c
+> new file mode 100644
+> index 000000000000..9a1b4525423c
+> --- /dev/null
+> +++ b/drivers/gpu/drm/panel/panel-anbernic-td4310.c
+> @@ -0,0 +1,257 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Driver for Anbernic panels with TD4310 panel controller.
+> + *
+> + * Copyright (C) 2026 Chris Morgan <macromorgan@hotmail.com>
+> + *
+> + */
+> +
+> +#include <linux/gpio/consumer.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/regulator/consumer.h>
+> +
+> +#include <drm/drm_mipi_dsi.h>
+> +#include <drm/drm_panel.h>
+> +#include <drm/drm_probe_helper.h>
+> +
+> +#include <video/mipi_display.h>
+> +
+> +struct anbernic_panel_td4310_info {
+> +	const struct drm_display_mode *display_mode;
+> +	u16 width_mm;
+> +	u16 height_mm;
+> +	u32 bus_flags;
+> +	unsigned long mode_flags;
+> +	u32 format;
+> +	u32 lanes;
+> +	u16 prepare_delay;
+> +	u16 reset_delay;
+> +	u16 init_delay;
+> +	u16 enable_delay;
+> +	u16 disable_delay;
+> +	u16 unprepare_delay;
+> +};
+> +
+> +struct anbernic_panel_td4310 {
+> +	struct device *dev;
+> +	struct mipi_dsi_device *dsi;
+> +	struct drm_panel panel;
+> +	const struct anbernic_panel_td4310_info *panel_info;
+> +	struct gpio_desc *reset_gpio;
+> +	struct gpio_desc *enable_gpio;
+> +	struct regulator *vdd;
+> +	enum drm_panel_orientation orientation;
+> +};
+> +
+> +static inline struct anbernic_panel_td4310 *panel_to_anbernic_panel_td4310(struct drm_panel *panel)
+> +{
+> +	return container_of(panel, struct anbernic_panel_td4310, panel);
+> +}
+> +
+> +static int panel_anbernic_td4310_prepare(struct drm_panel *panel)
+> +{
+> +	struct anbernic_panel_td4310 *ctx = panel_to_anbernic_panel_td4310(panel);
+> +	struct mipi_dsi_device *dsi = ctx->dsi;
+> +	struct mipi_dsi_multi_context dsi_ctx = { .dsi = dsi };
+> +	int ret;
+> +
+> +	ret = regulator_enable(ctx->vdd);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = gpiod_set_value_cansleep(ctx->enable_gpio, 1);
+> +	if (ret)
+> +		goto err_enable;
+> +
+> +	if (ctx->panel_info->enable_delay)
+> +		mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->enable_delay);
+> +
+> +	ret = gpiod_set_value_cansleep(ctx->reset_gpio, 1);
+> +	if (ret)
+> +		goto err_reset;
+> +
+> +	mipi_dsi_msleep(&dsi_ctx, 10);
+> +
+> +	ret = gpiod_set_value_cansleep(ctx->reset_gpio, 0);
+> +	if (ret)
+> +		goto err_reset;
+> +
+> +	if (ctx->panel_info->reset_delay)
+> +		mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->reset_delay);
+> +
+> +	mipi_dsi_dcs_exit_sleep_mode_multi(&dsi_ctx);
+> +	mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->prepare_delay);
+> +	mipi_dsi_dcs_set_display_on_multi(&dsi_ctx);
+> +	mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->prepare_delay);
+> +
+> +	if (dsi_ctx.accum_err) {
+> +		ret = dsi_ctx.accum_err;
+> +		goto err_reset;
+> +	}
+> +
+> +	return 0;
+> +
+> +err_reset:
+> +	gpiod_set_value_cansleep(ctx->enable_gpio, 0);
+> +err_enable:
+> +	regulator_disable(ctx->vdd);
+> +	return ret;
+> +}
+> +
+> +static int panel_anbernic_td4310_unprepare(struct drm_panel *panel)
+> +{
+> +	struct anbernic_panel_td4310 *ctx = panel_to_anbernic_panel_td4310(panel);
+> +	struct mipi_dsi_device *dsi = ctx->dsi;
+> +	struct mipi_dsi_multi_context dsi_ctx = { .dsi = dsi };
+> +
+> +	mipi_dsi_dcs_set_display_off_multi(&dsi_ctx);
+> +	mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->unprepare_delay);
+> +	mipi_dsi_dcs_enter_sleep_mode_multi(&dsi_ctx);
+> +	mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->disable_delay);
+> +
+> +	gpiod_set_value_cansleep(ctx->enable_gpio, 0);
+> +
+> +	gpiod_set_value_cansleep(ctx->reset_gpio, 1);
+> +
+> +	regulator_disable(ctx->vdd);
+> +
+> +	return 0;
+> +}
+> +
+> +static int panel_anbernic_td4310_get_mode(struct drm_panel *panel,
+> +				    struct drm_connector *connector)
+> +{
+> +	struct anbernic_panel_td4310 *ctx = panel_to_anbernic_panel_td4310(panel);
+> +	const struct anbernic_panel_td4310_info *panel_info = ctx->panel_info;
+> +
+> +	connector->display_info.bpc = 8;
+> +	connector->display_info.width_mm = panel_info->width_mm;
+> +	connector->display_info.height_mm = panel_info->height_mm;
+> +	connector->display_info.bus_flags = panel_info->bus_flags;
+> +
+> +	return drm_connector_helper_get_modes_fixed(connector, panel_info->display_mode);
+> +}
+> +
+> +static enum drm_panel_orientation panel_anbernic_td4310_get_orientation(struct drm_panel *panel)
+> +{
+> +	struct anbernic_panel_td4310 *ctx = panel_to_anbernic_panel_td4310(panel);
+> +
+> +	return ctx->orientation;
+> +}
+> +
+> +static const struct drm_panel_funcs panel_anbernic_td4310_funcs = {
+> +	.prepare = panel_anbernic_td4310_prepare,
+> +	.unprepare = panel_anbernic_td4310_unprepare,
+> +	.get_modes = panel_anbernic_td4310_get_mode,
+> +	.get_orientation = panel_anbernic_td4310_get_orientation,
+> +};
+> +
+> +static int panel_anbernic_td4310_probe(struct mipi_dsi_device *dsi)
+> +{
+> +	struct device *dev = &dsi->dev;
+> +	struct anbernic_panel_td4310 *ctx;
+> +	int ret;
+> +
+> +	ctx = devm_drm_panel_alloc(dev, struct anbernic_panel_td4310, panel,
+> +				   &panel_anbernic_td4310_funcs,
+> +				   DRM_MODE_CONNECTOR_DSI);
+> +	if (IS_ERR(ctx))
+> +		return PTR_ERR(ctx);
+> +
+> +	ctx->dev = dev;
+> +
+> +	ctx->panel_info = of_device_get_match_data(dev);
+> +	if (!ctx->panel_info)
+> +		return -EINVAL;
+> +
+> +	ret = of_drm_get_panel_orientation(dev->of_node, &ctx->orientation);
+> +	if (ret < 0)
+> +		return dev_err_probe(dev, ret, "Failed to get panel orientation\n");
+> +
+> +	ctx->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
+> +	if (IS_ERR(ctx->reset_gpio))
+> +		return dev_err_probe(dev, PTR_ERR(ctx->reset_gpio),
+> +				     "Cannot get reset gpio\n");
+> +
+> +	ctx->enable_gpio = devm_gpiod_get_optional(dev, "enable", GPIOD_OUT_LOW);
+> +	if (IS_ERR(ctx->enable_gpio))
+> +		return dev_err_probe(dev, PTR_ERR(ctx->enable_gpio),
+> +				     "Cannot get enable gpio\n");
+> +
+> +	ctx->vdd = devm_regulator_get(dev, "vdd");
+> +	if (IS_ERR(ctx->vdd))
+> +		return dev_err_probe(dev, PTR_ERR(ctx->vdd),
+> +				     "Failed to request vdd regulator\n");
+> +
+> +	ctx->dsi = dsi;
+> +	mipi_dsi_set_drvdata(dsi, ctx);
+> +
+> +	dsi->lanes = ctx->panel_info->lanes;
+> +	dsi->format = ctx->panel_info->format;
+> +	dsi->mode_flags = ctx->panel_info->mode_flags;
+> +
+> +	ret = drm_panel_of_backlight(&ctx->panel);
+> +	if (ret)
+> +		return ret;
+> +
+> +	devm_drm_panel_add(dev, &ctx->panel);
+> +
+> +	ret = devm_mipi_dsi_attach(dev, dsi);
+> +	if (ret < 0)
+> +		return dev_err_probe(dev, ret, "Failed to attach to DSI host\n");
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct drm_display_mode anbernic_vitapro_mode = {
+> +	.clock = 140020,
+> +	.hdisplay = 1080,
+> +	.hsync_start = 1080 + 50,
+> +	.hsync_end = 1080 + 50 + 4,
+> +	.htotal = 1080 + 50 + 4 + 50,
+> +	.vdisplay = 1920,
+> +	.vsync_start = 1920 + 15,
+> +	.vsync_end = 1920 + 15 + 4,
+> +	.vtotal = 1920 + 15 + 4 + 32,
+> +	.flags = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
+> +};
+> +
+> +static const struct anbernic_panel_td4310_info anbernic_vitapro_info = {
+> +	.display_mode = &anbernic_vitapro_mode,
+> +	.width_mm = 69,
+> +	.height_mm = 121,
+> +	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
+> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
+> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET |
+> +		      MIPI_DSI_CLOCK_NON_CONTINUOUS,
+> +	.format = MIPI_DSI_FMT_RGB888,
+> +	.lanes = 4,
+> +	.prepare_delay = 50,
+> +	.reset_delay = 220,
+> +	.enable_delay = 120,
+> +	.disable_delay = 50,
+> +	.unprepare_delay = 20,
+> +};
+> +
+> +static const struct of_device_id panel_anbernic_td4310_of_match[] = {
+> +	{
+> +		.compatible = "anbernic,panel-vita-pro",
+> +		.data = &anbernic_vitapro_info,
+> +	},
+> +	{ }
+> +};
+> +MODULE_DEVICE_TABLE(of, panel_anbernic_td4310_of_match);
+> +
+> +static struct mipi_dsi_driver anbernic_panel_td4310_driver = {
+> +	.driver = {
+> +		.name = "panel-anbernic-td4310",
+> +		.of_match_table = panel_anbernic_td4310_of_match,
+> +	},
+> +	.probe	= panel_anbernic_td4310_probe,
+> +};
+> +module_mipi_dsi_driver(anbernic_panel_td4310_driver);
+> +
+> +MODULE_AUTHOR("Chris Morgan <macromorgan@hotmail.com>");
+> +MODULE_DESCRIPTION("DRM driver for Anbernic TD4310 MIPI DSI panels");
+> +MODULE_LICENSE("GPL");
 
-Thanks. I'm going to resubmit again probably tomorrow (even though
-it's merge window, again unless you don't want it).
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
-I've removed the buffer from the main st struct, since it's really
-no longer needed given the lack of buffer support. Additionally
-I've removed the registers completely that sashiko was complaining
-about, since it only applies to the 42607c and isn't used by this
-driver right now anyway (only needed for APEX/WoM). I also altered
-the power management logic a bit to prevent it from delaying on
-shutdown, except for when the gyro changes state which the datasheet
-says is needed. If Sashiko continues to complain about power management
-for the temp sensor that can be ignored, as I've confirmed so long as
-both the gyro and accel are off the whole chip is "off". Along with
-making a change from 42607x to just 42607 in a few places those are
-the only major changes.
-
-Chris
-
-> 
-> > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> > new file mode 100644
-> > index 000000000000..c85d3b74166f
-> > --- /dev/null
-> > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> 
-> > +#define INV_ICM42607_REG_INTF_CONFIG0			0x35
-> > +#define INV_ICM42607_INTF_CONFIG0_FIFO_COUNT_FORMAT	BIT(6)
-> > +#define INV_ICM42607_INTF_CONFIG0_FIFO_COUNT_ENDIAN	BIT(5)
-> > +#define INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN	BIT(4)
-> > +#define INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK	GENMASK(1, 0)
-> > +#define INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_SPI_DIS	\
-> > +	FIELD_PREP(INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK, 2)
-> Define this as simply 2.
-> 
-> > +#define INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_I2C_DIS	\
-> > +	FIELD_PREP(INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK, 3)
-> and 3
-> not the FIELD_PREPified version
-> 
-> Sashiko correctly called out that it is field_prepped again at
-> the callsite.  As the mask includes lowest bit this is will 'work'
-> but definitely isn't what you intended!
-> 
-> 
-> > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > new file mode 100644
-> > index 000000000000..5d40f1ee53d6
-> > --- /dev/null
-> > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> 
-> > +static bool inv_icm42607_is_readable_reg(struct device *dev, unsigned int reg)
-> > +{
-> > +	switch (reg) {
-> > +	case INV_ICM42607_REG_MCLK_RDY ... INV_ICM42607_REG_INT_CONFIG:
-> > +	case INV_ICM42607_REG_TEMP_DATA1 ... INV_ICM42607_REG_TMST_FSYNCL:
-> > +	case INV_ICM42607_REG_APEX_DATA4 ... INV_ICM42607_REG_INTF_CONFIG1:
-> > +	case INV_ICM42607_REG_INT_STATUS_DRDY ... INV_ICM42607_REG_FIFO_DATA:
-> Sashiko pointed out that the WOM_ registers, 4b to 4d are in the defines, but
-> not readable or writeable which seems like an omission.
-> 
-> So far only matters for debug, but perhaps better to add them from the start.
-> 
-> > +	case INV_ICM42607_REG_WHOAMI:
-> > +		return true;
-> > +	}
-> > +
-> > +	return false;
-> > +}
-> > +
-> > +static bool inv_icm42607_is_writeable_reg(struct device *dev, unsigned int reg)
-> > +{
-> > +	switch (reg) {
-> > +	case INV_ICM42607_REG_DEVICE_CONFIG ... INV_ICM42607_REG_INT_CONFIG:
-> > +	case INV_ICM42607_REG_PWR_MGMT0 ... INV_ICM42607_REG_INT_SOURCE4:
-> > +	case INV_ICM42607_REG_INTF_CONFIG0 ... INV_ICM42607_REG_INTF_CONFIG1:
-> > +		return true;
-> > +	}
-> > +
-> > +	return false;
-> > +}
+Thanks,
+Neil
 
 _______________________________________________
 Linux-rockchip mailing list
