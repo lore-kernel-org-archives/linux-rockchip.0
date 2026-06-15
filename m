@@ -4,78 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05D9FCD98DA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 11:22:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91A2CCD98DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 12:33:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gVa+mQ1drdpZOloU8qug77NadGe/cN9CxPDuCef8tPs=; b=gyNNoRhYftTYso
-	VbGNlD1QYprdbT26kjzt4xFkcauC2Sy1V0wP4rn8GMIXMcjhjDIM+JFK2Sumb72toPxoIGhk4nkwA
-	wnqBKI2Cq9336SzTAq2tv01XtNCAr58O9ZSLzPNoH0ENVamiEl1RDpqKIzC/C8tGRN5nOBUJiQ5Ls
-	7eC+ob4J0J/zEf0csclCGc8n7Y/E9E9g1ktW3WMk/a3Qgnm/hgH0CRY/Ru7rWwxcgC/pzlRLZ6SXY
-	SNFhe/Z2furkpXT+Yt3pfW/N+pqnSoowghJvn5fO3KQROd2qbZ9qr/7ASHkDWnhm9c2osGeo1ooit
-	f8zTLNFxYE1ptkoXsDSw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=47PlomVgCOAajNtZem178C68D1RQOXyhG7iYO6FfCRw=; b=BERrwGIge1Awix5X2lNd8HI/Bg
+	XqQnhGDF3K5lXIar0Y2AeaHXFnhVVRUBuN0v4kR+WmDsMySafBjXo++mhbr9q9+GZp+3UrlSJEhjH
+	dp1B0etkx4EEHquCvR5G7DfcNuswo1GfGGvehZdXwoBDx5AyCLcrKv8MTjzX8tGTrz7F5M2PNHboX
+	8T5434I5AVSEXwUYr78eV/GC2Pr1rG3VtPRJeM71V46M4ZdXJkuH63f/vWIoiuuyGiBSyeBYBVqxB
+	dzvv9jnEBXzs0vJmZLYwrQqJ4RJwEyKwtFavM/vfdk40MOuBJxKWpUvplF/r6RpfiYhwQVbff7jBN
+	JWs0grmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ5OU-0000000E5zY-2ubG;
-	Mon, 15 Jun 2026 11:22:18 +0000
-Received: from mgamail.intel.com ([198.175.65.12])
+	id 1wZ6VF-0000000ECiI-00ie;
+	Mon, 15 Jun 2026 12:33:21 +0000
+Received: from mail-m12881.netease.com ([103.209.128.81])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ5OS-0000000E5z9-2K3Z
-	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Jun 2026 11:22:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781522536; x=1813058536;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=oUuco3i0K38eSMot402UJs61QnUbT2+JIaR5boNplsQ=;
-  b=oByN57y0c3mECfFbJdAQDG4F04hSQwPkHWArbtG3ZJoYAc9U57iXXb/Z
-   1NoIklDLbO+AqelyXq+UrMJQ4zFm2hym42dwNGIIFayum+/Ui9Ndhi16o
-   bEeptPULPr3F7laDzOjKNs4gEDNQsVIhAV7XeWZohMQzbESDqlO4vQ0/3
-   DB7KSAtdSNU5L42bTcLjm0NUU1ENyoupS0WgfFo7dZzDjpcQczvIsohim
-   G1fJDdSsfGdz6Q3+YS+xx2wEzbIsnUL76WJFczyhH6TjqGwKYH94z79Z5
-   0HbuEAYSJruvTWderJzy43sLl5qSIC2X2d/R53v8eViMV9TlNw+rh/JO9
-   w==;
-X-CSE-ConnectionGUID: duLQSMHvRdG9qyD3yCBUFA==
-X-CSE-MsgGUID: PuSd80hRSmSKNneg63lUzw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11817"; a="93750791"
-X-IronPort-AV: E=Sophos;i="6.24,206,1774335600"; 
-   d="scan'208";a="93750791"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2026 04:21:11 -0700
-X-CSE-ConnectionGUID: +VUN7yuxSNuQPnk+/FSvKg==
-X-CSE-MsgGUID: KzZJslhUQuu3pFRYoagyyg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,206,1774335600"; 
-   d="scan'208";a="241090446"
-Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.235])
-  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2026 04:21:08 -0700
-Date: Mon, 15 Jun 2026 14:21:05 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
-	dlechner@baylibre.com, jic23@kernel.org,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V12 7/9] iio: imu: inv_icm42607: Add Accelerometer for
- icm42607
-Message-ID: <ai_gIR2d9fzHLZ-G@ashevche-desk.local>
-References: <20260611202607.85376-1-macroalpha82@gmail.com>
- <20260611202607.85376-8-macroalpha82@gmail.com>
+	id 1wZ6V9-0000000ECcI-124f;
+	Mon, 15 Jun 2026 12:33:18 +0000
+Received: from [172.16.12.74] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 427046ead;
+	Mon, 15 Jun 2026 20:33:03 +0800 (GMT+08:00)
+Message-ID: <cd1f968a-2e1b-434f-a331-a60cd8740032@rock-chips.com>
+Date: Mon, 15 Jun 2026 20:33:03 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260611202607.85376-8-macroalpha82@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 0/3] Add eDP support for RK3576
+To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de
+References: <20260605022305.3058853-1-damon.ding@rock-chips.com>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20260605022305.3058853-1-damon.ding@rock-chips.com>
+X-HM-Tid: 0a9ecb4565ac03a8kunm225b4a5540a1
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHhlLVhhKSktNSE9LSxlMQlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQkxVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=AjT6pfqXKo4dJ+Iqrf0DbrK5jj/BtJhdqusaYMYOcwjxILsmplQ94LrZgAz6X+O+XgEuR8cxlrBI+0Mgm6XPZRWMTI3niqyeojNt8SNlEaIjXzJJZIeBpzEtiHXRrqqc2x7g8KWQBaCko68no61dpRfoa2kFWJ7dGXS95m9QA5k=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=hInNVk/luH61RX3DtR9xZzGpkr2Jo/fkYMCB64seK2g=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_042216_631184_942281F9 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20260615_053315_836965_F83CBCF2 
+X-CRM114-Status: GOOD (  12.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,71 +63,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: detlev.casanova@collabora.com, devicetree@vger.kernel.org, sebastian.reichel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alchark@gmail.com, michael.riesch@collabora.com, andy.yan@rock-chips.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 11, 2026 at 03:26:04PM -0500, Chris Morgan wrote:
+Hi all,
 
-> Add icm42607 accelerometer sensor for icm42607.
+Gentle ping on this patch series.
 
-...
+Best regards,
+Damon
 
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
-
-Please, please, use IWYU! So many headers are missing...
-(Same comment to all files in this series.)
-
-+ array_size.h
-+ bits.h // BIT()
-+ cleanup.h // guard()()
-+ device/devres.h // devm_kasprintf()
-+ err.h // -EINVAL, IS_ERR()
-
-> +#include <linux/iio/iio.h>
-> +#include <linux/mutex.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
-
-+ types.h // s16, __be16
-
-Also you need to have
-
-asm/byteorder.h // be16_to_cpup()
-
-...
-
-> +static int inv_icm42607_accel_read_odr(struct inv_icm42607_state *st,
-> +				       int *val, int *val2)
-> +{
-> +	unsigned int odr;
-> +	unsigned int i;
-> +
-> +	guard(mutex)(&st->lock);
-> +
-> +	odr = st->conf.accel.odr;
-> +
-> +	for (i = 5; i < ARRAY_SIZE(inv_icm42607_accel_odr); ++i) {
-
-Why pre-increment? Same for all other cases.
-
-> +		if (i == odr)
-> +			break;
-> +	}
-> +	if (i >= ARRAY_SIZE(inv_icm42607_accel_odr))
-> +		return -EINVAL;
-> +
-> +	*val = inv_icm42607_accel_odr[i][0];
-> +	*val2 = inv_icm42607_accel_odr[i][1];
-> +
-> +	return IIO_VAL_INT_PLUS_MICRO;
-> +}
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+On 6/5/2026 10:23 AM, Damon Ding wrote:
+> Picked from:
+> https://lore.kernel.org/all/20260601065100.1103873-1-damon.ding@rock-chips.com/
+> 
+> Patch 1-2 are to add missing clock "hclk" for RK3588 eDP nodes.
+> Patch 3 is to add the RK3576 eDP node.
+> 
+> Damon Ding (3):
+>    arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
+>    arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
+>    arm64: dts: rockchip: Add eDP node for RK3576
+> 
+>   arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 28 +++++++++++++++++++
+>   arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  4 +--
+>   .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |  4 +--
+>   3 files changed, 32 insertions(+), 4 deletions(-)
+> 
+> ---
+> 
+> Changes in v2:
+> - Split out separate patches to add the "hclk" clock reference.
+> - Split out separate patches to enable the "hclk" clock.
+> - Add Reviewed-by tag.
+> 
+> Changes in v3:
+> - Add a patch to expand descriptions for clocks of the eDP node.
+> - Add Reviewed-by tag.
+> 
+> Changes in v4:
+> - Modify commit msg.
+> 
+> Changes in v5:
+> - Enforce the correct third clock name on a per-compatible basis.
+> - Modify the commit msg simultaneously.
+> - Add Acked-by tag.
+> 
+> Changes in v6:
+> - Expand more detail commit msg about using hclk instead of grf clock.
+> 
+> Changes in v7:
+> - List all valid clock names at the top level, and constrain the clock
+>    count for each platform with minItems/maxItems in allOf.
+> 
+> Changes in v8:
+> - Fix indentation to 10 for enum in clock-names property.
+> 
+> Changes in v9:
+> - Restore the explicit clock-names for RK3399 and RK3588 eDP dt-bindings.
+> 
+> Changes in v10:
+> - Use automatic cleanup to fix OF node reference leak reported by
+>    Sashiko.
+> 
+> Changes in v11:
+> - Pick and rebase DT related patches.
+> 
 
 
 _______________________________________________
