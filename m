@@ -4,58 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBB69CD98C5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 12:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBE45CD98CF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 13:02:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kgCPMK7Pt+RfRzWJXn9dUnaZkxEVXTq/Lz99lh5waWQ=; b=Fa0w5A1EhWOVVuLQxwlhaFmsAR
-	I0IDCqYdPlIRD1VX76U3IxUQrzFbvWJC97mkd/ZHr8SeZUcyuPttbwYi5KlAiMIDnDbKAI61l9Aby
-	Cb20gGpWtIIY1E7piPajBuGJbM/0wymqlwtOmuG0JN6J0ag13CaxYYYMsMBypUAtlKV2glUVo3V9w
-	OFR+n04GJg93cc1fwBQXUgUCK6LztoUXepBtOj+CXF5NeN49Ivr83WJapdrR8ajUyLzAn23uR2cqm
-	FEZt8QLChDO3i5f/fkrouG7YaXa0SbLnNMxZMcB3WVf0V8ifwXYPE2EY85e1ukW69HzeNv/XlYTQw
-	O0Nbe60g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HzMcsqdrkcEC3zWozO6nuasTMgley8OT4SD2AWTSGLA=; b=FcHLVPpAB1DS0U
+	IuYQGE1AYP6bm9E3ztWoEMVbu4YVaxkdfGlC3/dTpa+qNYZ83BGh7wmxyHu/tHsvNGuHurToPe3t3
+	eI+YQSZRhqsryH06yh3mV24DVSp8tFiMR3EEQhNc2dPbxpIL5rT3AkQQb8UQvohOKy8aFM9CIXHDG
+	wMU9ngh/SlxSlvSVNeV0ANNXPY/DNjv2Y+t0nV+ee49N8hpCyPA9ZKLqet7zuByOR9cGrSdvZiCkM
+	nH3R4OkrpH5hO8gU+mSG93YAncwS/J9TsvBx735C7XbdEvsDjn2x6FLh7QnnhZ6UQfn2iijLURFXL
+	aNn45jlbMdpSLRTPGMxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ6Wv-0000000EDNL-2HwA;
-	Mon, 15 Jun 2026 12:35:06 +0000
-Received: from mail-m9337.xmail.ntesmail.com ([103.126.93.37])
+	id 1wZ6wz-0000000EFpU-3fhe;
+	Mon, 15 Jun 2026 13:02:01 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ6Ws-0000000EDMA-2VoF;
-	Mon, 15 Jun 2026 12:35:04 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 427046fb6;
-	Mon, 15 Jun 2026 20:34:58 +0800 (GMT+08:00)
-Message-ID: <8da02c6f-030d-4033-935b-a44c777a14d2@rock-chips.com>
-Date: Mon, 15 Jun 2026 20:34:58 +0800
+	id 1wZ6ww-0000000EFoY-0u4c;
+	Mon, 15 Jun 2026 13:01:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=tPjmqX9SMTeCykCfytbi1fpwWJ22FWgRgMVFy1mXudo=; b=WpbqWBWvTzXryDqoZIBXExPhvv
+	kC4TAdAZPOGy3MWoEl9R/ridFn0Caqhgf6h44LSmRNpCoDSTrqd9CL6EsZC6lxZgUJlTXiJWw3xFl
+	+95E2b7+/FYv6Ncrs9pgKL1jpnGUbQJX1FCdxKgV2sq9g+GMdGSdK1wK2KsDmd2zaN1MtTobwxuOi
+	kiMyjzV7srbexEZXMXzTEvwGJbilvUhVCUWQGKRl8YCxFvNXODPowabXfP3XLL+St6/i332uPzH5A
+	bnQ2u2XKMLvfGXUDYnI4O+ZconYoCd+homOJwc3DXlEcZN7dVqdjWJQoOmoWi2MVv6u/JvyvT7Yzz
+	AVSBdotg==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v11 0/3] Add eDP support for RK3576
+Date: Mon, 15 Jun 2026 15:01:38 +0200
+Message-ID: <3213683.CbtlEUcBR6@diego>
+In-Reply-To: <cd1f968a-2e1b-434f-a331-a60cd8740032@rock-chips.com>
+References: <20260605022305.3058853-1-damon.ding@rock-chips.com>
+ <cd1f968a-2e1b-434f-a331-a60cd8740032@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/4] Add eDP lane mapping support
-To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, andrzej.hajda@intel.com, neil.armstrong@linaro.org,
- rfoss@kernel.org
-References: <20260604085220.2862986-1-damon.ding@rock-chips.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260604085220.2862986-1-damon.ding@rock-chips.com>
-X-HM-Tid: 0a9ecb4725bc03a8kunmad12dd9f4325
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZShkaVhkYTxoaGEsYQhpIGVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=H2pYc5H4U519kPcqsLXiGZSqfal7roIZHKjog0oUnFm77yfp9eZTtdfOGTPLM5/Lcsv+XL4jWuNSRzLTovnS6ukbqMHh0l4IBojJTjDT+R0HGDUMdDikxtVT4j36p8sRGDPrJFuqrwx4ZAj5tX2uj6ZkKN0BqpTpcTwOo+O86QA=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=qY5kOzqcJfORXQNkdCMcMwTxAyKHZxf9POk2wrTq/zs=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_053502_895776_D8FD7D03 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20260615_060158_307740_8AFF5FBE 
+X-CRM114-Status: GOOD (  20.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,80 +59,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: detlev.casanova@collabora.com, devicetree@vger.kernel.org, sebastian.reichel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alchark@gmail.com, michael.riesch@collabora.com, andy.yan@rock-chips.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
-
-Gentle ping on this patch series.
-
-Best regards,
-Damon
-
-On 6/4/2026 4:52 PM, Damon Ding wrote:
-> This series adds configurable eDP physical lane mapping support via
-> device tree data-lanes property.
-> 
-> Lane mapping is mainly used for below scenarios:
-> 1. Correct PCB lane swap and differential line routing crossover
->     without hardware changes;
-> 2. Adapt mismatched lane pin definitions between SoC and eDP panel;
-> 3. Support multiple panel hardware variants on the same board
->     by configuring data-lanes in device tree only.
-> 
-> The series includes driver implementation and device tree binding
-> updates to support custom lane mapping configuration from endpoint
-> node, and keeps default linear lane order if no configuration is given.
-> 
-> Patch 1: Add endpoint data-lanes property to analogix-dp binding
-> Patch 2: Add DRM DP helper API to validate DP lane counts
-> Patch 3: Add validation for samsung,lane-count property as preparation
-> Patch 4: Implement lane mapping in analogix_dp driver
-> 
-> Damon Ding (4):
->    dt-bindings: display: bridge: analogix-dp: Add data-lanes support for
->      endpoint
->    drm/dp: Add helper to validate DP lane counts
->    drm/bridge: analogix_dp: Add validation for samsung,lane-count
->      property
->    drm/bridge: analogix_dp: Add support for optional data-lanes mapping
-> 
->   .../bindings/display/bridge/analogix,dp.yaml  | 19 ++++--
->   .../rockchip/rockchip,analogix-dp.yaml        |  1 +
->   .../drm/bridge/analogix/analogix_dp_core.c    | 64 ++++++++++++++++++-
->   .../drm/bridge/analogix/analogix_dp_core.h    |  4 +-
->   .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 15 ++---
->   .../gpu/drm/bridge/analogix/analogix_dp_reg.h |  4 ++
->   include/drm/display/drm_dp_helper.h           |  6 ++
->   7 files changed, 97 insertions(+), 16 deletions(-)
-> 
-> ---
-> 
-> Changes in v2:
-> - Add lane mapping application scenarios in commit message.
-> - Remove redundant deprecated property 'data-lanes' for eDP node.
-> - Update port@1 $ref to /schemas/graph.yaml#/$defs/port-base.
-> 
-> Changes in v3:
-> - Squash [PATCH v2 2/3] into [PATCH v2 1/3].
-> - Add unevaluatedProperties: false to both the port@1 and endpoint
->    nodes.
-> 
-> Changes in v4:
-> - Add validation for samsung,lane-count property as preparation.
-> 
-> Changes in v5:
-> - Add DRM DP helper API to validate DP lane counts.
-> - Apply DRM DP helper API to check the validity of samsung,lane-count
->    property.
-> - Add Acked-by and Reviewed-by tags.
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRGFtb24sCgpBbSBNb250YWcsIDE1LiBKdW5pIDIwMjYsIDE0OjMzOjAzIE1pdHRlbGV1cm9w
+w6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgRGFtb24gRGluZzoKPiBHZW50bGUgcGluZyBvbiB0
+aGlzIHBhdGNoIHNlcmllcy4KCkxpbnV4IDcuMSB3YXMgcmVsZWFzZWQgeWVzdGVyZGF5LCBzbyB3
+ZSdyZSBpbiB0aGUgbWVyZ2Utd2luZG93IG5vdy4KKEFuZCB0aGUgNXRoIG9mIGp1bmUgd2FzIHNo
+b3J0bHkgYmVmb3JlIC1yYzcsIHNvIHRvbyBsYXRlIGZvciA3LjIpCgpTbyBJJ2xsIHBpY2sgdGhv
+c2UgdXAgYWZ0ZXIgdGhlIG1lcmdlIHdpbmRvdyBlbmQgaW4gMiB3ZWVrcy4KCgpIZWlrbwoKPiAK
+PiBCZXN0IHJlZ2FyZHMsCj4gRGFtb24KPiAKPiBPbiA2LzUvMjAyNiAxMDoyMyBBTSwgRGFtb24g
+RGluZyB3cm90ZToKPiA+IFBpY2tlZCBmcm9tOgo+ID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
+YWxsLzIwMjYwNjAxMDY1MTAwLjExMDM4NzMtMS1kYW1vbi5kaW5nQHJvY2stY2hpcHMuY29tLwo+
+ID4gCj4gPiBQYXRjaCAxLTIgYXJlIHRvIGFkZCBtaXNzaW5nIGNsb2NrICJoY2xrIiBmb3IgUksz
+NTg4IGVEUCBub2Rlcy4KPiA+IFBhdGNoIDMgaXMgdG8gYWRkIHRoZSBSSzM1NzYgZURQIG5vZGUu
+Cj4gPiAKPiA+IERhbW9uIERpbmcgKDMpOgo+ID4gICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFk
+ZCBtaXNzaW5nIGhjbGsgZm9yIFJLMzU4OCBlRFAwCj4gPiAgICBhcm02NDogZHRzOiByb2NrY2hp
+cDogQWRkIG1pc3NpbmcgaGNsayBmb3IgUkszNTg4IGVEUDEKPiA+ICAgIGFybTY0OiBkdHM6IHJv
+Y2tjaGlwOiBBZGQgZURQIG5vZGUgZm9yIFJLMzU3Ngo+ID4gCj4gPiAgIGFyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszNTc2LmR0c2kgICAgICB8IDI4ICsrKysrKysrKysrKysrKysrKysK
+PiA+ICAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtYmFzZS5kdHNpIHwgIDQg
+Ky0tCj4gPiAgIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtZXh0cmEuZHRzaSB8
+ICA0ICstLQo+ID4gICAzIGZpbGVzIGNoYW5nZWQsIDMyIGluc2VydGlvbnMoKyksIDQgZGVsZXRp
+b25zKC0pCj4gPiAKPiA+IC0tLQo+ID4gCj4gPiBDaGFuZ2VzIGluIHYyOgo+ID4gLSBTcGxpdCBv
+dXQgc2VwYXJhdGUgcGF0Y2hlcyB0byBhZGQgdGhlICJoY2xrIiBjbG9jayByZWZlcmVuY2UuCj4g
+PiAtIFNwbGl0IG91dCBzZXBhcmF0ZSBwYXRjaGVzIHRvIGVuYWJsZSB0aGUgImhjbGsiIGNsb2Nr
+Lgo+ID4gLSBBZGQgUmV2aWV3ZWQtYnkgdGFnLgo+ID4gCj4gPiBDaGFuZ2VzIGluIHYzOgo+ID4g
+LSBBZGQgYSBwYXRjaCB0byBleHBhbmQgZGVzY3JpcHRpb25zIGZvciBjbG9ja3Mgb2YgdGhlIGVE
+UCBub2RlLgo+ID4gLSBBZGQgUmV2aWV3ZWQtYnkgdGFnLgo+ID4gCj4gPiBDaGFuZ2VzIGluIHY0
+Ogo+ID4gLSBNb2RpZnkgY29tbWl0IG1zZy4KPiA+IAo+ID4gQ2hhbmdlcyBpbiB2NToKPiA+IC0g
+RW5mb3JjZSB0aGUgY29ycmVjdCB0aGlyZCBjbG9jayBuYW1lIG9uIGEgcGVyLWNvbXBhdGlibGUg
+YmFzaXMuCj4gPiAtIE1vZGlmeSB0aGUgY29tbWl0IG1zZyBzaW11bHRhbmVvdXNseS4KPiA+IC0g
+QWRkIEFja2VkLWJ5IHRhZy4KPiA+IAo+ID4gQ2hhbmdlcyBpbiB2NjoKPiA+IC0gRXhwYW5kIG1v
+cmUgZGV0YWlsIGNvbW1pdCBtc2cgYWJvdXQgdXNpbmcgaGNsayBpbnN0ZWFkIG9mIGdyZiBjbG9j
+ay4KPiA+IAo+ID4gQ2hhbmdlcyBpbiB2NzoKPiA+IC0gTGlzdCBhbGwgdmFsaWQgY2xvY2sgbmFt
+ZXMgYXQgdGhlIHRvcCBsZXZlbCwgYW5kIGNvbnN0cmFpbiB0aGUgY2xvY2sKPiA+ICAgIGNvdW50
+IGZvciBlYWNoIHBsYXRmb3JtIHdpdGggbWluSXRlbXMvbWF4SXRlbXMgaW4gYWxsT2YuCj4gPiAK
+PiA+IENoYW5nZXMgaW4gdjg6Cj4gPiAtIEZpeCBpbmRlbnRhdGlvbiB0byAxMCBmb3IgZW51bSBp
+biBjbG9jay1uYW1lcyBwcm9wZXJ0eS4KPiA+IAo+ID4gQ2hhbmdlcyBpbiB2OToKPiA+IC0gUmVz
+dG9yZSB0aGUgZXhwbGljaXQgY2xvY2stbmFtZXMgZm9yIFJLMzM5OSBhbmQgUkszNTg4IGVEUCBk
+dC1iaW5kaW5ncy4KPiA+IAo+ID4gQ2hhbmdlcyBpbiB2MTA6Cj4gPiAtIFVzZSBhdXRvbWF0aWMg
+Y2xlYW51cCB0byBmaXggT0Ygbm9kZSByZWZlcmVuY2UgbGVhayByZXBvcnRlZCBieQo+ID4gICAg
+U2FzaGlrby4KPiA+IAo+ID4gQ2hhbmdlcyBpbiB2MTE6Cj4gPiAtIFBpY2sgYW5kIHJlYmFzZSBE
+VCByZWxhdGVkIHBhdGNoZXMuCj4gPiAKPiAKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
