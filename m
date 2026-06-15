@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AED7CCD98C5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 14:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D48E9CD98CF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 14:51:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H1cfxqO/9Uu5HxA+mnjkCbUGSHoh/YC8EAsmAA96wnU=; b=1eYCDL4a44gpbe
-	C6cqSwbnQ5URgfbqMxyG1t2tappzuWj3KaHTv9PIFJGMiAphyiFaZfF2RnjaOwE3FoRvwwAdbZbF4
-	tUyZij8nSX1Tu3SYK30jLWZUJcR3It788A3ga7rtuEJaSvdXQUBxIQ0+6CT1v6HJSI4Ov+4QPwVrZ
-	i2glP0S0bmFyyEfWga2WrIO8jS4PHOIhphKT/nULa8hSjZOKwDeKXZAqyuvVgxBYbOLFtuRsR94RN
-	rP1rtEu3ensHuHKoZIm9xBXhtmQ68fpgWiGcdDen10oGTlLteanEX6N+bV3W0Yqy+c38gr/vGzE2I
-	o7Y29gUY+0Ti541bXWUQ==;
+	List-Owner; bh=BSB5l8Z20g8dZOO//n4Hi/uINxRSbuSVgBleDLqjSQA=; b=PrUwi08yQKZpXe
+	AFHx5/X7kKfbFep2xKoRmQQgDQWTAITDm0/RovpxF1wEB+qwxHQuSwX0Cmh7OLTLWG0B/vkCuXpGW
+	4Gy4UAYi3w18hTic/9Do7l+8Nu+eoWFgYZAH83Obqmwed8j/8oQtUqu7AVqGzvXZ2J0fYjhb2mF3h
+	D9T7VatxTdXMWhlyTgGTdAVY8Hs8ekZtNogZlWKO+byD/0KzNDugOCPnHmVeGSHxGNdSIjUzh5Cdh
+	AhoUykrsZJzL67EbpMKG1MicvqpoXTaW/eyLxA6JhQE4MuLwwqJtnpDZTIJLH1Cod9G5YJZ+kR+Dl
+	rbEYf4JZQhJ/jXqX/hIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ8d5-0000000ERZd-1W9j;
-	Mon, 15 Jun 2026 14:49:35 +0000
-Received: from mail-westcentralusazolkn190130001.outbound.protection.outlook.com ([2a01:111:f403:d123::1] helo=CY3PR05CU001.outbound.protection.outlook.com)
+	id 1wZ8fG-0000000ERnf-2lGz;
+	Mon, 15 Jun 2026 14:51:50 +0000
+Received: from mail-southcentralusazolkn190110001.outbound.protection.outlook.com ([2a01:111:f403:d10c::1] helo=SN4PR0501CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ8d3-0000000ERZB-0J2Q
+	id 1wZ8fE-0000000ERnE-2iyP
 	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Jun 2026 14:49:34 +0000
+	Mon, 15 Jun 2026 14:51:49 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=dyqgTX7sXbGBPawZOnYstv4z3SGgTt/APF5vfhZdo0DeO0nDLw2v9bje6XiircAmuvagnRJkrIwHx957vqZhhsuQUFJAbZBS0zq33KuFCRh8+NaMxPLBjB/I6sHgPg4WTFLUG68ot8Vok5YHeZ7hsZGP6wxZvpXqOVVgnKNbfNLf9WP0IjvkQG/gDRxNFG9aHMrrKIPEEeOCyrZruL2KxHAC8F04woahjeU2Fj37isPrZiTkePPB/C/oqwGuuCi4+OEGAzIBihwythbqiDTAvuWGKHl210QjWCHpbUgp6keNbvBfe4DtxaK3TUS9vKwKAIHIJZvg1Dva6oKh7iV1wg==
+ b=hnV5/mfe1VWbKY06g0Jnspc7cAVkkUd+V2X0z8sXQ3sEVViXN9tPV6VvdDz4CALEqjB03zigwjYklpOB1snKUYmrytqM1IbFzZcdZEMLuIF7q5a1T4mJvhR4gGbYRgrObsyy0iVLEpkP7YV/+jDOAlcqjO9PC9qjayVUFixIeCn6ZLgGKUoVVGoD0tZP8SbLH7MyTF/AfDkzoQuCWhDuPzu0PCesilm3eJyJXvFgyduBc9SgREoRxGA3Jcda86DXCiXDLJFdgSFTMpIoRuN+39CVsBQhkYflve8n3YU7MfMNImfcgwa0vISmME1V7dJRVp4gAMSNDppWZeQa9c5wEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0kkmc2LD+cVVEJJyWbIRO84Eoy1rOoa2J1broOTVy5E=;
- b=k4A7DtjQoTgSX+vDYW99bgjm9Y9k7F9g3ZQ6tTI/a+OhPQS84gKEpox5ClCO7xAnay6zuY3OcB+4pGU/i0VjhLZ1s6jAnHS4woADZq+GlWusut2YpK7RII3myE9HPZhXQ6CLYWopMqKn70E6svP4zsf4awVxEF0D/cn7c4seVSi2tVb2IWQqoMSK8oohR5hevUnoqIOmi+vysfmv6Td79L5c9c4DBfrAiYFNMl2vAhIdizfD8SlMxHT48iD7B8FkHfjo5t9cKYOCv5Za4hDRVOYLpT6l3zXRJQ7LXp0UcADBP0SWQFT18z7FdFL7PSB+MUCgMhai0TSGANXcEQnYWg==
+ bh=ZoUSsGw9YrqbEXEXLEk1EtpEZH+jhw7XxTfVlsM6qA8=;
+ b=QMd2pekwHbo2iQThkY+I4WkfZIAoDXBYUVn4P38KhpMUS5Uk4Jy8JAahwacRVZE8fD/HMchw57jhO6xtFrJzpCAVg7Z/4f3f2Nw8M6fAlJjJXh99yp+yU0kGWL6APbZ6X08ytR6gqT82G3qAcPwu1YQPEe06LbmSbC9x7bmQgqwV8XkQNnQDPqfo9yQajDtqGg7ROuEvomMgH16raA3MaFcMH8nHSn5EK0sZkTrqfbHzKROVGtwUuoeLWNTonlMjqE2HxV95cPGfGl4YaCCpwJ+mS2kewz5iFxwxV8oDgj6qrG3fbr3bjdaOLa63zydWOSBHotHLLy9ODuPY0bytuQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0kkmc2LD+cVVEJJyWbIRO84Eoy1rOoa2J1broOTVy5E=;
- b=kuDx3bfos55X3dZ822mlHNfxZR48b9d71fMrKw3zIbiBlZTq682hwTaurGIJaQcgq4Sy5mTWW0/gxVi6bw/gZ/Dq8tVFIrPNTac42UWRfe04HfKjWrbg3xl6WBe15cJl52+30uMr8QwVYzwpaAG3DjPaYRe+EHuno1mua2cMS/68ol3716NOMJaZjr1i6jaEvbT3VUAH0Gv8lLkvHK+Y3yinbKFdoB3QuJUr2OeHLCljXVu6vUnzyZJwUyXjAt+FGbrSrkso/tSjyoQ7AqsxIqe2CKRP5GIHZBNUNl+SGg00/3lC+ZBjUkyKNWrUTLc1a/w9VBMeRYFPy1gVnHnM2A==
+ bh=ZoUSsGw9YrqbEXEXLEk1EtpEZH+jhw7XxTfVlsM6qA8=;
+ b=dPaMtBd6t+/jG+A223nfzofj1NT4jBWQ34+9pz7KMuqbjsAM/CII4m+qkCDzfFTjm1Hfn8KSYL+zMl77brOzajbL+KCLNwBWxUPA7zzCbvNyyUdR8T/0VsAi9RnjVmEaM+zva5hXMfv9ebYlzUHdTwjuYI9WHFx3lPqGZw43Ciee67v0zliil0kb39mffctnuO+x7TScmjNyU14AqVw9Q1NCBS3+kgT69dYNB+8KQvOWRBh+Y+wQsbAlLM/ZYqYYsG3PNlnTS9OYrFN9DcqdR/eX2J2U4K7UFrsw5ksi6Z19k0KyAsXc9eh7ufgzs1shTdc8LFPEIcOYJ5XRdzFkJg==
 Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18) by CH2PR19MB3928.namprd19.prod.outlook.com
- (2603:10b6:610:95::8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.16; Mon, 15 Jun
- 2026 14:49:28 +0000
+ (2603:10b6:510:3b1::18) by IA0PR19MB7679.namprd19.prod.outlook.com
+ (2603:10b6:208:3df::5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.18; Mon, 15 Jun
+ 2026 14:51:43 +0000
 Received: from PH0PR19MB997338.namprd19.prod.outlook.com
  ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
  ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.21.0113.015; Mon, 15 Jun 2026
- 14:49:28 +0000
-Date: Mon, 15 Jun 2026 09:49:26 -0500
+ 14:51:41 +0000
+Date: Mon, 15 Jun 2026 09:51:40 -0500
 From: Chris Morgan <macromorgan@hotmail.com>
 To: Andy Shevchenko <andriy.shevchenko@intel.com>
 Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
@@ -59,81 +59,81 @@ Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
 	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
 	robh@kernel.org
-Subject: Re: [PATCH V12 5/9] iio: imu: inv_icm42607: Add PM support for
+Subject: Re: [PATCH V12 7/9] iio: imu: inv_icm42607: Add Accelerometer for
  icm42607
-Message-ID: <PH0PR19MB997338D8F4A9372647962B97DFA5E62@PH0PR19MB997338.namprd19.prod.outlook.com>
+Message-ID: <PH0PR19MB997338010EC6FA92E0AA63875FA5E62@PH0PR19MB997338.namprd19.prod.outlook.com>
 References: <20260611202607.85376-1-macroalpha82@gmail.com>
- <20260611202607.85376-6-macroalpha82@gmail.com>
- <ai_Tzbl3sZlyrh2M@ashevche-desk.local>
+ <20260611202607.85376-8-macroalpha82@gmail.com>
+ <ai_gIR2d9fzHLZ-G@ashevche-desk.local>
 Content-Disposition: inline
-In-Reply-To: <ai_Tzbl3sZlyrh2M@ashevche-desk.local>
-X-ClientProxiedBy: SA1P222CA0014.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:806:22c::23) To PH0PR19MB997338.namprd19.prod.outlook.com
+In-Reply-To: <ai_gIR2d9fzHLZ-G@ashevche-desk.local>
+X-ClientProxiedBy: SA9PR13CA0028.namprd13.prod.outlook.com
+ (2603:10b6:806:21::33) To PH0PR19MB997338.namprd19.prod.outlook.com
  (2603:10b6:510:3b1::18)
-X-Microsoft-Original-Message-ID: <ajAQ9sV7ZyA69IWb@wintermute.localhost.fail>
+X-Microsoft-Original-Message-ID: <ajARfLGzqaWfUmf4@wintermute.localhost.fail>
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|CH2PR19MB3928:EE_
-X-MS-Office365-Filtering-Correlation-Id: caec6b92-7f44-41c8-9b2f-08decaed4d11
-X-Microsoft-Antispam: BCL:0;ARA:14566002|12121999013|15080799012|8060799015|19110799012|23021999003|6090799003|5072599009|24021099003|41001999006|37011999003|25031999004|51005399006|3412199025|440099028|40105399003;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?zam+jafGHedCgw1FsxkfZoIFN87BbhXgw1UkbcGgRObPHsysdDQEY1LjQSrm?=
- =?us-ascii?Q?rqs5h0HLDIIXqWTHC6+oLjhAIFMxt4mqTtM6Tv+noArZZXRXkpdLJRBUXfCl?=
- =?us-ascii?Q?8RZHAFilBu9FT3ocmAb72/UG6EnSyJsjRDiUOc40RZsAdMANGFvVwp5QlCkj?=
- =?us-ascii?Q?sUcBdsgK4oYxhz+1Pii0m2Jk3BdXq9uKdgrD3ia9yHV9MzUzxRQ5w/yRBJVE?=
- =?us-ascii?Q?svdFjhdK97XbPaD4k1p0NacvtYIu1r4IMbjqybnaxas+N66lA9d9BsCa6jZe?=
- =?us-ascii?Q?cm0dmYAQgqS7mpUuV/2a00b5k2H+vA1dL/uCH4C/oAyA+neC1Xmuyfp3sVSq?=
- =?us-ascii?Q?MNZ6um7hfHt/XIVKa4oFBJx2M4OZKeqJI0/ktTmdoYa5CC98wEkR1JlLSY6e?=
- =?us-ascii?Q?VY2fyIG8dqnFQl62WIJhg5BdeulACaAeX8c3l8SRBxNCU7tWk5YPUL/Lk0W5?=
- =?us-ascii?Q?rRdMFpprZfeZNU5+WIOxON7e9Id91T13Ae7Zstag+xnluRcP+jZTN3MXz8Yt?=
- =?us-ascii?Q?Ke6208oITrF7gR88X2e80wGBjvG9ImXJJA3Ce4M7J7SLsyDP2gE5jV/2NKjT?=
- =?us-ascii?Q?99xEB+ef1qoKCDH/ZznX0ZNBS/a9L99K7EAigt1jiJh/veVPmuKdRHW95Bqz?=
- =?us-ascii?Q?ehv2EdRds45q1NPk9AN9PChKyMps0OQzalL5YIUkw2+dk/hlrYhBWCuXyiSu?=
- =?us-ascii?Q?RMT/H4QfLMHNT66Cu8rxp+HiHRFBCA3n2PlzviCBW49vUn4YHxSY6TtuUGDT?=
- =?us-ascii?Q?otkgnk2GxWUaBgyR7s5GOv8o2E5618mrkjX8TDD1gYYLAJ5OaAN+85FV/eqb?=
- =?us-ascii?Q?KriJGBqbEJfvz7vxrhNZD6zZiRNAdGlRZbiTLxrh5IEwDmADsgQepNB+91Va?=
- =?us-ascii?Q?EOIcCoCLHSO2whfwjKgdMAqJ8D+uwQJo/ef/30J6YC6agm6KKB5NVKZuZ4D3?=
- =?us-ascii?Q?5KtMFPJZrXnRd9HBQ42T7Qq7wZKigwM1oohe5vxSot6HWr0aq/X39K9485QS?=
- =?us-ascii?Q?GgzoluZtiQNPRlheIcc7r3fGArvExJ2Q3UGCYuM9mlaGV3eVtcxpKJqif9Tu?=
- =?us-ascii?Q?s27vNVJLPKTAgZCwL9OoWNEfnP3sbw=3D=3D?=
+X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|IA0PR19MB7679:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1c0749f7-fc35-46d5-6732-08decaed9c38
+X-Microsoft-Antispam: BCL:0;ARA:14566002|37011999003|41001999006|19110799012|8060799015|25031999004|15080799012|5072599009|6090799003|51005399006|24021099003|23021999003|6040799012|40105399003|440099028|3412199025;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?ry32H6JFeMOINUZoMuDqi4sqw9GcVVO6x7rrHjjlf1h5ag1ZoUcpG7QOhlZe?=
+ =?us-ascii?Q?JkCm9dGfoKEyq0cQhDaps95S8+3nQF0xfn0yuk9MxJFgkCpDizkVITBOacdJ?=
+ =?us-ascii?Q?wy+iYwi15DUPhO+b1LAzoB2/gHGS1+qxg0j2mc/JI7i6gg88CTjx2AELEFuL?=
+ =?us-ascii?Q?BYxOCDINiHSYVDaMQDnRdXwmjlGKMTS5oSO08USQ3NnqwXvAgdkiGuZ4A8UD?=
+ =?us-ascii?Q?PEkpYaZSdW7g5pmuuHycZjJ+ulXh1ZedEjDRFtP67ilkA6AoSywg/tHsjLWD?=
+ =?us-ascii?Q?bvPesevgRzI2ghSf4ZgJajfQCuhqkpMsruhgSZZ0/qRnbo/q0HYqVbTsTm51?=
+ =?us-ascii?Q?DNs72vx+6SUbnJ0qGklIA2SIVJqFKeg8pd5yV5myeyKrE/8gQCtDOW2rJAn0?=
+ =?us-ascii?Q?J8nabCE3qZe3Jtt3L+0NF/Fvz7x9heJJrPxeRBBRTtBZvYx4QaXOZlmx8L/N?=
+ =?us-ascii?Q?nj8EYTKhfzcn0l4y8wJRN0Rs2s+3MSaJFIu8hssXlDWk+CzijOfRO2KSIS7A?=
+ =?us-ascii?Q?kJIhdQOEO9PfngqBaiCW4KzsdT5oQq5MvkeYOcnSG+KiAIO8kOz+iyA6YmV0?=
+ =?us-ascii?Q?tA6zjZ3Zv+ug5fetVs4qLS9APJFcam1XWCTi0nLH2vbzgH0f6GA/Qn1MxR+8?=
+ =?us-ascii?Q?BN5MwY658FLU7coM47TuGERpfJbew37xYVYqY8Dhou1M4leO3BG/jqgQ9cSn?=
+ =?us-ascii?Q?HGnHWDLvEAzXyFHGsDHouoj9qn5GgKnBlinuz2I1XiJ7qDI8HjbBlXfSQ6w+?=
+ =?us-ascii?Q?11WhqDZdgt7epWmRAXR0WM/rnqZPX24m1qgd6MjgqUK1MC5jMNXyTCH8VZLF?=
+ =?us-ascii?Q?89lkQ2GIwmM/Ks4Jx57ilRxiQV3KeOXhSeYxV5350Fme5azcKeQDjEGAbya8?=
+ =?us-ascii?Q?WXSyAva/hkerT6d9Hyr31sziSSFyzJ68yuM9ipUs2y56viVbx2NmwOizfvNU?=
+ =?us-ascii?Q?E9YfdOjj97ov7+OBFFDZKa+RGpaBNItCXgBW82sEQ59GagTl5yWI9wJ5+Brw?=
+ =?us-ascii?Q?kKNHbZ2kEzsq84tZvj/UGNvrU1tzN/Q7xPCaIb5XehtXRe7sdF6thbG9+92S?=
+ =?us-ascii?Q?erBwl0tAG7ZMTVMzv1dhPeJJZV2fSw=3D=3D?=
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?rucgXQWAvtG5gvloGKBDsNMK3WUAsLnCP+vpFf22F/grn8n5vD0BX6KHzfqh?=
- =?us-ascii?Q?RXLxtHF5rz6OTewUG7tXV+r5Xb4IBhJOW6ejkYKdtbNEgF+7giclqOeIjQUK?=
- =?us-ascii?Q?vadS+XH5qUn9DBxxwncF7NZyPoVRvBjMVzg69R/HHqG2yu1sKMsAgtqt34Pe?=
- =?us-ascii?Q?OGhRcLmyASBkC1iLjRPq2uUWi0av1CTkm3XdQrjT3J77ONVE2MT1vtC8/VpH?=
- =?us-ascii?Q?aD4Cj5OpeDEMHfojJuwRl25fXXbNxwt2VsWRhj16yKz+tJCI6nv2/A0u5MJY?=
- =?us-ascii?Q?UNFGeu1BLYw5ES3qdIG+goUx9n1bqR/fCJOGUgtU/PVK3Uz/VW5TdFFHjTwk?=
- =?us-ascii?Q?8skWsClZI1szvGUOGzXKN3rLFBTiFb8LgrAuAlg38NL+eZJRIZc8gLGCg+0B?=
- =?us-ascii?Q?vKU2X17KBlo2GsndAc5GawcBoSlGGPQKESF7psHAtKDiu9YAyIQCFvOO0bPD?=
- =?us-ascii?Q?1cr6KERwdXB5GQXO4NJ91FqTTSJ7gsKnbapHpjK2P3ox6f3Cvu8dG/9AhxmW?=
- =?us-ascii?Q?/mToK8HOmZbMScE6zcFnzNTLNBSOgDew4YZHWRNE/ceyaeT7KGswtRczEBfe?=
- =?us-ascii?Q?ELZImvHfR8Z4xyD/E9kUdKILzA2SnTTMJ3ydX2LNdyJDnoXOLrYhrV8z9rbO?=
- =?us-ascii?Q?dUM43tEJD07iR1wzTKKenVCqbvoQTecx4IG6Ne9haImc5Y3hx8lBvifma+cA?=
- =?us-ascii?Q?QuKxZcWhdZMTlLg65YeCXfClqb1nt73+21Ra1OGSWaImg1maE2vtCR8yGvWR?=
- =?us-ascii?Q?qv+5emNWn1BbZ5tYI1+OPdsh/Y7SsM3rS7kExNkX4i6lXi1NyIQSJDQ6BNBw?=
- =?us-ascii?Q?X9p4ELSi/15j11jruqYNjn90AQQyyE3VXprWjdFNVGFbU8WBj9UazsMsJ3pv?=
- =?us-ascii?Q?/JqAsTvUZ0T3GcLYqdt76VUHyEXCPT5QJsKVxJs8ZBB10InEq5hJMTbMbITY?=
- =?us-ascii?Q?KMtxQEo+zfmnGsT8yWWOMuzxdw+PbIszETzA6biGfUWqfUCYayIvLQI5DOEi?=
- =?us-ascii?Q?ZQ0uoqcCK8RJ91+aDNfMH005SN4efiTSkXAwuJj4DYEdkJKOb8D7ZV5Gh4MN?=
- =?us-ascii?Q?VaaFrYCOUIjSReRwwUXabYR2SnWNp5iOqC4we0/TVTUmxxNQ7NvV7YArAPhM?=
- =?us-ascii?Q?xkej5YzZXmi3OJcrTg0GTPE9lQCwNbM6+DZ5Grx70XaiSkbEsa744rVQ4PQr?=
- =?us-ascii?Q?iZFcE6TqmQFok1VT0BlIp0rcze8Cz5BID03YxJcjQER70USwLznZ4bJhbv3j?=
- =?us-ascii?Q?T8vqpNFhY9zj0CGCKvBjfaKdOTkk4SE96k0t057Z7rYS7/xrFwW0p7R/SPMQ?=
- =?us-ascii?Q?HMrAMdWhpHDoMSzUEl88rw7gzxilJhYLSglA1IeFgwp8kORN5Df3ewN17sLW?=
- =?us-ascii?Q?10hB/f0F10WnqPhx3Y/dYfb4RNWK6vylk6gz1YLybBCfE6wACg=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?v+x2aoX/fylytZc72oK7UfntClsmUzWjLlLhYOAc4sGCiktJip3FX5w5JaQe?=
+ =?us-ascii?Q?Cy9zOQ1XzmeHTH1tzCKRpYkUwCdtumzxg+bl92XNBT6p439ELMyQJWpgCSHK?=
+ =?us-ascii?Q?phfuueRVPAaTz95YD/194yuKY07OeWAcRzpDa22eXETQehnP1R0jNBd9Mq/V?=
+ =?us-ascii?Q?Ws//tyXGlIAQOasxNC7Q8s7u2TiMjb7RMsx4AAki2CGT04HXYiq4A4h7cyM9?=
+ =?us-ascii?Q?CcgeBee4bEXMd3+Nv6waWtircjyLO41DaFFV6rUMNiKsUsoTCjfaaXDGPGqL?=
+ =?us-ascii?Q?dlYImtxEVqEqVZAnfORNb8rQKDj4C6XQwtm6IqdjegrzWEo0daY1+DSfM36s?=
+ =?us-ascii?Q?owusuiejBayIDbgo/veExrtDVLPfkGwefDDvgDXj29jFR3s3Oxvjh4e/3kac?=
+ =?us-ascii?Q?GJz/2xNAj1J/l1qPdA7EoDoYsdjfkhQHqdx5IGlSrOuYfjZkAg8YZqBPjiW8?=
+ =?us-ascii?Q?HbQFvXcXxIw6lA2Is9Yykq8NdBM5SZc009wFStUjDw62uBJmXPW+dVbB3Wv8?=
+ =?us-ascii?Q?7PGaqcqYY6u/gNhranosBi5gCCqNutPrujpQIkYdn5NvpiN4KzZCQT6odUNl?=
+ =?us-ascii?Q?iSqsizalH27f2elnZZlCwOtLN/cSteDjsZ/abt/tW3IW5X0ETE1uTw6GVLKY?=
+ =?us-ascii?Q?LpJBh92qIqijX8WXbDxvlEhsqBr7Wuqnk0FYZO0Xx17sLXqPwnIg1eMiFt71?=
+ =?us-ascii?Q?JgOCWXSWaPzzEinRjG8Ei/Wv+FOPbgiCkmGIvkXeTA900fOi29Rf7J6tSDJa?=
+ =?us-ascii?Q?agYUckxIvIg3zGCYA5nREgm+lpdtHEf3pn8PzkZYt0QAhSB/07/NWOzmyFBj?=
+ =?us-ascii?Q?vtQmq3IR5H5159IUJx91GZGQtMVqQ6b241d/XYZgVVBWNEJe3wICw7GS4ITd?=
+ =?us-ascii?Q?UginvNdFHQhK3aUG9/D2FQ6LpZqOLPOnYfdiB9xCo6L4S2mWYhIP/h7fFQiK?=
+ =?us-ascii?Q?O6UsHbU/0GcQLNqCwe9Elk82/PUG4okJbt++LFPSTOnsDYWm5fgwRTZTGB3q?=
+ =?us-ascii?Q?88eQOK1gUobCmaHjg4AF1F3VPdoVO7JmYDLf9b7LCz9V1sls+DXb03kzWoJX?=
+ =?us-ascii?Q?/7BKEQ8LxQR4DuoOm7QTix85X5rD1mz2L+Az22ol9Nm6grwVpwfegVGm4e5m?=
+ =?us-ascii?Q?Ay1XOqCmb0ivlfBoQCNG2q+mYaBghN8QoP0OZG2GREY6Yvtp0XmVTac7p2f3?=
+ =?us-ascii?Q?qOpK9bscF0QjHUWxNC7mTPS07D5jgY/mraxzfGLw38fWMnZT0sfZ8ElX/yDB?=
+ =?us-ascii?Q?iV9VZ2RqUNE1tAKkhMqBpKwif61wbDO8LqWSKqEolcA40159+2PJ77W5MdHJ?=
+ =?us-ascii?Q?ZRYSADTCUogb6rFhR2CpDaGkb6W/M1gGnV0Lb0ffXK0fgP9RXkq4aPO3Xcc6?=
+ =?us-ascii?Q?aWtNUpA8HV0KyqtzvrfqGt9xHW/jH9qhX5GcrSLgrE0gCwRMZg=3D=3D?=
 X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: caec6b92-7f44-41c8-9b2f-08decaed4d11
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1c0749f7-fc35-46d5-6732-08decaed9c38
 X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2026 14:49:28.5347
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2026 14:51:41.2614
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
 X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR19MB3928
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR19MB7679
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_074933_119656_B561FBD5 
-X-CRM114-Status: GOOD (  27.06  )
+X-CRM114-CacheID: sfid-20260615_075148_692052_2A4F0364 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,83 +150,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 15, 2026 at 01:28:29PM +0300, Andy Shevchenko wrote:
-> On Thu, Jun 11, 2026 at 03:26:02PM -0500, Chris Morgan wrote:
+On Mon, Jun 15, 2026 at 02:21:05PM +0300, Andy Shevchenko wrote:
+> On Thu, Jun 11, 2026 at 03:26:04PM -0500, Chris Morgan wrote:
 > 
-> > Add power management support for the ICM42607 device driver.
+> > Add icm42607 accelerometer sensor for icm42607.
 > 
 > ...
 > 
-> > +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
-> > +				      enum inv_icm42607_sensor_mode gyro,
-> > +				      enum inv_icm42607_sensor_mode accel,
-> > +				      bool temp, unsigned int *sleep_ms)
+> > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
+> 
+> Please, please, use IWYU! So many headers are missing...
+> (Same comment to all files in this series.)
+> 
+> + array_size.h
+> + bits.h // BIT()
+> + cleanup.h // guard()()
+> + device/devres.h // devm_kasprintf()
+> + err.h // -EINVAL, IS_ERR()
+> 
+> > +#include <linux/iio/iio.h>
+> > +#include <linux/mutex.h>
+> > +#include <linux/pm_runtime.h>
+> > +#include <linux/regmap.h>
+> 
+> + types.h // s16, __be16
+> 
+> Also you need to have
+> 
+> asm/byteorder.h // be16_to_cpup()
+
+How are you running IWYU against the builds? So far I've tried but I
+can't seem to get it to run properly. 
+
+> 
+> ...
+> 
+> > +static int inv_icm42607_accel_read_odr(struct inv_icm42607_state *st,
+> > +				       int *val, int *val2)
 > > +{
-> > +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
-> > +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
-> > +	bool oldtemp = st->conf.temp_en;
-> > +	unsigned int sleepval_ms;
-> > +	unsigned int val;
-> > +	int ret;
+> > +	unsigned int odr;
+> > +	unsigned int i;
 > > +
-> > +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
-> > +		return 0;
-> 
-> This validation seems weak, see below why.
-> 
-> > +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
-> > +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
-> > +	/*
-> > +	 * Note that temp being enabled here doesn't affect PM since
-> > +	 * per 10.25 of the datasheet the clock will be off by default
-> > +	 * if both the gyro and accel modes are off.
-> > +	 */
-> > +	if (!temp)
-> > +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
-> > +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
-> > +	if (ret)
-> > +		return ret;
+> > +	guard(mutex)(&st->lock);
 > > +
-> > +	st->conf.gyro.mode = gyro;
-> > +	st->conf.accel.mode = accel;
-> > +	st->conf.temp_en = temp;
-> 
-> > +	sleepval_ms = 0;
-> > +	if (temp && !oldtemp)
-> > +		sleepval_ms = max(sleepval_ms, INV_ICM42607_TEMP_STARTUP_TIME_MS);
+> > +	odr = st->conf.accel.odr;
 > > +
-> > +	if (accel != oldaccel)
-> > +		sleepval_ms = max(sleepval_ms, INV_ICM42607_ACCEL_STARTUP_TIME_MS);
-> > +
-> > +	if (gyro != oldgyro)
-> > +		sleepval_ms = max(sleepval_ms, INV_ICM42607_GYRO_STARTUP_TIME_MS);
+> > +	for (i = 5; i < ARRAY_SIZE(inv_icm42607_accel_odr); ++i) {
 > 
-> Does it mean that it might be more than a single conditional to become true?
-> If so, the last code wins, which is most likely buggy approach. Can you put
-> a comment, and possible convert this to if-else-if, to clarify what's going
-> on here?
+> Why pre-increment? Same for all other cases.
 
-I've changed this logic in the next version, but basically what needs
-to be done is ensure if any sensor changes from off to on we wait the
-startup delay amount of time for that sensor. If more than one sensor
-changes from off to on, we wait the maximum of the two sensors delay.
-
-I'm going to change this instead to just (sensor && !oldsensor) for
-each of the three. Note that I also have to insert a shutdown delay
-for the gyro to ensure if the state goes from on to off the sensor is
-on a minimum of 45ms per the datasheet.
-
-So I do expect it to be possible for more than one condition to be true
-here, and when it is I want to select the maximum value for the sleep.
-If the sleep_ms is specified however, we will use that value.
+The register starts at 5 and all values below 5 are invalid. Starting
+this increment at 5 ensures we don't expose invalid values to
+userspace.
 
 > 
-> > +	if (sleep_ms)
-> > +		*sleep_ms = sleepval_ms;
-> > +	else if (sleepval_ms)
-> > +		fsleep(sleepval_ms * USEC_PER_MSEC);
+> > +		if (i == odr)
+> > +			break;
+> > +	}
+> > +	if (i >= ARRAY_SIZE(inv_icm42607_accel_odr))
+> > +		return -EINVAL;
 > > +
-> > +	return 0;
+> > +	*val = inv_icm42607_accel_odr[i][0];
+> > +	*val2 = inv_icm42607_accel_odr[i][1];
+> > +
+> > +	return IIO_VAL_INT_PLUS_MICRO;
 > > +}
 > 
 > -- 
