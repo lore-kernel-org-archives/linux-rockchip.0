@@ -4,54 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91A2CCD98DE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 12:33:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBB69CD98C5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 12:35:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
 	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=47PlomVgCOAajNtZem178C68D1RQOXyhG7iYO6FfCRw=; b=BERrwGIge1Awix5X2lNd8HI/Bg
-	XqQnhGDF3K5lXIar0Y2AeaHXFnhVVRUBuN0v4kR+WmDsMySafBjXo++mhbr9q9+GZp+3UrlSJEhjH
-	dp1B0etkx4EEHquCvR5G7DfcNuswo1GfGGvehZdXwoBDx5AyCLcrKv8MTjzX8tGTrz7F5M2PNHboX
-	8T5434I5AVSEXwUYr78eV/GC2Pr1rG3VtPRJeM71V46M4ZdXJkuH63f/vWIoiuuyGiBSyeBYBVqxB
-	dzvv9jnEBXzs0vJmZLYwrQqJ4RJwEyKwtFavM/vfdk40MOuBJxKWpUvplF/r6RpfiYhwQVbff7jBN
-	JWs0grmg==;
+	bh=kgCPMK7Pt+RfRzWJXn9dUnaZkxEVXTq/Lz99lh5waWQ=; b=Fa0w5A1EhWOVVuLQxwlhaFmsAR
+	I0IDCqYdPlIRD1VX76U3IxUQrzFbvWJC97mkd/ZHr8SeZUcyuPttbwYi5KlAiMIDnDbKAI61l9Aby
+	Cb20gGpWtIIY1E7piPajBuGJbM/0wymqlwtOmuG0JN6J0ag13CaxYYYMsMBypUAtlKV2glUVo3V9w
+	OFR+n04GJg93cc1fwBQXUgUCK6LztoUXepBtOj+CXF5NeN49Ivr83WJapdrR8ajUyLzAn23uR2cqm
+	FEZt8QLChDO3i5f/fkrouG7YaXa0SbLnNMxZMcB3WVf0V8ifwXYPE2EY85e1ukW69HzeNv/XlYTQw
+	O0Nbe60g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ6VF-0000000ECiI-00ie;
-	Mon, 15 Jun 2026 12:33:21 +0000
-Received: from mail-m12881.netease.com ([103.209.128.81])
+	id 1wZ6Wv-0000000EDNL-2HwA;
+	Mon, 15 Jun 2026 12:35:06 +0000
+Received: from mail-m9337.xmail.ntesmail.com ([103.126.93.37])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ6V9-0000000ECcI-124f;
-	Mon, 15 Jun 2026 12:33:18 +0000
+	id 1wZ6Ws-0000000EDMA-2VoF;
+	Mon, 15 Jun 2026 12:35:04 +0000
 Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 427046ead;
-	Mon, 15 Jun 2026 20:33:03 +0800 (GMT+08:00)
-Message-ID: <cd1f968a-2e1b-434f-a331-a60cd8740032@rock-chips.com>
-Date: Mon, 15 Jun 2026 20:33:03 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 427046fb6;
+	Mon, 15 Jun 2026 20:34:58 +0800 (GMT+08:00)
+Message-ID: <8da02c6f-030d-4033-935b-a44c777a14d2@rock-chips.com>
+Date: Mon, 15 Jun 2026 20:34:58 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 0/3] Add eDP support for RK3576
-To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de
-References: <20260605022305.3058853-1-damon.ding@rock-chips.com>
+Subject: Re: [PATCH v5 0/4] Add eDP lane mapping support
+To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, andrzej.hajda@intel.com, neil.armstrong@linaro.org,
+ rfoss@kernel.org
+References: <20260604085220.2862986-1-damon.ding@rock-chips.com>
 Content-Language: en-US
 From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260605022305.3058853-1-damon.ding@rock-chips.com>
-X-HM-Tid: 0a9ecb4565ac03a8kunm225b4a5540a1
+In-Reply-To: <20260604085220.2862986-1-damon.ding@rock-chips.com>
+X-HM-Tid: 0a9ecb4725bc03a8kunmad12dd9f4325
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHhlLVhhKSktNSE9LSxlMQlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZShkaVhkYTxoaGEsYQhpIGVYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQkxVSktLVUpCS0tZBg++
+	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=AjT6pfqXKo4dJ+Iqrf0DbrK5jj/BtJhdqusaYMYOcwjxILsmplQ94LrZgAz6X+O+XgEuR8cxlrBI+0Mgm6XPZRWMTI3niqyeojNt8SNlEaIjXzJJZIeBpzEtiHXRrqqc2x7g8KWQBaCko68no61dpRfoa2kFWJ7dGXS95m9QA5k=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=hInNVk/luH61RX3DtR9xZzGpkr2Jo/fkYMCB64seK2g=;
+	b=H2pYc5H4U519kPcqsLXiGZSqfal7roIZHKjog0oUnFm77yfp9eZTtdfOGTPLM5/Lcsv+XL4jWuNSRzLTovnS6ukbqMHh0l4IBojJTjDT+R0HGDUMdDikxtVT4j36p8sRGDPrJFuqrwx4ZAj5tX2uj6ZkKN0BqpTpcTwOo+O86QA=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=qY5kOzqcJfORXQNkdCMcMwTxAyKHZxf9POk2wrTq/zs=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_053315_836965_F83CBCF2 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20260615_053502_895776_D8FD7D03 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,7 +67,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: detlev.casanova@collabora.com, devicetree@vger.kernel.org, sebastian.reichel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alchark@gmail.com, michael.riesch@collabora.com, andy.yan@rock-chips.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org
+Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -76,61 +80,63 @@ Gentle ping on this patch series.
 Best regards,
 Damon
 
-On 6/5/2026 10:23 AM, Damon Ding wrote:
-> Picked from:
-> https://lore.kernel.org/all/20260601065100.1103873-1-damon.ding@rock-chips.com/
+On 6/4/2026 4:52 PM, Damon Ding wrote:
+> This series adds configurable eDP physical lane mapping support via
+> device tree data-lanes property.
 > 
-> Patch 1-2 are to add missing clock "hclk" for RK3588 eDP nodes.
-> Patch 3 is to add the RK3576 eDP node.
+> Lane mapping is mainly used for below scenarios:
+> 1. Correct PCB lane swap and differential line routing crossover
+>     without hardware changes;
+> 2. Adapt mismatched lane pin definitions between SoC and eDP panel;
+> 3. Support multiple panel hardware variants on the same board
+>     by configuring data-lanes in device tree only.
 > 
-> Damon Ding (3):
->    arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
->    arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
->    arm64: dts: rockchip: Add eDP node for RK3576
+> The series includes driver implementation and device tree binding
+> updates to support custom lane mapping configuration from endpoint
+> node, and keeps default linear lane order if no configuration is given.
 > 
->   arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 28 +++++++++++++++++++
->   arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  4 +--
->   .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |  4 +--
->   3 files changed, 32 insertions(+), 4 deletions(-)
+> Patch 1: Add endpoint data-lanes property to analogix-dp binding
+> Patch 2: Add DRM DP helper API to validate DP lane counts
+> Patch 3: Add validation for samsung,lane-count property as preparation
+> Patch 4: Implement lane mapping in analogix_dp driver
+> 
+> Damon Ding (4):
+>    dt-bindings: display: bridge: analogix-dp: Add data-lanes support for
+>      endpoint
+>    drm/dp: Add helper to validate DP lane counts
+>    drm/bridge: analogix_dp: Add validation for samsung,lane-count
+>      property
+>    drm/bridge: analogix_dp: Add support for optional data-lanes mapping
+> 
+>   .../bindings/display/bridge/analogix,dp.yaml  | 19 ++++--
+>   .../rockchip/rockchip,analogix-dp.yaml        |  1 +
+>   .../drm/bridge/analogix/analogix_dp_core.c    | 64 ++++++++++++++++++-
+>   .../drm/bridge/analogix/analogix_dp_core.h    |  4 +-
+>   .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 15 ++---
+>   .../gpu/drm/bridge/analogix/analogix_dp_reg.h |  4 ++
+>   include/drm/display/drm_dp_helper.h           |  6 ++
+>   7 files changed, 97 insertions(+), 16 deletions(-)
 > 
 > ---
 > 
 > Changes in v2:
-> - Split out separate patches to add the "hclk" clock reference.
-> - Split out separate patches to enable the "hclk" clock.
-> - Add Reviewed-by tag.
+> - Add lane mapping application scenarios in commit message.
+> - Remove redundant deprecated property 'data-lanes' for eDP node.
+> - Update port@1 $ref to /schemas/graph.yaml#/$defs/port-base.
 > 
 > Changes in v3:
-> - Add a patch to expand descriptions for clocks of the eDP node.
-> - Add Reviewed-by tag.
+> - Squash [PATCH v2 2/3] into [PATCH v2 1/3].
+> - Add unevaluatedProperties: false to both the port@1 and endpoint
+>    nodes.
 > 
 > Changes in v4:
-> - Modify commit msg.
+> - Add validation for samsung,lane-count property as preparation.
 > 
 > Changes in v5:
-> - Enforce the correct third clock name on a per-compatible basis.
-> - Modify the commit msg simultaneously.
-> - Add Acked-by tag.
-> 
-> Changes in v6:
-> - Expand more detail commit msg about using hclk instead of grf clock.
-> 
-> Changes in v7:
-> - List all valid clock names at the top level, and constrain the clock
->    count for each platform with minItems/maxItems in allOf.
-> 
-> Changes in v8:
-> - Fix indentation to 10 for enum in clock-names property.
-> 
-> Changes in v9:
-> - Restore the explicit clock-names for RK3399 and RK3588 eDP dt-bindings.
-> 
-> Changes in v10:
-> - Use automatic cleanup to fix OF node reference leak reported by
->    Sashiko.
-> 
-> Changes in v11:
-> - Pick and rebase DT related patches.
+> - Add DRM DP helper API to validate DP lane counts.
+> - Apply DRM DP helper API to check the validity of samsung,lane-count
+>    property.
+> - Add Acked-by and Reviewed-by tags.
 > 
 
 
