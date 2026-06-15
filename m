@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83597CD98DA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 10:28:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05D9FCD98DA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 11:22:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QNHujkLBqVg89fk0Rxyp27wjr4/F3jPPlu4CqDFiWU4=; b=WYMPNEVT9maPxm
-	uIyUYy+7HILQbMg+69JgVbn0Zp56jRmilYZ2+rwszURgA1TOT4R47hUT+tIE1TDnCNB9/nW+3VKWM
-	OLs5FqSyyo9ArasAghSDrjyDYGUuA23y8nI++HsPTf8EEFHZ3FYv5Mvr8bVac3jOrU+ynSTlyqF3q
-	v6UjWLnq6EcW/tRqIRJz9D5FXrQTpSzmeNr7Q7FFfQN4KGWHuTSEZEjCgRxFWOPtFU9Fjx1GynaVc
-	MXQG4kTfpNdG9suGNSyIOD+xk6bzS+2UFcuibV1ccJJROivqaeo4hxJ8OcpIgQszn9kMI41o5+EaH
-	c9+UU+NQH3+HIGFyr/8w==;
+	List-Owner; bh=gVa+mQ1drdpZOloU8qug77NadGe/cN9CxPDuCef8tPs=; b=gyNNoRhYftTYso
+	VbGNlD1QYprdbT26kjzt4xFkcauC2Sy1V0wP4rn8GMIXMcjhjDIM+JFK2Sumb72toPxoIGhk4nkwA
+	wnqBKI2Cq9336SzTAq2tv01XtNCAr58O9ZSLzPNoH0ENVamiEl1RDpqKIzC/C8tGRN5nOBUJiQ5Ls
+	7eC+ob4J0J/zEf0csclCGc8n7Y/E9E9g1ktW3WMk/a3Qgnm/hgH0CRY/Ru7rWwxcgC/pzlRLZ6SXY
+	SNFhe/Z2furkpXT+Yt3pfW/N+pqnSoowghJvn5fO3KQROd2qbZ9qr/7ASHkDWnhm9c2osGeo1ooit
+	f8zTLNFxYE1ptkoXsDSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ4Ya-0000000E3FJ-0kcb;
-	Mon, 15 Jun 2026 10:28:40 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1wZ5OU-0000000E5zY-2ubG;
+	Mon, 15 Jun 2026 11:22:18 +0000
+Received: from mgamail.intel.com ([198.175.65.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZ4YX-0000000E3Eu-3AfF
+	id 1wZ5OS-0000000E5z9-2K3Z
 	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Jun 2026 10:28:39 +0000
+	Mon, 15 Jun 2026 11:22:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781519318; x=1813055318;
+  t=1781522536; x=1813058536;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=cjmYWfC1zuAZ0CEHetrNd9YiohGW7mbOzZNdkkXbyUo=;
-  b=GDAhYXWDsHY4rJaMV53UPRgKTDcu7A0Zx8jWUsH0IdO0vMIw2phdVFPO
-   fbC84GdWuf0nIy/O8vUFFTyYJQ0w29FpZand+f1l0W/fWQ2qYgQeyL9VV
-   Rf4P9fxWBy4+Z0mO4Q+3ZME8lTXHF2IRs4mJWXOhCNNCkPFHKUCWNHwB8
-   PvAO0XsnLaRxQUXxXoOn6EMB7cB9KgeLO/WLVt/+dYJbtBSGp090wvAe9
-   yqVWvb+jbk7maugfOUywc/tPSPfQUhk3ZQLOR23cgh/Yoy/FQL7Lo5cWR
-   iVb5P/2RGIep1zIDf3A0xbZMvMvHMznVa8YcNVSAKIKTSE7LDQOkbTQX+
-   A==;
-X-CSE-ConnectionGUID: gxh9aWJVRi62V5HX68SF5w==
-X-CSE-MsgGUID: PZRsmqivRbyEGbwwh5AKHA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11817"; a="93371792"
+  bh=oUuco3i0K38eSMot402UJs61QnUbT2+JIaR5boNplsQ=;
+  b=oByN57y0c3mECfFbJdAQDG4F04hSQwPkHWArbtG3ZJoYAc9U57iXXb/Z
+   1NoIklDLbO+AqelyXq+UrMJQ4zFm2hym42dwNGIIFayum+/Ui9Ndhi16o
+   bEeptPULPr3F7laDzOjKNs4gEDNQsVIhAV7XeWZohMQzbESDqlO4vQ0/3
+   DB7KSAtdSNU5L42bTcLjm0NUU1ENyoupS0WgfFo7dZzDjpcQczvIsohim
+   G1fJDdSsfGdz6Q3+YS+xx2wEzbIsnUL76WJFczyhH6TjqGwKYH94z79Z5
+   0HbuEAYSJruvTWderJzy43sLl5qSIC2X2d/R53v8eViMV9TlNw+rh/JO9
+   w==;
+X-CSE-ConnectionGUID: duLQSMHvRdG9qyD3yCBUFA==
+X-CSE-MsgGUID: PuSd80hRSmSKNneg63lUzw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11817"; a="93750791"
 X-IronPort-AV: E=Sophos;i="6.24,206,1774335600"; 
-   d="scan'208";a="93371792"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2026 03:28:35 -0700
-X-CSE-ConnectionGUID: 8KEZcgDwST6M1JTXFdyAjg==
-X-CSE-MsgGUID: j6gxE4dnTQeRTw5bK8cP2w==
+   d="scan'208";a="93750791"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2026 04:21:11 -0700
+X-CSE-ConnectionGUID: +VUN7yuxSNuQPnk+/FSvKg==
+X-CSE-MsgGUID: KzZJslhUQuu3pFRYoagyyg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.24,206,1774335600"; 
-   d="scan'208";a="244527019"
+   d="scan'208";a="241090446"
 Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.235])
-  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2026 03:28:32 -0700
-Date: Mon, 15 Jun 2026 13:28:29 +0300
+  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2026 04:21:08 -0700
+Date: Mon, 15 Jun 2026 14:21:05 +0300
 From: Andy Shevchenko <andriy.shevchenko@intel.com>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
@@ -63,19 +63,19 @@ Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
 	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
 	krzk+dt@kernel.org, robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V12 5/9] iio: imu: inv_icm42607: Add PM support for
+Subject: Re: [PATCH V12 7/9] iio: imu: inv_icm42607: Add Accelerometer for
  icm42607
-Message-ID: <ai_Tzbl3sZlyrh2M@ashevche-desk.local>
+Message-ID: <ai_gIR2d9fzHLZ-G@ashevche-desk.local>
 References: <20260611202607.85376-1-macroalpha82@gmail.com>
- <20260611202607.85376-6-macroalpha82@gmail.com>
+ <20260611202607.85376-8-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260611202607.85376-6-macroalpha82@gmail.com>
+In-Reply-To: <20260611202607.85376-8-macroalpha82@gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_032837_833206_48059CA6 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20260615_042216_631184_942281F9 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,67 +92,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 11, 2026 at 03:26:02PM -0500, Chris Morgan wrote:
+On Thu, Jun 11, 2026 at 03:26:04PM -0500, Chris Morgan wrote:
 
-> Add power management support for the ICM42607 device driver.
+> Add icm42607 accelerometer sensor for icm42607.
 
 ...
 
-> +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
-> +				      enum inv_icm42607_sensor_mode gyro,
-> +				      enum inv_icm42607_sensor_mode accel,
-> +				      bool temp, unsigned int *sleep_ms)
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
+
+Please, please, use IWYU! So many headers are missing...
+(Same comment to all files in this series.)
+
++ array_size.h
++ bits.h // BIT()
++ cleanup.h // guard()()
++ device/devres.h // devm_kasprintf()
++ err.h // -EINVAL, IS_ERR()
+
+> +#include <linux/iio/iio.h>
+> +#include <linux/mutex.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+
++ types.h // s16, __be16
+
+Also you need to have
+
+asm/byteorder.h // be16_to_cpup()
+
+...
+
+> +static int inv_icm42607_accel_read_odr(struct inv_icm42607_state *st,
+> +				       int *val, int *val2)
 > +{
-> +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
-> +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
-> +	bool oldtemp = st->conf.temp_en;
-> +	unsigned int sleepval_ms;
-> +	unsigned int val;
-> +	int ret;
+> +	unsigned int odr;
+> +	unsigned int i;
 > +
-> +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
-> +		return 0;
-
-This validation seems weak, see below why.
-
-> +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
-> +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
-> +	/*
-> +	 * Note that temp being enabled here doesn't affect PM since
-> +	 * per 10.25 of the datasheet the clock will be off by default
-> +	 * if both the gyro and accel modes are off.
-> +	 */
-> +	if (!temp)
-> +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
-> +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
-> +	if (ret)
-> +		return ret;
+> +	guard(mutex)(&st->lock);
 > +
-> +	st->conf.gyro.mode = gyro;
-> +	st->conf.accel.mode = accel;
-> +	st->conf.temp_en = temp;
-
-> +	sleepval_ms = 0;
-> +	if (temp && !oldtemp)
-> +		sleepval_ms = max(sleepval_ms, INV_ICM42607_TEMP_STARTUP_TIME_MS);
+> +	odr = st->conf.accel.odr;
 > +
-> +	if (accel != oldaccel)
-> +		sleepval_ms = max(sleepval_ms, INV_ICM42607_ACCEL_STARTUP_TIME_MS);
-> +
-> +	if (gyro != oldgyro)
-> +		sleepval_ms = max(sleepval_ms, INV_ICM42607_GYRO_STARTUP_TIME_MS);
+> +	for (i = 5; i < ARRAY_SIZE(inv_icm42607_accel_odr); ++i) {
 
-Does it mean that it might be more than a single conditional to become true?
-If so, the last code wins, which is most likely buggy approach. Can you put
-a comment, and possible convert this to if-else-if, to clarify what's going
-on here?
+Why pre-increment? Same for all other cases.
 
-> +	if (sleep_ms)
-> +		*sleep_ms = sleepval_ms;
-> +	else if (sleepval_ms)
-> +		fsleep(sleepval_ms * USEC_PER_MSEC);
+> +		if (i == odr)
+> +			break;
+> +	}
+> +	if (i >= ARRAY_SIZE(inv_icm42607_accel_odr))
+> +		return -EINVAL;
 > +
-> +	return 0;
+> +	*val = inv_icm42607_accel_odr[i][0];
+> +	*val2 = inv_icm42607_accel_odr[i][1];
+> +
+> +	return IIO_VAL_INT_PLUS_MICRO;
 > +}
 
 -- 
