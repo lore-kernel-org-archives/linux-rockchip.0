@@ -4,60 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D51DCD8CA8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jun 2026 05:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A410BCD98D2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jun 2026 07:08:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FV5RVpjn0icWM9LsCzA5OPgdD3plNjJo0FOwo0TF2ZI=; b=oJfl7l3rCAtq1J
-	/6ysl7WuSED4RTEoQzemMhnju46Tt2DsUZU/6FnULddELxeiDt43T7NDbKh1nMxygTBEc89gZsSUM
-	lM11w5x6YWt3LH6V17jKjpxOQDDAfig2fYy4TZHvNJDOePRTUbap1p7hZiCigaLu4X8AcTsyXej0T
-	CmFxN+rDkOvBgZIsj3q9YcFCXUmUB08N1dIkvlcGKv4QiuDDJMRURkVPsA6LOgnvErGmEK6gYJZPJ
-	7Q3iWk7VdCD+FwRhtQRMvrBVCrxMkGvgD5xFb8a4YoxKOkduhtNrFX5nRkgnqNe4NENSSEhwXXZ2h
-	4VvPMB5g6rGRTDHc+9Ww==;
+	List-Owner; bh=OxcHruF7y9nfRU9t53jDGZwT5jQSm/yFvFq3dJ586Eo=; b=a/8Z0/Ni9YVWmx
+	6IF/Lq8xN0iO2dlAwJvr63yyeGL/qI8I7WTR0oYkkuba0IHmHiOusyomkE1vrLwwMZezwlhyNLrQS
+	qfQoHwyq32+HdfSzr4F0hnV7plsuMNlRQPfU/6flMUh6Kzu6YClIHIQ1AuggPahJRa2VCT0KZK2jE
+	wQewaMTM4UmNBS3H37lXDqgwv4+KZoVBq5KbTM4hxZPSueiedPJXoSDmO6QvDq5y0rIfKtTMAGFRK
+	pV9S6WJAonMIKqVKijnFocqcdrAlx251nT7O7nt7X1s9xP+356WH5kGy7eU7fyNod1IXNNgS+LsRD
+	LOlKXKB7FTZJQfNoDvIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZMWO-0000000FFjO-3prv;
-	Tue, 16 Jun 2026 05:39:36 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wZNu0-0000000FLUG-40wM;
+	Tue, 16 Jun 2026 07:08:06 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZMWN-0000000FFim-2nuk;
-	Tue, 16 Jun 2026 05:39:35 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id ADC7A601F0;
-	Tue, 16 Jun 2026 05:39:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3D581F00A3D;
-	Tue, 16 Jun 2026 05:39:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781588374;
-	bh=80RmZrwXuKFVLAWjbGHY+VjBEIxT3ywEjfnnRscgprA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=bFxrHIdCaXCMK8Ds5Dzlp3idpjzEVT1sCk3OFQ/2GMb2VCvCA4245IBnL/WVAsJc5
-	 JyniP+z5QEHf6RdWdWAcIcO2nXOFKYgTzElancuh0rzTGp/gg4jJsnvOERy4v9Ukuj
-	 YhhkEs2qiVhq5ZjcG123PLk1Eo6qMy3fnz036gWF4f4Zyxq+gWvQ2/dBxRHRb1CX6J
-	 aBHlyOha24fkmEjm3WTsrTytcPtC5QNzXqH+zESrTP9CG/yoLJ2njm5r3NI2S7BoSw
-	 OVcVyVnKtu9etqcuzfjlWtUiDGbJbFcw0D+G/XU6C47Qt+Z4+izJcRwyG4o+NXKuh+
-	 ieyxgDHfylEhQ==
-Date: Tue, 16 Jun 2026 07:39:26 +0200
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Geraldo Nascimento <geraldogabriel@gmail.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, 
-	Dragan Simic <dsimic@manjaro.org>, linux-rockchip@lists.infradead.org, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 3/3] PCI: rockchip: drive at 2.5 GT/s, error other
- speeds
-Message-ID: <2nhgubo6h6eo5t5mzzizhiatea2f6if6fgjumzb7qae7idw34x@nljy2gwgi64g>
-References: <cover.1781207474.git.geraldogabriel@gmail.com>
- <4ac5cd7d2271df375ed6307f5c394247721395d9.1781207474.git.geraldogabriel@gmail.com>
- <ajBS3tGp0wqLyVq7@geday>
+	id 1wZNty-0000000FLTq-1vVK
+	for linux-rockchip@lists.infradead.org;
+	Tue, 16 Jun 2026 07:08:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1781593682; x=1813129682;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=6VM7jc9R1gEM32HSIpFUN3c90rfM663B27FZqdR+IAU=;
+  b=Y09qziiCuZ4cbeKdqEp5KpqSTZoBsCFrNrGFmCbE+mP+tohHO1c59/73
+   Vsf63Dc1TmyS5F6fhmp5oB3ZjidL9x/Z98MX8o7vuuY17+l8EuyeEoavz
+   aPy7duk5eRmtfgtg1Yo10oKu03A79rQ00nQ6sjj/Vl4fib6OCrRvgQzx9
+   SyrC1l6q+qyH2jpfoJdXRiGqeMa/r0YJwqP/P+/eYvCmwrP6Skc797jW6
+   nfNUQF+vWx9YXYNCAg+mYJacjPw0nNiTGKkc1q0k6MupxDqXk3f/Cdl+q
+   +GktzUbyaxcUQk/5su2fPvPOOwWO5M+55VUuVx8YP5AgvCwSSJwYIoGWk
+   w==;
+X-CSE-ConnectionGUID: QhedTYx/QU2q86GTEdj0kg==
+X-CSE-MsgGUID: sHw7Mn9/RIGjkrY/UWiWDQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11818"; a="93022156"
+X-IronPort-AV: E=Sophos;i="6.24,207,1774335600"; 
+   d="scan'208";a="93022156"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2026 00:08:01 -0700
+X-CSE-ConnectionGUID: g2utfKS+TjO2va+u+sy5tw==
+X-CSE-MsgGUID: bfYpWz+wRsS2RhiGl5SDuA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,207,1774335600"; 
+   d="scan'208";a="285803987"
+Received: from amilburn-desk.amilburn-desk (HELO localhost) ([10.245.244.153])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2026 00:07:57 -0700
+Date: Tue, 16 Jun 2026 10:07:55 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+	jic23@kernel.org, jean-baptiste.maneyrol@tdk.com,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
+	robh@kernel.org
+Subject: Re: [PATCH V12 7/9] iio: imu: inv_icm42607: Add Accelerometer for
+ icm42607
+Message-ID: <ajD2S8nBhRn1-C_G@ashevche-desk.local>
+References: <20260611202607.85376-1-macroalpha82@gmail.com>
+ <20260611202607.85376-8-macroalpha82@gmail.com>
+ <ai_gIR2d9fzHLZ-G@ashevche-desk.local>
+ <PH0PR19MB997338010EC6FA92E0AA63875FA5E62@PH0PR19MB997338.namprd19.prod.outlook.com>
+ <ajAVI0KXkx3FM1ZX@ashevche-desk.local>
+ <PH0PR19MB9973380BF26E3EF16BD2D35ED0A5E62@PH0PR19MB997338.namprd19.prod.outlook.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ajBS3tGp0wqLyVq7@geday>
+In-Reply-To: <PH0PR19MB9973380BF26E3EF16BD2D35ED0A5E62@PH0PR19MB997338.namprd19.prod.outlook.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260616_000802_570311_52FADB06 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,61 +91,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBKdW4gMTUsIDIwMjYgYXQgMDQ6MzA6MzhQTSAtMDMwMCwgR2VyYWxkbyBOYXNjaW1l
-bnRvIHdyb3RlOgo+IEhpLAo+IAo+IE9uIFRodSwgSnVuIDExLCAyMDI2IGF0IDA1OjA0OjIyUE0g
-LTAzMDAsIEdlcmFsZG8gTmFzY2ltZW50byB3cm90ZToKPiA+IENvbmZpZ3VyZSB0aGUgY29yZSB0
-byBiZSBkcml2ZW4gYXQgMi41IEdUL3MgTGluayBTcGVlZCBhbmQgaWdub3JlCj4gPiBhbnkgb3Ro
-ZXIgc3BlZWQgd2l0aCBhIHdhcm5pbmcuIEFsc28gZHJvcCB0aGUgNS4wIEdUL3MgTGluayBTcGVl
-ZAo+ID4gZGVmaW5lcyBmcm9tIFJvY2tjaGlwIFBDSWUgaGVhZGVyLgo+ID4gCj4gPiBUaGUgcmVh
-c29uIGlzIHRoYXQgU2hhd24gTGluIGZyb20gUm9ja2NoaXAgaGFzIHJlaXRlcmF0ZWQgdGhhdCB0
-aGVyZQo+ID4gbWF5IGJlIGRhbmdlciBvZiAiY2F0YXN0cm9waGljIGZhaWx1cmUiIGluIHVzaW5n
-IHRoZWlyIFBDSWUgd2l0aAo+ID4gNS4wIEdUL3Mgc3BlZWRzLgo+ID4gCj4gPiBXaGlsZSBSb2Nr
-Y2hpcCBoYXMgZG9uZSBzbyBpbmZvcm1hbGx5IHdpdGhvdXQgaXNzdWluZyBhIHByb3BlciBlcnJh
-dGEsCj4gPiBhbmQgdGhlIHBhcnRpY3VsYXJzIGFyZSB0aHVzIHVua25vd24sIHRoaXMgbWF5IGNh
-dXNlIGRhdGEgbG9zcyBvcgo+ID4gd29yc2UuCj4gPiAKPiA+IFRoaXMgY2hhbmdlIGlzIGNvcnJv
-Ym9yYXRlZCBieSBSSzMzOTkgb2ZmaWNpYWwgZGF0YXNoZWV0IFsxXSwgd2hpY2gKPiA+IHN0YXRl
-cyBtYXhpbXVtIGxpbmsgc3BlZWQgZm9yIHRoaXMgcGxhdGZvcm0gaXMgMi41IEdUL3MuCj4gPiAK
-PiA+IFsxXSBodHRwczovL29wZW5zb3VyY2Uucm9jay1jaGlwcy5jb20vaW1hZ2VzL2QvZDcvUm9j
-a2NoaXBfUkszMzk5X0RhdGFzaGVldF9WMi4xLTIwMjAwMzIzLnBkZgo+ID4gCj4gPiBGaXhlczog
-OTU2Y2Q5OWIzNWE4ICgiUENJOiByb2NrY2hpcDogU2VwYXJhdGUgY29tbW9uIGNvZGUgZnJvbSBS
-QyBkcml2ZXIiKQo+ID4gTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsL2ZmZDA1MDcw
-LTk4NzktNDQ2OC05NGUzLWI4ODk2OGI0YzIxYkByb2NrLWNoaXBzLmNvbS8KPiA+IENjOiBzdGFi
-bGVAdmdlci5rZXJuZWwub3JnCj4gPiBSZXBvcnRlZC1ieTogRHJhZ2FuIFNpbWljIDxkc2ltaWNA
-bWFuamFyby5vcmc+Cj4gPiBSZXBvcnRlZC1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1j
-aGlwcy5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBHZXJhbGRvIE5hc2NpbWVudG8gPGdlcmFsZG9n
-YWJyaWVsQGdtYWlsLmNvbT4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNp
-ZS1yb2NrY2hpcC5jIHwgMTYgKysrKysrKysrLS0tLS0tLQo+ID4gIGRyaXZlcnMvcGNpL2NvbnRy
-b2xsZXIvcGNpZS1yb2NrY2hpcC5oIHwgIDMgLS0tCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCA5IGlu
-c2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVy
-L3BjaWUtcm9ja2NoaXAuYwo+ID4gaW5kZXggMGY4OGRhMzc4ODA1NC4uNWEyODc2ZDdjODU0NyAx
-MDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5jCj4g
-PiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuYwo+ID4gQEAgLTY2
-LDggKzY2LDEwIEBAIGludCByb2NrY2hpcF9wY2llX3BhcnNlX2R0KHN0cnVjdCByb2NrY2hpcF9w
-Y2llICpyb2NrY2hpcCkKPiA+ICAJfQo+ID4gIAo+ID4gIAlyb2NrY2hpcC0+bGlua19nZW4gPSBv
-Zl9wY2lfZ2V0X21heF9saW5rX3NwZWVkKG5vZGUpOwo+ID4gLQlpZiAocm9ja2NoaXAtPmxpbmtf
-Z2VuIDwgMCB8fCByb2NrY2hpcC0+bGlua19nZW4gPiAyKQo+ID4gLQkJcm9ja2NoaXAtPmxpbmtf
-Z2VuID0gMjsKPiA+ICsJaWYgKHJvY2tjaGlwLT5saW5rX2dlbiA8IDAgfHwgcm9ja2NoaXAtPmxp
-bmtfZ2VuID49IDIpIHsKPiA+ICsJCXJvY2tjaGlwLT5saW5rX2dlbiA9IDE7Cj4gPiArCQlkZXZf
-d2FybihkZXYsICJpbnZhbGlkIG1heC1saW5rLXNwZWVkLCBsaW1pdGVkIHRvIDIuNSBHVC9zXG4i
-KTsKPiA+ICsJfQo+ID4gIAo+ID4gIAlmb3IgKGkgPSAwOyBpIDwgUk9DS0NISVBfTlVNX1BNX1JT
-VFM7IGkrKykKPiA+ICAJCXJvY2tjaGlwLT5wbV9yc3RzW2ldLmlkID0gcm9ja2NoaXBfcGNpX3Bt
-X3JzdHNbaV07Cj4gPiBAQCAtMTQ3LDEyICsxNDksMTIgQEAgaW50IHJvY2tjaGlwX3BjaWVfaW5p
-dF9wb3J0KHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPiA+ICAJCWdvdG8gZXJyX2V4
-aXRfcGh5Owo+ID4gIAl9Cj4gPiAgCj4gPiArCS8qIDUuMCBHVC9zIG1heSBjYXVzZSBjYXRhc3Ry
-b3BoaWMgZmFpbHVyZSBmb3IgdGhpcyBjb3JlICovCj4gPiAgCWlmIChyb2NrY2hpcC0+bGlua19n
-ZW4gPT0gMikKPiA+IC0JCXJvY2tjaGlwX3BjaWVfd3JpdGUocm9ja2NoaXAsIFBDSUVfQ0xJRU5U
-X0dFTl9TRUxfMiwKPiAKPiBTYXNoaWtvIGNhdWdodCB1bnJlYWNoYWJsZSBkZWFkIGNvZGUgcmln
-aHRmdWxseSBoZXJlLiBJdCBsb29rcyBsaWtlIEkKPiBoYWQgZ290IGl0IHJpZ2h0IGluIHY0IGFu
-ZCB0aGVuIHRoZSBmaXggcmVncmVzc2VkLgo+IAo+IFdpbGwgYWRkcmVzcyB0aGlzIGZvciB2NyBh
-ZnRlciBJIGdldCBtb3JlIGNvbW1lbnRzLgo+IAoKSSBkb24ndCBoYXZlIGFueSBjb21tZW50cyBv
-dGhlciB0aGFuIHRoaXMuCgotIE1hbmkKCi0tIArgrq7grqPgrr/grrXgrqPgr43grqPgrqngr40g
-4K6a4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Mon, Jun 15, 2026 at 11:40:31AM -0500, Chris Morgan wrote:
+> On Mon, Jun 15, 2026 at 06:07:15PM +0300, Andy Shevchenko wrote:
+> > On Mon, Jun 15, 2026 at 09:51:40AM -0500, Chris Morgan wrote:
+> > > On Mon, Jun 15, 2026 at 02:21:05PM +0300, Andy Shevchenko wrote:
+> > > > On Thu, Jun 11, 2026 at 03:26:04PM -0500, Chris Morgan wrote:
+
+...
+
+> > > > > +	for (i = 5; i < ARRAY_SIZE(inv_icm42607_accel_odr); ++i) {
+> > > > 
+> > > > Why pre-increment? Same for all other cases.
+> > > 
+> > > The register starts at 5 and all values below 5 are invalid. Starting
+> > > this increment at 5 ensures we don't expose invalid values to
+> > > userspace.
+> > 
+> > It doesn't explain pre-increment. Post-increment should work as is.
+> 
+> The array this references starts at 5, because those correspond to the
+> values written to the odr register. That said, I do see a bug because
+> the odr register is from highest to smallest and this array is
+> backwards in the accel and gyro code. I'll fix that.
+
+Good we even managed to find a bug, but what I initially pointed out is simply
+as ++i versus i++. When I see ++i, it rises a flag: "this code is special", but
+looking closer, I see nothing special about it.
+
+> > > > > +		if (i == odr)
+> > > > > +			break;
+> > > > > +	}
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
