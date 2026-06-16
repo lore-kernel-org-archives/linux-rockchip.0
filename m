@@ -4,89 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B88F5CD98CE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Jun 2026 22:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D51DCD8CA8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jun 2026 05:39:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=MWofSqJIHdpDH3TMUiJvEzzKkabxmsuUk8U95Pb7AwA=; b=3hgPehOpkiCkYj
-	9ScgSUPVr0JSh0jO09tKmSE4GJPkLWrk2kgkkED6negw2qNv4aCUlrmbQbq5cjX2Ybje0hJViCKeT
-	EjuiwNjOKC9sbe1pGr4bIANtgyQIcZywS2M9i89URId8Obuh5G7HeUNUItTR492k5wQCWvuigKx7y
-	ovKBiys8ExO0644dTQQPFlsA179uM6oDos99q7O8VZ7I4FYg6/r4qfxHV6SL0k3gBBh4eDG/1xADu
-	w5gWcsJMu3WxSVnz37SYvg6rPBobv/m8MpZaSWEUotfmZi/e+CtODQsdS6fWCxL2PjeIm1MrDMSKJ
-	Rvd7tzsI86rWEEXAbbNA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FV5RVpjn0icWM9LsCzA5OPgdD3plNjJo0FOwo0TF2ZI=; b=oJfl7l3rCAtq1J
+	/6ysl7WuSED4RTEoQzemMhnju46Tt2DsUZU/6FnULddELxeiDt43T7NDbKh1nMxygTBEc89gZsSUM
+	lM11w5x6YWt3LH6V17jKjpxOQDDAfig2fYy4TZHvNJDOePRTUbap1p7hZiCigaLu4X8AcTsyXej0T
+	CmFxN+rDkOvBgZIsj3q9YcFCXUmUB08N1dIkvlcGKv4QiuDDJMRURkVPsA6LOgnvErGmEK6gYJZPJ
+	7Q3iWk7VdCD+FwRhtQRMvrBVCrxMkGvgD5xFb8a4YoxKOkduhtNrFX5nRkgnqNe4NENSSEhwXXZ2h
+	4VvPMB5g6rGRTDHc+9Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZG8a-0000000EuT9-2T1Y;
-	Mon, 15 Jun 2026 22:50:36 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1wZMWO-0000000FFjO-3prv;
+	Tue, 16 Jun 2026 05:39:36 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZG8W-0000000EuRq-1mvX
-	for linux-rockchip@lists.infradead.org;
-	Mon, 15 Jun 2026 22:50:34 +0000
-Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-915aa0a9293so481062485a.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 15 Jun 2026 15:50:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781563831; x=1782168631; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=VVS9U0UK2IIxJF55elsvQ+90uQ+p090ADnS+1Vo5OFY=;
-        b=ZYl6+QIyQnfS2TeGVFTremJ7r7JW2AxgsstIrrncgY6NobpixTP/6llSa2gMU3r4mW
-         2VgxEDX5igwSERVCFn56B4NePeJcKSITTf4D6AQ0kaZHPlYOn0NyTFunlsYmdlmGt03s
-         1yMa1gbaifLLF5zQoVkO8UhS5euhkhXKuIJ47e9GsOF+XwjxzKZSHGOOu+T4QOhNS6T2
-         8PyFOC50FESsQWRatnBAytmDs4zwmPZsZ7Gq/Pd4JscfySEs2tX5oAed3stwbS8S/oc2
-         8dZQTymeq8yoNNgd1U1rUP5lIF8npHyvRDc0ztqkzxBRpn1mHhNv6R+T3umnQqcu81QN
-         hVRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781563831; x=1782168631;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VVS9U0UK2IIxJF55elsvQ+90uQ+p090ADnS+1Vo5OFY=;
-        b=bJzecbbodHGz/tpxxG/XF9eT1yqGrp3sxrUhySScNTym5wL/1SBSY0zoi81zMTcHrd
-         1+yNgaFzNaKsbQfVEqn02cU2wUmyUw/z0MkUtSG8RhzKwm8GIdo5H5DS/bk1nmdRIyEP
-         lCmpVPTf80p348JzWaU1Jq3GNsArzFeZoOfJPlUMgcskR9ZNIv56wcho6fFCrVrhSh11
-         Sq4qqHhiLY1lSVuXs+d4mlzhR4pPoIgvKefaDWU+GyhvOUzxAFJPGuE62+5z2oq7xcje
-         QAXS356xrBKqyGhrEsw09VbYZ8hg+vGfTglFc+PkSIDhjgVmJ6gH7l3zIvwXandwQY5D
-         Znyw==
-X-Forwarded-Encrypted: i=1; AFNElJ+BW+vW5z+RvE7sqDhzbkHDOZ+UDezJ2fUU1AEQ2+s3HogXk/z1LNMvEvrxF0wv5/Jn9j1QQkZA7mux2QEhHg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzjFqa1hJT6MzAJh2A1vhmyVScedeUWcTiVGU9O/sTM4s0LwHFM
-	IbzblVnQtsBXgJ7s7FTgeI+BXI/yD0XMVobKUvfgjXLgWwujzngIG8fj
-X-Gm-Gg: Acq92OFALiWpXCzH5SGJWhe9jkUuRK1r/dxeOEICRjjkPrjc+I9P9BNxc3gkfQmJweY
-	raCtCTtQjuhPyfM2BtbvaCeboO/HVPgXMnpOYocqKTVu4VLP8QiJKftWHP+DYbaS0Um35gpjGuW
-	1ycAmpMVVwCUSdyLoJZV/YMCL/1ir8PZgJL7sAQE6ExQc7BoQMwFzM9gjyuuWB8f8Z37WB8dLZF
-	YNqn6A9vFVKUhDP20KrDRP/vGhDHdIrOZk7TuNZOLZRYRixhY0NF/hJp+oe40CFDsN7/pjjIBX0
-	adDyfY5ZrWlpbUkWSkunOIj02NtTKIFrO/YYO8HWRZPplQXlCZKwjzN7JCSynySX46UtzLGutyt
-	TE3gVFEdhLknna4h5hWDYwi0KaoHRVXeB+6Kw2u8x3chJX4XL6qp77/zU2ynSs6jNVd/y9dkhjp
-	U5PAH+tNyfmTYTML5u34NgOVZAapNHXPGRvcQYDFVtBHPpvNwZzzaQeqaVA1WzoiWTmN1u631kJ
-	u3VcxR9zjvF
-X-Received: by 2002:a05:620a:4626:b0:915:422c:a0 with SMTP id af79cd13be357-91c2e9077admr216456585a.22.1781563830584;
-        Mon, 15 Jun 2026 15:50:30 -0700 (PDT)
-Received: from oklopfer.hsd1.ma.comcast.net (c-73-167-46-184.hsd1.ma.comcast.net. [73.167.46.184])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-9161a069389sm1273568785a.45.2026.06.15.15.50.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jun 2026 15:50:29 -0700 (PDT)
-From: Oren Klopfer <oklopfer37@gmail.com>
-To: oklopfer37@gmail.com
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	Thorsten Leemhuis <regressions@leemhuis.info>,
-	stable@vger.kernel.org
-Subject: [PATCH] Revert "arm64: dts: rockchip: Further describe the WiFi for the Pinephone Pro"
-Date: Mon, 15 Jun 2026 18:50:13 -0400
-Message-ID: <20260615225014.219115-1-oklopfer37@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	id 1wZMWN-0000000FFim-2nuk;
+	Tue, 16 Jun 2026 05:39:35 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id ADC7A601F0;
+	Tue, 16 Jun 2026 05:39:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3D581F00A3D;
+	Tue, 16 Jun 2026 05:39:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781588374;
+	bh=80RmZrwXuKFVLAWjbGHY+VjBEIxT3ywEjfnnRscgprA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=bFxrHIdCaXCMK8Ds5Dzlp3idpjzEVT1sCk3OFQ/2GMb2VCvCA4245IBnL/WVAsJc5
+	 JyniP+z5QEHf6RdWdWAcIcO2nXOFKYgTzElancuh0rzTGp/gg4jJsnvOERy4v9Ukuj
+	 YhhkEs2qiVhq5ZjcG123PLk1Eo6qMy3fnz036gWF4f4Zyxq+gWvQ2/dBxRHRb1CX6J
+	 aBHlyOha24fkmEjm3WTsrTytcPtC5QNzXqH+zESrTP9CG/yoLJ2njm5r3NI2S7BoSw
+	 OVcVyVnKtu9etqcuzfjlWtUiDGbJbFcw0D+G/XU6C47Qt+Z4+izJcRwyG4o+NXKuh+
+	 ieyxgDHfylEhQ==
+Date: Tue, 16 Jun 2026 07:39:26 +0200
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Geraldo Nascimento <geraldogabriel@gmail.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, 
+	Dragan Simic <dsimic@manjaro.org>, linux-rockchip@lists.infradead.org, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v6 3/3] PCI: rockchip: drive at 2.5 GT/s, error other
+ speeds
+Message-ID: <2nhgubo6h6eo5t5mzzizhiatea2f6if6fgjumzb7qae7idw34x@nljy2gwgi64g>
+References: <cover.1781207474.git.geraldogabriel@gmail.com>
+ <4ac5cd7d2271df375ed6307f5c394247721395d9.1781207474.git.geraldogabriel@gmail.com>
+ <ajBS3tGp0wqLyVq7@geday>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260615_155032_473978_93678024 
-X-CRM114-Status: UNSURE (   8.81  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <ajBS3tGp0wqLyVq7@geday>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,69 +69,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This reverts commit 096bd8c679185f898cae9933c6a68650fa26ea4f.
-
-Just as with the Pinebook Pro, there are multiple chipset variants for the Pinephone Pro, and multiple firmware binaries for different distributions. The change causes issues with some of these combinations, and reverting it resolves the issues. See the Closes below for the full report.
-
-Similarly with the Pinebook Pro adjustment, the original commit only indicates "further description" and not indicative of fixing any existing issues, so reverting should not kick any back up.
-
-Fixes: 096bd8c67918 ("arm64: dts: rockchip: Further describe the WiFi for the Pinephone Pro")
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Peter Robinson <pbrobinson@gmail.com>
-Cc: Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: stable@vger.kernel.org
-Closes: https://lore.kernel.org/r/20260607225901.64019-1-oklopfer37@gmail.com/
-Signed-off-by: Oren Klopfer <oklopfer37@gmail.com>
----
- .../boot/dts/rockchip/rk3399-pinephone-pro.dts | 18 ------------------
- 1 file changed, 18 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index 8d26bd9b7500..d46cdfe3f784 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -734,12 +734,6 @@ light_int_l: light-int-l {
-         };
-     };
- 
--    wifi {
--        wifi_host_wake_l: wifi-host-wake-l {
--            rockchip,pins = <4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
--        };
--    };
--
-     wireless-bluetooth {
-         bt_wake_pin: bt-wake-pin {
-             rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-@@ -766,19 +760,7 @@ &sdio0 {
-     pinctrl-names = "default";
-     pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
-     sd-uhs-sdr104;
--    #address-cells = <1>;
--    #size-cells = <0>;
-     status = "okay";
--
--    brcmf: wifi@1 {
--        compatible = "brcm,bcm4329-fmac";
--        reg = <1>;
--        interrupt-parent = <&gpio4>;
--        interrupts = <RK_PD0 IRQ_TYPE_LEVEL_HIGH>;
--        interrupt-names = "host-wake";
--        pinctrl-names = "default";
--        pinctrl-0 = <&wifi_host_wake_l>;
--    };
- };
- 
- &pwm0 {
--- 
-2.53.0
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBKdW4gMTUsIDIwMjYgYXQgMDQ6MzA6MzhQTSAtMDMwMCwgR2VyYWxkbyBOYXNjaW1l
+bnRvIHdyb3RlOgo+IEhpLAo+IAo+IE9uIFRodSwgSnVuIDExLCAyMDI2IGF0IDA1OjA0OjIyUE0g
+LTAzMDAsIEdlcmFsZG8gTmFzY2ltZW50byB3cm90ZToKPiA+IENvbmZpZ3VyZSB0aGUgY29yZSB0
+byBiZSBkcml2ZW4gYXQgMi41IEdUL3MgTGluayBTcGVlZCBhbmQgaWdub3JlCj4gPiBhbnkgb3Ro
+ZXIgc3BlZWQgd2l0aCBhIHdhcm5pbmcuIEFsc28gZHJvcCB0aGUgNS4wIEdUL3MgTGluayBTcGVl
+ZAo+ID4gZGVmaW5lcyBmcm9tIFJvY2tjaGlwIFBDSWUgaGVhZGVyLgo+ID4gCj4gPiBUaGUgcmVh
+c29uIGlzIHRoYXQgU2hhd24gTGluIGZyb20gUm9ja2NoaXAgaGFzIHJlaXRlcmF0ZWQgdGhhdCB0
+aGVyZQo+ID4gbWF5IGJlIGRhbmdlciBvZiAiY2F0YXN0cm9waGljIGZhaWx1cmUiIGluIHVzaW5n
+IHRoZWlyIFBDSWUgd2l0aAo+ID4gNS4wIEdUL3Mgc3BlZWRzLgo+ID4gCj4gPiBXaGlsZSBSb2Nr
+Y2hpcCBoYXMgZG9uZSBzbyBpbmZvcm1hbGx5IHdpdGhvdXQgaXNzdWluZyBhIHByb3BlciBlcnJh
+dGEsCj4gPiBhbmQgdGhlIHBhcnRpY3VsYXJzIGFyZSB0aHVzIHVua25vd24sIHRoaXMgbWF5IGNh
+dXNlIGRhdGEgbG9zcyBvcgo+ID4gd29yc2UuCj4gPiAKPiA+IFRoaXMgY2hhbmdlIGlzIGNvcnJv
+Ym9yYXRlZCBieSBSSzMzOTkgb2ZmaWNpYWwgZGF0YXNoZWV0IFsxXSwgd2hpY2gKPiA+IHN0YXRl
+cyBtYXhpbXVtIGxpbmsgc3BlZWQgZm9yIHRoaXMgcGxhdGZvcm0gaXMgMi41IEdUL3MuCj4gPiAK
+PiA+IFsxXSBodHRwczovL29wZW5zb3VyY2Uucm9jay1jaGlwcy5jb20vaW1hZ2VzL2QvZDcvUm9j
+a2NoaXBfUkszMzk5X0RhdGFzaGVldF9WMi4xLTIwMjAwMzIzLnBkZgo+ID4gCj4gPiBGaXhlczog
+OTU2Y2Q5OWIzNWE4ICgiUENJOiByb2NrY2hpcDogU2VwYXJhdGUgY29tbW9uIGNvZGUgZnJvbSBS
+QyBkcml2ZXIiKQo+ID4gTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsL2ZmZDA1MDcw
+LTk4NzktNDQ2OC05NGUzLWI4ODk2OGI0YzIxYkByb2NrLWNoaXBzLmNvbS8KPiA+IENjOiBzdGFi
+bGVAdmdlci5rZXJuZWwub3JnCj4gPiBSZXBvcnRlZC1ieTogRHJhZ2FuIFNpbWljIDxkc2ltaWNA
+bWFuamFyby5vcmc+Cj4gPiBSZXBvcnRlZC1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1j
+aGlwcy5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBHZXJhbGRvIE5hc2NpbWVudG8gPGdlcmFsZG9n
+YWJyaWVsQGdtYWlsLmNvbT4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNp
+ZS1yb2NrY2hpcC5jIHwgMTYgKysrKysrKysrLS0tLS0tLQo+ID4gIGRyaXZlcnMvcGNpL2NvbnRy
+b2xsZXIvcGNpZS1yb2NrY2hpcC5oIHwgIDMgLS0tCj4gPiAgMiBmaWxlcyBjaGFuZ2VkLCA5IGlu
+c2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVy
+L3BjaWUtcm9ja2NoaXAuYwo+ID4gaW5kZXggMGY4OGRhMzc4ODA1NC4uNWEyODc2ZDdjODU0NyAx
+MDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5jCj4g
+PiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuYwo+ID4gQEAgLTY2
+LDggKzY2LDEwIEBAIGludCByb2NrY2hpcF9wY2llX3BhcnNlX2R0KHN0cnVjdCByb2NrY2hpcF9w
+Y2llICpyb2NrY2hpcCkKPiA+ICAJfQo+ID4gIAo+ID4gIAlyb2NrY2hpcC0+bGlua19nZW4gPSBv
+Zl9wY2lfZ2V0X21heF9saW5rX3NwZWVkKG5vZGUpOwo+ID4gLQlpZiAocm9ja2NoaXAtPmxpbmtf
+Z2VuIDwgMCB8fCByb2NrY2hpcC0+bGlua19nZW4gPiAyKQo+ID4gLQkJcm9ja2NoaXAtPmxpbmtf
+Z2VuID0gMjsKPiA+ICsJaWYgKHJvY2tjaGlwLT5saW5rX2dlbiA8IDAgfHwgcm9ja2NoaXAtPmxp
+bmtfZ2VuID49IDIpIHsKPiA+ICsJCXJvY2tjaGlwLT5saW5rX2dlbiA9IDE7Cj4gPiArCQlkZXZf
+d2FybihkZXYsICJpbnZhbGlkIG1heC1saW5rLXNwZWVkLCBsaW1pdGVkIHRvIDIuNSBHVC9zXG4i
+KTsKPiA+ICsJfQo+ID4gIAo+ID4gIAlmb3IgKGkgPSAwOyBpIDwgUk9DS0NISVBfTlVNX1BNX1JT
+VFM7IGkrKykKPiA+ICAJCXJvY2tjaGlwLT5wbV9yc3RzW2ldLmlkID0gcm9ja2NoaXBfcGNpX3Bt
+X3JzdHNbaV07Cj4gPiBAQCAtMTQ3LDEyICsxNDksMTIgQEAgaW50IHJvY2tjaGlwX3BjaWVfaW5p
+dF9wb3J0KHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPiA+ICAJCWdvdG8gZXJyX2V4
+aXRfcGh5Owo+ID4gIAl9Cj4gPiAgCj4gPiArCS8qIDUuMCBHVC9zIG1heSBjYXVzZSBjYXRhc3Ry
+b3BoaWMgZmFpbHVyZSBmb3IgdGhpcyBjb3JlICovCj4gPiAgCWlmIChyb2NrY2hpcC0+bGlua19n
+ZW4gPT0gMikKPiA+IC0JCXJvY2tjaGlwX3BjaWVfd3JpdGUocm9ja2NoaXAsIFBDSUVfQ0xJRU5U
+X0dFTl9TRUxfMiwKPiAKPiBTYXNoaWtvIGNhdWdodCB1bnJlYWNoYWJsZSBkZWFkIGNvZGUgcmln
+aHRmdWxseSBoZXJlLiBJdCBsb29rcyBsaWtlIEkKPiBoYWQgZ290IGl0IHJpZ2h0IGluIHY0IGFu
+ZCB0aGVuIHRoZSBmaXggcmVncmVzc2VkLgo+IAo+IFdpbGwgYWRkcmVzcyB0aGlzIGZvciB2NyBh
+ZnRlciBJIGdldCBtb3JlIGNvbW1lbnRzLgo+IAoKSSBkb24ndCBoYXZlIGFueSBjb21tZW50cyBv
+dGhlciB0aGFuIHRoaXMuCgotIE1hbmkKCi0tIArgrq7grqPgrr/grrXgrqPgr43grqPgrqngr40g
+4K6a4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
