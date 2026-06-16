@@ -4,77 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4064ACD98E1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jun 2026 10:13:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00F03CD98DA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jun 2026 12:44:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=54PtPwse0RG88dCQDJ9h6euPcE4dQEKbFvXVejDl+rY=; b=IF+HEJ1O9oYX1A
-	63pXT8aIFIRdSPCnvBMhNerqfb91Y9z4+JyEnQg61Vv2szZt+JdvzguQ3Hv66qhvn+jlSwF1pKwjR
-	fTbBlgfnignc466MPPBNeoremb07ieXC0LhDWRWn5PrCEgM0g+OReZS6oLmE7H5PPq7lhEi07981p
-	EKAFxZBo2sb/hSPbYzrg1GYaxghLvzyFuKwN3sHiPnk5lxXcx2Y6uZbkRNpg4e59srBucHB91dU2z
-	aI0dTtqyOmpAjpJLstMnmHHXzQvgMtRprKN3W/jxpG+qR4cM728hUTzBsAj388qmD6kiLzhLLffOJ
-	dW2jHeViu+MKIf98242Q==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4Y6OdSTGbtdKgDIZtpZyXoyWTb7Y/HZdXgQ5Xh/h46g=; b=iuIVxs+lzlFCZs
+	YTTOImnfmRSwX0PbIRrQb0d3jvGoVWHeZ+5oOoUlQWSYB2C/NwbYJb2v/FH0oXqMkv2JMVlqs0reE
+	Y07FeH74Zn67buqSLyL+06/ZuX69SgaMSEc24aiu5aLoq6GarLdXeQPReCs89V50pDmX0u3fCVcX2
+	Gfgj777QtoIHc0pf8s7RPVH383FS52/c8EM/Qo8JydSMG/gViJ/jXrCf/hybk7g3S/vdstVAy9WrH
+	05b3n2aDCnmd46bG6Nw3yarA6nAzYEYxFAkiPFbmctg+1R3EafQenE5COwFQn4KfdssLlpLmOuTYP
+	mbVdf0U3o6mbDYAFSKJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZQnB-0000000FaIk-0bCy;
-	Tue, 16 Jun 2026 10:13:13 +0000
-Received: from mgamail.intel.com ([198.175.65.21])
+	id 1wZT9j-0000000FmkH-06JY;
+	Tue, 16 Jun 2026 12:44:39 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZQn8-0000000FaI4-2Npm
+	id 1wZT9g-0000000Fmja-00eT
 	for linux-rockchip@lists.infradead.org;
-	Tue, 16 Jun 2026 10:13:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781604790; x=1813140790;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=6dFDHXNtHg0u97qJxf5xxtSXPyR/eEq69ffJ9TijGWM=;
-  b=lEuNLQDIxITuV7A+MX0MPpYW4mz38TUpX2gTH4Tx/a4V1/7MJ2uUxSgC
-   5suVo/jfLpQy4kQRFxMk9yNOPBrbTlFF1fDwCq7evCru7349bd7lXd5sf
-   Ar9aqFgF0llV4tg5BN9IyNUQqAPjaQ2QWHZYceZEcDVkeZZ+XR5dFbQ/J
-   OvjgN5rrPWBFkoIoonbvjMAIx2ZBHCuLNVO3L/rsek7XSzGaRcIMSJtwa
-   BCeoxFGBxnimM9W7Dz4h4TDmhirVD69f5htLiAuzPPkI5nuJtQcs0ie+2
-   dKKHMKptfxdik5YSuozLa8ZkfL5mVoR9+wPHAA04njLcuh0qmcdLnh3rz
-   g==;
-X-CSE-ConnectionGUID: hrqpund+SQib1Zj7mmBesw==
-X-CSE-MsgGUID: DAeR8kUGSLeqFcF22EVVOg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11818"; a="82265953"
-X-IronPort-AV: E=Sophos;i="6.24,208,1774335600"; 
-   d="scan'208";a="82265953"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2026 03:13:09 -0700
-X-CSE-ConnectionGUID: 0lkZWENTT8qXrqKGdlIjgA==
-X-CSE-MsgGUID: AGaXGqliSROjTFk6fKoyYQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,208,1774335600"; 
-   d="scan'208";a="245358499"
-Received: from amilburn-desk.amilburn-desk (HELO localhost) ([10.245.244.153])
-  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2026 03:13:06 -0700
-Date: Tue, 16 Jun 2026 13:13:03 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
-	dlechner@baylibre.com, jic23@kernel.org,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V13 8/9] iio: imu: inv_icm42607: Add Gyroscope to icm42607
-Message-ID: <ajEhr0JIQwzRgoZa@ashevche-desk.local>
-References: <20260615172554.160910-1-macroalpha82@gmail.com>
- <20260615172554.160910-9-macroalpha82@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260615172554.160910-9-macroalpha82@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+	Tue, 16 Jun 2026 12:44:37 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-68e5f7c1131so7693693a12.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 16 Jun 2026 05:44:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781613873; x=1782218673; darn=lists.infradead.org;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xWwKLVsUIM6MytpX93dCt41pC6tdKxTrq94U49oj1AE=;
+        b=MlDy8BTLDBon8C8u/ik4dmm582HzjPO96Jwm+fY6WSFywf5T8iNTzkSmcVndP2o7qj
+         4s7ycJP5SydtIQC5Ap8Sspt7V38UUWLYfgAQ9EUHvo5vObcobETP6/I3uvOANuNwlPLW
+         vOy4Mg2KjqOooJMH2+jESn5uvSytVhn92xCvcdL7EU7mKg2qH2DtGBPbQbP/cNyHOyx8
+         F4MZF0BiRSV9rDTFjlEuAhINQrfpkfb7xwuZKcq1Nu6cPP7j0knOdpfW8mN3m/uceGzD
+         MTO+wCER3QZT9V5h5mkG01zl1WY+BGrOBuCWmwO4T9E/MkcZQnNbKbOB3lv9C2AoWUY5
+         TmXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781613873; x=1782218673;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:x-gm-gg:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xWwKLVsUIM6MytpX93dCt41pC6tdKxTrq94U49oj1AE=;
+        b=RLuaxQJC/P0Miir81+iljeux2WH4WnOBTc77RqWPZEGSgXuwyFwTuVa9dG0XTunkVm
+         Vz7VbFJpIipeA6pZb8zHF4gGFITWTkMCkoIFZ4HUL2KM1RzfDg+GqjKqA31JlisXBZYl
+         OnU8IhTh+edQ+bA4n7T+8x/7rs67f0UynQq0usuJV1mj4LuBmpLCq4MGLsHYKwD46kb8
+         o0gcM6bzyhKHdofBozsi2kS8CniCtI59f9U4M9eTqdFFTOmmweVpISq0zmnJGoWNH69q
+         lirY0ZJnxqZBTczDDP272t7RxBWy8+iYhkmXviKucwDzUwtm3hp2WUJsU2pKNZLXp8pS
+         y+0g==
+X-Forwarded-Encrypted: i=1; AFNElJ+Srp//kL2Ng/Ec2HtfAPVUbT2xcZQHWJszaVELgFc+zf6wzcHd373HgZOdRAx/KtaoW8NsUW8HZySgowaf9g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxXRicZpryDOtKIqphbycJcxTGTgZMmH4QV4BzzwBdwgUszwQ/f
+	IgwZSr8COEat2Qlmpup3EgzMsHdLQRdgh/7uHNqAmJ0fCJyKgGghTB2/
+X-Gm-Gg: Acq92OGJuM47mqd5ey1CW4FsQgUdnfsINEXjVt6aj/DX8mXLTZyn5scE85+dR2B97Jk
+	ZvZlrU1JTzb+n5ig16zMcuh/emXqY9B9Uca8vPcmGPjOLrpKx1leN0WbB+YCO4RXLdfXRTLPHND
+	XZ/sGp5S/RKnwkIM93s4B/z1f8ui9EkT6NyKWkttFTbatju/U6pgX9uBbhk4nRLTcrYHW+gJpBV
+	Ds07LYmarYJKKnId8ObqLr302lPMRuqk2tdfnOlVuyOu9L8lBs2DO7evecqTboct9o7+tSUt+oX
+	YBgGi67G2O3EPab2MBoLaNbzduDSnKcqzsBN266fqyI/pNtONU3voiS5OzeG4oqZRcGYufJ087E
+	TTaZ+DkoDRVCsuDbS5er2Rqoa9WMAhvEzmyvGwow8C251kT101r6UwomEsA96uZqdtY8b4Ex97r
+	IEMVQEWEpCj1pSRQmvyrwxEajfX3l2SjJR8PPlWOtZNDRZzGeK3kFQOd/f91fgH3TWiPwe8jIr3
+	R87BSmDHJEC41uv3jUw
+X-Received: by 2002:a17:907:948e:b0:bfb:1e1c:3197 with SMTP id a640c23a62f3a-c043d9af661mr198808866b.41.1781613871788;
+        Tue, 16 Jun 2026 05:44:31 -0700 (PDT)
+Received: from smtpclient.apple (89-66-237-154.dynamic.play.pl. [89.66.237.154])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-bfdb4420570sm641059666b.11.2026.06.16.05.44.31
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 16 Jun 2026 05:44:31 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.600.51.1.1\))
+Subject: Re: [BUG] rkvdec-vdpu383-h264: wrong pixels at horizontal de-blocking
+ edges y=4 and y=12
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <1f178828-2cba-4120-bc6d-bb3be7b24073@symple.nz>
+Date: Tue, 16 Jun 2026 14:44:16 +0200
+Cc: Detlev Casanova <detlev.casanova@collabora.com>
+Message-Id: <5ABBE81F-3560-402D-B9D3-94F6D9842A4B@gmail.com>
+References: <52a01f1f-5b36-429b-96cf-f1a0a1c8f5e4@symple.nz>
+ <5939C396-3A70-458F-8E6B-A55319929564@gmail.com>
+ <4b3a9f32-807a-4b9e-8df2-d22f872d288e@symple.nz>
+ <2CB1844A-3DB7-4973-98E0-0C141DD38B45@gmail.com>
+ <1f178828-2cba-4120-bc6d-bb3be7b24073@symple.nz>
+To: Simon Wright <Simon@symple.nz>,
+ linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+X-Mailer: Apple Mail (2.3864.600.51.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260616_031310_708075_865EA604 
-X-CRM114-Status: GOOD (  17.52  )
+X-CRM114-CacheID: sfid-20260616_054436_044693_7F252214 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,139 +102,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 15, 2026 at 12:25:51PM -0500, Chris Morgan wrote:
-
-> Add gyroscope functions to the icm42607 driver.
-
-...
-
-> +int inv_icm42607_set_gyro_conf(struct inv_icm42607_state *st,
-> +			       struct inv_icm42607_sensor_conf *conf,
-> +			       unsigned int *sleep_ms)
-> +{
-> +	struct inv_icm42607_sensor_conf *oldconf = &st->conf.gyro;
-> +	unsigned int val;
-> +	int ret;
-> +
-> +	if (conf->mode < 0)
-> +		conf->mode = oldconf->mode;
-> +	if (conf->fs < 0)
-> +		conf->fs = oldconf->fs;
-> +	if (conf->odr < 0)
-> +		conf->odr = oldconf->odr;
-> +	if (conf->filter < 0)
-> +		conf->filter = oldconf->filter;
-
-Same comment as per previous patch. But looking at this, can you rather have
-a helper that answers the below two questions? Something like
-
-void _assign_conf(..., bool *write_odr, bool *write_filter)
-{
-	...
-}
-EXPORT_...
-
-in the core driver? But wight both approaches and choose either existing one
-(as in this patch series) or what I suggested.
-
-> +	if (conf->fs != oldconf->fs || conf->odr != oldconf->odr) {
-> +		val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_FS_SEL_MASK,
-> +				 conf->fs);
-> +		val |= FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_ODR_MASK,
-> +				  conf->odr);
-> +		ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG0, val);
-> +		if (ret)
-> +			return ret;
-> +		oldconf->fs = conf->fs;
-> +		oldconf->odr = conf->odr;
-> +	}
-> +
-> +	if (conf->filter != oldconf->filter) {
-> +		val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG1_FILTER_MASK,
-> +				 conf->filter);
-> +		ret = regmap_update_bits(st->map, INV_ICM42607_REG_GYRO_CONFIG1,
-> +					 INV_ICM42607_GYRO_CONFIG1_FILTER_MASK, val);
-> +		if (ret)
-> +			return ret;
-> +		oldconf->filter = conf->filter;
-> +	}
-> +
-> +	return inv_icm42607_set_pwr_mgmt0(st, conf->mode, st->conf.accel.mode,
-> +					  st->conf.temp_en, sleep_ms);
-> +}
-
-...
-
-> +{
-> +	unsigned int odr;
-> +	unsigned int i;
-> +
-> +	guard(mutex)(&st->lock);
-> +
-> +	odr = st->conf.gyro.odr;
-> +
-> +	for (i = 5; i < ARRAY_SIZE(inv_icm42607_gyro_odr); ++i) {
-
-Same comment, why pre-increment?
-
-> +		if (i == odr)
-> +			break;
-> +	}
-> +	if (i >= ARRAY_SIZE(inv_icm42607_gyro_odr))
-> +		return -EINVAL;
-> +
-> +	*val = inv_icm42607_gyro_odr[i][0];
-> +	*val2 = inv_icm42607_gyro_odr[i][1];
-> +
-> +	return IIO_VAL_INT_PLUS_MICRO;
-> +}
-> +
-> +static int inv_icm42607_gyro_write_odr(struct iio_dev *indio_dev,
-> +				       int val, int val2)
-> +{
-> +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-> +	struct device *dev = regmap_get_device(st->map);
-> +	unsigned int idx;
-> +	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
-> +	int ret;
-> +
-> +	for (idx = 5; idx < ARRAY_SIZE(inv_icm42607_gyro_odr); ++idx) {
-
-Ditto.
-
-> +		if (val == inv_icm42607_gyro_odr[idx][0] &&
-> +		    val2 == inv_icm42607_gyro_odr[idx][1])
-> +			break;
-> +	}
-> +	if (idx >= ARRAY_SIZE(inv_icm42607_gyro_odr))
-> +		return -EINVAL;
-> +
-> +	conf.odr = idx;
-> +
-> +	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
-> +	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-> +	if (ret)
-> +		return ret;
-> +
-> +	guard(mutex)(&st->lock);
-> +
-> +	return inv_icm42607_set_gyro_conf(st, &conf, NULL);
-> +}
-
-Can be some of the code deduplicated between gyro and accel?
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFNpbW9uIFdyaWdodCA8U2ltb25Ac3ltcGxl
+Lm56PiB3IGRuaXUgMTEgY3plIDIwMjYsIG8gZ29kei4gMDg6MTU6Cj4gCj4gSGkgUGlvdHIsCj4g
+Cj4gU2hvcnQgdmVyc2lvbjogdGhlIGluLXRyZWUgcG9ydCBkaWRuJ3QgYWN0dWFsbHkgaGF2ZSB0
+aGUgd2FybXVwIHJ1bm5pbmcgKGl0IG5lZWRzIGEKPiBwcm9iZS10aW1lIGJ1ZmZlciBhbGxvYyAr
+IGEgcG1fcnVudGltZV9yZXN1bWUgaG9vaywgbm90IGp1c3QgdGhlIGRlY29kZSBjb2RlKS4gUmF0
+aGVyCj4gdGhhbiBwaWNrIHRoYXQgYXBhcnQsIGhlcmUncyBhIGNsZWFuIHBhdGNoIHRoYXQgd2ly
+ZXMgaXQgcHJvcGVybHkgLSBhbmQgSSd2ZSBub3cKPiB2YWxpZGF0ZWQgaXQgb24gaGFyZHdhcmUu
+Cj4gCj4gVGhlIHBhdGNoIGlzIHNlbGYtY29udGFpbmVkIGFuZCBuZWVkcyBubyBkZXZpY2V0cmVl
+IGNoYW5nZSAobWFpbmxpbmUgYWxyZWFkeSBtYXBzIHRoZQo+ICJsaW5rIiByZWdpc3RlciBiYW5r
+IGl0IHVzZXMpOyBnaXQgYXBwbHktY2xlYW4gb24gNy4wIGFuZCA3LjEtcmM3Ogo+IAo+ICAgIGh0
+dHBzOi8vZ2l0aHViLmNvbS9TeW1wbGVOWi9ya3ZkZWMtdmRwdTM4My1oMjY0LWJ1Zy90cmVlL21h
+c3Rlci9maXgKPiAKPiAgICAgCgpTaW1vbiwKCkFmdGVyIG11bHRpcGxlIHVzZXJzIHRlc3RzIEni
+gJltIGhhcHB5IHRvIGNvbmZpcm06IHdpdGggYWJvdmUgcGF0Y2ggYXBwbGllZCBvbiBtYWlubGlu
+ZSA3LjEgaDI2NCBkZWNvZGVyIHdvcmtzIHBlcmZlY3RseS4KClNvOgoKVGVzdGVkLWJ5OiBQaW90
+ciBPbmlzemN6dWsgPHBpb3RyLm9uaXN6Y3p1a0BnbWFpbC5jb20+Cl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
