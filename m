@@ -4,82 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A410BCD98D2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jun 2026 07:08:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56995CD98CF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Jun 2026 08:54:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OxcHruF7y9nfRU9t53jDGZwT5jQSm/yFvFq3dJ586Eo=; b=a/8Z0/Ni9YVWmx
-	6IF/Lq8xN0iO2dlAwJvr63yyeGL/qI8I7WTR0oYkkuba0IHmHiOusyomkE1vrLwwMZezwlhyNLrQS
-	qfQoHwyq32+HdfSzr4F0hnV7plsuMNlRQPfU/6flMUh6Kzu6YClIHIQ1AuggPahJRa2VCT0KZK2jE
-	wQewaMTM4UmNBS3H37lXDqgwv4+KZoVBq5KbTM4hxZPSueiedPJXoSDmO6QvDq5y0rIfKtTMAGFRK
-	pV9S6WJAonMIKqVKijnFocqcdrAlx251nT7O7nt7X1s9xP+356WH5kGy7eU7fyNod1IXNNgS+LsRD
-	LOlKXKB7FTZJQfNoDvIA==;
+	List-Owner; bh=chWz9TWHnjyGhx1VdqzyNhQ8ahKFTqW4U8TXtL/GDAQ=; b=Spak0MeBZOAXYb
+	uC9166bf8FYRc4V7QvbiyoH2p8gVD4tZ4/QxUwOdnPP4BA2BpYqujEFSjzsODyk18r5f54hB33kaj
+	NrOW+/tIB0nl0D2SitK7ogDbpsGE3xOz4pfbmwj2edPE1fD498GaDFFEafD1nIWkOy/XTYdd5G6ey
+	vCQyyGf3Sshkg2DoC8tQYIBncrXwxP7L9Bd0ubVNXOK9MCuTzv9jGWQ+KjpGU13lpivIXkvvBo+M6
+	LdNxJTCQwFX3e+IGIp5xYPl4Rg9D7liKymtdrzgRRsIkvdSmwSBsq8pZSkUFCYNuxUIBajUFFbvBP
+	MbkEWRg6KIMrRWDqPXJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZNu0-0000000FLUG-40wM;
-	Tue, 16 Jun 2026 07:08:06 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1wZPYG-0000000FUFT-3arw;
+	Tue, 16 Jun 2026 08:53:44 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZNty-0000000FLTq-1vVK
+	id 1wZPYE-0000000FUF9-3K9d
 	for linux-rockchip@lists.infradead.org;
-	Tue, 16 Jun 2026 07:08:03 +0000
+	Tue, 16 Jun 2026 08:53:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1781593682; x=1813129682;
+  t=1781600023; x=1813136023;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=6VM7jc9R1gEM32HSIpFUN3c90rfM663B27FZqdR+IAU=;
-  b=Y09qziiCuZ4cbeKdqEp5KpqSTZoBsCFrNrGFmCbE+mP+tohHO1c59/73
-   Vsf63Dc1TmyS5F6fhmp5oB3ZjidL9x/Z98MX8o7vuuY17+l8EuyeEoavz
-   aPy7duk5eRmtfgtg1Yo10oKu03A79rQ00nQ6sjj/Vl4fib6OCrRvgQzx9
-   SyrC1l6q+qyH2jpfoJdXRiGqeMa/r0YJwqP/P+/eYvCmwrP6Skc797jW6
-   nfNUQF+vWx9YXYNCAg+mYJacjPw0nNiTGKkc1q0k6MupxDqXk3f/Cdl+q
-   +GktzUbyaxcUQk/5su2fPvPOOwWO5M+55VUuVx8YP5AgvCwSSJwYIoGWk
-   w==;
-X-CSE-ConnectionGUID: QhedTYx/QU2q86GTEdj0kg==
-X-CSE-MsgGUID: sHw7Mn9/RIGjkrY/UWiWDQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11818"; a="93022156"
-X-IronPort-AV: E=Sophos;i="6.24,207,1774335600"; 
-   d="scan'208";a="93022156"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2026 00:08:01 -0700
-X-CSE-ConnectionGUID: g2utfKS+TjO2va+u+sy5tw==
-X-CSE-MsgGUID: bfYpWz+wRsS2RhiGl5SDuA==
+  bh=4eXl+6BMV54atctUJAn+UMP+d/Cq5vNngv4WweukLZU=;
+  b=SIVKJKV6bB8PwYH1RuNpM70GNOSjhI3lY5JpThpIuJtRjjC6lUFDq3xA
+   tCf21ooiU+HNfGxC29MxwUSM8jllEtyOYOpKXpRQjgqRwAlQqNrwapn0A
+   Yhy4VRQfsJWkgW7SrNe6PyEjTMq0FRDZkXnoXg5hts6BOWytvTy8kdjyt
+   ielr4hVFFgLTJNxZ26fWXon/W3Q3H8M6SJHHXr/KvUiEyeJctzWVhTNZ9
+   Jg3n7ZAo2omEwOj7mdylWw6K+WYLsvKyUuqPFQyxA3eSn7yMqbGM6nT7L
+   zNK6EjFrWHD8j6MiylAG+mOyjWLRjIOYDkhprz+YrsQ1ABGEsi/dqC9j2
+   g==;
+X-CSE-ConnectionGUID: v6OkMhQQSA609OQJBTvpEw==
+X-CSE-MsgGUID: YvJmcIDtSAu/CKXLUnF5Wg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11818"; a="82403059"
+X-IronPort-AV: E=Sophos;i="6.24,208,1774335600"; 
+   d="scan'208";a="82403059"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2026 01:53:41 -0700
+X-CSE-ConnectionGUID: 4ynVvdJ8Rce3uTVbQCrshg==
+X-CSE-MsgGUID: DKnibsVeRWWvQYqSwE2Jug==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,207,1774335600"; 
-   d="scan'208";a="285803987"
+X-IronPort-AV: E=Sophos;i="6.24,208,1774335600"; 
+   d="scan'208";a="247775232"
 Received: from amilburn-desk.amilburn-desk (HELO localhost) ([10.245.244.153])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2026 00:07:57 -0700
-Date: Tue, 16 Jun 2026 10:07:55 +0300
+  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2026 01:53:38 -0700
+Date: Tue, 16 Jun 2026 11:53:35 +0300
 From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
-	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
-	jic23@kernel.org, jean-baptiste.maneyrol@tdk.com,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
-	robh@kernel.org
-Subject: Re: [PATCH V12 7/9] iio: imu: inv_icm42607: Add Accelerometer for
- icm42607
-Message-ID: <ajD2S8nBhRn1-C_G@ashevche-desk.local>
-References: <20260611202607.85376-1-macroalpha82@gmail.com>
- <20260611202607.85376-8-macroalpha82@gmail.com>
- <ai_gIR2d9fzHLZ-G@ashevche-desk.local>
- <PH0PR19MB997338010EC6FA92E0AA63875FA5E62@PH0PR19MB997338.namprd19.prod.outlook.com>
- <ajAVI0KXkx3FM1ZX@ashevche-desk.local>
- <PH0PR19MB9973380BF26E3EF16BD2D35ED0A5E62@PH0PR19MB997338.namprd19.prod.outlook.com>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+	dlechner@baylibre.com, jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V13 3/9] iio: imu: inv_icm42607: Add inv_icm42607 Core
+ Driver
+Message-ID: <ajEPD8gdgiuQdZ7Q@ashevche-desk.local>
+References: <20260615172554.160910-1-macroalpha82@gmail.com>
+ <20260615172554.160910-4-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <PH0PR19MB9973380BF26E3EF16BD2D35ED0A5E62@PH0PR19MB997338.namprd19.prod.outlook.com>
+In-Reply-To: <20260615172554.160910-4-macroalpha82@gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260616_000802_570311_52FADB06 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20260616_015342_844693_E27BD081 
+X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,36 +93,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 15, 2026 at 11:40:31AM -0500, Chris Morgan wrote:
-> On Mon, Jun 15, 2026 at 06:07:15PM +0300, Andy Shevchenko wrote:
-> > On Mon, Jun 15, 2026 at 09:51:40AM -0500, Chris Morgan wrote:
-> > > On Mon, Jun 15, 2026 at 02:21:05PM +0300, Andy Shevchenko wrote:
-> > > > On Thu, Jun 11, 2026 at 03:26:04PM -0500, Chris Morgan wrote:
+On Mon, Jun 15, 2026 at 12:25:46PM -0500, Chris Morgan wrote:
+
+> Add the core component of a new inv_icm42607 driver. This includes
+> a few setup functions and the full register definition in the
+> header file, as well as the bits necessary to compile and probe the
+> device when used on an i2c bus.
 
 ...
 
-> > > > > +	for (i = 5; i < ARRAY_SIZE(inv_icm42607_accel_odr); ++i) {
-> > > > 
-> > > > Why pre-increment? Same for all other cases.
-> > > 
-> > > The register starts at 5 and all values below 5 are invalid. Starting
-> > > this increment at 5 ensures we don't expose invalid values to
-> > > userspace.
-> > 
-> > It doesn't explain pre-increment. Post-increment should work as is.
-> 
-> The array this references starts at 5, because those correspond to the
-> values written to the odr register. That said, I do see a bug because
-> the odr register is from highest to smallest and this array is
-> backwards in the accel and gyro code. I'll fix that.
+> +#ifndef INV_ICM42607_H_
+> +#define INV_ICM42607_H_
+> +
+> +#include <linux/bits.h>
+> +#include <linux/iio/iio.h>
+> +#include <linux/mutex.h>
+> +#include <linux/regmap.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/time.h>
+> +#include <linux/types.h>
 
-Good we even managed to find a bug, but what I initially pointed out is simply
-as ++i versus i++. When I see ++i, it rises a flag: "this code is special", but
-looking closer, I see nothing special about it.
++ asm/byteorder.h // cpu_to_le16()
 
-> > > > > +		if (i == odr)
-> > > > > +			break;
-> > > > > +	}
+...
+
+> +#include <linux/bitfield.h>
+> +#include <linux/dev_printk.h>
+> +#include <linux/err.h>
+> +#include <linux/i2c.h>
+> +#include <linux/mod_devicetable.h>
+> +#include <linux/module.h>
+> +#include <linux/regmap.h>
+> +
+> +
+
+Single blank line is enough.
+
+> +#include "inv_icm42607.h"
 
 -- 
 With Best Regards,
