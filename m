@@ -4,69 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38AF7CD98F0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jun 2026 11:46:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A17ECD98E4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jun 2026 12:23:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RucDJyCQi5bTLTQ+u6TSYxLnjrmbex++I2C5KaB6tug=; b=b9SGOE6C+rsxuF
-	31D6wxg8X+8cT/L5EYM9r99HK01jeX+LOBrSquAmNNkIGMuNmAgy+wpvJ054dn0jrj5ks0GVj3JQ8
-	gZakWXHWz1Nj1pq3n09Xq6lyLuL9zofTEDue6samLtUENiJQ0EjQztvLqpgADFkIe4FsngnK2gTEK
-	lo3pkzUZtbULMEeh4wDg7i/t6bNxVKWgWY0zpgtTO2jCZt9ykkuZCDxgb7TVeJIXbXFuI4ahpaWVR
-	c9raFPXVYmoGdZVA/BFc7qzDc9gsuZSmT7Y1gklaH3xuKibmF2zKm/6PrEiJOPjc5wlEnLrItydCr
-	RsHVR7EvP0Q9Bd6Rv4hQ==;
+	List-Owner; bh=uVJOHZm08BSGH6lpkLopQvV3IiYBezGx654dKU6vkWU=; b=fdiCSGCoAI+E2V
+	td3IOMeQq3ggzrRmSks6+bHDXvrGJlHXgXo7Dn6sIU4onKRq82noWmkyiErGaVklZDzUK6Dn2AJad
+	1nOAP01M07M/oa1trHjXTpQLiux2AnCrduPGUmdt3pqnkZ3V2flJ1lNHdgtdltIIZu8weDAGGeFEQ
+	lJ5onhlBJmlCTfZtE6RiKNHSuvsSaUdV/YFqM1ldbTzZCQYV8qWI11gRQfi5sQqtKBfWRrpGH7jni
+	2JcguJDUk46RnPs3+/hnUgReecMpZ9JxYzr5Jm+WmSto2qsTeNUV1khzi89q3cWws3l+9b1JOGHL8
+	NLI+i/pmwHAUNqWOgq/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZojC-0000000HG9U-2BJY;
-	Wed, 17 Jun 2026 11:46:42 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wZpJ7-0000000HKMq-0Vbc;
+	Wed, 17 Jun 2026 12:23:49 +0000
+Received: from mail-francesouthazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c207::3] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZojA-0000000HG7u-2Gzr;
-	Wed, 17 Jun 2026 11:46:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1781696789; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=AFMJi1DswncZUEWEYB44nFn/u1aEnd/CKzHVYPzjDw+3pD+u9u8+LPA/hpSWeZ7LFmOAqZ+GkK09juJzCWy80DLkrz0kuIM2fu14CqbjIdTClZhlOrQ8W73b2OVyKVL65HeU5EgUPYR2zZ8hGE7l3rx4X1WEns3hwHwF+HQPICY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1781696789; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=rWnGuIDH8coFdp7LkOu+vl1fCvswvcymwLh9fcmP7Yc=; 
-	b=DEtM+S5Rd4Sdf7QF4nggrer3dAsoOYhwum7upYBnUOZzaNCYEMGYSGwcPygwdNvFh7T3R77Y2KoYj1LUAsB9NBBow9XxT0Cye2P18JUOUtrUnaGTvPeNievb4E/GA9au3Jfee0UKSn5fppwQNnbsRV1De5dTzXuKbhRG7Xcvabk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1781696789;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=rWnGuIDH8coFdp7LkOu+vl1fCvswvcymwLh9fcmP7Yc=;
-	b=P096ENKawLnG2ujh/TmnuwXb3mwAJ2W+cpDpFqEkI2dqQG2FNXlSFZn9nD6S2BXa
-	ytyGoMMikmchnZ2J8l+2Id/KOQbuRs0VmrGexLShy5qzAhsTx3m4UP/1u9DkW0wHb0W
-	+r+mX68K4pUb0PhXi54/1RzXLEY1yR4Z/BBT9Q5k=
-Received: by mx.zohomail.com with SMTPS id 178169678637923.794530340782558;
-	Wed, 17 Jun 2026 04:46:26 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Wed, 17 Jun 2026 13:46:04 +0200
-Subject: [PATCH] Revert "ASoC: rockchip: rockchip_sai: Use guard() for spin
- locks"
-MIME-Version: 1.0
-Message-Id: <20260617-sai-revert-v1-1-e46adda2213b@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2NQQ6CMBBFr0JmbSPtoghXMSzaMugYS3WmEBLC3
- a3i8iXvv7+BIBMKdNUGjAsJpamAPlUQ7m66oaKhMJja2NrqRokjVUTkrC5j451uW2uChzJ4MY6
- 0/mLX/mCZ/QND/hb+BuN7Li/50MA7QRVSjJS7Kide3HOQc3SSkaHf9w8Ka1ccoQAAAA==
-X-Change-ID: 20260617-sai-revert-8f7ba19962cb
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: bui duc phuc <phucduc.bui@gmail.com>, 
- linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel@collabora.com, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+	id 1wZpJ4-0000000HKLZ-3nwI;
+	Wed, 17 Jun 2026 12:23:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=J3lYF6YXDlt6oCphiNpOcBtn2cwo5Mx4rqwms36Htx6jgrEdDNJd/kqkEdmbiiia0wjnjVmUbnYVkmdJr4+wcGuxhLP7Kwq1c6IGz4f9EaVvjEyA70EXA6olX3NQc4M7qfiAIoLk5ruyUu3nCiENh+NRzJPrvTxYZzW/LAP6DaoxQa6ZEFWXTXW20l8s0pZA/HXNZFP3Mdrc7t1KuykSHWMNlGt2yHT2crn5RArhxkk/0bRnzyjbR8NpOX1EmTbFIkYPRd9Nz9X7BGFrz4EBafLpqF7uv7y3Nk7mw5GdSm5Huqxm+XLvXMqZbIQ30S8tkTC/6QoPITN/6Symf6KWBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qIvR4sFhQKjfMWuzkC7VHSr2I1Wqm31qb7WKPippyuA=;
+ b=jULpcR8+dBx30uvBAKpsqWmf7ChoGJ8VCnTAJsc0SV4j7hC/4ypdrBUjxk6fWBAvGSeE2oB93Al+SDhh7a8Acb7ugUR8zE9So0P3FLXdp5W5VfvH/2tSHTFvpI+BfNORpH4DwRbwusHrRr80gQJPXUPvDeW0HpDkTFNHRDJ8Pvzb+whI/Dw3voEg9kR+Lpx5aI0+R5YEoaKlGwRb6bDyTySUQR8mGdqvJMBiGOXnuF9pIHkciPcZg4cQe46myFumsl7ReUDyUR7THejSdF7U3UQQ16ClJcS/76mGb9yr8UV+5L9GA4hL+QliD6kbQno77Q3CO7WBoitRmBMlfKBqyQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qIvR4sFhQKjfMWuzkC7VHSr2I1Wqm31qb7WKPippyuA=;
+ b=ySNg0064TPWtjIjZKXEh4B0gyM6ep/NInXBnRDj12J/fNtW1CCdynvONPASfr4kzlspQj9zUitje4P5/R/s9dGJFukHKBHRs0C+cQNh5PCWWMKTA/aM4nQ+bUMjqWEPtH3ddFupoX2MPPXIIWLEPbBxKV778DVZEQSISeNgemDI=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from GVXPR08MB11763.eurprd08.prod.outlook.com
+ (2603:10a6:150:313::16) by DBBPR08MB10697.eurprd08.prod.outlook.com
+ (2603:10a6:10:52a::5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.139.11; Wed, 17 Jun
+ 2026 12:23:38 +0000
+Received: from GVXPR08MB11763.eurprd08.prod.outlook.com
+ ([fe80::8790:5e3:beb2:5bc6]) by GVXPR08MB11763.eurprd08.prod.outlook.com
+ ([fe80::8790:5e3:beb2:5bc6%5]) with mapi id 15.21.0113.015; Wed, 17 Jun 2026
+ 12:23:38 +0000
+From: Gerald Loacker <gerald.loacker@wolfvision.net>
+Subject: [PATCH 0/3] phy: rockchip: inno-csidphy: fix 2500 Mbps support and
+ add clock lane phase tuning
+Date: Wed, 17 Jun 2026 14:23:12 +0200
+Message-Id: <20260617-feature-mipi-csi-dphy-4k60-v1-0-4611ff00b0ff@wolfvision.net>
+X-B4-Tracking: v=1; b=H4sIALGRMmoC/yXMQQ6CMBAF0KuQWTtJi6SIVzEssP2V0YhNB4yGc
+ HerLt/mraTIAqVjtVLGU1QeU4HdVeTHYbqAJRRTbWpnnG05YpiXDL5LEvYqHNL45ubmDHeHtvP
+ 7YCOaSCVIGVFev/zU/63L+Qo/f0fatg+bU76JfgAAAA==
+X-Change-ID: 20260617-feature-mipi-csi-dphy-4k60-9879c3d1fe4f
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, Gerald Loacker <gerald.loacker@wolfvision.net>
 X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1781699017; l=1231;
+ i=gerald.loacker@wolfvision.net; s=20230502; h=from:subject:message-id;
+ bh=O3km8EweAJ6ITjpvGQqs7mWNerFEtBc4hbWpi/uoIz8=;
+ b=xjAjy8FTDPfYgT1IpnXu0a85qz0tqnyTK4Lmjbj3zIA8CQ3FeSaBiMEE3KBRYhIXmor8v+7HE
+ k2Ty+AwitdmAoTDKZ7nxvoShFeHydu4Tzh4hTz7cdKlU7qcTcFZ5nz7
+X-Developer-Key: i=gerald.loacker@wolfvision.net; a=ed25519;
+ pk=UXhp+obGMUOjknszonesnb29P6a2Kk/K5eBuz62ggVE=
+X-ClientProxiedBy: VI1PR04CA0083.eurprd04.prod.outlook.com
+ (2603:10a6:803:64::18) To GVXPR08MB11763.eurprd08.prod.outlook.com
+ (2603:10a6:150:313::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GVXPR08MB11763:EE_|DBBPR08MB10697:EE_
+X-MS-Office365-Filtering-Correlation-Id: db6a1d9b-1d57-4a3e-af96-08decc6b424d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|1800799024|366016|52116014|376014|7416014|11063799006|38350700014|56012099006|18002099003;
+X-Microsoft-Antispam-Message-Info: YX0GvzOvgjZkl41UMLjCI9chVdYnRDkpr6Iu4mV3cJeDR1lIoE4asKTTfLN40CUE/vLpvG2zCQrycn4LpwHRYeDnuylQx24JVWDrSyT98tRViht87Za4sb7Accoj2/vQSeJk2bKnPUyvzQ04lgNDFhhw8VpD6XmgW//FlsOyx5YbI2BkuvEKZk1G50ASYqgUiLLw62gW6FpM2/bDvbotcqjOVQWxM/TAE22d9WmhH4LV/E4JtgM2wofZ2K0S2xz/UaFHQCk0WjI08IORjhqOfjDtZClUr2PMKZk7XOsBYER4z6x6wWSXQi5huE+QGlLs4iM2FQP0lS2LGONciDc04OpygeoYlp3kjXd3N/bMSeHwJVsl/5LvQ2F1S2A4D85bc8CdcEk4K0uKw9QA5/3GjC5l30mf17Wl1s7/l5orLicOjydBCwrzxvgrVbDi3565jOPjbuRdT6+tcV90bITrYbXXFjXNAmQz/EsobW2MUK9Nw9xA8TKNVEpawJgGg8VWop7M+qN7D9KKnV+Abiw0UuPIa0Qs2AuvdHxdeK1t/BJOtIBG4qGmkb5/KXBQ1S1DsGBUC9c166zrERqu1b1e5vsehIH/m8EfIW+4bFlOzi8lQT7AjiRn87kiR6J/NjNSHYcraQq96RqU8wCe1n1hMVpfzQ9RTnRMT1YKYPP1KNELzn0oKrRvBIvryjG6VAbNgx/agvprDFXrMVJP1V2HBoCq3dJ1GS7zaczPfWaXoQLu0j+5fLJPM9JVaZFJ56An
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GVXPR08MB11763.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(1800799024)(366016)(52116014)(376014)(7416014)(11063799006)(38350700014)(56012099006)(18002099003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aFZRdzBnSlpDeU1GSlp2eVF2YjVBUDhzSzVHQkFFY2ZQQXVtbjIyUmxMYm4z?=
+ =?utf-8?B?eDVURTNQMHBaenpwRVRScU8xWFBnaW42cHA0THJJQURKRUIzVDFETmdSYkZr?=
+ =?utf-8?B?a2hTQXlLclVDT0FMUnhUSVRXZXcrSWNHTzFUMkw4VWNKc05wQlFOd2hVV2to?=
+ =?utf-8?B?TDhUTzN4U29qMzJVQzV4NWMyWFNScHAzZ1RKZTUwYkc3bnpUT1IzUU0vQUFo?=
+ =?utf-8?B?aEp6RHJsV0d5bVNhaU41dWl0VW1hN2RGVHhtQmNJdjVKNGFQbXJMTEx0SEtk?=
+ =?utf-8?B?cWpuUytWc0IrZWFsQjBDQXZqU1pjcmV4ZFNuZ2pMQ1FLcVNHWStvWUE1MTNY?=
+ =?utf-8?B?VStDaXA4K0lpM2ZtUlU5U0YrekMxZWU2ZmxlMkVNSWZyNmJxSldqUVVHS2kv?=
+ =?utf-8?B?Y3NSaDdrVjJHOTlaYm9vVy81L0lMckI5dk55TWtqTVdEVjN6QnVZYlhpZVQ3?=
+ =?utf-8?B?blI1VStRcXBYY3RPY2pYeW9NVytzVEV4OHFtR2hvUEJ6Nm9QQy9BSVVYcyts?=
+ =?utf-8?B?b05wMHBFL1R3Mk55cWlxK1hDQ01oNi9TM3Ywc3BZejFtd0U4NDdhUFBuQzg0?=
+ =?utf-8?B?UWZtQVVHVTFkWHdDcGZ6R1lzSkVNUHBnWkdueldNWjY4VGtvbWl2dHlYU0kz?=
+ =?utf-8?B?YXFadkZuUzRTTG10dUhkYnNrYnFTYXZZSkFoZDJzWFVOTm52VEs3dnhVUGNR?=
+ =?utf-8?B?S2h4M0tzODdIVDRFMSs1a1pVWENUTzFQRXhTd3pYTExLb0ZzOFp1VHdUOUly?=
+ =?utf-8?B?VVNFN3FrK2NMRVdDT1hwdnlVTDlPbjREWkZTcFJGYUdSaTZ2TitXZXE3ZmRM?=
+ =?utf-8?B?OUd5cVMzVmJ1Q2w3eWI4Q3FrdHpOUkVhbWpDTDlRemswSkVuaXZLYmVKcElj?=
+ =?utf-8?B?bXBOOW9XZXVPd0lzeENuZUxIRklXaDVGYVR4UklKYlhUQ21YWGFRekt4ZHIz?=
+ =?utf-8?B?T2RabzdxblYybG1ZTzUydXh5VnNoQmdRZnhiNkZtclJrNm9xZ1J0ZldqY3FD?=
+ =?utf-8?B?VHk3VDdBU0NvZ1dDdXNEN2dFWXVRRHdEWlQ1d056dGowWU5XK1J6UjcyWUlH?=
+ =?utf-8?B?cStkaTBObXFtbHlIZHhxdmo3d3d1TFVUb3Z4WXpzSTVLdm1UQk9rYWh4QTl2?=
+ =?utf-8?B?aENnSCtvQ2k5QnFZbUlWTlhSaUJqRkVGbWRwMDNyRFBDZHZBU0graGxCelVM?=
+ =?utf-8?B?TnBFNnB4RGNNWnlOSjByZnpDVklvTHFXK3VDVzFBREp2SHY1aDl6d0hOZ2dU?=
+ =?utf-8?B?aE4wcTdtNnRpZHRzUE1iVk5kZVU3MmxLcGg1ZDFETWRXUitMclh1ZjYyVjFo?=
+ =?utf-8?B?NGZkWFlJSldBRGVvSWVKWHI1MFQyL0JlMzdTWW5zcUEvdlNodlNyNE5iK1gw?=
+ =?utf-8?B?VnNVaThFdVptaTRGd3lub0JaN2wzNmlrc0dhNHdSeGxrTDdMSzBWSU15bTVt?=
+ =?utf-8?B?MlRDRFJ4WGlKeERRbjQ4UGdnUEJ3dWdQaiswZGtDcUxjaTJwSnI5Ylg0NFl4?=
+ =?utf-8?B?Q05XZ3l6ZFgrZEowb3o3Y3lXUnhURkFWazI3NWx5ZkRKcTJBdkxNTnZUd05S?=
+ =?utf-8?B?U2l2S21UWE5sb0J6eFZCdTYvRTlzZ1hnNGh2b3NBNmw1d3hsdHF0VTFiM1NX?=
+ =?utf-8?B?cXloMll5S1Y5K2VvWWcybXU3TUFUeXFWdUtZb1oxZTlpVzJjbWROU01PRUMr?=
+ =?utf-8?B?bVhlclJqYm1kdlgvQndaS2JqT1FlTkRXUzZ1ZjRYaTVmMGo1TDdRd1lQV3Va?=
+ =?utf-8?B?L0o4OHJjaCt4clFyMjBFTUZXWE90eFJ3c1RmdENjRUlEc3lDUEdBN3poTWE4?=
+ =?utf-8?B?SFRKV2dsblZOWGFyTVBmS29mL2RHd2pCdi9TdHlGd1hvRkhrdkxuQ29aOWdp?=
+ =?utf-8?B?d0NPQlRjMnRDT3gxeEFnZklJTjFnTXBPaUtEcTg1RVQ2Z1l5anRzUUp4eUdw?=
+ =?utf-8?B?YnZQV013V3VUcVZLYnRXNjd4VFlMc0NLdGpkUUI5RStPdExvNWxPZHNVVUZ0?=
+ =?utf-8?B?VzhubjNVb1Zqck5DdTlxam5lSTNDSjhqVmRCTHdWZU5hTUtLRWpYbGZEQnlo?=
+ =?utf-8?B?aE5QaURoZDcreTJyZ2IrZkEvTFVPb3grQXNrSStqcm1rVEZGS2JuR0JNMVcy?=
+ =?utf-8?B?N29odnZUS0puSVJBTG9wTVl6TWRIekdnR0RIYWJ2dVNqT1hVcDl3VGMxejBV?=
+ =?utf-8?B?NlRlSW9lUTZMWFdTczQ4dXpwa041RHU2bXIrTG5LZ2plUldoQmE5UDcxdnZB?=
+ =?utf-8?B?Vmd6WGhjcFRXaG1EdkROZWpESkV3QllYd01OckdHaW04azNlUTJoTis1NGpX?=
+ =?utf-8?B?YnhrQ3QyWUgvMENrUU03VTBOaE5GNFQxdlU4NkFraGFsNlVjNVNyck1UOFdC?=
+ =?utf-8?Q?4SbrHIQVzrgO0P6U=3D?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: db6a1d9b-1d57-4a3e-af96-08decc6b424d
+X-MS-Exchange-CrossTenant-AuthSource: GVXPR08MB11763.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jun 2026 12:23:38.2776
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: oTHriKW7anHrOC2KCkHHw7r2qSXtHrxfCi4CqUN9T2fYdof3w8TfLdbjMeCxqAM7iCuM+H4BR/fDIQ6ICRElte0+7/LAHIDlpLrjw44A7pg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB10697
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_044640_653465_5EB6F19B 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20260617_052346_998409_344CC6A4 
+X-CRM114-Status: UNSURE (   5.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,401 +161,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This reverts commit f7fe9f7073602958d6b63cc58a144094533377fa.
+This series fixes and extends the Rockchip Innosilicon CSI D-PHY driver
+to support data rates up to 2500 Mbps and adds optional board-specific
+clock lane phase tuning for signal integrity.
 
-This is very noisy pointless churn that was not tested by the submitter,
-nor was it addressed to the driver's maintainer. It mixes unrelated
-whitespace changes (eliminating the blank line between the includes -
-why?) with hard to review diffs that add a whole indentation level to
-the function for no benefit, while also not following kernel code style
-by doing stuff like "ret == 0".
+Patch 1 fixes an off-by-one error in the rk1808 hsfreq range table:
+the final entry was capped at 2499 Mbps, causing a rejection of the
+maximum supported rate of 2500 Mbps.
 
-The driver is better off without these changes, and they're not worth
-the time to validate whether they really do make no functional changes.
-
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- sound/soc/rockchip/rockchip_sai.c | 262 +++++++++++++++++++-------------------
- 1 file changed, 133 insertions(+), 129 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
-index a195e96fed0a..ed393e5034a4 100644
---- a/sound/soc/rockchip/rockchip_sai.c
-+++ b/sound/soc/rockchip/rockchip_sai.c
-@@ -18,6 +18,7 @@
- #include <sound/pcm_params.h>
- #include <sound/dmaengine_pcm.h>
- #include <sound/tlv.h>
-+
- #include "rockchip_sai.h"
- 
- #define DRV_NAME		"rockchip-sai"
-@@ -215,12 +216,14 @@ static void rockchip_sai_xfer_clk_stop_and_wait(struct rk_sai_dev *sai, unsigned
- static int rockchip_sai_runtime_suspend(struct device *dev)
- {
- 	struct rk_sai_dev *sai = dev_get_drvdata(dev);
-+	unsigned long flags;
- 
- 	rockchip_sai_fsync_lost_detect(sai, 0);
- 	rockchip_sai_fsync_err_detect(sai, 0);
- 
--	scoped_guard(spinlock_irqsave, &sai->xfer_lock)
--		rockchip_sai_xfer_clk_stop_and_wait(sai, NULL);
-+	spin_lock_irqsave(&sai->xfer_lock, flags);
-+	rockchip_sai_xfer_clk_stop_and_wait(sai, NULL);
-+	spin_unlock_irqrestore(&sai->xfer_lock, flags);
- 
- 	regcache_cache_only(sai->regmap, true);
- 	/*
-@@ -480,6 +483,7 @@ static int rockchip_sai_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
- 	struct rk_sai_dev *sai = snd_soc_dai_get_drvdata(dai);
- 	unsigned int mask = 0, val = 0;
- 	unsigned int clk_gates;
-+	unsigned long flags;
- 	int ret = 0;
- 
- 	pm_runtime_get_sync(dai->dev);
-@@ -495,56 +499,56 @@ static int rockchip_sai_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
- 		sai->is_master_mode = false;
- 		break;
- 	default:
--		pm_runtime_put(dai->dev);
--		return -EINVAL;
-+		ret = -EINVAL;
-+		goto err_pm_put;
- 	}
- 
--	scoped_guard(spinlock_irqsave, &sai->xfer_lock) {
--		rockchip_sai_xfer_clk_stop_and_wait(sai, &clk_gates);
--		if (sai->initialized) {
--			if (sai->has_capture && sai->has_playback)
--				rockchip_sai_xfer_stop(sai, -1);
--			else if (sai->has_capture)
--				rockchip_sai_xfer_stop(sai, SNDRV_PCM_STREAM_CAPTURE);
--			else
--				rockchip_sai_xfer_stop(sai, SNDRV_PCM_STREAM_PLAYBACK);
--		} else {
--			rockchip_sai_clear(sai, 0);
--			sai->initialized = true;
--		}
-+	spin_lock_irqsave(&sai->xfer_lock, flags);
-+	rockchip_sai_xfer_clk_stop_and_wait(sai, &clk_gates);
-+	if (sai->initialized) {
-+		if (sai->has_capture && sai->has_playback)
-+			rockchip_sai_xfer_stop(sai, -1);
-+		else if (sai->has_capture)
-+			rockchip_sai_xfer_stop(sai, SNDRV_PCM_STREAM_CAPTURE);
-+		else
-+			rockchip_sai_xfer_stop(sai, SNDRV_PCM_STREAM_PLAYBACK);
-+	} else {
-+		rockchip_sai_clear(sai, 0);
-+		sai->initialized = true;
-+	}
- 
--		regmap_update_bits(sai->regmap, SAI_CKR, mask, val);
--
--		mask = SAI_CKR_CKP_MASK | SAI_CKR_FSP_MASK;
--		switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
--		case SND_SOC_DAIFMT_NB_NF:
--			val = SAI_CKR_CKP_NORMAL | SAI_CKR_FSP_NORMAL;
--			break;
--		case SND_SOC_DAIFMT_NB_IF:
--			val = SAI_CKR_CKP_NORMAL | SAI_CKR_FSP_INVERTED;
--			break;
--		case SND_SOC_DAIFMT_IB_NF:
--			val = SAI_CKR_CKP_INVERTED | SAI_CKR_FSP_NORMAL;
--			break;
--		case SND_SOC_DAIFMT_IB_IF:
--			val = SAI_CKR_CKP_INVERTED | SAI_CKR_FSP_INVERTED;
--			break;
--		default:
--			ret = -EINVAL;
--			break;
--		}
-+	regmap_update_bits(sai->regmap, SAI_CKR, mask, val);
- 
--		if (ret == 0) {
--			regmap_update_bits(sai->regmap, SAI_CKR, mask, val);
--			rockchip_sai_fmt_create(sai, fmt);
--		}
--
--		if (clk_gates)
--			regmap_update_bits(sai->regmap, SAI_XFER,
--					SAI_XFER_CLK_MASK | SAI_XFER_FSS_MASK,
--					clk_gates);
-+	mask = SAI_CKR_CKP_MASK | SAI_CKR_FSP_MASK;
-+	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-+	case SND_SOC_DAIFMT_NB_NF:
-+		val = SAI_CKR_CKP_NORMAL | SAI_CKR_FSP_NORMAL;
-+		break;
-+	case SND_SOC_DAIFMT_NB_IF:
-+		val = SAI_CKR_CKP_NORMAL | SAI_CKR_FSP_INVERTED;
-+		break;
-+	case SND_SOC_DAIFMT_IB_NF:
-+		val = SAI_CKR_CKP_INVERTED | SAI_CKR_FSP_NORMAL;
-+		break;
-+	case SND_SOC_DAIFMT_IB_IF:
-+		val = SAI_CKR_CKP_INVERTED | SAI_CKR_FSP_INVERTED;
-+		break;
-+	default:
-+		ret = -EINVAL;
-+		goto err_xfer_unlock;
- 	}
- 
-+	regmap_update_bits(sai->regmap, SAI_CKR, mask, val);
-+
-+	rockchip_sai_fmt_create(sai, fmt);
-+
-+err_xfer_unlock:
-+	if (clk_gates)
-+		regmap_update_bits(sai->regmap, SAI_XFER,
-+				SAI_XFER_CLK_MASK | SAI_XFER_FSS_MASK,
-+				clk_gates);
-+	spin_unlock_irqrestore(&sai->xfer_lock, flags);
-+err_pm_put:
- 	pm_runtime_put(dai->dev);
- 
- 	return ret;
-@@ -560,6 +564,7 @@ static int rockchip_sai_hw_params(struct snd_pcm_substream *substream,
- 	unsigned int ch_per_lane, slot_width;
- 	unsigned int val, fscr, reg;
- 	unsigned int lanes, req_lanes;
-+	unsigned long flags;
- 	int ret = 0;
- 
- 	if (!rockchip_sai_stream_valid(substream, dai))
-@@ -586,8 +591,8 @@ static int rockchip_sai_hw_params(struct snd_pcm_substream *substream,
- 			dev_err(sai->dev, "not enough lanes (%d) for requested number of %s channels (%d)\n",
- 				lanes, reg == SAI_TXCR ? "playback" : "capture",
- 				params_channels(params));
--			pm_runtime_put(sai->dev);
--			return -EINVAL;
-+			ret = -EINVAL;
-+			goto err_pm_put;
- 		} else {
- 			lanes = req_lanes;
- 		}
-@@ -613,88 +618,84 @@ static int rockchip_sai_hw_params(struct snd_pcm_substream *substream,
- 		val = SAI_XCR_VDW(32);
- 		break;
- 	default:
--		pm_runtime_put(sai->dev);
--		return -EINVAL;
-+		ret = -EINVAL;
-+		goto err_pm_put;
- 	}
- 
- 	val |= SAI_XCR_CSR(lanes);
- 
--	scoped_guard(spinlock_irqsave, &sai->xfer_lock) {
-+	spin_lock_irqsave(&sai->xfer_lock, flags);
-+
-+	regmap_update_bits(sai->regmap, reg, SAI_XCR_VDW_MASK | SAI_XCR_CSR_MASK, val);
- 
--		regmap_update_bits(sai->regmap, reg, SAI_XCR_VDW_MASK | SAI_XCR_CSR_MASK, val);
-+	if (!sai->is_tdm)
-+		regmap_update_bits(sai->regmap, reg, SAI_XCR_SBW_MASK,
-+				   SAI_XCR_SBW(params_physical_width(params)));
- 
--		if (!sai->is_tdm)
--			regmap_update_bits(sai->regmap, reg, SAI_XCR_SBW_MASK,
--					   SAI_XCR_SBW(params_physical_width(params)));
-+	regmap_read(sai->regmap, reg, &val);
- 
--		regmap_read(sai->regmap, reg, &val);
-+	slot_width = SAI_XCR_SBW_V(val);
-+	ch_per_lane = params_channels(params) / lanes;
- 
--		slot_width = SAI_XCR_SBW_V(val);
--		ch_per_lane = params_channels(params) / lanes;
-+	regmap_update_bits(sai->regmap, reg, SAI_XCR_SNB_MASK,
-+			   SAI_XCR_SNB(ch_per_lane));
- 
--		regmap_update_bits(sai->regmap, reg, SAI_XCR_SNB_MASK,
--				   SAI_XCR_SNB(ch_per_lane));
-+	fscr = SAI_FSCR_FW(sai->fw_ratio * slot_width * ch_per_lane);
- 
--		fscr = SAI_FSCR_FW(sai->fw_ratio * slot_width * ch_per_lane);
-+	switch (sai->fpw) {
-+	case FPW_ONE_BCLK_WIDTH:
-+		fscr |= SAI_FSCR_FPW(1);
-+		break;
-+	case FPW_ONE_SLOT_WIDTH:
-+		fscr |= SAI_FSCR_FPW(slot_width);
-+		break;
-+	case FPW_HALF_FRAME_WIDTH:
-+		fscr |= SAI_FSCR_FPW(sai->fw_ratio * slot_width * ch_per_lane / 2);
-+		break;
-+	default:
-+		dev_err(sai->dev, "Invalid Frame Pulse Width %d\n", sai->fpw);
-+		ret = -EINVAL;
-+		goto err_xfer_unlock;
-+	}
- 
--		switch (sai->fpw) {
--		case FPW_ONE_BCLK_WIDTH:
--			fscr |= SAI_FSCR_FPW(1);
--			break;
--		case FPW_ONE_SLOT_WIDTH:
--			fscr |= SAI_FSCR_FPW(slot_width);
--			break;
--		case FPW_HALF_FRAME_WIDTH:
--			fscr |= SAI_FSCR_FPW(sai->fw_ratio * slot_width * ch_per_lane / 2);
--			break;
--		default:
--			dev_err(sai->dev, "Invalid Frame Pulse Width %d\n", sai->fpw);
-+	regmap_update_bits(sai->regmap, SAI_FSCR,
-+			   SAI_FSCR_FW_MASK | SAI_FSCR_FPW_MASK, fscr);
-+
-+	if (sai->is_master_mode) {
-+		bclk_rate = sai->fw_ratio * slot_width * ch_per_lane * params_rate(params);
-+		ret = clk_set_rate(sai->mclk, sai->mclk_rate);
-+		if (ret) {
-+			dev_err(sai->dev, "Failed to set mclk to %u: %pe\n",
-+				sai->mclk_rate, ERR_PTR(ret));
-+			goto err_xfer_unlock;
-+		}
-+
-+		mclk_rate = clk_get_rate(sai->mclk);
-+		if (mclk_rate < bclk_rate) {
-+			dev_err(sai->dev, "Mismatch mclk: %u, at least %u\n",
-+				mclk_rate, bclk_rate);
- 			ret = -EINVAL;
--			break;
-+			goto err_xfer_unlock;
- 		}
- 
--		if (ret == 0) {
--			regmap_update_bits(sai->regmap, SAI_FSCR,
--					   SAI_FSCR_FW_MASK | SAI_FSCR_FPW_MASK, fscr);
--
--			if (sai->is_master_mode) {
--				bclk_rate = sai->fw_ratio * slot_width *
--						ch_per_lane * params_rate(params);
--				ret = clk_set_rate(sai->mclk, sai->mclk_rate);
--				if (ret)
--					dev_err(sai->dev, "Failed to set mclk to %u: %pe\n",
--						sai->mclk_rate, ERR_PTR(ret));
--				else {
--					mclk_rate = clk_get_rate(sai->mclk);
--					if (mclk_rate < bclk_rate) {
--						dev_err(sai->dev, "Mismatch mclk: %u, at least %u\n",
--							mclk_rate, bclk_rate);
--						ret = -EINVAL;
--					} else {
--
--						div_bclk = DIV_ROUND_CLOSEST(mclk_rate, bclk_rate);
--						mclk_req_rate = bclk_rate * div_bclk;
--
--						if (mclk_rate <
--							mclk_req_rate - CLK_SHIFT_RATE_HZ_MAX ||
--						    mclk_rate >
--							mclk_req_rate + CLK_SHIFT_RATE_HZ_MAX) {
--							dev_err(sai->dev,
--								"Mismatch mclk: %u, expected %u (+/- %dHz)\n",
--								mclk_rate, mclk_req_rate,
--								CLK_SHIFT_RATE_HZ_MAX);
--							ret = -EINVAL;
--						} else
--							regmap_update_bits(sai->regmap,
--									SAI_CKR,
--									SAI_CKR_MDIV_MASK,
--									SAI_CKR_MDIV(div_bclk));
--					}
--				}
--			}
-+		div_bclk = DIV_ROUND_CLOSEST(mclk_rate, bclk_rate);
-+		mclk_req_rate = bclk_rate * div_bclk;
-+
-+		if (mclk_rate < mclk_req_rate - CLK_SHIFT_RATE_HZ_MAX ||
-+		    mclk_rate > mclk_req_rate + CLK_SHIFT_RATE_HZ_MAX) {
-+			dev_err(sai->dev, "Mismatch mclk: %u, expected %u (+/- %dHz)\n",
-+				mclk_rate, mclk_req_rate, CLK_SHIFT_RATE_HZ_MAX);
-+			ret = -EINVAL;
-+			goto err_xfer_unlock;
- 		}
-+
-+		regmap_update_bits(sai->regmap, SAI_CKR, SAI_CKR_MDIV_MASK,
-+				   SAI_CKR_MDIV(div_bclk));
- 	}
- 
-+err_xfer_unlock:
-+	spin_unlock_irqrestore(&sai->xfer_lock, flags);
-+err_pm_put:
- 	pm_runtime_put(sai->dev);
- 
- 	return ret;
-@@ -704,6 +705,7 @@ static int rockchip_sai_prepare(struct snd_pcm_substream *substream,
- 				struct snd_soc_dai *dai)
- {
- 	struct rk_sai_dev *sai = snd_soc_dai_get_drvdata(dai);
-+	unsigned long flags;
- 
- 	if (!rockchip_sai_stream_valid(substream, dai))
- 		return 0;
-@@ -724,12 +726,13 @@ static int rockchip_sai_prepare(struct snd_pcm_substream *substream,
- 		 * udelay falls short.
- 		 */
- 		udelay(20);
--		scoped_guard(spinlock_irqsave, &sai->xfer_lock)
--			regmap_update_bits(sai->regmap, SAI_XFER,
--					   SAI_XFER_CLK_MASK |
--					   SAI_XFER_FSS_MASK,
--					   SAI_XFER_CLK_EN |
--					   SAI_XFER_FSS_EN);
-+		spin_lock_irqsave(&sai->xfer_lock, flags);
-+		regmap_update_bits(sai->regmap, SAI_XFER,
-+				   SAI_XFER_CLK_MASK |
-+				   SAI_XFER_FSS_MASK,
-+				   SAI_XFER_CLK_EN |
-+				   SAI_XFER_FSS_EN);
-+		spin_unlock_irqrestore(&sai->xfer_lock, flags);
- 	}
- 
- 	rockchip_sai_fsync_lost_detect(sai, 1);
-@@ -912,6 +915,7 @@ static int rockchip_sai_set_tdm_slot(struct snd_soc_dai *dai,
- 				     int slots, int slot_width)
- {
- 	struct rk_sai_dev *sai = snd_soc_dai_get_drvdata(dai);
-+	unsigned long flags;
- 	unsigned int clk_gates;
- 	int sw = slot_width;
- 
-@@ -927,16 +931,16 @@ static int rockchip_sai_set_tdm_slot(struct snd_soc_dai *dai,
- 		return -EINVAL;
- 
- 	pm_runtime_get_sync(dai->dev);
--	scoped_guard(spinlock_irqsave, &sai->xfer_lock) {
--		rockchip_sai_xfer_clk_stop_and_wait(sai, &clk_gates);
--		regmap_update_bits(sai->regmap, SAI_TXCR, SAI_XCR_SBW_MASK,
--				   SAI_XCR_SBW(sw));
--		regmap_update_bits(sai->regmap, SAI_RXCR, SAI_XCR_SBW_MASK,
--				   SAI_XCR_SBW(sw));
--		regmap_update_bits(sai->regmap, SAI_XFER,
--				   SAI_XFER_CLK_MASK | SAI_XFER_FSS_MASK,
--				   clk_gates);
--	}
-+	spin_lock_irqsave(&sai->xfer_lock, flags);
-+	rockchip_sai_xfer_clk_stop_and_wait(sai, &clk_gates);
-+	regmap_update_bits(sai->regmap, SAI_TXCR, SAI_XCR_SBW_MASK,
-+			   SAI_XCR_SBW(sw));
-+	regmap_update_bits(sai->regmap, SAI_RXCR, SAI_XCR_SBW_MASK,
-+			   SAI_XCR_SBW(sw));
-+	regmap_update_bits(sai->regmap, SAI_XFER,
-+			   SAI_XFER_CLK_MASK | SAI_XFER_FSS_MASK,
-+			   clk_gates);
-+	spin_unlock_irqrestore(&sai->xfer_lock, flags);
- 	pm_runtime_put(dai->dev);
- 
- 	return 0;
+Patches 2 and 3 add an optional rockchip,clk-lane-phase device tree
+property that allows tuning the clock lane sampling phase in ~40 ps
+steps to compensate for board-level signal integrity variations.
 
 ---
-base-commit: 5b33fc6492a7b7a62359157db0f92f5b6e9af690
-change-id: 20260617-sai-revert-8f7ba19962cb
+Gerald Loacker (3):
+      phy: rockchip: phy-rockchip-inno-csidphy: fix rk1808 hsfreq table
+      dt-bindings: phy: rockchip-inno-csi-dphy: add rockchip,clk-lane-phase property
+      phy: rockchip: phy-rockchip-inno-csidphy: add clock lane phase tuning
+
+ .../bindings/phy/rockchip-inno-csi-dphy.yaml       |  7 ++++++
+ drivers/phy/rockchip/phy-rockchip-inno-csidphy.c   | 27 +++++++++++++++++++++-
+ 2 files changed, 33 insertions(+), 1 deletion(-)
+---
+base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
+change-id: 20260617-feature-mipi-csi-dphy-4k60-9879c3d1fe4f
 
 Best regards,
 --  
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Gerald Loacker <gerald.loacker@wolfvision.net>
 
 
 _______________________________________________
