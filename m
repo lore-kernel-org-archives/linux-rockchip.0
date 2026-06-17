@@ -4,73 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28D62CD98F2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jun 2026 18:52:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D731BCD98F3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jun 2026 19:15:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Cc:References:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bLWt2bqqhAQ7R+hegO4W2TPwL8C5VUUcedl43kycR84=; b=ZBLXTmf5z8W+oT
-	aViVuaR3a+jvhUbNqBP5D6/2IVq9wowhMjwGENYAIvnVRqhIg290c1LxEVTADQ9gTCNoZ1p/w+c+H
-	vF5kMw+ajPo5oiu+nQmouFSba31+8F96PaeNezgfzfufyZWVQ6YhRFNHyin4niEaT81ma/t2GSNbt
-	/SAg0sCN/uV7Z5YxsftkYLAHFw2VUVUJbvJiwgLRp4gJELqrTg+A8anAZsNO/Nx0mLh1oSVrV/MB3
-	MIeEZQNzPNjO67mXY6hMOhfvZ+xCqX6UduOTAsNcQJQLFzuryhFjvvgCVUJwAOr3vCId+pQVztpdB
-	j8S3HqPoG/d08I0031Jg==;
+	List-Owner; bh=sjl1il/1ddJvlD7fcNXPGDfAP+vu1mJGAjXM2YneGaE=; b=nSs7pt3Nen1Gcl
+	IlaFs40SvqvI5/N1+p6xwycoRpIrCMdz3ojNz9x0fClmDIE89ndQT90dOf/T49KSpB3PyQRmsnDyS
+	FUuZL8lghzQBijg1sGlridrQxVCYuViyGtj/FXAgvemyAHA0nyu6+cRujqKOcU3eE8jO2vQw6NbUB
+	pgLgOt2Q3EDdd5T1rf+L2JNSnPIz7GM4YJvPg36qSdbVhPGbRmE6NfWfVRj7SY8bhYfJfYXtCPx6V
+	ZnDYpUs/RS9/LVBfNJCChfuJ3Is2uuxm+K0y74GUNRpYG20MqHhHk5tr7Z9OEViIhPjhx+rlPIxBP
+	e/quf9K+l9ha7IpadFbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZvN1-00000000CZw-2rNc;
-	Wed, 17 Jun 2026 18:52:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wZvje-00000000FCU-2Aaa;
+	Wed, 17 Jun 2026 19:15:38 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZvMs-00000000CLq-4BA9;
-	Wed, 17 Jun 2026 18:52:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1781722322;
-	bh=C/AphHeqUmYgEpPCNKjM0R3CijmfEx2tuybcOWNfG/g=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UQ8W+ubZpP133M3xLQmpz7U1GO0LzqC62rTLnNVk+OQ3JIX12gG09317MAabS5im4
-	 3c9zuqQORZpGfERlFdpwcvX/In5U76JJ0iBEWOe1qQW+z3eMvffuVGopcTwLDv+lDQ
-	 fJ+OKdPGezm/GWbzsQxH+aE+22DRLyJwS30hFIlQ0LDn+d/L2ES2Z92Qmd602e1jh/
-	 v+JNFM5Vb65Orrul2gbeewgoRZfwvR0xO+ZX9pJ8mCfVfyW6GlO9oTO1wz5JumuW7e
-	 Pdqpd1Mnu0Do8UycxN8gHOj79MJA7VWs+EaO5RlwvA0X7JArn/CDUFdbw4FyeTcSD2
-	 lM3DOPQN4YTmQ==
-Received: from localhost (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 906CE17E0E64;
-	Wed, 17 Jun 2026 20:52:02 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 17 Jun 2026 21:51:58 +0300
-Subject: [PATCH 5/9] drm/rockchip: vop2: Switch to enum vop_csc_format
+	id 1wZvjc-00000000FBm-1NZx
+	for linux-rockchip@lists.infradead.org;
+	Wed, 17 Jun 2026 19:15:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: Cc:
+ References: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1781723736;
+ bh=4v1eEsKGlvRwTTS4YVH1FGhzyxT113XMnVu/R9kJqpo=;
+ b=0suNeHQ9zbNOmJ7zAfRLRAHjwl8OpHPI+XKUOupsyf8Bb0tnNfaChoY3il9eDek44m9BYvVUz
+ usVDmsUJ0K81ZKskxOnaVPzp7fwsxNuL6F2TfKVNY7fZNgUibnQQfGFwmLZxOpcAEVjna1ORubr
+ nf/e+xV75eGrhwqTNx+FaPl/tjllRaLd7PX6gyv1M2PxDwXAa3QaaTpWmisTx/GMNiBpgjpUTpG
+ KX9Go22/CW7+BCgQN2DYbCqaOQ467L1ZZNhbIbckwssK1vLQpmNyj8HK7W8VGBHcToP2vzW/icN
+ yQG6FWL2q05454eNEPjo0Cak3LKjLdarCKs50GCb5xzQ==
+X-Forward-Email-ID: 6a32f25392c317d763cdbfaa
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.8.30
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <1d9da21e-4b66-4a8d-afe0-38610fb850ef@kwiboo.se>
+Date: Wed, 17 Jun 2026 21:15:28 +0200
 MIME-Version: 1.0
-Message-Id: <20260617-dw-hdmi-qp-yuv-v1-5-a665cfd06d7d@collabora.com>
-References: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
-In-Reply-To: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] nvmem: rockchip-otp: initialize ret in rk3588_otp_read
+To: Ruoyu Wang <ruoyuw560@gmail.com>
+References: <20260617183803.1106486-1-ruoyuw560@gmail.com>
+Content-Language: en-US
+Cc: Srinivas Kandagatla <srini@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-X-Mailer: b4 0.15.2
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20260617183803.1106486-1-ruoyuw560@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_115207_248031_60423077 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20260617_121536_410469_A9ACC405 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,54 +77,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Improve code readability in vop2_setup_csc_mode() by using enum
-vop_csc_format for the csc_mode variable, as well as for the return type
-of the vop2_convert_csc_mode() helper, which already returns CSC_*
-enumerators.
+Hi Ruoyu,
 
-While at it, replace the nonsensical 'csc_mode = false' assignment in
-the no-conversion branch with the equivalent CSC_BT601L, which carries
-the same value (0) but is type-correct.
+On 6/17/2026 8:38 PM, Ruoyu Wang wrote:
+> rk3588_otp_read() returns ret after a count-controlled loop. If count is
+> zero, the loop is skipped and ret is not assigned. Initialize ret to 0
+> for the empty read path.
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+To my knowledge core will protect against bytes<=0 read, if that is not
+the case we should likely fix so that rockchip_otp_read() never calls
+the internal reg_read ops with bytes/count<=0.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index df475173dc8e..e0d6e42fedb1 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -648,7 +648,7 @@ static void vop2_setup_scale(struct vop2 *vop2, const struct vop2_win *win,
- 	}
- }
- 
--static int vop2_convert_csc_mode(int csc_mode)
-+static enum vop_csc_format vop2_convert_csc_mode(int csc_mode)
- {
- 	switch (csc_mode) {
- 	case V4L2_COLORSPACE_SMPTE170M:
-@@ -711,7 +711,7 @@ static void vop2_setup_csc_mode(struct vop2_video_port *vp,
- 	int input_csc = V4L2_COLORSPACE_DEFAULT;
- 	int output_csc = vcstate->color_space;
- 	bool r2y_en, y2r_en;
--	int csc_mode;
-+	enum vop_csc_format csc_mode;
- 
- 	if (is_input_yuv && !is_output_yuv) {
- 		y2r_en = true;
-@@ -724,7 +724,7 @@ static void vop2_setup_csc_mode(struct vop2_video_port *vp,
- 	} else {
- 		y2r_en = false;
- 		r2y_en = false;
--		csc_mode = false;
-+		csc_mode = CSC_BT601L;
- 	}
- 
- 	vop2_win_write(win, VOP2_WIN_Y2R_EN, y2r_en);
+Regards,
+Jonas
 
--- 
-2.54.0
+> 
+> Signed-off-by: Ruoyu Wang <ruoyuw560@gmail.com>
+> ---
+>  drivers/nvmem/rockchip-otp.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
+> index 0ec78b5e19e7d..50a19b6dc4027 100644
+> --- a/drivers/nvmem/rockchip-otp.c
+> +++ b/drivers/nvmem/rockchip-otp.c
+> @@ -242,7 +242,7 @@ static int rk3588_otp_read(void *context, unsigned int offset,
+>  {
+>  	struct rockchip_otp *otp = context;
+>  	u32 *buf = val;
+> -	int ret;
+> +	int ret = 0;
+>  
+>  	while (count--) {
+>  		writel((offset++ << RK3588_ADDR_SHIFT) |
 
 
 _______________________________________________
