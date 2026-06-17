@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEE93CD98E2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jun 2026 18:52:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F047CD98F9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jun 2026 18:52:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B8Ypj3S//Bgqk9JIr20W6rVEMtA6QX6TvCqWfCc59dw=; b=Towe8I/E13hTYU
-	hTf7G3/Q+OZ5Sx/d6L/UzvqdBwWPQanDFwMkIA0xwKtDT+reE4gauobDuk1k3LrL/2MdHElMVLaUu
-	+cfRNIBxM8mnCUy7tJdrz5ZVYd/8C0Nxdabxb2covx0rC6YNMXIJC0ihjP1L1wDNmVadPC3nbBw0D
-	+d+G+fae5/jQrlMHgr+tD+2TrOMryvOF1D0SFjt2warE65tuBZyrIhPpZQMviUsah8oPl641iz8D/
-	L7GPwP3KFSusxPFObqp/gvNTQJsH8I6qkjvcfwGJNishVaR6PnjT4NNvFcqQpLJDHuzMQMXI6LbSC
-	Jj7njSu2V47NXOTDFMSQ==;
+	List-Owner; bh=/M93XCvq7wyRuIaOezwZwUCNEHGGpU3V4VhBW8iLgJM=; b=SJf3CMInJOUy40
+	jDdtMKUddhV3TCqQLSOURauIZNIARr4DQNif3mILUvx1FkF1U+f7yEkvtbjud7tMVeLpbXEZLfR4M
+	cpxmUq5RJiqNOmiWCs6YrPFmbPfAVdFS02XuLThYroivZpe9dqt3loV+QFlMrsZACVOQ8gJGN16NB
+	rSU3tia50abgEUpk4MccjOqYx26uzSBJH6uUdDpsV8orIHCLfOpn8mRksKSaZvZ1UjuzvwbrjuBAP
+	xmggQmTm2HAGTzGKtDu/D4QA0MgkWnnBhE2dUTF8YVzKsO0Zggp9egSc2bHwcXT93x37yp57QTXFY
+	w7pYfT9QMkVMaRB5CzBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZvMx-00000000CQs-1tiI;
-	Wed, 17 Jun 2026 18:52:11 +0000
+	id 1wZvMy-00000000CTO-3JV9;
+	Wed, 17 Jun 2026 18:52:12 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZvMo-00000000CJL-28t7;
-	Wed, 17 Jun 2026 18:52:05 +0000
+	id 1wZvMs-00000000CLN-0zNA;
+	Wed, 17 Jun 2026 18:52:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1781722320;
-	bh=tDHwRux0qgauDQRJ/SgFhalXY5Xhd44tAAD464FLUWY=;
+	s=mail; t=1781722323;
+	bh=RxyE+sRnT1pVzhbxZhN8xKv4Nq2klVQvU68B498Gn7M=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fsFzTKxUoCR14ChJpZz4mNX+uUsVs2aSQoL9vPhDTEfZ6BNrXwDnhH0UKBRnMdkbf
-	 JtNkGY1kuxS9iYbg8yxjzcmq5lcK7fuPR4VDWOsYvk8xrVYSgIvFAtJ+eNeSW9LHzh
-	 pLN8A6klZejQjEDqqfECnoaMHn2bH0C/5j0twmZrr9cjUwv7m8w2vF3g/z81LeVSOt
-	 vZvMMSyRVYoZa5MamS3b3DY21OQNjDOOStdkn6T3X5CIKzTHRhSZt5eA1+D3bZxfMv
-	 SaK73uYFyc/Ovs60kOnlb+BZcFWKsJK/v0nPvtUQuHe3cG0Iah7xNuXznDsQyEmssu
-	 bazzRLNeKAjpw==
+	b=R45KwcxmeLD2Cyg8vlMNxlpNvKGvgth/D5NDogMMI8Ol1uPhzDr9jK1yrh/zKhnH2
+	 u+zckcAZAgExcG5a0DGYU4VaZK9mP1FdsOgBj9tMv3zkHmqY6XL7sHMO1x71P2EeU1
+	 3Bl+itGWP0mibDhzHHhjUVX1dwLQZGXKt5VRxfMTePBo2jNQ3UO5o6t/txTF46HQjU
+	 U/L5L8eyeEMMNXt0WcuWWvQVZlIl/Oxz5r1Dmy0wYm2vrXZcZsaFKUNd4Yt84uLqJi
+	 Ksqg4fZO7vUCg0lzmut1vSnCZ5kX4jwsnrN0SxdQ7P1sr9gX/R9oICs5cq0gkj+CL9
+	 ROfbqWN5+JUrw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 53E0F17E0B81;
-	Wed, 17 Jun 2026 20:52:00 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 57E3D17E0EB2;
+	Wed, 17 Jun 2026 20:52:03 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 17 Jun 2026 21:51:55 +0300
-Subject: [PATCH 2/9] drm/rockchip: vop2: Reset AXI and DCLK to improve
- robustness
+Date: Wed, 17 Jun 2026 21:51:59 +0300
+Subject: [PATCH 6/9] drm/bridge: dw-hdmi-qp: Log resolution and refresh
+ rate in atomic_enable()
 MIME-Version: 1.0
-Message-Id: <20260617-dw-hdmi-qp-yuv-v1-2-a665cfd06d7d@collabora.com>
+Message-Id: <20260617-dw-hdmi-qp-yuv-v1-6-a665cfd06d7d@collabora.com>
 References: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
 In-Reply-To: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -70,8 +70,8 @@ Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_115202_706711_86F7A65C 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20260617_115206_471525_0995B296 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,136 +88,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Assert the AXI reset in the CRTC disable path, and the VP DCLK reset in
-the enable path.
+The debug entry in the HDMI branch of dw_hdmi_qp_bridge_atomic_enable()
+previously printed the literal string 'HDMI' as the mode field, giving
+no information about the actual display timing being configured.
 
-These resets are intended to leave the hardware in a clean state for the
-next use, helping recover from exceptions such as IOMMU page faults, as
-well as to prevent random display output glitches, such as a blank
-image, observed when switching modes that also change the color format,
-e.g. from RGB to YUV420 and vice versa.
+Extend it to include the active resolution and refresh rate by
+retrieving the CRTC mode from the incoming atomic state:
 
-For now this seems to affect only the RK3588, hence the resets are
-optional and will be provided in the device tree for this SoC only.
+  dw_hdmi_qp_bridge_atomic_enable mode=1920x1080@50Hz fmt=RGB rate=185625000 bpc=10
 
-Co-developed-by: Andy Yan <andy.yan@rock-chips.com>
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+This makes the log line self-contained and directly useful when
+debugging mode-setting issues, format negotiation, or TMDS rate
+mismatches without having to cross-reference a separate mode dump.
+
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 35 ++++++++++++++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++++
- 2 files changed, 39 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 4cce3e336f5b..2833fb49ad81 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -17,6 +17,7 @@
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/regmap.h>
-+#include <linux/reset.h>
- #include <linux/swab.h>
- 
- #include <drm/drm.h>
-@@ -860,6 +861,26 @@ static int vop2_core_clks_prepare_enable(struct vop2 *vop2)
- 	return ret;
- }
- 
-+static void vop2_clk_reset(struct vop2 *vop2, struct reset_control *rstc)
-+{
-+	int ret;
-+
-+	if (!rstc)
-+		return;
-+
-+	ret = reset_control_assert(rstc);
-+	if (ret < 0) {
-+		drm_warn(vop2->drm, "failed to assert reset: %d\n", ret);
-+		return;
-+	}
-+
-+	udelay(10);
-+
-+	ret = reset_control_deassert(rstc);
-+	if (ret < 0)
-+		drm_err(vop2->drm, "failed to deassert reset: %d\n", ret);
-+}
-+
- static void rk3588_vop2_power_domain_enable_all(struct vop2 *vop2)
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index 13fddd5ebc82..d73307ac4232 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -752,6 +752,8 @@ static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
  {
- 	u32 pd;
-@@ -938,6 +959,8 @@ static void vop2_disable(struct vop2 *vop2)
- {
- 	rockchip_drm_dma_detach_device(vop2->drm, vop2->dev);
+ 	struct dw_hdmi_qp *hdmi = bridge->driver_private;
+ 	struct drm_connector_state *conn_state;
++	const struct drm_display_mode *mode;
++	struct drm_crtc_state *crtc_state;
+ 	struct drm_connector *connector;
+ 	unsigned int op_mode;
  
-+	vop2_clk_reset(vop2, vop2->axi_rst);
+@@ -764,9 +766,15 @@ static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 		return;
+ 
+ 	if (connector->display_info.is_hdmi) {
+-		dev_dbg(hdmi->dev, "%s mode=HDMI %s rate=%llu bpc=%u\n", __func__,
++		crtc_state = drm_atomic_get_new_crtc_state(state, conn_state->crtc);
++		mode = &crtc_state->mode;
++		dev_dbg(hdmi->dev,
++			"%s mode=HDMI %ux%u@%uHz fmt=%s rate=%llu bpc=%u\n",
++			__func__, mode->hdisplay, mode->vdisplay,
++			drm_mode_vrefresh(mode),
+ 			drm_hdmi_connector_get_output_format_name(conn_state->hdmi.output_format),
+ 			conn_state->hdmi.tmds_char_rate, conn_state->hdmi.output_bpc);
 +
- 	pm_runtime_put_sync(vop2->dev);
- 
- 	regcache_drop_region(vop2->map, 0, vop2_regmap_config.max_register);
-@@ -1948,6 +1971,8 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 
- 	vop2_crtc_atomic_try_set_gamma(vop2, vp, crtc, crtc_state);
- 
-+	vop2_clk_reset(vop2, vp->dclk_rst);
-+
- 	drm_crtc_vblank_on(crtc);
- 
- 	vop2_unlock(vop2);
-@@ -2531,6 +2556,11 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 			return dev_err_probe(drm->dev, PTR_ERR(vp->dclk),
- 					     "failed to get %s\n", dclk_name);
- 
-+		vp->dclk_rst = devm_reset_control_get_optional(vop2->dev, dclk_name);
-+		if (IS_ERR(vp->dclk_rst))
-+			return dev_err_probe(drm->dev, PTR_ERR(vp->dclk_rst),
-+					     "failed to get %s reset\n", dclk_name);
-+
- 		np = of_graph_get_remote_node(dev->of_node, i, -1);
- 		if (!np) {
- 			drm_dbg(vop2->drm, "%s: No remote for vp%d\n", __func__, i);
-@@ -2890,6 +2920,11 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
- 		return dev_err_probe(drm->dev, PTR_ERR(vop2->pll_hdmiphy1),
- 				     "failed to get pll_hdmiphy1\n");
- 
-+	vop2->axi_rst = devm_reset_control_get_optional(vop2->dev, "axi");
-+	if (IS_ERR(vop2->axi_rst))
-+		return dev_err_probe(drm->dev, PTR_ERR(vop2->axi_rst),
-+				     "failed to get axi reset\n");
-+
- 	vop2->irq = platform_get_irq(pdev, 0);
- 	if (vop2->irq < 0)
- 		return dev_err_probe(drm->dev, vop2->irq, "cannot find irq for vop2\n");
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index ffcb39c130aa..14b437d2d088 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -165,6 +165,8 @@ enum vop2_win_regs {
- 	VOP2_WIN_MAX_REG,
- };
- 
-+struct reset_control;
-+
- struct vop2_regs_dump {
- 	const char *name;
- 	u32 base;
-@@ -238,6 +240,7 @@ struct vop2_video_port {
- 	struct vop2 *vop2;
- 	struct clk *dclk;
- 	struct clk *dclk_src;
-+	struct reset_control *dclk_rst;
- 	unsigned int id;
- 	const struct vop2_video_port_data *data;
- 
-@@ -329,6 +332,7 @@ struct vop2 {
- 	struct clk *pclk;
- 	struct clk *pll_hdmiphy0;
- 	struct clk *pll_hdmiphy1;
-+	struct reset_control *axi_rst;
- 
- 	/* optional internal rgb encoder */
- 	struct rockchip_rgb *rgb;
+ 		op_mode = 0;
+ 		hdmi->tmds_char_rate = conn_state->hdmi.tmds_char_rate;
+ 	} else {
 
 -- 
 2.54.0
