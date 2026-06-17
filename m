@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35AFFCD98FA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jun 2026 18:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FFEBCD98FD
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Jun 2026 18:52:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q10vAQi8lhKRCL85xNTfn0vjJCv6g9+B4nRF8hnL9Ug=; b=mWxKrxiCzyk8oB
-	Q4Mpp++jKjpfXkk8ZN25kKjryolnVhb1mOUzs4Y6Pd4RqN2rMFzBw6lot1jFRI5Csyp26wiBYF6Yl
-	/JXx0AYnzkFp5eehoFkARlYupFCat24D48fakJePM8xpjiaduqQpciMq3AbNRFAGN5uG8XWwr27tR
-	mbBn5ZHdjlnNJf5Igl76kAQ2CC5WNRMfg90FteTsV53abVS6U6if6//614EoDwdMTH9nmdD+crv+K
-	1iNsqlmQho6rx8+GtoLIMEQSxQpp7oGnr9qYUwFsCT1cbDM8KEYHeGpkeq2hsKQ2pu28zZg0yb7Rr
-	ySBpye61YhM3hiL6/gYg==;
+	List-Owner; bh=i0A+MumezmTvEJr0yW4Na+gBbN9PvWMxtWD1+7v5mhk=; b=SjUDz0NmgW6fnl
+	Sd2We1AKgzOYiNGmOwA/pJa+5OpHa/XV6F6wkEPcX1vUgDXNc9ekTH5fzXfZ+VbMAjP5+O5NZ9VZN
+	Kp6RhovYNMaTejYtcnROBE3hnCWlaUDjh+JUsnNglsIhiXZvI/Nv+axfQtu9j1sWcJfizDqZggR3h
+	m2PI53ZXE9sR9+9wGNaudLwJXk/E5QgdZCKmSxWsgdH4AihpSMSPw+AozZGW1KIbWex6p9jmX6O5N
+	D0wOC0LjleUPECDt88UFX6KJGmtj0naNPaZSEIVZTjWC7H1j1hbqffpX5DxTW0HX4rOyFXWUmJCux
+	VjS2oM2bCElwi5VLfmww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZvN0-00000000CWL-0K2N;
-	Wed, 17 Jun 2026 18:52:14 +0000
+	id 1wZvN3-00000000CeC-0lhj;
+	Wed, 17 Jun 2026 18:52:17 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wZvMs-00000000CLr-3ZrJ;
-	Wed, 17 Jun 2026 18:52:09 +0000
+	id 1wZvMt-00000000CMO-3Vhc;
+	Wed, 17 Jun 2026 18:52:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1781722325;
-	bh=SsYb54x0tancRWbNRMe9tudgkZipWAm8nxe1GklgbkE=;
+	bh=+zMBc9cvNd9kN7V+U1U6o2kMwD6S1HsWu+emdfG6GtE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=VRVkRt58jd5iw9GVAiv25VuwgZ/sVL5HEYqLUGCjzCx4HsTnqSazwV/3U38v7DrPL
-	 1woS8AcjnthCf7sOx0Gw4WrH41yftJcDRjKz1L0TtBBSiXwXTLyX+ycY/HMP4l9OoU
-	 FrqrxyWEp1hAM7p2JPKU0Yi8Sog9ayuL44dCwNAADg7cLzPvGNRtBIp/kXjV5bkPA2
-	 PQC5f6Ccw9BGQy1JcamcTsaSN0fRyLWRAi5d3JaBAkVwxDMkWiLSvVwC3yepYhx80k
-	 u3EALlTB0T5WpU0JVb3assgNQdXLTbgOKvMMoT7nUy5bjUblOLWSp8kIHPPKK1UU8N
-	 2My6o+wKlqy1A==
+	b=fTTDpCI0S6IuZnP5O7AF58qW5BWea8gyzki9trM4Qfrkonwc9O5CxyhaXb9Qb5LmD
+	 mUf7OO8LU32m/fGh1A4SEZ6qJWsFhtZH+mNIW16GUmZb6el+5/rnMNULpn6ntyvThg
+	 mVnp9VWDaoxq8xb7STmO4BsT9mnKXshMLeTVuTpgV2DMfaGKJSZyV3S80aMv082reb
+	 kriYrGVLaI5pa0Pkd06dPy+9BJSXSpengWo/MfDySt0WkOTJdghQIIriZ8dOKiBfyI
+	 6Es6Qyuuh2DJApuDjk9oqsuyMUw3SlMnlkVo+BiZpUZTScTeMu+T6vxkZtGFJLjA10
+	 oaviC2DLeQI/w==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D5CF817E120F;
-	Wed, 17 Jun 2026 20:52:04 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9167217E14FA;
+	Wed, 17 Jun 2026 20:52:05 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 17 Jun 2026 21:52:01 +0300
-Subject: [PATCH 8/9] drm/rockchip: dw_hdmi_qp: Enable YUV420 output format
+Date: Wed, 17 Jun 2026 21:52:02 +0300
+Subject: [PATCH 9/9] arm64: dts: rockchip: Add RK3588 VOP2 resets
 MIME-Version: 1.0
-Message-Id: <20260617-dw-hdmi-qp-yuv-v1-8-a665cfd06d7d@collabora.com>
+Message-Id: <20260617-dw-hdmi-qp-yuv-v1-9-a665cfd06d7d@collabora.com>
 References: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
 In-Reply-To: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -69,8 +69,8 @@ Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_115207_064711_7D36BF39 
-X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-CacheID: sfid-20260617_115208_065121_84F83796 
+X-CRM114-Status: UNSURE (   7.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,34 +88,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Both RK3576 and RK3588 SoCs are capable of driving the YUV420 output
-color format, and the required bus-format handling and VOP2 support are
-already in place.  Advertise it via the platform supported formats so
-the HDMI core can select it.
+Add the missing reset properties to VOP2 on RK3588.
 
-YUV420 halves the TMDS bandwidth compared to RGB/YUV444, which enables
-high-resolution modes such as 4K@60Hz on links that cannot otherwise
-carry the full-bandwidth signal.
-
+Co-developed-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 3a1c027aa90b..e29522afc6f0 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -612,7 +612,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 
- 	plat_data.supported_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444) |
- 				      BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) |
--				      BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
-+				      BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422) |
-+				      BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420);
- 
- 	encoder = &hdmi->encoder.encoder;
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index 4fb8888c281c..1404cd7ecf02 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -1453,6 +1453,18 @@ vop: vop@fdd90000 {
+ 			      "pll_hdmiphy0";
+ 		iommus = <&vop_mmu>;
+ 		power-domains = <&power RK3588_PD_VOP>;
++		resets = <&cru SRST_A_VOP>,
++			 <&cru SRST_H_VOP>,
++			 <&cru SRST_D_VOP0>,
++			 <&cru SRST_D_VOP1>,
++			 <&cru SRST_D_VOP2>,
++			 <&cru SRST_D_VOP3>;
++		reset-names = "axi",
++			      "ahb",
++			      "dclk_vp0",
++			      "dclk_vp1",
++			      "dclk_vp2",
++			      "dclk_vp3";
+ 		rockchip,grf = <&sys_grf>;
+ 		rockchip,vop-grf = <&vop_grf>;
+ 		rockchip,vo1-grf = <&vo1_grf>;
 
 -- 
 2.54.0
