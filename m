@@ -4,86 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88BABCD98DE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jun 2026 04:09:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78643CD98ED
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jun 2026 07:59:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Rh+mTFFCRNSYUmsyFQDV0IOs+jzS6nxYr1aCKmcM+og=; b=12rn7cLc38Ebx/
-	UlS9jyxJiPGdNu+XiW1gSsyyn+viyHHg5/7wGt1yOJAEGdlxA+rWBhMeN2aUv/gO4k5V+iZCU5xkT
-	fEaPJ2xs0zFyl/mjeeV187iNWy7HSZ2bX9aAAnUKdgQblMhHCzBrgYt3IaXEjJtO+jkmCsD+OURhM
-	H9aDHrnOijc8/IwdRGB3rH755V2Wa5JxKy8IKuRsiv+5SRx4ij8lMbq/XvSOG+CG42TfW+AhqCbAa
-	/63pgEIN2PQNBuYu25QGHaILMnjeT1fyNld/tht6dGcRBQXIAuPjBZZsdHdGuq/6jot/SKPh3a5g2
-	stHQI8xd/5Yy7PxszHZQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ghPkSH6wI54dpS/4E7fbbx/Hx++/38tkYqLaumCkCTw=; b=dO/AKCQ9wd1LbX
+	68tb3c6yulvaLZqY6bLBnKKGJB9fuK+y9BuyBx0/ZVzNZg3ORTgaAxSPW6a4Ntcy/egHNc1wfDwkM
+	yNVOwA4bhGLSufzZQ6IaOqyLh+Hf+KIcciG8NWGl7rUVuL6SOfSMGFt4i8OjLmRT69JvEBiY3KGt3
+	HiEJBhRq+gEDlvxq40ZaKZs6QLHDaETp+nDS0LHOpgP2FHpYTicP0AXmLrTW3qMMxPjbhRSN7+u2w
+	ZywAFqUPItMdslyY+Lfm9hBrePN9snecMoqSvzNyeg6WyB+nm+uPNzYKxkbRJ+ilyag2nGxJ0c27V
+	0lA3P7WiprPSl0ZhgUKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa43w-00000000bDG-1vzV;
-	Thu, 18 Jun 2026 04:09:08 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1wa7ee-00000000oQA-1Pdx;
+	Thu, 18 Jun 2026 07:59:16 +0000
+Received: from out-170.mta0.migadu.com ([91.218.175.170])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa43u-00000000bCZ-1D36
+	id 1wa7eb-00000000oP8-2ju1
 	for linux-rockchip@lists.infradead.org;
-	Thu, 18 Jun 2026 04:09:07 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-c899550c840so75525a12.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 17 Jun 2026 21:09:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781755745; x=1782360545; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=mf3jJNGCHMNwyX+15Gf3qCeUSoD/AqOS50pGRceH38o=;
-        b=mz420ZTSMzMcSYAhtEmiD4sEAEgXnUp8WDJLC+5SmUmZ+p1ayPCx8KXcBWztnqwyWQ
-         jUVizBMJtlFCDTi3G0rg0pKd4pVSoRTGVCpJpM81+SRkAeIELEDhjidh11zyhn9l4DBY
-         2FRvazgSolnEcWy5eHBNoxhlYD1IOder+7lX07CJx0+AFdRHnZcTzpj8ONy3ozHB/Z+Z
-         9xzQTkKz9M2RpiKbadMNWcaBTqzqKXbww9siIHkMOk6FrtMgXnVg/+aPvCrD4Bshj83l
-         28jYdg3sOBYPLcD+3QVr095q7H7L8OM5oHdM7WD9uSxZCB0QbMo7SoZzbN8WA5yaYFD+
-         Ovrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781755745; x=1782360545;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mf3jJNGCHMNwyX+15Gf3qCeUSoD/AqOS50pGRceH38o=;
-        b=g5nCjBt/04rFBKNyB9muJxhC2ei1j6pog0rEhI59dVjsvAAu4pAP/GHk39BHVKPnpK
-         fqK7z7PMB8PFU8tixS9v5iuzTV2EwzlDxIrTue6H5DBwZwhvqzUZGONYubtnJeZ2fkKM
-         DVhmGwWv7I5ryIya+iTZ33HQ4xPXgT0jAi9ptOEefgAdO0ElFtSKRvCPmgE1rFgVfLGd
-         C5RGZkWGDJC9ZtkJBx2oOxz6leiOC3ilW4eTdvivAd/YCpD9X/q/UOIwy2q7rdQ8yAiz
-         0FccgYCsxtrK/OHZA1LgtofjCvbIj5wDDpz0mRLV0M2voGkR3g3+k0dP6lSgwccST/+Y
-         DhPg==
-X-Forwarded-Encrypted: i=1; AFNElJ/7KH3yosZd2MvXvHdypTn2IxnrPyJVUy0lCGAYG/0zU43Nht1JQk5pO6yF2SkxCrSdrJlwO9cg2bLWIeylqw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwKx1yk22o7paNUav7WWV5SjyVDaamshAsBADeMqVIjV32Sew3i
-	wQ5dQn5tpiTdhlLCS4DesJ9RGvX0KrVeylBvvxbVqxl0YkL8wXKOhpd2
-X-Gm-Gg: Acq92OGCVeCZlPyhuPSREtrJg3b81YVj0Ac4+pcgcc4CQspvbA2vjcF+r+Oqzse5+aE
-	+VuzyA0hY1nURTVUZ9xBfVF/kZBPyEYvUxOKO0H2DOgtQyLnER6I5e2yMf3nDwNk/JnP31KuBhQ
-	vM69kEO7Il5cKU3cqnXv5KBtCiAkaY6SflJ5rZYdGVDjtTE6L+pSDk4s50O4y9HsU8yqQSLD41b
-	CI6NovM5xp+eGeykAMasUF+zfx/o0/k65cIz5aiNFLV0ZXRzt06OskziWPAK+VyaakHUgcq1q8H
-	qp1zThrDW3WQbJZqZ2kQxcCo7vPeUxrHlEqIXNpOzp/b/w5mAIbZ4juyGXhAs8lIODsx9AxDMUf
-	FlopgCp4KV487T6VJ/TM7AZWHFF5KnSrLPDID39dTvSQ0Yvh9/Yu9XbDWdvZHOfAdmojIBvCP3Y
-	xKgo3qoqblACaqNi44g/ZIsX1Wut5/fX0W
-X-Received: by 2002:a05:6a00:228f:b0:842:6c02:2fa4 with SMTP id d2e1a72fcca58-8452446d90amr7256898b3a.14.1781755745338;
-        Wed, 17 Jun 2026 21:09:05 -0700 (PDT)
-Received: from haichao.tail057a43.ts.net ([2001:da8:e000:1206:c19d:3f9a:e9ce:93d4])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8434afc9fa8sm18077491b3a.32.2026.06.17.21.09.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jun 2026 21:09:05 -0700 (PDT)
-From: Ruoyu Wang <ruoyuw560@gmail.com>
-To: Srinivas Kandagatla <srini@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Ruoyu Wang <ruoyuw560@gmail.com>
-Subject: [PATCH v2] nvmem: rockchip-otp: skip zero-byte reads
-Date: Thu, 18 Jun 2026 12:08:59 +0800
-Message-ID: <20260618040859.407326-1-ruoyuw560@gmail.com>
-X-Mailer: git-send-email 2.51.0
-MIME-Version: 1.0
+	Thu, 18 Jun 2026 07:59:15 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1781769539;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Vmts3eVcq1AB/MaOX1+dMbZWrM8G02gzaeVnUoYstpY=;
+	b=iHsAZ1Jp6nMQWYrVGGLThRws4MJ9eNCU22+ngX8PXCh56gz2+Vbb24ZIj6VGb6/jM/lMya
+	7u+JmEvYY1JMZM82d6xmfBZcRD77TXUYJe7RDF4Rvhk6o9Y4oUKwc+bcBM43seA8EKzAXD
+	jqJ8XMf6IIrR60MXQaKBLDsvNNEHTWt4MUAG6DUP4bCRjZlgF3DPSSZcWF4biChXaQ2rvJ
+	rMa6+HeOo+GYXNQnVeNDf02rSmTd03tFHgF1wMH8fR/NRxStYWyprrfJFu6hm+FJmrw0Pc
+	98X6LUc1KD/DrZ71YOD/uup/O4qaQgMykCC/fGXLxh8paDGre4D2TXrTsR25LA==
+Date: Thu, 18 Jun 2026 09:58:52 +0200
+Message-Id: <DJC0L3CRJ0WL.IZEYVLPROMM1@cknow-tech.com>
+Cc: <kernel@collabora.com>, "Andy Yan" <andyshrk@163.com>,
+ <dri-devel@lists.freedesktop.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 1/9] dt-bindings: display: vop2: Add missing reset
+ properties
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Sandy Huang"
+ <hjc@rock-chips.com>, =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ "Andy Yan" <andy.yan@rock-chips.com>, "David Airlie" <airlied@gmail.com>,
+ "Simona Vetter" <simona@ffwll.ch>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "Rob Herring" <robh@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
+ <conor+dt@kernel.org>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Andrzej
+ Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
+ <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Luca
+ Ceresoli" <luca.ceresoli@bootlin.com>
+References: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
+ <20260617-dw-hdmi-qp-yuv-v1-1-a665cfd06d7d@collabora.com>
+In-Reply-To: <20260617-dw-hdmi-qp-yuv-v1-1-a665cfd06d7d@collabora.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260617_210906_329709_1765EF1B 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20260618_005913_834211_1C1E9AA2 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,41 +86,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-nvmem_device_read() does not reject a zero-byte read before calling the
-provider reg_read callback. rockchip_otp_read() then enables clocks and
-dispatches to the SoC-specific callback.
+Hi Cristian,
 
-Return 0 from rockchip_otp_read() before enabling clocks when bytes is
-zero. This avoids hardware access for empty reads and prevents zero
-counts from reaching the internal reg_read callbacks.
+Thanks for this series :-) Just 1 nit (at the end) ...
 
-Fixes: 8ab099fafbbc ("nvmem: rockchip-otp: Add support for RK3588")
-Suggested-by: Jonas Karlman <jonas@kwiboo.se>
-Signed-off-by: Ruoyu Wang <ruoyuw560@gmail.com>
----
-v2:
-- Handle empty reads in rockchip_otp_read() instead of initializing ret in
-  rk3588_otp_read().
+On Wed Jun 17, 2026 at 8:52 PM CEST, Cristian Ciocaltea wrote:
+> Document the VOP2 resets corresponding to the AXI, AHB and DCLK_VP0..2
+> clocks, which are common to all supported SoCs, plus DCLK_VP3 which is
+> provided only on RK3588.
+>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  .../bindings/display/rockchip/rockchip-vop2.yaml   | 42 ++++++++++++++++++++++
+>  1 file changed, 42 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> index 93da1fb9adc4..d3bc5380f910 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> @@ -82,6 +82,20 @@ properties:
+>        - {}
+>        - {}
+>  
+> +  resets:
+> +    minItems: 5
+> +    maxItems: 6
+> +
+> +  reset-names:
+> +    minItems: 5
+> +    items:
+> +      - const: axi
+> +      - const: ahb
+> +      - const: dclk_vp0
+> +      - const: dclk_vp1
+> +      - const: dclk_vp2
+> +      - const: dclk_vp3
+> +
+>    rockchip,grf:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description:
+> @@ -148,6 +162,12 @@ allOf:
+>          clock-names:
+>            maxItems: 5
+>  
+> +        resets:
+> +          maxItems: 5
+> +
+> +        reset-names:
+> +          maxItems: 5
+> +
+>          interrupts:
+>            maxItems: 1
+>  
+> @@ -194,6 +214,12 @@ allOf:
+>              - {}
+>              - const: pll_hdmiphy0
+>  
+> +        resets:
+> +          maxItems: 5
+> +
+> +        reset-names:
+> +          maxItems: 5
+> +
+>          interrupts:
+>            minItems: 4
+>  
+> @@ -246,6 +272,12 @@ allOf:
+>              - const: pll_hdmiphy0
+>              - const: pll_hdmiphy1
+>  
+> +        resets:
+> +          minItems: 6
+> +
+> +        reset-names:
+> +          minItems: 6
+> +
+>          interrupts:
+>            maxItems: 1
+>  
+> @@ -289,6 +321,16 @@ examples:
+>                                "dclk_vp0",
+>                                "dclk_vp1",
+>                                "dclk_vp2";
+> +                resets = <&cru SRST_A_VOP>,
+> +                         <&cru SRST_H_VOP>,
+> +                         <&cru SRST_VOP0>,
+> +                         <&cru SRST_VOP1>,
+> +                         <&cru SRST_VOP2>;
+> +                reset-names = "axi",
+> +                              "ahb",
+> +                              "dclk_vp0",
+> +                              "dclk_vp1",
+> +                              "dclk_vp2";
+>                  power-domains = <&power RK3568_PD_VO>;
 
- drivers/nvmem/rockchip-otp.c | 3 +++
- 1 file changed, 3 insertions(+)
+Place reset* props below power-domains (like in patch 9) ?
+So everyone who copies your example has the correct sorting order.
 
-diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
-index 0ec78b5e19e7d..95685a9fcc77b 100644
---- a/drivers/nvmem/rockchip-otp.c
-+++ b/drivers/nvmem/rockchip-otp.c
-@@ -272,6 +272,9 @@ static int rockchip_otp_read(void *context, unsigned int offset,
- 	if (!otp->data || !otp->data->reg_read)
- 		return -EINVAL;
- 
-+	if (!bytes)
-+		return 0;
-+
- 	ret = clk_bulk_prepare_enable(otp->data->num_clks, otp->clks);
- 	if (ret < 0) {
- 		dev_err(otp->dev, "failed to prepare/enable clks\n");
--- 
-2.51.0
+Cheers,
+  Diederik
+
+>                  rockchip,grf = <&grf>;
+>                  iommus = <&vop_mmu>;
+
 
 _______________________________________________
 Linux-rockchip mailing list
