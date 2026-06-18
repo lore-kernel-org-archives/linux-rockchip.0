@@ -4,76 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E5ACD98F2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jun 2026 11:46:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68A69CD98F2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jun 2026 11:52:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IHc4grV/xVC+01eNJcyrLBzp69vPF4XuLdBWSrtHuQg=; b=IDps5uquZidlvJ
-	r7eHpjnzJKNwJFMFew13TENbkmO+lcnMbKPqG+79w9acTgm1yOQx1A7a60XZ0KtYGhzYhQ5khIes0
-	QmJ+zYm6BXsKFvtgfwY89UCt/yb4HzC510qn/oC/MHE50m5cVx6FSVEP+f/r9NAc7EkTNK7pxcev1
-	8iDdKiu18zZYSfBxTWQI9Y+P+re9L5Ed6HIPOw69JO1eggbs1cndiADavoXZtuhMlMP91TJIAa1ui
-	ndCHwJyjjUK1aT2GR2q2xWKC8my/n8RnM+4CcrKXsw10r60WYkUqppvswLN2znS8er4Xtk5Zi/8iP
-	4s7rmMMK05Uyksw3/vvg==;
+	List-Owner; bh=qM0Na5KSkIhisR+oQmVi0z6/pJBWI4O+hRCfeuP3na4=; b=S/bJ0EPUWYiDKW
+	N+xNiZ2+3rAnfuobCqa+Z5NPJtIBlhSwM0LHDmybtivdV+fZiwqQuOofmDhTS/Dre+dG9toT0rBjH
+	KMAymgJ6NyP5lzQl+c4A6eDoggiYJaQlmov5Hk2GE2hcpxiAhOlcQHcJH1YuOUU6iWOYxCzZEHY/1
+	MV53bZI2IrGV9HRh7FbRmZBG7xu9S7VXT1r9YAy6AYGKAfvvq7Y1Iel3ZTNLuwu6HKLiF/eJSPdTj
+	M/FJ0V11hobx5F9bQxPp6GuDD5TgeC85zs8n6pKV/57e4gX1mQnRqwa1cYmyrgCAq8AEYO9/CTd4+
+	JAS93ffG36P9J/9qS3Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waBCs-00000001D9p-3LSc;
-	Thu, 18 Jun 2026 11:46:50 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1waBIA-00000001DZJ-2cQP;
+	Thu, 18 Jun 2026 11:52:18 +0000
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waBCp-00000001D8u-0p2Z;
-	Thu, 18 Jun 2026 11:46:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1781783203;
-	bh=9yeH/5xhRUOAdE0bJjDccTvLL5+CdjMFstSXsgg0CEQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fAdfA6s/ZcUtfI0N7T8BtYWrLx/JOtP3a33kFxOh5bjoWupssUOOgxtoUr3j2dE8z
-	 0twbUF21YFAMQhuf2x99LsrQxObeD3eFSmL0IGZwSwp4gVL9U/iqtTo3dc66btDw38
-	 kLuxFQoIhNHI/uK/e+brFxjffnZdSGyMgr7pM8WAPKqHnljq3IQcBtqCwIxm/7QY6F
-	 ZXgHPYm5eN5Nl4zBi9A2OLY3EGRmtsE5gCdITVDNPPb+D60MBHFW2XhnALWNACs5jC
-	 2OWN/pIzRgX7sHNSUJr1sQEPbd38XLxyMI4qNnYPeGoFEcy9ggydxrHuGh6gotZTLn
-	 RG8fn+TYDJQpA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D5D7817E0151;
-	Thu, 18 Jun 2026 13:46:42 +0200 (CEST)
-Message-ID: <302d42b0-108e-4936-bc34-49b9194985f1@collabora.com>
-Date: Thu, 18 Jun 2026 14:46:42 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1waBI1-00000001DYU-2fPv;
+	Thu, 18 Jun 2026 11:52:11 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
+	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 6A021200320;
+	Thu, 18 Jun 2026 13:52:06 +0200 (CEST)
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1waBHy-003QhG-0z;
+	Thu, 18 Jun 2026 13:52:06 +0200
+Received: from pza by lupine with local (Exim 4.98.2)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1waBHy-0000000096F-0jLY;
+	Thu, 18 Jun 2026 13:52:06 +0200
+Message-ID: <604a73b122bd5fb7b35fe5bfeb0352bd9fd99046.camel@pengutronix.de>
 Subject: Re: [PATCH 2/9] drm/rockchip: vop2: Reset AXI and DCLK to improve
  robustness
-To: Philipp Zabel <p.zabel@pengutronix.de>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Sandy Huang	
+ <hjc@rock-chips.com>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, 
  Andy Yan <andy.yan@rock-chips.com>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
+ Simona Vetter <simona@ffwll.ch>,  Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann	 <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Andrzej Hajda	 <andrzej.hajda@intel.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>,  Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman	
+ <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
+	 <luca.ceresoli@bootlin.com>
+Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Date: Thu, 18 Jun 2026 13:52:05 +0200
+In-Reply-To: <302d42b0-108e-4936-bc34-49b9194985f1@collabora.com>
 References: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
- <20260617-dw-hdmi-qp-yuv-v1-2-a665cfd06d7d@collabora.com>
- <7c79f233c863654b0266de4b5ec5a8c72bb17715.camel@pengutronix.de>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <7c79f233c863654b0266de4b5ec5a8c72bb17715.camel@pengutronix.de>
+	 <20260617-dw-hdmi-qp-yuv-v1-2-a665cfd06d7d@collabora.com>
+	 <7c79f233c863654b0266de4b5ec5a8c72bb17715.camel@pengutronix.de>
+	 <302d42b0-108e-4936-bc34-49b9194985f1@collabora.com>
+User-Agent: Evolution 3.56.2-0+deb13u1 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260618_044647_401793_FF31C8C1 
-X-CRM114-Status: GOOD (  18.37  )
+X-CRM114-CacheID: sfid-20260618_045210_533074_77A9AFC6 
+X-CRM114-Status: GOOD (  22.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,112 +87,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/18/26 12:39 PM, Philipp Zabel wrote:
-> On Mi, 2026-06-17 at 21:51 +0300, Cristian Ciocaltea wrote:
->> Assert the AXI reset in the CRTC disable path, and the VP DCLK reset in
->> the enable path.
->>
->> These resets are intended to leave the hardware in a clean state for the
->> next use, helping recover from exceptions such as IOMMU page faults, as
->> well as to prevent random display output glitches, such as a blank
->> image, observed when switching modes that also change the color format,
->> e.g. from RGB to YUV420 and vice versa.
->>
->> For now this seems to affect only the RK3588, hence the resets are
->> optional and will be provided in the device tree for this SoC only.
->>
->> Co-developed-by: Andy Yan <andy.yan@rock-chips.com>
->> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 35 ++++++++++++++++++++++++++++
->>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++++
->>  2 files changed, 39 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> index 4cce3e336f5b..2833fb49ad81 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->> @@ -17,6 +17,7 @@
->>  #include <linux/platform_device.h>
->>  #include <linux/pm_runtime.h>
->>  #include <linux/regmap.h>
->> +#include <linux/reset.h>
->>  #include <linux/swab.h>
->>  
->>  #include <drm/drm.h>
->> @@ -860,6 +861,26 @@ static int vop2_core_clks_prepare_enable(struct vop2 *vop2)
->>  	return ret;
->>  }
->>  
->> +static void vop2_clk_reset(struct vop2 *vop2, struct reset_control *rstc)
+On Do, 2026-06-18 at 14:46 +0300, Cristian Ciocaltea wrote:
+> On 6/18/26 12:39 PM, Philipp Zabel wrote:
+> > On Mi, 2026-06-17 at 21:51 +0300, Cristian Ciocaltea wrote:
+> > > Assert the AXI reset in the CRTC disable path, and the VP DCLK reset in
+> > > the enable path.
+> > > 
+> > > These resets are intended to leave the hardware in a clean state for the
+> > > next use, helping recover from exceptions such as IOMMU page faults, as
+> > > well as to prevent random display output glitches, such as a blank
+> > > image, observed when switching modes that also change the color format,
+> > > e.g. from RGB to YUV420 and vice versa.
+> > > 
+> > > For now this seems to affect only the RK3588, hence the resets are
+> > > optional and will be provided in the device tree for this SoC only.
+> > > 
+> > > Co-developed-by: Andy Yan <andy.yan@rock-chips.com>
+> > > Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> > > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> > > ---
+> > >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 35 ++++++++++++++++++++++++++++
+> > >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++++
+> > >  2 files changed, 39 insertions(+)
+> > > 
+> > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > > index 4cce3e336f5b..2833fb49ad81 100644
+> > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > > @@ -17,6 +17,7 @@
+> > >  #include <linux/platform_device.h>
+> > >  #include <linux/pm_runtime.h>
+> > >  #include <linux/regmap.h>
+> > > +#include <linux/reset.h>
+> > >  #include <linux/swab.h>
+> > >  
+> > >  #include <drm/drm.h>
+> > > @@ -860,6 +861,26 @@ static int vop2_core_clks_prepare_enable(struct vop2 *vop2)
+> > >  	return ret;
+> > >  }
+> > >  
+> > > +static void vop2_clk_reset(struct vop2 *vop2, struct reset_control *rstc)
+> > 
+> > The _clk part of the function name is misleading ...
 > 
-> The _clk part of the function name is misleading ...
-
-Ack.  
-
-We need to make this clearly distinct from another similarly named function,
-vop2_crtc_reset(), hence I'd propose:
-
-- vop2_reset_assert_deassert()
-- vop2_reset_cycle()
-- vop2_do_reset()
-
-Any preference / alternative suggestions?
-
+> Ack.  
 > 
-> [...]
->> @@ -938,6 +959,8 @@ static void vop2_disable(struct vop2 *vop2)
->>  {
->>  	rockchip_drm_dma_detach_device(vop2->drm, vop2->dev);
->>  
->> +	vop2_clk_reset(vop2, vop2->axi_rst);
+> We need to make this clearly distinct from another similarly named function,
+> vop2_crtc_reset(), hence I'd propose:
 > 
-> ... because this function is also called with the AXI reset control.
+> - vop2_reset_assert_deassert()
+> - vop2_reset_cycle()
+> - vop2_do_reset()
 > 
->> +
->>  	pm_runtime_put_sync(vop2->dev);
->>  
->>  	regcache_drop_region(vop2->map, 0, vop2_regmap_config.max_register);
->> @@ -1948,6 +1971,8 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
->>  
->>  	vop2_crtc_atomic_try_set_gamma(vop2, vp, crtc, crtc_state);
->>  
->> +	vop2_clk_reset(vop2, vp->dclk_rst);
->> +
->>  	drm_crtc_vblank_on(crtc);
->>  
->>  	vop2_unlock(vop2);
->> @@ -2531,6 +2556,11 @@ static int vop2_create_crtcs(struct vop2 *vop2)
->>  			return dev_err_probe(drm->dev, PTR_ERR(vp->dclk),
->>  					     "failed to get %s\n", dclk_name);
->>  
->> +		vp->dclk_rst = devm_reset_control_get_optional(vop2->dev, dclk_name);
-> 
-> Please use devm_reset_control_get_optional_exclusive() directly.
+> Any preference / alternative suggestions?
 
-Thanks for pointing this out, I missed the comment mentioning the explicit API
-transition.
+Or vop2_reset_control_reset(). The three above are equally fine.
 
->> +		if (IS_ERR(vp->dclk_rst))
->> +			return dev_err_probe(drm->dev, PTR_ERR(vp->dclk_rst),
->> +					     "failed to get %s reset\n", dclk_name);
->> +
->>  		np = of_graph_get_remote_node(dev->of_node, i, -1);
->>  		if (!np) {
->>  			drm_dbg(vop2->drm, "%s: No remote for vp%d\n", __func__, i);
->> @@ -2890,6 +2920,11 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
->>  		return dev_err_probe(drm->dev, PTR_ERR(vop2->pll_hdmiphy1),
->>  				     "failed to get pll_hdmiphy1\n");
->>  
->> +	vop2->axi_rst = devm_reset_control_get_optional(vop2->dev, "axi");
-> 
-> Same as above, devm_reset_control_get_optional_exclusive().
-
-Ack.
-
-Thanks for reviewing,
-Cristian
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
