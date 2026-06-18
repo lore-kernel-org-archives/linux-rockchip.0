@@ -4,71 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9114CD98ED
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jun 2026 09:40:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7826CD98F2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jun 2026 11:21:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JERfnSowYoYe3rZbjVLewRmMTTSu7tQXnehhOhF054s=; b=e10+9wwQW7ivJJ
-	cKJ9GSXv7mVu5lF1TutzM9rHdn9eCW4vpjpIWPCxX0VyaFvYKApOm3ki7c4zyYHjGMg34oNywiaP7
-	WWVRvlijskkdzvjaMn8sexGx5Q6xs6cI+1MBpJCQj6yLsvIjDNNHpsNGTuEYgsEgj/36xBgwJ3dnU
-	bhGD5uY5D9xk6iEpVVEZd0oyyBU0M/d+pJ82Xlo3BkDERc3wkUC4W5aat6fyzDx3wc/H3npIagBz0
-	FwBby18Y1rO8FZIvt0WkL4k2jjDh2VCt6r7xMsAVoigcqNBdF9oi5GJkpqr4W9kvffMraL6uifgz3
-	1jKkk6NwbDku2zA4FpzA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ahW+IKuVMvY5pz7mBqlxgw4/pUQma+E3Gv2xM7bz470=; b=bMAW5eVL1CUoDCTyUrQtna/eCu
+	P06gJhktfebgEE4caoxRFlE93Xo1/3vFgej2sq4KE+u6w+dVk6AicdlEvDjDgEVyVBTIlYV9U5Sr+
+	b3H3TsajxZqGD/054gsqjEbaaQyjhFX1baOoptUQuworOPEWnxZA/0t29iw9EyeKE66dNcnFWTJoD
+	3zhis2Jbfp+F2opeIB+4p/iYHyW+cDb8mgPENAFd+wmlLYO3mXy5+v3TuhtgiNd9pmfWJclXRlMyi
+	LAA8FUSbVC3Sny59TM8Y35L89H7ejzSPoCTm9lhr/4JQXHgkKgkMVqe0KwLczFQ2wlhEuojyB8cbp
+	tfKnrW8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa9E1-00000000zPz-3FoJ;
-	Thu, 18 Jun 2026 09:39:53 +0000
-Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	id 1waAnl-00000001C0A-48Hu;
+	Thu, 18 Jun 2026 11:20:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wa9Dx-00000000zNh-0dNF;
-	Thu, 18 Jun 2026 09:39:52 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
-	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 5DFB1200F09;
-	Thu, 18 Jun 2026 11:39:46 +0200 (CEST)
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wa9Du-003Prb-0w;
-	Thu, 18 Jun 2026 11:39:46 +0200
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wa9Du-00000000532-0eH7;
-	Thu, 18 Jun 2026 11:39:46 +0200
-Message-ID: <7c79f233c863654b0266de4b5ec5a8c72bb17715.camel@pengutronix.de>
-Subject: Re: [PATCH 2/9] drm/rockchip: vop2: Reset AXI and DCLK to improve
- robustness
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Sandy Huang	
- <hjc@rock-chips.com>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>,  Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann	 <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Andrzej Hajda	 <andrzej.hajda@intel.com>, Neil
- Armstrong <neil.armstrong@linaro.org>,  Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman	
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
-	 <luca.ceresoli@bootlin.com>
-Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Date: Thu, 18 Jun 2026 11:39:45 +0200
-In-Reply-To: <20260617-dw-hdmi-qp-yuv-v1-2-a665cfd06d7d@collabora.com>
-References: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
-	 <20260617-dw-hdmi-qp-yuv-v1-2-a665cfd06d7d@collabora.com>
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1waAnj-00000001Bzk-1hxn;
+	Thu, 18 Jun 2026 11:20:51 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 599E74450C;
+	Thu, 18 Jun 2026 11:20:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A7D51F000E9;
+	Thu, 18 Jun 2026 11:20:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781781650;
+	bh=on2p7v01JMLQEd/mSi9ZWJJJ8bOMuh6PkCqEPxyESE4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=lDJjZJYJ44Uudg+UUCLEZ5y/sv+9qsCPzXEK/SlWqYFGHdqWrKYDhJ4GlvtafSPeG
+	 BkI9mR7gXaoUCd4fEyAkAOCIb6hs7ZVVEZxps+vtBfvMuGWrZ+g8P46pmqYV9yzIX7
+	 lDScLN3sjh5PcMVWfKktO2MLuQTjps9HxV3GWvOMA69qTMUNK+3zZ6+0hv4oo/XNzL
+	 DYxycW66o0SD0Q/+o9gPry+0FHF0e5kJQCNDSyN1ihKq5/tmrs+qsvdpnHSogWO5sP
+	 2rL8P9jMCTf9/vdXIynUS0O3GRdllKsChiOnpuT+MC4LBV5F17k1ryXsmIVt8EmV58
+	 ERuEDJonnxdFw==
+Date: Thu, 18 Jun 2026 13:20:47 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: Dmitry Baryshkov <lumag@kernel.org>, dri-devel@lists.freedesktop.org, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Jagan Teki <jagan@amarulasolutions.com>, 
+	Liu Ying <victor.liu@nxp.com>, Frank Li <Frank.Li@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	Andy Yan <andy.yan@rock-chips.com>, Phong LE <ple@baylibre.com>, 
+	Douglas Anderson <dianders@chromium.org>, Inki Dae <inki.dae@samsung.com>, 
+	Marek Szyprowski <m.szyprowski@samsung.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, linux-amlogic@lists.infradead.org, 
+	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Magnus Damm <magnus.damm@gmail.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	linux-renesas-soc@vger.kernel.org, Biju Das <biju.das.jz@bp.renesas.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, 
+	linux-rockchip@lists.infradead.org, Yannick Fertre <yannick.fertre@foss.st.com>, 
+	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Philippe Cornu <philippe.cornu@foss.st.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	linux-stm32@st-md-mailman.stormreply.com, Jyri Sarha <jyri.sarha@iki.fi>, 
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Icenowy Zheng <zhengxingda@iscas.ac.cn>, Michal Simek <michal.simek@amd.com>
+Subject: Re: [PATCH v2 00/78] drm/bridge: Convert all reset users to
+ create_state
+Message-ID: <20260618-terrestrial-abiding-tamarin-01befc@houat>
+References: <20260608-drm-no-more-bridge-reset-v2-0-0a91018bf886@kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260618_023949_341822_E27ED14E 
-X-CRM114-Status: GOOD (  19.61  )
+In-Reply-To: <20260608-drm-no-more-bridge-reset-v2-0-0a91018bf886@kernel.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,101 +90,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4851818964335739123=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mi, 2026-06-17 at 21:51 +0300, Cristian Ciocaltea wrote:
-> Assert the AXI reset in the CRTC disable path, and the VP DCLK reset in
-> the enable path.
-> 
-> These resets are intended to leave the hardware in a clean state for the
-> next use, helping recover from exceptions such as IOMMU page faults, as
-> well as to prevent random display output glitches, such as a blank
-> image, observed when switching modes that also change the color format,
-> e.g. from RGB to YUV420 and vice versa.
-> 
-> For now this seems to affect only the RK3588, hence the resets are
-> optional and will be provided in the device tree for this SoC only.
-> 
-> Co-developed-by: Andy Yan <andy.yan@rock-chips.com>
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 35 ++++++++++++++++++++++++++++
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++++
->  2 files changed, 39 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 4cce3e336f5b..2833fb49ad81 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -17,6 +17,7 @@
->  #include <linux/platform_device.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/regmap.h>
-> +#include <linux/reset.h>
->  #include <linux/swab.h>
->  
->  #include <drm/drm.h>
-> @@ -860,6 +861,26 @@ static int vop2_core_clks_prepare_enable(struct vop2 *vop2)
->  	return ret;
->  }
->  
-> +static void vop2_clk_reset(struct vop2 *vop2, struct reset_control *rstc)
 
-The _clk part of the function name is misleading ...
+--===============4851818964335739123==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="ozjpmz32viqzzrdv"
+Content-Disposition: inline
 
-[...]
-> @@ -938,6 +959,8 @@ static void vop2_disable(struct vop2 *vop2)
->  {
->  	rockchip_drm_dma_detach_device(vop2->drm, vop2->dev);
->  
-> +	vop2_clk_reset(vop2, vop2->axi_rst);
 
-... because this function is also called with the AXI reset control.
+--ozjpmz32viqzzrdv
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 00/78] drm/bridge: Convert all reset users to
+ create_state
+MIME-Version: 1.0
 
-> +
->  	pm_runtime_put_sync(vop2->dev);
->  
->  	regcache_drop_region(vop2->map, 0, vop2_regmap_config.max_register);
-> @@ -1948,6 +1971,8 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
->  
->  	vop2_crtc_atomic_try_set_gamma(vop2, vp, crtc, crtc_state);
->  
-> +	vop2_clk_reset(vop2, vp->dclk_rst);
-> +
->  	drm_crtc_vblank_on(crtc);
->  
->  	vop2_unlock(vop2);
-> @@ -2531,6 +2556,11 @@ static int vop2_create_crtcs(struct vop2 *vop2)
->  			return dev_err_probe(drm->dev, PTR_ERR(vp->dclk),
->  					     "failed to get %s\n", dclk_name);
->  
-> +		vp->dclk_rst = devm_reset_control_get_optional(vop2->dev, dclk_name);
+Hi,
 
-Please use devm_reset_control_get_optional_exclusive() directly.
+On Mon, Jun 08, 2026 at 04:35:42PM +0200, Maxime Ripard wrote:
+> Hi,=20
+>=20
+> All the bridges use reset to create a blank state only and don't use it
+> to reset the hardware at all. This is what the new atomic_create_state
+> is exactly supposed to be doing, so we can convert all existing bridge
+> users to it, and remove the reset hook and helpers.
+>=20
+> Let me know what you think,
+> Maxime=20
+>=20
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
 
-> +		if (IS_ERR(vp->dclk_rst))
-> +			return dev_err_probe(drm->dev, PTR_ERR(vp->dclk_rst),
-> +					     "failed to get %s reset\n", dclk_name);
-> +
->  		np = of_graph_get_remote_node(dev->of_node, i, -1);
->  		if (!np) {
->  			drm_dbg(vop2->drm, "%s: No remote for vp%d\n", __func__, i);
-> @@ -2890,6 +2920,11 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
->  		return dev_err_probe(drm->dev, PTR_ERR(vop2->pll_hdmiphy1),
->  				     "failed to get pll_hdmiphy1\n");
->  
-> +	vop2->axi_rst = devm_reset_control_get_optional(vop2->dev, "axi");
+FTR, Thomas on IRC yesterday[1] added
+Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
 
-Same as above, devm_reset_control_get_optional_exclusive().
+Unless another review shows up, I intend to merge this tomorrow
 
-regards
-Philipp
+Maxime
+
+1: https://oftc.catirclogs.org/dri-devel/2026-06-17#35422999;
+
+--ozjpmz32viqzzrdv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCajPUigAKCRAnX84Zoj2+
+dk0JAX0RbkGWPGoPi2IhEx+Ot7RE2mv5pF2NW5NdvgyvbZjvKNkWJ3WWtN4N+yZb
+Ll4R1c0BgNqzNQmnFhM4Nh5uf+0aPC7FMvJmkSeQcUNUGNIKHOukmjyX3PgrtUcT
+RE+nxMSDvw==
+=eAVV
+-----END PGP SIGNATURE-----
+
+--ozjpmz32viqzzrdv--
+
+
+--===============4851818964335739123==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4851818964335739123==--
+
