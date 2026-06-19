@@ -4,106 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFAFECD98ED
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Jun 2026 23:52:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62EB5CD98E6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 05:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sCfq67Yx7O7xn1q0eW5C0Ykll9gxHZ91TASHkze/1KQ=; b=i6DfilVjb/znhj
-	NDs58o7gI2sHoirY0ohbwYj8WvM34AyVSRtjeuUJVe5RhgLRFy+pmwesaJP2cNaXT/T112+RPPOVQ
-	JPZw1lTwE7igFSh9JTthIgRqayQOMmppNbP4o0gD/6algUdz6nF6GSbOzi0ZbfBAAfiUTM7F7qq0j
-	es2m5J93mEOwA57mEViYrOfrYx+Pbwdl0A0glT7uYSO3/Zbz4bMd1+weM/LBg9vVf7TJFDphmlJQK
-	TBzo7EMVeByFBOm90EOK0N/CojZ8Fb42KiUC9en0WXqN9lupuCtRR20iDRgH42/e118mpnprApb9r
-	0o+76Ykhi0Ab6Ff0gxrA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CJ7v3hxwT8WDIK2ORVZUmfxrOQTEKNO3aUYWs2r9LQw=; b=JlH8FXe3gZaDp6
+	qfzSweMB2Qx/9XoTVcQao2kTmUYCnZ5SeY1giQNp+Zxk2C9Y0D6XfoPwSReJMiKxy+v4086I/M7Kf
+	o+3Yek/mjL+WIfGJyokEfNmIQuwwcsCMpEwMJ9vkG3msZnbnaaQqv6Af/e6UWhZQ2c6ocO8hEQ68p
+	2/4uZE/viDRTfAmoUJ2p5ZLuFMYDTeLCn5+ky98NXRQlmi+E88JIJi8uUAo7NCOcVHPUrlNqj43AF
+	lUPBibN/RDXRSjFpGaS+tAHThEXvhiBPbVsKcaZnyBJL/af+wUow1y32jVUTMVruYftqGZLsiYZes
+	kmT8hFhRPaR1p+EqedoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waMWY-00000001sYJ-3ptw;
-	Thu, 18 Jun 2026 23:51:54 +0000
-Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
+	id 1waRkv-000000020Bp-0KOA;
+	Fri, 19 Jun 2026 05:27:05 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waMWV-00000001sXL-3a3R
-	for linux-rockchip@lists.infradead.org;
-	Thu, 18 Jun 2026 23:51:53 +0000
-Received: by mail-ua1-x92f.google.com with SMTP id a1e0cc1a2514c-966db0b76daso1610645241.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 18 Jun 2026 16:51:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781826710; cv=none;
-        d=google.com; s=arc-20240605;
-        b=gPgNjsRu/PCbNx9/Mqze0hgN8BGSZ2wnHVC6TAzHlJ3ZmTXOPPc4+POWHO4QMLhfQ+
-         jnQrlOL8S+kQ1RzMEjHqHYbGryqvd4Sz9sdHKwXPu9Q0iaTWWcWScKqzGCoyfDq0/Pps
-         wpiDkaLXsP0+xgHt4IHVZ+sTzS04hj2/A7XnDFXzVhgrf4lDIX1FqZgY4Nm9GSsrdkhI
-         0FN0Fb1evtO8+0XM181q2FKdZDb+u75LZLwLEVE9XwsVDBduGT4FPqApfZyDoErINNGB
-         ehd/X4AQweKroVbzB+h4dXoZQRyszGQ1ARj6/aRfY0KrOdd+eu2ZAef7p4DBBIa80BBi
-         mxGw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Ve0D0GAUgs/sYTCt7c4ZFHQP7r6AqvrpBBdKXUhUOGs=;
-        fh=qdQ8k3uGfZNbdw3FaX1Vqbd/ZAKf1EnNS/OmnBr2bIA=;
-        b=HRSEbnGty6flb0FCGMdcWthRcY/XkNC21ms8Je9PGqWRmt9RVBnoAYxSXc+vwgcIUk
-         ChnP0E2fRMPCEVXGRS0a6de1Y2+cE3I4+tnrqz/p7JSkS2sJTU2C0dCFvk3FFewY7y8g
-         2oRjlKAysM2t9qJY1k1jewEMlF+NG1blnLTtxBy1fsNzdq9gXTUCTZQbRyrQEyfRlV6a
-         3FElzo46UIuVIDU1J+ePNiWsZhsMzXWhpaXWPggLS/1MpH7TgzuRhM5kDjWINq3gkd+J
-         osoJA8KtSK1mxDaQQzAnqbxjVQh3Gn5Plh2VMXxd93sjjXkQWoAzjEiGwNalSThy36cb
-         fDKg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781826710; x=1782431510; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ve0D0GAUgs/sYTCt7c4ZFHQP7r6AqvrpBBdKXUhUOGs=;
-        b=Tk8wOA6kvK8/UMEfTAJ8aCjq+525ATQ+CqwArVlMWwjmQP40nt3uTQV4rprdwzPiy3
-         C9OEDbpG0TSLZEzp0xNHxvSeDB7liLWg5aEEXtIQokRUm8PpVbZs3TaOEWF8lh2FsrAu
-         sNB7xnkcuJmM/X9YcBPIbcJq1Vqhih4adF6TwG6YKXb5Y1nB5iKYujUR51klNqBNoH1t
-         O1NANEzz7J8f85rhHIIMs+nBy9n3DGDtPTx7n6Fe1Z5xctrbS04c28kRheUO44jeKowF
-         3+iRkEy2NUXbevm62nUuq++W58b7V+FI4oDX9xRquznntPmsG2X/F48TMH2D0hQr5bP5
-         7UMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781826710; x=1782431510;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=Ve0D0GAUgs/sYTCt7c4ZFHQP7r6AqvrpBBdKXUhUOGs=;
-        b=tRpr2ppRVYKyqBpNvCazTT+Y5T9PWpUX9pldBMW4bmXNwIqHZkA5VlJClRIfWEJeB2
-         7QrPvHHdAp0g6SgWmPDiKK0B72rx1w0+MdZA64BYzKUGgDnEH3Yfpj9Tx2aIWm6WY5sO
-         GZuY3AXkXgWCdyrQWGJMwuTGjXaWmXTwllJV/+7qxMOFWEs77sq3OZj5tmDCW33i07qw
-         bqz/re1ejUfdd3nnc3kGYyWxjbhBeFVdPVlaMroa5g42CthmqoLPCC+PDscWauRzKVPD
-         sr8e8F4ZIZ0gsoo2SV7Y+hDqc3tvnVj+YjLt3IG/4UIA15cnQ5m8bqiabRO8CfXo71oK
-         4Q5Q==
-X-Forwarded-Encrypted: i=1; AFNElJ8udBg9NYJXZ1UWkc5Q75dKdhxpKVsSQuSoXuhzeGt9J7bFNr1RsR0xA8L9QuIQxxN85Xq4HQephLuj4My3qA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywqcq8Pc1DwPDlZKebUczCZtGkx1wxV4PsfT44dWESCnXXt1y2b
-	smGfywoxHbcWIFypvN4q7b1pRUnL9yzPfEvInzd7ooHAt1TzLAqV3ITNlsD9ANCs5AN3D82Oku/
-	nA+Iq0LLBb0XYakyr6UaAVw6LPg5+1HQwxFcnmGQYyw==
-X-Gm-Gg: AfdE7cmFqo7jhtNorm/u8CBDrs307avNAlEEr/RG7KluuNt2ymk6pB/17uA4FShZCdd
-	0UlbQT2U/WyM04YXzd+/hvH+7EhLUcW9rHmFEP1vD2RvvF9ws0pewGsZdkBC8TkcxRfSukZnKc0
-	QLZN0fzDKzvI2Ac+dG11fEtpLBEsQDPGMi9jbCpFg8okHaNqZ2oHzV+DVR41xDnv8HiexEbzAtn
-	129eRUGOS8Fjp90RQdhiNmNTr1xpEOaRKzNKVVNA6rvvsx33jgMN61wn2syyGp3OHFCHtIEBB1R
-	Ra5dAAdY4VSSC2zcJw9sz8VilYU10b4gejczhPc=
-X-Received: by 2002:a67:f759:0:b0:6c8:c356:16c9 with SMTP id
- ada2fe7eead31-72a29bbe012mr430555137.20.1781826710015; Thu, 18 Jun 2026
- 16:51:50 -0700 (PDT)
+	id 1waRks-000000020B6-10U2;
+	Fri, 19 Jun 2026 05:27:04 +0000
+Received: from neptunite.hamster-moth.ts.net (unknown [IPv6:2404:7a81:160:2100:327:f131:c148:b7f8])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9E0CE1494;
+	Fri, 19 Jun 2026 07:26:16 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1781846780;
+	bh=ri3GLALkdclrGp1ImW0Sz2hkHPgk2vG7ChOZMwyLV+A=;
+	h=From:To:Cc:Subject:Date:From;
+	b=FyWeDAbd6jK55XNn/i1qbtvg304BKYAcLZndeLfkM5ugHw2Nls+LECIX1SFl8s6H3
+	 SAaX6RHG2L/bvMJnQIihtpLo4Bila1c15hYPgrMMuPKLopFloCAiEzL05Jj3GlRWX1
+	 RpUHVVyiTfhm9PqYI1ugpLaYev5FDha8g+vB9PxM=
+From: Paul Elder <paul.elder@ideasonboard.com>
+To: laurent.pinchart@ideasonboard.com
+Cc: Paul Elder <paul.elder@ideasonboard.com>,
+	michael.riesch@collabora.com,
+	xuhf@rock-chips.com,
+	stefan.klug@ideasonboard.com,
+	kieran.bingham@ideasonboard.com,
+	dan.scally@ideasonboard.com,
+	jacopo.mondi@ideasonboard.com,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	hverkuil+cisco@kernel.org,
+	nicolas.dufresne@collabora.com,
+	ribalda@chromium.org,
+	sakari.ailus@linux.intel.com
+Subject: [RFC PATCH 0/6] Add Shared Media Graph API
+Date: Fri, 19 Jun 2026 14:26:27 +0900
+Message-ID: <20260619052637.1110672-1-paul.elder@ideasonboard.com>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-References: <CAAMcf8CXfvzvEUyoASmp=6efRDNszyPJuFg0OU63Z7gT+oVQ8A@mail.gmail.com>
- <14488973.RDIVbhacDa@diego> <CAAMcf8DJ8rA5Paw0LONkhJwFxcMw0T2r_8kGj9fEVV=54==KtA@mail.gmail.com>
- <cb53e53e-6d28-4bf4-9d08-67317b874e46@rock-chips.com>
-In-Reply-To: <cb53e53e-6d28-4bf4-9d08-67317b874e46@rock-chips.com>
-From: Vicente Bergas <vicencb@gmail.com>
-Date: Fri, 19 Jun 2026 01:51:38 +0200
-X-Gm-Features: AVVi8CdSXcn4CdK8BfmIBfKDWjMJfgnU-zL0tXfq7O2Uwvu-L-MCOZvMpS4q4L0
-Message-ID: <CAAMcf8Dg3=0PK7HjBYXn0MQUJH4KFOiT-QLhTykk2QkXOeNG5A@mail.gmail.com>
-Subject: Re: [REGRESSION][BISECTED] No display on rk3399-gru-kevin
-To: Damon Ding <damon.ding@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Andy Yan <andy.yan@rock-chips.com>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260618_165151_946331_98191164 
-X-CRM114-Status: GOOD (  35.92  )
+X-CRM114-CacheID: sfid-20260618_222702_456297_B842333C 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,176 +72,288 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKdW4gMTgsIDIwMjYgYXQgNTo0OeKAr0FNIERhbW9uIERpbmcgPGRhbW9uLmRpbmdA
-cm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Cj4gSGkgVmljZW50ZSwKPgo+IE9uIDYvMTgvMjAyNiA3
-OjE1IEFNLCBWaWNlbnRlIEJlcmdhcyB3cm90ZToKPiA+IE9uIFdlZCwgSnVuIDE3LCAyMDI2IGF0
-IDEwOjQ14oCvQU0gSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5kZT4gd3JvdGU6Cj4gPj4K
-PiA+PiBIaSBWaWNlbnRlLAo+ID4+Cj4gPj4gQW0gTWl0dHdvY2gsIDE3LiBKdW5pIDIwMjYsIDAx
-OjA1OjI3IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgVmljZW50ZSBCZXJn
-YXM6Cj4gPj4+IEhlbGxvLAo+ID4+PiB0aGVyZSBhcmUgdHdvIGlzc3VlcyB0aGF0IHJlc3VsdCBv
-biBhIGJsYWNrIHNjcmVlbiBvbiB0aGUgcmszMzk5LWdydS1rZXZpbi4KPiA+Pj4KPiA+Pj4gVGhl
-IGZpcnN0IG9uZSBpcyBkdWUgdG86Cj4gPj4+IGM4MDc5ZjgzZTBiZjMxMjY0NTA1MGMxN2Q5Yzg3
-ZGViNzA3MzY5YzEKPiA+Pj4gZ3Bpbzogcm9ja2NoaXA6IGNvbnZlcnQgdG8gZHluYW1pYyBHUElP
-IGJhc2UgYWxsb2NhdGlvbgo+ID4+Cj4gPj4gY2FuIHlvdSBjaGVjayB0aGF0IHlvdXIga2VybmVs
-IGNvbnRhaW5zCj4gPj4gImdwaW86IHJvY2tjaGlwOiBGaXggR1BJTyByZWdyZXNzaW9uIGFmdGVy
-IGNvbnZlcnNpb24gdG8gZHluYW1pYyBiYXNlIGFsbG9jYXRpb24iCj4gPj4gaHR0cHM6Ly9naXQu
-a2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbmV4dC9saW51eC1uZXh0LmdpdC9j
-b21taXQvP2lkPTVjZDljNmQzMzJmNDZkMWRlOGI2ODExN2ZlMmEzZjFiMDhlZTgwZmYKPiA+Cj4g
-PiBZZXMsIHRoYXQgY29tbWl0IGlzIGluIHY3LjEgYW5kIGl0IGluZGVlZCBmaXhlcyB0aGUgZ3Bp
-byBpc3N1ZS4KPiA+IEkgdGVzdGVkIHJldmVydGluZyBjODA3OWY4MyBhbG9uZSBhbmQgcmV2ZXJ0
-aW5nIGFsbCB0aHJlZS4KPiA+IE5vdyBpJ3ZlIHRlc3RlZCBvbmx5IHJldmVydGluZyA1MWViNTQ4
-YSBhbmQgZDg0YjA4N2MsIGFuZCBpdCB3b3Jrcy4KPiA+IFRoZSB0aGluZyBpcyBib3RoIGJ1Z3Mg
-Y29leGlzdGVkIGF0IHNvbWUgcG9pbnQgYW5kCj4gPiBnaXQgYmlzZWN0IGZpbmRzIHRoZW0gaW4g
-b3JkZXIuCj4gPgo+ID4+PiBSZXZlcnRpbmcgdGhpcyBkb2VzIG5vdCBmaXggdGhlIHByb2JsZW0g
-YXMgdGhlcmUgaXMgYSBzZWNvbmQgb25lOgo+ID4+PiA1MWViNTQ4YWRlMjAxNThiNGY0Zjg2OTNh
-OTViMWYzMWEyNDgwZThlCj4gPj4+IGRybS9icmlkZ2U6IGFuYWxvZ2l4X2RwOiBBcHBseSBEUCBo
-ZWxwZXIgQVBJIGRybV9kcF9jaGFubmVsX2VxX29rKCkKPiA+Pj4KPiA+Pj4gVGhhdCBzZWNvbmQg
-b25lIGRlcGVuZHMgb246Cj4gPj4+IGQ4NGIwODdjNzY2MmRkNjVjZDUxYjIyODIxOTk4N2MzMWIx
-Y2VlMDIKPiA+Pj4gZHJtL2JyaWRnZTogYW5hbG9naXhfZHA6IEFwcGx5IERQIGhlbHBlciBBUElz
-IHRvIGdldCBhZGp1c3RlZCB2b2x0YWdlcwo+ID4+PiBhbmQgcHJlLWVtcGhhc2lzZXMKPiA+Pj4K
-PiA+Pj4gUmV2ZXJ0aW5nIGFsbCB0aHJlZSBjb21taXRzIGZyb20gdjcuMSBtYWtlIHRoZSBkaXNw
-bGF5IHdvcmsgYWdhaW4uCj4gPj4+Cj4gPj4+IFBsZWFzZSwgY2FuIHRoaXMgYmUgcmVzb2x2ZWQ/
-Cj4gPj4KPiA+PiBhbmQgYXMgRGFtb24gd3JvdGUsIHBsZWFzZSBwcm92aWRlIGxvZ3MsIHNvIHdl
-IGNhbiBzZWUgdGhlIGFjdHVhbCBwcm9ibGVtCj4gPgo+ID4gSXQgaXMgcXVpdGUgZGlmZmljdWx0
-IHRvIHJlYWQgdGhlIGxvZ3MgZnJvbSBhIGJsYWNrIHNjcmVlbi4uLgo+ID4gSm9rZXMgYXBhcnQs
-IGhlcmUgdGhleSBhcmU6Cj4gPgo+ID4gUmVsZXZhbnQgbG9nIGVudHJpZXM6Cj4gPiA8Nj5bICAg
-IDAuMDQzNjY4XSAvZHBAZmVjMDAwMDA6IEZpeGVkIGRlcGVuZGVuY3kgY3ljbGUocykgd2l0aCAv
-dm9wQGZmOGYwMDAwCj4gPiA8Nj5bICAgIDAuMDQzNzM1XSAvdm9wQGZmOGYwMDAwOiBGaXhlZCBk
-ZXBlbmRlbmN5IGN5Y2xlKHMpIHdpdGggL2RwQGZlYzAwMDAwCj4gPiA8Nj5bICAgIDAuMDQ0MTky
-XSAvZHBAZmVjMDAwMDA6IEZpeGVkIGRlcGVuZGVuY3kgY3ljbGUocykgd2l0aCAvdm9wQGZmOTAw
-MDAwCj4gPiA8Nj5bICAgIDAuMDQ0MjUwXSAvdm9wQGZmOTAwMDAwOiBGaXhlZCBkZXBlbmRlbmN5
-IGN5Y2xlKHMpIHdpdGggL2RwQGZlYzAwMDAwCj4gPiA8Nj5bICAgIDAuMDQ1MDY0XSAvdm9wQGZm
-OTAwMDAwOiBGaXhlZCBkZXBlbmRlbmN5IGN5Y2xlKHMpIHdpdGggL2RwQGZmOTcwMDAwCj4gPiA8
-Nj5bICAgIDAuMDQ1MTIyXSAvdm9wQGZmOGYwMDAwOiBGaXhlZCBkZXBlbmRlbmN5IGN5Y2xlKHMp
-IHdpdGggL2RwQGZmOTcwMDAwCj4gPiA8Nj5bICAgIDAuMDQ1MTk0XSAvZHBAZmY5NzAwMDA6IEZp
-eGVkIGRlcGVuZGVuY3kgY3ljbGUocykgd2l0aCAvdm9wQGZmOGYwMDAwCj4gPiA8Nj5bICAgIDAu
-MDQ1MjY0XSAvZHBAZmY5NzAwMDA6IEZpeGVkIGRlcGVuZGVuY3kgY3ljbGUocykgd2l0aCAvdm9w
-QGZmOTAwMDAwCj4gPiA8Nj5bICAgIDAuMDU4NTkwXSAvZHBAZmY5NzAwMDA6IEZpeGVkIGRlcGVu
-ZGVuY3kgY3ljbGUocykgd2l0aCAvZWRwLXBhbmVsCj4gPiA8Nj5bICAgIDAuMDU4NzMzXSAvZWRw
-LXBhbmVsOiBGaXhlZCBkZXBlbmRlbmN5IGN5Y2xlKHMpIHdpdGggL2RwQGZmOTcwMDAwCj4gPiA8
-Nj5bICAgIDAuMTAxMjY2XSBwbGF0Zm9ybSBmZjhmMDAwMC52b3A6IEFkZGluZyB0byBpb21tdSBn
-cm91cCAyCj4gPiA8Nj5bICAgIDAuMTAyMDczXSBwbGF0Zm9ybSBmZjkwMDAwMC52b3A6IEFkZGlu
-ZyB0byBpb21tdSBncm91cCAzCj4gPiA8Mz5bICAgIDAuMTA1MjU4XSByb2NrY2hpcC1kcCBmZjk3
-MDAwMC5kcDogbm8gRFAgcGh5IGNvbmZpZ3VyZWQKPiA+IDwzPlsgICAgMC4zMDg2MzhdIHJvY2tj
-aGlwLWRwIGZmOTcwMDAwLmRwOiBubyBEUCBwaHkgY29uZmlndXJlZAo+ID4gPDY+WyAgICAwLjMx
-MDEwNF0gcGFuZnJvc3QgZmY5YTAwMDAuZ3B1OiBjbG9jayByYXRlID0gNTAwMDAwMDAwCj4gPiA8
-Nj5bICAgIDAuMzExMjEwXSBwYW5mcm9zdCBmZjlhMDAwMC5ncHU6IG1hbGktdDg2MCBpZCAweDg2
-MCBtYWpvciAweDIKPiA+IG1pbm9yIDB4MCBzdGF0dXMgMHgwCj4gPiA8Nj5bICAgIDAuMzExMjIz
-XSBwYW5mcm9zdCBmZjlhMDAwMC5ncHU6IGZlYXR1cmVzOiAwMDAwMDAwMCwwMDAwMDQwNywKPiA+
-IGlzc3VlczogMDAwMDAwMDAsMjQwNDA0MDAKPiA+IDw2PlsgICAgMC4zMTEyMzFdIHBhbmZyb3N0
-IGZmOWEwMDAwLmdwdTogRmVhdHVyZXM6IEwyOjB4MDcxMjAyMDYKPiA+IFNoYWRlcjoweDAwMDAw
-MDAwIFRpbGVyOjB4MDAwMDA4MDkgTWVtOjB4MSBNTVU6MHgwMDAwMjgzMCBBUzoweGZmCj4gPiBK
-UzoweDcKPiA+IDw2PlsgICAgMC4zMTEyMzldIHBhbmZyb3N0IGZmOWEwMDAwLmdwdTogc2hhZGVy
-X3ByZXNlbnQ9MHhmIGwyX3ByZXNlbnQ9MHgxCj4gPiA8Nj5bICAgIDAuMzEyNjY0XSBbZHJtXSBJ
-bml0aWFsaXplZCBwYW5mcm9zdCAxLjYuMCBmb3IgZmY5YTAwMDAuZ3B1IG9uIG1pbm9yIDAKPiA+
-IDwzPlsgICAgMC42MjQyMzJdIHJvY2tjaGlwLWRwIGZmOTcwMDAwLmRwOiBubyBEUCBwaHkgY29u
-ZmlndXJlZAo+ID4gPDM+WyAgICAwLjYzOTYxMV0gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IG5v
-IERQIHBoeSBjb25maWd1cmVkCj4gPiA8Nj5bICAgIDAuNjQxNTEyXSByb2NrY2hpcC1kcm0gZGlz
-cGxheS1zdWJzeXN0ZW06IGJvdW5kIGZmOTAwMDAwLnZvcAo+ID4gKG9wcyAweGZmZmY4MDAwODBj
-OWEzYzgpCj4gPiA8Nj5bICAgIDAuNjQyNjQ2XSByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0
-ZW06IGJvdW5kIGZmOGYwMDAwLnZvcAo+ID4gKG9wcyAweGZmZmY4MDAwODBjOWEzYzgpCj4gPiA8
-ND5bICAgIDAuNjQzMTk4XSBbZHJtXSBNaXNzaW5nIGRybV9icmlkZ2VfYWRkKCkgYmVmb3JlIGF0
-dGFjaAo+ID4gPDY+WyAgICAwLjY0MzIzOF0gcm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVt
-OiBib3VuZCBmZjk3MDAwMC5kcAo+ID4gKG9wcyAweGZmZmY4MDAwODBjOWU4NDApCj4gPiA8Nj5b
-ICAgIDAuNjQ0MDI5XSByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0ZW06IGJvdW5kIGZlYzAw
-MDAwLmRwCj4gPiAob3BzIDB4ZmZmZjgwMDA4MGM5ZjBjOCkKPiA+IDw2PlsgICAgMC42NDQxMDJd
-IGNkbi1kcCBmZWMwMDAwMC5kcDogW2RybTpjZG5fZHBfcGRfZXZlbnRfd29ya10gTm90Cj4gPiBj
-b25uZWN0ZWQ7IGRpc2FibGluZyBjZG4KPiA+IDw2PlsgICAgMC42NDQ4MzddIFtkcm1dIEluaXRp
-YWxpemVkIHJvY2tjaGlwIDEuMC4wIGZvcgo+ID4gZGlzcGxheS1zdWJzeXN0ZW0gb24gbWlub3Ig
-MQo+ID4gPDQ+WyAgICAwLjc4Njc3M10gcGFuZWwtZWRwIGVkcC1wYW5lbDogU2tpcHBpbmcgZGlz
-YWJsZSBvZiBhbHJlYWR5Cj4gPiBkaXNhYmxlZCBwYW5lbAo+ID4gPDM+WyAgICAwLjc5NjUxN10g
-cm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IEVRIE1heCBsb29wCj4gPiA8Mz5bICAgIDAuNzk3NzQ1
-XSByb2NrY2hpcC1kcCBmZjk3MDAwMC5kcDogTFQgRVEgZmFpbGVkIQo+ID4gPDM+WyAgICAwLjc5
-Nzc1N10gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IGVEUCBsaW5rIHRyYWluaW5nIGZhaWxlZCAo
-LTUpCj4gPiA8Mz5bICAgIDAuNzk3NzcwXSByb2NrY2hpcC1kcCBmZjk3MDAwMC5kcDogdW5hYmxl
-IHRvIGRvIGxpbmsgdHJhaW4sIHJldD0tNQo+ID4gPDM+WyAgICAwLjc5Nzc4M10gW2RybTphbmFs
-b2dpeF9kcF9icmlkZ2VfYXRvbWljX2VuYWJsZV0gKkVSUk9SKiBkcAo+ID4gY29tbWl0IGVycm9y
-LCByZXQgPSAtNQo+ID4gPDM+WyAgICAwLjc5NzgyM10gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6
-IGZhaWxlZCB0byBzZXQgYnJpZGdlLCByZXRyeTogMAo+ID4gPDQ+WyAgICAwLjc5NzkzN10gcGFu
-ZWwtZWRwIGVkcC1wYW5lbDogU2tpcHBpbmcgZGlzYWJsZSBvZiBhbHJlYWR5Cj4gPiBkaXNhYmxl
-ZCBwYW5lbAo+ID4gPDM+WyAgICAwLjgwODA5N10gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IEVR
-IE1heCBsb29wCj4gPiA8Mz5bICAgIDAuODA5Mjg0XSByb2NrY2hpcC1kcCBmZjk3MDAwMC5kcDog
-TFQgRVEgZmFpbGVkIQo+ID4gPDM+WyAgICAwLjgwOTI5OV0gcm9ja2NoaXAtZHAgZmY5NzAwMDAu
-ZHA6IGVEUCBsaW5rIHRyYWluaW5nIGZhaWxlZCAoLTUpCj4gPiA8Mz5bICAgIDAuODA5MzE0XSBy
-b2NrY2hpcC1kcCBmZjk3MDAwMC5kcDogdW5hYmxlIHRvIGRvIGxpbmsgdHJhaW4sIHJldD0tNQo+
-ID4gPDM+WyAgICAwLjgwOTMyNl0gW2RybTphbmFsb2dpeF9kcF9icmlkZ2VfYXRvbWljX2VuYWJs
-ZV0gKkVSUk9SKiBkcAo+ID4gY29tbWl0IGVycm9yLCByZXQgPSAtNQo+ID4gPDM+WyAgICAwLjgw
-OTM1M10gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IGZhaWxlZCB0byBzZXQgYnJpZGdlLCByZXRy
-eTogMQo+ID4gPDQ+WyAgICAwLjgwOTQ2M10gcGFuZWwtZWRwIGVkcC1wYW5lbDogU2tpcHBpbmcg
-ZGlzYWJsZSBvZiBhbHJlYWR5Cj4gPiBkaXNhYmxlZCBwYW5lbAo+ID4gPDM+WyAgICAwLjgxOTQ4
-MV0gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IEVRIE1heCBsb29wCj4gPiA8Mz5bICAgIDAuODIw
-NzQ1XSByb2NrY2hpcC1kcCBmZjk3MDAwMC5kcDogTFQgRVEgZmFpbGVkIQo+ID4gPDM+WyAgICAw
-LjgyMDc1OF0gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IGVEUCBsaW5rIHRyYWluaW5nIGZhaWxl
-ZCAoLTUpCj4gPiA8Mz5bICAgIDAuODIwNzcyXSByb2NrY2hpcC1kcCBmZjk3MDAwMC5kcDogdW5h
-YmxlIHRvIGRvIGxpbmsgdHJhaW4sIHJldD0tNQo+ID4gPDM+WyAgICAwLjgyMDc4MV0gW2RybTph
-bmFsb2dpeF9kcF9icmlkZ2VfYXRvbWljX2VuYWJsZV0gKkVSUk9SKiBkcAo+ID4gY29tbWl0IGVy
-cm9yLCByZXQgPSAtNQo+ID4gPDM+WyAgICAwLjgyMDgwNl0gcm9ja2NoaXAtZHAgZmY5NzAwMDAu
-ZHA6IGZhaWxlZCB0byBzZXQgYnJpZGdlLCByZXRyeTogMgo+ID4gPDQ+WyAgICAwLjgyMDkxOV0g
-cGFuZWwtZWRwIGVkcC1wYW5lbDogU2tpcHBpbmcgZGlzYWJsZSBvZiBhbHJlYWR5Cj4gPiBkaXNh
-YmxlZCBwYW5lbAo+ID4gPDM+WyAgICAwLjgzMTA3NV0gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6
-IEVRIE1heCBsb29wCj4gPiA8Mz5bICAgIDAuODMyMzM2XSByb2NrY2hpcC1kcCBmZjk3MDAwMC5k
-cDogTFQgRVEgZmFpbGVkIQo+ID4gPDM+WyAgICAwLjgzMjM0Nl0gcm9ja2NoaXAtZHAgZmY5NzAw
-MDAuZHA6IGVEUCBsaW5rIHRyYWluaW5nIGZhaWxlZCAoLTUpCj4gPiA8Mz5bICAgIDAuODMyMzU2
-XSByb2NrY2hpcC1kcCBmZjk3MDAwMC5kcDogdW5hYmxlIHRvIGRvIGxpbmsgdHJhaW4sIHJldD0t
-NQo+ID4gPDM+WyAgICAwLjgzMjM2N10gW2RybTphbmFsb2dpeF9kcF9icmlkZ2VfYXRvbWljX2Vu
-YWJsZV0gKkVSUk9SKiBkcAo+ID4gY29tbWl0IGVycm9yLCByZXQgPSAtNQo+ID4gPDM+WyAgICAw
-LjgzMjM4OF0gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IGZhaWxlZCB0byBzZXQgYnJpZGdlLCBy
-ZXRyeTogMwo+ID4gPDQ+WyAgICAwLjgzMjQ5Nl0gcGFuZWwtZWRwIGVkcC1wYW5lbDogU2tpcHBp
-bmcgZGlzYWJsZSBvZiBhbHJlYWR5Cj4gPiBkaXNhYmxlZCBwYW5lbAo+ID4gPDM+WyAgICAwLjg0
-MjYxM10gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IEVRIE1heCBsb29wCj4gPiA8Mz5bICAgIDAu
-ODQzNzU0XSByb2NrY2hpcC1kcCBmZjk3MDAwMC5kcDogTFQgRVEgZmFpbGVkIQo+ID4gPDM+WyAg
-ICAwLjg0Mzc2NV0gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IGVEUCBsaW5rIHRyYWluaW5nIGZh
-aWxlZCAoLTUpCj4gPiA8Mz5bICAgIDAuODQzNzc4XSByb2NrY2hpcC1kcCBmZjk3MDAwMC5kcDog
-dW5hYmxlIHRvIGRvIGxpbmsgdHJhaW4sIHJldD0tNQo+ID4gPDM+WyAgICAwLjg0Mzc5MV0gW2Ry
-bTphbmFsb2dpeF9kcF9icmlkZ2VfYXRvbWljX2VuYWJsZV0gKkVSUk9SKiBkcAo+ID4gY29tbWl0
-IGVycm9yLCByZXQgPSAtNQo+ID4gPDM+WyAgICAwLjg0MzgxNV0gcm9ja2NoaXAtZHAgZmY5NzAw
-MDAuZHA6IGZhaWxlZCB0byBzZXQgYnJpZGdlLCByZXRyeTogNAo+ID4gPDM+WyAgICAwLjg0Mzg1
-N10gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZHA6IHRvbyBtYW55IHRpbWVzIHJldHJ5IHNldAo+ID4g
-YnJpZGdlLCBnaXZlIGl0IHVwCj4gPiA8Nj5bICAgIDAuODU0NjI1XSBDb25zb2xlOiBzd2l0Y2hp
-bmcgdG8gY29sb3VyIGZyYW1lIGJ1ZmZlciBkZXZpY2UgMzAweDEwMAo+ID4gPDY+WyAgICAwLjg4
-NzUyNl0gcm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBbZHJtXSBmYjA6Cj4gPiByb2Nr
-Y2hpcGRybWZiIGZyYW1lIGJ1ZmZlciBkZXZpY2UKPiA+Cj4gPgo+Cj4gSSBoYXZlIHRlc3RlZCBS
-SzMzOTkgSU5EIEVWQiBsb2NhbGx5IGJhc2VkIG9uIGtlcm5lbCB2Ny4xLCBhbmQgZURQCj4gdHJh
-aW5pbmcgY29tcGxldGVzIHN1Y2Nlc3NmdWxseSB3aXRoIG5vcm1hbCBkaXNwbGF5IG91dHB1dCB3
-aXRoIHBhdGNoCj4gMDAwMS1hcm02NC1kdHMtcm9ja2NoaXAtRW5hYmxlLWVEUC1kaXNwbGF5LWZv
-ci1SSzMzOTktSU5ELnBhdGNoIGFwcGxpZWQuCj4KPiAgRnJvbSB5b3VyIGxvZ3MsIHRoZSBmYWls
-dXJlIG9jY3VycyBkdXJpbmcgdGhlIEVRIHN0YWdlIG9mIGVEUCB0cmFpbmluZy4KPiBQbGVhc2Ug
-YXBwbHkgdGhlIGFkZGl0aW9uYWwgcGF0Y2gKPiAwMDAyLWRybS1icmlkZ2UtYW5hbG9naXhfZHAt
-UmVhZC1DUi1FUS1kZWxheS1mcm9tLURQQ0QtaW4ucGF0Y2ggd2l0aG91dAo+IHJldmVydGluZyB0
-aGUgdHdvIGNvbW1pdHMgbWVudGlvbmVkIGFib3ZlICg1MWViNTQ4YSBhbmQgZDg0YjA4N2MpLCB0
-aGVuCj4gcmV0ZXN0IHRvIGNoZWNrIGlmIHRoZSBpc3N1ZSBnZXRzIGltcHJvdmVkLgo+IChCVFc6
-IFRoaXMgaXMgYSB0ZXN0LW9ubHkgdGVtcG9yYXJ5IHBhdGNoIHdpdGggbWlub3Igc3R5bGUgZmxh
-d3MsIGJ1dAo+IHRoZSBwYXRjaCBuZWVkcyB1cHN0cmVhbWluZy4gSSdsbCByZXdvcmsgYW5kIHNl
-bmQgYSBmb3JtYWwgdmVyc2lvbiBzb29uLikKCkhpIERhbW9uLAphcHBseWluZyBwYXRjaCAwMDAx
-IGFuZCAwMDAyIGRvZXMgbm90IGZpeCB0aGUgaXNzdWUuClRoZSBsb2dzIGFyZSBtb3N0bHkgdGhl
-IHNhbWUuCgo+IElmIHRoZSBwcm9ibGVtIHBlcnNpc3RzLCB0cnkgYWRkaW5nIGEgc21hbGwgZGVs
-YXkgYXQgdGhlIGxvY2F0aW9uCj4gbWVudGlvbmVkIGJlbG93IGZvciBmdXJ0aGVyIHZlcmlmaWNh
-dGlvbjoKCmFwcGx5aW5nIHRoZSBleHRyYSBkZWxheSByZXN1bHRzIGFyZSB0aGUgc2FtZSwganVz
-dCBzbWFsbCBub2lzZSBpbiB0aGUKZG1lc2cgdGltZXN0YW1wcy4KCkJlc2lkZXMgdGhpcywgaSd2
-ZSBkb25lIGFub3RoZXIgdGVzdDoKaSBoYXZlIHJldmVydGVkIDUxZWI1NDhhIHdoaWxlIGtlZXBp
-bmcgZDg0YjA4N2MsIHdoaWNoIGkgaGFkIHRvIHJlYmFzZS4KVGhlIHJlc3VsdCBpcyBhZ2FpbiB0
-aGUgc2FtZTogYmxhY2sgc2NyZWVuIGFuZCB0aGUgbG9ncyBhcmUgYWdhaW4gZXF1aXZhbGVudC4K
-VGhhdCBwcm92ZXMgdGhhdCBib3RoIHBhdGNoZXMgNTFlYjU0OGEgYW5kIGQ4NGIwODdjIGVhY2gg
-aW50cm9kdWNlIGEgcmVncmVzc2lvbi4KClJlZ2FyZHMsCiAgVmljZW50ZS4KCj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4g
-Yi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+IGlu
-ZGV4IGE1ZGM2NDVkNzAwNS4uNmRhYzM5NzRhY2I1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiBAQCAtNDAxLDYgKzQw
-MSw4IEBAIHN0YXRpYyBpbnQKPiBhbmFsb2dpeF9kcF9wcm9jZXNzX2VxdWFsaXplcl90cmFpbmlu
-ZyhzdHJ1Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKPgo+ICAgICAgICAgIGFuYWxvZ2l4X2Rw
-X2dldF9hZGp1c3RfdHJhaW5pbmdfbGFuZShkcCwgbGlua19zdGF0dXMpOwo+Cj4gKyAgICAgICB1
-c2xlZXBfcmFuZ2UoNTAwMCwgNjAwMCk7Cj4gKwo+ICAgICAgICAgIGlmIChkcm1fZHBfY2hhbm5l
-bF9lcV9vayhsaW5rX3N0YXR1cywgbGFuZV9jb3VudCkpIHsKPiAgICAgICAgICAgICAgICAgIC8q
-IHRyYWluZyBwYXR0ZXJuIFNldCB0byBOb3JtYWwgKi8KPiAgICAgICAgICAgICAgICAgIHJldHZh
-bCA9IGFuYWxvZ2l4X2RwX3RyYWluaW5nX3BhdHRlcm5fZGlzKGRwKTsKPiAoTm90ZTogVGhpcyBk
-ZWxheSBpcyBvbmx5IGZvciB0ZXN0aW5nIHB1cnBvc2UpCj4KPiBCZXN0IHJlZ2FyZHMsCj4gRGFt
-b24KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+Hello everyone,
+
+This patch series extends the media controller API with a Shared Media
+Graph framework.
+
+We have started to run into platforms where there are multiple media
+drivers that ought to be participating in the same media graph, but it's
+undecidable who should own the media device.
+
+One example of this is the RK3588 which has a capture interface (VICAP,
+handled by rkcif) and two ISP instances (handled by rkisp2). Another
+example is the i.MX8MP which has an image sensor interface (ISI, handled
+by imx8-isi) and two ISP instances (handled by rkisp1). Since they
+cannot all be in the same media graph at the moment, on the RK3588 we
+can only support memory-to-memory mode between the VICAP and ISP, while
+in the i.MX8MP we cannot use the ISI and ISP simultaneously.
+
+The drivers for these ISPs and capture interfaces also support hardware
+where only the ISP or only the capture interface is present (eg. imx8mn
+only has ISI; rk3399 only has rkisp1). This means that we cannot simply
+make one of them always the main device of the media graph.
+
+This topic was discussed over a lunch at Embedded Recipes, and the
+conclusion was that the best solution is to add a mechanism where
+drivers could join an existing media device, or create one if none were
+available. This series implements such a mechanism, which I have
+tentatively named Shared Media Graph.
+
+
+Patch 1 implements the Shared Media Graph API. The rest of the series
+are a functioning example implementation on the aforementioned RK3588
+setup.
+
+This framework allows the aforementioned setups to work. For this
+series, I specfically targeted the RK3588 setup, and I am able to have
+both the VICAP and the ISP in the same media graph [0] [5]. I can switch
+between inline mode and memory-to-memory mode by enabling/disabling the
+link between the rkcif and rkisp2, and can successfully capture in both
+modes.
+
+There are still a lot of rough edges in the framework that need to be
+discussed and sorted out (aka RFC); see all of the TODOs in patch 1 for
+details. Actually everything that I want comments on are in the TODOs
+for patch 1. The rest of the series are less RFC and more "here's an
+example of how it would work".
+
+
+This patch series is based on linux-media/next (06cb687a5132) [1] and
+depends on:
+- v5 of "media: rockchip: rkcif: add support for rk3588 vicap" [2]
+- rfc of "media: rockchip: rkisp2: Add driver for ISP on Rk3588" [3]
+
+I have a branch here [4].
+
+[0] https://www.pasteboard.co/i-p5Z10LMHJ5.png
+[1] https://gitlab.freedesktop.org/linux-media/media-committers/-/tree/next
+[2] https://lore.kernel.org/all/20260522-rk3588-vicap-v5-3-d1d1f5265c56@collabora.com/
+[3] https://lore.kernel.org/all/20260424175853.638202-1-paul.elder@ideasonboard.com/
+[4] https://gitlab.freedesktop.org/linux-media/users/epaul/-/tree/epaul/v7.1-rc1/rk3588/shared-mc/upstream
+
+[5] media-ctl -p and dot output for when the pasteboard [0] expires:
+
+Media controller API version 7.1.0
+
+Media device information
+------------------------
+driver          rockchip-cif
+model           rkisp2
+serial          
+bus info        platform:rkisp2
+hw revision     0x1e
+driver version  7.1.0
+
+Device topology
+- entity 9: rkcif-mipi2 (3 pads, 6 links, 2 routes)
+            type V4L2 subdev subtype Unknown flags 0
+            device node name /dev/v4l-subdev0
+	routes:
+		0/0 -> 1/0 [ACTIVE]
+		0/0 -> 2/0 [ACTIVE]
+	pad0: SINK,MUST_CONNECT
+		[stream:0 fmt:SRGGB10_1X10/1920x1080 field:none]
+		<- "dw-mipi-csi2rx fdd30000.csi":1 [ENABLED]
+	pad1: SOURCE
+		[stream:0 fmt:SRGGB10_1X10/1920x1080 field:none
+		 crop.bounds:(0,0)/1920x1080
+		 crop:(0,0)/1920x1080]
+		-> "rkcif-mipi2-id0":0 []
+		-> "rkcif-mipi2-id1":0 []
+		-> "rkcif-mipi2-id2":0 []
+		-> "rkcif-mipi2-id3":0 []
+	pad2: SOURCE
+		[stream:0 fmt:SRGGB10_1X10/1920x1080 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range
+		 crop.bounds:(0,0)/1920x1080
+		 crop:(0,0)/1920x1080]
+		-> "rkisp2_isp":4 [ENABLED]
+
+- entity 13: rkcif-mipi2-id0 (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video0
+	pad0: SINK,MUST_CONNECT
+		<- "rkcif-mipi2":1 []
+
+- entity 19: rkcif-mipi2-id1 (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video1
+	pad0: SINK,MUST_CONNECT
+		<- "rkcif-mipi2":1 []
+
+- entity 25: rkcif-mipi2-id2 (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video2
+	pad0: SINK,MUST_CONNECT
+		<- "rkcif-mipi2":1 []
+
+- entity 31: rkcif-mipi2-id3 (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video3
+	pad0: SINK,MUST_CONNECT
+		<- "rkcif-mipi2":1 []
+
+- entity 49: dw-mipi-csi2rx fdd30000.csi (2 pads, 2 links, 1 route)
+             type V4L2 subdev subtype Unknown flags 0
+             device node name /dev/v4l-subdev1
+	routes:
+		0/0 -> 1/0 [ACTIVE]
+	pad0: SINK,MUST_CONNECT
+		[stream:0 fmt:SRGGB10_1X10/1920x1080 field:none]
+		<- "imx219 4-0010":0 [ENABLED]
+	pad1: SOURCE
+		[stream:0 fmt:SRGGB10_1X10/1920x1080 field:none]
+		-> "rkcif-mipi2":0 [ENABLED]
+
+- entity 54: imx219 4-0010 (1 pad, 1 link, 0 routes)
+             type V4L2 subdev subtype Sensor flags 0
+             device node name /dev/v4l-subdev2
+	pad0: SOURCE
+		[stream:0 fmt:SRGGB10_1X10/1920x1080 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range
+		 crop.bounds:(8,8)/3280x2464
+		 crop:(688,700)/1920x1080]
+		-> "dw-mipi-csi2rx fdd30000.csi":0 [ENABLED]
+
+- entity 64: rkisp2_isp (5 pads, 8 links, 0 routes)
+             type V4L2 subdev subtype Unknown flags 0
+             device node name /dev/v4l-subdev3
+	pad0: SINK
+		[stream:0 fmt:SRGGB10_1X10/1920x1080 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range
+		 crop.bounds:(0,0)/1920x1080
+		 crop:(0,0)/1920x1080]
+		<- "rkisp2_rawrd0":0 []
+		<- "rkisp2_rawrd1":0 []
+		<- "rkisp2_rawrd2":0 []
+	pad1: SINK
+		[stream:0 fmt:unknown/0x0]
+		<- "rkisp2_params":0 [ENABLED,IMMUTABLE]
+	pad2: SOURCE
+		[stream:0 fmt:YUYV8_2X8/1920x1080 field:none colorspace:raw xfer:none ycbcr:601 quantization:lim-range
+		 crop.bounds:(0,0)/1920x1080
+		 crop:(0,0)/1920x1080]
+		-> "rkisp2_mainpath":0 [ENABLED,IMMUTABLE]
+		-> "rkisp2_selfpath":0 [ENABLED,IMMUTABLE]
+	pad3: SOURCE
+		[stream:0 fmt:unknown/0x0]
+		-> "rkisp2_stats":0 [ENABLED,IMMUTABLE]
+	pad4: SINK
+		[stream:0 fmt:SRGGB10_1X10/1920x1080 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range
+		 crop.bounds:(0,0)/1920x1080
+		 crop:(0,0)/1920x1080]
+		<- "rkcif-mipi2":2 [ENABLED]
+
+- entity 70: rkisp2_mainpath (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video5
+	pad0: SINK
+		<- "rkisp2_isp":2 [ENABLED,IMMUTABLE]
+
+- entity 74: rkisp2_selfpath (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video6
+	pad0: SINK
+		<- "rkisp2_isp":2 [ENABLED,IMMUTABLE]
+
+- entity 78: rkisp2_rawrd0 (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video7
+	pad0: SOURCE
+		-> "rkisp2_isp":0 []
+
+- entity 82: rkisp2_rawrd1 (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video8
+	pad0: SOURCE
+		-> "rkisp2_isp":0 []
+
+- entity 86: rkisp2_rawrd2 (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video9
+	pad0: SOURCE
+		-> "rkisp2_isp":0 []
+
+- entity 90: rkisp2_params (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video10
+	pad0: SOURCE
+		-> "rkisp2_isp":1 [ENABLED,IMMUTABLE]
+
+- entity 94: rkisp2_stats (1 pad, 1 link)
+             type Node subtype V4L flags 0
+             device node name /dev/video11
+	pad0: SINK
+		<- "rkisp2_isp":3 [ENABLED,IMMUTABLE]
+
+
+digraph board {
+	rankdir=TB
+	n00000009 [label="{{<port0> 0} | rkcif-mipi2\n/dev/v4l-subdev0 | {<port1> 1 | <port2> 2}}", shape=Mrecord, style=filled, fillcolor=green]
+	n00000009:port1 -> n0000000d [style=dashed]
+	n00000009:port1 -> n00000013 [style=dashed]
+	n00000009:port1 -> n00000019 [style=dashed]
+	n00000009:port1 -> n0000001f [style=dashed]
+	n00000009:port2 -> n00000040:port4
+	n0000000d [label="rkcif-mipi2-id0\n/dev/video0", shape=box, style=filled, fillcolor=yellow]
+	n00000013 [label="rkcif-mipi2-id1\n/dev/video1", shape=box, style=filled, fillcolor=yellow]
+	n00000019 [label="rkcif-mipi2-id2\n/dev/video2", shape=box, style=filled, fillcolor=yellow]
+	n0000001f [label="rkcif-mipi2-id3\n/dev/video3", shape=box, style=filled, fillcolor=yellow]
+	n00000031 [label="{{<port0> 0} | dw-mipi-csi2rx fdd30000.csi\n/dev/v4l-subdev1 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
+	n00000031:port1 -> n00000009:port0
+	n00000036 [label="{{} | imx219 4-0010\n/dev/v4l-subdev2 | {<port0> 0}}", shape=Mrecord, style=filled, fillcolor=green]
+	n00000036:port0 -> n00000031:port0
+	n00000040 [label="{{<port0> 0 | <port1> 1 | <port4> 4} | rkisp2_isp\n/dev/v4l-subdev3 | {<port2> 2 | <port3> 3}}", shape=Mrecord, style=filled, fillcolor=green]
+	n00000040:port2 -> n00000046 [style=bold]
+	n00000040:port2 -> n0000004a [style=bold]
+	n00000040:port3 -> n0000005e [style=bold]
+	n00000046 [label="rkisp2_mainpath\n/dev/video5", shape=box, style=filled, fillcolor=yellow]
+	n0000004a [label="rkisp2_selfpath\n/dev/video6", shape=box, style=filled, fillcolor=yellow]
+	n0000004e [label="rkisp2_rawrd0\n/dev/video7", shape=box, style=filled, fillcolor=yellow]
+	n0000004e -> n00000040:port0 [style=dashed]
+	n00000052 [label="rkisp2_rawrd1\n/dev/video8", shape=box, style=filled, fillcolor=yellow]
+	n00000052 -> n00000040:port0 [style=dashed]
+	n00000056 [label="rkisp2_rawrd2\n/dev/video9", shape=box, style=filled, fillcolor=yellow]
+	n00000056 -> n00000040:port0 [style=dashed]
+	n0000005a [label="rkisp2_params\n/dev/video10", shape=box, style=filled, fillcolor=yellow]
+	n0000005a -> n00000040:port1 [style=bold]
+	n0000005e [label="rkisp2_stats\n/dev/video11", shape=box, style=filled, fillcolor=yellow]
+}
+
+Paul Elder (6):
+  media: mc: Implement shared media graph
+  arm64: dts: rockchip: rk3588s-base: Connect vicap and isps
+  media: rkcif: Use shared media graph
+  media: rkisp2: Use shared media graph
+  media: rkcif: Implement inline mode
+  media: rkisp2: Implement inline mode
+
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  30 ++
+ drivers/media/mc/Makefile                     |   2 +-
+ drivers/media/mc/mc-shared-graph.c            | 335 ++++++++++++++++++
+ .../rockchip/rkcif/rkcif-capture-dvp.c        |   2 +-
+ .../rockchip/rkcif/rkcif-capture-mipi.c       |   3 +
+ .../platform/rockchip/rkcif/rkcif-common.h    |  18 +-
+ .../media/platform/rockchip/rkcif/rkcif-dev.c |  32 +-
+ .../platform/rockchip/rkcif/rkcif-interface.c | 248 ++++++++++++-
+ .../platform/rockchip/rkcif/rkcif-regs.h      |  49 +++
+ .../platform/rockchip/rkcif/rkcif-stream.c    |   6 +-
+ .../platform/rockchip/rkisp2/rkisp2-common.h  |   5 +-
+ .../platform/rockchip/rkisp2/rkisp2-dev.c     |  46 +--
+ .../platform/rockchip/rkisp2/rkisp2-isp.c     | 155 ++++++--
+ include/media/mc-shared-graph.h               |  92 +++++
+ 14 files changed, 932 insertions(+), 91 deletions(-)
+ create mode 100644 drivers/media/mc/mc-shared-graph.c
+ create mode 100644 include/media/mc-shared-graph.h
+
+-- 
+2.47.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
