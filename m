@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6060CD4F26
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 12:44:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CDE7CD98F2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 12:58:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0eKKbExQxRSGYEjnlpaMCqv8ZiBZUm50GUUFkM5bmNc=; b=s9Ce/LhBsv7ZNgdZkYrk7YewnO
-	DSnDng6mbaCFSVer+QE0pS8/V5Yo5H54xleAnMXmY7SrfVII0bbMg52aalmAabUAlRRiQBPsxMvWU
-	/Y0Jv1Kwwl7OprHjUNxgpSlKBHZ1KHIsXHKQQABsHUj3Xy3lEbG/HvPB4M1uPK+yRVg9T85JQhsg1
-	mywKOuOPp2fHmeUSXpHm3anR5uu1DGtSD6+kfK/tdN0gTYSu2q4zKEfQRwVRBVL3VvE5P9a/nampx
-	vCi84YLhFJD3vV/bdddTgJfT/Gr/zJqtUKDJAN+N0/acZw8sj1pNjHmtoXfmq+BNQ1tdfzL34IIRH
-	UDzIyeVw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=eM4wKaDC6Phk0l6928Ofz/ImEteoqBBEf7kcObwW66Q=; b=e6qjPm7lhvng2W
+	BlESDzeJedEOO5T5br0QnBQgtN+x6eC98tGuy19J0sQysSyKxpi1f8MCHNdP7t5HcodZh9xIGwKEv
+	UuB3QHpU7wecMup78Nd17+oNO3Dvf+JIzDoBAm9pbGOL4u/d9ZsJ+LURx0SbHlO46ap0DVJPP9KDu
+	G78TUBpHWR/rJqPSo9PY/WHWyYu7q6l3A3XyYjobVhUMI9Z3lzzrfeLhXofIY/drs5mbXj4IBHvft
+	e/JOuwcUb6PX1u8Up69o6fQxU1zKpsRj7Z/JTOCAJl80r3YGm9xYruDPAvTd0qPxYI89DKG5SM466
+	cO5AhHIeKcFkvg/r2rAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waYZz-00000002QHr-40Hg;
-	Fri, 19 Jun 2026 12:44:15 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1waYnv-00000002R6w-2QH9;
+	Fri, 19 Jun 2026 12:58:39 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waYZy-00000002QHQ-0xuh;
-	Fri, 19 Jun 2026 12:44:14 +0000
+	id 1waYnu-00000002R6T-2Ckq;
+	Fri, 19 Jun 2026 12:58:38 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9FC9D40696;
-	Fri, 19 Jun 2026 12:44:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 114E41F00A3A;
-	Fri, 19 Jun 2026 12:44:12 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 88FDD601E3;
+	Fri, 19 Jun 2026 12:58:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D1A51F000E9;
+	Fri, 19 Jun 2026 12:58:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781873053;
-	bh=kWmg+Z3iyFDK7g60i8LQZgyj/s+Ri6gCBeStElOsXdo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=eWJ1awcEsj0kwKPYAZGBemEb4pVgNzNGndskM/AendSEIszbYPmclEhGr43mm/JQr
-	 PXaBWJKNVyYOCr2ARKQF30BWlL00GafGIxWsVeEQ936ttytRaDacRdAlyNLRZp/dBa
-	 w6Q5PKwEZw1RGa20MvbQVkvlW1BJ8zHrcvYxcGOFDgpAhi2raWQqwmkTp3ktFXmuAj
-	 Bwsi6sPZidxy/F3hMM/ibts5K7LqEt53LIdIKA5t0KwlWJzn/EH+ALemKsEZuj0sMs
-	 WvRhrT+Un9WtC340t9NEiMKlwenvGNZbmZywpAg3TQaaVN++C/6KbMiYUpmQb/+j4u
-	 0ABLU57/ixc/g==
-Date: Fri, 19 Jun 2026 14:44:11 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>, 
-	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 02/30] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-Message-ID: <20260619-tentacled-chupacabra-of-discussion-aaed1e@houat>
-References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
- <20260602-dw-hdmi-qp-scramb-v7-2-445eb54ee1ed@collabora.com>
- <20260612-subtle-shapeless-rattlesnake-4b6af8@houat>
- <7b19b243-ad6a-4d1f-b34e-684e8bfe500c@collabora.com>
+	s=k20260515; t=1781873917;
+	bh=d0Pi+BMv6vNYyFoag1XFUtPquKbXVfT0i1yiV+bM+HU=;
+	h=Date:From:Subject:To:Cc:References:In-Reply-To;
+	b=PSqkhaxR3FQBweBoWpSc2EorY9Pez8SIDdeV3sC6lRA+WQgDMLdZA+W2gA/jtTjk6
+	 Ekiyp7acgu6TijirW2qXF2y9K6x5DYjccWRB1qYutK9TB9SpkY8pqSf95PdLaJhdxv
+	 P5f1YgY2ouHTHsw3CjKy5MoE4mQ13d1RVh47iHECGArbDe2eqUIWgJ5fValDrya85S
+	 tpAjHsJGrPe4YJhVtSDcMRrDjgy3FY4Rwgp4X7oIpo85wCXO9i/HHvvyVYHoIFYZFk
+	 UFfbHcyA/Hy1+atRYojuEQTbX4GA9O0X8cwj42q17bLMl6r3H/nGzCBWRMndIBLwRJ
+	 77oRCRWCJOa9g==
+Message-ID: <755cf7c1-6bcc-45d1-afea-192d393256af@kernel.org>
+Date: Fri, 19 Jun 2026 14:58:33 +0200
 MIME-Version: 1.0
-In-Reply-To: <7b19b243-ad6a-4d1f-b34e-684e8bfe500c@collabora.com>
+User-Agent: Mozilla Thunderbird
+From: Hans Verkuil <hverkuil+cisco@kernel.org>
+Subject: Re: [PATCH v2 2/5] docs: media: add documentation for media client
+ usage stats
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com,
+ linux-arm-kernel@lists.infradead.org, Christopher Healy <healych@amazon.com>
+References: <20260617-v4l2-add-fdinfo-v2-0-d298e98ce06a@collabora.com>
+ <20260617-v4l2-add-fdinfo-v2-2-d298e98ce06a@collabora.com>
+Content-Language: en-US, nl
+In-Reply-To: <20260617-v4l2-add-fdinfo-v2-2-d298e98ce06a@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,249 +73,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3199155205742480112=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Detlev,
 
---===============3199155205742480112==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="4ewvgxcfsnr2oshm"
-Content-Disposition: inline
+Interesting, I had never heard of fdinfo, so if nothing else, I learned something new!
 
+On 17/06/2026 20:10, Detlev Casanova wrote:
+> From: Christopher Healy <healych@amazon.com>
+> 
+> Document the media fdinfo interface for per-file-descriptor usage
+> statistics exposed by stateless V4L2 codec drivers via
+> /proc/<pid>/fdinfo/<fd>.
+> 
+> This interface is designed for stateless (request API based) codec
+> devices where the kernel driver has per-job visibility into hardware
+> execution. Stateful codecs cannot support all of this because their
+> firmware manages job scheduling opaquely.
+> 
+> The specification defines media- prefixed keys for engine utilization
+> time, and operating frequency, following the same conventions as the DRM
+> fdinfo mechanism documented in drm-usage-stats.rst.
+> 
+> More fields can be added later.
+> 
+> Signed-off-by: Christopher Healy <healych@amazon.com>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+>  .../userspace-api/media/drivers/index.rst          |  1 +
+>  .../media/drivers/media-usage-stats.rst            | 85 ++++++++++++++++++++++
+>  2 files changed, 86 insertions(+)
+> 
+> diff --git a/Documentation/userspace-api/media/drivers/index.rst b/Documentation/userspace-api/media/drivers/index.rst
+> index 02967c9b18d6..61879738836c 100644
+> --- a/Documentation/userspace-api/media/drivers/index.rst
+> +++ b/Documentation/userspace-api/media/drivers/index.rst
+> @@ -34,6 +34,7 @@ For more details see the file COPYING in the source distribution of Linux.
+>  	imx-uapi
+>  	mali-c55
+>  	max2175
+> +	media-usage-stats
+>  	npcm-video
+>  	omap3isp-uapi
+>  	thp7312
+> diff --git a/Documentation/userspace-api/media/drivers/media-usage-stats.rst b/Documentation/userspace-api/media/drivers/media-usage-stats.rst
+> new file mode 100644
+> index 000000000000..d3dc07002f62
+> --- /dev/null
+> +++ b/Documentation/userspace-api/media/drivers/media-usage-stats.rst
+> @@ -0,0 +1,85 @@
+> +.. SPDX-License-Identifier: GPL-2.0
+> +
+> +.. _media-usage-stats:
+> +
+> +==========================
+> +Media client usage stats
 
---4ewvgxcfsnr2oshm
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 02/30] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-MIME-Version: 1.0
+stats -> statistics
 
-On Fri, Jun 12, 2026 at 09:11:54PM +0300, Cristian Ciocaltea wrote:
-> Hi Maxime,
->=20
-> Thanks for taking the time to review this!
->=20
-> On 6/12/26 3:06 PM, Maxime Ripard wrote:
-> > On Tue, Jun 02, 2026 at 01:44:02AM +0300, Cristian Ciocaltea wrote:
-> >> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
-> >>
-> >> - A scrambler_supported flag to indicate whether the source supports t=
-he
-> >>   scrambling capability, in which case the newly introduced
-> >>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_funcs
-> >>   are mandatory
-> >> - A scrambler_needed flag to be managed by the hdmi state helpers based
-> >>   on the negotiated TMDS character rate and the source/sink scrambling
-> >>   capabilities
-> >> - A scrambler_enabled flag to track whether scrambling is currently
-> >>   active
-> >> - A delayed work item (scdc_work) with an associated callback (scdc_cb)
-> >>   to monitor sink-side scrambling status and retry the setup if the si=
-nk
-> >>   resets it
-> >>
-> >> These are intended to be used by SCDC scrambling helpers to coordinate
-> >> scrambling setup and teardown between the source driver and the DRM
-> >> core.
-> >>
-> >> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> >> ---
-> >>  drivers/gpu/drm/drm_connector.c | 18 +++++++++
-> >>  include/drm/drm_connector.h     | 81 ++++++++++++++++++++++++++++++++=
-+++++++++
-> >>  2 files changed, 99 insertions(+)
-> >>
-> >> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_con=
-nector.c
-> >> index a5d13b92b665..526dc2931b8a 100644
-> >> --- a/drivers/gpu/drm/drm_connector.c
-> >> +++ b/drivers/gpu/drm/drm_connector.c
-> >> @@ -220,6 +220,19 @@ void drm_connector_free_work_fn(struct work_struc=
-t *work)
-> >>  	}
-> >>  }
-> >> =20
-> >> +static void drm_connector_hdmi_scdc_work(struct work_struct *work)
-> >> +{
-> >> +	struct drm_connector *connector;
-> >> +	struct drm_connector_hdmi *hdmi;
-> >> +
-> >> +	hdmi =3D container_of(to_delayed_work(work), struct drm_connector_hd=
-mi,
-> >> +			    scdc_work);
-> >> +	connector =3D container_of(hdmi, struct drm_connector, hdmi);
-> >> +
-> >> +	if (hdmi->scdc_cb)
-> >> +		hdmi->scdc_cb(connector);
-> >> +}
-> >> +
-> >>  static int drm_connector_init_only(struct drm_device *dev,
-> >>  				   struct drm_connector *connector,
-> >>  				   const struct drm_connector_funcs *funcs,
-> >> @@ -285,6 +298,7 @@ static int drm_connector_init_only(struct drm_devi=
-ce *dev,
-> >>  	mutex_init(&connector->edid_override_mutex);
-> >>  	mutex_init(&connector->hdmi.infoframes.lock);
-> >>  	mutex_init(&connector->hdmi_audio.lock);
-> >> +	INIT_DELAYED_WORK(&connector->hdmi.scdc_work, drm_connector_hdmi_scd=
-c_work);
-> >>  	connector->edid_blob_ptr =3D NULL;
-> >>  	connector->epoch_counter =3D 0;
-> >>  	connector->tile_blob_ptr =3D NULL;
-> >> @@ -606,6 +620,10 @@ int drmm_connector_hdmi_init(struct drm_device *d=
-ev,
-> >>  	    !hdmi_funcs->hdmi.write_infoframe)
-> >>  		return -EINVAL;
-> >> =20
-> >> +	if (connector->hdmi.scrambler_supported &&
-> >> +	    (!hdmi_funcs->scrambler_enable || !hdmi_funcs->scrambler_disable=
-))
-> >> +		return -EINVAL;
-> >> +
-> >>  	ret =3D drmm_connector_init(dev, connector, funcs, connector_type, d=
-dc);
-> >>  	if (ret)
-> >>  		return ret;
-> >> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> >> index 529755c2e862..f1c5c15a6cce 100644
-> >> --- a/include/drm/drm_connector.h
-> >> +++ b/include/drm/drm_connector.h
-> >> @@ -28,6 +28,7 @@
-> >>  #include <linux/ctype.h>
-> >>  #include <linux/hdmi.h>
-> >>  #include <linux/notifier.h>
-> >> +#include <linux/workqueue.h>
-> >>  #include <drm/drm_mode_object.h>
-> >>  #include <drm/drm_util.h>
-> >>  #include <drm/drm_property.h>
-> >> @@ -1057,6 +1058,19 @@ struct drm_connector_hdmi_state {
-> >>  	 * @tmds_char_rate: TMDS Character Rate, in Hz.
-> >>  	 */
-> >>  	unsigned long long tmds_char_rate;
-> >> +
-> >> +	/**
-> >> +	 * @scrambler_needed: Whether HDMI 2.0 SCDC scrambling is required
-> >> +	 * for the negotiated mode/bpc/format.
-> >> +	 *
-> >> +	 * Computed by drm_atomic_helper_connector_hdmi_check() from
-> >> +	 * @tmds_char_rate and the source/sink scrambling capabilities.
-> >> +	 *
-> >> +	 * Per HDMI 2.0, scrambling is mandatory above 340 MHz TMDS
-> >> +	 * character rate. Optional scrambling at lower rates is
-> >> +	 * deliberately not requested by the helper.
-> >> +	 */
-> >> +	bool scrambler_needed;
-> >>  };
-> >> =20
-> >>  /**
-> >> @@ -1358,6 +1372,36 @@ struct drm_connector_hdmi_funcs {
-> >>  	 */
-> >>  	const struct drm_edid *(*read_edid)(struct drm_connector *connector);
-> >> =20
-> >> +	/**
-> >> +	 * @scrambler_enable:
-> >> +	 *
-> >> +	 * This callback is invoked through @drm_scdc_start_scrambling during
-> >> +	 * a commit to setup SCDC scrambling and high TMDS clock ratio on
-> >> +	 * source side.
-> >> +	 *
-> >> +	 * The @scrambler_enable callback is mandatory if HDMI 2.0 is to be
-> >> +	 * supported.
-> >> +	 *
-> >> +	 * Returns:
-> >> +	 * 0 on success, a negative error code otherwise
-> >> +	 */
-> >> +	int (*scrambler_enable)(struct drm_connector *connector);
-> >> +
-> >> +	/**
-> >> +	 * @scrambler_disable:
-> >> +	 *
-> >> +	 * This callback is invoked through @drm_scdc_stop_scrambling during
-> >> +	 * a commit to disable SCDC scrambling and high TMDS clock ratio on
-> >> +	 * source side.
-> >> +	 *
-> >> +	 * The @scrambler_disable callback is mandatory if HDMI 2.0 is to be
-> >> +	 * supported.
-> >> +	 *
-> >> +	 * Returns:
-> >> +	 * 0 on success, a negative error code otherwise
-> >> +	 */
-> >> +	int (*scrambler_disable)(struct drm_connector *connector);
-> >> +
-> >>  	/**
-> >>  	 * @avi:
-> >>  	 *
-> >> @@ -1960,6 +2004,43 @@ struct drm_connector_hdmi {
-> >>  	 */
-> >>  	unsigned long supported_formats;
-> >> =20
-> >> +	/**
-> >> +	 * @scrambler_supported: Indicates whether the HDMI controller
-> >> +	 * (source) supports HDMI 2.0 SCDC scrambling.
-> >> +	 *
-> >> +	 * When true, @drm_connector_hdmi_funcs.scrambler_enable and
-> >> +	 * @drm_connector_hdmi_funcs.scrambler_disable are mandatory.
-> >> +	 * This is enforced by drmm_connector_hdmi_init().
-> >> +	 *
-> >> +	 * For HDMI bridge based drivers using drm_bridge_connector_init(),
-> >> +	 * this is propagated automatically from bridges that set the
-> >> +	 * DRM_BRIDGE_OP_HDMI_SCRAMBLER flag in their &drm_bridge->ops.
-> >> +	 * Other drivers must set this field on @connector->hdmi before call=
-ing
-> >> +	 * drmm_connector_hdmi_init().
-> >> +	 */
-> >> +	bool scrambler_supported;
-> >> +
-> >> +	/**
-> >> +	 * @scrambler_enabled: Tracks whether HDMI 2.0 scrambler is currentl=
-y enabled.
-> >> +	 */
-> >> +	bool scrambler_enabled;
-> >=20
-> > This is already in the state. Why do you need to copy it over here, and
->=20
-> This was supposed to be used exclusively by drm_scdc_{start,stop}_scrambl=
-ing()
-> and drm_scdc_sync_status() helpers to control the work item and condition=
-ally
-> trigger CRTC resets.  However, it's now also set by vc4_hdmi_connector_in=
-it() to
-> force disable the scrambler in the vc4_crtc_disable_at_boot() execution p=
-ath.
+But are these really statistics? Isn't it just the current status?
+In many ways this feature looks to me similar to what VIDIOC_LOG_STATUS does,
+except in a nicer format. When VIDIOC_LOG_STATUS was first added, fdinfo
+didn't exist yet.
 
-Oh, my bad, I misread. I thought it was meant to be a copy of
-scrambler_needed, but yeah, you're right it makes sense to keep it as is
-and you can ignore this comment.
+And I wouldn't call it 'Media client': it's specific to stateless V4L2
+codec drivers.
 
-Maxime
+> +==========================
+> +
+> +Stateless V4L2 codec drivers can optionally expose per-file-descriptor usage
+> +statistics via ``/proc/<pid>/fdinfo/<fd>``. This is analogous to the DRM fdinfo
+> +mechanism documented in :ref:`drm-client-usage-stats`, but uses the ``media-``
+> +key prefix for V4L2 media devices.
+> +
+> +This interface is specific to stateless (request API based) codec devices,
+> +including both decoders and encoders. With stateless codecs, the kernel driver
+> +explicitly submits each frame to the hardware and receives a completion
+> +interrupt, providing a clean per-job boundary that can be attributed to the
+> +submitting file descriptor.
+> +
+> +Stateful codec devices cannot support this interface because their firmware
+> +manages job scheduling internally. The kernel driver submits bitstream data
+> +but has no visibility into per-frame hardware execution timing.
+> +
+> +Implementation
+> +==============
+> +
+> +The V4L2 core provides the plumbing: drivers implement the ``show_fdinfo``
+> +callback in ``struct v4l2_file_operations``, and the core wires it into the
+> +kernel ``struct file_operations`` so that ``/proc/<pid>/fdinfo/<fd>`` output
+> +includes the driver-provided keys.
+> +
+> +File format specification
+> +=========================
+> +
+> +- File shall contain one key value pair per one line of text.
+> +- Colon character (``:``) must be used to delimit keys and values.
+> +- All standardised keys shall be prefixed with ``media-``.
+> +- Driver-specific keys shall be prefixed with ``driver_name-``.
+> +
+> +Mandatory keys
+> +--------------
+> +
+> +- media-driver: <valstr>
 
---4ewvgxcfsnr2oshm
-Content-Type: application/pgp-signature; name="signature.asc"
+I'd pick 'v4l2-driver'. Since 'media-driver' is too generic for this
+since that encompasses also DVB/CEC/RC drivers.
 
------BEGIN PGP SIGNATURE-----
+> +
+> +  String shall contain the name of the media driver.
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCajU5mgAKCRAnX84Zoj2+
-di3yAX9/gHx3Xb+KKlXx8LiIXAWY9ki/m/hUvFFOXASDGlXk59XC1KG43J/yEJr0
-S+acjC0Bf0XXkICkBdxlSp/wUDxhPlCSrNdaH+Intm6VjbB1lt0lzNbE/TcVgwcg
-Gbq15g7kVQ==
-=cBwC
------END PGP SIGNATURE-----
+'V4L2 stateless codec driver'
 
---4ewvgxcfsnr2oshm--
+> +
+> +- media-type: <valstr>
 
+Poor name.
 
---===============3199155205742480112==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> +
+> +  String shall identify the type of media engine exposed through this file
+> +  descriptor. Standard values are ``decoder`` and ``encoder``.
+
+I think I would use 'stateless-decoder' and 'stateless-encoder'. It's more
+specific than de/encoder since that can be stateful as well.
+
+So I am missing the big picture here: right now this patch adds support for
+this for stateless codecs, but what happens in the future if this is also
+added for regular video capture devices, ISPs, etc.?
+
+The naming here matters, it has to have some sort of scheme so it can be
+extended to other types of drivers. So a 'media' prefix is too generic,
+and it also looks like it refers to the /dev/mediaX device.
+
+> +
+> +Utilization keys
+> +----------------
+> +
+> +- media-engine-usage: <uint> ns
+
+'Media Engine': very vague.
+
+> +
+> +  Time in nanoseconds that the hardware engine spent busy processing work
+
+Cumulative since creating the file handle? Or since the last read?
+
+> +  belonging to this file descriptor. The engine being measured is identified
+> +  by the ``media-type`` key.
+> +
+> +  Values are not required to be constantly monotonic if it makes the driver
+> +  implementation easier, but are required to catch up with the previously
+> +  reported larger value within a reasonable period.
+
+Does this make sense for codecs?
+
+I can tell that this is heavily influenced by the drm documentation, but that
+does not necessarily translate to V4L2.
+
+> +
+> +Frequency keys
+> +--------------
+> +
+> +- media-maxfreq: <uint> Hz
+> +
+> +  Maximum operating frequency of the main engine clock.
+> +
+> +- media-curfreq: <uint> Hz
+> +
+> +  Current operating frequency of the main engine clock.
+
+'Main engine clock'?
+
+> +
+> +Example output
+> +==============
+> +
+> +::
+> +
+> +  media-driver:           hantro-vpu
+> +  media-type:             decoder
+> +  media-engine-usage:     123456789 ns
+> +  media-maxfreq:          600000000 Hz
+> +  media-curfreq:          600000000 Hz
+> 
+
+Regards,
+
+	Hans
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3199155205742480112==--
-
