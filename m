@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7A9CDB46D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 15:29:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F4BCCDB470
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 15:29:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rQ+S+E+qijgNZjVIPuGAVQwWFb2R+OieKnZUVuulS8g=; b=fse4TEm9jriqBu
-	PCkdlj67Hw0VE6kBH/iUGBOipQlp24HwsHYCGaN1PJ7r2Lotto8fjgPrtP4GbB5jAl3OCEi95nhgB
-	LMnQbTxl95irnygGXPfD2pVvGAyLFg4tR6hnPgxd7T60+6IKJrYRrpKGpASNjOHpyygbyFXCYs2xn
-	DW7Oet31KWtSvYtFzLs5ANjL1vYquKhk8MQCSaL/kz1ooG8Bb2h3gaSEmU3t8/8V7wWHybX4nntAP
-	X9ltZwOcJ8tSyzFLtFWw2cO+4+pf6F6kiRnHPgeVbk909sMR129Caac4zYYUoYFvjYmG25b3pPOPc
-	YFWETPiWy5B9ps7dJ4bA==;
+	List-Owner; bh=ZpoYAtn5FKQc03SHLZbwAlO/34gHkCF67kjwJzP22IA=; b=qOwLfJn6j3PwHr
+	HfHojNIVT8zUY1SMH+WCiriNT4O8cSjNO9m6D2UdYqpIEVxeGyzb39QYaClaCbflOqkMMoc5CSYrq
+	Kq15Bs0LukFDtnwqRmGEHuwBS2G5XH6dvoMBvcRrJcBbHrMNw8BZwpi9QXYdaK66HvTTDl3V4V0zf
+	AxsGdL1UYvf2gJLePcUyDFzSTKGKvKtuzFFCR38X6kvjqo+x5mHth518LFt2yqev++JCYZg8ybQ4M
+	Cl1OakL5mH73Nt7SL9H3uRKI3z7fccQtHgzrWfMRWICki/jbXjVOkJXpPtwUNiU+xjnM7q7Q4BeZe
+	MkGhlqCCf436ljInaK6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wabAF-00000002eaW-2rvF;
-	Fri, 19 Jun 2026 15:29:51 +0000
+	id 1wabAH-00000002eeH-1GWK;
+	Fri, 19 Jun 2026 15:29:53 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wab9W-00000002dXD-08aN;
+	id 1wab9X-00000002dYL-0YCi;
 	Fri, 19 Jun 2026 15:29:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1781882938;
-	bh=gXGJIR/hmYUEejkg/YXqOvfEwIx8WrXL3cr+XlmGmvg=;
+	bh=s14hSsNP0osKXinr4iWclYN6vFiEnD9Nkat0LfmjKmk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Pqq6bYwBUQk0ezelaeevCIwlnKF/U4g7TH7CJPmXNNRMiuXAU4TbfmWcW9Ub+8nWH
-	 hJx+8Hx4mL3FnhF7yLY/uFissRKYM2n/DQGGeVDmI6uTY2KeQoahAyeDe7bXNAr9aB
-	 dMJPLXtcZJDOvZtEQlmKtvToU2QNiP9VeAbSbr7rVaT8V2ySi4WG5hqrDFakEQ3vpC
-	 JZ7QIOGmWMMRH+y63XXmZD0rsu6xqPGoR0kQYTUTY4lz42jNXdlbgiCCrCCnOQBKbB
-	 8FJB14geXKEC+7j/HLPkA/jB5LtozNeWWoy9Nq/7ay33lNF/8wSTknq0h0SYccSBa7
-	 o9aHOPieIyx2A==
+	b=AKtsY2QfVidBtS3hDXI89Ds6yYCEqriwWsyOSJeiRCpgWuUxwY7M0ejB9D/9JiXfW
+	 t837T3CbeAuNQ6x6JrR+/hqDYu4zxc6ie3nzYdA3WcN/wNx5pyUwWNPfc0goj4B7b+
+	 f243Wnw9KW6lVfOGpkGh/Px2TObRVFBWWRWzFpHvd0LryPasOnTB3qD5Dey22Ao0Qk
+	 PjWLtmErbZHiVg+FBLRIKXpDdPXHTc2UR5NWvAaacZQ47wnnqZe+2Y3b9/C3lhQi86
+	 cUBP0qTupqCIMKB67rTsqOxecxsXzmBUvK7ryl5Ob6G6BGtebj8km+M4qg21MT1n2S
+	 JImIInZZeCaOw==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 42C9217E140E;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6215A17E1583;
 	Fri, 19 Jun 2026 17:28:58 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 9476648003A; Fri, 19 Jun 2026 17:28:57 +0200 (CEST)
+	id 9C5C548004E; Fri, 19 Jun 2026 17:28:57 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 19 Jun 2026 17:29:00 +0200
-Subject: [PATCH v6 09/23] phy: rockchip: usbdp: Fix LFPS detect threshold
- control
+Date: Fri, 19 Jun 2026 17:29:05 +0200
+Subject: [PATCH v6 14/23] phy: rockchip: usbdp: Cleanup DP lane selection
+ function
 MIME-Version: 1.0
-Message-Id: <20260619-rockchip-usbdp-cleanup-v6-9-3bb1f54b3f35@collabora.com>
+Message-Id: <20260619-rockchip-usbdp-cleanup-v6-14-3bb1f54b3f35@collabora.com>
 References: <20260619-rockchip-usbdp-cleanup-v6-0-3bb1f54b3f35@collabora.com>
 In-Reply-To: <20260619-rockchip-usbdp-cleanup-v6-0-3bb1f54b3f35@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -64,29 +64,29 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  devicetree@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- William Wu <william.wu@rock-chips.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1521;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1889;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=GFdUGpYmGDDQ9cGl9w7ZUJpxRNfqmVqO/MAupoRmLlQ=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo1YDjzHd5Ldq1LRJkV60chyxZljGtaMmC0w
- VooZWQjj2MBkYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqNWA4AAoJENju1/PI
- O/qaSmcP/04WRRlb+XpqTe+EmFOylARJJG0CYb9LnA0KUHtTd0tzTUNnzLRgR3znfVu+vGOZh61
- yZgT/yLmTqboowZVhvyI78a7TVKRShAqRR2/lDn8+3R9tsZZv5OHF5EmV1chdFNouhUDawc6sx7
- SkJ4/tpI5Zsr8FUcGhpum3RpBt8GLSGLgN7uti2nS49F/lgzVsXXGuuou2Tj0x/ykIro3DwEU2K
- 8YMMme03XTGcrP8OpcGun1OG8BPFWO3iQV4vWt5FAK/8p5q83u4fjmBXXN01QqFH50PysmNDOza
- +9umUy5jjhigcPOUWBvLtdXaHbh+Hil5hj70155rx/L/fhkopP2EC3J5Z9kSysezk7b00wpCv+a
- Y2ripcrhridNT/hxu/XO2E4jYSF6LHNLNfoUIUAbAVyaRvaYZjSRk8EvNUgyM0JN5cbCiBTpUKK
- /LimC4bETqW0fNvQ0xxkmPI/4V5rSU27pIwbEH/T+TtA1TjvliTRvAPNAVoxdmgpHw7K7RnKut/
- D7M+5bj9NPRya3AWyy3ughR6DInUKmXmtxlYYi96+662HcqhD9bBuD24VMSUdJ02/oXbJme9BUg
- 1Ref9FU7bJpCKwRX1aJh2RqfIY9xGAi/fbO0JVYV+hdM5opU94L105Hh906OF32X526tZj5S5+x
- FaK3ZjcJvR2XDqlDO+2812g==
+ bh=s14hSsNP0osKXinr4iWclYN6vFiEnD9Nkat0LfmjKmk=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo1YDlkvRhbTNBO8GgHHW802Yj3ZgKZMs5s2
+ 5LmBa1xc7zVY4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqNWA5AAoJENju1/PI
+ O/qaHsUQAJ6++/xOar/VpxBQbPBS6noAFVkLTkWW6mesZg8RcqtqO/EldrQw3HmopvKccp0TFn2
+ T3WaTdr7BURmovEuAHLRNXk16CGZDCnRRUaOorrWir+w5PbisIbciYcr9Ha87ejJ71PTNb3mn+i
+ woCzwheRP+xiHdHjO81SyLyAbZXtQA8Ra/vCEVxQThdYEpLvCfdcnV0yKupbsyD0zkJaRZ8Crpw
+ HipfOkQqcIKzWZXayA0MxNnA6FcfWjezUsk5hAa+oroKZ3yx1I6cLgFHFbz4r7PQv4MIlUm0laV
+ p+M2M3KZWAnm1znWLEIkwcpLxYb2Z9vtjrPJ3QCVYn2V5L+SV7Juj8dFp3TuY6PdP4dEkQaWEai
+ GnEeR5Wy9baTLC9u+jes3sWpC3g3fYvv7qTjseyDCIFnRpL2CgJznZEKd8U5V6HU1aJlAvW1bMq
+ HYvPWfMxxdDglsGBZe4JwihMcvRCkANt96f6xR510UqZpkLotOkt/zgj0hfETH47h6lX/dRXs2v
+ rDLrUapGPLTKnOPS3bGGgzU24BvkIAWjVWHxdmhDYrxGdAvPEa39avzlSCHv2dCWRI7SXpBGBPb
+ pnGCG9tw5OOraclhPojMqcNl9vIFc7gA4/bZeDI5McRSm+Pzh74ukUm7Lj/yTj/5SJf1wZre9Dk
+ rae1kNiqVrqv0Gwjapkgu5g==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_082906_265070_669B10B7 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20260619_082907_400948_8B28D921 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,43 +103,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: William Wu <william.wu@rock-chips.com>
+Use FIELD_PREP_WM16() helpers to simplify the DP lane selection
+logic.
 
-According to the LFPS Tx Low Power/LFPS Rx Detect Threshold [1],
-the device under test(DUT) must not respond if LFPS below the
-minimum LFPS Rx Detect Threshold 100mV. Test fail on Rockchip
-platforms, because the default LFPS detect threshold is set to
-65mV.
-
-The USBDP PHY LFPS detect threshold voltage could be set to
-30mV ~ 140mV, and since there could be 10-20% PVT variation,
-we set LFPS detect threshold voltage to 110mV.
-
-[1] https://compliance.usb.org/resources/LFPS_Rx_Tx_Low_Power_Compliance_Update_Rev5.pdf
-
-Signed-off-by: William Wu <william.wu@rock-chips.com>
-[Taken over from rockchip's kernel tree; the registers are not described
-in the TRM]
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 28 +++++++---------------------
+ 1 file changed, 7 insertions(+), 21 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index a44babac3517..7ed539d8c791 100644
+index ceaf091b9101..da769790df98 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -413,7 +413,8 @@ static const struct reg_sequence rk_udphy_init_sequence[] = {
- 	{0x0070, 0x7d}, {0x0074, 0x68},
- 	{0x0af4, 0x1a}, {0x1af4, 0x1a},
- 	{0x0440, 0x3f}, {0x10d4, 0x08},
--	{0x20d4, 0x08}, {0x0024, 0x6e}
-+	{0x20d4, 0x08}, {0x0024, 0x6e},
-+	{0x09c0, 0x0a}, {0x19c0, 0x0a}
- };
+@@ -550,30 +550,16 @@ static void rk_udphy_usb_bvalid_enable(struct rk_udphy *udphy, u8 enable)
+ static void rk_udphy_dp_lane_select(struct rk_udphy *udphy)
+ {
+ 	const struct rk_udphy_cfg *cfg = udphy->cfgs;
+-	u32 value = 0;
+-
+-	switch (udphy->dp_lanes) {
+-	case 4:
+-		value |= 3 << udphy->dp_lane_sel[3] * 2;
+-		value |= 2 << udphy->dp_lane_sel[2] * 2;
+-		fallthrough;
+-
+-	case 2:
+-		value |= 1 << udphy->dp_lane_sel[1] * 2;
+-		fallthrough;
++	u32 value = FIELD_PREP_WM16(DP_LANE_SEL_ALL, 0);
++	int i;
  
- static inline int rk_udphy_grfreg_write(struct regmap *base,
+-	case 1:
+-		value |= 0 << udphy->dp_lane_sel[0] * 2;
+-		break;
++	for (i = 0; i < udphy->dp_lanes; i++)
++		value |= field_prep(DP_LANE_SEL_N(udphy->dp_lane_sel[i]), i);
+ 
+-	default:
+-		break;
+-	}
++	value |= FIELD_PREP_WM16(DP_AUX_DIN_SEL, udphy->dp_aux_din_sel);
++	value |= FIELD_PREP_WM16(DP_AUX_DOUT_SEL, udphy->dp_aux_dout_sel);
+ 
+-	regmap_write(udphy->vogrf, cfg->vogrfcfg[udphy->id].dp_lane_reg,
+-		     ((DP_AUX_DIN_SEL | DP_AUX_DOUT_SEL | DP_LANE_SEL_ALL) << 16) |
+-		     FIELD_PREP(DP_AUX_DIN_SEL, udphy->dp_aux_din_sel) |
+-		     FIELD_PREP(DP_AUX_DOUT_SEL, udphy->dp_aux_dout_sel) | value);
++	regmap_write(udphy->vogrf, cfg->vogrfcfg[udphy->id].dp_lane_reg, value);
+ }
+ 
+ static void rk_udphy_dp_lane_enable(struct rk_udphy *udphy, int dp_lanes)
 
 -- 
 2.53.0
