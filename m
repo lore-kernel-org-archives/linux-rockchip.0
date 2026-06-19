@@ -4,55 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42C6CCD98F2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 12:24:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D177CD4F26
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 12:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IY97zzBOtK/q1j+4wj8DmmmTgRfiyrTunbYFARRdmH8=; b=n7+58HmVn/rCue
-	35It+yYxRnSf5I2ags4UR5Q2JK14GLnj3IPymq7Hidurzf51tUnr8aKXQam1CmYvj1cMHuNHkh/BG
-	Dz8GdiogP3MW57VT9hkyxF4DRo/IYGwcqLDMIjRvCPUuy0mwlh5Go/YqALipVglwUexcYbafqMWY6
-	2i+F30MSF5nzBop7MWrklDlOYKvwTvQYmbaKQhK/hYJv8xvw/d3PBxGaotndYObzSe2s3XRiwJ/cn
-	OQrreGlTczWqs4/yomIibrlYOt9jGRXa6tg8aDMErabqDAKeHR293cZGuRr2msCS/62bIFlzH+GDJ
-	uIvSoErkXXskkcXB89qg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dDUbSlnciR5VWQSmLdQ1FuIzhxigPvF9UfoOk+PZkt8=; b=hGEbrQY/hk4xlH
+	KBoKSciyiPdi5d0Um99jVFICgo6KAT8NPse4GHY2J3JqX7cGHvVmIGBESexdnEP5LZYKSU2mD4SmY
+	fa00/lb7nPKZKu23N+DOtAXHjbpZXmZGdEZM9vMyKVwX00sQKlSXubft9CHDkVdfHEjAQpVYtn9wN
+	4AaPxF7NqF2l8Knc//WmvNAGV3Ed4QJx46aWdepxk5P8kvfHic212kXryhDkcdYDSXcxBaLmOyYPF
+	Ky6Kt5gRbft+JgRCUtkBhZZ7ajeorVg17O8xXH+bkz3TLb2P9Kk8gq2b8oBI6xiAk0UieYmeljklg
+	YKM13TE38rwbzgHE8dsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waYHB-00000002Nl1-0l6Y;
-	Fri, 19 Jun 2026 12:24:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1waYJx-00000002P6f-3glD;
+	Fri, 19 Jun 2026 12:27:41 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waYHA-00000002Nke-0ghG;
-	Fri, 19 Jun 2026 12:24:48 +0000
+	id 1waYJw-00000002P5I-0p7X;
+	Fri, 19 Jun 2026 12:27:40 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 30DFD40364;
-	Fri, 19 Jun 2026 12:24:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70B751F000E9;
-	Fri, 19 Jun 2026 12:24:46 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A1F23601E2;
+	Fri, 19 Jun 2026 12:27:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA9101F000E9;
+	Fri, 19 Jun 2026 12:27:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1781871887;
-	bh=B05WHhjCBoRIjDtR67EQPJXf4Ssgj/DxNfy3or8+FkM=;
-	h=From:Subject:Date:To:Cc;
-	b=WViAI322jk7baWoNGngPCnMaotke3CZu+KrKpFFal9mQXhRb2mkJlgSjX5O2PZ9M+
-	 h8OeBgQ0o/utp4shlpf17rv0f6l3YnsU8SAeGYLzyzsh9VQ/qm3GNqLH0J9ReN48N3
-	 cldQv/F/Qb8DHWs0MhAji7zAeIH6y2CvAA4iPPEPzvkbuD6bXfxjFaiti3sqqbnfIN
-	 D+1leWRKQf2soPbn1D+K01p1y71HsBCTR7ZwUsP93sv2aXl5uc+HLSx6HN77zEffFs
-	 7DM7wcMZc0jM+lQB6FSRZUWxMFiEk17e9HsoCXwkQm7WfuTrzUBbwWYT4IarbG16fY
-	 Z7saYJUrxnpBw==
+	s=k20260515; t=1781872059;
+	bh=PmFg1F7stkBZtAn0NWj/38h1CH75VRKu7DzE/r76fNA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=b5SL0UfZ6gorAykE5x6ZtZ+1kPrVs1sPyRTgu6F+KTpR+UXSMZIKyLlDDLf3unIac
+	 gPk2hAhFKVzrpi4AtjnkhFit0cVu9aeoRRlwlO86zFliF1/XsDH+pkyshMyBG1DFst
+	 yVv2CHQBNH4udi0A+j3iYMQyfmhskrLr9r6uGGgdWU08l1KGu+dN8ugMAHdMCM/ONv
+	 yBxFbazj6FNOnZ4in8NXdRqWXbu+SfGi4hCA7JIIEHVkZz4FkXzuy1+kUkRuBBGPBU
+	 XrvzxNKFO4E4GXuRUa496nikHGDAywobkapO0KMPrpc4QLSPdUGVpXA26lA6Jc4Kbc
+	 Li81T1F96DvOg==
 From: Maxime Ripard <mripard@kernel.org>
-Subject: [PATCH v3 00/78] drm/bridge: Convert all reset users to
- create_state
-Date: Fri, 19 Jun 2026 14:24:05 +0200
-Message-Id: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
+Date: Fri, 19 Jun 2026 14:25:09 +0200
+Subject: [PATCH v3 64/78] drm/rockchip: cdn-dp: Switch to
+ atomic_create_state
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/43QwW7CMAwG4FepcsaTk64lcNp7IA5tYsAaSZgTK
- hDi3ZfCYeKCdvwt+7Plm8okTFmtm5sSmjhzijW0i0a5wxD3BOxrVgZNj12L4CVATBCSEIzCvnY
- IZSrgBoO+I2OWn6jq+Elox5cHvdnWfOBcklwfmyY9V/+BThoQ7LLz1ljf6tF9fZNEOn4k2atZn
- cyf1KN9I5kq4bDSqO24s7Z/ke7Pg4V+zvUF5Xm1GodM4FIIXNbNLAfODiJdCswLAXvQqzp8/wV
- 0Qh2DRwEAAA==
-X-Change-ID: 20260530-drm-no-more-bridge-reset-ca20d5e22740
+Message-Id: <20260619-drm-no-more-bridge-reset-v3-64-ff399263111b@kernel.org>
+References: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
+In-Reply-To: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
@@ -62,52 +58,18 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
  Simona Vetter <simona@ffwll.ch>
 Cc: Dmitry Baryshkov <lumag@kernel.org>, dri-devel@lists.freedesktop.org, 
- Maxime Ripard <mripard@kernel.org>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- Jagan Teki <jagan@amarulasolutions.com>, Liu Ying <victor.liu@nxp.com>, 
- Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, imx@lists.linux.dev, 
- linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, 
- Phong LE <ple@baylibre.com>, Douglas Anderson <dianders@chromium.org>, 
- Inki Dae <inki.dae@samsung.com>, 
- Marek Szyprowski <m.szyprowski@samsung.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Paul Cercueil <paul@crapouillou.net>, linux-mips@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- linux-amlogic@lists.infradead.org, 
- Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Magnus Damm <magnus.damm@gmail.com>, 
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
- linux-renesas-soc@vger.kernel.org, Biju Das <biju.das.jz@bp.renesas.com>, 
- Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, 
- linux-rockchip@lists.infradead.org, 
- Yannick Fertre <yannick.fertre@foss.st.com>, 
- Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
- Philippe Cornu <philippe.cornu@foss.st.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- linux-stm32@st-md-mailman.stormreply.com, Jyri Sarha <jyri.sarha@iki.fi>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
- Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Michal Simek <michal.simek@amd.com>
+ Maxime Ripard <mripard@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=10278; i=mripard@kernel.org;
- h=from:subject:message-id; bh=vL5v+k7dzjExYMQy4wUeJZIHTwb5UTblvAG+U2AaEzs=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFmmJi/3JS7zVti6W8suc+e7Fa/Vj0qu7OUI3ubR/9F9v
- Uay86SrHVNZGIQ5GWTFFFmeyISdXt6+uMrBfuUPmDmsTCBDGLg4BWAid7wZG9qmpXjLBsoIFySd
- CG6KDHis8Ijj/T2eflX1/3MntG9oDrzu8vTfdw6eT4qPykQXysV8Yawz4AmxD9Jknv+RK0mh7l9
- jv9i7O2ufBVXm/fjv82ASd0pzmtyioqVe8/etvyDDYTO59ToA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1587; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=mH6AkWs35KuBQWOVkh00AHkgGCpu8OjsSiyDjardA9A=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFmmpmzqrOsqzwZ5T3ju2Fvztyzu1pvSE9c6V/xt+uuxp
+ vrs4oNJHVNZGIQ5GWTFFFmeyISdXt6+uMrBfuUPmDmsTCBDGLg4BWAiyW2M9RnL4p36NfIWrH6h
+ PT96IseEl+IqF279fhyRmNq2eUpy2R+h7Q9Y+bl98g8YL5bn/HE2nrHerzzwXtf+rm3Xuia++JE
+ Vt6Fp0p1qjre1AbMjTwnonj6lF/HGSlXsz1Uf6U+nZy/Ku9AFAA==
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -121,197 +83,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi, 
-
-All the bridges use reset to create a blank state only and don't use it
-to reset the hardware at all. This is what the new atomic_create_state
-is exactly supposed to be doing, so we can convert all existing bridge
-users to it, and remove the reset hook and helpers.
-
-Let me know what you think,
-Maxime 
-
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
-Changes in v3:
-- Rebase on current drm-misc-next
-- Link to v2: https://lore.kernel.org/r/20260608-drm-no-more-bridge-reset-v2-0-0a91018bf886@kernel.org
-
-Changes in v2:
-- Split the return value fix for cadence bridges into their own patches
-- Fix bisection
-- Collect tags
-- Link to v1: https://lore.kernel.org/r/20260530-drm-no-more-bridge-reset-v1-0-875d828d31bc@kernel.org
-
----
-Maxime Ripard (78):
-      drm/bridge: cdns-dsi: Return an error pointer on allocation failure
-      drm/bridge: cdns-mhdp8546: Return an error pointer on allocation failure
-      drm/atomic-state-helper: Rename __drm_atomic_helper_bridge_reset()
-      drm/atomic-state-helper: Reorder __drm_atomic_helper_bridge_state_init() arguments
-      drm/atomic-state-helper: Drop memset from __drm_atomic_helper_bridge_state_init()
-      drm/bridge: Add new atomic_create_state callback
-      drm/atomic-state-helper: Add drm_atomic_helper_bridge_create_state()
-      drm/bridge: adv7511: Switch to atomic_create_state
-      drm/bridge: analogix_dp: Switch to atomic_create_state
-      drm/bridge: anx7625: Switch to atomic_create_state
-      drm/bridge: chipone-icn6211: Switch to atomic_create_state
-      drm/bridge: display-connector: Switch to atomic_create_state
-      drm/bridge: fsl-ldb: Switch to atomic_create_state
-      drm/bridge: imx8mp-hdmi-pvi: Switch to atomic_create_state
-      drm/bridge: imx8qm-ldb: Switch to atomic_create_state
-      drm/bridge: imx8qxp-ldb: Switch to atomic_create_state
-      drm/bridge: imx8qxp-pixel-combiner: Switch to atomic_create_state
-      drm/bridge: imx8qxp-pixel-link: Switch to atomic_create_state
-      drm/bridge: imx8qxp-pxl2dpi: Switch to atomic_create_state
-      drm/bridge: inno-hdmi: Switch to atomic_create_state
-      drm/bridge: ite-it6263: Switch to atomic_create_state
-      drm/bridge: ite-it6505: Switch to atomic_create_state
-      drm/bridge: ite-it66121: Switch to atomic_create_state
-      drm/bridge: lontium-lt9211: Switch to atomic_create_state
-      drm/bridge: lontium-lt9611: Switch to atomic_create_state
-      drm/bridge: lvds-codec: Switch to atomic_create_state
-      drm/bridge: nwl-dsi: Switch to atomic_create_state
-      drm/bridge: panel: Switch to atomic_create_state
-      drm/bridge: parade-ps8640: Switch to atomic_create_state
-      drm/bridge: samsung-dsim: Switch to atomic_create_state
-      drm/bridge: sii902x: Switch to atomic_create_state
-      drm/bridge: ssd2825: Switch to atomic_create_state
-      drm/bridge: dw-dp: Switch to atomic_create_state
-      drm/bridge: dw-hdmi-qp: Switch to atomic_create_state
-      drm/bridge: dw-hdmi: Switch to atomic_create_state
-      drm/bridge: dw-mipi-dsi: Switch to atomic_create_state
-      drm/bridge: dw-mipi-dsi2: Switch to atomic_create_state
-      drm/bridge: tc358762: Switch to atomic_create_state
-      drm/bridge: tc358767: Switch to atomic_create_state
-      drm/bridge: tc358768: Switch to atomic_create_state
-      drm/bridge: tc358775: Switch to atomic_create_state
-      drm/bridge: ti-dlpc3433: Switch to atomic_create_state
-      drm/bridge: ti-sn65dsi83: Switch to atomic_create_state
-      drm/bridge: ti-sn65dsi86: Switch to atomic_create_state
-      drm/bridge: ti-tdp158: Switch to atomic_create_state
-      drm/bridge: ti-tfp410: Switch to atomic_create_state
-      drm/imx: parallel-display: Switch to atomic_create_state
-      drm/ingenic: Switch to atomic_create_state
-      drm/mediatek: dp: Switch to atomic_create_state
-      drm/mediatek: dpi: Switch to atomic_create_state
-      drm/mediatek: dsi: Switch to atomic_create_state
-      drm/mediatek: hdmi: Switch to atomic_create_state
-      drm/mediatek: hdmi_v2: Switch to atomic_create_state
-      drm/meson: encoder_cvbs: Switch to atomic_create_state
-      drm/meson: encoder_dsi: Switch to atomic_create_state
-      drm/meson: encoder_hdmi: Switch to atomic_create_state
-      drm/msm: dp: Switch to atomic_create_state
-      drm/msm: hdmi: Switch to atomic_create_state
-      drm/omap: hdmi4: Switch to atomic_create_state
-      drm/omap: hdmi5: Switch to atomic_create_state
-      drm/renesas: rcar-du: lvds: Switch to atomic_create_state
-      drm/renesas: rcar-du: mipi_dsi: Switch to atomic_create_state
-      drm/renesas: rz-du: mipi_dsi: Switch to atomic_create_state
-      drm/rockchip: cdn-dp: Switch to atomic_create_state
-      drm/rockchip: rk3066_hdmi: Switch to atomic_create_state
-      drm/rockchip: lvds: Switch to atomic_create_state
-      drm/stm: lvds: Switch to atomic_create_state
-      drm/tests: bridge: Switch to atomic_create_state
-      drm/tidss: encoder: Switch to atomic_create_state
-      drm/tidss: oldi: Switch to atomic_create_state
-      drm/vc4: dsi: Switch to atomic_create_state
-      drm/verisilicon: Switch to atomic_create_state
-      drm/xlnx: zynqmp_dp: Switch to atomic_create_state
-      drm/atomic-state-helper: Remove drm_atomic_helper_bridge_reset()
-      drm/bridge: cdns-dsi: Use __drm_atomic_helper_bridge_state_init()
-      drm/bridge: cdns-dsi: Switch to atomic_create_state
-      drm/bridge: cdns-mhdp8546: Switch to atomic_create_state
-      drm/bridge: Remove atomic_reset support
-
- drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |  2 +-
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |  2 +-
- drivers/gpu/drm/bridge/analogix/anx7625.c          |  2 +-
- drivers/gpu/drm/bridge/cadence/cdns-dsi-core.c     |  9 +++--
- .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.c    |  8 ++---
- drivers/gpu/drm/bridge/chipone-icn6211.c           |  2 +-
- drivers/gpu/drm/bridge/display-connector.c         |  2 +-
- drivers/gpu/drm/bridge/fsl-ldb.c                   |  2 +-
- drivers/gpu/drm/bridge/imx/imx8mp-hdmi-pvi.c       |  2 +-
- drivers/gpu/drm/bridge/imx/imx8qm-ldb.c            |  2 +-
- drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c           |  2 +-
- .../gpu/drm/bridge/imx/imx8qxp-pixel-combiner.c    |  2 +-
- drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c    |  2 +-
- drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c       |  2 +-
- drivers/gpu/drm/bridge/inno-hdmi.c                 |  2 +-
- drivers/gpu/drm/bridge/ite-it6263.c                |  2 +-
- drivers/gpu/drm/bridge/ite-it6505.c                |  2 +-
- drivers/gpu/drm/bridge/ite-it66121.c               |  2 +-
- drivers/gpu/drm/bridge/lontium-lt9211.c            |  2 +-
- drivers/gpu/drm/bridge/lontium-lt9611.c            |  2 +-
- drivers/gpu/drm/bridge/lvds-codec.c                |  2 +-
- drivers/gpu/drm/bridge/nwl-dsi.c                   |  2 +-
- drivers/gpu/drm/bridge/panel.c                     |  2 +-
- drivers/gpu/drm/bridge/parade-ps8640.c             |  2 +-
- drivers/gpu/drm/bridge/samsung-dsim.c              |  2 +-
- drivers/gpu/drm/bridge/sii902x.c                   |  2 +-
- drivers/gpu/drm/bridge/ssd2825.c                   |  2 +-
- drivers/gpu/drm/bridge/synopsys/dw-dp.c            |  2 +-
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c       |  2 +-
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  2 +-
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |  2 +-
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c     |  2 +-
- drivers/gpu/drm/bridge/tc358762.c                  |  2 +-
- drivers/gpu/drm/bridge/tc358767.c                  |  4 +--
- drivers/gpu/drm/bridge/tc358768.c                  |  2 +-
- drivers/gpu/drm/bridge/tc358775.c                  |  2 +-
- drivers/gpu/drm/bridge/ti-dlpc3433.c               |  2 +-
- drivers/gpu/drm/bridge/ti-sn65dsi83.c              |  2 +-
- drivers/gpu/drm/bridge/ti-sn65dsi86.c              |  2 +-
- drivers/gpu/drm/bridge/ti-tdp158.c                 |  2 +-
- drivers/gpu/drm/bridge/ti-tfp410.c                 |  2 +-
- drivers/gpu/drm/drm_atomic_state_helper.c          | 40 ++++++++++++----------
- drivers/gpu/drm/drm_bridge.c                       |  4 +--
- drivers/gpu/drm/imx/ipuv3/parallel-display.c       |  2 +-
- drivers/gpu/drm/ingenic/ingenic-drm-drv.c          |  2 +-
- drivers/gpu/drm/mediatek/mtk_dp.c                  |  2 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c                 |  2 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c                 |  2 +-
- drivers/gpu/drm/mediatek/mtk_hdmi.c                |  2 +-
- drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |  2 +-
- drivers/gpu/drm/meson/meson_encoder_cvbs.c         |  2 +-
- drivers/gpu/drm/meson/meson_encoder_dsi.c          |  2 +-
- drivers/gpu/drm/meson/meson_encoder_hdmi.c         |  2 +-
- drivers/gpu/drm/msm/dp/dp_drm.c                    |  4 +--
- drivers/gpu/drm/msm/hdmi/hdmi_bridge.c             |  2 +-
- drivers/gpu/drm/omapdrm/dss/hdmi4.c                |  2 +-
- drivers/gpu/drm/omapdrm/dss/hdmi5.c                |  2 +-
- drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c        |  2 +-
- drivers/gpu/drm/renesas/rcar-du/rcar_mipi_dsi.c    |  2 +-
- drivers/gpu/drm/renesas/rz-du/rzg2l_mipi_dsi.c     |  2 +-
- drivers/gpu/drm/rockchip/cdn-dp-core.c             |  2 +-
- drivers/gpu/drm/rockchip/rk3066_hdmi.c             |  2 +-
- drivers/gpu/drm/rockchip/rockchip_lvds.c           |  2 +-
- drivers/gpu/drm/stm/lvds.c                         |  2 +-
- drivers/gpu/drm/tests/drm_bridge_test.c            |  6 ++--
- drivers/gpu/drm/tidss/tidss_encoder.c              |  2 +-
- drivers/gpu/drm/tidss/tidss_oldi.c                 |  2 +-
- drivers/gpu/drm/vc4/vc4_dsi.c                      |  2 +-
- drivers/gpu/drm/verisilicon/vs_bridge.c            |  4 +--
- drivers/gpu/drm/xlnx/zynqmp_dp.c                   |  2 +-
- include/drm/drm_atomic_state_helper.h              |  6 ++--
- include/drm/drm_bridge.h                           | 33 ++++++------------
- 72 files changed, 117 insertions(+), 125 deletions(-)
----
-base-commit: 4c85094a73431c26d5774aa74e422fc6bb94a7d5
-change-id: 20260530-drm-no-more-bridge-reset-ca20d5e22740
-
-Best regards,
--- 
-Maxime Ripard <mripard@kernel.org>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIGRybV9icmlkZ2VfZnVuY3MuYXRvbWljX3Jlc2V0IGNhbGxiYWNrIGFuZCBpdHMKZHJtX2F0
+b21pY19oZWxwZXJfYnJpZGdlX3Jlc2V0KCkgaGVscGVyIGFyZSBkZXByZWNhdGVkLgoKU3dpdGNo
+IHRvIHRoZSBhdG9taWNfY3JlYXRlX3N0YXRlIGNhbGxiYWNrIGFuZCBpdHMKZHJtX2F0b21pY19o
+ZWxwZXJfYnJpZGdlX2NyZWF0ZV9zdGF0ZSgpIGNvdW50ZXJwYXJ0LgoKUmV2aWV3ZWQtYnk6IEhl
+aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+ClJldmlld2VkLWJ5OiBUaG9tYXMgWmltbWVy
+bWFubiA8dHppbW1lcm1hbm5Ac3VzZS5kZT4KU2lnbmVkLW9mZi1ieTogTWF4aW1lIFJpcGFyZCA8
+bXJpcGFyZEBrZXJuZWwub3JnPgotLS0KVG86IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5j
+b20+ClRvOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+ClRvOiBBbmR5IFlhbiA8
+YW5keS55YW5Acm9jay1jaGlwcy5jb20+CkNjOiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+Y2RuLWRwLWNvcmUuYyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBk
+ZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAt
+Y29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKaW5kZXggMTkw
+Y2NlOTUzMGM4Li5lMTU5ZTE2MjdmM2MgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9jZG4tZHAtY29yZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAt
+Y29yZS5jCkBAIC04MjMsMTEgKzgyMywxMSBAQCBzdGF0aWMgaW50IGNkbl9kcF9hdWRpb19tdXRl
+X3N0cmVhbShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAogfQogCiBzdGF0aWMgY29uc3Qgc3Ry
+dWN0IGRybV9icmlkZ2VfZnVuY3MgY2RuX2RwX2JyaWRnZV9mdW5jcyA9IHsKIAkuYXRvbWljX2R1
+cGxpY2F0ZV9zdGF0ZSA9IGRybV9hdG9taWNfaGVscGVyX2JyaWRnZV9kdXBsaWNhdGVfc3RhdGUs
+CiAJLmF0b21pY19kZXN0cm95X3N0YXRlID0gZHJtX2F0b21pY19oZWxwZXJfYnJpZGdlX2Rlc3Ry
+b3lfc3RhdGUsCi0JLmF0b21pY19yZXNldCA9IGRybV9hdG9taWNfaGVscGVyX2JyaWRnZV9yZXNl
+dCwKKwkuYXRvbWljX2NyZWF0ZV9zdGF0ZSA9IGRybV9hdG9taWNfaGVscGVyX2JyaWRnZV9jcmVh
+dGVfc3RhdGUsCiAJLmRldGVjdCA9IGNkbl9kcF9icmlkZ2VfZGV0ZWN0LAogCS5lZGlkX3JlYWQg
+PSBjZG5fZHBfYnJpZGdlX2VkaWRfcmVhZCwKIAkuYXRvbWljX2VuYWJsZSA9IGNkbl9kcF9icmlk
+Z2VfYXRvbWljX2VuYWJsZSwKIAkuYXRvbWljX2Rpc2FibGUgPSBjZG5fZHBfYnJpZGdlX2F0b21p
+Y19kaXNhYmxlLAogCS5tb2RlX3ZhbGlkID0gY2RuX2RwX2JyaWRnZV9tb2RlX3ZhbGlkLAoKLS0g
+CjIuNTQuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
