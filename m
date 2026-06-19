@@ -4,80 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26389CD4F26
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 15:30:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34108CDB466
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 15:34:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YzenR4dr11uP7W6ReyoLUPIh0T9oIMxCUoNQFYKZ3uQ=; b=gV7g1jr7fjUGFI
-	WgqrFo/bg5+9VQIP3i9BL7WJDSWSFWyDe0Fm0VQL3HN0NVxUV8j2/d0KDaxTofKv0fBCtOrc3+4YG
-	Ek2qDr3GCviv70m9sIdv0RC1tJOqAFjA/nBKf7BNg920VE/pVRVXdLhyUA/97udNP0plDJIG8fPkQ
-	EHUKA4HVSJXgDM+ujal7zs5fg2W4pMyeLcQrj1/a9TQe+5kyl2fKqlQSuYZ123+Mk6Ad36oGwJpzt
-	7Lc2Gy9b8ZqimvNeYpbtZYTQJk9vORtBwBAr4YNhIePmrfkI/MC9z99TCQOxY0lxdfuxb+1Xc5lkD
-	BCb03MT6rO8XvEzgfOZQ==;
+	List-Owner; bh=H6O2fVi8I4seRv5B1KaNvPh+FnXYJdz3qNIfgJgUukU=; b=ZzFeMbxz/HVxNe
+	kDiSQHxcUedMJtWK1+CoBVejdwVcFX3WQwpWU+MwEp4VrVNWNkO+6ovA0M7SgZ/Ep3U8vGcGmE0JP
+	b86c9stfpT61BDoRqAakExmgaAC1I33sxVi+pdATfluCt0KSzHFIYUiIQpoGkCG6fLjYg9UEo0Rg+
+	/ZtDfqq316c6NYzGQYG5eNoJiwMP/Cn5zvgsnBbMPQrVxDlnJo94mOPX/nS1IZuZxskbRqy3qX5nd
+	aNWW5lnc62CRxr6nCm9owYhIzi2llu3f5BxBde7PWRqQlLga6WvsEB8HxMOczlJsDgAXHB6mtwcjL
+	TrPl6UKI4mqz2MM5xZTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wabAz-00000002fsW-3e9S;
-	Fri, 19 Jun 2026 15:30:37 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wabEj-00000002gP0-0aNG;
+	Fri, 19 Jun 2026 15:34:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wabAw-00000002fox-2Y76;
-	Fri, 19 Jun 2026 15:30:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=mLjNq3xGexi6hHuje2pZSSEVpO87sjjlxI3YsPJaXJs=; b=AqWpTud5BjRUS92qPwk7YAOr1R
-	szVIaX3PaBCUuiHCASwj2HxTwYnnZyhjhL6Wy7UjSUHTfQ0TugGHSPp0Wxn6fbOxPbY0OtqVYMtgo
-	i7xh3Y5eCFmJ1QEaXZUo6bl1FcGM73cJS4xPPUWRy5MuoZbdfeYfvlGL/eNz6z8HYvRj2sT9AeeCD
-	JwZic95Iu7dfi5Tnut+G+tDLmhm5ZHk1vpEi+pZknLDYcIcsVcozt3bQA/7QWbl7SkCXIVbm2M0Mo
-	9AC9mAHlwm+9o2Sv/ppESVKRwj6mFCrvC4fhUs6VLo+B2ZUhqB06i7EOPnT8P/AXc7yWNU01D1bK2
-	Etkctj7g==;
-Received: from m16.mail.163.com ([117.135.210.4])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wabAs-0000000Egaw-2uLI;
-	Fri, 19 Jun 2026 15:30:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
-	Content-Type; bh=mLjNq3xGexi6hHuje2pZSSEVpO87sjjlxI3YsPJaXJs=;
-	b=WWZwTY0t6sGMtDRzCftyLiJoSnbU3TkUe4NHi7ZG3KIrX8KolrdkPh0UAL3K1W
-	lW6AQf0LMkjP0peGCZyAjFljpOTBkWy1sIO8MNWwQM7fezWKNvRZu7Dk2lDOUa2i
-	nFwBqidIOU2kkgDrAYeEUIh4YY6siwKDDGEwz2iBMqgA0=
-Received: from [IPV6:240e:b8f:91b3:d000:a264:4237:512f:7b1] (unknown [])
-	by gzga-smtp-mtada-g0-0 (Coremail) with SMTP id _____wD317VjYDVqjyOoEA--.54216S2;
-	Fri, 19 Jun 2026 23:29:40 +0800 (CST)
-Message-ID: <dae17d36-c7d2-467b-a621-3c55e08a67a8@163.com>
-Date: Fri, 19 Jun 2026 23:29:39 +0800
+	id 1wabEf-00000002gM3-3Mvs;
+	Fri, 19 Jun 2026 15:34:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1781883263;
+	bh=Z/LdeXSUssiy8jEYkeBPrfksk8Z5qtIxmZ8LzHUPTgU=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=W/H9pP80cmRZz/arTVG5OlSgAJQvhH8L84XneURugJy4ziYcINkBIGe+LWnYJThqE
+	 gFD1MJIPELbuqHpXtZ1MM9t1nOcMHqVzeWkxgCfCtskt8bQLCyTxo68kbe36FILbwW
+	 o+1acIFPRJflWp+AwxLzNxUkTDLwyu6D1t+uKCTAY/tbEXTdUP/+bDc5I3kuarXWb+
+	 7yVdFPt6+L45MvrvfwhXJh6VU+24+hwji7BJC7XjvSGiEwiTiooUClRAquoKQDpXb9
+	 pIjjF/lhke3vbEoyOCLzxpfyvNP5C19KJCKWKbav5oG9P4YKQFTdpnuOcdMTP3Cz5k
+	 juc1hAZZx9r9g==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7963717E0CD4;
+	Fri, 19 Jun 2026 17:34:23 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id A6F5B480066; Fri, 19 Jun 2026 17:28:57 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Fri, 19 Jun 2026 17:29:12 +0200
+Subject: [PATCH v6 21/23] phy: rockchip: usbdp: Support going from DP-only
+ mode to USB mode
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 0/2] PCI: Configure Root Port MPS during host probing
-To: bhelgaas@google.com, Manivannan Sadhasivam <mani@kernel.org>,
- Bjorn Helgaas <helgaas@kernel.org>
-Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, heiko@sntech.de,
- yue.wang@amlogic.com, pali@kernel.org, neil.armstrong@linaro.org,
- robh@kernel.org, jingoohan1@gmail.com, khilman@baylibre.com,
- jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, cassel@kernel.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20251127170908.14850-1-18255117159@163.com>
- <vpuzlzry7uulctur7kwtlogniuhogd5ybmrwjtos2v7yryf47v@yj2ocobbog6s>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <vpuzlzry7uulctur7kwtlogniuhogd5ybmrwjtos2v7yryf47v@yj2ocobbog6s>
-X-CM-TRANSID: _____wD317VjYDVqjyOoEA--.54216S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxZFWxurWrZw1xCrWrXF4DXFb_yoWrGw4rpF
-	WFganakF4xGr1fCa9Fgw1jkFyYqas7GF47JrW5GwnxZanxZF15XFZ29w1rZr9rXrWfC3WS
-	vFy2qa4xW3Wqva7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UIjgsUUUUU=
-X-Originating-IP: [240e:b8f:91b3:d000:a264:4237:512f:7b1]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCwwUZvGo1YGWHawAA3V
+Message-Id: <20260619-rockchip-usbdp-cleanup-v6-21-3bb1f54b3f35@collabora.com>
+References: <20260619-rockchip-usbdp-cleanup-v6-0-3bb1f54b3f35@collabora.com>
+In-Reply-To: <20260619-rockchip-usbdp-cleanup-v6-0-3bb1f54b3f35@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Yubing Zhang <yubing.zhang@rock-chips.com>, 
+ Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ devicetree@vger.kernel.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3002;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=Z/LdeXSUssiy8jEYkeBPrfksk8Z5qtIxmZ8LzHUPTgU=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo1YDnpPon/ct8GoOHH5a3CZZXhiPN1GuEQH
+ j7lVODRfYvseIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqNWA5AAoJENju1/PI
+ O/qaVncP/jwKBPqMOXxTuIixNy6Qcm4mw1QpC2qkP44wYlaTlHC+lTWpY+NoRerIvMkboyYPx1f
+ XcD1rI6nk5i+JRtG46qY6mkL+gX9vJxV05H/2y86nVTEkTQEuS0IMntBfxQ8FQMbk3feEWblrqI
+ HGtawGdU2MRbLlSJyifeKzUJldwAbTyp8NyeqWaBSNtsMnybplw7VoWZXj/gd5U/yuJcADbgr6E
+ SsjZE09qXDF6ZRVtUuyQgD+5n5inIIAdqetEtDJulcndCspQBT5gRDhMoak4bGdOIjaSZn7zTic
+ teosHaK7/ps2PA+anGOMBleqQcvbqSyV5O/vJ/SyaBBCH+7t5DW/KpnxfetvBmwFZNy53vgX+tK
+ If8y5qND45IDsVJMs8r/jsvyBjBk5e1y0sxBBmdVrUcSQqKzXwuxlHLLwnY3AtBQQyXipwO/Xig
+ WugF1CUELpYi3Da37iCG0NTciWe6KrztTL0fXW6yD7Dac/sJmOCxVXmEs0FkOv9lZ241K6TuEOq
+ W3goWFcdPE4bgd0xAk258Mk7BiI2Xe6yWoXZlvSDbN+d00/soA4JQxRtCRXPa+4hqzmCFTJPKLX
+ 23m6tNh27OAiVN4SCFuXtsOYD9SU03Uzy1D5+QLXSuUdMJ3OLJN7uEUBUX9OOwn0Zy2nOJ7zpx3
+ EI5E7JfGTZNmPKLstTw43Kg==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_163031_349360_9AE8E8D5 
-X-CRM114-Status: GOOD (  17.73  )
+X-CRM114-CacheID: sfid-20260619_083425_997649_CC127D82 
+X-CRM114-Status: GOOD (  18.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,114 +97,109 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+When a USB-C adapter, which maps all Superspeed lanes to DP is plugged
+in, the USB support is disabled in the PHY. When the adapter is
+unplugged and a different adapter with USB functionality is plugged in
+afterwards, USB functionality is not restored as the USB controller
+keeps the PHY enabled for the entire time.
 
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 29 ++++++++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
-On 5/6/26 22:00, Manivannan Sadhasivam wrote:
-> On Fri, Nov 28, 2025 at 01:09:06AM +0800, Hans Zhang wrote:
->> Current PCIe initialization exhibits a key optimization gap: Root Ports
->> may operate with non-optimal Maximum Payload Size (MPS) settings. While
->> downstream device configuration is handled during bus enumeration, Root
->> Port MPS values inherited from firmware or hardware defaults often fail
->> to utilize the full capabilities supported by controller hardware. This
->> results in suboptimal data transfer efficiency throughout the PCIe
->> hierarchy.
->>
->> This patch series addresses this by:
->>
->> 1. Core PCI enhancement (Patch 1):
->> - Proactively configures Root Port MPS during host controller probing
->> - Sets initial MPS to hardware maximum (128 << dev->pcie_mpss)
->> - Conditional on PCIe bus tuning being enabled (PCIE_BUS_TUNE_OFF unset)
->>    and not in PCIE_BUS_PEER2PEER mode (which requires default 128 bytes)
->> - Maintains backward compatibility via PCIE_BUS_TUNE_OFF check
->> - Preserves standard MPS negotiation during downstream enumeration
->>
->> 2. Driver cleanup (Patch 2):
->> - Removes redundant MPS configuration from Meson PCIe controller driver
->> - Functionality is now centralized in PCI core
->> - Simplifies driver maintenance long-term
->>
-> 
-> For the series,
-> 
-> Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
-> 
-> Bjorn: Could you please take a look? This series has been floating for a
-> while...
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index 81aae3bc5747..7f26b74cb515 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -178,6 +178,7 @@ struct rk_udphy {
+ 
+ 	/* utilized for USB */
+ 	bool hs; /* flag for high-speed */
++	bool usb_in_use;
+ 
+ 	/* utilized for DP */
+ 	struct gpio_desc *sbu1_dc_gpio;
+@@ -1015,6 +1016,10 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
+ 		ret = rk_udphy_init(udphy);
+ 		if (ret)
+ 			return ret;
++
++		if (udphy->mode & UDPHY_MODE_USB)
++			rk_udphy_u3_port_disable(udphy, false);
++
+ 		udphy->phy_needs_reinit = false;
+ 	}
+ 
+@@ -1278,6 +1283,7 @@ static const struct phy_ops rk_udphy_dp_phy_ops = {
+ static int rk_udphy_usb3_phy_init(struct phy *phy)
+ {
+ 	struct rk_udphy *udphy = phy_get_drvdata(phy);
++	int ret;
+ 
+ 	guard(mutex)(&udphy->mutex);
+ 
+@@ -1287,7 +1293,13 @@ static int rk_udphy_usb3_phy_init(struct phy *phy)
+ 		return 0;
+ 	}
+ 
+-	return rk_udphy_power_on(udphy, UDPHY_MODE_USB);
++	ret = rk_udphy_power_on(udphy, UDPHY_MODE_USB);
++	if (ret)
++		return ret;
++
++	udphy->usb_in_use = true;
++
++	return 0;
+ }
+ 
+ static int rk_udphy_usb3_phy_exit(struct phy *phy)
+@@ -1296,6 +1308,8 @@ static int rk_udphy_usb3_phy_exit(struct phy *phy)
+ 
+ 	guard(mutex)(&udphy->mutex);
+ 
++	udphy->usb_in_use = false;
++
+ 	/* DP only or high-speed */
+ 	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs)
+ 		return 0;
+@@ -1315,6 +1329,7 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+ 				  struct typec_mux_state *state)
+ {
+ 	struct rk_udphy *udphy = typec_mux_get_drvdata(mux);
++	u8 old_mode;
+ 
+ 	/*
+ 	 * Ignore mux events not involving DP AltMode, because
+@@ -1326,8 +1341,20 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+ 
+ 	guard(mutex)(&udphy->mutex);
+ 
++	old_mode = udphy->mode;
++
+ 	rk_udphy_set_typec_state(udphy, state->mode);
+ 
++	/*
++	 * If the new mode includes USB but the old one didn't (e.g. leaving
++	 * DP-only), and the USB PHY was already initialized by the USB
++	 * controller, we need to power on the USB side now since no
++	 * subsequent phy_init call will come from the controller.
++	 */
++	if ((udphy->mode & UDPHY_MODE_USB) && !(old_mode & UDPHY_MODE_USB) &&
++	    udphy->usb_in_use && !udphy->hs)
++		return rk_udphy_power_on(udphy, UDPHY_MODE_USB);
++
+ 	return 0;
+ }
+ 
 
-Hello Bjorn,
-
-Any chance for this series to be applied?
-
-Best regards,
-Hans
-
-
-> 
-> - Mani
-> 
->> ---
->> Changes in v7:
->> - Exclude PCIE_BUS_PEER2PEER mode from Root Port MPS configuration
->> - Remove redundant check for upstream bridge (Root Ports don't have one)
->> - Improve commit message and code comments as per Bjorn.
->>
->> Changes for v6:
->> https://patchwork.kernel.org/project/linux-pci/patch/20251104165125.174168-1-18255117159@163.com/
->>
->> - Modify the commit message and comments. (Bjorn)
->> - Patch 1/2 code logic: Add !bridge check to configure MPS only for Root Ports
->>    without an upstream bridge (root bridges), avoiding incorrect handling of
->>    non-root-bridge Root Ports (Niklas).
->>
->> Changes for v5:
->> https://patchwork.kernel.org/project/linux-pci/patch/20250620155507.1022099-1-18255117159@163.com/
->>
->> - Use pcie_set_mps directly instead of pcie_write_mps.
->> - The patch 1 commit message were modified.
->>
->> Changes for v4:
->> https://patchwork.kernel.org/project/linux-pci/patch/20250510155607.390687-1-18255117159@163.com/
->>
->> - The patch [v4 1/2] add a comment to explain why it was done this way.
->> - The patch [v4 2/2] have not been modified.
->> - Drop patch [v3 3/3]. The Maintainer of the pci-aardvark.c file suggests
->>    that this patch cannot be submitted. In addition, Mani also suggests
->>    dropping this patch until this series of issues is resolved.
->>
->> Changes for v3:
->> https://patchwork.kernel.org/project/linux-pci/patch/20250506173439.292460-1-18255117159@163.com/
->>
->> - The new split is patch 2/3 and 3/3.
->> - Modify the patch 1/3 according to Niklas' suggestion.
->>
->> Changes for v2:
->> https://patchwork.kernel.org/project/linux-pci/patch/20250425095708.32662-1-18255117159@163.com/
->>
->> - According to the Maintainer's suggestion, limit the setting of MPS
->>    changes to platforms with controller drivers.
->> - Delete the MPS code set by the SOC manufacturer.
->> ---
->>
->> Hans Zhang (2):
->>    PCI: Configure Root Port MPS during host probing
->>    PCI: dwc: Remove redundant MPS configuration
->>
->>   drivers/pci/controller/dwc/pci-meson.c | 17 -----------------
->>   drivers/pci/probe.c                    | 12 ++++++++++++
->>   2 files changed, 12 insertions(+), 17 deletions(-)
->>
->>
->> base-commit: 765e56e41a5af2d456ddda6cbd617b9d3295ab4e
->> -- 
->> 2.34.1
->>
-> 
+-- 
+2.53.0
 
 
 _______________________________________________
