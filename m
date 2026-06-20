@@ -4,104 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6752DCD98F2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Jun 2026 17:09:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1477CD98E4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 20 Jun 2026 05:38:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:Subject:From:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9/9UjyrokXgtGItgz3np1Z5VIQ1dONzLCf9uu8XmQgQ=; b=eEHLcsTzR/47l3
-	1Q0OebXBrKyipBr9t4gZK+SlmqXY90EUDHxwn3AMtSm+TlkPhyavU5szAdbH+KujVLVfY3X7tFrO+
-	1oF6+57dVVH6pyPkIbAZ5UYHWos9Tbib3JzPfFr4LiEziTt5Sp/mB/qhhtiQ/TayKXqZvdA8uPZCJ
-	Wr9kJ6NQlJaFSEJZ5+evrZsRL1geAUapYP4Kcq/1cCXR2zUUI4jFiILIE70Dg6Sq4oYSOs1fLg01I
-	8bA82R+xzwwfcCgHTkFCjbd/tk0uZ3uua2fJGU2Kv2GMuNSUvImoA1u56qLN5UT92R7giLePTUvJB
-	LErfrX5OM8SqK/lU0XEQ==;
+	List-Owner; bh=fERfRiNzIhxDkrScKMBADKAbXvQmDtlf0J0AJWZVOtU=; b=j3msY246nqbbIP
+	qV95sjNqipGz/EXnAkvlVt0Rw0E4xQ/1z/crB3b+4QSfBes9pZjXZjtBoHypvxiFLzF/+oxOrcca1
+	JzpnxESgGkgRBJy71hMBK2XVz3crC2kqDwUiJY+cp6sqEtUMIVoahS5ModKFyS2wcQLECbjdO64pF
+	cqFrVbawjK2aytDswX7GK8GDLnuXQJ+X5e+uko/ZR5+wDXHVFnyGXy3T5gJxGrMbyavYnf+7m80Am
+	9eA7m10cAPBMYe40mlrZuHv3jo/DTXUOTlZR9elQayLXwCmzJVx51EMNNpe1WqrHRmqrOlCH0T/xy
+	xFTDyKfuU6Q13bz0PmRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waciF-00000002oGB-0YxT;
-	Fri, 19 Jun 2026 17:09:03 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1waoPQ-00000003B9m-32eA;
+	Sat, 20 Jun 2026 05:38:24 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1waciB-00000002oF5-1NZL;
-	Fri, 19 Jun 2026 17:09:01 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id E85244E42FD0;
-	Fri, 19 Jun 2026 17:08:55 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id AB24A601B7;
-	Fri, 19 Jun 2026 17:08:55 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id ABDCB106C81BC;
-	Fri, 19 Jun 2026 19:08:35 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1781888933; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=mRl+p8NKZ4Uqi2DbJxfA0N/bImQMn69IfQP2gWfdIn0=;
-	b=GtrXlAr82THdxC+x0ULzqK2LukzejYV/HHoWOhy0rnLT9OCpYYx7DI0Ca2otXI9MC6rt/O
-	PsvsTGMeYR1QQyMhXODXb0bsnVpo8b1AJ5+BgWuRE1TXpWDRyaaCCbnZP5H1KaZxDHKOq8
-	LO9lu7HAld9YGGFAMtt1mZ3JVL+4nqR9ev+P20IAsV/TdprJ6Y3Ojqy3AdzA+jesc0ToOp
-	juIU32H7fFGeN2OVgc7cbk8rehCcARkdf3oE9Mh7qI0ISz6SprChxJjgB103aMMhEs3RCn
-	air8p6ZpJxAcff89Au6uOVPjVLW7KZvMw6SPD2Zm3W+p1HNv5XsA8iGWnatxuQ==
-Mime-Version: 1.0
-Date: Fri, 19 Jun 2026 19:08:35 +0200
-Message-Id: <DJD6WITJWQHS.1XR1LK4S8N5H5@bootlin.com>
-To: "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Maxime Ripard"
- <mripard@kernel.org>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil
- Armstrong" <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>,
- "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
- <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
- <simona@ffwll.ch>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v3 00/78] drm/bridge: Convert all reset users to
- create_state
-Cc: "Dmitry Baryshkov" <lumag@kernel.org>,
- <dri-devel@lists.freedesktop.org>, "Laurent Pinchart"
- <laurent.pinchart+renesas@ideasonboard.com>, "Jagan Teki"
- <jagan@amarulasolutions.com>, "Liu Ying" <victor.liu@nxp.com>, "Frank Li"
- <Frank.Li@nxp.com>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>,
- <imx@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>, "Andy Yan"
- <andy.yan@rock-chips.com>, "Phong LE" <ple@baylibre.com>, "Douglas
- Anderson" <dianders@chromium.org>, "Inki Dae" <inki.dae@samsung.com>,
- "Marek Szyprowski" <m.szyprowski@samsung.com>, "Philipp Zabel"
- <p.zabel@pengutronix.de>, "Paul Cercueil" <paul@crapouillou.net>,
- <linux-mips@vger.kernel.org>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "Chun-Kuang Hu"
- <chunkuang.hu@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Kevin Hilman" <khilman@baylibre.com>, "Jerome Brunet"
- <jbrunet@baylibre.com>, "Martin Blumenstingl"
- <martin.blumenstingl@googlemail.com>, <linux-amlogic@lists.infradead.org>,
- "Tomi Valkeinen" <tomi.valkeinen+renesas@ideasonboard.com>, "Geert
- Uytterhoeven" <geert+renesas@glider.be>, "Magnus Damm"
- <magnus.damm@gmail.com>, "Kieran Bingham"
- <kieran.bingham+renesas@ideasonboard.com>,
- <linux-renesas-soc@vger.kernel.org>, "Biju Das"
- <biju.das.jz@bp.renesas.com>, "Heiko Stuebner" <heiko@sntech.de>, "Sandy
- Huang" <hjc@rock-chips.com>, <linux-rockchip@lists.infradead.org>, "Yannick
- Fertre" <yannick.fertre@foss.st.com>, "Raphael Gallais-Pou"
- <raphael.gallais-pou@foss.st.com>, "Philippe Cornu"
- <philippe.cornu@foss.st.com>, "Maxime Coquelin"
- <mcoquelin.stm32@gmail.com>, "Alexandre Torgue"
- <alexandre.torgue@foss.st.com>, <linux-stm32@st-md-mailman.stormreply.com>,
- "Jyri Sarha" <jyri.sarha@iki.fi>, "Tomi Valkeinen"
- <tomi.valkeinen@ideasonboard.com>, "Dave Stevenson"
- <dave.stevenson@raspberrypi.com>, =?utf-8?q?Ma=C3=ADra_Canal?=
- <mcanal@igalia.com>, "Raspberry Pi Kernel Maintenance"
- <kernel-list@raspberrypi.com>, "Icenowy Zheng" <zhengxingda@iscas.ac.cn>,
- "Laurent Pinchart" <laurent.pinchart@ideasonboard.com>, "Michal Simek"
- <michal.simek@amd.com>
-X-Mailer: aerc 0.21.0
-References: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
- <DJD2IQSFENH4.337VSFOU7OJ29@bootlin.com>
-In-Reply-To: <DJD2IQSFENH4.337VSFOU7OJ29@bootlin.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1waoPN-00000003B92-3Fxv
+	for linux-rockchip@lists.infradead.org;
+	Sat, 20 Jun 2026 05:38:23 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2c0c379e8ffso22909085ad.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 19 Jun 2026 22:38:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1781933900; x=1782538700; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=T/7ep4EgngMi756SBUztuInzLdyJ5R5zqqGXrsQMtkM=;
+        b=n8iANc3FbjNjGR9o4iTjb9naxp5+MPalo9eBzF6HDOSi9nCIBAfN8Ws3TxZnU7eeqn
+         ShzQiZrIJCMGOU20y/p0YgW0RlkiS9xAsBV+3kxCAIFnk3c9Nb/hf+5a9KGVCpo7K44B
+         ZudFbYXK/3gu+xCY3u/Dfe0RMd0CymI45VvPNuQmkvHIXDwKjFCmRQohehuGFT5Q5taQ
+         BYNNnMUBj2ZeJNyHLA+zsZVW7BKULSQzMcC7QyEIogj9JnHpYNZN4mqTTQRSIDv35DHJ
+         A1VqyG/4vEWFI4c/5Gs80wTyiC/QcjH/1LHEnopNki1vyqnL7vpxk/KvgOnq/KnNjzzm
+         lT7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1781933900; x=1782538700;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=T/7ep4EgngMi756SBUztuInzLdyJ5R5zqqGXrsQMtkM=;
+        b=Txozlq4q7mh1HYFJIAJbVhcFf87PWflYtQTJ5QThQSNoh5GD2vdtn0Qyb5QwcqNHAi
+         XdAHtEeIq4HKzFgwnkq9j6wI5lCtpuAUcP4sKYROXS2pBucqSl4+BqsILt++NMcx6OBk
+         lahYhq7ONu3+KhqTUCUjfFjk4jnULwfBxPA9fmvnEZ4FGN2Lmm1cUChouSXEh15UdNBE
+         sshRhfn5KXNMjYtOCsibQfE/8/APZir3LiL+QU9eHZQp0jEVgbVz4kKZ+lwhGLXhchZA
+         X4jXtYHzFARx3/xRQvQvWO4XCPsWL1rgWkGjwk+CuPkfbyWPZcAUBY7U4f1M9Y83Dg9P
+         PdJw==
+X-Forwarded-Encrypted: i=1; AFNElJ8P5Z8zymwpkL0YV/oIEIeRBqBEYGm7qxC7pEp/jq+Zwn0dmENXkMbLOgEhCMuAm0NDgwzRwnVIkSvoRVhmBQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwYGwlvtwPzDiDYjZABFgAy+bd3bkEP5HDG2ZDyrgklyu0yyE5X
+	WBp2DA5hPtFvdJgxZE6BLznEZ07KgkBCfEBo0H3c6ikXt12AYAgqz2Pk
+X-Gm-Gg: AfdE7cnUWF9yFf4SqQwhDTHXO5TnNx9osfEn7RVVHmamUkkDTaaFimZ6sxepusxU15F
+	JPhassNwiC+hWVAI7yBFKXl2sPimlNVPeCxMI/HKcN6NPOgrn4EfpzkEFLeLFDcQInXhg2Q1d2I
+	UbRZjBCv+knNEumR4WsEzJJ43TdlRXW9NBB+awOHiSYMQ1Pu3zoctkV+u1ZKmsTNVkmrRLMchEp
+	2d+bZsoJrkQARuSQ3xFEniKnjceUjrWgGM+2WBXQIK+Cf65wHtW2lYk+41YNgi6m5/1d9JjAhax
+	FEmKwONyFmdmNDr6VNk8f+PDtvJGuDdOAQdQIzqAISWiH71z+eRSglosuwIyQm4R9be9horQOYF
+	86PlZ7Yh4oS0M15WtTPItxYpcIuVrfaLmoDhJvw7Bz+WARNphTqcdEWlshSkvBMyXmucYRX8N3M
+	OCosNo6w2NlulZVtjnOdc=
+X-Received: by 2002:a17:902:ce09:b0:2c1:ef9:4516 with SMTP id d9443c01a7336-2c71904ee57mr70697045ad.35.1781933900305;
+        Fri, 19 Jun 2026 22:38:20 -0700 (PDT)
+Received: from i386.168.1.127 ([2402:a00:163:2ce9:9c6f:e28:3da8:7980])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c7436f6395sm12161565ad.28.2026.06.19.22.38.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Jun 2026 22:38:19 -0700 (PDT)
+From: Hrushiraj Gandhi <hrushirajg23@gmail.com>
+To: heiko@sntech.de
+Cc: krzk+dt@kernel.org,
+	robh@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v7 0/2] arm64: dts: rockchip: add Vicharak Axon board support
+Date: Sat, 20 Jun 2026 11:07:59 +0530
+Message-ID: <20260620053759.9841-1-hrushirajg23@gmail.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260608060940.52549-1-hrushirajg23@gmail.com>
+References: <20260608060940.52549-1-hrushirajg23@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260619_100859_495775_62C3B7EB 
-X-CRM114-Status: UNSURE (   6.70  )
+X-CRM114-CacheID: sfid-20260619_223821_842722_2DD750B2 
+X-CRM114-Status: UNSURE (   8.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -119,30 +105,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri Jun 19, 2026 at 3:42 PM CEST, Luca Ceresoli wrote:
-> On Fri Jun 19, 2026 at 2:24 PM CEST, Maxime Ripard wrote:
->> Hi,
->>
->> All the bridges use reset to create a blank state only and don't use it
->> to reset the hardware at all. This is what the new atomic_create_state
->> is exactly supposed to be doing, so we can convert all existing bridge
->> users to it, and remove the reset hook and helpers.
->>
->> Let me know what you think,
->> Maxime
->>
->> Signed-off-by: Maxime Ripard <mripard@kernel.org>
->
-> Whole series:
-> Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Hi Heiko,
 
-And now also:
-Tested-by: Luca Ceresoli <luca.ceresoli@bootlin.com> # imx8mp + sn65dsi84 + bridge hotplug
+Just a friendly ping on this series.
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+The binding patch has received an Acked-by from Krzysztof and the
+requested review comments from previous revisions have been addressed.
+
+Could you please take a look when you have a chance? Any additional
+feedback on either the binding or DTS patch would be greatly appreciated.
+
+Thanks for your time.
+
+Best regards,
+Hrushiraj
 
 _______________________________________________
 Linux-rockchip mailing list
