@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21418CD98F0
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Jun 2026 17:26:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D63ACD98F2
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Jun 2026 17:34:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X7nbTHGUiy64x3fjyck47kGoINys8rquHz/hf3Gdct0=; b=AMhKgQbLQ0w8XV
-	Tc+EQ1b9LgjbInjMIrrEovLPo0XwasN4fNw61xolkkGFXJDQdpowyovRdvX2JAW/7UeReJgouqiXM
-	d0fzPhoMlzBgqES4faR89aQqbY9jl7ASs3EVOO1zHmlRnTBU+UwGsWS/UK9ATlEqfREnVA4aoA5hb
-	8sRVB7mpf5q0QyoEgeHOZXYa5NpYjDE/VD2Xb4Ys9gcJQPmArSSHaWEI2Xsgj3JbNVabarmvK0wru
-	bZE4oLbyna+WYfm50FKJfHYNLPBavW3KMVsV9KdHgVVIKSRfAQZoqSuNNnUTdEoHo/0YRlUb/A5km
-	pfkr2LroxzIL6dVeJHUQ==;
+	List-Owner; bh=IiVQPIPyzO1ufp3te08ePAqHa6P36uj1BKvcBQePqjo=; b=U7Lri7VdfaWTo0
+	uLmNEVXDTZFl1TgvMlRn6rmo94N6yoHpShUbB1s/+RlwfcfYRFhokuuw4EtCmk5yW7w13pTvZIUg+
+	ExiyTYWXvxq/P0YqMjPykYktpEtUpB25XJYUXzyj9zqEsFp9rj2LMb4vJ5nuh0kv6W7nxkg3PEt4Z
+	zuVQ+FKceLFoS+47OmMx+pnmomIvOsh3JYFekMAwmB8FYpyYRUUd52W/tldaNLPTUvQiOrBsOCRcJ
+	AX9pIcMJIk/Sp6YMPrIEKqXp6fJW0xLmAtwujBMMC33cPoInt3LQ+mpYBco755ZA+JJ+3yuXyolOQ
+	cN7w+v+8zLhTRjOkcGdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbLwB-000000045Dy-1Dfy;
-	Sun, 21 Jun 2026 17:26:27 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wbM3q-000000045VJ-1P5L;
+	Sun, 21 Jun 2026 17:34:22 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbLw9-000000045Dn-1CHr
+	id 1wbM3o-000000045VD-15p1
 	for linux-rockchip@lists.infradead.org;
-	Sun, 21 Jun 2026 17:26:25 +0000
+	Sun, 21 Jun 2026 17:34:20 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2D52240DB9;
-	Sun, 21 Jun 2026 17:26:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B87E71F000E9;
-	Sun, 21 Jun 2026 17:26:17 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D61D660051;
+	Sun, 21 Jun 2026 17:34:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E1B31F00A3F;
+	Sun, 21 Jun 2026 17:34:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782062783;
-	bh=H8ZY9dh2L+w0WcrzoTOe2zneuicnV/uaPfDqeTQwIkM=;
+	s=k20260515; t=1782063258;
+	bh=uC3ZTNbtlYKLqbdb+bG9ZesKDDZHUXkiuArgtv4QKOo=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=DLxtGjx13fPCARZDuWi00vJMcavGXtdBTmJhQby4DFw5cch/mLdZQql1wN9zHLbeW
-	 R1EAd+joyGDI2nXdKZGw73liB/rfP8pd118TUaEMwtcol9pCHTx7mnK8V2OVDDNzHI
-	 saMON3GfOSopMjiu6Da9MSJHJsdX5Pla3VGHtA0jxly1FvP6gtDg+BtmdF1/N7Xc1A
-	 Ssh2ONfAPd8ujaudwUju8NZlyKSdJ6euEn2iKCGqqxXXuTM2gz/H4Dap3nKd4ZOXCK
-	 fu4kiW8DYkE6Y7GZs1Vgtk2rJmeK9RqhCsqp3f7m1AN8L5AELPQzUfnUnNhoYtApIq
-	 9hFv/zvevmRwA==
-Date: Sun, 21 Jun 2026 18:26:12 +0100
+	b=OmqpIAZwJMuqvKZE9gUI6A5vRJ3pfNJpmzrA/Q6gHzhqvDCMA8ryzwIM0l6rOejAq
+	 ZkAcs4310KG4Ooyt8eLy+yijw2SARaXJTpJuNyjlLd651sXbDifWsjO2yBKguZh1lj
+	 1fBLRHDTRV0R3cMm9GDwiVjqxH8YqlEY/xHcbjGLruUK4q41KeJrAY/HqpwMFIUD0i
+	 HfLBwqBNa/K4xHbt2iGgbOqCtmg42Te/TvmAoofgBvwaGLD/LR1UGdUDtK4Eer2IFX
+	 RgWm38rxdNaNq7/iQq2I5xW1XSzU0kdlNORSMZ3Hj2Mtr2RKhuThIUup9lLPS5To8S
+	 TcPXA8a6f99LQ==
+Date: Sun, 21 Jun 2026 18:34:08 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
@@ -50,12 +50,12 @@ Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
  andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V13 6/9] iio: imu: inv_icm42607: Add Temp Support in
+Subject: Re: [PATCH V13 8/9] iio: imu: inv_icm42607: Add Gyroscope to
  icm42607
-Message-ID: <20260621182612.1a19278a@jic23-huawei>
-In-Reply-To: <20260615172554.160910-7-macroalpha82@gmail.com>
+Message-ID: <20260621183408.032e18b4@jic23-huawei>
+In-Reply-To: <20260615172554.160910-9-macroalpha82@gmail.com>
 References: <20260615172554.160910-1-macroalpha82@gmail.com>
-	<20260615172554.160910-7-macroalpha82@gmail.com>
+	<20260615172554.160910-9-macroalpha82@gmail.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -74,60 +74,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 Jun 2026 12:25:49 -0500
+On Mon, 15 Jun 2026 12:25:51 -0500
 Chris Morgan <macroalpha82@gmail.com> wrote:
 
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add functions for reading temperature sensor data.
+> Add gyroscope functions to the icm42607 driver.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Another sashiko reported thing. I'd definitely have missed
-this one and I think it is correct.
+There is another bit of sashiko stuff in here. Please
+take a look
+https://sashiko.dev/#/patchset/20260615172554.160910-1-macroalpha82%40gmail.com
 
-When I get caught up I'll post a thread to see if people
-feel we should generally just ask for Sashiko to reply on
-list.
+I think it is correct about there being a path in which the
+gyro ends up always enabled along side anything else after
+the first read.
+
+In general there seems to be a bit of mix on whether the caller
+or the power management function should be responsible for the caching
+of state.
+
+I know you look at Sashiko so I could just have waited a bit, but
+I was reviewing anyway so took a look and having done that might
+as well highlight some stuff!
 
 Jonathan
 
 > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> index 64f5d263de4f..644cd7f821b9 100644
+> index eb239987a1ce..23ca7529825c 100644
 > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
 > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> @@ -162,6 +162,24 @@ static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
->  	return 0;
+> @@ -218,6 +218,49 @@ int inv_icm42607_set_accel_conf(struct inv_icm42607_state *st,
+>  					  st->conf.temp_en, sleep_ms);
 >  }
 >  
-> +int inv_icm42607_set_temp_conf(struct inv_icm42607_state *st, bool enable,
+> +int inv_icm42607_set_gyro_conf(struct inv_icm42607_state *st,
+> +			       struct inv_icm42607_sensor_conf *conf,
 > +			       unsigned int *sleep_ms)
 > +{
+> +	struct inv_icm42607_sensor_conf *oldconf = &st->conf.gyro;
 > +	unsigned int val;
 > +	int ret;
 > +
-> +	val = FIELD_PREP(INV_ICM42607_TEMP_CONFIG0_FILTER_MASK,
-> +			 INV_ICM42607_FILTER_BW_34HZ);
-> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_TEMP_CONFIG0,
-> +				 INV_ICM42607_TEMP_CONFIG0_FILTER_MASK, val);
-> +	if (ret)
-> +		return ret;
+> +	if (conf->mode < 0)
+> +		conf->mode = oldconf->mode;
+> +	if (conf->fs < 0)
+> +		conf->fs = oldconf->fs;
+> +	if (conf->odr < 0)
+> +		conf->odr = oldconf->odr;
+> +	if (conf->filter < 0)
+> +		conf->filter = oldconf->filter;
 > +
-> +	return inv_icm42607_set_pwr_mgmt0(st, st->conf.gyro.mode,
-> +					  st->conf.accel.mode, enable,
-> +					  sleep_ms);
+> +	if (conf->fs != oldconf->fs || conf->odr != oldconf->odr) {
+> +		val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_FS_SEL_MASK,
+> +				 conf->fs);
+> +		val |= FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_ODR_MASK,
+> +				  conf->odr);
+> +		ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG0, val);
+> +		if (ret)
+> +			return ret;
+> +		oldconf->fs = conf->fs;
+> +		oldconf->odr = conf->odr;
+> +	}
+> +
+> +	if (conf->filter != oldconf->filter) {
+> +		val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG1_FILTER_MASK,
+> +				 conf->filter);
+> +		ret = regmap_update_bits(st->map, INV_ICM42607_REG_GYRO_CONFIG1,
+> +					 INV_ICM42607_GYRO_CONFIG1_FILTER_MASK, val);
+> +		if (ret)
+> +			return ret;
+> +		oldconf->filter = conf->filter;
+> +	}
+> +
+> +	return inv_icm42607_set_pwr_mgmt0(st, conf->mode, st->conf.accel.mode,
+> +					  st->conf.temp_en, sleep_ms);
 > +}
 
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_temp.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_temp.c
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
 > new file mode 100644
-> index 000000000000..9a60e1a478b0
+> index 000000000000..ef73560b39d7
 > --- /dev/null
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_temp.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
 
-> +static int inv_icm42607_temp_read(struct inv_icm42607_state *st, s16 *temp)
+> +static int inv_icm42607_gyro_read_sensor(struct iio_dev *indio_dev,
+> +					 struct iio_chan_spec const *chan,
+> +					 s16 *val)
 > +{
+> +	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
+> +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
+> +	struct inv_icm42607_sensor_state *gyro_st = iio_priv(indio_dev);
 > +	struct device *dev = regmap_get_device(st->map);
-> +	u8 raw[2];
+> +	unsigned int reg;
+> +	u8 data[2];
 > +	int ret;
+> +
+> +	if (chan->type != IIO_ANGL_VEL)
+> +		return -EINVAL;
+> +
+> +	switch (chan->channel2) {
+> +	case IIO_MOD_X:
+> +		reg = INV_ICM42607_REG_GYRO_DATA_X1;
+> +		break;
+> +	case IIO_MOD_Y:
+> +		reg = INV_ICM42607_REG_GYRO_DATA_Y1;
+> +		break;
+> +	case IIO_MOD_Z:
+> +		reg = INV_ICM42607_REG_GYRO_DATA_Z1;
+> +		break;
+> +	default:
+> +		return -EINVAL;
+> +	}
 > +
 > +	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
 > +	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
@@ -136,29 +193,31 @@ Jonathan
 > +
 > +	guard(mutex)(&st->lock);
 > +
-> +	st->conf.temp_en = true;
+> +	/* enable gyro sensor */
+> +	conf.mode = gyro_st->power_mode;
+> +	conf.filter = gyro_st->filter;
+> +	ret = inv_icm42607_set_gyro_conf(st, &conf, NULL);
+The sashiko report is basically:
 
-Sashiko points out (seems right) that this sets the internal state
-before the power management routine expects it to be set.  So why
-is this here as opposed to just passing true into the
-function that follows?
+This turns it on, and runtime pm will turn it off but the
+state cached ends up such that it is turned on again for
+any runtime pm resume.
 
-> +	ret = inv_icm42607_set_temp_conf(st, st->conf.temp_en, NULL);
-> +	st->conf.temp_en = false;
 > +	if (ret)
 > +		return ret;
 > +
-> +	ret = regmap_bulk_read(st->map, INV_ICM42607_REG_TEMP_DATA1,
-> +			       raw, sizeof(raw));
+> +	/* read gyro register data */
+> +	ret = regmap_bulk_read(st->map, reg, data, sizeof(data));
 > +	if (ret)
 > +		return ret;
 > +
-> +	*temp = get_unaligned_be16(raw);
-> +	if (*temp == INV_ICM42607_DATA_INVALID)
+> +	*val = get_unaligned_be16(data);
+> +	if (*val == INV_ICM42607_DATA_INVALID)
 > +		return -EINVAL;
 > +
 > +	return 0;
 > +}
+
 
 _______________________________________________
 Linux-rockchip mailing list
