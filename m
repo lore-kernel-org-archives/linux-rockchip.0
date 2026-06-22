@@ -4,113 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DAECCDB46B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jun 2026 09:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78FB5CDB46B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jun 2026 10:27:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=48e+dOYfXC7C737qGqd8VoHBS7AYhMXOmGr1QdeTbtQ=; b=TWugQcNeZ0CGuK
-	suQQNNrBwqnTRREy+ooRiBfBjTm1VbbgsC/sYboj0bqdPn1KSQu9H6wu1yZOO8I8XHF7q0n0ZebZF
-	3BpiGTBLLDDb1EEiXGlwkobKprWfgtROG5/+FaalISDIeTCKNeyrPY80Jln1Y4fDGFO2CjiaPYUkA
-	xwn3yyd1OLwgXawK3SM8abqkpuHIz4dRsVuxcRDlJpw2exyI7r3oadpBLRQLXbTnFlz+mw/SyC3Xb
-	ud9eSxjrij6fB9elriFrKfStsAXqB90CgavUt0Vu9NYuASQOPxhPLTwLZ/NAf7txwuDzvJcpUFa++
-	xqILNCb/lmoM5u0zHWcA==;
+	List-Owner; bh=0i+g1laPqOEbBjbA3luW2j478U1ATIDcR19FnLDo5nI=; b=CATAXoWutGfgTC
+	vYoWpKT3XLBvhSD51Njp/6nn3EstPY8RORezsDvjzU0OwXMu9XLYBGJ1XfWSRus9H8xSCd9VjobGe
+	S+D8hSzYIi/mARCBahdyQ4E24I759KU/a/JSJvAVBr7P6mVNyjRj/8J9oqvTZln/pNKtiPaD7zzQX
+	hWsBFiVOxNYfrdKrm+PNCTuloq+TnMRvlFi5o46Hf53ggs+D/hL1HJ1ls3OqJx5aQZikEXSo4Y3N9
+	LUxhUFlFHwk998484NNqw8PkyhKiXFyjjX6yf84p9TYEiUYz+A/eruht2FTFPjvfx2pmvLzN6hhr/
+	tVfZ2HuTG8It4JbY/RXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbb0t-00000004l6O-1Khn;
-	Mon, 22 Jun 2026 09:32:19 +0000
+	id 1wbbsI-00000004phI-1TYP;
+	Mon, 22 Jun 2026 10:27:30 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbb0q-00000004l5p-3Oqp;
-	Mon, 22 Jun 2026 09:32:16 +0000
+	id 1wbbsG-00000004ph0-2tnk
+	for linux-rockchip@lists.infradead.org;
+	Mon, 22 Jun 2026 10:27:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id DB91060051;
-	Mon, 22 Jun 2026 09:32:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F03291F000E9;
-	Mon, 22 Jun 2026 09:32:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C6B8E6001A;
+	Mon, 22 Jun 2026 10:27:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C5A21F000E9;
+	Mon, 22 Jun 2026 10:27:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782120735;
-	bh=OjnQqx9lVjDZn9U2JChR5sHB41aObP/M6xjkucf75vg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=ApxzB7CQjt2Xqf3nCQt/J3NxrquiCG6Zue6KX9PMhWvInDLEgf9HrutmfGV+I4OZ7
-	 zqtwEmdv+d7ZUnSxgXUf7wQ/yfKPlsiluNm8NN8XRoE2IOvsi5/jT41VryYw1ihtZF
-	 kPBG2lzTF/KcN2ULGQgfha3q+Z9+hEBV2Vq3mjFX2altZoyUvtbkUgSLq6h4e9Ji/r
-	 l9gSXRTlctoiIyMG62c8568RoGjele/qh6tU4+nZa3nZbYEvkeMelJsv1anaF/VS6+
-	 tIwmmOBQrWGzho4Puta2c9AWjZVwme1jxFKiWokjuwuxfO9ve5v1qPEqaFd0Mxue7d
-	 27zhi66H4STrA==
-From: Maxime Ripard <mripard@kernel.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Maxime Ripard <mripard@kernel.org>
-Cc: Dmitry Baryshkov <lumag@kernel.org>,
-	dri-devel@lists.freedesktop.org,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Liu Ying <victor.liu@nxp.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Phong LE <ple@baylibre.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	Inki Dae <inki.dae@samsung.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Paul Cercueil <paul@crapouillou.net>,
-	linux-mips@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	linux-amlogic@lists.infradead.org,
-	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	linux-renesas-soc@vger.kernel.org,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	linux-rockchip@lists.infradead.org,
-	Yannick Fertre <yannick.fertre@foss.st.com>,
-	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
-	Philippe Cornu <philippe.cornu@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Jyri Sarha <jyri.sarha@iki.fi>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Michal Simek <michal.simek@amd.com>
-Subject: Re: [PATCH v3 00/78] drm/bridge: Convert all reset users to create_state
-Date: Mon, 22 Jun 2026 11:32:11 +0200
-Message-ID: <178212072827.575553.11508273640952121243.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
-References: <20260619-drm-no-more-bridge-reset-v3-0-ff399263111b@kernel.org>
+	s=k20260515; t=1782124047;
+	bh=/lE1FezMr7OwuD4X6kCWi5XoM/mNVm/48z+H+d2y2to=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=YBe0CXiNhKuJm10mmhpWlGEPbvFb/SAl8WRzZ311wIGiWCll3ncDpvDBYNNbuJk/w
+	 IEjU9LtdRlVtKLKeBf7JTg3psmbg8WDMiCzuajDvQ6HOGNFPjNe7YWz8hGJlLzv/GX
+	 8JK+If4RgsA0zJ7RkWDvo1Cto7LjW0qe3QMXAFSZpRqYoI7Xw02zE7oGThqH7EvfQy
+	 mCaDxoQ0EhABfrOt9MIYvk4pPqeTT0VdoLWGRnp+0rjSHi8NR6V9er3ER4Y7S7kI6n
+	 FKUZzCP5u2wxYNStPDLuJSoR5TQm/sNa4p+KoincOEU0pAyVCztGXvf16CwcJncfOX
+	 3L2Apk/OfQAVg==
+Date: Mon, 22 Jun 2026 11:27:17 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Jean-Baptiste Maneyrol <Jean-Baptiste.Maneyrol@tdk.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, "linux-iio@vger.kernel.org"
+ <linux-iio@vger.kernel.org>, "andy@kernel.org" <andy@kernel.org>,
+ "nuno.sa@analog.com" <nuno.sa@analog.com>, "dlechner@baylibre.com"
+ <dlechner@baylibre.com>, "linux-rockchip@lists.infradead.org"
+ <linux-rockchip@lists.infradead.org>, "devicetree@vger.kernel.org"
+ <devicetree@vger.kernel.org>, "heiko@sntech.de" <heiko@sntech.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>, "krzk+dt@kernel.org"
+ <krzk+dt@kernel.org>, "robh@kernel.org" <robh@kernel.org>,
+ "andriy.shevchenko@intel.com" <andriy.shevchenko@intel.com>, Chris Morgan
+ <macromorgan@hotmail.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH V13 2/9] dt-bindings: iio: imu: icm42600: Add icm42607
+Message-ID: <20260622112717.4548dc95@jic23-huawei>
+In-Reply-To: <BE1P281MB1426C557A66945951D382EDDCEEF2@BE1P281MB1426.DEUP281.PROD.OUTLOOK.COM>
+References: <20260615172554.160910-1-macroalpha82@gmail.com>
+	<20260615172554.160910-3-macroalpha82@gmail.com>
+	<20260621181804.27b44942@jic23-huawei>
+	<BE1P281MB1426C557A66945951D382EDDCEEF2@BE1P281MB1426.DEUP281.PROD.OUTLOOK.COM>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -128,21 +81,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 19 Jun 2026 14:24:05 +0200, Maxime Ripard wrote:
-> All the bridges use reset to create a blank state only and don't use it
-> to reset the hardware at all. This is what the new atomic_create_state
-> is exactly supposed to be doing, so we can convert all existing bridge
-> users to it, and remove the reset hook and helpers.
-> 
-> Let me know what you think,
-> Maxime
-> 
-> [...]
+On Mon, 22 Jun 2026 09:23:28 +0000
+Jean-Baptiste Maneyrol <Jean-Baptiste.Maneyrol@tdk.com> wrote:
 
-Applied to misc/kernel.git (drm-misc-next).
+> Hello Chris and Jonathan,
+> 
+> concerning dt bindings, my initial understanding was that we had a file per
+> driver. But here, Chris is doing a new driver for icm42607 while adding new
+> bindings here.
+> 
+> Does it means we don't have 1 binding file per driver, and there is no need
+> to create a new binding file for inv_icm42607 driver?
 
-Thanks!
-Maxime
+Yes.  We often combine bindings when there is a lot of duplication and
+only a few device specific rules are needed to describe the new parts.
+
+Jonathan
+
+> 
+> Despite the naming, icm42607 chips are a complete new design very different
+> than all other icm42600 chips. It using similar IPs for things like the FIFO,
+> but all other parts are different. Especially, it doesn't use banks for
+> registers access but indirect access delegated to the chip internals for
+> accessing certain registers.
+> 
+> Thanks,
+> JB
+> 
+> >From: Chris Morgan <macromorgan@hotmail.com>
+> >
+> >Add the ICM42607 and ICM42607P inertial measurement unit.
+> >
+> >This device is functionally very similar to the icm42600 series with a
+> >very different register layout. The driver does not require an
+> >interrupt for these specific chip revisions.
+> >
+> >Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> >Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> >---
+> > .../bindings/iio/imu/invensense,icm42600.yaml  | 18 +++++++++++++++++-
+> > 1 file changed, 17 insertions(+), 1 deletion(-)
+> >
+> >diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+> >index 9b2af104f186..81b6e85decd5 100644
+> >--- a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+> >+++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+> >@@ -30,6 +30,8 @@ properties:
+> >       - invensense,icm42600
+> >       - invensense,icm42602
+> >       - invensense,icm42605
+> >+      - invensense,icm42607
+> >+      - invensense,icm42607p
+> >       - invensense,icm42622
+> >       - invensense,icm42631
+> >       - invensense,icm42686
+> >@@ -67,10 +69,24 @@ properties:
+> > required:
+> >   - compatible
+> >   - reg
+> >-  - interrupts
+> > 
+> > allOf:
+> >   - $ref: /schemas/spi/spi-peripheral-props.yaml#
+> >+  - if:
+> >+      properties:
+> >+        compatible:
+> >+          contains:
+> >+            enum:
+> >+              - invensense,icm42600
+> >+              - invensense,icm42602
+> >+              - invensense,icm42605
+> >+              - invensense,icm42622
+> >+              - invensense,icm42631
+> >+              - invensense,icm42686
+> >+              - invensense,icm42688
+> >+    then:
+> >+      required:
+> >+        - interrupts
+> > 
+> > unevaluatedProperties: false
+> > 
+> >-- 
+> >2.43.  
+
 
 _______________________________________________
 Linux-rockchip mailing list
