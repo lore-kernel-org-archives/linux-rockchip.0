@@ -4,91 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A777ACD98F0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jun 2026 00:56:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18C6ACDB466
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Jun 2026 01:09:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EG4iR3ZVvX+b+ROfAIlnNdGFPm1fDZl7oc/ZatJzZVE=; b=K8YWykphajejcm
-	74sPEkQTok2GXWPaow5n9D24V0fWQ61m3aQPjVOYBuxvZkdisNcHwl1f+SmRDNeVHRIXIfEp+7Rhh
-	VOJjmzh+fEE3blEdiyfI50S0ovxZSlxSHkyaMfCTbd5sHHq4J1NlAg9xAIqyPKQIJE/3aWLNLpray
-	ZhEteaaSOtizVSmiNcVyNnnw7uUR7G88Q0siGuMWJoEnw6Ff1DnkntTLEpfgEjGOKxyhODaz9OI19
-	GzPdsQVegCO/qoUjDRUPfosj5NLSLsPPIbosNIgGy633kIpcrXve4bDh0DXTOCPvk/P7YHuTD3GxM
-	JE0sJQmQ+OsbiMB5eZJQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ScGDkgSpq+cE11iUhofNA0EekQ6cqmzDg5imLqIRPmg=; b=g1rMnx2l8j6s7s
+	UCzhUDL/RkStnkOOOBr3B72kaoVB7wFdIBzSRg4C0EUWxqhhmBpe4bObd7X6ekC6IV/mldHN+lycu
+	48npmNa1plj9+OvmhIH6FAJk9qfITjrVYAM53s5Ago8KdQ+fCLr5atGwzK4Nt8CJ6DLSorxbbM28T
+	bEGI1zcSESJxi5q7uT4/ejredjbtTYfJnhCo97YVEgsbqV127cThXqef0YHazHifAvgq7tEHSfSHN
+	C2OCzvU69GVwx8e8SM1eEevy7K+xzBjI4RPgko96LbViQgvuzPywQh5wtM39XPvjHntl1X+n6vIrx
+	c/B5IucRBI+1nAfaAGlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbSxq-00000004G3Z-2Gxf;
-	Mon, 22 Jun 2026 00:56:38 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1wbT9w-00000004GTv-2uLv;
+	Mon, 22 Jun 2026 01:09:08 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbSxm-00000004G2S-2uLF
+	id 1wbT9u-00000004GTE-2907
 	for linux-rockchip@lists.infradead.org;
-	Mon, 22 Jun 2026 00:56:36 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-36d5fd50d20so2576544a91.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 21 Jun 2026 17:56:34 -0700 (PDT)
+	Mon, 22 Jun 2026 01:09:08 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2bf125989f2so23320885ad.3
+        for <linux-rockchip@lists.infradead.org>; Sun, 21 Jun 2026 18:09:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782090545; cv=none;
+        d=google.com; s=arc-20240605;
+        b=AYqATFY6byS0NAyZnzrBejBWVWHYTQRpkCug8yFAGhzlX+KJ4e47NR9AcmEnjIWuhy
+         CEFcQ8XPqq+d8bstwvTFV99I4Px897afKHTq4eI3wPDpe6IWFGU9wnU4/rxPadnyit+w
+         2WUdiYEtGvXCxzMaM4rJuK0LT6oFPPAsBZDkAel2/724jsC97MSJMtHLBehbWbWbskXT
+         f+//nNK/eUJB93EHNBV10NmTWEwWlpDHfV61xO0bvrn/2TRdk8AHfp/Kd3QW32boXzuF
+         t2IRgGF9A02OUGc5B6LkuXmLzqre5+nAMN1PU4v+GYRjEnuh7TrILZEvhDYnuIwtzT3l
+         0qlQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=q9f8PIvMVF+hZapXjR2Pan8tM2MhsJBoGLqzWF0navE=;
+        fh=vsH7rEQwfQHchLaQn030gOJBSv81CLGu85cGF3QS7dQ=;
+        b=SSq4D5Qi6At4Iphj6oV2BhRAxJbSTxASGDa3u9msGNo/z3fKKvbHIfiwQ1jVURFjtD
+         e8zpmuHTp4EIsiFjzGNArT0qF2Rn1UZTydQp+7m+l5+uewPvIlivWkwPF6zRpeu9O9ly
+         WSvvztx6Y+m/JS8wuK6OzHXM6WbtLWpIOoInENO74f8VDlneKqTVvZWjUsKoBGaX/JfA
+         eaf5rQPjMA6Y0w0rxVWcWWVo4k0/9baZFP0NAFBfwD/KqhXJgoqr6weYYrALRk2+R6P0
+         TDsHqWCUgZaJqTbKCs78Jla4I7v3rnukx4t5/kdjwfVYDQwnEeUd1uHxWees1ej63ubg
+         jNcg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782089793; x=1782694593; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=vca/CKDASMzwEknu94jkYwLr91umSwU/eeXq3GdHWUE=;
-        b=ToKLPfU30MrnN1E2zQJit7c36bE3o6q50TswbNpfHziSytbtyUG/1+FDB0qPXPBNf/
-         ARSurhl1DK+DlKAwu9k04F3vX7DPIOf5klCLBc9h+WSzs3fZTwfsc101lsUI+2B2qgcy
-         U6kFXLkPfH+bHT/YsL7Vbg68mRM9Q6mNIxkrvNqTgd2LAT9+dovaaOWwBHAsXSXFSr2X
-         XDYnVgxHIa06+iVDk5IT4QuKm0zRwfFL7GuwOX0x9y0V/VeUMFkM0jp3btSELvPolHxB
-         xK1FAX5vXPvE0n6bXxFYgUDkwspTrAIjoAO6p4wEaw/YtoQCNqYlpd8iAKZGunrHtIGO
-         w+kA==
+        d=gmail.com; s=20251104; t=1782090545; x=1782695345; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=q9f8PIvMVF+hZapXjR2Pan8tM2MhsJBoGLqzWF0navE=;
+        b=EfG6N/Wi0g9VtsXehyEqwXFZaxOxqc8LJb6kq2LA8hFIfrJMtocy+6OxFN9LIonfpP
+         Cl5wIph4bYBm5gXW2aRUpVaKm4WjlhzgNbzEiTJoX8lWRkbJEZAPDj3S566SqEpr0+1D
+         lcKjLThwmPSK5/tqXPPW05w7LSNB9A/I2LK6e8RGjzdITsIlaQhronMMmaL9CqofoVDT
+         ZDn/FiWPyoX2a7ZEtX/YsVm1U1TlhIrfFNby8YRMb/e5ihzipCljZjvmJHvobIVwve8n
+         /IpdLsfFL7626PGzJFxPkw8omMInCXColaL/G7inZG8nPDtIdmZt7UdLY4i6qZMeS4hW
+         GPew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782089793; x=1782694593;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20251104; t=1782090545; x=1782695345;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=vca/CKDASMzwEknu94jkYwLr91umSwU/eeXq3GdHWUE=;
-        b=LnvXrAVx4SAH284BfKvZTdPtbFLcB842AdzEVatfRba3EcTt2kgycMUJFc/xaxgZQN
-         DBkav9oKtrxN1uj4t5LzgFyU8XUNAVUAq/OevBDYgh2Cw5Rz62wSIdIlSc2N/FRH3IB6
-         fVNWxWZUwng3GFriZJ93j/b9Ovu2oydSO58EmpfjLOeXIof0LsUfUAzHOEEWoFipUwfM
-         gCJTsQGTC265MACQBFUREoWqnHP7jtsZAy9vg5i3GfxGSPINdtCeetZjmd76378cSUDt
-         hiUiZOcMQY/kVsIExuxKtP4Huzn2mzfTQ2wBdikctPLLBRiguAsV2QnbXYNTGsZ+BHHM
-         fwrw==
-X-Forwarded-Encrypted: i=1; AHgh+Ro64jRRs8PydJMzghKQTtg6l48xDGqDHpSyfgBxB6XZ08MYVCYy4MzYM0E83ai+cpIrsaGbM4jQOFmK8fdENQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzuDL/CCnA2amU4l/01nEYNfAFKRpIIQCNTucMdNmrrzH7Thd53
-	dPWO29nLFOfsY+BzG3bP7JGVBFbx8bLZstAav9d52W+j/rz/6Nf4aLrg
-X-Gm-Gg: AfdE7cnjo+Q4H0i61D3SuhXdIflBSKsa2Sl9bHAL4qhFCRS0GX2ewG2fXbapbN38/Ln
-	ocghbHQhK0Rh2OJsnPP3yGs5TK71ZPw88X0i+uLKym0r6HcK03Bn3myPGhI5cxLoCq6bkoYjoM0
-	rFyOVzvb1W6QbQp4BH/puD3j05vgYrW7GGLE0OMGWTupxusIRxAADJw6ggm54rkxdQOQHjNIfS1
-	K+ecqxzG2P4piUwxu648dJHDNy6GxZ7uAFTXspbELbD3VYbSohLWszccHPDCjojVF4xhj7DtiIB
-	/Pmh43yCSW0i4T36vXDcpthVn2OrMoV+r6ztYP3B+UFogxcIw6JjKUf/f6sz+YJUxGs0jpC0QY2
-	1Xvggg7diOYh7orFYOcHyfs6SlxP619l0iZ5CzivHWrH03taGiaInT2TjTx8/FdZz+jNRvjv+Vy
-	FS9OjQTkMdCMhlE1Xwj60R/mGwyJOhnCL+Or5locxoRiHe80k=
-X-Received: by 2002:a17:90b:1d4c:b0:36d:ae6a:22f4 with SMTP id 98e67ed59e1d1-37d1e8c9b8fmr11813445a91.15.1782089793457;
-        Sun, 21 Jun 2026 17:56:33 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c8bc2c8d829sm5441326a12.1.2026.06.21.17.56.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 21 Jun 2026 17:56:33 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Heiko Stuebner <heiko@sntech.de>,
-	Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	linux-sound@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH] ASoC: rockchip: rockchip_sai: Hand over hclk control exclusively to Runtime PM
-Date: Mon, 22 Jun 2026 07:56:13 +0700
-Message-ID: <20260622005613.21870-1-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
+        bh=q9f8PIvMVF+hZapXjR2Pan8tM2MhsJBoGLqzWF0navE=;
+        b=intFl9IuCO0P/l+VzKloIbVRNvszCHAjcAOjTZXjzApKyuIypfAtZbdwKgF0eE7gv4
+         xGbdUSZymlCOjJuaj1icXcfc3TZthDaOyI2wfcl2KCMyBln8n/VK99JXErRCsL47UXC8
+         ZuzaHGLf7s63oaj9hTYsELlz/CZddKiFlbjarDNji3XmOW1HWPiyIBWS6CWstHk9/Ovb
+         K5gTkNW5RrGJS1HenQ5Mj3pNPrf6IfxQ1guCJKvismWk0rqTJU+8iLoR+LRbGPf/vEo5
+         vqhdYj79/3UMoxW09z9/X39Kdipp2tAJas4KodrCab+Uaz6kYrAFlbb8QjZ/WZ2v+Yye
+         reSA==
+X-Forwarded-Encrypted: i=1; AHgh+RpKMh/GeSQSJ1KirARkzOp7cRod2XzzGj2MNr0abLIwZDsZkbS7nwaowSHZ7JAY4UeNdtbZcXUydy9NFVMJzw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzkd96UwMFQHp9Ak5NFWx6zMTpFcIheBfbTfKUlUXPaNKdvpy8g
+	ne91FN7vLSaJ7Snsu1h8f2o24kpqMTBV/BKudxwwW5wdaRY397tyDbOIby4Wuvz2ZiODfpN+0d9
+	WIsblGRm3Ib/RonFX8loE3d5NcXMKQFU=
+X-Gm-Gg: AfdE7ckuXVpggsIfoIX94c5tNyTlHLB41tFcOEezBi1Brdp85sjYXnXPWDU4xJor1wX
+	2lPM91/eoHinZMLUGQ09Kc1439ogYE/izyThrVP9bhO5KpK69v2q5n3Qy+sfm/bFu3kC7WFB7im
+	C1J9MbPF+HF9UhKaqawmK10jMuoaU7B5BC9Ji9nt1o1LfEFWOQfiTulNOZ3baBJgsqT7/odAwc6
+	N4wjmgx9Tkb02xQJb45BaIpkDoK9EsdVAuyRuQ7A5pgxxfJGtc9hTIk7CwGC7wxmBg3aGNtv/+r
+	iXw4qWxonABelskXqGVwpknuJJc/AvMu3/bC/Q==
+X-Received: by 2002:a17:903:4b2b:b0:2bf:2114:ecc2 with SMTP id
+ d9443c01a7336-2c718f965c7mr131313365ad.35.1782090545565; Sun, 21 Jun 2026
+ 18:09:05 -0700 (PDT)
 MIME-Version: 1.0
+References: <20260604033554.96996-1-phucduc.bui@gmail.com> <mPIrpl-QRw6_Q9DZcTQ5xA@collabora.com>
+ <CAABR9nGEHmy4YSqFSyh+gqXVwNgpaGOjqBeUZyHBmMibHwvMxA@mail.gmail.com>
+ <D9b19fqJSQK5FO2BflNEKw@collabora.com> <CAABR9nEJg2R9dkGOrn9aZ_b=J7qMU06UKv+HcwdLmzckBoGL3Q@mail.gmail.com>
+In-Reply-To: <CAABR9nEJg2R9dkGOrn9aZ_b=J7qMU06UKv+HcwdLmzckBoGL3Q@mail.gmail.com>
+From: Bui Duc Phuc <phucduc.bui@gmail.com>
+Date: Mon, 22 Jun 2026 08:08:53 +0700
+X-Gm-Features: AVVi8CcmgoD8a-6Hq5plimGJij8Yn44KzsAgWV7isqS6VvBWdYzEzn5_4Mf-32s
+Message-ID: <CAABR9nHBcfmdJu2=gT6iJ0efi9QtqKFC6gAt1rLJaUpyOmPzfQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] ASoC: rockchip: Use guard() for spin locks
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, linux-sound@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260621_175634_742749_7464CCD0 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20260621_180906_575084_3D717C26 
+X-CRM114-Status: UNSURE (   8.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,111 +121,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+>> If the patch worsens code legibility through excessive indentation and does
+>> not make any functional changes, then I do not see the point of it.
 
-Although switching to devm_clk_get_enabled() in a previous patch was
-tested successfully, it introduces overlapping ownership of the clock
-lifecycle. Since the driver requires early register access to read the
-device version during probe(), enabling hclk at that point is mandatory.
-However, relying on devres for automatic disabling at unbind, while calling
-clk_disable_unprepare() manually at the end of probe() alongside Runtime
-PM's autosuspend, creates redundant and overlapping clock management.
+I completely see your point. While on the subject of rockchip_sai, I've created
+an additional patch focused on improving readability rather than just moving
+lines around. Please let me know your thoughts in this direction.
 
-While this mixed approach might not trigger errors under normal test
-conditions, it is architecturally sub-optimal. As stated in the code
-comments, Runtime PM should exclusively own the clock for register
-accesses after the initial configuration phase.
+https://lore.kernel.org/all/20260622005613.21870-1-phucduc.bui@gmail.com/
 
-Clean up the design by:
-
-   1 Reverting back to devm_clk_get() to remove the implicit devres
-     enable/disable behavior.
-   2 Manually enabling and disabling hclk explicitly only around the
-     early register access before Runtime PM takes over.
-   3 Dropping the stray clk_disable_unprepare() at the end of probe()
-     so Runtime PM solely owns hclk afterward.
-
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
----
-
-Links: 
-1 This change is based on the discussion around manual hclk handing during probe(),
-  as raised by Krysztof:
-  https://lore.kernel.org/all/20e4754b-ea9a-404d-b529-ec44a7263cbf@kernel.org/#t
-2 Background for the earlier devm_clk_get_enbabled() conversion:
-  https://lore.kernel.org/all/2818018.CQOukoFCf9@workhorse/
-
-An alternative approach would be use devm_regmap_init_mmio_clk() and let regmap
-manage clock enablement around register accesses. If preferred, I can rework the 
-driver accordingly.
-
- sound/soc/rockchip/rockchip_sai.c | 27 ++++++++++++++++++++-------
- 1 file changed, 20 insertions(+), 7 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
-index a195e96fed0a..ebb491fac77d 100644
---- a/sound/soc/rockchip/rockchip_sai.c
-+++ b/sound/soc/rockchip/rockchip_sai.c
-@@ -1438,20 +1438,30 @@ static int rockchip_sai_probe(struct platform_device *pdev)
- 		return dev_err_probe(&pdev->dev, PTR_ERR(sai->mclk),
- 				     "Failed to get mclk\n");
- 
--	sai->hclk = devm_clk_get_enabled(&pdev->dev, "hclk");
-+	sai->hclk = devm_clk_get(&pdev->dev, "hclk");
- 	if (IS_ERR(sai->hclk))
- 		return dev_err_probe(&pdev->dev, PTR_ERR(sai->hclk),
- 				     "Failed to get hclk\n");
- 
-+	ret = clk_prepare_enable(sai->hclk);
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Failed to enable hclk\n");
-+
- 	regmap_read(sai->regmap, SAI_VERSION, &sai->version);
- 
- 	ret = rockchip_sai_init_dai(sai, res, &dai);
--	if (ret)
--		return dev_err_probe(&pdev->dev, ret, "Failed to initialize DAI\n");
-+	if (ret) {
-+		ret = dev_err_probe(&pdev->dev, ret, "Failed to initialize DAI\n");
-+		goto err_disable_hclk;
-+	}
- 
- 	ret = rockchip_sai_parse_paths(sai, node);
--	if (ret)
--		return dev_err_probe(&pdev->dev, ret, "Failed to parse paths\n");
-+	if (ret) {
-+		ret = dev_err_probe(&pdev->dev, ret, "Failed to parse paths\n");
-+		goto err_disable_hclk;
-+	}
-+
-+	clk_disable_unprepare(sai->hclk);
- 
- 	/*
- 	 * From here on, all register accesses need to be wrapped in
-@@ -1482,8 +1492,6 @@ static int rockchip_sai_probe(struct platform_device *pdev)
- 	pm_runtime_use_autosuspend(&pdev->dev);
- 	pm_runtime_put(&pdev->dev);
- 
--	clk_disable_unprepare(sai->hclk);
--
- 	return 0;
- 
- err_runtime_suspend:
-@@ -1493,6 +1501,11 @@ static int rockchip_sai_probe(struct platform_device *pdev)
- 		rockchip_sai_runtime_suspend(&pdev->dev);
- 
- 	return ret;
-+
-+err_disable_hclk:
-+	clk_disable_unprepare(sai->hclk);
-+
-+	return ret;
- }
- 
- static void rockchip_sai_remove(struct platform_device *pdev)
--- 
-2.43.0
-
+Best regards,
+Phuc
 
 _______________________________________________
 Linux-rockchip mailing list
