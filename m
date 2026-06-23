@@ -4,52 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 793A1CDB46F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 09:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56C73CD4F26
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 10:09:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nZXm7cmF9xrvJck5u7EEMY3L1CMpz8rove/Jf/8GeO4=; b=IpbhMx1B0tY2eK
-	5zmnMBOzevyrvpkbthbFfKKie49GPm4aktgXD990sGFy1pwt/YNp8S4GIAmAev7RhVU3URwByDv7R
-	hje99sXeP069SHpJBsWzTjMSYyeMDL4pWSwf/o8PyJx1vMe4J+Uvtzdo5ErhosWAQ60jiPymCyqMK
-	jmTplZjem+51CM9l59dFx1qjktsDSnQuWjkl/2u1PtxFQXcEpQXxhuVfueS2H96IU8GisbtZp6iyI
-	pt/5FPI9A12E9zsIl6qVnipFBJG+NRRmiNZOI47W0wirgKoYAtpKI5C9bWHK+LnW44j/PhwO1/rIn
-	SYfPhQvFINtULiXvQalA==;
+	List-Owner; bh=fpp5eMkX8b6lLPOOsDwJReX/PwNR4VGFVETXKnKmYo0=; b=yHWwuVeWPlE9Lk
+	KkyXr82pI0nE8muzUBDEuvH+emK+Nw4ciuDPdb/zoAG5ne7RVRnO/EFn83R5Np2E8LOmfC1jBv4lI
+	0421K6fePvxC+Tw+oNy58SDgcRDerrzZJXHKmudxqS12OBC8Rc0SAo9sInqP3Ywj/aE9M2kIQaRrW
+	8kcB5pOiU/0iD9SN3FG45E9b4OKiznOVr5hiGPHiquZFN1/nFrM0Nst1oGIzEBUj5Y++5w++3cMY4
+	I/l8rovSDkBa+TEns7PalpduiJbUsA0KyL+PLP3m4fOQwHfA6hWJOUukOogZCg8zj3ubfsA6qqQ3g
+	HW49nSpfM6IVto5Ww9ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbxlQ-000000062MG-0eVx;
-	Tue, 23 Jun 2026 09:49:52 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1wby4W-000000063xJ-1ylm;
+	Tue, 23 Jun 2026 10:09:36 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbxlN-000000062Lc-1pGJ
-	for linux-rockchip@lists.infradead.org;
-	Tue, 23 Jun 2026 09:49:51 +0000
-Received: from neptunite.rasen.tech (unknown [IPv6:2404:7a81:160:2100:aa9e:184f:96b2:e40a])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 249D02D7;
-	Tue, 23 Jun 2026 11:49:05 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1782208146;
-	bh=oXV5U2weJ7HdA8YWcjefznLiGyuO0HmbnZ1rGXpm2SQ=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=Jg8m1k+U5Er6Ds31mv9TteH6npwzTuCMjf5K6Z+hTU3jfzrDTV8lIvE+5PAmcet5X
-	 M+HEKCY4BdQMILzx11t44JMGlpB3wxdqz7DBnA9LBWLKdLgKhmhrU2H7Slb8SLIqZR
-	 pu0nIsZ7r9YvcuS2JXj7DSMiOZPA+UZtVV3Wy9bQ=
+	id 1wby4T-000000063wo-3OLs;
+	Tue, 23 Jun 2026 10:09:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1782209374; x=1813745374;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=xv4r6u0rAfI0XXJ7Y3S0NT2YfyY0CONMP/ImwPkH8bw=;
+  b=iXalQzkY0cXapvobAqgPXti24h3js13Q8qAjccWfZXJ+atDxfIl6uRr9
+   JUh6rlKF8Xs9reLfmpxb7HydGoygfBgFEiX/gLAF5N+4WlaCAd9LU3ciS
+   jPvbjUgMvNnEJTLVUfs0OWENKbkiz1OgPYVDEqQuoZC0v6SZVfjTFIoP8
+   /eIyQANaCzQkcpivpbOjzwDb2bOYN18e+iJYkq0Q67Qgf+wPL2+xU/1yG
+   JIT3DJg9QLRImQCfttockVmcotktlLMhqYkXhb7N82i+rvPz6ML5kSxOH
+   aKh2WxANOzAQlH888ET4kov0JstOu+GhxeFY3pWurNI5ES/y3x7itiOtn
+   A==;
+X-CSE-ConnectionGUID: 03vEpxKqTlCeFP7sTII19Q==
+X-CSE-MsgGUID: 4GKr2iCZTJujHsFdssLmXw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11825"; a="100376404"
+X-IronPort-AV: E=Sophos;i="6.24,220,1774335600"; 
+   d="scan'208";a="100376404"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2026 03:09:33 -0700
+X-CSE-ConnectionGUID: fO295pNvSEiHBZM9FO5beA==
+X-CSE-MsgGUID: +viiu0Y0Q+aDKjP2Rb+XuA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,220,1774335600"; 
+   d="scan'208";a="251411103"
+Received: from klitkey1-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.7])
+  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2026 03:09:26 -0700
+Date: Tue, 23 Jun 2026 13:09:24 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Frank.Li@oss.nxp.com
+Cc: Daniel Scally <djrscally@gmail.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>,
+	Loic Poulain <loic.poulain@oss.qualcomm.com>,
+	driver-core@lists.linux.dev, linux-acpi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	imx@lists.linux.dev, Guoniu Zhou <guoniu.zhou@nxp.com>,
+	Frank Li <Frank.Li@nxp.com>
+Subject: Re: [PATCH 1/4] device property: Introduce
+ fwnode_graph_for_each_endpoint_scoped()
+Message-ID: <ajpbVCGGKchNa2rd@ashevche-desk.local>
+References: <20260622-fw_scoped-v1-0-a37d0aac0a68@nxp.com>
+ <20260622-fw_scoped-v1-1-a37d0aac0a68@nxp.com>
 MIME-Version: 1.0
-In-Reply-To: <20260501190339.3449193-1-niklas.soderlund+renesas@ragnatech.se>
-References: <20260501190339.3449193-1-niklas.soderlund+renesas@ragnatech.se>
-Subject: Re: [PATCH] media: uapi: rkisp: Correct name version enum
-From: Paul Elder <paul.elder@ideasonboard.com>
-Cc: Niklas =?utf-8?q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>
-To: Dafna Hirschfeld <dafna@fastmail.com>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Niklas =?utf-8?q?S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>, Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
-Date: Tue, 23 Jun 2026 18:49:38 +0900
-Message-ID: <178220817887.292172.8295943288467268239@neptunite.rasen.tech>
-User-Agent: alot/0.0.0
+Content-Disposition: inline
+In-Reply-To: <20260622-fw_scoped-v1-1-a37d0aac0a68@nxp.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_024949_946863_78A2E8EF 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20260623_030933_887634_9FE97BCD 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,45 +99,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-UXVvdGluZyBOaWtsYXMgU8O2ZGVybHVuZCAoMjAyNi0wNS0wMiAwNDowMzozOSkKPiBUaGUgbmFt
-ZSBvZiB0aGUgZW51bSB0byBob2xkIHRoZSBtYXBwaW5nIG9mIHBhcmFtZXRlciBidWZmZXIgdmVy
-c2lvbnMKPiBoYXZlIGEgdHlwbyBpbiB0aGUgbmFtZSwgY29ycmVjdCBpdC4gV2hpbGUgdGhpcyBp
-cyBhIHVBUEkgaGVhZGVyIHRoZQo+IGltcGFjdCBzaG91bGQgYmUgbWluaW1hbCBhcyB0aGUgZW51
-bSBpcyBvbmx5IHVzZWQgYXMgYSBjb2xsZWN0aW9uIGZvcgo+IHRoZSBvbmUgdmVyc2lvbiBudW1i
-ZXIgc3VwcG9ydGVkLgo+IAo+IEZpeGVzOiBlOWQwNWU5ZDVkYjEgKCJtZWRpYTogdWFwaTogcmtp
-c3AxLWNvbmZpZzogQWRkIGV4dGVuc2libGUgcGFyYW1zIGZvcm1hdCIpCj4gU2lnbmVkLW9mZi1i
-eTogTmlrbGFzIFPDtmRlcmx1bmQgPG5pa2xhcy5zb2Rlcmx1bmQrcmVuZXNhc0ByYWduYXRlY2gu
-c2U+CgpSZXZpZXdlZC1ieTogUGF1bCBFbGRlciA8cGF1bC5lbGRlckBpZGVhc29uYm9hcmQuY29t
-PgoKPiAtLS0KPiAgaW5jbHVkZS91YXBpL2xpbnV4L3JraXNwMS1jb25maWcuaCB8IDYgKysrLS0t
-Cj4gIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCj4g
-ZGlmZiAtLWdpdCBhL2luY2x1ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmlnLmggYi9pbmNsdWRl
-L3VhcGkvbGludXgvcmtpc3AxLWNvbmZpZy5oCj4gaW5kZXggYjJkMmE3MWY3YmFmLi43NjM4YjIy
-MjA2MDAgMTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS91YXBpL2xpbnV4L3JraXNwMS1jb25maWcuaAo+
-ICsrKyBiL2luY2x1ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmlnLmgKPiBAQCAtMTUzNSwxMSAr
-MTUzNSwxMSBAQCBzdHJ1Y3Qgcmtpc3AxX2V4dF9wYXJhbXNfd2RyX2NvbmZpZyB7Cj4gICAgICAg
-ICBzaXplb2Yoc3RydWN0IHJraXNwMV9leHRfcGFyYW1zX3dkcl9jb25maWcpKQo+ICAKPiAgLyoq
-Cj4gLSAqIGVudW0gcmtzaXAxX2V4dF9wYXJhbV9idWZmZXJfdmVyc2lvbiAtIFJrSVNQMSBleHRl
-bnNpYmxlIHBhcmFtZXRlcnMgdmVyc2lvbgo+ICsgKiBlbnVtIHJraXNwMV9leHRfcGFyYW1fYnVm
-ZmVyX3ZlcnNpb24gLSBSa0lTUDEgZXh0ZW5zaWJsZSBwYXJhbWV0ZXJzIHZlcnNpb24KPiAgICoK
-PiAgICogQFJLSVNQMV9FWFRfUEFSQU1fQlVGRkVSX1YxOiBGaXJzdCB2ZXJzaW9uIG9mIFJrSVNQ
-MSBleHRlbnNpYmxlIHBhcmFtZXRlcnMKPiAgICovCj4gLWVudW0gcmtzaXAxX2V4dF9wYXJhbV9i
-dWZmZXJfdmVyc2lvbiB7Cj4gK2VudW0gcmtpc3AxX2V4dF9wYXJhbV9idWZmZXJfdmVyc2lvbiB7
-Cj4gICAgICAgICBSS0lTUDFfRVhUX1BBUkFNX0JVRkZFUl9WMSA9IFY0TDJfSVNQX1BBUkFNU19W
-RVJTSU9OX1YxLAo+ICB9Owo+ICAKPiBAQCAtMTYwMSw3ICsxNjAxLDcgQEAgZW51bSBya3NpcDFf
-ZXh0X3BhcmFtX2J1ZmZlcl92ZXJzaW9uIHsKPiAgICogICAgICstLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCj4gICAq
-Cj4gICAqIEB2ZXJzaW9uOiBUaGUgUmtJU1AxIGV4dGVuc2libGUgcGFyYW1ldGVycyBidWZmZXIg
-dmVyc2lvbiwgc2VlCj4gLSAqICAgICAgICAgIDpjOnR5cGU6YHJrc2lwMV9leHRfcGFyYW1fYnVm
-ZmVyX3ZlcnNpb25gCj4gKyAqICAgICAgICAgIDpjOnR5cGU6YHJraXNwMV9leHRfcGFyYW1fYnVm
-ZmVyX3ZlcnNpb25gCj4gICAqIEBkYXRhX3NpemU6IFRoZSBSa0lTUDEgY29uZmlndXJhdGlvbiBk
-YXRhIGVmZmVjdGl2ZSBzaXplLCBleGNsdWRpbmcgdGhpcwo+ICAgKiAgICAgICAgICAgIGhlYWRl
-cgo+ICAgKiBAZGF0YTogVGhlIFJrSVNQMSBleHRlbnNpYmxlIGNvbmZpZ3VyYXRpb24gZGF0YSBi
-bG9ja3MKPiAtLSAKPiAyLjU0LjAKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Mon, Jun 22, 2026 at 10:30:11AM -0400, Frank.Li@oss.nxp.com wrote:
+> From: Frank Li <Frank.Li@nxp.com>
+> 
+> Similar to recently propose for_each_child_of_node_scoped() this new
+> version of the loop macro instantiates a new local struct fwnode_handle *
+> that uses the __free(fwnode_handle) auto cleanup handling so that if a
+> reference to a node is held on early exit from the loop the reference will
+> be released. If the loop runs to completion, the child pointer will be NULL
+> and no action will be taken.
+> 
+> The reason this is useful is that it removes the need for
+> fwnode_handle_put() on early loop exits.  If there is a need to retain the
+
+Just be consistent with 1-space versus 2-spaces gaps in the same text.
+
+> reference, then return_ptr(child) or no_free_ptr(child) may be used to
+> safely disable the auto cleanup.
+
+No objections from me.
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+See one nit-pick below.
+
+But you will need driver core maintainers to Ack this.
+
+...
+
+> +#define fwnode_graph_for_each_endpoint_scoped(fwnode, child)			\
+> +	for (struct fwnode_handle *child __free(fwnode_handle) =		\
+> +			fwnode_graph_get_next_endpoint(fwnode, NULL);		\
+
+You should follow the existing style, the 'f' in fwnode should be under 'u' in
+struct.
+
+> +	     child; child = fwnode_graph_get_next_endpoint(fwnode, child))
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
