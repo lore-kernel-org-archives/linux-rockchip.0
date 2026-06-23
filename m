@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BC91CDB46F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 13:45:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF0E7CDB46F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 13:55:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6LdkvPPZMhQNvfQxZTyH7Od4BqHP49IoUnIqDiy7b8I=; b=lUhiwB3jpyZAET
-	2m8pjz3b8ZAkVT4zDF0pJR8UIYSoVE9mJTADKPtpAWa6bCmV1Fas9naLup4azaPJ4pavgxVtHb9AC
-	Dil1ECDnFUzu/+SAWTem/fnlSs8cd6DaYW8d/m3BZ3q4D2UYW9nRRj7IvZyCjPYTn21X320Fvk9ge
-	01ySYN2ZUXiYEtQY0JToqV5gdv05DjCkHnDOpOhwSkxth/yJk2dt9XleAaMuMQbwhCDabBpbINMFt
-	Zo0yPJ7EY4bSUS3zw7p9YyuyQa4K5GijWHNk//iiQzuziRbiignzQkIk0nyaWRvLkAbCLX71Uv2I8
-	N/Irlkt9Z5TWZGEsZT3w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9QrC725AtEdx3ef1S1OsbTBQXhBOI6AuRsxb+QcuOp8=; b=zTj4Ekb2IcSkZa
+	v2+P1Ggs3lwPWiZvIkNYknBGAfaoXg2H9BHG1COFePa+B7oLBINXWXKmgF12RUo9VfCPfsSenEA6f
+	KsJvjxGXRefhmUB9a0E4lgFiD187Wyo+d9xbtXFBXxCs/y6/ZPvEPih2uApwDqVroK99hfuh6k5B7
+	sqWEe7uYCW91/T3UTuomA8iwI1ZQHRfbVwcpcoAeA87LONY7X52M465W5i84Pf7ajCT3tPtDxYT2v
+	ePYeoif7xV5pig0WIXfQFpEa0sG94hZjvk+tN6sQD5giVr6ZhNhoQvwF86FD+Gj4WnY2kYY33xzQk
+	eC3PvXA2fXX+xDNv1RsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc1RZ-00000006MT5-3gcJ;
-	Tue, 23 Jun 2026 13:45:37 +0000
-Received: from out-181.mta0.migadu.com ([2001:41d0:1004:224b::b5])
+	id 1wc1bG-00000006NgF-0SSf;
+	Tue, 23 Jun 2026 13:55:38 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc1RX-00000006MSW-1w8E
-	for linux-rockchip@lists.infradead.org;
-	Tue, 23 Jun 2026 13:45:37 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1782222332;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=UZ4++YxJXc/6SFIqw2u6ldCc2haTxcSXXUeS9bd2ENM=;
-	b=Xvt2WwtmOY6PYw8fMMtaKUPwhp00TjzdQIEHqcqaypIosTEKgcmztrkWySTKWpaBWtZTCA
-	1L4m4hU0BAGVvOjQ+nMVV0yHMl39CI6/NJfo8JrXcGL71Gtfc2bxxcCIpcQ1/NHm0YSScq
-	VixU+qrUJNYvHsjEUT/yHEAyQjSidSJOszChjXClbXTCVq1nBsFVsdfkEQ3XlUrvRKI7Co
-	QdXQtaOX2kRLeEiv6rBCwXc0J7rhVqhqtw7KvAZ3ArRpIPUeJEG9l7IjUTcel/3bweDh7B
-	moSJILJFXOBN0NCfuwE0orLdYnOz0zgWN6FG/xVbLACwjwdu2UIz6BWcHfUQWw==
-Date: Tue, 23 Jun 2026 15:45:23 +0200
-Message-Id: <DJGH34DVKL0W.3T6UB4G4WYYUJ@cknow-tech.com>
-Cc: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>,
- <linux-clk@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Ricardo Pardini" <ricardo@pardini.net>
-Subject: Re: [PATCH v4 5/5] clk: rockchip: rk3588: add GATE_GRF clocks for
- I2S MCLK output to IO
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Daniele Briguglio" <hello@superkali.me>, "Diederik de Haas"
- <diederik@cknow-tech.com>, "Heiko Stuebner" <heiko@sntech.de>, "Michael
- Turquette" <mturquette@baylibre.com>, "Stephen Boyd" <sboyd@kernel.org>,
- "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>
-References: <20260419-rk3588-mclk-gate-grf-v4-0-513a42dd1dcc@superkali.me>
- <20260419-rk3588-mclk-gate-grf-v4-5-513a42dd1dcc@superkali.me>
- <DJGDSS875DDO.22TYPVYK5X8KZ@cknow-tech.com> <2100447.PIDvDuAF1L@diego>
- <20260623123316.4111002-1-hello@superkali.me>
- <DJGG8DEAKSPK.1GJ8FARAHXPXM@cknow-tech.com>
- <20260623132351.4144457-1-hello@superkali.me>
-In-Reply-To: <20260623132351.4144457-1-hello@superkali.me>
-X-Migadu-Flow: FLOW_OUT
+	id 1wc1bD-00000006Nfc-0S0P;
+	Tue, 23 Jun 2026 13:55:36 +0000
+Received: from localhost.localdomain (unknown [111.196.245.140])
+	by APP-05 (Coremail) with SMTP id zQCowACX99pQkDpq_TTYFA--.34224S2;
+	Tue, 23 Jun 2026 21:55:28 +0800 (CST)
+From: Pengpeng Hou <pengpeng@iscas.ac.cn>
+To: Corentin Labbe <clabbe@baylibre.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	"David S. Miller" <davem@davemloft.net>,
+	Heiko Stuebner <heiko@sntech.de>,
+	John Keeping <john@keeping.me.uk>
+Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
+	linux-crypto@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] crypto: rockchip: fail ahash requests on HASH idle timeout
+Date: Tue, 23 Jun 2026 21:55:28 +0800
+Message-ID: <20260623135528.46115-1-pengpeng@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1
+MIME-Version: 1.0
+X-CM-TRANSID: zQCowACX99pQkDpq_TTYFA--.34224S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7ur4DCFWDCFWDGr1kCr1kGrg_yoW8Gw15pF
+	43K39FyrykCr4qgF9Yywn0yFZ5XasIvay3ArZ7G3y5Zw1Sy34kXryxCFy0vF1jvF93Aa1j
+	yFs7A345Gr1UWrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9Y14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
+	6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
+	Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+	I7IYx2IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Gr0_Cr1lOx8S6xCaFVCjc4AY6r1j6r
+	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
+	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
+	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
+	67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
+	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
+	MIIF0xvEx4A2jsIE14v26r4j6F4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJbIYCT
+	nIWIevJa73UjIFyTuYvjfU5iihUUUUU
+X-Originating-IP: [111.196.245.140]
+X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_064535_725664_BC93F477 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20260623_065535_520333_50CAD918 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,38 +83,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Daniele,
+rk_hash_run() waits for RK_CRYPTO_HASH_STS to become idle after the
+final DMA transfer, but ignores the poll result. If the hash engine
+never becomes idle, the driver still reads the digest registers and
+finalizes the request with the previous success value.
 
-On Tue Jun 23, 2026 at 3:23 PM CEST, Daniele Briguglio wrote:
->> md.l 0xfd58c318
->> fd58c318: 00000600
->
-> Thanks. Bit 0 is clear there, so the I2S0 gate is open at the U-Boot
-> prompt, after BL31 and before Linux. That matches the symptom: the
-> firmware on your T6 leaves it open, and the kernel closes it once nothing
-> references it.
->
-> Given that, I think Heiko's suggestion makes sense here. Marking the four
-> gates CLK_IGNORE_UNUSED keeps the kernel from disabling what the firmware
-> already left open, and boards that reference _TO_IO still drive it through
-> the consumer.
+Store the poll result and finalize the request with the timeout error
+before reading the digest registers.
 
-My suspicion that more RK3588 based boards would be broken is because NONE use
-I2S0_8CH_MCLKOUT_TO_IO; they all use I2S0_8CH_MCLKOUT.
-(And the testing was only done on not (yet?) upstreamed boards)
+Fixes: 37bc22159c45 ("crypto: rockchip - use read_poll_timeout")
+Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
+---
+ drivers/crypto/rockchip/rk3288_crypto_ahash.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-> Could you test that change if you get a chance? Just set the flag on the
-> I2S0/1/2/3 _TO_IO gates in clk-rk3588.c and check your analog audio comes
-> back. The series is already merged, so I'll send the fix as a separate
-> follow-up patch, this evening if Heiko is fine with the approach.
+diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+index b9f5a8b42..d3482619a 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
++++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+@@ -324,7 +324,12 @@ static int rk_hash_run(struct crypto_engine *engine, void *breq)
+ 	 * efficiency, and make it response quickly when dma
+ 	 * complete.
+ 	 */
+-	readl_poll_timeout(rkc->reg + RK_CRYPTO_HASH_STS, v, v == 0, 10, 1000);
++	err = readl_poll_timeout(rkc->reg + RK_CRYPTO_HASH_STS, v,
++				 v == 0, 10, 1000);
++	if (err) {
++		dev_err(rkc->dev, "HASH idle timeout\n");
++		goto theend;
++	}
+ 
+ 	for (i = 0; i < crypto_ahash_digestsize(tfm) / 4; i++) {
+ 		v = readl(rkc->reg + RK_CRYPTO_HASH_DOUT_0 + i * 4);
+-- 
+2.50.1 (Apple Git-155)
 
-I'm going to build a new kernel where I did ``s/0/CLK_IGNORE_UNUSED/`` 4 times
-and I adjusted my NanoPC-T6 Plus board dts to use I2S0_8CH_MCLKOUT_TO_IO, while
-I keep the LTS board dts to I2S0_8CH_MCLKOUT.
-So IIUC that means I'd be testing both variants.
-
-Cheers,
-  Diederik
 
 _______________________________________________
 Linux-rockchip mailing list
