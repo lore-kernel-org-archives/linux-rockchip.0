@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AFB5CDB46F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 15:15:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9300CDB471
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 15:17:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nEI5WsQF14PdaB5iu1WCk2ZWtTkB7fA1knxgLNHBIZc=; b=adDjjQVz7cKQFj
-	CPH3LQAZRInn2RT+hseSw4JJFnXECElkE0/TQ4l/K+mhV9Ht/2dwlGCob5F9XJFYAGvU+Kvm83hag
-	9nOXYzqdiNOTjZBBLzZ+zhc9iP6wrLTZgzs0/5taAzFc8zmx4AzmPXerFaprzkuO4fpBFnUgqEK7y
-	Bd3oSNp2HNwrcSwXc8t8iHtukCN+E4CUE2s9T+mR+A8lxRzPwjhO3ToSWu60wF5Kve3qrW5cTGU0P
-	nXeoJHEPiZaALBwJ19cEB+NjilfDw/Z6opYGJJDRUrZrx5OqFVToUeuz7QYMXqkWS93DEqZpLIziV
-	HzdGjRvzAR4y6uAmAJ6w==;
+	List-Owner; bh=a5OHchao4XJUOfGMC5aPVRWs0DYLSLCGabY3CBrfsVU=; b=xMCodoVexwiByH
+	N5BfaRJ+HxrsR6U8FUubG5yJE74Nlg35qHow5o6xk6KnV82PGipT58tsCRWSqgPJznb0KYmkYfycK
+	Ae7xu9BO2UloP82VQxcATfuhQKZmvdBR9lulJ8YgVo0hZRbl9tIfMVARa4pCc5r2x8o2q7GRgPZW0
+	oKTnfBSjiAiNiPfUEGzbFQlw8SqbEPqImZ40t12hxrNQx7RKik72GIl8982w+21wz+6/5M67zLMWt
+	WUU3zd/vLQ+QNkaQJqjXRy9dfAXzlPxHo+abRkgG3FFE1nHWDrYddHJpcK3RpKrCCC1IYBCqQPEEx
+	U+J5U0Xx124YPf7XfkCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc2qh-00000006WFl-15UB;
-	Tue, 23 Jun 2026 15:15:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc2qf-00000006WFc-1qxB
-	for linux-rockchip@lists.infradead.org;
-	Tue, 23 Jun 2026 15:15:37 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1D7914045E;
-	Tue, 23 Jun 2026 15:15:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA0E91F000E9;
-	Tue, 23 Jun 2026 15:15:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782227737;
-	bh=IPOBmqwVoyjRS2u66O6YAVJSo8yViJnEx+BNzty711k=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=COSxw0gF3QYuNJh9ZJ5fqD5kq/uiYqZSDMIVEkJqAbInBUU6mfevw8xAX3lrOhr7D
-	 rRyaZDnooKcpcVnE+vaibH+IHcdvJmnPooj//fkwNiKtJoS+pww2yPlQ41T9a3sQsF
-	 UnVnkNIkalwiYHlkpv9VfK2M17gPYXeXKqS8+Tt/gNtz6iO7hrsTM2LJPUETGLBzSN
-	 h5ph74zMF14l07AqIQtAfQMFEvSSCi9Jztm7bs9WuZWiSKPAyN5MHgZZLq0kW4psYK
-	 1z37dYL6gHV7M1aIu7F/sW1N/UgoVcO+Z1OodHFUmF+iiOS7wu9u1y6MxlZka6TMT2
-	 KVrsYfQ2Ux5dA==
-Date: Tue, 23 Jun 2026 16:15:27 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@intel.com>
-Cc: Chris Morgan <macromorgan@hotmail.com>, Chris Morgan
- <macroalpha82@gmail.com>, linux-iio@vger.kernel.org, andy@kernel.org,
- nuno.sa@analog.com, dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org
-Subject: Re: [PATCH V13 8/9] iio: imu: inv_icm42607: Add Gyroscope to
- icm42607
-Message-ID: <20260623161527.7b7b0ccb@jic23-huawei>
-In-Reply-To: <ajotNPhg8fR3tLZp@ashevche-desk.local>
-References: <20260615172554.160910-1-macroalpha82@gmail.com>
-	<20260615172554.160910-9-macroalpha82@gmail.com>
-	<ajEhr0JIQwzRgoZa@ashevche-desk.local>
-	<PH0PR19MB997338E86152468CE26F60953FA5E42@PH0PR19MB997338.namprd19.prod.outlook.com>
-	<ajotNPhg8fR3tLZp@ashevche-desk.local>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1wc2sC-00000006WSD-356D;
+	Tue, 23 Jun 2026 15:17:12 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wc2s9-00000006WQs-17dF;
+	Tue, 23 Jun 2026 15:17:10 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 00D041A00;
+	Tue, 23 Jun 2026 08:17:00 -0700 (PDT)
+Received: from [10.2.212.23] (e121345-lin.cambridge.arm.com [10.2.212.23])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1C5383F62B;
+	Tue, 23 Jun 2026 08:17:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1782227824; bh=95oYhnwJjow7KcN3v08zC/1DlUFrdeFuCxK1iUP8SJU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JUvMZgGlP4HRty3ryEVXkuOhRN9ySLzZNcIXnxPZvcV05cwAHn/EBq9aWDFdc96Oe
+	 p3njUnNRxo6cjMwkCYAQhYYjgL8IWLfycVFDuwvOjRZ8kdq+JxpgD6ovDmRH/3GjU1
+	 k7Saym62kS/LxX/5nZy4jEiPkjOx+K2V1+J2ETRA=
+Message-ID: <112d2563-e650-4881-bba0-335f6a3fcb8a@arm.com>
+Date: Tue, 23 Jun 2026 16:16:44 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] gpio: fix sleeping-in-atomic in shared-proxy; restore
+ meson non-sleeping
+To: Marek Szyprowski <m.szyprowski@samsung.com>,
+ Viacheslav Bocharov <v@baodeep.com>, Linus Walleij <linusw@kernel.org>,
+ Bartosz Golaszewski <brgl@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Diederik de Haas <diederik@cknow-tech.com>, linux-gpio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Heiko Stuebner <heiko@sntech.de>
+References: <CGME20260610153425eucas1p29d20a835114a28b15cb12ea00534e074@eucas1p2.samsung.com>
+ <20260610153329.937833-1-v@baodeep.com>
+ <184d315b-a0a1-4792-8a40-1b4967025916@samsung.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <184d315b-a0a1-4792-8a40-1b4967025916@samsung.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260623_081709_518698_0C58EA01 
+X-CRM114-Status: GOOD (  16.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,40 +74,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 23 Jun 2026 09:52:36 +0300
-Andy Shevchenko <andriy.shevchenko@intel.com> wrote:
+On 11/06/2026 9:26 am, Marek Szyprowski wrote:
+> Hi Viachesla,
+> 
+> On 10.06.2026 17:32, Viacheslav Bocharov wrote:
+>> gpio-shared-proxy chooses its descriptor lock (mutex vs spinlock) from
+>> the underlying chip's can_sleep, but under that lock it calls config and
+>> direction ops that reach sleeping pinctrl paths. On a controller with
+>> non-sleeping MMIO value ops the lock is a spinlock, so a sleeping call
+>> runs from atomic context:
+>>
+>>    BUG: sleeping function called from invalid context
+>>      ... pinctrl_gpio_set_config <- gpiochip_generic_config
+>>      <- gpio_shared_proxy_set_config (voting spinlock held)
+>>      <- ... <- mmc_pwrseq_simple_probe
+>>
+>> This was reported on Khadas VIM3 and worked around for Amlogic by
+>> commit 28f240683871 ("pinctrl: meson: mark the GPIO controller as
+>> sleeping"), which marked the whole meson controller sleeping. That
+>> workaround broke atomic value-path consumers: w1-gpio (1-Wire bitbang)
+>> no longer detects devices, because its IRQ-disabled read slot calls the
+>> non-cansleep gpiod_*_value() and now hits WARN_ON(can_sleep) per bit.
+>>
+>> Patch 1 fixes the proxy locking generically (always a sleeping mutex).
+>> Patch 2 then restores meson can_sleep=false, fixing 1-Wire.
+>>
+>> Patch 1 has a trade-off: a proxied GPIO becomes sleeping, so consumers
+>> gating on gpiod_cansleep() change behaviour. No current device needs
+>> atomic (non-cansleep) value access on a shared GPIO -- every report
+>> (Khadas VIM3, ODROID-M1, my test on JetHub D1+) is a shared reset line
+>> (eMMC/SDIO pwrseq or PCIe reset) driven through the cansleep accessors,
+>> which is what the proxy exists to vote on. An alternative that keeps
+>> atomic value access (split locking) is possible but adds a second lock
+>> and new race windows. I went with the simpler, verified approach and
+>> would appreciate guidance on whether the atomic value path must be
+>> preserved.
+>>
+>> The two are a unit: patch 2 must not be applied without patch 1,
+>> otherwise the original VIM3 splat returns on boards that share a meson
+>> GPIO -- please keep the order. I have not Cc'd stable; I will request
+>> stable backports separately once both patches have landed.
+>>
+>> Viacheslav Bocharov (2):
+>>    gpio: shared-proxy: always serialize with a sleeping mutex
+>>    pinctrl: meson: restore non-sleeping GPIO access
+> 
+> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> 
+> This probably also affects the similar changes in Rockchip GPIO driver done
+> by the following commits:
+> 20cf2aed89ac ("gpio: rockchip: mark the GPIO controller as sleeping")
+> 7ca497be0016 ("gpio: rockchip: Stop calling pinctrl for set_direction")
+> 
+> I've checked this patchset with these two reverted and no warning was reported.
 
-> On Wed, Jun 17, 2026 at 04:10:49PM -0500, Chris Morgan wrote:
-> > On Tue, Jun 16, 2026 at 01:13:03PM +0300, Andy Shevchenko wrote:  
-> > > On Mon, Jun 15, 2026 at 12:25:51PM -0500, Chris Morgan wrote:  
-> 
-> ...
-> 
-> > > Can be some of the code deduplicated between gyro and accel?  
-> > 
-> > Probably a fair amount, but the deduplication will likely need to be
-> > undone somewhat if we get buffer, WoM or apex support added back
-> > (I don't have any devices with such functionality, so if anyone will
-> > do it then it won't be me). I can refactor more if you want, or we
-> > can keep it split like this to make it easy if someone else wants to
-> > tackle the buffers/IRQs stuff later? Your call.  
-> 
-> Just asking. Jonathan, David, Nuno, what's your opinion on this?
-> Personal opinion is to avoid solving the issues that do not exist.
-> If you are not committing into those features, let's not prepare
-> driver for them right now.
-> 
-Agreed.  My only exception to this is normally when someone tells
-me they have the code and plan to post a follow up set very shortly.
-Then I get a bit more relaxed as they chances of 'preparing' for the
-future being relevant become much higher!
+If it hadn't already been fixed, then indeed I guess this might make 
+20cf2aed89ac redundant. However, 7ca497be0016 is still an objective 
+improvement either way, since that driver never needed to call pinctrl 
+at all (it was seemingly just an artefact of how the GPIO code was 
+originally implemented within the pinctrl driver itself).
 
-Jonathan
+Thanks,
+Robin.
 
 _______________________________________________
 Linux-rockchip mailing list
