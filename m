@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56C73CD4F26
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 10:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9524DCDB470
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 10:16:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fpp5eMkX8b6lLPOOsDwJReX/PwNR4VGFVETXKnKmYo0=; b=yHWwuVeWPlE9Lk
-	KkyXr82pI0nE8muzUBDEuvH+emK+Nw4ciuDPdb/zoAG5ne7RVRnO/EFn83R5Np2E8LOmfC1jBv4lI
-	0421K6fePvxC+Tw+oNy58SDgcRDerrzZJXHKmudxqS12OBC8Rc0SAo9sInqP3Ywj/aE9M2kIQaRrW
-	8kcB5pOiU/0iD9SN3FG45E9b4OKiznOVr5hiGPHiquZFN1/nFrM0Nst1oGIzEBUj5Y++5w++3cMY4
-	I/l8rovSDkBa+TEns7PalpduiJbUsA0KyL+PLP3m4fOQwHfA6hWJOUukOogZCg8zj3ubfsA6qqQ3g
-	HW49nSpfM6IVto5Ww9ag==;
+	List-Owner; bh=xdaBUDcJqTiPwm+47wUyn4P7ZnX740j8hbKXId4UW3E=; b=FIX03D546lvYzL
+	NMgL9xVSxAu/ANagq979OB9CYcU0o6+Rv9QGUQBN5ZF3TkS2lYnSeHGbx+MYPrpvG83SRErjWtJ74
+	TFx/kq6HtJ9OLN3FypDJZtgZADLI1IEpZY6anaF44vUktCbC2DrYsPzHLOXGVDONCK6/G1LqwIFwF
+	f9N33Nvy8UhsQ4WvPTt4X7rt4at5hIoEkcgvu/OnYX0sNs8zZZzfZf0ZS/sZ6IMqj8p7B43i1zJ/H
+	VJkvoOAzFhH8r48Iuy/9Z03LqNGgaULiGC315nuT/+iMrbn4ZUXJoS+tiztJJDStINAX7YX5iGG+8
+	pD5NQZp8cXGBf57yvnNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wby4W-000000063xJ-1ylm;
-	Tue, 23 Jun 2026 10:09:36 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1wbyBb-000000064nD-3DdR;
+	Tue, 23 Jun 2026 10:16:55 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wby4T-000000063wo-3OLs;
-	Tue, 23 Jun 2026 10:09:35 +0000
+	id 1wbyBZ-000000064mj-1w3Z;
+	Tue, 23 Jun 2026 10:16:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1782209374; x=1813745374;
+  t=1782209813; x=1813745813;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=xv4r6u0rAfI0XXJ7Y3S0NT2YfyY0CONMP/ImwPkH8bw=;
-  b=iXalQzkY0cXapvobAqgPXti24h3js13Q8qAjccWfZXJ+atDxfIl6uRr9
-   JUh6rlKF8Xs9reLfmpxb7HydGoygfBgFEiX/gLAF5N+4WlaCAd9LU3ciS
-   jPvbjUgMvNnEJTLVUfs0OWENKbkiz1OgPYVDEqQuoZC0v6SZVfjTFIoP8
-   /eIyQANaCzQkcpivpbOjzwDb2bOYN18e+iJYkq0Q67Qgf+wPL2+xU/1yG
-   JIT3DJg9QLRImQCfttockVmcotktlLMhqYkXhb7N82i+rvPz6ML5kSxOH
-   aKh2WxANOzAQlH888ET4kov0JstOu+GhxeFY3pWurNI5ES/y3x7itiOtn
-   A==;
-X-CSE-ConnectionGUID: 03vEpxKqTlCeFP7sTII19Q==
-X-CSE-MsgGUID: 4GKr2iCZTJujHsFdssLmXw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11825"; a="100376404"
+  bh=6bKxg3mN3i5Bark5W9/mVCmbmllTCHZ+dsMNiE6JZKI=;
+  b=gPCo8moZHSBJcdIlrltZYTDeRSMK5+9zyO1qY20AzF/bpUx/8AsBviX2
+   d+fZQVDMj3skmScHVEC1mDGEWSfcjTW+pW79Es4y83LYDON7rgusJ3r/g
+   F2v5fvPxdOroT/6BdxVA3tX3LBskIg66cDacoM4pnwZ4P4xiYMOyT7NWy
+   Qim8IWKw+SxH22Tr0tT0+xC82Vfof+FhNemg7w2sob2zQdP+1jJDCcPPc
+   v4Xm5kwBE10zCTYFBqOtC5Q6glmc4I7PvJ8c+U82L1heB0TYN2BvV4wlg
+   N+9tvMUEXsdtZyd2lVczWd79i9hKQP/u6RDzV57dTN5KjbwBOCy5Dq8ET
+   Q==;
+X-CSE-ConnectionGUID: 6aTv/e9pQPKLa4mXckHoow==
+X-CSE-MsgGUID: JtKS3VabR/qEGrY0vGyMow==
+X-IronPort-AV: E=McAfee;i="6800,10657,11825"; a="94064581"
 X-IronPort-AV: E=Sophos;i="6.24,220,1774335600"; 
-   d="scan'208";a="100376404"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2026 03:09:33 -0700
-X-CSE-ConnectionGUID: fO295pNvSEiHBZM9FO5beA==
-X-CSE-MsgGUID: +viiu0Y0Q+aDKjP2Rb+XuA==
+   d="scan'208";a="94064581"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2026 03:16:52 -0700
+X-CSE-ConnectionGUID: oBBWS6GuS0iUyF5cRmiQxg==
+X-CSE-MsgGUID: Ax1MZTXeQRWV89v3jlZ8VQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.24,220,1774335600"; 
-   d="scan'208";a="251411103"
+   d="scan'208";a="245121467"
 Received: from klitkey1-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.7])
-  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2026 03:09:26 -0700
-Date: Tue, 23 Jun 2026 13:09:24 +0300
+  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2026 03:16:47 -0700
+Date: Tue, 23 Jun 2026 13:16:45 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Frank.Li@oss.nxp.com
 Cc: Daniel Scally <djrscally@gmail.com>,
@@ -75,19 +75,19 @@ Cc: Daniel Scally <djrscally@gmail.com>,
 	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
 	imx@lists.linux.dev, Guoniu Zhou <guoniu.zhou@nxp.com>,
 	Frank Li <Frank.Li@nxp.com>
-Subject: Re: [PATCH 1/4] device property: Introduce
- fwnode_graph_for_each_endpoint_scoped()
-Message-ID: <ajpbVCGGKchNa2rd@ashevche-desk.local>
+Subject: Re: [PATCH 3/4] media: rkisp1: use
+ fwnode_graph_for_each_endpoint_scoped() to simplify code
+Message-ID: <ajpdDT1N5cjtmAly@ashevche-desk.local>
 References: <20260622-fw_scoped-v1-0-a37d0aac0a68@nxp.com>
- <20260622-fw_scoped-v1-1-a37d0aac0a68@nxp.com>
+ <20260622-fw_scoped-v1-3-a37d0aac0a68@nxp.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260622-fw_scoped-v1-1-a37d0aac0a68@nxp.com>
+In-Reply-To: <20260622-fw_scoped-v1-3-a37d0aac0a68@nxp.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_030933_887634_9FE97BCD 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20260623_031653_538828_8169C663 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,40 +104,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 22, 2026 at 10:30:11AM -0400, Frank.Li@oss.nxp.com wrote:
-> From: Frank Li <Frank.Li@nxp.com>
+On Mon, Jun 22, 2026 at 10:30:13AM -0400, Frank.Li@oss.nxp.com wrote:
+
+> Use fwnode_graph_for_each_endpoint_scoped() to simplify code.
 > 
-> Similar to recently propose for_each_child_of_node_scoped() this new
-> version of the loop macro instantiates a new local struct fwnode_handle *
-> that uses the __free(fwnode_handle) auto cleanup handling so that if a
-> reference to a node is held on early exit from the loop the reference will
-> be released. If the loop runs to completion, the child pointer will be NULL
-> and no action will be taken.
-> 
-> The reason this is useful is that it removes the need for
-> fwnode_handle_put() on early loop exits.  If there is a need to retain the
-
-Just be consistent with 1-space versus 2-spaces gaps in the same text.
-
-> reference, then return_ptr(child) or no_free_ptr(child) may be used to
-> safely disable the auto cleanup.
-
-No objections from me.
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-See one nit-pick below.
-
-But you will need driver core maintainers to Ack this.
+> No functional changes.
 
 ...
 
-> +#define fwnode_graph_for_each_endpoint_scoped(fwnode, child)			\
-> +	for (struct fwnode_handle *child __free(fwnode_handle) =		\
-> +			fwnode_graph_get_next_endpoint(fwnode, NULL);		\
+> -	fwnode_graph_for_each_endpoint(fwnode, ep) {
+> +	fwnode_graph_for_each_endpoint_scoped(fwnode, ep) {
+>  		struct fwnode_handle *port;
+>  		struct v4l2_fwnode_endpoint vep = { };
+>  		struct rkisp1_sensor_async *rk_asd;
+> @@ -286,7 +285,6 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+>  	}
+>  
+>  	if (ret) {
+> -		fwnode_handle_put(ep);
+>  		v4l2_async_nf_cleanup(ntf);
+>  		return ret;
+>  	}
 
-You should follow the existing style, the 'f' in fwnode should be under 'u' in
-struct.
+In this case you can go further and actually replace all the
 
-> +	     child; child = fwnode_graph_get_next_endpoint(fwnode, child))
+		ret = -Exxx;
+		break;
+
+with
+
+		v4l2_async_nf_cleanup(ntf);
+		return -Exx;
+
+in the above loop.
+
+but I assume the original is also fine as it's a common denominator for all of
+them (and only one case has something in addition to that).
 
 -- 
 With Best Regards,
