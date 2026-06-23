@@ -4,144 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0031CDB466
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 00:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 540E1CDB466
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 02:34:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3EdASp+buSBW3A5HhUjC89Pbk7sX+moiIJul9EjG/mc=; b=ZltronW0EgBzYf
-	iZaHNyovZLTx1NgS2PLqPaUPZedYcfK3CSkxV2ol9oIwC4zvBX9zw0OfmCdq+gWXNlDAc8nHSGL8j
-	2sLDMkOu9AmeHSH+ZbxxuHwmtZevSKejDlB2xdrFNAxtK6bxkZgB21zaH/JHRio0CossMkrKpI/Oh
-	rdVPYJJGl7oZC8x3KuWqncwYXLi0COmPu25Fv47JdTaNOkwkVQutWEK34GxpbvhpKZ/tA/S81VKM2
-	HSBTt7m8g4a8P0RgfHNxxLAhHaUWFm3NbNcDJ6DQ5/ilNulwePKgfdo0/20gfuJm4GoBPY1/xHg1g
-	mzPCRikHSWaSeAOe+V0w==;
+	List-Owner; bh=LPVdTdhvMawMYz7X9TjoOu/95pK5jlN00qF9GrH1Uro=; b=f6zz4VAkLyx94t
+	HgOZXEe2zOycLYO2VlxwhUQvvyJG1Yld16g12Djqh+mej9LrJlEoFaJXNwnR/oPqWMKubAN/acaHr
+	+l1eie1Lqwau2ioSlwn+0YrYhuOFRXoqohe7DbdmMK+YfpLpuiDfmvkhMArRjpbjJD6BwwSDFtNJz
+	k4yf6i/8DTPptUizoqzt0ReozIB2T78TDJDmA6LuapE8bX5DxZn9uWv+FGkoiqGGSglIyRcnQn+tv
+	Z/hjmKE2VvTjJeO+zdI32ofoCwpR6olFsWBhHMRO349FIRel0/DWxzrGSr8Z3pFs0RVZkgVB9nNh5
+	b1OIolGWT2BQ3lEB/2WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wbof3-00000005UIh-2pJV;
-	Tue, 23 Jun 2026 00:06:41 +0000
-Received: from mail-northcentralusazolkn190130003.outbound.protection.outlook.com ([2a01:111:f403:d111::3] helo=CH4PR04CU002.outbound.protection.outlook.com)
+	id 1wbqxm-00000005b5t-1mmd;
+	Tue, 23 Jun 2026 02:34:10 +0000
+Received: from mail-eastusazolkn190120001.outbound.protection.outlook.com ([2a01:111:f403:d100::1] helo=BL0PR03CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wboew-00000005UIG-1ita
+	id 1wbqxj-00000005b5V-1lgd
 	for linux-rockchip@lists.infradead.org;
-	Tue, 23 Jun 2026 00:06:39 +0000
+	Tue, 23 Jun 2026 02:34:09 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=lUZ9FueFbRJ7gfdd4WBmbgWngTP/lPhVlOrprR1JOWGkShcOz7vOPHV3VuLEqCbffBWMZMrnt27fkF3A4ZT3B6xCt4IvJSNe9+7kY1uqvxpCaKwIJthNereINWTrEKi/sf8ZF+DKMOvgkc1TYyw8N6MnSJNJiR1SEqEyldmNDT1JoyGYMkBnnjvU9BaS5k54felAhZn4692ruIEpzLxR2/W35wMR/fOQqTMdE8nhzXQ6jG1rztSi88uQv3kRWUFcHK6hkNFKNUfTrKOjGIzCh8udzsO6EacOpslrSjkvoKEGuPSNiED1s+6YGKPT6RK94Y3CFXI29EFOrGX3O17VXg==
+ b=HmEyQ0Y0HEPJvT1roKOBEUL0ymlxL7VvZOzFgyqGcfAz/RxJd6F8TorEpBbHdWfEyjX3oEREO2AwVgLtXC9SOaIDPd+BDYPNJ2vVFQlJyiChs4apr4Pycs/BXJftENxsZQ5vKG61uPUqrj5KaN3fhrJm4xALQUojJ1xA4eeqwmjPPOhiMudjgVU32F1q1MgDsinf2DO9MH2ijRB7Q/lRXL6NojDgbBTOIiEXjZCgxWW29uCrAbAvvRkakXw1zyKchCydQgkWq0fboqC6x4gUeUcF5cWvRQWGiV2GFi/iki9uiC67mdCMAGmTOnfE/4hgfqUAmpNODGmIBQxuLsAIaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rCEBVp/XanFgUUvJQFDB/q2i8WlQf0QIV0ZbT9CAfY8=;
- b=PgBagARKKzT/bfxzVV1SPkAXBYqR3Gj4coppkMFLKDGz+MexkQ0enBj7ssVwbC6wwuEKApErfUV8lRh+TAGrrbFkluXe+hoKgVjfBHvTe8Rq81ocXPNjNcPZwhX0JhU4s0w4DHtAmVJ9hNZGelBMGE56Cjk2ySqz2zfHEhi2Z+zFsQB2oIysfuaEGxVrL3dPCGjg6HtDwC8HQuW6rPByzD+4s+ve8zuzcw5CkX7k8WvzXwH+5QO4WF1EBmaAvkLcypEvGA9N/5QAoa6lx7OvC1R6C/B/VVBYszcyJEgZ18OQtiLKd2Jzzg3Rd9Wyud3Pm2XEYQxdHBHHrRspA6yBNA==
+ bh=nFo9y5cjLf6D84eBEEv1Zj9GvDocFY7QEpTYdFY4Pw4=;
+ b=p7d1/Ea4HAq4CMpy/Y/vsMk6ZeKJczkxmTGFl44Op1/wL2Rklr3y4BLKDtk1q7AcphEyGLOrLwUtKUZUbEzM8k5MlE0jepzZhfHsZel26Bt7ruVDTqnROE8Nf6XNnu/WvyF/7IhZboRzJq7+vxzscL0adDEbPWCRiJNtW2QXPekH8ZMDG7BL4bW/kHPWvx0PjWFSB+FWtnSjzeajG0V4LPxqJLIgi0mfmraScBBeR79Y8R9k4gNxTAsD6HfG7VwKnDSAiHQHVdod3H29mOFFQerrXtYqlM7FyDqs0De7iqvI5PPCrhdfpO5y0yGcj8xVcmuwmA5LuHXADYWYQx/ksw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rCEBVp/XanFgUUvJQFDB/q2i8WlQf0QIV0ZbT9CAfY8=;
- b=skpDo/BkWpOl3hXxVK25Ue2t34NNqC0bYlpZNDXzd6dGuaTXKGn5ta7O3djWS0GxHyW0aHbtQtwQbuDt4w6b4H6U7MgC3rR+0h1RoHj52+GOAky02V7zQo7euBr8Aq8vPkm1lOacz9vj9kfxRRDRZMig/UAL3HYZsro6sBA2KZwtAX172A+sS78qcvOEpD0ytOJT+hcr1NtiYErTi9aTC/dXgGWRLbwzgRUoeNM8h3qUpMzrnOr0LaV2efKQtKro2dw65W+4IfnEMbdYL99ERnsIou5ohb56Qu8Ww86w6+VbLghs62i8ta5klaInd/iy1ew8j4AWKHmhBITAZPsaLw==
+ bh=nFo9y5cjLf6D84eBEEv1Zj9GvDocFY7QEpTYdFY4Pw4=;
+ b=Xro3WiB4PONyke+YY+9UDbOSG7L0dA5m1ozVSrWv+nZRyd5aLhdGdJOSVNvb/djZcOV0B+x7sFwD3ecqWI8nnDMrDRi4faLvtMoryZdAjmvfbMI0CliWCiuW+lERDxRpdEbvzuvz6E4XHRaxUrpksS6hAbln6wIf+MxeaTImtTkkSBWflPqCRID3shZyF97XQJBPx/KeZFGyj7ox0f9wYXQ1xGKoC0bU0CG/zgyXNr1QOV6Jpj7fkg5aiK180qGUB6SqWVWSE2EetPegnjlORnvD1GmTZM+kgDplVxrA7r78CjHPWxTJOukgxxh9qDUVje+JzD5nffK+Fd+n43nZWA==
 Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18) by PH8PR19MB7143.namprd19.prod.outlook.com
- (2603:10b6:510:215::11) with Microsoft SMTP Server (version=TLS1_2,
+ (2603:10b6:510:3b1::18) by DM3PR19MB8305.namprd19.prod.outlook.com
+ (2603:10b6:0:49::10) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.139.20; Tue, 23 Jun
- 2026 00:06:26 +0000
+ 2026 02:34:02 +0000
 Received: from PH0PR19MB997338.namprd19.prod.outlook.com
  ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
  ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.21.0139.018; Tue, 23 Jun 2026
- 00:06:26 +0000
-Date: Mon, 22 Jun 2026 19:06:23 -0500
+ 02:34:02 +0000
+Date: Mon, 22 Jun 2026 21:33:55 -0500
 From: Chris Morgan <macromorgan@hotmail.com>
-To: Jean-Baptiste Maneyrol <Jean-Baptiste.Maneyrol@tdk.com>
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	Chris Morgan <macroalpha82@gmail.com>,
-	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
-	"andy@kernel.org" <andy@kernel.org>,
-	"nuno.sa@analog.com" <nuno.sa@analog.com>,
-	"dlechner@baylibre.com" <dlechner@baylibre.com>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"heiko@sntech.de" <heiko@sntech.de>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>,
-	"andriy.shevchenko@intel.com" <andriy.shevchenko@intel.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: Re: [PATCH V13 2/9] dt-bindings: iio: imu: icm42600: Add icm42607
-Message-ID: <PH0PR19MB997338ED05370F27B730FEE60CA5EE2@PH0PR19MB997338.namprd19.prod.outlook.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
+Subject: Re: [PATCH V13 5/9] iio: imu: inv_icm42607: Add PM support for
+ icm42607
+Message-ID: <PH0PR19MB997338E32ADB15237F62804862A5EE2@PH0PR19MB997338.namprd19.prod.outlook.com>
 References: <20260615172554.160910-1-macroalpha82@gmail.com>
- <20260615172554.160910-3-macroalpha82@gmail.com>
- <20260621181804.27b44942@jic23-huawei>
- <BE1P281MB1426C557A66945951D382EDDCEEF2@BE1P281MB1426.DEUP281.PROD.OUTLOOK.COM>
+ <20260615172554.160910-6-macroalpha82@gmail.com>
+ <20260621181948.21d40a09@jic23-huawei>
 Content-Disposition: inline
-In-Reply-To: <BE1P281MB1426C557A66945951D382EDDCEEF2@BE1P281MB1426.DEUP281.PROD.OUTLOOK.COM>
-X-ClientProxiedBy: SN7PR04CA0031.namprd04.prod.outlook.com
- (2603:10b6:806:120::6) To PH0PR19MB997338.namprd19.prod.outlook.com
+In-Reply-To: <20260621181948.21d40a09@jic23-huawei>
+X-ClientProxiedBy: BN9PR03CA0385.namprd03.prod.outlook.com
+ (2603:10b6:408:f7::30) To PH0PR19MB997338.namprd19.prod.outlook.com
  (2603:10b6:510:3b1::18)
-X-Microsoft-Original-Message-ID: <ajnN_7hWCUVrDadO@wintermute.localhost.fail>
+X-Microsoft-Original-Message-ID: <ajnwk_zWevY14mEO@wintermute.localhost.fail>
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|PH8PR19MB7143:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0935a4fc-c3ad-4414-4aef-08ded0bb448d
-X-Microsoft-Antispam: BCL:0;ARA:14566002|19110799012|8060799015|4140399003|5072599009|25010399006|15080799012|37011999003|25031999004|23021999003|51005399006|6090799003|24021099003|40105399003|3412199025|440099028;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Io5jER4JHgC76cn3dmhPpa49VLk6kzRXfQTUNW6Uql3ZC6M2eQH5+MmywQmD?=
- =?us-ascii?Q?wrrnOFlIpG6bYH02g1XwZrJ5NKPGmSg04tYkKhDWwCRJEwuDc/SOZamaIrDh?=
- =?us-ascii?Q?9LX967rlDy7UaXzEOUr3hoVioK7f8LJSvIbxftTuZZmzPunZ6o6qfumR2sMG?=
- =?us-ascii?Q?N6y9wpuDGIQZqkGs6cEtYFEtWu2HHsDBR5yod37P7Ej4kBV/nATs8j6w3zWD?=
- =?us-ascii?Q?Hp2QE4o76N+BezQSqvfIptynrxjaDcMFdVwj4hJ+5k2ADy8tIL/PdKuHbSC9?=
- =?us-ascii?Q?DaEuLym4tZDAb3sjy2Gw1mm21xW2NamqNqq4WuIDeJP1HDsP/FTxk4t+6NN1?=
- =?us-ascii?Q?KTS9PdojwbhlVDD9KKQEd0vK0WA0j3nCknBbEiLezyusVfkrtw3ut9q8SyJE?=
- =?us-ascii?Q?4aAWi7ZQzblMEq5+wLfcGcvZIsOxmbunfdW0YhTpLXPxEE28E3mtfyUDOMAk?=
- =?us-ascii?Q?QqHFzeRz7cparwvfjUPSLbVJjVJup7GjENaD1chZXCkp9ejQ112qoj0UOJvW?=
- =?us-ascii?Q?VUVIQMa8eODnN3DPzcPiajcRkYADhTcXwBMTvEiMnATFkI6sJYZ9WGUHJ6Jp?=
- =?us-ascii?Q?x6qkYYdUJAEDZjR0LzYw9FxDXSsL4LIhd5yuG90qu3ILTr2fUqpHy8v7WLpb?=
- =?us-ascii?Q?CVSJIdVpXgJEg0yixKuONKgoS9gXG+4ChlyXxBxueTZAG2r2gB4vKXrYYV1D?=
- =?us-ascii?Q?J7/UUfQ/EGeyR1bVRcC+zMjaJMBnxXVzpQ1Arz5eMCZosuiSCCADLVrH6db1?=
- =?us-ascii?Q?e3tSmQDPdsv5VXX3QqTWKY6k6k9c8gmfelN2RRsxJhtdv02p9lsfWbWbNMat?=
- =?us-ascii?Q?5MboCKEyE482MSu2IDsN+H8cIFO9LqyAN5exnzcNyGkJuLsU2MrzhmUpGc50?=
- =?us-ascii?Q?uUrUhqUEBmfXJPDWkLbSzUzhbJapXItlzx4AJNYntfpmgPJbs9JOcTmQQ7GZ?=
- =?us-ascii?Q?n00W9vccAE92jFhsysb4if7BgomwcoBl/KtSi1SQMp3ujveCQrLYvkL7Y3AW?=
- =?us-ascii?Q?wU1AjyxH9QWk+PhOd2IvxOlfZQ=3D=3D?=
+X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|DM3PR19MB8305:EE_
+X-MS-Office365-Filtering-Correlation-Id: 84e51ac1-de16-4b68-3080-08ded0cfe36c
+X-Microsoft-Antispam: BCL:0;ARA:14566002|6090799003|23021999003|51005399006|15080799012|24021099003|19110799012|37011999003|8060799015|12121999013|4140399003|5072599009|25010399006|25031999004|41001999006|10035399007|1141799003|1602099012|440099028|4302099013|3412199025|40105399003;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?L7DqiSXkRCWPkw1vA8DJRvjQGXAcyM5STOXQyjYqOfov5o6StHgK6wqXIhJx?=
+ =?us-ascii?Q?nkdrc6O63dkXNTgBgWN9G7AYS+P1nunLh5qgItfVFtzZOypTXKfg8usit+Dt?=
+ =?us-ascii?Q?gL6OfoMw9eiJVhIC+3ptU3zvOHcBgHHLWwVB6qkDnajStA7T+wo0wsAoZ2Tx?=
+ =?us-ascii?Q?CtqWOxnbm89XAXuYHywSKO/GC+U9MpP5ZvHVbaRQrTQT/y+CpilEv8C2u6pY?=
+ =?us-ascii?Q?P9xAbpnlOjBoEa2kCJp1CECYlAD9X6AcAaQZXTdIIbtzmocZREPvGUEiHbAu?=
+ =?us-ascii?Q?zUWKPkvdZrMfw1AutpaqhH3jIHXyQqOgIJC+D9BjLNaMCokaytVawavn9q4J?=
+ =?us-ascii?Q?IgKUY2bjNY9vJ+7oSYSdv+YtlooUfiLNwuAVcgmErLkOX/6ycim126Vke4Bj?=
+ =?us-ascii?Q?RF86A9en8WrAjT0hOHmiyEHz0Z695zcwfajJgnhNNFToJ060DOVdnBQOLhbt?=
+ =?us-ascii?Q?UHghqEsJS2sy6487IWhIltIVFk2GMR66p3ty1hagDNLWjCwmM79wE9iU7Aax?=
+ =?us-ascii?Q?7LVfgAT1qlH0Hx2LJbrjowntrz+6E1BqvrqUq4HOmppVTZZZaUDKBRO7T6w1?=
+ =?us-ascii?Q?kbNNQbvGnlBgz0t3FvU74fXCGgr0h4oo9qwB0xq/y43NiB2GxM0NUh2kIzqt?=
+ =?us-ascii?Q?kDE2p881++hNyN68hm/v3yQ9tY0ZwMQCGKoyyBWyraMZfOVNwY6hMMG9tKSw?=
+ =?us-ascii?Q?FTM1GXLAHWw9OCQvIDgRFfURf9Ihq9qUeW9+hiq6HZ2gZaAKpmi/MFZdJTGy?=
+ =?us-ascii?Q?l+Rp00BTM5v9kHvfTO/306RLA7STpxD3XSJ+FZ3Rm7TpNXVXN5BRMttLDIrZ?=
+ =?us-ascii?Q?nScLT82w28PEGrwjlVUprbJHz2eHvUawMpqHRXSWU99TlyGhhO/Ev94c4elV?=
+ =?us-ascii?Q?ZkIJLVy7xD0n8H+kJHV3n3sXuhSaBHOzbzh4sxPFskVfeBMyJTO6ZStDy9F8?=
+ =?us-ascii?Q?e5uEn9zXNgl9Awk0WWkCeEwltxm2XCk2rRXj8GG/J4+pjp7V0otx8x44Jeje?=
+ =?us-ascii?Q?YmR5nSx0mg+TdHjF3ZQ6Znwa5rJ/oakixRSSS8ltB33D5qwr4a13nn0HyYui?=
+ =?us-ascii?Q?2fnw5NYJ4J35ZYybc0SGUyQxgTlG7bS0A0CmCa/o+Oqd9kpsx2JR1T1QRI/q?=
+ =?us-ascii?Q?dhPnwqstgrqiI8dO0KyipKmU1KOUcoItZg=3D=3D?=
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?c1W4+7Yo/NzZ8ihGAoFNWDDKGryBzEyAfbbQLEGIwBHtFaRWpgO14vO0gH0J?=
- =?us-ascii?Q?KexETSocZOOXEOGb88dXT5uOQ52kp0trG/hWjn4cP2oZMBBL43XIxhX7yS4x?=
- =?us-ascii?Q?6OF63MJZW1T9b1YJdUMhnTlegpFm9/6G6gqEJmya0ZxU0+20ohAAxWjT5UNd?=
- =?us-ascii?Q?wRxhAgubNy/ZHZehUbDpf1j2RRBBwtvAXzvKeMZtBqKxwb7UN8oC+Nj2XCHU?=
- =?us-ascii?Q?oYRznKmmdbc41mbiEQixqjWFP4tQ5J6XCb0d3Yd2+uMyyKWzNa7WeHWqtjnr?=
- =?us-ascii?Q?eYnvGLO8n60D5hXv2jQvFmhk+coJMOHlmaupJ6NUxQMhVy90GuFhAZZuR7Gx?=
- =?us-ascii?Q?8p5xJAERKrCrLUs4hWuiBcpcFISplmbDHDbUiFu/kDQXblFqd0xUIwr4w6aR?=
- =?us-ascii?Q?2cbtM3rbjoTb6UZ7MLKQnQWLNQVZvycCTqoIJElYKxOKgZrJA9m32T2wTQeX?=
- =?us-ascii?Q?FDs9ltevL2yHC1ZNaqdGPLKuiXmab0W0UJBPwLol1D8pOgSuptKKZTMHPfn9?=
- =?us-ascii?Q?waEfGgUhQsbaNoCYiqWvrkxrpeRUBhS33D9Z5j50E3x14H07ZVp4scTR5l5U?=
- =?us-ascii?Q?lP5nX2eATUE4x947qUnDuUFEkT6yDXYL/R8y6ooorlcS28Moa/u71gBcQGbD?=
- =?us-ascii?Q?NbBO9uvgJ/ge4ddGes7VF3I9C8Jn6c1w2WnwT6dW0wuBieuKaZ8RuhvDwgjf?=
- =?us-ascii?Q?RQvy+K7deSc7hg8xwAVP3qcOuHDD8eMniqcmE8sbq2sW9eOiXHRDQtlZXb4N?=
- =?us-ascii?Q?I5kR1SmVNKCJC4k/FTUkUcBqG0rXArYZJKHqUk1wiTR1dj0dNy6b02u9NkF6?=
- =?us-ascii?Q?jQuW60Q+1L1mH2GlUVuEwIMPFoS415ysqnazLjpIQx5zgJYGJXxmCxClxOC5?=
- =?us-ascii?Q?k5KdkksUfXvx9kU1ZZTyW7JXOQ34dS3/kpM7T7ajgjjH+qo12zYLzSolzROs?=
- =?us-ascii?Q?elpX/1RQTG+2G4DGbaBt2MD5jrnj1ekSvx1W4+odZb5/OhehXf9g/71B5cvT?=
- =?us-ascii?Q?lykb9D1lX2LAf1X0MtI8Z4zGHnoyA9+NxjqZAhXNjGYxegtDMEQq9lKuyk2R?=
- =?us-ascii?Q?p7ZllFAuAgcpdrQfCp/bqb5LpzXw3E72DVTRcJpzxLsSqGD5gWWGoJBjVkvf?=
- =?us-ascii?Q?m47fY8wrtc16xGwLwkVwQ7Eiou6nAhg+lM5pz8w2699ZENDNRrZy4L2joHq1?=
- =?us-ascii?Q?c56RUkto1PLiFDmfu9RrDKYtRRBkBof9nSDn3GC3M9WqkzgCmR9nXRMBmVOZ?=
- =?us-ascii?Q?ZFthv7YmQ1GIhCcZTIRns8uflvyFnD5nXfey2JDDuUH9UKAR8EsOXmxeVUgO?=
- =?us-ascii?Q?67sTRqPwZbl8PvnEBVXWWUFXGeqmB0Yh+VjXbXS/VDToapVHlY/ydA7GWuXn?=
- =?us-ascii?Q?HzsoP805VoI2xJh2A9gVSWFTZ4WzAwJthMBYoQ5AaBVAEhxqgiPh6MPXQLp4?=
- =?us-ascii?Q?Zcnui7nhSFO1po6086c2GhWBmY3psQjm?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?x0Gjp4d7N7Fter5iRDWG2agPtfhgL5Sqhos21KxdqZe7FxwzfXzKmwKVc9KT?=
+ =?us-ascii?Q?NeTf/HcMPVcPbgryiVzsECLxXze3HNUP/dog2HMh1TKZpaD9At7LQryEXqwn?=
+ =?us-ascii?Q?n1NwsJU/X/bym44tzl0PSrROagnpI/alLrEMr5vwIGUk/GbuTI6/t301ZYdA?=
+ =?us-ascii?Q?9if1dj8GdKw8FL+6imWhvs6z2sgr454SP6kQC+zK67+wB5h/Tz0JR/CZIUPm?=
+ =?us-ascii?Q?/X3d0bRON/wz2JJ2qCGNk+N2rUI43W7BEoNoPGgPDJ24XMvo1EDchlOAYRvN?=
+ =?us-ascii?Q?F1rhQsssOhAe5ivSojFKN08mePfC23k9+UL9JMukQ0VN7YxG/h2R2ejYQgBo?=
+ =?us-ascii?Q?a34GcMq0keE6RUnqXPKc9TDSL6FIjChU8gk1PoTOUD0joI/at2uBldr9pUXA?=
+ =?us-ascii?Q?QsXcl7+dUb1gZUfaeuwA3J46Y+YrOi8n5ITRqza6jKcXNIGCrNSpetbr/Aom?=
+ =?us-ascii?Q?T3dbFGI1f7Oo5bYe5NoZaPAH4Kp+CoIE0JUl0KqiX8/r2SJ7LfyCKY3+CSMG?=
+ =?us-ascii?Q?m3hxt44EQrx0599784RhvQnV1HJ/WDmqtQ/n9JUzqNFYzKN0nWIHtN4Hy/+N?=
+ =?us-ascii?Q?1VVn0UlmjS2rjZXdD/CJsBVg06z9poOUz+WroT9ZQEgbmS4CKlP6VO61/u3i?=
+ =?us-ascii?Q?5NQpceowepfXSrIjUELa7cRWg3kVRwydB7XhDDky8mmeWfOAgTBpb7+5wMqZ?=
+ =?us-ascii?Q?6FkoJEM0w1yac872O7urj9FtOytsL1hetCyASwMKT0yhmZyqsmgEzQNIQGtK?=
+ =?us-ascii?Q?M1ugfoFsCBWN7d5kw6d6PaeHbCB2EaPuE/i4OV/T88icyiU45gmxVtY/XCoK?=
+ =?us-ascii?Q?sFy6JumPvTxMqcPYkx+rNnxpLWdD6BrwhZW29wjo38+Ox1mKQeUWMiip0lLI?=
+ =?us-ascii?Q?jKoFa1MLO0vIxAZa7Oo6E7he62T7aQefi8CXREyg725tGqszHpfd1YL9+igw?=
+ =?us-ascii?Q?1C6NK78kZ/oaAn8ZjBKkHBBGHX5B6HJgwoAq+362Ly8Dq46jJjqelv3gSgs+?=
+ =?us-ascii?Q?ehUIb0Xgr+kKDI6d8r5KK1T11+YBkmerVEu7qW03QwArxu0L4Uh5HeioldYa?=
+ =?us-ascii?Q?ShCuJ83ZXqUFY/G1e5zzG2UIXie//6ZVDqH1sNqJiQsXP6hqPVpIQ2VCCbtS?=
+ =?us-ascii?Q?CYPXhFJ8uovLcdWK44jno9HmYmm+IYt9P4lR6BPKMMhvLrqb8+swZV9E3+0A?=
+ =?us-ascii?Q?6WPk3VvxGLdO6Rm+PGYUOuOHmqw1Ojb6dhvHfCFSRPyupGz7ZFPhOYc6DtmO?=
+ =?us-ascii?Q?EWSeHYy6BzyN0yzlTq1ZFWO02kqYNyhpzlMthxmvtz1Ov+wLlm0+M1Mu2KVi?=
+ =?us-ascii?Q?3TTJvdDkNPsEjUPCt7la25aQhaVFkYnw8ZtY2mr23JJle164txdPGQR5V8Vg?=
+ =?us-ascii?Q?Uhfbu84xSuJHhdOcidCtpKzZUUJJuos0V36urAqrdkGa+ruAr47NEbNAr+13?=
+ =?us-ascii?Q?8uh/QG9WvaAKwp3Hp8hfsF+BZR9JHPHd?=
 X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0935a4fc-c3ad-4414-4aef-08ded0bb448d
+X-MS-Exchange-CrossTenant-Network-Message-Id: 84e51ac1-de16-4b68-3080-08ded0cfe36c
 X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jun 2026 00:06:26.3666
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jun 2026 02:34:02.8224
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
 X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR19MB7143
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM3PR19MB8305
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260622_170634_462773_58AB125C 
-X-CRM114-Status: GOOD (  20.20  )
+X-CRM114-CacheID: sfid-20260622_193407_552233_84BB6685 
+X-CRM114-Status: GOOD (  39.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,90 +151,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 22, 2026 at 09:23:28AM +0000, Jean-Baptiste Maneyrol wrote:
-> Hello Chris and Jonathan,
+On Sun, Jun 21, 2026 at 06:19:48PM +0100, Jonathan Cameron wrote:
+> On Mon, 15 Jun 2026 12:25:48 -0500
+> Chris Morgan <macroalpha82@gmail.com> wrote:
 > 
-> concerning dt bindings, my initial understanding was that we had a file per
-> driver. But here, Chris is doing a new driver for icm42607 while adding new
-> bindings here.
+> > From: Chris Morgan <macromorgan@hotmail.com>
+> > 
+> > Add power management support for the ICM42607 device driver.
+> > 
+> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> A few things from taking a look at the sashiko report:
+> https://sashiko.dev/#/patchset/20260615172554.160910-1-macroalpha82%40gmail.com
 > 
-> Does it means we don't have 1 binding file per driver, and there is no need
-> to create a new binding file for inv_icm42607 driver?
+> > ---
+> >  drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  18 +++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 139 ++++++++++++++++++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |   1 +
+> >  .../iio/imu/inv_icm42607/inv_icm42607_spi.c   |   1 +
+> >  4 files changed, 159 insertions(+)
+> > 
+> > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> > index a6a58571935f..4f4f541027dc 100644
+> > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
 > 
-> Despite the naming, icm42607 chips are a complete new design very different
-> than all other icm42600 chips. It using similar IPs for things like the FIFO,
-> but all other parts are different. Especially, it doesn't use banks for
-> registers access but indirect access delegated to the chip internals for
-> accessing certain registers.
+> > @@ -334,11 +345,18 @@ struct inv_icm42607_state {
+> >  #define INV_ICM42607_GYRO_STOP_TIME_MS			45
+> >  #define INV_ICM42607_TEMP_STARTUP_TIME_MS		77
+> >  
+> > +/*
+> > + * Suspend delay assumed from other icm42600 series device, not
+> > + * documented in datasheet.
+> > + */
+> > +#define INV_ICM42607_SUSPEND_DELAY_MS			(2 * USEC_PER_MSEC)
+> 
+> Sashiko had a valid comment on this.  MSEC_PER_SEC seems more
+> appropriate given this is 2 seconds in milli seconds.
+> 
+> > +
+> >  typedef int (*inv_icm42607_bus_setup)(struct inv_icm42607_state *);
+> >  
+> >  extern const struct regmap_config inv_icm42607_regmap_config;
+> >  extern const struct inv_icm42607_hw inv_icm42607_hw_data;
+> >  extern const struct inv_icm42607_hw inv_icm42607p_hw_data;
+> > +extern const struct dev_pm_ops inv_icm42607_pm_ops;
+> >  
+> >  int inv_icm42607_core_probe(struct regmap *regmap,
+> >  			    const struct inv_icm42607_hw *hw,
+> > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > index 4b8e19091786..64f5d263de4f 100644
+> > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > @@ -4,6 +4,7 @@
+> >   */
+> >  
+> >  #include <linux/bitfield.h>
+> > +#include <linux/cleanup.h>
+> >  #include <linux/delay.h>
+> >  #include <linux/dev_printk.h>
+> >  #include <linux/device/devres.h>
+> > @@ -11,6 +12,7 @@
+> >  #include <linux/iio/iio.h>
+> >  #include <linux/module.h>
+> >  #include <linux/mutex.h>
+> > +#include <linux/pm_runtime.h>
+> >  #include <linux/regmap.h>
+> >  #include <linux/regulator/consumer.h>
+> >  #include <linux/time.h>
+> > @@ -103,6 +105,63 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+> >  };
+> >  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+> >  
+> > +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
+> > +				      enum inv_icm42607_sensor_mode gyro,
+> > +				      enum inv_icm42607_sensor_mode accel,
+> > +				      bool temp, unsigned int *sleep_ms)
+> > +{
+> > +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
+> > +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
+> > +	bool oldtemp = st->conf.temp_en;
+> > +	unsigned int sleepval_ms;
+> > +	unsigned int val;
+> > +	int ret;
+> > +
+> > +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
+> > +		return 0;
+> > +
+> > +	/*
+> > +	 * Datasheet on page 14.26 says we need to ensure the gyro sensor is on
+> > +	 * for a minimum of 45ms. So if we transition from an on state to an
+> > +	 * off state wait 45ms to ensure a sufficient pause before power off.
+> 
+> Sashiko commented on this..  I think what we could do with adding to the
+> comment is what the path is that didn't pass through this function which would
+> ensure we have been on for 30 of this msecs already.
 
-For what it's worth I'm not using any of those registers in the driver
-currently; from what I see in the datasheets I was able to find on the
-web the 42607p doesn't do the indirect register access (again unless
-I'm misreading). To be fair I don't have any other icm42607 chips to
-test against. The 42607c does appear to do such register access.
+I'm going to track whatever time the gyro started, and then if less
+than 45ms has elapsed just pause the remaining amount of time.
+
+> 
+> > +	 */
+> > +	if (!gyro && oldgyro)
+> > +		fsleep(INV_ICM42607_GYRO_STOP_TIME_MS * USEC_PER_MSEC);
+> > +
+> > +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
+> > +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
+> > +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	st->conf.gyro.mode = gyro;
+> > +	st->conf.accel.mode = accel;
+> > +	st->conf.temp_en = temp;
+> > +
+> > +	/*
+> > +	 * If a state change occurs from off to on, sleep for the startup
+> > +	 * time of the sensor, unless a sleep_ms is specified. Since more
+> > +	 * than one sensor can be transitioned from off to on, select the
+> > +	 * maximum time from each of the sensors changing from off to on.
+> > +	 */
+> > +	sleepval_ms = 0;
+> > +	if (temp && !oldtemp)
+> > +		sleepval_ms = max(sleepval_ms, INV_ICM42607_TEMP_STARTUP_TIME_MS);
+> > +
+> > +	if (accel && !oldaccel)
+> > +		sleepval_ms = max(sleepval_ms, INV_ICM42607_ACCEL_STARTUP_TIME_MS);
+> > +
+> > +	if (gyro && !oldgyro)
+> > +		sleepval_ms = max(sleepval_ms, INV_ICM42607_GYRO_STARTUP_TIME_MS);
+> > +
+> > +	if (sleep_ms)
+> > +		*sleep_ms = sleepval_ms;
+> > +	else if (sleepval_ms)
+> > +		fsleep(sleepval_ms * USEC_PER_MSEC);
+> > +
+> > +	return 0;
+> > +}
+> 
+> >  
+> >  int inv_icm42607_core_probe(struct regmap *regmap,
+> > @@ -236,6 +305,8 @@ int inv_icm42607_core_probe(struct regmap *regmap,
+> >  	if (!st)
+> >  		return -ENOMEM;
+> >  
+> > +	dev_set_drvdata(dev, st);
+> > +
+> >  	ret = devm_mutex_init(dev, &st->lock);
+> >  	if (ret)
+> >  		return ret;
+> > @@ -271,10 +342,78 @@ int inv_icm42607_core_probe(struct regmap *regmap,
+> >  	if (ret)
+> >  		return ret;
+> >  
+> > +	ret = devm_pm_runtime_set_active_enabled(dev);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	pm_runtime_set_autosuspend_delay(dev, INV_ICM42607_SUSPEND_DELAY_MS);
+> > +	pm_runtime_use_autosuspend(dev);
+> Sashiko does put out some stuff here.  Please take a look and work out or
+> test if it is right (I think not but haven't checked that carefully!)
+> From a quick look I think that the auto disabling of autosuspend does a
+> rpm_idle() that should result in it suspending...
+> 
+
+I see a few other drivers adding one more call to
+devm_pm_runtime_enable() so I'm going to see how that works out.
+
+> 
+> > +
+> >  	return 0;
+> >  }
+> >  EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
 
 Thank you,
 Chris
-
-> 
-> Thanks,
-> JB
-> 
-> >From: Chris Morgan <macromorgan@hotmail.com>
-> >
-> >Add the ICM42607 and ICM42607P inertial measurement unit.
-> >
-> >This device is functionally very similar to the icm42600 series with a
-> >very different register layout. The driver does not require an
-> >interrupt for these specific chip revisions.
-> >
-> >Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> >Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> >---
-> > .../bindings/iio/imu/invensense,icm42600.yaml  | 18 +++++++++++++++++-
-> > 1 file changed, 17 insertions(+), 1 deletion(-)
-> >
-> >diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
-> >index 9b2af104f186..81b6e85decd5 100644
-> >--- a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
-> >+++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
-> >@@ -30,6 +30,8 @@ properties:
-> >       - invensense,icm42600
-> >       - invensense,icm42602
-> >       - invensense,icm42605
-> >+      - invensense,icm42607
-> >+      - invensense,icm42607p
-> >       - invensense,icm42622
-> >       - invensense,icm42631
-> >       - invensense,icm42686
-> >@@ -67,10 +69,24 @@ properties:
-> > required:
-> >   - compatible
-> >   - reg
-> >-  - interrupts
-> > 
-> > allOf:
-> >   - $ref: /schemas/spi/spi-peripheral-props.yaml#
-> >+  - if:
-> >+      properties:
-> >+        compatible:
-> >+          contains:
-> >+            enum:
-> >+              - invensense,icm42600
-> >+              - invensense,icm42602
-> >+              - invensense,icm42605
-> >+              - invensense,icm42622
-> >+              - invensense,icm42631
-> >+              - invensense,icm42686
-> >+              - invensense,icm42688
-> >+    then:
-> >+      required:
-> >+        - interrupts
-> > 
-> > unevaluatedProperties: false
-> > 
-> >-- 
-> >2.43.0
 
 _______________________________________________
 Linux-rockchip mailing list
