@@ -4,82 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CC6CDB46F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 14:10:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AFB5CDB46F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Jun 2026 15:15:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JKvzKVqlkMkwXOVFs0h0astFSByPDMwAqPh+fSDzW38=; b=GCbfv/PQhs1hpx
-	NOe7nwGE93r0fiqrFzuUYGQQ+m6DOLM83sp66tTgO88kDcL627D7mZbnAg7Q6RqA2ed/aam/8h6+f
-	h4iQp21V1ASBox1TOWPzWtxOlKO6FeBe4wDtxFX/PjRw+4y6hvBLnFjTbzQ0IvzqZHCM4gzfcw6vp
-	g3lJdXUhoqG/GulntHpy8TBqIRsf5Ky5NbVfQqysNtln0hMzZzdpxJXt8x2ZD6NLCIk6Naa/HPDjV
-	DkkUD18wWV9jCr9qEiCAnE9wEhHvxqLbdCnCqcJU6BvIROzTOkUPfwN4jg4GpLduYMPUMzBRPPLNh
-	G7h8SlKHclbjLAJtCybw==;
+	List-Owner; bh=nEI5WsQF14PdaB5iu1WCk2ZWtTkB7fA1knxgLNHBIZc=; b=adDjjQVz7cKQFj
+	CPH3LQAZRInn2RT+hseSw4JJFnXECElkE0/TQ4l/K+mhV9Ht/2dwlGCob5F9XJFYAGvU+Kvm83hag
+	9nOXYzqdiNOTjZBBLzZ+zhc9iP6wrLTZgzs0/5taAzFc8zmx4AzmPXerFaprzkuO4fpBFnUgqEK7y
+	Bd3oSNp2HNwrcSwXc8t8iHtukCN+E4CUE2s9T+mR+A8lxRzPwjhO3ToSWu60wF5Kve3qrW5cTGU0P
+	nXeoJHEPiZaALBwJ19cEB+NjilfDw/Z6opYGJJDRUrZrx5OqFVToUeuz7QYMXqkWS93DEqZpLIziV
+	HzdGjRvzAR4y6uAmAJ6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc1pE-00000006PH1-3ySO;
-	Tue, 23 Jun 2026 14:10:04 +0000
-Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
+	id 1wc2qh-00000006WFl-15UB;
+	Tue, 23 Jun 2026 15:15:39 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wc1pC-00000006PGD-3lX5;
-	Tue, 23 Jun 2026 14:10:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=superkali.me; s=default; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=QzZ/eVkAfrxKfCLuLelvePEFPRb5OS3MmMKbZz3YN1o=; b=lB1sH8Fg4D035v/eEGjsmD/nds
-	1qjTMd1aOWqyYCSUoOuu5NowhENS5PNqJPPWFrt1J8WfM+rUzw3OOA5Zay9XD912Bmy7qKh4jRPzT
-	iYEiKZNTrRjQnajOwDdSd0ToNDN7tB3jf78OOV3cSmWEpLtkbMErlT5Xt2Q3N+c9m8AueJkGhlHCZ
-	jAxfZWU0/iDNXR/lj97U1DXYcpwTfYk3ttdJuKAu50qoUS+oYYsZiGAn3ajjV3KbPDFVucZrXNcUh
-	VwQFbJ/BNH4F7nwtO8m45QajKORSqAQeT+BeMa6bJ63ntnD04XjnzAvRQW3GrP7npeJKTaKEb5oz/
-	lZ1xcw/Q==;
-Received: from [81.57.40.39] (port=50640 helo=superkali.me)
-	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.99.4)
-	(envelope-from <hello@superkali.me>)
-	id 1wc1pD-0000000AngH-03t6;
-	Tue, 23 Jun 2026 16:10:00 +0200
-From: Daniele Briguglio <hello@superkali.me>
-To: Diederik de Haas <diederik@cknow-tech.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Ricardo Pardini <ricardo@pardini.net>
-Subject: Re: [PATCH v4 5/5] clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK output to IO
-Date: Tue, 23 Jun 2026 16:09:58 +0200
-Message-ID: <20260623140958.4181297-1-hello@superkali.me>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <DJGH34DVKL0W.3T6UB4G4WYYUJ@cknow-tech.com>
-References: <20260419-rk3588-mclk-gate-grf-v4-0-513a42dd1dcc@superkali.me> <20260419-rk3588-mclk-gate-grf-v4-5-513a42dd1dcc@superkali.me> <DJGDSS875DDO.22TYPVYK5X8KZ@cknow-tech.com> <2100447.PIDvDuAF1L@diego> <20260623123316.4111002-1-hello@superkali.me> <DJGG8DEAKSPK.1GJ8FARAHXPXM@cknow-tech.com> <20260623132351.4144457-1-hello@superkali.me> <DJGH34DVKL0W.3T6UB4G4WYYUJ@cknow-tech.com>
+	id 1wc2qf-00000006WFc-1qxB
+	for linux-rockchip@lists.infradead.org;
+	Tue, 23 Jun 2026 15:15:37 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1D7914045E;
+	Tue, 23 Jun 2026 15:15:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA0E91F000E9;
+	Tue, 23 Jun 2026 15:15:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782227737;
+	bh=IPOBmqwVoyjRS2u66O6YAVJSo8yViJnEx+BNzty711k=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=COSxw0gF3QYuNJh9ZJ5fqD5kq/uiYqZSDMIVEkJqAbInBUU6mfevw8xAX3lrOhr7D
+	 rRyaZDnooKcpcVnE+vaibH+IHcdvJmnPooj//fkwNiKtJoS+pww2yPlQ41T9a3sQsF
+	 UnVnkNIkalwiYHlkpv9VfK2M17gPYXeXKqS8+Tt/gNtz6iO7hrsTM2LJPUETGLBzSN
+	 h5ph74zMF14l07AqIQtAfQMFEvSSCi9Jztm7bs9WuZWiSKPAyN5MHgZZLq0kW4psYK
+	 1z37dYL6gHV7M1aIu7F/sW1N/UgoVcO+Z1OodHFUmF+iiOS7wu9u1y6MxlZka6TMT2
+	 KVrsYfQ2Ux5dA==
+Date: Tue, 23 Jun 2026 16:15:27 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Cc: Chris Morgan <macromorgan@hotmail.com>, Chris Morgan
+ <macroalpha82@gmail.com>, linux-iio@vger.kernel.org, andy@kernel.org,
+ nuno.sa@analog.com, dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org
+Subject: Re: [PATCH V13 8/9] iio: imu: inv_icm42607: Add Gyroscope to
+ icm42607
+Message-ID: <20260623161527.7b7b0ccb@jic23-huawei>
+In-Reply-To: <ajotNPhg8fR3tLZp@ashevche-desk.local>
+References: <20260615172554.160910-1-macroalpha82@gmail.com>
+	<20260615172554.160910-9-macroalpha82@gmail.com>
+	<ajEhr0JIQwzRgoZa@ashevche-desk.local>
+	<PH0PR19MB997338E86152468CE26F60953FA5E42@PH0PR19MB997338.namprd19.prod.outlook.com>
+	<ajotNPhg8fR3tLZp@ashevche-desk.local>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - fr5000-r.dnsiaas.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - superkali.me
-X-Get-Message-Sender-Via: fr5000-r.dnsiaas.com: authenticated_id: hello@superkali.me
-X-Authenticated-Sender: fr5000-r.dnsiaas.com: hello@superkali.me
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_071003_121082_9EE484B7 
-X-CRM114-Status: UNSURE (   4.34  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,29 +77,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Diederik,
+On Tue, 23 Jun 2026 09:52:36 +0300
+Andy Shevchenko <andriy.shevchenko@intel.com> wrote:
 
-> My suspicion that more RK3588 based boards would be broken is because NONE use
-> I2S0_8CH_MCLKOUT_TO_IO; they all use I2S0_8CH_MCLKOUT.
+> On Wed, Jun 17, 2026 at 04:10:49PM -0500, Chris Morgan wrote:
+> > On Tue, Jun 16, 2026 at 01:13:03PM +0300, Andy Shevchenko wrote:  
+> > > On Mon, Jun 15, 2026 at 12:25:51PM -0500, Chris Morgan wrote:  
+> 
+> ...
+> 
+> > > Can be some of the code deduplicated between gyro and accel?  
+> > 
+> > Probably a fair amount, but the deduplication will likely need to be
+> > undone somewhat if we get buffer, WoM or apex support added back
+> > (I don't have any devices with such functionality, so if anyone will
+> > do it then it won't be me). I can refactor more if you want, or we
+> > can keep it split like this to make it easy if someone else wants to
+> > tackle the buffers/IRQs stuff later? Your call.  
+> 
+> Just asking. Jonathan, David, Nuno, what's your opinion on this?
+> Personal opinion is to avoid solving the issues that do not exist.
+> If you are not committing into those features, let's not prepare
+> driver for them right now.
+> 
+Agreed.  My only exception to this is normally when someone tells
+me they have the code and plan to post a follow up set very shortly.
+Then I get a bit more relaxed as they chances of 'preparing' for the
+future being relevant become much higher!
 
-These bits reset to open (SYS_GRF_SOC_CON6 = 0x4600, i2sN_mclk_ioe_ clear,
-1'b0 = "Output enable"), so a board doesn't need to reference the gate to
-get MCLK. They're RW, so firmware can go either way, but your 0x600 has
-them clear, which is why audio works today.
-
-The series made the gate a managed clock, so with no consumer
-clk_disable_unused disables it at boot. CLK_IGNORE_UNUSED leaves an
-already-open gate alone, so nothing changes for those boards. Only the ones
-that come up disabled, like the YY3588 and Ricardo's R58X-Pro, need _TO_IO
-for the kernel to turn it back on.
-
-> So IIUC that means I'd be testing both variants.
-
-Right, that covers both: the mux path and the consumer path. Looking
-forward to the results.
-
-Best regards,
-Daniele
+Jonathan
 
 _______________________________________________
 Linux-rockchip mailing list
