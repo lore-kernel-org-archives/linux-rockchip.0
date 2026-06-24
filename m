@@ -4,41 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 322EDCDB47F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 20:02:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8E1CCDB479
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 20:47:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FuFRu8wLBIU+GogsAa5zPc6wLWKArIvy4VTYFucw9iU=; b=zqYJI3r1so/C6c
-	xigGBtfr+I4/AcNA6mClZpbZPdqaJz0c4wFgARD64xjnNB28DCpqwjEIRKDVZ4MmsvqriBfhH7BJb
-	ZyQxT8luhcS6qtKmwhaWswVF2KjIAzZKL+FE9UJbZdPK/qu/9lZV5ske2mQXuO9so67RlLvbDcPuN
-	iEN56OKspSu0PmjdejJ87fuX+R5fkAXUXLjKZkJSnfe1o3hBkLX3OWKSE+xbgXzXMPBRqSPZlSAU9
-	MyIGwJPHTAMTkQ6L3WUbuMU6ihQ+QpxnJLSVUqFcrXLn5L1jh0na5cowTy3+QDdlR2x+XAHcha/QP
-	rdDVtukv8YzUw1ODFQnA==;
+	List-Owner; bh=Sf7tQA3XGzUOTc0T9soVqaP/78tvysR+vFq7jAGC8Io=; b=dvB4958OGbyM94
+	NUv+ZHFdodc3aAyeE84jZY1En+8e/IlZ6b9UK4H99kQ1UfQGLVWDmFMqyxrUNquEljSwAeFXD3JfO
+	18dD9F2gHJMg+NGjERGlUI2/s2Ld3gaQ8QfvDfX7F2WH/yBwLwTDpCySg3xXoZBwCoDbLwMNV9BW7
+	6D8xhWSYA/d9woR0okx45rU0PWtWsGP1suwsMI5vGyLQ/H3Q7RYLjk62oKgVK3wBor49dLjHEdEIm
+	cCQFb8t+hLzqxJhM8JdblQ7xrHyQHVAl7fLvgx/An+t18G+B6hR+gXt4sK3rxmblpaZ6aXQXIws1N
+	ennBeYCZcFUahtv9nCFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcTo4-00000008J8V-27gk;
-	Wed, 24 Jun 2026 20:02:44 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1wcUV3-00000008KvX-3sU7;
+	Wed, 24 Jun 2026 20:47:09 +0000
+Received: from mail-westeuropeazon11013009.outbound.protection.outlook.com ([52.101.72.9] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcTo0-00000008J7a-3htZ;
-	Wed, 24 Jun 2026 20:02:42 +0000
-Received: from killaraus.ideasonboard.com (2001-14ba-70f3-e800--a06.rev.dnainternet.fi [IPv6:2001:14ba:70f3:e800::a06])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 696961E6;
-	Wed, 24 Jun 2026 22:01:59 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1782331319;
-	bh=DUKIEE7/NbZR/k8cWAM68518/PZODDzrS+U/d4ruhG4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=q5Qwb1knc4r2eTb764ud9nediE0cB7p1Mt9q0e69aRTQSHkAd7UZJqXVVelzGEarK
-	 QlFfXvaJ7RXtTwURcika1vW9uzUE6YjD0fnpv6+B4ZFnfzZhMu6TyA31EiE6TaILkY
-	 p3IlZ42+5Jz1Hyxio+3i1dERD8ml8lN9MkmcLqGw=
-Date: Wed, 24 Jun 2026 23:02:37 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Frank Li <Frank.li@oss.nxp.com>
+	id 1wcUV1-00000008Kua-0ofi;
+	Wed, 24 Jun 2026 20:47:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=gVsxVIoJ3qDO5Ukk6w4oIfyCcp1SxDUrAN3hshxymZr27syEPyd46eHaj8hRHnfG6fVitJWtQdT8hu8aLZds40qNPlN4+eJ/FaExvgj0SRHMZKtuXZG257Y12G6HFYZZImWnwTPsbCha2RSuEWgYaN0rRaeebLchwg6L6XcACXjcWXJUbKjCa3IhaIlRYYuX5T3XSotZcnQiJUB8HGMT4LaYP8ggiU9wwP9gZAOZvf/UzZfqafSuTxqhfaoFfu6MgP65xT5TAx/Y6i+VjCg5q71JokI2rwJ1thLFam5m2iR0F3MvMIytfPZf7J5G9vRdTaiJn0F++FTvt/KYYbeVKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zIyRuMx1pH+NrTMQULxdR9rpGT3e/LaQVtBWVDGoFE8=;
+ b=cgGW8cBlsunlcilP+52YNd9wz6l3p31NLq2D+LZfV28ZWKAbYExsAEfpo5md1tWEji0z3DLbZuj7Bk7Y1Do2CL7viIIs6Hrv+KdUcYXhcPlANrUJTqtDFRLr4hlHnnSXxTJkAExpfhj39jk1MWX5nvvjHDkUL4YpeZxPtocEU/jSN3WEQXKSukW4gefbSWcsiG7YEQopg6/pS7gQe9z4/EQoawiIgyinNA7k6KFUg3HEDfAOQyYswpqsknVWuW/etWwrVK2q8Nl7+5lvF6HN5WTUzW3vNOZagCjq1wzfhBFazasEWAn0Q3fZ6o9bqPrpQsvmnqPZHSo1gSaAgYiudg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
+ s=selector1-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zIyRuMx1pH+NrTMQULxdR9rpGT3e/LaQVtBWVDGoFE8=;
+ b=Jrxxhk9xbeH6C3ZkdxcnNeO1br+Zttsz3yMt7y2vPNDmF+50m9Y+vxBjOYTs4D88pv7Xxo0gFFC9JTZoZSIUzDZtH5n0Vc4hzepU3QZ3tUxxcv/q4GIT+f/9KQPxnjIutYMtm0jKndDXmeIeQHWQActxYn1qg70phi94z67BYpWvdnrND1aQgnavw/FtHQVn+WYnA7tRxlNOU60Y4VERkOkG/OSIf39cjnQ5KKVBfR3wyPseRliPJLuvrI3NTMf+lWO2VI0D37hKX4BnaTZ4RXFAcceOwu6qzEedtXsC6DuXQ6IF04rKBisYa7Efj0wSRqlo4SjAEn5fbP6jar8Lxw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=oss.nxp.com;
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
+ by AMBPR04MB12286.eurprd04.prod.outlook.com (2603:10a6:20b:733::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.21; Wed, 24 Jun
+ 2026 20:47:01 +0000
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c%6]) with mapi id 15.21.0159.007; Wed, 24 Jun 2026
+ 20:47:01 +0000
+Date: Wed, 24 Jun 2026 15:46:48 -0500
+From: Frank Li <Frank.li@oss.nxp.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Daniel Scally <djrscally@gmail.com>,
 	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
@@ -60,16 +76,71 @@ Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Frank Li <Frank.Li@nxp.com>, Guoniu Zhou <guoniu.zhou@oss.nxp.com>
 Subject: Re: [PATCH v2 0/4] media: add and use
  fwnode_graph_for_each_endpoint_scoped()
-Message-ID: <20260624200237.GJ851255@killaraus.ideasonboard.com>
+Message-ID: <ajxCOE3avXXLlrfT@SMW015318>
 References: <20260624-fw_scoped-v2-0-0a8db472af4a@nxp.com>
  <20260624191935.GG851255@killaraus.ideasonboard.com>
  <ajwxcn2LXS8InAjZ@SMW015318>
-MIME-Version: 1.0
+ <20260624200237.GJ851255@killaraus.ideasonboard.com>
 Content-Disposition: inline
-In-Reply-To: <ajwxcn2LXS8InAjZ@SMW015318>
+In-Reply-To: <20260624200237.GJ851255@killaraus.ideasonboard.com>
+X-ClientProxiedBy: PH8PR02CA0022.namprd02.prod.outlook.com
+ (2603:10b6:510:2d0::12) To GV2PR04MB11799.eurprd04.prod.outlook.com
+ (2603:10a6:150:2cf::9)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|AMBPR04MB12286:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4d7d6c8d-674f-47cf-f89a-08ded231bdec
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|19092799006|7416014|376014|23010399003|6133799003|22082099003|18002099003|56012099006|4143699003|11063799006;
+X-Microsoft-Antispam-Message-Info: 8p1n2bC7xvghMSPxFf/IDvgtaoYyJzXo/nlaVHwzN/Hl7I+Ban6agsilJcO3uZuhDEGPCQ8Oesn+KMQGuIuzRfpIdWNc4+2yxQXKmAxs/dojpI5BsBEAIpdf7COvTHb4gGTC9SRyXyylY9M7E+dyXwiGiYlHo68t8ogu9oLxcojYK0wMKEKOxts+nMG6b9OC8PKJ8dm/+X57vb0RDXlnv3UjjPElc7M0HBFX7d/OXUy38lfGk5psfu9YJ6S0meaWeGWAndCuhDIx8gOi6jRoEAvcCI63OBSz5crZjQUdTwxF/6tQGDsNG1OCoZ93dOzvhx7mC/sa0VoSSFkU7RFJT6etwsAedb2e0jSmDL6cVNOmF3csIqlneT/DqrDlCtGdx76T7rnf8YYXuS/YLsBAdhi3+oaYuEGtnZQZCemNylVbeFPWUwD/pRYamRPjZ2tmg9tdfm3IwYfdJ++4EqRDznaStven3/d5kqJ1cNa4PDwBy9MoOVep9fgYNAiQy+WRos7ZIlhJxX8FlmsQCgPkgM9biOo8ScFahZaK3Kt09S/GFvJuaitUFc+ugGf4iH/HHlSstzp1i6oDn6OYxI/0vJso1EcjbH5xnbIwH3aV8f4mH5yGOnneeh3m4qnKkPmMXPqfshAVhifikv1MudYgu7eCp0RcfQG990nVE5BYAP4=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(19092799006)(7416014)(376014)(23010399003)(6133799003)(22082099003)(18002099003)(56012099006)(4143699003)(11063799006);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?AywxQEWAqJ9uIwMWLjjZJZl0McFmpilb9xHqs5k9L0feNDLUj1DQG7KSLI19?=
+ =?us-ascii?Q?KZigmcuE8CR3nF8VCSXAbEXwG1/P6qffzvBfFVdkXenZZDd1FFoDFHhgTvR3?=
+ =?us-ascii?Q?fo4DPUhysAuOxjox02sZ6z7qnB8wCPuOqBOGY/iSbKRFV27w/j/WIVQGQLtK?=
+ =?us-ascii?Q?Wq5iH2v4dzOmnF5I3Gy6p3lQI6gIqd2yTCHsSBln0x5ZyIxPFVHG0L+uurgr?=
+ =?us-ascii?Q?sx3duA2tp/3kHPkFj4iNVCyT/3dbZSm+U+ivT2ekLgBBlJ7hfkrVXbsDb21U?=
+ =?us-ascii?Q?dtpRaQTNVzspmV1X2GX4ReJtuKprXLYlpBl4CtXmmRqaWsaNZn8yv4cZ8sF/?=
+ =?us-ascii?Q?DJhyEKRXwVQ2dNGzF1jTjHcG7IoDcvKAx+6ipGSeMPtZPsRvRuGuDzH0OFbk?=
+ =?us-ascii?Q?QYx4bRYEanmoGvYpQpORf+8L8GbVjMK7qua15wrpAsU7m6DBMylDbctbirk3?=
+ =?us-ascii?Q?z6di/f4paGJHRuVC34BECfzBzpm3FrD/u27uPrGOOxBvtulT5IXYb3VpVssA?=
+ =?us-ascii?Q?O0/ek+gZfE8tOobEe000AhFE7XjOL8dlMiKS6Ll6e+YLt3Jchp/2lIJiHzqB?=
+ =?us-ascii?Q?WpHvuoCIqBv8++EMZiY3zK2q8+fuK/FjxWGhFQLFL49Zpl9imce8KPC9NNVR?=
+ =?us-ascii?Q?JSQRubEcyyrgQ8J7zacd+hheOdM5LsyeMkuyUrv1mYZ84Q7dOTwPGtu07/U8?=
+ =?us-ascii?Q?Vm37+uR75gm7TDPWlSDK2Fu9UIOLM1q2Tg/jqDNPwBZFM/w9kMtYXKPshTPx?=
+ =?us-ascii?Q?goPd7MuAAhAUrn7kFIAaxMBQCAwgVn9LTtX9njCeipBJbOxrqrnXg3lQbmdx?=
+ =?us-ascii?Q?FKCbuD1qHYG1u4REc3lm0AMBzmGpq20gRTqRuUcS06HmfN43vMbyKYKoM8+i?=
+ =?us-ascii?Q?TltE/fEuthCP/j3wLHCcX8JUgXMJtWAwOol16wgpZ8WZveOXY9obMxId19mb?=
+ =?us-ascii?Q?ttcCZmvAUvMwQnUkp6bPLlz51aNiao25lHJSv08pIsc3Et3LRxyVwu6e7Vb7?=
+ =?us-ascii?Q?2LAUe4T0HmY7bRILS6Wh2huwTgGuCXD0GpVsewWQRR8gOX5pVcDSH7cQOBKB?=
+ =?us-ascii?Q?4zGC+przw/5RiPoykHaic0McW4Vzia/Yo4hfcPolVXGFrpukWynCr0nAmBYL?=
+ =?us-ascii?Q?JzjwyZtckIDKdMhj+UfzHtZIpMkQMOTDJpEowANZ84KIGBQwyO7yy4EJiUVt?=
+ =?us-ascii?Q?OYh2YbZF3JMvwRhizU+Zh28kTcHIQqKCSgNxFyNMeLmudU3s3P661gslJhDY?=
+ =?us-ascii?Q?ru9o3pUxSao5JuUItncP4M45YuljO5kQElo7T3evN1sAQt82aC+p1vBXe7Wt?=
+ =?us-ascii?Q?Pss2u4iHwa/yADLrKPmTHZ+xDsKonmTEuFkMVbhUVpOny4zJzSG4RqyFVZxM?=
+ =?us-ascii?Q?AcT5eRhJZ7RfEQhqPlKb1TIHlmkxhiEuAICuxzCPmdVa+C7wyP+nVJjJtCKW?=
+ =?us-ascii?Q?xV7+JhXPSUjoRHpilXZJsSdfo+wHJlLrRRrSoS24ItsdK9HjSyPD+niIRnUv?=
+ =?us-ascii?Q?k0yAxxPOYgGwoQsZyFp7Elv0jz9XPrgm0mDGCpZqRpHH6LCqmVT4Rd3ltrac?=
+ =?us-ascii?Q?NnGBZYDAH87hRPYqO+luRyeVpiSnpcGteiDR0F9weFb0POuGM5cP6W22n9A5?=
+ =?us-ascii?Q?w8SEQgNWbDxxoh5zf/1dKpVAUtnDe40TkmCP65W9UhaJBWhPMcGPv07V40Mn?=
+ =?us-ascii?Q?j0CIDUfOS0WelKcQp3v9TbHBwGT18oLliLLQauTz9JnE0veuyeJebj0TXxW5?=
+ =?us-ascii?Q?Zr2NaJVhadmsgySZLsHO1mZHw/PQpelMXskgRi1434BpmPZHzU8d?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4d7d6c8d-674f-47cf-f89a-08ded231bdec
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jun 2026 20:47:01.8036
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WfKXoeqFWAoeXzt8usI+8l677mN6g59/uLV2ZSU0uXdA2phCOe+5IAUduglUT+BJEeuLbu7XsESUDanAJnNgfI7DY3gFj2OhvdvWx9RRcw6bifYUwxLPO4ArS22xsVqb
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AMBPR04MB12286
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_130241_070913_8FDC2F50 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20260624_134707_238537_AB0399D1 
+X-CRM114-Status: GOOD (  26.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,56 +157,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 24, 2026 at 02:35:14PM -0500, Frank Li wrote:
-> On Wed, Jun 24, 2026 at 10:19:35PM +0300, Laurent Pinchart wrote:
-> > On Wed, Jun 24, 2026 at 01:00:08PM -0400, Frank.Li@oss.nxp.com wrote:
-> > > Add new helper macro fwnode_graph_for_each_endpoint_scoped() and use it
-> > > simplify media code.
+On Wed, Jun 24, 2026 at 11:02:37PM +0300, Laurent Pinchart wrote:
+> On Wed, Jun 24, 2026 at 02:35:14PM -0500, Frank Li wrote:
+> > On Wed, Jun 24, 2026 at 10:19:35PM +0300, Laurent Pinchart wrote:
+> > > On Wed, Jun 24, 2026 at 01:00:08PM -0400, Frank.Li@oss.nxp.com wrote:
+> > > > Add new helper macro fwnode_graph_for_each_endpoint_scoped() and use it
+> > > > simplify media code.
+> > > >
+> > > > Typical example should qualcomm's driver (camss.c), the v4l2_mc.c and
+> > > > rkisp1-dev.c only silience improvement.
+> > > >
+> > > > Anyways, *_for_each_*_scoped() already use widely and make code clean.
+> > > >
+> > > > Build test only.
+> > > >
+> > > > Sakari Ailus:
+> > > > 	when I try to improve the patch
+> > > > "Add common helper library for 1-to-1 subdev registration", I found need
+> > > > camss.c pattern, so I create this small improvement firstly.
 > > >
-> > > Typical example should qualcomm's driver (camss.c), the v4l2_mc.c and
-> > > rkisp1-dev.c only silience improvement.
+> > > Those are nice cleanups, thank you.
 > > >
-> > > Anyways, *_for_each_*_scoped() already use widely and make code clean.
-> > >
-> > > Build test only.
-> > >
-> > > Sakari Ailus:
-> > > 	when I try to improve the patch
-> > > "Add common helper library for 1-to-1 subdev registration", I found need
-> > > camss.c pattern, so I create this small improvement firstly.
+> > > After applying this series, the only left users of the
+> > > fwnode_graph_for_each_endpoint() macro are in drivers/base/property.c.
 > >
-> > Those are nice cleanups, thank you.
+> > I already checked previously, two place use it.
 > >
-> > After applying this series, the only left users of the
-> > fwnode_graph_for_each_endpoint() macro are in drivers/base/property.c.
-> 
-> I already checked previously, two place use it.
-> 
-> fwnode_graph_get_endpoint_count(), it will go though all endpoints, last
-> ep is NULL, which totally equial to scoped() version.
-> 
-> another one fwnode_graph_get_endpoint_by_id(), which return ep, expect
-> caller to call put().
-> 
-> if use scoped() version, need use no_free_ptr() at return, which make think
-> a little bit complex.
+> > fwnode_graph_get_endpoint_count(), it will go though all endpoints, last
+> > ep is NULL, which totally equial to scoped() version.
+> >
+> > another one fwnode_graph_get_endpoint_by_id(), which return ep, expect
+> > caller to call put().
+> >
+> > if use scoped() version, need use no_free_ptr() at return, which make think
+> > a little bit complex.
+>
+> It would introduce a tiny bit of extra complexity there, but the
+> advantage (in my opinion) is that we'll be able to remove the less safe
+> fwnode_graph_for_each_endpoint() macro.
+>
+> Now one may argue that the risk of
+> fwnode_graph_for_each_endpoint_scoped() is returning the iterator
+> without using no_free_ptr(). I wonder if that would be easier to catch
+> in static analysis tools than the current pattern that leaks a reference
+> when exiting the loop early.
 
-It would introduce a tiny bit of extra complexity there, but the
-advantage (in my opinion) is that we'll be able to remove the less safe
-fwnode_graph_for_each_endpoint() macro.
+It's not big deal, if everyone prefer drop fwnode_graph_for_each_endpoint(),
+I can do it.
 
-Now one may argue that the risk of
-fwnode_graph_for_each_endpoint_scoped() is returning the iterator
-without using no_free_ptr(). I wonder if that would be easier to catch
-in static analysis tools than the current pattern that leaks a reference
-when exiting the loop early.
+Frank
 
-> It'd better leave these as it.
-
--- 
-Regards,
-
-Laurent Pinchart
+>
+> > It'd better leave these as it.
+>
+> --
+> Regards,
+>
+> Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
