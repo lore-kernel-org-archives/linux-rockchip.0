@@ -4,69 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F2C2CDB479
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 05:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B616CDB47F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 07:25:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fJYwKGo1WEu76ClioCfStsh+TVo3osvXLjXYjjJAYic=; b=kUbGkCqiXLL1Qf
-	2Lh0k0YPfFC+2BPV+TMNMsPZ6rL0zeY26D2QCEe8R9l4ju7mim2V2o9syBzFG0GGEL9+N15Sarkmb
-	LTZB2wAViQcHHQ25w5MjhVRT6hnVE8D4CgcaiMXbKKfXiZXw6t9QF87rTDxTMVMoniJJ7YkiDGFeA
-	EkbJ5SZxx7mPOSpW9iJsQuwenI5oeJqgoYsyWgPyaLTx+1ypj+U9JuC8bASyK+1OsNJ1kdXekANt5
-	LILX/dg3evNUhCeS+us0ZoDSAxmoXhofz7M4w96rMUnh5WrNIifmj2wZxrOZyDEng09yO0bafTSey
-	Az/9JSHi/evgJTszd8vQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:
+	References:MIME-Version:In-Reply-To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=kx+uWd2R5XKFp5MFECeolRAPdiHMMqH3wp9RIeMuP84=; b=K6hK2X3pmHpfklx8FZt4qVRxtj
+	896OFt6MsxRoB2ssANgQFV3mQ54bNDzMc6+48E12atmlrzaE+R2JBNhyuGmGI40PXC+Lfk/meadPm
+	3VJ62w4OjNOHOj5nnkULYqTHMYR4ElJpGpF6CF1/QsAW//YAnJ4HrvEahj2TEOO2d6IVG6v/959ar
+	a7felsiax822iGwDqD+sbIXzfprIfTBkDH+Zvhm/vApvkL7waxRTChzUwAl5EEQJjqS953AtcgqkJ
+	nKO4AS2GqvFvqnurToV9bJqlkDs9MmDUohPz2qyFhkuepU918b9tMPICY5JlGZc+XmcL5x8yIfgig
+	RBVnvlPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcGVX-00000007BHg-0w6O;
-	Wed, 24 Jun 2026 05:50:43 +0000
-Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
+	id 1wcHz8-00000007JTb-41n9;
+	Wed, 24 Jun 2026 07:25:23 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcGVR-00000007BGD-3jgB;
-	Wed, 24 Jun 2026 05:50:42 +0000
-Received: from localhost.localdomain (unknown [111.196.245.140])
-	by APP-03 (Coremail) with SMTP id rQCowAAnIbgicDtqQQqtFQ--.23387S2;
-	Wed, 24 Jun 2026 13:50:26 +0800 (CST)
-From: Pengpeng Hou <pengpeng@iscas.ac.cn>
-To: Marc Kleine-Budde <mkl@pengutronix.de>,
-	kernel@pengutronix.de,
-	Vincent Mailhol <mailhol@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-can@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Pengpeng Hou <pengpeng@iscas.ac.cn>
-Subject: [PATCH] can: rockchip_canfd: Propagate reset failures on start
-Date: Wed, 24 Jun 2026 13:50:26 +0800
-Message-ID: <20260624055026.24789-1-pengpeng@iscas.ac.cn>
-X-Mailer: git-send-email 2.50.1
+	id 1wcHz7-00000007JTB-2Asm
+	for linux-rockchip@lists.infradead.org;
+	Wed, 24 Jun 2026 07:25:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id F1E60601FF
+	for <linux-rockchip@lists.infradead.org>; Wed, 24 Jun 2026 07:25:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AFC51F00ACF
+	for <linux-rockchip@lists.infradead.org>; Wed, 24 Jun 2026 07:25:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782285920;
+	bh=nvnhHh47CXixoylXWGOHPJF5vecV8c8rpU9eHVVg6DY=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=BWFXAxX/us4DQUK1idO2Ki9uFSo0MO6O6YaIQa8wMrk29Wvl4H/TKJzoVttGSCeLA
+	 Fw+NxnPqoQRwnUpQE5C6BudZxSheDVaqnhvWjhUiJPxF+3wV5/YG1rGryzMmQwahlU
+	 g9NjlbTZ/7YQdivSYRp7S3AqRIGL90jlIxUVNUJRZFFW6ArNOWjHRg7PiqY/NAdfX8
+	 HQf7v9geddz5Kk9Q9Q7J7bBCr2nzd7GKcRobXl10AH10XMpw6KbfBhMixhNlYGlcjz
+	 r/5CGXIkZS62mPOoWQs5i5Jr3QhztcfMPaFZuaO2xAcwwVIRpl8hkSLwfX5eKwLyCf
+	 ol3EpNlVKoRCA==
+Received: by mail-lj1-f182.google.com with SMTP id 38308e7fff4ca-396775c2720so5052951fa.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 24 Jun 2026 00:25:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ+nAdX8vlfy3aZ46df8G66RhFagDg67zPhXzghePiEGCAaJZQ/cZdehUOk01xTxijITNTQzxFmjDuNDXGCztQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyLU1lxjLMWeJcQB14DYxz8/GsmxA9guFPbjAToA6UBHk/XXdt0
+	nsZ/cITOwrMohyRI0jDpGrbXyRTAkFgTQj3zmf04X8UtKTu+JL+OxRLCtH9sQs7opYd97HjgHJa
+	SRui6h2QcLzk5i8ZWXjZuavDReao7CUSA0Yz1ULAj1w==
+X-Received: by 2002:a05:651c:897:b0:396:b398:5956 with SMTP id
+ 38308e7fff4ca-39aba22f713mr5033881fa.16.1782285919374; Wed, 24 Jun 2026
+ 00:25:19 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 24 Jun 2026 00:25:16 -0700
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 24 Jun 2026 00:25:16 -0700
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <112d2563-e650-4881-bba0-335f6a3fcb8a@arm.com>
 MIME-Version: 1.0
-X-CM-TRANSID: rQCowAAnIbgicDtqQQqtFQ--.23387S2
-X-Coremail-Antispam: 1UD129KBjvJXoWxZFy3Jw18AFy7Gr18KF4fGrg_yoW5Kw4Up3
-	y5J3W3Jry8Zr1rXa1rJr18ZF1Fq3ZxKr47Ga97ta1Iy34ay3WUGr1jkr1Y9r4Ut34UC34F
-	gr45Aa4UWF43XFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9014x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
-	6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
-	Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
-	I7IYx2IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
-	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
-	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
-	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
-	67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
-	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
-	MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
-	VFxhVjvjDU0xZFpf9x0JUpwZcUUUUU=
-X-Originating-IP: [111.196.245.140]
-X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260623_225038_553631_2DA56EAB 
-X-CRM114-Status: GOOD (  11.88  )
+References: <CGME20260610153425eucas1p29d20a835114a28b15cb12ea00534e074@eucas1p2.samsung.com>
+ <20260610153329.937833-1-v@baodeep.com> <184d315b-a0a1-4792-8a40-1b4967025916@samsung.com>
+ <112d2563-e650-4881-bba0-335f6a3fcb8a@arm.com>
+Date: Wed, 24 Jun 2026 00:25:16 -0700
+X-Gmail-Original-Message-ID: <CAMRc=MdP8Wf6QRXGHpb3KJW2KMidSe-0LeyKKTYix=wYKZcPuA@mail.gmail.com>
+X-Gm-Features: AVVi8CfWZEwy0Hj6hsY9nADi3QPZuC2gya2F8U2aO77pZ-fX6Cr7FXVhzwvDF28
+Message-ID: <CAMRc=MdP8Wf6QRXGHpb3KJW2KMidSe-0LeyKKTYix=wYKZcPuA@mail.gmail.com>
+Subject: Re: [PATCH 0/2] gpio: fix sleeping-in-atomic in shared-proxy; restore
+ meson non-sleeping
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Diederik de Haas <diederik@cknow-tech.com>, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	Heiko Stuebner <heiko@sntech.de>, Marek Szyprowski <m.szyprowski@samsung.com>, 
+	Viacheslav Bocharov <v@baodeep.com>, Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,125 +93,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip CAN-FD driver requires a reset controller, but
-rkcanfd_chip_set_reset_mode() ignores reset assert/deassert failures.
-rkcanfd_open() and CAN_MODE_START can then report success after the
-controller failed to enter a known reset state.
+On Tue, 23 Jun 2026 17:16:44 +0200, Robin Murphy <robin.murphy@arm.com> said:
+> On 11/06/2026 9:26 am, Marek Szyprowski wrote:
+>> Hi Viachesla,
+>>
+>> On 10.06.2026 17:32, Viacheslav Bocharov wrote:
+>>> gpio-shared-proxy chooses its descriptor lock (mutex vs spinlock) from
+>>> the underlying chip's can_sleep, but under that lock it calls config and
+>>> direction ops that reach sleeping pinctrl paths. On a controller with
+>>> non-sleeping MMIO value ops the lock is a spinlock, so a sleeping call
+>>> runs from atomic context:
+>>>
 
-Return reset errors from the reset/start helpers and propagate them
-before enabling RX offload, requesting the IRQ, or starting the netdev
-queue.
+...
 
-Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
----
- .../net/can/rockchip/rockchip_canfd-core.c    | 40 +++++++++++++++----
- 1 file changed, 32 insertions(+), 8 deletions(-)
+>>
+>> I've checked this patchset with these two reverted and no warning was reported.
+>
+> If it hadn't already been fixed (...)
+>
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 29de0c01e4ed..89bc402b76e8 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -102,13 +102,23 @@ static const struct can_bittiming_const rkcanfd_data_bittiming_const = {
- 	.brp_inc = 2,	/* value from data sheet x2 */
- };
- 
--static void rkcanfd_chip_set_reset_mode(const struct rkcanfd_priv *priv)
-+static int rkcanfd_chip_set_reset_mode(const struct rkcanfd_priv *priv)
- {
--	reset_control_assert(priv->reset);
-+	int err;
-+
-+	err = reset_control_assert(priv->reset);
-+	if (err)
-+		return err;
-+
- 	udelay(2);
--	reset_control_deassert(priv->reset);
-+
-+	err = reset_control_deassert(priv->reset);
-+	if (err)
-+		return err;
- 
- 	rkcanfd_write(priv, RKCANFD_REG_MODE, 0x0);
-+
-+	return 0;
- }
- 
- static void rkcanfd_chip_set_work_mode(const struct rkcanfd_priv *priv)
-@@ -246,11 +256,14 @@ static void rkcanfd_chip_fifo_setup(struct rkcanfd_priv *priv)
- 	netdev_reset_queue(priv->ndev);
- }
- 
--static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
-+static int rkcanfd_chip_start(struct rkcanfd_priv *priv)
- {
- 	u32 reg;
-+	int err;
- 
--	rkcanfd_chip_set_reset_mode(priv);
-+	err = rkcanfd_chip_set_reset_mode(priv);
-+	if (err)
-+		return err;
- 
- 	/* Receiving Filter: accept all */
- 	rkcanfd_write(priv, RKCANFD_REG_IDCODE, 0x0);
-@@ -309,13 +322,16 @@ static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
- 
- 	netdev_dbg(priv->ndev, "%s: reg_mode=0x%08x\n", __func__,
- 		   rkcanfd_read(priv, RKCANFD_REG_MODE));
-+
-+	return 0;
- }
- 
- static void __rkcanfd_chip_stop(struct rkcanfd_priv *priv, const enum can_state state)
- {
- 	priv->can.state = state;
- 
--	rkcanfd_chip_set_reset_mode(priv);
-+	if (rkcanfd_chip_set_reset_mode(priv))
-+		netdev_err(priv->ndev, "Failed to reset CAN-FD controller\n");
- 	rkcanfd_chip_interrupts_disable(priv);
- }
- 
-@@ -339,10 +355,14 @@ static int rkcanfd_set_mode(struct net_device *ndev,
- 			    enum can_mode mode)
- {
- 	struct rkcanfd_priv *priv = netdev_priv(ndev);
-+	int err;
- 
- 	switch (mode) {
- 	case CAN_MODE_START:
--		rkcanfd_chip_start(priv);
-+		err = rkcanfd_chip_start(priv);
-+		if (err)
-+			return err;
-+
- 		rkcanfd_chip_interrupts_enable(priv);
- 		netif_wake_queue(ndev);
- 		break;
-@@ -719,7 +739,10 @@ static int rkcanfd_open(struct net_device *ndev)
- 	if (err)
- 		goto out_close_candev;
- 
--	rkcanfd_chip_start(priv);
-+	err = rkcanfd_chip_start(priv);
-+	if (err)
-+		goto out_runtime_put;
-+
- 	can_rx_offload_enable(&priv->offload);
- 
- 	err = request_irq(ndev->irq, rkcanfd_irq, IRQF_SHARED, ndev->name, priv);
-@@ -734,6 +757,7 @@ static int rkcanfd_open(struct net_device *ndev)
- 
- out_rkcanfd_chip_stop:
- 	rkcanfd_chip_stop_sync(priv, CAN_STATE_STOPPED);
-+out_runtime_put:
- 	pm_runtime_put(ndev->dev.parent);
- out_close_candev:
- 	close_candev(ndev);
--- 
-2.50.1 (Apple Git-155)
+About that - Viacheslav, do you still plan to submit v2 of this?
 
+Bart
 
 _______________________________________________
 Linux-rockchip mailing list
