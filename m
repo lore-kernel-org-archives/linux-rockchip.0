@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D39CDB47F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 19:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A635CDB479
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 19:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mgLAkCO3m16uoxOmax4FQSFTum6+mcx6uUrg70K3508=; b=rsCEbVFc8/zXXY
-	59Gt1v7KuETV+7WgrYjyjRlLaUe2zTh52QPNzKZCRDzydrk/SZodV8yxquY1khgu7E8gLg1Qm3xzD
-	p61wJGplaRye6YEAY3uNYTQ385PnvXt6myX9HvZGNlw2yDSvGh2M4L+yvNivjiPGgIdG9JVpN3C4D
-	1szYzI5NVsJmh2V1tQ3uM0kBBxj6/AjlbvF07Np5QbblViUqOz/oJsTtKw0/r/Z/TbdN3pm0MZXfZ
-	g5SvVpjt+KCD2AkJmVxxK+O27lDliblyJl0Slpl72G7ZXkRHf1IkRNyDchU3e0fCjYGPHm/DoIpL1
-	IRW92sVgdrVUoojz5Y1Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ff8ntyI07N6tpHB5QYrVX8ahgEMKRy3LmIlOQZUVLQM=; b=BEcagyyZkuo7FV
+	IM/HnTWnKLkwnH0UJxMQYzStDPdCUDjSGbQqJG8aE0Wc79x+eIHU4EIuwkqnrZaeOKE3UJ2uLkUcl
+	C76aKrk4v+8r1XpSvR+y6BzlkBZyMiCS/+5sGsUU0tbFeWBkInh2viVldi5fsMieLnzIIboYOAl4K
+	4ZPQ6WCtzPSlT/41NDTm8O1DFt7bN969fCCxAv9yd7TDrJZ9SAkdb79o2oePpubfrKAovOs4wK1EB
+	DvBO4qc7W2vvDVr4Io5pK+5bjAP+HRVLZBw3cUPOihOM6b8MnwkzNGsaIkhy0MhkLT5c+zT8cRd9L
+	lyYDUL3u2RnT44d5yldQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcT8P-00000008GMO-48mX;
-	Wed, 24 Jun 2026 19:19:41 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1wcTG7-00000008GoQ-0eNA;
+	Wed, 24 Jun 2026 19:27:39 +0000
+Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcT8M-00000008GLx-3UHs;
-	Wed, 24 Jun 2026 19:19:40 +0000
-Received: from killaraus.ideasonboard.com (2001-14ba-70f3-e800--a06.rev.dnainternet.fi [IPv6:2001:14ba:70f3:e800::a06])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 56D7E1049;
-	Wed, 24 Jun 2026 21:18:57 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1782328737;
-	bh=SygbhfMsHBXymcem7e6Zd0nKKWVHq2pp7wmjCrhnj44=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=R9iPS6IL6p0/dDAwuFkL5icB0WAA7/VF1Z2f8Muhz3zenEk89jfcpVogCPF9xqqsm
-	 QPxnlkhw7Ug6s2tpdrYSAD+ZWecr8sCsX3hYxbY51skwWfYFAI00vNswoaiCKIZj+k
-	 0HxXfhmL6kVxPTzsYM4hCVIu8p8C42YQ/DqNXn+k=
-Date: Wed, 24 Jun 2026 22:19:35 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Frank.Li@oss.nxp.com
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	id 1wcTG3-00000008Gmg-1Sws
+	for linux-rockchip@lists.infradead.org;
+	Wed, 24 Jun 2026 19:27:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1782329253;
+ bh=HB+X1zwClEyuS34sjRMolD4Gdv13rlFePfJPWzCgmg4=;
+ b=rQ3MuJL5753xy6xvQycHiVL52edNOCZkvnZx748gPKUZD4UKlVFnJMpsdUMbTYnu78HzHxLEW
+ sy9PPK5rBhNfjSpEcUEz/wtiWuRamPXJme9kiWVCaqoDsQZ84PIfijse43OWp840YVe7Pl1svek
+ Y9QQRa8JT4H5Kkghw/fmzjM0+I6EYY/iqsiPjVESatCMYAN4UfYuUhliSZapoojgQRXRLAwKvSj
+ YGTzSaiCMHt0OlHTcoH7+ftbIjz+ROb9pz9z6JC+v2jjf/BbiZaA/Ek/MYmOOmyjX4cklke3XJu
+ L8R3IjD1YwiogT0KWQrL4isi0V+7BpP++TsouTSBiT8Q==
+X-Forward-Email-ID: 6a3c2fa3138f49c481104aa0
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.66
+X-Forward-Email-Version: 2.8.32
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Diederik de Haas <diederik@cknow-tech.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>,
-	Loic Poulain <loic.poulain@oss.qualcomm.com>,
-	driver-core@lists.linux.dev, linux-acpi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev, Guoniu Zhou <guoniu.zhou@nxp.com>,
-	Frank Li <Frank.Li@nxp.com>, Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-Subject: Re: [PATCH v2 0/4] media: add and use
- fwnode_graph_for_each_endpoint_scoped()
-Message-ID: <20260624191935.GG851255@killaraus.ideasonboard.com>
-References: <20260624-fw_scoped-v2-0-0a8db472af4a@nxp.com>
+	linux-usb@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v2 0/2] rockchip: Fix devices suspend freeze on RK3568/RK3566
+Date: Wed, 24 Jun 2026 19:27:23 +0000
+Message-ID: <20260624192726.781864-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260624-fw_scoped-v2-0-0a8db472af4a@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_121939_019598_56ABC649 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20260624_122735_789715_1EDFABA4 
+X-CRM114-Status: UNSURE (   7.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,60 +82,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
+This series fixes a system freeze during suspend in ohci_suspend() due
+to clk_usbphy1_480m not being enabled when EHCI/OHCI registers are
+accessed on e.g. a Raxa ROCK 3C board.
 
-On Wed, Jun 24, 2026 at 01:00:08PM -0400, Frank.Li@oss.nxp.com wrote:
-> Add new helper macro fwnode_graph_for_each_endpoint_scoped() and use it
-> simplify media code.
-> 
-> Typical example should qualcomm's driver (camss.c), the v4l2_mc.c and
-> rkisp1-dev.c only silience improvement.
-> 
-> Anyways, *_for_each_*_scoped() already use widely and make code clean.
-> 
-> Build test only.
-> 
-> Sakari Ailus:
-> 	when I try to improve the patch
-> "Add common helper library for 1-to-1 subdev registration", I found need
-> camss.c pattern, so I create this small improvement firstly.
+Following pm_test modes work on my ROCK 3C with the missing usbphy clk
+refs added:
 
-Those are nice cleanups, thank you.
+  echo N > /sys/module/printk/parameters/console_suspend
 
-After applying this series, the only left users of the
-fwnode_graph_for_each_endpoint() macro are in drivers/base/property.c.
-They can all be trivially replaced with the scoped variant. Should we
-add a patch to use fwnode_graph_for_each_endpoint_scoped() everywhere,
-and drop fwnode_graph_for_each_endpoint() ?
+  echo devices > /sys/power/pm_test
+  echo platform > /sys/power/pm_test
+  echo processors > /sys/power/pm_test
+  echo core > /sys/power/pm_test
 
-> Signed-off-by: Frank Li <Frank.Li@nxp.com>
-> ---
-> Changes in v2:
-> - colllect review by tags
-> - fix typo and indent.
-> - see each patch's change log.
-> - Link to v1: https://patch.msgid.link/20260622-fw_scoped-v1-0-a37d0aac0a68@nxp.com
-> 
-> ---
-> Frank Li (4):
->       device property: Introduce fwnode_graph_for_each_endpoint_scoped()
->       media: mc: use fwnode_graph_for_each_endpoint_scoped() to simpilfy code
->       media: rkisp1: use fwnode_graph_for_each_endpoint_scoped() to simplify code
->       media: qcom: camss: use fwnode_graph_for_each_endpoint_scoped() to simplify code
-> 
->  drivers/media/platform/qcom/camss/camss.c           | 17 +++++------------
->  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c |  4 +---
->  drivers/media/v4l2-core/v4l2-mc.c                   |  5 +----
->  include/linux/property.h                            |  5 +++++
->  4 files changed, 12 insertions(+), 19 deletions(-)
-> ---
-> base-commit: 3ce97bd3c4f18608335e709c24d6a40e7036cab8
-> change-id: 20260620-fw_scoped-5dab644510a1
+  echo mem > /sys/power/state
+
+Changes in v2:
+- Include rockchip,rk3588-ehci in the EHCI constraint
+- Make clocks prop required for EHCI and OHCI
+- Collect t-b tag
+
+Jonas Karlman (2):
+  dt-bindings: usb: Add Rockchip RK3568 compatible for EHCI and OHCI
+  arm64: dts: rockchip: Fix devices suspend freeze on RK3568/RK3566
+
+ .../devicetree/bindings/usb/generic-ehci.yaml    | 14 ++++++++++++++
+ .../devicetree/bindings/usb/generic-ohci.yaml    |  7 ++++++-
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi    | 16 ++++++++--------
+ 3 files changed, 28 insertions(+), 9 deletions(-)
 
 -- 
-Regards,
+2.54.0
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
