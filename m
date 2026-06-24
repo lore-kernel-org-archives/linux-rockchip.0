@@ -4,76 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7F3ACDB481
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 12:40:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C25A9CDB479
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 13:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TL/7IKZkArr9hI6y5dQdH5Xf2wDWaMp9jXBDUhQTeWE=; b=L4wXinwfq2Ju+N
-	jbdRoIKSnERIRl1WrO/GiGA/ptHttbvSl6OxF4wd8HkU3aAQF6JsXbfwJlg37Tlmo2T/VhT7V+Cae
-	I+cptNgvXsgqG3mOl+p2tdY7NFVlX/dLEGR8hXFlzXMAafo4KLrX2m0lbwx+PMifKGN52deA1sXi/
-	gCXtDrUECUcPt6W/+yuUJ+JRgnd/bNT5NMJMdYQAq9IHcUEP1Ez9ZDlhGGrw3oqy6kqt0KbTnl2MY
-	NY0Ink+buQTd9X8DdKEKK9w61xCKc9JkNFcGGNEKg5oQ9Nw6lXe5zyHc7FvHOCFAduntON52pUP0m
-	gYEFHBbPikXF6fww2ZZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ACIUNAKUKCTmRMojQ8TtcZnhbr/w9ASFCDhFjnygXdo=; b=l8/vXCNQZANEkH7KDIoOZMd8FE
+	42q1ZYsbrqpsUfrPRqVPaGdkaVM61qFpvn4gdMpDorqHuAzV24+pKowOdn8n6gbUbY4zhqhvKmSjC
+	FlBOE71RuwBWBjSu1hqvQK6wKuRmdjlTHc6YZwUhj4ITlD+Bnh/yWmGdpkSMbmmY71oCsuRgK45IY
+	slvjsP/nwIGCeTFRFBbb9ttE29i9b4TEnDYcgSc0qrMFrU+0DXd3AN2pS0huHgfhVckbgcaaFpHJ3
+	WIApNjwxcsHDOLX5WltzkB23cufDoWz1u8A1eBUC0LIw6VV20SKLYyhMn56STCLphIuDLAs76YU+z
+	zTKiY/5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcMtg-00000007lgu-1LnF;
-	Wed, 24 Jun 2026 12:40:04 +0000
-Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
+	id 1wcNsI-00000007q74-3cFG;
+	Wed, 24 Jun 2026 13:42:42 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcMtd-00000007lcw-1bdX;
-	Wed, 24 Jun 2026 12:40:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=superkali.me; s=default; h=Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=3uSjwmL4EbTen81eC7wTPWqRW/v/A4hMDubGZKs3NF4=; b=hhoBPKDy31+j8iBy4QEpnYSu5A
-	bQR0PlKuWEXAsFfki3nNRMmEA1bTicm+cxkoAyDqozQKKM5PvtprIBK0mSYjR2LIxTqfHvDy3AtJk
-	ksMAqYguxge46wO38IuZydS4abcIvPkwjoXkx9SXP22YXYGMBqPGprc0IbnxU6sTvBrPxCyOy4hXv
-	l/9xHX4l8b1zZrHBZ79m/uZOzVxFw2tdwLNuw2I1VMxhz4tnihVCFZpD8o2CGixuIhG/rdImFMxAa
-	RrL6aUw4n+saFeZ67uYhioo9vb8liZpRJOxhxOSE1O/ZsXcs03oXgCk5/FfBTcjLDtxtVV0P0OLoW
-	HjM5aRGw==;
-Received: from [81.57.40.39] (port=37932 helo=superkali.me)
-	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.99.4)
-	(envelope-from <hello@superkali.me>)
-	id 1wcMsx-00000006N1g-26F0;
-	Wed, 24 Jun 2026 14:39:16 +0200
-From: Daniele Briguglio <hello@superkali.me>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	id 1wcNsE-00000007q3z-3UnC;
+	Wed, 24 Jun 2026 13:42:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1782308536; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=WrQLUK/YJKOSJ0BdKeN+Tce2MZXKpnujf//KyoVZmqYK4Vl2eBZBTbVqynvF1h625SO/PH8h/N9ezfd60sCrstn8xgk+CG9oH/YMrq7YRdiFpyS/a3SwzTNfTro4cDmQENYayVvijHSnMDedPfGgsgCk7iSfmsMWbmWuEZ+73VI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1782308536; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=n53M//DS/P0zhRXsUivv8G8josVwScB/U+TEaJl62BQ=; 
+	b=Gi+fWgrd1ezqTFXee1dbGwylrcx/B7mrh5IdShyCBK8geaC0uJLXq37dbGo728/PDUw9Vy74kG+/0f/7GM69U/FOLF8p62IioxSa32xjEREuDB/5O/W69vXwO5ZLWMbLYcsUdsn6Qo8DalceOLDDi6SazBN98a3/kb9uXI8oOOI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1782308536;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=n53M//DS/P0zhRXsUivv8G8josVwScB/U+TEaJl62BQ=;
+	b=HeWGkJn2agsdiGMHJL/FCZF54beLAWZnH6mnvO+RCnARlAMOpmgmVZaDGdGLhwYI
+	XlTmuClBeezXtNNtudZxKr3UjL5u3g78PQhvZfrWRR8Vrhz7Z5+3aCJ68BRCwiAPuOb
+	uPO1k3tZRy5DSxxe1oxgzZCK0t2L6fFcVQFnhTog=
+Received: by mx.zohomail.com with SMTPS id 1782308533796211.70892318542622;
+	Wed, 24 Jun 2026 06:42:13 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id C6277182F3B; Wed, 24 Jun 2026 15:42:09 +0200 (CEST)
+Date: Wed, 24 Jun 2026 15:42:09 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Daniele Briguglio <hello@superkali.me>
+Cc: Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Diederik de Haas <diederik@cknow-tech.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
 	Ricardo Pardini <ricardo@pardini.net>
-Subject: [PATCH] clk: rockchip: rk3588: don't disable unused I2S MCLK output gates
-Date: Wed, 24 Jun 2026 14:39:14 +0200
-Message-ID: <20260624123914.1767374-1-hello@superkali.me>
-X-Mailer: git-send-email 2.47.3
+Subject: Re: [PATCH] clk: rockchip: rk3588: don't disable unused I2S MCLK
+ output gates
+Message-ID: <ajvekEXnm7oezaNm@venus>
+References: <20260624123914.1767374-1-hello@superkali.me>
 MIME-Version: 1.0
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - fr5000-r.dnsiaas.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - superkali.me
-X-Get-Message-Sender-Via: fr5000-r.dnsiaas.com: authenticated_id: hello@superkali.me
-X-Authenticated-Sender: fr5000-r.dnsiaas.com: hello@superkali.me
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+In-Reply-To: <20260624123914.1767374-1-hello@superkali.me>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/282.293.17
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_054001_575846_BF2A3A48 
-X-CRM114-Status: UNSURE (   6.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260624_064239_092816_DA2459D0 
+X-CRM114-Status: GOOD (  18.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,77 +79,150 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3244590637756790249=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-No in-tree board references these gates yet. Boards drive the codec
-MCLK through the parent I2S*_8CH_MCLKOUT, and now that the gates are
-managed clocks, clk_disable_unused() turns them off at boot. On a board
-that relied on firmware leaving the output enabled, that cuts the MCLK
-and analog audio stops working.
 
-Mark the four gates CLK_IGNORE_UNUSED so an unreferenced gate keeps the
-state firmware left. A board that wants the kernel to own the gate can
-reference I2S*_8CH_MCLKOUT_TO_IO from DT instead.
+--===============3244590637756790249==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="apjjfijnkn7l6ncu"
+Content-Disposition: inline
 
-Fixes: 02b9b0bb6269 ("clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK output to IO")
-Reported-by: Diederik de Haas <diederik@cknow-tech.com>
-Closes: https://lore.kernel.org/linux-rockchip/DJGDSS875DDO.22TYPVYK5X8KZ@cknow-tech.com/
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-Signed-off-by: Daniele Briguglio <hello@superkali.me>
----
- drivers/clk/rockchip/clk-rk3588.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
-index 2ba9976654c..86953f9ffee 100644
---- a/drivers/clk/rockchip/clk-rk3588.c
-+++ b/drivers/clk/rockchip/clk-rk3588.c
-@@ -895,7 +895,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 	MUX(I2S2_2CH_MCLKOUT, "i2s2_2ch_mclkout", i2s2_2ch_mclkout_p, CLK_SET_RATE_PARENT,
- 			RK3588_CLKSEL_CON(30), 2, 1, MFLAGS),
- 	GATE_GRF(I2S2_2CH_MCLKOUT_TO_IO, "i2s2_2ch_mclkout_to_io", "i2s2_2ch_mclkout",
--			0, RK3588_SYSGRF_SOC_CON6, 2, GFLAGS, grf_type_sys),
-+			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 2, GFLAGS, grf_type_sys),
- 
- 	COMPOSITE(CLK_I2S3_2CH_SRC, "clk_i2s3_2ch_src", gpll_aupll_p, 0,
- 			RK3588_CLKSEL_CON(30), 8, 1, MFLAGS, 3, 5, DFLAGS,
-@@ -912,7 +912,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 	MUX(I2S3_2CH_MCLKOUT, "i2s3_2ch_mclkout", i2s3_2ch_mclkout_p, CLK_SET_RATE_PARENT,
- 			RK3588_CLKSEL_CON(32), 2, 1, MFLAGS),
- 	GATE_GRF(I2S3_2CH_MCLKOUT_TO_IO, "i2s3_2ch_mclkout_to_io", "i2s3_2ch_mclkout",
--			0, RK3588_SYSGRF_SOC_CON6, 7, GFLAGS, grf_type_sys),
-+			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 7, GFLAGS, grf_type_sys),
- 	GATE(PCLK_ACDCDIG, "pclk_acdcdig", "pclk_audio_root", 0,
- 			RK3588_CLKGATE_CON(7), 11, GFLAGS),
- 	GATE(HCLK_I2S0_8CH, "hclk_i2s0_8ch", "hclk_audio_root", 0,
-@@ -942,7 +942,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 	MUX(I2S0_8CH_MCLKOUT, "i2s0_8ch_mclkout", i2s0_8ch_mclkout_p, CLK_SET_RATE_PARENT,
- 			RK3588_CLKSEL_CON(28), 2, 2, MFLAGS),
- 	GATE_GRF(I2S0_8CH_MCLKOUT_TO_IO, "i2s0_8ch_mclkout_to_io", "i2s0_8ch_mclkout",
--			0, RK3588_SYSGRF_SOC_CON6, 0, GFLAGS, grf_type_sys),
-+			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 0, GFLAGS, grf_type_sys),
- 
- 	GATE(HCLK_PDM1, "hclk_pdm1", "hclk_audio_root", 0,
- 			RK3588_CLKGATE_CON(9), 6, GFLAGS),
-@@ -2229,7 +2229,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
- 	MUX(I2S1_8CH_MCLKOUT, "i2s1_8ch_mclkout", i2s1_8ch_mclkout_p, CLK_SET_RATE_PARENT,
- 			RK3588_PMU_CLKSEL_CON(9), 2, 2, MFLAGS),
- 	GATE_GRF(I2S1_8CH_MCLKOUT_TO_IO, "i2s1_8ch_mclkout_to_io", "i2s1_8ch_mclkout",
--			0, RK3588_SYSGRF_SOC_CON6, 1, GFLAGS, grf_type_sys),
-+			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 1, GFLAGS, grf_type_sys),
- 	GATE(PCLK_PMU1, "pclk_pmu1", "pclk_pmu0_root", CLK_IS_CRITICAL,
- 			RK3588_PMU_CLKGATE_CON(1), 0, GFLAGS),
- 	GATE(CLK_DDR_FAIL_SAFE, "clk_ddr_fail_safe", "clk_pmu0", CLK_IGNORE_UNUSED,
+--apjjfijnkn7l6ncu
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] clk: rockchip: rk3588: don't disable unused I2S MCLK
+ output gates
+MIME-Version: 1.0
 
-base-commit: 7edfb7fb58ee058298e18fde76a6077ef17d19d8
--- 
-2.47.3
+Hi,
 
+On Wed, Jun 24, 2026 at 02:39:14PM +0200, Daniele Briguglio wrote:
+> No in-tree board references these gates yet. Boards drive the codec
+> MCLK through the parent I2S*_8CH_MCLKOUT, and now that the gates are
+> managed clocks, clk_disable_unused() turns them off at boot. On a board
+> that relied on firmware leaving the output enabled, that cuts the MCLK
+> and analog audio stops working.
+>=20
+> Mark the four gates CLK_IGNORE_UNUSED so an unreferenced gate keeps the
+> state firmware left. A board that wants the kernel to own the gate can
+> reference I2S*_8CH_MCLKOUT_TO_IO from DT instead.
+>=20
+> Fixes: 02b9b0bb6269 ("clk: rockchip: rk3588: add GATE_GRF clocks for I2S =
+MCLK output to IO")
+> Reported-by: Diederik de Haas <diederik@cknow-tech.com>
+> Closes: https://lore.kernel.org/linux-rockchip/DJGDSS875DDO.22TYPVYK5X8KZ=
+@cknow-tech.com/
+> Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+> Signed-off-by: Daniele Briguglio <hello@superkali.me>
+> ---
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Greetings,
+
+-- Sebastian
+
+>  drivers/clk/rockchip/clk-rk3588.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk=
+-rk3588.c
+> index 2ba9976654c..86953f9ffee 100644
+> --- a/drivers/clk/rockchip/clk-rk3588.c
+> +++ b/drivers/clk/rockchip/clk-rk3588.c
+> @@ -895,7 +895,7 @@ static struct rockchip_clk_branch rk3588_early_clk_br=
+anches[] __initdata =3D {
+>  	MUX(I2S2_2CH_MCLKOUT, "i2s2_2ch_mclkout", i2s2_2ch_mclkout_p, CLK_SET_R=
+ATE_PARENT,
+>  			RK3588_CLKSEL_CON(30), 2, 1, MFLAGS),
+>  	GATE_GRF(I2S2_2CH_MCLKOUT_TO_IO, "i2s2_2ch_mclkout_to_io", "i2s2_2ch_mc=
+lkout",
+> -			0, RK3588_SYSGRF_SOC_CON6, 2, GFLAGS, grf_type_sys),
+> +			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 2, GFLAGS, grf_type_sys),
+> =20
+>  	COMPOSITE(CLK_I2S3_2CH_SRC, "clk_i2s3_2ch_src", gpll_aupll_p, 0,
+>  			RK3588_CLKSEL_CON(30), 8, 1, MFLAGS, 3, 5, DFLAGS,
+> @@ -912,7 +912,7 @@ static struct rockchip_clk_branch rk3588_early_clk_br=
+anches[] __initdata =3D {
+>  	MUX(I2S3_2CH_MCLKOUT, "i2s3_2ch_mclkout", i2s3_2ch_mclkout_p, CLK_SET_R=
+ATE_PARENT,
+>  			RK3588_CLKSEL_CON(32), 2, 1, MFLAGS),
+>  	GATE_GRF(I2S3_2CH_MCLKOUT_TO_IO, "i2s3_2ch_mclkout_to_io", "i2s3_2ch_mc=
+lkout",
+> -			0, RK3588_SYSGRF_SOC_CON6, 7, GFLAGS, grf_type_sys),
+> +			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 7, GFLAGS, grf_type_sys),
+>  	GATE(PCLK_ACDCDIG, "pclk_acdcdig", "pclk_audio_root", 0,
+>  			RK3588_CLKGATE_CON(7), 11, GFLAGS),
+>  	GATE(HCLK_I2S0_8CH, "hclk_i2s0_8ch", "hclk_audio_root", 0,
+> @@ -942,7 +942,7 @@ static struct rockchip_clk_branch rk3588_early_clk_br=
+anches[] __initdata =3D {
+>  	MUX(I2S0_8CH_MCLKOUT, "i2s0_8ch_mclkout", i2s0_8ch_mclkout_p, CLK_SET_R=
+ATE_PARENT,
+>  			RK3588_CLKSEL_CON(28), 2, 2, MFLAGS),
+>  	GATE_GRF(I2S0_8CH_MCLKOUT_TO_IO, "i2s0_8ch_mclkout_to_io", "i2s0_8ch_mc=
+lkout",
+> -			0, RK3588_SYSGRF_SOC_CON6, 0, GFLAGS, grf_type_sys),
+> +			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 0, GFLAGS, grf_type_sys),
+> =20
+>  	GATE(HCLK_PDM1, "hclk_pdm1", "hclk_audio_root", 0,
+>  			RK3588_CLKGATE_CON(9), 6, GFLAGS),
+> @@ -2229,7 +2229,7 @@ static struct rockchip_clk_branch rk3588_early_clk_=
+branches[] __initdata =3D {
+>  	MUX(I2S1_8CH_MCLKOUT, "i2s1_8ch_mclkout", i2s1_8ch_mclkout_p, CLK_SET_R=
+ATE_PARENT,
+>  			RK3588_PMU_CLKSEL_CON(9), 2, 2, MFLAGS),
+>  	GATE_GRF(I2S1_8CH_MCLKOUT_TO_IO, "i2s1_8ch_mclkout_to_io", "i2s1_8ch_mc=
+lkout",
+> -			0, RK3588_SYSGRF_SOC_CON6, 1, GFLAGS, grf_type_sys),
+> +			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 1, GFLAGS, grf_type_sys),
+>  	GATE(PCLK_PMU1, "pclk_pmu1", "pclk_pmu0_root", CLK_IS_CRITICAL,
+>  			RK3588_PMU_CLKGATE_CON(1), 0, GFLAGS),
+>  	GATE(CLK_DDR_FAIL_SAFE, "clk_ddr_fail_safe", "clk_pmu0", CLK_IGNORE_UNU=
+SED,
+>=20
+> base-commit: 7edfb7fb58ee058298e18fde76a6077ef17d19d8
+> --=20
+> 2.47.3
+>=20
+>=20
+
+--apjjfijnkn7l6ncu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmo73q0ACgkQ2O7X88g7
++ppZFw//eAKxmL99/7n8rhF+/8Q3hfEevwO/yceZBpyjmzPG/Dd8ONVBvqkK1L2g
+1P8XnkAKc67+meKCr8gS9hGOL6g94U+r5/qDg4LEYatIlBSHqV7bWDQmkMHREB2j
+QGf4L0+iN3By0nyEJP4aRppcRwCqxIlcJA5vxnLnDnlgnC75PLpTag0Zi/IsW54t
+GmKJ803cqn8/UZLez9xYrJk4noIy5If0PHFir5iX+chIa0LpiTSa0BxDL2pVy/5L
+KUApzbUFO/hhqc8vnhuxtrmAZrCYklhIthyW5U4NtKjU3TawdSS5dUNJp6Dcax9F
+aGkFABP8kdF4qtGa3YIyIX5MTkQWLQZPK1gk5XlK8voisAYysygZD0CpxWLRCeSN
+0lKBEpay315/uVlbJgfkYPyAHJ42eiapdIpIpiNdhVxeIK0qlSEuOtSPBQ4FHU5D
++L7cduJL6LX4JJ/QWS+efoQWyVHQX669BCEZwasjDIyVWRcT+b0F3Ah5YbQ4jsJJ
+bw1h/cNDi7JVxlC4UwGELR5OwIC0ZEPVTCwc7p6j4Ts8jmfppJZxZvOY12EVTbXl
+gIkf2DMyv/d+r8dgNAnvU/sManiUPR8H0dUtir8heOtDui5G3WuVCHGVeDESGsAW
+7zhM/mDRoj/bkilVQv1rhlNeL2kT9+T0TE9icB1ygFWXdQoh5Js=
+=dTbo
+-----END PGP SIGNATURE-----
+
+--apjjfijnkn7l6ncu--
+
+
+--===============3244590637756790249==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3244590637756790249==--
+
