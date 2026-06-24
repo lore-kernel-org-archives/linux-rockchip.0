@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7636CDB47F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 19:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D9D5CDE002
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 19:27:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UOE3wMpHlwm9Gn5e0BfYx7kS6ZRzL6wZEq9yMWAahzU=; b=kBnvoSwmQDOLMM
-	Gmx4WiWIwSpoo2sZnuzfj4KKKzVWqnnCGfaR4zDi6b9zRuWnzGz1rdPOVzwIOMjDZ5tG913WaPAZu
-	Rh2ktt06jSPx2mgGCZ8KVgJUkTwNUEDDTCkA23/TYsQKKxrV8Es+HxxnRP4r9XCvC9u01HqE9Pa7m
-	iw54BYx+2M+cMYYMTWpTQJKG+pVGxdP8QPah7hV8XcrsQWUIbJ1CQAdx3b2wKRFTe8VQYEH5yRPHX
-	Wu5TvOP41m6klleFeFowo08q6hgQ7xCHM8H7rjgFJJxVP4wsH2zsshtE+cRNYoah9HeppV/b4sgS9
-	8T/MgA6IAU54/uj/Fq8Q==;
+	List-Owner; bh=odLYZDuCAvs/NuyAx6wl1SrbZFPSCQMKmbtofUTsxg8=; b=Elt9DTVTAajQ5a
+	vFCCkrxxoLFOQKKAKmfG26KgfBU6N8D/iaX5Tv3PMaVHLjczeWVZB5uKByrMRXpJjQHzxUgvfcdJF
+	8aBi70+EY/OikZu3xKPYaqjrtbS6NoZfEXikTe5oFAWLyGQZxahWRTbROl7GFqKzv9T22JDg/dT30
+	3Lheba9AB0Sv/RR27fzkjrSkyhgSu90AHlhiFwth863cgX5+GS2dCg/sgFsp0KIsxDo/NJYvzPZVH
+	n64B/S6/RVImkreXm3l60lZFUVDzJyib8xCzGCBo02FjCX/ox9CYxtplDLHUMYFjjYhTC2oma+kUv
+	dmqm0YpDFXcFiATfRJVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcTG9-00000008GpA-0wC8;
-	Wed, 24 Jun 2026 19:27:41 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1wcTGD-00000008Gs3-1t0p;
+	Wed, 24 Jun 2026 19:27:45 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcTG5-00000008GnU-4Arf
+	id 1wcTGB-00000008Gpv-0CdD
 	for linux-rockchip@lists.infradead.org;
-	Wed, 24 Jun 2026 19:27:39 +0000
+	Wed, 24 Jun 2026 19:27:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1782329257; bh=QvtzBjRWJhsbenkKdH0SFCY3vwPhaULuIOm7rRelHtw=;
- b=JqagC7i/nwDWgUqQyZsUhmY9wjzKRCEepkRsAwKF21cQysI3FfFwwWfk8VNRxafncx1uGqU+c
- dJmjwMZ6OEPhR8Fv2IZgrnhHtk877zsIS0MoaaO2tiP8QPcUpj2RQvngriD3Hele104D8zQ/yTC
- rrNvccBI0PJ2IewKq2pStT9kLGdiJgjrjR+6kCnDCZ4+gW/164pZyG+Eh2jX7qlsb2BKrw7LV/w
- GQep8f97DN1URVgfFGCw6RlxucCkYcxbY43QgKhoCko5WCu9zPEkNprJ4EpxGxFpdm//ldXNjJL
- 5/6xG/FYlLcv6h/8j87OLSGvrNBzW/cyTOIS8E6F/5yg==
-X-Forward-Email-ID: 6a3c2fa8138f49c481104ad8
+ t=1782329261; bh=Z99Q29vxpTumNbDlSLV/5spk9aNhNsdFqpygOCzOZY4=;
+ b=T3PM0hkTqy2YdJm+qqHGFOkXb4R9mebKl44mpnWoTqGJS8J3pmqWPrtu3jsgxfV2L9SfxCJWN
+ 4zkEP6xgbINeUF2qY/dwslcIdZ6tkBct4LVu5SghXvW/CRCf7uZcKTP8gZ43rEuabliURdAohnK
+ etd5t26RtGb79u3lozE6Sv4TMFnk9wwRGNAeijHt9fLq2c3ewVLFFNWolSD9dVrF++dKBZnausp
+ Gr05zm50A/doZI6co9J+2w3/Gi3BTXEJsYsPwOTRGaj1X+kAe2yjoFHIu4j118KNiqsc2B27Fzv
+ ymmcQAxdsU3l+XF4Od8/CapJsYadp0Ocu5ZyqPmIJYzg==
+X-Forward-Email-ID: 6a3c2fa5138f49c481104abd
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
+ 149.28.215.223
 X-Forward-Email-Version: 2.8.32
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -49,26 +49,25 @@ To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Michael Riesch <michael.riesch@collabora.com>
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Diederik de Haas <diederik@cknow-tech.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-usb@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Fix devices suspend freeze on RK3568/RK3566
-Date: Wed, 24 Jun 2026 19:27:25 +0000
-Message-ID: <20260624192726.781864-3-jonas@kwiboo.se>
+Subject: [PATCH v2 1/2] dt-bindings: usb: Add Rockchip RK3568 compatible for EHCI and OHCI
+Date: Wed, 24 Jun 2026 19:27:24 +0000
+Message-ID: <20260624192726.781864-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260624192726.781864-1-jonas@kwiboo.se>
 References: <20260624192726.781864-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_122738_147772_207C2B9F 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20260624_122743_095084_871D40E9 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,93 +84,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The EHCI/OHCI controller depends on clk_usbphy1_480m being enabled, or
-the system may freeze when registers are accessed, i.e. during suspend
-in ohci_suspend().
+The Rockchip RK3568 EHCI/OHCI controller depends on clk_usbphy1_480m
+being enabled, or the system may freeze when registers are accessed.
 
-Add the missing clk_usbphy1_480m clocks reference to EHCI/OHCI
-controllers to ensure the clock is enabled when ECHI/OHCI registers are
-accessed to prevent a system freeze.
+Add Rockchip RK3568 EHCI and OHCI compatibles with a similar four-clock
+constraint as RK3588, also extend the EHCI constraint to include RK3588
+to match similar requirements of RK3588.
 
-Fixes suspend pm_test issue with EHCI/OHCI devices due to the missing
-clk_usbphy1_480m reference and makes following pm_test modes work:
-
-  echo N > /sys/module/printk/parameters/console_suspend
-
-  echo devices > /sys/power/pm_test
-  echo platform > /sys/power/pm_test
-  echo processors > /sys/power/pm_test
-  echo core > /sys/power/pm_test
-
-  echo mem > /sys/power/state
-
-Fixes: 91c4c3e06a25 ("arm64: dts: rockchip: add usb2 nodes to rk3568 device tree")
-Fixes: 78f7186095db ("arm64: dts: rockchip: rename and sort the rk356x usb2 phy handles")
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
-v2: Collect t-b tag
----
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+Existing DTs for RK3568 use the plain generic-ehci/ohci compatible,
+next patch make use of these new compatibles and adds the missing
+clk_usbphy1_480m clock references.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index a5832895bd39..c930a6fd6ea0 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -321,44 +321,44 @@ its: msi-controller@fd440000 {
- 	};
+Existing DTs for RK3588 have contained the required four clocks since
+the initial addition of the EHCI/OHCI nodes.
+
+Changes in v2:
+- Include rockchip,rk3588-ehci in the EHCI constraint
+- Make clocks prop required for EHCI and OHCI
+---
+ .../devicetree/bindings/usb/generic-ehci.yaml      | 14 ++++++++++++++
+ .../devicetree/bindings/usb/generic-ohci.yaml      |  7 ++++++-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/usb/generic-ehci.yaml b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
+index 55a5aa7d7a54..a39f01e740b1 100644
+--- a/Documentation/devicetree/bindings/usb/generic-ehci.yaml
++++ b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
+@@ -52,6 +52,7 @@ properties:
+               - ibm,476gtr-ehci
+               - nxp,lpc1850-ehci
+               - qca,ar7100-ehci
++              - rockchip,rk3568-ehci
+               - rockchip,rk3588-ehci
+               - snps,hsdk-v1.0-ehci
+               - socionext,uniphier-ehci
+@@ -186,6 +187,19 @@ allOf:
+       required:
+         - clocks
+         - clock-names
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3568-ehci
++              - rockchip,rk3588-ehci
++    then:
++      properties:
++        clocks:
++          minItems: 4
++      required:
++        - clocks
  
- 	usb_host0_ehci: usb@fd800000 {
--		compatible = "generic-ehci";
-+		compatible = "rockchip,rk3568-ehci", "generic-ehci";
- 		reg = <0x0 0xfd800000 0x0 0x40000>;
- 		interrupts = <GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru HCLK_USB2HOST0>, <&cru HCLK_USB2HOST0_ARB>,
--			 <&cru PCLK_USB>;
-+			 <&cru PCLK_USB>, <&usb2phy1>;
- 		phys = <&usb2phy1_otg>;
- 		phy-names = "usb";
- 		status = "disabled";
- 	};
+ unevaluatedProperties: false
  
- 	usb_host0_ohci: usb@fd840000 {
--		compatible = "generic-ohci";
-+		compatible = "rockchip,rk3568-ohci", "generic-ohci";
- 		reg = <0x0 0xfd840000 0x0 0x40000>;
- 		interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru HCLK_USB2HOST0>, <&cru HCLK_USB2HOST0_ARB>,
--			 <&cru PCLK_USB>;
-+			 <&cru PCLK_USB>, <&usb2phy1>;
- 		phys = <&usb2phy1_otg>;
- 		phy-names = "usb";
- 		status = "disabled";
- 	};
- 
- 	usb_host1_ehci: usb@fd880000 {
--		compatible = "generic-ehci";
-+		compatible = "rockchip,rk3568-ehci", "generic-ehci";
- 		reg = <0x0 0xfd880000 0x0 0x40000>;
- 		interrupts = <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru HCLK_USB2HOST1>, <&cru HCLK_USB2HOST1_ARB>,
--			 <&cru PCLK_USB>;
-+			 <&cru PCLK_USB>, <&usb2phy1>;
- 		phys = <&usb2phy1_host>;
- 		phy-names = "usb";
- 		status = "disabled";
- 	};
- 
- 	usb_host1_ohci: usb@fd8c0000 {
--		compatible = "generic-ohci";
-+		compatible = "rockchip,rk3568-ohci", "generic-ohci";
- 		reg = <0x0 0xfd8c0000 0x0 0x40000>;
- 		interrupts = <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru HCLK_USB2HOST1>, <&cru HCLK_USB2HOST1_ARB>,
--			 <&cru PCLK_USB>;
-+			 <&cru PCLK_USB>, <&usb2phy1>;
- 		phys = <&usb2phy1_host>;
- 		phy-names = "usb";
- 		status = "disabled";
+diff --git a/Documentation/devicetree/bindings/usb/generic-ohci.yaml b/Documentation/devicetree/bindings/usb/generic-ohci.yaml
+index d42f448fa204..19449a6b3033 100644
+--- a/Documentation/devicetree/bindings/usb/generic-ohci.yaml
++++ b/Documentation/devicetree/bindings/usb/generic-ohci.yaml
+@@ -47,6 +47,7 @@ properties:
+               - hpe,gxp-ohci
+               - ibm,476gtr-ohci
+               - ingenic,jz4740-ohci
++              - rockchip,rk3568-ohci
+               - rockchip,rk3588-ohci
+               - snps,hsdk-v1.0-ohci
+           - const: generic-ohci
+@@ -198,11 +199,15 @@ allOf:
+       properties:
+         compatible:
+           contains:
+-            const: rockchip,rk3588-ohci
++            enum:
++              - rockchip,rk3568-ohci
++              - rockchip,rk3588-ohci
+     then:
+       properties:
+         clocks:
+           minItems: 4
++      required:
++        - clocks
+     else:
+       properties:
+         clocks:
 -- 
 2.54.0
 
