@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3B31CDB47F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 12:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7F3ACDB481
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 12:40:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lgEMloz7VEBZcd6lzHrvjfth8UEXT+1sK6yjnpGM/IY=; b=0tiItdwpJhEIHs
-	5QtecZGuj1h/PHJg53yp0bqRc1OG88hsvgZ1H/1M1VWdGcohblbeXegKAu4esuX1vExn5+gbxzqiM
-	v+x+3Msjcxzl/K7RPrG0eUvSx0Ea12QtjDjy8YtNCa5AeazSqnbiRsEo6FWhvyp48YH+GWGoiuMV4
-	eEFpLAq1SzSLi3lFMFkok0nEeOTq9J4H4VXaiVrFi48YgDyZG9tFEblBcob+2BsNUocVm7O3WfNBg
-	IH5YeESI7pvRSbiHN6GKhppjI74VG9XNz0fLqagkdkRSH2Vkz6bvhukFLhZyjXtREVJkODqzSYDGJ
-	kmvKBq33N1QUQ4e5AEZQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TL/7IKZkArr9hI6y5dQdH5Xf2wDWaMp9jXBDUhQTeWE=; b=L4wXinwfq2Ju+N
+	jbdRoIKSnERIRl1WrO/GiGA/ptHttbvSl6OxF4wd8HkU3aAQF6JsXbfwJlg37Tlmo2T/VhT7V+Cae
+	I+cptNgvXsgqG3mOl+p2tdY7NFVlX/dLEGR8hXFlzXMAafo4KLrX2m0lbwx+PMifKGN52deA1sXi/
+	gCXtDrUECUcPt6W/+yuUJ+JRgnd/bNT5NMJMdYQAq9IHcUEP1Ez9ZDlhGGrw3oqy6kqt0KbTnl2MY
+	NY0Ink+buQTd9X8DdKEKK9w61xCKc9JkNFcGGNEKg5oQ9Nw6lXe5zyHc7FvHOCFAduntON52pUP0m
+	gYEFHBbPikXF6fww2ZZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcMaX-00000007kBl-0eV6;
-	Wed, 24 Jun 2026 12:20:17 +0000
+	id 1wcMtg-00000007lgu-1LnF;
+	Wed, 24 Jun 2026 12:40:04 +0000
 Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcMaT-00000007kB5-2Px9;
-	Wed, 24 Jun 2026 12:20:15 +0000
+	id 1wcMtd-00000007lcw-1bdX;
+	Wed, 24 Jun 2026 12:40:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=superkali.me; s=default; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=jJkcKCn078uona9XGGRB7XcSnb+0ei7fuHLd3fVitTA=; b=kZeRiK6rsuM+5U6Q0zOpbGqnRb
-	cBSPQDS8MlSefsWmg5NTXgOHfvDyfD/CuhQacADe9pUlGrKPUjFz/v0cDdH3S6ZIjCA0r89Oi5h2x
-	HGOldomGpiaL8OvkAiayjjV+ahEwAGBH3eJcRtqMgtvuOe0kzO+NxwJroGKqSyi4KJxKywla95MAA
-	IxFMhGzTdOnR0xz/cbUUytzHoea1hBS11X9cnsfm5SKARTOn/PEkQ2WSDCxVUoPJ4EIXOlgcr40Qq
-	YJONGlm+bi4R+/VJPAYmYAl4auXLeYaQBsG+esTLIzQb4Mqs8/62oz5CySGxap7qKzh8BnpsurCgS
-	1qbENCjQ==;
-Received: from [81.57.40.39] (port=58810 helo=superkali.me)
+	d=superkali.me; s=default; h=Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=3uSjwmL4EbTen81eC7wTPWqRW/v/A4hMDubGZKs3NF4=; b=hhoBPKDy31+j8iBy4QEpnYSu5A
+	bQR0PlKuWEXAsFfki3nNRMmEA1bTicm+cxkoAyDqozQKKM5PvtprIBK0mSYjR2LIxTqfHvDy3AtJk
+	ksMAqYguxge46wO38IuZydS4abcIvPkwjoXkx9SXP22YXYGMBqPGprc0IbnxU6sTvBrPxCyOy4hXv
+	l/9xHX4l8b1zZrHBZ79m/uZOzVxFw2tdwLNuw2I1VMxhz4tnihVCFZpD8o2CGixuIhG/rdImFMxAa
+	RrL6aUw4n+saFeZ67uYhioo9vb8liZpRJOxhxOSE1O/ZsXcs03oXgCk5/FfBTcjLDtxtVV0P0OLoW
+	HjM5aRGw==;
+Received: from [81.57.40.39] (port=37932 helo=superkali.me)
 	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
 	(Exim 4.99.4)
 	(envelope-from <hello@superkali.me>)
-	id 1wcMaT-00000004mVM-2OD9;
-	Wed, 24 Jun 2026 14:20:10 +0200
+	id 1wcMsx-00000006N1g-26F0;
+	Wed, 24 Jun 2026 14:39:16 +0200
 From: Daniele Briguglio <hello@superkali.me>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Michael Turquette <mturquette@baylibre.com>,
+To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
 	Ricardo Pardini <ricardo@pardini.net>
-Subject: Re: [PATCH v4 5/5] clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK output to IO
-Date: Wed, 24 Jun 2026 14:20:08 +0200
-Message-ID: <20260624122008.1737107-1-hello@superkali.me>
+Subject: [PATCH] clk: rockchip: rk3588: don't disable unused I2S MCLK output gates
+Date: Wed, 24 Jun 2026 14:39:14 +0200
+Message-ID: <20260624123914.1767374-1-hello@superkali.me>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <2008560.6tgchFWduM@diego>
-References: <20260419-rk3588-mclk-gate-grf-v4-0-513a42dd1dcc@superkali.me> <20260419-rk3588-mclk-gate-grf-v4-5-513a42dd1dcc@superkali.me> <2008560.6tgchFWduM@diego>
 MIME-Version: 1.0
 X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
 X-AntiAbuse: Primary Hostname - fr5000-r.dnsiaas.com
@@ -77,8 +71,8 @@ X-Source:
 X-Source-Args: 
 X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_052013_915923_DFC6BEEC 
-X-CRM114-Status: UNSURE (   2.65  )
+X-CRM114-CacheID: sfid-20260624_054001_575846_BF2A3A48 
+X-CRM114-Status: UNSURE (   6.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,15 +90,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+No in-tree board references these gates yet. Boards drive the codec
+MCLK through the parent I2S*_8CH_MCLKOUT, and now that the gates are
+managed clocks, clk_disable_unused() turns them off at boot. On a board
+that relied on firmware leaving the output enabled, that cuts the MCLK
+and analog audio stops working.
 
-> Care to send a patch for that change? :-)
+Mark the four gates CLK_IGNORE_UNUSED so an unreferenced gate keeps the
+state firmware left. A board that wants the kernel to own the gate can
+reference I2S*_8CH_MCLKOUT_TO_IO from DT instead.
 
-Will do. I was only waiting for your call on the approach before sending,
-so I'll get it out shortly.
+Fixes: 02b9b0bb6269 ("clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK output to IO")
+Reported-by: Diederik de Haas <diederik@cknow-tech.com>
+Closes: https://lore.kernel.org/linux-rockchip/DJGDSS875DDO.22TYPVYK5X8KZ@cknow-tech.com/
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+Signed-off-by: Daniele Briguglio <hello@superkali.me>
+---
+ drivers/clk/rockchip/clk-rk3588.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Best regards,
-Daniele
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index 2ba9976654c..86953f9ffee 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -895,7 +895,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 	MUX(I2S2_2CH_MCLKOUT, "i2s2_2ch_mclkout", i2s2_2ch_mclkout_p, CLK_SET_RATE_PARENT,
+ 			RK3588_CLKSEL_CON(30), 2, 1, MFLAGS),
+ 	GATE_GRF(I2S2_2CH_MCLKOUT_TO_IO, "i2s2_2ch_mclkout_to_io", "i2s2_2ch_mclkout",
+-			0, RK3588_SYSGRF_SOC_CON6, 2, GFLAGS, grf_type_sys),
++			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 2, GFLAGS, grf_type_sys),
+ 
+ 	COMPOSITE(CLK_I2S3_2CH_SRC, "clk_i2s3_2ch_src", gpll_aupll_p, 0,
+ 			RK3588_CLKSEL_CON(30), 8, 1, MFLAGS, 3, 5, DFLAGS,
+@@ -912,7 +912,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 	MUX(I2S3_2CH_MCLKOUT, "i2s3_2ch_mclkout", i2s3_2ch_mclkout_p, CLK_SET_RATE_PARENT,
+ 			RK3588_CLKSEL_CON(32), 2, 1, MFLAGS),
+ 	GATE_GRF(I2S3_2CH_MCLKOUT_TO_IO, "i2s3_2ch_mclkout_to_io", "i2s3_2ch_mclkout",
+-			0, RK3588_SYSGRF_SOC_CON6, 7, GFLAGS, grf_type_sys),
++			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 7, GFLAGS, grf_type_sys),
+ 	GATE(PCLK_ACDCDIG, "pclk_acdcdig", "pclk_audio_root", 0,
+ 			RK3588_CLKGATE_CON(7), 11, GFLAGS),
+ 	GATE(HCLK_I2S0_8CH, "hclk_i2s0_8ch", "hclk_audio_root", 0,
+@@ -942,7 +942,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 	MUX(I2S0_8CH_MCLKOUT, "i2s0_8ch_mclkout", i2s0_8ch_mclkout_p, CLK_SET_RATE_PARENT,
+ 			RK3588_CLKSEL_CON(28), 2, 2, MFLAGS),
+ 	GATE_GRF(I2S0_8CH_MCLKOUT_TO_IO, "i2s0_8ch_mclkout_to_io", "i2s0_8ch_mclkout",
+-			0, RK3588_SYSGRF_SOC_CON6, 0, GFLAGS, grf_type_sys),
++			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 0, GFLAGS, grf_type_sys),
+ 
+ 	GATE(HCLK_PDM1, "hclk_pdm1", "hclk_audio_root", 0,
+ 			RK3588_CLKGATE_CON(9), 6, GFLAGS),
+@@ -2229,7 +2229,7 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 	MUX(I2S1_8CH_MCLKOUT, "i2s1_8ch_mclkout", i2s1_8ch_mclkout_p, CLK_SET_RATE_PARENT,
+ 			RK3588_PMU_CLKSEL_CON(9), 2, 2, MFLAGS),
+ 	GATE_GRF(I2S1_8CH_MCLKOUT_TO_IO, "i2s1_8ch_mclkout_to_io", "i2s1_8ch_mclkout",
+-			0, RK3588_SYSGRF_SOC_CON6, 1, GFLAGS, grf_type_sys),
++			CLK_IGNORE_UNUSED, RK3588_SYSGRF_SOC_CON6, 1, GFLAGS, grf_type_sys),
+ 	GATE(PCLK_PMU1, "pclk_pmu1", "pclk_pmu0_root", CLK_IS_CRITICAL,
+ 			RK3588_PMU_CLKGATE_CON(1), 0, GFLAGS),
+ 	GATE(CLK_DDR_FAIL_SAFE, "clk_ddr_fail_safe", "clk_pmu0", CLK_IGNORE_UNUSED,
+
+base-commit: 7edfb7fb58ee058298e18fde76a6077ef17d19d8
+-- 
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
