@@ -4,42 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 420DFCDB479
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Jun 2026 22:20:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EB43CDE002
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 06:31:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/E/jHjmSmtuAeKwe+a/vkaS6zQnXZ6aGyM52n+HOofw=; b=gyk52F+H+Vep/L
-	aRl3cqm2j/QOCWO9GyZZ22OcPe+v/rSP4w7DsXxpRwYVT64CtJe5RUPWe5UFK7GKGt77yMRHPZY1i
-	zWZeGwfluAXQRT4fKVcDbkZRKSXYyxA8gWmYffTGynBKutddfyEhbv+uiqiZ+5gA44ZyKXHYwVNXH
-	+N4w4MkHDzNt+MzPzCDlDYt4biORelJDW8jQbmA9eHfJTussGvQtR5nnpgleUFWkN5GTIE4vX0pk3
-	ODgSneoK/IrM+JfDMUd8dZcLp26Rs854DUhvxkCWojLpOSzv+7DasYPoOG7F7VxEbMsD3NIvde8ld
-	t47TW+LJnT2GrITTRDag==;
+	List-Owner; bh=HyR/iMi5ojC7MF1cAsaAdFv12/AKdUaQALwS/4eJux8=; b=VM94+atMa6LcrQ
+	bkhB2rAuunGbt1IA8VJNzsdvBBDc5+Eb9PkMM7PRD6Lvp3s2fH2q/Vr6x5CLVxv28eJIrw/96LZFl
+	83/F8kDDEje0uU/oKM4XORNUjPAPUaYWXWjG8rtibo1AohadJpU1Z55jEQaW/nmT99jXgU5DbhaOs
+	wqMYxiOvtTAx97WR6A3KmGiLrTizNF9PyqSU660qaMzYUJeNiaBhxsHNc5tETgGa/beRP8l138vXv
+	0S//waz2fj3u+qlJfiped4nc4J0pq3MapAI2nxkqZ9c/wQMa3rGDqs7uNClgV5YfvYCc9UdwO0svG
+	0UXE1XcvB9hchst4Tu/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcVxh-00000008OXi-1Ay6;
-	Wed, 24 Jun 2026 22:20:49 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1wcdcW-00000008hnh-2Uxg;
+	Thu, 25 Jun 2026 06:31:28 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcVxe-00000008OXB-3nLw;
-	Wed, 24 Jun 2026 22:20:48 +0000
-Received: from killaraus.ideasonboard.com (2001-14ba-70f3-e800--a06.rev.dnainternet.fi [IPv6:2001:14ba:70f3:e800::a06])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 37C98929;
-	Thu, 25 Jun 2026 00:20:04 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1782339604;
-	bh=Az4Lcorrg+CspHNvux8x53XK9+wEtcYFhVqLEqIlU30=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=T8b381ilsHNYyXouPKGPHHzHsCDZu2Po+cihewknDkwsEQDiFs36AfYuduBir21be
-	 rWdwZWM+NsJYQceT16fR3HSVuwBHQZ0qV+gpOKW0mKaQz+svrV5X/SfGyB84VweAjm
-	 GWeO90XdtDiCFhCFibcaMU2yPhBP3KoaIer5aOyM=
-Date: Thu, 25 Jun 2026 01:20:42 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+	id 1wcdcT-00000008hnH-1urQ;
+	Thu, 25 Jun 2026 06:31:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1782369085; x=1813905085;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=fwGnL97xmgeZIlcEfXqmDIbjqKBgP8CglQlDHEXM+X8=;
+  b=IZXx2CrfqRQlWmMoRl/68uIy1waVxcbR+M0FP5cR8j9l0G/QFdpS8XM7
+   K41Q+7arzCjMtD+/j3LlktrhjNClIjFj9Lnx8oBCERKsM7tlQ4AZbnrhR
+   cK6HGwEn5lPRyzkh6R6QGhUptzYCLUpP1hnyBW1q3+j0hIQ6It9sVO4tX
+   CxZMKaaMiKLgWXuni5YZoZfupsaAS+em7MZWZwp0eA9pIK/U45kDNFNhx
+   +eGnYo6SI7kCC/yrCuSEB24vS4N3VvYfwS6nr8ThgJSf1nJC1ePo+1okd
+   MHIXFXk3pNSzOofCI8amLzXTvJVeodJNT7HwlYTf6MAzUm5d9H0kCnVDo
+   w==;
+X-CSE-ConnectionGUID: DqIqg32FQD+LaZCdgowwHg==
+X-CSE-MsgGUID: 0h/dUAn6SYKiY1HQrAKgEg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11827"; a="87046026"
+X-IronPort-AV: E=Sophos;i="6.24,223,1774335600"; 
+   d="scan'208";a="87046026"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2026 23:31:21 -0700
+X-CSE-ConnectionGUID: slld4H3rR16nX4qt4wrK0A==
+X-CSE-MsgGUID: LScKLZpATE+psYxu0HB+Cg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,223,1774335600"; 
+   d="scan'208";a="252343530"
+Received: from rvuia-mobl.ger.corp.intel.com (HELO localhost) ([10.245.245.93])
+  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2026 23:31:16 -0700
+Date: Thu, 25 Jun 2026 09:31:14 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Frank Li <Frank.li@oss.nxp.com>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	Daniel Scally <djrscally@gmail.com>,
 	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
 	Sakari Ailus <sakari.ailus@linux.intel.com>,
@@ -60,7 +77,7 @@ Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
 	Frank Li <Frank.Li@nxp.com>, Guoniu Zhou <guoniu.zhou@oss.nxp.com>
 Subject: Re: [PATCH v2 0/4] media: add and use
  fwnode_graph_for_each_endpoint_scoped()
-Message-ID: <20260624222042.GN851255@killaraus.ideasonboard.com>
+Message-ID: <ajzLMiKrlXf2hFRd@ashevche-desk.local>
 References: <20260624-fw_scoped-v2-0-0a8db472af4a@nxp.com>
  <20260624191935.GG851255@killaraus.ideasonboard.com>
  <ajwxcn2LXS8InAjZ@SMW015318>
@@ -69,9 +86,11 @@ References: <20260624-fw_scoped-v2-0-0a8db472af4a@nxp.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <ajxCOE3avXXLlrfT@SMW015318>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_152047_092349_2772B232 
-X-CRM114-Status: GOOD (  27.57  )
+X-CRM114-CacheID: sfid-20260624_233125_540677_DB200C66 
+X-CRM114-Status: GOOD (  31.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,15 +156,24 @@ On Wed, Jun 24, 2026 at 03:46:48PM -0500, Frank Li wrote:
 > It's not big deal, if everyone prefer drop fwnode_graph_for_each_endpoint(),
 > I can do it.
 
-Let's see what others think. If people prefer keeping both versions,
-I'll be OK with that.
+I slightly tend to the safest option (see below), but as a compromise I can
+suggest to inline the fwnode_graph_for_each_endpoint() into that single user
+that doesn't need a put. However, this may uglify the code and rise a question
+of the consistency. So, consider that suggestion with grain of salt and apply
+only if we have wider agreement with it.
 
 > > > It'd better leave these as it.
 
--- 
-Regards,
+TL;DR:
+This is the safest option, of course. And as mentioned above I slightly
+prefer this way. Another argument is that in some cases we might want to
+have it in the future and since we have an existing user, let it live.
 
-Laurent Pinchart
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
