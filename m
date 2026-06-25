@@ -4,90 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C59CDB466
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 06:34:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F178CDB466
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 06:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o57EvP7fdci5QITsnfxLXeNaXh5phhVI/QBEch4lp9c=; b=BKcZpfdqNqdZ6F
-	aF00Sx9Yg9F8g9WxBsVOBJWTADSy5qLqu1y6D+Wcy0CWdfhSwkqUNMuQyWm+yYp+GdrwTI1SE9gF5
-	HkkyN+RfItpRLIA0AMxJVjmaBsU3/6WF6zSQjWcuW4iM35HFWoaBZai3hjvjuN0JThglOZ8h9Nf1J
-	q7SiX03RZ2UsF7K0aY/z0TBahiXhNv5gBFkTzjJ4yXzikrmHGgVnJFozPeepV5mrMCGJobasGqOSs
-	wQpK+DsFhObTtDtDcnYeSC59OTZ+t3dy2Mm0mF6yhSqpVhPEAwjrLVkOXOez253ulu9U69dpkQuJK
-	lo/XPGNmjJhE40FQTfKA==;
+	List-Owner; bh=D9olG7yIPdA/lndYwdVgeF+1BZsticFfQxdom17AUCA=; b=jzc2P4gcVVJ0eG
+	GTKXouwvup+v60PO0m77LThyK09LICZJRHwDsQh9ubqJFEvSmXtHQKd3YOTqEek2+97TuDL54BCAl
+	ftuuKaYVsiraZE04E6FUWQK1skXxpTDGECsa5bANovKOGBUHo9AvZY3dbZtiEFh10jjHio2eRg4BJ
+	N6oOrqz/VFhvh3pl4u+SccR/lC/uqOnpFCpqcnSPaMWL5yNBz7a49OFJFYZ6W5KnDPvmeXY/UtG+j
+	9P5Tg8Vc9Kg8sXQsDZc/vIi0VbSpo1P4XXRyJm+0lkgd8DZqD1CKOWS5Xi9Vr/V4bWWSr9qWLUs7O
+	DAvm+hWVKDT5dQ748qvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcdev-00000008i4X-1Jwn;
-	Thu, 25 Jun 2026 06:33:57 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1wcdoG-00000008iaG-3d1m;
+	Thu, 25 Jun 2026 06:43:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcdes-00000008i3y-1NSX;
-	Thu, 25 Jun 2026 06:33:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1782369234; x=1813905234;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=FBfQ5z8ocvcr92KhtSfiqgzAuZkaUppGNWRywcRPaKI=;
-  b=fqyGA7AxE2iGK/urbwigc59+P6kZNNo547WxpdJkMy8v7czURQov/Wnt
-   fBIEZDbVnk0MNA7J6J5SEHqb4pCJAaEJ7+ie+YUivdljBMuHeoN0rZdaA
-   XvgCYbjF2wkUME7KEPkof3BaEGEAbXf7s47SfXUrJIEGUjjjrx7ZMz245
-   +iGL1PVh2Tq3yV7eLWlGRNbdGkLBVhhtTtvCqmyaVMPJ+LYDJaWLgxPLY
-   XjeOsOglUyMPLDEZ3xBg7rA7LMKfQ5/GUO5vyYXMNh4DkEPkLN5/EOhmL
-   gHnvyf/EWDMn2rIY+RTSlDCWqpc9/MrQVBl9TaU7TJcfrxxAkWQ3joYaV
-   A==;
-X-CSE-ConnectionGUID: fr/4i0JCSy6Nuvcdd7J3/Q==
-X-CSE-MsgGUID: BqwP4fh3TFipQvldduEjwQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11827"; a="83141345"
-X-IronPort-AV: E=Sophos;i="6.24,223,1774335600"; 
-   d="scan'208";a="83141345"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2026 23:33:53 -0700
-X-CSE-ConnectionGUID: +diy+BegSCGuh5hOe0bZfQ==
-X-CSE-MsgGUID: 874nazgcSQ6Sp/Y1exe5IQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,223,1774335600"; 
-   d="scan'208";a="274626595"
-Received: from rvuia-mobl.ger.corp.intel.com (HELO localhost) ([10.245.245.93])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2026 23:33:44 -0700
-Date: Thu, 25 Jun 2026 09:33:42 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Frank.Li@oss.nxp.com
-Cc: Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>,
-	Loic Poulain <loic.poulain@oss.qualcomm.com>,
-	driver-core@lists.linux.dev, linux-acpi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev, Guoniu Zhou <guoniu.zhou@nxp.com>,
-	Frank Li <Frank.Li@nxp.com>, Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-Subject: Re: [PATCH v2 1/4] device property: Introduce
- fwnode_graph_for_each_endpoint_scoped()
-Message-ID: <ajzLxtn_b3MC-NAl@ashevche-desk.local>
-References: <20260624-fw_scoped-v2-0-0a8db472af4a@nxp.com>
- <20260624-fw_scoped-v2-1-0a8db472af4a@nxp.com>
+	id 1wcdoF-00000008iZv-10Z5;
+	Thu, 25 Jun 2026 06:43:35 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3682B60218;
+	Thu, 25 Jun 2026 06:43:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AC6A1F000E9;
+	Thu, 25 Jun 2026 06:43:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782369813;
+	bh=L75aBSsCGpBryRml4FN363qW1z8PZx29ZjzFOlFMwSw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=L5u/UClwtiDhr17ilKFgEfTZ2MMjqkM08fRr4vse7c7eWk9w8wRKVi+QjH0rJBJoG
+	 DTPv6CdQYFmK49eIhsSmj2YI+FWrrClAGY5ssliz0L4fqU1v/EY8WZkbboi0SbSPM1
+	 a1gMJmnxb6UkuAY2SmEKTTg0f5Xsm5i9kRBOepU3oBrjWQu7+iNpcfuLDVm2LJ7r5k
+	 JVOqGWfGckjV+boyeLoUNI9KRoMppggrQ6ZSfwfhZuIfPTt/ZD4jiqaw6+oZSQYaGF
+	 8UPf28Z+snwLYheykEggC8ZYf71r7VC9CGF3YmkbhXlHN+LVpt2LHLz7cWKJo40BAf
+	 hzV1dwhpQfPOg==
+Date: Thu, 25 Jun 2026 08:43:30 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Gerald Loacker <gerald.loacker@wolfvision.net>
+Cc: Vinod Koul <vkoul@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 2/3] dt-bindings: phy: rockchip-inno-csi-dphy: add
+ rockchip,clk-lane-phase property
+Message-ID: <20260625-lean-debonair-anteater-c22f83@quoll>
+References: <20260619-feature-mipi-csi-dphy-4k60-v2-0-323356c2cc2e@wolfvision.net>
+ <20260619-feature-mipi-csi-dphy-4k60-v2-2-323356c2cc2e@wolfvision.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260624-fw_scoped-v2-1-0a8db472af4a@nxp.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_233354_402815_71FB3325 
-X-CRM114-Status: GOOD (  15.64  )
+In-Reply-To: <20260619-feature-mipi-csi-dphy-4k60-v2-2-323356c2cc2e@wolfvision.net>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,36 +73,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 24, 2026 at 01:00:09PM -0400, Frank.Li@oss.nxp.com wrote:
-
-> Similar to recently propose for_each_child_of_node_scoped() this new
-> version of the loop macro instantiates a new local struct fwnode_handle *
-> that uses the __free(fwnode_handle) auto cleanup handling so that if a
-> reference to a node is held on early exit from the loop the reference will
-> be released. If the loop runs to completion, the child pointer will be NULL
-> and no action will be taken.
+On Fri, Jun 19, 2026 at 11:13:40AM +0200, Gerald Loacker wrote:
+> Add support for the optional rockchip,clk-lane-phase device tree property
+> to allow board-specific tuning of the clock lane sampling phase for
+> improved signal integrity across supported data rates.
 > 
-> The reason this is useful is that it removes the need for
-> fwnode_handle_put() on early loop exits. If there is a need to retain the
-> reference, then return_ptr(child) or no_free_ptr(child) may be used to
-> safely disable the auto cleanup.
+> Signed-off-by: Gerald Loacker <gerald.loacker@wolfvision.net>
+> ---
+>  .../devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml          | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+> index 03950b3cad08c..010950a8a8856 100644
+> --- a/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+> @@ -56,6 +56,15 @@ properties:
+>      description:
+>        Some additional phy settings are access through GRF regs.
+>  
+> +  rockchip,clk-lane-phase:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    minimum: 0
+> +    maximum: 7
 
-...
+Missing default here. If default is unknown, explain that in commit msg.
 
-> +#define fwnode_graph_for_each_endpoint_scoped(fwnode, child)			\
-> +	for (struct fwnode_handle *child __free(fwnode_handle) =		\
-> +		fwnode_graph_get_next_endpoint(fwnode, NULL);		\
-
-Now there is a misindentation of the \, id est an additional tab is missing.
-
-> +	     child; child = fwnode_graph_get_next_endpoint(fwnode, child))
-
-Collect more tags and send a v3 :-)
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+Best regards,
+Krzysztof
 
 
 _______________________________________________
