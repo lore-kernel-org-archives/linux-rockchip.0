@@ -4,59 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56065CDB466
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 07:47:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C4CCDB466
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 07:53:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MyN2eRTlf4K1GCwvCxrpBUdBhTdg/oD4jZwe3trplpM=; b=h+mvtu7ZHGBmmv
-	+pfdCjDeadUy/6ODO2dKvEFWMNwTHyxNl6GOXGi9RM1GGo94rQfgUym9LirKV7Kj4HVGh9sSoNPxx
-	1iq4NDbtvcL61/FBxWsMzepzxY50bVDSZjALsFu3KTxQadmS+wjghYM18Nszk9SgfGbfZT2Z7DILs
-	Am+2jNMK6Sq+ZcO5ZaFBSa7u8Vyg+b2NY2OPGuCYzhWWr0rHI+c2S36WUp/tHz8obMb/civ8DgduX
-	7/SxuxGkzRoyT/iGodxX/sSNcszm6EVq1s96WnDA19h39tYHcfs1MI7x0DuGE1Nm+Ou5vQp/9FqQi
-	wg9ImaXo5L91udIyz/4Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RKtjg3jpIjQ/rTHBdSm6/NfGSyD9+2B8UPHh7JICH7M=; b=UwmLArqRwgIIAiBhi6MA1/Eney
+	h9BoSAbsIJr+WZRAyv8TXPQGZ25+P27CRz633wbmpFlT5xWXdaECmLDwo2ptsHuIEfnKwyvtfkmQX
+	GdxPswuXiRes7F5Bf1ZSG8328uBTC0lhYurlq5UGxa3gfXpabWzoM1jJFFiXU6AlgLMD2P7CMmdDC
+	izXZTDkZNm6eanwN44oaCfOf2EzRkbSDcfsLu+3Mo00+wPoDapS6y/JZO36j1gX0tKeSltvDp7Hcv
+	mB/Q+I/n7ray5HZw3ySsaT9NRNU7OjC1+9+fvfj0V2NGHlTydd3TWHr0x/Mvr16O7HbemZ7WTllF+
+	Ov2gCWog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcenc-00000008mla-2JJ4;
-	Thu, 25 Jun 2026 07:47:00 +0000
+	id 1wcetx-00000008nP5-26Vk;
+	Thu, 25 Jun 2026 07:53:33 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcenb-00000008ml2-0sFC;
-	Thu, 25 Jun 2026 07:46:59 +0000
+	id 1wcetw-00000008nOf-0joy;
+	Thu, 25 Jun 2026 07:53:32 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C0FA643C7A;
-	Thu, 25 Jun 2026 07:46:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA2C41F00A3A;
-	Thu, 25 Jun 2026 07:46:57 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5E9AD40176;
+	Thu, 25 Jun 2026 07:53:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3BBB1F000E9;
+	Thu, 25 Jun 2026 07:53:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782373618;
-	bh=0aI9wxuGKnbMvNl58qFdzMKLZ8nilpFIGpTQF1yLvJQ=;
+	s=k20260515; t=1782374011;
+	bh=UvJV8PBXNDCIvuMBlcVr9yGKghTFtbTdY/tbnURtOfs=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=euU89ZS/Uej3WNn+mAK8by30KuxAIW5caVo5xUmeAUal8lqQ6MedvJ5BKWgTFjYpn
-	 5E8zQWM6/KHOW1H8jtCf8lMXfiDKw2zT0gRbCVzM2dkGyor88Fl0a9NDMOpdz8ASZV
-	 MapuD5aSvtASL/sD4jHD6sFKou1pCQtj4uHDKy7FWwD6dmavic0oJavxOQNyZyubsj
-	 0th0tf4iTu5msvTuS3xIbW0QLilMYvidsc/fcB8JxDWHSGNswrEW5keWBgsBnclPY/
-	 l1g/DS9ZCwHD98ynwAaf1O6ZgHpZWLodumWGNKceaX6gRg7gC0RmWhPtRj20OTJaAh
-	 OWqFgv2VjbEvQ==
-Date: Thu, 25 Jun 2026 09:46:54 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Diederik de Haas <diederik@cknow-tech.com>, 
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: usb: Add Rockchip RK3568 compatible
- for EHCI and OHCI
-Message-ID: <20260625-rare-kiwi-from-hyperborea-8f080c@quoll>
-References: <20260624192726.781864-1-jonas@kwiboo.se>
- <20260624192726.781864-2-jonas@kwiboo.se>
+	b=HWK8FNr5rCNALZm1hk9LEA8ORjpGEO53UZ0EcgeCWEP8I3DMBY+1PkwIxYTIlA3k9
+	 ApKIYH7mi+J6QUJYUmsHijw10o34yv/aog1EOzKpPofKRjIjSu868x7Z/AMy8YvK+n
+	 DlOICa7JOeL6UownMRcDKvWDl3KXLw58rxx3c0rTJpu0mGRnexFRP0YQCtSw3zv8Ny
+	 8tqj0L9WfMM5GsPfuKN0YE2GoXUEabJ+kHG/Tpfs4ivmP6ngUh329fQPLfOVZI4QPE
+	 bIMJoMROpVvOxMKmWMlZMwJjqm6YVPtvPmIou0qwl1FvNA8YyPBTLlClYNfX7aW9+e
+	 dxnodR6usHdfg==
+Date: Thu, 25 Jun 2026 09:53:27 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v7 04/30] drm/display: scdc_helper: Add HDMI 2.0
+ scrambling management helpers
+Message-ID: <20260625-flashy-squirrel-of-passion-69fe24@houat>
+References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
+ <20260602-dw-hdmi-qp-scramb-v7-4-445eb54ee1ed@collabora.com>
+ <20260612-cordial-steadfast-cow-fcaf01@houat>
+ <2f5ce8eb-ef47-4238-ad68-ce62981a1845@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260624192726.781864-2-jonas@kwiboo.se>
+In-Reply-To: <2f5ce8eb-ef47-4238-ad68-ce62981a1845@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,77 +76,139 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6082956440487384756=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 24, 2026 at 07:27:24PM +0000, Jonas Karlman wrote:
-> The Rockchip RK3568 EHCI/OHCI controller depends on clk_usbphy1_480m
-> being enabled, or the system may freeze when registers are accessed.
-> 
-> Add Rockchip RK3568 EHCI and OHCI compatibles with a similar four-clock
-> constraint as RK3588, also extend the EHCI constraint to include RK3588
-> to match similar requirements of RK3588.
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
-> Existing DTs for RK3568 use the plain generic-ehci/ohci compatible,
-> next patch make use of these new compatibles and adds the missing
-> clk_usbphy1_480m clock references.
-> 
-> Existing DTs for RK3588 have contained the required four clocks since
-> the initial addition of the EHCI/OHCI nodes.
-> 
-> Changes in v2:
-> - Include rockchip,rk3588-ehci in the EHCI constraint
-> - Make clocks prop required for EHCI and OHCI
-> ---
->  .../devicetree/bindings/usb/generic-ehci.yaml      | 14 ++++++++++++++
->  .../devicetree/bindings/usb/generic-ohci.yaml      |  7 ++++++-
->  2 files changed, 20 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/generic-ehci.yaml b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
-> index 55a5aa7d7a54..a39f01e740b1 100644
-> --- a/Documentation/devicetree/bindings/usb/generic-ehci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
-> @@ -52,6 +52,7 @@ properties:
->                - ibm,476gtr-ehci
->                - nxp,lpc1850-ehci
->                - qca,ar7100-ehci
-> +              - rockchip,rk3568-ehci
->                - rockchip,rk3588-ehci
->                - snps,hsdk-v1.0-ehci
->                - socionext,uniphier-ehci
-> @@ -186,6 +187,19 @@ allOf:
->        required:
->          - clocks
->          - clock-names
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rk3568-ehci
-> +              - rockchip,rk3588-ehci
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 4
-> +      required:
-> +        - clocks
 
-This is ABI break for RK3588, so your commit msg should also mention
-that RK3588 is not working for example. Otherwise you provided rationale
-only for breaking RK3568 ABI.
+--===============6082956440487384756==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="ahdp44alrudfmxlz"
+Content-Disposition: inline
 
-Same for OHCI part.
 
-Best regards,
-Krzysztof
+--ahdp44alrudfmxlz
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v7 04/30] drm/display: scdc_helper: Add HDMI 2.0
+ scrambling management helpers
+MIME-Version: 1.0
 
+On Sat, Jun 13, 2026 at 04:30:02AM +0300, Cristian Ciocaltea wrote:
+> On 6/12/26 4:43 PM, Maxime Ripard wrote:
+> > On Tue, Jun 02, 2026 at 01:44:04AM +0300, Cristian Ciocaltea wrote:
+> >> +/**
+> >> + * drm_scdc_start_scrambling - activate scrambling and monitor SCDC s=
+tatus
+> >> + * @connector: connector
+> >> + *
+> >> + * Enables scrambling and high TMDS clock ratio on both source and si=
+nk sides.
+> >> + * Additionally, use a delayed work item to monitor the scrambling st=
+atus on
+> >> + * the sink side and retry the operation, as some displays refuse to =
+set the
+> >> + * scrambling bit right away.
+> >> + *
+> >> + * Returns:
+> >> + * Zero if scrambling is set successfully, an error code otherwise.
+> >> + */
+> >> +int drm_scdc_start_scrambling(struct drm_connector *connector)
+> >> +{
+> >> +	struct drm_display_info *info =3D &connector->display_info;
+> >> +	struct drm_connector_hdmi *hdmi =3D &connector->hdmi;
+> >> +	int ret;
+> >> +	u8 ver;
+> >> +
+> >> +	if (!hdmi->scrambler_supported) {
+> >> +		drm_scdc_dbg(connector, "Scrambler not supported, bailing.\n");
+> >> +		return -EINVAL;
+> >> +	}
+> >> +
+> >> +	if (!info->is_hdmi ||
+> >> +	    !info->hdmi.scdc.supported ||
+> >> +	    !info->hdmi.scdc.scrambling.supported) {
+> >> +		drm_scdc_dbg(connector, "Sink doesn't support scrambling.\n");
+> >> +		return -EINVAL;
+> >> +	}
+> >> +
+> >> +	drm_scdc_dbg(connector, "Enabling scrambling\n");
+> >> +
+> >> +	ret =3D drm_scdc_readb(connector->ddc, SCDC_SINK_VERSION, &ver);
+> >> +	if (ret) {
+> >> +		drm_scdc_dbg(connector, "Failed to read SCDC_SINK_VERSION: %d\n", r=
+et);
+> >> +		return ret;
+> >> +	}
+> >> +
+> >> +	ret =3D drm_scdc_writeb(connector->ddc, SCDC_SOURCE_VERSION,
+> >> +			      min_t(u8, ver, SCDC_MAX_SOURCE_VERSION));
+> >> +	if (ret) {
+> >> +		drm_scdc_dbg(connector, "Failed to write SCDC_SOURCE_VERSION: %d\n"=
+, ret);
+> >> +		return ret;
+> >> +	}
+> >> +
+> >> +	hdmi->scdc_cb =3D drm_scdc_monitor_scrambler;
+> >> +	WRITE_ONCE(hdmi->scrambler_enabled, true);
+> >> +
+> >> +	ret =3D drm_scdc_try_scrambling_setup(connector);
+> >> +	if (!ret)
+> >> +		ret =3D hdmi->funcs->scrambler_enable(connector);
+> >> +
+> >> +	if (ret) {
+> >> +		WRITE_ONCE(hdmi->scrambler_enabled, false);
+> >> +		cancel_delayed_work_sync(&hdmi->scdc_work);
+> >> +		hdmi->scdc_cb =3D NULL;
+> >> +
+> >> +		drm_scdc_set_scrambling(connector, false);
+> >> +		drm_scdc_set_high_tmds_clock_ratio(connector, false);
+> >> +	}
+> >> +
+> >> +	return ret;
+> >> +}
+> >> +EXPORT_SYMBOL(drm_scdc_start_scrambling);
+> >=20
+> > This is also pretty significantly different than what vc4 implemented. I
+> > don't necessarily mind, but claiming that it's functionally equivalent
+> > isn't true. I think it would be a much better strategy to turn the vc4
+> > code into helpers as is because it's been merged 4 years ago and we know
+> > it's solid.
+>=20
+> As explained in patch 25, I think there's been a slight misunderstanding =
+of how
+> the CRTC reset logic was actually implemented.
+
+You're absolutely right, let me review it again. sorry.
+
+Maxime
+
+--ahdp44alrudfmxlz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCajzedwAKCRAnX84Zoj2+
+dv17AYCp6yoAaSyZqDDYYAQ4cU42Hzp0gT4kBJKa+9MIZTx7xPg8QdAv3RJRZH7W
+fD2FPuUBfjxl1WKego2rW1IBW18K+iM6/CdMDsSCQIeEAx1h2MENDa23uc6U8w01
+2AHHwCeK0A==
+=FFG5
+-----END PGP SIGNATURE-----
+
+--ahdp44alrudfmxlz--
+
+
+--===============6082956440487384756==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6082956440487384756==--
+
