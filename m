@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A08ECDE00B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 17:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3916CDE000
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 17:41:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0qGhbC4+5kLnfx0+UPLXvay2fFGKaIfm8sTo6F5wLHU=; b=jSeGmez02bV/fH
-	sN+Nomq2w/HO6sO+csO3WOH4CKVN7vWt1MpeSF6eZKWR2oLx7TM+1MMaN19ULtEM0rrUfmjR7rFPF
-	2OkWUp6vNh9n06wPASg5wyJ/XaI3FZjlJhNW9SM45skbpG8t3hi2n5mlGx1k8oAeQYIjzWwhHbjey
-	Ck++dicuJB7euR7ySpQp5cv0L6OkSubVfvPYbcw3o0xyg7FV1zOX2UG3/OX+GrjOlG4IRMnV8ZP4D
-	NKbrthEkflcoOuxHXasiYqUiGnAB/RJgEsEkHlJji60GHtSa6vi9u6iDxU4/N5C/QztbT3Jh5KbcZ
-	qij4HAeIyFvwzn0hEy5A==;
+	List-Owner; bh=wJ3ol0IvO7r1ElWiEq3A7k9mG9EcQ15WRGPDUduAJ5Q=; b=v7J39OsyPbjkR4
+	ex0zenQVT71pI584vrJroCsYrFbqxZOosRQR1t33kXhDGjr+CxbEMQsKdkoRcLaVkWXyWsv3GyHpi
+	SKllmbBOfO/RDaA6gzvreDhCvms9CNZzqS4pGp68bF1kvOefFSYlvMGairxs4bMg1UIt9rercsVsp
+	ms2IXgurYmenbZsDvF7sbbhxDYdn50eqMgMzHdjlLMVpNXgBr0Diafbom4L7AwkjHWY6p94S9URPj
+	8LGpRCVwspnyBw5inOpEptgHQ4rNZwA2Ha7qSV+5cHBdVi2sud24sAc0KMN4jI3vXZC6QOhM614Sa
+	iZdcFOnEqLbYsxw1sOUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wco4Y-00000009bBO-261c;
-	Thu, 25 Jun 2026 17:41:06 +0000
+	id 1wco4c-00000009bJF-20NO;
+	Thu, 25 Jun 2026 17:41:10 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wco3I-00000009ZWH-3TEO;
+	id 1wco3L-00000009ZZR-1pzX;
 	Thu, 25 Jun 2026 17:39:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1782409181;
-	bh=ruBtnU9fcvlmOi8TCq7YktiPK39rJta6lg+2Ib1r5XI=;
+	bh=lIQrXHPEduipW6Hj0T0PV2Fyg/ObQ+nENmNrinpT9h4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OoWDn4iG3Sx2AU8o9AaGU09Zv8b9YVfSMvKCWSua8F43AujK5MjrzwjMKgdA013ke
-	 bJkwWp5qqf5PjC4Clu66ARK8CDTz3bk8gbf4q6LOAnrVDlHjIoT7tRcx9rDf7WDFXX
-	 9NIaoZU6B3N5yuIc3VXMgZVSkhXo6dlvjKcdxDOkrpiq7sdccQTJtLHZD11zevh90q
-	 Yup7Ai67KHTR/x7a1r3/cmv1AThjMLXCx0n5rIcV29qvoJ0HgF/CbuXRsHL8NQXs5Q
-	 ofvwhYwe03bigAT2OygKr88+mAkpUciY5l/0vJ98KpNRMQJk3T06gNEGBUYtWVQ92+
-	 gBuC5P3ZhZd5w==
+	b=I8de5XsWer9oUd6umhLmk5yEh0HXekHqmiKO+s8GOpxtNhGFDm4Au0QxQWLraTN+D
+	 j1QdUtLHv7ItwGL6JW/PtFpx+vj4lFz06blKVIqgY0tmmgACpw9+jxHtO3ZTnF1sMd
+	 hrjRFj6rydm7eGZNEVr5qhje62srS/mn41CvMTuIqW9muouc62t0/4lkUX7rlkhTSb
+	 d8io/ThmcKXoLsx2NlQVDrvoR4Ap70T3lrBqPviAdMttVY0W/b7+0CGXDiv+ffPaZD
+	 0NnjzGev0l44uEc5oMcXE4NjP4FDrnEHhRGE/woYVwaGqwEUoL0llJsJfFak5fChUb
+	 /lCleGd6NesdA==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C080B17E14FA;
-	Thu, 25 Jun 2026 19:39:40 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1760217E1583;
+	Thu, 25 Jun 2026 19:39:41 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 09772480047; Thu, 25 Jun 2026 19:39:40 +0200 (CEST)
+	id 166A4480065; Thu, 25 Jun 2026 19:39:40 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 25 Jun 2026 19:39:38 +0200
-Subject: [PATCH v7 11/27] phy: rockchip: usbdp: Fix LFPS detect threshold
- control
+Date: Thu, 25 Jun 2026 19:39:47 +0200
+Subject: [PATCH v7 20/27] phy: rockchip: usbdp: Re-init the PHY on
+ orientation change
 MIME-Version: 1.0
-Message-Id: <20260625-rockchip-usbdp-cleanup-v7-11-38eb3cf654fd@collabora.com>
+Message-Id: <20260625-rockchip-usbdp-cleanup-v7-20-38eb3cf654fd@collabora.com>
 References: <20260625-rockchip-usbdp-cleanup-v7-0-38eb3cf654fd@collabora.com>
 In-Reply-To: <20260625-rockchip-usbdp-cleanup-v7-0-38eb3cf654fd@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -64,29 +64,28 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  devicetree@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- William Wu <william.wu@rock-chips.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1521;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1257;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=UNwYK90fD5pSR2p65Y2qi/qMgPthsyXmZolR14Z7C9o=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo9Z9t9WUlQpiYWI8TZjyKzAuTvwcMUf4y1t
- H5QAl/Rr00z54kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqPWfbAAoJENju1/PI
- O/qaq9oP/RRBzLX7vpNiXw+y42oMMChx1XwuYRmjuGANi9Dv/sqKLkaWUITPGD86lmlp6MFp5m3
- MLwGehw7Qwy5vawNOAn3VmIZewXEiLH6n82uRs/3HhMt6SmKkpDWzEOp/MO7A4R4849uTj+2iLl
- g0tpf9m2FbZr4Qe7yZrUxM+xxZ/YIMR9fZR/LsBltzX1H1PFlLTDFxS2pyeC8jlICa6ex7wvzbu
- 8XSp8akq5pGxvudCgUkH8wX1KLYsC5I2yw/5MOiabt8/KVDbf9hiCyUXJHlgrw29ckAQMn/kOJH
- GXbT3ZuVZRriLc1P59jWcUej4yHJh/3NEC5TzisURZEk1/AyNp9P1uVPY0K8GvUk5jQxtaKv38U
- Gli/UWEcxXL9P6GtR6gGo4Dv4uwHE0h3UR1LClGCx2NXKxughEFcWccWKUY+1pIs1QLx1sV3GEn
- VjpzTbaKnPYiYlPepKAj2GQH/ST0bZAAMBKz63HH4njZexRheRqkofMF/XZiz2kwUt3/xQsVuMU
- 8jitcOa1V6FeOOok57JSKa0c0qRjhSyHFfFgjvKu8ZQXkqclFSpFdODYwNLP02hm7opMP/R2xvR
- zKet3Q/mJif/hXUGOdBTmYIAHwLpZdG9ZzzBFWjrpNv6Z9nAAXHH2kQRyzaW2Ct89T55iBi9yS3
- EG7l5oqBW6qlZ+qgu5WE0Cg==
+ bh=lIQrXHPEduipW6Hj0T0PV2Fyg/ObQ+nENmNrinpT9h4=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo9Z9sJsCL2392xBrNchxTuWnPtN4NWuagWe
+ ZdNCPBoAC+xrIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqPWfbAAoJENju1/PI
+ O/qaPZ4P/0pP9pYtctzhJxHBThODKf8uG++izvpF4nMDI7QJ7Ey0lS/JIvWUykqVTRG/2MihNZl
+ Bp7URr5YlCENF2eTxI6Gfr38RMI3eE8hyEUK5UbQcdht7MdO+cI67eab6C62dcAsh96f5mFUYnp
+ th/1VfcAbOlufFuUuG+RKSe7l3xw/c43A5QoTpRaKiMMQ9Rhp8qSJAx6wifo1AO/mQKfDst+bWb
+ hdTKEqG/Gi8WAoKzGGO+icyMrQXlNucsCoVHTdtb/4z08641ew/kSO1elSLq2soV+ZT838zjjmU
+ AS8NbvSmJVIC46FO1isxoIsAvWR3dTtVmP9lc1aLMDfwd8zZHKqZoIjzdP85c6VkCfNJX86VH7H
+ +raGXj8Jj5a8HV57RGmcQ7LpeiG4ZfwbVxBQE+/1vs0dYfs07DWUjBqW4R/m/u5seHm4R309I+e
+ kslA1jtBWRvToHiMbH4E9timQXD5NkYE0RlghMmrGRYNGmvP3o4MjZ2x4gSSWqrkG7VKCeWeb/Y
+ w+PNro3S7z84Sk6ZQv4gVYdxUTDgphXUIiot/i5UIfbRXqcF1fl6qsp6K0sgHjTI6nlxgtOnfbi
+ fkp1AJxo0FrUrWGSNgHfDBrDz15x+SX9FhnLEfBf6xZ1CiODcS/G/HdtlEc5WQSbyj9blcf54Q7
+ Pw3t+32j0xAjuf4+OHEctqg==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260625_103949_116682_53ADC869 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20260625_103951_671913_381B7098 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,43 +102,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: William Wu <william.wu@rock-chips.com>
+Changing the cable orientation reconfigures the lane muxing, which
+requires re-initializing the PHY. Without this DP functionality
+breaks, if the cable is re-plugged with swapped orientation.
 
-According to the LFPS Tx Low Power/LFPS Rx Detect Threshold [1],
-the device under test(DUT) must not respond if LFPS below the
-minimum LFPS Rx Detect Threshold 100mV. Test fail on Rockchip
-platforms, because the default LFPS detect threshold is set to
-65mV.
-
-The USBDP PHY LFPS detect threshold voltage could be set to
-30mV ~ 140mV, and since there could be 10-20% PVT variation,
-we set LFPS detect threshold voltage to 110mV.
-
-[1] https://compliance.usb.org/resources/LFPS_Rx_Tx_Low_Power_Compliance_Update_Rev5.pdf
-
-Signed-off-by: William Wu <william.wu@rock-chips.com>
-[Taken over from rockchip's kernel tree; the registers are not described
-in the TRM]
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 93df673e181b..1067ddf2d742 100644
+index b08f0c142b0d..3fa97a8c2555 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -413,7 +413,8 @@ static const struct reg_sequence rk_udphy_init_sequence[] = {
- 	{0x0070, 0x7d}, {0x0074, 0x68},
- 	{0x0af4, 0x1a}, {0x1af4, 0x1a},
- 	{0x0440, 0x3f}, {0x10d4, 0x08},
--	{0x20d4, 0x08}, {0x0024, 0x6e}
-+	{0x20d4, 0x08}, {0x0024, 0x6e},
-+	{0x09c0, 0x0a}, {0x19c0, 0x0a}
- };
+@@ -625,6 +625,7 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+ 				 enum typec_orientation orien)
+ {
+ 	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
++	bool flipped = orien == TYPEC_ORIENTATION_REVERSE;
  
- static inline int rk_udphy_grfreg_write(struct regmap *base,
+ 	mutex_lock(&udphy->mutex);
+ 
+@@ -636,7 +637,10 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+ 		goto unlock_ret;
+ 	}
+ 
+-	udphy->flip = orien == TYPEC_ORIENTATION_REVERSE;
++	if (udphy->flip != flipped)
++		udphy->phy_needs_reinit = true;
++
++	udphy->flip = flipped;
+ 	rk_udphy_set_typec_default_mapping(udphy);
+ 	rk_udphy_usb_bvalid_enable(udphy, true);
+ 
 
 -- 
 2.53.0
