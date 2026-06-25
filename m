@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EB43CDE002
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 06:31:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C59CDB466
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 06:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HyR/iMi5ojC7MF1cAsaAdFv12/AKdUaQALwS/4eJux8=; b=VM94+atMa6LcrQ
-	bkhB2rAuunGbt1IA8VJNzsdvBBDc5+Eb9PkMM7PRD6Lvp3s2fH2q/Vr6x5CLVxv28eJIrw/96LZFl
-	83/F8kDDEje0uU/oKM4XORNUjPAPUaYWXWjG8rtibo1AohadJpU1Z55jEQaW/nmT99jXgU5DbhaOs
-	wqMYxiOvtTAx97WR6A3KmGiLrTizNF9PyqSU660qaMzYUJeNiaBhxsHNc5tETgGa/beRP8l138vXv
-	0S//waz2fj3u+qlJfiped4nc4J0pq3MapAI2nxkqZ9c/wQMa3rGDqs7uNClgV5YfvYCc9UdwO0svG
-	0UXE1XcvB9hchst4Tu/w==;
+	List-Owner; bh=o57EvP7fdci5QITsnfxLXeNaXh5phhVI/QBEch4lp9c=; b=BKcZpfdqNqdZ6F
+	aF00Sx9Yg9F8g9WxBsVOBJWTADSy5qLqu1y6D+Wcy0CWdfhSwkqUNMuQyWm+yYp+GdrwTI1SE9gF5
+	HkkyN+RfItpRLIA0AMxJVjmaBsU3/6WF6zSQjWcuW4iM35HFWoaBZai3hjvjuN0JThglOZ8h9Nf1J
+	q7SiX03RZ2UsF7K0aY/z0TBahiXhNv5gBFkTzjJ4yXzikrmHGgVnJFozPeepV5mrMCGJobasGqOSs
+	wQpK+DsFhObTtDtDcnYeSC59OTZ+t3dy2Mm0mF6yhSqpVhPEAwjrLVkOXOez253ulu9U69dpkQuJK
+	lo/XPGNmjJhE40FQTfKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcdcW-00000008hnh-2Uxg;
-	Thu, 25 Jun 2026 06:31:28 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1wcdev-00000008i4X-1Jwn;
+	Thu, 25 Jun 2026 06:33:57 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcdcT-00000008hnH-1urQ;
-	Thu, 25 Jun 2026 06:31:27 +0000
+	id 1wcdes-00000008i3y-1NSX;
+	Thu, 25 Jun 2026 06:33:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1782369085; x=1813905085;
+  t=1782369234; x=1813905234;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=fwGnL97xmgeZIlcEfXqmDIbjqKBgP8CglQlDHEXM+X8=;
-  b=IZXx2CrfqRQlWmMoRl/68uIy1waVxcbR+M0FP5cR8j9l0G/QFdpS8XM7
-   K41Q+7arzCjMtD+/j3LlktrhjNClIjFj9Lnx8oBCERKsM7tlQ4AZbnrhR
-   cK6HGwEn5lPRyzkh6R6QGhUptzYCLUpP1hnyBW1q3+j0hIQ6It9sVO4tX
-   CxZMKaaMiKLgWXuni5YZoZfupsaAS+em7MZWZwp0eA9pIK/U45kDNFNhx
-   +eGnYo6SI7kCC/yrCuSEB24vS4N3VvYfwS6nr8ThgJSf1nJC1ePo+1okd
-   MHIXFXk3pNSzOofCI8amLzXTvJVeodJNT7HwlYTf6MAzUm5d9H0kCnVDo
-   w==;
-X-CSE-ConnectionGUID: DqIqg32FQD+LaZCdgowwHg==
-X-CSE-MsgGUID: 0h/dUAn6SYKiY1HQrAKgEg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11827"; a="87046026"
+  bh=FBfQ5z8ocvcr92KhtSfiqgzAuZkaUppGNWRywcRPaKI=;
+  b=fqyGA7AxE2iGK/urbwigc59+P6kZNNo547WxpdJkMy8v7czURQov/Wnt
+   fBIEZDbVnk0MNA7J6J5SEHqb4pCJAaEJ7+ie+YUivdljBMuHeoN0rZdaA
+   XvgCYbjF2wkUME7KEPkof3BaEGEAbXf7s47SfXUrJIEGUjjjrx7ZMz245
+   +iGL1PVh2Tq3yV7eLWlGRNbdGkLBVhhtTtvCqmyaVMPJ+LYDJaWLgxPLY
+   XjeOsOglUyMPLDEZ3xBg7rA7LMKfQ5/GUO5vyYXMNh4DkEPkLN5/EOhmL
+   gHnvyf/EWDMn2rIY+RTSlDCWqpc9/MrQVBl9TaU7TJcfrxxAkWQ3joYaV
+   A==;
+X-CSE-ConnectionGUID: fr/4i0JCSy6Nuvcdd7J3/Q==
+X-CSE-MsgGUID: BqwP4fh3TFipQvldduEjwQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11827"; a="83141345"
 X-IronPort-AV: E=Sophos;i="6.24,223,1774335600"; 
-   d="scan'208";a="87046026"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2026 23:31:21 -0700
-X-CSE-ConnectionGUID: slld4H3rR16nX4qt4wrK0A==
-X-CSE-MsgGUID: LScKLZpATE+psYxu0HB+Cg==
+   d="scan'208";a="83141345"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2026 23:33:53 -0700
+X-CSE-ConnectionGUID: +diy+BegSCGuh5hOe0bZfQ==
+X-CSE-MsgGUID: 874nazgcSQ6Sp/Y1exe5IQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.24,223,1774335600"; 
-   d="scan'208";a="252343530"
+   d="scan'208";a="274626595"
 Received: from rvuia-mobl.ger.corp.intel.com (HELO localhost) ([10.245.245.93])
-  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2026 23:31:16 -0700
-Date: Thu, 25 Jun 2026 09:31:14 +0300
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2026 23:33:44 -0700
+Date: Thu, 25 Jun 2026 09:33:42 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Frank Li <Frank.li@oss.nxp.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Daniel Scally <djrscally@gmail.com>,
+To: Frank.Li@oss.nxp.com
+Cc: Daniel Scally <djrscally@gmail.com>,
 	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
 	Sakari Ailus <sakari.ailus@linux.intel.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -65,6 +64,7 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	Danilo Krummrich <dakr@kernel.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
 	Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>,
@@ -75,22 +75,19 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
 	imx@lists.linux.dev, Guoniu Zhou <guoniu.zhou@nxp.com>,
 	Frank Li <Frank.Li@nxp.com>, Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-Subject: Re: [PATCH v2 0/4] media: add and use
+Subject: Re: [PATCH v2 1/4] device property: Introduce
  fwnode_graph_for_each_endpoint_scoped()
-Message-ID: <ajzLMiKrlXf2hFRd@ashevche-desk.local>
+Message-ID: <ajzLxtn_b3MC-NAl@ashevche-desk.local>
 References: <20260624-fw_scoped-v2-0-0a8db472af4a@nxp.com>
- <20260624191935.GG851255@killaraus.ideasonboard.com>
- <ajwxcn2LXS8InAjZ@SMW015318>
- <20260624200237.GJ851255@killaraus.ideasonboard.com>
- <ajxCOE3avXXLlrfT@SMW015318>
+ <20260624-fw_scoped-v2-1-0a8db472af4a@nxp.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ajxCOE3avXXLlrfT@SMW015318>
+In-Reply-To: <20260624-fw_scoped-v2-1-0a8db472af4a@nxp.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260624_233125_540677_DB200C66 
-X-CRM114-Status: GOOD (  31.46  )
+X-CRM114-CacheID: sfid-20260624_233354_402815_71FB3325 
+X-CRM114-Status: GOOD (  15.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,67 +104,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 24, 2026 at 03:46:48PM -0500, Frank Li wrote:
-> On Wed, Jun 24, 2026 at 11:02:37PM +0300, Laurent Pinchart wrote:
-> > On Wed, Jun 24, 2026 at 02:35:14PM -0500, Frank Li wrote:
-> > > On Wed, Jun 24, 2026 at 10:19:35PM +0300, Laurent Pinchart wrote:
-> > > > On Wed, Jun 24, 2026 at 01:00:08PM -0400, Frank.Li@oss.nxp.com wrote:
-> > > > > Add new helper macro fwnode_graph_for_each_endpoint_scoped() and use it
-> > > > > simplify media code.
-> > > > >
-> > > > > Typical example should qualcomm's driver (camss.c), the v4l2_mc.c and
-> > > > > rkisp1-dev.c only silience improvement.
-> > > > >
-> > > > > Anyways, *_for_each_*_scoped() already use widely and make code clean.
-> > > > >
-> > > > > Build test only.
-> > > > >
-> > > > > Sakari Ailus:
-> > > > > 	when I try to improve the patch
-> > > > > "Add common helper library for 1-to-1 subdev registration", I found need
-> > > > > camss.c pattern, so I create this small improvement firstly.
-> > > >
-> > > > Those are nice cleanups, thank you.
-> > > >
-> > > > After applying this series, the only left users of the
-> > > > fwnode_graph_for_each_endpoint() macro are in drivers/base/property.c.
-> > >
-> > > I already checked previously, two place use it.
-> > >
-> > > fwnode_graph_get_endpoint_count(), it will go though all endpoints, last
-> > > ep is NULL, which totally equial to scoped() version.
-> > >
-> > > another one fwnode_graph_get_endpoint_by_id(), which return ep, expect
-> > > caller to call put().
-> > >
-> > > if use scoped() version, need use no_free_ptr() at return, which make think
-> > > a little bit complex.
-> >
-> > It would introduce a tiny bit of extra complexity there, but the
-> > advantage (in my opinion) is that we'll be able to remove the less safe
-> > fwnode_graph_for_each_endpoint() macro.
-> >
-> > Now one may argue that the risk of
-> > fwnode_graph_for_each_endpoint_scoped() is returning the iterator
-> > without using no_free_ptr(). I wonder if that would be easier to catch
-> > in static analysis tools than the current pattern that leaks a reference
-> > when exiting the loop early.
+On Wed, Jun 24, 2026 at 01:00:09PM -0400, Frank.Li@oss.nxp.com wrote:
+
+> Similar to recently propose for_each_child_of_node_scoped() this new
+> version of the loop macro instantiates a new local struct fwnode_handle *
+> that uses the __free(fwnode_handle) auto cleanup handling so that if a
+> reference to a node is held on early exit from the loop the reference will
+> be released. If the loop runs to completion, the child pointer will be NULL
+> and no action will be taken.
 > 
-> It's not big deal, if everyone prefer drop fwnode_graph_for_each_endpoint(),
-> I can do it.
+> The reason this is useful is that it removes the need for
+> fwnode_handle_put() on early loop exits. If there is a need to retain the
+> reference, then return_ptr(child) or no_free_ptr(child) may be used to
+> safely disable the auto cleanup.
 
-I slightly tend to the safest option (see below), but as a compromise I can
-suggest to inline the fwnode_graph_for_each_endpoint() into that single user
-that doesn't need a put. However, this may uglify the code and rise a question
-of the consistency. So, consider that suggestion with grain of salt and apply
-only if we have wider agreement with it.
+...
 
-> > > It'd better leave these as it.
+> +#define fwnode_graph_for_each_endpoint_scoped(fwnode, child)			\
+> +	for (struct fwnode_handle *child __free(fwnode_handle) =		\
+> +		fwnode_graph_get_next_endpoint(fwnode, NULL);		\
 
-TL;DR:
-This is the safest option, of course. And as mentioned above I slightly
-prefer this way. Another argument is that in some cases we might want to
-have it in the future and since we have an existing user, let it live.
+Now there is a misindentation of the \, id est an additional tab is missing.
+
+> +	     child; child = fwnode_graph_get_next_endpoint(fwnode, child))
+
+Collect more tags and send a v3 :-)
 
 -- 
 With Best Regards,
