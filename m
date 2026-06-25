@@ -4,75 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D49CDE001
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 14:36:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50454CDE001
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 14:53:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xIKh9d+lIyIY5C6JkAdthqA6O+K3cNxkqWMaCjJN6nw=; b=G1wncu4SQlqczW
-	1ypyk2Dt/nrSsbGKqZkNH9TM4FdFL6SCL59VmrH9uoTiAvwYT5war2SaGV9Je9irrX4StKB44MB3l
-	Q/QvTjOwRr4O67uhvFVO/8xKF3F4pU5YHhSeojUHclFKQ0RCM7LcZQWvNOekflhZZnH9Kd3BXff4f
-	UuEPFtflTv7Hy/HGbyWV52KwLYQE6vG+avDFs4Ifo8fEFILJJr8OBqbc4cwF/xXqPP+uqug6NvD28
-	ClFlIq/MBnLcG4pHl2kGq5s+MZ+eOKgtxLi2USPdvgSPvRek2PXJ6GhZNyLCu/TA9kkqMMcjMUXRT
-	67+bQ48SST3wX4IV43IA==;
+	List-Owner; bh=22RHBIibUlZSvKk3UfOdSIXSnWNoPL2ZewyfezlPuh4=; b=1pL8mgqe1mLhez
+	BonIMq85qLw+c/yXW2eae8T9xOBGW7Dn8JJraSL0Yfgxiyt53tPhhzHGyyU3/xQgbQDZH7KxiUQVH
+	yTKwn1BeZ9P2Nl/AqL6FA5oGQ74SENU7F8fQ+iGimA8ShcRhu7VqcNCBHei1LovoHGutXPMcc9MHc
+	1QT46iNaeNvcUU7fN8S0l+3815g1PqIREaFrscyUAfN3aJLY9MhloblV9tCVbT8U1TSyV+CEHVb2h
+	dQvtaJkMtUA/RQ5rAD2Q7tkNPoiLwlrMEUIkJ5NAi1NJ09DOHmI+dns3qIIUYyYL5pqQvbnXz/imD
+	gpC1OzhgILAAOgZDhgkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wclC6-00000009LOC-30Nt;
-	Thu, 25 Jun 2026 14:36:42 +0000
+	id 1wclSG-00000009MRG-23Bv;
+	Thu, 25 Jun 2026 14:53:24 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wclC4-00000009LNW-0pp6;
-	Thu, 25 Jun 2026 14:36:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1782398185; cv=none; 
+	id 1wclSD-00000009MQn-2hEL;
+	Thu, 25 Jun 2026 14:53:23 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1782399188; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=XoV+pvJHoQ/l/jsP00g757VrdbWy2Y3E0nmYsC3F5WQh9StIFtgeogldmfEisxxfHecDvtNCC+2CxxvswhdG9+8evAjaBL6fmpy/RzbrtpHgBsAzm9vPkUvLSVQxIZk/tobYHH60DhnMiLuSSmApqU6cevURXm1c7u5bRDZkcMo=
+	b=WmuNy7DOl2kIWdkDhViAxrZRU/cJ7wBTa322xVY1CK8Pk3C40ur0DO9M6N4ZjPGTD0+iQnhwR1PF0Sa2vTRB0xrIj55SAKZqTGBx8xI7ysmrTmnOHij9ya09zNNzEp5LnNgvW0kM0TMbwuEnuhH4YN2erVpMp8qtXF2WWAZxThM=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1782398185; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=mJO1zc6CsyO0zKIIPRSRfzrWercYcCJIayebrFLBka0=; 
-	b=frcuypxjn326LGf0w84uLimgP5ghMtIveCqebhS1NdKbqiThhvH8YPBIPRG1MmG93VdMsKpSXZv9avemeq8oJNMs1SZQB7Yr83WNfYSgDTyurxNKOp5GyRdKAGBYhzQJKHpiuATh5etVfRhXYmQePGofT/wpSoyIa2TiyA2fbCo=
+	t=1782399188; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=MbrQiqoxsl8WhIHD+LeV4P6XnZdN+WMJ7f67o9JPdMA=; 
+	b=I/XIghwJuqB8wvNCKRiqFyu79Tew0PoHDAeKlWpsQdVhRMxVWQm+EHNGmpJBqgSmTjDvRAqCZN6VKLq8jCZt90rNTzuuUztzXkct5Y/2Hfa0+MJYdgoyQbUfE7azsJwct6qmi09oUOmMz/Nza1VAmbl2tjnMN2waUEQxJIvQod8=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
 	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1782398185;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1782399188;
 	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=mJO1zc6CsyO0zKIIPRSRfzrWercYcCJIayebrFLBka0=;
-	b=NdS42NJ1DAmtf/Rf41yyFutIAP+C7VwP40DqYi+PbzDi3baoMFiqF3NdAPtZf3Ap
-	Y0PP5ZtfBQKFTyE9RJhXGSINraPTxcJd2a0/rAZ/c3tA9phcjnzLZxT6IcuRj5k0rTS
-	//6z0o29RrZ+Dw5PU15hrbKBG7DoCzJBuu/8xPDI=
-Received: by mx.zohomail.com with SMTPS id 1782398184087670.7754768546965;
-	Thu, 25 Jun 2026 07:36:24 -0700 (PDT)
-Message-ID: <77829262-b07f-4a42-86ec-9bf9c45709ee@collabora.com>
-Date: Thu, 25 Jun 2026 10:36:21 -0400
+	bh=MbrQiqoxsl8WhIHD+LeV4P6XnZdN+WMJ7f67o9JPdMA=;
+	b=hOXJDn/A/Xkc15506+TTFkdBmzhPbTOkiy6iKSZfl5moM/WdDs70DEqW+K7O8dUg
+	Wzl2YLMDRZLJCM+DFIP3NFf9sPkek9llYc00LGEQYt8GBJFCa7PYEFk9KJzq1H+dyTQ
+	X9qn3rVNHHZG/3FVJ25yQOb6dx3d2bGWOOfZijx0=
+Received: by mx.zohomail.com with SMTPS id 1782399185495703.3163955828122;
+	Thu, 25 Jun 2026 07:53:05 -0700 (PDT)
+Message-ID: <4787dfe9-edec-4983-9ecb-6ac60502afd7@collabora.com>
+Date: Thu, 25 Jun 2026 10:53:03 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/5] docs: media: add documentation for media client
- usage stats
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil+cisco@kernel.org>,
+Subject: Re: [PATCH v2 3/5] media: v4l2-core: Add v4l2-stats interface
+To: Hans Verkuil <hverkuil+cisco@kernel.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Heiko Stuebner <heiko@sntech.de>
 Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, kernel@collabora.com,
- linux-arm-kernel@lists.infradead.org, Christopher Healy <healych@amazon.com>
+ linux-arm-kernel@lists.infradead.org
 References: <20260617-v4l2-add-fdinfo-v2-0-d298e98ce06a@collabora.com>
- <20260617-v4l2-add-fdinfo-v2-2-d298e98ce06a@collabora.com>
- <755cf7c1-6bcc-45d1-afea-192d393256af@kernel.org>
- <0449f2bf75685e17034ada5ae3961518ceb04345.camel@collabora.com>
+ <20260617-v4l2-add-fdinfo-v2-3-d298e98ce06a@collabora.com>
+ <0d2576f8-7773-419e-be0f-0bb37a776bc0@kernel.org>
 Content-Language: en-US
 From: Detlev Casanova <detlev.casanova@collabora.com>
-In-Reply-To: <0449f2bf75685e17034ada5ae3961518ceb04345.camel@collabora.com>
+In-Reply-To: <0d2576f8-7773-419e-be0f-0bb37a776bc0@kernel.org>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260625_073640_318924_82651982 
-X-CRM114-Status: GOOD (  57.29  )
+X-CRM114-CacheID: sfid-20260625_075321_819574_C99479F2 
+X-CRM114-Status: GOOD (  27.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,221 +82,271 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgIQoKT24gNi8xOS8yNiAxMDowNCwgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPiBIaSwKPgo+
-IExlIHZlbmRyZWRpIDE5IGp1aW4gMjAyNiDDoCAxNDo1OCArMDIwMCwgSGFucyBWZXJrdWlsIGEg
-w6ljcml0wqA6Cj4+IEhpIERldGxldiwKPj4KPj4gSW50ZXJlc3RpbmcsIEkgaGFkIG5ldmVyIGhl
-YXJkIG9mIGZkaW5mbywgc28gaWYgbm90aGluZyBlbHNlLCBJIGxlYXJuZWQgc29tZXRoaW5nIG5l
-dyEKPj4KPj4gT24gMTcvMDYvMjAyNiAyMDoxMCwgRGV0bGV2IENhc2Fub3ZhIHdyb3RlOgo+Pj4g
-RnJvbTogQ2hyaXN0b3BoZXIgSGVhbHkgPGhlYWx5Y2hAYW1hem9uLmNvbT4KPj4+Cj4+PiBEb2N1
-bWVudCB0aGUgbWVkaWEgZmRpbmZvIGludGVyZmFjZSBmb3IgcGVyLWZpbGUtZGVzY3JpcHRvciB1
-c2FnZQo+Pj4gc3RhdGlzdGljcyBleHBvc2VkIGJ5IHN0YXRlbGVzcyBWNEwyIGNvZGVjIGRyaXZl
-cnMgdmlhCj4+PiAvcHJvYy88cGlkPi9mZGluZm8vPGZkPi4KPj4+Cj4+PiBUaGlzIGludGVyZmFj
-ZSBpcyBkZXNpZ25lZCBmb3Igc3RhdGVsZXNzIChyZXF1ZXN0IEFQSSBiYXNlZCkgY29kZWMKPj4+
-IGRldmljZXMgd2hlcmUgdGhlIGtlcm5lbCBkcml2ZXIgaGFzIHBlci1qb2IgdmlzaWJpbGl0eSBp
-bnRvIGhhcmR3YXJlCj4+PiBleGVjdXRpb24uIFN0YXRlZnVsIGNvZGVjcyBjYW5ub3Qgc3VwcG9y
-dCBhbGwgb2YgdGhpcyBiZWNhdXNlIHRoZWlyCj4+PiBmaXJtd2FyZSBtYW5hZ2VzIGpvYiBzY2hl
-ZHVsaW5nIG9wYXF1ZWx5Lgo+Pj4KPj4+IFRoZSBzcGVjaWZpY2F0aW9uIGRlZmluZXMgbWVkaWEt
-IHByZWZpeGVkIGtleXMgZm9yIGVuZ2luZSB1dGlsaXphdGlvbgo+Pj4gdGltZSwgYW5kIG9wZXJh
-dGluZyBmcmVxdWVuY3ksIGZvbGxvd2luZyB0aGUgc2FtZSBjb252ZW50aW9ucyBhcyB0aGUgRFJN
-Cj4+PiBmZGluZm8gbWVjaGFuaXNtIGRvY3VtZW50ZWQgaW4gZHJtLXVzYWdlLXN0YXRzLnJzdC4K
-Pj4+Cj4+PiBNb3JlIGZpZWxkcyBjYW4gYmUgYWRkZWQgbGF0ZXIuCj4+Pgo+Pj4gU2lnbmVkLW9m
-Zi1ieTogQ2hyaXN0b3BoZXIgSGVhbHkgPGhlYWx5Y2hAYW1hem9uLmNvbT4KPj4+IFNpZ25lZC1v
-ZmYtYnk6IERldGxldiBDYXNhbm92YSA8ZGV0bGV2LmNhc2Fub3ZhQGNvbGxhYm9yYS5jb20+Cj4+
-PiAtLS0KPj4+ICDCoC4uLi91c2Vyc3BhY2UtYXBpL21lZGlhL2RyaXZlcnMvaW5kZXgucnN0wqDC
-oMKgwqDCoMKgwqDCoMKgIHzCoCAxICsKPj4+ICDCoC4uLi9tZWRpYS9kcml2ZXJzL21lZGlhLXVz
-YWdlLXN0YXRzLnJzdMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCA4NSArKysrKysrKysrKysrKysr
-KysrKysrCj4+PiAgwqAyIGZpbGVzIGNoYW5nZWQsIDg2IGluc2VydGlvbnMoKykKPj4+Cj4+PiBk
-aWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL2RyaXZlcnMvaW5k
-ZXgucnN0IGIvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL2RyaXZlcnMvaW5kZXgu
-cnN0Cj4+PiBpbmRleCAwMjk2N2M5YjE4ZDYuLjYxODc5NzM4ODM2YyAxMDA2NDQKPj4+IC0tLSBh
-L0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS9kcml2ZXJzL2luZGV4LnJzdAo+Pj4g
-KysrIGIvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL2RyaXZlcnMvaW5kZXgucnN0
-Cj4+PiBAQCAtMzQsNiArMzQsNyBAQCBGb3IgbW9yZSBkZXRhaWxzIHNlZSB0aGUgZmlsZSBDT1BZ
-SU5HIGluIHRoZSBzb3VyY2UgZGlzdHJpYnV0aW9uIG9mIExpbnV4Lgo+Pj4gIMKgCWlteC11YXBp
-Cj4+PiAgwqAJbWFsaS1jNTUKPj4+ICDCoAltYXgyMTc1Cj4+PiArCW1lZGlhLXVzYWdlLXN0YXRz
-Cj4+PiAgwqAJbnBjbS12aWRlbwo+Pj4gIMKgCW9tYXAzaXNwLXVhcGkKPj4+ICDCoAl0aHA3MzEy
-Cj4+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL2RyaXZl
-cnMvbWVkaWEtdXNhZ2Utc3RhdHMucnN0IGIvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21l
-ZGlhL2RyaXZlcnMvbWVkaWEtdXNhZ2Utc3RhdHMucnN0Cj4+PiBuZXcgZmlsZSBtb2RlIDEwMDY0
-NAo+Pj4gaW5kZXggMDAwMDAwMDAwMDAwLi5kM2RjMDcwMDJmNjIKPj4+IC0tLSAvZGV2L251bGwK
-Pj4+ICsrKyBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS9kcml2ZXJzL21lZGlh
-LXVzYWdlLXN0YXRzLnJzdAo+Pj4gQEAgLTAsMCArMSw4NSBAQAo+Pj4gKy4uIFNQRFgtTGljZW5z
-ZS1JZGVudGlmaWVyOiBHUEwtMi4wCj4+PiArCj4+PiArLi4gX21lZGlhLXVzYWdlLXN0YXRzOgo+
-Pj4gKwo+Pj4gKz09PT09PT09PT09PT09PT09PT09PT09PT09Cj4+PiArTWVkaWEgY2xpZW50IHVz
-YWdlIHN0YXRzCj4+IHN0YXRzIC0+IHN0YXRpc3RpY3MKPj4KPj4gQnV0IGFyZSB0aGVzZSByZWFs
-bHkgc3RhdGlzdGljcz8gSXNuJ3QgaXQganVzdCB0aGUgY3VycmVudCBzdGF0dXM/ClRoZSB0ZXJt
-ICJzdGF0aXN0aWNzIiB3YXMgdGhlIGZpcnN0IHRoYXQgY2FtZSB0byBteSBtaW5kLCBidXQgSSBh
-Z3JlZSAKaXQncyBub3QgZ3JlYXQgaGVyZS4KVGhpbmtpbmcgb2YgaXQsIHRoZSB0ZXJtICJtZXRy
-aWNzIiBmZWVscyBtb3JlIGFkYXB0ZWQsIHdoYXQgZG8geW91IHRoaW5rID8KCj4+IEluIG1hbnkg
-d2F5cyB0aGlzIGZlYXR1cmUgbG9va3MgdG8gbWUgc2ltaWxhciB0byB3aGF0IFZJRElPQ19MT0df
-U1RBVFVTIGRvZXMsCj4+IGV4Y2VwdCBpbiBhIG5pY2VyIGZvcm1hdC4gV2hlbiBWSURJT0NfTE9H
-X1NUQVRVUyB3YXMgZmlyc3QgYWRkZWQsIGZkaW5mbwo+PiBkaWRuJ3QgZXhpc3QgeWV0Lgo+Pgo+
-PiBBbmQgSSB3b3VsZG4ndCBjYWxsIGl0ICdNZWRpYSBjbGllbnQnOiBpdCdzIHNwZWNpZmljIHRv
-IHN0YXRlbGVzcyBWNEwyCj4+IGNvZGVjIGRyaXZlcnMuCj4gV2hpbGUgaXQgaXMgY3VycmVudGx5
-IGltcGxlbWVudGVkIGZvciBzYXRlbGVzcyBtMm0gY29kZWMgZHJpdmVycyBhcyBleGFtcGxlCj4g
-KGJlY2F1c2Ugd2UgY2FuJ3QgaW1wbGVtZW50IHRoaXMgZXZlcnl3aGVyZSBhdCBvbmNlIHJlYWxs
-eSwgaXRzIG5vdCBwcmFjdGljYWwpLAo+IHRoZXJlIGlzIG5vIHJlYXNvbiB3aHkgd2UgY2Fubm90
-IHRyYWNrIHRvIGEgcHJvY2VzcyBmZGluZm8gbWVtb3J5IHVzYWdlCj4gYXNzb2NpYXRlZCB3aXRo
-IG90aGVyIHZpZGVvIGRldmljZXMuIEluIGZhY3QsIEkgd291bGQgcHJldHR5IG11Y2ggd2FudCB0
-byBzZWUKPiBjYXB0dXJlIGRldmljZXMgc2hvd2luZyB1cCBpbiB2NGwydG9wLCBhcyB0aGVzZSBh
-cmUgdXNpbmcgYSBsb3Qgb2YgbWVtb3J5IHRvbywKPiBzcGVjaWFsbHkgdGhlIG5ldyBjYW1lcmEg
-cGlwZWxpbmVzLiBBbmQgdGhpcyBpcyBhbHNvIHBlcmZlY3RseSBzdWl0YWJsZSBmb3IKPiBzdGF0
-ZWZ1bCBjb2RlYywgY29udmVydGVycywgZXZlcnl0aGluZy4KPgo+IFNvIHBsZWFzZSwgbGV0J3Mg
-YWdyZWUgdGhpcyBpcyBub3QgInN0YXRlbGVzcyBWNEwyIGNvZGVjIGRyaXZlcnMiIHNwZWNpZmlj
-LgpJbmRlZWQsIGJ1dCBJIGdldCB0aGUgY29uZnVzaW9uIGFzIHRoZSBkb2N1bWVudGF0aW9uIHN1
-Z2dlc3RzIHRoYXQgCnN0YXRlbGVzcyBjb2RlYyBkcml2ZXJzIGZpZWxkcyBhcmUgbWFuZGF0b3J5
-LgpJJ2xsIHJld29yayBpdCB0byBoYXZlIGdlbmVyaWMgdjRsMiBmaWVsZHMgdGhhdCBhcmUgbWFu
-ZGF0b3J5IGZvciBhbGwgCmRyaXZlciB0eXBlcywgYW5kIHRoZW4gZmllbGRzIHBlciB0eXBlICh3
-aGVyZSBpdCB3aWxsIGZvY3VzIG9uIHN0YXRlbGVzcyAKY29kZWNzKQo+Cj4gQWJvdXQgVklESU9D
-X0xPR19TVEFUVVMsIHRoaXMgaXMgZWZmZWN0aXZlbHkgYnJva2VuIGZvciBtMm0sIG9ubHkgdGhl
-IG93bmluZwo+IHNlc3Npb24gcHJvY2VzcyBjb3VsZCBjYWxsIHRoYXQuIEl0cyBhbHNvIHByZXR0
-eSBiYWQgZm9yIHRvb2xzIHRvIGhhdmUgdG8KPiBtb25pdG9yIHRoZSBkbWVzZyBhbmQgZmlsdGVy
-IGl0IHVwLiBmZGluZm8gb24gdGhlIG90aGVyIGVuZCwgZG9lcyBub3QgcmVxdWlyZQo+IG9wZW5p
-bmcgdGhlIGRldmljZSBhbmQgcGVybWlzc2lvbnMgYXJlIHZlcnkgY2xlYXIsIGFuZCBib3VuZCB0
-byB1c2VyIHByb2Nlc3MuCj4KPj4+ICs9PT09PT09PT09PT09PT09PT09PT09PT09PQo+Pj4gKwo+
-Pj4gK1N0YXRlbGVzcyBWNEwyIGNvZGVjIGRyaXZlcnMgY2FuIG9wdGlvbmFsbHkgZXhwb3NlIHBl
-ci1maWxlLWRlc2NyaXB0b3IgdXNhZ2UKPj4+ICtzdGF0aXN0aWNzIHZpYSBgYC9wcm9jLzxwaWQ+
-L2ZkaW5mby88ZmQ+YGAuIFRoaXMgaXMgYW5hbG9nb3VzIHRvIHRoZSBEUk0gZmRpbmZvCj4+PiAr
-bWVjaGFuaXNtIGRvY3VtZW50ZWQgaW4gOnJlZjpgZHJtLWNsaWVudC11c2FnZS1zdGF0c2AsIGJ1
-dCB1c2VzIHRoZSBgYG1lZGlhLWBgCj4+PiAra2V5IHByZWZpeCBmb3IgVjRMMiBtZWRpYSBkZXZp
-Y2VzLgo+Pj4gKwo+Pj4gK1RoaXMgaW50ZXJmYWNlIGlzIHNwZWNpZmljIHRvIHN0YXRlbGVzcyAo
-cmVxdWVzdCBBUEkgYmFzZWQpIGNvZGVjIGRldmljZXMsCj4+PiAraW5jbHVkaW5nIGJvdGggZGVj
-b2RlcnMgYW5kIGVuY29kZXJzLiBXaXRoIHN0YXRlbGVzcyBjb2RlY3MsIHRoZSBrZXJuZWwgZHJp
-dmVyCj4+PiArZXhwbGljaXRseSBzdWJtaXRzIGVhY2ggZnJhbWUgdG8gdGhlIGhhcmR3YXJlIGFu
-ZCByZWNlaXZlcyBhIGNvbXBsZXRpb24KPj4+ICtpbnRlcnJ1cHQsIHByb3ZpZGluZyBhIGNsZWFu
-IHBlci1qb2IgYm91bmRhcnkgdGhhdCBjYW4gYmUgYXR0cmlidXRlZCB0byB0aGUKPj4+ICtzdWJt
-aXR0aW5nIGZpbGUgZGVzY3JpcHRvci4KPj4+ICsKPj4+ICtTdGF0ZWZ1bCBjb2RlYyBkZXZpY2Vz
-IGNhbm5vdCBzdXBwb3J0IHRoaXMgaW50ZXJmYWNlIGJlY2F1c2UgdGhlaXIgZmlybXdhcmUKPj4+
-ICttYW5hZ2VzIGpvYiBzY2hlZHVsaW5nIGludGVybmFsbHkuIFRoZSBrZXJuZWwgZHJpdmVyIHN1
-Ym1pdHMgYml0c3RyZWFtIGRhdGEKPj4+ICtidXQgaGFzIG5vIHZpc2liaWxpdHkgaW50byBwZXIt
-ZnJhbWUgaGFyZHdhcmUgZXhlY3V0aW9uIHRpbWluZy4KPj4+ICsKPj4+ICtJbXBsZW1lbnRhdGlv
-bgo+Pj4gKz09PT09PT09PT09PT09Cj4+PiArCj4+PiArVGhlIFY0TDIgY29yZSBwcm92aWRlcyB0
-aGUgcGx1bWJpbmc6IGRyaXZlcnMgaW1wbGVtZW50IHRoZSBgYHNob3dfZmRpbmZvYGAKPj4+ICtj
-YWxsYmFjayBpbiBgYHN0cnVjdCB2NGwyX2ZpbGVfb3BlcmF0aW9uc2BgLCBhbmQgdGhlIGNvcmUg
-d2lyZXMgaXQgaW50byB0aGUKPj4+ICtrZXJuZWwgYGBzdHJ1Y3QgZmlsZV9vcGVyYXRpb25zYGAg
-c28gdGhhdCBgYC9wcm9jLzxwaWQ+L2ZkaW5mby88ZmQ+YGAgb3V0cHV0Cj4+PiAraW5jbHVkZXMg
-dGhlIGRyaXZlci1wcm92aWRlZCBrZXlzLgo+Pj4gKwo+Pj4gK0ZpbGUgZm9ybWF0IHNwZWNpZmlj
-YXRpb24KPj4+ICs9PT09PT09PT09PT09PT09PT09PT09PT09Cj4+PiArCj4+PiArLSBGaWxlIHNo
-YWxsIGNvbnRhaW4gb25lIGtleSB2YWx1ZSBwYWlyIHBlciBvbmUgbGluZSBvZiB0ZXh0Lgo+Pj4g
-Ky0gQ29sb24gY2hhcmFjdGVyIChgYDpgYCkgbXVzdCBiZSB1c2VkIHRvIGRlbGltaXQga2V5cyBh
-bmQgdmFsdWVzLgo+Pj4gKy0gQWxsIHN0YW5kYXJkaXNlZCBrZXlzIHNoYWxsIGJlIHByZWZpeGVk
-IHdpdGggYGBtZWRpYS1gYC4KPj4+ICstIERyaXZlci1zcGVjaWZpYyBrZXlzIHNoYWxsIGJlIHBy
-ZWZpeGVkIHdpdGggYGBkcml2ZXJfbmFtZS1gYC4KPj4+ICsKPj4+ICtNYW5kYXRvcnkga2V5cwo+
-Pj4gKy0tLS0tLS0tLS0tLS0tCj4+PiArCj4+PiArLSBtZWRpYS1kcml2ZXI6IDx2YWxzdHI+Cj4+
-IEknZCBwaWNrICd2NGwyLWRyaXZlcicuIFNpbmNlICdtZWRpYS1kcml2ZXInIGlzIHRvbyBnZW5l
-cmljIGZvciB0aGlzCj4+IHNpbmNlIHRoYXQgZW5jb21wYXNzZXMgYWxzbyBEVkIvQ0VDL1JDIGRy
-aXZlcnMuCnY0bDItZHJpdmVyIHdvcmtzIGZvciBtZS4KPj4KPj4+ICsKPj4+ICvCoCBTdHJpbmcg
-c2hhbGwgY29udGFpbiB0aGUgbmFtZSBvZiB0aGUgbWVkaWEgZHJpdmVyLgo+PiAnVjRMMiBzdGF0
-ZWxlc3MgY29kZWMgZHJpdmVyJwo+IFdpdGggdGhhdCBzYWlkLCB3ZSBjYW4gcmVmaW5lLCBidXQg
-bm90IGluIHRoYXQgZGlyZWN0aW9uLgpUaGVuIGp1c3QgJ1Y0TDIgZHJpdmVyJwo+Pj4gKwo+Pj4g
-Ky0gbWVkaWEtdHlwZTogPHZhbHN0cj4KPj4gUG9vciBuYW1lLgpUaGlzIGZpZWxkcyB3aWxsIGJh
-c2ljYWxseSBiZSB0aGUgb25lIHRlbGxpbmcgdXNlcnNwYWNlIHdoYXQgZmllbGRzIHRvIApleHBl
-Y3QgbmV4dC4KInY0bDItdHlwZSIgc291bmRzIHdyb25nIGFzIHdlbGwuIFdoYXQgYWJvdXQgInY0
-bDItZHJpdmVyLXR5cGUiID8KPj4KPj4+ICsKPj4+ICvCoCBTdHJpbmcgc2hhbGwgaWRlbnRpZnkg
-dGhlIHR5cGUgb2YgbWVkaWEgZW5naW5lIGV4cG9zZWQgdGhyb3VnaCB0aGlzIGZpbGUKPj4+ICvC
-oCBkZXNjcmlwdG9yLiBTdGFuZGFyZCB2YWx1ZXMgYXJlIGBgZGVjb2RlcmBgIGFuZCBgYGVuY29k
-ZXJgYC4KPj4gSSB0aGluayBJIHdvdWxkIHVzZSAnc3RhdGVsZXNzLWRlY29kZXInIGFuZCAnc3Rh
-dGVsZXNzLWVuY29kZXInLiBJdCdzIG1vcmUKPj4gc3BlY2lmaWMgdGhhbiBkZS9lbmNvZGVyIHNp
-bmNlIHRoYXQgY2FuIGJlIHN0YXRlZnVsIGFzIHdlbGwuClllcywgSSB0b3RhbGx5IGFncmVlLgo+
-Pgo+PiBTbyBJIGFtIG1pc3NpbmcgdGhlIGJpZyBwaWN0dXJlIGhlcmU6IHJpZ2h0IG5vdyB0aGlz
-IHBhdGNoIGFkZHMgc3VwcG9ydCBmb3IKPj4gdGhpcyBmb3Igc3RhdGVsZXNzIGNvZGVjcywgYnV0
-IHdoYXQgaGFwcGVucyBpbiB0aGUgZnV0dXJlIGlmIHRoaXMgaXMgYWxzbwo+PiBhZGRlZCBmb3Ig
-cmVndWxhciB2aWRlbyBjYXB0dXJlIGRldmljZXMsIElTUHMsIGV0Yy4/Cj4gV2Ugc2hvdWxkIHdv
-cmsgZnVydGhlciBvbiB0aGUgdHlwZSBzeXN0ZW0sIHRoZW4gd2UnZCBzaW1wbHkgaGF2ZSB0byBl
-eHRlbmQgaXQuCj4gRGlmZmVyZW50IHR5cGUgb2YgZHJpdmVyIHdpbGwgcHJvdmlkZSBkaWZmZXJl
-bnQga2V5L3ZhbHVlIHBhaXIuIFdlIHNob3VsZCB3ZWxsCj4gZG9jdW1lbnQgd2hpY2gga2V5IGFy
-ZSBtYW5kYXRvcnkgZm9yIHRoZSB0eXBlIChvciBmb3IgYWxsIHR5cGUsIGxpa2UgZ2l2aW5nIGEK
-PiBuYW1lIGZvciBnZW5lcmFsIGlkZW50aWZpY2F0aW9uIHB1cnBvc2UpLgo+Cj4gT2YgY291cnNl
-LCB0aGUgY3VycmVudCBwcm9wb3NhbCBpcyB2ZXJ5IHRvcndhcmQgcHJvY2Vzc2luZyBjb3Jlcywg
-aGVuY2UgdGhlIG9uZQo+IHRvIG9uZSBtYXRjaCB3aXRoIHdoYXQgR1BVcyBwcmVzZW50IGluIGZk
-aW5mbyB0b2RheSBpbiBtYWlubGluZSwgc3VjaCBhcmUKPiBmcmVxdWVuY3ksIGNvcmUgdXRpbGl6
-YXRpb24gdGltZSwgZXRjLgo+Cj4gVGhvdWdoLCBETUEgZGV2aWNlcyBzdWNoIGFzIGNhcHR1cmUg
-bWF5IGV4cG9zZSBtb3JlIG9mIGEgYmFuZHdpZHRoIGtpbmQgb2YKPiBpbmZvcm1hdGlvbi4gSSBy
-ZWFsbHkgZG9uJ3Qgd2FudCB0byBtYWtlIHVwIHRvbyBtYXkgY2FzZXMsIHNvIG93bmVycyBvZiB0
-aGVzZQo+IGRvbid0IGZlZWwgbGlrZSB0aGlzIGlzIG1hbmRhdGVkIHRob3VnaC4gQXMgd2UgZGV2
-ZWxvcCBzb2Z0d2FyZSB1c2luZyBvdXIKPiBkcml2ZXJzLCB3ZSBzaG91bGQgYmUgYWJsZSB0byBm
-aWd1cmUtb3V0IHdoYXQga2luZCBvZiB0aGluZ3MgYXJlIGltcG9ydGFudCB0bwo+IG1vbml0b3Iu
-IEZvciBDT0RFQ3MsIHdlIGhhdmUgdHdvIG1ham9ycyB0aGluZ3MuIGEpIGNvcmUgdXRpbGl6YXRp
-b24gKHdoaWNoIGNhbgo+IGJlIHdpdGggYSB0aW1lciBsaWtlIHRoaXMgb25lLCBidXQgaWRlYWxs
-eSB1c2luZyBjeWNsZSBjb3VudGVycywgb3IgZmlybXdhcmUKPiBwcm92aWRlZCBkYXRhKS4gYikg
-bWVtb3J5IHVzYWdlLgpGb3IgY29yZSB1dGlsaXphdGlvbiwgd2UgY2FuIGhhdmUgYm90aCAoSFcg
-Y3ljbGVzIGFuZCB0aW1lKS4KVGltZSBpcyBsZXNzIHByZWNpc2UgYXMgaXQgaXMgY29tcHV0ZWQg
-YnkgdGhlIGRyaXZlciwgc3RhcnRpbmcgYSBiaXQgCmJlZm9yZSB0aGUgaGFyZHdhcmUgaXMgcnVu
-IGFuZCBhIGJpdCBhZnRlciB0aGUgaW50ZXJydXB0IGFycml2ZXMuCkhXIGN5Y2xlcyBpcyB2ZXJ5
-IHByZWNpc2UsIGJ1dCBuZWVkIHRoZSBjbG9jayByYXRlIHRvIGJlIGV4cG9zZWQgYW5kIG5vdCAK
-YWxsIEhXIG1heSBzdXBwb3J0IGl0LgoKV2UgY2FuIHNheSB0aGF0IHRpbWUgaXMgbWFuZGF0b3J5
-IChmb3Igc3RhdGVsZXNzIGNvZGVjKSwgYXMgaXQgY2FuIAphbHdheXMgYmUgY29tcHV0ZWQgYW5k
-IEhXIGN5Y2xlcyBpcyBvcHRpb25hbC4KRm9yIHNob3dpbmcgdXNhZ2UgbGlrZSBpbiB2NGwydG9w
-LCB0aGUgdXNlcnNwYWNlIGNhbiBjb21wdXRlIGl0IGZyb20gSFcgCmN5Y2xlcyBpZiBhdmFpbGFi
-bGUgYW5kIGZhbGxiYWNrIHRvIGxlc3MgcHJlY2lzZSAiVGltZSIgb3RoZXJ3aXNlLgoKPgo+PiBU
-aGUgbmFtaW5nIGhlcmUgbWF0dGVycywgaXQgaGFzIHRvIGhhdmUgc29tZSBzb3J0IG9mIHNjaGVt
-ZSBzbyBpdCBjYW4gYmUKPj4gZXh0ZW5kZWQgdG8gb3RoZXIgdHlwZXMgb2YgZHJpdmVycy4gU28g
-YSAnbWVkaWEnIHByZWZpeCBpcyB0b28gZ2VuZXJpYywKPj4gYW5kIGl0IGFsc28gbG9va3MgbGlr
-ZSBpdCByZWZlcnMgdG8gdGhlIC9kZXYvbWVkaWFYIGRldmljZS4KPj4KPj4+ICsKPj4+ICtVdGls
-aXphdGlvbiBrZXlzCj4+PiArLS0tLS0tLS0tLS0tLS0tLQo+Pj4gKwo+Pj4gKy0gbWVkaWEtZW5n
-aW5lLXVzYWdlOiA8dWludD4gbnMKPj4gJ01lZGlhIEVuZ2luZSc6IHZlcnkgdmFndWUuClRoaW5r
-aW5nIG9mIGl0LCB0aGlzIG9uZSBjb3VsZCBiZSBjaGFuZ2VkIHRvIAoidjRsMi1jb3JlLXVzYWdl
-LXRpbWUtPGNvcmVfaWQ+Ii4KVGhhdCB3YXkgd2UgY2FuIGhhdmUgInY0bDItY29yZS11c2FnZS1j
-eWNsZXMtPGNvcmVfaWQ+IiB0b28uCgpTZXBhcmF0aW5nIGJ5IGNvcmUgaWQgc2hvdyBtb3JlIHBy
-ZWNpc2UgbWV0cmljcy4KPj4KPj4+ICsKPj4+ICvCoCBUaW1lIGluIG5hbm9zZWNvbmRzIHRoYXQg
-dGhlIGhhcmR3YXJlIGVuZ2luZSBzcGVudCBidXN5IHByb2Nlc3Npbmcgd29yawo+PiBDdW11bGF0
-aXZlIHNpbmNlIGNyZWF0aW5nIHRoZSBmaWxlIGhhbmRsZT8gT3Igc2luY2UgdGhlIGxhc3QgcmVh
-ZD8KSSBpbXBsZW1lbnRlZCBjdW11bGF0aXZlIHNpbmNlIHRoZSBmaWxlIGhhbmRsZSB3YXMgY3Jl
-YXRlZC4KVGhpcyBpcyBjbG9zZXIgdG8gd2hhdCBEUk0gZG9lcywgc28gbGV0J3Mga2VlcCBpdC4g
-SSdsbCBzcGVjaWZ5IGl0IGluIAp0aGUgZG9jdW1lbnRhdGlvbi4KCj4+Cj4+PiArwqAgYmVsb25n
-aW5nIHRvIHRoaXMgZmlsZSBkZXNjcmlwdG9yLiBUaGUgZW5naW5lIGJlaW5nIG1lYXN1cmVkIGlz
-IGlkZW50aWZpZWQKPj4+ICvCoCBieSB0aGUgYGBtZWRpYS10eXBlYGAga2V5Lgo+Pj4gKwo+Pj4g
-K8KgIFZhbHVlcyBhcmUgbm90IHJlcXVpcmVkIHRvIGJlIGNvbnN0YW50bHkgbW9ub3RvbmljIGlm
-IGl0IG1ha2VzIHRoZSBkcml2ZXIKPj4+ICvCoCBpbXBsZW1lbnRhdGlvbiBlYXNpZXIsIGJ1dCBh
-cmUgcmVxdWlyZWQgdG8gY2F0Y2ggdXAgd2l0aCB0aGUgcHJldmlvdXNseQo+Pj4gK8KgIHJlcG9y
-dGVkIGxhcmdlciB2YWx1ZSB3aXRoaW4gYSByZWFzb25hYmxlIHBlcmlvZC4KPj4gRG9lcyB0aGlz
-IG1ha2Ugc2Vuc2UgZm9yIGNvZGVjcz8KPj4KPj4gSSBjYW4gdGVsbCB0aGF0IHRoaXMgaXMgaGVh
-dmlseSBpbmZsdWVuY2VkIGJ5IHRoZSBkcm0gZG9jdW1lbnRhdGlvbiwgYnV0IHRoYXQKPj4gZG9l
-cyBub3QgbmVjZXNzYXJpbHkgdHJhbnNsYXRlIHRvIFY0TDIuCj4gSSB3b3VsZCBndWVzcyB0aGlz
-IGlzIGJvdW5kIHRvIHVzYWdlIG9mIGN5Y2xlIGNvdW50ZXIsIHdoaWNoIHdlIGRlZmluaXRlbHkg
-aGF2ZQo+IGluIHNvbWUgY29kZWMgSFcgZXhwb3NpbmcuIEFzIHRoZSBmcmVxdWVuY3kgZmx1Y3R1
-YXRlLCBJIHN1cHBvc2UgdGhlcmUgaXMgd2F5cwo+IHlvdSBjYW4gZ2V0IHlvdXIgY2FsY3VsYXRp
-b24gYSBiaXQgb2ZmLCBhcyB0aGlzIGlzIGJlaW5nIHNhbXBsZWQuIEJhc2ljYWxseSwgdGhlCj4g
-ZnJlcXVlbmNlIGNoYW5nZSBpcyBub3Qgc3RyaWN0bHkgdHJhY2tlZCBieSBvdXIgZHJpdmVycywg
-d2hpY2ggaXMgb2suIEJ1dCBJIGFsc28KPiBkb24ndCBzZWVuIHdoeSB3ZSB3b3VsZG4ndCBrZWVw
-IHRoZSBjb3VudGVycyBtb25vdG9uaWMsIGl0cyByZWFsbHkgZWFzeSB0byBkby4KWWVhaCwgSSB0
-aGluayB3ZSBjYW4gZHJvcCB0aGF0IGNvbW1lbnQuIEZvciBlYWNoIHJ1biwgd2UganVzdCBhZGQg
-YSAKcG9zaXRpdmUgdmFsdWUsCnNvIHRoZXJlIGlzIG5vIHJlYXNvbiBub3QgdG8gYmUgbW9ub3Rv
-bmljLgo+Pj4gKwo+Pj4gK0ZyZXF1ZW5jeSBrZXlzCj4+PiArLS0tLS0tLS0tLS0tLS0KPj4+ICsK
-Pj4+ICstIG1lZGlhLW1heGZyZXE6IDx1aW50PiBIego+Pj4gKwo+Pj4gK8KgIE1heGltdW0gb3Bl
-cmF0aW5nIGZyZXF1ZW5jeSBvZiB0aGUgbWFpbiBlbmdpbmUgY2xvY2suCj4+PiArCj4+PiArLSBt
-ZWRpYS1jdXJmcmVxOiA8dWludD4gSHoKPj4+ICsKPj4+ICvCoCBDdXJyZW50IG9wZXJhdGluZyBm
-cmVxdWVuY3kgb2YgdGhlIG1haW4gZW5naW5lIGNsb2NrLgo+PiAnTWFpbiBlbmdpbmUgY2xvY2sn
-Pwo+IFRoZSB3b3JkICJlbmdpbmUiIHNlZW1zIGluZGVlZCBhbGllbiBpbiB0aGlzIHN1YnN5c3Rl
-bS4gSXQgaXMgcmVmZXJyaW5nIHRvIGEKPiBzeXN0ZW0gd2hlcmUgeW91IG9wZW4gb25lIGRldmlj
-ZXMsIHNvIHlvdSBoYXZlIG9uZSBmZGluZm8sIGJ1dCBtdWx0aXBsZSBjb3Jlcy4KPiBFYWNoIGNv
-cmVzIG1heSBiZSBydW5uaW5nIGF0IGl0IG93bnMgZnJlcXVlbmN5LiBCdXQgSSB0aGluayB0aGlz
-IGlzIGEgbGl0dGxlIHRvbwo+IHZhZ3VlIHRvIG15IHRhc3RlLgpNYWluIGRvZXNuJ3QgcmVmZXIg
-dG8gdGhlIG1haW4gZW5naW5lLCBidXQgcmF0aGVyIHRvIHRoZSBtYWluIGNsb2NrIG9mIAp0aGUg
-ZW5naW5lLgplLmcuIHJrdmRlYyBzbyBmYXIgY2FuIGhhdmUgdXAgdG8gNSBjbG9ja3MgbGlua2Vk
-IHRvIGl0IGJ1dCBvbmx5IHRoZSBvbmUgCnRoYXQgYWN0dWFsbHkgY2xvY2tzIHRoZSBIVyBzaG91
-bGQgYmUgZXhwb3NlZC4KClRoYXQgYmVpbmcgc2FpZCwgeW91IGFyZSByaWdodCB0aGF0IG9uZSBm
-aWxlIGhhbmRsZSBjYW4gaGF2ZSBtdWx0aXBsZSAKY29yZXMsIHNvIHRoZSBuYW1lIHNob3VsZCBi
-ZSBjaGFuZ2VkIHRvIHY0bDItbWF4ZnJlcS08Y29yZV9pZD4gKGFuZCAKY3VyZnJlcSkgYW5kIHRo
-ZSB0ZXh0IHNob3VsZCB1c2UgIm1haW4gY2xvY2sgb2YgdGhlIGNvcmUgPGNvcmVfaWQ+Ii4KCldl
-IGFsc28gY291bGQganVzdCBleHBvc2UgYWxsIGNsb2NrcyB3aXRoIHRoZWlyIG5hbWUsIGJ1dCB1
-c2Vyc3BhY2UgCnN0aWxsIG5lZWRzIHRvIGtub3cgd2hpY2ggb25lIGNhbiBiZSB1c2VkIHRvIGNv
-bXB1dGUgdXNhZ2UgJWFnZSBmcm9tIEhXIApjeWNsZXMuCgpEZXRsZXYuCj4KPiBIb3BlIHRoaXMg
-ZmVlZGJhY2sgZG9lcyBub3QgY3Jvc3MgdG8gbWFueSB3aXJlcywgYnV0IHRhZ2dpbmcgdGhpcyBh
-cyBzcGVjaWZpYyB0bwo+IHN0YXRlbGVzcyBjb2RlYyBkcml2ZXJzIGRpZCBzcGFyayBhIGxpdHRs
-ZSBpbiBteSBoZWFkLiBBbmQgd2UgYXJlIHJlYWxseSBpbiBuZWVkCj4gZm9yIGEgd2F5IHRvIG1v
-bml0b3Igb3VyIGRyaXZlcnMuCj4KPiBOaWNvbGFzCj4KPj4+ICsKPj4+ICtFeGFtcGxlIG91dHB1
-dAo+Pj4gKz09PT09PT09PT09PT09Cj4+PiArCj4+PiArOjoKPj4+ICsKPj4+ICvCoCBtZWRpYS1k
-cml2ZXI6wqDCoMKgwqDCoMKgwqDCoMKgwqAgaGFudHJvLXZwdQo+Pj4gK8KgIG1lZGlhLXR5cGU6
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGRlY29kZXIKPj4+ICvCoCBtZWRpYS1lbmdpbmUtdXNh
-Z2U6wqDCoMKgwqAgMTIzNDU2Nzg5IG5zCj4+PiArwqAgbWVkaWEtbWF4ZnJlcTrCoMKgwqDCoMKg
-wqDCoMKgwqAgNjAwMDAwMDAwIEh6Cj4+PiArwqAgbWVkaWEtY3VyZnJlcTrCoMKgwqDCoMKgwqDC
-oMKgwqAgNjAwMDAwMDAwIEh6Cj4+Pgo+PiBSZWdhcmRzLAo+Pgo+PiAJSGFucwoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Hans,
+
+On 6/19/26 09:05, Hans Verkuil wrote:
+> On 17/06/2026 20:10, Detlev Casanova wrote:
+>> Provide helpers for media drivers to set fdinfo data and print the
+>> key:value pairs in a standard way.
+>>
+>> User drivers can set stats values with helpers like:
+>>   - v4l2_stats_update_hw_usage
+>>   - v4l2_stats_set_media_dev_type
+>>
+>> And also call the show helpers from their show_fdinfo callback with:
+>>   - v4l2_stats_show -- Shows the values set previously
+>>   - v4l2_stats_show_clock -- Shows the main clock state.
+>>
+>> The show_clock helper is used instead of updating a clock value in
+>> v4l2_stats for the following reasons:
+>>   - Clocks are at the device level, this is not a per-fd information
+>>   - This avoids having clock references in v4l2-core
+>>   - Drivers can use different approaches to manage clocks
+>>     (e.g.: bulk_data or not: A set helper wouldn't please all drivers)
+>>   - Arguably, clocks could be exposed elsewhere (like a debugfs), but we
+>>     want something close to what DRM does and centralizing information has
+>>     its advantages for userspace tooling.
+>>
+>> In DRM the key:value pair format for clocks is documented and each driver
+>> can write them directly based on that.
+>> In this case, provide a helper and document the format.
+>>
+>> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+>> ---
+>>   drivers/media/v4l2-core/Makefile     |  2 +-
+>>   drivers/media/v4l2-core/v4l2-dev.c   |  2 ++
+>>   drivers/media/v4l2-core/v4l2-fh.c    |  3 ++
+>>   drivers/media/v4l2-core/v4l2-stats.c | 65 ++++++++++++++++++++++++++++++++++++
+>>   include/media/v4l2-fh.h              |  2 ++
+>>   include/media/v4l2-stats.h           | 44 ++++++++++++++++++++++++
+>>   6 files changed, 117 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/media/v4l2-core/Makefile b/drivers/media/v4l2-core/Makefile
+>> index 329f0eadce99..20e1ab74ac09 100644
+>> --- a/drivers/media/v4l2-core/Makefile
+>> +++ b/drivers/media/v4l2-core/Makefile
+>> @@ -9,7 +9,7 @@ ccflags-y += -I$(srctree)/drivers/media/tuners
+>>   tuner-objs	:=	tuner-core.o
+>>   
+>>   videodev-objs	:=	v4l2-dev.o v4l2-ioctl.o v4l2-device.o v4l2-fh.o \
+>> -			v4l2-event.o v4l2-subdev.o v4l2-common.o \
+>> +			v4l2-event.o v4l2-subdev.o v4l2-common.o v4l2-stats.o \
+>>   			v4l2-ctrls-core.o v4l2-ctrls-api.o \
+>>   			v4l2-ctrls-request.o v4l2-ctrls-defs.o
+>>   
+>> diff --git a/drivers/media/v4l2-core/v4l2-dev.c b/drivers/media/v4l2-core/v4l2-dev.c
+>> index 3878fa2ff73e..3e7a6876dffd 100644
+>> --- a/drivers/media/v4l2-core/v4l2-dev.c
+>> +++ b/drivers/media/v4l2-core/v4l2-dev.c
+>> @@ -486,6 +486,8 @@ static void v4l2_show_fdinfo(struct seq_file *m, struct file *filp)
+>>   {
+>>   	struct video_device *vdev = video_devdata(filp);
+>>   
+>> +	seq_printf(m, "media-driver:\t%s\n", vdev->v4l2_dev->name);
+>> +
+>>   	if (vdev->fops->show_fdinfo)
+>>   		vdev->fops->show_fdinfo(m, filp);
+>>   }
+>> diff --git a/drivers/media/v4l2-core/v4l2-fh.c b/drivers/media/v4l2-core/v4l2-fh.c
+>> index b184bed8aca9..1b655672c718 100644
+>> --- a/drivers/media/v4l2-core/v4l2-fh.c
+>> +++ b/drivers/media/v4l2-core/v4l2-fh.c
+>> @@ -17,6 +17,7 @@
+>>   #include <media/v4l2-event.h>
+>>   #include <media/v4l2-ioctl.h>
+>>   #include <media/v4l2-mc.h>
+>> +#include <media/v4l2-stats.h>
+>>   
+>>   void v4l2_fh_init(struct v4l2_fh *fh, struct video_device *vdev)
+>>   {
+>> @@ -38,6 +39,7 @@ void v4l2_fh_init(struct v4l2_fh *fh, struct video_device *vdev)
+>>   	INIT_LIST_HEAD(&fh->subscribed);
+>>   	fh->sequence = -1;
+>>   	mutex_init(&fh->subscribe_lock);
+>> +	v4l2_stats_init(&fh->stats);
+>>   }
+>>   EXPORT_SYMBOL_GPL(v4l2_fh_init);
+>>   
+>> @@ -88,6 +90,7 @@ void v4l2_fh_exit(struct v4l2_fh *fh)
+>>   	v4l2_event_unsubscribe_all(fh);
+>>   	mutex_destroy(&fh->subscribe_lock);
+>>   	fh->vdev = NULL;
+>> +	v4l2_stats_exit(&fh->stats);
+>>   }
+>>   EXPORT_SYMBOL_GPL(v4l2_fh_exit);
+>>   
+>> diff --git a/drivers/media/v4l2-core/v4l2-stats.c b/drivers/media/v4l2-core/v4l2-stats.c
+>> new file mode 100644
+>> index 000000000000..93e64ef2e7bb
+>> --- /dev/null
+>> +++ b/drivers/media/v4l2-core/v4l2-stats.c
+>> @@ -0,0 +1,65 @@
+>> +// SPDX-License-Identifier: GPL-2.0-only
+>> +/*
+>> + * v4l2-stats.c
+>> + *
+>> + * V4L2 statistics management.
+>> + *
+>> + * Maintain a per-file handle list of statistics about the hardware and handle
+>> + * exposing it in the fdinfo.
+>> + *
+>> + * Copyright (C) 2026 Collabora.
+>> + *
+>> + * Contact: Detlev Casanova <detlev.casanova@collabora.com>
+>> + */
+>> +
+>> +#include <linux/types.h>
+>> +#include <linux/seq_file.h>
+>> +#include <linux/clk.h>
+>> +#include <media/v4l2-stats.h>
+>> +
+>> +static const char * const dev_type_name[] = {
+>> +	[MEDIA_DEV_TYPE_V4L2] = "media",
+>> +	[MEDIA_DEV_TYPE_V4L2_STATELESS_ENCODER] = "encoder",
+>> +	[MEDIA_DEV_TYPE_V4L2_STATELESS_DECODER] = "decoder",
+>> +};
+>> +
+>> +void v4l2_stats_init(struct v4l2_stats *stats)
+>> +{
+>> +	stats->hw_usage_time = 0;
+>> +	stats->media_dev_type = MEDIA_DEV_TYPE_V4L2;
+>> +}
+>> +
+>> +void v4l2_stats_exit(struct v4l2_stats *stats)
+>> +{
+>> +}
+>> +
+>> +void v4l2_stats_update_hw_usage(struct v4l2_stats *stats, u64 usage_time)
+>> +{
+>> +	stats->hw_usage_time += usage_time;
+>> +}
+>> +EXPORT_SYMBOL_GPL(v4l2_stats_update_hw_usage);
+>> +
+>> +void v4l2_stats_set_media_dev_type(struct v4l2_stats *stats, enum v4l2_media_dev_type type)
+>> +{
+>> +	if (type >= MEDIA_DEV_TYPE_COUNT)
+>> +		return;
+>> +
+>> +	stats->media_dev_type = type;
+>> +}
+>> +EXPORT_SYMBOL_GPL(v4l2_stats_set_media_dev_type);
+>> +
+>> +void v4l2_stats_show(struct v4l2_stats *stats, struct seq_file *m)
+>> +{
+>> +	seq_printf(m, "media-type:\t%s\n", dev_type_name[stats->media_dev_type]);
+>> +	seq_printf(m, "media-engine-usage:\t%llu ns\n", stats->hw_usage_time);
+>> +}
+>> +EXPORT_SYMBOL_GPL(v4l2_stats_show);
+>> +
+>> +void v4l2_stats_show_clock(struct seq_file *m, struct clk *clk)
+>> +{
+>> +	seq_printf(m, "media-maxfreq:\t%lu Hz\n",
+>> +		   clk_get_rate(clk));
+>> +	seq_printf(m, "media-curfreq:\t%lu Hz\n",
+>> +		   clk_get_rate(clk));
+>> +}
+>> +EXPORT_SYMBOL_GPL(v4l2_stats_show_clock);
+>> diff --git a/include/media/v4l2-fh.h b/include/media/v4l2-fh.h
+>> index aad4b3689d7e..ae6688722bee 100644
+>> --- a/include/media/v4l2-fh.h
+>> +++ b/include/media/v4l2-fh.h
+>> @@ -17,6 +17,7 @@
+>>   #include <linux/kconfig.h>
+>>   #include <linux/list.h>
+>>   #include <linux/videodev2.h>
+>> +#include <media/v4l2-stats.h>
+>>   
+>>   struct video_device;
+>>   struct v4l2_ctrl_handler;
+>> @@ -43,6 +44,7 @@ struct v4l2_fh {
+>>   	struct list_head	list;
+>>   	struct video_device	*vdev;
+>>   	struct v4l2_ctrl_handler *ctrl_handler;
+>> +	struct v4l2_stats	stats;
+>>   	enum v4l2_priority	prio;
+>>   
+>>   	/* Events */
+>> diff --git a/include/media/v4l2-stats.h b/include/media/v4l2-stats.h
+>> new file mode 100644
+>> index 000000000000..d580933c4181
+>> --- /dev/null
+>> +++ b/include/media/v4l2-stats.h
+>> @@ -0,0 +1,44 @@
+>> +/* SPDX-License-Identifier: GPL-2.0-only */
+>> +/*
+>> + * v4l2-stats.h
+>> + *
+>> + * V4L2 statistics management.
+>> + *
+>> + * Maintain a per-file handle list of statistics about the hardware and handle
+>> + * exposing it in the fdinfo.
+>> + *
+>> + * Copyright (C) 2026 Collabora.
+>> + *
+>> + * Contact: Detlev Casanova <detlev.casanova@collabora.com>
+>> + */
+>> +#ifndef V4L2_STATS_H
+>> +#define V4L2_STATS_H
+>> +
+>> +#include <linux/types.h>
+>> +
+>> +struct clk;
+>> +struct seq_file;
+>> +
+>> +enum v4l2_media_dev_type {
+>> +	MEDIA_DEV_TYPE_V4L2 = 0,
+>> +	MEDIA_DEV_TYPE_V4L2_STATELESS_ENCODER,
+>> +	MEDIA_DEV_TYPE_V4L2_STATELESS_DECODER,
+>> +
+>> +	MEDIA_DEV_TYPE_COUNT,
+> I'm a bit unhappy about introducing yet another type. Do we need it?
+I didn't want it either, but this will extend to other kind of drivers 
+and I couldn't find a type enum to rule them all.
+Maybe just using Device Capabilities Flags ?
+
+It still won't differentiate encoder from decoder.
+I wouldn't super mad if we loose that information (userspace can simply 
+see it as a capture device) but it'd still be nice to have it.
+>
+>> +};
+>> +
+>> +struct v4l2_stats {
+> Poor name, and it conflicts with ISP statistics.
+>
+> How about v4l2_pdinfo? And v4l2-fdinfo.h etc. That avoids any confusion and
+> also clearly says what this is about.
+As mentioned in the other patch, "v4l2_metrics" is more accurate.
+
+Detlev.
+>
+>> +	u64 hw_usage_time;
+>> +	enum v4l2_media_dev_type media_dev_type;
+> This should be the first field.
+>
+>> +};
+>> +
+>> +void v4l2_stats_init(struct v4l2_stats *stats);
+>> +void v4l2_stats_exit(struct v4l2_stats *stats);
+>> +
+>> +void v4l2_stats_update_hw_usage(struct v4l2_stats *stats, u64 usage_time);
+>> +void v4l2_stats_set_media_dev_type(struct v4l2_stats *stats, enum v4l2_media_dev_type type);
+>> +
+>> +void v4l2_stats_show(struct v4l2_stats *stats, struct seq_file *m);
+>> +void v4l2_stats_show_clock(struct seq_file *m, struct clk *clk);
+>> +
+>> +#endif /* V4L2_STATS_H */
+>>
+> Regards,
+>
+> 	Hans
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
