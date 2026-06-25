@@ -4,78 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A1FFCDB466
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 08:19:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9140BCDB466
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 08:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=an+myqu8dnfDYho34n0O47LpwkH+HquDkcyBgkByn3c=; b=jB051OHtAtkC30
-	9unnD0D81hlZayb7P7okohITUG5N7x59w7yd4oo0DBLJ/LFFkFeNT6hQcg6sZ55PkZHxiVlU2odL7
-	TbG47PdqpyLxxdetBOv+gkx0TwqhhHfguYNKsnJN+9iCboi56DgAas/1yzeLy3wN3na2EIceABPpg
-	9jDCkeIGbZ5dba6DJESw3yYK/ie6Dkn7jw3pNBtRDXlbwt2tgo5I5YLMcdiZzslI7o0dPuPKub1Tf
-	LHPfMeEiHa8ztE1diWKkCXXmlqVGcnWYrODBGEeQujOtI4BPyx9xpP3BCrHsmFQ1/h2T8Uf4NtleK
-	7VqsFA57B8cFLmjekN6g==;
+	List-Owner; bh=nC7L75PQOH6c6cnnAqeOLuHwmJE/lp7kutOiOGpPkqo=; b=kBK5WTJXj6X6/L
+	sMV9jNeiK95s81WaHL75C2xcVhFk0YeolIo8OKix4wyUy7OmvBxBcCigoaJnTE4vvb8Xprh8lf2am
+	J9nKx0QfxGEC0T7wHjXyDO2WhVU+G6Hro983DfM5qvk++KvveNUY2JJj2I91d06ana5y61BDC2zBS
+	/WZ7U57kYm4CWiQXaJUuzs2hgVy3TbJXkGjiySwZ7xxVEQPlzctVd6o9YTBr742h7tDEpo/fzENXW
+	f/D0Fn3+5hreLNN92DPduLTRuJEqUJDzHxaSK9nGJ3XNxGW9DyjuvKCBLmEo3eRr8w01HPMf75rVI
+	G6SHJ6nsFaHHh3MnDIYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcfJ6-00000008p9j-3Che;
-	Thu, 25 Jun 2026 08:19:32 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wcfMl-00000008pPG-2YI1;
+	Thu, 25 Jun 2026 08:23:19 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcfJ4-00000008p92-1HV7;
-	Thu, 25 Jun 2026 08:19:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782375563;
-	bh=nCyO76GcZTqJ8IWlo+QkFWSRUHPwnxqO6bLkIAX5v30=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ao50NhUvUzm8tGdnsJslAfW/6WZAND9921SEJ92KLLqAo67oy0lHn16BQT2GeLIIb
-	 fhntkvmDwarLS9ae4u/ket3QEVFuCcVapcfKGXrvSEfuyoo6bDVbN8Wv4HWCtHYR0k
-	 o0d9jHUh6Ylqmcl3v2NTORcs3NQuJm2gn6A4G8e6Tb27XcvIN2v6apdjKkyyK77IzW
-	 61t7eoVxUpmPqYcJgi/K5pro6KA0CCMp/tC3RwgEzdkZ2hHWODB732DpEGLmLP5oCv
-	 DdmEpOsY6RGpDfVxVmfseW9ZO9wAtnK+9earnrKW+/S1jtMb0Xeg7UTftCNVs6HvxK
-	 HvYTO6M6X8IpA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DBA4717E03D7;
-	Thu, 25 Jun 2026 10:19:22 +0200 (CEST)
-Message-ID: <b520e77d-1ae3-4222-b442-e59442903107@collabora.com>
-Date: Thu, 25 Jun 2026 11:19:22 +0300
+	id 1wcfMh-00000008pOT-3Ad8;
+	Thu, 25 Jun 2026 08:23:17 +0000
+Received: from neptunite.rasen.tech (unknown [IPv6:2404:7a81:160:2100:1323:5038:14e8:bd6])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 8C685497;
+	Thu, 25 Jun 2026 10:22:29 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1782375750;
+	bh=8I+KpV9dg9tQgc2qPFHeeSoyDSch1ee91VU049AnAyA=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=gPvAzqFFN3oMmiqwl3Iq7xegm9ifllEs9kE6Tjp2pzo3IQTcENnHETXm1tq4KPFCE
+	 UrWLgE3AH0Od+RUknuQ/fEU2S+NJ9HRB3ph8mfbtyMW1LQ0jK/BmQ2p5SdXhqOT9Zv
+	 z5dqF9VL8odxBw/Hfo2BMghkbFxZX4netWtX18Hg=
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 25/30] drm/vc4: hdmi: Convert to common HDMI 2.0 SCDC
- scrambling helpers
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
- <20260602-dw-hdmi-qp-scramb-v7-25-445eb54ee1ed@collabora.com>
- <20260612-primitive-chital-of-tempering-18bc7c@houat>
- <8937d785-4daa-4246-9553-24aed7d279b5@collabora.com>
- <20260625-busy-ultra-oryx-ffb3c9@houat>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260625-busy-ultra-oryx-ffb3c9@houat>
+In-Reply-To: <178229758404.3075020.12553514371020830845@ping.linuxembedded.co.uk>
+References: <20260619052637.1110672-1-paul.elder@ideasonboard.com> <20260619052637.1110672-2-paul.elder@ideasonboard.com> <178229758404.3075020.12553514371020830845@ping.linuxembedded.co.uk>
+Subject: Re: [RFC PATCH 1/6] media: mc: Implement shared media graph
+From: Paul Elder <paul.elder@ideasonboard.com>
+Cc: michael.riesch@collabora.com, xuhf@rock-chips.com, stefan.klug@ideasonboard.com, dan.scally@ideasonboard.com, jacopo.mondi@ideasonboard.com, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, hverkuil+cisco@kernel.org, nicolas.dufresne@collabora.com, ribalda@chromium.org, sakari.ailus@linux.intel.com
+To: Kieran Bingham <kieran.bingham@ideasonboard.com>, laurent.pinchart@ideasonboard.com
+Date: Thu, 25 Jun 2026 17:23:03 +0900
+Message-ID: <178237578321.292172.5229006087283359591@neptunite.rasen.tech>
+User-Agent: alot/0.0.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260625_011930_505384_AB327B49 
-X-CRM114-Status: GOOD (  38.59  )
+X-CRM114-CacheID: sfid-20260625_012316_095860_CE564E65 
+X-CRM114-Status: GOOD (  56.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,148 +60,618 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gNi8yNS8yNiAxMDo0NCBBTSwgTWF4aW1lIFJpcGFyZCB3cm90ZToKPiBPbiBTYXQsIEp1biAx
-MywgMjAyNiBhdCAwMzo0MToyMEFNICswMzAwLCBDcmlzdGlhbiBDaW9jYWx0ZWEgd3JvdGU6Cj4+
-IEhpIE1heGltZSwKPj4KPj4gT24gNi8xMi8yNiAzOjA0IFBNLCBNYXhpbWUgUmlwYXJkIHdyb3Rl
-Ogo+Pj4gSGksCj4+Pgo+Pj4gT24gVHVlLCBKdW4gMDIsIDIwMjYgYXQgMDE6NDQ6MjVBTSArMDMw
-MCwgQ3Jpc3RpYW4gQ2lvY2FsdGVhIHdyb3RlOgo+Pj4+IFJlcGxhY2UgdGhlIHZjNC1sb2NhbCBz
-Y3JhbWJsaW5nIGltcGxlbWVudGF0aW9uIHdpdGggdGhlIG5ld2x5Cj4+Pj4gaW50cm9kdWNlZCBE
-Uk0gY29tbW9uIFNDREMgc2NyYW1ibGluZyBpbmZyYXN0cnVjdHVyZToKPj4+Pgo+Pj4+IC0gQWR2
-ZXJ0aXNlIHNvdXJjZS1zaWRlIHNjcmFtYmxpbmcgc3VwcG9ydCBieSBzZXR0aW5nCj4+Pj4gICBj
-b25uZWN0b3ItPmhkbWkuc2NyYW1ibGluZ19zdXBwb3J0ZWQgYmFzZWQgb24gdGhlIHZhcmlhbnQn
-cwo+Pj4+ICAgbWF4X3BpeGVsX2Nsb2NrIGJlZm9yZSBkcm1tX2Nvbm5lY3Rvcl9oZG1pX2luaXQo
-KS4KPj4+Pgo+Pj4+IC0gUHJvdmlkZSBtaW5pbWFsIC5zY3JhbWJsZXJfe2VuYWJsZXxkaXNhYmxl
-fSBjb25uZWN0b3IgY2FsbGJhY2tzIHRoYXQKPj4+PiAgIG9ubHkgdG9nZ2xlIHRoZSBWQzUgSERN
-SV9TQ1JBTUJMRVJfQ1RMIHJlZ2lzdGVyLiAgU2luay1zaWRlIFNDREMKPj4+PiAgIHByb2dyYW1t
-aW5nIGFuZCBwZXJpb2RpYyBzdGF0dXMgbW9uaXRvcmluZyBhcmUgbm93IGRlbGVnYXRlZCB0bwo+
-Pj4+ICAgZHJtX3NjZGNfe3N0YXJ0fHN0b3B9X3NjcmFtYmxpbmcoKS4KPj4+Pgo+Pj4+IC0gUmVw
-bGFjZSB2YzRfaGRtaV9lbmFibGVfc2NyYW1ibGluZygpIHdpdGggYSBjb25kaXRpb25hbCBjYWxs
-IHRvCj4+Pj4gICBkcm1fc2NkY19zdGFydF9zY3JhbWJsaW5nKCkgaW4gcG9zdF9jcnRjX2VuYWJs
-ZSwgZ2F0ZWQgb24KPj4+PiAgIGNvbm5fc3RhdGUtPmhkbWkuc2NyYW1ibGVyX25lZWRlZCAoY29t
-cHV0ZWQgYnkgdGhlIEhETUkgc3RhdGUgaGVscGVyKS4KPj4+Pgo+Pj4+IC0gUmVwbGFjZSB2YzRf
-aGRtaV9kaXNhYmxlX3NjcmFtYmxpbmcoKSB3aXRoIGRybV9zY2RjX3N0b3Bfc2NyYW1ibGluZygp
-Cj4+Pj4gICBpbiBwb3N0X2NydGNfZGlzYWJsZS4KPj4+Pgo+Pj4+IC0gRHJvcCB2YzRfaGRtaV9y
-ZXNldF9saW5rKCkgYW5kIHZjNF9oZG1pX2hhbmRsZV9ob3RwbHVnKCksIHN3aXRjaGluZwo+Pj4+
-ICAgdGhlIC5kZXRlY3RfY3R4KCkgcGF0aCB0bwo+Pj4+ICAgZHJtX2F0b21pY19oZWxwZXJfY29u
-bmVjdG9yX2hkbWlfaG90cGx1Z19jdHgoKSB3aGljaCBpbnRlcm5hbGx5IGNhbGxzCj4+Pj4gICBk
-cm1fc2NkY19zeW5jX3N0YXR1cygpIHRvIHRyaWdnZXIgYSBDUlRDIHJlc2V0IG9uIHJlY29ubmVj
-dGlvbi4KPj4+Pgo+Pj4+IC0gRHJvcCB0aGUgbG9jYWwgc2NyYW1ibGluZ193b3JrIGRlbGF5ZWQg
-d29ya3F1ZXVlIGFuZCBzY2RjX2VuYWJsZWQKPj4+PiAgIGZsYWcsIG5vdyB0cmFja2VkIGJ5IHRo
-ZSBjb21tb24gZHJtX2Nvbm5lY3Rvcl9oZG1pIGxheWVyLgo+Pj4+Cj4+Pj4gLSBEcm9wIHZjNF9o
-ZG1pX3N1cHBvcnRzX3NjcmFtYmxpbmcoKSBhbmQKPj4+PiAgIHZjNF9oZG1pX21vZGVfbmVlZHNf
-c2NyYW1ibGluZygpIGhlbHBlcnMsIGlubGluaW5nIHRoZSByZW1haW5pbmcgNEtQNjAKPj4+PiAg
-IHdhcm5pbmcgd2l0aCBhbiBleHBsaWNpdCBkcm1faGRtaV9jb21wdXRlX21vZGVfY2xvY2soKSBj
-aGVjay4KPj4+Pgo+Pj4+IC0gU2VlZCBjb25uZWN0b3ItPmhkbWkuc2NyYW1ibGVyX2VuYWJsZWQg
-PSB0cnVlIGluIGNvbm5lY3Rvcl9pbml0KCkgdG8KPj4+PiAgIGVuc3VyZSBkcm1fc2NkY19zdG9w
-X3NjcmFtYmxpbmcoKSBydW5zIGF0IGJvb3QgYW5kIGRpc2FibGVzIGFueSBzdGFsZQo+Pj4+ICAg
-c2NyYW1ibGluZyBzdGF0ZSBsZWZ0IGJ5IHRoZSBib290bG9hZGVyLgo+Pj4+Cj4+Pj4gTm8gZnVu
-Y3Rpb25hbCBjaGFuZ2UgaXMgZXhwZWN0ZWQgZm9yIHRoZSBzdXBwb3J0ZWQgbW9kZXMuCj4+Pj4K
-Pj4+PiBTaWduZWQtb2ZmLWJ5OiBDcmlzdGlhbiBDaW9jYWx0ZWEgPGNyaXN0aWFuLmNpb2NhbHRl
-YUBjb2xsYWJvcmEuY29tPgo+Pj4KPj4+IEknZCByZWFsbHkgbGlrZSBpdCB0byBiZSBicm9rZW4g
-ZG93biBpbnRvIHNldmVyYWwgcGF0Y2hlczoKPj4+Cj4+Pj4gLS0tCj4+Pj4gIGRyaXZlcnMvZ3B1
-L2RybS92YzQvdmM0X2hkbWkuYyB8IDI2NSArKysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLQo+Pj4+ICBkcml2ZXJzL2dwdS9kcm0vdmM0L3ZjNF9oZG1pLmggfCAgIDggLS0K
-Pj4+PiAgMiBmaWxlcyBjaGFuZ2VkLCAzNSBpbnNlcnRpb25zKCspLCAyMzggZGVsZXRpb25zKC0p
-Cj4+Pj4KClsuLi5dCgo+Pj4+IC0KPj4+PiAtCS8qCj4+Pj4gLQkgKiBIRE1JIDIuMCBzYXlzIHRo
-YXQgb25lIHNob3VsZCBub3Qgc2VuZCBzY3JhbWJsZWQgZGF0YQo+Pj4+IC0JICogcHJpb3IgdG8g
-Y29uZmlndXJpbmcgdGhlIHNpbmsgc2NyYW1ibGluZywgYW5kIHRoYXQKPj4+PiAtCSAqIFRNRFMg
-Y2xvY2svZGF0YSB0cmFuc21pc3Npb24gc2hvdWxkIGJlIHN1c3BlbmRlZCB3aGVuCj4+Pj4gLQkg
-KiBjaGFuZ2luZyB0aGUgVE1EUyBjbG9jayByYXRlIGluIHRoZSBzaW5rLiBTbyBsZXQncwo+Pj4+
-IC0JICoganVzdCBkbyBhIGZ1bGwgbW9kZXNldCBoZXJlLCBldmVuIHRob3VnaCBzb21lIHNpbmtz
-Cj4+Pj4gLQkgKiB3b3VsZCBiZSBwZXJmZWN0bHkgaGFwcHkgaWYgd2VyZSB0byBqdXN0IHJlY29u
-ZmlndXJlCj4+Pj4gLQkgKiB0aGUgU0NEQyBzZXR0aW5ncyBvbiB0aGUgZmx5Lgo+Pj4+IC0JICov
-Cj4+Pj4gLQlyZXR1cm4gZHJtX2F0b21pY19oZWxwZXJfcmVzZXRfY3J0YyhjcnRjLCBjdHgpOwo+
-Pj4+IC19Cj4+Pgo+Pj4gVGhpcyBvbmUgZG9lc24ndCBsb29rIGZ1bmN0aW9uYWxseSBlcXVpdmFs
-ZW50IHRvIG1lIHRvCj4+PiBkcm1fc2NkY19yZXNldF9jcnRjOiB0aGlzIHBhcnQgd2FzLCBpbiBw
-YXJ0LCBtYWtpbmcgc3VyZSB3ZSB3b3VsZCBvbmx5Cj4+PiByZXNldCB0aGUgc2NyYW1ibGVyIGlm
-IGl0IHdhcyBlbmFibGVkIGluIHRoZSBmaXJzdCBwbGFjZS4KPj4+IGRybV9zY2RjX3Jlc2V0X2Ny
-dGMoKSBkb2Vzbid0IGFuZCB3aWxsIGFsd2F5cyB0cmlnZ2VyIGEgbW9kZXNldCBvbgo+Pj4gaG90
-cGx1Zy4gVGhhdCdzIHVubmVjZXNzYXJ5IGFuZCBhIHNpZ25pZmljYW50IGZ1bmN0aW9uYWwgZGlm
-ZmVyZW50Lgo+Pgo+PiBkcm1fc2NkY19yZXNldF9jcnRjKCkgYWxvbmUgd2FzIG5vdCBtZWFudCB0
-byBiZSBhbiBlcXVpdmFsZW50IG9mCj4+IHZjNF9oZG1pX3Jlc2V0X2xpbmsoKSwgYXMgaXQgb25s
-eSBjaGVja3MgdGhlIHNpbmsgc2lkZSBhbmQgaXQgc2VydmVzIGFzIGFuCj4+IGludGVybmFsIGhl
-bHBlciB1c2VkIGV4Y2x1c2l2ZWx5IGJ5IGRybV9zY2RjX3N5bmNfc3RhdHVzKCkuICAKPj4KPj4g
-QXMgYSBtYXR0ZXIgb2YgZmFjdCwgdGhlIGxhdHRlciBpcyB0aGUgb25lIHJlc3BvbnNpYmxlIGZv
-ciB2ZXJpZnlpbmcgaWYgdGhlCj4+IHNjcmFtYmxlciB3YXMgZW5hYmxlZCBvbiB0aGUgY29udHJv
-bGxlciBzaWRlIGJlZm9yZSBhdHRlbXB0aW5nIHRvIGludm9rZSB0aGUKPj4gcmVzZXQgbG9naWMs
-IGhlbmNlIHdlIHNob3VsZCBnZXQgdGhlIHNhbWUgYmVoYXZpb3IuICBCdXQgd2UgZG9uJ3QgaW52
-b2tlIGl0Cj4+IGRpcmVjdGx5IGVpdGhlciwgaXQncyBwYXJ0IG9mIHRoZSBkcm1fYXRvbWljX2hl
-bHBlcl9jb25uZWN0b3JfaGRtaV9ob3RwbHVnX2N0eCgpCj4+IGNhbGwgcGF0aC4KPiAKPiBPaCwg
-cmlnaHQsIHNvcnJ5Lgo+IAo+Pj4gSSdkIGFyZ3VlIHRoYXQgaXQncyBkcm1fc2NkY19yZXNldF9j
-cnRjKCkgdGhhdCBuZWVkcyB0byBhbGlnbiB0byB3aGF0Cj4+PiB2YzQgd2FzIGRvaW5nLCBub3Qg
-dGhlIG9wcG9zaXRlLgo+Pgo+PiBUaGUgb25seSBkaWZmZXJlbmNlIGNvbnNpc3RzIGluIGRyb3Bw
-aW5nIHRoZSBjcnRjIHN0YXRlIGNoZWNrOgo+Pgo+PiAgICAgcmV0ID0gZHJtX21vZGVzZXRfbG9j
-aygmY3J0Yy0+bXV0ZXgsIGN0eCk7Cj4+ICAgICBpZiAocmV0KQo+PiAgICAgICAgICAgICByZXR1
-cm4gcmV0Owo+Pgo+PiAgICAgY3J0Y19zdGF0ZSA9IGNydGMtPnN0YXRlOwo+PiAgICAgaWYgKCFj
-cnRjX3N0YXRlLT5hY3RpdmUpCj4+ICAgICAgICAgICAgIHJldHVybiAwOwo+Pgo+PiBUaGUgcmF0
-aW9uYWxlIHdhcyB0aGF0IHdoZW4gQ1JUQyBpcyBpbmFjdGl2ZSwgZHJtX2F0b21pY19oZWxwZXJf
-cmVzZXRfY3J0YygpCj4+IHNob3VsZCByZXN1bHQgaW4gYSBuby1vcCBjb21taXQgYW55d2F5Lgo+
-IAo+IEEgY29tbWl0IGlzIGV4cGVuc2l2ZSwgc28gSSdkIHNraXAgaXQgaWYgd2UgY2FuLgo+IAo+
-PiBBbmQgdGhlIG9uZSBmb3IgdGhlIGluLWZsaWdodCBjb21taXQ6Cj4+Cj4+ICAgICBpZiAoY29u
-bl9zdGF0ZS0+Y29tbWl0ICYmCj4+ICAgICAgICAgIXRyeV93YWl0X2Zvcl9jb21wbGV0aW9uKCZj
-b25uX3N0YXRlLT5jb21taXQtPmh3X2RvbmUpKSB7Cj4+ICAgICAgICAgICAgIG11dGV4X3VubG9j
-aygmdmM0X2hkbWktPm11dGV4KTsKPj4gICAgICAgICAgICAgcmV0dXJuIDA7Cj4+ICAgICB9Cj4g
-Cj4gQW5kIHllYWgsIHdlJ2xsIG5lZWQgdGhpcyBvbmUgdG9vLgo+IAo+PiBCb3RoIGNoZWNrcyBh
-cmUgYWxzbyBtaXNzaW5nIGluIGRybV9icmlkZ2VfaGVscGVyX3Jlc2V0X2NydGMoKSwgdGFrZW4g
-YXMgYW4KPj4gaW5pdGlhbCByZWZlcmVuY2UuIFNob3VsZCB3ZSBzdGlsbCBrZWVwIGFueS9ib3Ro
-IGFuZCBzeW5jIHRoZSBicmlkZ2UgaGVscGVyCj4+IGFjY29yZGluZ2x5Pwo+IAo+IFllcywgYnV0
-IEknZCBleHBlY3QgdGhlIGJyaWRnZSBoZWxwZXJzIHRvIGNvbnZlcmdlIC8gcmV1c2UgeW91ciBo
-ZWxwZXJzCj4gZXZlbnR1YWxseSBhbnl3YXk/CgpBY2suCgpbLi4uXQoKPj4+PiAtCXZjNF9oZG1p
-X2Rpc2FibGVfc2NyYW1ibGluZyhlbmNvZGVyKTsKPj4+PiArCWRybV9zY2RjX3N0b3Bfc2NyYW1i
-bGluZygmdmM0X2hkbWktPmNvbm5lY3Rvcik7Cj4+Pgo+Pj4gSSBkb24ndCB0aGluayB0aGUgbmFt
-ZXMgaGVyZSBhcmUgcmlnaHQuIEl0J3Mgbm90ICpvbmx5KiByZWxhdGVkIHRvIHNjZGMKPj4+IGJ1
-dCBhbHNvIHRvIHRoZSBIRE1JIGNvbnRyb2xsZXIuIEknbSBmaW5lIHdpdGggdXNpbmcgYSBzY2Rj
-IHByZWZpeCBidXQKPj4+IG9ubHkgZm9yIHRoZSB0aGluZ3MgcmVsYXRlZCB0byBzY2RjLiBUaGlz
-IGlzIHJlbGF0ZWQgKGluIHBhcnQpIHRvIHRoZQo+Pj4gSERNSSBjb250cm9sbGVyLCBzbyBpdCBz
-aG91bGQgdXNlIGEgZHJtX2Nvbm5lY3Rvcl9oZG1pIHByZWZpeC4KPj4KPj4gQWNrLiBJIGd1ZXNz
-IHdlIHNob3VsZCBhbHNvIG1vdmUgdGhlc2UgaGVscGVycyBvdXQgb2YgZHJtX3NjZGNfaGVscGVy
-LmMsIGJ1dAo+PiB1bnN1cmUgd2hlcmUuICBGV0lXIEknbSBjdXJyZW50bHkgd29ya2luZyBvbiBh
-ZGRpbmcgSERNSSAyLjEgRlJMIHN1cHBvcnQsIGFuZAo+PiBpbXBsZW1lbnRlZCB0aGUgbGluayB0
-cmFpbmluZyBpbiBhIGRlZGljYXRlZCBkcm1faGRtaV9mcmxfaGVscGVyLmMuICAKPj4KPj4gU2hv
-dWxkIHdlIGNyZWF0ZSBkcm1faGRtaV9zY3JhbWJsZXJfaGVscGVyLmM/ICBPciBtYXliZSBoYXZl
-IGEgY29tbW9uIG9uZSB0bwo+PiBob2xkIGJvdGggLSBhbnkgc3VnZ2VzdGlvbiBmb3IgdGhlIG5h
-bWluZz8KPiAKPiBkaXNwbGF5L2RybV9oZG1pX2hlbHBlci5jIHNvdW5kcyBsaWtlIGEgZ3JlYXQg
-cGxhY2UgZm9yIGJvdGg/CgpJbmRlZWQsIGxldCdzIG1vdmUgYWxsIHRoZSBzdHVmZiB0aGVyZS4K
-Cj4+Pj4gIAlkcm1fZGV2X2V4aXQoaWR4KTsKPj4+PiAgCj4+Pj4gQEAgLTE2MjUsNiArMTQzNCw3
-IEBAIHN0YXRpYyB2b2lkIHZjNF9oZG1pX2VuY29kZXJfcG9zdF9jcnRjX2VuYWJsZShzdHJ1Y3Qg
-ZHJtX2VuY29kZXIgKmVuY29kZXIsCj4+Pj4gIAlzdHJ1Y3QgZHJtX2Rpc3BsYXlfaW5mbyAqZGlz
-cGxheSA9ICZ2YzRfaGRtaS0+Y29ubmVjdG9yLmRpc3BsYXlfaW5mbzsKPj4+PiAgCWJvb2wgaHN5
-bmNfcG9zID0gbW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX1BIU1lOQzsKPj4+PiAgCWJvb2wg
-dnN5bmNfcG9zID0gbW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX1BWU1lOQzsKPj4+PiArCXN0
-cnVjdCBkcm1fY29ubmVjdG9yX3N0YXRlICpjb25uX3N0YXRlOwo+Pj4+ICAJdW5zaWduZWQgbG9u
-ZyBmbGFnczsKPj4+PiAgCWludCByZXQ7Cj4+Pj4gIAlpbnQgaWR4Owo+Pj4+IEBAIC0xNjkzLDcg
-KzE1MDMsMTAgQEAgc3RhdGljIHZvaWQgdmM0X2hkbWlfZW5jb2Rlcl9wb3N0X2NydGNfZW5hYmxl
-KHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwKPj4+PiAgCX0KPj4+PiAgCj4+Pj4gIAl2YzRf
-aGRtaV9yZWNlbnRlcl9maWZvKHZjNF9oZG1pKTsKPj4+PiAtCXZjNF9oZG1pX2VuYWJsZV9zY3Jh
-bWJsaW5nKGVuY29kZXIpOwo+Pj4+ICsKPj4+PiArCWNvbm5fc3RhdGUgPSBkcm1fYXRvbWljX2dl
-dF9uZXdfY29ubmVjdG9yX3N0YXRlKHN0YXRlLCBjb25uZWN0b3IpOwo+Pj4+ICsJaWYgKGNvbm5f
-c3RhdGUgJiYgY29ubl9zdGF0ZS0+aGRtaS5zY3JhbWJsZXJfbmVlZGVkKQo+Pj4+ICsJCWRybV9z
-Y2RjX3N0YXJ0X3NjcmFtYmxpbmcoY29ubmVjdG9yKTsKPj4+Cj4+PiBBbmQgdGhlIG5pY2UgdGhp
-bmcgd2l0aCBhIGRybV9jb25uZWN0b3JfaGRtaV8qIHByZWZpeCBpcyB0aGF0IHlvdSBkb24ndAo+
-Pj4gaGF2ZSB0byBzaG9laG9ybiBpdCBpbnRvIFNDREMgc3VwcG9ydCBhbnltb3JlLCBzbyB5b3Ug
-Y2FuIHRha2UgYSBzdGF0ZQo+Pj4gYXMgYW4gYXJndW1lbnQsIGFuZCBkbyB0aGUgY2hlY2sgaW4g
-dGhlIGhlbHBlciBpbnN0ZWFkIG9mIGRvaW5nIGl0IGluCj4+PiBldmVyeSBkcml2ZXIgYW5kIGhv
-cGluZyB0aGV5IGdldCBpdCByaWdodC4KPj4KPj4gSSB3YXMgYWJvdXQgdG8gY29uc2lkZXIgYSBz
-aW1pbGFyIGFwcHJvYWNoIGJlZm9yZSBkZWNpZGluZyB0byBsZXQgZHJpdmVycyBtYW5hZ2UKPj4g
-dGhlIGxvZ2ljLCBpLmUuIHRvIHByZXZlbnQgbG9vc2luZyBmbGV4aWJpbGl0eSBsYXRlciB3aGVu
-IGRlYWxpbmcgd2l0aCBIRE1JIDIuMS4KPj4gVGhhdCB3YXMgbW9zdGx5IGluIHRoZSBjb250ZXh0
-IG9mIHN1cHBvcnRpbmcgZHJpdmVycyB0byBkZWZpbmUgaWYvd2hlbiBhIGRpc3BsYXkKPj4gbW9k
-ZSB0aGF0IGZpdHMgaW4gVE1EUyBzaG91bGQgYmUgc2VudCBvdmVyIEZSTC4gCj4+Cj4+IFRoaW5r
-aW5nIGFnYWluLCB0aGF0J3Mgbm90IHJlYWxseSBhIHZhbGlkIGNvbmNlcm4gcmlnaHQgbm93LCBl
-LmcuIHdpbGwgdXNlIFRNRFMKPj4gYnkgZGVmYXVsdCBmb3IgYWxsIHN1cHBvcnRlZCBtb2Rlcywg
-YW5kIHN3aXRjaCB0byBGUkwgb25seSB3aGVuIGFic29sdXRlbHkKPj4gcmVxdWlyZWQuICBMYXRl
-ciB3ZSBtaWdodCBjb25zaWRlciBleHRlbmRpbmcgdGhlIGluZnJhc3RydWN0dXJlIHRvIHN1cHBv
-cnQKPj4gZHluYW1pYyBjb250cm9sIGlmIHJlcXVpcmVkLgo+IAo+IFRoYW5rcyBmb3Igd29ya2lu
-ZyBvbiBGUkwgYXMgd2VsbCA6KQo+IAo+IEkgYWdyZWUsIGxldCdzIGZvY3VzIG9uIGdldHRpbmcg
-SERNSSAyLjAgcmlnaHQsIGFuZCB0aGVuIHdlJ2xsIHRyeSB0bwo+IG1ha2UgMi4xIHRoZSBlYXNp
-ZXN0IHRvIHdvcmsgd2l0aCBmb3IgZHJpdmVycy4KClRoYW5rcyBmb3IgY2xhcmlmeWluZyB0aGUg
-cmVtYWluaW5nIGRldGFpbHMg4oCUIEkgc2hvdWxkIG5vdyBoYXZlIGV2ZXJ5dGhpbmcgSQpuZWVk
-IHRvIHByZXBhcmUgYSBuZXcgcmV2aXNpb24uIDopCgpSZWdhcmRzLApDcmlzdGlhbgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Kieran,
+
+Thanks for the not-necessarily-a-full review.
+
+Quoting Kieran Bingham (2026-06-24 19:39:44)
+> Hi Paul,
+> 
+> I'm taking a first read through, some  comments inline, but not
+> necessarily a full review:
+> 
+> Quoting Paul Elder (2026-06-19 06:26:28)
+> > Currently, a media graph contains a main device whose driver is
+> > responsible for creating the media device. We have however recently run
+> > into devices that have multiple devices that can quality as a main
+> 
+> s/quality/qualify/
+> 
+> > device. Examples are the RK3588 which has a VICAP and two ISP
+> > instances, and another example is the i.MX8MP which has an ISI and two
+> > ISP instances. As there is currently no way to reconcile who the main
+> > device is in the media device, these setups simple cannot be used
+> > simultaneously.
+> 
+> I'm very excited to see how we could apply this to the NXP i.MX8MP to
+> resolve the ISI+ISP issue!
+
+\o/
+
+> 
+> 
+> > This patch extends the media controller API with a "shared media graph"
+> > framework. This allows drivers to share a media device, thus enabling
+> > the setups mentioned above. Instead of owning and creating a media
+> > device, drivers can join-or-create a shared media device via the shared
+> > media graph API. The matching is done automatically based on the
+> > detected endpoints in the device tree.
+> 
+> Sounds great! I'll read on...
+> 
+> > 
+> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> > ---
+> >  drivers/media/mc/Makefile          |   2 +-
+> >  drivers/media/mc/mc-shared-graph.c | 335 +++++++++++++++++++++++++++++
+> >  include/media/mc-shared-graph.h    |  92 ++++++++
+> >  3 files changed, 428 insertions(+), 1 deletion(-)
+> >  create mode 100644 drivers/media/mc/mc-shared-graph.c
+> >  create mode 100644 include/media/mc-shared-graph.h
+> > 
+> > diff --git a/drivers/media/mc/Makefile b/drivers/media/mc/Makefile
+> > index 2b7af42ba59c..1d502fdc52ad 100644
+> > --- a/drivers/media/mc/Makefile
+> > +++ b/drivers/media/mc/Makefile
+> > @@ -1,7 +1,7 @@
+> >  # SPDX-License-Identifier: GPL-2.0
+> >  
+> >  mc-objs        := mc-device.o mc-devnode.o mc-entity.o \
+> > -          mc-request.o
+> > +          mc-request.o mc-shared-graph.o
+> >  
+> >  ifneq ($(CONFIG_USB),)
+> >         mc-objs += mc-dev-allocator.o
+> > diff --git a/drivers/media/mc/mc-shared-graph.c b/drivers/media/mc/mc-shared-graph.c
+> > new file mode 100644
+> > index 000000000000..c4067e5b861d
+> > --- /dev/null
+> > +++ b/drivers/media/mc/mc-shared-graph.c
+> > @@ -0,0 +1,335 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * mc-shared-graph.c - Media Controller Shared Graph API
+> > + *
+> > + * Copyright (c) 2026 Paul Elder <paul.elder@ideasonboard.com>
+> > + */
+> > +
+> > +/*
+> > + * This file adds the Media Controller Shared Graph API. This allows drivers
+> > + * to create shared media graphs or join existing media graphs from other
+> > + * drivers, so that they can all be in the same media graph. This allows us to
+> > + * have more complex media graphs chaining more complex hardware together,
+> > + * instead of simple async subdevs.
+> > + */
+> > +
+> > +#include <linux/device.h>
+> > +#include <linux/fwnode.h>
+> > +#include <linux/kref.h>
+> > +#include <linux/property.h>
+> > +
+> > +#include <media/media-device.h>
+> > +
+> > +#include <media/mc-shared-graph.h>
+> > +
+> > +static LIST_HEAD(media_device_shared_list);
+> > +static DEFINE_MUTEX(media_device_shared_lock);
+> > +
+> > +struct media_device_shared_member {
+> > +       struct device *dev;
+> > +       struct fwnode_handle *fwnode;
+> > +       struct list_head list;
+> > +};
+> > +
+> > +struct media_device_shared_link {
+> > +       struct media_entity *source;
+> > +       u16 source_pad;
+> > +       struct media_entity *sink;
+> > +       u16 sink_pad;
+> > +       u32 flags;
+> > +       struct list_head list;
+> > +};
+> > +
+> > +// TODO figure out locking for when multiple drivers touch the media graph;
+> > +// maybe macros for shared versions?
+> 
+> Do you mean for when drivers are trying to change link state directly?
+
+I meant for all the operations that act on media device. I'm not sure what
+there is because I didn't really find anything significant, and I found some
+action point from some meeting notes somewhere that said "deprecate media_ops"
+(not assigned to me) so...
+
+If there aren't any then it's a non-issue, but if there are then I was
+wondering if we need to return the shared media device to the driver (as
+opposed to a non-shared regular media device) and use shared versions of media
+device functions that have locking.
+
+> 
+> > +struct media_device_shared {
+> > +       struct media_device mdev;
+> > +       struct list_head members;
+> > +       struct list_head links;
+> > +
+> > +       struct list_head list;
+> > +       struct kref refcount;
+> > +
+> > +       struct device *removed_device;
+> > +};
+> > +
+> > +static inline struct media_device_shared *
+> > +to_media_device_shared(struct media_device *mdev)
+> > +{
+> > +       return container_of(mdev, struct media_device_shared, mdev);
+> > +}
+> > +
+> > +static void media_device_shared_release(struct kref *kref)
+> > +{
+> > +       struct media_device_shared *mds =
+> > +               container_of(kref, struct media_device_shared, refcount);
+> > +
+> > +       dev_dbg(mds->removed_device, "%s: releasing Media Device\n", __func__);
+> > +
+> > +       mutex_lock(&media_device_shared_lock);
+> > +
+> > +       media_device_unregister(&mds->mdev);
+> > +       media_device_cleanup(&mds->mdev);
+> > +
+> > +       list_del(&mds->list);
+> > +       mutex_unlock(&media_device_shared_lock);
+> > +
+> > +       kfree(mds);
+> > +}
+> > +
+> > +/* Callers should hold media_device_shared_lock when calling this function */
+> 
+> Lets add a lockdep_assert then?
+
+I learned something new today :)
+
+> 
+> 
+> > +static bool __media_device_shared_find_match(struct media_device_shared *mds,
+> > +                                            struct fwnode_handle *fwnode)
+> > +{
+> > +       struct media_device_shared_member *member;
+> > +       struct fwnode_handle *ep;
+> > +       struct fwnode_handle *remote_ep;
+> > +       bool match = false;
+> > +
+> 
+> is it just as easy as:
+> 
+>         lockdep_assert_held(&media_device_shared_lock);
+> ?
+
+If I understand correctly how lockdep_assert works, yes.
+
+> 
+> > +       // TODO: parse the device tree endpoints graph instead of finding just the
+> > +       // first-level neighbours
+> > +       fwnode_graph_for_each_endpoint(fwnode, ep) {
+> > +               list_for_each_entry(member, &mds->members, list) {
+> > +                       remote_ep = fwnode_graph_get_remote_port_parent(ep);
+> > +                       match = (member->fwnode == remote_ep);
+> > +                       fwnode_handle_put(remote_ep);
+> > +
+> > +                       if (!match)
+> > +                               continue;
+> > +
+> > +                       goto match_complete;
+> > +               }
+> > +       }
+> > +
+> > +match_complete:
+> > +       fwnode_handle_put(ep);
+> > +       return match;
+> > +}
+> > +
+> > +/* Callers should hold media_device_shared_lock when calling this function */
+> 
+> Lets add a lockdep check too then :D (same everywhere/anywhere it's
+> needed)
+> 
+> 
+> > +static struct media_device *__media_device_shared_get(struct device *dev)
+> > +{
+> > +       struct media_device_shared *mds;
+> > +       struct media_device_shared_member *member;
+> > +       struct fwnode_handle *fwnode = dev_fwnode(dev);
+> > +       bool ret;
+> > +
+> > +       dev_dbg(dev, "%s: searching for media device for %pfwf", __func__, fwnode);
+> > +
+> > +       list_for_each_entry(mds, &media_device_shared_list, list) {
+> > +               ret = __media_device_shared_find_match(mds, fwnode);
+> > +               if (ret)
+> > +                       break;
+> > +       }
+> > +
+> > +       if (!ret)
+> > +               return NULL;
+> > +
+> > +       member = kzalloc_obj(*member);
+> > +       if (!member)
+> > +               return NULL;
+> > +
+> > +       member->dev = dev;
+> > +       member->fwnode = fwnode;
+> > +       list_add_tail(&member->list, &mds->members);
+> > +       kref_get(&mds->refcount);
+> > +
+> > +       dev_dbg(dev, "%s: %pfwf joined media device of %pfwf",
+> > +               __func__, fwnode,
+> > +               list_first_entry(&mds->members, struct media_device_shared_member, list)->fwnode);
+> > +
+> > +       return &mds->mdev;
+> > +}
+> > +
+> > +/* Callers should hold media_device_shared_lock when calling this function */
+> > +static struct media_device *__media_device_shared_create(struct device *dev)
+> > +{
+> > +       struct media_device_shared *mds;
+> > +       struct media_device_shared_member *member;
+> > +       struct fwnode_handle *fwnode = dev_fwnode(dev);
+> > +       int ret;
+> > +
+> > +       mds = kzalloc_obj(*mds);
+> > +       if (!mds)
+> > +               return NULL;
+> > +
+> > +       member = kzalloc_obj(*member);
+> > +       if (!member)
+> > +               goto err_free_mds;
+> > +
+> > +       media_device_init(&mds->mdev);
+> > +
+> > +       ret = media_device_register(&mds->mdev);
+> > +       if (ret)
+> > +               goto err_free_member;
+> > +
+> > +       INIT_LIST_HEAD(&mds->members);
+> > +       member->dev = dev;
+> > +       member->fwnode = fwnode;
+> > +       list_add_tail(&member->list, &mds->members);
+> > +
+> > +       INIT_LIST_HEAD(&mds->links);
+> > +
+> > +       kref_init(&mds->refcount);
+> > +       list_add_tail(&mds->list, &media_device_shared_list);
+> > +
+> > +       // TODO figure out how to reconcile this with multiple members
+> 
+> Aha, right - becuse the 'media_device dev' becomes whoever registers first.
+> I wonder where it's actually used, and maybe that's ok ?
+
+Yes, exactly. So far all I could find it used for was dev_err etc. In my
+testing it hasn't caused any problems, since I tested both loading orders
+between the rkcif and rkisp2. Maybe I missed something important and somebody
+else knows better.
+
+Although it's not very nice to have prints from the other device. Is making a
+thin device an option?
+
+> 
+> > +       mds->mdev.dev = dev;
+> > +
+> > +       devv_dbg(dev, "%s: Allocated media device with %pfwf at %p\n",
+> > +                __func__, fwnode, &mds->mdev);
+> > +       return &mds->mdev;
+> > +
+> > +err_free_member:
+> > +       kfree(member);
+> > +err_free_mds:
+> > +       kfree(mds);
+> > +       return NULL;
+> > +}
+> > +
+> > +// TODO figure out how to resolve the identifiers (model, driver name, etc);
+> > +// atm it's racy and whoever gets it last wins
+> 
+> Maybe that's something we need to pass or set up explicitly then, so
+> it's clear it's a 'specific graph'
+
+Yes. I have no clue where that name would come from though.
+
+Although I thought userspace matches on the entity names of the media device?
+Does the name of the graph matter? It needs to be consistent though imo.
+
+I considered having a list of names of members, but I'm not sure how useful
+that would be. We don't have a userspace API to check it, plus it can already
+just list the member entities of the graph. And the driver doesn't really care
+who else is in the graph, since the shared media graph machinery already
+automatches based on dt endpoints.
+
+Also imo it's also not too nice for userspace when {driver_name} refers to a
+driver that doesn't exist.
+
+> 
+> Would this give us a way to represent the hardware in a new form - i.e.
+> thinking about IMX8MP - the existing graph wouldn't be available - so it
+> wouldn't be any worry from a UABI perspective because it's just a whole
+> new interface/media-device name....
+
+Hm, maybe the media device name could just be something along the lines of
+"shared-{platform_name}-media"? Although I suppose that assumes that each
+platform only has one media graph and we'll run into problems when we have
+multiple. Or we append the youngest register block address in the shared media
+graph to the name?
+
+> 
+> 
+> 
+> > +struct media_device *media_device_shared_join(struct device *dev)
+> > +{
+> > +       struct media_device *mdev;
+> > +
+> > +       mutex_lock(&media_device_shared_lock);
+> > +
+> > +       mdev = __media_device_shared_get(dev);
+> > +       if (!!mdev) {
+> > +               dev_dbg(dev, "%s: found media device for %pfwf", __func__, dev_fwnode(dev));
+> > +               mutex_unlock(&media_device_shared_lock);
+> > +               return mdev;
+> > +       }
+> > +
+> > +       mdev = __media_device_shared_create(dev);
+> > +       if (!mdev) {
+> > +               dev_warn(dev, "%s: failed to create media device for %pfwf", __func__, dev_fwnode(dev));
+> > +               mutex_unlock(&media_device_shared_lock);
+> > +               return ERR_PTR(-ENOMEM);
+> > +       }
+> > +
+> > +       dev_dbg(dev, "%s: created media device for %pfwf", __func__, dev_fwnode(dev));
+> > +       mutex_unlock(&media_device_shared_lock);
+> > +       return mdev;
+> > +}
+> > +EXPORT_SYMBOL_GPL(media_device_shared_join);
+> > +
+> > +void media_device_shared_leave(struct media_device *mdev, struct device *dev)
+> > +{
+> > +       struct media_device_shared *mds = to_media_device_shared(mdev);
+> > +       struct media_device_shared_member *member;
+> > +       struct media_device_shared_member *member_tmp;
+> > +       bool removed = false;
+> > +
+> > +       mutex_lock(&media_device_shared_lock);
+> > +
+> > +       list_for_each_entry_safe(member, member_tmp, &mds->members, list) {
+> > +               if (member->dev == dev) {
+> > +                       list_del(&member->list);
+> > +                       kfree(member);
+> > +                       removed = true;
+> > +               }
+> > +       }
+> > +
+> > +       if (!removed)
+> > +               dev_err(dev, "%s: %pfwf trying to leave from graph in which not a member",
+> > +                       __func__, dev_fwnode(dev));
+> > +
+> > +       mds->removed_device = dev;
+> > +       mutex_unlock(&media_device_shared_lock);
+> > +       kref_put(&mds->refcount, media_device_shared_release);
+> > +}
+> > +EXPORT_SYMBOL_GPL(media_device_shared_leave);
+> > +
+> > +int media_device_shared_join_link_source(struct media_device *mdev,
+> > +                                        struct device *dev,
+> > +                                        struct media_entity *source,
+> > +                                        u16 source_pad, u32 flags)
+> > +{
+> > +       struct media_device_shared *mds = to_media_device_shared(mdev);
+> > +       struct media_device_shared_link *link;
+> > +       struct media_device_shared_link *link_tmp;
+> > +       int ret = 0;
+> > +
+> > +       mutex_lock(&media_device_shared_lock);
+> > +
+> > +       /*
+> > +        * TODO Figure out flags. Should we use greatest common denominator? Or
+> > +        * prioritize sink? Or whoever wins the race? For now we just take the flags
+> > +        * from the sink.
+> > +        *
+> > +        * TODO Figure out how to actually do the matching. For now we just match
+> > +        * whoever comes in first. This works with the simple example we're running
+> > +        * with now (rkcif + one rkisp2) but with setups with multiple copies of
+> > +        * hardware this will cause problems, like with rkcif + two rkisp2 and
+> > +        * imx8-isi + two rkisp1.
+> > +        */
+> > +       list_for_each_entry_safe(link, link_tmp, &mds->links, list) {
+> > +               if (link->sink) {
+> > +                       ret = media_create_pad_link(source, source_pad,
+> > +                                                   link->sink, link->sink_pad,
+> > +                                                   link->flags);
+> > +                       list_del(&link->list);
+> > +                       kfree(link);
+> > +                       goto exit_join_link_source;
+> > +               }
+> > +       }
+> > +
+> > +       link = kzalloc_obj(*link);
+> > +       if (!link) {
+> > +               ret = -ENOMEM;
+> > +               goto exit_join_link_source;
+> > +       }
+> > +
+> > +       link->source = source;
+> > +       link->source_pad = source_pad;
+> > +       link->flags = flags;
+> > +       list_add_tail(&link->list, &mds->links);
+> > +
+> > +exit_join_link_source:
+> > +       mutex_unlock(&media_device_shared_lock);
+> > +       return ret;
+> > +}
+> > +EXPORT_SYMBOL_GPL(media_device_shared_join_link_source);
+> > +
+> > +// TODO deduplicate from above
+> 
+> Indeed, it does look like an opportunity.
+
+Ok this is the one exception that was an actual todo and not a topic for
+discussion :)
+(Unless someone has the opinion "actually we don't need to deduplicate this")
+
+> 
+> > +int media_device_shared_join_link_sink(struct media_device *mdev,
+> > +                                      struct device *dev,
+> > +                                      struct media_entity *sink,
+> > +                                      u16 sink_pad, u32 flags)
+> > +{
+> > +       struct media_device_shared *mds = to_media_device_shared(mdev);
+> > +       struct media_device_shared_link *link;
+> > +       struct media_device_shared_link *link_tmp;
+> > +       int ret = 0;
+> > +
+> > +       mutex_lock(&media_device_shared_lock);
+> > +
+> > +       list_for_each_entry_safe(link, link_tmp, &mds->links, list) {
+> > +               if (link->source) {
+> > +                       ret = media_create_pad_link(link->source, link->source_pad,
+> > +                                                   sink, sink_pad,
+> > +                                                   flags);
+> > +                       list_del(&link->list);
+> > +                       kfree(link);
+> > +                       goto exit_join_link_sink;
+> > +               }
+> > +       }
+> > +
+> > +       link = kzalloc_obj(*link);
+> > +       if (!link) {
+> > +               ret = -ENOMEM;
+> > +               goto exit_join_link_sink;
+> > +       }
+> > +
+> > +       link->sink = sink;
+> > +       link->sink_pad = sink_pad;
+> > +       link->flags = flags;
+> > +       list_add_tail(&link->list, &mds->links);
+> > +
+> > +exit_join_link_sink:
+> > +       mutex_unlock(&media_device_shared_lock);
+> > +       return ret;
+> > +}
+> > +EXPORT_SYMBOL_GPL(media_device_shared_join_link_sink);
+> > diff --git a/include/media/mc-shared-graph.h b/include/media/mc-shared-graph.h
+> > new file mode 100644
+> > index 000000000000..487325163f84
+> > --- /dev/null
+> > +++ b/include/media/mc-shared-graph.h
+> > @@ -0,0 +1,92 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * mc-shared-graph.h - Media Controller Shared Graph API
+> > + *
+> > + * Copyright (c) 2026 Paul Elder <paul.elder@ideasonboard.com>
+> > + */
+> > +
+> > +/*
+> > + * This file adds the Media Controller Shared Graph API. This allows drivers
+> > + * to create shared media graphs or join existing media graphs from other
+> > + * drivers, so that they can all be in the same media graph. This allows us to
+> > + * have more complex media graphs chaining more complex hardware together,
+> > + * instead of simple async subdevs.
+> > + */
+> > +
+> > +#include <linux/types.h>
+> > +
+> > +#ifndef _MEDIA_SHARED_GRAPH_H
+> > +#define _MEDIA_SHARED_GRAPH_H
+> > +
+> > +struct device;
+> > +struct media_device;
+> > +struct media_entity;
+> > +
+> > +#if defined(CONFIG_MEDIA_CONTROLLER)
+> > +/**
+> > + * media_device_shared_join() - Join or create a new shared media device
+> > + *
+> > + * @dev:               struct &device pointer
+> > + *
+> > + * This is the entrance function for a device to join or create a new shared
+> > + * media device. It searches for an existing shared media device based on the
+> > + * neighbours in the device's device tree ports node. If found, then this
+> > + * functions returns the existing shared media device and joins it. If one is
+> > + * not found then one is created and initialized and returned.
+> > + */
+> > +struct media_device *media_device_shared_join(struct device *dev);
+> > +
+> > +/**
+> > + * media_device_shared_leave() - Leave the shared media device.
+> > + *
+> > + * @mdev:              struct &media_device pointer
+> > + * @dev:               struct &device pointer
+> > + *
+> > + * This function makes the device leave the shared media device. When all
+> > + * members have left the media device it will be freed.
+> > + */
+> > +void media_device_shared_leave(struct media_device *mdev, struct device *dev);
+> > +
+> > +/**
+> > + * media_device_shared_join_link_source() - Register a link source in the shared media device
+> > + *
+> > + * @mdev: The struct &media_device pointer that is part of a shared media device
+> > + * @dev: struct &device pointer
+> > + * @source: The link source
+> > + * @source_pad: The pad
+> > + * @flags: The flags
+> > + *
+> > + * This function registers with the shared media device the source part of a
+> > + * link. When the shared media device receives the matching sink part of a link
+> > + * via media_device_shared_join_link_sink() then the link will be fully created.
+> > + */
+> > +int media_device_shared_join_link_source(struct media_device *mdev,
+> > +                                        struct device *dev,
+> > +                                        struct media_entity *source,
+> > +                                        u16 source_pad, u32 flags);
+> > +
+> > +/**
+> > + * media_device_shared_join_link_sink() - Register a link sink in the shared media device
+> > + *
+> > + * Same as media_device_shared_join_link_source() but for sink instead of
+> > + * source.
+> > + */
+> > +int media_device_shared_join_link_sink(struct media_device *mdev,
+> > +                                      struct device *dev,
+> > +                                      struct media_entity *sink,
+> > +                                      u16 sink_pad, u32 flags);
+> > +#else
+> > +static inline struct media_device *media_device_shared_join(struct device *dev)
+> > +{ return NULL; }
+> > +static inline void media_device_shared_leave(struct media_device *mdev,
+> > +                                            struct device *dev) { }
+> > +static inline int media_device_shared_join_link_source(struct media_device *mdev,
+> > +                                                      struct device *dev,
+> > +                                                      struct media_entity *source,
+> > +                                                      u16 source_pad, u32 flags) { }
+> > +static inline int media_device_shared_join_link_sink(struct media_device *mdev,
+> > +                                                    struct device *dev,
+> > +                                                    struct media_entity *sink,
+> > +                                                    u16 sink_pad, u32 flags) { }
+> 
+> Should these two stubs which return an int return an error code? -ENODEV or such ?
+
+Ah yes they should. I missed that.
+
+
+Thanks,
+
+Paul
+
+> 
+> 
+> > +#endif /* CONFIG_MEDIA_CONTROLLER */
+> > +#endif /* _MEDIA_DEV_SHARED_GRAPH_H */
+> > -- 
+> > 2.47.2
+> >
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
