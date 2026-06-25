@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB722CDE001
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 11:44:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FBDFCDE000
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 12:05:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:In-Reply-To:
-	Message-ID:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	References:List-Owner; bh=Yw4L19GiNYX/CruwK1kvYHiS67o7GV7BWpufmKesSFU=; b=PQr
-	z969Sx2c7QuC4v3rpgKaa8Lm9jfiQNPOKLj1HsMIEN6IeZ6D9JkBkLh5QRA2BpQS2ucc/T1QrFPQW
-	N3uvXJQ6UQ+Xk6acd5N8Gr9FHtgUFUMyxAWhSC87QDkTssQIirI81Qej+6R0p9u1zo0uqozkzeSN0
-	O7TRhOqPD8+9HUMRUMeyaSTxdlki6uKFkaPZw1eWcUr35KT1aM6prLnb+EHE79AVjieXIootHvtc3
-	u6vMMBQp33nyXY7Ner3OEltmZKGt1GNelGOhdGW+fcwv/yg9JhrKqfZWP/gOfhEKUdHHp94HtFx5Q
-	TeD1dFlEjfvJVOzP5/p0htdnxTOkqog==;
+	List-Owner; bh=XiIss4oCEzeZex/4UiPDYRkanm0Ybo3xVYSAzF1SiQk=; b=w/GfTQApatlVxU
+	iM8iSSk4+ut4f4SsuWFyYbU1C2phshfkZNUaO+FfM19N9+DTTPloAlXGozpRP1rqgZk0v3Nj9wIN4
+	uyU85cS6pdzQsI/i3XzsNp7c3w0umOu1floHMH4CCEG58w0ngOhAZfbUOJ9uklT3Id6PeGNFnGkXg
+	Ur2Imca3/fJqxYReBn82s5/vuySJr2H3pGJK7j1PDSf5UN7maNsqzjC+PRFibIGoamNwU+3WbSJzi
+	kN54a7t9VKhdJDvuzJ4BIUjiVoO6Zw8Z9eW0LMxdT8vqPGf/XsfN9vUD0bJQ/z3YWAFe0RUVuNphw
+	RAsrjH3x0SPGSqpT09iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wciVV-000000097Ij-2xVg;
-	Thu, 25 Jun 2026 11:44:33 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wciq3-000000099NJ-3ZDr;
+	Thu, 25 Jun 2026 12:05:48 +0000
+Received: from mx.adeep.su ([185.250.0.168])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wciVS-000000097I5-3NrE
-	for linux-rockchip@lists.infradead.org;
-	Thu, 25 Jun 2026 11:44:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1782387868; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MiOwY4Wkl8OMTDmooQpHdIeyxyhEs7izdpRZpIecOv6gW5XyYKLKlOQ9okPxe1/PZGQH2N32ieRDGvFrIHYZsfv4y07vpsiILdciyDUvRAX6gKS0PA+lfRWBPe1oToqifSMpQtfhzV04u6orApNaZKgArnumxQzQ9mYlROlp6VI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1782387868; h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To:Cc; 
-	bh=6pKay4/CDJPfp5fdolGBrwyNfaBSsL7kvNegA11F40I=; 
-	b=iyG0TaGCx7qtfE6uCj7CcBqtDc75UT4SFCfxnuTJVgexrQhbQFvzbxV4neyYWnz5vXbGL3i8RcX9PMeTm9okRuJ69bqrLuBAZ4ha2ATZaBCgY4TjA94lZoCGXe2FrmdJmaQbvIDiqwX4S1RKdhOneiwMOPsSduaur/AiUC4Nk/g=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=mcqueen.au;
-	spf=pass  smtp.mailfrom=craig@mcqueen.au;
-	dmarc=pass header.from=<craig@mcqueen.au>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1782387868;
-	s=zmail; d=mcqueen.au; i=craig@mcqueen.au;
-	h=Date:Date:From:From:To:To:Message-ID:In-Reply-To:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
-	bh=6pKay4/CDJPfp5fdolGBrwyNfaBSsL7kvNegA11F40I=;
-	b=fhuJohmvFzAADH936ZRC7ZVCkg2ujWqOcN+YcYl0C1Idslfar3G2/GUE6ROv2Xxq
-	wsWvQY9w3tFv94I7hw3+H70RPb3Hw3YA83ecFpwlhHrnmiKPpWcJrT8TpNO1lqOUkyG
-	RmzqRY0oEV8V/Eup+NcgH3PLF/T9HEs2kH11NB5w=
-Received: from mail.zoho.com by mx.zohomail.com
-	with SMTP id 1782387868403626.2217503449264; Thu, 25 Jun 2026 04:44:28 -0700 (PDT)
-Received: from mail.zoho.com by mx.zohomail.com
-	with SMTP id 1782387865320367.8298524651666; Thu, 25 Jun 2026 04:44:25 -0700 (PDT)
-Date: Thu, 25 Jun 2026 21:44:25 +1000
-From: Craig McQueen <craig@mcqueen.au>
-To: "linux-rockchip" <linux-rockchip@lists.infradead.org>
-Message-ID: <19efe9876a3.827c5ee44221367.2709170723921781911@mcqueen.au>
-In-Reply-To: 
-Subject: Hard lock-up on RK3328 with no kernel console output
+	id 1wciq1-000000099MP-283W;
+	Thu, 25 Jun 2026 12:05:46 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8EF0D1A0C8A;
+	Thu, 25 Jun 2026 15:05:41 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=baodeep.com; s=dkim;
+	t=1782389141; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=9mXIj+mN0okDzD2iEIEK87JUucdAnGmmd68jsRDhCyI=;
+	b=iHUltsGXX/Iok1BcHLC8NxNAXZxiLB+f7d3VPaStvR6pB8Z9s3jDvPszknOwZwAJFsv/SJ
+	HFGmAa/Kypg57bgHOa4XwhwnZZie1Y9j7TsMAt0cP6PC+1G5EhxOZXsZQyqI0OFkbOGkUx
+	neQ857sOVo4ggIOzoT4h668BIdiHwrcauN7lTfDDXkbC8eGDCwCXGoEbk6z0f/1YjPO5zK
+	6zvUs+KbcYqJgZ9X9Rs9T+ThfEwVkeWwZ61fZDSBTVsVzBWALbKYy0KUeRaqCaZW5nvQzm
+	enUSEkzFyHe6r9+KCLS9ZHFgOYc6J0tepzgcTtxA9WkCJGejnRM4jfSZel/PVA==
+Message-ID: <49c2aeb0-39b9-4bbe-833e-b18e38167f8e@baodeep.com>
+Date: Thu, 25 Jun 2026 15:05:41 +0300
 MIME-Version: 1.0
-Importance: Medium
-User-Agent: Zoho Mail
-X-Mailer: Zoho Mail
-X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] gpio: fix sleeping-in-atomic in shared-proxy; restore
+ meson non-sleeping
+To: Bartosz Golaszewski <brgl@kernel.org>
+Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <CGME20260610153425eucas1p29d20a835114a28b15cb12ea00534e074@eucas1p2.samsung.com>
+ <20260610153329.937833-1-v@baodeep.com>
+ <184d315b-a0a1-4792-8a40-1b4967025916@samsung.com>
+ <112d2563-e650-4881-bba0-335f6a3fcb8a@arm.com>
+ <CAMRc=MdP8Wf6QRXGHpb3KJW2KMidSe-0LeyKKTYix=wYKZcPuA@mail.gmail.com>
+Content-Language: ru
+From: Viacheslav <v@baodeep.com>
+In-Reply-To: <CAMRc=MdP8Wf6QRXGHpb3KJW2KMidSe-0LeyKKTYix=wYKZcPuA@mail.gmail.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260625_044430_931319_8879D0D1 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20260625_050545_722234_88BE75E3 
+X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,33 +71,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-I have a Rockchip RK3328 SOM based embedded Linux system. I'm using Yocto scarthgap with kernel v6.6.123. 
- 
-I'm seeing complete system lock-ups occur roughly every 1 to 72 hours, with no diagnostic information shown in the kernel serial console output. It is abrupt and looks like it's a total shut-down. But it does get rebooted by the RK3328 HW watchdog. By reading the CRU_GLB_CNT_TH register after reboot, I confirm that the watchdog triggered the reset. If I don't enable the RK3328 HW watchdog, it stays locked-up indefinitely until an external reset/power-cycle.
+Hi!
 
-I am struggling to diagnose/debug this issue because I have been unable to get any kernel log output on the serial console. Normally I would expect to see a kernel message about a hard lock-up, or kernel oops, etc. I have enabled (among other things):
+24.06.2026 10:25, Bartosz Golaszewski wrote:
+> On Tue, 23 Jun 2026 17:16:44 +0200, Robin Murphy <robin.murphy@arm.com> said:
+>> On 11/06/2026 9:26 am, Marek Szyprowski wrote:
+>>> Hi Viachesla,
+>>>
+>>> On 10.06.2026 17:32, Viacheslav Bocharov wrote:
+>>>> gpio-shared-proxy chooses its descriptor lock (mutex vs spinlock) from
+>>>> the underlying chip's can_sleep, but under that lock it calls config and
+>>>> direction ops that reach sleeping pinctrl paths. On a controller with
+>>>> non-sleeping MMIO value ops the lock is a spinlock, so a sleeping call
+>>>> runs from atomic context:
+>>>>
+> 
+> ...
+> 
+>>>
+>>> I've checked this patchset with these two reverted and no warning was reported.
+>>
+>> If it hadn't already been fixed (...)
+>>
+> 
+> About that - Viacheslav, do you still plan to submit v2 of this?
 
-CONFIG_HARDLOCKUP_DETECTOR=y
-CONFIG_HARDLOCKUP_DETECTOR_BUDDY=y
-CONFIG_BOOTPARAM_HARDLOCKUP_PANIC=y
+Thanks for review. I prepared and sent the second version of the patch today
 
-I have also tried using the kernel PSTORE, PSTORE_RAM, PSTORE_CONSOLE feature, in conjunction with U-Boot `pstore` command. After a lock-up and reboot, I was able to read the kernel dmesg log with U-Boot `pstore display` command. But it also didn't show any lock-up diagnostics.
-
-In this abrupt lock-up scenario, I would appreciate any advice on:
-
-* How to get any diagnostics out of the system (eg any other kernel config changes to try).
-* What sort of known fault mechanisms could lead to such a hard lock-up.
-
-I may try using a SWD/JTAG debugger, once I can get a J-Link debugger.
-
--- 
-Craig McQueen
-
+> 
+> Bart
+> 
+> _______________________________________________
+> linux-amlogic mailing list
+> linux-amlogic@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-amlogic
 
 
 _______________________________________________
