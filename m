@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF2F4CDE000
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 17:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73FABCDE002
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Jun 2026 17:40:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8f+vyldTxfrDVxHgaQ8RUvL5kft8ZPzCDyYd6s8qACU=; b=ohXu4K1lGAiSDM
-	axG3g8BXu5xmsPyKaZy8JlzceqEe7HwrQvClObxBxsDeGeb0/1ot9129FJZSOxhGWQu8N2kotO1Du
-	i7/VJAaygpK0rO8MBK1GWc7m3jKt3JW1IgzPoJszAe3qpwiS1MRdR+UUxJuhOz7JxBX7bA1mX9fcN
-	chYrHmfr1+QrRKm02LXt0VFXQ7gNrP8qhSWw9oSkHXpKkkAEkT8TV0i++kuGpaGq/dkg+0ZrqHVzH
-	oaQDl/gkgIrm7ABhhB6yHWNY8qbQV5tye2YgUl34RoAoJY8CmyhvJwqy3hpw+totdn1lo7Uo24UmA
-	lh+gKptbwkHLYXHC5Hwg==;
+	List-Owner; bh=D49Jpb0UorzltW88+4pO0ZN7gMbBz/Pbf8Sjbvq6c98=; b=pjvBh5J6x47cm3
+	SKn0ooESH9WiYQkc7i5+4Qd8mxXaN5ibTGogheaMUPzhKJNg3L5r6rUw7LYIiOzIOCP5hqYr9RfDc
+	GUYLRQ6kHLQAynJwnuTpcaN9keZSFtyqCd0LWrL7SEBKvv+y8MymH7sAnPUHshXZ0knCm83MKUkMA
+	3Cie3RpX+3KLo8Iv8p/15JRSI3zzWA838TTPgCETNg0mkK2arCL4V8RMaVDOgP01bHl8gQ6lgXzdh
+	avEN8e+9YONuo6S7hN/Kgi/nQqaTWXvGY0nu8pl3YmCnTzl9QXJogNDv6rc36cQiPbNX523nT3q1p
+	dbeNrfcCvK1xQhptBYxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wco47-00000009aSJ-1nOF;
-	Thu, 25 Jun 2026 17:40:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wco48-00000009aU4-0Ryl;
+	Thu, 25 Jun 2026 17:40:40 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wco3I-00000009ZVV-0tTy;
+	id 1wco3H-00000009ZVB-49Yl;
 	Thu, 25 Jun 2026 17:39:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782409181;
-	bh=55a1CMz0aPbT0z+xD144Y7HsUrcAJRjocQi1kgsRK5U=;
+	s=mail; t=1782409180;
+	bh=ZLMIcvyfhf9stnxjwRcLTo+Dil/1ZTGfZYTsbsf7ywg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Hoop8H4+NLxq87T/JXfqRy7f6l1AEYOK/5GZy/Cj9m6xCDnXFAGeGHLIuOc3Rw+yG
-	 aLnUO42ObKZxJVUpyqlIQ82aejW1S4l1wKb5Rz6GGLehp+ORlQ/E9Khv5VbDjP59ny
-	 gQmG1zR6MJOYXMD2ppX68WsprKibi1qbJgvq+R7MRIbbXT5RE6JnPgkjXv1yNDvM5s
-	 myc7Q4H71j4GXNXs5GUAgfZi6GPuLz9kCHyA8InrUDjW18l37F2YwSaMv0+3qehmQH
-	 AKzvBDhquf4D/+XLDVdchQ1K/93/om4hSRjLbe67gYfwclMczRfXPFHW2lkYtcUoZn
-	 qsVMI65Hf4bBQ==
+	b=W3V5h1jKd5EgJ3YCKhcOLx4CEfg0Ir1rWsDCo7B02iINQVz8g7S/El270y8oogL0R
+	 VARSKoOS9AykMYXcqxOuPBDZB3kIkiGD46L3sQRmRKQ97tSuB9XRjpFwE/3vwPMIJd
+	 F0clcLHRNXrFmBK76QfdxYnQBSqsGRyDlJEGAZfGZL4b8GM9yHp54C3j/ynea9u81X
+	 rggfM9G0WYaTfzh7XVMKdBgqcUTo8X8laipaW9DdN6+6jKDybfQRZ9Mh3di2oBCcV+
+	 5VzFuK1eLzKxittvbBhu9sHpDFU1hO6xrJLHThZNRITBcUYtOzGDBqHqUypMvaXe5h
+	 xXASRnMgCN5Yg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C9D7F17E1531;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B70B017E14E5;
 	Thu, 25 Jun 2026 19:39:40 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 0B023480048; Thu, 25 Jun 2026 19:39:40 +0200 (CEST)
+	id 07EE648003D; Thu, 25 Jun 2026 19:39:40 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 25 Jun 2026 19:39:39 +0200
-Subject: [PATCH v7 12/27] phy: rockchip: usbdp: Add missing mode_change
- update
+Date: Thu, 25 Jun 2026 19:39:37 +0200
+Subject: [PATCH v7 10/27] phy: rockchip: usbdp: Amend SSC modulation
+ deviation
 MIME-Version: 1.0
-Message-Id: <20260625-rockchip-usbdp-cleanup-v7-12-38eb3cf654fd@collabora.com>
+Message-Id: <20260625-rockchip-usbdp-cleanup-v7-10-38eb3cf654fd@collabora.com>
 References: <20260625-rockchip-usbdp-cleanup-v7-0-38eb3cf654fd@collabora.com>
 In-Reply-To: <20260625-rockchip-usbdp-cleanup-v7-0-38eb3cf654fd@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -66,26 +66,26 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  devicetree@vger.kernel.org, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2006;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1765;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=55a1CMz0aPbT0z+xD144Y7HsUrcAJRjocQi1kgsRK5U=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo9Z9uC1Nj0Wzul/F6072JLY/OZpZq5BdhuF
- k9NTo65aMmoeIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqPWfbAAoJENju1/PI
- O/qaAp0QAJmyKZv7/4bIhBdDdxWc3uSfH6AxRm34h7RcWcluNTdPJfu6R0Zgs5XoLdazh4Hqcrq
- oQ0V0d6zWVs69cjnmPqXon0JamzCUc8xYrEJts/OzmU36kTdAWHki0m/UZ/75GGRo3Ho+qoKSWY
- ABk++2DhT18oAqRLZIwqMaKzHHYdC9HbvyxbbMLNC2LdGiS3N0culfqfOFzxpYM2tG0nJn7QTQc
- 7JHsGcQQ6i31zF/eiG/psch41IoVnCeAL8LDN/yQWtGzXsX854wiaHpB2AtgH2U3g1PZSiIGSWK
- j47N+VywLvfSzQNmPaRBznGq6V0db3Zdu0LjEXOsrORcsgthBx/6Wu6Fy9LFus2+QXSo6dd42m9
- 6wrt7G0ASDGaT8jzHUqI01vNXVg1FvpQM+Er3w1XsjhMXRc+ACUhfalZ99dzDANGBA8A9jCOZDU
- D/Nks0srSfSCvhUO2AYZqKCLmw59n+h5O3U5SJQAB5IW52hUV1y1lQtntAeqq4pmnabRrvOK8XI
- ueEi7+PqkaCuVhwNdLaOVQxo+sMLjMUhE+3sU9fXvB2RXisdDnGBnMctdJ2Q3mS9iwyc6dq342R
- HC9R4t0Ud8NxFurQQtdUVpD0ayEPIOXx4Q5z80qqAdqNa5ivUJ3eHecgiv8YKX9bFe3NfG9eK0a
- J9q7hMq1xbfroJI89vO8yFQ==
+ bh=kEWHRK8i2SbYzK/Rz+AaRU4u77b8etZZ1XWjvVUgC4M=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo9Z9vY1DH2sUtWebr+JxEJ0EteToQY6iQHr
+ gjnDUnBx8B/XYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqPWfbAAoJENju1/PI
+ O/qaWTUQAI9K8AajHl1e0M96SY/JACpEkY7ASjA4wm/kwDx1+3J1Zzho2qa1UG9j6Caa7SC5Yq+
+ ZlMaiKmeIcBgrkoo/32fZX6Axp1BZFPXFGxVqGw/cVh7ELqvsQGTVar3c96MSOzBOSncf18mxv5
+ 2RtKypSy8dm8rhn/t1mKRy+2hCDU1CQiMYZuWlfWgVBv1lPJt7MNEtJHrkOrhIhl54QjGx7wdn4
+ VnqokD7oFY80X5pGsYUUQwFtEqQE24PJeo1vFVfIbddidiAADHkpSOy5DXGzjrZk2uDi1emsb2m
+ ApIOf3U+LXlUjsKJkxpvJAMk6QCpIZ3squoNce0i+gPUst3hya46+YSKVwTiPX7KyoscJcTLxE+
+ TIxy6mfUaTIZUr7ysnvp3bf8dAsGxl7iz8oG6CFGgP7dfXQK9O8isaSE5iL3TAQEvCTkyJ2HmD5
+ Ot0xIU43Qf4EUgTJVvGc154cnyXcRStU7wK5xzmQNZKiwOb7pO6GtHjzR23jLCvqC0A0iVgLb/x
+ j/SMD0VvHs5i0jlJ4j5jIPJsyXs7IahiL9L7C28KIc3F6AmBTJ6wkkA6V92k9p9PPOYbP+opcHS
+ ECuHzvnOn2xC8WcQtySKTRZOuMqSg7gA77gWVMOF4mdM340NTrsa0orXPDPCGKx20oTiKwfPhvJ
+ ZbmegAcdKHq77rWej1x4myA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260625_103948_438420_4546130E 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20260625_103948_188140_3D82F80C 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,60 +102,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk_udphy_set_typec_default_mapping() updates the available modes,
-but does not set the mode_change as required. This results in
-missing re-initialization and thus non-working DisplayPort.
+From: Frank Wang <frank.wang@rock-chips.com>
 
-Fix this issue by introducing a new helper to update the available
-modes.
+Move SSC modulation deviation into private config of clock
 
+ - 24M: 0x00d4[5:0] = 0x30
+ - 26M: 0x00d4[5:0] = 0x33
+
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+[Taken over from rockchip's kernel tree; register 0x00d4 is not
+described in the TRM]
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 1067ddf2d742..f079715f7da2 100644
+index 989a7884d8b5..93df673e181b 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -622,6 +622,15 @@ static void rk_udphy_dp_hpd_event_trigger(struct rk_udphy *udphy, bool hpd)
- 	rk_udphy_grfreg_write(udphy->vogrf, &cfg->vogrfcfg[udphy->id].hpd_trigger, hpd);
- }
+@@ -350,7 +350,8 @@ static const struct reg_sequence rk_udphy_24m_refclk_cfg[] = {
+ 	{0x0a64, 0xa8}, {0x1a3c, 0xd0},
+ 	{0x1a44, 0xd0}, {0x1a48, 0x01},
+ 	{0x1a4c, 0x0d}, {0x1a54, 0xe0},
+-	{0x1a5c, 0xe0}, {0x1a64, 0xa8}
++	{0x1a5c, 0xe0}, {0x1a64, 0xa8},
++	{0x00d4, 0x30}
+ };
  
-+static void rk_udphy_mode_set(struct rk_udphy *udphy, u8 mode)
-+{
-+	if (udphy->mode == mode)
-+		return;
-+
-+	udphy->mode_change = true;
-+	udphy->mode = mode;
-+}
-+
- static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
- {
- 	if (udphy->flip) {
-@@ -652,7 +661,7 @@ static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
- 		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 1);
- 	}
+ static const struct reg_sequence rk_udphy_26m_refclk_cfg[] = {
+@@ -377,7 +378,7 @@ static const struct reg_sequence rk_udphy_26m_refclk_cfg[] = {
+ 	{0x0c30, 0x0e}, {0x0c48, 0x06},
+ 	{0x1c30, 0x0e}, {0x1c48, 0x06},
+ 	{0x028c, 0x18}, {0x0af0, 0x00},
+-	{0x1af0, 0x00}
++	{0x1af0, 0x00}, {0x00d4, 0x33}
+ };
  
--	udphy->mode = UDPHY_MODE_DP_USB;
-+	rk_udphy_mode_set(udphy, UDPHY_MODE_DP_USB);
- }
+ static const struct reg_sequence rk_udphy_init_sequence[] = {
+@@ -412,8 +413,7 @@ static const struct reg_sequence rk_udphy_init_sequence[] = {
+ 	{0x0070, 0x7d}, {0x0074, 0x68},
+ 	{0x0af4, 0x1a}, {0x1af4, 0x1a},
+ 	{0x0440, 0x3f}, {0x10d4, 0x08},
+-	{0x20d4, 0x08}, {0x00d4, 0x30},
+-	{0x0024, 0x6e},
++	{0x20d4, 0x08}, {0x0024, 0x6e}
+ };
  
- static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
-@@ -1394,10 +1403,7 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
- 			usleep_range(750, 800);
- 			rk_udphy_dp_hpd_event_trigger(udphy, true);
- 		} else if (data->status & DP_STATUS_HPD_STATE) {
--			if (udphy->mode != mode) {
--				udphy->mode = mode;
--				udphy->mode_change = true;
--			}
-+			rk_udphy_mode_set(udphy, mode);
- 			rk_udphy_dp_hpd_event_trigger(udphy, true);
- 		} else {
- 			rk_udphy_dp_hpd_event_trigger(udphy, false);
+ static inline int rk_udphy_grfreg_write(struct regmap *base,
 
 -- 
 2.53.0
