@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BCCFC43327
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 20:57:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96FB1C43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 20:57:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BltH8c2ktV+5mEN25wcuXEsBa5nV1xi7kInZ/ZKhOC4=; b=VYE3ImAscM9a6M
-	V+pp8hgSnOa3ZTSRyfmFnM45xTcL9IW3WD3+vJSSofZyTt2fSzupRPir2xaLUSGxVRzVDxWrz3U63
-	Kmda3Nd020F/yG3fGfu4mQVI9a34S8eM8iO3QkIJHvpmF4zkplVZoMSyUHRkSvHQHOkDlYIwW+n+j
-	eIl3bA5K7OucC7U4UVbkBfnf2pzOFqWljlYurNchVE7VvOW1r1O4i3PU8iKm2WB2sRd/fzqL/5aNM
-	JfRnUpcebWchK+W0OKSo+Pa0uxJ7jgI0m4Bjh/18/FuKCw8Pz7H0aX23SMzI2+SRwBJqEFMcPbXEL
-	+xKpOQoBK1W7fK84paFg==;
+	List-Owner; bh=JxRmw8JetXyylAT41O2ly76TrUxN6oeqteT1xZP5PWo=; b=Ww4lfY51ei4J4+
+	qPc770YGHn6saLfxb+ZuXJq1jB3pzK9f5LJJpiw6IbHnSFTzoCOzugDA/gVVISferzqzCS2Pd/zXU
+	l1fY/4lSlslV46crgUksTAO+neypMCWs4fyJq3x+t/3RDDbYgXR0bIGXUDMY63apQpw/+3HVjmEZW
+	Zihv7SKdXzJzH+YER/Vsjw1GuUhcQ4sX0PikNPtFycpU6WClF35dgzB2dpwnKuenxRKsja/46E4dt
+	skHClJsECQa/EdXQ6Gsl74ERmVrHnEZq/msg0oTxubp1NoXbfkriWTz4TAnQzESLVcQe4WryD0xhx
+	4sV1VQciadzXXDkje5xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdDbg-0000000Brr1-2ZsF;
-	Fri, 26 Jun 2026 20:57:00 +0000
+	id 1wdDbn-0000000Bs3e-2LaE;
+	Fri, 26 Jun 2026 20:57:07 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdDa0-0000000BpfN-26BU;
-	Fri, 26 Jun 2026 20:55:18 +0000
+	id 1wdDa0-0000000Bph4-3MH8;
+	Fri, 26 Jun 2026 20:55:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1782507303;
-	bh=jzKAce1AMYjxYAxwI1ZD1/YYt1G2BSK4c3WM9C2tTHo=;
+	bh=qu9LtuiuRvNa7z4rXJx97qokovwN1mfMhrPchhFBK0A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=EuMsX3rgho3wwdfcAjMVtGMavozp97FNj83OgfLVlccRqjPxsNRzEplPkQiUsCmNu
-	 QSuupRkFmm7quHyEMM+YQOSep7la4H6iwruXcUqARnXcOc/2qyh7LuIoidhm6nCEto
-	 G0JBR3jKxVNkrzYocCy8c0lAVrTNicZu6SdlLhTn6HcU6axUme9sQvsF+KRGpJ4bGS
-	 JxHDM/FhCB3niugzqiJtctUNLkZlceBLql9vPW7WFPHP+GTMsm/iyEVlUCb4mZkOO7
-	 Eqxe3mtgZv5yxXB3b6TDng5AydhLGTB6C4sKtnUyH+0HkchUKFpZZDTycYxInHvZLU
-	 7YfcSa6LlL0rQ==
+	b=VrNT2nafb+Qi03RN0M4x+KrTGQcuAiUVcQ2HnprNg4dV5vJsOSEBiewoxKnIGP2mx
+	 iJTILb4F8tZ9hRPIsttz7K1XCWvgnmY3GQaO1Rgq/Nc9us2oPRj/46Xa61hD5BtEpA
+	 0hnkAdIE1WJVXaWK3ObL9NMEgFMlggBMmY5Ksqi+uA2rzpCHImp01obh6Bj2yOlJjd
+	 MnPj87pmUCgBUguOPszcfsMBjeRjx0DNN2YmDfFMOqHMWxbb5etfzIir7qy7DZHYCx
+	 Q12gTIVCEz/fH+jvMpoafRFpCove19yu+Ss0h5Nkew0S+kZDRAEpc8qYhgVPstRrFp
+	 MBTxQCQTpiO+g==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 168F017E1583;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4E2E217E15DA;
 	Fri, 26 Jun 2026 22:55:03 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 24445480061; Fri, 26 Jun 2026 22:55:02 +0200 (CEST)
+	id 2ECD2480069; Fri, 26 Jun 2026 22:55:02 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 26 Jun 2026 22:55:10 +0200
-Subject: [PATCH v8 17/29] phy: rockchip: usbdp: Register DP aux bridge
+Date: Fri, 26 Jun 2026 22:55:17 +0200
+Subject: [PATCH v8 24/29] phy: rockchip: usbdp: Support going from DP-only
+ mode to USB mode
 MIME-Version: 1.0
-Message-Id: <20260626-rockchip-usbdp-cleanup-v8-17-47f682987895@collabora.com>
+Message-Id: <20260626-rockchip-usbdp-cleanup-v8-24-47f682987895@collabora.com>
 References: <20260626-rockchip-usbdp-cleanup-v8-0-47f682987895@collabora.com>
 In-Reply-To: <20260626-rockchip-usbdp-cleanup-v8-0-47f682987895@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -65,26 +66,26 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  devicetree@vger.kernel.org, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2991;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2810;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=jzKAce1AMYjxYAxwI1ZD1/YYt1G2BSK4c3WM9C2tTHo=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo+5yX1wY4u6VrOOvZHzHYUIk+ua5ENR82hb
- pL6Iuaz+Vn43IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqPuclAAoJENju1/PI
- O/qa+lwP/2m6zyHtR/bn93OXjL/3ddC8mbNr0UCTqgoIooofCR8mrh7CWzvSmZKG7nTiXN8wFvt
- wzTN/DLrmVukfa/Rl/OgCfEBCbz47oxLaCo9qM/GKV5Y8BN3r0dAdFZfEJi44QxJ/t69Aw2nsOr
- 2C3X4Rs+v6k9btg8bgMVxuzyE3fstIowHfgs4txPjDu+YrZqwo3maXA5yo4pEabxnHd4A/l5n/D
- e52xt4vwUjE8/g8eE8TLJcZJe8ljBRwTdHI2Ca2Rvvx4YZXYPcAKH8qLWLeiZLMxuHAhLg5VF7b
- e04tECaWo3YzQ7ugbfsBMMzFcQmNKHBVZFAjQTXuAjEPopVc1BK6Xk9YSymtxItpjdqTIsxt9go
- rXKg17GHYApN09vCFEfaIqHAe+tGSRu8R2sB0Amlr+Qle06SInGAudf1WKNbDU01ZUZ5G0duEnC
- l/FTjEFeSxrOqstT66/sxio1gcCAZv3xA1UDEtYTUM3+1E3rnKEFTZZBHuaZGv1YdH6MJPDnmna
- kcbncvhdXkSQE0j3OwKOmfqYmqD1XHZh4/jC5ItSShkQ6qznPPpZiLsy0VVohZ4s9ryHf8zzTuQ
- RYh6WXJnRryvwOS5+N7W7wjR06uHn1R2767jPf4M4NhMa+hAYzDAnhoGV4thJtA722n94VB+9L5
- 7LdkuoyJuSWHEs2FprD02GA==
+ bh=qu9LtuiuRvNa7z4rXJx97qokovwN1mfMhrPchhFBK0A=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo+5yUAvTwj30RwhrKpMs15+NTuVtXEZV6ee
+ vfvWjjOAybgpIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqPuclAAoJENju1/PI
+ O/qaW2sP/1qLJAXeq91ZmmbupQ/tl7nbDXMlT78WcklSkkUg8spuJgkf8b+NbUQHTNVGZ/FJHDH
+ 49KeB/XPafvrWSLrx8WeG3srHXuX1Ch9JMeWR3X8/guv6BwBPePfp1BqXVQ60CnmhJJw/dG4PbH
+ k1Sg6ypLTFBfvKYLC9nqO5WY7L/RlnBRvJiRrLEl93X9w7pQnHgCLR0ld5vONoZGizvs/yFiNXC
+ sUEuwQrx3joEV+i+l4NIpf2dWVjyQk2HWDIC9jo/h+572oDtDdgjErt5jDSgHqv7dS/QKnEWVvX
+ 9D7Nn6z2f2dV/qA8Seq7SGOK/1s1x9X0tja6aAxhUlNFUYSFgUA548aAJdbKbiXCB5OsVqH919v
+ zKI/op0vYIjgFHJYFCPV+Yrlw/jUDK+8MnkOWcF+0S3P7V67EdAQ/ji5n/SDhPcnvmNuMavsPxp
+ gfxhy/cKt9gJhemPfWyaqxkovfOVDbqRl+ULmyWW0p2+LBEm2Q3VQi5kv4AJLlpO3CeisB/IHrN
+ 4Jv3ONcXTG8AUVhePx+mdV6YRLVE4j5JIcy7yR5Wg4CALPZr82hI43TM+DFYXHsPJQsc+H0hZAR
+ EOYhf5wU5D3KdwHMycD6W+XX40UFdvyp7lYoY5q0P+rHdX+TaDvGY4fezQkIGpTXwj8nBw0ipmX
+ sPR5u3PkK/gLqYqYjBe42nA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260626_135516_956116_C79796B2 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20260626_135517_245060_B86B3A01 
+X-CRM114-Status: GOOD (  18.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,89 +102,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support to use USB-C connectors with the DP altmode helper code on
-devicetree based platforms. To get this working there must be a DRM
-bridge chain from the DisplayPort controller to the USB-C connector.
-E.g. on Rockchip RK3576:
+When a USB-C adapter, which maps all Superspeed lanes to DP is plugged
+in, the USB support is disabled in the PHY. When the adapter is
+unplugged and a different adapter with USB functionality is plugged in
+afterwards, USB functionality is not restored as the USB controller
+keeps the PHY enabled for the entire time.
 
-root@rk3576 # cat /sys/kernel/debug/dri/0/encoder-0/bridges
-bridge[0]: dw_dp_bridge_funcs
-        refcount: 7
-        type: [10] DP
-        OF: /soc/dp@27e40000:rockchip,rk3576-dp
-        ops: [0x47] detect edid hpd
-bridge[1]: drm_aux_bridge_funcs
-        refcount: 4
-        type: [0] Unknown
-        OF: /soc/phy@2b010000:rockchip,rk3576-usbdp-phy
-        ops: [0x0]
-bridge[2]: drm_aux_hpd_bridge_funcs
-        refcount: 5
-        type: [10] DP
-        OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
-        ops: [0x4] hpd
-
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/Kconfig              |  2 ++
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 14 ++++++++++++++
- 2 files changed, 16 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-index 14698571b607..39759bb2fa1d 100644
---- a/drivers/phy/rockchip/Kconfig
-+++ b/drivers/phy/rockchip/Kconfig
-@@ -136,8 +136,10 @@ config PHY_ROCKCHIP_USBDP
- 	tristate "Rockchip USBDP COMBO PHY Driver"
- 	depends on ARCH_ROCKCHIP && OF
- 	depends on TYPEC
-+	depends on DRM || DRM=n
- 	select GENERIC_PHY
- 	select USB_COMMON
-+	select DRM_AUX_BRIDGE if DRM_BRIDGE
- 	help
- 	  Enable this to support the Rockchip USB3.0/DP combo PHY with
- 	  Samsung IP block. This is required for USB3 support on RK3588.
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index e243d92483e0..a204699619b8 100644
+index 837a4cb3e4b6..4566822d70c4 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -6,6 +6,7 @@
-  * Copyright (C) 2024 Collabora Ltd
-  */
+@@ -179,6 +179,7 @@ struct rk_udphy {
  
-+#include <drm/bridge/aux-bridge.h>
- #include <dt-bindings/phy/phy.h>
- #include <linux/bitfield.h>
- #include <linux/bits.h>
-@@ -1447,6 +1448,7 @@ static int rk_udphy_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct phy_provider *phy_provider;
-+	struct fwnode_handle *dp_aux_ep;
- 	struct resource *res;
- 	struct rk_udphy *udphy;
- 	void __iomem *base;
-@@ -1505,6 +1507,18 @@ static int rk_udphy_probe(struct platform_device *pdev)
+ 	/* utilized for USB */
+ 	bool hs; /* flag for high-speed */
++	bool usb_in_use;
+ 
+ 	/* utilized for DP */
+ 	struct gpio_desc *sbu1_dc_gpio;
+@@ -1025,6 +1026,10 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
+ 		ret = rk_udphy_init(udphy);
+ 		if (ret)
  			return ret;
++
++		if (udphy->mode & UDPHY_MODE_USB)
++			rk_udphy_u3_port_disable(udphy, false);
++
+ 		udphy->phy_needs_reinit = false;
  	}
  
-+	/*
-+	 * Only register the DRM bridge, if the DP aux channel is connected.
-+	 * Some boards use the USBDP PHY only for its USB3 capabilities.
-+	 */
-+	dp_aux_ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 3, 0, 0);
-+	if (dp_aux_ep) {
-+		ret = drm_aux_bridge_register(dev);
-+		fwnode_handle_put(dp_aux_ep);
-+		if (ret)
-+			return ret;
-+	}
+@@ -1288,16 +1293,24 @@ static const struct phy_ops rk_udphy_dp_phy_ops = {
+ static int rk_udphy_usb3_phy_init(struct phy *phy)
+ {
+ 	struct rk_udphy *udphy = phy_get_drvdata(phy);
++	int ret;
+ 
+ 	guard(mutex)(&udphy->mutex);
+ 
+ 	/* DP only or high-speed, disable U3 port */
+ 	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
+ 		rk_udphy_u3_port_disable(udphy, true);
++		udphy->usb_in_use = true;
+ 		return 0;
+ 	}
+ 
+-	return rk_udphy_power_on(udphy, UDPHY_MODE_USB);
++	ret = rk_udphy_power_on(udphy, UDPHY_MODE_USB);
++	if (ret)
++		return ret;
 +
- 	udphy->phy_u3 = devm_phy_create(dev, dev->of_node, &rk_udphy_usb3_phy_ops);
- 	if (IS_ERR(udphy->phy_u3)) {
- 		ret = PTR_ERR(udphy->phy_u3);
++	udphy->usb_in_use = true;
++
++	return 0;
+ }
+ 
+ static int rk_udphy_usb3_phy_exit(struct phy *phy)
+@@ -1306,6 +1319,8 @@ static int rk_udphy_usb3_phy_exit(struct phy *phy)
+ 
+ 	guard(mutex)(&udphy->mutex);
+ 
++	udphy->usb_in_use = false;
++
+ 	/* DP only or high-speed */
+ 	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs)
+ 		return 0;
+@@ -1347,6 +1362,17 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+ 
+ 	rk_udphy_set_typec_state(udphy, state->mode);
+ 
++	/*
++	 * If the new mode includes USB, but it has not yet been powered
++	 * (because the previous mode was DP-only) and the USB PHY was
++	 * already initialized by the USB controller, we need to power on
++	 * the USB side now since no subsequent phy_init call will come
++	 * from the controller.
++	 */
++	if ((udphy->mode & UDPHY_MODE_USB) && !(udphy->status & UDPHY_MODE_USB) &&
++	    udphy->usb_in_use && !udphy->hs)
++		return rk_udphy_power_on(udphy, UDPHY_MODE_USB);
++
+ 	return 0;
+ }
+ 
 
 -- 
 2.53.0
