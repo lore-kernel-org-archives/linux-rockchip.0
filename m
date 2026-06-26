@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34E4BCDE014
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18A1ACD4F26
 	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 12:08:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,36 +12,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o8mOO+Z90Pbq9omTVcrb/mtb0+XR7rQ744/dRoLgSs8=; b=SSpZIltQ5KnM5C
-	B+tR9CdcAHmU/4MdsQksJHc8ORU2ndL6ENFc5Qec4N/G8IaD7qUVKQhAnxM5FDaYALPngkvIZqbI6
-	FvdKKKrUvXy6mKzufI5CZ80A7EbfAsi9kZ0JtKcp0a69J3ASp2aw6sftqeVxALdMLq6VKsofXZIMm
-	8s1o8SAkM2T7G+IlVOhlMhFkp3hFA7vqeqfUcW7ZwRBvuNJwo6nf9o7wqUxnsZEPVS7cyjRWQCRf4
-	//NhIPbDtcFs08MmBvosyS5fKRtL3K+3VLV7nzToiMbdZ9jJ6j9FxvSk7YWK19ncnVxCekqE42P+C
-	a7K8TChQWnbfTbWIsZeA==;
+	List-Owner; bh=FyejavE+eTneXjVz1d83RRgDB2Mkl/jYTNvhHe2YiAk=; b=G9Rr98I4g+kQXd
+	Nxo7UPi/r/JfKpBgTHJNM54yeAHs/+v9bkHehT3STcNsuVlNrZtIa1MtQTASXBUuxt32QsSNG4epm
+	IOQWkuc/I+yP3jgxEk2bexSdCQTR4R+U6Uvs/QhLJHlQvmppMwSQg/9032hjVMxd8DKCf9Algn+El
+	y19THXCktEZHWZEGeHmFsdMC286Z7gPNtDFzS3Z3bFoaz4PcaV6t9W3a/YmXMdW2f6fI5NEOCGkMN
+	6zre10BoDyq0vgIXHht+cbxHks4N7kl6eGuaotGERaLjGOaNfTmlgkiProAwqJCGhCk76KNtMXbaA
+	M+cCQ7t042bT/yafNpEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd5MC-0000000BHcw-0OSV;
-	Fri, 26 Jun 2026 12:08:28 +0000
+	id 1wd5MB-0000000BHc5-3aFv;
+	Fri, 26 Jun 2026 12:08:27 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd5Lu-0000000BHN5-3us7;
-	Fri, 26 Jun 2026 12:08:12 +0000
+	id 1wd5Lt-0000000BHM3-27YO;
+	Fri, 26 Jun 2026 12:08:10 +0000
 Received: from ping.linuxembedded.co.uk (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4900E1CEF;
-	Fri, 26 Jun 2026 14:07:27 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id DB7371AED;
+	Fri, 26 Jun 2026 14:07:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1782475648;
-	bh=PB9YxYHHHDa6l4Ina14jx4/wZx2J8xLQNOqCltTeeww=;
+	s=mail; t=1782475647;
+	bh=RcX8vwnJzooOlmy2OhVFVi8CeSxoAK4FBT1/5Pz8DIs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ZGVNFzFvxSwtAONX4j48RYUMN7o11jg+XXilq1QjDQ/8xlvXuqbFGTu7Yo3dtBk0R
-	 95hOJd1FIJ7qp0YrDnDRTgwBvWRL2y7XGMaV6j9gf1QVT/kHBS2P4FsPE2E5etl6Xx
-	 /7swDODs6kP6JNZ9+KrhTiDiXXn4Gag08gTIsSfk=
+	b=OJS5w84eOPPiqOiyysiX/Bk/LyCciNLpR2xHBJqDfV5PycDob2nJNeMHN63zLU70S
+	 s6nvOxbYIWxmTk/uVbIM1gjFMHhovzoHkIaMCgKrRosFR/4BKsp5/RHdVXB4OajJ0A
+	 Qi/ycolkWYX9x26dwvExmGsyYlWi6utRhDeudxDo=
 From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Date: Fri, 26 Jun 2026 13:07:58 +0100
-Subject: [PATCH v2 6/8] arm64: dts: qcom: Convert to new media orientation
- definitions
+Date: Fri, 26 Jun 2026 13:07:57 +0100
+Subject: [PATCH v2 5/8] arm64: dts: freescale: Convert to new media
+ orientation definitions
 MIME-Version: 1.0
-Message-Id: <20260626-kbingham-orientation-v2-6-47178be927b4@ideasonboard.com>
+Message-Id: <20260626-kbingham-orientation-v2-5-47178be927b4@ideasonboard.com>
 References: <20260626-kbingham-orientation-v2-0-47178be927b4@ideasonboard.com>
 In-Reply-To: <20260626-kbingham-orientation-v2-0-47178be927b4@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -77,16 +77,16 @@ Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
  linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  Kieran Bingham <kieran.bingham@ideasonboard.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782475679; l=3050;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782475679; l=2134;
  i=kieran.bingham@ideasonboard.com; s=20260207; h=from:subject:message-id;
- bh=PB9YxYHHHDa6l4Ina14jx4/wZx2J8xLQNOqCltTeeww=;
- b=omDJyr+cL2Qk2zq3pggIUJqkAAXLtTJU0fn7jwm5sk+FNC8ZoVSUgJjzug4B0fD7LcWxpqpGE
- c2m5inmr2LADU/SAlBwYyZ9S44n0zw/V2SHMaIg5B3NUqX+NDl08zRu
+ bh=RcX8vwnJzooOlmy2OhVFVi8CeSxoAK4FBT1/5Pz8DIs=;
+ b=veyj1mNZFp7L8yHeQ7h2FeR/jkWGLEXTaYAYqZn+YtC+z7BBjqnV+bCkA6FxPq7mtY6rrRtFh
+ FKNDAI4f8dmCMyozp2urajMZaHKv2oMh+IhBZi8F7KHpJiEuMTxFxjJ
 X-Developer-Key: i=kieran.bingham@ideasonboard.com; a=ed25519;
  pk=FVXKN7YuwHc6UtbRUeTMAmranfsQomA+vnilfglWdaY=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260626_050811_164475_E4D86D58 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20260626_050809_700317_9BDFB808 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,79 +106,57 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 The orientation property for video interface devices now has definitions
 to prevent hardcoded integer values for the enum options.
 
-Update the users throughout the qualcomm device trees to use the new
+Update the users throughout the freescale/NXP device trees to use the new
 definitions.
 
 Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
 ---
- arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts         | 3 ++-
- arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts | 3 ++-
- arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi         | 3 ++-
- 3 files changed, 6 insertions(+), 3 deletions(-)
+ .../boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso      | 3 ++-
+ arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi                      | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts b/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts
-index 04cb9230d29f..d79be22108c8 100644
---- a/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts
-+++ b/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts
-@@ -13,6 +13,7 @@
- #include <dt-bindings/iio/qcom,spmi-adc7-pmk8350.h>
- #include <dt-bindings/leds/common.h>
+diff --git a/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso b/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso
+index e5a2b3780215..7b44ae0f19b2 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso
++++ b/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso
+@@ -9,6 +9,7 @@
+ 
+ #include <dt-bindings/gpio/gpio.h>
  #include <dt-bindings/media/video-interfaces.h>
 +#include <dt-bindings/media/video-interface-devices.h>
- #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
- #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
- #include <dt-bindings/sound/qcom,q6asm.h>
-@@ -701,7 +702,7 @@ camera@10 {
- 		pinctrl-0 = <&cam_mclk3_default>;
- 		pinctrl-names = "default";
  
--		orientation = <0>; /* Front facing */
-+		orientation = <MEDIA_ORIENTATION_FRONT>;
- 		rotation = <270>;
+ #include "imx8mp-pinfunc.h"
+ 
+@@ -47,7 +48,7 @@ camera@10 {
+ 		VANA-supply = <&reg_cam>;
+ 		VDIG-supply = <&reg_cam>;
+ 		VDDL-supply = <&reg_cam>;
+-		orientation = <2>;
++		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
+ 		rotation = <0>;
  
  		port {
-diff --git a/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts b/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts
-index abd9c5a67b9f..543fc691fd3c 100644
---- a/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts
-+++ b/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts
-@@ -11,6 +11,7 @@
- #include <dt-bindings/input/gpio-keys.h>
- #include <dt-bindings/input/input.h>
+diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi b/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
+index f5d529c5baf3..178cfad93483 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
+@@ -8,6 +8,7 @@
+ #include "dt-bindings/input/input.h"
+ #include <dt-bindings/interrupt-controller/irq.h>
  #include <dt-bindings/leds/common.h>
 +#include <dt-bindings/media/video-interface-devices.h>
- #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
- 
- #include "sc8280xp.dtsi"
-@@ -682,7 +683,7 @@ camera@10 {
- 
- 		clocks = <&camcc CAMCC_MCLK3_CLK>;
- 
--		orientation = <0>;	/* Front facing */
-+		orientation = <MEDIA_ORIENTATION_FRONT>;
- 
- 		avdd-supply = <&vreg_l6q>;
- 		dvdd-supply = <&vreg_l2q>;
-diff --git a/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi b/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
-index 0f57b915186b..375b3c0edea7 100644
---- a/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
-+++ b/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
-@@ -9,6 +9,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/input/input.h>
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
- #include <dt-bindings/power/qcom-rpmpd.h>
- #include "sdm670.dtsi"
-@@ -460,7 +461,7 @@ camera@1a {
- 		pinctrl-names = "default";
- 
- 		rotation = <270>;
+ #include "dt-bindings/pwm/pwm.h"
+ #include "dt-bindings/usb/pd.h"
+ #include "imx8mq.dtsi"
+@@ -1116,7 +1117,7 @@ camera_front: camera@20 {
+ 		vddd-supply = <&reg_vcam_1v2>;
+ 		vddio-supply = <&reg_csi_1v8>;
+ 		rotation = <90>;
 -		orientation = <0>;
 +		orientation = <MEDIA_ORIENTATION_FRONT>;
  
  		port {
- 			cam_front_endpoint: endpoint {
+ 			camera1_ep: endpoint {
 
 -- 
 2.52.0
