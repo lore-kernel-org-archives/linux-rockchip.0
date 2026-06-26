@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0F99CDE00E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 12:47:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2159DCDE002
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 12:48:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
 	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fbvP8+rJem1xYGLpA/FrRIkMgYvpM1G/F077mCwBzF8=; b=4MZzDjQMvTSEfD
-	QFTIAx+h3M2hxY0ME7I6wiAl1c30oIDa0Dcuqfoh/Q1fEf+P1vw3CSeJZ894VA565wiq58jxzxxOs
-	IjsoMO3EmuCJl8S1h5UJrhbFmnVbm0CMjOl8UJyyKBDQiuAOvIrvJpZiXN7LzmtXBXVUWCnpYbv4F
-	VaO/soveSJtNUZjLZMp42ze4PSPzOXAulmKkC917yf4jrH01P+Azh/O6LOyFs5mTOZ52ybgmQos6w
-	TevtQ3LzwT/E+UXi4OQ3OvFX9+shnpOPLRJtmce9sj3LegRS5JBY+75S26LO+Dzn0ixPq9MFh36qC
-	yJqGSkAatUOXpiBp1LyA==;
+	List-Owner; bh=KxFady6Jsx8oLVTVYw00dbHpCFk0+nvcziemTISwk88=; b=G/IFOcm6W9B6G/
+	YDrQcGk2dZawrJXwyWADfJdYXbV9aAabUIpI3pzhHGdyP2nYg1uyUJriIqVR1uqX+hYDke7OHE0LG
+	Skz9tNLN5mfQsxcXAGUXQxu4Tqon8/eIXdF5c/ie8fa4ORzNcW88GvHG+ekRbA6J+UyNVj/uG21vB
+	pC0vK0+qNtuGz+7ECjUk8RuBmsZoogIgtGOa9yuR6iSBD6WxKCEo9Im25yZDWiM3EtgedC9NYBkKI
+	9s9QGIKPQ7YJE9voTe+ki/Buvjzg2kOI/2FQcHIh7YrB/l2dtx+5L/k5empD27bPSEWFlnYgYN+rN
+	7JdnVelCIlyodPru776A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd5y1-0000000BKVI-263D;
-	Fri, 26 Jun 2026 12:47:33 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wd5yh-0000000BKaf-38sH;
+	Fri, 26 Jun 2026 12:48:15 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd5y0-0000000BKUm-1eNM;
-	Fri, 26 Jun 2026 12:47:32 +0000
+	id 1wd5yf-0000000BKaW-18TW;
+	Fri, 26 Jun 2026 12:48:13 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 62A5460098;
-	Fri, 26 Jun 2026 12:47:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71D421F000E9;
-	Fri, 26 Jun 2026 12:47:30 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id AA6C443FCD;
+	Fri, 26 Jun 2026 12:48:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7ABE1F000E9;
+	Fri, 26 Jun 2026 12:48:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782478051;
-	bh=gcyGrresjTTPmNzfpyIyHzXr15imrzLhXIY91GPffew=;
+	s=k20260515; t=1782478092;
+	bh=v4y2stLxJY7uDBiTbKNkCgVELhkFZRy7m3W4tRJdf+E=;
 	h=Date:From:To:Subject:In-Reply-To:References:Cc;
-	b=cfxGAN/jcCri326WXf34xWET6jX2QyOm4MN8pOKcqeKKkNBjEv6dqSXeKvaCEjiqQ
-	 xMUnaQaNuIQ/CQpLmGf1YlXqiGM0E0hqnbxoXWt1LrQHDTq2J3OIjNE3S2u9Xn/5ix
-	 oK+DP1AL9NHLm/+ebKyBGxhWgla2EUstpziga4oibOgZCkFVMReghKfhD46XkJseIF
-	 4XVC8j4IST/6OWvdETIEQ6EjrbCmQnuVJeZuoqmH1cmfRtKD2cnh8CooWMpcUWm9DM
-	 tqoCryTCxfyH5x8StBEipzh+MB2ezInl6ba2yu/4cYIqDp4Gf/3f7LbllTeUaSycd1
-	 37NkVCXO7+daQ==
-Message-ID: <f183d0ba167f71e0555814f7447f46e0@kernel.org>
-Date: Fri, 26 Jun 2026 12:47:28 +0000
+	b=c1nHVby4VzRMzYi1WtQ/1/FW3ad4AR7RuNig6IMp0LM3ATUWQciaqWn60HmhO2Mvx
+	 cNEqkAHm18Hvnr+k13yWAhq+yWo1uNw3hHWs3Q8x1TMAn1T5q4A954G06yoTZ/xqv7
+	 lRQaMyVCNzPQM45PccrZMMHmAIAiMKXOnHAYfj6tLYr6w+/gjiQcRXuiPq4vQPbvJZ
+	 cLkFy6mqvFRYiquJKKOAOxqBTRMC3VrfNBzcr08WK3a7LEXgOXrYKDLUf/GU7q1FJs
+	 LJqnxBYj30rKVQA7A4J67kU/ZHMfl/2PT7/+94GYQY7CBjUcCvqoe/B9jXAyzpvIl0
+	 O2OBomnk1cP5w==
+Message-ID: <c5dc7d7db15a943d1b902469d79f4eb2@kernel.org>
+Date: Fri, 26 Jun 2026 12:48:10 +0000
 From: "Maxime Ripard" <mripard@kernel.org>
 To: "Albert Esteve" <aesteve@redhat.com>
-Subject: Re: [PATCH 1/5] drm/panel: have drm_panel_add/remove manage a list
- reference
-In-Reply-To: <20260626-drm_refcount_wiring-v1-1-cca1a7b3bdef@redhat.com>
-References: <20260626-drm_refcount_wiring-v1-1-cca1a7b3bdef@redhat.com>
+Subject: Re: [PATCH 2/5] drm/bridge/panel: hold a reference to the wrapped
+ panel
+In-Reply-To: <20260626-drm_refcount_wiring-v1-2-cca1a7b3bdef@redhat.com>
+References: <20260626-drm_refcount_wiring-v1-2-cca1a7b3bdef@redhat.com>
 Cc: dri-devel@lists.freedesktop.org, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, "Alain
  Volmat" <alain.volmat@foss.st.com>, "Alexandre Torgue" <alexandre.torgue@foss.st.com>, "Alim
  Akhtar" <alim.akhtar@samsung.com>, "Alison Wang" <alison.wang@nxp.com>, "Andrzej
@@ -95,12 +95,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 26 Jun 2026 14:03:23 +0200, Albert Esteve wrote:
-> The global panel_list holds raw pointers to drm_panel objects.
-> Nothing prevents a panel from being freed while it is still linked
-> in the list: if a driver's probe calls drm_panel_add() and then
-> fails at a later step, panel->list remains in panel_list. Any
-> subsequent call to of_drm_find_panel() that iterates the list will
+On Fri, 26 Jun 2026 14:03:24 +0200, Albert Esteve wrote:
+> drm_panel_bridge_add_typed() stores a pointer to the drm_panel it
+> wraps, but never acquires a reference to it. If the panel device
+> goes away while a panel_bridge still exists, the dangling pointer can
+> be dereferenced through panel_bridge->panel.
+> 
 > 
 > [ ... ]
 
