@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01A1FC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 12:53:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94369C43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 12:59:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KXrKhZWYoIIJx14eRShaYrtRQZYUikbjt05vhzBkmnk=; b=DzRLkCq8HEVLTK+cf+f03pkmps
-	87seD3hTn1HyfwCuB2OZMZ2YrYOQtkTe/OQ2X4lfzd5yo4zhfk2qKPNlntDUNiWp8XXtDh6QIYGr8
-	Ih3GQ4mhi+xn1qtpZSvp1bopRWqiV4Vxzvq6yLquHqc0HSKp+eSiOB76fPjXzk7sLq0LpZ5SdNsPA
-	4RXQmMRXgQTfa+0WAu+T31hm116F7HSNvqnR7buC0gFe6PfeQ0ihB7WcJlSdmYZN0WiUmxBF8NfqF
-	1bVvuMDlButdn5kDmKemmVCXtO7MxrqRyWA5lebO+BVyw2TXOEwiDjMCLHTq2vsUQZ9KPmu5FU0qr
-	AZKQj3eQ==;
+	bh=kXLfCVeTdhf979gkeA4/1UI5biFlM9tUZMZdeYD+sC0=; b=AT00quiEFg3GzzZd+5DHacmQ8e
+	aQFRnGXAK4BMre/Fn7HjV/w3dNKmWKhe5uYIS5mmn+o3l3TOV5pnJouym5vw1gkt5vwAWmoIkEgF1
+	m+atod9hCNSJwiqDmvWC7sW/zCRKzxTh5rAu3n47hFCck+nwcMB4tqNTNJeOAriJuVnehUchmuHlP
+	KzO86I+NwRYTzX94YSV+NFMLBxWVOsQpKqL6F5Ors5dmeh98bYSZRNrn2SW5+xhz60TedHESyj8XO
+	dU3F5qgTeq7P8hDuCqh3q48fChBm/zd0Vv/c3Gfu2C7Ub90BAOidMH4+zMg92UvOUkGaq34ZqlWmn
+	w+iAdA+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd63h-0000000BKxr-2bPS;
-	Fri, 26 Jun 2026 12:53:25 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wd69y-0000000BLNN-2Lsh;
+	Fri, 26 Jun 2026 12:59:54 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd63g-0000000BKxi-1eAl;
-	Fri, 26 Jun 2026 12:53:24 +0000
+	id 1wd69w-0000000BLNB-2UZ6;
+	Fri, 26 Jun 2026 12:59:52 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C6D2644187;
-	Fri, 26 Jun 2026 12:53:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12BC71F000E9;
-	Fri, 26 Jun 2026 12:53:22 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6BF23600C7;
+	Fri, 26 Jun 2026 12:59:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8032F1F000E9;
+	Fri, 26 Jun 2026 12:59:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782478402;
-	bh=4vW/ykol/caEyEWxjwNOEBg0s6JIz+ZkHwDVW8nFj8o=;
+	s=k20260515; t=1782478791;
+	bh=iuAhpilzZ82xLPk+JSQEUu87jLlBPaxS3Zm76C7j3bE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=jA+1blRY/22zkn1IuV2vFG0t4ZR472agS+Rcx+5z16VdxoF71huJ1Hl8bsMp3pwie
-	 s3HtkJ3Tl3y1I0/1g6RacpyGU35B53xSHrcaW2t/QElscs05clIdKsmtyr19KKKovm
-	 j2vyJcgBgpzWNrcDG19JsgBHlP34lXUQWsnc+h2WSFpQYvkLvk59Qjivmjj2UMHGU9
-	 2DAUYqmMHyTPI+NuAt0myou2eD4nJXGhda3uP6TH4lDTBl4kKy1F3g2geT40+z506u
-	 Vnogil5g4ai7oWWmwQeBbyrByU0zgFU0TRYPzYi5U+cc1hPuhhDyMuLKxFHdF8pOoa
-	 rE4v4BY+yF7Ng==
-Date: Fri, 26 Jun 2026 14:53:20 +0200
+	b=SUXMgmgWimGLbzlNMZ7wcG+1j38gd4fRHDIlDqaegwcqfVuQgLYX8VuUJtvM15vYp
+	 jX12ep+d309u8bLQbPbyAdBvJmd8GAsRPjPQZkY4YwXDX5gr9XzTy4IoAL7jcTI2rV
+	 8MTxA1z++Ku+mxv+86TWL/aJ6xmEhLbsBHRnhMPe0NgKiyIhsLVeyivZGTUIIikGnb
+	 y3xB6TtxeLHebb/RguAspWG9yWJwnaIq7UkWwS/TVbfgzD/kJBZNxTlsLf/tTqaRX3
+	 91ZGmQgom/jibidOew2L8xqAHAtkawCvVu8yAOpBH0ClZXAOWEuwCJJPHM/LEHesNi
+	 Azxjd24IvLvoA==
+Date: Fri, 26 Jun 2026 14:59:48 +0200
 From: Maxime Ripard <mripard@kernel.org>
 To: Albert Esteve <aesteve@redhat.com>
 Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
@@ -76,13 +76,13 @@ Cc: Neil Armstrong <neil.armstrong@linaro.org>,
 	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
 	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-samsung-soc@vger.kernel.org, 
 	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 4/5] drm/bridge: release panel reference on all lookup
- exit paths
-Message-ID: <20260626-manipulative-rainbow-rhino-d73b65@houat>
+Subject: Re: [PATCH 5/5] drm: release panel reference after panel bridge
+ creation
+Message-ID: <20260626-ivory-tarantula-of-valor-af0e2a@houat>
 References: <20260626-drm_refcount_wiring-v1-0-cca1a7b3bdef@redhat.com>
- <20260626-drm_refcount_wiring-v1-4-cca1a7b3bdef@redhat.com>
+ <20260626-drm_refcount_wiring-v1-5-cca1a7b3bdef@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20260626-drm_refcount_wiring-v1-4-cca1a7b3bdef@redhat.com>
+In-Reply-To: <20260626-drm_refcount_wiring-v1-5-cca1a7b3bdef@redhat.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,73 +94,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3993319312929731961=="
+Content-Type: multipart/mixed; boundary="===============5625312784919508971=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============3993319312929731961==
+--===============5625312784919508971==
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="dvioag5mayzeljeh"
+	protocol="application/pgp-signature"; boundary="hx5apeednlr6fj2q"
 Content-Disposition: inline
 
 
---dvioag5mayzeljeh
+--hx5apeednlr6fj2q
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 4/5] drm/bridge: release panel reference on all lookup
- exit paths
+Subject: Re: [PATCH 5/5] drm: release panel reference after panel bridge
+ creation
 MIME-Version: 1.0
 
-On Fri, Jun 26, 2026 at 02:03:26PM +0200, Albert Esteve wrote:
+On Fri, Jun 26, 2026 at 02:03:27PM +0200, Albert Esteve wrote:
 > of_drm_find_panel() and drm_of_find_panel_or_bridge() now return a
-> counted reference that the caller must release with drm_panel_put().
+> counted reference. In drivers that immediately wrap the panel in a
+> bridge via devm_drm_panel_bridge_add() or equivalent, the bridge
+> acquires its own reference, so the caller's lookup reference must be
+> released right afterwards.
 >=20
-> For bridge drivers that immediately wrap the panel in a panel_bridge
-> (which acquires its own reference), release the lookup reference right
-> after the bridge creation call.
->=20
-> For analogix-anx6345, which stores the panel for direct use, release
-> the reference in the i2c remove path.
->=20
-> For platform drivers using analogix_dp_core with a component lifecycle
-> (exynos_dp, rockchip analogix_dp), release the lookup reference in the
-> platform remove() function. The panel_bridge created during bind() holds
-> a separate reference that devm cleanup releases after remove() returns.
->=20
-> Also fix devm_drm_of_get_bridge() and drmm_of_get_bridge() in
-> bridge/panel.c itself: both call drm_of_find_panel_or_bridge() and
-> then pass the panel to devm/drmm_panel_bridge_add(), which acquires
-> its own reference via drm_panel_bridge_add_typed(). The lookup
-> reference was never released; add drm_panel_put() after each bridge
-> creation call.
+> Also handle the cases where a panel is found but cannot be used,
+> dropping the reference immediately in those paths.
 >=20
 > Assisted-by: Claude:claude-opus-4-6
 > Signed-off-by: Albert Esteve <aesteve@redhat.com>
 
-I think this one should be either split into one patch per driver, or
-merged with the of_drm_find_panel patch. I'm still not quite sure which
-would be the best, maybe the latter?
+drm_of_find_panel_or_bridge() does indeed return a refcounted pointer
+now, but afaik the doc wasn't updated to reflect that.
+
+More importantly, I feel like with both of_drm_find_panel and
+drm_of_find_panel_or_bridge we update a path that is considered legacy
+anyway now, and we should rather focus on providing a safe alternative.
+
+But none of the functions you updated are unsafe, so it won't be more
+unsafe, or provide any illusion of safety to the caller. Idk.
+
+Either way, this should all be on its way out if Luca creates a bridge
+for every panel, and we'll consolidate on bridges only, so maybe it's
+not such a big deal to merge this patch.
 
 Maxime
 
---dvioag5mayzeljeh
+--hx5apeednlr6fj2q
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaj52PwAKCRAnX84Zoj2+
-dqkkAX416HMzwlmhKIK9kObtiXs7aRAKA/jKzZZr7wPHQO6/uyzY73TP2QyyShFE
-RjZRFDwBgJ2jRvQKam/G1wYDKDB/X9IryTeMbNEHvQrSIgH4XGYNKJ2sIqCmRRJm
-MAR2IQBH8A==
-=+EN8
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaj53xAAKCRAnX84Zoj2+
+dsH4AX98DVuJ2nWYEJlnvBoa7TLPQIxJp+N3SqD7GpI68AgQPx9+XXIRd6eD3iVF
+E+I0SeQBgPnPf10X5ME+9qUOY4BE8jXvhoS7IaHARK1hueut9qHTwNXhFYoQyHlo
+Wk/+lJPV9A==
+=+ukr
 -----END PGP SIGNATURE-----
 
---dvioag5mayzeljeh--
+--hx5apeednlr6fj2q--
 
 
---===============3993319312929731961==
+--===============5625312784919508971==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -171,5 +168,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============3993319312929731961==--
+--===============5625312784919508971==--
 
