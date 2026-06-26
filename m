@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 921EEC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 14:34:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71ECEC43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 14:34:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3NWbMS91N94L/i8gOgebVVpWM7Dp0TuIVlOhDnyMytM=; b=TWxbAfjDmJsEa9
-	9N1NhqptQbRA3v/1aAIiJGmyZRmSclZMcGuYpOcqkNTbfmZg6MK8WZeuZbK9aeWQbBzwMOQi6CG4P
-	OCy0x2Hr+LgUz1NcvZNS8fYYyupa4ybnW9ckv6H0XH0G62RSjYoi6zCGEsdiuznAVz+Q3qRJOf/aF
-	2jAHCVj4rxMO2DyR4L6vEyb1fdPkXP2nteu+rFo1cc2l70SaqMGsTuxStgES5UtD7OXfAUeT0TRjd
-	IDJY3AdT/HHBtXZPljIKwekpobFHWIgoz3/ZEeIjHM1E7r4pj1cxpbuHyPZqYcXXrCbJ/Mj7owE7w
-	zJfXLX3W01KwYeOpESsg==;
+	List-Owner; bh=xZ6fhz+QTnlL+oRHVM+QU7OhhqIP4ChaHuupYdwILJA=; b=ZNDCJct1nyxOA1
+	3SriRE2p69fkwlPLVmul3J60WQ3j6qaUkoj6ztBfV/R3r7RdQIRyckh2/JxRjfHUtdBT4n48kjJqW
+	zjR+JW5dXhUnfVEoGgTbj2jSLL8LyrwHJKfmGsZFe/H4B93r5pfMvJXsBZ1uvh4a6kZIeBY6xkZMW
+	jk9Em45zkYmy9RDiNXE+9UZ5Y17LC3/m1/bcMcDBoHGGJj/3fGmvmGOwDxpRZ+AUQeHAHj2FLypFP
+	0hOmuohtO5eBSrStNN6We74FsX5j2+Zy3m0y1zqHkaBvlscHheMReLZJdvysw+G2StQXcQ0trDiJ0
+	HGFzQOTmAVFUNoj8xSXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd7cz-0000000BStO-2pXh;
-	Fri, 26 Jun 2026 14:33:57 +0000
+	id 1wd7dY-0000000BSzy-3n7K;
+	Fri, 26 Jun 2026 14:34:32 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd7cx-0000000BSsc-37PY;
-	Fri, 26 Jun 2026 14:33:56 +0000
+	id 1wd7dW-0000000BSz4-1plV;
+	Fri, 26 Jun 2026 14:34:31 +0000
 Received: from killaraus.ideasonboard.com (2001-14ba-70f3-e800--a06.rev.dnainternet.fi [IPv6:2001:14ba:70f3:e800::a06])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1627AE2C;
-	Fri, 26 Jun 2026 16:33:13 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C52FD174;
+	Fri, 26 Jun 2026 16:33:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1782484393;
-	bh=aRCMkf+3raeg1adWZL08ZL3ADs0TahZNHXXqFVM5b4Q=;
+	s=mail; t=1782484428;
+	bh=1erlWfCNAY3Eh/umXADQj3nVHo6sEd94vScjsNXkfEE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=wA/bEI0dKYNWsrniuaSh7JqGlJ4zIq0O0xHpNw8U6PU3HUDiOqvyKmyFTRC0bFpW3
-	 hKXoFerww8AM6gkl8WX11HmrI4Pg+C/D/gWRBR3Mwybrcn0o8yzNSNUsBYwBZZELsq
-	 lm8x1sHdZv4/N/UP8AROj4JV6uNNtU8l+ZoGrZv8=
-Date: Fri, 26 Jun 2026 17:33:52 +0300
+	b=fTOnTUZPwnSs1Wc8xqpZFNR5jGRb1RLBI0B1rTdYqGAX44a4xN7BNUBPn6NERfLDq
+	 kdGvd/8BWddWBLVeqSnANJ3fSIVZc5gIOLGtZUpGh71Z24tDZp3+fqZJ5EWcbjNntf
+	 ku8swds9stBdOsnrn3ugxEGAXWg7WBIrfbDCGvt0=
+Date: Fri, 26 Jun 2026 17:34:27 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Kieran Bingham <kieran.bingham@ideasonboard.com>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -74,17 +74,17 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
 	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 5/8] arm64: dts: freescale: Convert to new media
+Subject: Re: [PATCH v2 6/8] arm64: dts: qcom: Convert to new media
  orientation definitions
-Message-ID: <20260626143352.GG2363897@killaraus.ideasonboard.com>
+Message-ID: <20260626143427.GH2363897@killaraus.ideasonboard.com>
 References: <20260626-kbingham-orientation-v2-0-47178be927b4@ideasonboard.com>
- <20260626-kbingham-orientation-v2-5-47178be927b4@ideasonboard.com>
+ <20260626-kbingham-orientation-v2-6-47178be927b4@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260626-kbingham-orientation-v2-5-47178be927b4@ideasonboard.com>
+In-Reply-To: <20260626-kbingham-orientation-v2-6-47178be927b4@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260626_073355_935676_BF9E1678 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20260626_073430_628658_B0B4B28D 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,11 +101,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 26, 2026 at 01:07:57PM +0100, Kieran Bingham wrote:
+On Fri, Jun 26, 2026 at 01:07:58PM +0100, Kieran Bingham wrote:
 > The orientation property for video interface devices now has definitions
 > to prevent hardcoded integer values for the enum options.
 > 
-> Update the users throughout the freescale/NXP device trees to use the new
+> Update the users throughout the qualcomm device trees to use the new
 > definitions.
 > 
 > Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
@@ -113,52 +113,74 @@ On Fri, Jun 26, 2026 at 01:07:57PM +0100, Kieran Bingham wrote:
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 > ---
->  .../boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso      | 3 ++-
->  arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi                      | 3 ++-
->  2 files changed, 4 insertions(+), 2 deletions(-)
+>  arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts         | 3 ++-
+>  arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts | 3 ++-
+>  arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi         | 3 ++-
+>  3 files changed, 6 insertions(+), 3 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso b/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso
-> index e5a2b3780215..7b44ae0f19b2 100644
-> --- a/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso
-> +++ b/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso
-> @@ -9,6 +9,7 @@
->  
->  #include <dt-bindings/gpio/gpio.h>
+> diff --git a/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts b/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts
+> index 04cb9230d29f..d79be22108c8 100644
+> --- a/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts
+> +++ b/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts
+> @@ -13,6 +13,7 @@
+>  #include <dt-bindings/iio/qcom,spmi-adc7-pmk8350.h>
+>  #include <dt-bindings/leds/common.h>
 >  #include <dt-bindings/media/video-interfaces.h>
 > +#include <dt-bindings/media/video-interface-devices.h>
+>  #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
+>  #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
+>  #include <dt-bindings/sound/qcom,q6asm.h>
+> @@ -701,7 +702,7 @@ camera@10 {
+>  		pinctrl-0 = <&cam_mclk3_default>;
+>  		pinctrl-names = "default";
 >  
->  #include "imx8mp-pinfunc.h"
->  
-> @@ -47,7 +48,7 @@ camera@10 {
->  		VANA-supply = <&reg_cam>;
->  		VDIG-supply = <&reg_cam>;
->  		VDDL-supply = <&reg_cam>;
-> -		orientation = <2>;
-> +		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
->  		rotation = <0>;
+> -		orientation = <0>; /* Front facing */
+> +		orientation = <MEDIA_ORIENTATION_FRONT>;
+>  		rotation = <270>;
 >  
 >  		port {
-> diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi b/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
-> index f5d529c5baf3..178cfad93483 100644
-> --- a/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
-> +++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
-> @@ -8,6 +8,7 @@
->  #include "dt-bindings/input/input.h"
->  #include <dt-bindings/interrupt-controller/irq.h>
+> diff --git a/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts b/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts
+> index abd9c5a67b9f..543fc691fd3c 100644
+> --- a/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts
+> +++ b/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts
+> @@ -11,6 +11,7 @@
+>  #include <dt-bindings/input/gpio-keys.h>
+>  #include <dt-bindings/input/input.h>
 >  #include <dt-bindings/leds/common.h>
 > +#include <dt-bindings/media/video-interface-devices.h>
->  #include "dt-bindings/pwm/pwm.h"
->  #include "dt-bindings/usb/pd.h"
->  #include "imx8mq.dtsi"
-> @@ -1116,7 +1117,7 @@ camera_front: camera@20 {
->  		vddd-supply = <&reg_vcam_1v2>;
->  		vddio-supply = <&reg_csi_1v8>;
->  		rotation = <90>;
+>  #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
+>  
+>  #include "sc8280xp.dtsi"
+> @@ -682,7 +683,7 @@ camera@10 {
+>  
+>  		clocks = <&camcc CAMCC_MCLK3_CLK>;
+>  
+> -		orientation = <0>;	/* Front facing */
+> +		orientation = <MEDIA_ORIENTATION_FRONT>;
+>  
+>  		avdd-supply = <&vreg_l6q>;
+>  		dvdd-supply = <&vreg_l2q>;
+> diff --git a/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi b/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
+> index 0f57b915186b..375b3c0edea7 100644
+> --- a/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
+> +++ b/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
+> @@ -9,6 +9,7 @@
+>  #include <dt-bindings/gpio/gpio.h>
+>  #include <dt-bindings/input/input.h>
+>  #include <dt-bindings/leds/common.h>
+> +#include <dt-bindings/media/video-interface-devices.h>
+>  #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
+>  #include <dt-bindings/power/qcom-rpmpd.h>
+>  #include "sdm670.dtsi"
+> @@ -460,7 +461,7 @@ camera@1a {
+>  		pinctrl-names = "default";
+>  
+>  		rotation = <270>;
 > -		orientation = <0>;
 > +		orientation = <MEDIA_ORIENTATION_FRONT>;
 >  
 >  		port {
->  			camera1_ep: endpoint {
+>  			cam_front_endpoint: endpoint {
 
 -- 
 Regards,
