@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48F9C43327
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 20:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 920B1C43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 20:55:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6uWRmcYMDBo07tz9D3Ep8GHI9fBE51N9gV9N/+eMv48=; b=tgDdHjvng/jK9O
-	HHXuob8IE8y6uOY2PXhBxRvtcEuiRJaWo3BwgH+XJIYdPLMGO7j2eAEHg2QLWwMvAznxly1IOgECP
-	gnrmihvTwiRXECha5OKz6mo0yOO/yfgSaT3Tmgts/PKm+G4AGHNhVCdehinWJ5zNTwziyJ6cwXAia
-	zEhVS+bBuldVHUS0ON5ufujmseiwfquN5fsv6n46/2fK3hz3RVCpfua7bI7hYW29IMHOxzOjqQrKn
-	D/ScS4eFwJcWht+0R+dEFpxbgXAltTI3owMNLZpu5YfCqlkTCHd3tEuosVmgXY6RfIqU+DSilZXbW
-	AzMgBD3C1Ml6RtsOUgIw==;
+	List-Owner; bh=6mC41Jjco4H79tqeVCNZVuiAIm1AB/2aimFjJAwSCrs=; b=D7zmSmT/g7SGG2
+	8ze3PMYS0tt6DVbywP+HUpgrK+kBDh2PTL5gWH11bE9Yv9kVYCc6ZftK2GbZtWk/yQmqqaNzni91S
+	8RjXOic9h9CYTIX6dE8DD9HV24PWmZrpRs9ZikovKTYI7vp7mPjRiZMnF930Hxtk7aEIp8ZmofGDt
+	jo/mEB0inHieFSV+DphcnBaC65yudQtqBqAGJp5SpIJJ6XjPsxciF27VUPGvOx7JjqQ4bHDn55Nqz
+	kn6yBrLItLQgNjy6T4RUB/rkVaz42FUJG1E9VgM7vMht9WvNe0zTwqvDxELMyh4MZSayg//6nAhwQ
+	hPvOk98mlXL6OO5Uf2lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdDaU-0000000BqBU-3HbK;
-	Fri, 26 Jun 2026 20:55:46 +0000
+	id 1wdDaZ-0000000BqGb-0PRt;
+	Fri, 26 Jun 2026 20:55:51 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdDZu-0000000BpbS-3Mxa;
+	id 1wdDZv-0000000Bpc3-3iOj;
 	Fri, 26 Jun 2026 20:55:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782507302;
-	bh=1nHF1vrjaNXH6VxWJ8xbYUrny3B+6HOnTbC9UsQPiUA=;
+	s=mail; t=1782507303;
+	bh=tW2nhIsGfK39LVXcbKZxygwO9562mpzQzF/mKDk/Na4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=kNLaLxuOFDahf/RD0A7UG+SZrqlNJu9EKRGOAAVZaaFDOZt+byKPdXaxGSqGcpZ4h
-	 SpS5qtqB3h2m1N8tN/yl2LUjsIomJq3Q2BqzQBgrw08rI9i89ZeQ7CurPAd5bTF9bu
-	 QBT9LpEuVwI4wIx0Nxygpu9onus2YPMdaBTxBeqaqXaBdmiMnOe02KbZlOLG4ddBPQ
-	 bD7rtXofqNgbH3XQ5oIq0QFNIFgthViWjNqoX4eUKeJWO6I4s2yrKGnLNbdSiWkpcQ
-	 7DIyTIeA+V6lvVuxknBFG5cwChZTPXsg9xlvlgN6a5k8rdAnidq+4sshYf2kB97e1d
-	 uPMSRIhCZpUwg==
+	b=SNkRcJ9kNfrLBme+djjjV/zPiFFSRQGWfZIMS3w+6whkYTvpvqGNG3MsEBBYak9Z1
+	 GzxlSZg15uootaZodeYQiHK0beTE3C2p30cckXH3pFe+R2Q5tz8W/Lx6++1JxCIDei
+	 dSURfwbUby3Fyvktlsy5e/9/TDzb3iapHx9neLH/CIF5xzO6aqxelcyMdQZmPPBLd5
+	 yZjtr2f2vnkKz2+cr+ILTTJXbdJzJEoaAr2ard9sCFw4eVjoWBcTeiIovUtj+KZIFL
+	 Kg7ZnBYQJYwo92MdEYHD/3KRnzcCc9RjtnZShEqkuI5gyMpF6nBdpZId9pFbuzjXmK
+	 Iu58yqb5FCMKA==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AFD7D17E1270;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D708C17E1553;
 	Fri, 26 Jun 2026 22:55:02 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 13EBC480031; Fri, 26 Jun 2026 22:55:02 +0200 (CEST)
+	id 1CE14480048; Fri, 26 Jun 2026 22:55:02 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 26 Jun 2026 22:54:59 +0200
-Subject: [PATCH v8 06/29] phy: rockchip: usbdp: Drop seamless DP takeover
+Date: Fri, 26 Jun 2026 22:55:05 +0200
+Subject: [PATCH v8 12/29] phy: rockchip: usbdp: Support single-lane DP
 MIME-Version: 1.0
-Message-Id: <20260626-rockchip-usbdp-cleanup-v8-6-47f682987895@collabora.com>
+Message-Id: <20260626-rockchip-usbdp-cleanup-v8-12-47f682987895@collabora.com>
 References: <20260626-rockchip-usbdp-cleanup-v8-0-47f682987895@collabora.com>
 In-Reply-To: <20260626-rockchip-usbdp-cleanup-v8-0-47f682987895@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -63,29 +63,28 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  devicetree@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sashiko <sashiko-bot@kernel.org>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2693;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5347;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=1nHF1vrjaNXH6VxWJ8xbYUrny3B+6HOnTbC9UsQPiUA=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo+5yVrcDd9pGLx40GIcnPMFQdfjYzZAJukZ
- oEs5fq1+0WHRokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqPuclAAoJENju1/PI
- O/qakkMQAJsmLpk5yiZKcUP5L+SHN9M/nrx1QT+6PnzKk0T1s7CltqMrycoE81zZw0W/r+Dn7cI
- wfbCHUHnrJHhWWu3FCROZcmuhdo+eushp9DTctYIeAB1FIY/peYhZLi5GKkN5Od+pYNr4Xhp8si
- LnklzD2/cXdwPrXu3tIPpY3HiHy0QYwmw47Rbu03P0Y0AM8Uwn9GE6UXCm+d0mkvXQJKx27LyRj
- 32DgVpmySh7bZRRPMp7FMyC+ztePV8wBwdXaTiWmHxQM/RMDWEoKQEQrVb15747YlvnhnQ4pLrD
- uQWPeJ1gObDgC0DvlMbYdAzoFXQ3ekYUdVVo6FmPUy6sjF+hS4ODo/E5HU0fTNep+u4JiolvR8w
- PfbTTFOqxrBVIIJkWqMn2MHqJz0VZd346t738e7Agn4ZLaOj9xClj8C1lw2d37JXXGzSB0qzS+F
- yxmEvd+WngwPpiVDgf8hZ1lMQ0JUnkzTAiT+CJksif7da3cIZYIg7BAdNA143gMK6lN2uoF8Znr
- UqRgA4W0mu2DM0sSd5vCelgc+GMoE6MnrmR/3ggIt9TStxwEcIvFa3nItAC3nXFPC2Q4z+U5BGj
- bn8AxYrGfX0eD3RWVTmQ06m7RmTKEjpKsZHgxU81hYxBzRUZIeQ4WaKuJwXUvVgEzrO8vDN1LCp
- fljNRnd08BOVT4vvJUt8trw==
+ bh=5IrkUvPuVnT58ZWiIlDfoggMHrwwVcgLubV0TOvdugA=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGo+5yW2w87BhFh5yC7lKhWjmP6yssi/oQMV6
+ EEoQMviTIcErYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqPuclAAoJENju1/PI
+ O/qax+UQAJ+hiHFoVF3J920D/G+zmydS0nnxH+2D926aTQ1UuALeOBg1UYdONzTaiSLNlHHbPhU
+ q8dx+6JKH7mqkG65q7ezoplzD3lUx8D6h5yyKRdkDfJ+mNs9dOE4j8TDQU4gyigLKwrHU5nDywG
+ 4rYq3yIFJ7GDUmbrvWY3p8scQmAPh0WXFIJrIsFHNd2okBmHJiboGJ9vmwXP6sn7scyuQ1LhtmY
+ bTV+e3l3hFmCy/Ngm7oDhpg/+w2sn0we0Tsk/9aFX4amcu6k3i0806XekaE1k/JXxq3OhUmAcso
+ W0F9enguPOLGyp0aCzknLnCNucRlRB5mW1ZC5WIL5sBhc4bKrrNTvbjykSDOKyB2+NIq6nDPs4C
+ zrujBJBJ4TFO+h2ZAnqX5KWwMzKjPxxaDi/avM9OtqhGHMczAK2EErif9Rfwc7xere1SOIWODYP
+ gWG844kkTwAjH1akjR9x8bdgA9X04MoAUSOHbk3nTWVqut1ll26arwcPCNSZF5G+urBu+6nmD/i
+ h4voUyUROT7iwlQQhPxPYUzbWF7ITbSwGu2sMpYWEp6MGblwjS+BTUhJV0Wfi8+IVIHsipfPb8e
+ 4fgKj1KQ5w3gE6ATqBDBCwsMeaCcw32QUOZsW0X4YnGp8sBjfLuAob0bhvUjlIunDE69lRYfkOE
+ t8RkNXTiL9GfM6a6rRDkq/Q==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260626_135511_017138_46F1E0FE 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20260626_135512_103414_CF06191E 
+X-CRM114-Status: GOOD (  13.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,64 +101,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Right now the DRM drivers do not support seamless DP takeover and I'm
-I'm not aware of any bootloader implementing this feature either.
+From: Zhang Yubing <yubing.zhang@rock-chips.com>
 
-In any case this feature would be limited to boards using the USBDP PHY
-for a DP or eDP connection instead of the more commonly USB-C connector.
-With USB-C's DP AltMode a seamless DP takeover requires handing over the
-state of the TCPM state machine from the bootloader to the kernel. This
-in turn requires a huge amount of work to keep the state machine
-implementations synchronized. It's very unlikely we will see somebody
-implementing that in the foreseeable future.
+Implement support for using just a single DisplayPort line.
 
-As the current code is obviously buggy and untested, let's simply drop
-support for seamless DP takeover. It can be re-implemented cleanly once
-somebody adds all missing bits.
-
-Technically the VOP side should be disabled first to avoid data being
-send to an unpowered PHY from the running pipeline. As a workaround this
-force disables HPD. I'm not sure if this would be good enough, but cannot
-test as there is no support in the bootloaders known to me and my test
-boards route USBDP to USB-C connectors.
-
-Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/linux-phy/20260612164107.C7DB21F000E9@smtp.kernel.org/
+Signed-off-by: Zhang Yubing <yubing.zhang@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 64 +++++++++++++------------------
+ 1 file changed, 27 insertions(+), 37 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 3fc8222fcaec..f7ff55f03b7c 100644
+index d091f8007acd..5c38da0dadd2 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -926,6 +926,7 @@ static int rk_udphy_parse_lane_mux_data(struct rk_udphy *udphy)
+@@ -193,6 +193,7 @@ struct rk_udphy {
+ 	int id;
  
- static int rk_udphy_get_initial_status(struct rk_udphy *udphy)
+ 	bool dp_in_use;
++	int dp_lanes;
+ 
+ 	/* PHY const config */
+ 	const struct rk_udphy_cfg *cfgs;
+@@ -540,6 +541,13 @@ static void rk_udphy_usb_bvalid_enable(struct rk_udphy *udphy, u8 enable)
+  * <0 1>                  dpln0         dpln1       usbrx         usbtx
+  * <2 3>                  usbrx         usbtx       dpln0         dpln1
+  * ---------------------------------------------------------------------------
++ * if 1 lane for dp function, 2 lane for usb function, define rockchip,dp-lane-mux = <x>;
++ * sample as follow:
++ * ---------------------------------------------------------------------------
++ *                        B11-B10       A2-A3       A11-A10       B2-B3
++ * rockchip,dp-lane-mux   ln0(tx/rx)    ln1(tx)     ln2(tx/rx)    ln3(tx)
++ * <0>                    dpln0         \           usbrx         usbtx
++ * ---------------------------------------------------------------------------
+  */
+ 
+ static void rk_udphy_dplane_select(struct rk_udphy *udphy)
+@@ -547,18 +555,18 @@ static void rk_udphy_dplane_select(struct rk_udphy *udphy)
+ 	const struct rk_udphy_cfg *cfg = udphy->cfgs;
+ 	u32 value = 0;
+ 
+-	switch (udphy->mode) {
+-	case UDPHY_MODE_DP:
+-		value |= 2 << udphy->dp_lane_sel[2] * 2;
++	switch (udphy->dp_lanes) {
++	case 4:
+ 		value |= 3 << udphy->dp_lane_sel[3] * 2;
++		value |= 2 << udphy->dp_lane_sel[2] * 2;
+ 		fallthrough;
+ 
+-	case UDPHY_MODE_DP_USB:
+-		value |= 0 << udphy->dp_lane_sel[0] * 2;
++	case 2:
+ 		value |= 1 << udphy->dp_lane_sel[1] * 2;
+-		break;
++		fallthrough;
+ 
+-	case UDPHY_MODE_USB:
++	case 1:
++		value |= 0 << udphy->dp_lane_sel[0] * 2;
+ 		break;
+ 
+ 	default:
+@@ -571,28 +579,6 @@ static void rk_udphy_dplane_select(struct rk_udphy *udphy)
+ 		     FIELD_PREP(DP_AUX_DOUT_SEL, udphy->dp_aux_dout_sel) | value);
+ }
+ 
+-static int rk_udphy_dplane_get(struct rk_udphy *udphy)
+-{
+-	int dp_lanes;
+-
+-	switch (udphy->mode) {
+-	case UDPHY_MODE_DP:
+-		dp_lanes = 4;
+-		break;
+-
+-	case UDPHY_MODE_DP_USB:
+-		dp_lanes = 2;
+-		break;
+-
+-	case UDPHY_MODE_USB:
+-	default:
+-		dp_lanes = 0;
+-		break;
+-	}
+-
+-	return dp_lanes;
+-}
+-
+ static void rk_udphy_dplane_enable(struct rk_udphy *udphy, int dp_lanes)
  {
-+	const struct rk_udphy_cfg *cfg = udphy->cfgs;
- 	int ret;
- 	u32 value;
+ 	u32 val = 0;
+@@ -662,6 +648,7 @@ static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
+ 	}
  
-@@ -938,10 +939,12 @@ static int rk_udphy_get_initial_status(struct rk_udphy *udphy)
- 	rk_udphy_reset_deassert_all(udphy);
+ 	rk_udphy_mode_set(udphy, UDPHY_MODE_DP_USB);
++	udphy->dp_lanes = 2;
+ }
  
- 	regmap_read(udphy->pma_regmap, CMN_LANE_MUX_AND_EN_OFFSET, &value);
--	if (FIELD_GET(CMN_DP_LANE_MUX_ALL, value) && FIELD_GET(CMN_DP_LANE_EN_ALL, value))
--		udphy->status = UDPHY_MODE_DP;
--	else
--		rk_udphy_disable(udphy);
-+	if (FIELD_GET(CMN_DP_LANE_MUX_ALL, value) && FIELD_GET(CMN_DP_LANE_EN_ALL, value)) {
-+		dev_info(udphy->dev, "Started with DP PHY pre-enabled; seamless takeover unsupported\n");
-+		rk_udphy_grfreg_write(udphy->vogrf, &cfg->vogrfcfg[udphy->id].hpd_trigger, false);
-+	}
-+
-+	rk_udphy_disable(udphy);
+ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+@@ -900,7 +887,7 @@ static int rk_udphy_parse_lane_mux_data(struct rk_udphy *udphy)
+ 		return 0;
+ 	}
+ 
+-	if (num_lanes != 2 && num_lanes != 4)
++	if (num_lanes != 1 && num_lanes != 2 && num_lanes != 4)
+ 		return dev_err_probe(udphy->dev, -EINVAL,
+ 				     "invalid number of lane mux\n");
+ 
+@@ -926,9 +913,11 @@ static int rk_udphy_parse_lane_mux_data(struct rk_udphy *udphy)
+ 	}
+ 
+ 	udphy->mode = UDPHY_MODE_DP;
+-	if (num_lanes == 2) {
++	udphy->dp_lanes = num_lanes;
++	if (num_lanes == 1 || num_lanes == 2) {
+ 		udphy->mode |= UDPHY_MODE_USB;
+-		udphy->flip = (udphy->lane_mux_sel[0] == PHY_LANE_MUX_DP);
++		udphy->flip = (udphy->lane_mux_sel[0] == PHY_LANE_MUX_DP) ||
++			      (udphy->lane_mux_sel[1] == PHY_LANE_MUX_DP);
+ 	}
  
  	return 0;
- }
+@@ -1083,18 +1072,17 @@ static int rk_udphy_dp_phy_exit(struct phy *phy)
+ static int rk_udphy_dp_phy_power_on(struct phy *phy)
+ {
+ 	struct rk_udphy *udphy = phy_get_drvdata(phy);
+-	int ret, dp_lanes;
++	int ret;
+ 
+ 	mutex_lock(&udphy->mutex);
+ 
+-	dp_lanes = rk_udphy_dplane_get(udphy);
+-	phy_set_bus_width(phy, dp_lanes);
++	phy_set_bus_width(phy, udphy->dp_lanes);
+ 
+ 	ret = rk_udphy_power_on(udphy, UDPHY_MODE_DP);
+ 	if (ret)
+ 		goto unlock;
+ 
+-	rk_udphy_dplane_enable(udphy, dp_lanes);
++	rk_udphy_dplane_enable(udphy, udphy->dp_lanes);
+ 
+ 	rk_udphy_dplane_select(udphy);
+ 
+@@ -1374,6 +1362,7 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+ 		udphy->lane_mux_sel[2] = PHY_LANE_MUX_DP;
+ 		udphy->lane_mux_sel[3] = PHY_LANE_MUX_DP;
+ 		mode = UDPHY_MODE_DP;
++		udphy->dp_lanes = 4;
+ 		break;
+ 
+ 	case TYPEC_DP_STATE_D:
+@@ -1390,6 +1379,7 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+ 			udphy->lane_mux_sel[3] = PHY_LANE_MUX_DP;
+ 		}
+ 		mode = UDPHY_MODE_DP_USB;
++		udphy->dp_lanes = 2;
+ 		break;
+ 	}
+ 
+@@ -1538,7 +1528,7 @@ static int rk_udphy_probe(struct platform_device *pdev)
+ 		ret = PTR_ERR(udphy->phy_dp);
+ 		return dev_err_probe(dev, ret, "failed to create DP phy\n");
+ 	}
+-	phy_set_bus_width(udphy->phy_dp, rk_udphy_dplane_get(udphy));
++	phy_set_bus_width(udphy->phy_dp, udphy->dp_lanes);
+ 	udphy->phy_dp->attrs.max_link_rate = 8100;
+ 	phy_set_drvdata(udphy->phy_dp, udphy);
+ 
 
 -- 
 2.53.0
