@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09CCAC44501
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 16:15:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DD12C44506
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Jun 2026 16:15:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QlFV88BJo8NxVCkBAssHjr5LO7MP0KnkqRKwmwki5oc=; b=OmmPocuIQmcSAM
-	tYnd93sbID3kwkWlSb38JDxiuq6Xka2DsNFUdCaLSP2+ALKD4rD435cGg+4uV5Pay5QIafU7fVqpk
-	LTFB/FTb5t+cgYJzIQvUoO6Vg1dczwIhkEhGqepVD1/T2tcymoiLB4ipP08DzH9YtKp7Okqyl9G1V
-	7h8R/0Bvx+dbXhGWlByVQdXptGTidRHlXoWbjxNd4kMPOwkvaW21jfnHCKDFvzw5/8jN50+mvrIb0
-	nE7x8BxUZ/EJF7Bbmw5vrfBS6Dx54xSpmbNeuuTguE4/seihBaxVfguW+dUZF2GPdJokGUhNO5kuD
-	XrMKN+47CiCagEBUufTQ==;
+	List-Owner; bh=ehfe6aMAFBc0Lzn+x2/x+86kS0uo1KuegR33WvbEtvk=; b=n1W0OwsR1cFKxR
+	2cRn73LheaNgc/RFC6YB8PYgiz4MHNbug3E6iFN+dO+ZincuDGXg2hCRxhSlcJFvhMuuBehIYmuW/
+	apz1nqfXXwpEFT1oEsmIpxbingDhE6uxYrZc01pLunInMfY6XHPelCq+pykMtRGMeKH0+NsPyT7/c
+	4zjQ7op3KBv/Szm8EpDB9xMjjX3k7+DHNZs7d3M0S73jzvvEr0iqkvOrB0deeNyB18BPkxw0Dre4M
+	ASB6E9UjRHtKAAEP7y58YII6AAi9Mq36O44S4T5OHCJXCUcYbfI1ZUK/NzBa0JKlAWDSHXA5g4c0a
+	BWeLc0ufWb214X61JPuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd9Cn-0000000Bbfd-4A6O;
-	Fri, 26 Jun 2026 16:15:02 +0000
-Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
+	id 1wd9Cs-0000000BblK-2B06;
+	Fri, 26 Jun 2026 16:15:06 +0000
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd9Ck-0000000BbcF-1zZP
+	id 1wd9Cm-0000000BbdR-2IOF
 	for linux-rockchip@lists.infradead.org;
-	Fri, 26 Jun 2026 16:14:59 +0000
-Received: by mail-ot1-x32e.google.com with SMTP id 46e09a7af769-7e71dd64ea2so508606a34.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jun 2026 09:14:58 -0700 (PDT)
+	Fri, 26 Jun 2026 16:15:01 +0000
+Received: by mail-ot1-x330.google.com with SMTP id 46e09a7af769-7e93e0a3364so859565a34.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 26 Jun 2026 09:15:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782490498; x=1783095298; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1782490499; x=1783095299; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=TQNZuBNr2JB7XyUclnnf9qL4oe5oFTlIViVQtmGHAMo=;
-        b=TDJ1mumrHjIw26LKcAcsMqLTqAM0Nx1pbjG7dVQr51bIyzWT0GLmmvSXWeI7QUjBRU
-         0X8gbtgOBKswdRDDCZfn7VHkm4Wljgpopdaa1suWKqbYrcoOkDH3WvDP4ZmBE6lHDNj4
-         ZDMDqM4kYPAgzmG2Um3+d9Xjj33r3Sw1y2bHucjj9p86oM+hrEJHhKlsHMIWaCag6gjZ
-         HI81fu/RWwVIx1H5FDU5TGYwyoaxUV3jy7YIBg32xll0bPS+NvRvgwY/wQqPpdxe6ene
-         URcKD+6WMrccMja9ple+5Zoln00yetQURbTnLsrozjsbXfd1N8RVEdV3zi/Fyqnq2Vzq
-         D6rg==
+        bh=IqlMNu9ucxE29yqblO0AosyEbXcZc6A6cLTxUWeXrHc=;
+        b=gh3GoGPgOzlyst1jRIFE6i0GcESGh6SZnhawtHhzH0O845QUWsoKw+6J8TcitZ1FVf
+         MKsgTDLma9F1OYZL/S7dmrZjgPFUmQlDenMonyZAL828TjW1FgsulZMCfZW7LJfWsJE4
+         R0ecn0KcmpizRK5OLRYnePael1ZdQfQTJxFY5++z28zcBAzvTxk4smC6dJDJhAhypjSD
+         2V7/H/SEBfYxRS2l8i+lJDvN/tXm7tpHSV/WyQSFAeW9rQvjyfwCW1az9CeTgsct1vNY
+         Zkb5wDb1mqC6dg8r9s6ZcLe/w44ZMVJZSWFvb4cCQJth9POrV9Ie3o0C1hZOo3WcKUO5
+         JG8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782490498; x=1783095298;
+        d=1e100.net; s=20251104; t=1782490499; x=1783095299;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=TQNZuBNr2JB7XyUclnnf9qL4oe5oFTlIViVQtmGHAMo=;
-        b=ZatXObFcHJKO8nMwcil5qdcZXrmRuPXhCFPN8ce8PekSovcQ7Wv5wE+PlhLaIxQeIv
-         pAMhoGur8kZA1DrByghI0IcW1fStOfZUAh8GpORmNXAPrZkwK5L5H10EbH5dyxbbf4ZM
-         jjU4pibBlh5x2i+MDFAt0gMVplcawKI6QfSpzNPDZJ2GrWbqER+q3zCPltdECbGItyAN
-         Xav4CWB8e2ZGnSxpDTtPCO172MbKcN1uUZ7cNMVgi3XTt9sOYsEWXL6zrDmwKEpD/Qru
-         pVCwn3IcBhgRxxvUkjXD+IC9oF4mEP5rVeS9zmHmsqU/UGKsUvHqZRuO/RAd6DNTwS43
-         tYOQ==
-X-Forwarded-Encrypted: i=1; AFNElJ9TjRAAyUa7xZItA/XKylFiqCMJjXZwR3dV8hgRMp8rxWz8nppKMX9g2gkDUJ7a+UoDfg8+uyU84rqpRRq9EQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyGbj3X/jsv8n+ADDAJlnPjmXmfajsK6bcZf4fLVDiI9x2EIUsJ
-	D2Tc80vVuWcmtTFuIvfvQFBGix2oBDlhmqdbZ7eKvjaHBW2a34CjCtd8
-X-Gm-Gg: AfdE7clif8CSwxiOrul7iYW6mLTMPJTfNQFU1bIiQxe2aJwmql5hZMX45ZKpN0xQpG1
-	K+fdhjHjdG5FCwKJ4bbxQH3tzbf9PKM4U5HfszqWeyoTLBlcKL64KjGbd7f9NOTbQD4nXcpiB75
-	6xiLHJyL5MiXV7col9w/1LwPqkhTN/cf3FbgZqzC4kzpZmamJ9uIwa/VngPvx0yChiTnoCY12q/
-	zuPtGN3T6UbbhuLwgU6mzP0cBJ+hd7wmc+3o6qrWSAb/4hJa5OmyUiAZa/CmOrn/f4d64SfOTll
-	UjYP6GZnK3YHySY0gE1zBgqDW1TCetX9B6860SzzAvOrkDklhSttM+TkIGBjRvn8ZWAunkINTse
-	As84pmCvKHccETLbjqZvXWOph/e6Qp3+jnvk8m44qLVqwsFQuX3nFc9RfohsUzY0A8Ve0u3G2X9
-	ccXcPalNzebKpvMEVUBMbFzA==
-X-Received: by 2002:a05:6830:4998:b0:7e6:f083:130e with SMTP id 46e09a7af769-7e99bfef82bmr7459524a34.4.1782490497713;
-        Fri, 26 Jun 2026 09:14:57 -0700 (PDT)
+        bh=IqlMNu9ucxE29yqblO0AosyEbXcZc6A6cLTxUWeXrHc=;
+        b=sv8e/ky0huAXPNuanTTMCdtMu4wEzXSBxtdQwgCLVeWIl/sipfHa1xzlrmn1EkdYk+
+         x7f6CTeh/HtsR3GPfIwMDDpIXt7yZIxxEY8f+2+FI6gCtkQ1eiVYNL71qFkoWI6K1kv7
+         rX0Y9V4cWkLESLSlVKcgxwf7+aGEUxtU6FFbl0uNlw6craWMm+/rpDTNjw2SR/3HCU0D
+         8+nfZniBwM0ikrJj+DkECyhS8mupSPlMWlSQwMFjRozywGRrKuwzXf4dS2+FJG/YCye9
+         b18Na19arwsYWZ/A12sTxeT2jHrHxUfhziTUw2UZGXI7+vQ5UX12XZDsDVXlZTtngehY
+         go0g==
+X-Forwarded-Encrypted: i=1; AFNElJ+Z4ajBwIaPe2hGkfi1iFzUklbBhcsBhF9DnC+h85eYaEaY/GBeR+VMQhJRH/keka+5JHX/yybIja6/o1ui+A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz50+GwlJv+dkSpyYasq6ckVsJJ8HzqnixcfKywKsWMmv+zaJku
+	dSVAjqWfPUM33orNVcmZnam54aqNKO/DmDw1E+dI1pOs4BjeRy/XNjr/
+X-Gm-Gg: AfdE7cmyQCrvje7AsCOJGGngMjUjlf17q3VLVKg38DM1yOZQPZBIOVT8yYzYa+4nRj+
+	p3+cj8ehL5EKICo6wBPV9UV12Nn/b8ErBB8sV1UAIXtl4ZSaArRd5WyELosZp4Cucpzh8hX6VWp
+	mbLsnIdbGZCGX+dVPYJONdwIej9UiOJMRbHigEpFrxiDa5PY9gf6XfdKL9nU2hBjXTLBaHT0Abf
+	Sz09XET+uFrBxymS0GBwww++XIkSSY3EVPr8iNl+BjxRYjRuC+HCcl3LR8lc98fdkQEPOT/QZZk
+	Fj5LVpigSWvg6w93pPZfcwHAWrtGqqditZp4aJ87sVJ07pRXR/29lfRJDzZyjrJ56Ru96uZmPHl
+	xIe0yCpg2nxfcEsczeuQx+hdMu7AXRdBflL+lbGRw6lIGFUY5lvK7MThrnCoFL+bkcPWdU9OMj6
+	Z9fGYU3JNTCw4=
+X-Received: by 2002:a05:6830:378a:b0:7e9:b4d1:78af with SMTP id 46e09a7af769-7e9b4d17abfmr777046a34.29.1782490499518;
+        Fri, 26 Jun 2026 09:14:59 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7e9aa579235sm1970211a34.1.2026.06.26.09.14.57
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7e9aa579235sm1970211a34.1.2026.06.26.09.14.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jun 2026 09:14:57 -0700 (PDT)
+        Fri, 26 Jun 2026 09:14:59 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-iio@vger.kernel.org
 Cc: andy@kernel.org,
@@ -84,16 +84,16 @@ Cc: andy@kernel.org,
 	robh@kernel.org,
 	andriy.shevchenko@intel.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V15 6/9] iio: imu: inv_icm42607: Add Accelerometer for icm42607
-Date: Fri, 26 Jun 2026 11:12:27 -0500
-Message-ID: <20260626161230.93069-7-macroalpha82@gmail.com>
+Subject: [PATCH V15 8/9] iio: imu: inv_icm42607: Add Temp Support in icm42607
+Date: Fri, 26 Jun 2026 11:12:29 -0500
+Message-ID: <20260626161230.93069-9-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260626161230.93069-1-macroalpha82@gmail.com>
 References: <20260626161230.93069-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260626_091458_730117_A568609C 
-X-CRM114-Status: GOOD (  21.82  )
+X-CRM114-CacheID: sfid-20260626_091500_628875_AB83D2F5 
+X-CRM114-Status: GOOD (  22.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,643 +105,150 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
-
-Add icm42607 accelerometer sensor for icm42607.
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- drivers/iio/imu/inv_icm42607/Makefile         |   1 +
- drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  38 +++
- .../iio/imu/inv_icm42607/inv_icm42607_accel.c | 309 ++++++++++++++++++
- .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 169 ++++++++++
- 4 files changed, 517 insertions(+)
- create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
-
-diff --git a/drivers/iio/imu/inv_icm42607/Makefile b/drivers/iio/imu/inv_icm42607/Makefile
-index be109102e203..372c6d6bdcec 100644
---- a/drivers/iio/imu/inv_icm42607/Makefile
-+++ b/drivers/iio/imu/inv_icm42607/Makefile
-@@ -2,6 +2,7 @@
- 
- obj-$(CONFIG_INV_ICM42607) += inv-icm42607.o
- inv-icm42607-y += inv_icm42607_core.o
-+inv-icm42607-y += inv_icm42607_accel.o
- 
- obj-$(CONFIG_INV_ICM42607_I2C) += inv-icm42607-i2c.o
- inv-icm42607-i2c-y += inv_icm42607_i2c.o
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-index 219cfcf7ac99..cd78b43f36fa 100644
---- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-@@ -87,6 +87,17 @@ enum inv_icm42607_filter_bw {
- 	INV_ICM42607_FILTER_BW_NB
- };
- 
-+/* Low-Power mode sensor data filter (averaging) */
-+enum inv_icm42607_filter_avg {
-+	INV_ICM42607_FILTER_AVG_2X = 0,
-+	INV_ICM42607_FILTER_AVG_4X = 1,
-+	INV_ICM42607_FILTER_AVG_8X = 2,
-+	INV_ICM42607_FILTER_AVG_16X = 3,
-+	INV_ICM42607_FILTER_AVG_32X = 4,
-+	INV_ICM42607_FILTER_AVG_64X = 5,
-+	/* values 6 and 7 also correspond to 64x. */
-+};
-+
- /* Temperature sensor data filter (bandwidth) */
- enum inv_icm42607_temp_filter_bw {
- 	INV_ICM42607_TEMP_FILTER_BYPASS = 0,
-@@ -106,6 +117,7 @@ struct inv_icm42607_sensor_conf {
- 	int odr;
- 	int filter;
- };
-+#define INV_ICM42607_SENSOR_CONF_INIT		{ -1, -1, -1, -1 }
- 
- struct inv_icm42607_conf {
- 	struct inv_icm42607_sensor_conf gyro;
-@@ -129,6 +141,7 @@ struct inv_icm42607_suspended {
-  *  @hw:		Hardware specific data.
-  *  @lock:		lock for serializing multiple registers access.
-  *  @map:		regmap pointer.
-+ *  @indio_accel:	accelerometer IIO device.
-  *  @vddio_supply:	I/O voltage regulator for the chip.
-  *  @vddio_en:		I/O voltage status for runtime PM.
-  *  @suspended:		suspended sensors configuration.
-@@ -139,6 +152,7 @@ struct inv_icm42607_state {
- 	const struct inv_icm42607_hw *hw;
- 	struct mutex lock;
- 	struct regmap *map;
-+	struct iio_dev *indio_accel;
- 	struct regulator *vddio_supply;
- 	bool vddio_en;
- 	struct inv_icm42607_suspended suspended;
-@@ -146,6 +160,16 @@ struct inv_icm42607_state {
- 	struct iio_mount_matrix orientation;
- };
- 
-+/**
-+ * struct inv_icm42607_sensor_state - sensor state variables
-+ * @power_mode:		sensor requested power mode (for common frequencies)
-+ * @filter:		sensor filter.
-+ */
-+struct inv_icm42607_sensor_state {
-+	enum inv_icm42607_sensor_mode power_mode;
-+	int filter;
-+};
-+
- /* Virtual register addresses: @bank on MSB (4 upper bits), @address on LSB */
- 
- /* Register Map for User Bank 0 */
-@@ -374,8 +398,22 @@ extern const struct inv_icm42607_hw inv_icm42607_hw_data;
- extern const struct inv_icm42607_hw inv_icm42607p_hw_data;
- extern const struct dev_pm_ops inv_icm42607_pm_ops;
- 
-+const struct iio_mount_matrix *
-+inv_icm42607_get_mount_matrix(struct iio_dev *indio_dev,
-+			      const struct iio_chan_spec *chan);
-+
-+int inv_icm42607_set_sensor_conf(struct inv_icm42607_state *st,
-+				 struct inv_icm42607_sensor_conf *conf,
-+				 enum iio_chan_type chan_type);
-+
-+int inv_icm42607_read_sensor(struct iio_dev *indio_dev,
-+			     struct iio_chan_spec const *chan,
-+			     s16 *val);
-+
- int inv_icm42607_core_probe(struct regmap *regmap,
- 			    const struct inv_icm42607_hw *hw,
- 			    inv_icm42607_bus_setup bus_setup);
- 
-+struct iio_dev *inv_icm42607_accel_init(struct inv_icm42607_state *st);
-+
- #endif
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
-new file mode 100644
-index 000000000000..8ef9fdae1bc8
---- /dev/null
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
-@@ -0,0 +1,309 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (C) 2026 InvenSense, Inc.
-+ */
-+
-+#include <linux/array_size.h>
-+#include <linux/bits.h>
-+#include <linux/cleanup.h>
-+#include <linux/device/devres.h>
-+#include <linux/err.h>
-+#include <linux/iio/iio.h>
-+#include <linux/mutex.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
-+#include <linux/types.h>
-+
-+#include "inv_icm42607.h"
-+
-+#define INV_ICM42607_ACCEL_CHAN(_modifier, _index, _ext_info)			\
-+{										\
-+	.type = IIO_ACCEL,							\
-+	.modified = 1,								\
-+	.channel2 = _modifier,							\
-+	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),				\
-+	.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),			\
-+	.info_mask_shared_by_type_available = BIT(IIO_CHAN_INFO_SCALE),		\
-+	.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),		\
-+	.info_mask_shared_by_all_available = BIT(IIO_CHAN_INFO_SAMP_FREQ),	\
-+	.scan_index = _index,							\
-+	.scan_type = {								\
-+		.sign = 's',							\
-+		.realbits = 16,							\
-+		.storagebits = 16,						\
-+		.endianness = IIO_BE,						\
-+	},									\
-+	.ext_info = _ext_info,							\
-+}
-+
-+enum inv_icm42607_accel_scan {
-+	INV_ICM42607_ACCEL_SCAN_X,
-+	INV_ICM42607_ACCEL_SCAN_Y,
-+	INV_ICM42607_ACCEL_SCAN_Z,
-+};
-+
-+static const struct iio_chan_spec_ext_info inv_icm42607_accel_ext_infos[] = {
-+	IIO_MOUNT_MATRIX(IIO_SHARED_BY_ALL, inv_icm42607_get_mount_matrix),
-+	{ }
-+};
-+
-+static const struct iio_chan_spec inv_icm42607_accel_channels[] = {
-+	INV_ICM42607_ACCEL_CHAN(IIO_MOD_X, INV_ICM42607_ACCEL_SCAN_X,
-+				inv_icm42607_accel_ext_infos),
-+	INV_ICM42607_ACCEL_CHAN(IIO_MOD_Y, INV_ICM42607_ACCEL_SCAN_Y,
-+				inv_icm42607_accel_ext_infos),
-+	INV_ICM42607_ACCEL_CHAN(IIO_MOD_Z, INV_ICM42607_ACCEL_SCAN_Z,
-+				inv_icm42607_accel_ext_infos),
-+};
-+
-+static const int inv_icm42607_accel_scale_nano[][2] = {
-+	[INV_ICM42607_ACCEL_FS_16G] = { 0, 4788403 },
-+	[INV_ICM42607_ACCEL_FS_8G] = { 0, 2394202 },
-+	[INV_ICM42607_ACCEL_FS_4G] = { 0, 1197101 },
-+	[INV_ICM42607_ACCEL_FS_2G] = { 0, 598550 },
-+};
-+
-+static int inv_icm42607_accel_read_scale(struct iio_dev *indio_dev,
-+					 int *val, int *val2)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	unsigned int idx;
-+
-+	guard(mutex)(&st->lock);
-+
-+	idx = st->conf.accel.fs;
-+
-+	*val = inv_icm42607_accel_scale_nano[idx][0];
-+	*val2 = inv_icm42607_accel_scale_nano[idx][1];
-+	return IIO_VAL_INT_PLUS_NANO;
-+}
-+
-+static int inv_icm42607_accel_write_scale(struct iio_dev *indio_dev,
-+					  int val, int val2)
-+{
-+	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	size_t scales_len = ARRAY_SIZE(inv_icm42607_accel_scale_nano);
-+	struct device *dev = regmap_get_device(st->map);
-+	unsigned int idx;
-+	int ret;
-+
-+	for (idx = 0; idx < scales_len; idx++) {
-+		if (val == inv_icm42607_accel_scale_nano[idx][0] &&
-+		    val2 == inv_icm42607_accel_scale_nano[idx][1])
-+			break;
-+	}
-+	if (idx >= scales_len)
-+		return -EINVAL;
-+
-+	conf.fs = idx;
-+
-+	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
-+	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-+	if (ret)
-+		return ret;
-+
-+	guard(mutex)(&st->lock);
-+
-+	return inv_icm42607_set_sensor_conf(st, &conf, IIO_ACCEL);
-+}
-+
-+/* IIO format int + micro , values 0-5 reserved. */
-+static const int inv_icm42607_accel_odr[][2] = {
-+	[INV_ICM42607_ODR_1600HZ] = { 1600, 0 },
-+	[INV_ICM42607_ODR_800HZ] = { 800, 0 },
-+	[INV_ICM42607_ODR_400HZ] = { 400, 0 },
-+	[INV_ICM42607_ODR_200HZ] = { 200, 0 },
-+	[INV_ICM42607_ODR_100HZ] = { 100, 0 },
-+	[INV_ICM42607_ODR_50HZ] = { 50, 0 },
-+	[INV_ICM42607_ODR_25HZ] = { 25, 0 },
-+	[INV_ICM42607_ODR_12_5HZ] = { 12, 500000 },
-+	[INV_ICM42607_ODR_6_25HZ_LP] = { 6, 250000 },
-+	[INV_ICM42607_ODR_3_125HZ_LP] = { 3, 125000 },
-+	[INV_ICM42607_ODR_1_5625HZ_LP] = { 1, 562500 },
-+};
-+
-+static int inv_icm42607_accel_read_odr(struct inv_icm42607_state *st,
-+				       int *val, int *val2)
-+{
-+	unsigned int odr;
-+	unsigned int i;
-+
-+	guard(mutex)(&st->lock);
-+
-+	odr = st->conf.accel.odr;
-+
-+	for (i = 5; i < ARRAY_SIZE(inv_icm42607_accel_odr); ++i) {
-+		if (i == odr)
-+			break;
-+	}
-+	if (i >= ARRAY_SIZE(inv_icm42607_accel_odr))
-+		return -EINVAL;
-+
-+	*val = inv_icm42607_accel_odr[i][0];
-+	*val2 = inv_icm42607_accel_odr[i][1];
-+
-+	return IIO_VAL_INT_PLUS_MICRO;
-+}
-+
-+static int inv_icm42607_accel_write_odr(struct iio_dev *indio_dev,
-+					int val, int val2)
-+{
-+	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	struct device *dev = regmap_get_device(st->map);
-+	unsigned int idx;
-+	int ret;
-+
-+	for (idx = 5; idx < ARRAY_SIZE(inv_icm42607_accel_odr); ++idx) {
-+		if (val == inv_icm42607_accel_odr[idx][0] &&
-+		    val2 == inv_icm42607_accel_odr[idx][1])
-+			break;
-+	}
-+	if (idx >= ARRAY_SIZE(inv_icm42607_accel_odr))
-+		return -EINVAL;
-+
-+	conf.odr = idx;
-+
-+	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
-+	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-+	if (ret)
-+		return ret;
-+
-+	guard(mutex)(&st->lock);
-+
-+	return inv_icm42607_set_sensor_conf(st, &conf, IIO_ACCEL);
-+}
-+
-+static int inv_icm42607_accel_read_raw(struct iio_dev *indio_dev,
-+				       struct iio_chan_spec const *chan,
-+				       int *val, int *val2, long mask)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	s16 data;
-+	int ret;
-+
-+	switch (chan->type) {
-+	case IIO_ACCEL:
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_RAW:
-+		ret = inv_icm42607_read_sensor(indio_dev, chan, &data);
-+		if (ret)
-+			return ret;
-+		*val = data;
-+		return IIO_VAL_INT;
-+	case IIO_CHAN_INFO_SCALE:
-+		return inv_icm42607_accel_read_scale(indio_dev, val, val2);
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		return inv_icm42607_accel_read_odr(st, val, val2);
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int inv_icm42607_accel_read_avail(struct iio_dev *indio_dev,
-+					 struct iio_chan_spec const *chan,
-+					 const int **vals,
-+					 int *type, int *length, long mask)
-+{
-+	if (chan->type != IIO_ACCEL)
-+		return -EINVAL;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		*vals = (const int *)inv_icm42607_accel_scale_nano;
-+		*type = IIO_VAL_INT_PLUS_NANO;
-+		*length = ARRAY_SIZE(inv_icm42607_accel_scale_nano) * 2;
-+		return IIO_AVAIL_LIST;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		*vals = (const int *)inv_icm42607_accel_odr[5];
-+		*type = IIO_VAL_INT_PLUS_MICRO;
-+		*length = (ARRAY_SIZE(inv_icm42607_accel_odr) - 5) * 2;
-+		return IIO_AVAIL_LIST;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int inv_icm42607_accel_write_raw(struct iio_dev *indio_dev,
-+					struct iio_chan_spec const *chan,
-+					int val, int val2, long mask)
-+{
-+	int ret;
-+
-+	if (chan->type != IIO_ACCEL)
-+		return -EINVAL;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		ret = inv_icm42607_accel_write_scale(indio_dev, val, val2);
-+		return ret;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		return inv_icm42607_accel_write_odr(indio_dev, val, val2);
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int inv_icm42607_accel_write_raw_get_fmt(struct iio_dev *indio_dev,
-+						struct iio_chan_spec const *chan,
-+						long mask)
-+{
-+	if (chan->type != IIO_ACCEL)
-+		return -EINVAL;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		return IIO_VAL_INT_PLUS_NANO;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		return IIO_VAL_INT_PLUS_MICRO;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static const struct iio_info inv_icm42607_accel_info = {
-+	.read_raw = inv_icm42607_accel_read_raw,
-+	.read_avail = inv_icm42607_accel_read_avail,
-+	.write_raw = inv_icm42607_accel_write_raw,
-+	.write_raw_get_fmt = inv_icm42607_accel_write_raw_get_fmt,
-+};
-+
-+struct iio_dev *inv_icm42607_accel_init(struct inv_icm42607_state *st)
-+{
-+	struct device *dev = regmap_get_device(st->map);
-+	struct inv_icm42607_sensor_state *accel_st;
-+	struct iio_dev *indio_dev;
-+	const char *name;
-+	int ret;
-+
-+	name = devm_kasprintf(dev, GFP_KERNEL, "%s-accel", st->hw->name);
-+	if (!name)
-+		return ERR_PTR(-ENOMEM);
-+
-+	indio_dev = devm_iio_device_alloc(dev, sizeof(*accel_st));
-+	if (!indio_dev)
-+		return ERR_PTR(-ENOMEM);
-+	accel_st = iio_priv(indio_dev);
-+
-+	accel_st->power_mode = INV_ICM42607_SENSOR_MODE_LOW_NOISE;
-+	accel_st->filter = INV_ICM42607_FILTER_BW_73HZ;
-+
-+	iio_device_set_drvdata(indio_dev, st);
-+	indio_dev->name = name;
-+	indio_dev->info = &inv_icm42607_accel_info;
-+	indio_dev->modes = INDIO_DIRECT_MODE;
-+	indio_dev->channels = inv_icm42607_accel_channels;
-+	indio_dev->num_channels = ARRAY_SIZE(inv_icm42607_accel_channels);
-+
-+	ret = devm_iio_device_register(dev, indio_dev);
-+	if (ret)
-+		return ERR_PTR(ret);
-+
-+	return indio_dev;
-+}
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-index 738970ed5c66..300c583aba81 100644
---- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-@@ -19,6 +19,7 @@
- #include <linux/time.h>
- #include <linux/timekeeping.h>
- #include <linux/types.h>
-+#include <linux/unaligned.h>
- 
- #include "inv_icm42607.h"
- 
-@@ -106,6 +107,15 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
- };
- EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
- 
-+const struct iio_mount_matrix *
-+inv_icm42607_get_mount_matrix(struct iio_dev *indio_dev,
-+			      const struct iio_chan_spec *chan)
-+{
-+	const struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+
-+	return &st->orientation;
-+}
-+
- static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
- 				      enum inv_icm42607_sensor_mode gyro,
- 				      enum inv_icm42607_sensor_mode accel)
-@@ -171,6 +181,160 @@ static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
- 	return 0;
- }
- 
-+/*
-+ * Sanity test between old and new config values, and note if we need
-+ * to update register config0 or config1.
-+ */
-+static void inv_icm42607_update_config(struct inv_icm42607_sensor_conf *conf,
-+				       struct inv_icm42607_sensor_conf *oldconf,
-+				       bool *config0, bool *config1)
-+{
-+	*config0 = false;
-+	*config1 = false;
-+
-+	if (conf->mode < 0)
-+		conf->mode = oldconf->mode;
-+	if (conf->fs < 0)
-+		conf->fs = oldconf->fs;
-+	if (conf->odr < 0)
-+		conf->odr = oldconf->odr;
-+	if (conf->filter < 0)
-+		conf->filter = oldconf->filter;
-+
-+	if (conf->fs != oldconf->fs || conf->odr != oldconf->odr)
-+		*config0 = true;
-+
-+	if (conf->filter != oldconf->filter)
-+		*config1 = true;
-+}
-+
-+int inv_icm42607_set_sensor_conf(struct inv_icm42607_state *st,
-+				 struct inv_icm42607_sensor_conf *conf,
-+				 enum iio_chan_type chan_type)
-+{
-+	struct inv_icm42607_sensor_conf *oldconf;
-+	bool config0, config1;
-+	unsigned int val;
-+	int ret;
-+
-+	switch (chan_type) {
-+	case IIO_ACCEL:
-+		oldconf = &st->conf.accel;
-+		break;
-+	case IIO_ANGL_VEL:
-+		oldconf = &st->conf.gyro;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	inv_icm42607_update_config(conf, oldconf, &config0, &config1);
-+
-+	if (config0) {
-+		if (chan_type == IIO_ANGL_VEL) {
-+			val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_FS_SEL_MASK, conf->fs);
-+			val |= FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_ODR_MASK, conf->odr);
-+			ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG0, val);
-+		} else {
-+			val = FIELD_PREP(INV_ICM42607_ACCEL_CONFIG0_FS_SEL_MASK, conf->fs);
-+			val |= FIELD_PREP(INV_ICM42607_ACCEL_CONFIG0_ODR_MASK, conf->odr);
-+			ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG0, val);
-+		}
-+		if (ret)
-+			return ret;
-+
-+		oldconf->fs = conf->fs;
-+		oldconf->odr = conf->odr;
-+	}
-+
-+	if (config1) {
-+		if (chan_type == IIO_ANGL_VEL) {
-+			val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG1_FILTER_MASK,
-+					 conf->filter);
-+			ret = regmap_update_bits(st->map, INV_ICM42607_REG_GYRO_CONFIG1,
-+						 INV_ICM42607_GYRO_CONFIG1_FILTER_MASK, val);
-+		} else {
-+			val = FIELD_PREP(INV_ICM42607_ACCEL_CONFIG1_FILTER_MASK,
-+					 conf->filter);
-+			ret = regmap_update_bits(st->map, INV_ICM42607_REG_ACCEL_CONFIG1,
-+						 INV_ICM42607_ACCEL_CONFIG1_FILTER_MASK, val);
-+		}
-+		if (ret)
-+			return ret;
-+
-+		oldconf->filter = conf->filter;
-+	}
-+
-+	if (chan_type == IIO_ANGL_VEL)
-+		return inv_icm42607_set_pwr_mgmt0(st, conf->mode, st->conf.accel.mode);
-+
-+	return inv_icm42607_set_pwr_mgmt0(st, st->conf.gyro.mode, conf->mode);
-+}
-+
-+int inv_icm42607_read_sensor(struct iio_dev *indio_dev,
-+			     struct iio_chan_spec const *chan,
-+			     s16 *val)
-+{
-+	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	struct inv_icm42607_sensor_state *sensor_st = iio_priv(indio_dev);
-+	struct device *dev = regmap_get_device(st->map);
-+	unsigned int reg;
-+	u8 data[2];
-+	int ret;
-+
-+	if ((chan->type != IIO_ANGL_VEL) && (chan->type != IIO_ACCEL))
-+		return -EINVAL;
-+
-+	switch (chan->channel2) {
-+	case IIO_MOD_X:
-+		if (chan->type == IIO_ANGL_VEL)
-+			reg = INV_ICM42607_REG_GYRO_DATA_X1;
-+		else
-+			reg = INV_ICM42607_REG_ACCEL_DATA_X1;
-+		break;
-+	case IIO_MOD_Y:
-+		if (chan->type == IIO_ANGL_VEL)
-+			reg = INV_ICM42607_REG_GYRO_DATA_Y1;
-+		else
-+			reg = INV_ICM42607_REG_ACCEL_DATA_Y1;
-+		break;
-+	case IIO_MOD_Z:
-+		if (chan->type == IIO_ANGL_VEL)
-+			reg = INV_ICM42607_REG_GYRO_DATA_Z1;
-+		else
-+			reg = INV_ICM42607_REG_ACCEL_DATA_Z1;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
-+	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-+	if (ret)
-+		return ret;
-+
-+	guard(mutex)(&st->lock);
-+
-+	/* enable sensor */
-+	conf.mode = sensor_st->power_mode;
-+	conf.filter = sensor_st->filter;
-+	ret = inv_icm42607_set_sensor_conf(st, &conf, chan->type);
-+	if (ret)
-+		return ret;
-+
-+	/* read sensor register data */
-+	ret = regmap_bulk_read(st->map, reg, data, sizeof(data));
-+	if (ret)
-+		return ret;
-+
-+	*val = get_unaligned_be16(data);
-+	if (*val == INV_ICM42607_DATA_INVALID)
-+		return -EINVAL;
-+
-+	return 0;
-+}
-+
- static int inv_icm42607_set_init_conf(struct inv_icm42607_state *st,
- 				      const struct inv_icm42607_conf *conf)
- {
-@@ -365,6 +529,11 @@ int inv_icm42607_core_probe(struct regmap *regmap,
- 	pm_runtime_set_autosuspend_delay(dev, INV_ICM42607_SUSPEND_DELAY_MS);
- 	pm_runtime_use_autosuspend(dev);
- 
-+	/* Initialize IIO device for Accel */
-+	st->indio_accel = inv_icm42607_accel_init(st);
-+	if (IS_ERR(st->indio_accel))
-+		return PTR_ERR(st->indio_accel);
-+
- 	return 0;
- }
- EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KCkFkZCBmdW5jdGlv
+bnMgZm9yIHJlYWRpbmcgdGVtcGVyYXR1cmUgc2Vuc29yIGRhdGEuCgpTaWduZWQtb2ZmLWJ5OiBD
+aHJpcyBNb3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgotLS0KIGRyaXZlcnMvaWlvL2lt
+dS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgICAgICAgICB8ICAxICsKIC4uLi9paW8vaW11L2ludl9p
+Y200MjYwNy9pbnZfaWNtNDI2MDdfYWNjZWwuYyB8ICA4ICsrCiAuLi4vaWlvL2ltdS9pbnZfaWNt
+NDI2MDcvaW52X2ljbTQyNjA3X2d5cm8uYyAgfCAgOCArKwogLi4uL2lpby9pbXUvaW52X2ljbTQy
+NjA3L2ludl9pY200MjYwN190ZW1wLmMgIHwgOTggKysrKysrKysrKysrKysrKysrKwogLi4uL2lp
+by9pbXUvaW52X2ljbTQyNjA3L2ludl9pY200MjYwN190ZW1wLmggIHwgMzggKysrKysrKwogNSBm
+aWxlcyBjaGFuZ2VkLCAxNTMgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuYwogY3JlYXRlIG1vZGUg
+MTAwNjQ0IGRyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaAoK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgYi9kcml2
+ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L01ha2VmaWxlCmluZGV4IDhlNzMzODVjOGY0Yi4uN2I5
+MDdlMDE5NjAxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L01ha2Vm
+aWxlCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUKQEAgLTQsNiAr
+NCw3IEBAIG9iai0kKENPTkZJR19JTlZfSUNNNDI2MDcpICs9IGludi1pY200MjYwNy5vCiBpbnYt
+aWNtNDI2MDcteSArPSBpbnZfaWNtNDI2MDdfY29yZS5vCiBpbnYtaWNtNDI2MDcteSArPSBpbnZf
+aWNtNDI2MDdfZ3lyby5vCiBpbnYtaWNtNDI2MDcteSArPSBpbnZfaWNtNDI2MDdfYWNjZWwubwor
+aW52LWljbTQyNjA3LXkgKz0gaW52X2ljbTQyNjA3X3RlbXAubwogCiBvYmotJChDT05GSUdfSU5W
+X0lDTTQyNjA3X0kyQykgKz0gaW52LWljbTQyNjA3LWkyYy5vCiBpbnYtaWNtNDI2MDctaTJjLXkg
+Kz0gaW52X2ljbTQyNjA3X2kyYy5vCmRpZmYgLS1naXQgYS9kcml2ZXJzL2lpby9pbXUvaW52X2lj
+bTQyNjA3L2ludl9pY200MjYwN19hY2NlbC5jIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYw
+Ny9pbnZfaWNtNDI2MDdfYWNjZWwuYwppbmRleCA4ZWY5ZmRhZTFiYzguLjVmZjY3NTZiOTUxNSAx
+MDA2NDQKLS0tIGEvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfYWNj
+ZWwuYworKysgYi9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L2ludl9pY200MjYwN19hY2Nl
+bC5jCkBAIC0xNSw2ICsxNSw3IEBACiAjaW5jbHVkZSA8bGludXgvdHlwZXMuaD4KIAogI2luY2x1
+ZGUgImludl9pY200MjYwNy5oIgorI2luY2x1ZGUgImludl9pY200MjYwN190ZW1wLmgiCiAKICNk
+ZWZpbmUgSU5WX0lDTTQyNjA3X0FDQ0VMX0NIQU4oX21vZGlmaWVyLCBfaW5kZXgsIF9leHRfaW5m
+bykJCQlcCiB7CQkJCQkJCQkJCVwKQEAgLTQwLDYgKzQxLDcgQEAgZW51bSBpbnZfaWNtNDI2MDdf
+YWNjZWxfc2NhbiB7CiAJSU5WX0lDTTQyNjA3X0FDQ0VMX1NDQU5fWCwKIAlJTlZfSUNNNDI2MDdf
+QUNDRUxfU0NBTl9ZLAogCUlOVl9JQ000MjYwN19BQ0NFTF9TQ0FOX1osCisJSU5WX0lDTTQyNjA3
+X0FDQ0VMX1NDQU5fVEVNUCwKIH07CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgaWlvX2NoYW5fc3Bl
+Y19leHRfaW5mbyBpbnZfaWNtNDI2MDdfYWNjZWxfZXh0X2luZm9zW10gPSB7CkBAIC01NCw2ICs1
+Niw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgaWlvX2NoYW5fc3BlYyBpbnZfaWNtNDI2MDdfYWNj
+ZWxfY2hhbm5lbHNbXSA9IHsKIAkJCQlpbnZfaWNtNDI2MDdfYWNjZWxfZXh0X2luZm9zKSwKIAlJ
+TlZfSUNNNDI2MDdfQUNDRUxfQ0hBTihJSU9fTU9EX1osIElOVl9JQ000MjYwN19BQ0NFTF9TQ0FO
+X1osCiAJCQkJaW52X2ljbTQyNjA3X2FjY2VsX2V4dF9pbmZvcyksCisJSU5WX0lDTTQyNjA3X1RF
+TVBfQ0hBTihJTlZfSUNNNDI2MDdfQUNDRUxfU0NBTl9URU1QKSwKIH07CiAKIHN0YXRpYyBjb25z
+dCBpbnQgaW52X2ljbTQyNjA3X2FjY2VsX3NjYWxlX25hbm9bXVsyXSA9IHsKQEAgLTE4Niw2ICsx
+ODksMTEgQEAgc3RhdGljIGludCBpbnZfaWNtNDI2MDdfYWNjZWxfcmVhZF9yYXcoc3RydWN0IGlp
+b19kZXYgKmluZGlvX2RldiwKIAlzd2l0Y2ggKGNoYW4tPnR5cGUpIHsKIAljYXNlIElJT19BQ0NF
+TDoKIAkJYnJlYWs7CisJY2FzZSBJSU9fVEVNUDoKKwkJaWYgKG1hc2sgIT0gSUlPX0NIQU5fSU5G
+T19TQU1QX0ZSRVEpCisJCQlyZXR1cm4gaW52X2ljbTQyNjA3X3RlbXBfcmVhZF9yYXcoaW5kaW9f
+ZGV2LCBjaGFuLAorCQkJCQkJCSAgdmFsLCB2YWwyLCBtYXNrKTsKKwkJYnJlYWs7CiAJZGVmYXVs
+dDoKIAkJcmV0dXJuIC1FSU5WQUw7CiAJfQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9paW8vaW11L2lu
+dl9pY200MjYwNy9pbnZfaWNtNDI2MDdfZ3lyby5jIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200
+MjYwNy9pbnZfaWNtNDI2MDdfZ3lyby5jCmluZGV4IGM3MjE1YjM4MjZhZC4uNGU1ZGI1ZTE5ZTlm
+IDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L2ludl9pY200MjYwN19n
+eXJvLmMKKysrIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfZ3ly
+by5jCkBAIC0xNSw2ICsxNSw3IEBACiAjaW5jbHVkZSA8bGludXgvdHlwZXMuaD4KIAogI2luY2x1
+ZGUgImludl9pY200MjYwNy5oIgorI2luY2x1ZGUgImludl9pY200MjYwN190ZW1wLmgiCiAKICNk
+ZWZpbmUgSU5WX0lDTTQyNjA3X0dZUk9fQ0hBTihfbW9kaWZpZXIsIF9pbmRleCwgX2V4dF9pbmZv
+KQkJCVwKIHsJCQkJCQkJCQkJXApAQCAtNDAsNiArNDEsNyBAQCBlbnVtIGludl9pY200MjYwN19n
+eXJvX3NjYW4gewogCUlOVl9JQ000MjYwN19HWVJPX1NDQU5fWCwKIAlJTlZfSUNNNDI2MDdfR1lS
+T19TQ0FOX1ksCiAJSU5WX0lDTTQyNjA3X0dZUk9fU0NBTl9aLAorCUlOVl9JQ000MjYwN19HWVJP
+X1NDQU5fVEVNUCwKIH07CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgaWlvX2NoYW5fc3BlY19leHRf
+aW5mbyBpbnZfaWNtNDI2MDdfZ3lyb19leHRfaW5mb3NbXSA9IHsKQEAgLTU0LDYgKzU2LDcgQEAg
+c3RhdGljIGNvbnN0IHN0cnVjdCBpaW9fY2hhbl9zcGVjIGludl9pY200MjYwN19neXJvX2NoYW5u
+ZWxzW10gPSB7CiAJCQkgICAgICAgaW52X2ljbTQyNjA3X2d5cm9fZXh0X2luZm9zKSwKIAlJTlZf
+SUNNNDI2MDdfR1lST19DSEFOKElJT19NT0RfWiwgSU5WX0lDTTQyNjA3X0dZUk9fU0NBTl9aLAog
+CQkJICAgICAgIGludl9pY200MjYwN19neXJvX2V4dF9pbmZvcyksCisJSU5WX0lDTTQyNjA3X1RF
+TVBfQ0hBTihJTlZfSUNNNDI2MDdfR1lST19TQ0FOX1RFTVApLAogfTsKIAogc3RhdGljIGNvbnN0
+IGludCBpbnZfaWNtNDI2MDdfZ3lyb19zY2FsZV9uYW5vW11bMl0gPSB7CkBAIC0xODIsNiArMTg1
+LDExIEBAIHN0YXRpYyBpbnQgaW52X2ljbTQyNjA3X2d5cm9fcmVhZF9yYXcoc3RydWN0IGlpb19k
+ZXYgKmluZGlvX2RldiwKIAlzd2l0Y2ggKGNoYW4tPnR5cGUpIHsKIAljYXNlIElJT19BTkdMX1ZF
+TDoKIAkJYnJlYWs7CisJY2FzZSBJSU9fVEVNUDoKKwkJaWYgKG1hc2sgIT0gSUlPX0NIQU5fSU5G
+T19TQU1QX0ZSRVEpCisJCQlyZXR1cm4gaW52X2ljbTQyNjA3X3RlbXBfcmVhZF9yYXcoaW5kaW9f
+ZGV2LCBjaGFuLAorCQkJCQkJCSAgdmFsLCB2YWwyLCBtYXNrKTsKKwkJYnJlYWs7CiAJZGVmYXVs
+dDoKIAkJcmV0dXJuIC1FSU5WQUw7CiAJfQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9paW8vaW11L2lu
+dl9pY200MjYwNy9pbnZfaWNtNDI2MDdfdGVtcC5jIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200
+MjYwNy9pbnZfaWNtNDI2MDdfdGVtcC5jCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAw
+MDAwMDAwMC4uODY4MWVmMmI0OWUyCi0tLSAvZGV2L251bGwKKysrIGIvZHJpdmVycy9paW8vaW11
+L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfdGVtcC5jCkBAIC0wLDAgKzEsOTggQEAKKy8vIFNQ
+RFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9yLWxhdGVyCisvKgorICogQ29weXJpZ2h0
+IChDKSAyMDI2IEludmVuU2Vuc2UsIEluYy4KKyAqLworCisjaW5jbHVkZSA8bGludXgvY2xlYW51
+cC5oPgorI2luY2x1ZGUgPGxpbnV4L2RldmljZS5oPgorI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgor
+I2luY2x1ZGUgPGxpbnV4L2lpby9paW8uaD4KKyNpbmNsdWRlIDxsaW51eC9tdXRleC5oPgorI2lu
+Y2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KKyNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KKyNp
+bmNsdWRlIDxsaW51eC90eXBlcy5oPgorI2luY2x1ZGUgPGxpbnV4L3VuYWxpZ25lZC5oPgorCisj
+aW5jbHVkZSAiaW52X2ljbTQyNjA3LmgiCisjaW5jbHVkZSAiaW52X2ljbTQyNjA3X3RlbXAuaCIK
+Kworc3RhdGljIGludCBpbnZfaWNtNDI2MDdfdGVtcF9yZWFkKHN0cnVjdCBpbnZfaWNtNDI2MDdf
+c3RhdGUgKnN0LCBzMTYgKnRlbXApCit7CisJc3RydWN0IGludl9pY200MjYwN19zZW5zb3JfY29u
+ZiBjb25mID0gSU5WX0lDTTQyNjA3X1NFTlNPUl9DT05GX0lOSVQ7CisJc3RydWN0IGRldmljZSAq
+ZGV2ID0gcmVnbWFwX2dldF9kZXZpY2Uoc3QtPm1hcCk7CisJaW50IHJldCwgZ3lyb19tb2RlLCBh
+Y2NlbF9tb2RlOworCXVuc2lnbmVkIGludCB2YWw7CisJdTggcmF3WzJdOworCisJUE1fUlVOVElN
+RV9BQ1FVSVJFX0FVVE9TVVNQRU5EKGRldiwgcG0pOworCXJldCA9IFBNX1JVTlRJTUVfQUNRVUlS
+RV9FUlIoJnBtKTsKKwlpZiAocmV0KQorCQlyZXR1cm4gcmV0OworCisJZ3VhcmQobXV0ZXgpKCZz
+dC0+bG9jayk7CisKKwkvKgorCSAqIENoZWNrIGlmIGJvdGggdGhlIGd5cm8gYW5kIGFjY2VsIGFy
+ZSBvZmYgYW5kIGlmIHNvLCBlbmFibGUgb25lCisJICogb2YgdGhlbS4gVGhlIHRlbXAgc2Vuc29y
+IGNhbm5vdCBiZSByZWFkIGlmIGJvdGggdGhlIGd5cm8gYW5kCisJICogYWNjZWwgc2Vuc29yIGFy
+ZSBvZmYuIFByZWZlciB0byBlbmFibGUgdGhlIGFjY2VsIG92ZXIgdGhlIGd5cm8KKwkgKiBhcyB0
+aGUgZGF0YXNoZWV0IHNheXMgdGhlIGd5cm8gdXNlcyA1eCBtb3JlIHBvd2VyIGFuZCBpdCBoYXMK
+KwkgKiBhIG1pbmltdW0gcnVuIHRpbWUgb2YgNDVtcy4KKwkgKi8KKwlyZXQgPSByZWdtYXBfcmVh
+ZChzdC0+bWFwLCBJTlZfSUNNNDI2MDdfUkVHX1BXUl9NR01UMCwgJnZhbCk7CisJaWYgKHJldCkK
+KwkJcmV0dXJuIHJldDsKKworCWFjY2VsX21vZGUgPSBGSUVMRF9HRVQoSU5WX0lDTTQyNjA3X1BX
+Ul9NR01UMF9BQ0NFTF9NT0RFX01BU0ssIHZhbCk7CisJZ3lyb19tb2RlID0gRklFTERfR0VUKElO
+Vl9JQ000MjYwN19QV1JfTUdNVDBfR1lST19NT0RFX01BU0ssIHZhbCk7CisJaWYgKCFneXJvX21v
+ZGUgJiYgIWFjY2VsX21vZGUpIHsKKwkJLyogZW5hYmxlIGFjY2VsIHNlbnNvciAqLworCQljb25m
+Lm1vZGUgPSBJTlZfSUNNNDI2MDdfU0VOU09SX01PREVfTE9XX05PSVNFOworCQlyZXQgPSBpbnZf
+aWNtNDI2MDdfc2V0X3NlbnNvcl9jb25mKHN0LCAmY29uZiwgSUlPX0FDQ0VMKTsKKwkJaWYgKHJl
+dCkKKwkJCXJldHVybiByZXQ7CisJfQorCisJcmV0ID0gcmVnbWFwX2J1bGtfcmVhZChzdC0+bWFw
+LCBJTlZfSUNNNDI2MDdfUkVHX1RFTVBfREFUQTEsCisJCQkgICAgICAgcmF3LCBzaXplb2YocmF3
+KSk7CisJaWYgKHJldCkKKwkJcmV0dXJuIHJldDsKKworCSp0ZW1wID0gZ2V0X3VuYWxpZ25lZF9i
+ZTE2KHJhdyk7CisJaWYgKCp0ZW1wID09IElOVl9JQ000MjYwN19EQVRBX0lOVkFMSUQpCisJCXJl
+dHVybiAtRUlOVkFMOworCisJcmV0dXJuIDA7Cit9CisKK2ludCBpbnZfaWNtNDI2MDdfdGVtcF9y
+ZWFkX3JhdyhzdHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2LAorCQkJCXN0cnVjdCBpaW9fY2hhbl9z
+cGVjIGNvbnN0ICpjaGFuLAorCQkJCWludCAqdmFsLCBpbnQgKnZhbDIsIGxvbmcgbWFzaykKK3sK
+KwlzdHJ1Y3QgaW52X2ljbTQyNjA3X3N0YXRlICpzdCA9IGlpb19kZXZpY2VfZ2V0X2RydmRhdGEo
+aW5kaW9fZGV2KTsKKwlzMTYgdGVtcDsKKwlpbnQgcmV0OworCisJc3dpdGNoIChtYXNrKSB7CisJ
+Y2FzZSBJSU9fQ0hBTl9JTkZPX1JBVzoKKwkJcmV0ID0gaW52X2ljbTQyNjA3X3RlbXBfcmVhZChz
+dCwgJnRlbXApOworCQlpZiAocmV0KQorCQkJcmV0dXJuIHJldDsKKwkJKnZhbCA9IHRlbXA7CisJ
+CXJldHVybiBJSU9fVkFMX0lOVDsKKwkvKgorCSAqIFTCsEMgPSAodGVtcCAvIDEyOCkgKyAyNQor
+CSAqIFRtwrBDID0gMTAwMCAqICgodGVtcCAqIDEwMCAvIDEyODAwKSArIDI1KQorCSAqIHNjYWxl
+OiAxMDAwMDAgLyAxMjgwMCB+PSA3LjgxMjUKKwkgKiBvZmZzZXQ6IDMyMDAKKwkgKi8KKwljYXNl
+IElJT19DSEFOX0lORk9fU0NBTEU6CisJCSp2YWwgPSA3OworCQkqdmFsMiA9IDgxMjUwMDAwMDsK
+KwkJcmV0dXJuIElJT19WQUxfSU5UX1BMVVNfTkFOTzsKKwljYXNlIElJT19DSEFOX0lORk9fT0ZG
+U0VUOgorCQkqdmFsID0gMzIwMDsKKwkJcmV0dXJuIElJT19WQUxfSU5UOworCWRlZmF1bHQ6CisJ
+CXJldHVybiAtRUlOVkFMOworCX0KK30KZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZf
+aWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaCBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2
+MDcvaW52X2ljbTQyNjA3X3RlbXAuaApuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAw
+MDAwMDAuLjE4NDk5YjRkMGI5NAotLS0gL2Rldi9udWxsCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9p
+bnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaApAQCAtMCwwICsxLDM4IEBACisvKiBTUERY
+LUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMC1vci1sYXRlciAqLworLyoKKyAqIENvcHlyaWdo
+dCAoQykgMjAyNiBJbnZlblNlbnNlLCBJbmMuCisgKi8KKworI2lmbmRlZiBJTlZfSUNNNDI2MDdf
+VEVNUF9IXworI2RlZmluZSBJTlZfSUNNNDI2MDdfVEVNUF9IXworCisjaW5jbHVkZSA8bGludXgv
+Yml0b3BzLmg+CisKK3N0cnVjdCBpaW9fZGV2Oworc3RydWN0IGlpb19jaGFuX3NwZWM7CisKKyNk
+ZWZpbmUgSU5WX0lDTTQyNjA3X1RFTVBfQ0hBTihfaW5kZXgpCQkJCVwKK3sJCQkJCQkJCVwKKwku
+dHlwZSA9IElJT19URU1QLAkJCQkJXAorCS5pbmZvX21hc2tfc2VwYXJhdGUgPQkJCQkJXAorCQlC
+SVQoSUlPX0NIQU5fSU5GT19SQVcpIHwJCQlcCisJCUJJVChJSU9fQ0hBTl9JTkZPX09GRlNFVCkg
+fAkJCVwKKwkJQklUKElJT19DSEFOX0lORk9fU0NBTEUpLAkJCVwKKwkuaW5mb19tYXNrX3NoYXJl
+ZF9ieV9hbGwgPQkJCQlcCisJCUJJVChJSU9fQ0hBTl9JTkZPX1NBTVBfRlJFUSksCQkJXAorCS5p
+bmZvX21hc2tfc2hhcmVkX2J5X2FsbF9hdmFpbGFibGUgPQkJCVwKKwkJQklUKElJT19DSEFOX0lO
+Rk9fU0FNUF9GUkVRKSwJCQlcCisJLnNjYW5faW5kZXggPSBfaW5kZXgsCQkJCQlcCisJLnNjYW5f
+dHlwZSA9IHsJCQkJCQlcCisJCS5zaWduID0gJ3MnLAkJCQkJXAorCQkucmVhbGJpdHMgPSAxNiwJ
+CQkJCVwKKwkJLnN0b3JhZ2ViaXRzID0gMTYsCQkJCVwKKwkJLmVuZGlhbm5lc3MgPSBJSU9fQkUs
+CQkJCVwKKwl9LAkJCQkJCQlcCit9CisKK2ludCBpbnZfaWNtNDI2MDdfdGVtcF9yZWFkX3Jhdyhz
+dHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2LAorCQkJICAgICAgIHN0cnVjdCBpaW9fY2hhbl9zcGVj
+IGNvbnN0ICpjaGFuLAorCQkJICAgICAgIGludCAqdmFsLCBpbnQgKnZhbDIsIGxvbmcgbWFzayk7
+CisKKyNlbmRpZgotLSAKMi40My4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
