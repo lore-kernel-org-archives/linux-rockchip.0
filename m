@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6871C43458
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jun 2026 09:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DDE1C43211
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Jun 2026 09:49:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yG3BPDcTJd0fuzzagMfMrrVWSRO/fyfj3ggVFu59tuU=; b=XgkIxKZBqQRCw0
-	rRwc1cfV3vIwoQVkQAzU4e4Y94ccwO4V7rD21rrtqwhSj6ibRiXZPc8FMgWawSaC4aJ4EXPJrYGVJ
-	BqIo3Q6cfPZrwZuRsmKRuZ8MCzGQFcW0I244/tCDrI9fo+KADzBrfEt+3rmFq5eRawmgVKeI9gylt
-	IeNlFy2gcne8g2I/mKIwTukcnr8zDuK1RlN+TuBtYqO+M/fPi0cnOn+07J0lfvMA1y2xtAqH/ophq
-	LlZAckLGwZsD72reS6dTAqQZ87GB3ajR9D/u38VXEKuPZJUGDE6HE3y2GVCtQZTEECZtcEPvttelk
-	K4fGQaX/sqvaOgKJd3Bg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YIwY7G/4HTj1HuDGfQf8Q4YWy3JqhEX+a5JdLmcQAno=; b=s2QPP5q2OlMo9I
+	cRVv+VUkNEO7Z5leuWARu1RsZOqvEAzgH0rKs7VriYqABtcawLCouTDJSnKLpqD8X49qiEgDu4UDs
+	rZHIG2UmBqyzNi+O7DJK/WxS5/UcWEMN42TFk/6RWCyzYf/aO8lOwOTxmdVbde8F4lfjJjEqHB3v1
+	SlWmlY+kohZoYeT+qfbvOI5Pdxh/F0t+a+UM/5/g9cC8hKahbGTdVWTJ/RRTyrSu0OrDznJa13rje
+	/XG1B5zF7Jq8WSG1/UYEXoA1TlGndPw/T67UnhSOsH9sbc1nQMN7djylgyIh77Wce6X4pb/IDd5PJ
+	g/2GJ1J7IFjTlinMJZoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdPez-0000000CLSg-3f6a;
-	Sat, 27 Jun 2026 09:49:13 +0000
-Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
+	id 1wdPf4-0000000CLUf-0HUF;
+	Sat, 27 Jun 2026 09:49:18 +0000
+Received: from mail-dy1-x1334.google.com ([2607:f8b0:4864:20::1334])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdPex-0000000CLRv-1eY8
+	id 1wdPf1-0000000CLT1-2wNb
 	for linux-rockchip@lists.infradead.org;
-	Sat, 27 Jun 2026 09:49:13 +0000
-Received: by mail-dy1-x132a.google.com with SMTP id 5a478bee46e88-304f590dd91so2414853eec.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 27 Jun 2026 02:49:11 -0700 (PDT)
+	Sat, 27 Jun 2026 09:49:17 +0000
+Received: by mail-dy1-x1334.google.com with SMTP id 5a478bee46e88-30bf8b2bd20so3855542eec.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 27 Jun 2026 02:49:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782553750; x=1783158550; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=BrzVHDAthuvQX8kZRzEkQTt99BQ7t+ZkrFrff05bWS0=;
-        b=gUj1NL6czBBFkmHYIuF4+OwwAOX3efD85uSvYQckgHKDfQhLNrEYMSL4CGOx3YbbHh
-         VqnzolL4Y+PlHYfoi+xenO7lTyB06PPkmyZHFVrdaG0aJlZxtJGyS7mdz9woftFBtXGF
-         UDucnfH90xnZ2DC1q/OSixAL1W1QaXZo0iNHl2XwWtnUZg///+BcOywOxE87j1AcUgdC
-         bnc/rgHHKZxV1DV5DhOG4kKJxWT1VBINOqQBu65icDQc5w2rfv0YsjmQ9JxHHC+6hGyS
-         XtY9fKF09NmisnakOInhVOOCsFDl6ahRnIKdYWYVQdC4yOK8a7ZukqK7GR5BbXyxjhml
-         qvYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782553750; x=1783158550;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1782553755; x=1783158555; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=BrzVHDAthuvQX8kZRzEkQTt99BQ7t+ZkrFrff05bWS0=;
-        b=Pga0usLTHyOLODXkPsYR8DvKkIIvMMRIAXGFnrPQ800T9usEchRz1Hai3KQ7Lm9lUE
-         9PGcGEYo6AeNfpj4N5Sb0TdFrwO4vWNalbVpduCJlZZvxmX+Ws7H6elEkUv+tvEHCgE7
-         OdqY9L70YyIRJrCoOUj73lHqwxuMDO3ZqyLq5JQlk6vGxLsp62X/qp76E+Z7eaPKQ57a
-         0fHoBk8epPEBDREw2Rv/9VnpN1JKB+WC0u96gYkxHtSwBhF9TE3P97KfE5bNIUiYtE7p
-         e5RV4+RQ0tpvVWDb4GkqkcIooIfMJzqRfen0sWcbH4Woar3Xf6mpsH7vUtWQ1ezExStL
-         x+ZQ==
-X-Gm-Message-State: AOJu0Yw6WMUeldoBxAjW/LIwCGt6TQL7UkMLPhwwZ1gzpkjM40rtWC6u
-	YPCAZ0l+18voN387RK88bcXrmlGKTUL1AmJJfczx/qcXxe+1ket3FmQDoQRIyns+
-X-Gm-Gg: AfdE7cnKsXMlni0hki97ChZWoCXSCrVu/lzz2+v68HGDr/MvWGhcTxvdKSdDgo3bQCk
-	ZJYE4PRzheJUTcpqzzUJVcC8AzSvzkBNYpNlH2tMpM5XqWZjRJNH5cIYUeBxxTN5GHANKaTATi7
-	tLtD/vm9lgpQsohv3ImJwtWLux6ZpjjNy2erHFK+8AH6LSauvFAcJqEP255PytTAL3wtXnSwxml
-	xzxt68ms7ITyDgQOPbhm1Z7ERj0cM79g9+HFmEbsCCtEKie4VLXymDWQRki6tfaI3waHl62+ViB
-	m1LgAzhVFowMdAkh/TMQREztO3aO5lkKMY+ZkM7CimRfi3pWJvCgqyCEp2ta8/G/pMaGaQOAsQA
-	jFpOTTfDQVnDBZqws3TQVrgNJ7qw/07IO7V6341rupprh943jHjEY1CdYiIjzir/f9OaD2UgkMI
-	WeS3sPa0SAakHdBUJ8oMs=
-X-Received: by 2002:a05:7300:3256:b0:304:997c:d4b6 with SMTP id 5a478bee46e88-30c84eba0d2mr10419252eec.17.1782553750413;
-        Sat, 27 Jun 2026 02:49:10 -0700 (PDT)
+        bh=YtSd3Xc+ifVj14PL2Jkw0taP79/hnT+MmHpMwaXVGFE=;
+        b=ArZjdB6rUWzzc4wU0KsLQ5EWWFuGBm78CQQK30eVZV3BhCketz48Ygt3n4qCIgj2YW
+         6lIYuANHYpxPL9EhhbDEh89vmQuTWDPkleSiNRs50DvWZj4rM+9Y2kiZY2CpzIQQbctM
+         dx7x1hHASCQxsfurdxGcMKZFYsE6I9Upjm6fcZy7PPNuk0yUyTL4ht4RX2yIhzZwnHRu
+         y96my9C4lOCEJMShhZfDrqBJSxldaj6wyeuUWDEaS17B0fwf+DyDtphKFxvZvg0w3ooL
+         9irCtG54ZQGI65fwf3GVsZyjlD7SEtQIT44C1+FTozDwL4Lq4OuLd4g7V/ma7ec0ksEV
+         jmEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782553755; x=1783158555;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=YtSd3Xc+ifVj14PL2Jkw0taP79/hnT+MmHpMwaXVGFE=;
+        b=KVGWGzzbYNHzg+F/oxEzhsXdC7MQv+yPrkL7uCd1HL9jvnenBTY20yPjRduPxof0Hz
+         sT/PUHHTA2MoNRlr9+5hN8ahi3h4CbtGtWjQfG+xNQLpKb3RQ93u2iJ1ESAGSbcaFO0E
+         QGNut04fQ4PpCKvkbQW5yp/q3J8OsqM7VO/Bg0ZQO3sBNL1LcGJf5R3w69OPnmi9M59t
+         P439C3Xott2D8N0eofYWBDVvM9K5ms2jzShxt+I1By3W9tBBdmxajIqcWjJXUt81iZhH
+         IWSS5PSsYyPdJbDGzx/ao8sEzn5bXQCRBZLc8s6yMkod5Ca3tsqfBvFC33I5KOw7yGYm
+         tsug==
+X-Gm-Message-State: AOJu0Yw6wklguEjC/c4X98oM37v4nZedY1UX/MKAuAW7z9DVSYv44PYv
+	MGU0feImRvsAcBm2EK8ywRM2SFm6twzI7mp/PyBmw7uVe8IpZv6SyoKo/XUabW43
+X-Gm-Gg: AfdE7cnwuE/dnNuVZgGBJiRc6Zh+2HkuGTBmkhj8pBdqHuXB3C5N5A8ByiN+8NG4xm3
+	/3WPPcEU134dAaxcvj7cPLhS+FJn9cB5yzz9EBasVoXU+kvJxmgWB7yjUrkUApw6qovmNz7aGsv
+	o+aYfxOfwtqTPFKxkKRQMV8RANtpbNRKkBcNiOeCKMuldBgrfpQGLSApqewUzi/gW+4pl/8Vbz2
+	rMs+TVPEfAlYipha47mxB6y8aG1dW3WpPsW4B7+1dIUEnqgdHNB2dFgN3ZznzLGEHxRanYOmung
+	cRTADsKI+XXgmMHn1ViTEcGbEdsKYXxaLNfPnxp2GP7BmslQjVjqCf3zRVoz6yUUpGTCeTKsgXz
+	eHaHt/idurjG7QrOwZ3Tru747UBsWrrIA/0r9cJsuHGALvm9Zo+s+led74jYNY6SibV3hiacjYz
+	Mlfj3UxrA0S6mqo9UyawA=
+X-Received: by 2002:a05:7300:818a:b0:30c:7ccb:189e with SMTP id 5a478bee46e88-30caae2d7d4mr3651598eec.6.1782553754624;
+        Sat, 27 Jun 2026 02:49:14 -0700 (PDT)
 Received: from i386.168.1.127 ([2402:a00:163:2ce9:9c6f:e28:3da8:7980])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30c7ca8b918sm28854789eec.28.2026.06.27.02.49.06
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30c7ca8b918sm28854789eec.28.2026.06.27.02.49.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Jun 2026 02:49:09 -0700 (PDT)
+        Sat, 27 Jun 2026 02:49:14 -0700 (PDT)
 From: Hrushiraj Gandhi <hrushirajg23@gmail.com>
 To: linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
@@ -77,14 +78,17 @@ Cc: heiko@sntech.de,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	Hrushiraj Gandhi <hrushirajg23@gmail.com>
-Subject: [PATCH 0/2] arm64: dts: rockchip: Add Vicharak Vaaman2 board support
-Date: Sat, 27 Jun 2026 15:18:52 +0530
-Message-ID: <20260627094854.81564-1-hrushirajg23@gmail.com>
+Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Add Vicharak Vaaman2
+Date: Sat, 27 Jun 2026 15:18:53 +0530
+Message-ID: <20260627094854.81564-2-hrushirajg23@gmail.com>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260627094854.81564-1-hrushirajg23@gmail.com>
+References: <20260627094854.81564-1-hrushirajg23@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260627_024911_448640_FC43D6CC 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20260627_024915_735759_B28B9966 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,33 +105,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series adds device tree support for the Vicharak Vaaman2,
+Add device tree binding documentation for the Vicharak Vaaman2,
 a single-board computer based on the Rockchip RK3588 SoC.
 
-The Vaaman2 board features include:
-- RK3588 SoC
-- eMMC storage and microSD support
-- RK806 PMIC and multiple RK8602/RK8603 regulators
-- Real-time clock and status LED
-- UART serial console and SARADC
+Signed-off-by: Hrushiraj Gandhi <hrushirajg23@gmail.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Note: This series was generated on top of the pending Vicharak Axon
-board support patches (v7) and includes the Axon entry in the context
-of the YAML binding patch.
-
-Patch 1 adds the binding documentation for the Vaaman2 board.
-Patch 2 adds the actual device tree file and Makefile entry.
-
-Hrushiraj Gandhi (2):
-  dt-bindings: arm: rockchip: Add Vicharak Vaaman2
-  arm64: dts: rockchip: Add Vicharak Vaaman2 board
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3588-vicharak-vaaman2.dts  | 547 ++++++++++++++++++
- 3 files changed, 553 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-vicharak-vaaman2.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index b023d4cc9842..b5a43fd5e546 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -1311,6 +1311,11 @@ properties:
+           - const: vicharak,axon
+           - const: rockchip,rk3588
+ 
++      - description: Vicharak Vaaman2
++        items:
++          - const: vicharak,vaaman2
++          - const: rockchip,rk3588
++
+       - description: WolfVision PF5 mainboard
+         items:
+           - const: wolfvision,rk3568-pf5
 -- 
 2.47.3
 
