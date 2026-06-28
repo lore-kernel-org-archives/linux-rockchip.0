@@ -4,59 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D0CFC43458
-	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Jun 2026 19:14:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04DCFC43458
+	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Jun 2026 19:19:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sgkZVcnOBqNYDGrtLfvtskBHMk6EMl21sekrE47iEmg=; b=ofz5909xy8F9C/
-	hWw3bXFkKUP8Md5rMyOu+CwQYUtnjKuKdhZUaZz08/8S5hbZLHcIthdHic6TxUmzZhVD3YlyGuC0u
-	zHz9XBE4w1O/s/1wPOcRb1ijja1it4owqiS5pncz4vGemqinDPgPpDajKyTTmAPpsDCmkTDYZBIMg
-	w8lVPzCJVmQveZu4Tztei1Zyz6gtvThGlMCCPhDZIqE8dGM+030p0J5YCoJspR5Qwnvpn2EctuCfW
-	qpCYqhJHzbB+coA6Du+jlaZfwv1qavq66exFRMASsPhpY5z8NoSUBsgcBJz5XV/XnY6GyzGROWTmF
-	n9kXhszt3BYGdLMVx81g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ELUSkyyRSzErH2qqZQUd4GFyUcAcIsSseW5tguaGtAM=; b=AR3Pv99Pfs0kspl7Sx7ML99ro6
+	/fLpmTOFKCSSEwZiQFheWUIWPLP8mKthLOG/jWWnrv0W4T+mvD579b8GpbOW2x1vSX+74qUq0ZHHF
+	3QY0J4Rd9WdoYf8ZemcuUuUGGsGLavs84oAnXJv5OS/5+B5fVdbMU055QRp9GpC3ZCS+4nUmRvLYL
+	v6JtbZGNzjwPi4VwOXAMytth8Xu/MdZK5FVZkb0fw6z4MPb0TQairLonKjSnOpjgzCtz0oMGpmAr3
+	aEJZ8X98EoAmhaqx7EtseKqlBEWunrEu180zPerKRl2Dej0mILAS08ah+KeAaXUvgp6B/cj6os7yx
+	u2Gc0Ylw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdux5-0000000DJK9-35TI;
-	Sun, 28 Jun 2026 19:13:59 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wdv2e-0000000DJf9-28rH;
+	Sun, 28 Jun 2026 19:19:44 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wduwq-0000000DJEF-14ud;
-	Sun, 28 Jun 2026 19:13:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=oKHWu+eAIE/CZIjLM4PqfERbb2g3EF/Ptw0DlJwxfEM=; b=Mk26mecoq6LVnqwkG20VoTOT58
-	yjzkv4G6vhY8fd4Ezlx75RVUft6+m4Fw8lM2iM2joFBRYdfWQSPAAgtBCz83xS/1CtIUAeLLhUUbQ
-	c2nfEhhoUeZTH/smRNmwvxUdmvmvkiZKD1bDU7sFRQQR6qNPKkXXfvjtaxEs5FOVBvO6kzn/16Xr9
-	arDNpj7OIB6/w6HxaX92wFd6Bfucp9EyZj0+NhKG0Z7gfY/6s1HdXdXNvZ8/n13X0Omk4SrDovtC1
-	aGu3/HoWDX6NOjUexXyb3VI4VxlccYEGa0KLJtvZ+KE4ohZr4fotQ5DVtEilybUuf72lnpJSIrILy
-	fxDzyZ0A==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Daniele Briguglio <hello@superkali.me>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Ricardo Pardini <ricardo@pardini.net>
-Subject: Re: [PATCH] clk: rockchip: rk3588: don't disable unused I2S MCLK output gates
-Date: Sun, 28 Jun 2026 21:13:24 +0200
-Message-ID: <178267399833.3089434.5140309637329023610.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260624123914.1767374-1-hello@superkali.me>
-References: <20260624123914.1767374-1-hello@superkali.me>
+	id 1wdv2d-0000000DJeo-0BO9;
+	Sun, 28 Jun 2026 19:19:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 599E640B4C;
+	Sun, 28 Jun 2026 19:19:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 712A81F000E9;
+	Sun, 28 Jun 2026 19:19:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782674382;
+	bh=4HtBsgoo1pkoyz9U7bxXdbavwf4UmaCm5JaH3qpl05w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=QaFpI/4sCso+xnOrHQuqjFzj/MK2wIM0gjspGR22goiAf1aEaBymN5YvtdztwMWsP
+	 X8DuFWyQZEDYuHuv7X0jAoch3aoG8PslcRnQx1WKz5TORoHyjqwzUbAy3wGo5BXY+6
+	 9JTq6kgkgjPx4QgVyidS/1r2HHBSRl72yjFAS5u/QbdCVNL2LAHGDH/5hNpKtmUuDC
+	 wMuo/iXA78vNKz66xObpa8OjYJkxYO1mAef6yI+o/zfdvBWb7dwkzWlRDFTgy/c2KO
+	 U/W//yVJHGLW0RmDcgF0QjYORG9izEUf04rYzEPd8xIjs9gPUuQOFe7lvuMMNNoltv
+	 a97t65VOO/CYA==
+Date: Sun, 28 Jun 2026 20:19:37 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Hrushiraj Gandhi <hrushirajg23@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Vicharak Vaaman2
+Message-ID: <20260628-retinal-ungreased-4c6d45e3596a@spud>
+References: <20260627102633.86222-1-hrushirajg23@gmail.com>
+ <20260627102633.86222-2-hrushirajg23@gmail.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260628_121344_302781_743CC1BA 
-X-CRM114-Status: GOOD (  10.42  )
+In-Reply-To: <20260627102633.86222-2-hrushirajg23@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,35 +65,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1968699072635511508=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+--===============1968699072635511508==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="g0JoW9tTpk32mUpy"
+Content-Disposition: inline
 
-On Wed, 24 Jun 2026 14:39:14 +0200, Daniele Briguglio wrote:
-> No in-tree board references these gates yet. Boards drive the codec
-> MCLK through the parent I2S*_8CH_MCLKOUT, and now that the gates are
-> managed clocks, clk_disable_unused() turns them off at boot. On a board
-> that relied on firmware leaving the output enabled, that cuts the MCLK
-> and analog audio stops working.
-> 
-> Mark the four gates CLK_IGNORE_UNUSED so an unreferenced gate keeps the
-> state firmware left. A board that wants the kernel to own the gate can
-> reference I2S*_8CH_MCLKOUT_TO_IO from DT instead.
-> 
-> [...]
+--g0JoW9tTpk32mUpy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Applied, thanks!
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
-[1/1] clk: rockchip: rk3588: don't disable unused I2S MCLK output gates
-      commit: 946352b2f88fd2378f0341312e47dff1e8dc2fac
+--g0JoW9tTpk32mUpy
+Content-Type: application/pgp-signature; name=signature.asc
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCakFzyAAKCRB4tDGHoIJi
+0l9bAQCTqBDKp1DNzljiIyEyzuzlDZi8AwRwZlgHSHmC225+qgD+INSm2SlDd3W1
+wMikkhDKqyY6H+ca0h44jK5+HqnxOAk=
+=YnMO
+-----END PGP SIGNATURE-----
+
+--g0JoW9tTpk32mUpy--
+
+
+--===============1968699072635511508==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1968699072635511508==--
+
