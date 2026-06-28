@@ -4,89 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 027EBC43458
-	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Jun 2026 10:23:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85B04C43458
+	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Jun 2026 13:10:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gx5bfwspbj6FVoQZ7nAjgqVlSHvB/EmV79YlGW++kNA=; b=eq/SXt5w+/rx1q
-	REek3MfdX6jfRSrlqupr6L1IWXJ6Z0TUeQW/OAMdfO0/8350iznrxDNFMqgekc5TfJuTmBMy7IqgE
-	4ChMm5C4av5b5TZ5sjOMk9hQu0Py00tSgXYR/d3z8SAVE1d8Y2l7HPUgFXgXL1sW3DyJJRA8y62rx
-	BDx3ptcnni+ez5lcHm5vYNgFBI7Sjd2IoPMkBWdt7wLYGqB50PX59H5PFrlGE2SWY5Yw/aSZUsJJa
-	4b94Bh3xl6M/y7cH4qyz9Thdr87M0apPpydQWeprQruJBDAdUsKm46JHM2eg5TKPhDjcKMRqRmaj5
-	Mk+lWKq5G6IRmBPP9O/A==;
+	List-Owner; bh=AJxIvowoA01zxKLoqgRLO2/pf3x0zLm1UtJuUV/VZO4=; b=TyUfdrAsfqysYW
+	slolg3zWq2CELPWcsrdqxIR2L6TonQxZyehVF2uljNy9fKwFtNpMm2rGCsBqYcC8ne/QTVjnQ53Vn
+	kjMulgt/1tkgTjXpOX2TfMPAwkVRKJQxKjNISgQ04nO67XmQaElWOFIPy88dU19VMrQClXX/WP6Z8
+	BW4UU+VYLnQOHIP1JyoYBEaoR7IpZhPZaUg5oLSZxKzKgk0njz4EA8HBvKTnfVkH711UBtvp9bUzT
+	DuB1m7a/ljClAAKwlIPab4GYowlMhrRZOVkUuSckMAdIjL35451NBnUA3NcvyDKUlBkgzIiXxi09E
+	iorSTsP6NuMfj8J9YMFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdmfQ-0000000D2pO-3Kxz;
-	Sun, 28 Jun 2026 10:23:12 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1wdpGl-0000000D73u-0Kyg;
+	Sun, 28 Jun 2026 13:09:55 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdmen-0000000D2JV-3rLW;
-	Sun, 28 Jun 2026 10:22:35 +0000
-Received: from ping.linuxembedded.co.uk (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A8AF715B2;
-	Sun, 28 Jun 2026 12:21:48 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1782642110;
-	bh=dPsbWhdsRJFV1RVWCdtYwJ/p4Y6zPhVV6Vx4WeLxgNQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=MnlJhnpn/yyaPY9ohyf1XUkeGYUZA3IrM9vUMvIK/uGaNiGWtpAQLu7kByUcU3Bac
-	 nGPwwlygL2fy6ddKkIUKYUIYbPHakX0FM7/z7nCfjVSuyuX/inCFYmZAakUnYE9QZc
-	 hggmHWoxqKcl8m5FrY0m+zSahw9ULRCIfk0B5Tmg=
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Date: Sun, 28 Jun 2026 11:22:22 +0100
-Subject: [PATCH v3 7/7] arm64: dts: rockchip: Convert to new media
- orientation definitions
+	id 1wdpGi-0000000D73U-0rIm
+	for linux-rockchip@lists.infradead.org;
+	Sun, 28 Jun 2026 13:09:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=YBzYnerjriaVbT8N2bTshm586aBFDL6BvkymNB/3ZYM=; b=z3OoCoAFiNYHwTGhZ0WBELIx5A
+	Oh4MyRGOq0xjR2mBiBJFaaWUIx4Vpae1/sFb+b4OkfwGA4YcfFIM8OQb4zpm4494FLm/w6HyUYT4R
+	CG4lmy3xyEgIqzIN2thf0RgNGoe3ZQ9t18bZpddebKOpBdi2fPtumfZnl8hIaNWzWFSZjbplnxT8S
+	IsnVZhB1rzRV/Y9j85wImkVpCtSn2NqeTAMFKJPJxomLzFbxrdX8ZfeApKS05vHU0wJBWy8Xnc7sj
+	tefyVF8eGz8UexW+nHmY5IEREVo73XicwAoa4SHXihyCT9IMPWz/MacOo4G+EPStnldw93ec6Id0N
+	c3v6WspA==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: zhao xinchao <ChrisXinchao@outlook.com>
+Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add Firefly AIO-3588L board
+Date: Sun, 28 Jun 2026 15:09:48 +0200
+Message-ID: <2969865.Y6S9NjorxK@diego>
+In-Reply-To: <SA0PR19MB4572AB455CF87D8BB3CFEE6EC5E92@SA0PR19MB4572.namprd19.prod.outlook.com>
+References: <SA0PR19MB4572AB455CF87D8BB3CFEE6EC5E92@SA0PR19MB4572.namprd19.prod.outlook.com>
 MIME-Version: 1.0
-Message-Id: <20260628-kbingham-orientation-v3-7-4ed92968aff8@ideasonboard.com>
-References: <20260628-kbingham-orientation-v3-0-4ed92968aff8@ideasonboard.com>
-In-Reply-To: <20260628-kbingham-orientation-v3-0-4ed92968aff8@ideasonboard.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Jacopo Mondi <jacopo@jmondi.org>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, Jimmy Su <jimmy.su@intel.com>, 
- Matthias Fend <matthias.fend@emfend.at>, 
- Mikhail Rudenko <mike.rudenko@gmail.com>, 
- Daniel Scally <dan.scally@ideasonboard.com>, 
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
- Sylvain Petinot <sylvain.petinot@foss.st.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Paul Elder <paul.elder@ideasonboard.com>, 
- Martin Kepplinger <martin.kepplinger@puri.sm>, 
- Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
- Tommaso Merciai <tomm.merciai@gmail.com>, 
- Svyatoslav Ryhel <clamor95@gmail.com>, 
- Richard Acayan <mailingradian@gmail.com>, 
- Thierry Reding <thierry.reding@kernel.org>, 
- Jonathan Hunter <jonathanh@nvidia.com>, Frank Li <Frank.Li@nxp.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konradybcio@kernel.org>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-tegra@vger.kernel.org, 
- linux@ew.tq-group.com, imx@lists.linux.dev, 
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- Kieran Bingham <kieran.bingham@ideasonboard.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782642139; l=3957;
- i=kieran.bingham@ideasonboard.com; s=20260207; h=from:subject:message-id;
- bh=dPsbWhdsRJFV1RVWCdtYwJ/p4Y6zPhVV6Vx4WeLxgNQ=;
- b=rRE0N0u6PkN10gU6tGRTxFeSk15U9jeCp5Aj+C5fl9qbB1KxwyPCiqAq3XB+68p/huApvYpv/
- 7tqC6W61Lg7Bd64K260+0189mCY+zFoJ8eSSqx4wusH3j/L/jme1njX
-X-Developer-Key: i=kieran.bingham@ideasonboard.com; a=ed25519;
- pk=FVXKN7YuwHc6UtbRUeTMAmranfsQomA+vnilfglWdaY=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260628_032234_131975_4EDF4694 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20260628_060952_301928_22D44908 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,113 +60,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The orientation property for video interface devices now has definitions
-to prevent hardcoded integer values for the enum options.
-
-Update the users throughout the rockchip device trees to use the new
-definitions.
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
-
----
-
-v3:
-- Remove:
-    arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso
-    arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso
-
-When the core change land in linux-next, I'll resend the conflicting
-changes.
----
- arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi                     | 3 ++-
- arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso | 3 ++-
- arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts             | 5 +++--
- 3 files changed, 7 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
-index 192791993f05..d58d6ee6241e 100644
---- a/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi
-@@ -6,6 +6,7 @@
- /dts-v1/;
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/input/input.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- #include "px30.dtsi"
- 
-@@ -413,7 +414,7 @@ camera@36 {
- 		dvdd-supply = <&vcc_cam_dvdd>;
- 		dovdd-supply = <&vcc_cam_dovdd>;
- 		lens-focus = <&focus>;
--		orientation = <0>;
-+		orientation = <MEDIA_ORIENTATION_FRONT>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&cif_clkout_m0 &cam_pwdn>;
- 		reset-gpios = <&gpio2 RK_PB0 GPIO_ACTIVE_LOW>;
-diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
-index 760d5139f95d..2168db9168a5 100644
---- a/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
-+++ b/arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso
-@@ -16,6 +16,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- 
- &{/} {
-@@ -185,7 +186,7 @@ camera@36 {
- 		dvdd-supply = <&cam_dvdd_1v2>;
- 		dovdd-supply = <&cam_dovdd_1v8>;
- 		lens-focus = <&focus>;
--		orientation = <0>;
-+		orientation = <MEDIA_ORIENTATION_FRONT>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&cif_clkout_m0>;
- 		reset-gpios = <&pca9670 6 GPIO_ACTIVE_LOW>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-index 8d26bd9b7500..6608c777f185 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
-@@ -13,6 +13,7 @@
- #include <dt-bindings/input/gpio-keys.h>
- #include <dt-bindings/input/linux-event-codes.h>
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- #include "rk3399-s.dtsi"
- 
- / {
-@@ -455,7 +456,7 @@ wcam: camera@1a {
- 		reg = <0x1a>;
- 		clocks = <&cru SCLK_CIF_OUT>; /* MIPI_MCLK0, derived from CIF_CLKO */
- 		lens-focus = <&wcam_lens>;
--		orientation = <1>; /* V4L2_CAMERA_ORIENTATION_BACK */
-+		orientation = <MEDIA_ORIENTATION_BACK>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&camera_rst_l>;
- 		reset-gpios = <&gpio1 RK_PA0 GPIO_ACTIVE_LOW>;
-@@ -487,7 +488,7 @@ ucam: camera@36 {
- 		clocks = <&cru SCLK_CIF_OUT>; /* MIPI_MCLK1, derived from CIF_CLK0 */
- 		clock-names = "xvclk";
- 		dovdd-supply = <&vcc1v8_dvp>;
--		orientation = <0>; /* V4L2_CAMERA_ORIENTATION_FRONT */
-+		orientation = <MEDIA_ORIENTATION_FRONT>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&camera2_rst_l &dvp_pdn0_h>;
- 		powerdown-gpios = <&gpio2 RK_PB4 GPIO_ACTIVE_LOW>;
-
--- 
-2.52.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gU29ubnRhZywgMjguIEp1bmkgMjAyNiwgMDI6NTI6MzcgTWl0dGVsZXVyb3DDpGlzY2hlIFNv
+bW1lcnplaXQgc2NocmllYiB6aGFvIHhpbmNoYW86Cj4gRnJvbTogQ2hyaXMgWGluIDxjaHJpc3hp
+bmNoYW9Ab3V0bG9vay5jb20+Cj4gRGF0ZTogU3VuLCAyOCBKdW4gMjAyNiAwMDowMDowMCArMDgw
+MAo+IFN1YmplY3Q6IFtQQVRDSF0gYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCBGaXJlZmx5IEFJ
+Ty0zNTg4TCBib2FyZAo+IAo+IEFkZCBkZXZpY2UgdHJlZSBmb3IgdGhlIEZpcmVmbHkgQUlPLTM1
+ODhMIGJvYXJkIGJhc2VkIG9uIHRoZSBSb2NrY2hpcAo+IFJLMzU4OCBTb0MuIFRoZSBib2FyZCBm
+ZWF0dXJlczoKPiAtIER1YWwgSERNSSBvdXRwdXQgdmlhIERlc2lnbldhcmUgSERNSSBRUAo+IC0g
+UlRMODg1MkJFIFdpRmkgb24gUENJZSAocnR3ODkgZHJpdmVyKQo+IC0gUlRMODIxMUYgRXRoZXJu
+ZXQKPiAtIFNpbmdsZSBSSzgwNiBQTUlDCj4gLSBMUEREUjQgUkFNLCBlTU1DIHN0b3JhZ2UsIFVT
+QiAzLjAKPiAKPiBUaGUgYm9hcmQgRFRTIGluY2x1ZGVzIHRoZSBjb21tb24gZmlyZWZseS1jb3Jl
+LTM1ODhqLmR0c2kgd2hpY2ggcHJvdmlkZXMKPiBQTUlDLCBlTU1DLCBhbmQgb3RoZXIgc2hhcmVk
+IGNvbmZpZ3VyYXRpb25zIGZvciBGaXJlZmx5IFJLMzU4OCBib2FyZHMuCj4gCj4gU2lnbmVkLW9m
+Zi1ieTogQ2hyaXMgWGluIDxjaHJpc3hpbmNoYW9Ab3V0bG9vay5jb20+Cj4gLS0tCj4gIGFyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgICAgfCAg
+IDEgKwo+ICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWZpcmVmbHktYWlvLTM1ODhsLmR0
+cyAgICAgICAgIHwgNzE4ICsrKysrKysrKysrKysrKwo+ICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAv
+cmszNTg4LWZpcmVmbHktY29yZS0zNTg4ai5kdHNpICAgICAgIHwgNDUzICsrKysrKysrKwoKVGhp
+cyBpcyBvbmUgcGF0Y2gsIGJ1dCB3aGVyZSBpcyB0aGUgMm5kIHBhdGNoIGFkZCB0aGUgYm9hcmQg
+YmluZGluZz8KCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
