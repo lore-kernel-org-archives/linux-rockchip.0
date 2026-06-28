@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 890DBC44500
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99540C44502
 	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Jun 2026 10:22:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,36 +12,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3Qz6hml0NNOzlE/DJ436teJJVBliaFuxnF/dNQss21A=; b=w8ue0UZrkY4UwC
-	D5XEdSWuyUCIfHVWhASgXROpwHrubxwUglLHdppoeSVjRhqPqct82Xolwoin9KFRCmc6qgd8vOPWg
-	slzF+xkuMEsw5zBE9vsS7m64HWfvTO1iVP2WRhOrquN1Oganom/d9tKlrwgDiAng/hnF9kLVAIRPg
-	O+cbwJ/re7PCcDcL1G7S2STbiOD/DaKJZF244PRW8L9y2t64y5flfVnlV2Wpz8NcUJrf6F6WZgWHx
-	0xWjJDJGzTdMGYNptyUcLolpRBYxaSfq5x7MTZeaNukTPGbRP3ZIMKYY7cJzzISm6t1Aox4ekpfSz
-	5VEl2GgB86tKI8s8XOvg==;
+	List-Owner; bh=s9SQQEyXN+BkeNEFwmEM6A/8NAIq+fxvSiiHqtXOgg4=; b=TkktRCK/VGFB/8
+	26J1g8g7bvWAuz8/dFSW3gHn82iqKwxMefz1VCiiJGxYhyU6wB+WEDEX/U353IQaRPkokuMugDDqp
+	vWO4PJJMLJCc/KSlTiC2DcoYRgCymfBYw4JD00a6TZxDzsGcqF02Q7zppjBrlAFdPYVvAYCkMQkIx
+	NdBhL4+2mzUvlAr+nmwqrO9iDtQAFEt4HfH8aqe0MMC6ihKGX2r6JpvfW3yUv9sFmpYk05ZsBjqc6
+	5diYqTZEvZAQfHa8v+I12t6Yg8Eix0PGmAsYe8FALljbHXbV51sJEtpBqZ10/LDPwaH3q4KIGgyN9
+	11U0edL0hI46MDIfkf+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdmem-0000000D2JD-10OZ;
-	Sun, 28 Jun 2026 10:22:32 +0000
+	id 1wdmew-0000000D2Oq-2aU3;
+	Sun, 28 Jun 2026 10:22:42 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdmei-0000000D2Gq-0Pen;
-	Sun, 28 Jun 2026 10:22:30 +0000
+	id 1wdmei-0000000D2Gr-2Q06;
+	Sun, 28 Jun 2026 10:22:31 +0000
 Received: from ping.linuxembedded.co.uk (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id F04228FD;
-	Sun, 28 Jun 2026 12:21:38 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9893E99F;
+	Sun, 28 Jun 2026 12:21:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1782642100;
-	bh=7y9Ig967zjmx7XQcheiM9Gd7GovmRxC1ZDoPjmG+ZUg=;
+	s=mail; t=1782642102;
+	bh=UHzs5h1vqIyZpZgqg+2ewdEQWX0v5SbmO7TA7HMs/v4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=St+jCdldAWgz2Z+6sSW/SWinkXWNEbDVDTAYnbA4JozdHm7rjhDMvont0j3M+ZPCw
-	 7jQT/dHAM/ulG/i/Gp6EZJ5LTtcc50Qr8BB5US+InJy4Mu5cNMVlHfEK99+124ocZR
-	 T0B601YysTTEjzfoyGE1WWzdf5XxrwjG0xwcLNK8=
+	b=Ruc+K7Jg9vWakwg3Rfa0ZfI0F9W84leQdv1g+BftZ0q/TkLokW82sNL8E/Zopv47K
+	 pWLAbBYZRSFqMCLlQT9Eg+Pth96lSJO/WTaqkWPKwGO+NVdB/3AtKXm81/U22D3gKh
+	 pwMja/3YMNX0F4Y2n+WG2c1wZ/f7VEihocUYp2WQ=
 From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Date: Sun, 28 Jun 2026 11:22:16 +0100
-Subject: [PATCH v3 1/7] dt-bindings: media: Add macros for video interface
- devices
+Date: Sun, 28 Jun 2026 11:22:17 +0100
+Subject: [PATCH v3 2/7] media: dt-bindings: video-interface-devices: add
+ video-interface-devices.h references
 MIME-Version: 1.0
-Message-Id: <20260628-kbingham-orientation-v3-1-4ed92968aff8@ideasonboard.com>
+Message-Id: <20260628-kbingham-orientation-v3-2-4ed92968aff8@ideasonboard.com>
 References: <20260628-kbingham-orientation-v3-0-4ed92968aff8@ideasonboard.com>
 In-Reply-To: <20260628-kbingham-orientation-v3-0-4ed92968aff8@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -75,20 +75,19 @@ Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
  linux@ew.tq-group.com, imx@lists.linux.dev, 
  linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
  linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- Conor Dooley <conor.dooley@microchip.com>, 
  Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, 
  Kieran Bingham <kieran.bingham@ideasonboard.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782642139; l=1430;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782642139; l=2444;
  i=kieran.bingham@ideasonboard.com; s=20260207; h=from:subject:message-id;
- bh=7y9Ig967zjmx7XQcheiM9Gd7GovmRxC1ZDoPjmG+ZUg=;
- b=eQufYsQDIGtL+4HnUz0+yV6rQWXuMVHG1sw6ASM4bQLiiVHx3ygfOddeKLBdzpKhWYfUqevIR
- KGgojjfzpPYDoL3BSW3532v34rpCKLCHiE8zVy5RTOHEc9P4DtWevvq
+ bh=UHzs5h1vqIyZpZgqg+2ewdEQWX0v5SbmO7TA7HMs/v4=;
+ b=KT6apJA/GtGNIVhQ5eW/HBAjZTb30RnYg9LvUG9miUzlOCp29AZgehi/Vh38BX3/9VXkb6fgm
+ viFFx3Wbqc9BGC65P1tWJOd+C0Fs37P8lc0ghGGDmGC2iE2wnGpnJMn
 X-Developer-Key: i=kieran.bingham@ideasonboard.com; a=ed25519;
  pk=FVXKN7YuwHc6UtbRUeTMAmranfsQomA+vnilfglWdaY=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260628_032228_330449_618E9B04 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20260628_032228_801318_89394C9A 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,41 +104,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a new dt-bindings/media/video-interface-devices.h header that
-defines macros corresponding to the orientation enumeration types from
-media/video-interface-devices.yaml.
+Expand the documentation of the video-interface-devices orientation to
+reference the include/dt-bindings/media/video-interface-devices.h header
+which provides human readable defines for the orientation enum, to help
+avoid hardcoding values in dts.
 
-This allows avoiding hardcoded constants in device tree sources.
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 Reviewed-by: Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Reviewed-by: Frank Li <Frank.Li@nxp.com>
 Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
 ---
- include/dt-bindings/media/video-interface-devices.h | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ .../bindings/media/video-interface-devices.yaml         | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
 
-diff --git a/include/dt-bindings/media/video-interface-devices.h b/include/dt-bindings/media/video-interface-devices.h
-new file mode 100644
-index 000000000000..d2340b457292
---- /dev/null
-+++ b/include/dt-bindings/media/video-interface-devices.h
-@@ -0,0 +1,13 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
-+/*
-+ * Copyright (C) 2026 Kieran Bingham <kieran.bingham@ideasonboard.com>
-+ */
+diff --git a/Documentation/devicetree/bindings/media/video-interface-devices.yaml b/Documentation/devicetree/bindings/media/video-interface-devices.yaml
+index a81d2a155fe6..c9c3f4f16719 100644
+--- a/Documentation/devicetree/bindings/media/video-interface-devices.yaml
++++ b/Documentation/devicetree/bindings/media/video-interface-devices.yaml
+@@ -392,17 +392,22 @@ properties:
+       The orientation of a device (typically an image sensor or a flash LED)
+       describing its mounting position relative to the usage orientation of the
+       system where the device is installed on.
++      See include/dt-bindings/media/video-interface-devices.h.
 +
-+#ifndef __DT_BINDINGS_MEDIA_VIDEO_INTERFACE_DEVICES_H__
-+#define __DT_BINDINGS_MEDIA_VIDEO_INTERFACE_DEVICES_H__
-+
-+#define MEDIA_ORIENTATION_FRONT		0
-+#define MEDIA_ORIENTATION_BACK		1
-+#define MEDIA_ORIENTATION_EXTERNAL	2
-+
-+#endif /* __DT_BINDINGS_MEDIA_VIDEO_INTERFACE_DEVICES_H__ */
+     $ref: /schemas/types.yaml#/definitions/uint32
+     enum:
+-        # Front. The device is mounted on the front facing side of the system. For
+-        # mobile devices such as smartphones, tablets and laptops the front side
+-        # is the user facing side.
++        # MEDIA_ORIENTATION_FRONT
++        # The device is mounted on the front facing side of the system. For
++        # mobile devices such as smartphones, tablets and laptops the front
++        # side is the user facing side.
+       - 0
+-        # Back. The device is mounted on the back side of the system, which is
++        # MEDIA_ORIENTATION_BACK
++        # The device is mounted on the back side of the system, which is
+         # defined as the opposite side of the front facing one.
+       - 1
+-        # External. The device is not attached directly to the system but is
+-        # attached in a way that allows it to move freely.
++        # MEDIA_ORIENTATION_EXTERNAL
++        # The device is not attached directly to the system but is attached in
++        # a way that allows it to move freely.
+       - 2
+ 
+ additionalProperties: true
 
 -- 
 2.52.0
