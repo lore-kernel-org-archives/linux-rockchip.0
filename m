@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6990C43458
-	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Jun 2026 19:13:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D0CFC43458
+	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Jun 2026 19:14:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YExy8tu/EtMtWp2kXXEC8OJj/LG1r3jn4URl8oGRUdo=; b=C+vtLRv9ztOMB7
-	8A6YLWcmUNsgMuzZrc6+zwWQXzYn6/j17cHYPzgy8731Aohw7kFqXfRKPhUBFRGUjkGelbTvUwxaG
-	eali/sh1PwZYZAxrq/P847iN/08fv/Bd+rF+tb+1UyH0XYwV/JDu38TApyLAxgn8Crb8otjk2ChPw
-	tP1hA3bEvIslO99tGI3SpwJUBtp5dBsEBMykfbRC1d89mXX5EE8mXn8SI5IaFiDpiRlzKmh6RuDZi
-	o2WSV4zKp+OwVw+MBhBlSvY2G3EzwqiWGgOuo9D5oIHVIhKcIupz6Iu7YJHMi2Nmo0nPpYBwH1WfI
-	AmXDyPaCX17tvEa8HJ1g==;
+	List-Owner; bh=sgkZVcnOBqNYDGrtLfvtskBHMk6EMl21sekrE47iEmg=; b=ofz5909xy8F9C/
+	hWw3bXFkKUP8Md5rMyOu+CwQYUtnjKuKdhZUaZz08/8S5hbZLHcIthdHic6TxUmzZhVD3YlyGuC0u
+	zHz9XBE4w1O/s/1wPOcRb1ijja1it4owqiS5pncz4vGemqinDPgPpDajKyTTmAPpsDCmkTDYZBIMg
+	w8lVPzCJVmQveZu4Tztei1Zyz6gtvThGlMCCPhDZIqE8dGM+030p0J5YCoJspR5Qwnvpn2EctuCfW
+	qpCYqhJHzbB+coA6Du+jlaZfwv1qavq66exFRMASsPhpY5z8NoSUBsgcBJz5XV/XnY6GyzGROWTmF
+	n9kXhszt3BYGdLMVx81g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wduwi-0000000DJC2-1xS9;
-	Sun, 28 Jun 2026 19:13:36 +0000
+	id 1wdux5-0000000DJK9-35TI;
+	Sun, 28 Jun 2026 19:13:59 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wduwf-0000000DJB7-3twm;
-	Sun, 28 Jun 2026 19:13:35 +0000
+	id 1wduwq-0000000DJEF-14ud;
+	Sun, 28 Jun 2026 19:13:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=kfo+fkpfY9grTAyC+1zdbUT1BIaN20nZVt7M4K3K5pg=; b=bg125zN9beK0JBe6EXswp1z86i
-	W4OCtJPdDzOsvp3XkyT2bpgqQPaRiGQVWbMPom/LlqAySt6Pgd6UM1AHzUCSHvFepUaJpKm5iV+Wi
-	5vILZ5nL3wmMsnE0hGlk8quMNxHI/Dtp0QnFGrffLEmpo9VBASK2So6oWVp1DwKtUz90xmmlQ8e72
-	pK3+lVtSepXem5YVduoXQ56Q3yJxcV96+YA/GYcVm3gYWB4YgjIoEoAkddcqljyJcqASvzbqa9NDZ
-	KFYCBeiP1itaAx3C9LT6J4FXqqdQP0s7CJYG1jnO5uzJRX+wAi3c6/pnjWx+vLcCZKDDSE5Wvf+0N
-	HHiseXmA==;
+	bh=oKHWu+eAIE/CZIjLM4PqfERbb2g3EF/Ptw0DlJwxfEM=; b=Mk26mecoq6LVnqwkG20VoTOT58
+	yjzkv4G6vhY8fd4Ezlx75RVUft6+m4Fw8lM2iM2joFBRYdfWQSPAAgtBCz83xS/1CtIUAeLLhUUbQ
+	c2nfEhhoUeZTH/smRNmwvxUdmvmvkiZKD1bDU7sFRQQR6qNPKkXXfvjtaxEs5FOVBvO6kzn/16Xr9
+	arDNpj7OIB6/w6HxaX92wFd6Bfucp9EyZj0+NhKG0Z7gfY/6s1HdXdXNvZ8/n13X0Omk4SrDovtC1
+	aGu3/HoWDX6NOjUexXyb3VI4VxlccYEGa0KLJtvZ+KE4ohZr4fotQ5DVtEilybUuf72lnpJSIrILy
+	fxDzyZ0A==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Quentin Schulz <foss+kernel@0leil.net>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Daniele Briguglio <hello@superkali.me>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Heiko Stuebner <heiko.stuebner@cherry.de>,
-	devicetree@vger.kernel.org,
+	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix eMMC reset polarity on PP-1516
-Date: Sun, 28 Jun 2026 21:13:23 +0200
-Message-ID: <178267399836.3089434.16007967740669483311.b4-ty@sntech.de>
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Ricardo Pardini <ricardo@pardini.net>
+Subject: Re: [PATCH] clk: rockchip: rk3588: don't disable unused I2S MCLK output gates
+Date: Sun, 28 Jun 2026 21:13:24 +0200
+Message-ID: <178267399833.3089434.5140309637329023610.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260612-pp1516-emmc-polarity-v1-1-4816c1c909f7@cherry.de>
-References: <20260612-pp1516-emmc-polarity-v1-1-4816c1c909f7@cherry.de>
+In-Reply-To: <20260624123914.1767374-1-hello@superkali.me>
+References: <20260624123914.1767374-1-hello@superkali.me>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260628_121334_068532_FF647F38 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20260628_121344_302781_743CC1BA 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,21 +74,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 12 Jun 2026 18:47:34 +0200, Quentin Schulz wrote:
-> According to the Jedec 5.1 specification, the device is held in reset
-> when RST_n is low, therefore the polarity of the line must be that, as
-> specified in the Device Tree binding (mmc/mmc-pwrseq-emmc.yaml).
+On Wed, 24 Jun 2026 14:39:14 +0200, Daniele Briguglio wrote:
+> No in-tree board references these gates yet. Boards drive the codec
+> MCLK through the parent I2S*_8CH_MCLKOUT, and now that the gates are
+> managed clocks, clk_disable_unused() turns them off at boot. On a board
+> that relied on firmware leaving the output enabled, that cuts the MCLK
+> and analog audio stops working.
 > 
-> Due to the wrong polarity, eMMC devices with RST_n_FUNCTION[162]
-> bitfield [1:0] set to 0x1 (the default is 0x0) will be held in reset
-> forever.
+> Mark the four gates CLK_IGNORE_UNUSED so an unreferenced gate keeps the
+> state firmware left. A board that wants the kernel to own the gate can
+> reference I2S*_8CH_MCLKOUT_TO_IO from DT instead.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: fix eMMC reset polarity on PP-1516
-      commit: 2a08921edcab6a462fa6ddb02c91b90b5ac92429
+[1/1] clk: rockchip: rk3588: don't disable unused I2S MCLK output gates
+      commit: 946352b2f88fd2378f0341312e47dff1e8dc2fac
 
 Best regards,
 -- 
