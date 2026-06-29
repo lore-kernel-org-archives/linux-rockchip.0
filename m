@@ -4,117 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 291C3C43602
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 14:24:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8093AC43327
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 14:58:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:References:In-Reply-To:
-	Message-Id:Cc:To:From:Date:MIME-Version:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=sOS2DPlTPl07qZhcvQ4yUCzKFd7h5b/NjaWkhxbPvVY=; b=40s27J8HuacRSIhEc8AHXFkoIs
-	EMtKID+36Rh3A0iOKjNAbI9ufiOMGCqA6h6OeUbMDhkMczXkRrqdUTEzPiQv/jQpm6Q4FpvqvLmYK
-	/YHZxtV1gZ2U8q/MuLeXhxaKapSDMqpcy2etgApZkI3ZasHFSxW1i9pNp6YCl2gOCgejfqVJAIppi
-	GIJjBQEPri/Nu+39HRPryO45i5p2TQF8dJ7BXQISQ4wxNOoAi8cmF4ol8ZFBEY5MdJMtriyHzmzv7
-	kmmIo0CZxW74U996al8jiMEomb1LEb3BGl7myJkMmS5VpHqJwjJ+qJ3MT9jEJEev4NnV1O/NRDw5M
-	OokedzcQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7Gk0Lpdztnjzvq/Sg26y3vIWdprg7+048VuOMtplNOM=; b=2RQ9GaEyIVL06w
+	L1wCCRogGlCp+czZJyhauBBmToBt0ZJWwWoAULyW6xRhlhmzwLlhxQ7S/LnGjd9LXzJJ6YQImRirf
+	P2vLkWI4EOPBFdGuwdP+WJN6di3tbX4eFLrAleg8ySvERy73ptw3R3JrL7HTffBDAWckD6QaZDLXK
+	KdMH/19gkhPY1l1wsaAG/Jc7f9F47/yCz6GM9dCJfdntj6hrVpLW7dG1Tdp/apSOBZX/eyCM6f3NX
+	HX6BeVsiL85/aPiDiHBDhhTAnrd49AD8dNs4AFclBRqMoQQh/NIF4sYYmxPDU9/rTPjv7w5cYNpY1
+	pYNL8nOuDWcUrPxTHPlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weCut-0000000Es8q-3JrM;
-	Mon, 29 Jun 2026 14:24:55 +0000
-Received: from fout-b3-smtp.messagingengine.com ([202.12.124.146])
+	id 1weDRD-0000000EyvQ-2ZPo;
+	Mon, 29 Jun 2026 14:58:19 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weCuq-0000000Es7L-21qf;
-	Mon, 29 Jun 2026 14:24:54 +0000
-Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
-	by mailfout.stl.internal (Postfix) with ESMTP id 5DA241D0004C;
-	Mon, 29 Jun 2026 10:24:50 -0400 (EDT)
-Received: from phl-imap-05 ([10.202.2.95])
-  by phl-compute-04.internal (MEProxy); Mon, 29 Jun 2026 10:24:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm1; t=1782743090;
-	 x=1782829490; bh=ST6f+Ye0p9/T3JscEZ5f79X56UQF/QbBzy9biCJtv04=; b=
-	QpqdxALBlVVbSg1RXbbjqLWGXcZOg6UqpE3Vp6LevI4Da066273Jj7jYVeGLX46X
-	LinpDyHOTAAY1ongsWzSZL+cCdadSKdT0xgB5OPkSaEwxh5/PislXxwdCzTIn1oC
-	REt8J2lpL+fvicpf35ivwedoOFMDa8U26a+Af0XNlCdSTmG3z5R12GILfzE6SmTw
-	FSZhN3jd43gzf68bIdGOSAU4nIKKt3MyN2QskGPZia8vNMzlX9e7VXzhu4kxYVYg
-	UDp5rYOlGWSODvbwl5w7pVhSokE3VL50QWNcbqiwsUhiYZ7tyEoxKDIwx448Lzze
-	gpc1InqfpdaZWMjyp3kd3g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1782743090; x=
-	1782829490; bh=ST6f+Ye0p9/T3JscEZ5f79X56UQF/QbBzy9biCJtv04=; b=e
-	D8S00wyxDWIHB4Vh6oD0X5VzqSqT3z4JotdW/BevQ/hvoQRvSJ4gTpnwUbUNiVvN
-	G8siwGcgZmVG/TiUnnHXTn1tsmN/subJSQHJswtPIGvID4LqW/bOCUf3i8XXJylD
-	WXFxcFkgAA51bD9rS9zR/PPIXlhSNlheEG9hBMoaX7lGzr2EPU8twS2qKcETnnQm
-	Qs5hEZixKNmtvZib/V3CaUcHSInjjz5LDs6JZn2Dya+ogiS20nIaSB/Wve0+l3vU
-	4lYeZ8peAB5opxA5w2Az8mr0V2i2rBQh06bw6SfOrM/yaqhg/PcE4nsPAcFWerV8
-	TtuULrK3Mxq74ikYvQblg==
-X-ME-Sender: <xms:MIBCaql7Lgd3sryMBTzkKROi9XQHyr-mPzl__i6jqTbD1qnnWKapeA>
-    <xme:MIBCaspQPzsdeixLixlgpZMYG5LAHo2BNmL19hPCnpr36VcfZX9X-UrFYGxcz-wzQ
-    FHMcFjDOH5GNavn-sKvTKphcbpDb8uMr6ot8UHnPkfiaw3UDeqj7rPH>
-X-ME-Proxy-Cause: dmFkZTFwMprh5ZTFo5dfY8jM7ZxjUWaH+6tuhRdcmlFtEOFs7CUeegyqf4KKEhiSUkhGfs
-    shXdXn9QyoPevOyt3wuw7W3b5VIqMtvVsBDfkCDz6NnAXXSMKMS5RqJu9AKvF7V/7Z/6Bi
-    o0wdMW9CiqJY/GgvBhOb0boUTG3wawZBpqPqCJpYSmm0ZUUPAxL/htVEpmvED9VgSAp9uO
-    zvahS1FdRiM/3V4XEQKoztXK7nRXCyS0PV0utsqTVPI12PA5tNhyvrCWLN5gRjPD2bHxU6
-    yOkzZKnYaHdZcjhI1InBzIpD6AI5/7LesBqxsjdlhlSFuvuQ25fjoVntskThnjOfxN+lZE
-    lFlNPLX+2itzUULLge6bWTtAB4gI3sI98mx95AMy7L7s3J2Lv71eLqppsCyvkKkEp2BD1K
-    X6EPcmiBSA1+8CjSwZ9bnZEcfmRccnhjlt2iNkvsKWyLj1/wdv94pbMwFcIJuz9wDCbxo9
-    iBNu3jQYL8WYsjMfsNE2vt4jeYv+M/ZCxcL9u0F0peViPJlj6wA+lX7v8n1XmcHqI61L+w
-    oLntPH/4/NI3qcbGTonJrQKLjbjbudgB6r41pCwHJNyhc1FcWRmp+vAdOlmUYuMVG7tHGh
-    6rD7rTPwVD+A8OzG+9MFeYdJfte1jipxt2d5zch6FCoqCZ/4EPVTxch9C7GQ
-X-ME-Proxy: <xmx:MIBCatSPI8gdpFe_jZGU980MEecKsgaD01fqwY3y0NFvfmGlqDlOxA>
-    <xmx:MIBCao34oOmlMnXycJ5rfPkhkaUAebnqg9lvHyA5mty5cHOJD-WBYA>
-    <xmx:MIBCag-Iqfk-FL1_oE5qTJym1-rZQx9v3Q9OVRepLRT0ApXpjHMnWA>
-    <xmx:MIBCap_cFbmtt8ZxWbtOgzQq15eYwtPWSzjtzUotI0VkfSQ6bHQfuw>
-    <xmx:MoBCasDybz41gqrB1Ue2uuwv7YF9L8UCJORz1VN9UqDok726_y_e3jKq>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id 1B5D1182007E; Mon, 29 Jun 2026 10:24:48 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
+	id 1weDRB-0000000Eyuh-1siP
+	for linux-rockchip@lists.infradead.org;
+	Mon, 29 Jun 2026 14:58:18 +0000
+Received: by mail-ot1-f49.google.com with SMTP id 46e09a7af769-7e9b4f8ade0so1696219a34.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 29 Jun 2026 07:58:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782745096; x=1783349896;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YrA9ccFaco9J2BZQ3eRpFjtGI3CKCK/xF2koXbFr26M=;
+        b=dmeKQf+MZAzVRjxOIsil3xHgeBwcJyQLWOxQsD0CtvZpU1/9xxEQ63Sab1rbKHg5zg
+         8HovD0jZtj/wZXTWP6aE7TMcidD2Mz991ptxnccCsBE3qSQ7yC2EO8JBc85IWMgVKgDD
+         XmkWgrtXFZuL9UeoPoI+P4eauvpN/WSbSiXK45MZdVpX+8NA46MzEyzez4UAJ89N1hSu
+         GSwARy7sble4EcJBZzxUUiss1Nn3VupMWQD7oHjPXegzhfN0wNEPymJfKTDfXtDRw3sh
+         ef8fLEuRz3bSFoMEz1IRqyKjdI0kAnWVx7fphPsELaxkEGmfgFjndFilUEik2bkVBjMT
+         qMgw==
+X-Forwarded-Encrypted: i=1; AFNElJ8ETgnqwIZgEJhn0yxDRBlmmWMVjet6DYmNWZcRZzocvuer185212I2+UBgJtd+Jcw9xf6EtjfmumSaXB0mKw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxwMU8KBzkiLoUNLu4jSpZzg1mkVYLq3oQOYxPxuqVUcKWl9KSq
+	C3HtdZqoLfXYWvy34myHkyWZi3DjjEM6YKJd6eeUOQuugaryItN6zvo9tcQuwm7g
+X-Gm-Gg: AfdE7clxeYLLTZeAcioHrGZ593/5+So5P4NTEdoE0kgYaFjllyAmE4UjklzUpHHYkYe
+	1Cbxk/cnTfpBw2tjz7euh/hOk3wziUhtCZv0dV95dKKt+nZBOcRJ9P3amVrzl22Tyac6NuFstAH
+	QYEbDdrhdwmDixrjOdv0bT1XTp4QOrFSDRPvo2HogoSyRVE111x440RbdCWst/DvAG906WcMvQF
+	t8LKWDkt6m4ATcHBypOtUBOBA5/D3VXQvGzg2CPRBb2eAIo8pZYNTXa6xPWBJoOSi2MnAn0vPaO
+	HRCLGnG+SbbiIfVtvslpepbAs4/wVyZrvX7hFdUsnXC7xN541KtsyseEH6GHEauFCgPYwFjqEK/
+	kyQm6uuD71HRpcMCrH6K1Zv/S7Bp1RLKYHAvJLyVF5g9/ltzdGARaz6VxR7tPpkifYGL5gWovR1
+	NTSm8Xb0DQyOwM9dUJNPsYgABg3Q8skPUYGXtQErhEyeCBoqBdXZc76dgXlPIN
+X-Received: by 2002:a05:6830:610d:b0:7dc:df37:844b with SMTP id 46e09a7af769-7e99bf3f3e7mr15193084a34.4.1782745096298;
+        Mon, 29 Jun 2026 07:58:16 -0700 (PDT)
+Received: from mail-oo1-f53.google.com (mail-oo1-f53.google.com. [209.85.161.53])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7e9df579d44sm2005218a34.21.2026.06.29.07.58.15
+        for <linux-rockchip@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 29 Jun 2026 07:58:16 -0700 (PDT)
+Received: by mail-oo1-f53.google.com with SMTP id 006d021491bc7-69dead44101so2957168eaf.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 29 Jun 2026 07:58:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ+De7LQGz/F/k9aQVHvgPYC/ZzzeAvncnDMRaRb76oT9gyAmUIx6uCNMI285E7FknszxC3yD+29XigBQVZw0Q==@lists.infradead.org
+X-Received: by 2002:a05:6102:c86:b0:738:ecd7:198e with SMTP id
+ ada2fe7eead31-738ecd71defmr1394925137.19.1782744721048; Mon, 29 Jun 2026
+ 07:52:01 -0700 (PDT)
 MIME-Version: 1.0
-X-ThreadId: AbUlhqeXux_w
-Date: Mon, 29 Jun 2026 16:24:27 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Andreas Schwab" <schwab@linux-m68k.org>,
- "Arnd Bergmann" <arnd@kernel.org>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- "Bartosz Golaszewski" <brgl@kernel.org>, "Andrew Lunn" <andrew@lunn.ch>,
- "Sebastian Hesselbarth" <sebastian.hesselbarth@gmail.com>,
- "Gregory Clement" <gregory.clement@bootlin.com>,
- "Frank Li" <Frank.Li@nxp.com>, "Robert Jarzmik" <robert.jarzmik@free.fr>,
- "Krzysztof Kozlowski" <krzk@kernel.org>,
- "Greg Ungerer" <gerg@linux-m68k.org>,
- "Thomas Bogendoerfer" <tsbogend@alpha.franken.de>,
- "Hauke Mehrtens" <hauke@hauke-m.de>,
- =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <zajec5@gmail.com>,
- "Yoshinori Sato" <ysato@users.sourceforge.jp>,
- "John Paul Adrian Glaubitz" <glaubitz@physik.fu-berlin.de>,
- "Linus Walleij" <linusw@kernel.org>,
- "Dmitry Torokhov" <dmitry.torokhov@gmail.com>,
- "Jakub Kicinski" <kuba@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>,
- "Dominik Brodowski" <linux@dominikbrodowski.net>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, patches@opensource.cirrus.com,
- linux-m68k@lists.linux-m68k.org, linux-mips@vger.kernel.org,
- linux-sh@vger.kernel.org, linux-input@vger.kernel.org,
- linux-media@vger.kernel.org, Netdev <netdev@vger.kernel.org>,
- linux-sunxi@lists.linux.dev, linux-phy@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org
-Message-Id: <bb0e4e89-cefb-40e7-9373-f76ce6c0efa5@app.fastmail.com>
-In-Reply-To: <mvmik71win7.fsf@suse.de>
-References: <20260629132633.1300009-1-arnd@kernel.org>
- <mvmik71win7.fsf@suse.de>
-Subject: Re: [PATCH 00/13] treewide: replace linux/gpio.h
+References: <20260629-qcom-sa8255p-emac-v11-0-1b7fb95b51f9@oss.qualcomm.com>
+ <20260629-qcom-sa8255p-emac-v11-1-1b7fb95b51f9@oss.qualcomm.com>
+ <CAMuHMdXen+E-Ai51aWBa_KV9W8Fz2cQPpT-FG_kQ7akhrrYa_A@mail.gmail.com> <CAMRc=Me3jaZXiXa1sFXr=8Do4sCd+XN1pKTcWC8-0j78SjCkKA@mail.gmail.com>
+In-Reply-To: <CAMRc=Me3jaZXiXa1sFXr=8Do4sCd+XN1pKTcWC8-0j78SjCkKA@mail.gmail.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 29 Jun 2026 16:51:49 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdVUBgG0EFB16OxHisbxx-sBvDKvBPNZdpyDnmBrnX4ptQ@mail.gmail.com>
+X-Gm-Features: AVVi8CdkJoaQviVQ7ltoNYHwA2g-kW32TDsBBJn2QkEKdC-zwJrV4O3to75iJ6g
+Message-ID: <CAMuHMdVUBgG0EFB16OxHisbxx-sBvDKvBPNZdpyDnmBrnX4ptQ@mail.gmail.com>
+Subject: Re: [PATCH net-next v11 1/7] dt-bindings: phy: document the serdes
+ PHY on sa8255p
+To: Bartosz Golaszewski <brgl@kernel.org>
+Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Vinod Koul <vkoul@kernel.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com, 
+	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>, Romain Gantois <romain.gantois@bootlin.com>, 
+	Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>, 
+	Christophe Roullier <christophe.roullier@foss.st.com>, Radu Rendec <rrendec@redhat.com>, 
+	linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, 
+	linux-arm-kernel@lists.infradead.org, Drew Fustini <dfustini@tenstorrent.com>, 
+	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org, 
+	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_072452_962764_F6863128 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20260629_075817_484767_6F498CD7 
+X-CRM114-Status: GOOD (  28.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,146 +119,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 29, 2026, at 16:01, Andreas Schwab wrote:
-> On Jun 29 2026, Arnd Bergmann wrote:
+Hi Bartosz,
+
+On Mon, 29 Jun 2026 at 16:07, Bartosz Golaszewski <brgl@kernel.org> wrote:
+> On Mon, 29 Jun 2026 15:51:31 +0200, Geert Uytterhoeven
+> <geert@linux-m68k.org> said:
+> > On Mon, 29 Jun 2026 at 13:29, Bartosz Golaszewski
+> > <bartosz.golaszewski@oss.qualcomm.com> wrote:
+> >> Describe the SGMII/SerDes PHY present on the Qualcomm sa8255p platforms.
+> >> This is essentially the same hardware as sa8775p rev3 but the PHY is
+> >> managed by firmware over SCMI.
+> >
+> > So why can't it be reuse the DT bindings, and be compatible with
+> > qcom,sa8775p-dwmac-sgmii-phy?
+> >
+> >> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> >
+> >> --- /dev/null
+> >> +++ b/Documentation/devicetree/bindings/phy/qcom,sa8255p-dwmac-sgmii-phy.yaml
+> >
+> >> +  power-domains:
+> >> +    maxItems: 1
+> >> +
+> >> +  power-domain-names:
+> >> +    items:
+> >> +      - const: serdes
+> >
+> >> +examples:
+> >> +  - |
+> >> +    phy@8901000 {
+> >> +        compatible = "qcom,sa8255p-dwmac-sgmii-phy";
+> >> +        reg = <0x08901000 0xe10>;
+> >> +        #phy-cells = <0>;
+> >> +        power-domains = <&scmi7_dvfs 0>;
+> >> +        power-domain-names = "serdes";
+> >
+> > Ah, this uses power-domains, while the existing bindings for
+> > qcom,sa8775p-dwmac-sgmii-phy use a clock.
+> > I guess the clock is the correct hardware description?
+> >
+> > Adding to my list of examples for backing a hardware-to-SCMI remapping
+> > driver...
+> >
 >
->> From: Arnd Bergmann <arnd@arndb.de>
->>
->> The linux/gpio.h header used to be the global definition for the gpio
->> interfaces, with 1100 users back in linux-3.17. In linux-7.2, only about
->> 130 of those remain, so this series cleans out the rest.
->>
->> In each subsystem, we can replace the header either with
->> linux/gpio/consumer.h for users of the modern gpio descriptor interface,
->
-> A few of them already used <linux/gpio/consumer.h>, and is duplicated
-> now.
+> Russell King asked me to put the PHY logic for SCMI pm domains into the PHY
+> driver instead of the MAC driver where it was previously. Instead of cramming
+> both HLOS and firmware handling into the same driver, I figured it makes more
+> sense to have a dedicated, cleaner driver as the two share very little code (if
+> any).
 
-Indeed, I have removed the extra ones now and folded those into
-the patches.
+I think you are mixing up DT bindings and driver implementation?
 
-     Arnd
+Gr{oetje,eeting}s,
 
-diff --git a/drivers/gpib/gpio/gpib_bitbang.c b/drivers/gpib/gpio/gpib_bitbang.c
-index 2e8d895db06a..34d14b94a0b8 100644
---- a/drivers/gpib/gpio/gpib_bitbang.c
-+++ b/drivers/gpib/gpio/gpib_bitbang.c
-@@ -64,7 +64,6 @@
- #include <linux/gpio/consumer.h>
- #include <linux/gpio/driver.h>
- #include <linux/gpio/machine.h>
--#include <linux/gpio/consumer.h>
- #include <linux/irq.h>
- 
- static int sn7516x_used = 1, sn7516x;
-diff --git a/drivers/input/keyboard/matrix_keypad.c b/drivers/input/keyboard/matrix_keypad.c
-index 98d0269a978f..8863b741d1a3 100644
---- a/drivers/input/keyboard/matrix_keypad.c
-+++ b/drivers/input/keyboard/matrix_keypad.c
-@@ -16,7 +16,6 @@
- #include <linux/interrupt.h>
- #include <linux/jiffies.h>
- #include <linux/module.h>
--#include <linux/gpio/consumer.h>
- #include <linux/input/matrix_keypad.h>
- #include <linux/slab.h>
- #include <linux/of.h>
-diff --git a/drivers/input/misc/soc_button_array.c b/drivers/input/misc/soc_button_array.c
-index eb11bf2e9436..a6c984205123 100644
---- a/drivers/input/misc/soc_button_array.c
-+++ b/drivers/input/misc/soc_button_array.c
-@@ -15,7 +15,6 @@
- #include <linux/dmi.h>
- #include <linux/gpio/consumer.h>
- #include <linux/gpio_keys.h>
--#include <linux/gpio/consumer.h>
- #include <linux/platform_device.h>
- 
- static bool use_low_level_irq;
-diff --git a/drivers/net/ethernet/oki-semi/pch_gbe/pch_gbe_main.c b/drivers/net/ethernet/oki-semi/pch_gbe/pch_gbe_main.c
-index 88c5c52e0e38..5f5adc9c9e83 100644
---- a/drivers/net/ethernet/oki-semi/pch_gbe/pch_gbe_main.c
-+++ b/drivers/net/ethernet/oki-semi/pch_gbe/pch_gbe_main.c
-@@ -16,7 +16,6 @@
- #include <linux/net_tstamp.h>
- #include <linux/ptp_classify.h>
- #include <linux/ptp_pch.h>
--#include <linux/gpio/consumer.h>
- 
- #define PCH_GBE_MAR_ENTRIES		16
- #define PCH_GBE_SHORT_PKT		64
-diff --git a/drivers/net/phy/mdio_device.c b/drivers/net/phy/mdio_device.c
-index a18263d5bb02..06151f207134 100644
---- a/drivers/net/phy/mdio_device.c
-+++ b/drivers/net/phy/mdio_device.c
-@@ -9,7 +9,6 @@
- #include <linux/delay.h>
- #include <linux/errno.h>
- #include <linux/gpio/consumer.h>
--#include <linux/gpio/consumer.h>
- #include <linux/init.h>
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
-diff --git a/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c b/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c
-index d9c06129ed23..171bf097a8b8 100644
---- a/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c
-+++ b/drivers/phy/broadcom/phy-bcm-ns2-usbdrd.c
-@@ -4,7 +4,6 @@
- #include <linux/delay.h>
- #include <linux/extcon-provider.h>
- #include <linux/gpio/consumer.h>
--#include <linux/gpio/consumer.h>
- #include <linux/init.h>
- #include <linux/interrupt.h>
- #include <linux/io.h>
-diff --git a/drivers/phy/ti/phy-j721e-wiz.c b/drivers/phy/ti/phy-j721e-wiz.c
-index 2233babc0078..1f5dba49ace4 100644
---- a/drivers/phy/ti/phy-j721e-wiz.c
-+++ b/drivers/phy/ti/phy-j721e-wiz.c
-@@ -12,7 +12,6 @@
- #include <linux/clk.h>
- #include <linux/clk-provider.h>
- #include <linux/gpio/consumer.h>
--#include <linux/gpio/consumer.h>
- #include <linux/io.h>
- #include <linux/module.h>
- #include <linux/mfd/syscon.h>
-diff --git a/include/linux/mfd/ti-lmu.h b/include/linux/mfd/ti-lmu.h
-index 5040c7d1e1b9..2089ec5124e8 100644
---- a/include/linux/mfd/ti-lmu.h
-+++ b/include/linux/mfd/ti-lmu.h
-@@ -10,7 +10,6 @@
- #ifndef __MFD_TI_LMU_H__
- #define __MFD_TI_LMU_H__
- 
--#include <linux/gpio/consumer.h>
- #include <linux/notifier.h>
- #include <linux/regmap.h>
- #include <linux/gpio/consumer.h>
-diff --git a/sound/soc/codecs/cs42l84.c b/sound/soc/codecs/cs42l84.c
-index 36c3abc21fed..f2448b4c11fc 100644
---- a/sound/soc/codecs/cs42l84.c
-+++ b/sound/soc/codecs/cs42l84.c
-@@ -16,7 +16,6 @@
- #include <linux/init.h>
- #include <linux/delay.h>
- #include <linux/i2c.h>
--#include <linux/gpio/consumer.h>
- #include <linux/regmap.h>
- #include <linux/slab.h>
- #include <linux/acpi.h>
-diff --git a/sound/soc/codecs/dmic.c b/sound/soc/codecs/dmic.c
-index 8b05d6f9b429..cbed11136935 100644
---- a/sound/soc/codecs/dmic.c
-+++ b/sound/soc/codecs/dmic.c
-@@ -7,7 +7,6 @@
- 
- #include <linux/delay.h>
- #include <linux/gpio/consumer.h>
--#include <linux/gpio/consumer.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/consumer.h>
- #include <linux/slab.h>
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-rockchip mailing list
