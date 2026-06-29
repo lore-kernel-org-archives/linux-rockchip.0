@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98B6AC44514
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A892C4450F
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,35 +12,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ESGg+WK5Ts5VRn0A6yIOiUo3b9xW0TR09WE9xR6TuLk=; b=NVLvkLnrQ4FjdI
-	mhqvPFdR2NBGSTRN7DjAsglnToItcsIJrmEMvtyvEqL4KN8IrXTAluFG3fQpR2aRCp4MvQA6CodiC
-	KYmXD0EX/3kzgEL/qpo0NMN8TY7lDcngG36QDw4fjs56sbA79uNKzMt7p8/yfV9UfSCIGeJ6fGlUs
-	wQwH5N/3hJtv6oysuhXt66M4C0uIXEhlERe7peSu1Z2v2nXc2l3C3VEFlxjHKcVOBiNQKC6otzP/Y
-	KoditsI7pskRjqREQO/yKt0HUYLQjgLdgYGL1vkqhYckB+53w1ExZP4xDLNLc3BaKamMH3h7UkjxA
-	nDQcV21DwH+jcmHGb9AA==;
+	List-Owner; bh=bPgc+EoHKWTMvmc77t9GfinnGg87UvFCQLX8NVgLZs4=; b=4dERX+16yxsKKn
+	92ljmrJf7m8A91MC7xV0csDrPlzd92RycZXzH/aJNPhDJ1AX03tDaNUJWECQxxqCKDAqtvZp/UYyi
+	Ux8nDvdREvbxBWDCySftl9liZgahq5OxkejrnOEOhKX62LLjfEltZXsQoO7EHF3t9D6uQy1XAgHxz
+	zL3Bn+e0R5/iUEsDzo+/LfCdsTNorYclR855MO+LQSuRPYrn+w4ul2OsM5Ceowvc5VSYWVHSffB1f
+	x4Cd0bvG4g7qlx8O2zl5h6sZ3tdnIO/if/1kGsnJUf8vVZZ3K9vHzxYAl7ofC0SPRHCsvEqTc3Q+0
+	FdbABOQiKty4FadVuFUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkVQ-00000001ad0-0FVo;
-	Thu, 09 Jul 2026 08:53:16 +0000
+	id 1whkVP-00000001acI-3DHM;
+	Thu, 09 Jul 2026 08:53:15 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weHcQ-0000000FOb9-0TWf;
-	Mon, 29 Jun 2026 19:26:10 +0000
+	id 1weHcG-0000000FOXi-1uqL;
+	Mon, 29 Jun 2026 19:26:00 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 51A386014B;
-	Mon, 29 Jun 2026 19:26:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A2DC1F00A3E;
-	Mon, 29 Jun 2026 19:26:07 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 7F8DE600AA;
+	Mon, 29 Jun 2026 19:25:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 564721F000E9;
+	Mon, 29 Jun 2026 19:25:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782761168;
-	bh=hVd6ZuVqENj3zeMR4aL2t+2UMMhczNHM+gJ9snfAafg=;
+	s=k20260515; t=1782761159;
+	bh=RyicGxsSOzJTaoBcRQGH27oUytYBKCYLUF6jDOpzH7I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=BExgykrxcgTd5RClbXfmFD5Hp/1Grb/Kjey3DiRaMUeFZgqydXxsDWyRIvpzoISG7
-	 /Iilv3IrxTXNlJUqKZNyr5TyZZvKbnpj8BmRYrG9ZFdN0Nb0i0NyJk8Sl7npMKfdti
-	 1DTOuDeaNgSBKxd+05qng9++fyrY+sD0P/+0C6uNIMSgwntxptodo0GGuiVJ2fa7Xh
-	 tcbnSkYetMr8IMTjqAFSQc8sq/Xc+KvUA6heTO4Lwayd0uEmx/7h0R2T9dkwHlc5h+
-	 iCD7J6P0FnSJ3xPPyRVSFdOIImy48N18CmoYp7IbeVR4j1E/heYWHJ8ULXWfCEAyFn
-	 uHB+/Pwf3DOzg==
+	b=a5KeyFTeJjh7TJORUpSdmde4WrAK8BTgTPTho1LlZNtgrXh/Yqn9mD6/L1E9zfs8r
+	 e8za/mcjsoGeYfC+55PxZM0hLi0ZRJB+0Gbcm0U2F6Fn97SZIJM1N8XKGpsR2xQKrI
+	 yYMjTnXxd/YQ9zzdgYLIPjHCFJPa2KKvIAraY8mhyi19FlYp5ghqePfdzpdkTUseC1
+	 had3a1qZv4Z9B8qbb5LsCMcPsRJ2m5HWJRYLpaEMWR5rYHXsAk6QucmLYIa0UzO6lQ
+	 Pqa24H5c5iEEZidrzYUke9zV+idmE8KbclhOGbVFF/6WTC2VNdnFmcT1ViYuCVE/mn
+	 cARBGEsTONhTA==
 From: Lorenzo Stoakes <ljs@kernel.org>
 To: Andrew Morton <akpm@linux-foundation.org>
 Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
@@ -124,9 +124,9 @@ Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
 	linux-fsdevel@vger.kernel.org,
 	linux-mm@kvack.org,
 	linux-sound@vger.kernel.org
-Subject: [PATCH 04/13] mm: update generic_get_unmapped_area[_topdown]() to use vma_flags_t
-Date: Mon, 29 Jun 2026 20:25:27 +0100
-Message-ID: <cef55b19f86c110952f13829aefa4859db3a70ed.1782760670.git.ljs@kernel.org>
+Subject: [PATCH 01/13] mm: introduce vma_flags_can_grow() and vma_can_grow()
+Date: Mon, 29 Jun 2026 20:25:24 +0100
+Message-ID: <f2e8c32515d328db62279cc8bab8398ea278d74f.1782760670.git.ljs@kernel.org>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <cover.1782760670.git.ljs@kernel.org>
 References: <cover.1782760670.git.ljs@kernel.org>
@@ -148,135 +148,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As part of the changes converting VMA flags from a system word size to a
-bitmap, extend this change to generic_get_unmapped_area() and
-generic_get_unmapped_area_topdown(), which also allows us to convert
-stack_guard_placement() as well.
+These test whether the VMA has stack sematics, i.e. is able to grow upwards
+or downwards depending on the architecture.
 
-We retain arch_get_unmapped_area() and arch_get_unmapped_area_topdown()
-as-is for now, using legacy_to_vma_flags() as necessary to do so.
+In order to account for arches which do not support upward-growing stacks,
+introduce VMA_GROWSUP whose definition depends on the architecture
+supporting it, and use vma_flags_test_single_mask() in vma_flags_can_grow()
+to account for this.
+
+Update the VMA userland tests to reflect the changes
 
 No functional change intended.
 
 Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
 ---
- arch/powerpc/mm/book3s64/slice.c |  6 ++++--
- include/linux/sched/mm.h         |  4 ++--
- mm/mmap.c                        | 16 ++++++++--------
- 3 files changed, 14 insertions(+), 12 deletions(-)
+ include/linux/mm.h              | 21 ++++++++++++++++++---
+ tools/testing/vma/include/dup.h |  4 ++++
+ 2 files changed, 22 insertions(+), 3 deletions(-)
 
-diff --git a/arch/powerpc/mm/book3s64/slice.c b/arch/powerpc/mm/book3s64/slice.c
-index 28bec5bc7879..82127e31dca6 100644
---- a/arch/powerpc/mm/book3s64/slice.c
-+++ b/arch/powerpc/mm/book3s64/slice.c
-@@ -659,7 +659,8 @@ unsigned long arch_get_unmapped_area(struct file *filp,
- 	unsigned int psize;
+diff --git a/include/linux/mm.h b/include/linux/mm.h
+index 868b2334bff3..cf7df1569052 100644
+--- a/include/linux/mm.h
++++ b/include/linux/mm.h
+@@ -472,6 +472,7 @@ enum {
+ #define VM_SAO		INIT_VM_FLAG(SAO)
+ #elif defined(CONFIG_PARISC)
+ #define VM_GROWSUP	INIT_VM_FLAG(GROWSUP)
++#define VMA_GROWSUP	mk_vma_flags(VMA_GROWSUP_BIT)
+ #elif defined(CONFIG_SPARC64)
+ #define VM_SPARC_ADI	INIT_VM_FLAG(SPARC_ADI)
+ #define VM_ARCH_CLEAR	INIT_VM_FLAG(ARCH_CLEAR)
+@@ -483,6 +484,7 @@ enum {
+ #endif
+ #ifndef VM_GROWSUP
+ #define VM_GROWSUP	VM_NONE
++#define VMA_GROWSUP	EMPTY_VMA_FLAGS
+ #endif
+ #ifdef CONFIG_ARM64_MTE
+ #define VM_MTE		INIT_VM_FLAG(MTE)
+@@ -1563,11 +1565,24 @@ static inline bool vma_is_initial_stack(const struct vm_area_struct *vma)
+ 		vma->vm_end >= vma->vm_mm->start_stack;
+ }
  
- 	if (radix_enabled())
--		return generic_get_unmapped_area(filp, addr, len, pgoff, flags, vm_flags);
-+		return generic_get_unmapped_area(filp, addr, len, pgoff, flags,
-+						 legacy_to_vma_flags(vm_flags));
+-static inline bool vma_is_temporary_stack(const struct vm_area_struct *vma)
++static inline bool vma_flags_can_grow(const vma_flags_t *flags)
+ {
+-	int maybe_stack = vma->vm_flags & (VM_GROWSDOWN | VM_GROWSUP);
++	if (vma_flags_test_single_mask(flags, VMA_GROWSUP))
++		return true;
++	if (vma_flags_test(flags, VMA_GROWSDOWN_BIT))
++		return true;
++
++	return false;
++}
  
- 	if (filp && is_file_hugepages(filp))
- 		psize = file_to_psize(filp);
-@@ -679,7 +680,8 @@ unsigned long arch_get_unmapped_area_topdown(struct file *filp,
- 	unsigned int psize;
+-	if (!maybe_stack)
++static inline bool vma_can_grow(const struct vm_area_struct *vma)
++{
++	return vma_flags_can_grow(&vma->flags);
++}
++
++static inline bool vma_is_temporary_stack(const struct vm_area_struct *vma)
++{
++	if (!vma_can_grow(vma))
+ 		return false;
  
- 	if (radix_enabled())
--		return generic_get_unmapped_area_topdown(filp, addr0, len, pgoff, flags, vm_flags);
-+		return generic_get_unmapped_area_topdown(filp, addr0, len,
-+				pgoff, flags, legacy_to_vma_flags(vm_flags));
- 
- 	if (filp && is_file_hugepages(filp))
- 		psize = file_to_psize(filp);
-diff --git a/include/linux/sched/mm.h b/include/linux/sched/mm.h
-index b301ec90740a..c8720d8e2158 100644
---- a/include/linux/sched/mm.h
-+++ b/include/linux/sched/mm.h
-@@ -203,11 +203,11 @@ unsigned long mm_get_unmapped_area_vmaflags(struct file *filp,
- unsigned long
- generic_get_unmapped_area(struct file *filp, unsigned long addr,
- 			  unsigned long len, unsigned long pgoff,
--			  unsigned long flags, vm_flags_t vm_flags);
-+			  unsigned long flags, vma_flags_t vma_flags);
- unsigned long
- generic_get_unmapped_area_topdown(struct file *filp, unsigned long addr,
- 				  unsigned long len, unsigned long pgoff,
--				  unsigned long flags, vm_flags_t vm_flags);
-+				  unsigned long flags, vma_flags_t vma_flags);
+ 	if ((vma->vm_flags & VM_STACK_INCOMPLETE_SETUP) ==
+diff --git a/tools/testing/vma/include/dup.h b/tools/testing/vma/include/dup.h
+index 5d7d0afd7765..6f5bcd7fbcd8 100644
+--- a/tools/testing/vma/include/dup.h
++++ b/tools/testing/vma/include/dup.h
+@@ -245,8 +245,10 @@ enum {
+ #define VM_STACK	INIT_VM_FLAG(STACK)
+ #ifdef CONFIG_STACK_GROWS_UP
+ #define VM_STACK_EARLY	INIT_VM_FLAG(STACK_EARLY)
++#define VMA_STACK_EARLY mk_vma_flags(VMA_STACK_EARLY_BIT)
  #else
- static inline void arch_pick_mmap_layout(struct mm_struct *mm,
- 					 const struct rlimit *rlim_stack) {}
-diff --git a/mm/mmap.c b/mm/mmap.c
-index 461ce510e12a..3ef603d5ff00 100644
---- a/mm/mmap.c
-+++ b/mm/mmap.c
-@@ -657,9 +657,9 @@ SYSCALL_DEFINE1(old_mmap, struct mmap_arg_struct __user *, arg)
-  * Determine if the allocation needs to ensure that there is no
-  * existing mapping within it's guard gaps, for use as start_gap.
-  */
--static inline unsigned long stack_guard_placement(vm_flags_t vm_flags)
-+static inline unsigned long stack_guard_placement(vma_flags_t vma_flags)
- {
--	if (vm_flags & VM_SHADOW_STACK)
-+	if (vma_flags_test_single_mask(&vma_flags, VMA_SHADOW_STACK))
- 		return PAGE_SIZE;
- 
- 	return 0;
-@@ -701,7 +701,7 @@ unsigned long vm_unmapped_area(struct vm_unmapped_area_info *info)
- unsigned long
- generic_get_unmapped_area(struct file *filp, unsigned long addr,
- 			  unsigned long len, unsigned long pgoff,
--			  unsigned long flags, vm_flags_t vm_flags)
-+			  unsigned long flags, vma_flags_t vma_flags)
- {
- 	struct mm_struct *mm = current->mm;
- 	struct vm_area_struct *vma, *prev;
-@@ -726,7 +726,7 @@ generic_get_unmapped_area(struct file *filp, unsigned long addr,
- 	info.length = len;
- 	info.low_limit = mm->mmap_base;
- 	info.high_limit = mmap_end;
--	info.start_gap = stack_guard_placement(vm_flags);
-+	info.start_gap = stack_guard_placement(vma_flags);
- 	if (filp && is_file_hugepages(filp))
- 		info.align_mask = huge_page_mask_align(filp);
- 	return vm_unmapped_area(&info);
-@@ -739,7 +739,7 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
- 		       unsigned long flags, vm_flags_t vm_flags)
- {
- 	return generic_get_unmapped_area(filp, addr, len, pgoff, flags,
--					 vm_flags);
-+					 legacy_to_vma_flags(vm_flags));
- }
+ #define VM_STACK_EARLY	VM_NONE
++#define VMA_STACK_EARLY EMPTY_VMA_FLAGS
  #endif
+ #ifdef CONFIG_ARCH_HAS_PKEYS
+ #define VM_PKEY_SHIFT ((__force int)VMA_HIGH_ARCH_0_BIT)
+@@ -315,6 +317,8 @@ enum {
  
-@@ -750,7 +750,7 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
- unsigned long
- generic_get_unmapped_area_topdown(struct file *filp, unsigned long addr,
- 				  unsigned long len, unsigned long pgoff,
--				  unsigned long flags, vm_flags_t vm_flags)
-+				  unsigned long flags, vma_flags_t vma_flags)
- {
- 	struct vm_area_struct *vma, *prev;
- 	struct mm_struct *mm = current->mm;
-@@ -778,7 +778,7 @@ generic_get_unmapped_area_topdown(struct file *filp, unsigned long addr,
- 	info.length = len;
- 	info.low_limit = PAGE_SIZE;
- 	info.high_limit = arch_get_mmap_base(addr, mm->mmap_base);
--	info.start_gap = stack_guard_placement(vm_flags);
-+	info.start_gap = stack_guard_placement(vma_flags);
- 	if (filp && is_file_hugepages(filp))
- 		info.align_mask = huge_page_mask_align(filp);
- 	addr = vm_unmapped_area(&info);
-@@ -807,7 +807,7 @@ arch_get_unmapped_area_topdown(struct file *filp, unsigned long addr,
- 			       unsigned long flags, vm_flags_t vm_flags)
- {
- 	return generic_get_unmapped_area_topdown(filp, addr, len, pgoff, flags,
--						 vm_flags);
-+						 legacy_to_vma_flags(vm_flags));
- }
- #endif
+ /* Bits set in the VMA until the stack is in its final location */
+ #define VM_STACK_INCOMPLETE_SETUP (VM_RAND_READ | VM_SEQ_READ | VM_STACK_EARLY)
++#define VMA_STACK_INCOMPLETE_SETUP append_vma_flags(		\
++	VMA_STACK_EARLY, VMA_RAND_READ_BIT, VMA_SEQ_READ_BIT)
  
+ #define TASK_EXEC_BIT ((current->personality & READ_IMPLIES_EXEC) ? \
+ 		       VM_EXEC_BIT : VM_READ_BIT)
 -- 
 2.54.0
 
