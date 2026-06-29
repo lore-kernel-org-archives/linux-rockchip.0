@@ -4,86 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5A82C43458
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 09:09:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73937C43327
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 09:26:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nj5kA1JH6CZIAzZP2T3EfGHrC/kSaWA+imFlQEtv5mc=; b=LkEaFXp86YdyHL
-	kQ4VZ0juJNbQXVO6DJl5GyIqgUZac1XE3FPJgvrRdGaDQ0pJgQL7QDy8uZQLE5SHYGkJqFb4J+Fc0
-	uuhDVCaW3l06eZ3s3mgJB/YgoCcg/NlpWhzUXOeWSyLHqqlHCpG3cjbbu9UPmmkvzKjpWcSjsqCVe
-	DmvLBt+EMV5moon9peIGjr5XS+4iuYO8T/oqKFAFZmALcQ1Ao7OjLhVmv6RQV8/bcbdd+soBKTy5A
-	6H5Qg/RgIVsEWouDbxPgxPk+yBH1/8m6YIxBJ0HOze9xlomslD6qt1cCKIuIY63u6ipenhebKB9mi
-	mG5s2eKaCz4YMMR6nJXg==;
+	List-Owner; bh=ROGOb5hdkvV7FkTpUauniYLI6uogk9EtM3pLGQWSzpo=; b=NnC74nplM9NZlP
+	Ypl1GkgTqeA5e1TmPjBPb1Q2zzaAF+WvwVp5TFqPV1OmPJYCiEC+zSShfzB0mGK2Vlov19QSjMCWz
+	t/P3+szAuVEqLYkyXiyOo2N7kmc+jlAMdVhTYYJt6IuZ0+iK2VhH1marNlh23XBUCywD/kNemnvWQ
+	RNL5nMN72DEmIJHNFP+hCjpxfwd8p3NmONDhv/QLAF7pB60gDIECR4/OEF94ZaFCCKUlz1LjeyGhG
+	Z4iwVvNRyuRdYiWpplm5E0QzqupoIoHOzjWoFxkPx1f9wdydlJP6K7ecn0TnAvJTjmXfLtxNedo0z
+	MV12QnMQnW3EolMQK9fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we7zk-0000000E6cf-0wPP;
-	Mon, 29 Jun 2026 09:09:36 +0000
-Received: from mail-m10190.netease.com ([154.81.10.190])
+	id 1we8GG-0000000E9ys-2eep;
+	Mon, 29 Jun 2026 09:26:40 +0000
+Received: from mx1.wiredblade.com ([72.51.58.38])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we7zh-0000000E6bm-13qZ;
-	Mon, 29 Jun 2026 09:09:35 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 442780943;
-	Mon, 29 Jun 2026 17:09:24 +0800 (GMT+08:00)
-Message-ID: <b2633b22-da30-4778-8e23-7b5bed9ead07@rock-chips.com>
-Date: Mon, 29 Jun 2026 17:09:23 +0800
+	id 1we8GD-0000000E9xm-2V4H
+	for linux-rockchip@lists.infradead.org;
+	Mon, 29 Jun 2026 09:26:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; d=psihoexpert.ro; s=dynu;
+	c=relaxed/relaxed; q=dns/txt; h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Type:In-Reply-To:References;
+	bh=OttsIzjNQjYyQpZiUKo5XDS5QeXvKFZsZT7zR3RzaiM=;
+	b=jXH1h0YsimHZ9E7nQB/TLMWupnud0ivrKdffksjW/L1lMtjTC0zYtUlmB/t8pNIeuraFehZgw+OC8rt5zRDFwXyxT/7CFOhvsI+TtEDbRH4FfhDwm+a21F4RMX4unkxaq5UcSwS99LzVOEKs+/BlV9vJUFoLoPTa4T6//ek2YRBRmfjGcqg7k9/4YCIOOYZXOMjCnRsYGQrI153D3YYTswpa81ta+I6ZEI2ojEXvwKPbGHA+EHI7+l0yZo
+	yIH4hwjOKeMRamP6CgUWClk9jKMfxkIpJk1BLYQBgWecY5xdZQ+8iV1NMUqoNEActkU6dR5ZiM/QnSBXUY8rYlwcKNtQ==
+ARC-Seal: i=1; a=rsa-sha256; cv=none;
+	d=dynu.com; s=mail;
+	b=IgtEGpUy4BzN/BG2ev6hIQzFt7WwcFsMs9waVEtMCF0bFN/Prvv5RYFH41OZAC+sFQC3EnvgX9CbPd3HHY0dgYi24ws+eQldRSMmyshcBGwhPa/Tsl6XFWcEEGmOmr3fr7av058CRdbrjw3opXm3T+BgHvRbIog5UdB9eHrpLjCY4qEvjhJBEG2pi60dW5+BYfhmPSQ4xWE28DhYt508XMEYsKZOzwkRvSxiRZ1z9C5yCgbg7XsH5/HXGW
+	sHdQL691kj2kb1x6a5moijz6tlFislRJNBmZf1JsyPywHWlqie2aWjX4FLrFYS8XeDANqKKeumsTq6WEuE8yEC/DkV/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=dynu.com; s=mail;
+	h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Type:In-Reply-To:References;
+	bh=OttsIzjNQjYyQpZiUKo5XDS5QeXvKFZsZT7zR3RzaiM=;
+	b=iuBkhcIx5mma8Ygk5jGTAer7dBlFqwdHzz33qoZGRxB84uMcYck+CfJ+8xpeIpmYkyqHQ4M0bltqjwS8YLe5XPWQViJxD4H11spzl+AW22vwkLR78yCURI4usuDifhqmNz1dOo2IR3CEgk5l794ow4nkOWQ1o/Xn3sBnNAPt5SQiVeFijMDgFb8+U1BAJbk7Nnhdcoxyvu7HKhfqb1OuYg/h3BuBiNDl3X+YdDhYKbJ05gaJIBHwye7rEi
+	8IdIBdqufbCuc2rb6/HT02XVpJOl0yXXaNIex37xICvwfIF8YhkeYzLLUtoaT68JkPAcKiUKJDWKng0frgoyovnCo4YA==
+ARC-Authentication-Results: i=1; mx.dynu.com;
+	dkim=none;
+	dmarc=fail
+Received: from GRAPHRT (188-24-194-9.rdsnet.ro [188.24.194.9])
+	by mx1.wiredblade.com with ESMTPSA
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256)
+	; Mon, 29 Jun 2026 09:26:22 +0000
+X-Original-Rcpt-To: m95d+git@psihoexpert.ro
+Date: Mon, 29 Jun 2026 12:26:25 +0300
+From: Marius Dinu <m95d+git@psihoexpert.ro>
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Marius Dinu <m95d+git@psihoexpert.ro>, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	Steven Price <steven.price@arm.com>,
+	Liviu Dudau <liviu.dudau@arm.com>
+Subject: Re: [BUG] drm/panthor: intermittent freezes in Xorg xserver
+Message-ID: <akI6QaSayNAgdnYv@GRAPHRT>
+References: <aj5neetgYdu0QpcK@GRAPHRT>
+ <20260629094419.6bb56d99@fedora-2.home>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v15 1/9] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-To: Xu Yang <xu.yang_2@oss.nxp.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Chaoyi Chen <kernel@airkyi.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Peter Chen <hzpeterchen@gmail.com>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
- Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
- Peter Robinson <pbrobinson@gmail.com>, Hugh Cole-Baker <sigmaris@gmail.com>,
- linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- dri-devel@lists.freedesktop.org
-References: <20260304094152.92-1-kernel@airkyi.com>
- <20260304094152.92-2-kernel@airkyi.com>
- <erx73m2ueuvbzjteadjli6aki5by4pr3hyertkkqqoqwhaa4v3@5cstmshcercx>
- <56c6abb8-c127-449f-9368-12f94620c2bc@rock-chips.com>
- <k53t2soc3nxhwugncatksektig6agxfgdkogkdwbhrhu2fn2g7@auvsfrv76wxy>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <k53t2soc3nxhwugncatksektig6agxfgdkogkdwbhrhu2fn2g7@auvsfrv76wxy>
-X-HM-Tid: 0a9f12a3faa703a7kunmb5a121f9254176
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCSUhIVkwfQ0hMHkxCHUNLHVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=KeP9lnKD//VlvvlxIiRxEa09oTrs/v+c7Ck0y9CJ7kebPxL1eAQ4LuYjyaIGw/OYsBbKdtssXKahpSlLQkKujxKOUvxCbJxwSZlr8H/ZYK2KhzjMnwcoDd1Sn9tYhC8NZeSIdOHyY2fC9yOG+KjawDDY3dqQlsRMu7fzSYuGBdk=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=oOV+Bwk6KYyidJt86LeBdzQS5L6KRlfhXQ6hucCploM=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20260629094419.6bb56d99@fedora-2.home>
+Authentication-Results: mx.dynu.com;
+	dkim=none;
+	dmarc=fail
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_020933_860398_97028A29 
-X-CRM114-Status: GOOD (  23.29  )
+X-CRM114-CacheID: sfid-20260629_022637_732580_E259D2E0 
+X-CRM114-Status: GOOD (  23.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,138 +86,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Xu Yang, Heikki
+On Mon, 2026-06-29 09.44.19 ++0200, Boris Brezillon wrote:
+> On Fri, 26 Jun 2026 14:50:17 +0300
+> Marius Dinu <m95d+git@psihoexpert.ro> wrote:
+> 
+> > Hi.
+> > 
+> > The system is Radxa Rock 5 ITX, RK3588, 32GB RAM,
+> > mainline kernel v7.1.0 with panthor driver, mesa 26.0.7 with panfrost driver,
+> > xorg-server v21.1.22 accelerated by modesetting driver, x11perf v1.7.0.
+> 
+> Are we sure that's a panthor issue? Also, is this a regression
+> introduced by the latest kernel version, or has it been like that from
+> the start?
 
-On 6/29/2026 4:26 PM, Xu Yang wrote:
-> On Mon, Jun 29, 2026 at 09:29:08AM +0800, Chaoyi Chen wrote:
->> Hello Xu Yang,
->>
->> On 6/26/2026 7:15 PM, Xu Yang wrote:
->>> On Wed, Mar 04, 2026 at 05:41:44PM +0800, Chaoyi Chen wrote:
->>>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>>>
->>>> The HPD function of Type-C DP is implemented through
->>>> drm_connector_oob_hotplug_event(). For embedded DP, it is required
->>>> that the DRM connector fwnode corresponds to the Type-C port fwnode.
->>>>
->>>> To describe the relationship between the DP controller and the Type-C
->>>> port device, we usually using drm_bridge to build a bridge chain.
->>>>
->>>> Now several USB-C controller drivers have already implemented the DP
->>>> HPD bridge function provided by aux-hpd-bridge.c, it will build a DP
->>>> HPD bridge on USB-C connector port device.
->>>>
->>>> But this requires the USB-C controller driver to manually register the
->>>> HPD bridge. If the driver does not implement this feature, the bridge
->>>> will not be create.
->>>>
->>>> So this patch implements a generic DP HPD bridge based on
->>>> aux-hpd-bridge.c. It will monitor Type-C bus events, and when a
->>>> Type-C port device containing the DP svid is registered, it will
->>>> create an HPD bridge for it without the need for the USB-C controller
->>>> driver to implement it.
->>>>
->>>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>>> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
->>>> ---
->>>>
->>>> (no changes since v14)
->>>>
->>>> Changes in v13:
->>>> - Only register drm dp hpd bridge for typec port altmode device.
->>>>
->>>> (no changes since v12)
->>>>
->>>> Changes in v11:
->>>> - Switch to using typec bus notifiers.
->>>>
->>>> (no changes since v10)
->>>>
->>>> Changes in v9:
->>>> - Remove the exposed DRM_AUX_HPD_BRIDGE option, and select
->>>> DRM_AUX_HPD_TYPEC_BRIDGE when it is available.
->>>> - Add more commit comment about problem background.
->>>>
->>>> Changes in v8:
->>>> - Merge generic DP HPD bridge into one module.
->>>> ---
->>>>
->>>>  drivers/gpu/drm/bridge/Kconfig                | 10 ++++
->>>>  drivers/gpu/drm/bridge/Makefile               |  1 +
->>>>  .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 49 +++++++++++++++++++
->>>>  3 files changed, 60 insertions(+)
->>>>  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->>>>
->>>> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
->>>> index a250afd8d662..559487aa09a9 100644
->>>> --- a/drivers/gpu/drm/bridge/Kconfig
->>>> +++ b/drivers/gpu/drm/bridge/Kconfig
->>>> @@ -30,6 +30,16 @@ config DRM_AUX_HPD_BRIDGE
->>>>  	  Simple bridge that terminates the bridge chain and provides HPD
->>>>  	  support.
->>>>  
->>>> +if DRM_AUX_HPD_BRIDGE
->>>> +config DRM_AUX_HPD_TYPEC_BRIDGE
->>>> +	tristate
->>>> +	depends on TYPEC || !TYPEC
->>>> +	default TYPEC
->>>> +	help
->>>> +	  Simple bridge that terminates the bridge chain and provides HPD
->>>> +	  support. It build bridge on each USB-C connector device node.
->>>> +endif
->>>> +
->>>
->>> Should CONFIG_TYPEC_DP_ALTMODE select this one? Otherwise, we need to do it
->>> manually.
->>>
->>> $ grep -nr --include=Kconfig "select DRM_AUX_HPD_BRIDGE" .
->>> ./drivers/soc/qcom/Kconfig:118: select DRM_AUX_HPD_BRIDGE
->>> ./drivers/usb/typec/ucsi/Kconfig:88:    select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
->>> ./drivers/usb/typec/ucsi/Kconfig:99:    select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
->>> ./drivers/usb/typec/tcpm/Kconfig:62:    select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
->>> ./drivers/usb/typec/tcpm/Kconfig:85:    select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
->>>
->>
->> That's a fair point. But based on the previous discussion, Heikki
->> point out that configurations in the TYPEC subsystem should not
->> select configurations from DRM.
+It was from the start, not a regression. I think I started from v6.18 on this
+board IIRC. If you need me to test earlier versions, say so.
+
 > 
-> I have just reviewed your previous patchsets but I did't find such opinion from
-> Heikki. Otherwise, why are tcpm.c/ucsi.c already allowed to add the above select
-> condition in their configs?
-> 
-> I think Heikki means that the DRM_AUX_HPD_BRIDGE shouldn't been selected at the
-> top level of Type-C subsystem. Because not all Type-C devices support the DP function.
-> 
-> As a generic Type-C DP HPD bridge, displayport.c will likely need to use it in
-> the future. Therefore, allowing displayport.c to select DRM_AUX_HPD_BRIDGE makes sense.
-> 
-> According to my testing, it's impossible to build this driver in unless TYPEC_FUSB302
-> or a relevant CONFIG is built in to select DRM_AUX_HPD_BRIDGE, or the defconfig is modified.
+> Also, would you mind opening an issue on [1]?
 > 
 
-Yep. For me, I select DRM_AUX_HPD_BRIDGE in DRM.
+I already did.
+https://gitlab.freedesktop.org/mesa/mesa/-/work_items/15721
 
-@Heikki, what do you think of the following change?
-Should we add a new patch for this? Thanks.
+> > 
+> > The most clean way to reproduce this bug:
+> > Form a console or ssh session, start Xorg in background, without a window
+> > manager, and then run x11perf on that display.
+> > 
+> > Xorg :0 &
+> > x11perf -all -display :0
+> > 
+> > The bug: weird intermittent performance issues in some of the tests.
+> > Examples:
+> > 
+> >     1000 reps @  18.0799 msec (    55.3/sec): 10x10 rectangle outline
+> >     1000 reps @  18.0791 msec (    55.3/sec): 10x10 rectangle outline
+> >     1000 reps @  18.0790 msec (    55.3/sec): 10x10 rectangle outline
+> >     1000 reps @  18.0789 msec (    55.3/sec): 10x10 rectangle outline
+> >     1000 reps @   0.0287 msec ( 34800.0/sec): 10x10 rectangle outline
+> >     5000 trep @  14.4691 msec (    69.1/sec): 10x10 rectangle outline
+> > 
+> >  5000000 reps @   0.0029 msec (345000.0/sec): 1-pixel solid circle
+> >  5000000 reps @   0.0009 msec (1100000.0/sec): 1-pixel solid circle
+> >  5000000 reps @   0.0012 msec (818000.0/sec): 1-pixel solid circle
+> >  5000000 reps @   0.0000 msec (20900000.0/sec): 1-pixel solid circle
+> >  5000000 reps @   0.0000 msec (32300000.0/sec): 1-pixel solid circle
+> > 25000000 trep @   0.0010 msec (979000.0/sec): 1-pixel solid circle
+> > 
+> >     1000 reps @  31.6607 msec (    31.6/sec): Fill 10x10 trapezoid
+> >     1000 reps @  16.9012 msec (    59.2/sec): Fill 10x10 trapezoid
+> >     1000 reps @   0.0234 msec ( 42700.0/sec): Fill 10x10 trapezoid
+> >     1000 reps @   0.0272 msec ( 36700.0/sec): Fill 10x10 trapezoid
+> >     1000 reps @  32.1268 msec (    31.1/sec): Fill 10x10 trapezoid
+> >     5000 trep @  16.1479 msec (    61.9/sec): Fill 10x10 trapezoid
+> > 
+> > There are no messages in kernel log or Xorg log.
+> > 
+> > Visually, most of the tests runs fast as expected, but in some of the tests
+> > it gets "stuck" randomly. The test suddenly freezes while drawing the pattern.
+> > Then, after a while (a few seconds up to a couple of minutes), it gets
+> > unstuck by itself, draws a few more patterns extremely fast for less than a
+> > second, and then it gets stuck again.
+> 
+> It smells like a signalling issue. Can you check the CPU activity and
+> report any outstanding process? Can you maybe connect a gdb to the
+> x11perf to see where it's blocked, and post the backtrace here (or in
+> the gitlab issue)?
+> 
 
+x11perf is waiting on I/O (red "D" in htop). CPU is completely idle, not even
+grey "io-wait" activity.
 
-diff --git a/drivers/usb/typec/altmodes/Kconfig b/drivers/usb/typec/altmodes/Kconfig
-index 7867fa7c405d..f89cdf3c949b 100644
---- a/drivers/usb/typec/altmodes/Kconfig
-+++ b/drivers/usb/typec/altmodes/Kconfig
-@@ -5,6 +5,7 @@ menu "USB Type-C Alternate Mode drivers"
- config TYPEC_DP_ALTMODE
-        tristate "DisplayPort Alternate Mode driver"
-        depends on DRM
-+       select DRM_AUX_HPD_BRIDGE 
-        help
-          DisplayPort USB Type-C Alternate Mode allows DisplayPort
-          displays and adapters to be attached to the USB Type-C
+I have no experience using gdb. Please give me the exact command to run.
 
--- 
-Best, 
-Chaoyi
+> Regards,
+> 
+> Boris
+> 
+> [1]https://gitlab.freedesktop.org/mesa/mesa
+
+Marius
+
 
 _______________________________________________
 Linux-rockchip mailing list
