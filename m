@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A952C44501
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98B6AC44514
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=49kN8J76tATmY/B1E7cLkDBbiBOrmLraJY1d+vyOwM0=; b=tqDHNVK0104Mg5
-	Sbq8MgToJg5yoZAzU9OUGQ7bKB8ZwItAzJXEN/J3iS2ePiIVjVk5kTnMbmGTM/Mtt9+zTqVQQQqy3
-	8hUvA+MfALVg7cD5dwoghzAZnD540f9ihew9mQEu38aikGVItoOUnc1org15GIe60k6FxX7lW+t1+
-	P6r5X5oClimF+LTFzkGNILg3R8xuwfEwG4RX3ttZK0cR826FlxSgTTaL3URhRvXYBIpTXA91xUKx3
-	YbOq+1tTbmIzKhU7DPXuwjr/A0kOHfIlSjE9nUv1zm9VFNCVwmiKRL5oKAirnoH95cN6q7OkU0/yw
-	q8Ku7zbkTc2m1mmDZxaw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ESGg+WK5Ts5VRn0A6yIOiUo3b9xW0TR09WE9xR6TuLk=; b=NVLvkLnrQ4FjdI
+	mhqvPFdR2NBGSTRN7DjAsglnToItcsIJrmEMvtyvEqL4KN8IrXTAluFG3fQpR2aRCp4MvQA6CodiC
+	KYmXD0EX/3kzgEL/qpo0NMN8TY7lDcngG36QDw4fjs56sbA79uNKzMt7p8/yfV9UfSCIGeJ6fGlUs
+	wQwH5N/3hJtv6oysuhXt66M4C0uIXEhlERe7peSu1Z2v2nXc2l3C3VEFlxjHKcVOBiNQKC6otzP/Y
+	KoditsI7pskRjqREQO/yKt0HUYLQjgLdgYGL1vkqhYckB+53w1ExZP4xDLNLc3BaKamMH3h7UkjxA
+	nDQcV21DwH+jcmHGb9AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkVP-00000001ac3-2o3F;
-	Thu, 09 Jul 2026 08:53:15 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1whkVQ-00000001ad0-0FVo;
+	Thu, 09 Jul 2026 08:53:16 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weHcD-0000000FOXW-1lo9;
-	Mon, 29 Jun 2026 19:25:57 +0000
+	id 1weHcQ-0000000FOb9-0TWf;
+	Mon, 29 Jun 2026 19:26:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 723DC60008;
-	Mon, 29 Jun 2026 19:25:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52F6D1F000E9;
-	Mon, 29 Jun 2026 19:25:55 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 51A386014B;
+	Mon, 29 Jun 2026 19:26:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A2DC1F00A3E;
+	Mon, 29 Jun 2026 19:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782761156;
-	bh=uYIw6aQ9I+77XwEcGZ5sLAkEEwuPzF6gubx9MILGtr0=;
-	h=From:To:Cc:Subject:Date;
-	b=WOjc9JyG02UBcXhhgV9ic0phr0uZCFD5k0ILdv6ONhCv8Z1XYDxBYiwvpukl7K1Fg
-	 a8aIrsAXippHTg2Wibb6tHWkzlE4E0fWXgBDrHzByOJL4F8jISF06sHckyYY+PF7tK
-	 OiAiSmS9jz9wRn1oMBm18e5Uavo00IhgOxFuVQdHvJLDYYtq4uXlvS/eQXpk6KaIDD
-	 GN3rVLuuxb69YleGJzixCH/hWeHWpFDPzoCr2KQROO1CK5H8VnjBM1FKT5hXUj42/o
-	 WOenPbgoWzQyVU21Y69V/YrWJ0M+K8b+G7Zlo5u3zMESofU5MsPpKfLAYEn9kt+uGS
-	 wlAF5pba2Dehg==
+	s=k20260515; t=1782761168;
+	bh=hVd6ZuVqENj3zeMR4aL2t+2UMMhczNHM+gJ9snfAafg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=BExgykrxcgTd5RClbXfmFD5Hp/1Grb/Kjey3DiRaMUeFZgqydXxsDWyRIvpzoISG7
+	 /Iilv3IrxTXNlJUqKZNyr5TyZZvKbnpj8BmRYrG9ZFdN0Nb0i0NyJk8Sl7npMKfdti
+	 1DTOuDeaNgSBKxd+05qng9++fyrY+sD0P/+0C6uNIMSgwntxptodo0GGuiVJ2fa7Xh
+	 tcbnSkYetMr8IMTjqAFSQc8sq/Xc+KvUA6heTO4Lwayd0uEmx/7h0R2T9dkwHlc5h+
+	 iCD7J6P0FnSJ3xPPyRVSFdOIImy48N18CmoYp7IbeVR4j1E/heYWHJ8ULXWfCEAyFn
+	 uHB+/Pwf3DOzg==
 From: Lorenzo Stoakes <ljs@kernel.org>
 To: Andrew Morton <akpm@linux-foundation.org>
 Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
@@ -124,10 +124,12 @@ Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
 	linux-fsdevel@vger.kernel.org,
 	linux-mm@kvack.org,
 	linux-sound@vger.kernel.org
-Subject: [PATCH 00/13] convert more vm_flags_t users to vma_flags_t
-Date: Mon, 29 Jun 2026 20:25:23 +0100
-Message-ID: <cover.1782760670.git.ljs@kernel.org>
+Subject: [PATCH 04/13] mm: update generic_get_unmapped_area[_topdown]() to use vma_flags_t
+Date: Mon, 29 Jun 2026 20:25:27 +0100
+Message-ID: <cef55b19f86c110952f13829aefa4859db3a70ed.1782760670.git.ljs@kernel.org>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <cover.1782760670.git.ljs@kernel.org>
+References: <cover.1782760670.git.ljs@kernel.org>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -146,85 +148,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series makes further progress in converting usage of the deprecated
-vm_flags_t type to its replacement, vma_flags_t.
+As part of the changes converting VMA flags from a system word size to a
+bitmap, extend this change to generic_get_unmapped_area() and
+generic_get_unmapped_area_topdown(), which also allows us to convert
+stack_guard_placement() as well.
 
-It focuses on mm, though updates some users of mm APIs also.
+We retain arch_get_unmapped_area() and arch_get_unmapped_area_topdown()
+as-is for now, using legacy_to_vma_flags() as necessary to do so.
 
-It updates:
+No functional change intended.
 
-* The core do_mmap() code path for VMA mapping.
-* Unmapped area logic.
-* The usage of mm->def_vma_flags.
-* VMA page protection bit logic.
-* General usage of VMA flags in core mm code, mlock, mprotect, mremap.
+Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
+---
+ arch/powerpc/mm/book3s64/slice.c |  6 ++++--
+ include/linux/sched/mm.h         |  4 ++--
+ mm/mmap.c                        | 16 ++++++++--------
+ 3 files changed, 14 insertions(+), 12 deletions(-)
 
-
-REVIEWER/MERGER NOTE: This is dependent on [0], which must be merged before
-this.
-
-[0]:https://lore.kernel.org/linux-mm/cover.1782735110.git.ljs@kernel.org/
-
-Lorenzo Stoakes (13):
-  mm: introduce vma_flags_can_grow() and vma_can_grow()
-  mm/vma: update do_mmap() to use vma_flags_t
-  mm: convert __get_unmapped_area() to use vma_flags_t
-  mm: update generic_get_unmapped_area[_topdown]() to use vma_flags_t
-  mm: prefer mm->def_vma_flags in mm logic
-  mm/vma: convert vm_pgprot_modify() to use vma_flags_t and rename
-  mm/vma: rename vma_get_page_prot to vma_flags_to_page_prot
-  mm: introduce vma_get_page_prot() and use it
-  mm/vma: update create_init_stack_vma() to use vma_flags_t
-  mm/vma: convert miscellaneous uses of VMA flags in core mm
-  mm/mlock: convert mlock code to use vma_flags_t
-  mm/mprotect: convert mprotect code to use vma_flags_t
-  mm/mremap: convert mremap code to use vma_flags_t
-
- arch/mips/kernel/vdso.c                     |   4 +-
- arch/powerpc/mm/book3s64/slice.c            |   6 +-
- drivers/gpu/drm/drm_gem.c                   |   2 +-
- drivers/gpu/drm/drm_gem_dma_helper.c        |   2 +-
- drivers/gpu/drm/drm_gem_shmem_helper.c      |   2 +-
- drivers/gpu/drm/etnaviv/etnaviv_gem.c       |   2 +-
- drivers/gpu/drm/exynos/exynos_drm_gem.c     |   6 +-
- drivers/gpu/drm/i915/gem/i915_gem_mman.c    |  12 +-
- drivers/gpu/drm/msm/msm_gem.c               |   2 +-
- drivers/gpu/drm/nouveau/nouveau_gem.c       |   2 +-
- drivers/gpu/drm/omapdrm/omap_fbdev.c        |   2 +-
- drivers/gpu/drm/omapdrm/omap_gem.c          |   6 +-
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c |   2 +-
- drivers/gpu/drm/tegra/gem.c                 |   2 +-
- drivers/gpu/drm/virtio/virtgpu_vram.c       |   2 +-
- drivers/gpu/drm/vmwgfx/vmwgfx_page_dirty.c  |   2 +-
- drivers/gpu/drm/xe/xe_device.c              |   2 +-
- drivers/gpu/drm/xe/xe_mmio_gem.c            |   2 +-
- drivers/gpu/drm/xen/xen_drm_front_gem.c     |   2 +-
- drivers/video/fbdev/core/fb_io_fops.c       |   2 +-
- fs/aio.c                                    |   2 +-
- fs/hugetlbfs/inode.c                        |   3 +-
- include/linux/huge_mm.h                     |  10 +-
- include/linux/memfd.h                       |   6 +-
- include/linux/mm.h                          |  51 ++++--
- include/linux/sched/mm.h                    |  16 +-
- ipc/shm.c                                   |   3 +-
- mm/debug.c                                  |   2 +-
- mm/huge_memory.c                            |  21 +--
- mm/memfd.c                                  |  15 +-
- mm/mlock.c                                  |  97 ++++++------
- mm/mmap.c                                   | 164 +++++++++++---------
- mm/mprotect.c                               |  16 +-
- mm/mremap.c                                 |  38 ++---
- mm/nommu.c                                  |   3 +-
- mm/util.c                                   |  10 +-
- mm/vma.c                                    |  27 ++--
- mm/vma.h                                    |   8 +-
- mm/vma_exec.c                               |  20 ++-
- sound/core/memalloc.c                       |   2 +-
- tools/testing/vma/include/dup.h             |  22 ++-
- 41 files changed, 339 insertions(+), 261 deletions(-)
-
---
+diff --git a/arch/powerpc/mm/book3s64/slice.c b/arch/powerpc/mm/book3s64/slice.c
+index 28bec5bc7879..82127e31dca6 100644
+--- a/arch/powerpc/mm/book3s64/slice.c
++++ b/arch/powerpc/mm/book3s64/slice.c
+@@ -659,7 +659,8 @@ unsigned long arch_get_unmapped_area(struct file *filp,
+ 	unsigned int psize;
+ 
+ 	if (radix_enabled())
+-		return generic_get_unmapped_area(filp, addr, len, pgoff, flags, vm_flags);
++		return generic_get_unmapped_area(filp, addr, len, pgoff, flags,
++						 legacy_to_vma_flags(vm_flags));
+ 
+ 	if (filp && is_file_hugepages(filp))
+ 		psize = file_to_psize(filp);
+@@ -679,7 +680,8 @@ unsigned long arch_get_unmapped_area_topdown(struct file *filp,
+ 	unsigned int psize;
+ 
+ 	if (radix_enabled())
+-		return generic_get_unmapped_area_topdown(filp, addr0, len, pgoff, flags, vm_flags);
++		return generic_get_unmapped_area_topdown(filp, addr0, len,
++				pgoff, flags, legacy_to_vma_flags(vm_flags));
+ 
+ 	if (filp && is_file_hugepages(filp))
+ 		psize = file_to_psize(filp);
+diff --git a/include/linux/sched/mm.h b/include/linux/sched/mm.h
+index b301ec90740a..c8720d8e2158 100644
+--- a/include/linux/sched/mm.h
++++ b/include/linux/sched/mm.h
+@@ -203,11 +203,11 @@ unsigned long mm_get_unmapped_area_vmaflags(struct file *filp,
+ unsigned long
+ generic_get_unmapped_area(struct file *filp, unsigned long addr,
+ 			  unsigned long len, unsigned long pgoff,
+-			  unsigned long flags, vm_flags_t vm_flags);
++			  unsigned long flags, vma_flags_t vma_flags);
+ unsigned long
+ generic_get_unmapped_area_topdown(struct file *filp, unsigned long addr,
+ 				  unsigned long len, unsigned long pgoff,
+-				  unsigned long flags, vm_flags_t vm_flags);
++				  unsigned long flags, vma_flags_t vma_flags);
+ #else
+ static inline void arch_pick_mmap_layout(struct mm_struct *mm,
+ 					 const struct rlimit *rlim_stack) {}
+diff --git a/mm/mmap.c b/mm/mmap.c
+index 461ce510e12a..3ef603d5ff00 100644
+--- a/mm/mmap.c
++++ b/mm/mmap.c
+@@ -657,9 +657,9 @@ SYSCALL_DEFINE1(old_mmap, struct mmap_arg_struct __user *, arg)
+  * Determine if the allocation needs to ensure that there is no
+  * existing mapping within it's guard gaps, for use as start_gap.
+  */
+-static inline unsigned long stack_guard_placement(vm_flags_t vm_flags)
++static inline unsigned long stack_guard_placement(vma_flags_t vma_flags)
+ {
+-	if (vm_flags & VM_SHADOW_STACK)
++	if (vma_flags_test_single_mask(&vma_flags, VMA_SHADOW_STACK))
+ 		return PAGE_SIZE;
+ 
+ 	return 0;
+@@ -701,7 +701,7 @@ unsigned long vm_unmapped_area(struct vm_unmapped_area_info *info)
+ unsigned long
+ generic_get_unmapped_area(struct file *filp, unsigned long addr,
+ 			  unsigned long len, unsigned long pgoff,
+-			  unsigned long flags, vm_flags_t vm_flags)
++			  unsigned long flags, vma_flags_t vma_flags)
+ {
+ 	struct mm_struct *mm = current->mm;
+ 	struct vm_area_struct *vma, *prev;
+@@ -726,7 +726,7 @@ generic_get_unmapped_area(struct file *filp, unsigned long addr,
+ 	info.length = len;
+ 	info.low_limit = mm->mmap_base;
+ 	info.high_limit = mmap_end;
+-	info.start_gap = stack_guard_placement(vm_flags);
++	info.start_gap = stack_guard_placement(vma_flags);
+ 	if (filp && is_file_hugepages(filp))
+ 		info.align_mask = huge_page_mask_align(filp);
+ 	return vm_unmapped_area(&info);
+@@ -739,7 +739,7 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
+ 		       unsigned long flags, vm_flags_t vm_flags)
+ {
+ 	return generic_get_unmapped_area(filp, addr, len, pgoff, flags,
+-					 vm_flags);
++					 legacy_to_vma_flags(vm_flags));
+ }
+ #endif
+ 
+@@ -750,7 +750,7 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
+ unsigned long
+ generic_get_unmapped_area_topdown(struct file *filp, unsigned long addr,
+ 				  unsigned long len, unsigned long pgoff,
+-				  unsigned long flags, vm_flags_t vm_flags)
++				  unsigned long flags, vma_flags_t vma_flags)
+ {
+ 	struct vm_area_struct *vma, *prev;
+ 	struct mm_struct *mm = current->mm;
+@@ -778,7 +778,7 @@ generic_get_unmapped_area_topdown(struct file *filp, unsigned long addr,
+ 	info.length = len;
+ 	info.low_limit = PAGE_SIZE;
+ 	info.high_limit = arch_get_mmap_base(addr, mm->mmap_base);
+-	info.start_gap = stack_guard_placement(vm_flags);
++	info.start_gap = stack_guard_placement(vma_flags);
+ 	if (filp && is_file_hugepages(filp))
+ 		info.align_mask = huge_page_mask_align(filp);
+ 	addr = vm_unmapped_area(&info);
+@@ -807,7 +807,7 @@ arch_get_unmapped_area_topdown(struct file *filp, unsigned long addr,
+ 			       unsigned long flags, vm_flags_t vm_flags)
+ {
+ 	return generic_get_unmapped_area_topdown(filp, addr, len, pgoff, flags,
+-						 vm_flags);
++						 legacy_to_vma_flags(vm_flags));
+ }
+ #endif
+ 
+-- 
 2.54.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
