@@ -4,84 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0BB9C43458
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 01:29:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFBADC43458
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 01:53:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lKVIJsRcwkJxkRtigCpIaUMUlkpoDccvpEtdRHUkQyU=; b=zlPqK+v33fAbwl
-	RjfKcBqQ5Uk2jEqDpsk2PY1T8OtxVDwieIo3j3rvlGxv4CulgqhE8ltRE0R/NQ85Wqi7+SSZRtim4
-	J3LqcOJTNzjWU9a6OSF2BeeJY00XFmsi1w0wmE9UMpvRWoasvURp82Pyp32RRO19QP3iWhsfJeaVD
-	qLnnqMUs0ZisSS9bEQiEgs31ORl7TOO+AeCj0H8zgmBaobqcAX8FMFeenfJTalob6oan7pQ564nRD
-	OtOwyfAF03RqRcuDyHgIpTzMXIEF6PRC/5PX63RBom9XeNLUlhILR4e02zlKq/yKLS65M1v9smgSy
-	N/AYDAHkvDt2qEUWldHQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nv83HKnjvWqihz6SQ+WM+GWUl5CsKX75hZFpOodtJn4=; b=zJJpVxQaU6RVLiRyU37o8Vr8oZ
+	lO+OSon/L/lnQ0I6ZG9/jPvKkWWT8dnejKONc0Jh6mpoaE7rlqat6FhF25WWGd4q8IdeqxJWJiSdX
+	wl7/SLCXQji9ZB5gGzPWujOvlu6L+EiZf/d+KeU1dYdFfVQSZA94rn8hCEmuNG2IEZ8t2iXfNLh29
+	IipcQXKGn+/I20+6uqAot10vah7KLU4CCcImRpxUylsvpWiPH9PM3fq2r6o7EH8Gv7GDy99somTGI
+	8utarWvMFc5NzSt2DsiZL6YYJvGC3bzqZOz/3JQvlfXNcRMmCHLgHrbjb5vvMMsAegd1V4TqGzh6r
+	wHekbpEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we0oU-0000000DXh4-3QDw;
-	Mon, 29 Jun 2026 01:29:30 +0000
-Received: from mail-m1085.netease.com ([154.81.10.85])
+	id 1we1BX-0000000DYPO-38Sf;
+	Mon, 29 Jun 2026 01:53:19 +0000
+Received: from mail-m82213631.xmail.ntesmail.com ([8.221.36.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we0oR-0000000DXgH-0UmT;
-	Mon, 29 Jun 2026 01:29:29 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4413e3e2e;
-	Mon, 29 Jun 2026 09:29:10 +0800 (GMT+08:00)
-Message-ID: <56c6abb8-c127-449f-9368-12f94620c2bc@rock-chips.com>
-Date: Mon, 29 Jun 2026 09:29:08 +0800
+	id 1we1BQ-0000000DYOL-1wst;
+	Mon, 29 Jun 2026 01:53:18 +0000
+Received: from [172.16.12.74] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4414d26eb;
+	Mon, 29 Jun 2026 09:53:02 +0800 (GMT+08:00)
+Message-ID: <cb533b04-e550-4eb4-8a8f-6d17c3d43a48@rock-chips.com>
+Date: Mon, 29 Jun 2026 09:53:02 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v15 1/9] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-To: Xu Yang <xu.yang_2@oss.nxp.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Chaoyi Chen <kernel@airkyi.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Peter Chen <hzpeterchen@gmail.com>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Frank Wang <frank.wang@rock-chips.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
- Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
- Peter Robinson <pbrobinson@gmail.com>, Hugh Cole-Baker <sigmaris@gmail.com>,
- linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- dri-devel@lists.freedesktop.org
-References: <20260304094152.92-1-kernel@airkyi.com>
- <20260304094152.92-2-kernel@airkyi.com>
- <erx73m2ueuvbzjteadjli6aki5by4pr3hyertkkqqoqwhaa4v3@5cstmshcercx>
+Subject: Re: [PATCH v5 3/4] drm/bridge: analogix_dp: Add validation for
+ samsung,lane-count property
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+References: <20260604085220.2862986-1-damon.ding@rock-chips.com>
+ <20260604085220.2862986-4-damon.ding@rock-chips.com>
+ <178249136513.1374898.11400378046460567437.b4-review@b4>
 Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <erx73m2ueuvbzjteadjli6aki5by4pr3hyertkkqqoqwhaa4v3@5cstmshcercx>
-X-HM-Tid: 0a9f10fea08b03a7kunmf966b99e214af0
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <178249136513.1374898.11400378046460567437.b4-review@b4>
+X-HM-Tid: 0a9f11147a4003a8kunm26f77d9422c470
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSBgaVhpDH0kaHhhKTh4ZTlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZGExMVh5DSUkaHRpOSUtLT1YVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=bc5KtQ7UrGKUA1rijDG/0B4GnAe4Tbk7iG+1XzHoKWSacIyQrLgRn/wZx/UCpNfTXWV4YMlY+zS699AajY0KFrqU8mPgVl3OdvBTceFp8y15yVHWma3EgFqkkQYhFlnRAVXl6lg8VchEaO+B6yHrFQ3CnqvDkdKPMtnFtZ92LDI=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=7rX64/yu/OhWoqaAPGRmOa806yP0CYEXLXKtENt1Bg4=;
+	b=Jy7T/u28jP/+4T2VA2B9kxcFXAX9Dsq0ShxLHsURI3PTBcA0yO9T5KXoRBqEUSEuSuuttXE1GmOzP+PWv7OtI23helQrMLrSBkS5sop9hRxcLvUyMJF8AERH+JkKsMXw9cy7+oLAcg8pQYGhVPkRyg/D5ZPafYOGQAK8JHC5ptI=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=W782AbfO1D1R5eEJlgStJCNw/OtsvmDShB2b7uB9ZM8=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260628_182927_753149_0C378CA8 
-X-CRM114-Status: GOOD (  19.99  )
+X-CRM114-CacheID: sfid-20260628_185313_834655_9A72A425 
+X-CRM114-Status: GOOD (  18.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,108 +66,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Xu Yang,
-
-On 6/26/2026 7:15 PM, Xu Yang wrote:
-> On Wed, Mar 04, 2026 at 05:41:44PM +0800, Chaoyi Chen wrote:
->> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>
->> The HPD function of Type-C DP is implemented through
->> drm_connector_oob_hotplug_event(). For embedded DP, it is required
->> that the DRM connector fwnode corresponds to the Type-C port fwnode.
->>
->> To describe the relationship between the DP controller and the Type-C
->> port device, we usually using drm_bridge to build a bridge chain.
->>
->> Now several USB-C controller drivers have already implemented the DP
->> HPD bridge function provided by aux-hpd-bridge.c, it will build a DP
->> HPD bridge on USB-C connector port device.
->>
->> But this requires the USB-C controller driver to manually register the
->> HPD bridge. If the driver does not implement this feature, the bridge
->> will not be create.
->>
->> So this patch implements a generic DP HPD bridge based on
->> aux-hpd-bridge.c. It will monitor Type-C bus events, and when a
->> Type-C port device containing the DP svid is registered, it will
->> create an HPD bridge for it without the need for the USB-C controller
->> driver to implement it.
->>
->> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
->> ---
->>
->> (no changes since v14)
->>
->> Changes in v13:
->> - Only register drm dp hpd bridge for typec port altmode device.
->>
->> (no changes since v12)
->>
->> Changes in v11:
->> - Switch to using typec bus notifiers.
->>
->> (no changes since v10)
->>
->> Changes in v9:
->> - Remove the exposed DRM_AUX_HPD_BRIDGE option, and select
->> DRM_AUX_HPD_TYPEC_BRIDGE when it is available.
->> - Add more commit comment about problem background.
->>
->> Changes in v8:
->> - Merge generic DP HPD bridge into one module.
->> ---
->>
->>  drivers/gpu/drm/bridge/Kconfig                | 10 ++++
->>  drivers/gpu/drm/bridge/Makefile               |  1 +
->>  .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 49 +++++++++++++++++++
->>  3 files changed, 60 insertions(+)
->>  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->>
->> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
->> index a250afd8d662..559487aa09a9 100644
->> --- a/drivers/gpu/drm/bridge/Kconfig
->> +++ b/drivers/gpu/drm/bridge/Kconfig
->> @@ -30,6 +30,16 @@ config DRM_AUX_HPD_BRIDGE
->>  	  Simple bridge that terminates the bridge chain and provides HPD
->>  	  support.
->>  
->> +if DRM_AUX_HPD_BRIDGE
->> +config DRM_AUX_HPD_TYPEC_BRIDGE
->> +	tristate
->> +	depends on TYPEC || !TYPEC
->> +	default TYPEC
->> +	help
->> +	  Simple bridge that terminates the bridge chain and provides HPD
->> +	  support. It build bridge on each USB-C connector device node.
->> +endif
->> +
-> 
-> Should CONFIG_TYPEC_DP_ALTMODE select this one? Otherwise, we need to do it
-> manually.
-> 
-> $ grep -nr --include=Kconfig "select DRM_AUX_HPD_BRIDGE" .
-> ./drivers/soc/qcom/Kconfig:118: select DRM_AUX_HPD_BRIDGE
-> ./drivers/usb/typec/ucsi/Kconfig:88:    select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
-> ./drivers/usb/typec/ucsi/Kconfig:99:    select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
-> ./drivers/usb/typec/tcpm/Kconfig:62:    select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
-> ./drivers/usb/typec/tcpm/Kconfig:85:    select DRM_AUX_HPD_BRIDGE if DRM_BRIDGE && OF
-> 
-
-That's a fair point. But based on the previous discussion, Heikki
-point out that configurations in the TYPEC subsystem should not
-select configurations from DRM.
-
--- 
-Best, 
-Chaoyi
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTHVjYSwKCk9uIDYvMjcvMjAyNiAxMjoyOSBBTSwgTHVjYSBDZXJlc29saSB3cm90ZToKPiBP
+biBUaHUsIDA0IEp1biAyMDI2IDE2OjUyOjE5ICswODAwLCBEYW1vbiBEaW5nIDxkYW1vbi5kaW5n
+QHJvY2stY2hpcHMuY29tPiB3cm90ZToKPiAKPiBIZWxsbyBEYW1vbiwKPiAKPj4KPj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5j
+IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPj4g
+aW5kZXggN2E4NTc3NGFhYWMxLi5lMTIwZWYzMzIwYzEgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+IEBAIC0xMjYx
+LDggKzEyNjIsMTEgQEAgc3RhdGljIGludCBhbmFsb2dpeF9kcF9kdF9wYXJzZV9wZGF0YShzdHJ1
+Y3QgYW5hbG9naXhfZHBfZGV2aWNlICpkcCkKPj4gICAJCSAqLwo+PiAgIAkJb2ZfcHJvcGVydHlf
+cmVhZF91MzIoZHBfbm9kZSwgInNhbXN1bmcsbGluay1yYXRlIiwKPj4gICAJCQkJICAgICAmdmlk
+ZW9faW5mby0+bWF4X2xpbmtfcmF0ZSk7Cj4+IC0JCW9mX3Byb3BlcnR5X3JlYWRfdTMyKGRwX25v
+ZGUsICJzYW1zdW5nLGxhbmUtY291bnQiLAo+PiAtCQkJCSAgICAgJnZpZGVvX2luZm8tPm1heF9s
+YW5lX2NvdW50KTsKPj4gKwkJcmV0ID0gb2ZfcHJvcGVydHlfcmVhZF91MzIoZHBfbm9kZSwgInNh
+bXN1bmcsbGFuZS1jb3VudCIsCj4+ICsJCQkJCSAgICZ2aWRlb19pbmZvLT5tYXhfbGFuZV9jb3Vu
+dCk7Cj4+ICsJCWlmIChyZXQgfHwgIWRybV9kcF9sYW5lX2NvdW50X2lzX3ZhbGlkKHZpZGVvX2lu
+Zm8tPm1heF9sYW5lX2NvdW50KSkKPj4gKwkJCXJldHVybiBkZXZfZXJyX3Byb2JlKGRwLT5kZXYs
+IHJldCA/IHJldCA6IC1FSU5WQUwsCj4+ICsJCQkJCSAgICAgImZhaWxlZCB0byBwYXJzZSBzYW1z
+dW5nLGxhbmUtY291bnRcbiIpOwo+IAo+IEkgdGhpbmsgdGhpcyByZXBvcnQgYnkgc2FzaGlrbyBt
+YWtlcyBzZW5zZToKPiAKPiAgICA+ICBzYXNoaWtvLWJvdEBrZXJuZWwub3JnIDxzYXNoaWtvLWJv
+dEBrZXJuZWwub3JnPjoKPiAgICA+Cj4gICAgPiAgW1NldmVyaXR5OiBIaWdoXQo+ICAgID4gIERv
+ZXMgdGhpcyBtYWtlIHRoZSBvcHRpb25hbCBhbmQgZGVwcmVjYXRlZCBzYW1zdW5nLGxhbmUtY291
+bnQgcHJvcGVydHkgYQo+ICAgID4gIHN0cmljdCByZXF1aXJlbWVudD8KPiAgICA+Cj4gICAgPiAg
+SWYgc2Ftc3VuZyxsYW5lLWNvdW50IGlzIGFic2VudCBmcm9tIHRoZSBkZXZpY2UgdHJlZSwgb2Zf
+cHJvcGVydHlfcmVhZF91MzIoKQo+ICAgID4gIHJldHVybnMgLUVJTlZBTC4gVGhpcyBjYXVzZXMg
+dGhlIGNvbmRpdGlvbiB0byBldmFsdWF0ZSB0byB0cnVlLCBhYm9ydGluZyB0aGUKPiAgICA+ICBw
+cm9iZSB3aXRoIGFuIGVycm9yLgo+ICAgID4KPiAgICA+ICBBY2NvcmRpbmcgdG8gdGhlIGRldmlj
+ZSB0cmVlIGJpbmRpbmdzCj4gICAgPiAgKERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9kaXNwbGF5L3NhbXN1bmcvc2Ftc3VuZyxleHlub3M1LWRwLnlhbWwpLAo+ICAgID4gIHRoaXMg
+cHJvcGVydHkgaXMgbWFya2VkIGFzIGRlcHJlY2F0ZWQgYW5kIGV4cGxpY2l0bHkgb3B0aW9uYWwg
+YmVjYXVzZSB0aGUKPiAgICA+ICBsYW5lIGNvdW50IGNhbiBiZSByZWFkIGZyb20gdGhlIG1vbml0
+b3IuIERvZXMgdGhpcyBwYXRjaCBicmVhayBjb21wYXRpYmlsaXR5Cj4gICAgPiAgd2l0aCBkZXZp
+Y2UgdHJlZXMgdGhhdCByaWdodGZ1bGx5IG9taXQgdGhpcyBkZXByZWNhdGVkIHByb3BlcnR5Pwo+
+IAo+ICAgKHZpYTogaHR0cHM6Ly9wYXRjaC5tc2dpZC5saW5rLzIwMjYwNjA0MDkwOTM1LjdGQzA1
+MUYwMDg5OEBzbXRwLmtlcm5lbC5vcmcpCj4gCj4gQ2FuIHlvdSBjb21tZW50IG9uIHRoaXM/Cj4g
+Cj4gCgpJIHdhcyBhbHNvIGNvbmZ1c2VkIGFib3V0IHRoaXMgaGFuZGxpbmcgYXQgZmlyc3QuIEZy
+b20gY29tbWl0IAowZDBhYmQ4OTRlYWQgKCJkcm06IGJyaWRnZTogYW5hbG9naXgvZHA6IGFkZCBt
+YXggbGluayByYXRlIGFuZCBsYW5lIApjb3VudCBsaW1pdCBmb3IgUkszMjg4IiksIGl0cyBjb21t
+aXQgbWVzc2FnZSBkb2VzIG5vdCBleHBsYWluIHdoeSAKc2Ftc3VuZyxsYW5lLWNvdW50IHdhcyBj
+aGFuZ2VkIGZyb20gYSBtYW5kYXRvcnkgdG8gb3B0aW9uYWwgcHJvcGVydHkuCgpBZnRlciBkaWdn
+aW5nIGludG8gdGhlIGNvZGUgZmxvdywgSSBmb3VuZCB0aGF0IAphbmFsb2dpeF9kcF9mdWxsX2xp
+bmtfdHJhaW4oKSBwaWNrcyB0aGUgc21hbGxlciB2YWx1ZSBiZXR3ZWVuIHRoZSAKcGxhdGZvcm0t
+c3VwcG9ydGVkIGxhbmUgY291bnQgYW5kIHRoZSBsYW5lIGNvdW50IHJldHJpZXZlZCBmcm9tIHNp
+bmsgCkRQQ0QgZm9yIGxpbmsgdHJhaW5pbmcuIElmIHRoZSBzYW1zdW5nLGxhbmUtY291bnQgcHJv
+cGVydHkgaXMgCm1pc3NpbmcvaW52YWxpZCBoZXJlLCBsaW5rIHRyYWluaW5nIHdpbGwgZW5kIHVw
+IHVzaW5nIGFuIHVuZXhwZWN0ZWQgbGFuZSAKY291bnQgY29uZmlndXJhdGlvbi4KCkFkZGl0aW9u
+YWxseSwgSSBjaGVja2VkIFNhbXN1bmfigJlzIHVwc3RyZWFtIGRldmljZSB0cmVlcyB0aGF0IHV0
+aWxpemUgCnRoaXMgRFAgY29udHJvbGxlciwgYW5kIGFsbCBvZiB0aGVtIGNhcnJ5IHRoZSBsYW5l
+LWNvdW50IHByb3BlcnR5LiBCYXNlZCAKb24gdGhpcyBvYnNlcnZhdGlvbiwgSSBiZWxpZXZlIHJl
+c3RvcmluZyB0aGUgc3RyaWN0IG1hbmRhdG9yeSAKcmVxdWlyZW1lbnQgZm9yIHRoaXMgcHJvcGVy
+dHkgbWFrZXMgc2Vuc2UuCgpTaG91bGQgSSBjcmVhdGUgYW4gaW5kZXBlbmRlbnQgZml4IHBhdGNo
+IHRvIHJldmVydCB0aGVzZSB0d28gcHJvcGVydGllcyAKdG8gbWFuZGF0b3J5LCBpbnN0ZWFkIG9m
+IGJ1bmRsaW5nIHRoZSBmaXggaW4gdGhpcyBzZXJpZXM/CgpCZXN0IHJlZ2FyZHMsCkRhbW9uCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
