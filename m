@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DC5EC44503
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD25BC43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V2Cec7hSt9+SOo39BQDehdCCTq1GtILIrhQzJUH1L7E=; b=2ofwGI2I+auXJe
-	QW7Q6bOa0biReUquuugAWr1w6bbnL1SV4amcHrSszGQXai9MV/0KpYNIqnrDCQYzDY1a9mnrT2Ou3
-	/uUjj4MrYYI4xx6881WDWz3eOICRviZV+bOPYboGUgl4v3wxlRiTWUNexrMWIoDoJ1+nKH4x5skv5
-	zhDaz2P0ioE5gezR21iaOJI7+fprnDdDT/PVQUsg7ZjeXeyNVA18mer4QWUlY+dc0EPEidyOryk7l
-	iqqnWfLkNKU4pNnp9CifClBlffRODeN7XSKRC+e8SkQ39gY7mfXvQCl2xp3VRtsTWeveZIiApsKdX
-	WL4U+bD9WCz7R1wTH8Eg==;
+	List-Owner; bh=ZzbnxX3js7UQ/IlPQcZXhVQgCU6qfo3c5sdHr/eEzUY=; b=WT0bbf55+3jaJO
+	za6XkRITplytQwuvxM/fZFVjFs/cLgf3JHZ9rIbrLlnLucFHDdyV8LJiHlrT91cpUd9yo1P9orPNp
+	mJnWyaDoyDG0usdMvWINVajvg96o5rJb8dCMCuVZqAJcevzoQpBQyzbn/JVcoToFgUWP6hYlqad/e
+	4q51aYyHQnlD0iBcbV9Ffk+YwBZXkfqEfFrjrEOL5nDdbgZLtHlPlw/fL9vkwJ1LuN6VKEUC2DJU6
+	5WjQ1qhPEmkkjxumjGdbhCWph+BvrRCMtOyRWPxaEYA8FrI4Pr1Jz7n4G50xYu7h/rlpJaHUZlMg4
+	9btJ7iei786h7z55Ljgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkVQ-00000001aeF-3DDY;
-	Thu, 09 Jul 2026 08:53:16 +0000
+	id 1whkVS-00000001aiZ-0zus;
+	Thu, 09 Jul 2026 08:53:18 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weHcX-0000000FOdX-1jRn;
-	Mon, 29 Jun 2026 19:26:17 +0000
+	id 1weHcd-0000000FOgI-0qbz;
+	Mon, 29 Jun 2026 19:26:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D2D50601BE;
-	Mon, 29 Jun 2026 19:26:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC1611F00A3A;
-	Mon, 29 Jun 2026 19:26:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8623360129;
+	Mon, 29 Jun 2026 19:26:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E1DD1F00A3A;
+	Mon, 29 Jun 2026 19:26:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782761176;
-	bh=kVNcj1n0t63iEIMvCjdqZpMGs73q5Ko9ggshfmmLkXE=;
+	s=k20260515; t=1782761182;
+	bh=Wnm2Xg8fzgzgq2t9tP+R94oZiE2QRSqcJqSUSdbb+xI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=klEBAvxAFllrYroNuPJLJ6gpkhIWH2gTVoT+/xDpJL5trOYXohBGpPUklmeyy3M8s
-	 V8yPCwMkEt0hiRNtDQFKpdz3l1uU7duIasGbSIztboWDM2ZAqiJD0rorDwfoqGlBAa
-	 LG7rxtse+7tEtmE7jUNFo/a5he8kyou91LnB1mOd3C/3gEPhWsxleGxfu6UNzRLKT4
-	 q/kle54fQbZ80BilK1fYXEKilUW+HJlbq+uSEtkk9SKLXzWuUuYgjrQUH6aBSmWp7O
-	 s8EEU2+Bt7ipQc2WUzag4pdln2sWzLqlewf7/vmu4r9kXvNYawRuP/0vdC2aunN5Wg
-	 EWS79jrl2lb4w==
+	b=nOPttWfeqx2WAAk+O86bRHV1xe9XjSiO7vWMcbguW/QG8cwhr9Ho+WujRZfoXIkNB
+	 GAafXcLTt0A7107oO1/wfsRqbvh2NXnLmJEY5U2oNVlhqSlYA3t7vnfmg9ypcMiIQu
+	 8h9CwqzwF/QmgcsSy6FddnicElSxEL4LUhf+meGHiuuHtZIY/zI5z4sASrd3sx6zbv
+	 h+vKpCS3OgfNT1Vzh95SLJ33rPs0Xs2s5lFkRLuYrK0Dv+UhZIFDZTErNLJ48+783p
+	 GrekfoEk+r6DJVzhZY0W/8o+WObqmyaivps6ZsvmcWguDnXNLCk/ULQ2n7338Yb/Eb
+	 NW0mBvRR/aD3g==
 From: Lorenzo Stoakes <ljs@kernel.org>
 To: Andrew Morton <akpm@linux-foundation.org>
 Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
@@ -124,9 +124,9 @@ Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
 	linux-fsdevel@vger.kernel.org,
 	linux-mm@kvack.org,
 	linux-sound@vger.kernel.org
-Subject: [PATCH 07/13] mm/vma: rename vma_get_page_prot to vma_flags_to_page_prot
-Date: Mon, 29 Jun 2026 20:25:30 +0100
-Message-ID: <fc8ac30d03d29d236e76542b36432bba315aca60.1782760670.git.ljs@kernel.org>
+Subject: [PATCH 09/13] mm/vma: update create_init_stack_vma() to use vma_flags_t
+Date: Mon, 29 Jun 2026 20:25:32 +0100
+Message-ID: <34689784ee6856f100c02ad4eabeaa4db643713a.1782760670.git.ljs@kernel.org>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <cover.1782760670.git.ljs@kernel.org>
 References: <cover.1782760670.git.ljs@kernel.org>
@@ -148,83 +148,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Having vma_get_page_prot() refer to VMA flags and vma_set_page_prot() refer
-to a VMA is confusing.
+Replace use of the legacy vm_flags_t flags with vma_flags_t values in
+create_init_stack_vma().
 
-Rename vma_get_page_prot() to vma_flags_to_page_prot() to resolve this
-confusion.
+As part of this change we add VMA_STACK_EARLY and VMA_STACK_INCOMPLETE
+vma_flags_t defines, and slightly rework create_init_stack_vma() for
+clarity.
 
 No functional change intended.
 
 Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
 ---
- include/linux/mm.h              | 4 ++--
- mm/vma.c                        | 2 +-
- mm/vma.h                        | 2 +-
- tools/testing/vma/include/dup.h | 2 +-
- 4 files changed, 5 insertions(+), 5 deletions(-)
+ include/linux/mm.h |  4 ++++
+ mm/vma_exec.c      | 18 +++++++++++-------
+ 2 files changed, 15 insertions(+), 7 deletions(-)
 
 diff --git a/include/linux/mm.h b/include/linux/mm.h
-index 474b3698f565..c8336f68d7bb 100644
+index b55790c75038..6e57d41677de 100644
 --- a/include/linux/mm.h
 +++ b/include/linux/mm.h
-@@ -4568,7 +4568,7 @@ static inline bool range_in_vma_desc(const struct vm_area_desc *desc,
- #ifdef CONFIG_MMU
- pgprot_t vm_get_page_prot(vm_flags_t vm_flags);
- 
--static inline pgprot_t vma_get_page_prot(vma_flags_t vma_flags)
-+static inline pgprot_t vma_flags_to_page_prot(vma_flags_t vma_flags)
- {
- 	const vm_flags_t vm_flags = vma_flags_to_legacy(vma_flags);
- 
-@@ -4581,7 +4581,7 @@ static inline pgprot_t vm_get_page_prot(vm_flags_t vm_flags)
- {
- 	return __pgprot(0);
- }
--static inline pgprot_t vma_get_page_prot(vma_flags_t vma_flags)
-+static inline pgprot_t vma_flags_to_page_prot(vma_flags_t vma_flags)
- {
- 	return __pgprot(0);
- }
-diff --git a/mm/vma.c b/mm/vma.c
-index 395b6619ecc1..fcdd2ac3ac68 100644
---- a/mm/vma.c
-+++ b/mm/vma.c
-@@ -56,7 +56,7 @@ struct mmap_state {
- 		.pglen = PHYS_PFN(len_),				\
- 		.vma_flags = vma_flags_,				\
- 		.file = file_,						\
--		.page_prot = vma_get_page_prot(vma_flags_),		\
-+		.page_prot = vma_flags_to_page_prot(vma_flags_),	\
- 	}
- 
- #define VMG_MMAP_STATE(name, map_, vma_)				\
-diff --git a/mm/vma.h b/mm/vma.h
-index 6a8abb8ae937..d6b48d596f44 100644
---- a/mm/vma.h
-+++ b/mm/vma.h
-@@ -524,7 +524,7 @@ static inline bool vma_wants_manual_pte_write_upgrade(struct vm_area_struct *vma
- #ifdef CONFIG_MMU
- static inline pgprot_t vma_pgprot_modify(pgprot_t oldprot, vma_flags_t vma_flags)
- {
--	const pgprot_t prot = vma_get_page_prot(vma_flags);
-+	const pgprot_t prot = vma_flags_to_page_prot(vma_flags);
- 
- 	return pgprot_modify(oldprot, prot);
- }
-diff --git a/tools/testing/vma/include/dup.h b/tools/testing/vma/include/dup.h
-index 813044781719..1ffac38a5377 100644
---- a/tools/testing/vma/include/dup.h
-+++ b/tools/testing/vma/include/dup.h
-@@ -1555,7 +1555,7 @@ static inline int get_sysctl_max_map_count(void)
- #define pgtable_supports_soft_dirty()	IS_ENABLED(CONFIG_MEM_SOFT_DIRTY)
+@@ -440,8 +440,10 @@ enum {
+ #define VM_STACK	INIT_VM_FLAG(STACK)
+ #ifdef CONFIG_STACK_GROWSUP
+ #define VM_STACK_EARLY	INIT_VM_FLAG(STACK_EARLY)
++#define VMA_STACK_EARLY mk_vma_flags(VMA_STACK_EARLY_BIT)
+ #else
+ #define VM_STACK_EARLY	VM_NONE
++#define VMA_STACK_EARLY EMPTY_VMA_FLAGS
  #endif
+ #ifdef CONFIG_ARCH_HAS_PKEYS
+ #define VM_PKEY_SHIFT ((__force int)VMA_HIGH_ARCH_0_BIT)
+@@ -532,6 +534,8 @@ enum {
  
--static inline pgprot_t vma_get_page_prot(vma_flags_t vma_flags)
-+static inline pgprot_t vma_flags_to_page_prot(vma_flags_t vma_flags)
+ /* Bits set in the VMA until the stack is in its final location */
+ #define VM_STACK_INCOMPLETE_SETUP (VM_RAND_READ | VM_SEQ_READ | VM_STACK_EARLY)
++#define VMA_STACK_INCOMPLETE_SETUP append_vma_flags(		\
++	VMA_STACK_EARLY, VMA_RAND_READ_BIT, VMA_SEQ_READ_BIT)
+ 
+ #define TASK_EXEC_BIT ((current->personality & READ_IMPLIES_EXEC) ? \
+ 		       VMA_EXEC_BIT : VMA_READ_BIT)
+diff --git a/mm/vma_exec.c b/mm/vma_exec.c
+index b01c4964f2c9..48c783e73cf3 100644
+--- a/mm/vma_exec.c
++++ b/mm/vma_exec.c
+@@ -112,15 +112,17 @@ int relocate_vma_down(struct vm_area_struct *vma, unsigned long shift)
+ int create_init_stack_vma(struct mm_struct *mm, struct vm_area_struct **vmap,
+ 			  unsigned long *top_mem_p)
  {
- 	const vm_flags_t vm_flags = vma_flags_to_legacy(vma_flags);
+-	unsigned long flags = VM_STACK_FLAGS | VM_STACK_INCOMPLETE_SETUP;
++	vma_flags_t flags = VMA_STACK_INCOMPLETE_SETUP;
++	struct vm_area_struct *vma;
+ 	int err;
+-	struct vm_area_struct *vma = vm_area_alloc(mm);
  
++	/* VMA_STACK_FLAGS and VMA_STACK_INCOMPLETE_SETUP must not overlap. */
++	VM_WARN_ON_ONCE(vma_flags_test_any_mask(&flags, VMA_STACK_FLAGS));
++
++	vma = vm_area_alloc(mm);
+ 	if (!vma)
+ 		return -ENOMEM;
+ 
+-	vma_set_anonymous(vma);
+-
+ 	if (mmap_write_lock_killable(mm)) {
+ 		err = -EINTR;
+ 		goto err_free;
+@@ -134,18 +136,20 @@ int create_init_stack_vma(struct mm_struct *mm, struct vm_area_struct **vmap,
+ 	if (err)
+ 		goto err_ksm;
+ 
++	vma_flags_set_mask(&flags, VMA_STACK_FLAGS);
++	vma_set_anonymous(vma);
++
+ 	/*
+ 	 * Place the stack at the largest stack address the architecture
+ 	 * supports. Later, we'll move this to an appropriate place. We don't
+ 	 * use STACK_TOP because that can depend on attributes which aren't
+ 	 * configured yet.
+ 	 */
+-	VM_WARN_ON_ONCE(VM_STACK_FLAGS & VM_STACK_INCOMPLETE_SETUP);
+ 	vma->vm_end = STACK_TOP_MAX;
+ 	vma->vm_start = vma->vm_end - PAGE_SIZE;
+ 	if (pgtable_supports_soft_dirty())
+-		flags |= VM_SOFTDIRTY;
+-	vm_flags_init(vma, flags);
++		vma_flags_set(&flags, VMA_SOFTDIRTY_BIT);
++	vma->flags = flags;
+ 	vma->vm_page_prot = vma_get_page_prot(vma);
+ 
+ 	err = insert_vm_struct(mm, vma);
 -- 
 2.54.0
 
