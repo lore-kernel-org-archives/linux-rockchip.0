@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E94C43458
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 13:26:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BDB8C43602
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 13:27:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AAxEUfLmoR/Odl37rtmKECrtEO7A7kMVfyX+4NLN//s=; b=AZfe5L1adLJOwj
-	2NBe0iVTMRoT+S2xScENLOkTJ+Fs0rtr/Q+xT/RLeSoN0+UIcLQL/kG9iNNpu8u6hTabe3gP8zkS2
-	+rw+SjULMKbdN3QPFwRwJBXGD9pI60mxV2S4lXkBDKcPEEG96Y8jgDvfBUzBfF7L5GSDcCCkcSKUH
-	8V2HILPRCVHbRGnzsN2taCQfdXSVkm258N8Dvyizg/3laaUyFIMj68Eo81LzYepYySYwJn5hcFSH0
-	f53xIN0t9gE1IImbMcLuLuhepzGE6RrUf3XlVvUmAnO7vD0tmCOQYNx/4fr7OyGAr4pCWtjZv1Rlo
-	9mPEAVRq+ZssGzFnFbzg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7AVkSEA7IoHPiHDZvhC0Sbv3Z3xAtTlclkjwZUVtDvk=; b=vJPZxMPhEjMehb
+	XowsQLqB6wjWbUY5zUBnFO3veQ6kYDvL3YVXJXo4FFBofsdvDfOn236aNqmaz1kF0Wi7VFpKhmLrP
+	wUduIyd/20u40iRnwin7TveBsXq6lqLsEhPFZtf8j5KeVa1ap6d3LRx14TwAbJdCrIEENRA0FsCWE
+	7ErghcIOT6WY1gN3pjn6j8U5ccqGfF6ChrQ8tXd172lkEwLFuQWDElxQ6XneZXwkJWb/BagdOPZRL
+	OAf9iVNmMYoLtBDCnEow3OPRJg1aheEDx6MbG0mGkx2fpA+pvvhEwWhbX0Kq7tidi1qXLQbQWFYKa
+	AcYBiddbNrzfV5mbbaug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weC0g-0000000Eji2-3U21;
-	Mon, 29 Jun 2026 13:26:50 +0000
+	id 1weC0n-0000000Ejl9-1DWS;
+	Mon, 29 Jun 2026 13:26:57 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weC0f-0000000EjhH-0QZG;
-	Mon, 29 Jun 2026 13:26:49 +0000
+	id 1weC0l-0000000Ejk2-20o9;
+	Mon, 29 Jun 2026 13:26:55 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D85BE600AA;
+	by tor.source.kernel.org (Postfix) with ESMTP id D677E600AF;
+	Mon, 29 Jun 2026 13:26:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 105821F00A3A;
 	Mon, 29 Jun 2026 13:26:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F74D1F000E9;
-	Mon, 29 Jun 2026 13:26:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782739607;
-	bh=fhZO9CCgyPTpV3ZQrTdwjnuLM+E9OikVfMuSHmZTx2M=;
-	h=From:To:Cc:Subject:Date;
-	b=KD4wn8FGWGE30eCOOOA+dBSAHZGgiXwZF29kfKE4F2uQuFsP5YxhKF+kJLGZQW+xN
-	 c1FQZuucS/z/TV0fUUP3z4XSiOfaV3yT+/2dhnHni5ghGczyBnpiiVQ4ssE+H6KI6m
-	 MB5KQA2l+xKim04AISyQhaPf4EpWJZCa1m2px2f9EeLMQklyKDL02qd8dJNCvthmg8
-	 6PFfsK+SnbxyFSGpVQU5s9PrLcj+ipaSFtc1VHy+j8TWTBJDs/nEBBWvwVfu9LYai2
-	 5NMag8oZZwUnP9IBEXZ+74fbYASdIvn/nsUwGvCqlg0YWSzWL9DSAQY7zE04B/0xQI
-	 Auc5QmUPHo7UQ==
+	s=k20260515; t=1782739614;
+	bh=b0dX5alvYQuIivg+kOnERfEMXVJLp3wlDg5lsC12OaY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=fVCi9ZLnm4+TddndYqvm79lnginO2Gsne0/ZxbnCe6aTdbaf0AqjTZZLYSKzpUBuH
+	 guVmEeRuYgzuqA5ymhvoSGhrf1pXcWPLG2tlXwCLiOA4/HQqlgw2qN6LSHODRkoDeh
+	 sJ8iOQxBcg0NxxPKpFJ3WHMErZ4YkUUv/S75IHw/pBYcWIW4ZuQuiHjALOyc+Pr5P4
+	 DFL8anQLwNaulXzvUQwgjkQmTm5tudJcZWG1TgQoeZj1hXRKtQDFHzjbJYE1VOMfN/
+	 2ecatvnjyQ7j8djIqF/vgW1jpBLqRTvOCOMfWxusPqMXE6I20Kdk3Yel/6Sxz0f0M5
+	 mdjl3hgFUWtCQ==
 From: Arnd Bergmann <arnd@kernel.org>
 To: linux-gpio@vger.kernel.org
 Cc: Arnd Bergmann <arnd@arndb.de>,
@@ -76,10 +76,12 @@ Cc: Arnd Bergmann <arnd@arndb.de>,
 	linux-phy@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-sound@vger.kernel.org
-Subject: [PATCH 00/13] treewide: replace linux/gpio.h
-Date: Mon, 29 Jun 2026 15:26:20 +0200
-Message-Id: <20260629132633.1300009-1-arnd@kernel.org>
+Subject: [PATCH 01/13] ARM: replace linux/gpio.h inclusions
+Date: Mon, 29 Jun 2026 15:26:21 +0200
+Message-Id: <20260629132633.1300009-2-arnd@kernel.org>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20260629132633.1300009-1-arnd@kernel.org>
+References: <20260629132633.1300009-1-arnd@kernel.org>
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,166 +94,641 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4KClRoZSBsaW51eC9ncGlvLmggaGVh
-ZGVyIHVzZWQgdG8gYmUgdGhlIGdsb2JhbCBkZWZpbml0aW9uIGZvciB0aGUgZ3BpbwppbnRlcmZh
-Y2VzLCB3aXRoIDExMDAgdXNlcnMgYmFjayBpbiBsaW51eC0zLjE3LiBJbiBsaW51eC03LjIsIG9u
-bHkgYWJvdXQKMTMwIG9mIHRob3NlIHJlbWFpbiwgc28gdGhpcyBzZXJpZXMgY2xlYW5zIG91dCB0
-aGUgcmVzdC4KCkluIGVhY2ggc3Vic3lzdGVtLCB3ZSBjYW4gcmVwbGFjZSB0aGUgaGVhZGVyIGVp
-dGhlciB3aXRoCmxpbnV4L2dwaW8vY29uc3VtZXIuaCBmb3IgdXNlcnMgb2YgdGhlIG1vZGVybiBn
-cGlvIGRlc2NyaXB0b3IgaW50ZXJmYWNlLApvciBsaW51eC9ncGlvL2xlZ2FjeS5oIGZvciB0aGUg
-ZmV3IHJlbWFpbmluZyB1c2VycyBvZiB0aGUgb2xkIG51bWJlcgpiYXNlZCBpbnRlcmZhY2UuCgpB
-bGwgcGF0Y2hlcyBpbiB0aGlzIHNlcmllcyBjYW4gZ2V0IGFwcGxpZWQgaW5kZXBlbmRlbnRseSwg
-c28gbXkKcHJlZmVyZW5jZSB3b3VsZCBiZSBmb3IgZWFjaCBzdWJzeXN0ZW0gbWFpbnRhaW5lciB0
-byBhcHBseSB0aGVzZQpkaXJlY3RseSwgd2l0aCB0aGUgcmVzdCBnb2luZyBpbnRvIHRoZSBncGlv
-IHRyZWUgYXQgc29tZSBwb2ludC4KClRoZSBmaW5hbCBwYXRjaCBoZXJlIG9idmlvdXNseSBuZWVk
-cyB0byB3YWl0IGZvciBhbGwgdGhlIG90aGVycwp0byBnZXQgbWVyZ2VkIGZpcnN0LgoKICAgICAg
-QXJuZAoKQXJuZCBCZXJnbWFubiAoMTMpOgogIEFSTTogcmVwbGFjZSBsaW51eC9ncGlvLmggaW5j
-bHVzaW9ucwogIG02OGsvY29sZGZpcmU6IHJlcGxhY2UgbGludXgvZ3Bpby5oIGluY2x1c2lvbnMK
-ICBtaXBzOiByZXBsYWNlIGxpbnV4L2dwaW8uaCBpbmNsdXNpb25zCiAgc2g6IHJlcGxhY2UgbGlu
-dXgvZ3Bpby5oIGluY2x1c2lvbnMKICBtZmQ6IHJlcGxhY2UgbGludXgvZ3Bpby5oIGluY2x1c2lv
-bnMKICBbbmV0LW5leHRdIG5ldDogcmVwbGFjZSBsaW51eC9ncGlvLmggaW5jbHVzaW9ucwogIEFT
-b0M6IHJlcGxhY2UgbGludXgvZ3Bpby5oIGluY2x1c2lvbnMKICBwY21jaWE6IHJlcGxhY2UgbGlu
-dXgvZ3Bpby5oIGluY2x1c2lvbnMKICBwaHk6IHJlcGxhY2UgbGludXgvZ3Bpby5oIGluY2x1c2lv
-bnMKICBtZWRpYTogcmVwbGFjZSBsaW51eC9ncGlvLmggaW5jbHVzaW9ucwogIElucHV0OiBtYXRy
-aXhfa2V5Ym9hcmQgLSByZXBsYWNlIGxpbnV4L2dwaW8uaCBpbmNsdXNpb24KICBncGliOiBncGlv
-OiByZXBsYWNlIGxpbnV4L2dwaW8uaCBpbmNsdXNpb24KICBncGlvbGliOiByZW1vdmUgbGludXgv
-Z3Bpby5oCgogTUFJTlRBSU5FUlMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg
-IDEgLQogYXJjaC9hcm0vbWFjaC1kYXZpbmNpL2RhODUwLmMgICAgICAgICAgICAgICAgIHwgIDIg
-Ky0KIGFyY2gvYXJtL21hY2gtZG92ZS9tcHAuYyAgICAgICAgICAgICAgICAgICAgICB8ICAyICst
-CiBhcmNoL2FybS9tYWNoLW12Nzh4eDAvYnVmZmFsby13eGwtc2V0dXAuYyAgICAgfCAgMiArLQog
-YXJjaC9hcm0vbWFjaC1tdjc4eHgwL2lycS5jICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFy
-Y2gvYXJtL21hY2gtbXY3OHh4MC9tcHAuYyAgICAgICAgICAgICAgICAgICB8ICAyICstCiBhcmNo
-L2FybS9tYWNoLW12ZWJ1L3BtLmMgICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQogYXJjaC9h
-cm0vbWFjaC1teHMvbWFjaC1teHMuYyAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJt
-L21hY2gtb3Jpb241eC9ib2FyZC1kMm5ldC5jICAgICAgICAgICB8ICAyICstCiBhcmNoL2FybS9t
-YWNoLW9yaW9uNXgvYm9hcmQtcmQ4OGY1MTgyLmMgICAgICAgfCAgMiArLQogYXJjaC9hcm0vbWFj
-aC1vcmlvbjV4L2RuczMyMy1zZXR1cC5jICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL21hY2gt
-b3Jpb241eC9pcnEuYyAgICAgICAgICAgICAgICAgICB8ICAyICstCiBhcmNoL2FybS9tYWNoLW9y
-aW9uNXgva3Vyb2JveF9wcm8tc2V0dXAuYyAgICAgfCAgMiArLQogYXJjaC9hcm0vbWFjaC1vcmlv
-bjV4L212MjEyMC1zZXR1cC5jICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL21hY2gtb3Jpb241
-eC9uZXQyYmlnLXNldHVwLmMgICAgICAgICB8ICAyICstCiAuLi4vYXJtL21hY2gtb3Jpb241eC90
-ZXJhc3RhdGlvbl9wcm8yLXNldHVwLmMgfCAgMiArLQogYXJjaC9hcm0vbWFjaC1vcmlvbjV4L3Rz
-MjA5LXNldHVwLmMgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL21hY2gtb3Jpb241eC90czQw
-OS1zZXR1cC5jICAgICAgICAgICB8ICAyICstCiBhcmNoL2FybS9tYWNoLXB4YS9hbTIwMGVwZC5j
-ICAgICAgICAgICAgICAgICAgfCAgMiArLQogYXJjaC9hcm0vbWFjaC1weGEvYW0zMDBlcGQuYyAg
-ICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL21hY2gtcHhhL2dlbmVyaWMuYyAgICAg
-ICAgICAgICAgICAgICB8ICAyICstCiBhcmNoL2FybS9tYWNoLXB4YS9ndW1zdGl4LmMgICAgICAg
-ICAgICAgICAgICAgfCAgMiArLQogYXJjaC9hcm0vbWFjaC1weGEvbWZwLXB4YTJ4eC5jICAgICAg
-ICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL21hY2gtcHhhL3B4YTI1eC5jICAgICAgICAgICAg
-ICAgICAgICB8ICAyICstCiBhcmNoL2FybS9tYWNoLXB4YS9weGEyN3guYyAgICAgICAgICAgICAg
-ICAgICAgfCAgMiArLQogYXJjaC9hcm0vbWFjaC1weGEvcmVzZXQuYyAgICAgICAgICAgICAgICAg
-ICAgIHwgIDIgKy0KIGFyY2gvYXJtL21hY2gtcHhhL3NoYXJwc2xfcG0uYyAgICAgICAgICAgICAg
-ICB8ICAyICstCiBhcmNoL2FybS9tYWNoLXB4YS9zcGl0ei5jICAgICAgICAgICAgICAgICAgICAg
-fCAgMiArLQogYXJjaC9hcm0vbWFjaC1weGEvc3BpdHpfcG0uYyAgICAgICAgICAgICAgICAgIHwg
-IDIgKy0KIGFyY2gvYXJtL21hY2gtczNjL2Rldi1hdWRpby1zM2M2NHh4LmMgICAgICAgICB8ICAy
-ICstCiBhcmNoL2FybS9tYWNoLXMzYy9kZXZzLmMgICAgICAgICAgICAgICAgICAgICAgfCAgMiAr
-LQogYXJjaC9hcm0vbWFjaC1zM2MvbWFjaC1jcmFnNjQxMC5jICAgICAgICAgICAgIHwgIDIgKy0K
-IGFyY2gvYXJtL21hY2gtczNjL3BtLWdwaW8uYyAgICAgICAgICAgICAgICAgICB8ICAyICstCiBh
-cmNoL2FybS9tYWNoLXMzYy9wbS1zM2M2NHh4LmMgICAgICAgICAgICAgICAgfCAgMiArLQogYXJj
-aC9hcm0vbWFjaC1zM2Mvc2V0dXAtZmItMjRicHAtczNjNjR4eC5jICAgIHwgIDIgKy0KIGFyY2gv
-YXJtL21hY2gtczNjL3NldHVwLWkyYzAtczNjNjR4eC5jICAgICAgICB8ICAyICstCiBhcmNoL2Fy
-bS9tYWNoLXMzYy9zZXR1cC1pMmMxLXMzYzY0eHguYyAgICAgICAgfCAgMiArLQogYXJjaC9hcm0v
-bWFjaC1zM2Mvc2V0dXAta2V5cGFkLXMzYzY0eHguYyAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL21h
-Y2gtczNjL3NldHVwLXNkaGNpLWdwaW8tczNjNjR4eC5jICB8ICAyICstCiBhcmNoL2FybS9tYWNo
-LXMzYy9zZXR1cC1zcGktczNjNjR4eC5jICAgICAgICAgfCAgMiArLQogYXJjaC9hcm0vbWFjaC1z
-YTExMDAvY29sbGllLmMgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL21hY2gtc2Ex
-MTAwL2dlbmVyaWMuYyAgICAgICAgICAgICAgICB8ICAyICstCiBhcmNoL2FybS9tYWNoLXNhMTEw
-MC9oMzYwMC5jICAgICAgICAgICAgICAgICAgfCAgMiArLQogYXJjaC9hcm0vbWFjaC1zYTExMDAv
-aDN4eHguYyAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvYXJtL3BsYXQtb3Jpb24vbXBw
-LmMgICAgICAgICAgICAgICAgICAgICB8ICAyICstCiBhcmNoL202OGsvY29sZGZpcmUvZGV2aWNl
-LmMgICAgICAgICAgICAgICAgICAgfCAgMiArLQogYXJjaC9tNjhrL2luY2x1ZGUvYXNtL21jZmdw
-aW8uaCAgICAgICAgICAgICAgIHwgIDIgKy0KIGFyY2gvbWlwcy9hbGNoZW15L2JvYXJkLXh4czE1
-MDAuYyAgICAgICAgICAgICB8ICAyICstCiBhcmNoL21pcHMvYWxjaGVteS9kZXZib2FyZHMvZGIx
-MDAwLmMgICAgICAgICAgfCAgMiArLQogYXJjaC9taXBzL2FsY2hlbXkvZGV2Ym9hcmRzL2RiMTIw
-MC5jICAgICAgICAgIHwgIDIgKy0KIGFyY2gvbWlwcy9hbGNoZW15L2RldmJvYXJkcy9kYjE1NTAu
-YyAgICAgICAgICB8ICAyICstCiBhcmNoL21pcHMvYmNtNDd4eC93b3JrYXJvdW5kcy5jICAgICAg
-ICAgICAgICAgfCAgMiArLQogYXJjaC9taXBzL2JjbTYzeHgvYm9hcmRzL2JvYXJkX2JjbTk2M3h4
-LmMgICAgIHwgIDEgKwogLi4uL2luY2x1ZGUvYXNtL21hY2gtYmNtNjN4eC9ib2FyZF9iY205NjN4
-eC5oIHwgIDIgKy0KIGFyY2gvbWlwcy90eHg5L3JidHg0OTI3L3NldHVwLmMgICAgICAgICAgICAg
-ICB8ICAyICstCiBhcmNoL3NoL2JvYXJkcy9ib2FyZC1tYWdpY3BhbmVscjIuYyAgICAgICAgICAg
-fCAgMiArLQogYXJjaC9zaC9ib2FyZHMvYm9hcmQtc2g3NzU3bGNyLmMgICAgICAgICAgICAgIHwg
-IDIgKy0KIGFyY2gvc2gvYm9hcmRzL2JvYXJkLXVycXVlbGwuYyAgICAgICAgICAgICAgICB8ICAy
-ICstCiBhcmNoL3NoL2JvYXJkcy9tYWNoLWFwMzI1cnhhL3NldHVwLmMgICAgICAgICAgfCAgMiAr
-LQogYXJjaC9zaC9ib2FyZHMvbWFjaC1lY292ZWMyNC9zZXR1cC5jICAgICAgICAgIHwgIDIgKy0K
-IC4uLi9ib2FyZHMvbWFjaC1oaWdobGFuZGVyL3Bpbm11eC1yNzc4NXJwLmMgICB8ICAyICstCiBh
-cmNoL3NoL2JvYXJkcy9tYWNoLWtmcjJyMDkvbGNkX3dxdmdhLmMgICAgICAgfCAgMiArLQogYXJj
-aC9zaC9ib2FyZHMvbWFjaC1rZnIycjA5L3NldHVwLmMgICAgICAgICAgIHwgIDIgKy0KIGFyY2gv
-c2gvYm9hcmRzL21hY2gtbWlnb3IvbGNkX3F2Z2EuYyAgICAgICAgICB8ICAyICstCiBhcmNoL3No
-L2JvYXJkcy9tYWNoLW1pZ29yL3NldHVwLmMgICAgICAgICAgICAgfCAgMiArLQogYXJjaC9zaC9i
-b2FyZHMvbWFjaC1yc2svZGV2aWNlcy1yc2s3MjAzLmMgICAgIHwgIDIgKy0KIGFyY2gvc2gvYm9h
-cmRzL21hY2gtcnNrL2RldmljZXMtcnNrNzI2OS5jICAgICB8ICAxIC0KIGFyY2gvc2gvYm9hcmRz
-L21hY2gtc2UvNzcyNC9zZXR1cC5jICAgICAgICAgICB8ICAyICstCiAuLi4vaW5jbHVkZS9tYWNo
-LWNvbW1vbi9tYWNoL21hZ2ljcGFuZWxyMi5oICAgfCAgMiAtLQogYXJjaC9zaC9rZXJuZWwvY3B1
-L3NoNGEvc2V0dXAtc2h4My5jICAgICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvZ3BpYi9ncGlvL2dw
-aWJfYml0YmFuZy5jICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwaW8vVE9ETyAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgfCAgNCArLS0tCiBkcml2ZXJzL2dwaW8vZ3Bpb2xpYi1j
-ZGV2LmMgICAgICAgICAgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9ncGlvL2dwaW9saWItbGVn
-YWN5LmMgICAgICAgICAgICAgICAgIHwgIDMgKy0tCiBkcml2ZXJzL2dwaW8vZ3Bpb2xpYi5jICAg
-ICAgICAgICAgICAgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9pbnB1dC9rZXlib2FyZC9tYXRy
-aXhfa2V5cGFkLmMgICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvbWVkaWEvcGNpL2RkYnJpZGdlL2Rk
-YnJpZGdlLmggICAgICAgICB8ICAyICstCiAuLi4vcGxhdGZvcm0vc2Ftc3VuZy9zM2MtY2FtaWYv
-Y2FtaWYtY29yZS5jICAgfCAgMiArLQogZHJpdmVycy9tZWRpYS91c2IvZW0yOHh4L2VtMjh4eC1k
-dmIuYyAgICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvbWZkL2FhdDI4NzAtY29yZS5jICAgICAgICAg
-ICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL21mZC9hcml6b25hLWlycS5jICAgICAgICAgICAg
-ICAgICAgICAgfCAgMiArLQogZHJpdmVycy9tZmQvbHAzOTQzLmMgICAgICAgICAgICAgICAgICAg
-ICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvbWZkL3NpNDc2eC1jbWQuYyAgICAgICAgICAgICAgICAg
-ICAgICB8ICAyICstCiBkcml2ZXJzL21mZC9zaTQ3NngtaTJjLmMgICAgICAgICAgICAgICAgICAg
-ICAgfCAgMiArLQogZHJpdmVycy9tZmQvc201MDEuYyAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHwgIDIgKy0KIGRyaXZlcnMvbWZkL3RwczYxMDV4LmMgICAgICAgICAgICAgICAgICAgICAgICB8
-ICAyICstCiBkcml2ZXJzL21mZC90cHM2NTkxMS1jb21wYXJhdG9yLmMgICAgICAgICAgICAgfCAg
-MiArLQogZHJpdmVycy9tZmQvd204OTk0LWlycS5jICAgICAgICAgICAgICAgICAgICAgIHwgIDIg
-Ky0KIGRyaXZlcnMvbmV0L2RzYS9iNTMvYjUzX3ByaXYuaCAgICAgICAgICAgICAgICB8ICAzICsr
-LQogZHJpdmVycy9uZXQvZHNhL21pY3JvY2hpcC9rc3o4LmMgICAgICAgICAgICAgIHwgIDIgKy0K
-IGRyaXZlcnMvbmV0L2V0aGVybmV0L2FsbHdpbm5lci9zdW40aS1lbWFjLmMgICB8ICAyICstCiAu
-Li4vbmV0L2V0aGVybmV0L2FwbS94Z2VuZS94Z2VuZV9lbmV0X21haW4uYyAgfCAgMiArLQogLi4u
-L2V0aGVybmV0L29raS1zZW1pL3BjaF9nYmUvcGNoX2diZV9tYWluLmMgIHwgIDIgKy0KIGRyaXZl
-cnMvbmV0L3BoeS9tZGlvX2RldmljZS5jICAgICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJz
-L3BjbWNpYS9iY202M3h4X3BjbWNpYS5jICAgICAgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9w
-Y21jaWEvZGIxeHh4X3NzLmMgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvcGNt
-Y2lhL3NhMTEwMF9oMzYwMC5jICAgICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL3BjbWNp
-YS9zb2NfY29tbW9uLmMgICAgICAgICAgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9wY21jaWEv
-eHhzMTUwMF9zcy5jICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGRyaXZlcnMvcGh5L2Jyb2Fk
-Y29tL3BoeS1iY20tbnMyLXVzYmRyZC5jICAgICB8ICAyICstCiBkcml2ZXJzL3BoeS9yb2NrY2hp
-cC9waHktcm9ja2NoaXAtdXNiZHAuYyAgICAgfCAgMiArLQogZHJpdmVycy9waHkvdGkvcGh5LWo3
-MjFlLXdpei5jICAgICAgICAgICAgICAgIHwgIDIgKy0KIGluY2x1ZGUvbGludXgvZ3Bpby5oICAg
-ICAgICAgICAgICAgICAgICAgICAgICB8IDIyIC0tLS0tLS0tLS0tLS0tLS0tLS0KIGluY2x1ZGUv
-bGludXgvbWZkL2xwMzk0My5oICAgICAgICAgICAgICAgICAgICB8ICAyICstCiBpbmNsdWRlL2xp
-bnV4L21mZC90aS1sbXUuaCAgICAgICAgICAgICAgICAgICAgfCAgMiArLQogaW5jbHVkZS9saW51
-eC9tZmQvdHBzNjU5MTAuaCAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIGluY2x1ZGUvbGludXgv
-bWZkL3VjYjF4MDAuaCAgICAgICAgICAgICAgICAgICB8ICAyICstCiBzb3VuZC9zb2MvY29kZWNz
-L2NzNDJsODQuYyAgICAgICAgICAgICAgICAgICAgfCAgMiArLQogc291bmQvc29jL2NvZGVjcy9j
-eDIwNzJ4LmMgICAgICAgICAgICAgICAgICAgIHwgIDIgKy0KIHNvdW5kL3NvYy9jb2RlY3MvZG1p
-Yy5jICAgICAgICAgICAgICAgICAgICAgICB8ICAyICstCiAxMTAgZmlsZXMgY2hhbmdlZCwgMTA3
-IGluc2VydGlvbnMoKyksIDEzNCBkZWxldGlvbnMoLSkKIGRlbGV0ZSBtb2RlIDEwMDY0NCBpbmNs
-dWRlL2xpbnV4L2dwaW8uaAoKLS0gCjIuMzkuNQoKQ2M6IEJhcnRvc3ogR29sYXN6ZXdza2kgPGJy
-Z2xAa2VybmVsLm9yZz4KQ2M6IEFuZHJldyBMdW5uIDxhbmRyZXdAbHVubi5jaD4KQ2M6IFNlYmFz
-dGlhbiBIZXNzZWxiYXJ0aCA8c2ViYXN0aWFuLmhlc3NlbGJhcnRoQGdtYWlsLmNvbT4KQ2M6IEdy
-ZWdvcnkgQ2xlbWVudCA8Z3JlZ29yeS5jbGVtZW50QGJvb3RsaW4uY29tPgpDYzogRnJhbmsgTGkg
-PEZyYW5rLkxpQG54cC5jb20+CkNjOiBSb2JlcnQgSmFyem1payA8cm9iZXJ0LmphcnptaWtAZnJl
-ZS5mcj4KQ2M6IEtyenlzenRvZiBLb3psb3dza2kgPGtyemtAa2VybmVsLm9yZz4KQ2M6IEdyZWcg
-VW5nZXJlciA8Z2VyZ0BsaW51eC1tNjhrLm9yZz4KQ2M6IFRob21hcyBCb2dlbmRvZXJmZXIgPHRz
-Ym9nZW5kQGFscGhhLmZyYW5rZW4uZGU+CkNjOiBIYXVrZSBNZWhydGVucyA8aGF1a2VAaGF1a2Ut
-bS5kZT4KQ2M6ICJSYWZhxYIgTWnFgmVja2kiIDx6YWplYzVAZ21haWwuY29tPgpDYzogWW9zaGlu
-b3JpIFNhdG8gPHlzYXRvQHVzZXJzLnNvdXJjZWZvcmdlLmpwPgpDYzogSm9obiBQYXVsIEFkcmlh
-biBHbGF1Yml0eiA8Z2xhdWJpdHpAcGh5c2lrLmZ1LWJlcmxpbi5kZT4KQ2M6IExpbnVzIFdhbGxl
-aWogPGxpbnVzd0BrZXJuZWwub3JnPgpDYzogRG1pdHJ5IFRvcm9raG92IDxkbWl0cnkudG9yb2to
-b3ZAZ21haWwuY29tPgpDYzogSmFrdWIgS2ljaW5za2kgPGt1YmFAa2VybmVsLm9yZz4KQ2M6IFBh
-b2xvIEFiZW5pIDxwYWJlbmlAcmVkaGF0LmNvbT4KQ2M6IERvbWluaWsgQnJvZG93c2tpIDxsaW51
-eEBkb21pbmlrYnJvZG93c2tpLm5ldD4KQ2M6IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmcK
-Q2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpDYzogbGludXgtc2Ftc3Vu
-Zy1zb2NAdmdlci5rZXJuZWwub3JnCkNjOiBwYXRjaGVzQG9wZW5zb3VyY2UuY2lycnVzLmNvbQpD
-YzogbGludXgtbTY4a0BsaXN0cy5saW51eC1tNjhrLm9yZwpDYzogbGludXgtbWlwc0B2Z2VyLmtl
-cm5lbC5vcmcKQ2M6IGxpbnV4LXNoQHZnZXIua2VybmVsLm9yZwpDYzogbGludXgtZ3Bpb0B2Z2Vy
-Lmtlcm5lbC5vcmcKQ2M6IGxpbnV4LWlucHV0QHZnZXIua2VybmVsLm9yZwpDYzogbGludXgtbWVk
-aWFAdmdlci5rZXJuZWwub3JnCkNjOiBuZXRkZXZAdmdlci5rZXJuZWwub3JnCkNjOiBsaW51eC1z
-dW54aUBsaXN0cy5saW51eC5kZXYKQ2M6IGxpbnV4LXBoeUBsaXN0cy5pbmZyYWRlYWQub3JnCkNj
-OiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCkNjOiBsaW51eC1zb3VuZEB2Z2Vy
-Lmtlcm5lbC5vcmcKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+From: Arnd Bergmann <arnd@arndb.de>
+
+linux/gpio.h should no longer be used, convert these instead to
+either linux/gpio/consumer.h or linux/gpio/legacy.h as needed.
+
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ arch/arm/mach-davinci/da850.c                  | 2 +-
+ arch/arm/mach-dove/mpp.c                       | 2 +-
+ arch/arm/mach-mv78xx0/buffalo-wxl-setup.c      | 2 +-
+ arch/arm/mach-mv78xx0/irq.c                    | 2 +-
+ arch/arm/mach-mv78xx0/mpp.c                    | 2 +-
+ arch/arm/mach-mvebu/pm.c                       | 2 +-
+ arch/arm/mach-mxs/mach-mxs.c                   | 2 +-
+ arch/arm/mach-orion5x/board-d2net.c            | 2 +-
+ arch/arm/mach-orion5x/board-rd88f5182.c        | 2 +-
+ arch/arm/mach-orion5x/dns323-setup.c           | 2 +-
+ arch/arm/mach-orion5x/irq.c                    | 2 +-
+ arch/arm/mach-orion5x/kurobox_pro-setup.c      | 2 +-
+ arch/arm/mach-orion5x/mv2120-setup.c           | 2 +-
+ arch/arm/mach-orion5x/net2big-setup.c          | 2 +-
+ arch/arm/mach-orion5x/terastation_pro2-setup.c | 2 +-
+ arch/arm/mach-orion5x/ts209-setup.c            | 2 +-
+ arch/arm/mach-orion5x/ts409-setup.c            | 2 +-
+ arch/arm/mach-pxa/am200epd.c                   | 2 +-
+ arch/arm/mach-pxa/am300epd.c                   | 2 +-
+ arch/arm/mach-pxa/generic.c                    | 2 +-
+ arch/arm/mach-pxa/gumstix.c                    | 2 +-
+ arch/arm/mach-pxa/mfp-pxa2xx.c                 | 2 +-
+ arch/arm/mach-pxa/pxa25x.c                     | 2 +-
+ arch/arm/mach-pxa/pxa27x.c                     | 2 +-
+ arch/arm/mach-pxa/reset.c                      | 2 +-
+ arch/arm/mach-pxa/sharpsl_pm.c                 | 2 +-
+ arch/arm/mach-pxa/spitz.c                      | 2 +-
+ arch/arm/mach-pxa/spitz_pm.c                   | 2 +-
+ arch/arm/mach-s3c/dev-audio-s3c64xx.c          | 2 +-
+ arch/arm/mach-s3c/devs.c                       | 2 +-
+ arch/arm/mach-s3c/mach-crag6410.c              | 2 +-
+ arch/arm/mach-s3c/pm-gpio.c                    | 2 +-
+ arch/arm/mach-s3c/pm-s3c64xx.c                 | 2 +-
+ arch/arm/mach-s3c/setup-fb-24bpp-s3c64xx.c     | 2 +-
+ arch/arm/mach-s3c/setup-i2c0-s3c64xx.c         | 2 +-
+ arch/arm/mach-s3c/setup-i2c1-s3c64xx.c         | 2 +-
+ arch/arm/mach-s3c/setup-keypad-s3c64xx.c       | 2 +-
+ arch/arm/mach-s3c/setup-sdhci-gpio-s3c64xx.c   | 2 +-
+ arch/arm/mach-s3c/setup-spi-s3c64xx.c          | 2 +-
+ arch/arm/mach-sa1100/collie.c                  | 2 +-
+ arch/arm/mach-sa1100/generic.c                 | 2 +-
+ arch/arm/mach-sa1100/h3600.c                   | 2 +-
+ arch/arm/mach-sa1100/h3xxx.c                   | 2 +-
+ arch/arm/plat-orion/mpp.c                      | 2 +-
+ 44 files changed, 44 insertions(+), 44 deletions(-)
+
+diff --git a/arch/arm/mach-davinci/da850.c b/arch/arm/mach-davinci/da850.c
+index 706f8241b5e7..611cce70c5bb 100644
+--- a/arch/arm/mach-davinci/da850.c
++++ b/arch/arm/mach-davinci/da850.c
+@@ -9,7 +9,7 @@
+  * 2009 (c) MontaVista Software, Inc.
+  */
+ 
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/init.h>
+ #include <linux/io.h>
+ #include <linux/mfd/da8xx-cfgchip.h>
+diff --git a/arch/arm/mach-dove/mpp.c b/arch/arm/mach-dove/mpp.c
+index 93cb137da5f8..e41bd473abe9 100644
+--- a/arch/arm/mach-dove/mpp.c
++++ b/arch/arm/mach-dove/mpp.c
+@@ -6,7 +6,7 @@
+  */
+ 
+ #include <linux/kernel.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/io.h>
+ #include <plat/mpp.h>
+ #include <plat/orion-gpio.h>
+diff --git a/arch/arm/mach-mv78xx0/buffalo-wxl-setup.c b/arch/arm/mach-mv78xx0/buffalo-wxl-setup.c
+index 62e982f74bc2..3b2e381b7383 100644
+--- a/arch/arm/mach-mv78xx0/buffalo-wxl-setup.c
++++ b/arch/arm/mach-mv78xx0/buffalo-wxl-setup.c
+@@ -14,7 +14,7 @@
+ #include <linux/mv643xx_eth.h>
+ #include <linux/ethtool.h>
+ #include <linux/i2c.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio_keys.h>
+ #include <linux/input.h>
+ #include <asm/mach-types.h>
+diff --git a/arch/arm/mach-mv78xx0/irq.c b/arch/arm/mach-mv78xx0/irq.c
+index a34b6855fb19..6e42f6446637 100644
+--- a/arch/arm/mach-mv78xx0/irq.c
++++ b/arch/arm/mach-mv78xx0/irq.c
+@@ -4,7 +4,7 @@
+  *
+  * MV78xx0 IRQ handling.
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/kernel.h>
+ #include <linux/irq.h>
+ #include <linux/io.h>
+diff --git a/arch/arm/mach-mv78xx0/mpp.c b/arch/arm/mach-mv78xx0/mpp.c
+index aff0e612cbba..32bf590d79fe 100644
+--- a/arch/arm/mach-mv78xx0/mpp.c
++++ b/arch/arm/mach-mv78xx0/mpp.c
+@@ -4,7 +4,7 @@
+  *
+  * MPP functions for Marvell MV78x00 SoCs
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/io.h>
+diff --git a/arch/arm/mach-mvebu/pm.c b/arch/arm/mach-mvebu/pm.c
+index b149d9b77505..616a7fb22d86 100644
+--- a/arch/arm/mach-mvebu/pm.c
++++ b/arch/arm/mach-mvebu/pm.c
+@@ -9,7 +9,7 @@
+ 
+ #include <linux/cpu_pm.h>
+ #include <linux/delay.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/io.h>
+ #include <linux/kernel.h>
+ #include <linux/mbus.h>
+diff --git a/arch/arm/mach-mxs/mach-mxs.c b/arch/arm/mach-mxs/mach-mxs.c
+index f639d5004351..c8231a480052 100644
+--- a/arch/arm/mach-mxs/mach-mxs.c
++++ b/arch/arm/mach-mxs/mach-mxs.c
+@@ -9,7 +9,7 @@
+ #include <linux/clkdev.h>
+ #include <linux/delay.h>
+ #include <linux/err.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/init.h>
+ #include <linux/reboot.h>
+ #include <linux/micrel_phy.h>
+diff --git a/arch/arm/mach-orion5x/board-d2net.c b/arch/arm/mach-orion5x/board-d2net.c
+index 09bf366d05ff..7cf09da9d9e7 100644
+--- a/arch/arm/mach-orion5x/board-d2net.c
++++ b/arch/arm/mach-orion5x/board-d2net.c
+@@ -13,7 +13,7 @@
+ #include <linux/pci.h>
+ #include <linux/irq.h>
+ #include <linux/leds.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio/machine.h>
+ #include <asm/mach-types.h>
+ #include <asm/mach/arch.h>
+diff --git a/arch/arm/mach-orion5x/board-rd88f5182.c b/arch/arm/mach-orion5x/board-rd88f5182.c
+index 1c14e49a90a6..9e2fe74ec68a 100644
+--- a/arch/arm/mach-orion5x/board-rd88f5182.c
++++ b/arch/arm/mach-orion5x/board-rd88f5182.c
+@@ -6,7 +6,7 @@
+  *
+  * Maintainer: Ronen Shitrit <rshitrit@marvell.com>
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/of.h>
+diff --git a/arch/arm/mach-orion5x/dns323-setup.c b/arch/arm/mach-orion5x/dns323-setup.c
+index fcd38ff7ca45..7b81b08b0dda 100644
+--- a/arch/arm/mach-orion5x/dns323-setup.c
++++ b/arch/arm/mach-orion5x/dns323-setup.c
+@@ -13,7 +13,7 @@
+  * License, or (at your option) any later version.
+  *
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio/machine.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+diff --git a/arch/arm/mach-orion5x/irq.c b/arch/arm/mach-orion5x/irq.c
+index e17727e53cb4..689bec1ebe89 100644
+--- a/arch/arm/mach-orion5x/irq.c
++++ b/arch/arm/mach-orion5x/irq.c
+@@ -6,7 +6,7 @@
+  *
+  * Maintainer: Tzachi Perelstein <tzachi@marvell.com>
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/kernel.h>
+ #include <linux/irq.h>
+ #include <linux/io.h>
+diff --git a/arch/arm/mach-orion5x/kurobox_pro-setup.c b/arch/arm/mach-orion5x/kurobox_pro-setup.c
+index 339b10891808..e61b9ab06943 100644
+--- a/arch/arm/mach-orion5x/kurobox_pro-setup.c
++++ b/arch/arm/mach-orion5x/kurobox_pro-setup.c
+@@ -4,7 +4,7 @@
+  *
+  * Maintainer: Ronen Shitrit <rshitrit@marvell.com>
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/platform_device.h>
+diff --git a/arch/arm/mach-orion5x/mv2120-setup.c b/arch/arm/mach-orion5x/mv2120-setup.c
+index 5b0249f109cd..b15fe5b7a0f9 100644
+--- a/arch/arm/mach-orion5x/mv2120-setup.c
++++ b/arch/arm/mach-orion5x/mv2120-setup.c
+@@ -7,7 +7,7 @@
+  * published by the Free Software Foundation; either version 2 of the
+  * License, or (at your option) any later version.
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio/machine.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+diff --git a/arch/arm/mach-orion5x/net2big-setup.c b/arch/arm/mach-orion5x/net2big-setup.c
+index 4afd9b4c71a9..f04571e79805 100644
+--- a/arch/arm/mach-orion5x/net2big-setup.c
++++ b/arch/arm/mach-orion5x/net2big-setup.c
+@@ -17,7 +17,7 @@
+ #include <linux/input.h>
+ #include <linux/i2c.h>
+ #include <linux/ata_platform.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio/machine.h>
+ #include <linux/delay.h>
+ #include <asm/mach-types.h>
+diff --git a/arch/arm/mach-orion5x/terastation_pro2-setup.c b/arch/arm/mach-orion5x/terastation_pro2-setup.c
+index a9f01859d101..c3db3376950a 100644
+--- a/arch/arm/mach-orion5x/terastation_pro2-setup.c
++++ b/arch/arm/mach-orion5x/terastation_pro2-setup.c
+@@ -4,7 +4,7 @@
+  *
+  * Maintainer: Sylver Bruneau <sylver.bruneau@googlemail.com>
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/platform_device.h>
+diff --git a/arch/arm/mach-orion5x/ts209-setup.c b/arch/arm/mach-orion5x/ts209-setup.c
+index de9092e992c5..25cd50306c65 100644
+--- a/arch/arm/mach-orion5x/ts209-setup.c
++++ b/arch/arm/mach-orion5x/ts209-setup.c
+@@ -4,7 +4,7 @@
+  *
+  * Maintainer: Byron Bradley <byron.bbradley@gmail.com>
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/platform_device.h>
+diff --git a/arch/arm/mach-orion5x/ts409-setup.c b/arch/arm/mach-orion5x/ts409-setup.c
+index 725688aa5cba..f92acef0b45f 100644
+--- a/arch/arm/mach-orion5x/ts409-setup.c
++++ b/arch/arm/mach-orion5x/ts409-setup.c
+@@ -7,7 +7,7 @@
+  * Copyright (C) 2008  Sylver Bruneau <sylver.bruneau@gmail.com>
+  * Copyright (C) 2008  Martin Michlmayr <tbm@cyrius.com>
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio/machine.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+diff --git a/arch/arm/mach-pxa/am200epd.c b/arch/arm/mach-pxa/am200epd.c
+index cac0bb09db14..4814f3cfe775 100644
+--- a/arch/arm/mach-pxa/am200epd.c
++++ b/arch/arm/mach-pxa/am200epd.c
+@@ -28,7 +28,7 @@
+ #include <linux/init.h>
+ #include <linux/platform_device.h>
+ #include <linux/irq.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ 
+ #include "pxa25x.h"
+ #include "gumstix.h"
+diff --git a/arch/arm/mach-pxa/am300epd.c b/arch/arm/mach-pxa/am300epd.c
+index 4b55bc89db8f..435fb72da7de 100644
+--- a/arch/arm/mach-pxa/am300epd.c
++++ b/arch/arm/mach-pxa/am300epd.c
+@@ -26,7 +26,7 @@
+ #include <linux/init.h>
+ #include <linux/platform_device.h>
+ #include <linux/irq.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ 
+ #include "gumstix.h"
+ #include "mfp-pxa25x.h"
+diff --git a/arch/arm/mach-pxa/generic.c b/arch/arm/mach-pxa/generic.c
+index 02fdde7e3e34..f181e7b7c6be 100644
+--- a/arch/arm/mach-pxa/generic.c
++++ b/arch/arm/mach-pxa/generic.c
+@@ -13,7 +13,7 @@
+  * initialization stuff for PXA machines which can be overridden later if
+  * need be.
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/module.h>
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+diff --git a/arch/arm/mach-pxa/gumstix.c b/arch/arm/mach-pxa/gumstix.c
+index 6074815a4bca..7ab0cb015d1b 100644
+--- a/arch/arm/mach-pxa/gumstix.c
++++ b/arch/arm/mach-pxa/gumstix.c
+@@ -22,7 +22,7 @@
+ #include <linux/mtd/partitions.h>
+ #include <linux/gpio/machine.h>
+ #include <linux/gpio/property.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/err.h>
+ #include <linux/clk.h>
+ 
+diff --git a/arch/arm/mach-pxa/mfp-pxa2xx.c b/arch/arm/mach-pxa/mfp-pxa2xx.c
+index d1347055fbe4..566fb4e2adba 100644
+--- a/arch/arm/mach-pxa/mfp-pxa2xx.c
++++ b/arch/arm/mach-pxa/mfp-pxa2xx.c
+@@ -9,7 +9,7 @@
+  *  on PXA3xx,  what's more important, the low power pin state and
+  *  wakeup detection are also supported by the same framework.
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/gpio-pxa.h>
+ #include <linux/module.h>
+ #include <linux/kernel.h>
+diff --git a/arch/arm/mach-pxa/pxa25x.c b/arch/arm/mach-pxa/pxa25x.c
+index a4e878be004a..a273f0af095e 100644
+--- a/arch/arm/mach-pxa/pxa25x.c
++++ b/arch/arm/mach-pxa/pxa25x.c
+@@ -15,7 +15,7 @@
+  */
+ #include <linux/dmaengine.h>
+ #include <linux/dma/pxa-dma.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/gpio-pxa.h>
+ #include <linux/module.h>
+ #include <linux/kernel.h>
+diff --git a/arch/arm/mach-pxa/pxa27x.c b/arch/arm/mach-pxa/pxa27x.c
+index 1d34de7e5fbe..814e0a12f38a 100644
+--- a/arch/arm/mach-pxa/pxa27x.c
++++ b/arch/arm/mach-pxa/pxa27x.c
+@@ -10,7 +10,7 @@
+  */
+ #include <linux/dmaengine.h>
+ #include <linux/dma/pxa-dma.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/gpio-pxa.h>
+ #include <linux/module.h>
+ #include <linux/kernel.h>
+diff --git a/arch/arm/mach-pxa/reset.c b/arch/arm/mach-pxa/reset.c
+index 27293549f8ad..49d2e46a1fae 100644
+--- a/arch/arm/mach-pxa/reset.c
++++ b/arch/arm/mach-pxa/reset.c
+@@ -2,7 +2,7 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/delay.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/io.h>
+ #include <asm/proc-fns.h>
+ #include <asm/system_misc.h>
+diff --git a/arch/arm/mach-pxa/sharpsl_pm.c b/arch/arm/mach-pxa/sharpsl_pm.c
+index 71b282b146d0..a611eea70e5a 100644
+--- a/arch/arm/mach-pxa/sharpsl_pm.c
++++ b/arch/arm/mach-pxa/sharpsl_pm.c
+@@ -19,7 +19,7 @@
+ #include <linux/delay.h>
+ #include <linux/leds.h>
+ #include <linux/suspend.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/io.h>
+ 
+ #include <asm/mach-types.h>
+diff --git a/arch/arm/mach-pxa/spitz.c b/arch/arm/mach-pxa/spitz.c
+index 5091b601c4e1..5eaf38243b9e 100644
+--- a/arch/arm/mach-pxa/spitz.c
++++ b/arch/arm/mach-pxa/spitz.c
+@@ -12,7 +12,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/delay.h>
+ #include <linux/gpio_keys.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio/machine.h>
+ #include <linux/gpio/property.h>
+ #include <linux/leds.h>
+diff --git a/arch/arm/mach-pxa/spitz_pm.c b/arch/arm/mach-pxa/spitz_pm.c
+index 03b4b347f11a..806847c36549 100644
+--- a/arch/arm/mach-pxa/spitz_pm.c
++++ b/arch/arm/mach-pxa/spitz_pm.c
+@@ -10,7 +10,7 @@
+ #include <linux/init.h>
+ #include <linux/kernel.h>
+ #include <linux/delay.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio-pxa.h>
+ #include <linux/interrupt.h>
+ #include <linux/platform_device.h>
+diff --git a/arch/arm/mach-s3c/dev-audio-s3c64xx.c b/arch/arm/mach-s3c/dev-audio-s3c64xx.c
+index 7ce119dc3a72..8884374dbcdc 100644
+--- a/arch/arm/mach-s3c/dev-audio-s3c64xx.c
++++ b/arch/arm/mach-s3c/dev-audio-s3c64xx.c
+@@ -7,7 +7,7 @@
+ #include <linux/string.h>
+ #include <linux/platform_device.h>
+ #include <linux/dma-mapping.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/export.h>
+ 
+ #include "irqs.h"
+diff --git a/arch/arm/mach-s3c/devs.c b/arch/arm/mach-s3c/devs.c
+index bab2abd8a34a..572b156644bd 100644
+--- a/arch/arm/mach-s3c/devs.c
++++ b/arch/arm/mach-s3c/devs.c
+@@ -5,7 +5,7 @@
+ //
+ // Base Samsung platform device definitions
+ 
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/kernel.h>
+ #include <linux/types.h>
+ #include <linux/interrupt.h>
+diff --git a/arch/arm/mach-s3c/mach-crag6410.c b/arch/arm/mach-s3c/mach-crag6410.c
+index c4040aad1ed3..57176719d8a6 100644
+--- a/arch/arm/mach-s3c/mach-crag6410.c
++++ b/arch/arm/mach-s3c/mach-crag6410.c
+@@ -15,7 +15,7 @@
+ #include <linux/io.h>
+ #include <linux/init.h>
+ #include <linux/input-event-codes.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio/machine.h>
+ #include <linux/leds.h>
+ #include <linux/delay.h>
+diff --git a/arch/arm/mach-s3c/pm-gpio.c b/arch/arm/mach-s3c/pm-gpio.c
+index cfdbc2337998..fd5897cc26c7 100644
+--- a/arch/arm/mach-s3c/pm-gpio.c
++++ b/arch/arm/mach-s3c/pm-gpio.c
+@@ -11,7 +11,7 @@
+ #include <linux/device.h>
+ #include <linux/init.h>
+ #include <linux/io.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ 
+ #include "gpio-samsung.h"
+ 
+diff --git a/arch/arm/mach-s3c/pm-s3c64xx.c b/arch/arm/mach-s3c/pm-s3c64xx.c
+index 284d5f462513..a73b8bd12949 100644
+--- a/arch/arm/mach-s3c/pm-s3c64xx.c
++++ b/arch/arm/mach-s3c/pm-s3c64xx.c
+@@ -11,7 +11,7 @@
+ #include <linux/suspend.h>
+ #include <linux/serial_core.h>
+ #include <linux/io.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/pm_domain.h>
+ 
+ #include "map.h"
+diff --git a/arch/arm/mach-s3c/setup-fb-24bpp-s3c64xx.c b/arch/arm/mach-s3c/setup-fb-24bpp-s3c64xx.c
+index c3269cd6a848..20ae926e12db 100644
+--- a/arch/arm/mach-s3c/setup-fb-24bpp-s3c64xx.c
++++ b/arch/arm/mach-s3c/setup-fb-24bpp-s3c64xx.c
+@@ -9,7 +9,7 @@
+ 
+ #include <linux/kernel.h>
+ #include <linux/types.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ 
+ #include "fb.h"
+ #include "gpio-cfg.h"
+diff --git a/arch/arm/mach-s3c/setup-i2c0-s3c64xx.c b/arch/arm/mach-s3c/setup-i2c0-s3c64xx.c
+index a6ef8d2bc995..520e97dc8754 100644
+--- a/arch/arm/mach-s3c/setup-i2c0-s3c64xx.c
++++ b/arch/arm/mach-s3c/setup-i2c0-s3c64xx.c
+@@ -9,7 +9,7 @@
+ 
+ #include <linux/kernel.h>
+ #include <linux/types.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ 
+ struct platform_device; /* don't need the contents */
+ 
+diff --git a/arch/arm/mach-s3c/setup-i2c1-s3c64xx.c b/arch/arm/mach-s3c/setup-i2c1-s3c64xx.c
+index 0fe37363d26e..26f7ae455328 100644
+--- a/arch/arm/mach-s3c/setup-i2c1-s3c64xx.c
++++ b/arch/arm/mach-s3c/setup-i2c1-s3c64xx.c
+@@ -9,7 +9,7 @@
+ 
+ #include <linux/kernel.h>
+ #include <linux/types.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ 
+ struct platform_device; /* don't need the contents */
+ 
+diff --git a/arch/arm/mach-s3c/setup-keypad-s3c64xx.c b/arch/arm/mach-s3c/setup-keypad-s3c64xx.c
+index 8463ad37c6ab..2e1367878fb1 100644
+--- a/arch/arm/mach-s3c/setup-keypad-s3c64xx.c
++++ b/arch/arm/mach-s3c/setup-keypad-s3c64xx.c
+@@ -5,7 +5,7 @@
+ //
+ // GPIO configuration for S3C64XX KeyPad device
+ 
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include "gpio-cfg.h"
+ #include "keypad.h"
+ #include "gpio-samsung.h"
+diff --git a/arch/arm/mach-s3c/setup-sdhci-gpio-s3c64xx.c b/arch/arm/mach-s3c/setup-sdhci-gpio-s3c64xx.c
+index 646ff949acd5..728b66f80493 100644
+--- a/arch/arm/mach-s3c/setup-sdhci-gpio-s3c64xx.c
++++ b/arch/arm/mach-s3c/setup-sdhci-gpio-s3c64xx.c
+@@ -11,7 +11,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/platform_device.h>
+ #include <linux/io.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ 
+ #include "gpio-cfg.h"
+ #include "sdhci.h"
+diff --git a/arch/arm/mach-s3c/setup-spi-s3c64xx.c b/arch/arm/mach-s3c/setup-spi-s3c64xx.c
+index 497aff71c29c..8d15b13ed7d5 100644
+--- a/arch/arm/mach-s3c/setup-spi-s3c64xx.c
++++ b/arch/arm/mach-s3c/setup-spi-s3c64xx.c
+@@ -3,7 +3,7 @@
+ // Copyright (C) 2011 Samsung Electronics Ltd.
+ //		http://www.samsung.com/
+ 
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/platform_data/spi-s3c64xx.h>
+ #include "gpio-cfg.h"
+ #include "gpio-samsung.h"
+diff --git a/arch/arm/mach-sa1100/collie.c b/arch/arm/mach-sa1100/collie.c
+index 466d755d5702..af9c68b2093e 100644
+--- a/arch/arm/mach-sa1100/collie.c
++++ b/arch/arm/mach-sa1100/collie.c
+@@ -29,7 +29,7 @@
+ #include <linux/timer.h>
+ #include <linux/gpio_keys.h>
+ #include <linux/input.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio/machine.h>
+ #include <linux/power/gpio-charger.h>
+ 
+diff --git a/arch/arm/mach-sa1100/generic.c b/arch/arm/mach-sa1100/generic.c
+index 99ff55e8131d..a995625ab1a0 100644
+--- a/arch/arm/mach-sa1100/generic.c
++++ b/arch/arm/mach-sa1100/generic.c
+@@ -6,7 +6,7 @@
+  *
+  * Code common to all SA11x0 machines.
+  */
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/gpio/machine.h>
+ #include <linux/module.h>
+ #include <linux/kernel.h>
+diff --git a/arch/arm/mach-sa1100/h3600.c b/arch/arm/mach-sa1100/h3600.c
+index 1cfc0b1fa41c..59e9251a138e 100644
+--- a/arch/arm/mach-sa1100/h3600.c
++++ b/arch/arm/mach-sa1100/h3600.c
+@@ -8,7 +8,7 @@
+ 
+ #include <linux/init.h>
+ #include <linux/kernel.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ 
+ #include <video/sa1100fb.h>
+ 
+diff --git a/arch/arm/mach-sa1100/h3xxx.c b/arch/arm/mach-sa1100/h3xxx.c
+index d685f03f51f3..b8fc1953db9f 100644
+--- a/arch/arm/mach-sa1100/h3xxx.c
++++ b/arch/arm/mach-sa1100/h3xxx.c
+@@ -8,7 +8,7 @@
+ 
+ #include <linux/kernel.h>
+ #include <linux/gpio/machine.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/gpio_keys.h>
+ #include <linux/input.h>
+ #include <linux/mtd/mtd.h>
+diff --git a/arch/arm/plat-orion/mpp.c b/arch/arm/plat-orion/mpp.c
+index 8a6880d528b6..673ecedc721d 100644
+--- a/arch/arm/plat-orion/mpp.c
++++ b/arch/arm/plat-orion/mpp.c
+@@ -12,7 +12,7 @@
+ #include <linux/init.h>
+ #include <linux/mbus.h>
+ #include <linux/io.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/consumer.h>
+ #include <plat/orion-gpio.h>
+ #include <plat/mpp.h>
+ 
+-- 
+2.39.5
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
