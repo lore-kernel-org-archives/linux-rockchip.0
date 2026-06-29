@@ -4,103 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 771B6C44517
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08064C44506
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5JEjl3WuF6JgRq+0qHrk+SZ+rK0cUjBqjYojEVcFeYI=; b=l9Zxk+yHJi9cjF
-	fsPDJtb6qGxqyzYyYMGpEpAPJfORJLImGw0cfX1XXXVnYnenss/ibmB8PUBo2dd8Cz+xG1KOcgcUZ
-	kCv8cagyqMwUNSIz2et30jbs574/aRqE9iTrGK1LHSRjyTIkTpB5HwMAbZcxtUfmT7Hdzh3kU9U3i
-	g83bF0/Ej4sk3Y3wS3W11uHIN4u8EQu+dDwyrqJu2XkZEWk8IosLmyKmN3qdWEO6oTYVJtTG7Fcdj
-	CL0LifEvLQoCJdFFnj7MysWhZDpNPsJOLWvTXYi1BJQDPQ6EE9ROxRMP1Tlq699NfdfW+o6OrkVeL
-	jVqkqzfn/fhD3Edop4fQ==;
+	List-Owner; bh=K2QsPEg3GbuPNWftAvdnmxxp5KehoDh3PNbYuVPgapc=; b=pULDdjaYSLmt0F
+	W4DQ60Uda829VXMVQGBbdFdZ8ZbGw89oAemmQ85cjXpiXUJn4rEq4VVMTOJGz5quwn5A0IjXOtLYH
+	vtudbwWz79iTxB2DTdTjgKaje8E+eLoxiUubwiJPYXe/+czkGamPDqf/lnCoJdzE6p1KvxY0hpwi6
+	3wMfH3xRiheusylfIJA04+tqeMddLM2EL9Oxo7KtRQ/0vTSPmPh0SXv8bI7TJaPRMOazEHEYIxmUv
+	bRCeQMkGy4GsL6xgj+L6nAtTQYo4C9Oqfw+AsFcnoxfcV6AFRUak24OJ/9aHWEMctRlXR/J6U0IBD
+	2tFN8bSGK2ALy/Os0xsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkVW-00000001auQ-0kZf;
-	Thu, 09 Jul 2026 08:53:22 +0000
-Received: from out-188.mta1.migadu.com ([2001:41d0:203:375::bc])
+	id 1whkVT-00000001amL-2dLf;
+	Thu, 09 Jul 2026 08:53:19 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfBqL-00000003jhS-1JEb
-	for linux-rockchip@lists.infradead.org;
-	Thu, 02 Jul 2026 07:28:19 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1782977290;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cdXAMvaGTLXZ4tRHqX+15mFjqPO5NJv7/lbzInUeZeM=;
-	b=UUw36nfQUDO4ek5W5MoGxv/bQdNbTQycY1qQKAEoJymjql+ZXc8a2FUo9eNrafl6xDrEni
-	1302Z8Y+Ma+0qxdUDhBISoxry5nus7uGAN8fTkB0ZcU/zUf+14Ol9iIljWhjg5Yh/mt933
-	8BhSh84bNWygA1To4TaXOltx56F5hgs=
-From: Lance Yang <lance.yang@linux.dev>
-To: ljs@kernel.org
-Cc: akpm@linux-foundation.org,
-	tsbogend@alpha.franken.de,
-	maddy@linux.ibm.com,
-	mpe@ellerman.id.au,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	l.stach@pengutronix.de,
-	inki.dae@samsung.com,
-	sw0312.kim@samsung.com,
-	kyungmin.park@samsung.com,
-	krzk@kernel.org,
-	peter.griffin@linaro.org,
-	jani.nikula@linux.intel.com,
-	joonas.lahtinen@linux.intel.com,
-	rodrigo.vivi@intel.com,
-	tursulin@ursulin.net,
-	robin.clark@oss.qualcomm.com,
-	lumag@kernel.org,
-	lyude@redhat.com,
-	dakr@kernel.org,
-	tomi.valkeinen@ideasonboard.com,
-	hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	thierry.reding@kernel.org,
-	mperttunen@nvidia.com,
-	jonathanh@nvidia.com,
-	kraxel@redhat.com,
-	dmitry.osipenko@collabora.com,
-	zack.rusin@broadcom.com,
-	matthew.brost@intel.com,
-	thomas.hellstrom@linux.intel.com,
-	oleksandr_andrushchenko@epam.com,
-	deller@gmx.de,
-	bcrl@kvack.org,
-	viro@zeniv.linux.org.uk,
-	brauner@kernel.org,
-	muchun.song@linux.dev,
-	osalvador@suse.de,
-	david@kernel.org,
-	ziy@nvidia.com,
-	baolin.wang@linux.alibaba.com,
-	liam@infradead.org,
-	npache@redhat.com,
-	ryan.roberts@arm.com,
-	dev.jain@arm.com,
-	baohua@kernel.org,
-	lance.yang@linux.dev,
-	hughd@google.com,
-	vbabka@kernel.org,
-	rppt@kernel.org,
-	surenb@google.com,
-	mhocko@suse.com,
-	jannh@google.com,
-	pfalcato@suse.de,
-	kees@kernel.org,
-	perex@perex.cz,
-	tiwai@suse.com,
+	id 1weHci-0000000FOi9-1n3a;
+	Mon, 29 Jun 2026 19:26:28 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 23AF440569;
+	Mon, 29 Jun 2026 19:26:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F7DF1F000E9;
+	Mon, 29 Jun 2026 19:26:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782761188;
+	bh=rJBKJgm9VGYkLKxlBKZ5aOjhCtASp65CFyjLBQGRzvQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=IIJQxKhweg39/BMqoHOH7kb0/Al+cJWTEI1hioVBPZaDB4qhB2Vb6gTAE5EgKd8i+
+	 vKfSoPurTO8PIuLjyUs5WNhfD4gqH5sManMjAeS2pFtPAomy2K2tA9iwWFCCLRozBe
+	 80WBl+G+ksIR6HWSGPbvhb/38MdZ9vYyRBKIyMWVOS+AOWbhSlmW8yn0VL2dXg9Cqy
+	 yP/BQIl71tGgb5bQL/hpBuwobEq79GN6SA2SmGSur13Y5GsCCLpCQRvCYn4h2DY6RM
+	 2uQTclqrErpsIcrjBfB0b+ymG/UVaPwZEumIFLlrW7N/vGNJmRnvO33VIBdwlXHg/1
+	 9OKljIZr4sLrA==
+From: Lorenzo Stoakes <ljs@kernel.org>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Madhavan Srinivasan <maddy@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Tvrtko Ursulin <tursulin@ursulin.net>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Lyude Paul <lyude@redhat.com>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Zack Rusin <zack.rusin@broadcom.com>,
+	Matthew Brost <matthew.brost@intel.com>,
+	Thomas Hellstrom <thomas.hellstrom@linux.intel.com>,
+	Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>,
+	Helge Deller <deller@gmx.de>,
+	Benjamin LaHaise <bcrl@kvack.org>,
+	Alexander Viro <viro@zeniv.linux.org.uk>,
+	Christian Brauner <brauner@kernel.org>,
+	Muchun Song <muchun.song@linux.dev>,
+	Oscar Salvador <osalvador@suse.de>,
+	David Hildenbrand <david@kernel.org>,
+	Zi Yan <ziy@nvidia.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	"Liam R . Howlett" <liam@infradead.org>,
+	Nico Pache <npache@redhat.com>,
+	Ryan Roberts <ryan.roberts@arm.com>,
+	Dev Jain <dev.jain@arm.com>,
+	Barry Song <baohua@kernel.org>,
+	Lance Yang <lance.yang@linux.dev>,
+	Hugh Dickins <hughd@google.com>,
+	Vlastimil Babka <vbabka@kernel.org>,
+	Mike Rapoport <rppt@kernel.org>,
+	Suren Baghdasaryan <surenb@google.com>,
+	Michal Hocko <mhocko@suse.com>,
+	Jann Horn <jannh@google.com>,
+	Pedro Falcato <pfalcato@suse.de>,
+	Kees Cook <kees@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
 	linux-mips@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linuxppc-dev@lists.ozlabs.org,
@@ -122,17 +124,13 @@ Cc: akpm@linux-foundation.org,
 	linux-fsdevel@vger.kernel.org,
 	linux-mm@kvack.org,
 	linux-sound@vger.kernel.org
-Subject: Re: [PATCH 01/13] mm: introduce vma_flags_can_grow() and vma_can_grow()
-Date: Thu,  2 Jul 2026 15:27:50 +0800
-Message-Id: <20260702072750.45641-1-lance.yang@linux.dev>
-In-Reply-To: <f2e8c32515d328db62279cc8bab8398ea278d74f.1782760670.git.ljs@kernel.org>
-References: <f2e8c32515d328db62279cc8bab8398ea278d74f.1782760670.git.ljs@kernel.org>
+Subject: [PATCH 11/13] mm/mlock: convert mlock code to use vma_flags_t
+Date: Mon, 29 Jun 2026 20:25:34 +0100
+Message-ID: <2db16db81538355ca65f778c246d2381c673cad4.1782760670.git.ljs@kernel.org>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <cover.1782760670.git.ljs@kernel.org>
+References: <cover.1782760670.git.ljs@kernel.org>
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_002817_839631_2C03E204 
-X-CRM114-Status: UNSURE (   5.52  )
-X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -150,26 +148,288 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Replace use of the legacy vm_flags_t flags with vma_flags_t values
+throughout the mlock logic.
 
-On Mon, Jun 29, 2026 at 08:25:24PM +0100, Lorenzo Stoakes wrote:
->These test whether the VMA has stack sematics, i.e. is able to grow upwards
->or downwards depending on the architecture.
->
->In order to account for arches which do not support upward-growing stacks,
->introduce VMA_GROWSUP whose definition depends on the architecture
->supporting it, and use vma_flags_test_single_mask() in vma_flags_can_grow()
->to account for this.
->
->Update the VMA userland tests to reflect the changes
->
->No functional change intended.
->
->Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
->---
+Additionally update comments to reflect the changes to be consistent.
 
-Nice cleanup! Feel free to add:
+No functional change intended.
 
-Reviewed-by: Lance Yang <lance.yang@linux.dev>
+Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
+---
+ mm/mlock.c | 86 +++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 46 insertions(+), 40 deletions(-)
+
+diff --git a/mm/mlock.c b/mm/mlock.c
+index 9c87b3ced65f..1634b125a519 100644
+--- a/mm/mlock.c
++++ b/mm/mlock.c
+@@ -329,7 +329,7 @@ static inline bool allow_mlock_munlock(struct folio *folio,
+ 	 * be split. And the pages are not in VM_LOCKed VMA
+ 	 * can be reclaimed.
+ 	 */
+-	if (!(vma->vm_flags & VM_LOCKED))
++	if (!vma_test(vma, VMA_LOCKED_BIT))
+ 		return true;
+ 
+ 	/* folio_within_range() cannot take KSM, but any small folio is OK */
+@@ -368,7 +368,7 @@ static int mlock_pte_range(pmd_t *pmd, unsigned long addr,
+ 		folio = pmd_folio(*pmd);
+ 		if (folio_is_zone_device(folio))
+ 			goto out;
+-		if (vma->vm_flags & VM_LOCKED)
++		if (vma_test(vma, VMA_LOCKED_BIT))
+ 			mlock_folio(folio);
+ 		else
+ 			munlock_folio(folio);
+@@ -393,7 +393,7 @@ static int mlock_pte_range(pmd_t *pmd, unsigned long addr,
+ 		if (!allow_mlock_munlock(folio, vma, start, end, step))
+ 			goto next_entry;
+ 
+-		if (vma->vm_flags & VM_LOCKED)
++		if (vma_test(vma, VMA_LOCKED_BIT))
+ 			mlock_folio(folio);
+ 		else
+ 			munlock_folio(folio);
+@@ -417,8 +417,8 @@ static int mlock_pte_range(pmd_t *pmd, unsigned long addr,
+  * @end - end of range in @vma
+  * @new_vma_flags - the new set of flags for @vma.
+  *
+- * Called for mlock(), mlock2() and mlockall(), to set @vma VM_LOCKED;
+- * called for munlock() and munlockall(), to clear VM_LOCKED from @vma.
++ * Called for mlock(), mlock2() and mlockall(), to set @vma VMA_LOCKED_BIT;
++ * called for munlock() and munlockall(), to clear VMA_LOCKED_BIT from @vma.
+  */
+ static void mlock_vma_pages_range(struct vm_area_struct *vma,
+ 	unsigned long start, unsigned long end,
+@@ -431,14 +431,14 @@ static void mlock_vma_pages_range(struct vm_area_struct *vma,
+ 
+ 	/*
+ 	 * There is a slight chance that concurrent page migration,
+-	 * or page reclaim finding a page of this now-VM_LOCKED vma,
++	 * or page reclaim finding a page of this now-VMA_LOCKED_BIT vma,
+ 	 * will call mlock_vma_folio() and raise page's mlock_count:
+ 	 * double counting, leaving the page unevictable indefinitely.
+-	 * Communicate this danger to mlock_vma_folio() with VM_IO,
+-	 * which is a VM_SPECIAL flag not allowed on VM_LOCKED vmas.
++	 * Communicate this danger to mlock_vma_folio() with VMA_IO_BIT,
++	 * which is a VMA_SPECIAL_FLAGS flag not allowed on VMA_LOCKED_BIT vmas.
+ 	 * mmap_lock is held in write mode here, so this weird
+ 	 * combination should not be visible to other mmap_lock users;
+-	 * but WRITE_ONCE so rmap walkers must see VM_IO if VM_LOCKED.
++	 * but WRITE_ONCE so rmap walkers must see VMA_IO_BIT if VMA_LOCKED_BIT.
+ 	 */
+ 	if (vma_flags_test(new_vma_flags, VMA_LOCKED_BIT))
+ 		vma_flags_set(new_vma_flags, VMA_IO_BIT);
+@@ -458,7 +458,7 @@ static void mlock_vma_pages_range(struct vm_area_struct *vma,
+ /*
+  * mlock_fixup  - handle mlock[all]/munlock[all] requests.
+  *
+- * Filters out "special" vmas -- VM_LOCKED never gets set for these, and
++ * Filters out "special" vmas -- VMA_LOCKED_BIT never gets set for these, and
+  * munlock is a no-op.  However, for some special vmas, we go ahead and
+  * populate the ptes.
+  *
+@@ -466,24 +466,23 @@ static void mlock_vma_pages_range(struct vm_area_struct *vma,
+  */
+ static int mlock_fixup(struct vma_iterator *vmi, struct vm_area_struct *vma,
+ 	       struct vm_area_struct **prev, unsigned long start,
+-	       unsigned long end, vm_flags_t newflags)
++	       unsigned long end, vma_flags_t *new_vma_flags)
+ {
+-	vma_flags_t new_vma_flags = legacy_to_vma_flags(newflags);
+ 	const vma_flags_t old_vma_flags = vma->flags;
+ 	struct mm_struct *mm = vma->vm_mm;
+ 	int nr_pages;
+ 	int ret = 0;
+ 
+-	if (vma_flags_same_pair(&old_vma_flags, &new_vma_flags) ||
++	if (vma_flags_same_pair(&old_vma_flags, new_vma_flags) ||
+ 	    vma_is_secretmem(vma) || !vma_supports_mlock(vma)) {
+ 		/*
+-		 * Don't set VM_LOCKED or VM_LOCKONFAULT and don't count.
++		 * Don't set VMA_LOCKED_BIT or VM_LOCKONFAULT and don't count.
+ 		 * For secretmem, don't allow the memory to be unlocked.
+ 		 */
+ 		goto out;
+ 	}
+ 
+-	vma = vma_modify_flags(vmi, *prev, vma, start, end, &new_vma_flags);
++	vma = vma_modify_flags(vmi, *prev, vma, start, end, new_vma_flags);
+ 	if (IS_ERR(vma)) {
+ 		ret = PTR_ERR(vma);
+ 		goto out;
+@@ -493,7 +492,7 @@ static int mlock_fixup(struct vma_iterator *vmi, struct vm_area_struct *vma,
+ 	 * Keep track of amount of locked VM.
+ 	 */
+ 	nr_pages = (end - start) >> PAGE_SHIFT;
+-	if (!vma_flags_test(&new_vma_flags, VMA_LOCKED_BIT))
++	if (!vma_flags_test(new_vma_flags, VMA_LOCKED_BIT))
+ 		nr_pages = -nr_pages;
+ 	else if (vma_flags_test(&old_vma_flags, VMA_LOCKED_BIT))
+ 		nr_pages = 0;
+@@ -502,15 +501,15 @@ static int mlock_fixup(struct vma_iterator *vmi, struct vm_area_struct *vma,
+ 	/*
+ 	 * vm_flags is protected by the mmap_lock held in write mode.
+ 	 * It's okay if try_to_unmap_one unmaps a page just after we
+-	 * set VM_LOCKED, populate_vma_page_range will bring it back.
++	 * set VMA_LOCKED_BIT, populate_vma_page_range will bring it back.
+ 	 */
+-	if (vma_flags_test(&new_vma_flags, VMA_LOCKED_BIT) &&
++	if (vma_flags_test(new_vma_flags, VMA_LOCKED_BIT) &&
+ 	    vma_flags_test(&old_vma_flags, VMA_LOCKED_BIT)) {
+ 		/* No work to do, and mlocking twice would be wrong */
+ 		vma_start_write(vma);
+-		vma->flags = new_vma_flags;
++		vma->flags = *new_vma_flags;
+ 	} else {
+-		mlock_vma_pages_range(vma, start, end, &new_vma_flags);
++		mlock_vma_pages_range(vma, start, end, new_vma_flags);
+ 	}
+ out:
+ 	*prev = vma;
+@@ -518,7 +517,7 @@ static int mlock_fixup(struct vma_iterator *vmi, struct vm_area_struct *vma,
+ }
+ 
+ static int apply_vma_lock_flags(unsigned long start, size_t len,
+-				vm_flags_t flags)
++				const vma_flags_t *flags)
+ {
+ 	unsigned long nstart, end, tmp;
+ 	struct vm_area_struct *vma, *prev;
+@@ -543,18 +542,20 @@ static int apply_vma_lock_flags(unsigned long start, size_t len,
+ 	tmp = vma->vm_start;
+ 	for_each_vma_range(vmi, vma, end) {
+ 		int error;
+-		vm_flags_t newflags;
++		vma_flags_t newflags;
+ 
+ 		if (vma->vm_start != tmp)
+ 			return -ENOMEM;
+ 
+-		newflags = vma->vm_flags & ~VM_LOCKED_MASK;
+-		newflags |= flags;
++		newflags = vma->flags;
++		vma_flags_clear_mask(&newflags, VMA_LOCKED_MASK);
++		vma_flags_set_mask(&newflags, *flags);
++
+ 		/* Here we know that  vma->vm_start <= nstart < vma->vm_end. */
+ 		tmp = vma->vm_end;
+ 		if (tmp > end)
+ 			tmp = end;
+-		error = mlock_fixup(&vmi, vma, &prev, nstart, tmp, newflags);
++		error = mlock_fixup(&vmi, vma, &prev, nstart, tmp, &newflags);
+ 		if (error)
+ 			return error;
+ 		tmp = vma_iter_end(&vmi);
+@@ -589,7 +590,7 @@ static unsigned long count_mm_mlocked_page_nr(struct mm_struct *mm,
+ 		end = start + len;
+ 
+ 	for_each_vma_range(vmi, vma, end) {
+-		if (vma->vm_flags & VM_LOCKED) {
++		if (vma_test(vma, VMA_LOCKED_BIT)) {
+ 			if (start > vma->vm_start)
+ 				count -= (start - vma->vm_start);
+ 			if (end < vma->vm_end) {
+@@ -615,7 +616,8 @@ static int __mlock_posix_error_return(long retval)
+ 	return retval;
+ }
+ 
+-static __must_check int do_mlock(unsigned long start, size_t len, vm_flags_t flags)
++static __must_check int do_mlock(unsigned long start, size_t len,
++				 vma_flags_t *flags)
+ {
+ 	unsigned long locked;
+ 	unsigned long lock_limit;
+@@ -664,24 +666,27 @@ static __must_check int do_mlock(unsigned long start, size_t len, vm_flags_t fla
+ 
+ SYSCALL_DEFINE2(mlock, unsigned long, start, size_t, len)
+ {
+-	return do_mlock(start, len, VM_LOCKED);
++	vma_flags_t flags = mk_vma_flags(VMA_LOCKED_BIT);
++
++	return do_mlock(start, len, &flags);
+ }
+ 
+ SYSCALL_DEFINE3(mlock2, unsigned long, start, size_t, len, int, flags)
+ {
+-	vm_flags_t vm_flags = VM_LOCKED;
++	vma_flags_t vma_flags = mk_vma_flags(VMA_LOCKED_BIT);
+ 
+ 	if (flags & ~MLOCK_ONFAULT)
+ 		return -EINVAL;
+ 
+ 	if (flags & MLOCK_ONFAULT)
+-		vm_flags |= VM_LOCKONFAULT;
++		vma_flags_set(&vma_flags, VMA_LOCKONFAULT_BIT);
+ 
+-	return do_mlock(start, len, vm_flags);
++	return do_mlock(start, len, &vma_flags);
+ }
+ 
+ SYSCALL_DEFINE2(munlock, unsigned long, start, size_t, len)
+ {
++	vma_flags_t flags = EMPTY_VMA_FLAGS;
+ 	int ret;
+ 
+ 	start = untagged_addr(start);
+@@ -691,7 +696,7 @@ SYSCALL_DEFINE2(munlock, unsigned long, start, size_t, len)
+ 
+ 	if (mmap_write_lock_killable(current->mm))
+ 		return -EINTR;
+-	ret = apply_vma_lock_flags(start, len, 0);
++	ret = apply_vma_lock_flags(start, len, &flags);
+ 	mmap_write_unlock(current->mm);
+ 
+ 	return ret;
+@@ -705,14 +710,15 @@ SYSCALL_DEFINE2(munlock, unsigned long, start, size_t, len)
+  * There are a couple of subtleties with this.  If mlockall() is called multiple
+  * times with different flags, the values do not necessarily stack.  If mlockall
+  * is called once including the MCL_FUTURE flag and then a second time without
+- * it, VM_LOCKED and VM_LOCKONFAULT will be cleared from mm->def_vma_flags.
++ * it, VMA_LOCKED_BIT and VMA_LOCKONFAULT_BIT will be cleared from
++ * mm->def_vma_flags.
+  */
+ static int apply_mlockall_flags(int flags)
+ {
+ 	VMA_ITERATOR(vmi, current->mm, 0);
+ 	struct mm_struct *mm = current->mm;
+ 	struct vm_area_struct *vma, *prev = NULL;
+-	vm_flags_t to_add = 0;
++	vma_flags_t to_add = EMPTY_VMA_FLAGS;
+ 
+ 	vma_flags_clear_mask(&mm->def_vma_flags, VMA_LOCKED_MASK);
+ 	if (flags & MCL_FUTURE) {
+@@ -726,20 +732,20 @@ static int apply_mlockall_flags(int flags)
+ 	}
+ 
+ 	if (flags & MCL_CURRENT) {
+-		to_add |= VM_LOCKED;
++		vma_flags_set(&to_add, VMA_LOCKED_BIT);
+ 		if (flags & MCL_ONFAULT)
+-			to_add |= VM_LOCKONFAULT;
++			vma_flags_set(&to_add, VMA_LOCKONFAULT_BIT);
+ 	}
+ 
+ 	for_each_vma(vmi, vma) {
+ 		int error;
+-		vm_flags_t newflags;
++		vma_flags_t newflags = vma->flags;
+ 
+-		newflags = vma->vm_flags & ~VM_LOCKED_MASK;
+-		newflags |= to_add;
++		vma_flags_clear_mask(&newflags, VMA_LOCKED_MASK);
++		vma_flags_set_mask(&newflags, to_add);
+ 
+ 		error = mlock_fixup(&vmi, vma, &prev, vma->vm_start, vma->vm_end,
+-				    newflags);
++				    &newflags);
+ 		/* Ignore errors, but prev needs fixing up. */
+ 		if (error)
+ 			prev = vma;
+-- 
+2.54.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
