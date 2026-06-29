@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B7B4C43458
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 07:44:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63A60C43327
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 08:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zFGwxLJpIOLtBPMvNNfLHQ86kWgmW4u6enuA68faWJ8=; b=tgsLgiGa7x9G1m
-	RU1CR86pT6zEicwuuFKBVMt3X/hTBZVqMsgGM9Xw61iH3CXRVYBtTi12fg54NsspPM/o+8uMnYsYt
-	KBPRni+z9Wf+tnWmT2eSiZnYeDiZyYAfGb6FiYefWuLVdvU2dfQjAEuqqOcB8D7OOQIGYPkYXNT5P
-	EHh7cBZznNOM9Db0w98V16griPlprac0DeGizIqpbM6ksjimvGiGYlspUSEPlrfMdJrje3gCvAzRv
-	xAvyjqwWVEJaknAqqLweQZ32ix3ekS3FkeQ9PbkrGsewJo0cL5BG1axbEA/fHEcoHRoOgNaL5K3zW
-	/LHR7Dizl2OBBQMDCfiw==;
+	List-Owner; bh=Hw4CSUGAsYroXRZRIWxoMhlUSMMUuZsjACf74bkkx98=; b=Y9XGCgOJA/kMlr
+	DZu3yXHyoJS1BSttAEbcvAAHn8v6La5xJ56C6bDg9CfHGtB618oWTVppf4bQ73owIX3MnmfEgeNQo
+	bQy7+geCPndyzFP9mgRbiDasTH1NMYpnI/ObS7F95NYawWJYDhjcKyIC+/jTA4W03f8PsjOKrsCHK
+	yUvZtiT6U5BSMV5la9xB87Vva1QZSDA2Mp2N70u9E6WvVJjyROtpveCqDILrT9k6cCAzYl85YQl5x
+	CvToh7nWsBL1atLSmsy3piB3sMoRv8gu3OiF/AFP8yypbjtiQqGNvLZT9h63SHYkZGfLJPkTVuBid
+	t9jKWacz0KlVIH+lyqjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we6fe-0000000Dw31-0Plv;
-	Mon, 29 Jun 2026 07:44:46 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1we6uo-0000000DyDu-16zn;
+	Mon, 29 Jun 2026 08:00:26 +0000
+Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we6fb-0000000Dw2f-1Yhe
-	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Jun 2026 07:44:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782719079;
-	bh=mjdaelFFBbsf9dEtW9+UwJ9rw2Yq4Kx9/BLbeDxbjxk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=KoK+c+dt80d/uwglsQgyED1NamKLFrWEPawNWo+wJ++crZ9aaXLy4XjtnHM/DLGNT
-	 KVzx0ItMd05iN1N8Ao0BN+o4Musg/zDHdXsTBGDvWf/9Ca9P0MHFZ5V+pqe/yqw1J4
-	 bCS0fhf+/CGRRAYk9mdL8z/7gpSKHnt8GZ4WherUfvceDdd9OXUzaWCdR5XiBRWmIV
-	 coMzlLacD7Vu1yFMtLfKnleLypPQfj4n4rDvD8gvSjoDYJXnCoNZX1zjNrmuvG3SNs
-	 lkHTP/00B5cRs728gtTmEruHyb0IHMOREBnUTrqOiNN/bewRsj5BX54LHUebxznc9Z
-	 hKv6eXxNi3tCg==
-Received: from fedora-2.home (unknown [100.64.0.11])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7E96717E0851;
-	Mon, 29 Jun 2026 09:44:39 +0200 (CEST)
-Date: Mon, 29 Jun 2026 09:44:19 +0200
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Marius Dinu <m95d+git@psihoexpert.ro>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>
-Subject: Re: [BUG] drm/panthor: intermittent freezes in Xorg xserver
-Message-ID: <20260629094419.6bb56d99@fedora-2.home>
-In-Reply-To: <aj5neetgYdu0QpcK@GRAPHRT>
-References: <aj5neetgYdu0QpcK@GRAPHRT>
-Organization: Collabora
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+	id 1we6uk-0000000Dy8T-2puu;
+	Mon, 29 Jun 2026 08:00:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=superkali.me; s=default; h=Content-Transfer-Encoding:Content-Type:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=/nvwFv0JfmjK2NA5Qy4Mb1EPkG5HgybnUNzmPA+S75k=; b=XZ7uOx38ZJ4O0V7qpLnD5cQ9u2
+	SDJkMOPnuHSkURQBGK3plOCj0HwhIB1h6EHGKY33vhCwHwnAtQ3lsx3BnnFj9IEb6mf8m26gLfll2
+	JHvM1KU0xGpVutlRiy7ATGXmLnD5H6e59Qrm7Ytfye/w58z993n1aP2Ofgk5EShtWNafl+oNbzU9H
+	wvPMf7/bCt2XsIMfuaopzXLbqekUfWLDeS8RGHOfbUf5Zf1xKheGerDQrJQgePpAQCz/13RY8ygU1
+	bxwIl/cma034VcE8fDYA/JaDi/A5nT10QMyCOgvuKoGMLvNMS2VlVfoXo9FczLilL7ObcVaN/hxUO
+	tLMVAU9g==;
+Received: from [81.57.40.39] (port=42644 helo=superkali.me)
+	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.99.4)
+	(envelope-from <hello@superkali.me>)
+	id 1we6u1-00000001mbW-18ue;
+	Mon, 29 Jun 2026 09:59:36 +0200
+From: Daniele Briguglio <hello@superkali.me>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Add Youyeetoo YY3588
+Date: Mon, 29 Jun 2026 09:59:34 +0200
+Message-ID: <20260629075934.518649-1-hello@superkali.me>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260610-yy3588-board-v1-0-4bb7176b6826@superkali.me>
+References: <20260610-yy3588-board-v1-0-4bb7176b6826@superkali.me>
 MIME-Version: 1.0
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - fr5000-r.dnsiaas.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - superkali.me
+X-Get-Message-Sender-Via: fr5000-r.dnsiaas.com: authenticated_id: hello@superkali.me
+X-Authenticated-Sender: fr5000-r.dnsiaas.com: hello@superkali.me
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_004443_598417_FC659B35 
-X-CRM114-Status: GOOD (  16.85  )
+X-CRM114-CacheID: sfid-20260629_010022_871948_9DA23141 
+X-CRM114-Status: UNSURE (   7.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,71 +90,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 26 Jun 2026 14:50:17 +0300
-Marius Dinu <m95d+git@psihoexpert.ro> wrote:
+On Wed, Jun 10, 2026 at 03:58:57PM +0200, Daniele Briguglio wrote:
+> This series adds support for the Youyeetoo YY3588, a single board
+> computer built around the Rockchip RK3588.
+> [...]
 
-> Hi.
-> 
-> The system is Radxa Rock 5 ITX, RK3588, 32GB RAM,
-> mainline kernel v7.1.0 with panthor driver, mesa 26.0.7 with panfrost driver,
-> xorg-server v21.1.22 accelerated by modesetting driver, x11perf v1.7.0.
+Hi Heiko,
 
-Are we sure that's a panthor issue? Also, is this a regression
-introduced by the latest kernel version, or has it been like that from
-the start?
+Gentle ping on this one, it's been about three weeks. Conor acked the
+vendor-prefixes and rockchip.yaml patches (1/3 and 2/3). The dts in 3/3
+hasn't had any comments yet, and I'd hate for it to slip through.
 
-Also, would you mind opening an issue on [1]?
+I know the dts queue is long, so no rush. Anything you'd want changed, or
+is it OK to queue for the next cycle? Happy to respin if there's something
+to fix.
 
-> 
-> The most clean way to reproduce this bug:
-> Form a console or ssh session, start Xorg in background, without a window
-> manager, and then run x11perf on that display.
-> 
-> Xorg :0 &
-> x11perf -all -display :0
-> 
-> The bug: weird intermittent performance issues in some of the tests.
-> Examples:
-> 
->     1000 reps @  18.0799 msec (    55.3/sec): 10x10 rectangle outline
->     1000 reps @  18.0791 msec (    55.3/sec): 10x10 rectangle outline
->     1000 reps @  18.0790 msec (    55.3/sec): 10x10 rectangle outline
->     1000 reps @  18.0789 msec (    55.3/sec): 10x10 rectangle outline
->     1000 reps @   0.0287 msec ( 34800.0/sec): 10x10 rectangle outline
->     5000 trep @  14.4691 msec (    69.1/sec): 10x10 rectangle outline
-> 
->  5000000 reps @   0.0029 msec (345000.0/sec): 1-pixel solid circle
->  5000000 reps @   0.0009 msec (1100000.0/sec): 1-pixel solid circle
->  5000000 reps @   0.0012 msec (818000.0/sec): 1-pixel solid circle
->  5000000 reps @   0.0000 msec (20900000.0/sec): 1-pixel solid circle
->  5000000 reps @   0.0000 msec (32300000.0/sec): 1-pixel solid circle
-> 25000000 trep @   0.0010 msec (979000.0/sec): 1-pixel solid circle
-> 
->     1000 reps @  31.6607 msec (    31.6/sec): Fill 10x10 trapezoid
->     1000 reps @  16.9012 msec (    59.2/sec): Fill 10x10 trapezoid
->     1000 reps @   0.0234 msec ( 42700.0/sec): Fill 10x10 trapezoid
->     1000 reps @   0.0272 msec ( 36700.0/sec): Fill 10x10 trapezoid
->     1000 reps @  32.1268 msec (    31.1/sec): Fill 10x10 trapezoid
->     5000 trep @  16.1479 msec (    61.9/sec): Fill 10x10 trapezoid
-> 
-> There are no messages in kernel log or Xorg log.
-> 
-> Visually, most of the tests runs fast as expected, but in some of the tests
-> it gets "stuck" randomly. The test suddenly freezes while drawing the pattern.
-> Then, after a while (a few seconds up to a couple of minutes), it gets
-> unstuck by itself, draws a few more patterns extremely fast for less than a
-> second, and then it gets stuck again.
-
-It smells like a signalling issue. Can you check the CPU activity and
-report any outstanding process? Can you maybe connect a gdb to the
-x11perf to see where it's blocked, and post the backtrace here (or in
-the gitlab issue)?
-
-Regards,
-
-Boris
-
-[1]https://gitlab.freedesktop.org/mesa/mesa
+Thanks,
+Daniele
 
 _______________________________________________
 Linux-rockchip mailing list
