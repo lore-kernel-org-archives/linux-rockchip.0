@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BE56C43458
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 13:27:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D81E3C43327
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 13:27:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YLLri83wFUWUpIjw3CVG7phyFTZP50XzfsLvTh3be3Q=; b=RAwuP0QQfbrVXN
-	cbnqg1SVO8ELEZn0lKyk6KgVDNjmbpBUV3jsEZajIFkg5BAOfB4dDruWmVob4V8Lu4vGxnDUBed07
-	588onZxIGgWTtCQmUpG4q2PGl7GPRCfmwTbPq6Rn9Vch/PJcOZAPVZtKtpTflYJpu+rBTJHrZWtZq
-	yRU2/Jf9MvSzuasAaZruU4ueywUPkyMgJ2YNk0Su9i3oXJezmH+IiJiF3egIiunzowXZB+fHznCIR
-	DvzcAPe6eQ/VtkGXLw7Aeea+5U/Pcc18+Fw9Sf9AQz1cdXHI8D7ypeQLCfnh1D+WGgmmsO/iNETlm
-	Uu/WjXXQ5WFB2YNaDHNg==;
+	List-Owner; bh=Qv47TI7C23TqWrHrCbKvjIUuJ1yfggin1Q0RR/0f88Q=; b=diKER+jFxo7dLH
+	iymCZ5r86Dnw+65ByVMDuOA9DMy7lkrJYPpP/nP8TuuV9oqA8cF0s8n0gQfmz8yCmleNJw4/w+p21
+	gwLzcGkx3mP0spS+EQY9F2WvESHNby/X77Z9SSJQs8Udz1IIcXdCe4AQmi+pGuPrB4R5EarxVEsaI
+	j71rabqHbqNKd1d9pTQkkABoAeZf1EJRBh8PQ5XmEn8QdzjzIiSFUnUdgYHeRFBht0OdacfOyTHB+
+	hdZkZuGXT1Uy/XdWBrg3z+6nYI1JX4jjM95ONRGG6YpBAe6Lq/V2XnbtaD5OZyjqxSVdjPrTj3uyG
+	SwK20UseUtvIxlndj8uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weC1T-0000000EkM1-1V3L;
-	Mon, 29 Jun 2026 13:27:39 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1weC1a-0000000EkU7-3Q4k;
+	Mon, 29 Jun 2026 13:27:46 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weC1R-0000000EkJi-1NFr;
-	Mon, 29 Jun 2026 13:27:37 +0000
+	id 1weC1X-0000000EkQD-3nrx;
+	Mon, 29 Jun 2026 13:27:43 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id BE5C760008;
+	by sea.source.kernel.org (Postfix) with ESMTP id 9563940561;
+	Mon, 29 Jun 2026 13:27:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9D0B1F000E9;
 	Mon, 29 Jun 2026 13:27:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB7A51F00A3A;
-	Mon, 29 Jun 2026 13:27:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782739656;
-	bh=qVU/cQLnaenh7G2gzskwzWByJ5M8lYz7G2KTZBNaXl0=;
+	s=k20260515; t=1782739663;
+	bh=sRJYXoqWCiZ6ApNEThTWgx3+Cj7z8E/TIwsvi5Pcnyo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=W3XxLeAX94oAJwi6KccusZYNep78lyadH1eGcnGUUrL8zeW/m5ri9nxkqGDZRVcob
-	 uG/2mwq0oEhrUpgvYlMUhA3Hn5e6ilprAecYZlavcYxGt6RxCLr6ZNWbi0lLGO7M8w
-	 c6SLMjx6ofeUljl4HXzXKp883719e6wAMUAfKDx8R9PQuEFLSobHJ8ut89AIBVSa39
-	 6N7miTIf1RiXSvruCB9D4e6uyU8ULFKrNz4Tnr1co4c9L3Vk1jsaW2gNYufFcgpvl4
-	 WaJhLoivp0gvakiWmOrUevc7Ne1ZfGmIknu6R8MWz6qBGSe8WltGzyUuzHPzJ1TdF+
-	 7naoLS346ECgg==
+	b=n0ckMEDNYI3vfl11sh6myJdKtsPmw6j/S+5oU1JiNgB7S0rDcWyAhd6ptFauFBHmT
+	 VqqmKk6bmTDwYN3/oD1x4iDxEeiSf4J/cbiRVWMkip/xETGZrP8vpzxUvsQYYWa5Te
+	 Y5u6PwYaFoZRi6cCY5bq26SEvwgitBbAlRa55Wky/V4hEspwQYbQDGjIPP2B/XXQ4q
+	 TBUHZR+5sZKDYq4dtVxS/7Q9atYdco29CCSA7f1+14EG1u1Cgd3rHHlD3rf9nP54EA
+	 VN/iRji/EQD/uTEHZ6uGzg1lLTuMU42tJSMT2sb8RuLMFI3yLP5XbsvIvHY0hPwOae
+	 0Q1U9yakmt6fg==
 From: Arnd Bergmann <arnd@kernel.org>
 To: linux-gpio@vger.kernel.org
 Cc: Arnd Bergmann <arnd@arndb.de>,
@@ -76,9 +76,9 @@ Cc: Arnd Bergmann <arnd@arndb.de>,
 	linux-phy@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-sound@vger.kernel.org
-Subject: [PATCH 07/13] ASoC: replace linux/gpio.h inclusions
-Date: Mon, 29 Jun 2026 15:26:27 +0200
-Message-Id: <20260629132633.1300009-8-arnd@kernel.org>
+Subject: [PATCH 08/13] pcmcia: replace linux/gpio.h inclusions
+Date: Mon, 29 Jun 2026 15:26:28 +0200
+Message-Id: <20260629132633.1300009-9-arnd@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20260629132633.1300009-1-arnd@kernel.org>
 References: <20260629132633.1300009-1-arnd@kernel.org>
@@ -101,54 +101,84 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Arnd Bergmann <arnd@arndb.de>
 
-linux/gpio.h is going away,s o use linux/gpio/consumer.h instead.
+The pcmcia drivers all use the legacy interfaces, so convert to
+include linux/gpio/legacy.h instead.
 
 Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- sound/soc/codecs/cs42l84.c | 2 +-
- sound/soc/codecs/cx2072x.c | 2 +-
- sound/soc/codecs/dmic.c    | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/pcmcia/bcm63xx_pcmcia.c | 2 +-
+ drivers/pcmcia/db1xxx_ss.c      | 2 +-
+ drivers/pcmcia/sa1100_h3600.c   | 2 +-
+ drivers/pcmcia/soc_common.c     | 2 +-
+ drivers/pcmcia/xxs1500_ss.c     | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/sound/soc/codecs/cs42l84.c b/sound/soc/codecs/cs42l84.c
-index f2a58163de0e..36c3abc21fed 100644
---- a/sound/soc/codecs/cs42l84.c
-+++ b/sound/soc/codecs/cs42l84.c
-@@ -16,7 +16,7 @@
- #include <linux/init.h>
- #include <linux/delay.h>
- #include <linux/i2c.h>
--#include <linux/gpio.h>
-+#include <linux/gpio/consumer.h>
- #include <linux/regmap.h>
+diff --git a/drivers/pcmcia/bcm63xx_pcmcia.c b/drivers/pcmcia/bcm63xx_pcmcia.c
+index 724fd6ee0fd0..1612b5d76975 100644
+--- a/drivers/pcmcia/bcm63xx_pcmcia.c
++++ b/drivers/pcmcia/bcm63xx_pcmcia.c
+@@ -14,7 +14,7 @@
  #include <linux/slab.h>
- #include <linux/acpi.h>
-diff --git a/sound/soc/codecs/cx2072x.c b/sound/soc/codecs/cx2072x.c
-index 83c6cbd40804..0dd35fa86cc5 100644
---- a/sound/soc/codecs/cx2072x.c
-+++ b/sound/soc/codecs/cx2072x.c
-@@ -11,7 +11,7 @@
- #include <linux/acpi.h>
- #include <linux/clk.h>
  #include <linux/delay.h>
+ #include <linux/pci.h>
 -#include <linux/gpio.h>
-+#include <linux/gpio/consumer.h>
- #include <linux/init.h>
- #include <linux/i2c.h>
- #include <linux/module.h>
-diff --git a/sound/soc/codecs/dmic.c b/sound/soc/codecs/dmic.c
-index 61e1bf1b3c9e..8b05d6f9b429 100644
---- a/sound/soc/codecs/dmic.c
-+++ b/sound/soc/codecs/dmic.c
-@@ -6,7 +6,7 @@
++#include <linux/gpio/legacy.h>
+ 
+ #include <bcm63xx_regs.h>
+ #include <bcm63xx_io.h>
+diff --git a/drivers/pcmcia/db1xxx_ss.c b/drivers/pcmcia/db1xxx_ss.c
+index 7b896d7dbc9f..410d24762f13 100644
+--- a/drivers/pcmcia/db1xxx_ss.c
++++ b/drivers/pcmcia/db1xxx_ss.c
+@@ -23,7 +23,7 @@
   */
  
  #include <linux/delay.h>
 -#include <linux/gpio.h>
-+#include <linux/gpio/consumer.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/interrupt.h>
+ #include <linux/pm.h>
+ #include <linux/module.h>
+diff --git a/drivers/pcmcia/sa1100_h3600.c b/drivers/pcmcia/sa1100_h3600.c
+index 10cb99c20a7f..6c52d90795eb 100644
+--- a/drivers/pcmcia/sa1100_h3600.c
++++ b/drivers/pcmcia/sa1100_h3600.c
+@@ -11,7 +11,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/init.h>
+ #include <linux/delay.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ 
+ #include <mach/hardware.h>
+ #include <asm/irq.h>
+diff --git a/drivers/pcmcia/soc_common.c b/drivers/pcmcia/soc_common.c
+index 87aa3f667117..23585e3968e9 100644
+--- a/drivers/pcmcia/soc_common.c
++++ b/drivers/pcmcia/soc_common.c
+@@ -32,8 +32,8 @@
+ 
+ 
+ #include <linux/cpufreq.h>
+-#include <linux/gpio.h>
  #include <linux/gpio/consumer.h>
- #include <linux/platform_device.h>
- #include <linux/regulator/consumer.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/init.h>
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+diff --git a/drivers/pcmcia/xxs1500_ss.c b/drivers/pcmcia/xxs1500_ss.c
+index 8a8aae1843b5..ba1bd0f9d9f8 100644
+--- a/drivers/pcmcia/xxs1500_ss.c
++++ b/drivers/pcmcia/xxs1500_ss.c
+@@ -7,7 +7,7 @@
+  */
+ 
+ #include <linux/delay.h>
+-#include <linux/gpio.h>
++#include <linux/gpio/legacy.h>
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+ #include <linux/ioport.h>
 -- 
 2.39.5
 
