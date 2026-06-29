@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73937C43327
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 09:26:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4AF7C43602
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Jun 2026 09:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ROGOb5hdkvV7FkTpUauniYLI6uogk9EtM3pLGQWSzpo=; b=NnC74nplM9NZlP
-	Ypl1GkgTqeA5e1TmPjBPb1Q2zzaAF+WvwVp5TFqPV1OmPJYCiEC+zSShfzB0mGK2Vlov19QSjMCWz
-	t/P3+szAuVEqLYkyXiyOo2N7kmc+jlAMdVhTYYJt6IuZ0+iK2VhH1marNlh23XBUCywD/kNemnvWQ
-	RNL5nMN72DEmIJHNFP+hCjpxfwd8p3NmONDhv/QLAF7pB60gDIECR4/OEF94ZaFCCKUlz1LjeyGhG
-	Z4iwVvNRyuRdYiWpplm5E0QzqupoIoHOzjWoFxkPx1f9wdydlJP6K7ecn0TnAvJTjmXfLtxNedo0z
-	MV12QnMQnW3EolMQK9fg==;
+	List-Owner; bh=2XEHHQlo8nKU66pe1XuUkBLoulsMZbMQC9bcEloePBw=; b=P1/0f0/eKAVvYE
+	gQ9xvsR5mu3nEf+zliemh0oM/W4gi5j2hQA6KG5kU1yM0VaPs//JoNJTIeDmyMsoWnsrGPZ6JRuxg
+	pEaOnys9ZThkTs7tyFTnMNPFj3iR/WHoWTk1aY1uKX/FOpVerIAk2leauVYpO+5nfyJg8hMx4+lDZ
+	NLbdNCaoQxxBO9+H/yURN/Ct7TxPEIDPyK6A242uhANpWI9TwNFK+xvOtApCvelaYy6+DpvfG8RMc
+	j7Grk7ir9AGaFh5clm+tWNUjHpxu7N14AoYC8c06I7AsH+TjlIlSKPtUE21sC01im5Az0fw/vOT24
+	sBm7KPVKsnIyyrIwqsXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we8GG-0000000E9ys-2eep;
-	Mon, 29 Jun 2026 09:26:40 +0000
+	id 1we8N4-0000000EAqO-0scU;
+	Mon, 29 Jun 2026 09:33:42 +0000
 Received: from mx1.wiredblade.com ([72.51.58.38])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we8GD-0000000E9xm-2V4H
+	id 1we8Mw-0000000EAno-3tZV
 	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Jun 2026 09:26:39 +0000
+	Mon, 29 Jun 2026 09:33:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; d=psihoexpert.ro; s=dynu;
-	c=relaxed/relaxed; q=dns/txt; h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Type:In-Reply-To:References;
-	bh=OttsIzjNQjYyQpZiUKo5XDS5QeXvKFZsZT7zR3RzaiM=;
-	b=jXH1h0YsimHZ9E7nQB/TLMWupnud0ivrKdffksjW/L1lMtjTC0zYtUlmB/t8pNIeuraFehZgw+OC8rt5zRDFwXyxT/7CFOhvsI+TtEDbRH4FfhDwm+a21F4RMX4unkxaq5UcSwS99LzVOEKs+/BlV9vJUFoLoPTa4T6//ek2YRBRmfjGcqg7k9/4YCIOOYZXOMjCnRsYGQrI153D3YYTswpa81ta+I6ZEI2ojEXvwKPbGHA+EHI7+l0yZo
-	yIH4hwjOKeMRamP6CgUWClk9jKMfxkIpJk1BLYQBgWecY5xdZQ+8iV1NMUqoNEActkU6dR5ZiM/QnSBXUY8rYlwcKNtQ==
+	c=relaxed/relaxed; q=dns/txt; h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To:References;
+	bh=UCtunqk+Fmc0sd0IPCVoA3RdjciFhdw4WwHo64+lRJY=;
+	b=UFTQ3ccMvgm7ROMhPjuz8TAZaUBATjPoIObLRhQG+Ozi6akqNTRcUAtPRtlOdi/CLmYkS/v5297cTOKqQ/NO0dkQuax+I4SA/lfnfY7g9cAUMCtxNSB4PARqSd4WZ7F9j401UcRC4KHCXqcu1rE2EiV70EUBEi1ps+O10wMjg5pIjQ/sCksU1ehUnIoSqlH52OfZjG94hd+eWxVhpLk8cjZW0F1S6eDQVNTCPIq0q7HFWFrvaoSvLiDdBH
+	ZbszYTVqUqjZACsm1qyAEslhNt0/6/xC08MQHVQm3/6KphQMgXQ/3oc3ZdVuQdfP0OuFHmNK7unAgG1KhOsH39ksMUbQ==
 ARC-Seal: i=1; a=rsa-sha256; cv=none;
 	d=dynu.com; s=mail;
-	b=IgtEGpUy4BzN/BG2ev6hIQzFt7WwcFsMs9waVEtMCF0bFN/Prvv5RYFH41OZAC+sFQC3EnvgX9CbPd3HHY0dgYi24ws+eQldRSMmyshcBGwhPa/Tsl6XFWcEEGmOmr3fr7av058CRdbrjw3opXm3T+BgHvRbIog5UdB9eHrpLjCY4qEvjhJBEG2pi60dW5+BYfhmPSQ4xWE28DhYt508XMEYsKZOzwkRvSxiRZ1z9C5yCgbg7XsH5/HXGW
-	sHdQL691kj2kb1x6a5moijz6tlFislRJNBmZf1JsyPywHWlqie2aWjX4FLrFYS8XeDANqKKeumsTq6WEuE8yEC/DkV/w==
+	b=k86g2QPTfgXWUBIAoeUItMiE8hgLQ2WQbp0ckB8346enRAflsNi9HqxNJyziDrBsCxemCdqMm4Qvfe+5AuXmC7MA9t8Mqjt1+IiD/wz9HPF9XjPQjkoC7w21obknzy64RSdRd9YPacJAK1EmUYst0hSR+X5lVk+kX4sf4nWn1cmnGhOmfDR9/tCB4V1vb/vcuYv8xQ/abRH93wJATa7XgkmgRVL12Sog+SEQkJAlOqTB6I6Mwnb7Av/qBG
+	jPkid5hwWSea0Aowl1Chrd/XUa2JSWFHW1Dnm7D8aVPG1EtvN1YcxsgGhN47c0edFLeJ2+IkvMlKgePMjnV0EBTAunlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=dynu.com; s=mail;
-	h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Type:In-Reply-To:References;
-	bh=OttsIzjNQjYyQpZiUKo5XDS5QeXvKFZsZT7zR3RzaiM=;
-	b=iuBkhcIx5mma8Ygk5jGTAer7dBlFqwdHzz33qoZGRxB84uMcYck+CfJ+8xpeIpmYkyqHQ4M0bltqjwS8YLe5XPWQViJxD4H11spzl+AW22vwkLR78yCURI4usuDifhqmNz1dOo2IR3CEgk5l794ow4nkOWQ1o/Xn3sBnNAPt5SQiVeFijMDgFb8+U1BAJbk7Nnhdcoxyvu7HKhfqb1OuYg/h3BuBiNDl3X+YdDhYKbJ05gaJIBHwye7rEi
-	8IdIBdqufbCuc2rb6/HT02XVpJOl0yXXaNIex37xICvwfIF8YhkeYzLLUtoaT68JkPAcKiUKJDWKng0frgoyovnCo4YA==
+	h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To:References;
+	bh=UCtunqk+Fmc0sd0IPCVoA3RdjciFhdw4WwHo64+lRJY=;
+	b=EQ98xnfstNm40Ez0ScnEWb6m69RKTpveEKd5hI0GYVYJK4zCL2YspNskOb+WHn4o6bDX6t2xdr0uYO08jetHbxCDIuch2HUdAyHxFWYSS3K36pLQNZAMl7+xnobPv2EaU/JFAO1A/s6Str1OGszD1f36D0tEuLvcsWGi+mqAFtM4jIytnAXnHWs+7e94YPAobcTlqroUpYeZ8MZeuvJtn0oIqSRgaqKe9TTWxZKf76K80gtxShh48Y7LAY
+	EruqXs5SZeJr1N0XewsfQYuVKMPms5T4yi3Os6llsTVWdrCWQCLlCfXRhDGIsjlTU5oG72cy52fRM2/8XP18/y5SfFjg==
 ARC-Authentication-Results: i=1; mx.dynu.com;
 	dkim=none;
 	dmarc=fail
 Received: from GRAPHRT (188-24-194-9.rdsnet.ro [188.24.194.9])
 	by mx1.wiredblade.com with ESMTPSA
 	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256)
-	; Mon, 29 Jun 2026 09:26:22 +0000
+	; Mon, 29 Jun 2026 09:33:24 +0000
 X-Original-Rcpt-To: m95d+git@psihoexpert.ro
-Date: Mon, 29 Jun 2026 12:26:25 +0300
+Date: Mon, 29 Jun 2026 12:33:28 +0300
 From: Marius Dinu <m95d+git@psihoexpert.ro>
-To: Boris Brezillon <boris.brezillon@collabora.com>
-Cc: Marius Dinu <m95d+git@psihoexpert.ro>, dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
+To: Erik Faye-Lund <kusmabite@gmail.com>
+Cc: Boris Brezillon <boris.brezillon@collabora.com>,
+	Marius Dinu <m95d+git@psihoexpert.ro>,
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
 	Steven Price <steven.price@arm.com>,
 	Liviu Dudau <liviu.dudau@arm.com>
 Subject: Re: [BUG] drm/panthor: intermittent freezes in Xorg xserver
-Message-ID: <akI6QaSayNAgdnYv@GRAPHRT>
+Message-ID: <akI76PpXwFP3/O1C@GRAPHRT>
 References: <aj5neetgYdu0QpcK@GRAPHRT>
  <20260629094419.6bb56d99@fedora-2.home>
+ <CABPQNSa0-wqQTm0CzLFojWZLVY5OqQxWTXrpO=O4p8go52808Q@mail.gmail.com>
+ <CABPQNSbwC=VtjjQiDd6B9ExT4GhgJOGUu-_tTeZ8TvgqDDbqKQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260629094419.6bb56d99@fedora-2.home>
+In-Reply-To: <CABPQNSbwC=VtjjQiDd6B9ExT4GhgJOGUu-_tTeZ8TvgqDDbqKQ@mail.gmail.com>
 Authentication-Results: mx.dynu.com;
 	dkim=none;
 	dmarc=fail
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_022637_732580_E259D2E0 
-X-CRM114-Status: GOOD (  23.31  )
+X-CRM114-CacheID: sfid-20260629_023335_029887_3FE9A592 
+X-CRM114-Status: GOOD (  24.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,96 +84,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2026-06-29 09.44.19 ++0200, Boris Brezillon wrote:
-> On Fri, 26 Jun 2026 14:50:17 +0300
-> Marius Dinu <m95d+git@psihoexpert.ro> wrote:
-> 
-> > Hi.
-> > 
-> > The system is Radxa Rock 5 ITX, RK3588, 32GB RAM,
-> > mainline kernel v7.1.0 with panthor driver, mesa 26.0.7 with panfrost driver,
-> > xorg-server v21.1.22 accelerated by modesetting driver, x11perf v1.7.0.
-> 
-> Are we sure that's a panthor issue? Also, is this a regression
-> introduced by the latest kernel version, or has it been like that from
-> the start?
-
-It was from the start, not a regression. I think I started from v6.18 on this
-board IIRC. If you need me to test earlier versions, say so.
-
-> 
-> Also, would you mind opening an issue on [1]?
-> 
-
-I already did.
-https://gitlab.freedesktop.org/mesa/mesa/-/work_items/15721
-
-> > 
-> > The most clean way to reproduce this bug:
-> > Form a console or ssh session, start Xorg in background, without a window
-> > manager, and then run x11perf on that display.
-> > 
-> > Xorg :0 &
-> > x11perf -all -display :0
-> > 
-> > The bug: weird intermittent performance issues in some of the tests.
-> > Examples:
-> > 
-> >     1000 reps @  18.0799 msec (    55.3/sec): 10x10 rectangle outline
-> >     1000 reps @  18.0791 msec (    55.3/sec): 10x10 rectangle outline
-> >     1000 reps @  18.0790 msec (    55.3/sec): 10x10 rectangle outline
-> >     1000 reps @  18.0789 msec (    55.3/sec): 10x10 rectangle outline
-> >     1000 reps @   0.0287 msec ( 34800.0/sec): 10x10 rectangle outline
-> >     5000 trep @  14.4691 msec (    69.1/sec): 10x10 rectangle outline
-> > 
-> >  5000000 reps @   0.0029 msec (345000.0/sec): 1-pixel solid circle
-> >  5000000 reps @   0.0009 msec (1100000.0/sec): 1-pixel solid circle
-> >  5000000 reps @   0.0012 msec (818000.0/sec): 1-pixel solid circle
-> >  5000000 reps @   0.0000 msec (20900000.0/sec): 1-pixel solid circle
-> >  5000000 reps @   0.0000 msec (32300000.0/sec): 1-pixel solid circle
-> > 25000000 trep @   0.0010 msec (979000.0/sec): 1-pixel solid circle
-> > 
-> >     1000 reps @  31.6607 msec (    31.6/sec): Fill 10x10 trapezoid
-> >     1000 reps @  16.9012 msec (    59.2/sec): Fill 10x10 trapezoid
-> >     1000 reps @   0.0234 msec ( 42700.0/sec): Fill 10x10 trapezoid
-> >     1000 reps @   0.0272 msec ( 36700.0/sec): Fill 10x10 trapezoid
-> >     1000 reps @  32.1268 msec (    31.1/sec): Fill 10x10 trapezoid
-> >     5000 trep @  16.1479 msec (    61.9/sec): Fill 10x10 trapezoid
-> > 
-> > There are no messages in kernel log or Xorg log.
-> > 
-> > Visually, most of the tests runs fast as expected, but in some of the tests
-> > it gets "stuck" randomly. The test suddenly freezes while drawing the pattern.
-> > Then, after a while (a few seconds up to a couple of minutes), it gets
-> > unstuck by itself, draws a few more patterns extremely fast for less than a
-> > second, and then it gets stuck again.
-> 
-> It smells like a signalling issue. Can you check the CPU activity and
-> report any outstanding process? Can you maybe connect a gdb to the
-> x11perf to see where it's blocked, and post the backtrace here (or in
-> the gitlab issue)?
-> 
-
-x11perf is waiting on I/O (red "D" in htop). CPU is completely idle, not even
-grey "io-wait" activity.
-
-I have no experience using gdb. Please give me the exact command to run.
-
-> Regards,
-> 
-> Boris
-> 
-> [1]https://gitlab.freedesktop.org/mesa/mesa
-
-Marius
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCAyMDI2LTA2LTI5IDEwLjUxLjMyICsrMDIwMCwgRXJpayBGYXllLUx1bmQgd3JvdGU6
+Cj4gU2lsbHkgbWUsIEkgZm9yZ290IHRvIGRpc2FibGUgSFRNTCBlbWFpbCwgc28gdGhpcyBvbmUg
+Ym91bmNlZCBmb3IKPiBzb21lLCByZXNlbmRpbmcuIFNvcnJ5IGFib3V0IHRoZSBkdXBsaWNhdGUu
+Cj4gCj4gSSB3b25kZXIgaWYgeW91J3JlIGV4cGVyaWVuY2luZyB0aGUgc2FtZSBpc3N1ZSBhcyB0
+aGlzPwo+IAo+IGh0dHBzOi8vZ2l0bGFiLmZyZWVkZXNrdG9wLm9yZy9tZXNhL21lc2EvLS93b3Jr
+X2l0ZW1zLzE1MTE2Cj4gCgpJIGhhdmUgbm8gaWRlZWEuIFRoYXQgYnVnIHJlcG9ydCBpcyB3YXkg
+YWJvdmUgbXkgdW5kZXJzdGFuZGluZy4gU29ycnkuCgo+IAo+ID4gT24gTW9uLCBKdW4gMjksIDIw
+MjYgYXQgMTA6MjTigK9BTSBCb3JpcyBCcmV6aWxsb24gPGJvcmlzLmJyZXppbGxvbkBjb2xsYWJv
+cmEuY29tPiB3cm90ZToKPiA+Pgo+ID4+IE9uIEZyaSwgMjYgSnVuIDIwMjYgMTQ6NTA6MTcgKzAz
+MDAKPiA+PiBNYXJpdXMgRGludSA8bTk1ZCtnaXRAcHNpaG9leHBlcnQucm8+IHdyb3RlOgo+ID4+
+Cj4gPj4gPiBIaS4KPiA+PiA+Cj4gPj4gPiBUaGUgc3lzdGVtIGlzIFJhZHhhIFJvY2sgNSBJVFgs
+IFJLMzU4OCwgMzJHQiBSQU0sCj4gPj4gPiBtYWlubGluZSBrZXJuZWwgdjcuMS4wIHdpdGggcGFu
+dGhvciBkcml2ZXIsIG1lc2EgMjYuMC43IHdpdGggcGFuZnJvc3QgZHJpdmVyLAo+ID4+ID4geG9y
+Zy1zZXJ2ZXIgdjIxLjEuMjIgYWNjZWxlcmF0ZWQgYnkgbW9kZXNldHRpbmcgZHJpdmVyLCB4MTFw
+ZXJmIHYxLjcuMC4KPiA+Pgo+ID4+IEFyZSB3ZSBzdXJlIHRoYXQncyBhIHBhbnRob3IgaXNzdWU/
+IEFsc28sIGlzIHRoaXMgYSByZWdyZXNzaW9uCj4gPj4gaW50cm9kdWNlZCBieSB0aGUgbGF0ZXN0
+IGtlcm5lbCB2ZXJzaW9uLCBvciBoYXMgaXQgYmVlbiBsaWtlIHRoYXQgZnJvbQo+ID4+IHRoZSBz
+dGFydD8KPiA+Pgo+ID4+IEFsc28sIHdvdWxkIHlvdSBtaW5kIG9wZW5pbmcgYW4gaXNzdWUgb24g
+WzFdPwo+ID4+Cj4gPj4gPgo+ID4+ID4gVGhlIG1vc3QgY2xlYW4gd2F5IHRvIHJlcHJvZHVjZSB0
+aGlzIGJ1ZzoKPiA+PiA+IEZvcm0gYSBjb25zb2xlIG9yIHNzaCBzZXNzaW9uLCBzdGFydCBYb3Jn
+IGluIGJhY2tncm91bmQsIHdpdGhvdXQgYSB3aW5kb3cKPiA+PiA+IG1hbmFnZXIsIGFuZCB0aGVu
+IHJ1biB4MTFwZXJmIG9uIHRoYXQgZGlzcGxheS4KPiA+PiA+Cj4gPj4gPiBYb3JnIDowICYKPiA+
+PiA+IHgxMXBlcmYgLWFsbCAtZGlzcGxheSA6MAo+ID4+ID4KPiA+PiA+IFRoZSBidWc6IHdlaXJk
+IGludGVybWl0dGVudCBwZXJmb3JtYW5jZSBpc3N1ZXMgaW4gc29tZSBvZiB0aGUgdGVzdHMuCj4g
+Pj4gPiBFeGFtcGxlczoKPiA+PiA+Cj4gPj4gPiAgICAgMTAwMCByZXBzIEAgIDE4LjA3OTkgbXNl
+YyAoICAgIDU1LjMvc2VjKTogMTB4MTAgcmVjdGFuZ2xlIG91dGxpbmUKPiA+PiA+ICAgICAxMDAw
+IHJlcHMgQCAgMTguMDc5MSBtc2VjICggICAgNTUuMy9zZWMpOiAxMHgxMCByZWN0YW5nbGUgb3V0
+bGluZQo+ID4+ID4gICAgIDEwMDAgcmVwcyBAICAxOC4wNzkwIG1zZWMgKCAgICA1NS4zL3NlYyk6
+IDEweDEwIHJlY3RhbmdsZSBvdXRsaW5lCj4gPj4gPiAgICAgMTAwMCByZXBzIEAgIDE4LjA3ODkg
+bXNlYyAoICAgIDU1LjMvc2VjKTogMTB4MTAgcmVjdGFuZ2xlIG91dGxpbmUKPiA+PiA+ICAgICAx
+MDAwIHJlcHMgQCAgIDAuMDI4NyBtc2VjICggMzQ4MDAuMC9zZWMpOiAxMHgxMCByZWN0YW5nbGUg
+b3V0bGluZQo+ID4+ID4gICAgIDUwMDAgdHJlcCBAICAxNC40NjkxIG1zZWMgKCAgICA2OS4xL3Nl
+Yyk6IDEweDEwIHJlY3RhbmdsZSBvdXRsaW5lCj4gPj4gPgo+ID4+ID4gIDUwMDAwMDAgcmVwcyBA
+ICAgMC4wMDI5IG1zZWMgKDM0NTAwMC4wL3NlYyk6IDEtcGl4ZWwgc29saWQgY2lyY2xlCj4gPj4g
+PiAgNTAwMDAwMCByZXBzIEAgICAwLjAwMDkgbXNlYyAoMTEwMDAwMC4wL3NlYyk6IDEtcGl4ZWwg
+c29saWQgY2lyY2xlCj4gPj4gPiAgNTAwMDAwMCByZXBzIEAgICAwLjAwMTIgbXNlYyAoODE4MDAw
+LjAvc2VjKTogMS1waXhlbCBzb2xpZCBjaXJjbGUKPiA+PiA+ICA1MDAwMDAwIHJlcHMgQCAgIDAu
+MDAwMCBtc2VjICgyMDkwMDAwMC4wL3NlYyk6IDEtcGl4ZWwgc29saWQgY2lyY2xlCj4gPj4gPiAg
+NTAwMDAwMCByZXBzIEAgICAwLjAwMDAgbXNlYyAoMzIzMDAwMDAuMC9zZWMpOiAxLXBpeGVsIHNv
+bGlkIGNpcmNsZQo+ID4+ID4gMjUwMDAwMDAgdHJlcCBAICAgMC4wMDEwIG1zZWMgKDk3OTAwMC4w
+L3NlYyk6IDEtcGl4ZWwgc29saWQgY2lyY2xlCj4gPj4gPgo+ID4+ID4gICAgIDEwMDAgcmVwcyBA
+ICAzMS42NjA3IG1zZWMgKCAgICAzMS42L3NlYyk6IEZpbGwgMTB4MTAgdHJhcGV6b2lkCj4gPj4g
+PiAgICAgMTAwMCByZXBzIEAgIDE2LjkwMTIgbXNlYyAoICAgIDU5LjIvc2VjKTogRmlsbCAxMHgx
+MCB0cmFwZXpvaWQKPiA+PiA+ICAgICAxMDAwIHJlcHMgQCAgIDAuMDIzNCBtc2VjICggNDI3MDAu
+MC9zZWMpOiBGaWxsIDEweDEwIHRyYXBlem9pZAo+ID4+ID4gICAgIDEwMDAgcmVwcyBAICAgMC4w
+MjcyIG1zZWMgKCAzNjcwMC4wL3NlYyk6IEZpbGwgMTB4MTAgdHJhcGV6b2lkCj4gPj4gPiAgICAg
+MTAwMCByZXBzIEAgIDMyLjEyNjggbXNlYyAoICAgIDMxLjEvc2VjKTogRmlsbCAxMHgxMCB0cmFw
+ZXpvaWQKPiA+PiA+ICAgICA1MDAwIHRyZXAgQCAgMTYuMTQ3OSBtc2VjICggICAgNjEuOS9zZWMp
+OiBGaWxsIDEweDEwIHRyYXBlem9pZAo+ID4+ID4KPiA+PiA+IFRoZXJlIGFyZSBubyBtZXNzYWdl
+cyBpbiBrZXJuZWwgbG9nIG9yIFhvcmcgbG9nLgo+ID4+ID4KPiA+PiA+IFZpc3VhbGx5LCBtb3N0
+IG9mIHRoZSB0ZXN0cyBydW5zIGZhc3QgYXMgZXhwZWN0ZWQsIGJ1dCBpbiBzb21lIG9mIHRoZSB0
+ZXN0cwo+ID4+ID4gaXQgZ2V0cyAic3R1Y2siIHJhbmRvbWx5LiBUaGUgdGVzdCBzdWRkZW5seSBm
+cmVlemVzIHdoaWxlIGRyYXdpbmcgdGhlIHBhdHRlcm4uCj4gPj4gPiBUaGVuLCBhZnRlciBhIHdo
+aWxlIChhIGZldyBzZWNvbmRzIHVwIHRvIGEgY291cGxlIG9mIG1pbnV0ZXMpLCBpdCBnZXRzCj4g
+Pj4gPiB1bnN0dWNrIGJ5IGl0c2VsZiwgZHJhd3MgYSBmZXcgbW9yZSBwYXR0ZXJucyBleHRyZW1l
+bHkgZmFzdCBmb3IgbGVzcyB0aGFuIGEKPiA+PiA+IHNlY29uZCwgYW5kIHRoZW4gaXQgZ2V0cyBz
+dHVjayBhZ2Fpbi4KPiA+Pgo+ID4+IEl0IHNtZWxscyBsaWtlIGEgc2lnbmFsbGluZyBpc3N1ZS4g
+Q2FuIHlvdSBjaGVjayB0aGUgQ1BVIGFjdGl2aXR5IGFuZAo+ID4+IHJlcG9ydCBhbnkgb3V0c3Rh
+bmRpbmcgcHJvY2Vzcz8gQ2FuIHlvdSBtYXliZSBjb25uZWN0IGEgZ2RiIHRvIHRoZQo+ID4+IHgx
+MXBlcmYgdG8gc2VlIHdoZXJlIGl0J3MgYmxvY2tlZCwgYW5kIHBvc3QgdGhlIGJhY2t0cmFjZSBo
+ZXJlIChvciBpbgo+ID4+IHRoZSBnaXRsYWIgaXNzdWUpPwo+ID4+Cj4gPj4gUmVnYXJkcywKPiA+
+Pgo+ID4+IEJvcmlzCj4gPj4KPiA+PiBbMV1odHRwczovL2dpdGxhYi5mcmVlZGVza3RvcC5vcmcv
+bWVzYS9tZXNhCgpNYXJpdXMKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
