@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7B0EC44501
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA2DC43327
 	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jun 2026 16:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SwnWzIiBtRjaPHds2eGw5XpTbEOBMiS7rWn9LP2CqTE=; b=0YjyTLVllL+UOZ
-	VU8gUeq4ITyxj+EHbZOFlhQ0oAAgNw02XwcEJTMjzpAqI5dS9IkVMDZJQU4x+1J9WGKmmEvEW/16k
-	YWNmKfJCWIhnvAAcImyGYpwEkL+vVim2Nr/ZNZ4FGAkG6SDTQOMT7GYiniXnbTIy67YB2JucvUswW
-	p38bZ/g73lxsDko0qg2xgeMM3ta0hk4hP64eGO3bGVSzU/H9J/JkmfS2hH8C5vWf3NrbExLhPeZNB
-	L5ZB6AN8bL+cG02I86Dr2KEmLqtrBUT34nynfZFS2UEvnfdfwcnJc3zRk+D936wPRB1vmdZUbRYBl
-	EMADKCLOzTlCX8PmxGSg==;
+	List-Owner; bh=19A47uPKTooafWFonaTNYcb59aMPkjsaA20QCruPBeY=; b=GjRZkyiJzRmzkH
+	pj2dFyzft1gIJ/3yuC/6t+pbvyfxPduiiO64ksl4HuYdbZXlT0rctzFOygF+ciptsDVylefWqOfDQ
+	kGfkn2HfSYqehe1h1ekAbXKzF165bbs/iXj4xoL5E4Wh7gDRbYFoNuSQaAwWP7mHYQHg+aAiDmoLv
+	rhvPMIeWPUPEYB/jGBWP/qGpaS19sov5/+0iVHXsAAyJHCG0gqK2xHYFKdy/tPwvCQuK1Dw2iUKBp
+	Wh6pRbEb8Ql09DRts5uV6e4iCAqSbFl0hcRnQ2NtzcrCniVq2IeIrqTKitOta9Y6n4cBq+/dJFNdA
+	BSe6ouSVsSVOyNtI9aMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1webZ8-0000000HVTT-3QS1;
-	Tue, 30 Jun 2026 16:44:06 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1webZ3-0000000HVOg-0IyH;
-	Tue, 30 Jun 2026 16:44:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=vOa+mdayT91izHVqX1UV1GEgdTHLPH6ORjFi0tHHBv0=; b=dGGaYZgrhV1zummDrVOCaDk78H
-	Bk74aQg223lrNPg8bUn9U7+IyToxjdhshGz5IYqvg2F4mZKQlKdtUOpcIgWAdJ/wmthR1L8icVEPd
-	Ur2KUmHFqOgsXQNikzYZXfKcuK95rhtDKztauUGNABEGyhPP5bJVRFTaq4T3ZGZhVOZHMzO5zT2gY
-	vj6LtTlxsyt7bttfpUjpTzqgwyu/q3uDQCJpqPmrFpfx2JXIjnr4HEETWhBRouZUBTN9Egc7oXkl9
-	zxxceOyAElSA1qXi/YDAyAGvfag9VjNXpwT3v6lCWK8NNwz13osQuf1ylSSlHPnWTaCmtU4UW1i5m
-	rfGdNb3g==;
+	id 1webZ7-0000000HVQP-2sFv;
+	Tue, 30 Jun 2026 16:44:05 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1webYz-000000024SZ-0hIk;
-	Tue, 30 Jun 2026 16:43:59 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1webYx-0000000HVKt-24Gb;
+	Tue, 30 Jun 2026 16:43:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=vOa+mdayT91izHVqX1UV1GEgdTHLPH6ORjFi0tHHBv0=; b=j7niABot65FEcsVCf15loxOqUF
-	geyqCezj7k36DCt6kV06vZQycUNiwspL1MLfN9LT4A8HqyxcjV9+gvyCAgUr+2bsr3pVFrp0OChUB
-	Aupi6lCeMRkOA9pUNGjbprECGtnVFjRJnn556FxqqzAPNkGUkOhl+0CUEoDQi0GkVjY8sDgTrPjhm
-	DE73j4M9c8f3g22i431xwAW8xcfhOxV2C41geAQ6Z+HLbmvw64e8ju94ErenGKW7K6CWzVEEJ/crm
-	lcWrtSAutyhFmVb8kQU5yKhhdarFqJplOki9cZEr/jeyVfguh+m1rEsrD63SURAVo+hKoeIpJPh/f
-	IhcFB3Vw==;
+	bh=52PHcV9omVEm3bSV/8oo19lgyN28ujPP92D8HygTz8M=; b=qXRwduQkyhCanl9khpEV3tX2R4
+	nx3N+M6659TkzEg/FULsjdst8z0TRxMRCzvXfjmZGS34Q/ASvN7Mh58AEfdEXZXx+jhBZ4+wWKWKB
+	64TUOwqhUfXGjS3UibZG1bzIU/UtayJtpusOUzR1E63RwajuwKA9YA9ueMmgyZRxlhiFTOCTYCqjN
+	xV2zf+VyqJPjL81C5XsD2SROR3BGdiW4eZDMizPdVju68CvT8SJ5QFqMe2jj8tjuUOFKYfO2e3HF/
+	ADWWMPTQiax6WtFvcm6tnFcl1nYG2AvPc/iTsqe8DF8606QNJpvVWXI1F/zAJ8VqpKLMbgBp2g7hi
+	2M/qn2Qw==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: mkl@pengutronix.de,
 	mailhol@kernel.org
@@ -66,17 +52,16 @@ Cc: kernel@pengutronix.de,
 	quentin.schulz@cherry.de,
 	zhangqing@rock-chips.com,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 1/6] dt-bindings: can: rockchip_canfd: add compatible for the RK3588 variant
-Date: Tue, 30 Jun 2026 18:43:31 +0200
-Message-ID: <20260630164336.3444550-2-heiko@sntech.de>
+Subject: [PATCH 5/6] arm64: dts: rockchip: Add RK3588 CAN controller nodes
+Date: Tue, 30 Jun 2026 18:43:35 +0200
+Message-ID: <20260630164336.3444550-6-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260630164336.3444550-1-heiko@sntech.de>
 References: <20260630164336.3444550-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_174357_488376_AA771854 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260630_094355_552323_93F79202 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,26 +80,63 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-The RK3588 uses a variant of the CAN(-FD) controller introduced at first
-with the RK3568 SoC.
+The RK3588 has 3 CAN controllers, so add the core nodes for them.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- .../devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml     | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 39 +++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-index a077c0330013..02211ea3ec41 100644
---- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-+++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-@@ -20,6 +20,7 @@ properties:
-       - items:
-           - const: rockchip,rk3568v3-canfd
-           - const: rockchip,rk3568v2-canfd
-+      - const: rockchip,rk3588-canfd
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index fc1fdbfd3162..ba82e2f057d2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -2648,6 +2648,45 @@ dmac1: dma-controller@fea30000 {
+ 		#dma-cells = <1>;
+ 	};
  
-   reg:
-     maxItems: 1
++	can0: can@fea50000 {
++		compatible = "rockchip,rk3588-canfd";
++		reg = <0x0 0xfea50000 0x0 0x1000>;
++		interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
++		clock-names = "baud", "pclk";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can0m0_pins>;
++		resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
++		reset-names = "can", "apb";
++		status = "disabled";
++	};
++
++	can1: can@fea60000 {
++		compatible = "rockchip,rk3588-canfd";
++		reg = <0x0 0xfea60000 0x0 0x1000>;
++		interrupts = <GIC_SPI 342 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru CLK_CAN1>, <&cru PCLK_CAN1>;
++		clock-names = "baud", "pclk";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can1m0_pins>;
++		resets = <&cru SRST_CAN1>, <&cru SRST_P_CAN1>;
++		reset-names = "can", "apb";
++		status = "disabled";
++	};
++
++	can2: can@fea70000 {
++		compatible = "rockchip,rk3588-canfd";
++		reg = <0x0 0xfea70000 0x0 0x1000>;
++		interrupts = <GIC_SPI 343 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru CLK_CAN2>, <&cru PCLK_CAN2>;
++		clock-names = "baud", "pclk";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can2m0_pins>;
++		resets = <&cru SRST_CAN2>, <&cru SRST_P_CAN2>;
++		reset-names = "can", "apb";
++		status = "disabled";
++	};
++
+ 	i2c1: i2c@fea90000 {
+ 		compatible = "rockchip,rk3588-i2c", "rockchip,rk3399-i2c";
+ 		reg = <0x0 0xfea90000 0x0 0x1000>;
 -- 
 2.47.3
 
