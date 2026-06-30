@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA2DC43327
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC7FC43602
 	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jun 2026 16:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=19A47uPKTooafWFonaTNYcb59aMPkjsaA20QCruPBeY=; b=GjRZkyiJzRmzkH
-	pj2dFyzft1gIJ/3yuC/6t+pbvyfxPduiiO64ksl4HuYdbZXlT0rctzFOygF+ciptsDVylefWqOfDQ
-	kGfkn2HfSYqehe1h1ekAbXKzF165bbs/iXj4xoL5E4Wh7gDRbYFoNuSQaAwWP7mHYQHg+aAiDmoLv
-	rhvPMIeWPUPEYB/jGBWP/qGpaS19sov5/+0iVHXsAAyJHCG0gqK2xHYFKdy/tPwvCQuK1Dw2iUKBp
-	Wh6pRbEb8Ql09DRts5uV6e4iCAqSbFl0hcRnQ2NtzcrCniVq2IeIrqTKitOta9Y6n4cBq+/dJFNdA
-	BSe6ouSVsSVOyNtI9aMw==;
+	List-Owner; bh=VjRoOK2A44IQHtymDX2ILABZZ2RpNSCdEcgubgKWH6U=; b=a+ZNQY8F0QoU95
+	TZK/sGajMkvX7KMlBSxoyaVJJMeZvAqMHARr/pc1NvO9wK6+aB4vTqzwPQXs4Vud+cdZd6MUSgL/k
+	fDGSqga0wL4ZW3zYXh6dwlzOgQJPzsIsJL+YXXIep3yjuCF9MmsAqq24tl/98knzuxuIcy+xv7XNx
+	ji65b0zbYtiJh4VNjoOgAOnyuxU9oLfn1j4yG7oxTV0n6Rxk3mSofiwlBtVxLQGfMbNI1IM+fsFe9
+	NE7eNpAaDTWlEE++SDVvI10wd8SJXU8KUpQn6OZ5ibqQqUUsmPtOi01fzS/Kd4Rf0t9wKsVCG78yQ
+	zMKZxeWmaNkENPKCIIcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1webZ7-0000000HVQP-2sFv;
+	id 1webZ7-0000000HVQl-3ZEA;
 	Tue, 30 Jun 2026 16:44:05 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1webYx-0000000HVKt-24Gb;
+	id 1webYx-0000000HVKu-2wkc;
 	Tue, 30 Jun 2026 16:43:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=52PHcV9omVEm3bSV/8oo19lgyN28ujPP92D8HygTz8M=; b=qXRwduQkyhCanl9khpEV3tX2R4
-	nx3N+M6659TkzEg/FULsjdst8z0TRxMRCzvXfjmZGS34Q/ASvN7Mh58AEfdEXZXx+jhBZ4+wWKWKB
-	64TUOwqhUfXGjS3UibZG1bzIU/UtayJtpusOUzR1E63RwajuwKA9YA9ueMmgyZRxlhiFTOCTYCqjN
-	xV2zf+VyqJPjL81C5XsD2SROR3BGdiW4eZDMizPdVju68CvT8SJ5QFqMe2jj8tjuUOFKYfO2e3HF/
-	ADWWMPTQiax6WtFvcm6tnFcl1nYG2AvPc/iTsqe8DF8606QNJpvVWXI1F/zAJ8VqpKLMbgBp2g7hi
-	2M/qn2Qw==;
+	bh=dV/6p+jnBCTZ+PzDK8GCl4Bvcm15c7cMycChV092hzE=; b=XIaELJRETsTj0t4x8bf4WRerHW
+	Xg3gCR6NwJa/r6Pm/k7WmIfhlxVZDk16KzuhgPwYVLOOwLqz5kr74lkVmAHZ9yv9aErlVil2Tuhoi
+	Nk3lvl5DAsVc+PL30E340+eONDw2lgS2AqlXRexMg/92Se3hk0l9doEoaY4BzK5pcNlYH3H7P3uog
+	74Ul8oum7ov7BeDVI3d2MpwHZX7kGADNY3uEmW47p8Xhuk2LgN4BWf2O+NDFQtGk5M6UL66cg0QmV
+	KxQL035iMJbwo/ZQ5LMY6Fvxwz/ouKhB/yoXCmilGjtBz4lMaC58ZH0YpRZpA8/cOg8Sa5ITBn2SR
+	sKj8oweA==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: mkl@pengutronix.de,
 	mailhol@kernel.org
@@ -52,16 +52,16 @@ Cc: kernel@pengutronix.de,
 	quentin.schulz@cherry.de,
 	zhangqing@rock-chips.com,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 5/6] arm64: dts: rockchip: Add RK3588 CAN controller nodes
-Date: Tue, 30 Jun 2026 18:43:35 +0200
-Message-ID: <20260630164336.3444550-6-heiko@sntech.de>
+Subject: [PATCH 6/6] arm64: dts: rockchip: Enable CAN controller on RK3588-Tiger-Haikou
+Date: Tue, 30 Jun 2026 18:43:36 +0200
+Message-ID: <20260630164336.3444550-7-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260630164336.3444550-1-heiko@sntech.de>
 References: <20260630164336.3444550-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_094355_552323_93F79202 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20260630_094355_736816_B3006D8A 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,63 +80,36 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-The RK3588 has 3 CAN controllers, so add the core nodes for them.
+CAN0 is piped through the Q7-connector to the CAN-Header on the Haikou
+base-board, so enable support for it there.
+
+At least on RK3588-Tiger, the CAN clocks default to 99MHz, limiting
+usable CAN bitrates without skew. Errata documentation mentions
+300MHz as the default frequency on RK3568, so replicate this here
+to allow more bitrates.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 39 +++++++++++++++++++
- 1 file changed, 39 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index fc1fdbfd3162..ba82e2f057d2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -2648,6 +2648,45 @@ dmac1: dma-controller@fea30000 {
- 		#dma-cells = <1>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
+index 873fbeb8daa1..6273e695b039 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
+@@ -155,6 +155,12 @@ vddd_audio_1v6: regulator-vddd-audio-1v6 {
  	};
+ };
  
-+	can0: can@fea50000 {
-+		compatible = "rockchip,rk3588-canfd";
-+		reg = <0x0 0xfea50000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
-+		clock-names = "baud", "pclk";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&can0m0_pins>;
-+		resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
-+		reset-names = "can", "apb";
-+		status = "disabled";
-+	};
++&can0 {
++	assigned-clocks = <&cru CLK_CAN0>;
++	assigned-clock-rates = <300000000>;
++	status = "okay";
++};
 +
-+	can1: can@fea60000 {
-+		compatible = "rockchip,rk3588-canfd";
-+		reg = <0x0 0xfea60000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 342 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru CLK_CAN1>, <&cru PCLK_CAN1>;
-+		clock-names = "baud", "pclk";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&can1m0_pins>;
-+		resets = <&cru SRST_CAN1>, <&cru SRST_P_CAN1>;
-+		reset-names = "can", "apb";
-+		status = "disabled";
-+	};
-+
-+	can2: can@fea70000 {
-+		compatible = "rockchip,rk3588-canfd";
-+		reg = <0x0 0xfea70000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 343 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru CLK_CAN2>, <&cru PCLK_CAN2>;
-+		clock-names = "baud", "pclk";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&can2m0_pins>;
-+		resets = <&cru SRST_CAN2>, <&cru SRST_P_CAN2>;
-+		reset-names = "can", "apb";
-+		status = "disabled";
-+	};
-+
- 	i2c1: i2c@fea90000 {
- 		compatible = "rockchip,rk3588-i2c", "rockchip,rk3399-i2c";
- 		reg = <0x0 0xfea90000 0x0 0x1000>;
+ &combphy2_psu {
+ 	status = "okay";
+ };
 -- 
 2.47.3
 
