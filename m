@@ -4,164 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3185C43458
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jun 2026 13:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1D89C43458
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Jun 2026 13:25:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XQHKKP9uJ8RP0N8dlvOJl61vMXkaeJdfmuMDb2/vmjo=; b=aChcLvcLptMJjL
-	RptfBZTDUYjBinPzJFc7RY4JNZcM0Xfw8Z/gjkVnDwViayfcSml9hnYEosQAUW14fuQZ+b9kUEO78
-	6YOtuldic/Vu+fBQqjFd0/JViUQir3rcr6cEYuvZb9B2qXbVV4YhUWXEnQwVJdqqZletNbeMH7Ea1
-	qX10aC+ugZicLMjyGXLzULUqlRHrtscOQRR7UhMUemO86DhRCIWs9rePsod9GZgQDaHz0EmZfLgu7
-	y/2EbkzN9wLBAIAeSgBqrz6o4RqMI0F5QARi57hiVoIgTt74xqP2M/GXv+ixpt47eoBXvA0Uw5ryp
-	pM5zYK2bsKVcox2ZBjAA==;
+	List-Owner; bh=Gk4X9vrFFOvQSnOqc770/iVcRX1H07c350NZv7VT9p4=; b=eC9NX6kpBgPZRz
+	oIhb+DQHZebhbmdhV9w+/YiRydCOOph/YJhrgYEzauj4pbbOXiz+i7DckvscB7og3wffd8CoDO+hr
+	2TR1jmpUmMqL24lVGUJca1D/m3KZiGmjS1LpeMYBrZ71jhZEnRVD5porcC8BUI7SR8cZbu+D9juYl
+	Z1M+559a43dSswXhyzxidSN2CTZsyPHEr36qPvu1bgdCLcp89ctPxDhODvAHlNhi5tfj2hIadcqOh
+	Q63MgK18tKuvrF9zVrnPc4cLmAXu4yFo4b9h7al41hH32K0RmUcfjFvlBHVXOqENkSoCajJxCWTxi
+	M3tZIfW+SyzI/J/ObcNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weYG7-0000000H86u-31Cd;
-	Tue, 30 Jun 2026 13:12:15 +0000
-Received: from flow-b1-smtp.messagingengine.com ([202.12.124.136])
+	id 1weYSl-0000000H9hd-1shX;
+	Tue, 30 Jun 2026 13:25:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weYG4-0000000H86M-2qJu;
-	Tue, 30 Jun 2026 13:12:14 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailflow.stl.internal (Postfix) with ESMTP id 39F0B1300071;
-	Tue, 30 Jun 2026 09:12:10 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-02.internal (MEProxy); Tue, 30 Jun 2026 09:12:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sakamocchi.jp;
-	 h=cc:cc:content-transfer-encoding:content-type:content-type
-	:date:date:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:subject:subject:to:to; s=fm1;
-	 t=1782825130; x=1782832330; bh=8BXpW32i3b+MZ6T6RR8FcwEOaRbjJVuX
-	738hyO6aW4c=; b=PJXGwFB30fcai5mjfKu2R+eBg2ljAsikpExxGKLPRLVa0NOP
-	M1ycgbJJE0ZZEK9IDOqVM27W/XC2rtksn2dtwcDDEp0E0XqpMetCb1S9u1QS9vRs
-	1RpG9E1DxiYICt1E4S5M+M8o0AO3d/lDRbaMGoAYitA0nB4ffxb6+I9mxnMRuZrW
-	cLANa2sjxxxgEEOTOGsqEZ1+sVQ56b8BPrZ+TWxHeLWXOSBqkQGZ4b/gNvoCcROA
-	YQ/iYGPf+7CaH81chhSp9iO5517lx8P174SsCtLkHncpI+lxouQgklo6Fl5c6kVj
-	JNiImW96RfYUAODI1gVUSpzWqjiMshFdXgzT2Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1782825130; x=
-	1782832330; bh=8BXpW32i3b+MZ6T6RR8FcwEOaRbjJVuX738hyO6aW4c=; b=N
-	hGlSUZC5FJjbCQGE1G49NdD+d7cILSk+XoFg/PLocO85LTUqUcTTnA2qOez5xa/1
-	7olGYURUII1QwbW7/5l/NHKGC5XPwDnnvdkTi9seGSIfK7ewoJm9gkjQJ5QixhPY
-	YbiNvMDK64Ve9tqPDFF8ueJ3fFg4ZJr1ngimgTgkSEjWxANu3u9xdk+qeBWL6v2T
-	nZWr7xCFbFxxlaMB1GLbgnNlMtvs11OY/SGxKARwTz9fGm77EVUE0gQcxCPI8nOp
-	SWw1G+J+mz2oQD8MbsyZtTn7pTd3ZWq9QMuTxBctShNEVb6Y4gepeOn3zYb5wFmi
-	9B5JpaDHEJ6cfA89KcJPg==
-X-ME-Sender: <xms:p8BDaq0NvsKE4Bwmrv7s6iPNrlRLMROJJfeP0PtkiGSW7gsRd0-TDw>
-    <xme:p8BDaowX_ucL4yAoCMkD8zUpTEubysfFuSXF0rmTIEEd6kwqgbgIHD5cSY_RiP5q7
-    e94Qqk9PxtgNPph5Dh-eQn0ewvop-u96XOrG5qKJv32fgGLhp4LwQ>
-X-ME-Received: <xmr:p8BDapzG2fnajZZ032F6c5k00KAk68fe5vP2RzELkgMs08TO2FJvPbVaiAuGz8lvK1JDMAGE4tF7lFNPlbFs-ViUMGr_wQ>
-X-ME-Proxy-Cause: dmFkZTGWMpslQBp5MoMOGT3m9w2jgI36XruuqnR1pq0xzO86H7HHpTyefggyPo3gnlbJ2+
-    oUnJ5655lI+FwSC+uR7gX7xFFGOmQJDOgf9Cba3Anoe3HTOIfOGCIAsgo1oJZtDql3wBBu
-    SB3jkp1L6LCEgtQxQMxyoy5Barght9IrAsceMzQUUBw7yzWpezkYTkGw46uvF5pwbOwhQA
-    zC2+AIIkGLJOKN5oP5DOt5CpV0EjBg1Q504AwM3NXu2EdDiyHhIj+1boTpwxsX4uWP3Dtq
-    q1Sx/fGVa2o1PfHLSAbSC97hryNKZ1Xkg+kcpXHWnkeOBgW28cM/lKBZYCocptO7oNw7Xp
-    RRRp1lmFluW4GD3WBSjnVRt7ShmNMV8JxE7I4KxMCGy1xK939sWK596jv4gWLGFVVsl58z
-    0zIbon8UG8BOgTKT9obCI77IUrcmzyKVUgxH9BcBIXTiSVJX0hzVYDYb3z8plG9r6Qmqhw
-    5XKD5CserZlglD6zl422xOx0BpMhzXw+CBy3CC9PpBgPIN0QWoaRgkg5YjLzHpvaWYMvAP
-    kswZxHVzkddqUnlH+ytcMyHDd4N7HF8kZdvxlKCIeSI9lHErBxpIgzgCgK6MYR3Gs4kNlt
-    yXG+xUduKp0+yACN9ZkEHsRE3C1r15KrySGCNt8HsxIUOsWWgxHUpptffVtw
-X-ME-Proxy: <xmx:p8BDagp55rfDi1q_D4dxVo_2Op9MhmMsNnjsFNrFYNaOD4Ef6nhgRQ>
-    <xmx:p8BDatqsCMbaET8mYMnWUgekQi8JdiMi195_l061CoO2xWwR_o3QkA>
-    <xmx:p8BDahiyYZ_k6dahNCS0o5fMpNgmC8HjicFh_VY9pLuXWpbV6L1mBA>
-    <xmx:p8BDauz6N3_C5O0MFtj-iENsXLL0iCKDuafUA3tyEHBXnnTDZ7XB5g>
-    <xmx:qsBDamtebrD5hnYxkpqIAnk8VBxhqbqHUrgJns-p6CEdQOutmOtpa6T6>
-Feedback-ID: ie8e14432:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 30 Jun 2026 09:11:58 -0400 (EDT)
-Date: Tue, 30 Jun 2026 22:11:55 +0900
-From: Takashi Sakamoto <o-takashi@sakamocchi.jp>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Mark Brown <broonie@kernel.org>,	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
-	Bill Wendling <morbo@google.com>,	Justin Stitt <justinstitt@google.com>,
-	Raag Jadav <raag.jadav@intel.com>,	Sohil Mehta <sohil.mehta@intel.com>,
-	Dave Hansen <dave.hansen@linux.intel.com>,	Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,	Len Brown <lenb@kernel.org>,
- Andi Shyti <andi.shyti@kernel.org>,	linux-kernel@vger.kernel.org,
-	Yemike Abhilash Chandra <y-abhilashchandra@ti.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,	linux-media@vger.kernel.org,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,	Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>,	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,	Danilo Krummrich <dakr@kernel.org>,
- driver-core@lists.linux.dev,	Jonathan Cameron <jic23@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>,
-	Pei Xiao <xiaopei01@kylinos.cn>,
-	Shashank Balaji <shashank.mahadasyam@sony.com>,
-	Ben Horgan <ben.horgan@arm.com>, Johan Hovold <johan@kernel.org>,
-	linux-usb@vger.kernel.org, Nikita Kravets <teackot@gmail.com>,
-	Hans de Goede <hansg@kernel.org>,
-	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
-	platform-driver-x86@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-i2c@vger.kernel.org,	Daniel Scally <dan.scally@ideasonboard.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Tianrui Zhao <zhaotianrui@loongson.cn>,	Bibo Mao <maobibo@loongson.cn>,
- Huacai Chen <chenhuacai@kernel.org>,	WANG Xuerui <kernel@xen0n.name>,
- kvm@vger.kernel.org,	loongarch@lists.linux.dev
-Subject: Re: [PATCH v3 00/16] mod_devicetable.h: Split into per subsystem
- headers
-Message-ID: <20260630131155.GA39400@sakamocchi.jp>
-Mail-Followup-To: Takashi Sakamoto <o-takashi@sakamocchi.jp>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?=
- <u.kleine-koenig@baylibre.com>,
-	Linus Torvalds <torvalds@linux-foundation.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Mark Brown <broonie@kernel.org>,	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
-	Bill Wendling <morbo@google.com>,	Justin Stitt <justinstitt@google.com>,
-	Raag Jadav <raag.jadav@intel.com>,	Sohil Mehta <sohil.mehta@intel.com>,
-	Dave Hansen <dave.hansen@linux.intel.com>,	Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,	Len Brown <lenb@kernel.org>,
- Andi Shyti <andi.shyti@kernel.org>,	linux-kernel@vger.kernel.org,
-	Yemike Abhilash Chandra <y-abhilashchandra@ti.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,	linux-media@vger.kernel.org,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,	Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>,	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,	Danilo Krummrich <dakr@kernel.org>,
- driver-core@lists.linux.dev,	Jonathan Cameron <jic23@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>,
-	Pei Xiao <xiaopei01@kylinos.cn>,
-	Shashank Balaji <shashank.mahadasyam@sony.com>,
-	Ben Horgan <ben.horgan@arm.com>, Johan Hovold <johan@kernel.org>,
-	linux-usb@vger.kernel.org, Nikita Kravets <teackot@gmail.com>,
-	Hans de Goede <hansg@kernel.org>,
-	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
-	platform-driver-x86@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-i2c@vger.kernel.org,	Daniel Scally <dan.scally@ideasonboard.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Tianrui Zhao <zhaotianrui@loongson.cn>,	Bibo Mao <maobibo@loongson.cn>,
- Huacai Chen <chenhuacai@kernel.org>,	WANG Xuerui <kernel@xen0n.name>,
- kvm@vger.kernel.org,	loongarch@lists.linux.dev
-References: <cover.1782682124.git.ukleinek@kernel.org>
- <20260629235804.GA414914@sakamocchi.jp>
- <akNYUdAS3sbEdRqC@monoceros>
+	id 1weYSc-0000000H9f6-2Eek;
+	Tue, 30 Jun 2026 13:25:10 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7C907601DF;
+	Tue, 30 Jun 2026 13:25:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89AC71F000E9;
+	Tue, 30 Jun 2026 13:24:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782825909;
+	bh=qkxqnxawZAg1SGSCnT4v6xXere40vHhVb9+dIzeD4h8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=H88tuu+pvs7E67DlX4qSnxt4ru1hYhsMRoLsG+qdTMLO1ck3Buu5oC51mdjsRE+2R
+	 L9U+vSQ189XiGOt/3yfavF6Ce5DXp2e28HK0HA1EMJTuD2+pH9IOCrZZUH6qGIUyLj
+	 0WJd4E9hrVPbby9qw1ntboLPp7KMKgf2GFuZFOxM8t//V6SSFOG/epIOtsx9mhqYUj
+	 ybqU7oGEtce/fRVTSytmY0SorWDyGdH7arRgjwtihKx4xH/ZadDGxl5RZQMx/V3WQQ
+	 AGh6n1z/xHS6ccsxur6nvxboNayYBJeRcYBbMmDxpqy5n36C9SGq+KKVPzuFjrOuMz
+	 UO45LggHCRSjA==
+Message-ID: <cd407dd0-1d09-465b-94e7-8a413dd95909@kernel.org>
+Date: Tue, 30 Jun 2026 15:24:52 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <akNYUdAS3sbEdRqC@monoceros>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_061212_995055_DE86C980 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v11 1/7] dt-bindings: phy: document the serdes
+ PHY on sa8255p
+To: Vinod Koul <vkoul@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Bartosz Golaszewski <brgl@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>,
+ Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com,
+ Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>,
+ Romain Gantois <romain.gantois@bootlin.com>,
+ Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>,
+ Christophe Roullier <christophe.roullier@foss.st.com>,
+ Radu Rendec <rrendec@redhat.com>, linux-arm-msm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, Drew Fustini
+ <dfustini@tenstorrent.com>, linux-sunxi@lists.linux.dev,
+ linux-amlogic@lists.infradead.org, linux-mips@vger.kernel.org,
+ imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
+ linux-riscv@lists.infradead.org,
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+ Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+References: <20260629-qcom-sa8255p-emac-v11-0-1b7fb95b51f9@oss.qualcomm.com>
+ <20260629-qcom-sa8255p-emac-v11-1-1b7fb95b51f9@oss.qualcomm.com>
+ <CAMuHMdXen+E-Ai51aWBa_KV9W8Fz2cQPpT-FG_kQ7akhrrYa_A@mail.gmail.com>
+ <CAMRc=Me3jaZXiXa1sFXr=8Do4sCd+XN1pKTcWC8-0j78SjCkKA@mail.gmail.com>
+ <CAMuHMdVUBgG0EFB16OxHisbxx-sBvDKvBPNZdpyDnmBrnX4ptQ@mail.gmail.com>
+ <akOZFIowVvprnAMf@vaman>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <akOZFIowVvprnAMf@vaman>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,24 +141,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 30, 2026 at 08:04:26AM +0200, Uwe Kleine-K=F6nig (The Capable H=
-ub) wrote:
-> The impact of these firewire changes is limited to the firewire
-> subsystem. So doing these later is a smaller issue. I plan to tackle
-> these when this series is in. (But if you want to care about the
-> firewire bits, that's fine, too.)
+On 30/06/2026 12:23, Vinod Koul wrote:
+> On 29-06-26, 16:51, Geert Uytterhoeven wrote:
+>>> Russell King asked me to put the PHY logic for SCMI pm domains into the PHY
+>>> driver instead of the MAC driver where it was previously. Instead of cramming
+>>> both HLOS and firmware handling into the same driver, I figured it makes more
+>>> sense to have a dedicated, cleaner driver as the two share very little code (if
+>>> any).
+>>
+>> I think you are mixing up DT bindings and driver implementation?
+> 
+> Should the bindings change if we have different driver and firmware
+> implementations? Isn't binding supposed to be agnostic of
+> implementations..?
 
-I promise it for firewire subsystem. Just focus on your good work ;)
+
+I did not follow earlier discussions, so I do not know Russell
+arguments, but in general it's true that driver choices should not
+influence binding decisions. IOW, you need to figure out which real
+device is part of power domain and add the power-domains to that device
+node (that device).
 
 
-Thanks
-
-Takashi Sakamoto
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
