@@ -4,85 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B25BC43602
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 18:57:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36545C43327
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 19:15:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4xZl9p49EXGugvkXT2xNVx8xAsukIiEC/Iu33TtUmrU=; b=zE8uEcP9kfU3O8
-	jZFzKp7AZrJ4IeUufNrWyrvUsUZ1gWraKYh4iW+PWrU5mKwi3kZ7wcHKm9e5vBfQp/fOrkUML8RYZ
-	EbtYp3K9BNYxW86IzCUh1B/yTIOCzpsTHrejN6/cMibdb5gvJP7H+AbBFhu3JMS+BT7GjEmpxc+kd
-	6Cljn4nO1YZrpDqb59K7iqVK/lavsfabXpOnSKNhXpf/70loOx/P9hFRrQvG6T4/Se7piR4rVL+41
-	9ojXf4cAUlcgV2WGz4uB706l9Ut+RpB1VaXyeY3UZboGD5VFRe1HhNjXrPFS2w2BV5Acjxdg82FUx
-	/GEizYJVyCKE8AmLT8Yw==;
+	List-Owner; bh=kMqNKd8F3FcK+zrhJD58nlST1bHaXTviE0FK450HFbk=; b=kpzdvcmT40Ura/
+	fZEmSUFJLdJV3OFecxjm2Ak+nkp0X7Pl/eURG+r83dQuaJJXfIV1XpwSeN3EpWJTuv3l9J5CUFPkQ
+	Nba31Gbl18ky9a0tj7uleCUuSIa2YJYuQ9oQX4rQObHXcVAvwzz89gjxGpgDpcen3eLy0JG5rKT1R
+	Svfrq8bV4CUuvlc8WHEWL/UxujK9zS6i5qnBTCZQC51XTaSGpsAZ8nr85vFNjyvpO3HYn2d+ACc4l
+	0zXgXAvAntcLbcoLMKZG0VUbtx5Wo6suJ2dkrok40tAx3fFbAzdBAJmmqJeMJAbYaObEERhGX8wJQ
+	Y0lHjaB9olX8/vv3GMTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf085-00000002s2e-0y3A;
-	Wed, 01 Jul 2026 18:57:49 +0000
-Received: from mail-pj2-x00.google.com ([2607:f8b0:4864:39::])
+	id 1wf0Ou-00000002tFe-1Lws;
+	Wed, 01 Jul 2026 19:15:12 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf083-00000002s1w-2Ai1
+	id 1wf0Ot-00000002tFP-0pFd
 	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Jul 2026 18:57:48 +0000
-Received: by mail-pj2-x00.google.com with SMTP id d9443c01a7336-2c9dbd2e24cso4378575ad.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 01 Jul 2026 11:57:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782932267; x=1783537067; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3vTxn+IRtJSqL6xc6vMJ7NTVF6OVFFm8iwglxUc/lx4=;
-        b=dGPpsgSuGxpFPRavrMtC1DZvWJpDX6EHHzMWj9RyhVRWsaXas04udEa1ZdXm8bI50n
-         gyUUxV4aPqbEamxVHnjLhEC9vJnOF27CLpteY8mU9uBPPcLbStSCWCOeobExd2QA6R7B
-         +fOjsrwnpbjXWFstjJ/SldtdQZXvk9zTG348D1voU6xjPNbR8QCjjWWFtw7BXgNGJLRT
-         2FtXNt2VTJ06pwidw2euYnZnvrId+F/GoIY/chMeTOjlUMKXu5xoy9XYNUCIdeGIbKYu
-         zCXT9EQHZ6WXD88wsTZFmd5/BbvWRXkdKHQFlKR0nMzbqighX60zl//yjQ/UXw4PD4da
-         ATYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782932267; x=1783537067;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=3vTxn+IRtJSqL6xc6vMJ7NTVF6OVFFm8iwglxUc/lx4=;
-        b=Y+76yg+h3M6aFebfS0mKMNyY9H0YDYLG9o7VwL8fVpCSA4pvFY2bg2Y7Tw4HAGQfi9
-         YNYJDXxpvI9SExMIQ7LUWwQT+gzgFKFzsKy465J/pisWdEFmNkmh7pbebtdcxLpVavef
-         4Ur5E/kDEG0of04eCuzdeOZg5/7dKIJ8A31jErPKASk6yfFAz79ncpgtYpsUkEEGr1Nr
-         tfTYZAJDV+mus9uw+Yp1m6rD5TZB9y6D9Co1lR9DRrPAtxLoa52NwH/FYnq1X3BIUkd4
-         59B03g1/eNNusZN1smmcgx97T0kqcpUhVj0lYiOBxa5fGUfF6IShSx3/X8dPfLSdNpQY
-         x1LQ==
-X-Gm-Message-State: AOJu0Yw+vPbn3t87993GFnTAm+9bE5BwSbHlLkh8pm+TxqQkU9udt6DP
-	WmxygWqWqS3ZVV3bHa9HoH62Sk7vbbdgKxQZOdbwuKlSc3Cmp8D2966q
-X-Gm-Gg: AfdE7cmXQUX/d7IOUouMElJ/0vVzeRCbpG4owhb7fsKTzuG2zYYuCs21r7olscJ5NpE
-	gvheQk5eHBDI+OSQjk8MxTW8dQZusy0EvNsUtWO4z7x8i4LkxXi1WtU2nByNaMsRrNNJiFNq6VD
-	PkWoqfWdddECZ23S96xt8He2QZIvCVwqwk0vpqEudT/ok57IQev4/jB8yxADgZPS7MfjqUe7tMZ
-	bNp6mxlUz50O3cUnvGEVes+fRE3C0v/CdPBm0xoM0d3gWCUUiE+RL9Z/u/tmsYdYy94RpDp47ol
-	NgpCmkSAe6IwFbVbZ7gR3eI1GSpUslZwJqJQ0mnSVsh/KlC4RF/6swqZl6Ma3vBnC5NBv8ueOgy
-	8Odd6tFABftqKPE5EEtXolM9IULU6Q0ztR+CFaL7ni3fNiuKJw8qVNkosZMqOkCByoXpkH/7NKv
-	Ok4Dl+RIj7dmJESSnL6epLfQ==
-X-Received: by 2002:a17:902:fc44:b0:2c9:dbb5:c1ec with SMTP id d9443c01a7336-2ca7e8b5334mr32518925ad.47.1782932266888;
-        Wed, 01 Jul 2026 11:57:46 -0700 (PDT)
-Received: from server.lan ([150.230.217.250])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ca9a8dadaasm2624205ad.14.2026.07.01.11.57.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Jul 2026 11:57:46 -0700 (PDT)
-From: Coia Prant <coiaprant@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Coia Prant <coiaprant@gmail.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Replace deprecated 'gpio' property with 'gpios' for 9Tripod X3568 v4
-Date: Thu,  2 Jul 2026 02:56:57 +0800
-Message-ID: <20260701185657.4092955-2-coiaprant@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260701185657.4092955-1-coiaprant@gmail.com>
-References: <20260701185657.4092955-1-coiaprant@gmail.com>
+	Wed, 01 Jul 2026 19:15:11 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7C4E8403B1;
+	Wed,  1 Jul 2026 19:15:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5704E1F000E9;
+	Wed,  1 Jul 2026 19:15:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782933310;
+	bh=PXI6rfCP7rz/KIG0Vkr+So4lrOQjJolN3JUOSQDEk48=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=WthTVLL3lgIP4mIjdkO7naf0W27hBU72WTeYtVQnHcR+DerF0bDIteht2+xlgsBnT
+	 paaPLqDT3TdVMhm0BS2waNk56dCZAP7cvAqJYlOEWJlTXIL+soJRrJ+MqkqFJHcqW7
+	 Zxi6H2vKaiIkxW5jrVdZPIdI07+NcjtJNGyvNXIaxfBLbN8kEH5xW3vKl04zF8g4y/
+	 DXQnEkILwJsczXh4QtyzlZQsWgffpwwAdky18HC5Af4CLHKXgLgmDS6UBkEOvab+UL
+	 sR60x/+w1skGlPhocNULpdG9N9KyJqn/z3Li+Dz9QKnT04GkU6i3t5Mbq2+5EY88bF
+	 R+WN4xo92gOrA==
+Date: Wed, 1 Jul 2026 20:15:01 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+ dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V15 3/9] iio: imu: inv_icm42607: Add inv_icm42607 Core
+ Driver
+Message-ID: <20260701201501.2f1dcdca@jic23-huawei>
+In-Reply-To: <20260626161230.93069-4-macroalpha82@gmail.com>
+References: <20260626161230.93069-1-macroalpha82@gmail.com>
+	<20260626161230.93069-4-macroalpha82@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_115747_558508_547B7603 
-X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,42 +74,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The 'gpio' property for fixed regulators has been deprecated in favor
-of the plural 'gpios' form according to the regulator-fixed binding.
+On Fri, 26 Jun 2026 11:12:24 -0500
+Chris Morgan <macroalpha82@gmail.com> wrote:
 
-Update the USB host and USB OTG fixed regulators for the 9Tripod X3568 v4
-board to use the modern 'gpios' property to conform with current
-devicetree binding standards.
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add the core component of a new inv_icm42607 driver. This includes
+> a few setup functions and the full register definition in the
+> header file, as well as the bits necessary to compile and probe the
+> device when used on an i2c bus.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Hi Chris
 
-Signed-off-by: Coia Prant <coiaprant@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+A few minor formatting things from a fresh read.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
-index c3ffb3fd51cd4..e3f53fcf80e02 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
-@@ -205,7 +205,7 @@ vcc5v0_usb: regulator-vcc5v0-usb {
- 	vcc5v0_usb_host: regulator-vcc5v0-usb-host {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
--		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&vcc5v0_usb_host_en>;
- 		regulator-name = "vcc5v0_usb_host";
-@@ -217,7 +217,7 @@ vcc5v0_usb_host: regulator-vcc5v0-usb-host {
- 	vcc5v0_usb_otg: regulator-vcc5v0-usb-otg {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
--		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
-+		gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&vcc5v0_usb_otg_en>;
- 		regulator-name = "vcc5v0_usb_otg";
--- 
-2.47.3
+Thanks,
+
+Jonathan
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> new file mode 100644
+> index 000000000000..88d35323bade
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> @@ -0,0 +1,364 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +/*
+> + * Copyright (C) 2026 InvenSense, Inc.
+> + */
+> +
+> +#ifndef INV_ICM42607_H_
+> +#define INV_ICM42607_H_
+> +
+> +#include <asm/byteorder.h>
+> +#include <linux/bits.h>
+> +#include <linux/iio/iio.h>
+> +#include <linux/mutex.h>
+> +#include <linux/regmap.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/time.h>
+> +#include <linux/types.h>
+> +
+
+Generally asm includes come in their own block
+after the linux ones.
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> new file mode 100644
+> index 000000000000..bde931752eb8
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> @@ -0,0 +1,97 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Copyright (C) 2026 InvenSense, Inc.
+> + */
+> +
+> +#include <linux/bitfield.h>
+> +#include <linux/dev_printk.h>
+> +#include <linux/err.h>
+> +#include <linux/i2c.h>
+> +#include <linux/mod_devicetable.h>
+> +#include <linux/module.h>
+> +#include <linux/regmap.h>
+> +
+> +
+
+Really trivial, but one blank line is enough here.
+
+> +#include "inv_icm42607.h"
+> +
+
 
 
 _______________________________________________
