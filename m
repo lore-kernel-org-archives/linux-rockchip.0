@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 706F1C44502
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 23:36:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C472C43458
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 23:36:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YqlNbMtKDkNdl6bTQv+JGP6Kv05yyQpMMPIwMeYGgBs=; b=b8IsVMt5S6DMwL
-	CC3UxPuaDYwa7ojm9ZjsTFN6z61XL9XSg4hVH/jtbr9xy8kTCCRRWGHFqERI/ItWZ45LQ0kHjkToH
-	FuOeBsQ1LtyGT6DZcjA9UoksWn5IwZJbCF0SFNxb7q5uQkxvtUAL8HlG+PdqvyNJ6eeydZMYf6DCf
-	Asepg11B9opaUw9qMZtuYOHdYUT1cAU5Ae6D7OXhAkELAD6uaD910zzi51IKjvLOR0DtuKJFTVnJA
-	eHw/F3P/1AZPopK77CBU3A9iQDWxBcaFVFF0IFqxRwFfzf5Hcwh+JOXC+0qbWK2VSrGN/jfmcBdMd
-	/YUNjb/+XTvLZZrS6Z4g==;
+	List-Owner; bh=GaO7+5ZAFn5i54pAAPtqLHv6InkGHdg2ae6KAguqF/w=; b=XMoGVDoPkLaU9f
+	HSHtlvmUB80jM6TBMbJNs1/9Das+kpHF4fdWL2TqbAiwAStQtL7iINbvYsj2lr1b5hixQfop6yFiy
+	/6g/ZVyHdgZJc2dzw8TV89giumFqohhZ4nsi8bhrMnE2JA3CTbJNANxdkr0TSbPdBggtwuVZgFWIr
+	njTf57X30xI0Q8hbP+i1Vyf3dv7chZUO6K2rkQY0NPqvcBm+blawZJfxtNVWpIbWav2DshzKyVH/o
+	H0aFWeJqzIkF5KtBqyLqCX8h8v3/+NGMLsHBC9tnISa8OfIqJT/YjnFOMAJpP5LOU1SQ0yTfjBq2F
+	N0Zd9MAL+RgvDW/ogHUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf4Ty-00000003Bvg-3vA3;
-	Wed, 01 Jul 2026 23:36:42 +0000
+	id 1wf4U0-00000003C2q-3n7k;
+	Wed, 01 Jul 2026 23:36:44 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf4TM-000000039zc-0uOy;
-	Wed, 01 Jul 2026 23:36:10 +0000
+	id 1wf4TL-000000039xV-1oaT;
+	Wed, 01 Jul 2026 23:36:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1782948950;
-	bh=np2J43IcHBPq7RBBOFbcW7f507/36/KZRoRU4RyhKMM=;
+	bh=W5jYrAum20qKXLQnGb/B4JCipsc2gTq8Z+PJJaGnvv4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=U2trjkurvlWVRSQjI+m65sHxWQR9bigHjhBKW5z+WVRCcoA/59vH8ssFeZTOVHWBD
-	 5+ibWapwhu0y4iuHvglZYWWCTollvczfENsuzZ5ODa+cYNqdtxZvAUarfgWi3in1oE
-	 FIknKUuzNwUy9d/SMPGfElHk6OzrirZBE4tjDJ+zd6wKd1ehIsNXR9GYhsokd1UvmM
-	 eXwakQ9Vvbo3JaLoZofF9lBhMSIXeWbCewOH/cqeesaICdUSo9WvwfH50xdGh34l8r
-	 e297iEaqJGQi4ngk45cuVyWdgsnb7q+UUUHqSiaGQce6DNyy4PBT1PA4Wf6S9cd50h
-	 12zIm2zdC4SHg==
+	b=GMZZyQIlU575XEhDRt0N5tgtDNesmMJLW18d113Gyv7M8gx16ygdAJHVvrntYG8+J
+	 ApgfefBXHzOR9UiCuYwIWVq9G2WTAGWb3gBn6Ii8ALT54f0TSnpBUnUDhyudQ3wmqN
+	 MiHnD1o6QeUyTpOI2OKUbBO+oK8GgUjwLMi4li9n6iF2q1Hd+sSua4qJ2SrOxwNi0i
+	 YhZSty9Msi1GN8mDnfclYqdVkaZXA+24IfZnQ2k8E1Uw5fLL2QXQZdn9/2Q/UuwNrn
+	 +9Ae2EaTeOe3TmYx4XrOP9dHSCctkyqN7On2+PbNiin3fK+c2PW03uKXNp92eE1fqt
+	 Hk9wwMLZYIUhA==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2E33D17E35FE;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0BFA517E35F5;
 	Thu,  2 Jul 2026 01:35:50 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id DC3E7480076; Thu, 02 Jul 2026 01:35:48 +0200 (CEST)
+	id D629748006F; Thu, 02 Jul 2026 01:35:48 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 02 Jul 2026 01:36:10 +0200
-Subject: [PATCH v9 32/38] usb: dwc3: core: support PHY reset notifications
+Date: Thu, 02 Jul 2026 01:36:06 +0200
+Subject: [PATCH v9 28/38] phy: rockchip: usbdp: Disable USB3 on probe
 MIME-Version: 1.0
-Message-Id: <20260702-rockchip-usbdp-cleanup-v9-32-e31efbb62d2e@collabora.com>
+Message-Id: <20260702-rockchip-usbdp-cleanup-v9-28-e31efbb62d2e@collabora.com>
 References: <20260702-rockchip-usbdp-cleanup-v9-0-e31efbb62d2e@collabora.com>
 In-Reply-To: <20260702-rockchip-usbdp-cleanup-v9-0-e31efbb62d2e@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -67,26 +67,26 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6018;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1683;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=np2J43IcHBPq7RBBOFbcW7f507/36/KZRoRU4RyhKMM=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpFpFQaADYzy+H1U2MVBcvmVgrz/Ohh1r0WA
- 621tmEzbjJxhIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqRaRUAAoJENju1/PI
- O/qa1l0P/0QluI8keuml/NJRxub5jsIRwmkwHhPY44VRDIhQaL3oCCCPCwBD1nDcRIZCDG3yI/R
- L0/z33sIbjBCODHkpGkMEvdkqr1sXIEtLx7VMjV0Ng5rbGS0hMTwm7bHB+RQdlLqSCGK5QMGBhX
- BV1+wr/TMhhdiYb3Qb0xPmh0ZtNTBzyeaopAMYbmGKKbqMFHK69fkHFWMWSFOK2y+BNylkeM7l1
- NKzhdqDybxkNSbuG+lpOrQlvvkY1p8oznwWHjuiYVUtoI1DQ5FcphWbmdfnLeY/dsNsmd/gaDWd
- EQ6Gt+ScOMkcylwjgMRAAnKlnQAIY0KSXYFDUxUTz8soOH8Rho6zqyNKveI1vq2tooj9JFH82Dl
- PwbcX8yO04A8tT7GJVyBfdqurEdwxZGEmSBgUtACehRG+dKv1/DtOxUY+s0WBgMO91dX+RgX80I
- jXtEJt4gaRn7rMramHcsXRzyuS6SXkxe+qtm4JZ7vIoVaa+bIG6slGhF2OXy5JewpCfDI+5Rrcv
- csgric6kKxbScWbLO3PgVKWUodZ130mI7DwCues6sGDZqqpNSZtX9NUpAGWMtg6jji/vFKXqsih
- ZzJQBoTR2T+7yMJeBU0bwT1vmx6HcPt/oZl+LdKB3lepRkR/Q3UWsZRvtnZ5KB1zsXjvzAOHMmD
- OSzGPrCo+064lXVKePz4m1A==
+ bh=W5jYrAum20qKXLQnGb/B4JCipsc2gTq8Z+PJJaGnvv4=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpFpFTpnQm9rJMPM60lI+AIyU6bC0eHnVDgr
+ oWG9+YcUg0bE4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqRaRUAAoJENju1/PI
+ O/qafNYP/28D/+snNi14jEl73SZCLvc5/6TkK8mp13P7JSsbKlnJtSEaoZOCLZuGgNUOvEFM3Cm
+ skKfXzgDSmR6uAvvpG2Q3lEjT5wxZGlRnlJj21mmCM6XPpsRorzXYUJ1xIeoewQ/I+RjgWUWqEn
+ Ldg+DZz1LmKTpLruKBl9F62YEeFDBT38UmXRMHjhdUSdTs064paamcDNSMpjhFE+D4dOJK2m8YG
+ APpSaE74A+kvhzQEd97FOZSP7x6V6qeIk5fLXC20x3DVV44OtBLktAAj+xa+FwoKI1hmcAgyfTL
+ YGyzla1ft/NL8RS7vc2OfoyzH1tt153/n08R2eT1l7XPTcxYq6hVgYcax44CJ4toLe3CZ+ylhpW
+ p7yFp+02KqKJEujTF0n5mzu3X1+BvTpmVx/5lkt1tRUgBp0c3AcofuU/2bEW08H1Hok7jggq1G+
+ 6/BTQMLXhAUALsgDWiFfxbYkBqovBdqF/+7lyC/hMuBet/pbdGhdTqiUObbgJIm1qKVFP62mI4V
+ +npWVyqWih8p936wSn/TRhsFbpYUc+dibhcZwriMgguokNqa5wbVL0wcA9Tf0lcnsjXxO/tzko+
+ r0LssFdBjnujAOX/pcLvCbYmHFu/olEZy7ZmiETu3soTHWPpcDOL6xgCC0R5dSSrDFXQhn1CMat
+ 5SFehG+4mQH3K+2xyk8YuJA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_163604_615972_706D53F1 
-X-CRM114-Status: GOOD (  21.15  )
+X-CRM114-CacheID: sfid-20260701_163603_807764_A20FF75D 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,197 +103,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On recent Rockchip platforms (at least RK3588 & RK3576), DWC3 IP is used
-with a USBDP PHY providing USB3 and DP. This PHY needs to be reset when
-the mode changes, which may happen when plugging in different USB-C
-devices.
-
-If the USBDP PHY resets with the DWC3 IP running, its internal state
-corrupts resulting in the USBDP PHY not being able to lock some PLL
-clocks, which effectively renders USB3 unusable.
-
-To fix the issue this adds handling for the new PHY framework reset
-notifications, which will assert PHYSOFTRST before the actual PHY
-is disabled and will deassert it once the PHY returns.
+Disable USB3 support during probe, so that the driver always starts with
+a clean state. With this it no longer makes sense to use -EPROBE_DEFER
+for cmn ana lcpll lock timeouts afterwards. This error code should only
+appear during probe and the PHY initialization function is also being
+called at normal runtime.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/usb/dwc3/core.c | 82 +++++++++++++++++++++++++++++++++++++++++++++++++
- drivers/usb/dwc3/core.h | 16 ++++++++++
- 2 files changed, 98 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index 517aa7f1486d..fdc92c22381a 100644
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -30,6 +30,7 @@
- #include <linux/pinctrl/devinfo.h>
- #include <linux/reset.h>
- #include <linux/bitfield.h>
-+#include <linux/phy/phy.h>
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index 146edd35cf83..f788405dfa1f 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -756,17 +756,7 @@ static int rk_udphy_status_check(struct rk_udphy *udphy)
+ 					       (val & CMN_ANA_LCPLL_LOCK_DONE), 200, 100000);
+ 		if (ret) {
+ 			dev_err(udphy->dev, "cmn ana lcpll lock timeout\n");
+-			/*
+-			 * If earlier software (U-Boot) enabled USB once already
+-			 * the PLL may have problems locking on the first try.
+-			 * It will be successful on the second try, so for the
+-			 * time being a -EPROBE_DEFER will solve the issue.
+-			 *
+-			 * This requires further investigation to understand the
+-			 * root cause, especially considering that the driver is
+-			 * asserting all reset lines at probe time.
+-			 */
+-			return -EPROBE_DEFER;
++			return ret;
+ 		}
  
- #include <linux/usb/ch9.h>
- #include <linux/usb/gadget.h>
-@@ -660,6 +661,9 @@ static int dwc3_core_ulpi_init(struct dwc3 *dwc)
- 	return ret;
- }
- 
-+static void dwc3_phy_register_notifiers(struct dwc3 *dwc);
-+static void dwc3_phy_unregister_notifiers(struct dwc3 *dwc);
-+
- static int dwc3_ss_phy_setup(struct dwc3 *dwc, int index)
- {
- 	u32 reg;
-@@ -845,6 +849,8 @@ static int dwc3_phy_init(struct dwc3 *dwc)
- 			goto err_exit_usb3_phy;
+ 		if (!udphy->flip) {
+@@ -965,6 +955,8 @@ static int rk_udphy_get_initial_status(struct rk_udphy *udphy)
+ 		msleep(100);
  	}
  
-+	dwc3_phy_register_notifiers(dwc);
++	rk_udphy_u3_port_disable(udphy, true);
 +
- 	/*
- 	 * Above DWC_usb3.0 1.94a, it is recommended to set
- 	 * DWC3_GUSB3PIPECTL_SUSPHY and DWC3_GUSB2PHYCFG_SUSPHY to '0' during
-@@ -880,10 +886,86 @@ static int dwc3_phy_init(struct dwc3 *dwc)
- 	return ret;
- }
- 
-+static int dwc3_usb3_phy_notify(struct notifier_block *nb,
-+				unsigned long action, void *data)
-+{
-+	struct dwc3 *dwc = container_of(nb, struct dwc3_phy_nb, nb)->dwc;
-+	int i;
-+
-+	switch (action) {
-+	case PHY_NOTIFY_PRE_RESET:
-+		/*
-+		 * If the controller is already suspended (e.g. runtime PM),
-+		 * there is no internal state to clean up.
-+		 */
-+		if (pm_runtime_suspended(dwc->dev))
-+			return NOTIFY_OK;
-+
-+		dwc->phy_reset_in_progress = true;
-+
-+		/*
-+		 * Assert USB3 PHY soft reset within DWC3 before the external
-+		 * PHY resets. This disconnects the PIPE interface, preventing
-+		 * the DWC3 from interfering with PHY reinitialization and
-+		 * avoiding LCPLL lock failures.
-+		 */
-+		for (i = 0; i < dwc->num_usb3_ports; i++) {
-+			u32 reg = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(i));
-+
-+			reg |= DWC3_GUSB3PIPECTL_PHYSOFTRST;
-+			dwc3_writel(dwc, DWC3_GUSB3PIPECTL(i), reg);
-+		}
-+		break;
-+
-+	case PHY_NOTIFY_POST_RESET:
-+		if (!dwc->phy_reset_in_progress)
-+			return NOTIFY_OK;
-+
-+		dwc->phy_reset_in_progress = false;
-+
-+		/*
-+		 * Deassert PHY soft reset and reconfigure the PIPE interface
-+		 * settings after PHY reinitialization.
-+		 */
-+		for (i = 0; i < dwc->num_usb3_ports; i++) {
-+			u32 reg = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(i));
-+
-+			reg &= ~DWC3_GUSB3PIPECTL_PHYSOFTRST;
-+			dwc3_writel(dwc, DWC3_GUSB3PIPECTL(i), reg);
-+		}
-+		break;
-+	}
-+
-+	return NOTIFY_OK;
-+}
-+
-+static void dwc3_phy_register_notifiers(struct dwc3 *dwc)
-+{
-+	int i;
-+
-+	for (i = 0; i < dwc->num_usb3_ports; i++) {
-+		dwc->usb3_phy_nb[i].nb.notifier_call = dwc3_usb3_phy_notify;
-+		dwc->usb3_phy_nb[i].dwc = dwc;
-+		phy_register_notifier(dwc->usb3_generic_phy[i],
-+				      &dwc->usb3_phy_nb[i].nb);
-+	}
-+}
-+
-+static void dwc3_phy_unregister_notifiers(struct dwc3 *dwc)
-+{
-+	int i;
-+
-+	for (i = 0; i < dwc->num_usb3_ports; i++)
-+		phy_unregister_notifier(dwc->usb3_generic_phy[i],
-+					&dwc->usb3_phy_nb[i].nb);
-+}
-+
- static void dwc3_phy_exit(struct dwc3 *dwc)
- {
- 	int i;
- 
-+	dwc3_phy_unregister_notifiers(dwc);
-+
- 	for (i = 0; i < dwc->num_usb3_ports; i++)
- 		phy_exit(dwc->usb3_generic_phy[i]);
- 
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index e0dee9d28740..79d833d00137 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -1002,6 +1002,18 @@ struct dwc3_glue_ops {
- 	void	(*pre_run_stop)(struct dwc3 *dwc, bool is_on);
- };
- 
-+struct dwc3;
-+
-+/**
-+ * struct dwc3_phy_nb - wrapper for PHY notifier block
-+ * @nb: notifier block
-+ * @dwc: back-pointer to the DWC3 controller
-+ */
-+struct dwc3_phy_nb {
-+	struct notifier_block	nb;
-+	struct dwc3		*dwc;
-+};
-+
- /**
-  * struct dwc3 - representation of our controller
-  * @drd_work: workqueue used for role swapping
-@@ -1065,6 +1077,7 @@ struct dwc3_glue_ops {
-  * @usb3_phy: pointer to USB3 PHY
-  * @usb2_generic_phy: pointer to array of USB2 PHYs
-  * @usb3_generic_phy: pointer to array of USB3 PHYs
-+ * @usb3_phy_nb: notifier blocks for USB3 PHY reset events
-  * @num_usb2_ports: number of USB2 ports
-  * @num_usb3_ports: number of USB3 ports
-  * @phys_ready: flag to indicate that PHYs are ready
-@@ -1171,6 +1184,7 @@ struct dwc3_glue_ops {
-  * @suspended: set to track suspend event due to U3/L2.
-  * @susphy_state: state of DWC3_GUSB2PHYCFG_SUSPHY + DWC3_GUSB3PIPECTL_SUSPHY
-  *		  before PM suspend.
-+ * @phy_reset_in_progress: set if a PHY reset notification is being handled
-  * @imod_interval: set the interrupt moderation interval in 250ns
-  *			increments or 0 to disable.
-  * @max_cfg_eps: current max number of IN eps used across all USB configs.
-@@ -1229,6 +1243,7 @@ struct dwc3 {
- 
- 	struct phy		*usb2_generic_phy[DWC3_USB2_MAX_PORTS];
- 	struct phy		*usb3_generic_phy[DWC3_USB3_MAX_PORTS];
-+	struct dwc3_phy_nb	usb3_phy_nb[DWC3_USB3_MAX_PORTS];
- 
- 	u8			num_usb2_ports;
- 	u8			num_usb3_ports;
-@@ -1415,6 +1430,7 @@ struct dwc3 {
- 	unsigned		wakeup_configured:1;
- 	unsigned		suspended:1;
- 	unsigned		susphy_state:1;
-+	unsigned		phy_reset_in_progress:1;
- 
- 	u16			imod_interval;
+ exit:
+ 	rk_udphy_disable(udphy);
  
 
 -- 
