@@ -4,66 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76056C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 11:52:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77270C43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 18:29:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GPlZWEqWPrjiB3LvJ1DuSOuiIYOYNWIldozjIUFSFpI=; b=ScVzySR0yTRR0e
-	ypA70M12dtj8yX0UQnWpyl0z5M10/NPMMrkMvY48DrkI5ueVQW4Ip1h2dwLv8xdSW+LsgKyBpPl2Q
-	NB/9w745aSHbROMtUGd+GQXTNTz362+pVi9G1XUi2ItvPa+9zZAxFnGTJA8Wtb2G6yjkcb35k4aQS
-	kKZ2spq24NGcKnQeb29RybqXXZD+DwpRCREDz8EmB1wwbYqL1FsIC1nu4666HzK2nSEERJ1jg/nso
-	hNmAbgPrd9TSch6KD9tIskzkguGtO4h24YbZJak1HWzaC2ioeaMAmRMOvQhFYyAyyZzDD2nS1S24H
-	DoIBE2Gp5bHQaYH9eqaA==;
+	List-Owner; bh=GUPTl2EE3CsT9HaSQkj7MrMLBbDK6G4AB7icTQhUz6g=; b=ZpVV373avNcXsr
+	GXB/o+XZDaz3b6pzrdvTKj1O8areAQDpEsLL1SkxLKXI6oIMbMiL0ukPaAJ8m3ZWgaEWQijI9oMv0
+	YNSptGxMVzZR0u+jYDaWfsqdV2FQWNJn7c1AsQT8TOT44j0kyX/y+JP5gMVEOsrviF9uHZbhPwQ0G
+	dfz+AxUvB7BtKOQKAmOqq9PM41qrTE7TGI3XAGqRBpO8R5KYxiclTAZ8ySYaq4VEybvWWlUdpxeTR
+	jqERtQ+gmOeBK6wDtgUFTjGODwXoITzvrAvOVhlOWZGpU5BrzQ35rL8xm+FWDwQhcoGrGWy3xkPOz
+	ovOfI95ojC4UEoSvSUBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whnIZ-00000002GtT-2vyp;
-	Thu, 09 Jul 2026 11:52:11 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1whtUZ-00000003DrZ-3Hkd;
+	Thu, 09 Jul 2026 18:28:59 +0000
+Received: from mail-pj2-x04.google.com ([2607:f8b0:4864:39::4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whnIY-00000002GtI-2PF6
+	id 1whtUW-00000003Dqo-0bRO
 	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Jul 2026 11:52:10 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 11E66400EA;
-	Thu,  9 Jul 2026 11:52:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7189E1F000E9;
-	Thu,  9 Jul 2026 11:52:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783597930;
-	bh=wgkE/l6ArYBMpWq5kzdXo+5VscaF4mVB+tpyWH39xsQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=SuR7BH4CG0o05Qg6Cst8MCbxBCbrBZMIz5vDBwRPPZX0hAsR5NXRH0a+8R2dKz4FC
-	 yIzRlmxbLuexkoRKgmkYLBIKUtok1A7v9r9mM6wjDh0uSNWh0bG6J+qGV5vUbp+rU4
-	 FHN9mc/Q7dPmZrI83qXukPpHO3NsMn97HgzE8t7s1GPeZeWrbmk18AgpnKeBNzQ3Cf
-	 s1uFXbyCH9qc2H8v8QtCAKs93l/Q++OZXblZIEVd4VD0HGtPL58T4hrON6PDU2nIGH
-	 XBU9SZdkh4CnLxDqHG7fIPRAlcGNHHu8P5T44l8nMoYE8M+/DdVJ3Gz1AHq5FQQavI
-	 u4MnV1jKXJMdA==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Thu, 09 Jul 2026 13:50:54 +0200
-Subject: [PATCH 28/60] drm/rockchip: Convert to atomic_create_state
+	Thu, 09 Jul 2026 18:28:57 +0000
+Received: by mail-pj2-x04.google.com with SMTP id 98e67ed59e1d1-381191ea2adso116608a91.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 09 Jul 2026 11:28:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783621735; x=1784226535; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id
+         :references:in-reply-to:user-agent:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=RN+4SkO8PJ9d9SXPrFRpz0v6UaMeYjDz8fSXVOFCTUQ=;
+        b=KeDclZzgQiFiBf2siTEpRGdWjizWNVMyxP/265tqZ71uHIPzN6twsUV36CauJH46Q7
+         Ioonxucb9HAjr96pNTNzJ4LubnMBXC3mhi7HtZjDwgq50DTzEXNXp+akf7HW+wFVyoy8
+         3ahlHCxUitVaqQEAT+RV5gokfKXvoFuIt4Q3Ry2u3h/XWJKp3UKz+3PeBkLiOYbvIFgR
+         Yuk9EDxiTNtXzgVQqdILPbrNZJytLfbBK/UqQdpT2h/B+XNGHlkvQFd8UbgQQ0dgnsxA
+         ibff65//MO9WryFDee5sfcoV4jpsK/O0O8I3+hC+3d3TNR7BH8wr9ZQ5yFOQjvh++Eg5
+         CRBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783621735; x=1784226535;
+        h=content-transfer-encoding:content-type:mime-version:message-id
+         :references:in-reply-to:user-agent:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=RN+4SkO8PJ9d9SXPrFRpz0v6UaMeYjDz8fSXVOFCTUQ=;
+        b=GJG6eE5w75Tx/Ky1V7ZDVsHcxBRBrsGk7e3t8txnr37/hqjFct4rThmV9XefzkJGYI
+         +vZox/fjOWXHkGPfmo4nMjvP/QbM8+o527aPAdUKyZNusvOv7Ws6584BIE1nOhHZqd7g
+         KKnbiGxzm9BSc9LCgoNrJqqquwHfErw9T3joAJQfWI4iI+xbxgoZc+XLOa3oQcsq06w/
+         pQTeri5ecLmB8nvTkBDlHz/qDyFT03GZ6tcL3n+OkluSBGn+/FrmCr7dHJ9VP6/9fldx
+         G3Vn2IFSH+xOI/sJJ8HOPMP16Cubv3rrxww7efQXnPlPRcGMiRRcRIsryw5AZm7dIavv
+         Suxg==
+X-Forwarded-Encrypted: i=1; AHgh+RoGkNc+lc8q3WflLY423mjM0cd+NHEYlkkJlBB77Z4dJLEh54qP0giYINzw8R1AIvFDODHl4bapN6qx9CPuCg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxnBzWhM3yl/xUs5KO6UdVDW8eG8h4nCsyLGE9T/8lkCN8lCtGS
+	1mHzEgS31BOGCXVrRv/D4VSH/LLgQwSftyViwN88KJzeMZmgWuK79dVT
+X-Gm-Gg: AfdE7cmZ5WpMOg0qAuP6fD14xOS5rVvZ/AlPVfBxRW1R1ryGKTdXpOPfM9FV4QtV2GZ
+	e89ayFGFT5fZKx/ssikSX2XnsbLp5W4O7ezCaUAaBvh/Wg8SNRxE+7XmdQLxCEaSwas7gBux+p+
+	O9yZ7k5bKa9tHIZiFPSX/zqfkaxLtwH+siq3XLDC0zikSXeUNFuDQFHKXSUpPEZrZvSnh7D78k8
+	y7yRdwzny7cSbuXTKsn3jxOpYR3M4A1vIZfP5xL5Asmog2DU2TTEfFZ3nqqYqS8XiyBDYT7fVpx
+	RoZXIYFhKWMJ495mrQMRorVXy+88ZucdKvfZUhkvakO2plQ/Fy802fYeQPrsS5FJ9NRFJa/zzlh
+	V7+xIhMFukiXcwIR8NQ6q4o4L6zkeX1OLUeQ9frWVUXhs6QxfAX2mvzVG4+Dlxqkc4MHTmEEwYN
+	TJlZQLHZp1iImFhiCf0wbTzCI=
+X-Received: by 2002:a05:6a21:7482:b0:3a2:f7bd:a9a5 with SMTP id adf61e73a8af0-3c0bcbc0455mr10030942637.38.1783621734601;
+        Thu, 09 Jul 2026 11:28:54 -0700 (PDT)
+Received: from ehlo.thunderbird.net ([150.230.217.250])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-ca5af7d5946sm4088600a12.7.2026.07.09.11.28.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Jul 2026 11:28:54 -0700 (PDT)
+Date: Wed, 01 Jul 2026 18:01:30 +0800
+From: Coia Prant <coiaprant@gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+CC: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/3] dt-bindings: vendor-prefixes: Add graperain
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20260701-sturdy-imported-oryx-dfc12a@quoll>
+References: <20260630153810.3574714-2-coiaprant@gmail.com> <20260630153810.3574714-4-coiaprant@gmail.com> <20260701-sturdy-imported-oryx-dfc12a@quoll>
+Message-ID: <A4CA0393-B348-48A0-B5DB-D1F9098EB37B@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20260709-drm-no-more-plane-reset-v1-28-302d986fe5f0@kernel.org>
-References: <20260709-drm-no-more-plane-reset-v1-0-302d986fe5f0@kernel.org>
-In-Reply-To: <20260709-drm-no-more-plane-reset-v1-0-302d986fe5f0@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
- andy.yan@rock-chips.com, heiko@sntech.de, hjc@rock-chips.com, 
- linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6962; i=mripard@kernel.org;
- h=from:subject:message-id; bh=1EhBaT9So9TzKoDzZmW88kIbE0VF/wzLpFZnZ+WjxPs=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFn+3aIb/9Y9WZfcJPrEZhdTXY5abMY0jRXRboW53nXFc
- Z9CA/53TGVhEOZkkBVTZHkiE3Z6efviKgf7lT9g5rAygQxh4OIUgIksdGass9juv3zzvw6HmdNZ
- Jun0FsU4caqdbHdiO9x+41qR3oUjx/ieLxUu/SV9oTSN49nk9wxvGevdhbJ15obe9VjqpeYeEHt
- 674lZ1c0LNpz6eFLm/2NeXUc3J0PRT2cPyQWv/a29sPDPRlYA
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260709_112856_206569_F9E38DAB 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,319 +103,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The plane only initializes a pristine state in its reset hook
-using drm_atomic_helper_plane_reset(), which is equivalent to what
-atomic_create_state expects. Convert to it.
+On July 1, 2026 3:05:45 PM GMT+08:00, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>On Tue, Jun 30, 2026 at 11:38:09PM +0800, Coia Prant wrote:
+>> Add graperain to the vendor prefixes.
+>> 
+>> Link: https://www.graperain.cn/ (China)
+>> Link: https://www.graperain.com/ (Global)
+>> 
+>> Signed-off-by: Coia Prant <coiaprant@gmail.com>
+>> ---
+>>  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+>>  1 file changed, 2 insertions(+)
+>>
+>
+><form letter>
+>This is a friendly reminder during the review process.
+>
+>It looks like you received a tag and forgot to add it.
+>
+>If you do not know the process, here is a short explanation:
+>Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+>versions of patchset, under or above your Signed-off-by tag, unless
+>patch changed significantly (e.g. new properties added to the DT
+>bindings). Tag is "received", when provided in a message replied to you
+>on the mailing list. Tools like b4 can help here. However, there's no
+>need to repost patches *only* to add the tags. The upstream maintainer
+>will do that for tags received on the version they apply.
+>
+>Please read:
+>https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
+>
+>If a tag was not added on purpose, please state in the patch changelog
+>or cover letter why and what changed.
+></form letter>
+>
+>Best regards,
+>Krzysztof
+>
 
-The conversion was done using the following Coccinelle semantic patch:
+My apologies! I am quite new to the kernel submission process and 
+missed picking up the tag from v1. 
 
-@@
-identifier funcs;
-symbol drm_atomic_helper_plane_reset;
-symbol drm_atomic_helper_plane_create_state;
-@@
+Since I need to spin a v3 anyway to fix the text wrapping issue in 
+patch 2, I will make sure to include the missing tags and resend the 
+entire series.
 
-struct drm_plane_funcs funcs = {
-  ...,
-- .reset = drm_atomic_helper_plane_reset,
-+ .atomic_create_state = drm_atomic_helper_plane_create_state,
-  ...,
-};
+Thanks for your patience and for pointing this out!
 
-@match_struct_reset@
-identifier funcs, reset_func;
-@@
-struct drm_plane_funcs funcs = {
-    ...,
-    .reset = reset_func,
-    ...,
-};
-
-@reset_uses_helpers depends on match_struct_reset@
-identifier match_struct_reset.reset_func;
-@@
-
- void reset_func(...)
- {
- 	<+...
-(
- 	__drm_atomic_helper_plane_reset(...);
-|
-	__drm_gem_reset_shadow_plane(...);
-)
- 	...+>
- }
-
-@match_struct_destroy@
-identifier funcs, destroy_func;
-@@
-struct drm_plane_funcs funcs = {
-    ...,
-    .atomic_destroy_state = destroy_func,
-    ...,
-};
-
-@script:python renamed_func@
-old_name << match_struct_reset.reset_func;
-new_name;
-@@
-if old_name.endswith("_reset"):
-    coccinelle.new_name = old_name.replace("_reset", "_create_state")
-else:
-    coccinelle.new_name = old_name
-
-@update_struct depends on match_struct_reset && reset_uses_helpers@
-identifier match_struct_reset.funcs, match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-@@
-struct drm_plane_funcs funcs = {
-    ...,
--   .reset = reset_func,
-+   .atomic_create_state = new_name,
-    ...,
-};
-
-@drop_destroy depends on update_struct && match_struct_destroy@
-identifier match_struct_reset.reset_func;
-identifier match_struct_destroy.destroy_func;
-identifier container_func;
-identifier P;
-symbol drm_atomic_helper_plane_destroy_state;
-symbol __drm_atomic_helper_plane_destroy_state;
-@@
-
- void reset_func(struct drm_plane *P)
- {
- 	...
-(
--	if (P->state) {
-- 		<+...
-(
--		drm_atomic_helper_plane_destroy_state(P, P->state);
-|
--		__drm_atomic_helper_plane_destroy_state(P->state);
-|
--		P->funcs->atomic_destroy_state(P, P->state);
-|
--		destroy_func(P, P->state);
-)
-- 		...+>
-- 	}
-|
--	drm_WARN_ON_ONCE(P->dev, P->state);
-|
--	WARN_ON(P->state);
-)
- 	...
-(
--	kfree(P->state);
-|
--	kfree(container_func(P->state));
-|
- 	// kfree is optional
-)
-(
--	P->state = NULL;
-|
- 	// plane->state clearing is optional
-)
- 	...
- }
-
-@drop_destroy_mtk depends on update_struct@
-identifier P;
-symbol __drm_atomic_helper_plane_destroy_state;
-symbol to_mtk_plane_state;
-@@
-
- void mtk_plane_reset(struct drm_plane *P)
- {
- 	...
--	if (P->state) {
--		__drm_atomic_helper_plane_destroy_state(P->state);
--		...
--	} else {
- 		...
--	}
- 	...
- }
-
-@transform_nv50_wndw depends on update_struct@
-identifier S;
-@@
-
- void nv50_wndw_reset(...)
- {
- 	...
--	if (WARN_ON(!(S = kzalloc_obj(*S))))
-+	S = kzalloc_obj(*S);
-+	if (WARN_ON(!S))
- 		return;
- 	...
- }
-
-@transform_kzalloc depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier P, S;
-statement ST;
-statement list STL;
-@@
-
- void reset_func(struct drm_plane *P)
- {
- 	<...
- 	S = kzalloc_obj(*S);
-(
--	if (S)
--	{
--		STL
--	}
-+	if (!S) return;
-+
-+	STL
-|
--	if (S) ST
-+	if (!S) return;
-+
-+	ST
-)
-	...>
- }
-
-@transform_body depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-identifier S, P;
-expression PS;
-@@
-- void reset_func(struct drm_plane *P)
-+ struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	...
- 	S = kzalloc_obj(*S);
-	...
-(
- 	if (!S) {
-		...
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
-|
- 	if (WARN_ON(!S)) {
-		...
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
-|
- 	if (S == NULL) {
- 		...
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
-)
-	...
-(
--	__drm_atomic_helper_plane_reset(P, PS);
-+	__drm_atomic_helper_plane_state_init(PS, P);
-|
--	__drm_gem_reset_shadow_plane(P, PS);
-+	__drm_gem_shadow_plane_state_init(P, PS);
-)
-	...
-}
-
-@update_early_return depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-identifier P;
-expression PS;
-@@
- struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	<+...
--	return;
-+	return ERR_PTR(-EINVAL);
-	...+>
-}
-
-@update_return_plane depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-identifier P;
-expression PS;
-@@
- struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	...
- 	__drm_atomic_helper_plane_state_init(PS, P);
-	...
-+
-+	return PS;
-}
-
-@update_return_shadow depends on update_struct@
-identifier renamed_func.new_name;
-identifier P;
-expression PS;
-@@
- struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	...
- 	__drm_gem_shadow_plane_state_init(P, PS);
-	...
-+
-+	return &PS->base;
-}
-
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
-Cc: andy.yan@rock-chips.com
-Cc: heiko@sntech.de
-Cc: hjc@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c  | 2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 0090d8ff0c79..79fd875f6953 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1155,11 +1155,11 @@ static const struct drm_plane_helper_funcs plane_helper_funcs = {
- 
- static const struct drm_plane_funcs vop_plane_funcs = {
- 	.update_plane	= drm_atomic_helper_update_plane,
- 	.disable_plane	= drm_atomic_helper_disable_plane,
- 	.destroy = drm_plane_cleanup,
--	.reset = drm_atomic_helper_plane_reset,
-+	.atomic_create_state = drm_atomic_helper_plane_create_state,
- 	.atomic_duplicate_state = drm_atomic_helper_plane_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_plane_destroy_state,
- 	.format_mod_supported = rockchip_mod_supported,
- };
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 4cce3e336f5b..42853689d6e7 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1495,11 +1495,11 @@ static const struct drm_plane_helper_funcs vop2_plane_helper_funcs = {
- 
- static const struct drm_plane_funcs vop2_plane_funcs = {
- 	.update_plane	= drm_atomic_helper_update_plane,
- 	.disable_plane	= drm_atomic_helper_disable_plane,
- 	.destroy = drm_plane_cleanup,
--	.reset = drm_atomic_helper_plane_reset,
-+	.atomic_create_state = drm_atomic_helper_plane_create_state,
- 	.atomic_duplicate_state = drm_atomic_helper_plane_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_plane_destroy_state,
- 	.format_mod_supported = rockchip_vop2_mod_supported,
- };
- 
-
--- 
-2.54.0
-
+Best,
+Coia
 
 _______________________________________________
 Linux-rockchip mailing list
