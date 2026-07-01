@@ -4,63 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C90F8C43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 18:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51AE5C43458
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 18:57:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6AJvJxpxJyvYa9qfP+L22lyveHuzquf42rUM5oYb67E=; b=YFI/Kjmnk3tmlF
-	HBWSieIOfkBtgeE7k4q1sEKSQZ99VZvRjEFDH0v9Ts0uQXD7m+6MYSQGR//eczHIjfiVajfuGyZ92
-	KtR+85DB9+r1Jid7OMlXjZHWisTXLKzq3Yx4D1jx0BJiUxNoIuzN/75HtEm3HVzUK47DwBpGpGQnC
-	40nljx69Tp8FnMAS7hSf4p2fnGx/yiX2UxNCVJl6FSoi8CgwGU5BXw93wO0L9XoP6oq0IlFiGIg3q
-	AapaJaKPGeoaPnX4KQ7BRxdwJU+EnIB7CEyP2Gsq5S4Uh9G/1CGEMx0r25TgNHvmy4Cns9gGdELNP
-	xnynry8KEbDFBjjwYblA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Jq3YBkpt7jG1xYySS1SYbuEGqWHqg1rIvKOYxNOJI00=; b=h/RV39K1UaBBh+
+	qS0v80hrfEVXaxBAd1JIrFVzPxSI38h8vBVHv1JQ3V2uhvOfHDOJ369FGnFDh/yIZG3vw98bs0mrH
+	8YelxJW5h5QBhjozgT0NK5/1peK1amEnMpb+t+YsuOSLbee/OsYwI2PXSDUOfMVt8HpM1Ck7WQyDL
+	oD6lCiYqL/pD486+PYgXN8W3Q0UQTQHsi0Wby24TtU+SUDfT2qBph9lmQ92qaKKDaq1rjeHxpsELs
+	fHN/Y3mHalud0DZhKcU5QcNbJ2iZja/pJbNuz2fj+NEoHrHn7KVQURtfuu9n5r1D4PQWzIhXGu13F
+	krRSiV7LnDy7bdQlw/aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf01T-00000002rcw-28rJ;
-	Wed, 01 Jul 2026 18:50:59 +0000
-Received: from out-170.mta1.migadu.com ([2001:41d0:203:375::aa])
+	id 1wf083-00000002s1r-0lOZ;
+	Wed, 01 Jul 2026 18:57:47 +0000
+Received: from mail-pj2-x00.google.com ([2607:f8b0:4864:39::])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf01Q-00000002rbl-2Y03
+	id 1wf081-00000002s1V-1yOO
 	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Jul 2026 18:50:58 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1782931843;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9u4pmteNiZYFsZdE5aO2Vb1vL6vq7YhBb/NzlG505K0=;
-	b=I0/ovo7nLUuCM6+HSchB9d0K3LcYYcf3K8TthQG7aQpr5LnmCvFP34F/FZSgY9GxC0kYXA
-	sGJ9ghp4p8qMP/aZdwg+SNcwTk0V4F+uo94vUO0zPQUh2bFBHEwsGol2V73RkJ6JG4EqZZ
-	rDZ0avqpfpIQD2dhrbzgC+Zwx5DzaVeszi2tY7IsOUCCAeJdpcsJHabYI31A0VR0xy9j3+
-	XpCmlFLe7eSs2T2cIymWx09fJ4W7koYHxQXcbI3GMlMNJ6lly0m8hTbOJOtulfsMlcau6m
-	CBH9s4rHl3bVRBMmtuIRwMgJ2aCroYuzyEa+FMs6hKI2UQT2fr35EgoGnAmj7Q==
-Date: Wed, 01 Jul 2026 20:50:16 +0200
-Message-Id: <DJNGKXB1O3FN.SHBNQSJO8MN0@cknow-tech.com>
-Cc: <kernel@collabora.com>, <linux-phy@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- =?utf-8?q?Thomas_Niederpr=C3=BCm?= <dubito@online.de>, "Simon Wright"
- <simon@symple.nz>, "Sashiko" <sashiko-bot@kernel.org>
-Subject: Re: [PATCH v4 0/8] phy: rockchip: samsung-hdptx: Clock fixes and
- API transition cleanups
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Vinod Koul"
- <vkoul@kernel.org>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Heiko
- Stuebner" <heiko@sntech.de>, "Algea Cao" <algea.cao@rock-chips.com>,
- "Dmitry Baryshkov" <lumag@kernel.org>
-References: <20260612-hdptx-clk-fixes-v4-0-ce5e1d456cda@collabora.com>
-In-Reply-To: <20260612-hdptx-clk-fixes-v4-0-ce5e1d456cda@collabora.com>
-X-Migadu-Flow: FLOW_OUT
+	Wed, 01 Jul 2026 18:57:46 +0000
+Received: by mail-pj2-x00.google.com with SMTP id d9443c01a7336-2c9dc2dafeaso3472925ad.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 01 Jul 2026 11:57:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782932264; x=1783537064; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DGzU+Kdxs/bDIK7sn0qzmTZSoK/NatWbELETWz34JKY=;
+        b=asHJyg5BO9Zg1Dn5ggdKPXwW7z/mEz7sDDtosByWzSifmQCu/W90mJDbeYYg5g/Zt9
+         m3hy9u6wkjpRZjL6df22VNgmskF5KPhsNPzTzM8as6KAaIfoGaC4c6efy4KFZAr8XXUt
+         /PipxSsuaW9k1g9DQNWCg7wHGYfWZLMz52/oPUwXmV9qUuzOOQBmKHOynGNnPhBEN36i
+         xkZ5SdhHQANsxIc9tfG8XbMiffHVhG3fEpFXkt2o6c8WvIVmKfrqqizm/FcrjS9prOa5
+         calGUH4f2EzIL5Nih/tiMI50ZmnMQ0EIK4eBLv6J/bbhPd/rSTCKHZ5ua5eBOJvOvMEi
+         QEQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782932264; x=1783537064;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DGzU+Kdxs/bDIK7sn0qzmTZSoK/NatWbELETWz34JKY=;
+        b=EkbkZZGCPA5hNbIBs4QIPM7nl95G35eKfI7vl1V6U4AFay+fym31zeamlcLGNLJLiE
+         BsY332zAWMONsqn8KYck8EkOvogxALs0FYT6dwLnP9vH+kPVj9gU546KdeTTdqv1XVCy
+         abdH+5r7e+pZ4a+BMpcP6lobjAjet8Ml+kpYLdklapObP2DH44gsmL2L7uctleJ1TodD
+         7Lt8EZbgQMtfM90rammMw2eP/KwRB1pbh8VjhMHYqXMjGcptQTHPnFQ54WKwgQoDbxqd
+         rRAru7wXU7mU7u/n24NRLeH6N9IqScWkDsBOoE2BSLMzQGFvqkHMec/CYS5Fzlx73Xhb
+         h/qQ==
+X-Gm-Message-State: AOJu0Yxa5GshGwOQycCZSM/D8dcOwaSpm3v92JO20/8i/DIoARklibVb
+	VKaXhyVdtSkIEQJwIiFaBgr5zmIdAp0PqeukOBzpf/nhBOxb589YZVBZ
+X-Gm-Gg: AfdE7cnwBidmtqPeMMZhSJhrXhjACRdV1pBPO/m+lfuJYoqJXyPk1i+tfFpQBzCq/Nv
+	IWfcoTzyATtdjLNCtZkjTilFILLgegzhV8u6dCypAkWmoVqD779PvTbs406XIXwCpb2MV3dSAXa
+	PUDK7QnWCDtgCEV1QKp1xMy7ttKSsESf3pX04jfPxxN6gG6bzwyS2yBaL4yyUwX5QKHI2f/Znlp
+	sfXf+/j/eCz8wRmCtKeSw/iEDwb/GZIFGLZJPEmsmRqvDVS2eoF4U3rdhQoCOYoDd9G4goKva7O
+	eRm3EISVYv8MOSXSDFaB9ZdjMMV9qjAW24F8VC7zvrTYxY7c3cz5XvTkJ3fz3M4IiOke4ijjxz9
+	/PSsjqqe9E3OlhgL4PcYVK+PcgRrCJShIF7H7uF5eMb5CLt/rlYyce0RYsZb4opJkSbHU6FZCf0
+	CWNRC5b4qP4LzLrGrhQqmYLw==
+X-Received: by 2002:a17:903:26d0:b0:2ca:5a0f:d0c9 with SMTP id d9443c01a7336-2ca7e8cb82cmr29597415ad.43.1782932264354;
+        Wed, 01 Jul 2026 11:57:44 -0700 (PDT)
+Received: from server.lan ([150.230.217.250])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ca9a8dadaasm2624205ad.14.2026.07.01.11.57.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Jul 2026 11:57:43 -0700 (PDT)
+From: Coia Prant <coiaprant@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Coia Prant <coiaprant@gmail.com>
+Subject: [PATCH 1/2] arm64: dts: rockchip: Add AP6275S support for 9Tripod X3568 v4
+Date: Thu,  2 Jul 2026 02:56:56 +0800
+Message-ID: <20260701185657.4092955-1-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_115056_935311_601A74EB 
-X-CRM114-Status: GOOD (  24.04  )
+X-CRM114-CacheID: sfid-20260701_115745_513409_F942F397 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,89 +96,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
+Add the missing Broadcom Wi-Fi and Bluetooth child nodes for the
+9Tripod X3568 v4 board.
 
-On Fri Jun 12, 2026 at 1:46 AM CEST, Cristian Ciocaltea wrote:
-> This series provides a set of bug fixes and cleanups for the Rockchip
-> Samsung HDPTX PHY driver.
->
-> The first part of the series addresses clock rate calculation and
-> synchronization issues.  Specifically, it fixes edge cases where the PHY
-> PLL is pre-programmed by an external component (like a bootloader) or
-> when changing the color depth (bpc) while keeping the modeline constant.
-> Because the Common Clock Framework .set_rate() callback might not be
-> invoked if the pixel clock remains unchanged, this previously led to
-> out-of-sync states between CCF and the actual HDMI PHY configuration.
->
-> The second part focuses on code cleanups and modernizing the register
-> access.  Now that dw_hdmi_qp driver has fully switched to using
-> phy_configure(), we can drop the deprecated TMDS rate setup workarounds
-> and the restrict_rate_change flag logic.  Finally, it refactors the
-> driver to consistently use standard bitfield macros.
+The Bluetooth subnode is attached to uart8 with hardware flow control
+enabled via RTS/CTS pins.
 
-I built a 7.2-rc1 based kernel with this patch set and used that on my
-NanoPC-T6 LTS connected to my 4K TV. The kernel also has the HDMI 2.0 patch
-set, so I can get 4K@60 with it. When I then tried to switch to 10bpc with
-``modetest -M rockchip -w 86:'max bpc':10`` nothing happened.
-But that's expected as my TV only supports HDMI 2.0 and not HDMI 2.1.
+The Wi-Fi subnode is connected via the sdmmc2 bus.
 
-When I add ``video=HDMI-A-1:1920x1080@60`` to the kernel command line, then it
-starts up with 10bpc and I can change to 8bpc and back to 10bpc.
-So feel free to add my
+Additionally, change the status of the i2s3_2ch node to "disabled"
+since the required rk3568-codec-digital driver for Bluetooth audio
+is currently unavailable in the mainline tree.
 
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS
+Signed-off-by: Coia Prant <coiaprant@gmail.com>
+---
+ .../dts/rockchip/rk3568-9tripod-x3568-v4.dts  | 57 +++++++++++++++++--
+ 1 file changed, 53 insertions(+), 4 deletions(-)
 
-Cheers,
-  Diederik
-
->
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
-> Changes in v4:
-> - Added new patches to address new findings from Sashiko:
->   * Prevent divide-by-zero when computing clk rate
->   * Fix rate recalculation for 3.2GHz FRL
-> - Updated patch "Consistently use bitfield macros" to handle a few more
->   bit operations
-> - Link to v3: https://patch.msgid.link/20260611-hdptx-clk-fixes-v3-0-67b1b0c00e16@collabora.com
->
-> Changes in v3:
-> - Replaced div_u64() with DIV_ROUND_CLOSEST_ULL() in Patch 1 (Sashiko)
-> - Fixed theoretical usage_count unbalanced issue in Patch 2 (Sashiko)
-> - Rebased series onto latest phy/next
-> - Link to v2: https://patch.msgid.link/20260511-hdptx-clk-fixes-v2-0-664e41379cab@collabora.com
->
-> Changes in v2:
-> - Collected Tested-by tags from Thomas and Simon
-> - Fixed a typo in commit description of patch 1
-> - Added a comment in patch 2 explaining why PLL config errors are
->   ignored for rk_hdptx_phy_consumer_get()
-> - Added a missed FIELD_GET conversion for lcpll_hw.pms_sdiv in patch 6
-> - Rebased onto latest phy/fixes
-> - Link to v1: https://lore.kernel.org/r/20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com
->
-> ---
-> Cristian Ciocaltea (8):
->       phy: rockchip: samsung-hdptx: Fix rate recalculation for high bpc
->       phy: rockchip: samsung-hdptx: Prevent divide-by-zero when computing clk rate
->       phy: rockchip: samsung-hdptx: Fix rate recalculation for 3.2GHz FRL
->       phy: rockchip: samsung-hdptx: Handle uncommitted PHY config changes
->       phy: rockchip: samsung-hdptx: Drop TMDS rate setup workaround
->       phy: rockchip: samsung-hdptx: Drop restrict_rate_change handling
->       phy: rockchip: samsung-hdptx: Simplify GRF access with FIELD_PREP_WM16()
->       phy: rockchip: samsung-hdptx: Consistently use bitfield macros
->
->  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 266 +++++++++++-----------
->  1 file changed, 130 insertions(+), 136 deletions(-)
-> ---
-> base-commit: 293e19f416fa3f233a2fb013258f7abcb39ad6ed
-> change-id: 20260227-hdptx-clk-fixes-47426632f862
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
+index 4db00489be40f..c3ffb3fd51cd4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts
+@@ -582,9 +582,9 @@ &i2s1_8ch {
+ 	status = "okay";
+ };
+ 
+-/* used for AP6275S Bluetooth Sound */
++/* required rk3568-codec-digital for AP6275S Bluetooth Sound */
+ &i2s3_2ch {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &mdio0 {
+@@ -664,6 +664,20 @@ &pdm {
+ };
+ 
+ &pinctrl {
++	bluetooth {
++		bt_reg_on_h: bt-reg-on-h {
++			rockchip,pins = <3 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		bt_wake_host_h: bt-wake-host-h {
++			rockchip,pins = <3 RK_PA1 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		host_wake_bt_h: host-wake-bt-h {
++			rockchip,pins = <3 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	leds {
+ 		led_work_en: led_work_en {
+ 			rockchip,pins = <0 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -699,6 +713,12 @@ vcc3v3_pcie_en_pin: vcc3v3-pcie-en-pin {
+ 			rockchip,pins = <3 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	wifi-irq {
++		wifi_host_wake_irq: wifi-host-wake-irq {
++			rockchip,pins = <3 RK_PD4 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
+ };
+ 
+ &pmu_io_domains {
+@@ -759,6 +779,9 @@ &sdmmc0 {
+ 
+ /* used for AP6275S WiFi */
+ &sdmmc2 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
+ 	cap-sdio-irq;
+@@ -771,6 +794,16 @@ &sdmmc2 {
+ 	vmmc-supply = <&vcc3v3_sys>;
+ 	vqmmc-supply = <&vcc_1v8>;
+ 	status = "okay";
++
++	wifi@1 {
++		compatible = "brcm,bcm43752-fmac", "brcm,bcm4329-fmac";
++		reg = <1>;
++		interrupt-parent = <&gpio3>;
++		interrupts = <RK_PD4 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_irq>;
++	};
+ };
+ 
+ &spdif {
+@@ -798,10 +831,26 @@ &uart4 {
+ 	status = "okay";
+ };
+ 
+-/* used for WiFi/BT AP6275S */
++/* used for AP6275S Bluetooth */
+ &uart8 {
+-	pinctrl-0 = <&uart8m0_xfer &uart8m0_ctsn>;
++	dma-names = "tx", "rx";
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart8m0_xfer &uart8m0_ctsn &uart8m0_rtsn>;
++	uart-has-rtscts;
+ 	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm43438-bt";
++		clocks = <&rk809 1>;
++		clock-names = "lpo";
++		device-wakeup-gpios = <&gpio3 RK_PA2 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio3 RK_PA1 GPIO_ACTIVE_HIGH>;
++		max-speed = <1500000>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_reg_on_h &bt_wake_host_h &host_wake_bt_h>;
++		shutdown-gpios = <&gpio3 RK_PA0 GPIO_ACTIVE_HIGH>;
++		vddio-supply = <&vcc_1v8>;
++	};
+ };
+ 
+ &uart9 {
+-- 
+2.47.3
 
 
 _______________________________________________
