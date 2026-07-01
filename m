@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64929C43458
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A40CBC43602
 	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 01:45:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NvWfb25h9CJgx08j2A1oOHJSKOD2pEW4MR9+EB5ZLJI=; b=GB+hYjgVzfnJAJ
-	mj7r9eq2w+XOQSzdpfUDb6lZr8ciAngBP3w9SqdYperAV9exxWo1SHe19wR9vgbBhUP8gpkODKh2g
-	L3T2pQVtxci22ksKV9so4svbJMd2Qe34kMJ8uMfMzEB5authcNAdsDzHZN35GC6wwpigj7Efxk7ar
-	X3bMn8EW3CaiQC5uZwcXmQm2XWHRPqZkSMixx2XM/fQ3/Jw0L+KeosdaKTn4OtYEzVk8flNpeC8ib
-	6GiCFbbCJcP28ReN1izDGD8R42SXtpPlPladK3HctxVCmvgPT2D+x3KLaJMGSTmx/vo8tHj2kZDjd
-	MxkDypCr+ylEqwIlmy4Q==;
+	List-Owner; bh=NvWfb25h9CJgx08j2A1oOHJSKOD2pEW4MR9+EB5ZLJI=; b=qd8ixuSQHI+F/6
+	QaMpw9lZiuTFLyuaYuPXK4UEObNzwIPhDgySl1YkGJdWkU7VsqdCUUBT7BVQwD/+OP2ZxOnxmcoKf
+	4zA7UtA+RGXMiTEUocRPf8Lbm95r5aBPs8q8iIqmG6Zd9UgyLZaeanMMv1VYb4jlOGUsmNVBKXSzX
+	+nYVcKzBlWCWBsLuydlYDz1+OMBrZkg3ykTR4gQl515VfUi1jEFJMkK7cFi7Mw9sp4qTXd/Iz75Uk
+	gRGI07PzRYiIdpCd6VsPY26wSR7u6g/IXOH+DMTy2t1NGQ5L14F3W7/I8uXXsrXQBNnuG4jRK3gZK
+	UreSe61FcKBYav6cFATA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wek1E-00000000Sou-3Zhw;
-	Wed, 01 Jul 2026 01:45:40 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wek1T-00000000Sqf-00iF;
+	Wed, 01 Jul 2026 01:45:55 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wek1D-00000000Som-1ktW
+	id 1wek1R-00000000SqM-0qvv
 	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Jul 2026 01:45:39 +0000
+	Wed, 01 Jul 2026 01:45:53 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B51D3407A1;
-	Wed,  1 Jul 2026 01:45:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8C1B1F000E9;
-	Wed,  1 Jul 2026 01:45:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6D62D6001D;
+	Wed,  1 Jul 2026 01:45:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7AC61F000E9;
+	Wed,  1 Jul 2026 01:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782870338;
+	s=k20260515; t=1782870350;
 	bh=vS2FCRo1N9v6ZdiYKY8wR+oYYGUC31EvaCyaf5bbLwQ=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=mcEdo9TAFBMoIV5lSGa25ooiWQ8V50ijW65iUHTSiVHQErABu7Nz6/0qtsD6vin/q
-	 jhfCm3H+09gjFZ6GrQBn1xEqqN3r+lhNjBDLFhKnXGiLwon3lN96etiKWuaeetbK5M
-	 dW9ZmGnTPBGbJlyx4LbCE1zWv8aousKq3ASGk53YAIrwNwFs5pv7V4muJtz/dOiaAz
-	 C7AZbOb1y0ZCU1s64FUhVF90NglX8N8Kn3OBjWx5rhoQyR+cYtwaGSvLi80g/72Imv
-	 QHB9XZV91H+HcI/G22CVJHCQCBThQHQveqgFq8QqfZ5Smq/MJEuxYDczP1Gtr3ICBg
-	 qqwH1WvfP1L7A==
-Date: Wed, 1 Jul 2026 02:45:32 +0100
+	b=ngZx6fJc90korLaSesRc5fXUEQdYVY96saS7Sdoy0ukfkgNjOWFhCePCriBcqgxt9
+	 zyDbAGB+SYeBT7P5rdmPoJ3CEJsaoF+c4hUmXkZGNvjN2ZJAgCmoOKraHsiT7EqH5z
+	 ZMIeCLXFgffbw90ETamDvEvKgchELWLkfovLNbU8oDssJswukR4c20FOquGY+WdYJb
+	 4ks4kqwVM1VDuNGZMykpCCEZg600OwObI+WCOb+PjG+WR2cLHhaHyKEHOZqVW5L1og
+	 wPCHYupCBnV5AXE+XUR7vSlWI+53ynh9ECbUlpXhhIJiqbfaXGc2vbvVf0l3h02UMY
+	 AamL/3nDVDShA==
+Date: Wed, 1 Jul 2026 02:45:45 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
@@ -73,6 +73,7 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
+Message-ID: <20260701014545.CTZ5wX9OAAkKDWRJtY7lJRUJnaFoPqLcFifm-f7Vcnk@z>
 
 On Fri, 26 Jun 2026 11:12:23 -0500
 Chris Morgan <macroalpha82@gmail.com> wrote:
