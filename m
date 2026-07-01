@@ -4,63 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48664C43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 11:07:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B15AAC43458
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 11:12:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nlJ02pF1TsLKFFpKOifiunBGg6A0HN4M2HLHznY8+OM=; b=eZSNfoE+ERAKURy9mN0g0tayQX
-	+OxDk02mKv9HRx131w6knru7AXvMBvLPoL+0RjihXGT5GHm6CVJX9lLsZTEWqHK6M71hdWCOzRCtI
-	WO4ATwFODj6lFTf/K58XIpAPouetbmLXp3bQCBpszuUxP/PAtCqJpLvW4OKkKXLh/cDyMaD1Zie2B
-	4sJ8aiqsAOxt+e3nec75kZdpAqE7KlZ1klVNk6d654r+XmfMUQJ7SrTlm3YvuNz65rw6Dhz3hjaRa
-	7K543kq6nj3SWfwW6zGbgWKqAf2i4fkN/GLWQmTRH30l8majVrBoGjkYoimsjo3Ghb46d7IhCj0aP
-	n+yKvw9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ofpVbtcTpCi6JeETZWFCRzQPxkg6Nvq2k9n+db/irkw=; b=1jjRYgrXtswZng
+	Ql6CZek/t0O84BC3qQChIif5FK6KFVFkxbu5OnWhR7rZd/G9EerfAthSPQlYdCi01jojaGNWNbFTW
+	vY/TV1R0GSNyeuqeGIBMFAXJ8M3zxNEoKmpLCmevfruoNv3IMJSTNvsavyZQZrgsmXb+alwpu33jJ
+	IMQX9o1zsbzyhA1dtD51eX4DAyow0v4G/bHHENr8k7zX9sRZ7ORziqbqSKbXcKHCzNMfJfPiOpQHM
+	jLQFPo58eo1jQvQfgiIr999cVclaRE3G/oj9cmYauUaQTjDGV253kuxrlYPDCWG988liHOFE/b8RC
+	L9wisttjGbFS+5lgZrGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wesnC-00000001QGb-3YlC;
-	Wed, 01 Jul 2026 11:07:46 +0000
-Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	id 1wessA-00000001R4y-2Ac7;
+	Wed, 01 Jul 2026 11:12:54 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wesn7-00000001QFw-444X;
-	Wed, 01 Jul 2026 11:07:44 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
-	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 61568201975;
-	Wed, 01 Jul 2026 13:07:38 +0200 (CEST)
-Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1wesn4-005ZKD-0y;
-	Wed, 01 Jul 2026 13:07:38 +0200
-Received: from pengutronix.de (p4ffb2dc6.dip0.t-ipconnect.de [79.251.45.198])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id F3D9255D58F;
-	Wed, 01 Jul 2026 11:07:37 +0000 (UTC)
-Date: Wed, 1 Jul 2026 13:07:37 +0200
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Cc: linux-can@vger.kernel.org, 1579567540@qq.com, 
-	Vincent Mailhol <mailhol@kernel.org>, kernel@pengutronix.de, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/3] can: rockchip: add RK3588 CAN-FD support
-Message-ID: <20260701-flashy-crocodile-of-flowers-a6a23e-mkl@pengutronix.de>
-X-AI: stop_reason: "refusal"
-References: <20260701070128.2096267-1-1579567540@qq.com>
- <tencent_124D6134EB32480979234201E688087E5408@qq.com>
- <2064877.jZfb76A358@diego>
+	id 1wess8-00000001R4L-1HHU
+	for linux-rockchip@bombadil.infradead.org;
+	Wed, 01 Jul 2026 11:12:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=LkoKVbcxFCdFsy87mxquQYAqVgDQSp2s1Hkwlfg3a08=; b=ikNWcczCBtg67cedoc2zOrtm8X
+	0Sh8P8IxpHi9bS0GDot1w8K/lgXdctkXsP+guX52fI8VoKdEstHku+qx0S10Lafb08viO9VvYbS6m
+	UhsxtHRRyAb6MDoL1QYDm+sI0+Kb4BkpfbLEnb5ecMZNfimV7Wx0OUlw5ZyAA+0MStods5ucy/IDP
+	vrHlNTszyOjosPAz6+dA7ZfnKT04cFcvfgw/8RnycIy1JNV8cTIO9MlSPXKrAOYTWuExGPVGm6lQN
+	YBLbNSHYD0EBGVxDTkkeRDwWxfWawkNe1LwZ4J6aWu021foBprIkneYjUptwN8UEI6faC4DLCDkeQ
+	GlpZ1rLQ==;
+Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wess4-00000002fWD-2fT2
+	for linux-rockchip@lists.infradead.org;
+	Wed, 01 Jul 2026 11:12:51 +0000
+Received: by mail-dy1-x1335.google.com with SMTP id 5a478bee46e88-30e7eb50b83so567655eec.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 01 Jul 2026 04:12:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782904366; x=1783509166; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=LkoKVbcxFCdFsy87mxquQYAqVgDQSp2s1Hkwlfg3a08=;
+        b=iX+PIuqDlXvl3UqIRY096CfIRb5umVPgLi3F6Pr1P2+Qq/ntBq/xtRSlWlkUSHncTu
+         YFhYrKShH0lD5T5b7xRlnmqYaoCsC3kDWvnzcKCtXVcmdiqEkJmHyDQLlpZGZmHPde8Y
+         O1HizsSZAGMqKaguxcIShkScRbHT7jdr9nkMexkK4zKxanuhPG7X49oOZ3iailnFWswI
+         l9PFnGV2itPwrkbVWzinSwIh4w5vV/ITzz2VSbuJvsezupkybuKQQs6VMTH5P2soI2Ts
+         D9/RRZ9DkyIlJ5xzxM1ETIz4OcinTuGKSs6vuXfNR8D5kCZ3NBtoOOaR0LXpWPL/wyq3
+         YetA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782904366; x=1783509166;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LkoKVbcxFCdFsy87mxquQYAqVgDQSp2s1Hkwlfg3a08=;
+        b=FVmvZpWzvzb3FkD1FxyHSweYintow9bclXTQQ9f8JzNPkmIE6z77BUTDsmglJ8bGce
+         umWJYsWvoz911eb79fuq/cw59mmTaSaevy1O3rCSutTmeMfa3ku7O2B3MxpyLmbT727u
+         6s/MsCsKOmPWvbeuvT7iyWR+5qjYthEqqOrbM8dXiRMU11HnG7G9tJkGM4dh1a1Ax/vd
+         kTfFrtxRPJ9msVN/lqDzSQtKECEGMDJyqrkOafW3o9zYzN+isnvyTBly2pduxNOQurNs
+         0+C2HqQj98xOCz4az7JeeNe5s9JuxrHtOiBtfhz9YyPtx6bJvOViswMBqmwcm444PAlP
+         +n6Q==
+X-Forwarded-Encrypted: i=1; AHgh+RpzweIXvpCzXPDtnarBwc+vgZDvLr5WtejAQXM5QTqb51vSGg/Xswmy/OoPWGqk6HYjG80YYJWPxKvI8Cmsnw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwsMGMTOl0F+QNbLczBolPNk+2W7+XyzGWG5623Sg6M9ieNKxf3
+	08gfWus/oOejMVZdwNlE+YIoE9m9iNyxC4cT6ETTmzMg5MheGeW5dQ/1DHI9Ik30
+X-Gm-Gg: AfdE7cls7XA4UtuF+OXKFqejQB04IXv6RVjc5IxDrhTxnNhwSzaXSaMCtzuRLHw2M8e
+	kX+0+B0Rdl8pH0N22Tdu+3U1DV5UoMs/UULqIthY6k4gst+D6TjblNgON0kjaVOTkuhRFlaOPhr
+	imgoXUbeNEovMooXTi0yDNWq6P8c7rHEbBVuwe4YNgL1DhTLWABYzyz6A52kEAM3ifLRl7i2i0U
+	2OU7btIV7lR+46xTw2VlvwWMq/WXWBQ6iqJkMJ3TlfpIKGRbLofvgtymX3K5+XKrMqRza3idT66
+	241x5MasTKZyhgWLta5oww+7WGr2xXIJ/LR8LPcaQq+47+jTigNJmGj0hmctb89KYH5D2pYhGz8
+	R0HEkIjKfPstL99hDrdWhWJ0rwonqJmuRr6PW/P9bgdk+5BRQoCJQkroFPn/53M+h4BxOryKZWZ
+	zua7p/VOgAyWsGzk0Jadg=
+X-Received: by 2002:a05:7300:3213:b0:30e:cb0a:fe7c with SMTP id 5a478bee46e88-30eff0a9e50mr1173027eec.17.1782904365910;
+        Wed, 01 Jul 2026 04:12:45 -0700 (PDT)
+Received: from ahmi-PC.lan ([2401:4900:88f4:d9c5:fca7:1ff8:6590:ebe])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30ee2fb6514sm16687832eec.7.2026.07.01.04.12.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Jul 2026 04:12:45 -0700 (PDT)
+From: Narasimharao Vadlamudi <ahmisaranrao@gmail.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Narasimharao Vadlamudi <ahmisaranrao@gmail.com>
+Subject: [PATCH] media: rkvdec: Propagate platform_get_irq() errors
+Date: Wed,  1 Jul 2026 16:42:03 +0530
+Message-ID: <20260701111203.62092-1-ahmisaranrao@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <2064877.jZfb76A358@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_040742_378484_F3BEB4B7 
-X-CRM114-Status: GOOD (  31.58  )
+X-CRM114-CacheID: sfid-20260701_121248_789893_4875DD25 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,149 +114,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1568262790839980149=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+platform_get_irq() returns a positive IRQ number on success and a
+negative error code on failure. It no longer returns zero. The driver
+currently returns -ENXIO for all failures, which loses useful errors
+such as -EPROBE_DEFER.
 
---===============1568262790839980149==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zddsmsw5y2ehct5y"
-Content-Disposition: inline
+Return the error from platform_get_irq() directly.
 
+Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
+Signed-off-by: Narasimharao Vadlamudi <ahmisaranrao@gmail.com>
+---
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
---zddsmsw5y2ehct5y
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 2/3] can: rockchip: add RK3588 CAN-FD support
-MIME-Version: 1.0
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+index 1d1e9bfef8e9..37683a6bb40f 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+@@ -1818,8 +1818,8 @@ static int rkvdec_probe(struct platform_device *pdev)
+ 	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+ 
+ 	irq = platform_get_irq(pdev, 0);
+-	if (irq <= 0)
+-		return -ENXIO;
++	if (irq < 0)
++		return irq;
+ 
+ 	ret = devm_request_threaded_irq(&pdev->dev, irq, NULL,
+ 					rkvdec_irq_handler, IRQF_ONESHOT,
+-- 
+2.43.0
 
-On 01.07.2026 11:55:39, Heiko St=C3=BCbner wrote:
-> Hi,
->
-> Am Mittwoch, 1. Juli 2026, 09:01:27 Mitteleurop=C3=A4ische Sommerzeit sch=
-rieb 1579567540@qq.com:
-> > From: luch00 <1579567540@qq.com>
->
-> please use a real name, not an alias.
->
->
-> > Add support for the RK3588v2 CAN-FD controller by introducing a
-> > dedicated model ID and OF match entry.
-> >
-> > The block is closely related to the existing RK3568 variants, but it
-> > cannot reuse their match data unchanged. In particular, RK3588v2
-> > encodes RX_FIFO_CNT in bits 7:5 instead of 6:4, so the RX path needs
-> > SoC-specific handling.
-> >
-> > Validation on RK3588v2 also shows that its observed errata profile does
-> > not fully match rk3568v2/rk3568v3, so keep a dedicated devtype for this
-> > variant instead of relying on an rk3568 fallback.
->
-> Funnily enough, we seem to have worked on the same topic
-> at the same time :-)
->
-> https://lore.kernel.org/lkml/20260630164336.3444550-1-heiko@sntech.de/
->
-> > Signed-off-by: luch00 <1579567540@qq.com>
-> > ---
-> >  drivers/net/can/rockchip/rockchip_canfd-core.c | 14 ++++++++++++++
-> >  drivers/net/can/rockchip/rockchip_canfd-rx.c   |  5 ++++-
-> >  drivers/net/can/rockchip/rockchip_canfd.h      | 12 +++++++++++-
-> >  3 files changed, 29 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/n=
-et/can/rockchip/rockchip_canfd-core.c
-> > index 29de0c01e..3c2480785 100644
-> > --- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-> > +++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-> > @@ -50,6 +50,15 @@ static const struct rkcanfd_devtype_data rkcanfd_dev=
-type_data_rk3568v3 =3D {
-> >  		RKCANFD_QUIRK_CANFD_BROKEN,
-> >  };
-> >
-> > +/* Tests on the rk3588v2 reproduce Erratum 5, but not
-> > + * Erratum 6 or the special CAN-FD frames that trigger Error Interrupts
-> > + * on rk3568v2/rk3568v3.
-> > + */
->
-> Here I could reproduce erratum 6 though:
-> https://lore.kernel.org/lkml/20260630164336.3444550-4-heiko@sntech.de/
->
->
-> [...]
->
-> > diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net=
-/can/rockchip/rockchip_canfd-rx.c
-> > index 475c0409e..fe64db373 100644
-> > --- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
-> > +++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-> > @@ -281,7 +281,10 @@ rkcanfd_rx_fifo_get_len(const struct rkcanfd_priv =
-*priv)
-> >  {
-> >  	const u32 reg =3D rkcanfd_read(priv, RKCANFD_REG_RX_FIFO_CTRL);
-> >
-> > -	return FIELD_GET(RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT, reg);
-> > +	if (priv->devtype_data.model =3D=3D RKCANFD_MODEL_RK3588V2)
-> > +		return FIELD_GET(RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT_RK3588, reg);
-> > +
-> > +	return FIELD_GET(RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT_RK3568, reg);
-> >  }
-> >
-> >  int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv)
-> > diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/ca=
-n/rockchip/rockchip_canfd.h
-> > index 93131c7d7..f6105b904 100644
-> > --- a/drivers/net/can/rockchip/rockchip_canfd.h
-> > +++ b/drivers/net/can/rockchip/rockchip_canfd.h
-> > @@ -214,7 +214,8 @@
-> >  #define RKCANFD_REG_TXEVENT_FIFO_CTRL_TXE_FIFO_ENABLE BIT(0)
-> >
-> >  #define RKCANFD_REG_RX_FIFO_CTRL 0x118
-> > -#define RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT GENMASK(6, 4)
-> > +#define RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT_RK3568 GENMASK(6, 4)
-> > +#define RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT_RK3588 GENMASK(7, 5)
->
-> Oh, didn't see this when doing my variant of the support, so cool that you
-> found this.
-
-The "Rockchip RK3588 TRM V1.0-Part1-20220309.pdf" datasheet says bits
-"7:5" are RX_FIFO_FRAME_CNT, while bit "6" is marked as reserved. =F0=9F=A4=
-=B7
-
-Marc
-
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde          |
-Embedded Linux                   | https://www.pengutronix.de |
-Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
-
---zddsmsw5y2ehct5y
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCakT09wAKCRDMOmT6rpmt
-0ptJAP0V1ggWlmdXB4K6fWYKfQM6O0/UiXoS8io2aIaPk936IQD/fJPILelVtYoR
-mRtNCMATzYSF6Az4KXu0H6TsCNQvsww=
-=9f9+
------END PGP SIGNATURE-----
-
---zddsmsw5y2ehct5y--
-
-
---===============1568262790839980149==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1568262790839980149==--
-
