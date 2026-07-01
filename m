@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBF2CC43327
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 19:28:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04ADBC43327
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 19:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jtJYIxkuQCAPFNCuVxoZ+dxbfE2s9w7dx6qQ8hb93mc=; b=JtjYz/A/mmHlGP
-	nYd60aNIMVxQFUfY6AojLsXOAmTe6du7f8rvOOEPRBP2wh6viRoPhr/PXyBiAIdA1RtPIeSujNFvc
-	baQvDlKt9l0LFqWIGw9MBjT7KW3TH4TiU82mjthJmlYTUEgRqZkXOnTdQxDS0kWTxTkMoIlriH43v
-	ijT+8NthuY2X+8aTzTKPkGeZxmJmxO68Hoff/pevtrkBoHjMN2I2NJcqabtu5gpd3OHprgvfm3Url
-	Zf4N8nJzXIi/K4U/oDo7TOq2s0oXDLY5FZv1wF19ISSxDo9kS7qRFAPJI0wn0G0n5CF7mvll8rvgc
-	YPvJQs6w3r6vvXe0ktnQ==;
+	List-Owner; bh=uuIz88kxyLCMOkKt0WNOm2VvyhtgOnLZIcHcKEbNjA8=; b=frCrj8lqzIwWU3
+	F6q8orUcGO7HyzXtiCy7fLOgUYFS47Nq0kJZo8elkYqIUheR1b2/mGn3SZiqyLMq16LXGbz6cFooG
+	GBPfssYiAh9cxOOGnnITeFniJN3Dy64O3vysthrif7sIysq4Id4u9USOA81XXIghzbqJfcCDY2rnw
+	8JOJf/XRJf75N8GVy3PrREhMvTA+apWVtdsrkSgfIfFi5KXS/zvkfZB/9UGPNpZLlmqmQf5Dw+uZA
+	tStRm2uUWN8VVXvNIwDWgCeVRHuw9WU+e6cOKOia91o3pp0dvTyntT+haCD+TOi1sASWS6AmPlITn
+	nQn7VAvzNh+Op683+gnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf0be-00000002tuQ-2LkQ;
-	Wed, 01 Jul 2026 19:28:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wf0e6-00000002u2M-47Pm;
+	Wed, 01 Jul 2026 19:30:54 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf0bd-00000002tuK-3CSY
+	id 1wf0e5-00000002u21-1loP
 	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Jul 2026 19:28:21 +0000
+	Wed, 01 Jul 2026 19:30:53 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D602D6001D;
-	Wed,  1 Jul 2026 19:28:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DD451F000E9;
-	Wed,  1 Jul 2026 19:28:18 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 66EF541285;
+	Wed,  1 Jul 2026 19:30:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF6301F000E9;
+	Wed,  1 Jul 2026 19:30:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782934100;
-	bh=iiQkD6eWK/0FeR93e8iCJjwPRC2KuodqjyurzLXQu1o=;
+	s=k20260515; t=1782934252;
+	bh=49Ev+AvYEXQm7m2aWe9UIopqJbwwyFhR6TxukdScasE=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=IFUGKGUfO42vn8pd0ZwhKuqfYjuTFFk6cf1ZFpR124BopVtq2noxWtTUy2VuGuMaD
-	 KywAhUPbKqz4cxG3p96HmzFCwDR0ihoMJZsUfV+az4HwDWZk45Q4ceTV/zbEoZq9pK
-	 9WhEmBihV+eL8tJEnTakXhk8zZqEdqsa54wFOA9oyfFkFWcm/iOMRzaDADOhuYomFB
-	 m0ILiklo2zPSjaQR5vb4QHBpuBH+Z3iDEr1CPrNOPjZn0l8MocG/wIfrZ8CfnnKj5+
-	 y68E7OBLU/qBYUeiW7B6TwswdPPZxtCNUhuHpFW/gCVpth7lsFGbnRDfTuanoWNbG/
-	 8VzzIaiTCHC8g==
-Date: Wed, 1 Jul 2026 20:28:15 +0100
+	b=lDXstdqnZDyC1hhzkNH+hgMfRDedy5LnO7I+ZVptfrStXwUkWI3I58BbyIS9BR3/R
+	 k0MBkFNhgNgOVrdPSGcz6DL92kYJh5Goj37vpqe4hpq0YDo9sPETsemhd4qPxa6KFe
+	 5ddwQUVVdRM+z/wKF9jIqw0ypPDwwdfQh9D79gknETTjMZZAKKhIrtqiVB3taVqsqr
+	 f6NWTV5qO6hRkffVyqqwc3kB2+neq6FgL4TC8VzzgN3B55cN3XVcBLqLPtFexCCLPo
+	 pkJA0bD7cP/LFeoriuQLg+hu01v6Y5ZxW2ZBolHXmy6omjLFKuqqc2DYc1mz4nMEz1
+	 PC9H9kheb1t0Q==
+Date: Wed, 1 Jul 2026 20:30:44 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
@@ -50,12 +50,12 @@ Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
  andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V15 7/9] iio: imu: inv_icm42607: Add Gyroscope to
+Subject: Re: [PATCH V15 8/9] iio: imu: inv_icm42607: Add Temp Support in
  icm42607
-Message-ID: <20260701202815.7d930b56@jic23-huawei>
-In-Reply-To: <20260626161230.93069-8-macroalpha82@gmail.com>
+Message-ID: <20260701203044.2b60632c@jic23-huawei>
+In-Reply-To: <20260626161230.93069-9-macroalpha82@gmail.com>
 References: <20260626161230.93069-1-macroalpha82@gmail.com>
-	<20260626161230.93069-8-macroalpha82@gmail.com>
+	<20260626161230.93069-9-macroalpha82@gmail.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -74,92 +74,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 26 Jun 2026 11:12:28 -0500
+On Fri, 26 Jun 2026 11:12:29 -0500
 Chris Morgan <macroalpha82@gmail.com> wrote:
 
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add gyroscope functions to the icm42607 driver.
+> Add functions for reading temperature sensor data.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Similar comments to those in the accel driver.
-
-Thanks,
-
-Jonathan
+The earlier comments on read_avail are really about a change need in this patch.
 
 > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
-> new file mode 100644
-> index 000000000000..c7215b3826ad
-> --- /dev/null
+> index c7215b3826ad..4e5db5e19e9f 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
 > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
 
-> +static int inv_icm42607_gyro_read_odr(struct inv_icm42607_state *st,
-> +				      int *val, int *val2)
-> +{
-> +	unsigned int odr;
-> +	unsigned int i;
-> +
-> +	guard(mutex)(&st->lock);
-> +
-> +	odr = st->conf.gyro.odr;
-> +
-> +	for (i = 5; i < ARRAY_SIZE(inv_icm42607_gyro_odr); ++i) {
-> +		if (i == odr)
+>  
+>  static const int inv_icm42607_gyro_scale_nano[][2] = {
+> @@ -182,6 +185,11 @@ static int inv_icm42607_gyro_read_raw(struct iio_dev *indio_dev,
+>  	switch (chan->type) {
+>  	case IIO_ANGL_VEL:
+>  		break;
+> +	case IIO_TEMP:
 
-As below.
+This works for read_raw, but the read_avail reported on earlier patches is
+still an issue for temperature channels.
 
-> +
-> +static int inv_icm42607_gyro_write_odr(struct iio_dev *indio_dev,
-> +				       int val, int val2)
-> +{
-> +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-> +	struct device *dev = regmap_get_device(st->map);
-> +	unsigned int idx;
-> +	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
-> +	int ret;
-> +
-> +	for (idx = 5; idx < ARRAY_SIZE(inv_icm42607_gyro_odr); ++idx) {
-
-Similar comments to accel. Use the appropriate define for that 5 and
-post increment.
-
-> +		if (val == inv_icm42607_gyro_odr[idx][0] &&
-> +		    val2 == inv_icm42607_gyro_odr[idx][1])
-> +			break;
-> +	}
-
-> +static int inv_icm42607_gyro_read_avail(struct iio_dev *indio_dev,
-> +					struct iio_chan_spec const *chan,
-> +					const int **vals,
-> +					int *type, int *length, long mask)
-> +{
-> +	if (chan->type != IIO_ANGL_VEL)
-
-This was the one sashiko noted was less than ideal as it rules out
-reading this for temperature channels - in practice that doesn't happen
-but that is due to an internal detail of how we create shared_by_all
-attributes. The code should support reading for temperature channels as well.
-
-> +		return -EINVAL;
-> +
-> +	switch (mask) {
-> +	case IIO_CHAN_INFO_SCALE:
-> +		*vals = (const int *)inv_icm42607_gyro_scale_nano;
-> +		*type = IIO_VAL_INT_PLUS_NANO;
-> +		*length = ARRAY_SIZE(inv_icm42607_gyro_scale_nano) * 2;
-> +		return IIO_AVAIL_LIST;
-> +	case IIO_CHAN_INFO_SAMP_FREQ:
-> +		*vals = (const int *)inv_icm42607_gyro_odr[5];
-> +		*type = IIO_VAL_INT_PLUS_MICRO;
-> +		*length = (ARRAY_SIZE(inv_icm42607_gyro_odr) - 5) * 2;
-> +		return IIO_AVAIL_LIST;
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +}
-
-
+> +		if (mask != IIO_CHAN_INFO_SAMP_FREQ)
+> +			return inv_icm42607_temp_read_raw(indio_dev, chan,
+> +							  val, val2, mask);
+> +		break;
+>  	default:
+>  		return -EINVAL;
+>  	}
 
 _______________________________________________
 Linux-rockchip mailing list
