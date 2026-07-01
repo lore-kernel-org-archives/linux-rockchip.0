@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94CA2C43602
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 07:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3724EC44501
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 07:02:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YucCuk1rIxUWAMJkAEmZ4aO2IrJTKYgibVLBV3xPPx8=; b=Pd/+BMba0sY9ZJ
-	XcXfrI5p/QXq8ODmk4ijNPDfHnNmSZHQW54azZJ22+3BEgRDKLJ2gUziTvpb1jQ0EELXUPy5HpA10
-	hQ6w6j2aTVXwmIUa7gJW6tZHKtZbpwWfKCXCnp3s69fT2ksJZGJkuTQyN3P3tGEP2ldcP18rYLzFM
-	hiwTAZjwVobSFskXZ7396ku1OkTNxVccaeGHMYxXuYWQTkI/9KEpBzrzqLBhGN/O2jJKtRjvPWQ+L
-	lSVUfXHfICb+7VoSmtZLTXabn/Yhj4r9SRIq99t1TvaARxBUZtkkrok/7SvewlExg2+wUzK9oa6tA
-	MrF8nVOAonV3NEUTypFw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Subject:Cc:To:From:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ur0FfWyNDfbrt5ddhXqXpQsSgFem6Rks5tOUCkxeS50=; b=IBpVi5txxKA853
+	c9E3W5pZLydpb8Ec3/Pp1QW3JzJQUKJW1ayX/P/D79S3V5DH3Mw+vppi0nPVjmzJd9OWxqOKTWY9j
+	DFKWqClPAL4MBUDihlQOVNcOx/bn118zZLIEGpbLoyE73dk1Kz5F/EI8hAZkPRp5rjrb/qfvum2US
+	2wGLP9GK4cFkjbkA4249LCGSkXR1v3WXoNNEvGqakJBRMLRBXMAYDgjYKhWUwIOqbTKKroJvj8Exg
+	FPCCzvX+0nwiZRNXgFuPayVjHfowUszSg70Lpy9NsizBiLXBQgGbZBG7TTRUu4/9VNj0PJd6HHHJ5
+	rVC8p+ESVF6KoxLG97/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weoxT-00000000r5z-0uPr;
-	Wed, 01 Jul 2026 07:02:07 +0000
-Received: from xmbghk7.mail.qq.com ([43.163.128.47])
+	id 1weoxW-00000000r8s-1D9k;
+	Wed, 01 Jul 2026 07:02:10 +0000
+Received: from xmbghk7.mail.qq.com ([43.163.128.52])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weoxJ-00000000r2N-39y1
+	id 1weoxR-00000000r3g-0r5n
 	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Jul 2026 07:02:01 +0000
+	Wed, 01 Jul 2026 07:02:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1782889313; bh=QR9RBoB1Xmuk4gv9Ndt2VcbKJ9ZdwkH84K6Kq+4ROVI=;
-	h=From:To:Cc:Subject:Date;
-	b=FxeBYoB6puju4Hin+GuVVFvY0evwWhdzBR3P/8SBqH/gxVmwmgcia7CXogCppqSi9
-	 4KjUue0uxR+TXGl7ZFGShRAX2lKJQG4RRSnKYrHkiISO7b3tY4+3a0DhJEm5DXCaio
-	 aW4PMbsRBhBUqfq9/ojnUAuJxybx60Mp/esYVKxQ=
+	t=1782889323; bh=KH9lG3lADyuuhfASdZJ0Hlu8ZLTSCi9nev/mOF2oDdA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=XB+o4YcxVNfBF4TqkeA0l5PfJoGaRrLQxO5WWPvJNoSo3R2CZwmnU2dSuPXNgx5xL
+	 N+s4MXNF9ElMNim3p95lPflmNkIvFjEA+EsrscDZcjiwKPP2W8jRn0Xbib7LgiCiXm
+	 rys9dkY6egPB1eFC2ffIZMirZOqc6bstB2dKiQj4=
 Received: from localhost.localdomain ([2409:8d20:2a:1b57:9e54:40ff:fe02:3f0f])
 	by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
 	id 71832C3; Wed, 01 Jul 2026 15:01:49 +0800
-X-QQ-mid: xmsmtpt1782889309t62leqei9
-Message-ID: <tencent_1A4614039A100DFD8A9AE2692865FE126009@qq.com>
-X-QQ-XMAILINFO: MQAOa38Yz/8/h5mNRBixUf9sGBvjbDPTpGQYlPe1/W7Je2YVdByg9DNAmYCwnu
-	 z1/Zxh4RpOppC3m6mSnmBWZc5sgV5oqdxMUxPWGscfEQ9nWr3S4nvGUI/24nXv0hzAJ/531B9K36
-	 roUixxW5N3vrXCTqW9TW9rJcH2kHkw8gGJBS03gtvLir0ls9hs0J/mL4GJaaAw92TqLYW1OYXX3Y
-	 IG3DMEhfjE/vikZrt6sxYSDKQVZ1I2aVKsgKZgePGAdhdUWP9/7A4UgiiEA4k8dJWKPmuRx3Ce+J
-	 V+1vH4tlPCcVMuJ1uuXOC75eMduywjiZ9nYvu6hXorjieuM+5p7jrhkEP7bIW62yx4jX30ROQkbG
-	 RlNqz9OFSbpaiVenuZEVaumQwB+L0SjhIiu7Mi+4Q8IRh4LHg0w/sSv+rADFVQi5Xp3ZG6My0gJE
-	 1TSd14IW/YQgnDqtwweogZWZNssn1LSzHofdhC6ZqRz3Y/9foxitDdJNxayK5yRe4pRxPfhA/lAE
-	 +rg70fBZcBIIlKX76DfekzDNZVN+wyQV56t3JrfRuoQQGjynJqmCnhlguDScea/eqmEzW7ki0n40
-	 OBdGTsZCAmVHIahs9pP5Yegx9xs54xY/oPF4YTzhTdYgc8s8uoYfTAWHtUpXqZKzvUMGFfwjCjLv
-	 NCI3RrU4obRgkZGqp57FVB6Vbp6UbmQpR7KQCVntf5PQgvEhA0DW5RTyfcMdv5BPAhhT59fR81oJ
-	 snOCZPlvw1dF38VRZ1/YyJBgBXMpC+pta5I3yBtYpuYeJjH+WWBv1juRNAGsb7AXVV7W1BnJ20zh
-	 Ws2GbDnx+dUzu+8My8RkkH9cZEdM/jXsmhUofoqO16AUf0xXLCZCr2isoJTfLALYeR5aWYyGqjU0
-	 xRC7J9FRtapIgEAwfY+XzyPYVZPzc5NSCYEBGO2TM0Z3siwt+s3hrVFwAydsQsd598WeclGD0E2h
-	 VVj5D3OEa4AKo+PUXD27ZM6daxN0kzD+iqb6+pO4BRCy9TQ2RF14VKZUh1bxSlP9lzdxG/W2xUkm
-	 AuPA31ZcCycKTHttoYgvyoB+Abtsj66Z+zOpDm7KO/5Oiiy/7cxIlB9pClCEG+QDML8aUpeEaPht
-	 HGMt4b
-X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
+X-QQ-mid: xmsmtpt1782889319tzlmfzkal
+Message-ID: <tencent_5FD72FB1A997864EA622E17964240006F105@qq.com>
+X-QQ-XMAILINFO: OR5rDBBXAGpMcj2gkvTYRbvGB+SK657gAAT44mPXmteN7yu8QMvy8mYLIjf0+g
+	 1oxanFpbsFRcOObRaHf6AfB9qy7YXCHe/m6fhcgEKmiL/PiooNueSLRoO0iPRsV05jU2RuqWmj7G
+	 r4zm/GMR/bIQN/pF7pfEEPIy9gAjcWrakCKelahdOWvKHF6m0TK71kASS0/OprsGftJdMozDZ3Aj
+	 mXqIC50RFz9u363aHIfJMWx+8BcMV2pdngCWAg90mk/XeaJ8aRTQ1ZyPmUphEgXaKP5/tutLuHK/
+	 4ys1cBTeCsBfhcq4++nByDDJs5BN74aoqX+unDYp2cftrjr0XPZOc+ssfwHrz4BgXOI1EfUZg3Dn
+	 eXR0qig7zDAC5nFsHWncI+fpFC0yptCZT0qbl5/Xn6utzi9eZEHbvuM3QTA6en4LdIUzyBwJLgX+
+	 qogULTCYYipQU9lpnfYkZZ8+9fz6H0zaPwtE7XBxxcAgzEq6+Ghe5qebcD2Lmy7JKYmkaSdZRx1N
+	 f+7vJPC4a+Fbn6wEJHJa4/43yNgIKSlOhaXoFD0ifdB+jwGGCjgyMrq50rUweekX+iECn3wlQBCR
+	 FrZZPxs/bQ/oaokHRk53HgcjvNfOfowK/ujYKZaBSFHKBLWvTN7WFbDV8evHOY9XaRPM76+NsXoo
+	 34bxwa2f/gWObgTIHRl50jqNcrBni6LfnYgpjpwA/t3WiMtUm57msBC1dcmmMQKFPWwFg4VaQDU5
+	 q6elZl4zx7kA9drGa0DBpafB4cbOazCcDIYyGRWuOb0v00ypSL7p/Yl5N2qdYrdkW7HGAtPFcBoW
+	 SfaJxf9RQJiBQaUPKFxCyJFG591WDa3Ozg5Dpx8yNSHS4Wjn8HeTkSbtxZ48M+yyxg51+ghkDoPA
+	 xfb5DklIiBWWTkdf6ZCyfC/rfyk1PmEe5q4D2656UzHWC8pzO9m6JxTYHZybUYaIhqOyjTLI6ZVK
+	 X6v7GiX1Y6Uf26/pYOVUEkgzHXuXyZFnKIIX3Kr7GzXUpF8gSJgclrewpdipytAe5sw4Om5p3NgT
+	 Fr760NysLGGFKOcm/p/2TqwDYkxbz2qAumMLu1V1UcHnNwszGw7UJYRr1YiAVQhU3KmAiWIj6K+h
+	 4zha0lNXeex/9D3sew1RNs+7xxsH4J+xUcefgc
+X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
 From: 1579567540@qq.com
 To: Marc Kleine-Budde <mkl@pengutronix.de>,
 	linux-can@vger.kernel.org
@@ -69,14 +69,17 @@ Cc: Vincent Mailhol <mailhol@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	luch00 <1579567540@qq.com>
-Subject: [PATCH 0/3] can: rockchip: add RK3588 CAN-FD support
-Date: Wed,  1 Jul 2026 15:01:25 +0800
-X-OQ-MSGID: <20260701070128.2096267-1-1579567540@qq.com>
+Subject: [PATCH 3/3] arm64: dts: rockchip: add CAN-FD nodes for RK3588
+Date: Wed,  1 Jul 2026 15:01:28 +0800
+X-OQ-MSGID: <20260701070128.2096267-4-1579567540@qq.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260701070128.2096267-1-1579567540@qq.com>
+References: <20260701070128.2096267-1-1579567540@qq.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_000158_101235_303BEB6D 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20260701_000206_666783_54775A23 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,41 +98,68 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: luch00 <1579567540@qq.com>
 
-Add initial support for the RK3588v2 CAN-FD controller.
+Describe the three CAN-FD controllers integrated in RK3588 in the base
+SoC .dtsi.
 
-RK3588 integrates three CAN-FD controllers that are closely related to
-the existing Rockchip CAN-FD IP already supported in the kernel, but
-they cannot reuse the rk3568v2 description unchanged.
+Add CAN0, CAN1 and CAN2 nodes with their register ranges, interrupts,
+clocks and resets, and keep them disabled by default so board DTS files
+can enable them as needed.
 
-This series therefore:
-
-- extends the existing Rockchip CAN-FD binding with the
-  rockchip,rk3588v2-canfd compatible
-- adds a dedicated RK3588v2 match entry and devtype in the driver
-- describes the three CAN-FD controller nodes in rk3588-base.dtsi
-
-The dedicated driver data is needed because RK3588v2 encodes
-RX_FIFO_CNT in bits 7:5 instead of 6:4. Runtime validation on RK3588v2
-also showed that its observed errata profile differs from rk3568v2 and
-rk3568v3, so using a fallback compatible would be misleading.
-
-Tested on an embedfire,rk3588-lubancat-5io board with can0/can1
-directly connected. Runtime testing used a 198 MHz CAN clock, nominal
-bitrate 500 kbit/s, data bitrate 1 Mbit/s, and included stress and
-error-path coverage for the existing Rockchip errata handling.
-
-luch00 (3):
-  dt-bindings: can: rockchip: add rk3588v2 CAN-FD compatible
-  can: rockchip: add RK3588 CAN-FD support
-  arm64: dts: rockchip: add CAN-FD nodes for RK3588
-
- .../net/can/rockchip,rk3568v2-canfd.yaml      |  1 +
+Signed-off-by: luch00 <1579567540@qq.com>
+---
  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 39 +++++++++++++++++++
- .../net/can/rockchip/rockchip_canfd-core.c    | 14 +++++++
- drivers/net/can/rockchip/rockchip_canfd-rx.c  |  5 ++-
- drivers/net/can/rockchip/rockchip_canfd.h     | 12 +++++-
- 5 files changed, 69 insertions(+), 2 deletions(-)
+ 1 file changed, 39 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index fc1fdbfd3..f38cd8bd4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -2648,6 +2648,45 @@ dmac1: dma-controller@fea30000 {
+ 		#dma-cells = <1>;
+ 	};
+ 
++	can0: can@fea50000 {
++		compatible = "rockchip,rk3588v2-canfd";
++		reg = <0x0 0xfea50000 0x0 0x1000>;
++		interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
++		clock-names = "baud", "pclk";
++		resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
++		reset-names = "core", "apb";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can0m0_pins>;
++		status = "disabled";
++	};
++
++	can1: can@fea60000 {
++		compatible = "rockchip,rk3588v2-canfd";
++		reg = <0x0 0xfea60000 0x0 0x1000>;
++		interrupts = <GIC_SPI 342 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru CLK_CAN1>, <&cru PCLK_CAN1>;
++		clock-names = "baud", "pclk";
++		resets = <&cru SRST_CAN1>, <&cru SRST_P_CAN1>;
++		reset-names = "core", "apb";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can1m0_pins>;
++		status = "disabled";
++	};
++
++	can2: can@fea70000 {
++		compatible = "rockchip,rk3588v2-canfd";
++		reg = <0x0 0xfea70000 0x0 0x1000>;
++		interrupts = <GIC_SPI 343 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru CLK_CAN2>, <&cru PCLK_CAN2>;
++		clock-names = "baud", "pclk";
++		resets = <&cru SRST_CAN2>, <&cru SRST_P_CAN2>;
++		reset-names = "core", "apb";
++		pinctrl-names = "default";
++		pinctrl-0 = <&can2m0_pins>;
++		status = "disabled";
++	};
++
+ 	i2c1: i2c@fea90000 {
+ 		compatible = "rockchip,rk3588-i2c", "rockchip,rk3399-i2c";
+ 		reg = <0x0 0xfea90000 0x0 0x1000>;
 -- 
 2.34.1
 
