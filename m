@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C472C43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 23:36:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DEA3C43602
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 23:36:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GaO7+5ZAFn5i54pAAPtqLHv6InkGHdg2ae6KAguqF/w=; b=XMoGVDoPkLaU9f
-	HSHtlvmUB80jM6TBMbJNs1/9Das+kpHF4fdWL2TqbAiwAStQtL7iINbvYsj2lr1b5hixQfop6yFiy
-	/6g/ZVyHdgZJc2dzw8TV89giumFqohhZ4nsi8bhrMnE2JA3CTbJNANxdkr0TSbPdBggtwuVZgFWIr
-	njTf57X30xI0Q8hbP+i1Vyf3dv7chZUO6K2rkQY0NPqvcBm+blawZJfxtNVWpIbWav2DshzKyVH/o
-	H0aFWeJqzIkF5KtBqyLqCX8h8v3/+NGMLsHBC9tnISa8OfIqJT/YjnFOMAJpP5LOU1SQ0yTfjBq2F
-	N0Zd9MAL+RgvDW/ogHUg==;
+	List-Owner; bh=QMRDdV+39PWyspP0jNWpk0wKjRwHXbMeCtY8dywurGw=; b=EnH/tIqR1yX8PB
+	7hnPQZvVz/VxAACQfKEfUbI+3HrhCBgCswpI+qTNjEy4ZdO0jUkxsx1qxFXJC439IoqzYCfhwXpT1
+	r3ctV6afmBkraJX2NHfH/hyp7wdNj6SWa+Wd9g/o9fvhJW5t8ugJ62je2kvpfyof0iA4H7+G0XK12
+	fvt7FKXZOEI+YZj3pd1vDy4F1eyOg6gkJRw+cliK4yLKLvDZY/YQHOn7b8ONDey0xPxCGFTX1phhM
+	NiCVm+2XDyFhw7D+SlYeBJFUP9Y9pwYYdtD/28DAu62p+NmrlucrOxveXoWURXOoQhJbLtm5+9gcE
+	9manDm2uRXDgB76p7agQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf4U0-00000003C2q-3n7k;
-	Wed, 01 Jul 2026 23:36:44 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wf4U1-00000003C5n-2dSd;
+	Wed, 01 Jul 2026 23:36:45 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf4TL-000000039xV-1oaT;
-	Wed, 01 Jul 2026 23:36:07 +0000
+	id 1wf4TM-000000039zq-1sIR;
+	Wed, 01 Jul 2026 23:36:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1782948950;
-	bh=W5jYrAum20qKXLQnGb/B4JCipsc2gTq8Z+PJJaGnvv4=;
+	bh=y1K38988NOGNjrWDX39V0tM+tzGRa5eL8tR+BuYD8RM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=GMZZyQIlU575XEhDRt0N5tgtDNesmMJLW18d113Gyv7M8gx16ygdAJHVvrntYG8+J
-	 ApgfefBXHzOR9UiCuYwIWVq9G2WTAGWb3gBn6Ii8ALT54f0TSnpBUnUDhyudQ3wmqN
-	 MiHnD1o6QeUyTpOI2OKUbBO+oK8GgUjwLMi4li9n6iF2q1Hd+sSua4qJ2SrOxwNi0i
-	 YhZSty9Msi1GN8mDnfclYqdVkaZXA+24IfZnQ2k8E1Uw5fLL2QXQZdn9/2Q/UuwNrn
-	 +9Ae2EaTeOe3TmYx4XrOP9dHSCctkyqN7On2+PbNiin3fK+c2PW03uKXNp92eE1fqt
-	 Hk9wwMLZYIUhA==
+	b=fte/d0iZq+OLvpUfy6Hrv7d21+g9YMofSExIkS8k+FiewC3JpNXMXVelGiMvVrRtw
+	 PIf+kdEYi+I9nlGJSQxczBYYCXQPo98yUnzY/J6o9KSLoTUa/hc1jG3wSRtMbA5mC0
+	 hyb4l/2ErpMpMAujFMdGMx5SkrZmNj9IowbEqmPYhKVzsa2oBFE9K0vAuNf1NNZc8E
+	 ZMbb8h6sHfUzdcvGuCdL7EATaBdiGJUa2x5U8tZq76RXGf/8v2zhoV/k+pWT3zRwTY
+	 1NCVHG6V513SQai9iCxZBsnqGOPEoPT5Xlae+aaKDG4e8olS69lo7LuLHTZsCudLLa
+	 tD4FLZ2KCdhSQ==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0BFA517E35F5;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5040617E3620;
 	Thu,  2 Jul 2026 01:35:50 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id D629748006F; Thu, 02 Jul 2026 01:35:48 +0200 (CEST)
+	id E364D48007C; Thu, 02 Jul 2026 01:35:48 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 02 Jul 2026 01:36:06 +0200
-Subject: [PATCH v9 28/38] phy: rockchip: usbdp: Disable USB3 on probe
+Date: Thu, 02 Jul 2026 01:36:15 +0200
+Subject: [PATCH v9 37/38] phy: rockchip: usbdp: Re-init PHY on mux change
 MIME-Version: 1.0
-Message-Id: <20260702-rockchip-usbdp-cleanup-v9-28-e31efbb62d2e@collabora.com>
+Message-Id: <20260702-rockchip-usbdp-cleanup-v9-37-e31efbb62d2e@collabora.com>
 References: <20260702-rockchip-usbdp-cleanup-v9-0-e31efbb62d2e@collabora.com>
 In-Reply-To: <20260702-rockchip-usbdp-cleanup-v9-0-e31efbb62d2e@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -67,26 +67,26 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1683;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=976;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=W5jYrAum20qKXLQnGb/B4JCipsc2gTq8Z+PJJaGnvv4=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpFpFTpnQm9rJMPM60lI+AIyU6bC0eHnVDgr
- oWG9+YcUg0bE4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqRaRUAAoJENju1/PI
- O/qafNYP/28D/+snNi14jEl73SZCLvc5/6TkK8mp13P7JSsbKlnJtSEaoZOCLZuGgNUOvEFM3Cm
- skKfXzgDSmR6uAvvpG2Q3lEjT5wxZGlRnlJj21mmCM6XPpsRorzXYUJ1xIeoewQ/I+RjgWUWqEn
- Ldg+DZz1LmKTpLruKBl9F62YEeFDBT38UmXRMHjhdUSdTs064paamcDNSMpjhFE+D4dOJK2m8YG
- APpSaE74A+kvhzQEd97FOZSP7x6V6qeIk5fLXC20x3DVV44OtBLktAAj+xa+FwoKI1hmcAgyfTL
- YGyzla1ft/NL8RS7vc2OfoyzH1tt153/n08R2eT1l7XPTcxYq6hVgYcax44CJ4toLe3CZ+ylhpW
- p7yFp+02KqKJEujTF0n5mzu3X1+BvTpmVx/5lkt1tRUgBp0c3AcofuU/2bEW08H1Hok7jggq1G+
- 6/BTQMLXhAUALsgDWiFfxbYkBqovBdqF/+7lyC/hMuBet/pbdGhdTqiUObbgJIm1qKVFP62mI4V
- +npWVyqWih8p936wSn/TRhsFbpYUc+dibhcZwriMgguokNqa5wbVL0wcA9Tf0lcnsjXxO/tzko+
- r0LssFdBjnujAOX/pcLvCbYmHFu/olEZy7ZmiETu3soTHWPpcDOL6xgCC0R5dSSrDFXQhn1CMat
- 5SFehG+4mQH3K+2xyk8YuJA==
+ bh=y1K38988NOGNjrWDX39V0tM+tzGRa5eL8tR+BuYD8RM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpFpFTn4vcJyseHiWtsGKSypASqmgHiFHurS
+ 73UXcoGV5JhgYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqRaRUAAoJENju1/PI
+ O/qa8UYP/jqwlza70YtDGsUk7C9XkDcHowQvZBZXAvJvgG5DWym8OS3+V4p7Uv2yvb6+5w32pwP
+ M5TGFJr55M6WCUc0G3dG/v1MZpJHKbgDcfR0bVX+TbVGl34PZ0Jh6t+oXLTR/lviDjy7pAdmRBc
+ c6thHRZk0mMEOa1ZSdD+AypEDwxKTqEXcGNjYh9IqSl8LWJ8dad4PnEwEB94qJvdZnsUc6h4/6q
+ +QbFn3Wox5nbkHcJVtuYrpLj/7961Sg1Yez8ozPTWS4mT/PI74KDXEQV9bkZ6UV5TZELlMLTTPm
+ cFMISyIAMNMORB8kfnWGmgFQXQDTxOzWaGERxc97QBanjPFr6PYKNAsnDBFs7yn1uU6AdFUQgHe
+ zz2DueX0wIYPR/8gfLhA1CwY5rMOM6PYRjWFzJi4eV2UgKis5oZFGH3qF7Q4lau8s/WDLpVvqvd
+ jauLtwktaLxbn8bp+XyV+SljEUDHuDtoOeigFy7DipO+sRqmpw++qcC4wukHSXZfR4F9195lh1c
+ 3pfdLxAR95nRtPhmh1LzNiR+3+reTJaBHfHKR49u4SANeDf5iN4Q0Kcbc0clRcD43Cfwuevc74f
+ Fj6sjHYlh1DVsJO9TafaMOzis8BEBnWgCwOs5Svvv/gVCqGOQhYJ9My4hY7VmXXyFbWVvp8I2Px
+ N15mIlUwamRmjNMxPbjUpCQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_163603_807764_A20FF75D 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20260701_163604_818638_F4F9C1FA 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,48 +103,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Disable USB3 support during probe, so that the driver always starts with
-a clean state. With this it no longer makes sense to use -EPROBE_DEFER
-for cmn ana lcpll lock timeouts afterwards. This error code should only
-appear during probe and the PHY initialization function is also being
-called at normal runtime.
+Ensure that the right part of the PHY are powered up when the
+mode changes. This ensures the PHY is re-initialized in the
+following two scenarios, which are currently broken:
 
+ - cable orientation changes without DP being involved
+ - switching from DP-only into a mode with USB support
+
+Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 146edd35cf83..f788405dfa1f 100644
+index 735ce1bfac7a..d056da53cb1c 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -756,17 +756,7 @@ static int rk_udphy_status_check(struct rk_udphy *udphy)
- 					       (val & CMN_ANA_LCPLL_LOCK_DONE), 200, 100000);
- 		if (ret) {
- 			dev_err(udphy->dev, "cmn ana lcpll lock timeout\n");
--			/*
--			 * If earlier software (U-Boot) enabled USB once already
--			 * the PLL may have problems locking on the first try.
--			 * It will be successful on the second try, so for the
--			 * time being a -EPROBE_DEFER will solve the issue.
--			 *
--			 * This requires further investigation to understand the
--			 * root cause, especially considering that the driver is
--			 * asserting all reset lines at probe time.
--			 */
--			return -EPROBE_DEFER;
-+			return ret;
- 		}
+@@ -1372,6 +1372,8 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
  
- 		if (!udphy->flip) {
-@@ -965,6 +955,8 @@ static int rk_udphy_get_initial_status(struct rk_udphy *udphy)
- 		msleep(100);
- 	}
+ 	rk_udphy_set_typec_state(udphy, state->mode);
  
-+	rk_udphy_u3_port_disable(udphy, true);
++	rk_udphy_update_power_state(udphy);
 +
- exit:
- 	rk_udphy_disable(udphy);
+ 	return 0;
+ }
  
 
 -- 
