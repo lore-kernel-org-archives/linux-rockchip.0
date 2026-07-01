@@ -4,159 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2F4C43602
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 10:59:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08E50C43458
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 11:00:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aKIskYsxNTgWXBJEIyGpmPbAXVqOZIlmVydaQXpU6ww=; b=pINz6X1DCdxZ90
-	QdoTRu98yjLcYC4EZTsFuGaS/vBeIDPeBrjDnV3Mk4RShr8Xj2F8S3RG+1NJz31Fsb2pMOq7dz4Ti
-	3jrEYUNWNvf2vvornXWyQ8bA4OOzgB+f0hNGKf5i75YR5A2uO7iePUh56MbLNLBC/h3Auh3rFhXqF
-	O0kRet8uiOFLUbZwIsVr0jDEvVz4Q0jV34m9dvxRb1yEdDRiNy2E4e62relKw64uWjqDRWQE9bkSv
-	Y0b+z97nju+htWOdC77H4TrfqJ9RYlIE9EfeWf0IxmZhCxHHgfhzGGQGTh4VIkdANzNxVVaZBcKjm
-	M0EqhR2oaSyd9hz9YVXg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/doxyF+R0Gg5FLlk2XhmtCv9NeuWNtrX4wkqyVeoh+Y=; b=mD6v3S+sHzmZsM
+	dusQYoNQT1jDkm/OPBljWOGSFWzEUvdVFQEtBVnYQmTkHPp11vamke0QHxFRH+XszG94IJMS5mRAI
+	vZdfc7MfoTLudfsW6CcMZ0hvkrpgeEdFybPn37JXjoDWd1JAhY6S694eBx/nQSMhEOs7vOsegGS0a
+	WTtRUIBRfmaz5xePTqQ+TId5sYORCtI6ChuE8QfMD/SsUsS99FeUnOIVAogtJ267D6HQaw6WAcmax
+	PVKTL1mXfjSXE9ikvd2yvokKaXYBfZo3Xqjl8dYFZfwd1oC47hCL3pZsTMIo/1Fx4CxnKVv52Aw4h
+	NYC8YnHjoMcmK473m0KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wesen-00000001OIJ-3Orm;
-	Wed, 01 Jul 2026 10:59:05 +0000
+	id 1wesfj-00000001OaU-2wC0;
+	Wed, 01 Jul 2026 11:00:03 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wesem-00000001OHH-2zM8
+	id 1wesfi-00000001OZs-1LYm
 	for linux-rockchip@bombadil.infradead.org;
-	Wed, 01 Jul 2026 10:59:04 +0000
+	Wed, 01 Jul 2026 11:00:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=NoB+JvcT8HDMjNFxuGeWyu1B07bjfVTBwV14/TaNUmY=; b=TeHfHxnqJykzmpt4BBbMoNbNzu
-	Z4EacciUtEsHtHIboTtaj+TwVKjBgBUVND6pu6qj1+CBczd+hVccYfCY2XRffnGCqwPqyrIiLj8mL
-	P9BgH6CjUgMPdDiCKWb/bYxwZxu/v8qyKc+pmo/UryDKZuGK4YCq32jz14yeofM8HeTOaCJMbqd0C
-	/XAGh+GLBTu/rk9TKDtgywQ3BjilsNRWVCCebfAM/bLuhHJCDHm8V+DxhDB61k4Z6vVx+dH4do0yA
-	R5N7lRNhXt1NCgbe4CSSnXI0nd8VI22p4Y5bp+aTZdI8YkSSzOO9TT2yvp3VhLRnfmHmbPBSQYDEn
-	/k0iueDw==;
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Cc:To:Subject:Message-ID:
+	Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=lO56/jrYt5xZFVEPQmv45xkupS1NYM0pLDiA7bnEG+A=; b=ptcZtBuNM3fl5ilwwulOBlumMM
+	9u2wD9Emu3MIkr0PUGW35772/XBYwa/2W/4YD3Ac8WlSQnyCV3Y+xp5vse0WefUTJ2WGMj9tiWngI
+	BwGFu5iZ9P/0mrA2SvrKb+J4/3QrZ31g1V+p2xUwxLFpTWtC9+G7nRiXWuHVqztS7lyF6cvMZAUyA
+	XmzW7qsa6qGaJygboX/1ykUfVHFCgmW/qTTIUJDiRu1tDABRUPAQHa8Gv29pPdPmw2JvTa0/2DcZV
+	jLaUMUybigIZKsOgHDqPOHZ5yFyOtys53abivX5tqDqtBbKpN7yZVebwE8eu8eeUn82ye5g44hJuV
+	LtfXEM7w==;
+Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wesei-00000002eWK-1IiR
+	id 1wesff-00000002ecW-1jnc
 	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Jul 2026 10:59:03 +0000
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 661A8vT3753533
-	for <linux-rockchip@lists.infradead.org>; Wed, 1 Jul 2026 10:58:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:message-id:mime-version
-	:subject:to; s=qcppdkim1; bh=NoB+JvcT8HDMjNFxuGeWyu1B07bjfVTBwV1
-	4/TaNUmY=; b=MazSSan1rG2SE9ANLk6d1pDCFKtI37lHFeOoIdGhKXVSlgMIfqP
-	qdQ61+JcdxG+v04KdUOQ1lXp32XK1lcwlf3w+06YqsS7uc5Up2rtSGtt1NEKkIRa
-	PZyOrY36wiayvS90MsBvqqvqX/BTRPMWo9EC8jQs2KbFy6oOHZn3mqKzippxcTFC
-	GWqnmUUlezynm5lJd/47jTfmxiQrCvAIvn2goUDmRdWZ+91oCowIBdVah6nYnzAN
-	FkRdlR4P1AuH57B/9oxF65RFtvlePIHGP8pvZDQSssecwCTJ/r2NgyKEYV2XTEsQ
-	ECCcYA1Cw9R3ClOXaMNSfpOewZxkfGbxGGA==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f4rsy2ack-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 01 Jul 2026 10:58:56 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-92e663c29f2so61719485a.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 01 Jul 2026 03:58:56 -0700 (PDT)
+	Wed, 01 Jul 2026 11:00:01 +0000
+Received: by mail-oo1-xc33.google.com with SMTP id 006d021491bc7-69e9b037d82so429653eaf.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 01 Jul 2026 03:59:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782903597; cv=none;
+        d=google.com; s=arc-20260327;
+        b=GAWxKDQ4R5O9T4oKIBIKWpoJR7++/TSuqOSX7KyYxlrqimCTccnVTSi1nc3jxzMh4T
+         kk+vM+vnHmZKYm8EG2zEEXzBbH4gidHlvWdGWzP3vx8fPj9VNTZbAtn2f9ynp2JQ4coe
+         7fiNQgVoGdR45R+9knuvkTPsID+dbg/XweC5ZRw4sFSaS9ku55bjb4EmEuxT4bV8CB/a
+         +E41DCvIox/IRA9IPzwwMlrnsy0in0jzRPwKUneqYHJdHo4dUcXtpl8mIe+ux9C/QIZ/
+         4Dxd+0qrwoHHneIGzg/lY3YZvXAMnm+cTbaEkdrByEwV1kZn3YZ/u49VUiHQn3sVHcPz
+         Zu6Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=lO56/jrYt5xZFVEPQmv45xkupS1NYM0pLDiA7bnEG+A=;
+        fh=7kZ2USXHS+4dZYstxcUxmdvNo6WAvCWEEpBc++2mt7w=;
+        b=S03aaNus7uMa6eC8QLP/G2bnVZyIDQSJhP8iO0TY3xoNgUha47eDB3t4ljO8mOSFbW
+         oVi0E9nCImse/YZySi6qbgjpRsZo+N82jn4LUpzF184ecz0kQFyFmIHq9XbbwSnEieXL
+         tsy3uw5PnbOw+NwufkyTKpvzhiKNF2KiRwYhul6sI7PzHstobDfah40L3X8yepApytVN
+         oIKpeQBqAR57HOI1+rAY8qV+yXMPTI222rh+HCeEfdDO5UF3ovB6Q0C8wii/pI7x/EXB
+         hzI8pZCqLTeX77HWTZU69FrywQQuUMhI4HvekCvC35Kz/VZAQOkuN6+Eg2+/aAiZjtV9
+         h6Zg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1782903536; x=1783508336; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=NoB+JvcT8HDMjNFxuGeWyu1B07bjfVTBwV14/TaNUmY=;
-        b=g0JJsuIxnk6s/9emdtcfRBknRnbzAWT5CjRV1GAt92qEEOqWhD9XolchrM5U036bnF
-         uZfF4AlvbXjs6K2Fe7ZsQk/typzzNngu5yPSke1wYWYc4ou1s81ND5NyH4hv+3mnJaul
-         L6Tjg0O7qOKyGT3lddtQxr8KPQlTxOwMcDVK3sSv4JzjCAN/Y/jkz4HIZrQHLBKBKlbF
-         TGzMEZcdCN9FTnmGfBHbS++eRMaYdSZtVJjs1pMfqHgc0vjAbQibOQzl4yTdzDs9TOFs
-         /f4l9Eo4K8zHJy7iq7g1vbENR95XcTCGUBJhAqlSOWmYbwh+DlY58Fy+HivlADqtN74k
-         iSsw==
+        d=gmail.com; s=20251104; t=1782903597; x=1783508397; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=lO56/jrYt5xZFVEPQmv45xkupS1NYM0pLDiA7bnEG+A=;
+        b=a11kQEVYa+v7djG1k+TEqBXcaAgUFj8K3husi/V/AXRteiUBKgO8CH+54/zive7Cnj
+         2o0BSZFG68kxm5Pirc1F6cFknopGY9ksF5DlQJuih55QKM1/qtEAOiIT3TxdKnqD9J7X
+         OrU3TIdi3S+Fsxf32MHDCFlDo8Xp405NBRqtELfvUXDaJw9XvlDveyV2oG98DeGxAV9x
+         MJ7fsDeuEZTeiI6xevYlik1BYxsFOOUV035jYv6v146nCelkSXCmWRWSaI2WRyGUnJi7
+         GHHoNTKV9eM4HvVQaaggy15bnxsFmm2PkmjTiMXVLmwJfig9E7tL8hUwDMrlJTuuSM5e
+         XGbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782903536; x=1783508336;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20251104; t=1782903597; x=1783508397;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NoB+JvcT8HDMjNFxuGeWyu1B07bjfVTBwV14/TaNUmY=;
-        b=CwAxtMNgq2b/97BT3EB9DQvmEXP+pNFpRpjberH57TsPAERZ0lXPfNlk6kDU1lSGis
-         ybmWvBYN2JpsSNo2NYeJngjP8FOw7wmgg5S4vdbYgCZfa6Ao9Mk/a04jmDaCgs7iJBqu
-         QelaA67cfakIAuQr0igp6jlW3RjK50LId6gBcd0pseWUJURZMukCk6Na20prvfDFgnpv
-         F+uwX89rlVC7yvWvp2dnI2ejdijVPhUvYF4GAm3iol1I0uwbatke1rBr5em+0+ayX1rI
-         7vp/MIZLR+KEbr35fs0QobYdp+OsnThBwcgYpPAGVr6+KlgkNQHsSUCMBBApY2oXuMwC
-         kUQw==
-X-Forwarded-Encrypted: i=1; AFNElJ/zz0IN3fEKff3t/S0jjBS4PsDHZb22cxUjoeu51qNQlmZl+JKLlNDwVci8ka3oHbn+nMDGmZtN3rXh6fZCYQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyifyU2GH08z9KtnO+eLczUi19zBFG3fstV9b2YteUehJlUWh1V
-	ftk/flGRafTUe3/xxeAR2VVpmu1CnoCdSXNQTcLv1Cgj2grGxGh/Xm1KzQ5JNZ+gWU9AiuoTDiU
-	6Tj6heeM7v/ayBs9MypxFd8eoWcn/ytETe5hJXj2N8B8QHmNO/1iQperwAdg0aW67OE9xGNaDbM
-	w=
-X-Gm-Gg: AfdE7clS6WK7WR1zbpIhkf1gNxGQ5Hir56OAPfZ/Y+s8Wh5LuAUfYYmbJybHUD6KNtT
-	gKSlTM5OVzHonA1KqcSBNNd6tbGBtMMWDA5eDXWsStUyNY/ev8OyAVoddL3ENZGf0tPD7qbuEqK
-	a/m+g/SRpEi3MudiXKnh/ixlkiLQLijXzBrqWJO/KZv7dMGI8D4SP/pg3bTbGNu1gR9f0lVEF/i
-	MVX/DL9MOzF+DV0/AIwz1+yShyfOD+Fm9qRBZ6Rqe++QUjD/sdM+vgbQhRZZIT4Ksw4mtcQDBG9
-	QFwgxzApDCVFEIRYWeIb38v2f7dFspGlI1eU56PE1WLqpHgvoOORoLqqvpnUN49wvkKOm0AteUX
-	FaGEqwGwXqsqmvQeuXDlexzn/X4M=
-X-Received: by 2002:a05:620a:4413:b0:910:c1ba:91d3 with SMTP id af79cd13be357-92e69867895mr690843485a.45.1782903535679;
-        Wed, 01 Jul 2026 03:58:55 -0700 (PDT)
-X-Received: by 2002:a05:620a:4413:b0:910:c1ba:91d3 with SMTP id af79cd13be357-92e69867895mr690841285a.45.1782903535300;
-        Wed, 01 Jul 2026 03:58:55 -0700 (PDT)
-Received: from quoll ([178.197.223.174])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-493c0e92687sm33275565e9.0.2026.07.01.03.58.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Jul 2026 03:58:54 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-        Elaine Zhang <zhangqing@rock-chips.com>, devicetree@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH 1/2] dt-bindings: rockchip: pmu: Narrow definition of reboot-mode
-Date: Wed,  1 Jul 2026 12:58:50 +0200
-Message-ID: <20260701105849.197086-3-krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: git-send-email 2.53.0
+        bh=lO56/jrYt5xZFVEPQmv45xkupS1NYM0pLDiA7bnEG+A=;
+        b=UvdwCdeLCaP/V4jpAz5niqAKsW8Yy8R+VC9OhtcF8wgJBp2yUEqICTtPR+MmC/z3/Q
+         v3ZA1wSp3k7uVH5qFbCOVOZx9//pCuhrMUdKDs1c0fvtBwzxs0KWasb+GKG5uIHfBtzD
+         q52iK2WPg6wfBvHezLGw7lAlDZ8TPVqJ5bwXQ3ftguvMiaYhdH7+7ZiFchnvrD+kie91
+         FZHdTk/Tubgn32VyzHH3OM8q0+kcJNLonRwAK6VwHSvKAdl8OACuNrkVCcNfRX+kb9E6
+         zoh0nq/LD6393grm34IpG4ACupZcjHF4oGC68s8LKbHJVFS4H4xRw7PrQFikDo4jGqWD
+         WS3g==
+X-Forwarded-Encrypted: i=1; AFNElJ8zn8hNpf261oi4vv5iv2jMorEVwknSSMFln/FTimM0s+aI+NN2ZGQLlPm6Sml7sXe1T5x1msvamyGRYk0Ltg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz48jTGbfZ1ux7Bmdrdl/1QADHYmGUlNjGIVDCodu6rxd1CjxgH
+	lSLcWUPNMFXGdb/qO785MVP0XGoiUumFlOVpKp0UC5dxt4xJNsogGeHCQFXB/2tLl/wC8SLw3oq
+	rtJ/xvs0p/jocrdsWHYHSISkBlKYhTaU=
+X-Gm-Gg: AfdE7cmqUoGFsMmLP1x8zCm36P6ywqDwm9lkpDpcw5eTMdJkkLDJVed0FMcF/9HrGyi
+	Lj4OsVgn6Jh0CnE2OjoKx3XmFS6zlBthzsd1QuparErn5yA/ru+RjcAVCTE6C1i0iIvB2V2QGlh
+	lgIvgcOkgocGlqAVxiTNVIXUfj90A6kdjvQgameeD0na+GMv94uuW8aVr4A2hBrr4QkdSoepN3v
+	jjcjnVjadaYOiNAS/KC8ZMf0lXPPvfyKO0hlkX39HJoMiI81U5CIe61Bnvl51vdFC1VRo0=
+X-Received: by 2002:a05:6820:4c10:b0:6a1:7abd:2a6c with SMTP id
+ 006d021491bc7-6a309bc1fb7mr506522eaf.55.1782903596578; Wed, 01 Jul 2026
+ 03:59:56 -0700 (PDT)
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1530; i=krzysztof.kozlowski@oss.qualcomm.com;
- h=from:subject; bh=nlgozW7Dobb2ylNe8MBLOd3H8mDshCodNwiOydcFYJs=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBqRPLpKzd8WLvvgIW5ycKME27CSjTwQ21dq6SZ+
- CjuRzJhJViJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCakTy6QAKCRDBN2bmhouD
- 18zMD/0UC4obuG+GdQYwkzbI8qls0oHKONIO5UWSmI/IpEo1OOw+aWws+GzrtHLcuuuz7MEP615
- SJLX+jG976kQYODYQ/Cp3pFWrgCgXdqZ453qsxZ2S9jBFyevAihu5h8FfndQ6fu7Mw2sHJynVu4
- aY1BqYJXEymVe0FoCwB4CaaaIDladP/Mu9ihywK31bwkfaejVf1a7+tHdGOiJY7mYvT3SZlXYyF
- 9/bAosYbr1Qfcj2GdvQdtwSYAba717afLVX5Y/MOz0aovsclxwebDKeOrt3Gw7L66cv8JEe+jB5
- QHevVkC2UMrOogVWeDIvC6GZLCRiSyQZF4owIk/kny/SrbdOLYCCtPnwEPo1hj8zLoLb8fNH8Mx
- UAhhqejRIrzNaUUPKi1hmargx6zWxnfIoiCn17s7ubfj7gICc6zgqirdN8JXMrFhsahABw0WrW5
- CKbZbdOEK6snD+0e1zyg40CfQX2rUuZvvNwlLCcVm1Zgqiw4T/BsxIyCFofNdQrnRr9rPmrafr4
- 9hZCcUa2rcTIxflKyYn20r4tuGK9m95k5IP3ql3tXBSmKUSuvG6Md/LrwtuWPaD+LooyRVjPJnA
- v2KTlms4EDvQvIAXrPp143OG2tIrWC7TxsSKPsuJcg0DikLMkU+Jvc728ROCn7VjX90K09rF+Be snEbpDWFWE4N8vA==
-X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Proofpoint-GUID: FRHb96meUruvreUc0K1c9pzgw2zai1lZ
-X-Authority-Analysis: v=2.4 cv=fLgJG5ae c=1 sm=1 tr=0 ts=6a44f2f0 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=N6niishs+lR9UBL1FN3Qrw==:17
- a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22 a=EUspDBNiAAAA:8
- a=uYWl5qKCkACiJsL7rIEA:9 a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAxMDExNSBTYWx0ZWRfX7GFieyQ28+wv
- Muuvak9NpwON1Cenb41AQSfEtPNtIVKwlO13QgPlBz1w7c2e3eM2pH++f2F5kM8Owf+I1HyypTN
- EUIBLA0iogMlBhwcXLiPNlqR0QoAxKIkhrlKzjLGUckeRdSC6orPHbs3qERfgztMdTN40BI8h5x
- iSeBIA9RVZV5qoWINKtO079GAur9IHVwCVlrfmG1evyUz5SLHZK/Lf3J4KKafUTt2eprhhEkq22
- U9Ac0AiBO8O96nca2+X6OyDfDbPmLAfPdr8uJlDy85UdKAlYsAN562rNsdAibA335To3+gJYolY
- bihmKR8Oq1SW4AnYBlLQjjFH9p4g4PXCDP4x9fR+Ss69t06zu+C3v9Ycoi0lSzOAvc8k20t/8Xh
- wFJa8sOmnHi0HDgnjNq3pTvsKilVsBT10nuFqYQODcWS6Ag535D1Z/ILjmamUioIxLNjOONIzun
- TK0L1N6sn3YdLtG0BcA==
-X-Proofpoint-ORIG-GUID: FRHb96meUruvreUc0K1c9pzgw2zai1lZ
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAxMDExNSBTYWx0ZWRfX1rpj279GGiHX
- OFjp4YbpgkEuQCkpumajBYRmkV97p2YQ8XOETO5UJpNUaLfncILjLw/HAEx+2A32oY+5DrYSKdf
- sRu9WVJ+023MKzxUjIWwts7TwCDE0l0=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-07-01_03,2026-06-26_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 phishscore=0 malwarescore=0 suspectscore=0 priorityscore=1501
- bulkscore=0 spamscore=0 adultscore=0 lowpriorityscore=0 clxscore=1015
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607010115
+References: <20260608124018.480365-2-diogompaissilva@gmail.com>
+In-Reply-To: <20260608124018.480365-2-diogompaissilva@gmail.com>
+From: Diogo Silva <diogompaissilva@gmail.com>
+Date: Wed, 1 Jul 2026 12:59:45 +0200
+X-Gm-Features: AVVi8CdTMl8FaEPIfiIJ6n1_iuadQGCC_quf_89FmVweKwbOPq0QNm5_UZ___PQ
+Message-ID: <CAJpoHp6DnspnA0rirGb6E=A9wCS3eaDn=eFaqmae98Q+39b1PA@mail.gmail.com>
+Subject: [PATCH RESEND v3] drm/rockchip: Remove dependency on DRM simple helpers
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	dri-devel@lists.freedesktop.org, Simona Vetter <simona@ffwll.ch>, 
+	David Airlie <airlied@gmail.com>, Maxime Ripard <mripard@kernel.org>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_115900_597170_9EF1769E 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20260701_115959_661106_B0FD3CF4 
+X-CRM114-Status: GOOD (  16.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,45 +133,328 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The 'reboot-mode' child of PMU node must be a syscon-reboot-mode one, so
-add missing $ref to enforce the validation and disallow other
-reboot-mode handlers.
-Defining 'type: object' is on the other hand not necessary when other
-schema is referenced.
+Simple KMS helper are deprecated since they only add an intermediate
+layer between drivers and the atomic modesetting.
+This patch removes the dependency on drm simple helpers from rockchip
+DRM drivers.
 
-This can be further restricted to match hardware/firmware:
-syscon-reboot-mode schema allows arbitrary "mode-.* properties but only
-a subset actually makes sense and is valid.  Provide negative look-ahead
-pattern to disallow any modes not supported by the device, which
-tightens the binding.
-
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+Resending just in case this was missed. Thanks.
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-index 55b2200d6e75..1cff2328cd01 100644
---- a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-@@ -61,7 +61,13 @@ properties:
-     type: object
- 
-   reboot-mode:
--    type: object
-+    $ref: /schemas/power/reset/syscon-reboot-mode.yaml
-+    unevaluatedProperties: false
+v3:
+ - rebase on drm-tip tree
+
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c  | 9 ++++++---
+ drivers/gpu/drm/rockchip/cdn-dp-core.c           | 9 ++++++---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c  | 9 +++++++--
+ drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c | 8 ++++++--
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c        | 1 -
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c      | 1 -
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c   | 1 -
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c           | 8 ++++++--
+ drivers/gpu/drm/rockchip/rockchip_lvds.c         | 9 +++++++--
+ drivers/gpu/drm/rockchip/rockchip_rgb.c          | 8 ++++++--
+ 10 files changed, 44 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 776954c7d052..46c245e35d21 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -30,7 +30,6 @@
+ #include <drm/drm_of.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include "rockchip_drm_drv.h"
+
+@@ -303,6 +302,10 @@ rockchip_dp_drm_encoder_atomic_check(struct
+drm_encoder *encoder,
+        return 0;
+ }
+
++static const struct drm_encoder_funcs rockchip_dp_encoder_funcs = {
++       .destroy = drm_encoder_cleanup,
++};
 +
-+    patternProperties:
-+      # Negative look-ahead to disallow unsupported modes. The '$' has to be
-+      # part of lookahead group to work, instead of trailing outside of ().
-+      "^mode-(?!(bootloader$|loader$|normal$|recovery$))": false
- 
- required:
-   - compatible
--- 
-2.53.0
+ static const struct drm_encoder_helper_funcs
+rockchip_dp_encoder_helper_funcs = {
+        .mode_fixup = rockchip_dp_drm_encoder_mode_fixup,
+        .mode_set = rockchip_dp_drm_encoder_mode_set,
+@@ -361,8 +364,8 @@ static int rockchip_dp_drm_create_encoder(struct
+rockchip_dp_device *dp)
+                                                             dev->of_node);
+        DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
 
+-       ret = drm_simple_encoder_init(drm_dev, encoder,
+-                                     DRM_MODE_ENCODER_TMDS);
++       ret = drm_encoder_init(drm_dev, encoder, &rockchip_dp_encoder_funcs,
++                              DRM_MODE_ENCODER_TMDS, NULL);
+        if (ret) {
+                DRM_ERROR("failed to initialize encoder with drm\n");
+                return ret;
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c
+b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index 190cce9530c8..c3f41a4449f5 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -23,7 +23,6 @@
+ #include <drm/drm_of.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include "cdn-dp-core.h"
+ #include "cdn-dp-reg.h"
+@@ -671,6 +670,10 @@ static int cdn_dp_encoder_atomic_check(struct
+drm_encoder *encoder,
+        return 0;
+ }
+
++static const struct drm_encoder_funcs cdn_dp_encoder_funcs = {
++       .destroy = drm_encoder_cleanup,
++};
++
+ static const struct drm_encoder_helper_funcs cdn_dp_encoder_helper_funcs = {
+        .atomic_check = cdn_dp_encoder_atomic_check,
+ };
+@@ -988,8 +991,8 @@ static int cdn_dp_bind(struct device *dev, struct
+device *master, void *data)
+                                                             dev->of_node);
+        DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
+
+-       ret = drm_simple_encoder_init(drm_dev, encoder,
+-                                     DRM_MODE_ENCODER_TMDS);
++       ret = drm_encoder_init(drm_dev, encoder, &cdn_dp_encoder_funcs,
++                              DRM_MODE_ENCODER_TMDS, NULL);
+        if (ret) {
+                DRM_ERROR("failed to initialize encoder with drm\n");
+                return ret;
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 3547d91b25d3..a09b382d208e 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -25,7 +25,6 @@
+ #include <drm/drm_mipi_dsi.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_print.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include "rockchip_drm_drv.h"
+
+@@ -825,6 +824,10 @@ static void dw_mipi_dsi_encoder_enable(struct
+drm_encoder *encoder)
+        clk_disable_unprepare(dsi->grf_clk);
+ }
+
++static const struct drm_encoder_funcs dw_mipi_dsi_encoder_funcs = {
++       .destroy = drm_encoder_cleanup,
++};
++
+ static const struct drm_encoder_helper_funcs
+ dw_mipi_dsi_encoder_helper_funcs = {
+        .atomic_check = dw_mipi_dsi_encoder_atomic_check,
+@@ -840,7 +843,9 @@ static int rockchip_dsi_drm_create_encoder(struct
+dw_mipi_dsi_rockchip *dsi,
+        encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
+                                                             dsi->dev->of_node);
+
+-       ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_DSI);
++       ret = drm_encoder_init(drm_dev, encoder,
++                               &dw_mipi_dsi_encoder_funcs,
++                               DRM_MODE_ENCODER_DSI, NULL);
+        if (ret) {
+                DRM_ERROR("Failed to initialize encoder with drm\n");
+                return ret;
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
+b/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
+index d2e76d36d724..9dc207c2d20d 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
+@@ -23,7 +23,6 @@
+ #include <drm/bridge/dw_mipi_dsi2.h>
+ #include <drm/drm_mipi_dsi.h>
+ #include <drm/drm_of.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include <uapi/linux/videodev2.h>
+
+@@ -275,6 +274,10 @@ dw_mipi_dsi2_encoder_atomic_check(struct
+drm_encoder *encoder,
+        return 0;
+ }
+
++static const struct drm_encoder_funcs dw_mipi_dsi2_encoder_funcs = {
++       .destroy = drm_encoder_cleanup,
++};
++
+ static const struct drm_encoder_helper_funcs
+ dw_mipi_dsi2_encoder_helper_funcs = {
+        .atomic_enable = dw_mipi_dsi2_encoder_atomic_enable,
+@@ -290,7 +293,8 @@ static int rockchip_dsi2_drm_create_encoder(struct
+dw_mipi_dsi2_rockchip *dsi2,
+        encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
+
+dsi2->dev->of_node);
+
+-       ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_DSI);
++       ret = drm_encoder_init(drm_dev, encoder, &dw_mipi_dsi2_encoder_funcs,
++                              DRM_MODE_ENCODER_DSI, NULL);
+        if (ret) {
+                dev_err(dsi2->dev, "Failed to initialize encoder with drm\n");
+                return ret;
+diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+index 0de822360c8d..b23efb153c9e 100644
+--- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+@@ -20,7 +20,6 @@
+ #include <drm/drm_of.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include "rockchip_drm_drv.h"
+
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index cffc0af5190f..b6e154c35e7c 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -18,7 +18,6 @@
+ #include <drm/drm_managed.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include "rockchip_drm_drv.h"
+
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index f35484715c2d..af34062685cd 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -24,7 +24,6 @@
+ #include <drm/drm_managed.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include "rockchip_drm_drv.h"
+
+diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+index 1996f8656612..b4ba9f894360 100644
+--- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
++++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+@@ -12,7 +12,6 @@
+ #include <drm/drm_of.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include <linux/clk.h>
+ #include <linux/mfd/syscon.h>
+@@ -454,6 +453,10 @@ rk3066_hdmi_encoder_atomic_check(struct
+drm_encoder *encoder,
+        return 0;
+ }
+
++static const struct drm_encoder_funcs rk3066_hdmi_encoder_funcs = {
++       .destroy = drm_encoder_cleanup,
++};
++
+ static const
+ struct drm_encoder_helper_funcs rk3066_hdmi_encoder_helper_funcs = {
+        .atomic_check   = rk3066_hdmi_encoder_atomic_check,
+@@ -696,7 +699,8 @@ rk3066_hdmi_register(struct drm_device *drm,
+struct rk3066_hdmi *hdmi)
+                return -EPROBE_DEFER;
+
+        drm_encoder_helper_add(encoder, &rk3066_hdmi_encoder_helper_funcs);
+-       drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
++       drm_encoder_init(drm, encoder, &rk3066_hdmi_encoder_funcs,
++                        DRM_MODE_ENCODER_TMDS, NULL);
+
+        hdmi->bridge.driver_private = hdmi;
+        hdmi->bridge.funcs = &rk3066_hdmi_bridge_funcs;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c
+b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+index 7a0c4fa29f2f..f3be2c91d147 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+@@ -24,7 +24,6 @@
+ #include <drm/drm_panel.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_lvds.h"
+@@ -427,6 +426,10 @@ static void px30_lvds_encoder_disable(struct
+drm_encoder *encoder)
+        drm_panel_unprepare(lvds->panel);
+ }
+
++static const struct drm_encoder_funcs rockchip_lvds_encoder_funcs = {
++       .destroy = drm_encoder_cleanup,
++};
++
+ static const
+ struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
+        .enable = rk3288_lvds_encoder_enable,
+@@ -594,7 +597,9 @@ static int rockchip_lvds_bind(struct device *dev,
+struct device *master,
+        encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
+                                                             dev->of_node);
+
+-       ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_LVDS);
++       ret = drm_encoder_init(drm_dev, encoder,
++                                     &rockchip_lvds_encoder_funcs,
++                                     DRM_MODE_ENCODER_LVDS, NULL);
+        if (ret < 0) {
+                drm_err(drm_dev,
+                        "failed to initialize encoder: %d\n", ret);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c
+b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+index add3123e5ce7..2ad24b914989 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+@@ -17,7 +17,6 @@
+ #include <drm/drm_panel.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
+-#include <drm/drm_simple_kms_helper.h>
+
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_rgb.h"
+@@ -65,6 +64,10 @@ rockchip_rgb_encoder_atomic_check(struct
+drm_encoder *encoder,
+        return 0;
+ }
+
++static const struct drm_encoder_funcs rockchip_rgb_encoder_funcs = {
++       .destroy = drm_encoder_cleanup,
++};
++
+ static const
+ struct drm_encoder_helper_funcs rockchip_rgb_encoder_helper_funcs = {
+        .atomic_check = rockchip_rgb_encoder_atomic_check,
+@@ -127,7 +130,8 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
+        encoder = &rgb->encoder.encoder;
+        encoder->possible_crtcs = drm_crtc_mask(crtc);
+
+-       ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_NONE);
++       ret = drm_encoder_init(drm_dev, encoder, &rockchip_rgb_encoder_funcs,
++                              DRM_MODE_ENCODER_NONE, NULL);
+        if (ret < 0) {
+                DRM_DEV_ERROR(drm_dev->dev,
+                              "failed to initialize encoder: %d\n", ret);
+--
+2.51.2
 
 _______________________________________________
 Linux-rockchip mailing list
