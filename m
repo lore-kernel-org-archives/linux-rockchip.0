@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59757C43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 23:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48A3CC44501
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 23:36:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iPFrZey9g5DQ6l+8CKWultsjQqfiyWPc9WYpC3lkQBw=; b=bT/Fdm2S7KiCJW
-	yXZpXV5fLqX3pRIS2TeNtSBor2iVyJ+YH8A4zFrhztKP17nY4f81h1mvSwbC2+NzW1J37q9LaVK6Y
-	z933rplFuf0uwpdPSxngsHj7GFYjNjxKLAYVwSH0JBqVRQMBySUlOWZ5kwWBaNhjBBSYYKij1/nAU
-	VYVXirxYIMwz7LL8Fn7VvuvCHKPCqwStFIeRsUs6RiClzkGFi0AGKSPJdBXqQhMKd/ptDg0mNNTty
-	NdV7OZKXnS7nmpmGuGIxLxOhAcHybGETc7mslgej2RUaDUjTcMwkbqRO4Z4/HGUFtmpLRXiwitq8E
-	bD7ODYg5j5rkJEHoyyDw==;
+	List-Owner; bh=HAy8vSQESsmK5hOtqRZ97HGIT7/gOvOFtVEk10bvoPo=; b=JR1A7+JOKiVA6g
+	kWouqhCcg0TYqrLN2DOcFz2wkGQ5HUp276tufNJTsVd5pt5NhZ5NQmE720PicNp3aWTuRwmIz4ME6
+	2EEVufvPSVuuLXNlyjtkNJcTbu9RphSLHMgbdXf6u+5pEzvQAV3tsRMMLDNWBG9tFhfJbAOlI5G40
+	lbxdr5c8xq2qpqfTZj7w7SuMuf7havjHjtvS2+oPqIV+zNA1apwg5uZgI6CwV6GHZzUab7/sY8CaY
+	TCH2ZTi99sjJSVxFYlVMlLaE4ug/f0ynYQP7bhmuTE8+YKpSwJ3lJRxnNZdAZ3/vA5z0oyvVp+VLa
+	gPDJizTSAGJbwHpYJBQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf4TQ-00000003AGG-2LZD;
-	Wed, 01 Jul 2026 23:36:08 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wf4TT-00000003AMZ-0zKG;
+	Wed, 01 Jul 2026 23:36:11 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf4TE-000000039lk-1k3h;
+	id 1wf4TF-000000039mQ-1YPr;
 	Wed, 01 Jul 2026 23:36:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1782948949;
-	bh=0FtTX79xt0EBYjvLtHUyDjYzFQpbVZRekVbSWXeCyyk=;
+	bh=+YRPJyI1V8oNPkbxLLhcwim5gCsEu0UcFX5g+tdQNU8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NuRFT/cn1yQQEJ/vkhStNIJbt+EU162wv8oSq7gC1LSBZWm0B6CeOX0K6mcfSue4F
-	 otiNlvgLB4MTshk07r7H558UUCmOx7eLIkkbHR8VGFkAo6r/jj2ru3jL4f6my9d/Vp
-	 HKpnk2+5nEunpr7UGnSMK4WNVtqhnOQ/5R2i+jBdi//9Y1/Lu/uSfy6BKKbISkam8s
-	 M6XnsVjdaohV5Lsj7YA/arH2HpYkkTqtTNOsrFgpBaXLXWPCqpU+bXMrOO0TUXgjVC
-	 cKUvvvKiYKfy9eJpvUDbMEvWKp08LW42nYWt7EQX/0qUgWM45yQOTPg+IJrfsfPATK
-	 Jj1NPVrYCI8dw==
+	b=QDh2xTKbPq/rwzI4ArqPloCgjYsrSvdcAJThPpyAfQLHAd9R3Y8jv9+1gLjYoq7us
+	 l+we5j9dUTx26du/MS+7Rjqah8FCw8YEMNgAkbXeu0EY9+gZ/IUUSiFvz0+npu/Yzt
+	 aCxiMnGLt6MpFD3HeXxsYEEbQKao4DvtVDhTlDZWOgHOW8dkEVY/qjVpkGtwX+TdOS
+	 dw19hmNL3ZZsuJBK+C+v0NbJBcpMQyBhdkVDlJn9wFAFFGg1DDENi53mydJXJztwgq
+	 DxDRhGtE1TRPWS928xpOq1tvIraZgehjeAzOCVbnh+JPwg7PloFQpBuQZc7FVEQaHb
+	 hyDJ6lgj6kXyw==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 522CD17E1411;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6B55417E15A5;
 	Thu,  2 Jul 2026 01:35:49 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id B5194480035; Thu, 02 Jul 2026 01:35:48 +0200 (CEST)
+	id B9A3A48003D; Thu, 02 Jul 2026 01:35:48 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 02 Jul 2026 01:35:44 +0200
-Subject: [PATCH v9 06/38] phy: rockchip: usbdp: Drop seamless DP takeover
+Date: Thu, 02 Jul 2026 01:35:47 +0200
+Subject: [PATCH v9 09/38] phy: rockchip: usbdp: Amend SSC modulation
+ deviation
 MIME-Version: 1.0
-Message-Id: <20260702-rockchip-usbdp-cleanup-v9-6-e31efbb62d2e@collabora.com>
+Message-Id: <20260702-rockchip-usbdp-cleanup-v9-9-e31efbb62d2e@collabora.com>
 References: <20260702-rockchip-usbdp-cleanup-v9-0-e31efbb62d2e@collabora.com>
 In-Reply-To: <20260702-rockchip-usbdp-cleanup-v9-0-e31efbb62d2e@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -65,29 +66,28 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sashiko <sashiko-bot@kernel.org>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2751;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1765;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=0FtTX79xt0EBYjvLtHUyDjYzFQpbVZRekVbSWXeCyyk=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpFpFN+QMIggPCzG/vFrBVmVQiKdnvHQdrhj
- HVN6CKTRwCDWokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqRaRTAAoJENju1/PI
- O/qagrEQAIL8vbIJuCTOKLgIxMmY0B7WFlfonb7pTMWGhlMl/MGeaeAJt9v3eUvLNKWUEz4sp7B
- tG6TGPMnMJklQHxn1nEJ+KOfL+e3xnp1KVwkO33O4eCwglBkMovykDZpUKUQzx3RKcw380Fh+zb
- GPDIfu+5DTMhf8BEYVclgUgttEhQsW22IfKFrZzK+k/J1YKjYBF1pcGLkkmEzuvmfTr/sKljlxJ
- Jv72P26HRy17aJTjY50SLtpzstI0yccu2dEUuVmEZ7X7U9/IbO6itNdwLW78VxY8nfdrxO4aT8t
- uBISw/ULpCfd5lWsq4GY6gNs6zNr4yYAtvQy/MhJHU1oucxz3zrp7XTrbVr5c6z1eMULPd1Rm9L
- tOLf5VxreD50Yh2kqZr48ICwbBZLM8q3xVEJr6uJyDAGRdAAPx0KYqvGjEg/S8kwM2Wa/Z/LKAM
- eEcyATTWh99alt4n+Jb/APSJYBNXZq+WsnK1wVcQMcFpdHQJWdPfCCIgv1bwGrxUF7lQyg0DA2P
- D1SL13dOhYBgkB1GsAIUmxHDXo1Jq6GRzPTEfTFjcgSHfUXdeFwxxOvWM4xplTN21Rs/fysqiPC
- /ppyWUKMbjZWF2p2KN6rPwTDTT3aswI7NnqsKjQvkWEFqJHSWXfVOnxvXk2W4wLLqWzOs2/COrV
- KaWRuSVSPu8HF+0j2RLMmuQ==
+ bh=hEuJtDizS20fyTE+j+LEHbrRcnH32J1MUDI597yISUc=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpFpFOfqEVg3dFDtpeVCKDLjpfuZWiJ9ZEiW
+ SH0E15gBWfF44kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqRaRTAAoJENju1/PI
+ O/qa4Z0P/jAOopK3jHpNLZwR6v954tyqH0evvyHHdyCjZbKq6lzYEukQUexNux120mXZ3EpWCwP
+ DDbKZCgJmfvtMgazW1VPo3PunKo3PfuivbDGPrQG7bnnY3JC9GFvfX1xdlNU/YllFJWNxtiVPs6
+ ei9ZqkQI7Gqyqazm8Es3fm/ptDQtkRomFhQ+/lQtfdc3FVlX3HhCmezL1Vjx0nP1lyHnurfToe9
+ Y02hyunPII3TTciS7fFXDMWhavnPmKS676kQmxs0D9G5XRbTjubGx0SeBGTVl5U96N0f+yijknp
+ hDILpdQO/NHZyVe/oa9CRfdXjTPU+SwvXJsYP7BrrvBvK4tT4rC7h1M7AKWYhsEy2M12GD2b+PK
+ tbHo8cnv5/yrvxj1HtLmzUgkt54OZIEilDuHtMijO2G+NDxKE23q8+QhxZ+AwExTQ8jPhNqHT7F
+ 6NVfCs8nm5s0JiBsAb4uKRqx+G4KnxqfG8TVh74Jz64RNsRtk5UyvO+A6T74RJRW7wu1Z7VCvGK
+ BO2OXUWVMsdj3Sj5kP2HJOjqlFkHd13wOHhqEf6G5ij/4dSx70Sqr0ee3B4JcKkmbHXr2+6Uibg
+ h72OPnFGdj91Y7skXGlB8xmO3r7EydZ7koENWV8uRX5jHqCu6ETR6BfpoFDKp7r7iJSy6JsrlIu
+ 5v/v44tCd51/XF0l6sFU5yA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_163557_215489_2161BA65 
-X-CRM114-Status: GOOD (  17.16  )
+X-CRM114-CacheID: sfid-20260701_163557_613782_67ABD7E8 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,66 +104,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Right now the DRM drivers do not support seamless DP takeover and I'm
-I'm not aware of any bootloader implementing this feature either.
+From: Frank Wang <frank.wang@rock-chips.com>
 
-In any case this feature would be limited to boards using the USBDP PHY
-for a DP or eDP connection instead of the more commonly USB-C connector.
-With USB-C's DP AltMode a seamless DP takeover requires handing over the
-state of the TCPM state machine from the bootloader to the kernel. This
-in turn requires a huge amount of work to keep the state machine
-implementations synchronized. It's very unlikely we will see somebody
-implementing that in the foreseeable future.
+Move SSC modulation deviation into private config of clock
 
-As the current code is obviously buggy and untested, let's simply drop
-support for seamless DP takeover. It can be re-implemented cleanly once
-somebody adds all missing bits.
+ - 24M: 0x00d4[5:0] = 0x30
+ - 26M: 0x00d4[5:0] = 0x33
 
-Technically the VOP side should be disabled first to avoid data being
-send to an unpowered PHY from the running pipeline. As a workaround this
-force disables HPD. I'm not sure if this would be good enough, but cannot
-test as there is no support in the bootloaders known to me and my test
-boards route USBDP to USB-C connectors.
-
-Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/linux-phy/20260612164107.C7DB21F000E9@smtp.kernel.org/
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+[Taken over from rockchip's kernel tree; register 0x00d4 is not
+described in the TRM]
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 3fc8222fcaec..d73455370113 100644
+index 2b27fd1c15d8..923279ed7d77 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -926,6 +926,7 @@ static int rk_udphy_parse_lane_mux_data(struct rk_udphy *udphy)
+@@ -350,7 +350,8 @@ static const struct reg_sequence rk_udphy_24m_refclk_cfg[] = {
+ 	{0x0a64, 0xa8}, {0x1a3c, 0xd0},
+ 	{0x1a44, 0xd0}, {0x1a48, 0x01},
+ 	{0x1a4c, 0x0d}, {0x1a54, 0xe0},
+-	{0x1a5c, 0xe0}, {0x1a64, 0xa8}
++	{0x1a5c, 0xe0}, {0x1a64, 0xa8},
++	{0x00d4, 0x30}
+ };
  
- static int rk_udphy_get_initial_status(struct rk_udphy *udphy)
- {
-+	const struct rk_udphy_cfg *cfg = udphy->cfgs;
- 	int ret;
- 	u32 value;
+ static const struct reg_sequence rk_udphy_26m_refclk_cfg[] = {
+@@ -377,7 +378,7 @@ static const struct reg_sequence rk_udphy_26m_refclk_cfg[] = {
+ 	{0x0c30, 0x0e}, {0x0c48, 0x06},
+ 	{0x1c30, 0x0e}, {0x1c48, 0x06},
+ 	{0x028c, 0x18}, {0x0af0, 0x00},
+-	{0x1af0, 0x00}
++	{0x1af0, 0x00}, {0x00d4, 0x33}
+ };
  
-@@ -938,10 +939,14 @@ static int rk_udphy_get_initial_status(struct rk_udphy *udphy)
- 	rk_udphy_reset_deassert_all(udphy);
+ static const struct reg_sequence rk_udphy_init_sequence[] = {
+@@ -412,8 +413,7 @@ static const struct reg_sequence rk_udphy_init_sequence[] = {
+ 	{0x0070, 0x7d}, {0x0074, 0x68},
+ 	{0x0af4, 0x1a}, {0x1af4, 0x1a},
+ 	{0x0440, 0x3f}, {0x10d4, 0x08},
+-	{0x20d4, 0x08}, {0x00d4, 0x30},
+-	{0x0024, 0x6e},
++	{0x20d4, 0x08}, {0x0024, 0x6e}
+ };
  
- 	regmap_read(udphy->pma_regmap, CMN_LANE_MUX_AND_EN_OFFSET, &value);
--	if (FIELD_GET(CMN_DP_LANE_MUX_ALL, value) && FIELD_GET(CMN_DP_LANE_EN_ALL, value))
--		udphy->status = UDPHY_MODE_DP;
--	else
--		rk_udphy_disable(udphy);
-+	if (FIELD_GET(CMN_DP_LANE_MUX_ALL, value) && FIELD_GET(CMN_DP_LANE_EN_ALL, value)) {
-+		dev_info(udphy->dev, "Started with DP PHY pre-enabled; seamless takeover unsupported\n");
-+		rk_udphy_grfreg_write(udphy->vogrf, &cfg->vogrfcfg[udphy->id].hpd_trigger, false);
-+		/* Wait for VOP side to shut up */
-+		msleep(100);
-+	}
-+
-+	rk_udphy_disable(udphy);
- 
- 	return 0;
- }
+ static inline int rk_udphy_grfreg_write(struct regmap *base,
 
 -- 
 2.53.0
