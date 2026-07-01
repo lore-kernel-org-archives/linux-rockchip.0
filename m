@@ -4,98 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54E31C43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 10:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12DFBC43458
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 10:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:
-	References:MIME-Version:In-Reply-To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=/iRIdnUnJUBYhb2VE5/R0VqzWHWzmoTuXp7jMa0s1X0=; b=HC5QyYaFJU3vqvVyDFnsm3LF9n
-	7auEkT7Z+APY+BWUNcYdR33K9VK4dAD5VmgrzS/V7Xqu6A3FTuNwaHRxEUFO3uTe1G7y+mON44YTO
-	iqstLqubQ4MP5gVu0Anpzu8CD/1rZicabOskAaIBLpxUJdysFqIXSFQj4PKmkOIuIWKNO6d16X52u
-	4EIIAu0qDf+Y+ypGsyLCOqyjnQ0GOViim0B07W7d5/o2yMhIWlnXWmkV7MPUmBFDtRNwofWWU2bkW
-	ur3Pkuv05r4UPBughWkBbETYi+nhcEf+yWKocmn/YCC4qicAROAY0orMiPceKDptjSjNCo5Y/A7Rh
-	Oi4zuXxA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ue9AUWaFfQaezVgQhNes90PyxndKErF42NtaFZRDmGw=; b=Yodsw8OQgfDDHa
+	QZD6mi6nNM8VGX6GPqKVR8hWZaNUqFJrzVZ7jhlm3GpSGHcladHtvtWVAIEoMoArxHDNooN9nk/c9
+	3kfJojTJjwjt7JArgKh595C24GX7ZD7kgzliAwSyfo5+qaT/Ah9m/UNKwHRjFJrDZLkqYdubveU5z
+	htefscOU9aAR0AadNJw8gvlCm2FyEf34kQ5KgqzuGP7Wcc97i9BsaB0c4t9JDpBSwlHxEEa1PueZK
+	6JUjV5FW99NbhyDBeMPhfLwd7th2W/BcOmL9lARifJAdhauJv41/ARSEi4iAmhNhU2IZq89tmlU7P
+	YWMxgHmGhoGfVBTDR51Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wesLX-00000001KPs-27BP;
-	Wed, 01 Jul 2026 10:39:11 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wesRk-00000001LPy-0fJt;
+	Wed, 01 Jul 2026 10:45:36 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wesLU-00000001KOi-3WQC
+	id 1wesRh-00000001LPK-04Dx
 	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Jul 2026 10:39:09 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8B03D43EA5
-	for <linux-rockchip@lists.infradead.org>; Wed,  1 Jul 2026 10:39:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 607391F0155C
-	for <linux-rockchip@lists.infradead.org>; Wed,  1 Jul 2026 10:39:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782902348;
-	bh=q4Mw1ewD/jb3yXkm243uxaRWKqoUXL01sdFnsTQHgvY=;
-	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=CvmIMQlpDPun8oKUF6snfTgD5R960tQ39+Ad7gri+Glzo8M3xcUmIR/X/ChVXo/NM
-	 LoBkt8GTKKxOJnKW8icgGzjR+KTlrxKeiu1OZOpzSQ9BahiOOvwcXZ6Uz2w8/KYIqt
-	 5VJj7HSvLi0ub+uEPGKsvoJQROh/cFbWhe+FazUqVutSc5DVw944YTwxbbd7aZB3z4
-	 2JWwgkQM538t/UZSdLP8CHDFRFmJw/hlH1T3TwFf1xJSvK8HsTtarZ2Y0umGA0QNZc
-	 v4REPnfaTuzUCQABmQV4nHd2lj6bZ8npdl9tiDVtlygmu9uuzv8Jy9bVpHCYrzBRSQ
-	 +5m7bRYHZ8lOA==
-Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-5aeb77b3afbso501499e87.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 01 Jul 2026 03:39:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RphuL6uF502ZUAY6csuc1oB0zW5wxeaB8rQMZKOWy6tn9/AjzBlaOWxykgZ0l9B6rmUH7nBLpUgL2CluqsjBw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyPK26nh5eXtqgLonzX5mRuB64/sUq3pbzFO8TOufdA201sn9Fk
-	gwM6z8dvFgQoR/aq/V1XftHO2SbZaGUv8bRKMDCoGlYqH6DfN5SA6Ezy+g1iE16Rs0c44BxtfC7
-	Ok6qr3XrkqFyPQA0hNlhph01R+Rzi01zDAkEs3ZWNuA==
-X-Received: by 2002:ac2:568a:0:b0:5ae:9fb4:6740 with SMTP id
- 2adb3069b0e04-5aec742dcbemr246886e87.46.1782902347033; Wed, 01 Jul 2026
- 03:39:07 -0700 (PDT)
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Wed, 1 Jul 2026 05:39:04 -0500
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Wed, 1 Jul 2026 05:39:04 -0500
-From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <CAMRc=MfgAB8bc6PD-6jw_KR0uNBfH+PO2XtCeL1SUF2nCiT0xg@mail.gmail.com>
+	Wed, 01 Jul 2026 10:45:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1782902731;
+ bh=d2IWXZq6Dmau8UfTNk+TACUN3QluuzDtTFgWgtgZaB0=;
+ b=CokLCXHTEBA8Z+6YCs2P8g0mYvQch028wq4YkMkcH7sX1UNQO9X7E3dYIOXPYS2hV8EAW3P4b
+ gJ01r9FyoRStT6QQjIZ3oh2B0QYWW2R0YWv87+daPFU85J4xjCr9ppHvDN2fa9IYAq1V+N715ke
+ ErYHWfdAj+D/7OaIcJ5V/J6DciFXTETo6FKsMc8JqhphZPw3Zr3kiY8x9t3wsqwsod1j9/qfIFU
+ 9eGmZf4Lmx1jaHW1G3qkNcL/w8vJGcwE/iicfTRpW/jHuDTxbP1Gj7fWpkN8YcAvLdBCxUycU+Q
+ 6zD9N6eMzCE0RpiZKZOC34x7nymx3gDgR08RmlgcUH0w==
+X-Forward-Email-ID: 6a44efc46e27ac04145a5a04
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.9.1
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <35572b83-0e1e-4b2d-932e-47818fc815a4@kwiboo.se>
+Date: Wed, 1 Jul 2026 12:45:21 +0200
 MIME-Version: 1.0
-References: <20260629-qcom-sa8255p-emac-v11-0-1b7fb95b51f9@oss.qualcomm.com>
- <20260629-qcom-sa8255p-emac-v11-1-1b7fb95b51f9@oss.qualcomm.com>
- <CAMuHMdXen+E-Ai51aWBa_KV9W8Fz2cQPpT-FG_kQ7akhrrYa_A@mail.gmail.com>
- <CAMRc=Me3jaZXiXa1sFXr=8Do4sCd+XN1pKTcWC8-0j78SjCkKA@mail.gmail.com>
- <CAMuHMdVUBgG0EFB16OxHisbxx-sBvDKvBPNZdpyDnmBrnX4ptQ@mail.gmail.com>
- <akOZFIowVvprnAMf@vaman> <CAMRc=MfgAB8bc6PD-6jw_KR0uNBfH+PO2XtCeL1SUF2nCiT0xg@mail.gmail.com>
-Date: Wed, 1 Jul 2026 05:39:04 -0500
-X-Gmail-Original-Message-ID: <CAMRc=MfA3OuuUUb063hAaN-0Byt=ToEf+uLtcR2DoqED6dZ+Nw@mail.gmail.com>
-X-Gm-Features: AVVi8CdM4YB1YNAKK21RhumfGngKAr8KUFWynreeOPd7b_5_r_J6FsxJ2sTmC58
-Message-ID: <CAMRc=MfA3OuuUUb063hAaN-0Byt=ToEf+uLtcR2DoqED6dZ+Nw@mail.gmail.com>
-Subject: Re: [PATCH net-next v11 1/7] dt-bindings: phy: document the serdes
- PHY on sa8255p
-To: Bartosz Golaszewski <brgl@kernel.org>
-Cc: Geert Uytterhoeven <geert@linux-m68k.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>, Chen-Yu Tsai <wens@kernel.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>, 
-	Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com, 
-	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>, Romain Gantois <romain.gantois@bootlin.com>, 
-	Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>, 
-	Christophe Roullier <christophe.roullier@foss.st.com>, Radu Rendec <rrendec@redhat.com>, 
-	linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, 
-	linux-arm-kernel@lists.infradead.org, Drew Fustini <dfustini@tenstorrent.com>, 
-	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org, 
-	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, Vinod Koul <vkoul@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/rockchip: dw_hdmi: Fix error handling for
+ drm_atomic_get_bridge_state()
+To: Chen Ni <nichen@iscas.ac.cn>, heiko@sntech.de
+Cc: hjc@rock-chips.com, andy.yan@rock-chips.com,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+References: <20260701030835.2662123-1-nichen@iscas.ac.cn>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20260701030835.2662123-1-nichen@iscas.ac.cn>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260701_034533_363074_61A00AA0 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,37 +77,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 30 Jun 2026 15:44:16 +0200, Bartosz Golaszewski <brgl@kernel.org> said:
-> On Tue, 30 Jun 2026 12:23:16 +0200, Vinod Koul <vkoul@kernel.org> said:
->> On 29-06-26, 16:51, Geert Uytterhoeven wrote:
->>> > Russell King asked me to put the PHY logic for SCMI pm domains into the PHY
->>> > driver instead of the MAC driver where it was previously. Instead of cramming
->>> > both HLOS and firmware handling into the same driver, I figured it makes more
->>> > sense to have a dedicated, cleaner driver as the two share very little code (if
->>> > any).
->>>
->>> I think you are mixing up DT bindings and driver implementation?
->>
->> Should the bindings change if we have different driver and firmware
->> implementations? Isn't binding supposed to be agnostic of
->> implementations..?
->>
->
-> The way sa8255p implements SCMI is with SMC exclusively but - since even base
-> support is not yet upstream -  maybe it would be possible to expose SCMI clocks
-> like some platforms do and reuse the same binding.
->
-> Would it make sense?
->
-> Bart
->
+Hi,
 
-Scratch that. The firmware on sa8255p does not expose SCMI clock protocol, we
-can only use devfs with this PHY so it's either the same binding document with
-different properties depending on compatible or two separate bindings. I prefer
-the latter because it's cleaner.
+On 7/1/2026 5:08 AM, Chen Ni wrote:
+> The drm_atomic_get_bridge_state() function returns an error pointer on
+> failure, not NULL. Fix the check to use IS_ERR() to correctly handle
+> allocation failures.
+> 
+> Fixes: dc70272cc184 ("drm/rockchip: dw_hdmi: Propagate bus format to display driver")
+> Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
 
-Bartosz
+Thanks, I missed similar change in v15 of 'Add new general DRM property
+"color format"' series.
+
+Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
+
+Regards,
+Jonas
+
+> ---
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> index cffc0af5190f..766cf21a4be7 100644
+> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> @@ -287,7 +287,7 @@ static u32 dw_hdmi_rockchip_get_bus_format(struct drm_encoder *encoder,
+>  		return 0;
+>  
+>  	bridge_state = drm_atomic_get_bridge_state(conn_state->state, bridge);
+> -	if (!bridge_state)
+> +	if (IS_ERR(bridge_state))
+>  		return 0;
+>  
+>  	if (bridge_state->input_bus_cfg.format != MEDIA_BUS_FMT_FIXED)
+
 
 _______________________________________________
 Linux-rockchip mailing list
