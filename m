@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E268C43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 19:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBF2CC43327
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jul 2026 19:28:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lo6qYgpeutvYUjZajxTnD/60/X5q/kSpaMw64rrqaZs=; b=n+jylxdedSW/n+
-	+MbVwD8G+oH7/hy7R1INkEUuARoxKX53jSW0vIBOvohJXlYYg+EQZ+p3WBMqr1JSF27Z52qnt1yo2
-	ZlaHw42ctrnTkBvWtcppfdqqN+6iFMdUtGid/1IfwLmHaSAGtdcxyzQg8L00I8cnPUWBzLxNzHlYb
-	lK7cXr6NheG0vGjvRIKVwuUcWRORUky/72AhbBW890jN9Mx6DNUYtr0RbSzUXkDNuolzi4xvwczF6
-	jquIKRJKxjQTb5iYcFxyZ1fRomvIRsxOVxrUYbtw0EkJZN/28EIg5b6+BQwUVkRO+IGnneSxuAqRS
-	dGmRPzDAhV+Ssx93uTeA==;
+	List-Owner; bh=jtJYIxkuQCAPFNCuVxoZ+dxbfE2s9w7dx6qQ8hb93mc=; b=JtjYz/A/mmHlGP
+	nYd60aNIMVxQFUfY6AojLsXOAmTe6du7f8rvOOEPRBP2wh6viRoPhr/PXyBiAIdA1RtPIeSujNFvc
+	baQvDlKt9l0LFqWIGw9MBjT7KW3TH4TiU82mjthJmlYTUEgRqZkXOnTdQxDS0kWTxTkMoIlriH43v
+	ijT+8NthuY2X+8aTzTKPkGeZxmJmxO68Hoff/pevtrkBoHjMN2I2NJcqabtu5gpd3OHprgvfm3Url
+	Zf4N8nJzXIi/K4U/oDo7TOq2s0oXDLY5FZv1wF19ISSxDo9kS7qRFAPJI0wn0G0n5CF7mvll8rvgc
+	YPvJQs6w3r6vvXe0ktnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf0YB-00000002thw-0sT5;
-	Wed, 01 Jul 2026 19:24:47 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wf0be-00000002tuQ-2LkQ;
+	Wed, 01 Jul 2026 19:28:22 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf0YA-00000002thd-12cm
+	id 1wf0bd-00000002tuK-3CSY
 	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Jul 2026 19:24:46 +0000
+	Wed, 01 Jul 2026 19:28:21 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 86AED411ED;
-	Wed,  1 Jul 2026 19:24:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8329A1F000E9;
-	Wed,  1 Jul 2026 19:24:44 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D602D6001D;
+	Wed,  1 Jul 2026 19:28:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DD451F000E9;
+	Wed,  1 Jul 2026 19:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782933885;
-	bh=q8kKGc14cZ4z6L10gn228I44wkjJQG6Ee36tf+xwsys=;
+	s=k20260515; t=1782934100;
+	bh=iiQkD6eWK/0FeR93e8iCJjwPRC2KuodqjyurzLXQu1o=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=NHoVdPMJlowTeLYVMn5LGZB+V6p5MfIFAbwuoHvSN+S6iETWtv+gGAl86DNhHQw30
-	 9iRTWUhxx1O7m5opFncHHMvOMeZYp/p3fdAVg2lmlckt7oXh/+cV+7XynblXi3+05N
-	 Jonv9gcEcPMMh+TCsxI3Zt75HMkjAdRLVm06DxdM1kXYupvLSVFOdbl6vWtp+CTx65
-	 XdAYZfq3X6WpPN3pQTstDNvl0wC2g/OmAh3MnO46gIL1QpZUjezYfxOaCk/Zfkw0Ei
-	 vJaXNI/bbJj9a52MgATVcJDWmV2mrjcCeK6ELv507D+o9tMaN0O7k0gtrCF/7YY8pD
-	 BSLntlFZLXiUg==
-Date: Wed, 1 Jul 2026 20:24:41 +0100
+	b=IFUGKGUfO42vn8pd0ZwhKuqfYjuTFFk6cf1ZFpR124BopVtq2noxWtTUy2VuGuMaD
+	 KywAhUPbKqz4cxG3p96HmzFCwDR0ihoMJZsUfV+az4HwDWZk45Q4ceTV/zbEoZq9pK
+	 9WhEmBihV+eL8tJEnTakXhk8zZqEdqsa54wFOA9oyfFkFWcm/iOMRzaDADOhuYomFB
+	 m0ILiklo2zPSjaQR5vb4QHBpuBH+Z3iDEr1CPrNOPjZn0l8MocG/wIfrZ8CfnnKj5+
+	 y68E7OBLU/qBYUeiW7B6TwswdPPZxtCNUhuHpFW/gCVpth7lsFGbnRDfTuanoWNbG/
+	 8VzzIaiTCHC8g==
+Date: Wed, 1 Jul 2026 20:28:15 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
@@ -50,12 +50,12 @@ Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
  andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V15 6/9] iio: imu: inv_icm42607: Add Accelerometer for
+Subject: Re: [PATCH V15 7/9] iio: imu: inv_icm42607: Add Gyroscope to
  icm42607
-Message-ID: <20260701202441.4da5e535@jic23-huawei>
-In-Reply-To: <20260626161230.93069-7-macroalpha82@gmail.com>
+Message-ID: <20260701202815.7d930b56@jic23-huawei>
+In-Reply-To: <20260626161230.93069-8-macroalpha82@gmail.com>
 References: <20260626161230.93069-1-macroalpha82@gmail.com>
-	<20260626161230.93069-7-macroalpha82@gmail.com>
+	<20260626161230.93069-8-macroalpha82@gmail.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -74,245 +74,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 26 Jun 2026 11:12:27 -0500
+On Fri, 26 Jun 2026 11:12:28 -0500
 Chris Morgan <macroalpha82@gmail.com> wrote:
 
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add icm42607 accelerometer sensor for icm42607.
+> Add gyroscope functions to the icm42607 driver.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Hi Chris,
-
-A few things in here.
+Similar comments to those in the accel driver.
 
 Thanks,
 
 Jonathan
 
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
 > new file mode 100644
-> index 000000000000..8ef9fdae1bc8
+> index 000000000000..c7215b3826ad
 > --- /dev/null
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
 
-> +
-> +/* IIO format int + micro , values 0-5 reserved. */
-
-As sashiko notes, 5 is set, so probably 0-4 reserved?
-
-> +static const int inv_icm42607_accel_odr[][2] = {
-> +	[INV_ICM42607_ODR_1600HZ] = { 1600, 0 },
-> +	[INV_ICM42607_ODR_800HZ] = { 800, 0 },
-> +	[INV_ICM42607_ODR_400HZ] = { 400, 0 },
-> +	[INV_ICM42607_ODR_200HZ] = { 200, 0 },
-> +	[INV_ICM42607_ODR_100HZ] = { 100, 0 },
-> +	[INV_ICM42607_ODR_50HZ] = { 50, 0 },
-> +	[INV_ICM42607_ODR_25HZ] = { 25, 0 },
-> +	[INV_ICM42607_ODR_12_5HZ] = { 12, 500000 },
-> +	[INV_ICM42607_ODR_6_25HZ_LP] = { 6, 250000 },
-> +	[INV_ICM42607_ODR_3_125HZ_LP] = { 3, 125000 },
-> +	[INV_ICM42607_ODR_1_5625HZ_LP] = { 1, 562500 },
-> +};
-> +
-> +static int inv_icm42607_accel_read_odr(struct inv_icm42607_state *st,
-> +				       int *val, int *val2)
+> +static int inv_icm42607_gyro_read_odr(struct inv_icm42607_state *st,
+> +				      int *val, int *val2)
 > +{
 > +	unsigned int odr;
 > +	unsigned int i;
 > +
 > +	guard(mutex)(&st->lock);
 > +
-> +	odr = st->conf.accel.odr;
+> +	odr = st->conf.gyro.odr;
 > +
-> +	for (i = 5; i < ARRAY_SIZE(inv_icm42607_accel_odr); ++i) {
-
-As below. Also, why the preincrement?  Common practice in kernel
-is postincrement unless it matters.
-
+> +	for (i = 5; i < ARRAY_SIZE(inv_icm42607_gyro_odr); ++i) {
 > +		if (i == odr)
-> +			break;
-> +	}
-> +	if (i >= ARRAY_SIZE(inv_icm42607_accel_odr))
-> +		return -EINVAL;
+
+As below.
+
 > +
-> +	*val = inv_icm42607_accel_odr[i][0];
-> +	*val2 = inv_icm42607_accel_odr[i][1];
-> +
-> +	return IIO_VAL_INT_PLUS_MICRO;
-> +}
-> +
-> +static int inv_icm42607_accel_write_odr(struct iio_dev *indio_dev,
-> +					int val, int val2)
+> +static int inv_icm42607_gyro_write_odr(struct iio_dev *indio_dev,
+> +				       int val, int val2)
 > +{
-> +	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
 > +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
 > +	struct device *dev = regmap_get_device(st->map);
 > +	unsigned int idx;
+> +	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
 > +	int ret;
 > +
-> +	for (idx = 5; idx < ARRAY_SIZE(inv_icm42607_accel_odr); ++idx) {
+> +	for (idx = 5; idx < ARRAY_SIZE(inv_icm42607_gyro_odr); ++idx) {
 
-Maybe use the define rather than 5 for the start point?
-As it stands that 5 looks a bit magic :)
-Similar to above on the preincrement
+Similar comments to accel. Use the appropriate define for that 5 and
+post increment.
 
-> +		if (val == inv_icm42607_accel_odr[idx][0] &&
-> +		    val2 == inv_icm42607_accel_odr[idx][1])
+> +		if (val == inv_icm42607_gyro_odr[idx][0] &&
+> +		    val2 == inv_icm42607_gyro_odr[idx][1])
 > +			break;
 > +	}
-> +	if (idx >= ARRAY_SIZE(inv_icm42607_accel_odr))
-> +		return -EINVAL;
 
-> +
-> +static int inv_icm42607_accel_read_raw(struct iio_dev *indio_dev,
-> +				       struct iio_chan_spec const *chan,
-> +				       int *val, int *val2, long mask)
+> +static int inv_icm42607_gyro_read_avail(struct iio_dev *indio_dev,
+> +					struct iio_chan_spec const *chan,
+> +					const int **vals,
+> +					int *type, int *length, long mask)
 > +{
-> +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-> +	s16 data;
-> +	int ret;
-> +
-> +	switch (chan->type) {
-> +	case IIO_ACCEL:
+> +	if (chan->type != IIO_ANGL_VEL)
 
-Same issue as for avail for samp_freq as it is shared_by_all and later
-you add the temperature channel. (I admit we cheat in a similar way
-for timestamp channels which strictly speaking should have all the
-shared_by_all values set).  Still nice to do better here and not
-add ordering constraints to channel definitions!
+This was the one sashiko noted was less than ideal as it rules out
+reading this for temperature channels - in practice that doesn't happen
+but that is due to an internal detail of how we create shared_by_all
+attributes. The code should support reading for temperature channels as well.
 
-
-> +		break;
-> +	default:
 > +		return -EINVAL;
-> +	}
-> +
-> +	switch (mask) {
-> +	case IIO_CHAN_INFO_RAW:
-> +		ret = inv_icm42607_read_sensor(indio_dev, chan, &data);
-> +		if (ret)
-> +			return ret;
-> +		*val = data;
-> +		return IIO_VAL_INT;
-> +	case IIO_CHAN_INFO_SCALE:
-> +		return inv_icm42607_accel_read_scale(indio_dev, val, val2);
-> +	case IIO_CHAN_INFO_SAMP_FREQ:
-> +		return inv_icm42607_accel_read_odr(st, val, val2);
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +}
-> +
-> +static int inv_icm42607_accel_read_avail(struct iio_dev *indio_dev,
-> +					 struct iio_chan_spec const *chan,
-> +					 const int **vals,
-> +					 int *type, int *length, long mask)
-> +{
-> +	if (chan->type != IIO_ACCEL)
-> +		return -EINVAL;
-
-Not sure why sashiko only moaned on the gyro, as same issue here. 
-After temperature support is added we have that as a possible channel for
-read_avail for the sampling frequency but that patch doesn't change this
-check.  So it works because of channel ordering and that a different channel
-is associated with that sysfs attribute. That is messy so this should
-handle temperature as well. Perhaps push this check into the IIO_CHAN_INFO_SCALE
-case only?
- 
 > +
 > +	switch (mask) {
 > +	case IIO_CHAN_INFO_SCALE:
-> +		*vals = (const int *)inv_icm42607_accel_scale_nano;
+> +		*vals = (const int *)inv_icm42607_gyro_scale_nano;
 > +		*type = IIO_VAL_INT_PLUS_NANO;
-> +		*length = ARRAY_SIZE(inv_icm42607_accel_scale_nano) * 2;
+> +		*length = ARRAY_SIZE(inv_icm42607_gyro_scale_nano) * 2;
 > +		return IIO_AVAIL_LIST;
 > +	case IIO_CHAN_INFO_SAMP_FREQ:
-> +		*vals = (const int *)inv_icm42607_accel_odr[5];
+> +		*vals = (const int *)inv_icm42607_gyro_odr[5];
 > +		*type = IIO_VAL_INT_PLUS_MICRO;
-> +		*length = (ARRAY_SIZE(inv_icm42607_accel_odr) - 5) * 2;
+> +		*length = (ARRAY_SIZE(inv_icm42607_gyro_odr) - 5) * 2;
 > +		return IIO_AVAIL_LIST;
 > +	default:
 > +		return -EINVAL;
 > +	}
 > +}
 
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> index 738970ed5c66..300c583aba81 100644
-> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
 
-> +int inv_icm42607_set_sensor_conf(struct inv_icm42607_state *st,
-> +				 struct inv_icm42607_sensor_conf *conf,
-> +				 enum iio_chan_type chan_type)
-> +{
-> +	struct inv_icm42607_sensor_conf *oldconf;
-> +	bool config0, config1;
-> +	unsigned int val;
-> +	int ret;
-> +
-> +	switch (chan_type) {
-> +	case IIO_ACCEL:
-> +		oldconf = &st->conf.accel;
-> +		break;
-> +	case IIO_ANGL_VEL:
-> +		oldconf = &st->conf.gyro;
-> +		break;
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +
-> +	inv_icm42607_update_config(conf, oldconf, &config0, &config1);
-> +
-> +	if (config0) {
-> +		if (chan_type == IIO_ANGL_VEL) {
-> +			val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_FS_SEL_MASK, conf->fs);
-> +			val |= FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_ODR_MASK, conf->odr);
-
-Looking again at this code, it would be fairly easy to stash masks and registers in
-a pair of structs that we pick between based on channel type, but maybe it's not worth
-the effort. Up to you.
-
-> +			ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG0, val);
-> +		} else {
-> +			val = FIELD_PREP(INV_ICM42607_ACCEL_CONFIG0_FS_SEL_MASK, conf->fs);
-> +			val |= FIELD_PREP(INV_ICM42607_ACCEL_CONFIG0_ODR_MASK, conf->odr);
-> +			ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG0, val);
-> +		}
-> +		if (ret)
-> +			return ret;
-> +
-> +		oldconf->fs = conf->fs;
-> +		oldconf->odr = conf->odr;
-> +	}
-> +
-> +	if (config1) {
-> +		if (chan_type == IIO_ANGL_VEL) {
-> +			val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG1_FILTER_MASK,
-> +					 conf->filter);
-> +			ret = regmap_update_bits(st->map, INV_ICM42607_REG_GYRO_CONFIG1,
-> +						 INV_ICM42607_GYRO_CONFIG1_FILTER_MASK, val);
-> +		} else {
-> +			val = FIELD_PREP(INV_ICM42607_ACCEL_CONFIG1_FILTER_MASK,
-> +					 conf->filter);
-> +			ret = regmap_update_bits(st->map, INV_ICM42607_REG_ACCEL_CONFIG1,
-> +						 INV_ICM42607_ACCEL_CONFIG1_FILTER_MASK, val);
-> +		}
-> +		if (ret)
-> +			return ret;
-> +
-> +		oldconf->filter = conf->filter;
-> +	}
-> +
-> +	if (chan_type == IIO_ANGL_VEL)
-
-I'd be tempted to do this with a switch just to match the style for the similar
-per channel type block above.
-
-> +		return inv_icm42607_set_pwr_mgmt0(st, conf->mode, st->conf.accel.mode);
-> +
-> +	return inv_icm42607_set_pwr_mgmt0(st, st->conf.gyro.mode, conf->mode);
-> +}
 
 _______________________________________________
 Linux-rockchip mailing list
