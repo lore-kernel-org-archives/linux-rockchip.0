@@ -4,43 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8519CC44501
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98993C44507
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:54:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Md5cZwfPO52fpLC82pkaAF+3kLCt6xCoRn1XF4UWEz8=; b=4H/ETBYyHypuPL
-	1+OVHTj/ZZbM84pF1S6eClZ6VpQt98II+wOwYWU9BknAa6gMdvsdiMoWHuoeGEKs4wcSBllqZpPil
-	pSlbnrfKdX/2CP14wP50IEvvMZbR2c9p03iTLQgdoR1c0mTHN1dwHDQOj4F6my4C7pnydUkXx/2g/
-	mGmqL//nYj+o/OxKj7ess3K33F1fORlvkhegwEGmaSZ3hr7b+NZK7DMeyKKKsW8oRV3o1iPQqN0hC
-	xRFRIf6jNxuaUyBK0e4hvX2mWUUtA5OW/LV1+kvGcRzWU3v9rczfdbQzhyyF3He/ra2YD0IXcmA/J
-	yQkwsoGyElZt7AGrRwSA==;
+	List-Owner; bh=XIlcpwp02AV+t2B7/jwv2GguzcsI7ZEKhs4/WVY6q8o=; b=WZ6YeotdDgwmoM
+	1tBVBlQam5nN2EsYMjDHM4Ceg6vvZmVhdscQFBgBvbIDvmUbRDIav2VnEDXNKDhyVru48H5Zmbzsv
+	XVY2HJK9XAZQsoOnBXB8CpCHTsd29K/16wyhNul0txL4Ndzdjwx7flyDh9ddk2hkjcOPCw9OTajuO
+	lsBOWpXkQd97Y7sZtv9A+u6ibLzl+Gy5i52tkLg8+E0maM03Yl8W/HUvEuxNfSqX42slq5r/G4gVE
+	bxX5v+Tf85NOdvFYbisCNcEoBuv3xFVSwuuElX2owrcvmaovKG3qPHtJ6K/6r5NS6V9CK34PXYA5f
+	C9ojMmsqJ5ODo/7+yxhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkWL-00000001dGQ-1n8M;
+	id 1whkWL-00000001dIY-3sLV;
 	Thu, 09 Jul 2026 08:54:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from mail-westus3azlp170120001.outbound.protection.outlook.com ([2a01:111:f403:c107::1] helo=PH8PR06CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfJne-00000004tTM-2kJP;
-	Thu, 02 Jul 2026 15:58:02 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 009C143313;
-	Thu,  2 Jul 2026 15:58:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B03FE1F000E9;
-	Thu,  2 Jul 2026 15:58:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1783007881;
-	bh=2GojpbKbN4k2MdbuYx8HDDnbJJg9jcM6tSbyryOEvMk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=SJnNNRP+EGmmhh6KRiH7vrp7U5tcCQ4uUkk74aV3dBETWeDGJ2fYnPrhWEpA4mIVF
-	 a7YX2/PcQ1r9wtser/tab+01pWo35DpJF6WKp0qvZ0Uv0rU/X657DvwsQuIkVvEpqV
-	 TtOxbKTWJHUe4wOVptSf0WzHL3aO90+5UHJi4or4=
-Date: Thu, 2 Jul 2026 17:58:11 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Yury Norov <ynorov@nvidia.com>
+	id 1wfJvS-00000004xSR-3dZP;
+	Thu, 02 Jul 2026 16:06:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=EfGfXRt/s7NY3+iLF3g42aZDC2ZApDBAJtj9rCdvzqu8KM/RhmlGmR+XVpvRGRjAWC3A/kSeXNnn1c3sLgIh+s17ZAHbTARTY3LK9I9fGDfaSmwWcEUFUWS7K19HR9XSqr0HXeqDrxK9Bq9p0Tw6ky/iudSchZifIBa6i8mBdc7aff5h/Zr6ohUQyQ1oTVlfd0v6KNOW4zq1/5WxtgGF4OdGxO4mPy9Gh0zZwiHC9J1Rk3ts0+mphTsS8gLtjUTE9oe2Tv94XMWxi7QvxAFD41CZoXaUpGAo25VLleCKWYgONbZnQaH1zetVhMLjQ2DVOXojlmvdy4rpAkRBtJtVDQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Tb5/w1j+O7NmmHE/vQJFbC8aSTx7oM31onkPhnOCb3o=;
+ b=fd03WInRcyefPoZuxXETcvYzp2hMoG0cAwJoSAremaeYQ+YlT6u5OVjXY0QwVYVDzAGSk56GIzJ23HW3+K38uu+bp2Rhg8vTMdRuCDYWbIxyeSaE/hpjsE19k+LwEorHGVxtwwG4aA+W2dDcvVUMbHkxDksDwJYny4kk7ZNzjxzkrRwAY2h+f6iyvXF+CPjhFgy6zXieG0OdnjqnS6iuxjYvA2kekiZOyqiCS2fTz+noxouudAc55zO0Qwc0oupYCjaLSGwY6PSJGWzdzUBvQEXSahePVyRiIBESld90/gSDU8wNuQFhCnFo6dGgasnV1rPhD5PDId5SY2KvHfg/lw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Tb5/w1j+O7NmmHE/vQJFbC8aSTx7oM31onkPhnOCb3o=;
+ b=A8YZnDcYZHrVqcDSi3GIbP2/zki+F6MZ23eb261H0DBbL/17fInTkQIlOxfyDTYWiOgXkuQkAC3hpiiw4b26zMtKnIEhpYvrmJ3kq/cbRyt1DIK2qhk9IU8JAfaQgfYAOEoRndQvoxBvkHYC1aF12GqYF+3N7nrRRnQiuLYdSILjrOF30zIeELxjNuynfJX1+VWQQEYfd9cyf8v9mZXABxOoGXXenyCy8gXzi/64EFubMi+guGNellsWEfCQkghoaiA9Vux9pfySQdiXygs6yrpLh5VdRNcITq/8R4BdD/AlrtxLcfRVHPWkKxuH/YqTlnPud/l5zkMOt4TcxgaIhQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV3PR12MB9356.namprd12.prod.outlook.com (2603:10b6:408:20c::21)
+ by CH3PR12MB7716.namprd12.prod.outlook.com (2603:10b6:610:145::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.8; Thu, 2 Jul 2026
+ 16:05:39 +0000
+Received: from LV3PR12MB9356.namprd12.prod.outlook.com
+ ([fe80::1c36:31b4:c420:6286]) by LV3PR12MB9356.namprd12.prod.outlook.com
+ ([fe80::1c36:31b4:c420:6286%5]) with mapi id 15.21.0181.009; Thu, 2 Jul 2026
+ 16:05:39 +0000
+Date: Thu, 2 Jul 2026 12:05:36 -0400
+From: Yury Norov <ynorov@nvidia.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Andrew Morton <akpm@linux-foundation.org>,
 	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
 	Russell King <linux@armlinux.org.uk>, Frank Li <Frank.Li@nxp.com>,
@@ -105,13 +119,70 @@ Cc: Andrew Morton <akpm@linux-foundation.org>,
 	linux-amlogic@lists.infradead.org, linux-cxl@vger.kernel.org,
 	linux-arm-msm@vger.kernel.org
 Subject: Re: [PATCH v2 01/11] arm: Use sysfs_emit() for cpumask show callbacks
-Message-ID: <2026070244-flier-large-17d1@gregkh>
+Message-ID: <akaMUHFG4yYciZSJ@yury>
 References: <20260702154725.185376-1-ynorov@nvidia.com>
  <20260702154725.185376-2-ynorov@nvidia.com>
-MIME-Version: 1.0
+ <2026070244-flier-large-17d1@gregkh>
 Content-Disposition: inline
-In-Reply-To: <20260702154725.185376-2-ynorov@nvidia.com>
-X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
+In-Reply-To: <2026070244-flier-large-17d1@gregkh>
+X-ClientProxiedBy: SJ0PR03CA0365.namprd03.prod.outlook.com
+ (2603:10b6:a03:3a1::10) To LV3PR12MB9356.namprd12.prod.outlook.com
+ (2603:10b6:408:20c::21)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV3PR12MB9356:EE_|CH3PR12MB7716:EE_
+X-MS-Office365-Filtering-Correlation-Id: 66c362a0-4d46-4dae-f7b7-08ded853c26b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|376014|7416014|1800799024|366016|18002099003|22082099003|4143699003|5023799004|56012099006|11063799006|6133799003;
+X-Microsoft-Antispam-Message-Info: t4hzXNkNSTqXLzpLpeuFtAoluuCHk0YVxC5cBGPlDe7FrU1E1WX2CgNzPFyiiTbNxSN5FRco6X29R4PryBXs1rbUn2Ae/n4Y79buSunQ4NbBMIwi7c+eI2ZDbAbYjBxcCtEmPu+AnzhYPgCJohxx+pp0vHJRp7ZMluIpJ30KdXXGgmIFpXADkOuIPM1Q5OdKI7g1+O/Nv82j4g0ZjZy8JaBeXB/CO9nnqgfthxq324FW214ueUN0yd6WQHF1LEKbOHhdzoEi0fO2xY5wKL3AVLAkVvqtwZ+6XIwZtkDPPmj4ivuiblRT7ll/4238s9kECFViObPTCGEpfBemR62RtIkGGKSwEyvBSSnAyb0DK+GxKh4XpzHHbzo8fcfANxjbyQlNioYrGl8y4nVePXDHTf6lr4oJiPKG+zvCtc5TqOl6Sgk037jFhumLmNa1wRwSr6W968C3A/Zsqr5PQ/g+TGXb9nuGJ46/hJm9yHbYPyI66WrDXdcp54mUnPLc1F67wrQVxAPELKsQHb5cuwCbjvmxonNeviTElNpTKCb1lTTHv0A1lq5zoWoccXOms68TTmlPIbDSO1IeHOQ92It92URErC9Ak89EmMhXSRgHfDhRbUbPQ9uXmUpMTFb7N+Yjgy7nwwMa0hzb/QCLeI0crm1w4P4bvhhv91Hddi5yXF4=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR12MB9356.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(376014)(7416014)(1800799024)(366016)(18002099003)(22082099003)(4143699003)(5023799004)(56012099006)(11063799006)(6133799003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ipiqxxVQQv+tpWu4Q8AibhsWk5CjBCqpLpi74aYnC4Rqzz2c01ijb8epOv0b?=
+ =?us-ascii?Q?AePBGzTZ175wIHPLeaEOcB/3WZzuq3u2qNG3PhxuXG/zcPeQXYbmnf2fdGoJ?=
+ =?us-ascii?Q?2Q9TjSwyPLhQEG06mkiD5TCVeLpkZDTX2OYHgQ0Toa/f61gyYSUjlyu7jWcP?=
+ =?us-ascii?Q?XVmNsx7WdkxFjIFcpvRX3lG0PLCNxY+JKrStgmgZNaXixO+1G2XwPImN9+3M?=
+ =?us-ascii?Q?vBIOYxaYvwYpbqVE9uq092LxkLurB7BJNfXrLWAafiUeLgaKWLdCTmogkQqm?=
+ =?us-ascii?Q?3bpDiHuMSx9KfK0M97kQgMIk7sOzDkzglnKDlBDLhXDmnmQlbofsl2gh9um0?=
+ =?us-ascii?Q?1bat2nELU6qFZ5v3GJwYlNjbgW/QMyGTf6SCDWwqCUxyBxwEsWbGBajbeS31?=
+ =?us-ascii?Q?y1T3P+I5XlAGH4TsSppPmKPau81JSboX1XTgXQIsvH57bNv9dwpeRnY8SiPA?=
+ =?us-ascii?Q?ETyf6qsEZ4T6hUe9KxyCd+rOPNA7u6jxfBuNgiiWHaXCmPjKsMy4sp4qy+M4?=
+ =?us-ascii?Q?OneAQt+DJ3qa66xCImeIYxX57RoX4zMdjBx4Auv2hYTgfNwc1W/xCk1pfqCy?=
+ =?us-ascii?Q?PbdtfUed3P/POQQfkC2KfVRf3wdThW7apzbbbuNqT4ZmlR/52YNj940MXYvv?=
+ =?us-ascii?Q?x5HFxp4HBFMz/HlQNJEgUKMyKyuJS77fT142SxkUEbXfcAu5yfMpbgZg/pBy?=
+ =?us-ascii?Q?QVe98T6FyMABYE/4DhvAFyiSga0KCPOtEswVZLybnMu/pbbRE6/fX+/daIXT?=
+ =?us-ascii?Q?Qp3/5pLGXIBW32egegcH294+3CrzotgsfxvN9uh9G4FRq/XkVdsZIMhUb6WF?=
+ =?us-ascii?Q?POYjlhJ2zJyKFxeDMa8yQJdTFLpZZE7u8Yy1r/HStJd+QyEvyFXqoeFJNvaJ?=
+ =?us-ascii?Q?8aLKwYHZLk23pIqHeI0sggyQdCLkWg1xUtv9Z0iAJHsD9RCKswoXyQANs2Lj?=
+ =?us-ascii?Q?Ow9mmk0PEjC1sMaKUL+eIe6YfiBLkLm21/WMWSi7evglXgIvKqsV/9APAat3?=
+ =?us-ascii?Q?rSK+nrY9honl93jun0euS6sXGhVOjDZ+43/PT5+f+tn4MiTiJm2GOSl5XQmw?=
+ =?us-ascii?Q?/QOAnxR/L/K4i9Xo5MC3qmrNZgcMEq7Wbx7mgzobZpXZWUDIhhtHz74s+FF7?=
+ =?us-ascii?Q?qB/DsFLzloG8ZAY7PNJXYJ/WPoOzwc6qDf1jjLTSZX4Q/QQ9Z0w+45gySdvG?=
+ =?us-ascii?Q?NJ/lmoEYSEaWpwdGYNlrvRPYshq+s50kzMT6OlaQjRe+87nCINZtwH5HLPlq?=
+ =?us-ascii?Q?eLmxpxgIDBkqJL6GGdxno2IKZvzhb4Do4lMuFyVXq5rliCwa9SK7yzg18CZq?=
+ =?us-ascii?Q?asy+vFbT9uZLjisrCyf8bUs92mVDnRmgbE41JW1KGBaGLCsQ/PlTs360IYZ+?=
+ =?us-ascii?Q?VOULoPLgVdjxt7KsRSbP2IjNvGlwlP4ijvz7aCJmE7NTZH4lX1u5kkLyjgsL?=
+ =?us-ascii?Q?BQdSFGFVpS8lPCSSibaS4gCoi3V/Wv99GEvVkxgPVj4bIBNQKYdwmQqmOnfZ?=
+ =?us-ascii?Q?J4pLmwuKN3/b5BlgoQjMHOYCeky8MtYk8BTXbZQqCmHRjCain38HjuXszBSx?=
+ =?us-ascii?Q?FpP35cdWVCX51Na0HswpjlfcvwlUlwoup6IzvwuylZWd89XUnxd4VALVMwzu?=
+ =?us-ascii?Q?nghs/e+58MaosedmzjSmjUeUmeesB69YKRKB6wrfXL/v3s4BVFNmootJoz+Q?=
+ =?us-ascii?Q?WZFPV85gGnao+Au7ac8fBIh/7SCSprhFKlAPgKiajnXFiyfx73k5MSyC/lVP?=
+ =?us-ascii?Q?rRxyBVv2iQ=3D=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 66c362a0-4d46-4dae-f7b7-08ded853c26b
+X-MS-Exchange-CrossTenant-AuthSource: LV3PR12MB9356.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jul 2026 16:05:38.9912
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: PlmgdzxtUMvJNkF4GRxsJUcWLslzHnt7ztCOFPDBh4uQqp/WFK9Tnf8MmKSwFswDadDS44iE9UD+qjy9VCLAuQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB7716
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260702_090606_908595_75BFCF92 
+X-CRM114-Status: GOOD (  21.04  )
+X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,36 +199,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 02, 2026 at 11:47:14AM -0400, Yury Norov wrote:
-> These callbacks are sysfs show paths.
+On Thu, Jul 02, 2026 at 05:58:11PM +0200, Greg Kroah-Hartman wrote:
+> On Thu, Jul 02, 2026 at 11:47:14AM -0400, Yury Norov wrote:
+> > These callbacks are sysfs show paths.
+> > 
+> > Use sysfs_emit() and cpumask_pr_args() to emit the masks.
+> > 
+> > This prepares for removing cpumap_print_to_pagebuf().
+> > 
+> > Signed-off-by: Yury Norov <ynorov@nvidia.com>
+> > ---
+> >  arch/arm/mach-imx/mmdc.c     | 2 +-
+> >  arch/arm/mm/cache-l2x0-pmu.c | 2 +-
+> >  2 files changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/arch/arm/mach-imx/mmdc.c b/arch/arm/mach-imx/mmdc.c
+> > index b71467c48b87..f6d993b9b1d4 100644
+> > --- a/arch/arm/mach-imx/mmdc.c
+> > +++ b/arch/arm/mach-imx/mmdc.c
+> > @@ -127,7 +127,7 @@ static ssize_t mmdc_pmu_cpumask_show(struct device *dev,
+> >  {
+> >  	struct mmdc_pmu *pmu_mmdc = dev_get_drvdata(dev);
+> >  
+> > -	return cpumap_print_to_pagebuf(true, buf, &pmu_mmdc->cpu);
+> > +	return sysfs_emit(buf, "%*pbl\n", cpumask_pr_args(&pmu_mmdc->cpu));
 > 
-> Use sysfs_emit() and cpumask_pr_args() to emit the masks.
-> 
-> This prepares for removing cpumap_print_to_pagebuf().
-> 
-> Signed-off-by: Yury Norov <ynorov@nvidia.com>
-> ---
->  arch/arm/mach-imx/mmdc.c     | 2 +-
->  arch/arm/mm/cache-l2x0-pmu.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm/mach-imx/mmdc.c b/arch/arm/mach-imx/mmdc.c
-> index b71467c48b87..f6d993b9b1d4 100644
-> --- a/arch/arm/mach-imx/mmdc.c
-> +++ b/arch/arm/mach-imx/mmdc.c
-> @@ -127,7 +127,7 @@ static ssize_t mmdc_pmu_cpumask_show(struct device *dev,
->  {
->  	struct mmdc_pmu *pmu_mmdc = dev_get_drvdata(dev);
->  
-> -	return cpumap_print_to_pagebuf(true, buf, &pmu_mmdc->cpu);
-> +	return sysfs_emit(buf, "%*pbl\n", cpumask_pr_args(&pmu_mmdc->cpu));
+> Really?  Looks like the original is much simpler to understand, why must
+> this function go away?
 
-Really?  Looks like the original is much simpler to understand, why must
-this function go away?
+Because it's a duplicate of printk("*pbl"), and nothing is simpler in
+practice.
 
-thanks,
+Because the 'true' vs 'false' parameter in cpumap_print_to_pagebuf() is much
+harder to remember, comparing to "*pbl" vs "*pb" in the standard printk-like
+API. And because the 'print_to_pagebuf' has a record of misuse.
 
-greg k-h
+For more details, see:
+
+https://lore.kernel.org/all/akANJ-AT7nHpRMq-@yury/
+
+Thanks,
+Yury
 
 _______________________________________________
 Linux-rockchip mailing list
