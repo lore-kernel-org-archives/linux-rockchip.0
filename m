@@ -4,57 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFA36C43602
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B5F9C44503
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9q5cTF+/d7hgQSmJPVHc5adOHw7RXZqMVCwu9jsYkO8=; b=FZ1I1jdusT+dnJ
-	qcK6SuNHLCkby9+86WvQJdR+7ln3r06X2dWjlsbnKVkBPeF+ex3/unBT6UJjyzvpFMZluURrWSCa9
-	sUEIY9B3r3H2iVcg989mK0ayvLkTqiJiJeUDabG0yISwuTD+uZVSRjqelJY2QeKl/x2Ci52QiGHqa
-	8CxaGNk1sbKQq8OBFWNaJcb/Lq1qX1Fmmg5Ki4gnIqy4YUFQkdSbQ8WVnHGnxRVsNQwlKjU2Qmyrm
-	PQFP85+6BpwpQ2l0wNirz1G6aXK6kP7dBwCAGNIQ/wfb8MKwrJRC+NgoeonrHpZPuSEx421bsngCO
-	N4ZF8OgiAL8gh5L/cnqw==;
+	List-Owner; bh=xzIyri0zoCdywxmf/AV8IyozIfIt2MKgywhLv6lugpg=; b=s/C6u71bGCsbLq
+	Pzc++vs2dANm+u3hxaB1g66LgCmN5F2eTCUUlW2Z7VRzqiKk1Re/hhYsG6Dbxejn8dAQwTjumRImL
+	gy5CS5FE/SgY3UBOE09jfu/Fbi0Ra9jsWd5h3FYyqtWE/U3j3ijzW0oi8cZe31ecinpcYV2H3/CV9
+	ZS3n9x7FvWncSbMHpqvauAJ9Taquh+n15sSuPvsByQU8365Yb1+lZ5sKGOmS6MwxFK27oL9w2FWw6
+	ghOVOSc9ALmmqclB3VvLq7pzxgDBGSZWAy1rh+UhG4lpNhyCX8+obSdiEw0QlRby+z5BR/NQWf3aQ
+	8SbAbbbJXoew2MSI8HdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMio-00000005Jay-0QBd;
+	id 1wfMio-00000005Jbp-1UQf;
 	Thu, 02 Jul 2026 19:05:14 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMii-00000005JPr-2tOC;
-	Thu, 02 Jul 2026 19:05:11 +0000
+	id 1wfMij-00000005JQX-27yJ;
+	Thu, 02 Jul 2026 19:05:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=+Oq1SCAGAkg/fhNyb4Dij2RBKiVngEznFtGkk+Zdb+s=; b=tzVMbT8lbygAzCdhc8BqUypZKW
-	yg5nCOEQKKL/33FmiKBzgAXdOW69t7yuWKEAeZuvOQxGhc4h0t8KtVW6L8xoAy00o0/gs1rSUEu4g
-	sXuSZOMRd82BzkcYMUqJfi62TLAR9HA3bCtl9Fsvh5uwHBifwuUVIqu+xIUPMxTuXGz/wM7wZRJvU
-	kB7TNA8sgRO2KkKf4m4reC97uQJf9O2qMb+0Y2g1JsDWJWYd7aF2fvqavcGvNmq/+gipt39Fdfzih
-	8OiCRoIV2EILJapHv+K0LFkNh6jUniCQzxcsTagsPzzf00wFRYSUh2eAYsM9YAvvzmrXEaO6tG7ta
-	MNWYj1kA==;
+	bh=t0NNRG9w6w6jCTySSfCRM9uqcR86GLmzg5Z0J050DYU=; b=LsfxnjEKjnc97llUKZA01GgdJd
+	dFnlBw7l7/cyde3yav7xw1ZgV/I7vQ7VBnX/NxjAz/cIbvF6F3jDbB3NBeojbS22ZS6I0XPVI6Ux3
+	1b65moljWbK2+G0pczunZ1v3OE0/yT/ERdYmNTd8cXcDSsVDCvQ05cZLffLCVW1ccobviW+3mGvh/
+	6xoTGiP4j2YPEKwTOqHmGaJCdFIuVSZeCHd3UaSWC5mlaO0IlwuADLRUOeuXANg/3qaeom/T/3maN
+	3Q0dXJCQnr+unhryQgoAqGqRw5CA5Vc3m4zDZkddVop5OYEtnom5Q3eBHmfE+1+F4JUONB9nN39Wo
+	kJ9pBXYQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: Add HINLINK H28K
-Date: Thu,  2 Jul 2026 21:04:49 +0200
-Message-ID: <178301901910.3838694.10638773555392224178.b4-ty@sntech.de>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v11 0/3] Add eDP support for RK3576
+Date: Thu,  2 Jul 2026 21:04:51 +0200
+Message-ID: <178301901908.3838694.14923342654854634320.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260610100006.366963-1-amadeus@jmu.edu.cn>
-References: <20260610100006.366963-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20260605022305.3058853-1-damon.ding@rock-chips.com>
+References: <20260605022305.3058853-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_120508_757344_4B9B4956 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20260702_120509_557788_AE113E32 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,29 +61,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: detlev.casanova@collabora.com, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, sebastian.reichel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alchark@gmail.com, michael.riesch@collabora.com, andy.yan@rock-chips.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 10 Jun 2026 18:00:04 +0800, Chukun Pan wrote:
-> The HINLINK H28K is a dual-gigabit SBC based on the RK3528 SoC.
+On Fri, 05 Jun 2026 10:23:02 +0800, Damon Ding wrote:
+> Picked from:
+> https://lore.kernel.org/all/20260601065100.1103873-1-damon.ding@rock-chips.com/
 > 
-> There is a version that SeeedStudio distributes called LinkStar-H28K.
-> It's no different from the HINLINK H28K. The schematic can be found here:
+> Patch 1-2 are to add missing clock "hclk" for RK3588 eDP nodes.
+> Patch 3 is to add the RK3576 eDP node.
 > 
-> https://www.hinlink.cn/wp-content/uploads/2024/03/20240428015024130824.pdf
-> https://files.seeedstudio.com/wiki/H28K/Open_source/H28K-SCH.zip
+> Damon Ding (3):
+>   arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
+>   arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
+>   arm64: dts: rockchip: Add eDP node for RK3576
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: Add HINLINK H28K
-      commit: dce1f5a78a4f645ec3fae9b45b1453b989d3fc69
-[2/2] arm64: dts: rockchip: Add HINLINK H28K
-      commit: 145d4af4b204e1fb565a498c6c8f801525cc0a4e
+[1/3] arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
+      commit: 5603ce4f1d470af29e0cc76e36ea99e62fa07151
+[2/3] arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
+      commit: 6f1ed82b7f084c13bffcaa9e2c7acf5bc64b659b
+[3/3] arm64: dts: rockchip: Add eDP node for RK3576
+      commit: 65bdf72f7fda3b1a24bd6f5ea15ce40ec2cc3e0a
 
 Best regards,
 -- 
