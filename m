@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D685C4450C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1BE5C4450D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tTL8X7AGTqwokBNIlLeAkmxVEyNqoJCY9Y06iTA0ffQ=; b=ACzM13F29xAZY6
-	QWmqPyu7B5WpcmVIVYHyHnPZm4U2LLf1v2uw7qwu69yD5mh5dXrfM/hGMc1FLCYcgfUSjm6aX4gx1
-	IiagqPOCbj4pVhZ588K+aTngl3ULngwtWHMyLnBqj/51aCPWWvmN4wT0spD/a9LVLHAZgskHYlIf+
-	8nggkwSWBqiBgqLT0mX5PDYTx1RLhKfuNH7n3q9M9TZiJfSgAjGimf9jBD5r+O8ayeRMYsDKMBYz+
-	vYQXqGJ4npYCIYth7oyQhQriapFtKu9zlbiQVApViuiD/TqVlH7pQg/VCqqASCM6WfDNNah5oj/6c
-	ryvmgNLB+fVbmvKFK0gw==;
+	List-Owner; bh=OpL0JAC7TEP/DN3uD3vrILgbIvZmJi8A1u5w4hL0MEw=; b=G+s9gJZDlUKHDb
+	a8Eoz68uZszP+xWksoyH/xHMkSxOFkUTeGlpxvyymVch36xOxaZPwExCWTTSt74ZibCW29KIg9O+H
+	BH64gegpxlY57JLLNHjHu59OYFhus0ZhPDOaz6pJSL/mHeWkt3wMVI+41WnQgXSQacb2UgJNXBC+s
+	GRO21ylrXup2qI5LzU7BlvPYCa8gtcXzqBpXewGxM/WyOtvCYJRCBueecqqkC2dZaygJIZ0jCWBzE
+	XHHZkoR3YRmrTQN/crGfxFWYtIkMJZIqFQpmSZoj9Zmz7j54M8OZoVWW5nn8Q9M4ZTsmryNyVcnct
+	Uv6mGtaMgdBp1yeEC+BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgj-00000004eqF-1lX8;
-	Thu, 02 Jul 2026 14:46:49 +0000
+	id 1wfIgi-00000004emh-15DG;
+	Thu, 02 Jul 2026 14:46:48 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgc-00000004eZB-1VkZ;
-	Thu, 02 Jul 2026 14:46:44 +0000
+	id 1wfIga-00000004eYK-2wEG;
+	Thu, 02 Jul 2026 14:46:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783003600;
-	bh=QCn0pWH6R490QoGfBT3a1Vn0/GvOOWVICGTR08194MA=;
+	s=mail; t=1783003598;
+	bh=x4u2dfItxzoFU/CVPWRWwnjc6iScRuYMltXDcS6NYEU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=LWYPW9Ww0AbpqzFgzNNEQ9LWXyxHGyREaR3817xNgE68gdxl8yTuccII9hX2HV7fX
-	 +5vBHkI7AYAz5+gReN5bLfYx/HZZ/3hlWg5exUXsKN/s8XRliCvyo+shc1ZrhEeH2D
-	 Vr/wEV4h4ou0elezTCg6wkSJHrywtC0HrdbUBr6aKzyDJXFRh6mytDhfwN14KIOJBP
-	 Ocd9SmEryD6IHjw3Eu3QMP6bUTFudcL8XJdmSxa56SlKO0Dq1+Z4rH2J3gQdrTkQPW
-	 6GSYNEbW1XzVuIVvQd3m1cqFbeRgZZ2O7xzogCBliPg0OMFR1pIGV0u+Sy3Hc6qLG/
-	 N9SYMXcXEUYrg==
+	b=b8Roq17UJ01nVsa3g4nK5z3fCr28YdWISG/w9oXNZGpxvT7eJLfDNo7zff6djXsKA
+	 JxboBlJAKi6cCOOW7rjcUMkn2IWPb6ezclgKDfAgxbX8eK8Hvik339fTMi8JK/4PLy
+	 vvHl5faTxPWNrCvNSHMQ7vWB6vXtZSUPmkxO3+p39tOTy70DuzCTr+KGhYyA3zr8K5
+	 3oNOROA/qKGz0eo0h2RVodO8itWycYVAYRS1r4sjuaQWs1kPuXm52bjCP54m+qRPmr
+	 qIS6vL5j55JoeccxfQ7S1xN922G3ziZqksf2TuDirufT/owKb5jY4s9NDSj8baYK1m
+	 Th3RoYYMbLKzQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6EA9117E35CD;
-	Thu,  2 Jul 2026 16:46:40 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2DE8817E15D0;
+	Thu,  2 Jul 2026 16:46:38 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 02 Jul 2026 17:46:25 +0300
-Subject: [PATCH v8 12/39] drm/bridge: Remove redundant error check in
- drm_bridge_helper_reset_crtc()
+Date: Thu, 02 Jul 2026 17:46:22 +0300
+Subject: [PATCH v8 09/39] drm/display: hdmi-state-helper: Add fallback TMDS
+ rate validation
 MIME-Version: 1.0
-Message-Id: <20260702-dw-hdmi-qp-scramb-v8-12-d79890d00b6a@collabora.com>
+Message-Id: <20260702-dw-hdmi-qp-scramb-v8-9-d79890d00b6a@collabora.com>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -66,12 +66,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+ linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_074642_572399_4B602603 
-X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-CacheID: sfid-20260702_074641_808760_BBB49875 
+X-CRM114-Status: UNSURE (   9.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,29 +88,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove the no-op error check after drm_atomic_helper_reset_crtc() since
-the goto target is the immediately following label and the return value
-is already propagated correctly without it.
+Validate the computed TMDS character rate against
+connector->hdmi.max_tmds_char_rate when no driver-specific
+tmds_char_rate_valid() hook is provided.
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+This gives HDMI connectors a common fallback for rejecting modes whose
+TMDS character rate exceeds the connector limit, while still allowing
+drivers with custom validation requirements to implement their own
+tmds_char_rate_valid() callback.
+
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/drm_bridge_helper.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/gpu/drm/drm_bridge_helper.c b/drivers/gpu/drm/drm_bridge_helper.c
-index 420f29cf3e54..0a3c8fee66b3 100644
---- a/drivers/gpu/drm/drm_bridge_helper.c
-+++ b/drivers/gpu/drm/drm_bridge_helper.c
-@@ -50,8 +50,6 @@ int drm_bridge_helper_reset_crtc(struct drm_bridge *bridge,
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index ce17eeefc2da..db76699093e8 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -566,6 +566,9 @@ hdmi_clock_valid(const struct drm_connector *connector,
+ 		status = funcs->tmds_char_rate_valid(connector, mode, clock);
+ 		if (status != MODE_OK)
+ 			return status;
++	} else if (connector->hdmi.max_tmds_char_rate) {
++		if (clock > connector->hdmi.max_tmds_char_rate)
++			return MODE_CLOCK_HIGH;
+ 	}
  
- 	crtc = connector->state->crtc;
- 	ret = drm_atomic_helper_reset_crtc(crtc, ctx);
--	if (ret)
--		goto out;
- 
- out:
- 	drm_modeset_unlock(&dev->mode_config.connection_mutex);
+ 	return MODE_OK;
 
 -- 
 2.54.0
