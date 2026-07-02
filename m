@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F0F8C43327
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFA36C43602
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+7cRkepwwkyO4gfA2ZrnEcARAABn/yFwtiUQsy8fpUo=; b=B23ItVpDfNPF82
-	NaaS56b3evFkYTvfuOaLVbJqCwAoSSw5h51s4SYLOfXrzTE/cPpVZSKKZCEcH1wL5AmO13yu99Fll
-	qvCKumnhEpIrirOIJj6dfEQzJyZCaSGbZzdrIzGIBhwj3+nuIaV/Ufs/4jHCCnrOcK+Xl6qc4ebJG
-	gFKutMuqhPVqderFOAo5hgamD45ogVvDdHNeHHT/VcAgViKtq0uIvMTMhYUUTHySHQ3JBLptLB8MI
-	mRebF6Cg4lNnpPwrEnE+ykBMMd1X+yCVQmseDn3VYcqMCSsfgRwHeTcjNbnyU37sgbjcMlmEWEwyb
-	rJs3rpUpZOBH7CKlzL4g==;
+	List-Owner; bh=9q5cTF+/d7hgQSmJPVHc5adOHw7RXZqMVCwu9jsYkO8=; b=FZ1I1jdusT+dnJ
+	qcK6SuNHLCkby9+86WvQJdR+7ln3r06X2dWjlsbnKVkBPeF+ex3/unBT6UJjyzvpFMZluURrWSCa9
+	sUEIY9B3r3H2iVcg989mK0ayvLkTqiJiJeUDabG0yISwuTD+uZVSRjqelJY2QeKl/x2Ci52QiGHqa
+	8CxaGNk1sbKQq8OBFWNaJcb/Lq1qX1Fmmg5Ki4gnIqy4YUFQkdSbQ8WVnHGnxRVsNQwlKjU2Qmyrm
+	PQFP85+6BpwpQ2l0wNirz1G6aXK6kP7dBwCAGNIQ/wfb8MKwrJRC+NgoeonrHpZPuSEx421bsngCO
+	N4ZF8OgiAL8gh5L/cnqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMik-00000005JU4-1NyO;
-	Thu, 02 Jul 2026 19:05:10 +0000
+	id 1wfMio-00000005Jay-0QBd;
+	Thu, 02 Jul 2026 19:05:14 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMig-00000005JNH-076u;
-	Thu, 02 Jul 2026 19:05:07 +0000
+	id 1wfMii-00000005JPr-2tOC;
+	Thu, 02 Jul 2026 19:05:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=kwkpuFiJFSig1yrgIRHVrq1BQtVphda099BHLY4gXx8=; b=GnNg4IcbGHj4LG3T+K83pcS4qd
-	g1bV+9BkUhKcRb20kwj58+CxUOs7De7lebEY06waM02j88XzE13GSkX4jwLL0ebUnOYw9ojoZUtTW
-	jIMnYrZuIL5i8e27f2CXf6jcA+kvgOm9Aj8/S3h+myUR6FZiTVPcF4v47aDTwCrUeUaMYv8nXJlm6
-	2JynNtRFpf2i/fL8kFsAI6jXv/Vib0HWY+UL0VzeGGw5IfqSVEYPHm6vz5ocSIKShLKu5jBYG1Jq7
-	39+58w0Q8cW5sa/mG5wh+QX5s9W2gPRnpjpGD6GfYivmtxnVyddQTrhiTeVHO1T5D4YYrwUds32lv
-	gjLwNegA==;
+	bh=+Oq1SCAGAkg/fhNyb4Dij2RBKiVngEznFtGkk+Zdb+s=; b=tzVMbT8lbygAzCdhc8BqUypZKW
+	yg5nCOEQKKL/33FmiKBzgAXdOW69t7yuWKEAeZuvOQxGhc4h0t8KtVW6L8xoAy00o0/gs1rSUEu4g
+	sXuSZOMRd82BzkcYMUqJfi62TLAR9HA3bCtl9Fsvh5uwHBifwuUVIqu+xIUPMxTuXGz/wM7wZRJvU
+	kB7TNA8sgRO2KkKf4m4reC97uQJf9O2qMb+0Y2g1JsDWJWYd7aF2fvqavcGvNmq/+gipt39Fdfzih
+	8OiCRoIV2EILJapHv+K0LFkNh6jUniCQzxcsTagsPzzf00wFRYSUh2eAYsM9YAvvzmrXEaO6tG7ta
+	MNWYj1kA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Hrushiraj Gandhi <hrushirajg23@gmail.com>
+To: Chukun Pan <amadeus@jmu.edu.cn>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v7 0/2] arm64: dts: rockchip: add Vicharak Axon board support
-Date: Thu,  2 Jul 2026 21:04:55 +0200
-Message-ID: <178301901903.3838694.3276523670393868229.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: Add HINLINK H28K
+Date: Thu,  2 Jul 2026 21:04:49 +0200
+Message-ID: <178301901910.3838694.10638773555392224178.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260608060940.52549-1-hrushirajg23@gmail.com>
-References: <20260608060940.52549-1-hrushirajg23@gmail.com>
+In-Reply-To: <20260610100006.366963-1-amadeus@jmu.edu.cn>
+References: <20260610100006.366963-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_120506_089899_0BEB1CC1 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20260702_120508_757344_4B9B4956 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,35 +72,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 08 Jun 2026 11:39:38 +0530, Hrushiraj Gandhi wrote:
-> This series adds initial device tree support for the Vicharak Axon
-> single-board computer, which is based on the Rockchip RK3588 SoC.
+On Wed, 10 Jun 2026 18:00:04 +0800, Chukun Pan wrote:
+> The HINLINK H28K is a dual-gigabit SBC based on the RK3528 SoC.
 > 
-> The Vicharak Axon is a feature-rich SBC targeting developer and embedded
-> use cases. It ships with:
+> There is a version that SeeedStudio distributes called LinkStar-H28K.
+> It's no different from the HINLINK H28K. The schematic can be found here:
 > 
->   - Rockchip RK3588 (4x Cortex-A76 + 4x Cortex-A55)
->   - RK806 PMIC providing all SoC power domains
->   - eMMC 5.1 (on-board) and microSD slot
->   - Gigabit Ethernet via RGMII (RTL8211F)
->   - Dual HDMI 2.1 output and one HDMI 2.0 input (receiver)
->   - PCIe 3.0 x4 and two PCIe 2.0 slots
->   - SATA 3.0
->   - USB 2.0 host ports (EHCI/OHCI)
->   - NXP PCA9554 I/O expander for status LEDs
->   - Haoyu HYM8563 RTC
+> https://www.hinlink.cn/wp-content/uploads/2024/03/20240428015024130824.pdf
+> https://files.seeedstudio.com/wiki/H28K/Open_source/H28K-SCH.zip
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: add Vicharak Axon board
-      commit: e0008b108aaf8c5aa22930b2ceadf8f894562acb
-[2/2] arm64: dts: rockchip: add Vicharak Axon board
-      commit: e08c3389c78dbefd31a57df8807cf57ef6f3c9b1
-
-Please check for double empty lines and ordering in future patches.
-I've cleaned up some things.
+[1/2] dt-bindings: arm: rockchip: Add HINLINK H28K
+      commit: dce1f5a78a4f645ec3fae9b45b1453b989d3fc69
+[2/2] arm64: dts: rockchip: Add HINLINK H28K
+      commit: 145d4af4b204e1fb565a498c6c8f801525cc0a4e
 
 Best regards,
 -- 
