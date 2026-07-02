@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40947C43327
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D52C43327
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:47:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2YzWn4QFd8iWR1kIZ8p7Qe3xIhxjvmIvta2RHEuvAQ8=; b=ihoXbxqozjhq/e
-	+XGkGFqmlYxxPb051JZ/du1hVvtMRGpk+kEPit64+qI38fN60lEjIQn2V59HephWzaBQXFSHeNzUe
-	fdySd9zUTpN4ik2Ae2jsZJAp6fwRNVX5ZzjBSphseiWxjaqP6HOqO0wxQuNIWsPbc737naH7T93Ub
-	DmwmnOWyC8h5iRPSG1cXixSoRCMhIabOKrL5rRwL3OFDHyzC4QnGNE3EDM+kydblSNtUl0LhLY9jT
-	IbGVpe4xdXyDSiDB0YREyKPQNkMYUpDLJnPYGjorANzUsal8txuthPrumnzSQnX8r0LRZ5LfjP75A
-	CDbPRgQuDHk4q3Q1KxWw==;
+	List-Owner; bh=CRvyq7eayw7Ih2zx6audzow3VGUk1Jso2N3hegi3W5g=; b=4mtHzicSNAJ1Yz
+	hp88Nzl7W3qnkxTadR/m0CgTOOznNzSVUEgsU/bLzSGSoTJ9Ie9MW5Kiz3TrIRmzo0mqu2oCChfcY
+	YjDqFVUlLJOSPaL4ZH8NeFa1Fe57H3p7lZR2Vc6wN9Ruqql4ypwO9xh6zGCMSGPL0Z/KOAQ/kVxyz
+	nPQuzonVbomiAuuPSi+wtZXuo7fbdKBh18ZKgT9mmAgZmB+Y89WQE9Wz42uum4v9D9FcX3//LiOT5
+	RqrqjHzeOdQUdjdC4CPvR8z9ffi4k6Nz7tS5ZTWQ/z6pBTOK7nquLYHmgi+QpwhK7rle8ahtM3b2o
+	ZQ+fAU16gIhXUOIpUVhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIhW-00000004gdr-1ECG;
-	Thu, 02 Jul 2026 14:47:38 +0000
+	id 1wfIhZ-00000004gmD-0oXs;
+	Thu, 02 Jul 2026 14:47:41 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgn-00000004exz-46qk;
-	Thu, 02 Jul 2026 14:46:55 +0000
+	id 1wfIgq-00000004f4F-0BhJ;
+	Thu, 02 Jul 2026 14:46:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783003611;
-	bh=k98NIODQrm2nVgg+OaZAOeOcvX7GrcTzPC91lHBmDmU=;
+	s=mail; t=1783003614;
+	bh=oRJHiv5Xy3cWFXF7zc+DVt+6QfSJIYgjTTfVBK1Rmho=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fLFRk+d7R4XuBsATVsrcLiqnx0prwZ+xI9D0WQ09b6EbMqf7KaqWfLHmqflgPqgUU
-	 ymlDz5UQf8ZQlcB+yqYgh9lm+iPSqSpF38KV1riep4ziUhQswUQlKbu1eJCZOHKfRk
-	 L7W9XEGO/1hDNZjvTUNaDDa4GT+dV/Hnjc69okN1ApTf0F3utMap2CH41QXE/EpFUJ
-	 dRbDAIOy//o/Yr4aG/qA5j6Po4hOrh5Y+FyENnKINa/U29eYZxaF4Q1IxVgy2aNXvf
-	 nGn8fdV79Q87eU4aMGOp4Wgl0jFiwZMY8RO3OEXSlbRFGbMLjnBBhJXs+KGPmj21iM
-	 BrJq1D3LyV+5g==
+	b=HzSuOdMNPppul9DcAK+K7kew4gF0ghNPBWe++u72F8SEau+MmCHX6Si/2uSKTdGx2
+	 NKc9wRmlgQoaQ4ZCWKb7aDHabxNy6bC2/fZuBnwNl0MZS3U/P+kODSNG/iGkW2QBD2
+	 AmCgEyX8cjqNP+1TeIAtZLqI2i5ADL3XLoc880Q8kRzlXmxO9N7KgJhk/C+N9TdLQC
+	 6OqjndIWUM5JiLTvoMQIwAUP6K7M6ZxiPpUfcud6MDBmOw9moBSj+SY5CsS7fUH30h
+	 hPpMm6VgV8DNhhnf68iQU75Ik1asgx599AUFneEQ5DX326w0vhO0DFXqq3InToBqoC
+	 vFBN1QUi6D80g==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A443E17E3650;
-	Thu,  2 Jul 2026 16:46:51 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D045917E3667;
+	Thu,  2 Jul 2026 16:46:53 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 02 Jul 2026 17:46:40 +0300
-Subject: [PATCH v8 27/39] drm/rockchip: dw_hdmi_qp: Use
- dw_hdmi_qp_hpd_notify() for HPD reports
+Date: Thu, 02 Jul 2026 17:46:43 +0300
+Subject: [PATCH v8 30/39] drm/vc4: hdmi: Switch to
+ drm_hdmi_mode_needs_scrambling()
 MIME-Version: 1.0
-Message-Id: <20260702-dw-hdmi-qp-scramb-v8-27-d79890d00b6a@collabora.com>
+Message-Id: <20260702-dw-hdmi-qp-scramb-v8-30-d79890d00b6a@collabora.com>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -69,8 +69,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_074654_275780_B4F88EDF 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20260702_074656_295954_2C03F169 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,52 +87,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Notify only the affected connector instead of polling all of them, and
-ensure .detect_ctx() runs on reconnect to recover SCDC state.
+The VC4 HDMI driver has a local helper to check whether a mode requires
+scrambling.  It is equivalent to drm_hdmi_mode_needs_scrambling(), so
+use the common helper instead.
+
+No functional change intended.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 12 ++----------
- 1 file changed, 2 insertions(+), 10 deletions(-)
+ drivers/gpu/drm/vc4/vc4_hdmi.c | 16 ++++------------
+ 1 file changed, 4 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index c8675f43c687..9bced588c86c 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -24,7 +24,6 @@
- #include <drm/drm_bridge_connector.h>
- #include <drm/drm_managed.h>
- #include <drm/drm_of.h>
--#include <drm/drm_probe_helper.h>
- 
- #include "rockchip_drm_drv.h"
- 
-@@ -354,14 +353,8 @@ static void dw_hdmi_qp_rk3588_hpd_work(struct work_struct *work)
- 	struct rockchip_hdmi_qp *hdmi = container_of(work,
- 						     struct rockchip_hdmi_qp,
- 						     hpd_work.work);
--	struct drm_device *drm = hdmi->encoder.encoder.dev;
--	bool changed;
- 
--	if (drm) {
--		changed = drm_helper_hpd_irq_event(drm);
--		if (changed)
--			dev_dbg(hdmi->dev, "connector status changed\n");
--	}
-+	dw_hdmi_qp_hpd_notify(hdmi->hdmi);
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index fbdb0448aa2b..e7b0f0f2e350 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -130,15 +130,6 @@ static bool vc4_hdmi_supports_scrambling(struct vc4_hdmi *vc4_hdmi)
+ 	return true;
  }
  
- static irqreturn_t dw_hdmi_qp_rk3576_hardirq(int irq, void *dev_id)
-@@ -738,8 +731,7 @@ static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
+-static bool vc4_hdmi_mode_needs_scrambling(const struct drm_display_mode *mode,
+-					   unsigned int bpc,
+-					   enum drm_output_color_format fmt)
+-{
+-	unsigned long long clock = drm_hdmi_compute_mode_clock(mode, bpc, fmt);
+-
+-	return clock > HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
+-}
+-
+ static int vc4_hdmi_debugfs_regs(struct seq_file *m, void *unused)
+ {
+ 	struct drm_debugfs_entry *entry = m->private;
+@@ -313,7 +304,7 @@ static int vc4_hdmi_reset_link(struct drm_connector *connector,
+ 		return 0;
+ 	}
  
- 	dw_hdmi_qp_resume(dev, hdmi->hdmi);
+-	scrambling_needed = vc4_hdmi_mode_needs_scrambling(&vc4_hdmi->saved_adjusted_mode,
++	scrambling_needed = drm_hdmi_mode_needs_scrambling(&vc4_hdmi->saved_adjusted_mode,
+ 							   vc4_hdmi->output_bpc,
+ 							   vc4_hdmi->output_format);
+ 	if (!scrambling_needed) {
+@@ -443,7 +434,8 @@ static int vc4_hdmi_connector_get_modes(struct drm_connector *connector)
+ 		const struct drm_display_mode *mode;
  
--	if (hdmi->encoder.encoder.dev)
--		drm_helper_hpd_irq_event(hdmi->encoder.encoder.dev);
-+	dw_hdmi_qp_hpd_notify(hdmi->hdmi);
+ 		list_for_each_entry(mode, &connector->probed_modes, head) {
+-			if (vc4_hdmi_mode_needs_scrambling(mode, 8, DRM_OUTPUT_COLOR_FORMAT_RGB444)) {
++			if (drm_hdmi_mode_needs_scrambling(mode, 8,
++							   DRM_OUTPUT_COLOR_FORMAT_RGB444)) {
+ 				drm_warn_once(drm, "The core clock cannot reach frequencies high enough to support 4k @ 60Hz.");
+ 				drm_warn_once(drm, "Please change your config.txt file to add hdmi_enable_4kp60.");
+ 			}
+@@ -802,7 +794,7 @@ static void vc4_hdmi_enable_scrambling(struct drm_encoder *encoder)
+ 	if (!vc4_hdmi_supports_scrambling(vc4_hdmi))
+ 		return;
  
- 	return 0;
- }
+-	if (!vc4_hdmi_mode_needs_scrambling(mode,
++	if (!drm_hdmi_mode_needs_scrambling(mode,
+ 					    vc4_hdmi->output_bpc,
+ 					    vc4_hdmi->output_format))
+ 		return;
 
 -- 
 2.54.0
