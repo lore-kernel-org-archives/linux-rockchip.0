@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 010AAC44509
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69196C4450A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EBRIMw+OcVQoSpDo5qENiCACYfNyRvJVnw63gJyi6Lw=; b=hJo1qVCA/5lucn
-	NqfW1wXS7fhpT2Wuq4aNhXXXzMg2VPv2Gumo8PC+8OGs0dTY5Qmu50Zg+H8xVr2gz4On6NpW42zx8
-	6Qa7gnEodr1572zVOQ5EnJ2OrC47I47PTpGcPlnfI1qEujLqO3c7LGOl2ZhVSUDahjIvmBi8CIB9z
-	LWF/MKsVRMxi8gEJQkSq4XeCsKS0vu25MTTrJEdihRSSOUQcEsyka0y8V7CtpdKsB8DDYLyhHCvcv
-	nUqnDUdjzHpHDBZZLbw0zXbxc4EdYekaMv6RGHrEqsRSoeUHqL1ZANoxV39ZiIJxSICJCmxse8b/y
-	DypOfqZRNLCY41Lx+MTg==;
+	List-Owner; bh=RCwvxz0wWnVAzSKJur+Z+CwBfQzwuuXyGl4yPri4huk=; b=2efchqH1jzHD4S
+	lfdbomMZko2EvkesUNUWFarowvj2wK0/mH9EpkVJ/dU0m79pcxjX99cISlhwXFswgw4DKuZfp/3Lw
+	P4PljyXXl8AvSjGtYebrxfhK9UG0YJHn862nrXxmXB5inRhtgpUURTeKgnItUVINt2PTLpgoLh1I3
+	V6ZxwnXosZGiAMbQd/vmdHocvQE6Z1K6lW5SB0WfvoSNpLsLqFBO77STqaET2c+iJ1hriAER7j6O8
+	qE1sIL+0JB5yfixvaADmhJ8R75o7H3rkzcoFZ4+KbX/CDY58CPSM8qbSdXJf8wF07tjIt5OICbn1h
+	wGnI3kCpRBu1v53234JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkVv-00000001cC9-0AYX;
+	id 1whkVv-00000001cDa-35j2;
 	Thu, 09 Jul 2026 08:53:47 +0000
-Received: from out-186.mta0.migadu.com ([2001:41d0:1004:224b::ba])
+Received: from out-177.mta0.migadu.com ([2001:41d0:1004:224b::b1])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfHEF-00000004V4w-1TTp
+	id 1wfHMO-00000004VbS-14wM
 	for linux-rockchip@lists.infradead.org;
-	Thu, 02 Jul 2026 13:13:20 +0000
+	Thu, 02 Jul 2026 13:21:45 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1782997985;
+	t=1782998499;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=3WkYIESER5H1pxokBfEp6m9xEZZ5ghGe4TjZZy4BO5I=;
-	b=jHDhEc6CTiPftGqyHzVdl3xS/wEnOHSN4PeeVFnRX9fUml//8WA53GAPbsxSbJvWuzc/sf
-	tH1rSEqcTxDFS7qyJ0iIaX/a6tA48FPP/mFE4c/byOkvPcPlvJwYSUFubJkz9Jxs6S5ya/
-	AItLuFoisprFM8kvEpkf04Kk84Cg/T0=
+	bh=JUypSg4x3H5Npdac5Q/QNTHcczAl9LnBdMVXVWinEec=;
+	b=lItd+RyL3jRAHkpl0dxrPEWed2AY0HWUHX4RwICujMLfpbUgWjWjW+ARImTVfb6PHm9Sny
+	y6V8i67fWjOA8LCWLGCzxRy43+gvonIsLNLIP4rLaMNI+LWR2I1BadswAi+4/7c6z/eUrS
+	IlFVPIdu28UO/M5UjVs/++abx0FKfS4=
 From: Lance Yang <lance.yang@linux.dev>
 To: ljs@kernel.org
 Cc: akpm@linux-foundation.org,
@@ -122,16 +122,16 @@ Cc: akpm@linux-foundation.org,
 	linux-fsdevel@vger.kernel.org,
 	linux-mm@kvack.org,
 	linux-sound@vger.kernel.org
-Subject: Re: [PATCH 10/13] mm/vma: convert miscellaneous uses of VMA flags in core mm
-Date: Thu,  2 Jul 2026 21:12:33 +0800
-Message-Id: <20260702131233.59026-1-lance.yang@linux.dev>
-In-Reply-To: <1e7d834c887b6a65627d730addcff13d458c6268.1782760670.git.ljs@kernel.org>
-References: <1e7d834c887b6a65627d730addcff13d458c6268.1782760670.git.ljs@kernel.org>
+Subject: Re: [PATCH 11/13] mm/mlock: convert mlock code to use vma_flags_t
+Date: Thu,  2 Jul 2026 21:21:07 +0800
+Message-Id: <20260702132107.73727-1-lance.yang@linux.dev>
+In-Reply-To: <2db16db81538355ca65f778c246d2381c673cad4.1782760670.git.ljs@kernel.org>
+References: <2db16db81538355ca65f778c246d2381c673cad4.1782760670.git.ljs@kernel.org>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_061319_540554_1B8CF379 
-X-CRM114-Status: UNSURE (   5.52  )
+X-CRM114-CacheID: sfid-20260702_062144_436735_062FDE73 
+X-CRM114-Status: UNSURE (   9.60  )
 X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -151,50 +151,56 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, Jun 29, 2026 at 08:25:33PM +0100, Lorenzo Stoakes wrote:
->Update various uses of legacy flags in vma.c and mmap.c to the new
->vma_flags_t type, updating comments alongside them to be consistent.
+On Mon, Jun 29, 2026 at 08:25:34PM +0100, Lorenzo Stoakes wrote:
+>Replace use of the legacy vm_flags_t flags with vma_flags_t values
+>throughout the mlock logic.
 >
->Also update __install_special_mapping() to rearrange things slightly to
->accommodate the changes.
+>Additionally update comments to reflect the changes to be consistent.
+>
+>No functional change intended.
 >
 >Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
 >---
+
+Nothing scary jumped out at me. Just one tiny nit below ;)
+
 [...]
->diff --git a/mm/vma.c b/mm/vma.c
->index b81c05e67a61..ab2ef0f04420 100644
->--- a/mm/vma.c
->+++ b/mm/vma.c
->@@ -3417,23 +3417,27 @@ struct vm_area_struct *__install_special_mapping(
-> 	vm_flags_t vm_flags, void *priv,
-> 	const struct vm_operations_struct *ops)
+>@@ -466,24 +466,23 @@ static void mlock_vma_pages_range(struct vm_area_struct *vma,
+>  */
+> static int mlock_fixup(struct vma_iterator *vmi, struct vm_area_struct *vma,
+> 	       struct vm_area_struct **prev, unsigned long start,
+>-	       unsigned long end, vm_flags_t newflags)
+>+	       unsigned long end, vma_flags_t *new_vma_flags)
 > {
->-	int ret;
->+	vma_flags_t vma_flags = legacy_to_vma_flags(vm_flags);
-> 	struct vm_area_struct *vma;
->+	int ret;
+>-	vma_flags_t new_vma_flags = legacy_to_vma_flags(newflags);
+> 	const vma_flags_t old_vma_flags = vma->flags;
+> 	struct mm_struct *mm = vma->vm_mm;
+> 	int nr_pages;
+> 	int ret = 0;
 > 
-> 	vma = vm_area_alloc(mm);
->-	if (unlikely(vma == NULL))
->+	if (unlikely(!vma))
-> 		return ERR_PTR(-ENOMEM);
+>-	if (vma_flags_same_pair(&old_vma_flags, &new_vma_flags) ||
+>+	if (vma_flags_same_pair(&old_vma_flags, new_vma_flags) ||
+> 	    vma_is_secretmem(vma) || !vma_supports_mlock(vma)) {
+> 		/*
+>-		 * Don't set VM_LOCKED or VM_LOCKONFAULT and don't count.
+>+		 * Don't set VMA_LOCKED_BIT or VM_LOCKONFAULT and don't count.
+
+s/VM_LOCKONFAULT/VMA_LOCKONFAULT_BIT/
+
+Otherwise LGTM. Feel free to add:
+
+Reviewed-by: Lance Yang <lance.yang@linux.dev>
+
+> 		 * For secretmem, don't allow the memory to be unlocked.
+> 		 */
+> 		goto out;
+> 	}
 > 
->-	vma_set_range(vma, addr, addr + len, 0);
->-	vm_flags |= vma_flags_to_legacy(mm->def_vma_flags) | VM_DONTEXPAND;
->+	vma_flags_set_mask(&vma_flags, mm->def_vma_flags);
->+	vma_flags_set(&vma_flags, VMA_DONTEXPAND_BIT);
-> 	if (pgtable_supports_soft_dirty())
->-		vm_flags |= VM_SOFTDIRTY;
->-	vm_flags_init(vma, vm_flags & ~VM_LOCKED_MASK);
->+		vma_flags_set(&vma_flags, VMA_SOFTDIRTY_BIT);
->+	vma_flags_clear_mask(&vma_flags, VMA_LOCKED_MASK);
->+	vma->flags = vma_flags;
-
-Maybe worth a vma_flags_init() helper here to mirror vm_flags_init()?
-With this open-coded, we lose the soft-dirty WARN_ON_ONCE sanity check.
-
-Might be nicer to keep that check in one place ;)
-
+>-	vma = vma_modify_flags(vmi, *prev, vma, start, end, &new_vma_flags);
+>+	vma = vma_modify_flags(vmi, *prev, vma, start, end, new_vma_flags);
+> 	if (IS_ERR(vma)) {
+> 		ret = PTR_ERR(vma);
+> 		goto out;
 [...]
 
 _______________________________________________
