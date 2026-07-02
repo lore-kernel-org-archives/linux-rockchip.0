@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5476C4450B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:46:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6C7CC44501
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:47:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+6aIoLkxJ240PqrnvpEDs3f7oC1prPE3MgAkO3ZBLYM=; b=yFdiLMgsHAsW/A
-	EmvMnq3Z4KAoNTi18d00rG3QmZd5TkpmZvMTU03+ltofZaLGH8DDQ2SWNSi2g2giqjBUnFZMfSmCV
-	ZwAIPHPHiWcJqrd31n41iBlAbMn/2Dect5Yt3cKdBVp9pWxQtLKpsiQcesZdJTYjIfaYpz10frrQs
-	87Lgu8e7FM4Op+d1xFqTC3HgeTc+Ff2ghog6W7z31QRFmmGbdY60IcY/YLLzJPuO8t4xEYCQvtv6o
-	u15Nvvxy+48CTQKnM6Ap1A4mF7/eI8g7OP0qACNbPMhDiEHmgs7MdQhvrUoaP+XsJIP2UcwCGRJsB
-	VrNSWJgINV8hg1ViqYlw==;
+	List-Owner; bh=cbla0Y1feWe5aBjKqfw5mZK4lJFUmrO6is7bBUYcOZM=; b=m251iz2bjki2t+
+	RUElg8ktnJkjsP+uHXlnYx+5yrIP9htuAgYVQgzqlFQArKf1yu6MSPkFGR0GG+API8GPJqIzrGKAE
+	biNgEMmEYs041Pi8VceeAsK46TV0L5OtcE293bp6aMgVaUjpamrypsVtHPfSLDh7zZiJ4LuI41cfZ
+	wZZ0f2PrNnNBNhQbYg3FxemYMrJdkQQoWZhr5o/I6OSkzxe/evKzTF6g5HmQCnYz26kq/C9/MdrRK
+	2Tkv4uoyAVETyqhA6MOlEoZ/PzM/5F0zj99vMFG+3M1ly7gohg/rUXFG2RB3lGH/GYAngLRBVIj3M
+	8FJpQdkOkrsxfbSttjtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgn-00000004f27-49gN;
-	Thu, 02 Jul 2026 14:46:54 +0000
+	id 1wfIgt-00000004fHU-0e2l;
+	Thu, 02 Jul 2026 14:46:59 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgd-00000004ebD-3c3w;
-	Thu, 02 Jul 2026 14:46:45 +0000
+	id 1wfIgd-00000004ebG-3r78;
+	Thu, 02 Jul 2026 14:46:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783003601;
-	bh=/HfR6FepCYbvF9Dsn0hey9A/MfNDZWpVYqTWyKppwFg=;
+	s=mail; t=1783003602;
+	bh=Ly/sv5wqjHD+fIz8DNnd8EigI9nvlSxBFE4MAUM4cG8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YYfZz9UzzNd7DOd1uOUDSxOtuMe9c6CNgI08jJ2Hzwbq+Nz6dxyU3MjY95F2NqHG6
-	 Dgk1Qg+ZUC+wNl0FNvUDmV4kXZOA00LD1l0+5z1Cu9kroz4dNq1N2/Uerp+qeOmYty
-	 CsXesCYJvXEnu+so2L78gS9qTkUYYAoXEYNcsJOutmJ/UcTME8DRao3gJ0+HjpWTBV
-	 qDO9ZGO+DsFLs9qzUX1yRfjx0rJoO/N3PYTbKerrxWa1G2Ma7+NowIGIDUr00TwadR
-	 R+dgD3asCtz/vgrVVfcgp7f6/BJ79jxcHILoMwIVP3JMr7ee/3mUZklkT8z0qKoKl1
-	 0hxhwfDl8KMkw==
+	b=OpRf6x8Km6YtXW42iJUfwmOICF21xnDqN2Hi1tHOUa0jxIF67fcitk0q9mErwS7Sb
+	 c+8q64rGpc7xsdMnViyelMINDJ2+b29HrQ2VhgIP9yBLz72/yUUvCyeVyJzfiq3WB/
+	 iiLWr5ZK6jWjer7HmQhW9qkkay8dlaNNoRWxIB4oFAHyGt8SAImGkC8bs+w0MZu9g0
+	 Uul/qGjU63Thv+a5Cjtg9meD0FI/hehJ5+OBZDRoqSzWfLgqWMx3coesHhALKR/vZB
+	 CVtci5aI2bkiO1PgiZ8FSkCRwQVTzz7GEPvKIUJhqNdI+Itk8QDUdJPOfaBstMLx5U
+	 UrjLwScG2ENuQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2DF5E17E35DB;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDA8A17E0E9E;
 	Thu,  2 Jul 2026 16:46:41 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 02 Jul 2026 17:46:26 +0300
-Subject: [PATCH v8 13/39] drm/bridge: Add bridge ops for source-side HDMI
- 2.0 scrambling
+Date: Thu, 02 Jul 2026 17:46:27 +0300
+Subject: [PATCH v8 14/39] drm/display: bridge_connector: Use cached
+ connector status in .get_modes()
 MIME-Version: 1.0
-Message-Id: <20260702-dw-hdmi-qp-scramb-v8-13-d79890d00b6a@collabora.com>
+Message-Id: <20260702-dw-hdmi-qp-scramb-v8-14-d79890d00b6a@collabora.com>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -66,11 +66,12 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
+ linux-rockchip@lists.infradead.org, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_074644_085349_BF6D628A 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20260702_074644_169064_1E3DC125 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,65 +88,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Bridges advertising HDMI 2.0 must be able to enable and disable
-source-side scrambling and the high TMDS clock ratio when the configured
-mode exceeds 340 MHz.
+Replace the active drm_bridge_connector_detect() call in get_modes()
+with a read of the already-cached connector->status.
 
-Add .hdmi_scrambler_{enable|disable}() callbacks covering the
-source-side programming only; sink-side SCDC negotiation remains the job
-of the HDMI connector helpers.
+The .get_modes() callback is only invoked from
+drm_helper_probe_single_connector_modes(), which has already retrieved
+the connector status.  Calling detect again is redundant and triggers a
+duplicate hotplug event.  This is also a prerequisite for switching to
+the .detect_ctx() hook, which requires a drm_modeset_acquire_ctx not
+available in the .get_modes() path.
 
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- include/drm/drm_bridge.h | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ drivers/gpu/drm/display/drm_bridge_connector.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
-index 2d8b5e4c64ba..236d1cabe669 100644
---- a/include/drm/drm_bridge.h
-+++ b/include/drm/drm_bridge.h
-@@ -656,6 +656,41 @@ struct drm_bridge_funcs {
- 				     const struct drm_display_mode *mode,
- 				     unsigned long long tmds_rate);
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index 46104506fe32..57238ba49d70 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -326,12 +326,10 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
+ static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
+ 					       struct drm_bridge *bridge)
+ {
+-	enum drm_connector_status status;
+ 	const struct drm_edid *drm_edid;
+ 	int n;
  
-+	/**
-+	 * @hdmi_scrambler_enable:
-+	 *
-+	 * Enable source-side scrambling and the high TMDS clock ratio for the
-+	 * mode currently being applied.
-+	 *
-+	 * This only programs the source side. Sink-side SCDC configuration is
-+	 * handled by the HDMI connector helpers.
-+	 *
-+	 * Mandatory for bridges that set the DRM_BRIDGE_OP_HDMI flag in their
-+	 * &drm_bridge->ops and advertise HDMI_VERSION_2_0 or later via
-+	 * &drm_bridge->supported_hdmi_ver; unused otherwise.
-+	 *
-+	 * Returns:
-+	 * 0 on success, a negative error code otherwise.
-+	 */
-+	int (*hdmi_scrambler_enable)(struct drm_bridge *bridge);
-+
-+	/**
-+	 * @hdmi_scrambler_disable:
-+	 *
-+	 * Disable source-side scrambling and the high TMDS clock ratio.
-+	 *
-+	 * This only programs the source side. Sink-side SCDC configuration is
-+	 * handled by the HDMI connector helpers.
-+	 *
-+	 * Mandatory for bridges that set the DRM_BRIDGE_OP_HDMI flag in their
-+	 * &drm_bridge->ops and advertise HDMI_VERSION_2_0 or later via
-+	 * &drm_bridge->supported_hdmi_ver; unused otherwise.
-+	 *
-+	 * Returns:
-+	 * 0 on success, a negative error code otherwise.
-+	 */
-+	int (*hdmi_scrambler_disable)(struct drm_bridge *bridge);
-+
- 	/**
- 	 * @hdmi_clear_avi_infoframe:
- 	 *
+-	status = drm_bridge_connector_detect(connector, false);
+-	if (status != connector_status_connected)
++	if (connector->status != connector_status_connected)
+ 		goto no_edid;
+ 
+ 	drm_edid = drm_bridge_edid_read(bridge, connector);
 
 -- 
 2.54.0
