@@ -4,52 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B5F9C44503
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58DD2C44501
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xzIyri0zoCdywxmf/AV8IyozIfIt2MKgywhLv6lugpg=; b=s/C6u71bGCsbLq
-	Pzc++vs2dANm+u3hxaB1g66LgCmN5F2eTCUUlW2Z7VRzqiKk1Re/hhYsG6Dbxejn8dAQwTjumRImL
-	gy5CS5FE/SgY3UBOE09jfu/Fbi0Ra9jsWd5h3FYyqtWE/U3j3ijzW0oi8cZe31ecinpcYV2H3/CV9
-	ZS3n9x7FvWncSbMHpqvauAJ9Taquh+n15sSuPvsByQU8365Yb1+lZ5sKGOmS6MwxFK27oL9w2FWw6
-	ghOVOSc9ALmmqclB3VvLq7pzxgDBGSZWAy1rh+UhG4lpNhyCX8+obSdiEw0QlRby+z5BR/NQWf3aQ
-	8SbAbbbJXoew2MSI8HdQ==;
+	List-Owner; bh=H1mVb87+IwQK15kGfAI8ZQJrlqkyVV/Tu8JSTHn46HI=; b=iWTSMyMHmKlINj
+	3DWSAdSH8qrmEnhbxmtObhWSEaUKjSAbL9Pf6LoiMdidtV8RH+YRi0DkrkNrwcP4naPN0DsX9Icec
+	UdsREtK1ZFlosA0JWvKXdw3U25YMkf7P6jC+2ds3SeV6Tp4RYNOeJD+HFT4DXSEmO9SiGiS9or+0P
+	s+uaLU+j4xoAra3o1CivPx+ZnlE0oAGTRcfJjg7MogQH+Nydimzh4RQHGneifvjZT5tP+ciB4/haB
+	vca+v5mgonsZzltOQKW3gIBp9M3EkIvnVh75iJ3ikaEhL/KVosG5ZxuFgvHjea56P5K0qR6df+6ob
+	5WTJiLPCFZX0XzGUlCJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMio-00000005Jbp-1UQf;
-	Thu, 02 Jul 2026 19:05:14 +0000
+	id 1wfMir-00000005JjE-3Cto;
+	Thu, 02 Jul 2026 19:05:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMij-00000005JQX-27yJ;
-	Thu, 02 Jul 2026 19:05:12 +0000
+	id 1wfMin-00000005JWn-0Jhj;
+	Thu, 02 Jul 2026 19:05:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=t0NNRG9w6w6jCTySSfCRM9uqcR86GLmzg5Z0J050DYU=; b=LsfxnjEKjnc97llUKZA01GgdJd
-	dFnlBw7l7/cyde3yav7xw1ZgV/I7vQ7VBnX/NxjAz/cIbvF6F3jDbB3NBeojbS22ZS6I0XPVI6Ux3
-	1b65moljWbK2+G0pczunZ1v3OE0/yT/ERdYmNTd8cXcDSsVDCvQ05cZLffLCVW1ccobviW+3mGvh/
-	6xoTGiP4j2YPEKwTOqHmGaJCdFIuVSZeCHd3UaSWC5mlaO0IlwuADLRUOeuXANg/3qaeom/T/3maN
-	3Q0dXJCQnr+unhryQgoAqGqRw5CA5Vc3m4zDZkddVop5OYEtnom5Q3eBHmfE+1+F4JUONB9nN39Wo
-	kJ9pBXYQ==;
+	bh=m7PQ37TP8TLSa3Y3Mh+GfctL0Wog2HZY6fsfi5VePvQ=; b=Jt7tc2xhJjWGJQavuRgUHV+ifa
+	AF2X59WYmK0VSW8hgH+znp+G7NDBzxiYvfWopRG1R2YBftbapRvA2HqK+3aVWF3tR9qFfiCCjljCr
+	/0Q2tGJu3BWzgKNWrPhaODRK7pzblPOiBZipq397eqYyrrj0dvgqPAsgOjAbjp5ZXImtwuTzt7iCy
+	kS+ngbY1gvR845pAYYd/Hvh0XLkJQl7eS3XxOncQSPdrnKlTrGvN1pQNggaVPOogVgMgw2PrHFZQr
+	t3QAo0x//o6NJHvcYfpUAlg0PUYntH5iEtXybCK+UZ2GNGlcfob7zB1Pz60wGYPeXOCk4JOebyEc5
+	Vw07ddog==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v11 0/3] Add eDP support for RK3576
-Date: Thu,  2 Jul 2026 21:04:51 +0200
-Message-ID: <178301901908.3838694.14923342654854634320.b4-ty@sntech.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Daniele Briguglio <hello@superkali.me>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Add Youyeetoo YY3588
+Date: Thu,  2 Jul 2026 21:04:53 +0200
+Message-ID: <178301901896.3838694.11723513577053090499.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260605022305.3058853-1-damon.ding@rock-chips.com>
-References: <20260605022305.3058853-1-damon.ding@rock-chips.com>
+In-Reply-To: <20260610-yy3588-board-v1-0-4bb7176b6826@superkali.me>
+References: <20260610-yy3588-board-v1-0-4bb7176b6826@superkali.me>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_120509_557788_AE113E32 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20260702_120513_144865_E0ACFF7A 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,35 +66,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: detlev.casanova@collabora.com, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, sebastian.reichel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, alchark@gmail.com, michael.riesch@collabora.com, andy.yan@rock-chips.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 05 Jun 2026 10:23:02 +0800, Damon Ding wrote:
-> Picked from:
-> https://lore.kernel.org/all/20260601065100.1103873-1-damon.ding@rock-chips.com/
+On Wed, 10 Jun 2026 15:58:57 +0200, Daniele Briguglio wrote:
+> This series adds support for the Youyeetoo YY3588, a single board
+> computer built around the Rockchip RK3588.
 > 
-> Patch 1-2 are to add missing clock "hclk" for RK3588 eDP nodes.
-> Patch 3 is to add the RK3576 eDP node.
-> 
-> Damon Ding (3):
->   arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
->   arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
->   arm64: dts: rockchip: Add eDP node for RK3576
+> Both Ethernet ports, eMMC, SD card, USB, Type-C, HDMI output, WiFi on
+> the Mini PCIe slot, audio, the recovery key and the fan have been
+> tested on the board.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
-      commit: 5603ce4f1d470af29e0cc76e36ea99e62fa07151
-[2/3] arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
-      commit: 6f1ed82b7f084c13bffcaa9e2c7acf5bc64b659b
-[3/3] arm64: dts: rockchip: Add eDP node for RK3576
-      commit: 65bdf72f7fda3b1a24bd6f5ea15ce40ec2cc3e0a
+[1/3] dt-bindings: vendor-prefixes: Add youyeetoo
+      commit: fe76e3493f9ea5e927f9ce6bfe7f8785ba2d0c44
+[2/3] dt-bindings: arm: rockchip: Add Youyeetoo YY3588
+      commit: 1e476370fbb1def308e6da3785843f1d34529721
+[3/3] arm64: dts: rockchip: Add Youyeetoo YY3588
+      commit: 19847bde695f7bc65b16840c91cda4c2e35b36ce
 
 Best regards,
 -- 
