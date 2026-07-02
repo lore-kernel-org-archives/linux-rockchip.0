@@ -4,54 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E819AC43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16E31C44500
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X9B5nRJ/gt9Q9YirrK3hQIfWlUpMSWmCrwXnCuGXlko=; b=PV6/hbAhepTg4v
-	PNU/b1XvWGRFwkxJpHjI+1ImMBb0YpbGByoLiA/3MqL74KaQTPLGW0L+l210A3yQthQNSO9vJVeVo
-	jJrS+DyOZxWdnF/jUHCM92MRmg5yHQjLLQaEjLyL4V6H4I5c/JYyVz5wp/9f07ZqGDEGBGHnk7pN4
-	noRIvrmK9zFu2BiunoH6SEQzxAq31fGcqs35Cc6ZiGNSWetZcozyLJDkPRVGzvlq6TCNDZFeGnyBP
-	MLEaSqVMVd3UkdkJUTOI8oNTsLgHNHY0x1SaUxoRRYjCOnGKOPRpP5YWkZwq9Yu7/lSRUDiasnKwK
-	UpNllXe8nuS5tPolWKgw==;
+	List-Owner; bh=fFsf8iKT+Qmr0HgOwAwtmAbvjNROp6atOKvQ04O7AHQ=; b=eQZqfcmElUIudc
+	yEVp500CZbs7ygpevGT2TSUTCGFitEfpPM/t76ePYstmMHd+PxeFoaEumUa003+IC8mXWuZZfuHMa
+	zoE1WJXdz/jMrcDdtriedkiBuM57v9cRd4BYkWgcZZNzycg3ZYtpRAG84bc8v0IHWkvd0FXYAdqFT
+	/uIEthC7vT3LWhOcIy6rdOyE2pditF2jM1EIFZF8E7d3a6U7HgVblJPfZXYCKHYSimm92gbm+JAN5
+	dlNXahhgmGhjZ//fM7T021oDoB8g8+NRUW+Uc0C7V2VK4b3XMV/jI4DCAoYdNUG2xLJIE6ZqLloFM
+	peGwnWbCO29q9V73bK8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMif-00000005JNv-3tka;
-	Thu, 02 Jul 2026 19:05:05 +0000
+	id 1wfMil-00000005JWh-3SM5;
+	Thu, 02 Jul 2026 19:05:11 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMid-00000005JL3-3Xlv
-	for linux-rockchip@lists.infradead.org;
-	Thu, 02 Jul 2026 19:05:04 +0000
+	id 1wfMih-00000005JNs-0P8y;
+	Thu, 02 Jul 2026 19:05:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=YM10bWk7ozQ9L2TuOTBeXiPeB+VzxyDTkuM6KbeNy4c=; b=ZJSNehEHBgcLndFk/PMh5u1Qxn
-	4X/EoksDs2WxSC78qRFiZEsH7FEOyJqvPt4B+8Cb9duA9nJpF7NWW5TMJJgHZHwnbH5ZhwFC6YA3H
-	6MQnYxAUJLwDHaL1/Fma7zClWB4cgmuDn1rIAsn0Y7X+dIWXrQNxLVrAKNhEMWbI3UNyxb0M8+YAk
-	PgiN2APXw7ahpdEZ6WS9dHU4/CwvUFZ13lO9HaI0oHESZp7SvwTigMH6PGV73aCtr/1W8/AuaJkDO
-	3IURByQD46Es45O+5nN/ZUo549lygp4IXuh2/XRqidogSNiWxF8h43Vu1i6UY/7RhsfV701vgIYqX
-	k0a/9Bdw==;
+	bh=qi+og8zzAWmwxBq5244UzdXz2emj9itakwbhrlFY2Rg=; b=fJWXkvhsrFUM/UOKyZLZFZfBVg
+	zCVaQzvT3DI3HJVrg6GGZloSryXaOGLJwnEwzR/J9CjtWNO2Lz2Iihjx+ZgsoI41Ifrd3aIXGHGTV
+	+3+1tqy4VF5cGHS9WJ6w1cLfggdYqUE+8kXJ9TrxixjEx4JU51AHayan0fTn4Jj3mz9pLvNZj4aja
+	i1VxQuT+y76p/zq7ncejlP4w8A7ARadsR1Xi5nRFugBOGXj8guRKVBxg1Qr5Karz3Ve/6+TtmsvFq
+	vQdBB+85KKLuOUubSvkIQC7ZOat9kgZR7azHzl0E+pzPMfdgOdEj5tF9dRs3sBSThqYrr8YNLOH+x
+	7fU+z35w==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Coia Prant <coiaprant@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+	Quentin Schulz <foss+kernel@0leil.net>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Add AP6275S support for 9Tripod X3568 v4
-Date: Thu,  2 Jul 2026 21:04:50 +0200
-Message-ID: <178301901892.3838694.4252144428502765127.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	stable@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: fix eMMC reset polarity on PX30 Ringneck
+Date: Thu,  2 Jul 2026 21:04:52 +0200
+Message-ID: <178301901902.3838694.15610180855070263903.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260701185657.4092955-1-coiaprant@gmail.com>
-References: <20260701185657.4092955-1-coiaprant@gmail.com>
+In-Reply-To: <20260626-ringneck-emmc-polarity-v1-1-90cefe57b316@cherry.de>
+References: <20260626-ringneck-emmc-polarity-v1-1-90cefe57b316@cherry.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_120503_885130_B9AD70EA 
-X-CRM114-Status: UNSURE (   8.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260702_120507_143631_091B757E 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,23 +75,21 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 02 Jul 2026 02:56:56 +0800, Coia Prant wrote:
-> Add the missing Broadcom Wi-Fi and Bluetooth child nodes for the
-> 9Tripod X3568 v4 board.
+On Fri, 26 Jun 2026 16:40:38 +0200, Quentin Schulz wrote:
+> According to the Jedec 5.1 specification, the device is held in reset
+> when RST_n is low, therefore the polarity of the line must be that, as
+> specified in the Device Tree binding (mmc/mmc-pwrseq-emmc.yaml).
 > 
-> The Bluetooth subnode is attached to uart8 with hardware flow control
-> enabled via RTS/CTS pins.
-> 
-> The Wi-Fi subnode is connected via the sdmmc2 bus.
+> Due to the wrong polarity, eMMC devices with RST_n_FUNCTION[162]
+> bitfield [1:0] set to 0x1 (the default is 0x0) will be held in reset
+> forever.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: Add AP6275S support for 9Tripod X3568 v4
-      commit: 993555b5476cf02009c2ef5c21e8403baee945d1
-[2/2] arm64: dts: rockchip: Replace deprecated 'gpio' property with 'gpios' for 9Tripod X3568 v4
-      commit: 187e7567bfba38fc3759c0fbcd2886c5239ad415
+[1/1] arm64: dts: rockchip: fix eMMC reset polarity on PX30 Ringneck
+      commit: 549081d9af61cf046cac15281e9a6ceb9b2592e9
 
 Best regards,
 -- 
