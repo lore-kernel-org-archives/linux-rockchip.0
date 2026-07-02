@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD4AC43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 07:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0C44C43602
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 08:15:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pJQRNVYOvvQ82Ewv+ioA+eP1qaQHQIJiZwNjoR21loE=; b=iOBBiaziyiYAuu
-	bFw3kYJye8NKOfK2XdSRrjF1fYtW6k6bAqB0aDOxhcnE5cIPyNDXBZE97Hm4ggZVxdWyr7MZjXELm
-	u3e/szyyirDzJQMbCkIM9V4rdwPS9bjoTKSpNFvTz/eq+6yd7HXEHeAPigp69x9lrJf1jt7yKupdj
-	5Un5Atuv6U57rvl75HXhU+/WRPjPm2v4DEGq0yVo+igXwY3e8Z/16jveiJO0H2xoqsThR/tt/ed/y
-	2Q0DYButrsWF8u3uARVwEpRw9GgopT/ULuE94DJluLA0I4UxlJwhByzn8ztl5jXN7+bMzwR6fYwJU
-	3MzRiZ/arX1IO7a6xPWA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=19zA2gVM5q0I6jssP2jU8B2fdRO72uFEkznHLUkSnZU=; b=jiVK+i1ZBt228x30vFnPRuD1Xr
+	hcKy7G2rTjUAdv5ps5lzCs4Njarj4+Itth7bCb7zWgquDSzW5wrJzDdVAD82Vv5LYF8snMvGarQTi
+	23l70nq4OYQfRLGYHvJmkX4NhILCnF0Kt8EFhCEfmHxV75Oey+AplnYAnqFYV8w/+ITuubhr4sW4H
+	CF1XnFJyeB5Mqvso6d+y0nw9qUPdL7Y8IXC+ULbdyELsQ74Ko+GVAF19WDEEO/5RBlCOGjKw3vera
+	abdkzTzjj7jf4hTLfrKUGtMy4ySOCMc3ric0LLFLYUryT8xB6/BsZfaa6g+sLluBmtpraBc3sjOJQ
+	Q1eOZYyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfC4v-00000003lLv-3DzE;
-	Thu, 02 Jul 2026 07:43:21 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wfCaE-00000003pBT-2OZS;
+	Thu, 02 Jul 2026 08:15:42 +0000
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfC4v-00000003lLO-0b0U;
-	Thu, 02 Jul 2026 07:43:21 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2DA9160125;
-	Thu,  2 Jul 2026 07:43:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A82C71F000E9;
-	Thu,  2 Jul 2026 07:43:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782978199;
-	bh=wB9kFnvBOQDELA0/LuNhygIBNyEdZSej8PAkRHVCjqE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=QeKndD1jWyB9gTZ81Av+/zXi5j2zbSXhrQTXLFHordVsRkH4deRZX8bPKCSyl5Yj4
-	 zBuTuWtKj2W1PTTrMQnzTRDh9y5zGH71nfyvQ7nGQ5+nM/exM/LK38s8hyQWiv4ZC/
-	 w/lF0KgRbM4gOY1skAcLSafV1hgRkGWzIGSqK+PhTkauzSJOossHdTODh5+8nvpaiv
-	 JbSj9OpdmcuSDkyWwc/zVQOGFZkcq8gmhRR348rR+JfMt3FRBcDVi0J+1pYT3ukc6L
-	 kBOuaVQ6gndpeZ9j97DHSiKtQQTwGugnc1XWqVJtA6PdGwKV+vUDapDJiO1XTCRzg4
-	 vzS2Ftt0JJ7Tg==
-Date: Thu, 2 Jul 2026 09:43:16 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: 1579567540@qq.com
-Cc: Marc Kleine-Budde <mkl@pengutronix.de>, linux-can@vger.kernel.org, 
-	Vincent Mailhol <mailhol@kernel.org>, kernel@pengutronix.de, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: can: rockchip: add rk3588v2 CAN-FD
- compatible
-Message-ID: <20260702-quantum-hairy-quail-e3eee4@quoll>
-References: <20260701070128.2096267-1-1579567540@qq.com>
- <tencent_83A61C9A79199D04CC118A8026C435BFB907@qq.com>
+	id 1wfCaA-00000003pAh-2Y60;
+	Thu, 02 Jul 2026 08:15:40 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
+	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 6AF33200F84;
+	Thu, 02 Jul 2026 10:15:36 +0200 (CEST)
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1wfCa8-005iP3-16;
+	Thu, 02 Jul 2026 10:15:36 +0200
+Received: from pengutronix.de (p4ffb2dc6.dip0.t-ipconnect.de [79.251.45.198])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 0C16455E028;
+	Thu, 02 Jul 2026 08:15:35 +0000 (UTC)
+Date: Thu, 2 Jul 2026 10:15:35 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Cunhao Lu <1579567540@qq.com>
+Cc: heiko <heiko@sntech.de>, linux-can <linux-can@vger.kernel.org>, 
+	mailhol <mailhol@kernel.org>, kernel <kernel@pengutronix.de>, robh <robh@kernel.org>, 
+	krzk+dt <krzk+dt@kernel.org>, conor+dt <conor+dt@kernel.org>, 
+	devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	linux-rockchip <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 2/3] can: rockchip: add RK3588 CAN-FD support
+Message-ID: <20260702-deft-grebe-from-camelot-1bf360-mkl@pengutronix.de>
+X-AI: stop_reason: "refusal"
+References: <tencent_534F9A1699EA04B091BF8003C479BFA32607@qq.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <tencent_83A61C9A79199D04CC118A8026C435BFB907@qq.com>
+In-Reply-To: <tencent_534F9A1699EA04B091BF8003C479BFA32607@qq.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260702_011538_798646_2A66F725 
+X-CRM114-Status: GOOD (  17.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,65 +71,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0076686926083085195=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 01, 2026 at 03:01:26PM +0800, 1579567540@qq.com wrote:
-> From: luch00 <1579567540@qq.com>
-> 
-> The RK3588 CAN-FD controller uses the same DT properties as the
-> existing Rockchip CAN-FD blocks, so extend the current schema with a
 
-DT properties have nothing to do here. Are you saying it is fully
-compatible? Then express it properly with fallback.
-
-> SoC-specific rockchip,rk3588v2-canfd compatible instead of creating a
-> new binding file.
-> 
-> Keep RK3588v2 as its own compatible rather than an rk3568v2 fallback.
-
-Do not explain what you did. Explain WHY.
-
-> Driver support uses separate match data and the RX FIFO count field
-
-Driver is irrelevant here.
-
-> layout differs from rk3568v2, so a dedicated compatible is the safer
-> description.
-> 
-> Signed-off-by: luch00 <1579567540@qq.com>
-
-We do not take anonymous contributions.
-
-> ---
->  .../devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml     | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-> index a077c0330..aa31ec78e 100644
-> --- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-> +++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-> @@ -17,6 +17,7 @@ properties:
->    compatible:
->      oneOf:
->        - const: rockchip,rk3568v2-canfd
-> +      - const: rockchip,rk3588v2-canfd
-
-So that's just enum with previous entry
-
-And why is this different from rk3588?
+--===============0076686926083085195==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="vcp7brl22t3ha7yd"
+Content-Disposition: inline
 
 
->        - items:
->            - const: rockchip,rk3568v3-canfd
->            - const: rockchip,rk3568v2-canfd
-> -- 
-> 2.34.1
-> 
+--vcp7brl22t3ha7yd
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 2/3] can: rockchip: add RK3588 CAN-FD support
+MIME-Version: 1.0
+
+On 02.07.2026 10:53:53, Cunhao Lu wrote:
+> That works for me. I will prepare a v2 with:
+>
+> - the binding schema changed to use enum as suggested by Krzysztof
+> - RKCANFD_QUIRK_RK3568_ERRATUM_6 enabled for RK3588v2
+> - your Haikou patch added to the series
+
+Is the SoC you're using actually a 'v2' silicon revision? At least on
+the rk3568 the downstream kernel has code to read the revision.
+
+> > But if it actually works, then personally I'm more than fine with
+> > enabling CAN-FD :-D .
+> >
+> > I guess Marc might have more insight where the FD issue triggered on
+> > the RK3568.
+>
+> I will also double-check that CAN-FD still works with the v2 changes and
+> wait for Marc's feedback on the CAN-FD issue before deciding whether
+> RKCANFD_QUIRK_CANFD_BROKEN should stay disabled for RK3588v2.
+
+Compile the latest https://github.com/linux-can/can-utils/ and test:
+
+$ cangen can0 -I 2 -Li -Di -p 10 -f -g 1 -c32 -b
+$ cansequence -rv can1 -f
+
+regards,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--vcp7brl22t3ha7yd
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCakYeJQAKCRDMOmT6rpmt
+0ijEAQCCAxydwZ3i3hutlhk/dlVU3grIENXTT9QhVTiaGUAU4AEAg2reTTImi5Jb
+Wd8vJRDW/vzbjqvE0edXoMky/cI/Ggo=
+=ZccD
+-----END PGP SIGNATURE-----
+
+--vcp7brl22t3ha7yd--
+
+
+--===============0076686926083085195==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0076686926083085195==--
+
