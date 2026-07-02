@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFEB4C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:47:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB5E7C43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:47:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KpVeZSzukGuW3JTXLrehHX52FfwT8BoguonTSYGbUjg=; b=j3QVX14sW/NQ06
-	EW7szSp2o/3RAPTRenOPrTGOQcYRQAGsK/BP3xHrncLIcEEjToZSY2HsprX4jrGGVCvgxd+Y/WPEC
-	bJFO8fqL26v8K+yfrV9q2oLFFcBsjV46hYR6P9ubx9n44C/Ik8VKFSrsDIz/VGB3VYMM7wCfzld9J
-	hAQm1JvZs8J/z1Fp06MEHoG52kOtVZ8f2GtGq+oX7HkPgobm/EPVvs+tMlpeX0Y8YxnFHm4ECwXf/
-	ofwBmPcq1ugM64N2t/JH4NFoHa8dvLugVDpqXEPKfk86Y6sasRG9ItWZIVkGB99ZbgvDWi+XfR9Hk
-	P4Q6bC1oRGnV3Bk+a4iQ==;
+	List-Owner; bh=oDr6ZPlyg3WOex2gbK8INMWDrKk1pNcKj/SX0Qx5WjM=; b=aDgUjR1MY1Cx54
+	1fr5ZDl6hWaQVKASuzmTBeIUKJcra0T7+KeBtSg3BSzamwmHg0Gt7gjEkL+jYVnYqkTQ9TmEW/hyK
+	ZaTD5OUmSBlflUb6zm47l0eVoNzKdRw9echvEkdTgMj2QOWHbQEf9QjS+upGbXvwkykykT3fC61wf
+	9KkSUzR4j3wrMezf9IIpXeJy/KCeaVMYFt9dTbaz6dt6CfnPUAbiFRrb8NrNqkyDnLrkRYd5DKUs4
+	H1liNNJ9r9ndHk+iKLTKJHnEw5Hq+B4rs81nyhL1MIXpF6wL8iiGDPeaWjNu64YPbFukKuUdq5UY5
+	JE+nWiHTjXxesx4rXPyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIh0-00000004fVp-2CNi;
-	Thu, 02 Jul 2026 14:47:06 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wfIhC-00000004fpE-1FVJ;
+	Thu, 02 Jul 2026 14:47:18 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgf-00000004edk-34RA;
+	id 1wfIgg-00000004eev-1XtK;
 	Thu, 02 Jul 2026 14:46:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783003603;
-	bh=lOuo9OuftqAiecudrw0LjAp4UZHtVn6GRWRdGeTDE3Q=;
+	s=mail; t=1783003604;
+	bh=OTsco3tAKBQ5tEHqN9eKT+EsJVWfSxYjGFkdCwj0SiA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ddkIEJ9p/5fCAngPV7xWgUO7ReoBcuRJYcsDop62G4+z/txLckcOaJ6IESFTkutvA
-	 7W8anjGUPMD87lwZ3JNydE9OAcvIpnUzZNeagLJ6owdyWyeGlv7SiaqvrpgKOuIxKK
-	 XyFcvmcuhGG5mAsedtNjs1LEafrIa84K/xZ5P8cbgPRVBJMl0z/HU4sITW2HIwbdLa
-	 +L5leBvo19Cb22j9U4JgEFW1kEGzw52KtqrPgKwF/0/Ejn9HWnlCxIjdnLLBqS2meS
-	 k0jaz3Vt2YY4TCnsXEYpDDjRqvXahNkcFjrDnooizMzVl8CXpLr10/46LB9UDiaSDl
-	 10TETdlfip7bQ==
+	b=iEjJpUGNt85AeIrQ4al0W/Oyd2eqeRnDoH7qUoUgnPzeaPFol2LMne0afv1Wld+7z
+	 JlU3TPS5ygJjTkxgoGysvN8uf2stQcntQS0qWfHNaeROeNUqS9WZsgUtQTn9PYEkbZ
+	 RG+bpi1cPHCnRPFXuuy6ueosb75EvSyqsOTs9LnBRX/CHak26CG0cDEClfPkGzI3v4
+	 8GEajZVmlqnWtLDrVPoQ9jDvREE7hTt114fVPKaDhI9cNfEk8WKeQ32AStgJE6nXlV
+	 VqGDUxj61uZAVDj2lXfAgpSQ3vxYTwaiFxIOsGu2u8lVv1RKfvi7y3pmXE5LnUoZZ4
+	 s3Oka/uww60MQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6EA8A17E35FB;
-	Thu,  2 Jul 2026 16:46:43 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2F20317E35FD;
+	Thu,  2 Jul 2026 16:46:44 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 02 Jul 2026 17:46:29 +0300
-Subject: [PATCH v8 16/39] drm/display: bridge_connector: Wire up HDMI 2.0
- scrambler callbacks
+Date: Thu, 02 Jul 2026 17:46:30 +0300
+Subject: [PATCH v8 17/39] drm/bridge: dw-hdmi-qp: Rate limit i2c read error
+ messages
 MIME-Version: 1.0
-Message-Id: <20260702-dw-hdmi-qp-scramb-v8-16-d79890d00b6a@collabora.com>
+Message-Id: <20260702-dw-hdmi-qp-scramb-v8-17-d79890d00b6a@collabora.com>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -69,8 +69,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_074645_970507_849A1B27 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20260702_074646_587543_28895256 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,91 +87,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Connect the bridge connector's .scrambler_{enable|disable} callbacks to
-the underlying bridge's .hdmi_scrambler_{enable|disable} funcs when
-HDMI 2.0 conformance is advertised.
+During EDID reads, repeated i2c errors can flood the kernel log:
 
-This completes the bridge connector plumbing so that the SCDC
-scrambling helpers can control source-side scrambling through the
-bridge chain.
+[   25.361716] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
+[   25.363376] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
+...
+[   25.368671] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
+[   25.369440] dwhdmiqp-rockchip fde80000.hdmi: failed to get edid
 
+Switch to dev_err_ratelimited() in dw_hdmi_qp_i2c_read() to reduce log
+spam while still reporting the condition.
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_bridge_connector.c | 40 +++++++++++++++++++++++++-
- 1 file changed, 39 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index 17eb2548efad..ceb961a9adb5 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -578,6 +578,32 @@ static int drm_bridge_connector_write_spd_infoframe(struct drm_connector *connec
- 	return bridge->funcs->hdmi_write_spd_infoframe(bridge, buffer, len);
- }
- 
-+static int drm_bridge_connector_scrambler_enable(struct drm_connector *connector)
-+{
-+	struct drm_bridge_connector *bridge_connector =
-+		to_drm_bridge_connector(connector);
-+	struct drm_bridge *bridge;
-+
-+	bridge = bridge_connector->bridge_hdmi;
-+	if (!bridge)
-+		return -EINVAL;
-+
-+	return bridge->funcs->hdmi_scrambler_enable(bridge);
-+}
-+
-+static int drm_bridge_connector_scrambler_disable(struct drm_connector *connector)
-+{
-+	struct drm_bridge_connector *bridge_connector =
-+		to_drm_bridge_connector(connector);
-+	struct drm_bridge *bridge;
-+
-+	bridge = bridge_connector->bridge_hdmi;
-+	if (!bridge)
-+		return -EINVAL;
-+
-+	return bridge->funcs->hdmi_scrambler_disable(bridge);
-+}
-+
- static const struct drm_edid *
- drm_bridge_connector_read_edid(struct drm_connector *connector)
- {
-@@ -603,7 +629,7 @@ static const struct drm_connector_hdmi_funcs drm_bridge_connector_hdmi_funcs = {
- 		.clear_infoframe = drm_bridge_connector_clear_hdmi_infoframe,
- 		.write_infoframe = drm_bridge_connector_write_hdmi_infoframe,
- 	},
--	/* audio, hdr_drm and spd are set dynamically during init */
-+	/* scrambler, audio, hdr_drm and spd are set dynamically during init */
- };
- 
- static const struct drm_connector_infoframe_funcs drm_bridge_connector_hdmi_audio_infoframe = {
-@@ -912,6 +938,11 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
- 			     !bridge->funcs->hdmi_clear_spd_infoframe))
- 				return ERR_PTR(-EINVAL);
- 
-+			if (bridge->supported_hdmi_ver >= HDMI_VERSION_2_0 &&
-+			    (!bridge->funcs->hdmi_scrambler_enable ||
-+			     !bridge->funcs->hdmi_scrambler_disable))
-+				return ERR_PTR(-EINVAL);
-+
- 			bridge_connector->bridge_hdmi = drm_bridge_get(bridge);
- 
- 			if (bridge->supported_hdmi_ver)
-@@ -1018,6 +1049,13 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
- 			bridge_connector->hdmi_funcs.spd =
- 				drm_bridge_connector_hdmi_spd_infoframe;
- 
-+		if (bridge_connector->bridge_hdmi->supported_hdmi_ver >= HDMI_VERSION_2_0) {
-+			bridge_connector->hdmi_funcs.scrambler_enable =
-+				drm_bridge_connector_scrambler_enable;
-+			bridge_connector->hdmi_funcs.scrambler_disable =
-+				drm_bridge_connector_scrambler_disable;
-+		}
-+
- 		ret = drmm_connector_hdmi_init_with_caps(drm, connector,
- 							 bridge_connector->bridge_hdmi->vendor,
- 							 bridge_connector->bridge_hdmi->product,
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index cfd1b18c06e6..7475b6b71836 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -561,7 +561,7 @@ static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
+ 				dev_dbg_ratelimited(hdmi->dev,
+ 						    "i2c read timed out\n");
+ 			else
+-				dev_err(hdmi->dev, "i2c read timed out\n");
++				dev_err_ratelimited(hdmi->dev, "i2c read timed out\n");
+ 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
+ 			return -EAGAIN;
+ 		}
+@@ -572,7 +572,7 @@ static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
+ 				dev_dbg_ratelimited(hdmi->dev,
+ 						    "i2c read error\n");
+ 			else
+-				dev_err(hdmi->dev, "i2c read error\n");
++				dev_err_ratelimited(hdmi->dev, "i2c read error\n");
+ 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
+ 			return -EIO;
+ 		}
 
 -- 
 2.54.0
