@@ -4,117 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B682DC4451B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB27C4450B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HxOGNPEQamtrCFW5COWGNuxzSm0F3B+c6kHcsQmJFw8=; b=t5Ur8Awj/ipvXD
-	VIwAfZco25Zw4ATtlbU8pAkrkML6B6VAce4FgsrJTMz/8IxrR0SlC7DvYbTJ1IbxjKePtHSZMTSPz
-	JdYiCMaonS7ziAH6dJswH8Cycaneod2Qrip9MEWmKZUnQKiUZs2lyi6wryDGCxVF2IiX5lClg9YIo
-	+Yx6bJuPom01PsAokiFX2H98+uvrbk3JqP17w4BQSens/yEIwdRX2HsNT3ShTubAQ2wVnIZpohbd8
-	YaGSq7U/nC5qMj9A8KwrQfZ5C7VMt4a75ZhXz44ynsqnjs/WmW0y9iGFVpjWSHNVlEI5AFE/rfPEw
-	lZ1fnfFQOtAB3KFL68gQ==;
+	List-Owner; bh=i9oye6BRfV5asJ7oQuvZUD8e9VMrAOuuuYRQWRtNG7A=; b=z+dUWhNG3visPu
+	2I4NLHNm4oCKeZ/KBbdoA+ljkYAU2bOOh96gzyVLXxjkI0PjJdl5yDvwTjPUfuIAfYsCMcqfJflQC
+	5XmgMSRd1KowasaFMSwxkR7D8rf/Vbw3s4qZm6NKDwhj9CSVHYmabA1v4yxFJ49TwT+Is/LAchUYw
+	949nzc7JhZjNYlf1SrpyelhRkhBDNHkGytv2zMWAycxfkHk5SnceoN+obH4bI978HakoSp65rPBs4
+	M2rLABi3cYtW3OjDf+EngqJ01C2Cw6vLqc2q1AdNc1A6XoHMW/qlTPQS6dYoSmIo/1QTrKB0YBWmD
+	1Cq/16tNw33HARoG3zNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkVV-00000001asB-2m7t;
-	Thu, 09 Jul 2026 08:53:21 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1whkVX-00000001awo-0M5P;
+	Thu, 09 Jul 2026 08:53:23 +0000
+Received: from out-170.mta0.migadu.com ([2001:41d0:1004:224b::aa])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weVdN-0000000GdKT-21gU;
-	Tue, 30 Jun 2026 10:24:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1782815045; x=1814351045;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=ktunQaDDS5EVOVO47fVPmptPD5p+avnAGjEgEXLkbp0=;
-  b=icQ/wQmMyVZEeQ41y0s/RD11IysL84RlqYL/arY/vH1/dWVzn1+QLLrf
-   ueBMWmMjezVhy+WaJXO+3iNQGGIcbJzXI6eieapAM1kBIjGjhhVCaXSQm
-   TOdxhxZcTJ6IN/W0mgmM+fsTXj3LXTIHco9RasSd9cPj/qGSeyCO0W2Wz
-   KbLi3LZ7d4xjSij4MOQWw89C0LFz2W4TDpD3vv6oGlWF6PGxSVzs/7RtK
-   R4U6BszKlVT+/8x5p+jGiXmDLemCjiVPuYg/rmmaXKWDznfJUbi98POac
-   d+XGxySUIzljPn21oJFt6BBAIK0pXw+4U1qaOJf6g5aG7EdN+AsAIzC0X
-   w==;
-X-CSE-ConnectionGUID: 3w72obJDQ2iuF8WVC270ug==
-X-CSE-MsgGUID: yAAMRUmOTcWAqGAj02Wyvw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11832"; a="83581393"
-X-IronPort-AV: E=Sophos;i="6.24,233,1774335600"; 
-   d="scan'208";a="83581393"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Jun 2026 03:24:04 -0700
-X-CSE-ConnectionGUID: jgq2xSQuTZCC6QLcUYS3Dw==
-X-CSE-MsgGUID: Tgh3e1tLRQ2N4h0xSzOsDw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,233,1774335600"; 
-   d="scan'208";a="245877673"
-Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.148])
-  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Jun 2026 03:23:47 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Lorenzo Stoakes <ljs@kernel.org>, Andrew Morton <akpm@linux-foundation.org>
-Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Madhavan Srinivasan
- <maddy@linux.ibm.com>, Michael Ellerman <mpe@ellerman.id.au>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David
- Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Lucas Stach
- <l.stach@pengutronix.de>, Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim
- <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Peter Griffin
- <peter.griffin@linaro.org>, Joonas Lahtinen
- <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, Rob Clark
- <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, Lyude
- Paul <lyude@redhat.com>, Danilo Krummrich <dakr@kernel.org>, Tomi
- Valkeinen <tomi.valkeinen@ideasonboard.com>, Sandy Huang
- <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan
- <andy.yan@rock-chips.com>, Thierry Reding <thierry.reding@kernel.org>,
- Mikko Perttunen <mperttunen@nvidia.com>, Jonathan Hunter
- <jonathanh@nvidia.com>, Gerd Hoffmann <kraxel@redhat.com>, Dmitry Osipenko
- <dmitry.osipenko@collabora.com>, Zack Rusin <zack.rusin@broadcom.com>,
- Matthew Brost <matthew.brost@intel.com>, Thomas Hellstrom
- <thomas.hellstrom@linux.intel.com>, Oleksandr Andrushchenko
- <oleksandr_andrushchenko@epam.com>, Helge Deller <deller@gmx.de>, Benjamin
- LaHaise <bcrl@kvack.org>, Alexander Viro <viro@zeniv.linux.org.uk>,
- Christian Brauner <brauner@kernel.org>, Muchun Song
- <muchun.song@linux.dev>, Oscar Salvador <osalvador@suse.de>, David
- Hildenbrand <david@kernel.org>, Zi Yan <ziy@nvidia.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, "Liam R . Howlett" <liam@infradead.org>,
- Nico Pache <npache@redhat.com>, Ryan Roberts <ryan.roberts@arm.com>, Dev
- Jain <dev.jain@arm.com>, Barry Song <baohua@kernel.org>, Lance Yang
- <lance.yang@linux.dev>, Hugh Dickins <hughd@google.com>, Vlastimil Babka
- <vbabka@kernel.org>, Mike Rapoport <rppt@kernel.org>, Suren Baghdasaryan
- <surenb@google.com>, Michal Hocko <mhocko@suse.com>, Jann Horn
- <jannh@google.com>, Pedro Falcato <pfalcato@suse.de>, Kees Cook
- <kees@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, linux-mips@vger.kernel.org,
- linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- dri-devel@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- virtualization@lists.linux.dev, intel-xe@lists.freedesktop.org,
- xen-devel@lists.xenproject.org, linux-fbdev@vger.kernel.org,
- linux-aio@kvack.org, linux-fsdevel@vger.kernel.org, linux-mm@kvack.org,
- linux-sound@vger.kernel.org
-Subject: Re: [PATCH 08/13] mm: introduce vma_get_page_prot() and use it
-In-Reply-To: <3bb8bdc4788230c33102166d56cbc5abfad9d4cb.1782760670.git.ljs@kernel.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
- 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
-References: <cover.1782760670.git.ljs@kernel.org>
- <3bb8bdc4788230c33102166d56cbc5abfad9d4cb.1782760670.git.ljs@kernel.org>
-Date: Tue, 30 Jun 2026 13:23:44 +0300
-Message-ID: <d6d75626287ddd46d7da136cf013f7b21b1afc06@intel.com>
+	id 1wfFOf-00000004IAz-1VaB
+	for linux-rockchip@lists.infradead.org;
+	Thu, 02 Jul 2026 11:15:59 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1782990951;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MXoiAeiZxppUV0bbr36tbNoILtIVkAZHXOhXlmlq9aE=;
+	b=SNO+TI3ysBG4+DhR3hPTF1SvhO32c4IR52yjAPmkR78MakGGmD/cQOYIcE8MmMX2BXfJ/B
+	PngJwUk8MPDHueMWfaVQgxbOjSa6VTjHZniUa88SClGCvA5JNzJYRen32CdMAokXiIgXtC
+	8TVZTPLK3UhpO1X2vjoT/Jd84+uq0gc=
+From: Lance Yang <lance.yang@linux.dev>
+To: ljs@kernel.org
+Cc: akpm@linux-foundation.org,
+	tsbogend@alpha.franken.de,
+	maddy@linux.ibm.com,
+	mpe@ellerman.id.au,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	l.stach@pengutronix.de,
+	inki.dae@samsung.com,
+	sw0312.kim@samsung.com,
+	kyungmin.park@samsung.com,
+	krzk@kernel.org,
+	peter.griffin@linaro.org,
+	jani.nikula@linux.intel.com,
+	joonas.lahtinen@linux.intel.com,
+	rodrigo.vivi@intel.com,
+	tursulin@ursulin.net,
+	robin.clark@oss.qualcomm.com,
+	lumag@kernel.org,
+	lyude@redhat.com,
+	dakr@kernel.org,
+	tomi.valkeinen@ideasonboard.com,
+	hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	thierry.reding@kernel.org,
+	mperttunen@nvidia.com,
+	jonathanh@nvidia.com,
+	kraxel@redhat.com,
+	dmitry.osipenko@collabora.com,
+	zack.rusin@broadcom.com,
+	matthew.brost@intel.com,
+	thomas.hellstrom@linux.intel.com,
+	oleksandr_andrushchenko@epam.com,
+	deller@gmx.de,
+	bcrl@kvack.org,
+	viro@zeniv.linux.org.uk,
+	brauner@kernel.org,
+	muchun.song@linux.dev,
+	osalvador@suse.de,
+	david@kernel.org,
+	ziy@nvidia.com,
+	baolin.wang@linux.alibaba.com,
+	liam@infradead.org,
+	npache@redhat.com,
+	ryan.roberts@arm.com,
+	dev.jain@arm.com,
+	baohua@kernel.org,
+	lance.yang@linux.dev,
+	hughd@google.com,
+	vbabka@kernel.org,
+	rppt@kernel.org,
+	surenb@google.com,
+	mhocko@suse.com,
+	jannh@google.com,
+	pfalcato@suse.de,
+	kees@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	linux-mips@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	dri-devel@lists.freedesktop.org,
+	etnaviv@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	nouveau@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	virtualization@lists.linux.dev,
+	intel-xe@lists.freedesktop.org,
+	xen-devel@lists.xenproject.org,
+	linux-fbdev@vger.kernel.org,
+	linux-aio@kvack.org,
+	linux-fsdevel@vger.kernel.org,
+	linux-mm@kvack.org,
+	linux-sound@vger.kernel.org
+Subject: Re: [PATCH 02/13] mm/vma: update do_mmap() to use vma_flags_t
+Date: Thu,  2 Jul 2026 19:15:31 +0800
+Message-Id: <20260702111531.64883-1-lance.yang@linux.dev>
+In-Reply-To: <e0ac58ad2b88ff7e2f0024e3286b2e786f79ca32.1782760670.git.ljs@kernel.org>
+References: <e0ac58ad2b88ff7e2f0024e3286b2e786f79ca32.1782760670.git.ljs@kernel.org>
 MIME-Version: 1.0
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_032405_531564_1BBB3B47 
-X-CRM114-Status: UNSURE (   6.04  )
-X-CRM114-Notice: Please train this message.
-X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
+X-CRM114-CacheID: sfid-20260702_041557_759037_F71261FE 
+X-CRM114-Status: GOOD (  15.32  )
+X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,17 +149,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 29 Jun 2026, Lorenzo Stoakes <ljs@kernel.org> wrote:
->  drivers/gpu/drm/i915/gem/i915_gem_mman.c    | 12 ++++++------
 
-For i915,
+On Mon, Jun 29, 2026 at 08:25:25PM +0100, Lorenzo Stoakes wrote:
+>The core do_mmap() function accepts a vm_flags_t parameter which it then
+>manipulates before passing to mmap_region() to do the heavy lifting of the
+>memory mapping.
+>
+>Update do_mmap() to instead accept a vma_flags_t parameter, and adjust all
+>the logic within do_mmap() to manipulate this instead.
+>
+>This is as part of the ongoing effort to convert VMA flags from a system
+>word size to a bitmap type which allows us to unrestrict the number of VMA
+>flags, as well as gain control over how VMA flag manipulation occurs.
+>
+>We do not cascade these changes to all functions which accept vm_flags_t,
+>but rather use vma_flags_to_legacy() where necessary, specifically
+>deferring converting calc_vm_prot_bits(), calc_vm_flag_bits() and
+>__get_unmapped_area() to vma_flags_t.
+>
+>Also utilise the new vma_flags_can_grow() predicate which correctly handles
+>the case of architectures without upward growing stacks.
+>
+>As part of this change, introduce VMA_SHADOW_STACK so we can correctly
+>handle the case of the shadow stack not being defined.
+>
+>No functional change intended.
+>
+>Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
+>---
 
-Acked-by: Jani Nikula <jani.nikula@intel.com>
+Not exactly a small one :) I stared at this patch for a while, hopefully
+don't miss anythig ...
 
+Just one tiny nit below. Overall, LGTM, feel free to add:
 
+Reviewed-by: Lance Yang <lance.yang@linux.dev>
 
--- 
-Jani Nikula, Intel
+[...]
+>diff --git a/mm/mmap.c b/mm/mmap.c
+>index 46174e706bbe..547352183214 100644
+>--- a/mm/mmap.c
+>+++ b/mm/mmap.c
+[...]
+>@@ -488,23 +496,27 @@ unsigned long do_mmap(struct file *file, unsigned long addr,
+> 		 * Check to see if we are violating any seals and update VMA
+> 		 * flags if necessary to avoid future seal violations.
+> 		 */
+>-		err = memfd_check_seals_mmap(file, &vm_flags);
+>+		err = memfd_check_seals_mmap(file, &vma_flags);
+> 		if (err)
+> 			return (unsigned long)err;
+> 	} else {
+> 		switch (flags & MAP_TYPE) {
+> 		case MAP_SHARED:
+>-			if (vm_flags & (VM_GROWSDOWN|VM_GROWSUP))
+>+			if (vma_flags_can_grow(&vma_flags))
+> 				return -EINVAL;
+> 			/*
+> 			 * Ignore pgoff.
+> 			 */
+> 			pgoff = 0;
+>-			vm_flags |= VM_SHARED | VM_MAYSHARE;
+>+			vma_flags_set(&vma_flags, VMA_SHARED_BIT, VMA_MAYSHARE_BIT);
+> 			break;
+>-		case MAP_DROPPABLE:
+>-			if (VM_DROPPABLE == VM_NONE)
+>+		case MAP_DROPPABLE: {
+>+			vma_flags_t droppable = VMA_DROPPABLE;
+>+
+>+			if (vma_flags_empty(&droppable))
+> 				return -EOPNOTSUPP;
+>+			vma_flags_set_mask(&vma_flags, droppable);
+>+
+> 			/*
+> 			 * A locked or stack area makes no sense to be droppable.
+> 			 *
+>@@ -515,23 +527,24 @@ unsigned long do_mmap(struct file *file, unsigned long addr,
+> 			 */
+> 			if (flags & (MAP_LOCKED | MAP_HUGETLB))
+> 			        return -EINVAL;
+>-			if (vm_flags & (VM_GROWSDOWN | VM_GROWSUP))
+>+			if (vma_flags_can_grow(&vma_flags))
+> 			        return -EINVAL;
+> 
+>-			vm_flags |= VM_DROPPABLE;
+
+Old code checked VM_GROWSDOWN|VM_GROWSUP before seting VM_DROPPABLE. New
+code flips that around. Hmm, shouldn't master, just made me look twice ;)
+
+Maybe keep old order?
+
+Cheers, Lance
+
+>-
+> 			/*
+> 			 * If the pages can be dropped, then it doesn't make
+> 			 * sense to reserve them.
+> 			 */
+>-			vm_flags |= VM_NORESERVE;
+>+			vma_flags_set(&vma_flags, VMA_NORESERVE_BIT);
+> 
+> 			/*
+> 			 * Likewise, they're volatile enough that they
+> 			 * shouldn't survive forks or coredumps.
+> 			 */
+>-			vm_flags |= VM_WIPEONFORK | VM_DONTDUMP;
+>+			vma_flags_set(&vma_flags, VMA_WIPEONFORK_BIT,
+>+				      VMA_DONTDUMP_BIT);
+>+
+> 			fallthrough;
+>+		}
+> 		case MAP_PRIVATE:
+> 			/*
+> 			 * Set pgoff according to addr for anon_vma.
+[...]
 
 _______________________________________________
 Linux-rockchip mailing list
