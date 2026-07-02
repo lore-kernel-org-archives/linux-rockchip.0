@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E4B1C43458
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D726BC44503
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,36 +12,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zIOY9sIpVVIMCPPYGVWONkuiuLpCR9XjFJKfi/yczic=; b=G/c7UBvVoCHt1R
-	Yy1zG3sPJ1TXM2TtZMvxF+C6ywNyHFCeUZBns//XnLfXH2n7sPSWxF5pM5x4VKl5gHuq3HlNwnmMK
-	FnZQCFh8BkfRZN7UTOJKMnYIJtuGUviWgiOmW++JNsIWAZdJMTjtgmCid3IfYcRCxvM5guYEqTK0A
-	sYP/M5ayKlcVQIAuV6QqfK6FuGTLyuz+IhaodJ9dcMArSEnoALFrl1VHCcm7Zm7s22yWKNFDEn+q0
-	Ix60mHFcT+w5ZllgVywfMJhilpwwYRkhEPPQZN+S0WAZ2vS4Al1aJTX+qZuSRoa89w29jzw1E4BrI
-	GYwubA2jlp1rxKhDwJgA==;
+	List-Owner; bh=qj7WLW+wwsdpg2s/brlZwq4bYIR7nQOoyt81MHPSJzM=; b=SHmn1SCKiR2qn/
+	eAD+7scZL7K1dGIbWxPjXQJjKhMH6mMchAfOUDAwFsfYW17YBUpX2E7rbUZtmqTsg/diQ2H5uQ8nD
+	BtYNkEh9GKw5EU6zY0RpKyORP1tUgbOm+9z6IH+S+TSZwN0X3V4dcqanOjCMVqSEOHnAKHgxUE/YY
+	Jdhd0mCMNnFsXDqopQBNDUkMYEDEQpKIpgkO4SE+0w30Ks/s3rASvN2OqxFaJYdHloSCxVsjqPD6k
+	BcLqr8JzG2zWVMxvfa+DgeVQhmllqMp+pGakFWcSd3YklwObQDH9uBLAMB4ZEhiTLLmBSzpjGqrOk
+	cuIXfCz2mdNfnUJw51Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkW0-00000001cPl-0yFU;
+	id 1whkW0-00000001cRb-38TK;
 	Thu, 09 Jul 2026 08:53:52 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfJMG-00000004oSw-1sQx;
-	Thu, 02 Jul 2026 15:29:44 +0000
+	id 1wfJWp-00000004qKP-1yFp;
+	Thu, 02 Jul 2026 15:40:39 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 25A4F418F4;
-	Thu,  2 Jul 2026 15:29:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA7DF1F000E9;
-	Thu,  2 Jul 2026 15:29:27 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C7EA7601CA;
+	Thu,  2 Jul 2026 15:40:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE8E41F00A3E;
+	Thu,  2 Jul 2026 15:40:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783006184;
-	bh=AmvNH9wwHqyoIMesePnV6/zMDBtlSz51dFh4yHJ1BTo=;
+	s=k20260515; t=1783006838;
+	bh=gNLYS8EYE6bJ5KaXF7DR9fRu4urDF+a7laqqF8q0hcA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=EZDY+QGcsghhDIw9rxbIhnPAJRijthrModhJ3dAoSN5cVM+YkTpcpEvD+KPlh/M/u
-	 Qwt3kZkRl2OzXpZ8lNBF20cEMvcQmjr2C3N0OBOmi3krbMnyRHMJTEBJXrtiCGLkys
-	 hVceGk9nKeLivyWhhq1nb1heVf5ntbaXnUG4S4OpDlt89/1RU+lLBy/OziQBm1WY0f
-	 mLETtt6Kv1hVTKJQz++mgHlN+PUF+ac9yH5QtMrmNRfTW7GoeSyD7Rts3hi3Don33s
-	 UtJfTmtwGOSlfBDJEzVdm8IjgP96nHmx5GxFIPDKfkfCebxxa9UBrNHRuHW+T6BGzw
-	 FkrA9PbgKP9aQ==
-Date: Thu, 2 Jul 2026 16:29:20 +0100
+	b=Z8vOAtQOT+iGTiy4xQ3GfxWy9CpR6iieY1qxm1fyBJSvxEFV2aEwGeTLwIZE4UbYF
+	 sH6QvDHKQJHBXcc/JYlecYNDNZBJEw63vn2taYjOLxg3iNlePJRLcm76SDX3qcqqpf
+	 OAzUHT+NRGQHyZOOfos5EJuVfaKEWfkdr4crDOBp2KFX/hKeIetGWLc1I64/oz6RHQ
+	 NC8RA6ivq/IEW4DV1d+3Z0k229cWnviqo6Svky+UHUgnyeaFy3m0xyIovRQ1UfVX8n
+	 wqqP9ts5FpBy46j7HS+G+te0/D/3BLeS388iQo+wLiLJCSDRdl7jDwGFy3vdpkllGJ
+	 NUUDfmqseIbQg==
+Date: Thu, 2 Jul 2026 16:40:15 +0100
 From: Lorenzo Stoakes <ljs@kernel.org>
 To: Lance Yang <lance.yang@linux.dev>
 Cc: akpm@linux-foundation.org, tsbogend@alpha.franken.de, 
@@ -70,14 +70,13 @@ Cc: akpm@linux-foundation.org, tsbogend@alpha.franken.de,
 	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, linux-fbdev@vger.kernel.org, 
 	linux-aio@kvack.org, linux-fsdevel@vger.kernel.org, linux-mm@kvack.org, 
 	linux-sound@vger.kernel.org
-Subject: Re: [PATCH 06/13] mm/vma: convert vm_pgprot_modify() to use
- vma_flags_t and rename
-Message-ID: <akaC-xxNr8ZyN4aH@lucifer>
-References: <548ba81b2971734d4d2143237ad1465bd1b2f525.1782760670.git.ljs@kernel.org>
- <20260702122116.65642-1-lance.yang@linux.dev>
+Subject: Re: [PATCH 08/13] mm: introduce vma_get_page_prot() and use it
+Message-ID: <akaGOiLz-3Zx6kDs@lucifer>
+References: <3bb8bdc4788230c33102166d56cbc5abfad9d4cb.1782760670.git.ljs@kernel.org>
+ <20260702123845.95316-1-lance.yang@linux.dev>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260702122116.65642-1-lance.yang@linux.dev>
+In-Reply-To: <20260702123845.95316-1-lance.yang@linux.dev>
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,60 +94,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 02, 2026 at 08:21:16PM +0800, Lance Yang wrote:
+On Thu, Jul 02, 2026 at 08:38:45PM +0800, Lance Yang wrote:
 >
-> On Mon, Jun 29, 2026 at 08:25:29PM +0100, Lorenzo Stoakes wrote:
-> >Update vm_pgprot_modify() to use the new VMA flags type vma_flags_t, and
-> >rename to vma_pgprot_modify() accordingly.
+> On Mon, Jun 29, 2026 at 08:25:31PM +0100, Lorenzo Stoakes wrote:
+> >There's a large number of vm_get_page_prot(vma->vm_flags) invocations. Make
+> >life easier by introducing vma_get_page_prot() parameterised by the VMA.
 > >
-> >This is part of the ongoing work to convert vm_flags_t to vma_flags_t, in
-> >order to eliminate the arbitrary limit of the number of bits in a system
-> >word on available VMA flags.
+> >This also makes converting vm_get_page_prot() to vma_flags_t easier.
 > >
-> >Update VMA userland tests accordingly, updating vma_set_page_prot() to no
-> >longer inline vma_pgprot_modify(), rather we can simply define
-> >vma_pgprot_modify() as a static inline function and the tests will pick it
-> >up from vma.h.
+> >Also update the userland VMA tests to reflect the change.
 > >
 > >No functional change intended.
 > >
 > >Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
 > >---
-> [...]
-> >diff --git a/mm/vma.h b/mm/vma.h
-> >index bcf0c2773449..6a8abb8ae937 100644
-> >--- a/mm/vma.h
-> >+++ b/mm/vma.h
-> >@@ -522,9 +522,11 @@ static inline bool vma_wants_manual_pte_write_upgrade(struct vm_area_struct *vma
-> > }
-> >
-> > #ifdef CONFIG_MMU
-> >-static inline pgprot_t vm_pgprot_modify(pgprot_t oldprot, vm_flags_t vm_flags)
-> >+static inline pgprot_t vma_pgprot_modify(pgprot_t oldprot, vma_flags_t vma_flags)
-> > {
-> >-	return pgprot_modify(oldprot, vm_get_page_prot(vm_flags));
-> >+	const pgprot_t prot = vma_get_page_prot(vma_flags);
-> >+
-> >+	return pgprot_modify(oldprot, prot);
+> > drivers/gpu/drm/drm_gem.c                   |  2 +-
+> > drivers/gpu/drm/drm_gem_dma_helper.c        |  2 +-
+> > drivers/gpu/drm/drm_gem_shmem_helper.c      |  2 +-
+> > drivers/gpu/drm/etnaviv/etnaviv_gem.c       |  2 +-
+> > drivers/gpu/drm/exynos/exynos_drm_gem.c     |  6 +++---
+> > drivers/gpu/drm/i915/gem/i915_gem_mman.c    | 12 ++++++------
+> > drivers/gpu/drm/msm/msm_gem.c               |  2 +-
+> > drivers/gpu/drm/nouveau/nouveau_gem.c       |  2 +-
+> > drivers/gpu/drm/omapdrm/omap_fbdev.c        |  2 +-
+> > drivers/gpu/drm/omapdrm/omap_gem.c          |  6 +++---
+> > drivers/gpu/drm/rockchip/rockchip_drm_gem.c |  2 +-
+> > drivers/gpu/drm/tegra/gem.c                 |  2 +-
+> > drivers/gpu/drm/virtio/virtgpu_vram.c       |  2 +-
+> > drivers/gpu/drm/vmwgfx/vmwgfx_page_dirty.c  |  2 +-
+> > drivers/gpu/drm/xe/xe_device.c              |  2 +-
+> > drivers/gpu/drm/xe/xe_mmio_gem.c            |  2 +-
+> > drivers/gpu/drm/xen/xen_drm_front_gem.c     |  2 +-
+> > drivers/video/fbdev/core/fb_io_fops.c       |  2 +-
 >
-> Nit: could this just stay as a single return? something like:
+> One missed?
 >
-> return pgprot_modify(oldprot, vma_get_page_prot(vma_flags));
+> drivers/gpu/drm/panthor/panthor_gem.c still has:
+>
+> 	vma->vm_page_prot = vm_get_page_prot(vma->vm_flags);
+>
+> Can use vma_get_page_prot(vma) too.
 
-I feel it's a bit clearer this way, separating out the two, I know it's a super
-tiny difference but anyway :P
-
->
-> Otherwise, LGTM, feel free to add:
->
-> Reviewed-by: Lance Yang <lance.yang@linux.dev>
-
-Thanks!
+Oops! Will respin and update. Good spot!
 
 >
 > [...]
 
-Cheers, Lorenzo
+Thanks, Lorenzo
 
 _______________________________________________
 Linux-rockchip mailing list
