@@ -4,60 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EE87C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 21:09:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0C86C43327
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 22:08:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c30U0VLpM51FWEpS5Y46K+8YnpvpfZHWW42zetLDPaY=; b=xbae8nrqPxGSzd
-	lSwPRbsSdcCSzJDPizEsYmR0xqzmGHrI7lWNNf1RSXtSmX9k8TMjZPi01mHf8MMhPUzDtuXvMy5Va
-	U+Grdp7ZxD1HFbreUCwEo0LGQr2zPrbJI7STa2Q418Yea3SzTD4K5pyI/ptqTm1Hps89jOw45ZvFR
-	i2XYjPb+LRjZ425ezaj/wmd+drEgj8+91RBaQkARDWTxiH9Q9L1HcOMDfZMoDnWhD3XZyPPBOCmrd
-	HqW6hDI+65xmLgQJBxXFHAG6VPj14ybCz9OmFkZv8sfa5FXBQjjasLnbyLF+NCUIHbWzYKOUfmNy0
-	3Dwo7x1RdYPs8LpuzZbw==;
+	List-Owner; bh=u6Hk64WYW3glLbmSraNkp239HaRqNyvb/v+oRAZiW9o=; b=o1fh+QPjs916dt
+	mrTceciNG/VAEWdemWIQre6g/CrskWIF0qhDibVggf0upODb2AKnaeW0C2qKm40sf71pQkN+zYlUB
+	hgemZSL4H4OkM77adzJIlQmBCfqd4UWQxTvs8zjW5A1HFjGR3MX2ev1ngaEkYzz7OumUj04urzbNX
+	49yflLGycO7hevsdSvdfQVVCtzRwrMDaqwwXdokYVwb+T2RsznkmS+tSLqiv4bqgfcrIGQGsD+qlk
+	lVc+5DurMmokMP9HFbh/EMJhNYP05yYojGx0LnYfNEIS+bbyXLVHmP8JeU5LY0lVPEeAqVM0SeMEi
+	/8iX8su92vD2aZd/tH5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfOea-00000005V0n-0oCe;
-	Thu, 02 Jul 2026 21:09:00 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1wfPa5-00000005cJb-46hR;
+	Thu, 02 Jul 2026 22:08:25 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfOeX-00000005V0L-2gS0;
-	Thu, 02 Jul 2026 21:08:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=VsU0GKlpFen3bVJtWCMmvE5FPpCnuu0a3JfblASDukw=; b=3OJXP7RLiMfKVDA9EBfQIOFHkz
-	jS/DJTx6LqCN2l432ngygfgLUogxS7Ko1t035kcDafAQgVRcrTXxsv8/Z5vN/Y7zJTzR8E/QpKu97
-	TmgJVzbEJRMnj1IUGzHOvI9XtaDfydCTx5U3ThojEtVLFGoMwAI2um+GdUeLI1Pnzqlw=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1wfOeM-00ARGv-DY; Thu, 02 Jul 2026 23:08:46 +0200
-Date: Thu, 2 Jul 2026 23:08:46 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Coia Prant <coiaprant@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Dragan Simic <dsimic@manjaro.org>,
-	Jonas Karlman <jonas@kwiboo.se>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: Add devicetree for the
- Graperain G3568 v2
-Message-ID: <fb1b5c32-9dfb-43b9-85a3-2adff2bc4a66@lunn.ch>
-References: <20260702204628.2407308-2-coiaprant@gmail.com>
- <20260702204628.2407308-5-coiaprant@gmail.com>
+	id 1wfPa4-00000005cHG-2C7j;
+	Thu, 02 Jul 2026 22:08:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E9CA143EA0;
+	Thu,  2 Jul 2026 22:08:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id C5382C2BCF4;
+	Thu,  2 Jul 2026 22:08:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1783030103;
+	bh=m/UHTg2bhktE5x+v1ieiha7RXNdo7gHve1/yCDswEpk=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=rq6fV46/wwgZfEvFIGiryHAj/H51ZNU2ICXPhvxHth9USzdeZFixSdVlFs0YUXlgp
+	 uTpongaZxxA6rDpwY1Pw8sRKZN8OlaIG7jX8lNzRN4V50b9kdJLWbWzTqNlYa5gCkb
+	 UPXtoD3j4Fz8giDTmSmIjcWELhhwkll8Gx8BlyI1l3w6yI63nW0yNuJdgW8FR/9gyO
+	 7NMInrUFUbQMCLYjKXSl/yx9HabgJTe93PZ51LpMo+hOFDoeGeJ5dqKDXnPEZV+4+S
+	 Fytaklb+Fsh/M1BzsD1OxbxImVBliYmo9kc0ehquSJr6Cy6hBn9Sl+W4ITHiHsm2Oa
+	 a7+nDdKOmCN8w==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A6CBFC43602;
+	Thu,  2 Jul 2026 22:08:23 +0000 (UTC)
+From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
+Date: Fri, 03 Jul 2026 00:07:16 +0200
+Subject: [PATCH 01/12] dt-bindings: arm: rockchip: add FriendlyElec NanoPi
+ M6
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260702204628.2407308-5-coiaprant@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_140857_682086_DA4BB407 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+Message-Id: <20260703-nanopi-m6-v1-1-8344a1559519@gmail.com>
+References: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
+In-Reply-To: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Joachim Eastwood <joachim.eastwood@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783030102; l=1070;
+ i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
+ bh=yyZDtPe8JZdirWWm3es5UC1K/bf3oJ/LDw27weSm6zc=;
+ b=20B5BPeM4UwmZy4g/eudhf+IEqP0XVy0DmewljekKv8VCNYH5rEUhonHauidtV8dn2omS0I59
+ kKvP4D2imY1B7ti0UHq5YXmlWRXDuDeAH2NiR1Q8Uc3U3Yxmkv84TEm
+X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
+ pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
+X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
+ with auth_id=846
+X-Original-From: Joachim Eastwood <joachim.eastwood@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,106 +79,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: joachim.eastwood@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> +&gmac0 {
-> +	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
-> +	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>;
-> +	assigned-clock-rates = <0>, <125000000>;
-> +	clock_in_out = "output";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&gmac0_miim
-> +		     &gmac0_tx_bus2
-> +		     &gmac0_rx_bus2
-> +		     &gmac0_rgmii_clk
-> +		     &gmac0_rgmii_bus>;
-> +	phy-handle = <&rgmii_phy0>;
-> +	phy-mode = "rgmii-id";
-> +	status = "okay";
-> +};
-> +
-> +&gmac1 {
-> +	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-> +	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
-> +	assigned-clock-rates = <0>, <125000000>;
-> +	clock_in_out = "output";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&gmac1m1_miim
-> +		     &gmac1m1_tx_bus2
-> +		     &gmac1m1_rx_bus2
-> +		     &gmac1m1_rgmii_clk
-> +		     &gmac1m1_rgmii_bus>;
-> +	phy-handle = <&rgmii_phy1>;
-> +	phy-mode = "rgmii-id";
-> +	status = "okay";
-> +};
+From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-> +&mdio0 {
-> +	rgmii_phy0: ethernet-phy@1 {
-> +		compatible = "ethernet-phy-ieee802.3-c22";
-> +		reg = <1>;
-> +		reset-assert-us = <20000>;
-> +		reset-deassert-us = <100000>;
-> +		reset-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_LOW>;
-> +
-> +		leds {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			led@1 {
-> +				reg = <1>;
-> +				color = <LED_COLOR_ID_GREEN>;
-> +				function = LED_FUNCTION_LAN;
-> +				default-state = "keep";
-> +			};
-> +
-> +			led@2 {
-> +				reg = <2>;
-> +				color = <LED_COLOR_ID_AMBER>;
-> +				function = LED_FUNCTION_LAN;
-> +				default-state = "keep";
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&mdio1 {
-> +	rgmii_phy1: ethernet-phy@1 {
-> +		compatible = "ethernet-phy-ieee802.3-c22";
-> +		reg = <1>;
-> +		reset-assert-us = <20000>;
-> +		reset-deassert-us = <100000>;
-> +		reset-gpios = <&gpio2 RK_PD1 GPIO_ACTIVE_LOW>;
-> +
-> +		leds {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			led@1 {
-> +				reg = <1>;
-> +				color = <LED_COLOR_ID_GREEN>;
-> +				function = LED_FUNCTION_LAN;
-> +				default-state = "keep";
-> +			};
-> +
-> +			led@2 {
-> +				reg = <2>;
-> +				color = <LED_COLOR_ID_AMBER>;
-> +				function = LED_FUNCTION_LAN;
-> +				default-state = "keep";
-> +			};
-> +		};
-> +	};
-> +};
+Add device tree binding documentation for FriendlyElec NanoPi M6,
+a single-board computer based on the Rockchip RK3588S SoC. Very
+similar to NanoPi R6C and R6S.
 
-For these nodes only:
+Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 1a9dde18626d..6ba512964c25 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -344,9 +344,10 @@ properties:
+               - friendlyarm,nanopi-r5s
+           - const: rockchip,rk3568
+ 
+-      - description: FriendlyElec NanoPi R6 series boards
++      - description: FriendlyElec NanoPi6 series boards
+         items:
+           - enum:
++              - friendlyarm,nanopi-m6
+               - friendlyarm,nanopi-r6c
+               - friendlyarm,nanopi-r6s
+           - const: rockchip,rk3588s
 
-    Andrew
+-- 
+2.55.0
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
