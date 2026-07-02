@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EDB5C43327
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 22:08:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5A77C43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 22:08:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rwvPb1CsuccDdtr/sMozTTT7sPO1ZyTg2vnZTWeVlp4=; b=mNP7z/URxRZKP0
-	XYJ8hgIyrZqaj7yezxuDGxfir0v1/wE4HlYw5nWtqWpTU5pLWbIMm6pc5aVvJ6N0d9/C0Ax+2g8Nu
-	+xqWbToGdqIDhvjjKRWej8FwZIfJlCawTTKcUQ1g8JTJO6j5t2YSsWPIYpc3/0HxGbTewwA48EUsn
-	UcnQ65/L9CjKP54a8sQjPp+RKYaaMuefzgM00CS6QdWml+AfCrXMojHEWi23cXtu7yfk7xyciLkzW
-	IUelgNw4MMhZIFBNdKtsr0iLcuY+UVFgA3Ar4eeLjSduj80Sib0ZAavCbMbUbR/EM2K/f9VJzzO5Y
-	33pM0jtx9KeL9iaFi53A==;
+	List-Owner; bh=fgxdhonbRGTaldEtoZMPnw253CztDObRg5fC6iAeYoE=; b=ejUTUJ6JY8u5Yb
+	a1+j4uQfgjXYhTz6MJX96Pe9BgJU7Gx+cWF/cvRXFQPh6pp41sePl59QyVn5MGXcTq/iJOtNnGYDy
+	vlp4Yoxy7tITIjKOdrqqCKBWuXh7mKu4umMOhnNuhSZUt33l5SQzq4vsRakws4o0UNzh/ZSF9v10s
+	qsJctHM5cuMuGURS1MJtMcCuK4U+bUF0p2yVrpI1PgyX9KF+Ig/McWvSsT4Fqhw95vmD5cqFRwiuQ
+	Zgue9bnpJsGQfkhjKCKhs5OVcM/0BSQPUf+ZKKZLKa6noaYPJxdz23FC2wbWrdHkC4569JjEMPqe+
+	V9VC26y4Eennc5CVpR2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfPaD-00000005cTj-1dXx;
+	id 1wfPaD-00000005cVG-3O9D;
 	Thu, 02 Jul 2026 22:08:33 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfPa4-00000005cHU-3b1V;
+	id 1wfPa4-00000005cHL-3akY;
 	Thu, 02 Jul 2026 22:08:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 369FF43F14;
+	by sea.source.kernel.org (Postfix) with ESMTP id 203B243EF8;
 	Thu,  2 Jul 2026 22:08:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 02DF4C2BCFB;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id E9C45C2BCFF;
 	Thu,  2 Jul 2026 22:08:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1783030104;
-	bh=7kThHoU7NfVa2SrQo4njFM/R/gQef5vJsZCKo0knqPU=;
+	bh=ott/e/PsVQ7ftOVMoDZvH/I1/494RVUTk6InVE/vBKQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=JBJxSZPG0d7reF9bn82RBCFkm1ikQdVMZMIUQ/C9NxWs3Y9AZevqwmDhCDEy3U6r7
-	 NHgBQx+wk5AqZLveOppc5dwYSsQQhKhbMgwHRsnr4pLxMbO49pQ4Dk3yk5I2pSeiBp
-	 MIjs4nD6pEXgwWo15Q/FASJBqPAxyMSiGQw4gwzYYOuLIf39iIe8Iu6GavCUCY2Ry6
-	 opn0SiqONkMpCyeucS0CJ+Jb584DutugtajZSsPnqTQyJ9pCEPOjTq/CNKJGRTm29h
-	 qzdWoB4nSPfNOO2ZEivAUFqEiKEpsf+hFmS8Q+pCwgIa6+Q+1t4Ki1e1drKWP6Gb98
-	 V81TjYhFRQ6vQ==
+	b=DZJeYkNh5/Zqu+LUlcJ9qLgv5Bv5kM2jZXGCvVNN6qSAQbjYLvGyknQwkJWysoSAF
+	 cV21zUOBr1oWcM08vfBlL7nIeBL/dKiZ85K/JcIaBOKbsNpBKjgnsIuPebH0zRnfgM
+	 yuBBp2bO9Kr28uiAZPj0n8SBZPMji65jp0KIJxfmRWvvXOlrftVk0MP1vnFk11i1iH
+	 M4RebIgvMkOZQsLM/0reoaiqrynZxynk6uHcCWISYL+S47mpEgsQq834Gz0dWqtKXU
+	 9EtLPyDEhM8bBGP5aU6is4+zObl6uuroeZ2frMRVdnpI+iDAwSAugP15GNjRVn/kyu
+	 jlZiOCXYRF/bA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E003CC43458;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D231AC44502;
 	Thu,  2 Jul 2026 22:08:23 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Fri, 03 Jul 2026 00:07:20 +0200
-Subject: [PATCH 05/12] arm64: dts: rockchip: rk3588s-nanopi: remove pull up
- on rtc int pin
+Date: Fri, 03 Jul 2026 00:07:19 +0200
+Subject: [PATCH 04/12] arm64: dts: rockchip: rk3588s-nanopi: add missing
+ sdmmc cd pinctrl
 MIME-Version: 1.0
-Message-Id: <20260703-nanopi-m6-v1-5-8344a1559519@gmail.com>
+Message-Id: <20260703-nanopi-m6-v1-4-8344a1559519@gmail.com>
 References: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
 In-Reply-To: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,11 +58,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783030102; l=834;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783030102; l=1037;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=8bK9qjPaJeH5DZSNwTRXo86eIiea6f1QVJhbeEdJZoQ=;
- b=M5GvjoFyQM7vUcv4AXzMBIyLW12TYwl8mVGascoP4M00Q2BaUYDMtdimfvixcMc8xzO7TkPGJ
- 7PmAFnjndqCD/ZRy81pvbPOYbFrDWpYQbypzevbLnAgFXq/TWJRJWUI
+ bh=RwYpiB/RtND/z6LPjHWK2wsSxC8Q0Qs9K3NgIPhkNgo=;
+ b=XisTuZZGCV1AVfD+TzkRzyHXLHFHpBImklosu4XKYZv5/Dji/tqIl2PXldu3LKtNebjAStaiP
+ eLSoD9/PhqYD/Ji28zIJlxCjd6ItJt3v5tF7laDFKxZK9Wp8k4aOPCG
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,27 +87,37 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-All boards in the RK3588S NanoPi familiy has a pull on the PCB for the
-RTC interrupt pin. So there is no need to enable the pull-up in the SoC.
+The cd (card detect) pin is used, but not reserved through pinctrl.
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-index a8f32b994b10..f3a240b48a2a 100644
+index d41c49716fa2..a8f32b994b10 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-@@ -331,7 +331,7 @@ hdmi0_tx_on_h: hdmi0-tx-on-h {
- 
- 	hym8563 {
- 		rtc_int: rtc-int {
--			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
+@@ -336,6 +336,10 @@ rtc_int: rtc-int {
  	};
  
+ 	sdmmc {
++		sdmmc_det_pin: sdmmc-det-pin {
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
+ 		sd_s0_pwr: sd-s0-pwr {
+ 			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+@@ -407,6 +411,8 @@ &sdmmc {
+ 	no-mmc;
+ 	no-sdio;
+ 	sd-uhs-sdr104;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc_bus4 &sdmmc_clk &sdmmc_cmd &sdmmc_det_pin>;
+ 	vmmc-supply = <&vcc_3v3_sd_s0>;
+ 	vqmmc-supply = <&vccio_sd_s0>;
+ 	status = "okay";
 
 -- 
 2.55.0
