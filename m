@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ED45C44506
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EF1BC44507
 	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 22:08:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TPUGaRYJq5uLtEgbQF1S6PFe/63WI8drrv85lVrcX/w=; b=3Hm+PaQzFAV4dm
-	w7n7K8/t+Wgl7yhhwfWPo9I0alDtMkncwTe2n6DCw9/LnEREtDv/YbJaVEgHwJG0vR40G3iDnAG61
-	rl7b4g2K6D3iWkDuo0q6wlv9bfP3XNzMVCg+NyYoTFdd0uV8kzVHlCpfEYMnE/lx4rhwKyIPahHxS
-	djXkf+CQuHxgZIUUKPE4eMmW2BaiQLILPFm/BGmH/jiLCrJbdiZI6Cam9geK+PiVUcmOE1evkSbj4
-	802X3zhwn/D+5EkV21GA0ut8JMWURMLvJfN2LqThZP0IHNo9ne4EE65JyEt3rm+k5cu6N3c6mAPcq
-	qtCn6KI+smIbELVYOHWA==;
+	List-Owner; bh=mllIJCI+e+w5+lLIaNUUfKKGe6d3kHSlEH4L0aV0sm4=; b=QhFBni/Tpyh323
+	X07Zx+xG72vGzk6ixeM0JNTtPedkBY35S9gctq2yd16Q6ycnU8P2Fz5H+8YbNyrjgmG1WmKs1rpHd
+	WfOZEUgzw1g4z7sCrFjqq97Z2fdNZoEOc/+O+VemG19wEsVqBpoknZUtTzkBUATufwJtXXE2Yv3h7
+	eTKbq/CrOz9/CcSqSXIFxIzfAU9BHet0c6oguixsTaBopalivVEnWpuxiTjf9/mrPgQsOWD3fosG9
+	deCi+jphm5aBvdcYSCbr75qxyXjdP8LASnBsL0b3GYUOkgR0nKKsGTIUCMVGmKqyoIiuT5D45/Q4L
+	kSXbndGvsXCfk7wZ+uHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfPaF-00000005cZN-0OsF;
+	id 1wfPaF-00000005cbG-2XeB;
 	Thu, 02 Jul 2026 22:08:35 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfPa4-00000005cHq-3wO6;
+	id 1wfPa4-00000005cHp-3uWn;
 	Thu, 02 Jul 2026 22:08:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4C70543F3B;
+	by sea.source.kernel.org (Postfix) with ESMTP id 48D3943F38;
 	Thu,  2 Jul 2026 22:08:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 0F4ECC2BD04;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 173FEC32786;
 	Thu,  2 Jul 2026 22:08:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1783030104;
-	bh=TKxN6qyOBwLKlwESXEsYSM7OBYEKgIX1X5/4DfGa//0=;
+	bh=nJFIVRllr6lBbEH5QrCyHfVsOTw/A4aUo1durTpSg3E=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=EqH3YksV7+TgS8d34n2LpYkEqt5Nu59qJO+FRfJo/LashQW0XALw+ZaLFUy1Baaon
-	 qZ+GNT079JRuyLWv8SyexvG/CWcOwI3RRVOUPJ2k+IbFnWdLDzXrWdklVDwa5hwWyQ
-	 m7gY5cT47cbuPb32CL90+ZU3icBBn9JmaooR0z+WCM4M+NKlraR9kq0BgGhEsBeHLG
-	 cdDYcwi3CU9ZSynBgfQxH/23THPQtMITVJL0CEpKzlNRCESI/XQcv07AxnG3IEJqcy
-	 Ohbqcw5eIvEx0sWm4RJu2RakMhHEcp3sNfdxs8M/jUhpSs/yesO0ucX/U2BlDMB0ik
-	 BsP4dUyzlvTGg==
+	b=JHqfIw7ErnRLHXSVnE0xlFBC3Daw75fAq8fhtyOAVU0Ov6t7cVPe6KmwLjB5yEEeh
+	 qbvTTu5jMgngmra6/sCzDQ3qKTVQRnLNLOt+JViD1wHH1oCezbPbssdYszhK8mFOU3
+	 O2TdY5/NHHlTb02Zx93YCn+bIe0I9uf6PYfc1h+1V/K+d6IBv2Y48TkS+ltren/lhR
+	 ATqNXWkp4Q1Ji1062vBrabi85pJUnt+PJlx6UZyFuICMaHmULk9+XAMzIho9ALCIJ6
+	 HCvT9LAu9+teh9QF7QCQovuUxwFJdy07UnDV2A80s9yDNXZxVQPLu1iNmA63B2yr3q
+	 cQJ0WJ6PxVveA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EDA2BC44501;
-	Thu,  2 Jul 2026 22:08:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06188C43602;
+	Thu,  2 Jul 2026 22:08:24 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Fri, 03 Jul 2026 00:07:21 +0200
-Subject: [PATCH 06/12] arm64: dts: rockchip: rk3588s-nanopi: add missing
- pcie rst pinctrl
+Date: Fri, 03 Jul 2026 00:07:22 +0200
+Subject: [PATCH 07/12] arm64: dts: rockchip: rk3588s-nanopi: pcie2x1l2: add
+ clkreq
 MIME-Version: 1.0
-Message-Id: <20260703-nanopi-m6-v1-6-8344a1559519@gmail.com>
+Message-Id: <20260703-nanopi-m6-v1-7-8344a1559519@gmail.com>
 References: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
 In-Reply-To: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,11 +58,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783030102; l=1356;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783030102; l=817;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=Qf2hXVsAwP7OhpMLxy0ZtYTeVQxe69crFritq8w97Ws=;
- b=ai/uqBJV0PYPqDHQ1Kv82hk1ayEHURj9pEPXB5kV8X6jVRRvVkrhRD2MmxpA1sSC7F8ufC325
- 898POi1Vy+oDK2MowvPW/47s6QP4POLtyNYIi1gU9s8Mb5D766sYhFW
+ bh=UdSN50l8fPPMDfJY8YaQToVjBNdxjR3Y9tdra7aQfto=;
+ b=33qo2mouC7p3XEOVXak9y0hbIO5U89q9bndd02lpu/wuvl4S9Kx3HFzCX7erCAZ9BazI6DtJn
+ 0T/wSi48Dy8CTDLhNafk0nYTJFnLjIhkVtYoydMwjPgr7Q2hkVL3TM4
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,51 +87,27 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-The pins are used as reset-gpios but not reserved through pinctrl.
+The clkreq is present on the board, so hook it up in DT.
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-index f3a240b48a2a..361682c18e69 100644
+index 361682c18e69..bcb2f5d63a61 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-@@ -303,12 +303,16 @@ rgmii_phy1: ethernet-phy@1 {
- };
- 
- &pcie2x1l1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie2_1_rst>;
- 	reset-gpios = <&gpio1 RK_PA7 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc_3v3_pcie20>;
- 	status = "okay";
- };
+@@ -312,7 +312,8 @@ &pcie2x1l1 {
  
  &pcie2x1l2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie2_2_rst>;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&pcie2_2_rst>;
++	pinctrl-0 = <&pcie2_2_rst>, <&pcie20x1m0_clkreqn>;
++	supports-clkreq;
  	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
  	vpcie3v3-supply = <&vcc_3v3_pcie20>;
  	status = "okay";
-@@ -335,6 +339,16 @@ rtc_int: rtc-int {
- 		};
- 	};
- 
-+	pcie {
-+		pcie2_1_rst: pcie2-1-rst {
-+			rockchip,pins = <1 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		pcie2_2_rst: pcie2-2-rst {
-+			rockchip,pins = <3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	sdmmc {
- 		sdmmc_det_pin: sdmmc-det-pin {
- 			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
 
 -- 
 2.55.0
