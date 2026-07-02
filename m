@@ -4,80 +4,200 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 423ACC43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67DF0C44503
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:54:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+sDOV09QIgNfYB0QipCR8eLjWy1GIS2s8ljx7b+rDps=; b=FvhLyQalHlsMAs
-	VU47NDv3tLayxuHSCRUXTzlpkP/w/04/1cHB/OjHdo88lhXADAhGJDfiq4MCaDhaxSeN3TnWvGJel
-	0ypXPmvkeLE0dkkRFIHs3iB7QIaTUNn1rZqEM8Hxvd0AxxBKWdj6m7uWJg3X81y3QFvvgf3h/brKA
-	AP0ASoupNYc/eHymL4IYIYxzlSovBiuwmXtQE94X+E7mWBKGAj7CJEQ73F7v7h0JU0Bwf+wjbyCKp
-	iPde7DwcScdI/HgdjZcfT+gSUY/Vsv1f7n2XBXRrhgzaE0GVNbdXtLd3rUzPiVEdPBluiINqLRdJR
-	RbynWWtddMufMzwvzTng==;
+	List-Owner; bh=Bcf+B6SBS2hEUUEF7IeF+CulhgLGn3sWqLmrr+ZjRm8=; b=StGyZftCgwqkbB
+	R4F8GK+Lq/2A84tE8ziWrlOb0Bip3KABDJustP/cH+i+b/zDbAcY3gtWeGinGKz/8H9U8X8nXaYqJ
+	S1Fy153M9QG53N/xD0MWHDSdASO4FIERVXBkWN+DKh74hFPFCU7pcVjmMRolWIZqnvP2HBcft//v8
+	LyTv8IW1eauGsA2t+VqrUkQPw7ZQLkgoCbqL4BdLUt9Tws9LdvBbDjUlgxHMYzIOGkT/YSZ4hG7Bb
+	wQa62E2OpYOe31HO6wY4U79eqtn23bw1s2wkM/Bw3m5N+PMnQx2h5cGA4bBm47lHylaRMCTu3HE9K
+	Smwsl+iGKdpzaAin92lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkW4-00000001cZP-08Gt;
+	id 1whkW4-00000001caS-2niX;
 	Thu, 09 Jul 2026 08:53:56 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+Received: from mail-eastusazon11012010.outbound.protection.outlook.com ([52.101.53.10] helo=BL0PR03CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfJda-00000004rEj-20KY;
-	Thu, 02 Jul 2026 15:47:38 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E29F6601F1;
-	Thu,  2 Jul 2026 15:47:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 504D91F00A3E;
-	Thu,  2 Jul 2026 15:47:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783007257;
-	bh=Po4UWa+Txwx6nSBMW1aPQiZMcfNfQH1HH88CC93hgvE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=TzKC7lqe9Irn8JWqPCnRnBZrIjo+wjSEuABLaM62PvcVIf4DaJMLiJvSaLOlIhJOf
-	 znTjZNuNsA3irPkrJRqgdqBSalvaquhCKCvJXbcnp48ft4f4usQWudMjc5HdiilEg8
-	 aXu2StIvmQVSGOVmy/Z45hqYBBWUQ4dmbbAuXk0zKTG9Nk6i9FrPim4oLQSVwaxjeJ
-	 SDNmxdCjFnKqxvBlFG1TSv8opFwMO6hCg3J9TODlwY2GGXnrD8Ppex9n5gZkrvDNyw
-	 HAH74jjJFvvUXueVEU77M3F6be8/OSAHgO1cGcNXrmLyLcrgWJzjocoh6IYJOxKTNs
-	 hiEtCFwm59HOw==
-Date: Thu, 2 Jul 2026 16:47:14 +0100
-From: Lorenzo Stoakes <ljs@kernel.org>
-To: Lance Yang <lance.yang@linux.dev>
-Cc: akpm@linux-foundation.org, tsbogend@alpha.franken.de, 
-	maddy@linux.ibm.com, mpe@ellerman.id.au, maarten.lankhorst@linux.intel.com, 
-	mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
-	l.stach@pengutronix.de, inki.dae@samsung.com, sw0312.kim@samsung.com, 
-	kyungmin.park@samsung.com, krzk@kernel.org, peter.griffin@linaro.org, 
-	jani.nikula@linux.intel.com, joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com, 
-	tursulin@ursulin.net, robin.clark@oss.qualcomm.com, lumag@kernel.org, lyude@redhat.com, 
-	dakr@kernel.org, tomi.valkeinen@ideasonboard.com, hjc@rock-chips.com, 
-	heiko@sntech.de, andy.yan@rock-chips.com, thierry.reding@kernel.org, 
-	mperttunen@nvidia.com, jonathanh@nvidia.com, kraxel@redhat.com, 
-	dmitry.osipenko@collabora.com, zack.rusin@broadcom.com, matthew.brost@intel.com, 
-	thomas.hellstrom@linux.intel.com, oleksandr_andrushchenko@epam.com, deller@gmx.de, bcrl@kvack.org, 
-	viro@zeniv.linux.org.uk, brauner@kernel.org, muchun.song@linux.dev, osalvador@suse.de, 
-	david@kernel.org, ziy@nvidia.com, baolin.wang@linux.alibaba.com, 
-	liam@infradead.org, npache@redhat.com, ryan.roberts@arm.com, dev.jain@arm.com, 
-	baohua@kernel.org, hughd@google.com, vbabka@kernel.org, rppt@kernel.org, 
-	surenb@google.com, mhocko@suse.com, jannh@google.com, pfalcato@suse.de, 
-	kees@kernel.org, perex@perex.cz, tiwai@suse.com, linux-mips@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, dri-devel@lists.freedesktop.org, 
-	etnaviv@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
-	freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org, 
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, virtualization@lists.linux.dev, 
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org, linux-fbdev@vger.kernel.org, 
-	linux-aio@kvack.org, linux-fsdevel@vger.kernel.org, linux-mm@kvack.org, 
-	linux-sound@vger.kernel.org
-Subject: Re: [PATCH 11/13] mm/mlock: convert mlock code to use vma_flags_t
-Message-ID: <akaH31jAOuMtthKF@lucifer>
-References: <2db16db81538355ca65f778c246d2381c673cad4.1782760670.git.ljs@kernel.org>
- <20260702132107.73727-1-lance.yang@linux.dev>
+	id 1wfJdh-00000004rHK-06B4;
+	Thu, 02 Jul 2026 15:47:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=KmJOn3JmeRQsC8HF1xNByrVSOpBUilYRMaG/YwkuJMnKPIvA+2hb/3P8u4poCgIgJhyU7GPS+fzky0HEcr9j/gXcv+Ql+Ar/VH2Fqx0DvVlkKqOWtZ5OYABX00Sv7bWNi5d9+JrX4HKAa4SMrHa3fjSogcNF4I/SznjS8P3PoHuhqK7GdFyi7l2J0jtx2kXzHXH8pcxhalkvWF2PlYVfAqMpeIRC0M3bHh4k+vEiUPpcGirjPSAkEMZWq7BQuOecaukV0YBCe2FJfkg6dXKIDbugPkE8Uu2XnYSYRMCXrTidLuPMyE3Vgvsk/K5h51hs68AsuHLyVk614rczUv8ULA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yav8utETY6FCguycHYwbLXHTThtCgsZ4dGDEa+HsUy8=;
+ b=lRxgKwrCuzqW/gXUP1A2Cs6wt5AP7zM9qSJEZ1QWEN0Es1b7X/qQhSXu/JkyLBx5NcCMUigXD8GS684frVi/eaZKDlbcAUcY8Yf9YbkO1EALKWQJs5gJo6pD30jT+jhZGStieBlXOoQZwpv1Lyh9qe9k6Y35Eq72g//pJtt/tfYQ0gMLzeS/3h52zl+l5kz4p6Gxx6N6vqByJkgK8U6smYQI7RObS2PnF59DlzGkZ7xWt8eyID088+s5uDJplVTj6OkYnrwPL6ClFVpyxp42FDVWFxU+mZICd7rUNfJtmo6L/KFa3yVZyruP0YMpwe3k2c7XmMqW4Tea7pUalLcYzg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yav8utETY6FCguycHYwbLXHTThtCgsZ4dGDEa+HsUy8=;
+ b=Enwybw+ukrZW2qqCkf1pT9+VICe25xMtyogS1V/QBvyxKfla4Xc5qhwZIeWlxAA1WJ1Hx3a2GdF/kWzQJ/aWz88RBCwjaKnhvzZJ9h9UEVBFoq9G0ZjaW3LTNtflqSQIMYeomisdZmrZ6eSptjt5/6lO9GXHhBrLNCV+tvWw0MLFexsldfqUUe7ky8KrrKjmTwUb4ZsdkrjD+Zn8JgEYcpxicXzN3olJ306PMPCd9NvOp9BVzM9Zy0ECs++QjRyzwuI1HwRKXMZvs1AehR7qgn5vPWNT6q88zWr4Z87k8OkWyc3l4I5zYsd9wQyiEtmUeqnZVI3yyepveY35luZHig==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV3PR12MB9356.namprd12.prod.outlook.com (2603:10b6:408:20c::21)
+ by SA1PR12MB9471.namprd12.prod.outlook.com (2603:10b6:806:458::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.10; Thu, 2 Jul
+ 2026 15:47:33 +0000
+Received: from LV3PR12MB9356.namprd12.prod.outlook.com
+ ([fe80::1c36:31b4:c420:6286]) by LV3PR12MB9356.namprd12.prod.outlook.com
+ ([fe80::1c36:31b4:c420:6286%5]) with mapi id 15.21.0181.009; Thu, 2 Jul 2026
+ 15:47:32 +0000
+From: Yury Norov <ynorov@nvidia.com>
+To: Andrew Morton <akpm@linux-foundation.org>,
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+	Yury Norov <ynorov@nvidia.com>
+Cc: "Russell King" <linux@armlinux.org.uk>,
+	"Frank Li" <Frank.Li@nxp.com>,
+	"Sascha Hauer" <s.hauer@pengutronix.de>,
+	"Pengutronix Kernel Team" <kernel@pengutronix.de>,
+	"Fabio Estevam" <festevam@gmail.com>,
+	"Madhavan Srinivasan" <maddy@linux.ibm.com>,
+	"Michael Ellerman" <mpe@ellerman.id.au>,
+	"Nicholas Piggin" <npiggin@gmail.com>,
+	"Christophe Leroy (CS GROUP)" <chleroy@kernel.org>,
+	"Peter Zijlstra" <peterz@infradead.org>,
+	"Ingo Molnar" <mingo@redhat.com>,
+	"Arnaldo Carvalho de Melo" <acme@kernel.org>,
+	"Namhyung Kim" <namhyung@kernel.org>,
+	"Mark Rutland" <mark.rutland@arm.com>,
+	"Alexander Shishkin" <alexander.shishkin@linux.intel.com>,
+	"Jiri Olsa" <jolsa@kernel.org>,
+	"Ian Rogers" <irogers@google.com>,
+	"Adrian Hunter" <adrian.hunter@intel.com>,
+	"James Clark" <james.clark@linaro.org>,
+	"Thomas Gleixner" <tglx@kernel.org>,
+	"Borislav Petkov" <bp@alien8.de>,
+	"Dave Hansen" <dave.hansen@linux.intel.com>,
+	"H. Peter Anvin" <hpa@zytor.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	"Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
+	"Danilo Krummrich" <dakr@kernel.org>,
+	"Chanwoo Choi" <cw00.choi@samsung.com>,
+	"MyungJoo Ham" <myungjoo.ham@samsung.com>,
+	"Kyungmin Park" <kyungmin.park@samsung.com>,
+	"Heiko Stuebner" <heiko@sntech.de>,
+	"Xu Yilun" <yilun.xu@intel.com>,
+	"Tom Rix" <trix@redhat.com>,
+	"Moritz Fischer" <mdf@kernel.org>,
+	"Yicong Yang" <yangyicong@hisilicon.com>,
+	"Jonathan Cameron" <jic23@kernel.org>,
+	"Dennis Dalessandro" <dennis.dalessandro@cornelisnetworks.com>,
+	"Jason Gunthorpe" <jgg@ziepe.ca>,
+	"Leon Romanovsky" <leon@kernel.org>,
+	"Bjorn Helgaas" <bhelgaas@google.com>,
+	"Shuai Xue" <xueshuai@linux.alibaba.com>,
+	"Will Deacon" <will@kernel.org>,
+	"Jiucheng Xu" <jiucheng.xu@amlogic.com>,
+	"Neil Armstrong" <neil.armstrong@linaro.org>,
+	"Kevin Hilman" <khilman@baylibre.com>,
+	"Jerome Brunet" <jbrunet@baylibre.com>,
+	"Martin Blumenstingl" <martin.blumenstingl@googlemail.com>,
+	"Robin Murphy" <robin.murphy@arm.com>,
+	"Jing Zhang" <renyu.zj@linux.alibaba.com>,
+	"Xu Yang" <xu.yang_2@nxp.com>,
+	"Linu Cherian" <lcherian@marvell.com>,
+	"Gowthami Thiagarajan" <gthiagarajan@marvell.com>,
+	"Ji Sheng Teoh" <jisheng.teoh@starfivetech.com>,
+	"Khuong Dinh" <khuong@os.amperecomputing.com>,
+	"Yury Norov" <yury.norov@gmail.com>,
+	"Kees Cook" <kees@kernel.org>,
+	=?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>,
+	"Aboorva Devarajan" <aboorvad@linux.ibm.com>,
+	"Ilkka Koskinen" <ilkka@os.amperecomputing.com>,
+	"Besar Wicaksono" <bwicaksono@nvidia.com>,
+	"Ma Ke" <make24@iscas.ac.cn>,
+	"Chengwen Feng" <fengchengwen@huawei.com>,
+	Ritesh Harjani <ritesh.list@gmail.com>,
+	Yushan Wang <wangyushan12@huawei.com>,
+	linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-perf-users@vger.kernel.org,
+	x86@kernel.org,
+	driver-core@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-fpga@vger.kernel.org,
+	linux-rdma@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-cxl@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH v2 01/11] arm: Use sysfs_emit() for cpumask show callbacks
+Date: Thu,  2 Jul 2026 11:47:14 -0400
+Message-ID: <20260702154725.185376-2-ynorov@nvidia.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260702154725.185376-1-ynorov@nvidia.com>
+References: <20260702154725.185376-1-ynorov@nvidia.com>
+X-ClientProxiedBy: SJ0PR03CA0160.namprd03.prod.outlook.com
+ (2603:10b6:a03:338::15) To LV3PR12MB9356.namprd12.prod.outlook.com
+ (2603:10b6:408:20c::21)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260702132107.73727-1-lance.yang@linux.dev>
-X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV3PR12MB9356:EE_|SA1PR12MB9471:EE_
+X-MS-Office365-Filtering-Correlation-Id: 440f6ad7-f5c5-46e3-988c-08ded8513ae9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|23010399003|1800799024|366016|22082099003|18002099003|11063799006|56012099006|6133799003;
+X-Microsoft-Antispam-Message-Info: VmEUz1Sd9M7XuTvK9fJBWw4q/kt1h+pfSABZ5ksrR2QSqa8vuGfkpIO8qqAAcSDpOukKCc/rL2Y7xA6bJqeF//6OtZWn/NYZJ5hgsZzuiZGc2elpBiIu/PpEwrtgSHVROCbIaHw0IwqlAgFOnQKXcBvW8UQ6zBJ4MIjqW4/bMKeSiMHYeqK2EhgXpka/m/i9lfCxolU/aSc3gqZjUgjb4Vzo9mm9mhthBxUJAO4fUvTSJuOkgT+Vms7eJLC14BF+T8jf0EbeCI9hPaJMKNRZLZ1iXYEsjeEys75OdEP8NXCvaPf8At74r8H6irntCbLwkpcgSOztptwJPeNo6Owbqm1YQMmn9vTdulKW4k02eVGNs9n3T1/DP8t4myiF9NnVLxCSQcCMiL2OfHh5AhKhJi74jwL4LwDVcqDO3P0hJ97c4aek5VxZqinVS74as9Vh73DhyYWmqhOgBGDQNtCphyU/B4gZ3nmMvLs+4rHEQguZnr/D6+aNiEI/hSLRM+StMt64syVsJ8wnMmuXaiqNvDjuiTITXgsj0rQKVicFHqVTsyFYngRSQY0GSDFCdpf3GvFCxCnneJ1FnvtEgPUQf1SL5+hawA+1Evi6SRTWPoaHmhY078mctz3QC14h/O6D+CCyLHFYkK4gi4vMkOyY8NOuSdgygqtcnR34AU9uPes=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR12MB9356.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(23010399003)(1800799024)(366016)(22082099003)(18002099003)(11063799006)(56012099006)(6133799003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Q9ssySRqt3T0m20/GJbiQV97dHwFge9ZZk9XSBw29YQWueXvRtwhDRkk7uU/?=
+ =?us-ascii?Q?OQpSDBOPLBZuoxig/1c6ioWQCKIPehXjVguMROT6O7b5j1ALAGGNec7QTq57?=
+ =?us-ascii?Q?nHOiye5taj1CK+zGGSoTJTdtWmUUrS6/oZrR3indGKqCVl8qbDP3BaOZsjhr?=
+ =?us-ascii?Q?HSgRP1jQ4N4NeGC1ls8zPQsYt5Og6vQ56QO2d4s3D/r2w0ELVyK8C5JHasRJ?=
+ =?us-ascii?Q?oWc7yC9EVK4VXlysgzIPxYoxkbDvF2PCDTD+Jj39HpJAzR89RJzdWi+0cE1P?=
+ =?us-ascii?Q?mgX1pOVe5PrLR8td/1cyTICwuMMQI4EqA1PQ9c7v5Gmh2iMeVNiz/MI9ynKA?=
+ =?us-ascii?Q?fDUNkKj+s+Ot/SIl2OXo0vZOPK5rq1XnRxcLnQ9xeCOI3lIHgqhPDB8i0CHA?=
+ =?us-ascii?Q?qE5ZqIFFouXhZ1qA6V8Wl516zV32rLJJsu6Js12sfidakY9nRp6Po3DG5MGa?=
+ =?us-ascii?Q?z0LkkpmZn/A06f/xzlBfN87wkDmPuOG+/FJ4U4j1niojulHE7TY8et52y9/j?=
+ =?us-ascii?Q?f7xXI8JpbUn9R7QhXMQwqlTtLVZmApbR13xIaJmfi8kaR9fFu5DvGn+Y4yS5?=
+ =?us-ascii?Q?2gtEfW8CCVDecm/72w6+IIxmuzfFjPcJoUxAETlzkvB+ak+gnSGz/VjKM90Q?=
+ =?us-ascii?Q?cUHO9ZBjCUre3C8mDArS1cdgOzqbO+gJWzL1snV04LMLzYMez5tloyOWjO1p?=
+ =?us-ascii?Q?qbtN64zvZP96qGO4zPFBZXR9MSUr1pre8sHIuIzCl5CpDCEjP9kFI+PkcMtv?=
+ =?us-ascii?Q?wnr+m2wlyITuh3fi3mzHhcvEPa4n58GOXMddCGHlhoL28gtA9lN91G15Ehwf?=
+ =?us-ascii?Q?3gpXOFFDdeNOnb6d6enB/8NNlXdLuOCZERjyQSYvXvd3rnEiYiVpcUBL1doo?=
+ =?us-ascii?Q?ivVJ/n+ebdf3ukmddtOtnroprUSkpklZWdiKrsacx0ncwABuNVOBeYuC1yhc?=
+ =?us-ascii?Q?EGcx3KgOqtPefW8tm+SsVB7sbL1MbTWCVp5fvxx3e0HQ4m6QsdhiEwDhVBnH?=
+ =?us-ascii?Q?5UqCoTdR8tKnRPsI7EsT9LaaWeo+dt66C8XVc2KZq1mBVXZlDmlWXFylDxy1?=
+ =?us-ascii?Q?Dw+CNWLhkzeHWEQg0y7wroODiPiR1QSb7Yoej5oh84IM/IUHHjxCDGuTNlGR?=
+ =?us-ascii?Q?59oy5HVPIGqc0r9OCk7YXTetptcqTjZ4q+RM6HpX5ciw48qSgSZWWNSry1Z8?=
+ =?us-ascii?Q?B6bV2FoBK/dbIxpytgWv1lR68sjTCt6T7Ek+27dVQtJ0JyqtVP0VxBMjEAHX?=
+ =?us-ascii?Q?sk7tAvKih57pOSXLQ3jZZNRoi/P5hH3dAVp7R/bLzVor0JxnPwAPknItaQEu?=
+ =?us-ascii?Q?9W5ocz8TkV9c72VBgb1Vcgi+8wfBHnfHZMoghxctqE6ZfIDPn+sGr1Ltvj76?=
+ =?us-ascii?Q?hkptFI78c1nN4ftAy5JOOFAxNnZ1VK9VL6kuz+l8TEtclliHqvMbuOIrHxR1?=
+ =?us-ascii?Q?1bkbs04pqn37U2+HUh53Bjm3p6UqV1Hy1p5KKVz//LzLm/kOwrhjAkB6I/tr?=
+ =?us-ascii?Q?NcNamYv0jp2DvAuz7Kl2+AtYjO8PQQhfCO2tvdeom2gUPOux1z9eNeeP/e4A?=
+ =?us-ascii?Q?8Kh4PdMEBNHOVJVt9NIbEEi4HcY0ydwvGhgf5c8hXzUdblJWxgIPn1Zv9f8+?=
+ =?us-ascii?Q?d7C+RSU0i5ZPI1JDW7peE0bOmBkpWmEFSVmZ8C++JC1h00uuHbPdbJhituTY?=
+ =?us-ascii?Q?RdfRK2p8ic8o4d3vr4JFi5UIMN/BbGC8Cy4vYWveqAJ7jiw9kjIL9GrE2Y+s?=
+ =?us-ascii?Q?0xDHsIt/IA=3D=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 440f6ad7-f5c5-46e3-988c-08ded8513ae9
+X-MS-Exchange-CrossTenant-AuthSource: LV3PR12MB9356.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Jul 2026 15:47:32.7388
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DqfVf0hEYzxYMyvMm4/CmIayjA5KfL6epsC3dlKmoatU2vh1t2ceOprYSI+HYVZ3elTQYQMAOh1uCv9cfDFP0A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB9471
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260702_084745_066630_01021FD6 
+X-CRM114-Status: GOOD (  11.80  )
+X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,64 +214,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 02, 2026 at 09:21:07PM +0800, Lance Yang wrote:
->
-> On Mon, Jun 29, 2026 at 08:25:34PM +0100, Lorenzo Stoakes wrote:
-> >Replace use of the legacy vm_flags_t flags with vma_flags_t values
-> >throughout the mlock logic.
-> >
-> >Additionally update comments to reflect the changes to be consistent.
-> >
-> >No functional change intended.
-> >
-> >Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
-> >---
->
-> Nothing scary jumped out at me. Just one tiny nit below ;)
->
-> [...]
-> >@@ -466,24 +466,23 @@ static void mlock_vma_pages_range(struct vm_area_struct *vma,
-> >  */
-> > static int mlock_fixup(struct vma_iterator *vmi, struct vm_area_struct *vma,
-> > 	       struct vm_area_struct **prev, unsigned long start,
-> >-	       unsigned long end, vm_flags_t newflags)
-> >+	       unsigned long end, vma_flags_t *new_vma_flags)
-> > {
-> >-	vma_flags_t new_vma_flags = legacy_to_vma_flags(newflags);
-> > 	const vma_flags_t old_vma_flags = vma->flags;
-> > 	struct mm_struct *mm = vma->vm_mm;
-> > 	int nr_pages;
-> > 	int ret = 0;
-> >
-> >-	if (vma_flags_same_pair(&old_vma_flags, &new_vma_flags) ||
-> >+	if (vma_flags_same_pair(&old_vma_flags, new_vma_flags) ||
-> > 	    vma_is_secretmem(vma) || !vma_supports_mlock(vma)) {
-> > 		/*
-> >-		 * Don't set VM_LOCKED or VM_LOCKONFAULT and don't count.
-> >+		 * Don't set VMA_LOCKED_BIT or VM_LOCKONFAULT and don't count.
->
-> s/VM_LOCKONFAULT/VMA_LOCKONFAULT_BIT/
+These callbacks are sysfs show paths.
 
-Ah yeah oops, will fix and respin! Good spot [and claude missed it ugh] :)
+Use sysfs_emit() and cpumask_pr_args() to emit the masks.
 
->
-> Otherwise LGTM. Feel free to add:
->
-> Reviewed-by: Lance Yang <lance.yang@linux.dev>
->
-> > 		 * For secretmem, don't allow the memory to be unlocked.
-> > 		 */
-> > 		goto out;
-> > 	}
-> >
-> >-	vma = vma_modify_flags(vmi, *prev, vma, start, end, &new_vma_flags);
-> >+	vma = vma_modify_flags(vmi, *prev, vma, start, end, new_vma_flags);
-> > 	if (IS_ERR(vma)) {
-> > 		ret = PTR_ERR(vma);
-> > 		goto out;
-> [...]
+This prepares for removing cpumap_print_to_pagebuf().
 
-Thanks, Lorenzo
+Signed-off-by: Yury Norov <ynorov@nvidia.com>
+---
+ arch/arm/mach-imx/mmdc.c     | 2 +-
+ arch/arm/mm/cache-l2x0-pmu.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/mach-imx/mmdc.c b/arch/arm/mach-imx/mmdc.c
+index b71467c48b87..f6d993b9b1d4 100644
+--- a/arch/arm/mach-imx/mmdc.c
++++ b/arch/arm/mach-imx/mmdc.c
+@@ -127,7 +127,7 @@ static ssize_t mmdc_pmu_cpumask_show(struct device *dev,
+ {
+ 	struct mmdc_pmu *pmu_mmdc = dev_get_drvdata(dev);
+ 
+-	return cpumap_print_to_pagebuf(true, buf, &pmu_mmdc->cpu);
++	return sysfs_emit(buf, "%*pbl\n", cpumask_pr_args(&pmu_mmdc->cpu));
+ }
+ 
+ static struct device_attribute mmdc_pmu_cpumask_attr =
+diff --git a/arch/arm/mm/cache-l2x0-pmu.c b/arch/arm/mm/cache-l2x0-pmu.c
+index 3d9caf7464bf..478227078837 100644
+--- a/arch/arm/mm/cache-l2x0-pmu.c
++++ b/arch/arm/mm/cache-l2x0-pmu.c
+@@ -390,7 +390,7 @@ static struct attribute_group l2x0_pmu_event_attrs_group = {
+ static ssize_t l2x0_pmu_cpumask_show(struct device *dev,
+ 				     struct device_attribute *attr, char *buf)
+ {
+-	return cpumap_print_to_pagebuf(true, buf, &pmu_cpu);
++	return sysfs_emit(buf, "%*pbl\n", cpumask_pr_args(&pmu_cpu));
+ }
+ 
+ static struct device_attribute l2x0_pmu_cpumask_attr =
+-- 
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
