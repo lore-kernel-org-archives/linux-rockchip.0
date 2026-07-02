@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22012C43602
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6250C43458
 	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EW84eUrBby4cjVAxlFA4tyiGY/PsuYvyp0FqAl19zTs=; b=EVw49Fwf8ekNUb
-	eSxnPiS7xCUB91CMyKZ8JGizy1D6+gPLrxbAlK1Oe/PRmG+a6+YzKLXAjzqXvSz46ryRJjOjVheat
-	lptJpbd9qtCBClnvC5d8i9apNfTp7oxJ6GzRX9SFkesKzEkwNl7xkGMmoOyXkefG+P1Mw13WRFyaZ
-	8e2dO3JlfFSS1XGRaW9TmWuvzvLQVw1pfRkb26KJKGbx9wlwD9KBjPLY2IH/ssD+TkF3DDPJToQCh
-	2CFY8Bo7E0ak09CXnABIkvAtuU2Q5tybWoW+Thk7p1bwgxVWa+XIL1GtyDzgKJHIaurnXtYAgnHe/
-	izD/jBKUE/uJ535P1cfg==;
+	List-Owner; bh=vmskF8TPT32xJ2mTkAUi4bytHCYgkChdfaEUxyCgW8M=; b=vFUvTs/p5jk3Zd
+	5nLgx7wi7++g+ooFF6wIhoiPmjPVlt9Q8e2yHRCCECD7sqiYdpDQf0UQRh1N0xJGCXu0H01Cy5ZRc
+	e4KlEuJxgoUoBnYpj+KiVEYRB6xG2bgF3AHj0v12RfHwqQGb5WSJKjVAJGSd7Q96VcosnjnLPH5ZP
+	mH1yIn/lZdSfzynuVxvTGMvhelnuPMMMywVYsDQpq+H1mtin/gZ3PmrmyN9ndV3PHaYqJAKm6fxz3
+	ZTE9BiHOTyPIrB6zjQKxO4+QHKVGvO7aM+lqsQzl33B7WZidYfhwIMnq4aOtttd8P2/COa3K2A6Ll
+	UF3dzehn08bddcJTcLDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIht-00000004hq0-3mIa;
-	Thu, 02 Jul 2026 14:48:01 +0000
+	id 1wfIhv-00000004huO-0Ts3;
+	Thu, 02 Jul 2026 14:48:03 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgw-00000004fNp-1gTZ;
-	Thu, 02 Jul 2026 14:47:12 +0000
+	id 1wfIgv-00000004fMB-3Vtm;
+	Thu, 02 Jul 2026 14:47:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783003620;
-	bh=OxLOsYUFdH3LzOLRg1U92ozuUaA0svyjPlEe8I02Hfw=;
+	s=mail; t=1783003619;
+	bh=r1ScdrzW7eWrdHR9tE0dHuwbbEoC4P5qNkGmAOnBEDs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=O7T4CumQy9y7zJXNIECbcmq8k4pp3cJhzxyoSmUkheAcPk4W2GphWF4851pYSc5N+
-	 xnw8r2gKJIl9Xfy0a5RK2mJsXS965Rg8dhdz1obt7hxK243uR/DDvCPsZp8lWBUdSh
-	 d043VY8qqyJ5o38XsVBCwI4aIJxXQ87sgbBvsh2aW+3t25YYJSgQauqxlFZ5diD8y4
-	 B+x3G0H2xhnDZWjoXK2P6jitnGWREffedt9E7s6pMPiYmoV6EkhctnmWxhG/tkeuph
-	 6lxMDxIPY1rdA0rockXY8XwH5e1t42EJOFa/9nwQCOiQw+jFizMP5i+mv26dwutsR9
-	 w1Dv9oZPBgkRg==
+	b=hZ5qBd5v8ofKtnTgbWtbt13B94JeQAVI+N//Mig/t6T2FTuWjywXVD6fRcFeqFm33
+	 WFIBcf4Gb6Sv9S6KV/CoaJxzhWTQKk/awTrFVfLMz94naGzf6dvNbpTZ9hO8Hu2yer
+	 fFH5LSoe4DUTISevibNTJCSV3+4jqdfDO6rcmFud7snNwyAVTnyxfMCMfZPxmXRavh
+	 zOg3OASP3934PEi6EBWr/rI6iDkuqxAxcXEs9pU5K3ieewqC5TwYSBCO9drQvJYJWg
+	 e7tJNRo/ZLQHacfy77aEc2dHbyALbiXpbYtT3PkaC6UmLmQwftM4JOmlO+LH5YG+Sg
+	 hkyfXw0Qj25AA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7996C17E36BA;
-	Thu,  2 Jul 2026 16:47:00 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B3FBF17E36B2;
+	Thu,  2 Jul 2026 16:46:59 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 02 Jul 2026 17:46:52 +0300
-Subject: [PATCH v8 39/39] drm/tests: edid: Fix conformity for 4K RGB/YUV
- 340MHz EDID
+Date: Thu, 02 Jul 2026 17:46:51 +0300
+Subject: [PATCH v8 38/39] drm/tests: edid: Fix conformity for 1080p+4K
+ YUV420 200MHz EDID
 MIME-Version: 1.0
-Message-Id: <20260702-dw-hdmi-qp-scramb-v8-39-d79890d00b6a@collabora.com>
+Message-Id: <20260702-dw-hdmi-qp-scramb-v8-38-d79890d00b6a@collabora.com>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -69,8 +69,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_074705_121898_50B60B80 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20260702_074705_097395_500BBC50 
+X-CRM114-Status: GOOD (  13.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,47 +87,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The test EDID added by commit 54a5f1c4d5f8 ("drm/tests: hdmi: Provide
-EDID supporting 4K@30Hz with RGB/YUV") fails 'edid-decode --check'
+The test EDID added by commit 58fe1d78605e ("drm/tests: hdmi: Provide
+EDID supporting 4K@30Hz with YUV420 only") fails 'edid-decode --check'
 (v1.33.0) with the following issues:
 
   Warnings:
 
   Block 1, CTA-861 Extension Block:
     IT Video Formats are overscanned by default, but normally this should be underscanned.
-    YCbCr 4:2:0 Capability Map Data Block: Some YCbCr 4:2:0 timings are invalid for HDMI 2.1
+    YCbCr 4:2:0 Video Data Block: Some YCbCr 4:2:0 timings are invalid for HDMI 2.1
       (which requires an RGB timings pixel rate >= 590 MHz).
+  EDID:
+    Base EDID: Some timings are out of range of the Monitor Ranges:
+      Maximum Clock: 297.000 MHz (Monitor: 170.000 MHz)
+    CTA-861: Multiple native progressive timings are defined.
 
   Failures:
 
   Block 0, Base EDID:
     Vendor & Product Identification: EDID 1.3 does not support week 0xff.
-    Detailed Timing Descriptor #1: Mismatch of image size 1600x900 mm vs display size 960x540 mm.
   Block 1, CTA-861 Extension Block:
     Vendor-Specific Data Block (HDMI Forum), OUI C4-5D-D8: Max TMDS rate is > 0 and <= 340 or > 600.
-    YCbCr 4:2:0 Video Data Block: This Data Block is empty.
+    YCbCr 4:2:0 Capability Map Data Block: Empty Capability Map.
+    YCbCr 4:2:0 Video Data Block: YCbCr 4:2:0-only VIC 95 is also a regular VIC.
     Missing VCDB, needed for Set Selectable RGB Quantization to avoid interop issues.
   EDID:
-    Base EDID: The DTD max image size is 1600x900mm, which is larger than the display size 960.0x540.0mm.
+    CTA-861: The maximum HDMI TMDS clock is 200000 kHz, but one or more video timings go up to 297000 kHz.
 
-Address them while preserving the advertised maximum resolution, BPC and
-TMDS clock used by the existing KUnit tests:
+Address them while preserving the advertised maximum resolutions, BPC
+and TMDS clock used by the existing KUnit tests:
 
 - Week 0xff is not valid for EDID 1.3; set it to 0x00 so that the Model
   year field becomes a regular Year of Manufacture.
-- Align the DTD image size with the Basic Display Parameters maximum
-  image size (96 cm x 54 cm).
 - The HDMI Forum VSDB Max TMDS Character Rate must be 0 when no rate
-  above 340 MHz is supported.  The HDMI VSDB still advertises 340 MHz as
+  above 340 MHz is supported.  The HDMI VSDB still advertises 200 MHz as
   Max TMDS Clock.
-- Drop the empty YCbCr 4:2:0 Video Data Block.  VIC 95 (3840x2160@30Hz)
-  remains advertised as YUV420-capable via the YCbCr 4:2:0 Capability
-  Map Data Block, which references the corresponding entry in the
-  regular Video Data Block.
+- VIC 95 (3840x2160@30Hz) was reported as YUV420-only but was listed in
+  both the regular Video Data Block and the YCbCr 4:2:0 Video Data
+  Block.  Drop it from the regular VDB (so it stays advertised in the
+  4:2:0 VDB only) and remove the now unnecessary empty YCbCr 4:2:0
+  Capability Map Data Block.
 - Add a Video Capability Data Block advertising selectable RGB and YCC
   quantization range plus underscan for IT/CE formats; also set the 'IT
   Video Formats Underscanned' bit in the CTA-861 extension header to
   match.
+- Bump the Display Range Limits max pixel clock from 170 MHz to 300 MHz
+  so it covers the 297 MHz pixel rate of VIC 95.
+- Drop the 'native' flag from VIC 16 in the Video Data Block so it is no
+  longer flagged as a second native progressive timing alongside the
+  preferred DTD.
 
 The only remaining warning is HDMI 2.1 related and can be ignored, as it
 requires that any mode listed in the YCbCr 4:2:0 Video Data Block must
@@ -135,44 +143,44 @@ have a corresponding RGB pixel clock >= 590 MHz.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/tests/drm_kunit_edid.c | 57 ++++++++++++++++++++++------------
- 1 file changed, 38 insertions(+), 19 deletions(-)
+ drivers/gpu/drm/tests/drm_kunit_edid.c | 65 +++++++++++++++++++++-------------
+ 1 file changed, 41 insertions(+), 24 deletions(-)
 
 diff --git a/drivers/gpu/drm/tests/drm_kunit_edid.c b/drivers/gpu/drm/tests/drm_kunit_edid.c
-index 4dff28fff796..a6c5e8d6077a 100644
+index 673a0ea8c2ae..4dff28fff796 100644
 --- a/drivers/gpu/drm/tests/drm_kunit_edid.c
 +++ b/drivers/gpu/drm/tests/drm_kunit_edid.c
-@@ -900,22 +900,22 @@ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_4k_yuv420_dc_max_200mhz);
+@@ -766,22 +766,22 @@ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_dc_max_340mhz);
   * edid-decode (hex):
   *
   * 00 ff ff ff ff ff ff 00 31 d8 34 00 00 00 00 00
 - * ff 23 01 03 80 60 36 78 0f ee 91 a3 54 4c 99 26
 + * 00 23 01 03 80 60 36 78 0f ee 91 a3 54 4c 99 26
   * 0f 50 54 20 00 00 01 01 01 01 01 01 01 01 01 01
-  * 01 01 01 01 01 01 04 74 00 30 f2 70 5a 80 b0 58
-- * 8a 00 40 84 63 00 00 1e 00 00 00 fc 00 54 65 73
-+ * 8a 00 c0 1c 32 00 00 1e 00 00 00 fc 00 54 65 73
+  * 01 01 01 01 01 01 02 3a 80 18 71 38 2d 40 58 2c
+  * 45 00 c0 1c 32 00 00 1e 00 00 00 fc 00 54 65 73
   * 74 20 45 44 49 44 0a 20 20 20 00 00 00 fd 00 18
-  * 55 18 5e 22 00 0a 20 20 20 20 20 20 00 00 00 10
-- * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 ce
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 e6
+- * 55 18 5e 11 00 0a 20 20 20 20 20 20 00 00 00 10
+- * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 bb
++ * 55 18 5e 1e 00 0a 20 20 20 20 20 20 00 00 00 10
++ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 ad
   *
-- * 02 03 27 31 41 5f 6c 03 0c 00 10 00 78 44 20 00
-- * 00 01 03 6d d8 5d c4 01 44 80 07 00 00 00 00 00
-- * 00 e3 0f 01 00 e1 0e 00 00 00 00 00 00 00 00 00
-+ * 02 03 28 b1 41 5f 6c 03 0c 00 10 00 78 44 20 00
+- * 02 03 29 31 42 90 5f 6c 03 0c 00 10 00 78 28 20
+- * 00 00 01 03 6d d8 5d c4 01 28 80 07 00 00 00 00
+- * 00 00 e3 0f 00 00 e2 0e 5f 00 00 00 00 00 00 00
++ * 02 03 27 b1 41 10 6c 03 0c 00 10 00 78 28 20 00
 + * 00 01 03 6d d8 5d c4 01 00 80 07 00 00 00 00 00
-+ * 00 e2 00 ca e3 0f 01 00 00 00 00 00 00 00 00 00
++ * 00 e2 00 ca e2 0e 5f 00 00 00 00 00 00 00 00 00
   * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-- * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 84
-+ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 8a
+- * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ca
++ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 9a
   *
   * ----------------
   *
-@@ -924,7 +924,7 @@ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_4k_yuv420_dc_max_200mhz);
+@@ -790,7 +790,7 @@ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_dc_max_340mhz);
   *   Vendor & Product Identification:
   *     Manufacturer: LNX
   *     Model: 52
@@ -181,21 +189,16 @@ index 4dff28fff796..a6c5e8d6077a 100644
   *   Basic Display Parameters & Features:
   *     Digital display
   *     Maximum image size: 96 cm x 54 cm
-@@ -942,7 +942,7 @@ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_4k_yuv420_dc_max_200mhz);
-  *     DMT 0x04:   640x480    59.940476 Hz   4:3     31.469 kHz     25.175000 MHz
-  *   Standard Timings: none
-  *   Detailed Timing Descriptors:
-- *     DTD 1:  3840x2160   30.000000 Hz  16:9     67.500 kHz    297.000000 MHz (1600 mm x 900 mm)
-+ *     DTD 1:  3840x2160   30.000000 Hz  16:9     67.500 kHz    297.000000 MHz (960 mm x 540 mm)
-  *                  Hfront  176 Hsync  88 Hback  296 Hpol P
-  *                  Vfront    8 Vsync  10 Vback   72 Vpol P
+@@ -813,21 +813,21 @@ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_dc_max_340mhz);
+  *                  Vfront    4 Vsync   5 Vback   36 Vpol P
   *     Display Product Name: 'Test EDID'
-@@ -950,12 +950,13 @@ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_4k_yuv420_dc_max_200mhz);
-  *       Monitor ranges (GTF): 24-85 Hz V, 24-94 kHz H, max dotclock 340 MHz
+  *     Display Range Limits:
+- *       Monitor ranges (GTF): 24-85 Hz V, 24-94 kHz H, max dotclock 170 MHz
++ *       Monitor ranges (GTF): 24-85 Hz V, 24-94 kHz H, max dotclock 300 MHz
   *     Dummy Descriptor:
   *   Extension blocks: 1
-- * Checksum: 0xce
-+ * Checksum: 0xe6
+- * Checksum: 0xbb
++ * Checksum: 0xad
   *
   * ----------------
   *
@@ -205,15 +208,24 @@ index 4dff28fff796..a6c5e8d6077a 100644
   *   Supports YCbCr 4:4:4
   *   Supports YCbCr 4:2:2
   *   Native detailed modes: 1
-@@ -971,31 +972,49 @@ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_4k_yuv420_dc_max_200mhz);
+  *   Video Data Block:
+- *     VIC  16:  1920x1080   60.000000 Hz  16:9     67.500 kHz    148.500000 MHz (native)
+- *     VIC  95:  3840x2160   30.000000 Hz  16:9     67.500 kHz    297.000000 MHz
++ *     VIC  16:  1920x1080   60.000000 Hz  16:9     67.500 kHz    148.500000 MHz
+  *   Vendor-Specific Data Block (HDMI), OUI 00-0C-03:
+  *     Source physical address: 1.0.0.0
+  *     DC_48bit
+@@ -838,40 +838,57 @@ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_dc_max_340mhz);
   *     Extended HDMI video details:
   *   Vendor-Specific Data Block (HDMI Forum), OUI C4-5D-D8:
   *     Version: 1
-- *     Maximum TMDS Character Rate: 340 MHz
+- *     Maximum TMDS Character Rate: 200 MHz
   *     SCDC Present
   *     Supports 16-bits/component Deep Color 4:2:0 Pixel Encoding
   *     Supports 12-bits/component Deep Color 4:2:0 Pixel Encoding
   *     Supports 10-bits/component Deep Color 4:2:0 Pixel Encoding
+- *   YCbCr 4:2:0 Capability Map Data Block:
+- *     Empty Capability Map
 + *     VRRmin: 0 Hz
 + *     VRRmax: 0 Hz
 + *   Video Capability Data Block:
@@ -222,11 +234,10 @@ index 4dff28fff796..a6c5e8d6077a 100644
 + *     PT scan behavior: No Data
 + *     IT scan behavior: Always Underscanned
 + *     CE scan behavior: Always Underscanned
-  *   YCbCr 4:2:0 Capability Map Data Block:
+  *   YCbCr 4:2:0 Video Data Block:
   *     VIC  95:  3840x2160   30.000000 Hz  16:9     67.500 kHz    297.000000 MHz
-- *   YCbCr 4:2:0 Video Data Block:
-- * Checksum: 0x84
-+ * Checksum: 0x8a  Unused space in Extension Block: 87 bytes
+- * Checksum: 0xca
++ * Checksum: 0x9a  Unused space in Extension Block: 88 bytes
 + *
 + * ----------------
 + *
@@ -235,42 +246,44 @@ index 4dff28fff796..a6c5e8d6077a 100644
 + * Warnings:
 + *
 + * Block 1, CTA-861 Extension Block:
-+ *   YCbCr 4:2:0 Capability Map Data Block: Some YCbCr 4:2:0 timings are invalid for HDMI 2.1
++ *   YCbCr 4:2:0 Video Data Block: Some YCbCr 4:2:0 timings are invalid for HDMI 2.1
 + *     (which requires an RGB timings pixel rate >= 590 MHz).
 + *
 + * EDID conformity: PASS
   */
- const unsigned char test_edid_hdmi_4k_rgb_yuv420_dc_max_340mhz[] = {
+ const unsigned char test_edid_hdmi_1080p_rgb_yuv_4k_yuv420_dc_max_200mhz[] = {
  	0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x31, 0xd8, 0x34, 0x00,
 -	0x00, 0x00, 0x00, 0x00, 0xff, 0x23, 0x01, 0x03, 0x80, 0x60, 0x36, 0x78,
 +	0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x01, 0x03, 0x80, 0x60, 0x36, 0x78,
  	0x0f, 0xee, 0x91, 0xa3, 0x54, 0x4c, 0x99, 0x26, 0x0f, 0x50, 0x54, 0x20,
  	0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
- 	0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x04, 0x74, 0x00, 0x30, 0xf2, 0x70,
--	0x5a, 0x80, 0xb0, 0x58, 0x8a, 0x00, 0x40, 0x84, 0x63, 0x00, 0x00, 0x1e,
-+	0x5a, 0x80, 0xb0, 0x58, 0x8a, 0x00, 0xc0, 0x1c, 0x32, 0x00, 0x00, 0x1e,
+ 	0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02, 0x3a, 0x80, 0x18, 0x71, 0x38,
+ 	0x2d, 0x40, 0x58, 0x2c, 0x45, 0x00, 0xc0, 0x1c, 0x32, 0x00, 0x00, 0x1e,
  	0x00, 0x00, 0x00, 0xfc, 0x00, 0x54, 0x65, 0x73, 0x74, 0x20, 0x45, 0x44,
  	0x49, 0x44, 0x0a, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0xfd, 0x00, 0x18,
- 	0x55, 0x18, 0x5e, 0x22, 0x00, 0x0a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
+-	0x55, 0x18, 0x5e, 0x11, 0x00, 0x0a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
++	0x55, 0x18, 0x5e, 0x1e, 0x00, 0x0a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
  	0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
--	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xce, 0x02, 0x03, 0x27, 0x31,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xe6, 0x02, 0x03, 0x28, 0xb1,
- 	0x41, 0x5f, 0x6c, 0x03, 0x0c, 0x00, 0x10, 0x00, 0x78, 0x44, 0x20, 0x00,
--	0x00, 0x01, 0x03, 0x6d, 0xd8, 0x5d, 0xc4, 0x01, 0x44, 0x80, 0x07, 0x00,
--	0x00, 0x00, 0x00, 0x00, 0x00, 0xe3, 0x0f, 0x01, 0x00, 0xe1, 0x0e, 0x00,
+-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xbb, 0x02, 0x03, 0x29, 0x31,
+-	0x42, 0x90, 0x5f, 0x6c, 0x03, 0x0c, 0x00, 0x10, 0x00, 0x78, 0x28, 0x20,
+-	0x00, 0x00, 0x01, 0x03, 0x6d, 0xd8, 0x5d, 0xc4, 0x01, 0x28, 0x80, 0x07,
+-	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe3, 0x0f, 0x00, 0x00, 0xe2, 0x0e,
+-	0x5f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xad, 0x02, 0x03, 0x27, 0xb1,
++	0x41, 0x10, 0x6c, 0x03, 0x0c, 0x00, 0x10, 0x00, 0x78, 0x28, 0x20, 0x00,
 +	0x00, 0x01, 0x03, 0x6d, 0xd8, 0x5d, 0xc4, 0x01, 0x00, 0x80, 0x07, 0x00,
-+	0x00, 0x00, 0x00, 0x00, 0x00, 0xe2, 0x00, 0xca, 0xe3, 0x0f, 0x01, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0xe2, 0x00, 0xca, 0xe2, 0x0e, 0x5f, 0x00,
  	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-@@ -1003,7 +1022,7 @@ const unsigned char test_edid_hdmi_4k_rgb_yuv420_dc_max_340mhz[] = {
  	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
--	0x00, 0x00, 0x00, 0x84
-+	0x00, 0x00, 0x00, 0x8a,
+-	0x00, 0x00, 0x00, 0xca
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x9a,
  };
- EXPORT_SYMBOL(test_edid_hdmi_4k_rgb_yuv420_dc_max_340mhz);
+ EXPORT_SYMBOL(test_edid_hdmi_1080p_rgb_yuv_4k_yuv420_dc_max_200mhz);
  
 
 -- 
