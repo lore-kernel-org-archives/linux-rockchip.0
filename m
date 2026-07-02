@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6C7CC44501
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:47:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFEB4C43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cbla0Y1feWe5aBjKqfw5mZK4lJFUmrO6is7bBUYcOZM=; b=m251iz2bjki2t+
-	RUElg8ktnJkjsP+uHXlnYx+5yrIP9htuAgYVQgzqlFQArKf1yu6MSPkFGR0GG+API8GPJqIzrGKAE
-	biNgEMmEYs041Pi8VceeAsK46TV0L5OtcE293bp6aMgVaUjpamrypsVtHPfSLDh7zZiJ4LuI41cfZ
-	wZZ0f2PrNnNBNhQbYg3FxemYMrJdkQQoWZhr5o/I6OSkzxe/evKzTF6g5HmQCnYz26kq/C9/MdrRK
-	2Tkv4uoyAVETyqhA6MOlEoZ/PzM/5F0zj99vMFG+3M1ly7gohg/rUXFG2RB3lGH/GYAngLRBVIj3M
-	8FJpQdkOkrsxfbSttjtQ==;
+	List-Owner; bh=KpVeZSzukGuW3JTXLrehHX52FfwT8BoguonTSYGbUjg=; b=j3QVX14sW/NQ06
+	EW7szSp2o/3RAPTRenOPrTGOQcYRQAGsK/BP3xHrncLIcEEjToZSY2HsprX4jrGGVCvgxd+Y/WPEC
+	bJFO8fqL26v8K+yfrV9q2oLFFcBsjV46hYR6P9ubx9n44C/Ik8VKFSrsDIz/VGB3VYMM7wCfzld9J
+	hAQm1JvZs8J/z1Fp06MEHoG52kOtVZ8f2GtGq+oX7HkPgobm/EPVvs+tMlpeX0Y8YxnFHm4ECwXf/
+	ofwBmPcq1ugM64N2t/JH4NFoHa8dvLugVDpqXEPKfk86Y6sasRG9ItWZIVkGB99ZbgvDWi+XfR9Hk
+	P4Q6bC1oRGnV3Bk+a4iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgt-00000004fHU-0e2l;
-	Thu, 02 Jul 2026 14:46:59 +0000
+	id 1wfIh0-00000004fVp-2CNi;
+	Thu, 02 Jul 2026 14:47:06 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgd-00000004ebG-3r78;
-	Thu, 02 Jul 2026 14:46:46 +0000
+	id 1wfIgf-00000004edk-34RA;
+	Thu, 02 Jul 2026 14:46:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783003602;
-	bh=Ly/sv5wqjHD+fIz8DNnd8EigI9nvlSxBFE4MAUM4cG8=;
+	s=mail; t=1783003603;
+	bh=lOuo9OuftqAiecudrw0LjAp4UZHtVn6GRWRdGeTDE3Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OpRf6x8Km6YtXW42iJUfwmOICF21xnDqN2Hi1tHOUa0jxIF67fcitk0q9mErwS7Sb
-	 c+8q64rGpc7xsdMnViyelMINDJ2+b29HrQ2VhgIP9yBLz72/yUUvCyeVyJzfiq3WB/
-	 iiLWr5ZK6jWjer7HmQhW9qkkay8dlaNNoRWxIB4oFAHyGt8SAImGkC8bs+w0MZu9g0
-	 Uul/qGjU63Thv+a5Cjtg9meD0FI/hehJ5+OBZDRoqSzWfLgqWMx3coesHhALKR/vZB
-	 CVtci5aI2bkiO1PgiZ8FSkCRwQVTzz7GEPvKIUJhqNdI+Itk8QDUdJPOfaBstMLx5U
-	 UrjLwScG2ENuQ==
+	b=ddkIEJ9p/5fCAngPV7xWgUO7ReoBcuRJYcsDop62G4+z/txLckcOaJ6IESFTkutvA
+	 7W8anjGUPMD87lwZ3JNydE9OAcvIpnUzZNeagLJ6owdyWyeGlv7SiaqvrpgKOuIxKK
+	 XyFcvmcuhGG5mAsedtNjs1LEafrIa84K/xZ5P8cbgPRVBJMl0z/HU4sITW2HIwbdLa
+	 +L5leBvo19Cb22j9U4JgEFW1kEGzw52KtqrPgKwF/0/Ejn9HWnlCxIjdnLLBqS2meS
+	 k0jaz3Vt2YY4TCnsXEYpDDjRqvXahNkcFjrDnooizMzVl8CXpLr10/46LB9UDiaSDl
+	 10TETdlfip7bQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDA8A17E0E9E;
-	Thu,  2 Jul 2026 16:46:41 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6EA8A17E35FB;
+	Thu,  2 Jul 2026 16:46:43 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 02 Jul 2026 17:46:27 +0300
-Subject: [PATCH v8 14/39] drm/display: bridge_connector: Use cached
- connector status in .get_modes()
+Date: Thu, 02 Jul 2026 17:46:29 +0300
+Subject: [PATCH v8 16/39] drm/display: bridge_connector: Wire up HDMI 2.0
+ scrambler callbacks
 MIME-Version: 1.0
-Message-Id: <20260702-dw-hdmi-qp-scramb-v8-14-d79890d00b6a@collabora.com>
+Message-Id: <20260702-dw-hdmi-qp-scramb-v8-16-d79890d00b6a@collabora.com>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -66,12 +66,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+ linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_074644_169064_1E3DC125 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20260702_074645_970507_849A1B27 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +87,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace the active drm_bridge_connector_detect() call in get_modes()
-with a read of the already-cached connector->status.
+Connect the bridge connector's .scrambler_{enable|disable} callbacks to
+the underlying bridge's .hdmi_scrambler_{enable|disable} funcs when
+HDMI 2.0 conformance is advertised.
 
-The .get_modes() callback is only invoked from
-drm_helper_probe_single_connector_modes(), which has already retrieved
-the connector status.  Calling detect again is redundant and triggers a
-duplicate hotplug event.  This is also a prerequisite for switching to
-the .detect_ctx() hook, which requires a drm_modeset_acquire_ctx not
-available in the .get_modes() path.
+This completes the bridge connector plumbing so that the SCDC
+scrambling helpers can control source-side scrambling through the
+bridge chain.
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_bridge_connector.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/gpu/drm/display/drm_bridge_connector.c | 40 +++++++++++++++++++++++++-
+ 1 file changed, 39 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index 46104506fe32..57238ba49d70 100644
+index 17eb2548efad..ceb961a9adb5 100644
 --- a/drivers/gpu/drm/display/drm_bridge_connector.c
 +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -326,12 +326,10 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
- static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
- 					       struct drm_bridge *bridge)
+@@ -578,6 +578,32 @@ static int drm_bridge_connector_write_spd_infoframe(struct drm_connector *connec
+ 	return bridge->funcs->hdmi_write_spd_infoframe(bridge, buffer, len);
+ }
+ 
++static int drm_bridge_connector_scrambler_enable(struct drm_connector *connector)
++{
++	struct drm_bridge_connector *bridge_connector =
++		to_drm_bridge_connector(connector);
++	struct drm_bridge *bridge;
++
++	bridge = bridge_connector->bridge_hdmi;
++	if (!bridge)
++		return -EINVAL;
++
++	return bridge->funcs->hdmi_scrambler_enable(bridge);
++}
++
++static int drm_bridge_connector_scrambler_disable(struct drm_connector *connector)
++{
++	struct drm_bridge_connector *bridge_connector =
++		to_drm_bridge_connector(connector);
++	struct drm_bridge *bridge;
++
++	bridge = bridge_connector->bridge_hdmi;
++	if (!bridge)
++		return -EINVAL;
++
++	return bridge->funcs->hdmi_scrambler_disable(bridge);
++}
++
+ static const struct drm_edid *
+ drm_bridge_connector_read_edid(struct drm_connector *connector)
  {
--	enum drm_connector_status status;
- 	const struct drm_edid *drm_edid;
- 	int n;
+@@ -603,7 +629,7 @@ static const struct drm_connector_hdmi_funcs drm_bridge_connector_hdmi_funcs = {
+ 		.clear_infoframe = drm_bridge_connector_clear_hdmi_infoframe,
+ 		.write_infoframe = drm_bridge_connector_write_hdmi_infoframe,
+ 	},
+-	/* audio, hdr_drm and spd are set dynamically during init */
++	/* scrambler, audio, hdr_drm and spd are set dynamically during init */
+ };
  
--	status = drm_bridge_connector_detect(connector, false);
--	if (status != connector_status_connected)
-+	if (connector->status != connector_status_connected)
- 		goto no_edid;
+ static const struct drm_connector_infoframe_funcs drm_bridge_connector_hdmi_audio_infoframe = {
+@@ -912,6 +938,11 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 			     !bridge->funcs->hdmi_clear_spd_infoframe))
+ 				return ERR_PTR(-EINVAL);
  
- 	drm_edid = drm_bridge_edid_read(bridge, connector);
++			if (bridge->supported_hdmi_ver >= HDMI_VERSION_2_0 &&
++			    (!bridge->funcs->hdmi_scrambler_enable ||
++			     !bridge->funcs->hdmi_scrambler_disable))
++				return ERR_PTR(-EINVAL);
++
+ 			bridge_connector->bridge_hdmi = drm_bridge_get(bridge);
+ 
+ 			if (bridge->supported_hdmi_ver)
+@@ -1018,6 +1049,13 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 			bridge_connector->hdmi_funcs.spd =
+ 				drm_bridge_connector_hdmi_spd_infoframe;
+ 
++		if (bridge_connector->bridge_hdmi->supported_hdmi_ver >= HDMI_VERSION_2_0) {
++			bridge_connector->hdmi_funcs.scrambler_enable =
++				drm_bridge_connector_scrambler_enable;
++			bridge_connector->hdmi_funcs.scrambler_disable =
++				drm_bridge_connector_scrambler_disable;
++		}
++
+ 		ret = drmm_connector_hdmi_init_with_caps(drm, connector,
+ 							 bridge_connector->bridge_hdmi->vendor,
+ 							 bridge_connector->bridge_hdmi->product,
 
 -- 
 2.54.0
