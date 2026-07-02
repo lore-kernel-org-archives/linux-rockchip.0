@@ -4,72 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 471CDC43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 15:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B69CCC43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 15:31:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wi99wXYpH4Vt+17j9/ONrJGOkVR4xJwDXydgQbrDv5Y=; b=Xrft1/QEYD+1z3
-	A6DpC+zMb4aJUzVuz1YHABfJ6On8QVXYF/njmkVzoX+VFOaae/7sDdyHp0KzxZX1QfcNlV7hEbf0M
-	cqlmDUrxv0QMb5LZXnTC25S1jrp/ngexvOip9whYusWvSvchVSoPnMBpPbdbPi5os2FG3+0r0wQrd
-	KcfQC4IMfSdVpTCkbYT4CF+cH7Bw9bG3UdDPWZFt929aFOywFN4MIYkfcBp7qe3y1zd9KD7VCeJqe
-	TDu6K31r0UJ54CvBTil8We+pvdGYmguFB6Ua79qAxW/PHHaQbAYdzvMNvV4nTIew/gbsrMhcKoUe6
-	hxCCCMKQK2sxQaAmejYg==;
+	List-Owner; bh=GbA+eLQEHgsQVq4YL09AUkBbm6e/KTWpS/HazKeZNxk=; b=g9YSklzE0sOOU5
+	0o2bppXxQHW/D0MGiMaXb7u02eYhnaQcDj2JqD5fbQUgAvZgpa95o/RFWoIzqoIq/INNDK7Ga/caX
+	eeBj6s3SQ/dFKCBbcTGxJwPK/kjr7JsXg3aEJZcRmOdglaVjv+B8L96bmP01bk90b3bfwhi9XLIJY
+	1tqVI/ppsn1AU+Tm7Xhs+HIuKF83f8Woe8+XUKdf7HebeubSTTA0Te8J49CAaCCprjXnh8vPOA20n
+	SN22P3fs3vFAkFTO+cU+QXIuXJxat7KrBUU5NoCIS6yiSUkiszCno1bCiTT6deL2SJxCClz8mVNhe
+	5v8pqUguoSKBAkc4Oxlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfJIO-00000004njc-1Zby;
-	Thu, 02 Jul 2026 15:25:44 +0000
-Received: from out203-205-221-205.mail.qq.com ([203.205.221.205])
+	id 1wfJOI-00000004ofz-1Orp;
+	Thu, 02 Jul 2026 15:31:50 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfJII-00000004ngG-2mcL
-	for linux-rockchip@lists.infradead.org;
-	Thu, 02 Jul 2026 15:25:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1783005934; bh=/fVlbPyZGXATH2z5WzJ6VMWNrQv8f/QALE3Mh5Gazek=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=jOw38DtwTid4VzpEnbj+r04pW7YwOs2EGmDAWheynYT8NBxM8OKwtqY3ZdbudSWzz
-	 uCU5yFUGRx9LB2T0HwlJOm+WPYXFD1rWndkJKWT08TRY9lNSiaRDgaEC0vDGCLWSBP
-	 nYegymS2USlIRyC+w/5RD8Aits0SNxHuLDdaGCdU=
-X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
-X-QQ-XMAILINFO: OMqlb7aP4Kjek7vshZOnZvDZb5+pT3yBZiNHZ2hUy7w914sLyLT+p04C4P4x9K
-	 rkZ+UKZDF1Ze7T+AawbmzHHGc26F1svH7n53Pvt+ALBPPxl0IPtoRBjpyAJa//Esxs17tB/Auzk6u
-	 1Lajtt9xuWDgjgrIjlher+7Hl63RNJawzBh26kiI8HTEW7VCfaHYk1NUFjjwLB3HgoBfJKB4EZ5ig
-	 oCav9Hj+HJ/1LklYGXN+XwS9+3qQc6feB0IVzWrvgZg82gW45ooi3e2LaeHj8eULaFH88D1vtIIeK
-	 aRJ8FQ/0gnwG2d8Qc0WE8fy4tIfo+SGJZ2CMSCuldorzRe0jzui3TVT/d2Z1rYDbB3okr2mC6Xbcg
-	 WmcdNFUq92zXv+2WD1HcQJxAMK8TmZ+cjFKsVMCgu8qw1I6veBYoegqV1FK4vpAcHWrt7qhQG1+oA
-	 57TMkADUVea3y7+vBjr4hLDQ1rRKOYeIue1+tepREdsO6WMXGjiLoD4L/up6XbC4JV2vAXqliu1Di
-	 lo9Tyqbtg73CTbtd+xPA84EFFoas8G7kI5JGaKZl/EPw7CZXoOFe9pw8iE/P2Q6VzzSyqu0lwUzzj
-	 rGPtrF5sxqDcCPEoMYs0tSA73FRjVaU2ACsERW1/O+iT/m3u6qCaKUBtp7xbtrf8kQNdKEHWLNOOq
-	 RfRgsqQlQAr9asLRI1XXDQsfiSaQ3JKY2Fe9gcGuk4501d1ceO389TNWiSnbrP+969Ap0kvgP1u3q
-	 tL8gcilPGFjtI1bRpu+oI64kWmPJHE5aNl+iGuW2GLaRzJKymPzMWa4hnF4YN5qTiYFoDRrAzKvOv
-	 MpvRkwsqG+nL1+o6H0bdP96Niaz3Kx8ekjPGky+WG9QryPnXSD2+jeiSx/WwQCB7vCgiXVQI6JdOe
-	 0lNdNfU8d6yxbgOp/yTbeZ3liRCydfFKcFefzHxySIvRVU4NKKyeKcdXJ1QsAiE0+xpr3HqsJpSfQ
-	 KwymHuUnQhjREoVqEjPLCOqZ4Am0ruyU/Ej1t43Yo++L6XbjHzGMomiwFxp05yhQbm3wGZYN46kWD
-	 6G7VmL3dax4MsHfb3Lx972hi5U4ZlXAyBeiI9w9WZKxkMkXiBgcx/x+e2vWeJh291utzlraY9looR
-	 5LW5dLsDH1GlvTOz97hK3tRe
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk@kernel.org>, "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>
-Cc: "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?RG1pdHJ5IFRvcm9raG92?=" <dmitry.torokhov@gmail.com>, "=?utf-8?B?U2hlbmdqaXUgV2FuZw==?=" <shengjiu.wang@nxp.com>, "=?utf-8?B?UGVuZ3BlbmcgSG91?=" <pengpeng@iscas.ac.cn>, "=?utf-8?B?UnVzc2VsbCBLaW5n?=" <rmk+kernel@armlinux.org.uk>, "=?utf-8?B?RXJpYyBCaWdnZXJz?=" <ebiggers@kernel.org>, "=?utf-8?B?TWFyaW8gTGltb25jaWVsbG8=?=" <mario.limonciello@amd.com>, "=?utf-8?B?S2FybCBNZWhsdHJldHRlcg==?=" <kmehltretter@gmail.com>, "=?utf-8?B?WWl4dW4gTGFu?=" <dlan@kernel.org>, 
-	"=?utf-8?B?U3RlcGhlbiBCb3lk?=" <sboyd@kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2 1/4] dt-bindings: can: rockchip: add rk3588 CAN-FD compatible
-Mime-Version: 1.0
-Date: Thu, 2 Jul 2026 23:25:31 +0800
-X-Priority: 3
-Message-ID: <tencent_190046D203F61069FC109A4268AC654C1309@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <20260702140654.2961561-1-1579567540@qq.com>
- <tencent_3B2B6003D1DE4FB7A984665A062581766405@qq.com>
-	<ec548326-dd8d-4d81-8500-ed4c4c30ddb2@kernel.org>
-In-Reply-To: <ec548326-dd8d-4d81-8500-ed4c4c30ddb2@kernel.org>
-X-QQ-mid: xmsezb41-0t1783005931tqwjx3m1m
+	id 1wfJOF-00000004oen-0al9;
+	Thu, 02 Jul 2026 15:31:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783006305;
+	bh=Xkb+/mKuO1FEluXDb53rbD4MmvYJ3E7jzptvbsHL/pQ=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=cvm1LCN7RuPw3sJrteqJx3uGAWr6BhN2gttVW/sftjQ4oiBobOuexhzVh4drzhMyC
+	 sak2w+1IziYBSEsvudn0MMaKORc9Hql1TbzMMW9O9nZ3U2ECyUj+P6ZjWg0XN7gX3N
+	 otaMlSV06slH5L8HdKMkgZnzmxEbCJYyIuKgtuw8geVVATc0MxpUmVSKbTgN3kGWvB
+	 mB95T6Grbv3SYUBmUSei+ayV6vSDorGyvAV0I4LTHGPZhkUWk3ykFimlpImNQmYVM+
+	 28IUkrhUvDardCFp6tEnxiguChLEaAkhGuKM0fzV3T+e+oR+1siNhFGfII+SmMJc8a
+	 VcugSiSx4XJVQ==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3449B17E0180;
+	Thu,  2 Jul 2026 17:31:44 +0200 (CEST)
+Message-ID: <27c0c573-dd0e-49fb-ba40-3a314a8783b3@collabora.com>
+Date: Thu, 2 Jul 2026 18:31:43 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 00/39] Add HDMI 2.0 support to DW HDMI QP TX
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Diederik de Haas <diederik@cknow-tech.com>,
+ Maud Spierings <maud_spierings@hotmail.com>
+References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_082539_015546_381EE6BA 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20260702_083147_341540_6043E0B1 
+X-CRM114-Status: GOOD (  25.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,28 +90,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
-Hi Krzysztof,
+I've just realized I missed updating the part of the cover letter that 
+describes the patch structure. Please find the corrected content below.
 
-Thanks for pointing this out.
+Regards,
+Cristian
 
-> > Add a dedicated rockchip,rk3588-canfd compatible to describe this
-> > variant. Do not use rockchip,rk3568v2-canfd as a fallback, because that
-> > would describe a register layout that does not match the hardware.
-> > 
-> > Changes in v2:
+On 7/2/26 5:46 PM, Cristian Ciocaltea wrote:
+> Enable HDMI 2.0 display modes (e.g. 4K@60Hz) on the Synopsys DW HDMI QP
+> TX controller, as found in Rockchip RK3576 & RK3588 SoCs, by adding SCDC
+> management for high TMDS clock ratio and scrambling.
+Since SCDC state is lost on sink disconnects, the bridge driver needs to
+trigger a CRTC reset during connector detection.  To support this, the
+series first introduces the HDMI version enum and the caps-based HDMI
+connector init helper (patches 1-3), then builds the connector and
+bridge scrambling infrastructure on top of it - the connector scrambler
+support, the scdc-helper additions (connector-prefixed debug macro and
+SCDC version helper), and the HDMI scrambling management helpers
+including SCDC source-version advertisement (patches 4-8).
+
+It then wires this up through the hdmi-state-helper and bridge connector
+layers: fallback TMDS rate validation, hotplug SCDC state sync and the
+scrambling requirement (patches 9-11), a bridge cleanup and the new
+source-side scrambling bridge ops (patches 12-13), the switch to a
+cached-status, atomic-aware .detect_ctx() connector helper (patches
+14-15), and finally hooking up the HDMI 2.0 scrambler callbacks (patch
+16).
+
+The SCDC scrambling feature itself is implemented in the DW HDMI QP
+bridge driver, alongside i2c error-message rate limiting,
+.enable_hpd()/.disable_hpd() PHY ops and a dw_hdmi_qp_hpd_notify()
+helper (patches 17-20).
+
+Patches 21-28 cover the Rockchip platform driver and HPD handling: minor
+cleanups (newlines in dev_err_probe(), consistent local dev variable,
+dropping an unnecessary include), deferring HPD IRQ enable until after
+connector setup, masking the RK3576 HPD IRQ in io_init, implementing the
+.{enable|disable}_hpd() PHY ops, switching HPD reports to
+dw_hdmi_qp_hpd_notify() to restrict events to the affected connector,
+and dropping the now-unused .setup_hpd() PHY op.
+
+Patches 29-31 convert vc4 HDMI to the common infrastructure as a proof
+of reuse: adopting the shared TMDS char rate constants, switching to
+drm_hdmi_mode_needs_scrambling(), and replacing the driver-local
+scrambling implementation with the common SCDC scrambling helpers.
+
+Patches 32-39 add KUnit tests: HDMI caps-based init coverage and
+source-side scrambler validation for the connector, conversion of
+hdmi_state_helper to drmm_connector_hdmi_init_with_caps() with
+max_tmds_char_rate fallback tests, a new 4K@60Hz 600MHz TMDS EDID,
+source-side scrambling decision coverage, and conformity fixes for the
+existing 1080p+4K YUV420 200MHz and 4K RGB/YUV 340MHz test EDID blobs.
+
 > 
-> Changelog goes to changelog, so ---.
+> This has been tested on the following boards:
 > 
-> See also submitting patches or just start using b4, which would solve
-> also your broken threading problem.
+> * Radxa ROCK 5B (RK3588)
+> * Radxa ROCK 4D (RK3576)
+> * Raspberry Pi 5 Model B Rev 1.1 (BCM2712 D0)
 > 
+> Note that commit d87773de9efe1 ("clocksource/drivers/arm_arch_timer:
+> Default to EL2 virtual timer when running VHE"), introduced in v7.2-rc1,
+> causes Raspberry Pi 5 to hang during boot.  Reverting the commit
+> restores normal boot.  This issue has already been reported in [1];
+> alternatively, the workaround proposed in [2] can be applied.
+> 
+> Regards,
+> Cristian
+> 
+> [1] https://lore.kernel.org/all/ea15cce1-b393-43f6-8d58-3d6f90f0c0cd@samsung.com/
+> [2] https://lore.kernel.org/all/20260619204832.586079-1-dan@reactivated.net/
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+> Changes in v8:
+> - Added an enum hdmi_version under video/hdmi to describe the HDMI
+>   specification version a source/sink supports (new patch 1)
+> - Introduced HDMI connector capabilities API and reworked the
+>   infrastructure patches on top of it: drmm_connector_hdmi_init() now
+>   takes a drm_connector_hdmi_caps struct that carries supported_formats,
+>   max_bpc, supported_hdmi_ver and max_tmds_char_rate (new patches 2-3)
+> - Moved all the new SCDC helpers covering both source and sink to
+>   display/drm_hdmi_helper.c
+> - Renamed drm_scdc_{start,stop}_scrambling() to
+>   drm_connector_hdmi_{enable,disable}_scrambling() and added a
+>   connector-state argument so the scrambler_needed flag is checked
+>   centrally instead of in every driver
+> - Renamed drm_scdc_sync_status() to drm_connector_hdmi_sync_scdc(),
+>   aligned its lifecycle with vc4_hdmi_reset_link(), and removed the
+>   internal drm_scdc_reset_crtc() helper; it now also gates on CRTC state
+>   and an in-flight commit (Maxime)
+> - Changed the prototype of drm_atomic_helper_connector_hdmi_hotplug() to
+>   take an acquire context and an int return, instead of adding a new
+>   _ctx variant (Maxime)
+> - Added drm_hdmi_mode_needs_scrambling() to centralise the above-340 MHz
+>   decision (new patch 7)
+> - Made SCDC source version negotiation optional and moved it to a
+>   dedicated patch "drm/display: hdmi: Advertise SCDC source version when
+>   scrambling" (new patch 8), backed by a new
+>   drm_scdc_set_source_version() helper in "drm/display: scdc-helper: Add
+>   helper to set SCDC version information" (new patch 6)
+> - Added a fallback TMDS rate validation patch using the connector-level
+>   max_tmds_char_rate when the driver provides no .tmds_char_rate_valid()
+>   hook (new patch 9)
+> - Split scrambler_needed flag handling into its own hdmi-state-helper
+>   dedicate change (new patch 11)
+> - VC4:
+>   * Replaced vc4_hdmi_mode_needs_scrambling() with
+>     drm_hdmi_mode_needs_scrambling() (new patch 30)
+>   * Restored drm_dev_{enter,exit}() pairing around the converted
+>     scrambling paths
+>   * Removed now unused output_{bpc,color_format} fields from vc4_hdmi as
+>     part of the SCDC conversion
+> - KUnit:
+>   * Covered the caps-based connector init path: NULL caps, inferred
+>     max_tmds_char_rate per supported_hdmi_ver, and override validation
+>     (new patch 32)
+>   * Switched drm_hdmi_state_helper_test to the caps-based init helper
+>     and exposed it through
+>     drm_kunit_helper_connector_hdmi_init_with_caps_edid_funcs() (new
+>     patch 34)
+>   * Added max_tmds_char_rate fallback coverage in
+>     drm_hdmi_state_helper_test (new patch 35)
+> - Rebased onto latest drm-misc-next and dropped the already applied
+>   "drm/fb-helper: Remove unused local variable in hotplug_event()" patch
+> - Link to v7: https://patch.msgid.link/20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com
 
-I will move it below --- in v3. At the same time, I'll also spend some time
-learning how to use b4, and will use b4 to send the next v3 submission.
+[...]
 
-Best regards,
-Cunhao
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
