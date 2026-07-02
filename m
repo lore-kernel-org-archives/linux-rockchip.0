@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A181C44502
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F0F8C43327
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 19:05:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RTABiIdonUBXnXtjySWqv5i9sEWDFDsy/J4bcsNZGUw=; b=J+d3I6AtqDJN5q
-	8mo3iNw1thd5FhGvyWKOJ+BDyR8bvQSRDRiMMTQCkl2fPhntxFp58dbHTsy4rul2nPc6uKiwH0Byb
-	LQb7V9l8bJfsYCdBhJYgz0f81PhpSd7WxrGtLY/TcndwQkJGjmrcXeCSEopJZgIx/xjzL1aAfNsVb
-	U98MseaKiwT4LJ0EkmR73rEQrOMqEIj+UD9s5i59Og5yug29a1eQMYo5F0ZYNLmQ5HcqoB7IokPYm
-	9Ol4UZ5tD5VbbToA/aJHBPvwjm680G+ieRLF0L5Pha75JBDKJpyUUwm6irO0I8xMHxwtuuLfqA+kD
-	RATIOcanQokg3gVxMlzQ==;
+	List-Owner; bh=+7cRkepwwkyO4gfA2ZrnEcARAABn/yFwtiUQsy8fpUo=; b=B23ItVpDfNPF82
+	NaaS56b3evFkYTvfuOaLVbJqCwAoSSw5h51s4SYLOfXrzTE/cPpVZSKKZCEcH1wL5AmO13yu99Fll
+	qvCKumnhEpIrirOIJj6dfEQzJyZCaSGbZzdrIzGIBhwj3+nuIaV/Ufs/4jHCCnrOcK+Xl6qc4ebJG
+	gFKutMuqhPVqderFOAo5hgamD45ogVvDdHNeHHT/VcAgViKtq0uIvMTMhYUUTHySHQ3JBLptLB8MI
+	mRebF6Cg4lNnpPwrEnE+ykBMMd1X+yCVQmseDn3VYcqMCSsfgRwHeTcjNbnyU37sgbjcMlmEWEwyb
+	rJs3rpUpZOBH7CKlzL4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMil-00000005JVV-1PKO;
-	Thu, 02 Jul 2026 19:05:11 +0000
+	id 1wfMik-00000005JU4-1NyO;
+	Thu, 02 Jul 2026 19:05:10 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMig-00000005JNl-3Lav;
-	Thu, 02 Jul 2026 19:05:08 +0000
+	id 1wfMig-00000005JNH-076u;
+	Thu, 02 Jul 2026 19:05:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=ILx4u100roKSNdt62g0vCVIzu5pk0TzDJDZVD8Hhcks=; b=YEKfePcZJ66Vv0BDxc4KeXTSIv
-	FDr1kCdSRTOHlgrLRJ+5jvXRu88+gx6MENusUTuCv/fT84nk/0UC3CEYLbMq/Y2/N3pWKhzVvsDLB
-	Id+5l7pyRIFfMVVIqdXv5oqgYHpxgHTGpJTqEOjRG8Tm6E4FXkAl37yHurwlJL0ZCpdl+eOtyZyVP
-	DEWFrX4j4Pk+PBTWb1fg12ub3y3dgMfPTdKDGLCpg9GRgn2di3FsSN9fA3rogzpvS1GO1QbMt6Cyj
-	V6+/I9UNIBK01n/VJiEhyqr6J/APWIX76ecrTQehy1YRhlbVyr5iPDR9/y3XZRi+qDK4BM78HuGyW
-	zjt5hZ/g==;
+	bh=kwkpuFiJFSig1yrgIRHVrq1BQtVphda099BHLY4gXx8=; b=GnNg4IcbGHj4LG3T+K83pcS4qd
+	g1bV+9BkUhKcRb20kwj58+CxUOs7De7lebEY06waM02j88XzE13GSkX4jwLL0ebUnOYw9ojoZUtTW
+	jIMnYrZuIL5i8e27f2CXf6jcA+kvgOm9Aj8/S3h+myUR6FZiTVPcF4v47aDTwCrUeUaMYv8nXJlm6
+	2JynNtRFpf2i/fL8kFsAI6jXv/Vib0HWY+UL0VzeGGw5IfqSVEYPHm6vz5ocSIKShLKu5jBYG1Jq7
+	39+58w0Q8cW5sa/mG5wh+QX5s9W2gPRnpjpGD6GfYivmtxnVyddQTrhiTeVHO1T5D4YYrwUds32lv
+	gjLwNegA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ricardo Pardini <ricardo@pardini.net>
+To: Hrushiraj Gandhi <hrushirajg23@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix regulator names on NanoPC-T6
-Date: Thu,  2 Jul 2026 21:04:56 +0200
-Message-ID: <178301901912.3838694.17963295262868921590.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v7 0/2] arm64: dts: rockchip: add Vicharak Axon board support
+Date: Thu,  2 Jul 2026 21:04:55 +0200
+Message-ID: <178301901903.3838694.3276523670393868229.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260605-rk3588-dts-rockchip-nanopct6-fix-schematic-names-v1-1-15dd3b23ab1a@pardini.net>
-References: <20260605-rk3588-dts-rockchip-nanopct6-fix-schematic-names-v1-1-15dd3b23ab1a@pardini.net>
+In-Reply-To: <20260608060940.52549-1-hrushirajg23@gmail.com>
+References: <20260608060940.52549-1-hrushirajg23@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_120506_834777_5338B2DA 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20260702_120506_089899_0BEB1CC1 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,32 +72,35 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 05 Jun 2026 13:54:35 +0200, Ricardo Pardini wrote:
-> Three fixed-regulator names on the NanoPC-T6 don't match the board
-> schematic [1].
+On Mon, 08 Jun 2026 11:39:38 +0530, Hrushiraj Gandhi wrote:
+> This series adds initial device tree support for the Vicharak Axon
+> single-board computer, which is based on the Rockchip RK3588 SoC.
 > 
-> - vcc3v3_pcie2x1l0 -> vdd_mpcie_3v3
->   This GPIO-switched 3v3 regulator is labeled vcc3v3_pcie2x1l0, but
->   it is wired to and consumed by &pcie2x1l1. Per the schematic,
->   the GPIO PCIE_M2_1_PWREN controls the power net VDD_MPCIE_3.3V;
->   rename to match.
-> - vdd_2v0_pldo_s3 -> vcc_2v0_pldo_s3
->   Typo in the regulator-name property of RK806-1 DCDC reg7. The node
->   label and the schematic power-net name both already use the vcc_
->   form; only the regulator-name string had vdd_.
-> - vcc3v3_pcie30 -> vcc3v3_pcie_m2_0
->   The GPIO-switched 3v3 feeding the M.2 M-Key (NVMe) slot is named
->   after the PCIe controller it sits behind rather than the schematic
->   power net. The schematic names it VCC3V3_PCIE_M2_0 (produced by an
->   MP2143-based buck off VCC_5V0, enabled by PCIE_M2_0_PWREN); rename
->   to match.
+> The Vicharak Axon is a feature-rich SBC targeting developer and embedded
+> use cases. It ships with:
+> 
+>   - Rockchip RK3588 (4x Cortex-A76 + 4x Cortex-A55)
+>   - RK806 PMIC providing all SoC power domains
+>   - eMMC 5.1 (on-board) and microSD slot
+>   - Gigabit Ethernet via RGMII (RTL8211F)
+>   - Dual HDMI 2.1 output and one HDMI 2.0 input (receiver)
+>   - PCIe 3.0 x4 and two PCIe 2.0 slots
+>   - SATA 3.0
+>   - USB 2.0 host ports (EHCI/OHCI)
+>   - NXP PCA9554 I/O expander for status LEDs
+>   - Haoyu HYM8563 RTC
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: fix regulator names on NanoPC-T6
-      commit: e53bb7bffd4d359b68e8256bc0ebf5a119ba3c71
+[1/2] dt-bindings: arm: rockchip: add Vicharak Axon board
+      commit: e0008b108aaf8c5aa22930b2ceadf8f894562acb
+[2/2] arm64: dts: rockchip: add Vicharak Axon board
+      commit: e08c3389c78dbefd31a57df8807cf57ef6f3c9b1
+
+Please check for double empty lines and ordering in future patches.
+I've cleaned up some things.
 
 Best regards,
 -- 
