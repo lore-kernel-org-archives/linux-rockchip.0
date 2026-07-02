@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7335C44503
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:46:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF290C44500
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:46:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tsTnLGku7/sNrOOQeh5imj2wCCAwcoK4cssDMWAwGBM=; b=bR0zlh6nLlpn+0
-	2OL3EXxbpyAv+2z/5twmK5sENvI3EbIU0ktEBJWXVsZFORMD3Cu+nAnIqaF0NH85LA7BG0u3AtXSZ
-	pLoaC2cdN2Fr6sU6inOVkOr5ViorLQ2zc6rMrwq0S3VV3BXSR6UFM9fab7P8TgIki4KCnlF/vsDae
-	EjhyTgexJoBDgpqQbOk3VlsYIx1nJADKwdIFzu9T5ebj/Hg0xg69LiQUsKqj0aRXTcdnxEWh1Is27
-	S6lsNf9vGRU2fOKvKIMnV8CBMBR+Hb0OVlQkU4ZbX7ZgJm72WTvOwthHAfhUjcKEuObs4uEir5OMo
-	lKd7d3x9wjYSgqH7rokQ==;
+	List-Owner; bh=/OKMioSDRNKK0eDqzLGrL9KTrjYPG77fSJpMRsIrKtg=; b=Vk6EPe+Ov41Nt/
+	SQPSE4t4uMOyOdhHDRVvrxrRuz7AABDfa5NYrk2zKC3jfXbh1Eag3XTb/pO+K4Qp2EQbanJPNqcSI
+	09Y/Ql4i9wTWF0Xa/a1dyYeSWjuHxpeJYsmKTEmlsyXr8OKvgJDBnVopoLi8VgwLp/b61WCjwxULI
+	dYAy+PlbQyY40kZG+CC6tc95kNrlyNNpE5MH92G2Zn+NmpdsG0cPgR81tcqZjju719mG0l6Xt8Ty1
+	5nKNCJYuEQgW+oyHSV666gLPdIvtbM6sAwUjc+gO5f9WA4tloF/H7Le59EPVt7yY8UqOWv1IVDVYf
+	uSEqDb300jQIiqJZBJoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgi-00000004end-22EM;
-	Thu, 02 Jul 2026 14:46:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wfIgk-00000004esf-12Ly;
+	Thu, 02 Jul 2026 14:46:51 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgb-00000004eZ7-3amY;
-	Thu, 02 Jul 2026 14:46:43 +0000
+	id 1wfIgb-00000004eYT-0fJT;
+	Thu, 02 Jul 2026 14:46:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783003596;
-	bh=uFU9sq3wcK+aVr4VsVljOiTboVowPyqp4I52GKzQlr8=;
+	s=mail; t=1783003597;
+	bh=4PyW8Jhg7IiTzgbSHOrnUha3BzbvIJ2MbhHineOQU4M=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fYkawl1jPP2cKjFOkSldH7+dDgHcSW6MBHxwsRlOne+dHggv/p6yUjeodWpeNM70V
-	 wIPS+7ILRr6OY2ygeHkeYhvjYRkv7Iz29s4ii3767qcrVq66L+2UuopYhEnhW17c3K
-	 9ywHEbn3iWssjJWkVZT9nRShqLL9smI+U8MBzVpto7vO9Cfpo1zCdIDi75xaxcxtib
-	 bO9MR7hTRKHzHvRMPKR5h276HPoQCgaN05C86TOL7zR2WIeZe+EpyQkxMdeAj/0uCr
-	 B9Ut6MpMxQxV0POC8vzEJilt55nIXNHaUDL973+NP9BgC5mCQaSjPfuweqv+prKS8E
-	 +zIFy30J4ptrA==
+	b=HxfkMS7W8sBiV7T3rZB+k1FFRe/+kbErsAmzNf5jw8yypsDHIkmI9BXjg34DCh2mF
+	 crYZeqX8OzHL/ok/SRBwmC8Fr0cIhtX0GD9nubv0doTB3y0juDtZp683jIaUxoGhno
+	 tvJkvAnCZel4NhH7ITXnoiBene/Pk1FcVSfH5rIuJBBpyj2AHglUbQEcD1RvC6Rubi
+	 jinKib9tuZ0GQoHAp1dm8PeRNpNUEESlWaDierF7FaML++WI9BZhlWlnrXMWSPQMTS
+	 MZh6sHwSSfRDRwpZcIrCoMRAedVHBPosiV5w1McNVW6mPu3CevbjV1lhFKcp4kWHdZ
+	 cKPJAFxO6QafA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EE57417E1411;
-	Thu,  2 Jul 2026 16:46:35 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7555217E0852;
+	Thu,  2 Jul 2026 16:46:37 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 02 Jul 2026 17:46:19 +0300
-Subject: [PATCH v8 06/39] drm/display: scdc-helper: Add helper to set SCDC
- version information
+Date: Thu, 02 Jul 2026 17:46:21 +0300
+Subject: [PATCH v8 08/39] drm/display: hdmi: Advertise SCDC source version
+ when scrambling
 MIME-Version: 1.0
-Message-Id: <20260702-dw-hdmi-qp-scramb-v8-6-d79890d00b6a@collabora.com>
+Message-Id: <20260702-dw-hdmi-qp-scramb-v8-8-d79890d00b6a@collabora.com>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -69,8 +69,9 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_074642_119956_B5CC8789 
-X-CRM114-Status: GOOD (  18.01  )
+X-CRM114-CacheID: sfid-20260702_074642_054739_71BE77E1 
+X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,108 +88,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HDMI 2.x specs mandate that compliant Sink devices report their SCDC
-version in the Sink Version register, which reads as 1 on any
-SCDC-capable sink.
+The HDMI 2.0 spec advises that compliant Source devices report their
+SCDC version in the Source Version register.  Do so when enabling
+scrambling by calling drm_scdc_set_source_version().
 
-There is also a dedicated Source Version register.  Writing it is not
-compulsory, but the spec advises that compliant Source devices do so, in
-which case the value must be 1.
-
-Add drm_scdc_set_source_version() to follow this recommendation.  The
-Sink Version register is read first, both to log the advertised SCDC
-version and to guard against non-conformant devices: a sink reporting
-version 0 is either not SCDC-version-aware or broken, so writing the
-source version gains nothing and risks upsetting such hardware.  In that
-case the write is skipped.
-
-The source version is passed as a parameter rather than hardcoded, as
-future spec revisions may define additional rules for the allowable
-version values.  The written value is additionally clamped to the sink's
-reported version so the source never advertises a version the sink does
-not understand.
+Failures are non-fatal: SCDC version negotiation is purely informational
+and does not gate scrambling or any high-bitrate functionality, so a
+flaky DDC bus should not block scrambling setup.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_scdc_helper.c | 46 ++++++++++++++++++++++++++++++-
- include/drm/display/drm_scdc_helper.h     |  2 ++
- 2 files changed, 47 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/display/drm_hdmi_helper.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/gpu/drm/display/drm_scdc_helper.c b/drivers/gpu/drm/display/drm_scdc_helper.c
-index cb6632346aad..6d804ee19420 100644
---- a/drivers/gpu/drm/display/drm_scdc_helper.c
-+++ b/drivers/gpu/drm/display/drm_scdc_helper.c
-@@ -21,10 +21,11 @@
-  * DEALINGS IN THE SOFTWARE.
-  */
+diff --git a/drivers/gpu/drm/display/drm_hdmi_helper.c b/drivers/gpu/drm/display/drm_hdmi_helper.c
+index 7c96cccf683d..b8ed2a1e47f5 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_helper.c
+@@ -16,6 +16,7 @@
+ #include <drm/drm_print.h>
+ #include <drm/drm_property.h>
  
-+#include <linux/delay.h>
- #include <linux/export.h>
- #include <linux/i2c.h>
-+#include <linux/minmax.h>
- #include <linux/slab.h>
--#include <linux/delay.h>
++#define DRM_HDMI_SCDC_SOURCE_VERSION	1
+ #define DRM_HDMI_SCDC_POLL_DELAY_MS	1000
  
- #include <drm/display/drm_scdc_helper.h>
- #include <drm/drm_connector.h>
-@@ -270,3 +271,46 @@ bool drm_scdc_set_high_tmds_clock_ratio(struct drm_connector *connector,
- 	return true;
- }
- EXPORT_SYMBOL(drm_scdc_set_high_tmds_clock_ratio);
-+
-+/**
-+ * drm_scdc_set_source_version - set SCDC source version on the sink
-+ * @connector: connector
-+ * @ver: source version to advertise (per spec, 1)
-+ *
-+ * Reads the sink version for diagnostics and as a guard, then writes
-+ * the source version unless the sink reports version 0.
-+ *
-+ * Returns:
-+ * 0 on success or when skipped; a negative error code when either
-+ * the read or the write failed.
-+ */
-+int drm_scdc_set_source_version(struct drm_connector *connector, u8 ver)
-+{
-+	u8 sink_ver;
-+	int ret;
-+
-+	ret = drm_scdc_readb(connector->ddc, SCDC_SINK_VERSION, &sink_ver);
-+	if (ret) {
-+		drm_scdc_dbg(connector, "Failed to read SCDC_SINK_VERSION: %d\n", ret);
-+		return ret;
-+	}
-+
-+	drm_scdc_dbg(connector, "Sink reported SCDC ver. %u\n", sink_ver);
-+
+ static inline bool is_eotf_supported(u8 output_eotf, u8 sink_eotf)
+@@ -531,6 +532,12 @@ int drm_connector_hdmi_enable_scrambling(struct drm_connector *connector,
+ 		return -EINVAL;
+ 	}
+ 
 +	/*
-+	 * Only advertise our source version to sinks that report a
-+	 * non-zero sink version.  A sink reporting version 0 is either
-+	 * not SCDC-version-aware or non-conformant; writing the source
-+	 * version gains nothing and may upset broken hardware.
++	 * Advertise our SCDC source version. This is purely informational and
++	 * does not gate scrambling, so failures are non-fatal.
 +	 */
-+	if (sink_ver) {
-+		ret = drm_scdc_writeb(connector->ddc, SCDC_SOURCE_VERSION,
-+				      min_t(u8, sink_ver, ver));
-+		if (ret)
-+			drm_scdc_dbg(connector,
-+				     "Failed to write SCDC_SOURCE_VERSION: %d\n", ret);
-+	}
++	drm_scdc_set_source_version(connector, DRM_HDMI_SCDC_SOURCE_VERSION);
 +
-+	return ret;
-+}
-+EXPORT_SYMBOL(drm_scdc_set_source_version);
-diff --git a/include/drm/display/drm_scdc_helper.h b/include/drm/display/drm_scdc_helper.h
-index 34600476a1b9..90b0828364c2 100644
---- a/include/drm/display/drm_scdc_helper.h
-+++ b/include/drm/display/drm_scdc_helper.h
-@@ -77,4 +77,6 @@ bool drm_scdc_get_scrambling_status(struct drm_connector *connector);
- bool drm_scdc_set_scrambling(struct drm_connector *connector, bool enable);
- bool drm_scdc_set_high_tmds_clock_ratio(struct drm_connector *connector, bool set);
+ 	drm_dbg_kms(dev, "Enabling scrambling\n");
  
-+int drm_scdc_set_source_version(struct drm_connector *connector, u8 ver);
-+
- #endif
+ 	hdmi->scdc_cb = drm_scdc_monitor_scrambler;
 
 -- 
 2.54.0
