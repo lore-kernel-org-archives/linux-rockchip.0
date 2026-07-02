@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDE82C44512
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38891C44501
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W9i6WjcyufMqD47abx5MsACZJjlDQNiBQ9ApF3eWkus=; b=d+Yfr3GVgloMfW
-	3FDmefeHKtD7RSRdUP4qKvJ6OGl8YRLs446G2j+BYKaNzJ/d5e/Gcwa0ZCz7lSdQ+7ycFGm4GKDhp
-	IEWxFJhYVpQtRGO4EImnvQ8pxAo5hHSVGtr5FhW89sBeTuso6NPYjgUBVJ9MVZCR8/yS0HPpNHhys
-	heAOomZRPuFRduRYrsBEOMN51gjfYZ7L98rw+CU6HrdnuIdIk9De1kxL3wBNRQ3Q7MmyiZnNgGeYQ
-	Azt5iJVVtxiFApqhqmU/zis86Uqwzw6Vdu7wqkKJnO4xF0uQHiRXJMbnSoPeR7TvuaKOUsw+32G9u
-	rao7+Vb0jvrplq3rUkTQ==;
+	List-Owner; bh=n71iO43yJxEsFZC8JXKeXEYADBUkpooG13O0TZ/69G4=; b=K380u684qPmD73
+	y9mar+BMKoPvHPnGXHtZQ2zebj+jEkeMaxjaPBjNsZFrVqYzaYTp4z78kNLDYyZSNvZ7ZouJso4+H
+	CF4bxwOM7DbBpPLA4WcI9HeLYzZqtnWdhLIfJ1ZwxrsIhbbVbQc5hjATag85nD2s31NnpWh4Gs4da
+	lrXd+w4HBBzhmDa9f0XmyK/MYFvDHMu6wnPJpCnfJNYI7ycr615zefxBWEj0OyY2cBb8qbH8J5ypR
+	hla7o6E34JzdEFjtaMP+BOeyY1hqfqz/GJ85JxZBojDe0l5b4wyfJN/C94rWuJS8P1VUdJiNM9/jL
+	HSAUm2P43nVgMtBrdcwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkVb-00000001bA2-1C2N;
-	Thu, 09 Jul 2026 08:53:27 +0000
-Received: from out-182.mta1.migadu.com ([2001:41d0:203:375::b6])
+	id 1whkVY-00000001azX-1NnJ;
+	Thu, 09 Jul 2026 08:53:24 +0000
+Received: from out-180.mta1.migadu.com ([2001:41d0:203:375::b4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfGi0-00000004SEG-0AII
+	id 1wfFk7-00000004Ky5-4BgJ
 	for linux-rockchip@lists.infradead.org;
-	Thu, 02 Jul 2026 12:40:01 +0000
+	Thu, 02 Jul 2026 11:38:09 +0000
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1782995985;
+	t=1782992273;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=MSqvG6QTDeOE5qt8LI9tLb3iySB/2eramUM4HlZdPG8=;
-	b=F10EZD2MKuMsgIZGg+Kv4CpsFBAqfutqUSZV+CnlSj4mTRO6SM+hx7IFnwTXi02n4W5ksq
-	B3eV7EruPZaVg8GiZqN77RrtZjvlyRAPzkka+Z5kYwT5shcZ0occtt6vxWz8dsjkDZRJwI
-	jZvjN/4FCRiAB3/YW0BqvRoNYnrlgRU=
+	bh=s4zTiOPxPEEvh+Z2LMv+6gqe9ZZvh+3yTK3Yc5UnT/U=;
+	b=AkD1PO3EYh/hmuzqNyG5+F4iFU+xRbougp+bY+xotWctIjwUQvMKpAwXsjPb5kG+NxyY12
+	mV0mEGNoe2Czu7JdCtguHySTk1KxuHzjRfZnXIBhIe71SSOqRiI6wOFZz62JhxqVX83KFA
+	KhWu2A9hV9btjfbdFeq0dyXUttdl5PQ=
 From: Lance Yang <lance.yang@linux.dev>
 To: ljs@kernel.org
 Cc: akpm@linux-foundation.org,
@@ -122,16 +122,16 @@ Cc: akpm@linux-foundation.org,
 	linux-fsdevel@vger.kernel.org,
 	linux-mm@kvack.org,
 	linux-sound@vger.kernel.org
-Subject: Re: [PATCH 08/13] mm: introduce vma_get_page_prot() and use it
-Date: Thu,  2 Jul 2026 20:38:45 +0800
-Message-Id: <20260702123845.95316-1-lance.yang@linux.dev>
-In-Reply-To: <3bb8bdc4788230c33102166d56cbc5abfad9d4cb.1782760670.git.ljs@kernel.org>
-References: <3bb8bdc4788230c33102166d56cbc5abfad9d4cb.1782760670.git.ljs@kernel.org>
+Subject: Re: [PATCH 03/13] mm: convert __get_unmapped_area() to use vma_flags_t
+Date: Thu,  2 Jul 2026 19:37:22 +0800
+Message-Id: <20260702113722.97837-1-lance.yang@linux.dev>
+In-Reply-To: <b1ad7c4443f5cba622e4c48c5a9ef15427001a93.1782760670.git.ljs@kernel.org>
+References: <b1ad7c4443f5cba622e4c48c5a9ef15427001a93.1782760670.git.ljs@kernel.org>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_054000_218561_1CE65462 
-X-CRM114-Status: UNSURE (   5.35  )
+X-CRM114-CacheID: sfid-20260702_043808_176682_51D793E1 
+X-CRM114-Status: UNSURE (   4.55  )
 X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -151,46 +151,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, Jun 29, 2026 at 08:25:31PM +0100, Lorenzo Stoakes wrote:
->There's a large number of vm_get_page_prot(vma->vm_flags) invocations. Make
->life easier by introducing vma_get_page_prot() parameterised by the VMA.
+On Mon, Jun 29, 2026 at 08:25:26PM +0100, Lorenzo Stoakes wrote:
+>Update __get_unmapped_area() to be parameterised by vma_flags_t rather than
+>vm_flags_t as part of the effort to move VMA flags from a system word to a
+>bitmap.
 >
->This also makes converting vm_get_page_prot() to vma_flags_t easier.
->
->Also update the userland VMA tests to reflect the change.
+>We cascade the changes up to arch_get_unmapped_area_topdown() and
+>arch_get_unmapped_area(), where, for now, we use vma_flags_to_legacy() in
+>order to propagate the VMA flags.
 >
 >No functional change intended.
 >
 >Signed-off-by: Lorenzo Stoakes <ljs@kernel.org>
 >---
-> drivers/gpu/drm/drm_gem.c                   |  2 +-
-> drivers/gpu/drm/drm_gem_dma_helper.c        |  2 +-
-> drivers/gpu/drm/drm_gem_shmem_helper.c      |  2 +-
-> drivers/gpu/drm/etnaviv/etnaviv_gem.c       |  2 +-
-> drivers/gpu/drm/exynos/exynos_drm_gem.c     |  6 +++---
-> drivers/gpu/drm/i915/gem/i915_gem_mman.c    | 12 ++++++------
-> drivers/gpu/drm/msm/msm_gem.c               |  2 +-
-> drivers/gpu/drm/nouveau/nouveau_gem.c       |  2 +-
-> drivers/gpu/drm/omapdrm/omap_fbdev.c        |  2 +-
-> drivers/gpu/drm/omapdrm/omap_gem.c          |  6 +++---
-> drivers/gpu/drm/rockchip/rockchip_drm_gem.c |  2 +-
-> drivers/gpu/drm/tegra/gem.c                 |  2 +-
-> drivers/gpu/drm/virtio/virtgpu_vram.c       |  2 +-
-> drivers/gpu/drm/vmwgfx/vmwgfx_page_dirty.c  |  2 +-
-> drivers/gpu/drm/xe/xe_device.c              |  2 +-
-> drivers/gpu/drm/xe/xe_mmio_gem.c            |  2 +-
-> drivers/gpu/drm/xen/xen_drm_front_gem.c     |  2 +-
-> drivers/video/fbdev/core/fb_io_fops.c       |  2 +-
 
-One missed?
+Nothing suspicious that I could spot :) Feel free to add:
 
-drivers/gpu/drm/panthor/panthor_gem.c still has:
-
-	vma->vm_page_prot = vm_get_page_prot(vma->vm_flags);
-
-Can use vma_get_page_prot(vma) too.
-
-[...]
+Reviewed-by: Lance Yang <lance.yang@linux.dev>
 
 _______________________________________________
 Linux-rockchip mailing list
