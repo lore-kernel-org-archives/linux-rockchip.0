@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0C44C43602
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 08:15:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 561FBC43602
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 08:49:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=19zA2gVM5q0I6jssP2jU8B2fdRO72uFEkznHLUkSnZU=; b=jiVK+i1ZBt228x30vFnPRuD1Xr
-	hcKy7G2rTjUAdv5ps5lzCs4Njarj4+Itth7bCb7zWgquDSzW5wrJzDdVAD82Vv5LYF8snMvGarQTi
-	23l70nq4OYQfRLGYHvJmkX4NhILCnF0Kt8EFhCEfmHxV75Oey+AplnYAnqFYV8w/+ITuubhr4sW4H
-	CF1XnFJyeB5Mqvso6d+y0nw9qUPdL7Y8IXC+ULbdyELsQ74Ko+GVAF19WDEEO/5RBlCOGjKw3vera
-	abdkzTzjj7jf4hTLfrKUGtMy4ySOCMc3ric0LLFLYUryT8xB6/BsZfaa6g+sLluBmtpraBc3sjOJQ
-	Q1eOZYyQ==;
+	bh=VPEpL3rBsTH5hZ1g/GDwlBMMyMgWf6Pl21xeYZSB3Ic=; b=bXN4joncG0mF6kmYcgAG8nR79Y
+	GhVBMvA3suKdLpyecmygsXxpDgcHPhdtWQxKuqDUl5TP6yfjLtK9yaSnc2iv1HvJjj4L4RgmcQQIk
+	ZnEJVYGD6Ycw9sg0MbDHEdlmf7XHN6NCmZLlhYvaNOLAfDwVx63J8tnX0E+sWSsX2mTwLkGPe0JW+
+	d4PF1MGUBp0/SfK4fz+mhG2I+302WtFHvbJq1bnKapzCf6eScxxeLJ8zHXOHAKGK7klmk7E76cTYZ
+	B8EdNVWf1t/Yv+S0HVuoZUxGtKn8VHgNKwr00Ff9Ymzmsvi5qb/tsuenZZ1E8KKuV3gsFBwS+DppQ
+	LiVG/NUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfCaE-00000003pBT-2OZS;
-	Thu, 02 Jul 2026 08:15:42 +0000
+	id 1wfD6f-00000003v0u-1ZB6;
+	Thu, 02 Jul 2026 08:49:13 +0000
 Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfCaA-00000003pAh-2Y60;
-	Thu, 02 Jul 2026 08:15:40 +0000
+	id 1wfD6b-00000003v0I-38F6;
+	Thu, 02 Jul 2026 08:49:11 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
 	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 6AF33200F84;
-	Thu, 02 Jul 2026 10:15:36 +0200 (CEST)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 9E5A7201223;
+	Thu, 02 Jul 2026 10:49:07 +0200 (CEST)
 Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
 	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <mkl@pengutronix.de>)
-	id 1wfCa8-005iP3-16;
-	Thu, 02 Jul 2026 10:15:36 +0200
+	id 1wfD6Z-005iXJ-1Y;
+	Thu, 02 Jul 2026 10:49:07 +0200
 Received: from pengutronix.de (p4ffb2dc6.dip0.t-ipconnect.de [79.251.45.198])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(Client did not present a certificate)
 	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id 0C16455E028;
-	Thu, 02 Jul 2026 08:15:35 +0000 (UTC)
-Date: Thu, 2 Jul 2026 10:15:35 +0200
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 1628755E0B7;
+	Thu, 02 Jul 2026 08:49:07 +0000 (UTC)
+Date: Thu, 2 Jul 2026 10:49:06 +0200
 From: Marc Kleine-Budde <mkl@pengutronix.de>
 To: Cunhao Lu <1579567540@qq.com>
-Cc: heiko <heiko@sntech.de>, linux-can <linux-can@vger.kernel.org>, 
-	mailhol <mailhol@kernel.org>, kernel <kernel@pengutronix.de>, robh <robh@kernel.org>, 
-	krzk+dt <krzk+dt@kernel.org>, conor+dt <conor+dt@kernel.org>, 
+Cc: krzk <krzk@kernel.org>, heiko <heiko@sntech.de>, 
+	linux-can <linux-can@vger.kernel.org>, mailhol <mailhol@kernel.org>, kernel <kernel@pengutronix.de>, 
+	robh <robh@kernel.org>, krzk+dt <krzk+dt@kernel.org>, conor+dt <conor+dt@kernel.org>, 
 	devicetree <devicetree@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	linux-rockchip <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 2/3] can: rockchip: add RK3588 CAN-FD support
-Message-ID: <20260702-deft-grebe-from-camelot-1bf360-mkl@pengutronix.de>
+	linux-rockchip <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, 
+	shawn.lin@rock-chips.com
+Subject: Re: [PATCH 1/3] dt-bindings: can: rockchip: add rk3588v2 CAN-FD
+ compatible
+Message-ID: <20260702-urchin-of-abstract-fruition-25a192-mkl@pengutronix.de>
 X-AI: stop_reason: "refusal"
-References: <tencent_534F9A1699EA04B091BF8003C479BFA32607@qq.com>
+References: <tencent_97F21396469202221027FD429A6E69DA6409@qq.com>
 MIME-Version: 1.0
-In-Reply-To: <tencent_534F9A1699EA04B091BF8003C479BFA32607@qq.com>
+In-Reply-To: <tencent_97F21396469202221027FD429A6E69DA6409@qq.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_011538_798646_2A66F725 
-X-CRM114-Status: GOOD (  17.95  )
+X-CRM114-CacheID: sfid-20260702_014909_946183_2AD447D3 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,48 +73,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0076686926083085195=="
+Content-Type: multipart/mixed; boundary="===============0448646585996726822=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0076686926083085195==
+--===============0448646585996726822==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vcp7brl22t3ha7yd"
+	protocol="application/pgp-signature"; boundary="5reivf23ta633xqa"
 Content-Disposition: inline
 
 
---vcp7brl22t3ha7yd
+--5reivf23ta633xqa
 Content-Type: text/plain; protected-headers=v1; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 2/3] can: rockchip: add RK3588 CAN-FD support
+Subject: Re: [PATCH 1/3] dt-bindings: can: rockchip: add rk3588v2 CAN-FD
+ compatible
 MIME-Version: 1.0
 
-On 02.07.2026 10:53:53, Cunhao Lu wrote:
-> That works for me. I will prepare a v2 with:
+On 02.07.2026 16:17:25, Cunhao Lu wrote:
+> > And why is this different from rk3588?
 >
-> - the binding schema changed to use enum as suggested by Krzysztof
-> - RKCANFD_QUIRK_RK3568_ERRATUM_6 enabled for RK3588v2
-> - your Haikou patch added to the series
+> The reason I used rk3588v2 is that this is how the controller identifies
+> itself at runtime:
 
-Is the SoC you're using actually a 'v2' silicon revision? At least on
-the rk3568 the downstream kernel has code to read the revision.
+There are 2 silicon revision (v2 and v3) of the rk3568 available on the
+market. The v2 has several errata in the CAN-FD core, the v3 has some of
+them fixed...
 
-> > But if it actually works, then personally I'm more than fine with
-> > enabling CAN-FD :-D .
-> >
-> > I guess Marc might have more insight where the FD issue triggered on
-> > the RK3568.
+>   rockchip_canfd fea60000.can can0: Rockchip-CANFD rk3588v2 rev2.2 (errat=
+a 0x0000) found
+>   rockchip_canfd fea70000.can can1: Rockchip-CANFD rk3588v2 rev2.2 (errat=
+a 0x0000) found
+
+However, the version register _in_ the CAN-FD was not changed. :/
+This is why we have a rockchip,rk3568v2-canfd and a
+rockchip,rk3568v3-canfd compatible.
+
+> I also checked Rockchip's vendor kernel 6.1 sources. The RK3588 DTS uses
+> the binding name "rockchip,can-2.0" for these controllers, while the
+> upstream driver has SoC-specific compatibles for the Rockchip CAN-FD IP.
+> That is why I chose the SoC/IP variant name rockchip,rk3588v2-canfd.
 >
-> I will also double-check that CAN-FD still works with the v2 changes and
-> wait for Marc's feedback on the CAN-FD issue before deciding whether
-> RKCANFD_QUIRK_CANFD_BROKEN should stay disabled for RK3588v2.
+> If the preferred binding name is rockchip,rk3588-canfd instead, I can
+> change the compatible in v2.
 
-Compile the latest https://github.com/linux-can/can-utils/ and test:
-
-$ cangen can0 -I 2 -Li -Di -p 10 -f -g 1 -c32 -b
-$ cansequence -rv can1 -f
+Yes, please use rockchip,rk3588-canfd, unless we get information from
+rockchips about CAN-FD errata and SoC silicon revisions.
 
 regards,
 Marc
@@ -123,21 +131,21 @@ Embedded Linux                   | https://www.pengutronix.de |
 Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
 Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
 
---vcp7brl22t3ha7yd
+--5reivf23ta633xqa
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCakYeJQAKCRDMOmT6rpmt
-0ijEAQCCAxydwZ3i3hutlhk/dlVU3grIENXTT9QhVTiaGUAU4AEAg2reTTImi5Jb
-Wd8vJRDW/vzbjqvE0edXoMky/cI/Ggo=
-=ZccD
+iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCakYl/wAKCRDMOmT6rpmt
+0rfWAP9/cy8OIXtO2OsLEOg1oWmpztwHSI3qImvegZ3uAfi0ewEAuNTEKGjvR8Zk
+lIRDOsvwwOhBdVLvPlX2tiOSHSCDaAU=
+=sMDb
 -----END PGP SIGNATURE-----
 
---vcp7brl22t3ha7yd--
+--5reivf23ta633xqa--
 
 
---===============0076686926083085195==
+--===============0448646585996726822==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -148,5 +156,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0076686926083085195==--
+--===============0448646585996726822==--
 
