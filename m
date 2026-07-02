@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2F87C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FE89C44500
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 14:47:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YoUfffZYvcwB43XBszVC+fbjESooXTPESyoYtfvoJXY=; b=0f3dHV938D79pN
-	u/cSSmc0zqpcgTC+b6r/a56QsqviOjsp1XyIl6BSAwxX/tBVy/3YMTbtRHRA8KBl68JSG9A0lNhPw
-	KxG9owAy/nmB+XLqHcH4duIzeeRKWDPoUPTaSGnl21R4lQpbcJj4XJ/MzPkC/YVKJBEkJppy7AuUu
-	O8ux7i6s79+P56I070AEwSQ6ViBFJGyvhTkn69rpRf9ZGRbTjF0pZDrOWOuMSGS93MwRmsvI19bGA
-	5Vfoly4SrSQQgn7kOKciPgkjoIDgG5BLKLr+Jeqk96fFuGxL006+rHXY67AxIp2adK2iigp0LRCCD
-	Ft2ZngE9J6g7UhBNl+qQ==;
+	List-Owner; bh=khZccSWs1oL3V3udFH+mxpIrdhLy5VkVtm3sWJkiE/M=; b=AHJARfaNmalQFE
+	TpmtbYiq0r3Ikngq6Ut4Nswfczd1OZ/6E8REtm5jRyeg5+vV9Wvjp/vj07grUzreIiY1LIoaVSk6N
+	0nSGIy3dbN2aQ5Jh/o9n4c0MLWzT/yYBnes8TGyUU/LyrVFT6JHb1OcxgvTMnn60JlYyyG3YRiJCd
+	oYhr23ef24lHv5C+pu3ciuhoZVmBw/39FR+lr12fK7OCcAqatRYvHfIfYysR5cCKMIWPCn3KzY2lQ
+	qcsaDOoEgPpkVVfQFzNEnZJ1zkTBw0N151xmUFwBxTIw7i9AoWPfeml334uMrpaQoWSRxic6oNlQ0
+	wSbcE6gLsMqzKDvkTb4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIhI-00000004g6l-2M3B;
+	id 1wfIhI-00000004g86-490c;
 	Thu, 02 Jul 2026 14:47:24 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfIgj-00000004ele-1Vu6;
-	Thu, 02 Jul 2026 14:46:52 +0000
+	id 1wfIgl-00000004es2-22OO;
+	Thu, 02 Jul 2026 14:46:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783003607;
-	bh=CDurYRUaH9AEjX42H0gscQnkKL12uCNpayAmCgkFvbE=;
+	s=mail; t=1783003609;
+	bh=OsQwPHB1y8GzS7DXXJGCMzNkZ1Qoag1JACZx1Z36Qgk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=BBR9xXPoDSA7ILvU7uy/Op3PVAu28lQ9+U/r0xZZdh4jkTuXbiwofYAruPFaboK1N
-	 sFYJHb5lK1I6cKc7751yBL4wSgpamWLN/wrX04d8U5KIZCYg3McOH62xTNlQbwYl/e
-	 L34cFjMIOzOZsgxtPUHhSF5TLGJYWYHMdDpVn207nJ86iEeNtoB0HqFNCpRAfiXdwO
-	 EdoySTeLQ3HqEZr0hZrE+b6gJKSEyMYmPmNho/krHLI2XAmGtCayK4GFtLGV7yoPRt
-	 W8RKq4UOWUqa2efpewyBtufvyCpyDSnSd/QglMCDlWtH+TydOgWwo6fWvFwnRNr9CR
-	 9GBaz8Xcp/Byg==
+	b=HyGNoXeARDVg5QrhPUq8zTN6u7UiRuYbq4mLmuPqlptveOJOCJLTbVehihNAEP2cS
+	 +t77wDWCv1gPVFE0YeQBBWUrSP6HlaUobbo4veOz6NBeDy5qChdmB8WoHOJogIFMZ2
+	 VJDMRO9nd16jHimWCIBqdVP2RNG52twbo4SILxVpslg9OCHF/ODV6RbotEPZuodD1E
+	 IA/wBUL7DlhcHEyd3EcqdhOuT+uLFKhUi3LN28qmVlxX5ya3wAKNtXeqHSWvr3jYkL
+	 ISmIeb7/ed7tyKexs9Gs0hjanR7DmlXeaYemcNk9Xs6j8piD/0djPw1no1d2LuwMEG
+	 EY2SF4FEgDL6Q==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B5CD17E3620;
-	Thu,  2 Jul 2026 16:46:47 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7AF7E17E362D;
+	Thu,  2 Jul 2026 16:46:49 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 02 Jul 2026 17:46:34 +0300
-Subject: [PATCH v8 21/39] drm/rockchip: dw_hdmi_qp: Add missing newlines in
- dev_err_probe() messages
+Date: Thu, 02 Jul 2026 17:46:37 +0300
+Subject: [PATCH v8 24/39] drm/rockchip: dw_hdmi_qp: Defer HPD IRQ enable
+ until after connector setup
 MIME-Version: 1.0
-Message-Id: <20260702-dw-hdmi-qp-scramb-v8-21-d79890d00b6a@collabora.com>
+Message-Id: <20260702-dw-hdmi-qp-scramb-v8-24-d79890d00b6a@collabora.com>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -66,11 +66,12 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
+ linux-rockchip@lists.infradead.org, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_074649_808886_A423EFE0 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20260702_074651_757710_748992A8 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,38 +88,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the missing trailing newlines to a couple of dev_err_probe() calls
-in dw_hdmi_qp_rockchip_bind().
+Request the HPD IRQ early in bind() with IRQF_NO_AUTOEN, keeping it
+disabled until all DRM resources are fully initialized, at which point
+enable_irq() arms it.  This prevents premature interrupt delivery
+without forcing devm_request_threaded_irq() to the very end of the
+initialization sequence, which would complicate error unwinding.
 
-Fixes: b6736a4ea3fa ("drm/rockchip: dw_hdmi_qp: Improve error handling with dev_err_probe()")
-Fixes: e1f7b7cbd74c ("drm/rockchip: dw_hdmi_qp: Switch to drmm_encoder_init()")
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Note that IRQF_NO_AUTOEN is incompatible with IRQF_SHARED; the latter is
+dropped as this IRQ has no other users.
+
+Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 815f9ea7bcbe..7bd0f6dcbe5d 100644
+index 33036f194e34..3de4b3e6ea85 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -682,14 +682,14 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	drm_encoder_helper_add(encoder, &dw_hdmi_qp_rockchip_encoder_helper_funcs);
- 	ret = drmm_encoder_init(drm, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
+@@ -672,7 +672,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 	ret = devm_request_threaded_irq(dev, irq,
+ 					cfg->ctrl_ops->hardirq_callback,
+ 					cfg->ctrl_ops->irq_callback,
+-					IRQF_SHARED, "dw-hdmi-qp-hpd",
++					IRQF_NO_AUTOEN, "dw-hdmi-qp-hpd",
+ 					hdmi);
  	if (ret)
--		return dev_err_probe(hdmi->dev, ret, "Failed to init encoder");
-+		return dev_err_probe(hdmi->dev, ret, "Failed to init encoder\n");
+ 		return ret;
+@@ -694,6 +694,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 		return dev_err_probe(dev, PTR_ERR(connector),
+ 				     "Failed to init bridge connector\n");
  
- 	platform_set_drvdata(pdev, hdmi);
++	enable_irq(irq);
++
+ 	return 0;
+ }
  
- 	hdmi->hdmi = dw_hdmi_qp_bind(pdev, encoder, &plat_data);
- 	if (IS_ERR(hdmi->hdmi))
- 		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->hdmi),
--				     "Failed to bind dw-hdmi-qp");
-+				     "Failed to bind dw-hdmi-qp\n");
- 
- 	connector = drm_bridge_connector_init(drm, encoder);
- 	if (IS_ERR(connector))
 
 -- 
 2.54.0
