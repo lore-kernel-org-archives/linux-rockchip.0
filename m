@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BE0CC4450A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jul 2026 22:08:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0637C43602
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 02:37:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vnvbaQLu7vZf/nm81PoIZLxRDHBZTF0t7Nx0fpOn9Vc=; b=QdmaySXjbwgE3o
-	3fGZm9vHQg/nN247iFRzeWmDH98PtHGCJSXUl0yIWsD+zOP5ctxnEQKE5dH52QYkoZ20Rwn1Re2WS
-	VBRohDstc2zNyx+nBdSWayv6W0MnacxltJF3IoKN+78H0VnM1ajTG3CcL4FK6dSt1Vw60XjUV2egc
-	ckeEfZjpvDgtxC07VEBqA4dJ82OTnQhazL8YjWzfM27FFG/vKHYBR8RhjAV3SqBPXCTFtOIjAaeRG
-	aARX0Y8eVt2eQdxxF6z8g/+X9gBQIJ8BBlVU+GKB+tyBNvL+eYuGtuSUJ6YN35Qz2wdiVj/ygEiBf
-	vl3pPc8VI/I5txOG9N7w==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=JR0hFFqE7niYi1681ZPsfWRJNz0IP9d+dg5Sx9E3hNc=; b=zaUUTWSzydI+JpKElv9aJ3GQuY
+	GiqxHWZq8PD5UX4+Su0Eev7Q7AGY+Tc7FPn3jvnoj0dKBE3dXLiF+fdYxm5+N9jZINCeq39qm2iii
+	MLSIVywqJyG4DREUG/JEHzKOIrK/GTFbN/gt3g47y/090aDZp9L6zru2qUnVxRhJgln9SpvLFhVtC
+	hh/K4yaa5HqOmQXqsCHzhlwt8aH/PnF+Ch2Zevveh5HRtTzmE0FIcM130Be5gHpLfBSOcUVCrR2yL
+	BvcYCZNagsvR/Wh1Qw78VY+xRIwULKxK2M0LXes8i7pTfWbH4Um5blBLPhBkaPYnMjPFN/ExRYyMZ
+	zypmFxyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfPaF-00000005cbV-39OO;
-	Thu, 02 Jul 2026 22:08:35 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wfTmO-00000005tYN-31R8;
+	Fri, 03 Jul 2026 02:37:24 +0000
+Received: from xmbghk7.mail.qq.com ([43.163.128.52])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfPa5-00000005cIA-0bjW;
-	Thu, 02 Jul 2026 22:08:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 81D3543F5C;
-	Thu,  2 Jul 2026 22:08:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 5B8B3C4AF10;
-	Thu,  2 Jul 2026 22:08:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1783030104;
-	bh=fCy4Fkxj2qxqtqGzteVHLlq0TEFbaiOWH6aIx20fMW8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=cQZYDk/I238PYzxVwypybvrMnkwKmUmtEyNgjnQb02EKApLDjG0kiL7K8Xy/572jA
-	 uiOCBnRyxtrjSgxbZRjuDpgXK2G5Z/M2ctBraofYsz4nTCnH8j/dHZvrBKWBX5+gNm
-	 5enTnsW1Ehqj66QhO8mUeh9ClDhk0HT7YEfzXcfhKhRKwuCe3QL0b8veOs9bHOeE/i
-	 GhwwTbK2O1PACYuSF/PCgJDGK/dqvMNCytHIxJYxSQxTysnVCyeF/pTeKlV4Krq7tz
-	 jp4MrbyMveAeh538OfOSKkZ3HWOaFoDYPahkUxMMVuJErBOIHxpqZJo8/LqIi8TRq9
-	 XbWZU3ElBmOOQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4BA79C43458;
-	Thu,  2 Jul 2026 22:08:24 +0000 (UTC)
-From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Fri, 03 Jul 2026 00:07:27 +0200
-Subject: [PATCH 12/12] arm64: dts: rockchip: add support for NanoPi M6
- board
+	id 1wfTmL-00000005tWp-2ciN
+	for linux-rockchip@lists.infradead.org;
+	Fri, 03 Jul 2026 02:37:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1783046239; bh=L3LDk1ob8lSeDF4p3l0ihZVgutygUEgJnbVoCOXhudc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=BexqFu+sS1amCYWbmHD/0cXna/KZx0prQ/CFKG3FFOwHydjK06V+hQeE2Ke3HfhLH
+	 R4dOX6zCtFrFwqMpxHvXimLkCBEA/sUAtIEK4OXhl0od3HAwMCJKRsuh2wPdOutC/0
+	 CZqcKrqDC8tnH2aUaa735Ch1LYxuyBeiZHUBX+1I=
+Received: from ubuntu2204.localdomain ([218.4.149.66])
+	by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
+	id 8F90EEF9; Fri, 03 Jul 2026 10:35:57 +0800
+X-QQ-mid: xmsmtpt1783046165tfo4bxydx
+Message-ID: <tencent_3FF37E324D5F34D332BF096C2341017F8808@qq.com>
+X-QQ-XMAILINFO: N/WmRbclY25GcbFfHdsLffU7Siw2ZiY/P2ORHWlQiVIR1pAkU8CRL1iOj6uwkh
+	 w7256vShoYbcC/jg8Srd4eppUn+BEeKw49YWU5j0aYBGCBqYYNsmIoayh8MK4RRNu61PT5eHzQPf
+	 5aADoAhNlP8Cwf85aDvGhj209TL/mVmn6LOK4kWDROncpYUXojFwQRBcUWgvgmGngyQkVzj3oiFK
+	 EIylRzFQGQRbmn3IJajE0cL+mmWq4Zyjcg3a9xPjwtTHrBg81Uy3BKYKpLRgJqJZoku0H5q0o6IO
+	 fxhe50xZJ3kzga0+V4i0JfeEytZK4q/0U5DjTVkMmvYBhD+43wzNJzCWjghRGKOz+muMZfZ6K5JT
+	 +50Tfkob7N5MDQ+x1DhvxS4Y2+r8XtUsyUMC9jOyD2t3WJgrVkrHtS6eRFYGHm5vFrgKGkg42f/m
+	 qYpVK7rcZSh74HvJa1Cp0hlm3SSnghe2U0saeIGQAsLUjnovzT7beHkKqgagi5/ESKPFm7ZU5O5h
+	 xHGwEgF6coPM2H1nla03ilBHMMlMO9jrPU7kfUHXNul3P5X+dA0tiWX2YIpq3sTfNkWWiZcqb5Ko
+	 6hKzWWkYaXpL7lP2fR0CLzsq+lYg1QfSDth4uhuuWfNbSGnbrG5ZDqiQG94013Wbh6NNf6hPHiYg
+	 lucrSf+zfxOC0eJPgxHPE6yxOjOGGyi1oOLLH/QSCOPnuQJrF1XErNNUwFSNuKbZ6PQ85434zK0z
+	 7skNl2slV8BSlrX3cPQJgThLEVKMv4BkB6xo2016ug1iwTDQH8oepk2yC4ReEX3t5MwUbm56W70E
+	 TJjrA8eTdO22zy8dtffehF1oSHBkqVaEa7rpceaUkwbE3c62X2DL1m/EuPPkraZ289OEZeS8MtKo
+	 E5U/E9xbhAQrjHxAe4qS5mrXbL3OwSobTGtQ+xaIUQ3IACRwedBTv25cOvkj0Xay3IUvuKhg1UJW
+	 kLhVRA+pGRf4j9rPDUbm2Yl48ZvF5c/3zOUIcVb0oSSXtw13/d0ZE+9yuwhDhdRStoam9AT0eJNt
+	 UvBiKjdpbABAzIy3dRx9LpnXCAfOkZtvnwmFNrncFQaoab+W74VAE1m9X0ScOSABdrGBQVoNySPs
+	 Y2tDzBa0GeJFbKx2oxrKybZBbIpQK6VBF7AfxT
+X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
+From: Cunhao Lu <1579567540@qq.com>
+Date: Fri, 03 Jul 2026 10:35:43 +0800
+Subject: [PATCH v3 4/4] arm64: dts: rockchip: Enable CAN controller on
+ RK3588-Tiger-Haikou
 MIME-Version: 1.0
-Message-Id: <20260703-nanopi-m6-v1-12-8344a1559519@gmail.com>
-References: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
-In-Reply-To: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+X-OQ-MSGID: <20260703-master-v3-4-6d56de6fd2f3@qq.com>
+References: <20260703-master-v3-0-6d56de6fd2f3@qq.com>
+In-Reply-To: <20260703-master-v3-0-6d56de6fd2f3@qq.com>
+To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
+ Vincent Mailhol <mailhol@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Joachim Eastwood <joachim.eastwood@gmail.com>
+Cc: linux-can@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Cunhao Lu <1579567540@qq.com>, 
+ Heiko Stuebner <heiko.stuebner@cherry.de>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783030102; l=6027;
- i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=2mNPxmqfxuyRvqPxlE8+aLpY5uISihuqVZcpivsPJ9U=;
- b=SbRqbjNr+VW+ArL959dTIOs887PG74tl9K1aTfcS5Q9J4Byp54YcZHWjt334x5dzKtMJz4E7S
- H0JWVX//wdhBHIuXIb9eutU4tzwt/sEdXhB4J6MMugxiwZ6jKfbO8lE
-X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
- pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
-X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
- with auth_id=846
-X-Original-From: Joachim Eastwood <joachim.eastwood@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260702_193721_982438_7A8471B8 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,250 +88,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: joachim.eastwood@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Joachim Eastwood <joachim.eastwood@gmail.com>
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-The NanoPi M6 board shares most of the features of the R6 boards.
+CAN0 is piped through the Q7-connector to the CAN-Header on the Haikou
+base-board, so enable support for it there.
 
-Main differences:
-* M.2 M-key slot with PCIe (Also present on R6C)
-* M.2 E-key slot with PCIe and USB (from hub)
-* 1 additional USB 2.0 port from an on-board USB hub
-* RT5616 audio CODEC
+At least on RK3588-Tiger, the CAN clocks default to 99MHz, limiting
+usable CAN bitrates without skew. Errata documentation mentions
+300MHz as the default frequency on RK3568, so replicate this here
+to allow more bitrates.
 
-Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile              |   1 +
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dts | 200 +++++++++++++++++++++
- 2 files changed, 201 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 761d82b4f4f2..2867830eddf8 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -218,6 +218,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-evb1-v10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-gameforce-ace.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-indiedroid-nova.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-m6.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6c.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-odroid-m2.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dts
-new file mode 100644
-index 000000000000..64448bf55cf7
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dts
-@@ -0,0 +1,200 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include "rk3588s-nanopi.dtsi"
-+
-+/ {
-+	model = "FriendlyElec NanoPi M6";
-+	compatible = "friendlyarm,nanopi-m6", "rockchip,rk3588s";
-+
-+	sound {
-+		compatible = "simple-audio-card";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hp_det>;
-+
-+		simple-audio-card,name = "realtek,rt5616-codec";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,mclk-fs = <256>;
-+
-+		simple-audio-card,hp-det-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
-+
-+		simple-audio-card,widgets =
-+			"Headphone", "Headphones",
-+			"Microphone", "Microphone Jack";
-+		simple-audio-card,routing =
-+			"Headphones", "HPOL",
-+			"Headphones", "HPOR",
-+			"MIC1", "Microphone Jack",
-+			"Microphone Jack", "micbias1";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s0_8ch>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&rt5616>;
-+		};
-+	};
-+
-+	adc-keys-1 {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 1>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <1800000>;
-+		poll-interval = <100>;
-+
-+		button-maskrom {
-+			label = "Recovery";
-+			linux,code = <KEY_VENDOR>;
-+			press-threshold-microvolt = <1800>;
-+		};
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+
-+		sys_led: led-0 {
-+			label = "sys_led";
-+			gpios = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&sys_led_pin>;
-+		};
-+
-+		user_led: led-1 {
-+			label = "user_led";
-+			gpios = <&gpio1 RK_PA6 GPIO_ACTIVE_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&user_led_pin>;
-+		};
-+	};
-+
-+	vcc_3v3_pcie: regulator-vcc-3v3-pcie {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pcie2_2_pwren>;
-+		regulator-name = "vcc_3v3_pcie";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc5v0_usb_otg0: regulator-vcc5v0-usb-otg0 {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio3 RK_PD4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&typec5v_pwren>;
-+		regulator-name = "vcc5v0_usb_otg0";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_mpcie_3v3: regulator-vdd-mpcie-3v3 {
-+		compatible = "regulator-fixed";
-+		/* Controlled by EXT_EN on RK806 */
-+		regulator-name = "vdd_mpcie_3v3";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+};
-+
-+&i2c7 {
-+	clock-frequency = <200000>;
-+	status = "okay";
-+
-+	rt5616: codec@1b {
-+		compatible = "realtek,rt5616";
-+		reg = <0x1b>;
-+		clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		clock-names = "mclk";
-+		#sound-dai-cells = <0>;
-+		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
-+		assigned-clock-rates = <12288000>;
-+
-+		port {
-+			rt5616_p0_0: endpoint {
-+				remote-endpoint = <&i2s0_8ch_p0_0>;
-+			};
-+		};
-+	};
-+};
-+
-+&i2s0_8ch {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2s0_lrck
-+		     &i2s0_mclk
-+		     &i2s0_sclk
-+		     &i2s0_sdi0
-+		     &i2s0_sdo0>;
-+	status = "okay";
-+
-+	i2s0_8ch_p0: port {
-+		i2s0_8ch_p0_0: endpoint {
-+			dai-format = "i2s";
-+			mclk-fs = <256>;
-+			remote-endpoint = <&rt5616_p0_0>;
-+		};
-+	};
-+};
-+
-+&pcie2x1l1 { /* M.2 E-key 2230 */
-+	vpcie3v3-supply = <&vdd_mpcie_3v3>;
-+};
-+
-+&pcie2x1l2 { /* M.2 M-key 2280 */
-+	pinctrl-0 = <&pcie2_2_rst>, <&pcie20x1m0_clkreqn>, <&pcie20x1m0_waken>;
-+	vpcie3v3-supply = <&vcc_3v3_pcie>;
-+};
-+
-+&pinctrl {
-+	gpio-leds {
-+		sys_led_pin: sys-led-pin {
-+			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		user_led_pin: user-led-pin {
-+			rockchip,pins = <1 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	headphone {
-+		hp_det: hp-det {
-+			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pcie {
-+		pcie2_2_pwren: pcie2-2-pwren {
-+			rockchip,pins = <3 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		typec5v_pwren: typec5v-pwren {
-+			rockchip,pins = <3 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&u2phy3 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
+index 873fbeb8daa1..6273e695b039 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
+@@ -155,6 +155,12 @@ vddd_audio_1v6: regulator-vddd-audio-1v6 {
+ 	};
+ };
+ 
++&can0 {
++	assigned-clocks = <&cru CLK_CAN0>;
++	assigned-clock-rates = <300000000>;
 +	status = "okay";
 +};
 +
-+&u2phy3_host {
-+	phy-supply = <&vcc5v0_host_20>;
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
+ &combphy2_psu {
+ 	status = "okay";
+ };
 
 -- 
-2.55.0
-
+2.34.1
 
 
 _______________________________________________
