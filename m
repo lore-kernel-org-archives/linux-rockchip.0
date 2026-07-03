@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9389AC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 18:33:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04B48C43458
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 19:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A/7g46rnJtg8W2gZXCfZnWxRSgXOV7JTz7rGZiBTc4s=; b=BjRq2zU9Wl1jiY
-	jtgksF5ZGHvA+xM70X7g8k1n3VHLO0xzZmBaK1qcTAe3luFC9d2zJyCrxLY+n6ZnYkai8yjBAkvST
-	MsbqYTx56iFhbjilI+tJ13NtboktM3CZTd5hMGRMeJpg355HVNxZwlQAG9VteGJ/eGRD5K69SC/IJ
-	lrjv8xkKrFmKCdLxBpB0Klkv/+1UE6Nv5gWLW8O9499eP8/0rhTruKiISnzXYbW0SHzXK3Pq/IMd4
-	zelLQfh3QfCZwUbWmAGu7/9TtOwkqD5oGpKYgCULxxbkTV9rC0vrH9wRyZXLEprxpEBrJd35qggxb
-	Fan1OGyzT1ZgEjojKY7A==;
+	List-Owner; bh=l+JVIory/ruul+MCdl5Nki2GH0zr2YyxawpGL5OntU0=; b=bWPjyYUTtSZyWo
+	A08OG/9h/sb+3DLs6izi+q3EtE07/l9lcuJATg9KPpgYs9ZBsPwlvSc0/cm+run0toPuUg86xsDcV
+	CKtcofY3dWL6lTF9/CEniffTuRluSqYGVCr42c96SvSZLzqAwE3SFiOwSUIIkPNKrgXvoZE9Ts9Hd
+	FYscoV/9kIV9iDrqHhjFxAJQAh2ZxsWZDE/ZNxpF64ObjcNO3I+jLom6OysW2iyqvE6AswdOupLrj
+	Aw+tc2gFUrt3U+TkAEHYGNrl1xyQBnzmoR7Zt206o9sUsHoKXyJEXHufyyQ4vP/mzphaiOUr3KcGJ
+	Ut7q/bbJNHScbKNmwQBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfihW-00000007iGi-0sHO;
-	Fri, 03 Jul 2026 18:33:22 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wfjcJ-00000007mis-0Oxs;
+	Fri, 03 Jul 2026 19:32:03 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfihT-00000007iG3-1DvK;
-	Fri, 03 Jul 2026 18:33:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=00oEUKbXqblY98GY99IjBpABdrFGvC9SalkPe3rfYJY=; b=JaiJG4NCQrh7UOwml5H8y1y6s4
-	yqDBRMXUxAZMydcriv+Mcawda0XeZpT6vUQ/HEDJClr46CID+61qicGWPdiUYWGEnyxxUQ0HF3G6b
-	YEMR8BFpzIccfcE0rxI5FrCgOxkWN94baj2bnZBDDNoTg/GhjsuXaVTibH2FDr+lQNUbOOpDcEEhw
-	ZjkGbnIwd0UTi2sheyaxQxW7jcdRQDxIR1EXfOQ3JSJ0jNqG3kyShUW+1SU7zWeMvuCgtcePJ7AV8
-	/Rdk8/hBWTJM1jAujFciN/H/cOd9+6X/MnYFdfJ+Mh621yA+5X1cW0jQ57vAYy3tu9rc5Os2DFST4
-	jl1e6F7g==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v2] MAINTAINERS: Track dw-hdmi-qp under Rockchip DRM drivers
-Date: Fri,  3 Jul 2026 20:33:00 +0200
-Message-ID: <178310357191.42647.16730078751010845257.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260612-maintainers-rk-drm-upd-v2-1-3ff65fc41a93@collabora.com>
-References: <20260612-maintainers-rk-drm-upd-v2-1-3ff65fc41a93@collabora.com>
+	id 1wfjcG-00000007miP-3qd0;
+	Fri, 03 Jul 2026 19:32:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783107116;
+	bh=9mEfzfMpXzi/PI86I3udvtpmEeCij5/2kHbzCL6MdYk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=O2fS9XPpR8F6qkTMQK+ZCzOVuqMufBkuxy8eo9++0QRKRFXSR97w0iAB27ngTAHFu
+	 nAOQ28/7lkGXYXJiq2CNS2nhMV0hJa79en4WDy0OU7/fxOPJuyCNlZnu80YXD1KYCJ
+	 SIKAs8yncAcDAoC649khlJwCFU1iOngEALKZMUIqar2lmFCJdFVqwi49Fk1wwuULHJ
+	 KnjJcdriTjBLStX7oNe16JfpNHApF8neVxElgsPSJbOxAcwRDn8V8xcsGYerZTXAkK
+	 BoTsRAXLyNQVPTaOoJiDtnqg5fmgLZLH6MatuKYeudEKiQkcU+E9oPZjG1aZdlyyhE
+	 AAZvcYC0ha72Q==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ABB8B17E087B;
+	Fri,  3 Jul 2026 21:31:55 +0200 (CEST)
+Message-ID: <ad75cf26-9437-47d0-864d-d71263401615@collabora.com>
+Date: Fri, 3 Jul 2026 22:31:55 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 02/39] drm/connector: Add caps-based HDMI connector
+ init helper
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
+ <20260702-dw-hdmi-qp-scramb-v8-2-d79890d00b6a@collabora.com>
+ <i4tjtsf5rsckfcayo5nuhlger5wqxn3ujeaubm4g2fgrwvhzb2@hf4uhgq3ja5p>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <i4tjtsf5rsckfcayo5nuhlger5wqxn3ujeaubm4g2fgrwvhzb2@hf4uhgq3ja5p>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_113319_332317_DF1A0296 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20260703_123201_295183_CAB426DA 
+X-CRM114-Status: GOOD (  40.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +91,387 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Dmitry,
 
-On Fri, 12 Jun 2026 13:01:29 +0300, Cristian Ciocaltea wrote:
-> The DW HDMI QP TX library was developed for and is currently only used
-> by Rockchip platforms.  Add it to the Rockchip DRM drivers section to
-> ensure all relevant parties are kept in the loop on any changes.
+Thanks for your quick review!
+
+On 7/3/26 5:05 PM, Dmitry Baryshkov wrote:
+> On Thu, Jul 02, 2026 at 05:46:15PM +0300, Cristian Ciocaltea wrote:
+>> In preparation for adding HDMI 2.x source capabilities, introduce struct
+>> drm_connector_hdmi_caps and a new drmm_connector_hdmi_init_with_caps()
+>> helper.
+>>
+>> The existing drmm_connector_hdmi_init() helper currently takes
+>> individual capability arguments such as supported_formats and max_bpc.
+>> Adding more HDMI-specific arguments to that function would not scale
+>> well, so move those values into a dedicated capabilities structure and
+>> implement the existing helper as a wrapper around the new caps-based
+>> interface.
 > 
-> As its file paths fall outside the generic wildcard patterns defined in
-> the ARM/Rockchip SoC support section, also add the
-> linux-rockchip@lists.infradead.org mailing list to avoid any
-> notification gaps.
+> I think, it was an intention of Maxime: make sure that every driver is
+> forced to provide some values here. With the struct-based init it is
+> easy to overlook or to ommit a value.
+
+Agreed that the struct-based init loses the compile-time guarantee that every
+argument is explicitly provided - that's a real downside.  
+
+I'd argue it's recoverable, though: the init helper validates the mandatory
+fields, so a driver that omits a required value gets rejected at init time
+rather than silently misconfigured.  The "you must provide sane values" property
+is expected to be preserved, just enforced at runtime instead of by the
+compiler. 
+
+The main motivation for the struct is scalability/maintainability as we add HDMI
+2.x capabilities: new fields go into the struct rather than growing the helper's
+argument list, so existing callers don't need churny signature updates on every
+extension.
+
+FWIW, in the previous revision we discussed addressing the concern with a
+callback instead.  Sadly, I had to discard that approach, as it proved not
+flexible enough, e.g. drm_bridge_connector_init() computes caps dynamically, and
+would have required either stateful callbacks, or storing redundant/temporary
+cap data in driver-private structures just to satisfy the callback.
+
+>>
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  drivers/gpu/drm/drm_connector.c | 202 +++++++++++++++++++++++++++-------------
+>>  include/drm/drm_connector.h     |  55 +++++++++++
+>>  2 files changed, 193 insertions(+), 64 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+>> index 8b4baed060f3..c7ce6b7bd8b0 100644
+>> --- a/drivers/gpu/drm/drm_connector.c
+>> +++ b/drivers/gpu/drm/drm_connector.c
+>> @@ -542,6 +542,137 @@ int drmm_connector_init(struct drm_device *dev,
+>>  }
+>>  EXPORT_SYMBOL(drmm_connector_init);
+>>  
+>> +/**
+>> + * drmm_connector_hdmi_init_with_caps - Init a preallocated HDMI connector
+>> + * @dev: DRM device
+>> + * @connector: A pointer to the HDMI connector to init
+>> + * @vendor: HDMI Controller Vendor name
+>> + * @product: HDMI Controller Product name
+>> + * @funcs: callbacks for this connector
+>> + * @hdmi_funcs: HDMI-related callbacks for this connector
+>> + * @connector_type: user visible type of the connector
+>> + * @ddc: optional pointer to the associated ddc adapter
+>> + * @caps: optional HDMI connector capabilities
+>> + *
+>> + * Initialises a preallocated HDMI connector. Connectors can be
+>> + * subclassed as part of driver connector objects.
+>> + *
+>> + * Cleanup is automatically handled with a call to
+>> + * drm_connector_cleanup() in a DRM-managed action.
+>> + *
+>> + * The connector structure should be allocated with drmm_kzalloc().
+>> + *
+>> + * The @drm_connector_funcs.destroy hook must be NULL.
+>> + *
+>> + * Returns:
+>> + * Zero on success, error code on failure.
+>> + */
+>> +int drmm_connector_hdmi_init_with_caps(struct drm_device *dev,
+>> +				       struct drm_connector *connector,
+>> +				       const char *vendor, const char *product,
+>> +				       const struct drm_connector_funcs *funcs,
+>> +				       const struct drm_connector_hdmi_funcs *hdmi_funcs,
+>> +				       int connector_type,
+>> +				       struct i2c_adapter *ddc,
+>> +				       const struct drm_connector_hdmi_caps *caps)
+>> +{
+>> +	int ret;
+>> +
+>> +	if (!vendor || !product)
+>> +		return -EINVAL;
+>> +
+>> +	if ((strlen(vendor) > DRM_CONNECTOR_HDMI_VENDOR_LEN) ||
+>> +	    (strlen(product) > DRM_CONNECTOR_HDMI_PRODUCT_LEN))
+>> +		return -EINVAL;
+>> +
+>> +	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
+>> +	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
+>> +		return -EINVAL;
+>> +
+>> +	if (!caps)
+>> +		return -EINVAL;
+>> +
+>> +	if (!caps->supported_formats ||
+>> +	    !(caps->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444)))
+>> +		return -EINVAL;
+>> +
+>> +	if (connector->ycbcr_420_allowed !=
+>> +	    !!(caps->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420)))
+>> +		return -EINVAL;
+>> +
+>> +	if (!(caps->max_bpc == 8 || caps->max_bpc == 10 || caps->max_bpc == 12))
+>> +		return -EINVAL;
+>> +
+>> +	if (!hdmi_funcs->avi.clear_infoframe ||
+>> +	    !hdmi_funcs->avi.write_infoframe ||
+>> +	    !hdmi_funcs->hdmi.clear_infoframe ||
+>> +	    !hdmi_funcs->hdmi.write_infoframe)
+>> +		return -EINVAL;
+>> +
+>> +	ret = drmm_connector_init(dev, connector, funcs, connector_type, ddc);
+>> +	if (ret)
+>> +		return ret;
+>> +
+>> +	connector->hdmi.supported_formats = caps->supported_formats;
+>> +
+>> +	/*
+>> +	 * The supported HDMI version can be used to infer the maximum TMDS
+>> +	 * character rate allowed by the specification. Some controllers,
+>> +	 * however, may support a lower rate than that version would imply.
+>> +	 *
+>> +	 * A non-zero caps->max_tmds_char_rate lets drivers override the
+>> +	 * inferred limit with the actual controller capability. A value of
+>> +	 * zero keeps the default limit inferred from supported_hdmi_ver.
+>> +	 */
+>> +	if (caps->supported_hdmi_ver >= HDMI_VERSION_2_0)
+>> +		connector->hdmi.max_tmds_char_rate = HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ;
+>> +	else if (caps->supported_hdmi_ver >= HDMI_VERSION_1_3)
+>> +		connector->hdmi.max_tmds_char_rate = HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
+>> +	else if (caps->supported_hdmi_ver >= HDMI_VERSION_1_0)
+>> +		connector->hdmi.max_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
+>> +
+>> +	if (caps->max_tmds_char_rate) {
+>> +		if (caps->max_tmds_char_rate > connector->hdmi.max_tmds_char_rate)
+>> +			return -EINVAL;
+>> +		connector->hdmi.max_tmds_char_rate = caps->max_tmds_char_rate;
+>> +	}
 > 
-> [...]
+> Here I'd totally suggest something simpler:
+> 
+> if (!caps->max_tmds_char_rate) {
+> 	if (caps->supported_hdmi_ver >= HDMI_VERSION_2_0)
+> 		connector->hdmi.max_tmds_char_rate = HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ;
+> 	else if (caps->supported_hdmi_ver >= HDMI_VERSION_1_3)
+> 		connector->hdmi.max_tmds_char_rate = HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
+> 	else if (caps->supported_hdmi_ver >= HDMI_VERSION_1_0)
+> 		connector->hdmi.max_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
+> }
 
-Applied, thanks!
+My intention was to check that a driver-supplied caps->max_tmds_char_rate
+doesn't exceed the spec-permitted maximum for the declared supported_hdmi_ver.
+With the simplified form, a driver could declare e.g. HDMI 1.4 but pass a
+2.0-level char rate, and we'd silently accept it.  
 
-[1/1] MAINTAINERS: Track dw-hdmi-qp under Rockchip DRM drivers
-      commit: 01d082bbbd60c4468e88a97bc07052678339f9f6
+Also, we'd still need to handle the supplied value in the non-zero case:
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+} else {
+    connector->hdmi.max_tmds_char_rate = caps->max_tmds_char_rate;
+}
+
+So the net reduction is smaller than it looks.
+
+>> +
+>> +	strtomem_pad(connector->hdmi.vendor, vendor, 0);
+>> +	strtomem_pad(connector->hdmi.product, product, 0);
+>> +
+>> +	/*
+>> +	 * drm_connector_attach_max_bpc_property() requires the
+>> +	 * connector to have a state.
+>> +	 */
+>> +	if (connector->funcs->atomic_create_state) {
+>> +		struct drm_connector_state *state;
+>> +
+>> +		state = connector->funcs->atomic_create_state(connector);
+>> +		if (IS_ERR(state))
+>> +			return PTR_ERR(state);
+>> +
+>> +		connector->state = state;
+>> +	} else if (connector->funcs->reset) {
+>> +		connector->funcs->reset(connector);
+>> +	}
+>> +
+>> +	drm_connector_attach_max_bpc_property(connector, 8, caps->max_bpc);
+>> +	connector->max_bpc = caps->max_bpc;
+> 
+> If you don't like the max_bpc argument, let's do it other way:
+> 
+> if (connector->max_bpc < 8)
+> 	return -EINVAL;
+
+If I follow correctly, you suggest dropping max_bpc from the caps struct and
+letting drivers set connector->max_bpc before calling the init helper, leaving
+the core to only do the reject. 
+
+Also note we actually have a more restricted check above:
+
+if (!(caps->max_bpc == 8 || caps->max_bpc == 10 || caps->max_bpc == 12))
+    return -EINVAL;
+
+I'd still keep max_bpc in the struct, assuming we can move further with the
+caps approach.
+
+> if (connector->max_bpc > 8)
+> 	drm_connector_attach_hdr_output_metadata_property(connector);
+> 
+> 
+>> +
+>> +	if (caps->max_bpc > 8)
+>> +		drm_connector_attach_hdr_output_metadata_property(connector);
+>> +
+>> +	ret = drm_connector_attach_color_format_property(connector,
+>> +							 caps->supported_formats);
+>> +	if (ret)
+>> +		return ret;
+>> +
+>> +	connector->hdmi.funcs = hdmi_funcs;
+>> +
+>> +	return 0;
+>> +}
+>> +EXPORT_SYMBOL(drmm_connector_hdmi_init_with_caps);
+>> +
+>>  /**
+>>   * drmm_connector_hdmi_init - Init a preallocated HDMI connector
+>>   * @dev: DRM device
+>> @@ -578,71 +709,14 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+>>  			     unsigned long supported_formats,
+>>  			     unsigned int max_bpc)
+>>  {
+>> -	int ret;
+>> +	struct drm_connector_hdmi_caps caps = {
+>> +		.supported_formats = supported_formats,
+>> +		.max_bpc = max_bpc,
+>> +	};
+>>  
+>> -	if (!vendor || !product)
+>> -		return -EINVAL;
+>> -
+>> -	if ((strlen(vendor) > DRM_CONNECTOR_HDMI_VENDOR_LEN) ||
+>> -	    (strlen(product) > DRM_CONNECTOR_HDMI_PRODUCT_LEN))
+>> -		return -EINVAL;
+>> -
+>> -	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
+>> -	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
+>> -		return -EINVAL;
+>> -
+>> -	if (!supported_formats || !(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444)))
+>> -		return -EINVAL;
+>> -
+>> -	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420)))
+>> -		return -EINVAL;
+>> -
+>> -	if (!(max_bpc == 8 || max_bpc == 10 || max_bpc == 12))
+>> -		return -EINVAL;
+>> -
+>> -	if (!hdmi_funcs->avi.clear_infoframe ||
+>> -	    !hdmi_funcs->avi.write_infoframe ||
+>> -	    !hdmi_funcs->hdmi.clear_infoframe ||
+>> -	    !hdmi_funcs->hdmi.write_infoframe)
+>> -		return -EINVAL;
+>> -
+>> -	ret = drmm_connector_init(dev, connector, funcs, connector_type, ddc);
+>> -	if (ret)
+>> -		return ret;
+>> -
+>> -	connector->hdmi.supported_formats = supported_formats;
+>> -	strtomem_pad(connector->hdmi.vendor, vendor, 0);
+>> -	strtomem_pad(connector->hdmi.product, product, 0);
+>> -
+>> -	/*
+>> -	 * drm_connector_attach_max_bpc_property() requires the
+>> -	 * connector to have a state.
+>> -	 */
+>> -	if (connector->funcs->atomic_create_state) {
+>> -		struct drm_connector_state *state;
+>> -
+>> -		state = connector->funcs->atomic_create_state(connector);
+>> -		if (IS_ERR(state))
+>> -			return PTR_ERR(state);
+>> -
+>> -		connector->state = state;
+>> -	} else if (connector->funcs->reset) {
+>> -		connector->funcs->reset(connector);
+>> -	}
+>> -
+>> -	drm_connector_attach_max_bpc_property(connector, 8, max_bpc);
+>> -	connector->max_bpc = max_bpc;
+>> -
+>> -	if (max_bpc > 8)
+>> -		drm_connector_attach_hdr_output_metadata_property(connector);
+>> -
+>> -	ret = drm_connector_attach_color_format_property(connector, supported_formats);
+>> -	if (ret)
+>> -		return ret;
+>> -
+>> -	connector->hdmi.funcs = hdmi_funcs;
+>> -
+>> -	return 0;
+>> +	return drmm_connector_hdmi_init_with_caps(dev, connector, vendor,
+>> +						  product, funcs, hdmi_funcs,
+>> +						  connector_type, ddc, &caps);
+>>  }
+>>  EXPORT_SYMBOL(drmm_connector_hdmi_init);
+>>  
+>> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+>> index af075c38f4db..961a729d0869 100644
+>> --- a/include/drm/drm_connector.h
+>> +++ b/include/drm/drm_connector.h
+>> @@ -2029,6 +2029,47 @@ struct drm_connector_hdmi_audio {
+>>  	int dai_port;
+>>  };
+>>  
+>> +/**
+>> + * struct drm_connector_hdmi_caps - HDMI capabilities structure
+>> + *
+>> + * This structure is required to initialize the connector using
+>> + * drmm_connector_hdmi_init_with_caps().
+>> + */
+>> +struct drm_connector_hdmi_caps {
+>> +	/**
+>> +	 * @supported_hdmi_ver:
+>> +	 *
+>> +	 * Maximum HDMI specification version supported by the controller side
+>> +	 * of this connector. This describes the controller capability only;
+>> +	 * the effective link capabilities may be further restricted by the
+>> +	 * sink, bridge, or mode validation.
+>> +	 *
+>> +	 * HDMI_VERSION_UNKNOWN means legacy/default behaviour.
+> 
+> What would it actually mean here? Every chip has some version of HDMI
+> standard it conforms to.
+
+HDMI_VERSION_UNKNOWN only exists for the legacy drmm_connector_hdmi_init()
+wrapper, which doesn't pass a version - in that case the code keeps the
+pre-existing behaviour (no version-inferred TMDS limit). Once all callers
+migrate to the caps-based API, supported_hdmi_ver becomes mandatory.
+
+Given that, I'd simply drop the "legacy/default behaviour" statement, unless you
+have a better suggestion.
+
+>> +	 */
+>> +	enum hdmi_version supported_hdmi_ver;
+>> +
+>> +	/**
+>> +	 * @supported_formats:
+>> +	 *
+>> +	 * Bitmask of @drm_output_color_format listing supported output formats.
+>> +	 */
+>> +	unsigned long supported_formats;
+>> +
+>> +	/**
+>> +	 * @max_tmds_char_rate:
+>> +	 *
+>> +	 * Maximum TMDS character rate supported by the source, in Hz.
+>> +	 * A value of 0 means the core should use the default limit implied by
+>> +	 * @supported_hdmi_ver.
+>> +	 */
+>> +	unsigned long long max_tmds_char_rate;
+>> +
+>> +	/**
+>> +	 * @max_bpc: Maximum bits per char the HDMI connector supports.
+>> +	 */
+>> +	unsigned int max_bpc;
+>> +};
+>> +
+>>  /*
+>>   * struct drm_connector_hdmi - DRM Connector HDMI-related structure
+>>   */
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
