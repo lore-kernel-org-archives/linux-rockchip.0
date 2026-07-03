@@ -4,52 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC60EC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 17:43:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83297C43602
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 18:13:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:From:Subject:To:Message-Id:Date:
-	Mime-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=rHWUaK9UglSSsx9IEjQAZEHGPZkLZDuCjMqOrvMoiUA=; b=F7g
-	1nz/okGKfEw0xHOT4ms6vBhvvINuGmSBZemPS1vroMAzTHC+qGNRAjTznD2tXaj/AbA4aAiLQC/jj
-	xTpqcuOngpAd7K8NZ4Th0OAmTDCJ9tOxuBCe0SRWoWfmM5QJFP+Cfh9ddAk8NLADndko4OXa+Sk77
-	Bemt4xz14O5pjwLFJ3EsP9CbqltxEOuR2z/LzobNgn3a4/gvZd1Ff46Kntv4/5hQcCMgzByN5+3UY
-	SVLPnk1oRQ9B8RKGh25pPQ0wUlKv8Piuru7GOc/Fkq6D6pNisGHRLjEmt0kRP88z0uyUMeEtS1W2w
-	u9HZmymiMznoDODn9QumK0ETicGRWlA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=L6ILYEnMQc9up5VvoFnTXpQwjsL4Y+ZkmFil9Is1NtE=; b=5BrIlY32AB2SJb
+	A4OmRw8xA0SQBDe9yvRZ5CIcqPz2TQDdThixYu3n+m5vAODhE19foiAlTSkxI7mLB4XdpdgNcorQ3
+	e2oadnpmjsbgdVR+nD57I1aplTOjoekS/MdW/pRnSX4nR6qLCw45Im52+z9tVLdD9Ml4mZ5JcUBm0
+	PB0fq5KIWgTXEExRRSpiR0Gyu9DoDx+2Um8jIp5iEKKwQWmGUdgeWbU9X3FKljqeMJddsEcSJZU+f
+	ADsj8SfASGg4PiRgvLdt2UckBxv3XZ1Y1J3ZKP8dc2MJjM+tE9y2S3GgLJ8tE/1GHaYfissiXYP3m
+	b5OeK5QipI7GMZ9QV//A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfhui-00000007cRC-3rU5;
-	Fri, 03 Jul 2026 17:42:56 +0000
-Received: from out-180.mta0.migadu.com ([91.218.175.180])
+	id 1wfiOR-00000007di7-2JhS;
+	Fri, 03 Jul 2026 18:13:39 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfhug-00000007cQo-3MWP
-	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Jul 2026 17:42:56 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1783100572;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=3F3z6svJt8A0LhpBM9o1RX3JMQgGJpu/qSEYfSZaDaQ=;
-	b=BfJclCthFLUAfBidvS4fvwvtO1dsAxT76TknBPYs/fEWvBXcpaIwR2xtoQ3j5JTJD3jXIR
-	F+4DvQO8ieRDhzKo1OOR7paysrZfcUd4BL56kC7NqHA5nGM7JclxGN2KCDx1NGWmvMhj4W
-	4oA4i1hW6lXxP3kifrER6YMxysWR/UPtWNyUM37igzgUucHdI21SLb5edNxsdox3sRQazE
-	zm9fFhuYNEOOk3yqq4Y7tUcOPZwyIRgvqNu4PV0oBNgc1exWOmkEMlQM3CVYheM0aWlpgg
-	Z6vQXrvxVXmUw9iGa6T/DHuzEEPq326DES6OgvVqWc7HoEAH3/h4CTHlymV8Gw==
-Date: Fri, 03 Jul 2026 19:42:42 +0200
-Message-Id: <DJP4E9W1T7RE.1MAV02D65O23E@cknow-tech.com>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Fwd: Re: [PATCH 12/12] arm64: dts: rockchip: add support for NanoPi
- M6 board
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1wfiOO-00000007dfZ-2eCR;
+	Fri, 03 Jul 2026 18:13:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783102413;
+	bh=ou2OeHe9NiTPGYgMcRzTUBwKmURTgL5/azZ1wBtlGvM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=MH07THUhUs7SvDVQHOL3pFfgOkOEbcqChlo6RygIxx8ot0zOmK3q2VRYJHXPwAMNb
+	 XGHY/kMscTUwCN2KzwcbJrekgghosDEDBoZ1/i7wzgdlKt2beIAq3adIFzXTnD2tVt
+	 zOfXsQ1PcjJLpb9xigGHNiZciK+WCE7J5z91iqzMHFhlo8oeEN3L+W8GS1/rdCNV75
+	 yyTgfnHd/AAJ+6MVuHTHhOg4gbA8uuTxTLx3p+KqSq8iv/PyGbscTgXT07Zsj3aoKF
+	 /8SlgutXOn3Gt9nHk9yTUf95RE/pQaIJSgwCMwoykU4DobUxVnIJZbz5nimLkVD2rk
+	 SsGZXShJwobFw==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C579517E1006;
+	Fri,  3 Jul 2026 20:13:32 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 7D50648002F; Fri, 03 Jul 2026 20:13:32 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Fri, 03 Jul 2026 20:13:19 +0200
+Subject: [PATCH v10 03/36] phy: rockchip: usbdp: Do not lose USB3 PHY
+ status
+MIME-Version: 1.0
+Message-Id: <20260703-rockchip-usbdp-cleanup-v10-3-a392711ca8a9@collabora.com>
+References: <20260703-rockchip-usbdp-cleanup-v10-0-a392711ca8a9@collabora.com>
+In-Reply-To: <20260703-rockchip-usbdp-cleanup-v10-0-a392711ca8a9@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Yubing Zhang <yubing.zhang@rock-chips.com>, 
+ Alexey Charkov <alchark@flipper.net>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1409;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=ou2OeHe9NiTPGYgMcRzTUBwKmURTgL5/azZ1wBtlGvM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpH+8t/DdYlmTMIp6xxMySosmRXJYiswxuj2
+ Zj8ckaWM3uTsIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqR/vLAAoJENju1/PI
+ O/qaL+oP/jmlJP3yOdSPrKrMnR2aBkqYZa0FdQEU8gxCJLy7T8BQT11561d8QJejZymgSmtCBHV
+ hRJMbJUdTUN0L7Bg88uRK+vhgX6JXljF/qCElguVc9wgksg5lTpFL4ys/PFrIi7RNZTpuS4/SUA
+ PEZqcyI5W3g2yq/hPeJngTeqgZbb5pn7JtWFFyBTN1d5EaXwjT0V1uxlBA2Y00WjdA9pJ+57uM+
+ gdPZXZx4FUrqgiS1fCGeUpG/MyjzIeZyh3mUSmFmwbaIkuPXyfXKh0Ydl1nPvhHdvTsBe4S4m7h
+ XCdMXhac+juNcRQ9us7a/C+SHQIPpvcPnY8JjyniXXYRhOdCi7IDKsqRrwt9vJ/zG3c0R/l3pp5
+ b+sWCvHtTlU64jA11U2YHmiduGVx6xlvNYf+UTnGJKP/GW2KO9y0zH/EKuLDP7pc6OKSCyjuZct
+ Tn8q4Kdg2/G9GDHDf/YyxhpC2+BOrk3tx3J6UvEJC1bGKjmtaxicdC5X7U2Op3RgfgzeT+Na20Z
+ q9cjDPxLLAIAmFTQ9bNUd8h0AD4F0JPkJCwkdygl8Y8iulSuG0H4CdB+swJ/vuegYPeyDMcjP0m
+ nwuyE5WB/4PS5j1j6NPL/OXucM66npC0CkniuWHIdMGyNb9uWtBJCs1NJdxxbzLC9LVDRaeYh60
+ xmlx+D+fromNlF68pDVos8Q==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_104255_004678_8C81C360 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20260703_111336_820832_CCE243D6 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,64 +105,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-[ Something went wrong while sending to the ML, thus forwarding ]
-Forwarded message from  on Fri Jul 3, 2026 at 5:37 PM:
+By default (i.e. without manually enabling runtime PM) DWC3 requests the
+USB3 PHY once and keeps it enabled all the time. When DisplayPort is
+being requested later on, a mode change is needed. This re-initializes
+the PHY. During re-initialization the status variable has incorrectly
+been cleared, which means the tracking information for USB3 is lost.
 
-Hi Joachim,
+This is not an immediate problem, since the DP side keeps the PHY
+enabled. But once DP is toggled off, the whole PHY will be disabled.
+This is a problem, because the USB side still needs it powered.
 
-On Fri Jul 3, 2026 at 7:14 PM CEST, Joachim Eastwood wrote:
-> On Fri, 3 Jul 2026 at 13:34, Diederik de Haas <diederik@cknow-tech.com> wrote:
->> On Fri Jul 3, 2026 at 12:07 AM CEST, Joachim Eastwood via B4 Relay wrote:
->> > From: Joachim Eastwood <joachim.eastwood@gmail.com>
->> >
->> > The NanoPi M6 board shares most of the features of the R6 boards.
->> >
->> > Main differences:
->> > * M.2 M-key slot with PCIe (Also present on R6C)
->> > * M.2 E-key slot with PCIe and USB (from hub)
->> > * 1 additional USB 2.0 port from an on-board USB hub
->> > * RT5616 audio CODEC
->> >
->> > Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
->> > ---
->>
->> [...]
->>
->> > +&i2c7 {
->> > +     clock-frequency = <200000>;
->> > +     status = "okay";
->> > +
->> > +     rt5616: codec@1b {
->> > +             compatible = "realtek,rt5616";
->> > +             reg = <0x1b>;
->> > +             clocks = <&cru I2S0_8CH_MCLKOUT>;
->> > +             clock-names = "mclk";
->> > +             #sound-dai-cells = <0>;
->> > +             assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
->>
->> s/I2S0_8CH_MCLKOUT/I2S0_8CH_MCLKOUT_TO_IO/ ?
->>
->> See these links for details:
->> https://lore.kernel.org/linux-rockchip/DJGDSS875DDO.22TYPVYK5X8KZ@cknow-tech.com/
->> https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v7.2-clk/fixes&id=946352b2f88fd2378f0341312e47dff1e8dc2fac
->
-> Thanks for the feedback and pointers.
-> I will use I2S0_8CH_MCLKOUT_TO_IO for the next version.
->
-> Grepping through the other boards there doesn't seem to any other users
-> of I2S0_8CH_MCLKOUT_TO_IO right now. But I assume the other boards
-> will be converted over later(?)
+Fix things by not clearing the status flags.
 
-That is indeed the idea; boards can(/should) be converted, ideally by someone
-who has the board and can verify its result.
+Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-There's at least 'one' (or 3) being worked on ;-)
-https://git.sr.ht/~diederik/linux-kernel/log/rk3588-nanopc-t6-plus
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index a5ffdf7a6e76..12dfdd470a78 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -1008,7 +1008,6 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
+ 			rk_udphy_u3_port_disable(udphy, false);
+ 		udphy->mode_change = false;
+ 	} else if (udphy->mode_change) {
+-		udphy->status = UDPHY_MODE_NONE;
+ 		if (udphy->mode == UDPHY_MODE_DP)
+ 			rk_udphy_u3_port_disable(udphy, true);
+ 
 
-But for new boards, it's better to use the new _TO_IO variant.
-
-Cheers,
-  Diederik
+-- 
+2.53.0
 
 
 _______________________________________________
