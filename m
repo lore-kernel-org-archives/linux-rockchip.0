@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B83C44500
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 18:13:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE48C44503
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 18:14:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bHMy0kJTAlyyZ6myaFc717rDe5IgSiQvzDO4dZU+37w=; b=sm0CzLQQy6N7tZ
-	k6zr/5WCaEWdqGCTzi7OoFWKpdWxeqcZuv6oOPweAT8R2ZhoIpSVGqruXIddeWY5+0VGGKEf6TaIu
-	xMw3edb1b5TAa4L10ZUgsl5L8QBqlAPlu8/02GNXYypUMoDUKASSd25Vq4NNYvhrXd9kS/hGxc2d2
-	ZDw51NF12ayN8cQ51W06SgutCSNilTKWKL4D3WWnLKKPcLDwoe9kpEzZCHfRpT46pH8MR9T0BPhg9
-	GaoQLPNOGG3B4fEkf/Rnq2J2E7SxoTnBq4Q76Mju8EN3lk+b/KPn1/G2TST0p8MwPKIJW8WznGjn3
-	C87QJlaerGA6MPyfbybQ==;
+	List-Owner; bh=O7156ab15bOegqYUj0WlLEO/Gx6KRweov0YmZTNLXac=; b=H1SXddpKWmrY93
+	Tcm/9laJLafVwsZgqS2lCk8JaAWWtMipqLsoj6vfkqGyG4M/+XyYxRxqBIXMaKEhk5DN2ZYbqcSOI
+	C8aAn4Fz1OtyUalYvokuhVWcF8j8q+nhtd+sxfXavok1pTz1bY1IGrm7IccDX7D1chN+OwYzaqA18
+	dFOrZAqC44SyVvc89KQT47WPDkKtCNv9+eHDHt3IbhsBYeGO+l4hjKgz7OinLFlE9eCTDPyylNSik
+	qF8axRuImi67pQtRpshsEKXgyDDvtIjeHoGsowajKRLxf8bY/eM5cTXD0d169AajfNbNCRc1ckIZm
+	uujKaPNY1YWgJZbwNxZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfiOj-00000007eKu-2kNB;
-	Fri, 03 Jul 2026 18:13:57 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wfiOk-00000007eO0-3MOl;
+	Fri, 03 Jul 2026 18:13:58 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfiOS-00000007dhR-1a35;
-	Fri, 03 Jul 2026 18:13:43 +0000
+	id 1wfiOT-00000007di4-0PMe;
+	Fri, 03 Jul 2026 18:13:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1783102413;
-	bh=ZO8NKtlAO4WsL56HMiuwG9DvpJtk+41a1hMlNOx8muc=;
+	bh=MGpikBa/aaqvkv65oP/N23ryrQe5o83Pvtc6osrktIs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JvC8BZKlfLlXmv3ZavE1Erei6xapCT3LOBlLklzI8FH/4JTjrvoKo12p+pYq49i3X
-	 1Cauflew0xJQ62vbhZKONsGJnwciTtEW3l5WOZWbOa9amplM3NRF9uG/9NW6qGfv4i
-	 t96I3sCYAIXJXS+0daMS2dme/q6fhP1xT7P+ZArhXR5oB0qH//ld2qzFlluw4shDN1
-	 pagQMGleebuiZanAxlWD9PHz1uopPqQz09616OTHIJjg4sQ4f6f1BCNzpVgOQsWpyf
-	 dWl068boBiG/loRrRoncxGsDBgQoMCvviajhoLOxj4AR5fJWrcBK/QoPc6XO30K88S
-	 6jfDJ3D1Hredw==
+	b=jNJhFEyu8nfVxBJ6/bydrQ+7xikPmtah9w0aQZlJynqoFsZNG3I0zYQhXuZ7E1dM1
+	 8UdNNiKauXjHMWNOmImU8YX6CYvbha+9pzqWkVIkiTJqY+09tUoD/IbrG45fC4ZTjq
+	 2cl0mEmxZ0P5AD1WA7npcwLTITFZty06DtQE63BodcfIrlPdwB0lVBs7a+c2MxE/gg
+	 PXDJnCLxDXyezOqCE2Y85zhKGxWMh59XRRg/ZH6GUzj8NWBVmGOU7S/ypu4u5cqcHK
+	 mu80gqkwUuQJnIFJG1GlqutJY2X2iIagkOUXBFOQF1Y5GClxTGYNjo50ppTWXYmMly
+	 iKQPDfqDJnUjA==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2556517E1131;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3B8E717E1366;
 	Fri,  3 Jul 2026 20:13:33 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 81D3E480035; Fri, 03 Jul 2026 20:13:32 +0200 (CEST)
+	id 8670D48003D; Fri, 03 Jul 2026 20:13:32 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 03 Jul 2026 20:13:22 +0200
-Subject: [PATCH v10 06/36] phy: rockchip: usbdp: Drop seamless DP takeover
+Date: Fri, 03 Jul 2026 20:13:25 +0200
+Subject: [PATCH v10 09/36] phy: rockchip: usbdp: Fix LFPS detect threshold
+ control
 MIME-Version: 1.0
-Message-Id: <20260703-rockchip-usbdp-cleanup-v10-6-a392711ca8a9@collabora.com>
+Message-Id: <20260703-rockchip-usbdp-cleanup-v10-9-a392711ca8a9@collabora.com>
 References: <20260703-rockchip-usbdp-cleanup-v10-0-a392711ca8a9@collabora.com>
 In-Reply-To: <20260703-rockchip-usbdp-cleanup-v10-0-a392711ca8a9@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -67,28 +68,28 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
  Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sashiko <sashiko-bot@kernel.org>
+ William Wu <william.wu@rock-chips.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2883;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1521;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=ZO8NKtlAO4WsL56HMiuwG9DvpJtk+41a1hMlNOx8muc=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpH+8upJoMuB4CyPZfI6EPG5/M3IBUVhIde0
- Svx7ah1+RJicYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqR/vLAAoJENju1/PI
- O/qa1GoP/0SCeIW+rtw4w0bmEdP3FirR3Bcjr1YGPW3QonDEenxvI6Rz4ngxq2cvoGV8EnNOhvb
- f24zdMo/aKA4fUzy7N/Ggtl8VjA00G4x3CgrMlqZAeFv63zTwrtcDSC2iWiQOf+4K8+06x588d2
- aOldG9u92ykbQkx69pTMmQ5kPj6IZwoff9SIjlFZ2gI1sU7kXf6KCsjboiINwjrmdMiwSq22+hQ
- Rwtv+uyH4yS1Q10UcbdBJHxFZQtcjmQ6tSI11G+iqCSu/0vB6xaWZ5F9v+kRR77z+fFFakknrgO
- TrZsMynim1ESpuQhQvNilDhIi7SIiOuTjdftawWAx2sHD2vQBgVr+83rd8HGC+6zeLurq9KNWAE
- zHYfybCl5m/6XecFPEAgI1PTpgQjgsxKRj8zQdcWKMk+qQSJL0l3JKa/JUYFU4M1rLZL+TqKM1+
- 9EpuedAAVm1H3RV5uA+M6gU4vEVNW/tnBIWvUdkUMIIkSIcN4pWPOAG3WQFrWCMoue2rmYwH8sU
- hRA5+fEZge8mLlymQ9i5RAdKgPMtqOdcatbaSeivWgYTZSDWalM3PIirbcx5rGwosIVn1OnExko
- iFRjb2FZN35KEt2+COoKeIyhAwTBsHwqK9ml15LZ2/Csf/8i37l4PBe8/+cRM+nr/GGI0MnPlft
- XXYLAItQ9E11CbXo+7Ho1gQ==
+ bh=6XR1qE8oQQO8DmAkgt9+gIoazIh1eRLq97pcAr0j0tg=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpH+8sazDVjfQZXi5jTGdCvo3IFdDTrVc8Hz
+ CNgKE2jmcsIDIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqR/vLAAoJENju1/PI
+ O/qa8IkP/i3g4MzkciXnYvQhMve2TR7g8Kqxw4HGtfTvc2tHnfL5by9NFhi5R5M/2gu0ldJpCOE
+ 3bTvk3CRfzTTSRUbsjIPSicpgEmZ344ti6PBun3KK/rU5zz4TigYFXCwIcFkOW3b7Z8av0GwW1m
+ eus8mlBnTm1fdvLqg44EatJvXroIMF9/7/Ad71HQkB+QOaLFJptbtI+d54k02TGM2LI+wqOpVLM
+ sGrVIITGX5ME+0sZnkKTacoIkM0ndk0ZEPwYeqsZImCQCin91M675Bpq4q6+uLO8teUSJy66hSf
+ gUe5AKnMQ5rOKlhU3iPbRJiyl/Yx8p7tabBy8Whjz/WUm2jk0AHsxJfHE1gYO+Y3LdfoYhpF8zE
+ ZyjhBkUz146S23+x4yNbDW0FdK+1ze6h2cnWpvibp0PUvWspoSDK4PpRS39BzKPlwhB9/IMXMcq
+ fQwrPmwhiI1/3s/8fKcgWYvoujAjD8ES+E8am+VY2jpZ7i/4h6mCysW1PnOyRxeR88A/LHxI7Nw
+ eMUS3P7710fp28LNJdRzfPWbsos80Vpq7208SDCOYWB4c7WqF60Rfe53n7a0buyR+IVVR1AOQ5M
+ mb3lFOwUHo6XhQo/QjXkg6bqyU1Nn8bqBQKkm4DTOcLcrx8v8dJdfocl0bY9/5C5FogAn32AgLy
+ 3RYXSkbxnMAAXTnsMsSE9mQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_111340_764013_61AD30F3 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20260703_111341_294174_D1AD105D 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,85 +106,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Right now the DRM drivers do not support seamless DP takeover and I'm
-I'm not aware of any bootloader implementing this feature either.
+From: William Wu <william.wu@rock-chips.com>
 
-In any case this feature would be limited to boards using the USBDP PHY
-for a DP or eDP connection instead of the more commonly USB-C connector.
-With USB-C's DP AltMode a seamless DP takeover requires handing over the
-state of the TCPM state machine from the bootloader to the kernel. This
-in turn requires a huge amount of work to keep the state machine
-implementations synchronized. It's very unlikely we will see somebody
-implementing that in the foreseeable future.
+According to the LFPS Tx Low Power/LFPS Rx Detect Threshold [1],
+the device under test(DUT) must not respond if LFPS below the
+minimum LFPS Rx Detect Threshold 100mV. Test fail on Rockchip
+platforms, because the default LFPS detect threshold is set to
+65mV.
 
-As the current code is obviously buggy and untested, let's simply drop
-support for seamless DP takeover. It can be re-implemented cleanly once
-somebody adds all missing bits.
+The USBDP PHY LFPS detect threshold voltage could be set to
+30mV ~ 140mV, and since there could be 10-20% PVT variation,
+we set LFPS detect threshold voltage to 110mV.
 
-Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/linux-phy/20260612164107.C7DB21F000E9@smtp.kernel.org/
+[1] https://compliance.usb.org/resources/LFPS_Rx_Tx_Low_Power_Compliance_Update_Rev5.pdf
+
+Signed-off-by: William Wu <william.wu@rock-chips.com>
+[Taken over from rockchip's kernel tree; the registers are not described
+in the TRM]
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 31 -------------------------------
- 1 file changed, 31 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 3fc8222fcaec..6cb9f6b4dbf6 100644
+index cb6acadfbccf..982315535caf 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -452,11 +452,6 @@ static int rk_udphy_reset_assert_all(struct rk_udphy *udphy)
- 	return reset_control_bulk_assert(udphy->num_rsts, udphy->rsts);
- }
+@@ -413,7 +413,8 @@ static const struct reg_sequence rk_udphy_init_sequence[] = {
+ 	{0x0070, 0x7d}, {0x0074, 0x68},
+ 	{0x0af4, 0x1a}, {0x1af4, 0x1a},
+ 	{0x0440, 0x3f}, {0x10d4, 0x08},
+-	{0x20d4, 0x08}, {0x0024, 0x6e}
++	{0x20d4, 0x08}, {0x0024, 0x6e},
++	{0x09c0, 0x0a}, {0x19c0, 0x0a}
+ };
  
--static int rk_udphy_reset_deassert_all(struct rk_udphy *udphy)
--{
--	return reset_control_bulk_deassert(udphy->num_rsts, udphy->rsts);
--}
--
- static int rk_udphy_reset_deassert(struct rk_udphy *udphy, char *name)
- {
- 	struct reset_control_bulk_data *list = udphy->rsts;
-@@ -924,28 +919,6 @@ static int rk_udphy_parse_lane_mux_data(struct rk_udphy *udphy)
- 	return 0;
- }
- 
--static int rk_udphy_get_initial_status(struct rk_udphy *udphy)
--{
--	int ret;
--	u32 value;
--
--	ret = clk_bulk_prepare_enable(udphy->num_clks, udphy->clks);
--	if (ret) {
--		dev_err(udphy->dev, "failed to enable clk\n");
--		return ret;
--	}
--
--	rk_udphy_reset_deassert_all(udphy);
--
--	regmap_read(udphy->pma_regmap, CMN_LANE_MUX_AND_EN_OFFSET, &value);
--	if (FIELD_GET(CMN_DP_LANE_MUX_ALL, value) && FIELD_GET(CMN_DP_LANE_EN_ALL, value))
--		udphy->status = UDPHY_MODE_DP;
--	else
--		rk_udphy_disable(udphy);
--
--	return 0;
--}
--
- static int rk_udphy_parse_dt(struct rk_udphy *udphy)
- {
- 	struct device *dev = udphy->dev;
-@@ -1495,10 +1468,6 @@ static int rk_udphy_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
--	ret = rk_udphy_get_initial_status(udphy);
--	if (ret)
--		return ret;
--
- 	mutex_init(&udphy->mutex);
- 	platform_set_drvdata(pdev, udphy);
- 
+ static inline int rk_udphy_grfreg_write(struct regmap *base,
 
 -- 
 2.53.0
