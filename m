@@ -4,69 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F642C43458
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 14:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F7C9C44500
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 16:13:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=555Gi7BIE0AizPrNfuPQFc0t/ELIdjGgaukWxe4txEA=; b=SCxOKbt+WH0Z5X
-	f0RSn7qQCFHgb5QsDfOoznEgZ2Pl5FLd17RfNmtcQ6YgkpETAk4nmwCgvhUatYdCZOtEPRaE2SOkN
-	vBTNaqzmBpQflAH1hBpNGR+Mb95dCQ8Zv5zKSTSLrP6s+L4sa4biyVyo9EP3zH+BevduYq8JgokoF
-	Y75bUZLFWr2swcNcbPQjdQfL0Ulj0a3535SJeJXS7/L24N5Xe2t8cPcDiv4PcccKY6L0tXrLBuiFH
-	qmCqOYJOkYucZKiuBsK8E0nYtBa4dFHpcGQQl64zQrgBHp6nCdaBONWqclkgcdJqkgBzNSPEFW2JG
-	lAxW+KuDQyDRT1iW/elA==;
+	List-Owner; bh=8G7OE4HdYEucqdk8eDee2OeQScB32cCYp+GqY8r9094=; b=VSxT+iD7uXV81b
+	7J3RuaUKsPZvzX/HgAq7vn5GF29d62yi8Fcz8RYb6uzueGz/9QsV5LnuXH6elNbiUl5sm/JTzebRt
+	LZLHMV3XptQcMLgV53SjwSIl9TpYkimBeLL0DbwWfZBcP6xBEhsX5aFR9/GVppmFj3otHz1tbRqXK
+	XJXGC9R7hkKDIHQuNomT/On7HmQ0apQXlpmTDNH7STop4F2Y2p2zOeGzTuXbDNiruany6Vc0vWeqw
+	79J7J0j3xTF6xCXQrInzM6jYKPXwIbAljMgsf+tHijhU+n019AkShmTxZa97uNGfeEnT18TFAAjhB
+	fSkgIQNbLsRhMWLvrVQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wffH1-00000007KVq-1szu;
-	Fri, 03 Jul 2026 14:53:47 +0000
-Received: from out162-62-57-137.mail.qq.com ([162.62.57.137])
+	id 1wfgVc-00000007XZK-1Axs;
+	Fri, 03 Jul 2026 16:12:56 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wffGx-00000007KSp-3pxM;
-	Fri, 03 Jul 2026 14:53:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1783090414; bh=CS+Gi0WzooNXpSduprgHt/xrr1DtrJS76eULUS0BXDQ=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=RFUvHBE4N9iYueVnB+VpEFRtFe/ziWz9QNBZKs9PSqkdgFeWYniZfXlLnBcmr46Db
-	 NJofz0P4wpKmvBTQvKJhqfF8UWLI0wSZXLCEL1FxsfNDivvEZ3AxzDuqokiP1TwDCB
-	 Op5nGHm7nRJHg7D98g5E2g1lo235DRO3f0XaG7Ng=
-X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
-X-QQ-XMAILINFO: OImhmUSEbAWcT2IHWW/hjuPTBpK4RrQqRf2cBNo/s1dnpGT3F5w5IHksEzAmKP
-	 6ZFzYKPMq4B8CxWmN6Uj23da3mQ7AFQqyLRF7jWMIM0F6SEmWPhxipgperIpZlGtuWCHd7xIBiwPp
-	 JM8wwprDpf2Re5QKhuDnd/ay+Au+T4tKL+NcvuZrhSWXWbkqVKhff1X2Ts/LRF3T0SA3GE7juYFxS
-	 9ZSHzuOLgTv5YloTkoeNB0LFvDWEUz4D1POnNUfPEjmHKKRUViR/TkpzYTgvexR3Fp8bJN9SCchf5
-	 U60no2JyJCtDSW366HdHi+JwAA/1Bn4DGhixWVijxhZAcdcgZe98o+59fP0wxP765ME/xy7VkSza6
-	 Xu7MXSFfxqP4JoMGkXYoVcC42Cn53vYWfojqS9cp7je2dnXwLtlMuREsPpn3eeyRBnsESGgsswhos
-	 q1uAHYwqTpVjXHfFZ2YYXCnGweh5eIbwzmbg8HvW2oCsNwPuubRWrIaHerftu45klQVJ+nWpduhUF
-	 /KS34Tep6B10qqgjECkPp6zWiLR1JmHYQP0cRF36Sovdzvgqfc0ChNnCb5inE9Z7s2ZtIyBfXCIzR
-	 B0/Jqp/p0+cGkJpOwxb9N46KcD+1pEmCVBbe1luZJb0yVZSbg9QyIn6IkQOWyTWrDvRRXjSvETk9x
-	 DM+drrBchaPXqFik96c/Eqc7erMELDBHwApMdW/Zl1Y6YSGRJdXp0bldK2HUF2boaM6TaeIVy5r9t
-	 d/MrRoOIZ/XrzTGhSxcva5pihBOjHoHX0VU0F6Z22ZxvViFsPiszZXCoDGZ/QrMyKKJmb20Y72SDI
-	 yyFh1c9NN41u1yMZzyq3JwvX74FGHJL3xQxRRG+4jKPlPVmWqcNNeG6vy36OPtKkDtTivJ4jXx+YB
-	 hrpoBXWB1kdUZJKNLUetSs6xz7evYwIvWkhgoCEX1gyJ2iHLVqOJegRRGV3LrntBGtcoav8QOFWvh
-	 dK4FNW5WGkKrSpr83gkyegxLQglNfToc4ij2eke8fC93fBsOzCHxiZodRjwfNbXdBmYcORAS/ZauM
-	 bfRAR3Y3JO+2vQp0RYg1Zpz+Tcj5YHezR6TCb/jItwJgGGSk=
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?UXVlbnRpbiBTY2h1bHo=?=" <quentin.schulz@cherry.de>, "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>
-Cc: "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v4 3/4] arm64: dts: rockchip: add CAN-FD nodes for RK3588
-Mime-Version: 1.0
-Date: Fri, 3 Jul 2026 22:53:32 +0800
-X-Priority: 3
-Message-ID: <tencent_6D8030C4363FF6A6191A0C19F384BE91BE07@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <20260703-master-v4-0-47d40bbf5fda@qq.com>
- <tencent_48121342466E02301067FDB89BEA68886509@qq.com>
-	<8c5be502-c520-42f5-9f2b-c49c04e99f6a@cherry.de>
-In-Reply-To: <8c5be502-c520-42f5-9f2b-c49c04e99f6a@cherry.de>
-X-QQ-mid: xmsezb41-0t1783090412tldcxqjes
+	id 1wfgVY-00000007XX6-3x55;
+	Fri, 03 Jul 2026 16:12:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=sEs4rY7eHqvNO9iNPud7g4FzDBOXrr28xDXC3lthqhM=; b=Nvvw3IFWR+JVGJVmxPzeEJSXsb
+	5aMY2F1V9t+poqC7mKWF2rFowHP+iGLhSVv3M21edc0tutACoaqePA2o7KuyiHQXfpKkq0HTHeD3+
+	y1zh48ybvfK/BXuQudhUtfPm2CXIThJlqDRxfP7rBkq627HZ2K2VDdyF2iF34xEW9MDohn7z6C8Da
+	KqmyvcIpVUrMlJFk2x84W/n7fMzNd1YjqO+sd83EyJJaEXgfcsqx4u/NWhYQDWnwSS2W3Gpbkgjog
+	iHRtxclyuNNsCK9iLyoTzH7qzAeD0YeFu0kESBaGSxSJEnAId7/u1uwb9SyOk4s1fcAPhDaGi2MTU
+	GaqHM7fg==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ Brian Mayer <bleemayer@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: add HYM8563 RTC to Radxa CM5 IO board
+Date: Fri, 03 Jul 2026 18:12:47 +0200
+Message-ID: <2960762.AiC22s8V5E@diego>
+In-Reply-To: <CAB3eKoDcp=rVGDpvAHEeVLG3rHFw2E1XXxCe2QaApX0aLkyXyA@mail.gmail.com>
+References: <CAB3eKoDcp=rVGDpvAHEeVLG3rHFw2E1XXxCe2QaApX0aLkyXyA@mail.gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_075344_501932_3334927D 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20260703_091253_044539_807418CA 
+X-CRM114-Status: GOOD (  15.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,15 +65,27 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUXVlbnRpbiwKCgo+wqA+wqBEZXNjcmliZcKgdGhlwqB0aHJlZcKgQ0FOLUZEwqBjb250cm9s
-bGVyc8KgaW50ZWdyYXRlZMKgaW7CoFJLMzU4OMKgaW7CoHRoZcKgYmFzZQo+wqA+wqBTb0PCoC5k
-dHNpLgo+wqA+Cj7CoD7CoEFkZMKgQ0FOMCzCoENBTjHCoGFuZMKgQ0FOMsKgbm9kZXPCoHdpdGjC
-oHRoZWlywqByZWdpc3RlcsKgcmFuZ2VzLMKgaW50ZXJydXB0cywKPsKgPsKgY2xvY2tzwqBhbmTC
-oHJlc2V0cyzCoGFuZMKga2VlcMKgdGhlbcKgZGlzYWJsZWTCoGJ5wqBkZWZhdWx0wqBzb8KgYm9h
-cmTCoERUU8KgZmlsZXMKPsKgPsKgY2FuwqBlbmFibGXCoHRoZW3CoGFzwqBuZWVkZWQuCj4KPsKg
-UmV2aWV3ZWQtYnk6wqBRdWVudGluwqBTY2h1bHrCoDxxdWVudGluLnNjaHVsekBjaGVycnkuZGU+
-CgpUaGFua3MgZm9yIHRoZSByZXZpZXcgYW5kIGZvciB0aGUgUmV2aWV3ZWQtYnkgdGFnLgoKQmVz
-dCByZWdhcmRzLApDdW5oYW8KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+SGkgQnJpYW4sCgpBbSBEb25uZXJzdGFnLCAyLiBKdWxpIDIwMjYsIDIxOjA5OjIwIE1pdHRlbGV1
+cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgQnJpYW4gTWF5ZXI6Cj4gSGkga2VybmVsIHRl
+YW0uCj4gCj4gSSB3YXMgdGVzdGluZyBidWlsZGluZyB0aGUga2VybmVsIGZvciBteSByYWR4YSBj
+bTUraW8gc2hpZWxkLCBhbmQgaXQgdHVybnMKPiBvdXQgdGhlcmUgaXMgbm8gcnRjIGluIHRoZSBE
+VFMsIHNvIEkgZ290IGl0IGZyb20gdGhlIHJhZHhhIGZpbGVzLgo+IFRoaXMgaXMgbXkgZmlyc3Qg
+ZW1haWwgdG8geW91LCBwbGVhc2UgaGVscCBtZSBjb3JyZWN0IGl0IGlmIHNvbWV0aGluZyBpcwo+
+IG9mZiB0aGUgc3RhbmRhcmRzLgo+IAo+IFRoZSBjb21taXQgYXR0YWNoZWQgZG9lcyB0aGUgdHJp
+Y2suIEkgdXNlZCBBSSB0byBhc3Npc3QgbWUgaW4gdGhpcyBpbgo+IGNhc2UgeW91J3JlCj4gd29u
+ZGVyaW5nLgoKR2VuZXJhbGx5LCBwbGVhc2UgZG9uJ3QgcG9zdCBwYXRjaGVzIGFzIGF0dGFjaG1l
+bnRzLgpGb3IgcmV2aWV3IGNvbW1lbnRzIGl0IGVzIGV4cGVjdGVkIHRvIGJlIGFibGUgdG8gY29t
+bWVudAppbmxpbmUgaW4gdGhlIHBhdGNoLgpJZGVhbGx5IHVzZSBnaXQtc2VuZC1lbWFpbCBvciBi
+NCBmb3Igc2VuZGluZyBwYXRjaGVzLgoKRm9yIEFJIGFzc2lzdGVkIGNoYW5nZXMsIHRoZXJlIGlz
+IGFuIEFzc2lzdGVkLWJ5OiB0YWcgWzBdCgpQbGVhc2UgZHJvcCB0aGUgVGVzdGVkLWJ5IHRhZyAu
+Li4gYXMgeW91J3JlIHNlbmRpbmcgaW4gdGhlIHBhdGNoIGFuZAp5b3VyIHNpZ25lZC1vZmYtYnkg
+aXMgb24gaXQsIGl0IGlzIGV4cGVjdGVkIHRoYXQgeW91IHRlc3RlZCB0aGF0IGNoYW5nZSA6LSkg
+LgoKClBhdGNoIGNvbnRlbnRzOgpQbGVhc2UgdXNlIG5hbWVzIGZvdW5kIGluIHRoZSBzY2hlbWF0
+aWNzIC4uLiB0aGUgcGluIGlzIG5hbWVkCiBydGNfaW50X2wgdGhlcmUgLi4uIHNvIHRoZSBwaW5j
+dHJsIGVudHJ5IHNob3VsZCBiZSAicnRjX2ludF9sOiBydGMtaW50LWwgeyAiLi4uCgpUaGlzIGFs
+bG93cyBlYXNpZXIgbG9va3VwcyB3aGVuIGdvaW5nIGZyb20gRFQgdG8gc2NoZW1hdGljcyBhbmQg
+YmFjay4KCgpUaGFua3MKSGVpa28KCgpbMF0gaHR0cHM6Ly9kb2NzLmtlcm5lbC5vcmcvcHJvY2Vz
+cy9jb2RpbmctYXNzaXN0YW50cy5odG1sCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
