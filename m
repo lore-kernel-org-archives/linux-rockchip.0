@@ -4,92 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108C2C44501
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 02:37:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3273C43458
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 02:57:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=XRX3Lhbf25lFBqPtg+uYH3YWYgms9QdN5m/afowfg4w=; b=oJC45BpkTyL8DKsQUWq6ZnysZm
-	91Fol15U7kwgusMCD/bdxGkwqJe6aXnPYRaa+ROV858AojdA3zBJItUJfdtA3iDB3PNtA2mMy+FKm
-	ntInPmHqLTI4V9Fh+434b40xDG/tdMVvhePcB2TQ8L0/JVdQLvM1DQnUJFgqnZzInK78GJf1nOlP3
-	IR/poM1FTmlvaddBJwZoHJnYzxQvVA2bfyIhJMU+wmQqD3ZH+g6Ousna0ENLUMWng/42qPm8gzhVf
-	6XGeZjf2SCTjoO17vGNYj9PDqvYgafwMaFgQs1hqL9KFDE0mq2FEU9EQfy03x6h1zhEOg/k2j4a8P
-	APYx+RVg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mVUy86iNGbMFbwLrHF8ggEEmhvSl4aenEWlNHj+Wd90=; b=1z3u8jxwAEg59K
+	wdhdi4F4cy1B8HzxE9QYCdFmtf9i4QICRzWU88sTu5CuNj8rz+Cp0AD+/b4T4UDlJdK0Xi661tpzY
+	4FzrLrsBwS/PgjUVk03RIFdffHANpVo2HQJCbx6OsI5Hjx15VSjiy4BsCfHG/lggqX47YrmL2t6/P
+	rf8GcH6SFYXWW0qedi9HrwyokPfIVWg3Nw2V8dNIjohqfR019S1PfRtlDCpOA8psSHLaKVCA2lyFa
+	VPaibtSF7JAzejFxDjpupJrVVfW3c36fGtldKYWg1y2HAvcYCyW7AkQrtHhEyqc2gwVIXIZrOzkQD
+	9V/qJkWLlHS2YDmnqNfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfTmO-00000005tYV-3KtP;
-	Fri, 03 Jul 2026 02:37:24 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1wfU5T-00000005uW8-0pOF;
+	Fri, 03 Jul 2026 02:57:07 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfTmN-00000005tXi-1h3V
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 03 Jul 2026 02:37:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Message-ID:Sender:Reply-To:Content-ID:Content-Description;
-	bh=MPrJpcCg1b1pZTUffuYmaHM2iwNl76j5H9WCkOROtFM=; b=lPyJoU251ZJ5b6LlQNtbeL7aSl
-	nEzDGvNf2Ossl1QH/FX2wHJNLEyvGkh0T7uVQymFsBm+V1fUtUnE2HGtv55pQkmmU1TzJ93Xbjuuc
-	dOklMPNGN2ZvE3qf/lYi9j/kZojteCcH0QPVsETwCtZ73o+T68Yhns4AA6qWBhhLJiGE9CguL59XK
-	CiwLWTg6xgKP6lmz1JwUr/bxWpQHC7NX7UXUYrdaHOq3tlW19Zp8j8RQ9e0ukzQBq08lISD1F8ZKX
-	yhW57zpTzqI25tfd82AklnBV53zZR4U3NdHwi7f0N4jcJkqvygxihPy2ZANmSzZuIMdwb9QvZ8BdY
-	WyC1q4jw==;
-Received: from out162-62-57-252.mail.qq.com ([162.62.57.252])
-	by casper.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfTmH-00000009Wo3-3n04
+	id 1wfU5Q-00000005uVP-19TQ
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Jul 2026 02:37:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1783046230; bh=MPrJpcCg1b1pZTUffuYmaHM2iwNl76j5H9WCkOROtFM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=zancSviRdr0n6Ji6WzdfrJ3lm7YC+EblxHXNRbkV20zHiruh2OCvH7ogGla1Q7Tp5
-	 hhPzcr4iIvYfABSwttF8Bh0Lj3G3vqpAhZs8hECTNgf63NLcfG2MxNj5q2f/2ONUPd
-	 +ryH5ECYKmP9LMp08Z7Bxcg0kvBFl1fxvzVIQDm0=
-Received: from ubuntu2204.localdomain ([218.4.149.66])
-	by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
-	id 8F90EEF9; Fri, 03 Jul 2026 10:35:57 +0800
-X-QQ-mid: xmsmtpt1783046161tl1yngyaw
-Message-ID: <tencent_C76518126A4714027810EBFC749ADA68EE09@qq.com>
-X-QQ-XMAILINFO: MDbayGdXPuoeIxgDGEDZi/RDzoLLCvVKclLzcRsJhAYxagIo1MwwfbqeN20hcX
-	 bgzd90NA/jluIuqSOwuyU46uIGbBteqBlpnJkf6js5ptPq0OULC6MBF+VORm2BEV12MgqNYy5aX3
-	 oVqnTKNhAwq+zSLco6MAoI43Z8/RkBYWfOvd4tktjXp+1iPLl+mqzPDfEQFlqmOdDfbdQ/avW9LH
-	 9YdDflroPoZrHWEbWJHFH6W08zjUF3nOIDPkIi9JhBK3N6UdYB+D/ZzqLQklB6n1pDEyCxzSLC+o
-	 IJWltA4+Wb/2UzGv9UiEyfvmd/OyfGIYMyoP1YAXr2W9jhTzYXS+nVLXlteitNIbJMCFKZyL67Tx
-	 dVlXr+GbiwY4tBCq+N3vmpy76w4ZqPFj4p/DiYCQ4pj7jPw4KeXYGe2DsXEj/u6Pdiag1MmioVEo
-	 0SP3gDuszbkXWjRWEqkm6GtptAWb0mPiaIr3SnpygZwPb/gr0Hdzp0k8TXHfFhsN90iW1bykaBMI
-	 lq7E7A05e4Zlm4s1SBijlBXY3DLq0h/6C2fQcmvjX66spOzAerckcfc2Gm5TIo+oFz/KTyAxmmHj
-	 f1pqhVwYIQzh8IKagMU98fCOuHG3kZC3lQI8vPKaMSK3XDemzolDJ2hJwkJXYwQ6cYWOoQyk/vQn
-	 yR2cz60Z1vlpU/yQDB8rDEAm2eMmEa4nv5fZ07yzmwZWdLfox0mmjVZs6YCt3luehq4Auk+6dbFl
-	 Gih9k4BVlepeH1EpEClffTweGcd30/tNN7yy5xi+A6saiPcFx1Of9a8GYvNtghBcI5AkWJ5wGhU6
-	 yNk0YrAl8hdzvsyNGTmxQCwj1OZrHgU3LaO9fQKyTZDVnA5eFdO/Cs3LtfLla8xIWtdvHaMoHFK+
-	 fKD5EjQ/el/QsBIi4l12m5LpQGMYurBrCptGWrmxQ0vCtfnnaQsHv5K09DdKvuuZDMLxLen7xAiK
-	 bDsBDqxQGLhjVVKG54Sd0OPiFd3OS3ivtTssSIlX5eI4dXXeoLluyz36iCgtBTsvz0J+zknMUUEV
-	 dH05oWo1fYYyWW+ETS/42ecQjnsxqoA4K0JuXWom5CP5lw3w38ykPzl3tmBKQvKL/gj+tJFR2s76
-	 YT/FMLXbemgDb+r2f9LdHiG4cMixWD1MuILqfyyFZMmY8LktUJOCy8B4yv1lT3Pyqo2JK2
-X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
-From: Cunhao Lu <1579567540@qq.com>
-Date: Fri, 03 Jul 2026 10:35:41 +0800
-Subject: [PATCH v3 2/4] can: rockchip: add RK3588 CAN support
+	Fri, 03 Jul 2026 02:57:05 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id 41be03b00d2f7-c95d0a54ea5so71511a12.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 02 Jul 2026 19:57:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783047423; x=1783652223; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=JlV3zJ5RwhKne2jUh8CcjrZlF2RdUTEpohrGS1TCb5w=;
+        b=EkH+AHiS+cU3QilD7Q3Fh+CO/3SDcvRSsdNGZIVOC8mWu4z8BPhcNPyqTjaxCdosWn
+         ymXqtyAI9Cfm8UA6yWdmBXSwHG0ruLFBFB1crVTz6d5vdcTl+QGdCqpBKnM55rrpniRx
+         FQujtO+FTvUZJyAdB0V0mtRtuLR644tOYxHs29qmdSt4jNTDEkpZNsoECqE0yD5BuLz0
+         wJaRY4Y0qduMSmJZgrPIV5eMH2XWpcSOUQTK2o5wiQd0C/+71BOz/qESNb2095WCGxeS
+         780fcM/eZkIaRtgCT0JUYGIf6bvMd+ruKoe1K8z774X0sgbbT6+uCznzD43XSU08zxNg
+         kD9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783047423; x=1783652223;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JlV3zJ5RwhKne2jUh8CcjrZlF2RdUTEpohrGS1TCb5w=;
+        b=M258+MVgE04smeqTv0HSFWLdIEGCad1qHUH5KX0CkQxsqy9JrjYyOqNyIQeyvGdbgs
+         E0L0veVI5cNseoAH2Eok+4XOFMDoWfoG0TtVVKI6ofkVly7ctz8/SgF4ufLLLNspR9WU
+         3hRDwRTSA3skf3gAroq83pZ3xNSAjrJFA/1cYxMAcA3ya6D2z/kxHCbOIvLP5c9vBhkc
+         cwyTN3DZVPkyo9RfR6WjI2AdUI2NFl2plc32u00WCEFP7irxUZ0tpZSgk5IMbmUXpKhj
+         3865185hapMQKaDx2mV8QBgdapP5XugVDpTHwM7Wny9RQNowbij+/ZRw1AsGrKuradSj
+         MeBg==
+X-Forwarded-Encrypted: i=1; AFNElJ8CP+WqolJYDT50n/EIpHE4mC+RbfINv5TpUsT+11QxKJzVPCHZYZf8hpLGK7rMQGU01PSP0xP6JtFqFbUd8Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyt8Vuzklytsab6UYPMrlLPZ4KYXCZAt2GKExsR1H2gluFlhb8B
+	dYqudFA66N1WBBA4iKNNFhjCTCzHxKIEUXLChZr+HBcZz5TV9kF0NVow
+X-Gm-Gg: AfdE7cn/3oPRHXK+M4Vv/b+SBIXCLLzqgLYUDSj4tDRwOtgIUoV8MWA9UhCkCJFvIDs
+	Com9mvxtj0WlK49MNV7xRquFx4m5yrOtFhON6spuvqVHpGvzXih0xsazrJY+WO6+/bObitANEZy
+	SgUcN1aHpneuwxhzsqTzOwD2ihUv8tfBM3A2VgKAPsakh0gET0+CzhZkoPDxPvzfMPBTA69jqWY
+	4pvlJWJ72cHoIi+7Y4XEqy4uFejKW0AA9Zuw45SRXIUEx8G5JYenb/Ak2Hy/eL2VnERN7Tw2szf
+	aTdkv8ZTojbBnDgJfDs9KkHl2rLtZYX7krafjkwehCxVqwAfiVIKESeEWoQDkZsAQtAbHLGwFmS
+	x2edeSQh947kXAmVUK2+LlbqIKYCad2oJL2cZ6oo3QZmpihkPSeDX08niUiybJzhOi9L+M/LXUC
+	fTMROEqbqOZhOJ6F3VxCAakfEzKj90CM0p2m0clGrv89awj0WebaBQOgLooa4=
+X-Received: by 2002:a05:6a21:4516:b0:398:9379:d04d with SMTP id adf61e73a8af0-3bfed22ecacmr9856159637.24.1783047422829;
+        Thu, 02 Jul 2026 19:57:02 -0700 (PDT)
+Received: from fabio-Precision-3551.. ([2804:1b3:a800:5116:5334:8739:4661:fde2])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13b3c7fa65asm14645620c88.6.2026.07.02.19.56.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Jul 2026 19:57:02 -0700 (PDT)
+From: Fabio Estevam <festevam@gmail.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Fabio Estevam <festevam@nabladev.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Fix rk3588s-roc-pc audio description
+Date: Thu,  2 Jul 2026 23:56:48 -0300
+Message-ID: <20260703025648.180135-1-festevam@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-OQ-MSGID: <20260703-master-v3-2-6d56de6fd2f3@qq.com>
-References: <20260703-master-v3-0-6d56de6fd2f3@qq.com>
-In-Reply-To: <20260703-master-v3-0-6d56de6fd2f3@qq.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
- Vincent Mailhol <mailhol@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-can@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Cunhao Lu <1579567540@qq.com>, 
- Heiko Stuebner <heiko.stuebner@cherry.de>
-X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_033718_583792_47D279B0 
-X-CRM114-Status: GOOD (  18.33  )
+X-CRM114-CacheID: sfid-20260702_195704_305189_E5FF8289 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,173 +102,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for the RK3588 CAN controller by introducing a dedicated
-model ID and OF match entry.
+From: Fabio Estevam <festevam@nabladev.com>
 
-The block is closely related to the existing RK3568 variants, but it
-cannot reuse their match data unchanged. In particular, RK3588
-encodes RX_FIFO_CNT in bits 7:5 instead of 6:4, so the RX path needs
-SoC-specific handling.
+The rk3588s-roc-pc ES8388 codec is connected to the i2s0_8ch audio
+interface.  Use the matching I2S0 MCLK output for the codec clock
+instead of I2S1.
 
-The RX FIFO count bitfield difference was found by comparing Rockchip's
-vendor kernel 6.1 CAN support for RK3568 and RK3588. Runtime testing on
-RK3588 also confirms that bits 7:5 are needed.
+Using the I2S1 MCLK can leave the ALSA PCM running while the codec has
+no usable master clock for the active audio path, resulting in silent
+headphone output.
 
-Enable the existing erratum 5 empty-FIFO workaround for RK3588.
-Heiko reproduced erratum 6 on RK3588, so enable that workaround as
-well.
+Also make the CPU DAI provide bitclock and frame clock.  This matches
+the active Rockchip I2S controller side and avoids relying on the codec
+to drive the bus clocks.
 
-Keep RKCANFD_QUIRK_CANFD_BROKEN enabled for RK3588, so CAN-FD stays
-disabled for now. Local testing did not reproduce the two known CAN-FD
-trigger frames that cause Error Interrupts on RK3568 variants. Instead,
-RK3588 shows a different CAN-FD failure mode: CAN-FD frames without BRS
-work in this setup, but BRS with a data bitrate different from the
-nominal bitrate immediately drives the controller bus-off.
+Route the headphone output to LOUT2 and ROUT2, matching the old 5.10
+BSP device tree.  LOUT1 and ROUT1 are used for the speaker route there,
+so using them for the headphone widget can leave the headphone jack
+silent even while the ALSA path is active.
 
-Co-developed-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+The old BSP also used hp-con-gpio on GPIO1_A4.  Model that GPIO as a
+simple audio amplifier so DAPM enables the headphone connection when the
+headphone path is active.
+
+Cc: stable@vger.kernel.org
+Fixes: 7f9509791507 ("arm64: dts: rockchip: add DTs for Firefly ROC-RK3588S-PC")
+Signed-off-by: Fabio Estevam <festevam@nabladev.com>
 ---
-v2 -> v3:
-- Use Co-developed-by for Heiko's RK3588 contributions and add his
-  Signed-off-by
-- Collect Heiko's Reviewed-by and Tested-by tags
----
- drivers/net/can/rockchip/rockchip_canfd-core.c | 12 ++++++++++++
- drivers/net/can/rockchip/rockchip_canfd-rx.c   |  5 ++++-
- drivers/net/can/rockchip/rockchip_canfd.h      | 26 +++++++++++++++++++++++++-
- 3 files changed, 41 insertions(+), 2 deletions(-)
+ .../boot/dts/rockchip/rk3588s-roc-pc.dts      | 23 +++++++++++++------
+ 1 file changed, 16 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 29de0c01e4ed..178d69edf1bb 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -50,6 +50,13 @@ static const struct rkcanfd_devtype_data rkcanfd_devtype_data_rk3568v3 = {
- 		RKCANFD_QUIRK_CANFD_BROKEN,
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
+index d534d662c40f..99853880aaac 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
+@@ -23,16 +23,19 @@ analog-sound {
+ 		compatible = "simple-audio-card";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&hp_detect>;
++		simple-audio-card,aux-devs = <&headphones_amp>;
+ 		simple-audio-card,name = "rockchip,es8388";
+-		simple-audio-card,bitclock-master = <&masterdai>;
++		simple-audio-card,bitclock-master = <&cpudai>;
+ 		simple-audio-card,format = "i2s";
+-		simple-audio-card,frame-master = <&masterdai>;
++		simple-audio-card,frame-master = <&cpudai>;
+ 		simple-audio-card,hp-det-gpios = <&gpio1 RK_PA6 GPIO_ACTIVE_LOW>;
+ 		simple-audio-card,mclk-fs = <256>;
+ 		simple-audio-card,pin-switches = "Headphones";
+ 		simple-audio-card,routing =
+-			"Headphones", "LOUT1",
+-			"Headphones", "ROUT1",
++			"Headphones", "Headphone Amp OUTL",
++			"Headphones", "Headphone Amp OUTR",
++			"Headphone Amp INL", "LOUT2",
++			"Headphone Amp INR", "ROUT2",
+ 			"LINPUT1", "Microphone Jack",
+ 			"RINPUT1", "Microphone Jack",
+ 			"LINPUT2", "Onboard Microphone",
+@@ -47,11 +50,17 @@ masterdai: simple-audio-card,codec {
+ 			system-clock-frequency = <12288000>;
+ 		};
  
-+static const struct rkcanfd_devtype_data rkcanfd_devtype_data_rk3588 = {
-+	.model = RKCANFD_MODEL_RK3588,
-+	.quirks = RKCANFD_QUIRK_RK3568_ERRATUM_5 |
-+		RKCANFD_QUIRK_RK3568_ERRATUM_6 |
-+		RKCANFD_QUIRK_CANFD_BROKEN,
-+};
+-		simple-audio-card,cpu {
++		cpudai: simple-audio-card,cpu {
+ 			sound-dai = <&i2s0_8ch>;
+ 		};
+ 	};
+ 
++	headphones_amp: audio-amplifier-headphones {
++		compatible = "simple-audio-amplifier";
++		enable-gpios = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
++		sound-name-prefix = "Headphone Amp";
++	};
 +
- static const char *__rkcanfd_get_model_str(enum rkcanfd_model model)
- {
- 	switch (model) {
-@@ -57,6 +64,8 @@ static const char *__rkcanfd_get_model_str(enum rkcanfd_model model)
- 		return "rk3568v2";
- 	case RKCANFD_MODEL_RK3568V3:
- 		return "rk3568v3";
-+	case RKCANFD_MODEL_RK3588:
-+		return "rk3588";
- 	}
- 
- 	return "<unknown>";
-@@ -846,6 +855,9 @@ static const struct of_device_id rkcanfd_of_match[] = {
- 	}, {
- 		.compatible = "rockchip,rk3568v3-canfd",
- 		.data = &rkcanfd_devtype_data_rk3568v3,
-+	}, {
-+		.compatible = "rockchip,rk3588-canfd",
-+		.data = &rkcanfd_devtype_data_rk3588,
- 	}, {
- 		/* sentinel */
- 	},
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-index 475c0409e215..24e87daa1df0 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-@@ -281,7 +281,10 @@ rkcanfd_rx_fifo_get_len(const struct rkcanfd_priv *priv)
- {
- 	const u32 reg = rkcanfd_read(priv, RKCANFD_REG_RX_FIFO_CTRL);
- 
--	return FIELD_GET(RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT, reg);
-+	if (priv->devtype_data.model == RKCANFD_MODEL_RK3588)
-+		return FIELD_GET(RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT_RK3588, reg);
-+
-+	return FIELD_GET(RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT_RK3568, reg);
- }
- 
- int rkcanfd_handle_rx_int(struct rkcanfd_priv *priv)
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 93131c7d7f54..82a617e4ca66 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -214,7 +214,8 @@
- #define RKCANFD_REG_TXEVENT_FIFO_CTRL_TXE_FIFO_ENABLE BIT(0)
- 
- #define RKCANFD_REG_RX_FIFO_CTRL 0x118
--#define RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT GENMASK(6, 4)
-+#define RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT_RK3568 GENMASK(6, 4)
-+#define RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_CNT_RK3588 GENMASK(7, 5)
- #define RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_FULL_WATERMARK GENMASK(3, 1)
- #define RKCANFD_REG_RX_FIFO_CTRL_RX_FIFO_ENABLE BIT(0)
- 
-@@ -331,6 +332,11 @@
-  * rarely with the standard clock of 300 MHz, but almost immediately
-  * at 80 MHz.
-  *
-+ * Tests on the rk3588 show the same empty FIFO condition.
-+ * In that setup rx_fifo_empty_errors increments when the bus
-+ * transitions from idle to high CAN-FD load and stops growing once
-+ * the bus reaches a steady state.
-+ *
-  * To workaround this problem, check for empty FIFO with
-  * rkcanfd_fifo_header_empty() in rkcanfd_handle_rx_int_one() and exit
-  * early.
-@@ -344,6 +350,8 @@
- /* Erratum 6: The CAN controller's transmission of extended frames may
-  * intermittently change into standard frames
-  *
-+ * Tests on the rk3588 show the same problem.
-+ *
-  * Work around this issue by activating self reception (RXSTX). If we
-  * have pending TX CAN frames, check all RX'ed CAN frames in
-  * rkcanfd_rxstx_filter().
-@@ -408,6 +416,18 @@
-  *     cansend can0 002##07217010000000000
-  *   DUT:
-  *     candump any,0:0,#FFFFFFFF -cexdHtA
-+ *
-+ * Tests on the rk3588 show a different CAN-FD failure mode: these two
-+ * CAN-FD frames do not trigger Error Interrupt or Error-Warning. CAN-FD
-+ * frames without bitrate switching work in this setup, but BRS with a
-+ * data bitrate different from the nominal bitrate drives the controller
-+ * bus-off immediately.
-+ *
-+ * To reproduce:
-+ * host:
-+ *   cangen can0 -I 2 -Li -Di -p 10 -f -g 1 -c32 -b
-+ * DUT:
-+ *   cansequence -rv can1 -f
-  */
- #define RKCANFD_QUIRK_CANFD_BROKEN BIT(12)
- 
-@@ -424,6 +444,9 @@
-  *     cansequence -rv -i 1
-  *
-  * - TX starvation after repeated Bus-Off
-+ *   Tests on the rk3588 show the same problem. In a
-+ *   10-cycle Bus-Off recovery test, 9 cycles failed to send after the
-+ *   controller restarted.
-  *   To reproduce:
-  *   host:
-  *     sleep 3 && cangen can0 -I2 -Li -Di -p10 -g 0.0
-@@ -434,6 +457,7 @@
- enum rkcanfd_model {
- 	RKCANFD_MODEL_RK3568V2 = 0x35682,
- 	RKCANFD_MODEL_RK3568V3 = 0x35683,
-+	RKCANFD_MODEL_RK3588 = 0x3588,
- };
- 
- struct rkcanfd_devtype_data {
-
+ 	chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
+@@ -327,12 +336,12 @@ &i2c3 {
+ 	es8388: audio-codec@11 {
+ 		compatible = "everest,es8388", "everest,es8328";
+ 		reg = <0x11>;
+-		clocks = <&cru I2S1_8CH_MCLKOUT>;
++		clocks = <&cru I2S0_8CH_MCLKOUT>;
+ 		AVDD-supply = <&vcc_3v3_s0>;
+ 		DVDD-supply = <&vcc_1v8_s0>;
+ 		HPVDD-supply = <&vcc_3v3_s0>;
+ 		PVDD-supply = <&vcc_3v3_s0>;
+-		assigned-clocks = <&cru I2S1_8CH_MCLKOUT>;
++		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
+ 		assigned-clock-rates = <12288000>;
+ 		#sound-dai-cells = <0>;
+ 	};
 -- 
-2.34.1
+2.43.0
 
 
 _______________________________________________
