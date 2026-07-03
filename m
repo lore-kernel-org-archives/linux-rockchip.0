@@ -4,77 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89AFDC44502
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 08:01:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0CDCC43458
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 08:47:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=/WHAJnx55R0725vYx8lO5YvbIXWROPESmhI7dCc3Kao=; b=EykLeovmQTYYOrjL85r0K4BkbB
-	VFG1XyQktfw5o/pGSLI5JJHgxDQl775n8KJ8HV4HpeXG6xC0ubgfFuPwBU5vyXb5WA/WkzmvBb8bu
-	sQiWbbp3jsQEtuoGWLJKsUwczU27yQZGoaF9SN432Ut/0vx9ErHwdTh5wmu8LzA3TFa8hlRKQxoGS
-	XX1f2UnrsH6J5//Oabu9CHp3NhPDaKeapvM+oP0ovoWDaXzOTvVyZUjeTL38hAmsxJPsw4sdegqsV
-	Yn2osUnOv2a1auChS4IcKYowoctTyv+UzrHlh8mFAht4wffT6jLU9nK7VfwmBEqmhnFyFT7N5pa5f
-	US2emwng==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8XdVL34kDwClliEB9FIjFb6s3Z7l6xqOG0BaOh9PLzY=; b=ebIGSv5DgS3RGI
+	q2Amp/G3aIMA2kKwdwUM3vAtY2dWjoc0rWZXoLM8NVLFgIJ5bJkF7wppMQp/5CXki+cpuG3NDsXBu
+	xDsK8tkEu5rbf4OkmNuE+Yzxq5leqaE2Ah+2MgT6IJq2oq1cVpn9vdflaX1xpeHE+21ayZVz+jFMd
+	y5wTuqEuQPYbKglZFRycRDxAyADI7bf4t+CKYKAvC07rBdCmalK9qQ6sSs5ajNZxAohQMW2XWl8vF
+	HAiN6Qe7+HuZuzMm6pOdyIETGvEfJovaegMTZiJNXA0Yl3oMgiXWnXcg3wHOhS9rLeL9vuCPvmSpc
+	tND3ua7FIjU8+zGKDoEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfYqS-00000006K6y-027t;
-	Fri, 03 Jul 2026 08:01:56 +0000
-Received: from out162-62-57-87.mail.qq.com ([162.62.57.87])
+	id 1wfZYe-00000006PMQ-3lUI;
+	Fri, 03 Jul 2026 08:47:36 +0000
+Received: from mx1.wiredblade.com ([72.51.58.35])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfYqM-00000006Jwa-0syA
+	id 1wfZYb-00000006PLs-3AcS
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Jul 2026 08:01:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1783065706; bh=FNpeTTaxZzlztLRm8w0bMFvau88h3vRn+4DN6i85aPU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=A/My9xQj4mts/W3erMsGKGNTu1fD8b1M7Xsce0ojDdt2OnAYWOsQpyTNF/LYXtHwZ
-	 V2tTGZ4yVhfLTnizkdzrrQc3zQ5kI+VnqfzyP9Y5zIsUXmMoOJpvCiF2MOKho/eCs4
-	 8yFwwgGEXsKczZesLcj1AYZOPeism/vsj/KcgjtY=
-Received: from ubuntu2204.localdomain ([218.4.149.66])
-	by newxmesmtplogicsvrsza73-0.qq.com (NewEsmtp) with SMTP
-	id 6622C6D; Fri, 03 Jul 2026 16:01:38 +0800
-X-QQ-mid: xmsmtpt1783065703to60n66h5
-Message-ID: <tencent_48121342466E02301067FDB89BEA68886509@qq.com>
-X-QQ-XMAILINFO: NbgegmlEc3Ju/QNpdGKi0FoBdgmbPC6VWoOUSy+A92JizyDLsIv3UryUA44qsT
-	 x7qANg0RMIeBE+xi5cD7PxKOno8sb+BqRINt74xhZS4bCF4NA9Rr5gHQuQFTdQMItBlwCnajDMvI
-	 lEaHwCDf40gx8HhtU5raAjpbQd5eg5jb7ic18UEDfJGKAYcm9cPrKB7TUaME24iR/657lzee3PVR
-	 kTnHh0lcMudeqo5nGFxXVrDSmcjvHsQAuz1w09jhAx2MPWP22aaqpogWl5B+n/MwzbNIYvckn3MM
-	 5+vrWvOE7lEzjiki7faNqSRa+OcSEgHYlFyS7nYe0TxPKvN4F8MmgJQWmRGiPjRKcTDx6/vsNq1T
-	 qYu3EHPzytPnjihLBkgKokOsavnRKbrDHLHdK1nMgySqneBEWH9vCGHF8TlF8eS0ZxJ/bghNqnxB
-	 l9m/j4SShuFlJkk2QrnP7Ar0J35m/FdW7iGp55S9LiOUFMuMPfxvq7nkubAleHJ7usg4JM92qy1+
-	 BEBzH/dKCX+cei6RKioVwPDrv5mOcGNzFxOUXBXGfdqbAzSzCJTHAGQKNTbTtRq3OVYFJL3aEzRJ
-	 ejNxbb6GnY1jKoMAYuTImjFuqVwlrIo8f0HNQxOZKU333S0DY9owWC7yd0lIZZYW1SXmZdR2tkWs
-	 QUJ0DmLphDCdXN+cKZ8lq1ASTy9/nQupmxOt6XdN/D+0QMSN434aDUsZg8GzyeGGV7TJw1wuMEAM
-	 xMKY8BDz3GirJE25SI4asX8bjEUnUpgrF31L305SgIQCHK0a4owSeu+TRlz0luGVk7PZ3UG8lIRx
-	 2h48u6E3xCFYa5Qdj1em+koNtGf7/O8NwmXJI0rTwqFsH9SuhVnNH/3XqL5oObopaxblZ5bPhx2q
-	 y2STno/2c3sv9OVbK27FCggFf1FEqQF5aSWD+wxcu6fzfk0Ecv+j8QS9jRX4jxkz/SD/tMwNgC3Z
-	 FiJ0GIqUiwxUGv4ZLmhau6M+yjSVRD1RlsqsvG/uMFmcWkQ3PaAX3EsS+LRhcFDpQwhKkEN3QFbI
-	 PWc6bzRneBErPz9v6bE4HxCSl1R6wLIhw267UWmnA35PIw6cirV2WiDl7bVxnue67pCekL3Rbzpc
-	 8TXFpTJeOaq6/4rlO92DFpFDH5KSFXe4O0OnAAEtp0Im6ZogDF4kym7F2CSQ==
-X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
-From: Cunhao Lu <1579567540@qq.com>
-Date: Fri, 03 Jul 2026 16:01:28 +0800
-Subject: [PATCH v4 3/4] arm64: dts: rockchip: add CAN-FD nodes for RK3588
+	Fri, 03 Jul 2026 08:47:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; d=psihoexpert.ro; s=dynu;
+	c=relaxed/relaxed; q=dns/txt; h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Transfer-Encoding;
+	bh=JCV7TNmivDrKZTMMPq5ptyzKo/jd7S9u7SuQSkaTGPw=;
+	b=T4uzixyYfCnse4p2tvAV6lMAiSXmHIHSRpFuWYDiYoLniKYKEarVqVSwDKqeT0AsuZO5IByVyCECcFoPuESatWe9erfIiPe28fXy7XjZegzHAdqgJ04AQVQBtg8mDFz4B8zxJP7QT4tGq2UVY3qDbwRmNOmkH9lOD+QO+Sl8Njdc6hvJsWLz90ISoT64kZ3JJJ1xScveCUeNcMdJcHS4LF0dZK1j589F/cjNaSz09xqUVfG9GfvTeX+XVY
+	Z/kUpGJ9XlAE5mEwaFKs9R5/gvr9ZPF7qKBDuxXAR9l7Ur9o+PhRtrB1W5HudByZKY/aR4XT44VCCp7Dur6XHMqot4JA==
+ARC-Seal: i=1; a=rsa-sha256; cv=none;
+	d=dynu.com; s=mail;
+	b=jxqRA+VDt4OTk0p6mSf3Cf+Lj2yA8HJ+T4t+NbirS9OKEFgshoG8aDCJ9WZVrFJY/G6fSWvoS3F7lpnmDV/whDOKgHwsYBJdWQXUMJpJ2YCOMwIoRBE8c1rUPezWmXvhoSvUg5q0i7cMcprnkCK8QmtgM7/bVFKguUmn2guoZZiq26GaG+Rhx3xjcdo+NpYBRt/Yr/4BO+2t6JyuMnbR5oTG7dhHcrBnSze0YkCBY/5nKN6hGn1AL1/fua
+	KfVgbtV2NkH5qEm9fpsrETuklEmWvEWvunpHPAhaFRcI7HbZlubsUWgU4Rl4IUc3t4/tMwcAToYwrwVko2bsuzMHEXMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=dynu.com; s=mail;
+	h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Transfer-Encoding;
+	bh=JCV7TNmivDrKZTMMPq5ptyzKo/jd7S9u7SuQSkaTGPw=;
+	b=zCCJW9uEB0eyIvYt5zFgISFo/snqX7bbCx3NUwi/PBqGld/mQj3mrej+hPPFCiU0iihab5JtqD1rCBn/wJr0XCoBIWzr9LwiFkVipm4pm1M+wR30E/c7iAaAIg3zC0EB5pjyAXKMYC8PaipVP6GG1sOXp1c7CTtpa4rTVaayWHFspUZ+ouaRvmuQ0BCJ7b5OwLc5R+ZH5HEDHeSrLoWNfy/xZ66OumPhhxca+eCt3ltHtgn8E4FNYhoVzR
+	TWvJP9vWSZpqSFakNYT/EB1LDcyv3CG71Dz+Qa287rbhfAL9vfkVymczBn9GS0LmtpdiybwzgzFQTfZJiM/V8+2Z5WRQ==
+ARC-Authentication-Results: i=1; mx.dynu.com;
+	dkim=none;
+	dmarc=fail
+Received: from TkB (188-24-192-94.rdsnet.ro [188.24.192.94])
+	by mx1.wiredblade.com with ESMTPSA
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256)
+	; Fri, 3 Jul 2026 08:47:14 +0000
+X-Original-Rcpt-To: m95d+git@psihoexpert.ro
+From: Marius Dinu <m95d+git@psihoexpert.ro>
+To: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Marius Dinu <m95d+git@psihoexpert.ro>
+Subject: [PATCH] arm: dts: rk3288-tinker: add eeprom node
+Date: Fri,  3 Jul 2026 11:44:53 +0300
+Message-ID: <20260703084645.7001-1-m95d+git@psihoexpert.ro>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-X-OQ-MSGID: <20260703-master-v4-3-47d40bbf5fda@qq.com>
-References: <20260703-master-v4-0-47d40bbf5fda@qq.com>
-In-Reply-To: <20260703-master-v4-0-47d40bbf5fda@qq.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
- Vincent Mailhol <mailhol@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-can@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Cunhao Lu <1579567540@qq.com>, 
- Heiko Stuebner <heiko.stuebner@cherry.de>
-X-Mailer: b4 0.15.2
+Authentication-Results: mx.dynu.com;
+	dkim=none;
+	dmarc=fail
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_010150_787845_06651905 
-X-CRM114-Status: UNSURE (   7.48  )
+X-CRM114-CacheID: sfid-20260703_014733_851075_B4CC2305 
+X-CRM114-Status: UNSURE (   8.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,77 +86,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Describe the three CAN-FD controllers integrated in RK3588 in the base
-SoC .dtsi.
+This board contains an EEPROM that holds the CPU serial number and ethernet
+MAC. It is used by U-boot when configured to use upstream device tree from
+Linux kernel.
 
-Add CAN0, CAN1 and CAN2 nodes with their register ranges, interrupts,
-clocks and resets, and keep them disabled by default so board DTS files
-can enable them as needed.
-
-Co-developed-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
+Signed-off-by: Marius Dinu <m95d+git@psihoexpert.ro>
 ---
-v2 -> v3:
-- Use Co-developed-by for Heiko's RK3588 contributions and add his
-  Signed-off-by
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 39 +++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+ arch/arm/boot/dts/rockchip/rk3288-tinker.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index fc1fdbfd3162..b340973775c5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -2648,6 +2648,45 @@ dmac1: dma-controller@fea30000 {
- 		#dma-cells = <1>;
- 	};
+diff --git a/arch/arm/boot/dts/rockchip/rk3288-tinker.dtsi b/arch/arm/boot/dts/rockchip/rk3288-tinker.dtsi
+index 8e27a20f2845..7e16022c7d9e 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288-tinker.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288-tinker.dtsi
+@@ -344,6 +344,11 @@ regulator-state-mem {
  
-+	can0: can@fea50000 {
-+		compatible = "rockchip,rk3588-canfd";
-+		reg = <0x0 0xfea50000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 341 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru CLK_CAN0>, <&cru PCLK_CAN0>;
-+		clock-names = "baud", "pclk";
-+		resets = <&cru SRST_CAN0>, <&cru SRST_P_CAN0>;
-+		reset-names = "core", "apb";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&can0m0_pins>;
-+		status = "disabled";
-+	};
+ &i2c2 {
+ 	status = "okay";
 +
-+	can1: can@fea60000 {
-+		compatible = "rockchip,rk3588-canfd";
-+		reg = <0x0 0xfea60000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 342 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru CLK_CAN1>, <&cru PCLK_CAN1>;
-+		clock-names = "baud", "pclk";
-+		resets = <&cru SRST_CAN1>, <&cru SRST_P_CAN1>;
-+		reset-names = "core", "apb";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&can1m0_pins>;
-+		status = "disabled";
++	eeprom@50 {
++		compatible = "atmel,24c08";
++		reg = <0x50>;
 +	};
-+
-+	can2: can@fea70000 {
-+		compatible = "rockchip,rk3588-canfd";
-+		reg = <0x0 0xfea70000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 343 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru CLK_CAN2>, <&cru PCLK_CAN2>;
-+		clock-names = "baud", "pclk";
-+		resets = <&cru SRST_CAN2>, <&cru SRST_P_CAN2>;
-+		reset-names = "core", "apb";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&can2m0_pins>;
-+		status = "disabled";
-+	};
-+
- 	i2c1: i2c@fea90000 {
- 		compatible = "rockchip,rk3588-i2c", "rockchip,rk3399-i2c";
- 		reg = <0x0 0xfea90000 0x0 0x1000>;
-
+ };
+ 
+ &i2c5 {
 -- 
-2.34.1
+2.53.0
 
 
 _______________________________________________
