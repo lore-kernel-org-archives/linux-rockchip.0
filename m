@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92797C43458
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 10:58:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85D26C44500
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 11:31:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xLQSO/wFbnM6X+btVFkfEEg7Hv5dw84i9CFAS3lzRNw=; b=VyVOMlCVktHC6U
-	IIp35ah4n3lltaUI33wUzX7LLdrVXIHwHt4naNcSgxRGqb73CtZI/v3WfFG/5s6Z3mP4quQcmfjZm
-	lZ1496cGFAfbGULNIcjBaYOLGJ96/f9bd2cpT0Vt2lJrGIaU1iY1BMAqFvxFh3JkXsO6cjSxkVyC3
-	BcP+vNG+8qjnOw9lOK0vYzOw5qCosn+3u5DunIluzEqnDJhN7PSHxhJbKGwOYfBlPvjelz8JyRAZG
-	uAmH0BruBk4Q7pG1mqt7dwD9vRJljX0zplP3dRXRchNkrBBMFf04Y1ZhGgTNg1SqycyVHbzhFms9A
-	Qqn0ZcQtymGD5nSYRG9A==;
+	List-Owner; bh=e2LAzbYbky/xMk8g2G33v1qnTn5P0Mvj+Hij3eS0qf4=; b=Y45dQ4mwomUR03
+	pebNaHuahk4mcWNSdLbeq8SArAfAAlNqHJoh9SeVPuGFeEOPcmvt1BgFIEuVD7JWIgGdvzYVb+Sb5
+	IkS7uZUnFC7+oWt/cxY2zQjEY+g9XfAyXlWyAFWJB0N9zmPbUPzqXGOn+7U8vZrqvekWC5fD2gDFS
+	xFB4xT10tu50SVuqLm0z+74BcTrk8J/2JwK9pD9ir5AvQ66xNrb/dVMbCAaxqRscJezM/i7lax7Sv
+	T7PgBYy/dtMWavDuLYr0jMG6uleEmB2ai98Lt3f4VcM3BEl/znRpwZoRTuX2j0Fw4DbpCLw5YhFyE
+	uRAx5PGJoq96NftFwRZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfbbA-00000006jqF-1MWe;
-	Fri, 03 Jul 2026 10:58:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wfc6o-00000006oL2-30ys;
+	Fri, 03 Jul 2026 11:31:02 +0000
+Received: from out-177.mta0.migadu.com ([91.218.175.177])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfbb8-00000006jpn-2nAd;
-	Fri, 03 Jul 2026 10:58:18 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 358EF43844;
-	Fri,  3 Jul 2026 10:58:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8FC11F000E9;
-	Fri,  3 Jul 2026 10:58:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783076298;
-	bh=VkqT4Vr3kdtjwAWn89RSmy1HMSax7/LTa2L96z38dwE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=AtveCQddymukbQuw38VzvqcGX6WGWTpU/r/sFXkgX+shum2KAHDcTB8zi5uCdvocz
-	 0ghelxATJ93mUNqWhQ7YcbiBOs3bgzTTGtDdc8VsgnLeIuKg62JPJdr914RJmMUfnq
-	 mpX5fK+KtgrgGJfKW82ksTslRNgAuOszpv5EpkRruL+i4ASZxSIHjpV3xyyqiTDPSK
-	 4VfV5cDKW9D9DUfU39GTY7EEoUVPg0zZoGGeAj0johaF92vQP34v5jBlEMzoVn6pei
-	 it2hIzyY9OCTEO6qsdPDpcBUoZDap1rI9VAvPfeyeGIJEw1YTfUwsRN0pynV04o56U
-	 O7gqRmsXXV1Xg==
-Date: Fri, 3 Jul 2026 12:58:13 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Joachim Eastwood <joachim.eastwood@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 09/12] arm64: dts: rockchip: rk3588s-nanopi: remove
- useless vcc_3v3_pcie20
-Message-ID: <20260703-cobalt-urchin-of-reading-a9fac1@quoll>
+	id 1wfc6l-00000006oJ7-3ftf
+	for linux-rockchip@lists.infradead.org;
+	Fri, 03 Jul 2026 11:31:01 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1783078247;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=B2xPR8IWnso8IjH2nLJy+b/+q8P+tzYbQPS2oGyK6YQ=;
+	b=H3twqUy7J3ycAYI72Pj49oybYNsTsjsBOOlLwuvbxFw4FnlcMFxNfpJ5xNtR9DO/92spSb
+	XgNHUVMXKZv3rbCVI/kYOIzSoESyyB9Os8BFjTQ/m8ssWR5yU6tnOA1JfnZSq8EEL3atJj
+	VMZWmLXgdR9GxeZxGEb+VyqnbP1FurCbBHdLkBodNmkjwrgzUTexzOuT7Vxn5pFHoeJm52
+	C2KM2YHexwugJ1CC6dfzF3l4CiDD5SsuTktTUkBDbPerX5xAb5xcv8lJOdDa6RkO/eKP20
+	COBOn7XBYkUbmCX6TYF8Thom4CBLVPs1C0pf0gyFCQPUzGJosXPwCECRs5Wwnw==
+Date: Fri, 03 Jul 2026 13:30:44 +0200
+Message-Id: <DJOWHH5K7P76.3JPJVO47K1SZE@cknow-tech.com>
+Cc: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH 00/12] arm64: dts: rockchip: Add NanoPi M6 board
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: <joachim.eastwood@gmail.com>, "Rob Herring" <robh@kernel.org>,
+ "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
+ <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
 References: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
- <20260703-nanopi-m6-v1-9-8344a1559519@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260703-nanopi-m6-v1-9-8344a1559519@gmail.com>
+In-Reply-To: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
+X-Migadu-Flow: FLOW_OUT
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260703_043100_057183_21046ADF 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,19 +72,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 03, 2026 at 12:07:24AM +0200, Joachim Eastwood wrote:
-> There is no separate regulator for boards with RTL8125BG MACs.
-> The power is only separated from VCC_3V3_S3 with a ferrite bead.
-> 
+On Fri Jul 3, 2026 at 12:07 AM CEST, Joachim Eastwood via B4 Relay wrote:
+> This patch series add support for the NanoPi M6. This board is very
+> similar to the NanoPi R6C and R6S boards which are already supported.
+>
+> Main differences:
+> * M.2 M-key slot with PCIe (Also present on R6C)
+> * M.2 E-key slot with PCIe and USB (from hub)
+> * 1 additional USB 2.0 port from an on-board USB hub
+> * RT5616 audio CODEC
+
+This seems to be the M6 (2405 aka 'V1')?
+Because there is now also a M6V2 (2603), which uses an ES8389 CODEC:
+https://www.friendlyelec.com/index.php?route=product/product&path=69&product_id=319
+
+Is it useful to already take the 2 M6 variants into account with this patch set?
+
+https://wiki.friendlyelec.com/wiki/index.php/NanoPi_M6#Schematic.2C_PCB_CAD_File
+https://wiki.friendlyelec.com/wiki/index.php/NanoPi_M6V2#Schematic.2C_PCB_CAD_File
+
+Cheers,
+  Diederik
+
+> Patch 2 and 3 moves a bit code around. Please let me know if those two
+> should be squashed together.
+> Next few patches adds some missing bits the common nanopi dtsi file.
+> While the final patch adds support for NanoPi M6.
+>
+> All changes have been verified using the schematics for M6, R6C and R6S.
+> Only M6 have been boot and runtime tested. Tester for R6x are welcome.
+>
 > Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 14 ++------------
->  1 file changed, 2 insertions(+), 12 deletions(-)
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-
-Best regards,
-Krzysztof
+> Joachim Eastwood (12):
+>       dt-bindings: arm: rockchip: add FriendlyElec NanoPi M6
+>       arm64: dts: rockchip: refactor rk3588s-nanopi* to support M6
+>       arm64: dts: rockchip: move NanoPi R6 code into common dtsi
+>       arm64: dts: rockchip: rk3588s-nanopi: add missing sdmmc cd pinctrl
+>       arm64: dts: rockchip: rk3588s-nanopi: remove pull up on rtc int pin
+>       arm64: dts: rockchip: rk3588s-nanopi: add missing pcie rst pinctrl
+>       arm64: dts: rockchip: rk3588s-nanopi: pcie2x1l2: add clkreq
+>       arm64: dts: rockchip: rk3588s-nanopi: remove always-on from vdd_npu_s0 reg
+>       arm64: dts: rockchip: rk3588s-nanopi: remove useless vcc_3v3_pcie20
+>       arm64: dts: rockchip: rk3588s-nanopi: add gmac1 add phy-supply
+>       arm64: dts: rockchip: rk3588s-nanopi: remove bogus vcc5v0_usb regulator
+>       arm64: dts: rockchip: add support for NanoPi M6 board
+>
+>  .../devicetree/bindings/arm/rockchip.yaml          |   3 +-
+>  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+>  arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dts | 200 ++++++
+>  .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 792 --------------------
+>  .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts |   1 +
+>  .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts |   1 +
+>  arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi   | 800 +++++++++++++++++++++
+>  7 files changed, 1005 insertions(+), 793 deletions(-)
+> ---
+> base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
+> change-id: 20260701-nanopi-m6-ffeef7252fd7
+>
+> Best regards,
+> --  
+> Joachim Eastwood <joachim.eastwood@gmail.com>
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 
 _______________________________________________
