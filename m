@@ -4,75 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BDFEC43602
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jul 2026 02:30:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FEBAC43458
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jul 2026 08:46:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PvERzA1th4MuRHi0ES+f7+BRoO3K2GQzTb0p0gZiA0k=; b=yW8UlyUO1vdGO+
-	DB9tlgzS0016BqrPiX+tkfl4BF+Urvrsg8jhOPJwDymQBHUNy8LDr8IX3eYB7KeRLYYKyTWIYFa0H
-	QMR2zAHnj1OSGmrDeu9XCypuzX/MzLqGGCVzrxdcqTB/LDTTHYWYmoRUq7ZSFbibOoFFrWwH5GP8I
-	07b7N6vtdAstxt/QMw9dx+j8hk8dT+wW36c6+P0eIDFLNu6rW/rgNMHieqcNJ46XYfTDgNL7q3JaL
-	FWirqd/O9kutHZktxJb41Wl5xP7rYcLmx2rAIuROdJGQa2/hfsZSej5C0IDl4cBZ5UahUcxxmrO/x
-	MmCy+9BnTbS03zoJ9FEQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Zd6feP1K5BGo2wlHs/o55sGCvJmLiTiiFfTJKDS2/cE=; b=HtFBIU5+7MWk5u
+	xtOiftP1CghRpA5pRSO5SvoXve55Pn0y7aqkkPx/ruCeR3scftBJsmAXD0gXH9aoc1b32SY3r1yLC
+	jXNoUV1ZviPnsV6L0rV2DxTEc//l7xt28f6DHCnIBXLiKgAednT5aswCu/BDbI9D4LJVKLj2vUz1B
+	7uOh8pE4W/4BqtJzIJsf/guPFuKGWmdGkLjL6K7CTCP1xJpEE2FKhNggVqH9RpWLP680EAEH7tlrB
+	rwh76TAEjNh7zKVv9xrfDxrBoGW4GNv2yZ5L4nG+wFtsiOq+KCHs8twaT8TQY7dhm5r8dmn6cLYlw
+	f0C17pQRmiM3oZzIGjKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfq92-000000086bh-34yF;
-	Sat, 04 Jul 2026 02:30:16 +0000
-Received: from zg8tmtyylji0my4xnjeumjiw.icoremail.net ([162.243.161.220])
-	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfq8y-000000086bC-2MjU;
-	Sat, 04 Jul 2026 02:30:16 +0000
-Received: from zju.edu.cn (unknown [10.98.66.117])
-	by mtasvr (Coremail) with SMTP id _____wDnRGUccEhqcfwAAA--.2374S3;
-	Sat, 04 Jul 2026 10:29:49 +0800 (CST)
-Received: from localhost.localdomain (unknown [10.98.66.117])
-	by mail-app3 (Coremail) with SMTP id zS_KCgBHX3EccEhqsXnSAg--.57888S2;
-	Sat, 04 Jul 2026 10:29:48 +0800 (CST)
-From: Fan Wu <fanwu01@zju.edu.cn>
-To: jacob-chen@iotwrt.com,
-	ezequiel@vanguardiasur.com.ar
-Cc: mchehab@kernel.org,
-	heiko@sntech.de,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org,
-	Fan Wu <fanwu01@zju.edu.cn>
-Subject: [PATCH] media: rockchip: rga: quiesce IRQ before releasing m2m state
-Date: Sat,  4 Jul 2026 02:28:53 +0000
-Message-Id: <20260704022853.77291-1-fanwu01@zju.edu.cn>
-X-Mailer: git-send-email 2.34.1
+	id 1wfw0i-00000008Iij-2wlO;
+	Sat, 04 Jul 2026 08:46:04 +0000
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wfw0h-00000008Ii7-04wa
+	for linux-rockchip@lists.infradead.org;
+	Sat, 04 Jul 2026 08:46:04 +0000
+Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-7e9eaf04bfaso288030a34.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 04 Jul 2026 01:46:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783154761; cv=none;
+        d=google.com; s=arc-20260327;
+        b=FFLi2U+hbz3zmz0tBeJhNS19U3NNpbkcuxYGQTE7dkuZ3I0tBBcVePR4l6TKayEw9n
+         c6tIKObTGH5faUAa65nFzDiERScs9NZABGyhPGKPBwL9bpYSGcdJE/HZ7TQj8SjNNKHx
+         loOTJQslQbfIOShQdFr8HLWdtc6nlQwwGtOEbEHLMi2j/kq/6weU0GSGOaopt7dFlqrR
+         2RVaUqvmZxBo8r4rQ98nmEdmP1BUn90PYW8s9I/YEy85kQjpUkanFglW9USa/6Zy5njm
+         sPbayK/jkxgjEgkfGwOtQEoFL8lZa4pPDi0T1UzY3VTukWGT23zCh+LFWJHUqWJ3GKQG
+         kpDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=HdAowFH9jipDKejyM813D662CypK8NeENF8iZZGVI+I=;
+        fh=lmj5yNIiLg0UechYNaFIE576vwK3c+QtCqynbsZG1dA=;
+        b=ej7hs76RZt+ujWF3YD2s6a1Dn/+7jWtbIwuAlZMD/bXvywKYcy1VeyDMB5L83wcbK7
+         KqLkrCejAARwtYJIS0VcRwEJRQKO6gc/XIDO9X8WB8lExShV4VWtCitWdt4SLv0B7DdE
+         4UfC1tBmBQx/t0Ab8AweP11N2LS01sQv6B3wDyIxq9mQEX9e1fEnUmjC+4VcoQ2UXoHl
+         zsuG9e/ldx82LaM1y9k+ojvSfxPGrBnVjlv19rUpK6bV+qANkJ5AqcQFBZgsQ0B+alkn
+         iDj09aKgz8bidIp4DAFBkZN0xmvoQSNG6MOW20UvIX/lFTgyqqGxWTx/oCZXVWU4ARMK
+         Ro9A==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783154761; x=1783759561; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=HdAowFH9jipDKejyM813D662CypK8NeENF8iZZGVI+I=;
+        b=XoFUl+QRM3niNGE06p/8VtnG7ZA1DHK/6NSyLS6FuWx785HFGKSZmNSl+w3v1EhnKK
+         xlRS8Jbc6TVGiQaiFPpAbjVXAE0jBF2NShXXekGKjNCx/6V6eITaJySfu6nsM/0C0EkG
+         3RU8fAJxMo2ieQhTSkT/Qablx4W7peIpikL9Mg0tpnO43L9SXH6Iu9IVJHmrHq1jUuxo
+         glqzv2FeOhEPxWxZg3X3SQFrvthTl9taGZdnlN5tyFNHqUIbvk6RhGGgKlODaCtfMwBN
+         w4s9EZ/PCG7dP+4cGyGtpCw+Gxi8X12IJqt+d5LGH2L+qM3/3yW0t5j5DIxXH6w08iX1
+         HD5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783154761; x=1783759561;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HdAowFH9jipDKejyM813D662CypK8NeENF8iZZGVI+I=;
+        b=DmF56tIxRwXT+aUDbQT/a9XNGUGNFi/VVnR8AYB7c130dQcl8FNAmK5zM6aB0L9ZQN
+         bHBkuhVPjVnKRjBRAcNA8sifokoeZrLyjAu+PqzYbM8+HqbPbNSJ/LJajhzYCGMs3sca
+         L5xaqohnGmt4SjkYNdC9680vTYCp1qKubhKT0OpcO6OZXA7Tji1VzrUv9VaLACqN+f/x
+         d0WMLQA1PtTGYtnNSO0T95Ef89NVCT1hQ0FdsBP8Yrc3F6R6JJTrXFrzphKNXbmf4tHH
+         anFGJdFIIQ1qGKlVmXmygb2fvHIfdxV8t1Lg5DzvZvKspqz5A25n5A6m4OVr9Gc9BaXo
+         IHKA==
+X-Forwarded-Encrypted: i=1; AFNElJ+oi3AbqKg0ovEXaRo8KpASJ3YVqqtAY+2GXMPYHJtyVCJeSUKJ9n2KEsYpEOLrrvmgxzb0lisSTKZ9+Oz59Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyf9dnF20O0gDgmNrEwH/gcnBf6tJgYQ5I9T96BwtypVP5ridFh
+	p2ghmsg9oBHWva+ktBP/D7g4wqnrwz8jTfDgdKDSvAiZ9MwJgZoFqM8o8ES/rM8p/Udt+1SzjDR
+	Aor0c7cebZVbot0mjlOZQDjmpxPnKTkY=
+X-Gm-Gg: AfdE7ck8dV5ILoE/F80RQL0NdU9x6/q9c24QtBwkFVSqC7c53Wh3bC4RxEoXzqxDQcI
+	IRfqaAN+OfmOkrc97SaROnJ+1d9oLYMnK+P6/h16RYUQ1EeWp2Il4gcIKCpQtpYsQp6wJxbc1qT
+	bJ+TX8w98+Ejukyu1jczSX4xS7tXBQRQevu/mLueJbuLlpmB/tMRSEiXuO+7t85CnVaKUAdqDhW
+	xiZRD9REhePECpVS35eVTl4gpFcZ/3qqAQXusYbGFDDYEVm5mzo9kc/Md0lnhyIP3/FOXX78Q==
+X-Received: by 2002:a05:6830:67d9:b0:7e9:b4d0:53aa with SMTP id
+ 46e09a7af769-7eb7fef3ae3mr1509892a34.27.1783154761285; Sat, 04 Jul 2026
+ 01:46:01 -0700 (PDT)
 MIME-Version: 1.0
-X-CM-TRANSID: zS_KCgBHX3EccEhqsXnSAg--.57888S2
-X-CM-SenderInfo: qrstjiaswqq6lmxovvfxof0/
-X-CM-DELIVERINFO: =?B?1fenegXKKxbFmtjJiESix3B1w3vZ3A9ovKVTomAyoQazvoRs/NHSP8GI2EvgeEEW7R
-	sfnZPoDCNGYdHSfuFmYJL54WMW8oo9eGBl9HV1ffwa75uvyjPqD135tOeKyPoHGu9vCRko
-	yEpxb8kBGLspYd32l0yp9E6mavGmQbzmcFsnzP86
-X-Coremail-Antispam: 1Uk129KBj93XoWxCF1fKr47uw1rAF4DAr4xGrX_yoW5Xw4rpa
-	n8AayIkFWUGF4UWw1DJa1DuFZ5twnayay5GF4fG34xCF9akryqq348AFyFvr9xXr97AFW2
-	vw45t3yrXF4jqFcCm3ZEXasCq-sJn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7ZEXa
-	sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
-	0xBIdaVrnRJUUU9Cb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2
-	IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
-	e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Ar0_tr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
-	0_Cr0_Gr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AK
-	xVWxJr0_GcWlnxkEFVAIw20F6cxK64vIFxWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqjx
-	CEc2xF0cIa020Ex4CE44I27wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAF
-	wI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0x
-	vY0x0EwIxGrwACjcxG0xvY0x0EwIxGrVCF72vEw4AK0wCF04k20xvY0x0EwIxGrwCFx2Iq
-	xVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r
-	106r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AK
-	xVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2IYs7
-	xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_
-	Gr1UYxBIdaVFxhVjvjDU0xZFpf9x07jbo7NUUUUU=
+References: <20260608124018.480365-2-diogompaissilva@gmail.com>
+ <CAJpoHp6DnspnA0rirGb6E=A9wCS3eaDn=eFaqmae98Q+39b1PA@mail.gmail.com>
+ <CAJpoHp489qKfkfLOX-XPLpOWo86gibZB=NM_dXPbv0yDGmxysg@mail.gmail.com> <2837071.mvXUDI8C0e@phil>
+In-Reply-To: <2837071.mvXUDI8C0e@phil>
+From: Diogo Silva <diogompaissilva@gmail.com>
+Date: Sat, 4 Jul 2026 10:45:50 +0200
+X-Gm-Features: AVVi8CdYOU8UFgiMqZSy_kqF2cXiTqFa8qXPulo_pHpnNo2bmATQgxO9Gfh9jAk
+Message-ID: <CAJpoHp4cRALQTDkBevaYu1=v8iOi=4UYZ+9iXHjsLwg+DCb05g@mail.gmail.com>
+Subject: Re: [PATCH v4] drm/rockchip: Remove dependency on DRM simple helpers
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, David Airlie <airlied@gmail.com>, 
+	Maxime Ripard <mripard@kernel.org>, Simona Vetter <simona@ffwll.ch>, 
+	linux-arm-kernel@lists.infradead.org, Thomas Zimmermann <tzimmermann@suse.de>, 
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, "javierm@redhat.com" <javierm@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_193013_366606_E6CE37F8 
-X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-CacheID: sfid-20260704_014603_064458_CCF63F65 
+X-CRM114-Status: UNSURE (   9.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,79 +121,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rga_probe() requests the interrupt with devm_request_irq(), so devres
-does not release the IRQ until after rga_remove() returns. rga_remove()
-currently releases rga->m2m_dev before that point.
+Hi Heiko,
 
-rga_isr() uses rga->m2m_dev through v4l2_m2m_job_finish(),
-leaving a window where an interrupt can run after the m2m device has been
-released.
+> the tool you're using to send patches seems broken.
+> In the patch all the places that should be tabs are replaced as spaces.
+> This of course does not apply.
+>
+> Ideally use git send-email or b4 for sending patches.
 
-Unregister the video device first to stop new userspace submissions, then
-free the devm-managed IRQ explicitly before releasing the m2m device. Move
-the command buffer release after the IRQ teardown as well, so it is not
-released while a completion interrupt can still arrive.
+Sorry, I think it broke due to re-sending with gmail. I will stick to
+b4 now. Thanks!
 
-Store the IRQ number in struct rockchip_rga so rga_remove() can free the
-IRQ without looking it up again.
+> Also, please don't send new versions as replies to previous ones.
+> Tooling can get confused by this, so please start a new thread for
+> the next version.
 
-Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
-Cc: stable@vger.kernel.org
-Signed-off-by: Fan Wu <fanwu01@zju.edu.cn>
+Noted, thanks!
 
----
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 43f6a8d..118887a 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -828,6 +828,8 @@ static int rga_probe(struct platform_device *pdev)
- 		goto err_put_clk;
- 	}
- 
-+	rga->irq = irq;
-+
- 	ret = devm_request_irq(rga->dev, irq, rga_isr, 0,
- 			       dev_name(rga->dev), rga);
- 	if (ret < 0) {
-@@ -919,13 +921,21 @@ static void rga_remove(struct platform_device *pdev)
- {
- 	struct rockchip_rga *rga = platform_get_drvdata(pdev);
- 
--	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
--		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
--
- 	v4l2_info(&rga->v4l2_dev, "Removing\n");
- 
--	v4l2_m2m_release(rga->m2m_dev);
- 	video_unregister_device(rga->vfd);
-+
-+	/*
-+	 * The IRQ was requested with devm_request_irq() and is freed by devm
-+	 * only after this function returns. Free it explicitly here, after the
-+	 * video device is unregistered, but before v4l2_m2m_release() frees
-+	 * rga->m2m_dev, which rga_isr() dereferences via v4l2_m2m_job_finish().
-+	 */
-+	devm_free_irq(rga->dev, rga->irq, rga);
-+
-+	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
-+		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
-+	v4l2_m2m_release(rga->m2m_dev);
- 	v4l2_device_unregister(&rga->v4l2_dev);
- 
- 	pm_runtime_disable(rga->dev);
-diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
-index 72a28b1..f76c45b 100644
---- a/drivers/media/platform/rockchip/rga/rga.h
-+++ b/drivers/media/platform/rockchip/rga/rga.h
-@@ -81,6 +81,7 @@ struct rockchip_rga {
- 	struct device *dev;
- 	struct regmap *grf;
- 	void __iomem *regs;
-+	int irq;
- 	struct clk *sclk;
- 	struct clk *aclk;
- 	struct clk *hclk;
-
+BR,
+Diogo
 
 _______________________________________________
 Linux-rockchip mailing list
