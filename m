@@ -4,90 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1485C44507
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jul 2026 23:38:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BDFEC43602
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jul 2026 02:30:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mUEcBUlBwLb0eu9Gr5oKxXgEh+NZL9i+gwy+PMHkzes=; b=vCqAUI52wGBMoa
-	o7nNbWUtbsMT9Nds0S+e2HU9BvXTXgVyj3GKQOwgADr0Tm5IxON6e12CBzpYSvDwmTBiK2+IAIO86
-	q/Tz/b586hRgMC7R9MIxyhRcTlYx19zqnfn8vBlctyNdk0XKvpkq3ThZDPDukgDnZPt5eoT/e22VA
-	t8sUIe+UYoeCkY3IZ9ao0THZs8BsM8cSJ+4ot5hbHxJ8A60ezdZN/rXejVKTKMNEuPkxSlRW75L5X
-	QCssaiXUWBlU6dAjtzWqrcSCIkAe7upsDMqvLqbA/atIYVAPgcrDT5WpTpr2ESf5tllqHv6to5vRJ
-	zSrj26N2BVph9JJkt+tg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PvERzA1th4MuRHi0ES+f7+BRoO3K2GQzTb0p0gZiA0k=; b=yW8UlyUO1vdGO+
+	DB9tlgzS0016BqrPiX+tkfl4BF+Urvrsg8jhOPJwDymQBHUNy8LDr8IX3eYB7KeRLYYKyTWIYFa0H
+	QMR2zAHnj1OSGmrDeu9XCypuzX/MzLqGGCVzrxdcqTB/LDTTHYWYmoRUq7ZSFbibOoFFrWwH5GP8I
+	07b7N6vtdAstxt/QMw9dx+j8hk8dT+wW36c6+P0eIDFLNu6rW/rgNMHieqcNJ46XYfTDgNL7q3JaL
+	FWirqd/O9kutHZktxJb41Wl5xP7rYcLmx2rAIuROdJGQa2/hfsZSej5C0IDl4cBZ5UahUcxxmrO/x
+	MmCy+9BnTbS03zoJ9FEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfnSI-000000080jC-1b3F;
-	Fri, 03 Jul 2026 23:37:58 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfnS1-000000080V8-2aem;
-	Fri, 03 Jul 2026 23:37:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783121858;
-	bh=WPB2izzXJnAdFGQBznQHSlR8MP4Lypf82/aKNpQtAfM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=lKJuS2WwJbfDbN1TN3emzYFfArf5YXZG3s5gt4cujID+Vu5KAuTQxK1WFmHs/mBr6
-	 dAJ0EkeqL+ftff3jNPX5q9siLM4aJYurz2kG7PPy/hMd+RBTXcyi43AAaCGq3ql4km
-	 rsoVmDx9bJImjOTxEeWcJKrPhr5v4siRcOX03JBmquSDmz9zADIuR0Ss8+5wNXZZSO
-	 3T1NWM93YpkX/ZvgzjCXYhYNUCcoTqdNcfAyFZiGU9KMQy7tWQ/igEIIsaZg9gP6lf
-	 4LvjALPe4EcwGQE5rQYXgwoV6lWfNsMESynJR35YL65je3gE2gJtP3gFvqDUZtRzIg
-	 2Gb/ZKonVrUuQ==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5D50117E0FD0;
-	Sat,  4 Jul 2026 01:37:38 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id AB383480077; Fri, 03 Jul 2026 20:13:32 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 03 Jul 2026 20:13:49 +0200
-Subject: [PATCH v10 33/36] phy: rockchip: usbdp: Rename mode to hw_mode
+	id 1wfq92-000000086bh-34yF;
+	Sat, 04 Jul 2026 02:30:16 +0000
+Received: from zg8tmtyylji0my4xnjeumjiw.icoremail.net ([162.243.161.220])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wfq8y-000000086bC-2MjU;
+	Sat, 04 Jul 2026 02:30:16 +0000
+Received: from zju.edu.cn (unknown [10.98.66.117])
+	by mtasvr (Coremail) with SMTP id _____wDnRGUccEhqcfwAAA--.2374S3;
+	Sat, 04 Jul 2026 10:29:49 +0800 (CST)
+Received: from localhost.localdomain (unknown [10.98.66.117])
+	by mail-app3 (Coremail) with SMTP id zS_KCgBHX3EccEhqsXnSAg--.57888S2;
+	Sat, 04 Jul 2026 10:29:48 +0800 (CST)
+From: Fan Wu <fanwu01@zju.edu.cn>
+To: jacob-chen@iotwrt.com,
+	ezequiel@vanguardiasur.com.ar
+Cc: mchehab@kernel.org,
+	heiko@sntech.de,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org,
+	Fan Wu <fanwu01@zju.edu.cn>
+Subject: [PATCH] media: rockchip: rga: quiesce IRQ before releasing m2m state
+Date: Sat,  4 Jul 2026 02:28:53 +0000
+Message-Id: <20260704022853.77291-1-fanwu01@zju.edu.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Message-Id: <20260703-rockchip-usbdp-cleanup-v10-33-a392711ca8a9@collabora.com>
-References: <20260703-rockchip-usbdp-cleanup-v10-0-a392711ca8a9@collabora.com>
-In-Reply-To: <20260703-rockchip-usbdp-cleanup-v10-0-a392711ca8a9@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
- Yubing Zhang <yubing.zhang@rock-chips.com>, 
- Alexey Charkov <alchark@flipper.net>, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6668;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=WPB2izzXJnAdFGQBznQHSlR8MP4Lypf82/aKNpQtAfM=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpH+8wIdDkH6L4gx5DbXIDswGSwJMQxuDJbT
- NLxXMMUveKHaIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqR/vMAAoJENju1/PI
- O/qa4pUQAJEzB2OTlHr7Ocb5xXGGrJ20TCraTGH19yXq2kdG4sWgbTX31QxRb3H7PrR28stRWIk
- gutIg5gDJJmPfY29kdeRnM4exQmQhG3Eycq7v1V5Sl2yfRtcHu9jy15qcREYJFL2n1Lq0fR8wne
- n+KVkjoURPecrRRMywPCVPFunsIdG2fIA6GK+pWUhuG4JGBbUuQ9Hj17o3DYvB3GbV29HtIwnvx
- 4V5FV9GOqNc/aKBRPB+L+wr5DknXJ2dLnd4+dcdNcWpYtoLd5XNnv9OtC48IoRAh6xYyB+0M/+r
- 5+lZDxXlO73TU0potnmb3CZkVFDsgApxj0qdkF7f3bpQw9+faUYTSmCbWogay5X12mpF2KwdzGU
- MA7i6ZgOEVlAAWrwt02Q8z5YpsRIMIhS/zrFngIEQ8eZmlWumc37PUJG+bqAS3oRs8E3UeQS41H
- w7crwR/Cw1Mk8iWSK2QLd7nawka7QSmzv6WYhzgpsDKI2DGY2bSYr77IGLmt3lOVC+/oFDlYauA
- 0+fwkTEB2CGv4x31veLPeie/pjWgAqhFNBwLsghB0Cwfoznf8uubkXooyVB98GwEL4EfqqNRklT
- VYVdwkT46tZZTl3LRtKcNhVOosyWnsb1MTkpARkh0sW0e5yWpAGf1daVpBVteLXLnmHyG1stnyf
- IgFPWDwCL60QEX8CuZ+QxYA==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CM-TRANSID: zS_KCgBHX3EccEhqsXnSAg--.57888S2
+X-CM-SenderInfo: qrstjiaswqq6lmxovvfxof0/
+X-CM-DELIVERINFO: =?B?1fenegXKKxbFmtjJiESix3B1w3vZ3A9ovKVTomAyoQazvoRs/NHSP8GI2EvgeEEW7R
+	sfnZPoDCNGYdHSfuFmYJL54WMW8oo9eGBl9HV1ffwa75uvyjPqD135tOeKyPoHGu9vCRko
+	yEpxb8kBGLspYd32l0yp9E6mavGmQbzmcFsnzP86
+X-Coremail-Antispam: 1Uk129KBj93XoWxCF1fKr47uw1rAF4DAr4xGrX_yoW5Xw4rpa
+	n8AayIkFWUGF4UWw1DJa1DuFZ5twnayay5GF4fG34xCF9akryqq348AFyFvr9xXr97AFW2
+	vw45t3yrXF4jqFcCm3ZEXasCq-sJn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7ZEXa
+	sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
+	0xBIdaVrnRJUUU9Cb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2
+	IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
+	e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Ar0_tr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
+	0_Cr0_Gr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AK
+	xVWxJr0_GcWlnxkEFVAIw20F6cxK64vIFxWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqjx
+	CEc2xF0cIa020Ex4CE44I27wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAF
+	wI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0x
+	vY0x0EwIxGrwACjcxG0xvY0x0EwIxGrVCF72vEw4AK0wCF04k20xvY0x0EwIxGrwCFx2Iq
+	xVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r
+	106r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AK
+	xVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2IYs7
+	xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_
+	Gr1UYxBIdaVFxhVjvjDU0xZFpf9x07jbo7NUUUUU=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_163741_827522_89E0DEB0 
-X-CRM114-Status: GOOD (  17.56  )
+X-CRM114-CacheID: sfid-20260703_193013_366606_E6CE37F8 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,199 +90,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rename mode field to hw_mode to make clear that this is the modes
-currently supported by the hardware, but not necessarily requested
-by software. I.e. it is only set by either the USB-C state machine
-or device-tree if the PHY is used in a fixed routing setup.
+rga_probe() requests the interrupt with devm_request_irq(), so devres
+does not release the IRQ until after rga_remove() returns. rga_remove()
+currently releases rga->m2m_dev before that point.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+rga_isr() uses rga->m2m_dev through v4l2_m2m_job_finish(),
+leaving a window where an interrupt can run after the m2m device has been
+released.
+
+Unregister the video device first to stop new userspace submissions, then
+free the devm-managed IRQ explicitly before releasing the m2m device. Move
+the command buffer release after the IRQ teardown as well, so it is not
+released while a completion interrupt can still arrive.
+
+Store the IRQ number in struct rockchip_rga so rga_remove() can free the
+IRQ without looking it up again.
+
+Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
+Cc: stable@vger.kernel.org
+Signed-off-by: Fan Wu <fanwu01@zju.edu.cn>
+
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 46 +++++++++++++++----------------
- 1 file changed, 23 insertions(+), 23 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 3fb6eea2979b..e2cd72643a7d 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -174,7 +174,7 @@ struct rk_udphy {
- 	/* PHY status management */
- 	bool flip;
- 	bool phy_needs_reinit;
--	u8 mode;
-+	u8 hw_mode; /* modes currently supported by hardware */
- 	u8 status;
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 43f6a8d..118887a 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -828,6 +828,8 @@ static int rga_probe(struct platform_device *pdev)
+ 		goto err_put_clk;
+ 	}
  
- 	/* utilized for USB */
-@@ -579,18 +579,18 @@ static void rk_udphy_dp_lane_enable(struct rk_udphy *udphy, int dp_lanes)
- 				   CMN_DP_CMN_RSTN, FIELD_PREP(CMN_DP_CMN_RSTN, 0x0));
- }
- 
--static void rk_udphy_mode_set(struct rk_udphy *udphy, u8 mode)
-+static void rk_udphy_mode_set(struct rk_udphy *udphy, u8 hw_mode)
++	rga->irq = irq;
++
+ 	ret = devm_request_irq(rga->dev, irq, rga_isr, 0,
+ 			       dev_name(rga->dev), rga);
+ 	if (ret < 0) {
+@@ -919,13 +921,21 @@ static void rga_remove(struct platform_device *pdev)
  {
--	if (udphy->mode == mode)
-+	if (udphy->hw_mode == hw_mode)
- 		return;
+ 	struct rockchip_rga *rga = platform_get_drvdata(pdev);
  
- 	udphy->phy_needs_reinit = true;
--	udphy->mode = mode;
-+	udphy->hw_mode = hw_mode;
- }
+-	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
+-		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
+-
+ 	v4l2_info(&rga->v4l2_dev, "Removing\n");
  
- static void rk_udphy_set_typec_state(struct rk_udphy *udphy, unsigned long state)
- {
--	u8 mode;
-+	u8 hw_mode;
+-	v4l2_m2m_release(rga->m2m_dev);
+ 	video_unregister_device(rga->vfd);
++
++	/*
++	 * The IRQ was requested with devm_request_irq() and is freed by devm
++	 * only after this function returns. Free it explicitly here, after the
++	 * video device is unregistered, but before v4l2_m2m_release() frees
++	 * rga->m2m_dev, which rga_isr() dereferences via v4l2_m2m_job_finish().
++	 */
++	devm_free_irq(rga->dev, rga->irq, rga);
++
++	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
++		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
++	v4l2_m2m_release(rga->m2m_dev);
+ 	v4l2_device_unregister(&rga->v4l2_dev);
  
- 	switch (state) {
- 	case TYPEC_DP_STATE_C:
-@@ -599,7 +599,7 @@ static void rk_udphy_set_typec_state(struct rk_udphy *udphy, unsigned long state
- 		udphy->lane_mux_sel[1] = PHY_LANE_MUX_DP;
- 		udphy->lane_mux_sel[2] = PHY_LANE_MUX_DP;
- 		udphy->lane_mux_sel[3] = PHY_LANE_MUX_DP;
--		mode = UDPHY_MODE_DP;
-+		hw_mode = UDPHY_MODE_DP;
- 		udphy->dp_lanes = 4;
- 		break;
- 
-@@ -616,12 +616,12 @@ static void rk_udphy_set_typec_state(struct rk_udphy *udphy, unsigned long state
- 			udphy->lane_mux_sel[2] = PHY_LANE_MUX_DP;
- 			udphy->lane_mux_sel[3] = PHY_LANE_MUX_DP;
- 		}
--		mode = UDPHY_MODE_DP_USB;
-+		hw_mode = UDPHY_MODE_DP_USB;
- 		udphy->dp_lanes = 2;
- 		break;
- 	}
- 
--	rk_udphy_mode_set(udphy, mode);
-+	rk_udphy_mode_set(udphy, hw_mode);
- }
- 
- static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
-@@ -744,7 +744,7 @@ static int rk_udphy_status_check(struct rk_udphy *udphy)
- 	int ret;
- 
- 	/* LCPLL check */
--	if (udphy->mode & UDPHY_MODE_USB) {
-+	if (udphy->hw_mode & UDPHY_MODE_USB) {
- 		ret = regmap_read_poll_timeout(udphy->pma_regmap, CMN_ANA_LCPLL_DONE_OFFSET,
- 					       val, (val & CMN_ANA_LCPLL_AFC_DONE) &&
- 					       (val & CMN_ANA_LCPLL_LOCK_DONE), 200, 100000);
-@@ -779,15 +779,15 @@ static int rk_udphy_init(struct rk_udphy *udphy)
- 	int ret;
- 
- 	dev_dbg(udphy->dev, "reinit PHY with USB3=%s and DP=%s (%u lanes) flipped=%s\n",
--		str_on_off(udphy->mode & UDPHY_MODE_USB),
--		str_on_off(udphy->mode & UDPHY_MODE_DP),
-+		str_on_off(udphy->hw_mode & UDPHY_MODE_USB),
-+		str_on_off(udphy->hw_mode & UDPHY_MODE_DP),
- 		udphy->dp_lanes, str_yes_no(udphy->flip));
- 
- 	rk_udphy_reset_assert_all(udphy);
- 	usleep_range(10000, 11000);
- 
- 	/* enable rx lfps for usb */
--	if (udphy->mode & UDPHY_MODE_USB)
-+	if (udphy->hw_mode & UDPHY_MODE_USB)
- 		rk_udphy_grfreg_write(udphy->udphygrf, &cfg->grfcfg.rx_lfps, true);
- 
- 	/* Step 1: power on pma and deassert apb rstn */
-@@ -824,13 +824,13 @@ static int rk_udphy_init(struct rk_udphy *udphy)
- 			   FIELD_PREP(CMN_DP_LANE_EN_ALL, 0));
- 
- 	/* Step 4: deassert init rstn and wait for 200ns from datasheet */
--	if (udphy->mode & UDPHY_MODE_USB) {
-+	if (udphy->hw_mode & UDPHY_MODE_USB) {
- 		ret = rk_udphy_reset_deassert(udphy, "init");
- 		if (ret)
- 			goto assert_resets;
- 	}
- 
--	if (udphy->mode & UDPHY_MODE_DP) {
-+	if (udphy->hw_mode & UDPHY_MODE_DP) {
- 		regmap_update_bits(udphy->pma_regmap, CMN_DP_RSTN_OFFSET,
- 				   CMN_DP_INIT_RSTN,
- 				   FIELD_PREP(CMN_DP_INIT_RSTN, 0x1));
-@@ -839,7 +839,7 @@ static int rk_udphy_init(struct rk_udphy *udphy)
- 	udelay(1);
- 
- 	/*  Step 5: deassert cmn/lane rstn */
--	if (udphy->mode & UDPHY_MODE_USB) {
-+	if (udphy->hw_mode & UDPHY_MODE_USB) {
- 		ret = rk_udphy_reset_deassert(udphy, "cmn");
- 		if (ret)
- 			goto assert_resets;
-@@ -898,7 +898,7 @@ static int rk_udphy_parse_lane_mux_data(struct rk_udphy *udphy)
- 	num_lanes = device_property_count_u32(udphy->dev, "rockchip,dp-lane-mux");
- 	if (num_lanes < 0) {
- 		dev_dbg(udphy->dev, "no dp-lane-mux, following dp alt mode\n");
--		udphy->mode = UDPHY_MODE_USB;
-+		udphy->hw_mode = UDPHY_MODE_USB;
- 		return 0;
- 	}
- 
-@@ -927,10 +927,10 @@ static int rk_udphy_parse_lane_mux_data(struct rk_udphy *udphy)
- 		}
- 	}
- 
--	udphy->mode = UDPHY_MODE_DP;
-+	udphy->hw_mode = UDPHY_MODE_DP;
- 	udphy->dp_lanes = num_lanes;
- 	if (num_lanes == 1 || num_lanes == 2) {
--		udphy->mode |= UDPHY_MODE_USB;
-+		udphy->hw_mode |= UDPHY_MODE_USB;
- 		udphy->flip = (udphy->lane_mux_sel[0] == PHY_LANE_MUX_DP) ||
- 			      (udphy->lane_mux_sel[1] == PHY_LANE_MUX_DP);
- 	}
-@@ -989,7 +989,7 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
- {
- 	int ret;
- 
--	if (!(udphy->mode & mode)) {
-+	if (!(udphy->hw_mode & mode)) {
- 		dev_info(udphy->dev, "mode 0x%02x is not support\n", mode);
- 		return 0;
- 	}
-@@ -1004,7 +1004,7 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
- 		if (ret)
- 			return ret;
- 
--		if (!udphy->hs && udphy->mode & UDPHY_MODE_USB)
-+		if (!udphy->hs && udphy->hw_mode & UDPHY_MODE_USB)
- 			rk_udphy_u3_port_disable(udphy, false);
- 		udphy->phy_needs_reinit = false;
- 
-@@ -1033,7 +1033,7 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
- 
- static void rk_udphy_power_off(struct rk_udphy *udphy, u8 mode)
- {
--	if (!(udphy->mode & mode)) {
-+	if (!(udphy->hw_mode & mode)) {
- 		dev_info(udphy->dev, "mode 0x%02x is not support\n", mode);
- 		return;
- 	}
-@@ -1292,7 +1292,7 @@ static int rk_udphy_usb3_phy_init(struct phy *phy)
- 	guard(mutex)(&udphy->mutex);
- 
- 	/* DP only or high-speed, disable U3 port */
--	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
-+	if (!(udphy->hw_mode & UDPHY_MODE_USB) || udphy->hs) {
- 		rk_udphy_u3_port_disable(udphy, true);
- 		return 0;
- 	}
-@@ -1307,7 +1307,7 @@ static int rk_udphy_usb3_phy_exit(struct phy *phy)
- 	guard(mutex)(&udphy->mutex);
- 
- 	/* DP only or high-speed */
--	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
-+	if (!(udphy->hw_mode & UDPHY_MODE_USB) || udphy->hs) {
- 		udphy->status &= ~UDPHY_MODE_USB;
- 		return 0;
- 	}
-
--- 
-2.53.0
+ 	pm_runtime_disable(rga->dev);
+diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/platform/rockchip/rga/rga.h
+index 72a28b1..f76c45b 100644
+--- a/drivers/media/platform/rockchip/rga/rga.h
++++ b/drivers/media/platform/rockchip/rga/rga.h
+@@ -81,6 +81,7 @@ struct rockchip_rga {
+ 	struct device *dev;
+ 	struct regmap *grf;
+ 	void __iomem *regs;
++	int irq;
+ 	struct clk *sclk;
+ 	struct clk *aclk;
+ 	struct clk *hclk;
 
 
 _______________________________________________
