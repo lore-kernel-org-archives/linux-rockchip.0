@@ -4,93 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61C2CC43458
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jul 2026 09:12:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11426C43458
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jul 2026 09:54:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uhEBMl1ABt6TARO+C/fEaCQLsf1sEO+nl+Jcs2pXygc=; b=zQQMs8S7zZ5OoT
-	YlSoTRBBQ9ch7QTE4nB5E5kPs9XNv9rHSSjuxih3d0hC2jqaJ/wkb9qH1IXaX6OwDfPglVcp5Db8G
-	8CpUCmsCodWHDa7hA9ps0p618lTsnbYDdSmipjRLIreDw7UQFcQUunzX8iwMPEfoaqIu8grVNtAAs
-	8Y/SXyFjEIJMf2s/sU3MeuEfIFnyYgCAYXxojR/hHkrMjg90sY+3MA56E6PLj3Xr3MLxeOzNNMVX8
-	LvrJNqmtoS/m+Wrvdp4NMQdw1pc1GrtaxLUJP0qzGrrE/rQYrMcSHetz+ad4IyPnqUrHRY10M/XVr
-	4ZLqgJOasH4j5Bk1KT9Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=t9GrccxTw+pTthXnkqWgdHcfrOF9gGYCWg0ScIa6hR0=; b=egxiMOWxMWCHD6
+	FYXcN0bAgEd+cIFu1PmIlFnigANJWlqGJ2q1WXY2YcByzo+wk71DoczTPOYk7s0PGCLSG7G4NakZZ
+	4E3EsZm5GHzX4LIUJ6bacxo1kLssJ1DQ1IR5UbOErnxXhe0/I22IvwqZKKFtL8EK3C7BnYx4vwcu2
+	ICAbjRdwJP2ulmcS1kXNDvUxi6gWWYPRF7IFVO5eZBFzthKtDD+7w/6wjJN0co/MHeYQFIFPpp86i
+	zQIceFpwfQB6vMeVtfcm9/LuPenZrSRBGcUnOnwHvZAisjBWVTfnf65FrDp5jgIOk0ISC7pPcCMra
+	Kl4UAg5MeFMQ0YPHvV9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfwQ4-00000008JWy-0K9X;
-	Sat, 04 Jul 2026 09:12:16 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1wfx5G-00000008Kr7-1KSN;
+	Sat, 04 Jul 2026 09:54:50 +0000
+Received: from out-170.mta1.migadu.com ([95.215.58.170])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfwQ1-00000008JWG-1l5P
+	id 1wfx5D-00000008Kqh-07rJ
 	for linux-rockchip@lists.infradead.org;
-	Sat, 04 Jul 2026 09:12:14 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-4631679f204so1458075f8f.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 04 Jul 2026 02:12:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783156331; x=1783761131; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=BbW7ODmyi3VAP92/8ljxFasAPjrxxi6fJ+oOf3N8IIA=;
-        b=CNgdGK/ZjdiXNt54TQQ/I80b4p3pQK8qJdSP0oZFPaMKYp4kkDpdcylcmvGCMTLD/Y
-         ea7YnbE2o9NCh2v8c5xkeDar/a7rDJqV53QbIKyQiNyGWB95Hbwn+boiWPEVm2IxT6X9
-         U7XJvxx5MaEqB9Nhb3bEeDA+KbNXTK+md0lNor2OjTh1Irkrg87Muxx5SWzqLCrUwah7
-         tTfun8667Tx5El5R/8n1s7l0Pc24pYCorOyHWI6f/EfPeDS5gHB72AaChTYANEDXq2ky
-         lJy/4gabAmZ4Rc2mQhV37f6ioY9hI65No/we6fEubywBTFekatCthvqqPivGoU+IGfyJ
-         w80Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783156331; x=1783761131;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BbW7ODmyi3VAP92/8ljxFasAPjrxxi6fJ+oOf3N8IIA=;
-        b=cC8+2evupXh51bDhCflXP6VsOoyYc5M6VIm13C3uyC60KHUoivapu+x1WJCvIMU11h
-         6JtqaveTDoB4iSvRu0B/eRZzLT9Nmh7I8jJff1b445nxZIPm+8TBITNWW1g+GZoIJH2V
-         hwKiadhIU4G03aSeDO+X519iD07t3g/H5cT2gcbA/JMnVa8w6+fUpUnRY759T9l8LMez
-         qRpAWFUXCFPKECg3yngyJ8ZkA/SC1c7DPYo8mbcWLVtMQaVjSFuHdsaSkj1kCbltOW4N
-         QITWnoAAETDCEPhuX0aSr4VNpThYtzo+qKD2yo64UQhYvJSZvl+COVZxY8Nr/Z9/ynE5
-         CAYA==
-X-Forwarded-Encrypted: i=1; AHgh+RofcedFiEt8TjUfYD6FCdJ9BpcdX4gMXekEE8+2nywJowuU0v1f3u4Sxo+I3wqLS9eiJ74X7EhZ43Y6RXPVlg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwPp23/ouL9F/wZ8f9vE43kmxukLpO9Z8pXuTvX7+xGsVnKy0Sz
-	W0C9K0RP3X7/YTgfi9r0KqsNf2CYZiN6F/ldX7NWQ5oIQ+zRw9qc8kAX
-X-Gm-Gg: AfdE7cmXUbh8uJMHeSqfF4e3p5amEADbbuKSgtyYqktoeobMDErovQd1LZr/T+UVz9u
-	g2b+EFMUWQx3uGFFAKgohRBiRSbKheQ3qxKtYDfAlIeZyFuyD3UhSvA571vSYhLwGlvyZkjlKT+
-	hqRAygLntU3eO4OgMQHwn7j86k1UaFrAD0xN3oTswSA565BM3HgjzuTnn5QDlRSZF1Vh3jeRAJQ
-	qEck4lLaW4MeUR59ne7pGmCS6U+s3yaKKsfBw0pnbApXP07pJNqigQ/R+XPQJHtZY19Tfo4Q1pd
-	M93vITrtufGoF8Rm2Nv2iPMli8urZ/7Y/n49UodNsjSQnnv1VkmcDmvKjRvku37pqK9GlTPmTRT
-	VNey3tGSxfOJ50LYbdwxN8t2a/ge/nQEbUB6vhmLbCNML62mTFLUBM7YZdNiADawFA8NZ2jhKrt
-	HC7Cox8rz3P3N6bYwOcfLs
-X-Received: by 2002:a05:6000:18a5:b0:474:c3a5:4132 with SMTP id ffacd0b85a97d-47934b8a255mr10193626f8f.9.1783156331147;
-        Sat, 04 Jul 2026 02:12:11 -0700 (PDT)
-Received: from [127.0.0.2] ([194.35.121.133])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47a9de1e785sm6366058f8f.8.2026.07.04.02.12.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 04 Jul 2026 02:12:10 -0700 (PDT)
-From: Diogo Silva <diogompaissilva@gmail.com>
-Date: Sat, 04 Jul 2026 11:12:02 +0200
-Subject: [PATCH v5] drm/rockchip: Remove dependency on DRM simple helpers
-MIME-Version: 1.0
-Message-Id: <20260704-rockchip-drm-simple-v5-1-a333f527a4f9@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAGHOSGoC/x3MSwqEMBBF0a1IjbsgpKM2vRVxIOVTC3+hAiKIe
- zc4PIN7L0owRaJ/cZHh0KT7llF+CpKp20aw9tnkna9c7QLbLrNMGrm3lZOucQH/vlXwtYgHQLm
- MhkHP99q09/0A6CST62UAAAA=
-X-Change-ID: 20260704-rockchip-drm-simple-836427cc2eee
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
-Cc: Javier Martinez Canillas <javierm@redhat.com>, 
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Diogo Silva <diogompaissilva@gmail.com>
-X-Mailer: b4 0.14.3
+	Sat, 04 Jul 2026 09:54:49 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1783158883;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=gwSOPRwPe16md58gxuRwvnrh/zOt3EcNn/2KFaD5eL4=;
+	b=Kas5S/+E5faZ6tGsC3Od6zFmgPLB0QI5dwtnD9T+vrUTRkUxkwYhbQX09vex7b+YyLFpso
+	DCLLST39THRf9qOm/obiooOuvpjt15Nh7bjLPsWaU5YIB/ZfS+5SyuYWGxvHGC7LgoGfG6
+	t+tpHKTDTc14LXDhr2HqkVKUW9v6YHYjhTMaGyGVDXIjuHqAXxg3K5SM7d4BcUFUXfVMA8
+	bA4+/yA/oEYLPdJRDOcIMeVAxOG4ZssKcQH4q0sxvvEQ4eXvUtb5l+YmnTR39o4cnFD7xz
+	WQYmrM7B0zG345JVEKb4D1zPKr+JufARpjpcvprEfbweF2HqmF6gmR1eESoT/g==
+Date: Sat, 04 Jul 2026 11:54:36 +0200
+Message-Id: <DJPP2F4YRQGN.1CR6HUGTXDYKK@cknow-tech.com>
+Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko
+ Stuebner" <heiko@sntech.de>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH 00/12] arm64: dts: rockchip: Add NanoPi M6 board
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Joachim Eastwood" <joachim.eastwood@gmail.com>, "Diederik de Haas"
+ <diederik@cknow-tech.com>
+References: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
+ <DJOWHH5K7P76.3JPJVO47K1SZE@cknow-tech.com>
+ <CAPSPb=tZ1FenNfEM5P+DWcksKvpQjyQQjAWTRdyxb7=YYxY_rw@mail.gmail.com>
+In-Reply-To: <CAPSPb=tZ1FenNfEM5P+DWcksKvpQjyQQjAWTRdyxb7=YYxY_rw@mail.gmail.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260704_021213_517979_4AB9D20D 
-X-CRM114-Status: GOOD (  16.70  )
+X-CRM114-CacheID: sfid-20260704_025447_555174_C19B0B6A 
+X-CRM114-Status: GOOD (  22.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,317 +76,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simple KMS helper are deprecated since they only add an intermediate
-layer between drivers and the atomic modesetting.
-This patch removes the drm_simple_encoder_init() helper usage in the
-rockchip drivers by open coding it and using the encoder atomic helpers
-directly. This is a step to eventually get rid of this simple KMS helper,
-once all drivers that use it have been converted.
+Hi Joachim,
 
-Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
-Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
----
-v5:
- - fixed formatting and some indentation
+On Fri Jul 3, 2026 at 10:23 PM CEST, Joachim Eastwood wrote:
+> On Fri, 3 Jul 2026 at 13:30, Diederik de Haas <diederik@cknow-tech.com> wrote:
+>> On Fri Jul 3, 2026 at 12:07 AM CEST, Joachim Eastwood via B4 Relay wrote:
+>> > This patch series add support for the NanoPi M6. This board is very
+>> > similar to the NanoPi R6C and R6S boards which are already supported.
+>> >
+>> > Main differences:
+>> > * M.2 M-key slot with PCIe (Also present on R6C)
+>> > * M.2 E-key slot with PCIe and USB (from hub)
+>> > * 1 additional USB 2.0 port from an on-board USB hub
+>> > * RT5616 audio CODEC
+>>
+>> This seems to be the M6 (2405 aka 'V1')?
+> Yes, correct. This patch set is for the original M6 board. V1 if you like.
+>
+>> Because there is now also a M6V2 (2603), which uses an ES8389 CODEC:
+>> https://www.friendlyelec.com/index.php?route=product/product&path=69&product_id=319
+> I did notice there was a new version, but I hadn't given it much thought.
+>
+>> Is it useful to already take the 2 M6 variants into account with this patch set?
+> Yes, I think you are right.
+>
+> How about this setup:
+> rk3588s-nanopi-m6.dtsi
+> rk3588s-nanopi-m6v1.dts
+> rk3588s-nanopi-m6v2.dts
+> This mimics the setup for the R6 series boards with rk3588s-nanopi-r6.dtsi
+> and rk3588s-nanopi-r6[cs].dts.
 
-v4:
- - improved commit message based on Javier Canillas feedback
+Seems fine. You could drop the 'v1' as I only used that to differentiate with
+the V2. OTOH, I'm always 'struggling' how to identify the original NanoPC-T6.
+I do like consistency, so mimicing the setup for R6 is nice :-)
 
-v3:
- - rebase on drm-tip tree
----
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c  | 9 ++++++---
- drivers/gpu/drm/rockchip/cdn-dp-core.c           | 9 ++++++---
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c  | 9 +++++++--
- drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c | 8 ++++++--
- drivers/gpu/drm/rockchip/dw_dp-rockchip.c        | 1 -
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c      | 1 -
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c   | 1 -
- drivers/gpu/drm/rockchip/rk3066_hdmi.c           | 8 ++++++--
- drivers/gpu/drm/rockchip/rockchip_lvds.c         | 9 +++++++--
- drivers/gpu/drm/rockchip/rockchip_rgb.c          | 8 ++++++--
- 10 files changed, 44 insertions(+), 19 deletions(-)
+> Note that I will not make the v2 board part of this patchset since I
+> am unable to test it. But as you said we can take it into account now.
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 776954c7d0525..46c245e35d215 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -30,7 +30,6 @@
- #include <drm/drm_of.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include "rockchip_drm_drv.h"
- 
-@@ -303,6 +302,10 @@ rockchip_dp_drm_encoder_atomic_check(struct drm_encoder *encoder,
- 	return 0;
- }
- 
-+static const struct drm_encoder_funcs rockchip_dp_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- static const struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs = {
- 	.mode_fixup = rockchip_dp_drm_encoder_mode_fixup,
- 	.mode_set = rockchip_dp_drm_encoder_mode_set,
-@@ -361,8 +364,8 @@ static int rockchip_dp_drm_create_encoder(struct rockchip_dp_device *dp)
- 							     dev->of_node);
- 	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
- 
--	ret = drm_simple_encoder_init(drm_dev, encoder,
--				      DRM_MODE_ENCODER_TMDS);
-+	ret = drm_encoder_init(drm_dev, encoder, &rockchip_dp_encoder_funcs,
-+			       DRM_MODE_ENCODER_TMDS, NULL);
- 	if (ret) {
- 		DRM_ERROR("failed to initialize encoder with drm\n");
- 		return ret;
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index e159e1627f3c2..68aa66915e8ac 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -23,7 +23,6 @@
- #include <drm/drm_of.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include "cdn-dp-core.h"
- #include "cdn-dp-reg.h"
-@@ -671,6 +670,10 @@ static int cdn_dp_encoder_atomic_check(struct drm_encoder *encoder,
- 	return 0;
- }
- 
-+static const struct drm_encoder_funcs cdn_dp_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- static const struct drm_encoder_helper_funcs cdn_dp_encoder_helper_funcs = {
- 	.atomic_check = cdn_dp_encoder_atomic_check,
- };
-@@ -988,8 +991,8 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 							     dev->of_node);
- 	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
- 
--	ret = drm_simple_encoder_init(drm_dev, encoder,
--				      DRM_MODE_ENCODER_TMDS);
-+	ret = drm_encoder_init(drm_dev, encoder, &cdn_dp_encoder_funcs,
-+			       DRM_MODE_ENCODER_TMDS, NULL);
- 	if (ret) {
- 		DRM_ERROR("failed to initialize encoder with drm\n");
- 		return ret;
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 3547d91b25d31..268d4993a04fd 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -25,7 +25,6 @@
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
- #include <drm/drm_print.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include "rockchip_drm_drv.h"
- 
-@@ -825,6 +824,10 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
- 	clk_disable_unprepare(dsi->grf_clk);
- }
- 
-+static const struct drm_encoder_funcs dw_mipi_dsi_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- static const struct drm_encoder_helper_funcs
- dw_mipi_dsi_encoder_helper_funcs = {
- 	.atomic_check = dw_mipi_dsi_encoder_atomic_check,
-@@ -840,7 +843,9 @@ static int rockchip_dsi_drm_create_encoder(struct dw_mipi_dsi_rockchip *dsi,
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
- 							     dsi->dev->of_node);
- 
--	ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_DSI);
-+	ret = drm_encoder_init(drm_dev, encoder,
-+			       &dw_mipi_dsi_encoder_funcs,
-+			       DRM_MODE_ENCODER_DSI, NULL);
- 	if (ret) {
- 		DRM_ERROR("Failed to initialize encoder with drm\n");
- 		return ret;
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
-index d2e76d36d7247..9dc207c2d20d1 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c
-@@ -23,7 +23,6 @@
- #include <drm/bridge/dw_mipi_dsi2.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include <uapi/linux/videodev2.h>
- 
-@@ -275,6 +274,10 @@ dw_mipi_dsi2_encoder_atomic_check(struct drm_encoder *encoder,
- 	return 0;
- }
- 
-+static const struct drm_encoder_funcs dw_mipi_dsi2_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- static const struct drm_encoder_helper_funcs
- dw_mipi_dsi2_encoder_helper_funcs = {
- 	.atomic_enable = dw_mipi_dsi2_encoder_atomic_enable,
-@@ -290,7 +293,8 @@ static int rockchip_dsi2_drm_create_encoder(struct dw_mipi_dsi2_rockchip *dsi2,
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
- 							     dsi2->dev->of_node);
- 
--	ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_DSI);
-+	ret = drm_encoder_init(drm_dev, encoder, &dw_mipi_dsi2_encoder_funcs,
-+			       DRM_MODE_ENCODER_DSI, NULL);
- 	if (ret) {
- 		dev_err(dsi2->dev, "Failed to initialize encoder with drm\n");
- 		return ret;
-diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-index 0de822360c8db..b23efb153c9e6 100644
---- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-@@ -20,7 +20,6 @@
- #include <drm/drm_of.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include "rockchip_drm_drv.h"
- 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index cffc0af5190fe..b6e154c35e7c2 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -18,7 +18,6 @@
- #include <drm/drm_managed.h>
- #include <drm/drm_of.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include "rockchip_drm_drv.h"
- 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 815f9ea7bcbe4..9c4cf68d79d50 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -25,7 +25,6 @@
- #include <drm/drm_managed.h>
- #include <drm/drm_of.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include "rockchip_drm_drv.h"
- 
-diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-index 9b8981fa19aee..f28d6a883e099 100644
---- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-@@ -12,7 +12,6 @@
- #include <drm/drm_of.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include <linux/clk.h>
- #include <linux/mfd/syscon.h>
-@@ -454,6 +453,10 @@ rk3066_hdmi_encoder_atomic_check(struct drm_encoder *encoder,
- 	return 0;
- }
- 
-+static const struct drm_encoder_funcs rk3066_hdmi_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- static const
- struct drm_encoder_helper_funcs rk3066_hdmi_encoder_helper_funcs = {
- 	.atomic_check   = rk3066_hdmi_encoder_atomic_check,
-@@ -696,7 +699,8 @@ rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
- 		return -EPROBE_DEFER;
- 
- 	drm_encoder_helper_add(encoder, &rk3066_hdmi_encoder_helper_funcs);
--	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
-+	drm_encoder_init(drm, encoder, &rk3066_hdmi_encoder_funcs,
-+			 DRM_MODE_ENCODER_TMDS, NULL);
- 
- 	hdmi->bridge.driver_private = hdmi;
- 	hdmi->bridge.funcs = &rk3066_hdmi_bridge_funcs;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-index 31dc206bedeba..262f818752781 100644
---- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-@@ -24,7 +24,6 @@
- #include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include "rockchip_drm_drv.h"
- #include "rockchip_lvds.h"
-@@ -427,6 +426,10 @@ static void px30_lvds_encoder_disable(struct drm_encoder *encoder)
- 	drm_panel_unprepare(lvds->panel);
- }
- 
-+static const struct drm_encoder_funcs rockchip_lvds_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- static const
- struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
- 	.enable = rk3288_lvds_encoder_enable,
-@@ -594,7 +597,9 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
- 							     dev->of_node);
- 
--	ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_LVDS);
-+	ret = drm_encoder_init(drm_dev, encoder,
-+			       &rockchip_lvds_encoder_funcs,
-+			       DRM_MODE_ENCODER_LVDS, NULL);
- 	if (ret < 0) {
- 		drm_err(drm_dev,
- 			"failed to initialize encoder: %d\n", ret);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-index add3123e5ce70..2ad24b914989f 100644
---- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-@@ -17,7 +17,6 @@
- #include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include "rockchip_drm_drv.h"
- #include "rockchip_rgb.h"
-@@ -65,6 +64,10 @@ rockchip_rgb_encoder_atomic_check(struct drm_encoder *encoder,
- 	return 0;
- }
- 
-+static const struct drm_encoder_funcs rockchip_rgb_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- static const
- struct drm_encoder_helper_funcs rockchip_rgb_encoder_helper_funcs = {
- 	.atomic_check = rockchip_rgb_encoder_atomic_check,
-@@ -127,7 +130,8 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
- 	encoder = &rgb->encoder.encoder;
- 	encoder->possible_crtcs = drm_crtc_mask(crtc);
- 
--	ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_NONE);
-+	ret = drm_encoder_init(drm_dev, encoder, &rockchip_rgb_encoder_funcs,
-+			       DRM_MODE_ENCODER_NONE, NULL);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(drm_dev->dev,
- 			      "failed to initialize encoder: %d\n", ret);
+Agreed. My concern was about trying to prevent another complete reorganization
+once someone decides to upstream support for V2 (2603).
 
----
-base-commit: 7f15fa27122a00a78e7bc2722748bb303adbbb99
-change-id: 20260704-rockchip-drm-simple-836427cc2eee
+>> https://wiki.friendlyelec.com/wiki/index.php/NanoPi_M6#Schematic.2C_PCB_CAD_File
+>> https://wiki.friendlyelec.com/wiki/index.php/NanoPi_M6V2#Schematic.2C_PCB_CAD_File
+> I did a quick comparison of the schematics and noticed the following
+> differences:
+> * New CODEC; ES8389
+> * A new "User" button connected to a gpio line.
+> * Different USB 2.0 hub: CH334P (may not be relevant for DT)
+> * Different USB PD power solution (not relevant for DT)
 
-Best regards,
--- 
-Diogo Silva <diogompaissilva@gmail.com>
+At the end of the M6V2 product page, there's also a comparison with 'V1':
+https://www.friendlyelec.com/image/catalog/description/M6V2_en_13.jpg
 
+It's under the heading 'Comparison', but it's part of the picture so you can't
+search for it. Dunny why FriendlyElec does that, but they do it consistently.
+
+Cheers,
+  Diederik
 
 _______________________________________________
 Linux-rockchip mailing list
