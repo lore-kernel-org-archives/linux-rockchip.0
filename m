@@ -4,62 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11426C43458
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jul 2026 09:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20D81C43458
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Jul 2026 12:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t9GrccxTw+pTthXnkqWgdHcfrOF9gGYCWg0ScIa6hR0=; b=egxiMOWxMWCHD6
-	FYXcN0bAgEd+cIFu1PmIlFnigANJWlqGJ2q1WXY2YcByzo+wk71DoczTPOYk7s0PGCLSG7G4NakZZ
-	4E3EsZm5GHzX4LIUJ6bacxo1kLssJ1DQ1IR5UbOErnxXhe0/I22IvwqZKKFtL8EK3C7BnYx4vwcu2
-	ICAbjRdwJP2ulmcS1kXNDvUxi6gWWYPRF7IFVO5eZBFzthKtDD+7w/6wjJN0co/MHeYQFIFPpp86i
-	zQIceFpwfQB6vMeVtfcm9/LuPenZrSRBGcUnOnwHvZAisjBWVTfnf65FrDp5jgIOk0ISC7pPcCMra
-	Kl4UAg5MeFMQ0YPHvV9A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aVYRL/GtuDm8fPYY2EpzBaZQnvLi8tpg7EkkXAtJQF8=; b=pqDqrQs8zAhnqm
+	1Kys8R4D9i/GvWUrFJACQk979kWtmFGcJnFBtaZK8Pd9O7eFF0WcLtV2u86xSYBeq4Jl3DQ53cTrz
+	xD8dvCxxBCtyWbYZVdlqXBtz4RZFr0MxrbSLNv3n3My+yFrnQSRkNBCgT2vGSZrrf6HiHMY7J7qVP
+	zz1ofhAZw/Q+wp8RQX+pnXj1bJ0YE07WpOeUv+wuoGUvg9i5h4elY7uJzalE7AKeXP72SVTmq5t7a
+	u22Ws3O+l7W4r+zKhp4YMGejIDKmNOVhX4k6SLEH80jBd0oJjrTqtBd2IG/7JHxI6PQ6flHzKqJ9R
+	PUy1ENb59g4xIegtDw7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfx5G-00000008Kr7-1KSN;
-	Sat, 04 Jul 2026 09:54:50 +0000
-Received: from out-170.mta1.migadu.com ([95.215.58.170])
+	id 1wfzlx-00000008S7D-12HR;
+	Sat, 04 Jul 2026 12:47:05 +0000
+Received: from fout-b4-smtp.messagingengine.com ([202.12.124.147])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfx5D-00000008Kqh-07rJ
-	for linux-rockchip@lists.infradead.org;
-	Sat, 04 Jul 2026 09:54:49 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1783158883;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gwSOPRwPe16md58gxuRwvnrh/zOt3EcNn/2KFaD5eL4=;
-	b=Kas5S/+E5faZ6tGsC3Od6zFmgPLB0QI5dwtnD9T+vrUTRkUxkwYhbQX09vex7b+YyLFpso
-	DCLLST39THRf9qOm/obiooOuvpjt15Nh7bjLPsWaU5YIB/ZfS+5SyuYWGxvHGC7LgoGfG6
-	t+tpHKTDTc14LXDhr2HqkVKUW9v6YHYjhTMaGyGVDXIjuHqAXxg3K5SM7d4BcUFUXfVMA8
-	bA4+/yA/oEYLPdJRDOcIMeVAxOG4ZssKcQH4q0sxvvEQ4eXvUtb5l+YmnTR39o4cnFD7xz
-	WQYmrM7B0zG345JVEKb4D1zPKr+JufARpjpcvprEfbweF2HqmF6gmR1eESoT/g==
-Date: Sat, 04 Jul 2026 11:54:36 +0200
-Message-Id: <DJPP2F4YRQGN.1CR6HUGTXDYKK@cknow-tech.com>
-Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH 00/12] arm64: dts: rockchip: Add NanoPi M6 board
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Joachim Eastwood" <joachim.eastwood@gmail.com>, "Diederik de Haas"
- <diederik@cknow-tech.com>
-References: <20260703-nanopi-m6-v1-0-8344a1559519@gmail.com>
- <DJOWHH5K7P76.3JPJVO47K1SZE@cknow-tech.com>
- <CAPSPb=tZ1FenNfEM5P+DWcksKvpQjyQQjAWTRdyxb7=YYxY_rw@mail.gmail.com>
-In-Reply-To: <CAPSPb=tZ1FenNfEM5P+DWcksKvpQjyQQjAWTRdyxb7=YYxY_rw@mail.gmail.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1wfzlu-00000008S6S-0rG6;
+	Sat, 04 Jul 2026 12:47:03 +0000
+Received: from phl-compute-07.internal (phl-compute-07.internal [10.202.2.47])
+	by mailfout.stl.internal (Postfix) with ESMTP id 4F6A41D00066;
+	Sat,  4 Jul 2026 08:46:57 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-07.internal (MEProxy); Sat, 04 Jul 2026 08:46:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mm.st; h=cc:cc
+	:content-type:content-type:date:date:from:from:in-reply-to
+	:message-id:mime-version:reply-to:subject:subject:to:to; s=fm2;
+	 t=1783169217; x=1783255617; bh=DSopaZRgPpL0KY92Lt0HxUz65nngHTif
+	/3wvnAu5v0w=; b=eMsI5LtMgPSmOZR9XlwDS73uj1zvGaPqDbCFB6Wk+DmtX5GI
+	4osRs+h2KoSrKs0ZeWM31185xOgVHWYryCp3NqGmjJklbcGVUlu9ZEDZHN9THo91
+	aKt69TslCHE8q2tsX0Ya/nxNPYhZahdiQ7CGEke2bgTXMl+fYdO+8CcRU6/dkLbM
+	bbOJ4qXUncVAToM31AUT7v8aXhqAeY87iXsNQBdrn1EYIuIKM39TUj8zMiX2v7dZ
+	au6hzxkopqM+hxbC7bH6ID6SypPJXmhiQ1HnfK4kpEc8TNdBnaiy77gVhnqxvhtX
+	4Yhj0mqukZoCojCClgTSAcE7g6Vj0xfoY+lpSg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:message-id
+	:mime-version:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1783169217; x=
+	1783255617; bh=DSopaZRgPpL0KY92Lt0HxUz65nngHTif/3wvnAu5v0w=; b=M
+	gRylLIgIByTJQQH8oJsO+H+QaYuJoU43hSBCS8RKrtRCZ0Tqgi3KUI0HU2+Oob8G
+	U/GRB97cVKpQO6iVWzn4aKqyYnDuuxAKlDHYnTjKGiFxEr0A6PmvLYq/KbG3wISL
+	UdBlmp6pDV1QXE7JONwdY5db0fWRr+h0LGW9isZ2w7C4PzyippxlLCSQbFamOv9e
+	88MhYX1XxjUg5+AuXa47XstSPFokkiPfGBi/4EBIzHzSZLzy8FYpOZjpKaGF7Xco
+	SMBNomO48E4Sj3SDHPqp1lcRZyvXqExC5n8BDU5Sk4u3HKpTYNgAOBM3GW561jNv
+	3oX9dXlbyVyktgdjnmPQA==
+X-ME-Sender: <xms:wABJaiFtrN-UwK_mBD5BCoRn_wVufERpJyodcWfRW0Ng7qZqK0eb_A>
+    <xme:wABJargtVCG2zee3WOvnv_VMcf1RTVjZBSaLEQUUQoLlESRTKAnCnD_4EnCltAwwC
+    h3fqyXQPNab7ctvTINfLOFRm0bqsEAGSOPXDGGkCiJFCE0RuqtT4g>
+X-ME-Received: <xmr:wABJanuJBRES_74U_fiQe3IeV1-t6wwv5SNzLe4iCjpyGSDfnx1j9DSE2ZKTKUYpKgWbdZf6NT756Ll4QQ>
+X-ME-Proxy-Cause: dmFkZTFr3i3xkzXRpTDUGWiH0crRTBA4ga4Wskl6XzSwqcORPAWlvCH6ez+ye+BrZRSPRy
+    DNQY6ViUjFBZd1tkQjeVlXy5FVwQiCSafw/OoUDdznp10hgACBRGZJUa0TZNyBeUnjb7nU
+    zrB2tZjGr3sZIq17zYcT3iL4Roe2mF3K/xcWf8y1ZGhkLXTs8dkpUJrR6uVntvy/+FV8jd
+    xP/HhVmnHlip6SqPBd7U4H9VVEf9TfB6Ryni5TVgWJn7K3Ckcz3auvRJfo4+oQEsa5ZZFg
+    mjVFj2gXHWdl/Zc4g5jCASsTC7/fEA3oN+gnq2jlzt0GalADbg/0sV8lrdNSgp9HCgV2nJ
+    uV1YASE7z7xho27iC0zHR1bpvF8DFYF0RZ2c298pIQvv+aeb2f5urf2yhQ2iwQmOfG1FE6
+    DLtL+D77Ex3AvFPoknNrFvYLe2bQ9PSXjXFL+KCllF5qG/hYBhnb0fVg8bmWrrOVcco5N7
+    HFxkGzCFdcTV/s8msB0v6zLcr06/A5MQG8Yu7IRepibf0hVcjTeLTpKWKL6Osg5FCVQ467
+    FlSfRch3vwAlTRuaqwV+ACXyN9/5WE+QDLHHaWIrdUkFYXJsHdci5RPVRfhv02JOyvFoV9
+    2Flw7hY5T1ttj+cRhytF15MwtVS5oqrH0JJwKYD4PMAAxmIRhBjr/bBJpCog
+X-ME-Proxy: <xmx:wABJamuRvAK97eBZ1gduVR6IjlYyKoNm2OjDgY1lDt9M9hdekCc9Gw>
+    <xmx:wABJakFQ4mQlfUNBe6Y7bLAU-Ho0pLuhMNQgNoMolCVDSPQOJ8A7UQ>
+    <xmx:wABJapNkR5lBnQDwratSsoFfgVgO7xOCGiPJYYax1HUvpn_X8Mxs-Q>
+    <xmx:wABJarL_EGmO2LMTngk8FxMGm9XbvvPaSGtwtIO4nopYFlRoffdofA>
+    <xmx:wQBJan3GDxjRwzPw8M42UB9Ni777O_LUW1BFgW3z4_cnd3AXhjdzM8V6>
+Feedback-ID: i4e034308:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 4 Jul 2026 08:46:55 -0400 (EDT)
+Date: Sat, 4 Jul 2026 15:46:52 +0300
+From: Vsevolod Kozlov <zaba@mm.st>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, David Petry <petry103@gmail.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: fan speed control for FriendlyELEC
+ CM3588 NAS
+Message-ID: <akkAvJap-MtbKp8B@Vsevolods-MacBook-Pro.local>
+MIME-Version: 1.0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260704_025447_555174_C19B0B6A 
-X-CRM114-Status: GOOD (  22.86  )
+X-CRM114-CacheID: sfid-20260704_054702_691763_0CC477B7 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,64 +108,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Joachim,
+The FriendlyELEC CM3588 NAS kit is often supplied with a case and a fan.
+Enable control of the speed of the fan using the trip points and cooling
+maps from rk3588-nanopc-t6.dtsi as a reference.
 
-On Fri Jul 3, 2026 at 10:23 PM CEST, Joachim Eastwood wrote:
-> On Fri, 3 Jul 2026 at 13:30, Diederik de Haas <diederik@cknow-tech.com> wrote:
->> On Fri Jul 3, 2026 at 12:07 AM CEST, Joachim Eastwood via B4 Relay wrote:
->> > This patch series add support for the NanoPi M6. This board is very
->> > similar to the NanoPi R6C and R6S boards which are already supported.
->> >
->> > Main differences:
->> > * M.2 M-key slot with PCIe (Also present on R6C)
->> > * M.2 E-key slot with PCIe and USB (from hub)
->> > * 1 additional USB 2.0 port from an on-board USB hub
->> > * RT5616 audio CODEC
->>
->> This seems to be the M6 (2405 aka 'V1')?
-> Yes, correct. This patch set is for the original M6 board. V1 if you like.
->
->> Because there is now also a M6V2 (2603), which uses an ES8389 CODEC:
->> https://www.friendlyelec.com/index.php?route=product/product&path=69&product_id=319
-> I did notice there was a new version, but I hadn't given it much thought.
->
->> Is it useful to already take the 2 M6 variants into account with this patch set?
-> Yes, I think you are right.
->
-> How about this setup:
-> rk3588s-nanopi-m6.dtsi
-> rk3588s-nanopi-m6v1.dts
-> rk3588s-nanopi-m6v2.dts
-> This mimics the setup for the R6 series boards with rk3588s-nanopi-r6.dtsi
-> and rk3588s-nanopi-r6[cs].dts.
+Signed-off-by: Vsevolod Kozlov <zaba@mm.st>
+---
+ .../rk3588-friendlyelec-cm3588-nas.dts        | 31 +++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-Seems fine. You could drop the 'v1' as I only used that to differentiate with
-the V2. OTOH, I'm always 'struggling' how to identify the original NanoPC-T6.
-I do like consistency, so mimicing the setup for R6 is nice :-)
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
+index 0dce96ca8c28..f4c34da61c4d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
+@@ -12,6 +12,7 @@
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/soc/rockchip,vop2.h>
++#include <dt-bindings/thermal/thermal.h>
+ #include <dt-bindings/usb/pd.h>
+ #include "rk3588-friendlyelec-cm3588.dtsi"
+ 
+@@ -457,6 +458,36 @@ &i2c8 {
+ 	status = "okay";
+ };
+ 
++&package_thermal {
++	polling-delay = <1000>;
++
++	trips {
++		package_warm: package-warm {
++			temperature = <55000>;
++			hysteresis = <2000>;
++			type = "active";
++		};
++
++		package_hot: package-hot {
++			temperature = <65000>;
++			hysteresis = <2000>;
++			type = "active";
++		};
++	};
++
++	cooling-maps {
++		map0 {
++			trip = <&package_warm>;
++			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
++		};
++
++		map1 {
++			trip = <&package_hot>;
++			cooling-device = <&fan 2 THERMAL_NO_LIMIT>;
++		};
++	};
++};
++
+ &pcie2x1l0 {
+ 	/* 2. M.2 socket, CON14: pcie30phy port0 lane1, @fe170000 */
+ 	max-link-speed = <3>;
+-- 
+2.47.3
 
-> Note that I will not make the v2 board part of this patchset since I
-> am unable to test it. But as you said we can take it into account now.
-
-Agreed. My concern was about trying to prevent another complete reorganization
-once someone decides to upstream support for V2 (2603).
-
->> https://wiki.friendlyelec.com/wiki/index.php/NanoPi_M6#Schematic.2C_PCB_CAD_File
->> https://wiki.friendlyelec.com/wiki/index.php/NanoPi_M6V2#Schematic.2C_PCB_CAD_File
-> I did a quick comparison of the schematics and noticed the following
-> differences:
-> * New CODEC; ES8389
-> * A new "User" button connected to a gpio line.
-> * Different USB 2.0 hub: CH334P (may not be relevant for DT)
-> * Different USB PD power solution (not relevant for DT)
-
-At the end of the M6V2 product page, there's also a comparison with 'V1':
-https://www.friendlyelec.com/image/catalog/description/M6V2_en_13.jpg
-
-It's under the heading 'Comparison', but it's part of the picture so you can't
-search for it. Dunny why FriendlyElec does that, but they do it consistently.
-
-Cheers,
-  Diederik
 
 _______________________________________________
 Linux-rockchip mailing list
