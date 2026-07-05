@@ -4,86 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95AE6C43602
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jul 2026 18:20:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86EB1C44500
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jul 2026 20:46:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KhQXE6WvDac0NszsZbD1ryWatnNzX9TrGID0VQcIYds=; b=Og1GreUx2UdXt8
-	feP2chexZbaUfezWhUh+/aUAkzswANkhACKsQOPKORSEDruxwyQebpyi29pBH+fXQqReNw/8Pk7jp
-	b1CPYyW2XhIrDMyCogxtUfiT0LtREHySv+rt9oXD76Wp93uHckxCdJbBz0olW7rACJFXMW+JPVBCN
-	hYUiLkxFTEThZUbYLWERiaFGDFQoNZconf7ANHZoaMA9lGn3bSRNdM0Aa5JHN7PK3XXCKIaH/l03w
-	vYQBZP0H0ZW/z1v3yhO1H43XcPFdud+gGyLEFaSIPU1/tbDugQ0YixCkAAS4Pr+6Jpl2WJT4V1qIc
-	GlPND9hk+TaMUxatOD/g==;
+	List-Owner; bh=J+XioRpAIm5jDfiKr3FZz/2tl0vkGXeNx0khZcwoVLM=; b=monYkj4025qiN2
+	DH6UD74suy0HCygdVNXPZXhfbn9MrJ33izc2oYVi+bSRMc5oEohWv9ZQ/LY8s3sM/HU2nIFaYrP6Z
+	WQgFoJR6EWofunyJqryCSP5XwYVklsT5bagJwXGt6Y+md06I77N5pvtYeEB9zXItRk5hd3PLXo6Yn
+	Jw61liG2o759+JL9K94ISJUggGAEiuqzXds4JRbRxsDMbKSIs19ng43nem7uvhPkP9GbAsOCOOyO6
+	LE5PhkJMR1ur5wyVvk+M+P3Nc0t/4KXPJEhUCFravA8Q9WBWse/8zO6sVpVZuONa4wr+I2V3yQYFM
+	5/WrdNEvMmiD9FcWLfXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgRSH-00000009Yih-3jPa;
-	Sun, 05 Jul 2026 18:20:37 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1wgTjH-00000009idY-06qz;
+	Sun, 05 Jul 2026 20:46:19 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgRSE-00000009Yhy-2pIP
-	for linux-rockchip@lists.infradead.org;
-	Sun, 05 Jul 2026 18:20:35 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2cc61541f8cso13976255ad.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 05 Jul 2026 11:20:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783275633; x=1783880433; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uGtsisFYQ3ZsoB2jg7Gl9tLznZoCpOpVvTrcNSu1WWg=;
-        b=iCT2m3165GzEB0jS88GDd+PCEKKnCFN19NADHjtEq2OQVaM6nyUpngN1xf20pi9oQ7
-         4ThUqubj7sNVMv2P2m76rzCfj6VGX1YkGTy0/fsk0gT3LYrKfwBQVizzzWLv8DYXl0XQ
-         9fftjVGCXtZ1lbFLV5CYpVGvdNzB5DKE1QMKmvxLMHUSkWIH4H4u0xGAGWrGDoSCDf3w
-         OGdsIk+HSOHQFbXYnnLcDERX2JrEZ564cGU3xcuvT5DwDAnnrVTp4Qg5O0CN183All+x
-         EDNXcVIfNDtLQvoqWWFK5sIs0Wrryilh2Y9R5fM+0pxCShAgvvvrpsQEYAa1KnaVsyDx
-         r5XA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783275633; x=1783880433;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=uGtsisFYQ3ZsoB2jg7Gl9tLznZoCpOpVvTrcNSu1WWg=;
-        b=PQysRxVlq9Oafk/cIrfqZFWdcF9rxuz5MeL8hk2cbYYKV+M67Zpv3bVYG026t/hIaQ
-         4x3rpea5hzubQuN/HVgfdbvccGuzANXVrn517PQAQjFDjK1F3wk5E5RheR4tUqhjFRyK
-         XGj3I2eh1Wp8j5tfgJz17h5JbnINPVnV6rCmy73MaesL/rGJQIFWJ0WbK6jP13y5sx8C
-         v4HZhLdXLWedUBisttJGSOJF/RmdhCdflVzNNe1aZoPwIPZiihuiTi/b+Mc/z1DEgnwz
-         A11627RvZlbMrAEWPa69kfbqFJokc2+M9h1SYjT+v1u0KlMyOAud56cMqj2YRYGX6UcD
-         czDQ==
-X-Gm-Message-State: AOJu0YyEwxFfyIpqYiqRL0FL++mHl0GqZ6ma34+G0Kfji61BSwdl4aul
-	Zys6A1lCa9UgjlUK4OvB5fmL6uYepyvVJse6sikbuXV2vmQVYliL83rkYPbRjg==
-X-Gm-Gg: AfdE7cnRsNncvbL4OycZE4Vo6yf57AYD/f3lVhVxkIUeSAGOlHDmpUWD9ETa0y0jN6m
-	Z+xT0fEHOe4jcY4633ZGxvefTw4dyRmoDxk+bRtULw0bj6CQkTRd9IdbqzbEm6t0jtVYcIBrpjT
-	xxNLmx3QrjfkRt9fXFKZUMGelJzR3by4wUvx1qCkCympanjsA44tuSYtamnM/81fGJZ2eubSxWx
-	Jqt6HzewXheJnO6Tg7YNudzBgStLars5OnT0ZSICICixgjGnOyYThL/gLexCsJrrNFI0iz/oXjH
-	uzphent8jM6sROWEW7VXTrR2V1M7yhEPf2OrYBadvRiLvr2rA7QqhFoskxn1rtCdV9iblh0I92f
-	9lcE92N4t6eVpOflO/QARTpcHe5sY6vDEAPdvHB5EbdO28nQ7AfHZxwc3bBKpV+gb+F3QuXdZQo
-	Gw5EcBmIJQ3tuI70T4PKhCZ+5ftFbCAVPfGYk5PCurpxoSLjRtQevSBoynLaFL0FLZwDZC35lvf
-	OAbGfMywJWa0IOI
-X-Received: by 2002:a17:90b:528e:b0:380:9699:ae98 with SMTP id 98e67ed59e1d1-381120f7aeamr13586199a91.8.1783275633209;
-        Sun, 05 Jul 2026 11:20:33 -0700 (PDT)
-Received: from MacBookPro.tail6abcb.ts.net ([2804:7f0:460:b8cc:e161:f046:ac0f:f27f])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30f0bb7fe46sm51230319eec.14.2026.07.05.11.20.30
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sun, 05 Jul 2026 11:20:32 -0700 (PDT)
-From: Brian Mayer <bleemayer@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2] arm64: dts: rockchip: add HYM8563 RTC to Radxa CM5 IO board
-Date: Sun,  5 Jul 2026 15:19:19 -0300
-Message-ID: <20260705181920.8633-1-bleemayer@gmail.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <2960762.AiC22s8V5E@diego>
-References: <2960762.AiC22s8V5E@diego>
+	id 1wgTj9-00000009icv-3cLu;
+	Sun, 05 Jul 2026 20:46:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783284368;
+	bh=OaQusKv3rXYsBNCL7bbmIiPHTJUbxK+t+RRHDhKEW9Q=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lL230xXckdYvbMdcv6VvPfggSMJt4NKuO+UichDEAFAiEOXbiKsWUP7Cq4EuSPr+n
+	 zt6n2WmBg+/z95DyxHqpc0Cm7kZqJEPz1bQSlMPCPbdFIZJVKypLfV5g1m0yeOvK74
+	 mYZaKU5LaRRtbJyIt8ONOpFk4LV7eiywCjFQC4TGYKHUV+SY+wlDd7YwzL9ODHKjQL
+	 DzJF68rnwWrFaDw8YkIGRnmzzhOwyRjoW0EEyQDEgmbUt+q8lA8XQpcie0x8XinT1X
+	 kkzZTDknZ2VF9gFMDb150EY1SbsJq8gYG0zQC+5+tVLfpQPymDbv89e8NVfyRMDHzq
+	 IqMTxsmxqsxUA==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 28E3917E0177;
+	Sun, 05 Jul 2026 22:46:07 +0200 (CEST)
+Message-ID: <c8242f5c-ec74-489e-b378-f225ec3a0135@collabora.com>
+Date: Sun, 5 Jul 2026 23:46:06 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/9] drm/rockchip: vop2: Reset AXI and DCLK to improve
+ robustness
+To: Diederik de Haas <diederik@cknow-tech.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
+ <20260617-dw-hdmi-qp-yuv-v1-2-a665cfd06d7d@collabora.com>
+ <DJQO8Q4J2LDP.1G8I4FVF6J7TK@cknow-tech.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <DJQO8Q4J2LDP.1G8I4FVF6J7TK@cknow-tech.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260705_112034_713177_710F1AA8 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20260705_134612_085833_4CE50DD5 
+X-CRM114-Status: GOOD (  15.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,81 +91,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello again, to clarify: I tested the v1 patch in my radxa cm5, but since
-this v2 only contains name changes I didn't test. I added the missing
-agent tag and am sending the patch inline. Thanks.
+Hi Diederik,
 
-The Radxa CM5 IO carrier has a Haoyu HYM8563 real-time clock on I2C6 at
-address 0x51, with its interrupt line on GPIO0_B0 and a CR1220 backup
-battery holder. Without a device tree node, no /dev/rtc* appears even
-when CONFIG_RTC_DRV_HYM8563 is enabled.
+On 7/5/26 4:28 PM, Diederik de Haas wrote:
+> Hi Cristian,
+> 
+> On Wed Jun 17, 2026 at 8:52 PM CEST, Cristian Ciocaltea wrote:
+>> Assert the AXI reset in the CRTC disable path, and the VP DCLK reset in
+>> the enable path.
+>>
+>> These resets are intended to leave the hardware in a clean state for the
+>> next use, helping recover from exceptions such as IOMMU page faults, as
+>> well as to prevent random display output glitches, such as a blank
+>> image, observed when switching modes that also change the color format,
+>> e.g. from RGB to YUV420 and vice versa.
+>>
+>> For now this seems to affect only the RK3588, hence the resets are
+>> optional and will be provided in the device tree for this SoC only.
+> 
+> Why do you think it only effect RK3588? 
 
-Describe the RTC, wire the interrupt pin with a pull-up, mark it as a
-wakeup source, and point the rtc0 alias at it so RTC_HCTOSYS/SYSTOHC use
-the external clock. Wiring matches Radxa's downstream board support and
-uses schematic names for the rtc_int_l pinctrl entry.
+My findings are exclusively in the context of validating YUV support for DW HDMI
+QP, hence targeting RK3588 and RK3576.  Since RK3576 didn't exhibit any
+anomalies, I concluded the resets are needed just for RK3588.
 
-Assisted-by: Grok:grok-build
-Signed-off-by: Brian Mayer <bleemayer@gmail.com>
----
- .../dts/rockchip/rk3588s-radxa-cm5-io.dts     | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+> I reported about my RK3568 test here:
+> https://lore.kernel.org/linux-rockchip/DFRU6ODDM71P.3NQGLRK8IVDUY@cknow-tech.com/
+> "I then went on to try LibreELEC's builds. The artifacts I (sometimes)
+> saw, were gone :-D OTOH, I did get several major issues 'in return',
+> like rk_iommu Page fault resulting in a black screen and the only way to
+> 'recover' from it, was a reboot."
+> 
+> And I reported some more test results here:
+> https://forum.libreelec.tv/thread/29953-le13-testing-for-rk3288-rk3328-rk3399-rk3566-rk3568-rk3576-rk3588/?postID=204691#post204691
+> 
+> That seems to me a (strong) indication it also affects RK3566/RK3568?
 
-Changes in v2:
-- Rename pinctrl to rtc_int_l / rtc-int-l to match schematics
-- Drop Tested-by (covered by Signed-off-by)
-- Add Assisted-by: Grok:grok-build
-- Send inline with git send-email (not as attachment)
+If coincidentally this helps improve the reliability of some of the older SoCs
+as well, the resets can easily be added to the corresponding DTs and submitted
+as a follow-up series.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-radxa-cm5-io.dts b/arch/arm64/boot/dts/rockchip/rk3588s-radxa-cm5-io.dts
-index af4a9bc01..d22db4d18 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-radxa-cm5-io.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-radxa-cm5-io.dts
-@@ -19,6 +19,7 @@ / {
- 	aliases {
- 		ethernet0 = &gmac1;
- 		mmc1 = &sdmmc;
-+		rtc0 = &hym8563;
- 	};
- 
- 	chosen {
-@@ -198,6 +199,18 @@ usbc0_dp_altmode_mux: endpoint {
- 			};
- 		};
- 	};
-+
-+	hym8563: rtc@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		#clock-cells = <0>;
-+		clock-output-names = "hym8563";
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&rtc_int_l>;
-+		wakeup-source;
-+	};
- };
- 
- &i2s5_8ch {
-@@ -221,6 +234,12 @@ usbc0_int: usbc0-int {
- 		};
- 	};
- 
-+	hym8563 {
-+		rtc_int_l: rtc-int-l {
-+			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
- 	hdmi {
- 		hdmi0_tx_on_h: hdmi0-tx-on-h {
- 			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-
-base-commit: 87320be9f0d24fce67631b7eef919f0b79c3e45c
--- 
-2.54.0
-
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
