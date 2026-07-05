@@ -4,45 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3DBEC43458
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jul 2026 14:38:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68062C43458
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jul 2026 15:12:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mL9mitZndHD8mirVzNCgS3HtePUjtNMhVWDvdTN27D8=; b=T4lC7vlUHahvqsrYiTxhfNRqh/
-	35rS8+x11DViB8HBf5ks4qPOascRneaEpojXAP0G0UXUJjrxy3EVLmXq1d6e76buv92mkFui3q9MQ
-	czwnNvIUtPQXsw/GDwB77YkAPgyD3X5TElNHetEyiwv8TPJjo1jWAUfYmbLFgeb98XVDQoWb4Y/+R
-	upWUgY3diRzEOzHgG3bm+/arZdYpQySZ69CulPoZNzLyHMGDuCMCmgiPHmrFmIddUmGDwsov/vGPN
-	ICn0BLCTrDpbdBviXU6oi4bglmLTepikcdvMu2R4kb7giU89IZI18CvsCRNneFgGMw0IGO2Ip27eB
-	UYdSR9iw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m4sX8JdALpI7j1qF7oke16TMhMgD9vIJrhvFGRiDNfE=; b=EVZ544RQzUoavH
+	ipvP/ZfzzzEsmZOEi6vXMFBmnEvo6CjLiAMxz+3zx8M8QrGy4KeWhnUJtLKtd8iVGjV1SDhjoRlGO
+	xBLEYCjwYiWd1BScLvI6MKK3gkebT3J8/yOREge21GBu/xFJNUrpR6AZkjCVgHVJi96NG21Ixslc6
+	7aAITioMKr4RiKdrnRMLzvHf/n81PMLeu02IDhxsInLq8k2xRpUntH5Bc9eo4aUE+/iWHlyCc1/Pa
+	WNZ0yMNoJ5AFE/2uCkVLT+bmy6dZeW+jw5NVQP9a9HLbp6yJSx+5Gsc9pg6BkOy68rbANgfb18U2v
+	NeATE95Rinhff+NrBV7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgNyv-00000009Ohz-46eT;
-	Sun, 05 Jul 2026 14:38:05 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wgOVt-00000009QVY-195V;
+	Sun, 05 Jul 2026 15:12:09 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgNyu-00000009OhS-4C30;
-	Sun, 05 Jul 2026 14:38:05 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2402561383;
-	Sun,  5 Jul 2026 14:38:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D4DE1F000E9;
-	Sun,  5 Jul 2026 14:38:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783262283;
-	bh=4rCe3IJiq/w2EFrF4fGo1iuA4FaOPAQK1+phS8J4PGA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=l+U4h6weTEU/7rdUooiwRpJMdOB2D2eY55FdKkJ9Tcheom6mzuYDVErgBnNyQ9nuW
-	 juZBRd/80Ct/xwLq6mX2vgB1wVPYSMsaiMDRy/zTmpkL0sbf3L+pXe6MtUKI6q+8S5
-	 HJ7u7913fhzU6L6CXVSW77cqcJSIdipmrvRONPa/5qDUN9IAc+QLsrjeOtk/52ewuk
-	 taVeV/zSpc1WAwap3uhM2z8rqv+WWyT0rA2YO/ikn/E/c8uS5/u70RVo3fxA43O52C
-	 nmdOiEXqQFRffzFB4uwKJCC7S4Ghg2H+IMJIr2+ilYWPscguvK05AMP4Jh+VQ7B0P9
-	 xikfCn9hG9crw==
-Date: Sun, 5 Jul 2026 15:38:00 +0100
-From: Conor Dooley <conor@kernel.org>
+	id 1wgOVr-00000009QV5-0gKe;
+	Sun, 05 Jul 2026 15:12:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=HptUES/0sfPU3Gkj8T4/h/5gi9Cj/ZvB7ArF8RxIxNg=; b=gmFGAFXzeorkLhLgDBMjGel4Ae
+	4cMuKTf4Yzd94nkLb1gY11bD1CFBzXBUGnud0NGEg1hyxgbPlPcd1wsVVAVZEwod9VypYE+St30AQ
+	IMhcNUnJOgNg7IQvwFzIkvC0TWwt+v67R2qZsGPK6mHOodtlFFWWUUSsQBDyJ8EZt5LM=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wgOVi-00AqXH-1s; Sun, 05 Jul 2026 17:11:58 +0200
+Date: Sun, 5 Jul 2026 17:11:58 +0200
+From: Andrew Lunn <andrew@lunn.ch>
 To: LemonFan-maker <2254650260@qq.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -50,14 +46,17 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add EmbedFire LubanCat 4
- board
-Message-ID: <20260705-matriarch-epic-37add5cb97b8@spud>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add EmbedFire LubanCat 4 board
+Message-ID: <1ac2d0f4-e027-4633-9d34-2709cb3e43ec@lunn.ch>
 References: <20260705135014.1004166-1-2254650260@qq.com>
- <tencent_B1442A024A02EFD704ECC0F098F663588209@qq.com>
- <20260705-palatable-hardening-48f73a84244c@spud>
+ <tencent_6D311DC5F405B157049538DD5B080082A10A@qq.com>
 MIME-Version: 1.0
-In-Reply-To: <20260705-palatable-hardening-48f73a84244c@spud>
+Content-Disposition: inline
+In-Reply-To: <tencent_6D311DC5F405B157049538DD5B080082A10A@qq.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260705_081207_573342_0746908E 
+X-CRM114-Status: UNSURE (   7.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,52 +68,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6324112254215549024=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============6324112254215549024==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="AiyjtgLGtmtocOb6"
-Content-Disposition: inline
+> +&gmac1 {
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy1>;
+> +	/* The board has 1.5ns delays on RX lines; TX delay is provided by the MAC. */
 
---AiyjtgLGtmtocOb6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+That is pretty unusual. How is this RX delay done?
 
-On Sun, Jul 05, 2026 at 03:37:00PM +0100, Conor Dooley wrote:
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> pw-bot: not-applicable
+> +	phy-mode = "rgmii-rxid";
+> +	pinctrl-0 = <&gmac1_miim
+> +		     &gmac1_tx_bus2
+> +		     &gmac1_rx_bus2
+> +		     &gmac1_rgmii_clk
+> +		     &gmac1_rgmii_bus>;
+> +	pinctrl-names = "default";
+> +	tx_delay = <0x1b>;
 
-Actually no, I just noticed you're not using your real name/a known
-identity. un-acked until you sort that out.
+please take a read of:
 
+https://elixir.bootlin.com/linux/v6.15/source/Documentation/devicetree/bindings/net/ethernet-controller.yaml#L287
 
+Ideally, you want to the PHY adding the delay, not the MAC. 99% of
+rockchip boards get this wrong, they have phy-mode 'rgmii', and
+{tx|rx}_delay properties. And i tell developers to swap to 'rgmii-id'
+and remove the delay properties.
 
---AiyjtgLGtmtocOb6
-Content-Type: application/pgp-signature; name=signature.asc
+With the PCB adding some delays, you board is slightly
+different. Please drop the tx_delay and adjust the phy-mode so the PHY
+adds the delay.
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCakpsRwAKCRB4tDGHoIJi
-0iv7AQDlI/S8W/uC7NLohqtnaUzRyTEyxMjx5+TZHoEo+08voAD9EAEe7olwNwvE
-kZGcfmUBU9zm6Zt4/tB/cqelxRH4iAs=
-=h9QI
------END PGP SIGNATURE-----
-
---AiyjtgLGtmtocOb6--
-
-
---===============6324112254215549024==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6324112254215549024==--
-
