@@ -4,75 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2612DC44500
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jul 2026 22:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EDEDC43458
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 00:34:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m+E1S9BntPjipOzPAicGHbjp2dKsfFGkxAtKo1ZuYMQ=; b=IzaoCIcofa2ZUq
-	PaEmZdyxIkZ8ymOjFRs0AKxeKAWsWsbG3edlJc7tUzZ5PM4V0c2jRRYh3gXvs+XNQU+sn1aFqBqBM
-	onsf8l8LmKRAZjMcTQaCommxOLI/ZenqBejCuBl50+bqJO8vgCU/8D1tcGv0VkriLPNFdnIIqU4jV
-	scwsEfu6WtNwPqlrze4OjlKb9r7J5bIrG3ZVij4jyC/c+lKg+R6xCnHrVw8b7ujJM8gzcoS0SM33W
-	8AHwi4EQ57L9fCSmjVNjrQWWyKRxngBBY5+voJuSeWrX38vPfpfudv3qB46NBXKNSNvhFQMjVkmQP
-	W3BtnoI8FC6MWjBaIfMw==;
+	List-Owner; bh=GERnDNrZ/5qX3oFsTVEUUPM9m+Sro1Fk4uceyNQZbcU=; b=lcd4WhzoczwIVH
+	nslCVtvDD1ZrrH6p/0i/+Cxh1eTAzZTzPJak/NqimhVTbVbT3hRmfRjPGgopNrI9e0E24SuMEirax
+	jz0KKAYV+mQtcpN7LiHjtMvTdrZjMa0y7WVrt+DajlVnU9XmDl0JL7ufiEJUxIEJy/BzHs8jk/phU
+	cL4xvxR24LKcT/fyAW9qkC1VB15DhOtjL6HoUF7S1kVCKs1oucaJ0sI3hoo7iD2KoZ0oSkDS6OzRH
+	bQqQTnH9j5pJxoidW7r2EZtsLN69Iv0KwOwVJCshe8wMirItPFBa3h/DA3cme0klMAS5Z7IZOvflR
+	pqYmZoAN4lpFUqjuR9YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgVCV-0000000AE29-1I5W;
-	Sun, 05 Jul 2026 22:20:35 +0000
-Received: from out-188.mta0.migadu.com ([2001:41d0:1004:224b::bc])
+	id 1wgXIB-0000000AuPB-3jJs;
+	Mon, 06 Jul 2026 00:34:36 +0000
+Received: from out-180.mta0.migadu.com ([91.218.175.180])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgVCT-0000000ADzs-0Sx2
+	id 1wgXI9-0000000AuLy-1Mt5
 	for linux-rockchip@lists.infradead.org;
-	Sun, 05 Jul 2026 22:20:34 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1783290019;
+	Mon, 06 Jul 2026 00:34:34 +0000
+Message-ID: <973f3d6f-6ff4-4685-9c9f-b07987f74d98@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1783298059;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=XzP4IrwF64OOqXOnzQR9aMpiMXv9vAON16c9GzABhuU=;
-	b=N1Wvfg7Dq10Z/RxZQ+tgS9JhIQqoRQ/28Z90K5duhdeFQNuVR5zMBM40gudTQDrMhxZ7By
-	99luTqRHljddy0yN7kDEVVODul5MmXZ0Uk/umkixPZuR/JQP0GcTx6grrwAFFJ8H+92Qud
-	NHeYbi0IRDMV1X1WiE+MtmFnDrwzcO3pz7B6+aGvZ5yX2hPsrYHk0zISLnGdLAzwZ8p2Gp
-	U/3NBKqeu5uQnzizL+j2E/L1JKsk2V7tqtyepoHi0YC2+tsD9L9UxlXW56LCoC5ojWgnvh
-	mJoSMHesEs9hbaQRUHuS6v6hSc8LxMfaXpQYzyChEttuAJ7VGnujAOLH2OSIyA==
-Date: Mon, 06 Jul 2026 00:20:13 +0200
-Message-Id: <DJQZJUFLM425.2J87266L7CGT8@cknow-tech.com>
-Subject: Re: [PATCH 2/9] drm/rockchip: vop2: Reset AXI and DCLK to improve
- robustness
+	bh=wYrjdzAhnc0P88BFwUH/b6uj52WFQfIRb2R1u4QFCds=;
+	b=mLsuUED9ENIp3ed3h8bdKFYcEwFgoRzOELLNc1jLIXF6taZ+WEztXLwd9/BAKQWvUz2Hs3
+	3EKLIatmB5Z+Df3dgdlCr8bmpTJQbWFj3Jp6WCvzaQnW40BXVB4LUsJRj7jQdhncagFIYu
+	oCbFYryMjDBm1fu5il4d+x3rl9gBRyM=
+Date: Mon, 6 Jul 2026 08:33:47 +0800
+MIME-Version: 1.0
+Subject: Re: [PATCH v1 4/5] pwm: Unify coding style of of_device_id arrays
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig_=28The_Capable_Hub=29?=
+ <u.kleine-koenig@baylibre.com>, linux-pwm@vger.kernel.org
+Cc: Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
+ Neal Gompa <neal@gompa.dev>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>,
+ Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
+ Vladimir Zapolskiy <vz@mleia.com>,
+ Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Peter Griffin <peter.griffin@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Paul Walmsley <pjw@kernel.org>,
+ Samuel Holland <samuel.holland@sifive.com>, Michael Walle
+ <mwalle@kernel.org>, Inochi Amaoto <inochiama@gmail.com>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Hammer Hsieh <hammerh0314@gmail.com>,
+ Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
+ Alexey Charkov <alchark@gmail.com>, Sean Anderson <sean.anderson@linux.dev>,
+ Michal Simek <michal.simek@amd.com>, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rpi-kernel@lists.infradead.org, chrome-platform@lists.linux.dev,
+ imx@lists.linux.dev, linux-mips@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+ sophgo@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev
+References: <cover.1783263835.git.ukleinek@kernel.org>
+ <20de6cd60c2938aad2d21397b92742849418ab1b.1783263835.git.ukleinek@kernel.org>
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Diederik de
- Haas" <diederik@cknow-tech.com>, "Sandy Huang" <hjc@rock-chips.com>,
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Andy Yan"
- <andy.yan@rock-chips.com>, "David Airlie" <airlied@gmail.com>, "Simona
- Vetter" <simona@ffwll.ch>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "Rob Herring" <robh@kernel.org>,
- "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
- <conor+dt@kernel.org>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Andrzej
- Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
- <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Luca
- Ceresoli" <luca.ceresoli@bootlin.com>
-Cc: <kernel@collabora.com>, "Andy Yan" <andyshrk@163.com>,
- <dri-devel@lists.freedesktop.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-References: <20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com>
- <20260617-dw-hdmi-qp-yuv-v1-2-a665cfd06d7d@collabora.com>
- <DJQO8Q4J2LDP.1G8I4FVF6J7TK@cknow-tech.com>
- <c8242f5c-ec74-489e-b378-f225ec3a0135@collabora.com>
-In-Reply-To: <c8242f5c-ec74-489e-b378-f225ec3a0135@collabora.com>
+From: Chen Wang <chen.wang@linux.dev>
+In-Reply-To: <20de6cd60c2938aad2d21397b92742849418ab1b.1783263835.git.ukleinek@kernel.org>
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260705_152033_284110_0AF62975 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20260705_173433_504948_394F4AFC 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,58 +107,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
-
-On Sun Jul 5, 2026 at 10:46 PM CEST, Cristian Ciocaltea wrote:
-> On 7/5/26 4:28 PM, Diederik de Haas wrote:
->> On Wed Jun 17, 2026 at 8:52 PM CEST, Cristian Ciocaltea wrote:
->>> Assert the AXI reset in the CRTC disable path, and the VP DCLK reset in
->>> the enable path.
->>>
->>> These resets are intended to leave the hardware in a clean state for the
->>> next use, helping recover from exceptions such as IOMMU page faults, as
->>> well as to prevent random display output glitches, such as a blank
->>> image, observed when switching modes that also change the color format,
->>> e.g. from RGB to YUV420 and vice versa.
->>>
->>> For now this seems to affect only the RK3588, hence the resets are
->>> optional and will be provided in the device tree for this SoC only.
->> 
->> Why do you think it only effect RK3588? 
->
-> My findings are exclusively in the context of validating YUV support for DW HDMI
-> QP, hence targeting RK3588 and RK3576.  Since RK3576 didn't exhibit any
-> anomalies, I concluded the resets are needed just for RK3588.
-
-Ok, that's indeed a different technology stack.
-
->> I reported about my RK3568 test here:
->> https://lore.kernel.org/linux-rockchip/DFRU6ODDM71P.3NQGLRK8IVDUY@cknow-tech.com/
->> "I then went on to try LibreELEC's builds. The artifacts I (sometimes)
->> saw, were gone :-D OTOH, I did get several major issues 'in return',
->> like rk_iommu Page fault resulting in a black screen and the only way to
->> 'recover' from it, was a reboot."
->> 
->> And I reported some more test results here:
->> https://forum.libreelec.tv/thread/29953-le13-testing-for-rk3288-rk3328-rk3399-rk3566-rk3568-rk3576-rk3588/?postID=204691#post204691
->> 
->> That seems to me a (strong) indication it also affects RK3566/RK3568?
->
-> If coincidentally this helps improve the reliability of some of the older SoCs
-> as well, the resets can easily be added to the corresponding DTs and submitted
-> as a follow-up series.
-
-Agreed. Thanks :)
-
-Cheers,
-  Diederik
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ck9uIDcvNS8yMDI2IDExOjE0IFBNLCBVd2UgS2xlaW5lLUvDtm5pZyAoVGhlIENhcGFibGUgSHVi
+KSB3cm90ZToKPiAgIC0gVXNlIGEgc2luZ2xlIHNwYWNlIGluIGEgb2ZfZGV2aWNlX2lkIGFycmF5
+IHRlcm1pbmF0b3I7IEEgc2luZ2xlIHNwYWNlCj4gICAgIGFmdGVyIHRoZSBvcGVuaW5nIHsgYW5k
+IGJlZm9yZSB0aGUgY2xvc2luZyB9IGluIG5vbi1lbXB0eQo+ICAgICBpbml0aWFsaXplcnM7Cj4g
+ICAtIE5vIGNvbW1hIGFmdGVyIGFuIGFycmF5IHRlcm1pbmF0b3I7Cj4gICAtIEFsc28gbm8gdHJh
+aWxpbmcgY29tbWEgYWZ0ZXIgYSBuYW1lZCBpbml0aWFsaXplciBpZmYgdGhlCmlmZiAtPiBpZgo+
+ICAgICBjbG9zaW5nIH0gaXMgb24gdGhlIHNhbWUgbGluZTsKPgo+IFNpZ25lZC1vZmYtYnk6IFV3
+ZSBLbGVpbmUtS8O2bmlnIChUaGUgQ2FwYWJsZSBIdWIpIDx1LmtsZWluZS1rb2VuaWdAYmF5bGli
+cmUuY29tPgoKWy4uLi4uLl0KCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcHdtL3B3bS1zb3BoZ28t
+c2cyMDQyLmMgYi9kcml2ZXJzL3B3bS9wd20tc29waGdvLXNnMjA0Mi5jCj4gaW5kZXggN2QwN2Iw
+Y2E3ZDI5Li4wYjY0NjExNzJlNmEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9wd20vcHdtLXNvcGhn
+by1zZzIwNDIuYwo+ICsrKyBiL2RyaXZlcnMvcHdtL3B3bS1zb3BoZ28tc2cyMDQyLmMKPiBAQCAt
+MjI1LDExICsyMjUsMTAgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBzZzIwNDJfY2hpcF9kYXRhIHNn
+MjA0NF9jaGlwX2RhdGEgPSB7Cj4gICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBz
+ZzIwNDJfcHdtX2lkc1tdID0gewo+ICAgCXsKPiAgIAkJLmNvbXBhdGlibGUgPSAic29waGdvLHNn
+MjA0Mi1wd20iLAo+IC0JCS5kYXRhID0gJnNnMjA0Ml9jaGlwX2RhdGEKPiAtCX0sCj4gLQl7Cj4g
+KwkJLmRhdGEgPSAmc2cyMDQyX2NoaXBfZGF0YSwKPiArCX0sIHsKPiAgIAkJLmNvbXBhdGlibGUg
+PSAic29waGdvLHNnMjA0NC1wd20iLAo+IC0JCS5kYXRhID0gJnNnMjA0NF9jaGlwX2RhdGEKPiAr
+CQkuZGF0YSA9ICZzZzIwNDRfY2hpcF9kYXRhLAo+ICAgCX0sCj4gICAJeyB9Cj4gICB9OwoKQ2hh
+bmdlcyB0byBzb3BoZ28gcmVsYXRlZCBmaWxlc++8mgoKUmV2aWV3ZWQtYnk6IENoZW4gV2FuZyA8
+Y2hlbi53YW5nQGxpbnV4LmRldj4KClRoYW5rcywKCkNoZW4KClsuLi4uLi5dCgoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
