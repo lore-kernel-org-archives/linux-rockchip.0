@@ -4,70 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6754C43602
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 13:42:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FB4DC43458
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 14:22:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DNzUBH28FKbKlyBY8VdeX2zKpeOYbGCfAcJut+xY3eQ=; b=hGyRCBK/S+rv52
-	Wzxxalhfhq+V0uCvpnqursGaF8X6+crwZ1D+hwnuNlgv3fEvD5lTId0kX+Y1kSOlOFirA5dXr3Fgb
-	wsDmzUor5ZgCHxV00ciCYsB8V4PFLvNBHe/Jpb4RuyTxzioMU4mwlPTZ7f/nT+Vgsy+fMDYQ495G3
-	w1MoWWmZEvwcpgmwB8hYRYoL87Kis6dsV7JKLfUdpDIaK0oRlxj+n5JbtTdE2KC5lrSViEIxIdGtH
-	x3Z5/rAmRHIB+jERxerKW4hhpYnrIoXwXjRWjYsDSMdZv4VV2FMGXEdSEzBII9U3J/Fdr5oOfskWf
-	kJZizEb89FwrZinJD2KQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wl9pwPK9Ad9AGYpTr9zCcXIkcCUZ8y2Ra4oqyc9cnEY=; b=eL6JOekJOkOMEqvfGO4tzH0DG2
+	XEeyGNrrio0+kA3p6W3XkEvQuyVpujdBk35/Z+PBpVZfnB7vc899nDJRmSsMiNPPir1D+vUr14Uvv
+	bNLy4VcqcyFNa3DmUsed+/2pvEkHWflsuMoGP0izF8kq4i70M/S5TmdcYKfdi2S/EKaUZSgbADChA
+	X2WXpZZtxPNDfFJX2t/uisncjkhX2Us+J/yXezDkukA0t2HhkrSJQS9Au9udkAIHRyTLxmy/hLf0D
+	G1MPvjqVUYa1H4UpWTrXE1hsk5QZpYw9ajLsKr1KRHBVIKB+vrubyN/R6P/DkXop4+TgpOiKQLkGo
+	7gLHOnJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgjav-0000000CdP2-2Egl;
-	Mon, 06 Jul 2026 13:42:45 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wgkDb-0000000Ck2j-08Z3;
+	Mon, 06 Jul 2026 14:22:43 +0000
+Received: from mail-vk1-xa34.google.com ([2607:f8b0:4864:20::a34])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgjas-0000000Cd7w-0C9p;
-	Mon, 06 Jul 2026 13:42:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783345347;
-	bh=+iOjTAdA4oCabpofL+K7pRzUfLApeuQa4aammB14sWA=;
-	h=From:Subject:Date:To:Cc:From;
-	b=knO00BEAGmqnYTyt4Z8i+g8SH3CgUXg0FwMtnpsXn16/qMUv53F877rFtJxFjZQAu
-	 xYCDrL/ewCCiMG5SBIucxYkDPWqn3zi1SAZn/x6AoMYM6cEMWMWJl0MYmUWrYsbxGz
-	 Wi/fiYQdWvgFy0noT0rK9iOGNSzgROsiqh5szIPNyDGZ3z16j4EwHVWTIRr9QAlqkJ
-	 QHzbrY0dF4QQ3Lj1CllsfkLYR2BbaQ0Imq2tSbdAy1pN8oqMXcL4Qd9TbOJNdv5Aqa
-	 ymhhKZ2kGC29tVdqXX9pl7uIG88Vto/y25g8f+jXbDJwpIgOLpcRARjTacVWbhkWMm
-	 n9nuCw2+fHvKg==
-Received: from [192.168.0.15] (unknown [100.64.0.170])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1074717E010F;
-	Mon, 06 Jul 2026 15:42:25 +0200 (CEST)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH v3 0/5] media: Add fdinfo support for v4l2 drivers
-Date: Mon, 06 Jul 2026 09:42:17 -0400
-Message-Id: <20260706-v4l2-add-fdinfo-v3-0-d556568cf38e@collabora.com>
+	id 1wgkDX-0000000Ck0G-1Ogg
+	for linux-rockchip@lists.infradead.org;
+	Mon, 06 Jul 2026 14:22:42 +0000
+Received: by mail-vk1-xa34.google.com with SMTP id 71dfb90a1353d-5bd7309af69so921385e0c.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 06 Jul 2026 07:22:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1783347757; x=1783952557; darn=lists.infradead.org;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=MVNfxXIhfRbzejobq0Bw+fm1oMgBFxUSiDv+/DvkLmA=;
+        b=oYb44oVrA+PcwQTqnJJZ9Se4zjoTAEOb4TOFhfzvonAfzBfLxPEbW2ESvlDyL5zINz
+         cOk6gE5Wxng6HXmRka9tNv0cHI+Jr4ZV98KKgj3Da0arLxjUtZmdiXauXn+driXvG+RQ
+         LOFEzMRI7Ns/OTKH34FSKY5k59YCtK0UQeHnM3a103yXa7xGUN6MtQVYsnSoWWRuytSp
+         nnyXDAfgBrjN5DGdWDoAoS9XRhYDob11DblaH3AI0wdm0PNQfzO9VN1YI/Og2KA3I4pE
+         BWz+CQ8+Rg081xg0a1i4eWw2rgAa0UwFmEnYb4gu9eW9ymC+hRt0yRJucxMFelRUw7Fs
+         P46A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783347757; x=1783952557;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MVNfxXIhfRbzejobq0Bw+fm1oMgBFxUSiDv+/DvkLmA=;
+        b=cmtxodgmREy+VHJwMUHDu/7ZKCqlu3PgAF7vm+BpRhUqSowRzjyVJED1rMBsdm3qYR
+         C5Qker/D0pIM4DmlhbVyXZoQKbz0CxG+lvqaFYYgd05mVB0wAfPv9JHbQ8ZdGz9VtREl
+         a1RSUUZHQ7wsX8n3bSmp1Gco0ZyR7umIn+skrfS9zTOMgP4zL9wmHjJXdeh/FhNvorwr
+         RweNR1J9U3qs5GSdco4vpICS+GiFtqPVqe65VeDSABBc+9xSJUAiWjeJh1/K/lv0ydZ9
+         RwAhDxNnlw8FTocLsrZg3E8zLzZA8tLbrHQmBShBZjhotbEVJbzcJXuqQEp+/nTT7S8N
+         yusA==
+X-Forwarded-Encrypted: i=1; AHgh+Rp0KMpnACS6hJT600hS4hQWoNla6jvXLqub63H0y/0aDzoGKZQlXQVOVpAXv2aExpc/QNXhP+0VC58ErG4lig==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwHDuEFSoChEJRqJq2n+WKUfFu7gUNgG8PXYmN9ARpC1LhSurig
+	crIAlP7SRIcUBaJJUpYA6+ztNy5vbTFd7BPpzJK4p4YSTZnofIcvFCkgax+ya/LlAZ8=
+X-Gm-Gg: AfdE7cn54vQnoTNfcblxRSdYo6mpNR5G5tdsAaGH9HaRb+gN1uApuyjToGRYDbgcms7
+	cgXoUwvJHouNqC4oi8TzfgS7nGfPMiYP3BoaZP7UbsG3bTgFSHTD/09E+bST7i2F+2XJPZIc6Xj
+	puHNvjXTej43AaU1qdyKbYKsCEGnICyjBO1AuYgri5Mcv78M1827ygQcZO3tPzIlLDQKxdbHiw5
+	3df3NpDAzuq6tfhmBGWL6+7aXqDXUxTLhpcuSxZKaTWOqovT1bnPbH6rn2c3VKVtQFXWjP5WrgV
+	8Xf+EpQW0lNm6407Q135/dD0awY5aOOKOX/458UfAnYraL9JD/WFm0JbLZKQbrZ2AdAcSKReTEY
+	vLjyxqIQzwQBFA84o8GF+bi5T59DlPRivaKMBXt/lB0bUrobdF5pi1gcqhXfN+FsSNhGTlVTVpa
+	Px9doemBTK+bIGnUFY3Q==
+X-Received: by 2002:a05:6122:3386:b0:5bd:a214:c933 with SMTP id 71dfb90a1353d-5be909062cfmr455408e0c.14.1783347757252;
+        Mon, 06 Jul 2026 07:22:37 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:15:e06b::c41? ([2606:6d00:15:e06b::c41])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-969838c1449sm5287075241.5.2026.07.06.07.22.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Jul 2026 07:22:36 -0700 (PDT)
+Message-ID: <ba54b43f90b46960ce4e57f99ead11e4200d283d.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: rockchip: rga: quiesce IRQ before releasing m2m
+ state
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Fan Wu <fanwu01@zju.edu.cn>, jacob-chen@iotwrt.com, 
+	ezequiel@vanguardiasur.com.ar
+Cc: mchehab@kernel.org, heiko@sntech.de, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Date: Mon, 06 Jul 2026 10:22:34 -0400
+In-Reply-To: <20260704022853.77291-1-fanwu01@zju.edu.cn>
+References: <20260704022853.77291-1-fanwu01@zju.edu.cn>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/2XNTQrCMBQE4KtI1kaSV0lbV95DXOTnxUZqI0kNS
- undTSqC2OXAzDcTiRgcRnLYTCRgctH5IYdquyG6k8MFqTM5E2AgmOCMpn0PVBpDrXGD9VTWLbM
- apaqgJXl1D2jdcxFP50+OD3VFPRamNDoXRx9ey2XipffVYaUnThmtoQLOpdKN4Eft+14qH+RO+
- xspDwl+jXptQDYMtA22jUYm5L8xz/MbcIXnTQgBAAA=
-X-Change-ID: 20260610-v4l2-add-fdinfo-a790fceab329
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, kernel@collabora.com, 
- Detlev Casanova <detlev.casanova@collabora.com>, 
- linux-arm-kernel@lists.infradead.org, 
- Christopher Healy <healych@amazon.com>
-X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_064242_269270_710FE421 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20260706_072239_528168_1579AEF2 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,107 +109,142 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1793784710293778630=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-fdinfo is useful to poll information from the driver.
-Unlike the ftrace interface, it lets userspace tools get a snapshot of
-the state of the driver at their own pace, instead of getting events for
-each driver status change.
 
-This works better to get information like HW usage time or clock
-frequencies, as well as memory usage.
-This patch set focuses on mem2mem drivers that are per-frame based and
-an implementation is proposed for the Verisilicon Hantro and Rockchip
-rkvdec drivers, limited to main clock frequency and HW usage time, as
-well as HW cycles counting in Hantro.
+--===============1793784710293778630==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-IuzSpdkevxjAGzKTKZh1"
 
-Even though it is not used yet, per core fields are appended with 
-`-<core_id>` to support multi-core drivers.
 
-To ease support in drivers, a v4l2_metrics struct is added.
-It stores metrics information and provides helper functions to write
-the fdinfo file in a standard way.
+--=-IuzSpdkevxjAGzKTKZh1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-An example of usage of this from userspace is implemented in v4l2top:
+Hi,
 
-https://github.com/cazou/v4l2top (Check the upstream branch)
+Le samedi 04 juillet 2026 =C3=A0 02:28 +0000, Fan Wu a =C3=A9crit=C2=A0:
+> rga_probe() requests the interrupt with devm_request_irq(), so devres
+> does not release the IRQ until after rga_remove() returns. rga_remove()
+> currently releases rga->m2m_dev before that point.
+>=20
+> rga_isr() uses rga->m2m_dev through v4l2_m2m_job_finish(),
+> leaving a window where an interrupt can run after the m2m device has been
+> released.
 
-checkpatch.pl warning: The 2 arguments in the show_fdinfo callback
-definition are kept unnamed to match with the rest of the struct
-definition.
+I have a doubt that this can really happen for this type of hardware. Its n=
+ot a
+free-running HW that emits IRQ randomly, plus we have the abort sequence th=
+at
+ensure all jobs are completed before we pull it down.
 
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
-Changes in v3:
-- Rename the fdinfo key prefix from "media-" to "v4l2-", and "stats" to
-  "metrics"
-- Restructure the documentation to have mandatory and optional keys
-- Add core ID to fields
-- Add HW cycles count support
-- Add ABI documentation
-- Link to v2: https://patch.msgid.link/20260617-v4l2-add-fdinfo-v2-0-d298e98ce06a@collabora.com
+>=20
+> Unregister the video device first to stop new userspace submissions, then
+> free the devm-managed IRQ explicitly before releasing the m2m device. Mov=
+e
+> the command buffer release after the IRQ teardown as well, so it is not
+> released while a completion interrupt can still arrive.
+>=20
+> Store the IRQ number in struct rockchip_rga so rga_remove() can free the
+> IRQ without looking it up again.
+>=20
+> Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Fan Wu <fanwu01@zju.edu.cn>
+>=20
+> ---
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/pl=
+atform/rockchip/rga/rga.c
+> index 43f6a8d..118887a 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -828,6 +828,8 @@ static int rga_probe(struct platform_device *pdev)
+> =C2=A0		goto err_put_clk;
+> =C2=A0	}
+> =C2=A0
+> +	rga->irq =3D irq;
+> +
+> =C2=A0	ret =3D devm_request_irq(rga->dev, irq, rga_isr, 0,
+> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev_name(rga->dev), rga);
+> =C2=A0	if (ret < 0) {
+> @@ -919,13 +921,21 @@ static void rga_remove(struct platform_device *pdev=
+)
+> =C2=A0{
+> =C2=A0	struct rockchip_rga *rga =3D platform_get_drvdata(pdev);
+> =C2=A0
+> -	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
+> -		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rga->cmdbuf_phy, DMA_ATTR_WRITE_C=
+OMBINE);
+> -
+> =C2=A0	v4l2_info(&rga->v4l2_dev, "Removing\n");
+> =C2=A0
+> -	v4l2_m2m_release(rga->m2m_dev);
+> =C2=A0	video_unregister_device(rga->vfd);
+> +
+> +	/*
+> +	 * The IRQ was requested with devm_request_irq() and is freed by devm
+> +	 * only after this function returns. Free it explicitly here, after the
+> +	 * video device is unregistered, but before v4l2_m2m_release() frees
+> +	 * rga->m2m_dev, which rga_isr() dereferences via v4l2_m2m_job_finish()=
+.
+> +	 */
+> +	devm_free_irq(rga->dev, rga->irq, rga);
 
-Changes in v2:
-- Simplify key/value pairs by removing repeated <eng> suffix
-- Add media type support
-- Add v4l2_stats helpers
-- Add support in rkvdec too
-- Link to v1: https://patch.msgid.link/20260612-v4l2-add-fdinfo-v1-0-723211abc861@collabora.com
+I'm not saying we cannot do that, but its quite verbose for something that
+probably can't happen in practice.
 
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: kernel@collabora.com
-Cc: linux-media@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
+Nicolas
 
----
-Christopher Healy (2):
-      docs: media: add documentation for V4L2 driver usage metrics
-      media: hantro: Add per-context fdinfo usage metrics
+> +
+> +	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
+> +		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rga->cmdbuf_phy, DMA_ATTR_WRITE_C=
+OMBINE);
+> +	v4l2_m2m_release(rga->m2m_dev);
+> =C2=A0	v4l2_device_unregister(&rga->v4l2_dev);
+> =C2=A0
+> =C2=A0	pm_runtime_disable(rga->dev);
+> diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/pl=
+atform/rockchip/rga/rga.h
+> index 72a28b1..f76c45b 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.h
+> +++ b/drivers/media/platform/rockchip/rga/rga.h
+> @@ -81,6 +81,7 @@ struct rockchip_rga {
+> =C2=A0	struct device *dev;
+> =C2=A0	struct regmap *grf;
+> =C2=A0	void __iomem *regs;
+> +	int irq;
+> =C2=A0	struct clk *sclk;
+> =C2=A0	struct clk *aclk;
+> =C2=A0	struct clk *hclk;
+>=20
 
-Detlev Casanova (3):
-      media: v4l2: Add callback for show_fdinfo
-      media: v4l2-core: Add v4l2-metrics interface
-      media: rkvdec: Add per-context fdinfo usage metrics
+--=-IuzSpdkevxjAGzKTKZh1
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
 
- Documentation/ABI/testing/procfs-fdinfo-v4l2       | 129 +++++++++++++++++++
- .../userspace-api/media/drivers/index.rst          |   1 +
- .../media/drivers/v4l2-usage-metrics.rst           | 137 +++++++++++++++++++++
- drivers/media/platform/rockchip/rkvdec/rkvdec.c    |  19 +++
- drivers/media/platform/rockchip/rkvdec/rkvdec.h    |   1 +
- drivers/media/platform/verisilicon/hantro.h        |   3 +
- drivers/media/platform/verisilicon/hantro_drv.c    |  19 +++
- drivers/media/platform/verisilicon/hantro_hw.h     |   1 +
- .../platform/verisilicon/rockchip_vpu981_regs.h    |   1 +
- .../media/platform/verisilicon/rockchip_vpu_hw.c   |   6 +
- drivers/media/v4l2-core/Makefile                   |   2 +-
- drivers/media/v4l2-core/v4l2-dev.c                 |  12 ++
- drivers/media/v4l2-core/v4l2-fh.c                  |   3 +
- drivers/media/v4l2-core/v4l2-metrics.c             |  78 ++++++++++++
- include/media/v4l2-dev.h                           |   1 +
- include/media/v4l2-fh.h                            |   2 +
- include/media/v4l2-metrics.h                       |  47 +++++++
- 17 files changed, 461 insertions(+), 1 deletion(-)
----
-base-commit: 3c587e0b08bd3c4853a22792b9166b7457870165
-change-id: 20260610-v4l2-add-fdinfo-a790fceab329
+-----BEGIN PGP SIGNATURE-----
 
-Best regards,
---  
-Detlev Casanova <detlev.casanova@collabora.com>
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaku6KgAKCRDZQZRRKWBy
+9JZSAQC1dbw91+G7+3PPOBNBtgKbdRlVtvIxd5JJz6bxqWFUcAD8D8YnicY3DZw9
+ETebtopePbd1jSVCQw+7hxWTjoNzVw8=
+=N0fp
+-----END PGP SIGNATURE-----
 
+--=-IuzSpdkevxjAGzKTKZh1--
+
+
+--===============1793784710293778630==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1793784710293778630==--
+
