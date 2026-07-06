@@ -4,165 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CCB8C43458
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 09:01:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C721AC43602
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 09:15:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N4fVvBJqn5gZ1Qo1eQFhyyfBIgtdVKkbpGq5dPVCxGM=; b=YULAKmPE1sP+2Z
-	U63TdyMFVEGSRzMXlnwZS3AjZNkWvG8mscqw94naPc/L1+juA2x9W5HUBE/X3lD1JcVgej4HrfSdt
-	i0uqsyk2NyBorMDXzt4QWJSSsUrbweQBI1RDNoKmTyxmxWm78XnrHKsCrHrPghyO1UZCqPdVH0zut
-	nh6BXKo/29ScMpTqsdi21VKMkrRKr5IVOoPGmNaTdTxWf/514m/BhcwS8spInhASLN1G7UO38GFqw
-	eyvnKUrBxtvqGf8U9xld96D6nwtayamiwU/e/itet23x1o7Rrva69ky8iTu7U9zDyHTtv9GmM+M6q
-	ZqldXakOSFOOUT0o+4LQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=L+5OJF9hIklERocyhOwQxVwHo4u+4TWxBM6nDzSdX5o=; b=WERNSxVR2UGaxA
+	2uTqUUg6fGB9vPOcpelM2z1lMuyKY3rU2CQWF6smDXVM+SKZoUW+1sAiOCW+j6WI9JYIicKlGdyod
+	kKIFOKO7GV/M+IShurlaB+f5Sr0gMCW8Z+W2AjXNTtyqOO/Vt4kYHFdkbE++RJbOsCO8lsj5YujZw
+	2ZJC5pb7kJ0jSTVsdke9jZAoHoDqDHouU+Pd/BZOflj8Z2L9QVG44Fx9MntkGnIqB0saLUWxM20vP
+	43XjtBr52+7iPbZfhVes115FR3g3jaMkBaFbfoaSAxJsOL7wbhAE3LUImzz6q8dUwmqI7UWZY9nnN
+	U1g2rTL7oK0pRqFF/V3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgfD9-0000000BxQJ-3nck;
-	Mon, 06 Jul 2026 09:01:55 +0000
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+	id 1wgfPo-0000000Bydl-3wLW;
+	Mon, 06 Jul 2026 09:15:00 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgfD7-0000000BxPj-1OTT;
-	Mon, 06 Jul 2026 09:01:54 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
-	by mx0b-001ae601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6666TAOj1108462;
-	Mon, 6 Jul 2026 04:01:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=PODMain02222019; bh=yXdWuYMihFfyM6n9U4
-	ZrutHAClkmiLeG9CAjyKKoBTM=; b=blVBZCCdRpkqzGFictHe3cAZzlDaSJUG/g
-	eKD3BNBjaTgmg6+cWriispq8BkJcaCQsXU7xYkdrJT098KjPOiXy6JRJ1MDwviCT
-	pQ5Ow+pPtMl7vwsgZp7wQM6F2mt7UjyfR8VEixfyMMGWYdyU5PijfnI/iMijCwJw
-	07+tmfSkrrQjzmAFYf2wS/CTY/Vn6CuVBZ1+rQYeBjAMaF17ELYvfFva4C+qgDZG
-	OWrOHWC6zu0NZPix3MNghhQKXAH7Ssac7Urq9lgmWyfO0dHqI2vUOJnZIR1lhl9k
-	jzVwU+OorrmYPujKG0RbDA9Ds67DXAX7iTW6h1CjBG1G+kAFS0jw==
-Received: from dm1pr04cu001.outbound.protection.outlook.com (mail-centralusazon11020126.outbound.protection.outlook.com [52.101.61.126])
-	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 4f6xkjj34t-1
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
-	Mon, 06 Jul 2026 04:01:34 -0500 (CDT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LQzjMS8y/hTCz0GjCmE/BtlOoSwvJ8oL8YxpgNfRgxMG+jChvd00/I9CRUcl7VzHAV+VMrjeNw/8KjnvUWF39ZVDh0wv4VSULgGZncywPzzrSWEoG+dC7/xWsvQJEstawjFKRjca4Bru28nPv7YI8sXql+TWJYvVNZnonjKEbZ6wLmTc2nmXr/2/6xfLnBoNCrIh8bENSw0DuN9gc2cfrvRXOlnhsNSrwejK//vEXfLlVYZfNZKpkgLMRpHrCsM6C7KZZcn1R3Juaut7mYxNOMpJrpxWlADVZ0lJi/Ay6Hp6PHT8SgEqX91ciDGgr3vvLCRivnlrq1yqpMAu5lqj+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yXdWuYMihFfyM6n9U4ZrutHAClkmiLeG9CAjyKKoBTM=;
- b=e4Pr5ukptq0sTI3AIYVJGU+wlzroJu2XUYb/LlGSX6KloZBiXKVvfxDL4NWcLv3U4Nj9wdwVHjd8R5VXQwja/syCOpVwA450fuqi5KjZwUAzVWfj1sf2DHw02Yzk/d9IVVHq9XewKCTTVp/1pT7/knQVFQa+CU/X/nGH9bs365H+CI665/LSGYhL9EoXElpRLrYXvKFs3+9pU+zirq+KhJImtOLx/6e5ZLpB+gnqhzbbLLE1aqBjppMmg/vk1JFFUfWFiv5gRunCbG75B7DZqfdpwpyfnlPc9oW687+PUVXW4MRD6BynkOrJgj1qY1Uqt8CCnxbZ1log2F/XgFtkOg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
- is 84.19.233.75) smtp.rcpttodomain=alpha.franken.de
- smtp.mailfrom=opensource.cirrus.com; dmarc=fail (p=reject sp=reject pct=100)
- action=oreject header.from=opensource.cirrus.com; dkim=none (message not
- signed); arc=none (0)
+	id 1wgfPl-0000000Byc0-31k1
+	for linux-rockchip@lists.infradead.org;
+	Mon, 06 Jul 2026 09:14:59 +0000
+Received: by mail-pf1-x443.google.com with SMTP id d2e1a72fcca58-847aa193d98so2246392b3a.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 06 Jul 2026 02:14:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cirrus4.onmicrosoft.com; s=selector2-cirrus4-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yXdWuYMihFfyM6n9U4ZrutHAClkmiLeG9CAjyKKoBTM=;
- b=FhBHBkoofEHKXrRLF3tXzRjKuqv7+xEzdY/EKQJoPONbzBYUVnnhczc8NhP/7DUjfIb9XgQCokLp+v1bY6sS8P0OMNviv4q08W8Zi+q4V1Pn/Ef6NRb1OrsSbsJ8J/akNTgI5AVtoa0BhXgI0RsjF+fpd/ybGB3VlTbByKRoMa8=
-Received: from SJ0PR13CA0193.namprd13.prod.outlook.com (2603:10b6:a03:2c3::18)
- by SA0PR19MB4523.namprd19.prod.outlook.com (2603:10b6:806:ba::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.13; Mon, 6 Jul
- 2026 09:01:31 +0000
-Received: from CO1PEPF00012E63.namprd05.prod.outlook.com
- (2603:10b6:a03:2c3:cafe::19) by SJ0PR13CA0193.outlook.office365.com
- (2603:10b6:a03:2c3::18) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.202.9 via Frontend Transport; Mon, 6
- Jul 2026 09:01:31 +0000
-X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is 84.19.233.75)
- smtp.mailfrom=opensource.cirrus.com; dkim=none (message not signed)
- header.d=none;dmarc=fail action=oreject header.from=opensource.cirrus.com;
-Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
- opensource.cirrus.com discourages use of 84.19.233.75 as permitted sender)
-Received: from edirelay1.ad.cirrus.com (84.19.233.75) by
- CO1PEPF00012E63.mail.protection.outlook.com (10.167.249.72) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.6
- via Frontend Transport; Mon, 6 Jul 2026 09:01:29 +0000
-Received: from ediswmail9.ad.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by edirelay1.ad.cirrus.com (Postfix) with ESMTPS id B1201406541;
-	Mon,  6 Jul 2026 09:01:27 +0000 (UTC)
-Received: from opensource.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by ediswmail9.ad.cirrus.com (Postfix) with ESMTPSA id 9E024820244;
-	Mon,  6 Jul 2026 09:01:27 +0000 (UTC)
-Date: Mon, 6 Jul 2026 10:01:26 +0100
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: linux-gpio@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>,
-        Bartosz Golaszewski <brgl@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
-        Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-        Gregory Clement <gregory.clement@bootlin.com>,
-        Frank Li <Frank.Li@nxp.com>, Robert Jarzmik <robert.jarzmik@free.fr>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Greg Ungerer <gerg@linux-m68k.org>,
-        Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-        Hauke Mehrtens <hauke@hauke-m.de>,
-        =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
-        Yoshinori Sato <ysato@users.sourceforge.jp>,
-        John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
-        Linus Walleij <linusw@kernel.org>,
-        Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-        Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-        Dominik Brodowski <linux@dominikbrodowski.net>,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-samsung-soc@vger.kernel.org, patches@opensource.cirrus.com,
-        linux-m68k@lists.linux-m68k.org, linux-mips@vger.kernel.org,
-        linux-sh@vger.kernel.org, linux-input@vger.kernel.org,
-        linux-media@vger.kernel.org, netdev@vger.kernel.org,
-        linux-sunxi@lists.linux.dev, linux-phy@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org
-Subject: Re: [PATCH 07/13] ASoC: replace linux/gpio.h inclusions
-Message-ID: <aktu5ldIypW8ldjW@opensource.cirrus.com>
-References: <20260629132633.1300009-1-arnd@kernel.org>
- <20260629132633.1300009-8-arnd@kernel.org>
+        d=gmail.com; s=20251104; t=1783329296; x=1783934096; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=lr2T/VNgeTFspDjmoHod2aovQh7y4rJk7xKdeAYkRu0=;
+        b=FgcmWG6XSaAhTOfdZ+NY9tg0E1pTOaYkrtHms40VSDCxUEvMi8lxEnKC6xhb4XX0dJ
+         D5t3RL/nFCY+6fZXn6jvzEEU4Xz2Kscx2wAs8/Vh0Vv+LYsZ8f40UbR8IN4JjJqSrMdJ
+         QCIqDlZJeJC2QtjvhczImzL2bTFqM6b3I9eoGb6Y4dodYqqzIzwy0N5LoBNsVeJ76V4Q
+         0d67xuoTtnhS7fFvrRMF2rL2sDsZOtiiR40886nazrcBHqRY2jnE1SJV88v7M3TqkhYc
+         N3nFPrT0yrwGW27RQfM9rze8vSv2ftZnIBjTJUg1YP4XFYum+yog+UCeROUt0drmGjBz
+         Bsgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783329296; x=1783934096;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lr2T/VNgeTFspDjmoHod2aovQh7y4rJk7xKdeAYkRu0=;
+        b=ACODBFpia32cgmIuac7EYvf83XCAn+dw3Iw6q+Ha8FxTpA+m+YVmnhvwhC6NeVsAr1
+         hL26kiwkY++WhZz1fxXha4Ljt1Vuz1qNZw7TcAObSJgY8VuuwdRbY1WZKFOZNyyyhYmE
+         GnaVyr8jzS5bp3NwiHbvSZkKeo6pPCr7X3ZGHJkk39LroALydl30KugfhkEGZ2KL9YLR
+         iNgHK0eJSjpHhgBpZt9VnYe4LNBDEFKFVxRfeMk90dVCC5NW8RNVfUEICno+vVaG2BRP
+         wb/z7ZAsQX7zSQZvtBGf6CR0tmiw616t55wFAqa2TDtgENf+hlx0lktHk7HIisNmpco+
+         k4gQ==
+X-Forwarded-Encrypted: i=1; AHgh+Ro+2tbkVT/LukIHnfmW/CaiD58T5AEWxxtJUzI6A1i6z1QVBzAe8NILaeqrvuyCqE0ClhpP+hm/p0ipY5ipPg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzoYCQJ8bFrwTCqFP0fBARctgI6BVkYFWy1jhATLD4sGAgTpVsH
+	7xOC4+MZ5EA7Iae1PzyqhKBy6kL4pz0qb5i/Ftm7LAc4th/oFnIPZwrP
+X-Gm-Gg: AfdE7cn0et6degoQfoSz73Jg94r2sQTTOnsdNAnLjB35o3ogqvlc6WLf1yKNVKpFuGY
+	8LY2k72HgS+sNwYRmt1hb9Ut8Zc6l+JBtkHXZnZbHekUy5EXH3vMmknw8toPGxGbYfRJIqiGFA8
+	3nzgJlWUNrlzdhGz3++cQ16yt5e73wsTkk4ZHbhuCGHUW6MnOddLxVhyoPyYWafjET9ORlY7Jxe
+	Lhby6/V01I0Rm7/UkNZb9qd0X1u/ZQetlkcEGidz/aOyd0oMGSmwQKmjPcwTJKmGFRCzORUFflL
+	c2QahYOcKlkTBUEStEGvty+JqGP4jm9pLzgbaVs24cAshK4XeHJHMHigaTr8G4ezOCcarb7F7T6
+	8tFqgyYOODXIAuoJqjjTrOCSimgdb7iwCti6mjdoEsF3U3Dz2uCOJuR3AA10WESgodQaRxLepkG
+	+UTaS3H0Zb7lYvGu8AOkXygeTd
+X-Received: by 2002:a05:6a00:928f:b0:842:80c5:c420 with SMTP id d2e1a72fcca58-847f6ef68camr8193652b3a.40.1783329295132;
+        Mon, 06 Jul 2026 02:14:55 -0700 (PDT)
+Received: from [192.168.1.101] ([218.194.36.79])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847f6db29d1sm3445963b3a.53.2026.07.06.02.14.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Jul 2026 02:14:54 -0700 (PDT)
+From: Yanan He <grumpycat921013@gmail.com>
+Subject: [PATCH v2 0/5] ARM: rockchip: rv1126: Add support for Alientek
+ ATK-DLRV1126
+Date: Mon, 06 Jul 2026 17:14:40 +0800
+Message-Id: <20260706-rv1126-alientek-dlrv1126-v2-0-ff3176ca362b@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260629132633.1300009-8-arnd@kernel.org>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PEPF00012E63:EE_|SA0PR19MB4523:EE_
-X-MS-Office365-Filtering-Correlation-Id: 19450c50-74fd-49f4-b6a3-08dedb3d2b57
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700016|82310400026|7416014|376014|61400799027|23010399003|16102099003|18002099003|22082099003|4143699003|56012099006|11063799006|41080700001;
-X-Microsoft-Antispam-Message-Info: +QJ/HeqWI1Hsto+ZYw4jR1arr/TiIqFEB7FTWF1094fOwQYiYGco98DH+OSowWEZ21Y8vskq07KUu/3XFgy4KHPV+ucWiKdHu40LApHeD2+XHxSzPhIlLj5bL7a+RJZPi6amMenpUth2Fl4nCQc87Qlc4N25p4ygRpdHaNb9gR8vQQEUQER7x3eCRyEJz7ik12fd88YovOHakpqNFfbFI2SgxYdybWdstNgw+JwgdW22ePNx2p9OHjYHFwtcpau6Cm4kJwif2phF47IUQrIc9Vkl2urI20rYfDGoUjB5gvaV9+JvSJ1bgvbh/1deA9SYJ4cBiE2FpBk8T4YzPBXzNL284SUYWQYuLaY14MP9hZWvllpNc65AGzwfLRu63HkwFCQ5WfvcYOVTtw1hcIhtTnMYXSBIaJWN7M0pG2RPka7+3LcCXIPSH3QiEUsvywqj+xhrVJyTmxBEyLF8wSNgkaQIm2a5ENtGhHkVaneW9XkvfhLv7o3/Y3coFKuLxJo2tNYnUhIMU5hVf0Ia4pzXEmEj7Tl2nsmmavFouzemOSFT9B//2wtkhQ8TepBCauY4mc95lh6w/CZjWsQPmHT1INcYPRIVNYUDBdI5WSsysIB4YKe28GgCiVUn+HZP0Y2ejq+i7CuIA61Wh3mHB43fgmB9KEQPNkAdPctnMN7QB2Ju43NFFcGBXBG/v4Sf+8xadyI/jqKksjPX8gdskuaLgGA3/xeQYqRr9u09BhK5yVtsNpIILsHGsqFdUJp2U7rxOGm26O4jLJ+Q0JnMl9z2cQ==
-X-Forefront-Antispam-Report: CIP:84.19.233.75;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:edirelay1.ad.cirrus.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700016)(82310400026)(7416014)(376014)(61400799027)(23010399003)(16102099003)(18002099003)(22082099003)(4143699003)(56012099006)(11063799006)(41080700001);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: NnpZXkxdGREsJOxqUZ63mDS+Qm6Kn1jV/RE9yURq8DnKdqCIjibyOs+ZXQh0l6o8As9sV5cEDUMJPZ6tTUjrwuO9/BB5l8gZZeNBvxhtPY+xHxd7axdIczwo5yiiXZr04gckBi/D/v6zDk3gn+q1qQFnDxNgydLMWdckLMSupDKsxGrGNmNJbY1PsMGx6a3s7khADCcUpx0X0nDXa5KDpK9Fx4PYLQDzAnLldgOGO+jPEyQ44KMJEyd2o737wcGcyCOlLxzg5wh/fiJAfKmhqkFtbfd1gNNtfQ3hz9NM6ePmkBkmr3K4mWU9ELDbmpa6nKMeXgM/VDa3rBHNQUTniLPaC3OmLQLtGN6y95I4oxhFh4rfqQIHdoyIzsU0sZbbm58bzSFy8ojC4OoXOPyEamPtUhm+tkmbmJm6OjKQlm20SCLFS8EheH8fC0xYjjVC
-X-Exchange-RoutingPolicyChecked: EKnGnIo/30ilIDjSohtKwuElnRdClZI5txSxfNe3fibvfHtpIDXjZ268YH84pDrA4TxEnp/JIU0+4y27NT/DVurNFr6Xo5lpUm46WQczJKDqjdwWLbjpMgze/JA38D5ewbZSgxcUzI/oDsjJSqBZ3kEjoCNe6lYwwSllt6YJafqnYewDkzO7IiOBBltdoGvMp6AtYlF/TC0x+iBFPGtitjTNRNZWQWRrXRMAq3H/a4+s/oGZH0/jmDoTHsJ34OsPWcmtVogqAwHspoiLg2y7QrqUYCx8eCPtjQE4mIcj0nG/JnrIyhLwZu8ZcNDEWTcnLOVER8a7qr+JG7ihdFcYtw==
-X-OriginatorOrg: opensource.cirrus.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jul 2026 09:01:29.6835
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 19450c50-74fd-49f4-b6a3-08dedb3d2b57
-X-MS-Exchange-CrossTenant-Id: bec09025-e5bc-40d1-a355-8e955c307de8
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bec09025-e5bc-40d1-a355-8e955c307de8;Ip=[84.19.233.75];Helo=[edirelay1.ad.cirrus.com]
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-CO1PEPF00012E63.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR19MB4523
-X-Proofpoint-ORIG-GUID: Xr6Ce48YtsZvvi9-ArXAlnrZLSIFHCXn
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA2MDA5MCBTYWx0ZWRfXxewslzTEi6V7
- UnEUdN4Dh5Wuwsrz05hVAfKGSsHWptx/BnT3BrFxaGqhsMwKKb9BgpwXnSzj6OOc1JsGzly0XL5
- I5A/keuaM3TVnfl/gGKsRRTC9mHrRxk=
-X-Authority-Analysis: v=2.4 cv=YYiNIQRf c=1 sm=1 tr=0 ts=6a4b6eee cx=c_pps
- a=+K7kHGa/lm5mlhWRmKhmBg==:117 a=h1hSm8JtM9GN1ddwPAif2w==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=kj9zAlcOel0A:10 a=RAioF0-LDSMA:10 a=s63m1ICgrNkA:10 a=RWc_ulEos4gA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=iX4cTi3TZMoOKdANLEfx:22 a=KfkQE9S9VqCBgivYGm0O:22
- a=w1d2syhTAAAA:8 a=laggWU-tNtq9GTYVk9QA:9 a=CjuIK1q_8ugA:10
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA2MDA5MCBTYWx0ZWRfXzdGOTmleY1wa
- ImXEhP/xbR4J/lc6a3zmAr2okywqKonxJGGVXCMrr01xuuM+PpmcS4CHO0xW1LOA4B/PqF+PpuL
- 4leIFhrRAoBwvLb8G/1/EkJmXJ29P0vXSmRplPEp7LWVewVLKVgsxdwWS9zeZ9e2oY/rIjRGZD9
- k1UQb8Zr2S382lgOAZk/4F6VZSxwgMrk7tgGna9ABQ+LUHJ9S4BhdJMRdL8GQGclRexqv75ppOc
- FYwZuec3lhm/QQ5g7cp6Jn+Rp4JvxluU2P6RaG7gzo4V0xtE+mWW5pJJwJGkUJ0CBa/obbtoiBv
- 3/QsAFIIFTMAQh1X+6UldtwdHaHdZIDnAouuesZVn+vvyckmhG5+5MkMQuw/kk571BwaCFKaxzW
- NSp8Z11jVtJ1jUDwNKjt9ePalPBSi7wErIUvL6op9NCGxEGXw4/42ZTZ+d+Qtxed9A5VMRykOGr
- 81YM+LRRZ0joPN8gFkw==
-X-Proofpoint-GUID: Xr6Ce48YtsZvvi9-ArXAlnrZLSIFHCXn
-X-Proofpoint-Spam-Reason: safe
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyjHQUlJIzE
+ vPSU3UzU4B8JSMDIzMDM0ML3aIyQ0MjM93EnMzUvJLUbN2UHKhIiqVJYlJKcpqFqYWBElB7QVF
+ qWmYF2OjoWAi/uDQpKzW5BGSeUm0tAHxpGmR8AAAA
+X-Change-ID: 20260618-rv1126-alientek-dlrv1126-d94abdcf8580
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ David Wu <david.wu@rock-chips.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Frank <Frank.Sae@motor-comm.com>, Andrew Lunn <andrew@lunn.ch>, 
+ Heiner Kallweit <hkallweit1@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+ Yanan He <grumpycat921013@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783329286; l=2237;
+ i=grumpycat921013@gmail.com; s=20260618; h=from:subject:message-id;
+ bh=cLIYaTp8BMdNpvmeNN9IHEGffrelsNbt22peLlfH/xI=;
+ b=n9ZjERAhzjx2V7crs7HJzpo3tqAmQ8t8NqGgffNufU3uJAKs2gRa4YnXgybLrwGB6BscbMpTf
+ 6R7McTRg+88CmER536i37fi+k30MyFTlhzIpbLcmMPD4KH0VhdznWAN
+X-Developer-Key: i=grumpycat921013@gmail.com; a=ed25519;
+ pk=oWrY8KwXIunZWlYBV76NG2A3V4p1bJ+aD45Mr56ErTw=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_020153_508277_26E98B2C 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260706_021457_767260_E28002B6 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -179,22 +120,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 29, 2026 at 03:26:27PM +0200, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> linux/gpio.h is going away,s o use linux/gpio/consumer.h instead.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  sound/soc/codecs/cs42l84.c | 2 +-
->  sound/soc/codecs/cx2072x.c | 2 +-
+The ATK-DLRV1126 board consists of a CLRV1126F core module and a
+DLRV1126 carrier board. The core module contains the Rockchip RV1126
+SoC, eMMC and RK809 PMIC. The carrier board provides Gigabit Ethernet,
+SD card, AP6212 WiFi and Bluetooth, PCF8563 RTC, ADC keys, GPIO LEDs and
+audio connectors.
 
-For the Cirrus bits:
+This series adds the Alientek vendor prefix and board compatible, updates
+the Motorcomm PHY driver to consume an optional external PHY reference
+clock, adds missing RV1126 SoC description pieces, and finally adds the
+CLRV1126F core module and DLRV1126 carrier board device trees.
 
-Reviewed-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+The board was tested with Ethernet/NFS boot, eMMC, SD card, SDIO WiFi
+enumeration, Bluetooth LE scanning, RTC, ADC keys, GPIO LEDs and RK809
+audio card registration.
 
-Thanks,
-Charles
+Changes in v2:
+- Model CLK_GMAC_ETHERNET_OUT as an external PHY clock consumed by the
+  YT8531 PHY instead of keeping it alive from dwmac-rk.
+- Add optional clock enable support to the YT8531 path in the Motorcomm
+  PHY driver.
+- Use phy-mode = "rgmii-id" for the Alientek DLRV1126 GMAC.
+- Keep the PHY reference clock in the ethernet-phy node, following the
+  rk3588-tiger.dtsi pattern.
+
+Signed-off-by: Yanan He <grumpycat921013@gmail.com>
+---
+Yanan He (5):
+      dt-bindings: vendor-prefixes: add alientek
+      dt-bindings: arm: rockchip: Add Alientek DLRV1126
+      net: phy: motorcomm: Enable optional clock for YT8531
+      ARM: dts: rockchip: Add RV1126 I2C5
+      ARM: dts: rockchip: Add Alientek DLRV1126
+
+ .../devicetree/bindings/arm/rockchip.yaml          |   7 +
+ .../devicetree/bindings/vendor-prefixes.yaml       |   2 +
+ arch/arm/boot/dts/rockchip/Makefile                |   1 +
+ .../dts/rockchip/rv1126-alientek-clrv1126f.dtsi    | 277 +++++++++++++++++++++
+ .../boot/dts/rockchip/rv1126-alientek-dlrv1126.dts | 256 +++++++++++++++++++
+ arch/arm/boot/dts/rockchip/rv1126-pinctrl.dtsi     |  10 +
+ arch/arm/boot/dts/rockchip/rv1126.dtsi             |  15 ++
+ drivers/net/phy/motorcomm.c                        |   7 +
+ 8 files changed, 575 insertions(+)
+---
+base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
+change-id: 20260618-rv1126-alientek-dlrv1126-d94abdcf8580
+
+Best regards,
+--  
+Yanan He <grumpycat921013@gmail.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
