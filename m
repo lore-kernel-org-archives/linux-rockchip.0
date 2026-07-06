@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17A98C43458
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 14:56:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1396C43458
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 14:57:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0q8kgvOLAgFOvP7PjST27JXBn3FGPTLgRpd0bJHRyfM=; b=KWvzPFTWHeVC8i
-	3CtvlNopKuCPPR/XmqCeADeVe/sRNA97YM3UE+l8I/xyBg0LuE8N8RfdoDKkw6caxCiMwcFkoh4IU
-	BZmdKg3Nviqel8Wsnl46E++NATPkAlpmO9iBIYjBfGIs7HzHZtk5w9L1PFLRhKRyZ/yGj+eJ/HxTE
-	dGrYD/VwtzdoKYqzDoi9ATDsZSqdas/fEdJ5h1E+GzUDsPVmAZ7l7EbC9SPhmxKQNh6BqhSOLje6U
-	RuKo8v8KlN54ppj6tLj+nJLrFqAvLKXa1g2rhEjNVeN0Tm6h/bCaICebZBzRUitvEFd3selJr5FLT
-	9KKRPt3CvEMS5mBnicOw==;
+	List-Owner; bh=w2rcjpNxPqG+T/OlL/ZUZsa+iUHbUZeevZYcbZGH2W4=; b=s8uvuJyOYoOt7m
+	4/eXjpJmJ3xaMB3AVlCBdkQWmgXfSCnoH8XZ0hOb5r/9ZZLWy6kBIJSyKT8iZFBj2DCMFlzwBBVLp
+	cc7F+esfJq8X9mZEYxI1hVC2cvpCz4AbV+RMruwREOIrQdsFw/4+cW7lvZ4TroRsXVxOZBtb+vHdN
+	2GIyfFWUqOmpv+ErSgy61zWwmR5hnWBKpI9+d+Km2wX/qDLCbOfx5OXIRLoSfJm/YSJDBuiIlZgqr
+	b2CNJeyO4H2lN4oPnxPqK6lDKMm66vnDthvD4acvTFELCGg0vPeyi2NSoGpNH4ouTL6s45r3aPE0g
+	bFaj8U1kwBJnJS/VUbiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgkkN-0000000CoPJ-0BuC;
-	Mon, 06 Jul 2026 14:56:35 +0000
+	id 1wgklS-0000000CoZG-1ZsH;
+	Mon, 06 Jul 2026 14:57:42 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgkkK-0000000CoOk-45LH;
-	Mon, 06 Jul 2026 14:56:34 +0000
+	id 1wgklP-0000000CoXp-3IC6;
+	Mon, 06 Jul 2026 14:57:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=w8joU4cXK6hN478uM2nlCnYfVvF9AwmMn0E7W8AlcPE=; b=VK25B0FevkFnnIvRkDNCtDbhAy
-	HMXuMOvcMQCq6b+613/bHU+SkZmKvaQWrxrv/dYSKlXOo17Qlxei+WkUqvC2DvgESt+oMN26iQTsM
-	do1Ta9iXF6SLwqa1KSoIYnvolhGzOf64nLdXZ6Q30RvPnLqs/XZ7zPQ9Mxbf7dCpY5Q0=;
+	bh=ADaEzG5k+SdavN1eHzHBe+2hNmvFIXHsmoacs5qvmYM=; b=SDjUcqLQVM9+ct2Tl1Dpp6lmbL
+	r+rH8J3EJnI1wsdMkIvrWsN6Hd84jsKsX82Di6Dltnfoi44kSgm2E+6LZDs4pui2lepL0ljcUQEbo
+	Ul4664ULpjAbaZIUX28xkaPTqUiYo7MtfhFIxPjdRANKyyjAyLVsB8ssBN/viQm9bN1E=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1wgkk3-00B0Vt-9k; Mon, 06 Jul 2026 16:56:15 +0200
-Date: Mon, 6 Jul 2026 16:56:15 +0200
+	id 1wgklE-00B0Wp-Ny; Mon, 06 Jul 2026 16:57:28 +0200
+Date: Mon, 6 Jul 2026 16:57:28 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Yanan He <grumpycat921013@gmail.com>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -58,15 +58,15 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-stm32@st-md-mailman.stormreply.com
 Subject: Re: [PATCH v2 3/5] net: phy: motorcomm: Enable optional clock for
  YT8531
-Message-ID: <ea703e8d-e11f-4f0d-bd23-060a4c9ac988@lunn.ch>
+Message-ID: <e73a58e4-f9d2-46ea-8124-730f67936aee@lunn.ch>
 References: <20260706-rv1126-alientek-dlrv1126-v2-0-ff3176ca362b@gmail.com>
  <20260706-rv1126-alientek-dlrv1126-v2-3-ff3176ca362b@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20260706-rv1126-alientek-dlrv1126-v2-3-ff3176ca362b@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_075633_034436_B1F530EC 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20260706_075739_823585_CC4E5739 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,9 +96,11 @@ On Mon, Jul 06, 2026 at 05:14:43PM +0800, Yanan He wrote:
 > 
 > Signed-off-by: Yanan He <grumpycat921013@gmail.com>
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Please separate this out and post to netdev.
 
-    Andrew
+https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html
+
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
