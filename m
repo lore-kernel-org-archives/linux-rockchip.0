@@ -4,146 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 995D5C43602
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 10:42:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BE68C43458
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 11:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JlcUfEJ/0CVb2bnGebSvmTQWzi+4uQ/OCuyh1BJMv3E=; b=pgzUS6v5ij/pO1
-	ATbj+2KUWhPzpywgL0aP0KYvXfinKh7hZ4+RlbrCBJKSLi+ivvXS01QU2j6ASesDw7HDBIgz6FmjP
-	pu6UiBJa/f6HHuS2K+2jGERrp7O+6/6ZpB7kf9JNjzfaKRSI1/Kqr+16WtmRFeAhjDLQepiI6jLKD
-	aU4HdZVLO4lBKVb1SKMohloZ572beFgslujqlmrvdLsH3NPRHkZdwM9ybdf/TjsrN6AS5GkVXW7pH
-	aG+twdesDg9Gtsm2Lf1UauGpgTSYmV5USTytA0OT+MupVnbXn5znR52Ja/yEZH6Pa/kC1QbaZQIKp
-	z2LdXk22eRkJYDBm1Ftw==;
+	List-Owner; bh=7z5FEx3bdBMAqgZEoIoE+umgjqdtCzghtj3HGk3O1Oo=; b=O3MLURb9YfxKrT
+	WwRu0dCh6inxngbAUaFC1dis/otMTC1IRkl57sbcr3H+PEGq9G4Qcn+myoDdmCR8vNoLG9HjFVv5N
+	VFofKT+4Ec55lJsusqpYu5hhvEg2/LxA+9yXxf1cXb/SXACYLw91vtFJIpvu1z1XLywG0czx7V6i2
+	MsLMF87EecTaMOI74g7jYyDA5+kTkk6ijEbG1RZPBMl3TalzppMlwU7xOBCdZsbOUWn5EyJ+Di8SB
+	WiGQK0BLNX9xvp0MMrheKkkF0bMyGq+x1aco9fjW6K8eSRNcO7oIp8xazqM0woECPVyBP/rP00R6A
+	E0yuE++3oGxS2LZZx/rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wggmL-0000000CFjg-1mAp;
-	Mon, 06 Jul 2026 10:42:21 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wghPW-0000000CM3g-3YWx;
+	Mon, 06 Jul 2026 11:22:50 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wggmF-0000000CFiC-3VCB;
-	Mon, 06 Jul 2026 10:42:15 +0000
+	id 1wghPU-0000000CM3D-3Lqs;
+	Mon, 06 Jul 2026 11:22:48 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0E38761389;
-	Mon,  6 Jul 2026 10:42:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A9351F000E9;
-	Mon,  6 Jul 2026 10:41:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783334534;
-	bh=IPNGdHh56ZVB5CsH+UE6uKclV6wrHeJiGGx7ee1V988=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=niCT3sGc0nhu+MKE15cOmixqFTzPAzuM+JXHh8UIXYk/QBka7MHhqMK31Rs7xrUui
-	 xWGDcEAn0KH3fSUj83doKefDip0SFnyx16083vHWs+Kz/7ZVvzznmcx5qDRVfg8LRe
-	 3OGHJyq88POyqmD9Q0N+dHeptgzoKsLXAQyY56gXSsYYda9+mWdnG9RnCgZrXYhEbn
-	 w1koFeCcrUiwzWK3rjzPQ5TtnKvznRG4e/kjkMKoZSJ0vBmrMiHW0HZ0h857QzKX6G
-	 LzLqYxYxRMqnNvvlH6/OgMEZS0QJvZ9Ej3lAOZ6ChIR0MJF9B15eOAaE5AqCdfcyMC
-	 H0rD9sCNUcMXQ==
-Message-ID: <f5fad349-7086-4b3a-a91f-5a471f340c14@kernel.org>
-Date: Mon, 6 Jul 2026 12:41:49 +0200
+	by sea.source.kernel.org (Postfix) with ESMTP id 5F42A40C2E;
+	Mon,  6 Jul 2026 11:22:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9140E1F000E9;
+	Mon,  6 Jul 2026 11:22:40 +0000 (UTC)
+Message-ID: <95b20f95-37c4-49a6-8952-e023597d9fd3@linux-m68k.org>
+Date: Mon, 6 Jul 2026 21:22:35 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 4/5] pwm: Unify coding style of of_device_id arrays
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig_=28The_Capable_Hub=29?=
- <u.kleine-koenig@baylibre.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: Chen Wang <chen.wang@linux.dev>, linux-pwm@vger.kernel.org,
- Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
- Neal Gompa <neal@gompa.dev>, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>,
- Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
- Vladimir Zapolskiy <vz@mleia.com>,
- Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Peter Griffin <peter.griffin@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Paul Walmsley <pjw@kernel.org>,
- Samuel Holland <samuel.holland@sifive.com>, Michael Walle
- <mwalle@kernel.org>, Inochi Amaoto <inochiama@gmail.com>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Hammer Hsieh <hammerh0314@gmail.com>,
- Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
- Alexey Charkov <alchark@gmail.com>, Sean Anderson <sean.anderson@linux.dev>,
- Michal Simek <michal.simek@amd.com>, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rpi-kernel@lists.infradead.org, chrome-platform@lists.linux.dev,
- imx@lists.linux.dev, linux-mips@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
- sophgo@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev
-References: <cover.1783263835.git.ukleinek@kernel.org>
- <20de6cd60c2938aad2d21397b92742849418ab1b.1783263835.git.ukleinek@kernel.org>
- <973f3d6f-6ff4-4685-9c9f-b07987f74d98@linux.dev> <aktWoIfY_DdO6gb4@monoceros>
- <bc697542-b1e2-41c2-af36-b708ca4aad5c@oss.qualcomm.com>
- <akuFirxGTqu_gt4O@monoceros>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH 02/13] m68k/coldfire: replace linux/gpio.h inclusions
+To: Arnd Bergmann <arnd@kernel.org>, linux-gpio@vger.kernel.org
+Cc: Arnd Bergmann <arnd@arndb.de>, Bartosz Golaszewski <brgl@kernel.org>,
+ Andrew Lunn <andrew@lunn.ch>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Gregory Clement <gregory.clement@bootlin.com>, Frank Li <Frank.Li@nxp.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Hauke Mehrtens <hauke@hauke-m.de>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?=
+ <zajec5@gmail.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
+ Linus Walleij <linusw@kernel.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Dominik Brodowski <linux@dominikbrodowski.net>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, patches@opensource.cirrus.com,
+ linux-m68k@lists.linux-m68k.org, linux-mips@vger.kernel.org,
+ linux-sh@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-media@vger.kernel.org, netdev@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-phy@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org
+References: <20260629132633.1300009-1-arnd@kernel.org>
+ <20260629132633.1300009-3-arnd@kernel.org>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <akuFirxGTqu_gt4O@monoceros>
+From: Greg Ungerer <gerg@linux-m68k.org>
+In-Reply-To: <20260629132633.1300009-3-arnd@kernel.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,36 +74,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDYvMDcvMjAyNiAxMjozOSwgVXdlIEtsZWluZS1Lw7ZuaWcgKFRoZSBDYXBhYmxlIEh1Yikg
-d3JvdGU6Cj4gSGVsbG8sCj4gCj4gT24gTW9uLCBKdWwgMDYsIDIwMjYgYXQgMTA6Mjg6MTZBTSAr
-MDIwMCwgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgd3JvdGU6Cj4+IEhpIFV3ZSwKPj4KPj4gT24g
-Ni83LzI2IDA5OjE5LCBVd2UgS2xlaW5lLUvDg8K2bmlnIChUaGUgQ2FwYWJsZSBIdWIpIHdyb3Rl
-Ogo+Pj4gSGVsbG8gQ2hlbiwKPj4+Cj4+PiBPbiBNb24sIEp1bCAwNiwgMjAyNiBhdCAwODozMzo0
-N0FNICswODAwLCBDaGVuIFdhbmcgd3JvdGU6Cj4+Pj4gT24gNy81LzIwMjYgMTE6MTQgUE0sIFV3
-ZSBLbGVpbmUtS8O2bmlnIChUaGUgQ2FwYWJsZSBIdWIpIHdyb3RlOgo+Pj4+PiAgICAtIFVzZSBh
-IHNpbmdsZSBzcGFjZSBpbiBhIG9mX2RldmljZV9pZCBhcnJheSB0ZXJtaW5hdG9yOyBBIHNpbmds
-ZSBzcGFjZQo+Pj4+PiAgICAgIGFmdGVyIHRoZSBvcGVuaW5nIHsgYW5kIGJlZm9yZSB0aGUgY2xv
-c2luZyB9IGluIG5vbi1lbXB0eQo+Pj4+PiAgICAgIGluaXRpYWxpemVyczsKPj4+Pj4gICAgLSBO
-byBjb21tYSBhZnRlciBhbiBhcnJheSB0ZXJtaW5hdG9yOwo+Pj4+PiAgICAtIEFsc28gbm8gdHJh
-aWxpbmcgY29tbWEgYWZ0ZXIgYSBuYW1lZCBpbml0aWFsaXplciBpZmYgdGhlCj4+Pj4gaWZmIC0+
-IGlmCj4+Pgo+Pj4gVGhpcyBpcyBhY3R1YWxseSBpbnRlbmRlZC4gaWZmID0gImlmIGFuZCBvbmx5
-IGlmIiwgc2VlIGUuZy4KPj4+IGh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL0lmX2FuZF9v
-bmx5X2lmIC4KPj4KPj4gSSBhZ3JlZSB0aGlzIHNjaWVudGlmaWMgaWRpb21hdGljIGV4cHJlc3Np
-b24gaXMgbm90IHdlbGwga25vd24KPj4gYnkgbm9uLW5hdGl2ZSBFbmdsaXNoIHNwZWFrZXJzLCBh
-bmQgdXNpbmcgdGhlIGV4cGFuZGVkIGZvcm0gaXMKPj4ganVzdCBzaW1wbGVyIHRvIHJldmlldyAo
-dGhpbmtpbmcgYXQgbm9uLW5hdGl2ZSBFbmdsaXNoIHNwZWFrZXIKPj4gcmVhZGluZyB5b3VyIGNv
-bW1pdCBpbiB0aGUgZnV0dXJlKS4KPiAKPiBmaW5lIGZvciBtZSwgSSdsbCBmaXh1cCB0byAKCk5v
-b29vLCByZWFsbHksIHRoaXMgaXMgbml0cGlja2luZyBvbiB0aGlzIGNvbW1pdC4gTm90IHRoYXQg
-SSBsaWtlIHRoYXQKY29tbWl0IC0gaXQncyBqdXN0IGNodXJuIC0gYnV0ICdpZmYnIGlzIHdpZGVs
-eSBrbm93biBhbmQgd2lkZWx5IHVzZWQgaW4KTGludXgga2VybmVsLiBJdCdzIGNvbXBsZXRlbHkg
-Y29ycmVjdCwgaXQgaXMgY29tbW9uIGFuZCBleHBlY3RlZC4KCkl0IGlzIG5vdCBzY2llbnRpZmlj
-IGV4cHJlc3Npb24uIEl0IGlzIGNvbW1vbiBpbiB0aGUga2VybmVsIGRvY3MuCgpCZXN0IHJlZ2Fy
-ZHMsCktyenlzenRvZgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+Hi Arnd,
+
+On 29/6/26 23:26, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
+> 
+> linux/gpio.h should no longer be used, convert these instead to
+> linux/gpio/legacy.h for coldfire.
+> 
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+
+For the ColdFire changes, LGTM:
+
+Reviewed-by: Greg Ungerer <gerg@linux-m68k.com>
+
+Regards
+Greg
+
+
+
+> ---
+>   arch/m68k/coldfire/device.c     | 2 +-
+>   arch/m68k/include/asm/mcfgpio.h | 2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/m68k/coldfire/device.c b/arch/m68k/coldfire/device.c
+> index 1420bae0964f..9a0258acd998 100644
+> --- a/arch/m68k/coldfire/device.c
+> +++ b/arch/m68k/coldfire/device.c
+> @@ -12,7 +12,7 @@
+>   #include <linux/init.h>
+>   #include <linux/io.h>
+>   #include <linux/spi/spi.h>
+> -#include <linux/gpio.h>
+> +#include <linux/gpio/legacy.h>
+>   #include <linux/fec.h>
+>   #include <linux/dmaengine.h>
+>   #include <asm/traps.h>
+> diff --git a/arch/m68k/include/asm/mcfgpio.h b/arch/m68k/include/asm/mcfgpio.h
+> index 7103cfa4edb6..29726aa40eb6 100644
+> --- a/arch/m68k/include/asm/mcfgpio.h
+> +++ b/arch/m68k/include/asm/mcfgpio.h
+> @@ -16,7 +16,7 @@ int __mcfgpio_request(unsigned gpio);
+>   void __mcfgpio_free(unsigned gpio);
+>   
+>   #ifdef CONFIG_GPIOLIB
+> -#include <linux/gpio.h>
+> +#include <linux/gpio/legacy.h>
+>   #else
+>   
+>   /* our alternate 'gpiolib' functions */
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
