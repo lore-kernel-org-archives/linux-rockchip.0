@@ -4,76 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAA95C43458
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 21:25:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825F1C43458
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jul 2026 21:34:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Subject:Cc:To:From:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fJAzrHuwZiO73bTzxMkLSJBvv26WSJ7Xxpr6Ji0YS4I=; b=Lxtu3YOnNOTpXb
-	kvoRqqZaBeSNc811P1pmyHDGj2BUCCNnvFwxJViH3lu9GdpwLTzvzOjG8VpEiXizpqxCNN9Eqxqv/
-	URrScpROnSbAVczL8de+wP+FJv+t67AxyHJaidGiJWFy89DSsdgTHV2Xgbvf2ugBqRPUGk79ca4rn
-	YoAdRwsJwWwbPHW1yIIe02aLYraqIBzu/pvYV8g7ZqP/6noZIH6n3F/Csyk9TIlV1WU8N31YJQPk/
-	W89m9BWIM0xnlsceE57XLQVciMLiWun72msg7uIibTZbsbJbCkjgXVi+py7OFwgk3NZAgpIcn+8il
-	LJaqm8b9Z0K8Mk5OZ+Yw==;
+	List-Owner; bh=cGk6GUGnvy/U5jXevbfRK+rWzobnu+56HPv7ynTZqHI=; b=JLiZC+YBRo0qSF
+	NbPlyyZv4I4syI0epGxnq0I/zxsZNSBfqI7VfWnsCCMW3qPNY/RIaW2PWzeDu5lQB5jj8A7tBZE8r
+	NriqI3m1MV60A6ajgH/PoJ+GtwZGLw5NvGtMJnRYuhkyxsoxQZsQMjJIkvNCVm6ecGF2B3f5p78qV
+	fpfiZzLTI602msyqFOT3xpwDL9IVdv1hy/8lQvlxwDeJbI2MK1wiMV4SMvMKoQnd5BRx9uoSNRlKF
+	JewggTzmo9FCshw7JYKMEC7gXnmTpgnSP5I3fe1FiBnH+r6JJGvdj3BCNwncop7elwX8UkJlMFPSl
+	67PW9zDaApv1AQUgy0Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgqol-0000000Dd0c-17TI;
-	Mon, 06 Jul 2026 21:25:31 +0000
-Received: from xmbghk7.mail.qq.com ([43.163.128.52])
+	id 1wgqxA-0000000DeLY-08qz;
+	Mon, 06 Jul 2026 21:34:13 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgqoi-0000000Dczz-2LHJ;
-	Mon, 06 Jul 2026 21:25:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1783373126; bh=RWhSVJVORFM0nmb44FtaW2rLu6vW8nVH7CmnaXSUUlY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=MpTHLDMf6w4zJ8tCB4YVUh06nMl3l9QCUpYqfRSp8H0Q7yA14nxkJ/pI3tSCxEe0i
-	 dtx1g3h/8xTeqXGoX8r4LlFOVxpr8X2qhrlpD/KIbgo2sKZ6x3aJwNhKFsM1WdFsoP
-	 CNeeA3pbe04Hob8q1AzUVBvOp+JAKow7skOs/Gwg=
-Received: from AERO17.taila7786d.ts.net ([220.171.158.107])
-	by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
-	id 6571E26E; Tue, 07 Jul 2026 05:25:23 +0800
-X-QQ-mid: xmsmtpt1783373123tq31asxge
-Message-ID: <tencent_3C137FCC795067C558C9C8BD86C03C180006@qq.com>
-X-QQ-XMAILINFO: MZtEYADUG4AgQcDlRbWn1WAYZSJBgI9Ur13Tuyix8/SlyXAxMGATkk2TqiTkWi
-	 cd9D+8sLM3rvBNt2nAE7U2MKbAkBLIIdiWO5NpFcVHLReRy3G/F1ntrcewIwGoGc2UBRpgBieu9Q
-	 vn2qWspL1HxLiDycBA2G1I85B/440dKVV+UY31gGM0qaksP00AY9rHvY12a7Grrrl6XiQig7WOS0
-	 D6nzKkSg+RfUBSElxCvORLulzUR3Dvvxxi29V6WFPQ92I8Ext3n8V0Y2112k1Gqw4gd0OI7sVCip
-	 8DMwRSvjx+Ip1PdRVpmAYoW9Pu7y4EYZ80RMoJ7XH7wsI9S5Gx+pOfBj8pWdRnZlH1F1rK5LlqDJ
-	 +mT74c7RXjzfvdIkBCccXnynkdMefDK5QLmzNrH+0q0rbIKsFNOPqAITrCTJ+fxrfUWrb0qq/jov
-	 t1L5h3MYHMsLMS0djET+/AxjSL3aHjc+Auxr0OaSRPALqpdFR4uqHJErLHQIw6O/fZhaTFUKLgkB
-	 hArBfdIo2XRfvIkAK/njoCtJeIuscGzXFs+at43BZVU5h71osTuuiTEi9rjEy+jKVvl1Fzositcf
-	 CWwf/Ro05ptkWLkLmpXR+Afoa0t1YbexlMOeJpxL0CPImp4LHja6jacg6SOfnbEFNJi7WcPGV3In
-	 Xc1XBp0ApgaPeE0OAS4rhi1YV9sztw7XLWdIzSJZ88/DPEpOdaFiLNuIfUET/O5w8CpXVFyQZ8tv
-	 UuDTWevZdGWK3Un0rX3ZCO2XpJYW9N97yGQw/ss8C9P2BIpbDvHZ2w2TbBMvC2VsggNZqIjVry+G
-	 5QwlNONZ2EE0dPH3QrkbMxbu9eMBoRVYfmKiBdfSzkw7b4P1qjJ7AYOMFhTe98l1vfEnnJ10Nhto
-	 co36NeFmqMvVG7FypqQhkZ1LRs3LKZ1OFzNjvt3kM+r63OQfdMb8LuRCfPSLtxycMLzJyFSpPQTq
-	 X9ebEL60O637wcDdLcX7s624vDWd85k5ksmJWj0X8b4rFIfbNXsFVOWZo3qMmTguAhh58+0wBVMO
-	 amNrdRZhMGEw1h+L8/t+RH2rFNup4CNRWZ3XVKYggtrik/V8WvIPxXquI65kE=
-X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
-From: Pufan Jin <2254650260@qq.com>
-To: Conor Dooley <conor@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
+	id 1wgqx7-0000000DeJf-37j4;
+	Mon, 06 Jul 2026 21:34:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=KGGKkAUXMo3mYXdgw//fbeNQbfmfA+U4ZlbWmELp4Rs=; b=BStsEw0mWdGD6P77NeD7XTo5E+
+	tMLKRALNTsZjY+dYVGg+pUrA/xfylJQwIVxCtBV/v+NcdUnwcNNlhSbm8OfUZETKQzhumFXLFeL9M
+	/Z+KfqBRJ9XLn7S7jLF2bA2KfbOz8TusckpW/R1qO6zjBNRWMOh+FwMlA7SXymDOCs6s=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wgqwy-00B4Ax-OS; Mon, 06 Jul 2026 23:34:00 +0200
+Date: Mon, 6 Jul 2026 23:34:00 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Pufan Jin <2254650260@qq.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add EmbedFire LubanCat 4 board
-Date: Tue,  7 Jul 2026 05:24:28 +0800
-X-OQ-MSGID: <20260706212429.691312-1-2254650260@qq.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260705-matriarch-epic-37add5cb97b8@spud>
-References: <20260705135014.1004166-1-2254650260@qq.com> <tencent_B1442A024A02EFD704ECC0F098F663588209@qq.com> <20260705-palatable-hardening-48f73a84244c@spud> <20260705-matriarch-epic-37add5cb97b8@spud>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add EmbedFire LubanCat 4 board
+Message-ID: <647b653e-d602-46d3-bbc1-0d3fa132696e@lunn.ch>
+References: <20260705135014.1004166-1-2254650260@qq.com>
+ <tencent_6D311DC5F405B157049538DD5B080082A10A@qq.com>
+ <1ac2d0f4-e027-4633-9d34-2709cb3e43ec@lunn.ch>
+ <tencent_BF5741F8151925AFF7A3026460204C2B3108@qq.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <tencent_BF5741F8151925AFF7A3026460204C2B3108@qq.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_142528_914750_497AA11B 
-X-CRM114-Status: UNSURE (   8.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260706_143409_778615_026EF8E3 
+X-CRM114-Status: GOOD (  17.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,28 +74,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 05, 2026 at 03:38:00PM +0100, Conor Dooley wrote:
-> On Sun, Jul 05, 2026 at 03:37:00PM +0100, Conor Dooley wrote:
-> > Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> > pw-bot: not-applicable
->
-> Actually no, I just noticed you're not using your real name/a known
-> identity. un-acked until you sort that out.
+On Tue, Jul 07, 2026 at 05:20:35AM +0800, Pufan Jin wrote:
+> On Sun, Jul 05, 2026 at 05:11:58PM +0200, Andrew Lunn wrote:
+> > > +	/* The board has 1.5ns delays on RX lines; TX delay is provided by the MAC. */
+> >
+> > That is pretty unusual. How is this RX delay done?
+> 
+> You're right to question this, and I apologise -- the comment was
+> inaccurate. I re-checked the board schematic and both TXC and RXC
+> have ~2ns of trace delay added on the PCB (annotated as
+> "TXC / RXC : delays 2ns" next to the RGMII bus).
 
-Apologies for the confusion. My real name is Jin Pufan.
-In v2 I will change the author identity to:
+O.K. So both having delays on the PCB is what i would call "somewhat
+unusual", vs "pretty unusual" for a single delay.
 
-    From: Pufan Jin <2254650260@qq.com>
-    Signed-off-by: Pufan Jin <2254650260@qq.com>
+> Since the PCB already provides the required clock skew on both
+> directions, for v2 I will switch to:
+> 
+>     phy-mode = "rgmii";
+> 
+> and drop both the tx_delay property and the misleading comment.
 
-(family name Jin, given name Pufan; using given-name-first Latin
-order as is customary on the list.) The Copyright line in the
-DTS will be updated to match.
+Please correct the comment. One issue we have is that many boards use
+"rgmii" and are broken. You have a board which uses "rgmii" and it is
+in fact correct. It is good to explain why it is correct, otherwise
+people could think it is just another broken board.
 
-Thanks for the review, and sorry for the noise.
-
-Pufan Jin
-
+       Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
