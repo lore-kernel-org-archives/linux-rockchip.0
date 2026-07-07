@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45BD0C44506
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 15:32:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BB74C43458
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 15:39:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Mime-Version:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=s+cgmkNnK/CFROn9I1Vgc/K+nvbjSMFaP1kfP6m2Syw=; b=Xr+s4l1Sg1MLM/
-	tepsaIqHI7B4/KPsfr15HwPlRjACFBl8Do5ojS6RwFzdiFf/1/1+lae9Z2LQmpB6czf6bhf0fkp/Z
-	356NJXiaqrA9qHtb0ZodiAeN4zFo2DIOtY7G+9ehQe53P95Z1mf0SJiz+meKaKMiEYG99GFtVNgiv
-	mgpwbPCNBRjKeW02yKV+SVVyvhHu0FgBAybptHa7EJIf6S5MwJC5yB4pfd1BqnHDpk6Uw2ZolfoAD
-	AnOBMMRPbgjUurY4aztgldEKuURxd6BnmwcAZboEgTJ6+e7g5oA8CrGxZ1G3D4t9VexTPKH2647jH
-	jcycSn+h7li/KXPTV4SA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aRXiWKnxITP050/lbXDR/cWps43umu8yaYlcCodU8nk=; b=eKQJIPZb4xQ1lMFmSmnJHfR9mr
+	7Fr1n30u+qDh4vCn5RPmwiMV7EknlTG0uHxmUCcZruRz+7HiyJ5ar3KlAQRGC6giNlKfCHlR45dWG
+	dTjc55lOIChGcIPbVZ0WcyujLv6jsPVnYxSsIV6/WyloWmwx5VTFf5/paIje+eeB1Ck6I+/DPGgCw
+	2KtV45tp6htmWcB2Mt6hs5pq5pRjjIT3l8VkD71z+lWsodI3nUm9eV/j7Ot49oIoQJYKpVo+stja5
+	ay2/HNA8mb8LczCMnsKyCfa6qiNRZUfj1P7S1nWpwImeNryoN6CFVS5mM1fa6pSXf0pH0xajPa/eA
+	X6bDtKnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh7ly-0000000FJNN-1EHp;
-	Tue, 07 Jul 2026 15:31:46 +0000
-Received: from out203-205-221-239.mail.qq.com ([203.205.221.239])
+	id 1wh7ti-0000000FLLp-0AL1;
+	Tue, 07 Jul 2026 15:39:46 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfDeO-000000040Ub-23X2
-	for linux-rockchip@lists.infradead.org;
-	Thu, 02 Jul 2026 09:24:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1782984241; bh=D4tG8vGW1AFdbEN3gBoFcfO+Fuu2YWofUBpUET6KUuI=;
-	h=From:To:Cc:Subject:Date;
-	b=je+2ob0SZw0QA6y3QeZJBf8FcjY4C+Y6ZWJvmY0IAhl184YXqfCaBloAq0duclG3r
-	 vPse3QAOL8yDU798m9liEagLUOvf8lK3L+PT0OZgmD90tXTajrululzRlWc65tP0c+
-	 J36uj+i69LSBwkl7xU7Lm1Ze2bL1jvM2rNo5TSlM=
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-X-QQ-XMAILINFO: MdmyWVu0InhAZ7rVzEiuBopvB/DXzTveGbrv4Ra3+pz8TH6fpAts73FgMoATRN
-	 ewhsO8kWAqwEkhylcTyJx/7CwQZHX8aK9wuLdT9dufDRlg9HFbtz5VAPmnfpcfQvm9awZ8qXMdbPx
-	 6dCweUqRP2YMkYoUcodysalji9/fMiZ1CcYRd2va0crHbwPFHsyxPYNlrVq/djVXiUgo7ylNYWlj9
-	 25qO0Hl6IrMBDPQpdBxq6GWPoRwcdEBqxVBBUQHX3P08EmB5zkZJMsKdd1lsGpMpLAfaqDRzsdhk8
-	 sPb2654G2RvPo7Gf4ClRf3kYdvMNmxUMUlwSia9JeQaYSX5bk3z7PIYyQ03vaH2dc7S9AyNqGkGV1
-	 GLtnbRk7YGyCeK0pFRcubwZV4jRJd5d3HbbK6TBDhKiTBSBGVIZBfdxv2FV+PgwlqZvWlLQ8ZJOTm
-	 /8RtqJE7T5hUjJbO0Gaq39j1miIGXgkF54hXS4UiPbilmcKmrGL02ACmTFU1J4CNWMiiB3YeY5+FS
-	 RbVfuhygb56pdVuXb8jBxHkO8l3MJfl5SHI/OUU9g0B+HExYxmvleonPYUJn8zIYvjKqI9u/TfgLL
-	 feJ6XxiWXQqQjRgklYZdD0jt9Oac3TpVZDWOeC/4vFJegx0/4v/eVLE+Y9xGUL3Q1U3rxvZO6ZbK7
-	 /zPFmw9rfv5t2TFu6kAe8Iaz1kThhcLazak27uQupWuQGY4YzOVstg7b3pI0MRIJ+hC9Agng4p1i8
-	 5ubFn/A+3EWWx0C4Ry8cvcZx7AIMPCThlz+hxofse2Yo8DR4sY1r17Sf+HwBHrlMd5oIMSAOqrjF9
-	 6Afuam1yTrzk4QZvoEM5gPip1+2fXelmG1zTFwsSNt0/WM7bZWlPgx1JValr9jEO4DisIp7M+SM5e
-	 9aSG2rGZlOmckrIAhXgMIay9NMivpJYacEvZlj1h9JR/BvpAa/yzjjSYpG99xPq38nE3rE+IGakbF
-	 E273dQMKfE82lOxTwCwTvL2w/Uu/TgsFNfnnsQZjm71aVg4gTGbK0ry/98xYWkXVYLyoJm9JxMFKy
-	 cuk2J1lci4OV34ezDb8+7k+rwQzrCq8DClOF9A7tPHhD4tu3JMs2TG0TCmCQv3gVABpjHaJtRTQPm
-	 MQI=
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>
-Cc: "=?utf-8?B?aGVpa28=?=" <heiko@sntech.de>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bWFpbGhvbA==?=" <mailhol@kernel.org>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?cm9iaA==?=" <robh@kernel.org>, "=?utf-8?B?a3J6aytkdA==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Y29ub3IrZHQ=?=" <conor+dt@kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 2/3] can: rockchip: add RK3588 CAN-FD support
-Mime-Version: 1.0
-Date: Thu, 2 Jul 2026 17:23:59 +0800
-X-Priority: 3
-Message-ID: <tencent_C422347432620914231601BC882C7E604D08@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-X-QQ-mid: xmsezb41-0t1782984239t81pl8d8g
-X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_022404_848181_3A9AF97B 
-X-CRM114-Status: GOOD (  15.50  )
-X-Mailman-Approved-At: Tue, 07 Jul 2026 08:29:51 -0700
+	id 1wh7q8-0000000FKj3-3FU0;
+	Tue, 07 Jul 2026 15:36:06 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6DE4243A49;
+	Tue,  7 Jul 2026 15:36:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D43F81F000E9;
+	Tue,  7 Jul 2026 15:36:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783438564;
+	bh=x785U4hGf4t7GOqLyuTFzRX+R9J/H44/NLYC184utQo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=aKaCWfWYJ5JEaok7ENp7t2mSK0Cz9whSR1F7bpRfWa2GGKbp9nqlEycT07VHtVsFl
+	 trVPf03vEBzlxjiNc1MDTRySb5OvWnEtH+k5s+G/VgXoI2EK9lLtd96Tb9AfDbN9NA
+	 g+WTTgqMAQg0wNK/9a5jHgGWppVzpxsDs4XZyo87QeFpfI4dJgWStZot5pM7u1RE8k
+	 IrLrQOx5L9YTTx3tjv4sPwNCYg5IVS7/w/8ySkXKIrvrbsPyfCZFzu1ZHbeRJ0ltd0
+	 54kt6Y0c4ziOgihL57GwWNji4+qs1KzIPEeZ1qbwzv6kFA4IhH7JH+rClsuP+sqIc1
+	 iR2iS1PIw0PUQ==
+Date: Tue, 7 Jul 2026 17:36:02 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>, 
+	Dave Stevenson <dave.stevenson@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v8 31/39] drm/vc4: hdmi: Convert to common SCDC
+ scrambling infrastructure
+Message-ID: <20260707-jade-wapiti-of-reverence-ad31b6@houat>
+References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
+ <20260702-dw-hdmi-qp-scramb-v8-31-d79890d00b6a@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-31-d79890d00b6a@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,72 +74,158 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4791217729842817710=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Marc,
 
-> Is the SoC you're using actually a 'v2' silicon revision? At least on
-> the rk3568 the downstream kernel has code to read the revision.
+--===============4791217729842817710==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="qh2qpyce2k5iwgvq"
+Content-Disposition: inline
 
-The kernel reports the CAN-FD controller as rk3588v2 rev2.2:
 
-  rockchip_canfd fea60000.can can0: Rockchip-CANFD rk3588v2 rev2.2 (errata 0x0000) found
-  rockchip_canfd fea70000.can can1: Rockchip-CANFD rk3588v2 rev2.2 (errata 0x0000) found
+--qh2qpyce2k5iwgvq
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v8 31/39] drm/vc4: hdmi: Convert to common SCDC
+ scrambling infrastructure
+MIME-Version: 1.0
 
-Following your earlier feedback, I have changed the v2 series to use
-rockchip,rk3588-canfd instead of rockchip,rk3588v2-canfd unless we get
-more information about RK3588 CAN-FD errata and SoC silicon revisions
-from Rockchip.
+Hi,
 
-> Compile the latest https://github.com/linux-can/can-utils/ and test:
+On Thu, Jul 02, 2026 at 05:46:44PM +0300, Cristian Ciocaltea wrote:
+> @@ -416,10 +281,11 @@ static int vc4_hdmi_connector_detect_ctx(struct drm=
+_connector *connector,
+>  			status =3D connector_status_connected;
+>  	}
 >
-> $ cangen can0 -I 2 -Li -Di -p 10 -f -g 1 -c32 -b
-> $ cansequence -rv can1 -f
+> -	vc4_hdmi_handle_hotplug(vc4_hdmi, ctx, status);
+> +	ret =3D drm_atomic_helper_connector_hdmi_hotplug(connector, status, ctx=
+);
+> +
+>  	pm_runtime_put(&vc4_hdmi->pdev->dev);
+>
+> -	return status;
+> +	return ret =3D=3D -EDEADLK ? ret : status;
+>  }
 
-I tested with can0 and can1 directly connected. The CAN clock was
-200 MHz, and the interfaces were configured as follows:
+This looks like a change that should have its own patch and explanation.
 
-  ip link set can0 down
-  ip link set can0 type can bitrate 500000 sample-point 0.8 dbitrate 1000000 dsample-point 0.8 fd on
-  ip link set can0 up
 
-  ip link set can1 down
-  ip link set can1 type can bitrate 500000 sample-point 0.8 dbitrate 1000000 dsample-point 0.8 fd on
-  ip link set can1 up
+> @@ -778,32 +658,14 @@ static int vc4_hdmi_write_spd_infoframe(struct drm_=
+connector *connector,
+>  					buffer, len);
+>  }
+> =20
+> -#define SCRAMBLING_POLLING_DELAY_MS	1000
+> -
+> -static void vc4_hdmi_enable_scrambling(struct drm_encoder *encoder)
+> +static int vc4_hdmi_scrambler_enable(struct drm_connector *connector)
+>  {
+> -	struct vc4_hdmi *vc4_hdmi =3D encoder_to_vc4_hdmi(encoder);
+> -	struct drm_connector *connector =3D &vc4_hdmi->connector;
+> -	struct drm_device *drm =3D connector->dev;
 
-Without BRS, this test ran for 15 minutes without problems:
+If you don't remove this line....
 
-  cangen can0 -I 2 -Li -Di -p 10 -f -g 1 -c32
+> -	const struct drm_display_mode *mode =3D &vc4_hdmi->saved_adjusted_mode;
+> +	struct vc4_hdmi *vc4_hdmi =3D connector_to_vc4_hdmi(connector);
+>  	unsigned long flags;
+>  	int idx;
+> =20
+> -	lockdep_assert_held(&vc4_hdmi->mutex);
+> -
+> -	if (!vc4_hdmi_supports_scrambling(vc4_hdmi))
+> -		return;
+> -
+> -	if (!drm_hdmi_mode_needs_scrambling(mode,
+> -					    vc4_hdmi->output_bpc,
+> -					    vc4_hdmi->output_format))
+> -		return;
+> -
+> -	if (!drm_dev_enter(drm, &idx))
 
-With BRS enabled:
+Then you don't need to change this one either
 
-  cangen can0 -I 2 -Li -Di -p 10 -f -g 1 -c32 -b
+[...]
 
-the test only worked when dbitrate was equal to bitrate, for example
-with both set to 1M. If dbitrate differed from bitrate, the
-controller went bus-off immediately.
+> -		return;
+> -
+> -	drm_scdc_set_high_tmds_clock_ratio(connector, true);
+> -	drm_scdc_set_scrambling(connector, true);
+> +	if (!drm_dev_enter(connector->dev, &idx))
+> +		return -ENODEV;
+>
+>  	spin_lock_irqsave(&vc4_hdmi->hw_lock, flags);
+>  	HDMI_WRITE(HDMI_SCRAMBLER_CTL, HDMI_READ(HDMI_SCRAMBLER_CTL) |
 
-So my current conclusion is that CAN-FD itself works on RK3588, but the
-support appears incomplete: using a faster data phase with BRS does not
-work in my setup.
+> @@ -812,59 +674,26 @@ static void vc4_hdmi_enable_scrambling(struct drm_e=
+ncoder *encoder)
+> =20
+>  	drm_dev_exit(idx);
+> =20
+> -	vc4_hdmi->scdc_enabled =3D true;
+> -
+> -	queue_delayed_work(system_percpu_wq, &vc4_hdmi->scrambling_work,
+> -			   msecs_to_jiffies(SCRAMBLING_POLLING_DELAY_MS));
+> +	return 0;
+>  }
+> =20
+> -static void vc4_hdmi_disable_scrambling(struct drm_encoder *encoder)
+> +static int vc4_hdmi_scrambler_disable(struct drm_connector *connector)
+>  {
+> -	struct vc4_hdmi *vc4_hdmi =3D encoder_to_vc4_hdmi(encoder);
+> -	struct drm_connector *connector =3D &vc4_hdmi->connector;
+> -	struct drm_device *drm =3D connector->dev;
+> +	struct vc4_hdmi *vc4_hdmi =3D connector_to_vc4_hdmi(connector);
+>  	unsigned long flags;
+>  	int idx;
+> =20
+> -	lockdep_assert_held(&vc4_hdmi->mutex);
+> -
+> -	if (!vc4_hdmi->scdc_enabled)
+> -		return;
+> -
+> -	vc4_hdmi->scdc_enabled =3D false;
+> -
+> -	if (delayed_work_pending(&vc4_hdmi->scrambling_work))
+> -		cancel_delayed_work_sync(&vc4_hdmi->scrambling_work);
+> -
+> -	if (!drm_dev_enter(drm, &idx))
+> -		return;
+> +	if (!drm_dev_enter(connector->dev, &idx))
 
-This looks different from the issue described by the current
-RKCANFD_QUIRK_CANFD_BROKEN comment. That quirk is about specific
-CAN-FD frames triggering Error Interrupt or Error-Warning during
-reception. In my test the non-BRS CAN-FD frames work, while the failure
-is tied to using BRS with a data bitrate different from the nominal
-bitrate, which immediately drives the controller bus-off.
+Ditto
 
-Given this result, should I still keep CAN-FD disabled for RK3588, or is
-it acceptable to enable CAN-FD but document that BRS with a faster data
-phase is currently not working?
+Maxime
 
-Thanks,
-Cunhao Lu
+--qh2qpyce2k5iwgvq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCak0c4QAKCRAnX84Zoj2+
+dnJlAX0YfVV+d4ScVr1xy6mVtKtaV6ALFFFnpPrs5zvBqSQA3MnmVbCUO8RxoxUx
+6vi0I04BgNpvDXYzoCqcZbJ8g9Dzbk7zABoM27ZEdR7FTZGpG+FQnkYaqJvbHhh6
+WVAPcSFdvQ==
+=AcaK
+-----END PGP SIGNATURE-----
+
+--qh2qpyce2k5iwgvq--
+
+
+--===============4791217729842817710==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4791217729842817710==--
+
