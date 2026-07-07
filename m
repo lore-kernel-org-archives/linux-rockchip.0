@@ -4,71 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F05EC43458
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 07:42:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AC46C43458
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 07:48:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LbIguaO70OTLEPX4fF5uM+fY4RgfI6NpR8H2Z1rKq8I=; b=kFgIF7h6IIlqHw
-	G7Lj5AfwPOYA/L/QnY/SAy9IMeaZujDrj/4SqmHSGH5zTmmcif+sJ6DKxWjzhUPlhu3xjwpKx9hPu
-	GCZtKrUc/YyADcUdPPfk1XMFgoEVEx6v/83CeqTpVflwqH6ETreCu5+eMj8cf9gTvTUgtsUhe4YVJ
-	K5hyNoZAIc2RWILrX/KqG6p91Jf27Z+RkhjAWVruVSdIScKckfpw3aQnu8B0DjWyV2rgXx6Ib9Wuv
-	ZOVL8LMNsvuA7S2kuP4OT9klRdulE59vq8OcKu2KZkiFfrluHPWo6LSOtVjnSG4XP80hPdSUxK2wI
-	v1/tsGMGtoufrzJ0VHxg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:
+	References:MIME-Version:In-Reply-To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Hz5wDozrMA0XGmESFzHRxPGBFI5XEdlS9504ACfYpWE=; b=iGns3Pazi4+qkxV6/Z8FZZXyO9
+	y6h6129nWPtzsN8Ph80dm2QtwckjCbq8bP/ly3/NNv1gmYa8yEVTJ5CZXQdYmgjaw7D/kOl+W0Qm9
+	ACcn/Ik7v0r7pTrzhnHkSIrjQUOLMXfrLH/IxAdZoX9Y3S9ry529jKOlUQ3XDHMHqtRxmWCSZ421S
+	rOzYAUwCXfZbXgT3IwS7j+PZyhfMPqq2GKAM2f4HkLSWksGBKvLMpIEl3Hk+WFwtgzTWbQgN5Mg2b
+	UA9kO7FJJ0zx6jOXyjeeuC4eJZ80N50ybc+PWGZmwf1G169DQ+vANFEb0hbKWlSpJIuoWApvsyUDV
+	AR3ynOUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh0RL-0000000ELB4-1Qia;
-	Tue, 07 Jul 2026 07:41:59 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wh0XG-0000000EM3K-1uHs;
+	Tue, 07 Jul 2026 07:48:06 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh0RJ-0000000ELAZ-1E2c;
-	Tue, 07 Jul 2026 07:41:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=pQwyXCyV2PJT4RikPbiEx3IVEGUY43jh3uk9m+jiWDM=; b=K8wqov0FLWnvSZCw8PWY3vST+K
-	Yq8cHvYbn58/ct2vcJKmp1y9CkWhzw6rgoCqmDTWc+cqkFSGrX47X+ezJMe4xtZTUruJyIGS9W0q5
-	i05RRBKHlKCWz+9vus3Fl2HdapYqLWXDC5kOJG0f9r2xoB1aHXcs4397brhlqMIPptd3Z59qLFkWB
-	Vi4hVN7QnfA5xuhijDTGLLGScZNcuLDatSPa2GxITaJAEclHqxOVsr5Xg5xcH2n/aubDsRvfRErsd
-	xWKkAKAvGs/IOSaPIuyXbqjVpuIOd43VNJOGZZnAcq7thzN7sNTtZ02SIv/ARQ/31karQroi7Wf5y
-	AN3nsCfQ==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Simon Glass <sjg@chromium.org>, Fabio Estevam <festevam@nabladev.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Albert Aribaud <albert.u.boot@aribaud.net>,
- Andy Shevchenko <andy@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>,
- Brian Masney <bmasney@redhat.com>, Chukun Pan <amadeus@jmu.edu.cn>,
- Conor Dooley <conor+dt@kernel.org>, David Lechner <dlechner@baylibre.com>,
- FUKAUMI Naoki <naoki@radxa.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Guenter Roeck <linux@roeck-us.net>, Jamie Iles <jamie@jamieiles.com>,
- Jeffy Chen <jeffy.chen@rock-chips.com>, Jiri Slaby <jirislaby@kernel.org>,
- Jonas Karlman <jonas@kwiboo.se>, Jonathan Cameron <jic23@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Linus Walleij <linusw@kernel.org>,
- Michael Opdenacker <michael.opdenacker@rootcommit.com>,
- Michael Riesch <michael.riesch@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>,
- Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Rob Herring <robh@kernel.org>,
- Stephen Boyd <sboyd@kernel.org>, Ulf Hansson <ulfh@kernel.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Yao Zi <ziyao@disroot.org>,
- huang lin <hl@rock-chips.com>, linux-clk@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org,
- linux-serial@vger.kernel.org, linux-watchdog@vger.kernel.org
-Subject: Re: [PATCH 00/12] Add support for the Rockchip RV1106 and RV1103
-Date: Tue, 07 Jul 2026 09:41:41 +0200
-Message-ID: <7403763.aoefvbuG5b@diego>
-In-Reply-To: <882555c4-e1a3-0a0a-6830-b824b93cf3ac@nabladev.com>
-References: <20260706195818.3906949-1-sjg@chromium.org>
- <882555c4-e1a3-0a0a-6830-b824b93cf3ac@nabladev.com>
+	id 1wh0XE-0000000EM2b-3eJi
+	for linux-rockchip@lists.infradead.org;
+	Tue, 07 Jul 2026 07:48:04 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8935942D76
+	for <linux-rockchip@lists.infradead.org>; Tue,  7 Jul 2026 07:48:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E2881F01563
+	for <linux-rockchip@lists.infradead.org>; Tue,  7 Jul 2026 07:48:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783410483;
+	bh=fTELVgDPDDa/adOsZAcvFwbR5ckIe3CM0pZ25SuNlOs=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=Qr8xIagyx3ZvdFRwQDOyaVjrunJxWrC6+trHzfCOrWDL4efKaTczCRhRnaWpZPL9w
+	 RlUUxoJX5bqH139t7TLcLBoqc2GKzxuzwhHJIEl09v/QjIpaAkmmmKdbFyETt/dHKA
+	 gvh3wZot9pWH++z5987HPaaFNzkZJ4lkd4JLq7TiSHOUUoirbXRrp7XXl2kVq6Lxpg
+	 JyBnnOCcxFfH296ICfguEed3znxsoqaQ5HS31bHn6YhmIJ5dPJkjTUSAbnssxnJ32I
+	 bELdOIGLBvKV3GRyM67aheIoorsOD0CvmP7Bu2cqvOeRWhaVIA8tz8a7HpKWZ9LECP
+	 CWIaVzf0v0JTA==
+Received: by mail-lj1-f176.google.com with SMTP id 38308e7fff4ca-39b237fb695so33928721fa.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 07 Jul 2026 00:48:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RqfVzNSZVQB/Hn24eCYwyxQq1/6061jePL5k2V1iSyt2uM8SLqhrKy9/iUwZr+mTb4s/JkeNPj7DoPDwiHxyg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyXNRSWXyZYTdBd23D5DrQF4YfqtanQS+f88ynsIb8226xuU/qC
+	6U2nk3jQXq3e674V8WYUnB4dEfKQhnHcq3FTt91e45r2h+z5NRYOc+7YjZtfXjt4IvjrwcB4Xf8
+	j/SRjgdlLrbKxiMhxjDseRspXOWbGov2a/MGY3Xf0pg==
+X-Received: by 2002:a2e:8a84:0:b0:399:7aad:889f with SMTP id
+ 38308e7fff4ca-39c60016efdmr6273461fa.27.1783410481786; Tue, 07 Jul 2026
+ 00:48:01 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 7 Jul 2026 00:48:00 -0700
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 7 Jul 2026 00:48:00 -0700
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <20260706-qcom-sa8255p-emac-v12-0-e3ab1ecf2901@oss.qualcomm.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_004157_374282_E58DB7BD 
-X-CRM114-Status: GOOD (  12.86  )
+References: <20260706-qcom-sa8255p-emac-v12-0-e3ab1ecf2901@oss.qualcomm.com>
+Date: Tue, 7 Jul 2026 00:48:00 -0700
+X-Gmail-Original-Message-ID: <CAMRc=MeZ=9Oy9rCfugiivuTWNeZc6o5RBm3T_8_Q70RsbVyjkg@mail.gmail.com>
+X-Gm-Features: AVVi8CdfTk0d0MBtBeXEYxHV0em1KoWufQbF_cpMl07Jy03GCTI7kHjFfQ2Uf_Y
+Message-ID: <CAMRc=MeZ=9Oy9rCfugiivuTWNeZc6o5RBm3T_8_Q70RsbVyjkg@mail.gmail.com>
+Subject: Re: [PATCH net-next v12 0/7] net: stmmac: qcom-ethqos: add support
+ for SCMI power domains
+To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, 
+	linux-arm-kernel@lists.infradead.org, Drew Fustini <dfustini@tenstorrent.com>, 
+	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org, 
+	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Vinod Koul <vkoul@kernel.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com, 
+	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>, Romain Gantois <romain.gantois@bootlin.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Maxime Ripard <mripard@kernel.org>, Christophe Roullier <christophe.roullier@foss.st.com>, 
+	Bartosz Golaszewski <brgl@kernel.org>, Radu Rendec <rrendec@redhat.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,25 +104,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRGllbnN0YWcsIDcuIEp1bGkgMjAyNiwgMDA6NTQ6NDQgTWl0dGVsZXVyb3DDpGlzY2hlIFNv
-bW1lcnplaXQgc2NocmllYiBGYWJpbyBFc3RldmFtOgo+IEhpIFNpbW9uLAo+IAo+IE9uIE1vbmRh
-eSwgSnVseSAwNiwgMjAyNiAxNjo1NyAtMDMsIFNpbW9uIEdsYXNzIDxzamdAY2hyb21pdW0ub3Jn
-PiB3cm90ZToKPiAKPiA+IFRoZSBzZXJpZXMgZm9sbG93cyB0aGUgc3RydWN0dXJlIG9mIHRoZSBy
-ZWNlbnRseSBtZXJnZWQgUlYxMTAzQgo+ID4gc3VwcG9ydC4gVGhlIGNsb2NrIGRyaXZlciBpcyBw
-b3J0ZWQgZnJvbSB0aGUgdmVuZG9yIGtlcm5lbCBhbmQgaXMgdGhlCj4gCj4gV2hlbiBJIHN1Ym1p
-dHRlZCB0aGUgaW5pdGlhbCB2ZXJzaW9uIG9mIHRoZSBSVjExMDNCIHNlcmllcywgSSByZWNlaXZl
-ZCBmZWVkYmFjayB0byBzcGxpdCBpdCBpbnRvIHN1YnN5c3RlbXMuIAo+IAo+IFlvdSBzaG91bGQg
-ZG8gdGhlIHNhbWUgaGVyZSBhbmQgc3VibWl0IGl0IHBlciBzdWJzeXN0ZW06Cj4gQVJNLCBjbG9j
-aywgcGluY3RybCwgc2VyaWFsLCBtbWMsIHdhdGNoZG9nLCBhbmQgaWlvLgoKY29ycmVjdCAuLi4g
-QVJNICsgY2xvY2sgY2FuIHN0YXkgdG9nZXRoZXIsIGFzIHRoYXQgaXMgbXkgc3R1ZmYsIGJ1dCBm
-b3IgYQpsb3Qgb2YgbWFpbnRhaW5lciBpdCBpcyBqdXN0IHdheSBlYXNpZXIgdG8gbm90IGhhdmUg
-dG8gcGljayBhcGFydCBzZXJpZXMnIC4KKG9yIGV2ZW4gcmVhbGl6ZSB0aGV5IGFyZSBtZWFudCB0
-byBkbyBzb21ldGhpbmcpCgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+On Mon, 6 Jul 2026 15:20:15 +0200, Bartosz Golaszewski
+<bartosz.golaszewski@oss.qualcomm.com> said:
+> Add support for the firmware-managed variant of the DesignWare MAC on
+> the sa8255p platform. This series contains new DT bindings and driver
+> changes required to support the MAC in the STMMAC driver.
+>
+> It also reorganizes the ethqos code quite a bit to make the introduction
+> of power domains into the driver a bit easier on the eye.
+>
+> The DTS changes will go in separately.
+>
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> ---
+
+There's one more comment to address by Uwe so there'll be a v13. For merging
+strategy: there are no build-time dependencies between the PHY and MAC parts.
+Vinod, Jakub: do you prefer me to split the series next time into its PHY and
+MAC parts for integration?
+
+Bart
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
