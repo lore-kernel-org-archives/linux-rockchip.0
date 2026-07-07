@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D040C44502
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BDD7C44501
 	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 19:44:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=abfkLWFk13VVk2C6Juoe8pe6dqDliaqmxXo1SStfecg=; b=vrf304Zph21chp
-	TBP/VcEYQ2Azdl8AoKS/spKSvMefgWQ3K1evy2t0nQYYxwLnaEl1wEJWuzg23L7FOCJiGnZNShUX4
-	4fWj0NTxbc2uW6G9N+rw+SFViH+L82RaxAlEUzj4chEvz6rci2WzC+EZsw3gXiGjd8+S2wgyP9mDo
-	K4VoDupvbJ0eUgd/l3VBVEaHhca+53BDFRnOd44f2izZQFCCtZhXiZVj3gEWKgNCFsUU49kAPJGaR
-	wtvrbL6M0uvEERj6j3vTmPGZxLeSQxG/lLt+ABTt1GfGlSC3OX1adRkXHiSJviNLQIFsLUEEfoXY/
-	4ZAYNY40rdiymRUNXOGA==;
+	List-Owner; bh=pPqZ91PcYcPh3QAGcEyTICbquw5hQ6Kz/150rPeb0+0=; b=xa9HLmcOsyc5VB
+	cxxiCSLZX6I06sAH3E0ucJqOkgKNSILnxtyclPIW2E4gbH6n3KQ9VcRpCxxsUTN+mMiOdJEExycyH
+	swFdfe9M//43qIyurWgooHSjSK30EC0lVcLUHzfqzSOw/BDHzi+lpc8tGXxbgCV5S8wrkAQFw4kDR
+	AFLykQUdvVC7KVwzex6Wy12PealAcZQfjK0VvXznOBxrwQr14GufuOjucWIbUUaJKS8W58ebTaCZl
+	Hiy5gYn/ETPX5To0tcJKVA6JGYYoo3gBeehCDMGmS8RHx2EPOdGONCONpUlwy2WudFsJU/557Uv8B
+	ScfM+I3D0tfyH3lyccOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whBij-0000000FnOW-3B6j;
-	Tue, 07 Jul 2026 19:44:42 +0000
+	id 1whBio-0000000FnRp-02fF;
+	Tue, 07 Jul 2026 19:44:46 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whBih-0000000FnMS-21Je
-	for linux-rockchip@lists.infradead.org;
-	Tue, 07 Jul 2026 19:44:40 +0000
+	id 1whBii-0000000FnMb-0Wc9;
+	Tue, 07 Jul 2026 19:44:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=HR4J3nbMNZFQr4ejTRv8oWBxzWRio+zHNBUUncps5Wo=; b=j2MJvpk5bwnhPLw1Ia147ERH9U
-	x7xjNJ6R0Mn87kvhAG7j2TcUM1bg0L2I0s5qfZR/HnHsmhQqyvGqUJP55RGSX2n+UFTlcggm9H8DI
-	iJl8quqo8iskZrZIVeXn0UbwpIqTRxEc5E+7mJLlbMxu+1o2zseeC+UM9rRUipZ32BSvgdNn1F0si
-	4pgyhSfaDzBnh3+qAz0dXoxfO7sbmWUmUE4I45/ErQNsD4iKC5qgfH/LZCGK1XjeSsuN8e17ZpFmG
-	8YotUxwcmLVFSpcXRjfdODAgWkZRBYERwjqbdASvD5ZpHa+XfLdoyhYP2HJLBEGqI8KitO7BRyyld
-	MQ3DReoQ==;
+	bh=jteq0TKUZAqOWEPonHZmx2eOEuuVsa36AnDrc3qvX10=; b=ClMWaosymu35Yw0mr2jf1aN/q4
+	vxGySjktzAxg9jdcfWt+SH2kew9Ce6Qv+5tmEAitRE2CmThPFW2eD/MrIzh5vOPg22JDKgbeSURyw
+	/kN610PVBOeDGC1u04ugy7kEnFxf4xejKQlZ/A+nxJGvX/7BngtuvnArSbtdgrjT597zGrPTsDNgA
+	pwNy7YFwKcgvjPntFyNZyDDXP9IJ8+Jlo5ckO8uf0iWTjETtMcZIgG08vlpd/9iH6+ajl5CP+d0rD
+	R0t61nCb8DULHs0qT6Sx6egC8TtF4Jc5UzeNIZR/yOAlUBHNxxGriKo09Av0uSDLQKs8l6kQjl96e
+	gGcKTIqA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Coia Prant <coiaprant@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] rockchip: arm64: dts: rockchip: Fix incorrect interrupt for the 9Tripod X3568 v4
-Date: Tue,  7 Jul 2026 21:44:30 +0200
-Message-ID: <178345345845.664858.5905972854127653416.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Correct indentation
+Date: Tue,  7 Jul 2026 21:44:33 +0200
+Message-ID: <178345345841.664858.18334635633167983226.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260702202429.2341789-1-coiaprant@gmail.com>
-References: <20260702202429.2341789-1-coiaprant@gmail.com>
+In-Reply-To: <20260706093419.273625-2-krzysztof.kozlowski@oss.qualcomm.com>
+References: <20260706093419.273625-2-krzysztof.kozlowski@oss.qualcomm.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_124439_539743_2E53A49E 
-X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-CacheID: sfid-20260707_124440_210257_D9EB5E41 
+X-CRM114-Status: UNSURE (   8.17  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,22 +73,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 03 Jul 2026 04:24:29 +0800, Coia Prant wrote:
-> The recently changes for 9Tripod X3568 mistakenly configured
-> the WiFi host-wake interrupt trigger type as IRQ_TYPE_LEVEL_LOW.
+On Mon, 06 Jul 2026 11:34:20 +0200, Krzysztof Kozlowski wrote:
+> Correct spaces or mix of tabs+spaces into proper tab-indented lines.
+> No functional impact (same DTB).
 > 
-> However, the associated pin `wifi_host_wake_irq` is configured
-> with an internal pull-down resistor.
 > 
-> When the WiFi module enters a low-power sleep state and leaves
-> the pin floating, this pull-down bias drives the pin low.
-> 
-> [...]
 
 Applied, thanks!
 
-[1/1] rockchip: arm64: dts: rockchip: Fix incorrect interrupt for the 9Tripod X3568 v4
-      commit: c22f566c82f59a46adaf7404b78a9617307afe0a
+[1/1] arm64: dts: rockchip: Correct indentation
+      commit: 740134dbe3184211efdf5f92204d6061733e1aaa
 
 Best regards,
 -- 
