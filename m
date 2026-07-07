@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C172C43458
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 04:07:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09369C44500
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 04:07:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3uOoQH6HtduXj8ZS9b7Yb/0jBqMwEbepQVuzKfNYXKU=; b=MBZ8qrAl/qbKCK
-	424kDMUBHVcnDgSRK+82VXjeE7qY1wUvmxSfuDw1ttbLLPK8oiUFUSHbhTw0TMH3bxXBz/PNIp8oY
-	nfplLcjPPIff09UA+pFWzKQRsNpcnhOKiH3TACOdSl9/8wJwTSl7VipPoOw5W9qPnNbLhL65KdWsV
-	n9nV4X0ZfZOQ3jrHT3Sc77RFyvhk/RPurJFN+yoHA9iPasl4oW9M9XVkGYtdLxx+CpUVLU7zF4IX9
-	/ZWifQFMGofuIYy79lC4yOpmJJIBN3ZLDIxUHFEAgjYX3K8x+auKb8sTW/nXPAbZvhpFHLmDCwiq4
-	c1f49inbPHg/Qx6gQ51Q==;
+	List-Owner; bh=rRmrmaWwxujUYe/XEW7wcEODkT/OQgc2WYfhr9+EStQ=; b=rHAIhiODUHlowL
+	puuLWZ55MCuhR9ZuRHX3741GXdm926q0hpmR4SC6BgMlWJC8Nb/+cbALrq2kN7vYjqvs0wObvOCVQ
+	iKIDDhcNnJIoV0sPK7Y2B6WHAoVdmEDmCThwJjDD7fVf755Fhpd2F14uwVNHbfrl92NtrtfPgyjzY
+	4EfkHjNsz2d0duALvteLpBa3N4mf3azQa9nZ1CoTsL9whOicVdkhM9i3O0qHjvcKGR4dA1jt5oj7E
+	HZbENSOqdwo43i/Qm5ccqQ7tabqhhCkZ9uJBlExaDjzlkGwIcPTMEKjt/uPIeCk9JOoc77ZArt/Mx
+	jJZ9mmc7H3WqEZnjSCKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgx5i-0000000E2uf-2wno;
-	Tue, 07 Jul 2026 04:07:26 +0000
-Received: from mail-m9330.xmail.ntesmail.com ([103.126.93.30])
+	id 1wgx5n-0000000E2zu-3iHB;
+	Tue, 07 Jul 2026 04:07:31 +0000
+Received: from mail-m603.netease.com ([210.79.60.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgx5g-0000000E2rC-0u92;
-	Tue, 07 Jul 2026 04:07:25 +0000
+	id 1wgx5h-0000000E2rc-2pp6;
+	Tue, 07 Jul 2026 04:07:27 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 452ef5834;
-	Tue, 7 Jul 2026 12:07:20 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 452ef5835;
+	Tue, 7 Jul 2026 12:07:21 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -57,26 +57,26 @@ Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v6 3/5] drm/bridge: analogix_dp: Restore mandatory samsung DP DT properties
-Date: Tue,  7 Jul 2026 12:06:11 +0800
-Message-Id: <20260707040613.1992841-4-damon.ding@rock-chips.com>
+Subject: [PATCH v6 4/5] drm/bridge: analogix_dp: Add validation for samsung,lane-count property
+Date: Tue,  7 Jul 2026 12:06:12 +0800
+Message-Id: <20260707040613.1992841-5-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260707040613.1992841-1-damon.ding@rock-chips.com>
 References: <20260707040613.1992841-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9f3ac24e1f03a8kunme8126cdf5bc82
+X-HM-Tid: 0a9f3ac252f803a8kunme8126cdf5bc93
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTk5CVhkaS0wfTh9MGR9KQ1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZShgdVkpNGB1CTR9PGk4eGlYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=HnKnHiNOTsUxM+dxfpAcx2TEg8yub5Qdm+wdFlSS27gyVTEVWIO2435dU+RPGq+5trfGHwYBhrz5wnSebLCVdlk2Y7rJpvpIG2Wt6I+RzwW5v0LDCGwTqb0gtvlvjWdZEr3DaZFoJ7hlIcm7GKnEE+T0S4h5Q5vANtoBKEHoqQc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=ev+X5LsVCHkgDTjb1hIYO+fJr+3QfLEWEFzM2v/Z63Y=;
+	b=JwntmWVEzE0km0fKlwwuBXTmVIBySdS3xIweWHDatGW3zFxSisx9q3RR9d0aAUe+rIQ6X86CzuuI5XqIqGNUhK4ajBncMUH7Hpqc9Ye9ZogsdLUQp674NmB0yNBBRImiiEJx5buqKGkraIyyJ058paMbUdtJOnFz/uP+gNkMXaQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=mLPv+VMsVdg/2ajzDFl3mJXUyg4DWZyAqc2dUZvsmmw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_210724_507709_63F64BBD 
-X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-CacheID: sfid-20260706_210725_933505_2E488A3A 
+X-CRM114-Status: UNSURE (   8.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,53 +94,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Revert the change that made samsung,link-rate and samsung,lane-count
-optional for Exynos DP. Add error checking to fail probe early if the
-required DT properties are missing.
+Add validity check for samsung,lane-count to ensure DT-provided
+lane count values are specification-compliant.
 
-If these properties are zero, &link_train.link_rate and
-&link_train.lane_count used in the subsequent link training flow will
-also be zero, resulting in link training failure. Although all existing
-Exynos DP DT nodes already contain these two properties, this potential
-logic issue still needs to be fixed.
-
-Fixes: 0d0abd894ead ("drm: bridge: analogix/dp: add max link rate and lane count limit for RK3288")
+Suggested-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+
+Changes in v5:
+- Apply DRM DP helper API to check the validity of DP lane count.
+
+Changes in v6:
+- Rebase after the new commit for restoring mandatory properties
+  samsung,link-rate and samsung,lane-count.
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 8d3d4a6e6ca2..5240efcd3861 100644
+index 5240efcd3861..039e076d2b8a 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1244,6 +1244,7 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
- {
- 	struct device_node *dp_node = dp->dev->of_node;
- 	struct video_info *video_info = &dp->video_info;
-+	u32 val;
- 
- 	switch (dp->plat_data->dev_type) {
- 	case RK3288_DP:
-@@ -1265,10 +1266,14 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
- 		 * NOTE: those property parseing code is used for
- 		 * providing backward compatibility for samsung platform.
- 		 */
--		of_property_read_u32(dp_node, "samsung,link-rate",
--				     &video_info->max_link_rate);
--		of_property_read_u32(dp_node, "samsung,lane-count",
--				     &video_info->max_lane_count);
-+		if (of_property_read_u32(dp_node, "samsung,link-rate", &val))
-+			return dev_err_probe(dp->dev, -EINVAL,
-+					     "Failed to get samsung,link-rate\n");
-+		video_info->max_link_rate = val;
-+		if (of_property_read_u32(dp_node, "samsung,lane-count", &val))
-+			return dev_err_probe(dp->dev, -EINVAL,
-+					     "Failed to get samsung,lane-count\n");
-+		video_info->max_lane_count = val;
- 		break;
- 	}
- 
+@@ -1270,7 +1270,8 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
+ 			return dev_err_probe(dp->dev, -EINVAL,
+ 					     "Failed to get samsung,link-rate\n");
+ 		video_info->max_link_rate = val;
+-		if (of_property_read_u32(dp_node, "samsung,lane-count", &val))
++		if (of_property_read_u32(dp_node, "samsung,lane-count", &val) ||
++		    !drm_dp_lane_count_is_valid(val))
+ 			return dev_err_probe(dp->dev, -EINVAL,
+ 					     "Failed to get samsung,lane-count\n");
+ 		video_info->max_lane_count = val;
 -- 
 2.34.1
 
