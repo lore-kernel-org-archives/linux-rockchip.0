@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC6E1C43458
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 11:32:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87C2BC43458
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 11:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x9cO+mXqESdG8AM905e0RVqU9abRHt7p8qnMpeYzuL0=; b=hVaXUEz0hsI0RsrAVRkGTsd6U+
-	7gslWYEmgyq+5HPc6vxKtsmqGt6DEaICzLng2beu8pJf+YVmDQhxug/Hczp9ObYXcXua3DVSj+PQ9
-	aYG/DOVJCoqNfMe77U7ehvEQb3mwVrvTypbTd22uQm7/eg2f6SGdARDYVw/e3Zcx4FyKlrS4LI0TV
-	PjMR++L8Asv+wKOBnzM386PqnPJ0+hvbXjPv0PeJ3hv3URm7CclWK/ZtqpcbT0lfVG68L5GhYfQvK
-	wGVY+ZyjeeUHMKxJn19dLgsU9zr/NTyZaH7w/nGDJ3gCqKOLUgMPq8eRBvknRJJWqf4oaLiFVu4TG
-	11otL6ug==;
+	bh=GmODGv5lsmXmgH5+dtH+FNiKriJE/7uP+DlfPA0kaUo=; b=f8HCVpzNN1UZFbGbTUobozgIA/
+	SAY5/2zYr34+YQJEbIXKUDIw01I/Az2dyMg436U8975itf0SFMW3EkyP6ephSJqJMhgfHwsxpSR21
+	fTodo51wwLxN28Pj3slpJFWO/rBZtfqAnc/QUrgK4FZcGPPjQjbXkD87XUtYilijtMT3be9ZfV2lp
+	607hYd2c0csLeXGaOja98T+9kfJFYqU7Rj2lul06pxxYFDOeKqKHsjY2KIXoWLkH9G21KoXhrH5Bh
+	vLbw96PMwsoDpJYvnMmnpdD75Y+2q/J1qo0uc/Tv49/tZ5hQ9OIEnnpv+uHUpiG7B92G/D8n/Ok1j
+	NXZGeJwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh41w-0000000ErDG-1RbH;
-	Tue, 07 Jul 2026 11:32:00 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wh440-0000000ErOj-07l2;
+	Tue, 07 Jul 2026 11:34:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh41u-0000000ErCo-1Ocz;
-	Tue, 07 Jul 2026 11:31:58 +0000
+	id 1wh43z-0000000ErOE-1VUY;
+	Tue, 07 Jul 2026 11:34:07 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AEC466001D;
-	Tue,  7 Jul 2026 11:31:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62E081F000E9;
-	Tue,  7 Jul 2026 11:31:56 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 040B543A88;
+	Tue,  7 Jul 2026 11:34:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 690D71F000E9;
+	Tue,  7 Jul 2026 11:34:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783423917;
-	bh=o9XS4mAa/niw4o7KN4TnJnnoOPlMOHQQ8KOFpEX1oM8=;
+	s=k20260515; t=1783424046;
+	bh=sL7dY+pEzujogPZkZ8vNNIvsiQVh8MEzqk7xSFEGLhk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=K9KmMl0+fowRhICuH9f1klH3DRqo2WG1LCQm2wDFDclswIvrGqYtrfJHDBFS9dFX/
-	 eZ+6mnlhIlro86j4VSf70oBCTcAkKfUuuZR6ptmxtWKHHuloAwtbHX0BtSlWoYrBNb
-	 MbmPUTpPefM9q/bXeGgFF2Lx0rHftbythW58UqjVmQ0g5QZRT6+yzYW0/3JCHKZcxa
-	 RCh2qlHaXt1FNyQelGzAtt+jSMYKYaqfSgzI75lV23R7vHHOPKUZB85ivamk3+A6gN
-	 86TQdJY7taIPDmzwj8QIsBHBesJ684crGpyh6KbioevtN5WSRJJi/87oCHnZvBpkoL
-	 Hekh74+MT4lDQ==
-Date: Tue, 7 Jul 2026 13:31:53 +0200
+	b=gdWLrpSdF6PHcul0blfCZC5vEbgvqodNcf5N+wUMIH+WE9ltCmHo/XTQbCvlKiHir
+	 twky5cvhs9GOSxfOpTBSKRSw/tiD5f6cOqzXabUSGtf1ULVBzUbtPxkH4F7vx71sth
+	 jIAI15Ki+NH8Pdv3RX0ci4Gj6fkRtVRyTc8YvZsSRCJqknuSwXHKGevaAQLdAQPBFJ
+	 oEpP/T9henyD1b4kkPkgzlc2YzWqg3SnWXhuzPO4CW3vEBFHYHj/5C6Hy4GU8qDrhs
+	 kLJciwAMakdGJRsvE6cA1uM1eW0MuogWeb0NZnwQNsKADlLLIkGYVQCcnd+z2oPu62
+	 92ihaqrxfkscw==
+Date: Tue, 7 Jul 2026 13:34:04 +0200
 From: Maxime Ripard <mripard@kernel.org>
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -56,13 +56,13 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, kernel@collabora.com, dri-devel@lists.freedesktop.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v8 10/39] drm/display: hdmi-state-helper: Sync SCDC state
- on hotplug
-Message-ID: <20260707-unique-carmine-cheetah-af2cb8@penduick>
+Subject: Re: [PATCH v8 11/39] drm/display: hdmi-state-helper: Set HDMI
+ scrambling requirement
+Message-ID: <20260707-imperial-tuna-of-finesse-ede3bd@penduick>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-10-d79890d00b6a@collabora.com>
+ <20260702-dw-hdmi-qp-scramb-v8-11-d79890d00b6a@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-10-d79890d00b6a@collabora.com>
+In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-11-d79890d00b6a@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,204 +74,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0138420976696234940=="
+Content-Type: multipart/mixed; boundary="===============7938376707992846595=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0138420976696234940==
+--===============7938376707992846595==
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="ckuhjwyyqe3iie6h"
+	protocol="application/pgp-signature"; boundary="wdvgsce7rl2qft2y"
 Content-Disposition: inline
 
 
---ckuhjwyyqe3iie6h
+--wdvgsce7rl2qft2y
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v8 10/39] drm/display: hdmi-state-helper: Sync SCDC state
- on hotplug
+Subject: Re: [PATCH v8 11/39] drm/display: hdmi-state-helper: Set HDMI
+ scrambling requirement
 MIME-Version: 1.0
 
-Hi,
-
-On Thu, Jul 02, 2026 at 05:46:23PM +0300, Cristian Ciocaltea wrote:
-> drm_atomic_helper_connector_hdmi_hotplug() does not currently
-> synchronize SCDC status on hotplug events, leaving the scrambler state
-> potentially inconsistent after (re)connect.
+On Thu, Jul 02, 2026 at 05:46:24PM +0300, Cristian Ciocaltea wrote:
+> Set drm_connector_hdmi_state.scrambler_needed when the computed TMDS
+> character rate exceeds the HDMI 1.3 maximum TMDS character rate.
 >=20
-> Hook drm_connector_hdmi_sync_scdc() into both the connect and disconnect
-> paths, replacing the existing TODOs around missing scrambler handling.
+> HDMI 2.0 requires scrambling above 340 MHz.  Centralize that clock-based
+> requirement in the HDMI state helper so drivers do not need to open-code
+> the threshold check.
 >=20
-> SCDC synchronization may require a CRTC reset, which in turn needs a
-> modeset acquire context for correct locking.  Therefore, extend
-> drm_atomic_helper_connector_hdmi_hotplug() and
-> drm_atomic_helper_connector_hdmi_update() to take a
-> drm_modeset_acquire_ctx argument.  Additionally, change their return
-> type from void to int, allowing propagation of errors, such as -EDEADLK
-> from lock contention.
->=20
-> Update existing callers to pass NULL for the acquire context, preserving
-> current behavior.
-
-You should have two patches here: one to change the prototype of the
-helpers, and one to add the call to drm_connector_hdmi_sync_scdc
-
-
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
->  drivers/gpu/drm/display/drm_bridge_connector.c  |  3 ++-
->  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 28 +++++++++++++++++--=
-------
->  drivers/gpu/drm/vc4/vc4_hdmi.c                  |  2 +-
->  include/drm/display/drm_hdmi_state_helper.h     |  6 ++++--
->  4 files changed, 26 insertions(+), 13 deletions(-)
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 1 +
+>  1 file changed, 1 insertion(+)
 >=20
-> diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu=
-/drm/display/drm_bridge_connector.c
-> index 796069dbf1a1..46104506fe32 100644
-> --- a/drivers/gpu/drm/display/drm_bridge_connector.c
-> +++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-> @@ -221,7 +221,8 @@ drm_bridge_connector_detect(struct drm_connector *con=
-nector, bool force)
->  		status =3D detect->funcs->detect(detect, connector);
-> =20
->  		if (hdmi)
-> -			drm_atomic_helper_connector_hdmi_hotplug(connector, status);
-> +			drm_atomic_helper_connector_hdmi_hotplug(connector, status,
-> +								 NULL);
-> =20
->  		drm_bridge_connector_hpd_notify(connector, status);
->  	} else {
-
-We should move this one to detect_ctx to get the ctx passed and avoid
-passing NULL here.
-
 > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gp=
 u/drm/display/drm_hdmi_state_helper.c
-> index db76699093e8..69ccfbf123fe 100644
+> index 69ccfbf123fe..34e48e04d971 100644
 > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
 > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> @@ -1198,18 +1198,20 @@ drm_atomic_helper_connector_hdmi_clear_audio_info=
-frame(struct drm_connector *con
->  }
->  EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_clear_audio_infoframe);
+> @@ -592,6 +592,7 @@ hdmi_compute_clock(const struct drm_connector *connec=
+tor,
+>  		return -EINVAL;
 > =20
-> -static void
-> +static int
->  drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
-> -					enum drm_connector_status status)
-> +					enum drm_connector_status status,
-> +					struct drm_modeset_acquire_ctx *ctx)
+>  	conn_state->hdmi.tmds_char_rate =3D clock;
+> +	conn_state->hdmi.scrambler_needed =3D (clock > HDMI_1_3_TMDS_CHAR_RATE_=
+MAX_HZ);
 
-detect_ctx has the context first, I think we should use that convention
-here too.
+I'd add a FIXME/TODO comment that we might want to check
+drm_display_info.hdmi.scdc.scrambling.low_rates
 
->  {
->  	const struct drm_edid *drm_edid;
-> +	int ret =3D 0;
-> =20
->  	if (status =3D=3D connector_status_disconnected) {
-> -		// TODO: also handle scramber, HDMI sink disconnected.
-> +		ret =3D drm_connector_hdmi_sync_scdc(connector, false, ctx);
->  		drm_connector_hdmi_audio_plugged_notify(connector, false);
->  		drm_edid_connector_update(connector, NULL);
->  		drm_connector_cec_phys_addr_invalidate(connector);
-> -		return;
-> +		return ret;
->  	}
-> =20
->  	if (connector->hdmi.funcs->read_edid)
-> @@ -1222,24 +1224,32 @@ drm_atomic_helper_connector_hdmi_update(struct dr=
-m_connector *connector,
->  	drm_edid_free(drm_edid);
-> =20
->  	if (status =3D=3D connector_status_connected) {
-> -		// TODO: also handle scramber, HDMI sink is now connected.
-> +		ret =3D drm_connector_hdmi_sync_scdc(connector, true, ctx);
->  		drm_connector_hdmi_audio_plugged_notify(connector, true);
->  		drm_connector_cec_phys_addr_set(connector);
->  	}
-> +
-> +	return ret;
->  }
-> =20
->  /**
->   * drm_atomic_helper_connector_hdmi_hotplug - Handle the hotplug event f=
-or the HDMI connector
->   * @connector: A pointer to the HDMI connector
->   * @status: Connection status
-> + * @ctx: Lock acquisition context to be used for resetting CRTC
->   *
->   * This function should be called as a part of the .detect() / .detect_c=
-tx()
->   * callbacks for all status changes.
-> + *
-> + * Returns:
-> + * Zero on success, error code on failure.
-> + * If @ctx is set, it might also return -EDEADLK.
->   */
-> -void drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *conn=
-ector,
-> -					      enum drm_connector_status status)
-> +int drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *conne=
-ctor,
-> +					     enum drm_connector_status status,
-> +					     struct drm_modeset_acquire_ctx *ctx)
->  {
-> -	drm_atomic_helper_connector_hdmi_update(connector, status);
-> +	return drm_atomic_helper_connector_hdmi_update(connector, status, ctx);
->  }
->  EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug);
-> =20
-> @@ -1254,6 +1264,6 @@ EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotp=
-lug);
->   */
->  void drm_atomic_helper_connector_hdmi_force(struct drm_connector *connec=
-tor)
->  {
-> -	drm_atomic_helper_connector_hdmi_update(connector, connector->status);
-> +	drm_atomic_helper_connector_hdmi_update(connector, connector->status, N=
-ULL);
->  }
-
-We should create a new context here.
-
->  EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_force);
-> diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdm=
-i.c
-> index 74dce4be0c00..e165f604939b 100644
-> --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
-> +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> @@ -375,7 +375,7 @@ static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *=
-vc4_hdmi,
->  	 * the lock for now.
->  	 */
-> =20
-> -	drm_atomic_helper_connector_hdmi_hotplug(connector, status);
-> +	drm_atomic_helper_connector_hdmi_hotplug(connector, status, NULL);
-
-vc4_hdmi_handle_hotplug has the context passed as an argument, we should re=
-use it.
+With that fixed,
+Acked-by: Maxime Ripard <mripard@kernel.org>
 
 Maxime
 
---ckuhjwyyqe3iie6h
+--wdvgsce7rl2qft2y
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCakzjqAAKCRAnX84Zoj2+
-dt55AX9pNPl78Oml4GB8/KEiBCBKf+dju6sv4h4a8ejL8Fa9TaHpVvQr63GeUCxd
-ovHkevUBgKCOZN2jEIYht0Z9sQMQ+tsG0ssT7n8+RS3LnMYbgxSw/m3XoQSMxRMW
-ZGrm8k9+zA==
-=cdCW
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCakzkKwAKCRAnX84Zoj2+
+dmfRAYDkaExzkpf+waVhXctxjhiXK+3I7kKkj6uK/0EC1DlpCxqa5sUOmdPwOpRh
+gWTu7SgBfAh2qupQ8L0m6pj6X0K7zPmKCzS5zf0f6KyNXoT8vSXEbf5UGH1iukpG
+MlRBPNHUFQ==
+=lvbH
 -----END PGP SIGNATURE-----
 
---ckuhjwyyqe3iie6h--
+--wdvgsce7rl2qft2y--
 
 
---===============0138420976696234940==
+--===============7938376707992846595==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -282,5 +153,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0138420976696234940==--
+--===============7938376707992846595==--
 
