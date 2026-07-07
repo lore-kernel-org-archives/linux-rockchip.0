@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27DD1C43602
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C691C43458
 	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 19:44:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,50 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wv6Jtovs7tt75bK5QwhNaAAO9TGusOW8KiiJB04dm20=; b=O7mgw4Q8M0rM8V
-	VNW959CrwIBduTFr0iL+NVdh3cHnJ9geop5sNrDSE+5/LtdDQQfuW2IO/ODytVfPKFqzne3EppAXo
-	2ZSVm/PePHia2+tyUUnLMmB4jWpK/HjXmsc+NaSFMHIVpnBPwi3qYoL0m27CIs+KDG1h8cryAzsFd
-	aZvNawbXvSu83KvuCBsYoR7xuE8TrFEJHEcdpD+j0c9x3YxkfxnE9i/zt/oHMXyZkL50rKU0F47ZD
-	SGMMVsQMcm+HeuZCXZfVUJoRRH7orFckC5CvzPuTGlwDAHZfpi5kh8euKSPYCk5CQYdsqtRkRpZaE
-	80Nx9+ewMjIZ3q/kuwqw==;
+	List-Owner; bh=4SQ2KL9wXND1pq4TgzIVe9u7WaM4f62Su4kfq/bYQxA=; b=lrqJzz2jyxk+h5
+	XbNkE+E3HYm9mVojg5MjpSrPyyHORS4zjCMHlGPPllZSLydUvUVTsHOUNQ1G6ToOyikSpCyTz11oI
+	R4ncsb6dXjhYfkQRWcooNNNAkh0Mk3MLvz3LxfIrmaWzHkJn1P9EQ8FJ/qTIwzG9iFNubDdgVUI2X
+	YDbBtYVW6rpUM2z1ahflo4p3zLTwpKAN8Xv2HTIVKfjE1ZnAS9TpqazKFEWjKnYOWuA6u6A+iYNGU
+	I7XzmC6FFKHlaklccL20B3/DTVujEQRWB+QMKSSr+KxR19tZE43rNcGw40Hwu+kQq0NyJOzn81KjO
+	ufSz4Supnj/mvMHzlRMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whBin-0000000FnRF-2zBQ;
+	id 1whBin-0000000FnQH-0Wit;
 	Tue, 07 Jul 2026 19:44:45 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whBih-0000000FnMU-2boy;
-	Tue, 07 Jul 2026 19:44:41 +0000
+	id 1whBih-0000000FnMT-2e3K;
+	Tue, 07 Jul 2026 19:44:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=uPIFmf4gi/tHeUmRTlNHk2NPJBJwT3A0d8KvxPUdG/8=; b=0SreCQZ4n0F9Ek7P0cJ/2XseCr
-	4LWaRJTXNrKp9xx4AT+egjLzTulRlqU+94jVpH5pDRO/+Iq4jv/OkL4cV0LUDQ7uoHCEvNmcyBHUR
-	Easvn+jjAeL7MIAGzfp2NHWOeAo5apguGvXPAIJ7sSdYmQDPWJJOYpVTA2EMsAprGzwK6IQ8Bp7Ce
-	jK3/Q+Uz4XRWzSRUlU40KMVf+MxjY4FPKpqJfO+BswoRcXnr0npYaNkR2n8ydagMUgQ/n3fxygA+8
-	knOl4+f3Q/HxymN7Wt80aBSLhvDMjwWpM24VLeYcgD3mKwHOEJ2C+hr1ZCVVYho/wvsLKjmHZNyGL
-	7C3SlJpQ==;
+	bh=RYaQcEoqy6orUWR6icG3w0FgGfd8AtiAsN6o/qvFNtM=; b=mFoFOaGnTTTKr5DIXj4QqSrTo3
+	5d7IsOC3+I3K0O4+ETuoi+iGZrINflKIaahW8ZDHai5YftYZUnTl5M4x3oND9D2C+8kIRrG+ROLTF
+	V3C3Ovluv7GZZvq+7q4tPke5eLHy5S2SFU1qNbilqEgWW56X4slj1puTVWuZhnzv/Y8L6WBE4Do3o
+	wjgpFGkLs8EZJFnr2dPqmQmzDZBOXlIXwlH8xCdib2Wetrx1mROyK3l0nxZS5o3unQC0Ycpbldpbm
+	PwegqzmxZKhkZHHExOlqHVYo1tMJIMDfBoH0icC3Hzysj5LIuOg3sPcR9FAbk02tdnpHSVp1E81xm
+	+n18ps2w==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Fabio Estevam <festevam@gmail.com>
+To: Brian Mayer <bleemayer@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Fabio Estevam <festevam@nabladev.com>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix rk3588s-roc-pc audio description
-Date: Tue,  7 Jul 2026 21:44:31 +0200
-Message-ID: <178345345847.664858.7864543249465975825.b4-ty@sntech.de>
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add HYM8563 RTC to Radxa CM5 IO board
+Date: Tue,  7 Jul 2026 21:44:29 +0200
+Message-ID: <178345345842.664858.9814271532472718755.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260703025648.180135-1-festevam@gmail.com>
-References: <20260703025648.180135-1-festevam@gmail.com>
+In-Reply-To: <20260705181920.8633-1-bleemayer@gmail.com>
+References: <20260705181920.8633-1-bleemayer@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_124439_820920_9B9DF7F2 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20260707_124439_818158_A4487742 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,21 +68,21 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 02 Jul 2026 23:56:48 -0300, Fabio Estevam wrote:
-> The rk3588s-roc-pc ES8388 codec is connected to the i2s0_8ch audio
-> interface.  Use the matching I2S0 MCLK output for the codec clock
-> instead of I2S1.
+On Sun, 05 Jul 2026 15:19:19 -0300, Brian Mayer wrote:
+> this v2 only contains name changes I didn't test. I added the missing
+> agent tag and am sending the patch inline. Thanks.
 > 
-> Using the I2S1 MCLK can leave the ALSA PCM running while the codec has
-> no usable master clock for the active audio path, resulting in silent
-> headphone output.
+> The Radxa CM5 IO carrier has a Haoyu HYM8563 real-time clock on I2C6 at
+> address 0x51, with its interrupt line on GPIO0_B0 and a CR1220 backup
+> battery holder. Without a device tree node, no /dev/rtc* appears even
+> when CONFIG_RTC_DRV_HYM8563 is enabled.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Fix rk3588s-roc-pc audio description
-      commit: 3354976953e1bcbec4ff1135b8ec08631a9fac3a
+[1/1] arm64: dts: rockchip: add HYM8563 RTC to Radxa CM5 IO board
+      commit: 1945f419277503ebacd87cc221e370c8b6b94a7d
 
 Best regards,
 -- 
