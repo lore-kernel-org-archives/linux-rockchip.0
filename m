@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B14AC43458
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 12:30:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92B1FC44500
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 12:43:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7oYAYpnFcVPR3UUuDcuPh6CaNviGk0bAXk5NBtLQijA=; b=zfUaVHV6q6bScRN/4CRDfTJUp8
-	aCV3YZxX0vBr+uXyGvgekv1om3qseWTJ148yMC4DJWO9NZvQINAgXEr050brG7/Wn7RbSn3hBDdTn
-	mSHKLnfU387Jnmpxl7M1zjninUOOnz46LYVwk49mkmeir5Pwp5xPMS1etD5xYWOVzgEO1QCDLUaZe
-	DRSHjQ67DUWMWi9RpQxtTvaczGEwStyveJJ2xkCu08LsStBTLRe4EuTZX68oRYILmkUaiKCgZIxdP
-	LhniAgHnWtGgkgRxKGZQFbMTIMizaQxVe6gZp3qEoYk5jAIjBufAx7jytS43PSkE2j03rWC91vWRA
-	ThEAn/2w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
+	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JOysw02Z6FH5AamPTxLjpV07133DA1GppvjURgChbDQ=; b=p1Hu+bin02EutD
+	r0JpzThLwSt9G6HWf3mZIuUjfIwZKp+UtZjf3ISVTmwNH2Q9FtTF0F57CDzRWy3DWEDFg4QJghIDr
+	QsrppaCzLfT4x8tBDlpTc53S5/vvBAcNmTBIr36riRrbbeRqtipa4ozFs2idU7OAg+wfq6D0FVxCn
+	PIPkU9qYoDg8An0zeInI/9TYvjWkbzKlp0miaUJtcVla/Gs3hnKFLW0I4NqSqre2zu7/+BZPhdsVE
+	IAMHmTAMMwOACqjd8so24VrA/y1/0gygyFicvNnP12vq4yut5XglBLDemI68fBiTc/3RMDLYsA+Hx
+	sANj4EgKLftIaahksMlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh4wv-0000000ExXH-3RAg;
-	Tue, 07 Jul 2026 12:30:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wh59G-0000000EyiP-3wcV;
+	Tue, 07 Jul 2026 12:43:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh4wt-0000000ExWk-2O9W;
-	Tue, 07 Jul 2026 12:30:51 +0000
+	id 1wh59F-0000000EyhR-09Sx;
+	Tue, 07 Jul 2026 12:43:37 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E9144416FD;
-	Tue,  7 Jul 2026 12:30:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BBFD1F000E9;
-	Tue,  7 Jul 2026 12:30:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 68EF74081F;
+	Tue,  7 Jul 2026 12:43:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF7C51F000E9;
+	Tue,  7 Jul 2026 12:43:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783427450;
-	bh=wuj6q/qR8Vtu8XNH10SeX8kJHc/CvibnWDhOQpyb6fo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Mz07CscPi3n2etIOnR9W4lYqeVtJ3THn5tFlD/K24ioHk2HaIdHO7ZvKeB8zX26mZ
-	 Gis2d697HvCsp2capKLwsHTBGBavdmOhI4DPQcm5M0T/TvVOmGAclWec9BQTyhGX3M
-	 Qjqi20Eafd3aY1URV6BS8dgyX5hFZP8u+IgGOnBlwj7rJiVCwDy8ScWWbYwFcROBuv
-	 rXSrLjVtIb3roE/FMM41strF9A3o3Fg/oc9UnuJ+1FLuG2ueTXOpCpGinYl3yLZ7tf
-	 Jo3EuCilYnANfnanMdQ0M/IuSPPqLzhIc8sI8sjx3HxQzEPPgHawMRhlfWXFCzl38y
-	 1pniiVRkhak4A==
-Date: Tue, 7 Jul 2026 14:30:48 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Daniel Stone <daniels@collabora.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	kernel@collabora.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-Message-ID: <20260707-tested-alpaca-of-patience-e38d7c@penduick>
-References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
- <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
- <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
-MIME-Version: 1.0
-In-Reply-To: <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
+	s=k20260515; t=1783428216;
+	bh=vLbLURgaSXbVX6ElkPJAaeyiLaJ7UZfzAFJPXWQlb8E=;
+	h=Date:From:To:Subject:In-Reply-To:References:Cc;
+	b=W7++D1oyyhs42GuGgtQf+ioCZBFx5Egz6xgLWjsp1wmjXqegfwZBI4csM1smd28YU
+	 RpOJh3OjJQZnh7D/ay/Wi0Xo/V86nNMDPEJupgzdOpl6iU9OVdXWOmGWYEG8DktPOK
+	 Ck06GrP5i4ky0Ijg+HdG9Qr3+C6r1J53MTr+v/h8Un8cpZEjDuoqp6CmlDwIFLzU8V
+	 q2neN5keC7ygXQgqOtVS+i85w+HXp8XV/xHx37N6fMu9qOa2IX2JU0d3bzdWgnY3vb
+	 dSarS8hY1F3Y1qZ7n0I68jNptC/Aq2aLumHQdOv2625sTZ+l4/uffmUqwqAzQc2u4F
+	 yEgH3ZXSFYedw==
+Message-ID: <7943162b55e184a40912d0803bd1ded7@kernel.org>
+Date: Tue, 07 Jul 2026 12:43:27 +0000
+From: "Maxime Ripard" <mripard@kernel.org>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
+Subject: Re: [PATCH v8 30/39] drm/vc4: hdmi: Switch to
+ drm_hdmi_mode_needs_scrambling()
+In-Reply-To: <20260702-dw-hdmi-qp-scramb-v8-30-d79890d00b6a@collabora.com>
+References: <20260702-dw-hdmi-qp-scramb-v8-30-d79890d00b6a@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, "Andrzej
+ Hajda" <andrzej.hajda@intel.com>, "Andy Yan" <andy.yan@rock-chips.com>, "Daniel
+ Stone" <daniels@collabora.com>, "Dave Stevenson" <dave.stevenson@raspberrypi.com>, "David
+ Airlie" <airlied@gmail.com>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jernej
+ Skrabec" <jernej.skrabec@gmail.com>, "Jonas Karlman" <jonas@kwiboo.se>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Maarten
+ Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ =?utf-8?b?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Raspberry
+ Pi Kernel Maintenance" <kernel-list@raspberrypi.com>, "Robert Foss" <rfoss@kernel.org>, "Sandy
+ Huang" <hjc@rock-chips.com>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
+ Zimmermann" <tzimmermann@suse.de>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,103 +71,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6406367259855023839=="
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Thu, 2 Jul 2026 17:46:43 +0300, Cristian Ciocaltea wrote:
+> The VC4 HDMI driver has a local helper to check whether a mode requires
+> scrambling.  It is equivalent to drm_hdmi_mode_needs_scrambling(), so
+> use the common helper instead.
+> 
+> No functional change intended.
+> 
+> [ ... ]
 
---===============6406367259855023839==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="33bj253ieh44czfg"
-Content-Disposition: inline
+Acked-by: Maxime Ripard <mripard@kernel.org>
 
-
---33bj253ieh44czfg
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-MIME-Version: 1.0
-
-On Fri, Jul 03, 2026 at 11:54:33PM +0300, Cristian Ciocaltea wrote:
->> >> -	if (caps->supported_hdmi_ver >=3D HDMI_VERSION_2_0)
-> >> +	if (caps->supported_hdmi_ver >=3D HDMI_VERSION_2_0) {
-> >> +		if (!hdmi_funcs->scrambler_enable ||
-> >> +		    !hdmi_funcs->scrambler_disable)
-> >> +			return -EINVAL;
-> >> +
-> >> +		connector->hdmi.scrambler_supported =3D true;
-> >>  		connector->hdmi.max_tmds_char_rate =3D HDMI_2_0_TMDS_CHAR_RATE_MAX_=
-HZ;
-> >> -	else if (caps->supported_hdmi_ver >=3D HDMI_VERSION_1_3)
-> >> +	} else if (caps->supported_hdmi_ver >=3D HDMI_VERSION_1_3) {
-> >>  		connector->hdmi.max_tmds_char_rate =3D HDMI_1_3_TMDS_CHAR_RATE_MAX_=
-HZ;
-> >> -	else if (caps->supported_hdmi_ver >=3D HDMI_VERSION_1_0)
-> >> +	} else if (caps->supported_hdmi_ver >=3D HDMI_VERSION_1_0) {
-> >>  		connector->hdmi.max_tmds_char_rate =3D HDMI_1_0_TMDS_CHAR_RATE_MAX_=
-HZ;
-> >> +	}
-> >> =20
-> >>  	if (caps->max_tmds_char_rate) {
-> >>  		if (caps->max_tmds_char_rate > connector->hdmi.max_tmds_char_rate)
-> >> +
-> >> +	/** @scdc_cb: Callback to be invoked as part of @scdc_work.
-> >> +	 *
-> >> +	 * Currently used to monitor sink-side scrambling status and retry
-> >> +	 * setup if the sink resets it.
-> >> +	 *
-> >> +	 * This is assigned by the framework when making use of
-> >> +	 * drm_connector_hdmi_enable_scrambling() helper.
-> >=20
-> > No such helper.=20
->=20
-> Right, I'll drop the reference to the helper name, as that's added later =
-in the
-> series.
->=20
-> > Also, please explain in the commit message, why do we
-> > need to keep it configurable. Why the default is not enough?
->=20
-> We will need a separate callback to support HDMI 2.1, i.e. for link train=
-ing
-> management.  I=E2=80=99ll update the commit message accordingly.
-
-I think I'm equally confused as Dmitry here. If scdc_cb is only called
-if we're sending scrambled pixels but the monitor doesn't acknowledge it
-initially, then the only thing we need to do is "if the scrambler's
-enabled, call drm_scdc_set_scrambling()", then we don't need to set a
-callback. And even if we ever need to deal with HDMI link training, then
-we can still have the same function but with a couple of branches more.
-
+Thanks!
 Maxime
-
---33bj253ieh44czfg
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCakzxdwAKCRAnX84Zoj2+
-dkLVAYDSNsdoe2xL0wTBgSQsEHtvgGUzAd9WwUpIf8wZd2IR1reV3VwM2TxiAj9p
-6+5GT88BgIF1H1Gt9lywepKbAfBimGIA6pv7db3n49pZW3Z6eF96hs7hxRsDGWhZ
-EWGkVsYUsQ==
-=YXvO
------END PGP SIGNATURE-----
-
---33bj253ieh44czfg--
-
-
---===============6406367259855023839==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6406367259855023839==--
-
