@@ -4,92 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65B36C43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 23:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 654CFC43458
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 23:53:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nVk8J4rF+Rc5kJYTflXzDaNSMxwSUVWnbPqrf1UD0ro=; b=IXV5OLOs6ZXppd
-	jO9xtVP5L830byZZMxNNG3OihFSiMb4XAPIccpKjrvoVX4JDZa4FsdDHFRUu6uh6yIpSr8MvKwFuQ
-	McFDkyOAnW90lxLns8uVlU233LLduaH0e8PkkoHW55bS8jUryF6h+uLzuchSXmxNNSILzajySSw8s
-	Lf0QBDuW20UaMT2KeM+WvD03kc5CGd9EMCHSlYBh690GuBnuv+EZz+E9PrXIDE1LhPHGG6g1Apaie
-	WjyQuEMaqhNkk1M4TNWVd/CuKYqhUiOZ+M8NQJMTmcqjMuTIs2BkwhonkIfcRr7QSgaE/ChuUh0Ne
-	IHaST7KMW8/OKYCkjAzA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=41omg2CkDErsB10ZUOvnwYd1FzmzmxnPp/lYiDoGPvo=; b=fLikN5JcIEsgDwIi/cQTWt9/hi
+	waex57o9e8ArJewG0tLqgAoR9zIV1awcrqhyYoO4QOgS6QhYftncVKo+znRsfWr9RZklFyOlWpSKl
+	csFR646tDdtcjRKPfHigmlObgQUHDhcGSCU7HvZvKX5WmQ9AyMaRxZ2VzOwKcO3IU4Avm0VIVf5nX
+	3b5e/Hdij4r7Y4R21s5OYJK8hKGt86vgOPxqcHJJ5lfckc8Y7sqGqbXZkqcDYI+zVAAmVibq5sD9W
+	IrupoPFPS1wxGW9FsIDNjuZFf6sx8CSVLM+6UeMotvp500baQWT9ZeQJDGiQ2ikiy2mOl8vdfCrCp
+	Vq617ScQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whbuy-00000000cLE-0YJU;
-	Wed, 08 Jul 2026 23:43:04 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1whc5J-00000000dZz-49ih;
+	Wed, 08 Jul 2026 23:53:45 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whbuu-00000000cJu-2ze0
-	for linux-rockchip@lists.infradead.org;
-	Wed, 08 Jul 2026 23:43:03 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-490cf322ed0so7432945e9.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 08 Jul 2026 16:42:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783554178; x=1784158978; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:message-id:date
-         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=U8qcNP21CNq1+szX+Pq/DiZmtH+Ke3MLxP+6o3bgK2g=;
-        b=pqxAwFsCGbkFSTbHwwh0e3yvmKj419rqj0fd+rIoS8de3IYiZTqRctYAZtW7jhcjaC
-         PVNmMDWCAJFuRLGoNjL1eu6KBPy9iQ6bK7jADBxU8/7VCxbIkNgL7gXLQlRRyR+jGA4q
-         qZvWhSYltGXFcmvaT1TQ3j67Fb9xxvmsdrcBUfVRhQ4GuVVLZ1zaAbX9toMxjtCjUVko
-         Bw8L1A9kLoMVDAz7IsBPHkneLZQB8vuKTOatzIOKtuBhhhka9FA0edKXe3OmlpM1J0+y
-         badTaEIRBsmMDl1MzmhTZvfqlq2NjILVrip3zEcp3RFv7fm+6pH6lMG97DHInToNka6t
-         kmRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783554178; x=1784158978;
-        h=content-transfer-encoding:content-type:mime-version:message-id:date
-         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=U8qcNP21CNq1+szX+Pq/DiZmtH+Ke3MLxP+6o3bgK2g=;
-        b=beU6rUnLwdXyj895vahcJgHRMNmsyQqCpT/6GYq069ef7GN/4ci77is6W2Q7Dr8vJh
-         GmeNZdC5VtL6V6nVQ1VZJJZlm8rkKEtcY7JmJO5s9LEuBLop1ujnHwutDB9MOsE8OdC4
-         36SRuGFRHPRjeG6X9eGtd2KhhSEvErQixZCyiUr26eo0SeP+3p/HGI7XwkRjCgillP7x
-         oJnlts669e9/xF1gsTRohlswsW+QVsiVBd5v199Qhojo4JOk8lP+fc8now+HfRKPxciU
-         KYayxi/B9RPKYYI3nq9iD/zrsqgyiUHF4Tp41UOSp7JlPJQTDIuEDnasXSnLhB+4meLD
-         ATmw==
-X-Forwarded-Encrypted: i=1; AHgh+RqrX2hJDq7EB53pP6hcDd0HVYaB7Oq70beSMUcu6NwOh/pzo0DyeW7HVV8hdaEbDJCPgy3EidXbTvM/Ap0IbA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyb3dI6DN/fxNZ8ELUibgn2naPoH1RPRVJAkoJnpme5HEQsxcas
-	jat5C+cGWRdA1BYq1TMNV/zRPXNZgRJy2DbbKIsvso1NZP8Fbe5z9yZe
-X-Gm-Gg: AfdE7ck1IihrqBPHFLZ5XO2xEk5eHBkNaUrtbm+FGslUgvvsoDGXDu9l4wHM6K5NF59
-	cta2LfCdkf9X2qNaxpFDLfmbKS/caeTlwvoVvJNHebHQCzvRKNfa3EmERyiLd2ojOg+Nig7/W/k
-	0xVirxlH3OTnDlDBMpmPngN0OHjFmKVykBlRoqrHPRu+gQJvc4Wq9GFz146qMvf0d4vN0aSTFfm
-	TmIEJVG5Pjm1uQu5NV6PcPGpo3uSMF9Qj8P/HjoM5jp+lyhvAE895Ozj3pZO/kzmXqcpzAb87Jx
-	5Ic/df6vKot5UR1V7JwM9reXnVlsytwq8fDXEYsElAEh0obtj0VTCYnFN42UVQh+0hDWVogdVKY
-	bRDL+tdhYqE8D+echN1C5UtXoMXSiXqDGbsET6AhHj873BOoIGuwEary8b8J4naN6WfDnLCFsZL
-	7NJdur3FRYLNQJcCYkeSR4vGQpbkhQHdk=
-X-Received: by 2002:a05:600c:4fd4:b0:493:e3ea:b23f with SMTP id 5b1f17b1804b1-493e6861ac2mr44972025e9.10.1783554178246;
-        Wed, 08 Jul 2026 16:42:58 -0700 (PDT)
-Received: from debian.tailb81abf.ts.net ([2a01:e0a:104a:4d80:14c0:9448:1c38:77df])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-493eb6f16cfsm15653275e9.12.2026.07.08.16.42.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 16:42:57 -0700 (PDT)
-From: MidG971 <midgy971@gmail.com>
-To: Ulf Hansson <ulfh@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	ulf.hansson@oss.qualcomm.com,
-	linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Midgy BALON <midgy971@gmail.com>
-Subject: [PATCH] pmdomain: rockchip: Add a regulator to the RK3568 NPU power domain
-Date: Thu,  9 Jul 2026 01:46:14 +0200
-Message-Id: <20260708234614.499613-1-midgy971@gmail.com>
-X-Mailer: git-send-email 2.39.5
+	id 1whc5G-00000000dZV-1nV3;
+	Wed, 08 Jul 2026 23:53:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1783554809; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=EZKBstcN1F6fnZqFsDNHlCQUaKES4Tn9QuVuH08cxFsetUDzN3JZw1RveOL1QbPoTfnIxfyow/v6Rk1iMmAARCIzbHBwUrfZcimxae1rwrkX3o3E7fuVjhtcq9mlLwp2UBKbZZbHfR2AMLUL8GYdS75xqFQMOFORGNIGAUJJiz8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1783554809; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=GBurEnEvJMYOvAHbhOlPjehgVnaQhBmizbnd1CUS3jM=; 
+	b=n93YZ4QSViJq87icdUBDd0zcvrv6DWK+8HzkJaeGXP4oA/RZPclj6IqkHodrado21aK9u1zuwgHxZyUF7pRuhxOQaK8eOaWy7ARAig9ntMDAFPgtl9xC/HKJV+zWAnaMGS5JYcGdEmDJM5JoSLrw4FjZDQYsHVbtYS0iHY9oQFE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783554809;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=GBurEnEvJMYOvAHbhOlPjehgVnaQhBmizbnd1CUS3jM=;
+	b=I8EfZUnqgcjz9wmxl8g/Y5zliHa57NtuwYbkRYlpGFt9WHgL/nbL5RP5pxEaza+p
+	GqYXlr4AUTaYXqvcezS67liTyziAxM34alBG7jnkP9wqb3yDU61CsckJhSUKcReCrdL
+	eltDAfj8PpdhkbmCOSuXwcedGIfwnRJjR3Pw0/vI=
+Received: by mx.zohomail.com with SMTPS id 1783554806411232.87359725111776;
+	Wed, 8 Jul 2026 16:53:26 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 0DAF81806CA; Thu, 09 Jul 2026 01:53:22 +0200 (CEST)
+Date: Thu, 9 Jul 2026 01:53:22 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Dawid Olesinski <dawidro@gmail.com>
+Cc: Herbert Xu <herbert@gondor.apana.org.au>, 
+	"David S . Miller" <davem@davemloft.net>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Corentin Labbe <clabbe@baylibre.com>, 
+	linux-crypto@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/4] dt-bindings: crypto: rockchip: Add RK356x/RK3588
+ crypto engine binding
+Message-ID: <ak7g2_Se1tlLQJ51@venus>
+References: <20260708175837.1718437-1-dawidro@gmail.com>
+ <20260708175837.1718437-2-dawidro@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <20260708175837.1718437-2-dawidro@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/283.531.57
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_164300_788494_1BA349F9 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20260708_165342_529565_D20E0357 
+X-CRM114-Status: GOOD (  23.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,84 +81,197 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============2003486856932698933=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogTWlkZ3kgQkFMT04gPG1pZGd5OTcxQGdtYWlsLmNvbT4KClRoZSBSSzM1NjggTlBVIHJh
-aWwgKHZkZF9ucHUpIG5lZWRzIHRvIGJlIGVuYWJsZWQgYmVmb3JlIHRoZSBkb21haW4gaXMKcG93
-ZXJlZCBvbiBhbmQgZGlzYWJsZWQgYWZ0ZXIgaXQgaXMgcG93ZXJlZCBvZmYuIEdpdmUgRE9NQUlO
-X1JLMzU2OCBhCnJlZ3VsYXRvciBwYXJhbWV0ZXIgKGxpa2UgRE9NQUlOX1JLMzU4OCBhbHJlYWR5
-IGhhcykgc28gdGhlIE5QVSBkb21haW4KY2FuIHNldCBuZWVkX3JlZ3VsYXRvciwgbGV0dGluZyBn
-ZW5wZCBtYW5hZ2UgdGhlIHJhaWwgd2lyZWQgdXAgYXMgdGhlCmRvbWFpbidzIGRvbWFpbi1zdXBw
-bHkgaW5zdGVhZCBvZiBtYXJraW5nIGl0IGFsd2F5cy1vbiBpbiBEVC4KClN1Z2dlc3RlZC1ieTog
-Q2hhb3lpIENoZW4gPGNoYW95aS5jaGVuQHJvY2stY2hpcHMuY29tPgpTaWduZWQtb2ZmLWJ5OiBN
-aWRneSBCQUxPTiA8bWlkZ3k5NzFAZ21haWwuY29tPgotLS0KVGhpcyBwYXRjaCB3YXMgcGFydCBv
-ZiB0aGUgUkZDIE5QVSBzZXJpZXMgWzFdOyBVbGYgSGFuc3NvbiBhbmQgSGVpa28KU3TDvGJuZXIg
-cmV2aWV3ZWQgaXQgdGhlcmUgYW5kIGNvbmZpcm1lZCBpdCBjYW4gYmUgYXBwbGllZCBpbmRlcGVu
-ZGVudGx5IG9mCnRoZSByZXN0IG9mIHRoZSAoc3RpbGwtUkZDKSByb2NrZXQgZHJpdmVyIGFuZCBE
-VCBwYXRjaGVzLCBzbyBpdCBpcyByZXBvc3RlZApzdGFuZGFsb25lLiBUaGUgTlBVIGRvbWFpbidz
-IGRvbWFpbi1zdXBwbHkgRFQgd2lyaW5nIGZvbGxvd3MgaW4gYSBzZXBhcmF0ZQpwYXRjaCwgc28g
-dGhpcyBjaGFuZ2UgYWxvbmUgaXMgYSBuby1vcCBhdCBydW50aW1lLgoKQ2hhbmdlcyBzaW5jZSB0
-aGUgUkZDIHBvc3Rpbmc6Ci0gTW92ZSBET01BSU5fTV9SIGJlbG93IHRoZSBvdGhlciBET01BSU5f
-TV8qIG1hY3JvcyBzbyB0aGV5IHN0YXkKICBhbHBoYWJldGljYWxseSBzb3J0ZWQgKEhlaWtvIFN0
-w7xibmVyKS4KClsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8yMDI2
-MDYxMzA3MDExNi40Mzg5MDYtMS1taWRneTk3MUBnbWFpbC5jb20vCgogZHJpdmVycy9wbWRvbWFp
-bi9yb2NrY2hpcC9wbS1kb21haW5zLmMgfCAzNiArKysrKysrKysrKysrKysrKystLS0tLS0tLQog
-MSBmaWxlIGNoYW5nZWQsIDI1IGluc2VydGlvbnMoKyksIDExIGRlbGV0aW9ucygtKQoKZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvcG1kb21haW4vcm9ja2NoaXAvcG0tZG9tYWlucy5jIGIvZHJpdmVycy9w
-bWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMKaW5kZXggNDkwYmJiMWQxZDhlOC4uYmE2NmFl
-NzE5NDI4OSAxMDA2NDQKLS0tIGEvZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5z
-LmMKKysrIGIvZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMKQEAgLTIwNCw2
-ICsyMDQsMjAgQEAgc3RydWN0IHJvY2tjaGlwX3BtdSB7CiAJLmFjdGl2ZV93YWtldXAgPSB3YWtl
-dXAsCQkJXAogfQogCisjZGVmaW5lIERPTUFJTl9NX1IoX25hbWUsIHB3ciwgc3RhdHVzLCByZXEs
-IGlkbGUsIGFjaywgd2FrZXVwLCByZWd1bGF0b3IpCVwKK3sJCQkJCQkJXAorCS5uYW1lID0gX25h
-bWUsCQkJCVwKKwkucHdyX3dfbWFzayA9IChwd3IpIDw8IDE2LAkJCVwKKwkucHdyX21hc2sgPSAo
-cHdyKSwJCQkJXAorCS5zdGF0dXNfbWFzayA9IChzdGF0dXMpLAkJCVwKKwkucmVxX3dfbWFzayA9
-IChyZXEpIDw8IDE2LAkJCVwKKwkucmVxX21hc2sgPSAocmVxKSwJCQkJXAorCS5pZGxlX21hc2sg
-PSAoaWRsZSksCQkJCVwKKwkuYWNrX21hc2sgPSAoYWNrKSwJCQkJXAorCS5hY3RpdmVfd2FrZXVw
-ID0gd2FrZXVwLAkJCVwKKwkubmVlZF9yZWd1bGF0b3IgPSByZWd1bGF0b3IsCQkJXAorfQorCiAj
-ZGVmaW5lIERPTUFJTl9SSzMwMzYoX25hbWUsIHJlcSwgYWNrLCBpZGxlLCB3YWtldXApCQlcCiB7
-CQkJCQkJCVwKIAkubmFtZSA9IF9uYW1lLAkJCQlcCkBAIC0yNDEsOCArMjU1LDggQEAgc3RydWN0
-IHJvY2tjaGlwX3BtdSB7CiAjZGVmaW5lIERPTUFJTl9SSzM1NjIobmFtZSwgcHdyLCByZXEsIGdf
-bWFzaywgbWVtLCB3YWtldXApCQlcCiAJRE9NQUlOX01fR19TRChuYW1lLCBwd3IsIHB3ciwgcmVx
-LCByZXEsIHJlcSwgZ19tYXNrLCBtZW0sIHdha2V1cCwgZmFsc2UpCiAKLSNkZWZpbmUgRE9NQUlO
-X1JLMzU2OChuYW1lLCBwd3IsIHJlcSwgd2FrZXVwKQkJXAotCURPTUFJTl9NKG5hbWUsIHB3ciwg
-cHdyLCByZXEsIHJlcSwgcmVxLCB3YWtldXApCisjZGVmaW5lIERPTUFJTl9SSzM1NjgobmFtZSwg
-cHdyLCByZXEsIHdha2V1cCwgcmVndWxhdG9yKQkJXAorCURPTUFJTl9NX1IobmFtZSwgcHdyLCBw
-d3IsIHJlcSwgcmVxLCByZXEsIHdha2V1cCwgcmVndWxhdG9yKQogCiAjZGVmaW5lIERPTUFJTl9S
-SzM1NzYobmFtZSwgcF9vZmZzZXQsIHB3ciwgc3RhdHVzLCByX3N0YXR1cywgcl9vZmZzZXQsIHJl
-cSwgaWRsZSwgZ19tYXNrLCB3YWtldXApCVwKIAlET01BSU5fTV9PX1JfRyhuYW1lLCBwX29mZnNl
-dCwgcHdyLCBzdGF0dXMsIDAsIHJfc3RhdHVzLCByX3N0YXR1cywgcl9vZmZzZXQsIHJlcSwgaWRs
-ZSwgaWRsZSwgZ19tYXNrLCB3YWtldXApCkBAIC0xMjc0LDE1ICsxMjg4LDE1IEBAIHN0YXRpYyBj
-b25zdCBzdHJ1Y3Qgcm9ja2NoaXBfZG9tYWluX2luZm8gcmszNTYyX3BtX2RvbWFpbnNbXSA9IHsK
-IH07CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfZG9tYWluX2luZm8gcmszNTY4X3Bt
-X2RvbWFpbnNbXSA9IHsKLQlbUkszNTY4X1BEX05QVV0JCT0gRE9NQUlOX1JLMzU2OCgibnB1Iiwg
-IEJJVCgxKSwgQklUKDIpLCAgZmFsc2UpLAotCVtSSzM1NjhfUERfR1BVXQkJPSBET01BSU5fUksz
-NTY4KCJncHUiLCAgQklUKDApLCBCSVQoMSksICBmYWxzZSksCi0JW1JLMzU2OF9QRF9WSV0JCT0g
-RE9NQUlOX1JLMzU2OCgidmkiLCAgIEJJVCg2KSwgQklUKDMpLCAgZmFsc2UpLAotCVtSSzM1Njhf
-UERfVk9dCQk9IERPTUFJTl9SSzM1NjgoInZvIiwgICBCSVQoNyksIEJJVCg0KSwgIGZhbHNlKSwK
-LQlbUkszNTY4X1BEX1JHQV0JCT0gRE9NQUlOX1JLMzU2OCgicmdhIiwgIEJJVCg1KSwgQklUKDUp
-LCAgZmFsc2UpLAotCVtSSzM1NjhfUERfVlBVXQkJPSBET01BSU5fUkszNTY4KCJ2cHUiLCAgQklU
-KDIpLCBCSVQoNiksICBmYWxzZSksCi0JW1JLMzU2OF9QRF9SS1ZERUNdCT0gRE9NQUlOX1JLMzU2
-OCgidmRlYyIsIEJJVCg0KSwgQklUKDgpLCAgZmFsc2UpLAotCVtSSzM1NjhfUERfUktWRU5DXQk9
-IERPTUFJTl9SSzM1NjgoInZlbmMiLCBCSVQoMyksIEJJVCg3KSwgIGZhbHNlKSwKLQlbUkszNTY4
-X1BEX1BJUEVdCT0gRE9NQUlOX1JLMzU2OCgicGlwZSIsIEJJVCg4KSwgQklUKDExKSwgZmFsc2Up
-LAorCVtSSzM1NjhfUERfTlBVXQkJPSBET01BSU5fUkszNTY4KCJucHUiLCAgQklUKDEpLCBCSVQo
-MiksICBmYWxzZSwgdHJ1ZSksCisJW1JLMzU2OF9QRF9HUFVdCQk9IERPTUFJTl9SSzM1NjgoImdw
-dSIsICBCSVQoMCksIEJJVCgxKSwgIGZhbHNlLCBmYWxzZSksCisJW1JLMzU2OF9QRF9WSV0JCT0g
-RE9NQUlOX1JLMzU2OCgidmkiLCAgIEJJVCg2KSwgQklUKDMpLCAgZmFsc2UsIGZhbHNlKSwKKwlb
-UkszNTY4X1BEX1ZPXQkJPSBET01BSU5fUkszNTY4KCJ2byIsICAgQklUKDcpLCBCSVQoNCksICBm
-YWxzZSwgZmFsc2UpLAorCVtSSzM1NjhfUERfUkdBXQkJPSBET01BSU5fUkszNTY4KCJyZ2EiLCAg
-QklUKDUpLCBCSVQoNSksICBmYWxzZSwgZmFsc2UpLAorCVtSSzM1NjhfUERfVlBVXQkJPSBET01B
-SU5fUkszNTY4KCJ2cHUiLCAgQklUKDIpLCBCSVQoNiksICBmYWxzZSwgZmFsc2UpLAorCVtSSzM1
-NjhfUERfUktWREVDXQk9IERPTUFJTl9SSzM1NjgoInZkZWMiLCBCSVQoNCksIEJJVCg4KSwgIGZh
-bHNlLCBmYWxzZSksCisJW1JLMzU2OF9QRF9SS1ZFTkNdCT0gRE9NQUlOX1JLMzU2OCgidmVuYyIs
-IEJJVCgzKSwgQklUKDcpLCAgZmFsc2UsIGZhbHNlKSwKKwlbUkszNTY4X1BEX1BJUEVdCT0gRE9N
-QUlOX1JLMzU2OCgicGlwZSIsIEJJVCg4KSwgQklUKDExKSwgZmFsc2UsIGZhbHNlKSwKIH07CiAK
-IHN0YXRpYyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfZG9tYWluX2luZm8gcmszNTc2X3BtX2RvbWFp
-bnNbXSA9IHsKLS0gCjIuMzkuNQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============2003486856932698933==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="lnzb2w2bbzyesomx"
+Content-Disposition: inline
+
+
+--lnzb2w2bbzyesomx
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 1/4] dt-bindings: crypto: rockchip: Add RK356x/RK3588
+ crypto engine binding
+MIME-Version: 1.0
+
+Hi,
+
+On Wed, Jul 08, 2026 at 06:58:22PM +0100, Dawid Olesinski wrote:
+> Add a YAML device tree binding for the Rockchip second-generation (V2)
+> cryptographic hardware accelerator present on the RK3568 and RK3588 SoCs.
+>=20
+> The IP block exposes AES-ECB, AES-CBC, AES-XTS block ciphers, SHA-1,
+> SHA-224, SHA-256, SHA-384, SHA-512, MD5, and SM3 hash algorithms, each
+> with a hardware DMA engine controlled via linked-list descriptors.
+>=20
+> The binding covers two compatible strings:
+>=20
+>   - rockchip,rk3568-crypto: clocks and resets are driven directly by the
+>     non-secure CRU (accessible to Linux at EL1).
+>   - rockchip,rk3588-crypto: clocks and resets live in SECURECRU, a
+>     register bank sandboxed to TrustZone. Linux must request them through
+>     the ARM SCMI firmware interface (scmi_clk / scmi_reset), as direct
+>     MMIO access to SECURECRU from EL1 triggers a bus fault.
+
+Looking at the driver, the two implementations are compatible. The
+clocks/reset line source being different is not a reason for not
+being compatible. So the binding should look like this:
+
+  compatible:
+    oneOf:
+      - const: rockchip,rk3568-crypto
+      - items:
+          - enum:
+              - rockchip,rk3588-crypto
+          - const: rockchip,rk3568-crypto
+
+and then in the RK3588 DTS, use
+
+compatible =3D "rockchip,rk3588-crypto", "rockchip,rk3568-crypto";
+
+finally in the driver only bind against "rockchip,rk3568-crypto".
+The RK3588 specific binding is only added in case a difference
+requiring custom RK3588 quirks is found in the future.
+
+Greetings,
+
+-- Sebastian
+
+> Signed-off-by: Dawid Olesinski <dawidro@gmail.com>
+> ---
+>  .../crypto/rockchip,rk3588-crypto.yaml        | 75 +++++++++++++++++++
+>  1 file changed, 75 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3=
+588-crypto.yaml
+>=20
+> diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3588-cry=
+pto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.=
+yaml
+> new file mode 100644
+> index 000000000000..fc09f21b0654
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
+> @@ -0,0 +1,75 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/crypto/rockchip,rk3588-crypto.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip cryptographic offloader
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +  - Corentin Labbe <clabbe@baylibre.com>
+> +  - Dawid Olesinski <dawidro@gmail.com>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk3568-crypto
+> +      - rockchip,rk3588-crypto
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: Core clock for the crypto IP internal logic
+> +      - description: AXI interconnect clock interface
+> +      - description: AHB interface clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: core
+> +      - const: aclk
+> +      - const: hclk
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  reset-names:
+> +    items:
+> +      - const: core
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - resets
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+> +
+> +    bus {
+> +      #address-cells =3D <2>;
+> +      #size-cells =3D <2>;
+> +
+> +      crypto@fe370000 {
+> +        compatible =3D "rockchip,rk3588-crypto";
+> +        reg =3D <0x0 0xfe370000 0x0 0x2000>;
+> +        interrupts =3D <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        clocks =3D <&scmi_clk SCMI_CRYPTO_CORE>, <&scmi_clk SCMI_ACLK_SE=
+CURE_NS>,
+> +                 <&scmi_clk SCMI_HCLK_SECURE_NS>;
+> +        clock-names =3D "core", "aclk", "hclk";
+> +        resets =3D <&scmi_reset SCMI_SRST_CRYPTO_CORE>;
+> +        reset-names =3D "core";
+> +        };
+> +    };
+> --=20
+> 2.47.3
+>=20
+>=20
+
+--lnzb2w2bbzyesomx
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpO4uoACgkQ2O7X88g7
++poLJw/+Pzk9eEzX1y1FHDir56xZ0SvkUnHcQd6hDSo/cYXoDPI/bEjvV1FkUWdb
+UY5J/me4DR+Z9K/6o4Ny/3r76y1+iegrQxsAZ/57Bk1UXX4nEMEQgIlZB+R5Tz6p
+u983ikG6w0k6mKWvitDqoX6Eashfc7iuDDIxdsg6qli28cbTAuKLAf4B9+FO7vtS
+waRRXo7FGBtcEcGaQ4tlP4oDEblKPW4V2vqvZi0g+499VXzVqk/ZuC6p7PWqV0/P
+BwOKQ4i6KN/gLlIVwvZZTpZmPtJwf0ysUfac3IGaMx4etm/4VpfMgStSUOhunP5g
+PdMqBd+ngHhi5qsz4UV2SBUQTkyoxud8R17wyNNrFkVXSPcoWp7sHRFK+1TL9NEJ
+7051bUQAj9SgKPhLwWRqzbuXyBGO7JcOf8hrSEZOiK+oZ2prh/5MrBIvkUqqncWC
+9p3ofgB8GUCaIIJxFTtUlDiJq+Dv0myOCILfFf4yQ0DpiI6KIgjiv/WPqFbfzTtm
+0fTMntcelQq0pfs5xuJVIrvhr4A03iOBTHV6WcdaAp8J6CLrM5Kp7mZ7itucFcYH
+xikiyHPIFO9ma/wddIH1BPyXujMdWetPCeQ0MYNURRDuWDJlOKl7NuvwBLiWCNHL
+GhShK6+gbDc9PzA1WI/61mXVDhjO8fxjSc+6K9u+WEL0/J1A91Q=
+=aDYy
+-----END PGP SIGNATURE-----
+
+--lnzb2w2bbzyesomx--
+
+
+--===============2003486856932698933==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2003486856932698933==--
+
