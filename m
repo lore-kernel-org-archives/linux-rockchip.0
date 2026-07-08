@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D810CC43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 10:35:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC0D8C43458
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 10:39:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fs0tWMFgx1yTmYNPcmZ/Qo7Bl0xq2bbctHhig1YZdgE=; b=sEbUZQVh45vf7/
-	UrfeTTdgFfX89w3OiUHvMlPjjnki+aWrgHPf9oTJCNPPx9QbZaQVtGUkuITHt9y5CExQsdHSXMOrf
-	zzUqlP3YXlCwvww89L+WCYq8qAl5+BF222ChJ4UgjIagP8Kf298AO1mLnHLv+30abMDaqYa8hDYFM
-	7wdloJoRUtdmCZY1mdYruJpF26U71IzoNJIqXJVEl10CLixdwGumCMatJ0YPiLFEBdr4zUkVKhLjH
-	+vG8xvkHUuNyAmNoGbl51WmS3IWLIH3B6i8NNMXcEeU/QIQLLaPajiwR29TC0Ay8+nU5OY/YaSG+X
-	faJgOy51SA9Z9Di2bSbg==;
+	List-Owner; bh=+DAXlPYQlTLeTdEwAqV/kLr6THzn9kIEiOr7XTIh/ec=; b=g3JkWkih6ANeJl
+	DH0GP8REkrqI/1VwAHi93TdVqECBX7DlWKWvEmByyQcSqGICRZYV4kXe56ZJJ9BlVIjPayRMa57+S
+	PwPreHZXb0zov3A/eyCloQsh/YhPHoeEjAmzoPyeP1ZjyjAd02CkitKmJblcPSIU3SaEW1tXNJcpi
+	ucvl1T+touFSl6/6P/OSQEENfwT5lmdU+Xkg51Gk75KctbArDFTvSZEUJ49qytPYwGFKyWjIFkznk
+	R31nIs+DsoqWfzFTr6xSV/lJtIyXlpw+jYDggtr+lHmKvZNkfqc6+wU7DqBwgxoSH3ECYPCwgtlIk
+	/wU24vJfGvCmv2eU/bHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whPcG-0000000GucF-0zDc;
-	Wed, 08 Jul 2026 10:34:56 +0000
+	id 1whPgP-0000000GvTq-0pCP;
+	Wed, 08 Jul 2026 10:39:13 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whPcD-0000000GubQ-0btp;
-	Wed, 08 Jul 2026 10:34:54 +0000
+	id 1whPgM-0000000GvSl-3kYq;
+	Wed, 08 Jul 2026 10:39:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783506890;
-	bh=r38RUfSMl071/WepmzPL1q5pZgDe09Mk7WtRRJTfhHY=;
+	s=mail; t=1783507148;
+	bh=iwFN7k1l7x6sZkU0ZQcIM16C6PmtP6fEROcDVf8SnW8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kYkhLOvMuTOGRJo+VJHLXfzQrpNjqggw7D6lMlKQ5U2w5dVLU5nK8KJ3HlfhvYzPl
-	 k4WwEhDr1QmAtq5t1HAUHbK4E7x4QBt9fb5qR3ZxwHCz3DFvYWxugkKpbafJ80SUUk
-	 pN8CncCK8xe+cWRNGOzTOMw695eFQLb7mchp8EvvPA4wbVLr56Oju69UdNxFWaCX3o
-	 tyukUUsnsmC7bP3ErxyeaYwl/XNF378msdCKIlvA3L8PpgklSnCpjiE6c4+fILaJ19
-	 S6y1kpq009EHjB9+BZttFi9qyFtyPlYAj2l4YAWdYVQM7ZKM8VTNGKwkvkcaUScEY/
-	 H/Km9U2SbKMvg==
+	b=c7219e4rWLH+NttiNekbwSuQ/urAUx9f7qHZWqWQ7lsm7kC/ZXj54eakGLwu6gPbB
+	 VIUX2fhwzzbK3xtqcH+hlfX4q+HYzLwZGYsFSQA6J+tcvYAedUDIzPr4q6N3O5OTTk
+	 ZEyuHF2rg7PKwJ/PLY2m1gvjg3vruEOHX7lpta7MIqqn9XIa58zeob2rv+6lh7dSgr
+	 SnZQQqyo9iHjNupsSDLsZfQGgIry09xpJ79KehJI9WoaaWGJqQQP+/k4HkYU2Bzb6r
+	 3ySGC0lMVr5rX0iZnZAy1TxVbbOmzsmZIsxItdx147A+51rDaG7SkGMFujqsHxUtzw
+	 sRhpSAH+k7hJw==
 Received: from [100.64.0.241] (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3576E17E071A;
-	Wed, 08 Jul 2026 12:34:49 +0200 (CEST)
-Message-ID: <20de8b44-c27d-4471-ac36-931893f6ffd5@collabora.com>
-Date: Wed, 8 Jul 2026 13:34:48 +0300
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9200417E00F6;
+	Wed, 08 Jul 2026 12:39:07 +0200 (CEST)
+Message-ID: <31117c25-5410-429a-887b-87c767387c58@collabora.com>
+Date: Wed, 8 Jul 2026 13:39:07 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
+Subject: Re: [PATCH v8 09/39] drm/display: hdmi-state-helper: Add fallback
+ TMDS rate validation
 To: Maxime Ripard <mripard@kernel.org>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
  Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
@@ -67,16 +66,14 @@ Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
- <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
- <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
- <20260707-tested-alpaca-of-patience-e38d7c@penduick>
+ <20260702-dw-hdmi-qp-scramb-v8-9-d79890d00b6a@collabora.com>
+ <20260707-venomous-helpful-magpie-b2962b@penduick>
 Content-Language: en-US
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260707-tested-alpaca-of-patience-e38d7c@penduick>
+In-Reply-To: <20260707-venomous-helpful-magpie-b2962b@penduick>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_033453_338225_6C651CD7 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20260708_033911_093013_684DC628 
+X-CRM114-Status: GOOD (  17.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,53 +85,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gNy83LzI2IDM6MzAgUE0sIE1heGltZSBSaXBhcmQgd3JvdGU6Cj4gT24gRnJpLCBKdWwgMDMs
-IDIwMjYgYXQgMTE6NTQ6MzNQTSArMDMwMCwgQ3Jpc3RpYW4gQ2lvY2FsdGVhIHdyb3RlOgo+Pj4+
-PiAtCWlmIChjYXBzLT5zdXBwb3J0ZWRfaGRtaV92ZXIgPj0gSERNSV9WRVJTSU9OXzJfMCkKPj4+
-PiArCWlmIChjYXBzLT5zdXBwb3J0ZWRfaGRtaV92ZXIgPj0gSERNSV9WRVJTSU9OXzJfMCkgewo+
-Pj4+ICsJCWlmICghaGRtaV9mdW5jcy0+c2NyYW1ibGVyX2VuYWJsZSB8fAo+Pj4+ICsJCSAgICAh
-aGRtaV9mdW5jcy0+c2NyYW1ibGVyX2Rpc2FibGUpCj4+Pj4gKwkJCXJldHVybiAtRUlOVkFMOwo+
-Pj4+ICsKPj4+PiArCQljb25uZWN0b3ItPmhkbWkuc2NyYW1ibGVyX3N1cHBvcnRlZCA9IHRydWU7
-Cj4+Pj4gIAkJY29ubmVjdG9yLT5oZG1pLm1heF90bWRzX2NoYXJfcmF0ZSA9IEhETUlfMl8wX1RN
-RFNfQ0hBUl9SQVRFX01BWF9IWjsKPj4+PiAtCWVsc2UgaWYgKGNhcHMtPnN1cHBvcnRlZF9oZG1p
-X3ZlciA+PSBIRE1JX1ZFUlNJT05fMV8zKQo+Pj4+ICsJfSBlbHNlIGlmIChjYXBzLT5zdXBwb3J0
-ZWRfaGRtaV92ZXIgPj0gSERNSV9WRVJTSU9OXzFfMykgewo+Pj4+ICAJCWNvbm5lY3Rvci0+aGRt
-aS5tYXhfdG1kc19jaGFyX3JhdGUgPSBIRE1JXzFfM19UTURTX0NIQVJfUkFURV9NQVhfSFo7Cj4+
-Pj4gLQllbHNlIGlmIChjYXBzLT5zdXBwb3J0ZWRfaGRtaV92ZXIgPj0gSERNSV9WRVJTSU9OXzFf
-MCkKPj4+PiArCX0gZWxzZSBpZiAoY2Fwcy0+c3VwcG9ydGVkX2hkbWlfdmVyID49IEhETUlfVkVS
-U0lPTl8xXzApIHsKPj4+PiAgCQljb25uZWN0b3ItPmhkbWkubWF4X3RtZHNfY2hhcl9yYXRlID0g
-SERNSV8xXzBfVE1EU19DSEFSX1JBVEVfTUFYX0haOwo+Pj4+ICsJfQo+Pj4+ICAKPj4+PiAgCWlm
-IChjYXBzLT5tYXhfdG1kc19jaGFyX3JhdGUpIHsKPj4+PiAgCQlpZiAoY2Fwcy0+bWF4X3RtZHNf
-Y2hhcl9yYXRlID4gY29ubmVjdG9yLT5oZG1pLm1heF90bWRzX2NoYXJfcmF0ZSkKPj4+PiArCj4+
-Pj4gKwkvKiogQHNjZGNfY2I6IENhbGxiYWNrIHRvIGJlIGludm9rZWQgYXMgcGFydCBvZiBAc2Nk
-Y193b3JrLgo+Pj4+ICsJICoKPj4+PiArCSAqIEN1cnJlbnRseSB1c2VkIHRvIG1vbml0b3Igc2lu
-ay1zaWRlIHNjcmFtYmxpbmcgc3RhdHVzIGFuZCByZXRyeQo+Pj4+ICsJICogc2V0dXAgaWYgdGhl
-IHNpbmsgcmVzZXRzIGl0Lgo+Pj4+ICsJICoKPj4+PiArCSAqIFRoaXMgaXMgYXNzaWduZWQgYnkg
-dGhlIGZyYW1ld29yayB3aGVuIG1ha2luZyB1c2Ugb2YKPj4+PiArCSAqIGRybV9jb25uZWN0b3Jf
-aGRtaV9lbmFibGVfc2NyYW1ibGluZygpIGhlbHBlci4KPj4+Cj4+PiBObyBzdWNoIGhlbHBlci4g
-Cj4+Cj4+IFJpZ2h0LCBJJ2xsIGRyb3AgdGhlIHJlZmVyZW5jZSB0byB0aGUgaGVscGVyIG5hbWUs
-IGFzIHRoYXQncyBhZGRlZCBsYXRlciBpbiB0aGUKPj4gc2VyaWVzLgo+Pgo+Pj4gQWxzbywgcGxl
-YXNlIGV4cGxhaW4gaW4gdGhlIGNvbW1pdCBtZXNzYWdlLCB3aHkgZG8gd2UKPj4+IG5lZWQgdG8g
-a2VlcCBpdCBjb25maWd1cmFibGUuIFdoeSB0aGUgZGVmYXVsdCBpcyBub3QgZW5vdWdoPwo+Pgo+
-PiBXZSB3aWxsIG5lZWQgYSBzZXBhcmF0ZSBjYWxsYmFjayB0byBzdXBwb3J0IEhETUkgMi4xLCBp
-LmUuIGZvciBsaW5rIHRyYWluaW5nCj4+IG1hbmFnZW1lbnQuICBJ4oCZbGwgdXBkYXRlIHRoZSBj
-b21taXQgbWVzc2FnZSBhY2NvcmRpbmdseS4KPiAKPiBJIHRoaW5rIEknbSBlcXVhbGx5IGNvbmZ1
-c2VkIGFzIERtaXRyeSBoZXJlLiBJZiBzY2RjX2NiIGlzIG9ubHkgY2FsbGVkCj4gaWYgd2UncmUg
-c2VuZGluZyBzY3JhbWJsZWQgcGl4ZWxzIGJ1dCB0aGUgbW9uaXRvciBkb2Vzbid0IGFja25vd2xl
-ZGdlIGl0Cj4gaW5pdGlhbGx5LCB0aGVuIHRoZSBvbmx5IHRoaW5nIHdlIG5lZWQgdG8gZG8gaXMg
-ImlmIHRoZSBzY3JhbWJsZXIncwo+IGVuYWJsZWQsIGNhbGwgZHJtX3NjZGNfc2V0X3NjcmFtYmxp
-bmcoKSIsIHRoZW4gd2UgZG9uJ3QgbmVlZCB0byBzZXQgYQo+IGNhbGxiYWNrLiBBbmQgZXZlbiBp
-ZiB3ZSBldmVyIG5lZWQgdG8gZGVhbCB3aXRoIEhETUkgbGluayB0cmFpbmluZywgdGhlbgo+IHdl
-IGNhbiBzdGlsbCBoYXZlIHRoZSBzYW1lIGZ1bmN0aW9uIGJ1dCB3aXRoIGEgY291cGxlIG9mIGJy
-YW5jaGVzIG1vcmUuCkkgdGhpbmsgSSBvdmVyZW5naW5lZXJlZCB0aGlzIGJ5IHRyeWluZyB0byBr
-ZWVwIHRoZSBTQ0RDLXJlbGF0ZWQgYml0cyBhcyBtdWNoIGFzCnBvc3NpYmxlIGluIGRybV9oZG1p
-X2hlbHBlci5jLiAgSeKAmWxsIGRyb3AgdGhpcyBjYWxsYmFjayBhbmQgbW92ZSB0aGUgbG9naWMg
-aW50bwpkcm1fY29ubmVjdG9yX2hkbWlfc2NkY193b3JrKCkuCgpDcmlzdGlhbgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 7/7/26 2:23 PM, Maxime Ripard wrote:
+> Hi,
+> 
+> On Thu, Jul 02, 2026 at 05:46:22PM +0300, Cristian Ciocaltea wrote:
+>> Validate the computed TMDS character rate against
+>> connector->hdmi.max_tmds_char_rate when no driver-specific
+>> tmds_char_rate_valid() hook is provided.
+>>
+>> This gives HDMI connectors a common fallback for rejecting modes whose
+>> TMDS character rate exceeds the connector limit, while still allowing
+>> drivers with custom validation requirements to implement their own
+>> tmds_char_rate_valid() callback.
+>>
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 3 +++
+>>  1 file changed, 3 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+>> index ce17eeefc2da..db76699093e8 100644
+>> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+>> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+>> @@ -566,6 +566,9 @@ hdmi_clock_valid(const struct drm_connector *connector,
+>>  		status = funcs->tmds_char_rate_valid(connector, mode, clock);
+>>  		if (status != MODE_OK)
+>>  			return status;
+>> +	} else if (connector->hdmi.max_tmds_char_rate) {
+>> +		if (clock > connector->hdmi.max_tmds_char_rate)
+>> +			return MODE_CLOCK_HIGH;
+> 
+> I think we should handle this the same way we do for
+> info->max_tmds_clock: if it's set, we always check that before calling
+> the driver.
+> 
+> It reduces the boilerplate in drivers, and it's always a relevant check
+> anyway.
+Ack.
+
+Thanks,
+Cristian
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
