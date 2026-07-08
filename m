@@ -4,67 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ECBFC43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 06:47:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 884FDC43458
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 10:12:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e5ZRC+Y8hrhtNQgisPAOOUUuRoqN8zHDAonKpNHScPk=; b=xXGd3VeUoHKSN1j2B0ckKrx8DN
-	hOp0HSp96zxm16Fw2CY9NoFP5arqGYF6GP1cGEsssN3u/cBBbc0uJXBkLLLLEenIIcbw3zHWi4Y5J
-	cyM/a7C3V9Nb/mLztPOVj1vsNsbKxmiCEvGNkuexV4LjpUjUmwDElRDFecZiIx43tUXswMly4RLVi
-	Re1qRzBIAmDKC43Orxq8+6coUmMZd4OGMdxpGKMjuyzzSy6QxLz/rS1EdfyUlzpE9Sw99RufRoM/a
-	M5L7U82leMMXfEsqIpQcV7awtRIdaqFcYwgrul3YKJJ+z6OskxnowCaZtuIIvTpYHrLNtAjYTG+Pq
-	iRP+Gw0A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=maFUUcHxXwAyRpg+yMLROijk2RmGgt7S/+5TUbatZ70=; b=YcKqj/lvMxNyIk
+	aSfRjpqJYxX15u1udQkot5Sk89S/GJK+NSLFe5aQkBCw24rl1fSAnBc8vC8btKrgl69kvXh131fOL
+	AylgY9rQAvuc8QF5M8Ka9uqaEnUIc6LHZKf2EohPNZguYR+PdIZkAuU8yFiNxlcq/vZe7oxcosgSL
+	51XLYPyGR2ilkg7hI46PEM5EDsp/77icDi7a38akqkOj3T9JC/APqpdCiyq9v+FGc/ij4oCRX2iSj
+	n/5ilaYLicQsUHaK2zIYovdxtyWDD2FN3xzjRBMiftArySDxqe70ZlIJduwQqd9Yf1BLJuSCy4b+Q
+	+UxaxtbmwAB25WliJVnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whM3b-0000000GQoz-0wyE;
-	Wed, 08 Jul 2026 06:46:55 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1whPG2-0000000GpCJ-2IKZ;
+	Wed, 08 Jul 2026 10:11:58 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whM3Z-0000000GQoO-2ORj;
-	Wed, 08 Jul 2026 06:46:53 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id AF873404AB;
-	Wed,  8 Jul 2026 06:46:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 208C21F00A3A;
-	Wed,  8 Jul 2026 06:46:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783493212;
-	bh=dda6EKnJcaA11GKqrW+DCxDvbZY1WLkxUaV4elPeMqA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=gdRHtWwmBpljYkDnbi+s0Po0ALJbs0er1Z1e6nbWh32zNXoqSX/HClNx2FsEaXrx+
-	 PuL5GBym3trY+YYLRk3eDYc+vZnLg56n5WEWDMlPKGUTAf9jJLWGifLnFm3c9+f8dR
-	 RZqoGE4M4NJwdfI9dMmoq0uEcc3tHE1I8cJuNY/0cPMfu/x8pYs4ICDM6yshTSYDMA
-	 qhsPFFTPDzt5rxdggP2efSRCVfhM2kh3IJhPJCs2yEGFhgGcfF5l+6ENt/ib4jjNmE
-	 +5652/kWuWR+D4WGiMZss3KtyB9jT3eryMUMdhyOCit025OIwjnNjH11k3xrmqyq2c
-	 rnyNBnZWG4PgQ==
-Date: Wed, 8 Jul 2026 08:46:50 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Daniel Stone <daniels@collabora.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	kernel@collabora.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v8 03/39] drm/display: bridge_connector: Pass HDMI
- capabilities through caps struct
-Message-ID: <20260708-bold-ruby-potoo-c6c949@houat>
-References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-3-d79890d00b6a@collabora.com>
- <eqnr2hfclbdkry2jqe2kuufss5kus6qpjblewq35upnjwlhxhl@4awqxpwrnxk2>
- <f74ffd53-5776-4fae-a6fe-eeace5c3fc5f@collabora.com>
+	id 1whPFy-0000000GpAI-2rZi;
+	Wed, 08 Jul 2026 10:11:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783505511;
+	bh=cFQ2g375OyjW4/iTm/OqtKufeHSNNwfoiu9AiHJPVnw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=M3g4kibiLuxm6q2Zi1pBQsX7i2wlsrrTVZz/vbhiHSg09JcFpfR2ydeWeN56rLPYn
+	 WMCIitUOwPxz0s2ibnpYM7b7aryIwxF8NKV/uwlmYGV5DbBTbNt5tSaKJ9NwxNu5wE
+	 FaEVRRozyfbJXxi9z87PhxRt2tMrs0hz18/tZGSN702ErA+oar2ONv1IdmNg7FnM3o
+	 PRYSJLJxZFnkVw08WEfN06qKboUtVmF7ggp5fKTfQPy75edR7ABSTVn72H0lQ0mgv3
+	 i/6rv6WH70g2L/HpwP++BGbEjxbSXfmWiHjnU7OtjJxAjckZ5D4V3hsRPmDFy7DdWN
+	 GkTnKOyySiPpw==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 834C417E0713;
+	Wed, 08 Jul 2026 12:11:50 +0200 (CEST)
+Message-ID: <737678ab-f082-4a0e-b453-f403ba141437@collabora.com>
+Date: Wed, 8 Jul 2026 13:11:49 +0300
 MIME-Version: 1.0
-In-Reply-To: <f74ffd53-5776-4fae-a6fe-eeace5c3fc5f@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 02/39] drm/connector: Add caps-based HDMI connector
+ init helper
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
+ <20260702-dw-hdmi-qp-scramb-v8-2-d79890d00b6a@collabora.com>
+ <i4tjtsf5rsckfcayo5nuhlger5wqxn3ujeaubm4g2fgrwvhzb2@hf4uhgq3ja5p>
+ <ad75cf26-9437-47d0-864d-d71263401615@collabora.com>
+ <20260707-illegal-tuna-of-force-1c06e3@houat>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20260707-illegal-tuna-of-force-1c06e3@houat>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260708_031154_906034_5A93DDFE 
+X-CRM114-Status: GOOD (  20.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,77 +88,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0882767244196842065=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Maxime,
 
---===============0882767244196842065==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="u7g35xr4vgpqkhon"
-Content-Disposition: inline
+On 7/7/26 7:10 PM, Maxime Ripard wrote:
+> On Fri, Jul 03, 2026 at 10:31:55PM +0300, Cristian Ciocaltea wrote:
+>> Hi Dmitry,
+>>
+>> Thanks for your quick review!
+>>
+>> On 7/3/26 5:05 PM, Dmitry Baryshkov wrote:
+>>> On Thu, Jul 02, 2026 at 05:46:15PM +0300, Cristian Ciocaltea wrote:
+>>>> In preparation for adding HDMI 2.x source capabilities, introduce struct
+>>>> drm_connector_hdmi_caps and a new drmm_connector_hdmi_init_with_caps()
+>>>> helper.
+>>>>
+>>>> The existing drmm_connector_hdmi_init() helper currently takes
+>>>> individual capability arguments such as supported_formats and max_bpc.
+>>>> Adding more HDMI-specific arguments to that function would not scale
+>>>> well, so move those values into a dedicated capabilities structure and
+>>>> implement the existing helper as a wrapper around the new caps-based
+>>>> interface.
+>>>
+>>> I think, it was an intention of Maxime: make sure that every driver is
+>>> forced to provide some values here. With the struct-based init it is
+>>> easy to overlook or to ommit a value.
+>>
+>> Agreed that the struct-based init loses the compile-time guarantee that every
+>> argument is explicitly provided - that's a real downside.  
+>>
+>> I'd argue it's recoverable, though: the init helper validates the mandatory
+>> fields, so a driver that omits a required value gets rejected at init time
+>> rather than silently misconfigured.  The "you must provide sane values" property
+>> is expected to be preserved, just enforced at runtime instead of by the
+>> compiler. 
+> 
+> Yeah, I don't think we can win with C here. Rust might, but we're
+> probably a long way from that.
+> 
+>> The main motivation for the struct is scalability/maintainability as we add HDMI
+>> 2.x capabilities: new fields go into the struct rather than growing the helper's
+>> argument list, so existing callers don't need churny signature updates on every
+>> extension.
+>>
+>> FWIW, in the previous revision we discussed addressing the concern with a
+>> callback instead.  Sadly, I had to discard that approach, as it proved not
+>> flexible enough, e.g. drm_bridge_connector_init() computes caps dynamically, and
+>> would have required either stateful callbacks, or storing redundant/temporary
+>> cap data in driver-private structures just to satisfy the callback.
+> 
+> I just realized something reviewing your patch: we don't necessarily
+> need an extra argument or a callback, we can just put these fields into
+> drm_hdmi_connector_funcs directly, and then validate them in init.
 
+If I understand correctly, we should drop the drm_connector_hdmi_caps struct
+introduced by this patch and move all its fields into drm_hdmi_connector_funcs.
 
---u7g35xr4vgpqkhon
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v8 03/39] drm/display: bridge_connector: Pass HDMI
- capabilities through caps struct
-MIME-Version: 1.0
+In that case, how should we proceed with drmm_connector_hdmi_init()? I see the
+following options:
 
-On Fri, Jul 03, 2026 at 10:55:09PM +0300, Cristian Ciocaltea wrote:
-> On 7/3/26 5:19 PM, Dmitry Baryshkov wrote:
-> > On Thu, Jul 02, 2026 at 05:46:16PM +0300, Cristian Ciocaltea wrote:
-> >> Switch drm_bridge_connector_init() to
-> >> drmm_connector_hdmi_init_with_caps(), collecting the bridge's HDMI
-> >> properties into a stack drm_connector_hdmi_caps so future HDMI 2.x
-> >> capabilities can be plumbed without growing the argument list.
-> >>
-> >> Introduce struct drm_bridge::supported_hdmi_ver to let bridges declare
-> >> the HDMI specification version they are conformant with, and forward it
-> >> to the connector layer through the new caps struct so HDMI 2.x features
-> >> can be gated on real source capability rather than guesswork.
-> >=20
-> > And it's left uninitialized by the bridges, which doesn't mean anything.
-> > If you don't want to touch all bridge drivers in one commit, please
-> > provide some migration path and hopefully get rid of it by the end of
-> > the series.=20
->=20
-> Sure, one question though: at the end of the migration, would it be fine =
-to
-> stick with drmm_connector_hdmi_init_with_caps() and just drop
-> drmm_connector_hdmi_init()?  Otherwise I'll rename it back.
+1. Continue with drmm_connector_hdmi_init_with_caps() after removing the caps
+   parameter, and then drop drmm_connector_hdmi_init() after the migration.
 
-Absolutely, it doesn't make any sense to keep both variants.
+2. Keep the existing (unaltered) drmm_connector_hdmi_init(), which would be
+   slightly inconsistent: supported_formats and max_bpc would still be passed 
+   as arguments, while the rest would go through drm_hdmi_connector_funcs.
 
-Maxime
+3. A variation of option 1: additionally rename
+   drmm_connector_hdmi_init_with_caps() to drmm_connector_hdmi_init() after the
+   migration.
 
---u7g35xr4vgpqkhon
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCak3yUgAKCRAnX84Zoj2+
-dgA6AYCyDFgGTxFn0SBcOkPBApbes4BuK+X5JHvKvEk7xiWbO93Vqka++5/XzGyT
-Zz7K1j4BfipIdXYUQH8XNvCOMpkrfjeMlnCiCXrYlN9EsZpBqVIbnIalrv/UncdJ
-krF4ykO6LA==
-=4OYk
------END PGP SIGNATURE-----
-
---u7g35xr4vgpqkhon--
-
-
---===============0882767244196842065==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0882767244196842065==--
-
