@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 318C5C4450C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 21:58:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22527C44510
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 21:58:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RyJZVKgVShIww40Ahf/PlCsy50A0cgsDBAWomw7sEnI=; b=Pd10XANAEHxixY
-	k2Z+TqovpsQa7P4y1AAbxC2lCDXmZHeEMihyyW1BkDu8xAvST3hEAZWG6mz9nryYtmEuYqKuifbLf
-	4kENs0LAgvoxCQC/0b15rq6r/UF5vOg1HI6UUANJYxu/N5NqqtLTl/rmpxPnFmi5OicLHcgnFe5H9
-	A/S/nOmktHaTuzeR4YdApicSUQxEJmUWotokkoBFfLe3iOyzEd7xgSow+ZSG17pKTeHGvallJD/gR
-	u7AC/fmVIAY2d+OJMhQ46Vz1FPasmas9cA5zut4Hs6KJyFs+Z2NG45HUDxBIVy02JTkxOzNxJ1f2n
-	fhLgWlbQVE2b/EdlGOaw==;
+	List-Owner; bh=uKFd2+6zvH6fGm/oC0NxvUunWeZQpVWh4DABgr8QeGY=; b=w2a3MwiBC9fids
+	wlyKO5IK3sLCFXOpWWp+Z9thJpx8ph+wugOStf+ovXfUyBab/+/miCCTBRqKDJJh+ppGBwhYQIVRM
+	bLZAuZJEsbZ3aS4Bo5gd8IrYcf4GknKZKhl6Y2biuSTogq2PMrxefgDfe/Qc3GjARJtMlgBXWiniE
+	88Fosu1XeCm5YPR/AwpTt78zulnroMPGf/xcbKsHAmLCckvayIGJBkGX+TPE8tyuuJE0zyVOr+b5d
+	zfU/hebEbvxiP7FaXiCWEu8OAvTpPFNxKz4/8QvzswrElyoZy3GQyHRRmB+B7PE5P2dAiFXT2OsTM
+	TEaxB/V4SuIDtLI60FCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whaHN-00000000UNN-3mcG;
-	Wed, 08 Jul 2026 21:58:05 +0000
+	id 1whaHP-00000000UR4-00IX;
+	Wed, 08 Jul 2026 21:58:07 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whaHF-00000000UB2-0bvz;
-	Wed, 08 Jul 2026 21:57:58 +0000
+	id 1whaHI-00000000UDh-0ZWq;
+	Wed, 08 Jul 2026 21:58:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783547875;
-	bh=nPxcOdRn21XnWu17709PZumF07cqdMqnnR09iLzgE0o=;
+	s=mail; t=1783547877;
+	bh=3nRFDQlKOP6ZG+eGUXeQmggd6GXikaD+VZE3rmeWFfA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=E6iiilLafc1Tovp/wo7G45aJ8ptMlKjgEseg+TWV89yhybItjvORSKurf2UaVSJsk
-	 9wpU1v8q5GlWaXo670u+sc4WhOSEoBj94xY0tP2IGfc+xU31HP7L4BYubSYCMpEndQ
-	 D7nQOU4pG1xQHfoZm+IKBqMzv+o0YPx8svKlrJnnv32yChoDyXWawXdu2+ezx+MGZJ
-	 th9GaUXbSBopI2TdEy6UinCEKFRlneOBP/Am8nGpx1xDS8AIOF0LMz7aR55f0l6Y5B
-	 VydErsXKpnUimjYQ0Pe5Jsn3bkSm9aszVsAZ3o36XS8H9moakaQIVYkUQprighc1iE
-	 FEfkkEgvrc1fg==
+	b=ZFp075GfS7phgXxgTOt/KV5/XuoLR545W73kH+cgoibmGNOvRv6qmBw4gNaf3FdEa
+	 20V1mH5Pi/VyCcOyAvFE7IWtoScFZAbKFJTB/qpdrb65qQQmJkIT/fOkc7NKM3vGjJ
+	 zdEp8zxMhmnp17ByLHijoHvmf3j3aebiFmCGQd1EFe3a/0rhxFXUBrfaK1DYhnYmZ5
+	 O7ekxYuv7BDvM6gVIvC1zu0qyQUUNiD2pv0Lu0k4GmAqHwuVNvU0P9FhMWfpDe61yR
+	 Xd3wNru8CzeeCCM3GfDqd2hOQS9c/a6Sb4DYYbl3IVcAcRHkQ9nMzYqNwsaGFFQbat
+	 1E68ETTxM1Exw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4DB6517E0D4A;
-	Wed, 08 Jul 2026 23:57:55 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 72D1417E0E04;
+	Wed, 08 Jul 2026 23:57:57 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 09 Jul 2026 00:57:28 +0300
-Subject: [PATCH v3 06/14] drm/rockchip: vop2: Fix VOP2_MAX_DCLK_RATE
- overflow on 32-bit
+Date: Thu, 09 Jul 2026 00:57:31 +0300
+Subject: [PATCH v3 09/14] drm/rockchip: vop2: Consolidate HDMI PHY PLL
+ clock parent switch
 MIME-Version: 1.0
-Message-Id: <20260709-dw-hdmi-qp-yuv-v3-6-a4a982a9f2e7@collabora.com>
+Message-Id: <20260709-dw-hdmi-qp-yuv-v3-9-a4a982a9f2e7@collabora.com>
 References: <20260709-dw-hdmi-qp-yuv-v3-0-a4a982a9f2e7@collabora.com>
 In-Reply-To: <20260709-dw-hdmi-qp-yuv-v3-0-a4a982a9f2e7@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -67,11 +67,11 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
  dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>
+ linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_145757_370755_8ABD6094 
-X-CRM114-Status: GOOD (  12.38  )
+X-CRM114-CacheID: sfid-20260708_145800_344511_33543493 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,48 +88,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VOP2_MAX_DCLK_RATE is defined as an unsigned long and is used scaled by
-the color-depth ratio when computing the maximum DCLK the HDMI PHY PLL
-can source.
+The DCLK parent switch logic for HDMI0 and HDMI1 PHY PLLs was
+duplicated, with each endpoint repeating the same clk_get_parent(),
+clk_set_parent() and error handling calls.
 
-On architectures where unsigned long is 32-bit, VOP2_MAX_DCLK_RATE * 8
-is evaluated in 32-bit arithmetic and overflows: 4800000000 wraps to
-505032704 before it is promoted to the 64-bit argument of
-DIV_ROUND_CLOSEST_ULL().  At 8 bpc this collapses max_dclk from the
-intended 600 MHz down to roughly 63 MHz.
+Refactor this by first selecting the appropriate PHY PLL clock handle
+based on the active HDMI endpoint, then performing the parent switch in
+a single shared code path.
 
-As a result, low-resolution modes (e.g. 640x480 or 720x480, whose pixel
-clocks are well under 30 MHz) still pass the clock <= max_dclk check and
-are reparented to the HDMI PHY PLL as expected, but higher-resolution
-modes such as 1280x720 (~74 MHz), 1920x1080 (~148 MHz) and above are
-wrongly rejected and fall back to the system CRU as the DCLK source.
-
-Define the constant as unsigned long long so that every expression using
-it is evaluated in 64-bit arithmetic, independent of the width of
-unsigned long.  This future-proofs any additional users of the macro as
-well.
-
-Fixes: b0362c45c401 ("drm/rockchip: vop2: Check bpc before switching DCLK source")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260623203310.9F8C81F000E9@smtp.kernel.org/
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 36 +++++++++++-----------------
+ 1 file changed, 14 insertions(+), 22 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index e9f5d015b645..2cd04bedaa2c 100644
+index aa81b3b01fbd..65902db7f7c0 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -102,7 +102,7 @@ enum vop2_afbc_format {
- 	VOP2_AFBC_FMT_INVALID = -1,
- };
+@@ -1964,42 +1964,34 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+ 		unsigned int bpc = vcstate->output_mode == ROCKCHIP_OUT_MODE_YUV422 ?
+ 					8 : (vcstate->output_bpc ?: 8);
+ 		unsigned long max_dclk = DIV_ROUND_CLOSEST_ULL(VOP2_MAX_DCLK_RATE * 8, bpc);
++		struct clk *pll_hdmiphy = NULL;
  
--#define VOP2_MAX_DCLK_RATE		600000000UL
-+#define VOP2_MAX_DCLK_RATE		600000000ULL
+ 		if (clock <= max_dclk) {
+ 			drm_for_each_encoder_mask(encoder, crtc->dev, crtc_state->encoder_mask) {
+ 				struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
  
- /*
-  * bus-format types.
+ 				if (rkencoder->crtc_endpoint_id == ROCKCHIP_VOP2_EP_HDMI0) {
+-					if (!vop2->pll_hdmiphy0)
+-						break;
+-
+-					if (!vp->dclk_src)
+-						vp->dclk_src = clk_get_parent(vp->dclk);
+-
+-					ret = clk_set_parent(vp->dclk, vop2->pll_hdmiphy0);
+-					if (ret < 0)
+-						drm_warn(vop2->drm,
+-							 "Could not switch to HDMI0 PHY PLL: %d\n",
+-							 ret);
++					pll_hdmiphy = vop2->pll_hdmiphy0;
+ 					break;
+ 				}
+ 
+ 				if (rkencoder->crtc_endpoint_id == ROCKCHIP_VOP2_EP_HDMI1) {
+-					if (!vop2->pll_hdmiphy1)
+-						break;
+-
+-					if (!vp->dclk_src)
+-						vp->dclk_src = clk_get_parent(vp->dclk);
+-
+-					ret = clk_set_parent(vp->dclk, vop2->pll_hdmiphy1);
+-					if (ret < 0)
+-						drm_warn(vop2->drm,
+-							 "Could not switch to HDMI1 PHY PLL: %d\n",
+-							 ret);
++					pll_hdmiphy = vop2->pll_hdmiphy1;
+ 					break;
+ 				}
+ 			}
+ 		}
++
++		if (pll_hdmiphy) {
++			if (!vp->dclk_src)
++				vp->dclk_src = clk_get_parent(vp->dclk);
++
++			ret = clk_set_parent(vp->dclk, pll_hdmiphy);
++			if (ret < 0)
++				drm_warn(vop2->drm,
++					 "Failed to switch DCLK to HDMI PHY PLL: %d\n",
++					 ret);
++		}
+ 	}
+ 
+ 	clk_set_rate(vp->dclk, clock);
 
 -- 
 2.54.0
