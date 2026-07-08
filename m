@@ -4,76 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC0D8C43458
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 10:39:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95F95C43458
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jul 2026 10:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+DAXlPYQlTLeTdEwAqV/kLr6THzn9kIEiOr7XTIh/ec=; b=g3JkWkih6ANeJl
-	DH0GP8REkrqI/1VwAHi93TdVqECBX7DlWKWvEmByyQcSqGICRZYV4kXe56ZJJ9BlVIjPayRMa57+S
-	PwPreHZXb0zov3A/eyCloQsh/YhPHoeEjAmzoPyeP1ZjyjAd02CkitKmJblcPSIU3SaEW1tXNJcpi
-	ucvl1T+touFSl6/6P/OSQEENfwT5lmdU+Xkg51Gk75KctbArDFTvSZEUJ49qytPYwGFKyWjIFkznk
-	R31nIs+DsoqWfzFTr6xSV/lJtIyXlpw+jYDggtr+lHmKvZNkfqc6+wU7DqBwgxoSH3ECYPCwgtlIk
-	/wU24vJfGvCmv2eU/bHw==;
+	List-Owner; bh=EnxMZ1PJL4zfU/jSeuh786EVXAbIgYi72Tw20OiNU30=; b=vJmxQU2Ab0CjxH
+	MaDWnvq7/8GIxD0dZLOyS+hiXQo5bF1pS85Kl2zAt0E0fV7q3QFljy9pL4KMB0T+Rz/chdC/dF6Tj
+	e19SO9k+oD2o8ZseVX9s3dP+9AB3QkdobhUw+SfCn7jdto089+6wDlaFwnPmqQ8lU1Oi3XW0qbxTD
+	DJRMeqe7e76TsdvKsM01Yr3UMuJummKnGkIXMTTblGfVJu9ZYrZIArBwy7/SXc5EbBYviQDupnSbq
+	Wzym/WWfw2J7XVgk9lhbRaukNGkkNdahpCkwfXAJWaf0DM91cUlme0QhlYEEP5bxHotqtbklvf6df
+	u9cA2Uz2KZZCIiOM2ZFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whPgP-0000000GvTq-0pCP;
-	Wed, 08 Jul 2026 10:39:13 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1whPmU-0000000GwEo-2HSE;
+	Wed, 08 Jul 2026 10:45:30 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whPgM-0000000GvSl-3kYq;
-	Wed, 08 Jul 2026 10:39:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783507148;
-	bh=iwFN7k1l7x6sZkU0ZQcIM16C6PmtP6fEROcDVf8SnW8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=c7219e4rWLH+NttiNekbwSuQ/urAUx9f7qHZWqWQ7lsm7kC/ZXj54eakGLwu6gPbB
-	 VIUX2fhwzzbK3xtqcH+hlfX4q+HYzLwZGYsFSQA6J+tcvYAedUDIzPr4q6N3O5OTTk
-	 ZEyuHF2rg7PKwJ/PLY2m1gvjg3vruEOHX7lpta7MIqqn9XIa58zeob2rv+6lh7dSgr
-	 SnZQQqyo9iHjNupsSDLsZfQGgIry09xpJ79KehJI9WoaaWGJqQQP+/k4HkYU2Bzb6r
-	 3ySGC0lMVr5rX0iZnZAy1TxVbbOmzsmZIsxItdx147A+51rDaG7SkGMFujqsHxUtzw
-	 sRhpSAH+k7hJw==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9200417E00F6;
-	Wed, 08 Jul 2026 12:39:07 +0200 (CEST)
-Message-ID: <31117c25-5410-429a-887b-87c767387c58@collabora.com>
-Date: Wed, 8 Jul 2026 13:39:07 +0300
+	id 1whPmS-0000000GwEH-1ysM;
+	Wed, 08 Jul 2026 10:45:28 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id D1D8740A09;
+	Wed,  8 Jul 2026 10:45:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87EC91F000E9;
+	Wed,  8 Jul 2026 10:45:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783507527;
+	bh=pylafSGUukz/4i8OoUfzyabnXGXIxcGDOPGtUmbKyoY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=dUv/aaBr1uN7VfTdA/Mpn68vwcEgIyJQRX0FWY1Hnd1YVyT/5DgM++bpPB/Fkv3JB
+	 PEPlD4SXsVhNA0i6/lGqsmoKFDanh5h9znke27buXLwcdmROjizFnqV1wqYVN1ZICD
+	 BwxY5YI3FN/c9nHAhaUyB+OzEKjHfnBIDz87A/vsILfDMgCpsw0CaleU2f+90+lD/q
+	 2iCWJA2L3hzpwsA/yAy0arwno6Q/qK+B70tp468gmrnv42UXwAQn5naVXsVQCNbvJ1
+	 IKLBbq4f4/gyZSDLTRNxOe9+ez0EUCg29p2aEcca3r3V48rKnteNVExLD2xui3c41F
+	 olINebbehNM9w==
+Date: Wed, 8 Jul 2026 12:45:23 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Simon Glass <sjg@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, Fabio Estevam <festevam@nabladev.com>, 
+	linux-arm-kernel@lists.infradead.org, Andy Shevchenko <andy@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, David Lechner <dlechner@baylibre.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jonathan Cameron <jic23@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
+	Rob Herring <robh@kernel.org>, linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 09/12] dt-bindings: iio: adc: rockchip-saradc: Add RV1106
+ compatible
+Message-ID: <20260708-intrepid-piquant-teal-26615d@quoll>
+References: <20260706195818.3906949-1-sjg@chromium.org>
+ <20260706195818.3906949-10-sjg@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 09/39] drm/display: hdmi-state-helper: Add fallback
- TMDS rate validation
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-9-d79890d00b6a@collabora.com>
- <20260707-venomous-helpful-magpie-b2962b@penduick>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260707-venomous-helpful-magpie-b2962b@penduick>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_033911_093013_684DC628 
-X-CRM114-Status: GOOD (  17.57  )
+Content-Disposition: inline
+In-Reply-To: <20260706195818.3906949-10-sjg@chromium.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,46 +75,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/7/26 2:23 PM, Maxime Ripard wrote:
-> Hi,
+On Mon, Jul 06, 2026 at 01:58:05PM -0600, Simon Glass wrote:
+> Add the compatible for the SARADC of the Rockchip RV1106, which is
+> compatible with the RK3588 variant.
 > 
-> On Thu, Jul 02, 2026 at 05:46:22PM +0300, Cristian Ciocaltea wrote:
->> Validate the computed TMDS character rate against
->> connector->hdmi.max_tmds_char_rate when no driver-specific
->> tmds_char_rate_valid() hook is provided.
->>
->> This gives HDMI connectors a common fallback for rejecting modes whose
->> TMDS character rate exceeds the connector limit, while still allowing
->> drivers with custom validation requirements to implement their own
->> tmds_char_rate_valid() callback.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 3 +++
->>  1 file changed, 3 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
->> index ce17eeefc2da..db76699093e8 100644
->> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
->> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
->> @@ -566,6 +566,9 @@ hdmi_clock_valid(const struct drm_connector *connector,
->>  		status = funcs->tmds_char_rate_valid(connector, mode, clock);
->>  		if (status != MODE_OK)
->>  			return status;
->> +	} else if (connector->hdmi.max_tmds_char_rate) {
->> +		if (clock > connector->hdmi.max_tmds_char_rate)
->> +			return MODE_CLOCK_HIGH;
+> Signed-off-by: Simon Glass <sjg@chromium.org>
+> ---
 > 
-> I think we should handle this the same way we do for
-> info->max_tmds_clock: if it's set, we always check that before calling
-> the driver.
+>  Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> It reduces the boilerplate in drivers, and it's always a relevant check
-> anyway.
-Ack.
+> diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> index 6769d679c907..c3bb03dc4853 100644
+> --- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> +++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> @@ -24,6 +24,9 @@ properties:
+>        - items:
+>            - const: rockchip,rk3576-saradc
+>            - const: rockchip,rk3588-saradc
+> +      - items:
+> +          - const: rockchip,rv1106-saradc
 
-Thanks,
-Cristian
+Why can't this be an enum with 3576?
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
