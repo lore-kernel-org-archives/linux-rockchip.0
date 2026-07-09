@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF8B9C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 19:04:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19730C44509
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 19:04:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6fEpTvjfKopJOgxuNtaBJ7sIoDtkW3PgEV48C6J0CvM=; b=2Z7KWHsKcodDUH
-	hx0ySNFopCZVFbGQJOsL+/t/XZmzhTyIJYVol9jFDT2g2rAZt69ZsTGLnPpLdVN+XNSMx+cr3cUzx
-	lvR9AUiSrs5wNZVynJqfSSZSPW+3V1ZilB6Oea2WEstCH1uIo/Lc2W7j+KLNjerKA5PdJhzpJ/9Ju
-	goWXsjlDhkiNeQVFzUzPmBg42dCNzbkwElXGsnylR/gB4E0ogtW2FOQ4TFSykL9Hz9LqIbl+A9Xnj
-	+yfZfovthgH4byn6udcB52BXQTDl/S+Kp0nBkxR7i4lbRvu08+1RzzWexyjuFEZLb/MOyGXP5x1oZ
-	mFXdnbN4tKoDfFEI61jA==;
+	List-Owner; bh=jPeANxTTtPr/s9gdLVfAFq0i4ttCckhRGix7FaWRCvs=; b=3utpJdlIcYGJro
+	Z8LCI94vxfaj9y3q+i7z49JEaGWrUUTlkWofdo8dzk54lx6/gfgHEDkMcoF0FCJ2KFLtK2wdm6ChZ
+	UvjVsVFtpE/KfYLfwRd3f3UCVHDL7SS9xfyVcWWNLAWAtr06M6Jwf789hN8xpq/WJbL/RYis0twxm
+	aioEAeBwhGm2mswqeKbKO0X+cv+yKUE7YnmztkTqmMetoKPjlhQWrNpFW4x5X6pARwOvgkDqdXmr8
+	25ELV/doRZpnnvTo9oG7nREHSE972RK9k7eIDdHHTsc9Nl3Nl/K26rk6ZeMhtRFKDzeOya8cSniGG
+	6phResB4CkJinKjbJWQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whu3C-00000003Ojo-10gO;
-	Thu, 09 Jul 2026 19:04:46 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1whu3A-00000003Og9-1wTg;
+	Thu, 09 Jul 2026 19:04:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whu32-00000003OUU-2PXE;
-	Thu, 09 Jul 2026 19:04:40 +0000
+	id 1whu32-00000003OUP-2yI5;
+	Thu, 09 Jul 2026 19:04:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1783623874;
-	bh=2gLkRV9WDvS2Po8dt61VmCkxYhpPnN12xRBLJSp5sbU=;
+	bh=C3l/+cYxKrK2oNBwiHFJTFHU+beGjr1UtPkRN+2iWoU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=BLycbxVXyFs3Sb7fMLBSqIAxBPZq5ac+AoSBsAzQSEmS4Wi0YdEp8tBWev6yPqLJ+
-	 UnbW/3kv/GFdUCt12WT9/g7TYIrrw0p/sOWnMcYOo39cQY6CpVSonPOvP1AW2PtvBD
-	 xDipF7Qo3pwASvi2lRFlGfdKFb3e05k2cudm0KbLGFmXW4Gv3umw1kKvIX0mV2EzZK
-	 MinSqUGWoqnb3LXN4SRgTVrD4Mux9S1Ig2dRZbycM9Az5P5LQYD8noAt2NR6DDW04I
-	 680cJa+mZAmecVO3EWqHQimgWSO6MVULfFl2TkVocRica6OD03Wxep8eV2mN/2jryw
-	 JTS1TnD0Lp3NQ==
+	b=OEOHCvXAfGf+6QJ3ZzUhgszpaAUNqWuux+78PwQ84u3cI5kZ5epgAF8oLInmhSooz
+	 rcSrE2vB5rBPYjm1v9cDzJECKwMrbR0AjHvuImPWF+Cf2cqABdRQRbMDPTUu26wQFX
+	 rKvwVhq3twVDlukOoTfZ+mIKWn/XMPm8pdsWILmTlMiRXAeWQG6Uqth0K+nK8u2HA8
+	 OCNAOa2PaK8p1hR3REnfICrNKu6gt34FWOU/raa3y4l7QtC7vbpQfv2jg8HhjpS/ma
+	 UjIStwB4tnbyG7f8Wg6zE2ctBWB3sPRIagCoQTRiiZOjPbx/2/Rx+Zv5W6JB8vP8Ef
+	 ZVFKFqa5EbNEw==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 64A0C17E0D56;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 619E817E0D53;
 	Thu, 09 Jul 2026 21:04:34 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id C4E81480069; Thu, 09 Jul 2026 21:02:29 +0200 (CEST)
+	id D5BF8480079; Thu, 09 Jul 2026 21:02:29 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 09 Jul 2026 21:02:46 +0200
-Subject: [PATCH v11 23/36] phy: rockchip: usbdp: Clear USB status on PHY
- exit
+Date: Thu, 09 Jul 2026 21:02:57 +0200
+Subject: [PATCH v11 34/36] phy: rockchip: usbdp: Fix power state handling
 MIME-Version: 1.0
-Message-Id: <20260709-rockchip-usbdp-cleanup-v11-23-a149ac60f76c@collabora.com>
+Message-Id: <20260709-rockchip-usbdp-cleanup-v11-34-a149ac60f76c@collabora.com>
 References: <20260709-rockchip-usbdp-cleanup-v11-0-a149ac60f76c@collabora.com>
 In-Reply-To: <20260709-rockchip-usbdp-cleanup-v11-0-a149ac60f76c@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -67,29 +66,28 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sashiko <sashiko-bot@kernel.org>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1231;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7674;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=2gLkRV9WDvS2Po8dt61VmCkxYhpPnN12xRBLJSp5sbU=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpP8EX0DUba+Mp4Ixii4ty7KQaRBOEX/SuIs
- 90YFcVLcSvOZ4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqT/BFAAoJENju1/PI
- O/qaEKQP/2/45hwEeiIdWrFzTNqVCC7s0hVW6P9Q7hL5u5oVTXFVhex0RY4k9yplKZbqiV8Jajs
- P+FQKeDdRgkJ5pq4PJF6luMjGt4lHndNxL8IyLsfPM4Z0TdESw6XWXylfIqreLruiQntfVIiSzj
- /v+8lqwL5x2gP9SrAo4J3lGDvKpxnvmiEoMIPz5d4D+TiPU4YWkz14dHXTEobMCb/Vw0o+tMS48
- nTHXvpjGktiDyaoRRE9EaWb+CgWGPL4eNeHabhBBJX2Se/mCn3y/IfSQYfsWAaUSBlfuVg/a4Wr
- eDagAuvcrNy7QiGjGVQKcJ1/7nnNfxuhU+CToNWUntpHkN21+miR0NV8qLHUxsXHsXDPXv62k42
- ZUiGDXBwSgo9+CyQpqeMjHJpmO9esSvIRucbJxZyUMb4164mSzHv8FekyUpKMZZ874Eu+s/Hsz9
- uNdcQdZLxLuOLXwKPoXqdZiH/WtBI1QLlS1YKgKIe40YD7UxpM9JdanqyUpNuCDToG2nu1+kkYC
- P6Tkw63SQeYUu6wJY+JJxzXihnvYdEv9tpgk8TxMKXdhs5HbexffinDwkUSJET8YKTqGKqU1YIe
- Dn6zAVkGOu6UoN19/oPKTitTCd/yZr8FSAg8dcj4BYiWJVk06PQ2Vk01kUE+gkr/9lxMOEUnhpd
- XGJTAE1m0Ly/bysry4awz9Q==
+ bh=C3l/+cYxKrK2oNBwiHFJTFHU+beGjr1UtPkRN+2iWoU=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpP8EUZukDMPa91gyHAfbyeUFG0mr2rbgR5b
+ vP5x1/wTdIeNYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqT/BFAAoJENju1/PI
+ O/qaRWQP/jv7NQml5qw0f7ju6ZeSAv2Ip+1oKSJwttnD8hXlbe29WAnhLBO5tfAppLDTlBby13L
+ 3vgqm8806+hzDoN9/H6k2sCOBuAK+C0jesidCFkFGN16MX08XrxGZI4TOS1KZEoAkA99oKm25/D
+ tgdrPhbguZs0C2kCUbBrWBuun/xoYwpM8i0ENxnrKzazjLHMyn2yxm6HTkTx2OXiEyHeHgsRr09
+ NJ3C993g8Ft4rQSRTvtdgjrn8fibZtdnGBr86jc/KBhWywivqMCEzseMojH9Iz7PtdRkE0Su2YM
+ N2yzMd2qosaqWZD07iWMoKDAhAvRJtKvPSRxFsSbiysDL8Ds8QQ8mN0nCUxmZN3MolWUVKip8xJ
+ x41BBfZovd32yNpWJ4hCl49A90S2THpbBwMfJMyZtQ8GbNwi4OkCH1yM5Seowkr5hB5FLkEmRZk
+ TF+I/cqRQZLPOZlaqIqmlLrnElhXQ/kaeOK5K/URAwexJFH72VtcoXr5JkjI/WpMq2LxX2zDzHN
+ kp2isDjNkzgd5EALrlZ5QsdBImZyoj3nVtKKpRsf7ZX/CuI/0CP5gGrFGY9q7/nM7uGOl2HYT2i
+ rrNO+jiAhJabfobZAz4y7OVRkxcqlvQT/M6aj4TgAXLAHHUfJLlcJuQArQc1eEp0azcsHx9TjHv
+ NONcCnvmeS4gpt563DOAs4w==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_120436_770691_55EF99AD 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20260709_120436_943700_D872EDC7 
+X-CRM114-Status: GOOD (  27.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,35 +104,248 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ensure the USB status flag is cleared when the USB3 PHY is
-exited while the system is in DP-only mode. This can happen
-if the USB3 controller device is unbound while a DP-only
-adapter is plugged into the USB-C port.
+Restructure power state handling by introducing sw_mode in addition
+to the hw_mode field, so that the PHY knows about the currently
+supported modes from the hardware perspective, the current modes
+requested by software and the actual hardware status.
 
-Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://sashiko.dev/#/message/20260625-rockchip-usbdp-cleanup-v7-24-38eb3cf654fd%40collabora.com
+Now anything updating either the hardware or software state can simply
+update the status field and call rk_udphy_update_power_state().
+
+This makes it a lot more obvious what is going on and also fixes a few
+potential resource leaks identified by Sashiko as a side-effect. For
+example if USB3 is requested by software while the USB-C is in DP-only
+mode, things are decently handled after this.
+
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 144 ++++++++++++++++++------------
+ 1 file changed, 87 insertions(+), 57 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 8c165bcab796..a742bde7155b 100644
+index e2cd72643a7d..c5ad300620a6 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -1273,8 +1273,10 @@ static int rk_udphy_usb3_phy_exit(struct phy *phy)
+@@ -173,9 +173,10 @@ struct rk_udphy {
+ 
+ 	/* PHY status management */
+ 	bool flip;
+-	bool phy_needs_reinit;
++	bool phy_needs_reinit; /* lane mux changed */
+ 	u8 hw_mode; /* modes currently supported by hardware */
+-	u8 status;
++	u8 sw_mode; /* modes currently requested */
++	u8 status; /* current PHY power state */
+ 
+ 	/* utilized for USB */
+ 	bool hs; /* flag for high-speed */
+@@ -985,66 +986,86 @@ static int rk_udphy_parse_dt(struct rk_udphy *udphy)
+ 	return rk_udphy_reset_init(udphy, dev);
+ }
+ 
+-static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
++static int rk_udphy_update_power_state(struct rk_udphy *udphy)
+ {
++	u8 target_mode;
+ 	int ret;
+ 
+-	if (!(udphy->hw_mode & mode)) {
+-		dev_info(udphy->dev, "mode 0x%02x is not support\n", mode);
++	/*
++	 * Initialize PHY mode according to the hardware setup (either described
++	 * in DT or negotiated via the Type-C controller) instead of requesting
++	 * only the needed PHY side, because that would break the USB/DP data
++	 * streams when the other PHY is being requested. This is not an issue
++	 * during the Type-C negotiation as that happens during the hotplug phase
++	 * and not during normal operation. Also disable everything if the
++	 * software has not requested anything, as there shouldn't be any active
++	 * data streams in that case.
++	 */
++	target_mode = udphy->hw_mode;
++	if (udphy->sw_mode == UDPHY_MODE_NONE)
++		target_mode = UDPHY_MODE_NONE;
++
++	if (!udphy->phy_needs_reinit && udphy->status == target_mode)
+ 		return 0;
+-	}
+ 
+-	if (udphy->status == UDPHY_MODE_NONE) {
+-		phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_PRE_RESET);
++	/* Avoid to re-init disabled PHY */
++	if (udphy->status == target_mode && target_mode == UDPHY_MODE_NONE)
++		return 0;
+ 
+-		rk_udphy_u3_port_disable(udphy, true);
+-		udelay(10);
++	/*
++	 * Inform DWC3 driver, that we are about to reset the PHY, so that it can
++	 * assert its PIPE reset lines and avoid DWC3 getting into a buggy state.
++	 * This is intentionally done for a PHY disable, since that also changes
++	 * the clocks routed to the PHY.
++	 */
++	ret = phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_PRE_RESET);
++	if (ret)
++		return ret;
++
++	/*
++	 * Disable USB3 port, which among other things re-routes a DWC3 clock to
++	 * avoid SErrors when the DWC3 registers are accessed while the PHY is
++	 * disabled.
++	 */
++	rk_udphy_u3_port_disable(udphy, true);
++	udelay(10);
+ 
++	if (udphy->status == UDPHY_MODE_NONE) {
++		/* Power up (incl. clocks) */
+ 		ret = rk_udphy_setup(udphy);
+-		if (ret)
++		if (ret) {
++			phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
+ 			return ret;
+-
+-		if (!udphy->hs && udphy->hw_mode & UDPHY_MODE_USB)
+-			rk_udphy_u3_port_disable(udphy, false);
+-		udphy->phy_needs_reinit = false;
+-
+-		phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
+-	} else if (udphy->phy_needs_reinit) {
+-		phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_PRE_RESET);
+-
+-		rk_udphy_u3_port_disable(udphy, true);
+-		udelay(10);
+-
++		}
++	} else if (target_mode == UDPHY_MODE_NONE) {
++		/* Power down (incl. clocks) */
++		rk_udphy_disable(udphy);
++	} else {
++		/* Mode change => re-init */
+ 		ret = rk_udphy_init(udphy);
+ 		if (ret) {
+ 			phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
+ 			return ret;
+ 		}
+-
+-		phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
+-
+-		udphy->phy_needs_reinit = false;
+ 	}
+ 
+-	udphy->status |= mode;
++	/* Ensure USB3 support is enabled when supported */
++	if (!udphy->hs && target_mode & UDPHY_MODE_USB)
++		rk_udphy_u3_port_disable(udphy, false);
+ 
+-	return 0;
+-}
+-
+-static void rk_udphy_power_off(struct rk_udphy *udphy, u8 mode)
+-{
+-	if (!(udphy->hw_mode & mode)) {
+-		dev_info(udphy->dev, "mode 0x%02x is not support\n", mode);
+-		return;
+-	}
+-
+-	if (!udphy->status)
+-		return;
++	/*
++	 * Inform DWC3, that we are done with the reset, so that it can deassert
++	 * its PIPE reset line. This is sent in pair with a PRE_RESET allowing
++	 * consumer driver to do paired resource requests (e.g. clocks) in their
++	 * notification handlers. As we reroute the clocks, its also fine to
++	 * send this after completely disabling the PHY.
++	 */
++	phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
+ 
+-	udphy->status &= ~mode;
++	udphy->status = target_mode;
++	udphy->phy_needs_reinit = false;
+ 
+-	if (udphy->status == UDPHY_MODE_NONE)
+-		rk_udphy_disable(udphy);
++	return 0;
+ }
+ 
+ static int rk_udphy_dp_phy_power_on(struct phy *phy)
+@@ -1053,11 +1074,15 @@ static int rk_udphy_dp_phy_power_on(struct phy *phy)
+ 	int ret;
+ 
+ 	scoped_guard(mutex, &udphy->mutex) {
++		udphy->sw_mode |= UDPHY_MODE_DP;
++
+ 		phy_set_bus_width(phy, udphy->dp_lanes);
+ 
+-		ret = rk_udphy_power_on(udphy, UDPHY_MODE_DP);
+-		if (ret)
++		ret = rk_udphy_update_power_state(udphy);
++		if (ret) {
++			udphy->sw_mode &= ~UDPHY_MODE_DP;
+ 			return ret;
++		}
+ 
+ 		rk_udphy_dp_lane_enable(udphy, udphy->dp_lanes);
+ 
+@@ -1080,10 +1105,10 @@ static int rk_udphy_dp_phy_power_off(struct phy *phy)
+ 
  	guard(mutex)(&udphy->mutex);
  
- 	/* DP only or high-speed */
--	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs)
-+	if (!(udphy->mode & UDPHY_MODE_USB) || udphy->hs) {
-+		udphy->status &= ~UDPHY_MODE_USB;
+-	rk_udphy_dp_lane_enable(udphy, 0);
+-	rk_udphy_power_off(udphy, UDPHY_MODE_DP);
++	udphy->sw_mode &= ~UDPHY_MODE_DP;
+ 
+-	return 0;
++	rk_udphy_dp_lane_enable(udphy, 0);
++	return rk_udphy_update_power_state(udphy);
+ }
+ 
+ /*
+@@ -1288,16 +1313,24 @@ static const struct phy_ops rk_udphy_dp_phy_ops = {
+ static int rk_udphy_usb3_phy_init(struct phy *phy)
+ {
+ 	struct rk_udphy *udphy = phy_get_drvdata(phy);
++	int ret;
+ 
+ 	guard(mutex)(&udphy->mutex);
+ 
+-	/* DP only or high-speed, disable U3 port */
+-	if (!(udphy->hw_mode & UDPHY_MODE_USB) || udphy->hs) {
++	if (udphy->hs) {
+ 		rk_udphy_u3_port_disable(udphy, true);
  		return 0;
+ 	}
+ 
+-	return rk_udphy_power_on(udphy, UDPHY_MODE_USB);
++	udphy->sw_mode |= UDPHY_MODE_USB;
++
++	ret = rk_udphy_update_power_state(udphy);
++	if (ret) {
++		udphy->sw_mode &= ~UDPHY_MODE_USB;
++		return ret;
 +	}
++
++	return 0;
+ }
  
- 	rk_udphy_power_off(udphy, UDPHY_MODE_USB);
+ static int rk_udphy_usb3_phy_exit(struct phy *phy)
+@@ -1306,15 +1339,12 @@ static int rk_udphy_usb3_phy_exit(struct phy *phy)
  
+ 	guard(mutex)(&udphy->mutex);
+ 
+-	/* DP only or high-speed */
+-	if (!(udphy->hw_mode & UDPHY_MODE_USB) || udphy->hs) {
+-		udphy->status &= ~UDPHY_MODE_USB;
++	if (udphy->hs)
+ 		return 0;
+-	}
+ 
+-	rk_udphy_power_off(udphy, UDPHY_MODE_USB);
++	udphy->sw_mode &= ~UDPHY_MODE_USB;
+ 
+-	return 0;
++	return rk_udphy_update_power_state(udphy);
+ }
+ 
+ static const struct phy_ops rk_udphy_usb3_phy_ops = {
 
 -- 
 2.53.0
