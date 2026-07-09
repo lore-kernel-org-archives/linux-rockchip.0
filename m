@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36FDDC4450A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BD9DC4450B
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 19:04:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ofakpVEQxpQvIDquOuL353N5+fNaG/YYt4PqVdF0pIE=; b=VGeeMhBFgZ6Ft2
-	rJ4QuPhsOT9E/0C+i9fVIrxlJW3nzqoeRSg0siXZ1T9NAfFl0/q4d9dMRsLdAFed2WkH6XKi0l/vW
-	HkV+rU/xeB6IQ9FghEt4jJ35cUh3MzZvNy88G/PT9gY/0jHv06lEN/htQ9AtuNM5/l1Bps/8vf0vd
-	Qz+B4uglg33Wr6cCJ/p6imRZOZKcGHdzUdoxexvdi7o7bgg89u/aUmj0JMFHOKBt2eHBtL7BovpPm
-	gYFtWYIts9gp5ze6cLtcQp6BfYkC9TpmcyiCnOqggcTyPlePOeuk3XsLN8Y9Qa/ASUiEzL1E6LR4W
-	SlHNQ60MvN2ZE7Yeh8kQ==;
+	List-Owner; bh=/SZCCeN1c4DQqD0svtKt7iKmEuumgJUz6n2WWCafMhU=; b=4R49UvdqNlg8jG
+	Xe7O/snwTW+MQ9xTZsWw70FhCNdToTSuIiqhsBp/kDaRp9j9AtGGGiJRQ+8UQiFPHuUXhN2sl4X5k
+	8n963SENUUJS6EI8MTteDIXa+6VphvvZD8g8tVyO0fuYJ3yGnz22RWkB2yKyPhNWOx5AbrStg8QQ+
+	TTWu+qw360AA1qrHpz2BdPKx02dlksYmEaydf2zDywNKeghJQnLg7I9URZh+nskC/63Czq0pEwUUZ
+	Ai3mpKUsskJa3OkHAhsaj/2tnj+qQzXG/VCkh5VJLB3U5Caekw9diJVdBGOVfQr49moLQxEChdnhs
+	HhHLJ57AtmXNv7q942Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whu3A-00000003OhE-3jfy;
-	Thu, 09 Jul 2026 19:04:44 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1whu3B-00000003Oi0-0Rzn;
+	Thu, 09 Jul 2026 19:04:45 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whu32-00000003OUc-3Kya;
+	id 1whu33-00000003OUw-2z6R;
 	Thu, 09 Jul 2026 19:04:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1783623874;
-	bh=l3uTaVmYXyzz4C+Rff5MIwMgEtWsya2jWgKHFq2XIA4=;
+	bh=jyka63U/GjjUhb5TWMLQN8i44A0dSjRl6GzINFUtTsU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FEvwfcOZO3yQK3DiiMDhDND7yykIMMlOxic8HENk4d5wL/xF/qxib5/wweZfnP0WO
-	 eaY2GuFC0JpAWSyOw/nV6wIbqGQpVDA2xVmekf6e/KEshj6Tvm5qW2K3vJ1/OTjcFk
-	 FDWDj/VVJ3jg6VtVcJMqSfXx+B+166GWUf++X93Dei0yCi9kmnomO5ltFnU1aPyEZX
-	 7xu/MeI8iavFE12sQOOGEinrM2GT4xNOUFzBqTHGc+BSZZBd2KOjVchBDVVF+wxUIn
-	 1ZdDUjrv+XUZhBF5trhN4m4SHgRdHvGZYUjFUXdCKmsj6BbsSKh/eD25ySEqPyS3MB
-	 ozMDjyRRZGYJA==
+	b=cNh/ojD3Xg+qQmK1ZD6hpMhiFiKF8DH2cOp/rMowPfVHoK6IQSGWh5BcFAkHNAaaA
+	 C5vq4saBO2gQYUldQCKWc5l2mVxKPgW+qGAdsarRJz0bxE8414QsoSKVOLMzqcKifb
+	 yP3nQQAqGBLXNbHxPjb/Cc1A4ycf9iOivXJ8pHAbxpwX0bFbxDoK7Tws08RPW+HcUz
+	 rf/QY7sWuf4/QDvB5/q7NE2VWmH5G4un2lRN+vOXglQxsycalu7IWENaRI/UAaYjys
+	 wx50GVdWkHQg76JsxlZs5jMdZxWul1b5UdFFNc4B5Qqc4G+8HFHP6rLg+pIOR2W805
+	 w7eT65iRkuQtQ==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6B7E217E0E04;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6681A17E0DFB;
 	Thu, 09 Jul 2026 21:04:34 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id C1B14480067; Thu, 09 Jul 2026 21:02:29 +0200 (CEST)
+	id CF925480074; Thu, 09 Jul 2026 21:02:29 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 09 Jul 2026 21:02:44 +0200
-Subject: [PATCH v11 21/36] phy: rockchip: usbdp: Properly handle
- TYPEC_STATE_SAFE and TYPEC_STATE_USB
+Date: Thu, 09 Jul 2026 21:02:53 +0200
+Subject: [PATCH v11 30/36] usb: dwc3: core: support PHY reset notifications
 MIME-Version: 1.0
-Message-Id: <20260709-rockchip-usbdp-cleanup-v11-21-a149ac60f76c@collabora.com>
+Message-Id: <20260709-rockchip-usbdp-cleanup-v11-30-a149ac60f76c@collabora.com>
 References: <20260709-rockchip-usbdp-cleanup-v11-0-a149ac60f76c@collabora.com>
 In-Reply-To: <20260709-rockchip-usbdp-cleanup-v11-0-a149ac60f76c@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -67,29 +66,28 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sashiko <sashiko-bot@kernel.org>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1759;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5906;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=l3uTaVmYXyzz4C+Rff5MIwMgEtWsya2jWgKHFq2XIA4=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpP8EUAH1cmb7CJr1PqRzQdGafn8xDNtWA4A
- O//cDuJ2Gln8YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqT/BFAAoJENju1/PI
- O/qadXwP/jrmkAC7He1d0ASid2gBRlSlrL4w7z05n/vvWee2wdd+52QY9noYqH9S+iafwoIWce0
- qEzkjgN6k1VUY7uccwqSoq1Ekn8DwrFsWNkJ2WJzFQGjSrCyKubTmFpAKbKA3dXarteAfuymPr7
- NqHWjJQczmmZD+yn7rkboYtf/NBNblLiGQAIHIU1Mv7W0OCr+xvbV7457IQBNB8XlTUSdYoVKdv
- sI16GkeC+KwUOPcnVo99qucxn7wIMTkBSeitUIdU7QZQH/Z//TQIFhDqns8JNy3N6vD9tSAL8aV
- h0ohlbzX1Ly+EDF9GIuhJrsxWgTHcz3JP3MuDrtlzlTnFaofCLVpZxNLIT+g1E3LMPIp65efad/
- 0Cju4oTtqQkb6B5XxSi0S4W2OZXmZerkRMwO/clvjM2WoMttvfXXmDI9z1J4Yz0pelQLe6rBpgL
- bG1XCUQbyjdlvyw2f1JqnWa8jbmqmtCBQD4yf6EX1S/8sl5t+0Xl0ZqgX3Ysnu9wHgaY6ved1jM
- D0MzOxILZMivranhzOee7QRR0L379NINLRl60Nshktup7zQHki4PLLAfEwNicl/XPImtml3sr6c
- Y/9y1SP3wz35JezzXrpyLNDUUW2pmlFWPf8MAUGjXUeEXQ1PStdPI5a0kJV8s4DkOfkr/2Y48Ri
- CKc3pU5OT+8LJ3C/gw7w1vg==
+ bh=jyka63U/GjjUhb5TWMLQN8i44A0dSjRl6GzINFUtTsU=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpP8EUp6wNudKoEmpYu+VN9TPKaZXgC0tJqS
+ W3dZOaswJwLT4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqT/BFAAoJENju1/PI
+ O/qasPgP/1xwm6zUM1B7R2h6iEv62Zr03qXI8VaL3x0L6l2CNFr5qIBgFIjRKPI3wZUGgOuF7A5
+ IBo9+dvUnIeBXPBV7V532JZGWD9bv74Lo7q4n64Nph8yc5Vc467KvOjvLjeCkK/UAqp2OJ/m7PQ
+ koG0H6CKgfDJRLS8PSEq2lChc2UT2E+szmPclO7xOuQtzM+76l1f5dp7EATApiCAxPCt/47UJqW
+ MGSpyukkDSdNus+y1ViY8aVq08+1kwUvZiAJtqXqCWdiyubPI43SWmD2yDAgDRVtJ5xgs9ip84w
+ zF+fGO0Om57ajLhlVGDGSRkP9pWNzasAHvfLWYKWpO5jeS8/NocOD1CZAaC2OZDslKN5nCmmuiY
+ JfPRE9T47qaqwlunsSUSMqlx9HNyGa4pk4Qn1DyOsNxNKTBUuSM9GlidD+0IX5UdEkyJqM0tt2h
+ s3gHARtF69ODlRvbYQCfKFeaNVsvHZxmIed+FlzDv6UW2wl+FyuWhtT9fD2N7FuGQS+04C5DMw3
+ Ufn8D30uVrfZo5zVbCx96+ylO3wgFT09pl5hMyFYo8knP1OyaeaE9jLr1TwIU0Los1yvfHkBnTd
+ SyuJ3mRuFnFRnPZfK+Hi8IpREgo2rzg4n4aZcQ/VSjhupgaQh5Ys9eEk+Fq7TClVeVFfy6ox/ea
+ MRkis6C0NF8Y+//TVXE4ziA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_120436_993873_B03718CA 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20260709_120437_980396_F93140F8 
+X-CRM114-Status: GOOD (  19.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,54 +104,194 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Handle TYPEC_STATE_SAFE and TYPEC_STATE_USB Type-C state events,
-so that the muxing is properly updated when exiting DP AltMode.
+On recent Rockchip platforms (at least RK3588 & RK3576), DWC3 IP is used
+with a USBDP PHY providing USB3 and DP. This PHY needs to be reset when
+the mode changes, which may happen when plugging in different USB-C
+devices.
 
-Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://sashiko.dev/#/message/20260619155020.CC7361F000E9%40smtp.kernel.org
+If the USBDP PHY resets with the DWC3 IP running, its internal state
+corrupts resulting in the USBDP PHY not being able to lock some PLL
+clocks, which effectively renders USB3 unusable.
+
+To fix the issue this adds handling for the new PHY framework reset
+notifications, which will assert PHYSOFTRST before the actual PHY
+is disabled and will deassert it once the PHY returns.
+
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
+ drivers/usb/dwc3/core.c | 80 +++++++++++++++++++++++++++++++++++++++++++++++++
+ drivers/usb/dwc3/core.h | 18 +++++++++++
+ 2 files changed, 98 insertions(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 4e54020d1755..0399cbf96e19 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -1293,17 +1293,26 @@ static const struct phy_ops rk_udphy_usb3_phy_ops = {
- 	.owner		= THIS_MODULE,
- };
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index 517aa7f1486d..ae469183cf15 100644
+--- a/drivers/usb/dwc3/core.c
++++ b/drivers/usb/dwc3/core.c
+@@ -30,6 +30,7 @@
+ #include <linux/pinctrl/devinfo.h>
+ #include <linux/reset.h>
+ #include <linux/bitfield.h>
++#include <linux/phy/phy.h>
  
-+static bool rk_udphy_is_supported_mode(struct typec_mux_state *state)
+ #include <linux/usb/ch9.h>
+ #include <linux/usb/gadget.h>
+@@ -880,6 +881,82 @@ static int dwc3_phy_init(struct dwc3 *dwc)
+ 	return ret;
+ }
+ 
++static int dwc3_usb3_phy_notify(struct notifier_block *nb,
++				unsigned long action, void *data)
 +{
-+	/* Handle Safe State and USB State */
-+	if (state->mode < TYPEC_STATE_MODAL)
-+		return true;
++	struct dwc3_phy_nb *pnb = container_of(nb, struct dwc3_phy_nb, nb);
++	struct dwc3 *dwc = pnb->dwc;
++	int port = pnb->port_index;
++	unsigned long flags;
++	u32 reg;
++	int ret;
 +
-+	/* Handle DP AltMode */
-+	if (state->alt && state->alt->svid == USB_TYPEC_DP_SID)
-+		return true;
++	switch (action) {
++	case PHY_NOTIFY_PRE_RESET:
++		ret = pm_runtime_resume_and_get(dwc->dev);
++		if (ret)
++			return notifier_from_errno(ret);
 +
-+	return false;
++		atomic_inc(&dwc->phy_reset_count);
++
++		/*
++		 * Assert USB3 PHY soft reset within DWC3 before the external
++		 * PHY resets. This disconnects the PIPE interface, preventing
++		 * the DWC3 from interfering with PHY reinitialization and
++		 * avoiding LCPLL lock failures.
++		 */
++		spin_lock_irqsave(&dwc->lock, flags);
++		reg = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(port));
++		reg |= DWC3_GUSB3PIPECTL_PHYSOFTRST;
++		dwc3_writel(dwc, DWC3_GUSB3PIPECTL(port), reg);
++		spin_unlock_irqrestore(&dwc->lock, flags);
++		break;
++
++	case PHY_NOTIFY_POST_RESET:
++		/*
++		 * Deassert PHY soft reset to reconnect the PIPE interface
++		 * after PHY reinitialization.
++		 */
++		spin_lock_irqsave(&dwc->lock, flags);
++		reg = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(port));
++		reg &= ~DWC3_GUSB3PIPECTL_PHYSOFTRST;
++		dwc3_writel(dwc, DWC3_GUSB3PIPECTL(port), reg);
++		spin_unlock_irqrestore(&dwc->lock, flags);
++
++		pm_runtime_put_autosuspend(dwc->dev);
++		atomic_dec(&dwc->phy_reset_count);
++		break;
++	}
++
++	return NOTIFY_OK;
 +}
 +
- static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
- 				  struct typec_mux_state *state)
++static void dwc3_phy_register_notifiers(struct dwc3 *dwc)
++{
++	int i;
++
++	for (i = 0; i < dwc->num_usb3_ports; i++) {
++		dwc->usb3_phy_nb[i].nb.notifier_call = dwc3_usb3_phy_notify;
++		dwc->usb3_phy_nb[i].dwc = dwc;
++		dwc->usb3_phy_nb[i].port_index = i;
++		phy_register_notifier(dwc->usb3_generic_phy[i],
++				      &dwc->usb3_phy_nb[i].nb);
++	}
++}
++
++static void dwc3_phy_unregister_notifiers(struct dwc3 *dwc)
++{
++	int i;
++
++	for (i = 0; i < dwc->num_usb3_ports; i++)
++		phy_unregister_notifier(dwc->usb3_generic_phy[i],
++					&dwc->usb3_phy_nb[i].nb);
++
++	for (i = atomic_read(&dwc->phy_reset_count); i > 0; i--)
++		pm_runtime_put_autosuspend(dwc->dev);
++	atomic_set(&dwc->phy_reset_count, 0);
++}
++
+ static void dwc3_phy_exit(struct dwc3 *dwc)
  {
- 	struct rk_udphy *udphy = typec_mux_get_drvdata(mux);
+ 	int i;
+@@ -2341,6 +2418,7 @@ int dwc3_core_probe(const struct dwc3_probe_data *data)
  
--	/*
--	 * Ignore mux events not involving DP AltMode, because
--	 * the mode field is being reused, e.g. state->mode == 4
--	 * could be either TYPEC_MODE_USB4 or TYPEC_DP_STATE_C.
--	 */
--	if (!state->alt || state->alt->svid != USB_TYPEC_DP_SID)
-+	/* Ignore mux events not involving USB or DP */
-+	if (!rk_udphy_is_supported_mode(state))
- 		return 0;
+ 	dwc3_check_params(dwc);
+ 	dwc3_debugfs_init(dwc);
++	dwc3_phy_register_notifiers(dwc);
  
- 	mutex_lock(&udphy->mutex);
+ 	if (!data->skip_core_init_mode) {
+ 		ret = dwc3_core_init_mode(dwc);
+@@ -2355,6 +2433,7 @@ int dwc3_core_probe(const struct dwc3_probe_data *data)
+ 	return 0;
+ 
+ err_exit_debugfs:
++	dwc3_phy_unregister_notifiers(dwc);
+ 	dwc3_debugfs_exit(dwc);
+ 	dwc3_event_buffers_cleanup(dwc);
+ 	dwc3_phy_power_off(dwc);
+@@ -2412,6 +2491,7 @@ void dwc3_core_remove(struct dwc3 *dwc)
+ 
+ 	dwc3_core_exit_mode(dwc);
+ 	dwc3_debugfs_exit(dwc);
++	dwc3_phy_unregister_notifiers(dwc);
+ 
+ 	dwc3_core_exit(dwc);
+ 	dwc3_ulpi_exit(dwc);
+diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
+index e0dee9d28740..a7a2baf85015 100644
+--- a/drivers/usb/dwc3/core.h
++++ b/drivers/usb/dwc3/core.h
+@@ -11,6 +11,7 @@
+ #ifndef __DRIVERS_USB_DWC3_CORE_H
+ #define __DRIVERS_USB_DWC3_CORE_H
+ 
++#include <linux/atomic.h>
+ #include <linux/device.h>
+ #include <linux/spinlock.h>
+ #include <linux/mutex.h>
+@@ -1002,6 +1003,20 @@ struct dwc3_glue_ops {
+ 	void	(*pre_run_stop)(struct dwc3 *dwc, bool is_on);
+ };
+ 
++struct dwc3;
++
++/**
++ * struct dwc3_phy_nb - wrapper for PHY notifier block
++ * @nb: notifier block
++ * @dwc: back-pointer to the DWC3 controller
++ * @port_index: USB3 port index this notifier is registered for
++ */
++struct dwc3_phy_nb {
++	struct notifier_block	nb;
++	struct dwc3		*dwc;
++	u8			port_index;
++};
++
+ /**
+  * struct dwc3 - representation of our controller
+  * @drd_work: workqueue used for role swapping
+@@ -1065,6 +1080,7 @@ struct dwc3_glue_ops {
+  * @usb3_phy: pointer to USB3 PHY
+  * @usb2_generic_phy: pointer to array of USB2 PHYs
+  * @usb3_generic_phy: pointer to array of USB3 PHYs
++ * @usb3_phy_nb: notifier blocks for USB3 PHY reset events
+  * @num_usb2_ports: number of USB2 ports
+  * @num_usb3_ports: number of USB3 ports
+  * @phys_ready: flag to indicate that PHYs are ready
+@@ -1229,6 +1245,8 @@ struct dwc3 {
+ 
+ 	struct phy		*usb2_generic_phy[DWC3_USB2_MAX_PORTS];
+ 	struct phy		*usb3_generic_phy[DWC3_USB3_MAX_PORTS];
++	struct dwc3_phy_nb	usb3_phy_nb[DWC3_USB3_MAX_PORTS];
++	atomic_t		phy_reset_count;
+ 
+ 	u8			num_usb2_ports;
+ 	u8			num_usb3_ports;
 
 -- 
 2.53.0
