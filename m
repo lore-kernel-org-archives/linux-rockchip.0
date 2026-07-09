@@ -4,89 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77270C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 18:29:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC7E8C43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 19:02:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GUPTl2EE3CsT9HaSQkj7MrMLBbDK6G4AB7icTQhUz6g=; b=ZpVV373avNcXsr
-	GXB/o+XZDaz3b6pzrdvTKj1O8areAQDpEsLL1SkxLKXI6oIMbMiL0ukPaAJ8m3ZWgaEWQijI9oMv0
-	YNSptGxMVzZR0u+jYDaWfsqdV2FQWNJn7c1AsQT8TOT44j0kyX/y+JP5gMVEOsrviF9uHZbhPwQ0G
-	dfz+AxUvB7BtKOQKAmOqq9PM41qrTE7TGI3XAGqRBpO8R5KYxiclTAZ8ySYaq4VEybvWWlUdpxeTR
-	jqERtQ+gmOeBK6wDtgUFTjGODwXoITzvrAvOVhlOWZGpU5BrzQ35rL8xm+FWDwQhcoGrGWy3xkPOz
-	ovOfI95ojC4UEoSvSUBQ==;
+	List-Owner; bh=L6ILYEnMQc9up5VvoFnTXpQwjsL4Y+ZkmFil9Is1NtE=; b=d7HHuMocsLgcp6
+	+9ECdYYKzuAiCf1RpV5faou1QZeJRqJYEcdkZMZz6LPrkwtB26+1kKYkMjrBaAtpicwGThcm2oOGn
+	hM0ebb6fnnLUZPdX24Gdymq8sfxcoZrhDN+SHa9qHedqBEi40c9m+E6RwRwisyiSRbxDR5TW4CeJe
+	ruIoTmw3yIYFojQ5wmbvuLhazWcnbLuD/dRxQX/rbzawSLoxYGJ6wTIX4mQoBPVai4qyr62PNQ3Yk
+	MYXREteLF/FMEryRyvptWX9/YGfMvoA5Ltf8ilxDkmpeS7H/U0bZSxZ2Qps3OGr7Z81UlEafdi/+p
+	K1D0kHjiaxNL6MBBvVWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whtUZ-00000003DrZ-3Hkd;
-	Thu, 09 Jul 2026 18:28:59 +0000
-Received: from mail-pj2-x04.google.com ([2607:f8b0:4864:39::4])
+	id 1whu15-00000003LIv-3zIu;
+	Thu, 09 Jul 2026 19:02:35 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whtUW-00000003Dqo-0bRO
-	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Jul 2026 18:28:57 +0000
-Received: by mail-pj2-x04.google.com with SMTP id 98e67ed59e1d1-381191ea2adso116608a91.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 09 Jul 2026 11:28:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783621735; x=1784226535; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:message-id
-         :references:in-reply-to:user-agent:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=RN+4SkO8PJ9d9SXPrFRpz0v6UaMeYjDz8fSXVOFCTUQ=;
-        b=KeDclZzgQiFiBf2siTEpRGdWjizWNVMyxP/265tqZ71uHIPzN6twsUV36CauJH46Q7
-         Ioonxucb9HAjr96pNTNzJ4LubnMBXC3mhi7HtZjDwgq50DTzEXNXp+akf7HW+wFVyoy8
-         3ahlHCxUitVaqQEAT+RV5gokfKXvoFuIt4Q3Ry2u3h/XWJKp3UKz+3PeBkLiOYbvIFgR
-         Yuk9EDxiTNtXzgVQqdILPbrNZJytLfbBK/UqQdpT2h/B+XNGHlkvQFd8UbgQQ0dgnsxA
-         ibff65//MO9WryFDee5sfcoV4jpsK/O0O8I3+hC+3d3TNR7BH8wr9ZQ5yFOQjvh++Eg5
-         CRBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783621735; x=1784226535;
-        h=content-transfer-encoding:content-type:mime-version:message-id
-         :references:in-reply-to:user-agent:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=RN+4SkO8PJ9d9SXPrFRpz0v6UaMeYjDz8fSXVOFCTUQ=;
-        b=GJG6eE5w75Tx/Ky1V7ZDVsHcxBRBrsGk7e3t8txnr37/hqjFct4rThmV9XefzkJGYI
-         +vZox/fjOWXHkGPfmo4nMjvP/QbM8+o527aPAdUKyZNusvOv7Ws6584BIE1nOhHZqd7g
-         KKnbiGxzm9BSc9LCgoNrJqqquwHfErw9T3joAJQfWI4iI+xbxgoZc+XLOa3oQcsq06w/
-         pQTeri5ecLmB8nvTkBDlHz/qDyFT03GZ6tcL3n+OkluSBGn+/FrmCr7dHJ9VP6/9fldx
-         G3Vn2IFSH+xOI/sJJ8HOPMP16Cubv3rrxww7efQXnPlPRcGMiRRcRIsryw5AZm7dIavv
-         Suxg==
-X-Forwarded-Encrypted: i=1; AHgh+RoGkNc+lc8q3WflLY423mjM0cd+NHEYlkkJlBB77Z4dJLEh54qP0giYINzw8R1AIvFDODHl4bapN6qx9CPuCg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxnBzWhM3yl/xUs5KO6UdVDW8eG8h4nCsyLGE9T/8lkCN8lCtGS
-	1mHzEgS31BOGCXVrRv/D4VSH/LLgQwSftyViwN88KJzeMZmgWuK79dVT
-X-Gm-Gg: AfdE7cmZ5WpMOg0qAuP6fD14xOS5rVvZ/AlPVfBxRW1R1ryGKTdXpOPfM9FV4QtV2GZ
-	e89ayFGFT5fZKx/ssikSX2XnsbLp5W4O7ezCaUAaBvh/Wg8SNRxE+7XmdQLxCEaSwas7gBux+p+
-	O9yZ7k5bKa9tHIZiFPSX/zqfkaxLtwH+siq3XLDC0zikSXeUNFuDQFHKXSUpPEZrZvSnh7D78k8
-	y7yRdwzny7cSbuXTKsn3jxOpYR3M4A1vIZfP5xL5Asmog2DU2TTEfFZ3nqqYqS8XiyBDYT7fVpx
-	RoZXIYFhKWMJ495mrQMRorVXy+88ZucdKvfZUhkvakO2plQ/Fy802fYeQPrsS5FJ9NRFJa/zzlh
-	V7+xIhMFukiXcwIR8NQ6q4o4L6zkeX1OLUeQ9frWVUXhs6QxfAX2mvzVG4+Dlxqkc4MHTmEEwYN
-	TJlZQLHZp1iImFhiCf0wbTzCI=
-X-Received: by 2002:a05:6a21:7482:b0:3a2:f7bd:a9a5 with SMTP id adf61e73a8af0-3c0bcbc0455mr10030942637.38.1783621734601;
-        Thu, 09 Jul 2026 11:28:54 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([150.230.217.250])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-ca5af7d5946sm4088600a12.7.2026.07.09.11.28.53
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Jul 2026 11:28:54 -0700 (PDT)
-Date: Wed, 01 Jul 2026 18:01:30 +0800
-From: Coia Prant <coiaprant@gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-CC: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Dragan Simic <dsimic@manjaro.org>, Jonas Karlman <jonas@kwiboo.se>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: vendor-prefixes: Add graperain
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20260701-sturdy-imported-oryx-dfc12a@quoll>
-References: <20260630153810.3574714-2-coiaprant@gmail.com> <20260630153810.3574714-4-coiaprant@gmail.com> <20260701-sturdy-imported-oryx-dfc12a@quoll>
-Message-ID: <A4CA0393-B348-48A0-B5DB-D1F9098EB37B@gmail.com>
+	id 1whu12-00000003LFe-25Zq;
+	Thu, 09 Jul 2026 19:02:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783623750;
+	bh=ou2OeHe9NiTPGYgMcRzTUBwKmURTgL5/azZ1wBtlGvM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=GTHauvKnzd7SFlDljFZd6gtM4inFUMIkL28Lr/Lw7wDnGFrhtbvsurc8DiRUJxfG1
+	 PJESMGmm1tsD7L6p90QcuSOnWql1p30gOW2gbz+j48dKUpYcO1ksAkdRLdRTMmGGnx
+	 8ge439FgbGh6RNxl7uDcE3HrH7tifUhIzuKvL4Ra4qKi7lyo9Nk8OYg5Rd12NC0b5b
+	 0djR2RG91azIfTOGTU8qNc/K4JFgAvDwX5ymvK750+WBTDsXoJ8//V/mCV54akwOXz
+	 gPBXGn4GLNgT3kANBB8L0I7kDo/PXcqNTXoOeUiuKISNMV8K8XJPlfg2vUIa/4PI+b
+	 Eggm7kcoH2drQ==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EEE6317E0DFB;
+	Thu, 09 Jul 2026 21:02:29 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id A599648002F; Thu, 09 Jul 2026 21:02:29 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Thu, 09 Jul 2026 21:02:26 +0200
+Subject: [PATCH v11 03/36] phy: rockchip: usbdp: Do not lose USB3 PHY
+ status
 MIME-Version: 1.0
+Message-Id: <20260709-rockchip-usbdp-cleanup-v11-3-a149ac60f76c@collabora.com>
+References: <20260709-rockchip-usbdp-cleanup-v11-0-a149ac60f76c@collabora.com>
+In-Reply-To: <20260709-rockchip-usbdp-cleanup-v11-0-a149ac60f76c@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Yubing Zhang <yubing.zhang@rock-chips.com>, 
+ Alexey Charkov <alchark@flipper.net>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1409;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=ou2OeHe9NiTPGYgMcRzTUBwKmURTgL5/azZ1wBtlGvM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpP8EQjsudxf4/WOIhhtLCpFVjF17WZM+Z1q
+ Q8l8C0bfqVZZ4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqT/BEAAoJENju1/PI
+ O/qajRcQAIMA8PmiKyo2R+Km3wV0GQoLW+qUv5C5Ck5lBoBAs0bYjvBRaQhCp5k+gROZsELvW6z
+ 9VBJeYkoqCnmR7SRSz7T6P5Y9rb35HpUZQgS7NKEa1BtM2J9z9Srb4wKuq4Cb4+ebeTGHuxfZ5o
+ V/zRX1UBS+CsU065B+wLJNVNl8Mqknx5R6HjEEmugID1tH+6ZP9t/G6Mn6SQ2TNjt4PYEfCpZQy
+ /U+Xi5NdofRyJ987zyc5UTzruaNKWNEWCGIGcWMgoQ3gsatLkc3xKUc2DpVH6PexwTyPv7yoKL9
+ 5l0K9G7VvqVxflZV22IzO0NIXaWQc9YQXDcf+sqrSIEQ1qYAUJ7XyrpAgWqeeh8VqbHh1KuOJNv
+ vDSN7G6tyDuw8sBAVomexoZNaw8EYUrw7Udl/vNj4vLvpO45tg+IoDeAyb8vdYpvGkdtpmrkgpL
+ ia7uchn56SkbvYFDsHtEdNoU2360UE79S1eZfyTYN8zpxvv2rzj5Aso+nx1uz0b/h4LBq2awn45
+ 43ae+t+Cyygn5cqSGCDfbUDM5HxeNm/5cRZzie9uSGleRLLZzF5dDPhna2NtYrAK2e4zZxltF4j
+ hPTyPXbpy1xYOqwzrpktp0p4HgIpLsvKVQTwG5mwO6C5j8hOVcmtOLRBHRfm5HdZRx9UZ7+nEsg
+ tPG5iFxjETqALmgXwFBUw7g==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_112856_206569_F9E38DAB 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20260709_120232_703660_3F242A13 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,55 +105,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On July 1, 2026 3:05:45 PM GMT+08:00, Krzysztof Kozlowski <krzk@kernel.org> wrote:
->On Tue, Jun 30, 2026 at 11:38:09PM +0800, Coia Prant wrote:
->> Add graperain to the vendor prefixes.
->> 
->> Link: https://www.graperain.cn/ (China)
->> Link: https://www.graperain.com/ (Global)
->> 
->> Signed-off-by: Coia Prant <coiaprant@gmail.com>
->> ---
->>  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
->>  1 file changed, 2 insertions(+)
->>
->
-><form letter>
->This is a friendly reminder during the review process.
->
->It looks like you received a tag and forgot to add it.
->
->If you do not know the process, here is a short explanation:
->Please add Acked-by/Reviewed-by/Tested-by tags when posting new
->versions of patchset, under or above your Signed-off-by tag, unless
->patch changed significantly (e.g. new properties added to the DT
->bindings). Tag is "received", when provided in a message replied to you
->on the mailing list. Tools like b4 can help here. However, there's no
->need to repost patches *only* to add the tags. The upstream maintainer
->will do that for tags received on the version they apply.
->
->Please read:
->https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
->
->If a tag was not added on purpose, please state in the patch changelog
->or cover letter why and what changed.
-></form letter>
->
->Best regards,
->Krzysztof
->
+By default (i.e. without manually enabling runtime PM) DWC3 requests the
+USB3 PHY once and keeps it enabled all the time. When DisplayPort is
+being requested later on, a mode change is needed. This re-initializes
+the PHY. During re-initialization the status variable has incorrectly
+been cleared, which means the tracking information for USB3 is lost.
 
-My apologies! I am quite new to the kernel submission process and 
-missed picking up the tag from v1. 
+This is not an immediate problem, since the DP side keeps the PHY
+enabled. But once DP is toggled off, the whole PHY will be disabled.
+This is a problem, because the USB side still needs it powered.
 
-Since I need to spin a v3 anyway to fix the text wrapping issue in 
-patch 2, I will make sure to include the missing tags and resend the 
-entire series.
+Fix things by not clearing the status flags.
 
-Thanks for your patience and for pointing this out!
+Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Best,
-Coia
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index a5ffdf7a6e76..12dfdd470a78 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -1008,7 +1008,6 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
+ 			rk_udphy_u3_port_disable(udphy, false);
+ 		udphy->mode_change = false;
+ 	} else if (udphy->mode_change) {
+-		udphy->status = UDPHY_MODE_NONE;
+ 		if (udphy->mode == UDPHY_MODE_DP)
+ 			rk_udphy_u3_port_disable(udphy, true);
+ 
+
+-- 
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
