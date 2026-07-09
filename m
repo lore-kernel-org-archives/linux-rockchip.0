@@ -4,66 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF8AC43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 03:15:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 662CDC44501
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 06:59:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:References:
-	In-Reply-To:Message-ID:To:From:Date:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=1WcrROF5mdCr4X3mh6+BupcuoMr9wmIuvHacOH9anVs=; b=EdzEYEnbGKl460OtY2czs7TWzW
-	G2ei/yWC1LlatVTnvRXq7ky2ydAGst32p0gBxW2wsetixm99OWYHjRRPfEUDtAX3Rr6ZuMWdSIcNY
-	4BqsIx42wl4PayEoo85oPZQOzH5mNZvA4ydT8VLNI16pMtoR1zQVcrMhtYML7KprHCfvKQPyh/UjH
-	04fOOOj5VzEcmZyTDAjlGWsXFPJa3Qv7xlztuqS6Yf5DD8AqFIdsJ7cAKrgWwwFMueuJfThko8lHm
-	X9HxhujeuJE888PQILUrFkt2aGfluGeHbcLqtjKKFWiKkkGI0KfwXA0M/laBMm6knrNuBUNxwtJ3C
-	ZY5NDj0w==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8oAZfMWC16FqIyWqs6IdcHIT9VW2kQX+WYMyEaIP3pI=; b=meJexro0s6GMYw
+	Sux8w5HFEsDmI8fkDYtB1mH5piZp5CdwpaHVkCmG9MS0WFSvzuZAU4EKillN85Jbh9GDyNWVThsBb
+	Ig9wOaQLoGgzSCTy28Bj5Ie0DGkGb5xaRvKewhZ8/RNHYjPdgGvFIZdrHzzeWAefwp4Eqc3edwTU5
+	OOJLuPpC8gJwxKLyrS+DzxAgAPR71kmmyGpLalqIJtoA7jP8gpNW9VAI+m3DPDJgpdAPo6/hgkVjG
+	IMD4deMB4PtOQ42es+AzhHwuDzD7kwPcWvAoTcqFJ12LzqqS8l6hmYKpRwGigkIMC/h0VzRL77NA4
+	tceATadN9D36Rgl91TLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whfEP-00000000snj-1pi5;
-	Thu, 09 Jul 2026 03:15:21 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1whijH-00000001E4V-3McD;
+	Thu, 09 Jul 2026 06:59:27 +0000
+Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whfEM-00000000snF-3r8n
-	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Jul 2026 03:15:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1783566915; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=D0EU6uw2N8rhxi7aKxUzlfgemo0PxAoafZ4QOo5e2Kcbx6MdQdHqcPhcG04E2FaXl7bNMRCmDvz44BAatztWO2T44K0A4Iz4jSov5uxPkUmHmM/xHltweSBzxHjhNKq78xskOrJNbOg32cpsy703tUs5bE+EuKGLPPBvrlITyGg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1783566915; h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To:Cc; 
-	bh=ZLrYtx/5ZFbT2w7W2dQM5aQyyu4Tp3c2Z0AI3Z4k6Mw=; 
-	b=lABUUNJbrM/ruJ5EXAJv6wTuGwoxs7GQ5yK7QEWrofzPV/4duin/PSceM2H/z6/jb1yp7I6l+2LRHlWAKCZTgHPgkDLxNqT7tUG2w6vqjeTn+YT59BrdEcpxaRjKJ2p9dWJE1sZUlhn9slmLmLXU4u8rZ7hsPpjkLGb0Ks9M6Pw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=mcqueen.au;
-	spf=pass  smtp.mailfrom=craig@mcqueen.au;
-	dmarc=pass header.from=<craig@mcqueen.au>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783566915;
-	s=zmail; d=mcqueen.au; i=craig@mcqueen.au;
-	h=Date:Date:From:From:To:To:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
-	bh=ZLrYtx/5ZFbT2w7W2dQM5aQyyu4Tp3c2Z0AI3Z4k6Mw=;
-	b=CehNSWm7R7LhIBkpNy+W1ID5rpXv+zMrzt+mg8cAV+9ok+Nkx002lXPk8Ow4b0/w
-	9RQk2AOyd8gjmz6mUyMZV5hwXF4bRWIQBDAhXNg11oiZY71+uEfSsdzwhEuPKIKyhyv
-	sMJrx1U6H2rJfGLenGTX9a6Wt1yNXdBy7MTTg0zA=
-Received: from mail.zoho.com by mx.zohomail.com
-	with SMTP id 1783566914994573.6350447024572; Wed, 8 Jul 2026 20:15:14 -0700 (PDT)
-Received: from mail.zoho.com by mx.zohomail.com
-	with SMTP id 1783566912812359.0787510379224; Wed, 8 Jul 2026 20:15:12 -0700 (PDT)
-Date: Thu, 09 Jul 2026 13:15:12 +1000
-From: Craig McQueen <craig@mcqueen.au>
-To: "linux-rockchip" <linux-rockchip@lists.infradead.org>
-Message-ID: <19f44df4d18.79ae221412353947.8680684473851503956@mcqueen.au>
-In-Reply-To: <19efe9876a3.827c5ee44221367.2709170723921781911@mcqueen.au>
-References: <19efe9876a3.827c5ee44221367.2709170723921781911@mcqueen.au>
-Subject: Re: Hard lock-up on RK3328 with no kernel console output
+	id 1whijE-00000001E2r-3btb;
+	Thu, 09 Jul 2026 06:59:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=superkali.me; s=default; h=Cc:To:Message-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:Date:From:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=8aF1jWcB6IB9KR+4XWsQOiLJ0TW7MXvqDka6LPg71dM=; b=EPWmXbpPXQfTrkeIfmqIdPvbxQ
+	wOW1LiG49jLz1d8Q5Ne7HjE3dsDF0OUhozjqMdKtMb/PZSfWxpruPh+31py9o0zgBXWiPNKNw53+p
+	rHIRqI5JDlWPZx4khUMn6KqjR72+8SdcSb+soUkVAxXKQLW8Rb1VFcmvUnm01O5Tf2u+OYMpWiF6m
+	QnXAd31jSLZI7UsDQ4hpUSsfHm+yvUuAlaLBCxcozca16FWoFmS3Qc7JCprmT9NBijoHqRjsIsHjk
+	MFS5D7+5rBzGVgJUt5rADZKbF08amGGl7AYPe4T/oSj7dQyb3r4QEDfmnZlRmDeE/kbp5fhpf9MLm
+	fz/U84Pg==;
+Received: from [81.57.40.39] (port=46604 helo=vscode.iliadbox.lan)
+	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.99.4)
+	(envelope-from <hello@superkali.me>)
+	id 1whiiX-00000009Qd7-3dNf;
+	Thu, 09 Jul 2026 08:58:39 +0200
+From: Daniele Briguglio <hello@superkali.me>
+Date: Thu, 09 Jul 2026 08:58:38 +0200
+Subject: [PATCH] arm64: dts: rockchip: yy3588: fix HDMI-RX signal detect
+ GPIO
 MIME-Version: 1.0
-Importance: Medium
-User-Agent: Zoho Mail
-X-Mailer: Zoho Mail
+Message-Id: <20260709-yy3588-hdmirx-d5-fix-v1-1-900a6790386c@superkali.me>
+X-B4-Tracking: v=1; b=H4sIAJ1GT2oC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDcwNL3cpKY1MLC92MlNzMogrdFFPdtMwKXUvDRAszQ3NzYxNTQyWg1oK
+ iVKAw2NjoWAi/uDQpKzW5BGSWUm0tAFopeB14AAAA
+X-Change-ID: 20260709-yy3588-hdmirx-d5-fix-91a861773451
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Daniele Briguglio <hello@superkali.me>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783580318; l=1813;
+ i=hello@superkali.me; h=from:subject:message-id;
+ bh=iFef+RMo4HD2L2iqYTWAnm1yAXxvyc5ptpgmGuUjzjc=;
+ b=UCQjMBPadCMciZrzLQcdA3pxynAHmzMfHADkyU2CwwQZycfvm/6rKPhrA3a/znGshyo3923GF
+ NMmlUAIPPXDAToHT1ML913ozQHQ9SwxAbKFzqlrIxXyMsnBRZ+esFEJ
+X-Developer-Key: i=hello@superkali.me; a=ed25519;
+ pk=5tynRWQdL93CDcapJ73FkcCRY2PeBOJOIAoIhRig53U=
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - fr5000-r.dnsiaas.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - superkali.me
+X-Get-Message-Sender-Via: fr5000-r.dnsiaas.com: authenticated_id: hello@superkali.me
+X-Authenticated-Sender: fr5000-r.dnsiaas.com: hello@superkali.me
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_201519_126869_B101EFD0 
-X-CRM114-Status: GOOD (  20.95  )
+X-CRM114-CacheID: sfid-20260708_235925_075140_ADC31AE5 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,33 +96,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25-June-2026 I wrote:
- > I have a Rockchip RK3328 SOM based embedded Linux system. I'm using Yocto scarthgap with kernel v6.6.123. 
- >  
- > I'm seeing complete system lock-ups occur roughly every 1 to 72 hours, with no diagnostic information shown in the kernel serial console output. It is abrupt and looks like it's a total shut-down. But it does get rebooted by the RK3328 HW watchdog. By reading the CRU_GLB_CNT_TH register after reboot, I confirm that the watchdog triggered the reset. If I don't enable the RK3328 HW watchdog, it stays locked-up indefinitely until an external reset/power-cycle. 
- >  
- > I am struggling to diagnose/debug this issue because I have been unable to get any kernel log output on the serial console. Normally I would expect to see a kernel message about a hard lock-up, or kernel oops, etc. I have enabled (among other things): 
- >  
- > CONFIG_HARDLOCKUP_DETECTOR=y 
- > CONFIG_HARDLOCKUP_DETECTOR_BUDDY=y 
- > CONFIG_BOOTPARAM_HARDLOCKUP_PANIC=y 
- >  
- > I have also tried using the kernel PSTORE, PSTORE_RAM, PSTORE_CONSOLE feature, in conjunction with U-Boot `pstore` command. After a lock-up and reboot, I was able to read the kernel dmesg log with U-Boot `pstore display` command. But it also didn't show any lock-up diagnostics. 
- >  
- > In this abrupt lock-up scenario, I would appreciate any advice on: 
- >  
- > * How to get any diagnostics out of the system (eg any other kernel config changes to try). 
- > * What sort of known fault mechanisms could lead to such a hard lock-up. 
- >  
- > I may try using a SWD/JTAG debugger, once I can get a J-Link debugger. 
+The YY3588 declares the HDMI-RX signal detect on GPIO1_C6, but the
+receiver never sees an attached source there and cannot capture any
+input.
 
-Once I set up the debugger, I needed to set kernel command parameter `cpuidle.off=1` for the debugger to be able to reliably access the processor cores. But once I did that, the lock-up  problem disappeared.
+That value was copied from the vendor device tree and is wrong. The
+core-board schematics are not available and the SoM documentation does
+not clearly show where this signal is routed, so the correct pin was
+read from the device tree in the board's Android image: GPIO1_D5. With
+GPIO1_D5 the receiver detects a connected source and locks, and v4l2
+reports the input timing (1920x1080p60).
 
-So it looks as though my lock-up bug is related to CPU idle management.
+Fixes: 19847bde695f ("arm64: dts: rockchip: Add Youyeetoo YY3588")
+Signed-off-by: Daniele Briguglio <hello@superkali.me>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-youyeetoo-yy3588.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
--- 
-Craig McQueen
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-youyeetoo-yy3588.dts b/arch/arm64/boot/dts/rockchip/rk3588-youyeetoo-yy3588.dts
+index 658d87504841..e31d04b85edf 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-youyeetoo-yy3588.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-youyeetoo-yy3588.dts
+@@ -341,7 +341,7 @@ &hdmi_receiver_cma {
+ };
+ 
+ &hdmi_receiver {
+-	hpd-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
++	hpd-gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_5v_det>;
+ 	status = "okay";
+@@ -605,7 +605,7 @@ &pcie3x4 {
+ &pinctrl {
+ 	hdmirx {
+ 		hdmirx_5v_det: hdmirx-5v-det {
+-			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
 
+---
+base-commit: f5ed1537219ae8bf55446232d331b114653a1475
+change-id: 20260709-yy3588-hdmirx-d5-fix-91a861773451
+
+Best regards,
+--  
+Daniele Briguglio <hello@superkali.me>
 
 
 _______________________________________________
