@@ -4,128 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B6E6C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 02:32:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF8AC43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 03:15:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6KpPDRG/HRtza+LqoJGKbZOURB6wXeqx73eGnzPT+Bc=; b=kn09tBi+/G4jx2
-	e9EfbylNGehuikza5jJphSOSI8Yo3rnzd6X9yE/aSzBRNFr4wTuT1zWXJEMZvyETB0VwyGsyF2T7P
-	WjRZ9S98sADEXEq+kVWgNQr2BxZ8TISUBBOZYYKk04ZDuhBHnsShWsXCIsU25ebX2X2g2wyMGevyR
-	TBuHpGjzs2MWugLCherTRR05e0bQM3mu5bY//Nc54ECRWksqPrrh1Dc5Ogr+pfADDXrF99/MRQh2c
-	EGSTcjZogc5kVx2GlLhROkw7z8iNAcSGhNd5/V4eCit/nJNhYWywM6p3hiZ1Rpg357AxzGnGEaUnq
-	W4LlhBd+6GhLXbR77uRA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:References:
+	In-Reply-To:Message-ID:To:From:Date:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=1WcrROF5mdCr4X3mh6+BupcuoMr9wmIuvHacOH9anVs=; b=EdzEYEnbGKl460OtY2czs7TWzW
+	G2ei/yWC1LlatVTnvRXq7ky2ydAGst32p0gBxW2wsetixm99OWYHjRRPfEUDtAX3Rr6ZuMWdSIcNY
+	4BqsIx42wl4PayEoo85oPZQOzH5mNZvA4ydT8VLNI16pMtoR1zQVcrMhtYML7KprHCfvKQPyh/UjH
+	04fOOOj5VzEcmZyTDAjlGWsXFPJa3Qv7xlztuqS6Yf5DD8AqFIdsJ7cAKrgWwwFMueuJfThko8lHm
+	X9HxhujeuJE888PQILUrFkt2aGfluGeHbcLqtjKKFWiKkkGI0KfwXA0M/laBMm6knrNuBUNxwtJ3C
+	ZY5NDj0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wheYb-00000000pEz-0Ogl;
-	Thu, 09 Jul 2026 02:32:09 +0000
-Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
+	id 1whfEP-00000000snj-1pi5;
+	Thu, 09 Jul 2026 03:15:21 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wheYY-00000000pCk-14XU;
-	Thu, 09 Jul 2026 02:32:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=i4HsX8AGJJmnWG+bYFT0maOi/7Crk491oHZeL9GQjVLYJVeXV5ng5nwyraZmBReGGEmFe7BJN8vn6BW9cAdbD7MryJvLYwNpAk+UpkF+p6laUKK4Pjb2kEGaarm17rdmlM5/Ewro+kGV9dS5usYo24YM5GDJv29xx1tmkBWNGkkqsn7J7eE7mo1aZIx98cIwH8xIliV8V3DFyd6DqO7oh2SVtkUN8A0HRmOYRd2ie3adO7V83XgNSdxbt5md5jOyjK45qinuc4PTQRzmWx6HuXPq8eYgmA2L/huo5zxw6k4pqVBhGqNc/q+YVsyGW+VzbbKj0QSII5omuAKnQ028pg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3AgRasxon9IadjkzD5bqj5kNiDYPJRzUSjdTGTPmN5Y=;
- b=XRNaacg2KSUBPaXt9Wvt0p2ABw/wQ5YKVhmi2l6b0DBM9JunFtnsot14xW6gbYZ+stcp/yLAxuM2SHn9LudEaDo7oAw+Kb6rbx8tIfKpyi4KGNmnRNUw3w4N6mE62QGjgnRe9j9emtAI433dKErnSEUiywshWIocVC1P/IxWwtD8EtUYLzKRC56kbOUlVjJM652SQlqlc0Yp1/r8/IYMldZjhQX1xZDL47qafUlDQ8gAor+wZF7ydMKI2NKaBD710KbRwRKvEEPmoKaNLmZFXJXEhbpNDdJ6kzCSCqgl8Q90f67USGKiCH5U5uiStHXIqult58LMensjUwsMVHRBEQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3AgRasxon9IadjkzD5bqj5kNiDYPJRzUSjdTGTPmN5Y=;
- b=RbqJIMjVpi4GJDcWHA1VCFXR5J2auWWDfAclbQGvR7Um2QPDjuAJ3l1ceOZA+GBkJVFjrvEUYiQ9CVCT82BPZFeDycPMsM/7coehATrTBP1obCepyKB75HXp39ObJYbiiqZLsBY2xU9VwcpUyLB2J1nJtG0UgukD/CIrcsOfCuPF8Z8urxZL1MTTk+6HVRPH8GCQ/tB6iqO45M9nXSgcChy2nNIPCvjprJZMA5HnCqp/TWk0aoe3Qh5HsLQmSsqhwNX1kikazOKMMYeriuPf+1ysQ6cuy+ar/ggiSebn8Iz9j3A8/GtzcADqRTOmR/3IqSfP3M0pNIjBsZxhSJ3Oag==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
- by SEYPR06MB6278.apcprd06.prod.outlook.com (2603:1096:101:143::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.15; Thu, 9 Jul
- 2026 02:31:50 +0000
-Received: from SEZPR06MB5832.apcprd06.prod.outlook.com
- ([fe80::f98:5e32:4ccb:d07b]) by SEZPR06MB5832.apcprd06.prod.outlook.com
- ([fe80::f98:5e32:4ccb:d07b%6]) with mapi id 15.21.0181.014; Thu, 9 Jul 2026
- 02:31:50 +0000
-From: Pan Chuang <panchuang@vivo.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Lukasz Luba <lukasz.luba@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-pm@vger.kernel.org (open list:THERMAL),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Cc: Pan Chuang <panchuang@vivo.com>
-Subject: [PATCH 08/18] thermal/drivers/rockchip: Remove redundant dev_err_probe()
-Date: Thu,  9 Jul 2026 10:30:11 +0800
-Message-Id: <20260709023048.599150-9-panchuang@vivo.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260709023048.599150-1-panchuang@vivo.com>
-References: <20260709023048.599150-1-panchuang@vivo.com>
-X-ClientProxiedBy: TPYP295CA0019.TWNP295.PROD.OUTLOOK.COM
- (2603:1096:7d0:a::14) To SEZPR06MB5832.apcprd06.prod.outlook.com
- (2603:1096:101:c8::12)
+	id 1whfEM-00000000snF-3r8n
+	for linux-rockchip@lists.infradead.org;
+	Thu, 09 Jul 2026 03:15:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1783566915; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=D0EU6uw2N8rhxi7aKxUzlfgemo0PxAoafZ4QOo5e2Kcbx6MdQdHqcPhcG04E2FaXl7bNMRCmDvz44BAatztWO2T44K0A4Iz4jSov5uxPkUmHmM/xHltweSBzxHjhNKq78xskOrJNbOg32cpsy703tUs5bE+EuKGLPPBvrlITyGg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1783566915; h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To:Cc; 
+	bh=ZLrYtx/5ZFbT2w7W2dQM5aQyyu4Tp3c2Z0AI3Z4k6Mw=; 
+	b=lABUUNJbrM/ruJ5EXAJv6wTuGwoxs7GQ5yK7QEWrofzPV/4duin/PSceM2H/z6/jb1yp7I6l+2LRHlWAKCZTgHPgkDLxNqT7tUG2w6vqjeTn+YT59BrdEcpxaRjKJ2p9dWJE1sZUlhn9slmLmLXU4u8rZ7hsPpjkLGb0Ks9M6Pw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=mcqueen.au;
+	spf=pass  smtp.mailfrom=craig@mcqueen.au;
+	dmarc=pass header.from=<craig@mcqueen.au>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783566915;
+	s=zmail; d=mcqueen.au; i=craig@mcqueen.au;
+	h=Date:Date:From:From:To:To:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
+	bh=ZLrYtx/5ZFbT2w7W2dQM5aQyyu4Tp3c2Z0AI3Z4k6Mw=;
+	b=CehNSWm7R7LhIBkpNy+W1ID5rpXv+zMrzt+mg8cAV+9ok+Nkx002lXPk8Ow4b0/w
+	9RQk2AOyd8gjmz6mUyMZV5hwXF4bRWIQBDAhXNg11oiZY71+uEfSsdzwhEuPKIKyhyv
+	sMJrx1U6H2rJfGLenGTX9a6Wt1yNXdBy7MTTg0zA=
+Received: from mail.zoho.com by mx.zohomail.com
+	with SMTP id 1783566914994573.6350447024572; Wed, 8 Jul 2026 20:15:14 -0700 (PDT)
+Received: from mail.zoho.com by mx.zohomail.com
+	with SMTP id 1783566912812359.0787510379224; Wed, 8 Jul 2026 20:15:12 -0700 (PDT)
+Date: Thu, 09 Jul 2026 13:15:12 +1000
+From: Craig McQueen <craig@mcqueen.au>
+To: "linux-rockchip" <linux-rockchip@lists.infradead.org>
+Message-ID: <19f44df4d18.79ae221412353947.8680684473851503956@mcqueen.au>
+In-Reply-To: <19efe9876a3.827c5ee44221367.2709170723921781911@mcqueen.au>
+References: <19efe9876a3.827c5ee44221367.2709170723921781911@mcqueen.au>
+Subject: Re: Hard lock-up on RK3328 with no kernel console output
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|SEYPR06MB6278:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4fde7b70-4e6b-4ecb-549a-08dedd623b64
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|376014|23010399003|1800799024|366016|18002099003|22082099003|11063799006|56012099006|38350700014;
-X-Microsoft-Antispam-Message-Info: Zbe3rTeqZ/T5utR94KRM8DeyQE7aIz5j/oHyoSdOczt5SR3LpIExn3ghL7H2syZ0i5Pz/GKM6opCZhBRGKBB71wazFk1MZv+pkCdYpZCPKo5MbKiDs79OmQBT1OI1tgCIa7291OVAxFYdgdcoXsc6d3w/Z4Sbe2gxmTxd2s9zOj7pKcMHlk+dq5mIVbKCJR8kBxfdG3wclQ51/X74/N9lP9eFpdl299L9/AL2f6cV+YoLlG5ZmNQS8YoyFqDSdCbhJ+IHsqhZG4nDaevj+7rwyyVVapILLk9N7QoCUgbyuUZi6tY99RxcmgVOBWgNPTgdtSxwc3kCKiu7KKdd0Xm5Tz9QlRdhbjRKmYrsnDXBsbl7I51hGDwwJlIWdDmWAjQocZsFhIK1D5I4fnNeAAaVN7Wbf8KosNI2MfVRLkKdaK2ay/wcyfY9B5V2V7jPNTcympSYWzJA4ADvgD1PHzRGaJF0bsua5fiQmgX0ZWHW5ftDB4DrWJQpfGUYtxDC6L9L17PTuUOVKVlvjOLEh9dWe9feqx+K/Q7kdDUmuctpe9dAee1Ga/iJcYJiQ9WF1Oxss9ZDzOltXwPMRgHl+510no8Fr1H3mAihiJMWA8ACF/Q8LEPjDa8QVPJUCIArIRa2OFkaKAr0kzDANgs7MQSTmO/rJ74T6H+y4Zt2AjOu2tqIdyhCKVF5IX5hdByysgm504YXBQh5RCcuxA11EDFxkN0vUJZKRsPv/UtVBoFpks=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(376014)(23010399003)(1800799024)(366016)(18002099003)(22082099003)(11063799006)(56012099006)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cATDT0c8rvOANf8Pm23nl6bZdb92JB6fTloqepO4JpOLIehtXVgEAYACTGrx?=
- =?us-ascii?Q?Yj6JR9Fys+MqMSQ1e6bkyZRXq8y1CA/WK6xaa8KgMTej7a6HmOFEn0My1oVY?=
- =?us-ascii?Q?/XwghGjFDVnPAgBtvROl3dXSIVD+HzCGHDBgroW7fEn/aiUBCKYCVaa2JZKT?=
- =?us-ascii?Q?0zx1O4wKejjxxfwNU6Mze8/Fw84yxG684LPApSop2h5VbCz3bSN8VboRSCM0?=
- =?us-ascii?Q?PIXo7pkB2+S2tOT8uYRWSgzcSyhH6NvVxRb6fMWA3TikkAmr0MMl3wgbxkpl?=
- =?us-ascii?Q?cKlIoEYhtkxI4r95yJkp8Js7uU/GY10cR+I1ejYGcV6MCGwKD9SqhmEssORh?=
- =?us-ascii?Q?tAwOWJeD1YfQKWWX2mP5mWhoQdMNAiOcuM9zmoIUmHJyyrBXep3WTnSh2Nxz?=
- =?us-ascii?Q?wtq9z1giJHQ8zxKokRjOQwUBlP8WN+v1qveveCG6i+06fvXB7yvWG6hyebNI?=
- =?us-ascii?Q?sZd/LWAbHuKBzxQ6CNVwj4LewVrbvVAdUwGN9jsCAGKqLgmlk7P25qhK5FG8?=
- =?us-ascii?Q?6AHVfSRE+w8eATjubNESxjFazQPVcvFET3RvuS6gYjWGtALj7zX0TAm64nVw?=
- =?us-ascii?Q?JzGAaVpFhfBV/+wc0AYVHJ92n9Y/Ar7gPn52a9U+b7zZNOxs7ED/hYV4nRTZ?=
- =?us-ascii?Q?e/8PO/7yI89Q8BksBRIFRqUeswSm0BdVJDoAVXuALHDluktOJHpGvQg3cxuA?=
- =?us-ascii?Q?7gHCAtqWQ+R6dzgFmudwlaavFdgnkCvHmFzv1UM+BQ93H6Cz9QNMGrnR+tAs?=
- =?us-ascii?Q?++T6NHPLjyaWVpQ6ybJgH+CS7BqNAUMZnjNCadSn8Ac8ndGs5Dl6O2Vrp2b4?=
- =?us-ascii?Q?EPyPAtTL93Ipy1o0emvan83wIT5IiQVsK+CGgJ3k1RboLfIK3L3P7I+DAXcN?=
- =?us-ascii?Q?kILBaN8CarxGII1IKJevlEuomlTZvI8wnL81xQ2Zr7TuFJKcZiJKEAUfpknv?=
- =?us-ascii?Q?09jR09MNuTYQaaLfgGW44CgQn5gKXJv6uf19hYHLZ7Dzg9eRLmar0aRrXIMC?=
- =?us-ascii?Q?38ZIKXfQS37R8ogo6N/CJcdBC/llRBovc7qKSSN5jZ9SG+RfyLhYK/o1Lf2+?=
- =?us-ascii?Q?Jlq9Y1JAdCmPhv0NoiUiOH/Hk5at68bApR3tcfoyy2vs8R02Myh0ZN80MF+j?=
- =?us-ascii?Q?D7X/4Jk/Aomc4e2JuavQsEY6GxBVWv+V/5cB1u3nhdtK7h7FN5reO1NT00/C?=
- =?us-ascii?Q?irK55m6SuuJx6fp7HBS6wL4pWTARCrMGeTeU058WPePIBGrHTxFIUXRLdQNf?=
- =?us-ascii?Q?bw2McbEXtCkdjUbdUBBJlfV0Xu6St7XaDN7DQ9jC4cSTuGasl8eD+O7Zxgok?=
- =?us-ascii?Q?jENfUHBqIxLcH6AoROeeksoqMb0vxYJpA9ONw7JZW2mQq9xSZIs8HthepxXA?=
- =?us-ascii?Q?TWQ9pgy2NaeGQeVp+I446glftQM7O97+sDim4c9X6evKdwSishHGjPtTo6La?=
- =?us-ascii?Q?K2gDt78e0q+GdIN+FfoNJ+fsbI47W3Nsj/o2TbFtRJaJrV/Lmr5iex8gepYQ?=
- =?us-ascii?Q?/UKu2AUzI8PUUBPNfIwWXbYhCOIjTWYblX9pP6TT5cz7KnSoo3VxaQdXQS07?=
- =?us-ascii?Q?mq6YIAJ27KLQxQa04KxRJtNkMLW9tIkktdUDbm+eUxIIEoirlr2pdECWcu3C?=
- =?us-ascii?Q?tf/u8POWU2b33Va88reQQnC02WhT2i13wMjqphJdVHJHXI3GaSw2AaHcKflT?=
- =?us-ascii?Q?n89DeosFHfFH7OcKzlGkA0iTImxpHuW2RcyelGXQHRvkJa43oBumz/0Y2sTB?=
- =?us-ascii?Q?FdCQTz9oIw=3D=3D?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4fde7b70-4e6b-4ecb-549a-08dedd623b64
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5832.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2026 02:31:50.8011
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: cfomWfUbngzXPKNmh5P6MgL6zjxaIIRnUtqBSQJ779mHSzCfvkjC8CPoJSlqGXONG0KB0je2nT5T01c8W7LqCg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6278
+Importance: Medium
+User-Agent: Zoho Mail
+X-Mailer: Zoho Mail
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_193206_298175_00FC0F54 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260708_201519_126869_B101EFD0 
+X-CRM114-Status: GOOD (  20.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,31 +80,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The devm_request_threaded_irq() now automatically logs detailed error
-messages on failure. This eliminates the need for driver-specific
-dev_err_probe() calls that previously printed generic messages.
+On 25-June-2026 I wrote:
+ > I have a Rockchip RK3328 SOM based embedded Linux system. I'm using Yocto scarthgap with kernel v6.6.123. 
+ >  
+ > I'm seeing complete system lock-ups occur roughly every 1 to 72 hours, with no diagnostic information shown in the kernel serial console output. It is abrupt and looks like it's a total shut-down. But it does get rebooted by the RK3328 HW watchdog. By reading the CRU_GLB_CNT_TH register after reboot, I confirm that the watchdog triggered the reset. If I don't enable the RK3328 HW watchdog, it stays locked-up indefinitely until an external reset/power-cycle. 
+ >  
+ > I am struggling to diagnose/debug this issue because I have been unable to get any kernel log output on the serial console. Normally I would expect to see a kernel message about a hard lock-up, or kernel oops, etc. I have enabled (among other things): 
+ >  
+ > CONFIG_HARDLOCKUP_DETECTOR=y 
+ > CONFIG_HARDLOCKUP_DETECTOR_BUDDY=y 
+ > CONFIG_BOOTPARAM_HARDLOCKUP_PANIC=y 
+ >  
+ > I have also tried using the kernel PSTORE, PSTORE_RAM, PSTORE_CONSOLE feature, in conjunction with U-Boot `pstore` command. After a lock-up and reboot, I was able to read the kernel dmesg log with U-Boot `pstore display` command. But it also didn't show any lock-up diagnostics. 
+ >  
+ > In this abrupt lock-up scenario, I would appreciate any advice on: 
+ >  
+ > * How to get any diagnostics out of the system (eg any other kernel config changes to try). 
+ > * What sort of known fault mechanisms could lead to such a hard lock-up. 
+ >  
+ > I may try using a SWD/JTAG debugger, once I can get a J-Link debugger. 
 
-Signed-off-by: Pan Chuang <panchuang@vivo.com>
----
- drivers/thermal/rockchip_thermal.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Once I set up the debugger, I needed to set kernel command parameter `cpuidle.off=1` for the debugger to be able to reliably access the processor cores. But once I did that, the lock-up  problem disappeared.
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index c49ddf70f86e..08891608baa6 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1773,8 +1773,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
- 					  IRQF_ONESHOT,
- 					  "rockchip_thermal", thermal);
- 	if (error)
--		return dev_err_probe(&pdev->dev, error,
--				     "failed to request tsadc irq.\n");
-+		return error;
- 
- 	thermal->chip->control(thermal->regs, true);
- 
+So it looks as though my lock-up bug is related to CPU idle management.
+
 -- 
-2.34.1
+Craig McQueen
+
 
 
 _______________________________________________
