@@ -4,56 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D12C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 07:07:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA352C44501
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 07:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ncd1icQooUTe31/RR+qWmLZpT2euByIVn5JjW4ImZ1I=; b=w7fl5KLCDLdAWX
-	+Mv4PSC5Szl6qcCwOuVxVAmJ8/fS4qdRPie9zbJJkGFqo6SagCsrpBQJ6oOnsnfchWRroNF4db3Sk
-	pEGHGgCdQyJ4Y0ria6Nl7GpE+ec2v4hNpzJZXUhP7G75w370aMiuxHLI+kYppJYzxV3oLCXggNI0u
-	L++dChcztu115k2GJ1PznJR4E/NHKrF/GStiUOV5CuPJgE8noPhJsyqNVAbaS1j5Bm0ZyMRc8kMYQ
-	8SXZl+XXsDWUjZetsXNdol5CVcpFu8XiwTRymoKTXxh32Y/73VlZWySY+QvP2M+cIMm4DmfkrcazI
-	j3SNXsygNUBVAUuUjHQw==;
+	List-Owner; bh=i39SiBVxpUvib1b26EvgDy83Z3tERNVsOqLmrL+zQiA=; b=e8g7XrpMoqWZYP
+	yy2QA1lc3WNlOgU+czdgnVrygxnOHz6T+5kOWgKnzGA0iCXx5AXFceevK+qrzlo675hK3sxSvIUYR
+	aalRZQReEh11GobvmcZiPoi6QSbWrRU7bHo0REhN+zRyDMR1ezuF/BjRHUPnN8xTuaFmekCeHFjJx
+	M82pK2SP/xO6kKRQcBu/RH8Bph28bRlkmG9R3p+UqAMPz6r4b06cVPjXCMyqt4k9p3GCYPgaRQ94X
+	JA1UDJk23txcoACOaz5NfRSvhmTTxsC4OKAieYw+6hU75JqYoZ0Kr4zC+1l4GynLVqmz0TA7bOb9t
+	ZIBAcpsYPKa6SHDTeMpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whirD-00000001Ekp-3e4f;
-	Thu, 09 Jul 2026 07:07:39 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1whitV-00000001F5r-1LVh;
+	Thu, 09 Jul 2026 07:10:01 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whirB-00000001Ejd-3ICN;
-	Thu, 09 Jul 2026 07:07:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=pdSw+G21z2NrE5iHKTKAJzseZhloGwIrHZmDJjo4p4c=; b=wzpkFYTSB2o038W334C7hu8s9v
-	7+L3+hqneJ1n9ursKNn/qF9aAa80jolpgMvJtb93jbbHpRHdG7+hl4Hfgwotw3LsMcvvE7NGnbpHi
-	9bFxj2FYvyUZbgVxteLRtrPMAZUOt0YENy0Hg9DFimz1NYygsj0BXE2v77IoA+8H4/3fPk0tX6Qai
-	9MNf5M9KYENWFUWpkudTS1bInIn8spWFtpDgqpeTmTaYvRRZrzRS3ULHq7/RMFB+tahmMaQ2B0uXo
-	l5z9MVr1Xc+4GJPPZKcA1sh1Xo4ASqn09/xQX2HsOyMt+jqVybBUP0gYe8w8Vm4iOpudzcyPjxnsF
-	08GKkryQ==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Dawid Olesinski <dawidro@gmail.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>,
- "David S . Miller" <davem@davemloft.net>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Corentin Labbe <clabbe@baylibre.com>, linux-crypto@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 3/4] arm64: dts: rockchip: Add crypto node to rk356x-base
-Date: Thu, 09 Jul 2026 09:07:23 +0200
-Message-ID: <4011768.FjKLVJYuhi@diego>
-In-Reply-To: <ak7jEYTAGgeDdi1W@venus>
-References: <20260708175837.1718437-1-dawidro@gmail.com>
- <20260708175837.1718437-4-dawidro@gmail.com> <ak7jEYTAGgeDdi1W@venus>
+	id 1whitT-00000001F50-3TYZ;
+	Thu, 09 Jul 2026 07:09:59 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id D88986001A;
+	Thu,  9 Jul 2026 07:09:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D09E41F000E9;
+	Thu,  9 Jul 2026 07:09:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783580998;
+	bh=8CZ6VWb0nM5COiMthOV8CMsPQyxMKQz9LsCOWLJSmww=;
+	h=Date:Subject:To:References:From:In-Reply-To;
+	b=kyCMezGFcDcoDQc7mkfhr5nwNWzKjRiLatXO2hHu9zrk8wolLDIgWCj0G8n8DudSh
+	 MfiJqfJay5iEEME0Jq6iIN0PBm4TdZkh0/RRG8BNpjDUhQUdLIKiaKCDZz9nC6EiUq
+	 oTwl62v7bL+WBcG6qWfx0SSd84BdFTapVjOW7C5xWoF3q8qWPdv1xAFQuGx4GpXTvl
+	 fPfS60I61smBVEdPVpNtoGxmnhGNlB5mz1h9LkShhb8yL1/yT1T2osynRaWXGyRS9w
+	 lTgwE9WxBfhdBGuoUdJpr/yhKictmDrhFOrNRsk9m5fDPKe54vtMmRXRgtASXggu4V
+	 /bnAA4Q2ECfFA==
+Message-ID: <d31c4217-4733-4459-a9d7-265731d295fc@kernel.org>
+Date: Thu, 9 Jul 2026 09:09:43 +0200
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_000737_876965_36B4978F 
-X-CRM114-Status: GOOD (  21.99  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/18] thermal/drivers: Remove redundant error messages on
+ IRQ request failure
+To: Pan Chuang <panchuang@vivo.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>, Miquel Raynal
+ <miquel.raynal@bootlin.com>, Markus Mayer <mmayer@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>, Frank Li
+ <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, zhanghongchen
+ <zhanghongchen@loongson.cn>, Yinbo Zhu <zhuyinbo@loongson.cn>,
+ Amit Kucheria <amitk@kernel.org>, Thara Gopinath <thara.gopinath@gmail.com>,
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ John Madieu <john.madieu.xa@bp.renesas.com>, Heiko Stuebner
+ <heiko@sntech.de>, Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
+ Peter Griffin <peter.griffin@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Thierry Reding <thierry.reding@kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+ Laura Nao <laura.nao@collabora.com>,
+ Mason Chang <mason-cw.chang@mediatek.com>, Fei Shao <fshao@chromium.org>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ "Jiri Slaby (SUSE)" <jirislaby@kernel.org>,
+ Svyatoslav Ryhel <clamor95@gmail.com>,
+ "open list:THERMAL" <linux-pm@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <imx@lists.linux.dev>,
+ "open list:QUALCOMM TSENS THERMAL DRIVER" <linux-arm-msm@vger.kernel.org>,
+ "open list:RENESAS R-CAR THERMAL DRIVERS"
+ <linux-renesas-soc@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ "open list:SAMSUNG THERMAL DRIVER" <linux-samsung-soc@vger.kernel.org>,
+ "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-mediatek@lists.infradead.org>
+References: <20260709023048.599150-1-panchuang@vivo.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20260709023048.599150-1-panchuang@vivo.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,47 +153,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRG9ubmVyc3RhZywgOS4gSnVsaSAyMDI2LCAwMTo1NjoxMCBNaXR0ZWxldXJvcMOkaXNjaGUg
-U29tbWVyemVpdCBzY2hyaWViIFNlYmFzdGlhbiBSZWljaGVsOgo+IEhpLAo+IAo+IE9uIFdlZCwg
-SnVsIDA4LCAyMDI2IGF0IDA2OjU4OjI0UE0gKzAxMDAsIERhd2lkIE9sZXNpbnNraSB3cm90ZToK
-PiA+IEFkZCB0aGUgZGV2aWNlIHRyZWUgbm9kZSBmb3IgdGhlIFYyIGNyeXB0b2dyYXBoaWMgaGFy
-ZHdhcmUgYWNjZWxlcmF0b3IKPiA+IG9uIFJLMzU2eCBTb0NzIChSSzM1NjYsIFJLMzU2OCkuCj4g
-PiAKPiA+IFRoZSBJUCBibG9jayBzaXRzIGluIHRoZSBub24tc2VjdXJlIHBlcmlwaGVyYWwgZG9t
-YWluLiBJdHMgdGhyZWUgY2xvY2tzCj4gPiAoY29yZSwgYWNsaywgaGNsaykgYW5kIHJlc2V0IGxp
-bmUgYXJlIGFjY2Vzc2libGUgZGlyZWN0bHkgdGhyb3VnaCB0aGUKPiA+IG1haW4gbm9uLXNlY3Vy
-ZSBDUlUsIHNvIG5vIGZpcm13YXJlIGludGVybWVkaWFyeSBpcyByZXF1aXJlZC4KPiA+IAo+ID4g
-VGhlIG5vZGUgaXMgZGlzYWJsZWQgYnkgZGVmYXVsdDsgYm9hcmQgZmlsZXMgdGhhdCB3aXNoIHRv
-IHVzZSBoYXJkd2FyZQo+ID4gY3J5cHRvIG9mZmxvYWQgbXVzdCBlbmFibGUgaXQuCj4gCj4gV2h5
-IGlzIGl0IGRpc2FibGVkIGJ5IGRlZmF1bHQ/IEl0IGRvZXNuJ3Qgc2VlbSB0byBiZSBib2FyZCBz
-cGVjaWZpYwo+IGF0IGFsbCB0byBtZSAodGhlIHNhbWUgcXVlc3Rpb24gYXBwbGllcyB0byB0aGUg
-UkszNTg4IERUKS4KCllvdSdyZSBkZWZpbml0bHkgcmlnaHQgYWJvdXQgdGhhdCAuLi4gdGhlcmUg
-YXJlIG5vIGJvYXJkIHNwZWNpZmljIHJlc291cmNlcwpuZWVkZWQsIHNvIERhd2lkIHBsZWFzZSBk
-cm9wIHRoZSBzdGF0dXMgZnJvbSBib3RoIG5vZGVzLgoKCkhlaWtvCgo+ID4gCj4gPiBTaWduZWQt
-b2ZmLWJ5OiBEYXdpZCBPbGVzaW5za2kgPGRhd2lkcm9AZ21haWwuY29tPgo+ID4gLS0tCj4gPiAg
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NngtYmFzZS5kdHNpIHwgMTIgKysrKysr
-KysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKykKPiA+IAo+ID4gZGlm
-ZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTZ4LWJhc2UuZHRzaSBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTZ4LWJhc2UuZHRzaQo+ID4gaW5kZXgg
-YTU4MzI4OTViZDM5Li45ZGU3ZTc0ODdjYTEgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL3JrMzU2eC1iYXNlLmR0c2kKPiA+ICsrKyBiL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszNTZ4LWJhc2UuZHRzaQo+ID4gQEAgLTExMTIsNiArMTExMiwxOCBA
-QCBzZGhjaTogbW1jQGZlMzEwMDAwIHsKPiA+ICAJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gPiAg
-CX07Cj4gPiAgCj4gPiArCWNyeXB0bzogY3J5cHRvQGZlMzgwMDAwIHsKPiA+ICsJCWNvbXBhdGli
-bGUgPSAicm9ja2NoaXAscmszNTY4LWNyeXB0byI7Cj4gPiArCQlyZWcgPSA8MHgwIDB4ZmUzODAw
-MDAgMHgwIDB4MjAwMD47Cj4gPiArCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgNCBJUlFfVFlQRV9M
-RVZFTF9ISUdIPjsKPiA+ICsJCWNsb2NrcyA9IDwmY3J1IENMS19DUllQVE9fTlNfQ09SRT4sIDwm
-Y3J1IEFDTEtfQ1JZUFRPX05TPiwKPiA+ICsJCQkgPCZjcnUgSENMS19DUllQVE9fTlM+Owo+ID4g
-KwkJY2xvY2stbmFtZXMgPSAiY29yZSIsICJhY2xrIiwgImhjbGsiOwo+ID4gKwkJcmVzZXRzID0g
-PCZjcnUgU1JTVF9DUllQVE9fTlNfQ09SRT47Cj4gPiArCQlyZXNldC1uYW1lcyA9ICJjb3JlIjsK
-PiA+ICsJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gPiArCX07Cj4gPiArCj4gPiAgCS8qCj4gPiAg
-CSAqIFRlc3Rpbmcgc2hvd2VkIHRoYXQgdGhlIEhXUk5HIGZvdW5kIGluIFJLMzU2NiBwcm9kdWNl
-cyB1bmFjY2VwdGFibHkKPiA+ICAJICogbG93IHF1YWxpdHkgb2YgcmFuZG9tIGRhdGEsIHNvIHRo
-ZSBIV1JORyBpc24ndCBlbmFibGVkIGZvciBhbGwgUkszNTZ4Cj4gCgoKCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 09/07/2026 04:30, Pan Chuang wrote:
+> Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
+> error handling in devm_request_*_irq()") added automatic error
+> logging to devm_request_threaded_irq() and
+> devm_request_any_context_irq() via the new devm_request_result() 
+> helper, which prints device name, IRQ number, handler functions, and
+> error code on failure.
+> 
+> Since devm_request_irq() is a static inline wrapper around
+> devm_request_threaded_irq(), it also benefits from this automatic
+> logging.
+> 
+> Remove the now-redundant dev_err() and dev_err_probe() calls in
+> thermal drivers that follow these devm_request_*_irq() functions, as
+> the core now provides more detailed diagnostic information on failure.
+> 
+> Pan Chuang (18):
+>   thermal/drivers/airoha: Remove redundant dev_err()
+>   thermal/drivers/armada: Remove redundant dev_err()
+>   thermal/drivers/db8500: Remove redundant dev_err()
+
+all of these 18 are just one commit, no?
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
