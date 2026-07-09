@@ -4,91 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B284C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 19:05:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36692C43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 19:26:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kZRQWtNYJEOgkUYwfwEP1PCSiUZV0zPDqSeVdCiIwJo=; b=On/deh5YXxvScP
-	SbrIs6+6yo8/8PgJCcoA0KA1ebPt2DntXy7497oE53yVT6GFMfTFI5zbdFpSOe4rRbVK7zmyMNsaR
-	VwVKEL5Who9AlwmrKUrNiJ6T4Ay5J4lp1QuilW3kPG11hEHMn3zuyoHj6ULRSJkJlNLGtwjz1GFmD
-	EF4aT7eA0jdf5hzkQZ1gRs2LUqzvqXbC00wO1OYQrJxmsaJGeEF1tSOl33ORR76km6XpyhhedYW+I
-	9PVF+5bz3wPWAxNx3PpVsTAiTEyzPrpdW98PbAHZS9iQTMn8/KdBhPb2B2WxD5jVIFZKuQMDR4gYj
-	pmm4e/mc3SJuC/PZzU0A==;
+	List-Owner; bh=L9H68fYiNILN0CCSeunp++LFnFes9QkuMTF6P+r9QuI=; b=UI6v4fqlnJ67FD
+	S6CU0K7CzaajI+lnk2Frd6DnjZLMxCIfONOYlgBCQu6TMmGs5+mYNUdWbMo5EUhl6zM6dIhW5cp3U
+	uaacH4/pmcNzPdjTy7MnncwvcGbZdjYvS3/H6x5MP1/Ez45S79U/47V2wZIJu4GQTT2eGxnkCbuPe
+	s5UGiOxVOOkG+GvfWupWhxFVWxbhsau42WotfrJMNlKzR+yNUOCmxI3BU6VP5HIRYla/iEVE9i1+j
+	1A8sAO7CV1J5Rs/I1HRDa8Pk9h01Eell8cUVB0Xde0UGN1mc/bm5gmUEra+4yAdWHH0HyEKIIc4wW
+	cEyRFNwRZZHvhI/DW0kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whu3V-00000003PI4-3nmi;
-	Thu, 09 Jul 2026 19:05:05 +0000
+	id 1whuNl-00000003Shh-0Dj3;
+	Thu, 09 Jul 2026 19:26:01 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whu37-00000003OYz-1MyJ;
-	Thu, 09 Jul 2026 19:04:43 +0000
+	id 1whuNi-00000003Sh0-0c7c;
+	Thu, 09 Jul 2026 19:25:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783623874;
-	bh=KsztTcLL1hh9As65BcDTh5Y7TjOnYb7YivozEbWiMmA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Dxx27Iolq3cMsTgCvVA+sU8YHFz+IW8Jar13MKrOIHvxG7CalyS7eM4q8CdvwPa+8
-	 2C/p2Zqmh3ZYzLfhReOUZz/x2i/VOatnFL+hpzQWLTtDvnIe676vs1TH7GLuJhjc7c
-	 xpHmUUfRsoBjAGYKt7PBerKOuCGLH+0KGqlZbbbv/FsZpvgFQo1C238GYwhTMdeb6N
-	 oZ1bHj4q4lh5c3tfjyZzSp1EAfWBPpsBrjOMGcO88KkOBtBwF5jaYqKukn5ncdqhq2
-	 bZJ812GjSIOIyoAIzR05MPXXegLJM0jPfObHk4jeelHdq0cYOoS5jdSRSqmOagG8Uj
-	 i59gwvC2o4qsg==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
+	s=mail; t=1783625155;
+	bh=379VPeZ7FJzRIPM44QI1fIbrI6BdI/1sSIoGX7SU7uo=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=NDtsAi6SFCzsfusBVFEaLQNXauQq2QA860cF7SdgYg6CQFvJCjh3Pb61sHTlHGAk+
+	 iUQ9COCxg0dEhW22QH8SfKyNEMq297wq2UoqbXgOB4ZO0TY8adghP2LEzM3xBunKzr
+	 Z7QWy1FosslOf5ZOClGxaNhftc4hnlP8unMaT3uy7/+BC68Ro6ES8YnEkPuPogyRX8
+	 bFqq0uByFNvoOdISf2mmFTEKDnCMXU7NT4lKXHN/bEUQy2CcTqeeHiz3NzxXw2T2/l
+	 nXUOYUlnvj3IpQYUemYOeE3vdu+QLHC2VEK2hRE6juQMwMFc3NfQmy94jsV04f2cZK
+	 xi6Yb5JjA4qVQ==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BCFE917E0FAB;
-	Thu, 09 Jul 2026 21:04:34 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id BD190480064; Thu, 09 Jul 2026 21:02:29 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 09 Jul 2026 21:02:41 +0200
-Subject: [PATCH v11 18/36] phy: rockchip: usbdp: Rename mode_change to
- phy_needs_reinit
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ADB5F17E0177;
+	Thu, 09 Jul 2026 21:25:54 +0200 (CEST)
+Message-ID: <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
+Date: Thu, 9 Jul 2026 22:25:54 +0300
 MIME-Version: 1.0
-Message-Id: <20260709-rockchip-usbdp-cleanup-v11-18-a149ac60f76c@collabora.com>
-References: <20260709-rockchip-usbdp-cleanup-v11-0-a149ac60f76c@collabora.com>
-In-Reply-To: <20260709-rockchip-usbdp-cleanup-v11-0-a149ac60f76c@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
- Yubing Zhang <yubing.zhang@rock-chips.com>, 
- Alexey Charkov <alchark@flipper.net>, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1831;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=KsztTcLL1hh9As65BcDTh5Y7TjOnYb7YivozEbWiMmA=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpP8EScRnyg21rvU0ThOg15HDFKRktnoBPH1
- ERZxXTcc5j8ZYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqT/BEAAoJENju1/PI
- O/qa90kQAJPG/RiVvxvDv6FpCXQnbuMEOMQzA/IhDZeKMt3lxvMSTDJmcG7KswbaC5pJkV0jLkw
- Il0JzebJK6wuvfLZBmYUpdJEdcRl+lg5G1BdapIoPteJ/G7sHtTBt64sODn4Co4IIs+QK0XxlIV
- 80SvHw+0kc4x8QEUWmaiCDYSrwIKjzasu2VFXIRhvNJTITFqRwE+gN7PkeaIJ9FJ9fPcNWbqePi
- S/j60jmkYdVLhmgJEXvPhkvMnc2wPsGV1T4TwgZQMpxe5KEru9Ph+nG77c89mGHQCtaXfrktxgx
- 3hQ1sGsG1pqrw3vYfLPy7Y/XthzWMkuhSK3Dl5+R6hyY5Stv/+oP2CbQYemVmXdNpnLe67U29RI
- t19yeX5X8UV0oo8NTvQZVBisfxBAvT28ugi35m9UMCmhsvF5r21E4gtpqqlRT6EKpcpUGPJKml0
- IwxuraeLHOUFVtz/f7nucYlwrpzQdPlyTs1hqCOqPbKK7QEsFI996V4h53UXJ0FUpJgGf556sN5
- /kqR1kvxBcvrO/DpTyPOjTp10usBBJy2xPJF3dZeW063rygMzQqH1VzZkbJVIt/1aF+XdFyKoPP
- kylSQxYG08vzYCZak8ISItUHXHOCo5te9njOdAvG+zz/iJfXHKE1yGDpKAo0dtDigfBBMG0lOPX
- hpw2QkSdkvAEL6iuKaeQjqQ==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
+ infrastructure
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
+ <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
+ <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
+ <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
+Content-Language: en-US
+In-Reply-To: <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_120441_628022_C1022ACA 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20260709_122558_385920_26ED4491 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,64 +92,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Right now the mode_change property is set whenever the mode changes
-between USB-only, DP-only and USB-DP. It is needed, because on any
-mode change the PHY needs to be re-initialized. Apparently at least
-DP also requires a re-init when the cable orientation is changed,
-which is currently not being done (except when the orientation switch
-also involves a mode change). Prepare for this by renaming mode_change
-to phy_needs_reinit.
+On 7/3/26 11:54 PM, Cristian Ciocaltea wrote:
+> On 7/3/26 5:34 PM, Dmitry Baryshkov wrote:
+>> On Thu, Jul 02, 2026 at 05:46:17PM +0300, Cristian Ciocaltea wrote:
+>>> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
+>>>
+>>> - A scrambler_supported flag to indicate whether the source supports the
+>>>   scrambling capability, in which case the newly introduced
+>>>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_funcs
+>>>   are mandatory
+>>
+>> Do we need a flag? What would it mean if the flag is set, but the
+>> callbacks are not? Can we drop the flag and use the presence of the
+>> callbacks as a way to identify that scrambler is enabled?
+> 
+> The flag is intended to be set only within drmm_connector_hdmi_init_with_caps()
+> when drivers advertise HDMI 2.x capability, in which case it also ensures the
+> callbacks are provided.  
+> 
+> We could drop the flag and instead have the init helper clear the callbacks if
+> they were provided for HDMI 1.x.  This might slightly reduce code readability,
+> as it relies on checking the presence of individual callbacks - especially since
+> we plan to extend this further with HDMI 2.1 support, providing four or five
+> additional FRL-specific callbacks.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+I tried to replace the flag with a helper that checks the presence of (one of)
+the callbacks, but it's not straightforward to unset those for non-HDMI 2.x
+cases since the hdmi_funcs argument is immutable.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 24108816e3b9..e44d19c9d119 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -171,7 +171,7 @@ struct rk_udphy {
- 
- 	/* PHY status management */
- 	bool flip;
--	bool mode_change;
-+	bool phy_needs_reinit;
- 	u8 mode;
- 	u8 status;
- 
-@@ -578,7 +578,7 @@ static void rk_udphy_mode_set(struct rk_udphy *udphy, u8 mode)
- 	if (udphy->mode == mode)
- 		return;
- 
--	udphy->mode_change = true;
-+	udphy->phy_needs_reinit = true;
- 	udphy->mode = mode;
- }
- 
-@@ -951,15 +951,15 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
- 
- 		if (udphy->mode & UDPHY_MODE_USB)
- 			rk_udphy_u3_port_disable(udphy, false);
--		udphy->mode_change = false;
--	} else if (udphy->mode_change) {
-+		udphy->phy_needs_reinit = false;
-+	} else if (udphy->phy_needs_reinit) {
- 		if (udphy->mode == UDPHY_MODE_DP)
- 			rk_udphy_u3_port_disable(udphy, true);
- 
- 		ret = rk_udphy_init(udphy);
- 		if (ret)
- 			return ret;
--		udphy->mode_change = false;
-+		udphy->phy_needs_reinit = false;
- 	}
- 
- 	udphy->status |= mode;
+Also, rejecting that use case is less than ideal, since we would restrict
+reusing the struct instance, e.g. to support HW revisions with varying
+scrambling capabilities.
 
--- 
-2.53.0
+Therefore, I'd keep the flag for now.
 
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
