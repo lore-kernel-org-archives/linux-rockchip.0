@@ -4,56 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0131CC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 08:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DFD5C43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 09:28:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d49XGrxvLx4aHkf93nQhpCzy1TQYCKNX93jIVnz10K0=; b=kCPjVDfUBr/eIO
-	6EnkZbWa2RY/g5om6hEpHDU0ta0WzEUJANEtlySk5vcJomcGe8eI7GPytu5oWPr/98LVItbDjEh22
-	5I/8WQYTFiVTLCJNzPPoBTtrwHrTYtybOsmvD0RCbE0oC5gofeSMkS5eGuvZuTWeKSF01ZyRH8cJH
-	pSJbGjHOiqdaSm4YUCOPGAyECuPIvAi6PYCnQzT+mfBtMgQruwlWrmGtfUxC6KNj84ZZuL2DXCbpz
-	cxEz4WBFNHnB9RGx1+ag5V1E0z3r0nweGGdFsN7w0J8y18w2/vIcf0w4EYiFeZ6XkYHb5nN4NHQwo
-	IeaqqTAK18DxwSGkOcRw==;
+	List-Owner; bh=d49XGrxvLx4aHkf93nQhpCzy1TQYCKNX93jIVnz10K0=; b=C7HcDtvFIE7DWd
+	qOEIarS5E7LrQ1qYkat3aJGEgW3gyJ/PZ4s4CiD1CuMoXbmzBnP/4isiI/newkT2LnC9mDANK8m4g
+	jaA2kZm3/eV4Ugwk5Niip2TIPbNRjkt50zhsxrh7oCb8AOauynO4Am1X33y/e8pyY3fnFgKLD/c1j
+	+IADP8DPzh4ySbtMnycTOBHLws3g+nihI6OcAoXeMYHcYtRatYtS+0Arn3rDabsRP05yO1bQtsCAh
+	Om6r77wP1zHinqM78DgXmfutzirE1EwzD9SqqHmfg2RxGXBi9QchiPbsEkzk2hxfnggNz3OZLM8f7
+	+Pa6VtpVZsepJEfEJczw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi6iQ-00000004TKg-0zX7;
-	Fri, 10 Jul 2026 08:36:10 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1wi7XF-00000004ZcO-45xd;
+	Fri, 10 Jul 2026 09:28:41 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi6iN-00000004TJz-2DWo
-	for linux-rockchip@lists.infradead.org;
-	Fri, 10 Jul 2026 08:36:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1783672564; cv=none; 
+	id 1wi7XC-00000004ZbV-3eoA;
+	Fri, 10 Jul 2026 09:28:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1783675711; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=MlqrxxF1wJl30uhcuItAXefnCQNT7gx8V1zSoI9gSvrHhJ+V2cTSQa6Wzn2+prnQnz3y/uAUU6uEXkTYeew+cDSBtOBTb8ZTfXyJEf0MH0sjvthVgaVb6wsIV+kZ5/+l2Gv5lqOIcRHjGR56gZ221EhB1zQhkY8723fS/CHx/rE=
+	b=fDBdrajC6dWpdTAPHLp6XUftta9JPXlcrSWiob5sFP4lTxC9j3nTLbSA+CAg2xX3T09JhigFLBQaYlMt+pSHuN7NGZLUtWBu/o44wQuxVajLLKa8WNlO9pAe20W+awImDVDXW/5RBK0ApXkf5mji8NFwY3qYWSzXSJFshTyhvUQ=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1783672564; h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To:Cc; 
+	t=1783675711; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
 	bh=Fw/fy3UoHLfUYgga6EEL6C47y2bXn7ggaSSiSrjCLtc=; 
-	b=Lb4l7Atv2XMjCiOjwrrl/0ozFxegzYK9jvPBC+3pQAP6e6qiCPBm9TQNz+5FU8jJQJR3HceqL7swuqha1D/iOtDeAc22DabmJERjmXFyWFMbEqJScthJ+P6sw0O+fdSkbUiQZB4O3+gtoAdXVGCf0/Ob6kV4aT/8Jf037HG8OSg=
+	b=MKDV4Wjohs0/c7b92RwXmwayvARNhIjdXBlSwTZSGwl4P4oAgUpN1i2PhpdBo/27b1u96SDzedat0QMNCk5IKUdteZ+RRKL1ZZnG9hiaIWUCM4NzXEl3di2nZyHLp7wombGfESywc0YUefqIy4BiuBTXxz9eJnvWWviEITNsrII=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
 	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783672563;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783675711;
 	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
 	bh=Fw/fy3UoHLfUYgga6EEL6C47y2bXn7ggaSSiSrjCLtc=;
-	b=cBiQXQowncOes/dL4TtYWdPZjV7wKVqO8HHf+jEYoo4mFLbr11w1k4KHTqm1Qg0X
-	+LNzGJowwOppaDaSmkfSwn5VJviNJvas+GlYtmw1zQI5Cc0HC7X3qHws3Oixy+5r5XK
-	RYbdHNocDkR7A+Csb5qgKht/ZOoZT+4feWT5bPtA=
-Received: by mx.zohomail.com with SMTPS id 1783672561028400.80903517610943;
-	Fri, 10 Jul 2026 01:36:01 -0700 (PDT)
-Message-ID: <ef9fa1fa-0267-45a9-8e4e-00eccffdf470@collabora.com>
-Date: Fri, 10 Jul 2026 10:35:58 +0200
+	b=LUDiahPo1uiRU9vDQVYU+OFRhDkQahT0ybvnAezfY4H3qbRqmw/gC3sYDiwGzbgT
+	ONNOjgc4vhnP/N/dN1fL4vGcB5b+YgweeHJ+C0WD4K5/HWL8w3mPIwClVamrVwL09AD
+	bwP9mrHhj9P4Wxyzjt/TLON9mFCyB/dj2eWeaTwg=
+Received: by mx.zohomail.com with SMTPS id 1783675708973953.0877608836702;
+	Fri, 10 Jul 2026 02:28:28 -0700 (PDT)
+Message-ID: <29e2a6f6-c086-4d86-91d6-7d8dd39eb1c9@collabora.com>
+Date: Fri, 10 Jul 2026 11:28:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 1/3] phy: rockchip: phy-rockchip-inno-csidphy: fix
  rk1808 hsfreq table
-To: linux-rockchip@lists.infradead.org
+To: Gerald Loacker <gerald.loacker@wolfvision.net>,
+ Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
 References: <20260630-feature-mipi-csi-dphy-4k60-v3-0-176792ab71fa@wolfvision.net>
  <20260630-feature-mipi-csi-dphy-4k60-v3-1-176792ab71fa@wolfvision.net>
 Content-Language: en-US
@@ -61,8 +66,8 @@ From: Michael Riesch <michael.riesch@collabora.com>
 In-Reply-To: <20260630-feature-mipi-csi-dphy-4k60-v3-1-176792ab71fa@wolfvision.net>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_013607_648899_5E3851E1 
-X-CRM114-Status: GOOD (  13.93  )
+X-CRM114-CacheID: sfid-20260710_022838_957776_19104590 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
