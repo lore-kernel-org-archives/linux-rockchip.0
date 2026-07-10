@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F2DFC44501
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4883FC44507
 	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 22:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rwvPb1CsuccDdtr/sMozTTT7sPO1ZyTg2vnZTWeVlp4=; b=AY5VO2UoyLEDzU
-	obhg/1g9VnoqiPFEcHM14SmKEO+GMWRQ8IlMiAXUZb6Ab5/DUDBJzemZvPDUZ6gvdybTeS5FpWpJY
-	M2LFNrJ6Imk5Wfo8uVE6RlSK9Qm8zMvpwfAyYQQOEyDK/eqro4lKqjPeFGTeJWMxjlvuLHtarEIzC
-	MoFsW//wkKii6HZplkRwZINek+Lt6INnECaH/IiEc9b8DtwyxxeW7c3LA0KYSrLh0/gRyyz8QEMCc
-	49TXXFNN4TSYUnyGaiNCuKk/8oE1G8TD7CL5x2aD5q8GgcV35coaXZSP/mthvutmgGUgerBWvzeW0
-	59W0/kVYqvo9HlRzLHMQ==;
+	List-Owner; bh=xnJ674aIOl219pTJRr51I3Z/b/R62AhYtrnNOVr2axI=; b=jzEx4dGJ7OVl63
+	uzaUEcUgBhe8Nz01hoIfEMRN61Rsul1iNdtYB1VGH8uBRcnE96pS+/E+AXoBuKDg3KNnBHhIrfzYc
+	mSK+w6AND9aKFpHjKQn5D1WqJfhvaDi1ij2/peXJ12IOex4+GyuO7Pu3CUr5VcxtlDL6jnec6Wxyx
+	RL1gDB3GtBqDpC3oDeuU3g3FQhyZMNpJgModRzgiQIwHv9QKCX2Z1GKsjWCPDOl64jGXSFZhcDopM
+	WUQsWn2ZJ+JT4kcZVnFK5O3m3jxDJL4rWI/4Qe6Q9hy/+cvsOKLvsuo70J1cMQK68cQi9vIsq7AlS
+	B9PyxyPenhqvyl7sqXOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiJSB-00000005uHI-13BO;
+	id 1wiJSB-00000005uIB-3b72;
 	Fri, 10 Jul 2026 22:12:15 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiJS9-00000005uE1-1Y5s;
+	id 1wiJS9-00000005uDw-1dNv;
 	Fri, 10 Jul 2026 22:12:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CF9F343F2F;
+	by sea.source.kernel.org (Postfix) with ESMTP id C105443C80;
 	Fri, 10 Jul 2026 22:12:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id ABB9DC2BCFC;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 9AEA0C2BCF4;
 	Fri, 10 Jul 2026 22:12:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1783721532;
-	bh=7kThHoU7NfVa2SrQo4njFM/R/gQef5vJsZCKo0knqPU=;
+	bh=p8WO4o/I480NES+b3qaNouXk4eoGUbReu9hZJqx0uvE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=TuC0gmQBy8xvI4yZhmmw4iCeFUD0mbcn2HX+O0M2q2XSYdeF68AtyISplxJ9PnHJZ
-	 PKPJZUTQwt4GZWzD3TYdEtPro7Ak5YB5a9gsOmSY7CRwsfYE74hs1EuNUnhRXa0eDt
-	 /Y1p9MZTUWCi+M9mFSilDm/TG1jjiUZd/XkUhVdNKlL4YxkoQ1D4YaLdjHaXwM5JBA
-	 +d/rEsGQe89u7pwTVgiuN8JaWEqEPDiXzibD3TXxPboygCnrTpIskC3ddLBVxirbzF
-	 ptWa3dj1xs0wvDqif1TU9qIDFwXqSdUM5gKA8aEa24vUt87svOsPZcRb2Tizdoi+R/
-	 j+lNU5qT/vnHg==
+	b=BqjcZL4Pny7CHMtlEBxXtBkq+ZhOd7YGmSjPe9/JATBW1P6MP4l2PB1i6fOgFCu0A
+	 P6478dMdxX8TeqHO5zNjQtiKF9oIq4tdDNeRsdNoKHzshX+DJTFcQNGaUMGVY0PklP
+	 BAXWFuRSnPG86uHPG0Hm8Fa2Y//cLNMA4Jf+kmCjOBe0UF9nl/59KgUThCDju/A4u9
+	 akK79klWCuFAGIqN+tyKsOtkTe1rF85IDsz1k7h0XQpGtUKIDxHIYAs5IZFDnz8aoV
+	 suqAjNWVAJQDI5vUT6zPQp4xjxMGn1QW81oCy+ouwDR0oAh8dtat/ymsT0w8dW4k4z
+	 2GldbSuWCEBFg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 970A7C44508;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DDC9C44501;
 	Fri, 10 Jul 2026 22:12:12 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Sat, 11 Jul 2026 00:11:54 +0200
-Subject: [PATCH v2 05/12] arm64: dts: rockchip: rk3588s-nanopi: remove pull
- up on rtc int pin
+Date: Sat, 11 Jul 2026 00:11:52 +0200
+Subject: [PATCH v2 03/12] arm64: dts: rockchip: move NanoPi R6 code into
+ common dtsi
 MIME-Version: 1.0
-Message-Id: <20260711-nanopi-m6-v2-5-422675a65402@gmail.com>
+Message-Id: <20260711-nanopi-m6-v2-3-422675a65402@gmail.com>
 References: <20260711-nanopi-m6-v2-0-422675a65402@gmail.com>
 In-Reply-To: <20260711-nanopi-m6-v2-0-422675a65402@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,11 +58,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, diederik@cknow-tech.com, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783721530; l=834;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783721530; l=6924;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=8bK9qjPaJeH5DZSNwTRXo86eIiea6f1QVJhbeEdJZoQ=;
- b=yxJ1F6wFUM1wWvQ+bxf+mrLZeZgYWPe5+TwQuiHbYErmcJ7MxBLrQldSkAnRvd724l0f1F1Rz
- kMkm6sLbs+hAuYC8ZDUvfcpi6HeSF1BeHIj8MSzEbxmSFJFRPhaRk3E
+ bh=l+IoGL0+AR8uHVcN+bVq+UedJE3QXtq5gzvflNswvyo=;
+ b=otyvpGReSdJaqxJ7SY0Tq/+rUJIHKP8tAQExm37YA2dqkndZh5+4MldsyZRfWX4WDstongo0o
+ DRI5Uv+xTRWDFuyXjLg0Ue74qJSBFgxZhsBAjQ2vdow4GVmlKtERSnm
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,27 +87,270 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-All boards in the RK3588S NanoPi familiy has a pull on the PCB for the
-RTC interrupt pin. So there is no need to enable the pull-up in the SoC.
+Move NanoPi R6C and R6S specific DT into its own file.
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 96 ++++++++++++++++++++++
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts |  1 +
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi   | 89 --------------------
+ 4 files changed, 98 insertions(+), 89 deletions(-)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
+new file mode 100644
+index 000000000000..2f8c580afc2b
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
+@@ -0,0 +1,96 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/ {
++	gpio-keys {
++		compatible = "gpio-keys";
++		pinctrl-names = "default";
++		pinctrl-0 = <&key1_pin>;
++
++		button-user {
++			label = "User";
++			linux,code = <BTN_1>;
++			gpios = <&gpio1 RK_PC0 GPIO_ACTIVE_LOW>;
++			debounce-interval = <50>;
++		};
++	};
++
++	leds {
++		compatible = "gpio-leds";
++
++		sys_led: led-0 {
++			label = "sys_led";
++			gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "heartbeat";
++			pinctrl-names = "default";
++			pinctrl-0 = <&sys_led_pin>;
++		};
++
++		wan_led: led-1 {
++			label = "wan_led";
++			gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&wan_led_pin>;
++		};
++
++		lan1_led: led-2 {
++			label = "lan1_led";
++			gpios = <&gpio1 RK_PC3 GPIO_ACTIVE_HIGH>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&lan1_led_pin>;
++		};
++
++		lan2_led: led-3 {
++			gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&lan2_led_pin>;
++		};
++	};
++
++	vcc5v0_usb_otg0: regulator-vcc5v0-usb-otg0 {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpios = <&gpio1 RK_PD2 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&typec5v_pwren>;
++		regulator-name = "vcc5v0_usb_otg0";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc5v0_usb>;
++	};
++};
++
++&pinctrl {
++	gpio-key {
++		key1_pin: key1-pin {
++			rockchip,pins = <1 RK_PC0 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
++	gpio-leds {
++		sys_led_pin: sys-led-pin {
++			rockchip,pins =
++				<1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		wan_led_pin: wan-led-pin {
++			rockchip,pins =
++				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		lan1_led_pin: lan1-led-pin {
++			rockchip,pins =
++				<1 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		lan2_led_pin: lan2-led-pin {
++			rockchip,pins =
++				<1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	usb {
++		typec5v_pwren: typec5v-pwren {
++			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+index 77fef2662ca5..90922c55da37 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+@@ -3,6 +3,7 @@
+ /dts-v1/;
+ 
+ #include "rk3588s-nanopi.dtsi"
++#include "rk3588s-nanopi-r6.dtsi"
+ 
+ / {
+ 	model = "FriendlyElec NanoPi R6C";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+index f8993418a122..8b318561342c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6s.dts
+@@ -3,6 +3,7 @@
+ /dts-v1/;
+ 
+ #include "rk3588s-nanopi.dtsi"
++#include "rk3588s-nanopi-r6.dtsi"
+ 
+ / {
+ 	model = "FriendlyElec NanoPi R6S";
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-index a8f32b994b10..f3a240b48a2a 100644
+index 91b6eefd7abf..d41c49716fa2 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-@@ -331,7 +331,7 @@ hdmi0_tx_on_h: hdmi0-tx-on-h {
- 
- 	hym8563 {
- 		rtc_int: rtc-int {
--			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -33,19 +33,6 @@ button-maskrom {
  		};
  	};
  
+-	gpio-keys {
+-		compatible = "gpio-keys";
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&key1_pin>;
+-
+-		button-user {
+-			label = "User";
+-			linux,code = <BTN_1>;
+-			gpios = <&gpio1 RK_PC0 GPIO_ACTIVE_LOW>;
+-			debounce-interval = <50>;
+-		};
+-	};
+-
+ 	hdmi-con {
+ 		compatible = "hdmi-connector";
+ 		type = "a";
+@@ -57,38 +44,6 @@ hdmi_con_in: endpoint {
+ 		};
+ 	};
+ 
+-	leds {
+-		compatible = "gpio-leds";
+-
+-		sys_led: led-0 {
+-			label = "sys_led";
+-			gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
+-			linux,default-trigger = "heartbeat";
+-			pinctrl-names = "default";
+-			pinctrl-0 = <&sys_led_pin>;
+-		};
+-
+-		wan_led: led-1 {
+-			label = "wan_led";
+-			gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
+-			pinctrl-names = "default";
+-			pinctrl-0 = <&wan_led_pin>;
+-		};
+-
+-		lan1_led: led-2 {
+-			label = "lan1_led";
+-			gpios = <&gpio1 RK_PC3 GPIO_ACTIVE_HIGH>;
+-			pinctrl-names = "default";
+-			pinctrl-0 = <&lan1_led_pin>;
+-		};
+-
+-		lan2_led: led-3 {
+-			gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
+-			pinctrl-names = "default";
+-			pinctrl-0 = <&lan2_led_pin>;
+-		};
+-	};
+-
+ 	vcc5v0_sys: regulator-vcc5v0-sys {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_sys";
+@@ -151,18 +106,6 @@ vcc5v0_usb: regulator-vcc5v0-usb {
+ 		vin-supply = <&vcc5v0_sys>;
+ 	};
+ 
+-	vcc5v0_usb_otg0: regulator-vcc5v0-usb-otg0 {
+-		compatible = "regulator-fixed";
+-		enable-active-high;
+-		gpios = <&gpio1 RK_PD2 GPIO_ACTIVE_HIGH>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&typec5v_pwren>;
+-		regulator-name = "vcc5v0_usb_otg0";
+-		regulator-min-microvolt = <5000000>;
+-		regulator-max-microvolt = <5000000>;
+-		vin-supply = <&vcc5v0_usb>;
+-	};
+-
+ 	vcc5v0_host_20: regulator-vcc5v0-host-20 {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -380,34 +323,6 @@ &pd_npu {
+ };
+ 
+ &pinctrl {
+-	gpio-key {
+-		key1_pin: key1-pin {
+-			rockchip,pins = <1 RK_PC0 RK_FUNC_GPIO &pcfg_pull_up>;
+-		};
+-	};
+-
+-	gpio-leds {
+-		sys_led_pin: sys-led-pin {
+-			rockchip,pins =
+-				<1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-
+-		wan_led_pin: wan-led-pin {
+-			rockchip,pins =
+-				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-
+-		lan1_led_pin: lan1-led-pin {
+-			rockchip,pins =
+-				<1 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-
+-		lan2_led_pin: lan2-led-pin {
+-			rockchip,pins =
+-				<1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+-
+ 	hdmi {
+ 		hdmi0_tx_on_h: hdmi0-tx-on-h {
+ 			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -427,10 +342,6 @@ sd_s0_pwr: sd-s0-pwr {
+ 	};
+ 
+ 	usb {
+-		typec5v_pwren: typec5v-pwren {
+-			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-
+ 		vcc5v0_host20_en: vcc5v0-host20-en {
+ 			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
 
 -- 
 2.55.0
