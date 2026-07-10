@@ -4,61 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3671DC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 10:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B3AFC43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 10:59:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MkxJxIMaf/ihDqNu06EJ9sFJ1DE2pIS/6g+RLxMqgZo=; b=N5wIiDCxSlJ2kJpWq6sdTT6pjo
-	GfLswoS3hywz/1pPGnDG2+wcmFV7lDR/yoGUcYf8RkNQaYFhgc8vM/MUexX/g9CMCz3VOPmeGye8G
-	9K0+2BOVnRstiihBz/J20K+ahktplez8CObRpxPdvwbaWaVUD0/Tvrwm3CRuuYeZ+/BwMAyJEeb4o
-	1YUuuIM3+qaVMjz0IpPip5g9sWxNDROvaV4PZOPitmth9YNmK8NwR+wzdAp6dCYQMgufD3rRAEF3h
-	0nItHULYZCJbDIQDIIGxeqfCzgb0SSAUCldd7DJDn/ONXuwBBq2HYVZPsFGzhlo0TED7032R3smRI
-	qQoKxWrg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GG1naXqAXX6ZK73iBo0T2dpuNyMIZfzrftMgE0JG+d0=; b=MYhtIXfbvuQFvw
+	h8f7w8k64ygQFQ9VkQfNPU++kSzgWis4lKR1Md2VyL221oaJbgob+1zgO95WbLS8ID58Znzqz9cd2
+	AxNFj/QOHJfrtM3oVigkWbF9j7UeNJytL0UpU02C5nzSfvceCfLF6UokY3EctvrCsZ3u0QguwL3gl
+	NlzEItUCWaa58piLGeuJRJwZgajizL/BV5QLRfSqg7Yv4DN0dccrI2/oSfqyRupNkG2wn8qNBJ66l
+	n2Wswl36K35S7aFIs81ZIENKKC19so3grY9IH0cKG/i0o4Vv+swYcd7cKn6UjbyAzEb+1hP25qWXQ
+	Zgfut5HGWolPJdp1bSMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi8WC-00000004iSk-3Pzh;
-	Fri, 10 Jul 2026 10:31:40 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wi8wt-00000004lNB-0WJW;
+	Fri, 10 Jul 2026 10:59:15 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi8WB-00000004iSP-10Zm;
-	Fri, 10 Jul 2026 10:31:39 +0000
+	id 1wi8wr-00000004lMx-27Aw;
+	Fri, 10 Jul 2026 10:59:13 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with UTF8SMTP id CA0174041E;
-	Fri, 10 Jul 2026 10:31:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with UTF8SMTPSA id 305191F000E9;
-	Fri, 10 Jul 2026 10:31:38 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A935660051;
+	Fri, 10 Jul 2026 10:59:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1E151F000E9;
+	Fri, 10 Jul 2026 10:59:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783679498;
-	bh=B/0P6CjkFCqMXZpshxscC8fggHEtFDHkHgmueIFeARI=;
+	s=k20260515; t=1783681152;
+	bh=5RU9jyjDZ8CdKycZTW5Y3nd2HKxIX/CGf0uN/C8vm+s=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=XrlteZyITiTdyCYT+QTMlv7oyxY4ow9O28q/YRWuSlvBnyi7poznDF/ThmSDZxxPB
-	 w7veUv+18dltW9ecVdH1DQr9bE11YUPBPax5UthbczOYmgPmKccMut/QTjUQW7QTDK
-	 oR0vbTQ3gtR2Sy4a/foGnQ+nHBkLHBYF5y6vF1wylkAEvRTd8ylBdhYjqRJf5clxM6
-	 /ONYaZLt60BANJFnZ3KojsppG1VDEgJZm52ITUsC0PLcRxtB/T5/8KvzUgcd5HsQWS
-	 Xd7MiWxZcvUluTvvQX5tKQTf72vMRMDUywzXzF38BUVRZ4LH2OH68tpVk6MNiznIIT
-	 BHkOg3CcE8Hvg==
-Date: Fri, 10 Jul 2026 12:31:35 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>, 
-	William Breathitt Gray <wbg@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, 
-	Jonas Karlman <jonas@kwiboo.se>, Alexey Charkov <alchark@gmail.com>, 
-	linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, 
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: Re: [PATCH v5 1/6] dt-bindings: pwm: Add a new binding for
- rockchip,rk3576-pwm
-Message-ID: <alCvmLX1ke0qjh99@monoceros>
-References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
- <20260420-rk3576-pwm-v5-1-ae7cfbbe5427@collabora.com>
+	b=P9g6X6+0ZpBoxkWrEIPnYP7a0wV0jlT9aNYx2hiN7f48ci5qgfUf/pmMKIB/RhAZz
+	 x76HOdthYnWeGnTUFEl+ro1rVO91zyXkMcz8Bfc0tbz+LMO5eP8rqdt8vVzQSXdt9O
+	 gVUet8ZrEBnk0eLUYMSZSUla4dpRkJwrRj1GKz7wvdfOHTp4xMb+fehqUEQI+DjDLi
+	 PrXR9oSeqIjDPlC7+h+ic+ZLoPayy+GW5B1calYkaNSIfjfPlB1YD2Evuq0yXq/zmk
+	 pCfYXxLIT8qQrgO/LgzHVbIlXNxVr53ykeAYX48q75LX3n1TMIwhXYX+ppJo8J/w77
+	 QUgWiBsBD1PDQ==
+Date: Fri, 10 Jul 2026 11:59:06 +0100
+From: Will Deacon <will@kernel.org>
+To: Jiaxing Hu <huhuvmb88@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
+	Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	jgg@ziepe.ca
+Subject: Re: [PATCH] iommu/rockchip: implement .flush_iotlb_all
+Message-ID: <alDQevX58XvdRcWc@willie-the-truck>
+References: <20260710060513.863714-1-huhuvmb88@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20260420-rk3576-pwm-v5-1-ae7cfbbe5427@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20260710060513.863714-1-huhuvmb88@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,165 +66,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5214865951627928494=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============5214865951627928494==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mnh6xjyjg3d65ymy"
-Content-Disposition: inline
-
-
---mnh6xjyjg3d65ymy
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v5 1/6] dt-bindings: pwm: Add a new binding for
- rockchip,rk3576-pwm
-MIME-Version: 1.0
-
-Hello,
-
-On Mon, Apr 20, 2026 at 03:52:38PM +0200, Nicolas Frattaroli wrote:
-> The Rockchip RK3576 SoC has a newer PWM controller IP revision than
-> previous Rockchip SoCs. This IP, called "PWMv4" by Rockchip, introduces
-> several new features, and consequently differs in its bindings.
->=20
-> Instead of expanding the ever-growing rockchip-pwm binding that already
-> has an if-condition, add an entirely new binding to handle this.
->=20
-> There are two additional clocks, "osc" and "rc". These are available for
-> every PWM instance, and the PWM hardware can switch between the "pwm",
-> "osc" and "rc" clock at runtime.
->=20
-> The PWM controller also comes with an interrupt now. This interrupt is
-> used to signal various conditions.
->=20
-> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+On Fri, Jul 10, 2026 at 06:05:13PM +1200, Jiaxing Hu wrote:
+> rk_iommu invalidates the IOTLB synchronously in .unmap (via
+> rk_iommu_zap_iova), so it stays consistent without a deferred .iotlb_sync
+> and does not advertise IOMMU_CAP_DEFERRED_FLUSH.
+> 
+> It never implemented the optional .flush_iotlb_all op, though, and
+> iommu_flush_iotlb_all() is a no-op when that op is absent -- so on Rockchip
+> a driver that owns an rk_iommu domain and calls it to flush the whole
+> domain's TLB (e.g. before reusing a mapping, without unmapping it) gets
+> nothing, even though the hardware can do it: rk_iommu already issues
+> ZAP_CACHE for range shootdowns.
+> 
+> Implement it with that same primitive: ZAP_CACHE every bank of every IOMMU
+> on the domain, under the runtime-PM + clk guard already used by
+> rk_iommu_zap_iova().
+> 
+> Found while bringing up an out-of-tree RK3576 NPU (accel/rocket) driver
+> that flushes before each submit; on Rockchip that flush did nothing.
+> 
+> Signed-off-by: Jiaxing Hu <huhuvmb88@gmail.com>
 > ---
->  .../bindings/pwm/rockchip,rk3576-pwm.yaml          | 77 ++++++++++++++++=
-++++++
->  MAINTAINERS                                        |  7 ++
->  2 files changed, 84 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.ya=
-ml b/Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
-> new file mode 100644
-> index 000000000000..48d5055c8b06
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pwm/rockchip,rk3576-pwm.yaml
-> @@ -0,0 +1,77 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pwm/rockchip,rk3576-pwm.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip PWMv4 controller
-> +
-> +maintainers:
-> +  - Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> +
-> +description: |
-> +  The Rockchip PWMv4 controller is a PWM controller found on several Roc=
-kchip
-> +  SoCs, such as the RK3576.
-> +
-> +  It supports both generating and capturing PWM signals.
-> +
-> +allOf:
-> +  - $ref: pwm.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: rockchip,rk3576-pwm
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: Used to derive the PWM signal.
-> +      - description: Used as the APB bus clock.
-> +      - description: Used as an alternative to derive the PWM signal.
-> +      - description: Used as another alternative to derive the PWM signa=
-l.
-> +
-> +  clock-names:
-> +    items:
-> +      - const: pwm
-> +      - const: pclk
-> +      - const: osc
-> +      - const: rc
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  "#pwm-cells":
-> +    const: 3
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
-> +  - interrupts
 
-pwm.yaml has:
+We tried to get rid of iommu_flush_iotlb_all() in 69e5a17511f6
+("iommu: Remove useless flush from iommu_create_device_direct_mappings()")
+but we had to revert that in a33bf8d8ce7e ("iommu: Restore
+iommu_flush_iotlb_all()") because of a user in the MSM driver.
 
-	required:
-	  - "#pwm-cells"
+So I think this is the wrong direction. We should try harder to remove
+the function rather than add new implementations of it. I'm assuming
+you're only adding it for some out-of-tree code that calls it?
 
-Still Sashiko[1] claims:
-
-	The binding defines #pwm-cells under properties, but omitting it from the
-	required list allows device tree nodes missing the property to pass schema
-	validation.
-
-I played a bit around with dt-validate and I think Sashiko is wrong here
-and pwm.yaml's requirement isn't overridden by the local required list.
-
-So this patch should be fine.
-
-Best regards
-Uwe
-
-[1] https://sashiko.dev/#/patchset/20260420-rk3576-pwm-v5-0-ae7cfbbe5427%40=
-collabora.com
-
---mnh6xjyjg3d65ymy
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmpQygUACgkQj4D7WH0S
-/k530Qf/Yrgd15Oua0wX8H9DeijzIE3bpRLuqNvVEsc2me0Ww9zPov4iHylUuu1a
-RubtMDQyyXRuiGSqbcmeNV8lWGFbd/moOm1pw/KXnkvtIuBd2S3tIlTC2qCKRwpF
-MVE2yBKSN1h4IAZ88/ei1M2RCCTX6WQ13Tp3cvt1MEx9+y06qLmjgkrBixr/mPMq
-JZYYzZh//1spbCmc6clKnfshjrRB1iDOQiS1VeTZgCv/bcNgYxIRDov/BJZzLnRZ
-GYYcl6tFqfbJ8UA7sn7s9I6q6/1ZlHwjK7e7/DWPeyPgD7ncpJHr7a91ajTCtZmC
-lnC4jZZBJcY1/1UCHZTUCTXDhQRwhQ==
-=FvaV
------END PGP SIGNATURE-----
-
---mnh6xjyjg3d65ymy--
-
-
---===============5214865951627928494==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Will
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5214865951627928494==--
-
