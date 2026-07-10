@@ -4,90 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B9FFC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 11:15:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E2DCC43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 12:12:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zwae4eVscyhRb7Pn+SpY+CHOIZ11L6LqU/MoZm4KNAY=; b=2zhw5z5qHjM6Jk
-	wDyjaTLFcV1+Z8h2Pxiy9u8k5UL+ZEcudD78QvXQB+dANY380nFKiWQi4+dw7SLA40bOOA0zanrNk
-	O6PsGzJOCcwO4wTxxeHmlaTiLyUD93WbK+yYEzzw1BG+nPz785/WhaojWf8WUXjDzxEz8dj7HiggC
-	sJ7uQu4G70zuEQJiKL1vYuTz82/rmaIuYY6tWMXU53BR2HIZtSWO2aeHTSMhQASawEogs376Tz1cZ
-	2G3RlxZ28rl4DpVMkdYT30Mk6asRBuEhoWOQYPmLBShAXPS70Iu0eShXKtKkm8ggsRGikzWAzEi9i
-	dWwI373CO1YsWkIbdtpg==;
+	List-Owner; bh=IVyd4sPz6mT/umiTKA/rSumIXChHehbCz/5ES4bt/Pw=; b=AUoEXkOZEzVBcn
+	Gu7ubFrmqaeKTTc8ugUKlCYXtLxdbkqeem6SZteXgEHeujCvncBqQyDCQVqsFA1ptWxtd/Gk/aTDH
+	VxLs0zY2bCf2kvkRJ2R1vryOAqpUKjQbcX4k/htawVqx70akZvXvR6Hr2nzyDKm+yM5uFe03WxuD2
+	mDffSeYwCd0jSksrTTmmgjmZ3p6HfAePU+Tgk66Z3OglyHVc58g9BuhTOhlwR0SoG4EU1//g4Z7Sh
+	8t00WaymCVqMdZ/rH58f//ASL9KJ4faaWiVA2JWYTuy4yetVwDM6H+ZnlOuUPh7T1VvGnx8M/UOG9
+	NN6bU9aWS3AHUadfxmLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi9CT-00000004nKh-1yN9;
-	Fri, 10 Jul 2026 11:15:21 +0000
-Received: from mail-pj2-x01.google.com ([2607:f8b0:4864:39::1])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi9CQ-00000004nJu-20Vp
-	for linux-rockchip@lists.infradead.org;
-	Fri, 10 Jul 2026 11:15:19 +0000
-Received: by mail-pj2-x01.google.com with SMTP id 98e67ed59e1d1-380feaa05dcso566821a91.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 10 Jul 2026 04:15:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783682118; x=1784286918; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=iMApwtVfAiHTe4uNdsg1pmRa4ajqzJGEhdVZ2CWz9x4=;
-        b=OYjT4OqjVBKpIhppeaWhhtzUr+gs6OVdgb7EhOjaqKkGEAiVViSVvmNl5guc10WDE2
-         8Wxk6kVv47e15VRztp+219CSJHuWz3Q/8ejTEEkwkEw5X8nBDkcNptka9Tr9Wv6CTcin
-         deCnLVi4N3ioy+MtZZyqYp/QVxKksI/bP3oD8aPSmAM1mqxzg0TaW1PFPJI0pK5qi37/
-         pgJWhjLZN554DDbKQjsL18z1cpaMaCDezPKw0zD3N9zdRFab+pf2V6rmypcUzMo63yR3
-         NP42EEiQBL8RGN1yiisHOYo7LcuhwefnYngTcqn47cAn07o+id/dA9HKD6lzCFBFhnwr
-         6thg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783682118; x=1784286918;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=iMApwtVfAiHTe4uNdsg1pmRa4ajqzJGEhdVZ2CWz9x4=;
-        b=PGrDPJYyidZgRYH5bsW2f/2tzHbOLTOGhzioZLld9cGo1f0N+nr4O2rhCdiI1AGX8f
-         xsq/n2SExCJDwqdkY2/71ifh56mrOeGamt+rlNAGxHLBWSLrIrGd3ap2Nodj3p5neHwQ
-         7oZw54gy9DkjNfomH/hisDI4nU9RzsJJOUCmp4nNhO27lUU4E+6t2ZyCMEGZZv+gFfWF
-         11sBnSM7/rly7Bf9btiCJc6987rP6U6ar6ShQd7eD36rgXXfkAR89lYb3du+uwnq5ouw
-         Uj4MP5HXZWv/+wWf1KH6nHMPn5308ofp9gEu5pvpqqPS+dGjQGhye0aCyqLBOhkGykcH
-         syyw==
-X-Forwarded-Encrypted: i=1; AHgh+RpomtO7baQT5FO6o5uCAhgIlRuAnCk6GV7Yw3mkvkhG84o3caRWn+fQ4W97j0Hyk+A/i/HB2SNKVcvesMjWuA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwrVVcZr0Zsn7eeDhCgy0p4DeTZz4Sol6dfuRmWrAIJDY8ZDGyO
-	L/r1pGi/D+lOEvq/qiIBHeX8l/gUR4TL1WMrC456SJrUyjlriWAocgub
-X-Gm-Gg: AfdE7clFuiwoeI6Stc5YKc960CuWZatNtcViH5q1MVAOVkFXV0P+WXw5Z2CAgRyoiiA
-	JpKzq0IEvKygqXkAolC2DWG2vbjl2LXVVmYn58UktBe12vzSe/qKag0GL3hZx6L4C02hX2H+H6N
-	t6KUz/7xWehxISq9DwD4s7Ow7ySuZfsY+PYKo6PgDvHG+77k5bEqH3BQxxoZB5HVg+EM18p2+/o
-	YtfxHwsvLbNU3D057bSo5VFqoiaMl8Nd63JY1QYXNzBe7MEBXNLW482/7fpQZGlHbMFXoq5gETl
-	syVZmFhVoqjYeV2PfPDoIcqMfrAWC/sUTSMLPfR2zbDk3dgBfXdBOykcs4gHbIDd4JbeG/8q2Hw
-	GIsGnYnw1JEcpyvgzFVgRazxgTW7iLLiD76pgQZQbUAgMTNlUxn+Qm8Cwxga/tFv5FUXCxLyxcT
-	WsQUe5wOBkn4s46Yeefg0+JcGLZtYHWpy4oBsxAerVXSt6tmEmS8vX9PwEE4Yn+p5YpZLTIiI=
-X-Received: by 2002:a17:90b:37cc:b0:387:e0cb:7f5 with SMTP id 98e67ed59e1d1-3894298482bmr11227568a91.41.1783682117496;
-        Fri, 10 Jul 2026 04:15:17 -0700 (PDT)
-Received: from ubuntu-gnu-linux-24-04-3.hub ([2407:7000:af23:3e00:eb86:437c:263f:195f])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38a5622ae99sm2576177a91.14.2026.07.10.04.15.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Jul 2026 04:15:16 -0700 (PDT)
-From: Jiaxing Hu <huhuvmb88@gmail.com>
-To: Will Deacon <will@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Joerg Roedel <joro@8bytes.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	iommu@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] iommu/rockchip: implement .flush_iotlb_all
-Date: Fri, 10 Jul 2026 23:15:08 +1200
-Message-ID: <20260710111508.917486-1-huhuvmb88@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260710060513.863714-1-huhuvmb88@gmail.com>
-References: <20260710060513.863714-1-huhuvmb88@gmail.com>
+	id 1wiA56-00000004trJ-1Sfl;
+	Fri, 10 Jul 2026 12:11:48 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wiA53-00000004tqV-0noa;
+	Fri, 10 Jul 2026 12:11:46 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0AFAF1E7D;
+	Fri, 10 Jul 2026 05:11:40 -0700 (PDT)
+Received: from [10.2.212.23] (e121345-lin.cambridge.arm.com [10.2.212.23])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 12DFD3F85F;
+	Fri, 10 Jul 2026 05:11:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1783685504; bh=Q2see9+GI8xU//+CtviZOZx19CnBHqZmF8tVQaULcbE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=D5p3BRWSyMoNDxD/QaUv5QMjXLFZnnn18JTuKVPlAZXBN450QHvPpSetMzN/GZ3zj
+	 W2IiiMPdZtGLD+M+Anx7Qy1UV4t86jKoZu1P3IZDMTQyiPguDn8CfF299YNnaznMWE
+	 KZwYaOSphRKwtuby8ouXyFEY7FmW5cqo+6Mbxy0k=
+Message-ID: <15bbada2-3214-45dc-8934-a6dbe207c887@arm.com>
+Date: Fri, 10 Jul 2026 13:11:41 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] iommu/rockchip: implement .flush_iotlb_all
+To: Will Deacon <will@kernel.org>, Jiaxing Hu <huhuvmb88@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Joerg Roedel <joro@8bytes.org>,
+ iommu@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ jgg@ziepe.ca
+References: <20260710060513.863714-1-huhuvmb88@gmail.com>
+ <alDQevX58XvdRcWc@willie-the-truck>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <alDQevX58XvdRcWc@willie-the-truck>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_041518_509020_5353E0C3 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20260710_051145_278698_C67FCA57 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,29 +67,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Jul 2026, Will Deacon wrote:
+On 10/07/2026 11:59 am, Will Deacon wrote:
+> On Fri, Jul 10, 2026 at 06:05:13PM +1200, Jiaxing Hu wrote:
+>> rk_iommu invalidates the IOTLB synchronously in .unmap (via
+>> rk_iommu_zap_iova), so it stays consistent without a deferred .iotlb_sync
+>> and does not advertise IOMMU_CAP_DEFERRED_FLUSH.
+>>
+>> It never implemented the optional .flush_iotlb_all op, though, and
+>> iommu_flush_iotlb_all() is a no-op when that op is absent -- so on Rockchip
+>> a driver that owns an rk_iommu domain and calls it to flush the whole
+>> domain's TLB (e.g. before reusing a mapping, without unmapping it) gets
+>> nothing, even though the hardware can do it: rk_iommu already issues
+>> ZAP_CACHE for range shootdowns.
+>>
+>> Implement it with that same primitive: ZAP_CACHE every bank of every IOMMU
+>> on the domain, under the runtime-PM + clk guard already used by
+>> rk_iommu_zap_iova().
+>>
+>> Found while bringing up an out-of-tree RK3576 NPU (accel/rocket) driver
+>> that flushes before each submit; on Rockchip that flush did nothing.
+>>
+>> Signed-off-by: Jiaxing Hu <huhuvmb88@gmail.com>
+>> ---
+> 
+> We tried to get rid of iommu_flush_iotlb_all() in 69e5a17511f6
+> ("iommu: Remove useless flush from iommu_create_device_direct_mappings()")
+> but we had to revert that in a33bf8d8ce7e ("iommu: Restore
+> iommu_flush_iotlb_all()") because of a user in the MSM driver.
+
+We wanted rid of the public API (indeed partly due to the prospect of 
+client drivers abusing it), but the actual ->flush_tlb_all driver op 
+remains crucial to the flush queue mechanism, so there's no harm in 
+drivers implementing it *if* they also implement the relevant 
+optimisations to avoid synchronous flushing in unmap_pages to make 
+CAP_DEFERRED_FLUSH worthwhile.
+
+Thanks,
+Robin.
+
 > So I think this is the wrong direction. We should try harder to remove
 > the function rather than add new implementations of it. I'm assuming
 > you're only adding it for some out-of-tree code that calls it?
+> 
+> Will
 
-Yes, that's right. The only caller is the out-of-tree RK3576 NPU
-(accel/rocket) bring-up I mentioned in the commit message. There's no
-in-tree rk_iommu user, since the in-tree consumers all invalidate through
-.unmap and none of them call iommu_flush_iotlb_all().
-
-So if the plan is to remove the function rather than add new
-implementations of it, then I've got this backwards. Please drop the
-patch. If the NPU driver ever goes upstream I'll make it stop relying on
-iommu_flush_iotlb_all() rather than bring this one back.
-
-Thanks for taking a look, and for the pointers to those two commits.
-
-Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
