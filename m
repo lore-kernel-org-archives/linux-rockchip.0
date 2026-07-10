@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8587C43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 20:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04592C44506
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 20:24:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r2GX2qsnO1q845PMU4/WNQyRJiWpSsKktkGJzcrg19o=; b=riys3NrvAOhUbN
-	8SBd4bFpJdPSJgKpncte3V41ULQdVn9qrwUUo/x8lgEvfiyHmK0ITA1FWBCoWFjXdBms3ctPDkNv6
-	yPlFTORk4Oh5LQsgl163a/ObGrbVeg03VhFZGKHyQ7iPRCcpIfnGEWB+JYzW56HHg3yw/QBHcBiGi
-	5Oe+DhVgYTX3m5LPOHSMszHTqgixD4DRf2b/MwtnMfPt4hA4Yh33sxuC1dJana5XNW0TT6N8Ma8aS
-	Cw8uBwDvYFQRe5QZuWi1N6VdQA2jz1aYNHqopFTmpxtbGW0fWdIgaXLvM/339j4airj8JJDrJ0pth
-	SsB68Fi3H0oJJZ0VEEhQ==;
+	List-Owner; bh=NpJKA/npAM5IZroZe1nbzBKsbl5w+cqZAiMUxvklupk=; b=kZhKKvH/U4aC4x
+	RtYuNZ1WNN4i3lgf2yu2oBJ7RWrn0Vow/c5Po0s6z/KVLEkQWgvpLZ8PI1oC1fZ03s+6uX+k54yom
+	m8erUtF0eVFzH5ryiduYQJm15Dxib4xoqa4Wm/MyEz9aeQVOFgMLQQg5EHddpSY3FEeaHfUC4HfxD
+	qy81k5jgUot9PdyQvcp5v8J84vgviWyYFfOINkKHXZPguQJeDbSj5o0nVUsAW7lgYsbwWYFQVFSaR
+	QaIX4gOJ2Rzf/oWZtDjghbgfwIl541MYNaBRy8BUIto4bXVak65v4Izy6SIFbXbknclFtPmh7udZf
+	d83e5GONNPYsjEijHu7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiHOU-00000005dmb-11md;
-	Fri, 10 Jul 2026 20:00:18 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+	id 1wiHlU-00000005gmb-3SLv;
+	Fri, 10 Jul 2026 20:24:05 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiHOS-00000005dlc-0WwT
-	for linux-rockchip@lists.infradead.org;
-	Fri, 10 Jul 2026 20:00:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1783713614;
- bh=ulVUgfNYT2lEH0MbdG1dD+8MEdmaDjbz4xf8uzzuOTQ=;
- b=FRNIpVX1OfkXzYVIG6mVWbzSB+5Eyz7WVTVN9vKvfOeG3t1PKAPCt/QMEn7pS117XQKBsYqGc
- b8y4A5hg4gjOM8luz3fMIKUQ/FQlqkBhwKnl6ssbsbKUQteAJqU4h4fgkxNsxj3nVT1QSB8xgqa
- nfeAF7U0uJUM1OHvC2mRyxTTWf3rVJVLFbMLevwgzMUTHpeEQOkNXWThtnJ8nfCkQqq7VgIHJ+D
- Z2oYK7RSwfQ/DHu+RjgLBxNJNxOzg8dd2FfzU76PwjHIQwZTCt4R9+rD4TTpZFJQTpfPZARPNxl
- qEFCuSCx7e/NA6aGDpddUxFz3o1Y8rRNe3HidF2Osx8w==
-X-Forward-Email-ID: 6a514f4df640ad60663f1f38
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
-X-Forward-Email-Version: 2.10.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <1abc6880-c131-404d-a521-5b5063e408f1@kwiboo.se>
-Date: Fri, 10 Jul 2026 22:00:09 +0200
+	id 1wiHlS-00000005glj-0uuk;
+	Fri, 10 Jul 2026 20:24:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1783715038; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jUjpdVZhPhzUXCFo7bCRxYua6FPMdA/xKfjDDX1rmlCTnIyDUkEGiT4qVkurhJk5xYgAfcqukISgO5fc49jPyV3WP0WVwpep5gvMI4oTUuWMZNrnecasrw/g2M2zn3lNkURVVAkFepzhPhaKZsguV/ZYfxGRTegmJGVwvvOKqSc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1783715038; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=DKM1+ABif5rO1Gu8On7VVFamS/ERgEgE9dnMh/k4QPE=; 
+	b=LkD2pXfMuWyzocEAoeHUtxbdBbM18JjmC8fAHFt1NJz0vv/J36FsK/GYYnjPKTv9NcqKfdYdWcrcmtcDdUhjGCfzpPEnGCz9dJTO62laSKYICvvueqZmXP8FFykdH5wj5erAQz1Vj6VKV1pg8+ZTKf403oFbg/SIHP2saL4VJ6I=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783715038;
+	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=DKM1+ABif5rO1Gu8On7VVFamS/ERgEgE9dnMh/k4QPE=;
+	b=jpNDpTqS87tT8bMsqL72Nfm8E3LrfIaxvX9SYnLqheusBrJmLrUosXrbJtckxD1h
+	/yBnjB/WuL1UNMDkftAGZNVJFTFLgIthI7PseagWSiQuAzHNX5xWheu7w/B1cw3yaCe
+	uCO/1jKQ0bPJWwKgU0Q5HfBsu1VHzi5bMuPbESL4=
+Received: by mx.zohomail.com with SMTPS id 1783715036140704.6625594278408;
+	Fri, 10 Jul 2026 13:23:56 -0700 (PDT)
+Message-ID: <e5f16200-3881-4f25-b67d-7053b3b8af19@collabora.com>
+Date: Fri, 10 Jul 2026 22:23:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/12] dt-bindings: soc: rockchip: grf: Add RV1106
- compatibles
-To: Simon Glass <sjg@chromium.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- Fabio Estevam <festevam@nabladev.com>, linux-arm-kernel@lists.infradead.org,
- Bartosz Golaszewski <brgl@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Jeffy Chen <jeffy.chen@rock-chips.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Michael Riesch <michael.riesch@collabora.com>, Rob Herring
- <robh@kernel.org>, Yao Zi <ziyao@disroot.org>, huang lin
- <hl@rock-chips.com>, linux-kernel@vger.kernel.org
-References: <20260706195818.3906949-1-sjg@chromium.org>
- <20260706195818.3906949-6-sjg@chromium.org>
+Subject: Re: [RFC PATCH 1/6] media: mc: Implement shared media graph
+To: Paul Elder <paul.elder@ideasonboard.com>,
+ laurent.pinchart@ideasonboard.com
+Cc: xuhf@rock-chips.com, stefan.klug@ideasonboard.com,
+ kieran.bingham@ideasonboard.com, dan.scally@ideasonboard.com,
+ jacopo.mondi@ideasonboard.com, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, hverkuil+cisco@kernel.org,
+ nicolas.dufresne@collabora.com, ribalda@chromium.org,
+ sakari.ailus@linux.intel.com
+References: <20260619052637.1110672-1-paul.elder@ideasonboard.com>
+ <20260619052637.1110672-2-paul.elder@ideasonboard.com>
 Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260706195818.3906949-6-sjg@chromium.org>
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20260619052637.1110672-2-paul.elder@ideasonboard.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_130016_252668_F4533BE6 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20260710_132402_326652_3493196B 
+X-CRM114-Status: GOOD (  50.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,111 +85,335 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Simon,
+Hi Paul,
 
-On 7/6/2026 9:58 PM, Simon Glass wrote:
-> Add the compatibles for the general register files of the Rockchip
-> RV1106: the main GRF with its clock-controller child, which provides
-> the MMC drive and sample phase clocks, and the IOC and PMU IOC blocks
-> used by the pin controller.
+Thanks for your work! And sorry for the long silence.
+
+On 6/19/26 07:26, Paul Elder wrote:
+> Currently, a media graph contains a main device whose driver is
+> responsible for creating the media device. We have however recently run
+> into devices that have multiple devices that can quality as a main
+> device. Examples are the RK3588 which has a VICAP and two ISP
+> instances, and another example is the i.MX8MP which has an ISI and two
+> ISP instances. As there is currently no way to reconcile who the main
+> device is in the media device, these setups simple cannot be used
+> simultaneously.
 > 
-> Signed-off-by: Simon Glass <sjg@chromium.org>
-> ---
+> This patch extends the media controller API with a "shared media graph"
+> framework. This allows drivers to share a media device, thus enabling
+> the setups mentioned above. Instead of owning and creating a media
+> device, drivers can join-or-create a shared media device via the shared
+> media graph API. The matching is done automatically based on the
+> detected endpoints in the device tree.
 > 
->  .../devicetree/bindings/soc/rockchip/grf.yaml | 30 +++++++++++++++++++
->  1 file changed, 30 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> index 2cc43742b8e3..349fd3393ac4 100644
-> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> @@ -64,6 +64,8 @@ properties:
->                - rockchip,rk3588-vo1-grf
->                - rockchip,rk3588-vop-grf
->                - rockchip,rv1103b-ioc
-> +              - rockchip,rv1106-ioc
+> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
 
-Do we possible need a different compatible for each GPIO IOC?
+Frenetically-cheered-by: Michael Riesch <michael.riesch@collabora.com>
 
-GRF address mapping table over all different GRF regs used by this SoC:
+OK, what follows is pretty much a rubberducking session in which I try
+to explain myself the concept you came up with. Possibly there are one
+or two thoughts and/or questions you can use to develop the concept further.
 
-  Name		Address Base 
-  PERI_GRF	0xFF000000 
-  VENC_GRF	0xFF010000 
-  NPU_GRF	0xFF018000 
-  PMU_GRF	0xFF020000 
-  DDR_GRF	0xFF030000 
-  CORE_GRF	0xFF040000 
-  VI_GRF	0xFF050000 
-  VO_GRF	0xFF060000 
-  GPIO0_IOC	0xFF388000 
-  GPIO1_IOC	0xFF538000 
-  GPIO2_IOC	0xFF548000 
-  GPIO3_IOC	0xFF558000 
-  GPIO4_IOC	0xFF568000 
+IIUC this is a new API with four calls. There is _join() and _leave()
+that more or less replace the creation and deletion of a media device in
+a V4L2 driver. And there is join_link_source() and join_link_sink() that
+are called for each cross-device connection on the source and sink side,
+respectively.
 
-> +              - rockchip,rv1106-pmuioc
->                - rockchip,rv1108-usbgrf
->            - const: syscon
->        - items:
-> @@ -100,6 +102,7 @@ properties:
->                - rockchip,rk3576-usb2phy-grf
->                - rockchip,rk3588-usb2phy-grf
->                - rockchip,rv1103b-pmu-grf
-> +              - rockchip,rv1106-grf
+There is one shared media device per disjoint graph in the device tree.
+If a new device calls _join(), the function iterates over all shared
+media devices, iterates over all DT endpoints of the new device, and
+iterates over all members of each shared media device. If the fwnode of
+the parent of the remote endpoint of a certain endpoint of the new
+device equals the fwnode of a certain member of a certain shared media
+device, we found a match. This certain shared media device is then used
+in the driver of the new device. Before that, a member for the new
+device is added to the shared media device.
 
-What GRF in the table above is this referring to?
+In case no shared media device is found, a new one is created and used.
+A member for the new device is added to the shared device in this case, too.
 
-Vendor kernel went the easy route and declared a single mega GRF block.
-Mainline should probably declare each GRF individually to correctly
-describe HW?
+The actual linking takes place in the _join_link_{sink,source}
+functions, which iterate over the links of the shared media device and
+check whether a link has a pointer to a source (or sink) respectively.
+If a source (or sink) is found, a link is created. Otherwise, a link (in
+the form of a newly introduced data structure, not a media_link) is
+added to the links of a shared media device. The latter somewhat
+corresponds to the v4l2 async notifier mechanism.
 
->                - rockchip,rv1108-grf
->                - rockchip,rv1108-pmugrf
->                - rockchip,rv1126-grf
-> @@ -244,6 +247,33 @@ allOf:
->  
->            unevaluatedProperties: false
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rv1106-grf
+So far, so good. Even if the genitive construction chain that describes
+the matching above is a bit daunting. All in all I think we are on a
+reasonable path here.
+
+> [...]
+> +// TODO figure out locking for when multiple drivers touch the media graph;
+> +// maybe macros for shared versions?
+> +struct media_device_shared {
+> +	struct media_device mdev;
+> +	struct list_head members;
+> +	struct list_head links;
 > +
-> +    then:
-> +      properties:
-> +        clock-controller:
-> +          type: object
-> +          additionalProperties: false
+> +	struct list_head list;
+> +	struct kref refcount;
 > +
-> +          properties:
-> +            compatible:
-> +              const: rockchip,rv1106-grf-cru
-> +
-> +            "#clock-cells":
-> +              const: 1
-> +
-> +          required:
-> +            - compatible
-> +            - "#clock-cells"
-> +
-> +          description:
-> +            Clock provider for the MMC drive and sample phase clocks,
-> +            whose control registers live in the GRF region.
+> +	struct device *removed_device;
+> +};
 
-As mentioned in CRU patch, please take a look at RK3528, it exposes
-similar similar 'GRF' clocks from the CRU. Do not blindly follow what
-has been done in the vendor kernel.
+[discussed in other thread]
 
-Regards,
-Jonas
+> [...]
+> +/* Callers should hold media_device_shared_lock when calling this function */
+> +static bool __media_device_shared_find_match(struct media_device_shared *mds,
+> +					     struct fwnode_handle *fwnode)
+> +{
+> +	struct media_device_shared_member *member;
+> +	struct fwnode_handle *ep;
+> +	struct fwnode_handle *remote_ep;
+> +	bool match = false;
+> +
+> +	// TODO: parse the device tree endpoints graph instead of finding just the
+> +	// first-level neighbours
+> +	fwnode_graph_for_each_endpoint(fwnode, ep) {
+> +		list_for_each_entry(member, &mds->members, list) {
+> +			remote_ep = fwnode_graph_get_remote_port_parent(ep);
+> +			match = (member->fwnode == remote_ep);
+> +			fwnode_handle_put(remote_ep);
+> +
+> +			if (!match)
+> +				continue;
+> +
+> +			goto match_complete;
+> +		}
+> +	}
+> +
+> +match_complete:
+> +	fwnode_handle_put(ep);
+> +	return match;
+> +}
+
+<rubberducking>
+IIUC there could be devices A -> B -> C that share a DT graph (and thus
+should share a media device), but suppose the probe order is driver A,
+C, B then A would rightfully create a new shared media device, but C
+would not see it and create yet another shared media device. Thus, the
+the find_match() function needs to traverse C -> B -> A to find the
+correct shared media device.
+</rubberducking>
+
+Just saying that with one and only one media device to rule them all we
+wouldn't have to deal with this. Another option would be to assume that
+each driver knows to which shared media device it belongs. For example,
+the rkcif driver could be aware that it belongs to the
+    {
+        .id = MEDIA_SHARED_ROCKCHIP_CAMERA,
+        .name = "Rockchip Camera Subsystem",
+     }
+shared media device. This would reduce the magic above to a lookup
+operation. All that said, it should be feasible of course to traverse
+and find.
+
+> [...]
+> +/* Callers should hold media_device_shared_lock when calling this function */
+> +static struct media_device *__media_device_shared_create(struct device *dev)
+> +{
+> +	struct media_device_shared *mds;
+> +	struct media_device_shared_member *member;
+> +	struct fwnode_handle *fwnode = dev_fwnode(dev);
+> +	int ret;
+> +
+> +	mds = kzalloc_obj(*mds);
+> +	if (!mds)
+> +		return NULL;
+> +
+> +	member = kzalloc_obj(*member);
+> +	if (!member)
+> +		goto err_free_mds;
+> +
+> +	media_device_init(&mds->mdev);
+> +
+> +	ret = media_device_register(&mds->mdev);
+> +	if (ret)
+> +		goto err_free_member;
+> +
+> +	INIT_LIST_HEAD(&mds->members);
+> +	member->dev = dev;
+> +	member->fwnode = fwnode;
+> +	list_add_tail(&member->list, &mds->members);
+
+This can be refactored as this is carried out either way, right?
 
 > +
->    - if:
->        properties:
->          compatible:
+> +	INIT_LIST_HEAD(&mds->links);
+> +
+> +	kref_init(&mds->refcount);
+> +	list_add_tail(&mds->list, &media_device_shared_list);
+> +
+> +	// TODO figure out how to reconcile this with multiple members
+> +	mds->mdev.dev = dev;
+> +
+> +	devv_dbg(dev, "%s: Allocated media device with %pfwf at %p\n",
+> +		 __func__, fwnode, &mds->mdev);
+> +	return &mds->mdev;
+> +
+> +err_free_member:
+> +	kfree(member);
+> +err_free_mds:
+> +	kfree(mds);
+> +	return NULL;
+> +}
 
+OK, what options do we have?!
+
+We could pick one device of many. But based on what criteria? If there
+was a good way to pick one, we could equally pick a driver that
+registers the media device and move on. We conclude that apparently
+that's not the case, otherwise we wouldn't be doing this exercise. Next.
+
+We could introduce a pseudo device that provides the umbrella. But
+again, that would be close to creating an umbrella driver that registers
+the media device. And at some point we decided not to do that. Next.
+
+We move from the notion of a media **device** to a media **graph**
+(which is in alignment with the subject of this mail). The media graph
+is something owned by the subsystem, not by any device/driver. The media
+entities therein, however, could be owned by devices/drivers. Maybe
+struct media_entity should feature a struct device *dev; member.
+
+I could imagine that the dev member is used mostly for
+dev_{info,err,...}, we would need to get rid of them. If there is
+actually something with devm_ then this requires more thought.
+
+IMHO the third option is the way to go.
+
+> +
+> +// TODO figure out how to resolve the identifiers (model, driver name, etc);
+> +// atm it's racy and whoever gets it last wins
+> +struct media_device *media_device_shared_join(struct device *dev)
+> +{
+> +	struct media_device *mdev;
+> +
+> +	mutex_lock(&media_device_shared_lock);
+> +
+> +	mdev = __media_device_shared_get(dev);
+> +	if (!!mdev) {
+> +		dev_dbg(dev, "%s: found media device for %pfwf", __func__, dev_fwnode(dev));
+> +		mutex_unlock(&media_device_shared_lock);
+> +		return mdev;
+> +	}
+> +
+> +	mdev = __media_device_shared_create(dev);
+> +	if (!mdev) {
+> +		dev_warn(dev, "%s: failed to create media device for %pfwf", __func__, dev_fwnode(dev));
+> +		mutex_unlock(&media_device_shared_lock);
+> +		return ERR_PTR(-ENOMEM);
+> +	}
+> +
+> +	dev_dbg(dev, "%s: created media device for %pfwf", __func__, dev_fwnode(dev));
+> +	mutex_unlock(&media_device_shared_lock);
+> +	return mdev;
+> +}
+> +EXPORT_SYMBOL_GPL(media_device_shared_join);
+
+Similarly, we have to bid farewell to the notion of a media **device**.
+Can we agree on making
+    struct device *dev;
+    char driver_name[32];
+    char serial[40];
+    char bus_info[32];
+    u32 hw_revision;
+optional for shared media devices (or, better, graphs)?
+
+I could imagine, though, that we provide some minimally meaningful info
+in a struct
+    {
+        .id = MEDIA_SHARED_ROCKCHIP_CAMERA,
+        .name = "Rockchip Camera Subsystem",
+        .driver_name = "rkcss",
+        .hw_revision = 42,
+        ...
+     }
+and apply that info here.
+
+> [...]
+> +int media_device_shared_join_link_source(struct media_device *mdev,
+> +					 struct device *dev,
+> +					 struct media_entity *source,
+> +					 u16 source_pad, u32 flags)
+> +{
+> +	struct media_device_shared *mds = to_media_device_shared(mdev);
+> +	struct media_device_shared_link *link;
+> +	struct media_device_shared_link *link_tmp;
+> +	int ret = 0;
+> +
+> +	mutex_lock(&media_device_shared_lock);
+> +
+> +	/*
+> +	 * TODO Figure out flags. Should we use greatest common denominator? Or
+> +	 * prioritize sink? Or whoever wins the race? For now we just take the flags
+> +	 * from the sink.
+
+The phrase "whoever wins the race" is surely gold in the documentation
+;-) I guess it should be same as with any _notifier_bound setup, and
+IIUC it's typically the sink that passes some flags to
+v4l2_create_fwnode_links_to_pad. So prioritizing the sink seems reasonable.
+
+> +	 *
+> +	 * TODO Figure out how to actually do the matching. For now we just match
+> +	 * whoever comes in first. This works with the simple example we're running
+> +	 * with now (rkcif + one rkisp2) but with setups with multiple copies of
+> +	 * hardware this will cause problems, like with rkcif + two rkisp2 and
+> +	 * imx8-isi + two rkisp1.
+> +	 */
+
+In the end, shouldn't this follow whatever v4l2_async does? Not exactly
+sure, but I think storing a struct media_entity * and a struct
+fwnode_endpoint * for side A should do the trick. Side B would appear
+later with the second struct fwnode_endpoint. The check would then be if
+fwnode_graph_get_remote_endpoint(fwnode_A) == fwnode_B (+ maybe vice
+versa). The link would then be filled with media_entity_{A,B} and
+media_entity_{A,B}->ops.get_fwnode_pad(media_entity_{A,B},
+fwnode_{A,B}). Obviously we need some selector that tells us whether
+A=source and B=sink or vice versa for that.
+
+> +	list_for_each_entry_safe(link, link_tmp, &mds->links, list) {
+> +		if (link->sink) {
+> +			ret = media_create_pad_link(source, source_pad,
+> +						    link->sink, link->sink_pad,
+> +						    link->flags);
+> +			list_del(&link->list);
+> +			kfree(link);
+> +			goto exit_join_link_source;
+> +		}
+> +	}
+> +
+> +	link = kzalloc_obj(*link);
+> +	if (!link) {
+> +		ret = -ENOMEM;
+> +		goto exit_join_link_source;
+> +	}
+> +
+> +	link->source = source;
+> +	link->source_pad = source_pad;
+> +	link->flags = flags;
+> +	list_add_tail(&link->list, &mds->links);
+> +
+> +exit_join_link_source:
+> +	mutex_unlock(&media_device_shared_lock);
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(media_device_shared_join_link_source);
+> +
+> +// TODO deduplicate from above
+
+Should be possible to have some helper with (..., bool is_source) and
+then two nice functions that are exposed to the public.
+To start the bike shedding: Maybe
+media_device_shared_register_{source,sink}?
+
+> [...]
+
+Thanks and best regards,
+Michael
 
 _______________________________________________
 Linux-rockchip mailing list
