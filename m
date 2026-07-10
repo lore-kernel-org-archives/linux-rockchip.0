@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD16C44506
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 16:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACF57C44501
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 16:46:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3K21VFT7LDuLsZQwb2UOBTYcggkO28NK3bfCrhO5HUY=; b=eJyvhyyJwhDC4Q
-	9Py0D5gcCSTD2hRXOlAqyfjNzY8VvstQIrwa08Zl/Scs8E4ajp7Dla8u0+2DD9OTepbs4QFH6SXqU
-	fnpv7AW5rVOct1KheurpyQoL96n2CxHIlMfhu8aVRKRoapC7sti0IvuQRnuyeW3HTzULKgBm/N4FC
-	O5Me35iTS0gPhOCFBpquB59VKLns2E/q2j1RwtLt0VVzQyKVeKI4A+Sd9ABFQ6BpH1lR7jr+8ErAE
-	mILV90m6aFtelL+sSWl7rivTfLSny09bCALNpRFdH/47dB3A0d178Q4I5DP4d3vojksMJCvL8lq+A
-	wvK4ressqmFQfTjugfVA==;
+	List-Owner; bh=8AhoYf5TEmBswV6uIZCWbwJpSRiCotT05BQaBka/ytY=; b=aZaSmK/3gg7TBb
+	97MAE33QKfHpW069qJazqDVWCrD2/lSb0R7xzrhwi/xZfhMqQK8uWdYLnWb5LCFVB1Wt8LxoaUgZ8
+	2pa2XSJ03BTTgKHPXuCzMpRBVE5L2ftAzAtkv/3M1Q2yHFAR2wv5P1Zx1lHQ72XB2+HSqTyZ/Jd97
+	0Fo1Z30yNbeHLSmLu+iDGwc2GaKdemN45KN7TQ58oqY6hyWxzzzycUuGiRFyStNe7IGhk7j7Xnid2
+	aaLPGllzZe7PYRdxPGCP91Evy493AVgttWoYjm7kEKr9yVc5gIg2Au0woUwWcBxCxAEd32SLFswvE
+	RySZmhZLa/MPLHNKE5Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiENB-00000005Jgi-2W5X;
-	Fri, 10 Jul 2026 16:46:45 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wiENK-00000005Jux-1Uz7;
+	Fri, 10 Jul 2026 16:46:54 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiEMr-00000005J97-0KBn;
-	Fri, 10 Jul 2026 16:46:27 +0000
+	id 1wiEMr-00000005J9C-1uWD;
+	Fri, 10 Jul 2026 16:46:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1783701978;
-	bh=gjt94yB7OMQ1kbenpTWsg4rbaygeNwSXNZrsMwALuYQ=;
+	bh=t8uTKCJDQbXM1zD6YGkoRMmsGqKnvfqXTlOk0PQD5EM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JqyTaoFd+mlc/cn9VMI9Wttow2ObHIHPukiUrsNhkj+BFjFAN5tHj+LjuPhk5m4Va
-	 h9JJ+btty6yT8rS2rDkTOcSd4gdVPoty4tAUeWPYSMkUKiZ4Gp5XZa9ozBVsaQfW9r
-	 h1vQmEScJdh0m9l0D/qsx0cXRMlHRz9CcCw3kq06I6QPhSheOknZVD5q0M+TGFUV5S
-	 1/fg6hvrjRnCYX57vjgQDh3FUeYCKDgVyxdTfgPcjQaU9aZ6xHHseaM2Vv/H/4mQkk
-	 YTRlayEBeE82XldkwOsNVzBM8i+ralbYxd2fH3CgU4Q3G0RJS3JSF2tmrQh8Eode5h
-	 N0kU+5TBbX47A==
+	b=NjE5uvc5+pzOZ6Cr0sB5GhFJuZh4nggCgscjR0PcrjE9/XrbGjSy69+AKN890gLXn
+	 OodAVrETAwl1q31hdFtE5kHGITfnPAVeC6qt3gZmbw8+6latYCBim4TY4tBZjG/2bv
+	 xw5BnnLHMVaN6jRtW5fXkkezfRwk+z16pXzF8Ag6bqoPs5LJlUXtmd9E0ndXqKdj0g
+	 ew16GKv+WcldM58rQG7JX/g5kIgVL4QgQEoVGKZMjdjhugOSFho+50dIhlfDyMaWsB
+	 tdGlkPcwlUX14hHLtTuuRaF16UC3GtmmXyacp6LsM7N8FzpSPKUTd2umWWO3inrKTB
+	 V5AeJH2nfzWnA==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 798C517E0EF3;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8268917E0F07;
 	Fri, 10 Jul 2026 18:46:18 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id E2748480031; Fri, 10 Jul 2026 18:46:17 +0200 (CEST)
+	id E5D72480038; Fri, 10 Jul 2026 18:46:17 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 10 Jul 2026 18:44:43 +0200
-Subject: [PATCH v12 05/36] phy: rockchip: usbdp: Handle missing clock-names
- DT property gracefully
+Date: Fri, 10 Jul 2026 18:44:45 +0200
+Subject: [PATCH v12 07/36] phy: rockchip: usbdp: Keep clocks running on PHY
+ re-init
 MIME-Version: 1.0
-Message-Id: <20260710-rockchip-usbdp-cleanup-v12-5-8b41a9a9bef0@collabora.com>
+Message-Id: <20260710-rockchip-usbdp-cleanup-v12-7-8b41a9a9bef0@collabora.com>
 References: <20260710-rockchip-usbdp-cleanup-v12-0-8b41a9a9bef0@collabora.com>
 In-Reply-To: <20260710-rockchip-usbdp-cleanup-v12-0-8b41a9a9bef0@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -67,29 +67,28 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sashiko <sashiko-bot@kernel.org>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1302;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1161;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=gjt94yB7OMQ1kbenpTWsg4rbaygeNwSXNZrsMwALuYQ=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpRIdjsPCaJlc+z5dSBjtjq7bN6bho0S+VeM
- DXYsyxGqpNcB4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqUSHYAAoJENju1/PI
- O/qaEL4P/3dJv/u35phqgsrJeDDE84FYklkPbBWSOAcYSYLvpfO1AMCs1vLnM3l88r8o2dVsbif
- 3008tKUuq3uSr25g2d4Des2XD7n5wuS6LO6rgvE4AtxxK2WoaT/GExr32F1lUtvwMQqXSzUlnvZ
- hJGm7szS5+T7qr9LKBD8a00hLKZRJLapomIqCuGJON95u8b9lkgQQP35ONXT2dxYYALDOsA8Lht
- 0rip85XoYCu8E/0cQO/8wwVVoEZxMl71uVC8z+/v2eUNaAOSmjljdoAKUcolYfO3ku0H+cAbnml
- 8Bvy/TiS+jAGa/VMLGUD1ftrWynmRGhDLqcJH8lTOtWga71rRtgYqsv3sjoJviZlHKrY3wNTqhq
- ZtmBPzjqUtKnB2n3xWBEqk5TH7QVBW7PduYhvuYA4qB0TfPNBfavkqrtHPTocClvVTAMxcLAPb2
- HZKiHja8CWeS9kAki68hWJU5jZFI2kvCoEhIl9dGD6gBhl0xi/OTTD2UljZcme0ejamC2E3VNqr
- dYY5C+be5HbV2CeZj4Z45jiMgvFIy2WSIVWeQgjWW01rjuS5rRdelWhUMswFwOeOMyHj0YilScC
- UIfzt8XnHTU6PLfOD3figYo8ZVgoXv5j4PW+jSdxhlLAuP250LENsWFrYubPSM9jWCWr7xVOV25
- J2DD4iGTNEXpQ5F5tNMkvbg==
+ bh=t8uTKCJDQbXM1zD6YGkoRMmsGqKnvfqXTlOk0PQD5EM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpRIdhqOy2ZElnpS0BwMCU6H2iuXvIyECnhV
+ vB5ZKq243aP9IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqUSHYAAoJENju1/PI
+ O/qa334P/ivNQ7nTlsIT/y1p1BEFl3Hu4d6FRwGzWgvv5a8ocZs4ewtEMbU2UiPyxL3P9eBxIbM
+ h2EbKn9f7yZiQ2vjTqVXEW4vE5jbekrHcFX587jwhkxPzKORudZGpArKz4HRr9g0vAV3hE5bUju
+ 4vjOeIf7rOlj0ZwGwH8hLNoVDsf29lbCch6sbY+AUULNa2/N5UQE+tLuZdsf2hlCVBCZCgc64zs
+ SweAkY0NuTiICGzBSM+rmE9mT+eGhLWKp5YXeHH2AW2J2n51c7eeqdqmj+Kx248HtpzFcncO1nX
+ NQMIbVNuyvtJEf+sAN77d7pPFz07NEggoY8Bn9mO56QYXykbjA9+ljkBOpc+ICbdzQgpV/zbXA4
+ wZj+1ZxhbpAseuAjos3VLAG9X55mfeiBoMW0fnvRLPCVvJPfYlzVx3gw39nc7/Q4Bb3ekLZhBoV
+ y8WKwhVE3GPEX8XYaY7YhPYwTVyPYjQbtbdlMX+kGcox2dK3reh9jti8CuLBEtz/WyPnYdk9sOe
+ 8O09bkRUZxJtyndRVyMBj7A8JwtHffnvM6cQ2D7uSh0PIQV7e/lxw+fgwmApWiIYbmDJb6ht//a
+ wVPgFojbIgx+8m/6H9u9tdShjxqXFe4/cBAEEdhD/KRNSOaL40dfWTnu+I9Q/1/5hdXTSo5vskH
+ 0O9K1tKwY18CSmbDB6GYtkw==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_094625_284305_FA02F4F0 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20260710_094625_683140_AE0F3E9F 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,35 +105,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rk_udphy_clk_init() function would currently try to do a strncmp for
-a NULL pointer, if DT specifies 'clocks' property, but no 'clock-names'
-property. Fix this by making sure the clock has an id string set.
+When a mode change is required rk_udphy_power_on() disables
+the clocks and then calls rk_udphy_setup(), which then enables
+all the clocks again before continuing with rk_udphy_init().
 
-Note that DT binding requires setting clock-names, so this is only a
-problem when booting a non-compliant device tree.
+Considering that rk_udphy_init() does assert the reset lines,
+re-enabling the clocks is just delaying things. Avoid it by
+directly calling rk_udphy_init().
 
-Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://sashiko.dev/#/message/20260619154349.071321F000E9%40smtp.kernel.org
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 2845a012eafc..3fc8222fcaec 100644
+index 6cb9f6b4dbf6..e3f5a26c876a 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -432,6 +432,9 @@ static int rk_udphy_clk_init(struct rk_udphy *udphy, struct device *dev)
+@@ -987,8 +987,7 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
+ 		if (udphy->mode == UDPHY_MODE_DP)
+ 			rk_udphy_u3_port_disable(udphy, true);
  
- 	/* used for configure phy reference clock frequency */
- 	for (i = 0; i < udphy->num_clks; i++) {
-+		if (!udphy->clks[i].id)
-+			continue;
-+
- 		if (!strncmp(udphy->clks[i].id, "refclk", 6)) {
- 			udphy->refclk = udphy->clks[i].clk;
- 			break;
+-		rk_udphy_disable(udphy);
+-		ret = rk_udphy_setup(udphy);
++		ret = rk_udphy_init(udphy);
+ 		if (ret)
+ 			return ret;
+ 		udphy->mode_change = false;
 
 -- 
 2.53.0
