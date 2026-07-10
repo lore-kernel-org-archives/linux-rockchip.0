@@ -4,87 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D58A0C43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 06:05:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04422C43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 08:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=U4ry/zWWZ8tPMXNku7DOzCyYZb/rezQhIIIbvoVOCC0=; b=keDS8uGqhvSUeZ
-	/VBDVlqmCd1tkuczknMaous9OSzdO84CPjPilhY893rD06FlW/J58BHTeN8czVMkgMGwXNcOtHDnm
-	nlFQMHN87qN31hyIEtVnhGK16iIyoAHbgv4R+4nOJ94xdYEh90cXvB4d4rnIc0lTQrVzfgZmLuJ8u
-	nQUtCgjGmAQSbxgbl31i1jPj5mXt4T3iM3PehbeRT1ZkLAJKA9i40Mdssbd200YCEfzvVXWrO9nRm
-	PiTue/47ZI3UWtamn1PJJ+GDEp+QekX6hDCBVbRq/ot1tdEROs+8YI8Pc6R5KFonXRhLyVLa0Euaj
-	Ge7wozFqgAPlRxQWIR6w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h4DUcxeEfmgMV3RP14lMatpYZ9MSMnyI8kSCqfFUxKQ=; b=u/MbQnucQnJF/3Xte4trQCnVqJ
+	Fnidy7zfCvV+Kvz0oHf3q58CdtIaL7Sq0ubhaCLyJL9lnyDLuJi0kN47WdK61jz2Mq7Ja7r7a+GlW
+	2fJo+2rZanoT8LlYhN+Im49Ya3HyYdQlJH+86LZtB5QNmuoD2Lj6K7LDJOcv+ufBxJIQE3QUB9UDy
+	Hnr9osixJlfbTPwu4pGL3VlfxjmfpLxRoCto0ffrYc09oot9gccY5BwBhRBRpknJ2PXjk3OEyF4KX
+	xebzyfl7qPQsn6K1W5oeC38cgXHbltSZa2KaBEojCeZTguoUoNoHnqvZVFhFjwK+r/DZyaaqvkYTR
+	9MDUtAFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi4MY-00000004F2M-0OjU;
-	Fri, 10 Jul 2026 06:05:26 +0000
-Received: from mail-pj2-x01.google.com ([2607:f8b0:4864:39::1])
+	id 1wi6Cg-00000004POU-2bBi;
+	Fri, 10 Jul 2026 08:03:22 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi4MU-00000004F0f-0CCl
+	id 1wi6Ce-00000004PNg-1c6f
+	for linux-rockchip@bombadil.infradead.org;
+	Fri, 10 Jul 2026 08:03:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=DWdfXN3BNh6HNT+0goMzdBpTUvzgP37bXlBu5ybAYas=; b=IoHMJ8M/1I9duG8FfJfP2ZrW+X
+	7gOX8X42Ou/6DGpk6fsnzo6mCWCyso3alcwsV2zWUKojO2Rmg/2Map31jOIO7828Gj/UHpz19FXM9
+	0uwz/knUdqk3SfWZUFHw5+/5XKQes559jk/4HQi6CVi22DZQ8VzZ7iXrnavXzTRzXGwwivlkJ4Pqs
+	oCJQ7YG2G8uUvyayDinJ+NwvALPm5UqVpSC3GRLA4eJodQtjBFMyonHwnWOPQezrB/1PnwpWIjFD1
+	xYCEwYq672qzHGZKuOQ+qwJtwIuBiTkq/StzcV2w1oEGAk5FN1Zi8yVC/UQn0laq7yw5O9z0TnjFk
+	pPlNgzpw==;
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wi6CX-00000009ojT-2Qc8
 	for linux-rockchip@lists.infradead.org;
-	Fri, 10 Jul 2026 06:05:24 +0000
-Received: by mail-pj2-x01.google.com with SMTP id d9443c01a7336-2ce7ac92dfcso5324485ad.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 09 Jul 2026 23:05:21 -0700 (PDT)
+	Fri, 10 Jul 2026 08:03:17 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-493c2c0b9a8so5191995e9.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 10 Jul 2026 01:03:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783663521; x=1784268321; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=pQgPhs+dZcfRNPuJReU9TiVxwha1e01HcHWKyyYl0NE=;
-        b=VRgGW+szlAy3DGqKXRPo+KCYgTdX0SAGe4VOcpVIQnGJwa1S/TqFWsDOXm5FvupD87
-         Q/v9UtMO4iJGxlH4V2oi8i0HLqBBzLXxOjjXOIUQWkB9CIMV5rNVv709eRmQ5Xos6vuN
-         E4AU88swa38D6Kz/rocMOGdMZlXc2DQdqNgc4tFdE1Chq9rTEd3GavVPbbL82F14ayxR
-         PNIOQ8ONYtUEYCNu89g4RxFk9vkSL00TGDvHDhIlpRmUDVKi+4Bd9aiklqrpta+URQfe
-         wH/B/8fjdxcyQYqwbzFxLLxat2RACElkEku6rTSJeZW4yBEPNcyOer1Ht93saN9FVWPy
-         ib0Q==
+        d=baylibre.com; s=google; t=1783670591; x=1784275391; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=DWdfXN3BNh6HNT+0goMzdBpTUvzgP37bXlBu5ybAYas=;
+        b=omskHjw2wLUUPPAr5VZ54tD9BM2BzNA9kXzBxJ9XXF2GKOO7S3qWwjKiKDHffK3qXx
+         zw8I0bwumn/L8+ABBNRPQN92eiu41WvyWvQBg6fubQjc+v7G/iBrW1TvVAjqVf970arZ
+         VQ6WagOJNWo1ZSSwjACKZKrPX8s5TG2X2yNTfZ9dsy4Nvio+wqnQviIbql/od6f9bGRc
+         /jp9jYuUXWWhFoy8y73lPJUhmTwgGgRoc4lcNyw3lPg0q8o3razm0+sxcbL8/s1vHEL9
+         Mqu9j4yXGDl5kOKoETcyPEzQnaM8R4bi0flb/qNEFajHFbhs7E13VfQJzqRNeTLY6u3Q
+         xapg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783663521; x=1784268321;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=pQgPhs+dZcfRNPuJReU9TiVxwha1e01HcHWKyyYl0NE=;
-        b=LuGQoWPcPNS/qjQLiamIQJnEuYO/JuRYob+jS78bmJwHb+Sth3r9xSUtnuKwN60XYW
-         UmjL0CGuBpQpOQnHvXEb/26Ui8yJGdFk8xYzoviNR8Qre4ff9iboPrbqSXLMfQo6Qnyv
-         2MPLxDrF4Q8gUVqB26ZjkZfVPZ6yTQ0EpGMteSWCcEuD35vTvhsHqDPmokbsIXG1xGj7
-         H0wPdSbiWKrWdAEZ8yqjboMdB9fyEx0nxS9WjKM99+8yPIUtmkMWOP2LKPl0ZkFZ0NtJ
-         kEDn0izqQD7HD4lbkYpD6k/YQODbDKjXKgnvfUcAdazQc9w0pzzPqhFVi+iCj5k4a+UI
-         jQcA==
-X-Forwarded-Encrypted: i=1; AHgh+RrjU/BzJSbQrMWjYtWmLTC1GFuFPuKaCew5/A0HzRe0mT4IiN40e2nWfeXQ7+K5g63CeknfCTH4G3LeuiVDJQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyBcpdrSROe+XHTfrZNSfq65IpIIJXkvS6cUvlDhQG5ByKAPuXb
-	RRl6Y87wLVkBqHviAnvip4JyOjnv6cLdxaPFKuSP9is8cFR5gVW+LE51
-X-Gm-Gg: AfdE7cnBR0it269mFLdFZa1WPgHMH7MYE6ArUWt6EKqYXMiDwIF+iWhYaz1Jzk5YjA3
-	uVSJa9/XE/zlBab4vYVqeqUkz3qn9tmzFUjGDJoJVrvIOXkTvJ8aB6cBDasd1wL5Q/BYJIn/GWf
-	FjXKh/rFN3Whl7GqejJy7Uj2N7JP5Ul9TrQWetTxJUtU+Z/yKWYuFkWBQ1oObWY6sxh3YtTqh1V
-	cRLmWfD64Aebca3veaj7rBJbORMNXfRMLsMflK3Q9ti4o+FPJQfNWHgkCf/3qRk7WhyEE90HdDh
-	IOAljksXHZn5/U8c9SiwZ4e6Bd60+YvSYz65bidqwTZyKarC74Xha/ehCgI5rNvFNOrsRlwrik8
-	IQdkTlnvd8ft+Z83Lzjy0VkuYqGwL2Ns8ZCB4dmUSP/Q0uv/kd3P57GcBUinNbKA58jpy7FsUoB
-	vU+s4uim2FVyL41Girw9QroslS8oYfa6Y155Y4wY2hRk8HdCYV6c+BSNX9VsdyOh/vGpDvx18=
-X-Received: by 2002:a17:903:1b0f:b0:2c9:c95e:5836 with SMTP id d9443c01a7336-2ccea2a5748mr105552515ad.5.1783663520722;
-        Thu, 09 Jul 2026 23:05:20 -0700 (PDT)
-Received: from ubuntu-gnu-linux-24-04-3.hub ([2407:7000:af23:3e00:61b7:bd9d:8d64:1bac])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9bdb76asm56314635ad.12.2026.07.09.23.05.16
+        d=1e100.net; s=20251104; t=1783670591; x=1784275391;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=DWdfXN3BNh6HNT+0goMzdBpTUvzgP37bXlBu5ybAYas=;
+        b=pqPneNYmWJMT2uNgWe6pCsOExkrAEIb9ig2htEWA/KSBrfiw7k6Vg732fb7ZvzCWGn
+         RlFBtcWvKyUdl0shgXi0aMCod7poYPIcjmQGQxH102rj+5v9tx1G0IkPoRObu7sgDdkt
+         on+vjmytiVFOH4FxPQjJI5o2zPzKr3uw4oXMeIBpoTlUukMF0cmPYK0Jro0bAyEDqQXR
+         QpwUTJvjdM9BJPpfrR1do8QCPONiXarIGo7FYDqnaf79KMry1IW27YY+bKWMHV/lGtx/
+         abxikV4lqk/jTTSdiTbzEeEH4d6QyAatEK8kctKNnfGZH8MbIK9OSX9fyb52S1ixjXxy
+         VGEw==
+X-Forwarded-Encrypted: i=1; AHgh+Rq4E5+ZGT389bwGBgsTmQvXPCzJsUmcfiUYKTDdjioTQVizT20NqjLGfZ+GcUotxFAjzkopaKVTZI6gMvZPcw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxDEBVQSGMsIR7OuzJIgGdPYwM+qKF9TuNMP3/Y3ew/QM8nVp5I
+	f28llwoenkMgcVHsf8VhLrTNDI8mFk3cJN22DzfjnNwcaYGAqp0BMf1u4uPPrDIbwxs=
+X-Gm-Gg: AfdE7cmHRXsi1Ex+OwyXdH3Gwil8ypMFZodAeaf3v7k3y6WN+gjvnMIXk1kSw6hOgyA
+	VpeCKQqERCZfoG3zATwji9jhDZxGW4RsM5vcy+rduxbEex79UtiEdmP1ukTRAvkeFTbpK7DSXBD
+	4kSc7MsXk3dDc8P2iNg0xCBohJlHDZB4q7TWqYmjKwtNmAYq3jatUc1j7RyA8rHNIU6EzwDm4t+
+	ZTjx+hM2Dr8OCVo3fsYWciAJyXh+VmSe1ONbI5j6CKDGLb+XFQRcnUxMtkrm8DMEHo2TiH9bF1i
+	hsV1r6FHf6Ba6gBqs6/OC1Cui/GXnlEkFI6QpPb5Hgsi7l9KzGiK++neYoQ+1R/vIid81d9r1Eg
+	X+/lL7pLjJdL5LDfnmHVWoq9dYris8kvYnL1/7DEwLt4UOtnzUNqYf3Pke+aZ5iMKc7qdQPBPFT
+	1KmH6OWXnlixl6qsu+TlR5AEP/MqvE9zstVTMD9r4/Bh9aYADj+uWW/GtvTzF1F1kt/GHVoEHY8
+	qlH
+X-Received: by 2002:a05:600c:e557:20b0:493:c0ec:9a5f with SMTP id 5b1f17b1804b1-493e68ddd9bmr75755495e9.19.1783670590951;
+        Fri, 10 Jul 2026 01:03:10 -0700 (PDT)
+Received: from localhost (p200300f65f47db04fbea22a44ee9ba38.dip0.t-ipconnect.de. [2003:f6:5f47:db04:fbea:22a4:4ee9:ba38])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-47a9e4d6e4csm55102028f8f.10.2026.07.10.01.03.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jul 2026 23:05:19 -0700 (PDT)
-From: Jiaxing Hu <huhuvmb88@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>,
-	iommu@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] iommu/rockchip: implement .flush_iotlb_all
-Date: Fri, 10 Jul 2026 18:05:13 +1200
-Message-ID: <20260710060513.863714-1-huhuvmb88@gmail.com>
-X-Mailer: git-send-email 2.43.0
+        Fri, 10 Jul 2026 01:03:10 -0700 (PDT)
+Date: Fri, 10 Jul 2026 10:03:09 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+To: linux-pwm@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, Binbin Zhou <zhoubinbin@loongson.cn>, 
+	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, Frank Li <Frank.Li@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Peter Griffin <peter.griffin@linaro.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Paul Walmsley <pjw@kernel.org>, 
+	Samuel Holland <samuel.holland@sifive.com>, Michael Walle <mwalle@kernel.org>, 
+	Chen Wang <chen.wang@linux.dev>, Inochi Amaoto <inochiama@gmail.com>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Fabrice Gasnier <fabrice.gasnier@foss.st.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Hammer Hsieh <hammerh0314@gmail.com>, Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, 
+	Alexey Charkov <alchark@gmail.com>, Sean Anderson <sean.anderson@linux.dev>, 
+	Michal Simek <michal.simek@amd.com>, asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-rpi-kernel@lists.infradead.org, chrome-platform@lists.linux.dev, imx@lists.linux.dev, 
+	linux-mips@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, sophgo@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v1 0/5] pwm: Unify arrays of various *_device_id
+Message-ID: <alCm-J1wRBnhoH0C@monoceros>
+References: <cover.1783263835.git.ukleinek@kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <cover.1783263835.git.ukleinek@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_230522_107746_147C10E6 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20260710_090313_832570_E1D0B776 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,75 +140,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5685533241728216165=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk_iommu invalidates the IOTLB synchronously in .unmap (via
-rk_iommu_zap_iova), so it stays consistent without a deferred .iotlb_sync
-and does not advertise IOMMU_CAP_DEFERRED_FLUSH.
 
-It never implemented the optional .flush_iotlb_all op, though, and
-iommu_flush_iotlb_all() is a no-op when that op is absent -- so on Rockchip
-a driver that owns an rk_iommu domain and calls it to flush the whole
-domain's TLB (e.g. before reusing a mapping, without unmapping it) gets
-nothing, even though the hardware can do it: rk_iommu already issues
-ZAP_CACHE for range shootdowns.
+--===============5685533241728216165==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="iuf5svn2mmf3pdwc"
+Content-Disposition: inline
 
-Implement it with that same primitive: ZAP_CACHE every bank of every IOMMU
-on the domain, under the runtime-PM + clk guard already used by
-rk_iommu_zap_iova().
 
-Found while bringing up an out-of-tree RK3576 NPU (accel/rocket) driver
-that flushes before each submit; on Rockchip that flush did nothing.
+--iuf5svn2mmf3pdwc
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v1 0/5] pwm: Unify arrays of various *_device_id
+MIME-Version: 1.0
 
-Signed-off-by: Jiaxing Hu <huhuvmb88@gmail.com>
----
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1202,6 +1202,30 @@
- 	return 0;
- }
- 
-+/* shootdown the entire tlb on all iommus using this domain */
-+static void rk_iommu_flush_iotlb_all(struct iommu_domain *domain)
-+{
-+	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
-+	struct list_head *pos;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
-+	list_for_each(pos, &rk_domain->iommus) {
-+		struct rk_iommu *iommu = list_entry(pos, struct rk_iommu, node);
-+		int ret = pm_runtime_get_if_in_use(iommu->dev);
-+
-+		if (WARN_ON_ONCE(ret < 0))
-+			continue;
-+		if (ret) {
-+			WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks));
-+			rk_iommu_command(iommu, RK_MMU_CMD_ZAP_CACHE);
-+			clk_bulk_disable(iommu->num_clocks, iommu->clocks);
-+			pm_runtime_put(iommu->dev);
-+		}
-+	}
-+	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
-+}
-+
- static const struct iommu_ops rk_iommu_ops = {
- 	.identity_domain = &rk_identity_domain,
- 	.domain_alloc_paging = rk_iommu_domain_alloc_paging,
-@@ -1214,6 +1245,7 @@
- 		.map_pages	= rk_iommu_map,
- 		.unmap_pages	= rk_iommu_unmap,
- 		.iova_to_phys	= rk_iommu_iova_to_phys,
-+		.flush_iotlb_all = rk_iommu_flush_iotlb_all,
- 		.free		= rk_iommu_domain_free,
- 	}
- };
+Hello,
+
+On Sun, Jul 05, 2026 at 05:14:12PM +0200, Uwe Kleine-K=F6nig (The Capable H=
+ub) wrote:
+> this series is part of a preparation for changing .driver_data (and
+> similarily named members) of *_device_id to an anonymous union.
+> See e.g.
+> https://lore.kernel.org/all/cover.1780048925.git.u.kleine-koenig@baylibre=
+=2Ecom/
+> for the idea behind it. I also grabbed the opportunity to unify the
+> coding style for all these arrays while going through these.
+>=20
+> The patch series is based on pwm/for-next + "pwm: pxa: Depend on OF and
+> simplify accordingly" [1].
+
+Applied the series with s/iff/if (and only if)/ in the of_device_id
+style patch.
+
+Best regards
+Uwe
+
+--iuf5svn2mmf3pdwc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmpQpzoACgkQj4D7WH0S
+/k4qdwgAk8w911oLsA5aqycP2AV5trJAC5zx53mJ8LxbKoImqWjYyvmd9Kb5YCt2
+LPeZPEPqg6LIhPMbDp91hBWArDL5UUUJ5OfgC8/i0zK1+zWS0B+UPtXUGxzQOkwk
+stkrTAN5eVW7rhVy1AtT4N+EJVm4Y8958RVsmNi75/idP+gmhs7RdJg8zMdhrVVy
+M7XB5Q1zxVcmhsx5TDStZ8tzeFMsDbMqz0s0xVECWSq50U70IwD0Scn0a1BN68kQ
++fZQMwGT3KhdqqmLJV44puWQoDqj8OwGeAuWJQykzluefOFNtRHtRhurlZQAUOrv
+W4X++IXkqXbyyTO72ousttS/RpH5ig==
+=4YUW
+-----END PGP SIGNATURE-----
+
+--iuf5svn2mmf3pdwc--
+
+
+--===============5685533241728216165==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5685533241728216165==--
+
