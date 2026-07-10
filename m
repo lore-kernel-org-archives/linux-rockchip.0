@@ -4,92 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA22CC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 20:56:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E207CC43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 21:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zlHuk9Pn09VCey4mDucQDdhK6WKEw/55OmYInvPcBuU=; b=c+pEH2dykkQKmm
-	k2SD/DMONVOp/lfRSBf9Ll4c7SP3x18KZUa7N8MhM42C/SzOSA4A0xYThWxrwPTb782wH4bKlVNPr
-	OVoZi6OYpovZhgssfABP+0YdIXOpMuoF7XIbXfvVtiykLgoBnhN9pte7UgF8J0L3D3NGPTN9Kih9N
-	sErnp6nRGfXL+mkMAnh1U47aPphIQbeTHzsZP/qbCcxSPaysm9ZKnF6vKxo4Wgb6tZEhyR+X5ynA7
-	wBvRZExi1r/fOy0khltrXCBDUhod1mrNIoiuV1jDPl1kk8lagRMOSxFbD0vQ1S4EZ2Gnh4wA7NFT9
-	4cT3nypjVrfh0c9bnA7g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VdTFnCRd4nKAsFv/cVOAb+WM/BSHGifKl1dPUnCSqCU=; b=GMy5hFNpMl7yGdoVh1NslfodsN
+	EGwa+7VKAWGMs2pHuYqzf6rsid98WsMMKduTudtoKH6JsGQRJOTO2YZiZJRzAwe/6tMG3nf2CbZJy
+	cVOpjCySqsnowezQBQVjFV7Tch+893jMrKDZPWfUTr++aIITT0URXVbK4Fby78CarsijX//bJIQ9/
+	Zy7jgXnxqYX5QA9doAa0jAhqMlB7vVrhodrv+HFyN5rMSkPEojRKV9aJnZWkpn/UA4P5C+yZWNbtE
+	ntt33EAyurXJB9w6YDMLvcNlPWWrkC1oUa3/bz/vsFnHz7nNpyPAkMKAh9x7Sl3n8fjeeqW5AzwW5
+	kkvR7eXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiIH1-00000005kLk-3kTS;
-	Fri, 10 Jul 2026 20:56:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wiIQe-00000005lOn-0pLL;
+	Fri, 10 Jul 2026 21:06:36 +0000
+Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiIGg-00000005jw9-3gc8;
-	Fri, 10 Jul 2026 20:56:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783716973;
-	bh=7NtyUqb33FG+jkcWAqQCofPeXAbNDYLMWt9ICp4xwmw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YThiVFIyt0IgNFvU0IQr41k9Gg/WLRP8RV2Z14q6voul1y4OA2aplhommirHeN3jB
-	 0oFurEkKUcsfWlnOsu4Kt9fnG+DFPKEKGwF02xERzTtVeU6nfRc7wqNsyTMyYDftMk
-	 3Vl2C9tx8pP3585eaAZRX1rrTBhmlTw5c75DWveb79CQRQff0n9Ce7lMbohDRQckMD
-	 ZxOQitQBhAwb9GckW+P0jUksvBRFK7qzNXqXy8I4PXaK6sNziFxL0DTwZG1o2/dGtm
-	 AM0a1JXkpMI9ZkGQJdRtDSg42QJlHo7j8OfQ04Tr4s1z7UXnuBa8D2Voi5gp5q4hgu
-	 pSgYTf3gKwReA==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6865D17E0EFE;
-	Fri, 10 Jul 2026 22:56:13 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 11EAE48006F; Fri, 10 Jul 2026 18:46:18 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 10 Jul 2026 18:45:06 +0200
-Subject: [PATCH v12 28/36] phy: rockchip: usbdp: Only enable USB3 when not
- in high-speed mode
+	id 1wiIQb-00000005lNu-31fy
+	for linux-rockchip@lists.infradead.org;
+	Fri, 10 Jul 2026 21:06:35 +0000
+Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-9034b6b7674so5173016d6.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 10 Jul 2026 14:06:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1783717592; x=1784322392; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=TVT9N7Zf4tzdtEz92uIESo3Z8ztU5bsCLtI2pOZcHKU=;
+        b=bNuEFn18EE79RGLbgRW+5hR7/cOZggyXrJbig0GE31qVgkEsLKYJnss3l1YYYxP7MR
+         tuOMEqsSat623zd7gFnI11p5rlxP/gj8VRROKadnJkZYonqsDllvhTR7u9IkhfU0JOT4
+         kBQMpzMqCv2JBXdFl5Y0X3y5JU4LrSWAV+Vi01fzLksNrtYuhqRL5t2Vk7ZdPivI80KA
+         oxQdDUpP1Ocju5fEC/s7YPwzkHul+Mls5FMPatRpXgZjrvQzKkDevhD22FzLRoBwPEyK
+         08xooS47Co2qG41sVSu6DiWcWQ61Xgd4V4oD9uVisOskNFEC8MRqYQ2yvbbsGzxdZJs0
+         +MAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783717592; x=1784322392;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=TVT9N7Zf4tzdtEz92uIESo3Z8ztU5bsCLtI2pOZcHKU=;
+        b=fUQsC5HNF0ZO7j1Hu1kFsZmxLuEORK32LoV+SboyxkTU2UZGSA36/Mv1JxDxtt8y8F
+         qggvKh9WPo5AqIZE5t2EvzoxrOpUl5nxRujcl2uiNtiS2nJNebpzzSo/djuGk+fZmaOL
+         IA/T2/ZJrlw0pcBEnZaPVm2/FPeLRFcFXGEtFy0cH0jSsEA2Ps74rABtBktWXYALnoDG
+         d+qmAIY41/PE1WhO53jGalU7DNjOWhy8tP/n52KW0/rQ81HqIhj816CiVribP5EXBgmS
+         /0/W4cgOP9Usi+MSr6De1U11NyWrB0z/aJSfcgR36jhjEwKywMK2ivCNYFf9MgfkYoMU
+         SalQ==
+X-Forwarded-Encrypted: i=1; AHgh+RohFFxyMnjvC8n+Cb8okZ/cGHiHE10YPaf407lU7k5TEpBysM3NM8BkeyUs2zuZCl1KV7osuEWyLNETy/8SJw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywl6Quj6RDj7jUG6+UsZvqhVPYMxj3aqhvSrfMRd75ed0jBHL9G
+	kQqEA5PeAprl46OSsXSMTvKdGAVmwzCy0O1pEif4fhbKwU5KJt4sSTLVwwqumPQj41Q=
+X-Gm-Gg: AfdE7ckVJ3SSpqFr55dhISu0b3Wm/CvuQLObqlj4PHMhUFImKL0GD6tGcH7RUNJDgo6
+	5nUoTQ9V3+OqJtznRzQXsPa1QMZb8gkNJObK1PoC4uJehcf+cKumT+YbToOXwnP7Ymi9wsyMsTG
+	3m/mMC95E9Q+PZ2LcOvHYlgaVdQ+gD3OQHUn+nyYsk58CW+Br/4uEpLXDanQhZpGtlQfzoJ2Ql1
+	eR8nZ+aXAt3vyRbFBrNijPQSJtT32DHewRkNqC8CMeVJDHNkXCkzzMVkEq6hfW5FHU4TN4ebUVj
+	ivETzK1eZDlSOfDEXVP7ooreEMZWb77QDjkjukCb8uqweWtnY4DIgX+L4NTAe9OK+5GWCFqJ9jg
+	pIO1qwAuBocjwMRVEb4AK7aQjmlrHRiHr8ovhdjONQ2TRcLjGhkJAU2ZV/TLuR0DAWTkvBXwPV/
+	wnwRmimCtsgftDNnyUWcQ/X2VoLkOg
+X-Received: by 2002:a05:6214:3b81:b0:8f1:581c:4b40 with SMTP id 6a1803df08f44-90400f9540emr8519656d6.7.1783717591801;
+        Fri, 10 Jul 2026 14:06:31 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:15:e06b::c41? ([2606:6d00:15:e06b::c41])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8ffd87c9500sm50123616d6.46.2026.07.10.14.06.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jul 2026 14:06:31 -0700 (PDT)
+Message-ID: <1e7a3efb76d84730748b9c47c03a90b51b2d2d20.camel@ndufresne.ca>
+Subject: Re: [PATCH 13/17] media: rockchip: rga: bind all cores to the master
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
+	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel
+	 <p.zabel@pengutronix.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	kernel@pengutronix.de, Detlev Casanova <detlev.casanova@collabora.com>, 
+ Michael Tretter <m.tretter@pengutronix.de>
+Date: Fri, 10 Jul 2026 17:06:30 -0400
+In-Reply-To: <20260606-spu-rga3multicore-v1-13-3ec2b15675f7@pengutronix.de>
+References: <20260606-spu-rga3multicore-v1-0-3ec2b15675f7@pengutronix.de>
+	 <20260606-spu-rga3multicore-v1-13-3ec2b15675f7@pengutronix.de>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-Message-Id: <20260710-rockchip-usbdp-cleanup-v12-28-8b41a9a9bef0@collabora.com>
-References: <20260710-rockchip-usbdp-cleanup-v12-0-8b41a9a9bef0@collabora.com>
-In-Reply-To: <20260710-rockchip-usbdp-cleanup-v12-0-8b41a9a9bef0@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
- Yubing Zhang <yubing.zhang@rock-chips.com>, 
- Alexey Charkov <alchark@flipper.net>, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sashiko <sashiko-bot@kernel.org>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1088;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=7NtyUqb33FG+jkcWAqQCofPeXAbNDYLMWt9ICp4xwmw=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpRIdlbn+M9eq5d3Pp3V5venzSpbHpzXmNha
- 4MXNngift5ED4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqUSHZAAoJENju1/PI
- O/qanOsP/j4S/f4b1JA34NmA00oNvDQA5E96BpL83ATgbDY7iHcHLxWlaXDm5FuHAiIqkqKrlF+
- NYTV20CXb3HuLS4VjAbYetXdTtuoqCpGJkxFLcjN6f9QQBD2B+bzI3+qfVZVdkXIWAuDkc3RCqR
- J6eUj4IZU4J+bqU09nKFLRjjGUmBr5SGVLod2i4GDLpVZS7it2ahBarLCZYBFNDY5eJp+pX72Zp
- X49y2caBlRd3PDeBzX5ib1Xag1KUBTlJpCGxE9T0icTv6PfQp9csFU2SkBGA7Lp9bjXTqrDXhoo
- gvIRTXp5dkpQjCgZuwdVG5Irq/tTiQyJaolle4cnu3pPRTeeVDE1EhRB7B7WvxtfBnZkxnMrE1T
- fznnlQrST5q0A4fb8irDSWhdmxgkBu8veQXYkY5H8fSm70DTJ9UXuEYqqtULSOXZ5kH8/VK/mgo
- DjxBYtvqB/8Ir8iaTJtV091urQmwiRUFKRAhXMqrCtElkYqSWIZ3dh+BYUSzi5jy5aP3wH8zJWb
- VPfTFoSttYgn1NSc4GVy57O2HZAbOYVpvfsV4OY+Tgff0qLhAjuCSyiJ3kYr64XhLnTGZdBjQQ+
- RiapJtku00T5xyFuzqH4b/IpbDtcV9EktVRy9Axd9Zk9zMYb7jutXRlt5TriMQr9I1mc0m5R0Aa
- 2sK1nWSer/WpDFG47muchpQ==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_135619_068551_805257D9 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20260710_140634_031771_6A7A6BD4 
+X-CRM114-Status: GOOD (  24.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,41 +115,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3374208508297277434=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ensure that USB3 mode is not accidently enabled during PHY re-init
-for systems that are configured as high-speed only via DT.
 
-Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://sashiko.dev/#/message/20260626212424.C215E1F000E9%40smtp.kernel.org
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--===============3374208508297277434==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-TbhSyHxkx/Z3fez9TIdu"
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 2099ae2e51d1..af915cc37727 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -1009,7 +1009,7 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
- 		if (ret)
- 			return ret;
- 
--		if (udphy->mode & UDPHY_MODE_USB)
-+		if (!udphy->hs && udphy->mode & UDPHY_MODE_USB)
- 			rk_udphy_u3_port_disable(udphy, false);
- 		udphy->phy_needs_reinit = false;
- 	} else if (udphy->phy_needs_reinit) {
 
--- 
-2.53.0
+--=-TbhSyHxkx/Z3fez9TIdu
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+Le samedi 06 juin 2026 =C3=A0 00:06 +0200, Sven P=C3=BCschel a =C3=A9crit=
+=C2=A0:
+> Bind all core components to the master component. Previously only the
+> first core has been added to the master device to avoid creating
+> multiple video devices. As the video device creation has been moved to
+> the master component, it allows us to bind all cores without creating
+> additional video devices.
+>=20
+> We expect that all cores to report the same version number, as we only
+> add cores with the same compatible value. This is important, as=C2=A0 we
+> setup the command buffer before actually scheduling the work to a
+> specific core. Therefore adjusting command buffers depending on the
+> version register only works when all cores have the same value.
+>=20
+> Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+> ---
+> =C2=A0drivers/media/platform/rockchip/rga/rga.c | 22 +++++++++++---------=
+--
+> =C2=A0drivers/media/platform/rockchip/rga/rga.h |=C2=A0 1 +
+> =C2=A02 files changed, 12 insertions(+), 11 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/pl=
+atform/rockchip/rga/rga.c
+> index 0413b8518dfc8..6add6c510c127 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -742,6 +742,7 @@ static int rga_core_bind(struct device *dev, struct d=
+evice *master, void *data)
+> =C2=A0{
+> =C2=A0	struct rockchip_rga *rga =3D data;
+> =C2=A0	struct rga_core *core =3D dev_get_drvdata(dev);
+> +	struct rockchip_rga_version version;
+> =C2=A0	int ret =3D 0;
+> =C2=A0
+> =C2=A0	core->rga =3D rga;
+> @@ -750,14 +751,21 @@ static int rga_core_bind(struct device *dev, struct=
+ device *master, void *data)
+> =C2=A0	if (ret < 0)
+> =C2=A0		return ret;
+> =C2=A0
+> -	rga->version =3D rga->hw->get_version(core);
+> +	version =3D rga->hw->get_version(core);
+> =C2=A0
+> =C2=A0	v4l2_info(&rga->v4l2_dev, "HW Version: 0x%02x.%02x\n",
+> -		=C2=A0 rga->version.major, rga->version.minor);
+> +		=C2=A0 version.major, version.minor);
+> +
+> +	if (rga->num_cores) {
+> +		/* we are not the first core, expect that we have the same version */
+> +		if (rga->version.major !=3D version.major || rga->version.minor !=3D v=
+ersion.minor)
+> +			v4l2_warn(&rga->v4l2_dev, "Detected multi-core setup with different c=
+ore versions!\n");
+
+We should fail, and not just warn.
+
+Nicolas
+
+> +	} else
+> +		rga->version =3D version;
+> =C2=A0
+> =C2=A0	pm_runtime_put(core->dev);
+> =C2=A0
+> -	rga->cores[0] =3D core;
+> +	rga->cores[rga->num_cores++] =3D core;
+> =C2=A0
+> =C2=A0	return 0;
+> =C2=A0}
+> @@ -983,14 +991,6 @@ static int rga_probe(struct platform_device *pdev)
+> =C2=A0		component_match_add_release(dev, &match, component_release_of,
+> =C2=A0					=C2=A0=C2=A0=C2=A0 component_compare_of, core_node);
+> =C2=A0		num_cores++;
+> -
+> -		/*
+> -		 * As multi core is not implemented yet,
+> -		 * break out of the loop to only have one core per rockchip_rga struct=
+.
+> -		 * Also put the node, which otherwise would've been done by the loop i=
+teration.
+> -		 */
+> -		of_node_put(core_node);
+> -		break;
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	if (!match)
+> diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/pl=
+atform/rockchip/rga/rga.h
+> index fcf1ef7d2029f..6237436b984eb 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.h
+> +++ b/drivers/media/platform/rockchip/rga/rga.h
+> @@ -88,6 +88,7 @@ struct rockchip_rga {
+> =C2=A0
+> =C2=A0	const struct rga_hw *hw;
+> =C2=A0
+> +	u8 num_cores;
+> =C2=A0	struct rga_core *cores[];
+> =C2=A0};
+> =C2=A0
+
+--=-TbhSyHxkx/Z3fez9TIdu
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCalFe1gAKCRDZQZRRKWBy
+9GClAP9CEDkckOHaaBs3JSr4kR2glZ91T2+Em462BGZsPI608QEAkZF6ihkk7v4x
+pzNO4wHmiemguZjKW2cONNbyb6HNbwQ=
+=KoiK
+-----END PGP SIGNATURE-----
+
+--=-TbhSyHxkx/Z3fez9TIdu--
+
+
+--===============3374208508297277434==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3374208508297277434==--
+
