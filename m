@@ -4,73 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F44AC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 20:43:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1DEEC44506
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 20:56:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KhPgzUm7Zj70pwHU6J9f0o2lIeAE2E0Yi/VF/4Bqq2A=; b=uaS2v2AtklO7qF
-	yb1pfZo8/DWnfjdYBM3Xk3+Jv8K3s9CkpFj5s18rcOZXXKa6oVkH73bHKjYzelkTi99/0xiW/8iNm
-	D/eBPqNSapgbCqOvdfqwchQlZfsebWuIaLXp4Y6x9QQTmBTq25NnlCt6l7YP7ROjlovTdQwXSzNmJ
-	J8VLwB40oBfKZxfnHgooxmRAKMvTS7dEIFA4zz0nyWehoeWMy5F6ClIf1jz9IFIuhPN17Ii/n6Y7C
-	ZxLxuBhwgwdEqrpDmu49JAEc7TY7JJpDZQMoWqt06pV7yusa7/S34Mvram+pW1izb5sTvaZzEvN+B
-	MwbcsdlVQpjLZYUncwtg==;
+	List-Owner; bh=WApxTfC3wVRWzzvo3pwflB1hhJK0xJaMuWB1PSPXyeM=; b=HEzKBkX10XQVDn
+	GWn6UyBzqHDkAGEOhfZKEyZ8LmCqR7GwYbd+qy874Tn26WftnxS+/SJTT5zBp96gImFttrrbZYYGT
+	TCaWeouqgJeGlGqf0h+qOYjSHHouLefgKuyLnXHF4xupYMmKMi0ON3DtJ5UEvVATAFwMuBTmTGwkC
+	zqj+Rp3Q8DazvxtQ3mfpxoltD3QZRDsRg0cACa6PSbGCpIZXUvg9jyd027b1IoBaDYvGrsyjLy74W
+	vd/ZOSTRTIzdino6sLbLNQBC2irDcr7EWRVo4Zu673VqpUdaXzZflxG7HBfQDuhGmNltT3Kcju6am
+	VM1oFAPfchHu9pcpIe9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiI3q-00000005j5r-0miC;
-	Fri, 10 Jul 2026 20:43:02 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wiIGg-00000005jwu-1xJk;
+	Fri, 10 Jul 2026 20:56:18 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiI3n-00000005j5M-3UAu;
-	Fri, 10 Jul 2026 20:43:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1783716177; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ZyUydZzLCJqQ8wHcsSMHJlKTS8z/av6o2hGJJdBy8M1k5t9U7f0WFGpaIroEhcsIePuq8C7FHzGNBL0Ii88bns9s9EdgQKTHBo8WE8Fr+eRTkbrZpytgsQ0JhMa9vnViAC85rpb1YaiazTbAJ95Jwm5daANU6YKk66qlpO/Mxek=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1783716177; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=bpn2IgbKGrTggO+5MYIlxTrWJGnctnmaJp03+CTcNbQ=; 
-	b=MMCjpRRyJxtIpWTstuncaP6v+wBiS/7282bPwZu/2MP1cdBfLadH5jrWGthdUuQ9DuZrJLhrMmJiBio4lgrL6/w/hHAtTN7epLc4Qb5DJ9qem8mQ7D3VPoA9lNeKEtYkz9QIVEmsLfmalXAulHwQbgGaG3fjvTd0eiYlW+bKU7Q=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
-	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783716177;
-	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=bpn2IgbKGrTggO+5MYIlxTrWJGnctnmaJp03+CTcNbQ=;
-	b=I9JNKRuXOnNk4XkmPx9tXSx/ngxfTyoLiiRCSqtZR2WaTQLmD/Wa6bXMuvL7Mrqs
-	i4KHNLDNZa30uB99Q1MFbaC882rFxFWJ0J9sObXLuMKm7vdpkPwTnZEOyK4xKnxSQdh
-	RSd9na5LYg7gknWD+0V5MoTYSIgwHruYTGzjp4UM=
-Received: by mx.zohomail.com with SMTPS id 1783716174951831.1292117639873;
-	Fri, 10 Jul 2026 13:42:54 -0700 (PDT)
-Message-ID: <a6a32617-f3c9-4cf2-b020-daecf7ec18f1@collabora.com>
-Date: Fri, 10 Jul 2026 22:42:50 +0200
+	id 1wiIGd-00000005jue-2aLe;
+	Fri, 10 Jul 2026 20:56:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783716973;
+	bh=L86pedZA772Rnc2vX5oR3CIG9SixBxsK2CPI3FEKRLo=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=SAPyRlTxzYcrsbTuVfA8mgnmTSzCqlt/+A4WBSfML4ZokHbpzj7bT6PnuHJFrvbHv
+	 jQulVGCjSgrqGG9tPoH2frxHnjAA/L+0wTD8i5DWJr+b0+8NZ/1LOeaxsOoHsUWQIc
+	 0yuSgmMWCYrOQKbE6N64qyVa0tqt56gvKrn+oZvM06kALFbb41/s8hMNncyyjUFX6x
+	 1o2ngwOOK16cENgxpDhFLIaLDfCFdahnfO+mKMX6sKYCCD+0ImdsLl8XBbCiZCTVhc
+	 hhSKDECh2Ihm3whySZk2BRoTi351YmsebHzTg9RW/sm9XJLZWOH2vW4KsYtcX5OrLG
+	 hOeVSSDwSzz2w==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 154D817E07A2;
+	Fri, 10 Jul 2026 22:56:13 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 01076480062; Fri, 10 Jul 2026 18:46:18 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Fri, 10 Jul 2026 18:44:55 +0200
+Subject: [PATCH v12 17/36] phy: rockchip: usbdp: Drop DP HPD handling
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 1/6] media: mc: Implement shared media graph
-To: Paul Elder <paul.elder@ideasonboard.com>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>,
- laurent.pinchart@ideasonboard.com
-Cc: xuhf@rock-chips.com, stefan.klug@ideasonboard.com,
- dan.scally@ideasonboard.com, jacopo.mondi@ideasonboard.com,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- hverkuil+cisco@kernel.org, nicolas.dufresne@collabora.com,
- ribalda@chromium.org, sakari.ailus@linux.intel.com
-References: <20260619052637.1110672-1-paul.elder@ideasonboard.com>
- <20260619052637.1110672-2-paul.elder@ideasonboard.com>
- <178229758404.3075020.12553514371020830845@ping.linuxembedded.co.uk>
- <178237578321.292172.5229006087283359591@neptunite.rasen.tech>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <178237578321.292172.5229006087283359591@neptunite.rasen.tech>
-X-ZohoMailClient: External
+Message-Id: <20260710-rockchip-usbdp-cleanup-v12-17-8b41a9a9bef0@collabora.com>
+References: <20260710-rockchip-usbdp-cleanup-v12-0-8b41a9a9bef0@collabora.com>
+In-Reply-To: <20260710-rockchip-usbdp-cleanup-v12-0-8b41a9a9bef0@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Yubing Zhang <yubing.zhang@rock-chips.com>, 
+ Alexey Charkov <alchark@flipper.net>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5857;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=L86pedZA772Rnc2vX5oR3CIG9SixBxsK2CPI3FEKRLo=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpRIdlFBqevDvuFOY4mViePwG3eJFBPnVKzH
+ TgY1nrwvDXX6okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqUSHZAAoJENju1/PI
+ O/qay6EP/20efGoy8TjvlKzONcvvkqpU85JJHab4vFk+pBg1Ki+DPBuqsxSPrQSYcBLUGj5sprV
+ PBQzDSySBxH7usFlcKioIl8dIeS/PGhMJnJ7Nlav85JLjar4JKCS+aRDxN6cvOHfvgifWg0+MrC
+ g5I0Kohm8DQwyKQEV8cqLOEFEXnSLgB02O41Bpzft5cKXXPSs2jhNSPdcRW6Bz4ETtJYhfIVZt3
+ AEbEuGhRE6kaX+ihwQKGD7ilnCGc7RjL6s8KCRlYXzndoRvIKFeMSjuchhhw6c0aT/8benz1SAO
+ lUjVcjtnB/dp7Zk8GmJPy/4F3giOJSJ+YgXtJkKA09frL5/4jpf49cl7NcaZFua3z+pnQeaV0am
+ o48VHt01LlDCVCMmfIEVgsLRshw6TzqrxosBsx63Y0iEOm3/xX8gt+w1hGGYBDeL0h4Z/7eONfQ
+ NAW4iFUd5X+/2CB3WriLu7zYgoTF70IMDUHtCi/Sl/sYXMDYrXTNIHKrdgA01w4X/VUeyArHw/n
+ JAxFAnFmNGh0WrRe88Q8RoqNq+/aOzqNcCBn7i9Mr2HDD0CF5Mpa4MossfLZhOQbm1cT3/BQuzF
+ DsLZ2Y4mHSVmKiJ4jKWqW249N8iig3Rby/Dt8MN2b39mqlqMOruc+VcLeHltPm9tTUnQZQI6KaL
+ pyrZiD46H4taQ58axr88nRA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_134259_953956_6E80B004 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20260710_135615_821942_D290291A 
+X-CRM114-Status: GOOD (  20.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,50 +104,202 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
+Drop the HPD handling logic from the USBDP PHY. The registers involved
+require the display controller power domain being enabled and thus the
+HPD signal should be handled by the displayport controller itself.
+Apart from that the HPD handling as it is done here is incorrect and
+misses hotplug events happening after the USB-C connector (e.g. when
+a USB-C to HDMI adapter is involved and the HDMI cable is replugged).
 
-On 6/25/26 10:23, Paul Elder wrote:
-> [...]
->>> +// TODO figure out locking for when multiple drivers touch the media graph;
->>> +// maybe macros for shared versions?
->>
->> Do you mean for when drivers are trying to change link state directly?
-> 
-> I meant for all the operations that act on media device. I'm not sure what
-> there is because I didn't really find anything significant, and I found some
-> action point from some meeting notes somewhere that said "deprecate media_ops"
-> (not assigned to me) so...
+Proper USB-C DP HPD support requires some restructuring of the DP
+controller driver, which will happen independent of this patch. The
+mainline kernel does not yet support USB-C DP AltMode on RK3588 and
+RK3576, so it is fine to drop this code without adding the counterpart
+in the DRM in an atomic change.
 
-Oh yes, for some reason this ball ended up in our side of the field. But
-actually I think the media_ops are not much of an issue, as you don't
-set them when you create the shared media device. Problem solved, right?
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 85 ++++---------------------------
+ 1 file changed, 9 insertions(+), 76 deletions(-)
 
-> If there aren't any then it's a non-issue, but if there are then I was
-> wondering if we need to return the shared media device to the driver (as
-> opposed to a non-shared regular media device) and use shared versions of media
-> device functions that have locking.
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index 8ac6a83b0b2a..24108816e3b9 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -128,7 +128,6 @@ struct rk_udphy_grf_cfg {
+ 
+ struct rk_udphy_vogrf_cfg {
+ 	/* vo-grf */
+-	struct rk_udphy_grf_reg hpd_trigger;
+ 	u32 dp_lane_reg;
+ };
+ 
+@@ -186,14 +185,11 @@ struct rk_udphy {
+ 	u32 dp_lane_sel[4];
+ 	u32 dp_aux_dout_sel;
+ 	u32 dp_aux_din_sel;
+-	bool dp_sink_hpd_sel;
+-	bool dp_sink_hpd_cfg;
+ 	unsigned int link_rate;
+ 	unsigned int lanes;
+ 	u8 bw;
+ 	int id;
+ 
+-	bool dp_in_use;
+ 	int dp_lanes;
+ 
+ 	/* PHY const config */
+@@ -577,19 +573,6 @@ static void rk_udphy_dp_lane_enable(struct rk_udphy *udphy, int dp_lanes)
+ 				   CMN_DP_CMN_RSTN, FIELD_PREP(CMN_DP_CMN_RSTN, 0x0));
+ }
+ 
+-static void rk_udphy_dp_hpd_event_trigger(struct rk_udphy *udphy, bool hpd)
+-{
+-	const struct rk_udphy_cfg *cfg = udphy->cfgs;
+-
+-	udphy->dp_sink_hpd_sel = true;
+-	udphy->dp_sink_hpd_cfg = hpd;
+-
+-	if (!udphy->dp_in_use)
+-		return;
+-
+-	rk_udphy_grfreg_write(udphy->vogrf, &cfg->vogrfcfg[udphy->id].hpd_trigger, hpd);
+-}
+-
+ static void rk_udphy_mode_set(struct rk_udphy *udphy, u8 mode)
+ {
+ 	if (udphy->mode == mode)
+@@ -1000,29 +983,6 @@ static void rk_udphy_power_off(struct rk_udphy *udphy, u8 mode)
+ 		rk_udphy_disable(udphy);
+ }
+ 
+-static int rk_udphy_dp_phy_init(struct phy *phy)
+-{
+-	struct rk_udphy *udphy = phy_get_drvdata(phy);
+-
+-	mutex_lock(&udphy->mutex);
+-
+-	udphy->dp_in_use = true;
+-
+-	mutex_unlock(&udphy->mutex);
+-
+-	return 0;
+-}
+-
+-static int rk_udphy_dp_phy_exit(struct phy *phy)
+-{
+-	struct rk_udphy *udphy = phy_get_drvdata(phy);
+-
+-	mutex_lock(&udphy->mutex);
+-	udphy->dp_in_use = false;
+-	mutex_unlock(&udphy->mutex);
+-	return 0;
+-}
+-
+ static int rk_udphy_dp_phy_power_on(struct phy *phy)
+ {
+ 	struct rk_udphy *udphy = phy_get_drvdata(phy);
+@@ -1254,8 +1214,6 @@ static int rk_udphy_dp_phy_configure(struct phy *phy,
+ }
+ 
+ static const struct phy_ops rk_udphy_dp_phy_ops = {
+-	.init		= rk_udphy_dp_phy_init,
+-	.exit		= rk_udphy_dp_phy_exit,
+ 	.power_on	= rk_udphy_dp_phy_power_on,
+ 	.power_off	= rk_udphy_dp_phy_power_off,
+ 	.configure	= rk_udphy_dp_phy_configure,
+@@ -1309,6 +1267,14 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+ 	struct rk_udphy *udphy = typec_mux_get_drvdata(mux);
+ 	u8 mode;
+ 
++	/*
++	 * Ignore mux events not involving DP AltMode, because
++	 * the mode field is being reused, e.g. state->mode == 4
++	 * could be either TYPEC_MODE_USB4 or TYPEC_DP_STATE_C.
++	 */
++	if (!state->alt || state->alt->svid != USB_TYPEC_DP_SID)
++		return 0;
++
+ 	mutex_lock(&udphy->mutex);
+ 
+ 	switch (state->mode) {
+@@ -1340,22 +1306,7 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+ 		break;
+ 	}
+ 
+-	if (state->alt && state->alt->svid == USB_TYPEC_DP_SID) {
+-		struct typec_displayport_data *data = state->data;
+-
+-		if (!data) {
+-			rk_udphy_dp_hpd_event_trigger(udphy, false);
+-		} else if (data->status & DP_STATUS_IRQ_HPD) {
+-			rk_udphy_dp_hpd_event_trigger(udphy, false);
+-			usleep_range(750, 800);
+-			rk_udphy_dp_hpd_event_trigger(udphy, true);
+-		} else if (data->status & DP_STATUS_HPD_STATE) {
+-			rk_udphy_mode_set(udphy, mode);
+-			rk_udphy_dp_hpd_event_trigger(udphy, true);
+-		} else {
+-			rk_udphy_dp_hpd_event_trigger(udphy, false);
+-		}
+-	}
++	rk_udphy_mode_set(udphy, mode);
+ 
+ 	mutex_unlock(&udphy->mutex);
+ 	return 0;
+@@ -1510,20 +1461,6 @@ static int rk_udphy_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused rk_udphy_resume(struct device *dev)
+-{
+-	struct rk_udphy *udphy = dev_get_drvdata(dev);
+-
+-	if (udphy->dp_sink_hpd_sel)
+-		rk_udphy_dp_hpd_event_trigger(udphy, udphy->dp_sink_hpd_cfg);
+-
+-	return 0;
+-}
+-
+-static const struct dev_pm_ops rk_udphy_pm_ops = {
+-	SET_LATE_SYSTEM_SLEEP_PM_OPS(NULL, rk_udphy_resume)
+-};
+-
+ static const char * const rk_udphy_rst_list[] = {
+ 	"init", "cmn", "lane", "pcs_apb", "pma_apb"
+ };
+@@ -1547,7 +1484,6 @@ static const struct rk_udphy_cfg rk3576_udphy_cfgs = {
+ 	},
+ 	.vogrfcfg = {
+ 		{
+-			.hpd_trigger	= RK_UDPHY_GEN_GRF_REG(0x0000, 11, 10, 1, 3),
+ 			.dp_lane_reg    = 0x0000,
+ 		},
+ 	},
+@@ -1588,11 +1524,9 @@ static const struct rk_udphy_cfg rk3588_udphy_cfgs = {
+ 	},
+ 	.vogrfcfg = {
+ 		{
+-			.hpd_trigger	= RK_UDPHY_GEN_GRF_REG(0x0000, 11, 10, 1, 3),
+ 			.dp_lane_reg	= 0x0000,
+ 		},
+ 		{
+-			.hpd_trigger	= RK_UDPHY_GEN_GRF_REG(0x0008, 11, 10, 1, 3),
+ 			.dp_lane_reg	= 0x0008,
+ 		},
+ 	},
+@@ -1628,7 +1562,6 @@ static struct platform_driver rk_udphy_driver = {
+ 	.driver		= {
+ 		.name	= "rockchip-usbdp-phy",
+ 		.of_match_table = rk_udphy_dt_match,
+-		.pm = &rk_udphy_pm_ops,
+ 	},
+ };
+ module_platform_driver(rk_udphy_driver);
 
-+1
-I would recommend that just to be on the safe side. And I think I would
-make the shared media device an opaque pointer to make sure that there
-won't be any monkey business.
+-- 
+2.53.0
 
-Thanks and best regards,
-Michael
-
-> 
->>
->>> +struct media_device_shared {
->>> +       struct media_device mdev;
->>> +       struct list_head members;
->>> +       struct list_head links;
->>> +
->>> +       struct list_head list;
->>> +       struct kref refcount;
->>> +
->>> +       struct device *removed_device;
->>> +};
->>> +[...]
 
 _______________________________________________
 Linux-rockchip mailing list
