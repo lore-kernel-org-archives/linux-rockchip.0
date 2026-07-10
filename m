@@ -4,95 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9458CC43458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 14:30:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C87D8C44506
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 16:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bdzmfwb+rrKQI7fkQQSJOEgsCureAIs7GG8LkmWezAU=; b=m7n2/6tzyx45jw
-	VHaijTQA1s8lRk7LVzW4/Q9pqu6S3s6tqZZe76eEoKfuKwHN84DU73r5MIBHm4Vd17C/7TJMopIbM
-	GeHO+t047n7tb7rKsZOaMy/eSg+zvckQVD2JUvVFyOj+fe7NhTbCpSsvfq7M86dakMc9F2+CTGO55
-	Ve45Bp+W1T+T3LIHJk/Dh0WiIehvBWJAXJewijdaDpt+2Ap1S8JPm94OuPvF+GMz3wo2t9/AcFjdY
-	OXZ+SnxUIlnRiw1kz6UnJU6OZoFyge3B3IoSsbRWICZ/2ChnMGOLArcWFUXX3ZemxFUr/i8Jurx2A
-	wDCOkbsDNoyv3iHw+3Mg==;
+	List-Owner; bh=pf6guVpQiaVK13tQoIundfGAWE7/+29ryzZIPdLCUVw=; b=GM2xUWWcQsv7Yp
+	WtBCIDaDHmRq/dWtyVaYs880MpjfxEq+13VyvlaUSSTmbZ2py6qQWYiQdjsb35Okk50U1u1S3WXHc
+	CNI8zK7rtEoeEk0o979GLzRE0Lpcfe0n9iO0bZRmPtuv6vVMeZ4jh7WzVeDIpIBefgDYFqGWOZmtQ
+	OSohGoicjGHwWaaWjBY+AgBKXN0nymcNZLfS1ib6ht86MFLiy4IIotLgkgPAt2Q0b4FffknCfVV7y
+	BUuz7flFrVRgoVynNneT2DXSN2TCt1RPA8rNAYeqFE9q4LMqYBxp1YLZ2aFIvjWzFgyI0Zm8JWyB3
+	hWR9Rei1mZhcGiWy7rhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiCF9-000000055Kx-3Hfo;
-	Fri, 10 Jul 2026 14:30:19 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1wiEMr-00000005JAd-1Dau;
+	Fri, 10 Jul 2026 16:46:25 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiCF7-000000055K4-2WZQ
-	for linux-rockchip@lists.infradead.org;
-	Fri, 10 Jul 2026 14:30:18 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-493f6de72faso2461185e9.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 10 Jul 2026 07:30:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783693815; x=1784298615; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=VI6XbHCkQw0BYyxRAEJxXVAGqyrCldWfR9mQ71QbnBw=;
-        b=Pk6zeKFcpl/zp7HWtHm+5cqFFikXWBBeOYZCgJM1Rwl0MFUs/21WZspoPlv1pTexAO
-         nJoIzE8KUCdFO2CfDP2zyOuYkI1BpxEvYLL2bUW0Pb998oxuO/LGurixZcPA8XP3iiTN
-         nvlgEmXYYmfOeRMhvQ2UrvUPAoUi+6fr80bPs49nCZ3wJnHtkCoTv6EhmrvSdjl2eTob
-         r5HLuGCsWpx5xn/JUvpqcYEjVRCUCndxbb2Xkwfqc+eOIQLUIg91ipRN/167LYu2EswI
-         SEodXbllG9lgF++XWuLJD/4eZaqWoXpZVSr6R6Cxsvw+LyykvLcM4Y3SgDwPwG4/s4UP
-         +Yrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783693815; x=1784298615;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=VI6XbHCkQw0BYyxRAEJxXVAGqyrCldWfR9mQ71QbnBw=;
-        b=IGTOtEMykJT96DXAy7j3hvXoa4SDSteb0sUvDfxm31JIE9xEl0XMYifXqLv/+1p5sJ
-         fcatc0CvPiva5QPfeeUtdSC/xuOmWC5Sg3cvE2Uc5xdQzgzD8Ep0XjYUyN+tCQF2YS/+
-         EpdhWSvSc9ZvIp2MdrEJHMqELWvTBF/QWHiGcVPHsMKs8CCOh/t4z7lXDehG5fPNdfRt
-         hWYXOGd9+WsLDIoydsNID1ap21tO3xDJAr7dPVnHRtgaGWxboDcOa07vlXL2nqETeHGE
-         wsS8xhXRvwo8toiWZa+wW0F7gZ6acz9BjVa6P+79iAoM4hKV6DiyH1MXJHUz8iy+D0kP
-         psHg==
-X-Forwarded-Encrypted: i=1; AHgh+RqJT+Cgsw2ype0HsVbBpltTCPE3qj5pTfIcZtQra5wj0/hkuJlHQvdmonXUE9myWrmtRuWQojIgBqcfXkUdWg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzNEbIBbB/u43hl58esiUJ17q/+3FW3Pkj7lYxN6MSh9Zj9WIgR
-	JLkrSvJZ4Trunjw/w1A2tC8cYfIUVPNulI+ri722rJYclTJVgow4f9hW
-X-Gm-Gg: AfdE7cl15mF3tiTJC4pkzNCtQ8c2Jgk5dNMvug5JbrM9Tmr6aQp8LknKgBfmMSGDSV1
-	RMIHfI+iBVbBMMzKYHhxXrX+n+F/I0qyjB8CMFcVpeYcqbz0+L6m9s9SljO7nI2mMWgV2wIU3DT
-	8e3hnGDsPZElTOUV3raQv9Evk96XszKllQrUp4NF/vyawpwzZ5jzzW5VKzGDjRa2Ti9vFFhHwd2
-	HZeBAUE2TKw0okUejMQG9VsTetCN6aNK4j1kniDZj0gjj4/yooWsBbGw1HoBlo9XdKKTmoRSN70
-	a0htGKzDvXdDObuOX8YwkZNPmeNluIc+nbqpEcGw5TdCHOwPejkmLVf0K83fJyQuHnXHWvP3KQs
-	pILxGdefD2022oioTfPoLMB3qadCIPRxkIb6zdO+7SsZzMR6hNHB88m5P2UL0+UC3llZ4ijX6sF
-	uyvg==
-X-Received: by 2002:a05:600c:1908:b0:493:c566:7bd6 with SMTP id 5b1f17b1804b1-493f2b4baa1mr35892515e9.18.1783693814906;
-        Fri, 10 Jul 2026 07:30:14 -0700 (PDT)
-Received: from enyo ([2a0a:ef40:ea3:3f01:ca44:4cd5:cfae:605b])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-493f2d88698sm65315605e9.1.2026.07.10.07.30.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Jul 2026 07:30:14 -0700 (PDT)
-Date: Fri, 10 Jul 2026 15:30:12 +0100
-From: Dawid Olesinski <dawidro@gmail.com>
-To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, Herbert Xu
- <herbert@gondor.apana.org.au>, "David S . Miller" <davem@davemloft.net>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Corentin Labbe <clabbe@baylibre.com>,
- linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 3/4] arm64: dts: rockchip: Add crypto node to
- rk356x-base
-Message-ID: <20260710153012.0a840512@enyo>
-In-Reply-To: <4011768.FjKLVJYuhi@diego>
-References: <20260708175837.1718437-1-dawidro@gmail.com>
-	<20260708175837.1718437-4-dawidro@gmail.com>
-	<ak7jEYTAGgeDdi1W@venus>
-	<4011768.FjKLVJYuhi@diego>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1wiEMn-00000005J6x-2ijv;
+	Fri, 10 Jul 2026 16:46:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783701978;
+	bh=USg1ohYmbXwetA6mCilQyNqt0XA2ZTz/AW7yPMSqQVI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=BPBCBbZYENC+Wouw7CU5Sf9hgvmASQLVMZ2nv03HqQZugDCLM3+V901pjI9ZBWJRm
+	 arD/MSnoVnnEIMnI0A2WalhIhis7RLO4HqwZaX6SddNxeIMTG8fN3pweWwwnLFgSLZ
+	 zIlSZZQ8Rn0gFe4eoOUZgp/w9w6yQubg1NbfaEisqxN/NkoRyF7+lpJZziszzBpL8m
+	 BSv0KeRMJhRzQ7Gmx4s1SC22k7jibK48GzoB5BjQVbnNXqvck60KTNtzthIRj37Iou
+	 j7yLIbeUqZ9K/Olxuq+zO0jMrbcAmFPzpudLNw8aG3Wko7EFZAVxXSxENxhT1cndF5
+	 86DEhM5f3JqQg==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2975C17E0DFB;
+	Fri, 10 Jul 2026 18:46:18 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id DDA3048002C; Fri, 10 Jul 2026 18:46:17 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Fri, 10 Jul 2026 18:44:40 +0200
+Subject: [PATCH v12 02/36] phy: rockchip: usbdp: Update mode_change after
+ error handling
 MIME-Version: 1.0
+Message-Id: <20260710-rockchip-usbdp-cleanup-v12-2-8b41a9a9bef0@collabora.com>
+References: <20260710-rockchip-usbdp-cleanup-v12-0-8b41a9a9bef0@collabora.com>
+In-Reply-To: <20260710-rockchip-usbdp-cleanup-v12-0-8b41a9a9bef0@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Yubing Zhang <yubing.zhang@rock-chips.com>, 
+ Alexey Charkov <alchark@flipper.net>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Sashiko <sashiko-bot@kernel.org>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1789;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=USg1ohYmbXwetA6mCilQyNqt0XA2ZTz/AW7yPMSqQVI=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpRIdju07IdEp1//rgvPmjXk61w3jGZp4ZUE
+ mwdDgvj6wRYrYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqUSHYAAoJENju1/PI
+ O/qaBYsP/ilzIDfF3up8RAeZZbaNhUG3OVibfQYSz7HU89vRhIpYqljoOK1Dy4uGfphsRm+XpL5
+ Yv9W6QPu2gFKYSryx6+jH5PwGBSr78RIytaZjLUyp8k0Feri9PXxefcJ/tDZ/xofufXFzzs2xpE
+ 1ciwQJNQVDbNqfL+GhQdj5UIe0pV5KnlBk7DvISqG2X3N/J5HPqcQ5L31P4BVItE2Vc2flSph3G
+ rfFSUVRkSZAfY5qv3dk4Rookd0Gqk9sWiTANWpB/fI62f3VXpT2ItmHwqBPYp6iWZUkVXX50tIq
+ G6deBR2UrV7+L5egMLD9OSZAJ6I3vObSw1bOjodxrcDEUOpQZYHnqAUsmLxKPDEnQ0w9Y+slgLI
+ 8HthkbSQYu9qxoO2YviJeMIFX/ZzuYyU5wdBVfvi66hzHhqmrmCTac+3pbUj+iF4zyjEeeHcTB5
+ H6PPoaflhr7vw/Bokz6DJ8hJO9aXzX9rbEzJUBW654+pnD2cqNkg3rOtG2eKWNiV9rS/2FIlsRg
+ UvJcsfnAIcTV67t6aQkPAChXbLujRIzKwOJ2fTimvI/nRz/8OzbNWKrhKpzrBPuflw5afGIPR38
+ 5pJs5ZZfbCgGqYaLBxXAfuSHtw8EprXFZ9f3BpSCmqLZRABtRSck4kc3RYHyXsAwav8Tk7uWspL
+ SIWNlIo27EaUdsAzv+2gzzg==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_073017_658569_2DE24EEC 
-X-CRM114-Status: GOOD (  25.71  )
+X-CRM114-CacheID: sfid-20260710_094621_833323_040B8FC1 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,53 +101,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAwOSBKdWwgMjAyNiAwOTowNzoyMyArMDIwMApIZWlrbyBTdMO8Ym5lciA8aGVpa29A
-c250ZWNoLmRlPiB3cm90ZToKCj4gQW0gRG9ubmVyc3RhZywgOS4gSnVsaSAyMDI2LCAwMTo1Njox
-MCBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdAo+IHNjaHJpZWIgU2ViYXN0aWFuIFJlaWNo
-ZWw6Cj4gPiBIaSwKPiA+IAo+ID4gT24gV2VkLCBKdWwgMDgsIDIwMjYgYXQgMDY6NTg6MjRQTSAr
-MDEwMCwgRGF3aWQgT2xlc2luc2tpIHdyb3RlOiAgCj4gPiA+IEFkZCB0aGUgZGV2aWNlIHRyZWUg
-bm9kZSBmb3IgdGhlIFYyIGNyeXB0b2dyYXBoaWMgaGFyZHdhcmUKPiA+ID4gYWNjZWxlcmF0b3Ig
-b24gUkszNTZ4IFNvQ3MgKFJLMzU2NiwgUkszNTY4KS4KPiA+ID4gCj4gPiA+IFRoZSBJUCBibG9j
-ayBzaXRzIGluIHRoZSBub24tc2VjdXJlIHBlcmlwaGVyYWwgZG9tYWluLiBJdHMgdGhyZWUKPiA+
-ID4gY2xvY2tzIChjb3JlLCBhY2xrLCBoY2xrKSBhbmQgcmVzZXQgbGluZSBhcmUgYWNjZXNzaWJs
-ZSBkaXJlY3RseQo+ID4gPiB0aHJvdWdoIHRoZSBtYWluIG5vbi1zZWN1cmUgQ1JVLCBzbyBubyBm
-aXJtd2FyZSBpbnRlcm1lZGlhcnkgaXMKPiA+ID4gcmVxdWlyZWQuCj4gPiA+IAo+ID4gPiBUaGUg
-bm9kZSBpcyBkaXNhYmxlZCBieSBkZWZhdWx0OyBib2FyZCBmaWxlcyB0aGF0IHdpc2ggdG8gdXNl
-Cj4gPiA+IGhhcmR3YXJlIGNyeXB0byBvZmZsb2FkIG11c3QgZW5hYmxlIGl0LiAgCj4gPiAKPiA+
-IFdoeSBpcyBpdCBkaXNhYmxlZCBieSBkZWZhdWx0PyBJdCBkb2Vzbid0IHNlZW0gdG8gYmUgYm9h
-cmQgc3BlY2lmaWMKPiA+IGF0IGFsbCB0byBtZSAodGhlIHNhbWUgcXVlc3Rpb24gYXBwbGllcyB0
-byB0aGUgUkszNTg4IERUKS4gIAo+IAo+IFlvdSdyZSBkZWZpbml0bHkgcmlnaHQgYWJvdXQgdGhh
-dCAuLi4gdGhlcmUgYXJlIG5vIGJvYXJkIHNwZWNpZmljCj4gcmVzb3VyY2VzIG5lZWRlZCwgc28g
-RGF3aWQgcGxlYXNlIGRyb3AgdGhlIHN0YXR1cyBmcm9tIGJvdGggbm9kZXMuCj4gCj4gCj4gSGVp
-a28KPiAKCkknbGwgZHJvcCB0aGUgYHN0YXR1cyA9ICJkaXNhYmxlZCI7YCAKbGluZXMgZnJvbSBi
-b3RoIHRoZSBSSzM1NnggYW5kIFJLMzU4OCBkZXZpY2UgdHJlZXMgaW4gdjMuCgpUaGFua3MgZm9y
-IHRoZSByZXZpZXchCgpEYXdpZAoKPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IERhd2lkIE9s
-ZXNpbnNraSA8ZGF3aWRyb0BnbWFpbC5jb20+Cj4gPiA+IC0tLQo+ID4gPiAgYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazM1NngtYmFzZS5kdHNpIHwgMTIgKysrKysrKysrKysrCj4gPiA+
-ICAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygrKQo+ID4gPiAKPiA+ID4gZGlmZiAtLWdp
-dCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTZ4LWJhc2UuZHRzaQo+ID4gPiBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTZ4LWJhc2UuZHRzaSBpbmRleAo+ID4g
-PiBhNTgzMjg5NWJkMzkuLjlkZTdlNzQ4N2NhMSAxMDA2NDQgLS0tCj4gPiA+IGEvYXJjaC9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NngtYmFzZS5kdHNpICsrKwo+ID4gPiBiL2FyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTZ4LWJhc2UuZHRzaSBAQCAtMTExMiw2Cj4gPiA+ICsx
-MTEyLDE4IEBAIHNkaGNpOiBtbWNAZmUzMTAwMDAgeyBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ID4g
-PiAgCX07Cj4gPiA+ICAKPiA+ID4gKwljcnlwdG86IGNyeXB0b0BmZTM4MDAwMCB7Cj4gPiA+ICsJ
-CWNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszNTY4LWNyeXB0byI7Cj4gPiA+ICsJCXJlZyA9IDww
-eDAgMHhmZTM4MDAwMCAweDAgMHgyMDAwPjsKPiA+ID4gKwkJaW50ZXJydXB0cyA9IDxHSUNfU1BJ
-IDQgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gPiA+ICsJCWNsb2NrcyA9IDwmY3J1IENMS19DUllQ
-VE9fTlNfQ09SRT4sIDwmY3J1Cj4gPiA+IEFDTEtfQ1JZUFRPX05TPiwKPiA+ID4gKwkJCSA8JmNy
-dSBIQ0xLX0NSWVBUT19OUz47Cj4gPiA+ICsJCWNsb2NrLW5hbWVzID0gImNvcmUiLCAiYWNsayIs
-ICJoY2xrIjsKPiA+ID4gKwkJcmVzZXRzID0gPCZjcnUgU1JTVF9DUllQVE9fTlNfQ09SRT47Cj4g
-PiA+ICsJCXJlc2V0LW5hbWVzID0gImNvcmUiOwo+ID4gPiArCQlzdGF0dXMgPSAiZGlzYWJsZWQi
-Owo+ID4gPiArCX07Cj4gPiA+ICsKPiA+ID4gIAkvKgo+ID4gPiAgCSAqIFRlc3Rpbmcgc2hvd2Vk
-IHRoYXQgdGhlIEhXUk5HIGZvdW5kIGluIFJLMzU2Ngo+ID4gPiBwcm9kdWNlcyB1bmFjY2VwdGFi
-bHkKPiA+ID4gIAkgKiBsb3cgcXVhbGl0eSBvZiByYW5kb20gZGF0YSwgc28gdGhlIEhXUk5HIGlz
-bid0Cj4gPiA+IGVuYWJsZWQgZm9yIGFsbCBSSzM1NnggIAo+ID4gICAKPiAKPiAKPiAKPiAKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+If rk_udphy_init() or rk_udphy_setup() fails, the reinit will not be
+tried again. Fix this by only updating the variable after all potential
+errors have been handled.
+
+Note, that no errors have been seen on real hardware and failures would
+most likely be fatal and require at least a full reboot as the function
+already asserts the PHY reset lines. So this is more of a theoretical
+issue.
+
+Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://lore.kernel.org/linux-phy/20260612163835.8D5471F000E9@smtp.kernel.org/
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index fba35510d88c..a5ffdf7a6e76 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -1000,15 +1000,14 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
+ 	}
+ 
+ 	if (udphy->status == UDPHY_MODE_NONE) {
+-		udphy->mode_change = false;
+ 		ret = rk_udphy_setup(udphy);
+ 		if (ret)
+ 			return ret;
+ 
+ 		if (udphy->mode & UDPHY_MODE_USB)
+ 			rk_udphy_u3_port_disable(udphy, false);
+-	} else if (udphy->mode_change) {
+ 		udphy->mode_change = false;
++	} else if (udphy->mode_change) {
+ 		udphy->status = UDPHY_MODE_NONE;
+ 		if (udphy->mode == UDPHY_MODE_DP)
+ 			rk_udphy_u3_port_disable(udphy, true);
+@@ -1017,6 +1016,7 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
+ 		ret = rk_udphy_setup(udphy);
+ 		if (ret)
+ 			return ret;
++		udphy->mode_change = false;
+ 	}
+ 
+ 	udphy->status |= mode;
+
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
