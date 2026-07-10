@@ -4,78 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36692C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 19:26:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D58A0C43458
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jul 2026 06:05:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L9H68fYiNILN0CCSeunp++LFnFes9QkuMTF6P+r9QuI=; b=UI6v4fqlnJ67FD
-	S6CU0K7CzaajI+lnk2Frd6DnjZLMxCIfONOYlgBCQu6TMmGs5+mYNUdWbMo5EUhl6zM6dIhW5cp3U
-	uaacH4/pmcNzPdjTy7MnncwvcGbZdjYvS3/H6x5MP1/Ez45S79U/47V2wZIJu4GQTT2eGxnkCbuPe
-	s5UGiOxVOOkG+GvfWupWhxFVWxbhsau42WotfrJMNlKzR+yNUOCmxI3BU6VP5HIRYla/iEVE9i1+j
-	1A8sAO7CV1J5Rs/I1HRDa8Pk9h01Eell8cUVB0Xde0UGN1mc/bm5gmUEra+4yAdWHH0HyEKIIc4wW
-	cEyRFNwRZZHvhI/DW0kg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=U4ry/zWWZ8tPMXNku7DOzCyYZb/rezQhIIIbvoVOCC0=; b=keDS8uGqhvSUeZ
+	/VBDVlqmCd1tkuczknMaous9OSzdO84CPjPilhY893rD06FlW/J58BHTeN8czVMkgMGwXNcOtHDnm
+	nlFQMHN87qN31hyIEtVnhGK16iIyoAHbgv4R+4nOJ94xdYEh90cXvB4d4rnIc0lTQrVzfgZmLuJ8u
+	nQUtCgjGmAQSbxgbl31i1jPj5mXt4T3iM3PehbeRT1ZkLAJKA9i40Mdssbd200YCEfzvVXWrO9nRm
+	PiTue/47ZI3UWtamn1PJJ+GDEp+QekX6hDCBVbRq/ot1tdEROs+8YI8Pc6R5KFonXRhLyVLa0Euaj
+	Ge7wozFqgAPlRxQWIR6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whuNl-00000003Shh-0Dj3;
-	Thu, 09 Jul 2026 19:26:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wi4MY-00000004F2M-0OjU;
+	Fri, 10 Jul 2026 06:05:26 +0000
+Received: from mail-pj2-x01.google.com ([2607:f8b0:4864:39::1])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whuNi-00000003Sh0-0c7c;
-	Thu, 09 Jul 2026 19:25:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783625155;
-	bh=379VPeZ7FJzRIPM44QI1fIbrI6BdI/1sSIoGX7SU7uo=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=NDtsAi6SFCzsfusBVFEaLQNXauQq2QA860cF7SdgYg6CQFvJCjh3Pb61sHTlHGAk+
-	 iUQ9COCxg0dEhW22QH8SfKyNEMq297wq2UoqbXgOB4ZO0TY8adghP2LEzM3xBunKzr
-	 Z7QWy1FosslOf5ZOClGxaNhftc4hnlP8unMaT3uy7/+BC68Ro6ES8YnEkPuPogyRX8
-	 bFqq0uByFNvoOdISf2mmFTEKDnCMXU7NT4lKXHN/bEUQy2CcTqeeHiz3NzxXw2T2/l
-	 nXUOYUlnvj3IpQYUemYOeE3vdu+QLHC2VEK2hRE6juQMwMFc3NfQmy94jsV04f2cZK
-	 xi6Yb5JjA4qVQ==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ADB5F17E0177;
-	Thu, 09 Jul 2026 21:25:54 +0200 (CEST)
-Message-ID: <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
-Date: Thu, 9 Jul 2026 22:25:54 +0300
+	id 1wi4MU-00000004F0f-0CCl
+	for linux-rockchip@lists.infradead.org;
+	Fri, 10 Jul 2026 06:05:24 +0000
+Received: by mail-pj2-x01.google.com with SMTP id d9443c01a7336-2ce7ac92dfcso5324485ad.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 09 Jul 2026 23:05:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783663521; x=1784268321; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=pQgPhs+dZcfRNPuJReU9TiVxwha1e01HcHWKyyYl0NE=;
+        b=VRgGW+szlAy3DGqKXRPo+KCYgTdX0SAGe4VOcpVIQnGJwa1S/TqFWsDOXm5FvupD87
+         Q/v9UtMO4iJGxlH4V2oi8i0HLqBBzLXxOjjXOIUQWkB9CIMV5rNVv709eRmQ5Xos6vuN
+         E4AU88swa38D6Kz/rocMOGdMZlXc2DQdqNgc4tFdE1Chq9rTEd3GavVPbbL82F14ayxR
+         PNIOQ8ONYtUEYCNu89g4RxFk9vkSL00TGDvHDhIlpRmUDVKi+4Bd9aiklqrpta+URQfe
+         wH/B/8fjdxcyQYqwbzFxLLxat2RACElkEku6rTSJeZW4yBEPNcyOer1Ht93saN9FVWPy
+         ib0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783663521; x=1784268321;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=pQgPhs+dZcfRNPuJReU9TiVxwha1e01HcHWKyyYl0NE=;
+        b=LuGQoWPcPNS/qjQLiamIQJnEuYO/JuRYob+jS78bmJwHb+Sth3r9xSUtnuKwN60XYW
+         UmjL0CGuBpQpOQnHvXEb/26Ui8yJGdFk8xYzoviNR8Qre4ff9iboPrbqSXLMfQo6Qnyv
+         2MPLxDrF4Q8gUVqB26ZjkZfVPZ6yTQ0EpGMteSWCcEuD35vTvhsHqDPmokbsIXG1xGj7
+         H0wPdSbiWKrWdAEZ8yqjboMdB9fyEx0nxS9WjKM99+8yPIUtmkMWOP2LKPl0ZkFZ0NtJ
+         kEDn0izqQD7HD4lbkYpD6k/YQODbDKjXKgnvfUcAdazQc9w0pzzPqhFVi+iCj5k4a+UI
+         jQcA==
+X-Forwarded-Encrypted: i=1; AHgh+RrjU/BzJSbQrMWjYtWmLTC1GFuFPuKaCew5/A0HzRe0mT4IiN40e2nWfeXQ7+K5g63CeknfCTH4G3LeuiVDJQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyBcpdrSROe+XHTfrZNSfq65IpIIJXkvS6cUvlDhQG5ByKAPuXb
+	RRl6Y87wLVkBqHviAnvip4JyOjnv6cLdxaPFKuSP9is8cFR5gVW+LE51
+X-Gm-Gg: AfdE7cnBR0it269mFLdFZa1WPgHMH7MYE6ArUWt6EKqYXMiDwIF+iWhYaz1Jzk5YjA3
+	uVSJa9/XE/zlBab4vYVqeqUkz3qn9tmzFUjGDJoJVrvIOXkTvJ8aB6cBDasd1wL5Q/BYJIn/GWf
+	FjXKh/rFN3Whl7GqejJy7Uj2N7JP5Ul9TrQWetTxJUtU+Z/yKWYuFkWBQ1oObWY6sxh3YtTqh1V
+	cRLmWfD64Aebca3veaj7rBJbORMNXfRMLsMflK3Q9ti4o+FPJQfNWHgkCf/3qRk7WhyEE90HdDh
+	IOAljksXHZn5/U8c9SiwZ4e6Bd60+YvSYz65bidqwTZyKarC74Xha/ehCgI5rNvFNOrsRlwrik8
+	IQdkTlnvd8ft+Z83Lzjy0VkuYqGwL2Ns8ZCB4dmUSP/Q0uv/kd3P57GcBUinNbKA58jpy7FsUoB
+	vU+s4uim2FVyL41Girw9QroslS8oYfa6Y155Y4wY2hRk8HdCYV6c+BSNX9VsdyOh/vGpDvx18=
+X-Received: by 2002:a17:903:1b0f:b0:2c9:c95e:5836 with SMTP id d9443c01a7336-2ccea2a5748mr105552515ad.5.1783663520722;
+        Thu, 09 Jul 2026 23:05:20 -0700 (PDT)
+Received: from ubuntu-gnu-linux-24-04-3.hub ([2407:7000:af23:3e00:61b7:bd9d:8d64:1bac])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9bdb76asm56314635ad.12.2026.07.09.23.05.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Jul 2026 23:05:19 -0700 (PDT)
+From: Jiaxing Hu <huhuvmb88@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>
+Cc: Robin Murphy <robin.murphy@arm.com>,
+	iommu@lists.linux.dev,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] iommu/rockchip: implement .flush_iotlb_all
+Date: Fri, 10 Jul 2026 18:05:13 +1200
+Message-ID: <20260710060513.863714-1-huhuvmb88@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
- <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
- <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
-Content-Language: en-US
-In-Reply-To: <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_122558_385920_26ED4491 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20260709_230522_107746_147C10E6 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,41 +101,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/3/26 11:54 PM, Cristian Ciocaltea wrote:
-> On 7/3/26 5:34 PM, Dmitry Baryshkov wrote:
->> On Thu, Jul 02, 2026 at 05:46:17PM +0300, Cristian Ciocaltea wrote:
->>> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
->>>
->>> - A scrambler_supported flag to indicate whether the source supports the
->>>   scrambling capability, in which case the newly introduced
->>>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_funcs
->>>   are mandatory
->>
->> Do we need a flag? What would it mean if the flag is set, but the
->> callbacks are not? Can we drop the flag and use the presence of the
->> callbacks as a way to identify that scrambler is enabled?
-> 
-> The flag is intended to be set only within drmm_connector_hdmi_init_with_caps()
-> when drivers advertise HDMI 2.x capability, in which case it also ensures the
-> callbacks are provided.  
-> 
-> We could drop the flag and instead have the init helper clear the callbacks if
-> they were provided for HDMI 1.x.  This might slightly reduce code readability,
-> as it relies on checking the presence of individual callbacks - especially since
-> we plan to extend this further with HDMI 2.1 support, providing four or five
-> additional FRL-specific callbacks.
+rk_iommu invalidates the IOTLB synchronously in .unmap (via
+rk_iommu_zap_iova), so it stays consistent without a deferred .iotlb_sync
+and does not advertise IOMMU_CAP_DEFERRED_FLUSH.
 
-I tried to replace the flag with a helper that checks the presence of (one of)
-the callbacks, but it's not straightforward to unset those for non-HDMI 2.x
-cases since the hdmi_funcs argument is immutable.
+It never implemented the optional .flush_iotlb_all op, though, and
+iommu_flush_iotlb_all() is a no-op when that op is absent -- so on Rockchip
+a driver that owns an rk_iommu domain and calls it to flush the whole
+domain's TLB (e.g. before reusing a mapping, without unmapping it) gets
+nothing, even though the hardware can do it: rk_iommu already issues
+ZAP_CACHE for range shootdowns.
 
-Also, rejecting that use case is less than ideal, since we would restrict
-reusing the struct instance, e.g. to support HW revisions with varying
-scrambling capabilities.
+Implement it with that same primitive: ZAP_CACHE every bank of every IOMMU
+on the domain, under the runtime-PM + clk guard already used by
+rk_iommu_zap_iova().
 
-Therefore, I'd keep the flag for now.
+Found while bringing up an out-of-tree RK3576 NPU (accel/rocket) driver
+that flushes before each submit; on Rockchip that flush did nothing.
 
-Cristian
+Signed-off-by: Jiaxing Hu <huhuvmb88@gmail.com>
+---
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1202,6 +1202,30 @@
+ 	return 0;
+ }
+ 
++/* shootdown the entire tlb on all iommus using this domain */
++static void rk_iommu_flush_iotlb_all(struct iommu_domain *domain)
++{
++	struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
++	struct list_head *pos;
++	unsigned long flags;
++
++	spin_lock_irqsave(&rk_domain->iommus_lock, flags);
++	list_for_each(pos, &rk_domain->iommus) {
++		struct rk_iommu *iommu = list_entry(pos, struct rk_iommu, node);
++		int ret = pm_runtime_get_if_in_use(iommu->dev);
++
++		if (WARN_ON_ONCE(ret < 0))
++			continue;
++		if (ret) {
++			WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks));
++			rk_iommu_command(iommu, RK_MMU_CMD_ZAP_CACHE);
++			clk_bulk_disable(iommu->num_clocks, iommu->clocks);
++			pm_runtime_put(iommu->dev);
++		}
++	}
++	spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
++}
++
+ static const struct iommu_ops rk_iommu_ops = {
+ 	.identity_domain = &rk_identity_domain,
+ 	.domain_alloc_paging = rk_iommu_domain_alloc_paging,
+@@ -1214,6 +1245,7 @@
+ 		.map_pages	= rk_iommu_map,
+ 		.unmap_pages	= rk_iommu_unmap,
+ 		.iova_to_phys	= rk_iommu_iova_to_phys,
++		.flush_iotlb_all = rk_iommu_flush_iotlb_all,
+ 		.free		= rk_iommu_domain_free,
+ 	}
+ };
 
 _______________________________________________
 Linux-rockchip mailing list
