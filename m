@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14837C44507
-	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jul 2026 19:29:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29EBFC43458
+	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jul 2026 19:29:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=auNk+fspq8FWRy2mIE5SEUxPOpgUm7PtK2x8hiHizzA=; b=LgBGtpiMUA3Y/X
-	mlH8DNxfyA996A+CTs2aQh6nD763gJEVLevuT6Z33Vz4LMmUMt/SIs/b1YsVDTv+7b8pNAGdkXIw/
-	q+uWg+NWrPpO46/UGD4eUmoW5luiEyh1WIVN7DEAWpHH9C1OvqCsrhRCaJwbhgNIzYesBcls6am/L
-	fGfGj6IvyOJBNyFzdBG1GUJqcpMOZaK13KW1Igv3l28bjsXH7AR0UBc6soZbDl3kO0MhIc1OMy0op
-	aGxGOKrmnFH9UDemjmzL2dP4CRNoeTq9+1AVPfOYvHDc7O5mkZyEbuyrPR24XcQI21rCLcM3ML7EN
-	YHp5TiVjH3XLwO/f5Oow==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=y9pVLStmqaRbdczSrYTGNQ+jdI2WFFM3mncCQGfOQwI=; b=afhwl3ypQfNNkz
+	BFVRpMpb4NaoK66ktP1/g4YShqlYjHzCiwTGDHYJkJ4/+DWUofulHNLeb87rbs0bXy+3b+0SYZniN
+	hU7LozDkyDqD3ETmCmKVnhASswUdwlmHkT3mmJ/VaUKFhouTjlzweXIas89D1YTt8S0u/FB6KgimB
+	NPxsVqHmbh1f+gXWCkbz5quEAC+6Lt7S6MdmxQ45uLFuxspWZ1Cq0ez7XwjZHJDMhEeUPMcwaSen1
+	QAAnTaCm6gGb/3k8XFLfrujNsfPY/puYU5jlzXrwuLkKXyG4vv/HRN0mWDLuRQlDvwA1WRlCTPny/
+	F0YUEbYujXZUYFzYmUxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1widNc-00000006nyY-2XON;
-	Sat, 11 Jul 2026 19:28:52 +0000
-Received: from fout-b1-smtp.messagingengine.com ([202.12.124.144])
+	id 1widNn-00000006o4z-0GuH;
+	Sat, 11 Jul 2026 19:29:03 +0000
+Received: from fhigh-b7-smtp.messagingengine.com ([202.12.124.158])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1widNZ-00000006nxW-1hwA;
-	Sat, 11 Jul 2026 19:28:51 +0000
+	id 1widNf-00000006nzN-340E;
+	Sat, 11 Jul 2026 19:28:58 +0000
 Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
-	by mailfout.stl.internal (Postfix) with ESMTP id 494D81D00082;
-	Sat, 11 Jul 2026 15:28:45 -0400 (EDT)
+	by mailfhigh.stl.internal (Postfix) with ESMTP id D71117A00FF;
+	Sat, 11 Jul 2026 15:28:54 -0400 (EDT)
 Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-05.internal (MEProxy); Sat, 11 Jul 2026 15:28:45 -0400
+  by phl-compute-05.internal (MEProxy); Sat, 11 Jul 2026 15:28:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
 	cc:cc:content-transfer-encoding:content-type:date:date:from:from
-	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
-	:to; s=fm3; t=1783798125; x=1783884525; bh=Bxi0tIJBTHMG2GLAxKRyz
-	HlO5PVp8JXAquIokUPhC7g=; b=jlW6cSOkha6VOPPLcr+2rZNVITVDfT+jzJ7kF
-	KOG7RosscJVNmqSbhlcuF0ejGauWbOXgQ20gp1N2/2/WtSohL+T377beSu+YgMUy
-	7w91vuLfRobfU/E+TZjVmCkdajiczhPX3b3vbwwnUuneKYqYRa9gSGQLys/HpcvN
-	XDgz3ifUmd2It8VMrY8D5Z9JSDVDeTcasld6CZmkidTi/e+MusW0Bwac692wLTeE
-	JYTcVMqAetHH3kknD7bUv6VRa54KWlIgHWU3S2gY7vsbl1so4hFpApHhWpd/YWd3
-	qKho8nUH2dSDq5iXKjlA1rhlrrIbi0+7YKinJ3YUWcgWL2l2w==
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm3; t=1783798134; x=
+	1783884534; bh=aX2RnisGLr4E8o5po1MDvWbrusnd1W84soVanA/bOJY=; b=V
+	xj7jxrA68pMEZQS/nrdj6ixSTdxR39PPHFZcTBEgcs3wQMn4M1MRFqROemEJ/Djr
+	Oyuy7yD4J1koJ4qDaP8awcdFErOZ0cRgLmz1+Bsd2OnEwzRx3cXT3h4g4WzM/70q
+	VvWiao+8/yE5dXEFF7Fwo44/CapcGTpCdYv9gk4CZ8llanljmuhB8qrmzPAbErZa
+	mDCvzAexy3Dco6fYP+oR4X0BLrRgAYa/eV7yrrwQPAZdq0jgVK+vxbRxUta+kcKT
+	UMYU1cGePlk0o/lX5kABj9sfxHKMMu5PELE35sulnWeBOtCrMmVxNPt73P8TA76B
+	IukLpEZTQA6b0CfPnC4ag==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1783798125; x=1783884525; bh=Bxi0tIJBTHMG2GLAxKRyzHlO5PVp8JXAquI
-	okUPhC7g=; b=fJa2ZGirBrrn9K2GLajyPQLQ6FNT5ueXJGemZ7UdGiyqQeGvsn7
-	m3AwiYvaLIOlsqKzy4e4dygAJxpxObvBXub/MWkYJVrMYBfE5hT7Q31cYag10KrB
-	oIXnTHtUoX4yoLnKWY2RAWkfGoclyKp2HPG40mxuX6xMCUg1Rn316STx6iSe6zue
-	sP4d5LROzUJlpWlP87r5XOH7SGP7MUbI6xU+BEad+ZtaS4lhu0Bx5EUHWnE/Dgnz
-	luO8//8SPb4smVQqEKjXAYCmZDWQe85b08gRuhrpfvaPHcsu0P5fZHwnDneCKHhz
-	IzqUdBfrsl6c65psi7MFp9n8AZdKXkjY6pQ==
-X-ME-Sender: <xms:bJlSalTYXKJqK1g5XO3JLIHVf5FYTjOsB5gwoktGXOqzCS-fK6pZFQ>
-    <xme:bJlSalQzwTbj0pvmxKosUvPvaCiWhsVo1uULTFA-JLi-l4tbgxPe525_pbaLv70EM
-    L5cvDkZqmrehOLPWkZtt-mdPPPBYurjo2D4AHoRiCTmhhWBIAHYCcs>
-X-ME-Received: <xmr:bJlSao1duqa0pc02U8In3G1Vj81r9BYrTNOtPRPbjPGQhmj1GpbwAWaBS46SGhsIspJz2xfhjH1dWMKAymvHHwjFHa1wNf-wC0Pa8Sso5fHiiZ4l0EE>
-X-ME-Proxy-Cause: dmFkZTEvfD0G2LPRWixeRxfokGmUFKLCtPqKeNMCJTyU24YvzEGRIiEmLZ5hUoHzQ6zhNA
-    5fDLipFLSSvG9p2UkDpP5bP5rv0UC3te91u2jXc2PdCYjxdCfGu0IwkIW28yHlz9syQBSM
-    TN5Ml5t/q4T9s5EKVFAzJD2vDheQpT0DgEkLBxeIcXuvYLoimT71nTz4DGYMViNAL3IwXA
-    ezL01PC/0NiBm0RwqmFOq6c3dZbJRnzOOE816EjPHtr/D8OmoaEGd/qknhmy04IPTYGxTF
-    47AjcxS2usfbM9SehLr83VVlJL6CvL1PoK3H+8lYy9w43ul9YEdwydSIk0KmOp3rpi9ylt
-    GF50zPgstQWUnwZEzACRcDdLpdWX+KjxQkro0D8rgUJTpzFjOd//AzM1tOaF5BfA21Rpbb
-    AgjX2BHxw7JZKqD/4bwTBQUFLBt8O+UlFbRo8eoVjbdxklZPlH1k0FPPvKPSUs1bPIN4ZX
-    I5hPx4CzIXMJ5ZX/5zU9wUm3CfpTG4C/qOMo2xirMAOTdvZVmjYHvJuyyI4Tb1jTWtqbee
-    hk1UUojKOf22o/Q6E62tdb2zAXQ2cTepQ3djT6rexaNlBJzV1iM6uh8f8PUzUMHF+aN9tB
-    vu3nq4MLRebBtrVMo37D1rpVa5+B/mPrnwJGYSScCDdtK9AzVWNhq34AGwFg
-X-ME-Proxy: <xmx:bJlSavzODP9cIbNRgWg4b0iBmT2AoFzL9HMM1KaMwAzDys1SoQBzVQ>
-    <xmx:bJlSakxsqOxrnMvL8J1IAFRhLpisRWAvDF6ExoZkhqssMvoNWUWp7g>
-    <xmx:bJlSar9X2HA073WcSt5fdvKlHclKcOfEpUaljHbtudgUkfT_Jr0SWw>
-    <xmx:bJlSau9DfrijqEGZJ4762WFbTLmtri91-m5SKbrvnpz1qiPtxsm3Qw>
-    <xmx:bZlSaqTe4hhmeU8lSL7p3RbOODBoJOxLUE5f8FwsjzhvlZ8KSEZNWxSQ>
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm2; t=1783798134; x=1783884534; bh=a
+	X2RnisGLr4E8o5po1MDvWbrusnd1W84soVanA/bOJY=; b=CkKFC1uTJiRZ5De/2
+	gGQbJ9veGg+/s+3thriIwhNy42PY0AN9GtYHDdsgZm8R48ivGyxJGa3qgafsWmWy
+	Cxg+ydAMYeFuOWqhLA+pzMxLkeO90aEHkRCeZyxEZl4LXuO6q80SzsFWY0i6Fo7k
+	+vFtSyrT/5AJugs+up+3yybV7qc+s8h/jBIV7DixiFwVElnNV9suaoZfLNa8Trs8
+	9ciEIel7KGV1D844rP1knnJOZ1JV4KW0MJSXB7zyMKN900EALXua1YDLwtaXt7lT
+	fIwg+RGfCvFoe+T1YoWgMnL7854gi2TlykVchJsJC4UAwTGzM40sCGi9yYJUwIoW
+	xTfxQ==
+X-ME-Sender: <xms:dplSaiK1eaQc_MLHqtf8kaEoV8HsZgcSZGxrVjH5vMCqnHEUMVTOqA>
+    <xme:dplSagpLVD1YKbjxQmzme0tbUdELScBOudnRS8VWJ-Gqeh562QUL79jCdtZEFuCXe
+    RBvA07KcKkHnHMBRjlR5B4asSQNcR92tyQbDGzTLJwBd5_CBn0sqA>
+X-ME-Received: <xmr:dplSagv6cEps1stkWy8-ZQ-2_iokHRe5Dr8bS7iN2yQRKPI6nzMso9lBNM44bLSscZ6S73zQtIJ0AjaDNVwM4uHPX1syv94NITIz_SnPiRJ-bAuIqiE>
+X-ME-Proxy-Cause: dmFkZTEepNtIgoM1Fyk7GBGw4gbWyEgW9yAi38A4eO2Ck62KjI7ty8TSEaBFWZPUUJh1GJ
+    nAzRXvy7afFiqmvvk6ftLKBtaqsODmPKwz5QvNVIqgGT0HeIi0mEvtLmMDW+9YXxWgw8+o
+    oXCy2H91fxLVFsCUCqZYrJkVfQpyqtobi5FF8rZmnUuvbsLtUDdFkWgnb5YobqY8eJYnQI
+    f/hck29y/TLcFpj9sZBoi5tSSWpZsL29DU/L3Azo1pXGNMPTEoNOog7Q1KA4IguljVS538
+    G+HygWMF+jZcX2RkqjixM3gA6QTWG2eM7QhOEWAkBEcAAEt31NpmlBrlHYLV7LDSfLCDR5
+    3nu4W1A9NUrS8EcSxP3bN11DhXdVbkwDERCWEqGpwiXJzLzJQ+DB9japMhLDoSW86xSb4S
+    b2FvELtenVBnSax79yDQTPaY89IEGVI31byxELy1DJwBakqBiKm6wk3rmgJvNJ+2NbVnJJ
+    7zZCNFVdMOl3O97EO65W/6zfL8hPf19pPf0rCAeOX+NG8ve0hafa+N2n0jZwaSd1GoegDA
+    Q9K1c6wiRjjmHSC6cD6FEIPWH47NfbAw/wCM7E7f4VX5Se6efKn4G5opCYTP9r0HW5tWUO
+    AgIU+UsI63UuYG7XY+mHu1HFkePiS2gXO+haM5NtDl5IaydFbE6YYmXN6b7g
+X-ME-Proxy: <xmx:dplSaqKkjkwmwhWhChmvIh8KvkjFoSUwRmSB7m8k7y9kLUm3ETdA-A>
+    <xmx:dplSavqH63vAJCDggmGp3PXxA0mBwINX9pSztEY66STm1Zwzh_8GHg>
+    <xmx:dplSatV0sSPARW4pP1HEkGb9f3IRrBda7N_-cWeeTsIJ8bxiIBbvDQ>
+    <xmx:dplSak1qWdPQcv3IfOI2Z0bi5VqCRDJXKZwt7slM-vEXnacz7QMSeQ>
+    <xmx:dplSaqPvImcqBAD9mV7pbO3cI-r8BB4BtAxyADXu-AZ8j3EKczPPWeiD>
 Feedback-ID: i0ad843c9:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 11 Jul 2026 15:28:43 -0400 (EDT)
+ 11 Jul 2026 15:28:53 -0400 (EDT)
 From: Samuel Holland <samuel@sholland.org>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -88,14 +90,17 @@ Cc: linux-rockchip@lists.infradead.org,
 	Pavel Machek <pavel@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	Samuel Holland <samuel@sholland.org>
-Subject: [PATCH 0/4] Add devicetree for LincPlus LincStation E1
-Date: Sat, 11 Jul 2026 14:28:24 -0500
-Message-ID: <20260711192842.845048-1-samuel@sholland.org>
+Subject: [PATCH 3/4] dt-bindings: arm: rockchip: Add LincStation E1
+Date: Sat, 11 Jul 2026 14:28:27 -0500
+Message-ID: <20260711192842.845048-4-samuel@sholland.org>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260711192842.845048-1-samuel@sholland.org>
+References: <20260711192842.845048-1-samuel@sholland.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260711_122849_798216_FA23E8A5 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20260711_122855_833747_25F886C8 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,41 +117,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds a binding and devicetree for the LincStation E1 NAS.
-As described in the message for patch 3, it is not entirely clear what
-the DTS file name and board compatible string should be, so for now I
-went with the marketing name for the file and the OEM model number for
-the compatible string. This mostly matches the vendor firmware.
+LincStation E1 is an entry-level NAS device powered by the RK3568B2 SoC
+with two 3.5" HDD slots and two m.2 2280 slots for SSDs. It is marketed
+under the LincPlus[1] brand, but the OEM appears to be Techvision
+Intelligent Technology Co., Ltd[2]. The OEM model number is TVD8322R,
+which is referenced by the vendor devicetree, a sticker on the board,
+and a design patent (CN309443154S) matching the system chassis.
 
-The vendor software provides quite limited access, so the unit must be
-disassembled and the board removed to access the UART test points
-(opposite from the power button; Ctrl+C to interrupt the vendor U-Boot)
-or the eMMC traces to force the SoC into maskrom mode. The vendor
-firmware uses rk3568_ddr_1056MHz_v1.25.bin from rkbin for DRAM init.
-Mainline U-Boot 2026.07 works with no code changes when configured with
-this devicetree. It is recommended to enable the fan as early as
-possible (e.g. `CONFIG_PREBOOT="pwm enable 0 0"`).
+Link: https://www.lincplustech.com/products/lincstation-e1-network-attached-storage.html [1]
+Link: https://cn.techvision.com.cn [2]
+Signed-off-by: Samuel Holland <samuel@sholland.org>
+---
 
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Samuel Holland (4):
-  dt-bindings: leds: Document "gpio" trigger
-  dt-bindings: vendor-prefixes: Add techvision
-  dt-bindings: arm: rockchip: Add LincStation E1
-  arm64: dts: rockchip: Add LincStation E1
-
- .../devicetree/bindings/arm/rockchip.yaml     |    5 +
- .../devicetree/bindings/leds/common.yaml      |    2 +
- .../devicetree/bindings/vendor-prefixes.yaml  |    2 +
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../dts/rockchip/rk3568-lincstation-e1.dts    | 1004 +++++++++++++++++
- 5 files changed, 1014 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-lincstation-e1.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 1a9dde18626d..ca2e4327ac3f 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -779,6 +779,11 @@ properties:
+           - const: lckfb,tspi-rk3566
+           - const: rockchip,rk3566
+ 
++      - description: LincPlus LincStation E1
++        items:
++          - const: techvision,tvd8322r
++          - const: rockchip,rk3568
++
+       - description: LinkEase EasePi R1
+         items:
+           - const: linkease,easepi-r1
 -- 
 2.54.0
 
-base-commit: 8cdeaa50eae8dad34885515f62559ee83e7e8dda
-branch: up/lincstation-e1
 
 _______________________________________________
 Linux-rockchip mailing list
