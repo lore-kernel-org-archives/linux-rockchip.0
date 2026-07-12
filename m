@@ -4,68 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6C2AC43458
-	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Jul 2026 18:26:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B678C43458
+	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Jul 2026 20:34:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PF6uOvCgdniWGPInW8LBvIKpgEd4bUkUsZO8O21uIGU=; b=SxNGZEDxu9p5Eh
-	yDNXOlX9dF9/Kl7KXU41gsrZ42024xqONFBFY+QhZDxd4P6hMuB4BFAIFhuAdQxAQ/Q267Wq89cBY
-	bDcTirulCHfLeAxEEkXQnRx1ujUKJPcRnr+e1shDpCiCacFTWEJ9/YaRnZU/YSk8c/aikC2DXC89C
-	jCjhzPT+27fzXOezLF5zv7mGWdCeqh/yxJE2ojgj6x+c98wDEkz+M2ID+/YtEzfjxGX8jHWf4FWow
-	9CSZZ8jCIBi9easKg1g4OxC4NIAz/GqbclSxVvDjmhZyZBKzbRy7vDPb/AAgR28P2PcZNVdzn/iaJ
-	wvUgB/ijSlGo32YY9nBA==;
+	List-Owner; bh=2D9nDrw2VEx/SEWfDnG/2CkrtB5kRPYuZoekiUUTP4Q=; b=ENGfBKItQM1x8x
+	5wXf9wYxUmxz/07oyCb8+qOZRmr4sKjQMdvy/CdL7qjyD/wHX3QaPWN3x+f9cDH/7n2i8F9hS82MS
+	PJqL8ol7WPglgxgadWlQn46rsX7FYhapAG7RIR9ITQcutoIIAZ/4JSeTNhLkNUaiobEyNdGmc16EL
+	oEAMadPTZAkrMlYTGFqn5dfDQJHNtri4Cy4wWtZQsqhy0NDXdyFMNdeVY7izy2C2+u3Ea+LqhCb8V
+	wmxLcdyFHzUd4Do2TJlrpAWJdgBaA4zIuwjKf1n/ICN0sFuTM7f5hnD9QvnhblIxSHyk+RBB0fqwh
+	/8pW9oIwTyU8O56eNFMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiysQ-00000007gB9-47lv;
-	Sun, 12 Jul 2026 18:26:06 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1wj0sa-00000007jNA-4Ahw;
+	Sun, 12 Jul 2026 20:34:25 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiysP-00000007gAT-0BxL
-	for linux-rockchip@lists.infradead.org;
-	Sun, 12 Jul 2026 18:26:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1783880764;
- bh=j/bPTGdNu/VCIF/C1HlSGIkuh1JalLVyfWkJt4YnQhM=;
- b=Yav0roTktqXdro7Ov5Ov2Qk171JKndqy6iO8bdE+P37xaW9MLBjIsRRf7WIZqxuCCyQwAfiDH
- jFfAwh0tCTByKkkQrouC4QoHkHQlmuETnYq+xaHnRxCKqwEpz3GE1Q98H5itLkYcgpZ0DoS2DPm
- uXlToxAFm6gREJULac1MhHXFG3IloSjN4vckNTbhZjg0iSGVitgELedjlIc/8u6rOjekGtiYrpX
- edg8JQ25aAuRbStdFW7izjUL17YQOIHoC78QoxY/7xSbavGLrKbMP1Aa/ppHrnM05tSRgfZUUfd
- oqtNSwocWvhwY7Nxb+x/sxU+6BgYkTRh0byjs253AiMA==
-X-Forward-Email-ID: 6a53dc3854fefa5949cb32c4
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 2.10.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <854bc3d0-2fb2-4e2b-ad08-0f5ee225d977@kwiboo.se>
-Date: Sun, 12 Jul 2026 20:25:57 +0200
+	id 1wj0sX-00000007jLr-1k9N;
+	Sun, 12 Jul 2026 20:34:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=TE8MBqoAj0FtTOcSUdLwCfJt+0lmd+CK3qEgeuR8JEo=; b=W9a1W2JLX7Vl/q81wLcZHVfiki
+	aPmb2NSV6/JU8miYhfk5KyKu0vvLLNuhwOJB+Kdlvm4PCyUcsfzyxQXVAbTR8ZOGNapsieUdKCkoH
+	vKX8ys4wgnABD8XQKSZFqTuSeM9q7EJx0xf5M7OYQRTSikStHQDTYRsv4JG+7EaHEtCqvSPj8B65p
+	FVTswJS+q09kxLMOSzUb61XdypaiQ7DiM/BilNROyY3Enm7C9rCUvtOgkV7dJ5YC8lVWbLZ3+0tym
+	lrB2d0SfF92tG3YY0g87nzZgOqT7y3zDM7Rk3+KxX5V2wJXiCUYenfg1xkcY0Fwu+MRzChBrQwJzE
+	VD0Oe8vQ==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Fabio Estevam <festevam@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Fabio Estevam <festevam@nabladev.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable USB device mode on rk3588s-roc-pc
+Date: Sun, 12 Jul 2026 22:33:56 +0200
+Message-ID: <178388833971.1396294.14091650862105286693.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260709005006.413145-1-festevam@gmail.com>
+References: <20260709005006.413145-1-festevam@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/12] arm64: dts: rockchip: Add NanoPi M6 board
-To: Joachim Eastwood <joachim.eastwood@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- diederik@cknow-tech.com,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-References: <20260711-nanopi-m6-v2-0-422675a65402@gmail.com>
- <ce54c773-22cf-43d2-b831-1ea5355359ca@kwiboo.se>
- <CAPSPb=vyKK3ngm+d+nN7KM20ZyA10Hg5cb8EarRF6SE4hLOWFg@mail.gmail.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <CAPSPb=vyKK3ngm+d+nN7KM20ZyA10Hg5cb8EarRF6SE4hLOWFg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260712_112605_113742_14C036FA 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20260712_133421_506088_1F8577C9 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,59 +71,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Joachim,
 
-On 7/12/2026 8:00 PM, Joachim Eastwood wrote:
-> Hi Jonas,
+On Wed, 08 Jul 2026 21:50:05 -0300, Fabio Estevam wrote:
+> The USB3 OTG controller on the ROC-PC can be used in device mode,
+> but the board description only enabled the DWC3 controller and USB2 PHY.
+> The USBDP PHY remained disabled and the controller had no role-switch
+> default, so DWC3 did not register a UDC and USB gadget drivers such
+> as g_mass_storage failed to bind.
 > 
-> On Sat, 11 Jul 2026 at 01:36, Jonas Karlman <jonas@kwiboo.se> wrote:
->>
->> Hi Joachim,
->>
->> On 7/11/2026 12:11 AM, Joachim Eastwood via B4 Relay wrote:
->>> This patch series add support for the NanoPi M6. This board is very
->>> similar to the NanoPi R6C and R6S boards which are already supported.
->>>
->>> Main differences:
->>> * M.2 M-key slot with PCIe (Also present on R6C)
->>> * M.2 E-key slot with PCIe and USB (from hub)
->>> * 1 additional USB 2.0 port from an on-board USB hub
->>> * RT5616 audio CODEC
->>>
->>> Patch 2 and 3 moves a bit code around. Please let me know if those two
->>> should be squashed together.
->>> Next few patches adds some missing bits the common nanopi dtsi file.
->>> While the final patch adds support for NanoPi M6. Support for M6 has
->>> been split into two files one dtsi and one dts file. This is to make
->>> it easier to add support to the new M6V2 board at a later stage.
->>
->> In my personal opinion I think it would make more sense to sort
->> patches in following order:
->> - adding/fixing missing bits to the common nanopi-r6 dtsi
->> - extract M6/R6 common parts from nanopi-r6 dtsi to nanopi dtsi,
->>   nanopi-r6 dtsi includes the nanopi dtsi and no changes to dts files
->> - final parts that adds the M6 board
->>
->> Should probably make it a little bit easier to cherry-pick and bisect.
+> Enable the USBDP PHY and describe the controller as a USB role switch
+> with peripheral as the default role. This lets the controller register
+> as a UDC when no external role provider has selected a host role.
 > 
-> If the additions/missing bits needs to backported I agree.
+> [...]
 
-There are consumers of DTs outside of Linux, e.g. U-Boot, that may
-need/want to cherry-pick patches/fixes, so such ordering should likely
-help for such use-cases.
+Applied, thanks!
 
-> I'll cook up a patch set with the order you suggest. Thanks for the feedback.
+[1/1] arm64: dts: rockchip: Enable USB device mode on rk3588s-roc-pc
+      commit: 9d1e32bfdda1aef3291e47c2949b3b9978162a5c
 
-Sounds good, thanks!
-
-Regards,
-Jonas
-
-> 
-> 
-> best regards,
-> Joachim Eastwood
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
