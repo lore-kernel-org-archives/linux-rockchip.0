@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B678C43458
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90025C44507
 	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Jul 2026 20:34:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,49 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2D9nDrw2VEx/SEWfDnG/2CkrtB5kRPYuZoekiUUTP4Q=; b=ENGfBKItQM1x8x
-	5wXf9wYxUmxz/07oyCb8+qOZRmr4sKjQMdvy/CdL7qjyD/wHX3QaPWN3x+f9cDH/7n2i8F9hS82MS
-	PJqL8ol7WPglgxgadWlQn46rsX7FYhapAG7RIR9ITQcutoIIAZ/4JSeTNhLkNUaiobEyNdGmc16EL
-	oEAMadPTZAkrMlYTGFqn5dfDQJHNtri4Cy4wWtZQsqhy0NDXdyFMNdeVY7izy2C2+u3Ea+LqhCb8V
-	wmxLcdyFHzUd4Do2TJlrpAWJdgBaA4zIuwjKf1n/ICN0sFuTM7f5hnD9QvnhblIxSHyk+RBB0fqwh
-	/8pW9oIwTyU8O56eNFMQ==;
+	List-Owner; bh=J6kpELj9KYTxfblRTCbovrQ1SFcBrWihZOIvCBC+1aM=; b=rPnyKutuYNJO5i
+	Mf3cT18uJMYi5fyUlddg6uCcUskQSk4wRaXhR0ytWvbnxf3BqF6oZO6VAWDRZpWVTzceOywLeSc88
+	PWtcRusCkWbOJP27+ZQJfZaYcIVXHY+b5QM41D5MmNUeDxgjG//444Wki0+DikW2T7nNbYEc+VNsU
+	eblKmlDISxAA+eVUNHInDuObNJUgluZSSqgi0gsq2GF+TuKkrmejOenJbvd5uE6qc2l4bz1fBcvwv
+	AaYCDZUTafyCIVBb/KDZKa4yUtlKsyQYuKA9Z616Iu6kjSE0xNl3mZcEvEnLwIO7dGdMakn62lEtf
+	dXN0DqWdUBVPwqNjFTlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wj0sa-00000007jNA-4Ahw;
-	Sun, 12 Jul 2026 20:34:25 +0000
+	id 1wj0sa-00000007jN2-3c1x;
+	Sun, 12 Jul 2026 20:34:24 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wj0sX-00000007jLr-1k9N;
-	Sun, 12 Jul 2026 20:34:23 +0000
+	id 1wj0sX-00000007jLt-1hXs;
+	Sun, 12 Jul 2026 20:34:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=TE8MBqoAj0FtTOcSUdLwCfJt+0lmd+CK3qEgeuR8JEo=; b=W9a1W2JLX7Vl/q81wLcZHVfiki
-	aPmb2NSV6/JU8miYhfk5KyKu0vvLLNuhwOJB+Kdlvm4PCyUcsfzyxQXVAbTR8ZOGNapsieUdKCkoH
-	vKX8ys4wgnABD8XQKSZFqTuSeM9q7EJx0xf5M7OYQRTSikStHQDTYRsv4JG+7EaHEtCqvSPj8B65p
-	FVTswJS+q09kxLMOSzUb61XdypaiQ7DiM/BilNROyY3Enm7C9rCUvtOgkV7dJ5YC8lVWbLZ3+0tym
-	lrB2d0SfF92tG3YY0g87nzZgOqT7y3zDM7Rk3+KxX5V2wJXiCUYenfg1xkcY0Fwu+MRzChBrQwJzE
-	VD0Oe8vQ==;
+	bh=seILppKGTil9XvVHz2w8WcGUv3ZDPAQ7sc+x9QORmZY=; b=oVOaDuhQWudRoQ1btoqyzMjwZr
+	Ih8XqMdJdiPg0lwZTHw2qHwAYZfdPgCLS6yDrgOgcy+iLZwgX0OrFM7RGO7Pm63rvjLn7dmUMr0jp
+	E7ruvubyhDcJ2+5Z/saUlyVokTaP5XqQ+klKy09x++PUa0qEs7jkpgK27444FapNGXt03v++0IuMA
+	OAjQm5GZGJGlHLH0choKlZ3uAdTlmoZNrWqhuVJM25asp8PDZHRpix+Agvxz08QvlmbUcnqsi4ed/
+	ev6j2VoyzLP8ortF56dCfvDAPoKlEPWkVT5PKUqdCAoPzmP1EUdW+2Dk3N+VJFBeUbwHER7DU49NU
+	K8VVuhAQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Fabio Estevam <festevam@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Coia Prant <coiaprant@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Fabio Estevam <festevam@nabladev.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable USB device mode on rk3588s-roc-pc
-Date: Sun, 12 Jul 2026 22:33:56 +0200
-Message-ID: <178388833971.1396294.14091650862105286693.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 0/3] Add devicetree for the Graperain G3568 v2
+Date: Sun, 12 Jul 2026 22:33:55 +0200
+Message-ID: <178388833988.1396294.17990564182339450982.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260709005006.413145-1-festevam@gmail.com>
-References: <20260709005006.413145-1-festevam@gmail.com>
+In-Reply-To: <20260702204628.2407308-2-coiaprant@gmail.com>
+References: <20260702204628.2407308-2-coiaprant@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260712_133421_506088_1F8577C9 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20260712_133421_506807_38518601 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,23 +74,27 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 08 Jul 2026 21:50:05 -0300, Fabio Estevam wrote:
-> The USB3 OTG controller on the ROC-PC can be used in device mode,
-> but the board description only enabled the DWC3 controller and USB2 PHY.
-> The USBDP PHY remained disabled and the controller had no role-switch
-> default, so DWC3 did not register a UDC and USB gadget drivers such
-> as g_mass_storage failed to bind.
+On Fri, 03 Jul 2026 04:46:26 +0800, Coia Prant wrote:
+> Changes in v2:
+> - Fix trailing whitespaces and other formatting issues.
 > 
-> Enable the USBDP PHY and describe the controller as a USB role switch
-> with peripheral as the default role. This lets the controller register
-> as a UDC when no external role provider has selected a host role.
+> Changes in v3:
+> - Picked up Acked-by tag for patch 1.
+> - Fixed text wrapping in the commit message of patch 2.
+> - Replace the legacy 'gpio' label with 'gpios'.
+> - Add the basic WiFi child node.
+> - Add the Bluetooth UART child node.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Enable USB device mode on rk3588s-roc-pc
-      commit: 9d1e32bfdda1aef3291e47c2949b3b9978162a5c
+[1/3] dt-bindings: vendor-prefixes: Add graperain
+      commit: 8885a00d305166fd6e1ba0699228d015424d3bca
+[2/3] dt-bindings: arm: rockchip: Add Graperain G3568 series
+      commit: 441baa62ea364c168dac79b804022154abab2ded
+[3/3] arm64: dts: rockchip: Add devicetree for the Graperain G3568 v2
+      commit: efca3937b84cbcbcccf88b26a54fb8efaf8bea73
 
 Best regards,
 -- 
