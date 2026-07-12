@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FA3CC43458
-	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Jul 2026 17:00:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90E42C44501
+	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Jul 2026 17:55:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uVWqo+badSXIIS4Y1NWtTMOXB5KOmbTpn2RIq7Hr/bA=; b=SXKMxHRRMzt0Z5
-	yGMF70A+7qdeVNTkFclBn8RoPneqUhdiNFIGW//kQwQ1O6RK/HDCL6cn+NAXgIoHh06JyjJ0xRpEq
-	Hem62GbPMF40TSKq4YVEtg28JZrQ2kVhUjt1O5Fmzd87j73NpiprTYwFlOjxCcgpIyOETfR6mBRRJ
-	T7e5xeqOoOdEsv1Z+zMPl3cmY17VNMfJsMQt6ts07jP7/JQKR94Ln6nJHjFzcSUfxRLf80SRrD82r
-	ZrlZ5KGG9c1TK4LRjFdNabZUgTyoiQYVBf6e0F1/HST+qCkaWMEHc2cadF+XWF1eDh9Z6sNnoumec
-	L40zQWGJT2BAArsVA3sw==;
+	List-Owner; bh=hxeKMGOv0uy83VyCS63QqErUBookKOxIHbUgI6u+00U=; b=mPdmerUkm9cuYX
+	63z9C7mGhpnKL7b9nnBaZf02tbwKgg26SStgN+s7a5kWA2EG4eGLoYRC4F2RVLI8Rp0TFoGmLi4Vj
+	JX/jPbneQGQjnrl+1haIAwZHmavjdTXEKhwNIONcbvt2sUitJL9mL9icitg2VvCPKr75UEiTJgPL0
+	yHAHXUjnB4/F3a6dEsN+ynsjYLB2566lGjnSF3MOAepAMAgDJZ5RlA+gYV3rSsxMLVvfx9IwElR89
+	Pw+yVye8y6kKo4nyY4/6fYnTCNcpUjMOu3d+nOgURvamJ3RImcLZ8jt5TKqlFqTwk8nBB2vRBsEGB
+	/iUgUzcC9U7xVkoEWapw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wixXU-00000007dFQ-0sqo;
-	Sun, 12 Jul 2026 17:00:24 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wiyOX-00000007eRw-1RBW;
+	Sun, 12 Jul 2026 17:55:13 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wixXR-00000007dEq-3Vft;
-	Sun, 12 Jul 2026 17:00:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=EYmNQeN1MMv3XCMLlgvSMjuvdlpxNtGkNTF/uC1tgH4=; b=Gt1Rprs4T9rS1j+zsV8bvuaMOJ
-	t7HxPBa1j1m0JItJ5WHAaWmlGPpF6gFPbEzako2YaWKDyPn6RpFFl4wPFmJ1G2cHh/cWOFXV0pDy+
-	7665P+rXo5HJU+a3PhPpKTFetM0t/Sa8R+4diZkHEP6hE1gveOaDX+bV/sKq6dazewNDTq8zDAvND
-	gUrbd7EdSaUWOX1CMI34fTuWJRq1ENfwlklPur7u/lGYipW6uo+xYUVCTbBt2dGwB7W1/6Y4yOUUX
-	m31AslFuztVTIFfri4hisKAwxoxiKZI/VKR9FTzI8FUf1R02FbZskhoHiVUbPb9ts/qLgc4If5Cif
-	I0jf13Ig==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Simon Glass <sjg@chromium.org>
+	id 1wiyOS-00000007eQm-3WXc
+	for linux-rockchip@lists.infradead.org;
+	Sun, 12 Jul 2026 17:55:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1783878907;
+ bh=+cz4TC7FYuAA1MNLgolPmcFRysJt6pzD3nfMB9W3q7M=;
+ b=pJrFCxHgXdDD8DS2BgBSF+y4pu2HdgMaoJfuDf5X7FyYohKL8OmaSgVD/fPtgf+t1nKhPORc8
+ ck47yK/BoVpgq50Hirdofdb9xovmbTPIbosWrgEDmXFHZsXrTaheiOqJ5iHJigNx1zLAerc1TMk
+ kaUZ/a2PoPVMZPeszaXzCdtDQEN/kjLLR1YwLC0qAmsy/9GJi64DMs997y22wPQ047QMLWKL45i
+ u/xwRUjTed6TH8vHuJ59TR0w3cxB4RrPkhlu/vCcgfHowcT+xJRkGwxgtUsDB2SycXt5iDs8if0
+ ptZ24LmNEFKGEyLpVNQVpzQ4FE8UK1kTgo49V7zsPvlg==
+X-Forward-Email-ID: 6a53d4f81f631853be4f2d47
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.10.2
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <e2ed95ee-8044-4a44-9775-9f36b10e727f@kwiboo.se>
+Date: Sun, 12 Jul 2026 19:55:01 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 04/12] pinctrl: rockchip: Add RV1106 pinctrl support
+To: Simon Glass <sjg@chromium.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  Fabio Estevam <festevam@nabladev.com>, linux-arm-kernel@lists.infradead.org,
- Simon Glass <sjg@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>,
- Linus Walleij <linusw@kernel.org>, huang lin <hl@rock-chips.com>,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 04/12] pinctrl: rockchip: Add RV1106 pinctrl support
-Date: Sun, 12 Jul 2026 19:00:13 +0200
-Message-ID: <13316226.iMDcRRXYNz@diego>
-In-Reply-To: <20260706195818.3906949-5-sjg@chromium.org>
+ Jeffy Chen <jeffy.chen@rock-chips.com>, Linus Walleij <linusw@kernel.org>,
+ huang lin <hl@rock-chips.com>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org
 References: <20260706195818.3906949-1-sjg@chromium.org>
  <20260706195818.3906949-5-sjg@chromium.org>
-MIME-Version: 1.0
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20260706195818.3906949-5-sjg@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260712_100021_977971_3341566B 
-X-CRM114-Status: GOOD (  18.96  )
+X-CRM114-CacheID: sfid-20260712_105509_198392_74CF295F 
+X-CRM114-Status: GOOD (  16.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,72 +75,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCA2LiBKdWxpIDIwMjYsIDIxOjU4OjAwIE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21t
-ZXJ6ZWl0IHNjaHJpZWIgU2ltb24gR2xhc3M6Cj4gQWRkIHBpbmN0cmwgc3VwcG9ydCBmb3IgdGhl
-IFJvY2tjaGlwIFJWMTEwNiwgdGFrZW4gZnJvbSB0aGUgdmVuZG9yCj4ga2VybmVsIGluIHRoZSBM
-dWNrZm94IFBpY28gU0RLIFsxXSBhdCBjb21taXQgODI0YjgxN2Y4IChhIExpbnV4Cj4gNS4xMC4x
-NjAga2VybmVsIHRyZWUpLiBUaGUgSU9DIHJlZ2lzdGVycyBhcmUgc3ByZWFkIGFjcm9zcyBzZXZl
-cmFsCj4gYmxvY2tzLCBhZGRyZXNzZWQgdGhyb3VnaCBwZXItYmFuayBvZmZzZXRzLCB3aXRoIHRo
-ZSBHUElPMCBibG9jayBpbiB0aGUKPiBQTVUuIFRoZSBkcml2ZSBzdHJlbmd0aCB1c2VzIHRoZSBS
-SzM1Njgtc3R5bGUgZXhwb25lbnRpYWwgZW5jb2RpbmcuCj4gCj4gVGhlIFJWMTEwMyBpcyBhIHBh
-Y2thZ2UgdmFyaWFudCBvZiB0aGUgUlYxMTA2IHdpdGggZmV3ZXIgcGlucyBhbmQgdXNlcwo+IHRo
-ZSBzYW1lIHBpbiBjb250cm9sbGVyLgo+IAo+IFsxXSBodHRwczovL2dpdGh1Yi5jb20vTHVja2Zv
-eFRFQ0gvbHVja2ZveC1waWNvCj4gCj4gU2lnbmVkLW9mZi1ieTogU2ltb24gR2xhc3MgPHNqZ0Bj
-aHJvbWl1bS5vcmc+Cj4gLS0tCj4gCj4gIGRyaXZlcnMvcGluY3RybC9waW5jdHJsLXJvY2tjaGlw
-LmMgfCAyMDggKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAgZHJpdmVycy9waW5jdHJs
-L3BpbmN0cmwtcm9ja2NoaXAuaCB8ICAgMSArCj4gIDIgZmlsZXMgY2hhbmdlZCwgMjA5IGluc2Vy
-dGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcm9ja2No
-aXAuYyBiL2RyaXZlcnMvcGluY3RybC9waW5jdHJsLXJvY2tjaGlwLmMKPiBpbmRleCA3ZTBmY2Q0
-NWZkMjYuLmY5Y2JjYjk1NTg1MyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BpbmN0cmwvcGluY3Ry
-bC1yb2NrY2hpcC5jCj4gKysrIGIvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcm9ja2NoaXAuYwoK
-Wy4uLl0KCj4gQEAgLTMzMTAsNiArMzQ3MCw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfc2V0X2Ry
-aXZlX3BlcnBpbihzdHJ1Y3Qgcm9ja2NoaXBfcGluX2JhbmsgKmJhbmssCj4gIAkJcmV0ID0gc3Ry
-ZW5ndGg7Cj4gIAkJZ290byBjb25maWc7Cj4gIAl9IGVsc2UgaWYgKGN0cmwtPnR5cGUgPT0gUlYx
-MTAzQiB8fAo+ICsJCSAgIGN0cmwtPnR5cGUgPT0gUlYxMTA2IHx8Cj4gIAkJICAgY3RybC0+dHlw
-ZSA9PSBSSzM1MDYgfHwKPiAgCQkgICBjdHJsLT50eXBlID09IFJLMzUyOCB8fAo+ICAJCSAgIGN0
-cmwtPnR5cGUgPT0gUkszNTYyIHx8Cj4gQEAgLTM0ODIsNiArMzY0Myw3IEBAIHN0YXRpYyBpbnQg
-cm9ja2NoaXBfZ2V0X3B1bGwoc3RydWN0IHJvY2tjaGlwX3Bpbl9iYW5rICpiYW5rLCBpbnQgcGlu
-X251bSkKPiAgCQkJCTogUElOX0NPTkZJR19CSUFTX0RJU0FCTEU7Cj4gIAljYXNlIFBYMzA6Cj4g
-IAljYXNlIFJWMTEwM0I6Cj4gKwljYXNlIFJWMTEwNjoKPiAgCWNhc2UgUlYxMTA4Ogo+ICAJY2Fz
-ZSBSSzMxODg6Cj4gIAljYXNlIFJLMzI4ODoKPiBAQCAtMzU0Nyw2ICszNzA5LDcgQEAgc3RhdGlj
-IGludCByb2NrY2hpcF9zZXRfcHVsbChzdHJ1Y3Qgcm9ja2NoaXBfcGluX2JhbmsgKmJhbmssCj4g
-IAkJYnJlYWs7Cj4gIAljYXNlIFBYMzA6Cj4gIAljYXNlIFJWMTEwM0I6Cj4gKwljYXNlIFJWMTEw
-NjoKPiAgCWNhc2UgUlYxMTA4Ogo+ICAJY2FzZSBSVjExMjY6Cj4gIAljYXNlIFJLMzE4ODoKPiBA
-QCAtMzg0Myw2ICs0MDA2LDcgQEAgc3RhdGljIGJvb2wgcm9ja2NoaXBfcGluY29uZl9wdWxsX3Zh
-bGlkKHN0cnVjdCByb2NrY2hpcF9waW5fY3RybCAqY3RybCwKPiAgCQlyZXR1cm4gcHVsbCA/IGZh
-bHNlIDogdHJ1ZTsKPiAgCWNhc2UgUFgzMDoKPiAgCWNhc2UgUlYxMTAzQjoKPiArCWNhc2UgUlYx
-MTA2Ogo+ICAJY2FzZSBSVjExMDg6Cj4gIAljYXNlIFJWMTEyNjoKPiAgCWNhc2UgUkszMTg4Ogo+
-IEBAIC00NjIzLDYgKzQ3ODcsNDggQEAgc3RhdGljIHN0cnVjdCByb2NrY2hpcF9waW5fY3RybCBy
-djExMDNiX3Bpbl9jdHJsIF9fbWF5YmVfdW51c2VkID0gewo+ICAJLnNjaG1pdHRfY2FsY19yZWcJ
-PSBydjExMDNiX2NhbGNfc2NobWl0dF9yZWdfYW5kX2JpdCwKPiAgfTsKPiAgCj4gK3N0YXRpYyBz
-dHJ1Y3Qgcm9ja2NoaXBfcGluX2JhbmsgcnYxMTA2X3Bpbl9iYW5rc1tdID0gewo+ICsJUElOX0JB
-TktfSU9NVVhfRkxBR1MoMCwgMzIsICJncGlvMCIsCj4gKwkJCSAgICAgSU9NVVhfV0lEVEhfNEJJ
-VCB8IElPTVVYX1NPVVJDRV9QTVUsCj4gKwkJCSAgICAgSU9NVVhfV0lEVEhfNEJJVCB8IElPTVVY
-X1NPVVJDRV9QTVUsCj4gKwkJCSAgICAgSU9NVVhfV0lEVEhfNEJJVCB8IElPTVVYX1NPVVJDRV9Q
-TVUsCj4gKwkJCSAgICAgSU9NVVhfV0lEVEhfNEJJVCB8IElPTVVYX1NPVVJDRV9QTVUpLAoKc2Fz
-aGlrbyBpcyBjb3JyZWN0IGhlcmUsCm9ubHkgcGlucyAwLTYgaGF2ZSBkcml2ZS1zdHJlbmd0aCBy
-ZWdpc3RlcnMuCgpTb21lIGRpZmZlcmVudCBzZXR0aW5nIHN0YXJ0cyBhdCB0aGUgMHgzMCBtYXJr
-LgoKVGhpcyBzaG91bGQgYmUgZWFzeSB0byBoYW5kbGUgaW4gcnYxMTA2X2NhbGNfZHJ2X3JlZ19h
-bmRfYml0KCkKCgoKPiArCVBJTl9CQU5LX0lPTVVYX0ZMQUdTX09GRlNFVCgxLCAzMiwgImdwaW8x
-IiwKPiArCQkJCSAgICBJT01VWF9XSURUSF80QklULAo+ICsJCQkJICAgIElPTVVYX1dJRFRIXzRC
-SVQsCj4gKwkJCQkgICAgSU9NVVhfV0lEVEhfNEJJVCwKPiArCQkJCSAgICBJT01VWF9XSURUSF80
-QklULAo+ICsJCQkJICAgIDAsIDB4MDgsIDB4MTAsIDB4MTgpLAo+ICsJUElOX0JBTktfSU9NVVhf
-RkxBR1NfT0ZGU0VUKDIsIDMyLCAiZ3BpbzIiLAo+ICsJCQkJICAgIElPTVVYX1dJRFRIXzRCSVQs
-Cj4gKwkJCQkgICAgSU9NVVhfV0lEVEhfNEJJVCwKPiArCQkJCSAgICBJT01VWF9XSURUSF80QklU
-LAo+ICsJCQkJICAgIElPTVVYX1dJRFRIXzRCSVQsCj4gKwkJCQkgICAgMHgxMDAyMCwgMHgxMDAy
-OCwgMCwgMCksCgppbiB0aGVvcnkgb25seSB0aGUgZmlyc3Qgb2Zmc2V0IHNob3VsZCBiZSBuZWNl
-c3NhcnkgaGVyZSAtIHNhbWUgZm9yIHRoZQpvdGhlciBiYW5rJ3Mgb2Zmc2V0cy4KCkZvciBvZmZz
-ZXQtdmFsdWVzIG9mIDAsIHRoZSBkcml2ZXIgd2lsbCBhdXRvbWF0aWNhbGx5IGNyZWF0ZSB0aGUg
-cmlnaHQsCm9mZnNldCBpbmNyZW1lbnRzLiA4IGZvciA0Yml0IHdpZGUgaW9tdXhlcy4KClNlZQpo
-dHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9s
-aW51eC5naXQvdHJlZS9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1yb2NrY2hpcC5jI240MzQ0CgoK
-U28gd2l0aCB0aGUgZHJpdmUtc3RyZW5ndGggdGhpbmcgZml4ZWQKUmV2aWV3ZWQtYnk6IEhlaWtv
-IFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgoKSGVpa28KCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Simon,
+
+On 7/6/2026 9:58 PM, Simon Glass wrote:
+> Add pinctrl support for the Rockchip RV1106, taken from the vendor
+> kernel in the Luckfox Pico SDK [1] at commit 824b817f8 (a Linux
+> 5.10.160 kernel tree). The IOC registers are spread across several
+> blocks, addressed through per-bank offsets, with the GPIO0 block in the
+> PMU. The drive strength uses the RK3568-style exponential encoding.
+> 
+> The RV1103 is a package variant of the RV1106 with fewer pins and uses
+> the same pin controller.
+> 
+> [1] https://github.com/LuckfoxTECH/luckfox-pico
+> 
+> Signed-off-by: Simon Glass <sjg@chromium.org>
+> ---
+> 
+>  drivers/pinctrl/pinctrl-rockchip.c | 208 +++++++++++++++++++++++++++++
+>  drivers/pinctrl/pinctrl-rockchip.h |   1 +
+>  2 files changed, 209 insertions(+)
+> 
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index 7e0fcd45fd26..f9cbcb955853 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -1725,6 +1725,166 @@ static int rv1103b_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
+>  	return 0;
+>  }
+>  
+> +#define RV1106_DRV_BITS_PER_PIN		8
+> +#define RV1106_DRV_PINS_PER_REG		2
+> +#define RV1106_DRV_GPIO0_OFFSET		0x10
+> +#define RV1106_DRV_GPIO1_OFFSET		0x80
+> +#define RV1106_DRV_GPIO2_OFFSET		0x100C0
+
+This, and remaining offsets, should likely be from the related GPIOx IOC
+base and not from GPIO1 IOC base.
+
+The regmap_base should likely only cover GPIO1 IOC, else it would cross
+boundary into the GPIOx+1 controller regmap space.
+
+See my review comment on pinctrl dt-bindings, we likely need to define
+the IOC reg space for each GPIO controller for this SoC and adjust this
+driver accordingly.
+
+Possible something like following:
+
+  gpio2: gpio@ff540000 {
+	reg = <0xff540000 0x10c>, <0xff548000 0x8000>;
+	reg-names = "base", "ioc";
+  };
+
+or
+
+  gpio2: gpio@ff540000 {
+	reg = <0xff540000 0x10c>;
+	rockchip,grf = <&gpio2_ioc>;
+  };
+
+  gpio2_ioc: syscon@ff548000 {
+	reg = <0xff548000 0x8000>;
+  };
+
+Regards,
+Jonas
+
+> +#define RV1106_DRV_GPIO3_OFFSET		0x20100
+> +#define RV1106_DRV_GPIO4_OFFSET		0x30020
+
+[snip]
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
