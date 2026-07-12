@@ -4,59 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90025C44507
-	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Jul 2026 20:34:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62760C43458
+	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Jul 2026 20:34:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J6kpELj9KYTxfblRTCbovrQ1SFcBrWihZOIvCBC+1aM=; b=rPnyKutuYNJO5i
-	Mf3cT18uJMYi5fyUlddg6uCcUskQSk4wRaXhR0ytWvbnxf3BqF6oZO6VAWDRZpWVTzceOywLeSc88
-	PWtcRusCkWbOJP27+ZQJfZaYcIVXHY+b5QM41D5MmNUeDxgjG//444Wki0+DikW2T7nNbYEc+VNsU
-	eblKmlDISxAA+eVUNHInDuObNJUgluZSSqgi0gsq2GF+TuKkrmejOenJbvd5uE6qc2l4bz1fBcvwv
-	AaYCDZUTafyCIVBb/KDZKa4yUtlKsyQYuKA9Z616Iu6kjSE0xNl3mZcEvEnLwIO7dGdMakn62lEtf
-	dXN0DqWdUBVPwqNjFTlw==;
+	List-Owner; bh=yF2EJLkBHsVrS69PIDODMVDdz/R7rgCsL/9mc1Mb8Sk=; b=EGvXB8Jvc+aovG
+	HyTJ6UWxg4ZECf9nQB7WoCGdkoIvOZAGyZc0inpSlWLAtqxiR1FCN7FXBN2NGThMMDQZgOxgjKr54
+	ytUjdBiMDQWlRhzd8s1xB4Din3vU2TtH4MQEjfFrio0r+MWezRZZTwaV1/PkHgmCV35vDr5Lar0ly
+	6r3MVynEfBxpNWElDMCkBnBBvZhG+C7S3hcQ5ZpNHmHNhD9Hqx/hlK5ZQNAbvBfu8nyxFMJKqs+yM
+	6jVUoWC/Yt3XoJgImKDVv7CKCd+pCW8sX/v7WF05lvxcRYQuLRFE+lLFJBODivv/wHULDKVJlZt0W
+	Zy8h71CgEQeU37Kg0/Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wj0sa-00000007jN2-3c1x;
-	Sun, 12 Jul 2026 20:34:24 +0000
+	id 1wj0sq-00000007jSL-0LR8;
+	Sun, 12 Jul 2026 20:34:40 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wj0sX-00000007jLt-1hXs;
-	Sun, 12 Jul 2026 20:34:22 +0000
+	id 1wj0sn-00000007jQE-2hSp
+	for linux-rockchip@lists.infradead.org;
+	Sun, 12 Jul 2026 20:34:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=seILppKGTil9XvVHz2w8WcGUv3ZDPAQ7sc+x9QORmZY=; b=oVOaDuhQWudRoQ1btoqyzMjwZr
-	Ih8XqMdJdiPg0lwZTHw2qHwAYZfdPgCLS6yDrgOgcy+iLZwgX0OrFM7RGO7Pm63rvjLn7dmUMr0jp
-	E7ruvubyhDcJ2+5Z/saUlyVokTaP5XqQ+klKy09x++PUa0qEs7jkpgK27444FapNGXt03v++0IuMA
-	OAjQm5GZGJGlHLH0choKlZ3uAdTlmoZNrWqhuVJM25asp8PDZHRpix+Agvxz08QvlmbUcnqsi4ed/
-	ev6j2VoyzLP8ortF56dCfvDAPoKlEPWkVT5PKUqdCAoPzmP1EUdW+2Dk3N+VJFBeUbwHER7DU49NU
-	K8VVuhAQ==;
+	bh=2westCkTI2EE14pA7ejSU5HuW2PbVOQcSsUv15jFNlU=; b=QbMPaVBbJIp3LKUESMjaC/cW//
+	/OJ685b/a2KsTfx4nHDV2MeAJigZo58qN+uPcfT5m1IuTLy85jEFyyGTzicIXDnUmFyS5K+oa5FA+
+	wER4jJEciXfTJa1KxbFEeK34wMnFJYUTteUHevdvqrSzWZs+oUhzNriLtzGZBSdjsEQ+Eaf/8f2cb
+	6XnOLByglEm67O5Q1EfpOTzXjPXZzpFRddqV5a4pWio/MLWYmvjqLYufIhGcgWhZeQquj5PXJJKOV
+	WJVm95S5n8gON8UTLasdz/G7l+YPNWP6CrTNhX/wZN6fo0rZ0TYavtsW/PrP602qsHxIcEqx40Xps
+	sdbpYtpg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Coia Prant <coiaprant@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+To: linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 0/3] Add devicetree for the Graperain G3568 v2
-Date: Sun, 12 Jul 2026 22:33:55 +0200
-Message-ID: <178388833988.1396294.17990564182339450982.b4-ty@sntech.de>
+	Marius Dinu <m95d+git@psihoexpert.ro>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Subject: Re: [PATCH] arm: dts: rk3288-tinker: add eeprom node
+Date: Sun, 12 Jul 2026 22:33:59 +0200
+Message-ID: <178388833985.1396294.12062484754801637689.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260702204628.2407308-2-coiaprant@gmail.com>
-References: <20260702204628.2407308-2-coiaprant@gmail.com>
+In-Reply-To: <20260703084645.7001-1-m95d+git@psihoexpert.ro>
+References: <20260703084645.7001-1-m95d+git@psihoexpert.ro>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260712_133421_506807_38518601 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20260712_133437_692233_0656C5A6 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,27 +72,17 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 03 Jul 2026 04:46:26 +0800, Coia Prant wrote:
-> Changes in v2:
-> - Fix trailing whitespaces and other formatting issues.
+On Fri, 03 Jul 2026 11:44:53 +0300, Marius Dinu wrote:
+> This board contains an EEPROM that holds the CPU serial number and ethernet
+> MAC. It is used by U-boot when configured to use upstream device tree from
+> Linux kernel.
 > 
-> Changes in v3:
-> - Picked up Acked-by tag for patch 1.
-> - Fixed text wrapping in the commit message of patch 2.
-> - Replace the legacy 'gpio' label with 'gpios'.
-> - Add the basic WiFi child node.
-> - Add the Bluetooth UART child node.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/3] dt-bindings: vendor-prefixes: Add graperain
-      commit: 8885a00d305166fd6e1ba0699228d015424d3bca
-[2/3] dt-bindings: arm: rockchip: Add Graperain G3568 series
-      commit: 441baa62ea364c168dac79b804022154abab2ded
-[3/3] arm64: dts: rockchip: Add devicetree for the Graperain G3568 v2
-      commit: efca3937b84cbcbcccf88b26a54fb8efaf8bea73
+[1/1] arm: dts: rk3288-tinker: add eeprom node
+      commit: bd504200195c0bcb26706f363814d3426ef3baa7
 
 Best regards,
 -- 
