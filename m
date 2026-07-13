@@ -4,51 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98B92C43458
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 01:55:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA2E3C43458
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 07:55:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C0uTFgzPgpj7PP3e8IJA3MfJf+h9MhiB1q1Pn6ArQYM=; b=LnE4jeRBRhyc7w
-	C9GMR5U1AyI/Z+pt6aGnc0jgkaTpqRdlgvQXsF9fRkO17c0tgCAbP6NDuEst96nS5NIG+VhKVDGW+
-	3kHWOwPp5Kv40Hb7kX57PO2So8+XogMxUQwMBelRUXt94bOE+CvspQ1TS1IY03dbpfbBFnBXWepMw
-	ifapVTuZYY8IbruQxjPWSZmisnxUHpIxnU+tmdDFrI2iIvWOKgzf1iz+kDqHkL6EsgxZYyEmfetgl
-	6TzhoynE4/By708fKwxeB36c0wpAola3ptnKQnwEeP0E8KaV62KMQ2JxhLYo5TREgoyx1QIAjByG2
-	+Y5AT8R2dOaQp0sXzZHw==;
+	List-Owner; bh=beu/MbDy7MrwHEOL2bAjiD7byhiQBQbejnIC1y95Cm0=; b=LyTocGU+CAPQ7w
+	1f6CLp20+dMkw5dtUjOIh7ME73PVauGeBg1FH6CFT/3WxtCARj2bOSk3jYjeL2aETeWwmhFDVIp+H
+	Dv8aczDIKL0mdQPrbVFuLwDTdnNpkSe5rtsTPAMOMHksxlSip4pSiMw2tNwlq/L70jsLuyx+rs1or
+	nCAYNgGTOft73SqzUnJgjPNpPVOe7dvbC3PlrEpng43BKwjjpNOSEw2CX5XbIdDb2bNdC2Ucp7YbJ
+	Syr6JdrTdzjRPBkiX2F9wOXKXPlgVx60O6G9BOv+q/6lL6Rs3WNE2GcY9Tww5UhPb+9WYmWXywAtK
+	ZDXIybyc2ve+nvw5LW9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wj5ta-00000007wXo-2ns5;
-	Mon, 13 Jul 2026 01:55:46 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1wjBVn-00000008VJ1-0vuB;
+	Mon, 13 Jul 2026 07:55:35 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wj5tW-00000007wXG-2c8A;
-	Mon, 13 Jul 2026 01:55:45 +0000
-Received: from neptunite.rasen.tech (unknown [IPv6:2404:7a81:160:2100:9e15:c3c3:480a:b02e])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id DB3AEB2D;
-	Mon, 13 Jul 2026 03:54:42 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1783907683;
-	bh=R8heZzhx0Rbh/T9aeambSHqG3wFIiGP4zx6NIPVOf1w=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=kKKTXOg+ozj7JOq4sbVmFtE8cnDZNwt4iF7X7GMm++vRzd+8Ri4v4ZeM74zy/4pSm
-	 zJ5K+1QgTVR2nOSjpRpXeMiLSZFiWFLBMbT9IitsioLenJF3ZR6wgwOcOlKe0iVZrm
-	 2uLuFnuHlmkJIkkgXRIBRSJqghaI+r+e87Uq7ioE=
+	id 1wjBVi-00000008VHI-2BOy
+	for linux-rockchip@lists.infradead.org;
+	Mon, 13 Jul 2026 07:55:33 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-38de840f2f0so725553a91.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 13 Jul 2026 00:55:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783929330; cv=none;
+        d=google.com; s=arc-20260327;
+        b=Da1IBp7g7fkI/JpS3lXrwJVn+SwY/agJ+9UkCGDxkv3rKpzEDMfWbgwDRnSNsIzz8P
+         zQQSoqA0qzadZuHWhoiwFlbmQHYRihqILn+DkLFGSBl9sOf3tVZfxa0W35pwWdwkPOgh
+         ZvbteKbuPxMCbVcbgJSjxah7HKtot22yJpLIPJr9d5mn7LORmVQFkkX+MRX6+cvZStwa
+         9hXr+EDfKifJB4wOZGMBd/JKA8oUfFKFQnfp6djV/fYQ7mRrKOuj5ezrTxHO/t47MTzj
+         HTJNUIKxCK5xUnu26I88wiURXKkaga5fHpSS/I4q8LZz2GSGr79UfLWu/9ZrtEAEgVWg
+         r+Mw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=QovoZqY4xt6ZAxVQ0BWNZ2UDIC+LHZmnMzcr9SfOYAc=;
+        fh=E6U8La3Llvj7j/yLMzO/zDy9FfpmK1fSpjecJcrT5xQ=;
+        b=B6I76E9skG1ktetaQnTmNmDvXtblRDHzMOOJXY/mOoplwJIEYMd08lEE0x2WEYB48i
+         7Xar66CUytJ4geNVDvVcna5KmAZOnHCtreW1CmVaqyl6T4ctnMrD8Ju7wRfI7jmPmzp9
+         HvPU+aK+6T5GeBjgJDRxnSYCJrO1W1pJDnMcCdjGQIJ5YRttelG5mg+2twzdRvxtg+5/
+         Eq+EP+Eysb03NN4Z7pHjjleYJOgaME/wzbgaL6JOmtcGZOIlnIvr214iIdytCxf9DaDL
+         NsISiVuRbxwuLzhEHSgjeYs9/ujicz1AahFKGMIbAGRhN7j28SRfvnpXjF2fT3A3bn86
+         DzTg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783929330; x=1784534130; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=QovoZqY4xt6ZAxVQ0BWNZ2UDIC+LHZmnMzcr9SfOYAc=;
+        b=YCsbqBw91KpLt1xJ44QpF6ov2f8JECS8QaCLJMwUTD4AgtCZ+BsMLiV67eTrG+l17k
+         +BDKnp+Wkl7gYo+DD1178W3tkeqB63zWVjUKxypNetqteisCMX6w354YI0VuHMe7wYjh
+         6SQn4xLhJQV5aEUieugQzDRryCpU6CF7LT7C2RVE9G4lz/VZ8UftOceUMfNgrUJWDeLR
+         vPltTtr8hD/sfltf3qFT3jyjAcQdoLZvTb07+vvU8RsrW32uQVVygm2f0FppBoe0qZY+
+         7NboFXLq2av7CcE0iKD7ggejRz69ZAhRPuv7S97R0Iq3azKIMUAeMLv4m2mx93i4YTyU
+         RSRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783929330; x=1784534130;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=QovoZqY4xt6ZAxVQ0BWNZ2UDIC+LHZmnMzcr9SfOYAc=;
+        b=sGS9ZUnW5FdaFd52QYQztmONOXgrPKgvxm/UiHhiX8pkGO2v6qUom44rsaMjjpPmT4
+         ay1JojGTXW8G0vStaMKyU2WqO+0IFR53c5pTs1xNpFi4pZIMo7jevtrIK2XBPKeJEruE
+         MF3SfFHFs234WP/CIuA7Wj89Qcms7Fcn0LvuRKl+Neniv3LFbj6xEDTaRyGUehKHZtq/
+         zQAk+YGAYQ6q5b0npiiE6zBk0QCg+sTuPuE7ctE9PMsp42pXy/oGO1NQHv5jEjlHoBfH
+         ti0v22GslLIjX5HAQueyg37j6X8XNHpUk2Ky7JruK2ryfbXRCfO52yT7b5N0T38ocu4z
+         /xNA==
+X-Forwarded-Encrypted: i=1; AHgh+RqmY8rToHshVZllek7vVopQBBDe2YXEhB0tDoIU0oeSR0ChELeVOUMtH6HYeWuMsO73DgHK7xLn83blpyHvaQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyLlblWNhaXWOoFyxSDyKHaFkaWXPjkgI0sbfMRRkREB6XmKujM
+	lz84M6gpdAZ9coFZNMWQwsmow6fZ4Q72lA3eX4L6aZrZ5bHUGVHY4z3ZTkeaUo698g1WDP8LMTk
+	r7GPa+qIkKwcqYL1Oq05iPvdaiX5esFA=
+X-Gm-Gg: AfdE7cnjN1ZqcOag2/flPAq2Dbk0eKWHmi1z5Sbqo/H3pYbM1rntKdVibFfiGeLIJYQ
+	gmDvO82mPt1Nuf62dR1pBZ/GdYwB7X9geLgLbRzudH7Nj4RcKSAJIe1HeAhw3SpMaVmd+84Jn+E
+	TtPrAzO2jaW1gQYC0TB0Ma1SD3juL2v3gDyos7l2AkFEJqOe7/qROmZmSp1b4F4NwtfD8ZW7j+4
+	rlY+wxi/7EcikEkRZ60ZSeLpQ2oJBW1f4ipbMjp0eGbgINfDTaUSGnPpu+ioj7mj/sBvgHB0O3c
+	Q37k52x38BDFDY3hn2k5SzI/GvLmz4svtg37pFOjzReone9xTbgNpg==
+X-Received: by 2002:a17:90b:1dcf:b0:38e:673:5d18 with SMTP id
+ 98e67ed59e1d1-38e06735ef7mr1259924a91.36.1783929329714; Mon, 13 Jul 2026
+ 00:55:29 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <e5f16200-3881-4f25-b67d-7053b3b8af19@collabora.com>
-References: <20260619052637.1110672-1-paul.elder@ideasonboard.com> <20260619052637.1110672-2-paul.elder@ideasonboard.com> <e5f16200-3881-4f25-b67d-7053b3b8af19@collabora.com>
-Subject: Re: [RFC PATCH 1/6] media: mc: Implement shared media graph
-From: Paul Elder <paul.elder@ideasonboard.com>
-Cc: xuhf@rock-chips.com, stefan.klug@ideasonboard.com, kieran.bingham@ideasonboard.com, dan.scally@ideasonboard.com, jacopo.mondi@ideasonboard.com, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, hverkuil+cisco@kernel.org, nicolas.dufresne@collabora.com, ribalda@chromium.org, sakari.ailus@linux.intel.com
-To: Michael Riesch <michael.riesch@collabora.com>, laurent.pinchart@ideasonboard.com
-Date: Mon, 13 Jul 2026 10:55:29 +0900
-Message-ID: <178390772961.8891.12325171786588563297@neptunite.rasen.tech>
-User-Agent: alot/0.0.0
+References: <20260711-nanopi-m6-v2-0-422675a65402@gmail.com>
+ <20260711-nanopi-m6-v2-8-422675a65402@gmail.com> <b9a5beb6-b701-430c-b667-44780736dd89@kwiboo.xyz>
+ <CAPSPb=t=jZke2pEinPvJ4mbxKMF3hSqMfx3GMjEUT6N2FEyygg@mail.gmail.com> <50a8a36a-e7dc-43ec-80ce-904e6e7fbd3f@kwiboo.se>
+In-Reply-To: <50a8a36a-e7dc-43ec-80ce-904e6e7fbd3f@kwiboo.se>
+From: Joachim Eastwood <joachim.eastwood@gmail.com>
+Date: Mon, 13 Jul 2026 09:55:18 +0200
+X-Gm-Features: AVVi8CetW3-cEGywGS5tE1DvejPk5LFrS4NRovmzWMSPfCpXGd_mo2vU_Ad0Vvw
+Message-ID: <CAPSPb=s0Rsvj8b6MLfrza-CVK5U3jF60fEb2yjsro=x4Tyz2qw@mail.gmail.com>
+Subject: Re: [PATCH v2 08/12] arm64: dts: rockchip: rk3588s-nanopi: remove
+ always-on from vdd_npu_s0 reg
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	diederik@cknow-tech.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260712_185543_265306_5CE274DC 
-X-CRM114-Status: GOOD (  70.54  )
+X-CRM114-CacheID: sfid-20260713_005530_563653_856B9124 
+X-CRM114-Status: GOOD (  28.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,426 +121,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+On Sun, 12 Jul 2026 at 20:22, Jonas Karlman <jonas@kwiboo.se> wrote:
+>
+> Hi Joachim,
+>
+> On 7/12/2026 8:00 PM, Joachim Eastwood wrote:
+> > Hi Jonas,
+> >
+> > On Sat, 11 Jul 2026 at 01:24, Jonas Karlman <jonas@kwiboo.xyz> wrote:
+> >>
+> >> Hi Joachim,
+> >>
+> >> On 7/11/2026 12:11 AM, Joachim Eastwood via B4 Relay wrote:
+> >>> From: Joachim Eastwood <joachim.eastwood@gmail.com>
+> >>>
+> >>> Since the NPU is hooked up on these the always-on isn't needed anymore.
+> >>>
+> >>> Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
+> >>> ---
+> >>>  arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 1 -
+> >>>  1 file changed, 1 deletion(-)
+> >>>
+> >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
+> >>> index bcb2f5d63a61..463cfeddf270 100644
+> >>> --- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
+> >>> +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
+> >>> @@ -258,7 +258,6 @@ vdd_npu_s0: regulator@42 {
+> >>>               regulator-max-microvolt = <950000>;
+> >>>               regulator-ramp-delay = <2300>;
+> >>>               regulator-boot-on;
+> >>
+> >> Why is boot-on kept?, NPU is likely not needed until OS has started.
+> >
+> > I am not really sure.
+> > Looking at the other rk3588(s) boards, they also kept the boot-on parameter
+> > when the always-on was removed.
+>
+> Ahh, those board should likely also drop the boot-on prop. There should
+> really not be any need to force the PMIC to enable this regulator from
+> firmware. If it was left intentionally for other boards, maybe there is
+> a bug in software that need to be fixed.
+>
+> >
+> >> With PD domain-supply the regulator should be enabled automatically, or
+> >> is there some other issue that requires boot firmware to enable this
+> >> regulator before OS is started?
+> >
+> > Maybe some Rockchip people can enlighten us?
+> >
+> > I haven't had the time to actually test the NPU. I'll try to test it next week.
+> > So this patch is based on similar changes done to other RK3588 boards.
+>
+> Yes, please drop the boot-on prop and test :-)
 
-Thanks for the review!
+boot-on doesn't seems to matter on my NanoPi M6. My short test code for the
+NPU runs either way. Note that I am running edk2-rk3588 bootloader.
 
-Quoting Michael Riesch (2026-07-11 05:23:50)
-> Hi Paul,
-> 
-> Thanks for your work! And sorry for the long silence.
-> 
-> On 6/19/26 07:26, Paul Elder wrote:
-> > Currently, a media graph contains a main device whose driver is
-> > responsible for creating the media device. We have however recently run
-> > into devices that have multiple devices that can quality as a main
-> > device. Examples are the RK3588 which has a VICAP and two ISP
-> > instances, and another example is the i.MX8MP which has an ISI and two
-> > ISP instances. As there is currently no way to reconcile who the main
-> > device is in the media device, these setups simple cannot be used
-> > simultaneously.
-> > 
-> > This patch extends the media controller API with a "shared media graph"
-> > framework. This allows drivers to share a media device, thus enabling
-> > the setups mentioned above. Instead of owning and creating a media
-> > device, drivers can join-or-create a shared media device via the shared
-> > media graph API. The matching is done automatically based on the
-> > detected endpoints in the device tree.
-> > 
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> 
-> Frenetically-cheered-by: Michael Riesch <michael.riesch@collabora.com>
-> 
-> OK, what follows is pretty much a rubberducking session in which I try
-> to explain myself the concept you came up with. Possibly there are one
-> or two thoughts and/or questions you can use to develop the concept further.
-> 
-> IIUC this is a new API with four calls. There is _join() and _leave()
-> that more or less replace the creation and deletion of a media device in
-> a V4L2 driver. And there is join_link_source() and join_link_sink() that
-> are called for each cross-device connection on the source and sink side,
-> respectively.
-> 
-> There is one shared media device per disjoint graph in the device tree.
-> If a new device calls _join(), the function iterates over all shared
-> media devices, iterates over all DT endpoints of the new device, and
-> iterates over all members of each shared media device. If the fwnode of
-> the parent of the remote endpoint of a certain endpoint of the new
-> device equals the fwnode of a certain member of a certain shared media
-> device, we found a match. This certain shared media device is then used
-> in the driver of the new device. Before that, a member for the new
-> device is added to the shared media device.
-> 
-> In case no shared media device is found, a new one is created and used.
-> A member for the new device is added to the shared device in this case, too.
-> 
-> The actual linking takes place in the _join_link_{sink,source}
-> functions, which iterate over the links of the shared media device and
-> check whether a link has a pointer to a source (or sink) respectively.
-> If a source (or sink) is found, a link is created. Otherwise, a link (in
-> the form of a newly introduced data structure, not a media_link) is
-> added to the links of a shared media device. The latter somewhat
-> corresponds to the v4l2 async notifier mechanism.
-> 
-> So far, so good. Even if the genitive construction chain that describes
-> the matching above is a bit daunting. All in all I think we are on a
-> reasonable path here.
+Setting up the enviroment for running stuff on the NPU was less painful
+than I feared. Using Mesa teflon and python-tflite-runtime.
 
-\o/
-
-Yes the overview is right.
-
-> 
-> > [...]
-> > +// TODO figure out locking for when multiple drivers touch the media graph;
-> > +// maybe macros for shared versions?
-> > +struct media_device_shared {
-> > +     struct media_device mdev;
-> > +     struct list_head members;
-> > +     struct list_head links;
-> > +
-> > +     struct list_head list;
-> > +     struct kref refcount;
-> > +
-> > +     struct device *removed_device;
-> > +};
-> 
-> [discussed in other thread]
-> 
-> > [...]
-> > +/* Callers should hold media_device_shared_lock when calling this function */
-> > +static bool __media_device_shared_find_match(struct media_device_shared *mds,
-> > +                                          struct fwnode_handle *fwnode)
-> > +{
-> > +     struct media_device_shared_member *member;
-> > +     struct fwnode_handle *ep;
-> > +     struct fwnode_handle *remote_ep;
-> > +     bool match = false;
-> > +
-> > +     // TODO: parse the device tree endpoints graph instead of finding just the
-> > +     // first-level neighbours
-> > +     fwnode_graph_for_each_endpoint(fwnode, ep) {
-> > +             list_for_each_entry(member, &mds->members, list) {
-> > +                     remote_ep = fwnode_graph_get_remote_port_parent(ep);
-> > +                     match = (member->fwnode == remote_ep);
-> > +                     fwnode_handle_put(remote_ep);
-> > +
-> > +                     if (!match)
-> > +                             continue;
-> > +
-> > +                     goto match_complete;
-> > +             }
-> > +     }
-> > +
-> > +match_complete:
-> > +     fwnode_handle_put(ep);
-> > +     return match;
-> > +}
-> 
-> <rubberducking>
-> IIUC there could be devices A -> B -> C that share a DT graph (and thus
-> should share a media device), but suppose the probe order is driver A,
-> C, B then A would rightfully create a new shared media device, but C
-> would not see it and create yet another shared media device. Thus, the
-> the find_match() function needs to traverse C -> B -> A to find the
-> correct shared media device.
-> </rubberducking>
-
-Yeah I guess traversing the graph is kind of a critical feature.
-
-> 
-> Just saying that with one and only one media device to rule them all we
-> wouldn't have to deal with this. Another option would be to assume that
-
-Hm yeah that's true; we'd just have a sea of media entities and we can link
-whoever we want...
-
-We didn't really discuss that part very hard last time.
-
-> each driver knows to which shared media device it belongs. For example,
-> the rkcif driver could be aware that it belongs to the
->     {
->         .id = MEDIA_SHARED_ROCKCHIP_CAMERA,
->         .name = "Rockchip Camera Subsystem",
->      }
-
-The problem is where would this information go? We can't put it in the driver;
-it *must* come from the device tree. And I don't think we can just add a new
-property that defines a media subsystem. So I think our only option is to
-traverse the endpoint graph in the device tree.
-
-> shared media device. This would reduce the magic above to a lookup
-> operation. All that said, it should be feasible of course to traverse
-> and find.
-> 
-> > [...]
-> > +/* Callers should hold media_device_shared_lock when calling this function */
-> > +static struct media_device *__media_device_shared_create(struct device *dev)
-> > +{
-> > +     struct media_device_shared *mds;
-> > +     struct media_device_shared_member *member;
-> > +     struct fwnode_handle *fwnode = dev_fwnode(dev);
-> > +     int ret;
-> > +
-> > +     mds = kzalloc_obj(*mds);
-> > +     if (!mds)
-> > +             return NULL;
-> > +
-> > +     member = kzalloc_obj(*member);
-> > +     if (!member)
-> > +             goto err_free_mds;
-> > +
-> > +     media_device_init(&mds->mdev);
-> > +
-> > +     ret = media_device_register(&mds->mdev);
-> > +     if (ret)
-> > +             goto err_free_member;
-> > +
-> > +     INIT_LIST_HEAD(&mds->members);
-> > +     member->dev = dev;
-> > +     member->fwnode = fwnode;
-> > +     list_add_tail(&member->list, &mds->members);
-> 
-> This can be refactored as this is carried out either way, right?
-
-Yes.
-
-> 
-> > +
-> > +     INIT_LIST_HEAD(&mds->links);
-> > +
-> > +     kref_init(&mds->refcount);
-> > +     list_add_tail(&mds->list, &media_device_shared_list);
-> > +
-> > +     // TODO figure out how to reconcile this with multiple members
-> > +     mds->mdev.dev = dev;
-> > +
-> > +     devv_dbg(dev, "%s: Allocated media device with %pfwf at %p\n",
-> > +              __func__, fwnode, &mds->mdev);
-> > +     return &mds->mdev;
-> > +
-> > +err_free_member:
-> > +     kfree(member);
-> > +err_free_mds:
-> > +     kfree(mds);
-> > +     return NULL;
-> > +}
-> 
-> OK, what options do we have?!
-
-(Just in general or with respect to this function...?)
-
-> 
-> We could pick one device of many. But based on what criteria? If there
-> was a good way to pick one, we could equally pick a driver that
-> registers the media device and move on. We conclude that apparently
-> that's not the case, otherwise we wouldn't be doing this exercise. Next.
-
-Yes; given that both rkcif and rkisp2 could potentially exist on devices where
-the other does not, this is not realistically doable. (I mean if we really want
-to we could but it would be a high-cost mess)
-
-> 
-> We could introduce a pseudo device that provides the umbrella. But
-> again, that would be close to creating an umbrella driver that registers
-> the media device. And at some point we decided not to do that. Next.
-
-Similar problem as above (can't choose main driver), the one above that (no
-place to put group member list).
-
-> 
-> We move from the notion of a media **device** to a media **graph**
-> (which is in alignment with the subject of this mail). The media graph
-
-I always thought that media device and media graph were the
-same/interchangable...
-
-> is something owned by the subsystem, not by any device/driver. The media
-> entities therein, however, could be owned by devices/drivers. Maybe
-> struct media_entity should feature a struct device *dev; member.
-> 
-> I could imagine that the dev member is used mostly for
-> dev_{info,err,...}, we would need to get rid of them. If there is
-
-afaict that's the case.
-
-> actually something with devm_ then this requires more thought.
-> 
-> IMHO the third option is the way to go.
-
-I'm glad we agree :)
-
-> 
-> > +
-> > +// TODO figure out how to resolve the identifiers (model, driver name, etc);
-> > +// atm it's racy and whoever gets it last wins
-> > +struct media_device *media_device_shared_join(struct device *dev)
-> > +{
-> > +     struct media_device *mdev;
-> > +
-> > +     mutex_lock(&media_device_shared_lock);
-> > +
-> > +     mdev = __media_device_shared_get(dev);
-> > +     if (!!mdev) {
-> > +             dev_dbg(dev, "%s: found media device for %pfwf", __func__, dev_fwnode(dev));
-> > +             mutex_unlock(&media_device_shared_lock);
-> > +             return mdev;
-> > +     }
-> > +
-> > +     mdev = __media_device_shared_create(dev);
-> > +     if (!mdev) {
-> > +             dev_warn(dev, "%s: failed to create media device for %pfwf", __func__, dev_fwnode(dev));
-> > +             mutex_unlock(&media_device_shared_lock);
-> > +             return ERR_PTR(-ENOMEM);
-> > +     }
-> > +
-> > +     dev_dbg(dev, "%s: created media device for %pfwf", __func__, dev_fwnode(dev));
-> > +     mutex_unlock(&media_device_shared_lock);
-> > +     return mdev;
-> > +}
-> > +EXPORT_SYMBOL_GPL(media_device_shared_join);
-> 
-> Similarly, we have to bid farewell to the notion of a media **device**.
-> Can we agree on making
->     struct device *dev;
->     char driver_name[32];
->     char serial[40];
->     char bus_info[32];
->     u32 hw_revision;
-> optional for shared media devices (or, better, graphs)?
-
-Well I think driver_name and (maybe) hw_revision are still useful to have. The
-only problem is I have no clue where to put/get that information.
-
-The only good-ish idea I could come up with was something like
-"shared_media_graph_{board compatible}_{smallest base address of media graph
-member}". So like "shared_media_graph_rockchip,rk3588_fdcb0000" for the rk3588
-since between the csi receivers and vicap and isp, the isp has the smallest
-address. That way:
-- the information comes from the device tree
-- the name is persistent
-- it can identify separate shared media graphs on the same platform
-
-idk about the hardware revision though. I think probably only driver match data
-can hold that information. But then we'd probably have duplicate information
-since otherwise if one of the member drivers doesn't probe then we'd be missing
-the hw_revision. Or maybe we don't care about hardware revision since it
-doesn't make sense for the shared media graph part and it only makes sense for
-the individual IP cores. In which case that information is lost unless we move
-it somewhere else. Or maybe it's not used anyway so we can indeed just drop it.
-
-> 
-> I could imagine, though, that we provide some minimally meaningful info
-> in a struct
->     {
->         .id = MEDIA_SHARED_ROCKCHIP_CAMERA,
->         .name = "Rockchip Camera Subsystem",
->         .driver_name = "rkcss",
->         .hw_revision = 42,
->         ...
->      }
-
-Same problem as above: there's no reasonable place to put this information.
-
-> and apply that info here.
-> 
-> > [...]
-> > +int media_device_shared_join_link_source(struct media_device *mdev,
-> > +                                      struct device *dev,
-> > +                                      struct media_entity *source,
-> > +                                      u16 source_pad, u32 flags)
-> > +{
-> > +     struct media_device_shared *mds = to_media_device_shared(mdev);
-> > +     struct media_device_shared_link *link;
-> > +     struct media_device_shared_link *link_tmp;
-> > +     int ret = 0;
-> > +
-> > +     mutex_lock(&media_device_shared_lock);
-> > +
-> > +     /*
-> > +      * TODO Figure out flags. Should we use greatest common denominator? Or
-> > +      * prioritize sink? Or whoever wins the race? For now we just take the flags
-> > +      * from the sink.
-> 
-> The phrase "whoever wins the race" is surely gold in the documentation
-> ;-) I guess it should be same as with any _notifier_bound setup, and
-
-Hehe :)
-
-> IIUC it's typically the sink that passes some flags to
-> v4l2_create_fwnode_links_to_pad. So prioritizing the sink seems reasonable.
-
-Ok good.
-
-> 
-> > +      *
-> > +      * TODO Figure out how to actually do the matching. For now we just match
-> > +      * whoever comes in first. This works with the simple example we're running
-> > +      * with now (rkcif + one rkisp2) but with setups with multiple copies of
-> > +      * hardware this will cause problems, like with rkcif + two rkisp2 and
-> > +      * imx8-isi + two rkisp1.
-> > +      */
-> 
-> In the end, shouldn't this follow whatever v4l2_async does? Not exactly
-> sure, but I think storing a struct media_entity * and a struct
-> fwnode_endpoint * for side A should do the trick. Side B would appear
-> later with the second struct fwnode_endpoint. The check would then be if
-> fwnode_graph_get_remote_endpoint(fwnode_A) == fwnode_B (+ maybe vice
-> versa). The link would then be filled with media_entity_{A,B} and
-> media_entity_{A,B}->ops.get_fwnode_pad(media_entity_{A,B},
-> fwnode_{A,B}). Obviously we need some selector that tells us whether
-> A=source and B=sink or vice versa for that.
-
-Oh, good idea!
-
-> 
-> > +     list_for_each_entry_safe(link, link_tmp, &mds->links, list) {
-> > +             if (link->sink) {
-> > +                     ret = media_create_pad_link(source, source_pad,
-> > +                                                 link->sink, link->sink_pad,
-> > +                                                 link->flags);
-> > +                     list_del(&link->list);
-> > +                     kfree(link);
-> > +                     goto exit_join_link_source;
-> > +             }
-> > +     }
-> > +
-> > +     link = kzalloc_obj(*link);
-> > +     if (!link) {
-> > +             ret = -ENOMEM;
-> > +             goto exit_join_link_source;
-> > +     }
-> > +
-> > +     link->source = source;
-> > +     link->source_pad = source_pad;
-> > +     link->flags = flags;
-> > +     list_add_tail(&link->list, &mds->links);
-> > +
-> > +exit_join_link_source:
-> > +     mutex_unlock(&media_device_shared_lock);
-> > +     return ret;
-> > +}
-> > +EXPORT_SYMBOL_GPL(media_device_shared_join_link_source);
-> > +
-> > +// TODO deduplicate from above
-> 
-> Should be possible to have some helper with (..., bool is_source) and
-> then two nice functions that are exposed to the public.
-> To start the bike shedding: Maybe
-> media_device_shared_register_{source,sink}?
-
-Yeah that sounds like a good idea.
+I will repost the entire patch set later today.
+Thanks for all the feedback so far.
 
 
-Thanks,
-
-Paul
-
-> 
-> > [...]
-> 
-> Thanks and best regards,
-> Michael
+best regards,
+Joachim Eastwood
 
 _______________________________________________
 Linux-rockchip mailing list
