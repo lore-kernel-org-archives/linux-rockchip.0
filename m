@@ -4,80 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36F57C44501
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 10:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD246C43458
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 11:54:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aF1lvAYg3/uibzb2t2fuDNLB0mTXc6sjF2QwngfVvcA=; b=Ozkc0c4YB/Ljic
-	T2nw9i6w2E/DukaR9wNFPU3zlr2kSJ5DT6XXfDAqHnX9My4Jdxvzx/PSJAMynKB34uONx9p0JR3qz
-	nGLV2ShYOjeC3WpRoKE9QMMWDU2YDj5lmDUY1czFMnwI40CADttcPvMnHuG4KTYy2qi/ZgtgXSAl/
-	B8R2ufs7AlJ8dKthYwNd9fG9gLjLJFA3m/lqxQCVBFbwybRaxp6Z5u2tSKXDCMZjlwiSoyWWThIdU
-	I316Hhl/1cCDrYVJAFk84cBHYS5Q7BZXxumnIUTgM9dt/gv+5h0zuQL2sbyJTdDoNkyZxcllzr0w6
-	5xDthb0KVIQlnLCGZ8jQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UW00fZkfgbA46cMt2+KCWXa80GB4KAbvAe5VBksyCZo=; b=jHhMaVR8u344Rs
+	Om4MPczPjQo1FX6MFBz1x9cTVhESPDqsDU6oBXVc6dWsBlOVbX/3jDc7Rz7CBzs+27puTTHA543mf
+	gsWL9rT6WqNdc03xHQ8p/6XjmGeHEEvLnVo7vFEtev2G5xOOSyAeiuCmYkkgA5Qjd9EK76I2BLWj2
+	OuLDOPHxDo0WduGlg4G1EDMyZkRGP3bB4omhXePYgLpdkoBseMLoOKJh5rgUS5CKsWEJTCJPyFtCY
+	gky+DY5oHlnM27K4i/vGyv/Oy++N6P5AdsaFe7lcbyrkCwQXTnKzwnQMzhPDwE47VSgaWRAdGwOYa
+	AYziuBvO4BBa/EqRK80w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjDod-00000008s2H-1Jll;
-	Mon, 13 Jul 2026 10:23:11 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wjFEM-000000093xl-3gng;
+	Mon, 13 Jul 2026 11:53:50 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjDoW-00000008ryW-37jd;
-	Mon, 13 Jul 2026 10:23:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783938182;
-	bh=2r583XFfObOO9iTa1b+fiv9AEByaQ06sNo4m0E6ODtM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NZb6XZ//5JX0tOhJA7XAYNQcOl8FFLopCWT74GVz3uGNrs+oaysIKDUILbXHolj+l
-	 U+mXStLMVirMzQviZqKZdgRuZquMmdUmTRhmnSi6PtHnXAl1JTEfnLFS57pAH/SBnR
-	 30ki5UfRzkg1XBOZPkJzntRo2UZ94AEu9cHDdXypFjbbY2pI0EIbCtPKMuJxIuHqKN
-	 ewK6lzPzuebILhrYvY8M82B++JGnIgeXbY6Mzp5hr7q2zQG59hBMwTDpIaHxOcJ0YC
-	 Kz4su9gynjYJwiTYM1VPdRigw/pfrLyGO2jTFwg0CYakYgC39zNYlkEX88Jfhufu0/
-	 4dQY1Nt2JIHOg==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1wjFEJ-000000093wh-04wM
+	for linux-rockchip@lists.infradead.org;
+	Mon, 13 Jul 2026 11:53:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1783943624;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=B54XxYOgQOiIEJK7sD0ym83+/MGWSHFF64vmz3jQu+o=;
+	b=F6lfOHk1lyHuOzFepP/u0rez/kfRBEUAevNwR2nj3CQ4sgyWvbgGDD+ljf0aUq6TbK6Tjt
+	ZkQix+KgojgudMEkhtmnJP2mCl8/qCYHYgizqbunohzu1b6RUNovhvnifxkPAwR+fJrjek
+	liBc29jVTKscXX3GpotpdSMky7rddbs=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-572-Dn27GUPQMfSOFm3Mg7PNRQ-1; Mon,
+ 13 Jul 2026 07:53:41 -0400
+X-MC-Unique: Dn27GUPQMfSOFm3Mg7PNRQ-1
+X-Mimecast-MFC-AGG-ID: Dn27GUPQMfSOFm3Mg7PNRQ_1783943616
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4DB7C17E03CE;
-	Mon, 13 Jul 2026 12:23:01 +0200 (CEST)
-Message-ID: <91c3a825-3344-4ff5-8ea0-f8f057665b3f@collabora.com>
-Date: Mon, 13 Jul 2026 13:23:00 +0300
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id CA9E61955D91;
+	Mon, 13 Jul 2026 11:53:33 +0000 (UTC)
+Received: from [192.168.1.153] (headnet04.pony-001.prod.iad2.dc.redhat.com [10.2.32.116])
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0CB6118005A0;
+	Mon, 13 Jul 2026 11:53:14 +0000 (UTC)
+From: Albert Esteve <aesteve@redhat.com>
+Subject: [PATCH v2 0/5] drm/panel: refcounting panel lookups and references
+Date: Mon, 13 Jul 2026 13:53:03 +0200
+Message-Id: <20260713-drm_refcount_wiring-v2-0-d3bb61f4bd4d@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
- <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
- <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
- <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
- <20260713-statuesque-nonchalant-seagull-b9c39d@houat>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260713-statuesque-nonchalant-seagull-b9c39d@houat>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/22NzQ6CMBCEX8Xs2Zq2/DR68j0MIaVdYA+0ZouoI
+ by7Fa8ev8nMNyskZMIEl8MKjAsliiGDPh7AjTYMKMhnBi11LStVCM9Ty9i7+Ahz+ySmMIgSKzS
+ VwbMsDeTlPRfotVtvTeaR0hz5vZ8s6pv+fLWu//oWJaRwzipruqLz2F8Z/Wjnk4sTNNu2fQCw2
+ Q5NtwAAAA==
+X-Change-ID: 20260513-drm_refcount_wiring-4e5e757e9047
+To: Neil Armstrong <neil.armstrong@linaro.org>, 
+ Jessica Zhang <jesszhan0024@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Inki Dae <inki.dae@samsung.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
+ Linus Walleij <linusw@kernel.org>, Marek Vasut <marex@denx.de>, 
+ Stefan Agner <stefan@agner.ch>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, Biju Das <biju.das.jz@bp.renesas.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>, 
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Chen-Yu Tsai <wens@kernel.org>, Samuel Holland <samuel@sholland.org>, 
+ Jyri Sarha <jyri.sarha@iki.fi>, Jingoo Han <jingoohan1@gmail.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Peter Griffin <peter.griffin@linaro.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Alison Wang <alison.wang@nxp.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Thierry Reding <thierry.reding@kernel.org>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+ linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org, 
+ Albert Esteve <aesteve@redhat.com>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783943594; l=5435;
+ i=aesteve@redhat.com; s=20260303; h=from:subject:message-id;
+ bh=SRtXo7qoSqgK5l+umf1rMmWNg22khBPItUlyntwmvA0=;
+ b=krKLhcYOsELwWzp4Mkmstg1CoAIW+2iQNP5Bx9vPTWdaJHFoUApmueGaj5CJ94aMN2hbmSM4Z
+ i48STMH6Q1GA5qfKEcIhF79Cp9o+131NV2sOs0w0IemF64ja2dO5wAc
+X-Developer-Key: i=aesteve@redhat.com; a=ed25519;
+ pk=YSFz6sOHd2L45+Fr8DIvHTi6lSIjhLZ5T+rkxspJt1s=
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: KQ8JlCSUjLNietdRPTPpeH_fYTXdkQVNUkIQH4ksUhY_1783943616
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_032304_969223_86FEA25B 
-X-CRM114-Status: GOOD (  19.73  )
+X-CRM114-CacheID: sfid-20260713_045347_128073_8159C319 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,58 +143,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/13/26 11:50 AM, Maxime Ripard wrote:
-> On Thu, Jul 09, 2026 at 10:25:54PM +0300, Cristian Ciocaltea wrote:
->> On 7/3/26 11:54 PM, Cristian Ciocaltea wrote:
->>> On 7/3/26 5:34 PM, Dmitry Baryshkov wrote:
->>>> On Thu, Jul 02, 2026 at 05:46:17PM +0300, Cristian Ciocaltea wrote:
->>>>> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
->>>>>
->>>>> - A scrambler_supported flag to indicate whether the source supports the
->>>>>   scrambling capability, in which case the newly introduced
->>>>>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_funcs
->>>>>   are mandatory
->>>>
->>>> Do we need a flag? What would it mean if the flag is set, but the
->>>> callbacks are not? Can we drop the flag and use the presence of the
->>>> callbacks as a way to identify that scrambler is enabled?
->>>
->>> The flag is intended to be set only within drmm_connector_hdmi_init_with_caps()
->>> when drivers advertise HDMI 2.x capability, in which case it also ensures the
->>> callbacks are provided.  
->>>
->>> We could drop the flag and instead have the init helper clear the callbacks if
->>> they were provided for HDMI 1.x.  This might slightly reduce code readability,
->>> as it relies on checking the presence of individual callbacks - especially since
->>> we plan to extend this further with HDMI 2.1 support, providing four or five
->>> additional FRL-specific callbacks.
->>
->> I tried to replace the flag with a helper that checks the presence of (one of)
->> the callbacks, but it's not straightforward to unset those for non-HDMI 2.x
->> cases since the hdmi_funcs argument is immutable.
-> 
-> I'm not sure why we would need to unset them. If the driver states that
-> it support HDMI 2.0, then it needs to be there, if it doesn't, then who
-> cares? it's not going to be used. We can log a warning that it's
-> inconsistent I guess, but there's no need to actively remove it.
+The drm_panel subsystem provides kref-based reference counting [1]
+(drm_panel_get/put) but almost nothing in the tree actually uses it.
+This results in a systemic use-after-free pattern throughout the codebase.
 
-I was trying to address the use case where drivers provide the scrambler
-callbacks despite not supporting HDMI 2.0.  If we replace the
-scrambler_supported flag with a helper checking the presence of the scrambler
-callbacks, then we would need to ensure the callbacks do not exist in this case.
-Since we cannot/don't want to unset them, the remaining solution would be to
-bail out in init().
+This series aims to close all those issues.
 
->> Also, rejecting that use case is less than ideal, since we would restrict
->> reusing the struct instance, e.g. to support HW revisions with varying
->> scrambling capabilities.
-> 
-> We can have several structures instances in that case.
+Patches 1-2: fix the infrastructure. drm_panel_add/remove now keep
+a counted reference for the list entry. drm_panel_bridge_add_typed()
+now holds a counted reference for the lifetime of the panel_bridge.
 
-Fair enough, I wasn't sure if that'd be an acceptable drawback.
+Patch 3: change the semantics of of_drm_find_panel(). It now acquires
+a reference before returning, under panel_lock. All in-tree callers
+of of_drm_find_panel() and drm_of_find_panel_or_bridge() are updated.
+Two patterns are common in these fixes:
 
-Thanks,
-Cristian
+- Bridge-wrapping: the panel is passed to devm_drm_panel_bridge_add()
+  or equivalent, which acquires its own reference. The caller (including
+  devm_drm_of_get_bridge() and drmm_of_get_bridge()) releases its lookup
+  reference immediately after.
+- Store-and-use: the panel pointer is kept in a driver struct and
+  used directly for the device lifetime. The reference is released in the
+  remove/unbind path, or via devm_add_action_or_reset() where no explicit
+  teardown function exists.
+
+Patch 4: extend the same fix to find_panel_by_fwnode(), a static helper
+used internally by drm_panel_add_follower(). Since it has no external
+callers, the fix is self-contained: drm_panel_remove_follower() is
+updated to call drm_panel_put() to balance the reference.
+
+Patch 5: update a remaining batch of drivers calling of_drm_find_panel()
+or drm_of_find_panel_or_bridge() to release the reference after wrapping
+the panel in a bridge or on error paths.
+
+In order to catch all places in the tree that required releasing the
+reference, the search was assisted by an AI model. Specifically, a
+Coccinelle script was designed by the agent to address the trivial changes
+(not included in the series). Although a few required manual fixes, with goto
+labels or bracket additions. Additionally, the model helped to discern implicit
+teardown paths that were addressed with devm_add_action_or_reset() calls.
+Thus, these commits have the Assisted-by label following the project guidelines.
+
+No functional change is intended for any driver. The reference
+counting only affects object lifetime; panel operations are unaffected.
+
+[1] https://lore.kernel.org/all/20250331-b4-panel-refcounting-v4-0-dad50c60c6c9@redhat.com/
+
+Signed-off-by: Albert Esteve <aesteve@redhat.com>
+---
+Changes in v2:
+- Squash of_drm_find_panel() API change with its caller fixes
+- Split find_panel_by_fwnode() into its own commit
+- Update kernel-doc for drm_of_find_panel_or_bridge()
+- Link to v1: https://lore.kernel.org/r/20260626-drm_refcount_wiring-v1-0-cca1a7b3bdef@redhat.com
+
+---
+Albert Esteve (5):
+      drm/panel: have drm_panel_add/remove manage a list reference
+      drm/bridge/panel: hold a reference to the wrapped panel
+      drm/panel: of_drm_find_panel() return a counted reference
+      drm/panel: find_panel_by_fwnode() return a counted reference
+      drm: release panel reference after panel bridge creation
+
+ drivers/gpu/drm/bridge/analogix/analogix-anx6345.c |  3 +++
+ drivers/gpu/drm/bridge/panel.c                     | 18 ++++++++++++----
+ drivers/gpu/drm/drm_of.c                           |  3 ++-
+ drivers/gpu/drm/drm_panel.c                        | 24 +++++++++++++++++-----
+ drivers/gpu/drm/exynos/exynos_dp.c                 | 10 +++++++++
+ drivers/gpu/drm/exynos/exynos_drm_dpi.c            |  3 +++
+ drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c          | 18 ++++++++++++++++
+ drivers/gpu/drm/imx/dcss/dcss-kms.c                |  3 +++
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c          |  4 +++-
+ drivers/gpu/drm/logicvc/logicvc_interface.c        | 12 +++++++++++
+ drivers/gpu/drm/mcde/mcde_drv.c                    |  1 +
+ drivers/gpu/drm/mcde/mcde_dsi.c                    |  1 +
+ drivers/gpu/drm/mxsfb/mxsfb_drv.c                  |  1 +
+ drivers/gpu/drm/omapdrm/dss/output.c               |  1 +
+ drivers/gpu/drm/pl111/pl111_drv.c                  |  1 +
+ drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c  |  1 +
+ drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c        |  1 +
+ drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c   |  1 +
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    | 11 ++++++++++
+ drivers/gpu/drm/rockchip/rockchip_lvds.c           |  1 +
+ drivers/gpu/drm/rockchip/rockchip_rgb.c            |  1 +
+ drivers/gpu/drm/sti/sti_dvo.c                      |  3 +++
+ drivers/gpu/drm/stm/ltdc.c                         |  1 +
+ drivers/gpu/drm/stm/lvds.c                         |  3 +++
+ drivers/gpu/drm/sun4i/sun4i_lvds.c                 | 13 ++++++++++++
+ drivers/gpu/drm/sun4i/sun4i_rgb.c                  | 13 ++++++++++++
+ drivers/gpu/drm/sun4i/sun4i_tcon.c                 |  2 ++
+ drivers/gpu/drm/sun4i/sun6i_mipi_dsi.c             |  2 ++
+ drivers/gpu/drm/tegra/dsi.c                        |  1 +
+ drivers/gpu/drm/tegra/output.c                     |  3 +++
+ drivers/gpu/drm/tidss/tidss_kms.c                  | 16 ++++++++++-----
+ drivers/gpu/drm/tve200/tve200_drv.c                |  1 +
+ 32 files changed, 161 insertions(+), 16 deletions(-)
+---
+base-commit: 502d801f0ab03e4f32f9a33d203154ce84887921
+change-id: 20260513-drm_refcount_wiring-4e5e757e9047
+
+Best regards,
+-- 
+Albert Esteve <aesteve@redhat.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
