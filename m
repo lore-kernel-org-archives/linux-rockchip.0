@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA277C44501
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 20:31:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23C03C4450A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 20:31:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9jRIQPlc/Vxucvf7NGaxjn0ysuVAT99PmQ0QMFNO4Hk=; b=M41fGyvP2Z+nNL
-	blkQ0s14YSItdOBOV//GAifSWBXutwLUy2E4vhqZd43TLrwChqExX1PaBMqXKTUsXZt3WHyz+UkQ7
-	XYlwlAKoMSgl2GgwbRvC2tg4Tq8+C00vmllVQ2QD4kn/aCZt3hfEf2nk2DOcMeLN7ctV1OiNLyXri
-	jT9eDZL8JYVzszaUcT/VSEpzZ4aMTDXP3WMM7+E5kY8BsGFG0HDWMz5HAo9EP7zVHAHXKIbyN4vPE
-	6nUcr8dfqBOUCxUsgPAMwwWd0DONEJ1vEhT5omq/0d9CyO4XPcugbbX/8Y97fvHj51IPuZ4rzI4tv
-	u5lKIROZYp9iA6dI5TMQ==;
+	List-Owner; bh=Rm6NCTmq3V2e3Q5bSfCZQbqgRVzVUTFgtRYrQdZ4Rx8=; b=rwT5ZbZ6/3ny6D
+	ql+vwqqGxfElSvKYYTBedYbuLpnCt7bYV+eYTT4kCA0yh1oBtau0YSJZVQWK/lTR830DjX0C/XCg/
+	YE0XmlZUxKC30V7Bd+RnnbEarpDm5OQeUTc+r3s8ZnNP7roFO29Gl3oX11Gtcel9WvygCCZPK6Gsr
+	iLdm7hDVmsMAkF4ps/GgeiO7PmNf+pLEHZ9myWNX5DX+XI1NPVDns6hszY9DDHbao/WhkOWAEsznF
+	tbrIcWFj7eeG2kjIU1QJgo1iuRWExZYEljy60Ho/xuCV1Gs164ty1qN+0UNARCD3C5E6UgQ379/8r
+	aVNQgKR8pyIpV5x8Jchg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjNIm-0000000AN0R-13In;
-	Mon, 13 Jul 2026 20:30:56 +0000
+	id 1wjNIp-0000000AN7i-37G9;
+	Mon, 13 Jul 2026 20:30:59 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjNIj-0000000AMx9-2M2s;
-	Mon, 13 Jul 2026 20:30:53 +0000
+	id 1wjNIk-0000000AMxu-0ZFk;
+	Mon, 13 Jul 2026 20:30:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1625143A28;
+	by sea.source.kernel.org (Postfix) with ESMTP id 92C4243B98;
 	Mon, 13 Jul 2026 20:30:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id E7559C4AF0C;
-	Mon, 13 Jul 2026 20:30:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6FA3EC2BD05;
+	Mon, 13 Jul 2026 20:30:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1783974652;
-	bh=dNHFrJHLOWSVQj0VAgfx0bbF4tQ7AtO+Nvl4xC2rWdk=;
+	s=k20201202; t=1783974653;
+	bh=zYDd1VIwjG9zHV7YV5mJEvcz8Z+9ssbiTCyPwYlA1ME=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=fpbh6x9dOfNDjCOZEpV8Lnxg84q/sKKX/uJ+NPCnQ5rokPXgEUQncQBV42US8RzxI
-	 xVPDnl1KEGKn1YISKPgwwcc3vI8+A1SFD3ByYjz0ufwgJP7cLzFsAeGTP7VMBBfXKh
-	 Xr1H6JMaUYEDOMzSAKkO0hp0ls63m70nX6F36RjaT+WQikY9cVc7TbNl/7gb4lc0hV
-	 IvbHc+njjLxrY0n/OvyNTM34BUGrDLVPzWbn8T0MFSTj8KUqJnqNrSHcI1ZCOkKNVq
-	 linbxXVuihs63GIrAdxRlTGGDVbuPn2VB0WvV0r3FjVjDYkmqZNRwgRPowtmFdrzO0
-	 PGMGdtqotX2Yw==
+	b=s3DNs/vC3Qc3EvkV33XFM0yIuRSkR67nlbqAfZj0b5ap7Aqmn386Yu3MTpASp+hcy
+	 oX/qLgR6a8fMsdHlQ8R+W/POTN20X6O9UE8gwHPy03EubxzRFMTMVuKrWpqIo3FzLF
+	 Kh44JshBVESla7goh6LhFDxogsCXcx2qcEQ5pzmRHmkCZ7SR/v/de1hQTL770OpSnl
+	 ah8vvt4aEQL5+nB1rczgAIGK02Ylv5iLEsHVNjAVcExL3RH3epd8wxhltdjmWAAuFJ
+	 D0rJous5BnObjNGfac7mJ0x/Zihs+k7i7BNhblxiVivkQwzbgWEKcGW0zpzHrMAtFL
+	 f3eYZtC8Bkeow==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D6206C4450A;
-	Mon, 13 Jul 2026 20:30:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 581F0C43458;
+	Mon, 13 Jul 2026 20:30:53 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Mon, 13 Jul 2026 22:30:08 +0200
-Subject: [PATCH v3 04/12] arm64: dts: rockchip: rk3588s-nanopi-r6: remove
- pull up on rtc int pin
+Date: Mon, 13 Jul 2026 22:30:16 +0200
+Subject: [PATCH v3 12/12] arm64: dts: rockchip: add support for NanoPi M6
+ board
 MIME-Version: 1.0
-Message-Id: <20260713-nanopi-m6-v3-4-227567ffc5dc@gmail.com>
+Message-Id: <20260713-nanopi-m6-v3-12-227567ffc5dc@gmail.com>
 References: <20260713-nanopi-m6-v3-0-227567ffc5dc@gmail.com>
 In-Reply-To: <20260713-nanopi-m6-v3-0-227567ffc5dc@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,11 +58,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, diederik@cknow-tech.com, 
  jonas@kwiboo.se, Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783974651; l=849;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783974651; l=6501;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=jqJ2696lj9Hvn5Qt/ZOAsC9oB80HacDgq2t74caeHkU=;
- b=yHIR6cVYA1kZqzGRC1L0u5WzEfWH5iTjy1L3y3AWY6M5iZN0WnLoN6Va1HiTkl607AvKiK4ON
- y6YCo/mjNRMChMbIVY+nZYRMZDfab/ZPSdXM0IcJBsrLPTuwu8x+BUX
+ bh=SjL4719aLyU18eG8vR709tUkc793I/xk1JBZuO7TxZo=;
+ b=pru9ML2k6lArrHIpEVcRezD91V3T+i+Je6UcnJXp9v/LGhYn4lJp47VgiVnzbX5+l43jmyZdM
+ N6wCbHb8RhtCxTMBRPwDzmzlIBz0UofdYckDJ5GyAdExydEtvx+ALhu
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,27 +87,254 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-All boards in the RK3588S NanoPi familiy has a pull on the PCB for the
-RTC interrupt pin. So there is no need to enable the pull-up in the SoC.
+The NanoPi M6 (V1) board shares most of the features of the R6 boards.
+
+Main differences:
+* M.2 M-key slot with PCIe (Also present on R6C)
+* M.2 E-key slot with PCIe and USB (from hub)
+* 1 additional USB 2.0 port from an on-board USB hub
+* RT5616 audio CODEC
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi | 142 +++++++++++++++++++++
+ .../boot/dts/rockchip/rk3588s-nanopi-m6v1.dts      |  67 ++++++++++
+ 3 files changed, 210 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-index 8df6e1a21180..3f04b988ec29 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-@@ -420,7 +420,7 @@ hdmi0_tx_on_h: hdmi0-tx-on-h {
- 
- 	hym8563 {
- 		rtc_int: rtc-int {
--			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
- 
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 761d82b4f4f2..55a1ec8309df 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -218,6 +218,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-gameforce-ace.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-indiedroid-nova.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-m6v1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-odroid-m2.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
+new file mode 100644
+index 000000000000..bb2ef1f66d2a
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
+@@ -0,0 +1,142 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++#include "rk3588s-nanopi.dtsi"
++
++/ {
++	adc-keys-1 {
++		compatible = "adc-keys";
++		io-channels = <&saradc 1>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1800000>;
++		poll-interval = <100>;
++
++		button-maskrom {
++			label = "Recovery";
++			linux,code = <KEY_VENDOR>;
++			press-threshold-microvolt = <1800>;
++		};
++	};
++
++	leds {
++		compatible = "gpio-leds";
++
++		sys_led: led-0 {
++			label = "sys_led";
++			gpios = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "heartbeat";
++			pinctrl-names = "default";
++			pinctrl-0 = <&sys_led_pin>;
++		};
++
++		user_led: led-1 {
++			label = "user_led";
++			gpios = <&gpio1 RK_PA6 GPIO_ACTIVE_HIGH>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&user_led_pin>;
++		};
++	};
++
++	vcc_3v3_pcie: regulator-vcc-3v3-pcie {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pcie2_2_pwren>;
++		regulator-name = "vcc_3v3_pcie";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc5v0_usb_otg0: regulator-vcc5v0-usb-otg0 {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpios = <&gpio3 RK_PD4 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&typec5v_pwren>;
++		regulator-name = "vcc5v0_usb_otg0";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vdd_mpcie_3v3: regulator-vdd-mpcie-3v3 {
++		compatible = "regulator-fixed";
++		/* Controlled by EXT_EN on RK806 */
++		regulator-name = "vdd_mpcie_3v3";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++};
++
++&i2c7 {
++	clock-frequency = <200000>;
++	status = "okay";
++};
++
++&i2s0_8ch {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2s0_lrck
++		     &i2s0_mclk
++		     &i2s0_sclk
++		     &i2s0_sdi0
++		     &i2s0_sdo0>;
++	status = "okay";
++};
++
++&pcie2x1l1 { /* M.2 E-key 2230 */
++	vpcie3v3-supply = <&vdd_mpcie_3v3>;
++};
++
++&pcie2x1l2 { /* M.2 M-key 2280 */
++	pinctrl-0 = <&pcie2_2_rst>, <&pcie20x1m0_clkreqn>, <&pcie20x1m0_waken>;
++	vpcie3v3-supply = <&vcc_3v3_pcie>;
++};
++
++&pinctrl {
++	gpio-leds {
++		sys_led_pin: sys-led-pin {
++			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		user_led_pin: user-led-pin {
++			rockchip,pins = <1 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	headphone {
++		hp_det: hp-det {
++			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	pcie {
++		pcie2_2_pwren: pcie2-2-pwren {
++			rockchip,pins = <3 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	usb {
++		typec5v_pwren: typec5v-pwren {
++			rockchip,pins = <3 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&u2phy3 {
++	status = "okay";
++};
++
++&u2phy3_host {
++	phy-supply = <&vcc5v0_host_20>;
++	status = "okay";
++};
++
++&usb_host1_ehci {
++	status = "okay";
++};
++
++&usb_host1_ohci {
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6v1.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6v1.dts
+new file mode 100644
+index 000000000000..f981973c96ac
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6v1.dts
+@@ -0,0 +1,67 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++
++#include "rk3588s-nanopi-m6.dtsi"
++
++/ {
++	model = "FriendlyElec NanoPi M6";
++	compatible = "friendlyarm,nanopi-m6", "rockchip,rk3588s";
++
++	sound {
++		compatible = "simple-audio-card";
++		pinctrl-names = "default";
++		pinctrl-0 = <&hp_det>;
++
++		simple-audio-card,name = "realtek,rt5616-codec";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,mclk-fs = <256>;
++
++		simple-audio-card,hp-det-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
++
++		simple-audio-card,widgets =
++			"Headphone", "Headphones",
++			"Microphone", "Microphone Jack";
++		simple-audio-card,routing =
++			"Headphones", "HPOL",
++			"Headphones", "HPOR",
++			"MIC1", "Microphone Jack",
++			"Microphone Jack", "micbias1";
++
++		simple-audio-card,cpu {
++			sound-dai = <&i2s0_8ch>;
++		};
++
++		simple-audio-card,codec {
++			sound-dai = <&rt5616>;
++		};
++	};
++};
++
++&i2c7 {
++	rt5616: codec@1b {
++		compatible = "realtek,rt5616";
++		reg = <0x1b>;
++		clocks = <&cru I2S0_8CH_MCLKOUT_TO_IO>;
++		clock-names = "mclk";
++		#sound-dai-cells = <0>;
++		assigned-clocks = <&cru I2S0_8CH_MCLKOUT_TO_IO>;
++		assigned-clock-rates = <12288000>;
++
++		port {
++			rt5616_p0: endpoint {
++				remote-endpoint = <&i2s0_8ch_p0>;
++			};
++		};
++	};
++};
++
++&i2s0_8ch {
++	port {
++		i2s0_8ch_p0: endpoint {
++			dai-format = "i2s";
++			mclk-fs = <256>;
++			remote-endpoint = <&rt5616_p0>;
++		};
++	};
++};
 
 -- 
 2.55.0
