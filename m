@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3617DC43458
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 08:26:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D8F7C43458
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 08:50:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5OQTnr7dNG0r8TGzSGtwzKANF6EyT3Dq84GzxVp4/00=; b=1QSNQ9IEwWPSpm
-	a4UlK5dxS1car9wCvt4bOleVDRu1ev1f7w5uFqcbTicaJRb2dAq68/p/AMi93NkaMU26sGS6K5s6u
-	fUzFnSzmh+Ric2juUDSa9Ct9VCjksj1k7Cahco5CtD3YxjnyYs1GSfSS08s6qv1YZpWRGpkouUjVq
-	+C6eRYal5dZgZJhYDKoeHCxL9NTCle/FyH6tdGWba7GKn8HeoB3uab5S7LF0do7s+We8cUNoq7ATt
-	VkgUuAl0AZBYpXIJps+0jMZ2mbWHfKuZWq9S5TJPEJmrxhbjiValEUYooHlmKiVeIuHxOkEtsZNHb
-	kQNWG7nUY4l/Hqw46Vng==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fe8QbwH3SPylmU5el93Gsg8m4NvhfBSo8KzpOvGsRp4=; b=wnN2ZY03ikPn95aRZgRZcW/Cjr
+	qN4Boycz/5mG7uqLTu89lI9LgBJ76gwgL3dCil9WAAwYMf98Ozx76ZoaVK0DdaJOnDHOALj7bssVR
+	Yb67WNiOR4jm6FDJ5QlEky9u5qTd5ipFS+iNQmCT8Oxir9S1Xn24EJL5qn/EMgkj/MynIAXQw7iTC
+	bO9YtFxOJeLpUpKd1J4MeOsR8HCC30VDddhDyFT6jPWVmfUUnrus0ycnmrygj4z/UuPNw1sp86+PB
+	h3vEMQY1pUnZ4zaNy05IdiTp3q21UyYiv+dZqcaixDQWA6ALkElqI0qz3riOoWEW2WQoahOcDSBwu
+	9Rbn23ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjBzs-00000008ZoV-2wEN;
-	Mon, 13 Jul 2026 08:26:40 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wjCMx-00000008dUQ-2OL2;
+	Mon, 13 Jul 2026 08:50:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjBzp-00000008Zmp-33ew;
-	Mon, 13 Jul 2026 08:26:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1783931190; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ber3P3DsFBHilhRzneGtUCB89qv6Ejky7sGcNuHcex5G7jLctbPoHfAUiAmuRsdUn1cfY9FuO17sO9e3wJM2UQLvMFJsKHLZ6LTKulH43BvJ1AlP3l3ICmBb5DEQ8P4BGUWRjNPSc0OF68E2fy0VNIh40Jjt9F5OQcxSO5jAg+s=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1783931190; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Sz5yvTcQXFks2sdiyYqdqrK3YmhgCtxhQzxI6OD2Ifs=; 
-	b=h/o6BaqsmEB6W/Lt3lKDjLlEWEh8nfj0onoInCrq+9l7u4g+InqifU0+HTfLWJx6vF7aSyqDDGVwNcm+64ztODqvOXiRoPuy0Rz7iX4MDQemosOqb+NdhGE+yfI5O7uK1BIjgm/7Vomms3W2c4ajyJeI+z6wb0ZJZPh6pgCQOzg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
-	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783931190;
-	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Sz5yvTcQXFks2sdiyYqdqrK3YmhgCtxhQzxI6OD2Ifs=;
-	b=jTbOslw1SXOHr7DTrR85gIjIiR666fKDOzYo7JTMsuguyoXJQPnX3L3LUYmoRyhq
-	M7zsPVScOR7telvXdJdoH7BKFM152SxfmLznLX55guMWJ9EEJmPnB8z49qV9uXUVVUt
-	0BoqXVqZIf50iAMNM5aAEL50HrQC4f7fZDC3mlNw=
-Received: by mx.zohomail.com with SMTPS id 1783931183818309.7919113288565;
-	Mon, 13 Jul 2026 01:26:23 -0700 (PDT)
-Message-ID: <fe2a557c-c83e-494e-ac4d-c389dc26562d@collabora.com>
-Date: Mon, 13 Jul 2026 10:26:19 +0200
+	id 1wjCMv-00000008dTo-2wZf;
+	Mon, 13 Jul 2026 08:50:29 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1DDEA409AF;
+	Mon, 13 Jul 2026 08:50:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A3A41F000E9;
+	Mon, 13 Jul 2026 08:50:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783932629;
+	bh=5EA+lXj/K8xJbCSjJ8LN+mG6y6RHNdOMcGifVOFlxyU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=GAfRK4RMYumLIlAlyNQT4Tx+dq6pl7jiQuPzDy+DiWIJODpVK5AIuBW2p4jq78wye
+	 SSNgwu9BZX3OR1rI9dVAffgP1pnH+XcNGaJau8LdZ/E9NJlXF2WSIjWHjANfFgJsw1
+	 9S0ebP8zQD37VgV0t4ebLmAV3XjSsatKfeg7R31HiA3Bg1zsWlx2C5nJ28lGHcYCX0
+	 czgob1qUQarJUBA4ZHbtAi+dm+4iU8Ir3KzIOz4XD0RmIuVj7Ma8lomiKZFLkN0etT
+	 gtN4FFulvMg5NhrnJW5N6YMpnHAbTszDQDSulW8c9hIKoZXCw/Pz6NkzvZ7YBaW4F1
+	 NaAx0leZq+Nww==
+Date: Mon, 13 Jul 2026 10:50:26 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Daniel Stone <daniels@collabora.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	kernel@collabora.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
+ infrastructure
+Message-ID: <20260713-statuesque-nonchalant-seagull-b9c39d@houat>
+References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
+ <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
+ <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
+ <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
+ <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 1/6] media: mc: Implement shared media graph
-To: Paul Elder <paul.elder@ideasonboard.com>,
- laurent.pinchart@ideasonboard.com
-Cc: xuhf@rock-chips.com, stefan.klug@ideasonboard.com,
- kieran.bingham@ideasonboard.com, dan.scally@ideasonboard.com,
- jacopo.mondi@ideasonboard.com, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, hverkuil+cisco@kernel.org,
- nicolas.dufresne@collabora.com, ribalda@chromium.org,
- sakari.ailus@linux.intel.com
-References: <20260619052637.1110672-1-paul.elder@ideasonboard.com>
- <20260619052637.1110672-2-paul.elder@ideasonboard.com>
- <e5f16200-3881-4f25-b67d-7053b3b8af19@collabora.com>
- <178390772961.8891.12325171786588563297@neptunite.rasen.tech>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <178390772961.8891.12325171786588563297@neptunite.rasen.tech>
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_012637_936888_73609580 
-X-CRM114-Status: GOOD (  57.56  )
+In-Reply-To: <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,250 +77,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2404342989237974831=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
 
-On 7/13/26 03:55, Paul Elder wrote:
-> [...]
->>
->> <rubberducking>
->> IIUC there could be devices A -> B -> C that share a DT graph (and thus
->> should share a media device), but suppose the probe order is driver A,
->> C, B then A would rightfully create a new shared media device, but C
->> would not see it and create yet another shared media device. Thus, the
->> the find_match() function needs to traverse C -> B -> A to find the
->> correct shared media device.
->> </rubberducking>
-> 
-> Yeah I guess traversing the graph is kind of a critical feature.
-> 
->>
->> Just saying that with one and only one media device to rule them all we
->> wouldn't have to deal with this. Another option would be to assume that
-> 
-> Hm yeah that's true; we'd just have a sea of media entities and we can link
-> whoever we want...
-> 
-> We didn't really discuss that part very hard last time.
-> 
->> each driver knows to which shared media device it belongs. For example,
->> the rkcif driver could be aware that it belongs to the
->>     {
->>         .id = MEDIA_SHARED_ROCKCHIP_CAMERA,
->>         .name = "Rockchip Camera Subsystem",
->>      }
-> 
-> The problem is where would this information go? We can't put it in the driver;
-> it *must* come from the device tree. And I don't think we can just add a new
-> property that defines a media subsystem. So I think our only option is to
-> traverse the endpoint graph in the device tree.
-
-Just to sketch the rough idea: A list of known shared media graphs in
-drivers/media/mc/mc-shared-graph.c:
-
-struct mcshgr_info { ... } known_graphs  = {
-	{
-		.id = MEDIA_SHARED_ROCKCHIP_RK3588_CAMERA,
-		.name = "Rockchip Camera Subsystem",
-		// TODO fill me with other things
-	},
-	{
-		.id = MEDIA_SHARED_ROCKCHIP_RK3576_CAMERA,
-		.name  = "whatever",
-		// TODO fill me with other things
-	},
-};
-
-The IDs need to go into a enum in include/media/mc-shared-graph.h.
-
-The drivers would then call e.g.
-	mdev = media_device_shared_join(rkcif->dev,
-		MEDIA_SHARED_ROCKCHIP_RK3588_CAMERA);
-and of course this parameter could vary with the individual driver DT
-compatible, e.g., "rockchip,rk3588-vicap" =>
-MEDIA_SHARED_ROCKCHIP_RK3588_CAMERA.
-
-I am sketching this for the sake of completeness. This would provide a
-place to store information, but I am not convinced at all that this is a
-nice solution.
-
-Alternatively, the list of known shared media graphs could store some DT
-compatibles
-
-struct mcshgr_info { ... } known_graphs  = {
-	{
-		.id = MEDIA_SHARED_ROCKCHIP_RK3588_CAMERA,
-		.name = "Rockchip Camera Subsystem",
-		.compatibles = {
-			"rockchip,rk3588-isp",
-			"rockchip,rk3588-vicap",
-		},
-		// TODO fill me with other things
-	},
-};
-and I guess there could be a way to get the compatible from struct
-device, then
-	mdev = media_device_shared_join(rkcif->dev);
-would remain the same.
-
-This just occurred to me -- not sure whether I like it.
-
-> [...]
->>
->> OK, what options do we have?!
-> 
-> (Just in general or with respect to this function...?)
-
-How to get information that the media device requires or at least
-contains as of today.
-
->> We could pick one device of many. But based on what criteria? If there
->> was a good way to pick one, we could equally pick a driver that
->> registers the media device and move on. We conclude that apparently
->> that's not the case, otherwise we wouldn't be doing this exercise. Next.
-> 
-> Yes; given that both rkcif and rkisp2 could potentially exist on devices where
-> the other does not, this is not realistically doable. (I mean if we really want
-> to we could but it would be a high-cost mess)
-> 
->>
->> We could introduce a pseudo device that provides the umbrella. But
->> again, that would be close to creating an umbrella driver that registers
->> the media device. And at some point we decided not to do that. Next.
-> 
-> Similar problem as above (can't choose main driver), the one above that (no
-> place to put group member list).
-> 
->>
->> We move from the notion of a media **device** to a media **graph**
->> (which is in alignment with the subject of this mail). The media graph
-> 
-> I always thought that media device and media graph were the
-> same/interchangable...
-
-They may be, at least as of today. I was asking myself how our view on
-the new (shared) media device should look like. And I think that the
-concept of the graph is important, and that the focus should be on which
-entities there are and how the are connected (i.e, the topology, the
-graph). This also means that we should not rely on other information and
-assumptions (other information such as media device name, hw version,
-... and assumptions such as "there is a single v4l2 driver that owns the
-graph", "there is a single media device that owns the graph", ...)
-
-In the end, what should user space do? Does libcamera actually do
-anything with e.g. the HW revision of a media device? Is the name of the
-media device actually used?
-
-Or does it simply iterate over all media devices and scan for entities
-with a certain name (e.g. look for a RK3588 ISP)? Because if it does, or
-if it could do it that way, there is no point in crafting together this
-additional information in the kernel.
-
-> 
->> is something owned by the subsystem, not by any device/driver. The media
->> entities therein, however, could be owned by devices/drivers. Maybe
->> struct media_entity should feature a struct device *dev; member.
->>
->> I could imagine that the dev member is used mostly for
->> dev_{info,err,...}, we would need to get rid of them. If there is
-> 
-> afaict that's the case.
-> 
->> actually something with devm_ then this requires more thought.
->>
->> IMHO the third option is the way to go.
-> 
-> I'm glad we agree :)
-
-Then we set the dev member of the media_device to NULL, right?
-
-> 
->>
->>> +
->>> +// TODO figure out how to resolve the identifiers (model, driver name, etc);
->>> +// atm it's racy and whoever gets it last wins
->>> +struct media_device *media_device_shared_join(struct device *dev)
->>> +{
->>> +     struct media_device *mdev;
->>> +
->>> +     mutex_lock(&media_device_shared_lock);
->>> +
->>> +     mdev = __media_device_shared_get(dev);
->>> +     if (!!mdev) {
->>> +             dev_dbg(dev, "%s: found media device for %pfwf", __func__, dev_fwnode(dev));
->>> +             mutex_unlock(&media_device_shared_lock);
->>> +             return mdev;
->>> +     }
->>> +
->>> +     mdev = __media_device_shared_create(dev);
->>> +     if (!mdev) {
->>> +             dev_warn(dev, "%s: failed to create media device for %pfwf", __func__, dev_fwnode(dev));
->>> +             mutex_unlock(&media_device_shared_lock);
->>> +             return ERR_PTR(-ENOMEM);
->>> +     }
->>> +
->>> +     dev_dbg(dev, "%s: created media device for %pfwf", __func__, dev_fwnode(dev));
->>> +     mutex_unlock(&media_device_shared_lock);
->>> +     return mdev;
->>> +}
->>> +EXPORT_SYMBOL_GPL(media_device_shared_join);
->>
->> Similarly, we have to bid farewell to the notion of a media **device**.
->> Can we agree on making
->>     struct device *dev;
->>     char driver_name[32];
->>     char serial[40];
->>     char bus_info[32];
->>     u32 hw_revision;
->> optional for shared media devices (or, better, graphs)?
-> 
-> Well I think driver_name and (maybe) hw_revision are still useful to have. The
-> only problem is I have no clue where to put/get that information.
-> 
-> The only good-ish idea I could come up with was something like
-> "shared_media_graph_{board compatible}_{smallest base address of media graph
-> member}". So like "shared_media_graph_rockchip,rk3588_fdcb0000" for the rk3588
-> since between the csi receivers and vicap and isp, the isp has the smallest
-> address. That way:
-> - the information comes from the device tree
-> - the name is persistent
-> - it can identify separate shared media graphs on the same platform
-> 
-> idk about the hardware revision though. I think probably only driver match data
-> can hold that information. But then we'd probably have duplicate information
-> since otherwise if one of the member drivers doesn't probe then we'd be missing
-> the hw_revision. Or maybe we don't care about hardware revision since it
-> doesn't make sense for the shared media graph part and it only makes sense for
-> the individual IP cores. In which case that information is lost unless we move
-> it somewhere else. Or maybe it's not used anyway so we can indeed just drop it.
-
-Crafting together a name from device tree information... could work..
-and could be reasonable I guess. Just saying that if some joker removes
-the connection between ISP and VICAP in device tree, the media graph
-could end up with the same name for different things or different things
-with the same name and... I just think I this all is not something I
-would rely on from user space, and I would look at the graph rather than
-making assumptions based on the graph name.
-
-The real question is whether this is actually needed. As you stated
-above, maybe this simply doesn't make sense for a shared media graph.
-And we still have the individual IP core information.
-
-I would recommend to ignore the fields listed above for shared media
-devices.
-
-> [...]
-
-Thanks and best regards,
-Michael
+--===============2404342989237974831==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="btsl2kbqtfweqxel"
+Content-Disposition: inline
 
 
+--btsl2kbqtfweqxel
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
+ infrastructure
+MIME-Version: 1.0
+
+On Thu, Jul 09, 2026 at 10:25:54PM +0300, Cristian Ciocaltea wrote:
+> On 7/3/26 11:54 PM, Cristian Ciocaltea wrote:
+> > On 7/3/26 5:34 PM, Dmitry Baryshkov wrote:
+> >> On Thu, Jul 02, 2026 at 05:46:17PM +0300, Cristian Ciocaltea wrote:
+> >>> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
+> >>>
+> >>> - A scrambler_supported flag to indicate whether the source supports =
+the
+> >>>   scrambling capability, in which case the newly introduced
+> >>>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_funcs
+> >>>   are mandatory
+> >>
+> >> Do we need a flag? What would it mean if the flag is set, but the
+> >> callbacks are not? Can we drop the flag and use the presence of the
+> >> callbacks as a way to identify that scrambler is enabled?
+> >=20
+> > The flag is intended to be set only within drmm_connector_hdmi_init_wit=
+h_caps()
+> > when drivers advertise HDMI 2.x capability, in which case it also ensur=
+es the
+> > callbacks are provided. =20
+> >=20
+> > We could drop the flag and instead have the init helper clear the callb=
+acks if
+> > they were provided for HDMI 1.x.  This might slightly reduce code reada=
+bility,
+> > as it relies on checking the presence of individual callbacks - especia=
+lly since
+> > we plan to extend this further with HDMI 2.1 support, providing four or=
+ five
+> > additional FRL-specific callbacks.
+>=20
+> I tried to replace the flag with a helper that checks the presence of (on=
+e of)
+> the callbacks, but it's not straightforward to unset those for non-HDMI 2=
+=2Ex
+> cases since the hdmi_funcs argument is immutable.
+
+I'm not sure why we would need to unset them. If the driver states that
+it support HDMI 2.0, then it needs to be there, if it doesn't, then who
+cares? it's not going to be used. We can log a warning that it's
+inconsistent I guess, but there's no need to actively remove it.
+
+> Also, rejecting that use case is less than ideal, since we would restrict
+> reusing the struct instance, e.g. to support HW revisions with varying
+> scrambling capabilities.
+
+We can have several structures instances in that case.
+
+Maxime
+
+--btsl2kbqtfweqxel
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCalSmyAAKCRAnX84Zoj2+
+dqGdAYD5AllkwZ5KScpMKFfTsPXCYSRxrpnk5TeTUILBIQvpyckLo8DEtaScoJSo
+4zq9u/kBf2kkB5P2HpvpZXnVt76fCSHC8hIJL+W0X8GmcJGPYgL00NN7UrBicM/Q
+tOYFx0xZww==
+=921J
+-----END PGP SIGNATURE-----
+
+--btsl2kbqtfweqxel--
+
+
+--===============2404342989237974831==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2404342989237974831==--
+
