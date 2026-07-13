@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C9DAC43458
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 11:55:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C21C43458
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jul 2026 11:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nnm5JZh2L9A3rDXU0k72lgAB5B92J0u0d6pq6J9Kv1k=; b=ItQsppRlpXYOCG
-	xRc+vCCWfynor+JkV5t60jkjV0B+IcEhIHPf+UsoDBXkg4Cgtm024HsStPQECN22ph0Q68FvtoTDe
-	jLIQp9sBXg1FjQPKakw+iSdqnq3avnhwpHeVeta+By1tHut5AI2pHTl76Tsl9yEKR6ae7MkC7ZS3d
-	JMGmOPg62pUXlQWnRt7iR7NKpaXuvDzQrT63mHp+qvprD6iATtZI1vJG97D8GRt+os1pfcWVMAw2j
-	MVPLW5/UjYmHXnWiKFu6dggYKVUnnD2YHxIJUDJPtNn8ECiPiMw01uVW+QLHefairpSqa0gj0Yf80
-	b4a2H5qGu9PDLvng8R1g==;
+	List-Owner; bh=B2cJJeAEhXrlyaaEYbR4iTPwp42TeHS/QiRWdWZgM6c=; b=IC3X7tsWPv7HHb
+	npI7vcwhEIxfQZGKB5Yr/2mW6aeYLVgx5t4KyiLS9nml2wtj/DBIxCu3V4mdNqV95vqL0lZMG0Znr
+	R5dzRKrXErdh408nHpRiOQG76uOk9HPOJVTipehtrVIigTxG5MBag8YskMdK83XJujayA0b5hKGlV
+	8BDUJH1PQtSzcwaVSDDyxqNYJxH59UjXJuKuHuN8AeoIg5puqWxZdsjxMJVftoGV6ZPGNzdCbYh1Z
+	+9S/BJOSstVJvqm3obCeiKe+EiZK0NaKy5ybqGM/undyqbXCUpo3RI6rws3BqB2yYFVMyW5TcH1BN
+	r676dpyCTKeyKPdhk8Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjFFg-000000094LY-3nky;
-	Mon, 13 Jul 2026 11:55:12 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wjFFj-000000094N8-46aL;
+	Mon, 13 Jul 2026 11:55:15 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjFFd-000000094KA-31kc
+	id 1wjFFh-000000094LI-2WYX
 	for linux-rockchip@lists.infradead.org;
-	Mon, 13 Jul 2026 11:55:10 +0000
+	Mon, 13 Jul 2026 11:55:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1783943708;
+	s=mimecast20190719; t=1783943712;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=NgFyIB4g392Dy+EScJnc+J4AoTxCRcd30Z9klgkdRhQ=;
-	b=a+kmFTFh9KP5KUEbfDdi3JV31n/VebPHJXwhGkvx1E+aScuDcbUh4JgTyHy4k/CVstu87X
-	+IcVRORxGcjuHwagLAmDSjAsU7mUl6xN76dDQu0sQN9SHt0BjqJuud1IqLGpqaaNXvg6FH
-	fec4ijsaotXmg64DqfP6Z8xH//Oxk8Q=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+	bh=iNPubKjBMqN3gTmvYDkvcmawrm5Mwj72gRd4ijQR7wo=;
+	b=AiLl9JhCTw628Lrv39Ut/kEs8A8w8iz6PYj7qMyr9lit4MLSbg4nxh7vfpFVAei5/kOyIU
+	hgijuCPKMlkhC5TK01ra0ONlyfEEP26eWzn7W7BrFeKkSFpW21JcheNw+MNFYBYFvaggk3
+	5rUBVHBdfXN0FfUFJubS9Kk6lfB/Vbo=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-60-Ud8qEskWNYitkS1fxOQ0ZA-1; Mon,
- 13 Jul 2026 07:53:57 -0400
-X-MC-Unique: Ud8qEskWNYitkS1fxOQ0ZA-1
-X-Mimecast-MFC-AGG-ID: Ud8qEskWNYitkS1fxOQ0ZA_1783943632
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-316-e_HZoDjEObKsgTdsUXzdjQ-1; Mon,
+ 13 Jul 2026 07:55:07 -0400
+X-MC-Unique: e_HZoDjEObKsgTdsUXzdjQ-1
+X-Mimecast-MFC-AGG-ID: e_HZoDjEObKsgTdsUXzdjQ_1783943689
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 5E0051955DBE;
-	Mon, 13 Jul 2026 11:53:51 +0000 (UTC)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 26A6A1955D6B;
+	Mon, 13 Jul 2026 11:54:49 +0000 (UTC)
 Received: from [192.168.1.153] (headnet04.pony-001.prod.iad2.dc.redhat.com [10.2.32.116])
-	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 55C011800595;
-	Mon, 13 Jul 2026 11:53:33 +0000 (UTC)
+	by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 464E41800586;
+	Mon, 13 Jul 2026 11:54:35 +0000 (UTC)
 From: Albert Esteve <aesteve@redhat.com>
-Date: Mon, 13 Jul 2026 13:53:04 +0200
-Subject: [PATCH v2 1/5] drm/panel: have drm_panel_add/remove manage a list
- reference
+Date: Mon, 13 Jul 2026 13:53:08 +0200
+Subject: [PATCH v2 5/5] drm: release panel reference after panel bridge
+ creation
 MIME-Version: 1.0
-Message-Id: <20260713-drm_refcount_wiring-v2-1-d3bb61f4bd4d@redhat.com>
+Message-Id: <20260713-drm_refcount_wiring-v2-5-d3bb61f4bd4d@redhat.com>
 References: <20260713-drm_refcount_wiring-v2-0-d3bb61f4bd4d@redhat.com>
 In-Reply-To: <20260713-drm_refcount_wiring-v2-0-d3bb61f4bd4d@redhat.com>
 To: Neil Armstrong <neil.armstrong@linaro.org>, 
@@ -112,20 +112,20 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
  linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org, 
  Albert Esteve <aesteve@redhat.com>
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783943594; l=1577;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783943594; l=10544;
  i=aesteve@redhat.com; s=20260303; h=from:subject:message-id;
- bh=7ETe8CFt5XKIiFSTBOPt7a6t1tvKKB7JNYwUpYEimh4=;
- b=lgm6WYGzEa5cY2/2dWmhsWCYfvwJ+EQT45NMlusojBnvAwrv8eT+DunBt732/G3xFam8iaDGy
- rmYQIHe7THDAErVwIMiHtj2DyMaLCAlPiETerk/jH2KwMY2hPaPFqe3
+ bh=dzpeOF7sIt4/OTXPktgi6VTN8JiIFkFsUfT9qr3ZGsc=;
+ b=GTZrudD6UEdPrnwfxKbrh6LYnSu+4moS+csq9PLxmamwmOpey3SHrVdp4Cw1NF18XT2asYUWL
+ /5o3jUmUMIMBF0G2HX7WJZ5BCOeYsD6p9xLxNE+1MBRYjLSN1ZCU0L1
 X-Developer-Key: i=aesteve@redhat.com; a=ed25519;
  pk=YSFz6sOHd2L45+Fr8DIvHTi6lSIjhLZ5T+rkxspJt1s=
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FdMSxYjdZFoLvqn0PVhz-xGlL99JQ_ZP3tUllS6TA2k_1783943632
+X-Mimecast-MFC-PROC-ID: cjxU_5PNB1x4hxco2fTEHdAeJyurBiIk7VFA2ScBXWU_1783943689
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_045509_835797_5B54932A 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20260713_045514_126115_FB6FB74E 
+X-CRM114-Status: GOOD (  18.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,45 +142,269 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The global panel_list holds raw pointers to drm_panel objects.
-Nothing prevents a panel from being freed while it is still linked
-in the list: if a driver's probe calls drm_panel_add() and then
-fails at a later step, panel->list remains in panel_list. Any
-subsequent call to of_drm_find_panel() that iterates the list will
-dereference freed memory.
+Update a second batch of drivers calling of_drm_find_panel() or
+drm_of_find_panel_or_bridge() to release the lookup reference after
+wrapping the panel in a bridge.
 
-Have drm_panel_add() acquire a reference via drm_panel_get() before
-inserting the panel into the list, and have drm_panel_remove() drop
-it via drm_panel_put() after removing the panel from the list. The
-global registry now holds a counted reference for as long as the
-panel is listed, ensuring the object outlives any concurrent lookup.
+Also handle the cases where a panel is found but cannot be used,
+dropping the reference immediately in those paths.
 
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
+Assisted-by: Claude:claude-opus-4-6
 Signed-off-by: Albert Esteve <aesteve@redhat.com>
 ---
- drivers/gpu/drm/drm_panel.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/imx/dcss/dcss-kms.c               |  3 +++
+ drivers/gpu/drm/ingenic/ingenic-drm-drv.c         |  4 +++-
+ drivers/gpu/drm/mcde/mcde_drv.c                   |  1 +
+ drivers/gpu/drm/mcde/mcde_dsi.c                   |  1 +
+ drivers/gpu/drm/mxsfb/mxsfb_drv.c                 |  1 +
+ drivers/gpu/drm/omapdrm/dss/output.c              |  1 +
+ drivers/gpu/drm/pl111/pl111_drv.c                 |  1 +
+ drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c |  1 +
+ drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c       |  1 +
+ drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c  |  1 +
+ drivers/gpu/drm/rockchip/rockchip_lvds.c          |  1 +
+ drivers/gpu/drm/rockchip/rockchip_rgb.c           |  1 +
+ drivers/gpu/drm/stm/ltdc.c                        |  1 +
+ drivers/gpu/drm/sun4i/sun4i_tcon.c                |  2 ++
+ drivers/gpu/drm/tidss/tidss_kms.c                 | 16 +++++++++++-----
+ drivers/gpu/drm/tve200/tve200_drv.c               |  1 +
+ 16 files changed, 31 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
-index 2c5649e433dfb..545fe93dc28fe 100644
---- a/drivers/gpu/drm/drm_panel.c
-+++ b/drivers/gpu/drm/drm_panel.c
-@@ -81,6 +81,7 @@ static void drm_panel_init(struct drm_panel *panel, struct device *dev,
-  */
- void drm_panel_add(struct drm_panel *panel)
- {
-+	drm_panel_get(panel);
- 	mutex_lock(&panel_lock);
- 	list_add_tail(&panel->list, &panel_list);
- 	mutex_unlock(&panel_lock);
-@@ -98,6 +99,7 @@ void drm_panel_remove(struct drm_panel *panel)
- 	mutex_lock(&panel_lock);
- 	list_del_init(&panel->list);
- 	mutex_unlock(&panel_lock);
-+	drm_panel_put(panel);
- }
- EXPORT_SYMBOL(drm_panel_remove);
+diff --git a/drivers/gpu/drm/imx/dcss/dcss-kms.c b/drivers/gpu/drm/imx/dcss/dcss-kms.c
+index 50bd7f36d36dd..01e0c10b6ea1a 100644
+--- a/drivers/gpu/drm/imx/dcss/dcss-kms.c
++++ b/drivers/gpu/drm/imx/dcss/dcss-kms.c
+@@ -77,6 +77,9 @@ static int dcss_kms_bridge_connector_init(struct dcss_kms_dev *kms)
+ 	if (ret)
+ 		return ret;
  
++	if (panel)
++		drm_panel_put(panel);
++
+ 	if (!bridge) {
+ 		dev_err(ddev->dev, "No bridge found %d.\n", ret);
+ 		return -ENODEV;
+diff --git a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+index 42c86f195c66b..1887e01d29701 100644
+--- a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
++++ b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+@@ -1297,9 +1297,11 @@ static int ingenic_drm_bind(struct device *dev, bool has_components)
+ 			goto err_drvdata;
+ 		}
+ 
+-		if (panel)
++		if (panel) {
+ 			bridge = devm_drm_panel_bridge_add_typed(dev, panel,
+ 								 DRM_MODE_CONNECTOR_DPI);
++			drm_panel_put(panel);
++		}
+ 
+ 		ib = drmm_encoder_alloc(drm, struct ingenic_drm_bridge, encoder,
+ 					NULL, DRM_MODE_ENCODER_DPI, NULL);
+diff --git a/drivers/gpu/drm/mcde/mcde_drv.c b/drivers/gpu/drm/mcde/mcde_drv.c
+index 5f2c462bad7e1..53275b575f0cb 100644
+--- a/drivers/gpu/drm/mcde/mcde_drv.c
++++ b/drivers/gpu/drm/mcde/mcde_drv.c
+@@ -153,6 +153,7 @@ static int mcde_modeset_init(struct drm_device *drm)
+ 		if (panel) {
+ 			bridge = drm_panel_bridge_add_typed(panel,
+ 					DRM_MODE_CONNECTOR_DPI);
++			drm_panel_put(panel);
+ 			if (IS_ERR(bridge)) {
+ 				dev_err(drm->dev,
+ 					"Could not connect panel bridge\n");
+diff --git a/drivers/gpu/drm/mcde/mcde_dsi.c b/drivers/gpu/drm/mcde/mcde_dsi.c
+index 47d45897ed069..d9a454f226f79 100644
+--- a/drivers/gpu/drm/mcde/mcde_dsi.c
++++ b/drivers/gpu/drm/mcde/mcde_dsi.c
+@@ -1124,6 +1124,7 @@ static int mcde_dsi_bind(struct device *dev, struct device *master,
+ 	if (panel) {
+ 		bridge = drm_panel_bridge_add_typed(panel,
+ 						    DRM_MODE_CONNECTOR_DSI);
++		drm_panel_put(panel);
+ 		if (IS_ERR(bridge)) {
+ 			dev_err(dev, "error adding panel bridge\n");
+ 			return PTR_ERR(bridge);
+diff --git a/drivers/gpu/drm/mxsfb/mxsfb_drv.c b/drivers/gpu/drm/mxsfb/mxsfb_drv.c
+index 0b756da2fec22..bfcdc0c237ee1 100644
+--- a/drivers/gpu/drm/mxsfb/mxsfb_drv.c
++++ b/drivers/gpu/drm/mxsfb/mxsfb_drv.c
+@@ -128,6 +128,7 @@ static int mxsfb_attach_bridge(struct mxsfb_drm_private *mxsfb)
+ 	if (panel) {
+ 		bridge = devm_drm_panel_bridge_add_typed(drm->dev, panel,
+ 							 DRM_MODE_CONNECTOR_DPI);
++		drm_panel_put(panel);
+ 		if (IS_ERR(bridge))
+ 			return PTR_ERR(bridge);
+ 	}
+diff --git a/drivers/gpu/drm/omapdrm/dss/output.c b/drivers/gpu/drm/omapdrm/dss/output.c
+index ca891aba38209..6e9bc605ee22f 100644
+--- a/drivers/gpu/drm/omapdrm/dss/output.c
++++ b/drivers/gpu/drm/omapdrm/dss/output.c
+@@ -43,6 +43,7 @@ int omapdss_device_init_output(struct omap_dss_device *out,
+ 		struct drm_bridge *bridge;
+ 
+ 		bridge = drm_panel_bridge_add(out->panel);
++		drm_panel_put(out->panel);
+ 		if (IS_ERR(bridge)) {
+ 			dev_err(out->dev,
+ 				"unable to create panel bridge (%ld)\n",
+diff --git a/drivers/gpu/drm/pl111/pl111_drv.c b/drivers/gpu/drm/pl111/pl111_drv.c
+index ac7b1d12a0f59..8ec659b3c08eb 100644
+--- a/drivers/gpu/drm/pl111/pl111_drv.c
++++ b/drivers/gpu/drm/pl111/pl111_drv.c
+@@ -145,6 +145,7 @@ static int pl111_modeset_init(struct drm_device *dev)
+ 	if (panel) {
+ 		bridge = drm_panel_bridge_add_typed(panel,
+ 						    DRM_MODE_CONNECTOR_Unknown);
++		drm_panel_put(panel);
+ 		if (IS_ERR(bridge)) {
+ 			ret = PTR_ERR(bridge);
+ 			goto finish;
+diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c b/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c
+index db2088529b480..d8e7e9877ba86 100644
+--- a/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c
++++ b/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c
+@@ -69,6 +69,7 @@ int rcar_du_encoder_init(struct rcar_du_device *rcdu,
+ 
+ 		bridge = devm_drm_panel_bridge_add_typed(rcdu->dev, panel,
+ 							 DRM_MODE_CONNECTOR_DPI);
++		drm_panel_put(panel);
+ 		if (IS_ERR(bridge))
+ 			return PTR_ERR(no_free_ptr(bridge));
+ 
+diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c b/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
+index 154410745a74b..cc2996f044721 100644
+--- a/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
++++ b/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
+@@ -791,6 +791,7 @@ static int rcar_lvds_parse_dt(struct rcar_lvds *lvds)
+ 	if (lvds->panel) {
+ 		lvds->next_bridge = devm_drm_panel_bridge_add(lvds->dev,
+ 							      lvds->panel);
++		drm_panel_put(lvds->panel);
+ 		if (IS_ERR_OR_NULL(lvds->next_bridge)) {
+ 			ret = -EINVAL;
+ 			goto done;
+diff --git a/drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c b/drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c
+index f50d166b764f5..3d0999e4fcfdf 100644
+--- a/drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c
++++ b/drivers/gpu/drm/renesas/rz-du/rzg2l_du_encoder.c
+@@ -90,6 +90,7 @@ int rzg2l_du_encoder_init(struct rzg2l_du_device  *rcdu,
+ 
+ 		bridge = devm_drm_panel_bridge_add_typed(rcdu->dev, panel,
+ 							 DRM_MODE_CONNECTOR_DPI);
++		drm_panel_put(panel);
+ 		if (IS_ERR(bridge))
+ 			return PTR_ERR(no_free_ptr(bridge));
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+index 7a0c4fa29f2f0..f754445d2631b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+@@ -605,6 +605,7 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
+ 
+ 	if (lvds->panel) {
+ 		lvds->bridge = drm_panel_bridge_add_typed(lvds->panel, DRM_MODE_CONNECTOR_LVDS);
++		drm_panel_put(lvds->panel);
+ 		if (IS_ERR(lvds->bridge)) {
+ 			ret = PTR_ERR(lvds->bridge);
+ 			goto err_free_encoder;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+index add3123e5ce70..ea66c70013787 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+@@ -139,6 +139,7 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
+ 	if (panel) {
+ 		bridge = drm_panel_bridge_add_typed(panel,
+ 						    DRM_MODE_CONNECTOR_LVDS);
++		drm_panel_put(panel);
+ 		if (IS_ERR(bridge))
+ 			return ERR_CAST(bridge);
+ 	}
+diff --git a/drivers/gpu/drm/stm/ltdc.c b/drivers/gpu/drm/stm/ltdc.c
+index 95fcfa48d8be3..daf198edb42f5 100644
+--- a/drivers/gpu/drm/stm/ltdc.c
++++ b/drivers/gpu/drm/stm/ltdc.c
+@@ -1982,6 +1982,7 @@ int ltdc_load(struct drm_device *ddev)
+ 
+ 		if (panel) {
+ 			bridge = drmm_panel_bridge_add(ddev, panel);
++			drm_panel_put(panel);
+ 			if (IS_ERR(bridge)) {
+ 				drm_err(ddev, "panel-bridge endpoint %d\n", i);
+ 				ret = PTR_ERR(bridge);
+diff --git a/drivers/gpu/drm/sun4i/sun4i_tcon.c b/drivers/gpu/drm/sun4i/sun4i_tcon.c
+index 960e83c8291da..d4c1723c5e3d8 100644
+--- a/drivers/gpu/drm/sun4i/sun4i_tcon.c
++++ b/drivers/gpu/drm/sun4i/sun4i_tcon.c
+@@ -1326,6 +1326,8 @@ static int sun4i_tcon_probe(struct platform_device *pdev)
+ 		ret = drm_of_find_panel_or_bridge(node, 1, 0, &panel, &bridge);
+ 		if (ret == -EPROBE_DEFER)
+ 			return ret;
++		if (panel)
++			drm_panel_put(panel);
+ 	}
+ 
+ 	return component_add(&pdev->dev, &sun4i_tcon_ops);
+diff --git a/drivers/gpu/drm/tidss/tidss_kms.c b/drivers/gpu/drm/tidss/tidss_kms.c
+index 1512ee2574b66..70c14c3be10d5 100644
+--- a/drivers/gpu/drm/tidss/tidss_kms.c
++++ b/drivers/gpu/drm/tidss/tidss_kms.c
+@@ -162,6 +162,7 @@ static int tidss_dispc_modeset_init(struct tidss_device *tidss)
+ 
+ 		if (panel) {
+ 			u32 conn_type;
++			int ret;
+ 
+ 			dev_dbg(dev, "Setting up panel for port %d\n", i);
+ 
+@@ -176,7 +177,8 @@ static int tidss_dispc_modeset_init(struct tidss_device *tidss)
+ 				break;
+ 			default:
+ 				WARN_ON(1);
+-				return -EINVAL;
++				ret = -EINVAL;
++				goto put_panel;
+ 			}
+ 
+ 			if (panel->connector_type != conn_type) {
+@@ -184,16 +186,20 @@ static int tidss_dispc_modeset_init(struct tidss_device *tidss)
+ 					"%s: Panel %s has incompatible connector type for vp%d (%d != %d)\n",
+ 					 __func__, dev_name(panel->dev), i,
+ 					 panel->connector_type, conn_type);
+-				return -EINVAL;
++				ret = -EINVAL;
++				goto put_panel;
+ 			}
+ 
+ 			bridge = devm_drm_panel_bridge_add(dev, panel);
+-			if (IS_ERR(bridge)) {
++			ret = PTR_ERR_OR_ZERO(bridge);
++			if (ret)
+ 				dev_err(dev,
+ 					"failed to set up panel bridge for port %d\n",
+ 					i);
+-				return PTR_ERR(bridge);
+-			}
++put_panel:
++			drm_panel_put(panel);
++			if (ret)
++				return ret;
+ 		}
+ 
+ 		pipes[num_pipes].hw_videoport = i;
+diff --git a/drivers/gpu/drm/tve200/tve200_drv.c b/drivers/gpu/drm/tve200/tve200_drv.c
+index 562f3f11812a3..f858c58ccb994 100644
+--- a/drivers/gpu/drm/tve200/tve200_drv.c
++++ b/drivers/gpu/drm/tve200/tve200_drv.c
+@@ -84,6 +84,7 @@ static int tve200_modeset_init(struct drm_device *dev)
+ 	if (panel) {
+ 		bridge = drm_panel_bridge_add_typed(panel,
+ 						    DRM_MODE_CONNECTOR_Unknown);
++		drm_panel_put(panel);
+ 		if (IS_ERR(bridge)) {
+ 			ret = PTR_ERR(bridge);
+ 			goto out_bridge;
 
 -- 
 2.54.0
