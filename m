@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F10CC44507
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9279DC4450B
 	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jul 2026 19:27:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oTLrl4X2yk3+F6tAQcZJW+StjDWqwCE6pA6bDOsC5Oo=; b=LDAx2N879iw5si
-	bDMaqFJidMlRv66cS2evf5GrsyTvQYRPnNz+ZB8DuBzrizuMnJ6+WPeWknLFTwMfVWB8HMoeLOcUl
-	mI9GunTPiOZqtZ2nyZ+1dnqAEN+L2PLbXtlYAfLvHk4RI4KMj2dIx7Dm7qaYICFxuPk+Uf2VC4lvO
-	OwcMqtFVYjG4wiHHtWOfGOVEEap2K85YT7e3SxMELUGQfAw7iktscMk5lGo9APOJbWlQ9nhZt4Fo1
-	g+638h5oc/pR+B3fCVUTUpbgoSc9pU8BVp6rNSV8nSKHKTjnTHxDbjJ30J/tvxudXs2tyIhfLo4w+
-	U9OdCOZnkqTYH+5qbcCg==;
+	List-Owner; bh=ErwLnMzd7jKaOTzmL6ICjroTg/LTZyCyoAz+3DvEgUU=; b=gdXWAm+BoEHO8H
+	5yNiZLRSgW/WooZHoW/hyBIxYKL27oK28K/L3dJGDULu56ExLspdM8B2OV2gleS7dkRsmutuzvx2E
+	NCGIqTpqYV6IO2o6BgE25Z+vVTF0r7mea2LdRnK02gQK18eqWiu3ITyhdGxbkijGe6RKwg8AlgBuX
+	XbyGElqxszcf7qlLFCQt9lbUzdWaD6uyX8LZFYSKZ44jVrirNMYHXZyY6azJRsCQIBclG5CgkUvNn
+	fMvXpDd0WIvdODH6+Y9LVw4Di2JaAwiQsHMmnTbbAiJtGjEHj9qsp+wZt1W+4txWQklIYaEVWGLK0
+	DfTn8tEJwhljErthMpCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjimi-0000000D4FR-1Xvd;
+	id 1wjimi-0000000D4GH-48VX;
 	Tue, 14 Jul 2026 19:27:16 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjilt-0000000D2wS-32Hg;
-	Tue, 14 Jul 2026 19:26:27 +0000
+	id 1wjilt-0000000D2wA-2Tjj;
+	Tue, 14 Jul 2026 19:26:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1784057170;
-	bh=iV0TFUhsGtT2QxB2V0jcayH1eq33X2v2R8/s+ngigtU=;
+	bh=AyMiIrxEFIKqV6uGqRNRCgp/f+R94tkSUd/pjFfr5TQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ldoXBN7g8VUh9UpqzFdEhAZ0g+R7v8dmLB6WPf2eabM9JHGHxhwM1t94WHb1AE5SS
-	 CA+y1v8fdD7eUCnVaJ3hZXwS5DU/o+/yEve1Cihkt15y7+u2v0LD6xo8ZtLnAqX7SJ
-	 0H60l1Eg8dXNfpEXd1nFTFvW6HOEs8Rgf3BeLZV3r9XSiKNWsIumkxLt3+PceO43QG
-	 ay6XFBNOz19wYmjnaAT+fj++/9nyFlqhGmQU+cAgAsiN/Imb4aVH7l9r/Ddp8yLV8E
-	 WHhu6YVVOzIPXSwfQthRoaLyof8zdjUO+gPZa3VFlffBg9CD+vpEg7iz3JgSXFitCZ
-	 kIduW4nfMG3BQ==
+	b=S8i0y6Bk2mz+gVTHiMTvthsVouojTBj1OxXbERRrMlNUXOJnIGFrS6NrjRaerbg6v
+	 ldqMfXYn/Kyxy37KbcJ6oriwV+3CWwZvCkFA1UoTGT/eCWDfnjwsUtAA32jMncA4kI
+	 1felqhIlJ6VvLPwoK6kXY8APNN2d+F7IFF97AJx4ul+PG1HHKLV5GGQzsZ4pRS38Hi
+	 BB+WQOq1imj5yckWz8RNEpVtVUY2KM+mZSpmsL1THpQB6Z3SZQW9urm1NPF+j/XCQ1
+	 OW3dl7FRR5/EfI1PrDC2a9UwTDvVETS3YyAe8Bp4ohcv+AZBpBUQUw3AMRg1uA0lb4
+	 B/MFzSoI23n6w==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3023717E127F;
-	Tue, 14 Jul 2026 21:26:10 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D629817E1078;
+	Tue, 14 Jul 2026 21:26:09 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 096F4480075; Tue, 14 Jul 2026 21:26:09 +0200 (CEST)
+	id EA865480065; Tue, 14 Jul 2026 21:26:08 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 14 Jul 2026 21:26:32 +0200
-Subject: [PATCH v13 31/35] phy: rockchip: usbdp: Drop -EPROBE_DEFER hack
+Date: Tue, 14 Jul 2026 21:26:20 +0200
+Subject: [PATCH v13 19/35] phy: rockchip: usbdp: Re-init the PHY on
+ orientation change
 MIME-Version: 1.0
-Message-Id: <20260714-rockchip-usbdp-cleanup-v13-31-6cb3e769d4c5@collabora.com>
+Message-Id: <20260714-rockchip-usbdp-cleanup-v13-19-6cb3e769d4c5@collabora.com>
 References: <20260714-rockchip-usbdp-cleanup-v13-0-6cb3e769d4c5@collabora.com>
 In-Reply-To: <20260714-rockchip-usbdp-cleanup-v13-0-6cb3e769d4c5@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -68,26 +69,26 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1428;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1257;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=iV0TFUhsGtT2QxB2V0jcayH1eq33X2v2R8/s+ngigtU=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpWjVDx4uduaatH1g7+Qw6gWCWQExoRIN3bu
- DPb/UwcdWTJW4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqVo1QAAoJENju1/PI
- O/qamgEP/2us98K92E3jhqGo13ZHrkpP4mj/3OIV+MXkJ42gKbUsEt8AOB3wPTMI3k/RTlVYEcg
- DRHqtQGGmCLNK0gf2ZrobsBdb9AVDs26ZF2uHFzcl4rDtby8pKBlHWZX7px9dGtscAUPKQBdCVn
- jH0m1Op67kDOhszUHVqFwPnFmZvvQLAQ3zWv3pH/XjvMfGlnqhRMFCor6jpMOZKxvCbqCByKFy1
- eZt5gmkm08K6zn3HIWCuld2bR7Q37/q6I7/u/oI2RMSnWWTxByt9uYgAn5KMk9vCqEEaonlIpW4
- W29uhsBojJrDe82TXCpX3WKglY7uoftxfL2PZMHpyUnpigTQnQ+PRCnuvneJr8O5LPZSpsxgPfm
- CSeBNEYHhYF2W5VYUh0VD6hQFovfWhh9LNS7tVpfSKSsHpDuI5lSaQFGCsDtuL+ss/XDvGx4Tn9
- CbFj3Fcf9BkhtK8XfatJjQgYeidDJ/E39s1MQpVR6467cSVFa40FV9ZPbEDbcgkNrn4dOfilOYP
- JC0ihIRmnbGAYbMU89my9EEnEdBUrdCRsexpSAJi2vM5FH5eP+ODsfRIWBgZSVni5uCcxx38YcW
- MoJmX9Ks6I8RM1edpXJUIUPYIJFxaqQXqdlGgq7Gvq81mfBQItUxRO8zEm/QwbGELjikogQx0S/
- uJNKpmkYGdlHs6vQvEDQvRg==
+ bh=AyMiIrxEFIKqV6uGqRNRCgp/f+R94tkSUd/pjFfr5TQ=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpWjVD8oSGY06cvRrv0o+nrV7brRhxANuGPQ
+ FS3rUA29mKG6IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqVo1QAAoJENju1/PI
+ O/qaYOsP/0RYxf7jHIqQljkVWxzrVIXEbTX+J5PEYj50+l3SUN1Xwue6pcsKgAmPECd7hbxdBuM
+ JYniWbFHY/Tj/wxkyjmJKGx/g2gjW8PrJbrn4iUGy2vH2RvpkLwYVdUZ/OkZhHnWLVEU3Fcnhy9
+ SOFps+IsB9JH1oIJ3RTHbnv9Ru+SMGgheDcUV8eMqhH6SpfAQn2U7Gv5P5R4TyMD1GyWB2WdYBf
+ luAWX5IvwyN04AQMrdFScFKkmhR8Qpi5O9ytt0RirggY3oV38GctJuBOD+tDwxPPi4oj26PGz4Q
+ tJFS79DxA/5i2hGOV6TAqX7ghmSjBdTaWTikIFD1jt42l7dOPM8jvSZdnaOVdToAqGvvn5pTbMs
+ yuNrQbgAa2SNvg2c1NnlPFOtScRYuTVpf79qU7Bac8KEDi5gjxm3rhqqIt611ZFh8waHmmWL9Y4
+ 0+6m/UDJE1cWXICzSwCqSmYBXqHcAcLIEdku+fpfNhTSf/JYg4p4oap9c0Et95YVsSGttgBmplX
+ g+2eAcvnOUpjRvLdMa1slGOAW6z07b8rZBXrXbTlWCiFWlJVRJ4ZjEm9y0UN7PVRVUzih4sBv60
+ 2EAbg8/lvjwR5QKm6c5K8Qm5XD4jLIfx1E38ejkJuWVTg+6SLb0NB8zcax86YCmqvndXPXX6W6H
+ WOnxIYuayS1gAV17kKQcm4Q==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_122626_617372_9D0761D2 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20260714_122626_714908_A78A0B8A 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,41 +105,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The hack to return -EPROBE_DEFER when the lcpll lock timeouts is no
-longer needed. The driver now does a reset during its PHY init, which
-avoids the problem.
-
-Since rk_udphy_status_check() is called after the probe, it should not
-return -EPROBE_DEFER.
+Changing the cable orientation reconfigures the lane muxing, which
+requires re-initializing the PHY. Without this DP functionality
+breaks, if the cable is re-plugged with swapped orientation.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 21f282216aef..a6fe634574bb 100644
+index e44d19c9d119..4b454798c4ed 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -750,17 +750,7 @@ static int rk_udphy_status_check(struct rk_udphy *udphy)
- 					       (val & CMN_ANA_LCPLL_LOCK_DONE), 200, 100000);
- 		if (ret) {
- 			dev_err(udphy->dev, "cmn ana lcpll lock timeout\n");
--			/*
--			 * If earlier software (U-Boot) enabled USB once already
--			 * the PLL may have problems locking on the first try.
--			 * It will be successful on the second try, so for the
--			 * time being a -EPROBE_DEFER will solve the issue.
--			 *
--			 * This requires further investigation to understand the
--			 * root cause, especially considering that the driver is
--			 * asserting all reset lines at probe time.
--			 */
--			return -EPROBE_DEFER;
-+			return ret;
- 		}
+@@ -620,6 +620,7 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+ 				 enum typec_orientation orien)
+ {
+ 	struct rk_udphy *udphy = typec_switch_get_drvdata(sw);
++	bool flipped = orien == TYPEC_ORIENTATION_REVERSE;
  
- 		if (!udphy->flip) {
+ 	mutex_lock(&udphy->mutex);
+ 
+@@ -631,7 +632,10 @@ static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
+ 		goto unlock_ret;
+ 	}
+ 
+-	udphy->flip = orien == TYPEC_ORIENTATION_REVERSE;
++	if (udphy->flip != flipped)
++		udphy->phy_needs_reinit = true;
++
++	udphy->flip = flipped;
+ 	rk_udphy_set_typec_default_mapping(udphy);
+ 	rk_udphy_usb_bvalid_enable(udphy, true);
+ 
 
 -- 
 2.53.0
