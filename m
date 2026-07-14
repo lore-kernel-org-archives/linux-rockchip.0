@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8B7EC43458
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jul 2026 05:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6359C44501
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jul 2026 05:35:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2VoGakdDEuhz0XscgwNYQq6EgPyVOH/7m8TFf4Czg6g=; b=EDKm8NP7opz458
-	negIQRMftzNLFjYyEXA3wHPQ09jRa623h9V5lDZxnVutm/FoqXUMgE9LohVtqF3VztPQpHtQSOfSz
-	IynsaiQ8L0F8W3Cq8HsgdCUNYT3bFbr3xJmDUcOHazy+A5Ld78GgE3zfNtwRPGDgIlsqgBgO/V3wL
-	Omt3E8jtM71vmMv+ChbaEZU/mF+9oudRisrpeun/Hs7VvtqQXRvCW0mdARZthBGz7MY7xR26ozXZO
-	WUnkknwFfhciRGd7pfGaPSkmX0Lj1NH+RcL10JwoAfuEGDtsF6cMOmDzXwiqY6D/JDWfBxXKiHIko
-	mVbq9J880+B1DMoEDikA==;
+	List-Owner; bh=laWwvw5/N/G3hCWVOSFlS72VR+iO6HaNDEKF1w/4Owc=; b=p22NjvCpe/3/wx
+	be7gLLLp+2Gu73ED+JPRHUG2VGTJJQ7vcSihJJAELJsV7jniBTZfFmfNELXupujTDtBSYAaYoW1F/
+	TFwCb54caD/ToupDdHFok+/ifgoFLpXcP1FzTHazOCtblVQjl5jjSPNCehVYkuI9El9OPK3icpHTW
+	IjvnKMDlxFq33DzcbwQa3EEpb9TQCK7dcE3jPtqUU9rGRB1vZA4vMp27zH8V9NFiQ0IpElrNZaq68
+	DYQycG4AbygapanMBoRQlIswRgkUfEvCUTHpscwwW4OIT4G24UjgRQXG/mcDgwrVEbH1rJG2VQ76E
+	rZJmnPeoOlhOIiuPBvBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjVnQ-0000000AxUA-1O50;
-	Tue, 14 Jul 2026 05:35:08 +0000
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	id 1wjVnR-0000000AxVs-2nAy;
+	Tue, 14 Jul 2026 05:35:09 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjVnK-0000000AxNr-2cWO
+	id 1wjVnO-0000000AxRn-1pQO
 	for linux-rockchip@lists.infradead.org;
-	Tue, 14 Jul 2026 05:35:06 +0000
-Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-c981c2c37cbso2302192a12.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 13 Jul 2026 22:35:02 -0700 (PDT)
+	Tue, 14 Jul 2026 05:35:07 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-384c94c9414so509581a91.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 13 Jul 2026 22:35:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784007302; x=1784612102; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784007306; x=1784612106; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=SGDV5fSUPAH2Dhpl1lbzAcq8czvypnTHYvjt3Vuz+wI=;
-        b=M7Aq2qhggYOxkC7o2LN6YTtVITA7DeQhkUBkxFLPVQhVgcBAT8y/STGw+D8pQj1UKN
-         Dyuhvyh4/RWAJSvjFPFTx7yCK/T9A1CxS0vKAXboLNyei1T7V8flVtG48AdueLm390TR
-         7J6wagNr4vQvb4BH1NhpmMzrFRsyXOK7jS0qeqPew2E0+qBaB5m7mcd3Jd2n2KNimD57
-         3pBa+suFIWsKQ9jilNnfD0dZ18XgLIeG+AeD8jKJ2crFBiYOgslrjfzvW0wvOfkqzrQf
-         T9g39zXN08FIZP4K+yQOL8K9w36HQDNmv5YR12P42h0P/BQiRKMIegnk/x97kcEshBZW
-         My4A==
+        bh=gzRBzQNIlPOcB9+UJSW/ZjK3CK6H+ocXVlUvjqfeJYA=;
+        b=llB4TPPvcHlmDpE6AonsyUs+5ofKFh06AzS5OmUplRwJEN6WtosR3FA1/Yo7WF6f73
+         VijTqee47oAaJJ0WnAKGScwukZ6FeTczRbZ+kGkHf/vbFhA03ChQ+zTu9KcIQrZne42n
+         2DGreWHE1qP8jr6PYrzbNQ64C0oou8KlaPj8MLReWY0zkGYio3jv7QnSfQXo56rE7V85
+         rEjq4PZfh9OcFMz6a5O0TIV8+w9vDmFoy7MHNRm3Wl1HSkByclMBNBzHGRPMLLsUW/0e
+         XPnk1OD8LMePqSC9EaHbhlNf/XdqsBxIAtM6yiLyQBZ6/9+AbzM2uL9+vxZ2rqT9y9wh
+         uUpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784007302; x=1784612102;
+        d=1e100.net; s=20251104; t=1784007306; x=1784612106;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=SGDV5fSUPAH2Dhpl1lbzAcq8czvypnTHYvjt3Vuz+wI=;
-        b=Aemoou64pHfqf2FGi4sE7Ggxultxwp3eMKyWIBioMEokuhxEKxKdEm2AMLwPlqbtHD
-         8c8Xy3vYN5fJgTEtbfwICfA4NPFwpARsZ2mKsW385C+SYcwYNf8EMeVWmtZekVHARIfm
-         qFhTplF9ICV1L7AConidWuGBIvrFzckkyGWK9TCg9FdgZ7qpZTyH8kRUuMgK86Hen5ap
-         VuqHCqdYyQOfGVIX2vN5vW58EJOJ7c+6i13t9CRdrC2u+XqTAXnnLWIhxt8Lh2jflM4L
-         +H1w0oU2mI+NlzGL4uooiijKqo/Kh1LfMJnpPbtfzkMRqxVEqK4oPQ5YYxQZodqXl+So
-         8H3Q==
-X-Gm-Message-State: AOJu0YwlL9Czk+LKCA55IIttkSbqEkvOl4bPSsKUu11k0srxhCS0O2hG
-	5nrl+O4N/0Bj8a+nH6+SglZjxus3NWwaxXADT4pdBWxH5I4hx1LYUq9EvFT1NBQL
-X-Gm-Gg: AfdE7ckYx3TtF8WEyZmBxnjD18U9l4Jk/oT3EoGhlb5AhZ3gwEGRCg5hT9JDBpHPAK3
-	bI9kY2Yh4a9nW//oMNssmVkYhI7a5xhKxMrCigYGNhvcXsQWl9S9fbwkOpjoB7f/gKzokx5Mrjn
-	WmmUTIoEzEGMy3l2gFu9SDkw46UgAAP9BK7rC8zvYEFv08MzrLijQzdcJMBG1/2J/jBVoxbho1b
-	klCQWsIUrpprlaQNOFEqtEHtf1v+P0/441sIE3BwMzFnp2Rybyf5LbVOwWySIgQEnECbWsBXXFZ
-	MmwMiXw6CoGN0THWgTUkRMDLVwb3muSsZq+miLaeK7yUHHT0BJ4Gb/hd9jtziwKSS3vuGkcrfI6
-	rLimBZC1crH3fpPnjXFX1nFcNVGK+bNTFHEXfdiLtAFMGbgKeOWLpRTDr6GQS2GDh0ZXYGGRpvy
-	gjd42eIAeY/owq1xKQvBKQ
-X-Received: by 2002:a05:6a20:7284:b0:3c0:9c18:d5ab with SMTP id adf61e73a8af0-3c3572a51f1mr1055366637.72.1784007301547;
-        Mon, 13 Jul 2026 22:35:01 -0700 (PDT)
+        bh=gzRBzQNIlPOcB9+UJSW/ZjK3CK6H+ocXVlUvjqfeJYA=;
+        b=BXGHI4STlXb+iys0LHkEyxI9hQGwQeDXkqSVNG3W7ZR4zINFhb3jTQfWb2CDz4PMIe
+         DZyQ2DrppRX3cdZ4n4hJcGvcsKY3MvFYng9oci3Ns7eo2Pqv1O7y4sFhztOEc6eeUMXD
+         aqk3rsJGXL/etUWMHkqt+H4LEUIgBgBviCa6Kp3BKgtvfR6wbGcBaO0XU8hetYrIjOuH
+         YNhYvKTiXODGQtm8B1JHPEI/H99/1C7NVL2ScwoghTv+7RvYjGoO4bn0UDczKvPET1sb
+         GSAKTdfJHSWRjQVsfPdjhBBRXPiuU/UWpVtXrIKsrrPi7vU7WuwfZGwPrCzdxUli1gCY
+         tfMA==
+X-Gm-Message-State: AOJu0YywnCXF9/kc4GHI/5wTGrPdXm68ICkw/OT99hloy39FKbFDs2Rw
+	G/41qF8thgc7FceiklnjutcWmOBJyFDAraI7/oN/fkHFHHKYpfAncdeM5rAWWqAJ
+X-Gm-Gg: AfdE7cm8sxdnTja4ShgygbThb4U1FCoam2ipMWUTa7dbUokLv40WlU0yXEFpMGVBH/Q
+	N7J+Ke+hFcVMk0Pd1Ug1xT7nRf57e3zhHbsaa6GYMKu9b8oYM00lx2eQeXoP40Q/a6EEhsOCuMM
+	kPQKh72DgbTqs41ijqkL38TFmKHxnTBX/Mpy/iXhH042mVwh04zskJbwxV5nbeiHcdRqZWNjYgk
+	0T1njaE5sTs09fy4pz1Tck3v6HPuwI8d0ognp4+rQ00Wh+9fhDDvo42zxYn5B4PNs1u5JyyTk9U
+	6bIo+CH6T0IyaoJFV0EnOPp3IVIGQz2s55ZNcQFmjUZUfN2fA/wWeoyeqt4Mb3UdHuYExToaxao
+	clsscKO3zuhatFRaQh16MRmZj8HGg0xv5DkZx7cwqvDpU3Q6lmj5AXFaC8vJ90L6SKccCyn/TkA
+	vIcAv0crmQR1AohXoQV8zVXwvyIY/yJvc=
+X-Received: by 2002:a05:6a21:9216:b0:3bf:bde7:d66f with SMTP id adf61e73a8af0-3c11076c6ecmr13530602637.2.1784007305522;
+        Mon, 13 Jul 2026 22:35:05 -0700 (PDT)
 Received: from i386.168.1.127 ([2402:a00:163:2ce9:6882:91b7:8e79:7958])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13b659d8da9sm131882715c88.14.2026.07.13.22.34.57
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13b659d8da9sm131882715c88.14.2026.07.13.22.35.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Jul 2026 22:35:01 -0700 (PDT)
+        Mon, 13 Jul 2026 22:35:05 -0700 (PDT)
 From: Hrushiraj Gandhi <hrushirajg23@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: heiko@sntech.de,
@@ -77,18 +77,17 @@ Cc: heiko@sntech.de,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Hrushiraj Gandhi <hrushirajg23@gmail.com>,
-	syzbot+6c25f4750230faf70be9@syzkaller.appspotmail.com
-Subject: [PATCH v3 1/3] netdevsim: fix use-after-free of ethtool debugfs data
-Date: Tue, 14 Jul 2026 11:04:39 +0530
-Message-ID: <20260714053442.265587-3-hrushirajg23@gmail.com>
+	Hrushiraj Gandhi <hrushirajg23@gmail.com>
+Subject: [PATCH v3 2/2] arm64: dts: rockchip: Add Vicharak Vaaman2 board
+Date: Tue, 14 Jul 2026 11:04:40 +0530
+Message-ID: <20260714053442.265587-4-hrushirajg23@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260714053442.265587-1-hrushirajg23@gmail.com>
 References: <20260714053442.265587-1-hrushirajg23@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_223502_761289_A338A284 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20260713_223506_508457_6E69F536 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,107 +104,593 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-debugfs files created by nsim_ethtool_init() store raw pointers
-directly into the netdevsim struct, which lives in the net_device
-private data kmalloc slab.
+Add device tree for the Vicharak Vaaman2, a single-board computer
+based on the Rockchip RK3588 SoC.
 
-If the ethtool subdirectory outlives the netdevsim struct, a concurrent
-reader can trigger a slab-use-after-free by passing debugfs_file_get()
-(which only checks dentry lifetime) and then dereferencing the freed
-data pointer in e.g. debugfs_u32_get().
+The board features:
+- RK3588 SoC with 4x Cortex-A76 (big) + 4x Cortex-A55 (little)
+- eMMC storage via SDHCI (HS400)
+- microSD card via SDMMC
+- RK806 PMIC on SPI2 providing all required power domains
+- Two RK8602/RK8603 CPU regulators on I2C0 (big clusters)
+- RK8602 NPU regulator on I2C1
+- HYM8563 RTC on I2C0
+- Status LED on GPIO2_C5 (active-low, heartbeat trigger)
+- UART2 as serial console at 1500000 baud
+- SARADC with 1.8V reference
 
-In __nsim_dev_port_del(), nsim_destroy() is called before
-nsim_dev_port_debugfs_exit(). nsim_destroy() ends with free_netdev(),
-while nsim_dev_port_debugfs_exit() removes the port's debugfs directory
-afterwards. This means the slab is freed before the ethtool debugfs
-files that point into it are removed.
-
-The same window exists on nsim_create()'s error path: nsim_ethtool_init()
-creates debugfs files under ddir with pointers into ns before
-nsim_init_netdevsim()/nsim_init_netdevsim_vf(), which can fail. The
-err_free_netdev label then calls free_netdev() while those ethtool
-debugfs entries are still live.
-
-All other features that create per-port debugfs files (pp_hold,
-queue_reset, vlan) already remove their own entries explicitly in
-nsim_destroy() before free_netdev(). ethtool is the only one that does
-not. Fix this by saving the ethtool dentry in struct nsim_ethtool and
-calling debugfs_remove_recursive() on it before free_netdev() in both
-nsim_destroy() and the nsim_create() error path. The port ddir teardown
-is left to nsim_dev_port_debugfs_exit() as before.
-
-Reported-by: syzbot+6c25f4750230faf70be9@syzkaller.appspotmail.com
-Closes: https://syzkaller.appspot.com/bug?extid=6c25f4750230faf70be9
-Fixes: e05b2d141fef ("netdevsim: move netdev creation/destruction to dev probe")
 Signed-off-by: Hrushiraj Gandhi <hrushirajg23@gmail.com>
 ---
-v3:
-- Instead of removing the entire port ddir before free_netdev(), save
-  and remove only the ethtool dentry. All other features (pp_hold,
-  queue_reset, vlan) already clean up after themselves; ethtool is the
-  only exception. This aligns ethtool with how the other features
-  behave, as suggested by Jakub Kicinski.
-v2:
-- Also fix the same use-after-free window on the error path of
-  nsim_create() as suggested by Simon Horman.
-- Shorten the code comment in nsim_destroy() to be more concise.
----
- drivers/net/netdevsim/ethtool.c   | 1 +
- drivers/net/netdevsim/netdev.c    | 9 +++++++++
- drivers/net/netdevsim/netdevsim.h | 1 +
- 3 files changed, 11 insertions(+)
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3588-vicharak-vaaman2.dts  | 547 ++++++++++++++++++
+ 2 files changed, 548 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-vicharak-vaaman2.dts
 
-diff --git a/drivers/net/netdevsim/ethtool.c b/drivers/net/netdevsim/ethtool.c
-index 9350ba48eb81..a465f3220a7c 100644
---- a/drivers/net/netdevsim/ethtool.c
-+++ b/drivers/net/netdevsim/ethtool.c
-@@ -252,6 +252,7 @@ void nsim_ethtool_init(struct netdevsim *ns)
- 	ns->ethtool.channels = ns->nsim_bus_dev->num_queues;
- 
- 	ethtool = debugfs_create_dir("ethtool", ns->nsim_dev_port->ddir);
-+	ns->ethtool.ddir = ethtool;
- 
- 	debugfs_create_u32("get_err", 0600, ethtool, &ns->ethtool.get_err);
- 	debugfs_create_u32("set_err", 0600, ethtool, &ns->ethtool.set_err);
-diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
-index 27e5f109f933..09d86a591fac 100644
---- a/drivers/net/netdevsim/netdev.c
-+++ b/drivers/net/netdevsim/netdev.c
-@@ -1165,6 +1165,7 @@ struct netdevsim *nsim_create(struct nsim_dev *nsim_dev,
- 	return ns;
- 
- err_free_netdev:
-+	debugfs_remove_recursive(ns->ethtool.ddir);
- 	free_netdev(dev);
- 	return ERR_PTR(err);
- }
-@@ -1214,6 +1215,14 @@ void nsim_destroy(struct netdevsim *ns)
- 		ns->page = NULL;
- 	}
- 
-+	/*
-+	 * Remove the ethtool debugfs directory before free_netdev() releases
-+	 * the netdevsim struct to prevent use-after-free in concurrent readers.
-+	 * Other per-port debugfs files are already removed above, and the port
-+	 * ddir itself is cleaned up by nsim_dev_port_debugfs_exit().
-+	 */
-+	debugfs_remove_recursive(ns->ethtool.ddir);
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 92114cb757cc..9213280d831b 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -214,6 +214,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-turing-rk1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-vicharak-axon.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-vicharak-vaaman2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-coolpi-4b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-evb1-v10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-gameforce-ace.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-vicharak-vaaman2.dts b/arch/arm64/boot/dts/rockchip/rk3588-vicharak-vaaman2.dts
+new file mode 100644
+index 000000000000..c176a969a268
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-vicharak-vaaman2.dts
+@@ -0,0 +1,547 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +
- 	free_netdev(dev);
- }
- 
-diff --git a/drivers/net/netdevsim/netdevsim.h b/drivers/net/netdevsim/netdevsim.h
-index 4c9cc96dcec3..c08a01af31e9 100644
---- a/drivers/net/netdevsim/netdevsim.h
-+++ b/drivers/net/netdevsim/netdevsim.h
-@@ -95,6 +95,7 @@ struct nsim_ethtool {
- 	struct ethtool_coalesce coalesce;
- 	struct ethtool_ringparam ring;
- 	struct ethtool_fecparam fec;
-+	struct dentry *ddir;
- };
- 
- struct nsim_rq {
++/dts-v1/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/input/linux-event-codes.h>
++#include <dt-bindings/leds/common.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
++#include "rk3588.dtsi"
++
++/ {
++	model = "Vicharak Vaaman2";
++	compatible = "vicharak,vaaman2", "rockchip,rk3588";
++
++	aliases {
++		mmc0 = &sdmmc;
++		mmc1 = &sdhci;
++		serial2 = &uart2;
++	};
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
++	leds {
++		compatible = "gpio-leds";
++
++		status_led: status-led {
++			gpios = <&gpio2 RK_PC5 GPIO_ACTIVE_LOW>;
++			function = LED_FUNCTION_STATUS;
++			default-state = "on";
++			retain-state-suspended;
++			linux,default-trigger = "heartbeat";
++		};
++
++	};
++
++	vcc20v_dcin: regulator-vcc20v-dcin {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc20v_dcin";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <20000000>;
++		regulator-max-microvolt = <20000000>;
++	};
++
++	vcc5v0_sys: regulator-vcc5v0-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc20v_dcin>;
++	};
++
++	vcc_1v1_nldo_s3: regulator-vcc-1v1-nldo-s3 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_1v1_nldo_s3";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1100000>;
++		regulator-max-microvolt = <1100000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++};
++
++&cpu_b0 {
++	cpu-supply = <&vdd_cpu_big0_s0>;
++};
++
++&cpu_b1 {
++	cpu-supply = <&vdd_cpu_big0_s0>;
++};
++
++&cpu_b2 {
++	cpu-supply = <&vdd_cpu_big1_s0>;
++};
++
++&cpu_b3 {
++	cpu-supply = <&vdd_cpu_big1_s0>;
++};
++
++&cpu_l0 {
++	cpu-supply = <&vdd_cpu_lit_s0>;
++};
++
++&cpu_l1 {
++	cpu-supply = <&vdd_cpu_lit_s0>;
++};
++
++&cpu_l2 {
++	cpu-supply = <&vdd_cpu_lit_s0>;
++};
++
++&cpu_l3 {
++	cpu-supply = <&vdd_cpu_lit_s0>;
++};
++
++
++&i2c0 {
++	pinctrl-0 = <&i2c0m2_xfer>;
++	pinctrl-names = "default";
++	status = "okay";
++
++	vdd_cpu_big0_s0: regulator@42 {
++		compatible = "rockchip,rk8602";
++		fcs,suspend-voltage-selector = <1>;
++		reg = <0x42>;
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-max-microvolt = <1050000>;
++		regulator-min-microvolt = <550000>;
++		regulator-name = "vdd_cpu_big0_s0";
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc5v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++
++	vdd_cpu_big1_s0: regulator@43 {
++		compatible = "rockchip,rk8603", "rockchip,rk8602";
++		fcs,suspend-voltage-selector = <1>;
++		reg = <0x43>;
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-max-microvolt = <1050000>;
++		regulator-min-microvolt = <550000>;
++		regulator-name = "vdd_cpu_big1_s0";
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc5v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++
++	hym8563: rtc@51 {
++		compatible = "haoyu,hym8563";
++		reg = <0x51>;
++		#clock-cells = <0>;
++		clock-output-names = "hym8563";
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&rtc_int>;
++		wakeup-source;
++	};
++};
++
++&i2c1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c1m2_xfer>;
++	status = "okay";
++
++	vdd_npu_s0: regulator@42 {
++		compatible = "rockchip,rk8602";
++		reg = <0x42>;
++		fcs,suspend-voltage-selector = <1>;
++		regulator-name = "vdd_npu_s0";
++		regulator-boot-on;
++		regulator-enable-ramp-delay = <500>;
++		regulator-min-microvolt = <550000>;
++		regulator-max-microvolt = <950000>;
++		regulator-ramp-delay = <2300>;
++		vin-supply = <&vcc5v0_sys>;
++
++		regulator-state-mem {
++			regulator-off-in-suspend;
++		};
++	};
++};
++
++&sdhci {
++	bus-width = <8>;
++	full-pwr-cycle-in-suspend;
++	mmc-hs400-1_8v;
++	mmc-hs400-enhanced-strobe;
++	no-sd;
++	no-sdio;
++	non-removable;
++	vmmc-supply = <&vcc_3v3_s3>;
++	vqmmc-supply = <&vcc_1v8_s3>;
++	status = "okay";
++};
++
++&sdmmc {
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
++	disable-wp;
++	max-frequency = <200000000>;
++	no-mmc;
++	no-sdio;
++	sd-uhs-sdr104;
++	vmmc-supply = <&vcc_3v3_s3>;
++	vqmmc-supply = <&vccio_sd_s0>;
++	status = "okay";
++};
++
++&spi2 {
++	assigned-clock-rates = <200000000>;
++	assigned-clocks = <&cru CLK_SPI2>;
++	num-cs = <1>;
++	pinctrl-0 = <&spi2m2_cs0 &spi2m2_pins>;
++	pinctrl-names = "default";
++	status = "okay";
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	pmic@0 {
++		compatible = "rockchip,rk806";
++		reg = <0>;
++		#gpio-cells = <2>;
++		gpio-controller;
++		interrupt-parent = <&gpio0>;
++		interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pmic_pins>, <&rk806_dvs1_null>,
++					<&rk806_dvs2_null>, <&rk806_dvs3_null>;
++		spi-max-frequency = <1000000>;
++
++		vcc1-supply = <&vcc5v0_sys>;
++		vcc2-supply = <&vcc5v0_sys>;
++		vcc3-supply = <&vcc5v0_sys>;
++		vcc4-supply = <&vcc5v0_sys>;
++		vcc5-supply = <&vcc5v0_sys>;
++		vcc6-supply = <&vcc5v0_sys>;
++		vcc7-supply = <&vcc5v0_sys>;
++		vcc8-supply = <&vcc5v0_sys>;
++		vcc9-supply = <&vcc5v0_sys>;
++		vcc10-supply = <&vcc5v0_sys>;
++		vcc11-supply = <&vcc_2v0_pldo_s3>;
++		vcc12-supply = <&vcc5v0_sys>;
++		vcc13-supply = <&vcc_1v1_nldo_s3>;
++		vcc14-supply = <&vcc_1v1_nldo_s3>;
++		vcca-supply = <&vcc5v0_sys>;
++
++		rk806_dvs1_null: dvs1-null-pins {
++			pins = "gpio_pwrctrl1";
++			function = "pin_fun0";
++		};
++
++		rk806_dvs2_null: dvs2-null-pins {
++			pins = "gpio_pwrctrl2";
++			function = "pin_fun0";
++		};
++
++		rk806_dvs3_null: dvs3-null-pins {
++			pins = "gpio_pwrctrl3";
++			function = "pin_fun0";
++		};
++
++		regulators {
++			vdd_gpu_s0: dcdc-reg1 {
++				regulator-boot-on;
++				regulator-min-microvolt = <550000>;
++				regulator-max-microvolt = <950000>;
++				regulator-ramp-delay = <12500>;
++				regulator-name = "vdd_gpu_s0";
++				regulator-enable-ramp-delay = <400>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdd_cpu_lit_s0: dcdc-reg2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <550000>;
++				regulator-max-microvolt = <950000>;
++				regulator-ramp-delay = <12500>;
++				regulator-name = "vdd_cpu_lit_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdd_log_s0: dcdc-reg3 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <675000>;
++				regulator-max-microvolt = <750000>;
++				regulator-ramp-delay = <12500>;
++				regulator-name = "vdd_log_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <750000>;
++				};
++			};
++
++			vdd_vdenc_s0: dcdc-reg4 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <550000>;
++				regulator-max-microvolt = <950000>;
++				regulator-ramp-delay = <12500>;
++				regulator-name = "vdd_vdenc_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdd_ddr_s0: dcdc-reg5 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <675000>;
++				regulator-max-microvolt = <900000>;
++				regulator-ramp-delay = <12500>;
++				regulator-name = "vdd_ddr_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <850000>;
++				};
++			};
++
++			vdd2_ddr_s3: dcdc-reg6 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-name = "vdd2_ddr_s3";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
++			vcc_2v0_pldo_s3: dcdc-reg7 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <2000000>;
++				regulator-max-microvolt = <2000000>;
++				regulator-name = "vdd_2v0_pldo_s3";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <2000000>;
++				};
++			};
++
++			vcc_3v3_s3: dcdc-reg8 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-name = "vcc_3v3_s3";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vddq_ddr_s0: dcdc-reg9 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-name = "vddq_ddr_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_1v8_s3: dcdc-reg10 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcc_1v8_s3";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			avcc_1v8_s0: pldo-reg1 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "avcc_1v8_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_1v8_s0: pldo-reg2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "vcc_1v8_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			avdd_1v2_s0: pldo-reg3 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1200000>;
++				regulator-name = "avdd_1v2_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vcc_3v3_s0: pldo-reg4 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-name = "vcc_3v3_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vccio_sd_s0: pldo-reg5 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-name = "vccio_sd_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			pldo6_s3: pldo-reg6 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-name = "pldo6_s3";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vdd_0v75_s3: nldo-reg1 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <750000>;
++				regulator-max-microvolt = <750000>;
++				regulator-name = "vdd_0v75_s3";
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <750000>;
++				};
++			};
++
++			vdd_ddr_pll_s0: nldo-reg2 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <850000>;
++				regulator-max-microvolt = <850000>;
++				regulator-name = "vdd_ddr_pll_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <850000>;
++				};
++			};
++
++			avdd_0v75_s0: nldo-reg3 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <837500>;
++				regulator-max-microvolt = <837500>;
++				regulator-name = "avdd_0v75_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdd_0v85_s0: nldo-reg4 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <850000>;
++				regulator-max-microvolt = <850000>;
++				regulator-name = "vdd_0v85_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++
++			vdd_0v75_s0: nldo-reg5 {
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <750000>;
++				regulator-max-microvolt = <750000>;
++				regulator-name = "vdd_0v75_s0";
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
++		};
++	};
++};
++
++&pinctrl {
++	hym8563 {
++		rtc_int: rtc-int {
++			rockchip,pins =
++				<0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&saradc {
++	vref-supply = <&avcc_1v8_s0>;
++	status = "okay";
++};
++
++&tsadc {
++	status = "okay";
++};
++
++&uart2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart2m0_xfer>;
++	status = "okay";
++};
 -- 
 2.47.3
 
