@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1F28C43458
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jul 2026 11:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B159BC43458
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jul 2026 11:06:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SHWT/uewfu09AOlsBCcHCBnZSAAOVV62CvQNkn7KHWo=; b=1qriLHau8Zmare
-	ZfIpMO/z0pdpua+Lnfb+/ESs6/9IQncdVnIqg6yI+nt3Z7Te+llQyb/sBYHxGQCIZcADdRezUFz+m
-	woCRS053P/PU3Cq1nU+uJ1iDZjivKTbHdXCpbxqRVWOdkDrEerohdlqEjLyt5tapUwK6gH3g9qEaG
-	G0qFrOjQrRv3GlZ5ZLuH1oQg5mlJgw4WttMQrydLRdIqNx0nmx3hzxnh98KxjZpnO+l+2Lr+BbtHf
-	QaNAT0l7L87NSfKDcHu/3cyHZ+cV5a0N7eEuPYBd/vuNouXe6NhZJqi+8uWwWdCB+23P4uCIspg45
-	/hIkWUyIuKeTfg5ey4oA==;
+	List-Owner; bh=Au9JFYv68yQJJTFXpzjb8wG5miY3oMmA7a75tRhl1ls=; b=p8uAqE4Jm7+Sy2
+	ZZmTwM0RyashQBtASkeJCSe6WAYV3cf/C4gaIVeF8KYucQ3EkI9sYnuL1+Zh8iByatAw2Hl4nsQB1
+	iU+2Cpl35sB1ilIwJZhLiD21BbhpAgK2p6azz+HnNKqituilh2akyL6Mm+LkvQulh9jvlyqvFOlXf
+	/5buZunbe8UM/elAW+5+f0t2fMB6F4+mqRe+0Z5/qJFt5pXRGcm6KHz0TdtD1Ok6NWdDEA4zqJNZX
+	caFhMmidMZnRTkLccdS26rkxUjUKms5x3uu8W/AbuR9lVUTx2CMFU8m3aaqKmGcRLR8btoYCjMm+r
+	dwP/J49UKIGvY21NYE+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjash-0000000BdI0-41OW;
-	Tue, 14 Jul 2026 11:00:56 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1wjayT-0000000BdxR-10Ns;
+	Tue, 14 Jul 2026 11:06:53 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjasg-0000000BdHX-0VQl
-	for linux-rockchip@lists.infradead.org;
-	Tue, 14 Jul 2026 11:00:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784026854; x=1815562854;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Yw3UByh9lza4l+oROGbFdHgEwE9MVd7gDa2MvYy2QbA=;
-  b=CnxhbB8NQ2Ks4JOtnDZXI7KSinjbs0FU1xmjFwWcLPo1GP9A3LCOzVxL
-   myD9hnoJseZCVk+nbn24uAm/oLnxENbV8iWQBkj665lO76kEE0mWGPrNK
-   spaGwMJAEBwbTYSVDq+xIDZY3N70OCiJC3QM2jt/U+08pTt6wI7qjvpFo
-   GhBX67rf/SY54UaQzuVV/N0w9gtRJmlSNQ/uXmsjowRsEuRXNj0yUhPmd
-   z0dG8rJpdTBXgs6EK1KaHoayWHymJwWSloI4HzUiimxNN6EEas9WHSo5j
-   5ORWRakQR0lE8brtnBnuadTlEJTVrKXNTFPf55H79VzfsO6YL82i4Twvu
-   A==;
-X-CSE-ConnectionGUID: pNuOaPHRR0u2uFKAhOF/sQ==
-X-CSE-MsgGUID: dG5+diJFRQmT6EEFwhELoQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11846"; a="102198198"
-X-IronPort-AV: E=Sophos;i="6.25,163,1779174000"; 
-   d="scan'208";a="102198198"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2026 04:00:50 -0700
-X-CSE-ConnectionGUID: OCETTmGHRDaDqfO9C4ls2w==
-X-CSE-MsgGUID: tdAzxbYhTeyhJs6x74p/zQ==
-X-ExtLoop1: 1
-Received: from kniemiec-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.189])
-  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2026 04:00:47 -0700
-Date: Tue, 14 Jul 2026 14:00:45 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
-	dlechner@baylibre.com, jic23@kernel.org,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH v16 05/10] iio: imu: inv_icm42607: Add SPI For icm42607
-Message-ID: <alYW3YEbjnCqrY2k@ashevche-desk.local>
-References: <20260713215842.69097-1-macroalpha82@gmail.com>
- <20260713215842.69097-6-macroalpha82@gmail.com>
+	id 1wjayP-0000000BdvE-2zOi;
+	Tue, 14 Jul 2026 11:06:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=S323XPQAVbXMMiJRm+Dg+pgQry7Wic4cXHZLSGEJw+0=;
+	b=ZG/28Z9YW8+8O+S7agcsiaFV1MwoBUU+msb83Q9py4oWPZgTpjLvhYUhaQLaC7
+	BXqhypUV8U2IPJ0lkxgb6mWSThzlCykBtyKXpKjOUYmn3nyX32EKhxlC1kehCh8Q
+	UJJlhIMZSEiy9uGsFcTK2R8wxpOGY+4MEN9GGkYZesuEc=
+Received: from [10.111.8.51] (unknown [])
+	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wDXna8fGFZqlFnYJQ--.22967S2;
+	Tue, 14 Jul 2026 19:06:08 +0800 (CST)
+Message-ID: <72a058fd-5781-43bc-9148-180140929ecd@163.com>
+Date: Tue, 14 Jul 2026 19:06:07 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260713215842.69097-6-macroalpha82@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 0/2] PCI: Configure Root Port MPS during host probing
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: bhelgaas@google.com, Manivannan Sadhasivam <mani@kernel.org>,
+ lpieralisi@kernel.org, kwilczynski@kernel.org, heiko@sntech.de,
+ yue.wang@amlogic.com, pali@kernel.org, neil.armstrong@linaro.org,
+ robh@kernel.org, jingoohan1@gmail.com, khilman@baylibre.com,
+ jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, cassel@kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260622171448.GA678675@bhelgaas>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <20260622171448.GA678675@bhelgaas>
+X-CM-TRANSID: _____wDXna8fGFZqlFnYJQ--.22967S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7CFWUZryDtF43XF4kJFW7CFg_yoW8CFWkpF
+	W5XanayF4xKFyfCF4qqwsYkryYqa48ta43Xr1DtryayFn09rn8XFWjgws5Gwn7Xr1xCr1S
+	9r1qqa4xXwn0vaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U4UDXUUUUU=
+X-Originating-IP: [140.206.53.66]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7AA+4WpWGCAV3gAA38
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_040054_175941_AF0506C5 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20260714_040650_198483_36BA333F 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,94 +74,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 13, 2026 at 04:58:35PM -0500, Chris Morgan wrote:
 
-> Add SPI driver support for InvenSense ICM-42607 devices.
 
-A few nit-picks below, otherwise
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
+On 6/23/26 01:14, Bjorn Helgaas wrote:
+> On Fri, Jun 19, 2026 at 11:29:39PM +0800, Hans Zhang wrote:
+>> On 5/6/26 22:00, Manivannan Sadhasivam wrote:
+>>> On Fri, Nov 28, 2025 at 01:09:06AM +0800, Hans Zhang wrote:
+>>>> Current PCIe initialization exhibits a key optimization gap: Root Ports
+>>>> may operate with non-optimal Maximum Payload Size (MPS) settings. While
+>>>> downstream device configuration is handled during bus enumeration, Root
+>>>> Port MPS values inherited from firmware or hardware defaults often fail
+>>>> to utilize the full capabilities supported by controller hardware. This
+>>>> results in suboptimal data transfer efficiency throughout the PCIe
+>>>> hierarchy.
+>>>>
+>>>> This patch series addresses this by:
+>>>>
+>>>> 1. Core PCI enhancement (Patch 1):
+>>>> - Proactively configures Root Port MPS during host controller probing
+>>>> - Sets initial MPS to hardware maximum (128 << dev->pcie_mpss)
+>>>> - Conditional on PCIe bus tuning being enabled (PCIE_BUS_TUNE_OFF unset)
+>>>>     and not in PCIE_BUS_PEER2PEER mode (which requires default 128 bytes)
+>>>> - Maintains backward compatibility via PCIE_BUS_TUNE_OFF check
+>>>> - Preserves standard MPS negotiation during downstream enumeration
+>>>>
+>>>> 2. Driver cleanup (Patch 2):
+>>>> - Removes redundant MPS configuration from Meson PCIe controller driver
+>>>> - Functionality is now centralized in PCI core
+>>>> - Simplifies driver maintenance long-term
+>>>>
+>>>
+>>> For the series,
+>>>
+>>> Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
+>>>
+>>> Bjorn: Could you please take a look? This series has been floating for a
+>>> while...
+>>
+>> Hello Bjorn,
+>>
+>> Any chance for this series to be applied?
+> 
+> It's too late for v7.2; we're already more than halfway through the
+> merge window.  We can look again for v7.3 after v7.2-rc1.
 
-...
+Hello Bjorn,
 
-> +static int inv_icm42607_spi_bus_setup(struct inv_icm42607_state *st)
-> +{
-> +	unsigned int val;
-> +	int ret;
-> +
-> +	/* Only support 4-wire mode for now. */
-> +	ret = regmap_set_bits(st->map, INV_ICM42607_REG_DEVICE_CONFIG,
-> +				      INV_ICM42607_DEVICE_CONFIG_SPI_AP_4WIRE);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_clear_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
-> +				INV_ICM42607_INTF_CONFIG1_I3C_DDR_EN |
-> +				INV_ICM42607_INTF_CONFIG1_I3C_SDR_EN);
-> +	if (ret)
-> +		return ret;
-> +
-> +	val = FIELD_PREP(INV_ICM42607_DRIVE_CONFIG3_SPI_MASK,
-> +			 INV_ICM42607_SLEW_RATE_2NS);
-> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_DRIVE_CONFIG3,
-> +				 INV_ICM42607_DRIVE_CONFIG3_SPI_MASK, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	val = FIELD_PREP(INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK,
-> +			 INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_I2C_DIS);
+Gentle ping on this series.
 
-+ blank line?
-(Not sure, this is an interesting case and I have no strong opinion on
- either style.)
-
-> +	return regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
-
-> +				  INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK,
-> +				  val);
-
-This can be a single (a bit longer) line.
-
-> +}
-
-...
-
-> +static int inv_icm42607_probe(struct spi_device *spi)
-> +{
-> +	const struct inv_icm42607_hw *hw;
-> +	struct device *dev = &spi->dev;
-> +	struct regmap *regmap;
-> +
-> +	hw = spi_get_device_match_data(spi);
-> +	if (!hw)
-> +		return dev_err_probe(dev, -ENODEV, "Failed to get SPI data\n");
-> +
-> +	if (spi->mode & SPI_3WIRE)
-> +		return dev_err_probe(dev, -ENODEV, "SPI 3-wire mode not supported\n");
-
-Hmm... I would distinguish these two by the error code, perhaps -ENODATA for no
-match data?
-
-> +	regmap = devm_regmap_init_spi(spi, &inv_icm42607_regmap_config);
-> +	if (IS_ERR(regmap))
-> +		return dev_err_probe(dev, PTR_ERR(regmap),
-> +				     "Failed to register spi regmap\n");
-
-> +	return inv_icm42607_core_probe(regmap, hw,
-> +				       inv_icm42607_spi_bus_setup);
-
-This is perfectly a single line.
-
-> +}
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+Best regards,
+Hans
 
 
 _______________________________________________
