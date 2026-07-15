@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 946EBC44507
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jul 2026 08:55:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF4DC44501
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jul 2026 09:44:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iS+iK3euN5u/nMChorg0jn2TJ/FFkSzKt72ebazKRjg=; b=c5SAiPldoffM7VYEUMboi/iCbu
-	dTrM1CcjQ+cU0uW4XwKQVMBbz5jaIY3WXHdx9mxKJj+SKsZNuvnqTllF3eN9HOYSvC8n6Wy8ayiiR
-	CRK6DCC6HoTEzSavf3b/AoCtQ2vW1e5DRx0ZaiF6oRX2CYzJqPigPqEAJvr6l5XFnspI9vdRHbyHe
-	pi4D09D+j+ikm6QLEv54Q5b6Wn0RPtHUvPOBK+92sBuYPAYjhHbTQdWIAM1gjswGDK8fH4Oavl2oZ
-	duG6AtFokXJ1q3XL5hI2eBr9679EpCAYHtAyRoyLsjjiKLqobxDILpJ3ADAqlCs8c+Tk31uo/qnIL
-	zGD2cMhw==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8LHYYZ3of4vv7oE7lPfmzYlY66MD9irrLeKQHfe+/XA=; b=cigsNdmb/H7gub
+	j0Ja259GGCpGX50FPi4lTJcyDCELCuviBt1YdHkL+c8tK5GE1qNbzftOR3MMrYw6aZe1aOYHsONxM
+	2QFd6Gqpa66piMHtAbHR3npR6f4ETQOvY613uJMfAvRN7zJPLRlQvZerIRnSGDFbi4MkTbYupSdoV
+	hr8uGcOORuhpNt1hASna5k1MyxL5Q1+lSxW99Ev5IOzXvUxRW9bgvqO6s2RBhimoltfRC0ERicFKU
+	w85lETpbbGIcfvEpTtZ85+0n5qwuwpzEI/V4GCnSA0p1qWh/4Wgc1T2KljH3s/Eb5DNkuvkf8w5ut
+	chGZed44pdKt96Z60lKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjvOq-0000000EEWi-3CiQ;
-	Wed, 15 Jul 2026 08:55:28 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wjwAE-0000000EMJE-0ZPC;
+	Wed, 15 Jul 2026 09:44:26 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjvOj-0000000EEO5-2Z5S;
-	Wed, 15 Jul 2026 08:55:21 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 566EC438B0;
-	Wed, 15 Jul 2026 08:55:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B99241F00A3E;
-	Wed, 15 Jul 2026 08:55:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784105721;
-	bh=Z3wUKrGG21PQMUu0kd7DBV0yHXAtkX/rwuwlWXDYxKw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=cECXb+VJoR+yj3jVqoQiYsUTp85S/mZ6iPkKHA8qdyfmKip6k0znsuyxCKjKXsCb1
-	 hd8NEEs5A95KQ9zDQLBjmeugvDL5UuAgA9xIJD+iqFprTldJArH0l40sDaDMdCilrg
-	 7UvTr0OkibOLlZebpv3bD9Kg6fwSB3u8Rc3RoEgPrD5EqyT2IYe7ytrGbWVgyhJQjq
-	 r6MxKuA3O65/qCzoleLgSwBnPk0RoqFUswD91pwLj5vP0yJ97ausjdWaF+TEOInrA8
-	 6MQRitPOK6vDPdMG9Ni4k3YqIvTL2b1wFpFYYai//3KEfTfwzNfl8Z0oksLG6Xz1gO
-	 PAIE76Ets/1ag==
-Date: Wed, 15 Jul 2026 10:55:19 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Daniel Stone <daniels@collabora.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	kernel@collabora.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-Message-ID: <20260715-ancient-zealous-eagle-b13e94@houat>
-References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
- <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
- <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
- <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
- <20260713-statuesque-nonchalant-seagull-b9c39d@houat>
- <91c3a825-3344-4ff5-8ea0-f8f057665b3f@collabora.com>
+	id 1wjwAB-0000000EMHX-0zYF
+	for linux-rockchip@lists.infradead.org;
+	Wed, 15 Jul 2026 09:44:25 +0000
+Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77] helo=[127.0.0.1])
+	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
+	(envelope-from <s.pueschel@pengutronix.de>)
+	id 1wjw9t-0007kR-EY; Wed, 15 Jul 2026 11:44:05 +0200
+Message-ID: <e89fd487-ea3f-42fd-8647-6fa74ac991e8@pengutronix.de>
+Date: Wed, 15 Jul 2026 11:44:01 +0200
 MIME-Version: 1.0
-In-Reply-To: <91c3a825-3344-4ff5-8ea0-f8f057665b3f@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/17] media: v4l2-mem2mem: support running multiple jobs
+ in parallel
+To: Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Jacob Chen <jacob-chen@iotwrt.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@pengutronix.de, Detlev Casanova <detlev.casanova@collabora.com>,
+ Michael Tretter <m.tretter@pengutronix.de>
+References: <20260606-spu-rga3multicore-v1-0-3ec2b15675f7@pengutronix.de>
+ <20260606-spu-rga3multicore-v1-5-3ec2b15675f7@pengutronix.de>
+ <aae16dbfb26c8ee7e54247ca4d123b15748d623f.camel@ndufresne.ca>
+Content-Language: en-US
+From: =?UTF-8?Q?Sven_P=C3=BCschel?= <s.pueschel@pengutronix.de>
+In-Reply-To: <aae16dbfb26c8ee7e54247ca4d123b15748d623f.camel@ndufresne.ca>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
+X-SA-Exim-Mail-From: s.pueschel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260715_024423_281180_AD81E087 
+X-CRM114-Status: GOOD (  28.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,122 +70,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1329059293761352313=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============1329059293761352313==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="r5otlnmsebefwt2i"
-Content-Disposition: inline
-
-
---r5otlnmsebefwt2i
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-MIME-Version: 1.0
-
-On Mon, Jul 13, 2026 at 01:23:00PM +0300, Cristian Ciocaltea wrote:
-> On 7/13/26 11:50 AM, Maxime Ripard wrote:
-> > On Thu, Jul 09, 2026 at 10:25:54PM +0300, Cristian Ciocaltea wrote:
-> >> On 7/3/26 11:54 PM, Cristian Ciocaltea wrote:
-> >>> On 7/3/26 5:34 PM, Dmitry Baryshkov wrote:
-> >>>> On Thu, Jul 02, 2026 at 05:46:17PM +0300, Cristian Ciocaltea wrote:
-> >>>>> Add the connector-level infrastructure to support HDMI 2.0 scrambli=
-ng:
-> >>>>>
-> >>>>> - A scrambler_supported flag to indicate whether the source support=
-s the
-> >>>>>   scrambling capability, in which case the newly introduced
-> >>>>>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_fun=
-cs
-> >>>>>   are mandatory
-> >>>>
-> >>>> Do we need a flag? What would it mean if the flag is set, but the
-> >>>> callbacks are not? Can we drop the flag and use the presence of the
-> >>>> callbacks as a way to identify that scrambler is enabled?
-> >>>
-> >>> The flag is intended to be set only within drmm_connector_hdmi_init_w=
-ith_caps()
-> >>> when drivers advertise HDMI 2.x capability, in which case it also ens=
-ures the
-> >>> callbacks are provided. =20
-> >>>
-> >>> We could drop the flag and instead have the init helper clear the cal=
-lbacks if
-> >>> they were provided for HDMI 1.x.  This might slightly reduce code rea=
-dability,
-> >>> as it relies on checking the presence of individual callbacks - espec=
-ially since
-> >>> we plan to extend this further with HDMI 2.1 support, providing four =
-or five
-> >>> additional FRL-specific callbacks.
-> >>
-> >> I tried to replace the flag with a helper that checks the presence of =
-(one of)
-> >> the callbacks, but it's not straightforward to unset those for non-HDM=
-I 2.x
-> >> cases since the hdmi_funcs argument is immutable.
-> >=20
-> > I'm not sure why we would need to unset them. If the driver states that
-> > it support HDMI 2.0, then it needs to be there, if it doesn't, then who
-> > cares? it's not going to be used. We can log a warning that it's
-> > inconsistent I guess, but there's no need to actively remove it.
->=20
-> I was trying to address the use case where drivers provide the scrambler
-> callbacks despite not supporting HDMI 2.0.
-
-Scrambling got introduced with HDMI 2.0. That doesn't make sense, but
-it's not a total deal breaker, it's just going to be here unused. Hence
-why I was suggesting to put a warning there if you wanted to.
-
-> If we replace the scrambler_supported flag with a helper checking the
-> presence of the scrambler callbacks, then we would need to ensure the
-> callbacks do not exist in this case.
-
-Keep it simple:
-
-if (hdmi_version >=3D HDMI_VERSION_2_0)
-   if (funcs->scrambler_enable)
-      hdmi->scramblers_supported =3D true
-   else
-      return -EINVAL
-else
-    drm_warn(warn, "Inconsistent HDMI version");
-
-We don't need anything more than that.
-
-Maxime
-
---r5otlnmsebefwt2i
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaldK9gAKCRAnX84Zoj2+
-dtiSAYCQu9KcWvuZmn9ga9LZdgJaVIDPuT7TU896zIyMgZrU9Y4Z7K/BVp+ja2wo
-PJPHb/MBgNa/bcF9LTNuobtKeO7OjWhTX9TRuccydJYn14FFBYI4MSwo9wgXvaoZ
-w3E2VgsTMA==
-=cc5C
------END PGP SIGNATURE-----
-
---r5otlnmsebefwt2i--
-
-
---===============1329059293761352313==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1329059293761352313==--
-
+SGksCgpPbiA3LzEwLzI2IDExOjE4IFBNLCBOaWNvbGFzIER1ZnJlc25lIHdyb3RlOgo+IEhpLAo+
+Cj4gTGUgc2FtZWRpIDA2IGp1aW4gMjAyNiDDoCAwMDowNiArMDIwMCwgU3ZlbiBQw7xzY2hlbCBh
+IMOpY3JpdMKgOgo+PiBBZGQgc3VwcG9ydCBmb3IgcnVubmluZyBtdWx0aXBsZSBqb2JzIGluIHBh
+cmFsbGVsIGZvciBTb0NzIGNvbnRhaW5pbmcKPj4gbXVsdGlwbGUgaWRlbnRpY2FsIGRldmljZXMu
+IEFuIGV4YW1wbGUgaXMgdGhlIFJvY2tjaGlwIFJLMzU4OCBTb0MsCj4+IHdoaWNoIGNvbnRhaW5z
+IHR3byBpZGVudGljYWwgUkdBMyBkZXZpY2VzLiBUaGVyZWZvcmUgaXQgaXMgZGVzaXJhYmxlIHRv
+Cj4+IGhhdmUgdGhlIGtlcm5lbCBzY2hlZHVsZSB0aGUgd29yayBhY3Jvc3MgYWxsIGF2YWlsYWJs
+ZSBkZXZpY2VzIGFuZCBvbmx5Cj4+IGV4cG9zZSBvbmUgdmlkZW8gZGV2aWNlIHRvIHRoZSB1c2Vy
+c3BhY2UuCj4+Cj4+IFByZXZpb3VzbHkgdGhlIGN1cnJfY3R4IG1lbWJlciBvZiBhIHY0bDJfbTJt
+X2RldiB3YXMgdXNlZCB0byB0cmFjayB0aGUKPj4gY3VycmVudGx5IHJ1bm5pbmcgY29udGV4dC4g
+QnV0IHRoZSBjdXJyZW50bHkgcnVubmluZyBjb250ZXh0IHdpbGwgYWx3YXlzCj4+IGJlIGF0IHRo
+ZSB0b3Agb2YgdGhlIGpvYl9xdWV1ZS4gQXMgdGhlIFRSQU5TX1JVTk5JTkcgZmxhZyBjYW4gYmUg
+dXNlZCB0bwo+PiBjaGVjayBpZiB0aGUgcXVldWUgaGVhZCBpcyBhbHJlYWR5IHJ1bm5pbmcsIHRo
+ZSBjdXJyX2N0eCBtZW1iZXIgY2FuIGJlCj4+IGNvbXBsZXRlbHkgZHJvcHBlZAo+Pgo+PiBUbyBh
+dm9pZCBxdWV1ZWluZyB0b28gbWFueSBwYXJhbGxlbCBqb2JzLCB0aGUKPj4gdjRsMl9tMm1fc2V0
+X21heF9wYXJhbGxlbF9qb2JzIG1ldGhvZCBpcyBhZGRlZC4gSXQgYWxsb3dzIGEgZHJpdmVyCj4+
+IHRvIHNldCB0aGUgbnVtYmVyIG9mIHBhcmFsbGVsIGpvYnMgYW5kIGF2b2lkcyBjYWxsaW5nIGRl
+dmljZV9ydW4gd2hlbgo+PiB0aGUgZ2l2ZW4gbnVtYmVyIG9mIGpvYnMgaXMgYWxyZWFkeSBydW5u
+aW5nLiBUaGlzIGlzIHNldCB0byAxIGJ5IGRlZmF1bHQKPj4gdG8gcHJldmVudCBwYXJhbGxlbCBq
+b2IgcnVucy4gRHJpdmVycyB3aXRoIHRoZSBuZWVkIGFuZCBzdXBwb3J0IGZvcgo+PiBzY2hlZHVs
+aW5nIGpvYnMgY2FuIGFkanVzdCB0aGlzIHZhbHVlIGFjY29yZGluZ2x5Lgo+Pgo+PiBOb3RlIHRo
+YXQgdGhpcyBjaGFuZ2UgZG9lc24ndCBhbGxvdyBhIGNvbnRleHQgdG8gYmUgdXNlZCBtdWx0aXBs
+ZSB0aW1lcwo+PiBpbiBwYXJhbGxlbC4gU28gYSBzaW5nbGUgc3RyZWFtIHdvbid0IGJlIGFibGUg
+dG8gdXRpbGl6ZSBtdWx0aXBsZSBkZXZpY2VzCj4+IGF0IG9uY2UsIGJ1dCBOIHN0cmVhbXMgY2Fu
+IHV0aWxpemUgdXAgdG8gTiBkZXZpY2VzLiBUaGlzIGlzIGNhdXNlZCBieSB0aGUKPj4gZmFjdCB0
+aGF0IGEgY29udGV4dCBpcyBub3QgYWRkZWQgbXVsdGlwbGUgdGltZXMgdG8gdGhlIGpvYl9saXN0
+IGFuZCBhbHNvCj4+IGhvbGRzIHRoZSBqb2JfZmxhZ3MgdG8gZGlzdGluZ3Vpc2ggaWYgaXQncyBj
+dXJyZW50bHkgcnVubmluZy4KPiBJIGRvIHByZWZlciB0aGlzIG92ZXIgRGV0bGV2IHByb3Bvc2Fs
+LCBzbyBsZXQncyBtb3ZlIHRvd2FyZCB0aGlzLiBXb3VsZCBiZSBpdAo+IGNsZWFuZXIgdGhvdWdo
+IHRvIGZpcnN0IHJlbW92ZSBjdXJyX2N0eCBhbmQgdGhlbiBhZGQKPiBtYXhfcGFyYWxsZWxfam9i
+cyA/CgpOaWNlIGlkZWEuIEkgY291bGQgbW92ZSB0aGUgbWF4X3BhcmFsbGVsX2pvYnMgdmFyaWFi
+bGUgYW5kIHRoZSBuZXcgCmZ1bmN0aW9uIHRvIGEgbmV3IHNtYWxsIGNvbW1pdC4KCkkgY291bGQg
+YWxzbyBtb3ZlIHRoZSB3aG9sZSBsb29waW5nIGFuZCBjb3VudGluZyBvZiBydW5uaW5nIGpvYnMg
+b3ZlciAKdGhlIGpvYnMgdG8gdGhlIG5ldyBjb21taXQuIEJ1dCB0aGlzIHdvdWxkIGNhdXNlIHJl
+cGxhY2luZyB0aGUgY3Vycl9jdHggCnZhcmlhYmxlIHdpdGggYSBgbGlzdF9maXJzdF9lbnRyeSgu
+Li4pLT5qb2JfZmxhZ3MgJiBUUkFOU19SVU5OSU5HYCBhbmQgCmRyb3AgaXQgaW4gdGhlIGNvbW1p
+dCBhZnRlcndhcmRzIHRvIHJlcGxhY2UgaXQgd2l0aCBsb29wcy4KCldoaWxlIHRoZSBjb21taXRz
+IHdvdWxkIGxvb2sgYSBiaXQgbmljZXIgaW4gdGhlIGxhdHRlciBleGFtcGxlIChhcyB0aGUgCnJl
+bW92YWwgb2YgY3Vycl9jdHggd291bGRuJ3QgYWxzbyBwcmVwYXJlIGZvciBwYXJhbGxlbCBqb2Jz
+KSwgSSB0aGluayAKdGhlIGFkZGl0aW9uIGFuZCBkaXJlY3QgcmVtb3ZhbCBzdHlsZSBpcyBmcm93
+bmVkIHVwb24gYW5kIHRoZXJlZm9yZSBJIAp0ZW5kIHRvd2FyZHMgdGhlIGZpcnN0IG9wdGlvbi4g
+T24gdGhlIG90aGVyIHNpZGUgSSdtIHVuc3VyZSBpZiBhIDEwIGxpbmUgCnBhdGNoIHRvIGp1c3Qg
+YWRkIG1heF9wYXJhbGxlbF9qb2JzIHZhcmlhYmxlIGFuZCBmdW5jdGlvbiB3aXRoIApldmVyeXRo
+aW5nIGRvbmUgaW4gYSAocmVtb3ZhbCkgcGF0Y2ggcHJvdmlkZXMgYmVuZWZpdCBvciBoYXJtcyB0
+byBnZXQgdG8gCnRoZSByZWxhdGVkIGNoYW5nZXMuCgo+PiBAQCAtMjUyLDEzICsyNjYsMTEgQEAg
+RVhQT1JUX1NZTUJPTCh2NGwyX20ybV9nZXRfY3Vycl9wcml2KTsKPj4gIMKgc3RhdGljIHZvaWQg
+djRsMl9tMm1fdHJ5X3J1bihzdHJ1Y3QgdjRsMl9tMm1fZGV2ICptMm1fZGV2KQo+PiAgwqB7Cj4+
+ICDCoAl1bnNpZ25lZCBsb25nIGZsYWdzOwo+PiArCXN0cnVjdCB2NGwyX20ybV9jdHggKmN0eDsK
+Pj4gKwlzdHJ1Y3QgdjRsMl9tMm1fY3R4ICpjaG9zZW5fY3R4ID0gTlVMTDsKPj4gKwl1MzIgcnVu
+bmluZ19qb2JzID0gMDsKPj4gICAKPj4gIMKgCXNwaW5fbG9ja19pcnFzYXZlKCZtMm1fZGV2LT5q
+b2Jfc3BpbmxvY2ssIGZsYWdzKTsKPj4gLQlpZiAoTlVMTCAhPSBtMm1fZGV2LT5jdXJyX2N0eCkg
+ewo+PiAtCQlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZtMm1fZGV2LT5qb2Jfc3BpbmxvY2ssIGZs
+YWdzKTsKPj4gLQkJZHByaW50aygiQW5vdGhlciBpbnN0YW5jZSBpcyBydW5uaW5nLCB3b24ndCBy
+dW4gbm93XG4iKTsKPj4gLQkJcmV0dXJuOwo+PiAtCX0KPj4gICAKPj4gIMKgCWlmIChsaXN0X2Vt
+cHR5KCZtMm1fZGV2LT5qb2JfcXVldWUpKSB7Cj4+ICDCoAkJc3Bpbl91bmxvY2tfaXJxcmVzdG9y
+ZSgmbTJtX2Rldi0+am9iX3NwaW5sb2NrLCBmbGFncyk7Cj4+IEBAIC0yNzIsMTMgKzI4NCwzMCBA
+QCBzdGF0aWMgdm9pZCB2NGwyX20ybV90cnlfcnVuKHN0cnVjdCB2NGwyX20ybV9kZXYKPj4gKm0y
+bV9kZXYpCj4+ICDCoAkJcmV0dXJuOwo+PiAgwqAJfQo+PiAgIAo+PiAtCW0ybV9kZXYtPmN1cnJf
+Y3R4ID0gbGlzdF9maXJzdF9lbnRyeSgmbTJtX2Rldi0+am9iX3F1ZXVlLAo+PiAtCQkJCcKgwqAg
+c3RydWN0IHY0bDJfbTJtX2N0eCwgcXVldWUpOwo+PiAtCW0ybV9kZXYtPmN1cnJfY3R4LT5qb2Jf
+ZmxhZ3MgfD0gVFJBTlNfUlVOTklORzsKPj4gKwlsaXN0X2Zvcl9lYWNoX2VudHJ5KGN0eCwgJm0y
+bV9kZXYtPmpvYl9xdWV1ZSwgcXVldWUpIHsKPj4gKwkJaWYgKCEoY3R4LT5qb2JfZmxhZ3MgJiBU
+UkFOU19SVU5OSU5HKSkgewo+PiArCQkJY2hvc2VuX2N0eCA9IGN0eDsKPj4gKwkJCWJyZWFrOwo+
+PiArCQl9Cj4+ICsKPj4gKwkJcnVubmluZ19qb2JzKys7Cj4+ICsJfQo+PiArCWlmIChydW5uaW5n
+X2pvYnMgPj0gbTJtX2Rldi0+bWF4X3BhcmFsbGVsX2pvYnMpIHsKPj4gKwkJc3Bpbl91bmxvY2tf
+aXJxcmVzdG9yZSgmbTJtX2Rldi0+am9iX3NwaW5sb2NrLCBmbGFncyk7Cj4+ICsJCWRwcmludGso
+Ik1heGltdW0gbnVtYmVyIG9mIHBhcmFsbGVsIGpvYnMgcmVhY2hlZFxuIik7Cj4+ICsJCXJldHVy
+bjsKPj4gKwl9Cj4+ICsJaWYgKCFjaG9zZW5fY3R4KSB7Cj4+ICsJCXNwaW5fdW5sb2NrX2lycXJl
+c3RvcmUoJm0ybV9kZXYtPmpvYl9zcGlubG9jaywgZmxhZ3MpOwo+PiArCQlkcHJpbnRrKCJBbGwg
+am9icyBhbHJlYWR5IHJ1bm5pbmdcbiIpOwo+PiArCQlyZXR1cm47Cj4+ICsJfQo+PiArCj4+ICsJ
+Y2hvc2VuX2N0eC0+am9iX2ZsYWdzIHw9IFRSQU5TX1JVTk5JTkc7Cj4+ICDCoAlzcGluX3VubG9j
+a19pcnFyZXN0b3JlKCZtMm1fZGV2LT5qb2Jfc3BpbmxvY2ssIGZsYWdzKTsKClRoaXMgaXMgdGhl
+IG1vc3QgcHJvbWluZW50IGV4YW1wbGUgb24gaG93IHRvIHNwbGl0IGl0IHVwLiBFLmcuIGVpdGhl
+ciAKa2VlcCBldmVyeXRoaW5nIGluIHRoZSBjdXJyX2N0eCByZW1vdmFsIGNvbW1pdCAoYW5kIGp1
+c3QgdXNlIDEgZm9yIAptYXhfcGFyYWxsZWxfam9icykgb3IgdXNlIGxpc3RfZmlyc3RfaGVhZCB0
+byBjaGVjayBpZiB3ZSBoYXZlIGEgY3Vycl9jdHggCmFuZCBkcm9wIGl0IGFmdGVyd2FyZHMgZm9y
+IHRoZSBjb3VudGluZyBsb2dpYy4KCgpTaW5jZXJlbHkKIMKgIMKgIFN2ZW4KCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
