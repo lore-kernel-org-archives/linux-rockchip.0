@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EEF7C44508
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jul 2026 18:31:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95E20C44507
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jul 2026 19:01:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WAtyg5Ay0+0NRb+/6N+SWeL7h8f4F9UiJEumSOuC6j8=; b=dcSuh5vLfT6x95/hkSkBa+x7Yx
-	fHZxCjQpBQlfgCoDPZLYQSEmIEkuV9PG1hecIzgGfO2ht3XmhgCeEfZLdIPavi9t+DC3HYrB9NlIv
-	TBV4RBPvdw/mnqlfEJx6ERX0+V1mTPXa0f+hTVznJh7qO0NRSvT+nkbk6gdSJZZVSMJrpkSmE1ONy
-	UkKS+DZ1bGe0yhhiTcLLWef3S1yzb0FvA5bOEW7oq1cascbIE3vnxP/Pm+RmJ/QU53o74kjzFcPbF
-	guKq+cWAk7IyNWwLZNDG/bcO45dlmB+uS7RYYGaHpTGNFHOwKuijnheEq0VFrHpKjqZY90WVvNOZR
-	TpV0piUQ==;
+	bh=WLj0Av8MUHHG+qhvKOF2TFgLBPwJve0IODus+oeM1Fg=; b=efsVz3dK25n1j8ICU5aov+vZIm
+	E4E4CWIqxSO+UAEGf6yxFw4E6jz3vGxzCTj+CydF2uBVGY+moCkCXMRA0nJDTgWp5OIaLUP90xE8f
+	ECEJzLU61MmTKuRImm+CpXjfqOfjVYC+Nq8TM0DYB/aGl5HRq6vNXeRpHaEZVRULyY3dS00WA/NHp
+	RMteeSPK+0xsaBRdCPDY/O681s7PjYK7w+JmX7yc+R4ZMrAXurICIqPZLMMbh7nAk00MqTJsGeDzj
+	l23oFLfA5iKcM4cJ+DyIFTXBKQmmqSsrlXaDEBWox3I0O8/9DJlx9BXV+tmD3HBPhBuJfAXOmM1rm
+	kvIVpXZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wk4Oc-0000000FgHK-1VOJ;
-	Wed, 15 Jul 2026 18:31:50 +0000
+	id 1wk4qn-0000000FkHp-30Jq;
+	Wed, 15 Jul 2026 19:00:57 +0000
 Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wk4Oa-0000000FgGd-0BPz;
-	Wed, 15 Jul 2026 18:31:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1784140269; cv=none; 
+	id 1wk4ql-0000000FkGw-1Nt3;
+	Wed, 15 Jul 2026 19:00:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1784142021; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=mF+82Ak2xmHGgbVpn39yFo1ujKBHtUruIeLUq0wT0hxE/5VO0yqPQx/X2vQZsW2pXD5c+hXeTXHqnqG49GgFapriRA//Ut8ZOikB+NbBQ6WKuXTatdXVJ0Zv8tsFSfuekO7RFRhpR+6uiCi+nCXHhfkM+LLRtVuGnyq4++lnCn0=
+	b=HGclnZF4WMpho9f8V4+4GrYlMK3objtIhSbW17+1WNUQwDd/kYGpQsleFCCm/JeuxCvhC5l4/Q6rjvYeNggq/qv90UZgFiN+ssyU6JuyXpgk5gUikVbSoRm+WjWDcwuSUDe5hI8HPWEcyA5OKQIHfMAnVTQfzgGIlrmSXw90uZg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1784140269; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=N/wiBLYHdGXZJkCg3oiCX/MSyspe/eiXGex9ftDaZcE=; 
-	b=Wq86dZDfxwLzEPjzbpEFWxu+0Bn/IBHdVt7Gplx3r/tgpwmMlScib11AeXnv4lbmBAqoprAeOviGj964g1je+zrhI3eRtNf7MS0wNXDcRtUMtLkCrmNsEvueR9Ld9Udx4yHoSX3UpeGlk8KfxYNE/GLS8rqlBb0jl5lsOfMTGbQ=
+	t=1784142021; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=wx7zVh6+YVdbciHjwu98zS3vCnhsUo+yZKW7w0GKraQ=; 
+	b=kWbrsMBolZ8Zfd49lpKd4UdMZQsHUxhMJnme3IJOIYSgpYOd3trna9rOk001ngldl4jM1+egA96LKFE1c8GOX+xSM318lTCHmGxbEZO2aNNVSvQgsUHPDtIy0MQF/6DAtCuzqqqKOvHq18E6tzG93e2SBBkHfG7t4msK0EC18Wg=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
 	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784140269;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784142021;
 	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
 	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=N/wiBLYHdGXZJkCg3oiCX/MSyspe/eiXGex9ftDaZcE=;
-	b=i/YH6zzu7szwG3X/T7xICxR7uKdgqUMZmCHJ1dMCpLh9NfGt+npTLJuO8Z0qTLeZ
-	d0X+UpC7bvzAlaaAEyagubKAqouLSvOlYtfzI3FamtSP7oc8x7SH6Mb6FM1gg0K40Dr
-	UpT6qfSnFS2y4v5ji2KXDYD1NCIpVdcdEXZjtX18=
-Received: by mx.zohomail.com with SMTPS id 1784140267504649.5715776031727;
-	Wed, 15 Jul 2026 11:31:07 -0700 (PDT)
+	bh=wx7zVh6+YVdbciHjwu98zS3vCnhsUo+yZKW7w0GKraQ=;
+	b=VniaRhcF9Kv5Ccr1lpzh2sryx9dhlO7JBY9X1tBtK97Hi/EftXhhFR9/g9hKeOZV
+	62ZCj4EGeocih9kVJgLoblFtMpmm/+yEgh+f9CIlEIcsin+Rh4XwkgskLCzY82ra6Se
+	AVxGvsePHXkfiR6ZLCewtjbf+MSe5xpStpVIwafs=
+Received: by mx.zohomail.com with SMTPS id 1784142018690682.4989574920343;
+	Wed, 15 Jul 2026 12:00:18 -0700 (PDT)
 Received: by venus (Postfix, from userid 1000)
-	id 1F034180820; Wed, 15 Jul 2026 20:31:00 +0200 (CEST)
-Date: Wed, 15 Jul 2026 20:31:00 +0200
+	id 178E9180820; Wed, 15 Jul 2026 21:00:12 +0200 (CEST)
+Date: Wed, 15 Jul 2026 21:00:12 +0200
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Andy Yan <andyshrk@gmail.com>
-Subject: Re: [PATCH v3 07/10] drm/bridge: synopsys: dw-dp: Add Runtime PM
- support
-Message-ID: <alfQl182eZjaDwgZ@venus>
+Subject: Re: [PATCH v3 08/10] drm/rockchip: dw_dp: Add runtime PM support
+Message-ID: <alfV1691ZgZ6KylX@venus>
 References: <20260612-synopsys-dw-dp-improvements-v3-0-dc61e6352508@collabora.com>
- <20260612-synopsys-dw-dp-improvements-v3-7-dc61e6352508@collabora.com>
- <CANbgqAQLROuf9wvZZWRufZg6iqubKnC4fW5Bh+DkQ7RP1x5KKQ@mail.gmail.com>
+ <20260612-synopsys-dw-dp-improvements-v3-8-dc61e6352508@collabora.com>
+ <CANbgqATR-V0rRGfzj0hdJ2hsJex-iWzHMwD1L4vavTi2Jd79Kw@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CANbgqAQLROuf9wvZZWRufZg6iqubKnC4fW5Bh+DkQ7RP1x5KKQ@mail.gmail.com>
+In-Reply-To: <CANbgqATR-V0rRGfzj0hdJ2hsJex-iWzHMwD1L4vavTi2Jd79Kw@mail.gmail.com>
 X-Zoho-Virus-Status: 1
 X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.121.97
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_113148_123665_EC04ADD6 
-X-CRM114-Status: GOOD (  32.45  )
+X-CRM114-CacheID: sfid-20260715_120055_399075_B314174C 
+X-CRM114-Status: GOOD (  17.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,220 +76,83 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, yubing.zhang@rock-chips.com, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: multipart/mixed; boundary="===============8346507553876677579=="
+Content-Type: multipart/mixed; boundary="===============7268085190150632936=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============8346507553876677579==
+--===============7268085190150632936==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="k4oubbgopkkrgoq4"
+	protocol="application/pgp-signature"; boundary="m5xipsbap4cvs25e"
 Content-Disposition: inline
 
 
---k4oubbgopkkrgoq4
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
+--m5xipsbap4cvs25e
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 07/10] drm/bridge: synopsys: dw-dp: Add Runtime PM
- support
+Subject: Re: [PATCH v3 08/10] drm/rockchip: dw_dp: Add runtime PM support
 MIME-Version: 1.0
 
 Hello Andy,
 
-On Tue, Jul 14, 2026 at 05:01:14PM +0800, Andy Yan wrote:
-> Hello Sebastian,
->=20
-> Sebastian Reichel <sebastian.reichel@collabora.com> =E4=BA=8E2026=E5=B9=
-=B46=E6=9C=8813=E6=97=A5=E5=91=A8=E5=85=AD 02:01=E5=86=99=E9=81=93=EF=BC=9A
->=20
-> > Add runtime PM stubs to the Synopsys DesignWare DisplayPort bridge
-> > driver. Support is not enabled automatically and must be hooked up
-> > in the vendor specific glue code.
+On Tue, Jul 14, 2026 at 06:08:06PM +0800, Andy Yan wrote:
+> > @@ -58,6 +59,8 @@ static void dw_dp_rockchip_hpd_sw_sel(void *data, bool
+> > force_hpd_from_sw)
 > >
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> >  drivers/gpu/drm/bridge/synopsys/dw-dp.c | 27 +++++++++++++++++++++++++=
-++
-> >  include/drm/bridge/dw_dp.h              |  3 +++
-> >  2 files changed, 30 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> > b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> > index 7fa38145e35c..7f4f36c61484 100644
-> > --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> > @@ -1465,6 +1465,8 @@ static ssize_t dw_dp_aux_transfer(struct drm_dp_a=
-ux
-> > *aux,
-> >         if (WARN_ON(msg->size > 16))
-> >                 return -E2BIG;
+> >         dp->hpd_sel =3D force_hpd_from_sw;
 > >
 > > +       ACQUIRE(pm_runtime_active_auto, pm)(dp->dev);
-> > +
-> >         switch (msg->request & ~DP_AUX_I2C_MOT) {
-> >         case DP_AUX_NATIVE_WRITE:
-> >         case DP_AUX_I2C_WRITE:
-> > @@ -1655,6 +1657,8 @@ static void dw_dp_bridge_atomic_enable(struct
-> > drm_bridge *bridge,
-> >         struct drm_connector_state *conn_state;
-> >         int ret;
-> >
-> > +       pm_runtime_get_sync(dp->dev);
-> > +
-> >         connector =3D drm_atomic_get_new_connector_for_encoder(state,
-> > bridge->encoder);
-> >         if (!connector) {
-> >                 dev_err(dp->dev, "failed to get connector\n");
-> > @@ -1709,6 +1713,7 @@ static void dw_dp_bridge_atomic_disable(struct
-> > drm_bridge *bridge,
-> >         dw_dp_link_disable(dp);
-> >         bitmap_zero(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
-> >         dw_dp_reset(dp);
-> > +       pm_runtime_put_autosuspend(dp->dev);
-> >  }
-> >
-> >  static bool dw_dp_hpd_detect_link(struct dw_dp *dp, struct drm_connect=
-or
-> > *connector)
-> > @@ -1729,6 +1734,8 @@ static enum drm_connector_status
-> > dw_dp_bridge_detect(struct drm_bridge *bridge,
-> >  {
-> >         struct dw_dp *dp =3D bridge_to_dp(bridge);
-> >
-> > +       ACQUIRE(pm_runtime_active_auto, pm)(dp->dev);
-> >
 >=20
-> This may not work correctly. Per the DW-DP TRM, the " HPD_HOT_PLUG
-> bit is asserted only after the sink is attached and holds HPD high
-> for at least 100ms". Consequently, reading this bit within 100ms
-> after resuming runtime_pm may fail to detect the status. I've
-> verified this behavior on a Rock 5B board=E2=80=94the HPD bit remains
-> unreadable at this point.
->=20
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> @@ -1761,12 +1761,17 @@ static enum drm_connector_status
-> dw_dp_bridge_detect(struct drm_bridge *bridge,
->=20
->         ACQUIRE(pm_runtime_active_auto, pm)(dp->dev);
->=20
-> -       if (!dw_dp_hpd_detect(dp))
-> +       if (!dw_dp_hpd_detect(dp)) {
-> +               printk(KERN_DEBUG "%s no hpd\n", __func__);
->                 return connector_status_disconnected;
-> +       }
->=20
-> -       if (!dw_dp_hpd_detect_link(dp, connector))
-> +       if (!dw_dp_hpd_detect_link(dp, connector)) {
-> +               printk(KERN_DEBUG "%s no link\n", __func__);
->                 return connector_status_disconnected;
-> +       }
->=20
-> +       printk(KERN_DEBUG "%s connected\n", __func__);
->         return connector_status_connected;
->  }
->=20
-> @@ -2149,6 +2154,7 @@ static irqreturn_t dw_dp_irq(int irq, void *data)
->         u32 value;
->=20
->         regmap_read(dp->regmap, DW_DP_GENERAL_INTERRUPT, &value);
-> +       printk(KERN_DEBUG "%s value: %d\n", __func__, value);
->         if (!value)
->                 return IRQ_NONE;
->=20
-> bootup
-> [    5.218035] panthor fb000000.gpu: [drm] Using Transparent Hugepage
-> [    5.219073] [drm] Initialized panthor 1.9.0 for fb000000.gpu on minor 1
-> [    7.953973] r8169 0004:41:00.0 enP4p65s0: Link is Up - 1Gbps/Full - fl=
-ow
-> control off
-> [    8.601273] dw_dp_rockchip_runtime_resume ret: 0
-> [    8.702748] dw_dp_irq value: 1        // (HPD irq 100 100ms  after
-> runtime_resume)
-> [    8.714236] dw_dp_irq value: 2
-> [    8.714775] dw_dp_irq value: 2
-> [    8.715201] dw_dp_irq value: 2
-> [    8.715710] dw_dp_irq value: 2
-> [    8.715744] dw_dp_bridge_detect connected
-> [    9.226752] dw_dp_rockchip_runtime_suspend
->=20
->=20
-> Then run modetest:
->=20
-> # modetest
-> trying to open device '/dev/dri/card1'... is not a KMS device
-> trying to open device '/dev/dri/card0'... done
-> opened device `RockChip Soc DRM` on driver `rockchip` (version 1.0.0 at 0)
-> Encoders:
-> id      crtc    type    possible crtcs  possible clones
-> 86      0       TMDS    0x00000004      0x00000001
-> 88      0       TMDS    0x00000001      0x00000002
-> 92      0       TMDS    0x00000002      0x00000004
->=20
-> Connectors:
-> id      encoder status          name            size (mm)       modes
-> encoders
-> 87      0       disconnected    DP-1            0x0             0       86
->   props:
->         1 EDID:
->=20
-> [   13.809398] rockchip-pm-domain
-> fd8d8000.power-management:power-controller: sync_state() pending due to
-> fdee0000.hdmi_receiver
-> [   29.225506] dw_dp_rockchip_runtime_resume ret: 0
-> [   29.225940] dw_dp_bridge_detect no hpd         // no HPD read here
-> [   29.326986] dw_dp_irq value: 1                         // HPD irq ater
-> 100ms
-> [   29.346609] dw_dp_irq value: 2
-> [   29.347150] dw_dp_irq value: 2
-> [   29.347578] dw_dp_irq value: 2
-> [   29.348092] dw_dp_irq value: 2
->=20
->=20
-> if I add a mdelay(110) after  ACQUIRE pm_runtime,  the hdp can be read.
-> index 02ca7fe725876..5959e79eb3e2b 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> @@ -1760,7 +1760,7 @@ static enum drm_connector_status
-> dw_dp_bridge_detect(struct drm_bridge *bridge,
->         struct dw_dp *dp =3D bridge_to_dp(bridge);
->=20
->         ACQUIRE(pm_runtime_active_auto, pm)(dp->dev);
-> -
-> +       mdelay(110);
+> This can triger  HPD irq for USB-C DP AltMode, but for a standard
+> DP port, this is no way to acquire runtime, so there will no irq
+> when plug in.
 
-Interesting, I did not notice this issue with the Sige 5 (RK3576).
-Thanks for not just reporting it to not work, but also figuring out
-what is going on :) I will add an msleep(110); in the next version.
+Right. I don't have any RK3588 or RK3576 system exposing a DP
+connector directly. This this is non-trivial to test for me :/
+
+I see the following options:
+
+1. Only enable runtime PM when running in USB-C mode
+2. Mux the HPD pin as GPIO to support waking up with the controller
+   being suspended; either remux when the controller is awake or use
+   the same mechanism as USB-C to do software based HPD on top of the
+   GPIO (which would allow using any GPIO as HPD).
+3. Have a poll function, which wakes up the controller regularly to
+   check the status
+
+I consider going for option 1 for now, which allows option 2 to be
+implemented as a follow up. Mostly to avoid that the series becomes
+as big and messy as the USBDP PHY series became.
 
 Greetings,
 
 -- Sebastian
 
---k4oubbgopkkrgoq4
+--m5xipsbap4cvs25e
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpX0eMACgkQ2O7X88g7
-+proiw//TpC4KRIooalLSV6qAZujhx/NZeM1RZgdMyLHA8A5+uvrO4uhjIrPPivv
-zUqwAU90nbdoVNt8zyKhjwpabHHXtrh2wxwMjesYOYO1SLNDgLvF7IrUYdOfXzJA
-00hzJglxvIB5aJllxCzSkrP2WpNEqjrBpL3QfuzObOc/qd9yq/Z/OmNh6HTWsmFi
-6lASNypyehhXPwwgyP8brI7Nb+w7IaemGTEAbOMkbxDZ1VnBOLde0BKCsLyKwZV0
-jtSEozTs8Hzh6Wfpu66oklAsxZhp64lbYDNpOtYb5YsBeyoy56D4mR1++hYXcIxf
-tr0TaiVMSEwa32cX1YEg2ZaDGz+odB+nGdiPffg3+2UhNQoae/qxrpmRpgvTWijW
-Wz5YqfGmFs/s/iR10Osxwy3YBY/mKScp81F6S4Lv191vDCfs+9j5wYArv/52m7zf
-hPUbiy0k2SRTgt0VSmHly81fQRTzM1VUamYBTzdy0Gik5EsYwRZSggLip8aWHlct
-tQHNgpu8iOhaDP9aEu19HMQtKF1ppHBPJPIREBT19JOyr4Shv18IzGbBNjrZuQU5
-nO94Xviw9otQpWfWGdvHgXSgsWIkgNLGuHrgOQK3YZF0V9N9/C4cCqSf3N6vFqUu
-rqHu9882Hg7u63fDL0KVTrVGzfg+FH6MNF1N5mHwKthNiCkbPHM=
-=fomM
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpX2LgACgkQ2O7X88g7
++pofLA/9Gk+Hgl5TYBlSBTTGDlszYL/ZEfUIjLTcafwMgKO2MWL3n75mkgEi13Js
+0GT01J5veXw8MzGn/IQocRtb8S56feu/IYYUMOE10vlBAMoOfXbRjHrKgveqUcdO
+MvnaVVgy59xFHrxkMBXAtEGW4ghJjWA2kpoN5wN3Xh6DEzFfedI+JaN//fqCYLBZ
+syCPN/uKQzxnmyQFpLEb8Mn4SQZslnGCAzLjIC6krN0MeD0IpkdgaSsAyRHO7re8
+BpEMCuIMjroeZqNSkotoVSd8ByCMLF8S0EV1KsyW5PIY5j50BC9uBKXvJiKWml3o
+MduS/NpzM3ESfxxYdDwX/hD1jdaOHLJlyVcJXxHFir2kgqYvR+Eov/Uv+uKupeRt
+j7NycFrW0kZzgY+uQ6AEPrNLQOXmKimhoIrn75HZoS2+4aezaQf26bmrdRg/9fEN
+rLO9OgREMcIuebfZyyOGXiC6UoQmRvUu+OxcCPh8ILsi+80OfTXF8y8zmUY/PGJN
+lLF+kTfiqKGNe+3Ka8mkXiGi5kVEJUUqEKqX+j75LL6kDEknWJC3sFWEds5Ep3hD
+1/CJdhbeEAyFpzmJuJun5MXb0HN0yFkPau6I2kSL15m3nTDkvZ5gPj0FX6AMpodP
+7sgketnrnf6at+yLz3v6Y1d4dUWgPJUsEp5PAQnWew5x1FJYgVI=
+=LMCP
 -----END PGP SIGNATURE-----
 
---k4oubbgopkkrgoq4--
+--m5xipsbap4cvs25e--
 
 
---===============8346507553876677579==
+--===============7268085190150632936==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -301,5 +163,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8346507553876677579==--
+--===============7268085190150632936==--
 
