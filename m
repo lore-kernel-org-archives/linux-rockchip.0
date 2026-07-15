@@ -4,61 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF4DC44501
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jul 2026 09:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFB8BC44501
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jul 2026 10:34:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8LHYYZ3of4vv7oE7lPfmzYlY66MD9irrLeKQHfe+/XA=; b=cigsNdmb/H7gub
-	j0Ja259GGCpGX50FPi4lTJcyDCELCuviBt1YdHkL+c8tK5GE1qNbzftOR3MMrYw6aZe1aOYHsONxM
-	2QFd6Gqpa66piMHtAbHR3npR6f4ETQOvY613uJMfAvRN7zJPLRlQvZerIRnSGDFbi4MkTbYupSdoV
-	hr8uGcOORuhpNt1hASna5k1MyxL5Q1+lSxW99Ev5IOzXvUxRW9bgvqO6s2RBhimoltfRC0ERicFKU
-	w85lETpbbGIcfvEpTtZ85+0n5qwuwpzEI/V4GCnSA0p1qWh/4Wgc1T2KljH3s/Eb5DNkuvkf8w5ut
-	chGZed44pdKt96Z60lKA==;
+	List-Owner; bh=uTpxqJR2CkOmrciUlEEB9boG2TMvmr3ER5LtWEfwriE=; b=pKArGwwl9jNlrb
+	V0fdtLfIVeA99a8GhDyDyRo9hD1aYnBnDB3gak/dHPrV3t8bak6sCC4Oh/4AeGghLxn/hxE/z4gxX
+	iY9Qa+CtBvPvJZ/uQRMIKt5eiT/dITDNFP0L6K1XLNDsMYr9E/dMW8//CCnEmy6SW3dsn/kXYLeBT
+	QkMgOlPcTPHf9T+4nm568CZB1MEhQwINLUNwXRGLXfr596ceevfA2/1CrlUHujFZ1A+NqV52pkHtl
+	AurrakJaSdG3U3111MRVuIZBdI8EQoN+PZEjPLz/eUWsWauKFnvyeSdMHsFBT12gObAz4lZoS0VVr
+	yxZpFEh28IHx5hZ32lsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjwAE-0000000EMJE-0ZPC;
-	Wed, 15 Jul 2026 09:44:26 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1wjwwc-0000000ESs3-26Xa;
+	Wed, 15 Jul 2026 10:34:26 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjwAB-0000000EMHX-0zYF
-	for linux-rockchip@lists.infradead.org;
-	Wed, 15 Jul 2026 09:44:25 +0000
-Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77] helo=[127.0.0.1])
-	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
-	(envelope-from <s.pueschel@pengutronix.de>)
-	id 1wjw9t-0007kR-EY; Wed, 15 Jul 2026 11:44:05 +0200
-Message-ID: <e89fd487-ea3f-42fd-8647-6fa74ac991e8@pengutronix.de>
-Date: Wed, 15 Jul 2026 11:44:01 +0200
+	id 1wjwwZ-0000000ESrO-2mUB;
+	Wed, 15 Jul 2026 10:34:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784111660;
+	bh=IkJnX4Q0f685MGMac/EYnUgIc/6fHPJFWwoic2nfCBc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=CxCfyxWQoK2fMzcMWdxysiIbfEO8pWawDkEtOLsZZ0z/6FsDYUX9OULxrqC34oZBH
+	 N68/5SZtUEdYAw4scbkcZjpFg/Id+Eby8XuPmPeFHpm/q3EJX+NbmL0H1pjqvmWRw2
+	 gf/OEkv50g2ICcYVGLdLUgXivS9ZmP2fSOAxiHnTSWtIZyI4LK0n/p8oHW1qk3223k
+	 SRVRWYRp3xksrLBDUA/s2i7yxt8IetEFDamBHOYIJdxDpqlXBfdfDAKx4HrQ79DXi2
+	 W34Lpeah3JDsmGJLzVLIx1MxfDGrHbcBiVl8234GCfyq2FhRBGRDObQEGoUqUb2s9/
+	 JfJBXjRblX3zg==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BAB4A17E0076;
+	Wed, 15 Jul 2026 12:34:19 +0200 (CEST)
+Message-ID: <45113534-94ad-4a0f-8014-c04e9ab67a26@collabora.com>
+Date: Wed, 15 Jul 2026 13:34:19 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/17] media: v4l2-mem2mem: support running multiple jobs
- in parallel
-To: Nicolas Dufresne <nicolas@ndufresne.ca>,
- Jacob Chen <jacob-chen@iotwrt.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@pengutronix.de, Detlev Casanova <detlev.casanova@collabora.com>,
- Michael Tretter <m.tretter@pengutronix.de>
-References: <20260606-spu-rga3multicore-v1-0-3ec2b15675f7@pengutronix.de>
- <20260606-spu-rga3multicore-v1-5-3ec2b15675f7@pengutronix.de>
- <aae16dbfb26c8ee7e54247ca4d123b15748d623f.camel@ndufresne.ca>
+Subject: Re: [PATCH v8 02/39] drm/connector: Add caps-based HDMI connector
+ init helper
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
+ <20260702-dw-hdmi-qp-scramb-v8-2-d79890d00b6a@collabora.com>
+ <i4tjtsf5rsckfcayo5nuhlger5wqxn3ujeaubm4g2fgrwvhzb2@hf4uhgq3ja5p>
+ <ad75cf26-9437-47d0-864d-d71263401615@collabora.com>
+ <20260707-illegal-tuna-of-force-1c06e3@houat>
+ <737678ab-f082-4a0e-b453-f403ba141437@collabora.com>
+ <80374deb-3246-413f-a043-66bcdb438ab1@collabora.com>
+ <20260715-fair-opalescent-rhino-c6407b@houat>
 Content-Language: en-US
-From: =?UTF-8?Q?Sven_P=C3=BCschel?= <s.pueschel@pengutronix.de>
-In-Reply-To: <aae16dbfb26c8ee7e54247ca4d123b15748d623f.camel@ndufresne.ca>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
-X-SA-Exim-Mail-From: s.pueschel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20260715-fair-opalescent-rhino-c6407b@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_024423_281180_AD81E087 
-X-CRM114-Status: GOOD (  28.34  )
+X-CRM114-CacheID: sfid-20260715_033423_867102_9CE0EABD 
+X-CRM114-Status: GOOD (  22.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,88 +91,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiA3LzEwLzI2IDExOjE4IFBNLCBOaWNvbGFzIER1ZnJlc25lIHdyb3RlOgo+IEhpLAo+
-Cj4gTGUgc2FtZWRpIDA2IGp1aW4gMjAyNiDDoCAwMDowNiArMDIwMCwgU3ZlbiBQw7xzY2hlbCBh
-IMOpY3JpdMKgOgo+PiBBZGQgc3VwcG9ydCBmb3IgcnVubmluZyBtdWx0aXBsZSBqb2JzIGluIHBh
-cmFsbGVsIGZvciBTb0NzIGNvbnRhaW5pbmcKPj4gbXVsdGlwbGUgaWRlbnRpY2FsIGRldmljZXMu
-IEFuIGV4YW1wbGUgaXMgdGhlIFJvY2tjaGlwIFJLMzU4OCBTb0MsCj4+IHdoaWNoIGNvbnRhaW5z
-IHR3byBpZGVudGljYWwgUkdBMyBkZXZpY2VzLiBUaGVyZWZvcmUgaXQgaXMgZGVzaXJhYmxlIHRv
-Cj4+IGhhdmUgdGhlIGtlcm5lbCBzY2hlZHVsZSB0aGUgd29yayBhY3Jvc3MgYWxsIGF2YWlsYWJs
-ZSBkZXZpY2VzIGFuZCBvbmx5Cj4+IGV4cG9zZSBvbmUgdmlkZW8gZGV2aWNlIHRvIHRoZSB1c2Vy
-c3BhY2UuCj4+Cj4+IFByZXZpb3VzbHkgdGhlIGN1cnJfY3R4IG1lbWJlciBvZiBhIHY0bDJfbTJt
-X2RldiB3YXMgdXNlZCB0byB0cmFjayB0aGUKPj4gY3VycmVudGx5IHJ1bm5pbmcgY29udGV4dC4g
-QnV0IHRoZSBjdXJyZW50bHkgcnVubmluZyBjb250ZXh0IHdpbGwgYWx3YXlzCj4+IGJlIGF0IHRo
-ZSB0b3Agb2YgdGhlIGpvYl9xdWV1ZS4gQXMgdGhlIFRSQU5TX1JVTk5JTkcgZmxhZyBjYW4gYmUg
-dXNlZCB0bwo+PiBjaGVjayBpZiB0aGUgcXVldWUgaGVhZCBpcyBhbHJlYWR5IHJ1bm5pbmcsIHRo
-ZSBjdXJyX2N0eCBtZW1iZXIgY2FuIGJlCj4+IGNvbXBsZXRlbHkgZHJvcHBlZAo+Pgo+PiBUbyBh
-dm9pZCBxdWV1ZWluZyB0b28gbWFueSBwYXJhbGxlbCBqb2JzLCB0aGUKPj4gdjRsMl9tMm1fc2V0
-X21heF9wYXJhbGxlbF9qb2JzIG1ldGhvZCBpcyBhZGRlZC4gSXQgYWxsb3dzIGEgZHJpdmVyCj4+
-IHRvIHNldCB0aGUgbnVtYmVyIG9mIHBhcmFsbGVsIGpvYnMgYW5kIGF2b2lkcyBjYWxsaW5nIGRl
-dmljZV9ydW4gd2hlbgo+PiB0aGUgZ2l2ZW4gbnVtYmVyIG9mIGpvYnMgaXMgYWxyZWFkeSBydW5u
-aW5nLiBUaGlzIGlzIHNldCB0byAxIGJ5IGRlZmF1bHQKPj4gdG8gcHJldmVudCBwYXJhbGxlbCBq
-b2IgcnVucy4gRHJpdmVycyB3aXRoIHRoZSBuZWVkIGFuZCBzdXBwb3J0IGZvcgo+PiBzY2hlZHVs
-aW5nIGpvYnMgY2FuIGFkanVzdCB0aGlzIHZhbHVlIGFjY29yZGluZ2x5Lgo+Pgo+PiBOb3RlIHRo
-YXQgdGhpcyBjaGFuZ2UgZG9lc24ndCBhbGxvdyBhIGNvbnRleHQgdG8gYmUgdXNlZCBtdWx0aXBs
-ZSB0aW1lcwo+PiBpbiBwYXJhbGxlbC4gU28gYSBzaW5nbGUgc3RyZWFtIHdvbid0IGJlIGFibGUg
-dG8gdXRpbGl6ZSBtdWx0aXBsZSBkZXZpY2VzCj4+IGF0IG9uY2UsIGJ1dCBOIHN0cmVhbXMgY2Fu
-IHV0aWxpemUgdXAgdG8gTiBkZXZpY2VzLiBUaGlzIGlzIGNhdXNlZCBieSB0aGUKPj4gZmFjdCB0
-aGF0IGEgY29udGV4dCBpcyBub3QgYWRkZWQgbXVsdGlwbGUgdGltZXMgdG8gdGhlIGpvYl9saXN0
-IGFuZCBhbHNvCj4+IGhvbGRzIHRoZSBqb2JfZmxhZ3MgdG8gZGlzdGluZ3Vpc2ggaWYgaXQncyBj
-dXJyZW50bHkgcnVubmluZy4KPiBJIGRvIHByZWZlciB0aGlzIG92ZXIgRGV0bGV2IHByb3Bvc2Fs
-LCBzbyBsZXQncyBtb3ZlIHRvd2FyZCB0aGlzLiBXb3VsZCBiZSBpdAo+IGNsZWFuZXIgdGhvdWdo
-IHRvIGZpcnN0IHJlbW92ZSBjdXJyX2N0eCBhbmQgdGhlbiBhZGQKPiBtYXhfcGFyYWxsZWxfam9i
-cyA/CgpOaWNlIGlkZWEuIEkgY291bGQgbW92ZSB0aGUgbWF4X3BhcmFsbGVsX2pvYnMgdmFyaWFi
-bGUgYW5kIHRoZSBuZXcgCmZ1bmN0aW9uIHRvIGEgbmV3IHNtYWxsIGNvbW1pdC4KCkkgY291bGQg
-YWxzbyBtb3ZlIHRoZSB3aG9sZSBsb29waW5nIGFuZCBjb3VudGluZyBvZiBydW5uaW5nIGpvYnMg
-b3ZlciAKdGhlIGpvYnMgdG8gdGhlIG5ldyBjb21taXQuIEJ1dCB0aGlzIHdvdWxkIGNhdXNlIHJl
-cGxhY2luZyB0aGUgY3Vycl9jdHggCnZhcmlhYmxlIHdpdGggYSBgbGlzdF9maXJzdF9lbnRyeSgu
-Li4pLT5qb2JfZmxhZ3MgJiBUUkFOU19SVU5OSU5HYCBhbmQgCmRyb3AgaXQgaW4gdGhlIGNvbW1p
-dCBhZnRlcndhcmRzIHRvIHJlcGxhY2UgaXQgd2l0aCBsb29wcy4KCldoaWxlIHRoZSBjb21taXRz
-IHdvdWxkIGxvb2sgYSBiaXQgbmljZXIgaW4gdGhlIGxhdHRlciBleGFtcGxlIChhcyB0aGUgCnJl
-bW92YWwgb2YgY3Vycl9jdHggd291bGRuJ3QgYWxzbyBwcmVwYXJlIGZvciBwYXJhbGxlbCBqb2Jz
-KSwgSSB0aGluayAKdGhlIGFkZGl0aW9uIGFuZCBkaXJlY3QgcmVtb3ZhbCBzdHlsZSBpcyBmcm93
-bmVkIHVwb24gYW5kIHRoZXJlZm9yZSBJIAp0ZW5kIHRvd2FyZHMgdGhlIGZpcnN0IG9wdGlvbi4g
-T24gdGhlIG90aGVyIHNpZGUgSSdtIHVuc3VyZSBpZiBhIDEwIGxpbmUgCnBhdGNoIHRvIGp1c3Qg
-YWRkIG1heF9wYXJhbGxlbF9qb2JzIHZhcmlhYmxlIGFuZCBmdW5jdGlvbiB3aXRoIApldmVyeXRo
-aW5nIGRvbmUgaW4gYSAocmVtb3ZhbCkgcGF0Y2ggcHJvdmlkZXMgYmVuZWZpdCBvciBoYXJtcyB0
-byBnZXQgdG8gCnRoZSByZWxhdGVkIGNoYW5nZXMuCgo+PiBAQCAtMjUyLDEzICsyNjYsMTEgQEAg
-RVhQT1JUX1NZTUJPTCh2NGwyX20ybV9nZXRfY3Vycl9wcml2KTsKPj4gIMKgc3RhdGljIHZvaWQg
-djRsMl9tMm1fdHJ5X3J1bihzdHJ1Y3QgdjRsMl9tMm1fZGV2ICptMm1fZGV2KQo+PiAgwqB7Cj4+
-ICDCoAl1bnNpZ25lZCBsb25nIGZsYWdzOwo+PiArCXN0cnVjdCB2NGwyX20ybV9jdHggKmN0eDsK
-Pj4gKwlzdHJ1Y3QgdjRsMl9tMm1fY3R4ICpjaG9zZW5fY3R4ID0gTlVMTDsKPj4gKwl1MzIgcnVu
-bmluZ19qb2JzID0gMDsKPj4gICAKPj4gIMKgCXNwaW5fbG9ja19pcnFzYXZlKCZtMm1fZGV2LT5q
-b2Jfc3BpbmxvY2ssIGZsYWdzKTsKPj4gLQlpZiAoTlVMTCAhPSBtMm1fZGV2LT5jdXJyX2N0eCkg
-ewo+PiAtCQlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZtMm1fZGV2LT5qb2Jfc3BpbmxvY2ssIGZs
-YWdzKTsKPj4gLQkJZHByaW50aygiQW5vdGhlciBpbnN0YW5jZSBpcyBydW5uaW5nLCB3b24ndCBy
-dW4gbm93XG4iKTsKPj4gLQkJcmV0dXJuOwo+PiAtCX0KPj4gICAKPj4gIMKgCWlmIChsaXN0X2Vt
-cHR5KCZtMm1fZGV2LT5qb2JfcXVldWUpKSB7Cj4+ICDCoAkJc3Bpbl91bmxvY2tfaXJxcmVzdG9y
-ZSgmbTJtX2Rldi0+am9iX3NwaW5sb2NrLCBmbGFncyk7Cj4+IEBAIC0yNzIsMTMgKzI4NCwzMCBA
-QCBzdGF0aWMgdm9pZCB2NGwyX20ybV90cnlfcnVuKHN0cnVjdCB2NGwyX20ybV9kZXYKPj4gKm0y
-bV9kZXYpCj4+ICDCoAkJcmV0dXJuOwo+PiAgwqAJfQo+PiAgIAo+PiAtCW0ybV9kZXYtPmN1cnJf
-Y3R4ID0gbGlzdF9maXJzdF9lbnRyeSgmbTJtX2Rldi0+am9iX3F1ZXVlLAo+PiAtCQkJCcKgwqAg
-c3RydWN0IHY0bDJfbTJtX2N0eCwgcXVldWUpOwo+PiAtCW0ybV9kZXYtPmN1cnJfY3R4LT5qb2Jf
-ZmxhZ3MgfD0gVFJBTlNfUlVOTklORzsKPj4gKwlsaXN0X2Zvcl9lYWNoX2VudHJ5KGN0eCwgJm0y
-bV9kZXYtPmpvYl9xdWV1ZSwgcXVldWUpIHsKPj4gKwkJaWYgKCEoY3R4LT5qb2JfZmxhZ3MgJiBU
-UkFOU19SVU5OSU5HKSkgewo+PiArCQkJY2hvc2VuX2N0eCA9IGN0eDsKPj4gKwkJCWJyZWFrOwo+
-PiArCQl9Cj4+ICsKPj4gKwkJcnVubmluZ19qb2JzKys7Cj4+ICsJfQo+PiArCWlmIChydW5uaW5n
-X2pvYnMgPj0gbTJtX2Rldi0+bWF4X3BhcmFsbGVsX2pvYnMpIHsKPj4gKwkJc3Bpbl91bmxvY2tf
-aXJxcmVzdG9yZSgmbTJtX2Rldi0+am9iX3NwaW5sb2NrLCBmbGFncyk7Cj4+ICsJCWRwcmludGso
-Ik1heGltdW0gbnVtYmVyIG9mIHBhcmFsbGVsIGpvYnMgcmVhY2hlZFxuIik7Cj4+ICsJCXJldHVy
-bjsKPj4gKwl9Cj4+ICsJaWYgKCFjaG9zZW5fY3R4KSB7Cj4+ICsJCXNwaW5fdW5sb2NrX2lycXJl
-c3RvcmUoJm0ybV9kZXYtPmpvYl9zcGlubG9jaywgZmxhZ3MpOwo+PiArCQlkcHJpbnRrKCJBbGwg
-am9icyBhbHJlYWR5IHJ1bm5pbmdcbiIpOwo+PiArCQlyZXR1cm47Cj4+ICsJfQo+PiArCj4+ICsJ
-Y2hvc2VuX2N0eC0+am9iX2ZsYWdzIHw9IFRSQU5TX1JVTk5JTkc7Cj4+ICDCoAlzcGluX3VubG9j
-a19pcnFyZXN0b3JlKCZtMm1fZGV2LT5qb2Jfc3BpbmxvY2ssIGZsYWdzKTsKClRoaXMgaXMgdGhl
-IG1vc3QgcHJvbWluZW50IGV4YW1wbGUgb24gaG93IHRvIHNwbGl0IGl0IHVwLiBFLmcuIGVpdGhl
-ciAKa2VlcCBldmVyeXRoaW5nIGluIHRoZSBjdXJyX2N0eCByZW1vdmFsIGNvbW1pdCAoYW5kIGp1
-c3QgdXNlIDEgZm9yIAptYXhfcGFyYWxsZWxfam9icykgb3IgdXNlIGxpc3RfZmlyc3RfaGVhZCB0
-byBjaGVjayBpZiB3ZSBoYXZlIGEgY3Vycl9jdHggCmFuZCBkcm9wIGl0IGFmdGVyd2FyZHMgZm9y
-IHRoZSBjb3VudGluZyBsb2dpYy4KCgpTaW5jZXJlbHkKIMKgIMKgIFN2ZW4KCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 7/15/26 11:50 AM, Maxime Ripard wrote:
+> On Fri, Jul 10, 2026 at 01:27:37PM +0300, Cristian Ciocaltea wrote:
+>> On 7/8/26 1:11 PM, Cristian Ciocaltea wrote:
+>>> Hi Maxime,
+>>>
+>>> On 7/7/26 7:10 PM, Maxime Ripard wrote:
+>>>> On Fri, Jul 03, 2026 at 10:31:55PM +0300, Cristian Ciocaltea wrote:
+>>>>> Hi Dmitry,
+>>>>>
+>>>>> Thanks for your quick review!
+>>>>>
+>>>>> On 7/3/26 5:05 PM, Dmitry Baryshkov wrote:
+>>>>>> On Thu, Jul 02, 2026 at 05:46:15PM +0300, Cristian Ciocaltea wrote:
+>>>>>>> In preparation for adding HDMI 2.x source capabilities, introduce struct
+>>>>>>> drm_connector_hdmi_caps and a new drmm_connector_hdmi_init_with_caps()
+>>>>>>> helper.
+>>>>>>>
+>>>>>>> The existing drmm_connector_hdmi_init() helper currently takes
+>>>>>>> individual capability arguments such as supported_formats and max_bpc.
+>>>>>>> Adding more HDMI-specific arguments to that function would not scale
+>>>>>>> well, so move those values into a dedicated capabilities structure and
+>>>>>>> implement the existing helper as a wrapper around the new caps-based
+>>>>>>> interface.
+>>>>>>
+>>>>>> I think, it was an intention of Maxime: make sure that every driver is
+>>>>>> forced to provide some values here. With the struct-based init it is
+>>>>>> easy to overlook or to ommit a value.
+>>>>>
+>>>>> Agreed that the struct-based init loses the compile-time guarantee that every
+>>>>> argument is explicitly provided - that's a real downside.  
+>>>>>
+>>>>> I'd argue it's recoverable, though: the init helper validates the mandatory
+>>>>> fields, so a driver that omits a required value gets rejected at init time
+>>>>> rather than silently misconfigured.  The "you must provide sane values" property
+>>>>> is expected to be preserved, just enforced at runtime instead of by the
+>>>>> compiler. 
+>>>>
+>>>> Yeah, I don't think we can win with C here. Rust might, but we're
+>>>> probably a long way from that.
+>>>>
+>>>>> The main motivation for the struct is scalability/maintainability as we add HDMI
+>>>>> 2.x capabilities: new fields go into the struct rather than growing the helper's
+>>>>> argument list, so existing callers don't need churny signature updates on every
+>>>>> extension.
+>>>>>
+>>>>> FWIW, in the previous revision we discussed addressing the concern with a
+>>>>> callback instead.  Sadly, I had to discard that approach, as it proved not
+>>>>> flexible enough, e.g. drm_bridge_connector_init() computes caps dynamically, and
+>>>>> would have required either stateful callbacks, or storing redundant/temporary
+>>>>> cap data in driver-private structures just to satisfy the callback.
+>>>>
+>>>> I just realized something reviewing your patch: we don't necessarily
+>>>> need an extra argument or a callback, we can just put these fields into
+>>>> drm_hdmi_connector_funcs directly, and then validate them in init.
+>>>
+>>> If I understand correctly, we should drop the drm_connector_hdmi_caps struct
+>>> introduced by this patch and move all its fields into drm_hdmi_connector_funcs.
+>>>
+>>> In that case, how should we proceed with drmm_connector_hdmi_init()? 
+>>
+>> Actually, this brings us to the callback issue: we cannot compute caps
+>> dynamically, as it only works with static data, since funcs is supposed to be
+>> immutable.
+> 
+> Does it? The core and helpers must consider it immutable but it doesn't
+> have to. drm_bridge_connector for example could totally allocate it and
+> dynamically create it based on the bridge capabilities.
+
+If we take the VC4 case, is it fine to drop the const from the static
+drm_connector_hdmi_funcs to allow dynamically setting up supported_hdmi_ver and
+max_bpc in vc4_hdmi_connector_init()?
+
+static struct drm_connector_hdmi_funcs vc4_hdmi_hdmi_connector_funcs = {
+	.tmds_char_rate_valid	 = vc4_hdmi_connector_clock_valid,
+	...
+}
+
+static int vc4_hdmi_connector_init() 
+{
+	...
+    
+	if (vc4_hdmi->variant->supports_hdr)
+		vc4_hdmi_hdmi_connector_funcs.max_bpc = 12;
+
+	if (vc4_hdmi->variant->max_pixel_clock >= HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ)
+		vc4_hdmi_hdmi_connector_funcs.supported_hdmi_ver = HDMI_VERSION_2_0;
+	else if (vc4_hdmi->variant->max_pixel_clock >= HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ)
+		vc4_hdmi_hdmi_connector_funcs.supported_hdmi_ver = HDMI_VERSION_1_3;
+	...
+}
+
+>> Moreover, we would end up with some redundancy, as most of these input fields,
+>> after validation, would be stored (altered or not) directly in
+>> drm_connector/drm_connector_hdmi structs.
+> 
+> I mean, part of the conversion would obviously be to remove the
+> redundant fields.
+
+Ack.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
