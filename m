@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15F4FC44512
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 18:42:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44795C44512
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 19:24:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UQo2FxSgSaX8p0kvfK94Lc7Kt8C92fZTBgKoRGXG4MA=; b=OkdkknbQ0i32XX
-	4WEa7Bw5qd80kqS2RpE1NH/FB95Dix3u+u1nSublVieiFsE3YSQAz+VgGP0rByfrdi5Fv+91WyZ+D
-	kKTGX3hsWd9s2opWhUkR4pjax+NCdtfrqwPlHJ0fJkCJcLdyATa2xwbeGuHtNSEgxZPEeo9JwsiRd
-	xPnuhhuYF62roBEZ1SqlNv+TfILK0T1Rc/EHIdIhEXBe9HxEYEyjYFrzpMbfhQu6qoMCaQPb9ZCib
-	K41IWQ1zfpxkO5jW7F0bZwK5QHXQUVutWN1RrCAeBExjfb0N7DZWdZdiqsynsXtC+C6n1uylXWOyG
-	VyhQC9o1gaBxAw9UWihg==;
+	List-Owner; bh=R8PM+wsBUx/rUTqL/Up2ogkMSXb/VrBzFI6Wj6jqi68=; b=1RqdpnkcPCtW/W
+	b80YJaLDxLMN7EUgTRyHiRC5GGM1qsO+G1Ue5DZ0MWbiq9ONo8RNPKcn2MVxmibYaSPLGcZQ2rK8y
+	udbRE+tZdIigUrSHv7Os9UNOfOG7HPF0LX2tF2x6EXb201FwtznNt7PFWuZp+Vgb9YNYlM6DF5I95
+	vh3AzehoHLFM1vwD26rJG+M15+rgA/7uN7dX4894AIDod+j528eM/s8xGJDy3Obvjr6aQ3F19gGVC
+	+AgD8aDUx4/KtLE6uERGvsHdDjDdTQkhoiPcIYEy5Y1q1nkyMEXgTZeGN9ScFpafUdrxEhIb75si9
+	xcY8WgifNRBzMISaVNLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkR2t-00000000Phq-3T3z;
-	Thu, 16 Jul 2026 18:42:55 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1wkRhM-00000000Sdt-2boU;
+	Thu, 16 Jul 2026 19:24:44 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkR2r-00000000PgK-1AbJ;
-	Thu, 16 Jul 2026 18:42:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=Puj8hSyXVH9SJHRVn9nQt1SSuIa53OLrxJsSKuY9XeY=; b=kIswzkUFjBjWZZ17R9Frormnbw
-	roZkXBKY6QvdhOlJtDu3wGZjF4/2AMkxsxyiOVPOA1oZRdbehyXwfaVEvqJylpGqmNQd/jZdNZGQU
-	Z+PrJkIw8ValXztuiGFzc8PMotxrOb1R0p9zp8WAYheBr1NkBdmO4C5ABfE6lBBXBcqE=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1wkR2k-00Cc39-Tt; Thu, 16 Jul 2026 20:42:46 +0200
-Date: Thu, 16 Jul 2026 20:42:46 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, devicetree@vger.kernel.org,
+	id 1wkRhJ-00000000Sck-33Gi;
+	Thu, 16 Jul 2026 19:24:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=syf/c4xtfCw6J0qQudHZ7XrmyO59GTZhy9GPg7y846w=; b=VMpI8zO5PejSNJcUCtSLfLMhEX
+	fe0fBLLbq+OfIZTzY/pM5QLK4FL0MNVf5ef11MpBxFadwotDtU18xR+4PQ4f/bmEB70NdAXiny76C
+	uwhheG0+R4P09lAQTWDM8O9QzLrnXE4WHrVdmqU0iQPBiB5EP2ix1Yh+Wmu7wxmDBAw5UwMkopKgV
+	MhrqVxLt/sVDN8ERKtkuEl9WJnTXHGVSCKAvRdueitSbCEJBXf4NH1pdJa/6lP4u001aRL0Ykw9Ug
+	p/rsdb2LXuGvF0ClaFNjjDJL7LyLopwAVOE9cppQW/CNCd1izPfDZRpppvjXXZy/AMDoG0cjMYr3p
+	vOnEvjlg==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add ArmSoM CM5 and CM5-IO
-Message-ID: <e99f752a-da1f-498d-9305-089b9d736e70@lunn.ch>
-References: <20260716095101.2498464-1-gahing@gahingwoo.com>
- <20260716095101.2498464-3-gahing@gahingwoo.com>
+	Liu Changjie <liucj1228@outlook.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Alexey Charkov <alchark@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: Add LCKFB Taishan Pi 3M
+Date: Thu, 16 Jul 2026 21:24:32 +0200
+Message-ID: <178422977234.2335819.5634374946197621892.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <MN0PR19MB60918292CC2D566716815F26ACF92@MN0PR19MB6091.namprd19.prod.outlook.com>
+References: <MN0PR19MB60918292CC2D566716815F26ACF92@MN0PR19MB6091.namprd19.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260716095101.2498464-3-gahing@gahingwoo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_114253_322177_F5B0EC73 
-X-CRM114-Status: UNSURE (   7.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260716_122441_792293_2068E541 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,27 +72,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> +&gmac0 {
-> +	/* The RX delay is added by the PHY, the TX delay by the MAC below. */
-> +	phy-mode = "rgmii-rxid";
 
-Please read.
+On Tue, 14 Jul 2026 14:53:20 +0800, Liu Changjie wrote:
+> Add the compatible and device tree for the LCKFB Taishan Pi 3M, an
+> RK3576 board. The device tree is based on the published board
+> schematics and only enables interfaces exercised on the hardware.
+> 
+> This series depends on the separate net-next series:
+>   [PATCH net-next 0/2] net: phy: Add Maxio MAE0621A support
+> 
+> [...]
 
-https://elixir.bootlin.com/linux/v6.15/source/Documentation/devicetree/bindings/net/ethernet-controller.yaml#L287
+Applied, thanks!
 
-> +	clock_in_out = "output";
-> +	clocks = <&cru CLK_GMAC0_125M_SRC>, <&cru CLK_GMAC0_RMII_CRU>,
-> +		 <&cru PCLK_GMAC0>, <&cru ACLK_GMAC0>,
-> +		 <&cru CLK_GMAC0_PTP_REF>, <&cru REFCLKO25M_GMAC0_OUT>;
-> +	clock-names = "stmmaceth", "clk_mac_ref", "pclk_mac", "aclk_mac",
-> +		      "ptp_ref", "clk_mac_refout";
-> +	tx_delay = <0x21>;
-> +	rx_delay = <0x00>;
+[1/2] dt-bindings: arm: rockchip: Add LCKFB Taishan Pi 3M
+      commit: 2df7f27058018463e1f38a6e4c53cf551130bc4a
+[2/2] arm64: dts: rockchip: Add LCKFB Taishan Pi 3M
+      commit: f35d9eebeee5268289f0b9e424a651907a27b575
 
-Try setting phy-mode to rgmii-id, and these delays to 0, or removing
-them.
+I resorted some nodes, to match the alphabetical sorting
+and dropped the maxio,clk-out-frequency-hz property for now.
 
-	Andrew
+Please send a follow-up patch, once your phy driver series lands.
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
