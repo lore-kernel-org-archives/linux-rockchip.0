@@ -4,72 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F651C44512
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 13:50:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60A87C4450A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 14:08:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oE2Fq1HOV88/IO6XqeunWaA9fUcndUaCSE+7RwjaHt4=; b=QGz28yMYk3yHUJmtX4dw5VLSFK
-	nrJeTNKNqSp3EMxJ/Khmfr4p6hDz+yH+rH3DT8pxmq5VdPU+euuMqOjphBy2dqjub9BBUEbsDZmqt
-	40IIj1AGobQNJ7NX2sGFpQCqwyoM6rWMiS/6sfyqGwqkpYXMMS861fDDXwa6uLjxbyptjzOg7ccwv
-	rEZpDv649TTZ/QNKEr2PA1yHIpoixtczuwF1YBNbCsR/j0CujCxUpQqqJNm+k7iCNjNKWgUGrRMdm
-	Hv4xrIef6JqCLcvQNi4Cz2ifz+hj0IG+3VEVgv6LjYEW4H6kIrJChM6EQzXqz4wb6+PjA5WGZtadp
-	i0l8UNFQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UvjwUSClCjn3QrjNjFM6oQ+btqps5SaDkc1DjyKmRHg=; b=pVKh+Vm+GKm7SK
+	4xN0ataLENxcesIkky+8EtZfjCqTtyHJKIhA6TJY20jyNlSHYXcpIkWNg6EfJaCOV614f8gMN2DQl
+	Eg3kYIGapf/dtk4AZyEglgUQwI/xIBs0HNn+mE5MV/b0vDaN1ldtPLl7A/cTryJPca3RNHrwSH4FS
+	CfoNAFZx/WuKqeOZoAQlt+t10hETnl7IdDRcoGpqfaQW9rTHyTcsU3adDft2wOZlHesEha4eRvu5E
+	pKe3cfQHWC3WaQSaG9v+9VK4HUWUqHc1X6MYIv3VhYbxUXo1XDU4TYyFqAQlhDSo1YMT/+ErLcm/0
+	8fzkCggDfDEPl/YFUqzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkMTy-0000000HPg2-0Ouz;
-	Thu, 16 Jul 2026 13:50:34 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wkMla-0000000HR1H-2DcF;
+	Thu, 16 Jul 2026 14:08:46 +0000
+Received: from fout-a1-smtp.messagingengine.com ([103.168.172.144])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkMTx-0000000HPfj-09wv;
-	Thu, 16 Jul 2026 13:50:33 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 79BD161380;
-	Thu, 16 Jul 2026 13:50:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2F691F000E9;
-	Thu, 16 Jul 2026 13:50:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784209832;
-	bh=ucTI3ctwz7P4bafmOQoOoow7pk9pdyLWWyIglYkCCtE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=gND08iiPLrzULmDx5dMtcLqIrljf7N/ye9aV2+ow7d2CxVZdsL2cVYoEZZvAzBCCA
-	 ZQFibTZyt3zJ3gM6hbZW0Y7CS4it4S2tImxc+eP+uVlXrh1T9mtWPNmaEvt0FYUd7W
-	 sxxhNRYxj3OY9js0G675biSI3NFAG5FXRjM60oM/hVBAQxlsjgo/X45V3qeVQM2+ZR
-	 BlVqs2dd8QBAD5vWRm2eKVASKM8ZPBDurwUkVHjceXVIkhu/1iX5YBZVAaMGj9gC3Y
-	 3fyqVJqoOD6RZEDCKZsi485qbxbPu+l5shK7kwztDdxdxqMKdTGDpR7k9kmgf9/NGn
-	 yDGrlVSks6rLg==
-Date: Thu, 16 Jul 2026 15:50:29 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Daniel Stone <daniels@collabora.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	kernel@collabora.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-Message-ID: <20260716-astute-nippy-moose-bd22b5@houat>
-References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
- <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
- <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
- <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
- <20260713-statuesque-nonchalant-seagull-b9c39d@houat>
- <91c3a825-3344-4ff5-8ea0-f8f057665b3f@collabora.com>
- <20260715-ancient-zealous-eagle-b13e94@houat>
- <dfca9032-98ca-4c61-b1b1-85fd05283d77@collabora.com>
+	id 1wkMlY-0000000HQzd-0bSm;
+	Thu, 16 Jul 2026 14:08:45 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+	by mailfout.phl.internal (Postfix) with ESMTP id 680C4EC019C;
+	Thu, 16 Jul 2026 05:51:07 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-05.internal (MEProxy); Thu, 16 Jul 2026 05:51:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm1; t=1784195467; x=1785059467; bh=F+tW2ndMU5
+	DRPy5DazRWgny4gJkDTfDW7JUkLAAbhzI=; b=x7Zlrs/do96LS4cLSvz821tuW/
+	ZBeTyhJnPrullKcOJM0zTnSJWE3OWs9takCPcHfMGwtcEN6ey4VML76pbnszX6Le
+	6vCk7VzJzC/VOrNAcvQLbkqzUWHJ4lUu7Xoq99Wt3oozVMmJAAVXUiQR1PCdPguN
+	RIkWarFlsipgSriyTpR/ZzHcP7RSUQNSEa76qhGGHKtqlmoWWF3uWjCznDTuZDYf
+	8DNxJ68xaNEpYbJtoFEm72UPJ5vQrcBg2dfuzAJzUi6q/QxM+cGeDpgDDF740SP9
+	ntjQHUJsVqbNbl9+jvgMzsRMyx8njqOLjAoOFYYBSFaZlkV2jOGWYrNTXcbw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+	1784195467; x=1785059467; bh=F+tW2ndMU5DRPy5DazRWgny4gJkDTfDW7JU
+	kLAAbhzI=; b=io0DZeIsdt4rvy4atPFYMZKpRfJWcXbQ6FoML9nUoJFMq9P80eG
+	uCXsZaJKzsWMstwORf94Yt1xGOtMmbdzXuSVgP304HqSDcrpR5TP9l1Yb+cMW/A2
+	NbW7Zw6aYTI2LFYHHEESZL8qSdq6KGEK+JObA+lRGHTBE0UZ79Ld6S8YaoXxpJ1M
+	5FozYhiV68rnRADPzHNbDAZYx6hSzE3p+0o6DkUoOoqCL2x9JyuIjnYV3Z1u1xPx
+	H8qMULeiMcBWPmumjJ1bPa802+tXT2r1JbU2mCfIOCDSD5a7zUt1e+z1vfHTPV2p
+	K0UjfJbCGUaRgU2v48lwzmHidQppbRYD5hw==
+X-ME-Sender: <xms:iqlYarjkF16nqEtPt7Z4tDNmsv03S10s-_z0z1Wwbd9F-fNYG6oZvA>
+    <xme:iqlYajvr72Th9kDA0Z_F_8m6fstzCI9DG1IvFzm7jYR-Cxhh4dmojaORb4aMY5rdX
+    4MW6panZgtzdYMIXvdqCHXwzb0vD2mYimgP0dL3QMWcPsYUJ1vsf-U>
+X-ME-Received: <xmr:iqlYangrV7ylcn3WZJ0bsmQHFYNo7WWOZ6NDItaDYLhrkpTnlk4_B2SlonHTUkRfAOYMNgFv5UqfxtK_ixc>
+X-ME-Proxy-Cause: dmFkZTEprbmmi/VnjSGn8v756j53UYBAUHLnE+fClBXqjTH9wnE3qC5kJuRhMqU8OnfiTK
+    pH39h7WuYgsjmZsB15MnneJ10NOjCAMQttfrIGKj1JvUJtfQyghZj7SV7TUaZuhG/9eqJW
+    TmTECvy5H8buG3dTy8a5OxrJTT/w4m+LRz6MIxHKnJ9FM305nnYQyxJRpvk9RnFNdqS4N3
+    KlU7dtOhheT+mvUtEnoAg9eGnbZwk8UfCOQjvadOR6438qtPNCtuVYJJkoRzJ8MB5Od98l
+    PHM+acvMpTY+EyFgAU/1okSdWXRBChiVZsp5+CcRwwxhhJLP+4g8dby++BXYqnVQdMYdX0
+    KzmeQBDd4Yh3iA8sNB0ZuoyGH0dDWxZxLTOybR/FldGCAbPJstNDPwpTtEEchhTSR2Azjr
+    n3SpA6a9muBAbg2wDEAk+fdadw/9W1qWIY/sfBryN0ZJmedKnBp2zGiZuvrvxxz82cu6WR
+    zKq9xfqXf3vMX6XZqC4T9IedKRSkUqRUL+M9BehfvwvUdc5MTccEsqduWfFnBKkXHOHyI/
+    W929yRVnG9A4ml0FDfPZksUx+F8w+QMbp41JEtov04n4I1g3yEVNy5MYYiHtEFcuInmmIz
+    bIvwqh4AgoTSdEltYdo5R8tdIKCD5D//wDK5FmHg/QRLSrX/PN1xRTr5aHIw
+X-ME-Proxy: <xmx:iqlYahYq6QDMv9vBwW9rE4b1WPH5ASCWMU1inDJz_h8mTC4yaI2DbQ>
+    <xmx:iqlYauYmYZgepdQPFHf2mZxLYIUU4udJnnGIFdvkin23w5DnfUun_w>
+    <xmx:iqlYauycGA58Ommh77oeiI6eWqP1mAwcM_Ef-maCA0RcWP3v1k1m3g>
+    <xmx:iqlYaifpeDEFNmIYDrTS-7X88hAzItcvHY0SnrekWtWC4bA5Xl4l4g>
+    <xmx:i6lYamaZaqDNQ31rD1HzhXrNJCpN-oMQdyaLRnjDtIrKtHxY1scM6k_T>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 16 Jul 2026 05:51:04 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: [PATCH v3 0/2] arm64: dts: rockchip: Add ArmSoM CM5 and CM5-IO
+Date: Thu, 16 Jul 2026 21:50:59 +1200
+Message-ID: <20260716095101.2498464-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <dfca9032-98ca-4c61-b1b1-85fd05283d77@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260716_070844_485581_ECA16F9E 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,171 +104,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6426910316156751587=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add mainline support for the ArmSoM CM5, an RK3576 compute module, and
+its CM5-IO carrier board.
 
---===============6426910316156751587==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="e64try3cwjwjk5gn"
-Content-Disposition: inline
+Patch 1 adds the binding, patch 2 the module dtsi and the carrier dts.
 
+The on-module YT8531 PHY has no crystal and needs the SoC 25 MHz
+reference clock (clk_mac_refout). Ungating it for RGMII needs a small
+dwmac-rk change sent separately to netdev [1]; the clock is optional so
+this DTS applies without it.
 
---e64try3cwjwjk5gn
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-MIME-Version: 1.0
+Tested on a CM5-IO: the YT8531 is probed by the motorcomm driver and the
+link comes up at 1000 Mbit/s; RK806, HYM8563, eMMC, microSD, the USB3
+hub and the PCIe root complex all probe. dtbs_check is clean.
 
-On Wed, Jul 15, 2026 at 01:46:12PM +0300, Cristian Ciocaltea wrote:
-> On 7/15/26 11:55 AM, Maxime Ripard wrote:
-> > On Mon, Jul 13, 2026 at 01:23:00PM +0300, Cristian Ciocaltea wrote:
-> >> On 7/13/26 11:50 AM, Maxime Ripard wrote:
-> >>> On Thu, Jul 09, 2026 at 10:25:54PM +0300, Cristian Ciocaltea wrote:
-> >>>> On 7/3/26 11:54 PM, Cristian Ciocaltea wrote:
-> >>>>> On 7/3/26 5:34 PM, Dmitry Baryshkov wrote:
-> >>>>>> On Thu, Jul 02, 2026 at 05:46:17PM +0300, Cristian Ciocaltea wrote:
-> >>>>>>> Add the connector-level infrastructure to support HDMI 2.0 scramb=
-ling:
-> >>>>>>>
-> >>>>>>> - A scrambler_supported flag to indicate whether the source suppo=
-rts the
-> >>>>>>>   scrambling capability, in which case the newly introduced
-> >>>>>>>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_f=
-uncs
-> >>>>>>>   are mandatory
-> >>>>>>
-> >>>>>> Do we need a flag? What would it mean if the flag is set, but the
-> >>>>>> callbacks are not? Can we drop the flag and use the presence of the
-> >>>>>> callbacks as a way to identify that scrambler is enabled?
-> >>>>>
-> >>>>> The flag is intended to be set only within drmm_connector_hdmi_init=
-_with_caps()
-> >>>>> when drivers advertise HDMI 2.x capability, in which case it also e=
-nsures the
-> >>>>> callbacks are provided. =20
-> >>>>>
-> >>>>> We could drop the flag and instead have the init helper clear the c=
-allbacks if
-> >>>>> they were provided for HDMI 1.x.  This might slightly reduce code r=
-eadability,
-> >>>>> as it relies on checking the presence of individual callbacks - esp=
-ecially since
-> >>>>> we plan to extend this further with HDMI 2.1 support, providing fou=
-r or five
-> >>>>> additional FRL-specific callbacks.
-> >>>>
-> >>>> I tried to replace the flag with a helper that checks the presence o=
-f (one of)
-> >>>> the callbacks, but it's not straightforward to unset those for non-H=
-DMI 2.x
-> >>>> cases since the hdmi_funcs argument is immutable.
-> >>>
-> >>> I'm not sure why we would need to unset them. If the driver states th=
-at
-> >>> it support HDMI 2.0, then it needs to be there, if it doesn't, then w=
-ho
-> >>> cares? it's not going to be used. We can log a warning that it's
-> >>> inconsistent I guess, but there's no need to actively remove it.
-> >>
-> >> I was trying to address the use case where drivers provide the scrambl=
-er
-> >> callbacks despite not supporting HDMI 2.0.
-> >=20
-> > Scrambling got introduced with HDMI 2.0. That doesn't make sense, but
-> > it's not a total deal breaker, it's just going to be here unused. Hence
-> > why I was suggesting to put a warning there if you wanted to.
-> >=20
-> >> If we replace the scrambler_supported flag with a helper checking the
-> >> presence of the scrambler callbacks, then we would need to ensure the
-> >> callbacks do not exist in this case.
-> >=20
-> > Keep it simple:
-> >=20
-> > if (hdmi_version >=3D HDMI_VERSION_2_0)
-> >    if (funcs->scrambler_enable)
-> >       hdmi->scramblers_supported =3D true
-> >    else
-> >       return -EINVAL
-> > else
-> >     drm_warn(warn, "Inconsistent HDMI version");
-> >=20
-> > We don't need anything more than that.
->=20
-> I dropped the scrambler_supported flag and introduced a helper:
->=20
-> static inline bool
-> drm_connector_hdmi_scrambler_supported(struct drm_connector *connector)
-> {
-> 	return connector->hdmi.funcs && connector->hdmi.funcs->scrambler_enable;
+Changes in v3:
+- Remove the ES8388 codec from the file header and the i2c0 block
+  comment. The node was dropped in v2 but the comments still named it
+  (sashiko-bot on v2).
+- Use gpios instead of gpio in the vcc_3v3_pcie fixed regulator, to
+  match the other regulators in the file.
+- Pick up Krzysztof's Acked-by on patch 1.
+- The other v2 review notes need no change: the always-on plus
+  off-in-suspend state on vdd_cpu_lit_s0 and vdd_gpu_s0 matches every
+  rk3576 board upstream, and the eMMC full-pwr-cycle-in-suspend with no
+  vmmc-supply is the same pattern used across rk3576. dtbs_check stays
+  clean.
 
-I'd add disable to that test
+Changes in v2:
+- Type-C DP alt-mode: name the altmodes child "displayport" and make
+  svid a /bits/ 16 value; drop the undocumented svid from &usbdp_phy and
+  add the missing mode-switch.
+- Move the FUSB302 role-switch endpoint into the connector's ports; the
+  fusb302 binding does not allow a port on the device node. Rename the
+  node to usb-typec@22.
+- Drop the ES8388 node (disabled, wrong compatible) and the unreferenced
+  gmac0_rst, bt_reg_on and wifi_host_wake_irq pinctrls.
+- Rename the wifi-poweren-gpio pinctrl node, it collided with
+  gpio-consumer.yaml.
+- Describe the PHY reset at the MDIO bus level rather than with the
+  deprecated snps,reset-gpios; a per-PHY reset-gpios is applied only
+  after the ID scan, too late for a PHY that boots held in reset.
 
-> }
->=20
-> Therefore we need to ensure the callbacks are not set in the HDMI 1.x cas=
-es:
->=20
-> int drmm_connector_hdmi_init_with_caps()
-> {
-> 	...
-> 	if (caps->supported_hdmi_ver >=3D HDMI_VERSION_2_0) {
-> 		if (!hdmi_funcs->scrambler_enable ||
-> 		    !hdmi_funcs->scrambler_disable)
-> 			return -EINVAL;
->=20
-> 		connector->hdmi.max_tmds_char_rate =3D HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ;
-> 	} else {
-> 		/*
-> 		 * Scrambler callbacks are only valid for connectors advertising
-> 		 * HDMI 2.0 capability. drm_connector_hdmi_scrambler_supported()
-> 		 * relies on their presence to report scrambling support.
-> 		 */
-> 		if (hdmi_funcs->scrambler_enable ||
-> 		    hdmi_funcs->scrambler_disable)
-> 			return -EINVAL;
->=20
-> 		if (caps->supported_hdmi_ver >=3D HDMI_VERSION_1_3) {
-> 			connector->hdmi.max_tmds_char_rate =3D HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
-> 		} else if (caps->supported_hdmi_ver >=3D HDMI_VERSION_1_0) {
-> 			connector->hdmi.max_tmds_char_rate =3D HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
-> 		}
-> 	}
+[1] net: stmmac: dwmac-rk: enable the reference clock for output mode
 
-Drivers might have a lower limit than the max allowed by the spec. It
-should be provided by the driver, possibly optionally with a fallback to
-what the spec states?
+Jiaxing Hu (2):
+  dt-bindings: arm: rockchip: Add ArmSoM CM5 and CM5-IO
+  arm64: dts: rockchip: Add ArmSoM CM5 and CM5-IO
 
-Maxime
+ .../devicetree/bindings/arm/rockchip.yaml     |   7 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3576-armsom-cm5-io.dts     | 397 ++++++++++++
+ .../boot/dts/rockchip/rk3576-armsom-cm5.dtsi  | 564 ++++++++++++++++++
+ 4 files changed, 969 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5.dtsi
 
---e64try3cwjwjk5gn
-Content-Type: application/pgp-signature; name="signature.asc"
+-- 
+2.43.0
 
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaljhpQAKCRAnX84Zoj2+
-dtmfAX4hb36DjoE4VEr38K1RxVvH6fMaYc4tGgZ5azN7kKXkf+xx8ruXvL0qAOFh
-VBxEz9IBfiL9+MgYvxA576doURHAq97OCDOVjqmqFBKmaZ51qcWE/LJhjrzU/1JC
-BSNPP7oopA==
-=Y9rm
------END PGP SIGNATURE-----
-
---e64try3cwjwjk5gn--
-
-
---===============6426910316156751587==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6426910316156751587==--
-
