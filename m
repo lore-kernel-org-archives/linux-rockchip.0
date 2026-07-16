@@ -4,237 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59C3CC44507
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 00:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 032F4C44501
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 00:57:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x4WlLmKJbp8V3reEKlY9RTPVwHyiJqX8ZKkQxHL2Pus=; b=ejrFGG/cag4qUe
-	HQpuENPtP+/LLB+4M2iMwhWX4geiO8rycoHUNIsbh8HfxeYrrxiVQZ1bIHJ6mDxEeXP0azMNAwqFz
-	wTlYQZsmcvfvfMIvIeJ/fzgWSGqFV6l4o2Shnet7pTNfSLJwRih+15sAgJT6rXQ8biVwiT0L/b+10
-	i731/6Kt/fHyCZM+FchiBNR3ugKDhktloGgLsjpwfdJbGcD+Sre2+fdwuBWXsfU3BKPEawYSCmqHw
-	XSYta0FpfY98UnDGTKwTclNvJ3ZQebC1j3iIZB68YS7kDXForiUjJ9bVPMwLLNr8W+j5krbR9o/dn
-	OksjMekIjjJJAG+vfCIw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=R3W07J4Wlr73UvTqeGCcSnkaKNsCLK+nZrVtMQ8XOGU=; b=l7I/8bKEnFNp563BAxgvO+N3gn
+	OF8Aa/kWEZq8ok9NiJQh1kD75TPBxNkbNKl79zUQyQS69tbTCbsCj4wYhFpidNwyqf0HfS0cnwZ2J
+	zo+Ayoa9oVBLY/b9M9lOOK/yXU6x9ZLI4hmP+TNWk9FdRKaCj1I52nD+H52HSynXBWFgowUk45k4G
+	9VY4PnL8GSnT12KfyDjQlrzDfzDYyRuYUPraneRgbzk9iFsDAKT3SGwx9xJjkW7NkyKDMAIqJ3jI0
+	SjH2sKCyVaUA3hiK0lNYlAvy1eE6IIxj+T420ZCxf0xaAuQahYL22clC+ycUAUIGu8Tp15REFs7JI
+	tmI7zW9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkA86-0000000G922-2jwe;
-	Thu, 16 Jul 2026 00:39:10 +0000
-Received: from mx0b-00230701.pphosted.com ([148.163.158.9])
+	id 1wkAPe-0000000G9wx-32IR;
+	Thu, 16 Jul 2026 00:57:18 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkA84-0000000G91W-2wzC;
-	Thu, 16 Jul 2026 00:39:10 +0000
-Received: from pps.filterd (m0098572.ppops.net [127.0.0.1])
-	by mx0b-00230701.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66G0RfGT3264537;
-	Wed, 15 Jul 2026 17:38:59 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=synopsys.com; h=
-	cc:content-id:content-transfer-encoding:content-type:date:from
-	:in-reply-to:message-id:mime-version:references:subject:to; s=
-	pfptdkimsnps; bh=I52ybeN3pyBdDPLLwu5TLglFdrNKMCUqBW+ZApG63RE=; b=
-	Qji3stj3x/NS6VXeDPE0zPoMKsAYT5z1HApmv60BMfT9KKV0omSxfm/NtBIhC8H+
-	Dj35+Vyd+jUEop+Y4w6Bm4Dw5rFVbU8Iyi0LUUViGc6Nc3E2m6nGo/XVpa9lchpe
-	WzJ86HLT+bLH8yPJIl0rVsiWNVMA+vdzWdwWG6uKruASbujgyY25k+DaaNDZbyy3
-	IWRrHyrcxl3vQ09+Ahm6L+3FXpwavux7SCmYwd8x3KLOFzPCJOJLiIksXgkzYmxt
-	mi9BodU9s5jCZK4mdakeCNDQdt1LCsqSteUiDxYuxXeYldmEK99kG+C380fOgGAG
-	w+N1+Z46Hp6YGRkmLMD5jQ==
-Received: from smtprelay-out1.synopsys.com (smtprelay-out1.synopsys.com [149.117.87.133])
-	by mx0b-00230701.pphosted.com (PPS) with ESMTPS id 4feddwushq-1
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
-	Wed, 15 Jul 2026 17:38:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=synopsys.com; s=mail;
-	t=1784162338; bh=I52ybeN3pyBdDPLLwu5TLglFdrNKMCUqBW+ZApG63RE=;
-	h=From:To:CC:Subject:Date:References:In-Reply-To:From;
-	b=EQCIYEOuvxQa1Su6Wifvl9+Os1WnXA4YyaXNHKlYD+4Thly0krAb1sDlGfYmK/rij
-	 2Jo4Hb2pe70iRWPSXhWni0fWX2NXOR6sZdv8pjXgiQ5sl6jhOx4FfvQYCGJfdTE/Bb
-	 zYSly4/jD0bfXbYm+ENkB8ki9C36mHlkt8MC6exONB0vhtDvFWvURAWe9KLlGk2+ce
-	 Ud04MCAauJiC5Tp9guiruoZ71Ydf26rPjUeKNfMLIM4bmwXWtOSvdVeeNpn2g2flm0
-	 ssJMscwBMNpjsclutLTFD5uzJlsMSYMFf2vhhgCQ4JUkNalitONt76wz++nN1tW87y
-	 UQS0lHbFd4yXQ==
-Received: from mailhost.synopsys.com (sv1-mailhost1.synopsys.com [10.205.2.131])
+	id 1wkAPa-0000000G9vz-2GMd;
+	Thu, 16 Jul 2026 00:57:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784163429;
+	bh=KrKywOSi2DWeM2XOCMC0Rkz1CR6sXdjtn+QIWnjdl3E=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=EoQ5V1a9P5dXRl1LowJUXLbblJLnZUzRnJLTWMjZjcLQqHA0+RC/ML95j46cV8gGY
+	 sYHMaqWnkwVEjuUFRZt0VBnR33E6hMC0q5ogUyp8qWi2+OYEqjGG1DEIX+kkhCQH/j
+	 fCiQEPui12Om91gH6n2WDUz34HpLPk4jUlptD3C50CwnEZ8dHjiVbegyfcSeUVNR1R
+	 jVN/LbeQQO9SurFQ3cZuOvp/XEQXhFlqK7ejftrjgt89tPpwuz5Krxr5406+5DkcjC
+	 JR81HXYJVjE7mVcay2NuPcTp98WC5baZbKEhaEMpsm9G5+695mFHgSRKYiE/ZEpWVD
+	 0D7ZroGdC6JHQ==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits)
-	 client-signature RSA-PSS (2048 bits))
-	(Client CN "mailhost.synopsys.com", Issuer "SNPSica2" (verified OK))
-	by smtprelay-out1.synopsys.com (Postfix) with ESMTPS id 268F240351;
-	Thu, 16 Jul 2026 00:38:56 +0000 (UTC)
-Received: from o365relay-in.synopsys.com (us03-o365relay3.synopsys.com [10.4.161.139])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits)
-	 client-signature RSA-PSS (2048 bits))
-	(Client CN "o365relay-in.synopsys.com", Issuer "Sectigo Public Server Authentication CA OV R36" (not verified))
-	by mailhost.synopsys.com (Postfix) with ESMTPS id 4FFB5A1095;
-	Thu, 16 Jul 2026 00:38:55 +0000 (UTC)
-Authentication-Results: o365relay-in.synopsys.com; dmarc=pass (p=reject dis=none) header.from=synopsys.com
-Authentication-Results: o365relay-in.synopsys.com; spf=pass smtp.mailfrom=synopsys.com
-Authentication-Results: o365relay-in.synopsys.com;
-	dkim=pass (1024-bit key; unprotected) header.d=synopsys.com header.i=@synopsys.com header.a=rsa-sha256 header.s=selector1 header.b=u/a26Y1h;
-	dkim-atps=neutral
-Received: from BL0PR07CU001.outbound.protection.outlook.com (mail-bl0pr07cu00100.outbound.protection.outlook.com [40.93.4.0])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-384) server-signature RSA-PSS (2048 bits) server-digest SHA256
-	 client-signature RSA-PSS (2048 bits) client-digest SHA256)
-	(Client CN "mail.protection.outlook.com", Issuer "DigiCert SHA2 Secure Server CA" (verified OK))
-	by o365relay-in.synopsys.com (Postfix) with ESMTPS id 406044011C;
-	Thu, 16 Jul 2026 00:38:52 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=as3RKdQE6ft181fiTyvqzZezKtfjzSdX26xUFD7KEaYN1mb64Pw2I02OnW0034rKeoWyJs/GVHa+0O5ygSjJZkC7rYbaBzZouIzMfCH5AHw0quR1X+MeZCkK+clckQS4DMRYIJX/QgGK0tzG7aXlqo/s1pipp73YQt43zic6Z3qzMNXvRsIr4tXVYz2S30wL1hCI4zI2plxOKScqyoseRcV3coVEVcdlqfKUvzhoL0nNKwtcfRGsV24cxCuz5w2VVlKOVl9CAWDlEVtT2pzfIx1L3ey4Bza0Isk9RGEYdDwnOkI1H/QjuaFPne20jQTYjKEqmhkBWTU+8Yl9H59dkg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=I52ybeN3pyBdDPLLwu5TLglFdrNKMCUqBW+ZApG63RE=;
- b=qVXSdViNQIJZHvsJBFAtmeRkGIZ98Z/s4s2Kkpb0KD6C/jCoLbmZnBQV9sbugaB7J/1/49kgWr/6Yj4E322SwU9/b7MqAoyiGv3ueTucvfv9HtcOH0PV6yXnlylWroWuZRmUIR3d6Fvzwd6vvW2ewd3xZ8GP63Dz64oli0+YqP6xzx+eIhxCeLhm3VMO8S2sFcWzpG3z0oLXfJKV1oO2a1OZCsqvLEgzAVrfmLpsMnT7Z6QmVG7eAYlyDYaOn6B9Pi/VPzNmv+y+24aO5PRYotM6HiKFdSpQLurtcYR4/buLFsCSRzc5Yip+96y0Hp0VOnF5tZ7KmVi6qyGX3y89lQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=synopsys.com; dmarc=pass action=none header.from=synopsys.com;
- dkim=pass header.d=synopsys.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=synopsys.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=I52ybeN3pyBdDPLLwu5TLglFdrNKMCUqBW+ZApG63RE=;
- b=u/a26Y1hT3k6yUDZtZIUcXkmUf0z+wAFs4chPT1WGG8dri/rUXLCK+aes+3CEdnXMZnFX4Ky8aQOyemKbbtKGTumhFONiUOJ4Qei3ONFiLU6s8vlKWWcItUJhxtYXfPCGD8hlfYZuF0o0J1fXOCftK67pOfF1IFF8r9lcrkJAHs=
-Received: from PH0PR12MB7486.namprd12.prod.outlook.com (2603:10b6:510:1e9::6)
- by CY8PR12MB8196.namprd12.prod.outlook.com (2603:10b6:930:78::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.10; Thu, 16 Jul
- 2026 00:38:40 +0000
-Received: from PH0PR12MB7486.namprd12.prod.outlook.com
- ([fe80::7df9:b25e:9216:f109]) by PH0PR12MB7486.namprd12.prod.outlook.com
- ([fe80::7df9:b25e:9216:f109%6]) with mapi id 15.21.0223.008; Thu, 16 Jul 2026
- 00:38:37 +0000
-X-SNPS-Relay: synopsys.com
-From: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-CC: Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
-        Heiko Stuebner <heiko@sntech.de>,
-        Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Philipp Zabel <p.zabel@pengutronix.de>,
-        Andy Yan <andy.yan@rock-chips.com>,
-        Dmitry Baryshkov <lumag@kernel.org>,
-        Yubing Zhang <yubing.zhang@rock-chips.com>,
-        Alexey Charkov <alchark@flipper.net>,
-        "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
-        "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-        "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "kernel@collabora.com" <kernel@collabora.com>,
-        "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-        "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>
-Subject: Re: [PATCH v13 29/35] usb: dwc3: core: support PHY reset
- notifications
-Thread-Topic: [PATCH v13 29/35] usb: dwc3: core: support PHY reset
- notifications
-Thread-Index: AQHdE8arRneswr7xUEajxvR7GSrovLZvT1IA
-Date: Thu, 16 Jul 2026 00:38:37 +0000
-Message-ID: <algnRWVX9g8XranY@vbox>
-References: <20260714-rockchip-usbdp-cleanup-v13-0-6cb3e769d4c5@collabora.com>
- <20260714-rockchip-usbdp-cleanup-v13-29-6cb3e769d4c5@collabora.com>
-In-Reply-To: <20260714-rockchip-usbdp-cleanup-v13-29-6cb3e769d4c5@collabora.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH0PR12MB7486:EE_|CY8PR12MB8196:EE_
-x-ms-office365-filtering-correlation-id: 35c22163-986d-4cd9-973b-08dee2d29377
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|23010399003|38070700021|18002099003|10067099003|22082099003|56012099006|4143699003|11063799006;
-x-microsoft-antispam-message-info: 9e8GZ2Yock7UobWKaZAoXcLV1WX9r6aLJ2Ly+xsKQo6XmSGmhTyhKPtUZK9twg8JK4dS41n3PhYVx+6ZyGJvk1ifKkTLwCfwb9scbINJM97aSncsqNMONuYBFZfxbvyPsAw89JSMp398ZEzgyopCS2gRF/EgN5EcdoS7pauZ0a4TQslQ/aRgfFHVztGXUVNxogQRApT6XhLn/kY6e7+jubKJwQErphNVKyJAxK8QCc7X6ZzEO9cG1G8yW+up/FANmOj4IomBi9dJ1DLtqLiCsnV5C689Oafzn7Nj8a0ZvgCXmwYonSlsw5YQevLBp3BBAMmIlhZ4u+9b1PPnUWMD69Cf6m09kT6wU0ZLm7Ef9uzfLGYEJGavt+PiO0TYaJx2r1ptHf1Q4OANyY486qQUe2UAVcJEUv0DgeB7VMYQMBSKVBICEXuminFPBkpTVJ1zcNEl3vXbOsJx3WdFUDGP5vkWWFEatTygbniyRDppe6IfMuHUqvGxv4aaYdxeV3Fha5limtzQGxG1wdb6vorC15od8b/WC8U95t5R1ryV1fZ4zFGgwkKgtDjhXQIGRxvZfv1p3IeEcUFHYDJTwsvW9gq2OJ/pES1GGGEd9FRl5Diff7FMSYmNPCLnp8xNgav7TU3g/irpE3fLBcM4ru0gShM9fRTaB5IX2wQkYoXjqTo4PVcT3cfv9F1RIhQp40uRYHnVQb90k9h0MGUdbR9jPw==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR12MB7486.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(23010399003)(38070700021)(18002099003)(10067099003)(22082099003)(56012099006)(4143699003)(11063799006);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?YmdZUDhqU0txR3NpUENIRmpKRTEwQWNsRkRra1dxRUgrOU5kVVFLSVZtYTVD?=
- =?utf-8?B?ekl0NVlzZWFqcWhOaUtVTHNTaktkZjBlZ3h1MmtxL09PTDBUMU1ZNU5HUUZ5?=
- =?utf-8?B?eTVZOTQ2ZHFrZStKZ1BIdkU3NGh0UDh1ckM0WEVRU2RHUFlmQWJna2JsTTl4?=
- =?utf-8?B?Q3dFNGpEMzZOVXZYNVJlNGhZMy9VbTJPV0RXU2xVTlRwM09rL0s0eWcvN2lJ?=
- =?utf-8?B?MXlXUGJLZWMwMUE0U1QwZUFZSm9oRCtleVR1TG01bmZxQmFpaUxTdW5OeDNW?=
- =?utf-8?B?US9vYi9hSlZHTjkvd1QxRFRrZXNLNmN0NEt1TGdKRnlxOTQvQ1VBbkREczBO?=
- =?utf-8?B?MTNMRXJHLzdxVXY2bk1aL2JPaEtkTWNSeG0zZVJGdjRXbjVTeis1cW9yTVAy?=
- =?utf-8?B?blNDcjI0alNpaFU1bWxVUEZVbWdkZ1gwTkxZVkhHVGdZemV6NjJZbjVIL1o1?=
- =?utf-8?B?bVRFZXVKbW1oaUxSS1lCMER0WXpoeGYvK2ZWc1Z0bVJwRi9iVDFWQytYOFYy?=
- =?utf-8?B?enFPcjVrNTN2NVFnK2xsUm11WjQ1Y21rbnVXSmlVdnJLMktQRzRSR0JISWdM?=
- =?utf-8?B?d3RkZWFObmRUVFcvRkw4YlYyWWJabjY2Y3FrNWFuNllwUmt4dWtGT29JNmIv?=
- =?utf-8?B?M1d6VHcvV1pBQTEwV0JUVFdKNlJ2Q21JMU1PYjlEcnBNM3N5dmRFZWRVbTZp?=
- =?utf-8?B?cEMybVZYdWNVME9hYWI0MHhvVmhqdEtHcW92YUhQVmtpQkZYenhYT2xUSEs3?=
- =?utf-8?B?eVNXWWRKeFhPenF2QUVtQ0tVekpIZ09oTXByRW1YY3VZMktmeUNQWDVqM2RN?=
- =?utf-8?B?M3ZiTWVCeUJ6L2NTaXljWWxWU2lJb3MvQW94UnR0eGtFV08yZEMyTjBlYUlz?=
- =?utf-8?B?YzVNdTUvNitYVnQ3dXMwekdpYk8vVThIcWhhNkZNZzNaZThVUDBsSnVmR29n?=
- =?utf-8?B?aDdrK3M0dkIzUjJkb2tVSkRUaW1RYlFMcXpQOFJCTk5nOW1Xa0V0M2g2Y3dm?=
- =?utf-8?B?OEpqWVNhdjZ4dXdYb2l1Q3QxQzV5K2NFOE9BRElwdFM0bGkxRG1pTHlCcFh3?=
- =?utf-8?B?dWIrRHk3OVUwTGh1Q1ZhODRDRm1VSnBlMUcxRkxJVFo4OSszVVRiQ0lIaHBS?=
- =?utf-8?B?OE1LWmxuRHZQcytEajlHUlNyOWhCOEE3QWgrWjdmRzcwRE54blowUXRPWEVV?=
- =?utf-8?B?RXl0dE53QVkwWm1PZkpuaDB4REVqQ0lyc1RvdjNyaW4vZFEzM2xETmhjME5v?=
- =?utf-8?B?MVk5V0xOSnA2S084Y0FYTU1XUWxCQVVVVkY5b3AyNWxqeXhmZVIwaHpPVk5r?=
- =?utf-8?B?QTFrOXhiT3VvY1FlYjcxVlFhalZtUm1ZemRmV2N1dXFBWEVCYUJScjIxSjVY?=
- =?utf-8?B?eDJEWkhBZkNpZ3U3R3lXSkdJc2VocDdPeWsxMWxjYWJJNzNUV2hhbU1mem1M?=
- =?utf-8?B?NVZtcHNmYXlrWktGaVZaT0pXU2pxTVBDclN5MUdhT3dSNisvWDc2SUd6ZUtD?=
- =?utf-8?B?VFBqVndraXFYT2NtSVFVbHR1a1FPUStZc0prYkUyTE5Ed3NJVWpvak4wZXBl?=
- =?utf-8?B?ZSt0MDhnZDBYRXo4TVhQeWtmQ0RUSkV1Yk8ySE5RZmx5L1k4SzBDT2hwaHMy?=
- =?utf-8?B?VmZGTEVwSThvWGNvNGJhK0JjZjczRUdhRXREL2lua0tPRWpxTHlCd09xNDVD?=
- =?utf-8?B?L2ZLeUlWMXArNkd4WVN2bXR0NG5JZFIyT2pwRG5IR0Q2SUFqb2NJZDFGWU91?=
- =?utf-8?B?dXZ3N1pGc3BSRjN4dkRGdkpFQXpkclNZVEdLK3RNaWtmQVk4UFg4R1llMTl1?=
- =?utf-8?B?aUVnK1JxallxRXZwb25PUkVCSUFSbnMxWWZlTU5qL1JGQVhGRkZXYUhYcmlE?=
- =?utf-8?B?OTA1QlB2VlBHa0lxd3IzZ1Q2cWsybTh6aWFTRzIvOHBidUthNi95S2xTRHBn?=
- =?utf-8?B?OFpHRlNqdm1XTVRiRTBLUytmQmE1dmNSSk5pSlEwMWJOVjMvUXl6SGFoTk9h?=
- =?utf-8?B?QXUrOTJRQXJFWW0zcllzTlYrT3FseGFhQW5McldhTlF1ZkhJSllSNHBjdmFv?=
- =?utf-8?B?ZTNEZG9aOXpYaktVekN1UW5JN1dBWDB3L1pEVkcwSjZ2cmZIUjRDWWRzbXZF?=
- =?utf-8?B?N3BrcHVDUVVGMDlxUEJLQ3JWanpGelZhVTM4K3Bhb3lLbXdmQm5iMVVqQW84?=
- =?utf-8?B?ZXpqS1pGTVJXSHNuTDhqSTBNMUZGWXhCd3pSRUQ4c0t6UWF6a0J2NllYVHVs?=
- =?utf-8?B?QUZOQ0dDMzlaZzJFMmZWa1Y4TlJKdmoxUXhlSWlyZWhIOFFSYkdRdEIvaUp4?=
- =?utf-8?B?UTAyMSsrbFFDa1RLZ0pLbEJmdXVCWDNJR2x4YzJDbTFXV1kzZWdSdz09?=
-Content-ID: <2447101137758046B50DE7A104BDFCE5@namprd12.prod.outlook.com>
+	 key-exchange secp256r1)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9A41117E0F3F;
+	Thu, 16 Jul 2026 02:57:07 +0200 (CEST)
+Message-ID: <0c1c07cbdcbb3a6852e2fc13b94b84d7641f5b6d.camel@collabora.com>
+Subject: Re: [PATCH] media: rockchip: rga: don't change RGB quantization
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
+	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil
+	 <hverkuil+cisco@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	kernel@pengutronix.de, Philipp Zabel <p.zabel@pengutronix.de>, Michael
+ Tretter	 <m.tretter@pengutronix.de>
+Date: Wed, 15 Jul 2026 20:57:06 -0400
+In-Reply-To: <20260605-spu-fixrga3quantization-v1-1-1059d984dc6e@pengutronix.de>
+References: <20260605-spu-fixrga3quantization-v1-1-1059d984dc6e@pengutronix.de>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: PAIIZqAqdkuCyjinJdsqeJxxb1q+OF/M01RNMUNCfUxcFbzYE+LH1IqOeRkBamGLy5sS0qeTNMlRzBCLLh+XwWib85DOwLC513al4koYVB0UsvyRx4hq1OiYaf01mJQDFf62VSgXhw6kiJX/z7AXoyKX0TnE6oYc/3ICdycA+oloqvRODOblZd/+8FQMFU0lM5wfpVPEzCIbaMnP8PhCXlgDBXIVyJP5fKYS82diWjbmDESJOunz7PL/txGOuieV2/o8eBST8aZ5+t7Crur3Mldql6IebdBvrTdj/u76iUg6ScCTOaDf1f7J69xCCFFzp71eo9stGdJ1nFfQGOeytw==
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: +h8RxahIDrtEpzJJ3CBkz/s3mOxqvJV+gBw7O187adrinNnwuMJzheFDW3GNvB6P2aPQffS5q+i8PYOLK/n+LlxDZQdK9Bd5DX9rNhnu9i9G6FTqRjIsAj52txc+yvlM+iKbvWGWktZP4VLSXvACiGK+UKGUKeMWeaCk7PRnmr9pOvNs7gwoBI+Fpm1rbbeY3s9xLso3OxicOVy2rtrir2l2XerPJ3Gn+Lh59mlI8nRD01tb1liRqGckexh2TbQ+qIMRVa7bZy4eLDyXfT25AjqJaSrf77kKgfjpdkpn9d1dp7GuhBQHzo2P+4lTVfixPIAvyQFaXJvCZ9zX0ZI9YTCPsYBud7QqtJAc4vYqtCOHamkYxMT8+O/RPIid9lTFYERM8/rS2ZaoCHMfiH8c0UkZsBzMK4CCqYb7PsbL9k4thTLRJP+yIVvEmRoV32Yg6a/8ThokFcuoyyWtRYX6OPrbAZBJfvxvQoBTLvLkC6VPIrBNcaPQ4m1eT6HnFYUvpgem4kn/DQrZwkFuDManV9tqZEeSwRAgsP4QMSFwIiSGY4jiy2TqQCmi9C9tVlWGGSb61pS5f/eac9Q33U4/5q4qvAkJQLWzWzhidqnFvdBi+0JWJtM29kkdJv76qyBOdk/WFNl0LDso+fVicN1LAw==
-X-OriginatorOrg: synopsys.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR12MB7486.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 35c22163-986d-4cd9-973b-08dee2d29377
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jul 2026 00:38:37.7824
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: c33c9f88-1eb7-4099-9700-16013fd9e8aa
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 9C12zffRkngooTXDnvzSQwp4pUEYPpgKzcK9Mif+AikIkwJj9m7gpHIZOjY3O0ZS+3qAG9n7K01vxHExCYvQ1A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB8196
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzE2MDAwMiBTYWx0ZWRfX2FvxH3JH4v06
- Ad/ngP8wXdE8ORgUY7KR5aVvtaIO63PSiac4Z6Qm82nFbPC/QIXOFhH06VtISPK9Tu0Y+8+mn11
- O6wm3ee8k/p+kvJ77NoXbpQJO0+tcbNmuYf2tJlfXDz3gP5ACy8gELD+PH/vW7LTwYwm4nU3RH9
- nkVv4Typzp/oME15TvqeGAEniOqZ8OjpIFNP9idMF6rYx1nmVUg6eITyiIcaawzfxKd88IaUi5u
- UnT9tp8W5bCjEH6jPObT/LR5DgsSQkKscM68SDmfR5/DptLf/tvV/J8rIpxSxhNvrt/vZLRpmd7
- ZT4IhtSutAk7YToVq/iF0JMnYaQ5raCsHF1lgvVUlKNljDqeunhgRCAnytN0KcZWBO1xiVbC4qM
- Ufef8LPgh+VBLWcxdsObVUdDVc7sYxoTdMGJTiukExZExrZidxvv2TOu8GBFmJ0eCXQUuXju31j
- wlZ8kbBRqBwOL5AYBNg==
-X-Proofpoint-ORIG-GUID: rltciFRxq8JauzK-PM5l1gZFpLhXar63
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzE2MDAwMiBTYWx0ZWRfX3p63ANGyyivD
- 7DCud+pAOra6SOg4MTVXuCL6inNXFXQGA/OnScxP793zVfmT0cpW8p4xXhL+GdoUh6U+SdR+2LU
- I71hHKt4pMH4qahQweVMEVzgj9CE6XE=
-X-Proofpoint-GUID: rltciFRxq8JauzK-PM5l1gZFpLhXar63
-X-Authority-Analysis: v=2.4 cv=K8oS2SWI c=1 sm=1 tr=0 ts=6a582823 cx=c_pps
- a=t4gDRyhI9k+KZ5gXRQysFQ==:117 a=t4gDRyhI9k+KZ5gXRQysFQ==:17
- a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
- a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=qPHU084jO2kA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=tU_645BZ7FZt8VqRJtHG:22 a=jSPayVjLy6xbsuKauFBc:22
- a=QX4gbG5DAAAA:8 a=LmSbGtMdET2yByI-T-0A:9 a=QEXdDO2ut3YA:10
- a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-16_01,2026-07-15_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_active_cloned_notspam
- policy=outbound_active_cloned score=0 malwarescore=0 spamscore=0
- clxscore=1011 impostorscore=0 suspectscore=0 priorityscore=1501 adultscore=0
- lowpriorityscore=0 phishscore=0 bulkscore=0 classifier=typeunknown
- authscore=0 authtc= authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.22.0-2606150000 definitions=main-2607160002
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_173908_891589_90550D85 
-X-CRM114-Status: UNSURE (   8.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260715_175715_157673_A60E3894 
+X-CRM114-Status: GOOD (  27.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -246,39 +88,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1990901117242440410=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 14, 2026, Sebastian Reichel wrote:
-> On recent Rockchip platforms (at least RK3588 & RK3576), DWC3 IP is used
-> with a USBDP PHY providing USB3 and DP. This PHY needs to be reset when
-> the mode changes, which may happen when plugging in different USB-C
-> devices.
-> 
-> If the USBDP PHY resets with the DWC3 IP running, its internal state
-> corrupts resulting in the USBDP PHY not being able to lock some PLL
-> clocks, which effectively renders USB3 unusable.
-> 
-> To fix the issue this adds handling for the new PHY framework reset
-> notifications, which will assert PHYSOFTRST before the actual PHY
-> is disabled and will deassert it once the PHY returns.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+--===============1990901117242440410==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-U5+3yGyg/PFkfq4Pnraa"
+
+
+--=-U5+3yGyg/PFkfq4Pnraa
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Le vendredi 05 juin 2026 =C3=A0 15:32 +0200, Sven P=C3=BCschel a =C3=A9crit=
+=C2=A0:
+> Don't change the quantization of an RGB format when converting between
+> RGB and YUV with the RGA3. As the RGA3 only supports doing conversions
+> to full range YUV with BT601, it wants to announce it through
+> try_fmt/s_fmt.
+>=20
+> As it is only relevant, when converting between RGB and YUV, it's
+> guarded by a given condition. But the condition also causes the
+> RGB format quantization to be adjusted to limited range, which
+> is incorrect.
+>=20
+> Therefore simplify the condition to only apply when the current format
+> is a YUV format. Also document the reason for checking if the other
+> format is an RGB format.
+>=20
+> Fixes: 24a63d4c9d3c ("media: rockchip: rga: add rga3 support")
+> Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
 > ---
->  drivers/usb/dwc3/core.c | 101 ++++++++++++++++++++++++++++++++++++++++++++++++
->  drivers/usb/dwc3/core.h |  18 +++++++++
->  2 files changed, 119 insertions(+)
-> 
+> This patch is a fix to the upcoming RGA3 support. By mistake it'll also
+> adjust the RGB quantization instead of only adjusting the quantization
+> of the YUV formats. Therefore remove the incorrect conditions and
+> document why we also check the format of the other side.
+>=20
+> I've just noticed this flawed condition and didn't check/reproduce it in
+> a practical scenario.
+>=20
+> =C2=A0=C2=A0=C2=A0 v4l2-compliance 1.32.0, 64 bits, 64-bit time_t
+> =C2=A0=C2=A0=C2=A0 ....
+> =C2=A0=C2=A0=C2=A0=C2=A0	Card type=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 : rga3
+> =C2=A0=C2=A0=C2=A0 ...
+> =C2=A0=C2=A0=C2=A0 Total for rockchip-rga device /dev/video0: 48, Succeed=
+ed: 48, Failed: 0, Warnings: 0
+>=20
+> =C2=A0=C2=A0=C2=A0 v4l2-compliance 1.32.0, 64 bits, 64-bit time_t
+> =C2=A0=C2=A0=C2=A0 ...
+> =C2=A0=C2=A0=C2=A0=C2=A0	Card type=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 : rga2
+> =C2=A0=C2=A0=C2=A0 ...
+> =C2=A0=C2=A0=C2=A0 Total for rockchip-rga device /dev/video1: 48, Succeed=
+ed: 48, Failed: 0, Warnings: 0
+> ---
+> =C2=A0drivers/media/platform/rockchip/rga/rga3-hw.c | 12 ++++++++----
+> =C2=A01 file changed, 8 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rga/rga3-hw.c b/drivers/medi=
+a/platform/rockchip/rga/rga3-hw.c
+> index ca1c268303dd4..c4a71306278ba 100644
+> --- a/drivers/media/platform/rockchip/rga/rga3-hw.c
+> +++ b/drivers/media/platform/rockchip/rga/rga3-hw.c
+> @@ -450,10 +450,14 @@ static void *rga3_adjust_and_map_format(struct rga_=
+ctx *ctx,
+> =C2=A0	other_format =3D is_output ? &ctx->out.pix : &ctx->in.pix;
+> =C2=A0	other_format_info =3D v4l2_format_info(other_format->pixelformat);
+> =C2=A0
+> -	if ((v4l2_is_format_rgb(format_info) &&
+> -	=C2=A0=C2=A0=C2=A0=C2=A0 v4l2_is_format_yuv(other_format_info)) ||
+> -	=C2=A0=C2=A0=C2=A0 (v4l2_is_format_yuv(format_info) &&
+> -	=C2=A0=C2=A0=C2=A0=C2=A0 v4l2_is_format_rgb(other_format_info))) {
+> +	/*
+> +	 * Only apply the quantization restrictions when we need to
+> +	 * convert between RGB and YUV. Otherwise there is no point
+> +	 * to limit the quantization for operations like scaling or
+> +	 * rotations.
+> +	 */
+> +	if (v4l2_is_format_yuv(format_info) &&
+> +	=C2=A0=C2=A0=C2=A0 v4l2_is_format_rgb(other_format_info)) {
+> =C2=A0		/*
+> =C2=A0		 * The RGA3 only supports BT601, BT709 and BT2020 RGB<->YUV conve=
+rsions
+> =C2=A0		 * Additionally BT709 and BT2020 only support limited range YUV.
+>=20
+> ---
+> base-commit: 6a75e3d4f6428b90f398354212e3a2e0172851d6
+> change-id: 20260605-spu-fixrga3quantization-061c761a1d80
+>=20
+> Best regards,
+> --=C2=A0=20
+> Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+>=20
 
-These changes should not be in the core. This is specific to Rockchip
-and not every phy needs this. Perhaps you can create a new glue driver
-for this.
+--=-U5+3yGyg/PFkfq4Pnraa
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
-Thanks,
-Thinh
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCalgsYgAKCRDZQZRRKWBy
+9OkIAQDuCasCEJk0CphEcAaQPA3GXoNSFdqaKd4FLtrQf1ZxWwEAn/tLHAo7eJO3
+SimYY8iNZqub9/LnkkGXUBrKRzNkIwE=
+=6NwO
+-----END PGP SIGNATURE-----
+
+--=-U5+3yGyg/PFkfq4Pnraa--
+
+
+--===============1990901117242440410==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1990901117242440410==--
+
