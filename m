@@ -4,57 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E7BC44512
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 17:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7F32C44515
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 17:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HnqOuDmnh8uD05gY4VkKmWawZ/TkL5vsF3w/D5XTpVI=; b=UIkH+eMZQbrwPX
-	4h8wqZ1yWq6IMvlDSV7NbLWmRNQSDl9wvzVzR6XK9RQEYMVALubFxhs/9Qz7p7Y3usdkJStDuSGTZ
-	8M2VM/3TzQwFhTw4NIQJCnlvpd7nvQRPHdpi101ZxalUUgL6XRKjfNswZGFmsv/MB3p+nmSh83IID
-	6hOY2zZFY7hAk7Z1Hh15knqmZWL/g2AbE1Ui5dBjkKF4ywmqo4lBCVmQDlEujlohDuj4EU6b807km
-	n7swYBMAiUcj8FhvGeg9TwjX1q8sZG6xzgt1sQ62BTpi5QHNkaeHiGyp3VsvqZ9QrYe5AyDb/OtPI
-	HIffcdNgJBNJC2UOHsxw==;
+	List-Owner; bh=j578eD0BS4XIcn4PrcuM5fUtcZHumMgEJ6jIUzZjwk8=; b=XnUSHzn34bAcw4
+	nJeiSG/A5odQYGwaF2CxoNvtRsUh5SJIVnFKihzk8v4cPnkW58CuAUVSKgmfOHYrPon91YJcXz5qc
+	TDOU8yZ8vDmzlHK+9b7XsVno2dbNFNuBbvpXqW4D9utCS8/MjyuPoQE/qweIwcjJAgovhX+vb98Wn
+	x8AExLUk6aSckYW3bEEzChGo+Mz4vA7S0GEwzbSW4zd03L0KuQr1HNSiKGr1s6c3++TzolrgQWsyU
+	5rGD4EDJPIvcpqfyjU+bdBK0Z+tQIV7j8rCekshboskRKWuv9WcY3mPkywnDuQnwPcTrqNxq27vEy
+	U3WE856Q3ig/jLrMl1lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkPs1-00000000H3S-0ViC;
-	Thu, 16 Jul 2026 17:27:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wkPtt-00000000HOS-1dBM;
+	Thu, 16 Jul 2026 17:29:33 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkPrz-00000000H32-2Uat;
-	Thu, 16 Jul 2026 17:27:35 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2C9704176F;
-	Thu, 16 Jul 2026 17:27:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E35B11F000E9;
-	Thu, 16 Jul 2026 17:27:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784222855;
-	bh=C7Ri43wnBZH/LIFHL9jN4Nlw6bbCudsffErXi9BbAO8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Ri0X19bMgazH6mxlzhILR3c+9vGgCmx10wcV51E0x5hNbOWjUdYU9uzFCj2OfLpD4
-	 sneVATBmk1XNecfir3ZmxmHgRd+noU+ZdTkjz0PfjW+jj4+fz2HCmyVGLooBR9i7Fh
-	 AIIX7nM4vFVyuOu8buayBGzoqSq1LgzktSS39odvxe1hhel+phBq+QBENykoH/WXNn
-	 3C/0FLAcT8cb6c242npGzG/J0RUyOe55Nl5nVUluW+8Q0iGhXKSUXMyz2M6TTFQLX8
-	 wvMbi4KVadUn618fubfEScJ8J+Rt6IXIlEd6FjKdku2OLBbObnZR2/FUDH/Em/sFvb
-	 o2nqbINCuxuqw==
-Date: Thu, 16 Jul 2026 12:27:34 -0500
-From: Rob Herring <robh@kernel.org>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: heiko@sntech.de, krzk+dt@kernel.org, conor+dt@kernel.org,
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add ArmSoM CM5 and
- CM5-IO
-Message-ID: <20260716172734.GA463528-robh@kernel.org>
-References: <20260716065548.2466198-1-gahing@gahingwoo.com>
- <7e27ad59-0ffd-4323-9991-d00d69fde098@smtp-relay.sendinblue.com>
+	id 1wkPtr-00000000HNF-1j6Q;
+	Thu, 16 Jul 2026 17:29:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Oy7KDCiie69MUnyvy/2/gWtYYCH4ZMop/RN1w+cqgro=; b=RFXip3c57PRC16yRHWVjGWfcBO
+	WPr112RJloTjAizRsaTVqHYYmC7h1NFbF36WOOwCEfevN7aoGix2wmY94uuWQqwP6xBEAWaTKCtCD
+	9IjH4eLUWqS+T2b8uDwiPP0xN6hBz+63Se42ItF4DN50zNnus+nJTX0Mtm1RohYZLgIE=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wkPtj-00Cb53-9i; Thu, 16 Jul 2026 19:29:23 +0200
+Date: Thu, 16 Jul 2026 19:29:23 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Pufan Jin <2254650260@qq.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add EmbedFire LubanCat 4
+ board
+Message-ID: <b648a0b0-2b78-4256-8a30-ab4f9a1b40f1@lunn.ch>
+References: <20260705135014.1004166-1-2254650260@qq.com>
+ <tencent_D22A164B3AEEA50562C1EC988862BA827A09@qq.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <7e27ad59-0ffd-4323-9991-d00d69fde098@smtp-relay.sendinblue.com>
+In-Reply-To: <tencent_D22A164B3AEEA50562C1EC988862BA827A09@qq.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260716_102931_448831_260C982D 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,20 +74,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 16, 2026 at 06:55:47PM +1200, Jiaxing Hu wrote:
-> 
-> Add compatibles for the ArmSoM CM5, an RK3576 compute module, and its
-> CM5-IO carrier board.
-> 
-> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
->  1 file changed, 7 insertions(+)
+> +&gmac1 {
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy1>;
+> +	/*
+> +	 * The PCB adds ~2ns of trace delay on both TXC and RXC, so the
+> +	 * required RGMII clock skew is provided by the board itself.
+> +	 * Neither the MAC nor the PHY should add any internal delay,
+> +	 * hence "rgmii" (not "rgmii-id") is correct here.
+> +	 */
+> +	phy-mode = "rgmii";
+> +	pinctrl-0 = <&gmac1_miim
+> +		     &gmac1_tx_bus2
+> +		     &gmac1_rx_bus2
+> +		     &gmac1_rgmii_clk
+> +		     &gmac1_rgmii_bus>;
+> +	pinctrl-names = "default";
+> +	status = "okay";
+> +};
 
-Please don't send new versions so quickly. We all work 
-different timezones and are busy. Krzysztof reviewed v1.
+> +&mdio1 {
+> +	rgmii_phy1: ethernet-phy@1 {
+> +		compatible = "ethernet-phy-ieee802.3-c22";
+> +		reg = <0x1>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&gmac1_phy_rst>;
+> +		reset-assert-us = <20000>;
+> +		reset-deassert-us = <100000>;
+> +		reset-gpios = <&gpio3 RK_PB2 GPIO_ACTIVE_LOW>;
+> +	};
 
-Rob
+For these nodes only:
+
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
