@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8CD7C4450A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 14:27:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A03A3C44511
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 15:07:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8j33jpCxJY7Kfb+19Ddnfn3TIm4PkGeoU69xP9utZUU=; b=yyTV9P0bM9Z/k7
-	uCzyWnSM2Hvcq6WE9gJC9CBz5jysuuitTCAPpGvcCNMD80IyaU1abimKCGWheaaNtRHiaJVTFeU80
-	98513R/xs5q81nCXW5a2BLHaE78weTV6UVd6hkG6liU7aaQYSI1CNxoHzZ7CPi7HrUHNj3CQ25Ioh
-	sBT1F3FI9kde7pADFFYJHk7zlVVuFG0vI6BhnK/UQkVgDlMH+2EHm2szwleXRfBA1h4VBlufnYDGC
-	5nANxwGOuKz9QNU1avE3hj4LAviOF9t16fY1+3ngyM3Rl1+vdYYnVcusy5yzo835DwrNXfbPzyb7M
-	pjy4DYGzYa8y66xvDX7g==;
+	List-Owner; bh=OmbSWGfRE/83OjGTu2gx/Ks6sBv1J+WyvC5IC4o/bWc=; b=yicENK47a6eD5V
+	SpUhEe4W3r8gPGZAYDyV/0f+egQgRY4reR3un10MPyCzaNMpEecik9HNYgvr8UOAgZzyeyvu5/uHq
+	+Qn2ni/dkREU+eV2DV6tyXcVK0NBbReAZlOKxjhjwoy3C2kAvFtV6W6uVMoL89Ujl3v5GmV4Rt+Ns
+	V/J/C2VF73Gzo/q4Ih8ZXvAfj6/B8sTo3U+9BKnMNhf8fh1HIKVdM3VIo+F81Dpez0BChbn4qVJaN
+	HicI5RRKKdUOw2ZTyN8fEuKOTT9Lh83QsSg9xczXD86NFbeL4vCgOqTTwmuyljlz2Q/uSbQ9DCqmE
+	Xzil0G4xtVpvZxXD6ovg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkN3X-0000000HUT6-1ecQ;
-	Thu, 16 Jul 2026 14:27:19 +0000
+	id 1wkNgD-0000000HaZY-1GqN;
+	Thu, 16 Jul 2026 15:07:17 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkN3V-0000000HURt-0U4p;
-	Thu, 16 Jul 2026 14:27:18 +0000
+	id 1wkNgA-0000000HaXu-0gFr;
+	Thu, 16 Jul 2026 15:07:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784212033;
-	bh=uBIk09xBbnHw14aNehfnGLINBkgGT0M+ApnJKNl4TE0=;
+	s=mail; t=1784214430;
+	bh=2RoxLxBygH3XJAzauNRzHXAbfvqYjBGxJOnkUcb1/g4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=B90xVPcPxOpZCfBS0lJfINdFlIfxyDxXfV5D+E3f1GOHbUhdHIPNVT0o8KP2fVxwi
-	 GOYs0VcdhVmMv9oZd70Oqv+ZSkHtZD3zd/kxJqVd/UMGTvkEkSJMCzA6vIpVoY6kLc
-	 +fifVvix/WFSiNItdH1gdxMbRy1VqYtcKdfg/mNnBdUvp5pHNnzHVlQ8LEGH2MPE6d
-	 poUlW5mRlddrD4cH0psPMucSKgujFTZbk5hoPwOofQQjoSmwDd7DbGl1AJl+XjcXUQ
-	 10F4QkjFzxk21v5Ab5TtQ5M9nYabbwDSNXfWy5tuE9fz6tpdYDq0oVGIJK5d98bnob
-	 Y9Ghzyr33bS8Q==
+	b=qEH/1up8uv9N0V0a296zX9X+VRqI9wpvBQM6gWVM0YQmLqF46Tm3u+lL5FXxRu4Rx
+	 9jjapg/A9O5XqwAPxM25DzpWeGLH9vdzlnYI+f6et3hLu4v9T2PvGH9HnVQcvoZ2bL
+	 h7yZqIWuWMFc19KlDCUJBJ/MuZgOY6QM2DrkPP8dsnvEVgwyv8dfEb44OTk5HjZueK
+	 3K7QUYKRfvf44Lttl2lrK+M/oZ+25pWb1j6sWNW/DcD//YanRMGW+PueVuOkioJXBQ
+	 lpIIr/q38XnE7cbCbrdTNG3CMNdXaaHZ0xylX4leyxmWtk1a/G557fFmq90dUwJ5YD
+	 mIAJGunlxwJog==
 Received: from [100.64.0.241] (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 66F8017E023C;
-	Thu, 16 Jul 2026 16:27:12 +0200 (CEST)
-Message-ID: <fb2c3414-f011-4ea0-af9d-1e3c65d769e3@collabora.com>
-Date: Thu, 16 Jul 2026 17:27:11 +0300
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 18AFD17E010F;
+	Thu, 16 Jul 2026 17:07:10 +0200 (CEST)
+Message-ID: <7753ee98-a8c6-4535-8789-d915b0f79ddf@collabora.com>
+Date: Thu, 16 Jul 2026 18:07:09 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 02/39] drm/connector: Add caps-based HDMI connector
- init helper
+Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
+ infrastructure
 To: Maxime Ripard <mripard@kernel.org>
 Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -67,21 +67,21 @@ Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-2-d79890d00b6a@collabora.com>
- <i4tjtsf5rsckfcayo5nuhlger5wqxn3ujeaubm4g2fgrwvhzb2@hf4uhgq3ja5p>
- <ad75cf26-9437-47d0-864d-d71263401615@collabora.com>
- <20260707-illegal-tuna-of-force-1c06e3@houat>
- <737678ab-f082-4a0e-b453-f403ba141437@collabora.com>
- <80374deb-3246-413f-a043-66bcdb438ab1@collabora.com>
- <20260715-fair-opalescent-rhino-c6407b@houat>
- <45113534-94ad-4a0f-8014-c04e9ab67a26@collabora.com>
- <20260716-mega-ocelot-of-foundation-e3bcf6@houat>
+ <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
+ <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
+ <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
+ <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
+ <20260713-statuesque-nonchalant-seagull-b9c39d@houat>
+ <91c3a825-3344-4ff5-8ea0-f8f057665b3f@collabora.com>
+ <20260715-ancient-zealous-eagle-b13e94@houat>
+ <dfca9032-98ca-4c61-b1b1-85fd05283d77@collabora.com>
+ <20260716-astute-nippy-moose-bd22b5@houat>
 Content-Language: en-US
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260716-mega-ocelot-of-foundation-e3bcf6@houat>
+In-Reply-To: <20260716-astute-nippy-moose-bd22b5@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_072717_326993_B72CE9B5 
-X-CRM114-Status: GOOD (  23.75  )
+X-CRM114-CacheID: sfid-20260716_080714_369830_7D0D18DF 
+X-CRM114-Status: GOOD (  26.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,113 +98,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/16/26 4:44 PM, Maxime Ripard wrote:
-> On Wed, Jul 15, 2026 at 01:34:19PM +0300, Cristian Ciocaltea wrote:
->> On 7/15/26 11:50 AM, Maxime Ripard wrote:
->>> On Fri, Jul 10, 2026 at 01:27:37PM +0300, Cristian Ciocaltea wrote:
->>>> On 7/8/26 1:11 PM, Cristian Ciocaltea wrote:
->>>>> Hi Maxime,
->>>>>
->>>>> On 7/7/26 7:10 PM, Maxime Ripard wrote:
->>>>>> On Fri, Jul 03, 2026 at 10:31:55PM +0300, Cristian Ciocaltea wrote:
->>>>>>> Hi Dmitry,
->>>>>>>
->>>>>>> Thanks for your quick review!
->>>>>>>
->>>>>>> On 7/3/26 5:05 PM, Dmitry Baryshkov wrote:
->>>>>>>> On Thu, Jul 02, 2026 at 05:46:15PM +0300, Cristian Ciocaltea wrote:
->>>>>>>>> In preparation for adding HDMI 2.x source capabilities, introduce struct
->>>>>>>>> drm_connector_hdmi_caps and a new drmm_connector_hdmi_init_with_caps()
->>>>>>>>> helper.
+On 7/16/26 4:50 PM, Maxime Ripard wrote:
+> On Wed, Jul 15, 2026 at 01:46:12PM +0300, Cristian Ciocaltea wrote:
+>> On 7/15/26 11:55 AM, Maxime Ripard wrote:
+>>> On Mon, Jul 13, 2026 at 01:23:00PM +0300, Cristian Ciocaltea wrote:
+>>>> On 7/13/26 11:50 AM, Maxime Ripard wrote:
+>>>>> On Thu, Jul 09, 2026 at 10:25:54PM +0300, Cristian Ciocaltea wrote:
+>>>>>> On 7/3/26 11:54 PM, Cristian Ciocaltea wrote:
+>>>>>>> On 7/3/26 5:34 PM, Dmitry Baryshkov wrote:
+>>>>>>>> On Thu, Jul 02, 2026 at 05:46:17PM +0300, Cristian Ciocaltea wrote:
+>>>>>>>>> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
 >>>>>>>>>
->>>>>>>>> The existing drmm_connector_hdmi_init() helper currently takes
->>>>>>>>> individual capability arguments such as supported_formats and max_bpc.
->>>>>>>>> Adding more HDMI-specific arguments to that function would not scale
->>>>>>>>> well, so move those values into a dedicated capabilities structure and
->>>>>>>>> implement the existing helper as a wrapper around the new caps-based
->>>>>>>>> interface.
+>>>>>>>>> - A scrambler_supported flag to indicate whether the source supports the
+>>>>>>>>>   scrambling capability, in which case the newly introduced
+>>>>>>>>>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_funcs
+>>>>>>>>>   are mandatory
 >>>>>>>>
->>>>>>>> I think, it was an intention of Maxime: make sure that every driver is
->>>>>>>> forced to provide some values here. With the struct-based init it is
->>>>>>>> easy to overlook or to ommit a value.
+>>>>>>>> Do we need a flag? What would it mean if the flag is set, but the
+>>>>>>>> callbacks are not? Can we drop the flag and use the presence of the
+>>>>>>>> callbacks as a way to identify that scrambler is enabled?
 >>>>>>>
->>>>>>> Agreed that the struct-based init loses the compile-time guarantee that every
->>>>>>> argument is explicitly provided - that's a real downside.  
+>>>>>>> The flag is intended to be set only within drmm_connector_hdmi_init_with_caps()
+>>>>>>> when drivers advertise HDMI 2.x capability, in which case it also ensures the
+>>>>>>> callbacks are provided.  
 >>>>>>>
->>>>>>> I'd argue it's recoverable, though: the init helper validates the mandatory
->>>>>>> fields, so a driver that omits a required value gets rejected at init time
->>>>>>> rather than silently misconfigured.  The "you must provide sane values" property
->>>>>>> is expected to be preserved, just enforced at runtime instead of by the
->>>>>>> compiler. 
+>>>>>>> We could drop the flag and instead have the init helper clear the callbacks if
+>>>>>>> they were provided for HDMI 1.x.  This might slightly reduce code readability,
+>>>>>>> as it relies on checking the presence of individual callbacks - especially since
+>>>>>>> we plan to extend this further with HDMI 2.1 support, providing four or five
+>>>>>>> additional FRL-specific callbacks.
 >>>>>>
->>>>>> Yeah, I don't think we can win with C here. Rust might, but we're
->>>>>> probably a long way from that.
->>>>>>
->>>>>>> The main motivation for the struct is scalability/maintainability as we add HDMI
->>>>>>> 2.x capabilities: new fields go into the struct rather than growing the helper's
->>>>>>> argument list, so existing callers don't need churny signature updates on every
->>>>>>> extension.
->>>>>>>
->>>>>>> FWIW, in the previous revision we discussed addressing the concern with a
->>>>>>> callback instead.  Sadly, I had to discard that approach, as it proved not
->>>>>>> flexible enough, e.g. drm_bridge_connector_init() computes caps dynamically, and
->>>>>>> would have required either stateful callbacks, or storing redundant/temporary
->>>>>>> cap data in driver-private structures just to satisfy the callback.
->>>>>>
->>>>>> I just realized something reviewing your patch: we don't necessarily
->>>>>> need an extra argument or a callback, we can just put these fields into
->>>>>> drm_hdmi_connector_funcs directly, and then validate them in init.
+>>>>>> I tried to replace the flag with a helper that checks the presence of (one of)
+>>>>>> the callbacks, but it's not straightforward to unset those for non-HDMI 2.x
+>>>>>> cases since the hdmi_funcs argument is immutable.
 >>>>>
->>>>> If I understand correctly, we should drop the drm_connector_hdmi_caps struct
->>>>> introduced by this patch and move all its fields into drm_hdmi_connector_funcs.
->>>>>
->>>>> In that case, how should we proceed with drmm_connector_hdmi_init()? 
+>>>>> I'm not sure why we would need to unset them. If the driver states that
+>>>>> it support HDMI 2.0, then it needs to be there, if it doesn't, then who
+>>>>> cares? it's not going to be used. We can log a warning that it's
+>>>>> inconsistent I guess, but there's no need to actively remove it.
 >>>>
->>>> Actually, this brings us to the callback issue: we cannot compute caps
->>>> dynamically, as it only works with static data, since funcs is supposed to be
->>>> immutable.
+>>>> I was trying to address the use case where drivers provide the scrambler
+>>>> callbacks despite not supporting HDMI 2.0.
 >>>
->>> Does it? The core and helpers must consider it immutable but it doesn't
->>> have to. drm_bridge_connector for example could totally allocate it and
->>> dynamically create it based on the bridge capabilities.
+>>> Scrambling got introduced with HDMI 2.0. That doesn't make sense, but
+>>> it's not a total deal breaker, it's just going to be here unused. Hence
+>>> why I was suggesting to put a warning there if you wanted to.
+>>>
+>>>> If we replace the scrambler_supported flag with a helper checking the
+>>>> presence of the scrambler callbacks, then we would need to ensure the
+>>>> callbacks do not exist in this case.
+>>>
+>>> Keep it simple:
+>>>
+>>> if (hdmi_version >= HDMI_VERSION_2_0)
+>>>    if (funcs->scrambler_enable)
+>>>       hdmi->scramblers_supported = true
+>>>    else
+>>>       return -EINVAL
+>>> else
+>>>     drm_warn(warn, "Inconsistent HDMI version");
+>>>
+>>> We don't need anything more than that.
 >>
->> If we take the VC4 case, is it fine to drop the const from the static
->> drm_connector_hdmi_funcs to allow dynamically setting up supported_hdmi_ver and
->> max_bpc in vc4_hdmi_connector_init()?
+>> I dropped the scrambler_supported flag and introduced a helper:
 >>
->> static struct drm_connector_hdmi_funcs vc4_hdmi_hdmi_connector_funcs = {
->> 	.tmds_char_rate_valid	 = vc4_hdmi_connector_clock_valid,
->> 	...
+>> static inline bool
+>> drm_connector_hdmi_scrambler_supported(struct drm_connector *connector)
+>> {
+>> 	return connector->hdmi.funcs && connector->hdmi.funcs->scrambler_enable;
+> 
+> I'd add disable to that test
+
+If scrambler_enable is present, scrambler_disable is also present, as guaranteed
+by the init validation below.  I assume you'd like to have it added regardless,
+to improve code readability, which is a fair point.
+
 >> }
 >>
->> static int vc4_hdmi_connector_init() 
+>> Therefore we need to ensure the callbacks are not set in the HDMI 1.x cases:
+>>
+>> int drmm_connector_hdmi_init_with_caps()
 >> {
 >> 	...
->>     
->> 	if (vc4_hdmi->variant->supports_hdr)
->> 		vc4_hdmi_hdmi_connector_funcs.max_bpc = 12;
+>> 	if (caps->supported_hdmi_ver >= HDMI_VERSION_2_0) {
+>> 		if (!hdmi_funcs->scrambler_enable ||
+>> 		    !hdmi_funcs->scrambler_disable)
+>> 			return -EINVAL;
 >>
->> 	if (vc4_hdmi->variant->max_pixel_clock >= HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ)
->> 		vc4_hdmi_hdmi_connector_funcs.supported_hdmi_ver = HDMI_VERSION_2_0;
->> 	else if (vc4_hdmi->variant->max_pixel_clock >= HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ)
->> 		vc4_hdmi_hdmi_connector_funcs.supported_hdmi_ver = HDMI_VERSION_1_3;
->> 	...
->> }
+>> 		connector->hdmi.max_tmds_char_rate = HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ;
+>> 	} else {
+>> 		/*
+>> 		 * Scrambler callbacks are only valid for connectors advertising
+>> 		 * HDMI 2.0 capability. drm_connector_hdmi_scrambler_supported()
+>> 		 * relies on their presence to report scrambling support.
+>> 		 */
+>> 		if (hdmi_funcs->scrambler_enable ||
+>> 		    hdmi_funcs->scrambler_disable)
+>> 			return -EINVAL;
+>>
+>> 		if (caps->supported_hdmi_ver >= HDMI_VERSION_1_3) {
+>> 			connector->hdmi.max_tmds_char_rate = HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
+>> 		} else if (caps->supported_hdmi_ver >= HDMI_VERSION_1_0) {
+>> 			connector->hdmi.max_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
+>> 		}
+>> 	}
 > 
-> No, but you don't have to do that either.
-> 
-> You have three cases:
->  - Rpi < 4 has max_bpc = 8, HDMI 1.4
->  - RPI 4 HDMI 0 and RPI 5 has max_bpc = 12, HDMI 2.0
->  - RPI 4 HDMI 1 has max_bpc = 12, HDMI 1.4
-> 
-> Just create three different structures, and put a pointer to the right
-> one in the vc4_hdmi_variant structure. There's no need to be dynamic
-> there.
+> Drivers might have a lower limit than the max allowed by the spec. It
+> should be provided by the driver, possibly optionally with a fallback to
+> what the spec states?
 
-Ack, will do!
+Yes, this has been already part of patch 2 (also added an error message to help
+with debugging):
 
-Thanks,
+	if (caps->max_tmds_char_rate) {
+		if (caps->max_tmds_char_rate > connector->hdmi.max_tmds_char_rate) {
+			drm_err(dev, "Enforced max_tmds_char_rate exceeds %llu spec limit\n",
+				connector->hdmi.max_tmds_char_rate);
+			return -EINVAL;
+		}
+		connector->hdmi.max_tmds_char_rate = caps->max_tmds_char_rate;
+	}
+
+Regards,
 Cristian
 
 _______________________________________________
