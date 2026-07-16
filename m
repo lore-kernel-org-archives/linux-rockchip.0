@@ -4,102 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FD2C44510
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 03:39:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85FD7C44501
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jul 2026 06:55:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Mime-Version:In-Reply-To:References:
+	Subject:To:From:Message-Id:Cc:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0FoR7eifCeVevbUP5FTumhFlUE5YvqMMNZk1G7orXZo=; b=Pq8Mf4rim3UHlS
-	hdg8AnAxbh0RVk/P8DmMqt5Z6YU0bXZHx6kzO7abzoY5zDeTPz0Atc9U+1CrzK4E7x/FVCyJKs1Q8
-	LqdZ3pItaL/87eKiJW4fvC56hF946RFfKUYxbD5cegM8TvChrEyj7kMzazU25vwpM/WQ1vLrDxxib
-	FO0luSPTLIAbyGY6Fwpdhe2vIhYxrsxyDPywHdcCJ/cseXK8p2qoCYTK/RWN5+P8QEu+ngXQrPc24
-	mKrZcwj4fCAERVwEtrYXIWt64iQ1POwEgWEQvNFRuvZwEN5ss8Y9MbOgOKr7n53uKK5GS0QaD1nfc
-	KmZreBkAiVVQBx949zdA==;
+	List-Owner; bh=aQr2gczZeD547CQcaI/DGGnYECTxbAV7ipL4FpbsZWM=; b=Mossoh+RYz54Pt
+	wbyEXaptiv26ly1g5xjlFkVW6X38jRJTneo33dokfQjul1nCoJYhEql0w9sFI3GYMlXTUNayodd7f
+	XWCNED8CwyrPgJUWj//qO/GA1E5e9EA6i7ZdBwXNDNRsECeM8D2W56fWArpgLPZrU6FD/ptlqoliC
+	u6f2mINyiqE+IeoIl7gv9+oGOhFUgKPU/JKqNdCKbI6RZtlRrsd+Z7/b0O9DBz03QQxKagFI8UMkd
+	3pJ92WpfLJpbcdBrkd7C1jFTAgTfPpnVb2ad1pXdVDZEJovq6tKABY+Cp5QanDBp8XpOkhDMGkWP6
+	qtZ5GsQXAbsgh03YCmUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkCwK-0000000GMaX-1xQV;
-	Thu, 16 Jul 2026 03:39:12 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1wkG0d-0000000GaQF-2rFP;
+	Thu, 16 Jul 2026 06:55:51 +0000
+Received: from gz.d.sender-sib.com ([77.32.148.26])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkCwH-0000000GMZj-3hX0
+	id 1wkG0a-0000000GaP1-1Vea
 	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Jul 2026 03:39:11 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-47f3e6cc44aso3501287f8f.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 15 Jul 2026 20:39:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784173147; cv=none;
-        d=google.com; s=arc-20260327;
-        b=OlK543uv7Rm55b3Ued/N2xS2rRCtFilam91Yc/5o8t5rWuDPJ5JjW+au8lYcB5blxw
-         ARkFvqBUUOb83nwTf75oYQRaXSfLGoYf/Yc+N+e2goPZWvbVMO4b6itBdFi4g2CAqUAs
-         bgsctsbI63qigboAV6rRalko0Pv0xDraZu2YHZslW3wdtiuK/EOP/TEA9xGCq5TLlXTF
-         vjs/oSxmiV97aDAOgM+Ug5AznKBFD2RLXQMRFRfPgRvp80H49Z01M434UMNbJEkOryjD
-         BI6nc+am/z9UXv9eIBBjTVExTTle5EoLIKy1FGFMOqtXotDvtEtCampbMRUnMl0dUOp+
-         QeUA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=HaAi6r0o04lXEAunGEp84mPQVwuTB4awISro/owjdbQ=;
-        fh=X/dWL3SmLtt1YGE/vcPecoP7ZWLLLt9rVK+z2lb9ILM=;
-        b=MFLtZkRBJwv6oYcr6rvRz1HxB5JTnZeAuQRuHJYXMF3olSZ1g/Bvog7ttGvFH/2oCh
-         F43W09BHd/d0nvQvVuyUDj0TLpou7fDcgGnzNccTZ4lEEIGzIcEFYt5T4wK+zwtAqyo4
-         Gup94/ThSNsvPRKEBoQeZnEbEvnE23wK3+D6vBEKi1de77DAsfZbvnliqsjTlccUwts6
-         SET4swdDQdeGbbwWf02wf03nhAK7YStXaR0M7K4wXZAr/thx0c1GnHdZtrm+fAovXUYN
-         QFNaPdgvAVPc5J6bUPsW7E/SeMzB4jFOicTg7m1KXy2qEl+ykcYkmhkmB11RmUh13HI+
-         yJ0Q==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784173147; x=1784777947; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=HaAi6r0o04lXEAunGEp84mPQVwuTB4awISro/owjdbQ=;
-        b=Tw3pOt7trewIv30g4S2N2qfefH4uPIfS09o8+FoLcaYerqM4rV1UQsbZdhL0y8ZnfD
-         wk9krdK27P1gYhScG8GgPlkDiHzCo8GG4CwhuPl24uL17pVCMJbipacBTSzh0XxbE0FY
-         vtNqrsfZFrc54eTgXtwCZBlRfUGtivlWezbqkS/c7ue7V/jVLFKsNz14wX3K0qdWE0vN
-         JSrnMgJLGeXCVSU7ZhYohiXUV0PdBtyvwIxNFvucm5fdF9NjgJuerh7Lbq/Dfr030Q7B
-         YLQKAd5el6B3OmBIGP9nAphSGZKCRdF/x22fqlTu/krRIeSuMVt07p3jJz1qWl80Q7dp
-         /7Hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784173147; x=1784777947;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=HaAi6r0o04lXEAunGEp84mPQVwuTB4awISro/owjdbQ=;
-        b=aTEe07zCN5gwZuqGPb4geN8wuNUThWQKzRExYFdw7s9mXWH1zAm0s518Cx6I5wPyjq
-         Ey6Di8OrUkkAUHf6n4LCr9VLmeSxcFj5A/HXPa4c78vVIF8RniBvG7Xe0FjN9Ki9VO5C
-         m4Dp86YWIkar14E6AFaE9DndyiKBwxFKTD2fIg8Cj09D2lHTzEtGTn4WA44/lxsZxutl
-         XkmEX3QamK/Qvld0h+h5FZUxxQRHsy7fM3dNLCPKbqBzAaI6hAOsY4jcWYWJQ/VGjX9i
-         wrJ0wh2t9gp4ipornIbcBwQwGgXc6GoKD4u9Bf0XEjDEVQY5LkbtMCdcBwincpsxBXIO
-         XzYg==
-X-Forwarded-Encrypted: i=1; AHgh+Rp0BpKjF9t6jNXDpa0IslWm4Nh9YmA5FjUqgfEWtIQIM/jDCzvyzYWwpfy/R4GLngMzfABeMB8o6LMQTIbW5w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzsXzHgJrDV/6Ph4Z6AganTvCUVB09jGHjVqjXUo5k9qKviSGi0
-	VYl/W6xL8Nh2PyJrNE7sMvQvM3k40I1RxqluUU+GGmvkBYSaon+hr57pnDM4JeBHB9R+LWDHg+4
-	dHsxn5mxz4fZ23y/RLygimgaB7TogPfM=
-X-Gm-Gg: AfdE7clerd981zEm+eOA4N41ctPHJbzJklcc457mwI9Je2zx8RQ9oa/q9pEK6AQO+pd
-	1I+yDystKPmI4fnZerXccbkddfGBFyXYU5qcoLMblx6S9HrBPcx2xeIBXKTUJS9kHWeyLMydPDS
-	AuKiZqa/KIPMKjcR8Pa/SBSqrB9J4vSjoq4EBkNGi3csZUo+IRt8dJIuMUXyIRq+XgwMfDUcss2
-	6joUZoVh/ed1lOVnyQq6ERC5SLSOaym1Ne2w3ZC6OecGhYtThwhNHMtn05P/6Baepdu+bqb
-X-Received: by 2002:a05:6000:461c:b0:473:506a:e47c with SMTP id
- ffacd0b85a97d-47f4886399amr11638724f8f.26.1784173146909; Wed, 15 Jul 2026
- 20:39:06 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260612-synopsys-dw-dp-improvements-v3-0-dc61e6352508@collabora.com>
- <CANbgqATR-V0rRGfzj0hdJ2hsJex-iWzHMwD1L4vavTi2Jd79Kw@mail.gmail.com>
- <alfV1691ZgZ6KylX@venus> <2301403.NgBsaNRSFp@phil>
-In-Reply-To: <2301403.NgBsaNRSFp@phil>
-From: Andy Yan <andyshrk@gmail.com>
-Date: Thu, 16 Jul 2026 11:38:53 +0800
-X-Gm-Features: AUfX_myr_sOq7hYE4m85iq51mdLC4kRmODLTYq7q95ypFNA8vqcVX-4llt0DR9M
-Message-ID: <CANbgqASSwGjnUsqmpyPgYQ8Qy_6++krbVMQQywB8oJv8Jziz-g@mail.gmail.com>
-Subject: Re: [PATCH v3 08/10] drm/rockchip: dw_dp: Add runtime PM support
-To: Heiko Stuebner <heiko@sntech.de>
+	Thu, 16 Jul 2026 06:55:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+ q=dns/txt; s=brevo2; bh=7x6aERVipVHaG0xRD6KC0RgCFBCYOOqTbyO/Xpmab5Y=;
+ h=from:subject:date:to:cc:mime-version:content-transfer-encoding:in-reply-to:references:list-unsubscribe:x-csa-complaints:list-unsubscribe-post:message-id:x-sib-id:feedback-id;
+        b=lnkydKTvWZ3a2T8eV3vb1Qnh78GNJFmh0hiLU7+KW7VkKnebIK9LWasy2NsubE1A6CV4KHMzgfvo
+        sz7kWL5s9ugsr1ZYP48xpJL2TsEL3nvYIUfCiOy47y/4nUvnRRlDX2qW9kuSWJPOtRZHI4ihV+yY
+        pMwgI4RDOFOT4Kd8pZ8INnIfGKR84VdX6Eow7fNWncAdYLXuFx90bAC+KfWmvM+0dPsY98rIEkXK
+        YrEs1uC26hKYlvDfb4stVeoyBxOp0KNv1ISX+l78L5zoNy0gIFp+VxEKlK5ym72tC3a7yE9wBSLW
+        E7cUbFAObsXrQZ5vaMJkbUM/punA/4KFVPCw5w==
+X-Mailin-EID: NDg1NjE3NDAyfmxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmd%2BPDIwMjYwNzE2MDY1NTM3LjI0NjYxNTEtMS1nYWhpbmdAZ2FoaW5nd29vLmNvbT5%2BZ3ouZC5zZW5kZXItc2liLmNvbQ%3D%3D
+Date: Thu, 16 Jul 2026 18:55:37 +1200
+Cc: <heiko@sntech.de>,  <robh@kernel.org>,  <krzk+dt@kernel.org>,  <conor+dt@kernel.org>,  <devicetree@vger.kernel.org>,  <linux-rockchip@lists.infradead.org>,  <linux-arm-kernel@lists.infradead.org>,  <linux-kernel@vger.kernel.org>
+Message-Id: <d342d362-ada0-4ec4-a0f5-970b18e63fd7@smtp-relay.sendinblue.com>
+Origin-messageId: <20260716065537.2466151-1-gahing@gahingwoo.com>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+From: "Jiaxing Hu" <gahing@gahingwoo.com>
+X-CSA-Complaints: csa-complaints@eco.de
+To: <sashiko-bot@kernel.org>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add ArmSoM CM5 and CM5-IO
+X-sib-id: 5HPvo63TsEwEOgq0qy0yIya3xegGFiCNSZ_xSby86KR_PG9ATHJcyldoh9ad3EY__q1mIlvPijXM_oglLuPL7LKIseRVCt4pHaxrgwilncUSnLe4JP5WYYh5RjAaQ2xEXsqdWlbcY9C5T0IaD1PtlMCRpCpcAkGir1yJWkl-nj0MHyBoFxNEPOSCmkPz6S9Yeg
+Feedback-ID: 77.32.148.26:11677070_-1:11677070:Sendinblue
+X-Mailer: git-send-email 2.43.0
+References: <20260716012838.2353939-1-huhuvmb88@gmail.com> <20260716012838.2353939-3-huhuvmb88@gmail.com> <20260716014059.1966E1F000E9@smtp.kernel.org>
+In-Reply-To: <20260716014059.1966E1F000E9@smtp.kernel.org>
+Mime-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_203909_964951_C7667D18 
-X-CRM114-Status: GOOD (  26.23  )
+X-CRM114-CacheID: sfid-20260715_235548_986274_01D9DC5B 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,51 +66,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, yubing.zhang@rock-chips.com, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8g77yMCgpIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiDkuo4yMDI25bm0N+ac
-iDE25pel5ZGo5ZubIDAzOjMw5YaZ6YGT77yaCj4KPiBBbSBNaXR0d29jaCwgMTUuIEp1bGkgMjAy
-NiwgMjE6MDA6MTIgTWl0dGVsZXVyb3DDpGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBTZWJhc3Rp
-YW4gUmVpY2hlbDoKPiA+IEhlbGxvIEFuZHksCj4gPgo+ID4gT24gVHVlLCBKdWwgMTQsIDIwMjYg
-YXQgMDY6MDg6MDZQTSArMDgwMCwgQW5keSBZYW4gd3JvdGU6Cj4gPiA+ID4gQEAgLTU4LDYgKzU5
-LDggQEAgc3RhdGljIHZvaWQgZHdfZHBfcm9ja2NoaXBfaHBkX3N3X3NlbCh2b2lkICpkYXRhLCBi
-b29sCj4gPiA+ID4gZm9yY2VfaHBkX2Zyb21fc3cpCj4gPiA+ID4KPiA+ID4gPiAgICAgICAgIGRw
-LT5ocGRfc2VsID0gZm9yY2VfaHBkX2Zyb21fc3c7Cj4gPiA+ID4KPiA+ID4gPiArICAgICAgIEFD
-UVVJUkUocG1fcnVudGltZV9hY3RpdmVfYXV0bywgcG0pKGRwLT5kZXYpOwo+ID4gPgo+ID4gPiBU
-aGlzIGNhbiB0cmlnZXIgIEhQRCBpcnEgZm9yIFVTQi1DIERQIEFsdE1vZGUsIGJ1dCBmb3IgYSBz
-dGFuZGFyZAo+ID4gPiBEUCBwb3J0LCB0aGlzIGlzIG5vIHdheSB0byBhY3F1aXJlIHJ1bnRpbWUs
-IHNvIHRoZXJlIHdpbGwgbm8gaXJxCj4gPiA+IHdoZW4gcGx1ZyBpbi4KPiA+Cj4gPiBSaWdodC4g
-SSBkb24ndCBoYXZlIGFueSBSSzM1ODggb3IgUkszNTc2IHN5c3RlbSBleHBvc2luZyBhIERQCj4g
-PiBjb25uZWN0b3IgZGlyZWN0bHkuIFRoaXMgdGhpcyBpcyBub24tdHJpdmlhbCB0byB0ZXN0IGZv
-ciBtZSA6Lwo+ID4KPiA+IEkgc2VlIHRoZSBmb2xsb3dpbmcgb3B0aW9uczoKPiA+Cj4gPiAxLiBP
-bmx5IGVuYWJsZSBydW50aW1lIFBNIHdoZW4gcnVubmluZyBpbiBVU0ItQyBtb2RlCj4gPiAyLiBN
-dXggdGhlIEhQRCBwaW4gYXMgR1BJTyB0byBzdXBwb3J0IHdha2luZyB1cCB3aXRoIHRoZSBjb250
-cm9sbGVyCj4gPiAgICBiZWluZyBzdXNwZW5kZWQ7IGVpdGhlciByZW11eCB3aGVuIHRoZSBjb250
-cm9sbGVyIGlzIGF3YWtlIG9yIHVzZQo+ID4gICAgdGhlIHNhbWUgbWVjaGFuaXNtIGFzIFVTQi1D
-IHRvIGRvIHNvZnR3YXJlIGJhc2VkIEhQRCBvbiB0b3Agb2YgdGhlCj4gPiAgICBHUElPICh3aGlj
-aCB3b3VsZCBhbGxvdyB1c2luZyBhbnkgR1BJTyBhcyBIUEQpLgo+ID4gMy4gSGF2ZSBhIHBvbGwg
-ZnVuY3Rpb24sIHdoaWNoIHdha2VzIHVwIHRoZSBjb250cm9sbGVyIHJlZ3VsYXJseSB0bwo+ID4g
-ICAgY2hlY2sgdGhlIHN0YXR1cwo+ID4KPiA+IEkgY29uc2lkZXIgZ29pbmcgZm9yIG9wdGlvbiAx
-IGZvciBub3csIHdoaWNoIGFsbG93cyBvcHRpb24gMiB0byBiZQo+ID4gaW1wbGVtZW50ZWQgYXMg
-YSBmb2xsb3cgdXAuIE1vc3RseSB0byBhdm9pZCB0aGF0IHRoZSBzZXJpZXMgYmVjb21lcwo+ID4g
-YXMgYmlnIGFuZCBtZXNzeSBhcyB0aGUgVVNCRFAgUEhZIHNlcmllcyBiZWNhbWUuCj4KPiBJJ2Qg
-YWdyZWUgd2l0aCB0aGF0IHNvbHV0aW9uLgo+IEkgdGhpbmsgd2UgY2FuIGFsbCBhZ3JlZSB0aGF0
-IG9wdGlvbiAzIGlzIGJhYWFhZCA6LSkgLgoKICBJJ20gYWxzbyBpbiBmYXZvciBvZiBtb3Zpbmcg
-YWhlYWQgd2l0aCAxLgoKICBBYm91dCBPcHRpb24gMjogd2UndmUgZ290IGEgR1BJTy1iYXNlZCBI
-UEQgd29ya2Fyb3VuZCBpbiBvdXIgIEJTUAp0cmVlLCBidXQgaXQncyBhIGJpdCBmbGFreSBpbiBz
-b21lIHVzZS1jYXNlc++8mgogIEFjY29yZGluZyB0byB0aGUgRFAgc3BlYywgdGhlcmUgYXJlIHR3
-byB0eXBlcyBvZiBpbnRlcnJ1cHRzOgogIDEuICBIT1RQTFVHX0lSUTogQSBsZXZlbC10cmFuc2l0
-aW9uIHB1bHNlIHRoYXQgbXVzdCBiZSBzdXN0YWluZWQgZm9yCmF0IGxlYXN0IDLigK9tcy4KICAy
-LiBIUERfSVJROiAgQSBsb3ctbGV2ZWwgcHVsc2Ugd2l0aCBhIGR1cmF0aW9uIGJldHdlZW4gMC4y
-NeKAr21zIH4gMuKAr21zLgogV2l0aCB0aGUgR1BJTy1iYXNlZCBzb2x1dGlvbiwgaXQgaXMgZGlm
-ZmljdWx0IHRvIHJlbGlhYmx5IGRldGVjdCBzdWNoCnNob3J0IHB1bHNlcy4KCgo+Cj4gU28gd2l0
-aCAxLCBmdW5jdGlvbmFsaXR5IGtlZXBzIHdvcmtpbmcsIGFuZCB0aGVuIHNvbWVvbmUgY2FuIHB1
-dCB0aGUKPiBzcGVjaWFsIEhQRCBoYW5kbGluZyBvbiB0b3AgbGF0ZXIgLSB0aGUgUm9jay01LUlU
-WCBkb2VzIGV4cG9zZSB0aGUgRFAxCj4gKG9uIGEgaGRtaSBwb3J0KQo+Cj4KPiBIZWlrbwo+Cj4K
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+(Replying from my own domain; v1 went out as huhuvmb88@gmail.com. Same
+person, I will use this address from v2 on.)
+
+Thanks. Most of this is valid, v2 coming. I ran dtbs_check too; it agrees
+and finds more.
+
+> [High] Type-C DP Altmode configuration errors (SVID format, missing
+> mode-switch, and misplaced SVID)
+
+Correct, and worse. dtbs_check rejects the node: the altmodes child must be
+named "displayport", not altmode@0 with a reg, and svid must be /bits/ 16.
+The svid I put on &usbdp_phy is not in that binding at all (it has
+additionalProperties: false), and mode-switch is missing.
+
+> [High] Wireless (SYN43752 WiFi/BT) missing child nodes and unreferenced
+> pinctrls
+> [Low] The gmac0_rst pinctrl is defined but omitted from &gmac0
+
+Correct. bt_reg_on, wifi_host_wake_irq and gmac0_rst are all unreferenced.
+I will drop them rather than guess at wifi/bt child nodes, and drop the
+WiFi/BT claim from the commit message.
+
+> [Medium] ES8388 audio is advertised in the commit message but
+> functionally missing
+
+Correct. The node is disabled and its compatible is wrong too (the binding
+wants everest,es8328). Dropping the node and the claim.
+
+> [Medium] Missing vmmc-supply and vqmmc-supply for the eMMC
+
+This one I do not think holds. Every rk3576 board upstream (sige5,
+evb1/evb2, roc-pc, nanopi-r76s, dshanpi-a1) uses full-pwr-cycle-in-suspend
+without supplies, and dtbs_check does not flag it.
+
+Not in the report, but also fixed in v2: the fusb302 port node is not
+allowed by its binding (the role-switch endpoint belongs in the
+connector's ports), and the wifi-poweren-gpio pinctrl node name collides
+with gpio-consumer.
+
+Also the PHY reset. I had it as snps,reset-gpios, which is both misspelled
+(the schema property is singular) and deprecated. v2 describes it on the
+MDIO bus instead:
+
+	&mdio0 {
+		reset-gpios = <&gpio2 RK_PB3 GPIO_ACTIVE_LOW>;
+		reset-delay-us = <20000>;
+		reset-post-delay-us = <100000>;
+		rgmii_phy0: phy@1 { ... };
+	};
+
+That is the only spelling that works here. __mdiobus_register() releases a
+bus level reset before mdiobus_scan_bus_c22(), whereas a per-PHY
+reset-gpios is applied by phylib only after the PHY has been found, which
+never happens for a PHY that boots held in reset. Checked all three on
+hardware: per-PHY reset leaves the PHY dark, the bus level reset brings it
+up and the link comes up at 1000 Mbit/s.
+
+dtbs_check is clean on v2, with no deprecated properties left.
+
+Jiaxing
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
