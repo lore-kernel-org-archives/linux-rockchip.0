@@ -4,57 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A394EC44514
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 09:14:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA85FC44507
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 09:47:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4Ju2xZhZSMyUeV5ZED+2NWdcGTA6FDhYn4hHc0M6KBs=; b=FWnvMlPMJR0kV7
-	DVh1Z9sA7qnakOZf21pRvx2hxIAsICPwGvVjj2xHvA37MMP7Eeg89XlQM6yB99WjMRNLfJATBly72
-	A5t8xJOJexs+uhnbjYWc4gIvMcvk9XVA1MHO4/CU2dxIiG/8dwWOUG4q0C4He6jMnHvNRxEzs6CF6
-	Xgfo8WQlWM64GTAGJd9TKf7r1ZAM6Aezs/ZmhwWTO9R6a4QQJIKItwC+4Bn1vZz0RoP0Q+YgKeXCv
-	egUPkl83gx7N3EH7tQWIej3FMQA1YImWa2hCb2bN2obbYhNGR5pR+Rz5/O5X9J9kHalE59iMllutC
-	zJOmWAcwLYncLjcZLvaA==;
+	List-Owner; bh=qnJVMJdGMRN8L2NoHL4KTRn1HQ2Ft/ifulMecGxA2TQ=; b=rft3ctYxxoAKSu
+	LOFTSnD9NfewREEtKKy2A7CVe/V0/kUtBaoJSBDeNoL85VB9FKDFd/PysSqR8eTVhswrwyPS0ZAs5
+	aMjMmfEhLjP0DmyrMWoBhSPYchP2t0izoha8BGApEUIf0ZbWm2S+TtVXoba06vXLK7rSWTBCmDXqv
+	8O07Swl6+uOJMEPVOZFc6CuSKyOS/GrgDAMAPyPXO8j8YvMiOmXvpDO1Ql4NsCMPy+0VDMN5U3pSl
+	3wcgI9NbT3a/uws7yX4CoQASbKyt9YqPqHXCmTDEfkAlqDdBXzAStJAQGgrHLwIcROetcItNEwdrN
+	h3tW1ZnVit1JhcaWrvkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkedv-00000001nhL-20hk;
-	Fri, 17 Jul 2026 09:14:03 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wkfA4-00000001sRn-2cpW;
+	Fri, 17 Jul 2026 09:47:16 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkedt-00000001ngc-3wqI;
-	Fri, 17 Jul 2026 09:14:01 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id AEEB8403D3;
-	Fri, 17 Jul 2026 09:14:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67AA01F000E9;
-	Fri, 17 Jul 2026 09:14:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784279641;
-	bh=hdEdwOk9Yi6Snu3myq/DFMCAWJnPUUX85o2H98P1x9Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=M8d0K+41rR4c7K+sMXbp/wtNyXxoel/OeMKi3n7FSO0g5t/RPAB6B3wc/GhtlKZdg
-	 bbULax718vZJ/jOH4jp5e8jhHW1ZGQB7+XJB6anuVB9tWPYtCHzFGWVY8jQiXAn16u
-	 48SGhLGaA5aVJpbew1r9kPR1FEopmWOKHcE0wBfVhyLnUhaSzdOUE1jPsUSeWT9oT3
-	 5efFsLC+6616LV5ivDnraCQI+9hxyRGUFy5hJRcM0K6Tg0Nbm4BWy+d0ZN4VH2Ell6
-	 c026376Q/pv5QolAD8BlrvQAiIiVHV6PN/1EOaW4vlurHfNiduMyK0NepH8CIj2ydY
-	 dm54SL5F/XTgw==
-Date: Fri, 17 Jul 2026 11:13:57 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Hrushiraj Gandhi <hrushirajg23@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Vicharak Vaaman board
-Message-ID: <20260717-robust-nondescript-husky-ed6c5f@quoll>
-References: <20260716092859.512306-1-hrushirajg23@gmail.com>
- <20260716092859.512306-3-hrushirajg23@gmail.com>
+	id 1wkfA1-00000001sQS-0ph2;
+	Fri, 17 Jul 2026 09:47:15 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id AF573C2B9F7;
+	Fri, 17 Jul 2026 09:47:25 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id ED31560361;
+	Fri, 17 Jul 2026 09:47:07 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 225EE11BD0424;
+	Fri, 17 Jul 2026 11:47:01 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1784281627; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=NhWr7DyYHBMitYnhvrVIDsh6S5Eu/wdCCtdb6dUizGM=;
+	b=mROS9WP4u4nxqxbIO1iWw/9DeCH9lbJu8Ab/BWzz1frh9hKmb/fwE9chdLymD9nlntHSf/
+	c7+0UJEJqVsC54NRjD7lwGZxzQImUznXSEfrXk7wOzMS0MnMWg1+WKv8tU3rTFQteBAqKZ
+	LYZQlalnWyWA/aJAPXymyEPxp+iYv51idDSlRh7ZoccNo7i6WNCRObiMOkfAaA5T+Czauc
+	GTQzX39riEHKT1Csj4bAkmQeEiiQkwZseNtYmj2Fn0TUILcsuiW1jMykBndqLgwaiyN12C
+	BtnzMtBsN/b05Z5ZFlSbSguapSTmgRKeeoMOPepO/PNW9SKHwq81DCWj4Ot4PQ==
+Message-ID: <da7d4ee0-8122-4839-b807-5d23ee6aeef7@bootlin.com>
+Date: Fri, 17 Jul 2026 11:47:00 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260716092859.512306-3-hrushirajg23@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 2/2] net: stmmac: dwmac-rk: enable the
+ reference clock for output mode
+To: Jiaxing Hu <gahing@gahingwoo.com>, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com
+Cc: netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org
+References: <20260717065933.2629501-1-gahing@gahingwoo.com>
+ <20260717065933.2629501-3-gahing@gahingwoo.com>
+Content-Language: en-US
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+In-Reply-To: <20260717065933.2629501-3-gahing@gahingwoo.com>
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260717_024713_411126_E665A6F6 
+X-CRM114-Status: UNSURE (   6.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,105 +82,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 16, 2026 at 02:58:59PM +0530, Hrushiraj Gandhi wrote:
-> Add initial devicetree support for the Vicharak Vaaman, an RK3399-based
-> single-board computer.
+Hi,
+
+On 7/17/26 08:59, Jiaxing Hu wrote:
+> rk_gmac_clk_init() only requests the refout clock group for RMII. The
+> ArmSoM CM5 has an on-module YT8531 RGMII PHY with no crystal that needs
+> the SoC 25 MHz reference (clk_mac_refout), so in RGMII the clock was
+> never enabled and the PHY did not respond on MDIO.
 > 
-> Supported peripherals:
-> - RK808 PMIC with core/logic/IO regulators
-> - SYR827/SYR828 (vdd_cpu_b/vdd_gpu) CPU-big and GPU regulators
-> - Mali GPU
-> - Gigabit Ethernet (RGMII, via &gmac)
-> - eMMC (HS400, enhanced strobe)
-> - microSD card slot
-> - SARADC and TSADC
-> - PWM-based vdd_log regulator
-> - UART2 serial console
-> 
-> Tested by booting to a userspace shell over the serial console and
-> verifying eMMC and microSD storage, and Ethernet link-up.
-> 
-> Signed-off-by: Hrushiraj Gandhi <hrushirajg23@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../dts/rockchip/rk3399-vicharak-vaaman.dts   | 438 ++++++++++++++++++
->  2 files changed, 439 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index 761d82b4f4f2..e1b974502915 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -90,6 +90,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64-screen.dtbo
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-vicharak-vaaman.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-armsom-sige1.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-nanopi-zero2.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts b/arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts
-> new file mode 100644
-> index 000000000000..6060365bf731
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts
-> @@ -0,0 +1,438 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2026 Vicharak Computers Pvt Ltd
-> + */
-> +
-> +/dts-v1/;
-> +#include "rk3399.dtsi"
-> +
-> +/ {
-> +	model = "Vicharak Vaaman";
-> +	compatible = "vicharak,vaaman", "rockchip,rk3399";
-> +
-> +	aliases {
-> +		ethernet0 = &gmac;
-> +		mmc0 = &sdhci;
-> +		mmc1 = &sdmmc;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial2:1500000n8";
-> +	};
-> +
-> +	clkin_gmac: external-gmac-clock {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <125000000>;
-> +		clock-output-names = "clkin_gmac";
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	vcc12v_dcin: vcc12v-dcin-regulator {
+> Request the group whenever the SoC drives the clock (clock_in_out =
+> "output"), not just for RMII. The clocks are optional, so other boards
+> are unaffected.
 
-foo-regulator yes?
+You've taken my review into account (thanks :) ), but you're failing to
+address Andrew's comment.
 
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc12v_dcin";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <12000000>;
-> +		regulator-max-microvolt = <12000000>;
-> +	};
+The PHY should be the one requesting the MAC to output the refclk, in
+that case the MAC will act as a clock provider, something like this :
 
-This regulator is completely unused (other non-controllable do not
-matter).
+https://elixir.bootlin.com/linux/v7.1.3/source/drivers/net/phy/air_en8811h.c#L1156
 
-> +
-> +	vcc3v3_lan: regulator-vcc3v3-lan {
+The PHY then requests the clock (probably an optional clock).
 
-so why here regulator-foo? Decide.
-
-Please use name for all fixed regulators which matches current format
-recommendation: 'regulator-[0-9]v[0-9]'
-https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
-
-
-Best regards,
-Krzysztof
+Maxime
 
 
 _______________________________________________
