@@ -4,110 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CAECC44507
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 08:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E1E4C44507
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 08:56:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hmNWs6mzKJEV80L315qnzGb9GwTdR6aVh0Xx4fNwPf8=; b=MLzjBGBWSyRzoM
-	jFOS69/pmIaDCBXOaqxD2oFjAbxAzGDMo1R394116Tjf4bOL0p+fk7o4ZuCZJcEJ+STBH2AVOIzzK
-	KmXSLmh3A2GHN0P6Sqn0HryCVm/hVGlc3kbs1jTV0s4sOTDhDG66fWd600FTk4r5mjzrV4i0gM6RL
-	DWp6HzrHtw9YPVWeh9ZkaKAue3gSrCK20uHKD/sTNeTzi4UCGDBO2MPXThcetf+DUlL30l7T2WNA1
-	rNbH+Kokx8vvl6HKuhFZbWJJz4wrezASh06RG8cKJp3S/HGQqpsj0xS1TtdSltBbbthn1R/EP7fK0
-	bTog5ZTGnB9G2hdE7CTw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lNJT1P/z9oMG8Wo1CduEB7RFeKUSeUybiZ1rXOtXBAQ=; b=DyTGg8egfUvM1RV0v/LtiPA/xl
+	F3HReS553sq9ft6zcoq6wp6dY552v0uMZgCsAXEH2/XMKNHz6LObNk9FRGca9VZX5Vls8XLCbUe4Q
+	36loX/1t12K8ORqBql2nHMzf3Flw4Fgr9divMsS+8obmeuDOxawVi6cemaNiXyqg+XuXIQX8pAwI1
+	CwhWilQa9S/KMK1l7ZoKqSHkBeKje9gROYJ9PxXmVFPeqJsyhdEbZVLInrQsm84SbPV+peiEvncO5
+	moZ1CeAI8RHbpkQAJU1YEl6OcRd9Q5uL9v9aF1TfL5J7Hu91MMT0HdoJ98NkhJXlh5l4llcD+VQfN
+	Lnnza0ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkeLv-00000001kKP-3KXO;
-	Fri, 17 Jul 2026 08:55:27 +0000
-Received: from flow-b8-smtp.messagingengine.com ([202.12.124.143])
+	id 1wkeMk-00000001kaD-3tl0;
+	Fri, 17 Jul 2026 08:56:18 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkeLq-00000001kHJ-3drK;
-	Fri, 17 Jul 2026 08:55:26 +0000
-Received: from phl-compute-10.internal (phl-compute-10.internal [10.202.2.50])
-	by mailflow.stl.internal (Postfix) with ESMTP id 999A013002E9;
-	Fri, 17 Jul 2026 04:55:21 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-10.internal (MEProxy); Fri, 17 Jul 2026 04:55:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1784278521; x=
-	1784282121; bh=Zvd1osMYewGqon41SsFYB9MFb6slH1HcdKHtX5RAEpk=; b=E
-	gKc7488I5Z9VTl7QMWXAF/psMQGuTz+k6DzFkDtAGftumnkGTZfPk2hkAncjLENy
-	3lhd+L/wvAV+XUcWtlBqrHwn+s0Ptx3qMEb6EBdCH2cIee+3P6sk/vOURW+EgVq9
-	UB41pWP9mMx4qIiuvzzglXlEyCdQnFKwtbCnfnoG9hX+JHHAnWgGHy38UYsPmYyl
-	w2FFb1uX313jG54k9GbVvswxVZDI6FqJ3B/oOwQIAwYhYKNcDJETZHF/1Mh5RuLj
-	C6ETziDGp6s+mtmZo9GMsnX4xv1sA5kJdPq0bri+aR2EkdYFiIJitjBE2Tv0RN1K
-	HBvKSWRdbBfLKrgyBb15Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm2; t=1784278521; x=1784282121; bh=Z
-	vd1osMYewGqon41SsFYB9MFb6slH1HcdKHtX5RAEpk=; b=c2N3OeLEOynyxMYUC
-	uxfQfjDMA5BKinX4c5noX8w1esmnWz6udH74WmYHNk6ijpjIyYSUC6JeJ3heqsW8
-	+X9qarILtjVfgUKbDdG6OZFZO95Ompz1vYt97/hBxxEJkHxjhMojT8GRDwqjaBbX
-	p347mov/v+8CGtA8l4iE6+ayXlg3ZPf7SutFipH9kxejEBPVJQPYCb2/h2Akb5L7
-	NKY78pA4xhlGqQXpH3twO+qDTPXjme8bEFlgPFBRx1FfNi+p47b0LcUlsweUwaz4
-	qPxi/VXQA3ZIBWfGG7nyDmVZhxTK7aVaGXBPX7xX2lldUDzvLPXBiOk7PXjaNqHF
-	tCtUQ==
-X-ME-Sender: <xms:-e1ZaoVfHSjGr1nlzAKFMGWoA5RK0prc2QUfW2FUjNjNVS-R6MLu1g>
-    <xme:-e1ZaqQQA-bVOBEHyNh1qnX3EWAbXpdZg7HEETfVhVrPMO4Bje_DT2yTd2GS_38n6
-    QG-eHX1sR7GVVTH22BVqHRL_oXPCWyPNsyVtSkc1-4M0K8KdTnw_bk>
-X-ME-Received: <xmr:-e1ZauJX5JIzCi9JD54MACly-_OVPhXCvAkAeF0WEx1kMHhOhKMHh19qK0lFe6LClM5dIjEZUT5uDwmXUvc>
-X-ME-Proxy-Cause: dmFkZTFS7GW/vS+PGg3aNaRtXNWwH13wr4t6a3PsYvzLEfoa0d1tCLQMk4kuPOyqJxWYg8
-    zWRgYifu3Q3qEvL/I6D+A7sONbehMF6Fzv0Jx15W8Bp0zPI2L6EoHnTvsn7KCzlmdcjq5Z
-    AMiUX8pm/4UU/5q2rly/ctUYuGrpfv6aggolOMe4+7cw+YQgQv04wJ8otXu77hR4cT4fFc
-    rauulgYGXJAH/ttinZ2FdpHwYOQghdgc8wZDZhtrydZHcBfVIkqxRabCZivPsjLLb49//R
-    HUixI1q1RTZqMytwufV0grN2inkZxcvjyE8RnYSpDV3z9U1hNPWgMeNXqfzcYN3TNROTMi
-    g6lcYmPvi0ApJCuAabf56PdATqWvLMqqCJcKwwqf0txVfcxEFd+NU5gwyCeb3MzCwQHT4s
-    EYXLpjKzizp+/UuGKB61wzx+QKsc4bJ+eA7Tcughh+f+oX0EK2E+8ajqxfHbtGhkgMdraU
-    j2th4GtLuUd00xhVbvRlL17mbuXgmQPIe9KShH84oXetiVFix/VxRfbJKcEiu+tPu/4qAy
-    6LzMCGZJzCC1rlQBrFP+2s18jy5eOZIAJrxhuQdL/iREbdthHA9uD4/9o++C0Vyo1Cw8lp
-    6h4ZTMPnLU/gcmGCjyf19X1ADFp+MT0enTqyJ9/FtLX4vM858uFBQaTmIZkg
-X-ME-Proxy: <xmx:-e1Zaj0w8i3RrzWEFcY0cU0LA94nT7bQjStr-o09z17slP2zF-n_rg>
-    <xmx:-e1ZapLuDEa9Ai3K5-cem91ym2X2ttXYudxavBycRNLI2jl11rKsEw>
-    <xmx:-e1ZarnhOgaW2dVFhx5xqBl6qj9s1vXpHOhHHWAa7fjvQEVJpa5DVg>
-    <xmx:-e1ZavMFedxs_IZnYYaxtmNo7DwoKzbKJuDKYPp6VtNWI1I7ZxDd7w>
-    <xmx:-e1Zao_01By5GE1USQQXBduANFFQiDaHpbJdzBRF5QXfuV3sR617AdTI>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 17 Jul 2026 04:55:15 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	ulfh@kernel.org,
-	p.zabel@pengutronix.de,
-	ogabbay@kernel.org
-Cc: dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	iommu@lists.linux.dev,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: [RFC PATCH 9/9] arm64: dts: rockchip: rk3576-rock-4d: enable NPU
-Date: Fri, 17 Jul 2026 20:50:47 +1200
-Message-ID: <20260717085220.3212274-10-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260717085220.3212274-1-gahing@gahingwoo.com>
-References: <20260717085220.3212274-1-gahing@gahingwoo.com>
+	id 1wkeMk-00000001ka0-0Omh;
+	Fri, 17 Jul 2026 08:56:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8274241398;
+	Fri, 17 Jul 2026 08:56:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C26DA1F000E9;
+	Fri, 17 Jul 2026 08:56:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784278576;
+	bh=ji3c6tV6Fmp8AGbsQNiKpqBvm3f3bp6x+PZi89E38Fw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=azQXBRayBGKG9pZTOOKyiIEsoNwnMAmRP2b6noY4+hF+zV4UYPa6VBdyla5JYzZOk
+	 a8/dBQSHkr2xljG88tIdsWYefyzsjUCjRBn17l0DFjkl1P/mOoRt4AhHpWg1wn8GSM
+	 rSCQkI7VymlKqdtau9Wsf6D//kpZYNrbzxA/F82/wGBOYzxcOvKT8r0OVngOfl676E
+	 Ib/pcUa3NemJl9NSHznrEK3JGBPgeOEJ2x8j8Rm80G/vGH61lJmU3F+VZXFbmF/vkK
+	 QsELya1yQgedwMoE39mMnmOBswZgzZgUdEVZ19IdgXP/Y/jUH/Wv6SZeMwvW6guXbV
+	 1K/5VnQN9oDGQ==
+Date: Fri, 17 Jul 2026 10:56:13 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Albert Esteve <aesteve@redhat.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
+	Jessica Zhang <jesszhan0024@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Inki Dae <inki.dae@samsung.com>, 
+	Jagan Teki <jagan@amarulasolutions.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
+	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, Lucas Stach <l.stach@pengutronix.de>, 
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Linus Walleij <linusw@kernel.org>, Marek Vasut <marex@denx.de>, 
+	Stefan Agner <stefan@agner.ch>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Biju Das <biju.das.jz@bp.renesas.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Yannick Fertre <yannick.fertre@foss.st.com>, Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+	Philippe Cornu <philippe.cornu@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@kernel.org>, 
+	Samuel Holland <samuel@sholland.org>, Jyri Sarha <jyri.sarha@iki.fi>, 
+	Jingoo Han <jingoohan1@gmail.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Peter Griffin <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Alison Wang <alison.wang@nxp.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Thierry Reding <thierry.reding@kernel.org>, Mikko Perttunen <mperttunen@nvidia.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-samsung-soc@vger.kernel.org, 
+	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v2 5/5] drm: release panel reference after panel bridge
+ creation
+Message-ID: <20260717-heavenly-peach-guan-82f0f1@houat>
+References: <20260713-drm_refcount_wiring-v2-0-d3bb61f4bd4d@redhat.com>
+ <20260713-drm_refcount_wiring-v2-5-d3bb61f4bd4d@redhat.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_015522_959076_49FAE91D 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260713-drm_refcount_wiring-v2-5-d3bb61f4bd4d@redhat.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,58 +94,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2780527856953037646=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable rknn_core_0 and rknn_mmu_0 on the Radxa ROCK 4D. Supply the NPU
-rail (vdd_npu_s0) via npu-supply; it is marked regulator-always-on for
-now because the NPU power sequencing is still being brought up (see the
-cover letter) -- happy to switch to proper runtime control once the
-compute path is sorted.
 
-Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+--===============2780527856953037646==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="ro3acbddzcmn32hn"
+Content-Disposition: inline
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 272af1012..09d2fc98b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -442,6 +442,7 @@ regulator-state-mem {
- 			};
- 
- 			vdd_npu_s0: dcdc-reg2 {
-+				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-enable-ramp-delay = <400>;
- 				regulator-min-microvolt = <550000>;
-@@ -869,3 +870,18 @@ vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
- 		remote-endpoint = <&hdmi_in_vp0>;
- 	};
- };
-+
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	/*
-+	 * Power BOTH NPU domains (NPU0 + NPU1) like the vendor's single NPU node,
-+	 * even though rocket computes only on core 0: the CBUF->CMAC read path is
-+	 * only fully powered with NPU1 up. rocket attaches the multi-PD list.
-+	 */
-+	power-domains = <&power RK3576_PD_NPU0>, <&power RK3576_PD_NPU1>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
--- 
-2.43.0
 
+--ro3acbddzcmn32hn
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Subject: Re: [PATCH v2 5/5] drm: release panel reference after panel bridge
+ creation
+MIME-Version: 1.0
+
+On Mon, Jul 13, 2026 at 01:53:08PM +0200, Albert Esteve wrote:
+> Update a second batch of drivers calling of_drm_find_panel() or
+> drm_of_find_panel_or_bridge() to release the lookup reference after
+> wrapping the panel in a bridge.
+
+I would have expected this to be squashed of patch 3, any reason it's in
+a separate patch?
+
+> Also handle the cases where a panel is found but cannot be used,
+> dropping the reference immediately in those paths.
+
+--ro3acbddzcmn32hn
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCalnuLQAKCRAnX84Zoj2+
+dnDUAX9DfbJ62T1vU+k0YXnFv3yX2k5iyF6uwKqBc3NkgP2wwaiGh0wcxI9im29e
+ExLXo6wBegLo1kQnSSETZqi/cXakkCkkrHe5mEI5hPp0fWmM5IDcQSmHJGJhLvnd
+3v05b7my6w==
+=EsoI
+-----END PGP SIGNATURE-----
+
+--ro3acbddzcmn32hn--
+
+
+--===============2780527856953037646==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2780527856953037646==--
+
