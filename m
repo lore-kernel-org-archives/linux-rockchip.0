@@ -4,80 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B4AC44507
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 08:49:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7216FC44514
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 08:52:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
-	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kVo9IdfOMER9kgTwfBlWInIUa51U3ofUeOr7bQBtlLU=; b=y8OyAcvzXwmnHz
-	9R/JxB888l09oNtB2C5Aza/wXMya+kahQj3OBc4Tl7/itG/PsE20KzMtTdvoZGg6W3Z3ADdeGYfSn
-	rFmRPaDbhkBETZpKTeVE2fiFzN8TuocghOv/d33M3z4g1eyTZg7QHy8ZdlWUBCK4klAtYPUqw+UnC
-	UuUZvPDw1jT1TfottZelaGJd5upGU0Jk70QX+rYGRlR8IoudWbx0dKqO5wKw1klIpUpSzi+ROUnas
-	eQvZ7tH2k+aVBzayxtinNIQEoMzVlLcQiNhcvTtch5bignkBe5rQr0U1LaEjSdfBDtY74rZEvIT3K
-	EJWEpo3rE3Q7xZtl+7lw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PDdv/vcQgvfqlmQZ0kJU4RRWzcBt+4vkMbsc31SwTnI=; b=DylLbWHOMWoKdm
+	4vRRxkuvGJNqc7/Y5Bf1qmo3omAvNw0JJTzjxEDUmCFaE1KZvjxWI22Y8X16xFHKVv7+54xE6d/Z9
+	nQQo3wRXIdORGGmPFaL14JTCabHSZFFuhRrzhHv3/8Hiyr7LfG8VV1Vc81faaQlUR0Zvtr2ypyeGu
+	FmvO/J2+BjzqMIHKWShhRJh4rD3uD8h+9cbeooc4u8oo3UPr2Pm8SZf6xefWt5EGOKtH/CzbUJzNQ
+	jvLRKRYNpdWMx5kiDLlT1HcuIPwe+FQbnEyyr5KMTtjRMs9jUSPgOHn03rxJfLXY3nn6Pl55h/uhx
+	0mer8LnxYERXX1Vl4UZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkeGV-00000001ibN-1hvm;
-	Fri, 17 Jul 2026 08:49:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wkeJA-00000001ixF-45Hb;
+	Fri, 17 Jul 2026 08:52:36 +0000
+Received: from flow-b8-smtp.messagingengine.com ([202.12.124.143])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkeGU-00000001ibA-24sZ;
-	Fri, 17 Jul 2026 08:49:50 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C7E8543342;
-	Fri, 17 Jul 2026 08:49:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 114FB1F000E9;
-	Fri, 17 Jul 2026 08:49:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784278189;
-	bh=cYuZ+CRFk03hiWJ0HC3KigHuxua0YjUKs+2Dja/OrBg=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc;
-	b=DgFeC5GLqSzOP+GCjhyeXf5hR/vY/98UPz4EyHLu+56RxHNeDjfoHFTij4I7lYsu+
-	 a6JlhCp2Q5K0vqIDiJ87VcMZqSobvY1akK3ZofSCKuk8Pi680uGfRIO9r2GtHepbn4
-	 KlTySY//ivAWf8NMV0pVuEWNG4M1GOTk3L+WEo9JaJ3k26eDKyUY3vl2uTk0L0PnIR
-	 CZvJjJXDCJjqHRtvo5pJPug5oG+hgcNp2R7Oww0gcS5n0etHt2gvNuAxHvrbBw1GOv
-	 p7FjL7idnh/4PoMwLgvJ+TOJ/+5fblnzGrSw2UXOgaM1hS2L5Rs5x2aaU8ODu5yMbU
-	 cKwvVjEbSxgpA==
-Message-ID: <505844fbd2c5c8ab07153348d20b708c@kernel.org>
-Date: Fri, 17 Jul 2026 08:49:45 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Albert Esteve" <aesteve@redhat.com>
-Subject: Re: [PATCH v2 3/5] drm/panel: of_drm_find_panel() return a counted
- reference
-In-Reply-To: <20260713-drm_refcount_wiring-v2-3-d3bb61f4bd4d@redhat.com>
-References: <20260713-drm_refcount_wiring-v2-3-d3bb61f4bd4d@redhat.com>
-Cc: dri-devel@lists.freedesktop.org, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, "Alain
- Volmat" <alain.volmat@foss.st.com>, "Alexandre Torgue" <alexandre.torgue@foss.st.com>, "Alim
- Akhtar" <alim.akhtar@samsung.com>, "Alison Wang" <alison.wang@nxp.com>, "Andrzej
- Hajda" <andrzej.hajda@intel.com>, "Andy Yan" <andy.yan@rock-chips.com>, "Biju
- Das" <biju.das.jz@bp.renesas.com>, "Chen-Yu Tsai" <wens@kernel.org>, "David
- Airlie" <airlied@gmail.com>, "Fabio Estevam" <festevam@gmail.com>, "Frank
- Li" <Frank.Li@nxp.com>, "Geert Uytterhoeven" <geert+renesas@glider.be>,
- =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Inki Dae" <inki.dae@samsung.com>, "Jagan
- Teki" <jagan@amarulasolutions.com>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Jessica
- Zhang" <jesszhan0024@gmail.com>, "Jingoo Han" <jingoohan1@gmail.com>, "Jonas
- Karlman" <jonas@kwiboo.se>, "Jonathan Hunter" <jonathanh@nvidia.com>, "Jyri
- Sarha" <jyri.sarha@iki.fi>, "Kieran Bingham" <kieran.bingham+renesas@ideasonboard.com>, "Krzysztof
- Kozlowski" <krzk@kernel.org>, "Kyungmin Park" <kyungmin.park@samsung.com>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Laurent Pinchart" <laurent.pinchart+renesas@ideasonboard.com>, "Laurentiu
- Palcu" <laurentiu.palcu@oss.nxp.com>, "Linus Walleij" <linusw@kernel.org>, "Luca
- Ceresoli" <luca.ceresoli@bootlin.com>, "Lucas Stach" <l.stach@pengutronix.de>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Magnus Damm" <magnus.damm@gmail.com>, "Marek
- Szyprowski" <m.szyprowski@samsung.com>, "Marek Vasut" <marex@denx.de>, "Maxime
- Coquelin" <mcoquelin.stm32@gmail.com>, "Maxime Ripard" <mripard@kernel.org>, "Mikko
- Perttunen" <mperttunen@nvidia.com>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Paul
- Cercueil" <paul@crapouillou.net>, "Paul Kocialkowski" <paulk@sys-base.io>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, "Peter Griffin" <peter.griffin@linaro.org>, "Philippe
- Cornu" <philippe.cornu@foss.st.com>, "Raphael Gallais-Pou" <raphael.gallais-pou@foss.st.com>, "Raphael
- Gallais-Pou" <rgallaispou@gmail.com>, "Robert Foss" <rfoss@kernel.org>, "Samuel
- Holland" <samuel@sholland.org>, "Sandy Huang" <hjc@rock-chips.com>, "Sascha
- Hauer" <s.hauer@pengutronix.de>, "Seung-Woo Kim" <sw0312.kim@samsung.com>, "Simona
- Vetter" <simona@ffwll.ch>, "Stefan Agner" <stefan@agner.ch>, "Thierry
- Reding" <thierry.reding@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "Tomi
- Valkeinen" <tomi.valkeinen@ideasonboard.com>, "Yannick Fertre" <yannick.fertre@foss.st.com>
+	id 1wkeJ8-00000001iwX-3eoY;
+	Fri, 17 Jul 2026 08:52:36 +0000
+Received: from phl-compute-09.internal (phl-compute-09.internal [10.202.2.49])
+	by mailflow.stl.internal (Postfix) with ESMTP id 350891300278;
+	Fri, 17 Jul 2026 04:52:33 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-09.internal (MEProxy); Fri, 17 Jul 2026 04:52:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:content-type
+	:date:date:from:from:in-reply-to:message-id:mime-version
+	:reply-to:subject:subject:to:to; s=fm1; t=1784278353; x=
+	1784281953; bh=+9eMGt1+53CE3PhB4AIL89VGOcvh7qJ9QlK1Ab9++kU=; b=x
+	5AlX3ncFjkAxw7W/XlmKlDcCCnAA9R2aEkk3hvhCNywMTGPgNvgc6QIdh+3PrZuj
+	pmlxdOhYgI5bbd2toHRh6pqNk4x9v0/WnB2bysgpWxgUsaEmZsCsNKpXHlyDHdqT
+	26ORmpta6AKRZMs25WmyhvNlkMOjJ+C7aYW/+9TZBhkei65cFQgMr0dPQxq+gRGv
+	KS6JUo6gnJ3oHnrkBWSoHfUJbntFwa21t9H/V9ZMnrQb6QPKVEaL5ShVr7efPZLi
+	WzTQjoH7h2fhwMrt1PDLxCevix050bxaZ8VHP3jLS4y1hUOcQLT9x5Igpr4kIWX5
+	5FiOY6MgMU7iD0+adNnZA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm2; t=1784278353; x=1784281953; bh=+9eMGt1+53CE3PhB4AIL89VGOcvh
+	7qJ9QlK1Ab9++kU=; b=NcF8RDetvmAiLjJ3baWiSY5MG/8P20S8MyA7Z7d9Su49
+	I9y58dW15p+c38WAuAdbST7bBF+ZmiUgwdiDkbJAQkqZT+zzRHEO47ldGk7zjrl8
+	ReyxQILAIz+XMV42A9Eax+Sui6AEgwEy24yWqOuQwJUXOduZ7Ue8TWLnF9mz9VfS
+	mAObinqU9jru3fIbE6hYtaxDjI66IvUmuWLaEF8Pck6nxoYcMKCNCqekzPxCA6o2
+	nl4Rx/IXtCFhWiUdLFa1uhCl+sl+8bHAsv2e/c7/EGq7oiAFwInbddf9GBn77gGj
+	Zm8z/s8rwVzGa+FPhTP7Ju0jraif8msxJVCjOSBzYw==
+X-ME-Sender: <xms:T-1Zape-R9_WgaOa5lpFKTDSApTOc-NGwTcRcgW36cs55yy3-xe8tg>
+    <xme:T-1ZajEf_wdzPizB3sZJvHewnfe5WGbpgE81sklr5JMFbte717YufTaeJJm_YgHKc
+    i7zNwoXnVSZtFmomeF_-fzBjkosKwjrKgSWv6y1aFCNjKXCJFueouU>
+X-ME-Received: <xmr:T-1ZauA05uXAxTf5nz7jyXEaHbQgG4gIJirf9aYh5W9dOnyGNmEr6i_Y29qnZGzf3g5ZeUzQdzh5bPfy7Tk>
+X-ME-Proxy-Cause: dmFkZTEV7KuzTcNcLactwUMRBuXXlaKWPyUvy02wJFAij4FmALZ7XghVw1H/+GtDAfNlwD
+    GzRVL4qOJ6mHaQO7vkVMPTIgFBQFKNu63S9n2cVtGwmq3WZrXNcN7nmoa2wofvSM5kS5Xg
+    rM5Y/9XOI0OX6bOiV5CmjHp+eMZ0IgJrNuGXbV8MKmiov9F+wGBf1hiVtlMejS6Oo5OFc/
+    RSganAfg1NOoPcPTCiAZ8QOhP8AUcjlui7qYLzKBk4RQJFLi01ZcLw2n6+rONGwLr1eDnA
+    qUKKq17gJOQ5U7AQtS5VOr/bQsIagPW559gj4JOBmPZpO7PCZdccqnjqxTjupch+Zn6dsK
+    LgsEeHjmKU5ONptLpnTFMTODIa0qM8KDo5ToHC1PB67KytIgDiFxY1mNTnqmQ7aDd1Q1C4
+    JKLNf6guQX+f4M94q0cN0lWqXwuS11Df56hrUrxlhFSLdq2bgc2FE+4JNcm3n2UlmwvEBY
+    v9eA63hRQAOYQptd0UTKE17Y0ULDAOJxBP8yLy6zR/+kPI5W3B49294DmMRK6yw/9BPMw/
+    Wm2vEoIhEDjmo2umu6p4Okov3cBrHuBGjPEDp0HwHo6/pjM7efjtkuaMwsEqowHjT5+ZHo
+    R+SUToeJn9PAoJrwJUlCj1HoQsvXUySiOssw/L8lWX7Q9jUxg3avTRkVaNhA
+X-ME-Proxy: <xmx:T-1Zam6teAi6wo-cIh9FrlOdlp4dE-bM-y4aI-cI8BWv7F1qEerOAw>
+    <xmx:T-1ZatlkBsgWYxK5mprkrbn8MrWgMRUOqmqtcXAfiKMu-MJUX0Ef9Q>
+    <xmx:T-1Zav58u89nPJJnHSA_n19Z7JGtz8Wmng4NuKGqziit9_teZG3yew>
+    <xmx:T-1ZarWNEm0ws1xDq2e-zcNlwfpO-3RRn0UECS2p8XNhIuBeNspDvg>
+    <xmx:UO1ZalNSzj_SPzf-jx_zw0DWm3acLdYivKeEqONvdd1xxCGa5gy8vuzO>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 17 Jul 2026 04:52:25 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	ulfh@kernel.org,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org
+Cc: dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: [RFC PATCH 0/9] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Fri, 17 Jul 2026 20:50:38 +1200
+Message-ID: <20260717085220.3212274-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260717_015235_072996_6A86082F 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,25 +115,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 13 Jul 2026 13:53:06 +0200, Albert Esteve wrote:
-> Callers of of_drm_find_panel() receive a pointer with no reference
-> held, creating a window where the panel device can be unregistered
-> and freed between the lookup and first use (e.g., drm_panel_prepare()).
-> 
-> Fix the lookup function by acquiring a reference with drm_panel_get()
-> 
-> [ ... ]
+This adds RK3576 NPU support to accel/rocket. RFC: the NPU brings up and
+runs, but full inference is not correct yet, and I would rather get
+feedback now than sit on it.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
+Tested on a Radxa ROCK 4D. The NPU probes, powers on, brings up its
+IOMMUs, and runs jobs to completion (rocket + Mesa Teflon). Getting there
+took a few fixes outside the driver too: a power-domain settle delay and
+reset cycling (else a cold power-on throws an async SError), two rk_iommu
+fixes for banks firmware leaves faulted, taking the full clock set on the
+MMU nodes, and both NPU power domains on the core.
 
-Thanks!
-Maxime
+Not solved: only the first operation in a power session gives the right
+answer. Every later one engages and DMAs its input, but the compute
+output never lands, so the readback is the zero-point. I chased it
+through the whole software surface (registers, IOMMU/TLB, cache,
+power/clock/reset, dispatch) and it reproduces even with the driver
+environment matched to the vendor's on the same kernel, so it looks to be
+below software, in the fixed-function block. Traces available.
+
+Two asks: review of the bring-up and the shared pmdomain/iommu changes;
+and if anyone knows the RK3576 NPU internals, whether that
+per-power-session arm can be driven from software at all.
+
+The series is split by subsystem (binding, pmdomain, iommu, driver, DT).
+The board DT keeps vdd_npu_s0 always-on for now; happy to switch to
+proper runtime control if preferred.
+
+I used Claude Opus 4.8 to help trim this series out of my debugging tree
+and generate the diffs.
+
+Jiaxing Hu (9):
+  dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+  pmdomain/rockchip: add optional per-domain power-on settle delay
+  pmdomain/rockchip: cycle optional power-domain resets on power-on
+  iommu/rockchip: skip orphaned-fault banks in rk_iommu_is_stall_active
+  iommu/rockchip: skip orphaned-fault banks in CMD_ENABLE_STALL dispatch
+  iommu/rockchip: take all DT clocks
+  accel/rocket: add RK3576 NPU (RKNN) support
+  arm64: dts: rockchip: rk3576: add NPU (RKNN) nodes
+  arm64: dts: rockchip: rk3576-rock-4d: enable NPU
+
+ .../npu/rockchip,rk3588-rknn-core.yaml        |   2 +-
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      |  16 ++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      |  78 ++++++++-
+ drivers/accel/rocket/rocket_core.c            |  43 ++++-
+ drivers/accel/rocket/rocket_core.h            |  22 ++-
+ drivers/accel/rocket/rocket_device.c          |   4 +
+ drivers/accel/rocket/rocket_drv.c             |   1 +
+ drivers/accel/rocket/rocket_job.c             | 154 ++++++++++++++----
+ drivers/iommu/rockchip-iommu.c                |  66 +++++---
+ drivers/pmdomain/rockchip/pm-domains.c        |  68 +++++---
+ 10 files changed, 367 insertions(+), 87 deletions(-)
+
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
