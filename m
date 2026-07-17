@@ -4,65 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5B0DC44512
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 02:38:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0F40C44512
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 02:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E11C2IW/IszGIuH+iXi3YlKbZv0Mfev01uhkhsuiHvo=; b=t+UWZnJMmGyatO
-	m3jBLFZmPHFNsul8ayfsADiAvMGLbuBMLug1mIv6ZzLegMdh5Fna4KFRaIid+p6OuIXfzMYTXqIrq
-	itRh0ojYwMf7G4LfrmzPoMVI+kfrndDpj0BMaIeyEXBA9joy32x8sx75bCus5Cfl31W4McxlZ084p
-	8fwmluDxZnIk+xVYQhgLWVfcjvtRL0hVqnGcSiUBPCnLluwvaYIXNwdxBOK/4goPyhn27/Oj1giCS
-	EjrswBiRAm4s4PjWEX52AV+glrnd1qF0ifrsbslJ/IO+2AqrWkfjUBC8k/rXrAGO0bv1cmwDo2nNY
-	tHeZcZsxwFR/oMwRL5xA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zBd9kGmmlNpuIzCQfLIrWwKjk85+Ve/ppTF3JQf2o8s=; b=2cHwmZi+mMz2AC
+	BZ5TTZQknoFEI/M5glGHa5w2QrwJ50EEa09xdPGwMqybu1RO62d79WcHvPKotBJ84kZ/ikR6SFdox
+	xRK5AhK4UZdwqf3M3mOKEtpDxPB/Gfn+T1KwD80ntlmc/8x/UXpvTCpd7jpJgs/iuirFCxfYs7w10
+	N2sbMMkV0xxAyGcKsvkKY14/3znmtiQR+v4WrLEmBsZvbm9IW2E6mSd2Yh54vsxrRbDfysEwziRLF
+	5oqZZ70+EQMqUQc2eAEO/Ihu4h5BpGTfCkNHVDl8M5lm+934byfpgrmNaa8MolRLkeh3RWDrGOQYN
+	NH79vL9GZf8NoLaxm7jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkYT0-00000000yn4-1gXY;
-	Fri, 17 Jul 2026 02:38:22 +0000
-Received: from mail-m1010.netease.com ([154.81.10.10])
+	id 1wkYdb-00000000zdV-41Xi;
+	Fri, 17 Jul 2026 02:49:19 +0000
+Received: from mail-koreacentralazon11013032.outbound.protection.outlook.com ([40.107.44.32] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkYSx-00000000ymO-2fU8;
-	Fri, 17 Jul 2026 02:38:21 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 46859c9bd;
-	Fri, 17 Jul 2026 10:38:08 +0800 (GMT+08:00)
-Message-ID: <cb0d7306-ee3a-4df8-aed4-e7e5b4e2cc16@rock-chips.com>
-Date: Fri, 17 Jul 2026 10:38:08 +0800
+	id 1wkYdX-00000000zcO-1jux;
+	Fri, 17 Jul 2026 02:49:16 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=hBefqG+FWXUwJmV92s1FT/J0xwPlT59S0mAvpWfElzHnui23E/eLvqbjnieCvgchZjs0osU9z7A/Pr7iwJAIJrXIp7ITPmBsArrpLkxWfFPmAUs5K6vYw9O3/A/yNcCFBaf2OUv8oQO7SzQaQEhxwbKyceXuF4I3QW435iD++ZFqb+7NDhtYg1WhfhMk1PzA5XbZo9kq0GVQo9DkrN59jLvthLNI7vle+bkWnxKX7wPYH0/rVq0cf2ILm4A9VhqJPZGFJk2CvVwnuJes6VxV7sb8MdDh7R1xVg3bHoJgomWR0XqNoghQgsvJEqJKi4UjlcpyrFMxoDl38LMjGkUTIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zxBEU4MvMeVM6Vm0++C1uC5yOORNlw8Oh5q3SstrPL8=;
+ b=CplcAE7md9iJiTKUUg5cnN1cLY2pHQfqsM9HO01OMzshLSmqfy/kMNxtJXkjdOscoEAbUsPPINdp4sH28cz2zwzrGljuH7h305BVaNBAHvrxosUNQNU9Yn99f8L63TsRUY0OidLLFSTXPF1mfa62HQVaBbEGanVFeb+JGf0izaufwRZ7Wknkgd4RrretSGjUVh+DF/SdkS/prXDHLW7ODa66bAc9rMNtW9X0bvX5xZ5I66X9wOKp+TeZsYxrGA4Me9PBnc+CX3XreWjNurtdxzSsuL5U2u9pGvH1cUs9ZOljdM9OEuy5aFKYN3bW91GrVLkrL7qFAm91Lbym0vCtzA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zxBEU4MvMeVM6Vm0++C1uC5yOORNlw8Oh5q3SstrPL8=;
+ b=ZLgcvov3YcxuawdQQCnq8XlfNNMIylYnOtB52WMEkHMFcNPKsDTGkHUGvjWApTKRm0Po5zjnk0N+4UTL3PChS+aMptwPW+wnAmUuB/TTFJsT+TrIsEwFl3rGMtiK0aC7XHvJ2yZTVswB+HLWitDQjfghOKVXULaIDoELaSKPfZzPRRlOFf57FJlCDRglA9xhc7SSBeXG8CTJEELjm7a72Jyk3uPIrUDb3yFgr3YU8shwPPW2iEOxP3eiIqBGKtfdVKZM4gfWt6IVvn3iEfZo4NQnjkCZ1EYh5meOpccKu3cbDU8ZaQQU68WLqMGyXxVn+MZsXZKnKy6hHXFHdVVcNA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
+ by TYNPR06MB8504.apcprd06.prod.outlook.com (2603:1096:405:3d6::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.10; Fri, 17 Jul
+ 2026 02:48:58 +0000
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b]) by SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b%6]) with mapi id 15.21.0223.011; Fri, 17 Jul 2026
+ 02:48:58 +0000
+From: Pan Chuang <panchuang@vivo.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Markus Mayer <mmayer@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	zhanghongchen <zhanghongchen@loongson.cn>,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Amit Kucheria <amitk@kernel.org>,
+	Thara Gopinath <thara.gopinath@gmail.com>,
+	=?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	John Madieu <john.madieu.xa@bp.renesas.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Pan Chuang <panchuang@vivo.com>,
+	Laura Nao <laura.nao@collabora.com>,
+	Fei Shao <fshao@chromium.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Svyatoslav Ryhel <clamor95@gmail.com>,
+	linux-pm@vger.kernel.org (open list:THERMAL),
+	linux-kernel@vger.kernel.org (open list),
+	linux-arm-kernel@lists.infradead.org (moderated list:BROADCOM BCM7XXX ARM ARCHITECTURE),
+	imx@lists.linux.dev (open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE),
+	linux-arm-msm@vger.kernel.org (open list:ARM/QUALCOMM MAILING LIST),
+	linux-renesas-soc@vger.kernel.org (open list:RENESAS R-CAR THERMAL DRIVERS),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
+	linux-samsung-soc@vger.kernel.org (open list:SAMSUNG THERMAL DRIVER),
+	linux-stm32@st-md-mailman.stormreply.com (moderated list:ARM/STM32 ARCHITECTURE),
+	linux-tegra@vger.kernel.org (open list:TEGRA ARCHITECTURE SUPPORT),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
+Cc: Niklas S?derlund <niklas.soderlund+renesas@ragnatech.se>
+Subject: [PATCH v2] thermal/drivers: Remove redundant error messages on IRQ request failure
+Date: Fri, 17 Jul 2026 10:47:10 +0800
+Message-Id: <20260717024733.374913-1-panchuang@vivo.com>
+X-Mailer: git-send-email 2.34.1
+X-ClientProxiedBy: TPYP295CA0003.TWNP295.PROD.OUTLOOK.COM
+ (2603:1096:7d0:9::14) To SEZPR06MB5832.apcprd06.prod.outlook.com
+ (2603:1096:101:c8::12)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 3/6] pwm: Add rockchip PWMv4 driver
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Lee Jones <lee@kernel.org>, William Breathitt Gray <wbg@kernel.org>,
- kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
- Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org,
- linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org
-References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
- <20260420-rk3576-pwm-v5-3-ae7cfbbe5427@collabora.com>
- <alDK7JahbqYpwQmZ@monoceros>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <alDK7JahbqYpwQmZ@monoceros>
-X-HM-Tid: 0a9f6df03d4603a8kunmde6ff62349f89
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDHxpDVktOQ01PQ0lJGBpNGlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=XgfBY9TygDAgGW+TnQhdKri9XOCiteJldFJIFc92VlZOH4m4c8Hrv1MuWydsFFtdFO+0ihNUUH4V/uzVZrx3GNcsycjs/F7cIEOxM1QmBpvQSJKfgAWTtKZbKDUy4bb2SLkMb27wtSpy+GBP0okIG6SC13XlC9URiLwuQDHxgW4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=4+trae873noI6M/KTwB+mA2F5xNHhg6Nh9ODu1W4DXc=;
-	h=date:mime-version:subject:message-id:from;
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|TYNPR06MB8504:EE_
+X-MS-Office365-Filtering-Correlation-Id: b6c0ec1a-9f13-4380-d939-08dee3adf31a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|1800799024|366016|52116014|7416014|376014|921020|38350700014|10067099003|18002099003|6133799003|11063799006|56012099006;
+X-Microsoft-Antispam-Message-Info: pQx9aTDciwY3fdv/LB0skxjAywhJDNyGBmkRCFVFW1FOv+ib+NQVtBYuBDA+Gau7Clv0LXi/roHs8qq27fbv3Ns9NJwJDmIwbE0vbWGwFm7RinGJPFCb8DL9PRW/lzm36auCo5AcS/cEVEyJv21kLNshNV1EBNO9erT20iIVaXYY3tK2LjYJSVkccvndBT7ypPIbDxSx5JngH6xQVK2ofPk56ju8ke7qyfehQ9PKagvSQf/548Mpc1FWyhmWJY68w2rhVT5ZEudK4Va4gSZJkp5DIEznUME7Gw5vLmW5P4RtOAgdTFPBPCL8fuE2y+gRFYBbHZ1PGTEv+350p+Fp2hVFPqZkEdLH5Agy4znx84/Uk3CbQbWKiLvMX282siqnf0/p10zt9Mogf7eYucmLXUx0fHomDLKVjHIS+c5n4EnmYmL5e6xrHU0HnYqHEg/vOJsIwJ6d/uK9m8aMovhhNEECkVJysImQPeX/QSHtEUJ2GWErgaVpqeKOmY4pJC1BaoPF/1FqxB6YTmKDW9oK3y1282wS7BrvvO8gKdZ2HfN2e65aHgHz4Vm2MXROLEmC4sGN61nnZU9jRnIfq1FcDHLhXz7lo5k/c/zC35vEWIZCpZ+wbDXxwAwijZpDM9lc6shMB/FnYxhCNvVtbDp3l72Ge51ykdlYqC6q11dsliHKLqETOWA+Z+K0fO5l3HtnV8eX4DR3eNZJmJhJLqqGdeNgfE3nNFEyFE94Y/TbHd9ztzQflqUaFLkrNfKEDTHB
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(1800799024)(366016)(52116014)(7416014)(376014)(921020)(38350700014)(10067099003)(18002099003)(6133799003)(11063799006)(56012099006);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?eIZ2kEO8stSwN0i6bFGwDgmL4kv/A6Af0JJ1OtpXa/K3aQ0+Gsyw0frJQO3M?=
+ =?us-ascii?Q?L2i0EcEioms8fmhMldYBebDeVXabJAMmvyLRk4bh+eC5nP07mwVpwZ8suF7H?=
+ =?us-ascii?Q?jTC8+WX0Pd7QuDOlydmRv+J2f0ybFnywHYy5HmYn1epvZJ2h3U9A3aA7vE4M?=
+ =?us-ascii?Q?mdmZEFwhwyEspBvirR4WlxAIV+dwLVOIPEKkHC28TKT2DV1iR0PABcndIL+p?=
+ =?us-ascii?Q?GWzfqCPS9AY8bwvJnxJWHr02zwvjDI2evG+W9KVgdGpKdMyTVH51fMAg+kC7?=
+ =?us-ascii?Q?nTJOO5eEJ+RdPZiMs7Rp84YesJtGGu+YYkgK/Zo1CJkCseSlmymxq5zSH0DA?=
+ =?us-ascii?Q?2vs3e8qZI4AHD0uYGFj3hRLnXbx5NyHINHctIaCSsasjriqvJF+FF6HQrm1Y?=
+ =?us-ascii?Q?GSoHYjmCDuFpDa6VTB1qFk4u6ShJgSzLPp7sgPZpWMMxg4I1I/ZVVmwHlb/S?=
+ =?us-ascii?Q?nk+XDO03vyJ0TV57Fz5TyE6Gg8ArVH4iW2d3cmuExfB4TdJHa6HIEXSmDjOZ?=
+ =?us-ascii?Q?ePi1tbdLnnKXSQuTsPhDWBDHghwLB2LmjC91zz+EGQUUj8GoI5OFSOaCIf1U?=
+ =?us-ascii?Q?3gxocIinCmfhqzRk/mILkgLqoYv7HjvMl4nqOrD/yDbasdfUrZO963t9FJzA?=
+ =?us-ascii?Q?wPTH7Vl2d6oQ9TIgyBuXhFrnKnWux0h1n0iHtcFztzMCtvgRyRA09+tAjip6?=
+ =?us-ascii?Q?wjvsCRhny3YOeLb9eFFr/MBX2kgHTDxCXASmuDLA7avk024YcI5F9N8/iDk/?=
+ =?us-ascii?Q?KKD6d41aM7Lakz+T6xx4WxOQizyg8GL969VqKlca4NQDHBT2edPFUOhB48Ya?=
+ =?us-ascii?Q?0X3LPWqfufZ3JlDOJAmENTa7p4KQKxK1pzW2uBc+SoRJd9IJOF0KYEtOwF5T?=
+ =?us-ascii?Q?H2FvlHxobiPVYmMFrIL35L91O0rD3iKPnfn/vQ7jvxW6XXDnglbKPnjJ8iD3?=
+ =?us-ascii?Q?57ltuGtXUBx1v8gc2U4gkvd0TUoRigS3sPS/l0D+tRyq3rzPnP5fOENdvId+?=
+ =?us-ascii?Q?QHmnL007tB6fZpk6UZeRv5dodbcZLd0uS7uXPFgF2ev772zEGxyZTtvCWRhq?=
+ =?us-ascii?Q?NVdlZ5aHKImC7PlGCJrJ39jk98xd+bT2FH8L6iSfx9aX/0vmLjAsktnRdSqN?=
+ =?us-ascii?Q?ihouWkWxeXggLfvDTFyBqyNZv+q/Q6Xj2goOHbpDKGYgEFfSeo3Uzxhfkf40?=
+ =?us-ascii?Q?ayI/CUReX5RNLwHwEBPTdi+y2yI9bKPn7WZyGATPtbVrRiEItE+bvPeYtsbH?=
+ =?us-ascii?Q?yD3uUL/2S25C1WrTw+JUIUd82uaKnK5QHIa7iWQnSnnyeXegw7zReXecCqCf?=
+ =?us-ascii?Q?/lliq13+lqeTyD5oLouussUii2vnXuS+lnbh9HdEgjBD+ieuK9ZoknF2KI1B?=
+ =?us-ascii?Q?kZlCKchVhz/gq8mL1cs4Yk2DtWG+ioBmMi/lkSilOqFXOsS699W/WctDzMxy?=
+ =?us-ascii?Q?WINHCcbNNLxTZqqC+52xgA/p+7ntECLx1xycYiftoNKZ3i4r1dePoDEq7tp9?=
+ =?us-ascii?Q?Nbi1SWfV1QRfrqNiXbLXESRQaeYfmjMBeUjSPEG+hTRS+brr4zkL0Km/s00L?=
+ =?us-ascii?Q?gYprrOcXSkHk3bgp3mMmjucGGalkVaUPaVCYTB4QPVzFXypz2P5KK9BGqiJ8?=
+ =?us-ascii?Q?DiCv5ahtZeFOfUiyvXshU7yMT5JrUCa1h9E/65/KTQ3IfRKxrbI8cjj8nXYb?=
+ =?us-ascii?Q?JhKPpjm1XVgJVMAFSQNRLfvGqJPewcqdmKRyg023y0IMtCdQnlhJWcZ6c7Ab?=
+ =?us-ascii?Q?fqzr9j3MAA=3D=3D?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b6c0ec1a-9f13-4380-d939-08dee3adf31a
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5832.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2026 02:48:58.3533
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: JDmfT3eVGpTCfnzJSUqOYvkzEyfz5gUSLoaUy67aaRecoEoP3WPykM0OA801gtQdz4xPEqBPYigAsQ/rB3jLvQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYNPR06MB8504
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_193820_250092_9C3FA1A1 
-X-CRM114-Status: GOOD (  28.78  )
+X-CRM114-CacheID: sfid-20260716_194915_595130_943989CC 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,160 +177,432 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgVXdlLAoKT24gNy8xMC8yMDI2IDc6MDIgUE0sIFV3ZSBLbGVpbmUtS8O2bmlnIHdyb3RlOgo+
-IEhlbGxvIE5pY29sYXMsCj4gCj4gT24gTW9uLCBBcHIgMjAsIDIwMjYgYXQgMDM6NTI6NDBQTSAr
-MDIwMCwgTmljb2xhcyBGcmF0dGFyb2xpIHdyb3RlOgo+PiBbLi4uXQo+PiArLyoqCj4+ICsgKiBy
-b2NrY2hpcF9wd21fdjRfcm91bmRfc2luZ2xlIC0gY29udmVydCBhIFBXTSBwYXJhbWV0ZXIgdG8g
-aGFyZHdhcmUKPj4gKyAqIEByYXRlOiBjbG9jayByYXRlIG9mIHRoZSBQV00gY2xvY2ssIGFzIHBl
-ciBjbGtfZ2V0X3JhdGUKPj4gKyAqICAgICAgICBBc3N1bWVkIHRvIGJlIDw9IDFHSHogZm9yIG92
-ZXJmbG93IGNvbnNpZGVyYXRpb25zCj4+ICsgKiBAaW5fdmFsOiBwYXJhbWV0ZXIgaW4gbmFub3Nl
-Y29uZHMgdG8gY29udmVydAo+PiArICoKPj4gKyAqIFJldHVybnMgdGhlIHJvdW5kZWQgdmFsdWUs
-IHNhdHVyYXRpbmcgYXQgVTMyX01BWCBpZiB0b28gbGFyZ2UKPj4gKyAqLwo+PiArc3RhdGljIHUz
-MiByb2NrY2hpcF9wd21fdjRfcm91bmRfc2luZ2xlKHVuc2lnbmVkIGxvbmcgcmF0ZSwgdTY0IGlu
-X3ZhbCkKPiAKPiB2ZXJ5IHBpY2t5OiBpZiB5b3UgbmFtZSB0aGlzIGZ1bmN0aW9uIHJvY2tjaGlw
-X3B3bV92NF9uc190b190aWNrcyBpdAo+IGJlY29tZXMgY2xlYXJlciB3aGF0IHRoZSBwdXJwb3Nl
-IGlzLgo+IAo+PiArewo+PiArCXU2NCB0bXA7Cj4+ICsKPj4gKwl0bXAgPSBtdWxfdTY0X3U2NF9k
-aXZfdTY0KHJhdGUsIGluX3ZhbCwgTlNFQ19QRVJfU0VDKTsKPj4gKwlpZiAodG1wID4gVTMyX01B
-WCkKPj4gKwkJdG1wID0gVTMyX01BWDsKPj4gKwo+PiArCXJldHVybiB0bXA7Cj4+ICt9Cj4+ICsK
-Pj4gKy8qKgo+PiArICogcm9ja2NoaXBfcHdtX3Y0X3JvdW5kX3BhcmFtcyAtIGNvbnZlcnQgUFdN
-IHBhcmFtZXRlcnMgdG8gaGFyZHdhcmUKPj4gKyAqIEByYXRlOiBQV00gY2xvY2sgcmF0ZSB0byBk
-byB0aGUgY2FsY3VsYXRpb25zIGF0Cj4+ICsgKiBAd2Y6IHBvaW50ZXIgdG8gdGhlIGdlbmVyaWMg
-JnN0cnVjdCBwd21fd2F2ZWZvcm0gaW5wdXQgcGFyYW1ldGVycwo+PiArICogQHdmaHc6IHBvaW50
-ZXIgdG8gdGhlIGhhcmR3YXJlLXNwZWNpZmljICZzdHJ1Y3Qgcm9ja2NoaXBfcHdtX3Y0X3dmIG91
-dHB1dAo+PiArICogICAgICAgIHBhcmFtZXRlcnMgdGhhdCB0aGUgcmVzdWx0cyB3aWxsIGJlIHN0
-b3JlZCBpbgo+PiArICoKPj4gKyAqIENvbnZlcnQgbmFub3NlY29uZC1iYXNlZCBkdXR5L3Blcmlv
-ZC9vZmZzZXQgcGFyYW1ldGVycyB0byB0aGUgUFdNIGhhcmR3YXJlJ3MKPj4gKyAqIG5hdGl2ZSBy
-b3VuZGVkIHJlcHJlc2VudGF0aW9uIGluIG51bWJlciBvZiBjeWNsZXMgYXQgY2xvY2sgcmF0ZSBA
-cmF0ZS4gU2hvdWxkCj4+ICsgKiBhbnkgb2YgdGhlIGlucHV0IHBhcmFtZXRlcnMgYmUgb3V0IG9m
-IHJhbmdlIGZvciB0aGUgaGFyZHdhcmUsIHRoZQo+PiArICogY29ycmVzcG9uZGluZyBvdXRwdXQg
-cGFyYW1ldGVyIGlzIHRoZSBtYXhpbXVtIHBlcm1pc3NpYmxlIHZhbHVlIGZvciBzYWlkCj4+ICsg
-KiBwYXJhbWV0ZXIgd2l0aCBjb25zaWRlcmF0aW9ucyB0byB0aGUgb3RoZXJzLgo+PiArICovCj4+
-ICtzdGF0aWMgdm9pZCByb2NrY2hpcF9wd21fdjRfcm91bmRfcGFyYW1zKHVuc2lnbmVkIGxvbmcg
-cmF0ZSwKPj4gKwkJCQkJIGNvbnN0IHN0cnVjdCBwd21fd2F2ZWZvcm0gKndmLAo+PiArCQkJCQkg
-c3RydWN0IHJvY2tjaGlwX3B3bV92NF93ZiAqd2ZodykKPj4gK3sKPj4gKwl3Zmh3LT5wZXJpb2Qg
-PSByb2NrY2hpcF9wd21fdjRfcm91bmRfc2luZ2xlKHJhdGUsIHdmLT5wZXJpb2RfbGVuZ3RoX25z
-KTsKPj4gKwo+PiArCXdmaHctPmR1dHkgPSByb2NrY2hpcF9wd21fdjRfcm91bmRfc2luZ2xlKHJh
-dGUsIHdmLT5kdXR5X2xlbmd0aF9ucyk7Cj4+ICsKPj4gKwkvKiBBcyBwZXIgVFJNLCBQV01fT0ZG
-U0VUOiAiVGhlIHZhbHVlIHJhbmdlcyBmcm9tIDAgdG8gKHBlcmlvZC1kdXR5KSIgKi8KPiAKPiBI
-YXZlIHlvdSB0cmllZCB3aGF0IGhhcHBlbnMgaWYgeW91IGJyZWFrIHRoaXMgcnVsZT8gVGhhdCBz
-ZWVtcyBsaWtlIGEKPiB2ZXJ5IGFyYml0cmFyeSByZXN0cmljdGlvbiB0aGF0IG1pZ2h0IGp1c3Qg
-b3JpZ2luYXRlIGZyb20gdGhlCj4gZG9jdW1lbnRhdGlvbiBhdXRob3IuCj4gCgpBY2NvcmRpbmcg
-dG8gdGhlIElDIGRlc2lnbiwgYW55IG9mZnNldCB2YWx1ZSBsYXJnZXIgdGhhbiAocGVyaW9kIC0g
-ZHV0eSkgCndpbGwgYmUgY2xhbXBlZCB0byAocGVyaW9kIC0gZHV0eSkgYnkgdGhlIGhhcmR3YXJl
-IGludGVybmFsbHkuIEdpdmVuIAp0aGlzIGhhcmR3YXJlIGxpbWl0YXRpb24sIHRoZSB2YWxpZGF0
-aW9uIGNoZWNrIE5pY29sYXMgaW50cm9kdWNlZCBkb2VzIApzZXJ2ZSBhIHByYWN0aWNhbCBwdXJw
-b3NlLgoKPj4gKwl3Zmh3LT5vZmZzZXQgPSByb2NrY2hpcF9wd21fdjRfcm91bmRfc2luZ2xlKHJh
-dGUsIHdmLT5kdXR5X29mZnNldF9ucyk7Cj4+ICsJaWYgKCF3Zmh3LT5wZXJpb2QpIC8qIERvbid0
-IHVuZGVyZmxvdyB3aGVuIHB3bSBkaXNhYmxlZCAqLwo+PiArCQl3Zmh3LT5vZmZzZXQgPSAwOwo+
-PiArCWVsc2UgaWYgKHdmaHctPm9mZnNldCA+IHdmaHctPnBlcmlvZCAtIHdmaHctPmR1dHkpCj4+
-ICsJCXdmaHctPm9mZnNldCA9IHdmaHctPnBlcmlvZCAtIHdmaHctPmR1dHk7Cj4gCj4gWW91IGRv
-bid0IGVuZm9yY2Ugd2Zody0+cGVyaW9kID49IHdmaHctPmR1dHksIHdoaWNoIGhvd2V2ZXIgc2Vl
-bXMgbGlrZSBhCj4gcmVhc29uYWJsZSByZXN0cmljdGlvbi4gV2hlbiBrbm93aW5nIHRoYXQgeW91
-IGNhbiBkcm9wIHRoZSBleHBsaWNpdAo+IGNoZWNrIGZvciAhd2Zody0+cGVyaW9kIGFuZCBqdXN0
-IGtlZXAgdGhlIGVsc2UtaWYgYnJhbmNoLgo+IAo+PiArfQo+PiBbLi4uXQo+PiArc3RhdGljIGlu
-dCByb2NrY2hpcF9wd21fdjRfd3JpdGVfd2Yoc3RydWN0IHB3bV9jaGlwICpjaGlwLCBzdHJ1Y3Qg
-cHdtX2RldmljZSAqcHdtLAo+PiArCQkJCSAgICBjb25zdCB2b2lkICpfd2ZodykKPj4gK3sKPj4g
-KwlzdHJ1Y3Qgcm9ja2NoaXBfcHdtX3Y0ICpwYyA9IHRvX3JvY2tjaGlwX3B3bV92NChjaGlwKTsK
-Pj4gKwljb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfcHdtX3Y0X3dmICp3Zmh3ID0gX3dmaHc7Cj4+ICsJ
-Ym9vbCB3YXNfZW5hYmxlZDsKPj4gKwlpbnQgcmV0Owo+PiArCj4+ICsJcmV0ID0gbWZwd21fYWNx
-dWlyZShwYy0+cHdtZik7Cj4+ICsJaWYgKHJldCkKPj4gKwkJcmV0dXJuIHJldDsKPj4gKwo+PiAr
-CXdhc19lbmFibGVkID0gcm9ja2NoaXBfcHdtX3Y0X2lzX2VuYWJsZWQobWZwd21fcmVnX3JlYWQo
-cGMtPnB3bWYtPmJhc2UsCj4+ICsJCQkJCQkJCVBXTVY0X1JFR19FTkFCTEUpKTsKPj4gKwo+PiAr
-CS8qCj4+ICsJICogIkJ1dCBOaWNvbGFzIiwgeW91IGFzayB3aXRoIHZhbGlkIGNvbmNlcm5zLCAi
-d2h5IHdvdWxkIHlvdSBlbmFibGUgdGhlCj4+ICsJICogUFdNIGJlZm9yZSBzZXR0aW5nIGFsbCB0
-aGUgcGFyYW1ldGVyIHJlZ2lzdGVycz8iCj4+ICsJICoKPj4gKwkgKiBFeGNlbGxlbnQgcXVlc3Rp
-b24sIE1yLiBSZWFkZXIgTS4gU3RyYXdtYW4hIFRoZSBSSzM1NzYgVFJNIFBhcnQgMQo+PiArCSAq
-IFNlY3Rpb24gMzQuNi4zIHNwZWNpZmllcyB0aGF0IHRoaXMgaXMgdGhlIGludGVuZGVkIG9yZGVy
-IG9mIHdyaXRlcy4KPj4gKwkgKiBEb2luZyB0aGUgUFdNX0VOIGFuZCBQV01fQ0xLX0VOIHdyaXRl
-cyBhZnRlciB0aGUgcGFyYW1zIGJ1dCBiZWZvcmUKPj4gKwkgKiB0aGUgQ1RSTF9VUERBVEVfRU4s
-IG9yIGV2ZW4gYWZ0ZXIgdGhlIENUUkxfVVBEQVRFX0VOLCByZXN1bHRzIGluCj4+ICsJICogZXJy
-YXRpYyBiZWhhdmlvdXIgd2hlcmUgcmVwZWF0ZWQgdHVybmluZyBvbiBhbmQgb2ZmIG9mIHRoZSBQ
-V00gbWF5Cj4+ICsJICogbm90IHR1cm4gaXQgb2ZmIHVuZGVyIGFsbCBjaXJjdW1zdGFuY2VzLiBU
-aGlzIGlzIGFsc28gd2h5IHdlIGRvbid0Cj4+ICsJICogdXNlIHJlbGF4ZWQgd3JpdGVzOyBpdCdz
-IG5vdCB3b3J0aCB0aGUgZm9vdGd1bi4KPiAKPiBJIHdvbmRlciBpZiBpdCdzIHdvcnRoIGhvd2V2
-ZXIgdG8gZGVsYXkgc2V0dGluZyBQV01WNF9DVFJMX1VQREFURV9FTgo+IHVudGlsIGFmdGVyIHRo
-ZSBjbGtyYXRlIGlzIGhhbmRsZWQgdG8gKG1heWJlKSBwcmV2ZW50IGdsaXRjaGVzPwoKSSBhZ3Jl
-ZSB3aXRoIHlvdXIgcG9pbnQuIEZvciB0aGUgUFdNIGVuYWJsZSBzZXF1ZW5jZSwgd2Ugc2hvdWxk
-IGVuYWJsZSAKdGhlIFBXTSBkY2xrIGJlZm9yZSBhbnkgcmVnaXN0ZXIgb3BlcmF0aW9ucy4gQ29u
-dmVyc2VseSwgd2hlbiBkaXNhYmxpbmcgClBXTSwgaXQncyBiZXR0ZXIgdG8gY2Fycnkgb3V0IGRj
-bGsgZGlzYWJsaW5nIG9ubHkgYWZ0ZXIgYWxsIHJlZ2lzdGVyIAphY2Nlc3NlcyBhcmUgZnVsbHkg
-Y29tcGxldGVkLgoKPiAKPj4gKwkgKi8KPj4gKwlpZiAod2Zody0+cmF0ZSkKPj4gKwkJbWZwd21f
-cmVnX3dyaXRlKHBjLT5wd21mLT5iYXNlLCBQV01WNF9SRUdfRU5BQkxFLAo+PiArCQkJCUZJRUxE
-X1BSRVBfV00xNihQV01WNF9FTl9CT1RIX01BU0ssCj4+ICsJCQkJCQlQV01WNF9FTl9CT1RIX01B
-U0spKTsKPj4gKwllbHNlCj4+ICsJCW1mcHdtX3JlZ193cml0ZShwYy0+cHdtZi0+YmFzZSwgUFdN
-VjRfUkVHX0VOQUJMRSwKPj4gKwkJCQlGSUVMRF9QUkVQX1dNMTYoUFdNVjRfRU5fQk9USF9NQVNL
-LCAwKSk7Cj4+ICsKPj4gKwltZnB3bV9yZWdfd3JpdGUocGMtPnB3bWYtPmJhc2UsIFBXTVY0X1JF
-R19QRVJJT0QsIHdmaHctPnBlcmlvZCk7Cj4+ICsJbWZwd21fcmVnX3dyaXRlKHBjLT5wd21mLT5i
-YXNlLCBQV01WNF9SRUdfRFVUWSwgd2Zody0+ZHV0eSk7Cj4+ICsJbWZwd21fcmVnX3dyaXRlKHBj
-LT5wd21mLT5iYXNlLCBQV01WNF9SRUdfT0ZGU0VULCB3Zmh3LT5vZmZzZXQpOwo+PiArCj4+ICsJ
-bWZwd21fcmVnX3dyaXRlKHBjLT5wd21mLT5iYXNlLCBQV01WNF9SRUdfQ1RSTCwgUFdNVjRfQ1RS
-TF9DT05UX0ZMQUdTKTsKPj4gKwo+PiArCS8qIENvbW1pdCBuZXcgY29uZmlndXJhdGlvbiB0byBo
-YXJkd2FyZSBvdXRwdXQuICovCj4+ICsJbWZwd21fcmVnX3dyaXRlKHBjLT5wd21mLT5iYXNlLCBQ
-V01WNF9SRUdfRU5BQkxFLAo+PiArCQkJUFdNVjRfQ1RSTF9VUERBVEVfRU4pOwo+PiArCj4+ICsJ
-aWYgKHdmaHctPnJhdGUpIHsKPj4gKwkJaWYgKCF3YXNfZW5hYmxlZCkgewo+PiArCQkJZGV2X2Ri
-ZygmY2hpcC0+ZGV2LCAiRW5hYmxpbmcgUFdNIG91dHB1dFxuIik7Cj4+ICsJCQlyZXQgPSBjbGtf
-ZW5hYmxlKHBjLT5wd21mLT5jb3JlKTsKPj4gKwkJCWlmIChyZXQpCj4+ICsJCQkJZ290byBlcnJf
-bWZwd21fcmVsZWFzZTsKPj4gKwkJCXJldCA9IGNsa19zZXRfcmF0ZV9leGNsdXNpdmUocGMtPnB3
-bWYtPmNvcmUsIHdmaHctPnJhdGUpOwo+PiArCQkJaWYgKHJldCkgewo+PiArCQkJCWNsa19kaXNh
-YmxlKHBjLT5wd21mLT5jb3JlKTsKPj4gKwkJCQlnb3RvIGVycl9tZnB3bV9yZWxlYXNlOwo+PiAr
-CQkJfQo+PiArCj4+ICsJCQkvKgo+PiArCQkJICogT3V0cHV0IHNob3VsZCBiZSBvbiBub3csIGFj
-cXVpcmUgZGV2aWNlIHRvIGd1YXJhbnRlZQo+PiArCQkJICogZXhjbHVzaW9uIHdpdGggb3RoZXIg
-ZGV2aWNlIGZ1bmN0aW9ucyB3aGlsZSBpdCdzIG9uLgo+PiArCQkJICoKPj4gKwkJCSAqIEl0J3Mg
-aGlnaGx5IHVubGlrZWx5IHRoYXQgdGhpcyBmYWlscywgYXMgbWZwd20gaGFzCj4+ICsJCQkgKiBh
-bHJlYWR5IGJlZW4gYWNxdWlyZWQgYmVmb3JlLCBhbmQgdGhpcyBpcyBqdXN0IGEKPj4gKwkJCSAq
-IHVzYWdlIGNvdW50ZXIgaW5jcmVhc2UuIE5vdCB3b3J0aCB0aGUgYWRkZWQKPj4gKwkJCSAqIGNv
-bXBsZXhpdHkgb2YgY2xlYXJpbmcgdGhlIFBXTVY0X1JFR19FTkFCTEUgYWdhaW4sCj4+ICsJCQkg
-KiBlc3BlY2lhbGx5IGNvbnNpZGVyaW5nIHRoZSBDVFJMX1VQREFURV9FTiBiZWhhdmlvdXIuCj4+
-ICsJCQkgKi8KPj4gKwkJCXJldCA9IG1mcHdtX2FjcXVpcmUocGMtPnB3bWYpOwo+PiArCQkJaWYg
-KHJldCkgewo+PiArCQkJCWNsa19yYXRlX2V4Y2x1c2l2ZV9wdXQocGMtPnB3bWYtPmNvcmUpOwo+
-PiArCQkJCWNsa19kaXNhYmxlKHBjLT5wd21mLT5jb3JlKTsKPj4gKwkJCQlnb3RvIGVycl9tZnB3
-bV9yZWxlYXNlOwo+PiArCQkJfQo+PiArCQl9Cj4gCj4gQ2FuIGl0IGhhcHBlbiB0aGF0IHdlIGhh
-dmUKPiAKPiAJd2Zody0+cmF0ZSAmJiB3YXNfZW5hYmxlZCAmJiB3Zmh3LT5yYXRlICE9IGNsa19n
-ZXRfcmF0ZSgpCj4gCj4gPwo+IAo+PiArCX0gZWxzZSBpZiAod2FzX2VuYWJsZWQpIHsKPj4gKwkJ
-ZGV2X2RiZygmY2hpcC0+ZGV2LCAiRGlzYWJsaW5nIFBXTSBvdXRwdXRcbiIpOwo+PiArCQljbGtf
-cmF0ZV9leGNsdXNpdmVfcHV0KHBjLT5wd21mLT5jb3JlKTsKPj4gKwkJY2xrX2Rpc2FibGUocGMt
-PnB3bWYtPmNvcmUpOwo+PiArCQkvKiBPdXRwdXQgaXMgb2ZmIG5vdywgZXh0cmEgcmVsZWFzZSB0
-byBiYWxhbmNlIGV4dHJhIGFjcXVpcmUgKi8KPj4gKwkJbWZwd21fcmVsZWFzZShwYy0+cHdtZik7
-Cj4+ICsJfQo+PiArCj4+ICtlcnJfbWZwd21fcmVsZWFzZToKPj4gKwltZnB3bV9yZWxlYXNlKHBj
-LT5wd21mKTsKPj4gKwo+PiArCXJldHVybiByZXQ7Cj4+ICt9Cj4+IFsuLi5dCj4+ICtzdGF0aWMg
-aW50IHJvY2tjaGlwX3B3bV92NF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+
-PiArewo+PiArCXN0cnVjdCByb2NrY2hpcF9tZnB3bV9mdW5jICpwd21mID0gZGV2X2dldF9wbGF0
-ZGF0YSgmcGRldi0+ZGV2KTsKPj4gKwlzdHJ1Y3Qgcm9ja2NoaXBfcHdtX3Y0ICpwYzsKPj4gKwlz
-dHJ1Y3QgcHdtX2NoaXAgKmNoaXA7Cj4+ICsJc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRl
-djsKPj4gKwlpbnQgcmV0Owo+PiArCj4+ICsJLyoKPj4gKwkgKiBGb3IgcmVmZXJlbmNpbmcgdGhl
-IFBXTSBpbiB0aGUgRFQgdG8gd29yaywgd2UgbmVlZCB0aGUgcGFyZW50IE1GRAo+PiArCSAqIGRl
-dmljZSdzIE9GIG5vZGUuCj4+ICsJICovCj4+ICsJZGV2LT5vZl9ub2RlX3JldXNlZCA9IHRydWU7
-Cj4+ICsJZGV2aWNlX3NldF9ub2RlKGRldiwgb2ZfZndub2RlX2hhbmRsZShkZXYtPnBhcmVudC0+
-b2Zfbm9kZSkpOwo+PiArCj4+ICsJY2hpcCA9IGRldm1fcHdtY2hpcF9hbGxvYyhkZXYsIDEsIHNp
-emVvZigqcGMpKTsKPj4gKwlpZiAoSVNfRVJSKGNoaXApKQo+PiArCQlyZXR1cm4gUFRSX0VSUihj
-aGlwKTsKPj4gKwo+PiArCXBjID0gdG9fcm9ja2NoaXBfcHdtX3Y0KGNoaXApOwo+PiArCXBjLT5w
-d21mID0gcHdtZjsKPj4gKwo+PiArCXJldCA9IG1mcHdtX2FjcXVpcmUocHdtZik7Cj4+ICsJaWYg
-KHJldCkKPj4gKwkJcmV0dXJuIGRldl9lcnJfcHJvYmUoZGV2LCByZXQsICJDb3VsZG4ndCBhY3F1
-aXJlIG1mcHdtIGluIHByb2JlXG4iKTsKPj4gKwo+PiArCWlmICghcm9ja2NoaXBfcHdtX3Y0X29u
-X2FuZF9jb250aW51b3VzKHBjKSkKPj4gKwkJbWZwd21fcmVsZWFzZShwd21mKTsKPj4gKwllbHNl
-IHsKPj4gKwkJZGV2X2RiZyhkZXYsICJQV00gd2FzIGFscmVhZHkgb24gYXQgcHJvYmUgdGltZVxu
-Iik7Cj4+ICsJCXJldCA9IGNsa19lbmFibGUocHdtZi0+Y29yZSk7Cj4+ICsJCWlmIChyZXQpIHsK
-Pj4gKwkJCWRldl9lcnJfcHJvYmUoZGV2LCByZXQsICJFbmFibGluZyBwd20gY2xvY2sgZmFpbGVk
-XG4iKTsKPj4gKwkJCWdvdG8gZXJyX21mcHdtX3JlbGVhc2U7Cj4+ICsJCX0KPj4gKwkJcmV0ID0g
-Y2xrX3JhdGVfZXhjbHVzaXZlX2dldChwYy0+cHdtZi0+Y29yZSk7Cj4+ICsJCWlmIChyZXQpIHsK
-Pj4gKwkJCWRldl9lcnJfcHJvYmUoZGV2LCByZXQsICJQcm90ZWN0aW5nIHB3bSBjbG9jayBmYWls
-ZWRcbiIpOwo+PiArCQkJZ290byBlcnJfY2xrX2Rpc2FibGU7Cj4+ICsJCX0KPj4gKwl9Cj4+ICsK
-Pj4gKwlwbGF0Zm9ybV9zZXRfZHJ2ZGF0YShwZGV2LCBjaGlwKTsKPiAKPiBUaGlzIGlzIHVudXNl
-ZC4KPiAKPj4gKwo+PiArCWNoaXAtPm9wcyA9ICZyb2NrY2hpcF9wd21fdjRfb3BzOwo+PiArCj4+
-ICsJcmV0ID0gZGV2bV9wd21jaGlwX2FkZChkZXYsIGNoaXApOwo+PiArCWlmIChyZXQpIHsKPj4g
-KwkJZGV2X2Vycl9wcm9iZShkZXYsIHJldCwgIkZhaWxlZCB0byBhZGQgUFdNIGNoaXBcbiIpOwo+
-PiArCQlpZiAocm9ja2NoaXBfcHdtX3Y0X29uX2FuZF9jb250aW51b3VzKHBjKSkKPj4gKwkJCWdv
-dG8gZXJyX3JhdGVfcHV0Owo+PiArCj4+ICsJCXJldHVybiByZXQ7Cj4+ICsJfQo+PiArCj4+ICsJ
-cmV0dXJuIDA7Cj4+ICsKPj4gK2Vycl9yYXRlX3B1dDoKPj4gKwljbGtfcmF0ZV9leGNsdXNpdmVf
-cHV0KHB3bWYtPmNvcmUpOwo+PiArZXJyX2Nsa19kaXNhYmxlOgo+PiArCWNsa19kaXNhYmxlKHB3
-bWYtPmNvcmUpOwo+PiArZXJyX21mcHdtX3JlbGVhc2U6Cj4+ICsJbWZwd21fcmVsZWFzZShwd21m
-KTsKPj4gKwo+PiArCXJldHVybiByZXQ7Cj4+ICt9Cj4gCj4gQmVzdCByZWdhcmRzCj4gVXdlCgpC
-ZXN0IHJlZ2FyZHMsCkRhbW9uCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+Since commit 55b48e23f5c4 ("genirq/devres: Add error handling in
+devm_request_*_irq()"), devm_request_irq() and devm_request_threaded_irq()
+automatically log detailed error messages on failure. Remove the
+now-redundant driver-specific dev_err() and dev_err_probe() calls.
+
+Signed-off-by: Pan Chuang <panchuang@vivo.com>
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Reviewed-by: Niklas S?derlund <niklas.soderlund+renesas@ragnatech.se>
+---
+ drivers/thermal/airoha_thermal.c                          | 4 +---
+ drivers/thermal/armada_thermal.c                          | 5 +----
+ drivers/thermal/broadcom/brcmstb_thermal.c                | 3 +--
+ drivers/thermal/db8500_thermal.c                          | 8 ++------
+ drivers/thermal/hisi_thermal.c                            | 4 +---
+ drivers/thermal/imx91_thermal.c                           | 2 +-
+ drivers/thermal/imx_thermal.c                             | 4 +---
+ .../intel/int340x_thermal/processor_thermal_device_pci.c  | 8 ++------
+ drivers/thermal/intel/intel_bxt_pmic_thermal.c            | 4 +---
+ drivers/thermal/loongson2_thermal.c                       | 2 +-
+ drivers/thermal/max77620_thermal.c                        | 8 ++------
+ drivers/thermal/mediatek/lvts_thermal.c                   | 2 +-
+ drivers/thermal/qcom/lmh.c                                | 1 -
+ drivers/thermal/qcom/tsens.c                              | 5 +----
+ drivers/thermal/renesas/rcar_thermal.c                    | 4 +---
+ drivers/thermal/renesas/rzg3e_thermal.c                   | 4 +---
+ drivers/thermal/rockchip_thermal.c                        | 3 +--
+ drivers/thermal/samsung/exynos_tmu.c                      | 4 +---
+ drivers/thermal/st/st_thermal_memmap.c                    | 4 +---
+ drivers/thermal/st/stm_thermal.c                          | 5 +----
+ drivers/thermal/tegra/soctherm.c                          | 8 ++------
+ drivers/thermal/tegra/tegra30-tsensor.c                   | 3 +--
+ 22 files changed, 25 insertions(+), 70 deletions(-)
+
+diff --git a/drivers/thermal/airoha_thermal.c b/drivers/thermal/airoha_thermal.c
+index b9fd6bfc88e5..b1c2bf28a90e 100644
+--- a/drivers/thermal/airoha_thermal.c
++++ b/drivers/thermal/airoha_thermal.c
+@@ -444,10 +444,8 @@ static int airoha_thermal_probe(struct platform_device *pdev)
+ 	ret = devm_request_threaded_irq(&pdev->dev, irq, NULL,
+ 					airoha_thermal_irq, IRQF_ONESHOT,
+ 					pdev->name, priv);
+-	if (ret) {
+-		dev_err(dev, "Can't get interrupt working.\n");
++	if (ret)
+ 		return ret;
+-	}
+ 
+ 	airoha_thermal_setup_monitor(priv);
+ 	airoha_thermal_setup_adc_val(dev, priv);
+diff --git a/drivers/thermal/armada_thermal.c b/drivers/thermal/armada_thermal.c
+index c2fbdb534f61..44910a953439 100644
+--- a/drivers/thermal/armada_thermal.c
++++ b/drivers/thermal/armada_thermal.c
+@@ -913,11 +913,8 @@ static int armada_thermal_probe(struct platform_device *pdev)
+ 						armada_overheat_isr,
+ 						armada_overheat_isr_thread,
+ 						0, NULL, priv);
+-		if (ret) {
+-			dev_err(&pdev->dev, "Cannot request threaded IRQ %d\n",
+-				irq);
++		if (ret)
+ 			return ret;
+-		}
+ 	}
+ 
+ 	/*
+diff --git a/drivers/thermal/broadcom/brcmstb_thermal.c b/drivers/thermal/broadcom/brcmstb_thermal.c
+index a9ffa596f7c0..5e23f9e00847 100644
+--- a/drivers/thermal/broadcom/brcmstb_thermal.c
++++ b/drivers/thermal/broadcom/brcmstb_thermal.c
+@@ -356,8 +356,7 @@ static int brcmstb_thermal_probe(struct platform_device *pdev)
+ 						IRQF_ONESHOT,
+ 						DRV_NAME, priv);
+ 		if (ret < 0)
+-			return dev_err_probe(&pdev->dev, ret,
+-						"could not request IRQ\n");
++			return ret;
+ 	}
+ 
+ 	dev_info(&pdev->dev, "registered AVS TMON of-sensor driver\n");
+diff --git a/drivers/thermal/db8500_thermal.c b/drivers/thermal/db8500_thermal.c
+index cf1706569e6d..46005b476722 100644
+--- a/drivers/thermal/db8500_thermal.c
++++ b/drivers/thermal/db8500_thermal.c
+@@ -167,10 +167,8 @@ static int db8500_thermal_probe(struct platform_device *pdev)
+ 	ret = devm_request_threaded_irq(dev, low_irq, NULL,
+ 		prcmu_low_irq_handler, IRQF_NO_SUSPEND | IRQF_ONESHOT,
+ 		"dbx500_temp_low", th);
+-	if (ret < 0) {
+-		dev_err(dev, "failed to allocate temp low irq\n");
++	if (ret < 0)
+ 		return ret;
+-	}
+ 
+ 	high_irq = platform_get_irq_byname(pdev, "IRQ_HOTMON_HIGH");
+ 	if (high_irq < 0)
+@@ -179,10 +177,8 @@ static int db8500_thermal_probe(struct platform_device *pdev)
+ 	ret = devm_request_threaded_irq(dev, high_irq, NULL,
+ 		prcmu_high_irq_handler, IRQF_NO_SUSPEND | IRQF_ONESHOT,
+ 		"dbx500_temp_high", th);
+-	if (ret < 0) {
+-		dev_err(dev, "failed to allocate temp high irq\n");
++	if (ret < 0)
+ 		return ret;
+-	}
+ 
+ 	/* register of thermal sensor and get info from DT */
+ 	th->tz = devm_thermal_of_zone_register(dev, 0, th, &thdev_ops);
+diff --git a/drivers/thermal/hisi_thermal.c b/drivers/thermal/hisi_thermal.c
+index 4307161533a7..17ed0c5b7767 100644
+--- a/drivers/thermal/hisi_thermal.c
++++ b/drivers/thermal/hisi_thermal.c
+@@ -578,10 +578,8 @@ static int hisi_thermal_probe(struct platform_device *pdev)
+ 						hisi_thermal_alarm_irq_thread,
+ 						IRQF_ONESHOT, sensor->irq_name,
+ 						sensor);
+-		if (ret < 0) {
+-			dev_err(dev, "Failed to request alarm irq: %d\n", ret);
++		if (ret < 0)
+ 			return ret;
+-		}
+ 
+ 		ret = data->ops->enable_sensor(sensor);
+ 		if (ret) {
+diff --git a/drivers/thermal/imx91_thermal.c b/drivers/thermal/imx91_thermal.c
+index 25915bb702be..274eee303142 100644
+--- a/drivers/thermal/imx91_thermal.c
++++ b/drivers/thermal/imx91_thermal.c
+@@ -331,7 +331,7 @@ static int imx91_tmu_probe(struct platform_device *pdev)
+ 					IRQF_ONESHOT, "imx91_thermal", tmu);
+ 
+ 	if (ret < 0)
+-		return dev_err_probe(dev, ret, "failed to request alarm irq\n");
++		return ret;
+ 
+ 	pm_runtime_put(dev);
+ 
+diff --git a/drivers/thermal/imx_thermal.c b/drivers/thermal/imx_thermal.c
+index 5aaacbc53478..416d89c6287a 100644
+--- a/drivers/thermal/imx_thermal.c
++++ b/drivers/thermal/imx_thermal.c
+@@ -732,10 +732,8 @@ static int imx_thermal_probe(struct platform_device *pdev)
+ 	ret = devm_request_threaded_irq(dev, data->irq,
+ 			imx_thermal_alarm_irq, imx_thermal_alarm_irq_thread,
+ 			0, "imx_thermal", data);
+-	if (ret < 0) {
+-		dev_err(dev, "failed to request alarm irq: %d\n", ret);
++	if (ret < 0)
+ 		goto thermal_zone_unregister;
+-	}
+ 
+ 	pm_runtime_put(data->dev);
+ 
+diff --git a/drivers/thermal/intel/int340x_thermal/processor_thermal_device_pci.c b/drivers/thermal/intel/int340x_thermal/processor_thermal_device_pci.c
+index c693d934103a..c5131423ec9b 100644
+--- a/drivers/thermal/intel/int340x_thermal/processor_thermal_device_pci.c
++++ b/drivers/thermal/intel/int340x_thermal/processor_thermal_device_pci.c
+@@ -308,10 +308,8 @@ static int proc_thermal_setup_msi(struct pci_dev *pdev, struct proc_thermal_pci
+ 		ret = devm_request_threaded_irq(&pdev->dev, irq, proc_thermal_irq_handler,
+ 						proc_thermal_irq_thread_handler,
+ 						0, KBUILD_MODNAME, pci_info);
+-		if (ret) {
+-			dev_err(&pdev->dev, "Request IRQ %d failed\n", irq);
++		if (ret)
+ 			goto err_free_msi_vectors;
+-		}
+ 
+ 		proc_thermal_msi_map[i] = irq;
+ 	}
+@@ -394,10 +392,8 @@ static int proc_thermal_pci_probe(struct pci_dev *pdev, const struct pci_device_
+ 		ret = devm_request_threaded_irq(&pdev->dev, irq, proc_thermal_irq_handler,
+ 						proc_thermal_irq_thread_handler, irq_flag,
+ 						KBUILD_MODNAME, pci_info);
+-		if (ret) {
+-			dev_err(&pdev->dev, "Request IRQ %d failed\n", pdev->irq);
++		if (ret)
+ 			goto err_ret_tzone;
+-		}
+ 	}
+ 
+ 	ret = thermal_zone_device_enable(pci_info->tzone);
+diff --git a/drivers/thermal/intel/intel_bxt_pmic_thermal.c b/drivers/thermal/intel/intel_bxt_pmic_thermal.c
+index 6312c6ba081f..aeaefbbd5d8f 100644
+--- a/drivers/thermal/intel/intel_bxt_pmic_thermal.c
++++ b/drivers/thermal/intel/intel_bxt_pmic_thermal.c
+@@ -245,10 +245,8 @@ static int pmic_thermal_probe(struct platform_device *pdev)
+ 				NULL, pmic_thermal_irq_handler,
+ 				IRQF_ONESHOT, "pmic_thermal", pdev);
+ 
+-		if (ret) {
+-			dev_err(dev, "request irq(%d) failed: %d\n", virq, ret);
++		if (ret)
+ 			return ret;
+-		}
+ 		pmic_irq_count++;
+ 	}
+ 
+diff --git a/drivers/thermal/loongson2_thermal.c b/drivers/thermal/loongson2_thermal.c
+index 88f87badfdf6..4d40fc706a53 100644
+--- a/drivers/thermal/loongson2_thermal.c
++++ b/drivers/thermal/loongson2_thermal.c
+@@ -173,7 +173,7 @@ static int loongson2_thermal_probe(struct platform_device *pdev)
+ 	ret = devm_request_threaded_irq(dev, irq, NULL, loongson2_thermal_irq_thread,
+ 					IRQF_ONESHOT, "loongson2_thermal", tzd);
+ 	if (ret < 0)
+-		return dev_err_probe(dev, ret, "failed to request alarm irq\n");
++		return ret;
+ 
+ 	devm_thermal_add_hwmon_sysfs(dev, tzd);
+ 
+diff --git a/drivers/thermal/max77620_thermal.c b/drivers/thermal/max77620_thermal.c
+index 85a12e98d6dc..f4a1535f4806 100644
+--- a/drivers/thermal/max77620_thermal.c
++++ b/drivers/thermal/max77620_thermal.c
+@@ -121,19 +121,15 @@ static int max77620_thermal_probe(struct platform_device *pdev)
+ 					max77620_thermal_irq,
+ 					IRQF_ONESHOT | IRQF_SHARED,
+ 					dev_name(&pdev->dev), mtherm);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "Failed to request irq1: %d\n", ret);
++	if (ret < 0)
+ 		return ret;
+-	}
+ 
+ 	ret = devm_request_threaded_irq(&pdev->dev, mtherm->irq_tjalarm2, NULL,
+ 					max77620_thermal_irq,
+ 					IRQF_ONESHOT | IRQF_SHARED,
+ 					dev_name(&pdev->dev), mtherm);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "Failed to request irq2: %d\n", ret);
++	if (ret < 0)
+ 		return ret;
+-	}
+ 
+ 	return 0;
+ }
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index a9617d5e0077..d357968f362b 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -1491,7 +1491,7 @@ static int lvts_probe(struct platform_device *pdev)
+ 	ret = devm_request_threaded_irq(dev, irq, NULL, lvts_irq_handler,
+ 					IRQF_ONESHOT, dev_name(dev), lvts_td);
+ 	if (ret)
+-		return dev_err_probe(dev, ret, "Failed to request interrupt\n");
++		return ret;
+ 
+ 	platform_set_drvdata(pdev, lvts_td);
+ 
+diff --git a/drivers/thermal/qcom/lmh.c b/drivers/thermal/qcom/lmh.c
+index 3d072b7a4a6d..99396b93eff5 100644
+--- a/drivers/thermal/qcom/lmh.c
++++ b/drivers/thermal/qcom/lmh.c
+@@ -223,7 +223,6 @@ static int lmh_probe(struct platform_device *pdev)
+ 			       IRQF_NO_THREAD | IRQF_NO_SUSPEND,
+ 			       "lmh-irq", lmh_data);
+ 	if (ret) {
+-		dev_err(dev, "Error %d registering irq %x\n", ret, lmh_data->irq);
+ 		irq_domain_remove(lmh_data->domain);
+ 		return ret;
+ 	}
+diff --git a/drivers/thermal/qcom/tsens.c b/drivers/thermal/qcom/tsens.c
+index 6e3714ecab1d..b5ec70201e2f 100644
+--- a/drivers/thermal/qcom/tsens.c
++++ b/drivers/thermal/qcom/tsens.c
+@@ -1258,10 +1258,7 @@ static int tsens_register_irq(struct tsens_priv *priv, char *irqname,
+ 							dev_name(&pdev->dev),
+ 							priv);
+ 
+-		if (ret)
+-			dev_err(&pdev->dev, "%s: failed to get irq\n",
+-				__func__);
+-		else
++		if (!ret)
+ 			*irq_num = irq;
+ 	}
+ 
+diff --git a/drivers/thermal/renesas/rcar_thermal.c b/drivers/thermal/renesas/rcar_thermal.c
+index 6e5dcac5d47a..cf80e2655416 100644
+--- a/drivers/thermal/renesas/rcar_thermal.c
++++ b/drivers/thermal/renesas/rcar_thermal.c
+@@ -446,10 +446,8 @@ static int rcar_thermal_probe(struct platform_device *pdev)
+ 
+ 		ret = devm_request_irq(dev, irq, rcar_thermal_irq,
+ 				       IRQF_SHARED, dev_name(dev), common);
+-		if (ret) {
+-			dev_err(dev, "irq request failed\n");
++		if (ret)
+ 			goto error_unregister;
+-		}
+ 
+ 		/* update ENR bits */
+ 		if (chip->irq_per_ch)
+diff --git a/drivers/thermal/renesas/rzg3e_thermal.c b/drivers/thermal/renesas/rzg3e_thermal.c
+index f0e29fe633db..c44f5b8858d0 100644
+--- a/drivers/thermal/renesas/rzg3e_thermal.c
++++ b/drivers/thermal/renesas/rzg3e_thermal.c
+@@ -461,10 +461,8 @@ static int rzg3e_thermal_probe(struct platform_device *pdev)
+ 	ret = devm_request_threaded_irq(dev, irq, rzg3e_thermal_irq,
+ 					rzg3e_thermal_irq_thread,
+ 					IRQF_ONESHOT, "rzg3e_thermal", priv);
+-	if (ret) {
+-		dev_err(dev, "Failed to request IRQ: %d\n", ret);
++	if (ret)
+ 		goto err_pm_put;
+-	}
+ 
+ 	/* Add hwmon sysfs interface */
+ 	ret = devm_thermal_add_hwmon_sysfs(dev, priv->zone);
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index c49ddf70f86e..08891608baa6 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -1773,8 +1773,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 					  IRQF_ONESHOT,
+ 					  "rockchip_thermal", thermal);
+ 	if (error)
+-		return dev_err_probe(&pdev->dev, error,
+-				     "failed to request tsadc irq.\n");
++		return error;
+ 
+ 	thermal->chip->control(thermal->regs, true);
+ 
+diff --git a/drivers/thermal/samsung/exynos_tmu.c b/drivers/thermal/samsung/exynos_tmu.c
+index 47a99b3c5395..56717bb50d60 100644
+--- a/drivers/thermal/samsung/exynos_tmu.c
++++ b/drivers/thermal/samsung/exynos_tmu.c
+@@ -1102,10 +1102,8 @@ static int exynos_tmu_probe(struct platform_device *pdev)
+ 					IRQF_TRIGGER_RISING
+ 						| IRQF_SHARED | IRQF_ONESHOT,
+ 					dev_name(dev), data);
+-	if (ret) {
+-		dev_err(dev, "Failed to request irq: %d\n", data->irq);
++	if (ret)
+ 		goto err_sclk;
+-	}
+ 
+ 	exynos_tmu_control(pdev, true);
+ 	return 0;
+diff --git a/drivers/thermal/st/st_thermal_memmap.c b/drivers/thermal/st/st_thermal_memmap.c
+index 8f76e50ea567..e3dbe4df80cb 100644
+--- a/drivers/thermal/st/st_thermal_memmap.c
++++ b/drivers/thermal/st/st_thermal_memmap.c
+@@ -101,10 +101,8 @@ static int st_mmap_register_enable_irq(struct st_thermal_sensor *sensor)
+ 					NULL, st_mmap_thermal_trip_handler,
+ 					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
+ 					dev->driver->name, sensor);
+-	if (ret) {
+-		dev_err(dev, "failed to register IRQ %d\n", sensor->irq);
++	if (ret)
+ 		return ret;
+-	}
+ 
+ 	return st_mmap_enable_irq(sensor);
+ }
+diff --git a/drivers/thermal/st/stm_thermal.c b/drivers/thermal/st/stm_thermal.c
+index 5d8170bfb382..3290da7ab607 100644
+--- a/drivers/thermal/st/stm_thermal.c
++++ b/drivers/thermal/st/stm_thermal.c
+@@ -390,11 +390,8 @@ static int stm_register_irq(struct stm_thermal_sensor *sensor)
+ 					stm_thermal_irq_handler,
+ 					IRQF_ONESHOT,
+ 					dev->driver->name, sensor);
+-	if (ret) {
+-		dev_err(dev, "%s: Failed to register IRQ %d\n", __func__,
+-			sensor->irq);
++	if (ret)
+ 		return ret;
+-	}
+ 
+ 	dev_dbg(dev, "%s: thermal IRQ registered", __func__);
+ 
+diff --git a/drivers/thermal/tegra/soctherm.c b/drivers/thermal/tegra/soctherm.c
+index d8e988a0d43e..f74acf13b24d 100644
+--- a/drivers/thermal/tegra/soctherm.c
++++ b/drivers/thermal/tegra/soctherm.c
+@@ -2007,10 +2007,8 @@ static int soctherm_interrupts_init(struct platform_device *pdev,
+ 					IRQF_ONESHOT,
+ 					dev_name(&pdev->dev),
+ 					tegra);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "request_irq 'thermal_irq' failed.\n");
++	if (ret < 0)
+ 		return ret;
+-	}
+ 
+ 	ret = devm_request_threaded_irq(&pdev->dev,
+ 					tegra->edp_irq,
+@@ -2019,10 +2017,8 @@ static int soctherm_interrupts_init(struct platform_device *pdev,
+ 					IRQF_ONESHOT,
+ 					"soctherm_edp",
+ 					tegra);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "request_irq 'edp_irq' failed.\n");
++	if (ret < 0)
+ 		return ret;
+-	}
+ 
+ 	return 0;
+ }
+diff --git a/drivers/thermal/tegra/tegra30-tsensor.c b/drivers/thermal/tegra/tegra30-tsensor.c
+index 6245f6b97f43..10a5ab1fe1b9 100644
+--- a/drivers/thermal/tegra/tegra30-tsensor.c
++++ b/drivers/thermal/tegra/tegra30-tsensor.c
+@@ -602,8 +602,7 @@ static int tegra_tsensor_probe(struct platform_device *pdev)
+ 					tegra_tsensor_isr, IRQF_ONESHOT,
+ 					"tegra_tsensor", ts);
+ 	if (err)
+-		return dev_err_probe(&pdev->dev, err,
+-				     "failed to request interrupt\n");
++		return err;
+ 
+ 	return 0;
+ }
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
