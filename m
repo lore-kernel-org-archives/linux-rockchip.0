@@ -4,124 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6EACC4451C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 11:27:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 968D8C4451C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 12:02:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hZCNG2OLkCguaLbcEeTzdL5qjmbE5pswhQnE/3Z9wao=; b=VYX7oAcbAFzJlD
-	vAKQYM0leySr60x3h1LRKmnJJi0X2Vn9hNvfIUC7NThKtSDejjvlgqxj/Lq9GfiqKRtY3uQCNNRmo
-	iLfwtcf9MiJaX6mXCqw2dC89iaQt3KqLO3fUOEuQn8DRbeZYMR1p6Om0UcOqFWTaCYHYlQmiOF1PY
-	W1Xfyx1p4fwKHF6viodZEoVnxtnitl/LMNnUoPKNICarcH0/7Jdl/jo3U2T5G0o04p+BFb2UJiZG+
-	QJancttfzESPQyJxxAB1qr0a2yEL6xrRkwGt99Hr3EOl2cFBLgHPXmV9A6VaaouYMPfgzYRkAPldw
-	j5bd3bcBxUIdL1xKZZEA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1gxic/2+ejpCcLijssKyEbO4izvMT9qkmkJ16rB4B1s=; b=ZtXLPfDIZkg4u/
+	rAbVdvs2HB32Lfs0kz6IDLkuV/+bvfsmZ/XF588NQJsS+8RBhV1aD5iQMnLPgiCUJ8OxKSm1eVKHB
+	3KrAQOq/ur4s/UZS/eANFeEnCs/JdRvzwoIBaXE82X9ixzNWrkOboNHVeBuV5E/HrDJnlMasu0uD1
+	ABsAAAPbgdgB++Ybma5sBXkYvIdVPkPMIz2TB5YViGV5QGpCyKe7seK7yvR2WAVoKJdLlagTLqY6m
+	6uBZxzCEBMj85mfueT7Ckaw54xgpSBug6SKqN49ZkmQBMzZBjgMqQhGnUSDncq0il/nKPTomHzznD
+	NRMeSH9Mn8jvZ5tuSFDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgj5-000000029gn-3ZnT;
-	Fri, 17 Jul 2026 11:27:31 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1wkhH0-00000002Czu-1cf6;
+	Fri, 17 Jul 2026 12:02:34 +0000
+Received: from th8-a.mail-neoserv.si ([152.89.234.173])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgj3-000000029g8-0Dt3
-	for linux-rockchip@lists.infradead.org;
-	Fri, 17 Jul 2026 11:27:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1784287648;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=vXe76W/8pIhJ+QV+npP2Pr4GqXg7ylW2+hZyFUAZkxo=;
-	b=H2+DdxzKkawLdTsZjK6Lisk/rahNaYONuwlERiG25hZs9+sGKTio3SM/JJVLDujsSrkNOe
-	VHdH+GJE/WKj/FDafjS6T0zmjgOshEyPgMJJh8SJbiM6agEHX4OHvXdFJ+/Nose3c6d+qr
-	zHqCqC495xOMU2KGbFDbF9lparOi4ss=
-Received: from mail-yx1-f70.google.com (mail-yx1-f70.google.com
- [74.125.224.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-323-2UnHvzhKOUuwNXQV40kFHg-1; Fri, 17 Jul 2026 07:26:18 -0400
-X-MC-Unique: 2UnHvzhKOUuwNXQV40kFHg-1
-X-Mimecast-MFC-AGG-ID: 2UnHvzhKOUuwNXQV40kFHg_1784287578
-Received: by mail-yx1-f70.google.com with SMTP id 956f58d0204a3-668432d53c5so97653d50.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 17 Jul 2026 04:26:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784287578; x=1784892378;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=vXe76W/8pIhJ+QV+npP2Pr4GqXg7ylW2+hZyFUAZkxo=;
-        b=hfoPM0fR39P2IDIJhFAazVela1U8qpAy+RZd6BdLgYnyZpNzFnXVKfbdFTslRxB9TG
-         N3Y/N6MkFIUpwNJUO2bzTOLpefD8eLZzC1R5p7eh2U2xWGc8k4/jnKy9jLOFeB8T77kU
-         +00BpkoHuLt8ItwYc+epLBScMrkzfIzB1lVBLKMHmuYU2kt/xYrhW/Qdr3WGOSb8FuA8
-         vTAVhNcEyM+dmmnklGWYUvt3ygEhM21ZkXBYOXqK9KMUzwUOAFkQcLZzDQlrRe2d+CsB
-         YlY/4UeDzEEiYGkO4jpaMSbW2uxFDwuxcMpQO5v190P1ACBqf0tEdm3a7atKf7Hcn8uA
-         oyNQ==
-X-Forwarded-Encrypted: i=1; AHgh+RozqPSEbPr9lNkYDCl9jrRZmgVlMeEsBwU9Qyd5ou+qiYAtUPW5YBw/TuRvNDEfxG6j1WVNZx5+H9hIWKgoQg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwO/SIBk3+a58xNO25MF6kBdzeqbgqxiRIHYHKxs5f5H3dphGds
-	1F0HCMnAErLfNKBpUWFiKJ8TztwLF636VLLwJifMJnhqt2JDatrvaSfXhuZgF7eKR2VjpiobvmC
-	UJ3K2f9aM+P2EW0DD5VInfr4JZrTdM6QtpgZyD+t7dRZ/S8MuHvHFRoNgLoYE0JkPMz+C6jQNDh
-	+CKurtY8sRMfMRhzfDfThLq80lmFYDHShsgNOwbkLzDDnNj1l6
-X-Gm-Gg: AfdE7cnVEZbv9ZQMfQKvHUsce+NyLl0hfqCFso/yBbVO63srv/o/0N0k0DrHnNxaTDf
-	bWthzAzWGE0ChC1hDaj/JLRgOW17ZbP+5qRTiEvF6FFm2728hKF+1KhW+coLtvNoNP40enOyAul
-	2ldgABUrIuCFPTYu/ByYtmHocMkbrZxOSTNCAcP32BVIuCgbNIlsgQ4ryG
-X-Received: by 2002:a05:690e:43cb:b0:668:43ce:50e4 with SMTP id 956f58d0204a3-66843ce511emr36219d50.53.1784287578009;
-        Fri, 17 Jul 2026 04:26:18 -0700 (PDT)
-X-Received: by 2002:a05:690e:43cb:b0:668:43ce:50e4 with SMTP id
- 956f58d0204a3-66843ce511emr36162d50.53.1784287577611; Fri, 17 Jul 2026
- 04:26:17 -0700 (PDT)
+	id 1wkhGv-00000002Cyt-3J1X;
+	Fri, 17 Jul 2026 12:02:32 +0000
+ARC-Seal: i=1; cv=none; a=rsa-sha256; d=th8.neoserv.si; s=default;
+	 b=KnzdM5OTAdp2nblLegGWLGxOeK+ZLESK6NboOb3ZY4KbGoXemHbCigwccuZB5aZuYi4gUBV+9H
+	  jcNHrcVnbohby/GRSmzx1hdqAnP+FSEVXAdOtOrEf42hAEmSV5XpO7WijGCW2vhP0Hac4wpldt
+	  en682BVAA6N4ueUcZ3ZCHNleXjlvBgUqp1qDc89HS7qLmMD+HEJxeOuR4M1OzBbLP4g63qYK7c
+	  L8V15y4hxAlixbDMbdphOIOjEpIaZGE7xvGLb/06fRQs9iwqyugcYZCTJ4UFWniWKOmw/OCWTY
+	  uVJUL4XdWeY0+m7wUVJScDZfwRmZpWBiJ3KMLM5DU4dpnQ==;
+ARC-Authentication-Results: i=1; th8.neoserv.si; smtp.remote-ip=193.77.36.193;
+	auth=pass (PLAIN) smtp.auth=rok@kanardia.eu
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed; d=th8.neoserv.si; s=default;
+	bh=cywopztlmsH3bzb+KTbHm/bcWFeOvPEllhWETG5l2RU=;
+	h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From:
+	  DKIM-Signature;
+	b=hM0v7yzTvqgbPJwwA7eb/y7/aRysNqC/dHl3n/nIx/yo2PwkC5IyBPoYubh5m6S1C1b/KN0vDt
+	  C1IFMbjXj9uG2Y0VnIjIfVC1wgqIbIgmDDsS3CPzfTynFkNiHN8tmOgtFgPyMAkDv9aXPABFn+
+	  RveLXqX4ji8tYl9C9er5w2gHh4h0Q5dgDU9Qzm/QpsiC04j93I8ehwCAvlAmuqpY+Gice2yTtK
+	  44nY7FyVHaOwdHoHWSAOFiBety5lHNQ7+tPyv899EWAgQJafZR5pk9Q95Xs1DJnm6nbeKwUt17
+	  YKGeowVHkHEe7N//Mq59u827suqveVaY/wHBFi/+79sW8g==;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=kanardia.eu
+	; s=default; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject
+	:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+	List-Post:List-Owner:List-Archive;
+	bh=/OdiQBG0eSiBQF/w1VtyCXmttmza1oadKodigBgFYN8=; b=NXKA3jgR2nIE8Xb1UC/yjfa/3J
+	Iir5+W/Bu6CCdb0hqHF4PsTL6H7CfloIMa61O2ZHzUrfIa/bKFYWi/j8GZ/Aa0swmMX1rkQttrkmT
+	fvH3B2RAZrXQDkkstlQEtN/OLZIuTFXVkn9Z0fSr6ian/rkMElfbljuAQyhO4oofDSLcsrHmhVuU/
+	1mrYLYeo7WDAmEfctQZokz18ihN9mdzhVmjx05hGL42mz5RmTbV9SQLj1WW4s5EuFtyf+sxnP0xUC
+	ItMbgjq0ZxiFJWSUhuMPz+xPwa/OzXcztO9nTDlWOc7yHovyDKeFu3wEA5iOk30+DswUuA585KWQr
+	a057v8nA==;
+Received: from [193.77.36.193] (port=54788 helo=rok-trip.kanardia.eu)
+	by th8.neoserv.si with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.99.4)
+	(envelope-from <rok@kanardia.eu>)
+	id 1wkhGi-00000001fP1-1J7i;
+	Fri, 17 Jul 2026 14:02:16 +0200
+From: Rok Markovic <rok@kanardia.eu>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Alibek Omarov <a1ba.omarov@gmail.com>,
+	Rok Markovic <rok@kanardia.eu>
+Subject: [PATCH 0/4] drm/rockchip: add RK3568 LVDS support
+Date: Fri, 17 Jul 2026 14:00:01 +0200
+Message-ID: <20260717120005.2087386-1-rok@kanardia.eu>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20260713-drm_refcount_wiring-v2-0-d3bb61f4bd4d@redhat.com>
- <20260713-drm_refcount_wiring-v2-5-d3bb61f4bd4d@redhat.com> <20260717-heavenly-peach-guan-82f0f1@houat>
-In-Reply-To: <20260717-heavenly-peach-guan-82f0f1@houat>
-From: Albert Esteve <aesteve@redhat.com>
-Date: Fri, 17 Jul 2026 13:26:06 +0200
-X-Gm-Features: AUfX_my0X2LQ6M_jKeRcxy0r6pG-sYFIFgqEmiZmXcdV57T8jjudIQuMMnSFyJg
-Message-ID: <CADSE00+7=2ph4kRQLc7_MFbp_SSt3eYz-bBxWcfCj6_oFPjwFA@mail.gmail.com>
-Subject: Re: [PATCH v2 5/5] drm: release panel reference after panel bridge creation
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>, Jessica Zhang <jesszhan0024@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Inki Dae <inki.dae@samsung.com>, Jagan Teki <jagan@amarulasolutions.com>, 
-	Marek Szyprowski <m.szyprowski@samsung.com>, Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
-	Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Linus Walleij <linusw@kernel.org>, Marek Vasut <marex@denx.de>, Stefan Agner <stefan@agner.ch>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Biju Das <biju.das.jz@bp.renesas.com>, Sandy Huang <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Yannick Fertre <yannick.fertre@foss.st.com>, 
-	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
-	Philippe Cornu <philippe.cornu@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@kernel.org>, 
-	Samuel Holland <samuel@sholland.org>, Jyri Sarha <jyri.sarha@iki.fi>, 
-	Jingoo Han <jingoohan1@gmail.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Peter Griffin <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Alison Wang <alison.wang@nxp.com>, Paul Kocialkowski <paulk@sys-base.io>, 
-	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
-	Thierry Reding <thierry.reding@kernel.org>, Mikko Perttunen <mperttunen@nvidia.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
-	linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FsraSUY2YCQ5C3VXD_YRMCRNKY9tVl4iGCExVz4DOic_1784287578
-X-Mimecast-Originator: redhat.com
+Authentication-Results: th8.neoserv.si;
+	auth=pass (PLAIN) smtp.auth=rok@kanardia.eu
+X-NEOSERV-MailScanner-Information: Please contact the ISP for more information
+X-NEOSERV-MailScanner-ID: 1wkhGi-00000001fP1-1J7i
+X-NEOSERV-MailScanner: Found to be clean
+X-NEOSERV-MailScanner-SpamCheck: not spam, SpamAssassin (not cached,
+	score=1.31, required 7, ALL_TRUSTED -1.00, BAYES_50 0.80,
+	KAM_DMARC_QUARANTINE 1.50, KAM_DMARC_STATUS 0.01)
+X-NEOSERV-MailScanner-SpamScore: s
+X-NEOSERV-MailScanner-From: rok@kanardia.eu
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - th8.neoserv.si
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - kanardia.eu
+X-Get-Message-Sender-Via: th8.neoserv.si: authenticated_id: rok@kanardia.eu
+X-Authenticated-Sender: th8.neoserv.si: rok@kanardia.eu
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_042729_209545_48AC5EC6 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20260717_050230_323314_7FBB9FC5 
+X-CRM114-Status: GOOD (  19.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,28 +116,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBKdWwgMTcsIDIwMjYgYXQgMTA6NTbigK9BTSBNYXhpbWUgUmlwYXJkIDxtcmlwYXJk
-QGtlcm5lbC5vcmc+IHdyb3RlOgo+Cj4gT24gTW9uLCBKdWwgMTMsIDIwMjYgYXQgMDE6NTM6MDhQ
-TSArMDIwMCwgQWxiZXJ0IEVzdGV2ZSB3cm90ZToKPiA+IFVwZGF0ZSBhIHNlY29uZCBiYXRjaCBv
-ZiBkcml2ZXJzIGNhbGxpbmcgb2ZfZHJtX2ZpbmRfcGFuZWwoKSBvcgo+ID4gZHJtX29mX2ZpbmRf
-cGFuZWxfb3JfYnJpZGdlKCkgdG8gcmVsZWFzZSB0aGUgbG9va3VwIHJlZmVyZW5jZSBhZnRlcgo+
-ID4gd3JhcHBpbmcgdGhlIHBhbmVsIGluIGEgYnJpZGdlLgo+Cj4gSSB3b3VsZCBoYXZlIGV4cGVj
-dGVkIHRoaXMgdG8gYmUgc3F1YXNoZWQgb2YgcGF0Y2ggMywgYW55IHJlYXNvbiBpdCdzIGluCj4g
-YSBzZXBhcmF0ZSBwYXRjaD8KCk15IGludGVudGlvbiB3YXMgdG8gbWFrZSB0aGUgc2VyaWVzIGVh
-c2llciB0byByZXZpZXcuIFBhdGNoIDMKY29udGFpbmVkIHRoZSBpbml0aWFsIHNldCBvZiBjYWxs
-ZXJzIG1vc3RseSBmb3VuZCB2aWEgdGhlIENvY2NpbmVsbGUKc2NyaXB0IChzaW1wbGVyIHRvIGFk
-ZHJlc3MgZ2VuZXJhbGx5KSwgYW5kIHBhdGNoIDUgaW5jbHVkZXMgdGhlIHJlc3QuCkluY2x1ZGlu
-ZyBhbGwgdGhlIGNoYW5nZXMgcGx1cyB0aGUgY29yZSBBUEkgdXBkYXRlIGluIGEgc2luZ2xlIGNv
-bW1pdApmZWx0IGxpa2UgdG9vIG11Y2guCgpUaGF0IHNhaWQsIEkgYW0gaGFwcHkgdG8gc3F1YXNo
-IHRoaXMgZm9yIHRoZSBuZXh0IHZlcnNpb24gKGZld2VyCnBhdGNoZXMgdG8gdHJhY2spLgoKCgoK
-Pgo+ID4gQWxzbyBoYW5kbGUgdGhlIGNhc2VzIHdoZXJlIGEgcGFuZWwgaXMgZm91bmQgYnV0IGNh
-bm5vdCBiZSB1c2VkLAo+ID4gZHJvcHBpbmcgdGhlIHJlZmVyZW5jZSBpbW1lZGlhdGVseSBpbiB0
-aG9zZSBwYXRocy4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+RK3568 has a native LVDS transmitter that mainline does not support:
+rockchip_lvds.c only binds rk3288 and px30. This series adds it.
+
+The transmitter has no register block of its own. It is programmed
+entirely through the GRF and re-uses the MIPI DSI0 D-PHY in
+PHY_MODE_LVDS, which phy-rockchip-inno-dsidphy already supports. So the
+DT node is reg-less and carries a phy reference, like px30, but unlike
+px30 it also takes a pclk (PCLK_DSITX_0, borrowed from the DSI
+controller the D-PHY belongs to).
+
+Patch 1 is an independent fix: rockchip_lvds_encoder_atomic_check()
+never copied the connector's bus_flags into the CRTC state, so a panel's
+pixelclk-active could not reach the hardware at all. It is a no-op for
+the SoCs supported today - rk3288 and px30 pair with the VOP1 driver,
+which never reads bus_flags; only VOP2 consumes it - and becomes live
+with patch 3.
+
+Patches 2-4 add the binding, the driver and the SoC DT node. No existing
+code paths are modified: patch 3 only adds rk3568 functions, and every
+rk3288/px30 function is left byte-identical.
+
+The driver work is based on Alibek Omarov's 2023 posting [1], which was
+never merged. The changes on top of it are described in patch 3's
+changelog. The important one: phy_power_on() must be called from the
+encoder enable path, not from probe. Called at probe it runs the phy's
+LVDS bring-up - PLL power-on, settle, mode select, serializer reset
+pulse, lane enables - while the GRF has not yet switched the block to
+LVDS mode and the VOP is not driving dclk. The serializer is clocked
+from dclk and latches dead coming out of that reset. The failure mode is
+nasty: every register in the phy, the GRF and the VOP reads back
+byte-identical to a working system while the lanes sit at common mode
+and never toggle.
+
+[1] https://lore.kernel.org/all/20230119184807.171132-1-a1ba.omarov@gmail.com/
+
+Not covered: LVDS1 / dual-channel. The GRF bits exist (VO_CON3) but I
+have no hardware for it, so only LVDS0 is wired up.
+
+One integration note for anyone using this: VOP2 spreads its windows
+only over video ports that have a connected endpoint, and writes
+cumulative layer boundaries into OVL_PORT_SEL. If LVDS is put on vp2
+while vp1 has no endpoint, the boundaries come out non-monotonic
+(PORT0=2, PORT1=8, PORT2=5) and no window ever reaches vp2. Putting LVDS
+on vp1 avoids it. That looks like a separate VOP2 bug and is not
+addressed here.
+
+Testing
+-------
+
+Tested on two RK3568 boards:
+
+  - MYIR MYD-LR3568X eval board, 1024x600 LVDS panel at 59.4 MHz
+  - Kanardia Nesis V (custom board, MYIR MY3568 SOM), 1280x800 at 72 MHz
+
+Both light up and scan out correctly; VOP2 reports the programmed mode
+with real_clk matching the requested pixel clock.
+
+What has *not* been tested:
+
+  - The boot testing above was done on 6.19.5, and with an earlier
+    revision of patch 3 that used regmap_update_bits() and powered the
+    phy from a shared helper. This series is rebased onto 7.1.3 and the
+    GRF accesses were reworked to regmap_write() after review; it is
+    compile-tested and the DTB builds, but this exact code has not been
+    booted. The register writes are equivalent by inspection.
+  - Patch 1 has not been tested on rk3288 or px30 hardware. The argument
+    that it cannot regress them is by inspection - VOP1 has no reader of
+    bus_flags - not by measurement. Review of that claim is welcome.
+  - Dual-channel/LVDS1 is untested (not implemented).
+  - Suspend/resume and DPMS cycling are untested. The P2S_EN re-assert
+    in patch 3 is what should make a second enable work; it is reasoned
+    from the poweroff path clearing it, not from a measured DPMS cycle.
+
+dt_binding_check passes on patch 2. dtbs_check on the board DTB reports
+no issues against the new lvds schema.
+
+Tooling disclosure
+------------------
+
+Per Documentation/process/coding-assistants.rst and
+generated-content.rst: this series was produced with the help of Claude
+(claude-opus-4-8), used interactively across a long debugging session
+rather than from a single prompt. The assistant read the vendor BSP
+driver and the phy/VOP2 sources, identified the phy-ordering bug that
+patch 3 fixes, and wrote the patch text and changelogs. All hardware
+testing, every oscilloscope measurement and register dump, and the two
+decisive debugging ideas - diffing register state against a working
+vendor board, and using MIPI DSI on the shared D-PHY to prove the lanes
+were good - were mine. I have reviewed every line and can defend it.
+The Signed-off-by is mine alone.
+
+No coccinelle/sparse/smatch runs were involved.
+
+Rok Markovic (4):
+  drm/rockchip: lvds: propagate bus_flags to the CRTC state
+  dt-bindings: display: rockchip,lvds: add RK3568
+  drm/rockchip: lvds: add RK3568 support
+  arm64: dts: rockchip: rk356x: add LVDS node
+
+ .../display/rockchip/rockchip,lvds.yaml       |  22 +++
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi |  25 +++
+ drivers/gpu/drm/rockchip/rockchip_lvds.c      | 171 +++++++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_lvds.h      |  10 +
+ 4 files changed, 227 insertions(+), 1 deletion(-)
+
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
