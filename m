@@ -4,97 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6165C4451B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 07:26:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CAF9C44514
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 07:37:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uAHiJuuh+TtTfJ703GAmLyptPsBgfkIq+fYyiAWBFTY=; b=oeAgvFcE1j1+k4
-	9ObYTeDz0cx+wFIP8YCVfSZn47F/qsBYvmewqT3q4TDoAFSeK742rDcNPyYGbzSN7CYxY5YqIHqFu
-	u2/dU4H1cIcWbCtsSvzbZ6KZwA3jdNBnDc1lJ99xYH7dF8TNHLag6Niz5Ihy9/IAcbmYzcMFMq1UM
-	kNgUowB1cL2BcMHcvSWKbXc/ZEws+4jalvmmF3cENQa+ZOs3jfqHQLNsDTdxi8SAUwW8lcpnm6OMg
-	J27VfeWlB8KYLWnmU+tnl7uVgXGpTzTxY2LGIYM62RviP3IbxNBspSyc1Ry+/xF/F9mtOt70h+87+
-	aDf71xtZhtPhTo2unE7g==;
+	List-Owner; bh=HmRPHKtOV/h0yv009Tucct+Y0CyGzq2e5yMjJG/24Ko=; b=tkFNMRM9TS8HNx
+	6tJ6OP356mXaYwBHsBuwLI/tVhnqOTg8s2w5V20YzPMJ4CiEjobTiIdFRwZzdxR66WDtZoR6HsBKV
+	4zHZ13MwfM6ubROcDuj5iLKKnzRcNtTfcE6pkwMLHTlOEXrupzx+hx1yn/otnsSS7vwrbshYv0twW
+	YCCTte5N+tvtNXwrQDO46NB0a324n/gfji/S52Z7TqSyf/TvkxTYNFq/H68mjfAMmSn31q/8374nF
+	8uCdBXLIDZrGG4UyCQYUIJAlNWUNiJuGyrFyDAEDxvKlFLWLWFQw1dFGPQgRKQDyIuDgPVfx+CqS7
+	GWAI4DYKHPTsj6cRjVPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkcyH-00000001RMj-1Gb3;
-	Fri, 17 Jul 2026 07:26:57 +0000
-Received: from smtpbguseast3.qq.com ([54.243.244.52])
+	id 1wkd8i-00000001Tls-1xck;
+	Fri, 17 Jul 2026 07:37:44 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkcyE-00000001RE3-1CYu;
-	Fri, 17 Jul 2026 07:26:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1784273038;
-	bh=hfSDcA/VFf5O36XZ1jIbDeiIvlPOe5N0iYnQa5D5SVg=;
-	h=From:To:Subject:Date:Message-Id;
-	b=fYXEyAssbfHboxP5QdcQ6RM2gOmJnmbbZPGsTBD8SPtT5gd9wFAY0UGeMT42MDXjg
-	 ukdaXkyvlWNUDsUmO5b1iLRbYYMRG/QeFAQFz4251JelGmBGAojVXu38G0dj288PxV
-	 s4kIBlvRsQ0tUQ6lT1r3APLRPP5/q4mEgB0ZxaLk=
-X-QQ-mid: esmtpsz21t1784273037t8aa6d3dc
-X-QQ-Originating-IP: 0D5wUK+GE2YIGxT4HuuhDJ2D57emU1+Gs34WtC5gClQ=
-Received: from DESKTOP-8BT1A2O.localdomain ( [61.154.14.86])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 17 Jul 2026 15:23:46 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 8582860570799389207
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org
-Subject: [PATCH v3 4/5] drm/rockchip: cdn-dp: Support handle lane info without extcon
-Date: Fri, 17 Jul 2026 15:23:22 +0800
-Message-Id: <20260717072323.96-5-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20260717072323.96-1-kernel@airkyi.com>
-References: <20260717072323.96-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MyirvGjpKb1j4ajW/h+h1TDId9lYcfgTEOsAICrRq9y1W44g/WIDA6L6
-	1JWZ0h4PwjzvF7e4k3ixjIK9UwIEJwaET8qNWs2PnJI8hQfasLNmNRXrpQycPjW3rv5xQ79
-	wt+8gbNqvaD6mdJptCUnIq2OEXaePOyrkb/k0b7Phsw6d70ijk7lbBUKfFGqgBDjF32iV4b
-	qyra8iqbYK7X8LxqFE0M19xYfhHKFTMCwGYJX8AVXtXOy0dwuVVPPBbHz9KdW/p0zc5HXRl
-	jZKIseDiWv27v26B+yZB6NrF8uteC1iepCxC0cIfh+w9fYUDpH8WmU1ZTpG/SNgvL6YKj/i
-	cWL9wInqWxMyqzznX/JMEgTW/RiD2tM0wgjL6i8LELLmGx+U43kMxyOuUUsDo84boQ61ujz
-	q1Zy5MLXCjSS3nzziQCUl12imVu3EKoXIxxb5wPPAHOQAReGMHuxha2poazmNdbtpIV2PPp
-	slyEdY9y8rw2SfehD0I2dYShbGaPT2k6T03HmT7r+S+gRvFO99QWLbeoopn7mRoWg6GCrlx
-	dBa4LXfe/fGZsMi8uJRfYgNk2RY28/6eONbtPt/ufC57K8pny3zG3hL+bheoIUl1gmRNCaw
-	CWQI1rNn8SXHwbn/+F7wESzmxW//eu7Tx6drkXJDkdrqAoGFdXe6wbACNf7B5h7JuL2jJjt
-	qZrXRQ6JiTUHIKytR55lC/ZstWZ1oKaGjoiBMNE+5sdEDW+taX9xVgzDUC3dQYcXK8Hiv5o
-	/OSRMq6bu7gRQnBNvpNBVjJFRYnM3GrvidG8FdyUS4wdFl5UMHra7FpUauzPEL0cWu3YNBB
-	ZywkpWayYDk+kW0RdDCHHGqfq2VJnyQiZK+l7/XaX0Nc71bUU7qwyVFPILMsaguABMZwoCf
-	8iOlMTqbi9wnOCpR3IHqv1sXLq0jsJfEbdi1Cb0/6dn5iCvqPVgY8ALM4U5DzDuM38uj4X5
-	98JR4Cjm19tvDfzNsdjFnu1VatTol4AB3LXhBGoZzxTJBCw5sSgekfvAnQASVeyips07zXK
-	ZkbmqqoDefXCroucMWu4TUw+a3LU9WeESH9O8nNg==
-X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
-X-QQ-RECHKSPAM: 0
+	id 1wkd8e-00000001Tk9-01xS;
+	Fri, 17 Jul 2026 07:37:42 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id D5F761A103B;
+	Fri, 17 Jul 2026 07:37:34 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 943D660361;
+	Fri, 17 Jul 2026 07:37:34 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id DC0A611BD3D44;
+	Fri, 17 Jul 2026 09:37:18 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1784273852; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=Cdb0RCCdG1Y5r/It8CwrJzVJ0JbWRfQ0sD99bdj9c+M=;
+	b=kon2YfH/dOK4tDt53OBaDo5FFMl+LDNwDVUop5ds1NRI/Wg1uSfOdRPoX//xppPkYw4F4k
+	i7WIsxXBl1un2FVxbtH0z+MNg/Pxf/kDZFkkmQMF7GWX2KDvfCGfcNPlsGE/XeWd6UWU5+
+	GU0KvK2Qz5NhcKTqLYeMaoODnDSsLW8zaf8j7HAZsl2HX2a+q1UNwnNfj8/t2YSHY0CoOJ
+	iuHvYWwy+oF8TF5SvX8WUIAoCWzZZkD3fHymApMwuHuo/Ci0SwMn3oduihoRjpk8TrJJuw
+	dKfxpFRA4xRbQoh0VoLeExcl0443IzDaZd45c4NSu8UobUALaKN9EhlqiiNUTA==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Pan Chuang <panchuang@vivo.com>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,  Daniel Lezcano
+ <daniel.lezcano@kernel.org>,  Zhang Rui <rui.zhang@intel.com>,  Lukasz
+ Luba <lukasz.luba@arm.com>,  Markus Mayer <mmayer@broadcom.com>,  Broadcom
+ internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+  Florian Fainelli <florian.fainelli@broadcom.com>,  Frank Li
+ <Frank.Li@nxp.com>,  Sascha Hauer <s.hauer@pengutronix.de>,  Pengutronix
+ Kernel Team <kernel@pengutronix.de>,  Fabio Estevam <festevam@gmail.com>,
+  zhanghongchen <zhanghongchen@loongson.cn>,  Yinbo Zhu
+ <zhuyinbo@loongson.cn>,  Amit Kucheria <amitk@kernel.org>,  Thara Gopinath
+ <thara.gopinath@gmail.com>,  Niklas =?utf-8?Q?S=C3=B6derlund?=
+ <niklas.soderlund@ragnatech.se>,  Geert Uytterhoeven
+ <geert+renesas@glider.be>,  Magnus Damm <magnus.damm@gmail.com>,  John
+ Madieu <john.madieu.xa@bp.renesas.com>,  Heiko Stuebner <heiko@sntech.de>,
+  Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,  Krzysztof Kozlowski
+ <krzk@kernel.org>,  Peter Griffin <peter.griffin@linaro.org>,  Alim Akhtar
+ <alim.akhtar@samsung.com>,  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+  Alexandre Torgue <alexandre.torgue@foss.st.com>,  Thierry Reding
+ <thierry.reding@kernel.org>,  Jonathan Hunter <jonathanh@nvidia.com>,
+  Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Srinivas Pandruvada
+ <srinivas.pandruvada@linux.intel.com>,  Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>,  Laura Nao <laura.nao@collabora.com>,
+  Fei Shao <fshao@chromium.org>,  Chen-Yu Tsai <wenst@chromium.org>,
+  Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,  Frank Wunderlich
+ <frank-w@public-files.de>,  Mikko Perttunen <mperttunen@nvidia.com>,
+  Svyatoslav Ryhel <clamor95@gmail.com>,  linux-pm@vger.kernel.org (open
+ list:THERMAL),  linux-kernel@vger.kernel.org (open list),
+  linux-arm-kernel@lists.infradead.org (moderated list:BROADCOM BCM7XXX ARM
+ ARCHITECTURE),  imx@lists.linux.dev (open list:ARM/FREESCALE IMX / MXC ARM
+ ARCHITECTURE),  linux-arm-msm@vger.kernel.org (open list:ARM/QUALCOMM
+ MAILING LIST),  linux-renesas-soc@vger.kernel.org (open list:RENESAS R-CAR
+ THERMAL DRIVERS),  linux-rockchip@lists.infradead.org (open
+ list:ARM/Rockchip SoC support),  linux-samsung-soc@vger.kernel.org (open
+ list:SAMSUNG THERMAL DRIVER),  linux-stm32@st-md-mailman.stormreply.com
+ (moderated list:ARM/STM32 ARCHITECTURE),  linux-tegra@vger.kernel.org
+ (open list:TEGRA ARCHITECTURE SUPPORT),
+  linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek),  Niklas S?derlund
+ <niklas.soderlund+renesas@ragnatech.se>
+Subject: Re: [PATCH v2] thermal/drivers: Remove redundant error messages on
+ IRQ request failure
+In-Reply-To: <20260717024733.374913-1-panchuang@vivo.com> (Pan Chuang's
+	message of "Fri, 17 Jul 2026 10:47:10 +0800")
+References: <20260717024733.374913-1-panchuang@vivo.com>
+User-Agent: mu4e 1.12.7; emacs 30.2
+Date: Fri, 17 Jul 2026 09:37:18 +0200
+Message-ID: <87v7aekqxd.fsf@bootlin.com>
+MIME-Version: 1.0
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_002654_823602_4B8AD0FE 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20260717_003740_173759_DA384F3D 
+X-CRM114-Status: UNSURE (   5.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,107 +109,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-
-This patch add support for get PHY lane info without help of extcon.
-
-There is no extcon needed if the Type-C controller is present. In this
-case, the lane info can be get from PHY instead of extcon.
-
-The extcon device should still be supported if Type-C controller is
-not present.
-
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-
-(no changes since v1)
-
----
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 25 +++++++++++++++++--------
- 1 file changed, 17 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 190cce9530c8..74e1f5422a6e 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -157,6 +157,9 @@ static int cdn_dp_get_port_lanes(struct cdn_dp_port *port)
- 	int dptx;
- 	u8 lanes;
- 
-+	if (!edev)
-+		return phy_get_bus_width(port->phy);
-+
- 	dptx = extcon_get_state(edev, EXTCON_DISP_DP);
- 	if (dptx > 0) {
- 		extcon_get_property(edev, EXTCON_DISP_DP,
-@@ -220,7 +223,7 @@ static bool cdn_dp_check_sink_connection(struct cdn_dp_device *dp)
- 	 * some docks need more time to power up.
- 	 */
- 	while (time_before(jiffies, timeout)) {
--		if (!extcon_get_state(port->extcon, EXTCON_DISP_DP))
-+		if (port->extcon && !extcon_get_state(port->extcon, EXTCON_DISP_DP))
- 			return false;
- 
- 		if (!cdn_dp_get_sink_count(dp, &sink_count))
-@@ -386,11 +389,14 @@ static int cdn_dp_enable_phy(struct cdn_dp_device *dp, struct cdn_dp_port *port)
- 		goto err_power_on;
- 	}
- 
--	ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
--				  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
--	if (ret) {
--		DRM_DEV_ERROR(dp->dev, "get property failed\n");
--		goto err_power_on;
-+	property.intval = 0;
-+	if (port->extcon) {
-+		ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
-+					  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
-+		if (ret) {
-+			DRM_DEV_ERROR(dp->dev, "get property failed\n");
-+			goto err_power_on;
-+		}
- 	}
- 
- 	port->lanes = cdn_dp_get_port_lanes(port);
-@@ -1027,6 +1033,9 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 	for (i = 0; i < dp->ports; i++) {
- 		port = dp->port[i];
- 
-+		if (!port->extcon)
-+			continue;
-+
- 		port->event_nb.notifier_call = cdn_dp_pd_event;
- 		ret = devm_extcon_register_notifier(dp->dev, port->extcon,
- 						    EXTCON_DISP_DP,
-@@ -1119,14 +1128,14 @@ static int cdn_dp_probe(struct platform_device *pdev)
- 		    PTR_ERR(phy) == -EPROBE_DEFER)
- 			return -EPROBE_DEFER;
- 
--		if (IS_ERR(extcon) || IS_ERR(phy))
-+		if (IS_ERR(phy) || PTR_ERR(extcon) != -ENODEV)
- 			continue;
- 
- 		port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
- 		if (!port)
- 			return -ENOMEM;
- 
--		port->extcon = extcon;
-+		port->extcon = IS_ERR(extcon) ? NULL : extcon;
- 		port->phy = phy;
- 		port->dp = dp;
- 		port->id = i;
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMTcvMDcvMjAyNiBhdCAxMDo0NzoxMCArMDgsIFBhbiBDaHVhbmcgPHBhbmNodWFuZ0B2aXZv
+LmNvbT4gd3JvdGU6Cgo+IFNpbmNlIGNvbW1pdCA1NWI0OGUyM2Y1YzQgKCJnZW5pcnEvZGV2cmVz
+OiBBZGQgZXJyb3IgaGFuZGxpbmcgaW4KPiBkZXZtX3JlcXVlc3RfKl9pcnEoKSIpLCBkZXZtX3Jl
+cXVlc3RfaXJxKCkgYW5kIGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoKQo+IGF1dG9tYXRpY2Fs
+bHkgbG9nIGRldGFpbGVkIGVycm9yIG1lc3NhZ2VzIG9uIGZhaWx1cmUuIFJlbW92ZSB0aGUKPiBu
+b3ctcmVkdW5kYW50IGRyaXZlci1zcGVjaWZpYyBkZXZfZXJyKCkgYW5kIGRldl9lcnJfcHJvYmUo
+KSBjYWxscy4KPgo+IFNpZ25lZC1vZmYtYnk6IFBhbiBDaHVhbmcgPHBhbmNodWFuZ0B2aXZvLmNv
+bT4KPiBSZXZpZXdlZC1ieTogRnJhbmsgTGkgPEZyYW5rLkxpQG54cC5jb20+Cj4gUmV2aWV3ZWQt
+Ynk6IEFuZHkgU2hldmNoZW5rbyA8YW5kcml5LnNoZXZjaGVua29AbGludXguaW50ZWwuY29tPgo+
+IFJldmlld2VkLWJ5OiBHZWVydCBVeXR0ZXJob2V2ZW4gPGdlZXJ0K3JlbmVzYXNAZ2xpZGVyLmJl
+Pgo+IFJldmlld2VkLWJ5OiBOaWtsYXMgUz9kZXJsdW5kIDxuaWtsYXMuc29kZXJsdW5kK3JlbmVz
+YXNAcmFnbmF0ZWNoLnNlPgoKICAgICAgICAgICAgICAgICAgICAgICBeClRoZXJlIGlzIGFuIGVu
+Y29kaW5nIGlzc3VlIGhlcmUKCj4gIGRyaXZlcnMvdGhlcm1hbC9hcm1hZGFfdGhlcm1hbC5jICAg
+ICAgICAgICAgICAgICAgICAgICAgICB8IDUgKy0tLS0KClJldmlld2VkLWJ5OiBNaXF1ZWwgUmF5
+bmFsIDxtaXF1ZWwucmF5bmFsQGJvb3RsaW4uY29tPgoKVGhhbmtzLApNaXF1w6hsCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
