@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5319C44507
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 09:12:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A394EC44514
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 09:14:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xePTio37wh+n0gH9/3Vr5vDEwFYhxbsDiN4mjSEsSew=; b=bx5hQ4JN8TduJ5
-	rPRVcc1ay2tIJmIFpS0K4LxSdsU65IXvYCOOousof7c6YbjA1grWrwunhpogYrnm2vvqug5pofV5/
-	TA1C4pxEmGG3ufF8ZY7XGfW/z1MwSireWS0qgnxw1nkOg7Vdo96jNXH+mvo6QczAoCWNZ4sopgEcS
-	XUcN4oIi/pkluGqGori2Caq7VKtQWd9oxt5+5AQ2Sojm5iHk6y8JRDg2r3PxrwfXVNhZyFqwe4qge
-	E66Hihywe2ijPsiGZc/BIpWWp8XKPTx2zg2C60BUgOi0Etc50+zpHyp2gW3FzK/dhJU/RgwG9wlAU
-	BJ3iyuz3KoTff1Yj38bQ==;
+	List-Owner; bh=4Ju2xZhZSMyUeV5ZED+2NWdcGTA6FDhYn4hHc0M6KBs=; b=FWnvMlPMJR0kV7
+	DVh1Z9sA7qnakOZf21pRvx2hxIAsICPwGvVjj2xHvA37MMP7Eeg89XlQM6yB99WjMRNLfJATBly72
+	A5t8xJOJexs+uhnbjYWc4gIvMcvk9XVA1MHO4/CU2dxIiG/8dwWOUG4q0C4He6jMnHvNRxEzs6CF6
+	Xgfo8WQlWM64GTAGJd9TKf7r1ZAM6Aezs/ZmhwWTO9R6a4QQJIKItwC+4Bn1vZz0RoP0Q+YgKeXCv
+	egUPkl83gx7N3EH7tQWIej3FMQA1YImWa2hCb2bN2obbYhNGR5pR+Rz5/O5X9J9kHalE59iMllutC
+	zJOmWAcwLYncLjcZLvaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkecN-00000001nE8-0BSP;
-	Fri, 17 Jul 2026 09:12:27 +0000
+	id 1wkedv-00000001nhL-20hk;
+	Fri, 17 Jul 2026 09:14:03 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkecL-00000001nDK-2Dw1;
-	Fri, 17 Jul 2026 09:12:25 +0000
+	id 1wkedt-00000001ngc-3wqI;
+	Fri, 17 Jul 2026 09:14:01 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0D85240C12;
-	Fri, 17 Jul 2026 09:12:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B337C1F000E9;
-	Fri, 17 Jul 2026 09:12:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id AEEB8403D3;
+	Fri, 17 Jul 2026 09:14:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67AA01F000E9;
+	Fri, 17 Jul 2026 09:14:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784279544;
-	bh=bIvWWTk3vADIlADV5eXwWT0fkY/tKsWP05/vboN1JtA=;
+	s=k20260515; t=1784279641;
+	bh=hdEdwOk9Yi6Snu3myq/DFMCAWJnPUUX85o2H98P1x9Q=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=TBgjl1gA0sGd0Ba211yJftbOGGUshwvVUqyHXNPpjEJl39nzOWVwFhZ3+eW3mRBA+
-	 9BO9zTTEm03cYwlrnYQG8q4wWJRdyNN1BRK6voLL/bBtt4mWbReJyxoTCG7lty15Zr
-	 Qnqd9huJoSBvaRiAFXLvFWGmmTOQ4uY0bbUQaRcJwKWuhHkWgXoR+X7HBPM1aLZJR/
-	 frITHKVnppbO9WO269ZIRZt4PH7cA8jR36zg56Y1uzRuE2Znd6Z84zfkIbrgpGpksR
-	 W9CKgCu1Vj41ml6OPJXbJIuYa5uvRhkIDczGNQ1am89cd2oJOyakQkUDdtuoHtM/AV
-	 uoDEcxFXIkjnQ==
-Date: Fri, 17 Jul 2026 11:12:20 +0200
+	b=M8d0K+41rR4c7K+sMXbp/wtNyXxoel/OeMKi3n7FSO0g5t/RPAB6B3wc/GhtlKZdg
+	 bbULax718vZJ/jOH4jp5e8jhHW1ZGQB7+XJB6anuVB9tWPYtCHzFGWVY8jQiXAn16u
+	 48SGhLGaA5aVJpbew1r9kPR1FEopmWOKHcE0wBfVhyLnUhaSzdOUE1jPsUSeWT9oT3
+	 5efFsLC+6616LV5ivDnraCQI+9hxyRGUFy5hJRcM0K6Tg0Nbm4BWy+d0ZN4VH2Ell6
+	 c026376Q/pv5QolAD8BlrvQAiIiVHV6PN/1EOaW4vlurHfNiduMyK0NepH8CIj2ydY
+	 dm54SL5F/XTgw==
+Date: Fri, 17 Jul 2026 11:13:57 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Hrushiraj Gandhi <hrushirajg23@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
 	Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add Vicharak Vaaman board
-Message-ID: <20260717-slim-fictional-warthog-7dcef2@quoll>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Vicharak Vaaman board
+Message-ID: <20260717-robust-nondescript-husky-ed6c5f@quoll>
 References: <20260716092859.512306-1-hrushirajg23@gmail.com>
- <20260716092859.512306-2-hrushirajg23@gmail.com>
+ <20260716092859.512306-3-hrushirajg23@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260716092859.512306-2-hrushirajg23@gmail.com>
+In-Reply-To: <20260716092859.512306-3-hrushirajg23@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,18 +71,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 16, 2026 at 02:58:58PM +0530, Hrushiraj Gandhi wrote:
-> Document the compatible string for the Vicharak Vaaman, an RK3399-based
+On Thu, Jul 16, 2026 at 02:58:59PM +0530, Hrushiraj Gandhi wrote:
+> Add initial devicetree support for the Vicharak Vaaman, an RK3399-based
 > single-board computer.
+> 
+> Supported peripherals:
+> - RK808 PMIC with core/logic/IO regulators
+> - SYR827/SYR828 (vdd_cpu_b/vdd_gpu) CPU-big and GPU regulators
+> - Mali GPU
+> - Gigabit Ethernet (RGMII, via &gmac)
+> - eMMC (HS400, enhanced strobe)
+> - microSD card slot
+> - SARADC and TSADC
+> - PWM-based vdd_log regulator
+> - UART2 serial console
+> 
+> Tested by booting to a userspace shell over the serial console and
+> verifying eMMC and microSD storage, and Ethernet link-up.
 > 
 > Signed-off-by: Hrushiraj Gandhi <hrushirajg23@gmail.com>
 > ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
->
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../dts/rockchip/rk3399-vicharak-vaaman.dts   | 438 ++++++++++++++++++
+>  2 files changed, 439 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 761d82b4f4f2..e1b974502915 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -90,6 +90,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64-screen.dtbo
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-vicharak-vaaman.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-armsom-sige1.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-nanopi-zero2.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts b/arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts
+> new file mode 100644
+> index 000000000000..6060365bf731
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts
+> @@ -0,0 +1,438 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2026 Vicharak Computers Pvt Ltd
+> + */
+> +
+> +/dts-v1/;
+> +#include "rk3399.dtsi"
+> +
+> +/ {
+> +	model = "Vicharak Vaaman";
+> +	compatible = "vicharak,vaaman", "rockchip,rk3399";
+> +
+> +	aliases {
+> +		ethernet0 = &gmac;
+> +		mmc0 = &sdhci;
+> +		mmc1 = &sdmmc;
+> +	};
+> +
+> +	chosen {
+> +		stdout-path = "serial2:1500000n8";
+> +	};
+> +
+> +	clkin_gmac: external-gmac-clock {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <125000000>;
+> +		clock-output-names = "clkin_gmac";
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	vcc12v_dcin: vcc12v-dcin-regulator {
 
-Nothing in cover letter or this changelog explains dependencies and I am
-pretty sure this fails tests.
+foo-regulator yes?
+
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc12v_dcin";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <12000000>;
+> +		regulator-max-microvolt = <12000000>;
+> +	};
+
+This regulator is completely unused (other non-controllable do not
+matter).
+
+> +
+> +	vcc3v3_lan: regulator-vcc3v3-lan {
+
+so why here regulator-foo? Decide.
+
+Please use name for all fixed regulators which matches current format
+recommendation: 'regulator-[0-9]v[0-9]'
+https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/regulator/fixed-regulator.yaml
+
 
 Best regards,
 Krzysztof
