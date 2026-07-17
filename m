@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA85FC44507
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 09:47:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DCB3C44507
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 10:02:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qnJVMJdGMRN8L2NoHL4KTRn1HQ2Ft/ifulMecGxA2TQ=; b=rft3ctYxxoAKSu
-	LOFTSnD9NfewREEtKKy2A7CVe/V0/kUtBaoJSBDeNoL85VB9FKDFd/PysSqR8eTVhswrwyPS0ZAs5
-	aMjMmfEhLjP0DmyrMWoBhSPYchP2t0izoha8BGApEUIf0ZbWm2S+TtVXoba06vXLK7rSWTBCmDXqv
-	8O07Swl6+uOJMEPVOZFc6CuSKyOS/GrgDAMAPyPXO8j8YvMiOmXvpDO1Ql4NsCMPy+0VDMN5U3pSl
-	3wcgI9NbT3a/uws7yX4CoQASbKyt9YqPqHXCmTDEfkAlqDdBXzAStJAQGgrHLwIcROetcItNEwdrN
-	h3tW1ZnVit1JhcaWrvkA==;
+	List-Owner; bh=T43UW8zVRZunH/yLEKcbDA7yazYR0R09sPRGQtVNMiI=; b=qinudhoVMQgKj0
+	rShbjhsBaGOefJxDLvlrEROjnY1nRnYhA1x6TH6bR/KSHYZIy4Hu5q70FdX+T6kV7FU5LebeMBele
+	hgEBxQOH3Hxy8mOEX5yTOmZBTH/WWOo5HVuuzjHoR959qkKO878gwXqgR2Wp4jA54GihfhQsR2C01
+	zv0XHdIizKrqr0bh7cA5/jhyfNi61Jsyp3caSb9zQ81A+7skincLEelbtkl/kMFk6dKJM8yWw6GXg
+	9nzn6SVA44hBolmWnkHgtucJc5zX+qVAJhHgmWuT37sbpa9bEK/jMfxqvRmM/4W2q2XNRMl/zKMRG
+	1bmiKIVlHumvZu0KjZ9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkfA4-00000001sRn-2cpW;
-	Fri, 17 Jul 2026 09:47:16 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1wkfOm-00000001uJ8-3jZR;
+	Fri, 17 Jul 2026 10:02:28 +0000
+Received: from mail-m1060.netease.com ([154.81.10.60])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkfA1-00000001sQS-0ph2;
-	Fri, 17 Jul 2026 09:47:15 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id AF573C2B9F7;
-	Fri, 17 Jul 2026 09:47:25 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id ED31560361;
-	Fri, 17 Jul 2026 09:47:07 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 225EE11BD0424;
-	Fri, 17 Jul 2026 11:47:01 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1784281627; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=NhWr7DyYHBMitYnhvrVIDsh6S5Eu/wdCCtdb6dUizGM=;
-	b=mROS9WP4u4nxqxbIO1iWw/9DeCH9lbJu8Ab/BWzz1frh9hKmb/fwE9chdLymD9nlntHSf/
-	c7+0UJEJqVsC54NRjD7lwGZxzQImUznXSEfrXk7wOzMS0MnMWg1+WKv8tU3rTFQteBAqKZ
-	LYZQlalnWyWA/aJAPXymyEPxp+iYv51idDSlRh7ZoccNo7i6WNCRObiMOkfAaA5T+Czauc
-	GTQzX39riEHKT1Csj4bAkmQeEiiQkwZseNtYmj2Fn0TUILcsuiW1jMykBndqLgwaiyN12C
-	BtnzMtBsN/b05Z5ZFlSbSguapSTmgRKeeoMOPepO/PNW9SKHwq81DCWj4Ot4PQ==
-Message-ID: <da7d4ee0-8122-4839-b807-5d23ee6aeef7@bootlin.com>
-Date: Fri, 17 Jul 2026 11:47:00 +0200
+	id 1wkfOj-00000001uHE-0tLX;
+	Fri, 17 Jul 2026 10:02:27 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4695fcceb;
+	Fri, 17 Jul 2026 18:02:11 +0800 (GMT+08:00)
+Message-ID: <5c0c8de1-a340-43f9-8906-3fad22135001@rock-chips.com>
+Date: Fri, 17 Jul 2026 18:02:10 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 2/2] net: stmmac: dwmac-rk: enable the
- reference clock for output mode
-To: Jiaxing Hu <gahing@gahingwoo.com>, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, heiko@sntech.de, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com
-Cc: netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org
-References: <20260717065933.2629501-1-gahing@gahingwoo.com>
- <20260717065933.2629501-3-gahing@gahingwoo.com>
+Subject: Re: [RFC PATCH 1/9] dt-bindings: npu: rockchip: add
+ rockchip,rk3576-rknn-core
+To: Jiaxing Hu <gahing@gahingwoo.com>, tomeu@tomeuvizoso.net,
+ heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, ulfh@kernel.org,
+ p.zabel@pengutronix.de, ogabbay@kernel.org
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ iommu@lists.linux.dev, linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260717085220.3212274-1-gahing@gahingwoo.com>
+ <20260717085220.3212274-2-gahing@gahingwoo.com>
 Content-Language: en-US
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-In-Reply-To: <20260717065933.2629501-3-gahing@gahingwoo.com>
-X-Last-TLS-Session-Version: TLSv1.3
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20260717085220.3212274-2-gahing@gahingwoo.com>
+X-HM-Tid: 0a9f6f86c73309dakunmb26c5b98998f5
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDH0oaVktLS0JCQhhNHhodT1YVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=CanspQY3O3PM+ZI89p8f7mNRUoyig/xUchaPTtE8hUciWBgQ795Gqv0fE7uU1lrYOBOT5Hi+p3aVpBM/mNlv+pZ6ZKfUJMVJuJ4jzXfPrqerjWVgdAxj2wJlEqBSFQYMYYGPB360EhFYww06xbQgdvGhTmWMJYb1qBET3Y+Omek=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=euhR+NFnLdb+bsfUoV9W/QJPUb0t9RuSsI5XmiS1jBs=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_024713_411126_E665A6F6 
-X-CRM114-Status: UNSURE (   6.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260717_030225_779169_F6B72972 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +76,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello Jiaxing,
 
-On 7/17/26 08:59, Jiaxing Hu wrote:
-> rk_gmac_clk_init() only requests the refout clock group for RMII. The
-> ArmSoM CM5 has an on-module YT8531 RGMII PHY with no crystal that needs
-> the SoC 25 MHz reference (clk_mac_refout), so in RGMII the clock was
-> never enabled and the PHY did not respond on MDIO.
+On 7/17/2026 4:50 PM, Jiaxing Hu wrote:
+> Document the RK3576 NPU core: add rockchip,rk3576-rknn-core to the
+> compatible enum and drop sram-supply from required (RK3576 has no NPU
+> SRAM supply).
 > 
-> Request the group whenever the SoC drives the clock (clock_in_out =
-> "output"), not just for RMII. The clocks are optional, so other boards
-> are unaffected.
+> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+> ---
+>  .../devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml      | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+> index caca2a490..d904db3bf 100644
+> --- a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+> +++ b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+> @@ -21,6 +21,7 @@ properties:
+>  
+>    compatible:
+>      enum:
+> +      - rockchip,rk3576-rknn-core
+>        - rockchip,rk3588-rknn-core
+>  
+>    reg:
+> @@ -75,7 +76,6 @@ required:
+>    - resets
+>    - reset-names
+>    - npu-supply
+> -  - sram-supply
+>
 
-You've taken my review into account (thanks :) ), but you're failing to
-address Andrew's comment.
+You should not delete this item directly. Instead, use the compatible 
+to distinguish whether it is required.
 
-The PHY should be the one requesting the MAC to output the refclk, in
-that case the MAC will act as a clock provider, something like this :
+>  additionalProperties: false
+>  
 
-https://elixir.bootlin.com/linux/v7.1.3/source/drivers/net/phy/air_en8811h.c#L1156
-
-The PHY then requests the clock (probably an optional clock).
-
-Maxime
-
+-- 
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
