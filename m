@@ -4,110 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 057BBC4451C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 12:03:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64450C4451C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 14:03:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sB2s47sHB37k2tWorUOYGPOQn6Hc65oUo5mTjcEC3d4=; b=SgProKWQGrqO+y
-	2mCkatlS1R/dHVopbdJD7iPtoMZtQVEgJAi+FZHYrEY43YZeVsgy2sqEIWcAkG98OwsG7nFXNicHP
-	ri3XoP0bUvMgDxYxGS38fXtyPUQir+SJNNMv/q6hKB7zRlqVs/peGpeGq6Wtpz9I0OC2AnSfpXa3A
-	WKBCOt4/g/Z+hbTNEFjt/fgA8cAGY+yp7aFRU+2XOGO5+HymoDcYMzXfPYFqGfCCNGJKAHiXQUPzk
-	jXtlKRPQ4I6n1IpXsWuk6f+NiH8QFya8mBLbm/kwYAFSRjMzbbKgaF8hZt00ZGVrA3bILTrgQxBlr
-	4mN+01WeLW23yK1NAeQg==;
+	List-Owner; bh=FsJR6h3+QBR0CHKR8db927TojZ2oHxrhzq5eBu8xbUA=; b=EAEOPvMAZcBlVQ
+	tfq2can8c2X/IUVMg5FaJoekqPH2wb/2rGJh8VuTlUXFtiRqw04ivdM0fgA15pKLSCKtBDqBSiekx
+	d+dYv7o1zEJb1m/s3ehZL7JzSG+xXXoF/di4pzgGwlfk8VOgpedT1lKAqGFTZ1MsLcJAvoIdgp3Ct
+	vp7e0cjN4rn6/KQCBSD2LIkEr1FdxZ1gPY45IChvjDWRoP2apt17+nU4jXllJlJjxq2I6c6HnT56G
+	pTlSq1csJWNWec4jvXUzTWnQvKxMVcm9/M8Ydl637bkQ71NzSPlq/UawQLJIYqVhprFqNlDgP6AJk
+	YLVuPxrzZY8d0FLSOV+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkhHq-00000002DSw-2rvF;
-	Fri, 17 Jul 2026 12:03:26 +0000
-Received: from th8-a.mail-neoserv.si ([152.89.234.173])
+	id 1wkj9j-00000002SB1-0A23;
+	Fri, 17 Jul 2026 14:03:11 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkhHn-00000002DQl-3mTE;
-	Fri, 17 Jul 2026 12:03:25 +0000
-ARC-Seal: i=1; cv=none; a=rsa-sha256; d=th8.neoserv.si; s=default;
-	 b=e4wr1RIKGAKwFb7CvuoGhMJksMeo2X6/du0d44Wq3M86JsufEJ01y5xkiTjZ+cmiJQgGjB4QO1
-	  1TbbpN3L7Tbdqym2X2awQ3EQrGWIZxh+U7wwbBTSvimGkQoC94d8eVA0DqAAuQwkHOGcVrBL1K
-	  cvOVaE3NHoR2kaR6CNmVirZJOTTPwbNg5l+SUhhXWkyW6jcDkmqj4hvmkTTPb8Q168+VBdnHDD
-	  qUfOr85z7MBLDvI1+BxnohyGqqboNAJ/q0ZT56ka3y01nF1t1xbQb+YTfVR/wKt20NhYNGk4eu
-	  93Bc+VOsl1zz7+CgS36w/ayT2Wxm0DdaKVHPHxpa8WO1Mg==;
-ARC-Authentication-Results: i=1; th8.neoserv.si; smtp.remote-ip=193.77.36.193;
-	auth=pass (PLAIN) smtp.auth=rok@kanardia.eu
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed; d=th8.neoserv.si; s=default;
-	bh=7o4gkyWUm5NRKXjCtq4QFPNOZqVGYX0NqrC25z6iTAQ=;
-	h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
-	  Date:Subject:Cc:To:From:DKIM-Signature;
-	b=Fzw+J56PO1j78a7aA8LdOOs2v7ZvPZR2V0ma8jd8Fbjf1F4mmLuzSMOee751na36an2fjPpJUU
-	  fk2RIDactnsZRThjMxmp8+ywjglcpvcpiuNNhWzzKR0lgcgyf/VwUfIvEDypMa1c3v978ZQBnv
-	  XCVrhObnvq+dGtiQx8kRIuAKOVZ4sKvSSv9uXbjQNRDNyS7JXVmZuomzxAAwbPpdGsRgEQCKxK
-	  h8wpZWA9kkM8n3W937gUXg6wXD3EuDI8hmZ3S5ZgeoZ1GhhFcHCU231b14VB7cXniltvAVT9tX
-	  GfA/xaXrxsxBDIxy2H+BpC+eQ1S00NkzIUVoai08+TNkQA==;
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=kanardia.eu
-	; s=default; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=rhqQocmDn1ZVyttVBuCGSQaZNCEQDuZfGNQteeSIaWI=; b=fIA0Q6bFjuSYbA8c5wvLsqNuEU
-	ggOi2blAwuHhpFw5QDqdoC7VaajtNA6OqXiB4DDkd6VqvIFZ82T6FeP1AmsfDCwBg+V4sCgmAaK0j
-	mvKvRAb4MC0TfDp0rHyX0gT+oNHSz4wOR1JTC2X56T6Ujq0nOhbKYGcPbc8Ex7rLO2SgxCB7InYz9
-	pv7Jx+WQnhQCsp/R/zBZLR5p+QMoxaO/pq/mxIXly9dkbJxdLKifLeauNPUtrCQj65oEcdoepCivc
-	A+XaKBFNTpTc+OY+W5lwplzzMva2JT4/QMHQfm23NvsutXeftWWiazEqOTejZMth+aQty/7uoDHtg
-	p4kD/n0Q==;
-Received: from [193.77.36.193] (port=54788 helo=rok-trip.kanardia.eu)
-	by th8.neoserv.si with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.99.4)
-	(envelope-from <rok@kanardia.eu>)
-	id 1wkhHh-00000001fP1-22Ww;
-	Fri, 17 Jul 2026 14:03:17 +0200
-From: Rok Markovic <rok@kanardia.eu>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Alibek Omarov <a1ba.omarov@gmail.com>,
-	Rok Markovic <rok@kanardia.eu>
-Subject: [PATCH 4/4] arm64: dts: rockchip: rk356x: add LVDS node
-Date: Fri, 17 Jul 2026 14:00:05 +0200
-Message-ID: <20260717120005.2087386-5-rok@kanardia.eu>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260717120005.2087386-1-rok@kanardia.eu>
-References: <20260717120005.2087386-1-rok@kanardia.eu>
+	id 1wkj9h-00000002SA3-0Fcb
+	for linux-rockchip@lists.infradead.org;
+	Fri, 17 Jul 2026 14:03:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1784296988;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=VGJka35hl1u+NTZhYLLi9zxEwwQ2DlQIwAaKGDObA0o=;
+	b=Tp1Ny1shhyRLAmBWt0fPAJiWkBvxTPbYEf5Bq5XJFtnrrAE+KtK872rBrQmPz+PPa6UGv9
+	J8/d2i4neIXX5DoaDUnkYqTn3RVL1jHIvO6Fzt9mMlKF5tt8zbCPO/z98AeKQNzqUxrxvI
+	G6XJuXeQC8xX+yV16FnQhlRmcFUvQP8=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-1-xZKcB7tRNWWXh1oZfo_uWA-1; Fri,
+ 17 Jul 2026 10:03:04 -0400
+X-MC-Unique: xZKcB7tRNWWXh1oZfo_uWA-1
+X-Mimecast-MFC-AGG-ID: xZKcB7tRNWWXh1oZfo_uWA_1784296976
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0FDE8180074B;
+	Fri, 17 Jul 2026 14:02:55 +0000 (UTC)
+Received: from [192.168.1.153] (headnet05.pony-001.prod.iad2.dc.redhat.com [10.2.32.117])
+	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 39396180025B;
+	Fri, 17 Jul 2026 14:02:38 +0000 (UTC)
+From: Albert Esteve <aesteve@redhat.com>
+Date: Fri, 17 Jul 2026 16:02:04 +0200
+Subject: [PATCH v3 1/4] drm/panel: have drm_panel_add/remove manage a list
+ reference
 MIME-Version: 1.0
-Authentication-Results: th8.neoserv.si;
-	auth=pass (PLAIN) smtp.auth=rok@kanardia.eu
-X-NEOSERV-MailScanner-Information: Please contact the ISP for more information
-X-NEOSERV-MailScanner-ID: 1wkhHh-00000001fP1-22Ww
-X-NEOSERV-MailScanner: Found to be clean
-X-NEOSERV-MailScanner-SpamCheck: not spam, SpamAssassin (not cached,
-	score=1.31, required 7, ALL_TRUSTED -1.00, BAYES_50 0.80,
-	KAM_DMARC_QUARANTINE 1.50, KAM_DMARC_STATUS 0.01)
-X-NEOSERV-MailScanner-SpamScore: s
-X-NEOSERV-MailScanner-From: rok@kanardia.eu
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - th8.neoserv.si
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - kanardia.eu
-X-Get-Message-Sender-Via: th8.neoserv.si: authenticated_id: rok@kanardia.eu
-X-Authenticated-Sender: th8.neoserv.si: rok@kanardia.eu
+Message-Id: <20260717-drm_refcount_wiring-v3-1-023900c32e01@redhat.com>
+References: <20260717-drm_refcount_wiring-v3-0-023900c32e01@redhat.com>
+In-Reply-To: <20260717-drm_refcount_wiring-v3-0-023900c32e01@redhat.com>
+To: Neil Armstrong <neil.armstrong@linaro.org>, 
+ Jessica Zhang <jesszhan0024@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Inki Dae <inki.dae@samsung.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
+ Linus Walleij <linusw@kernel.org>, Marek Vasut <marex@denx.de>, 
+ Stefan Agner <stefan@agner.ch>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, Biju Das <biju.das.jz@bp.renesas.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>, 
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Chen-Yu Tsai <wens@kernel.org>, Samuel Holland <samuel@sholland.org>, 
+ Jyri Sarha <jyri.sarha@iki.fi>, Jingoo Han <jingoohan1@gmail.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Peter Griffin <peter.griffin@linaro.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Alison Wang <alison.wang@nxp.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Thierry Reding <thierry.reding@kernel.org>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+ linux-samsung-soc@vger.kernel.org, linux-tegra@vger.kernel.org, 
+ Albert Esteve <aesteve@redhat.com>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1784296938; l=1577;
+ i=aesteve@redhat.com; s=20260303; h=from:subject:message-id;
+ bh=FTIUpYJulTDPMntpPJg3cHAwQl8IpGYir+ZH1v5UeXQ=;
+ b=YrbusurGGSB7YvjF6ZccKN+vcKVUHQpfLac942+Cranf6atmGaR9SI9po6YBiflKgqH3V3Uoc
+ fE7eQSMY2CcDc+mWaONJx9YbrBOGvZ4cSQGsIw9XOJoVNKgKBXhpN1g
+X-Developer-Key: i=aesteve@redhat.com; a=ed25519;
+ pk=YSFz6sOHd2L45+Fr8DIvHTi6lSIjhLZ5T+rkxspJt1s=
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: C6H3387uw2zK1iBItThGbbJS3JSoTAy0GEotxjp4KGg_1784296976
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_050324_120770_D05605B1 
-X-CRM114-Status: UNSURE (   7.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260717_070309_200012_05E18900 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,58 +142,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the LVDS transmitter node. It has no register block of its own -
-it is programmed through the GRF and borrows the MIPI DSI0 D-PHY - so
-it carries no reg, only the DSITX_0 pclk, the phy and the VO power
-domain.
+The global panel_list holds raw pointers to drm_panel objects.
+Nothing prevents a panel from being freed while it is still linked
+in the list: if a driver's probe calls drm_panel_add() and then
+fails at a later step, panel->list remains in panel_list. Any
+subsequent call to of_drm_find_panel() that iterates the list will
+dereference freed memory.
 
-Disabled by default; boards that route LVDS enable it along with
-dsi_dphy0 and wire lvds_in to a VOP2 video port.
+Have drm_panel_add() acquire a reference via drm_panel_get() before
+inserting the panel into the list, and have drm_panel_remove() drop
+it via drm_panel_put() after removing the panel from the list. The
+global registry now holds a counted reference for as long as the
+panel is listed, ensuring the object outlives any concurrent lookup.
 
-Signed-off-by: Rok Markovic <rok@kanardia.eu>
-Assisted-by: Claude:claude-opus-4-8
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
+Signed-off-by: Albert Esteve <aesteve@redhat.com>
 ---
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 25 +++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ drivers/gpu/drm/drm_panel.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index 64bdd8b..9244b55 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -878,6 +878,31 @@
- 		};
- 	};
+diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
+index 2c5649e433dfb..545fe93dc28fe 100644
+--- a/drivers/gpu/drm/drm_panel.c
++++ b/drivers/gpu/drm/drm_panel.c
+@@ -81,6 +81,7 @@ static void drm_panel_init(struct drm_panel *panel, struct device *dev,
+  */
+ void drm_panel_add(struct drm_panel *panel)
+ {
++	drm_panel_get(panel);
+ 	mutex_lock(&panel_lock);
+ 	list_add_tail(&panel->list, &panel_list);
+ 	mutex_unlock(&panel_lock);
+@@ -98,6 +99,7 @@ void drm_panel_remove(struct drm_panel *panel)
+ 	mutex_lock(&panel_lock);
+ 	list_del_init(&panel->list);
+ 	mutex_unlock(&panel_lock);
++	drm_panel_put(panel);
+ }
+ EXPORT_SYMBOL(drm_panel_remove);
  
-+	lvds: lvds {
-+		compatible = "rockchip,rk3568-lvds";
-+		clocks = <&cru PCLK_DSITX_0>;
-+		clock-names = "pclk_lvds";
-+		phys = <&dsi_dphy0>;
-+		phy-names = "dphy";
-+		power-domains = <&power RK3568_PD_VO>;
-+		rockchip,grf = <&grf>;
-+		rockchip,output = "lvds";
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			lvds_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			lvds_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
-+
- 	qos_gpu: qos@fe128000 {
- 		compatible = "rockchip,rk3568-qos", "syscon";
- 		reg = <0x0 0xfe128000 0x0 0x20>;
+
 -- 
-2.43.0
+2.55.0
 
 
 _______________________________________________
