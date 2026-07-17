@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DCB3C44507
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 10:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A2A0C44516
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 10:16:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T43UW8zVRZunH/yLEKcbDA7yazYR0R09sPRGQtVNMiI=; b=qinudhoVMQgKj0
-	rShbjhsBaGOefJxDLvlrEROjnY1nRnYhA1x6TH6bR/KSHYZIy4Hu5q70FdX+T6kV7FU5LebeMBele
-	hgEBxQOH3Hxy8mOEX5yTOmZBTH/WWOo5HVuuzjHoR959qkKO878gwXqgR2Wp4jA54GihfhQsR2C01
-	zv0XHdIizKrqr0bh7cA5/jhyfNi61Jsyp3caSb9zQ81A+7skincLEelbtkl/kMFk6dKJM8yWw6GXg
-	9nzn6SVA44hBolmWnkHgtucJc5zX+qVAJhHgmWuT37sbpa9bEK/jMfxqvRmM/4W2q2XNRMl/zKMRG
-	1bmiKIVlHumvZu0KjZ9Q==;
+	List-Owner; bh=3TLH991N2FPjyQYcDsolka7Oza2yfONfjWfQ9xRMN98=; b=3NSR7ipg+6CEdS
+	ANJUrRWybgiiO4XABKpRJ2eEqrJeZJxobsCQSZhoyu5XyjoJdR0/dc1HTDOFkPtHgQF1hGYh1MLC0
+	GmHnEJyNJUFKSI6XtogtPU94HTpeF+H+dIZa7yoHwbddIpotBGK6s9fbLYCNt1T6Ah/hKR8yrq0sR
+	tk+dj8v0jfgXcBIU5af0jsSmgyXfR6aY/2h/wVYCnUB/MKO2yq4TjAoTP6NZNxMQxrOrIIJnOxyjl
+	30dbxxxkzGH2te3nG6G/3OHvIwx8COq4vYzc56OP9Yhxrjl2L5kC06NM2BRQWeWi30AKH+ia3lZfV
+	uG5RmkBRNyu+nFLZngCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkfOm-00000001uJ8-3jZR;
-	Fri, 17 Jul 2026 10:02:28 +0000
-Received: from mail-m1060.netease.com ([154.81.10.60])
+	id 1wkfc0-00000001w8F-2VeM;
+	Fri, 17 Jul 2026 10:16:08 +0000
+Received: from mail-m8232.xmail.ntesmail.com ([156.224.82.32])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkfOj-00000001uHE-0tLX;
-	Fri, 17 Jul 2026 10:02:27 +0000
+	id 1wkfbw-00000001w7L-1vKP;
+	Fri, 17 Jul 2026 10:16:06 +0000
 Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4695fcceb;
-	Fri, 17 Jul 2026 18:02:11 +0800 (GMT+08:00)
-Message-ID: <5c0c8de1-a340-43f9-8906-3fad22135001@rock-chips.com>
-Date: Fri, 17 Jul 2026 18:02:10 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 46967b36d;
+	Fri, 17 Jul 2026 18:15:57 +0800 (GMT+08:00)
+Message-ID: <b7d71a44-eb65-4b09-a378-225249276f65@rock-chips.com>
+Date: Fri, 17 Jul 2026 18:15:57 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 1/9] dt-bindings: npu: rockchip: add
- rockchip,rk3576-rknn-core
+Subject: Re: [RFC PATCH 4/9] iommu/rockchip: skip orphaned-fault banks in
+ rk_iommu_is_stall_active
 To: Jiaxing Hu <gahing@gahingwoo.com>, tomeu@tomeuvizoso.net,
  heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  joro@8bytes.org, will@kernel.org, robin.murphy@arm.com, ulfh@kernel.org,
@@ -43,23 +43,23 @@ Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
  iommu@lists.linux.dev, linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20260717085220.3212274-1-gahing@gahingwoo.com>
- <20260717085220.3212274-2-gahing@gahingwoo.com>
+ <20260717085220.3212274-5-gahing@gahingwoo.com>
 Content-Language: en-US
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20260717085220.3212274-2-gahing@gahingwoo.com>
-X-HM-Tid: 0a9f6f86c73309dakunmb26c5b98998f5
+In-Reply-To: <20260717085220.3212274-5-gahing@gahingwoo.com>
+X-HM-Tid: 0a9f6f9362c509dakunm876b5dc29bf1c
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDH0oaVktLS0JCQhhNHhodT1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTk5KVk4YS0MZSENMThkYTlYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=CanspQY3O3PM+ZI89p8f7mNRUoyig/xUchaPTtE8hUciWBgQ795Gqv0fE7uU1lrYOBOT5Hi+p3aVpBM/mNlv+pZ6ZKfUJMVJuJ4jzXfPrqerjWVgdAxj2wJlEqBSFQYMYYGPB360EhFYww06xbQgdvGhTmWMJYb1qBET3Y+Omek=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=euhR+NFnLdb+bsfUoV9W/QJPUb0t9RuSsI5XmiS1jBs=;
+	b=VdF6lLYZgjTQ1SOh7jv+ryfjA6mqipmpMUmAjwk+RDgVhmEzKJ3Cq95QdQl9AS63aMdsMjNRbFXWQyp/Hn4Pl6t2XWyaDLxgNBVp0nU2wPlW/xYli1ENHs1EpboToGcm6hkQXFdJEVKn//ZJTPMTzs64Dl2n3ke9MRpInqb1YVU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=dbpOBSnI+9jiw78wxoX70+0gie2FdspusOSCLhj95eY=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_030225_779169_F6B72972 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20260717_031604_776945_569D55BF 
+X-CRM114-Status: GOOD (  18.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,42 +76,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Jiaxing,
+Hello Jiaxing, 
 
 On 7/17/2026 4:50 PM, Jiaxing Hu wrote:
-> Document the RK3576 NPU core: add rockchip,rk3576-rknn-core to the
-> compatible enum and drop sram-supply from required (RK3576 has no NPU
-> SRAM supply).
+> Boot firmware can leave a PAGE_FAULT_ACTIVE condition in an IOMMU bank
+> before the driver has configured paging.  Such a bank shows:
+> 
+
+I'm not sure what's happening here. Does this issue still occur when
+you reset the MMU?
+
+>   PAGE_FAULT_ACTIVE=1  STALL_ACTIVE=0  IDLE=1
+> 
+> rk_iommu_is_stall_active() sees STALL_ACTIVE=0 and reports the whole
+> IOMMU as "not stalled", so any subsequent readx_poll_timeout() loop
+> waiting for the stall to complete never sees a passing result even
+> after the other banks have correctly entered stall mode.
+> 
+> Detect the orphaned-fault pattern (PAGE_FAULT_ACTIVE & !STALL_ACTIVE &
+> IDLE) and skip those banks in the stall check.  They have no in-flight
+> transaction, so they are already quiescent.
 > 
 > Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
 > ---
->  .../devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml      | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/iommu/rockchip-iommu.c | 20 +++++++++++++++++---
+>  1 file changed, 17 insertions(+), 3 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
-> index caca2a490..d904db3bf 100644
-> --- a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
-> +++ b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
-> @@ -21,6 +21,7 @@ properties:
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 0013cf196..f42ffcafb 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -378,9 +378,23 @@ static bool rk_iommu_is_stall_active(struct rk_iommu *iommu)
+>  	bool active = true;
+>  	int i;
 >  
->    compatible:
->      enum:
-> +      - rockchip,rk3576-rknn-core
->        - rockchip,rk3588-rknn-core
+> -	for (i = 0; i < iommu->num_mmu; i++)
+> -		active &= !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
+> -					   RK_MMU_STATUS_STALL_ACTIVE);
+> +	for (i = 0; i < iommu->num_mmu; i++) {
+> +		u32 status = rk_iommu_read(iommu->bases[i], RK_MMU_STATUS);
+> +
+> +		/*
+> +		 * A bank stuck with PAGE_FAULT_ACTIVE but without STALL_ACTIVE
+> +		 * and with IDLE set has an orphaned fault left by firmware before
+> +		 * paging was configured.  It cannot enter stall mode but has no
+> +		 * transaction in flight, so it is already quiescent.  Skip it
+> +		 * rather than treating it as "not stalled."
+> +		 */
+> +		if ((status & RK_MMU_STATUS_PAGE_FAULT_ACTIVE) &&
+> +		    !(status & RK_MMU_STATUS_STALL_ACTIVE) &&
+> +		    (status & RK_MMU_STATUS_IDLE))
+> +			continue;
+> +
+> +		active &= !!(status & RK_MMU_STATUS_STALL_ACTIVE);
+> +	}
 >  
->    reg:
-> @@ -75,7 +76,6 @@ required:
->    - resets
->    - reset-names
->    - npu-supply
-> -  - sram-supply
->
-
-You should not delete this item directly. Instead, use the compatible 
-to distinguish whether it is required.
-
->  additionalProperties: false
->  
+>  	return active;
+>  }
 
 -- 
 Best, 
