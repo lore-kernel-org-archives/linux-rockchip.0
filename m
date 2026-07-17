@@ -4,107 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07293C44515
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 08:00:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0768FC44514
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 08:01:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R/7IGJZ6AJVJRLIUIMvIr3+jM3gAWt4sjjdpp2UTtp0=; b=dh3LZpyvc8lJlK
-	8ifMtKc+W+mUzE5J3pI2ZWEK7/L986SNeDon4SnqX9TXpy9d2x7GlEGEMaHjkbHgQDNjNUwZutcFJ
-	EYa9K2LzToAZOI6vJAj/0M33rm3Gi0OHGv9HZEk6dZjvCBFba7K1Ngz8UEftZguo4laOzQIoMkjfV
-	sY6ASeaZ/qGkpYJ7ZC+ofz7ZpcDDj+cWaZcbj1SQb+Z+9AjjSJxamIX8RY0s1eZg2WH06KVcp41Iv
-	HVD7Q65oaHYCHDs/iHvblhAzqOWR2xXKCXDyDttXLwf6VrTNCKtNxP2HFg/BVAHxGUMD4uIGpZwLw
-	SghXNpQo3JnIjCNfYBtA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9U6cC67UIYkq4GEXfA3gqFhc/A0HGbQQtVLHPSpiMdU=; b=I6s9W8AJwI7/f+
+	pbP8EO1LUB8Qqk+uzX+IBSdH/oRMbWnMG5wWf419L0W8uwtMkO7zyHgqEejpW5Hr30QP+ZcYqrPGW
+	btbvVSA6+NFteLoXiAQSwylYh3IuOXhk6fvcFvLvjLwc4HBLL/ScPMVqUGtrBq24mko6bZ+N3+xZh
+	I1UzBkIxmcglFqJEObyvQRJCkGyg94CIONquxcpovkje4okFKID2lHw+WZVqJp0KEzmB4XcANJgkJ
+	reEL5Wg7rFv4VsUcAUrYsJlyjGg8vaLJrroV3nfeW7QyBrDq3KysVHRUGPPzMQlUqaHz4g2i318cx
+	hoTkDIQ49NzPGTfa+GRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkdUB-00000001XB5-2TWr;
-	Fri, 17 Jul 2026 07:59:55 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wkdVw-00000001Xha-2DLW;
+	Fri, 17 Jul 2026 08:01:44 +0000
+Received: from mail-japanwestazon11012027.outbound.protection.outlook.com ([40.107.75.27] helo=OS8PR02CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkdU3-00000001X48-3ALH
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 17 Jul 2026 07:59:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=HU+wBqy9NvGV22Z3snIreAVAlGAyOtwT2/uB1OzQT2E=; b=Jxjv1uGwkthQTIs0B76nbjU9+4
-	ADu9nWZNKVgMghRxKi6lLxiP27rekMiVNr4teoCZg3ijvxTwzv+UvP6pBfukJAhuVKbzvHn1wkKpI
-	9VBOYWq3kPVTwSzCXtflUAs3zIPSy81UrlSDxJ2gX405Az5YRy8WR0HvjliyO2D+1ptmt5C+7CypB
-	xqVAjInSTESW/+XSGU2+HynOJ/otSU6q0zTdBAVz5x6gr7EMN8nuqLLWinPQ/ZuTXf5XOPi/O6KI/
-	Q8NxvC/WPX2Ajq6FqVVsLTye/f3aAD+28DDrr3LpVNRHVroX+bDhDM8PKbIqpTw4YlpqlW4t56uOP
-	QL6u9KZg==;
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wkdTz-0000000EdaA-2jw9
-	for linux-rockchip@lists.infradead.org;
-	Fri, 17 Jul 2026 07:59:46 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-49548aebcd8so3290615e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 17 Jul 2026 00:59:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ahdrone.com; s=google; t=1784275180; x=1784879980; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=HU+wBqy9NvGV22Z3snIreAVAlGAyOtwT2/uB1OzQT2E=;
-        b=TjoNPki47HSdjO8ooTIPbV4fxc/Pnavi3W02KoANjt4kXzf0itC1jxmvjm+feOltb5
-         D0MYIaK0I5pBThZQuzEpFabRLCpL+L2psDrNsqnT+uQDt+GdOViP9ojt9sIac0wSTeBd
-         XFCSP7BW3dCxtWS6t2+JtUHCxG++sA6hfzSgXiq1OPwOLL/QIwyX18z2sZAjtzSK9pJ7
-         PWvrx0KFZwaS4NjAEHCi+5Wudd+9iO+3FtnKvpNHSL2y9hwF/C0k8ZbP+KFg8bbBhepK
-         3VpgL/gQa4vwYvD7lz3hBoDJQhhaIoiNyAYkDrpPRPI/LjSJQyrCbzDd6Jkjn1iXeYgN
-         i/Yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784275180; x=1784879980;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=HU+wBqy9NvGV22Z3snIreAVAlGAyOtwT2/uB1OzQT2E=;
-        b=XTuYaIrW76NIa58lJnhWvLTJo0dPj7k2WcUvhVSCb9M+OnnYTMbTxJJFdSGpkbw2Sf
-         NLtljU6lID2elCYcMuF7KnaKHYJOJxQJIZLa2UIENwDPy1APOi+oi45y8fMLxbnpmUxc
-         STY+3rPulirYETWma1UkZntXm7IMKFJmBH2mU3kX3xnyJ+vjMm2HrJvckSq+DuQRC6xl
-         lDDgjHOVWjuFiuBB56+rwMTXL8J3CzAOzZ8pCfDsA/RUfr0sXzJgf0t8YnT34l8ahiOy
-         dgbvgHY6+r+cGq6I+mskhvx5r6fiZX5x2JoT3Dvzqc2qQkaBPLh1P/V1KtN/0arH3Zrg
-         p7DA==
-X-Forwarded-Encrypted: i=1; AHgh+RppdELPZBirKcYNyy+8kJDc5EtTyQ1CBhzVLVCxiz1/1Xpt/ejVXjKHtvT2QORK4oBQSq6rAdcOwpGAbraMbw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy8v75QS0FByuR2plb58VjWPej5wHq8byzRxEPgcWjmbXpC4a+5
-	pRMrLIHCmXkH9rnsAPlnviZ91XwdFKn5WtqeqhaCdkUWLPpL6v3mIY0TEyIr5ZvViA==
-X-Gm-Gg: AfdE7ckHmlPnu2ALrhiTU/bv1+LvNVq1dUH+5tsnsLzLDrHdqMsKJ5OcOSUMP5BfO8q
-	AxihmubuFdTrLkGALaaXQA7WIyL0It+n3iEBuHkeSGivyMK6fr66l9jC2au65Aaguil0Fw4AHam
-	FVSawx2PHlb6mZaCs/dUi38M2fZXmNpFDcNtuQhq3NnHju26GO2YjuhssEjj+xDVPHbLvEUCmC7
-	LKY3XF0wU7RTfu8dWVCDNrQVjEFPFi3oi6bhrOPvKhXTaBYM0ewhsuXWaAmWeZbcOiJP6ggLDpq
-	MWa4pORFDMPbtzzfcniJCkPRAlc3Tn5tQa7aPUlmZnubitHr/htD7McXtdTN9ugld+bbaodoiXp
-	+COetMlE4kC37w2rxWEBVdL0w/xRgOy4tmEqbITDqSfTTYi2uPJF+CX5Bps193xHTGdC5aTm60C
-	4m8P/mvJ01ct+02lZpo7I6gbeR7reWNgSymOJu
-X-Received: by 2002:a05:600c:a0a:b0:493:ee2b:c876 with SMTP id 5b1f17b1804b1-4954a41302fmr18541995e9.35.1784275179941;
-        Fri, 17 Jul 2026 00:59:39 -0700 (PDT)
-Received: from rikus ([2a01:e0a:edb:6330:cc2f:bd70:58a:fcfb])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49549a3e2a9sm31709045e9.4.2026.07.17.00.59.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Jul 2026 00:59:39 -0700 (PDT)
-From: Hugo VALTIER <hugo@ahdrone.com>
-To: Linus Walleij <linusw@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Hugo VALTIER <hugo@ahdrone.com>,
-	linux-gpio@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Dmitry Yashin <dmt.yashin@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 3/3] pinctrl: rockchip: add support for RK3308B SoC
-Date: Fri, 17 Jul 2026 09:59:16 +0200
-Message-ID: <20260717075918.1869879-4-hugo@ahdrone.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260717075918.1869879-1-hugo@ahdrone.com>
-References: <20260717075918.1869879-1-hugo@ahdrone.com>
+	id 1wkdVt-00000001Xgs-2h0n;
+	Fri, 17 Jul 2026 08:01:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=XUNsu7v3dNmEGdRmrCIH961da77AklCaqAFfopFfRmvTPS/uVUIK6vyrEDFhvmXXsN6lynZ7vWcJVOtgh6BE8Hh2SZig4YIxpLm3mcJfOr0GZ/f564t0+ligmqxW627XEeSZkkdpR/MKsdJLoU0OC9HkRj/veKeOLhO9ybAoUFf/Az9kgCL3dhZX9jhH2BqdJFcj2P32o5tz0tEWkIqgMTKi8weIrCuw6i5TAQe/uLsXoll6bl4ZBVMKnIEzvetx5Mm1W+iLLmOHj4Zpx/V1+Tl6JaXIFEoqt+J5Zq++VIJak3z/2BvK2LrN9VytP17AjdVCpn1zTx/86GfpYNWk8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5MCo8v2+T6if2n6tsHrJXX5FivAvS8l2QmhjT4NCrog=;
+ b=oR+uLRbsF94MBwv+OVP1EGaaFOhY0HmiOEtR3+gP8dJGivhlqzKShrPBjfa87DMOXvQSD+0ajhCxSI/IOhkjq1IavBk2p18zXd3tQMrvUSaqraHwUVrEKc4/GH64xrZLuyvEXSk2p8kp1dsfCLNlbPFSRPj4EiQ2oXCwXxky4M4rv1pC+UR0axdEV3Sa3TvtfgJk10dH6vEaYz+Gkmy6HlP9BBf9QpurQF8MiTJG00AlkRWV3ppcFokiLTqCR45ssahgbpl+w5Ksyz6z+gyvUOIcmdDVGLHiaU83g/w2HEmhIY7kN2VxDgXkgQiVQqIHRKYREwaDtXBakflcgdddOQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5MCo8v2+T6if2n6tsHrJXX5FivAvS8l2QmhjT4NCrog=;
+ b=R6CTc1AesVBSJsD6zMZ/8mmxenXq1OeWk0+rT1qbidxOOS7h4zMu/Ght541fjgGk8yDo0hSvu6osRYV2NDrLUxaDsKWZLUEMYWK+Ntn6bBx7/DFyrVzOESvBRVhdsERJr5FWU8ZnEKAsjQdKv5Vw14fJvAMF9TmyWaaLalYq0cqe1Jkc1vxxem/5dWXSTjdIBCaErQVZBR5QsR4bafvwCvncU8HXZYOBoDvz1Ux/zxftaMUF5J1S+hAv4TKguIO4bx9pNVyKLnJD6gQqPbLnozBf15fdgnagOoIr81tncdxpNjZjPlcNJflMjzHpU2ISMpvjM9aERNNDVMDNhd2amw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
+ by TY0PR06MB5104.apcprd06.prod.outlook.com (2603:1096:400:1b8::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.12; Fri, 17 Jul
+ 2026 08:01:35 +0000
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b]) by SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b%6]) with mapi id 15.21.0223.011; Fri, 17 Jul 2026
+ 08:01:35 +0000
+From: Pan Chuang <panchuang@vivo.com>
+To: Corentin Labbe <clabbe.montjoie@gmail.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	"David S. Miller" <davem@davemloft.net>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Neal Liu <neal_liu@aspeedtech.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	=?UTF-8?q?Horia=20Geant=C4=83?= <horia.geanta@nxp.com>,
+	Pankaj Gupta <pankaj.gupta@nxp.com>,
+	Gaurav Jain <gaurav.jain@nxp.com>,
+	Gilad Ben-Yossef <gilad@benyossef.com>,
+	Hans Ulli Kroll <ulli.kroll@googlemail.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Antoine Tenart <atenart@kernel.org>,
+	Prabhjot Khurana <prabhjot.khurana@intel.com>,
+	Declan Murphy <declan.murphy@intel.com>,
+	Srujana Challa <schalla@marvell.com>,
+	Bharat Bhushan <bbhushan2@marvell.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Ovidiu Panait <ovidiu.panait.oss@gmail.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Eric Biggers <ebiggers@kernel.org>,
+	Pan Chuang <panchuang@vivo.com>,
+	Myeonghun Pak <mhun512@gmail.com>,
+	Ijae Kim <ae878000@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+	Kees Cook <kees@kernel.org>,
+	Thorsten Blum <thorsten.blum@linux.dev>,
+	Colin Ian King <colin.i.king@gmail.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	linux-crypto@vger.kernel.org (open list:ALLWINNER CRYPTO DRIVERS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Allwinner sunXi SoC support),
+	linux-sunxi@lists.linux.dev (open list:ARM/Allwinner sunXi SoC support),
+	linux-kernel@vger.kernel.org (open list),
+	linux-amlogic@lists.infradead.org (open list:ARM/Amlogic Meson SoC Crypto Drivers),
+	linux-aspeed@lists.ozlabs.org (moderated list:ASPEED CRYPTO DRIVER),
+	imx@lists.linux.dev (open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
+	linux-stm32@st-md-mailman.stormreply.com (moderated list:ARM/STM32 ARCHITECTURE)
+Subject: [PATCH 00/12] crypto: Remove redundant error messages on IRQ request failure
+Date: Fri, 17 Jul 2026 16:00:14 +0800
+Message-Id: <20260717080045.191538-1-panchuang@vivo.com>
+X-Mailer: git-send-email 2.34.1
+X-ClientProxiedBy: TP0P295CA0054.TWNP295.PROD.OUTLOOK.COM
+ (2603:1096:910:3::18) To SEZPR06MB5832.apcprd06.prod.outlook.com
+ (2603:1096:101:c8::12)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|TY0PR06MB5104:EE_
+X-MS-Office365-Filtering-Correlation-Id: 81ccfe5f-a030-4375-dba6-08dee3d99f3b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|376014|7416014|52116014|1800799024|921020|6133799003|38350700014|18002099003|56012099006|11063799006|10067099003;
+X-Microsoft-Antispam-Message-Info: 34dtc/qzKmODa2mZIzKVxc8EPzpyepLCrxe6387w4z3Zo9xVSc+lnG5PD+695FCCNVuFKvs+MUBKMLDVwMJV7w8HhT6MAXFPZ1MsDt1soiSAZ5tDo+Lmjj/j4hom5KmznByxBCcAjK0R/utcZkzw7Dd9a5fNakoXwB/26YwhlqHaSkh64kRitSZUWqhBiizoZC9x7zBm/ICRMo5zgV0KBJNl4MsJ9uvDhHQaUhspyDLpYIhzRTmPnaPmOAZqq1XfpwXdN8qUFy/2Iz0DbQ8+BWI5NJ+7f0w5ub/nxzKOh+dJ9sIYWfnA/8yxbtgg40a0XTa7sR8Opd0Ihxu0EliovffLN1Lfw/XyO3shItw/DoAh7VHuQEX3S7v4+r3eUNKFx7fuKk+Q1pVKnmc1rpboTtjJmc36uKwzRyscoND/qp3OuAP1ohCF74iGqEdEQxgnFM4lipEUJwOQob60lYGbLX8RJ+24qSKoicWfoR9HYjmz9TRnxkRj5oZVaFfLeyQDMpVpPmnwkyufv7wd0tyjQSoEdve4AFwr+B6fyF1rYoV27V0bB7+GrRLweHSoK1VkKFw5+nDb289bnhltj7NxLmOiacgXqzg60MpgmpJEMQNFRr7Ljz8M+vl8cutuSMbalbbx5qU6shjFscyIFaUXxHULYYk3QbuCv/ksfNCq5ARLy1t8lghmeuFaMiY2nTnEcg9XfG/4AQNA+yUlpicFO5/XwhsTgj1HrlzRNUfc6ghklceXdh0PVnG2vSOqlB4o
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(376014)(7416014)(52116014)(1800799024)(921020)(6133799003)(38350700014)(18002099003)(56012099006)(11063799006)(10067099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?n6TQh2/SOT+FoAdpro+aNdpoy+yyCp/6A4aiOy7Sc9u8Zg6Pc9nSOHhwnlNO?=
+ =?us-ascii?Q?2Y6ii6kYH4zSBgg0QwQpLB72gU85gxsoNNbyYVqK75cM1RoNmCWQ+vfB3Pd3?=
+ =?us-ascii?Q?W5sVe35aqhk80IG5TrxAZq7elb/wJ6h9E8IPr6Ka1GpoGbcILkzmHkkLF8xS?=
+ =?us-ascii?Q?lV3/BfImXulmc7iylm3t3IB4ib+2e7hT8cOR7cjZ5h3E8RdwUlc4yb0PhVqL?=
+ =?us-ascii?Q?vFYs41vvE6ii2ySQG9e5GlbslqqX/ukEWppNDo5VK+R40tG8VDH4kOkqsW57?=
+ =?us-ascii?Q?dADLjVYmS6K5neE9kmos9W1H0uCsbNxrD3MKDRRuYHhKiX7QvUfzhlZA86xD?=
+ =?us-ascii?Q?+YnEVIGwNcZ59pfO85AuorAbb2qZCCvPDRFmd3DTr7AqTka4wkhCnTrw3wwN?=
+ =?us-ascii?Q?mArm2eOJ1j3wAELnzlurvTUrZdA/wQ9zOhhIyMeNeg8yDwItbm9C8GtWL5dc?=
+ =?us-ascii?Q?T85LizYlkmN54QBS7FQYjqx/GWSkaC5SfR/0WS9UWyDSjEwVkWYx+5Stm2Th?=
+ =?us-ascii?Q?XIciTETf/N/08+8TMmoC/yO+0Y2fYpk95DGK1k0jx7irJkUcznqhUPkVk2W5?=
+ =?us-ascii?Q?XWCcSGSYnZu8BEAJ5e+v2R+McTSmpzMOnPQ1r7E771vloum9QBaGTuwEELf/?=
+ =?us-ascii?Q?nfewV7u4GcaTyGgbkVkc/rowZqqBVzBnOJjFPdjSqSsmRZa/4oVRNn/QjH29?=
+ =?us-ascii?Q?1r69rNTQxsXwL4EhjiHiGFUkXvOu4er3+O5/6DJN0T3CiwCDaDGqdvIRnWi3?=
+ =?us-ascii?Q?8rOgqGwgEEffcbLdY9CsKL3bn8yn7rbAztUVg9MLmDA+/XyJhV2Q7VQ27OtH?=
+ =?us-ascii?Q?8djBA4AdTzxKcDL0nvkCPD1lOES2R+dYUSsiTQnKJkjc8/tEMlMdW+cefpiV?=
+ =?us-ascii?Q?V2B/9oJhntoQTVTsmC/Lo1JkrJXPjd8qtajk9m9yzleLTK121YC/T/tbX4Pd?=
+ =?us-ascii?Q?nVkjaOPVeuGwaJ5cQpNCRf8m3KezNQdyy7E2/izP7fYqmplxZYIrmfIBuwyf?=
+ =?us-ascii?Q?STP3vJ5E6JvJPDGPEaepaWrBQM88AG0/JOsZSpLyK3nR7q0TCgHWOwJ6zoI8?=
+ =?us-ascii?Q?sN6f5xPOwG1HiOh94HngXc4rx3myTlsfOx7zqxrLGz3tn7EYwvgyU2SNSTI+?=
+ =?us-ascii?Q?VxRjGcURZ4uYTVKi9Z8vBjjDoFDaAjRYgUXQ8RooEKmQZrKfHkjE3mxwLhOb?=
+ =?us-ascii?Q?BgBe4e5DAhybIZRtKfttQZ7WQ6YkNz721BFYCMLXH+NHsJuVWTkfAbTofvGc?=
+ =?us-ascii?Q?TfxxKI3hG70xcjd1Qkr+pFRbl3cNkWgxD3GO7/nKwdiGiZDy3ryzYXgtALEC?=
+ =?us-ascii?Q?ySJGK33z6feMZ62njRmJqR/UEwyoDx+KsofdiS9clELHo6IX9GgRKhqlXFhT?=
+ =?us-ascii?Q?jfNYMSMNh2iy88sosLfAJgoahSEXtABiqOtGs17LDNfz+rpYcPEF9mS/LUxC?=
+ =?us-ascii?Q?nmVL6dmIy/fBhmshx8CxDnESNIgla7slHx3Sm9tsbqe1wFOPFPll/CGxWXa8?=
+ =?us-ascii?Q?L2UNA0cXLrQaOjY/8PMRy+ueu9bTc4nMxkDJOlKe/r2iA1Ytj3vgwDpQZsii?=
+ =?us-ascii?Q?89kyQOdjOU+3k/mUQlHsusNGuMijvPnzXewtZMcRlllFxTK+uTNqhern0GIh?=
+ =?us-ascii?Q?//ynYVtEhaD9aqzwpIhZ37qrtyyjm/F+z/FjHrbObLrmY75W0dH2ZbzabLBF?=
+ =?us-ascii?Q?VBdgsS6noAIqH0Tz8pGEMMAsSPKu/8ZAduFxtNGw0KOC3CPH9CWQd3y8xcYL?=
+ =?us-ascii?Q?J3wZm6ZBYQ=3D=3D?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 81ccfe5f-a030-4375-dba6-08dee3d99f3b
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5832.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2026 08:01:35.4525
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: BscJEqqE/kOVHY9RaaBKm3rOHs8KQOcBMLOW1ZCpNVm9nd3wtICwdGsB6DFxbb3/mtswHwwRuqKZm06sHU/OpA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR06MB5104
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_085944_428730_315CB9A1 
-X-CRM114-Status: GOOD (  22.90  )
+X-CRM114-CacheID: sfid-20260717_010141_834425_87DD7481 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,334 +180,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3308B is a revision of the RK3308 including different iomux
-register layout.
-Several pins (GPIO2_A2, GPIO2_A3, GPIO2_C0, GPIO3_B2, GPIO3_B3)
-have 3-bit mux fields in new GRF registers (SOC_CON13 at 0x608 and
-SOC_CON15 at 0x610) that override the standard 2-bit fields.
-I believe the bootloader sets the sel_src_ctrl bits to activate these
-new registers, which causes the kernel's writes to the old 2-bit iomux
-registers to be silently ignored.
+Commit 55b48e23f5c4 ("genirq/devres: Add error handling in
+devm_request_*_irq()") added automatic error logging to
+devm_request_threaded_irq() and devm_request_any_context_irq()
+via the new devm_request_result() helper, which prints device
+name, IRQ number, handler functions, and error code on failure.
 
-Without this patch, SPI1, I2C3, and other peripherals that depend on
-these pins are completely non-functional on my RK3308B boards.
+Since devm_request_irq() is a static inline wrapper around
+devm_request_threaded_irq(), it also benefits from this
+automatic logging.
 
-Detect the SoC variant at runtime by reading the chip_id register at GRF
-offset 0x800 (0xcea = RK3308, 0x3308/0x3308c = RK3308B), as requested
-by reviewers of the earlier series.
-When RK3308B is detected, swap in the correct mux_recalced and mux_route
-tables and write the sel_src_ctrl bits to ensure the 3-bit mux registers
-are active.
+Remove the now-redundant dev_err() and dev_err_probe() calls
+in crypto drivers that follow these devm_request_*_irq()
+functions, as the core now provides more detailed diagnostic
+information on failure.
 
-This is a rework of Dmitry Yashin's series [1] which used a separate
-device tree compatible string ("rockchip,rk3308b-pinctrl") to
-distinguish the variants.
-Reviewers Luca Ceresoli and Heiko Stuebner agreed that runtime detection
-was preferable since boards are manufactured with both RK3308 and RK3308B
-using the same device tree.
+Pan Chuang (12):
+  crypto: allwinner - Remove redundant dev_err()
+  crypto: amlogic - Remove redundant dev_err()
+  crypto: aspeed - Remove redundant dev_err()
+  crypto: Remove redundant dev_err()/dev_err_probe()
+  crypto: caam - Remove redundant dev_err()
+  crypto: ccree - Remove redundant dev_err()
+  crypto: sl3516 - Remove redundant dev_err()
+  crypto: safexcel - Remove redundant dev_err()
+  crypto: keembay - Remove redundant dev_err()
+  crypto: octeontx2 - Remove redundant dev_err()
+  crypto: rockchip - Remove redundant dev_err()
+  crypto: stm32 - Remove redundant dev_err()
 
-Jonas Karlman implemented runtime detection based on the GRF_CHIP_ID
-register [2]. Reviewers asked for more changes (constifying some
-arrays), but the series was never resubmitted and was dropped.
+ drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c   | 4 +---
+ drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c   | 4 +---
+ drivers/crypto/amlogic/amlogic-gxl-core.c           | 4 +---
+ drivers/crypto/aspeed/aspeed-acry.c                 | 4 +---
+ drivers/crypto/aspeed/aspeed-hace.c                 | 4 +---
+ drivers/crypto/atmel-aes.c                          | 4 +---
+ drivers/crypto/atmel-sha.c                          | 4 +---
+ drivers/crypto/atmel-tdes.c                         | 4 +---
+ drivers/crypto/caam/jr.c                            | 2 --
+ drivers/crypto/ccree/cc_driver.c                    | 4 +---
+ drivers/crypto/gemini/sl3516-ce-core.c              | 4 +---
+ drivers/crypto/img-hash.c                           | 4 +---
+ drivers/crypto/inside-secure/safexcel.c             | 4 +---
+ drivers/crypto/intel/keembay/keembay-ocs-aes-core.c | 4 +---
+ drivers/crypto/intel/keembay/keembay-ocs-ecc.c      | 4 +---
+ drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c | 4 +---
+ drivers/crypto/marvell/octeontx2/otx2_cptpf_main.c  | 5 +----
+ drivers/crypto/mxs-dcp.c                            | 8 ++------
+ drivers/crypto/omap-aes.c                           | 4 +---
+ drivers/crypto/omap-des.c                           | 4 +---
+ drivers/crypto/omap-sham.c                          | 5 +----
+ drivers/crypto/rockchip/rk3288_crypto.c             | 4 +---
+ drivers/crypto/sahara.c                             | 3 +--
+ drivers/crypto/stm32/stm32-cryp.c                   | 4 +---
+ drivers/crypto/stm32/stm32-hash.c                   | 4 +---
+ 25 files changed, 25 insertions(+), 78 deletions(-)
 
-I run this patch on my Rock Pi S boards, the newer ones I've got in
-2024 use the RK3308B. And thanks to runtime detection we should still
-be compatible with older devices (but I couldn't test on RK3308 as I
-don't have any).
-
-[1] https://lore.kernel.org/all/20240515121634.23945-1-dmt.yashin@gmail.com/
-[2] https://lore.kernel.org/all/20240604141020.21725-1-dmt.yashin@gmail.com/
-
-Signed-off-by: Hugo VALTIER <hugo@ahdrone.com>
----
- drivers/pinctrl/pinctrl-rockchip.c | 217 +++++++++++++++++++++++++++++
- drivers/pinctrl/pinctrl-rockchip.h |   1 +
- 2 files changed, 218 insertions(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 549834501e7f..e90e13c5d7f2 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -721,6 +721,115 @@ static const struct rockchip_mux_recalced_data rk3308_mux_recalced_data[] = {
- 	},
- };
- 
-+static const struct rockchip_mux_recalced_data rk3308b_mux_recalced_data[] = {
-+	{
-+		/* gpio1b6_sel */
-+		.num = 1,
-+		.pin = 14,
-+		.reg = 0x28,
-+		.bit = 12,
-+		.mask = 0xf
-+	}, {
-+		/* gpio1b7_sel */
-+		.num = 1,
-+		.pin = 15,
-+		.reg = 0x2c,
-+		.bit = 0,
-+		.mask = 0x3
-+	}, {
-+		/* gpio1c2_sel */
-+		.num = 1,
-+		.pin = 18,
-+		.reg = 0x30,
-+		.bit = 4,
-+		.mask = 0xf
-+	}, {
-+		/* gpio1c3_sel */
-+		.num = 1,
-+		.pin = 19,
-+		.reg = 0x30,
-+		.bit = 8,
-+		.mask = 0xf
-+	}, {
-+		/* gpio1c4_sel */
-+		.num = 1,
-+		.pin = 20,
-+		.reg = 0x30,
-+		.bit = 12,
-+		.mask = 0xf
-+	}, {
-+		/* gpio1c5_sel */
-+		.num = 1,
-+		.pin = 21,
-+		.reg = 0x34,
-+		.bit = 0,
-+		.mask = 0xf
-+	}, {
-+		/* gpio1c6_sel */
-+		.num = 1,
-+		.pin = 22,
-+		.reg = 0x34,
-+		.bit = 4,
-+		.mask = 0xf
-+	}, {
-+		/* gpio1c7_sel */
-+		.num = 1,
-+		.pin = 23,
-+		.reg = 0x34,
-+		.bit = 8,
-+		.mask = 0xf
-+	}, {
-+		/* gpio2a2_sel_plus */
-+		.num = 2,
-+		.pin = 2,
-+		.reg = 0x608,
-+		.bit = 0,
-+		.mask = 0x7
-+	}, {
-+		/* gpio2a3_sel_plus */
-+		.num = 2,
-+		.pin = 3,
-+		.reg = 0x608,
-+		.bit = 4,
-+		.mask = 0x7
-+	}, {
-+		/* gpio2c0_sel_plus */
-+		.num = 2,
-+		.pin = 16,
-+		.reg = 0x610,
-+		.bit = 8,
-+		.mask = 0x7
-+	}, {
-+		/* gpio3b2_sel_plus */
-+		.num = 3,
-+		.pin = 10,
-+		.reg = 0x610,
-+		.bit = 0,
-+		.mask = 0x7
-+	}, {
-+		/* gpio3b3_sel_plus */
-+		.num = 3,
-+		.pin = 11,
-+		.reg = 0x610,
-+		.bit = 4,
-+		.mask = 0x7
-+	}, {
-+		/* gpio3b4_sel */
-+		.num = 3,
-+		.pin = 12,
-+		.reg = 0x68,
-+		.bit = 8,
-+		.mask = 0xf
-+	}, {
-+		/* gpio3b5_sel */
-+		.num = 3,
-+		.pin = 13,
-+		.reg = 0x68,
-+		.bit = 12,
-+		.mask = 0xf
-+	},
-+};
-+
- static const struct rockchip_mux_recalced_data rk3328_mux_recalced_data[] = {
- 	{
- 		/* gpio2_b7_sel */
-@@ -1016,6 +1125,35 @@ static const struct rockchip_mux_route_data rk3308_mux_route_data[] = {
- 	RK_MUXROUTE_SAME(2, RK_PA4, 3, 0x600, BIT(16 + 2) | BIT(2)), /* pdm-clkm-m2 */
- };
- 
-+static const struct rockchip_mux_route_data rk3308b_mux_route_data[] = {
-+	RK_MUXROUTE_SAME(0, RK_PC3, 1, 0x314, BIT(16 + 0) | BIT(0)), /* rtc_clk */
-+	RK_MUXROUTE_SAME(1, RK_PC6, 2, 0x314, BIT(16 + 2) | BIT(16 + 3)), /* uart2_rxm0 */
-+	RK_MUXROUTE_SAME(4, RK_PD2, 2, 0x314, BIT(16 + 2) | BIT(16 + 3) | BIT(2)), /* uart2_rxm1 */
-+	RK_MUXROUTE_SAME(0, RK_PB7, 2, 0x608, BIT(16 + 8) | BIT(16 + 9)), /* i2c3_sdam0 */
-+	RK_MUXROUTE_SAME(3, RK_PB4, 2, 0x608, BIT(16 + 8) | BIT(16 + 9) | BIT(8)), /* i2c3_sdam1 */
-+	RK_MUXROUTE_SAME(2, RK_PA0, 3, 0x608, BIT(16 + 8) | BIT(16 + 9) | BIT(9)), /* i2c3_sdam2 */
-+	RK_MUXROUTE_SAME(1, RK_PA3, 2, 0x308, BIT(16 + 3)), /* i2s-8ch-1-sclktxm0 */
-+	RK_MUXROUTE_SAME(1, RK_PA4, 2, 0x308, BIT(16 + 3)), /* i2s-8ch-1-sclkrxm0 */
-+	RK_MUXROUTE_SAME(1, RK_PB5, 2, 0x308, BIT(16 + 3) | BIT(3)), /* i2s-8ch-1-sclktxm1 */
-+	RK_MUXROUTE_SAME(1, RK_PB6, 2, 0x308, BIT(16 + 3) | BIT(3)), /* i2s-8ch-1-sclkrxm1 */
-+	RK_MUXROUTE_SAME(1, RK_PA4, 3, 0x308, BIT(16 + 12) | BIT(16 + 13)), /* pdm-clkm0 */
-+	RK_MUXROUTE_SAME(1, RK_PB6, 4, 0x308, BIT(16 + 12) | BIT(16 + 13) | BIT(12)), /* pdm-clkm1 */
-+	RK_MUXROUTE_SAME(2, RK_PA6, 2, 0x308, BIT(16 + 12) | BIT(16 + 13) | BIT(13)), /* pdm-clkm2 */
-+	RK_MUXROUTE_SAME(2, RK_PA4, 3, 0x600, BIT(16 + 2) | BIT(2)), /* pdm-clkm-m2 */
-+	RK_MUXROUTE_SAME(3, RK_PB2, 3, 0x314, BIT(16 + 9)), /* spi1_miso */
-+	RK_MUXROUTE_SAME(2, RK_PA4, 2, 0x314, BIT(16 + 9) | BIT(9)), /* spi1_miso_m1 */
-+	RK_MUXROUTE_SAME(0, RK_PB3, 3, 0x314, BIT(16 + 10) | BIT(16 + 11)), /* owire_m0 */
-+	RK_MUXROUTE_SAME(1, RK_PC6, 7, 0x314, BIT(16 + 10) | BIT(16 + 11) | BIT(10)), /* owire_m1 */
-+	RK_MUXROUTE_SAME(2, RK_PA2, 5, 0x314, BIT(16 + 10) | BIT(16 + 11) | BIT(11)), /* owire_m2 */
-+	RK_MUXROUTE_SAME(0, RK_PB3, 2, 0x314, BIT(16 + 12) | BIT(16 + 13)), /* can_rxd_m0 */
-+	RK_MUXROUTE_SAME(1, RK_PC6, 5, 0x314, BIT(16 + 12) | BIT(16 + 13) | BIT(12)), /* can_rxd_m1 */
-+	RK_MUXROUTE_SAME(2, RK_PA2, 4, 0x314, BIT(16 + 12) | BIT(16 + 13) | BIT(13)), /* can_rxd_m2 */
-+	RK_MUXROUTE_SAME(1, RK_PC4, 3, 0x314, BIT(16 + 14)), /* mac_rxd0_m0 */
-+	RK_MUXROUTE_SAME(4, RK_PA2, 2, 0x314, BIT(16 + 14) | BIT(14)), /* mac_rxd0_m1 */
-+	RK_MUXROUTE_SAME(3, RK_PB4, 4, 0x314, BIT(16 + 15)), /* uart3_rx */
-+	RK_MUXROUTE_SAME(0, RK_PC1, 3, 0x314, BIT(16 + 15) | BIT(15)), /* uart3_rx_m1 */
-+};
-+
- static const struct rockchip_mux_route_data rk3328_mux_route_data[] = {
- 	RK_MUXROUTE_SAME(1, RK_PA1, 2, 0x50, BIT(16) | BIT(16 + 1)), /* uart2dbg_rxm0 */
- 	RK_MUXROUTE_SAME(2, RK_PA1, 1, 0x50, BIT(16) | BIT(16 + 1) | BIT(0)), /* uart2dbg_rxm1 */
-@@ -3486,6 +3624,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
- 	case RK3188:
- 	case RK3288:
- 	case RK3308:
-+	case RK3308B:
- 	case RK3328:
- 	case RK3368:
- 	case RK3399:
-@@ -3552,6 +3691,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 	case RK3188:
- 	case RK3288:
- 	case RK3308:
-+	case RK3308B:
- 	case RK3328:
- 	case RK3368:
- 	case RK3399:
-@@ -3848,6 +3988,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 	case RK3188:
- 	case RK3288:
- 	case RK3308:
-+	case RK3308B:
- 	case RK3328:
- 	case RK3368:
- 	case RK3399:
-@@ -4452,6 +4593,76 @@ static int __maybe_unused rockchip_pinctrl_resume(struct device *dev)
- static SIMPLE_DEV_PM_OPS(rockchip_pinctrl_dev_pm_ops, rockchip_pinctrl_suspend,
- 			 rockchip_pinctrl_resume);
- 
-+#define RK3308B_GRF_SOC_CON13			0x608
-+#define RK3308B_GRF_SOC_CON15			0x610
-+
-+/* RK3308B_GRF_SOC_CON13 */
-+#define RK3308B_GRF_I2C3_IOFUNC_SRC_CTRL	(BIT(16 + 10) | BIT(10))
-+#define RK3308B_GRF_GPIO2A3_SEL_SRC_CTRL	(BIT(16 + 7)  | BIT(7))
-+#define RK3308B_GRF_GPIO2A2_SEL_SRC_CTRL	(BIT(16 + 3)  | BIT(3))
-+
-+/* RK3308B_GRF_SOC_CON15 */
-+#define RK3308B_GRF_GPIO2C0_SEL_SRC_CTRL	(BIT(16 + 11) | BIT(11))
-+#define RK3308B_GRF_GPIO3B3_SEL_SRC_CTRL	(BIT(16 + 7)  | BIT(7))
-+#define RK3308B_GRF_GPIO3B2_SEL_SRC_CTRL	(BIT(16 + 3)  | BIT(3))
-+
-+/*
-+ * RK3308B has 3-bit gpio##_sel_plus iomuxes over some 2-bit old ones.
-+ * Enable them by setting the gpio##_sel_src_ctrl registers.
-+ */
-+static int rk3308b_soc_sel_src_init(struct rockchip_pinctrl *info)
-+{
-+	int ret;
-+
-+	ret = regmap_write(info->regmap_base, RK3308B_GRF_SOC_CON13,
-+			   RK3308B_GRF_I2C3_IOFUNC_SRC_CTRL |
-+			   RK3308B_GRF_GPIO2A3_SEL_SRC_CTRL |
-+			   RK3308B_GRF_GPIO2A2_SEL_SRC_CTRL);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_write(info->regmap_base, RK3308B_GRF_SOC_CON15,
-+			    RK3308B_GRF_GPIO2C0_SEL_SRC_CTRL |
-+			    RK3308B_GRF_GPIO3B3_SEL_SRC_CTRL |
-+			    RK3308B_GRF_GPIO3B2_SEL_SRC_CTRL);
-+}
-+
-+#define RK3308_GRF_CHIP_ID	0x800
-+
-+static int rk3308_soc_data_init(struct rockchip_pinctrl *info)
-+{
-+	struct rockchip_pin_ctrl *ctrl = info->ctrl;
-+	unsigned int chip_id;
-+	int ret;
-+
-+	ret = regmap_read(info->regmap_base, RK3308_GRF_CHIP_ID, &chip_id);
-+	if (ret)
-+		return ret;
-+
-+	switch (chip_id) {
-+	case 0xcea:
-+		/* Original RK3308, no changes needed */
-+		break;
-+	case 0x3308:
-+	case 0x3308c:
-+		ctrl->type = RK3308B;
-+		ctrl->iomux_recalced = rk3308b_mux_recalced_data;
-+		ctrl->niomux_recalced = ARRAY_SIZE(rk3308b_mux_recalced_data);
-+		ctrl->iomux_routes = rk3308b_mux_route_data;
-+		ctrl->niomux_routes = ARRAY_SIZE(rk3308b_mux_route_data);
-+
-+		ret = rk3308b_soc_sel_src_init(info);
-+		if (ret)
-+			return ret;
-+		break;
-+	default:
-+		return dev_err_probe(info->dev, -EINVAL,
-+				     "Unknown RK3308 chip_id: 0x%x\n", chip_id);
-+	}
-+
-+	return 0;
-+}
-+
- static int rockchip_pinctrl_probe(struct platform_device *pdev)
- {
- 	struct rockchip_pinctrl *info;
-@@ -4514,6 +4725,12 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 	/* try to find the optional reference to the ioc1 syscon */
- 	info->regmap_ioc1 = syscon_regmap_lookup_by_phandle_optional(np, "rockchip,ioc1");
- 
-+	if (ctrl->type == RK3308) {
-+		ret = rk3308_soc_data_init(info);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	iomux_recalced_routes_init(info);
- 
- 	ret = rockchip_pinctrl_register(pdev, info);
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index dd07a16f615c..914582c87dd8 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -194,6 +194,7 @@ enum rockchip_pinctrl_type {
- 	RK3188,
- 	RK3288,
- 	RK3308,
-+	RK3308B,
- 	RK3328,
- 	RK3368,
- 	RK3399,
 -- 
-2.55.0
+2.34.1
 
 
 _______________________________________________
