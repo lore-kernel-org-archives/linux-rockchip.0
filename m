@@ -4,165 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0768FC44514
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 08:01:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19601C44514
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 08:02:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9U6cC67UIYkq4GEXfA3gqFhc/A0HGbQQtVLHPSpiMdU=; b=I6s9W8AJwI7/f+
-	pbP8EO1LUB8Qqk+uzX+IBSdH/oRMbWnMG5wWf419L0W8uwtMkO7zyHgqEejpW5Hr30QP+ZcYqrPGW
-	btbvVSA6+NFteLoXiAQSwylYh3IuOXhk6fvcFvLvjLwc4HBLL/ScPMVqUGtrBq24mko6bZ+N3+xZh
-	I1UzBkIxmcglFqJEObyvQRJCkGyg94CIONquxcpovkje4okFKID2lHw+WZVqJp0KEzmB4XcANJgkJ
-	reEL5Wg7rFv4VsUcAUrYsJlyjGg8vaLJrroV3nfeW7QyBrDq3KysVHRUGPPzMQlUqaHz4g2i318cx
-	hoTkDIQ49NzPGTfa+GRA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GDzL/d2qjQ+KNIK4Mf0YrnekQFOI0zsT0gqo9/gl9n0=; b=qtVjAyRQmC1Bib
+	wpYCEo/asVXMp/0E3bXy87tSOKOLPDA/frIPdUBtobjS0QhcnoBeIt8SZQibn4zL/uReCWsD6lNcO
+	dieEIftwk0zav4lyBVAzi290ogW78HcyZp0/bdG7WeCPfFncXH9+uLWzLcBu5c2o/HHa8IKuVeOE0
+	zmLFvG2F0NhfDcevbx2nZdrNDQIGUUfF70vwe3ulIpZS5IemcdKNaqfipuSk0VoH/zSAJOfdCiEjl
+	Epiv9r0ELzMgTuVXdLNDjZ4DnEyllk46HGee4Spw0rxpGn5vV1jriK8A2Dw+5b3ZtyZO8quK1fvMz
+	D5PD/MnW39+3OgcPSFeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkdVw-00000001Xha-2DLW;
-	Fri, 17 Jul 2026 08:01:44 +0000
-Received: from mail-japanwestazon11012027.outbound.protection.outlook.com ([40.107.75.27] helo=OS8PR02CU002.outbound.protection.outlook.com)
+	id 1wkdWf-00000001Y5t-2rn2;
+	Fri, 17 Jul 2026 08:02:29 +0000
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkdVt-00000001Xgs-2h0n;
-	Fri, 17 Jul 2026 08:01:42 +0000
+	id 1wkdWc-00000001Y3X-3OUk;
+	Fri, 17 Jul 2026 08:02:28 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XUNsu7v3dNmEGdRmrCIH961da77AklCaqAFfopFfRmvTPS/uVUIK6vyrEDFhvmXXsN6lynZ7vWcJVOtgh6BE8Hh2SZig4YIxpLm3mcJfOr0GZ/f564t0+ligmqxW627XEeSZkkdpR/MKsdJLoU0OC9HkRj/veKeOLhO9ybAoUFf/Az9kgCL3dhZX9jhH2BqdJFcj2P32o5tz0tEWkIqgMTKi8weIrCuw6i5TAQe/uLsXoll6bl4ZBVMKnIEzvetx5Mm1W+iLLmOHj4Zpx/V1+Tl6JaXIFEoqt+J5Zq++VIJak3z/2BvK2LrN9VytP17AjdVCpn1zTx/86GfpYNWk8w==
+ b=v7/0MVbE1fMqm/Pa+FqmHupG4aqfkX0lRAzevLPaellG76A6AGRGWWHP6Gfyx3Z3VV1YL/gpZ/PnHrTQiF0cGpRSuu5W+ycwTA6uvsTXrSiKQFjk2H520gqAw/gBJEkeRtE4acM+qIViG6milvAxuCqW2Hc7xhmwAuzQyTA8fq7Pxs+w9OVrJRUK4ErPTmnn1yHxueBMbgiqiRogID5HmRVa4SMLUIfvAydJz0mVah2A4414e1R07bhiwIW2fchxcUVkTwDcAK+U3AfXPpxK0ML+gg1ytZTxsaTlCAnXqOJgRs4EnuyLh/QaLaVhjqg7mXAfwX1+KCY0tU6MZTfpyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5MCo8v2+T6if2n6tsHrJXX5FivAvS8l2QmhjT4NCrog=;
- b=oR+uLRbsF94MBwv+OVP1EGaaFOhY0HmiOEtR3+gP8dJGivhlqzKShrPBjfa87DMOXvQSD+0ajhCxSI/IOhkjq1IavBk2p18zXd3tQMrvUSaqraHwUVrEKc4/GH64xrZLuyvEXSk2p8kp1dsfCLNlbPFSRPj4EiQ2oXCwXxky4M4rv1pC+UR0axdEV3Sa3TvtfgJk10dH6vEaYz+Gkmy6HlP9BBf9QpurQF8MiTJG00AlkRWV3ppcFokiLTqCR45ssahgbpl+w5Ksyz6z+gyvUOIcmdDVGLHiaU83g/w2HEmhIY7kN2VxDgXkgQiVQqIHRKYREwaDtXBakflcgdddOQ==
+ bh=Ph7XZ5HzyrrdWBRpy0FhcFPZxt5xGUHGxaQsRJCDDj0=;
+ b=YnI77vYKNpYe4wosoR4gdEswl6yGyKuxlc8sLJ3Ylui35JpAdKQoT5I5HqeMr8b7eqCyGk/w+lQo3vmxZSvmeaJbyM+taC8X2kFhHJiv2eqAL8xchFR93wpl4GdxB/2Utb75WEpiWBmE2z/qqkx58yc7VvsvqxS7gBxzGdQArrJRBjJtQ+iqTg9g8KGr7n4OSsxsNFobIK7yPjW0U8WaIqlLe4w4dSNuNdI9AJZ6VgNBlU921N0UIAH1hxMmSBACRVLjE3+F3Woeu+75hakIdOnGYJPqU+d5/pdeYOaIFzYQfqGaCzl/ygrR2Lj0MC6XgilQtUcJwOFNFYMZ8GzHUg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
  dkim=pass header.d=vivo.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5MCo8v2+T6if2n6tsHrJXX5FivAvS8l2QmhjT4NCrog=;
- b=R6CTc1AesVBSJsD6zMZ/8mmxenXq1OeWk0+rT1qbidxOOS7h4zMu/Ght541fjgGk8yDo0hSvu6osRYV2NDrLUxaDsKWZLUEMYWK+Ntn6bBx7/DFyrVzOESvBRVhdsERJr5FWU8ZnEKAsjQdKv5Vw14fJvAMF9TmyWaaLalYq0cqe1Jkc1vxxem/5dWXSTjdIBCaErQVZBR5QsR4bafvwCvncU8HXZYOBoDvz1Ux/zxftaMUF5J1S+hAv4TKguIO4bx9pNVyKLnJD6gQqPbLnozBf15fdgnagOoIr81tncdxpNjZjPlcNJflMjzHpU2ISMpvjM9aERNNDVMDNhd2amw==
+ bh=Ph7XZ5HzyrrdWBRpy0FhcFPZxt5xGUHGxaQsRJCDDj0=;
+ b=fpw3wGUIthu395NYJJ1RfRzxGULh8/FrQ7tv51j/X6FnmJZFp4mlG3u5htWbSAgQBdcbxRc3DQVHrcqxTq+QoT9jONEk9vGkT+WHUO0KOuPwK/Q4evxwk5HpHDyBBIWCyTMUURlDgE4PzPDU74rmfHffahASJzJdg6/z+WK29EdnSDbpfjnlTqIOTXT3tdhDn4WIJMxWC6bTvRW3nX23ln6dcdE3go6f9IufznsUEdknEO5mUkKeQfNpCLB6iZdt8j5sXA+aMrEcvICWQqdD46gF/awKrec8+Cp8Ny8TSRe2gwnuQOj4ksdVwQqvqqXgNz+FpMgbGhJkjlWInrWi9A==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=vivo.com;
 Received: from SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
- by TY0PR06MB5104.apcprd06.prod.outlook.com (2603:1096:400:1b8::5) with
+ by PUZPR06MB5620.apcprd06.prod.outlook.com (2603:1096:301:ee::9) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.12; Fri, 17 Jul
- 2026 08:01:35 +0000
+ 2026 08:02:14 +0000
 Received: from SEZPR06MB5832.apcprd06.prod.outlook.com
  ([fe80::f98:5e32:4ccb:d07b]) by SEZPR06MB5832.apcprd06.prod.outlook.com
  ([fe80::f98:5e32:4ccb:d07b%6]) with mapi id 15.21.0223.011; Fri, 17 Jul 2026
- 08:01:35 +0000
+ 08:02:14 +0000
 From: Pan Chuang <panchuang@vivo.com>
-To: Corentin Labbe <clabbe.montjoie@gmail.com>,
+To: Corentin Labbe <clabbe@baylibre.com>,
 	Herbert Xu <herbert@gondor.apana.org.au>,
 	"David S. Miller" <davem@davemloft.net>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Neal Liu <neal_liu@aspeedtech.com>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	=?UTF-8?q?Horia=20Geant=C4=83?= <horia.geanta@nxp.com>,
-	Pankaj Gupta <pankaj.gupta@nxp.com>,
-	Gaurav Jain <gaurav.jain@nxp.com>,
-	Gilad Ben-Yossef <gilad@benyossef.com>,
-	Hans Ulli Kroll <ulli.kroll@googlemail.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Antoine Tenart <atenart@kernel.org>,
-	Prabhjot Khurana <prabhjot.khurana@intel.com>,
-	Declan Murphy <declan.murphy@intel.com>,
-	Srujana Challa <schalla@marvell.com>,
-	Bharat Bhushan <bbhushan2@marvell.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Ovidiu Panait <ovidiu.panait.oss@gmail.com>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Eric Biggers <ebiggers@kernel.org>,
-	Pan Chuang <panchuang@vivo.com>,
-	Myeonghun Pak <mhun512@gmail.com>,
-	Ijae Kim <ae878000@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
-	Kees Cook <kees@kernel.org>,
-	Thorsten Blum <thorsten.blum@linux.dev>,
-	Colin Ian King <colin.i.king@gmail.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	linux-crypto@vger.kernel.org (open list:ALLWINNER CRYPTO DRIVERS),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Allwinner sunXi SoC support),
-	linux-sunxi@lists.linux.dev (open list:ARM/Allwinner sunXi SoC support),
-	linux-kernel@vger.kernel.org (open list),
-	linux-amlogic@lists.infradead.org (open list:ARM/Amlogic Meson SoC Crypto Drivers),
-	linux-aspeed@lists.ozlabs.org (moderated list:ASPEED CRYPTO DRIVER),
-	imx@lists.linux.dev (open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE),
+	linux-crypto@vger.kernel.org (open list:ROCKCHIP CRYPTO DRIVERS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
 	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
-	linux-stm32@st-md-mailman.stormreply.com (moderated list:ARM/STM32 ARCHITECTURE)
-Subject: [PATCH 00/12] crypto: Remove redundant error messages on IRQ request failure
-Date: Fri, 17 Jul 2026 16:00:14 +0800
-Message-Id: <20260717080045.191538-1-panchuang@vivo.com>
+	linux-kernel@vger.kernel.org (open list)
+Cc: Pan Chuang <panchuang@vivo.com>
+Subject: [PATCH 11/12] crypto: rockchip - Remove redundant dev_err()
+Date: Fri, 17 Jul 2026 16:00:25 +0800
+Message-Id: <20260717080045.191538-12-panchuang@vivo.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260717080045.191538-1-panchuang@vivo.com>
+References: <20260717080045.191538-1-panchuang@vivo.com>
 X-ClientProxiedBy: TP0P295CA0054.TWNP295.PROD.OUTLOOK.COM
  (2603:1096:910:3::18) To SEZPR06MB5832.apcprd06.prod.outlook.com
  (2603:1096:101:c8::12)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|TY0PR06MB5104:EE_
-X-MS-Office365-Filtering-Correlation-Id: 81ccfe5f-a030-4375-dba6-08dee3d99f3b
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|PUZPR06MB5620:EE_
+X-MS-Office365-Filtering-Correlation-Id: c3516901-082a-4ec7-5ad8-08dee3d9b69a
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|376014|7416014|52116014|1800799024|921020|6133799003|38350700014|18002099003|56012099006|11063799006|10067099003;
-X-Microsoft-Antispam-Message-Info: 34dtc/qzKmODa2mZIzKVxc8EPzpyepLCrxe6387w4z3Zo9xVSc+lnG5PD+695FCCNVuFKvs+MUBKMLDVwMJV7w8HhT6MAXFPZ1MsDt1soiSAZ5tDo+Lmjj/j4hom5KmznByxBCcAjK0R/utcZkzw7Dd9a5fNakoXwB/26YwhlqHaSkh64kRitSZUWqhBiizoZC9x7zBm/ICRMo5zgV0KBJNl4MsJ9uvDhHQaUhspyDLpYIhzRTmPnaPmOAZqq1XfpwXdN8qUFy/2Iz0DbQ8+BWI5NJ+7f0w5ub/nxzKOh+dJ9sIYWfnA/8yxbtgg40a0XTa7sR8Opd0Ihxu0EliovffLN1Lfw/XyO3shItw/DoAh7VHuQEX3S7v4+r3eUNKFx7fuKk+Q1pVKnmc1rpboTtjJmc36uKwzRyscoND/qp3OuAP1ohCF74iGqEdEQxgnFM4lipEUJwOQob60lYGbLX8RJ+24qSKoicWfoR9HYjmz9TRnxkRj5oZVaFfLeyQDMpVpPmnwkyufv7wd0tyjQSoEdve4AFwr+B6fyF1rYoV27V0bB7+GrRLweHSoK1VkKFw5+nDb289bnhltj7NxLmOiacgXqzg60MpgmpJEMQNFRr7Ljz8M+vl8cutuSMbalbbx5qU6shjFscyIFaUXxHULYYk3QbuCv/ksfNCq5ARLy1t8lghmeuFaMiY2nTnEcg9XfG/4AQNA+yUlpicFO5/XwhsTgj1HrlzRNUfc6ghklceXdh0PVnG2vSOqlB4o
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(376014)(7416014)(52116014)(1800799024)(921020)(6133799003)(38350700014)(18002099003)(56012099006)(11063799006)(10067099003);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|1800799024|52116014|376014|366016|10067099003|38350700014|56012099006|11063799006|6133799003|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: fvgElxIVVIbjZDOmkpl+CZTAMWWA1JW1+mEollRo+FrihmbOChcmPXlaQ+n8Sinhdq9e9HJINSn7nRMqgivEmITsMtgTtXA8NErIv1SLURaIPuWxXo1lWlyDQWrKosEyxrVzQryk8SajPH6lOreBJlKDm0oaKlSEipSst+Etgnbu/pkpos9KQlTgieIxDEfzIFwnfjwaqeeeF21NMZfOpeG89xtg19pPldsxvln950ZezZDoXfhA8FBDLUVUiAN1h63sn2xEBSktNBj60569EaUek8KFdt64bh5z5ByIFUAKm5j5GK3NHq8k11qtwwAAOr2XVoHxf7mAqFa1k/cLVjGfUXP94yHokjRcwlfK9JXINqPH7vIadlqQoyNYXdVHJMkx4V0nGtWJJMHVPTGNYG5P3SezGs9V5XI5kJRi5glIw3tQwG1P5Ac26C6DoGtwwhB2iBD0WJwJPfYOXebyjj9MHQxig55TJ9JQ/MFFAVeaF9CDS/INfRffuWkuwS+kxGgiYh3UH19lgY58QG7X1hpXfioMe32tz03g/T4NjehCHDp5BYN8QwCK5oCrXsDwsH8cBbskqdxUPahBj5ngtJ0myl70dWC6049hRBuZQq/+KgrakiAQy1iKZiX81rYPwGE2i92yzr/kmgKE+82XSMHhlY6m7Xs8SsoIUli7JJhjhRilEswqonyDw3qVCFGBiqUTS4LGrSV11v4KypqTuoJIkx1oLTvVRRCQIaD0QYM=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(1800799024)(52116014)(376014)(366016)(10067099003)(38350700014)(56012099006)(11063799006)(6133799003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?n6TQh2/SOT+FoAdpro+aNdpoy+yyCp/6A4aiOy7Sc9u8Zg6Pc9nSOHhwnlNO?=
- =?us-ascii?Q?2Y6ii6kYH4zSBgg0QwQpLB72gU85gxsoNNbyYVqK75cM1RoNmCWQ+vfB3Pd3?=
- =?us-ascii?Q?W5sVe35aqhk80IG5TrxAZq7elb/wJ6h9E8IPr6Ka1GpoGbcILkzmHkkLF8xS?=
- =?us-ascii?Q?lV3/BfImXulmc7iylm3t3IB4ib+2e7hT8cOR7cjZ5h3E8RdwUlc4yb0PhVqL?=
- =?us-ascii?Q?vFYs41vvE6ii2ySQG9e5GlbslqqX/ukEWppNDo5VK+R40tG8VDH4kOkqsW57?=
- =?us-ascii?Q?dADLjVYmS6K5neE9kmos9W1H0uCsbNxrD3MKDRRuYHhKiX7QvUfzhlZA86xD?=
- =?us-ascii?Q?+YnEVIGwNcZ59pfO85AuorAbb2qZCCvPDRFmd3DTr7AqTka4wkhCnTrw3wwN?=
- =?us-ascii?Q?mArm2eOJ1j3wAELnzlurvTUrZdA/wQ9zOhhIyMeNeg8yDwItbm9C8GtWL5dc?=
- =?us-ascii?Q?T85LizYlkmN54QBS7FQYjqx/GWSkaC5SfR/0WS9UWyDSjEwVkWYx+5Stm2Th?=
- =?us-ascii?Q?XIciTETf/N/08+8TMmoC/yO+0Y2fYpk95DGK1k0jx7irJkUcznqhUPkVk2W5?=
- =?us-ascii?Q?XWCcSGSYnZu8BEAJ5e+v2R+McTSmpzMOnPQ1r7E771vloum9QBaGTuwEELf/?=
- =?us-ascii?Q?nfewV7u4GcaTyGgbkVkc/rowZqqBVzBnOJjFPdjSqSsmRZa/4oVRNn/QjH29?=
- =?us-ascii?Q?1r69rNTQxsXwL4EhjiHiGFUkXvOu4er3+O5/6DJN0T3CiwCDaDGqdvIRnWi3?=
- =?us-ascii?Q?8rOgqGwgEEffcbLdY9CsKL3bn8yn7rbAztUVg9MLmDA+/XyJhV2Q7VQ27OtH?=
- =?us-ascii?Q?8djBA4AdTzxKcDL0nvkCPD1lOES2R+dYUSsiTQnKJkjc8/tEMlMdW+cefpiV?=
- =?us-ascii?Q?V2B/9oJhntoQTVTsmC/Lo1JkrJXPjd8qtajk9m9yzleLTK121YC/T/tbX4Pd?=
- =?us-ascii?Q?nVkjaOPVeuGwaJ5cQpNCRf8m3KezNQdyy7E2/izP7fYqmplxZYIrmfIBuwyf?=
- =?us-ascii?Q?STP3vJ5E6JvJPDGPEaepaWrBQM88AG0/JOsZSpLyK3nR7q0TCgHWOwJ6zoI8?=
- =?us-ascii?Q?sN6f5xPOwG1HiOh94HngXc4rx3myTlsfOx7zqxrLGz3tn7EYwvgyU2SNSTI+?=
- =?us-ascii?Q?VxRjGcURZ4uYTVKi9Z8vBjjDoFDaAjRYgUXQ8RooEKmQZrKfHkjE3mxwLhOb?=
- =?us-ascii?Q?BgBe4e5DAhybIZRtKfttQZ7WQ6YkNz721BFYCMLXH+NHsJuVWTkfAbTofvGc?=
- =?us-ascii?Q?TfxxKI3hG70xcjd1Qkr+pFRbl3cNkWgxD3GO7/nKwdiGiZDy3ryzYXgtALEC?=
- =?us-ascii?Q?ySJGK33z6feMZ62njRmJqR/UEwyoDx+KsofdiS9clELHo6IX9GgRKhqlXFhT?=
- =?us-ascii?Q?jfNYMSMNh2iy88sosLfAJgoahSEXtABiqOtGs17LDNfz+rpYcPEF9mS/LUxC?=
- =?us-ascii?Q?nmVL6dmIy/fBhmshx8CxDnESNIgla7slHx3Sm9tsbqe1wFOPFPll/CGxWXa8?=
- =?us-ascii?Q?L2UNA0cXLrQaOjY/8PMRy+ueu9bTc4nMxkDJOlKe/r2iA1Ytj3vgwDpQZsii?=
- =?us-ascii?Q?89kyQOdjOU+3k/mUQlHsusNGuMijvPnzXewtZMcRlllFxTK+uTNqhern0GIh?=
- =?us-ascii?Q?//ynYVtEhaD9aqzwpIhZ37qrtyyjm/F+z/FjHrbObLrmY75W0dH2ZbzabLBF?=
- =?us-ascii?Q?VBdgsS6noAIqH0Tz8pGEMMAsSPKu/8ZAduFxtNGw0KOC3CPH9CWQd3y8xcYL?=
- =?us-ascii?Q?J3wZm6ZBYQ=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?5D1V5sHo0INUXI97KF6CoJWtd7kn/XWma3zNOlEXGIIPB8YKysstDD1NFhhy?=
+ =?us-ascii?Q?gXyOd/QRI7SouMUqrMU5Ec8UWtReyEJYHn6uTH9xUmrD8PFEH3wLz4L9tPgD?=
+ =?us-ascii?Q?6ijozz42zxFMZq9GxXYpTtu6x3Na24nRn7ssoB+f5g4CuaYMeYyGphxpPoxC?=
+ =?us-ascii?Q?FTqH1uBj2ggeZHnSN73P5zRoiVNLIZxnN19abf6xxlDYV60N+sw282wAGyTh?=
+ =?us-ascii?Q?YbUZP/F/HMDof8eFvjQqxxPyOcledkBfZVEMhKJkA7V3l8YPkn841WyviuR+?=
+ =?us-ascii?Q?QaGEFlKUk1SRySO/iR4mRLXdyhtPPsAfw1XKbbAnAQoe0za9g7CQQsBaIJRL?=
+ =?us-ascii?Q?EhobuT8GGttCwZNXdPhiY/ZmEybstWkkHFhMWxIxavuPAeTbTqxFeCrPZYfb?=
+ =?us-ascii?Q?UYu7+clnkaVTnr+y112XwMahhZI3DfGglp2qZCt9KmTun43ml8+nX1V7X2pt?=
+ =?us-ascii?Q?rdPYHNuDlkeAp2Or7kB8ZvgNNnrBnGQ66XgBDW26KcfJay1TJCJK15NxnxPV?=
+ =?us-ascii?Q?cM+mto02q4BYCdy5Pv5TJCFhz/KpaY8eX/wXr7V0ovBQGU5ljqh5KngYrHlv?=
+ =?us-ascii?Q?fCObtgPqZrpXnYNwPFa0CCrgvLb5VyBQ+5nkchpPJ5eb/lzrgpAHTLqqpgFI?=
+ =?us-ascii?Q?aYnQT9dAKuFcFWVQiDJtjs8bSmz20l0d5yoe8uAcX6HZraSNi8c8aoh7y+v+?=
+ =?us-ascii?Q?w//kDvBJSFlEBvV75Bj8YTzfSAmUAVbNqL2C/AFPzx55JnvyWKPvTed+YvF4?=
+ =?us-ascii?Q?8RA/urO8fmiDZumHx6INi/+zp/jeNJX1l0ye+OfLQ3AlXLo4sloWULtqV4Ez?=
+ =?us-ascii?Q?UAabpNKuvrbU5pAyBmOcgWaRS2D6ingy1NJEkuVmb8313r3XA3RbQOMgKwM2?=
+ =?us-ascii?Q?okda5F0whnn0oUzDPR1+jrSHb6uKU7vFMxDOS3x/CSVbG6KVtooXd7r47tyy?=
+ =?us-ascii?Q?NvADQIRJ8e8IarGxT6VSx2quJAeSQD0k5XRn0um1ncJK4h41xw+KOk2pZlvB?=
+ =?us-ascii?Q?XhoiKUdGLYJ5YoWFqBUZKToqGu9xDcCos9/WXSRB356tuWe7urmM99FgNUMp?=
+ =?us-ascii?Q?PnkLXjEJbnV9pgC39z6rNBzp+78DvQYxGwMQ5tEs+WnPSPON3A8D3zalryQP?=
+ =?us-ascii?Q?xDJs0aWMN1TwsPW+O2rvRm7icWseNNORXTATQVcEsNgHHpBpiVkGKi01yQ7E?=
+ =?us-ascii?Q?o1UL25JRLQ78a2Q6DAs/fdq7L7qkPRp2koCqAO+ueW7qd+q3PcLuiI8uJb4V?=
+ =?us-ascii?Q?uqv8Gy2HIuoTWAvbm+33EGnnY4tMJoWqy7lpSGgOBoV3TNE62RnInW0dufyG?=
+ =?us-ascii?Q?qbMJdslEAGooIlq/WWBcEvgo4X6T0FSBCSIQaXYq6N3xOGCf2XU7A7Hs+U8w?=
+ =?us-ascii?Q?2iSkptlroncIUVOqFVEKLSqbyQbej+cHLBXcXp5dBC6fiSe9KsidixXmSyVc?=
+ =?us-ascii?Q?JyC13gl/1ypfVY9Ku6UBNwDwQHKU3Pqgf/Pyro4tsJegjn4BltkGem36meL9?=
+ =?us-ascii?Q?012YB+xQwcYNeuO8yqRcAyFFdMd9Z8dhAVsafFhNIw2iRBjzEIC+oFtgYUHD?=
+ =?us-ascii?Q?C08yvhG5aFIjAT7dI6hHBaDbI8wUx1qmboNqc5h+dqZQ9YDWbRi2w43xaLI0?=
+ =?us-ascii?Q?qi4hsbCm3rabvnJUbmEvPnoNZWXAu6CU5QSjgHtIglcVgLgPTc2Tnpoay2eF?=
+ =?us-ascii?Q?PKc/PGPbFJirlhgt1FzgmYRuyASnQEPqRsMUzBq44/r8Ymra/gEPG5VSHm17?=
+ =?us-ascii?Q?X3Dny8AAGA=3D=3D?=
 X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 81ccfe5f-a030-4375-dba6-08dee3d99f3b
+X-MS-Exchange-CrossTenant-Network-Message-Id: c3516901-082a-4ec7-5ad8-08dee3d9b69a
 X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5832.apcprd06.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2026 08:01:35.4525
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2026 08:02:14.5992
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: BscJEqqE/kOVHY9RaaBKm3rOHs8KQOcBMLOW1ZCpNVm9nd3wtICwdGsB6DFxbb3/mtswHwwRuqKZm06sHU/OpA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR06MB5104
+X-MS-Exchange-CrossTenant-UserPrincipalName: rqmKCeiqjEitKcULNVz1FNR3/9Bch6ckDBaO3NYpJN/Vmv7Cu2kP/FC9WGv2JdU4WBSNhh8lVup4bdt6i1I7Og==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5620
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_010141_834425_87DD7481 
-X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-CacheID: sfid-20260717_010226_848927_BB82AD5E 
+X-CRM114-Status: UNSURE (   9.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -180,62 +141,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit 55b48e23f5c4 ("genirq/devres: Add error handling in
-devm_request_*_irq()") added automatic error logging to
-devm_request_threaded_irq() and devm_request_any_context_irq()
-via the new devm_request_result() helper, which prints device
-name, IRQ number, handler functions, and error code on failure.
+Since commit 55b48e23f5c4 ("genirq/devres: Add error handling in
+devm_request_*_irq()"), devm_request_irq() automatically logs
+detailed error messages on failure. Remove the now-redundant
+driver-specific dev_err() calls.
 
-Since devm_request_irq() is a static inline wrapper around
-devm_request_threaded_irq(), it also benefits from this
-automatic logging.
+Signed-off-by: Pan Chuang <panchuang@vivo.com>
+---
+ drivers/crypto/rockchip/rk3288_crypto.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Remove the now-redundant dev_err() and dev_err_probe() calls
-in crypto drivers that follow these devm_request_*_irq()
-functions, as the core now provides more detailed diagnostic
-information on failure.
-
-Pan Chuang (12):
-  crypto: allwinner - Remove redundant dev_err()
-  crypto: amlogic - Remove redundant dev_err()
-  crypto: aspeed - Remove redundant dev_err()
-  crypto: Remove redundant dev_err()/dev_err_probe()
-  crypto: caam - Remove redundant dev_err()
-  crypto: ccree - Remove redundant dev_err()
-  crypto: sl3516 - Remove redundant dev_err()
-  crypto: safexcel - Remove redundant dev_err()
-  crypto: keembay - Remove redundant dev_err()
-  crypto: octeontx2 - Remove redundant dev_err()
-  crypto: rockchip - Remove redundant dev_err()
-  crypto: stm32 - Remove redundant dev_err()
-
- drivers/crypto/allwinner/sun8i-ce/sun8i-ce-core.c   | 4 +---
- drivers/crypto/allwinner/sun8i-ss/sun8i-ss-core.c   | 4 +---
- drivers/crypto/amlogic/amlogic-gxl-core.c           | 4 +---
- drivers/crypto/aspeed/aspeed-acry.c                 | 4 +---
- drivers/crypto/aspeed/aspeed-hace.c                 | 4 +---
- drivers/crypto/atmel-aes.c                          | 4 +---
- drivers/crypto/atmel-sha.c                          | 4 +---
- drivers/crypto/atmel-tdes.c                         | 4 +---
- drivers/crypto/caam/jr.c                            | 2 --
- drivers/crypto/ccree/cc_driver.c                    | 4 +---
- drivers/crypto/gemini/sl3516-ce-core.c              | 4 +---
- drivers/crypto/img-hash.c                           | 4 +---
- drivers/crypto/inside-secure/safexcel.c             | 4 +---
- drivers/crypto/intel/keembay/keembay-ocs-aes-core.c | 4 +---
- drivers/crypto/intel/keembay/keembay-ocs-ecc.c      | 4 +---
- drivers/crypto/intel/keembay/keembay-ocs-hcu-core.c | 4 +---
- drivers/crypto/marvell/octeontx2/otx2_cptpf_main.c  | 5 +----
- drivers/crypto/mxs-dcp.c                            | 8 ++------
- drivers/crypto/omap-aes.c                           | 4 +---
- drivers/crypto/omap-des.c                           | 4 +---
- drivers/crypto/omap-sham.c                          | 5 +----
- drivers/crypto/rockchip/rk3288_crypto.c             | 4 +---
- drivers/crypto/sahara.c                             | 3 +--
- drivers/crypto/stm32/stm32-cryp.c                   | 4 +---
- drivers/crypto/stm32/stm32-hash.c                   | 4 +---
- 25 files changed, 25 insertions(+), 78 deletions(-)
-
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+index b77bdce8e7fc..7cb1316b6f18 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.c
++++ b/drivers/crypto/rockchip/rk3288_crypto.c
+@@ -365,10 +365,8 @@ static int rk_crypto_probe(struct platform_device *pdev)
+ 			       rk_crypto_irq_handle, IRQF_SHARED,
+ 			       "rk-crypto", pdev);
+ 
+-	if (err) {
+-		dev_err(&pdev->dev, "irq request failed.\n");
++	if (err)
+ 		goto err_crypto;
+-	}
+ 
+ 	crypto_info->engine = crypto_engine_alloc_init(&pdev->dev, true);
+ 	if (!crypto_info->engine) {
 -- 
 2.34.1
 
