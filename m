@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A574CC44517
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 07:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6165C4451B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 07:26:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CBBfr+C1KuXolCMm8Fhlej3nkhZJS0xtVG8d8Gi4snA=; b=Q/bX1Y9wHlK1Jk
-	9uP45/YEmY8Cj9690OQPN/wgZ54i2u/hWLbaGucbWc6kuDhLf6mMLo93+5oST1p9jyNdndZSGMNyZ
-	V738jfxcXz5vuD3a5UMtjK2sPSBQy6gw/vQLdUBa3sUvjsS/hZNOFPrHNOnyNQFjgr6Tyles1Et70
-	VgYy8lAdY6uUaXdbX+ta1TbRlY9gKubjQJhIEb24oK1EqDtteWFR1D3d3HBqE92DrLoB8j+B04lQ8
-	t4HkfC3uNpNjfPhk02J2a6D+oWJuABfWXtJYFee6C9CTKlgu3uzQdvTUfUozTnBp/hqBFwrDsvHYL
-	hqF55TGqMlNbV7i7iIbg==;
+	List-Owner; bh=uAHiJuuh+TtTfJ703GAmLyptPsBgfkIq+fYyiAWBFTY=; b=oeAgvFcE1j1+k4
+	9ObYTeDz0cx+wFIP8YCVfSZn47F/qsBYvmewqT3q4TDoAFSeK742rDcNPyYGbzSN7CYxY5YqIHqFu
+	u2/dU4H1cIcWbCtsSvzbZ6KZwA3jdNBnDc1lJ99xYH7dF8TNHLag6Niz5Ihy9/IAcbmYzcMFMq1UM
+	kNgUowB1cL2BcMHcvSWKbXc/ZEws+4jalvmmF3cENQa+ZOs3jfqHQLNsDTdxi8SAUwW8lcpnm6OMg
+	J27VfeWlB8KYLWnmU+tnl7uVgXGpTzTxY2LGIYM62RviP3IbxNBspSyc1Ry+/xF/F9mtOt70h+87+
+	aDf71xtZhtPhTo2unE7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkcxz-00000001RBq-18dD;
-	Fri, 17 Jul 2026 07:26:39 +0000
-Received: from smtpbgau2.qq.com ([54.206.34.216])
+	id 1wkcyH-00000001RMj-1Gb3;
+	Fri, 17 Jul 2026 07:26:57 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkcxw-00000001R7p-1UFv;
-	Fri, 17 Jul 2026 07:26:38 +0000
+	id 1wkcyE-00000001RE3-1CYu;
+	Fri, 17 Jul 2026 07:26:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1784273027;
-	bh=E2l8SC5Yz3l3RQ8kfLiWXU6wvt0RqrCjSGXwLiFhpCg=;
+	s=altu2504; t=1784273038;
+	bh=hfSDcA/VFf5O36XZ1jIbDeiIvlPOe5N0iYnQa5D5SVg=;
 	h=From:To:Subject:Date:Message-Id;
-	b=OsCyxxBo8/is5WFmzs280ZyS3PKB1If6TwSQ7fNAd1xFIwm1keiHuZfCsYo0vMvCm
-	 z8rvmVRkdKkW/yu09DlTsKU8kMQlkFxqrnf+R+KBOmhSlqb7vLotw8RmIRWqaM2TE9
-	 XsMKxo3RfxGgz2nsNF81Xvjfbxr1SGzOh3AuAgHc=
-X-QQ-mid: esmtpsz21t1784273025t3c480ea3
-X-QQ-Originating-IP: NunsL3AmaX5/YohLrjzcmQgzMxqBfZtsaBbae5D+VuY=
+	b=fYXEyAssbfHboxP5QdcQ6RM2gOmJnmbbZPGsTBD8SPtT5gd9wFAY0UGeMT42MDXjg
+	 ukdaXkyvlWNUDsUmO5b1iLRbYYMRG/QeFAQFz4251JelGmBGAojVXu38G0dj288PxV
+	 s4kIBlvRsQ0tUQ6lT1r3APLRPP5/q4mEgB0ZxaLk=
+X-QQ-mid: esmtpsz21t1784273037t8aa6d3dc
+X-QQ-Originating-IP: 0D5wUK+GE2YIGxT4HuuhDJ2D57emU1+Gs34WtC5gClQ=
 Received: from DESKTOP-8BT1A2O.localdomain ( [61.154.14.86])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 17 Jul 2026 15:23:41 +0800 (CST)
+	id ; Fri, 17 Jul 2026 15:23:46 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 13698718535468355926
+X-BIZMAIL-ID: 8582860570799389207
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -66,35 +66,35 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-phy@lists.infradead.org
-Subject: [PATCH v3 3/5] phy: rockchip: phy-rockchip-typec: Add DRM AUX bridge
-Date: Fri, 17 Jul 2026 15:23:21 +0800
-Message-Id: <20260717072323.96-4-kernel@airkyi.com>
+Subject: [PATCH v3 4/5] drm/rockchip: cdn-dp: Support handle lane info without extcon
+Date: Fri, 17 Jul 2026 15:23:22 +0800
+Message-Id: <20260717072323.96-5-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20260717072323.96-1-kernel@airkyi.com>
 References: <20260717072323.96-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MB78LT3tbKTe20unaeEpA7bJ2qdDKCKD901Y4i5OgIl90Q8sVdUpGscb
-	KTn8rVYIwJTwvYh2zKsPIBpoXTH/PCLNjSpb72jRH7wZ55wr84Ncd3lt+fA4VA1eOo4rdJ/
-	IN1zc7Y8XunKsfePJKqlxfu0ApeBH9CCrJ5wR6rcgCHiD3gnoJTHdvF2sz/OwZuT3nC/X+P
-	6ZDndd697scH/Cq+U8s05etGYIEvk65p5QgwbeU3TDWB5Zr3l++owD3lQmshWlLoRKJFt08
-	oWlIxfEfp3zCe/IUT0lR1EDcG5/Q067q4UMGtgvy4qV3iOlnzRmCXHmrDhYPq6Nt5fs3Aih
-	dPAbeNIynNR0elLnvoCj5My5EvfIe9vLu9ZTgSQ7gw146s96s0LZ/sutAoN6rpPo3Nc0aiB
-	Py6oLzbtVcTY0wwum5B/zm6mMmO03CZMyrpln5MRHuwjefBzvkkpvUtzPmNV9GgGgE4Cgyu
-	LtGMYIz3VLOMdNJ/RfL2TG0xrei2YmIHIqU6bw497niDp5OKMMVYV6y52o/5O8JDbV6by9k
-	Fmo278Lpb6JZgm2emEAp5fX59EqwZ14IZ8AqC4x+2BD3hazqeoahsIRALzzBlRVrXByP2tq
-	2Xyrb6WHBN5WyUs5m3dpivA3OjfAJBeHw/NH6O31Ldbonkb1Qy2iEKCMDRf3IYEDD3jDLpO
-	HGIETrnYO8DgGHCZtVKJGNt3WiA+SyLR4lBxiZnDmEO6+TCIMH8+txIXEgIg0MVyE0MaXUa
-	p1xTtCZ57Zsz7CqDCbiZfFCrvPl8wuCyDFndcQ/tFqNOckIxxrwKedmm4kbBh7Af3JvFsLB
-	sAZpDKEQWGyXUOI2144y+x7Ci7RgBPgTp3eiyxvGmCwVaL8TebMaVhl7FiAvId2gFKfYWIG
-	lfWdzlb/Zj2BUbrLDP7M1AqmwKbjpS75q0ZffZLdvHfTYNDC7ZpYw2H5FVzhLGImEgBDOsi
-	QrExCp8HT01K7fsVlUiptYWvaS6tW69HK4MZ0UCT3go6oEMvzOUW+Ahd+WOP8jO2YZKijRG
-	TZf4tD1qiMiQohPn0K
-X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
+X-QQ-XMAILINFO: MyirvGjpKb1j4ajW/h+h1TDId9lYcfgTEOsAICrRq9y1W44g/WIDA6L6
+	1JWZ0h4PwjzvF7e4k3ixjIK9UwIEJwaET8qNWs2PnJI8hQfasLNmNRXrpQycPjW3rv5xQ79
+	wt+8gbNqvaD6mdJptCUnIq2OEXaePOyrkb/k0b7Phsw6d70ijk7lbBUKfFGqgBDjF32iV4b
+	qyra8iqbYK7X8LxqFE0M19xYfhHKFTMCwGYJX8AVXtXOy0dwuVVPPBbHz9KdW/p0zc5HXRl
+	jZKIseDiWv27v26B+yZB6NrF8uteC1iepCxC0cIfh+w9fYUDpH8WmU1ZTpG/SNgvL6YKj/i
+	cWL9wInqWxMyqzznX/JMEgTW/RiD2tM0wgjL6i8LELLmGx+U43kMxyOuUUsDo84boQ61ujz
+	q1Zy5MLXCjSS3nzziQCUl12imVu3EKoXIxxb5wPPAHOQAReGMHuxha2poazmNdbtpIV2PPp
+	slyEdY9y8rw2SfehD0I2dYShbGaPT2k6T03HmT7r+S+gRvFO99QWLbeoopn7mRoWg6GCrlx
+	dBa4LXfe/fGZsMi8uJRfYgNk2RY28/6eONbtPt/ufC57K8pny3zG3hL+bheoIUl1gmRNCaw
+	CWQI1rNn8SXHwbn/+F7wESzmxW//eu7Tx6drkXJDkdrqAoGFdXe6wbACNf7B5h7JuL2jJjt
+	qZrXRQ6JiTUHIKytR55lC/ZstWZ1oKaGjoiBMNE+5sdEDW+taX9xVgzDUC3dQYcXK8Hiv5o
+	/OSRMq6bu7gRQnBNvpNBVjJFRYnM3GrvidG8FdyUS4wdFl5UMHra7FpUauzPEL0cWu3YNBB
+	ZywkpWayYDk+kW0RdDCHHGqfq2VJnyQiZK+l7/XaX0Nc71bUU7qwyVFPILMsaguABMZwoCf
+	8iOlMTqbi9wnOCpR3IHqv1sXLq0jsJfEbdi1Cb0/6dn5iCvqPVgY8ALM4U5DzDuM38uj4X5
+	98JR4Cjm19tvDfzNsdjFnu1VatTol4AB3LXhBGoZzxTJBCw5sSgekfvAnQASVeyips07zXK
+	ZkbmqqoDefXCroucMWu4TUw+a3LU9WeESH9O8nNg==
+X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_002636_894385_C9457BAB 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20260717_002654_823602_4B8AD0FE 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,73 +114,94 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Using the DRM_AUX_BRIDGE helper to create the transparent DRM bridge
-device.
+This patch add support for get PHY lane info without help of extcon.
+
+There is no extcon needed if the Type-C controller is present. In this
+case, the lane info can be get from PHY instead of extcon.
+
+The extcon device should still be supported if Type-C controller is
+not present.
 
 Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 ---
 
 (no changes since v1)
 
 ---
- drivers/phy/rockchip/Kconfig              |  2 ++
- drivers/phy/rockchip/phy-rockchip-typec.c | 13 +++++++++++--
- 2 files changed, 13 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 25 +++++++++++++++++--------
+ 1 file changed, 17 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-index 14698571b607..9173d3b4fef4 100644
---- a/drivers/phy/rockchip/Kconfig
-+++ b/drivers/phy/rockchip/Kconfig
-@@ -119,6 +119,8 @@ config PHY_ROCKCHIP_SNPS_PCIE3
- config PHY_ROCKCHIP_TYPEC
- 	tristate "Rockchip TYPEC PHY Driver"
- 	depends on OF && (ARCH_ROCKCHIP || COMPILE_TEST)
-+	depends on DRM || DRM=n
-+	select DRM_AUX_BRIDGE if DRM_BRIDGE
- 	select EXTCON
- 	select GENERIC_PHY
- 	select RESET_CONTROLLER
-diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
-index d9701b6106d5..48070b50416e 100644
---- a/drivers/phy/rockchip/phy-rockchip-typec.c
-+++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-@@ -54,6 +54,7 @@
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index 190cce9530c8..74e1f5422a6e 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -157,6 +157,9 @@ static int cdn_dp_get_port_lanes(struct cdn_dp_port *port)
+ 	int dptx;
+ 	u8 lanes;
  
- #include <linux/mfd/syscon.h>
- #include <linux/phy/phy.h>
-+#include <drm/bridge/aux-bridge.h>
++	if (!edev)
++		return phy_get_bus_width(port->phy);
++
+ 	dptx = extcon_get_state(edev, EXTCON_DISP_DP);
+ 	if (dptx > 0) {
+ 		extcon_get_property(edev, EXTCON_DISP_DP,
+@@ -220,7 +223,7 @@ static bool cdn_dp_check_sink_connection(struct cdn_dp_device *dp)
+ 	 * some docks need more time to power up.
+ 	 */
+ 	while (time_before(jiffies, timeout)) {
+-		if (!extcon_get_state(port->extcon, EXTCON_DISP_DP))
++		if (port->extcon && !extcon_get_state(port->extcon, EXTCON_DISP_DP))
+ 			return false;
  
- #define CMN_SSM_BANDGAP			(0x21 << 2)
- #define CMN_SSM_BIAS			(0x22 << 2)
-@@ -1162,16 +1163,24 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
+ 		if (!cdn_dp_get_sink_count(dp, &sink_count))
+@@ -386,11 +389,14 @@ static int cdn_dp_enable_phy(struct cdn_dp_device *dp, struct cdn_dp_port *port)
+ 		goto err_power_on;
+ 	}
  
- 	for_each_available_child_of_node(np, child_np) {
- 		struct phy *phy;
-+		ret = 0;
+-	ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
+-				  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
+-	if (ret) {
+-		DRM_DEV_ERROR(dp->dev, "get property failed\n");
+-		goto err_power_on;
++	property.intval = 0;
++	if (port->extcon) {
++		ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
++					  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
++		if (ret) {
++			DRM_DEV_ERROR(dp->dev, "get property failed\n");
++			goto err_power_on;
++		}
+ 	}
  
--		if (of_node_name_eq(child_np, "dp-port"))
-+		if (of_node_name_eq(child_np, "dp-port")) {
- 			phy = devm_phy_create(dev, child_np,
- 					      &rockchip_dp_phy_ops);
--		else if (of_node_name_eq(child_np, "usb3-port"))
-+			ret = drm_aux_bridge_register_from_node(dev, child_np);
-+		} else if (of_node_name_eq(child_np, "usb3-port"))
- 			phy = devm_phy_create(dev, child_np,
- 					      &rockchip_usb3_phy_ops);
- 		else
+ 	port->lanes = cdn_dp_get_port_lanes(port);
+@@ -1027,6 +1033,9 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+ 	for (i = 0; i < dp->ports; i++) {
+ 		port = dp->port[i];
+ 
++		if (!port->extcon)
++			continue;
++
+ 		port->event_nb.notifier_call = cdn_dp_pd_event;
+ 		ret = devm_extcon_register_notifier(dp->dev, port->extcon,
+ 						    EXTCON_DISP_DP,
+@@ -1119,14 +1128,14 @@ static int cdn_dp_probe(struct platform_device *pdev)
+ 		    PTR_ERR(phy) == -EPROBE_DEFER)
+ 			return -EPROBE_DEFER;
+ 
+-		if (IS_ERR(extcon) || IS_ERR(phy))
++		if (IS_ERR(phy) || PTR_ERR(extcon) != -ENODEV)
  			continue;
  
-+		if (ret) {
-+			pm_runtime_disable(dev);
-+			of_node_put(child_np);
-+			return ret;
-+		}
-+
- 		if (IS_ERR(phy)) {
- 			dev_err(dev, "failed to create phy: %pOFn\n",
- 				child_np);
+ 		port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
+ 		if (!port)
+ 			return -ENOMEM;
+ 
+-		port->extcon = extcon;
++		port->extcon = IS_ERR(extcon) ? NULL : extcon;
+ 		port->phy = phy;
+ 		port->dp = dp;
+ 		port->id = i;
 -- 
 2.53.0
 
