@@ -4,97 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78649C4450A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jul 2026 03:13:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1A14C44521
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jul 2026 06:59:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CX1oecmuP832L1HI++72KJTHGoImqfyw6v0AycF41bI=; b=XHFGBnIx7btTEh
-	NqKni59jvyqI4onS3KK2eXgfHVn6QK7oJ859kj2NVWPmofgZSsem3GN5JbtDscWe1xFiuu67R0tMe
-	hD1YXKn3laYQP3yYVkG3lGPKibPBGqEnwUpmQEF8v68XRvJ6MFcQ5jBBuvd1NOsNCfZ4MHQRMr/cr
-	1c5vglhkevPSlpOQ+F0GrreKiDO7Cn4oM0q4NI2yoNlhAYOyA2bs5kKNN8IoJ5WiCRs2mmpFLhnfO
-	ukS3Z9FK4MCSom64DuHLLzp6DJFZLuCxrZCkIEEuIyT8Fgap+flObd/JjSybkDvqKgd1S95JZPhNo
-	uz7nwksVSwcauqbqbiTQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IF+YRiKvV/BTrSFlS3IGvoWlqbaCWFlkv2p5i3slVHU=; b=NLd6OXWbdII2rQ
+	EVew11D/GyY6W419pdA/FE12fKZ5FAEz8jB3ca7xXHORHpX/3UmcgReZ+NcFrmH6hy+v4CWrdg8xz
+	qwSbZRrqyEvL9uz/DRukEWDsOqEzi+uJudnRcZgWminnVgfVYEvX0d9rDWXDpftjn4632MeuqM7zY
+	ygtwmLLJZUsFf6SjUUp6szjkhcppf2P8+RndrB7gYmaxMkdR70z2xQHoZM4Fd6Q2l5V3+JuSChwEl
+	lNapOCFc1xRVEuBtQ2qcf8qTW2JdGvCw2oE/+FYgin21rVKwhhb6OuPyq+4N15DAXIaTkTBp/ekPi
+	rRJwpHPyurUTE/6tMogg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkvUt-00000003bl0-0lOp;
-	Sat, 18 Jul 2026 03:13:51 +0000
-Received: from flow-a2-smtp.messagingengine.com ([103.168.172.137])
+	id 1wkz0z-00000003nVS-04nk;
+	Sat, 18 Jul 2026 06:59:13 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkvUq-00000003bjQ-0qTD
+	id 1wkz0w-00000003nUa-2Zox
 	for linux-rockchip@lists.infradead.org;
-	Sat, 18 Jul 2026 03:13:49 +0000
-Received: from phl-compute-10.internal (phl-compute-10.internal [10.202.2.50])
-	by mailflow.phl.internal (Postfix) with ESMTP id 64F9D1380333;
-	Fri, 17 Jul 2026 23:13:47 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-10.internal (MEProxy); Fri, 17 Jul 2026 23:13:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1784344427; x=
-	1784348027; bh=dBBJ1bbYoAzjdUY7u3ln2vHxvkn+rSX00R1jTCDwEPY=; b=I
-	mTZVw3tCoMfDmx34w3CnyD5vGUaVNX4eXiOR/1tRpFMS+4XQRkSmSMNKTqQ26gU3
-	zpp1AxlcJ/xFJ2A83FDu3STgyKy95WxXyC6Fyj3B2G6/O3WW9X+N7PWZQB7bmy4t
-	KhK+Ag+FzpPYp8oHeJC9j0wEW0Bc9+qAcURE7/gWzdga9Q/GAWJFxdJ9lWj84G2k
-	jxOOyDjNexpScRTTPiJretlI9pFGmvQQaFW+FitJ84j2QtNd5xzTJlvYNuQgQBxb
-	9YalzkLCOcp4QkO+TsWiDlmmdsc8LLLSy7AhudYP32XHZV8SoqEj/A/rGSmcDA4D
-	QgOPK1my6tHp6Du6RCO/g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm2; t=1784344427; x=1784348027; bh=d
-	BBJ1bbYoAzjdUY7u3ln2vHxvkn+rSX00R1jTCDwEPY=; b=YnLwGgyCY1CHjMUyl
-	4v8YMgYFDg8fbKVQWlbOU8cLzWhildo3/DQC5fJjY+wQqfBM5Ppa1zpSIqCVlLFw
-	bouGpk1PTsZUEAIqlHwXnG2MlcWLhUPzjyudZF+bMbolDf3T2uN7fcX9bUTvK1TN
-	Ce0bYWpshWHP+nBq5kYNlJm8RIKujyZNyW+i/Rp5wAQbYnaup0JTv/3XJNiiqwKf
-	RK+f0SsQ5JwdPdoIlWaeyvYVcZ5pb3wTKvDwGFN/BIyUgF2Ipt3Hdtg0b+Qhfyic
-	Lce6hneHtt+YheR/hjI1zbTrn+/bFzGPjc8thMRzNxOZf1eCm703r2904JRbfxVl
-	Lw1vQ==
-X-ME-Sender: <xms:a-9aahaw-ofwL8joj24tZnLvoVy1q_vUq6V41gf-hThlLxZJtyTPAg>
-    <xme:a-9aahstJmxl5kMbqosYMa28OFHTiD1zslDL5IRv5NH_oExey7VlrcztRei8gOF17
-    CCzm15-6qB4-FO4Ok1BJ0jUBk8O7k5Lf4AluqWT2ba6MOx-teBx5iI>
-X-ME-Received: <xmr:a-9aarNFIb5o3C6blz1cfxwCFUorB_f46Wys2BGxXRtO1Vk7lnny-cVaYWes2y0SB5S-JPAygVmThiXuurY>
-X-ME-Proxy-Cause: dmFkZTGGTTbRjNfuyXXY8KUIMiXjqovuz4CSj+LGNj3GLNMZc2bZPFngC0QVgbb6YxmVgd
-    uyAb33TlOo/IOXNfH14Cim8fmEJrSqvc2Wq2VnzHOBQgkW0lQcfmJxLdxIFilfXAzJ/deN
-    c+l0qxxOUMCX7fcx4cEJrFF8CovPGPWouH1k7N2/iS8bGB00BByuzOPY7+gHVPXrd52QSI
-    pnOK34Er16RoF5+Bli1hKQsWzsLkHLQj5yoaVEYSc08eSPUtndErx8/wXs64HgW3ycW9T7
-    0cQKyl1o+8LCd2AXkpQsgf7zH5IVcIric4xCyvbz3ZB3aSvmWRI/TLnAJa9mdz1EsyhTNG
-    jt3l3PrG3VIwjtoruYFib/ktde/M0OSCjn+SS8ao8Tj1ovc2u0VfJYiGTUSHPfZcezWjz9
-    /eaYuCHgvX6s5r/9U0sh9nRCWur/AzkAwFFJeI5PA4I6mcDB9aXGKYB6TqtebW6xX9mBvn
-    DjCA27gSxD9vFnimA4oQIQajS2RywYRkIIjWi7afViebD8leBwxt52aayyPa0pdUDYiKti
-    OHjt7gjQMTiMqRfZOwKsc0vWp9aYsEdNq1fQDcsWsMKz71IinpmNNNWqxWBMyiMQxwyPQr
-    7SVm0W0qgAtT2YauSMvt6N49Ek5Ycdt7PBgAv8em1PDnYz6ibI/66QeJsW3g
-X-ME-Proxy: <xmx:a-9aag6e_eL5DkQgbBY0OliUm_xzoGPAGboCqByuOMoZsVuXbAhvyQ>
-    <xmx:a-9aapRW7WgnRPOTENVusHx0vRNFvJxvFwPjicmSo_guFd3gzlvTQA>
-    <xmx:a-9aalDZFBB7LbpyG2_OmOWBhcR2KlpIPYD07MFvvQ658sIR-6OdUw>
-    <xmx:a-9aahFDIjWSYh-KR4wQnXf9RGClLwHvoNrvH74AWs_U2D4SJRre8A>
-    <xmx:a-9aavw303-Vs7KjFSNMqkDHovvhvQjzyrTSXa7eECKxlpjOQjn-5mjd>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 17 Jul 2026 23:13:44 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: chaoyi.chen@rock-chips.com
-Cc: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
+	Sat, 18 Jul 2026 06:59:12 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-38e58e0e2d2so500330a91.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 17 Jul 2026 23:59:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1784357948; x=1784962748; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=MbNJCbR9fwKlsvB8FKMzu9iZUQ3KKsxGZYdnUhTBU4U=;
+        b=hc06km743ZhysuoyxJXQrO2O1GO9D6jo+a2m0Lfi/E5xa7jTh0XuHWlBSQf4fPxQKQ
+         79RF0tZ/KbxaDjfFMR3lLSxmrreHgSvDxdugr4k0pEMpxLJuRjnphO7eSVbAm1gdifa+
+         BWRqwsIEQTHVDFowfcIbKY6RGlBPJKfZbipu7vXN4YPxNRiqdNIeLZMI+89nC3Eszdvq
+         xoLNVKh/5m4PLPMZcABsvSnC4KijHDnVP10ZZZT1bZGQkur2hBfbGiQydNOykFwF8Js4
+         8bPHy0PJU0Tq+EE+HRaQySqpIIi7nxk8mE+ZTgxnY/0AdPjF6Ug4E3qwFnFttJug0Xrk
+         rKgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784357948; x=1784962748;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=MbNJCbR9fwKlsvB8FKMzu9iZUQ3KKsxGZYdnUhTBU4U=;
+        b=Vp4mLaVLZJE+/Q3yd2VdREVJTj6riEFY0HLnDo1LFBZA7slQialWwcX9BTrDZAeI1L
+         lrGXWwnjPlbA7sX7wFV8TZtvnkXr/Ta2TYfPqhsMGOloJryT4s7CZppA3vwt7PhGCRiy
+         crV0wgp4gaFPuA8Q0dTszN+Tct4EwQdddRLUTwbd+dauy0jnrPP4ZeP8mVFNKLOzDjT5
+         ZwXcWwe5Xv5LXYZgRQH+7kH00I1OmSOVw3qStTZ/xEr2RFRK6eKWb6PbPiJ8Dy4Bp1ZI
+         bh+Xt+W9hHZ1KxVqPOkUzitiXwQc8FP6eAAU9TwCg0iSAuukYrmQI621i5v981m9CUR/
+         Ow6Q==
+X-Forwarded-Encrypted: i=1; AHgh+RpB88knY+F3LDZzW91vCPquqSj8tcaGkTC3i7MlF/ySZkLzhLb0e87RZNoARgKwJl1F5tbqoIKG+kgiv/UNnQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwjcgUBeKzZfQoRy/yfC0FyGpnIBPjl4aRxKAH/8QkGfjVjMgT/
+	UPacixVSkKnFOamcW3QqsFj70NPAG/qMo65o2ce+QB6UiysxkCgM5z+J
+X-Gm-Gg: AfdE7clnQLjRV1lh0bt7Gm/vtgzUyxmg2Z/E+mFtWAIxYX7lcwEcGrmC/CayxlmaL3t
+	2GbFiljuKMZUYBADXZx+h/b5f6wDZHVOEkraa6/ny7YEqLdd77IqDoIiHj9jF+4A1NtSc8+4zbk
+	OsMppqOwhM042HNaCP/+ArV4NB43ZuUId48Ie7Ao3dKBYNcJ8nIwmP65sHI0fpIfLC3pJFFirsZ
+	FkypwO6XVCyDbu/IwixyMZ5Zr6C8EsYp8jV8+7FhQ2+KgsQo/JbvMwQmWN14Hso0KhkPse1huUv
+	BvaR0H884f9o3Zk/BOT8iCUxsFAICS228NcXDLH+EeVQUNFDdDaaJz7tpiwmeD6IG+JfTMps1QR
+	IItjzSO6lZXG8DF4WI1CdW6ats2sM/5xnqGpWJ92J4zgP1yJBRsq1fsz81ompFlQiPHYEpKjxD8
+	4O+7W1y8RvBjowEY6fZm22
+X-Received: by 2002:a05:6a20:734f:b0:3bf:c07b:a9ab with SMTP id adf61e73a8af0-3c3ad9dfdecmr6595081637.55.1784357948230;
+        Fri, 17 Jul 2026 23:59:08 -0700 (PDT)
+Received: from i386.168.1.127 ([2402:a00:163:2ce9:6882:91b7:8e79:7958])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-31429f9bb62sm13426133eec.2.2026.07.17.23.59.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Jul 2026 23:59:07 -0700 (PDT)
+From: Hrushiraj Gandhi <hrushirajg23@gmail.com>
+To: heiko@sntech.de
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	iommu@lists.linux.dev,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: Re: [RFC PATCH 4/9] iommu/rockchip: skip orphaned-fault banks in rk_iommu_is_stall_active
-Date: Sat, 18 Jul 2026 15:13:41 +1200
-Message-ID: <20260718031341.3369185-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <b7d71a44-eb65-4b09-a378-225249276f65@rock-chips.com>
-References: <b7d71a44-eb65-4b09-a378-225249276f65@rock-chips.com>
+	linux-kernel@vger.kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	Hrushiraj Gandhi <hrushirajg23@gmail.com>
+Subject: [PATCH v2 0/2] Add support for Vicharak Vaaman board
+Date: Sat, 18 Jul 2026 12:28:58 +0530
+Message-ID: <20260718065900.755631-1-hrushirajg23@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_201348_307497_E9078FCC 
-X-CRM114-Status: UNSURE (   7.23  )
+X-CRM114-CacheID: sfid-20260717_235910_657567_9A43BD58 
+X-CRM114-Status: UNSURE (   9.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,30 +103,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chaoyi, thanks for looking.
+This series adds initial support for the Vicharak Vaaman, an RK3399-based
+single-board computer.
 
-You're right -- this was treating the symptom. I traced it:
+Patch 1 documents the "vicharak,vaaman" compatible string in the Rockchip
+arm bindings.
 
-The bank carries PAGE_FAULT_ACTIVE from boot firmware, and rk_iommu_enable()
-runs rk_iommu_enable_stall() *before* rk_iommu_force_reset().  So the stale
-fault is still set when enable_stall() polls for STALL_ACTIVE, and that bank
-never stalls -- that's the timeout the two "skip" patches worked around.
-(On the RK3576 NPU force_reset() was itself returning -EFAULT, "MMU_DTE_ADDR
-is not functioning", until the MMU clocks were fixed, so the fault never got
-cleared that way either.)
+Patch 2 adds the board devicetree, enabling the RK808 PMIC with
+SYR827/SYR828 CPU-big/GPU regulators, Mali GPU, Gigabit Ethernet,
+eMMC, microSD, SARADC/TSADC, and UART2 console.
 
-For v2 I dropped both skip patches and instead acknowledge the stale fault
-with CMD_PAGE_FAULT_DONE before enabling stall, so every bank starts from a
-clean state and the normal stall sequence applies to all of them -- which is
-what you were getting at, deal with the fault rather than route around it.
-Confirmed on a ROCK 4D: no more raw-reset error, no stall timeout, the NPU
-brings up and runs to completion.
+The vendor prefix 'vicharak' was previously accepted via:
+https://lkml.org/lkml/2026/6/24/929
 
-v2:
-https://lore.kernel.org/all/20260718031146.3368811-1-gahing@gahingwoo.com/
+Changes in v2:
+- Fix fixed-regulator node naming to use 'regulator-[voltage]' prefix
+  consistently throughout
 
-Thanks,
-Jiaxing
+Hrushiraj Gandhi (2):
+  dt-bindings: arm: rockchip: Add Vicharak Vaaman board
+  arm64: dts: rockchip: Add Vicharak Vaaman board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3399-vicharak-vaaman.dts   | 438 ++++++++++++++++++
+ 3 files changed, 444 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts
+
+-- 
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
