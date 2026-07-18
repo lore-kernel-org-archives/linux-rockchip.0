@@ -4,78 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CA66C4451B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jul 2026 17:20:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0162C4451C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jul 2026 03:12:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GwCx8CuntceEdW0uLivWPI+mbNHY4UqvcwVhRDAxdRA=; b=TkDo+KmOsx14EjnXo4tZ/wdYyK
-	YP7AZojyL7MvYSyVOnnLnMYCeO9Hd3pACkw71eoPXwioOgcm3GtBC36azIZvbH8OhWOFtxvauBWr5
-	G3v5Nv7XpRT8kAK5z8zQOupTMxZuCu0xG8Q4kor3u9hTL0oZtCtvjzQGGeND4+HsIrmiK5d9PkRhN
-	tlzhpeQ7yQAGt2BgSP2MVlQOlRVQOIA8vLPQSbN30KGtJ4ioP0b/YPKZ8F2HhVy48rx7zh5chs2e2
-	6Il9pJidxoHbe6v+bTys3wkhjARkGuE/8ODDk/qfTYHsDPIu1Iip5WDn+Ubwgspl7MystDJH76mLe
-	/u1sE5Tg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0Xqs1of7f0SEUo0gCrdOx6IOd4Lb7EiDHksLBQIDZEE=; b=y43+lTkOdtXs1p
+	/zwgZoWLn7sFdpY0UuVE+GAszzciSM1+HlyUBAaA6LYLbxXyOtSyfPmhavg2bpLao6onVaMb1MDo+
+	Rn0sf8WOMTRzxZ1Gipe2Uos83eojQs64funcfgB8pxbpaA6PGOJg8w1iR3T1u5I+dDuFALeneDKQ7
+	bpYfRXxiAtUOTriCJKosjMJ4k7/IjNaUERyPsd4uUK95c5CBn31t2ufEJUY8aGQf6zcdTU7BisJa+
+	nvgUFfO30Zw/yEG2qDW0j9ywBRmsAD2DRwoU5Xi3OERXZv1pQN/BBS9senmDkPU4elVRuOuM/WojA
+	pgB+TtaCI7J1V/9dCqKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkmEb-00000002rK6-06ey;
-	Fri, 17 Jul 2026 17:20:25 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wkvTE-00000003acQ-3PeS;
+	Sat, 18 Jul 2026 03:12:08 +0000
+Received: from flow-a2-smtp.messagingengine.com ([103.168.172.137])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkmEY-00000002rJ4-0PWm;
-	Fri, 17 Jul 2026 17:20:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1784308778; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=H4pcaiyWw5sNUEJZbm9eM14QxzQ3Fs5J/zfbyV0gtqk2u2v4xJDuHRHpJrMW4yt/U89AweWnlDnKJVWJ9EJh2HDtzg3qoDhYlz9QeCZgEupMPqCn8FsN5Fef2I9+RNV5PQvDSgZagf80bsYu6HdpvxEIL+5lpEckH+axrSLiKFA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1784308778; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ogRVHXmQ7ZTJHboM5CyugXRM1/jtS4o3Av3SvfnT0jM=; 
-	b=Rb7JV/PRuKjmFm0CH5WxKJ4Mj6i1P7r5AKeRg2rN3MsSwrNkfq/sXt5U/JHt16WU2YBz6hxJpwguBbEqDQceav8DUK63eoyiRWGOR1BPn45vOY2wFBfpyDLrt0KTqUcoNkWwn9bjiskzT/ZRZ/FonO9dcLRF4H245+ZSLIgc1tc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784308777;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=ogRVHXmQ7ZTJHboM5CyugXRM1/jtS4o3Av3SvfnT0jM=;
-	b=Kt6hXTUPPH6CFVs5HGy+sK42o+r4NCkzV6Q9KDzVFjAQW/qbb1HX75xBc8USxQgx
-	RexIGKLGYtbvejBVzCeDDvxU/hevu/BjXDIhBq48yYc0cn0fZjxN7Wjiv0+aYjBEVgt
-	YAda0f9SiK99bk32KBOvI3qSvslKA4kIskVrC6RI=
-Received: by mx.zohomail.com with SMTPS id 178430877525932.612933366387324;
-	Fri, 17 Jul 2026 10:19:35 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 1F724181CD9; Fri, 17 Jul 2026 19:19:29 +0200 (CEST)
-Date: Fri, 17 Jul 2026 19:19:29 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Vinod Koul <vkoul@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-phy@lists.infradead.org
-Subject: Re: [PATCH v3 1/5] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-Message-ID: <alpeAqKo72pwOEnX@venus>
-References: <20260717072323.96-1-kernel@airkyi.com>
- <20260717072323.96-2-kernel@airkyi.com>
+	id 1wkvTB-00000003abZ-3jRS;
+	Sat, 18 Jul 2026 03:12:07 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+	by mailflow.phl.internal (Postfix) with ESMTP id A557113800A8;
+	Fri, 17 Jul 2026 23:12:01 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-05.internal (MEProxy); Fri, 17 Jul 2026 23:12:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm1; t=1784344321; x=1784347921; bh=O5UO+r1tw5
+	O/LBbUfpvJPgD+I1aOB3b1e+3aqw181G0=; b=FLEygAnJSZ3WKCo+W2zSHa5WC9
+	P3tF7eyq4PE1kVv72cFBOQs3xcA43b/mG17NC/dORUNIIrRlt4nBvXh8aTOL8jyJ
+	DJxVduoydwdPsmwc3x0bk+RijrPJTz9xgYi2Bd00ttiIO95Xgh1k1Kj+/S1am6hX
+	1WiuKjr+P63CugKP14CpC4TrBcy9qe4wmWJRxdCAzyG0JG0aZar2bdv5IDzstUzc
+	dvPvQWP+ArjC18GfUM7MF/kuzPXRw5tMvxqu1Wxdm7i7K8/9q4GnvQtjirufig7t
+	3De8usGMdzvW27iNziDdDZ7ysCGd4+DrfIBU9dkndGTDwt3hW7rmdMsCSIhw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+	1784344321; x=1784347921; bh=O5UO+r1tw5O/LBbUfpvJPgD+I1aOB3b1e+3
+	aqw181G0=; b=J1Psw1t4l+cybF3KE5R7M4Ld8/2R1bibfnmmW0Kdxi1bLjDprRe
+	kYps09OCCqOchCrSTwWm/FXy1Ix+7nM7AcwoDUsZ6LDdI/mm1LY8zVnrHRYNYIqE
+	0fkCephN6PdwTesWu4e96up7UJKQG30KGeideMor/fQNv/uM8bewZXtToWKtIKnu
+	DDy1zV8ZE3FubV1tLWuW9EkYTrSht+1oohaJN88QBNBamxsOgx0ek1Y+Xt7BGg0p
+	lynYW5LKxDuGo/vlNeBcMbM8PGtndQpDN7Myu5/oLZwQtiKLyipktqUl2i1Zjak8
+	zOYRNjy1rfLYoJpJObGV9HRnd2RM3uz12+g==
+X-ME-Sender: <xms:_u5aavsk84VuFybQ6CtJeID3M4Qo3aUfXIV0s6Qm6ThuodbFxIGuBg>
+    <xme:_u5aag31Mgcwz1Qhw5JvBpOhPYi9gwmDDeooX9ymSntr9350r2aF0rG0EU1A8MQiO
+    b3IDZX9XqAWrG0D-XO214P8a7nRgcsxVEGHSZKN1UEhcTU2bUcJJnk>
+X-ME-Received: <xmr:_u5aaj4SkoUNdd-1i2J9z7jlGLSYQ2xjUvjrFCdSorZT7ZA3GEimZrwL14YTpc6f-Vib_v_JKCPwiREkgyU>
+X-ME-Proxy-Cause: dmFkZTG1BKwpOrUet1Yz3ReM3q8b+SU1Y0/3E/GtpuUDrj0RW7aZrRz1EkrdLfowjHCTZn
+    KHQtKMuWZlkEuvq3c/1uYeHLYKalGUaqALOTDnvMzn1+EaIkreHdEflsbm9CI/YFbSTVhF
+    XZ3FYbXkynNIH0cYbzyCZN+Fu0EU4C0Ecx1u/0LycRsT5wthraRx/8kne0EIYOAZY321KB
+    /7+UzOh7OlqviMCxy8sehh+ffZzbA1ZloX0T1ZphHs2gfKgTZgme9j+DaFkr7jrXNK2+Da
+    UZ1kFcX0GytWLrOKSYk85Ql6OoEElRCk/ag+HIAS5ZZ8BTmO4ki0zhNsB4g1D4h0/1B2An
+    xugJgGOblZ4hY9pLc88dgop7V5XtaCBez0UGJPls1sN+bAqnhrwv0xEoeG3mynqSvbubZP
+    Gt/B7ZzYsY8Qp5LlS5JG8sXLiXxCX+G+WraFcWBsnyYdRBX8qJp+bDFG7vtjsCnNxd7K32
+    /Oh9+RsSGqJvsn24ccbcmCAxG43kZcj7UN/SkYjt7wXAaffBTHAMpJEEV6lMJDi/PDsNoH
+    oyFhbM5ddf9t86LtqhLqMiZ5c0OmILw0JN2hfFoqcoqLI1ER8az2XYaANF0Bma+rFXs6EM
+    KlLzr3ppO4Tkvar4RQngMJfo9zGQ3AMUJyhDDesMyyFG/d+TZPzmD4FpuU8g
+X-ME-Proxy: <xmx:_u5aaqMpj0699XrR4t-KqyhEru8d4RSd6nXieDHJUVfNg17lPeTofg>
+    <xmx:_u5aavEw0Gm4vgwZIKI0pXWgbFSj8B0T-fkXdF5Oue7NPHKf0ZpstA>
+    <xmx:_u5aam0EheD3UUHBEENMgsmzU2NjPkKHrQuR1W4ERWcv7LV09IhBsg>
+    <xmx:_u5aauFtPvtzpIJMb1u9qHUIkJLWqmkuYrIf2bSoLtIVH__oSRGu1Q>
+    <xmx:Ae9aagQsgx-EbfkkoZbbHdDdzvcnAkc9r36ecnN5C2FBl1Js3xTLx8az>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 17 Jul 2026 23:11:51 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	ulfh@kernel.org,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org
+Cc: chaoyi.chen@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: [RFC PATCH v2 0/8] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Sat, 18 Jul 2026 15:11:38 +1200
+Message-ID: <20260718031146.3368811-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <20260717072323.96-2-kernel@airkyi.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.287.57
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_102022_196158_F8190B22 
-X-CRM114-Status: GOOD (  34.79  )
+X-CRM114-CacheID: sfid-20260717_201206_281796_B9B8B196 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,236 +115,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6853785771953207479=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This adds RK3576 NPU support to accel/rocket.  RFC: the NPU brings up and
+runs, but full inference is not correct yet, and I would rather get
+feedback now than sit on it.
 
---===============6853785771953207479==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jbdw5cv6ljemwd7w"
-Content-Disposition: inline
+Tested on a Radxa ROCK 4D.  The NPU probes, powers on, brings up its
+IOMMUs, and runs jobs to completion (rocket + Mesa Teflon).  Getting there
+took a few fixes outside the driver too: a power-domain settle delay and
+reset cycling (else a cold power-on throws an async SError), the full
+clock set on the MMU nodes, clearing a stale firmware page fault, and both
+NPU power domains on the core.
 
+Not solved: only the first operation in a power session gives the right
+answer.  Every later one engages and DMAs its input, but the compute
+output never lands, so the readback is the zero-point.  I chased it
+through the whole software surface (registers, IOMMU/TLB, cache,
+power/clock/reset, dispatch) and it reproduces even with the driver
+environment matched to the vendor's on the same kernel, so it looks to be
+below software, in the fixed-function block.  Traces available.
 
---jbdw5cv6ljemwd7w
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 1/5] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-MIME-Version: 1.0
+Two asks: review of the bring-up and the shared pmdomain/iommu changes;
+and if anyone knows the RK3576 NPU internals, whether that
+per-power-session arm can be driven from software at all.
 
-Hello,
+The series is split by subsystem (binding, pmdomain, iommu, driver, DT).
+The board DT keeps vdd_npu_s0 always-on for now; happy to switch to
+proper runtime control if preferred.
 
-On Fri, Jul 17, 2026 at 03:23:19PM +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->=20
-> The HPD function of Type-C DP is implemented through
-> drm_connector_oob_hotplug_event(). For embedded DP, it is required
-> that the DRM connector fwnode corresponds to the Type-C port fwnode.
->=20
-> To describe the relationship between the DP controller and the Type-C
-> port device, we usually using drm_bridge to build a bridge chain.
->=20
-> Now several USB-C controller drivers have already implemented the DP
-> HPD bridge function provided by aux-hpd-bridge.c, it will build a DP
-> HPD bridge on USB-C connector port device.
->=20
-> But this requires the USB-C controller driver to manually register the
-> HPD bridge. If the driver does not implement this feature, the bridge
-> will not be create.
->=20
-> So this patch implements a generic DP HPD bridge based on
-> aux-hpd-bridge.c. It will monitor Type-C bus events, and when a
-> Type-C port device containing the DP svid is registered, it will
-> create an HPD bridge for it without the need for the USB-C controller
-> driver to implement it.
->=20
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-> Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
+Changes in v2 (thanks to Chaoyi Chen and the Sashiko review bot):
+  - dt-bindings: keep sram-supply required for rk3588 via allOf/if-then
+    instead of dropping it from the shared required list
+  - pmdomain: release the resets in rockchip_pm_remove_one_domain()
+  - iommu: drop the redundant "err == 0" check in the clock probe
+  - iommu: replace the two "skip orphaned-fault banks" patches with one
+    that clears the stale firmware page fault (CMD_PAGE_FAULT_DONE) before
+    enabling stall, so no bank needs special-casing -- Chaoyi asked
+    whether dealing with the fault avoids the skip, and it does
+  - accel/rocket: gate every RK3576-specific difference (extra clocks,
+    single reset, multi power-domain attach, polled completion) behind
+    of_device_id match data so the RK3588 path is byte-for-byte unchanged;
+    drop the unused DPU register mapping (the driver did no pre-arm)
+  - series is now 8 patches (was 9)
 
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com> # ArmSom Sig=
-e5
+I used Claude Opus 4.8 to help trim this series out of my debugging tree
+and generate the diffs.
 
-I gave this a test together with the RK3588/RK3576 USB-C DP AltMode
-patches I'm working on. As the fusb302 does a manual registration
-for the DRM bridge in its probe function, the bridge is registered
-twice:
+Jiaxing Hu (8):
+  dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+  pmdomain/rockchip: add optional per-domain power-on settle delay
+  pmdomain/rockchip: cycle optional power-domain resets on power-on
+  iommu/rockchip: take all DT clocks
+  iommu/rockchip: clear stale page faults before enabling stall
+  accel/rocket: add RK3576 NPU (RKNN) support
+  arm64: dts: rockchip: rk3576: add NPU (RKNN) nodes
+  arm64: dts: rockchip: rk3576-rock-4d: enable NPU
 
-root@sige5 # cat /sys/kernel/debug/dri/bridges
-=2E..
-bridge[1]: drm_aux_hpd_bridge_funcs
-	refcount: 4
-	type: [10] DP
-	OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
-	ops: [0x4] hpd
-bridge[2]: drm_aux_hpd_bridge_funcs
-	refcount: 2
-	type: [10] DP
-	OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
-	ops: [0x4] hpd
-=2E..
+ .../npu/rockchip,rk3588-rknn-core.yaml        |  12 +-
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      |  16 +++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      |  78 ++++++++++-
+ drivers/accel/rocket/rocket_core.c            |  39 +++++-
+ drivers/accel/rocket/rocket_core.h            |  22 ++-
+ drivers/accel/rocket/rocket_device.c          |   4 +
+ drivers/accel/rocket/rocket_drv.c             |  22 ++-
+ drivers/accel/rocket/rocket_job.c             | 127 ++++++++++++++++--
+ drivers/iommu/rockchip-iommu.c                |  41 +++---
+ drivers/pmdomain/rockchip/pm-domains.c        |  69 ++++++----
+ 10 files changed, 371 insertions(+), 59 deletions(-)
 
-Apparently the USB-C DP AltMode keeps working, so this just wastes
-a few CPU cycles and some memory. So this can land and then we can
-remove the manual code from the driver as a follow-up step. I also
-gave that a try and things keep working. I won't send the fusb302
-patch for now to ensure its not applied before this patch lands.
+-- 
+2.43.0
 
-Greetings,
-
--- Sebastian
-
-> (no changes since v3)
->=20
-> Changes in v2:
-> - Add copyright text.
-> - Remove useless goto.
->=20
-> ---
->  drivers/gpu/drm/bridge/Kconfig                | 10 ++++
->  drivers/gpu/drm/bridge/Makefile               |  1 +
->  .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 54 +++++++++++++++++++
->  3 files changed, 65 insertions(+)
->  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->=20
-> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kcon=
-fig
-> index 4a57d49b4c6d..9739b2a19758 100644
-> --- a/drivers/gpu/drm/bridge/Kconfig
-> +++ b/drivers/gpu/drm/bridge/Kconfig
-> @@ -30,6 +30,16 @@ config DRM_AUX_HPD_BRIDGE
->  	  Simple bridge that terminates the bridge chain and provides HPD
->  	  support.
-> =20
-> +if DRM_AUX_HPD_BRIDGE
-> +config DRM_AUX_HPD_TYPEC_BRIDGE
-> +	tristate
-> +	depends on TYPEC || !TYPEC
-> +	default TYPEC
-> +	help
-> +	  Simple bridge that terminates the bridge chain and provides HPD
-> +	  support. It build bridge on each USB-C connector device node.
-> +endif
-> +
->  menu "Display Interface Bridges"
->  	depends on DRM && DRM_BRIDGE
-> =20
-> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Mak=
-efile
-> index 15cc821d85b7..d88a9e1ccc9a 100644
-> --- a/drivers/gpu/drm/bridge/Makefile
-> +++ b/drivers/gpu/drm/bridge/Makefile
-> @@ -1,6 +1,7 @@
->  # SPDX-License-Identifier: GPL-2.0
->  obj-$(CONFIG_DRM_AUX_BRIDGE) +=3D aux-bridge.o
->  obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) +=3D aux-hpd-bridge.o
-> +obj-$(CONFIG_DRM_AUX_HPD_TYPEC_BRIDGE) +=3D aux-hpd-typec-dp-bridge.o
->  obj-$(CONFIG_DRM_CHIPONE_ICN6211) +=3D chipone-icn6211.o
->  obj-$(CONFIG_DRM_CHRONTEL_CH7033) +=3D chrontel-ch7033.o
->  obj-$(CONFIG_DRM_CROS_EC_ANX7688) +=3D cros-ec-anx7688.o
-> diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/g=
-pu/drm/bridge/aux-hpd-typec-dp-bridge.c
-> new file mode 100644
-> index 000000000000..c09579ff7ab9
-> --- /dev/null
-> +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
-> @@ -0,0 +1,54 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +/*
-> + * Copyright (C) 2026 Rockchip Electronics Co., Ltd.
-> + *
-> + * Author: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> + */
-> +#include <linux/of.h>
-> +#include <linux/usb/typec_altmode.h>
-> +#include <linux/usb/typec_dp.h>
-> +
-> +#include <drm/bridge/aux-bridge.h>
-> +
-> +static int drm_typec_bus_event(struct notifier_block *nb,
-> +			       unsigned long action, void *data)
-> +{
-> +	struct device *dev =3D (struct device *)data;
-> +	struct typec_altmode *alt =3D to_typec_altmode(dev);
-> +
-> +	if (action !=3D BUS_NOTIFY_ADD_DEVICE)
-> +		return NOTIFY_OK;
-> +
-> +	/*
-> +	 * alt->dev.parent->parent : USB-C controller device
-> +	 * alt->dev.parent         : USB-C connector device
-> +	 */
-> +	if (is_typec_port_altmode(&alt->dev) && alt->svid =3D=3D USB_TYPEC_DP_S=
-ID)
-> +		drm_dp_hpd_bridge_register(alt->dev.parent->parent,
-> +					   to_of_node(alt->dev.parent->fwnode));
-> +
-> +	return NOTIFY_OK;
-> +}
-> +
-> +static struct notifier_block drm_typec_event_nb =3D {
-> +	.notifier_call =3D drm_typec_bus_event,
-> +};
-> +
-> +static void drm_aux_hpd_typec_dp_bridge_module_exit(void)
-> +{
-> +	bus_unregister_notifier(&typec_bus, &drm_typec_event_nb);
-> +}
-> +
-> +static int __init drm_aux_hpd_typec_dp_bridge_module_init(void)
-> +{
-> +	bus_register_notifier(&typec_bus, &drm_typec_event_nb);
-> +
-> +	return 0;
-> +}
-> +
-> +module_init(drm_aux_hpd_typec_dp_bridge_module_init);
-> +module_exit(drm_aux_hpd_typec_dp_bridge_module_exit);
-> +
-> +MODULE_AUTHOR("Chaoyi Chen <chaoyi.chen@rock-chips.com>");
-> +MODULE_DESCRIPTION("DRM TYPEC DP HPD BRIDGE");
-> +MODULE_LICENSE("GPL");
-> --=20
-> 2.53.0
->=20
-
---jbdw5cv6ljemwd7w
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpaZBQACgkQ2O7X88g7
-+po4qA/+IBHGDueFgcm82WUb8KlcPZXHjJIodD4gCNh2En34PfHdv2tgAZk8FNoa
-130uQsjBUVejRARr4hgsqrKrisG/t/JfzHqg1DZpeok3j+sqCCDjuOYg3HBRrpjx
-WgTnxT7RWYqUjKE1bNX957wGBqggHx53///8/q2wwk4lCg99GEkoEqbbCgL4nQtb
-qwaQxOzI012LR46Q1c7lfSYYtjIAJEP2ojNbQUyUSuP58zZs2LsgdR0x8QVHx8h+
-PdwS92uTNQ5iMEWZh/jkB3xUaS3Rr9avZSwdaRgL0nGYnsuC5gBDBuVQtgFztnJl
-gK80/W5U61uXnj4IY1i61+V5jwNvBbqnSG0VXaN85zbMEhH6IwWPFb4SFm2NduwN
-ba93B+wOyFXoTZ+xPy1PLjQ3jwaHG91tw2gQLurisvb9+eAbGdFKbG2t6pkvCuD2
-LcwFHTSTD/gpsWMRiz4Lbz0I49jSRgW5x0wB4HOsOMDrFVDR8+MqNKMKHdErPqRp
-ZUeligeDaPclFpvT/ea7ChBipXN6/T6DvnwWe+Rsrn663mE3Y+GgOHiCYyfZZcRc
-SZk1gwoEskqaR6tguKoHT5hJwH30MVTmQDLL5I8AFij9LVl7MehM+DPjS+kRTE35
-FnmtXnvKOa19o/QDH4N/zq1C+ayxbN+IQKCaJ2g3irXGVpl4q38=
-=wii+
------END PGP SIGNATURE-----
-
---jbdw5cv6ljemwd7w--
-
-
---===============6853785771953207479==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6853785771953207479==--
-
