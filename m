@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AFDCC4451B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jul 2026 16:06:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A25CC44512
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jul 2026 18:49:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tb8uouUmaKqefazr/4JUzQ8/v70tHu2IpScMeFv8mkI=; b=ow/+jl33DFmiZO
-	iUDPecVMBc8ChYNill6NscuuiICxUILpJJwdIaTwByKFNbBSVlWqNYaJJW5cB0N+FGOd1rBkdx8Pu
-	MsVxsDrx0L4a8UEIX7UtMkAOGUn9ERVc3lQDU0ODTjxNKYWHZRl1E/eqeV9zPNbK+q8JuUHISyZSI
-	5HfxG0J2Eu55zNHYRMCX0O5Bep9I1Wmzl+IsTGHzYMWz67cyViQTwD9YflDY1QVUtTYo3Ry8jVd8A
-	WiIgzosoGy0ZHgGZIPoFbwbL4pfTDEdsVfxN/S9eEMvOG9IwsUiaCgtZKNl5Bv64MmamDUj75ai6V
-	iIZJiahX6B/hmnOabCVA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lrEepkI+vs9wnpnwG+iyFyMs1zCSGbZBY1vLvCVx1/c=; b=frjWtdWDgiD+uu
+	EcnLlorFJHt6MCv5WYAVKPW6peX8q/B82fqNqzfx5X9jsFkcbX3fvq2pVo0Ii6TWD1QPrcmU9CcEW
+	QId+5ZxVt1mrCtTL3r+UnP0kR5VRoAEJs/5Q6HNrvrqQ/x5Gv9YErtAuddcMcviV3odLffskkElbQ
+	R3v3PIJ64vIfQvgjDlpIYrOUHL4Jo/it/jrrPznZ1OTQeJDm9gj0bA+3QkdJ1TEeUutRiOKtdx4MI
+	r2w9JvH8490LM7Bhc/Sx59RHQ1TXeGazxi8RaHyAS4Wt56oW5vxv2x8+yCP34EJT7tozRBT7q96+H
+	wRH80KYtIuOkO95n+s6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlU1f-000000058u7-30CS;
-	Sun, 19 Jul 2026 16:05:59 +0000
+	id 1wlWZo-00000005HLx-42YP;
+	Sun, 19 Jul 2026 18:49:24 +0000
 Received: from mx0.gmx.wtf ([203.137.112.168])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlU1d-000000058th-15pb
+	id 1wlWZm-00000005HLX-1V6G
 	for linux-rockchip@lists.infradead.org;
-	Sun, 19 Jul 2026 16:05:58 +0000
-Date: Sun, 19 Jul 2026 18:05:43 +0200
+	Sun, 19 Jul 2026 18:49:23 +0000
+Date: Sun, 19 Jul 2026 20:49:14 +0200
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=vicb.net;
-	s=f747d04263f05989; t=1784477146;
-	bh=H2L0XwexQTLFwFIN1aMrdC2PYPHb+Q6wCLspbhgSNPY=;
-	h=Date:From:To:Subject:From;
-	b=M9VoFfaNZ6WWq5eFh++yubo2HQwK679uc7UkUqilrIeybYLyEilavjmY+kinBO/RE
-	 1XM299z1BPWVI1NJD8UTZnZ63Id3HbtX8D8j5SnKk/T6twqMHQBcdgQ4Ee/6u9mFM8
-	 FFzoUjn9crRmfxlDAX0N1TDw8zdLRti0JTSrTUj7NzoCAtBp9KUeSRoWk6RRi1CzWn
-	 MyE9xFjJFe3XxzUYiU4F9qFOOuTeAKh8Q1i7FTCI9nAttofW8HMO4VFwmbvwWpTVE2
-	 MAGgAsAP1ZCZV5bNBezg6UQzjdxToR1RN1DfhAIt71sXqKWe7MTsXgKLR1qn2uBCU0
-	 JTaIgeuNc2VBQ==
+	s=f747d04263f05989; t=1784486957;
+	bh=CZ34Dq4h24k1BTVbY3+f0i5vXsK5au8ANUooagJDjfE=;
+	h=Date:From:To:Subject:References:In-Reply-To:From;
+	b=ptwJp/w3Fd4tu6FELIHC3Z36JqLnKI+uOeHZaCHp+XoYfcg9UxKfHXzgEGKVDgAPT
+	 NwxWipCB9GXgjIldQRpHBrPC2COKFajtEdYsPjZddNqcl4FqK3bP7nbRjj8UKc/0rI
+	 LQP/w4cjsAvsbUFbMBk74cQ0fJGpWuyWM2c/5OAQMFcvECTYIugK2fPryCnymLZKLy
+	 MA9mFHqBev5lkdbxeIjJRN1RJUrPwRMcGD9lcPRB+xfRxxoxKl+zMBDk+QMOsYpchj
+	 KkSo4lm2NevH6G5/dO/gWDx8gTV8yeHSco8p9gCj0WcwQKdHHnbU++dF0MGQHaV6Fs
+	 UkwY36w3ogbNw==
 From: Vic B <linux@vicb.net>
 To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
@@ -45,13 +45,15 @@ To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Jensen Huang <jensenhuang@friendlyarm.com>
-Subject: [PATCH] arm64: dts: rockchip: fix label of sys_led for nanopi-r4s
-Message-ID: <alz112qGhm77liqi@vicb.net>
+Subject: [PATCH v2] arm64: dts: rockchip: fix label of sys_led for nanopi-r4s
+Message-ID: <al0cKhqvPbBO_5q8@vicb.net>
+References: <alz112qGhm77liqi@vicb.net>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <alz112qGhm77liqi@vicb.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260719_090557_421603_5C0542EA 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20260719_114922_533603_0B43BF63 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,34 +70,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The sys_led of NanoPi R4S is labeled as SYS on the board and on the
-original case, and it is green, not red.
+This commit corrects the system LED configuration for the NanoPi R4S by
+replacing the deprecated label property with color and function.
 
-The board also has a red power led, but that one is connected to 3V3
-and cannot be controled via GPIO.
-
-The above can checked on page 17 of board's schematics at
-https://wiki.friendlyelec.com/wiki/images/0/06/NanoPi-R4S-1GB-2008-Schematic.pdf
-
-This patch changes the label for sys_led from red:power to green:sys.
+This changes the resulting label of mislabeled sys_led from red:power
+to green:status, while the labels of the other two leds stay intact
+(green:lan for lan_led and green:wan for wan_led).
 
 Signed-off-by: Vic B <linux@vicb.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v2:
+
+  - use color and function instead of deprecated label as suggested
+    by Sashiko AI
+---
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
-index 4274d1b6e80a..6fbc76e2e679 100644
+index 4274d1b6e80a..4ad012a9bdc8 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
-@@ -31,7 +31,7 @@ lan_led: led-lan {
+@@ -14,6 +14,7 @@
+ 
+ /dts-v1/;
+ 
++#include <dt-bindings/leds/common.h>
+ #include "rk3399-nanopi4.dtsi"
+ 
+ / {
+@@ -25,19 +26,22 @@ gpio-leds {
+ 		/delete-node/ led-0;
+ 
+ 		lan_led: led-lan {
++			color = <LED_COLOR_ID_GREEN>;
++			function = LED_FUNCTION_LAN;
+ 			gpios = <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
+-			label = "green:lan";
+ 		};
  
  		sys_led: led-sys {
++			color = <LED_COLOR_ID_GREEN>;
++			function = LED_FUNCTION_STATUS;
  			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
 -			label = "red:power";
-+			label = "green:sys";
  			default-state = "on";
  		};
+ 
+ 		wan_led: led-wan {
++			color = <LED_COLOR_ID_GREEN>;
++			function = LED_FUNCTION_WAN;
+ 			gpios = <&gpio1 RK_PA0 GPIO_ACTIVE_HIGH>;
+-			label = "green:wan";
+ 		};
+ 	};
  
 -- 
 2.47.3
