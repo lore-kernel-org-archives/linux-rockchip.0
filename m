@@ -4,59 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A5C4C4451B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jul 2026 15:35:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AFDCC4451B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jul 2026 16:06:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pkl253C/fa9aZpxBs1p8ALD0Cahr5zpgjXkCAUaoneU=; b=NZrDNOcRxSh/UF
-	bP/vflEI+Jy2Tksdg1MY793C2uOQOYz/FoZkBotQBY7gAeOc8lOqWB+cZgyMI/a7wdgrSL9liDES+
-	8v1G5/o7Pun5toTtT4hygQmpvKApTe4UFR42f6nGegQNEZXg4n/yrUmW+he4HYW3D33r2PCRfyANO
-	r4+INh9sj1k5xevEzRXtCQWSBbAHT3ML+Vz+JXaOJPCunZ5jf210bqF3ZWOllPTf3cc3z03SfQnky
-	SBmTtaVFB4GaZQHIAcwpQGhXI5iSpq027QlXfVMXRtHK7NOpSgXaLQbKYvoVdU0eUI0CMjCTI1+ZX
-	3Cb2H17/MLTbvMJj49zQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tb8uouUmaKqefazr/4JUzQ8/v70tHu2IpScMeFv8mkI=; b=ow/+jl33DFmiZO
+	iUDPecVMBc8ChYNill6NscuuiICxUILpJJwdIaTwByKFNbBSVlWqNYaJJW5cB0N+FGOd1rBkdx8Pu
+	MsVxsDrx0L4a8UEIX7UtMkAOGUn9ERVc3lQDU0ODTjxNKYWHZRl1E/eqeV9zPNbK+q8JuUHISyZSI
+	5HfxG0J2Eu55zNHYRMCX0O5Bep9I1Wmzl+IsTGHzYMWz67cyViQTwD9YflDY1QVUtTYo3Ry8jVd8A
+	WiIgzosoGy0ZHgGZIPoFbwbL4pfTDEdsVfxN/S9eEMvOG9IwsUiaCgtZKNl5Bv64MmamDUj75ai6V
+	iIZJiahX6B/hmnOabCVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlTY3-000000057vx-1JTo;
-	Sun, 19 Jul 2026 15:35:23 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1wlU1f-000000058u7-30CS;
+	Sun, 19 Jul 2026 16:05:59 +0000
+Received: from mx0.gmx.wtf ([203.137.112.168])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlTY0-000000057vP-0uWT
+	id 1wlU1d-000000058th-15pb
 	for linux-rockchip@lists.infradead.org;
-	Sun, 19 Jul 2026 15:35:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=QL3WAS6qAwfUzWShk/ZMh4Zf5wiO0S+HMW1AfZITg6U=; b=zUHEfQmz9m9Y0r2wTXye2upa4q
-	Tb+SyVouGmQzHVR/kIZYaoLBiJW9QSlKzveqW8N2huj6fymzZVvMQa2h8KQuruRW+whVTYO6BFqX5
-	cIwhBRwSC3U8CbkKnU0yHCVOkLvcAIScJWeGm5fmG5VxVbQZKwi0Ee+uisgpQuQHdln0=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1wlTXU-00D6GL-00; Sun, 19 Jul 2026 17:34:48 +0200
-Date: Sun, 19 Jul 2026 17:34:47 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: Frank.Sae@motor-comm.com, hkallweit1@gmail.com, linux@armlinux.org.uk,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, maxime.chevallier@bootlin.com,
-	heiko@sntech.de, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH net-next] net: phy: motorcomm: enable the reference clock
- for YT8531
-Message-ID: <96f4db7b-70d7-49a1-a12e-7d7f22d59dd5@lunn.ch>
-References: <20260719034555.3623003-1-gahing@gahingwoo.com>
+	Sun, 19 Jul 2026 16:05:58 +0000
+Date: Sun, 19 Jul 2026 18:05:43 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=vicb.net;
+	s=f747d04263f05989; t=1784477146;
+	bh=H2L0XwexQTLFwFIN1aMrdC2PYPHb+Q6wCLspbhgSNPY=;
+	h=Date:From:To:Subject:From;
+	b=M9VoFfaNZ6WWq5eFh++yubo2HQwK679uc7UkUqilrIeybYLyEilavjmY+kinBO/RE
+	 1XM299z1BPWVI1NJD8UTZnZ63Id3HbtX8D8j5SnKk/T6twqMHQBcdgQ4Ee/6u9mFM8
+	 FFzoUjn9crRmfxlDAX0N1TDw8zdLRti0JTSrTUj7NzoCAtBp9KUeSRoWk6RRi1CzWn
+	 MyE9xFjJFe3XxzUYiU4F9qFOOuTeAKh8Q1i7FTCI9nAttofW8HMO4VFwmbvwWpTVE2
+	 MAGgAsAP1ZCZV5bNBezg6UQzjdxToR1RN1DfhAIt71sXqKWe7MTsXgKLR1qn2uBCU0
+	 JTaIgeuNc2VBQ==
+From: Vic B <linux@vicb.net>
+To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Jensen Huang <jensenhuang@friendlyarm.com>
+Subject: [PATCH] arm64: dts: rockchip: fix label of sys_led for nanopi-r4s
+Message-ID: <alz112qGhm77liqi@vicb.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260719034555.3623003-1-gahing@gahingwoo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260719_083520_257546_C1C2B648 
-X-CRM114-Status: UNSURE (   7.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260719_090557_421603_5C0542EA 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,18 +68,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 19, 2026 at 03:45:55PM +1200, Jiaxing Hu wrote:
-> The YT8531 needs a 25 MHz reference. On boards without a local crystal
-> it is fed from the SoC, described as a clock on the PHY node. Get and
-> enable it in probe so the PHY is clocked before its registers are
-> accessed. The clock is optional, so crystal-clocked boards are
-> unaffected.
-> 
-> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+The sys_led of NanoPi R4S is labeled as SYS on the board and on the
+original case, and it is green, not red.
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+The board also has a red power led, but that one is connected to 3V3
+and cannot be controled via GPIO.
 
-    Andrew
+The above can checked on page 17 of board's schematics at
+https://wiki.friendlyelec.com/wiki/images/0/06/NanoPi-R4S-1GB-2008-Schematic.pdf
+
+This patch changes the label for sys_led from red:power to green:sys.
+
+Signed-off-by: Vic B <linux@vicb.net>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+index 4274d1b6e80a..6fbc76e2e679 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+@@ -31,7 +31,7 @@ lan_led: led-lan {
+ 
+ 		sys_led: led-sys {
+ 			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
+-			label = "red:power";
++			label = "green:sys";
+ 			default-state = "on";
+ 		};
+ 
+-- 
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
