@@ -4,72 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5486FC4450A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jul 2026 23:32:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32149C4450A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jul 2026 03:46:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T4yARlQbTJG0MVygPgEs/jD5GrGRx8artitNP/OVoaU=; b=FrmrAOgrixB2iZTrqkHgKsZ2dj
-	OjAlEDHvuKwkHuAGn6Hqn2TUNqtTb22oMn21IWiX/hlcflC6fAvzp71ScLlAPjK1XAXF+O9bokzCU
-	uBsCTjxokkV+WFbu0vW0drIB7sRFyB8j9mPIHQZ8YJP8TYH2BOyTKTZx9iwby7gqKXTvMrkBAVxyR
-	Z5LxLoFmp1uZyAE8XBiOEYwFfhmQMuEM8kJDMiNwvSVxIVNTsFDyvI7Af3SdwBvSV4mCMkq0OwJ0z
-	gEKYtxVfis6yKfe3ZmiJeHYZ9uSS70/RdQ93VbKbj9Nv/ldR2zyAJYCLZFpeW8e6M//RBgj0E3iJo
-	fbyxKUog==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iX1g1zYeYc0D9kEQJ6TaZ0hvubx/yzkNiyUtNVY/ZW8=; b=dSCaeC1wqos473
+	15OQWQkvpJz9tmCN0z885pMX6+fPWJW4kpuznXFRJgsp+vT1lxqDBp92dD19Mlgu3d+rfLR/Wk2ID
+	BlhbisjIR+dGzKao8FamhKatgCJtk2edNIBi3IwW90hdpCVes9V6UmXz2iE5BiBUWUL8iN8A6Ad5c
+	eeKy0a0QD7ENu5dqxq8bJ6v+oK5QHT/DMFxdVZzm6rP3LEybwFIinsMB4joc9YlLfmslTWzSK181K
+	fBhda8wb/6qSw+EkOnFaq1fB/T04e1bJQLUZKF06XDhAFesGf+c3xqF+kS96N47zK+1wfUhvEK6uq
+	CNBN7j+Scuvn266qZGKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlEVs-00000004bLo-0AwO;
-	Sat, 18 Jul 2026 23:32:08 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wlITm-00000004im2-2Lcs;
+	Sun, 19 Jul 2026 03:46:14 +0000
+Received: from flow-b1-smtp.messagingengine.com ([202.12.124.136])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlEVp-00000004bLK-08hg;
-	Sat, 18 Jul 2026 23:32:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1784417506; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=mjlBT5fBOmj0puaOAj3NrQ4dZIxtuOA+NuCb2Yzp1io4uYKf/JLzyEvzPxyp6rpc1wznjzHszAc6K/k9XBPK9IYRPJpNKcqW9EeFoyUmzYdfXmJGYnUdPyBtti8FyWT/1duxip0xZ+Jdbm5BWJ8thayTrVTDNSZDEsos0oid4Po=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1784417506; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=oMGvRNkuFyXaMYeP4ES+8jelR30jNKVF+YZjl8fjH+c=; 
-	b=TbfNsxKSpnNYMGfhpBfgeOqw7FcUXw62jOTFe/BZYXXiMdcvqp/HSlMIdMOl5yIckY69c1dXk/LiybPChgxtXLdAq1xBTCkMgk/6tl04QI4BAkfjCBzzzYFU19EdGkKMSmT2ntdnN5RLD/+SXe1m0S0yIFKIs8rNYhXmMYqxCFc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784417506;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=oMGvRNkuFyXaMYeP4ES+8jelR30jNKVF+YZjl8fjH+c=;
-	b=aW8DOYx18xezxX/CNds+Jm5xao3XhXf0fOSTgrsWOjnRFZPS9yPLGz0G2STbaGGV
-	SwdjbNK3dU0INwq+tHVxn5ZaaSIW9JhWVo246avHA7kdjEjND5cuOxR/hRhIMpnN3Me
-	ZDffuyEhqnXqJEj8O/dh84qj58eb5Q9pYTHIoDUo=
-Received: by mx.zohomail.com with SMTPS id 1784417504416910.5266533899085;
-	Sat, 18 Jul 2026 16:31:44 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 2C8CE1804CF; Sun, 19 Jul 2026 01:31:39 +0200 (CEST)
-Date: Sun, 19 Jul 2026 01:31:39 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Igor Paunovic <royalnet026@gmail.com>
-Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: enable HDMI RX audio
- capture on Orange Pi 5 Plus
-Message-ID: <alwKdkNsMi9L4ZiY@venus>
-References: <20260718085728.6797-1-royalnet026@gmail.com>
- <20260718085728.6797-5-royalnet026@gmail.com>
+	id 1wlITf-00000004ilb-0rYo
+	for linux-rockchip@lists.infradead.org;
+	Sun, 19 Jul 2026 03:46:12 +0000
+Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
+	by mailflow.stl.internal (Postfix) with ESMTP id A0DE413001A6;
+	Sat, 18 Jul 2026 23:46:03 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-04.internal (MEProxy); Sat, 18 Jul 2026 23:46:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm1; t=1784432763; x=1784436363; bh=K71T5tGJ+6
+	I/pIxNg5ggxdkC8btPjjIfP/2AA7E16Kw=; b=CpuK4YOtjH6ifPjbKchrKRaH7u
+	bpsVQl30YvFKEW3AIsCdKDjAg/CuQiG9UBi+q09bDYnQGcmOQzv+aYUdYuy4d2sU
+	XZjWN9x2w1C92akDpoGXHWQIikcHlhaynP/8WLxcYbE3y/L6Qv+zfRzzyVKZcKs+
+	GTBQwr8ZuvkqRezLK3ieDjRKETNh13kSi9+KvsTTcASiM31hRQN75iZ7B+DU0I0a
+	0CSsO5xZ/3MePwJak8lqPFSK2JmON4i6q0nW4to5bgYaI3dTKdwcDxfkJ59tptbI
+	el4czpzavUtN77+TpZCM6RBtuOZdp4oKHefx7PuQKWThLSoCrJ72ZRagsHiw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+	1784432763; x=1784436363; bh=K71T5tGJ+6I/pIxNg5ggxdkC8btPjjIfP/2
+	AA7E16Kw=; b=Xv8ab6BY4/xe6LwTVr6VIF4cNkdAkjXFcgMWtVACtC4A4gRTFSA
+	44qYDlp1kMzox2xzwo99x8oY0fJd1BhBbscexPCWJDEWnlaDSXh1O4s8S/tb3Vjg
+	2TYhNy7gWI1pWqTSGC5fwZS/pkGC4vTA4fntUBmLX72cHYtsyq7kDLRr+C8w08T6
+	dc8yDquFOXV8KP7aod3EBFTv2T2ie4gNwROWYhl/WZSqnvZ1FzCmxWYO4Q4teqJ/
+	zGpsSTgNETrFA3ybo7oPZulzpMgKxkbXJmlnWt/cP6ESRBhMt7PPjNzCukDdRTt0
+	wEGJsUFsyvDaUEfkryeAhXY6lr/w/OTzGRA==
+X-ME-Sender: <xms:eUhcatOKBJllc4xAaEKyiNrgVgdodbiw0dCEaqOGNTo3zuOeK_GeHg>
+    <xme:eUhcasUtDXEBRXK_6wfIq3M0IoyrwXAyZK49tSO4xXivhRH1fJ5s4s6RlWF1xjFPF
+    WYM19504FHu023i2LiJBX_RA0Je7X0oDFBfwIOs2mlqrsGpCiyHEIU>
+X-ME-Received: <xmr:eUhcagsME0QVfQaaPt8vErgifBNZ_SlTdgE7abz7lajNulzzWcnJcf4eM4Qz6Sw5sdTAt-A61jOd010JbQA>
+X-ME-Proxy-Cause: dmFkZTFZGFuxOOcuQdUk9nnoXSFAretSBDpA7bPHsxXnUye+fLvAaW/QjoaDurq3PAttm9
+    a4QuFYl1x7Oxj4VfdlemzQxWNYFWbMg6eo8O6toy+0O6WJ0gmw5NR4wmgy/2SX7IbW4y0G
+    Ej00Re0VIbKWZNiE57YBf4t86bHz36JYL00HMr3kD5GgDzjzG+n8QX02kRE5+RpEVWCih+
+    a6T2Fkycgvzn+vFrBnKkQkR0yZTEPcMbg3Rk9wSpvQfvxaCR6UXJcheQ6Ryr4lGbQViCP+
+    Po3+PZcvFLW0MueirC3YM2KVjHi8dm1NMTKJB84dF9qrsW/LnlDZgTK17yNQlWn+l2Qfkm
+    GzqKVOmJRQPzKCxri3PUIR7FREbtFxI7TlmqSWlPaDyGRVn7GUtJ6tJn9e+LkuXQq3MJ2u
+    EfScaCqH5HaJeiHk366wqNAIQD0xv3XAMPY6dBhKpknwLLCbfry9C5uSShJgcNPmNJztsI
+    JnO7SKfChp8k2fGMckUar++LOWMdU5k0TzpmrVyECjXLIuP1iXESC4DQKDXzGt1ts8tHIf
+    JB2051MspN2Im621cHKzL5w2RxyA4arkkyBbF0N+//YtOGXHx7WJTw+fTp29TwwQ1ornp9
+    oLIjXXsX4Bc2rK2hwAmcP9VCwSKemDpq/v8RmtPZvr84QPtmEtdKdSBojDSA
+X-ME-Proxy: <xmx:eUhcan0XR0TzPhrlkhoWC43rluGh0Dl1ouQF08A5yq1Jg112W9ILoA>
+    <xmx:eUhcah7uYauRw3fwEsGMvdMzR4-hffXXKL7boHXpLURjHG9NzNaWCQ>
+    <xmx:eUhcauV6sJc7UQrwvlBKEHhncHvSXJmJq9nSJJahVZxu6dQhHuNIsw>
+    <xmx:eUhcapgW1ZkcAw1y55U1UizS38m1WbdBl7BYpipcXafytdDQaXd_UQ>
+    <xmx:e0hcak3fvXjj1cV1pySBNjAMw6V70OWhlpuepLp4iu61VOYGD-Uo84Kr>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 18 Jul 2026 23:45:57 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: Frank.Sae@motor-comm.com,
+	andrew@lunn.ch,
+	hkallweit1@gmail.com,
+	linux@armlinux.org.uk,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com
+Cc: netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	maxime.chevallier@bootlin.com,
+	heiko@sntech.de,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH net-next] net: phy: motorcomm: enable the reference clock for YT8531
+Date: Sun, 19 Jul 2026 15:45:55 +1200
+Message-ID: <20260719034555.3623003-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <20260718085728.6797-5-royalnet026@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.404.57
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260718_163205_153098_0C363D3B 
-X-CRM114-Status: GOOD (  22.68  )
+X-CRM114-CacheID: sfid-20260718_204607_780161_5E224394 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,144 +109,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1098899232508570547=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The YT8531 needs a 25 MHz reference. On boards without a local crystal
+it is fed from the SoC, described as a clock on the PHY node. Get and
+enable it in probe so the PHY is clocked before its registers are
+accessed. The clock is optional, so crystal-clocked boards are
+unaffected.
 
---===============1098899232508570547==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5auwkjfiihzxz3ef"
-Content-Disposition: inline
+Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+---
+This supersedes "[PATCH net-next v2] net: stmmac: dwmac-rk: ..." which
+enabled the clock on the MAC side; Andrew and Maxime rightly pointed out
+that the PHY is the consumer and should enable it. That series is dropped.
 
+The DTS that consumes this (rk3576-armsom-cm5) goes to the rockchip tree
+separately; the clock is optional so this patch stands alone. Tested on
+an ArmSoM CM5-IO: the YT8531 links at 1000 Mbit/s.
+ drivers/net/phy/motorcomm.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
---5auwkjfiihzxz3ef
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: enable HDMI RX audio
- capture on Orange Pi 5 Plus
-MIME-Version: 1.0
+diff --git a/drivers/net/phy/motorcomm.c b/drivers/net/phy/motorcomm.c
+index 708491bc1..2f85974a3 100644
+--- a/drivers/net/phy/motorcomm.c
++++ b/drivers/net/phy/motorcomm.c
+@@ -6,6 +6,7 @@
+  * Author: Frank <Frank.Sae@motor-comm.com>
+  */
+ 
++#include <linux/clk.h>
+ #include <linux/etherdevice.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+@@ -1169,9 +1170,20 @@ static int yt8521_probe(struct phy_device *phydev)
+ static int yt8531_probe(struct phy_device *phydev)
+ {
+ 	struct device *dev = &phydev->mdio.dev;
++	struct clk *clk;
+ 	u16 mask, val;
+ 	u32 freq;
+ 
++	/*
++	 * A crystal-less YT8531 takes its 25 MHz reference from the SoC. When
++	 * that reference is described as a clock, enable it for the life of the
++	 * device. It is optional, so crystal-clocked boards are unaffected.
++	 */
++	clk = devm_clk_get_optional_enabled(dev, NULL);
++	if (IS_ERR(clk))
++		return dev_err_probe(dev, PTR_ERR(clk),
++				     "failed to get and enable the reference clock\n");
++
+ 	if (device_property_read_u32(dev, "motorcomm,clk-out-frequency-hz", &freq))
+ 		freq = YTPHY_DTS_OUTPUT_CLK_DIS;
+ 
+-- 
+2.43.0
 
-Hi,
-
-On Sat, Jul 18, 2026 at 10:57:28AM +0200, Igor Paunovic wrote:
-> Route the HDMI receiver audio to i2s7_8ch, the receive-only I2S
-> interface dedicated to HDMI RX, through a simple-audio-card with the
-> receiver as bitclock and frame master. Together with the audio
-> capture support in the snps_hdmirx driver this exposes a capture-only
-> ALSA card fed by the HDMI input.
->=20
-> Tested on the Orange Pi 5 Plus with multiple HDMI sources: capture
-> follows the source sample rate and stays in sync via the FIFO-level
-> clock tracking in the driver.
->=20
-> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
-> ---
-> New in v3.
->=20
->  .../dts/rockchip/rk3588-orangepi-5-plus.dts   | 20 +++++++++++++++++++
->  1 file changed, 20 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/ar=
-ch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> index 9950d11..d5840e1 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> @@ -37,6 +37,22 @@
->  		};
->  	};
-> =20
-> +	hdmiin-sound {
-> +		compatible =3D "simple-audio-card";
-> +		simple-audio-card,name =3D "rockchip,hdmiin";
-
-The name is exposed to userspace and visible to the user (e.g.
-in alsamixer), but also used by Alsa UCM2. I suggest to use
-"RK3588 HDMI-IN".
-
-> +		simple-audio-card,format =3D "i2s";
-> +		simple-audio-card,bitclock-master =3D <&hdmiin_codec>;
-> +		simple-audio-card,frame-master =3D <&hdmiin_codec>;
-> +
-> +		simple-audio-card,cpu {
-> +			sound-dai =3D <&i2s7_8ch>;
-> +		};
-> +
-> +		hdmiin_codec: simple-audio-card,codec {
-> +			sound-dai =3D <&hdmi_receiver 0>;
-> +		};
-> +	};
-> +
-
-Move the whole card definition to rk3588-extra.dtsi with a new label
-(e.g. hdmi_receiver_sound) and add status =3D "disabled"; Then just do
-
-&hdmi_receiver_sound {
-    status =3D "okay";
-};
-
-in the Orange Pi 5+ DT, i.e. just like the soundcards for HDMI
-output. This reduces a lot of duplication as the soundcard is the
-same on all boards considering there is a dedicated I2S channel for
-it. It's disabled by default as some boards do not route the HDMI
-receiver at all.
-
-Greetings,
-
--- Sebastian
-
->  	ir-receiver {
->  		compatible =3D "gpio-ir-receiver";
->  		gpios =3D <&gpio4 RK_PB3 GPIO_ACTIVE_LOW>;
-> @@ -247,6 +263,10 @@
->  	status =3D "okay";
->  };
-> =20
-> +&i2s7_8ch {
-> +	status =3D "okay";
-> +};
-> +
->  &led_blue_gpio {
->  	gpios =3D <&gpio3 RK_PA6 GPIO_ACTIVE_HIGH>;
->  	status =3D "okay";
-> --=20
-> 2.53.0
->=20
-
---5auwkjfiihzxz3ef
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpcDNYACgkQ2O7X88g7
-+przAxAAmp27ahike5cooDDpLsXCvhfzlAUohPcO39nvyh7GFLDhdFywIckmqKXe
-UQnJTwlqRZ2YQank3VipcBojKahUe+fvYFM5RSo1A7qc4eGHryFmNxBwGGh14qCm
-A+3dpyh7baCzsOPI/2rYib6Uncb/G6cQ/udYhE6le1dll3XnGTNq2iuBnFzxZd0U
-p1Wg8F/XLnrytXM6+1QAh5XoGPkjGUNjDqyrM+P+rvS46DR2UE2+bGvl8ggROL+e
-1ClG2mLugtFeV2VPpsdexirwUgqv0y4tRTv9Dw+XwzvweBE7EVz4mvZOVTphcHjL
-LjrTcKzLw2ZEUslgwXuyuVYNIUjs7Q1MgWDivPS8BFFI3YVruhHiAu0f6/sJUokL
-8mTNpE2b0N6VV+s85/W20LsHHAzdnJE+lERY1Zxw1ZT9ii+XXIn+N1VB0xBIGzMc
-7epiBSwb3N5Z7d+XwQtHCsma42JsGXFCBpgbIswphhoq0rLndqiT4dTUdn0yfL1h
-Y5Gm4dBH4h+yKioxzIrm3NZ6drbX3Eyd9TY7v0thdycAIGtuXtmLTnP9Fha98lb3
-jLXxlCBDtZ0kIV964HslAqBjOaV7Q1QSMRJ11+sy64p3GV6YMt0AevWRWua5w0fT
-qvGboGN2P6KsR85rLJ5ryFeEilUivC2nu3F/eId0Wpu+fUuCHEQ=
-=1b/t
------END PGP SIGNATURE-----
-
---5auwkjfiihzxz3ef--
-
-
---===============1098899232508570547==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1098899232508570547==--
-
