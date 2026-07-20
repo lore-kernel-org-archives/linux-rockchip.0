@@ -4,56 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A25CC44512
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jul 2026 18:49:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14D3BC44512
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jul 2026 01:28:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lrEepkI+vs9wnpnwG+iyFyMs1zCSGbZBY1vLvCVx1/c=; b=frjWtdWDgiD+uu
-	EcnLlorFJHt6MCv5WYAVKPW6peX8q/B82fqNqzfx5X9jsFkcbX3fvq2pVo0Ii6TWD1QPrcmU9CcEW
-	QId+5ZxVt1mrCtTL3r+UnP0kR5VRoAEJs/5Q6HNrvrqQ/x5Gv9YErtAuddcMcviV3odLffskkElbQ
-	R3v3PIJ64vIfQvgjDlpIYrOUHL4Jo/it/jrrPznZ1OTQeJDm9gj0bA+3QkdJ1TEeUutRiOKtdx4MI
-	r2w9JvH8490LM7Bhc/Sx59RHQ1TXeGazxi8RaHyAS4Wt56oW5vxv2x8+yCP34EJT7tozRBT7q96+H
-	wRH80KYtIuOkO95n+s6w==;
+	List-Owner; bh=G4T56LEVkBrFTc+QCW+7SxkCUtpriebdPhuafTzscx4=; b=N9rxgxAx40mTX2
+	G/9CCci6If+Px/21pBQqhIuo1HU8br+Z1tbiYH6hA2WS1U32wKOiIgCnMnJkI3q0Ev7YcUH4W91jT
+	RNzKaN8wb8cW3/6CRjOZ7nmpFd5gy9G/5vSm2LgdyZNdVHeX6IrtgTNE+EFe+zyNKyjJcNtOFb6QF
+	0HMr5gxAZPiPlox3S6cpBKGGOnwO0x8tZKeQHMeh/IPb7UKGGJ+gh8rm5u95u7EkSOoeQaaIiUv+d
+	zSQJJTebltWOFqt+BXu4kuG7zlAcznV/PwwRIun6O2TuTzp5KrtlDO51/GzSrIXJjK5DPJ8eS6Mmc
+	O5+wx9F9M1fQQweFJxZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlWZo-00000005HLx-42YP;
-	Sun, 19 Jul 2026 18:49:24 +0000
-Received: from mx0.gmx.wtf ([203.137.112.168])
+	id 1wlcnh-00000005cNX-07NN;
+	Mon, 20 Jul 2026 01:28:09 +0000
+Received: from mail-m103131191147.xmail.ntesmail.com ([103.131.191.147])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlWZm-00000005HLX-1V6G
-	for linux-rockchip@lists.infradead.org;
-	Sun, 19 Jul 2026 18:49:23 +0000
-Date: Sun, 19 Jul 2026 20:49:14 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=vicb.net;
-	s=f747d04263f05989; t=1784486957;
-	bh=CZ34Dq4h24k1BTVbY3+f0i5vXsK5au8ANUooagJDjfE=;
-	h=Date:From:To:Subject:References:In-Reply-To:From;
-	b=ptwJp/w3Fd4tu6FELIHC3Z36JqLnKI+uOeHZaCHp+XoYfcg9UxKfHXzgEGKVDgAPT
-	 NwxWipCB9GXgjIldQRpHBrPC2COKFajtEdYsPjZddNqcl4FqK3bP7nbRjj8UKc/0rI
-	 LQP/w4cjsAvsbUFbMBk74cQ0fJGpWuyWM2c/5OAQMFcvECTYIugK2fPryCnymLZKLy
-	 MA9mFHqBev5lkdbxeIjJRN1RJUrPwRMcGD9lcPRB+xfRxxoxKl+zMBDk+QMOsYpchj
-	 KkSo4lm2NevH6G5/dO/gWDx8gTV8yeHSco8p9gCj0WcwQKdHHnbU++dF0MGQHaV6Fs
-	 UkwY36w3ogbNw==
-From: Vic B <linux@vicb.net>
-To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Jensen Huang <jensenhuang@friendlyarm.com>
-Subject: [PATCH v2] arm64: dts: rockchip: fix label of sys_led for nanopi-r4s
-Message-ID: <al0cKhqvPbBO_5q8@vicb.net>
-References: <alz112qGhm77liqi@vicb.net>
+	id 1wlcnb-00000005cMf-3AEm;
+	Mon, 20 Jul 2026 01:28:07 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 46c241bcb;
+	Mon, 20 Jul 2026 09:27:46 +0800 (GMT+08:00)
+Message-ID: <a2eed39e-1991-4b76-837f-d5cab47391b2@rock-chips.com>
+Date: Mon, 20 Jul 2026 09:27:44 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <alz112qGhm77liqi@vicb.net>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] drm/rockchip: lvds: propagate bus_flags to the CRTC
+ state
+To: Rok Markovic <rok@kanardia.eu>, Heiko Stuebner <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Alibek Omarov <a1ba.omarov@gmail.com>
+References: <20260717120005.2087386-1-rok@kanardia.eu>
+ <20260717120005.2087386-2-rok@kanardia.eu>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20260717120005.2087386-2-rok@kanardia.eu>
+X-HM-Tid: 0a9f7d22e4aa03a7kunmc2dbdd921ce93e
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGR5CVkgfGkoaHUxLTExJGFYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=WVqO+2NCDv/mqaO7Kt2nEXgpTXTldKPyN/TiQkHcsd5v7udtGR77JY3k0OKq4COd3wN0vU79o6m/lfszbFb8PIsZYbVdWFJmO0yDE9FtgwlO5bc6k6xYkmawjTIedk/4J+nzSL2Igg1ho8BleWnFiLT+YAsqNSxgP6FQ5VsHWxg=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=KlQm/PpCTfe1j9oRpQXe07F8wUNhZzgsWv2yet6lYR8=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260719_114922_533603_0B43BF63 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20260719_182804_372395_9CF20047 
+X-CRM114-Status: GOOD (  20.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,63 +79,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This commit corrects the system LED configuration for the NanoPi R4S by
-replacing the deprecated label property with color and function.
+On 7/17/2026 8:00 PM, Rok Markovic wrote:
+> rockchip_lvds_encoder_atomic_check() sets output_mode and output_type
+> but never copies the connector's bus_flags into the Rockchip CRTC
+> state, unlike dw_dp-rockchip.c and dw-mipi-dsi2-rockchip.c which both
+> do.
+> 
+> panel-lvds parses pixelclk-active from the DT display timing and
+> publishes it on the connector as DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE.
+> VOP2 reads that flag back out of the CRTC state to decide
+> POLFLAG_DCLK_INV. With the flag dropped here, vcstate->bus_flags is
+> always zero, so a panel that asks to be clocked on the falling edge is
+> driven on the rising one, and there is no way to express the panel's
+> requirement from DT at all.
+> 
+> No functional change for the SoCs currently supported by this driver:
+> rk3288 and px30 pair with the VOP1 driver (rockchip_drm_vop.c), which
+> never reads bus_flags - only VOP2 consumes it. The flag becomes live
+> with the RK3568 support added later in this series.
+> 
+> Signed-off-by: Rok Markovic <rok@kanardia.eu>
+> Assisted-by: Claude:claude-opus-4-8
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_lvds.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> index 75f898a..95fa0a9 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> @@ -129,7 +129,15 @@ rockchip_lvds_encoder_atomic_check(struct drm_encoder *encoder,
+>  				   struct drm_connector_state *conn_state)
+>  {
+>  	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
+> -
+> +	struct drm_connector *connector = conn_state->connector;
+> +
+> +	/*
+> +	 * The VOP derives the pixel clock polarity from this. Without it a
+> +	 * panel that declares pixelclk-active = <0> is clocked on the wrong
+> +	 * edge. panel-lvds fills the connector's bus_flags in from the DT
+> +	 * display timing.
+> +	 */
+> +	s->bus_flags = connector->display_info.bus_flags;
+>  	s->output_mode = ROCKCHIP_OUT_MODE_P888;
+>  	s->output_type = DRM_MODE_CONNECTOR_LVDS;
+>  
 
-This changes the resulting label of mislabeled sys_led from red:power
-to green:status, while the labels of the other two leds stay intact
-(green:lan for lan_led and green:wan for wan_led).
+Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Signed-off-by: Vic B <linux@vicb.net>
----
-Changes in v2:
-
-  - use color and function instead of deprecated label as suggested
-    by Sashiko AI
----
- arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
-index 4274d1b6e80a..4ad012a9bdc8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
-@@ -14,6 +14,7 @@
- 
- /dts-v1/;
- 
-+#include <dt-bindings/leds/common.h>
- #include "rk3399-nanopi4.dtsi"
- 
- / {
-@@ -25,19 +26,22 @@ gpio-leds {
- 		/delete-node/ led-0;
- 
- 		lan_led: led-lan {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_LAN;
- 			gpios = <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
--			label = "green:lan";
- 		};
- 
- 		sys_led: led-sys {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_STATUS;
- 			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
--			label = "red:power";
- 			default-state = "on";
- 		};
- 
- 		wan_led: led-wan {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_WAN;
- 			gpios = <&gpio1 RK_PA0 GPIO_ACTIVE_HIGH>;
--			label = "green:wan";
- 		};
- 	};
- 
 -- 
-2.47.3
+Best, 
+Chaoyi
 
 
 _______________________________________________
