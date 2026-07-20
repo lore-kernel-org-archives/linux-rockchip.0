@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D6DEC44533
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 665CEC44534
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jul 2026 20:26:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,63 +12,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8W8hxnxcdmFde7Y3FWHYF1japWMw9+zcqh9Fetq5qj4=; b=xqj/59V+bWrWEo
-	EoxWOO7u+LK61K4Y1N5bnoZPnsO5T2/xPwm9dwhplo0nEe+fSGWnhp4ysEOJ2+fypBvRLZuOCV6Te
-	hhMhqoKs20ansiWKFKck2yXcZ1jwyR1cDuWZbPSiMUcUL19USU31bBtWjlKL3ak3P4PuU+yc69C/i
-	cgzbngDqYwKOvoijAxTkv1yGqwzN4pv8lB73WYeZA66nLYo5KOm2s0fvudTF1yJpwdUqRDEo065Tj
-	Ve3n2bjQg6ISUQqjI8y2ypKAjumlwJDYftS7T4qUmH1gToCVoL04/bXfh+3KbkNBkMJy6kIu40RDM
-	nPRkqSVkmypY2/0Jf3Hw==;
+	List-Owner; bh=mLUlISiGsBepD3Txc2hKIVfv62zEqo3AYrdaZAUlnOU=; b=XrSjSh4JBj6jxR
+	P5IxoASXf7qQdvOtR5QYU5QBNWaGeYRHJjyIa9yb4+eXpfIA+jPl9vUeJbf+ZA1Hkrq1bKm/qAW0A
+	U1sQaiV8qJPPA4QKbNHXOCR/b7YmQv6N/1HQhDaPJfSJBBBrXnqB92xdU/HcfgplZDFCkBeQ3aukf
+	F5djaZXCMLevgk+70F9B5G0O3bCu1SLiFoQQRcjdsp41A8WEBPytwmpcxf1LiwV8P4x4eNEGUiaFj
+	nYTxKybp/G90cMOgvBifDpH0TFMmHSMn8/7GhNnyTJBXejWDzZslkrRhxkpe/EEpFwErLaQCJVgwV
+	1R3qeTrgtyD9uFmiN2mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wluZ9-00000007ri6-1Wfo;
-	Mon, 20 Jul 2026 20:26:19 +0000
-Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	id 1wluZ4-00000007rdM-0Pya;
+	Mon, 20 Jul 2026 20:26:14 +0000
+Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wluZ6-00000007reU-2GRg
+	id 1wluZ0-00000007ra3-2pI5
 	for linux-rockchip@lists.infradead.org;
-	Mon, 20 Jul 2026 20:26:18 +0000
-Received: by mail-oi1-x22f.google.com with SMTP id 5614622812f47-4a483a552efso4382809b6e.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 20 Jul 2026 13:26:16 -0700 (PDT)
+	Mon, 20 Jul 2026 20:26:12 +0000
+Received: by mail-oa1-x2e.google.com with SMTP id 586e51a60fabf-43cce34c881so4136411fac.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 20 Jul 2026 13:26:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784579175; x=1785183975; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784579169; x=1785183969; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=GJz4Fbmia0uNtdaDaptCQfeUH/df7Iagccu2zoYpIyA=;
-        b=p/MrQt2L1wQDYlFXQz9LmNXuELCZ1esqCN+mi+x7NBUhX2xH8IiV5NN+/hG7HKlEJT
-         IUO2VTqYDKPL0Ckh/byJMD0HN9pscP7Is8B3iA4+8Qj7ux6428CcBClHOKIszKHR3s2O
-         vchNi3jQCksbQms7kpjsiEDbiOJ+LLsmvxuZHgqwrFWLHf6qHyTWPGnZVlua5TcfUU0i
-         1kWnn/QD63D8hfuvYOuLR0N04/4pDQN44V7J0rhlEURxox9QVy9Gg1yOO9Bd82fyT7zr
-         eG6F8UB0wlz+hUuUHeB6nKaerCfNfrWieqhLZIPhFQ83U526O/5r/JWTNqP9PMCzDa8y
-         q+jQ==
+        bh=X7cKInG3LvCx702WPltJ7pIgcjx5mq1L90Yz6/fhnzA=;
+        b=V9uXUIFQpTqHHzNdYv8Jabrm3mv54q+w4ZNyMEHjyC6PU8rQo8Z4Q98PrWhRXBYbGN
+         dO0ooN+LC3og9ujQhgBjnqSoOf9cHI19BqXqLk3sNHOUK0/yyzv332Y2GBweUnl149r+
+         hv/57j4NkBwKFxPrGvKTUVz1AA72FVPsgBsnO9BygrdlOFDCOUYhjE15wwekiJKkLg3J
+         auo42N1P1Yk7AC2nbcy2ujenEFpbtLuEYSE0EP0xAZAef6OkSPyDCeRTJlu53pc8fici
+         /0vhQkKT5LxuYKsE5WltBuhMn74A7oQj44q5kvKhO/t7KVw+PFXxsfn+WJ3tp/rxgDY1
+         mSKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784579175; x=1785183975;
+        d=1e100.net; s=20251104; t=1784579169; x=1785183969;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=GJz4Fbmia0uNtdaDaptCQfeUH/df7Iagccu2zoYpIyA=;
-        b=kASCdfKAV9CHp5MAobh0Va81VZEXxXKpfaEgChmkphoZWh5lhTLbxaVC+6dNd7aOAY
-         KEUf/w4HIGhcmQz4cQbsTD3tGHMd2fJXAiaqg/sBsj9I5v6C+pfx6hFD6BgCP7pFmKvl
-         gi9Pbk5Nhnc9MmX8KNoog3YJRoEPcftAvJdTinJz9dqFtAmZOZhSVe1CH354e9po7Zux
-         NMr756R4Ib0r5Zfh+NF66Q69R5eMpbQgtkh/8aKlupoAGtFno06xq8AntskFnhAkA6x1
-         jgBX7Ojt1NKrmvsREbG1OtjfeLTQ5ZfMc5pWSTsyunoZx49jTZVM0gb+fvx0HWon6JKX
-         nUQQ==
-X-Forwarded-Encrypted: i=1; AHgh+RophIC6DU8XZ6uGpqMK+A/EUpB3sLfjQFt1yn1ObgD1KDn6ROjOmyUkIum/23k407Q4Cf77q7EddHmd1YgRcw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyReFBIiMxhAx2/B3moMDnK3q+nxBPFIMYtZXC4cyJQ2o39i0Ie
-	G+k454GG0hFFHnJSwf28ALP2dhI7lMdWCyC5vX1LWTb23nqKn2Ur/Wsv
-X-Gm-Gg: AfdE7clbarcAuDOE0fk95nxaw7VoGPD0Vbi4nk8ea0UG66hZ8ADfCID5oVaj7YTVdpk
-	QNBVSukXtyXtZZJLHqMK4u49kuwn9cf4Jmm49EMKIxMKJog153vpRundyQLEICu6IMgl/Spx93F
-	DeJIotfSII6LGJqr2A79e+o1bwl+XBdY0c8BTWsv2YMGEhmpyrxLlrB7Gb8DNoMC095bE6BqTZu
-	WUdx5XEABecY0VmG4GpSs3+1SxEirmUfOPn01Mbmwf+TNZpC3unI1aV6chvvdYxhdXwfpdCI129
-	kfmNT9oaXA3Em8/ihLkvkBb1lVTKeECCVfuQIr4aR9l/d2S7sAICq2jI+w6pPemhomFZLpY176r
-	KlQ8DQpou+o4U1vTCZSRfrJ208uJ2JYtx4+wmwlVX5st/Q1k6rI2XjJtJcalmh+rRfULNxgQeHL
-	4bO7pJwyUvqXW3/HBOLzX0eA==
-X-Received: by 2002:a05:6808:1389:b0:49b:9a35:f725 with SMTP id 5614622812f47-4a4d039d0ecmr9619131b6e.35.1784579175128;
-        Mon, 20 Jul 2026 13:26:15 -0700 (PDT)
+        bh=X7cKInG3LvCx702WPltJ7pIgcjx5mq1L90Yz6/fhnzA=;
+        b=Cc5EfWBHiS91iC+42dR0xlcyKMWFB1T//UO0u823LOOFP5rqF2rWnc4xTFrsvmoThL
+         rDdSSwyv/1ubjMDFV9Tqby8HwSFi0PkCJjE/VFCjf0lqATbzJaLkUlTbJRhsauZ6NWSZ
+         d7gPFg3FKYghnio/8RwOS2Vd6dC9jA8JaxY+du1m8qyw5LAjqLGJ3+N9yvFU/Z8cTXCd
+         6xwS9yjybSjp/G/HVRm04MubqmOnRdTGZx8Bm21ryCAxmuL1hf2ozkCxN2HwCGfk71XP
+         smog3VS9OWuqe4LaKHbJZiHnOgpZww/I+Ak41NsaQEoeD1Rsk0UqX8Sy+WX8VjFp6ReU
+         5moA==
+X-Forwarded-Encrypted: i=1; AHgh+RpNhCh3oXjQe9umJlbhi4pE4tJxpek841lGKyJl5Kw1cvf9KM/B9PRO3DwlW75WT9ebBpD9ulTAfXCMLijkFQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwOpKDYoSxpRi6y21hyr/WIvG3j8M6YWXy71YIe2VyJS0Ng1Gyi
+	ucoibxfAUlRo8Iz4K/YPOkmoZU/o+JlJTqZ1JdP1xHQ3VPxQ38O/lySAxZO+Dg==
+X-Gm-Gg: AfdE7cm2O3sYZQSWZycqrTRY+3GjLdHppyqKRpYIUUphKJNwZmO3ogdWa6dZtBPjzw4
+	PHXAqENR1CucgTWsNzzMjQnJRaaDK197hhn/4jzxV+R8GkiCg0zmIE5HdxHGul/9Or4gabPXl5I
+	KeyUTAvZx4EPgmojabx23KJd6kpqfT9J35v6gj8wykdmmr3gaLShqEsJRBIp1wz28V0AnLE9xTb
+	2Y8hbj3kCuDxAsrY/AAkLi8sxDE8jJKLaWg8t1zEB6sPsr0plzf040eovXn0N/rZ+jm388IYN+F
+	bUfAeau38ifzGaW+blDqBkyRoUDoGH7eD19Uvum+9Y7DxABV/OmeqDZpUWikzSCRr+PCcu4arAu
+	6B8sqlfDaCyGF7G+DlmP8xtlc+hXdZsWFW9u8GmQO3wS3c8uKXCAzIHyTvhsYuNG4fWd5HecH2s
+	+Q5KuW5ZvSVZ9s3yrjPoY1Mw==
+X-Received: by 2002:a05:6808:4f24:b0:4a2:df67:d08 with SMTP id 5614622812f47-4a4d03f8446mr9963713b6e.39.1784579169438;
+        Mon, 20 Jul 2026 13:26:09 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0:9988:5abf:3c51:d168])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-4a4d3e5a0cdsm8029550b6e.18.2026.07.20.13.26.13
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-4a4d3e5a0cdsm8029550b6e.18.2026.07.20.13.26.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jul 2026 13:26:13 -0700 (PDT)
+        Mon, 20 Jul 2026 13:26:08 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-iio@vger.kernel.org
 Cc: andy@kernel.org,
@@ -84,16 +84,16 @@ Cc: andy@kernel.org,
 	robh@kernel.org,
 	andriy.shevchenko@intel.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V18 7/9] iio: imu: inv_icm42607: Add Gyroscope to icm42607
-Date: Mon, 20 Jul 2026 15:23:39 -0500
-Message-ID: <20260720202343.70138-8-macroalpha82@gmail.com>
+Subject: [PATCH V18 4/9] iio: imu: inv_icm42607: Add SPI For icm42607
+Date: Mon, 20 Jul 2026 15:23:36 -0500
+Message-ID: <20260720202343.70138-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260720202343.70138-1-macroalpha82@gmail.com>
 References: <20260720202343.70138-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_132616_595585_5CF7E0CE 
-X-CRM114-Status: GOOD (  20.08  )
+X-CRM114-CacheID: sfid-20260720_132610_723909_165972BF 
+X-CRM114-Status: GOOD (  19.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,384 +112,160 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add gyroscope functions to the icm42607 driver.
+Add SPI driver support for InvenSense ICM-42607 devices.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
 ---
- drivers/iio/imu/inv_icm42607/Makefile         |   1 +
- drivers/iio/imu/inv_icm42607/inv_icm42607.h   |   4 +
- .../iio/imu/inv_icm42607/inv_icm42607_core.c  |   5 +
- .../iio/imu/inv_icm42607/inv_icm42607_gyro.c  | 304 ++++++++++++++++++
- 4 files changed, 314 insertions(+)
- create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
+ drivers/iio/imu/inv_icm42607/Kconfig          |  12 ++
+ drivers/iio/imu/inv_icm42607/Makefile         |   3 +
+ .../iio/imu/inv_icm42607/inv_icm42607_spi.c   | 106 ++++++++++++++++++
+ 3 files changed, 121 insertions(+)
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
 
+diff --git a/drivers/iio/imu/inv_icm42607/Kconfig b/drivers/iio/imu/inv_icm42607/Kconfig
+index 083c212087ab..23f461f57afc 100644
+--- a/drivers/iio/imu/inv_icm42607/Kconfig
++++ b/drivers/iio/imu/inv_icm42607/Kconfig
+@@ -16,3 +16,15 @@ config INV_ICM42607_I2C
+ 
+ 	  This driver can be built as a module. The module will be called
+ 	  inv-icm42607-i2c.
++
++config INV_ICM42607_SPI
++	tristate "InvenSense ICM-42607 SPI driver"
++	depends on SPI_MASTER
++	select INV_ICM42607
++	select REGMAP_SPI
++	help
++	  This driver supports the InvenSense ICM-42607 motion tracking
++	  device over SPI.
++
++	  This driver can be built as a module. The module will be called
++	  inv-icm42607-spi.
 diff --git a/drivers/iio/imu/inv_icm42607/Makefile b/drivers/iio/imu/inv_icm42607/Makefile
-index 372c6d6bdcec..8e73385c8f4b 100644
+index 32046e2727d7..be109102e203 100644
 --- a/drivers/iio/imu/inv_icm42607/Makefile
 +++ b/drivers/iio/imu/inv_icm42607/Makefile
-@@ -2,6 +2,7 @@
- 
- obj-$(CONFIG_INV_ICM42607) += inv-icm42607.o
- inv-icm42607-y += inv_icm42607_core.o
-+inv-icm42607-y += inv_icm42607_gyro.o
- inv-icm42607-y += inv_icm42607_accel.o
+@@ -5,3 +5,6 @@ inv-icm42607-y += inv_icm42607_core.o
  
  obj-$(CONFIG_INV_ICM42607_I2C) += inv-icm42607-i2c.o
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-index fd3e57ee4f14..4d51b0da1aa1 100644
---- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-@@ -138,6 +138,7 @@ struct inv_icm42607_hw {
-  *  @lock:		lock for serializing multiple registers access.
-  *  @map:		regmap pointer.
-  *  @indio_accel:	accelerometer IIO device.
-+ *  @indio_gyro:	gyroscope IIO device.
-  *  @vddio_supply:	I/O voltage regulator for the chip.
-  *  @vddio_en:		I/O voltage status for runtime PM.
-  *  @conf:		chip sensors configurations.
-@@ -148,6 +149,7 @@ struct inv_icm42607_state {
- 	struct mutex lock;
- 	struct regmap *map;
- 	struct iio_dev *indio_accel;
-+	struct iio_dev *indio_gyro;
- 	struct regulator *vddio_supply;
- 	bool vddio_en;
- 	struct inv_icm42607_conf conf;
-@@ -412,6 +414,8 @@ int inv_icm42607_core_probe(struct regmap *regmap,
- 			    const struct inv_icm42607_hw *hw,
- 			    inv_icm42607_bus_setup bus_setup);
- 
-+struct iio_dev *inv_icm42607_gyro_init(struct inv_icm42607_state *st);
+ inv-icm42607-i2c-y += inv_icm42607_i2c.o
 +
- struct iio_dev *inv_icm42607_accel_init(struct inv_icm42607_state *st);
- 
- #endif
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-index 924a3698dfbc..d9e924f3ca93 100644
---- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-@@ -569,6 +569,11 @@ int inv_icm42607_core_probe(struct regmap *regmap,
- 	if (IS_ERR(st->indio_accel))
- 		return PTR_ERR(st->indio_accel);
- 
-+	/* Initialize IIO device for Gyro */
-+	st->indio_gyro = inv_icm42607_gyro_init(st);
-+	if (IS_ERR(st->indio_gyro))
-+		return PTR_ERR(st->indio_gyro);
-+
- 	return 0;
- }
- EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
++obj-$(CONFIG_INV_ICM42607_SPI) += inv-icm42607-spi.o
++inv-icm42607-spi-y += inv_icm42607_spi.o
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
 new file mode 100644
-index 000000000000..6af7b143e6a1
+index 000000000000..eb04036a6712
 --- /dev/null
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
-@@ -0,0 +1,304 @@
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+@@ -0,0 +1,106 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
 + * Copyright (C) 2026 InvenSense, Inc.
 + */
 +
-+#include <linux/array_size.h>
-+#include <linux/bits.h>
-+#include <linux/cleanup.h>
-+#include <linux/device/devres.h>
++#include <linux/bitfield.h>
++#include <linux/dev_printk.h>
 +#include <linux/err.h>
-+#include <linux/iio/iio.h>
-+#include <linux/mutex.h>
-+#include <linux/pm_runtime.h>
++#include <linux/module.h>
 +#include <linux/regmap.h>
-+#include <linux/types.h>
++#include <linux/spi/spi.h>
 +
 +#include "inv_icm42607.h"
 +
-+#define INV_ICM42607_GYRO_CHAN(_modifier, _index, _ext_info)			\
-+{										\
-+	.type = IIO_ANGL_VEL,							\
-+	.modified = 1,								\
-+	.channel2 = _modifier,							\
-+	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),				\
-+	.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),			\
-+	.info_mask_shared_by_type_available = BIT(IIO_CHAN_INFO_SCALE),		\
-+	.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),		\
-+	.info_mask_shared_by_all_available = BIT(IIO_CHAN_INFO_SAMP_FREQ),	\
-+	.scan_index = _index,							\
-+	.scan_type = {								\
-+		.sign = 's',							\
-+		.realbits = 16,							\
-+		.storagebits = 16,						\
-+		.endianness = IIO_BE,						\
-+	},									\
-+	.ext_info = _ext_info,							\
++static int inv_icm42607_spi_bus_setup(struct inv_icm42607_state *st)
++{
++	unsigned int val;
++	int ret;
++
++	/* Only support 4-wire mode for now. */
++	ret = regmap_set_bits(st->map, INV_ICM42607_REG_DEVICE_CONFIG,
++				      INV_ICM42607_DEVICE_CONFIG_SPI_AP_4WIRE);
++	if (ret)
++		return ret;
++
++	ret = regmap_clear_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
++				INV_ICM42607_INTF_CONFIG1_I3C_DDR_EN |
++				INV_ICM42607_INTF_CONFIG1_I3C_SDR_EN);
++	if (ret)
++		return ret;
++
++	val = FIELD_PREP(INV_ICM42607_DRIVE_CONFIG3_SPI_MASK,
++			 INV_ICM42607_SLEW_RATE_2NS);
++	ret = regmap_update_bits(st->map, INV_ICM42607_REG_DRIVE_CONFIG3,
++				 INV_ICM42607_DRIVE_CONFIG3_SPI_MASK, val);
++	if (ret)
++		return ret;
++
++	val = FIELD_PREP(INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK,
++			 INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_I2C_DIS);
++
++	return regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
++				  INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK,
++				  val);
 +}
 +
-+enum inv_icm42607_gyro_scan {
-+	INV_ICM42607_GYRO_SCAN_X,
-+	INV_ICM42607_GYRO_SCAN_Y,
-+	INV_ICM42607_GYRO_SCAN_Z,
-+};
++static int inv_icm42607_probe(struct spi_device *spi)
++{
++	const struct inv_icm42607_hw *hw;
++	struct device *dev = &spi->dev;
++	struct regmap *regmap;
 +
-+static const struct iio_chan_spec_ext_info inv_icm42607_gyro_ext_infos[] = {
-+	IIO_MOUNT_MATRIX(IIO_SHARED_BY_ALL, inv_icm42607_get_mount_matrix),
++	hw = spi_get_device_match_data(spi);
++	if (!hw)
++		return dev_err_probe(dev, -ENODATA, "Failed to get SPI data\n");
++
++	if (spi->mode & SPI_3WIRE)
++		return dev_err_probe(dev, -ENODEV, "SPI 3-wire mode not supported\n");
++
++	regmap = devm_regmap_init_spi(spi, &inv_icm42607_regmap_config);
++	if (IS_ERR(regmap))
++		return dev_err_probe(dev, PTR_ERR(regmap),
++				     "Failed to register spi regmap\n");
++
++	return inv_icm42607_core_probe(regmap, hw, inv_icm42607_spi_bus_setup);
++}
++
++static const struct spi_device_id inv_icm42607_spi_id_table[] = {
++	{
++		.name = "icm42607",
++		.driver_data = (kernel_ulong_t)&inv_icm42607_hw_data,
++	}, {
++		.name = "icm42607p",
++		.driver_data = (kernel_ulong_t)&inv_icm42607p_hw_data,
++	},
 +	{ }
 +};
++MODULE_DEVICE_TABLE(spi, inv_icm42607_spi_id_table);
 +
-+static const struct iio_chan_spec inv_icm42607_gyro_channels[] = {
-+	INV_ICM42607_GYRO_CHAN(IIO_MOD_X, INV_ICM42607_GYRO_SCAN_X,
-+			       inv_icm42607_gyro_ext_infos),
-+	INV_ICM42607_GYRO_CHAN(IIO_MOD_Y, INV_ICM42607_GYRO_SCAN_Y,
-+			       inv_icm42607_gyro_ext_infos),
-+	INV_ICM42607_GYRO_CHAN(IIO_MOD_Z, INV_ICM42607_GYRO_SCAN_Z,
-+			       inv_icm42607_gyro_ext_infos),
++static const struct of_device_id inv_icm42607_of_matches[] = {
++	{
++		.compatible = "invensense,icm42607",
++		.data = &inv_icm42607_hw_data,
++	},
++	{
++		.compatible = "invensense,icm42607p",
++		.data = &inv_icm42607p_hw_data,
++	},
++	{ }
 +};
++MODULE_DEVICE_TABLE(of, inv_icm42607_of_matches);
 +
-+static const int inv_icm42607_gyro_scale_nano[][2] = {
-+	[INV_ICM42607_GYRO_FS_2000DPS] = { 0, 1065264 },
-+	[INV_ICM42607_GYRO_FS_1000DPS] = { 0, 532632 },
-+	[INV_ICM42607_GYRO_FS_500DPS] = { 0, 266316 },
-+	[INV_ICM42607_GYRO_FS_250DPS] = { 0, 133158 },
++static struct spi_driver inv_icm42607_driver = {
++	.driver = {
++		.name = "inv-icm42607-spi",
++		.of_match_table = inv_icm42607_of_matches,
++	},
++	.id_table = inv_icm42607_spi_id_table,
++	.probe = inv_icm42607_probe,
 +};
++module_spi_driver(inv_icm42607_driver);
 +
-+static int inv_icm42607_gyro_read_scale(struct iio_dev *indio_dev,
-+					int *val, int *val2)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	unsigned int idx;
-+
-+	guard(mutex)(&st->lock);
-+
-+	idx = st->conf.gyro.fs;
-+
-+	*val = inv_icm42607_gyro_scale_nano[idx][0];
-+	*val2 = inv_icm42607_gyro_scale_nano[idx][1];
-+	return IIO_VAL_INT_PLUS_NANO;
-+}
-+
-+static int inv_icm42607_gyro_write_scale(struct iio_dev *indio_dev,
-+					 int val, int val2)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	struct device *dev = regmap_get_device(st->map);
-+	unsigned int idx;
-+	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
-+	size_t scales_len = ARRAY_SIZE(inv_icm42607_gyro_scale_nano);
-+	int ret;
-+
-+	for (idx = 0; idx < scales_len; idx++) {
-+		if (val == inv_icm42607_gyro_scale_nano[idx][0] &&
-+		    val2 == inv_icm42607_gyro_scale_nano[idx][1])
-+			break;
-+	}
-+	if (idx == scales_len)
-+		return -EINVAL;
-+
-+	conf.fs = idx;
-+
-+	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
-+	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-+	if (ret)
-+		return ret;
-+
-+	guard(mutex)(&st->lock);
-+
-+	return inv_icm42607_set_sensor_conf(st, &conf, IIO_ANGL_VEL);
-+}
-+
-+/* IIO format int + micro , values 0-4 reserved. */
-+static const int inv_icm42607_gyro_odr[][2] = {
-+	[INV_ICM42607_ODR_1600HZ] = { 1600, 0 },
-+	[INV_ICM42607_ODR_800HZ] = { 800, 0 },
-+	[INV_ICM42607_ODR_400HZ] = { 400, 0 },
-+	[INV_ICM42607_ODR_200HZ] = { 200, 0 },
-+	[INV_ICM42607_ODR_100HZ] = { 100, 0 },
-+	[INV_ICM42607_ODR_50HZ] = { 50, 0 },
-+	[INV_ICM42607_ODR_25HZ] = { 25, 0 },
-+	[INV_ICM42607_ODR_12_5HZ] = { 12, 500000 },
-+};
-+
-+static int inv_icm42607_gyro_read_odr(struct inv_icm42607_state *st,
-+				      int *val, int *val2)
-+{
-+	unsigned int odr;
-+	unsigned int i;
-+
-+	guard(mutex)(&st->lock);
-+
-+	odr = st->conf.gyro.odr;
-+
-+	for (i = INV_ICM42607_ODR_1600HZ; i < ARRAY_SIZE(inv_icm42607_gyro_odr); i++) {
-+		if (i == odr)
-+			break;
-+	}
-+	if (i == ARRAY_SIZE(inv_icm42607_gyro_odr))
-+		return -EINVAL;
-+
-+	*val = inv_icm42607_gyro_odr[i][0];
-+	*val2 = inv_icm42607_gyro_odr[i][1];
-+
-+	return IIO_VAL_INT_PLUS_MICRO;
-+}
-+
-+static int inv_icm42607_gyro_write_odr(struct iio_dev *indio_dev,
-+				       int val, int val2)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	struct device *dev = regmap_get_device(st->map);
-+	unsigned int idx;
-+	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
-+	int ret;
-+
-+	for (idx = INV_ICM42607_ODR_1600HZ;
-+	     idx < ARRAY_SIZE(inv_icm42607_gyro_odr); idx++) {
-+		if (val == inv_icm42607_gyro_odr[idx][0] &&
-+		    val2 == inv_icm42607_gyro_odr[idx][1])
-+			break;
-+	}
-+	if (idx == ARRAY_SIZE(inv_icm42607_gyro_odr))
-+		return -EINVAL;
-+
-+	conf.odr = idx;
-+
-+	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
-+	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-+	if (ret)
-+		return ret;
-+
-+	guard(mutex)(&st->lock);
-+
-+	return inv_icm42607_set_sensor_conf(st, &conf, IIO_ANGL_VEL);
-+}
-+
-+static int inv_icm42607_gyro_read_raw(struct iio_dev *indio_dev,
-+				      struct iio_chan_spec const *chan,
-+				      int *val, int *val2, long mask)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	s16 data;
-+	int ret;
-+
-+	switch (chan->type) {
-+	case IIO_ANGL_VEL:
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_RAW:
-+		ret = inv_icm42607_read_sensor(indio_dev, chan, &data);
-+		if (ret)
-+			return ret;
-+		*val = data;
-+		return IIO_VAL_INT;
-+	case IIO_CHAN_INFO_SCALE:
-+		return inv_icm42607_gyro_read_scale(indio_dev, val, val2);
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		return inv_icm42607_gyro_read_odr(st, val, val2);
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int inv_icm42607_gyro_read_avail(struct iio_dev *indio_dev,
-+					struct iio_chan_spec const *chan,
-+					const int **vals,
-+					int *type, int *length, long mask)
-+{
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		if (chan->type != IIO_ANGL_VEL)
-+			return -EINVAL;
-+		*vals = (const int *)inv_icm42607_gyro_scale_nano;
-+		*type = IIO_VAL_INT_PLUS_NANO;
-+		*length = ARRAY_SIZE(inv_icm42607_gyro_scale_nano) * 2;
-+		return IIO_AVAIL_LIST;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		*vals = (const int *)inv_icm42607_gyro_odr[5];
-+		*type = IIO_VAL_INT_PLUS_MICRO;
-+		*length = (ARRAY_SIZE(inv_icm42607_gyro_odr) - 5) * 2;
-+		return IIO_AVAIL_LIST;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int inv_icm42607_gyro_write_raw(struct iio_dev *indio_dev,
-+				       struct iio_chan_spec const *chan,
-+				       int val, int val2, long mask)
-+{
-+	int ret;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		if (chan->type != IIO_ANGL_VEL)
-+			return -EINVAL;
-+		ret = inv_icm42607_gyro_write_scale(indio_dev, val, val2);
-+		return ret;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		return inv_icm42607_gyro_write_odr(indio_dev, val, val2);
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int inv_icm42607_gyro_write_raw_get_fmt(struct iio_dev *indio_dev,
-+					       struct iio_chan_spec const *chan,
-+					       long mask)
-+{
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		if (chan->type != IIO_ANGL_VEL)
-+			return -EINVAL;
-+		return IIO_VAL_INT_PLUS_NANO;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		return IIO_VAL_INT_PLUS_MICRO;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static const struct iio_info inv_icm42607_gyro_info = {
-+	.read_raw = inv_icm42607_gyro_read_raw,
-+	.read_avail = inv_icm42607_gyro_read_avail,
-+	.write_raw = inv_icm42607_gyro_write_raw,
-+	.write_raw_get_fmt = inv_icm42607_gyro_write_raw_get_fmt,
-+};
-+
-+struct iio_dev *inv_icm42607_gyro_init(struct inv_icm42607_state *st)
-+{
-+	struct device *dev = regmap_get_device(st->map);
-+	const char *name;
-+	struct inv_icm42607_sensor_state *gyro_st;
-+	struct iio_dev *indio_dev;
-+	int ret;
-+
-+	name = devm_kasprintf(dev, GFP_KERNEL, "%s-gyro", st->hw->name);
-+	if (!name)
-+		return ERR_PTR(-ENOMEM);
-+
-+	indio_dev = devm_iio_device_alloc(dev, sizeof(*gyro_st));
-+	if (!indio_dev)
-+		return ERR_PTR(-ENOMEM);
-+
-+	gyro_st = iio_priv(indio_dev);
-+	gyro_st->power_mode = INV_ICM42607_SENSOR_MODE_LOW_NOISE;
-+	gyro_st->filter = INV_ICM42607_FILTER_BW_73HZ;
-+
-+	indio_dev->name = name;
-+	indio_dev->info = &inv_icm42607_gyro_info;
-+	indio_dev->modes = INDIO_DIRECT_MODE;
-+	indio_dev->channels = inv_icm42607_gyro_channels;
-+	indio_dev->num_channels = ARRAY_SIZE(inv_icm42607_gyro_channels);
-+	iio_device_set_drvdata(indio_dev, st);
-+
-+	ret = devm_iio_device_register(dev, indio_dev);
-+	if (ret)
-+		return ERR_PTR(ret);
-+
-+	return indio_dev;
-+}
++MODULE_AUTHOR("InvenSense, Inc.");
++MODULE_DESCRIPTION("InvenSense ICM-42607 SPI driver");
++MODULE_LICENSE("GPL");
++MODULE_IMPORT_NS("IIO_ICM42607");
 -- 
 2.43.0
 
