@@ -4,79 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7EFBC44529
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jul 2026 18:01:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85F2CC44520
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jul 2026 19:23:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OZd7kCuBPISRF1PVDrbZ1/uIHS5pwQMlVPP9MSGSWTI=; b=qPmVyVqYvguD2tsrGMxtelDUYw
-	HkAE5tSKajQ4ByAYCBL3MEoje/EOcMH+/CbR7lAPJtK6gz3VXHgPitXLqPh6cSruyu2a0P33UZJeK
-	SJt0iNW+ZfsLYb9SIONIwgZOQgFbg+OANCMHIMJckr69XJwFpYD5Tlgvl5Xjo1vHQfyCeEcbnV5M9
-	KmWkvWX8S6UId+R5mCg6gnMsc++3ZA0zDqAR5VXTJb0PmKaHVJz8BMe+slkeQdtguiGwmR/l6Hh+b
-	7sVO55iZjxnu/L/NRPyZiNKblHPo+oH8y13PE12HU9y6HG9Fw72T8QY+TBv/nAv4+cgJxd7bQRIVC
-	Ti+YGjRQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VZc/Jhqs2o4CQ6a+n4xh2hd9HUTYEZEfnOUmnGZMErg=; b=FWUCvuSyLHC7HW
+	XGyrnjvtvBQETT1jnYB4ISN4EIdtTd2LQkMqIZpeOlqkHHhQ+erW3Ivt67wLi0RpnN1dJm6LBkIL3
+	tC4xsnjvz0zEWT/+A5WeDK5dpUSnMZ9rXCoVtvfQKOM+j7NPbQ3S9QvylQIAbYc18mvG5SB9QVgey
+	eVWHsrjVXK0OngyDbYLXZBlarrdowP/qwlRv1o1rEqfSvfJKrLJfBFXhnNwdvdD/s9UvDbO/+tGF3
+	IKrRn2RKqNUVeFCH1oENyeiqArgurZtfliJiKCaeNfzzGs+qsCzOLJIxo1uMWmuFpiCbGv8619FsV
+	t39VCE48/jO0neywtfMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlsIZ-00000007b7z-2zwL;
-	Mon, 20 Jul 2026 18:01:03 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wltZv-00000007kBs-1viZ;
+	Mon, 20 Jul 2026 19:23:03 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlsIV-00000007b6f-3L8v;
-	Mon, 20 Jul 2026 18:01:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1784570401; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=RT/1oyKIMcGmM+6SQWFkdyVqHta/RRyy0Yu4g4mm2VfK93pSIopDF6QoHT41cPIbnPr7Hy9dMb4JYN0l9C+h3MeYgS6BCda64OY2r5L2u/L/ht2dBIDLPOt5PFzx6a4nrkAQFD9dkerk6zeq67tC8mrABV3OdCH9YNp+NTUWEv0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1784570401; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=PI5Oxb9HCfJR7oPD5XfJPeD09VaVWbnvfaj5lOSTQXI=; 
-	b=i/mkP3SSxYV9S4bVnCbWrIBof1StGDfQlRgeCnXvGVBJAGkOqDaLIzvZd4/OzOOrTPfQBbeUsqtMMAoH2wB3GRl+3JaSSXMmZ5JgVNuXmXukC6VT/pluuNyx1YvvtvVdAb5HfNbNKNhsspzV5ZTiYjA8dK1vueh8M0zrwCYP+QE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784570401;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=PI5Oxb9HCfJR7oPD5XfJPeD09VaVWbnvfaj5lOSTQXI=;
-	b=IQqR+m+U/mjAqGizVvFMly5QcjIIaE/3vePjAzA6K22TI7658slUzACY11LrIn7m
-	edZZJ3OOCmrkW+Zp88L8qw86AYN/EMlgxSCqJPV4S33e6eFomYSt6mup8so6MjN0buj
-	rTE1wUvmp1WrV7i93mJ+hhrZCZ2KdghDyrbpcswM=
-Received: by mx.zohomail.com with SMTPS id 1784570399288490.3932171563042;
-	Mon, 20 Jul 2026 10:59:59 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 26FF41809C8; Mon, 20 Jul 2026 19:59:53 +0200 (CEST)
-Date: Mon, 20 Jul 2026 19:59:53 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Vinod Koul <vkoul@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-phy@lists.infradead.org
-Subject: Re: [PATCH v3 1/5] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-Message-ID: <al5fYojQ0kJw2okg@venus>
-References: <20260717072323.96-1-kernel@airkyi.com>
- <20260717072323.96-2-kernel@airkyi.com>
- <alpeAqKo72pwOEnX@venus>
+	id 1wltZs-00000007k8x-0YgY;
+	Mon, 20 Jul 2026 19:23:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784575377;
+	bh=OsvP99ela6zAdfVIAq+eCL6sZcIj2qQNMD54cI/1i9s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jnWSq+Lo4AbMpRQhZKdE9RiEnUqKI7RkAeHfp+TqVXKMmhFuXWYunZK2eTEiRClZR
+	 Vu6vYhpB7cxno6FTANC9D+otPZCYlwWvWMfiOd//Kd1Le/VTkK7VdnXBbI34f0uvGQ
+	 +GRTOzhpVlLZvturG7s3N3pxjVlgJE+upcHgD4XLZYWPaaxz3UesDjJs8l7k1EHyS/
+	 t0V++NdxCm6DJc7npUYUzEVcoiKaUaoWSX/fjQKn40LbctCDgc8uXxcdkOvILjAIJW
+	 cGtYMGI+OnXFXE5cVtDfAkkllbog/2Pift17HprAaSgldYnJ2qqPFUUX1d3kecnZ/L
+	 GkNpp6qWTNdYw==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 469CB17E0910;
+	Mon, 20 Jul 2026 21:22:57 +0200 (CEST)
+Message-ID: <d6df5627-b3d3-4508-be4a-d202b2a13afc@collabora.com>
+Date: Mon, 20 Jul 2026 22:22:56 +0300
 MIME-Version: 1.0
-In-Reply-To: <alpeAqKo72pwOEnX@venus>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.544.97
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 4/8] phy: rockchip: samsung-hdptx: Handle uncommitted
+ PHY config changes
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Algea Cao <algea.cao@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
+ kernel@collabora.com, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, =?UTF-8?Q?Thomas_Niederpr=C3=BCm?=
+ <dubito@online.de>, Simon Wright <simon@symple.nz>
+References: <20260612-hdptx-clk-fixes-v4-0-ce5e1d456cda@collabora.com>
+ <20260612-hdptx-clk-fixes-v4-4-ce5e1d456cda@collabora.com>
+ <al4t4aN01iiUKff_@umbar.lan>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <al4t4aN01iiUKff_@umbar.lan>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_110059_889660_F84CF393 
-X-CRM114-Status: GOOD (  28.61  )
+X-CRM114-CacheID: sfid-20260720_122300_332606_E2B498FD 
+X-CRM114-Status: GOOD (  21.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,134 +77,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3037980848664025081=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============3037980848664025081==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qn43nqqaph5qazm4"
-Content-Disposition: inline
-
-
---qn43nqqaph5qazm4
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 1/5] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-MIME-Version: 1.0
-
-Hi,
-
-On Fri, Jul 17, 2026 at 07:19:29PM +0200, Sebastian Reichel wrote:
-> On Fri, Jul 17, 2026 at 03:23:19PM +0800, Chaoyi Chen wrote:
-> > From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> >=20
-> > The HPD function of Type-C DP is implemented through
-> > drm_connector_oob_hotplug_event(). For embedded DP, it is required
-> > that the DRM connector fwnode corresponds to the Type-C port fwnode.
-> >=20
-> > To describe the relationship between the DP controller and the Type-C
-> > port device, we usually using drm_bridge to build a bridge chain.
-> >=20
-> > Now several USB-C controller drivers have already implemented the DP
-> > HPD bridge function provided by aux-hpd-bridge.c, it will build a DP
-> > HPD bridge on USB-C connector port device.
-> >=20
-> > But this requires the USB-C controller driver to manually register the
-> > HPD bridge. If the driver does not implement this feature, the bridge
-> > will not be create.
-> >=20
-> > So this patch implements a generic DP HPD bridge based on
-> > aux-hpd-bridge.c. It will monitor Type-C bus events, and when a
-> > Type-C port device containing the DP svid is registered, it will
-> > create an HPD bridge for it without the need for the USB-C controller
-> > driver to implement it.
-> >=20
-> > Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> > Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-> > Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
->=20
-> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com> # ArmSom S=
-ige5
->=20
-> I gave this a test together with the RK3588/RK3576 USB-C DP AltMode
-> patches I'm working on. As the fusb302 does a manual registration
-> for the DRM bridge in its probe function, the bridge is registered
-> twice:
->=20
-> root@sige5 # cat /sys/kernel/debug/dri/bridges
-> ...
-> bridge[1]: drm_aux_hpd_bridge_funcs
-> 	refcount: 4
-> 	type: [10] DP
-> 	OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
-> 	ops: [0x4] hpd
-> bridge[2]: drm_aux_hpd_bridge_funcs
-> 	refcount: 2
-> 	type: [10] DP
-> 	OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
-> 	ops: [0x4] hpd
-> ...
->=20
-> Apparently the USB-C DP AltMode keeps working, so this just wastes
-> a few CPU cycles and some memory. So this can land and then we can
-> remove the manual code from the driver as a follow-up step. I also
-> gave that a try and things keep working. I won't send the fusb302
-> patch for now to ensure its not applied before this patch lands.
-
-The above test was done with a kernel having all config options
-built-in (i.e. no modules). Using arm64 defconfig one ends up with
-
-CONFIG_DRM_AUX_HPD_TYPEC_BRIDGE=3Dm
-
-But the resulting 'aux-hpd-typec-dp-bridge' module is not loaded
-automatically resulting in missing bridge registration. Running
-'modprobe aux-hpd-typec-dp-bridge' manually in the booted system
-does not work either as the TypeC controller has already been
-registered and no new BUS_NOTIFY_ADD_DEVICE is generated.
-
-Greetings,
-
--- Sebastian
-
---qn43nqqaph5qazm4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpeYgsACgkQ2O7X88g7
-+pp+TQ//dO/L/gdv3kllo402Dewki5Weq5We6e9xzWhRnm2HCSo/GBdqWFfuxZhw
-lQJeUcgDS7NJw/Btt1+oseitVUxklDA9U5tdh21nLt6lZ8xybUI4ejCM++GOgCbv
-rd4Qm9QEsWBL5dSSL7REXU4QqoZMDf7SDO/JMWRyxki0WT4E1HFD1Rq0q/XWnD0/
-zVWg01K10udFR7cMY9o8pAEXdqBvMiOncBGmHgHl/cx87yz7XPSDfhzN5y5bHPIs
-UEZr8vv6nOrhGkOxMqBXs86AEvdkBlOHl02UA2RU5MSukt2qIFz7IXRDxmcTruvq
-U9Q5ydGWrXNqOYvtaEgmjV844bmy4RVqRKyJTy/OlDLjLvMbdKbvo4s2v9vc1Q9a
-JKlWr8NlaGUh6vcH/gPgRZVzWp0XrHez3bDxeHK/8cLhzmhB2s6Q587ToGrUuDSp
-AryltU/IrpTYhOMdXt+hjIHRwo4fVYbKfMP/6ccgL3cVHwqncrhNSKSsoXgqXpsG
-XnB8Ptw8j6khSsJYsvz7lknc+CEQnC5Xm/Ltg0o9+Co7pY3Elph1W4dM2wqGM+mA
-xnYe7MtpRuA2wkMmBieyKremABtImf7OAyM6xY0qFJx925K46MwEbDJS+PMw+8PT
-lpUfz3PvTPEY0UaKQhXusyDfWCQpftab5PHy+kH7BBVDWY1V0hY=
-=yeQL
------END PGP SIGNATURE-----
-
---qn43nqqaph5qazm4--
-
-
---===============3037980848664025081==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3037980848664025081==--
-
+T24gNy8yMC8yNiA1OjE3IFBNLCBEbWl0cnkgQmFyeXNoa292IHdyb3RlOgo+IE9uIEZyaSwgSnVu
+IDEyLCAyMDI2IGF0IDAyOjQ1OjIzQU0gKzAzMDAsIENyaXN0aWFuIENpb2NhbHRlYSB3cm90ZToK
+Pj4gQW55IGNoYW5nZXMgdG8gdGhlIFBIWSBsaW5rIHJhdGUgYW5kL29yIGNvbG9yIGRlcHRoIGRv
+bmUgdmlhIHRoZSBIRE1JCj4+IFBIWSBjb25maWd1cmF0aW9uIEFQSSBhcmUgbm90IGltbWVkaWF0
+ZWx5IHByb2dyYW1tZWQgaW50byB0aGUgaGFyZHdhcmUsCj4+IGJ1dCBhcmUgZGVsYXllZCB1bnRp
+bCB0aGUgUEhZIHVzYWdlIGNvdW50IGdldHMgaW5jcmVtZW50ZWQgZnJvbSAwIHRvIDEsCj4+IHRo
+YXQgaXMgd2hlbiBpdCBpcyBwb3dlcmVkIG9uIG9yIHdoZW4gdGhlIFBMTCBjbG9jayBleHBvc2Vk
+IHRocm91Z2gKPj4gdGhlIENDRiBBUEkgaXMgcHJlcGFyZWQsIHdoaWNoZXZlciBjb21lcyBmaXJz
+dC4KPiAKPiBXaHkgZG8geW91IG5lZWQgZWl0aGVyLW9mIGhlcmU/IENhbiBpdCBiZSBqdXN0IG9u
+ZSBwYXRoPwoKVGhlIHRoaW5nIGlzIHRoYXQgUExMIGNsb2NrIHVzYWdlIGlzIGR5bmFtaWMsIGRl
+cGVuZGluZyBvbiB0aGUgcmF0ZSwgYnV0IGl0IGNhbgphbHNvIGJlIGRpc2FibGVkIHBlcm1hbmVu
+dGx5LiBXaGVuIGl0J3MgaW4gdXNlLCBpdCB0cmlnZ2VycyBiZWZvcmUgcG93ZXIgb24sCmhlbmNl
+IHRoZSBoYXJkd2FyZSBtdXN0IGJlIHByb2dyYW1tZWQgYXQgdGhhdCB0aW1lLgoKPj4KPj4gU2lu
+Y2UgdGhlIGNsb2NrIG1pZ2h0IHJlbWFpbiBpbiBwcmVwYXJlZCBzdGF0ZSBhZnRlciBzdWJzZXF1
+ZW50IFBIWQo+PiBjb25maWcgY2hhbmdlcywgdGhlIHByb2dyYW1taW5nIGNhbiBhbHNvIGJlIHRy
+aWdnZXJlZCB2aWEKPj4gY2xrX29wcy5zZXRfcmF0ZSgpLiAgSG93ZXZlciwgZnJvbSB0aGUgY2xv
+Y2sgY29uc3VtZXIgcGVyc3BlY3RpdmUgKGkuZS4KPj4gVk9QMiBkaXNwbGF5IGNvbnRyb2xsZXIp
+LCB0aGUgKHBpeGVsKSBjbG9jayByYXRlIGRvZXNuJ3QgdmFyeSB3aXRoIGJwYywKPj4gYXMgdGhh
+dCBpcyBoYW5kbGVkIGludGVybmFsbHkgYnkgdGhlIFBIWSBhbmQgcmVmbGVjdGVkIGluIHRoZSBU
+RE1TCj4+IGNoYXJhY3RlciByYXRlIG9ubHkuCj4+Cj4+IEFzIGEgY29uc2VxdWVuY2UsIGNoYW5n
+aW5nIHRoZSBicGMgd2hpbGUgcHJlc2VydmluZyB0aGUgbW9kZWxpbmUgbWF5Cj4+IGxlYWQgdG8g
+b3V0LW9mLXN5bmMgaXNzdWVzIGJldHdlZW4gQ0NGIGFuZCBIRE1JIFBIWSBjb25maWcgc3RhdGUs
+Cj4+IGJlY2F1c2UgdGhlIC5zZXRfcmF0ZSgpIGNhbGxiYWNrIGlzIG5vdCBpbnZva2VkIHdoZW4g
+Y2xvY2sgcmF0ZSByZW1haW5zCj4+IGNvbnN0YW50LiAgVGhpcyBtYXkgYWxzbyBoYXBwZW4gd2hl
+biB0aGUgUEhZIFBMTCBoYXMgYmVlbiBwcmUtcHJvZ3JhbW1lZAo+PiBieSBhbiBleHRlcm5hbCBl
+bnRpdHksIGUuZy4gdGhlIGJvb3Rsb2FkZXIsIHdoaWNoIGlzIGFjdHVhbGx5IGEKPj4gcmVncmVz
+c2lvbiBpbnRyb2R1Y2VkIGJ5IHRoZSByZWNlbnQgRlJMIHBhdGNoZXMuCj4+Cj4+IEludHJvZHVj
+ZSBhIHBsbF9jb25maWdfZGlydHkgZmxhZyB0byBrZWVwIHRyYWNrIG9mIHVuY29tbWl0dGVkIFBI
+WQo+PiBjb25maWcgY2hhbmdlcyBhbmQgdXNlIGl0IGluIGNsa19vcHMuZGV0ZXJtaW5lX3JhdGUo
+KSB0byBpbnZhbGlkYXRlIHRoZQo+PiBjdXJyZW50IGNsb2NrIHJhdGUgKGFzIGtub3duIGJ5IEND
+RikgYW5kLCBjb25zZXF1ZW50bHksIGVuc3VyZSB0aG9zZQo+PiBjaGFuZ2VzIGFyZSBwcm9ncmFt
+bWVkIGludG8gaGFyZHdhcmUgdmlhIGNsa19vcHMuc2V0X3JhdGUoKS4KPj4KPj4gTW9yZW92ZXIs
+IHByb2NlZWQgd2l0aCBhIHNpbWlsYXIgZml4IGluIHBoeV9vcHMucG93ZXJfb24oKSBjYWxsYmFj
+aywgdG8KPj4gaGFuZGxlIHRoZSBzY2VuYXJpbyB3aGVyZSB0aGUgQ0NGIEFQSSBpcyBub3QgdXNl
+ZCBkdWUgdG8gb3BlcmF0aW5nIGluCj4+IEZSTCBtb2RlLCB3aGlsZSB0aGUgY2xvY2sgaXMgc3Rp
+bGwgaW4gYSBwcmVwYXJlZCBzdGF0ZSBhbmQgdGh1cwo+PiBwcmV2ZW50aW5nIHJrX2hkcHR4X3Bo
+eV9jb25zdW1lcl9nZXQoKSB0byBhcHBseSB0aGUgdXBkYXRlZCBQSFkKPj4gY29uZmlndXJhdGlv
+bi4KPj4KPj4gRml4ZXM6IGRlNWRiYTgzMzExOCAoInBoeTogcm9ja2NoaXA6IHNhbXN1bmctaGRw
+dHg6IEFkZCBIRE1JIDIuMSBGUkwgc3VwcG9ydCIpCj4+IEZpeGVzOiA5ZDBlYzUxZDdjMjIgKCJw
+aHk6IHJvY2tjaGlwOiBzYW1zdW5nLWhkcHR4OiBBZGQgaGlnaCBjb2xvciBkZXB0aCBtYW5hZ2Vt
+ZW50IikKPj4gVGVzdGVkLWJ5OiBUaG9tYXMgTmllZGVycHLDvG0gPGR1Yml0b0BvbmxpbmUuZGU+
+Cj4+IFRlc3RlZC1ieTogU2ltb24gV3JpZ2h0IDxzaW1vbkBzeW1wbGUubno+Cj4+IFNpZ25lZC1v
+ZmYtYnk6IENyaXN0aWFuIENpb2NhbHRlYSA8Y3Jpc3RpYW4uY2lvY2FsdGVhQGNvbGxhYm9yYS5j
+b20+Cj4+IC0tLQo+PiAgZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXNhbXN1bmct
+aGRwdHguYyB8IDg0ICsrKysrKysrKysrKystLS0tLS0tLS0tCj4+ICAxIGZpbGUgY2hhbmdlZCwg
+NDggaW5zZXJ0aW9ucygrKSwgMzYgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtc2Ftc3VuZy1oZHB0eC5jIGIvZHJpdmVycy9w
+aHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXNhbXN1bmctaGRwdHguYwo+PiBpbmRleCBiMjEwYzFh
+ODhiMjUuLjI1YmQ4MjFjZDAzOSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9waHkvcm9ja2NoaXAv
+cGh5LXJvY2tjaGlwLXNhbXN1bmctaGRwdHguYwo+PiArKysgYi9kcml2ZXJzL3BoeS9yb2NrY2hp
+cC9waHktcm9ja2NoaXAtc2Ftc3VuZy1oZHB0eC5jCj4+IEBAIC00MTMsNiArNDEzLDcgQEAgc3Ry
+dWN0IHJrX2hkcHR4X3BoeSB7Cj4+ICAKPj4gIAkvKiBjbGsgcHJvdmlkZXIgKi8KPj4gIAlzdHJ1
+Y3QgY2xrX2h3IGh3Owo+PiArCWJvb2wgcGxsX2NvbmZpZ19kaXJ0eTsKPiAKPiBXaGljaCBsb2Nr
+IHByb3RlY3RzIGl0PwoKVGhpcyBpcyBub3QgcHJvdGVjdGVkIGJ5IGEgZHJpdmVyLWxvY2FsIGxv
+Y2ssIGFzIHRoZSBpbXBhY3RlZCBjYWxscyBhcmUKb3JjaGVzdHJhdGVkIGJ5IHRoZSBEUk0gY29y
+ZSwgd2hpY2ggc2hvdWxkIGd1YXJhbnR5IHRoZSBleHBlY3RlZCBzZXF1ZW5jZSBvZgpvcGVyYXRp
+b25zOgoKMS4gZW5jb2Rlci1jaGVjayAtPiBwaHlfY29uZmlndXJlIC0+IG5vIEhXIHByb2dyYW1t
+aW5nLCBwbGxfY29uZmlnX2RpcnR5PXRydWUKMi4gVk9QMiBjcnRjLWVuYWJsZSAtPiBzZXRfcmF0
+ZSAtPiBIVyBjb21taXQsIHBsbF9jb25maWdfZGlydHk9ZmFsc2UKMy4gYnJpZGdlLWVuYWJsZSAt
+PiBwaHlfcG93ZXJfb24sIG5vIEhXIHByb2dyYW1taW5nIChwbGxfY29uZmlnX2RpcnR5IGFscmVh
+ZHkKICAgZmFsc2UpCgo+IAo+PiAgCWJvb2wgcmVzdHJpY3RfcmF0ZV9jaGFuZ2U7Cj4+ICAKPj4g
+IAlhdG9taWNfdCB1c2FnZV9jb3VudDsKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
