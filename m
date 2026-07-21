@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29816C44529
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 08:10:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947F3C4451C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 08:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wKys9KtWfoA0ARvTASiqfV9CSyCgF+sz27GSxsUg+7o=; b=ehEktWQl85220b
-	j4Vq9LuMxjiUQag61pVAUHwH0IVBWBuJ3M6l0hIgGJ9jSo2/lziZX27oSCD3jELephhPp6afJksKe
-	edzD3RVNKgzKbmOSchwMG9Xls7UNEdwfpQIQDbMdGbcTmLtZaT5b2mcLLDC9vmO4B+JjNv5efXy0i
-	QO3gkDzfLxiJwHVRKHCJ1+MFG8rP07hcxOdU8vpdp+YVUN+W5I6sh7gxZLe1PSuOj5l7jERRCzaVn
-	S9ZX6yTIhPrFq9GfN6r2hQxNUuTffWJVHBFlEJtBJBLkFONOhzK8Zjxm1uq0QHDyaPy1ZgLpp6Wi1
-	u60j+WVNOjfJtNXNNFtQ==;
+	List-Owner; bh=+y4g+9Q81M+N3EockuqAWt436fNQRob6pVpS/AkyV98=; b=lxbvkJSq8ELdtz
+	Rj0bndYYeED1Qf/qOt3U67pwoj1lIBGMDNgx12bmo5m0h74TdKNlnPWJC1b2JT8MxW9xt9H717hL0
+	PxgI5pVx6AdGecM1kPDr1DN/Lu+38IhzFF3cE2FdU/4Ofq0YokcdoIKRsNP+NZamG0nlNMzu7aQ+f
+	/NxTHONp3wf+YG81OHmdYfq/VKl8OS4FklxIVdDo3tZ5DVMv0LTOvi1Bti/K8pkG5+xdG8X67h8Zb
+	L3avlI2+OdadQGU0SC5ARd0keQxiAZoj0bDkk0paoBwJsgSn/JPDCqVt66DX+H0MElkJJWdqazifH
+	CQjzRPNNxVIMjdN15WvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5Yk-00000008kkH-1IDJ;
-	Tue, 21 Jul 2026 08:10:38 +0000
+	id 1wm5bk-00000008lMB-0n5r;
+	Tue, 21 Jul 2026 08:13:44 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5Yj-00000008kj9-0Gkk;
-	Tue, 21 Jul 2026 08:10:37 +0000
+	id 1wm5bi-00000008lL3-33yV;
+	Tue, 21 Jul 2026 08:13:42 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3945860A95;
-	Tue, 21 Jul 2026 08:10:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BBFB1F000E9;
-	Tue, 21 Jul 2026 08:10:34 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2F66060A95;
+	Tue, 21 Jul 2026 08:13:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E04611F000E9;
+	Tue, 21 Jul 2026 08:13:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784621435;
-	bh=W4hbMQnB46wG1SNw4jOcw8NZbJbNKlp5kLpoFurs4z8=;
+	s=k20260515; t=1784621621;
+	bh=z++pE21nLJXJJg1BIOPJk+S2n/QJjhsEu8ZSVPIm7QU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=oE0FmcWHdyt01lzqjKv+miEXI14UaDfhiEf8WW3/x1cW8NhDi+nCSH0e7dm4l/mI4
-	 9dWffgSoJpA/fZXHaG7TcLsglvEdlHTYITk40O4zZMf36a7IRtIY+PhOvrBYN6lXKl
-	 7LnHacTaqTQQ+iCH954OICG6Q9n3+vqjeutWrC+9ib/zXYD63llatjo5Xylrp5r7sa
-	 /+wUWcFNhLc3dKb/bhi50uL592kgws388s3lg4HyyM+1dAFeIsmxRCw+y+kNOfjZlR
-	 YAA14IUvDw1W1K3jVo7Cnaj1mumNkpEjKtKuMzB81qzKb02KKZOwRmnhNOAGLXXwgy
-	 +1fSSHPpG2bjw==
-Date: Tue, 21 Jul 2026 10:10:32 +0200
+	b=Tk4ddljRsI3lpF1DgL57KFZuV4kwZIn7ytSSPu0mjH1bcHJ49WNl6D5Qmxso3lMQB
+	 hssk6K3t7jSSIboRGq5KNSnPLJVAWHnwtW7OfRQR7QwfmPcH0zRJqK3g+uHWetYFwQ
+	 GNfArEOkYEr6Vx8JG7fl8RdUi4QUDrJ5kcM6HArbokaBzr1OMaOMIxLY/Vlq3seYyy
+	 D/mVUanA9EQtGthgqcsf8I1so2I4qCGlc2TT9vkuBFsU4SSQPTlbpWXsB30I8xRZZb
+	 MESngIpSoVSfx8U+vcau76QKjzbxXIbeIOGhx9HMmTFuKbjIewV3V4ss3EKs1uWJro
+	 mwMko09/Y6y5g==
+Date: Tue, 21 Jul 2026 10:13:38 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Simon Glass <sjg@chromium.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Jiri Slaby <jirislaby@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] dt-bindings: serial: snps-dw-apb-uart: Add RV1106
- compatible
-Message-ID: <20260721-honorable-mamba-of-order-fdf14e@quoll>
-References: <20260714132035.v2.1.c1d92213393f49330ec14d0c670a802181b4fcbf@changeid>
+Cc: Linus Walleij <linusw@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Rob Herring <robh@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, 
+	Conor Dooley <conor+dt@kernel.org>, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+	Bartosz Golaszewski <brgl@kernel.org>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/3] dt-bindings: gpio: rockchip,gpio-bank: Add
+ rockchip,grf property
+Message-ID: <20260721-ambrosial-raccoon-of-glee-6219dd@quoll>
+References: <20260714192535.2082729-1-sjg@chromium.org>
+ <20260714132531.v2.1.d04a89a3849323a0dcee2c701cba43adbb0523b2@changeid>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260714132035.v2.1.c1d92213393f49330ec14d0c670a802181b4fcbf@changeid>
+In-Reply-To: <20260714132531.v2.1.d04a89a3849323a0dcee2c701cba43adbb0523b2@changeid>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,14 +73,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 14, 2026 at 01:20:36PM -0600, Simon Glass wrote:
-> Add the compatible for the UARTs of the Rockchip RV1106, which are
-> compatible with the Synopsys DesignWare APB UART.
+On Tue, Jul 14, 2026 at 01:25:29PM -0600, Simon Glass wrote:
+> Some Rockchip SoCs, such as the RV1106, give each GPIO bank its own
+> IO control (IOC) register block rather than grouping the registers of
+> all banks into a shared GRF region. Add an optional rockchip,grf
+> property to the gpio-bank binding so that each bank node can reference
+> the syscon for its own IOC block.
 > 
 > Signed-off-by: Simon Glass <sjg@chromium.org>
 > ---
+> 
+> Changes in v2:
+> - Add new patch for the per-bank IOC reference
+> 
+>  .../devicetree/bindings/gpio/rockchip,gpio-bank.yaml       | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> index bdd83f42615c..774e9c7de606 100644
+> --- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> @@ -44,6 +44,13 @@ properties:
+>    power-domains:
+>      maxItems: 1
+>  
+> +  rockchip,grf:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      The phandle of the syscon node managing the IO control registers
+> +      of this bank, on SoCs such as the RV1106 where each GPIO bank has
+> +      its own IOC block.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+I do not see usage of it in patchset linked in cover letter with DTS.
+
+I have doubts that whil having one GRF region you have GPIO banks
+pointing to different GRF regions.
+
+It's possible if you would have multiple GRFs, but you do not. You have
+one GRF, right?
 
 Best regards,
 Krzysztof
