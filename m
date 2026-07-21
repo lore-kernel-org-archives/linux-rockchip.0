@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB5A1C4451C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 17:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77DEEC4452B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 17:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=liwAztAGahFkaxCyGULqvfs9iTyIsPjbvLQnqdv2ZrI=; b=og6fRYZDswgDg8
-	wu+WIYSjWfIC30Z7FiJzA2YK5HSNOUu1LLCq1xw+O5vrh7MnJ0LY4mQYsehn2N3hP+HYrsPcUi7g6
-	gpdrtcz0mcuFD5mbSYkuhbK7L3NTDVZU/E7gVI4nsVbTSn2OJ9fdyp61i2RrgZo9+pSQpRiwt80Vj
-	PVXYkR7geLtz2MOjwK7dHV0IoGOHBbXU0jECINuoBq+LEJdTftg6WODq+Ndd3NFPmg6Rm6MROH5I9
-	bGNMzsTe81KTJnmwl1XPyzNM1DqkdN558GhDJaqe03WIYgWrgXylk4l+kbdSaULlQQAZYi+vjbaww
-	UESJquvBiaaLFuheFSDA==;
+	List-Owner; bh=cD3jXZ5TBirNoSDSG68xO30O28pqp5pa1X0U04Y2VCI=; b=C/JpeRxPeUpS2G
+	21agLKYXVSg2uDWXYbPKAp9ceXGkFIRUUwC3RYoTq6mx4KpLPrkk3KDo6C8cFeGgNEcDtQgiYdp8W
+	NSM5i+O6uG7oLAbCxa13zFKcBEBv9KGX1W1X8EmfwUsSbo5hOCs+9AwhFqDDJsJ9OUtSShBwdwiHX
+	3tyVcT9Gt53awl1mFW6xERahDPhuvGjZAu3H2zjOle56p77xUkcxBE71z59yV5TRxlZMI5xLLj4/T
+	L256OGxmHuSGpQDSWvjVTsR+UaMInJ+ALIiksn2GHe1tWhOeCI0eJuBzwZPHS8oUD3f6TeG/L11wV
+	ZH8jxotjbdbYgbIEsECA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmEeE-0000000A73c-18uA;
-	Tue, 21 Jul 2026 17:52:54 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wmEeF-0000000A75Q-0jZc;
+	Tue, 21 Jul 2026 17:52:55 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmEe5-0000000A6rZ-0xaR;
+	id 1wmEe5-0000000A6rp-2oLg;
 	Tue, 21 Jul 2026 17:52:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1784656358;
-	bh=F1aUwDw1oCdiQKc4Mr/s1A9oQOTsJxibKKDasYb4aSk=;
+	bh=qOTOYZ7XdbH9KXuuBMAIBJTfbae9QntHhvKhrTx/3vg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NvTIfcpGIqZItnMERhJzz+CX7sGlWe4jQ2a81A+J2aTIy2cRre17WJmP1ODad+a0/
-	 k9XM5UDR5kVQ4mjT802M23FHdmng+Sb49aJW0o2MP9WWucZmeU8gcKIkcFPdBhcLwd
-	 uZ87V/OPM63O7/bEaFlmCCJSnRdtgxkXLjTBvfp2GIVV9QFOMDEl0PQG7WmBU0huJv
-	 VFHCaUGy7PuBmkumanavrpBhG4hCFZTp1rvLOxc1fDqTfFjUta5j6Tby2b71Oo3dKG
-	 djxspBiIq1n7d1oLPziiwNXgkEvjwQpIo+bA3pujgK4/6nUPxH+A69AOv/b+WZHIQ7
-	 Ds3HUsl2KupTw==
+	b=pWIYAqnaU2PFn/P8fw8VY9uZ1Hq37gaFKt6VtkQZs6qTVc5mzE2XBTyxR2eQiTkMF
+	 cwKtQSwXZTG/aivV/TlzzG7OXEUlgCsU+aH5BDSImE5pzcaqLNtkhuJJBt+v+0Dz+I
+	 X6QUhKU8MJTVz9S8h0kIPPF3VKxJcRKRNUlNWcf8r+sg2e8X85w264rD8mKbhWWnN9
+	 7mXk6yGDs7naDm1kVrNARPonJ1gs5LZbMEGawam6+ooyYwfgYcwbgjlptEdZnWq1eQ
+	 P3rM3dKduQFRWvAafQlgqD01aJqdtdly+6MAu6y/F1q7eeOhLbLrAkYTayHJj7ydKA
+	 S3B2gygQkJe7w==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 46E1F17E11F5;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3ED6A17E1122;
 	Tue, 21 Jul 2026 19:52:38 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 9ED71480038; Tue, 21 Jul 2026 19:52:37 +0200 (CEST)
+	id 9D397480035; Tue, 21 Jul 2026 19:52:37 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 21 Jul 2026 19:52:37 +0200
-Subject: [PATCH v4 07/10] drm/bridge: synopsys: dw-dp: Add Runtime PM
- support
+Date: Tue, 21 Jul 2026 19:52:36 +0200
+Subject: [PATCH v4 06/10] drm/rockchip: dw_dp: Implement out-of-band HPD
+ handling
 MIME-Version: 1.0
-Message-Id: <20260721-synopsys-dw-dp-improvements-v4-7-f0f4a4ede712@collabora.com>
+Message-Id: <20260721-synopsys-dw-dp-improvements-v4-6-f0f4a4ede712@collabora.com>
 References: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
 In-Reply-To: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,26 +68,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4278;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6359;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=F1aUwDw1oCdiQKc4Mr/s1A9oQOTsJxibKKDasYb4aSk=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpfseXY5QIUTimL8C+WVfjzgs/9sWaQomIKU
- FoG4aHTFrd1f4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqX7HlAAoJENju1/PI
- O/qahWsP+wZW8cZN0zpUMyr7/8wzhYujBUQMZPR/k9tP51OC6yrkwldFIDYh94xx7Dlt4RTOcCF
- kxFAypHCm/iQ5FCMOybC6Sr03oV75twQ7IsDcKlXK96E1VdRfSrOtNrVYVxSIbZNrLwk51VgT0Y
- mtPrc2d6ry6fP6E9NANrwG2EVL/j39rBMRcWX2ar6Yl3mVfS4MT2LGt6uq0bbPh5C0shjyL+hMC
- EgRhkTMU3d/25tpFuzE/M05cBCm3ED7deJwXbgD4teIe/Bw5OaNDQbF8B7fXNP9FitL5uyzRxAv
- IrO0vh/lb7QDmnoZWvnRthoYlmwiUwvXpkeIDn88Rt2aGUtcZ4HFaWUm8sfTQRgpX8TKcK5T7SA
- CWh6gnUZZuoJzMyPQeeF+OpX2+FHlOuVlnjKCeWkRnrPWXpnLgNEfMcXTKHKx1ig0cQYtF1uDSC
- kD6yU7K3Drrn9FibL43wT0/YVGuGN8vQl9PvC2cEFdKbycb16bYLJSSZp0wH6MxSBtg6BCXMvBq
- 62G3enoe2N38kSk6mTdU4233xqxVmIJXS50e9r9uzsLrtXQ9ZsiDdGAg3Stti4m7eyud+EVPMyB
- +0FjDdEsvxeMpLq50k4EcKNphiiO6b37LOQOMwo4SxCKEPDjOKMHP0EN0T6ETVVnO0egQ0zf89Y
- S2G7ghW7JXwku0PV4lHUvlQ==
+ bh=qOTOYZ7XdbH9KXuuBMAIBJTfbae9QntHhvKhrTx/3vg=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpfseVUstl3TidLkmix/O+zvti+pP8nHBLIy
+ 829JQGMPsbUHokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqX7HlAAoJENju1/PI
+ O/qaMLgP/2M5XvSw5XWE58yMNQHDUWu7PGIcPfvlUKZ+QflDEuLhFb1x+4GVfekKJzfWc+eICF/
+ GrbeDkFjWOoxAV4dm57DO7FRTlsccf7mMBEw4ZErsLS2hdWVN6ZkNWnww+4l+XpP88eQsHBBy6F
+ aTXYhWyk3uzM9u6WGjZRhBPuFBIZTg5yUBLykCZHgmytzkmPmrfJEpVvNAiM/CFluPLUTG3gqG+
+ EL/4goua6k9dUnSu3N9kRunzrhWG4rjZ0lwKtae4fbDTXmDDZ5A+fyIr3zHtxaKOmxXscZV58uP
+ lmPd50a944pI6cMVjSwxksiICuIRkpKWEKG6EQx65u3GyEH23VeyTwHhPOrO1QvTRyDbT6zIAD2
+ FMiV2u0EHT2vrkQ8pNDHVscjKnJOL8ju6xR9HYTCECuHe3bjCk39PSCGUgkPzZDRuSModR1u9mg
+ Fck0Ft5eJ/xIrfud7VKPCZDp/okG5vgY8gPv+oxJJrO1l6/nk0yYtiV/5rP9BkN0xqBH1tWAnJ3
+ 2HJJ0cjbztTVDPjusxxcwVEV6s9+fSWPy/8VzP/7ZUVfHL4LRs5KcCHy/Q993ocCo33q6QtL3h+
+ 7KnxxT0gf2gFQ8rhvjisAFjiew8aCpItLavUz6atrYF9CB6AwP/0BMPKIQlL6SUummItjubwifX
+ A3A/s10YN9sbkwCjeq+I2Aw==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_105245_429168_1619ABA8 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20260721_105245_887698_8DC81257 
+X-CRM114-Status: GOOD (  22.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,142 +105,210 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add runtime PM stubs to the Synopsys DesignWare DisplayPort bridge
-driver. Support is not enabled automatically and must be hooked up
-in the vendor specific glue code.
+Implement out-of-band hotplug handling, which will be used to receive
+external hotplug information from the USB-C state machine. This is
+currently handled by the USBDP PHY, which brings quite some trouble
+as the register being accessed requires the power-domain from the DP
+controller and also requires custom TypeC HPD info parsing in the
+USBDP PHY driver.
+
+In contrast to the USBDP PHY this does not just enable the hotplug
+signal when a DP AltMode capable adapter is plugged in, but instead
+properly detects if a cable is plugged in for things like USB-C to
+HDMI adapters.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 50 +++++++++++++++++++++++++++++++++
- include/drm/bridge/dw_dp.h              |  3 ++
- 2 files changed, 53 insertions(+)
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 123 ++++++++++++++++++++++++++++--
+ 1 file changed, 118 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 8eb2699dc7ab..636b9e105297 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -328,6 +328,7 @@ struct dw_dp {
- 	struct dw_dp_link link;
- 	struct dw_dp_plat_data plat_data;
- 	u8 pixel_mode;
-+	bool usbc_mode;
+diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+index 005938dc66c9..0ecbad24dd4e 100644
+--- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+@@ -7,9 +7,12 @@
+  */
  
- 	struct drm_bridge *next_bridge;
+ #include <linux/component.h>
++#include <linux/hw_bitfield.h>
+ #include <linux/media-bus-format.h>
++#include <linux/mfd/syscon.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
++#include <linux/regmap.h>
+ #include <linux/videodev2.h>
  
-@@ -1467,6 +1468,8 @@ static ssize_t dw_dp_aux_transfer(struct drm_dp_aux *aux,
- 	if (WARN_ON(msg->size > 16))
- 		return -E2BIG;
+ #include <drm/bridge/dw_dp.h>
+@@ -23,12 +26,54 @@
  
-+	ACQUIRE(pm_runtime_active_auto, pm)(dp->dev);
+ #include "rockchip_drm_drv.h"
+ 
++#define ROCKCHIP_MAX_CTRLS 2
 +
- 	switch (msg->request & ~DP_AUX_I2C_MOT) {
- 	case DP_AUX_NATIVE_WRITE:
- 	case DP_AUX_I2C_WRITE:
-@@ -1657,6 +1660,8 @@ static void dw_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 	struct drm_connector_state *conn_state;
- 	int ret;
- 
-+	pm_runtime_get_sync(dp->dev);
++#define ROCKCHIP_VO_GRF_DP_SINK_HPD_SEL BIT(10)
++#define ROCKCHIP_VO_GRF_DP_SINK_HPD_CFG BIT(11)
 +
- 	connector = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
- 	if (!connector) {
- 		dev_err(dp->dev, "failed to get connector\n");
-@@ -1711,6 +1716,7 @@ static void dw_dp_bridge_atomic_disable(struct drm_bridge *bridge,
- 	dw_dp_link_disable(dp);
- 	bitmap_zero(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
- 	dw_dp_reset(dp);
-+	pm_runtime_put_autosuspend(dp->dev);
- }
- 
- static bool dw_dp_hpd_detect_link(struct dw_dp *dp, struct drm_connector *connector)
-@@ -1731,6 +1737,14 @@ static enum drm_connector_status dw_dp_bridge_detect(struct drm_bridge *bridge,
- {
- 	struct dw_dp *dp = bridge_to_dp(bridge);
- 
-+	ACQUIRE(pm_runtime_active_auto, pm)(dp->dev);
++struct rockchip_dw_dp_plat_data {
++	u8 num_ctrls;
++	u32 ctrl_ids[ROCKCHIP_MAX_CTRLS];
++	u32 max_link_rate;
++	u8 pixel_mode;
++	u32 hpd_reg[ROCKCHIP_MAX_CTRLS];
++};
 +
-+	/*
-+	 * HPD_HOT_PLUG bit is asserted only after the sink holds HPD high for
-+	 * at least 100ms. Thus we need to wait 100ms after runtime PM resume.
-+	 */
-+	msleep(110);
-+
- 	if (!dw_dp_hpd_detect(dp))
- 		return connector_status_disconnected;
+ struct rockchip_dw_dp {
+ 	struct dw_dp *base;
+ 	struct device *dev;
++	const struct rockchip_dw_dp_plat_data *pdata;
++	struct regmap *vo_grf;
+ 	struct rockchip_encoder *encoder;
++	int id;
++	bool hpd_sel;
++	bool hpd_cfg;
+ };
  
-@@ -2032,10 +2046,15 @@ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
- 	}
- 
- 	if (dw_dp_is_routed_to_usb_c(encoder)) {
-+		dp->usbc_mode = true;
- 		dev_dbg(dev, "USB-C mode\n");
- 
- 		if (dp->plat_data.hpd_sw_sel)
- 			dp->plat_data.hpd_sw_sel(dp->plat_data.data, 1);
-+	} else {
-+		dp->usbc_mode = false;
-+		/* Keep runtime PM enabled to have working native HPD IRQ */
-+		pm_runtime_get_sync(dp->dev);
- 	}
- 
- 	dw_dp_init_hw(dp);
-@@ -2065,6 +2084,8 @@ EXPORT_SYMBOL_GPL(dw_dp_bind);
- 
- void dw_dp_unbind(struct dw_dp *dp)
- {
-+	if (dp->usbc_mode)
-+		pm_runtime_put_autosuspend(dp->dev);
- 	disable_irq(dp->irq);
- 	phy_exit(dp->phy);
- 	drm_bridge_put(dp->next_bridge);
-@@ -2163,6 +2184,35 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
- }
- EXPORT_SYMBOL_GPL(dw_dp_probe);
- 
-+int dw_dp_runtime_suspend(struct dw_dp *dp)
++static void dw_dp_rockchip_hpd_sw_sel(void *data, bool force_hpd_from_sw)
 +{
-+	clk_disable_unprepare(dp->aux_clk);
-+	clk_disable_unprepare(dp->apb_clk);
++	struct rockchip_dw_dp *dp = data;
++	u32 hpd_reg = dp->pdata->hpd_reg[dp->id];
 +
-+	return 0;
++	dp->hpd_sel = force_hpd_from_sw;
++
++	regmap_write(dp->vo_grf, hpd_reg,
++		     FIELD_PREP_WM16(ROCKCHIP_VO_GRF_DP_SINK_HPD_SEL, dp->hpd_sel));
 +}
-+EXPORT_SYMBOL_GPL(dw_dp_runtime_suspend);
 +
-+int dw_dp_runtime_resume(struct dw_dp *dp)
++static void dw_dp_rockchip_hpd_sw_cfg(void *data, bool hpd)
 +{
++	struct rockchip_dw_dp *dp = data;
++	u32 hpd_reg = dp->pdata->hpd_reg[dp->id];
++
++	dev_dbg(dp->dev, "Force HPD connected=%s\n", str_yes_no(hpd));
++
++	dp->hpd_cfg = hpd;
++
++	regmap_write(dp->vo_grf, hpd_reg,
++		     FIELD_PREP_WM16(ROCKCHIP_VO_GRF_DP_SINK_HPD_CFG, dp->hpd_cfg));
++}
++
+ static int dw_dp_encoder_atomic_check(struct drm_encoder *encoder,
+ 				      struct drm_crtc_state *crtc_state,
+ 				      struct drm_connector_state *conn_state)
+@@ -71,6 +116,34 @@ static const struct drm_encoder_helper_funcs dw_dp_encoder_helper_funcs = {
+ 	.atomic_check		= dw_dp_encoder_atomic_check,
+ };
+ 
++static struct regmap *dp_dp_rockchip_get_vo_grf(struct rockchip_dw_dp *dp)
++{
++	struct device_node *np = dev_of_node(dp->dev);
++	struct of_phandle_args args;
++	struct regmap *regmap;
 +	int ret;
 +
-+	ret = clk_prepare_enable(dp->apb_clk);
++	ret = of_parse_phandle_with_args(np, "phys", "#phy-cells", 0, &args);
 +	if (ret)
-+		return ret;
++		return ERR_PTR(-ENODEV);
 +
-+	ret = clk_prepare_enable(dp->aux_clk);
-+	if (ret) {
-+		clk_disable_unprepare(dp->apb_clk);
-+		return ret;
++	/*
++	 * Limit this workaround to RK3576 and RK3588, new platforms should
++	 * add a VO GRF phandle in the DisplayPort DT node.
++	 */
++	if (!of_device_is_compatible(args.np, "rockchip,rk3576-usbdp-phy") &&
++	    !of_device_is_compatible(args.np, "rockchip,rk3588-usbdp-phy")) {
++		regmap = ERR_PTR(-ENODEV);
++		goto out_put_node;
 +	}
 +
-+	dw_dp_init_hw(dp);
++	regmap = syscon_regmap_lookup_by_phandle(args.np, "rockchip,vo-grf");
 +
-+	return 0;
++out_put_node:
++	of_node_put(args.np);
++	return regmap;
 +}
-+EXPORT_SYMBOL_GPL(dw_dp_runtime_resume);
 +
- MODULE_AUTHOR("Andy Yan <andyshrk@163.com>");
- MODULE_DESCRIPTION("DW DP Core Library");
- MODULE_LICENSE("GPL");
-diff --git a/include/drm/bridge/dw_dp.h b/include/drm/bridge/dw_dp.h
-index 79b2cdf0df99..f20d2c2c40ca 100644
---- a/include/drm/bridge/dw_dp.h
-+++ b/include/drm/bridge/dw_dp.h
-@@ -29,4 +29,7 @@ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder);
- void dw_dp_unbind(struct dw_dp *dp);
+ static int dw_dp_rockchip_bind(struct device *dev, struct device *master, void *data)
+ {
+ 	struct rockchip_dw_dp *dp = dev_get_drvdata(dev);
+@@ -121,19 +194,53 @@ static const struct component_ops dw_dp_rockchip_component_ops = {
  
- struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_data *plat_data);
+ static int dw_dp_rockchip_probe(struct platform_device *pdev)
+ {
+-	const struct dw_dp_plat_data *plat_data;
++	const struct rockchip_dw_dp_plat_data *plat_data_const;
++	struct dw_dp_plat_data *plat_data;
+ 	struct device *dev = &pdev->dev;
+ 	struct rockchip_dw_dp *dp;
++	struct resource *res;
++	int id;
+ 
+-	plat_data = of_device_get_match_data(dev);
+-	if (!plat_data)
++	plat_data_const = device_get_match_data(dev);
++	if (!plat_data_const)
+ 		return -ENODEV;
+ 
++	plat_data = devm_kzalloc(dev, sizeof(*plat_data), GFP_KERNEL);
++	if (!plat_data)
++		return -ENOMEM;
 +
-+int dw_dp_runtime_suspend(struct dw_dp *dp);
-+int dw_dp_runtime_resume(struct dw_dp *dp);
- #endif /* __DW_DP__ */
+ 	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
+ 	if (!dp)
+ 		return -ENOMEM;
+ 	platform_set_drvdata(pdev, dp);
+ 	dp->dev = dev;
++	dp->pdata = plat_data_const;
++
++	res = platform_get_mem_or_io(pdev, 0);
++	if (!res)
++		return -ENODEV;
++
++	/* find the DisplayPort ID from the io address */
++	dp->id = -ENODEV;
++	for (id = 0; id < plat_data_const->num_ctrls; id++) {
++		if (res->start == plat_data_const->ctrl_ids[id]) {
++			dp->id = id;
++			break;
++		}
++	}
++
++	if (dp->id < 0)
++		return dp->id;
++
++	dp->vo_grf = dp_dp_rockchip_get_vo_grf(dp);
++	if (IS_ERR(dp->vo_grf))
++		return PTR_ERR(dp->vo_grf);
++
++	plat_data->max_link_rate = plat_data_const->max_link_rate;
++	plat_data->pixel_mode = plat_data_const->pixel_mode;
++	plat_data->hpd_sw_sel = dw_dp_rockchip_hpd_sw_sel;
++	plat_data->hpd_sw_cfg = dw_dp_rockchip_hpd_sw_cfg;
++	plat_data->data = dp;
+ 
+ 	dp->base = dw_dp_probe(pdev, plat_data);
+ 	if (IS_ERR(dp->base))
+@@ -147,14 +254,20 @@ static void dw_dp_rockchip_remove(struct platform_device *pdev)
+ 	component_del(&pdev->dev, &dw_dp_rockchip_component_ops);
+ }
+ 
+-static const struct dw_dp_plat_data rk3588_dp_plat_data = {
++static const struct rockchip_dw_dp_plat_data rk3588_dp_plat_data = {
++	.num_ctrls = 2,
++	.ctrl_ids = {0xfde50000, 0xfde60000},
+ 	.max_link_rate = 810000,
+ 	.pixel_mode = DW_DP_MP_QUAD_PIXEL,
++	.hpd_reg = {0x0000, 0x0008},
+ };
+ 
+-static const struct dw_dp_plat_data rk3576_dp_plat_data = {
++static const struct rockchip_dw_dp_plat_data rk3576_dp_plat_data = {
++	.num_ctrls = 1,
++	.ctrl_ids = {0x27e40000},
+ 	.max_link_rate = 810000,
+ 	.pixel_mode = DW_DP_MP_DUAL_PIXEL,
++	.hpd_reg = {0x0000},
+ };
+ 
+ static const struct of_device_id dw_dp_of_match[] = {
 
 -- 
 2.53.0
