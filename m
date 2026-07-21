@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 939F4C44536
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 939B3C4451C
 	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 17:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,62 +12,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rVD4C15TW8CpmKa60D3+itgkdqjrbw7WgsHaTNMOxiI=; b=EXpLhefzR0FE5w
-	oLw43YIBiX4bdFR/CDvnPJEJCGS5R19iR2JVwjZqnabVMCcs3lfiXbLmcIcc7pv3d3bAmzgpwTLRV
-	+LE28L86PPiwUQ0WmdAOddkX0ADllWjzvgCShqlRVqtgWUSR9z3SjB9YyrNAW9DUspsKdpVqIyw7Q
-	fiZNKU2PTqBdwSxptQQLpPkaeS4BoPlOwvI56p3hDXbG2/bDJnG1jjSM0VJIdApew1YHavrGzwfep
-	XLujihUwSwsE7DNS11EaOtHL13sUWPhocsHw3RemQGvRCzdd08Mx0P7oQfpgqJlWB/FWVFl/oUMjB
-	8tdUx8NJGMWh1D825wGw==;
+	List-Owner; bh=AujsVM5TIMJr0ZbUmnriY2hb0YzbYlkkGPqWcfcCWKQ=; b=urRDI1n6W3TeAv
+	FtVZ27dOUJx35PK+ZfHmDQ9zaDHoVEupkW2wbdbRLuzU4sCrv4ifStXM/CYfP2QSLHyZM0q5PtOfe
+	P3z1dSlqOl8o9nrUPcvbxxN2i+cyjrViDt4N7n8UBCchQ72BB1kRe5GTyVwGotjNKD7EjznHcEg8F
+	G53j33gGxHjCvC2onAD1SdYJeO7k9uZyKlt/+DblTJMU2Hzi9yFTXTANf45mf+8g7DM6jzpdW9tE7
+	Qo9vbUOG27cFZQr/pxdNjOkixAQBPhq+DZbkPQKzaBUIgCQIlk+PVWeshP9MyYvsyUu2dM0oxwDZB
+	HhLsV6+GoqtGasWYxSYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmE0H-0000000A1HW-2swg;
+	id 1wmE0H-0000000A1HE-1lOk;
 	Tue, 21 Jul 2026 17:11:37 +0000
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmE0E-0000000A1G0-2Q21
+	id 1wmE0C-0000000A1FF-02sg
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Jul 2026 17:11:36 +0000
-Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-495c63c4141so7325026b6e.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 21 Jul 2026 10:11:34 -0700 (PDT)
+	Tue, 21 Jul 2026 17:11:34 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id 5614622812f47-489f3611e0cso7614563b6e.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 21 Jul 2026 10:11:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784653893; x=1785258693; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784653891; x=1785258691; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=HR0ci1095uuRL6RSx55ko0W10LX2+ylK1ReemriQYvc=;
-        b=IUm1OvpfJnxe7imOGl/w/acZ4ocyR9cov1iFxDVoyltDvBfu2JPqOtbR5/rimewFgn
-         y5gV/KIWTZdwwlC4RGY824IhcSBMyosTd4B7b7WrEFzpyN+1KGBeLyL60gVT80Ofo/qW
-         zCHxDnLtC6iRLXS+s03c7Q6asEyvLwQzWxkfN4CPRi6OaZLbxyH4dh5etQgxGtciVAP0
-         2Dm/Zsii7GWsmAb8JTWCXoeolyEOXun23QO3euXH6AvmyzsvBxOvJnMN4+q2ULr8H2TC
-         PRdlgA/rjd94yhbwa3q7qmJWTChIf7x6DA4Ijpp+st0jSgt0WKJyMHgII05ZHCjzadvs
-         ofrw==
+        bh=vqt9YJlx80A2itg1eEVU8Oy06B/azqTbdYj5Xhcs6pQ=;
+        b=nORhvcaEadKu3ny9zLjF74jUtBPkmLSolllbUTNnE94X0XgyAdqITR8Mr/SMngubvx
+         GtomId/zPjeh/DDVP7tOrfOEN0x/3oAQAz6rDkCj25ZuSDSimy6SR7AS5lOPjuV2Vp9F
+         LQSNXStrY5oX6oHMY8/d0MsDaG41sDKfk05fuAN8bsZ+9HVByJ2yaV/M/F3Bk3zXdamz
+         jx47pU6dQ1nsH0YP5bWZyxLhI4R1Rjx13r9QfH2+q3Ke8tjXXxj1ALVg6PYElhmbqxcR
+         z0k3mgeuTBWA7A1nbLwoYR+JJziW2Gq9F2dAe1GT6C1ptfuRgVSyvDGF2X8wwPuVjq9F
+         UD0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784653893; x=1785258693;
+        d=1e100.net; s=20251104; t=1784653891; x=1785258691;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=HR0ci1095uuRL6RSx55ko0W10LX2+ylK1ReemriQYvc=;
-        b=LgduaHlGKVBrCN/XCWwc8/xE2rHc5F5HyrXOPGo6sxgfnQ3Mbe2vB8DikraUIOVdST
-         NZbV+aQwG8dwM0/ceZ4L+IVxWrZlj8/vfYnTybiQJUIXyz59b93fqobuZQQRH9QMr4xt
-         RIAjc0kOKptbnJouQxepAE9ErVDipjEl4R9qxg7tVS3nAcGoLFqLOvOzMURoiCf1S8Rs
-         K8lG+mwW0p6B3eCOx7c027QVb8hvRCpxBIfSNOkoXI9imaO/kUG/SMhwK/8qpRU/alBY
-         uxPTLPHhKNiKIlQcO7Qo7dPpKACOoBs3BqdoH5AgR+kNuHLgOzkCL9QczYS2RrWNe4Um
-         7Cfg==
-X-Gm-Message-State: AOJu0YxEsvO9ovZOGUEU2hN5AlsXWSCBPbSvrfDz0O/vlay5r383yMAC
-	S7TQlH2ni6aDcN5E+xXm+f4p0D8Gf4jwmy4pHPnRUp2gkPT3lClPCGN/CwwSxQ==
-X-Gm-Gg: AfdE7ckugCyOzxhqFRJ5bdUeEJzJOrcHYpNcab6Q6QO84R/eupR2p6vg0e/L2nfedK1
-	GB8IiwWXh6cX+vN8YybRat5WW8vFOS4Rqy9wCO7a5++xihIgFybfdi0cvBTNhFh0oDBB6KNHHVz
-	okqz0okjjXlXoPfwtobkx7mdbAblyt/lLPsDJL1gtjmLxLOK+WblwnjUiCIxhEXZPvMm3vuD4Vu
-	ahHCTVghB1DXr8G1sJVTy0vQi6J0Ehx+VWFzB7iwitRFKve1s9ebiqnQFfiZupqJi0pJ9ks62WZ
-	Aeu9tXUW/Y0Nuor5+ZcSsATn4WscKHrV2b/d0y9SccEogTrY1WdTX5Z8hB3rqOLTRZr2OIffRPm
-	2Q+qaShlMDHCk/OD1hkTkTOrmS9qJ/MEmXUOpR9hzGIT+eIrc80cXLs6n6TOOLVVDkNNl68W3vL
-	Nt
-X-Received: by 2002:a05:6808:144d:b0:496:7a:213a with SMTP id 5614622812f47-4a4d0296d4emr14036668b6e.5.1784653893105;
-        Tue, 21 Jul 2026 10:11:33 -0700 (PDT)
+        bh=vqt9YJlx80A2itg1eEVU8Oy06B/azqTbdYj5Xhcs6pQ=;
+        b=fldHNphdOYn7jtsaF4VyywxDE1OzkQFZw3Z6fYf52fgNXhtZlmTxr3irK8XxVOTp2R
+         hQ6QdWLzSxWVOd6AnDd+wrZ8DP62657dctUPckPJFzs6io10stqhfMd2iM+A/6naZH/T
+         VFOvXMyasc9CkgqC1gw8Uwj0jJGJso9pF5ezNxYQff2xiyBKyOLzbHwQIUYSZxTS4TGx
+         u86JuksRJ4IxUQOOC/6JkQJJiXG2R8923drKcGfnMe7UQYGp0fkFrK117Gt2OeJ3X7Ih
+         zRo0Rkfj+wEkU+Te3cYJ7Zx9ZDXn0mecSj72tyy1qeOyU9758s9blFt6omFPcQxI18OP
+         ShMA==
+X-Gm-Message-State: AOJu0Yx0gD1IWYAUNHzGqrg2tr4rp68svuebnO4v5KWkm56G27Lt9RzN
+	Q5wPAAgMWP3fC9k2X3TpZRnr0PrUQH+i7pCcxOzVVLeJoFGLIkIOP/YS+8PqSg==
+X-Gm-Gg: AfdE7clw5qZPOYRS24E3PeXcPGpHuAL9S3OtW2lHudHjbFdUAgNFfyhkmMxstLlke7r
+	D9iXKOFTmWrxGpghXIbS/n/5UXbBlPH4us+9bxPfnW2uY8jKkwMV+RNGMtMI2WLsIO6L2XEuMMT
+	XqtYHt5sstLmVZ/vO8YrWQEmyVOxCXmgKH13YH0ScEVlD9cv0YD/vhbFxP+KyH8fxmI9vBqwbb+
+	Rpm3+WwHFiM5OQI7q3qb1q6z7V1vA8PhcsnkAf0Yja3AOAnbhKW+SkE8LNKbw2a1PbtcOaHKMNe
+	ybh69PY9NXCyNy6/lV52c0pklT20LYI+DTQCbpS9NQHdA0u3TEYXf4KcN+QerokdO9s4NriJNjY
+	ffslLMrpzhkEf01gHGakJeNL82RFTpiH727M2SXsrarAxEKhnwHMLJiPFazMW4oJLfw7nCMZSTu
+	Zn
+X-Received: by 2002:a05:6808:14d6:b0:4a4:d2b:8e7a with SMTP id 5614622812f47-4a4d05205demr11105730b6e.35.1784653890658;
+        Tue, 21 Jul 2026 10:11:30 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-4a4d3cadb50sm10213953b6e.9.2026.07.21.10.11.32
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-4a4d3cadb50sm10213953b6e.9.2026.07.21.10.11.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jul 2026 10:11:32 -0700 (PDT)
+        Tue, 21 Jul 2026 10:11:29 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -78,16 +78,16 @@ Cc: devicetree@vger.kernel.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V8 4/4] arm64: dts: rockchip: Add Anbernic RG Vita-Pro
-Date: Tue, 21 Jul 2026 12:09:07 -0500
-Message-ID: <20260721170907.131731-5-macroalpha82@gmail.com>
+Subject: [PATCH V8 2/4] power: supply: sgm41542: Add SG Micro sgm41542 charger
+Date: Tue, 21 Jul 2026 12:09:05 -0500
+Message-ID: <20260721170907.131731-3-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260721170907.131731-1-macroalpha82@gmail.com>
 References: <20260721170907.131731-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_101134_692705_7ABDE327 
-X-CRM114-Status: GOOD (  18.56  )
+X-CRM114-CacheID: sfid-20260721_101132_131996_A225E8EA 
+X-CRM114-Status: GOOD (  20.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,1384 +106,1169 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add device tree for the Anbernic RG Vita-Pro, based on the Rockchip
-RK3576. All hardware is currently working except for the accelerometer,
-the touchscreen, the battery monitor, and DisplayPort over USB-C. PWM
-is also missing currently, and as a result the LEDs and panel backlight
-are currently controlled via GPIO but will be changed to PWM once
-supported.
+Add support for the SG Micro SGM41542 charger/boost converter.
+Driver was adapted from Rockchip BSP driver [1] and confirmed
+with vendor datasheet [2].
 
-The Anbernic RG Vita-Pro includes the following hardware:
- - A 1080x1920 DSI display with touch.
- - 21 buttons.
- - 3 LEDs.
- - 64GB eMMC, 2 SDMMC slots.
- - RTL8852BE WiFi (with Bluetooth via UART)
- - 1 USB 3.0 USB-C port in OTG mode.
- - 3.5mm headphone jack with play button support.
- - 5000mAH battery
-
-The following hardware has incomplete driver support and is not yet
-working:
- - An Invensense icm42607p accelerometer.
- - A Cellwise cw221x battery monitor.
- - A Synaptics i2c touchscreen.
- - DisplayPort over USB-C alt-mode.
- - PWM controller.
- - 2 Analog joysticks with LED controllers.
+[1] https://github.com/rockchip-linux/kernel/blob/develop-6.6/drivers/power/supply/sgm41542_charger.c
+[2] https://www.sg-micro.de/rect/assets/1e8de70b-657e-4156-be68-a64fdbe8e418/SGM41541_SGM41542.pdf
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../rockchip/rk3576-anbernic-rg-vita-pro.dts  | 1327 +++++++++++++++++
- 2 files changed, 1328 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
+ drivers/power/supply/Kconfig            |    8 +
+ drivers/power/supply/Makefile           |    1 +
+ drivers/power/supply/sgm41542_charger.c | 1111 +++++++++++++++++++++++
+ 3 files changed, 1120 insertions(+)
+ create mode 100644 drivers/power/supply/sgm41542_charger.c
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 761d82b4f4f2..7b003bc45dea 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -165,6 +165,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-100ask-dshanpi-a1.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-anbernic-rg-vita-pro.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-sige5-v1.2-wifibt.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
+diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
+index f0ede1cecb6a..dadda6b78a03 100644
+--- a/drivers/power/supply/Kconfig
++++ b/drivers/power/supply/Kconfig
+@@ -866,6 +866,14 @@ config CHARGER_S2M
+ 	  devices provide USB power supply information and also required
+ 	  for USB OTG role switching.
+ 
++config CHARGER_SGM41542
++	tristate "SGM41542 charger driver"
++	depends on I2C
++	depends on GPIOLIB || COMPILE_TEST
++	select REGMAP_I2C
++	help
++	  Say Y to enable support for the SGM41542 battery charger.
++
+ config CHARGER_SMB347
+ 	tristate "Summit Microelectronics SMB3XX Battery Charger"
+ 	depends on I2C
+diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
+index 31fe4a145929..25d23ea3fcbd 100644
+--- a/drivers/power/supply/Makefile
++++ b/drivers/power/supply/Makefile
+@@ -108,6 +108,7 @@ obj-$(CONFIG_CHARGER_BQ25980)	+= bq25980_charger.o
+ obj-$(CONFIG_CHARGER_BQ256XX)	+= bq256xx_charger.o
+ obj-$(CONFIG_CHARGER_RK817)	+= rk817_charger.o
+ obj-$(CONFIG_CHARGER_S2M)	+= s2m-charger.o
++obj-$(CONFIG_CHARGER_SGM41542)	+= sgm41542_charger.o
+ obj-$(CONFIG_CHARGER_SMB347)	+= smb347-charger.o
+ obj-$(CONFIG_CHARGER_TPS65090)	+= tps65090-charger.o
+ obj-$(CONFIG_CHARGER_TPS65217)	+= tps65217_charger.o
+diff --git a/drivers/power/supply/sgm41542_charger.c b/drivers/power/supply/sgm41542_charger.c
 new file mode 100644
-index 000000000000..344ba1870533
+index 000000000000..97a1e4575d3a
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
-@@ -0,0 +1,1327 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++++ b/drivers/power/supply/sgm41542_charger.c
+@@ -0,0 +1,1111 @@
++// SPDX-License-Identifier: GPL-2.0
 +/*
-+ * Copyright (c) 2026 Chris Morgan <macromorgan@hotmail.com>
++ * Charger driver for SGM4154x
++ *
++ * Copyright (c) 2026 Rockchip Electronics Co., Ltd.
++ *
++ * Author: Xu Shengfei <xsf@rock-chips.com>
 + */
 +
-+/dts-v1/;
++#include <linux/delay.h>
++#include <linux/devm-helpers.h>
++#include <linux/i2c.h>
++#include <linux/interrupt.h>
++#include <linux/module.h>
++#include <linux/mutex.h>
++#include <linux/pm.h>
++#include <linux/power_supply.h>
++#include <linux/property.h>
++#include <linux/regmap.h>
++#include <linux/regulator/driver.h>
++#include <linux/regulator/of_regulator.h>
++#include <linux/types.h>
 +
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/input/linux-event-codes.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/pwm/pwm.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
-+#include <dt-bindings/usb/pd.h>
++#define SGM4154X_MANUFACTURER			"SGMICRO"
++#define SGM4154X_NAME				"sgm41542"
 +
-+#include "rk3576.dtsi"
++#define SGM4154X_CHRG_CTRL_0			0x00
++#define SGM4154X_HIZ_EN				BIT(7)
++#define SGM4154X_IINDPM_I_MASK			GENMASK(4, 0)
++#define SGM4154X_IINDPM_I_MIN_UA		100000
++#define SGM4154X_IINDPM_I_MAX_UA		3800000
++#define SGM4154X_IINDPM_STEP_UA			100000
++#define SGM4154X_IINDPM_DEF_UA			2400000
 +
-+/ {
-+	model = "Anbernic RG Vita Pro";
-+	chassis-type = "handset";
-+	compatible = "anbernic,rg-vita-pro", "rockchip,rk3576";
++#define SGM4154X_CHRG_CTRL_1			0x01
++#define SGM4154X_WDT_RST			BIT(6)
++#define SGM4154X_OTG_EN				BIT(5)
++#define SGM4154X_CHRG_EN			BIT(4)
 +
-+	aliases {
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc;
-+		mmc2 = &sdio;
-+	};
++#define SGM4154X_CHRG_CTRL_2			0x02
++#define SGM4154X_BOOST_LIM			BIT(7)
++#define SGM4154X_ICHRG_CUR_MASK			GENMASK(5, 0)
++#define SGM4154X_ICHRG_I_STEP_UA		60000
++#define SGM4154X_ICHRG_I_MIN_UA			0
++#define SGM4154X_ICHRG_I_MAX_UA			3780000
++#define SGM4154X_ICHRG_I_DEF_UA			2040000
 +
-+	chosen {
-+		stdout-path = "serial0:1500000n8";
-+	};
++#define SGM4154X_CHRG_CTRL_3			0x03
++#define SGM4154X_PRECHRG_CUR_MASK		GENMASK(7, 4)
++#define SGM4154X_PRECHRG_CURRENT_STEP_UA	60000
++#define SGM4154X_PRECHRG_I_MIN_UA		60000
++#define SGM4154X_PRECHRG_I_MAX_UA		780000
++#define SGM4154X_PRECHRG_I_DEF_UA		180000
++#define SGM4154X_TERMCHRG_CUR_MASK		GENMASK(3, 0)
++#define SGM4154X_TERMCHRG_CURRENT_STEP_UA	60000
++#define SGM4154X_TERMCHRG_I_MIN_UA		60000
++#define SGM4154X_TERMCHRG_I_MAX_UA		960000
++#define SGM4154X_TERMCHRG_I_DEF_UA		180000
 +
-+	adc_keys_home: adc-keys-home {
-+		compatible = "adc-keys";
-+		io-channel-names = "buttons";
-+		io-channels = <&saradc 1>;
-+		keyup-threshold-microvolt = <1800000>;
-+		poll-interval = <60>;
++#define SGM4154X_CHRG_CTRL_4			0x04
++#define SGM4154X_VREG_V_MASK			GENMASK(7, 3)
++#define SGM4154X_VREG_V_MAX_UV			4624000
++#define SGM4154X_VREG_V_MIN_UV			3856000
++#define SGM4154X_VREG_V_DEF_UV			4208000
++#define SGM4154X_VREG_V_STEP_UV			32000
++#define SGM4154X_VRECHARGE			BIT(0)
++#define SGM4154X_VRECHRG_STEP_UV		100000
++#define SGM4154X_VRECHRG_OFFSET_UV		100000
 +
-+		button-home {
-+			label = "HOME";
-+			linux,code = <KEY_HOME>;
-+			press-threshold-microvolt = <1750>;
-+		};
-+	};
++#define SGM4154X_CHRG_CTRL_5			0x05
++#define SGM4154X_TERM_EN			BIT(7)
++#define SGM4154X_WDT_TIMER_MASK			GENMASK(5, 4)
 +
-+	adc_keys_play: adc-keys-play {
-+		compatible = "adc-keys";
-+		io-channel-names = "buttons";
-+		io-channels = <&saradc 3>;
-+		keyup-threshold-microvolt = <1300000>;
-+		poll-interval = <60>;
++#define SGM4154X_CHRG_CTRL_6			0x06
++#define SGM4154X_VAC_OVP_MASK			GENMASK(7, 6)
++#define SGM4154X_OVP_14V			(BIT(7) | BIT(6))
++#define SGM4154X_OVP_10_5V			BIT(7)
++#define SGM4154X_OVP_6_5V			BIT(6)
++#define SGM4154X_OVP_5_5V			0
++#define SGM4154X_OVP_DEFAULT			SGM4154X_OVP_14V
++#define SGM4154X_BOOSTV				GENMASK(5, 4)
++#define SGM4154X_VINDPM_V_MASK			GENMASK(3, 0)
++#define SGM4154X_VINDPM_V_MIN_UV		3900000
++#define SGM4154X_VINDPM_V_MAX_UV		12000000
++#define SGM4154X_VINDPM_STEP_UV			100000
++#define SGM4154X_VINDPM_DEF_UV			4500000
 +
-+		button-play {
-+			label = "PLAY";
-+			linux,code = <KEY_PLAYPAUSE>;
-+			press-threshold-microvolt = <1750>;
-+		};
-+	};
++#define SGM4154X_CHRG_CTRL_7			0x07
++
++#define SGM4154X_CHRG_STAT		0x08
++#define SGM4154X_VBUS_STAT_MASK		GENMASK(7, 5)
++#define SGM4154X_OTG_MODE		(BIT(7) | BIT(6) | BIT(5))
++#define SGM4154X_NON_STANDARD		(BIT(7) | BIT(6))
++#define SGM4154X_UNKNOWN		(BIT(7) | BIT(5))
++#define SGM4154X_USB_DCP		(BIT(6) | BIT(5))
++#define SGM4154X_USB_CDP		BIT(6)
++#define SGM4154X_USB_SDP		BIT(5)
++#define SGM4154X_NOT_CHRGING		0
++#define SGM4154X_CHG_STAT_MASK		GENMASK(4, 3)
++#define SGM4154X_TERM_CHRG		(BIT(4) | BIT(3))
++#define SGM4154X_FAST_CHRG		BIT(4)
++#define SGM4154X_PRECHRG		BIT(3)
++#define SGM4154X_PG_STAT		BIT(2)
++#define SGM4154X_THERM_STAT		BIT(1)
++#define SGM4154X_VSYS_STAT		BIT(0)
++
++#define SGM4154X_CHRG_FAULT		0x09
++#define SGM4154X_TEMP_MASK		GENMASK(2, 0)
++#define SGM4154X_TEMP_HOT		(BIT(2) | BIT(1))
++#define SGM4154X_TEMP_COLD		(BIT(2) | BIT(0))
++#define SGM4154X_TEMP_COOL		(BIT(1) | BIT(0))
++#define SGM4154X_TEMP_WARM		BIT(1)
++#define SGM4154X_TEMP_NORMAL		BIT(0)
++
++#define SGM4154X_CHRG_CTRL_A		0x0a
++#define SGM4154X_VBUS_GOOD		BIT(7)
++#define SGM4154X_VINDPM_INT_MASK	BIT(1)
++#define SGM4154X_IINDPM_INT_MASK	BIT(0)
++
++#define SGM4154X_CHRG_CTRL_B		0x0b
++#define SGM4154X_PN_ID			(BIT(6) | BIT(5) | BIT(3))
++#define SGM4154X_PN_MASK		GENMASK(6, 3)
++
++#define SGM4154X_CHRG_CTRL_C		0x0c
++
++#define SGM4154X_CHRG_CTRL_D		0x0d
++#define SGM4154X_JEITA_EN		BIT(0)
++
++#define SGM4154X_INPUT_DET		0x0e
++#define SGM4154X_DPDM_ONGOING		BIT(7)
++
++#define SGM4154X_CHRG_CTRL_F		0x0f
++#define SGM4154X_VINDPM_OS_MASK	 GENMASK(1, 0)
++
++#define SGM4154X_DEFAULT_INPUT_CUR	(500 * 1000)
++
++struct sgm4154x_init_data {
++	int ilim;	/* input current limit */
++	int vlim;	/* minimum system voltage limit */
++	int iterm;	/* termination current */
++	int iprechg;	/* precharge current */
++	int max_ichg;	/* maximum charge current */
++	int max_vreg;	/* maximum charge voltage */
++};
++
++struct sgm4154x_state {
++	bool vsys_stat;
++	bool therm_stat;
++	bool online;
++	u8 chrg_stat;
++	bool chrg_en;
++	bool vbus_gd;
++	u8 chrg_type;
++	u8 health;
++	u8 chrg_fault;
++	u8 ntc_fault;
++};
++
++struct sgm4154x_device {
++	struct device *dev;
++	struct power_supply *charger;
++	struct regmap *regmap;
++	struct sgm4154x_init_data init_data;
++	struct sgm4154x_state state;
++	struct regulator_dev *otg_rdev;
++	struct mutex lock;
++	bool watchdog_enable;
++	struct workqueue_struct *sgm_monitor_wq;
++	struct delayed_work sgm_delay_work;
++};
++
++enum SGM4154X_VINDPM_OS {
++	VINDPM_OS_3900MV,
++	VINDPM_OS_5900MV,
++	VINDPM_OS_7500MV,
++	VINDPM_OS_10500MV,
++};
++
++enum sgm4154x_wdt_values {
++	SGM4154X_WDT_TIMER_DISABLE = 0,
++	SGM4154X_WDT_TIMER_40S = 1,
++	SGM4154X_WDT_TIMER_80S = 2,
++	SGM4154X_WDT_TIMER_160S = 3,
++};
++
++static int sgm4154x_set_term_curr(struct sgm4154x_device *sgm, int cur_ua)
++{
++	int reg_val;
++	int ret;
++
++	cur_ua = clamp(cur_ua, SGM4154X_TERMCHRG_I_MIN_UA, SGM4154X_TERMCHRG_I_MAX_UA);
++	reg_val = (cur_ua - SGM4154X_TERMCHRG_I_MIN_UA) / SGM4154X_TERMCHRG_CURRENT_STEP_UA;
++
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_3,
++				 SGM4154X_TERMCHRG_CUR_MASK,
++				 reg_val);
++	if (ret)
++		dev_err(sgm->dev, "set term current error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_set_prechrg_curr(struct sgm4154x_device *sgm, int cur_ua)
++{
++	int reg_val;
++	int ret;
++
++	cur_ua = clamp(cur_ua, SGM4154X_PRECHRG_I_MIN_UA, SGM4154X_PRECHRG_I_MAX_UA);
++	reg_val = (cur_ua - SGM4154X_PRECHRG_I_MIN_UA) / SGM4154X_PRECHRG_CURRENT_STEP_UA;
++
++	reg_val = FIELD_PREP(SGM4154X_PRECHRG_CUR_MASK, reg_val);
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_3,
++				 SGM4154X_PRECHRG_CUR_MASK,
++				 reg_val);
++	if (ret)
++		dev_err(sgm->dev, "set precharge current error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_set_ichrg_curr(struct sgm4154x_device *sgm, int cur_ua)
++{
++	int reg_val;
++	int ret;
++
++	cur_ua = clamp(cur_ua, SGM4154X_ICHRG_I_MIN_UA, sgm->init_data.max_ichg);
++	reg_val = cur_ua / SGM4154X_ICHRG_I_STEP_UA;
++
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_2,
++				 SGM4154X_ICHRG_CUR_MASK,
++				 reg_val);
++	if (ret)
++		dev_err(sgm->dev, "set icharge current error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_get_ichrg_curr(struct sgm4154x_device *sgm)
++{
++	u32 reg;
++	int ret, val;
++
++	ret = regmap_read(sgm->regmap, SGM4154X_CHRG_CTRL_2, &reg);
++	if (ret) {
++		dev_err(sgm->dev, "get charge current error!\n");
++		return ret;
++	}
++
++	val = FIELD_GET(SGM4154X_ICHRG_CUR_MASK, reg);
++
++	return val * SGM4154X_ICHRG_I_STEP_UA;
++}
++
++static int sgm4154x_set_chrg_volt(struct sgm4154x_device *sgm, int chrg_volt)
++{
++	int reg_val;
++	int ret;
 +
 +	/*
-+	 * Battery values from BSP except for the following:
-+	 *
-+	 * factory-internal-resistance-micro-ohms - This was set to 80 which
-+	 * is likely incorrect and changed to 80000.
-+	 *
-+	 * charge-full-design-microamp-hours - Was set to 8000000 but the
-+	 * physical battery says 5000000.
-+	 *
-+	 * constant-charge-current-max-microamp - Was set to 10000000 which
-+	 * both seems high and exceeds what the charger hardware can do.
-+	 * Setting to 3800000 which is the maximum input current the charger
-+	 * can handle.
++	 * Note that the value of 0x01111 represents a "special value"
++	 * corresponding to 4352000uV instead of the expected 4336000uV,
++	 * per the datasheet. All other values are as expected. So not
++	 * only do we need to clamp between max and min values, but
++	 * also clamp anything below 4352000uv to 4304000uv to prevent
++	 * overcharging.
 +	 */
-+	battery: battery {
-+		compatible = "simple-battery";
-+		charge-full-design-microamp-hours = <5000000>;
-+		charge-term-current-microamp = <300000>;
-+		constant-charge-current-max-microamp = <3800000>;
-+		constant-charge-voltage-max-microvolt = <4350000>;
-+		factory-internal-resistance-micro-ohms = <80000>;
-+		precharge-current-microamp = <180000>;
-+		precharge-upper-limit-microvolt = <3600000>;
-+		voltage-max-design-microvolt = <4350000>;
-+		voltage-min-design-microvolt = <3000000>;
-+	};
++	chrg_volt = clamp(chrg_volt, SGM4154X_VREG_V_MIN_UV, sgm->init_data.max_vreg);
++	if (chrg_volt < 4352000)
++		chrg_volt = clamp(chrg_volt, SGM4154X_VREG_V_MIN_UV, 4304000);
++	reg_val = (chrg_volt - SGM4154X_VREG_V_MIN_UV) / SGM4154X_VREG_V_STEP_UV;
++	reg_val = FIELD_PREP(SGM4154X_VREG_V_MASK, reg_val);
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_4,
++				 SGM4154X_VREG_V_MASK,
++				 reg_val);
++	if (ret)
++		dev_err(sgm->dev, "set charge voltage error!\n");
 +
-+	hp_amp: audio-amplifier {
-+		compatible = "simple-audio-amplifier";
-+		enable-gpios = <&gpio0 RK_PC3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&hp_amp_enable_h>;
-+		pinctrl-names = "default";
-+		sound-name-prefix = "Headphone Amp";
-+	};
++	return ret;
++}
++
++static int sgm4154x_get_chrg_volt(struct sgm4154x_device *sgm)
++{
++	u32 reg;
++	int ret, val;
++
++	ret = regmap_read(sgm->regmap, SGM4154X_CHRG_CTRL_4, &reg);
++	if (ret) {
++		dev_err(sgm->dev, "get charge voltage error!\n");
++		return ret;
++	}
++
++	val = FIELD_GET(SGM4154X_VREG_V_MASK, reg);
 +
 +	/*
-+	 * LEDs and Backlights can be controlled as a PWM, but PWM
-+	 * driver is not yet available.
++	 * 0x01111 is a special value meaning 4352000uV, all other
++	 * values are as expected based on the offset and step values.
 +	 */
-+	gpio_backlight: backlight {
-+		compatible = "gpio-backlight";
-+		gpios = <&gpio2 RK_PC4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&led_backlight_h>;
-+		pinctrl-names = "default";
++	if (val == 0x0f)
++		return 4352000;
++
++	return val * SGM4154X_VREG_V_STEP_UV + SGM4154X_VREG_V_MIN_UV;
++}
++
++static int sgm4154x_set_input_volt_lim(struct sgm4154x_device *sgm,
++				       unsigned int vindpm)
++{
++	enum SGM4154X_VINDPM_OS os_val;
++	unsigned int offset;
++	u8 reg_val;
++	int ret;
++
++
++	if (vindpm < SGM4154X_VINDPM_V_MIN_UV ||
++	    vindpm > SGM4154X_VINDPM_V_MAX_UV) {
++		dev_err(sgm->dev, "input voltage limit %u outside range\n", vindpm);
++		return -EINVAL;
++	}
++
++	/*
++	 * Supported ranges per the datasheet are as follows:
++	 * 3.9v - 5.4v with a 3.9v offset
++	 * 5.9v - 7.4v with a 5.9v offset
++	 * 7.5v - 9.0v with a 7.5v offset
++	 * 10.5v - 12.0v with a 10.5v offset
++	 * Step size is a constant 100mv
++	 */
++	if (vindpm < 5900000) {
++		offset = 3900000;
++		vindpm = clamp(vindpm, offset, 5400000);
++		os_val = VINDPM_OS_3900MV;
++	} else if (vindpm < 7500000) {
++		offset = 5900000;
++		vindpm = clamp(vindpm, offset, 7400000);
++		os_val = VINDPM_OS_5900MV;
++	} else if (vindpm < 10500000) {
++		offset = 7500000;
++		vindpm = clamp(vindpm, offset, 9000000);
++		os_val = VINDPM_OS_7500MV;
++	} else {
++		offset = 10500000;
++		vindpm = clamp(vindpm, offset, 12000000);
++		os_val = VINDPM_OS_10500MV;
++	}
++
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_F,
++				 SGM4154X_VINDPM_OS_MASK,
++				 os_val);
++	if (ret) {
++		dev_err(sgm->dev, "set vin dpm error!\n");
++		return ret;
++	}
++
++	reg_val = (vindpm - offset) / SGM4154X_VINDPM_STEP_UV;
++
++	ret = regmap_update_bits(sgm->regmap, SGM4154X_CHRG_CTRL_6,
++				 SGM4154X_VINDPM_V_MASK, reg_val);
++	if (ret)
++		dev_err(sgm->dev, "input voltage error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_set_input_curr_lim(struct sgm4154x_device *sgm, int iindpm)
++{
++	int reg_val;
++	int ret;
++
++	if (iindpm < SGM4154X_IINDPM_I_MIN_UA)
++		return -EINVAL;
++
++	/*
++	 * Protect against a timing-issue edge case if a sysfs write occurs in the middle
++	 * of a probe (very unlikely).
++	 */
++	if (sgm->init_data.ilim < SGM4154X_IINDPM_I_MIN_UA)
++		return -EINVAL;
++
++	/*
++	 * Per the datasheet, values between 100000uA and 3100000uA work
++	 * as expected with the register defined as having a step of
++	 * 100000 and a min/max of 100000 (0x00) through 3100000 (0x1e).
++	 * The register value of 0x1f however corresponds to 3800000uA not
++	 * 3200000uA as one would expect.
++	 */
++	if ((iindpm > SGM4154X_IINDPM_I_MAX_UA) || (iindpm > sgm->init_data.ilim))
++		iindpm = min(SGM4154X_IINDPM_I_MAX_UA, sgm->init_data.ilim);
++
++	if (iindpm > 3100000 && iindpm < SGM4154X_IINDPM_I_MAX_UA)
++		iindpm = 3100000;
++
++	if (iindpm == SGM4154X_IINDPM_I_MAX_UA)
++		reg_val = 0x1f;
++	else
++		reg_val = (iindpm - SGM4154X_IINDPM_I_MIN_UA) / SGM4154X_IINDPM_STEP_UA;
++
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_0,
++				 SGM4154X_IINDPM_I_MASK,
++				 reg_val);
++	if (ret)
++		dev_err(sgm->dev, "set input current limit error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_get_input_curr_lim(struct sgm4154x_device *sgm)
++{
++	int ret;
++	int ilim;
++
++	ret = regmap_read(sgm->regmap, SGM4154X_CHRG_CTRL_0, &ilim);
++	if (ret) {
++		dev_err(sgm->dev, "get input current limit error!\n");
++		return ret;
++	}
++
++	ilim &= SGM4154X_IINDPM_I_MASK;
++
++	/* Max value is not 3200000uA as expected but is 3800000uA */
++	if (ilim == SGM4154X_IINDPM_I_MASK)
++		return SGM4154X_IINDPM_I_MAX_UA;
++
++	ilim = ilim * SGM4154X_IINDPM_STEP_UA + SGM4154X_IINDPM_I_MIN_UA;
++
++	return ilim;
++}
++
++static int sgm4154x_watchdog_timer_reset(struct sgm4154x_device *sgm)
++{
++	int ret;
++
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_1,
++				 SGM4154X_WDT_RST,
++				 SGM4154X_WDT_RST);
++
++	if (ret)
++		dev_err(sgm->dev, "set watchdog timer error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_set_watchdog_timer(struct sgm4154x_device *sgm, u8 time)
++{
++	int ret;
++
++	if (time > SGM4154X_WDT_TIMER_160S)
++		return -EINVAL;
++
++	time = FIELD_PREP(SGM4154X_WDT_TIMER_MASK, time);
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_5,
++				 SGM4154X_WDT_TIMER_MASK,
++				 time);
++
++	if (ret) {
++		dev_err(sgm->dev, "set watchdog timer error!\n");
++		return ret;
++	}
++
++	if (time) {
++		if (!sgm->watchdog_enable)
++			queue_delayed_work(sgm->sgm_monitor_wq,
++					   &sgm->sgm_delay_work,
++					   msecs_to_jiffies(1000 * 5));
++		sgm->watchdog_enable = true;
++	} else {
++		sgm->watchdog_enable = false;
++		sgm4154x_watchdog_timer_reset(sgm);
++	}
++
++	return ret;
++}
++
++static int sgm4154x_enable_charger(struct sgm4154x_device *sgm)
++{
++	int ret;
++
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_1,
++				 SGM4154X_CHRG_EN,
++				 SGM4154X_CHRG_EN);
++	if (ret)
++		dev_err(sgm->dev, "enable charger error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_disable_charger(struct sgm4154x_device *sgm)
++{
++	int ret;
++
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_1,
++				 SGM4154X_CHRG_EN,
++				 0);
++	if (ret)
++		dev_err(sgm->dev, "disable charger error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_set_vac_ovp(struct sgm4154x_device *sgm)
++{
++	int reg_val;
++	int ret;
++
++	reg_val = SGM4154X_OVP_DEFAULT & SGM4154X_VAC_OVP_MASK;
++
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_6,
++				 SGM4154X_VAC_OVP_MASK,
++				 reg_val);
++	if (ret)
++		dev_err(sgm->dev, "set vac ovp error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_set_recharge_volt_ua(struct sgm4154x_device *sgm, int recharge_volt)
++{
++	int reg_val;
++	int ret;
++
++	reg_val = (recharge_volt - SGM4154X_VRECHRG_OFFSET_UV) / SGM4154X_VRECHRG_STEP_UV;
++
++	ret = regmap_update_bits(sgm->regmap,
++				 SGM4154X_CHRG_CTRL_4,
++				 SGM4154X_VRECHARGE,
++				 reg_val);
++	if (ret)
++		dev_err(sgm->dev, "set recharger error!\n");
++
++	return ret;
++}
++
++static int sgm4154x_get_state(struct sgm4154x_device *sgm,
++			      struct sgm4154x_state *state)
++{
++	int reg, ret;
++
++	ret = regmap_read(sgm->regmap, SGM4154X_CHRG_STAT, &reg);
++	if (ret) {
++		dev_err(sgm->dev, "read SGM4154X_CHRG_STAT fail\n");
++		return ret;
++	}
++	state->chrg_type = reg & SGM4154X_VBUS_STAT_MASK;
++	state->chrg_stat = reg & SGM4154X_CHG_STAT_MASK;
++	state->online = !!(reg & SGM4154X_PG_STAT);
++	state->therm_stat = !!(reg & SGM4154X_THERM_STAT);
++	state->vsys_stat = !!(reg & SGM4154X_VSYS_STAT);
++
++	ret = regmap_read(sgm->regmap, SGM4154X_CHRG_FAULT, &reg);
++	if (ret) {
++		dev_err(sgm->dev, "read SGM4154X_CHRG_FAULT fail\n");
++		return ret;
++	}
++	state->chrg_fault = reg;
++	state->ntc_fault = reg & SGM4154X_TEMP_MASK;
++	state->health = state->ntc_fault;
++
++	ret = regmap_read(sgm->regmap, SGM4154X_CHRG_CTRL_A, &reg);
++	if (ret) {
++		dev_err(sgm->dev, "read SGM4154X_CHRG_CTRL_A fail\n");
++		return ret;
++	}
++	state->vbus_gd = !!(reg & SGM4154X_VBUS_GOOD);
++
++	return ret;
++}
++
++static int sgm4154x_property_is_writeable(struct power_supply *psy,
++					  enum power_supply_property prop)
++{
++	switch (prop) {
++	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
++	case POWER_SUPPLY_PROP_ONLINE:
++		return true;
++	default:
++		return false;
++	}
++}
++
++static int sgm4154x_charger_set_property(struct power_supply *psy,
++					 enum power_supply_property prop,
++					 const union power_supply_propval *val)
++{
++	struct sgm4154x_device *sgm = power_supply_get_drvdata(psy);
++	int ret = -EINVAL;
++
++	guard(mutex)(&sgm->lock);
++
++	switch (prop) {
++	case POWER_SUPPLY_PROP_ONLINE:
++		if (val->intval) {
++			ret = sgm4154x_enable_charger(sgm);
++			sgm4154x_set_watchdog_timer(sgm, SGM4154X_WDT_TIMER_40S);
++		} else {
++			sgm4154x_set_watchdog_timer(sgm, SGM4154X_WDT_TIMER_DISABLE);
++			ret = sgm4154x_disable_charger(sgm);
++		}
++		break;
++
++	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
++		ret = sgm4154x_set_input_curr_lim(sgm, val->intval);
++		break;
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
++		ret = sgm4154x_set_ichrg_curr(sgm, val->intval);
++		break;
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
++		ret = sgm4154x_set_chrg_volt(sgm, val->intval);
++		break;
++
++	default:
++		return -EINVAL;
++	}
++
++	return ret;
++}
++
++static int sgm4154x_charger_get_property(struct power_supply *psy,
++					 enum power_supply_property psp,
++					 union power_supply_propval *val)
++{
++	struct sgm4154x_device *sgm = power_supply_get_drvdata(psy);
++	struct sgm4154x_state state;
++	int ret;
++
++	ret = sgm4154x_get_state(sgm, &state);
++	if (ret) {
++		dev_err(sgm->dev, "get state error!\n");
++		return ret;
++	}
++	sgm->state = state;
++
++	switch (psp) {
++	case POWER_SUPPLY_PROP_STATUS:
++		if (!state.chrg_type || (state.chrg_type == SGM4154X_OTG_MODE))
++			val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
++		else if (!state.chrg_stat)
++			val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
++		else if (state.chrg_stat == SGM4154X_TERM_CHRG)
++			val->intval = POWER_SUPPLY_STATUS_FULL;
++		else
++			val->intval = POWER_SUPPLY_STATUS_CHARGING;
++		break;
++	case POWER_SUPPLY_PROP_CHARGE_TYPE:
++		switch (state.chrg_stat) {
++		case SGM4154X_PRECHRG:
++			val->intval = POWER_SUPPLY_CHARGE_TYPE_TRICKLE;
++			break;
++		case SGM4154X_FAST_CHRG:
++			val->intval = POWER_SUPPLY_CHARGE_TYPE_FAST;
++			break;
++		case SGM4154X_TERM_CHRG:
++			val->intval = POWER_SUPPLY_CHARGE_TYPE_TRICKLE;
++			break;
++		case SGM4154X_NOT_CHRGING:
++			val->intval = POWER_SUPPLY_CHARGE_TYPE_NONE;
++			break;
++		default:
++			val->intval = POWER_SUPPLY_CHARGE_TYPE_UNKNOWN;
++		}
++		break;
++	case POWER_SUPPLY_PROP_MANUFACTURER:
++		val->strval = SGM4154X_MANUFACTURER;
++		break;
++
++	case POWER_SUPPLY_PROP_MODEL_NAME:
++		val->strval = SGM4154X_NAME;
++		break;
++
++	case POWER_SUPPLY_PROP_ONLINE:
++		val->intval = state.online;
++		break;
++	case POWER_SUPPLY_PROP_PRESENT:
++		val->intval = state.vbus_gd;
++		break;
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE:
++		val->intval = sgm4154x_get_chrg_volt(sgm);
++		if (val->intval < 0)
++			return -EINVAL;
++		break;
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT:
++		val->intval = sgm4154x_get_ichrg_curr(sgm);
++		if (val->intval < 0)
++			return -EINVAL;
++		break;
++	case POWER_SUPPLY_PROP_INPUT_VOLTAGE_LIMIT:
++		val->intval = sgm->init_data.vlim;
++		break;
++	case POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT:
++		val->intval = sgm4154x_get_input_curr_lim(sgm);
++		if (val->intval < 0)
++			return  -EINVAL;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return ret;
++}
++
++static irqreturn_t sgm4154x_irq_handler_thread(int irq, void *private)
++{
++	struct sgm4154x_device *sgm4154x = private;
++	struct sgm4154x_state oldstate = sgm4154x->state;
++	struct sgm4154x_state state;
++	int ret;
++
++	ret = sgm4154x_get_state(sgm4154x, &state);
++	if (ret) {
++		dev_err(sgm4154x->dev, "get state error!\n");
++		return IRQ_NONE;
++	}
++
++	sgm4154x->state = state;
++
++	if (state.vbus_gd && !oldstate.vbus_gd) {
++		if (sgm4154x->init_data.ilim >= SGM4154X_DEFAULT_INPUT_CUR) {
++			ret = sgm4154x_set_input_curr_lim(sgm4154x,
++							  sgm4154x->init_data.ilim);
++			if (ret) {
++				dev_err(sgm4154x->dev, "set input current error!\n");
++				/*
++				 * Reading IRQ clears interrupt, so return handled
++				 * even if error.
++				 */
++			}
++		}
++	}
++
++	power_supply_changed(sgm4154x->charger);
++
++	return IRQ_HANDLED;
++}
++
++static enum power_supply_property sgm4154x_power_supply_props[] = {
++	POWER_SUPPLY_PROP_MANUFACTURER,
++	POWER_SUPPLY_PROP_MODEL_NAME,
++	POWER_SUPPLY_PROP_STATUS,
++	POWER_SUPPLY_PROP_ONLINE,
++	POWER_SUPPLY_PROP_INPUT_VOLTAGE_LIMIT,
++	POWER_SUPPLY_PROP_INPUT_CURRENT_LIMIT,
++	POWER_SUPPLY_PROP_CHARGE_TYPE,
++	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE,
++	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT,
++	POWER_SUPPLY_PROP_PRESENT
++};
++
++static struct power_supply_desc sgm4154x_power_supply_desc = {
++	.name = "sgm4154x-charger",
++	.type = POWER_SUPPLY_TYPE_USB,
++	.properties = sgm4154x_power_supply_props,
++	.num_properties = ARRAY_SIZE(sgm4154x_power_supply_props),
++	.get_property = sgm4154x_charger_get_property,
++	.set_property = sgm4154x_charger_set_property,
++	.property_is_writeable = sgm4154x_property_is_writeable,
++};
++
++static const struct regmap_config sgm4154x_regmap_config = {
++	.reg_bits = 8,
++	.val_bits = 8,
++	.max_register = SGM4154X_CHRG_CTRL_F,
++	.cache_type = REGCACHE_NONE,
++};
++
++static int sgm4154x_power_supply_init(struct sgm4154x_device *sgm,
++				      struct device *dev)
++{
++	struct power_supply_config psy_cfg = { .drv_data = sgm,
++					       .fwnode = dev->fwnode, };
++
++	sgm->charger = devm_power_supply_register(sgm->dev,
++						  &sgm4154x_power_supply_desc,
++						  &psy_cfg);
++	if (IS_ERR(sgm->charger))
++		return PTR_ERR(sgm->charger);
++
++	return 0;
++}
++
++static int sgm4154x_hw_init(struct sgm4154x_device *sgm)
++{
++	struct power_supply_battery_info *bat_info;
++	int ret;
++	u32 val;
++
++	/*
++	 * If unable to read devicetree info, use default/reset
++	 * values from hardware. If the devicetree info has data out
++	 * of range for any of the values, use the default value.
++	 */
++	sgm->init_data.iprechg = SGM4154X_PRECHRG_I_DEF_UA;
++	sgm->init_data.iterm = SGM4154X_TERMCHRG_I_DEF_UA;
++	sgm->init_data.max_ichg = SGM4154X_ICHRG_I_DEF_UA;
++	sgm->init_data.max_vreg = SGM4154X_VREG_V_DEF_UV;
++	sgm->init_data.vlim = SGM4154X_VINDPM_DEF_UV;
++	sgm->init_data.ilim = SGM4154X_IINDPM_DEF_UA;
++
++	ret = power_supply_get_battery_info(sgm->charger, &bat_info);
++	if (ret)
++		dev_warn(sgm->dev, "sgm4154x: cannot read battery info\n");
++	else {
++		if ((bat_info->constant_charge_current_max_ua >= SGM4154X_ICHRG_I_MIN_UA) &&
++			(bat_info->constant_charge_current_max_ua <= SGM4154X_ICHRG_I_MAX_UA))
++			sgm->init_data.max_ichg = bat_info->constant_charge_current_max_ua;
++		if ((bat_info->constant_charge_voltage_max_uv >= SGM4154X_VREG_V_MIN_UV) &&
++			(bat_info->constant_charge_voltage_max_uv <= SGM4154X_VREG_V_MAX_UV))
++			sgm->init_data.max_vreg = bat_info->constant_charge_voltage_max_uv;
++		if ((bat_info->charge_term_current_ua >= SGM4154X_TERMCHRG_I_MIN_UA) &&
++			(bat_info->charge_term_current_ua <= SGM4154X_TERMCHRG_I_MAX_UA))
++			sgm->init_data.iterm = bat_info->charge_term_current_ua;
++		if ((bat_info->precharge_current_ua >= SGM4154X_PRECHRG_I_MIN_UA) &&
++			(bat_info->precharge_current_ua <= SGM4154X_PRECHRG_I_MAX_UA))
++			sgm->init_data.iprechg = bat_info->precharge_current_ua;
++
++		power_supply_put_battery_info(sgm->charger, bat_info);
++	}
++
++	ret = device_property_read_u32(sgm->dev,
++				       "input-voltage-limit-microvolt",
++				       &val);
++	if (!ret)
++		sgm->init_data.vlim = clamp(val, SGM4154X_VINDPM_V_MIN_UV,
++					    SGM4154X_VINDPM_V_MAX_UV);
++
++	ret = device_property_read_u32(sgm->dev,
++				       "input-current-limit-microamp",
++				       &val);
++	if (!ret)
++		sgm->init_data.ilim = clamp(val, SGM4154X_IINDPM_I_MIN_UA,
++					    SGM4154X_IINDPM_I_MAX_UA);
++
++	ret = sgm4154x_set_watchdog_timer(sgm, SGM4154X_WDT_TIMER_DISABLE);
++	if (ret)
++		return ret;
++
++	ret = sgm4154x_set_prechrg_curr(sgm, sgm->init_data.iprechg);
++	if (ret)
++		return ret;
++
++	ret = sgm4154x_set_chrg_volt(sgm, sgm->init_data.max_vreg);
++	if (ret)
++		return ret;
++
++	ret = sgm4154x_set_term_curr(sgm, sgm->init_data.iterm);
++	if (ret)
++		return ret;
++
++	ret = sgm4154x_set_ichrg_curr(sgm, sgm->init_data.max_ichg);
++	if (ret)
++		return ret;
++
++	ret = sgm4154x_set_input_volt_lim(sgm, sgm->init_data.vlim);
++	if (ret)
++		return ret;
++
++	ret = sgm4154x_set_input_curr_lim(sgm, sgm->init_data.ilim);
++	if (ret)
++		return ret;
++
++	ret = sgm4154x_set_vac_ovp(sgm);
++	if (ret)
++		return ret;
++
++	regmap_update_bits(sgm->regmap,
++			   SGM4154X_CHRG_CTRL_D,
++			   SGM4154X_JEITA_EN,
++			   0);
++
++	regmap_update_bits(sgm->regmap,
++			   SGM4154X_CHRG_CTRL_A,
++			   SGM4154X_IINDPM_INT_MASK,
++			   SGM4154X_IINDPM_INT_MASK);
++
++	regmap_update_bits(sgm->regmap,
++			   SGM4154X_CHRG_CTRL_A,
++			   SGM4154X_VINDPM_INT_MASK,
++			   SGM4154X_VINDPM_INT_MASK);
++
++	/*
++	 * Recharge microvolt set to 200000 by BSP driver instead of hardware
++	 * default value of 100000.
++	 */
++	ret = sgm4154x_set_recharge_volt_ua(sgm, 200000);
++
++	return ret;
++}
++
++static const u32 sgm4154x_chg_otg_cur_ua[] = {
++	1200000, 2000000,
++};
++
++static const struct regulator_ops sgm4154x_vbus_ops = {
++	.list_voltage = regulator_list_voltage_linear,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++	.set_voltage_sel = regulator_set_voltage_sel_regmap,
++	.get_voltage_sel = regulator_get_voltage_sel_regmap,
++	.set_current_limit = regulator_set_current_limit_regmap,
++	.get_current_limit = regulator_get_current_limit_regmap,
++};
++
++static const struct regulator_desc sgm4154x_otg_rdesc = {
++	.of_match = "otg-vbus",
++	.name = "otg-vbus",
++	.regulators_node = of_match_ptr("regulators"),
++	.ops = &sgm4154x_vbus_ops,
++	.owner = THIS_MODULE,
++	.type = REGULATOR_VOLTAGE,
++	.min_uV = 4850000,
++	.uV_step = 150000,
++	.n_voltages = 4,
++	.vsel_reg = SGM4154X_CHRG_CTRL_6,
++	.vsel_mask = SGM4154X_BOOSTV,
++	.enable_reg = SGM4154X_CHRG_CTRL_1,
++	.enable_mask = SGM4154X_OTG_EN,
++	.curr_table = sgm4154x_chg_otg_cur_ua,
++	.n_current_limits = ARRAY_SIZE(sgm4154x_chg_otg_cur_ua),
++	.csel_reg = SGM4154X_CHRG_CTRL_2,
++	.csel_mask = SGM4154X_BOOST_LIM,
++};
++
++static int sgm4154x_vbus_regulator_register(struct sgm4154x_device *sgm)
++{
++	struct regulator_config config = {
++		.dev = sgm->dev,
++		.regmap = sgm->regmap,
++		.driver_data = sgm,
 +	};
 +
-+	gpio_leds: leds {
-+		compatible = "gpio-leds";
-+		pinctrl-0 = <&led_amber_h>, <&led_green_h>, <&led_red_h>;
-+		pinctrl-names = "default";
++	sgm->otg_rdev = devm_regulator_register(sgm->dev,
++						&sgm4154x_otg_rdesc,
++						&config);
 +
-+		charging-led {
-+			color = <LED_COLOR_ID_AMBER>;
-+			function = LED_FUNCTION_CHARGING;
-+			gpios = <&gpio3 RK_PA4 GPIO_ACTIVE_HIGH>;
-+		};
++	return PTR_ERR_OR_ZERO(sgm->otg_rdev);
++}
 +
-+		full-led {
-+			color = <LED_COLOR_ID_GREEN>;
-+			function = LED_FUNCTION_POWER;
-+			gpios = <&gpio3 RK_PA5 GPIO_ACTIVE_HIGH>;
-+		};
++static int sgm4154x_hw_chipid_detect(struct sgm4154x_device *sgm)
++{
++	int ret;
++	int val;
 +
-+		bat-low-led {
-+			color = <LED_COLOR_ID_RED>;
-+			function = LED_FUNCTION_ALARM;
-+			gpios = <&gpio3 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		};
-+	};
++	ret = regmap_read(sgm->regmap, SGM4154X_CHRG_CTRL_B, &val);
++	if (ret)
++		return ret;
 +
-+	gpio_keys_control: gpio-keys-control {
-+		compatible = "gpio-keys";
-+		pinctrl-0 = <&gamepad_keys_l>;
-+		pinctrl-names = "default";
++	if ((val & SGM4154X_PN_MASK) != SGM4154X_PN_ID)
++		dev_warn(sgm->dev, "sgm4154x device ID mismatch\n");
 +
-+		button-a {
-+			gpios = <&gpio3 RK_PB6 GPIO_ACTIVE_LOW>;
-+			label = "EAST";
-+			linux,code = <BTN_EAST>;
-+		};
++	return 0;
++}
 +
-+		button-b {
-+			gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
-+			label = "SOUTH";
-+			linux,code = <BTN_SOUTH>;
-+		};
++static void sgm_charger_work(struct work_struct *work)
++{
++	struct sgm4154x_device *sgm =
++		container_of(work,
++			     struct sgm4154x_device,
++			     sgm_delay_work.work);
 +
-+		button-down {
-+			gpios = <&gpio3 RK_PB1 GPIO_ACTIVE_LOW>;
-+			label = "DPAD-DOWN";
-+			linux,code = <BTN_DPAD_DOWN>;
-+		};
++	sgm4154x_watchdog_timer_reset(sgm);
++	if (sgm->watchdog_enable)
++		queue_delayed_work(sgm->sgm_monitor_wq,
++				   &sgm->sgm_delay_work,
++				   msecs_to_jiffies(1000 * 5));
++}
 +
-+		button-l1 {
-+			gpios = <&gpio3 RK_PD7 GPIO_ACTIVE_LOW>;
-+			label = "TL";
-+			linux,code = <BTN_TL>;
-+		};
++static void sgm4154x_disable_irq_wake(void *data)
++{
++	struct sgm4154x_device *sgm = data;
++	struct i2c_client *client = to_i2c_client(sgm->dev);
 +
-+		button-l2 {
-+			gpios = <&gpio3 RK_PC1 GPIO_ACTIVE_LOW>;
-+			label = "TL2";
-+			linux,code = <BTN_TL2>;
-+		};
++	disable_irq_wake(client->irq);
++}
 +
-+		button-left {
-+			gpios = <&gpio3 RK_PB2 GPIO_ACTIVE_LOW>;
-+			label = "DPAD-LEFT";
-+			linux,code = <BTN_DPAD_LEFT>;
-+		};
++static int sgm4154x_probe(struct i2c_client *client)
++{
++	struct device *dev = &client->dev;
++	struct sgm4154x_device *sgm;
++	int ret;
 +
-+		button-menu {
-+			gpios = <&gpio3 RK_PA7 GPIO_ACTIVE_LOW>;
-+			label = "MENU";
-+			linux,code = <BTN_MODE>;
-+		};
++	sgm = devm_kzalloc(dev, sizeof(*sgm), GFP_KERNEL);
++	if (!sgm)
++		return -ENOMEM;
 +
-+		button-right {
-+			gpios = <&gpio3 RK_PB3 GPIO_ACTIVE_LOW>;
-+			label = "DPAD-RIGHT";
-+			linux,code = <BTN_DPAD_RIGHT>;
-+		};
++	sgm->dev = dev;
 +
-+		button-r1 {
-+			gpios = <&gpio3 RK_PC2 GPIO_ACTIVE_LOW>;
-+			label = "T2";
-+			linux,code = <BTN_TR>;
-+		};
++	sgm->regmap = devm_regmap_init_i2c(client, &sgm4154x_regmap_config);
++	if (IS_ERR(sgm->regmap))
++		return dev_err_probe(dev, PTR_ERR(sgm->regmap),
++				     "Failed to allocate register map\n");
 +
-+		button-r2 {
-+			gpios = <&gpio3 RK_PC3 GPIO_ACTIVE_LOW>;
-+			label = "TR2";
-+			linux,code = <BTN_TR2>;
-+		};
++	i2c_set_clientdata(client, sgm);
 +
-+		button-select {
-+			gpios = <&gpio3 RK_PD6 GPIO_ACTIVE_LOW>;
-+			label = "SELECT";
-+			linux,code = <BTN_SELECT>;
-+		};
++	ret = devm_mutex_init(dev, &sgm->lock);
++	if (ret)
++		return ret;
 +
-+		button-start {
-+			gpios = <&gpio3 RK_PD3 GPIO_ACTIVE_LOW>;
-+			label = "START";
-+			linux,code = <BTN_START>;
-+		};
++	ret = sgm4154x_hw_chipid_detect(sgm);
++	if (ret)
++		return dev_err_probe(dev, ret, "Unable to read HW ID\n");
 +
-+		button-thumbl {
-+			gpios = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
-+			label = "THUMBL";
-+			linux,code = <BTN_THUMBL>;
-+		};
++	devm_device_init_wakeup(dev);
 +
-+		button-thumbr {
-+			gpios = <&gpio3 RK_PC4 GPIO_ACTIVE_LOW>;
-+			label = "THUMBR";
-+			linux,code = <BTN_THUMBR>;
-+		};
++	sgm->sgm_monitor_wq = devm_alloc_ordered_workqueue(dev, "sgm-monitor-wq",
++			WQ_MEM_RECLAIM | WQ_FREEZABLE);
++	if (!sgm->sgm_monitor_wq)
++		return -EINVAL;
 +
-+		button-up {
-+			gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
-+			label = "DPAD-UP";
-+			linux,code = <BTN_DPAD_UP>;
-+		};
++	ret = devm_delayed_work_autocancel(dev, &sgm->sgm_delay_work,
++					   sgm_charger_work);
++	if (ret)
++		return dev_err_probe(dev, ret, "Unable to register delayed work\n");
 +
-+		button-x {
-+			gpios = <&gpio3 RK_PB4 GPIO_ACTIVE_LOW>;
-+			label = "NORTH";
-+			linux,code = <BTN_NORTH>;
-+		};
++	ret = sgm4154x_power_supply_init(sgm, dev);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to register power supply\n");
 +
-+		button-y {
-+			gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_LOW>;
-+			label = "WEST";
-+			linux,code = <BTN_WEST>;
-+		};
-+	};
++	ret = sgm4154x_hw_init(sgm);
++	if (ret)
++		return dev_err_probe(dev, ret, "Cannot initialize the chip.\n");
 +
-+	gpio_keys_volume: gpio-keys-volume {
-+		compatible = "gpio-keys";
-+		autorepeat;
-+		pinctrl-0 = <&vol_keys_l>;
-+		pinctrl-names = "default";
++	if (client->irq) {
++		ret = devm_request_threaded_irq(dev, client->irq, NULL,
++						sgm4154x_irq_handler_thread,
++						IRQF_TRIGGER_FALLING |
++						IRQF_ONESHOT,
++						"sgm41542-irq", sgm);
++		if (ret)
++			return ret;
 +
-+		vol-down-key {
-+			gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_LOW>;
-+			label = "VOLUMEDOWN";
-+			linux,code = <KEY_VOLUMEDOWN>;
-+		};
++		ret = enable_irq_wake(client->irq);
++		if (!ret) {
++			ret = devm_add_action_or_reset(dev, sgm4154x_disable_irq_wake, sgm);
++			if (ret)
++				return ret;
++		}
++	}
 +
-+		vol-up-key {
-+			gpios = <&gpio3 RK_PD2 GPIO_ACTIVE_LOW>;
-+			label = "VOLUMEUP";
-+			linux,code = <KEY_VOLUMEUP>;
-+		};
-+	};
++	ret = sgm4154x_vbus_regulator_register(sgm);
++	if (ret) {
++		return dev_err_probe(dev, ret,
++				     "Unable to register VBUS regulator\n");
++	}
 +
-+	hdmi-con {
-+		compatible = "hdmi-connector";
-+		type = "c";
++	return 0;
++}
 +
-+		port {
-+			hdmi_con_in: endpoint {
-+				remote-endpoint = <&hdmi_out_con>;
-+			};
-+		};
-+	};
++static int __maybe_unused sgm4154x_suspend(struct device *dev)
++{
++	struct i2c_client *client = to_i2c_client(dev);
++	struct sgm4154x_device *sgm = i2c_get_clientdata(client);
 +
-+	rfkill {
-+		compatible = "rfkill-gpio";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_en_h>;
-+		radio-type = "wlan";
-+		shutdown-gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+	};
++	/*
++	 * Disable watchdog during suspend and stop delayed work. When
++	 * delayed work is restarted after resume watchdog will be
++	 * re-enabled if it was previously enabled.
++	 */
++	sgm4154x_set_watchdog_timer(sgm, SGM4154X_WDT_TIMER_DISABLE);
++	cancel_delayed_work_sync(&sgm->sgm_delay_work);
++	return 0;
++}
 +
-+	sound: sound {
-+		compatible = "simple-audio-card";
-+		pinctrl-0 = <&hp_det>;
-+		pinctrl-names = "default";
-+		simple-audio-card,aux-devs = <&aw87391_pa_l>, <&aw87391_pa_r>,
-+					     <&hp_amp>;
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,hp-det-gpios = <&gpio4 RK_PA4 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,mclk-fs = <256>;
-+		simple-audio-card,name = "rockchip,es8388-codec";
-+		simple-audio-card,pin-switches = "Headphones", "Internal Speakers";
-+		simple-audio-card,routing =
-+			"LINPUT1", "Mic Jack",
-+			"LINPUT2", "Mic Jack",
-+			"RINPUT1", "Onboard Microphone",
-+			"RINPUT2", "Onboard Microphone",
-+			"Headphones", "Headphone Amp OUTL",
-+			"Headphones", "Headphone Amp OUTR",
-+			"Headphone Amp INL", "LOUT1",
-+			"Headphone Amp INR", "ROUT1",
-+			"Internal Speakers", "Left Amp OUT",
-+			"Internal Speakers", "Right Amp OUT",
-+			"Left Amp IN", "LOUT2",
-+			"Right Amp IN", "ROUT2";
-+		simple-audio-card,widgets =
-+			"Microphone", "Mic Jack",
-+			"Microphone", "Onboard Microphone",
-+			"Headphone", "Headphones",
-+			"Speaker", "Internal Speakers";
-+		status = "okay";
++static int __maybe_unused sgm4154x_resume(struct device *dev)
++{
++	struct i2c_client *client = to_i2c_client(dev);
++	struct sgm4154x_device *sgm = i2c_get_clientdata(client);
 +
-+		simple-audio-card,codec {
-+			sound-dai = <&es8388>;
-+			system-clock-frequency = <12288000>;
-+		};
++	queue_delayed_work(sgm->sgm_monitor_wq,
++			   &sgm->sgm_delay_work, 0);
++	return 0;
++}
 +
-+		simple-audio-card,cpu {
-+			sound-dai = <&sai1>;
-+		};
-+	};
++static SIMPLE_DEV_PM_OPS(sgm4154x_pm_ops, sgm4154x_suspend, sgm4154x_resume);
 +
-+	vcc_1v1_nldo_s3: regulator-vcc-1v1-nldo-s3 {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-max-microvolt = <1100000>;
-+		regulator-min-microvolt = <1100000>;
-+		regulator-name = "vcc_1v1_nldo_s3";
-+		vin-supply = <&vcc_3v8_sys>;
-+	};
++static const struct i2c_device_id sgm4154x_i2c_ids[] = {
++	{ "sgm41542" },
++	{ },
++};
++MODULE_DEVICE_TABLE(i2c, sgm4154x_i2c_ids);
 +
-+	vcc_2v0_pldo_s3: regulator-vcc-2v0-pldo-s3 {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-max-microvolt = <2000000>;
-+		regulator-min-microvolt = <2000000>;
-+		regulator-name = "vcc_2v0_pldo_s3";
-+		vin-supply = <&vcc_3v8_sys>;
-+	};
++static const struct of_device_id sgm4154x_of_match[] = {
++	{ .compatible = "sgmicro,sgm41542", },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, sgm4154x_of_match);
 +
-+	vcc_3v8_sys: regulator-vcc-3v8-sys {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-max-microvolt = <3800000>;
-+		regulator-min-microvolt = <3800000>;
-+		regulator-name = "vcc_3v8_sys";
-+	};
-+
-+	vcc3v3_sd_s0: regulator-vcc3v3-sd-s0 {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PB6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&vcc_3v3_sd_s0_h>;
-+		pinctrl-names = "default";
-+		regulator-max-microvolt = <3300000>;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-name = "vcc3v3_sd_s0";
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
-+
-+	vcc_sdio: regulator-vcc-sdio {
-+		compatible = "regulator-gpio";
-+		regulator-name = "vcc_sdio";
-+		gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&vcc_sdio_h>;
-+		pinctrl-names = "default";
-+		regulator-max-microvolt = <3300000>;
-+		regulator-min-microvolt = <1800000>;
-+		states = <1800000 0>, <3300000 1>;
-+	};
-+
-+	vcc_wifi: regulator-vcc-wifi {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_wifi";
-+		enable-active-high;
-+		gpios = <&gpio1 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&vcc_wifi_h>;
-+		pinctrl-names = "default";
-+		regulator-max-microvolt = <3300000>;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-state-mem {
-+			regulator-on-in-suspend;
-+		};
-+	};
-+
-+	vdd_lcd: regulator-vdd-lcd {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_lcd";
-+		regulator-always-on;
-+		enable-active-high;
-+		gpios = <&gpio0 RK_PB0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&vdd_lcd_h>;
-+		pinctrl-names = "default";
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
++static struct i2c_driver sgm4154x_driver = {
++	.driver = {
++		.name = "sgm4154x-charger",
++		.of_match_table = sgm4154x_of_match,
++		.pm = &sgm4154x_pm_ops,
++	},
++	.probe = sgm4154x_probe,
++	.id_table = sgm4154x_i2c_ids,
 +};
 +
-+&combphy0_ps {
-+	status = "okay";
-+};
-+
-+&cpu_b0 {
-+	cpu-supply = <&vdd_cpu_big_s0>;
-+};
-+
-+&cpu_b1 {
-+	cpu-supply = <&vdd_cpu_big_s0>;
-+};
-+
-+&cpu_b2 {
-+	cpu-supply = <&vdd_cpu_big_s0>;
-+};
-+
-+&cpu_b3 {
-+	cpu-supply = <&vdd_cpu_big_s0>;
-+};
-+
-+&cpu_l0 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l1 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l2 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l3 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&dsi {
-+	status = "okay";
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	panel: panel@0 {
-+		compatible = "anbernic,panel-vita-pro", "anbernic,td4310";
-+		reg = <0>;
-+		backlight = <&gpio_backlight>;
-+		enable-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&lcd_enable>, <&lcd_rst>;
-+		reset-gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_LOW>;
-+		rotation = <270>;
-+		vdd-supply = <&vdd_lcd>;
-+
-+		port {
-+			mipi_in_panel: endpoint {
-+				remote-endpoint = <&mipi_out_panel>;
-+			};
-+		};
-+	};
-+};
-+
-+&dsi_in {
-+	dsi_in_vp1: endpoint {
-+		remote-endpoint = <&vp1_out_dsi>;
-+	};
-+};
-+
-+&dsi_out {
-+	mipi_out_panel: endpoint {
-+		remote-endpoint = <&mipi_in_panel>;
-+	};
-+};
-+
-+&gpu {
-+	mali-supply = <&vdd_gpu_s0>;
-+	status = "okay";
-+};
-+
-+&hdmi {
-+	status = "okay";
-+};
-+
-+&hdmi_in {
-+	hdmi_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi>;
-+	};
-+};
-+
-+&hdmi_out {
-+	hdmi_out_con: endpoint {
-+		remote-endpoint = <&hdmi_con_in>;
-+	};
-+};
-+
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
-+&hdptxphy {
-+	status = "okay";
-+};
-+
-+&i2c0 {
-+	pinctrl-0 = <&i2c0m1_xfer>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+
-+	/* synaptics,dsx-i2c touchscreen at 0x70 */
-+};
-+
-+&i2c1 {
-+	status = "okay";
-+
-+	pmic@23 {
-+		compatible = "rockchip,rk806";
-+		reg = <0x23>;
-+		#gpio-cells = <2>;
-+		gpio-controller;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA6 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_pins
-+			     &rk806_dvs1_null
-+			     &rk806_dvs2_null
-+			     &rk806_dvs3_null>;
-+		system-power-controller;
-+		vcc1-supply = <&vcc_3v8_sys>;
-+		vcc2-supply = <&vcc_3v8_sys>;
-+		vcc3-supply = <&vcc_3v8_sys>;
-+		vcc4-supply = <&vcc_3v8_sys>;
-+		vcc5-supply = <&vcc_3v8_sys>;
-+		vcc6-supply = <&vcc_3v8_sys>;
-+		vcc7-supply = <&vcc_3v8_sys>;
-+		vcc8-supply = <&vcc_3v8_sys>;
-+		vcc9-supply = <&vcc_3v8_sys>;
-+		vcc10-supply = <&vcc_3v8_sys>;
-+		vcc11-supply = <&vcc_2v0_pldo_s3>;
-+		vcc12-supply = <&vcc_3v8_sys>;
-+		vcc13-supply = <&vcc_1v1_nldo_s3>;
-+		vcc14-supply = <&vcc_1v1_nldo_s3>;
-+		vcca-supply = <&vcc_3v8_sys>;
-+
-+		rk806_dvs1_null: dvs1-null-pins {
-+			pins = "gpio_pwrctrl1";
-+			function = "pin_fun0";
-+		};
-+
-+		rk806_dvs1_pwrdn: dvs1-pwrdn-pins {
-+			pins = "gpio_pwrctrl1";
-+			function = "pin_fun2";
-+		};
-+
-+		rk806_dvs1_rst: dvs1-rst-pins {
-+			pins = "gpio_pwrctrl1";
-+			function = "pin_fun3";
-+		};
-+
-+		rk806_dvs1_slp: dvs1-slp-pins {
-+			pins = "gpio_pwrctrl1";
-+			function = "pin_fun1";
-+		};
-+
-+		rk806_dvs2_dvs: dvs2-dvs-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun4";
-+		};
-+
-+		rk806_dvs2_gpio: dvs2-gpio-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun5";
-+		};
-+
-+		rk806_dvs2_null: dvs2-null-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun0";
-+		};
-+
-+		rk806_dvs2_pwrdn: dvs2-pwrdn-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun2";
-+		};
-+
-+		rk806_dvs2_rst: dvs2-rst-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun3";
-+		};
-+
-+		rk806_dvs2_slp: dvs2-slp-pins {
-+			pins = "gpio_pwrctrl2";
-+			function = "pin_fun1";
-+		};
-+
-+		rk806_dvs3_dvs: dvs3-dvs-pins {
-+			pins = "gpio_pwrctrl3";
-+			function = "pin_fun4";
-+		};
-+
-+		rk806_dvs3_gpio: dvs3-gpio-pins {
-+			pins = "gpio_pwrctrl3";
-+			function = "pin_fun5";
-+		};
-+
-+		rk806_dvs3_null: dvs3-null-pins {
-+			pins = "gpio_pwrctrl3";
-+			function = "pin_fun0";
-+		};
-+
-+		rk806_dvs3_pwrdn: dvs3-pwrdn-pins {
-+			pins = "gpio_pwrctrl3";
-+			function = "pin_fun2";
-+		};
-+
-+		rk806_dvs3_rst: dvs3-rst-pins {
-+			pins = "gpio_pwrctrl3";
-+			function = "pin_fun3";
-+		};
-+
-+		rk806_dvs3_slp: dvs3-slp-pins {
-+			pins = "gpio_pwrctrl3";
-+			function = "pin_fun1";
-+		};
-+
-+		regulators {
-+			vdd_cpu_big_s0: dcdc-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-enable-ramp-delay = <400>;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-name = "vdd_cpu_big_s0";
-+				regulator-ramp-delay = <12500>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_npu_s0: dcdc-reg2 {
-+				regulator-boot-on;
-+				regulator-enable-ramp-delay = <400>;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-name = "vdd_npu_s0";
-+				regulator-ramp-delay = <12500>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_cpu_lit_s0: dcdc-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-name = "vdd_cpu_lit_s0";
-+				regulator-ramp-delay = <12500>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <750000>;
-+				};
-+			};
-+
-+			vcc_3v3_s3: dcdc-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-name = "vcc_3v3_s3";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vdd_gpu_s0: dcdc-reg5 {
-+				regulator-boot-on;
-+				regulator-enable-ramp-delay = <400>;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <900000>;
-+				regulator-name = "vdd_gpu_s0";
-+				regulator-ramp-delay = <12500>;
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <850000>;
-+				};
-+			};
-+
-+			vddq_ddr_s0: dcdc-reg6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vddq_ddr_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_logic_s0: dcdc-reg7 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <800000>;
-+				regulator-name = "vdd_logic_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8_s3: dcdc-reg8 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc_1v8_s3";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd2_ddr_s3: dcdc-reg9 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vdd2_ddr_s3";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vdd_ddr_s0: dcdc-reg10 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <550000>;
-+				regulator-max-microvolt = <1200000>;
-+				regulator-name = "vdd_ddr_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcca_1v8_s0: pldo-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcca_1v8_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcca1v8_pldo2_s0: pldo-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcca1v8_pldo2_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_1v2_s0: pldo-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1200000>;
-+				regulator-max-microvolt = <1200000>;
-+				regulator-name = "vdda_1v2_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcca_3v3_s0: pldo-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-name = "vcca_3v3_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vccio_sd_s0: pldo-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-name = "vccio_sd_s0";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcca1v8_pldo6_s3: pldo-reg6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcca1v8_pldo6_s3";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd_0v75_s3: nldo-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-name = "vdd_0v75_s3";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <750000>;
-+				};
-+			};
-+
-+			vdda_ddr_pll_s0: nldo-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <850000>;
-+				regulator-max-microvolt = <850000>;
-+				regulator-name = "vdda_ddr_pll_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda0v75_hdmi_s0: nldo-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-name = "vdda0v75_hdmi_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_0v85_s0: nldo-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <850000>;
-+				regulator-max-microvolt = <850000>;
-+				regulator-name = "vdda_0v85_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_0v75_s0: nldo-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <750000>;
-+				regulator-name = "vdda_0v75_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&i2c2 {
-+	status = "okay";
-+
-+	/* inv,icm42607 IMU at 0x68 */
-+};
-+
-+&i2c3 {
-+	status = "okay";
-+
-+	es8388: audio-codec@10 {
-+		compatible = "everest,es8388", "everest,es8328";
-+		reg = <0x10>;
-+		assigned-clock-rates = <12288000>;
-+		assigned-clocks = <&cru CLK_SAI1_MCLKOUT_TO_IO>;
-+		AVDD-supply = <&vcca_3v3_s0>;
-+		clocks = <&cru CLK_SAI1_MCLKOUT_TO_IO>;
-+		DVDD-supply = <&vcc_3v3_s3>;
-+		HPVDD-supply = <&vcca_3v3_s0>;
-+		pinctrl-0 = <&sai1m0_mclk>;
-+		pinctrl-names = "default";
-+		PVDD-supply = <&vcc_3v3_s3>;
-+		#sound-dai-cells = <0>;
-+	};
-+
-+	aw87391_pa_l: audio-codec@58 {
-+		compatible = "anbernic,rgds-amp", "awinic,aw87391";
-+		reg = <0x58>;
-+		#sound-dai-cells = <0>;
-+		sound-name-prefix = "Left Amp";
-+	};
-+
-+	aw87391_pa_r: audio-codec@5b {
-+		compatible = "anbernic,rgds-amp", "awinic,aw87391";
-+		reg = <0x5b>;
-+		#sound-dai-cells = <0>;
-+		sound-name-prefix = "Right Amp";
-+	};
-+};
-+
-+&i2c6 {
-+	pinctrl-0 = <&i2c6m3_xfer>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+
-+	sgm41542: charger@3b {
-+		compatible = "sgmicro,sgm41542";
-+		reg = <0x3b>;
-+		input-current-limit-microamp = <3000000>;
-+		input-voltage-limit-microvolt = <4500000>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PD2 IRQ_TYPE_EDGE_FALLING>;
-+		pinctrl-0 = <&charger_irq>;
-+		pinctrl-names = "default";
-+		monitored-battery = <&battery>;
-+		status = "okay";
-+
-+		regulators {
-+			vbus5v0_typec: otg-vbus {
-+				regulator-name = "vbus5v0_typec";
-+				regulator-max-microvolt = <5000000>;
-+				regulator-min-microvolt = <5000000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+	};
-+
-+	/* Unused iSmartWare SW2001 encryption device at 0x3c */
-+
-+	husb311: typec-portc@4e {
-+		compatible = "hynetek,husb311", "richtek,rt1711h";
-+		reg = <0x4e>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PD1 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-0 = <&usbc_int>;
-+		pinctrl-names = "default";
-+		status = "okay";
-+		vbus-supply = <&vbus5v0_typec>;
-+
-+		connector {
-+			compatible = "usb-c-connector";
-+			label = "USB-C";
-+			data-role = "dual";
-+			op-sink-microwatt = <10000000>;
-+			power-role = "dual";
-+			try-power-role  = "sink";
-+
-+			sink-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)
-+				     PDO_FIXED(9000, 2000, PDO_FIXED_USB_COMM)>;
-+			source-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
-+
-+			altmodes {
-+				displayport {
-+					svid = /bits/ 16 <0xff01>;
-+					vdo = <0xffffffff>;
-+				};
-+			};
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+					usbc0_hs_ep: endpoint {
-+						remote-endpoint = <&usb_drd0_hs_ep>;
-+					};
-+				};
-+				port@1 {
-+					reg = <1>;
-+					usbc0_ss_ep: endpoint {
-+						remote-endpoint = <&usb_drd0_ss_ep>;
-+					};
-+				};
-+				port@2 {
-+					reg = <2>;
-+					usbc0_dp_ep: endpoint {
-+						remote-endpoint = <&usbdp_phy_ep>;
-+					};
-+				};
-+			};
-+		};
-+	};
-+
-+	hym8563: rtc@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		#clock-cells = <0>;
-+		clock-output-names = "hym8563";
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA0 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hym8563_int>;
-+		wakeup-source;
-+	};
-+
-+	/* cellwise,cw221X battery manager at 0x64 */
-+};
-+
-+&mipidcphy {
-+	status = "okay";
-+};
-+
-+&pcie0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie0_perstn>;
-+	reset-gpios = <&gpio2 RK_PB4 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc_wifi>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	audio {
-+		hp_amp_enable_h: hp-amp-enable {
-+			rockchip,pins = <0 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		hp_det: hp-det {
-+			rockchip,pins = <4 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	bluetooth {
-+		bt_reset_gpio: bt-reset-pin {
-+			rockchip,pins = <2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_wake_gpio: bt-wake-pin {
-+			rockchip,pins = <2 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		bt_wake_host_irq: bt-wake-host-irq {
-+			rockchip,pins = <2 RK_PC1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	charger {
-+		charger_irq: charger-irq {
-+			rockchip,pins = <0 RK_PD2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	display {
-+		lcd_enable: lcd-enable {
-+			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		lcd_rst: lcd-rst {
-+			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+
-+	gpio-keys {
-+		vol_keys_l: vol-keys_l {
-+			rockchip,pins =
-+				<3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PD2 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		gamepad_keys_l: gamepad-keys-l {
-+			rockchip,pins =
-+				<3 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PB1 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PC0 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PC1 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PC2 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PC3 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PC4 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>,
-+				<3 RK_PD7 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	gpio-leds {
-+		led_amber_h: led-amber-h {
-+			rockchip,pins = <3 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		led_backlight_h: led-backlight-h {
-+			rockchip,pins = <2 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		led_green_h: led-green-h {
-+			rockchip,pins = <3 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		led_red_h: led-red-h {
-+			rockchip,pins = <3 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pcie {
-+		pcie0_perstn: pcie0-perstn {
-+			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	regulator {
-+		vcc_3v3_sd_s0_h: vcc-3v3-sd-s0-h {
-+			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		vcc_sdio_h: vcc-sdio-h {
-+			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		vcc_wifi_h: vcc-wifi-h {
-+			rockchip,pins = <1 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		vdd_lcd_h: vdd-lcd-h {
-+			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	rtc {
-+		hym8563_int: hym8563-int {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	touch {
-+		touch_int: touch-int {
-+			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	usb {
-+		usbc_int: usbc-int {
-+			rockchip,pins = <0 RK_PD1 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		usbc0_sbu1: usbc0-sbu1 {
-+			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		usbc0_sbu2: usbc0-sbu2 {
-+			rockchip,pins = <4 RK_PB7 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+
-+	wifi {
-+		wifi_en_h: wifi-en-h {
-+			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&sai1 {
-+	pinctrl-0 = <&sai1m0_lrck
-+		     &sai1m0_sclk
-+		     &sai1m0_sdi0
-+		     &sai1m0_sdo0>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
-+&sai6 {
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vcca1v8_pldo2_s0>;
-+	status = "okay";
-+};
-+
-+&sdio {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	max-frequency = <150000000>;
-+	no-mmc;
-+	no-sdio;
-+	pinctrl-0 = <&sdmmc1m0_bus4>, <&sdmmc1m0_clk>,
-+		    <&sdmmc1m0_cmd>, <&sdmmc1m0_det>;
-+	pinctrl-names = "default";
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc3v3_sd_s0>;
-+	vqmmc-supply = <&vcc_sdio>;
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	full-pwr-cycle-in-suspend;
-+	no-sd;
-+	no-sdio;
-+	non-removable;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	max-frequency = <150000000>;
-+	no-sdio;
-+	no-mmc;
-+	pinctrl-0 = <&sdmmc0_bus4>, <&sdmmc0_clk>,
-+		    <&sdmmc0_cmd>, <&sdmmc0_det>;
-+	pinctrl-names = "default";
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc3v3_sd_s0>;
-+	vqmmc-supply = <&vccio_sd_s0>;
-+	status = "okay";
-+};
-+
-+&spi1 {
-+	num-cs = <1>;
-+	pinctrl-0 = <&spi1m2_pins>, <&spi1m2_csn0>;
-+	status = "okay";
-+
-+	/* SPI controlled MCU for joystick and joystick LEDs. */
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-+		remote-endpoint = <&hdmi_in_vp0>;
-+	};
-+};
-+
-+&vp1 {
-+	vp1_out_dsi: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
-+		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
-+		remote-endpoint = <&dsi_in_vp1>;
-+	};
-+};
-+
-+&u2phy0 {
-+	status = "okay";
-+};
-+
-+&u2phy0_otg {
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-+&uart6 {
-+	pinctrl-0 = <&uart6m1_xfer>, <&uart6m1_ctsn>, <&uart6m1_rtsn>;
-+	pinctrl-names = "default";
-+	uart-has-rtscts;
-+	status = "okay";
-+
-+	bluetooth {
-+		compatible = "realtek,rtl8822cs-bt";
-+		device-wake-gpios = <&gpio2 RK_PB6 GPIO_ACTIVE_HIGH>;
-+		enable-gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_HIGH>;
-+		host-wake-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&bt_reset_gpio>, <&bt_wake_gpio>, <&bt_wake_host_irq>;
-+		pinctrl-names = "default";
-+	};
-+};
-+
-+&usbdp_phy {
-+	mode-switch;
-+	orientation-switch;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&usbc0_sbu1 &usbc0_sbu2>;
-+	sbu1-dc-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-+	sbu2-dc-gpios = <&gpio4 RK_PB7 GPIO_ACTIVE_HIGH>;
-+	status = "okay";
-+
-+	port {
-+		usbdp_phy_ep: endpoint {
-+			remote-endpoint = <&usbc0_dp_ep>;
-+		};
-+	};
-+};
-+
-+&usb_drd0_dwc3 {
-+	usb-role-switch;
-+	dr_mode = "otg";
-+	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+			usb_drd0_hs_ep: endpoint {
-+				remote-endpoint = <&usbc0_hs_ep>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+			usb_drd0_ss_ep: endpoint {
-+				remote-endpoint = <&usbc0_ss_ep>;
-+			};
-+		};
-+	};
-+};
++module_i2c_driver(sgm4154x_driver);
++
++MODULE_AUTHOR("Xu Shengfei <xsf@rock-chips.com>");
++MODULE_DESCRIPTION("sgm4154x charger driver");
++MODULE_LICENSE("GPL");
 -- 
 2.43.0
 
