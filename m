@@ -4,91 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE6D4C44533
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 14:59:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1A0EC44529
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 15:13:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JoRmU9EOOOdQskKh+uKH7P8A3EIWOZBVrxSYnI09vRk=; b=jjrid9UfH8HjvQ
-	uY7mH4QqvUKwSvN8ZYsRTR8s9l4yx97MTynICy5iKhqdTxsxBE/i7c3QTP/nqrwlaFBM4GsadoSBh
-	pyXG1syZZvAxX0Yg/GoEddpLDf6EiRJuBt5bwx69rhA1ZDSNQRjvOBLu9zvbVyDmcB9wGyzw3xESH
-	SPJm3x2p2Nb7wxjWeArPk/yU6Im7DTZxDr6nYjn4W9GBYp9ASQ2m+NKKsrs2GGChkg/N/v2zVJmWM
-	Q5O5Sr/9b9wUr4LUrGw4St1n7i+l+x+tDJC/X7CyCpk8q13/43S7SBvMK7bZ1vNaBLvLmMVEiX84z
-	NkXK/YcxHcu0IPHdWYAA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8lnxpET13gs09HlnfvqnAyU7kkJ2TJX2K6OGGpnbycE=; b=Q02JSwiJf4Cqw76AuMKEHsZ4uB
+	atg1FFv5HjjIdfz6VJVpkJhGQpWQm9JTy9WqsdkhGki4Ke0NXCib3McW3AGYEnxga22JP7gDmGXbc
+	UQWGBfjp4jegSnarX5b0ijT8v7+8h+PswuQ38eSdAuhn4DNEzVUCN845AJbgkoTDWA9aS4QIbvs4Y
+	qSPgwvCK4nxfwdOJlASxWrADzIFt/aDcHBZDqRIpA9khYZrstKTB4GaFwHzJPmSFB6pgnGIPj99B0
+	cn3/hbsGq9cKMfkoWkYFTb7YMLhLpK2huXeQk1CHVYDkGJzfdQmohYC3Vt3HFeglaXGJ5K4sP8ff/
+	vs7UgwxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmBw7-00000009igf-0PxC;
-	Tue, 21 Jul 2026 14:59:11 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1wmCAA-00000009lZJ-2ze4;
+	Tue, 21 Jul 2026 15:13:42 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmBw3-00000009ifs-2SuS
-	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Jul 2026 14:59:09 +0000
-Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-69c7c8accffso891954a12.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 21 Jul 2026 07:59:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784645945; x=1785250745; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=3WKmer3uqjgZGaTDqjRAjLU77woVMUtTbyfOFW4Hj+g=;
-        b=gkKUntaqh10DsxpoagiRVaUnEZXcdt8XgfK5yRxfByu7h/MPZeGqJauo0GIXZUJ+fb
-         jAXnl2DuWIRgqa9gKjljZzmhqtrKGRxfQGuQl9r8IiIscMbLWfiE3ZAgY+raJZdYRAdV
-         q4P9/GvG9/y0E9Dod2dh9hvvvkLczOPZtL9tOP8XzocbFmzV293xIHVcxwQTZWuqpMzO
-         0GfvdBnDOX5tUKCYOhglDxPw1iDE1V2cKCmGuwjrYUT1/rYCDQPLSGTOVnrj6Op2Ow+7
-         1r/JmKI4LZ77SkvXZIoPccpcyu3ToeCRhjtEvFt0DhOR59QKCQ+Ovau+nVUa+Z1aNQuq
-         KQBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784645945; x=1785250745;
-        h=content-transfer-encoding:content-type:in-reply-to:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=3WKmer3uqjgZGaTDqjRAjLU77woVMUtTbyfOFW4Hj+g=;
-        b=MfmImZ/PMHVwUReKTjsmaISbY91h2myNf4nKEVJJItg+YqU2vo6099RfBEd2QURcn7
-         x+EbIePDRChg8nVb4UVSRKIJOhpEILlm9Sp8kKGev8gMphJqri9PVY/MBEbvAABK/XG0
-         YkXo9JHm2E5B+ShVLpf0S8KL7w9T+fuH8/9QzH+4AdzBq+PG9kr/Ll1xwq5ISpp3KbFP
-         IfIHzNP57WLKHN5YlJi7ITKryWJjsW1RWbmFCWljXiENt3ThYONZyQyLWVngBu5enRY2
-         0e77Reb75HvG7E0kXUSGiyhlyKz+L+LZM9esGe9p3dlHDUaEBpyiQdkQG39eITa9sUpp
-         X2vQ==
-X-Forwarded-Encrypted: i=1; AHgh+RrlxQsj0Xcnr1Urn2BHh0ed4DodQbLxlTdd0mpSmJrrNE5PeckD9rQTL1LdMKg3Y0uKyOBPHzwHP/vM5WabKw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyfUMKxfGymDv8sI2bphlOk4Rwj1ooek4VosWO7KTLr5tY4dJ8F
-	ybFXMltycsQ4saMNt1T0gsC+CkwAvKz8IQOvGQkgmGpdAiElM1ECGlB8
-X-Gm-Gg: AR+sD11mwZLSpMz/1XAUFsrcNaiXY2A8dU3rIPYDLuoTnZ9WQZqWGWosZwQiSMEL/sb
-	xxRNXUij1CoB1pugrNmDq19/YIuDzKNEdA2GB85rkmI7z+cBZXiaEGrDUKXuQko7pf1wBb+kfrH
-	vBmm50d41I2g20K8fgBqyi74uYFNNNOpbqpgLT6yF9S+7rFuedUjl3WY9nkxi0P47YsvQc2mJPQ
-	kuvvjofXuaEyfHDefihot4/SBrMMACkHrHlb4xhJQQPwJ90A6ULA+rbxpZtfB1KjPX43PZMQx7B
-	5AhKe6gyWygzKYypOWnZFVux+5XafsrVq2KboALwc1Mf3DKkJngmySfQjUuyf4QMW1/ee/PiB4x
-	y7oom5RLI8/GEuDk6tz4n3xIlSa/1BsPfYOKdMXEzvWmsR/S0Eqr4NuXBFXKeuTntUynvMHHfLE
-	9FfdFAMsw/
-X-Received: by 2002:a05:6402:40ce:b0:69c:2fc1:d4dc with SMTP id 4fb4d7f45d1cf-69e6532a1e9mr7211815a12.39.1784645945343;
-        Tue, 21 Jul 2026 07:59:05 -0700 (PDT)
-Received: from [192.168.136.254] ([94.232.27.38])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-69e6fee248asm6113634a12.1.2026.07.21.07.59.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Jul 2026 07:59:04 -0700 (PDT)
-Message-ID: <816442c5-88fe-49b6-92a3-cf924c056ae8@gmail.com>
-Date: Tue, 21 Jul 2026 19:48:04 +0500
+	id 1wmCA6-00000009lYP-2hI6;
+	Tue, 21 Jul 2026 15:13:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1784646804; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Gf5OjuRAT5zbqoYF3jN4tuCWVwcP81yBTx+3H0U3gUbBQUFLKYt1vwaNkCH7j60DqVjA7bryGH0uTa6iK29FaA3t3NUHWzZulueKbMqnv8giQHtYeL7u1Q06lCnKAKyb482MFJ6XeFqOUCHaJbZ4AHGEtC/b+zuPbq5Y2OkVBTo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1784646804; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Y836RDygiFaggeJaLzpXSO6oiC8XFkafbWfePgMLBZA=; 
+	b=ndEsefTWEmt+D+gO2M1E0XgteopkYS07v/RuSZwbW4SdddDsIKm1qw+Y2tSE6UH7BbmiPsJFaLgjJqVxefo8rkft2IPeE5E9/ZsRA64XAlgpW90gwCG8tRk2ZO7HzmOXvBQa/c5QVuKaIlozVDcm6r56HtFgO6JZV6JZojPwkv8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784646804;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=Y836RDygiFaggeJaLzpXSO6oiC8XFkafbWfePgMLBZA=;
+	b=BIfTiq/QQXfqb3DXP4fmhplQMOesc6RoouD+aBlBcllNiFOo+OUSjTNm+NTcUVGD
+	Xt02vBEPgtk0pGQV6yLmkTPeGKqP2XPRV0SjEgHV8lOqO0kmgVc+xyfm8t1iTAYSbTL
+	U0fJh1IFKU0njFxh+UjiIa7929cnisOg9INcsHuY=
+Received: by mx.zohomail.com with SMTPS id 1784646803126404.39697867473046;
+	Tue, 21 Jul 2026 08:13:23 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 738FB180765; Tue, 21 Jul 2026 17:13:18 +0200 (CEST)
+Date: Tue, 21 Jul 2026 17:13:18 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Igor Paunovic <royalnet026@gmail.com>
+Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 1/4] dt-bindings: media: snps,dw-hdmi-rx: add
+ #sound-dai-cells
+Message-ID: <al-MajLSsTj0oPe5@venus>
+References: <20260721064115.64809-1-royalnet026@gmail.com>
+ <20260721064115.64809-2-royalnet026@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] pinctrl: rockchip: add support for RK3308B SoC
-To: Hugo VALTIER <hugo@ahdrone.com>
-Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Jonas Karlman <jonas@kwiboo.se>,
- Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Dmitry Yashin <dmt.yashin@gmail.com>
-References: <20260717075918.1869879-1-hugo@ahdrone.com>
- <20260717075918.1869879-4-hugo@ahdrone.com>
-From: Dmitry Yashin <dmt.yashin@gmail.com>
-Content-Language: en-US
-In-Reply-To: <20260717075918.1869879-4-hugo@ahdrone.com>
+In-Reply-To: <20260721064115.64809-2-royalnet026@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.638.57
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_075907_658988_704234D1 
-X-CRM114-Status: GOOD (  21.43  )
+X-CRM114-CacheID: sfid-20260721_081338_744636_3734F30A 
+X-CRM114-Status: GOOD (  22.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,68 +81,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1844030166541167683=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On 7/17/26 12:59, Hugo VALTIER wrote:
-> The RK3308B is a revision of the RK3308 including different iomux
-> register layout.
-> Several pins (GPIO2_A2, GPIO2_A3, GPIO2_C0, GPIO3_B2, GPIO3_B3)
-> have 3-bit mux fields in new GRF registers (SOC_CON13 at 0x608 and
-> SOC_CON15 at 0x610) that override the standard 2-bit fields.
-> I believe the bootloader sets the sel_src_ctrl bits to activate these
-> new registers, which causes the kernel's writes to the old 2-bit iomux
-> registers to be silently ignored.
-> 
-> Without this patch, SPI1, I2C3, and other peripherals that depend on
-> these pins are completely non-functional on my RK3308B boards.
-> 
-> Detect the SoC variant at runtime by reading the chip_id register at GRF
-> offset 0x800 (0xcea = RK3308, 0x3308/0x3308c = RK3308B), as requested
-> by reviewers of the earlier series.
-> When RK3308B is detected, swap in the correct mux_recalced and mux_route
-> tables and write the sel_src_ctrl bits to ensure the 3-bit mux registers
-> are active.
-> 
-> This is a rework of Dmitry Yashin's series [1] which used a separate
-> device tree compatible string ("rockchip,rk3308b-pinctrl") to
-> distinguish the variants.
-> Reviewers Luca Ceresoli and Heiko Stuebner agreed that runtime detection
-> was preferable since boards are manufactured with both RK3308 and RK3308B
-> using the same device tree.
-> 
-> Jonas Karlman implemented runtime detection based on the GRF_CHIP_ID
-> register [2]. Reviewers asked for more changes (constifying some
-> arrays), but the series was never resubmitted and was dropped.
-> 
-> I run this patch on my Rock Pi S boards, the newer ones I've got in
-> 2024 use the RK3308B. And thanks to runtime detection we should still
-> be compatible with older devices (but I couldn't test on RK3308 as I
-> don't have any).
-> 
-> [1] https://lore.kernel.org/all/20240515121634.23945-1-dmt.yashin@gmail.com/
-> [2] https://lore.kernel.org/all/20240604141020.21725-1-dmt.yashin@gmail.com/
-> 
-> Signed-off-by: Hugo VALTIER <hugo@ahdrone.com>
+--===============1844030166541167683==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ve2dgbtcld52yk2j"
+Content-Disposition: inline
+
+
+--ve2dgbtcld52yk2j
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 1/4] dt-bindings: media: snps,dw-hdmi-rx: add
+ #sound-dai-cells
+MIME-Version: 1.0
+
+Hi,
+
+On Tue, Jul 21, 2026 at 08:41:12AM +0200, Igor Paunovic wrote:
+> The HDMI RX controller can expose the audio embedded in the incoming
+> HDMI stream as an ALSA capture device. Document the #sound-dai-cells
+> property so that a sound card can reference the HDMI RX audio DAI.
+>=20
+> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
 > ---
 
-Hi Hugo.
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Thanks for re-sending the series!
-Applied patches to multiple boards and it fixes pinmux
-issues for rk3308b-s based boards too (since the approach 
-kept the same as in v3 series)
+-- Sebastian
 
-Tested-by: Dmitry Yashin <dmt.yashin@gmail.com>
+> Changes in v4 (both suggested by Krzysztof Kozlowski):
+> - reference dai-common.yaml and switch additionalProperties to
+>   unevaluatedProperties: false
+> - drop the consumer comment from the binding example
+>=20
+> Changes in v3:
+> - no changes
+>=20
+> Changes in v2 (all suggested by Sebastian Reichel):
+> - reworded the commit message to describe the hardware
+> - property description now documents the DAI indexes (0 =3D I2S,
+>   1 =3D S/PDIF)
+> - moved the consumer reference into the binding example
+>  .../devicetree/bindings/media/snps,dw-hdmi-rx.yaml  | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml=
+ b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> index b7f6c87..b80660d 100644
+> --- a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> +++ b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+> @@ -78,6 +78,13 @@ properties:
+>        The phandle of the syscon node for the Video Output GRF register
+>        to enable EDID transfer through SDAIN and SCLIN.
+> =20
+> +  "#sound-dai-cells":
+> +    const: 1
+> +    description:
+> +      The HDMI RX controller has two digital audio interfaces, one for
+> +      I2S and one for S/PDIF. The DAI cell selects the interface, 0 for
+> +      I2S and 1 for S/PDIF.
+> +
+>  required:
+>    - compatible
+>    - reg
+> @@ -90,7 +97,10 @@ required:
+>    - pinctrl-0
+>    - hpd-gpios
+> =20
+> -additionalProperties: false
+> +allOf:
+> +  - $ref: /schemas/sound/dai-common.yaml#
+> +
+> +unevaluatedProperties: false
+> =20
+>  examples:
+>    - |
+> @@ -129,4 +139,5 @@ examples:
+>        pinctrl-0 =3D <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdm=
+im1_rx_sda &hdmirx_5v_detection>;
+>        pinctrl-names =3D "default";
+>        hpd-gpios =3D <&gpio1 22 GPIO_ACTIVE_LOW>;
+> +      #sound-dai-cells =3D <1>;
+>      };
+> --=20
+> 2.53.0
+>=20
 
--- 
-Dmt-Y
+--ve2dgbtcld52yk2j
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpfjIYACgkQ2O7X88g7
++pr9WxAAog6hBJL0wrUW73CpAnMhQTt2RG9L/d0ZV2n4AAUhrpSoVViOx3hG+4yi
+QPgxdXhRi8BcWwqcFoRLb09M/DtN/zy9jwsjFJhuxNsms2O5YfAOqhPfAjs6IQKX
+T47J/zF7LF0lWx3cj5D9O4frZGc70Fz12IfiGAuvaOl2/O7jpCvea1M0TUAyGhpX
+s1+YUUC3k5jba0SK4k1JrW9gjNRH4NYnPmr0y9m1vfYFhowTV3784hxlQBuOk6np
+YlQsqrtQYBx9+43NSxEan8TIKsUSjyWslaEX3Y5rOh66s5vMjBDMPcDHzdGBYzFC
+iwtTBOFQEsvVXkwtW+CtolUccp1uS2UcGs5OTLrBLZvT3sre8Q8hLdJQbEQG2/sg
+BdWwhtboHSJ0L5Sp7kvjqPZ8amMayZPzbIXupFhczn3MlugeO4leBYKgEpldhvEH
+Sne3GbyPwJinZzUnjQFKw0Rn4LqewhygbJ7gCZRPyWpstdWXC6GLU35VrL71X0LD
+Z7XORHVhYlf7ggHhvHy3N7Yb0MUQjRYnafmIBU2lFyo5KWk8c3E0bkeAtJCstano
+5RIRmTR7De8XqIBdu/6UOFKfOOzg4pd2qbcFrauKX0sisQmEz7LIsLE3Q+6HhEZP
+aw2yfZ9Ao40znmb84p3XD6uKq7KU1yf580xj47v+YLxBpjMAFSw=
+=ml4u
+-----END PGP SIGNATURE-----
+
+--ve2dgbtcld52yk2j--
+
+
+--===============1844030166541167683==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1844030166541167683==--
+
