@@ -4,72 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99015C44532
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 15:15:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07096C44529
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 15:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LoudjAM7BCaW/2q419Q6V+vhlYytsPbD7nu3s957Feg=; b=q5bdCM3xSnYRoxf87cFkW5aCdW
-	Is9H8ty1wy2RjOHhW/jalAQ3w7WXa3KAGBP+eJXk3aNWMoxPPE7M4i87f2bFUgr0tejkDh4r0qp+u
-	rTqEngiwQBEEypSiG1h/NNx2MoWei6qwF4zd73I/3MXuJjP5lQD0/CygWFFbTEwRCrqePxGpxmxof
-	z/JLUKkVruz5jTw6OfmGW/roqACULBz4AsIc+aHaJKXgSxhvppOK4MF39+NezErr2FjqQ+oGWJk8A
-	sVS46AlSjn9NPftK9dq+eOfWg6RaWOoGl66xb0oCwZx/aeIovM/r9HI6fS4uOf+eQ2VKnKnn7QdcF
-	EjkOQlog==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GuLQGsnUmk3zGdIle0XvYiLTzmvrRJgB2BrOpZ9H9Ug=; b=WqvR7OkMPhuzm2
+	nnNS40EfiQvHq3KpwIG83yomCjhCcAAzqAw/FiyJjqVgfQmSyJoWaBhHHga8O3MxqMk8W+/fLnRd+
+	EbW3siNJsm/qIz39NKpfkUdDwwtr3srmlKLRB8m13hYDNCtjVOpX7t03hloQFoVJNnVfvzru4PjTQ
+	LAHH0BX8s5lX62+H7qDCT7h87IeYPS1ruLIFR7Ny44tVvGASrcZXU+KEBeMJoU2mOh3j4gm97mURy
+	7I1h9fjz/FOu508XmUbROLTC20GypmeulP6kFCfhIIUpgymyqdcmorK9Itd6Wl2+dgpcUNq7QveXh
+	r8pt78+w5892ShtDiCPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmCBo-00000009mAQ-47Vp;
-	Tue, 21 Jul 2026 15:15:25 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wmCTk-00000009oKF-0H3K;
+	Tue, 21 Jul 2026 15:33:56 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmCBm-00000009m9T-2owc;
-	Tue, 21 Jul 2026 15:15:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1784646910; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=DVQQFaeaXJsErpXSmalKDRjp1wKLGpoTBMShl9q+/nye75MohNH2vJacaVILCqfr1zGO+0MfGqIXw3HyFytabBbyIBIfEvhPtXB8BhNR0R0WrrrrGOzIDpzKU5Rg5k0kQl0dolSQGGPBimFH35/1rw8MYMWSkDPApOGl8TLQ7f0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1784646910; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Am4FBLquimoXLofVW39R5TXiLDXR3ax8a+vHWlboXD8=; 
-	b=GVdE9TgLfuxGwU5xYXs662IyQhf7y0C0Ae7WeaIAjeBq6SXSjxPlOsA8smbmhsQyE0lMK0S7xq1XetyGwwIV+EBWKpt0yEg0HRBtw+Y7TCKAcepXEb3WYiCMLxfTp77OFUDXAReixhD5o4KM05H95U+FTch55sOUeTCexXn+obo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784646910;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=Am4FBLquimoXLofVW39R5TXiLDXR3ax8a+vHWlboXD8=;
-	b=XgYrilH0DhdO3/Apsdp2g/O94Wepv5AWFeY2GH3ivNF+yasnIYsV//q+IhhMT5bx
-	/VuyhjGZlNp5DxV6ZYRpypl4J4TMBoW80UMpoKqPhX1ABTrnP+fba/GkG4uoDMCOOwH
-	j5W1bQ4IdMOz3i2CfGUc3RL5OwfJTkzKWm0hLVhQ=
-Received: by mx.zohomail.com with SMTPS id 178464690796118.531816677270967;
-	Tue, 21 Jul 2026 08:15:07 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 04A7C180765; Tue, 21 Jul 2026 17:15:04 +0200 (CEST)
-Date: Tue, 21 Jul 2026 17:15:03 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Igor Paunovic <royalnet026@gmail.com>
-Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 4/4] arm64: dts: rockchip: enable HDMI RX audio
- capture on Orange Pi 5 Plus
-Message-ID: <al-M4gZ4cZwpEF_H@venus>
-References: <20260721064115.64809-1-royalnet026@gmail.com>
- <20260721064115.64809-5-royalnet026@gmail.com>
+	id 1wmCTi-00000009oJz-2vLh
+	for linux-rockchip@lists.infradead.org;
+	Tue, 21 Jul 2026 15:33:54 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 28A6F60A5F;
+	Tue, 21 Jul 2026 15:33:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 656271F00A3A;
+	Tue, 21 Jul 2026 15:33:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
+	s=korg; t=1784648033;
+	bh=/uOlw14Bum/L3LOAPG5sOZGL3BeEr58Z5NKb0aw7jEQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=hgmKnrQqPHqSKsFatZbE1GRlR8I5FH4EHOpUUeME9zcPkOqsBfiF/Fe95uPymzdJy
+	 wQmEcDb900t4OBsusJY0QGtMXWgjQOA2os6J4OHrfhoiyyKWp3Tg6/jGw8ouIQUR46
+	 IEszLgl8uwshsG0oIDEt/MkKDe97R9vs6kg0rPPU=
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: stable@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	patches@lists.linux.dev,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	Sasha Levin <sashal@kernel.org>
+Subject: [PATCH 7.1 0048/2077] drm/rockchip: Test for imported buffers with drm_gem_is_imported()
+Date: Tue, 21 Jul 2026 16:55:21 +0200
+Message-ID: <20260721152553.823322780@linuxfoundation.org>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260721152552.646164743@linuxfoundation.org>
+References: <20260721152552.646164743@linuxfoundation.org>
+User-Agent: quilt/0.69
+X-stable: review
+X-Patchwork-Hint: ignore
 MIME-Version: 1.0
-In-Reply-To: <20260721064115.64809-5-royalnet026@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.638.57
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_081522_860185_587A6345 
-X-CRM114-Status: GOOD (  20.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,116 +70,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0394996281352455102=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============0394996281352455102==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="iv6yyu46n7brq5vz"
-Content-Disposition: inline
-
-
---iv6yyu46n7brq5vz
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v4 4/4] arm64: dts: rockchip: enable HDMI RX audio
- capture on Orange Pi 5 Plus
-MIME-Version: 1.0
-
-Hi,
-
-On Tue, Jul 21, 2026 at 08:41:15AM +0200, Igor Paunovic wrote:
-> Enable the shared HDMI RX sound card and the i2s7_8ch interface it
-> uses. Together with the audio capture support in the snps_hdmirx
-> driver this exposes a capture-only ALSA card fed by the HDMI input.
->=20
-> Tested on the Orange Pi 5 Plus with multiple HDMI sources: capture
-> follows the source sample rate and stays in sync via the FIFO-level
-> clock tracking in the driver.
->=20
-> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
-> ---
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
--- Sebastian
-
-> Changes in v4:
-> - only enable the shared hdmi_receiver_sound card and i2s7_8ch, now
->   that the card definition lives in rk3588-extra.dtsi (Sebastian
->   Reichel)
->=20
-> New in v3.
->  arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts | 8 ++++++++
->  1 file changed, 8 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/ar=
-ch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> index 9950d11..9f9a303 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> @@ -171,6 +171,10 @@
->  	status =3D "okay";
->  };
-> =20
-> +&hdmi_receiver_sound {
-> +	status =3D "okay";
-> +};
-> +
->  &hdptxphy0 {
->  	status =3D "okay";
->  };
-> @@ -247,6 +251,10 @@
->  	status =3D "okay";
->  };
-> =20
-> +&i2s7_8ch {
-> +	status =3D "okay";
-> +};
-> +
->  &led_blue_gpio {
->  	gpios =3D <&gpio3 RK_PA6 GPIO_ACTIVE_HIGH>;
->  	status =3D "okay";
-> --=20
-> 2.53.0
->=20
-
---iv6yyu46n7brq5vz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpfjPcACgkQ2O7X88g7
-+pqFLRAAkmIPl5/P8Z94H28WY+soiwfSEDNsLAiSGJlJVS8FgREkVhPImsKSVjR3
-4o3c4JrrBdq9xWtsdrGrMq3CpCGJ1DJo9OtHO0XMVMWs9d9ubkjM0ob/usXXhjxU
-OAzf5GLrUiNsMj8w149tKjXpYF1whrUVPN6ZXmhRpcKkzlsGPhFiD766yx//N0ty
-yeh8uFvXqYA5IrRy0G3ZOnUl9bxnqJ/DumiW414ps5KGfdkx51psOGE7y5L//MhS
-MhDrmU1MzPRNzo+GUaVahydIG8WA5LHI52fTRSeausAuuuzrgKlIyQWCnjAPxA5X
-9MiD4rdNpUZRjPiddyT1AiezcSqHtL4e6KcRhnRjuMDne/32jNsBZnCfSeCdpk3A
-5dWp60RnpVzYYGp93F7BRe25Urj3ik5HVmGVMUkSJ4bwSVP2RWSX+GiPTjlAe2IK
-x63SwNOF++ZZSXd0VX2tP2mm1Ih2LvD5NI0R2Az8pzfmpwPST2UfgSvVfOfp7mMI
-HSUOh6hFH8XlAg2rz8Ny4u25SzmyCa6wQbf6t9n1Fzoeam47sfuEcH9BaexoX/B4
-RcU4y9M5N3ZmsQf0z2rhP6fkyFv/ifDrl7wMrCnScB0wtKoBluIt3wzJ+zKFn3z4
-8pudmmYwXa7d6tb+SfCxNtEh7SbqGZWhHZmJtYy6V9uJdbBQk7w=
-=d36M
------END PGP SIGNATURE-----
-
---iv6yyu46n7brq5vz--
-
-
---===============0394996281352455102==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0394996281352455102==--
-
+Ny4xLXN0YWJsZSByZXZpZXcgcGF0Y2guICBJZiBhbnlvbmUgaGFzIGFueSBvYmplY3Rpb25zLCBw
+bGVhc2UgbGV0IG1lIGtub3cuCgotLS0tLS0tLS0tLS0tLS0tLS0KCkZyb206IFRob21hcyBaaW1t
+ZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPgoKWyBVcHN0cmVhbSBjb21taXQgOWZjMGRhODE5
+MTYyNTBmMzQzNTk5YTRkZDI1OWYwOTcxOTZiZjBmYiBdCgpJbnN0ZWFkIG9mIHRlc3RpbmcgaW1w
+b3J0X2F0dGFjaCBmb3IgaW1wb3J0ZWQgR0VNIGJ1ZmZlcnMsIGludm9rZQpkcm1fZ2VtX2lzX2lt
+cG9ydGVkKCkgdG8gZG8gdGhlIHRlc3QuIFRoZSB0ZXN0IGl0c2VsZiBkb2VzIG5vdCBjaGFuZ2Uu
+CgpTaWduZWQtb2ZmLWJ5OiBUaG9tYXMgWmltbWVybWFubiA8dHppbW1lcm1hbm5Ac3VzZS5kZT4K
+Q2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+CkNjOiBIZWlrbyBTdMO8Ym5lciA8
+aGVpa29Ac250ZWNoLmRlPgpDYzogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgpD
+YzogbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpGaXhlczogYjU3YWE0N2QzOWU5
+ICgiZHJtL2dlbTogVGVzdCBmb3IgaW1wb3J0ZWQgR0VNIGJ1ZmZlcnMgd2l0aCBoZWxwZXIiKQpD
+bG9zZXM6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2RyaS1kZXZlbC8zOGQwOWQzNC40MzU0LjE5
+NjM3OWFhNTYwLkNvcmVtYWlsLmFuZHlzaHJrQDE2My5jb20vClNpZ25lZC1vZmYtYnk6IEhlaWtv
+IFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Ckxpbms6IGh0dHBzOi8vcGF0Y2gubXNnaWQubGlu
+ay8yMDI2MDIyNzEzMzExMy4yMzU5NDAtMTEtdHppbW1lcm1hbm5Ac3VzZS5kZQpTaWduZWQtb2Zm
+LWJ5OiBTYXNoYSBMZXZpbiA8c2FzaGFsQGtlcm5lbC5vcmc+Ci0tLQogZHJpdmVycy9ncHUvZHJt
+L3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
+c2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
+a2NoaXBfZHJtX2dlbS5jCmluZGV4IDA5ZDE0YTA3MmQyNzRlLi5iMTg4NTM5ZGNhMGIyNSAxMDA2
+NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYworKysg
+Yi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jCkBAIC0zMzQsNyAr
+MzM0LDcgQEAgdm9pZCByb2NrY2hpcF9nZW1fZnJlZV9vYmplY3Qoc3RydWN0IGRybV9nZW1fb2Jq
+ZWN0ICpvYmopCiAJc3RydWN0IHJvY2tjaGlwX2RybV9wcml2YXRlICpwcml2YXRlID0gZHJtLT5k
+ZXZfcHJpdmF0ZTsKIAlzdHJ1Y3Qgcm9ja2NoaXBfZ2VtX29iamVjdCAqcmtfb2JqID0gdG9fcm9j
+a2NoaXBfb2JqKG9iaik7CiAKLQlpZiAob2JqLT5pbXBvcnRfYXR0YWNoKSB7CisJaWYgKGRybV9n
+ZW1faXNfaW1wb3J0ZWQob2JqKSkgewogCQlpZiAocHJpdmF0ZS0+ZG9tYWluKSB7CiAJCQlyb2Nr
+Y2hpcF9nZW1faW9tbXVfdW5tYXAocmtfb2JqKTsKIAkJfSBlbHNlIHsKLS0gCjIuNTMuMAoKCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
