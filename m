@@ -4,102 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4979CC44529
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 08:31:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A497C44529
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 08:48:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X5wg9ibBroogikyPqavuMc5zAJH3ikiB4Ae74AJhtE4=; b=bQQsl/YtzDEj3iTV/EEh1Mozar
-	gYbZHtnhH5wdYi+YBE496Uc2dyy9OYXuwtqQKbVncBXYWIpOC9BbPpOPSEnqxwQYv7nN0yZ5rtIVl
-	j5Gx8sWTgVk7Nz5MtKmPsUQW77FqgsodxzK6iBU5/OSWaF6XZWAtmnWhI8wZVAB3sDfjhTiozmlYC
-	uePV6+bxv3r4S/hg/fCDfo78Vs/B0ZIu2ix1OpQncJafF1XDc5NtZr2UqKQTAnacBplEhwcPh5C2f
-	+Ke7zjMXLHvfHMkgtMIMfHAU3wY70vvQLls4+7Mt3f/JCKhHk+P6QEJB22NZZelgtV769V6TnSF+u
-	ZWfEabfw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZlOqENLzHXZijkfWkyzgfaLjsS4o+15HZGR2iRQG23Q=; b=0XJNhaTgPlIfWz
+	h8Qp4WGAQjQ5StqCcPpSnvUZI3yWDfNnVhOV/S+MMS/dpE33F7D8ZRWY9NyMlqBJlk71yNeONOigv
+	9UoZ6vkHI2fMe+jYmczvaqiO+7yBueyI8+K9xtq06WUoF7tJolphsu3uBw59RzM1qASzBhhCY8B/t
+	OEsXqm59ZsX5y6F8xQm/pz4vzMQXmpgMOKWhdMO2lembM9MCLAKG8v6Lo8iT0roH7mqLZ+TFzLpx2
+	lSiHUoQaDzFGUlKRyVeZpgxlykYD4BI0eHP6BQQCNg6exBQ0WKZhMR+iCuIwZIVlyBfUkpVpe4T6x
+	PqQjHPB6Gzsi5QNycM+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5sx-00000008pJU-3Pgk;
-	Tue, 21 Jul 2026 08:31:31 +0000
-Received: from th8-b.mail-neoserv.si ([152.89.234.174])
+	id 1wm69F-00000008sRJ-2Xfe;
+	Tue, 21 Jul 2026 08:48:21 +0000
+Received: from mail-m82218.xmail.ntesmail.com ([156.224.82.218])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5st-00000008pHy-0BHl;
-	Tue, 21 Jul 2026 08:31:29 +0000
-ARC-Seal: i=1; cv=none; a=rsa-sha256; d=th8.neoserv.si; s=default;
-	 b=pLxTVfgmUjLtbJCKR0rkq/NRAxk3y+CG/mHk89Bslh8aFWPn8v1FFv+lvhvKjHZU8bMf2/Gsxb
-	  JrDF2aXtyW1UxhSwICJXoV2KJyanDg19JF4nUIdI95zR5ImAHKIdpglXVuUrFVulz8oNlomZIq
-	  nhE7M5WYMCOU5FsYG+FSyD89vtWeELd0PMOddjHw+0hEvQCBisKRApDQSINMXSTeGxIxNcs0ap
-	  a2nEObTAZa4v5JKUS4Zg9gWd7sb46EC1X9eKzBDqc1YqzSJ7tBU5EJkj4yR+rx2svkFw31Z3Co
-	  OKu5Zb6LlCDVphWLnyoaZzh/XaSEHqZYaO+1DPoAzBtZ+g==;
-ARC-Authentication-Results: i=1; th8.neoserv.si; smtp.remote-ip=::1;
-	iprev=fail smtp.remote-ip=::1;
-	auth=pass (LOGIN) smtp.auth=rok@kanardia.eu
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed; d=th8.neoserv.si; s=default;
-	bh=p/Ut+hPnSSSs5ARypZA9AvQlhu25XmRFQRJR1HaVWxs=;
-	h=Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
-	  Subject:Cc:To:From:Date:MIME-Version:DKIM-Signature;
-	b=NypkcEQnAcBn3k2wd4hIqsq+JqOSR2PCTSe+OVE+ySiAyJ2nK9sSN5vCy3wXRyTj5bUOroAwz/
-	  aM67rbb7m2LpiMqfMgCjiJVP4hPvwdWwWMqvpm/x0+pZst4BLrgs3z3iLsl7xx9PO4dTOZAmR6
-	  eBx/zljU9UAXIeFZ5YdHkpL8VEnDM1UnxTvdmW+IB4iWtaTafj4FsM/MN/HYTZiK+dk3sNR6pi
-	  RoDGH0DUeosrBZz+YiKK+QFMNPeB8x2IpHlVFt92+2Nykr7Bic5QKWgtJPnMFM7sIHV9yCZaCV
-	  u44dFJN4H0edxlATh9sSsj4Ym8TPjz1jrK+ignyaXi1Jig==;
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=kanardia.eu
-	; s=default; h=Content-Transfer-Encoding:Content-Type:Message-ID:References:
-	In-Reply-To:Subject:Cc:To:From:Date:MIME-Version:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=vOr3cNyS0jboCn+idM5Wy4TXei0INag0cj2n8wIUHlA=; b=DdtoR+9/J1FieUU0h9lYiNqmHc
-	kN8mIweJlqWJPRd4G/zncO8f5vumHE87kHIwVBJnaYHHa0iNJ/Rcj0aBwrGZs0G/0kl7YxyF3+lIY
-	IrMgx4N2Yc0DH8LvzsYna67/jx3UmZzkPe9MljISSNO5IMUwIwFBqar38BOvxsco0cuRMNkrhvZEl
-	ZyYfkvLaECexN0RaUi/mwkG6mPFhlT4BKy4zA7YBH8yxdK3qFhvC1pXfSAF/wmIodUuzvanQ+ednS
-	oNeKDlAFKe9BCrLCRsdVNgZDm9zKBs7w0lgwWz1lIQox/GeH9t2uZk41OOWwaEYRfZy5kDQBSxKqB
-	iQ+gXrtA==;
-Received: from [::1] (port=49224 helo=th8.neoserv.si)
-	by th8.neoserv.si with esmtpa (Exim 4.99.4)
-	(envelope-from <rok@kanardia.eu>)
-	id 1wm5sn-00000000dqz-0n8X;
-	Tue, 21 Jul 2026 10:31:21 +0200
+	id 1wm69B-00000008sQU-2LDz;
+	Tue, 21 Jul 2026 08:48:20 +0000
+Received: from [172.16.12.90] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 46fd7cbde;
+	Tue, 21 Jul 2026 16:48:10 +0800 (GMT+08:00)
+Message-ID: <e2eb4217-e4d3-4650-915c-e36f4355168e@rock-chips.com>
+Date: Tue, 21 Jul 2026 16:48:09 +0800
 MIME-Version: 1.0
-Date: Tue, 21 Jul 2026 10:31:18 +0200
-From: =?UTF-8?Q?Rok_Markovi=C4=8D?= <rok@kanardia.eu>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, Andy
- Yan <andy.yan@rock-chips.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Alibek Omarov <a1ba.omarov@gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 3/4] drm/rockchip: lvds: add RK3568 support
-In-Reply-To: <9219738d-c3f2-4034-b88f-84335f77fbad@rock-chips.com>
+To: =?UTF-8?Q?Rok_Markovi=C4=8D?= <rok@kanardia.eu>
+Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Alibek Omarov <a1ba.omarov@gmail.com>
 References: <20260717120005.2087386-1-rok@kanardia.eu>
  <20260717120005.2087386-4-rok@kanardia.eu>
  <9219738d-c3f2-4034-b88f-84335f77fbad@rock-chips.com>
-User-Agent: Roundcube Webmail/1.6.17
-Message-ID: <3a5685992b5e335f2ebf50ee740b8a36@kanardia.eu>
-X-Sender: rok@kanardia.eu
-Authentication-Results: th8.neoserv.si;
-	iprev=fail smtp.remote-ip=::1;
-	auth=pass (LOGIN) smtp.auth=rok@kanardia.eu
-X-NEOSERV-MailScanner-Information: Please contact the ISP for more information
-X-NEOSERV-MailScanner-ID: 1wm5sn-00000000dqz-0n8X
-X-NEOSERV-MailScanner: Found to be clean
-X-NEOSERV-MailScanner-SpamCheck: 
-X-NEOSERV-MailScanner-From: rok@kanardia.eu
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - th8.neoserv.si
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - kanardia.eu
-X-Get-Message-Sender-Via: th8.neoserv.si: authenticated_id: rok@kanardia.eu
-X-Authenticated-Sender: th8.neoserv.si: rok@kanardia.eu
+ <3a5685992b5e335f2ebf50ee740b8a36@kanardia.eu>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <3a5685992b5e335f2ebf50ee740b8a36@kanardia.eu>
+X-HM-Tid: 0a9f83dc72e703a7kunmfe88d93e2be2a2
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQksdSVYeSEpOT0hISE
+	wZTUpWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSEpKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=XjRzXw7MwJLm9McXvDow27Pg+1obxCpoSzcZkszDWvMrRG59L4CLwFNojND9xtfzan/5I4qO/VcDyFQjxXH6wV6a58h/64teTRyFuMcY32miB7ZlEia7cOEjFXZWFvRCI7WnDEf7LXw8hAL178AwXaEA1vOEcsq/XQmxBTGuEmU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=VbdYabY6304wmkQVRhzKWa2oeZwqHMjq8WamtfsNPII=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_013127_758421_E0E222C8 
-X-CRM114-Status: GOOD (  39.80  )
+X-CRM114-CacheID: sfid-20260721_014818_284833_93521F6B 
+X-CRM114-Status: GOOD (  39.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,366 +76,257 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-20.7.2026 3:54, je Chaoyi Chen napisal
-> Hello Rok,
-> 
-> Thank you for your patch. Please see the comment below:
-> 
-> On 7/17/2026 8:00 PM, Rok Markovic wrote:
->> The RK3568 LVDS transmitter has no register block of its own. It is
->> driven entirely through the GRF and re-uses the MIPI DSI0 D-PHY in
->> PHY_MODE_LVDS, which phy-rockchip-inno-dsidphy already supports.
->> 
->> Based on Alibek Omarov's earlier posting [1], with the changes below.
->> 
->> Power the D-PHY from the encoder enable path rather than from probe.
->> phy_power_on() runs the phy driver's whole LVDS bring-up: PLL and
->> bandgap power-on, a settle, PLL mode select, then a reset pulse of the
->> serializer and the lane enables. None of that is safe at probe time -
->> the GRF has not yet switched the block to LVDS mode (LVDS0_MODE_EN is
->> set from rk3568_lvds_poweron(), i.e. the enable path) and the VOP is
->> not driving dclk. The serializer is clocked from dclk and latches its
->> state coming out of that reset, so it comes up dead and stays dead.
->> The failure is silent: every register in the phy, the GRF and the VOP
->> reads back exactly as on a working system while the lanes sit at
->> common mode and never toggle.
->> 
-> 
-> Could you please confirm this? Based on my earlier tests, after PHY
-> poweron, re-disabling and re-enabling the GRF did not reproduce the
-> issue you described.
-
-I can confirm that this is not working but I testedwith writing 
-registers
-manually with devmem and I could make something wrong.
-
-Should I leave it this way or should I move this back to probe and try 
-to
-make it work in enable by some trick (disabel/enable GRF)?
-
-> 
->> Program RK3568_LVDS0_DCLK_INV_SEL from the CRTC state's bus_flags so
->> the panel's declared pixelclk-active is honoured on the LVDS block as
->> well as on the VOP pin polarity. Both have to agree with the edge the
->> panel samples on.
->> 
->> Re-assert RK3568_LVDS0_P2S_EN in rk3568_lvds_poweron().
->> rk3568_lvds_poweroff() clears MODE_EN and P2S_EN together, so setting
->> P2S_EN once at probe would leave the parallel-to-serial converter off
->> after the first disable/enable cycle.
->> 
->> Use regmap_write() rather than regmap_update_bits() for the GRF. These
->> registers are write-masked - the upper 16 bits select which of the
->> lower 16 a write may change - so there is nothing to preserve and no
->> reason to read first. Passing a FIELD_PREP_WM16() value as both the
->> mask and the value of an update_bits() applies the masking twice and
->> only works by accident.
->> 
->> Between the two, nothing needs programming at probe at all: the GRF is
->> written entirely from the enable path, so px30_lvds_probe() is left
->> alone rather than being refactored into a shared phy helper.
->> 
->> [1] 
->> https://lore.kernel.org/all/20230119184807.171132-1-a1ba.omarov@gmail.com/
->> 
->> Co-developed-by: Alibek Omarov <a1ba.omarov@gmail.com>
->> Signed-off-by: Alibek Omarov <a1ba.omarov@gmail.com>
->> Signed-off-by: Rok Markovic <rok@kanardia.eu>
->> Assisted-by: Claude:claude-opus-4-8
->> ---
->>  drivers/gpu/drm/rockchip/rockchip_lvds.c | 161 
->> +++++++++++++++++++++++
->>  drivers/gpu/drm/rockchip/rockchip_lvds.h |  10 ++
->>  2 files changed, 171 insertions(+)
->> 
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c 
->> b/drivers/gpu/drm/rockchip/rockchip_lvds.c
->> index 95fa0a9..f45d04a 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
->> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
->> @@ -435,6 +435,133 @@ static void px30_lvds_encoder_disable(struct 
->> drm_encoder *encoder)
->>  	drm_panel_unprepare(lvds->panel);
->>  }
->> 
->> +static int rk3568_lvds_poweron(struct rockchip_lvds *lvds)
->> +{
->> +	int ret;
->> +
->> +	ret = clk_enable(lvds->pclk);
->> +	if (ret < 0) {
->> +		DRM_DEV_ERROR(lvds->dev, "failed to enable lvds pclk %d\n", ret);
->> +		return ret;
->> +	}
->> +
->> +	ret = pm_runtime_get_sync(lvds->dev);
->> +	if (ret < 0) {
->> +		DRM_DEV_ERROR(lvds->dev, "failed to get pm runtime: %d\n", ret);
->> +		clk_disable(lvds->pclk);
->> +		return ret;
->> +	}
->> +
->> +	/*
->> +	 * Enable LVDS mode and the parallel-to-serial converter. These are
->> +	 * write-masked registers, so a plain write only touches the bits 
->> named
->> +	 * here; there is nothing to preserve and no need to read first.
->> +	 */
-> 
-> I think this comment is redundant. We all know this is a common design
-> on Rockchip platform, right? :)
-> 
-
-Done
-
->> +	return regmap_write(lvds->grf, RK3568_GRF_VO_CON2,
->> +			    RK3568_LVDS0_MODE_EN(1) |
->> +			    RK3568_LVDS0_P2S_EN(1));
->> +}
->> +
->> +static void rk3568_lvds_poweroff(struct rockchip_lvds *lvds)
->> +{
->> +	regmap_write(lvds->grf, RK3568_GRF_VO_CON2,
->> +		     RK3568_LVDS0_MODE_EN(0) | RK3568_LVDS0_P2S_EN(0));
->> +
->> +	pm_runtime_put(lvds->dev);
->> +	clk_disable(lvds->pclk);
->> +}
->> +
->> +static int rk3568_lvds_grf_config(struct drm_encoder *encoder,
->> +				  struct drm_display_mode *mode)
->> +{
->> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
->> +	struct rockchip_crtc_state *s =
->> +		to_rockchip_crtc_state(encoder->crtc->state);
->> +	bool negedge = !!(s->bus_flags & 
->> DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE);
->> +
->> +	if (lvds->output != DISPLAY_OUTPUT_LVDS) {
->> +		DRM_DEV_ERROR(lvds->dev, "Unsupported display output %d\n",
->> +			      lvds->output);
->> +		return -EINVAL;
->> +	}
->> +
->> +	/*
->> +	 * The LVDS block has its own dclk inversion select, separate from 
->> the
->> +	 * VOP's pin polarity. Both have to agree with what the panel 
->> samples on.
->> +	 */
->> +	regmap_write(lvds->grf, RK3568_GRF_VO_CON2,
->> +		     RK3568_LVDS0_DCLK_INV_SEL(negedge));
->> +
->> +	/* Set format */
->> +	return regmap_write(lvds->grf, RK3568_GRF_VO_CON0,
->> +			    RK3568_LVDS0_SELECT(lvds->format) |
->> +			    RK3568_LVDS0_MSBSEL(1));
->> +}
-> 
-> I think rk3568_lvds_poweron() and rk3568_lvds_grf_config() can be 
-> merged
-> to reduce extra register operations.
-
-Done
-
->> +
->> +static void rk3568_lvds_encoder_enable(struct drm_encoder *encoder)
->> +{
->> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
->> +	struct drm_display_mode *mode = 
->> &encoder->crtc->state->adjusted_mode;
->> +	int ret;
->> +
->> +	drm_panel_prepare(lvds->panel);
->> +
->> +	ret = rk3568_lvds_poweron(lvds);
->> +	if (ret) {
->> +		DRM_DEV_ERROR(lvds->dev, "failed to power on LVDS: %d\n", ret);
->> +		drm_panel_unprepare(lvds->panel);
->> +		return;
->> +	}
->> +
->> +	ret = rk3568_lvds_grf_config(encoder, mode);
->> +	if (ret) {
->> +		DRM_DEV_ERROR(lvds->dev, "failed to configure LVDS: %d\n", ret);
->> +		drm_panel_unprepare(lvds->panel);
->> +		return;
->> +	}
->> +
->> +	/*
->> +	 * Only now bring the D-PHY up. phy_power_on() runs the whole
->> +	 * inno_dsidphy_lvds_mode_enable() sequence - PLL and bandgap 
->> power-on,
->> +	 * a settle, PLL mode select, then a reset pulse of the serializer 
->> and
->> +	 * the lane enables. All of that has to happen with the block 
->> already
->> +	 * switched to LVDS mode in the GRF (above) and with the VOP's dclk
->> +	 * running, because the serializer is clocked from dclk and latches 
->> its
->> +	 * state out of that reset.
->> +	 *
->> +	 * Doing it at probe instead - as this driver used to - resets and
->> +	 * enables the serializer against a block that is not in LVDS mode 
->> yet
->> +	 * and has no input clock. Every register then reads back correct 
->> while
->> +	 * the lanes sit at common mode forever. Rockchip's BSP orders it 
->> this
->> +	 * way (GRF writes, then phy_set_mode + phy_power_on).
->> +	 */
-> 
-> I think this comment is redundant. These are internal details of
-> phy_set_mode() and don't need to be explained here. Also, the
-> ordering requirements are quite common. You can describe them in the
-> commit message.
-> 
-
-Done
-
->> +	ret = phy_set_mode(lvds->dphy, PHY_MODE_LVDS);
->> +	if (ret) {
->> +		DRM_DEV_ERROR(lvds->dev, "failed to set phy mode: %d\n", ret);
->> +		drm_panel_unprepare(lvds->panel);
->> +		return;
->> +	}
->> +
->> +	ret = phy_power_on(lvds->dphy);
->> +	if (ret) {
->> +		DRM_DEV_ERROR(lvds->dev, "failed to power on phy: %d\n", ret);
->> +		drm_panel_unprepare(lvds->panel);
->> +		return;
->> +	}
->> +
->> +	drm_panel_enable(lvds->panel);
->> +}
->> +
->> +static void rk3568_lvds_encoder_disable(struct drm_encoder *encoder)
->> +{
->> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
->> +
->> +	drm_panel_disable(lvds->panel);
->> +	phy_power_off(lvds->dphy);
->> +	rk3568_lvds_poweroff(lvds);
->> +	drm_panel_unprepare(lvds->panel);
->> +}
->> +
->>  static const
->>  struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
->>  	.enable = rk3288_lvds_encoder_enable,
->> @@ -449,6 +576,13 @@ struct drm_encoder_helper_funcs 
->> px30_lvds_encoder_helper_funcs = {
->>  	.atomic_check = rockchip_lvds_encoder_atomic_check,
->>  };
->> 
->> +static const
->> +struct drm_encoder_helper_funcs rk3568_lvds_encoder_helper_funcs = {
->> +	.enable = rk3568_lvds_encoder_enable,
->> +	.disable = rk3568_lvds_encoder_disable,
->> +	.atomic_check = rockchip_lvds_encoder_atomic_check,
->> +};
->> +
->>  static int rk3288_lvds_probe(struct platform_device *pdev,
->>  			     struct rockchip_lvds *lvds)
->>  {
->> @@ -512,6 +646,22 @@ static int px30_lvds_probe(struct platform_device 
->> *pdev,
->>  	return phy_power_on(lvds->dphy);
->>  }
->> 
->> +static int rk3568_lvds_probe(struct platform_device *pdev,
->> +			     struct rockchip_lvds *lvds)
->> +{
->> +	/*
->> +	 * Grab and init the phy, but do NOT power it on here - that is done 
->> in
->> +	 * rk3568_lvds_encoder_enable() once the GRF is in LVDS mode and 
->> dclk is
->> +	 * running. See the comment there. The GRF is not touched at probe
->> +	 * either: every bit of it is programmed from the enable path.
->> +	 */
-> 
-> Please see the comments above.
-
-Done
-
-> 
->> +	lvds->dphy = devm_phy_get(&pdev->dev, "dphy");
->> +	if (IS_ERR(lvds->dphy))
->> +		return PTR_ERR(lvds->dphy);
->> +
->> +	return phy_init(lvds->dphy);
->> +}
->> +
->>  static const struct rockchip_lvds_soc_data rk3288_lvds_data = {
->>  	.probe = rk3288_lvds_probe,
->>  	.helper_funcs = &rk3288_lvds_encoder_helper_funcs,
->> @@ -522,6 +672,11 @@ static const struct rockchip_lvds_soc_data 
->> px30_lvds_data = {
->>  	.helper_funcs = &px30_lvds_encoder_helper_funcs,
->>  };
->> 
->> +static const struct rockchip_lvds_soc_data rk3568_lvds_data = {
->> +	.probe = rk3568_lvds_probe,
->> +	.helper_funcs = &rk3568_lvds_encoder_helper_funcs,
->> +};
->> +
->>  static const struct of_device_id rockchip_lvds_dt_ids[] = {
->>  	{
->>  		.compatible = "rockchip,rk3288-lvds",
->> @@ -531,6 +686,10 @@ static const struct of_device_id 
->> rockchip_lvds_dt_ids[] = {
->>  		.compatible = "rockchip,px30-lvds",
->>  		.data = &px30_lvds_data
->>  	},
->> +	{
->> +		.compatible = "rockchip,rk3568-lvds",
->> +		.data = &rk3568_lvds_data
->> +	},
->>  	{}
->>  };
->>  MODULE_DEVICE_TABLE(of, rockchip_lvds_dt_ids);
->> @@ -601,6 +760,8 @@ static int rockchip_lvds_bind(struct device *dev, 
->> struct device *master,
->>  	encoder = &lvds->encoder.encoder;
->>  	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
->>  							     dev->of_node);
->> +	rockchip_drm_encoder_set_crtc_endpoint_id(&lvds->encoder,
->> +						  dev->of_node, 0, 0);
->> 
->>  	ret = drm_simple_encoder_init(drm_dev, encoder, 
->> DRM_MODE_ENCODER_LVDS);
->>  	if (ret < 0) {
->> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.h 
->> b/drivers/gpu/drm/rockchip/rockchip_lvds.h
->> index 2d92447..93d3415 100644
->> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.h
->> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.h
->> @@ -121,4 +121,14 @@
->>  #define   PX30_LVDS_P2S_EN(val)			FIELD_PREP_WM16(BIT(6), (val))
->>  #define   PX30_LVDS_VOP_SEL(val)		FIELD_PREP_WM16(BIT(1), (val))
->> 
->> +#define RK3568_GRF_VO_CON0			0x0360
->> +#define   RK3568_LVDS0_SELECT(val)		FIELD_PREP_WM16(GENMASK(5, 4), 
->> (val))
->> +#define   RK3568_LVDS0_MSBSEL(val)		FIELD_PREP_WM16(BIT(3), (val))
->> +
->> +#define RK3568_GRF_VO_CON2			0x0368
->> +#define   RK3568_LVDS0_DCLK_INV_SEL(val)	FIELD_PREP_WM16(BIT(9), 
->> (val))
->> +#define   RK3568_LVDS0_DCLK_DIV2_SEL(val)	FIELD_PREP_WM16(BIT(8), 
->> (val))
->> +#define   RK3568_LVDS0_MODE_EN(val)		FIELD_PREP_WM16(BIT(1), (val))
->> +#define   RK3568_LVDS0_P2S_EN(val)		FIELD_PREP_WM16(BIT(0), (val))
->> +
->>  #endif /* _ROCKCHIP_LVDS_ */
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gNy8yMS8yMDI2IDQ6MzEgUE0sIFJvayBNYXJrb3ZpxI0gd3JvdGU6Cj4gMjAuNy4yMDI2IDM6
+NTQsIGplIENoYW95aSBDaGVuIG5hcGlzYWwKPj4gSGVsbG8gUm9rLAo+Pgo+PiBUaGFuayB5b3Ug
+Zm9yIHlvdXIgcGF0Y2guIFBsZWFzZSBzZWUgdGhlIGNvbW1lbnQgYmVsb3c6Cj4+Cj4+IE9uIDcv
+MTcvMjAyNiA4OjAwIFBNLCBSb2sgTWFya292aWMgd3JvdGU6Cj4+PiBUaGUgUkszNTY4IExWRFMg
+dHJhbnNtaXR0ZXIgaGFzIG5vIHJlZ2lzdGVyIGJsb2NrIG9mIGl0cyBvd24uIEl0IGlzCj4+PiBk
+cml2ZW4gZW50aXJlbHkgdGhyb3VnaCB0aGUgR1JGIGFuZCByZS11c2VzIHRoZSBNSVBJIERTSTAg
+RC1QSFkgaW4KPj4+IFBIWV9NT0RFX0xWRFMsIHdoaWNoIHBoeS1yb2NrY2hpcC1pbm5vLWRzaWRw
+aHkgYWxyZWFkeSBzdXBwb3J0cy4KPj4+Cj4+PiBCYXNlZCBvbiBBbGliZWsgT21hcm92J3MgZWFy
+bGllciBwb3N0aW5nIFsxXSwgd2l0aCB0aGUgY2hhbmdlcyBiZWxvdy4KPj4+Cj4+PiBQb3dlciB0
+aGUgRC1QSFkgZnJvbSB0aGUgZW5jb2RlciBlbmFibGUgcGF0aCByYXRoZXIgdGhhbiBmcm9tIHBy
+b2JlLgo+Pj4gcGh5X3Bvd2VyX29uKCkgcnVucyB0aGUgcGh5IGRyaXZlcidzIHdob2xlIExWRFMg
+YnJpbmctdXA6IFBMTCBhbmQKPj4+IGJhbmRnYXAgcG93ZXItb24sIGEgc2V0dGxlLCBQTEwgbW9k
+ZSBzZWxlY3QsIHRoZW4gYSByZXNldCBwdWxzZSBvZiB0aGUKPj4+IHNlcmlhbGl6ZXIgYW5kIHRo
+ZSBsYW5lIGVuYWJsZXMuIE5vbmUgb2YgdGhhdCBpcyBzYWZlIGF0IHByb2JlIHRpbWUgLQo+Pj4g
+dGhlIEdSRiBoYXMgbm90IHlldCBzd2l0Y2hlZCB0aGUgYmxvY2sgdG8gTFZEUyBtb2RlIChMVkRT
+MF9NT0RFX0VOIGlzCj4+PiBzZXQgZnJvbSByazM1NjhfbHZkc19wb3dlcm9uKCksIGkuZS4gdGhl
+IGVuYWJsZSBwYXRoKSBhbmQgdGhlIFZPUCBpcwo+Pj4gbm90IGRyaXZpbmcgZGNsay4gVGhlIHNl
+cmlhbGl6ZXIgaXMgY2xvY2tlZCBmcm9tIGRjbGsgYW5kIGxhdGNoZXMgaXRzCj4+PiBzdGF0ZSBj
+b21pbmcgb3V0IG9mIHRoYXQgcmVzZXQsIHNvIGl0IGNvbWVzIHVwIGRlYWQgYW5kIHN0YXlzIGRl
+YWQuCj4+PiBUaGUgZmFpbHVyZSBpcyBzaWxlbnQ6IGV2ZXJ5IHJlZ2lzdGVyIGluIHRoZSBwaHks
+IHRoZSBHUkYgYW5kIHRoZSBWT1AKPj4+IHJlYWRzIGJhY2sgZXhhY3RseSBhcyBvbiBhIHdvcmtp
+bmcgc3lzdGVtIHdoaWxlIHRoZSBsYW5lcyBzaXQgYXQKPj4+IGNvbW1vbiBtb2RlIGFuZCBuZXZl
+ciB0b2dnbGUuCj4+Pgo+Pgo+PiBDb3VsZCB5b3UgcGxlYXNlIGNvbmZpcm0gdGhpcz8gQmFzZWQg
+b24gbXkgZWFybGllciB0ZXN0cywgYWZ0ZXIgUEhZCj4+IHBvd2Vyb24sIHJlLWRpc2FibGluZyBh
+bmQgcmUtZW5hYmxpbmcgdGhlIEdSRiBkaWQgbm90IHJlcHJvZHVjZSB0aGUKPj4gaXNzdWUgeW91
+IGRlc2NyaWJlZC4KPiAKPiBJIGNhbiBjb25maXJtIHRoYXQgdGhpcyBpcyBub3Qgd29ya2luZyBi
+dXQgSSB0ZXN0ZWR3aXRoIHdyaXRpbmcgcmVnaXN0ZXJzCj4gbWFudWFsbHkgd2l0aCBkZXZtZW0g
+YW5kIEkgY291bGQgbWFrZSBzb21ldGhpbmcgd3JvbmcuCj4gCj4gU2hvdWxkIEkgbGVhdmUgaXQg
+dGhpcyB3YXkgb3Igc2hvdWxkIEkgbW92ZSB0aGlzIGJhY2sgdG8gcHJvYmUgYW5kIHRyeSB0bwo+
+IG1ha2UgaXQgd29yayBpbiBlbmFibGUgYnkgc29tZSB0cmljayAoZGlzYWJlbC9lbmFibGUgR1JG
+KT8KPiAKCkp1c3Qgb3V0IG9mIGN1cmlvc2l0eS4gSSB0aGluayBpdCdzIGZpbmUgYXMgaXQgaXMg
+bm93IDopCgoKPj4KPj4+IFByb2dyYW0gUkszNTY4X0xWRFMwX0RDTEtfSU5WX1NFTCBmcm9tIHRo
+ZSBDUlRDIHN0YXRlJ3MgYnVzX2ZsYWdzIHNvCj4+PiB0aGUgcGFuZWwncyBkZWNsYXJlZCBwaXhl
+bGNsay1hY3RpdmUgaXMgaG9ub3VyZWQgb24gdGhlIExWRFMgYmxvY2sgYXMKPj4+IHdlbGwgYXMg
+b24gdGhlIFZPUCBwaW4gcG9sYXJpdHkuIEJvdGggaGF2ZSB0byBhZ3JlZSB3aXRoIHRoZSBlZGdl
+IHRoZQo+Pj4gcGFuZWwgc2FtcGxlcyBvbi4KPj4+Cj4+PiBSZS1hc3NlcnQgUkszNTY4X0xWRFMw
+X1AyU19FTiBpbiByazM1NjhfbHZkc19wb3dlcm9uKCkuCj4+PiByazM1NjhfbHZkc19wb3dlcm9m
+ZigpIGNsZWFycyBNT0RFX0VOIGFuZCBQMlNfRU4gdG9nZXRoZXIsIHNvIHNldHRpbmcKPj4+IFAy
+U19FTiBvbmNlIGF0IHByb2JlIHdvdWxkIGxlYXZlIHRoZSBwYXJhbGxlbC10by1zZXJpYWwgY29u
+dmVydGVyIG9mZgo+Pj4gYWZ0ZXIgdGhlIGZpcnN0IGRpc2FibGUvZW5hYmxlIGN5Y2xlLgo+Pj4K
+Pj4+IFVzZSByZWdtYXBfd3JpdGUoKSByYXRoZXIgdGhhbiByZWdtYXBfdXBkYXRlX2JpdHMoKSBm
+b3IgdGhlIEdSRi4gVGhlc2UKPj4+IHJlZ2lzdGVycyBhcmUgd3JpdGUtbWFza2VkIC0gdGhlIHVw
+cGVyIDE2IGJpdHMgc2VsZWN0IHdoaWNoIG9mIHRoZQo+Pj4gbG93ZXIgMTYgYSB3cml0ZSBtYXkg
+Y2hhbmdlIC0gc28gdGhlcmUgaXMgbm90aGluZyB0byBwcmVzZXJ2ZSBhbmQgbm8KPj4+IHJlYXNv
+biB0byByZWFkIGZpcnN0LiBQYXNzaW5nIGEgRklFTERfUFJFUF9XTTE2KCkgdmFsdWUgYXMgYm90
+aCB0aGUKPj4+IG1hc2sgYW5kIHRoZSB2YWx1ZSBvZiBhbiB1cGRhdGVfYml0cygpIGFwcGxpZXMg
+dGhlIG1hc2tpbmcgdHdpY2UgYW5kCj4+PiBvbmx5IHdvcmtzIGJ5IGFjY2lkZW50Lgo+Pj4KPj4+
+IEJldHdlZW4gdGhlIHR3bywgbm90aGluZyBuZWVkcyBwcm9ncmFtbWluZyBhdCBwcm9iZSBhdCBh
+bGw6IHRoZSBHUkYgaXMKPj4+IHdyaXR0ZW4gZW50aXJlbHkgZnJvbSB0aGUgZW5hYmxlIHBhdGgs
+IHNvIHB4MzBfbHZkc19wcm9iZSgpIGlzIGxlZnQKPj4+IGFsb25lIHJhdGhlciB0aGFuIGJlaW5n
+IHJlZmFjdG9yZWQgaW50byBhIHNoYXJlZCBwaHkgaGVscGVyLgo+Pj4KPj4+IFsxXSBodHRwczov
+L2xvcmUua2VybmVsLm9yZy9hbGwvMjAyMzAxMTkxODQ4MDcuMTcxMTMyLTEtYTFiYS5vbWFyb3ZA
+Z21haWwuY29tLwo+Pj4KPj4+IENvLWRldmVsb3BlZC1ieTogQWxpYmVrIE9tYXJvdiA8YTFiYS5v
+bWFyb3ZAZ21haWwuY29tPgo+Pj4gU2lnbmVkLW9mZi1ieTogQWxpYmVrIE9tYXJvdiA8YTFiYS5v
+bWFyb3ZAZ21haWwuY29tPgo+Pj4gU2lnbmVkLW9mZi1ieTogUm9rIE1hcmtvdmljIDxyb2tAa2Fu
+YXJkaWEuZXU+Cj4+PiBBc3Npc3RlZC1ieTogQ2xhdWRlOmNsYXVkZS1vcHVzLTQtOAo+Pj4gLS0t
+Cj4+PiDCoGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMgfCAxNjEgKysr
+KysrKysrKysrKysrKysrKysrKysKPj4+IMKgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2x2ZHMuaCB8wqAgMTAgKysKPj4+IMKgMiBmaWxlcyBjaGFuZ2VkLCAxNzEgaW5zZXJ0aW9u
+cygrKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
+aXBfbHZkcy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwo+Pj4g
+aW5kZXggOTVmYTBhOS4uZjQ1ZDA0YSAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9sdmRzLmMKPj4+IEBAIC00MzUsNiArNDM1LDEzMyBAQCBzdGF0aWMgdm9pZCBw
+eDMwX2x2ZHNfZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPj4+
+IMKgwqDCoMKgIGRybV9wYW5lbF91bnByZXBhcmUobHZkcy0+cGFuZWwpOwo+Pj4gwqB9Cj4+Pgo+
+Pj4gK3N0YXRpYyBpbnQgcmszNTY4X2x2ZHNfcG93ZXJvbihzdHJ1Y3Qgcm9ja2NoaXBfbHZkcyAq
+bHZkcykKPj4+ICt7Cj4+PiArwqDCoMKgIGludCByZXQ7Cj4+PiArCj4+PiArwqDCoMKgIHJldCA9
+IGNsa19lbmFibGUobHZkcy0+cGNsayk7Cj4+PiArwqDCoMKgIGlmIChyZXQgPCAwKSB7Cj4+PiAr
+wqDCoMKgwqDCoMKgwqAgRFJNX0RFVl9FUlJPUihsdmRzLT5kZXYsICJmYWlsZWQgdG8gZW5hYmxl
+IGx2ZHMgcGNsayAlZFxuIiwgcmV0KTsKPj4+ICvCoMKgwqDCoMKgwqDCoCByZXR1cm4gcmV0Owo+
+Pj4gK8KgwqDCoCB9Cj4+PiArCj4+PiArwqDCoMKgIHJldCA9IHBtX3J1bnRpbWVfZ2V0X3N5bmMo
+bHZkcy0+ZGV2KTsKPj4+ICvCoMKgwqAgaWYgKHJldCA8IDApIHsKPj4+ICvCoMKgwqDCoMKgwqDC
+oCBEUk1fREVWX0VSUk9SKGx2ZHMtPmRldiwgImZhaWxlZCB0byBnZXQgcG0gcnVudGltZTogJWRc
+biIsIHJldCk7Cj4+PiArwqDCoMKgwqDCoMKgwqAgY2xrX2Rpc2FibGUobHZkcy0+cGNsayk7Cj4+
+PiArwqDCoMKgwqDCoMKgwqAgcmV0dXJuIHJldDsKPj4+ICvCoMKgwqAgfQo+Pj4gKwo+Pj4gK8Kg
+wqDCoCAvKgo+Pj4gK8KgwqDCoMKgICogRW5hYmxlIExWRFMgbW9kZSBhbmQgdGhlIHBhcmFsbGVs
+LXRvLXNlcmlhbCBjb252ZXJ0ZXIuIFRoZXNlIGFyZQo+Pj4gK8KgwqDCoMKgICogd3JpdGUtbWFz
+a2VkIHJlZ2lzdGVycywgc28gYSBwbGFpbiB3cml0ZSBvbmx5IHRvdWNoZXMgdGhlIGJpdHMgbmFt
+ZWQKPj4+ICvCoMKgwqDCoCAqIGhlcmU7IHRoZXJlIGlzIG5vdGhpbmcgdG8gcHJlc2VydmUgYW5k
+IG5vIG5lZWQgdG8gcmVhZCBmaXJzdC4KPj4+ICvCoMKgwqDCoCAqLwo+Pgo+PiBJIHRoaW5rIHRo
+aXMgY29tbWVudCBpcyByZWR1bmRhbnQuIFdlIGFsbCBrbm93IHRoaXMgaXMgYSBjb21tb24gZGVz
+aWduCj4+IG9uIFJvY2tjaGlwIHBsYXRmb3JtLCByaWdodD8gOikKPj4KPiAKPiBEb25lCj4gCj4+
+PiArwqDCoMKgIHJldHVybiByZWdtYXBfd3JpdGUobHZkcy0+Z3JmLCBSSzM1NjhfR1JGX1ZPX0NP
+TjIsCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFJLMzU2OF9MVkRTMF9NT0RF
+X0VOKDEpIHwKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgUkszNTY4X0xWRFMw
+X1AyU19FTigxKSk7Cj4+PiArfQo+Pj4gKwo+Pj4gK3N0YXRpYyB2b2lkIHJrMzU2OF9sdmRzX3Bv
+d2Vyb2ZmKHN0cnVjdCByb2NrY2hpcF9sdmRzICpsdmRzKQo+Pj4gK3sKPj4+ICvCoMKgwqAgcmVn
+bWFwX3dyaXRlKGx2ZHMtPmdyZiwgUkszNTY4X0dSRl9WT19DT04yLAo+Pj4gK8KgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCBSSzM1NjhfTFZEUzBfTU9ERV9FTigwKSB8IFJLMzU2OF9MVkRTMF9QMlNf
+RU4oMCkpOwo+Pj4gKwo+Pj4gK8KgwqDCoCBwbV9ydW50aW1lX3B1dChsdmRzLT5kZXYpOwo+Pj4g
+K8KgwqDCoCBjbGtfZGlzYWJsZShsdmRzLT5wY2xrKTsKPj4+ICt9Cj4+PiArCj4+PiArc3RhdGlj
+IGludCByazM1NjhfbHZkc19ncmZfY29uZmlnKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwK
+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBkcm1fZGlzcGxh
+eV9tb2RlICptb2RlKQo+Pj4gK3sKPj4+ICvCoMKgwqAgc3RydWN0IHJvY2tjaGlwX2x2ZHMgKmx2
+ZHMgPSBlbmNvZGVyX3RvX2x2ZHMoZW5jb2Rlcik7Cj4+PiArwqDCoMKgIHN0cnVjdCByb2NrY2hp
+cF9jcnRjX3N0YXRlICpzID0KPj4+ICvCoMKgwqDCoMKgwqDCoCB0b19yb2NrY2hpcF9jcnRjX3N0
+YXRlKGVuY29kZXItPmNydGMtPnN0YXRlKTsKPj4+ICvCoMKgwqAgYm9vbCBuZWdlZGdlID0gISEo
+cy0+YnVzX2ZsYWdzICYgRFJNX0JVU19GTEFHX1BJWERBVEFfRFJJVkVfTkVHRURHRSk7Cj4+PiAr
+Cj4+PiArwqDCoMKgIGlmIChsdmRzLT5vdXRwdXQgIT0gRElTUExBWV9PVVRQVVRfTFZEUykgewo+
+Pj4gK8KgwqDCoMKgwqDCoMKgIERSTV9ERVZfRVJST1IobHZkcy0+ZGV2LCAiVW5zdXBwb3J0ZWQg
+ZGlzcGxheSBvdXRwdXQgJWRcbiIsCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCBsdmRzLT5vdXRwdXQpOwo+Pj4gK8KgwqDCoMKgwqDCoMKgIHJldHVybiAtRUlOVkFMOwo+
+Pj4gK8KgwqDCoCB9Cj4+PiArCj4+PiArwqDCoMKgIC8qCj4+PiArwqDCoMKgwqAgKiBUaGUgTFZE
+UyBibG9jayBoYXMgaXRzIG93biBkY2xrIGludmVyc2lvbiBzZWxlY3QsIHNlcGFyYXRlIGZyb20g
+dGhlCj4+PiArwqDCoMKgwqAgKiBWT1AncyBwaW4gcG9sYXJpdHkuIEJvdGggaGF2ZSB0byBhZ3Jl
+ZSB3aXRoIHdoYXQgdGhlIHBhbmVsIHNhbXBsZXMgb24uCj4+PiArwqDCoMKgwqAgKi8KPj4+ICvC
+oMKgwqAgcmVnbWFwX3dyaXRlKGx2ZHMtPmdyZiwgUkszNTY4X0dSRl9WT19DT04yLAo+Pj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBSSzM1NjhfTFZEUzBfRENMS19JTlZfU0VMKG5lZ2VkZ2Up
+KTsKPj4+ICsKPj4+ICvCoMKgwqAgLyogU2V0IGZvcm1hdCAqLwo+Pj4gK8KgwqDCoCByZXR1cm4g
+cmVnbWFwX3dyaXRlKGx2ZHMtPmdyZiwgUkszNTY4X0dSRl9WT19DT04wLAo+Pj4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBSSzM1NjhfTFZEUzBfU0VMRUNUKGx2ZHMtPmZvcm1hdCkg
+fAo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBSSzM1NjhfTFZEUzBfTVNCU0VM
+KDEpKTsKPj4+ICt9Cj4+Cj4+IEkgdGhpbmsgcmszNTY4X2x2ZHNfcG93ZXJvbigpIGFuZCByazM1
+NjhfbHZkc19ncmZfY29uZmlnKCkgY2FuIGJlIG1lcmdlZAo+PiB0byByZWR1Y2UgZXh0cmEgcmVn
+aXN0ZXIgb3BlcmF0aW9ucy4KPiAKPiBEb25lCj4gCj4+PiArCj4+PiArc3RhdGljIHZvaWQgcmsz
+NTY4X2x2ZHNfZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+Pj4g
+K3sKPj4+ICvCoMKgwqAgc3RydWN0IHJvY2tjaGlwX2x2ZHMgKmx2ZHMgPSBlbmNvZGVyX3RvX2x2
+ZHMoZW5jb2Rlcik7Cj4+PiArwqDCoMKgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlID0g
+JmVuY29kZXItPmNydGMtPnN0YXRlLT5hZGp1c3RlZF9tb2RlOwo+Pj4gK8KgwqDCoCBpbnQgcmV0
+Owo+Pj4gKwo+Pj4gK8KgwqDCoCBkcm1fcGFuZWxfcHJlcGFyZShsdmRzLT5wYW5lbCk7Cj4+PiAr
+Cj4+PiArwqDCoMKgIHJldCA9IHJrMzU2OF9sdmRzX3Bvd2Vyb24obHZkcyk7Cj4+PiArwqDCoMKg
+IGlmIChyZXQpIHsKPj4+ICvCoMKgwqDCoMKgwqDCoCBEUk1fREVWX0VSUk9SKGx2ZHMtPmRldiwg
+ImZhaWxlZCB0byBwb3dlciBvbiBMVkRTOiAlZFxuIiwgcmV0KTsKPj4+ICvCoMKgwqDCoMKgwqDC
+oCBkcm1fcGFuZWxfdW5wcmVwYXJlKGx2ZHMtPnBhbmVsKTsKPj4+ICvCoMKgwqDCoMKgwqDCoCBy
+ZXR1cm47Cj4+PiArwqDCoMKgIH0KPj4+ICsKPj4+ICvCoMKgwqAgcmV0ID0gcmszNTY4X2x2ZHNf
+Z3JmX2NvbmZpZyhlbmNvZGVyLCBtb2RlKTsKPj4+ICvCoMKgwqAgaWYgKHJldCkgewo+Pj4gK8Kg
+wqDCoMKgwqDCoMKgIERSTV9ERVZfRVJST1IobHZkcy0+ZGV2LCAiZmFpbGVkIHRvIGNvbmZpZ3Vy
+ZSBMVkRTOiAlZFxuIiwgcmV0KTsKPj4+ICvCoMKgwqDCoMKgwqDCoCBkcm1fcGFuZWxfdW5wcmVw
+YXJlKGx2ZHMtPnBhbmVsKTsKPj4+ICvCoMKgwqDCoMKgwqDCoCByZXR1cm47Cj4+PiArwqDCoMKg
+IH0KPj4+ICsKPj4+ICvCoMKgwqAgLyoKPj4+ICvCoMKgwqDCoCAqIE9ubHkgbm93IGJyaW5nIHRo
+ZSBELVBIWSB1cC4gcGh5X3Bvd2VyX29uKCkgcnVucyB0aGUgd2hvbGUKPj4+ICvCoMKgwqDCoCAq
+IGlubm9fZHNpZHBoeV9sdmRzX21vZGVfZW5hYmxlKCkgc2VxdWVuY2UgLSBQTEwgYW5kIGJhbmRn
+YXAgcG93ZXItb24sCj4+PiArwqDCoMKgwqAgKiBhIHNldHRsZSwgUExMIG1vZGUgc2VsZWN0LCB0
+aGVuIGEgcmVzZXQgcHVsc2Ugb2YgdGhlIHNlcmlhbGl6ZXIgYW5kCj4+PiArwqDCoMKgwqAgKiB0
+aGUgbGFuZSBlbmFibGVzLiBBbGwgb2YgdGhhdCBoYXMgdG8gaGFwcGVuIHdpdGggdGhlIGJsb2Nr
+IGFscmVhZHkKPj4+ICvCoMKgwqDCoCAqIHN3aXRjaGVkIHRvIExWRFMgbW9kZSBpbiB0aGUgR1JG
+IChhYm92ZSkgYW5kIHdpdGggdGhlIFZPUCdzIGRjbGsKPj4+ICvCoMKgwqDCoCAqIHJ1bm5pbmcs
+IGJlY2F1c2UgdGhlIHNlcmlhbGl6ZXIgaXMgY2xvY2tlZCBmcm9tIGRjbGsgYW5kIGxhdGNoZXMg
+aXRzCj4+PiArwqDCoMKgwqAgKiBzdGF0ZSBvdXQgb2YgdGhhdCByZXNldC4KPj4+ICvCoMKgwqDC
+oCAqCj4+PiArwqDCoMKgwqAgKiBEb2luZyBpdCBhdCBwcm9iZSBpbnN0ZWFkIC0gYXMgdGhpcyBk
+cml2ZXIgdXNlZCB0byAtIHJlc2V0cyBhbmQKPj4+ICvCoMKgwqDCoCAqIGVuYWJsZXMgdGhlIHNl
+cmlhbGl6ZXIgYWdhaW5zdCBhIGJsb2NrIHRoYXQgaXMgbm90IGluIExWRFMgbW9kZSB5ZXQKPj4+
+ICvCoMKgwqDCoCAqIGFuZCBoYXMgbm8gaW5wdXQgY2xvY2suIEV2ZXJ5IHJlZ2lzdGVyIHRoZW4g
+cmVhZHMgYmFjayBjb3JyZWN0IHdoaWxlCj4+PiArwqDCoMKgwqAgKiB0aGUgbGFuZXMgc2l0IGF0
+IGNvbW1vbiBtb2RlIGZvcmV2ZXIuIFJvY2tjaGlwJ3MgQlNQIG9yZGVycyBpdCB0aGlzCj4+PiAr
+wqDCoMKgwqAgKiB3YXkgKEdSRiB3cml0ZXMsIHRoZW4gcGh5X3NldF9tb2RlICsgcGh5X3Bvd2Vy
+X29uKS4KPj4+ICvCoMKgwqDCoCAqLwo+Pgo+PiBJIHRoaW5rIHRoaXMgY29tbWVudCBpcyByZWR1
+bmRhbnQuIFRoZXNlIGFyZSBpbnRlcm5hbCBkZXRhaWxzIG9mCj4+IHBoeV9zZXRfbW9kZSgpIGFu
+ZCBkb24ndCBuZWVkIHRvIGJlIGV4cGxhaW5lZCBoZXJlLiBBbHNvLCB0aGUKPj4gb3JkZXJpbmcg
+cmVxdWlyZW1lbnRzIGFyZSBxdWl0ZSBjb21tb24uIFlvdSBjYW4gZGVzY3JpYmUgdGhlbSBpbiB0
+aGUKPj4gY29tbWl0IG1lc3NhZ2UuCj4+Cj4gCj4gRG9uZQo+IAo+Pj4gK8KgwqDCoCByZXQgPSBw
+aHlfc2V0X21vZGUobHZkcy0+ZHBoeSwgUEhZX01PREVfTFZEUyk7Cj4+PiArwqDCoMKgIGlmIChy
+ZXQpIHsKPj4+ICvCoMKgwqDCoMKgwqDCoCBEUk1fREVWX0VSUk9SKGx2ZHMtPmRldiwgImZhaWxl
+ZCB0byBzZXQgcGh5IG1vZGU6ICVkXG4iLCByZXQpOwo+Pj4gK8KgwqDCoMKgwqDCoMKgIGRybV9w
+YW5lbF91bnByZXBhcmUobHZkcy0+cGFuZWwpOwo+Pj4gK8KgwqDCoMKgwqDCoMKgIHJldHVybjsK
+Pj4+ICvCoMKgwqAgfQo+Pj4gKwo+Pj4gK8KgwqDCoCByZXQgPSBwaHlfcG93ZXJfb24obHZkcy0+
+ZHBoeSk7Cj4+PiArwqDCoMKgIGlmIChyZXQpIHsKPj4+ICvCoMKgwqDCoMKgwqDCoCBEUk1fREVW
+X0VSUk9SKGx2ZHMtPmRldiwgImZhaWxlZCB0byBwb3dlciBvbiBwaHk6ICVkXG4iLCByZXQpOwo+
+Pj4gK8KgwqDCoMKgwqDCoMKgIGRybV9wYW5lbF91bnByZXBhcmUobHZkcy0+cGFuZWwpOwo+Pj4g
+K8KgwqDCoMKgwqDCoMKgIHJldHVybjsKPj4+ICvCoMKgwqAgfQo+Pj4gKwo+Pj4gK8KgwqDCoCBk
+cm1fcGFuZWxfZW5hYmxlKGx2ZHMtPnBhbmVsKTsKPj4+ICt9Cj4+PiArCj4+PiArc3RhdGljIHZv
+aWQgcmszNTY4X2x2ZHNfZW5jb2Rlcl9kaXNhYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2Rl
+cikKPj4+ICt7Cj4+PiArwqDCoMKgIHN0cnVjdCByb2NrY2hpcF9sdmRzICpsdmRzID0gZW5jb2Rl
+cl90b19sdmRzKGVuY29kZXIpOwo+Pj4gKwo+Pj4gK8KgwqDCoCBkcm1fcGFuZWxfZGlzYWJsZShs
+dmRzLT5wYW5lbCk7Cj4+PiArwqDCoMKgIHBoeV9wb3dlcl9vZmYobHZkcy0+ZHBoeSk7Cj4+PiAr
+wqDCoMKgIHJrMzU2OF9sdmRzX3Bvd2Vyb2ZmKGx2ZHMpOwo+Pj4gK8KgwqDCoCBkcm1fcGFuZWxf
+dW5wcmVwYXJlKGx2ZHMtPnBhbmVsKTsKPj4+ICt9Cj4+PiArCj4+PiDCoHN0YXRpYyBjb25zdAo+
+Pj4gwqBzdHJ1Y3QgZHJtX2VuY29kZXJfaGVscGVyX2Z1bmNzIHJrMzI4OF9sdmRzX2VuY29kZXJf
+aGVscGVyX2Z1bmNzID0gewo+Pj4gwqDCoMKgwqAgLmVuYWJsZSA9IHJrMzI4OF9sdmRzX2VuY29k
+ZXJfZW5hYmxlLAo+Pj4gQEAgLTQ0OSw2ICs1NzYsMTMgQEAgc3RydWN0IGRybV9lbmNvZGVyX2hl
+bHBlcl9mdW5jcyBweDMwX2x2ZHNfZW5jb2Rlcl9oZWxwZXJfZnVuY3MgPSB7Cj4+PiDCoMKgwqDC
+oCAuYXRvbWljX2NoZWNrID0gcm9ja2NoaXBfbHZkc19lbmNvZGVyX2F0b21pY19jaGVjaywKPj4+
+IMKgfTsKPj4+Cj4+PiArc3RhdGljIGNvbnN0Cj4+PiArc3RydWN0IGRybV9lbmNvZGVyX2hlbHBl
+cl9mdW5jcyByazM1NjhfbHZkc19lbmNvZGVyX2hlbHBlcl9mdW5jcyA9IHsKPj4+ICvCoMKgwqAg
+LmVuYWJsZSA9IHJrMzU2OF9sdmRzX2VuY29kZXJfZW5hYmxlLAo+Pj4gK8KgwqDCoCAuZGlzYWJs
+ZSA9IHJrMzU2OF9sdmRzX2VuY29kZXJfZGlzYWJsZSwKPj4+ICvCoMKgwqAgLmF0b21pY19jaGVj
+ayA9IHJvY2tjaGlwX2x2ZHNfZW5jb2Rlcl9hdG9taWNfY2hlY2ssCj4+PiArfTsKPj4+ICsKPj4+
+IMKgc3RhdGljIGludCByazMyODhfbHZkc19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpw
+ZGV2LAo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3Qgcm9ja2No
+aXBfbHZkcyAqbHZkcykKPj4+IMKgewo+Pj4gQEAgLTUxMiw2ICs2NDYsMjIgQEAgc3RhdGljIGlu
+dCBweDMwX2x2ZHNfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKPj4+IMKgwqDC
+oMKgIHJldHVybiBwaHlfcG93ZXJfb24obHZkcy0+ZHBoeSk7Cj4+PiDCoH0KPj4+Cj4+PiArc3Rh
+dGljIGludCByazM1NjhfbHZkc19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+
+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCByb2NrY2hpcF9sdmRz
+ICpsdmRzKQo+Pj4gK3sKPj4+ICvCoMKgwqAgLyoKPj4+ICvCoMKgwqDCoCAqIEdyYWIgYW5kIGlu
+aXQgdGhlIHBoeSwgYnV0IGRvIE5PVCBwb3dlciBpdCBvbiBoZXJlIC0gdGhhdCBpcyBkb25lIGlu
+Cj4+PiArwqDCoMKgwqAgKiByazM1NjhfbHZkc19lbmNvZGVyX2VuYWJsZSgpIG9uY2UgdGhlIEdS
+RiBpcyBpbiBMVkRTIG1vZGUgYW5kIGRjbGsgaXMKPj4+ICvCoMKgwqDCoCAqIHJ1bm5pbmcuIFNl
+ZSB0aGUgY29tbWVudCB0aGVyZS4gVGhlIEdSRiBpcyBub3QgdG91Y2hlZCBhdCBwcm9iZQo+Pj4g
+K8KgwqDCoMKgICogZWl0aGVyOiBldmVyeSBiaXQgb2YgaXQgaXMgcHJvZ3JhbW1lZCBmcm9tIHRo
+ZSBlbmFibGUgcGF0aC4KPj4+ICvCoMKgwqDCoCAqLwo+Pgo+PiBQbGVhc2Ugc2VlIHRoZSBjb21t
+ZW50cyBhYm92ZS4KPiAKPiBEb25lCj4gCj4+Cj4+PiArwqDCoMKgIGx2ZHMtPmRwaHkgPSBkZXZt
+X3BoeV9nZXQoJnBkZXYtPmRldiwgImRwaHkiKTsKPj4+ICvCoMKgwqAgaWYgKElTX0VSUihsdmRz
+LT5kcGh5KSkKPj4+ICvCoMKgwqDCoMKgwqDCoCByZXR1cm4gUFRSX0VSUihsdmRzLT5kcGh5KTsK
+Pj4+ICsKPj4+ICvCoMKgwqAgcmV0dXJuIHBoeV9pbml0KGx2ZHMtPmRwaHkpOwo+Pj4gK30KPj4+
+ICsKPj4+IMKgc3RhdGljIGNvbnN0IHN0cnVjdCByb2NrY2hpcF9sdmRzX3NvY19kYXRhIHJrMzI4
+OF9sdmRzX2RhdGEgPSB7Cj4+PiDCoMKgwqDCoCAucHJvYmUgPSByazMyODhfbHZkc19wcm9iZSwK
+Pj4+IMKgwqDCoMKgIC5oZWxwZXJfZnVuY3MgPSAmcmszMjg4X2x2ZHNfZW5jb2Rlcl9oZWxwZXJf
+ZnVuY3MsCj4+PiBAQCAtNTIyLDYgKzY3MiwxMSBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJvY2tj
+aGlwX2x2ZHNfc29jX2RhdGEgcHgzMF9sdmRzX2RhdGEgPSB7Cj4+PiDCoMKgwqDCoCAuaGVscGVy
+X2Z1bmNzID0gJnB4MzBfbHZkc19lbmNvZGVyX2hlbHBlcl9mdW5jcywKPj4+IMKgfTsKPj4+Cj4+
+PiArc3RhdGljIGNvbnN0IHN0cnVjdCByb2NrY2hpcF9sdmRzX3NvY19kYXRhIHJrMzU2OF9sdmRz
+X2RhdGEgPSB7Cj4+PiArwqDCoMKgIC5wcm9iZSA9IHJrMzU2OF9sdmRzX3Byb2JlLAo+Pj4gK8Kg
+wqDCoCAuaGVscGVyX2Z1bmNzID0gJnJrMzU2OF9sdmRzX2VuY29kZXJfaGVscGVyX2Z1bmNzLAo+
+Pj4gK307Cj4+PiArCj4+PiDCoHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIHJvY2tj
+aGlwX2x2ZHNfZHRfaWRzW10gPSB7Cj4+PiDCoMKgwqDCoCB7Cj4+PiDCoMKgwqDCoMKgwqDCoMKg
+IC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzI4OC1sdmRzIiwKPj4+IEBAIC01MzEsNiArNjg2
+LDEwIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIHJvY2tjaGlwX2x2ZHNfZHRf
+aWRzW10gPSB7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIC5jb21wYXRpYmxlID0gInJvY2tjaGlwLHB4
+MzAtbHZkcyIsCj4+PiDCoMKgwqDCoMKgwqDCoMKgIC5kYXRhID0gJnB4MzBfbHZkc19kYXRhCj4+
+PiDCoMKgwqDCoCB9LAo+Pj4gK8KgwqDCoCB7Cj4+PiArwqDCoMKgwqDCoMKgwqAgLmNvbXBhdGli
+bGUgPSAicm9ja2NoaXAscmszNTY4LWx2ZHMiLAo+Pj4gK8KgwqDCoMKgwqDCoMKgIC5kYXRhID0g
+JnJrMzU2OF9sdmRzX2RhdGEKPj4+ICvCoMKgwqAgfSwKPj4+IMKgwqDCoMKgIHt9Cj4+PiDCoH07
+Cj4+PiDCoE1PRFVMRV9ERVZJQ0VfVEFCTEUob2YsIHJvY2tjaGlwX2x2ZHNfZHRfaWRzKTsKPj4+
+IEBAIC02MDEsNiArNzYwLDggQEAgc3RhdGljIGludCByb2NrY2hpcF9sdmRzX2JpbmQoc3RydWN0
+IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4+PiDCoMKgwqDCoCBlbmNvZGVy
+ID0gJmx2ZHMtPmVuY29kZXIuZW5jb2RlcjsKPj4+IMKgwqDCoMKgIGVuY29kZXItPnBvc3NpYmxl
+X2NydGNzID0gZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3MoZHJtX2RldiwKPj4+IMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCBkZXYtPm9mX25vZGUpOwo+Pj4gK8KgwqDCoCByb2NrY2hpcF9kcm1fZW5jb2Rlcl9zZXRfY3J0
+Y19lbmRwb2ludF9pZCgmbHZkcy0+ZW5jb2RlciwKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBkZXYtPm9mX25vZGUsIDAsIDApOwo+Pj4KPj4+
+IMKgwqDCoMKgIHJldCA9IGRybV9zaW1wbGVfZW5jb2Rlcl9pbml0KGRybV9kZXYsIGVuY29kZXIs
+IERSTV9NT0RFX0VOQ09ERVJfTFZEUyk7Cj4+PiDCoMKgwqDCoCBpZiAocmV0IDwgMCkgewo+Pj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmggYi9k
+cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5oCj4+PiBpbmRleCAyZDkyNDQ3
+Li45M2QzNDE1IDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2x2ZHMuaAo+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2
+ZHMuaAo+Pj4gQEAgLTEyMSw0ICsxMjEsMTQgQEAKPj4+IMKgI2RlZmluZcKgwqAgUFgzMF9MVkRT
+X1AyU19FTih2YWwpwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBGSUVMRF9QUkVQX1dNMTYoQklUKDYp
+LCAodmFsKSkKPj4+IMKgI2RlZmluZcKgwqAgUFgzMF9MVkRTX1ZPUF9TRUwodmFsKcKgwqDCoMKg
+wqDCoMKgIEZJRUxEX1BSRVBfV00xNihCSVQoMSksICh2YWwpKQo+Pj4KPj4+ICsjZGVmaW5lIFJL
+MzU2OF9HUkZfVk9fQ09OMMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMHgwMzYwCj4+PiArI2RlZmlu
+ZcKgwqAgUkszNTY4X0xWRFMwX1NFTEVDVCh2YWwpwqDCoMKgwqDCoMKgwqAgRklFTERfUFJFUF9X
+TTE2KEdFTk1BU0soNSwgNCksICh2YWwpKQo+Pj4gKyNkZWZpbmXCoMKgIFJLMzU2OF9MVkRTMF9N
+U0JTRUwodmFsKcKgwqDCoMKgwqDCoMKgIEZJRUxEX1BSRVBfV00xNihCSVQoMyksICh2YWwpKQo+
+Pj4gKwo+Pj4gKyNkZWZpbmUgUkszNTY4X0dSRl9WT19DT04ywqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCAweDAzNjgKPj4+ICsjZGVmaW5lwqDCoCBSSzM1NjhfTFZEUzBfRENMS19JTlZfU0VMKHZhbCnC
+oMKgwqAgRklFTERfUFJFUF9XTTE2KEJJVCg5KSwgKHZhbCkpCj4+PiArI2RlZmluZcKgwqAgUksz
+NTY4X0xWRFMwX0RDTEtfRElWMl9TRUwodmFsKcKgwqDCoCBGSUVMRF9QUkVQX1dNMTYoQklUKDgp
+LCAodmFsKSkKPj4+ICsjZGVmaW5lwqDCoCBSSzM1NjhfTFZEUzBfTU9ERV9FTih2YWwpwqDCoMKg
+wqDCoMKgwqAgRklFTERfUFJFUF9XTTE2KEJJVCgxKSwgKHZhbCkpCj4+PiArI2RlZmluZcKgwqAg
+UkszNTY4X0xWRFMwX1AyU19FTih2YWwpwqDCoMKgwqDCoMKgwqAgRklFTERfUFJFUF9XTTE2KEJJ
+VCgwKSwgKHZhbCkpCj4+PiArCj4+PiDCoCNlbmRpZiAvKiBfUk9DS0NISVBfTFZEU18gKi8KPiAK
+PiAKCi0tIApCZXN0LCAKQ2hhb3lpCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
