@@ -4,61 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B375EC4451C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 17:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB9AC4451C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 17:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z0PGnLgsFJDrd16ZWzpdDSHdKt5jr2e/X5LDdyCK8XI=; b=KNsKd+hThLOlxP
-	9riP0xq811SpJ3JRol4SeF0xpYs9B0N3RPbNn3BbXiQrCSA4ryvEzuT6KME6/xslKvBkyhyd3pVCs
-	5Im6ihjq10FDuMurnk+G/FU1PbNIM8O8LDUCUnCBxoaBAq1cKqTbrqxWSerx+br07SUMLo/MIj6L8
-	jLuDhvQUQgIhboaA34hw4I+Of8WblP+vQmIYglmIvjh68EEzvRQqe+xL57pFAOjv2E79oyhOCuqWY
-	XbuHuJEjZd4Lc1Nd7p8L5OzAGbOWj2rbLa7KUU4ZFWKf6jttPPRMDI4mU0AcE62l7YDk+hFdNZwMV
-	O+Y9pyayBzHAPb7gBwVw==;
+	List-Owner; bh=2//5oDcHy7ZrnXbGSyS9qNhnEava3sxfv+o2acfSaKU=; b=ajTfBTQxRzDjjo
+	FWlNi7/umShIBHmYHg6G9TTc5pOOOp19G5vO1dW/VwRfdyaeuP7aq18QB8wdWcm+O2dz+UuEILA1U
+	BOX7o7T39NHG8KQUaJvu0LUA+MPj0Kk0l4Oop1mldnqF9jeyRmJ6N7DsN2kwLCt92s+tk9aeLsO9w
+	wu9DYRRkeJVstbYSvJy1WYBhBjb6Ufe9UaoGby3RhmvFNl4+uE1+o3ro67nGuplKO1NyFK5F/QyKX
+	QEbrF18c0FSlzzMdTX/dxfX4r1RdBUP1AkPKqI0ffnfQKodUljdd41q5lBxc2BO+B+FYNaeI6LzTj
+	ZZ1qdrHJrUIbQtMZALgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmERM-0000000A4nl-3CkL;
-	Tue, 21 Jul 2026 17:39:36 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wmEe4-0000000A6sG-3RjU;
+	Tue, 21 Jul 2026 17:52:44 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmERL-0000000A4nf-45Yv
-	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Jul 2026 17:39:35 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id AD16143462;
-	Tue, 21 Jul 2026 17:39:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23ACE1F00A3A;
-	Tue, 21 Jul 2026 17:39:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1784655575;
-	bh=GlbGvjMibPj32McD7/YiBxAzyx1fK+eJ0ZlcnZttDtE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=jpa9fVRZoiSxyLGWA1YCtu9pTtihfQhJuOJYt1ZtqJndj3hQr6qdeRdP0TajYRTcq
-	 N3Oug4GXQuvjOPgnU3pKUCjdteGcTSSHS/2TxcvpadQrJZhT7TIkfaIlcBtN7aiY8N
-	 2botSi4qp7jS8e8W1stNPL4Rys6rEXskhUzm1qLQ=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: stable@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	patches@lists.linux.dev,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	linux-rockchip@lists.infradead.org,
-	Sasha Levin <sashal@kernel.org>
-Subject: [PATCH 6.18 0062/1611] drm/rockchip: Test for imported buffers with drm_gem_is_imported()
-Date: Tue, 21 Jul 2026 17:02:58 +0200
-Message-ID: <20260721152516.225613125@linuxfoundation.org>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260721152514.750365251@linuxfoundation.org>
-References: <20260721152514.750365251@linuxfoundation.org>
-User-Agent: quilt/0.69
-X-stable: review
-X-Patchwork-Hint: ignore
+	id 1wmEe1-0000000A6pY-0gXa;
+	Tue, 21 Jul 2026 17:52:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784656358;
+	bh=yqpVLOEejS7yByY/WZUm/x4WfYEFQ2/hVy7t4pQcRKc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=Pt+YCKQDFuazV2YP/mISTPWvqodVtSR3syjtxb/5rmN7rRM1FUQ9M2SBYYP8meOgr
+	 bP5cT8PcAdwiHBpHBCT/eX1G9FAZm81qwKD1QKYMkxnwtFJHy6GcaXCidZ22BDMNGd
+	 RWb3byBDvmEq7Z0tedti66OZxEmScA630rtyCydLUJ7m6FH7wsv1joMFB94n4GURSM
+	 /ZtNDwTvmymMXOa6mxS0ZWJlCj5+3jK0YOhQWwN0Ohm0w1JxtsycgrUl0faRZi5awB
+	 dATMXfezosn8g6/KEotYjHs52PNn9/A/pv6hEKc9sFLOhYLu6OvYIf3ykGCANm3UXQ
+	 uPkNNfkCEX31g==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E0BEC17E0909;
+	Tue, 21 Jul 2026 19:52:37 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 95960480028; Tue, 21 Jul 2026 19:52:37 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Tue, 21 Jul 2026 19:52:31 +0200
+Subject: [PATCH v4 01/10] drm/bridge: synopsys: dw-dp: Fix incorrect
+ resource lifetimes in bind callback
 MIME-Version: 1.0
+Message-Id: <20260721-synopsys-dw-dp-improvements-v4-1-f0f4a4ede712@collabora.com>
+References: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
+In-Reply-To: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9360;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=yqpVLOEejS7yByY/WZUm/x4WfYEFQ2/hVy7t4pQcRKc=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpfseU9XxfDfQ/wHCKHTMPVKMxmMETcyld1v
+ ljF5/WOYqa8Q4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqX7HlAAoJENju1/PI
+ O/qaIcQQAJHNIo3E8159QSmospxKXv9RinRzXEipAwiGBFbT47n3jb/k38wLBV3h7lrkH55yMJV
+ l2VeH7f/680/NXZiI9cmCeedvQeEShND8FxY9wY/q8uoimCLvYvENXw3BLyBrXhJKDrLmVmwPIb
+ ZDHljT2l4Q00vz7diRzJGw6DBzK8Gm9rLw6ROkx/yQhB03Y1I5KBfW5Gm3EC8zc2QLfzp4BdETe
+ zqZMSfUbTdtLnA06W54Y3WimHbjYKi5qDl4E0Mths/U8XQaThhG6hN4u/6mDFg3A8boRTKmhC7B
+ Gc7ebmIcYHclEQlamMsGteqFUOUR3NZx+/Q0CAE8dfeLLdiV6AYMrWtle3EnsEluB3hHChv3F6y
+ TQe1U3qNc4Hox0jYZ3Y09EKpVkmbMo6IW8r3TxQkTXGfyErpbQIYJuW4/o0xR1Vu0+urrdKMFeC
+ BZObxSAGXITDDaqf/tVFIdQU2AIWkHteklc0bXRFU7J08XNG4fUtm1zIv+k4wmnUOEnZwdEydJR
+ 3pkGlmuGD/TkmaJXOe8Vof50UkZpi7tIIwSy8ZlnX8CMAxCfRi1xXcKvuOxaNgPqjugtcSnI4pJ
+ XiZePN5DrPWR5WkO08NreczSBsnrAK5U0cikw+TpVH/hjrIjCyzcByngsNkeOrDPzXOEJpuCtJk
+ ULttGCfo1LPkLdBedP5AnAA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260721_105241_365730_0D619E12 
+X-CRM114-Status: GOOD (  21.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,39 +99,319 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ni4xOC1zdGFibGUgcmV2aWV3IHBhdGNoLiAgSWYgYW55b25lIGhhcyBhbnkgb2JqZWN0aW9ucywg
-cGxlYXNlIGxldCBtZSBrbm93LgoKLS0tLS0tLS0tLS0tLS0tLS0tCgpGcm9tOiBUaG9tYXMgWmlt
-bWVybWFubiA8dHppbW1lcm1hbm5Ac3VzZS5kZT4KClsgVXBzdHJlYW0gY29tbWl0IDlmYzBkYTgx
-OTE2MjUwZjM0MzU5OWE0ZGQyNTlmMDk3MTk2YmYwZmIgXQoKSW5zdGVhZCBvZiB0ZXN0aW5nIGlt
-cG9ydF9hdHRhY2ggZm9yIGltcG9ydGVkIEdFTSBidWZmZXJzLCBpbnZva2UKZHJtX2dlbV9pc19p
-bXBvcnRlZCgpIHRvIGRvIHRoZSB0ZXN0LiBUaGUgdGVzdCBpdHNlbGYgZG9lcyBub3QgY2hhbmdl
-LgoKU2lnbmVkLW9mZi1ieTogVGhvbWFzIFppbW1lcm1hbm4gPHR6aW1tZXJtYW5uQHN1c2UuZGU+
-CkNjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgpDYzogSGVpa28gU3TDvGJuZXIg
-PGhlaWtvQHNudGVjaC5kZT4KQ2M6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4K
-Q2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKRml4ZXM6IGI1N2FhNDdkMzll
-OSAoImRybS9nZW06IFRlc3QgZm9yIGltcG9ydGVkIEdFTSBidWZmZXJzIHdpdGggaGVscGVyIikK
-Q2xvc2VzOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9kcmktZGV2ZWwvMzhkMDlkMzQuNDM1NC4x
-OTYzNzlhYTU2MC5Db3JlbWFpbC5hbmR5c2hya0AxNjMuY29tLwpTaWduZWQtb2ZmLWJ5OiBIZWlr
-byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgpMaW5rOiBodHRwczovL3BhdGNoLm1zZ2lkLmxp
-bmsvMjAyNjAyMjcxMzMxMTMuMjM1OTQwLTExLXR6aW1tZXJtYW5uQHN1c2UuZGUKU2lnbmVkLW9m
-Zi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCAyICstCiAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV9nZW0uYwppbmRleCA2MzMwYjg4M2VmYzM1ZC4uZTQ0Mzk2ZDQ2ZGMxZjYgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKKysr
-IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwpAQCAtMzMyLDcg
-KzMzMiw3IEBAIHZvaWQgcm9ja2NoaXBfZ2VtX2ZyZWVfb2JqZWN0KHN0cnVjdCBkcm1fZ2VtX29i
-amVjdCAqb2JqKQogCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IGRybS0+
-ZGV2X3ByaXZhdGU7CiAJc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaiA9IHRvX3Jv
-Y2tjaGlwX29iaihvYmopOwogCi0JaWYgKG9iai0+aW1wb3J0X2F0dGFjaCkgeworCWlmIChkcm1f
-Z2VtX2lzX2ltcG9ydGVkKG9iaikpIHsKIAkJaWYgKHByaXZhdGUtPmRvbWFpbikgewogCQkJcm9j
-a2NoaXBfZ2VtX2lvbW11X3VubWFwKHJrX29iaik7CiAJCX0gZWxzZSB7Ci0tIAoyLjUzLjAKCgoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Currently the Synopsys DesignWare DP controller driver's bind function
+requests lots of resources using device managed functions. These are
+free'd on driver removal instead of at unbind time. Fix this discrepancy
+by introducing a new probe helper function and moving over most of the
+early resource acquisitions.
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c   | 128 +++++++++++++++---------------
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c |  53 ++++++++-----
+ include/drm/bridge/dw_dp.h                |   5 +-
+ 3 files changed, 99 insertions(+), 87 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+index 3445c82e6f50..368e1f85e625 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+@@ -1954,20 +1954,72 @@ static const struct regmap_config dw_dp_regmap_config = {
+ 	.rd_table = &dw_dp_readable_table,
+ };
+ 
+-static void dw_dp_phy_exit(void *data)
++int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
+ {
+-	struct dw_dp *dp = data;
++	struct device *dev = dp->dev;
++	struct drm_bridge *bridge;
++	int ret;
++
++	bridge = &dp->bridge;
++	bridge->of_node = dev->of_node;
++	bridge->ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
++	bridge->type = DRM_MODE_CONNECTOR_DisplayPort;
++	bridge->ycbcr_420_allowed = true;
++
++	drm_bridge_add(bridge);
++
++	dp->aux.dev = dev;
++	dp->aux.drm_dev = encoder->dev;
++	dp->aux.name = dev_name(dev);
++	dp->aux.transfer = dw_dp_aux_transfer;
++	ret = drm_dp_aux_register(&dp->aux);
++	if (ret) {
++		dev_err_probe(dev, ret, "Aux register failed\n");
++		goto unregister_bridge;
++	}
++
++	ret = drm_bridge_attach(encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
++	if (ret) {
++		dev_err_probe(dev, ret, "Failed to attach bridge\n");
++		goto unregister_aux;
++	}
++
++	dw_dp_init_hw(dp);
+ 
++	ret = phy_init(dp->phy);
++	if (ret) {
++		dev_err_probe(dev, ret, "phy init failed\n");
++		goto unregister_aux;
++	}
++
++	enable_irq(dp->irq);
++
++	return 0;
++
++unregister_aux:
++	drm_dp_aux_unregister(&dp->aux);
++
++unregister_bridge:
++	drm_bridge_remove(bridge);
++
++	return ret;
++}
++EXPORT_SYMBOL_GPL(dw_dp_bind);
++
++void dw_dp_unbind(struct dw_dp *dp)
++{
++	disable_irq(dp->irq);
+ 	phy_exit(dp->phy);
++	drm_dp_aux_unregister(&dp->aux);
++	drm_bridge_remove(&dp->bridge);
+ }
++EXPORT_SYMBOL_GPL(dw_dp_unbind);
+ 
+-struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+-			 const struct dw_dp_plat_data *plat_data)
++struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_data *plat_data)
+ {
+-	struct platform_device *pdev = to_platform_device(dev);
+-	struct dw_dp *dp;
+-	struct drm_bridge *bridge;
++	struct device *dev = &pdev->dev;
+ 	void __iomem *res;
++	struct dw_dp *dp;
+ 	int ret;
+ 
+ 	dp = devm_drm_bridge_alloc(dev, struct dw_dp, bridge, &dw_dp_bridge_funcs);
+@@ -1976,9 +2028,8 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ 
+ 	dp->dev = dev;
+ 	dp->pixel_mode = plat_data->pixel_mode;
+-
+ 	dp->plat_data.max_link_rate = plat_data->max_link_rate;
+-	bridge = &dp->bridge;
++
+ 	mutex_init(&dp->irq_lock);
+ 	INIT_WORK(&dp->hpd_work, dw_dp_hpd_work);
+ 	init_completion(&dp->complete);
+@@ -2035,69 +2086,20 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ 		return ERR_CAST(dp->rstc);
+ 	}
+ 
+-	bridge->of_node = dev->of_node;
+-	bridge->ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
+-	bridge->type = DRM_MODE_CONNECTOR_DisplayPort;
+-	bridge->ycbcr_420_allowed = true;
+-
+-	ret = devm_drm_bridge_add(dev, bridge);
+-	if (ret)
+-		return ERR_PTR(ret);
+-
+-	dp->aux.dev = dev;
+-	dp->aux.drm_dev = encoder->dev;
+-	dp->aux.name = dev_name(dev);
+-	dp->aux.transfer = dw_dp_aux_transfer;
+-	ret = drm_dp_aux_register(&dp->aux);
+-	if (ret) {
+-		dev_err_probe(dev, ret, "Aux register failed\n");
+-		return ERR_PTR(ret);
+-	}
+-
+-	ret = drm_bridge_attach(encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+-	if (ret) {
+-		dev_err_probe(dev, ret, "Failed to attach bridge\n");
+-		goto unregister_aux;
+-	}
+-
+-	dw_dp_init_hw(dp);
+-
+-	ret = phy_init(dp->phy);
+-	if (ret) {
+-		dev_err_probe(dev, ret, "phy init failed\n");
+-		goto unregister_aux;
+-	}
+-
+-	ret = devm_add_action_or_reset(dev, dw_dp_phy_exit, dp);
+-	if (ret)
+-		goto unregister_aux;
+-
+ 	dp->irq = platform_get_irq(pdev, 0);
+-	if (dp->irq < 0) {
+-		ret = dp->irq;
+-		goto unregister_aux;
+-	}
++	if (dp->irq < 0)
++		return ERR_PTR(dp->irq);
+ 
+ 	ret = devm_request_threaded_irq(dev, dp->irq, NULL, dw_dp_irq,
+-					IRQF_ONESHOT, dev_name(dev), dp);
++					IRQF_ONESHOT | IRQF_NO_AUTOEN, dev_name(dev), dp);
+ 	if (ret) {
+ 		dev_err_probe(dev, ret, "failed to request irq\n");
+-		goto unregister_aux;
++		return ERR_PTR(ret);
+ 	}
+ 
+ 	return dp;
+-
+-unregister_aux:
+-	drm_dp_aux_unregister(&dp->aux);
+-	return ERR_PTR(ret);
+ }
+-EXPORT_SYMBOL_GPL(dw_dp_bind);
+-
+-void dw_dp_unbind(struct dw_dp *dp)
+-{
+-	drm_dp_aux_unregister(&dp->aux);
+-}
+-EXPORT_SYMBOL_GPL(dw_dp_unbind);
++EXPORT_SYMBOL_GPL(dw_dp_probe);
+ 
+ MODULE_AUTHOR("Andy Yan <andyshrk@163.com>");
+ MODULE_DESCRIPTION("DW DP Core Library");
+diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+index b23efb153c9e..005938dc66c9 100644
+--- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+@@ -26,7 +26,7 @@
+ struct rockchip_dw_dp {
+ 	struct dw_dp *base;
+ 	struct device *dev;
+-	struct rockchip_encoder encoder;
++	struct rockchip_encoder *encoder;
+ };
+ 
+ static int dw_dp_encoder_atomic_check(struct drm_encoder *encoder,
+@@ -73,37 +73,28 @@ static const struct drm_encoder_helper_funcs dw_dp_encoder_helper_funcs = {
+ 
+ static int dw_dp_rockchip_bind(struct device *dev, struct device *master, void *data)
+ {
+-	struct platform_device *pdev = to_platform_device(dev);
+-	const struct dw_dp_plat_data *plat_data;
++	struct rockchip_dw_dp *dp = dev_get_drvdata(dev);
+ 	struct drm_device *drm_dev = data;
+-	struct rockchip_dw_dp *dp;
+ 	struct drm_encoder *encoder;
+ 	struct drm_connector *connector;
+ 	int ret;
+ 
+-	dp = drmm_kzalloc(drm_dev, sizeof(*dp), GFP_KERNEL);
+-	if (!dp)
++	dp->encoder = drmm_kzalloc(drm_dev, sizeof(*dp->encoder), GFP_KERNEL);
++	if (!dp->encoder)
+ 		return -ENOMEM;
+ 
+-	dp->dev = dev;
+-	platform_set_drvdata(pdev, dp);
+-
+-	plat_data = of_device_get_match_data(dev);
+-	if (!plat_data)
+-		return -ENODEV;
+-
+-	encoder = &dp->encoder.encoder;
++	encoder = &dp->encoder->encoder;
+ 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev, dev->of_node);
+-	rockchip_drm_encoder_set_crtc_endpoint_id(&dp->encoder, dev->of_node, 0, 0);
++	rockchip_drm_encoder_set_crtc_endpoint_id(dp->encoder, dev->of_node, 0, 0);
+ 
+ 	ret = drmm_encoder_init(drm_dev, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
+ 	if (ret)
+ 		return ret;
+ 	drm_encoder_helper_add(encoder, &dw_dp_encoder_helper_funcs);
+ 
+-	dp->base = dw_dp_bind(dev, encoder, plat_data);
+-	if (IS_ERR(dp->base))
+-		return PTR_ERR(dp->base);
++	ret = dw_dp_bind(dp->base, encoder);
++	if (ret)
++		return ret;
+ 
+ 	connector = drm_bridge_connector_init(drm_dev, encoder);
+ 	if (IS_ERR(connector)) {
+@@ -128,12 +119,30 @@ static const struct component_ops dw_dp_rockchip_component_ops = {
+ 	.unbind = dw_dp_rockchip_unbind,
+ };
+ 
+-static int dw_dp_probe(struct platform_device *pdev)
++static int dw_dp_rockchip_probe(struct platform_device *pdev)
+ {
++	const struct dw_dp_plat_data *plat_data;
++	struct device *dev = &pdev->dev;
++	struct rockchip_dw_dp *dp;
++
++	plat_data = of_device_get_match_data(dev);
++	if (!plat_data)
++		return -ENODEV;
++
++	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
++	if (!dp)
++		return -ENOMEM;
++	platform_set_drvdata(pdev, dp);
++	dp->dev = dev;
++
++	dp->base = dw_dp_probe(pdev, plat_data);
++	if (IS_ERR(dp->base))
++		return PTR_ERR(dp->base);
++
+ 	return component_add(&pdev->dev, &dw_dp_rockchip_component_ops);
+ }
+ 
+-static void dw_dp_remove(struct platform_device *pdev)
++static void dw_dp_rockchip_remove(struct platform_device *pdev)
+ {
+ 	component_del(&pdev->dev, &dw_dp_rockchip_component_ops);
+ }
+@@ -161,8 +170,8 @@ static const struct of_device_id dw_dp_of_match[] = {
+ MODULE_DEVICE_TABLE(of, dw_dp_of_match);
+ 
+ struct platform_driver dw_dp_driver = {
+-	.probe	= dw_dp_probe,
+-	.remove = dw_dp_remove,
++	.probe	= dw_dp_rockchip_probe,
++	.remove = dw_dp_rockchip_remove,
+ 	.driver = {
+ 		.name = "dw-dp",
+ 		.of_match_table = dw_dp_of_match,
+diff --git a/include/drm/bridge/dw_dp.h b/include/drm/bridge/dw_dp.h
+index 22105c3e8e4d..a82412a9e769 100644
+--- a/include/drm/bridge/dw_dp.h
++++ b/include/drm/bridge/dw_dp.h
+@@ -22,7 +22,8 @@ struct dw_dp_plat_data {
+ 	u8 pixel_mode;
+ };
+ 
+-struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+-			 const struct dw_dp_plat_data *plat_data);
++int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder);
+ void dw_dp_unbind(struct dw_dp *dp);
++
++struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_data *plat_data);
+ #endif /* __DW_DP__ */
+
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
