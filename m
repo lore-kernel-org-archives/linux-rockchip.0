@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7155FC4452B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0C18C44537
 	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 17:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dyZqkRwUabROvBVlvynMj5764wKke2M1VTm2HXP3WuY=; b=PwAnxFjI68tlHE
-	tGGCoK4l4phs1VXpPs62//8Y2dUNPogzEOQUpGpJKFS4DMJ7Ns5HP0NqfQ7dExJQh4pC0KL5rtHnM
-	aM085Eov82jsd4cyAZi9Kur4Q8GXVUvC6S03Ykr8cqqR/+qDz9hYc31wnC9k6NgjKXQeB4Q/8xqMY
-	bvcf6nlJD22eUamDH4skbsVeTFA9YDwr9Pt3hzDMKXN0MXc7Hj72hqBrvaQvz4DX1K4hhuSs/jzi2
-	C1QyBdkTRl72bye0/DOP4eagiFOvR604Zg8LtjVL+n7iqO2nlk5QTWGs2JkiNyn+erPcuQFtmyhvd
-	b4pNl2YF0tYHafU5Bhlg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=J+I340v2dF0ddEn3DOeqn4BQyZmpRGYT7SDQ+NQlj5E=; b=f6oeGEH/x005dZ
+	MSiHdldRNx+MYW7PR5PkrHjEacUsvUb5nN8M69oHltYp474gm0BbF3M9qfqzfeZx1OdCt0VZrq7FM
+	rYeQUrTnKiwvYWEwKlo8e5gzS9Yt2+kjdgzbLJ+2gLMI1k+X5hL6nFf81mxCEBfYPiEIMg8UcMX96
+	4r+UQvwTEo8DPXgurkEiK97ut1rXlJdKToJ63A9H7jNj/Vlpj5bV04T39h+6Jlej4z8845keM+ex+
+	m+OgR0LUsm3qM/IjBrDxaytZTpxJFB309HyPI1rNSlkwVUZa9RAMslV+Ie/3J/qh9J99ftwF+eBtu
+	5QcJ6wv9fTNJo28dho5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmE0C-0000000A1Ff-3AtB;
-	Tue, 21 Jul 2026 17:11:32 +0000
-Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	id 1wmE0H-0000000A1HL-2e8g;
+	Tue, 21 Jul 2026 17:11:37 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmE0A-0000000A1Eh-1M2r
+	id 1wmE0C-0000000A1Fc-3zJ0
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Jul 2026 17:11:31 +0000
-Received: by mail-oi1-x22f.google.com with SMTP id 5614622812f47-495b250b01cso5818315b6e.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 21 Jul 2026 10:11:29 -0700 (PDT)
+	Tue, 21 Jul 2026 17:11:34 +0000
+Received: by mail-oi1-x22a.google.com with SMTP id 5614622812f47-4a456e44e01so4087968b6e.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 21 Jul 2026 10:11:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784653889; x=1785258689; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=QzhjVfvwCu9RsziVFmoEaGvP3wdKmz3SRFarpVmt0Fo=;
-        b=aTbyVB1qCCFyRaZ6t/9+EZVSJeeH1lEPbo4SW+9R5s1QDO5Dk/RfV6StSY3fC3VBBc
-         LQCo4xKZOSnvqW0mpKMHV6en9mJ+zmbR10Sof6J35Vib9LtNrDnpjUCWvXGUdLQpMLgC
-         sLZCRdSDN/xVnipz1UhkOyHxFCZ7upp6Azl+7HDtFVtfAicD+dkgyneC4dkADAa+3reG
-         izgatlHNKp2sp0VTBg/jpy+a5ykwRozKgu9St6a+IaiFOoW/HfXMmjukWteRDkSNnxpQ
-         ttmG81mtuw1yz9MEep+HzZLQhSIkr9zVHRb+aFYb6AB/c3mYHMUbTzv6J9FsrRWm2qxP
-         hqVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784653889; x=1785258689;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1784653892; x=1785258692; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=QzhjVfvwCu9RsziVFmoEaGvP3wdKmz3SRFarpVmt0Fo=;
-        b=lvlfdZHxvYqCLhwxNLKklNmydoS1BGCWlpT2rlpTE0H5OZm+b4gUE7iUu3QQrkhpBr
-         /TbTaekDY5coLd4t/PsvNDKXnjrKDmVMc+/75+ssMPYivfNPdkfqV8805RF5dkbcMFzB
-         NMTavkuh91b1cg46pkuR8YnJmVsOK6G2KG9ExPz8bTQ338Jcw6+6T+vIclDwHj2Yqtcz
-         zxoPqOtMGm7+JCAzhcU2sQX8opOATqG5OSBqglY7GEO+yGnEOR8U+1SDUkR7wisFZJ8p
-         PZZF2f5sLdrgkNNXXpQgk/Kz58xFAeUYZOwYAamcl8LP7OM3U/UzGIb6IhQOERAcMkl2
-         M2mQ==
-X-Gm-Message-State: AOJu0YxxvvAuRjfqJixy6Y06wt+j/nspvrHkynNN6aDuFqNMxudYbAZO
-	GcBDo2OXCME26nfVjGfSf4s8020Rv2jaff6AGCnRYGNwUsPl6KdhXDoHhIZEfw==
-X-Gm-Gg: AfdE7cnfkt4N8iN5PfhJyGbdiKlckgKqf+0HtAKuEzQbSNQvOZgdYMG/8FqY7WLDFi1
-	C2ipxR9Lif13W8q2PlU9L9OeOs4hjSD3JFfDETJN2aH0HsbbpiBbypi8pnqDkqjT2VV8vtLuEKU
-	xRxp2T8pl6iZE18QGGzxGvVAtcCLuIu/FdN13OX7ujnvOmy+LEHWBTKHIVqitEMVu+00rCOY8fB
-	ZNpmkL4bp5tFpVm8G+MTDdpzaYodAxqZLnjdpV4TLhe2vlene6Q6Id+J8SwIEq/w+eZraYmW8N8
-	c6BQD7GI3Vfxadj8g3EGT7mQYJUih3uyi5g+/1wvPpBuKPItv8DWGJllk5jxcVf30skvnURoO6T
-	OwXn8M+fNQ7dTVnGUfpTbcaFMq9Fi1/qPZb0TFfWbiU1zyUslo1SbhqMoUebjn8YnczaXtZiSHN
-	52
-X-Received: by 2002:a05:6808:2225:b0:495:f79d:8bd4 with SMTP id 5614622812f47-4a4d03a59femr10829527b6e.25.1784653888497;
-        Tue, 21 Jul 2026 10:11:28 -0700 (PDT)
+        bh=kgs1gTYKZ+euqFobW4W1LJ9utvsV9nn5CKlGcDBeRcM=;
+        b=Bx+FC08klyil6rf8wIe4MwBUn273hxLRekxiIp1/abCmCYn1/qQxMk9jlSa8/k3WWR
+         ZAF9N+aPk+NK33DI3u+0QmMPxXYU2SL/06lpnTD+jOhS2zRXYNvNWIpjvCUpA5uqDuWV
+         JIhSxinskKQc7AV8lyLvUjqXK6uqGV8kb/+GaWqccFD5IptDmqn2XHMNbYMxHPmXy2hU
+         Zl/pvNzUmCxPjqKTgMtAWEiMcjMlxPOkUqaRtWWntk31YJ3d19hIcsk9pNJ9SfNPL3Ka
+         hyb9PxT1ME8DGkrxMM50AqaKzYYjKraPv1WPu/mZR8GT64XPyv7pHQC5KY7dSFEh5/Rk
+         uZoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784653892; x=1785258692;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=kgs1gTYKZ+euqFobW4W1LJ9utvsV9nn5CKlGcDBeRcM=;
+        b=ocUztC1K5iYNC5oWPKzUXy7yfjhaxZAHCWMWG/rloi/VjMZNi2QslfyQCBUanaldbB
+         u162RttoBlq08+zKzwr4x24TLbNa3SCFMuC4459Gwm7/YgLpvCnaNufltZhnBK0Ypj0H
+         0Bu8zgJrglU0o/+WxAlLvHV7F0WZXlqdtI+qKv0lgziApevr71SECCWsQxJ2I/ejmVMm
+         OvoMg0so+G8Af433AdfWilVgPmqrquvwUBc7r929O1hTIbQgDWLg8pGpdCjPlf38j12R
+         OxdDmnxZDc4HHg0mcD1/YHaY5g/3goWpdGGAVfuVVbZdGFx2acNppd6DkzDOfHZV0gwe
+         dH6Q==
+X-Gm-Message-State: AOJu0YwAHrRA/VHJtpf/trILL9e9Gi1DTsQalvTUoWmzGQz69D2rZXJ/
+	hNb19qn3I6u6lBR6zTUQ2P3LZK6volJYlc4Cfp0kO0NcdpNYVokFKULpo/qvwg==
+X-Gm-Gg: AfdE7ckpfaKrXElh8jnH9G+CduKX6YNAkuFvAMlI+p52AGFS4PxK84UFYmJ7q0gQ+Mg
+	S6Ri49p4ov+t+kQI9BuIulM2q4UMZSes2sgH3/T6yX6HCjmlAZS6jJkWwC0BJTFKWmWL/rW/a61
+	2JSvLurRZtA9KqeGjzFTUkddaadirh0+0U8/XC2QXmmmEObkWURLb+DkYcu6TXzeMoKg3mBZvMT
+	fjBPJJr79ryw0VzKIXbJ2Ihrc3NAVUiXGo3rcOr4sUleSCFhmxOGTqxd+gQT8I9/MQb6DH1p9kE
+	Cnil5PBDfdFK/KT919ebQfPI27A8IoTExniIadfo+5pso7bHrPzV/1+Ys6sWXqLdWbhccV6zeXf
+	dJTsQIh86b8MvIPbtETyl3hnMWg+/GoaMX40+jC1tyJB/NyHq3vDO2Ayqd5mpl7qfko0jpwD12z
+	LlpGreUbOmeEw=
+X-Received: by 2002:a05:6808:1303:b0:4a3:f026:5895 with SMTP id 5614622812f47-4a4d0569e52mr9095293b6e.41.1784653891997;
+        Tue, 21 Jul 2026 10:11:31 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-4a4d3cadb50sm10213953b6e.9.2026.07.21.10.11.27
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-4a4d3cadb50sm10213953b6e.9.2026.07.21.10.11.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jul 2026 10:11:27 -0700 (PDT)
+        Tue, 21 Jul 2026 10:11:31 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -76,15 +77,19 @@ Cc: devicetree@vger.kernel.org,
 	conor+dt@kernel.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V8 0/4] Add Anbernic RG Vita-Pro
-Date: Tue, 21 Jul 2026 12:09:03 -0500
-Message-ID: <20260721170907.131731-1-macroalpha82@gmail.com>
+	Chris Morgan <macromorgan@hotmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH V8 3/4] dt-bindings: arm: rockchip: Add Anbernic RG Vita-Pro
+Date: Tue, 21 Jul 2026 12:09:06 -0500
+Message-ID: <20260721170907.131731-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260721170907.131731-1-macroalpha82@gmail.com>
+References: <20260721170907.131731-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_101130_624831_0446C1C3 
-X-CRM114-Status: GOOD (  16.20  )
+X-CRM114-CacheID: sfid-20260721_101132_992748_12B4B204 
+X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,66 +108,31 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Anbernic RG Vita-Pro, based on the Rockchip RK3576 SoC.
+Add compatible string for the Anbernic RG Vita-Pro.
 
-Changes Since V1:
- - Updated documentation filename to matche compatible string.
- - Corrected order of allocating IRQ in charger driver and switched
-   to using devm managed function to allocate work queue.
-Changes Since V2:
- - Corrected issue with naming of panel binding document and added
-   fallback compatible string.
- - Switched to devm helpers in panel driver. Note that
-   devm_drm_panel_add() is currently only in the drm-next branch.
- - Optimized setting GPIOs for panel driver.
-Changes Since V3:
- - Fixed numerous issues identifed by Sashiko bot, mainly relating
-   to unclamped or improperly clamped values from within the
-   charger driver.
- - Corrected hard-coded values in the panel driver unprepare routine
-   as well as correcting an improperly checked return condition.
-Changes Since V4:
- - Fixed errors identified by Sashiko bot on charger driver that could
-   result in an improper value being written to the registers.
- - Corrected some error handling in the panel driver.
-Changes Since V5:
- - Corrected minor errors in documentation and added default values.
- - Further corrected clamping behavior in charger driver.
-Changes Since V6:
- - Additional corrections as suggested by Sashiko bot to fix potential
-   edge cases during probe for sgm41542.
- - Corrected an improperly shifted value being written to register for
-   sgm41542.
- - Changed a MV value to UV in sgm41542 driver to simplify function.
-Changes Since V7:
- - Added PM functions to sgm41542 driver per request from Sashiko,
-   which stops the hardware watchdog during suspend.
- - Switched from device_init_wakeup() to devm_device_init_wakeup().
- - Confirmed a state change in IRQ handler for sgm41542 to ensure we
-   don't update input current limit except when the vbus goes from
-   not okay to okay.
- - Removed panel patches, which have already been accepted upstream.
-   Please note that this *may* cause an error about missing bindings.
-   See commit 0fd6ead8270270d859a28d0196a4b47e7d6845b8 in linux-next.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Chris Morgan (4):
-  dt-bindings: power: supply: sgm41542: document sgm41542
-  power: supply: sgm41542: Add SG Micro sgm41542 charger
-  dt-bindings: arm: rockchip: Add Anbernic RG Vita-Pro
-  arm64: dts: rockchip: Add Anbernic RG Vita-Pro
-
- .../devicetree/bindings/arm/rockchip.yaml     |    6 +
- .../power/supply/sgmicro,sgm41542.yaml        |   96 ++
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../rockchip/rk3576-anbernic-rg-vita-pro.dts  | 1327 +++++++++++++++++
- drivers/power/supply/Kconfig                  |    8 +
- drivers/power/supply/Makefile                 |    1 +
- drivers/power/supply/sgm41542_charger.c       | 1111 ++++++++++++++
- 7 files changed, 2550 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
- create mode 100644 drivers/power/supply/sgm41542_charger.c
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 1a9dde18626d..b8babe9d3a26 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -66,6 +66,12 @@ properties:
+               - anbernic,rg-ds
+           - const: rockchip,rk3568
+ 
++      - description: Anbernic RK3576 Handheld Gaming Console
++        items:
++          - enum:
++              - anbernic,rg-vita-pro
++          - const: rockchip,rk3576
++
+       - description: Ariaboard Photonicat
+         items:
+           - const: ariaboard,photonicat
 -- 
 2.43.0
 
