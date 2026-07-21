@@ -4,90 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0E7EC4451C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 17:53:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9778C4452B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 19:17:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8NIJ1kXtAWcUDW1I4ZEfP9rzka6ulpnG+rThsEwocA4=; b=p5EkNdJMLRVS1C
-	YG3L+K3sJUetWuAqQxIS3YSF+BmaBNq4hdzDCS9+2+grq+e475jkIqabfvLQHCg09FaubyZvOGc2a
-	ClJRC+CCkssHhDn/Ck4fytSLPtE8EJKz0/zAbNS9/ALWwfQw/3xINAdwxgDoAZXwsmzd3tSx3dapN
-	O+p/Us+TFO5N/twdzkHiOjH0HdP5TxFl/nhXl9SZyNFZ3AYIDa7kR9xxpxVWzWkT5+GKU5iCfLzNi
-	4hGH+XQ8OLvFM7pp4jn3NJKA72OrijcWfV63871Fwxn+LKrbWwlD4VI4MBK5uNFmcbw+kskrSPrAt
-	dQuTbd+b+P65bjRG4dfg==;
+	List-Owner; bh=hFi2VrTlW5lEb5QbZJ9rBaIVQ+/2WGhWtOKeadP4o+s=; b=fR7k+WsTEjW39I
+	L48UJMhOae1BIPv9Q6DNKIz1XsnKVjGXL+qpuK44MkdruiMhfjgMcDiNCOTIX7XFQobIczQMoJdXJ
+	7aQRcZ48eVU7K1qzd0KNT28iYqV5iPaWvo7ds2wEckvk4pw2GCb/gDEFdjpPkpMPyNpjwhL7muK7j
+	X15pfreh3ceeu7o4o+yRszNJVDqtsyn2HeYCMGDkLBKoZ3CouT3ONaQO6gFwmo/tPeOrVMxADm8m/
+	rCqtGlrv3Ck+AE1GYJAI2FAxDi8f5O9eUcT6NOmryr3EUuB/97MvDZS1U6MsGM67ASJvnpvpOaCAm
+	B4E/YbPHTGBaj2IdRnKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmEeT-0000000A7SJ-2WFI;
-	Tue, 21 Jul 2026 17:53:09 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wmFxY-0000000AGw2-3Azm;
+	Tue, 21 Jul 2026 19:16:56 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmEe5-0000000A6s9-3yeD;
-	Tue, 21 Jul 2026 17:52:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784656358;
-	bh=Szu0whIwry2XJLoGj7gD8cKhUNL8gnGbIBLAwSmIRe0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NqJyIAgztefUst+y54jAgxbzu1I2uDgagI+DYb6hDOgnWQMUhvf1kG8mqAUZaZnZb
-	 LbQpO/RKAV3pvDz9Nh4M720kTadhiwe0lKFYS+NCkIub2kkTXaMrhPzh+zYhYqst7H
-	 h0WdkWNUDgGuQS4pWT0eIVLPkndBa/7c1Tp4hTxsAAcZyI7TUja82vLfk0KtTmSuzC
-	 mpNATiT/QHjI2eK7lXyKovwmExdA7vz3ApvreJfEDCtV6dcUrITF3H0cnJY5TpStKp
-	 +3UeWH4Jr+V8J9g3kvMCvzV3Ky89urPaeWYmjvkDxyZMAr09Mhy3LHIHAtBDmT6iyf
-	 Cz+gyol7HTuAQ==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4E94217E121B;
-	Tue, 21 Jul 2026 19:52:38 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id A20FB48003D; Tue, 21 Jul 2026 19:52:37 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 21 Jul 2026 19:52:39 +0200
-Subject: [PATCH v4 09/10] dt-bindings: display: rockchip: dw-dp: Fix sound
- DAI cells
+	id 1wmFxX-0000000AGvp-1njs
+	for linux-rockchip@lists.infradead.org;
+	Tue, 21 Jul 2026 19:16:55 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 33CD540133;
+	Tue, 21 Jul 2026 19:16:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C5A31F000E9;
+	Tue, 21 Jul 2026 19:16:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
+	s=korg; t=1784661415;
+	bh=Q/kU09kCJP9HuucSaTnPcPEjwknPeB+ZRmwbLppqKFA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=l1ub1NGwHBXt7iiOQeC6AKaYOP6QVE2uQ+hI+139x+vUYH5E8myx6yZp6b0CdgIGB
+	 KcgM4EpQmM4FQBWWZ9zSktHKpGhdOqbbpe41Ha3U6Uqhfa1fDH9VRAkKdoPVa6xuhC
+	 gnYLPrKDbFmR8YZupn/trsYKqJBLbTqGyqguo+sc=
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: stable@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	patches@lists.linux.dev,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	linux-rockchip@lists.infradead.org,
+	Sasha Levin <sashal@kernel.org>
+Subject: [PATCH 6.12 0059/1276] drm/rockchip: Test for imported buffers with drm_gem_is_imported()
+Date: Tue, 21 Jul 2026 17:08:22 +0200
+Message-ID: <20260721152447.404714983@linuxfoundation.org>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260721152446.065700225@linuxfoundation.org>
+References: <20260721152446.065700225@linuxfoundation.org>
+User-Agent: quilt/0.69
+X-stable: review
+X-Patchwork-Hint: ignore
 MIME-Version: 1.0
-Message-Id: <20260721-synopsys-dw-dp-improvements-v4-9-f0f4a4ede712@collabora.com>
-References: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
-In-Reply-To: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3195;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=Szu0whIwry2XJLoGj7gD8cKhUNL8gnGbIBLAwSmIRe0=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpfseVT8gMOJz3vR303GHeE0KZMP8YapXJc2
- vxfs/1dCS6KcIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqX7HlAAoJENju1/PI
- O/qaLicQAJvSC78msD3XpfFR7f6XwjAhjFubR7DC7qMAn0Tqatma134CJr3XRnIe68yBm84JaXe
- M8julUdS5n5ro0kUu9sN+9IFa3+3jNSzgYq1v+dlkaLETNdmL+InLZf+WYkJ7FG1ds0uop+pzdI
- KP2iJxy2HlibpwSmu+NyJdqrxgUC6plMCgiqb9PK61uej3F76qSLkRRDH/Zg0yPUAKvPDkrMI3e
- 3t6Ygo7i5mKj4BMT1JuUgAsdno3WySJHXsfep86pDe8i4bxqqY0SjK2LPkQxYjXaA2gBOB/sRvS
- BNm6yT0+5fabFu2L6f7yl+dmfvIKr6VecknazQoFjzRAA7Xov8LLXj6rNGxqE7u7jnJs3wrPRsA
- /RLPQCJYB1ABbNjxZ0fv9SGX4GOFCW8dsQEJEvvecN680oR2UP3k0dsJm+zQ8edsojT3W2kE4vB
- RYnyvs0IbECDHgu+Hfa8P/nHdKVlRTBAWO619spDzfNQlvJxqt7t9zi18UmhwMyos86AS0rZ1Mf
- OE3tgSzzBfEIietWm0qNmwSe14BIfRW+BzkX+FZTsjDYnqsLES/ZTpPB9ATd+SG/2UTSaFTOl22
- IJOp/CdGPSipI/JLbPb9h3EfQdjf+TCdevRjWqM7TlygjwbQUUefSNIu8HRx6uyOqV+/JigLSsh
- gVHzikkL64T9R1nhTCskuIQ==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_105246_149695_42EB78E1 
-X-CRM114-Status: GOOD (  18.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,106 +70,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3588 and RK3576 DesignWare DisplayPort controllers both have two
-possible DAI interfaces: I2S and S/PDIF. Thus an argument is needed to
-to select the right interface.
-
-In addition to that the RK3576 has the same IP as RK3588, but configured
-with Multi Stream Transport (MST) enabled for up to 3 displays and thus
-has a total of 6 DAI interfaces (I2S and S/PDIF for each possible
-stream). Meanwhile the RK3588 does not support MST and thus has only 2
-DAI interfaces.
-
-The binding update from this patch has only been tested with the simple
-single stream transport (SST) setup as the Linux driver does not yet
-support MST.
-
-For MST it is unclear what a good binding should look like. Technically
-there are a couple of options:
-
-1. Stay with the single cell, but add more numbers. I.e.
-   0 = I2S on stream 0,
-   1 = S/PDIF on stream 0
-   2 = I2S on stream 1,
-   3 = S/PDIF on stream 1
-   4 = I2S on stream 2,
-   5 = S/PDIF on stream 2
-
-2. Add yet another cell, so that there is one argument for the stream ID
-   and one argument to select between S/PDIF and I2S. I.e.
-   0 0 = I2S on stream 0
-   0 1 = S/PDIF on stream 0
-   1 0 = I2S on stream 1
-   1 1 = S/PDIF on stream 1
-   2 0 = I2S on stream 2
-   2 1 = S/PDIF on stream 2
-
-3. Create one subnode for each stream in the DP controller with its
-   own graph for the video streams. This would mean the MST binding
-   is quite different from the SST one.
-
-As it is unclear which way is the most sensible at this point in time,
-just go with the most simple option for now and revisit this once MST
-is added.
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- .../devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml     | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-index 2b0d9e23e943..c4f8959dd65d 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-@@ -25,7 +25,7 @@ description: |
-   * Supports up to 8/10 bits per color component
-   * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
-   * Pixel clock up to 594MHz
--  * I2S, SPDIF audio interface
-+  * I2S, S/PDIF audio interface
- 
- properties:
-   compatible:
-@@ -46,7 +46,7 @@ properties:
-       - description: DisplayPort AUX clock
-       - description: HDCP clock
-       - description: I2S interface clock
--      - description: SPDIF interfce clock
-+      - description: S/PDIF interfce clock
- 
-   clock-names:
-     minItems: 3
-@@ -83,7 +83,8 @@ properties:
-     maxItems: 1
- 
-   "#sound-dai-cells":
--    const: 0
-+    const: 1
-+    description: 0 for I2S, 1 for S/PDIF
- 
- required:
-   - compatible
-@@ -144,7 +145,7 @@ examples:
-         resets = <&cru SRST_DP0>;
-         phys = <&usbdp_phy0 PHY_TYPE_DP>;
-         power-domains = <&power RK3588_PD_VO0>;
--        #sound-dai-cells = <0>;
-+        #sound-dai-cells = <1>;
- 
-         ports {
-           #address-cells = <1>;
-
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ni4xMi1zdGFibGUgcmV2aWV3IHBhdGNoLiAgSWYgYW55b25lIGhhcyBhbnkgb2JqZWN0aW9ucywg
+cGxlYXNlIGxldCBtZSBrbm93LgoKLS0tLS0tLS0tLS0tLS0tLS0tCgpGcm9tOiBUaG9tYXMgWmlt
+bWVybWFubiA8dHppbW1lcm1hbm5Ac3VzZS5kZT4KClsgVXBzdHJlYW0gY29tbWl0IDlmYzBkYTgx
+OTE2MjUwZjM0MzU5OWE0ZGQyNTlmMDk3MTk2YmYwZmIgXQoKSW5zdGVhZCBvZiB0ZXN0aW5nIGlt
+cG9ydF9hdHRhY2ggZm9yIGltcG9ydGVkIEdFTSBidWZmZXJzLCBpbnZva2UKZHJtX2dlbV9pc19p
+bXBvcnRlZCgpIHRvIGRvIHRoZSB0ZXN0LiBUaGUgdGVzdCBpdHNlbGYgZG9lcyBub3QgY2hhbmdl
+LgoKU2lnbmVkLW9mZi1ieTogVGhvbWFzIFppbW1lcm1hbm4gPHR6aW1tZXJtYW5uQHN1c2UuZGU+
+CkNjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgpDYzogSGVpa28gU3TDvGJuZXIg
+PGhlaWtvQHNudGVjaC5kZT4KQ2M6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4K
+Q2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKRml4ZXM6IGI1N2FhNDdkMzll
+OSAoImRybS9nZW06IFRlc3QgZm9yIGltcG9ydGVkIEdFTSBidWZmZXJzIHdpdGggaGVscGVyIikK
+Q2xvc2VzOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9kcmktZGV2ZWwvMzhkMDlkMzQuNDM1NC4x
+OTYzNzlhYTU2MC5Db3JlbWFpbC5hbmR5c2hya0AxNjMuY29tLwpTaWduZWQtb2ZmLWJ5OiBIZWlr
+byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgpMaW5rOiBodHRwczovL3BhdGNoLm1zZ2lkLmxp
+bmsvMjAyNjAyMjcxMzMxMTMuMjM1OTQwLTExLXR6aW1tZXJtYW5uQHN1c2UuZGUKU2lnbmVkLW9m
+Zi1ieTogU2FzaGEgTGV2aW4gPHNhc2hhbEBrZXJuZWwub3JnPgotLS0KIGRyaXZlcnMvZ3B1L2Ry
+bS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMgfCAyICstCiAxIGZpbGUgY2hhbmdlZCwgMSBp
+bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
+Y2tjaGlwX2RybV9nZW0uYwppbmRleCA5M2VkODQxZjVkY2VhZS4uMDQ4NzllMjM3OTdmYjcgMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZ2VtLmMKKysr
+IGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwpAQCAtMzMyLDcg
+KzMzMiw3IEBAIHZvaWQgcm9ja2NoaXBfZ2VtX2ZyZWVfb2JqZWN0KHN0cnVjdCBkcm1fZ2VtX29i
+amVjdCAqb2JqKQogCXN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSAqcHJpdmF0ZSA9IGRybS0+
+ZGV2X3ByaXZhdGU7CiAJc3RydWN0IHJvY2tjaGlwX2dlbV9vYmplY3QgKnJrX29iaiA9IHRvX3Jv
+Y2tjaGlwX29iaihvYmopOwogCi0JaWYgKG9iai0+aW1wb3J0X2F0dGFjaCkgeworCWlmIChkcm1f
+Z2VtX2lzX2ltcG9ydGVkKG9iaikpIHsKIAkJaWYgKHByaXZhdGUtPmRvbWFpbikgewogCQkJcm9j
+a2NoaXBfZ2VtX2lvbW11X3VubWFwKHJrX29iaik7CiAJCX0gZWxzZSB7Ci0tIAoyLjUzLjAKCgoK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
