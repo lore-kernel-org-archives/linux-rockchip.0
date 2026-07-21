@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 360ACC4452D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 06:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 351FFC4452B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jul 2026 06:41:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w/Rbu4diR76prcjcSEowy024ebi+YKtzxLEZXkfvjSo=; b=CQg4maSFx1LMEa
-	Qz9XEl1Pfhm7srq9aVDbdbOZogcoZCc00wiZSh4SAOGW8zOiwXrmrKxomy0vB/4WOjznP3sR2hS2n
-	imi7oQbLykmY4PXb0PtNHmwNfX3EarL/zWgQTeQgeIutUAImtNMwGlDX4i87QofvkC6cV1nBjVqIZ
-	d21Yd1aTTFcRaRb11jM2mYtU1zh2B64Dw9JI/UOVZrq6MIpQ5CdSKOk6lEDUD5pgYLA8gWDA/OcdP
-	w2tPIZ4HDCxIrEnu+jtyS44nPr6QXTgawRD44gESKg9qONGf/AlFbT/36Y8NMr2DpNcLMoG4+7tgD
-	KYdkyB6iQweiLYEakk4A==;
+	List-Owner; bh=ixI697hJD317pzPMY0h/s863xX9QMRQLFOTkjKWsWnY=; b=1z5Caw8Imzp27z
+	q+IH/2FEQXdoG/ad1YQsEMOpI6evj1ILpRjMavr4RTaX714QNxz5JVsQsO0rUZA+7kv30wLl3nvpy
+	i4lY5JJVi1YT2/y5X3lZ7CEBT0lrUdolGDAonGU8SYm2/vaVIesVBHQS185BTCpm1qAWRX6erKWl+
+	IlHzTdch87vDtGPu2jdSyEw+X3yGOa5KAaTbxYGq2Vsj9dPG40r6wljB0E/KtBo6tZ7lHuGfoqIJM
+	ZDR/LKM7Ys/9r0Di9/TlvGwx8Xz+eVSa1IFYDFkrN5ygxwoxhiAdoGP//oetnO2Ypl5nn6tHDmwQ/
+	2VJ1mQya4FefmwSslQJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm4Af-00000008Y7X-3XXO;
-	Tue, 21 Jul 2026 06:41:41 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1wm4Ab-00000008Y4N-1DvE;
+	Tue, 21 Jul 2026 06:41:37 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm4AY-00000008Y12-2bbx
+	id 1wm4AV-00000008Xzh-3sn8
 	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Jul 2026 06:41:35 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-490d6730461so11236755e9.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 20 Jul 2026 23:41:34 -0700 (PDT)
+	Tue, 21 Jul 2026 06:41:33 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-47f25e3fe44so558649f8f.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 20 Jul 2026 23:41:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784616093; x=1785220893; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784616090; x=1785220890; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=gxBcoaYqqWn7DDfCE+l3ErfQKRET5iv1Y4ILak6MpwQ=;
-        b=YfAqwZqm24mk0xZoV1GOYZfQOt+Xat0n/0irEZS05crsoKT2hzsPXax3S5aYbkFpWg
-         QkuUl4qgigXRDs+IYILjK2bcw5OO3F7YjZx4E77eVfcGIMIRuvRJ8EqvGebz8rpJq9cS
-         oYYtJrdTiNzl50K8ZbJV7szAp8cmO8JHhYv4L+vIahS3hmqhxD6mkvJnhJNgbHC9+Se9
-         KTTT3MqUdTUt9taq8c4vq1QhQKZsY/8aXovKwgCxuMYljQJ2mNuFfno1Y6eARZSFlcYa
-         nyidUgasu+35ahYOxWgh4XMn/G/HKAvlG2gAn5oKg1dCvGGQAbLl2McbVTwepHsZO9up
-         +rRg==
+        bh=A6arKxt/pKAK4HvJvMnbtdBhQ+d77oJa3U99lYSiiAM=;
+        b=abhxboKYTw0deYokzABdj2HhwsLtObNrXA1RSU5l4kN9HtXHl1TTAdAtW6BZ7DrImG
+         CMlNQDNDfdROSEsexn8YMTOs+cxw9Idm3039cROYDIKUWkXSmOwozIPe3sMMVQVRTb3k
+         sDWIvgf9ncqsSxq8HpvngWwhsoZ0p6tK9PQcVfwUtKgffHcvBA5MgOEZzC3XrcPs22WL
+         LJB8M4Qay4Uv4ImzZF0zgENK0ViLeSXIksoZYowm4Io31qq4QggCgCm/PQHcEirH0TyP
+         1FXNukzEB367HqBp5JcM6M40IRJBqJucEZPnlZGz3wV/15iEcCPzkShVFktgXGFxeahL
+         KxTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784616093; x=1785220893;
+        d=1e100.net; s=20251104; t=1784616090; x=1785220890;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=gxBcoaYqqWn7DDfCE+l3ErfQKRET5iv1Y4ILak6MpwQ=;
-        b=VW/xz/fUYsjkipI/d/H0mlWMOEtWSyQPt9pDSP60y8nUjd+5k3MHGUHEAhgAcwKRFg
-         WnJjK0kzHK6L7kosa6EMx55yFjYl5hzKN6vXmn0gcNeGmSJvnZ/VMyNLyj7XePv2Ier/
-         PyfSwEwZnUA6ctWjFOq0gEQoyIQkaaLMkshfNVJEZUxDR2vUdq4A8Zazt+4BCJlexAf6
-         +ZOXyQH23vZ5GdFjZgfJMedj/VJy1J3ig9SDp395gNiN2Q+m5Pjo81co66Z0NhX8b7Dh
-         7G6UwNGNJMB+v8BdEWpq9Q9la76o5ZMiX8NysqxUu7yhlpwnO7IcFxuuRwkJ0DB4fcL8
-         Vu2w==
-X-Forwarded-Encrypted: i=1; AHgh+Ro7isC7LUp1e76omWJ/z7XDa7oX+oYEKwbopO74pVi2ceKwhYAjHMyy/3SwdFgGcCIS5PD3FgJQTSQ9CGLdUw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzT63msVHPr1dFFKvRio+5LeQKR5ltZ/cBM9CAm35JjDaHa24CW
-	NtNhHqkU3BmhGQoYjwdz6qt+EhwQrltJn+MPOEijB8CF5PZSxv2hgPJi
-X-Gm-Gg: AfdE7cn3TFG0vkDT9tIBmfUPDKCtURxS4PVAdKc1OV/c18ui+zN7WRdL6EnL7VCugVE
-	DgN+BoxobQw2ugkKcyhjb6ha5XYjEtKUHhmec0Tk83LmoVar/7yEHY+gbDsZQ8TwLQUJm1DsnEo
-	NNqp3mhbuy6I0ErbwximIpgF75ox4BKpO81+uCFjThz9X8010V4qmgmRG23ws2FTn8DiaQpyli1
-	kCC5cNLpFKRXypT/ZIPypvOhUrA7ZEEQz8zzw8ujJgsg4t7X5RVdXf2oAC/4bOTg0ToQweg0QWc
-	yFig4sVqxsYRf2cCXLiJZUxwCx7NBmHlwrvaNOz8r+jOXIbd/TcCcb1oRV2kQ2HRkmFqA6ZZI7A
-	hm10h2QUuhFQDCT2gytwxxopsTVbQ30piPD17nuwczXT6nUZdAwtmeXcQJiizlZZWp2OoNUJ+WY
-	lkIzzgl0VMjuw6F5bSaxgkNZiI9BQR9hVxin8KIcoVi47xJLgMwIRoRm8ys4fXvWnBmPZS3xwiI
-	y+1y8kmTxE=
-X-Received: by 2002:a05:600c:4584:b0:495:6713:9a62 with SMTP id 5b1f17b1804b1-49567139f63mr6189235e9.1.1784616092535;
-        Mon, 20 Jul 2026 23:41:32 -0700 (PDT)
+        bh=A6arKxt/pKAK4HvJvMnbtdBhQ+d77oJa3U99lYSiiAM=;
+        b=IPmLNPSDEz3ltG+xL8Hie6J7nKayRxv4C9bn5anPbWmDhVFgkV46VlK3XNXnWRCMFA
+         cX830hFjiUAA9/8+yGrse7XBHw1OD5XduCPB0B66Bs+NQfdHuuiYNR5t+npGN8RLemoj
+         GgiIIWDaZDdA0ta+tRJcMSW3FBv61ssdJEMJLtSs553Lj9yxWv8avhoBM51YDT2uOKb0
+         Uc0X3tym2Qyh+IajvYczCHkBsQ7Uic0zIaF+6/e24AjijFymTq4HbM8fTRMnKh7HBKri
+         040NrZQ4XszRES5SWy5OL9rxRVje3swzNPQVGmTqNmzcHlF7/vIsj14eM6w/oN+Yn7jW
+         z6IA==
+X-Forwarded-Encrypted: i=1; AHgh+RocaJYJ9SJsJTqt77Bdf6F8p15WkIiWJjbatAeMmoSS2LEeXnhQKMndRGqcaTKfsobqOarRrCYYpcDPdDMaww==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzYlpCor+cd6G1WVktwueZ9+G5e8wYVoRYZr0vghZJjZX9v2tra
+	l+hgp8XBj2imZ6oE088npFfjp0fqraSI6ykuw4oZ+Q4bCPmSA4O1KNsD
+X-Gm-Gg: AR+sD11sLnBUsoyoaBa+nXX3qP+qiuNrJ/wDsGvObIYIAJ3ytV6/MnC7SSnNBvOHx1L
+	SOweYH98R+SgxPitCOj9+nG2rb/KOtnvr08ZJQ8dwgfhvWrIbPhFMJmyox7jwbfqAv7PyjEHcOB
+	8YcQLv0tmaig04CAMMcx10kR67K8ilE4iMvdykItbEPFMeL0+Mi8i3klto8MYAfF0JcgvqgMgU0
+	3PwwCXZXcTMtSQHOGRGW8FDWzoEl2qM5eepdqTyvpjVuf0rhPwpe48OnkrzYRPpvZFLnIrNd8i+
+	90HMzZbv/tex2QfVN1i8O/ke6t+GcLX43qIkgXtvtC2wY/ayjd7SKm6WTpGBINVjN5uBBbxmHCT
+	ap+rxrMLnVAD5QNeJHZSUDTS6rqO7x4D5/gGzMMZvW592WalvlNeOlFeKJJcE1ZkAk0spWNEFoF
+	bKHLXnq30sBOJzUN00VEqC3Mz+cguOqVjwo8Hoc78nU/ihV1+joq3vKOYC7jxgmYmJCFZ6S9ODO
+	Qth0OnlgMhXCQiCytiYPw==
+X-Received: by 2002:a05:6000:238a:b0:475:3a97:8e2a with SMTP id ffacd0b85a97d-47f6233d4ecmr10721512f8f.7.1784616089904;
+        Mon, 20 Jul 2026 23:41:29 -0700 (PDT)
 Received: from OrangePi5-Plus.BB-HOME (20014C4E1B88AD00DA0BF9DB4519DBD6.dsl.pool.telekom.hu. [2001:4c4e:1b88:ad00:da0b:f9db:4519:dbd6])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f63ed1911sm38837951f8f.22.2026.07.20.23.41.31
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f63ed1911sm38837951f8f.22.2026.07.20.23.41.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jul 2026 23:41:32 -0700 (PDT)
+        Mon, 20 Jul 2026 23:41:29 -0700 (PDT)
 From: Igor Paunovic <royalnet026@gmail.com>
 To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>
@@ -85,16 +85,16 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Igor Paunovic <royalnet026@gmail.com>
-Subject: [PATCH v4 3/4] arm64: dts: rockchip: add HDMI RX audio on RK3588
-Date: Tue, 21 Jul 2026 08:41:14 +0200
-Message-ID: <20260721064115.64809-4-royalnet026@gmail.com>
+Subject: [PATCH v4 1/4] dt-bindings: media: snps,dw-hdmi-rx: add #sound-dai-cells
+Date: Tue, 21 Jul 2026 08:41:12 +0200
+Message-ID: <20260721064115.64809-2-royalnet026@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260721064115.64809-1-royalnet026@gmail.com>
 References: <20260721064115.64809-1-royalnet026@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_234134_706962_50D69BE7 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20260720_234131_974156_BB22A768 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,67 +111,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Synopsys HDMI RX controller exposes two digital audio interfaces,
-one for I2S (0) and one for S/PDIF (1). Add the #sound-dai-cells
-property so audio cards can reference them as a codec, as documented
-by the snps,dw-hdmi-rx binding.
-
-Add a shared simple-audio-card routing the receiver I2S DAI to
-i2s7_8ch, the receive-only I2S interface dedicated to HDMI RX, with
-the receiver as bitclock and frame master. The card is named
-"RK3588 HDMI-IN", which is what users see in alsamixer and what ALSA
-UCM matches on. It mirrors the existing HDMI TX sound cards in this
-file and is disabled by default, since not every RK3588 board routes
-HDMI RX audio; boards that do only need to flip its status.
+The HDMI RX controller can expose the audio embedded in the incoming
+HDMI stream as an ALSA capture device. Document the #sound-dai-cells
+property so that a sound card can reference the HDMI RX audio DAI.
 
 Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
 ---
-Changes in v4 (both suggested by Sebastian Reichel):
-- define the whole sound card here as a shared, disabled-by-default
-  node mirroring the HDMI TX cards, instead of per board
-- name the card "RK3588 HDMI-IN": the name is user-visible in
-  alsamixer and matched by ALSA UCM
+Changes in v4 (both suggested by Krzysztof Kozlowski):
+- reference dai-common.yaml and switch additionalProperties to
+  unevaluatedProperties: false
+- drop the consumer comment from the binding example
 
-New in v3 (as "add #sound-dai-cells to the RK3588 HDMI receiver").
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+Changes in v3:
+- no changes
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index a264001..e0dce15 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -23,6 +23,23 @@
- 		};
- 	};
+Changes in v2 (all suggested by Sebastian Reichel):
+- reworded the commit message to describe the hardware
+- property description now documents the DAI indexes (0 = I2S,
+  1 = S/PDIF)
+- moved the consumer reference into the binding example
+ .../devicetree/bindings/media/snps,dw-hdmi-rx.yaml  | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+index b7f6c87..b80660d 100644
+--- a/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
++++ b/Documentation/devicetree/bindings/media/snps,dw-hdmi-rx.yaml
+@@ -78,6 +78,13 @@ properties:
+       The phandle of the syscon node for the Video Output GRF register
+       to enable EDID transfer through SDAIN and SCLIN.
  
-+	hdmi_receiver_sound: hdmi-receiver-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,name = "RK3588 HDMI-IN";
-+		simple-audio-card,bitclock-master = <&hdmiin_codec>;
-+		simple-audio-card,frame-master = <&hdmiin_codec>;
-+		status = "disabled";
++  "#sound-dai-cells":
++    const: 1
++    description:
++      The HDMI RX controller has two digital audio interfaces, one for
++      I2S and one for S/PDIF. The DAI cell selects the interface, 0 for
++      I2S and 1 for S/PDIF.
 +
-+		hdmiin_codec: simple-audio-card,codec {
-+			sound-dai = <&hdmi_receiver 0>;
-+		};
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s7_8ch>;
-+		};
-+	};
-+
- 	reserved-memory {
- 		#address-cells = <2>;
- 		#size-cells = <2>;
-@@ -338,6 +355,7 @@
- 		reset-names = "axi", "apb", "ref", "biu";
- 		rockchip,grf = <&sys_grf>;
- 		rockchip,vo1-grf = <&vo1_grf>;
-+		#sound-dai-cells = <1>;
- 		status = "disabled";
- 	};
+ required:
+   - compatible
+   - reg
+@@ -90,7 +97,10 @@ required:
+   - pinctrl-0
+   - hpd-gpios
  
+-additionalProperties: false
++allOf:
++  - $ref: /schemas/sound/dai-common.yaml#
++
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+@@ -129,4 +139,5 @@ examples:
+       pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_5v_detection>;
+       pinctrl-names = "default";
+       hpd-gpios = <&gpio1 22 GPIO_ACTIVE_LOW>;
++      #sound-dai-cells = <1>;
+     };
 -- 
 2.53.0
 
