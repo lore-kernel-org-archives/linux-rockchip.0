@@ -4,110 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D7DEC44532
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 16:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F14C4453F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 16:15:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TOWRY6DZ6fMexr3r/a/nIhZKbzZOAxsdTIsfUvaDztU=; b=rZU1pp5KdDpaAK
-	2COvu9jHgO04Zssgs9/scFuNEhLmHly4l5ohPyaq4DEwIBiicpx3RPXB02655Gtj9dsudEueafQWi
-	uEF6iXrcaVGdJxpsszr4CnWm9lHt5b6F8VglPOXoubLlxqvub4G4FGOyyVIJmGlWkPnjfdjLDm/WL
-	Dx8+8rao6lLeQkoPq80GmDLT3tcHS1aJ9VnLz6dKWebmP7+dTSaOFkgGsIu/q88rrea7UfRnTxQcQ
-	LRUk5FwF+5UIfnnA/5MeXO/19+8SsmhKPer+/MGkRZ9vpMxaZrRgBqHlrgAFWQqJO8in0h8DZmNDk
-	KFheDzJlzWq7+2mnF8Cw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0jjNYlHGt3+YGZQeynQopofOZ3ZB37UOiZR5Ex0hyPc=; b=yznXXs3KwQPzgZoPfeAlPQKQO6
+	rx9wQP4q6D/oIEeHBCRzLCodhYbqK4WC9wO1TGZ+EoeX6EkqoGw6zc5e6yOpcb14OakeFNBQRgNWt
+	1ktsz3VlYA70GoZPaBO9lEm0KJ12CiW9Fn0ZDJmJPnfeGHgEhVGiOFXp7fggCbLfTqHf9I2oVSJ8H
+	vJb9xPJj6paFg6JM7SEmHutyaWYwcGN61DQJ8cE8zuMhB/aaj0sohVmvm1H4x8T+QBomKBlNj3m/P
+	31eb/WQCdufeOaJwbGLDvo3PIEbdMAjZxb7uXkH90zmgQ3jh1aCGI6ajZQg0kh47oDCDUVMOtAd7X
+	DNNGSXgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZUv-0000000CHuW-06JB;
-	Wed, 22 Jul 2026 16:08:41 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wmZbw-0000000CIsQ-05eJ;
+	Wed, 22 Jul 2026 16:15:56 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZUt-0000000CHu9-29g1
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 22 Jul 2026 16:08:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=ZgrQnMgwlgoUFEsEQmGeH4aaMMul+JyM5frck2aQVIE=; b=QOUYXU8PjriT2bJe2qNh3QSwXz
-	luLIZsxSa5ZqRl0wgW6C9827tKkfqvd1/9TN8pkAOru3Z020c1YusmAtdaXYhL/43mdehaN1jFhDw
-	gDeYIWzIJU/j5DAyRzKYngoolfPhZtKxAjvVR8jv9eZz+Rcbn1AA8eFiL81WrYpEJRm6s36vWnqqG
-	4uHUWZ/ZuzoP00T974kkfeb2oRFV1qVUYCYoqP5rRrnXMG4vxPypXH3nR1ynYxCqYEkisvSIWiN30
-	Xjvc9zsmDsqaEvcs0DPDHPwD/L9JLDrpzWcQn4xji/ZjcGPH+wm0iOPg+Xwz2lrpI0rH0h9CGcF/X
-	shjcpt7A==;
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wmZUq-00000000ztz-2QCX
-	for linux-rockchip@lists.infradead.org;
-	Wed, 22 Jul 2026 16:08:38 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-84874b52eabso12383415b3a.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 09:08:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784736514; x=1785341314; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ZgrQnMgwlgoUFEsEQmGeH4aaMMul+JyM5frck2aQVIE=;
-        b=pzW0i/iniMoKaPjBZquzySP6hKfiRO3/7tfbCsA6HLAUot+bJdKZBmpi+NZCdFoqPd
-         30VCFSXU1RhhS1tjxJYUIHCXJ71uDtk4QoknE6OmDh/HCNAj7kplRCZzShuyWCb6xPky
-         bqNzIn97S8ASmg1ZOOWiCUj1s8AX2TpUpe1KzOriMh+WsTksgbKqfD3JuxwmMnJht/z8
-         hERwTHBkRU/TK//dSLLmAaWb5x4BievN68NJH4KnDSM0cmaVvySU+0VnV4pVE+UximZG
-         W2w83qFzR2RY472Zqjws3rlIcy2M8BDKmUn66uGTaWa6lkgGPLF9zCuvQbGc8ElwErpg
-         zgSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784736514; x=1785341314;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ZgrQnMgwlgoUFEsEQmGeH4aaMMul+JyM5frck2aQVIE=;
-        b=Q3jjVfyloltO/YehvlIAuaVdqmOCKhE5oHu8nzBnyqrBZPGmRb3dPCriC9LcNsNPFp
-         ou9d313oikr7IPEE9iFecrSH4Sb12kQoiM+jWt1RAjU+NSEw+r1jqvaSzOMosPiLajcm
-         Boz9u2WUfviq4ze/2JmZh9JY0TD3XeiwVDMwnR9gn0XY82gnLwx+9/otJSDvhdUhY1m3
-         BSk1Ww77eJZA9meP2p2cfG/kYBz44Du34a+hArfbdNgulQsNvM87CUlt9FBOn43M4H7A
-         BCVrAK2iTy9NBb5LxpeoW+1RrlckYyPE8KDvvHgvCV93hQEpQje5QqEyM3WXDK1DGKop
-         whtQ==
-X-Forwarded-Encrypted: i=1; AHgh+RqxqHEPBDceOkohcRXkj112Q/aAPZCBExAMptJnZAFxMaGjv/0Cn6aWP+vYBN3UPVgn1m8XZmcy+hibkqjRZg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyO/bmcOiECah1MFWtyv4FVd4iB0lKcBvkNDumZTHaEjWLZPzh6
-	Yub/jWRatEAqVXbCYH3wEcQQdEglhip2huBvhWEJXuA8Z5m6rMMBzH5gbtGHISL07fo=
-X-Gm-Gg: AR+sD10TVFQU0t4TEBRa9VgL7ghxK0vDb6LlbyQev3mw9PcxNPbiY2gr9eOfd1XZoF7
-	eskaRghqLuy6RS2iSRcuQlkSAzcd7VEw4XSBK7Ozf6exVTMmcTPidbxBAueEUC43V9GeqihkIbu
-	cbzYUriHZLEnnPB73T1tzS7R33Z6ymMNhS0d3k/FUMegFBc5/UUm6hyBR/00xaBN66aMJ3MgCzl
-	UH6QD8dW1rn9aT3P5J/V/09uJcXCGSV7kf6GTA/qSU07r972tIcJwvLbK0EiL+5aMV2JTY1ffPk
-	xCeMqmr0zSfcet62u0NTi+dptyN3BoDm8XLAZgumUFR+4oXDrOs5XrG1jUXOnxOPFIX4GkAof0B
-	CKwqS+j/ww/xQQiXicdnCa7EUx0L9rwg4RpBjTDkSbNyvB0gxgM/dyECWCCgj00CPjOPaDgahAu
-	Lq3PsDQiUGX+AljqSJCBmV+9uUlgjoMVBUqQE8rq3VgaVLXUDDb1D/pBsahA4wMID3yVfoTUg=
-X-Received: by 2002:a05:6a00:451c:b0:842:6004:3fda with SMTP id d2e1a72fcca58-84c292e057dmr23852827b3a.25.1784736513793;
-        Wed, 22 Jul 2026 09:08:33 -0700 (PDT)
-Received: from debian-rockchip-rock5b-rk3588.. ([184.22.136.210])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84e175a64e3sm1639440b3a.42.2026.07.22.09.08.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Jul 2026 09:08:33 -0700 (PDT)
-From: Tharit Tangkijwanichakul <tharitt97@gmail.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	linux-kernel-mentees@lists.linux.dev,
-	skhan@linuxfoundation.org,
-	me@brighamcamplbell.com,
-	jkoolstra@xs4all.nl,
-	Tharit Tangkijwanichakul <tharitt97@gmail.com>
-Subject: [PATCH] media: hantro: disable runtime PM before hardware teardown
-Date: Wed, 22 Jul 2026 16:08:19 +0000
-Message-ID: <20260722160820.2401-1-tharitt97@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	id 1wmZbs-0000000CIrN-3nwP;
+	Wed, 22 Jul 2026 16:15:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1784736938; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=PDWqtAHATy4t8nnhTQFIRRfVRp8llenGrkZQRI6i5UzPJfpUr2bmDprLApynVG4eP6SKEX106WqiUM/D5Irj8Z4Rv7KluV2zX94oWr9xEb+CfZxofRQKl0ryOFhzS+/ut1uip1nFR/UwC/5Rc7AcunyZHttMG6rwcja0ZA+FCvc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1784736938; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=M6pHnweHoy5aN7cOaUlywg+lPDf6Ba0mkFFB6TRU+kI=; 
+	b=a1O3m4W/cRdXGYl9BUxN89hQmXyU6dB5G9jCZcwJ+25eJ6AhbYT1LCVXJ5qazVZrX/RWMX56EFTmV7aMhqqtAMbdun3SL3XvSy+4qJBTCmSCpicUIKC2MqktlOTBgXiDU7zEPZEFfC9fCzKn6eKBwLlFiR0Bmlb6n7Tjoa2KTOg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784736938;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=M6pHnweHoy5aN7cOaUlywg+lPDf6Ba0mkFFB6TRU+kI=;
+	b=Un1pEjbOMq4Di5MKWNwwSOtwZfugb8qLZwzBZubTmn2Z/YHvRbxSVDIn0Zr0gIRQ
+	JaqZZMLqliB2xcOUS3Q/kRmCIz14nWfsG5SDLl8c2xluvwtM8rUoUjXO0nKcCO0/hRK
+	SVYC0tkEcCLCOYM/CUJb+pQ02MGTup33iPjC3DaU=
+Received: by mx.zohomail.com with SMTPS id 1784736936244387.407806640693;
+	Wed, 22 Jul 2026 09:15:36 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id E5F2618090F; Wed, 22 Jul 2026 18:15:30 +0200 (CEST)
+Date: Wed, 22 Jul 2026 18:15:30 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Alexey Charkov <alchark@flipper.net>
+Cc: Quentin Schulz <quentin.schulz@cherry.de>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Brian Masney <bmasney@redhat.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Wyon Bi <bivvy.bi@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, 
+	Elaine Zhang <zhangqing@rock-chips.com>, Detlev Casanova <detlev.casanova@collabora.com>, 
+	Sugar Zhang <sugar.zhang@rock-chips.com>, YouMin Chen <cym@rock-chips.com>, 
+	Dragan Simic <dsimic@manjaro.org>, Liang Chen <cl@rock-chips.com>, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] clk: rockchip: Fractional PLL coefficient on
+ RK3588/RK3576 is two's complement
+Message-ID: <amDqgsh38FJN0tNC@venus>
+References: <20260721-rk3588-fracpll-v1-1-b289bf17cf17@flipper.net>
+ <7f3924ab-52fc-4fb6-91b4-42a5e55d5c76@cherry.de>
+ <CAKTNdwE=s6XG==4HvbaEV86DATWO6egVxLgNE4LpjFaXNQP7_g@mail.gmail.com>
+ <b0111164-3726-4a1b-bc3a-0e678ea2ecad@cherry.de>
+ <amDC9ZfBAD2xbhqa@venus>
+ <CAKTNdwFEEd2LF0F2E2yR5jPfYB4sh-NaYyXn2GTFwCpACaqAfw@mail.gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <CAKTNdwFEEd2LF0F2E2yR5jPfYB4sh-NaYyXn2GTFwCpACaqAfw@mail.gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.732.17
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_170836_785807_4B88C9F8 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20260722_091553_005682_D3D222A6 
+X-CRM114-Status: GOOD (  40.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,99 +87,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1212420338681243997=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Removing the Hantro driver may trigger an SError on RK3588:
-	SError Interrupt on CPU6, code 0x00000000be000011 -- SError
-	...
-	do_serror+0x5c/0x74
-	el1h_64_error_handler+0x34/0x50
-	el1h_64_error+0x6c/0x70
-	regmap_mmio_read32le+0x10/0x20 (P)
-	_regmap_bus_reg_read+0x6c/0xb4
-	_regmap_read+0x60/0xdc
-	regmap_read+0x4c/0x80
-	rockchip_pd_power+0xe4/0x600
-	rockchip_pd_power_off+0x1c/0x60
-	_genpd_power_off+0x98/0x198
-	genpd_power_off.part.0+0x178/0x288
-	genpd_runtime_suspend+0x210/0x300
-	__rpm_callback+0x48/0x1e0
-	rpm_callback+0x74/0x80
-	rpm_suspend+0x10c/0x580
-	rpm_idle+0x134/0x1b8
-	update_autosuspend+0x30/0xc4
-	__pm_runtime_use_autosuspend+0x48/0x64
-	hantro_remove+0x8c/0xa8 [hantro_vpu]
-	...
 
-hantro_remove() currently asserts the device resets before disabling
-runtime PM.
+--===============1212420338681243997==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="32vooojpiitecxiz"
+Content-Disposition: inline
 
-Calling pm_runtime_dont_use_autosuspend() causes an idle device to be
-runtime-suspended immediately. At that point the Hantro hardware has
-already been torn down, while the generic power-domain genpd code
-still performs the power-off sequence. genpd regmap_mmio_read causes panic
-subsequently because the reset lines were asserted.
 
-Disable runtime PM before asserting the reset lines so that no runtime-PM
-transition can race with hardware teardown.
+--32vooojpiitecxiz
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] clk: rockchip: Fractional PLL coefficient on
+ RK3588/RK3576 is two's complement
+MIME-Version: 1.0
 
-Apply the same ordering to the probe error paths as well.
+Hello Alexey,
 
-Fixes: ea71631b7129 ("media: hantro: add support for reset lines")
-Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
----
- drivers/media/platform/verisilicon/hantro_drv.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+On Wed, Jul 22, 2026 at 05:54:15PM +0400, Alexey Charkov wrote:
+> On Wed, Jul 22, 2026 at 5:44=E2=80=AFPM Sebastian Reichel
+> <sebastian.reichel@collabora.com> wrote:
+> > On Wed, Jul 22, 2026 at 02:59:25PM +0200, Quentin Schulz wrote:
+> > > On 7/22/26 1:00 PM, Alexey Charkov wrote:
+> > > > On Wed, Jul 22, 2026 at 2:35=E2=80=AFPM Quentin Schulz <quentin.sch=
+ulz@cherry.de> wrote:
+> > > > > On 7/21/26 9:17 PM, Alexey Charkov wrote:
+> > > > > > Not adding Cc stable, because while this fixes a real bug it's =
+not a
+> > > > > > regression, as the issue was introduced in the same commit that=
+ added the
+> > > > > > RK3576/RK3588 support.
+> > > > >
+> > > > > I don't think this is a valid reason :)
+> > > >
+> > > > I believe Linus frowns upon changes like "it never worked, but we've
+> > > > fixed it now" being submitted as fixes. It's been broken for years,
+> > > > and since nobody complained yet, going via the normal development p=
+ath
+> > > > (i.e. -next) seems perfectly fine to me.
+> > >
+> > > My bet is because of the Fixes: it'll get backported anyway even
+> > > if you don't put Cc: stable. In any case, I don't care too much :)
+> >
+> > FWIW you are mixing up things. Linus does not handle the stable
+> > kernels. He does the release candidates and the initial version of
+> > every kernel release. The stable releases are handled by the stable
+> > maintainers. Linus only said, that he does not want to get these
+> > kind of fixes during late -rc phase. That makes sense considering
+> > fixes also have a chance of introducing regressions.
+> >
+> > But if patches end up in a pull request for an -rc kernel or in the
+> > pull request for the next merge window depends on the maintainer
+> > applying the patch (i.e. Heiko). The maintainer can queue a patch
+> > with all those tags into the normal for-next queue targeting the
+> > following merge window. This results in the patch being in
+> > linux-next for a while, then being added to the master branch during
+> > a merge window and then being added to the stable trees (as stable
+> > only picks patches that are in mainline).
+> >
+> > The maintainer can also merge a patch to the queue for -rc kernels
+> > without the Cc stable. That is exactly what happens for a regression
+> > from a normal patch in the merge window, since the affected patch
+> > wouldn't be in any stable kernel.
+> >
+> > TLDR: The Cc stable tag has nothing to do with Linus.
+>=20
+> Indeed, I made a logical leap here. In my view, however, this patch
+> doesn't need to go into 7.2 fixes (it wasn't broken during the 7.2
+> merge window), nor necessarily into stable backports (no-one seems to
+> have used the affected PLL rates in older kernels, so there is nothing
+> to fix for them either).
+>=20
+> However, it will become relevant for driving arbitrary display clocks
+> for DP video output because several display modes (and consequently,
+> PLL rates) I needed for those monitors I tested require new table
+> entries with negative PLL coefficients. Those would be 7.3+ material
+> anyway.
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 2e81877f640f..bbeec5ae509a 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -1212,7 +1212,7 @@ static int hantro_probe(struct platform_device *pdev)
- 	ret = clk_bulk_prepare(vpu->variant->num_clocks, vpu->clocks);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to prepare clocks\n");
--		goto err_rst_assert;
-+		goto err_pm_disable_assert_reset;
- 	}
- 
- 	ret = v4l2_device_register(&pdev->dev, &vpu->v4l2_dev);
-@@ -1266,8 +1266,11 @@ static int hantro_probe(struct platform_device *pdev)
- 	v4l2_device_unregister(&vpu->v4l2_dev);
- err_clk_unprepare:
- 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
--err_rst_assert:
-+err_pm_disable_assert_reset:
-+	pm_runtime_dont_use_autosuspend(vpu->dev);
-+	pm_runtime_disable(vpu->dev);
- 	reset_control_assert(vpu->resets);
-+	return ret;
- err_pm_disable:
- 	pm_runtime_dont_use_autosuspend(vpu->dev);
- 	pm_runtime_disable(vpu->dev);
-@@ -1287,9 +1290,9 @@ static void hantro_remove(struct platform_device *pdev)
- 	v4l2_m2m_put(vpu->m2m_dev);
- 	v4l2_device_unregister(&vpu->v4l2_dev);
- 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
--	reset_control_assert(vpu->resets);
- 	pm_runtime_dont_use_autosuspend(vpu->dev);
- 	pm_runtime_disable(vpu->dev);
-+	reset_control_assert(vpu->resets);
- }
- 
- #ifdef CONFIG_PM
+That's a different argument. FWIW I don't see any issues with not
+Cc'ing stable. I suggest to put that info into the commit
+description. E.g.:
 
-base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
--- 
-2.47.3
+While this patch fixes a few PLL rates, there are no known users of
+the affected rates in the mainline kernel. Thus there is no need to
+backport this. The fixed rate calculation will become relevant for
+driving arbitrary display clocks for DP video output in the future.
 
+That helps anyone to understand what is going on regarding stable
+backport (incl. the bot).
+
+Greetings,
+
+-- Sebastian
+
+--32vooojpiitecxiz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpg7JcACgkQ2O7X88g7
++pow7Q/9EW+wY9JpCb5S4paI8GIRGS5rnbJay/pUKrWROaoT74PrU4sZgoRaA+bT
+84fZ0m28wkZ6ZVKCokysF9IlTL+K3s24Mz3+ZvjKrTo4l7k8t142Rn4yyIeU2bQP
+ZbOG13Wr9BSE97oWnXwCWlNNcv3J5BPd/Aw/vlExejhqf/gnw3ZhgBcPC5HFIYGs
+IQvmd5rTvj43Q+PgdKQwDmyhTSaLnhn32lmeADODWagnEP803877jq1gkg31aQjn
+KyQ4L1JMP2kidNVVwpMrfkUw5wLyZKY3XgjMtNkkMySZwuABNp9rfEFE03MHmzWQ
+6eq/KXDgdPohAnpfMoo2GFOdLcvy+9tlkLmRkGTzvL8KUy6PokJThz3049K8tfce
+qTbFXvMlQN9sMKHGNX+z9AV00MPMcpmNBGKKY3npNY3MTu60Ycqp0r1WGR16Isxc
+LIBRZu1vNyoVoAZRvCClc61buBeJqdaDmhpTwxxm2u8MzBkBwtNAQ6ZLbABJ0qFg
+j23YPrmXhcpqEY/h53fW/tBT+6jWskB2caFN7ktB/+YAuvh0HR51qwD0y9lK5U4S
+CNs6FiKT9luwrM8fGE1zspOp29xJfiqvii/Dt5OXgYUzqC+ZVL0Ic7jQ12uCxyQ2
+LyYhP/3n31ytwDQr6qMPDrPt4OQudGczZFjijnwwPuxGvzOMGUY=
+=ssKd
+-----END PGP SIGNATURE-----
+
+--32vooojpiitecxiz--
+
+
+--===============1212420338681243997==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1212420338681243997==--
+
