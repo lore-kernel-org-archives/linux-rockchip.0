@@ -4,89 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E4BCC44536
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 14:22:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CAAAC44536
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 15:42:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YcKAlSO2QbzsSK0vZ5cZRPuUthfbFNQbse2qDtgNRDw=; b=oRoEEGCRDIXs5b
-	ZJpXthRXcTLtCARIver1CTFVFmBs+5le5GWFatUwRigy6BsXQGz8VB93AXo2C93wLUCGFIkPR8Cmc
-	Bq1MaUeavTL+M4hYywplxDYYBY3eNFtwyCHBf4Gbkq7WFmB+paICwaZUl8q+tzLA0HGHyfHEvrUJR
-	Nh62DtOLWChCRuVO9kGFT2iAE7sqsD9LeSMXymjrzIn1vvqjvDn+07qHBF94tv44iPRzXe/BJrlYA
-	34VbkBSyranEiN3GiOlAIjd1sofq2UkxoS/hQuScZqyu9Zb7RjgUOf3XkTFq7HUX8sgp7bVgC7Skr
-	JP+6NWocKY9RFhUl2d6w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7UlIqkfsBlheCSHoOKgvSDWn/YQ9FB4iCyH900/hvpw=; b=AlsQWj9YUVgl6M
+	4wwuTYKsbSFexEWdzoyl9F5xEUfSbyvbYZ0m2IqS++/HdKjQkcKkGcNr1AsdqZTIi6fvy9+dEHDP/
+	l/Xj/xYxc+zOsT7nPMz5cYW+KCpmXeacxTNAXzTrwevsizl61CM9Nq9XYDVBfW6NEyTxB5tcHKfmr
+	CktksGyiUTuIkkv+bsyyMvkbSCXET+L7TosoXYt67iMui+9MdEGwuS1ElBlKskN4tuqIsFTc+/vu5
+	56ZHIjCT2B6Ms1nt89SJ9JqLlmk5/M9ngtEuEEZkloah2LtImM2HYJ2cXlq4qt6ZGOXkVTUbxz7wk
+	lP8D/pQHD96qVkJIItEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmXpe-0000000C12w-1GHO;
-	Wed, 22 Jul 2026 14:21:58 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1wmZ5J-0000000CDOQ-08Xu;
+	Wed, 22 Jul 2026 15:42:13 +0000
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmXpX-0000000C10d-1VSA;
-	Wed, 22 Jul 2026 14:21:56 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 2F21E1A1051;
-	Wed, 22 Jul 2026 14:21:48 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id F0DFD60388;
-	Wed, 22 Jul 2026 14:21:47 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id CD5B311BD3A22;
-	Wed, 22 Jul 2026 16:21:28 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1784730106; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding; bh=j5WRfwe5s7CD4n1/aXk/GuB0uSEMmPxIt38DrP+sT9s=;
-	b=q9U+aIf/4yDREUm1HYpEzUsh0wIcz3rw2jHYkX5xMjcB7JLX50HQtTMbtSUvrI+VGae9vu
-	YVn7SJP2PnfWlPRMHtkm3ieV2/EjSyukXuPY/zb3qRlGRCpIZ93uyHhkEhfaMIJ2itr58P
-	m4fuxIAyPKu+js9RoCTwmMzZWdiIB/E61TY1nRJ6h2SCwjls1890/wwN/Eo++VVj9Jg7hv
-	cBSEzLVgL3MVo8OtY7lK0sul9jXiSg3JI59jlM0m+npiflq+X01XX8jTtz3s71A//I9284
-	mrnjhne27BDlfP8nEzrkqxzU4wCNDZfNqiT8QqIpKoQG8aQDG8j/BAWR9cmDJg==
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	davem@davemloft.net,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	=?UTF-8?q?Alexis=20Lothor=C3=A9?= <alexis.lothore@bootlin.com>,
-	Jan Petrous <jan.petrous@oss.nxp.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Yao Zi <me@ziyao.cc>,
-	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>,
-	Romain Gantois <romain.gantois@bootlin.com>,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	Drew Fustini <fustini@kernel.org>,
-	Guo Ren <guoren@kernel.org>,
-	Fu Wei <wefu@redhat.com>,
-	Inochi Amaoto <inochiama@gmail.com>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Minda Chen <minda.chen@starfivetech.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	thomas.petazzoni@bootlin.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
+	id 1wmZ5H-0000000CDNh-1FAx
+	for linux-rockchip@lists.infradead.org;
+	Wed, 22 Jul 2026 15:42:12 +0000
+Received: by mail-ot1-x336.google.com with SMTP id 46e09a7af769-7e6128bd9b3so6324658a34.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 08:42:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1784734930; x=1785339730; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=Dczvc/kXctgDpULkfTi/F+UOGrVYVopzU/SdCxdMcC3tmEw+q4RUykrw4TVZjXZ/o9
+         sXa8ix4QUfbCOcJaIcWAbz89B5DWNV2xMbAlnS5pr0sv1AXVYGLV2Kbtp6fzGVPCYayd
+         Ym2EzGenx7HJD2ejch6WVfryCrVxVFtaRWxBRIBkGNrKrsiHBDzqshIAk0pv9N+vqO0l
+         j0saywosDAAvkZp5ryh/MKy75MNUVf19yyZf2EwWETw86xC5yR4Mme+RC7YeCXx/gEIb
+         cONyWCyNYRXSOALDY1gvZXaQW7BjjvAJXQBZYs8Gli/f4p+oeGs2tx/oIE6qkIvqGEH8
+         55YA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784734930; x=1785339730;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=GdpcvXVE81qW8l/Jy43lUjW4yTK6fBUua00Ug2r7ddJKHPBsnda/mMRyiw2H0mvFLq
+         bTlB3P8eWzru/Ej4ewnUGQN5SPEyFA8rxJwVNlbR2LyT71+XB8CJPamwWc6+bL7qLS8s
+         rLNViM7jQPGU+70d0WUaAlYUSdxzq5neTMrG8UKGq1RmV8PPlxiz6569EE/abCzaSD8e
+         IIszNkYW67ZIDKMg48GMSuSXpwckGbt+KmrbaXn3ANNmdpfINWrv4yfyUSTwfrKa5g++
+         qp9hrdmo4CmdTkn5XDa+xpTTfyfJ5hqWUbOXQZXl3ALDeuFhEOvYEf0fszhwlkt62nZV
+         Cm1A==
+X-Forwarded-Encrypted: i=1; AHgh+RoKGZS5XbgrYUKMis/54C3PVQugmkhYEGHy20ZdVbJHy1h8yqZJ6oJVOA5tFQYWQeHLxBwo2cck+iNDWa2Q6w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxqJfUGsR699dvO1tEhamBiclpozbElMOmVVuX+bJgTXi8k7I3G
+	HSBDRSfXtc0GCC2/XwDkYHanOfhGEE0iitMuKWlDAD/mRVnhtUqef7Uo
+X-Gm-Gg: AR+sD125+gvdbq8nwwpEl5LKIti2dAv0IWSx+VsSzliA5qP8aWXxmNAEeWdARLhXTVs
+	NlCORRyCLCEoAqGvpXgnLCKViB4l+WgUC0UUdL3wVvSA2jSWOO58TV6du+BQp1UYz++OtC39c4k
+	+nMZwDlvivBRCQEDrso2edOuXfOdLCP7hRyCMuqyapDQ5nMmPOmwo+bUPCfO3ObfWsFqszN9dkq
+	ARMkV4CRQfjhVT56ucdvBJICEoU5+53ZcDHf0Tf2Mn8eMDpm8NYZHPGQ20hzQ14jSgbABqH2PhL
+	4wcmmCan33mj+Ulk3Bf6XKEY8fMtyN+4vJH8Ni3VcU5fZa+Ljhubd92/IQe5GeaQVn2v0teH3ie
+	oZA/tTc38iQ3DJFiaAf+X50Eplx9CO2/ccP+b9rGs3oxTyyFoa4s6kLujgfr6I84o6gnuUfJtFU
+	t+1RmShedNHW8=
+X-Received: by 2002:a05:6820:4b87:b0:6a3:14f3:3cd8 with SMTP id 006d021491bc7-6a53687c6e5mr11326683eaf.52.1784734929965;
+        Wed, 22 Jul 2026 08:42:09 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6aac3a494d4sm1300804eaf.3.2026.07.22.08.42.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Jul 2026 08:42:08 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-iio@vger.kernel.org
+Cc: andy@kernel.org,
+	nuno.sa@analog.com,
+	dlechner@baylibre.com,
+	jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com,
 	linux-rockchip@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-riscv@lists.infradead.org,
-	s32@nxp.com
-Subject: [PATCH net] MAINTAINERS: Add myself for stmmac ethernet driver maintainance
-Date: Wed, 22 Jul 2026 16:21:24 +0200
-Message-ID: <20260722142125.1767689-1-maxime.chevallier@bootlin.com>
-X-Mailer: git-send-email 2.55.0
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	andriy.shevchenko@intel.com,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH V19 1/9] dt-bindings: iio: imu: icm42600: Add mount-matrix
+Date: Wed, 22 Jul 2026 10:39:32 -0500
+Message-ID: <20260722153942.144387-2-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260722153942.144387-1-macroalpha82@gmail.com>
+References: <20260722153942.144387-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_072151_537924_4CDC9AD8 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20260722_084211_330134_5104EE82 
+X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,50 +112,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The stmmac driver based on Synopsys' dwmac IP is used in a very wide
-variety of SoCs and is currently very actively used and contributed to.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-It has been orphaned in January 2025 after the previous maintainers
-became inactive, but Russell King was providing very valuable reviews
-and fixes for the driver at that point.
+Add mount-matrix attribute to schema. This attribute has been supported
+since the first revision of this driver, but was not documented.
 
-Now we're seeing more and more activity on the driver, but are lacking
-people to test and review contributions to both glue drivers as well as
-core stmmac code.
-
-I have access to some variety of stmmac-based platforms such as socfpga
-CycloneV, imx8mp, some Allwinner SoCs and stm32mp1xx boards that I can
-run regression tests on, and I'm offering to step-up as a maintainer for
-driver, for the time being at least.
-
-Let's hope other people will eventually join this effort.
-
-Signed-off-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
+ .../devicetree/bindings/iio/imu/invensense,icm42600.yaml        | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Sorry for the huge CC list, I tried to include all stmmac glue
-maintainers and associated lists.
-
- MAINTAINERS | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index a674e36529f7..bea104a7e522 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -25972,8 +25972,9 @@ F:	Documentation/devicetree/bindings/phy/st,stm32mp25-combophy.yaml
- F:	drivers/phy/st/phy-stm32-combophy.c
+diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+index 119e28a833fd..9b2af104f186 100644
+--- a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
++++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+@@ -53,6 +53,8 @@ properties:
+   drive-open-drain:
+     type: boolean
  
- STMMAC ETHERNET DRIVER
-+M:	Maxime Chevallier <maxime.chevallier@bootlin.com>
- L:	netdev@vger.kernel.org
--S:	Orphan
-+S:	Maintained
- F:	Documentation/networking/device_drivers/ethernet/stmicro/
- F:	drivers/net/ethernet/stmicro/stmmac/
++  mount-matrix: true
++
+   vdd-supply:
+     description: Regulator that provides power to the sensor
  
 -- 
-2.55.0
+2.43.0
 
 
 _______________________________________________
