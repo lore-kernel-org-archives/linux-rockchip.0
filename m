@@ -4,60 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 892FEC4451C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 07:10:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F6D6C4451C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 07:22:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z/8l1AaPxE+05ZyAvDl+MxdDUG3AWQ9hv7dSSbZ0/hg=; b=JVtnn0KrztI14J
-	3OkU93uBlpBPyeOY+7QBU1VycpAZ2SY7axf4wpfnnnQPIDuQg/Osf1CMwi4soBaEbVUmFuFTxceG7
-	Hwn3Fl6Tzrcge4S/4eJCcYdsvNoVF0aIF1z0hkniTMegdro2X7E4WPlA9hic6GBPUHlvjh+ysNIPW
-	B5t7gg9c92H2yxOfmp5ED/tL/LnBHZcmJNo76xvXgk9m7IDpIqrmEo9rCpUfFPnYowkarPjsqh1II
-	q8FYvOX4GQNuxpuLi9iQbAPruFf6tpAJlAj7nANodH/JRJ3bIXvVa04X9/96YpzK7hvuf4niRh1rZ
-	IM4EAh3aPDEEuFzHrxgw==;
+	List-Owner; bh=y01UAnycndta99j+7LDVYkNeJoZFs1yz5zatY/C2fKQ=; b=nnnD/nfrWXWEfq
+	HbOjxnuRLVIIDvaRWXR71ilBtRdlhEFtnXUH4hfiQ/bIdLUA1XK0Axk1S/I9zgkkTQsoyggJhEm8o
+	BpjIzd7zTioLTdN4nDhq4F30cw8MYhh76ZRlXJgZ1ngdbXSeT113eycdiGBxVtlokSmYwFLIY0jMT
+	5nOH7n+GXwCnm24zv8cTZquszh3+lbsYyLcL1QtJO/Uid8fBWTsixqMUZC3pIxsyNiOq2/nD9/G4y
+	mHVFYxfNoqnKEVRMNhYIL1ow21TxSRB8tGT3VyDW+1nrZd6Yx5BnUAAwKu429mSyOf5oDbwvdZmi4
+	vut1uzTV1Grl5PWkrZug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmR6T-0000000B1xg-3w6l;
-	Wed, 22 Jul 2026 07:10:53 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wmRHN-0000000B3bG-3j4e;
+	Wed, 22 Jul 2026 07:22:09 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmR6S-0000000B1xP-1wCS;
-	Wed, 22 Jul 2026 07:10:52 +0000
+	id 1wmRHL-0000000B3ar-47zH;
+	Wed, 22 Jul 2026 07:22:08 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AF96A60A67;
-	Wed, 22 Jul 2026 07:10:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A15371F000E9;
-	Wed, 22 Jul 2026 07:10:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 26F1D60A67;
+	Wed, 22 Jul 2026 07:22:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18DA21F000E9;
+	Wed, 22 Jul 2026 07:22:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784704251;
-	bh=pUBOybuaQ4oLhv5gpLAxGaNiHUDAVsgBLzkdhW8dxfI=;
+	s=k20260515; t=1784704926;
+	bh=yr/OrBC+qRuEY7Yqo7iUWp5/J7OekvuX5jORhC8HqGk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=KpBaUoOJSGKMnsiMgykFnlLyGr0UYTSYsafvK5qGTdkU37nmDEYxE+aytF+Q3r7mw
-	 DlpaIYcllglU8Et2PTZ24NNkhmQDxHrizvXN4pKAaccQIPo9BBZRt/p3q7Y3KDgWVC
-	 wQFLmdiKPFmhYvU/onvqomIE1e9VdSSPQtIvgFqhLgtLrVaHUfq1QeIrnyhkS1GA6y
-	 +SXvguG/AXyp9VnBSv0pemkG0gVkwevBxFGrQCcIgt/uZigUZv8F8i4dVJrd1of1ma
-	 /R4/qXbiJRlnj3F6vHIGn6CUYKMVkskalfeL6hTqK23goD67ZpGPEv34kFXTWHz7Mb
-	 Bwd8Lr3hZhegQ==
-Date: Wed, 22 Jul 2026 09:10:48 +0200
+	b=EypVTYXuhH1X+r3duiINXfNRT1lSn8Jg5CsmTAswYqKaOLuxHa3MqNG5z1buQiASQ
+	 9B9DJp/OnSHch96/gNZEAD8KfPYfcIvTH/qvVe2JNaPFgVt3K7qPT3lyT7o/MobhoO
+	 Vj16I+a9TIOAh85/TyNk7kL1xyfnCCK9KuhDIr1hE6iBK2/5P4mbzICLgCShu4KQiA
+	 /QHgNBd6PNMNm9mSa7LjDJB32g9stv92ExHVmpdAg8KBMlrKdJX6cmNCil23SLMSRv
+	 0E22QcvyT4orDsM/ux7G4rujnYD9HgGqpXCNnN6y5svkQb92Ebirf9qbr/rGLVJMbg
+	 CtvuyfaxKFVoQ==
+Date: Wed, 22 Jul 2026 09:22:03 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Igor Paunovic <royalnet026@gmail.com>
-Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 1/4] dt-bindings: media: snps,dw-hdmi-rx: add
- #sound-dai-cells
-Message-ID: <20260722-gabby-active-seagull-5aaea6@quoll>
-References: <20260721064115.64809-1-royalnet026@gmail.com>
- <20260721064115.64809-2-royalnet026@gmail.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v4 09/10] dt-bindings: display: rockchip: dw-dp: Fix
+ sound DAI cells
+Message-ID: <20260722-enchanted-mandrill-of-refinement-adc7b3@quoll>
+References: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
+ <20260721-synopsys-dw-dp-improvements-v4-9-f0f4a4ede712@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260721064115.64809-2-royalnet026@gmail.com>
+In-Reply-To: <20260721-synopsys-dw-dp-improvements-v4-9-f0f4a4ede712@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,19 +63,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Alexey Charkov <alchark@flipper.net>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 21, 2026 at 08:41:12AM +0200, Igor Paunovic wrote:
-> The HDMI RX controller can expose the audio embedded in the incoming
-> HDMI stream as an ALSA capture device. Document the #sound-dai-cells
-> property so that a sound card can reference the HDMI RX audio DAI.
+On Tue, Jul 21, 2026 at 07:52:39PM +0200, Sebastian Reichel wrote:
+> The RK3588 and RK3576 DesignWare DisplayPort controllers both have two
+> possible DAI interfaces: I2S and S/PDIF. Thus an argument is needed to
+> to select the right interface.
 > 
-> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+> In addition to that the RK3576 has the same IP as RK3588, but configured
+> with Multi Stream Transport (MST) enabled for up to 3 displays and thus
+> has a total of 6 DAI interfaces (I2S and S/PDIF for each possible
+> stream). Meanwhile the RK3588 does not support MST and thus has only 2
+> DAI interfaces.
+> 
+> The binding update from this patch has only been tested with the simple
+> single stream transport (SST) setup as the Linux driver does not yet
+> support MST.
+> 
+> For MST it is unclear what a good binding should look like. Technically
+> there are a couple of options:
+> 
+> 1. Stay with the single cell, but add more numbers. I.e.
+>    0 = I2S on stream 0,
+>    1 = S/PDIF on stream 0
+>    2 = I2S on stream 1,
+>    3 = S/PDIF on stream 1
+>    4 = I2S on stream 2,
+>    5 = S/PDIF on stream 2
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+This looks simpler and anyway the numbers are abstract, so they do not
+need to match "stream X".
+
+> 
+> 2. Add yet another cell, so that there is one argument for the stream ID
+>    and one argument to select between S/PDIF and I2S. I.e.
+>    0 0 = I2S on stream 0
+>    0 1 = S/PDIF on stream 0
+>    1 0 = I2S on stream 1
+>    1 1 = S/PDIF on stream 1
+>    2 0 = I2S on stream 2
+>    2 1 = S/PDIF on stream 2
+> 
+> 3. Create one subnode for each stream in the DP controller with its
+>    own graph for the video streams. This would mean the MST binding
+>    is quite different from the SST one.
+> 
+> As it is unclear which way is the most sensible at this point in time,
+> just go with the most simple option for now and revisit this once MST
+> is added.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml     | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+> index 2b0d9e23e943..c4f8959dd65d 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+> @@ -25,7 +25,7 @@ description: |
+>    * Supports up to 8/10 bits per color component
+>    * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
+>    * Pixel clock up to 594MHz
+> -  * I2S, SPDIF audio interface
+> +  * I2S, S/PDIF audio interface
+>  
+>  properties:
+>    compatible:
+> @@ -46,7 +46,7 @@ properties:
+>        - description: DisplayPort AUX clock
+>        - description: HDCP clock
+>        - description: I2S interface clock
+> -      - description: SPDIF interfce clock
+> +      - description: S/PDIF interfce clock
+>  
+>    clock-names:
+>      minItems: 3
+> @@ -83,7 +83,8 @@ properties:
+>      maxItems: 1
+>  
+>    "#sound-dai-cells":
+> -    const: 0
+> +    const: 1
+> +    description: 0 for I2S, 1 for S/PDIF
+
+This is ABI change, which might be backwards compatible or not, but
+commit msg should explain that. I can easily imagine drivers where
+written that way that they will fail with an old DTB.
 
 Best regards,
 Krzysztof
