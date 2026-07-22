@@ -4,151 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5EC5C44539
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 12:15:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56FA4C44539
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 12:18:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2/VyMtthoc/CNFdFcoWyEdh4OkTJU9wtVEQcXFCEh2M=; b=3ZXGC9MIxuLl5S
-	p5JwINEx+xC7f+GIJR0DvhFFkqXiV8AjKaV2nmVRReD+eLYgDfTgK5xUKTeBekUpAjapU1WAhexLt
-	m/vlizTLLWm7JZtn62+icURRtKaebtUfzDaKtjNpFNJGgmNC1RGUSrY/cjSf6q8HwWFbFjba0fp6q
-	+8vGuODND+aDGPdshM8BQDn2/BCTFpGIr9edmb9g6qqWQJsf8ttlMQcioxjEdh8Rol5fxYAaN+uby
-	HrYeKNMWD1vstsUvcliyLkKib7tmRyIFqyXSJ+nVLkh0iOOqAvUbcOitGSYmy/PPqf4SW/U90lYb3
-	aqBBhlC46N+iLC5b7GyA==;
+	List-Owner; bh=IsDfw9IE4J+MGvbbVq5iOoO+bhEk5SHTY9vImRHVugc=; b=TZe8rP+yiSQiC0
+	yIOBw/OsrKQqm14I6qyjh+O0rpdSIF6N0ZKrRN+atw+UF/Pnmxyr+ELIYs879RvbTbSCP+WhD7h1t
+	z18gEv4muIX46UsAZNNu0y2poa8MCwJaIY8BGoVHm2mf5Kn7WpQ1sxYT0TEeh1TFekxVAGUTjbDsR
+	UDthUCOTM72R+hVyt8/P3kdWcCuyU6qtiSZZFOgjjKnWabFT8NrDMU5HrxiAsnAslcMPgGtXNSz6z
+	/xd3LDQoMXVHu+KlITFxVO6tBftFV7XtltkhiGBBG7R4VMF4SXy2TP7+51EL6rTF4BcHZOwGI2ecm
+	r238Mwk5aerOXIJpwDVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmVrP-0000000BizQ-3J4b;
-	Wed, 22 Jul 2026 12:15:39 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1wmVu7-0000000Bjtt-42Wz;
+	Wed, 22 Jul 2026 12:18:27 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmVrM-0000000Bixj-2EFs
-	for linux-rockchip@lists.infradead.org;
-	Wed, 22 Jul 2026 12:15:38 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-47f752b3423so2687300f8f.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 05:15:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1784722534; x=1785327334; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=VI2Isc4fgmRJDTCJfmw/OSW5rvOEVOT9p4D8XxgQ81I=;
-        b=rxnbuh9icHwNY+RlngRX8kJyDQUbGzS4vYuvjL+rPtUwkki9pXeJt6JRik6IH07BMR
-         gdwyOa0RX2gXYMDjpNQUw+CivZsjmizFjy8sLC75crx/fgMg4slfYPBnOSdlisfiZqki
-         Ww8CNQZ3/FC3tqIT2ZXGdPOWz8dfQ4FerY2VyOwPIP8c/udhRA7wc82D7u0uBmz1gAT3
-         gGhdZm/0byig0N3RJNbj5PB949Xgl/6kR6BsaTJZWWfutBmH8KhnbFjSU7w6qWkaA2Fz
-         HIK2mVp08G2hC0P1H7PlA0F2Ss6HjQl/5nsC9Bkk+2rA3tyyvksb9rm7cbhZipkWp78O
-         Rmdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784722534; x=1785327334;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=VI2Isc4fgmRJDTCJfmw/OSW5rvOEVOT9p4D8XxgQ81I=;
-        b=TSE798J6XP5nU04qAJoCHfCMKzstbKtl7upceNaSs0hHm3L5TmakNcn/W8DI4u81PK
-         d1TZmby1l7G/q886MMTYjKFGvHSS0XGubsgfp8THMXS2X2YytTHQpRws9vzgs8soBXzY
-         C2Hw9KhvpaFA+m3HL+RtDo027WTQqHJryRk4cIQ4d6tEgyeTllHR7igqNnln2xrsvjKp
-         q5U3m3NPCPmqDLW9A1IbaRBTmUyV/hEpU3BITHdrEbSB2gJQ+woSKosPSIjn7NnSH8E5
-         nbYYPNbVS0s1dy+GmLar8b268x7x+kQqoNQSNqlYGJaYN5WDJf0WJKgkqf12iGDOR898
-         PxHg==
-X-Forwarded-Encrypted: i=1; AHgh+RqEZQEAP9hSE2bSD7kq2BJ2MVNofOAG0OvkUBpkYQlha223lN9ktJx2a9q8R9uxCX92qHIPvyWyMA4z5w/odg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzXi/RgPwOuGhVlVQIvJQPC5cB6HIMoZyVX7LUHBEK+v2F7SD61
-	Qfzzn56nmHm9+RnmzZh9D8OnRGMjI9V+l/4iRyvIyy0GHLwfSb1TM+DMObTKfjT0Tsg=
-X-Gm-Gg: AR+sD12JysMR1cjjJINRPa48tt4vQT8A+xoNHm1Im4QLbS7Bj8ZdaMeKLAJPi4kd/d1
-	nKmfabYcpsZK6su4XFTZQ/EZVEM3vXOMjbOBXm2YBNFEVYJznlyAD+GaGzjm50Hw2GYlpwPymj2
-	RGKWi3MrjJkjwrfDrh9M+20EaSaxFz+zor1JLn2cp/L0OZkA4RBRxE/7/DN8dcV+fl62FhHHJ7Z
-	cwZRKdQ8Q+PG5k/9GO9J0kzNSi0KIoS/jpViMaaEmneKTecVnxqGK0R4kAwjNAyjWbjmRxdaD+f
-	R0mic0r/+Wb6jba7IXexdNHkbEZgX3/w5RLc72X2+m07amDnErEx/kiNZNOV4dPp1WsuY3O9U5K
-	fxDM7xJ0WetT6cjofHaYR2mtBOgwe8zyC1LjOMuhPB1FxLfbmTDuKT62051UyzXPNTerbuouCEq
-	s2qZygmlfuR+bj627BHtFKlkM=
-X-Received: by 2002:a05:6000:46cd:b0:47f:70f4:7c5 with SMTP id ffacd0b85a97d-47f70f40972mr13998165f8f.53.1784722534372;
-        Wed, 22 Jul 2026 05:15:34 -0700 (PDT)
-Received: from arrakeen.starnux.net ([2a01:e0a:106d:1080:52eb:f6ff:feb3:451a])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f8635c8d7sm4379093f8f.21.2026.07.22.05.15.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Jul 2026 05:15:34 -0700 (PDT)
-From: Neil Armstrong <neil.armstrong@linaro.org>
-To: Jessica Zhang <jesszhan0024@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Inki Dae <inki.dae@samsung.com>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Linus Walleij <linusw@kernel.org>,
-	Marek Vasut <marex@denx.de>,
-	Stefan Agner <stefan@agner.ch>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Yannick Fertre <yannick.fertre@foss.st.com>,
-	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
-	Philippe Cornu <philippe.cornu@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Jyri Sarha <jyri.sarha@iki.fi>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Alison Wang <alison.wang@nxp.com>,
-	Paul Kocialkowski <paulk@sys-base.io>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Raphael Gallais-Pou <rgallaispou@gmail.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Albert Esteve <aesteve@redhat.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	linux-samsung-soc@vger.kernel.org,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v3 0/4] drm/panel: refcounting panel lookups and references
-Date: Wed, 22 Jul 2026 14:15:11 +0200
-Message-Id: <178472247762.1745070.2847290153778032256.b4-ty@b4>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260717-drm_refcount_wiring-v3-0-023900c32e01@redhat.com>
-References: <20260717-drm_refcount_wiring-v3-0-023900c32e01@redhat.com>
+	id 1wmVu4-0000000BjsZ-4A6l;
+	Wed, 22 Jul 2026 12:18:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784722702;
+	bh=hkrp+yDQRqwNUpeTFXjADV7o+wwH+RGlwUA/SvJw0HI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=IetJodkqZT8jjWJexpncST6NRGxRRena5iFVjRMs/sIB69M3KYTnqEfEsRVESwMG1
+	 SHsAPJP8p0J6ieVCWd7tZn92GM4hnwMVHDj9k4xkx67ES2CS7NSPiJY/Glg1735iyL
+	 VR5f6XtjNAmNBeoz1j2rUk0S1XFOWmaM4mVcSs2YC4thsOOVfC959Ju3PK0ZakFnzg
+	 kCYTrebVzz+KXzq+pUv19la6ZAfcg3yjKGCabSvdOVcboSQP0Isy2u+J3lawwfOEcQ
+	 dERjibTQRf55wtYuwEs6tCAbXNDk42VDyqJ9/Dkw5q+R5D/ti14jBMvg2ZEWprn9U4
+	 N5C8T0TjbHy0w==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C197F17E0177;
+	Wed, 22 Jul 2026 14:18:21 +0200 (CEST)
+Message-ID: <ba22b854-be4b-4146-9e72-1da13bf41c08@collabora.com>
+Date: Wed, 22 Jul 2026 15:18:21 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
+ infrastructure
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
+ <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
+ <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
+ <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
+ <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
+ <20260713-statuesque-nonchalant-seagull-b9c39d@houat>
+ <91c3a825-3344-4ff5-8ea0-f8f057665b3f@collabora.com>
+ <20260715-ancient-zealous-eagle-b13e94@houat>
+ <dfca9032-98ca-4c61-b1b1-85fd05283d77@collabora.com>
+ <20260716-astute-nippy-moose-bd22b5@houat>
+ <62b3bsa7ucgo2g7w75wudt3aundl3hv57qgjr6kqfteve56rf7@w42tah2fnvml>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <62b3bsa7ucgo2g7w75wudt3aundl3hv57qgjr6kqfteve56rf7@w42tah2fnvml>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_051536_589222_B875994E 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20260722_051825_200344_75B8341E 
+X-CRM114-Status: GOOD (  19.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,34 +99,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Fri, 17 Jul 2026 16:02:03 +0200, Albert Esteve wrote:
-> The drm_panel subsystem provides kref-based reference counting [1]
-> (drm_panel_get/put) but almost nothing in the tree actually uses it.
-> This results in a systemic use-after-free pattern throughout the codebase.
+On 7/22/26 9:51 AM, Dmitry Baryshkov wrote:
+> On Thu, Jul 16, 2026 at 03:50:29PM +0200, Maxime Ripard wrote:
+>> On Wed, Jul 15, 2026 at 01:46:12PM +0300, Cristian Ciocaltea wrote:
+>>> On 7/15/26 11:55 AM, Maxime Ripard wrote:
+>>>> On Mon, Jul 13, 2026 at 01:23:00PM +0300, Cristian Ciocaltea wrote:
+>>>>> On 7/13/26 11:50 AM, Maxime Ripard wrote:
+>>>>>> On Thu, Jul 09, 2026 at 10:25:54PM +0300, Cristian Ciocaltea wrote:
+>>>>>>> On 7/3/26 11:54 PM, Cristian Ciocaltea wrote:
+>>>>>>>> On 7/3/26 5:34 PM, Dmitry Baryshkov wrote:
+>>>>>>>>> On Thu, Jul 02, 2026 at 05:46:17PM +0300, Cristian Ciocaltea wrote:
+>>>>>>>>>> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
+>>>>>>>>>>
+>>>>>>>>>> - A scrambler_supported flag to indicate whether the source supports the
+>>>>>>>>>>   scrambling capability, in which case the newly introduced
+>>>>>>>>>>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_funcs
+>>>>>>>>>>   are mandatory
+>>>>>>>>>
+>>>>>>>>> Do we need a flag? What would it mean if the flag is set, but the
+>>>>>>>>> callbacks are not? Can we drop the flag and use the presence of the
+>>>>>>>>> callbacks as a way to identify that scrambler is enabled?
+>>>>>>>>
+>>>>>>>> The flag is intended to be set only within drmm_connector_hdmi_init_with_caps()
+>>>>>>>> when drivers advertise HDMI 2.x capability, in which case it also ensures the
+>>>>>>>> callbacks are provided.  
+>>>>>>>>
+>>>>>>>> We could drop the flag and instead have the init helper clear the callbacks if
+>>>>>>>> they were provided for HDMI 1.x.  This might slightly reduce code readability,
+>>>>>>>> as it relies on checking the presence of individual callbacks - especially since
+>>>>>>>> we plan to extend this further with HDMI 2.1 support, providing four or five
+>>>>>>>> additional FRL-specific callbacks.
+>>>>>>>
+>>>>>>> I tried to replace the flag with a helper that checks the presence of (one of)
+>>>>>>> the callbacks, but it's not straightforward to unset those for non-HDMI 2.x
+>>>>>>> cases since the hdmi_funcs argument is immutable.
+>>>>>>
+>>>>>> I'm not sure why we would need to unset them. If the driver states that
+>>>>>> it support HDMI 2.0, then it needs to be there, if it doesn't, then who
+>>>>>> cares? it's not going to be used. We can log a warning that it's
+>>>>>> inconsistent I guess, but there's no need to actively remove it.
+>>>>>
+>>>>> I was trying to address the use case where drivers provide the scrambler
+>>>>> callbacks despite not supporting HDMI 2.0.
+>>>>
+>>>> Scrambling got introduced with HDMI 2.0. That doesn't make sense, but
+>>>> it's not a total deal breaker, it's just going to be here unused. Hence
+>>>> why I was suggesting to put a warning there if you wanted to.
+>>>>
+>>>>> If we replace the scrambler_supported flag with a helper checking the
+>>>>> presence of the scrambler callbacks, then we would need to ensure the
+>>>>> callbacks do not exist in this case.
+>>>>
+>>>> Keep it simple:
+>>>>
+>>>> if (hdmi_version >= HDMI_VERSION_2_0)
+>>>>    if (funcs->scrambler_enable)
+>>>>       hdmi->scramblers_supported = true
+>>>>    else
+>>>>       return -EINVAL
+>>>> else
+>>>>     drm_warn(warn, "Inconsistent HDMI version");
+>>>>
+>>>> We don't need anything more than that.
+>>>
+>>> I dropped the scrambler_supported flag and introduced a helper:
+>>>
+>>> static inline bool
+>>> drm_connector_hdmi_scrambler_supported(struct drm_connector *connector)
+>>> {
+>>> 	return connector->hdmi.funcs && connector->hdmi.funcs->scrambler_enable;
+>>
+>> I'd add disable to that test
 > 
-> This series aims to close all those issues.
-> 
-> Patches 1-2: fix the infrastructure. drm_panel_add/remove now keep
-> a counted reference for the list entry. drm_panel_bridge_add_typed()
-> now holds a counted reference for the lifetime of the panel_bridge.
-> 
-> [...]
+> I'd make it an error, if there is only scrambler_enable without
+> scrambler_disable (or vice versa).
 
-Thanks, Applied to https://gitlab.freedesktop.org/drm/misc/kernel.git (drm-misc-next)
+hdmi_init() already guaranties that both scrambler callbacks must be present
+when supported_hdmi_ver indicates HDMI_VERSION_2_0, and neither of them
+otherwise.
 
-[1/4] drm/panel: have drm_panel_add/remove manage a list reference
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/61aebeadff40cded27168e53406e0120ad66e114
-[2/4] drm/bridge/panel: hold a reference to the wrapped panel
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/8f79d34ea8950fd825e0d6ecd713705a42f06417
-[3/4] drm/panel: of_drm_find_panel() return a counted reference
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/b71a623598d319cae2acd9df1b297cc948c58bc7
-[4/4] drm/panel: find_panel_by_fwnode() return a counted reference
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/ac3baea883dab989178dd4186090d6bcf52b8d55
+Regardless, I've already added scrambler_disable to the check above to improve
+code readability.
 
--- 
-Neil
+Thanks,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
