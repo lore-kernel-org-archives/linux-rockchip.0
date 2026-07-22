@@ -4,157 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BF33C44512
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 06:47:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A005C44512
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 06:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1a6e6QRCfdw2mtOtZ7a9VgqATPYg0EA3p6WLrTCi/+U=; b=JZj0A56S8HFy9i
-	T3cAOe8cs0SjCfR48Y/T4K2nalVGv4CtKWvwppqHQKcm8EAZIHQ7UdqeuojvBD0ZwbInQ0ZLBJGSj
-	D3Iyn4jfBG2i9lfJiwPDlvG5RJcBPG3hmRDvjEQY7OvjsF3QuSF/YMSYGZ9nvuOcYytAfSb+OGynM
-	/dw/dIvNMhUThIY1ETdyuaOkd8Nb6vUomsGHXMperlNRmDbY9jvS0an4+5wU0XoYe76tamL+cDRk4
-	drJphZFGZasUTveBuxQ0gSCMXWhLR4KC/rmRSPoNdK6cfMZoMtbrHfJY7xuovA95bPhO9w0x9KYjd
-	Noda0kDJaDhblYRn2f6A==;
+	List-Owner; bh=mWLYk+0hXo5NJran0DBAlcvNVV9nWrTAs7MqdcXJvkA=; b=0/QS38rXOI4P49
+	ukxbkMxuaE5n0jlh+r2ZrEiXqpMBrS07cEAjdnbayMGnL6zReGxbcTPZ9aIyI0/mw2expohvFp0+r
+	T4OzOhS0/OxUvqnhUcdmEWJiLbNpqnoxrVAX+B8LOv8bSIOIpMkRT+f4oiAl0PA2fD3hq0Pa5VCaA
+	2Uh4rD/AoTCgpjbsDLmlWq/Tin9hQyCY1do3+H2Uly+fKTkAz7nsLtROsrfzgZao8nJJ1jOtVMMaB
+	D/gL0GvTdTsQk0JarXCsTGucYUlaRB0K6J79WNrk2j0GaX7a/ZnK6+7UJTAHGmieCqvS6tsWapzoi
+	919ns591dQuLkFs/NYOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmQjp-0000000Azq3-3kov;
-	Wed, 22 Jul 2026 06:47:29 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1wmQnn-0000000B0JJ-2U0p;
+	Wed, 22 Jul 2026 06:51:35 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmQjl-0000000Aznw-1cno
+	id 1wmQnl-0000000B0IA-13CT
 	for linux-rockchip@lists.infradead.org;
-	Wed, 22 Jul 2026 06:47:26 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66M61qox984391
-	for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 06:47:25 GMT
+	Wed, 22 Jul 2026 06:51:34 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66M53pdc3787372
+	for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 06:51:32 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=4HIgg+cAUIBu82rEBIKTHLC0
-	oAMQkhK8PpibsSCULDI=; b=RVv4zsQ14AR8ddWCZC62vuMvCiMr9+pZAnOfQy8T
-	m8KgZQGXsw7XWXHl54mAkKhUSFPcmxLelpEIC2hO2dzUiqaPKNSqhuMb47JCnwkY
-	jP/M5Yf3T6DG3QRP/i9w0/Y62bPMVGH7HTLjrUi3+coETR0OHFlaqyZc6I5HctlT
-	jk49fh3VWaLszWgBEBAY8UjtDAVw7aTWkZCOsbvUXz06a6ROLdT91e6XYcY+HqDY
-	JMUsL6znu/a+1LJJdT1aYt0G9gv6UizBCJa+WlREq37htnqiS2ADK43PrBmYpgSF
-	LK/0armdjZMTHiIexOxDsPaMQlwdEVLTTk4r/MMcYzc5GQ==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com [209.85.160.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fjr8385fs-1
+	:references:subject:to; s=qcppdkim1; bh=/YHKBQCRpdF6ioKDZRp1kbK4
+	J+GBA3HywUvyPdCcLww=; b=TbXG+6ospDyHRNKxSuOUqRRzVIszrahUng7O5E7z
+	+lze8I1J1fpXiOrHDJvgwqX8aoQcXZZWJDC5aMV5fx5XrHt9ukn9miswexldl4Ia
+	N8inbgJHWLRjuAceZWrbLvF9ZeFSU6n8IZPVwExcojK/cplsYA/z0j6g4ZwvBEKa
+	AaelhbA7vF9XGAZZzY+2j/1ioE96NwmARPPNZG3zBfBLNA1nre+10hg6tGAjT2QO
+	P6amxJ6wmCalzkZJZih6mwn/JnjwUVj9jpFrWA2DmhPm8PF0En1N/ebURZmtYZdh
+	zE7MXoZXdontGzgL1QaCK7D9hyUYk4HCuM5j7qjFh0NIGw==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fj9aec26s-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 06:47:24 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-51a8db414c7so212302961cf.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 21 Jul 2026 23:47:24 -0700 (PDT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 06:51:32 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-51bec738909so144355961cf.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 21 Jul 2026 23:51:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1784702844; x=1785307644; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1784703091; x=1785307891; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:content-type:mime-version
          :references:message-id:subject:cc:to:from:date:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=4HIgg+cAUIBu82rEBIKTHLC0oAMQkhK8PpibsSCULDI=;
-        b=BJ3eWFbujmrOySj7UYV7Qqmmqu8Fhs0BV+Xc9LWhZl8MVrpnOkO7YUOHwvO5nlp5cD
-         /hQ3Qgc2tNJgHHcMt492ggPIp4PGuBv8zR6Y6RISfI/nitYDhx1HenUPACxtDnoHLNlh
-         sWO6Nm5JHP0NEFdfzVxomBuvBr8t44iqOD9DlGe4/s4cn4BUxVN+5g8yDGsJZYLPgEJU
-         mPvp6QF1Bpmc2sYr0gv/hVXJnrlmUdTev/M5jGntPYdzGY9H+1cwhz3z5SiEsrau6yqw
-         NmHr6iNPD75ru7vvbdhS4ktoaCeo+4IollopxO/S1vClf32IS0bK7CnfGX4CTZvXCRIN
-         gAwQ==
+        bh=/YHKBQCRpdF6ioKDZRp1kbK4J+GBA3HywUvyPdCcLww=;
+        b=X7odxdSKhq79D4rSF638YIQ5C0sdAX8l2hOwnIVnOaQjVHAXJppeLAumh465CoY5CR
+         XnoVovHe/273SPoEDFIeNFfzKkXzV4ZtMM7gtheLYq1iTmGwj9yaIiQzYArJMOcI8+ma
+         AEvfOH2eGj1U+e35WE+7LF0ZzAQ5xNXh5tBZgDdMcwPoPg47Ujc2fhOw98HZlrXuFqbs
+         Fu3BWnGDvmcTmOzxd5Q/KtZKOmC2jLTxjjA5hkxKE5gf0X/+JFBW3xwonBCVcZjLtfcp
+         Dm/H2Z1ta6YmCujcxSv+51osBg7p/HMyFQ6WbU/bK9U7yHtgdiBVfqjUn+MMG+At4CBQ
+         GE8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784702844; x=1785307644;
+        d=1e100.net; s=20251104; t=1784703091; x=1785307891;
         h=in-reply-to:content-disposition:content-type:mime-version
          :references:message-id:subject:cc:to:from:date:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=4HIgg+cAUIBu82rEBIKTHLC0oAMQkhK8PpibsSCULDI=;
-        b=g4Q9iicA6zFPa9+4oRoN+xvpYyrdGCIuR+3LP5dGiUNW+TIJMecbntDBtGKggd77aK
-         vUysyrQ08BuITDvhlSxprJGFIL9Mf9aBJH+F3KiHEmILN4Ose119kHdZ2jK5srXLRFGR
-         O23TB3PNpKIM5EAfDZe8VnjnBAsQp77YrWHPBVClQKWgzks1n7KeIgXrnNUz97/GdoOR
-         /eCb4mUoA939Kqy8qXZ0MSdexqov2coeI5RUqGz8INxDSXYvahfs0ciY4A7DWIYjlq6s
-         TScYoIyhac5bjoqaZ0yC0n8JPCowyeMdFjDF+CuSFnCaAevZEsm0VgEn4sDkO4Utcz7A
-         yQdQ==
-X-Forwarded-Encrypted: i=1; AHgh+Rrg0HszyENVebc/eM0S7zSJNSsTghVX107y75ZSB3UevWJV9tMBX77Gr1xrikiOif8G8QsBWU8Jbf9+K4mAew==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy389Q+Hy8HG9PFWtrL/ELXhBNhGepzdpQUjE7wyI5gGUCN20mE
-	luKcaedMuVjb4ChGC4A/2llIAiMzR3G/hOyESUUmu8TlNqfuB7mNt/lgBPJin4vC7KWA87PlYSM
-	NMrMjNRnw/KcAfJT2y+3YFqBIo7dj4UAYPn5FCLsHYpP2TdWLtKXQnoFOywaGwmxu/jlHNM8nmp
-	Q=
-X-Gm-Gg: AR+sD12bnsHbXXSClgC5K8Gz0PKmPo6bceXfH+rNiKiesV5PvqSZeYcSFdjou8GFo9G
-	IxmPxpqLT74+FsVT3EDW/d+pkCZOwRqCqiv9z8SOpi7ud37m5Hb6wHBvqvNomNzMdHk7JB9EUZL
-	hxmgnOEXNaZS2z2QMhxrVplRFXcICAIzM6ySezjO6/zSK0KiEjGArIdPrQG0gCBLqBerSNWECJ4
-	BMIktnmlqQWFVb29K6XANGSJCHT+heSZBhoMnFt+7YkZQpH5KFx8YpACdviEPtOpT6IbNS3tngS
-	2ZOx8teHhSZnRgMNX4FqeFmCcM7KnyBxmJD8qT19wMzz8AU8mL7/QgR1WzeSE0/3KDVBqGaihG+
-	qU+gsgll+E08Wjs2OClP8qyJNfyqG3Mw2s/Z3SYMkdP/ijcYw6oOqrxf4WOKoKf+egH52nyATsy
-	c2CujoXw7YpBOdHg==
-X-Received: by 2002:ac8:5c88:0:b0:517:a7ff:935f with SMTP id d75a77b69052e-5213c8e343cmr223366481cf.9.1784702843650;
-        Tue, 21 Jul 2026 23:47:23 -0700 (PDT)
-X-Received: by 2002:ac8:5c88:0:b0:517:a7ff:935f with SMTP id d75a77b69052e-5213c8e343cmr223366211cf.9.1784702843171;
-        Tue, 21 Jul 2026 23:47:23 -0700 (PDT)
+        bh=/YHKBQCRpdF6ioKDZRp1kbK4J+GBA3HywUvyPdCcLww=;
+        b=Wi70tG/s7SIcdOCU49JqHDeDhTWK51wVTYUi/fy1dWyhZHuEYByUrTPzBFDJ32fz5g
+         STOrxBDfRBPNyQ8DNcYy5oTyuknJ0ijpx60+39Jf0ziOZiZIkYIshiA39Si6Zoi76KT8
+         lO5n9YawANxRs5Gpcpdk7WozeGNkyG7g1JeHFR0sroJW0uL2mD+hJihI8NLKWnbQYrj6
+         63ZP41NHa++HTkdV8ROXjJ6UCqUX+8qEiEixTzARdCBSxvSiKrjxA8u6/afSlslEnsLK
+         QSJG8wybS11TpkaEobzfEah5xN2a9gG6g0drKzRthgwjQJksmyguGQW2GTSuSQ1chShM
+         sYuw==
+X-Forwarded-Encrypted: i=1; AHgh+RqlOCDWRPdlyaASm9IOhzNoiZYXvHs68Mnd+YBy+0VmfkPgGgsK3WUT2m9uvlr3n1u62vmXyR6OSE1aOHKihA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwHHmYL+iIfb/oTxAQKWKD75Nk8cpVDI1HSFBEzg0XgzX5rx0qu
+	HEb7E5ijh6tAh/hTUsh62o/ybA6jA2IRV/GEhavgv2Jyv3cdyoML9Rrxd6+0kjpjuMf5L+ep4Q6
+	bsXVE9SSqZTL4LY3Nb9L8nufNGa61fuOhgjPqlnaXdKXq+Xewr0WgUgYBGhY02Rix2tLaNcckP/
+	s=
+X-Gm-Gg: AR+sD12rUxLWzqDN69pPu5Q+vobbMmyUVZnmiVka35oMhIYmInPlql1xGXEFlV5+Kes
+	9DGRJtbOYUgqkj5KMQoP1mq17K3rGFDe8uS0aUYdBg0Va1T3AElpVXlLfBHnL5xc6l8apAuUhMJ
+	N1Sh7L9gDdr+7HROjAsqePMP5qnMzZKiicAgeSPOUJZEXF4rnvwgLjCh2GgmwtAx1WvEe/4PV42
+	zB5BYRR/oexZC0uy6AKpSAulG5awRolJLxPvciDQ7Rs18TvvA0JjPZDUiZ5fL3l3vjqY3etnK0+
+	91juf4R2NoGkGrMG5YTRAn4NbmsoZKQ7ai4V76apX6VX8659BKSaa5POTwYrb9J1jdIeNoAqJHp
+	dLx1eYnJdEyiKesPyqkmLp6XdM8+k4u6KDJbTN3VgEUWloY37oscy8skDDJ9AR7fXYuDAFmagUG
+	u0eCLOsNej8vIQFg==
+X-Received: by 2002:a05:622a:e186:20b0:521:987f:bf34 with SMTP id d75a77b69052e-521987fc2ecmr132874371cf.61.1784703091408;
+        Tue, 21 Jul 2026 23:51:31 -0700 (PDT)
+X-Received: by 2002:a05:622a:e186:20b0:521:987f:bf34 with SMTP id d75a77b69052e-521987fc2ecmr132874061cf.61.1784703090691;
+        Tue, 21 Jul 2026 23:51:30 -0700 (PDT)
 Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-39ef68883dbsm2999371fa.2.2026.07.21.23.47.19
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5b2a9bae7d0sm316678e87.34.2026.07.21.23.51.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jul 2026 23:47:20 -0700 (PDT)
-Date: Wed, 22 Jul 2026 09:47:17 +0300
+        Tue, 21 Jul 2026 23:51:28 -0700 (PDT)
+Date: Wed, 22 Jul 2026 09:51:26 +0300
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Maxime Ripard <mripard@kernel.org>,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Robert Foss <rfoss@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jonas Karlman <jonas@kwiboo.se>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Luca Ceresoli <luca.ceresoli@bootlin.com>,
-        Sandy Huang <hjc@rock-chips.com>,
-        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-        Andy Yan <andy.yan@rock-chips.com>,
-        Daniel Stone <daniels@collabora.com>,
-        Dave Stevenson <dave.stevenson@raspberrypi.com>,
-        =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-        kernel@collabora.com, dri-devel@lists.freedesktop.org,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v8 03/39] drm/display: bridge_connector: Pass HDMI
- capabilities through caps struct
-Message-ID: <zp7qqyaiir2npq3kzf23kqu26y3cr2fa7bdqtqnca2xggd3fvw@f4plbn6lzqng>
+To: Maxime Ripard <mripard@kernel.org>
+Subject: Re: [PATCH v8 04/39] drm/connector: Add HDMI 2.0 scrambler
+ infrastructure
+Message-ID: <62b3bsa7ucgo2g7w75wudt3aundl3hv57qgjr6kqfteve56rf7@w42tah2fnvml>
 References: <20260702-dw-hdmi-qp-scramb-v8-0-d79890d00b6a@collabora.com>
- <20260702-dw-hdmi-qp-scramb-v8-3-d79890d00b6a@collabora.com>
- <eqnr2hfclbdkry2jqe2kuufss5kus6qpjblewq35upnjwlhxhl@4awqxpwrnxk2>
- <f74ffd53-5776-4fae-a6fe-eeace5c3fc5f@collabora.com>
- <20260708-bold-ruby-potoo-c6c949@houat>
- <dfe104fb-a132-4871-9dc0-52c157a2f08c@collabora.com>
+ <20260702-dw-hdmi-qp-scramb-v8-4-d79890d00b6a@collabora.com>
+ <tjsidlnvswo2rdhqa6jybxrnb47lxgmxdlfrfbasuh67wjbqoy@3a45n3zawvnf>
+ <17753a1c-824a-4835-ac2d-8b2796bba1eb@collabora.com>
+ <534b921c-638c-4fc3-b89e-5dfc1f269f96@collabora.com>
+ <20260713-statuesque-nonchalant-seagull-b9c39d@houat>
+ <91c3a825-3344-4ff5-8ea0-f8f057665b3f@collabora.com>
+ <20260715-ancient-zealous-eagle-b13e94@houat>
+ <dfca9032-98ca-4c61-b1b1-85fd05283d77@collabora.com>
+ <20260716-astute-nippy-moose-bd22b5@houat>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <dfe104fb-a132-4871-9dc0-52c157a2f08c@collabora.com>
-X-Proofpoint-ORIG-GUID: 0tVlsJzLFiiW5jxxaijM1w1ofFAnoKod
-X-Authority-Analysis: v=2.4 cv=VfrH+lp9 c=1 sm=1 tr=0 ts=6a60677c cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+In-Reply-To: <20260716-astute-nippy-moose-bd22b5@houat>
+X-Proofpoint-ORIG-GUID: 7zDxWdgwd-XG9mUqbbZDn4aWUvLPMGcX
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIyMDA2MSBTYWx0ZWRfX6qrPAVfc1Rbs
+ T6/tJu13m+GZHfc4ch8doK+KEkkLywugsR1NSY1rQ9u67Q6u0mkOUD57nTjKHvW8zZJgadlVpsr
+ sT2NzXWUa2M2OJptwKqW34/ZQxWvEN0=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIyMDA2MSBTYWx0ZWRfX/f6R9uPMhebp
+ Zzs7AaxnB8UZBxXNB3L6EkkV35QHJNNf98BrtfgHn29M/1ATCcK3APsqkQ1FBN+Hi+I2DBvd58O
+ loFKRNaFSk50d8n345ZLJ2pKYj8Rn+8qYoa4KxGWo/I9F+6QdUxrK/03dBKys0u2rrAtSRRZYhT
+ NkhjrdHLNdKzWpJPGDFX1m2XGwYQzzau/kDds6eAVHlUDZjxGAL+yQ1+qqgai0dB6TUECGS5ri8
+ 04iM3KWSnxETIGYVdGw5n3gW0lz6/RMU0iv6R/feHM2e5IMOdpace3zQfVp/7KYJa15Of/Ft7MS
+ F1zIPBg3Eyoxya8CmSwT3TYXdflqO1KOrE7asoghC6SSHpHWokRfz2RP4/LCDOX4jTCyPVrWHt7
+ spHsUChpG1iM4cXdQoE19bXu8XzaaIHOL7HCeED/mEhj89T3jUq/ROhhFbLOZ/ZJvRT0WplaZLN
+ Jmfnu3zK9AsGTSkaa+g==
+X-Proofpoint-GUID: 7zDxWdgwd-XG9mUqbbZDn4aWUvLPMGcX
+X-Authority-Analysis: v=2.4 cv=Cr6PtH4D c=1 sm=1 tr=0 ts=6a606874 cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
  a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22 a=agHu-2L6Iul8mJwuYagA:9
- a=CjuIK1q_8ugA:10 a=dawVfQjAaf238kedN5IG:22
-X-Proofpoint-GUID: 0tVlsJzLFiiW5jxxaijM1w1ofFAnoKod
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIyMDA2MSBTYWx0ZWRfX9i53d3UEMN/h
- MH6uQHRXDHOHtU+pfyiKdYqHuZW2NB40jasCz+BeCTEA/eqtyD9CWuVY00pzQEGTrHo7Vn1mGY2
- n7MJ30Z6rbh2ZJFAEaFVjLhoSjT0n2ULdIUGeD/6XN5i2kK1VIb3g1By0bEzoQTYJGstnjI2zoE
- C9y3S4uNkMZJ2F/fqNj857OAlaAjn5fQC72oGJUtpc2gfRAV/zsHci+26g+Zc+f9Qi5pVkn2U37
- 1nXG0aQ4XQi1NlDYsEaEg0Lg6oXw8xz1Bpf7ginz4eantTCMXmUMMtoRWBQl27J7s6mFzPETr+l
- sdHa5OqOmN9iqHrBxkQduTR/ic7QMHMTK1/QHssLdqBY4AuRHFyEbfDY5HkgI59GjOh7TvEj2ZS
- t1dVnsONZpVY9GkpfCFZNOUThoW1uXfNvU5PxA3brWybZIwNoJQjDA9XL68CXt79VRz6PLnOc9V
- HXxShAXuwCJLQFgCbqQ==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIyMDA2MSBTYWx0ZWRfX5Jz545PANFzK
- j7/wk85hC8rr9UJ9Ls6aTvO/TYob+DLT5M+K+/ssReFXXsq6Q17k0WXjua05AbStvYDJzawd2uA
- 11XDm8SFLmEsmCSs4QBdJRbnDzc0m8w=
+ a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22 a=T-56vAx3aY-Q7tpFFuUA:9
+ a=CjuIK1q_8ugA:10 a=kacYvNCVWA4VmyqE58fU:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-22_02,2026-07-21_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 suspectscore=0 malwarescore=0 lowpriorityscore=0 clxscore=1015
- priorityscore=1501 spamscore=0 bulkscore=0 impostorscore=0 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607220061
+ priorityscore=1501 malwarescore=0 adultscore=0 impostorscore=0
+ lowpriorityscore=0 spamscore=0 phishscore=0 clxscore=1015 suspectscore=0
+ bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607220061
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_234725_475732_1AA0207A 
-X-CRM114-Status: GOOD (  23.25  )
+X-CRM114-CacheID: sfid-20260721_235133_399533_36D1A363 
+X-CRM114-Status: GOOD (  45.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,41 +150,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Robert Foss <rfoss@kernel.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, Daniel Stone <daniels@collabora.com>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, linux-arm-kernel@lists.infradead.org, Neil Armstrong <neil.armstrong@linaro.org>, Sandy Huang <hjc@rock-chips.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 08, 2026 at 01:19:23PM +0300, Cristian Ciocaltea wrote:
-> On 7/8/26 9:46 AM, Maxime Ripard wrote:
-> > On Fri, Jul 03, 2026 at 10:55:09PM +0300, Cristian Ciocaltea wrote:
-> >> On 7/3/26 5:19 PM, Dmitry Baryshkov wrote:
-> >>> On Thu, Jul 02, 2026 at 05:46:16PM +0300, Cristian Ciocaltea wrote:
-> >>>> Switch drm_bridge_connector_init() to
-> >>>> drmm_connector_hdmi_init_with_caps(), collecting the bridge's HDMI
-> >>>> properties into a stack drm_connector_hdmi_caps so future HDMI 2.x
-> >>>> capabilities can be plumbed without growing the argument list.
-> >>>>
-> >>>> Introduce struct drm_bridge::supported_hdmi_ver to let bridges declare
-> >>>> the HDMI specification version they are conformant with, and forward it
-> >>>> to the connector layer through the new caps struct so HDMI 2.x features
-> >>>> can be gated on real source capability rather than guesswork.
-> >>>
-> >>> And it's left uninitialized by the bridges, which doesn't mean anything.
-> >>> If you don't want to touch all bridge drivers in one commit, please
-> >>> provide some migration path and hopefully get rid of it by the end of
-> >>> the series. 
-> >>
-> >> Sure, one question though: at the end of the migration, would it be fine to
-> >> stick with drmm_connector_hdmi_init_with_caps() and just drop
-> >> drmm_connector_hdmi_init()?  Otherwise I'll rename it back.
+On Thu, Jul 16, 2026 at 03:50:29PM +0200, Maxime Ripard wrote:
+> On Wed, Jul 15, 2026 at 01:46:12PM +0300, Cristian Ciocaltea wrote:
+> > On 7/15/26 11:55 AM, Maxime Ripard wrote:
+> > > On Mon, Jul 13, 2026 at 01:23:00PM +0300, Cristian Ciocaltea wrote:
+> > >> On 7/13/26 11:50 AM, Maxime Ripard wrote:
+> > >>> On Thu, Jul 09, 2026 at 10:25:54PM +0300, Cristian Ciocaltea wrote:
+> > >>>> On 7/3/26 11:54 PM, Cristian Ciocaltea wrote:
+> > >>>>> On 7/3/26 5:34 PM, Dmitry Baryshkov wrote:
+> > >>>>>> On Thu, Jul 02, 2026 at 05:46:17PM +0300, Cristian Ciocaltea wrote:
+> > >>>>>>> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
+> > >>>>>>>
+> > >>>>>>> - A scrambler_supported flag to indicate whether the source supports the
+> > >>>>>>>   scrambling capability, in which case the newly introduced
+> > >>>>>>>   .scrambler_{enable|disable}() callbacks in drm_connector_hdmi_funcs
+> > >>>>>>>   are mandatory
+> > >>>>>>
+> > >>>>>> Do we need a flag? What would it mean if the flag is set, but the
+> > >>>>>> callbacks are not? Can we drop the flag and use the presence of the
+> > >>>>>> callbacks as a way to identify that scrambler is enabled?
+> > >>>>>
+> > >>>>> The flag is intended to be set only within drmm_connector_hdmi_init_with_caps()
+> > >>>>> when drivers advertise HDMI 2.x capability, in which case it also ensures the
+> > >>>>> callbacks are provided.  
+> > >>>>>
+> > >>>>> We could drop the flag and instead have the init helper clear the callbacks if
+> > >>>>> they were provided for HDMI 1.x.  This might slightly reduce code readability,
+> > >>>>> as it relies on checking the presence of individual callbacks - especially since
+> > >>>>> we plan to extend this further with HDMI 2.1 support, providing four or five
+> > >>>>> additional FRL-specific callbacks.
+> > >>>>
+> > >>>> I tried to replace the flag with a helper that checks the presence of (one of)
+> > >>>> the callbacks, but it's not straightforward to unset those for non-HDMI 2.x
+> > >>>> cases since the hdmi_funcs argument is immutable.
+> > >>>
+> > >>> I'm not sure why we would need to unset them. If the driver states that
+> > >>> it support HDMI 2.0, then it needs to be there, if it doesn't, then who
+> > >>> cares? it's not going to be used. We can log a warning that it's
+> > >>> inconsistent I guess, but there's no need to actively remove it.
+> > >>
+> > >> I was trying to address the use case where drivers provide the scrambler
+> > >> callbacks despite not supporting HDMI 2.0.
+> > > 
+> > > Scrambling got introduced with HDMI 2.0. That doesn't make sense, but
+> > > it's not a total deal breaker, it's just going to be here unused. Hence
+> > > why I was suggesting to put a warning there if you wanted to.
+> > > 
+> > >> If we replace the scrambler_supported flag with a helper checking the
+> > >> presence of the scrambler callbacks, then we would need to ensure the
+> > >> callbacks do not exist in this case.
+> > > 
+> > > Keep it simple:
+> > > 
+> > > if (hdmi_version >= HDMI_VERSION_2_0)
+> > >    if (funcs->scrambler_enable)
+> > >       hdmi->scramblers_supported = true
+> > >    else
+> > >       return -EINVAL
+> > > else
+> > >     drm_warn(warn, "Inconsistent HDMI version");
+> > > 
+> > > We don't need anything more than that.
 > > 
-> > Absolutely, it doesn't make any sense to keep both variants.
+> > I dropped the scrambler_supported flag and introduced a helper:
+> > 
+> > static inline bool
+> > drm_connector_hdmi_scrambler_supported(struct drm_connector *connector)
+> > {
+> > 	return connector->hdmi.funcs && connector->hdmi.funcs->scrambler_enable;
 > 
-> I was referring to whether option 3 might be the preferred choice in the context
-> of the earlier patch discussion.
+> I'd add disable to that test
 
-Plesae exuse my ignorance, what is option 3?
+I'd make it an error, if there is only scrambler_enable without
+scrambler_disable (or vice versa).
+
+> 
+> > }
+> > 
+> > Therefore we need to ensure the callbacks are not set in the HDMI 1.x cases:
+> > 
+> > int drmm_connector_hdmi_init_with_caps()
+> > {
+> > 	...
+> > 	if (caps->supported_hdmi_ver >= HDMI_VERSION_2_0) {
+> > 		if (!hdmi_funcs->scrambler_enable ||
+> > 		    !hdmi_funcs->scrambler_disable)
+> > 			return -EINVAL;
+> > 
+> > 		connector->hdmi.max_tmds_char_rate = HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ;
+> > 	} else {
+> > 		/*
+> > 		 * Scrambler callbacks are only valid for connectors advertising
+> > 		 * HDMI 2.0 capability. drm_connector_hdmi_scrambler_supported()
+> > 		 * relies on their presence to report scrambling support.
+> > 		 */
+> > 		if (hdmi_funcs->scrambler_enable ||
+> > 		    hdmi_funcs->scrambler_disable)
+> > 			return -EINVAL;
+> > 
+> > 		if (caps->supported_hdmi_ver >= HDMI_VERSION_1_3) {
+> > 			connector->hdmi.max_tmds_char_rate = HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
+> > 		} else if (caps->supported_hdmi_ver >= HDMI_VERSION_1_0) {
+> > 			connector->hdmi.max_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
+> > 		}
+> > 	}
+> 
+> Drivers might have a lower limit than the max allowed by the spec. It
+> should be provided by the driver, possibly optionally with a fallback to
+> what the spec states?
+
+Yes, likely it can be handled with the if !connector->hdmi.max_tmds_char_rate.
 
 -- 
 With best wishes
