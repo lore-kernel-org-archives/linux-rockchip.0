@@ -4,78 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F14C4453F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 16:15:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A34C44532
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 16:23:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0jjNYlHGt3+YGZQeynQopofOZ3ZB37UOiZR5Ex0hyPc=; b=yznXXs3KwQPzgZoPfeAlPQKQO6
-	rx9wQP4q6D/oIEeHBCRzLCodhYbqK4WC9wO1TGZ+EoeX6EkqoGw6zc5e6yOpcb14OakeFNBQRgNWt
-	1ktsz3VlYA70GoZPaBO9lEm0KJ12CiW9Fn0ZDJmJPnfeGHgEhVGiOFXp7fggCbLfTqHf9I2oVSJ8H
-	vJb9xPJj6paFg6JM7SEmHutyaWYwcGN61DQJ8cE8zuMhB/aaj0sohVmvm1H4x8T+QBomKBlNj3m/P
-	31eb/WQCdufeOaJwbGLDvo3PIEbdMAjZxb7uXkH90zmgQ3jh1aCGI6ajZQg0kh47oDCDUVMOtAd7X
-	DNNGSXgQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=G9P0sNWAHN2VWO5ySKBygF9dU4pxw6Mvi8uQmE17JAg=; b=iTg7ZOgx/byGL8
+	5BRtsZDJ4loRUopbZLZRCs16mC2H9cg1DOedPWA1qAAKGw5Bjpa9/uoZmiKBtRfs5b5xVAPd5Kujf
+	OrliBOpGjOfoeWMGvc47V/JvivyL/s3oaxqoYWKqwdR62Jvx93RIIcJI1NaLs9DpjuZhzvUAXPCaT
+	qNAc98gTYFqU1hLkwyM5S0KbfUrzPymKSO2fq1hXZfunfr/4efYmPfh1THSR1/vBSJz6pcjjJtQYf
+	KDEdpOC4lS2sWncSrNFjg7C1eygsrdL/DVG+/Ld8rhI/BNSlcMTpJopRlm34J2dMbJsF9yz6LES8M
+	kID/0E3RaUgPun+wo/Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZbw-0000000CIsQ-05eJ;
-	Wed, 22 Jul 2026 16:15:56 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wmZjM-0000000CKKi-06dh;
+	Wed, 22 Jul 2026 16:23:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZbs-0000000CIrN-3nwP;
-	Wed, 22 Jul 2026 16:15:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1784736938; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=PDWqtAHATy4t8nnhTQFIRRfVRp8llenGrkZQRI6i5UzPJfpUr2bmDprLApynVG4eP6SKEX106WqiUM/D5Irj8Z4Rv7KluV2zX94oWr9xEb+CfZxofRQKl0ryOFhzS+/ut1uip1nFR/UwC/5Rc7AcunyZHttMG6rwcja0ZA+FCvc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1784736938; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=M6pHnweHoy5aN7cOaUlywg+lPDf6Ba0mkFFB6TRU+kI=; 
-	b=a1O3m4W/cRdXGYl9BUxN89hQmXyU6dB5G9jCZcwJ+25eJ6AhbYT1LCVXJ5qazVZrX/RWMX56EFTmV7aMhqqtAMbdun3SL3XvSy+4qJBTCmSCpicUIKC2MqktlOTBgXiDU7zEPZEFfC9fCzKn6eKBwLlFiR0Bmlb6n7Tjoa2KTOg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784736938;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=M6pHnweHoy5aN7cOaUlywg+lPDf6Ba0mkFFB6TRU+kI=;
-	b=Un1pEjbOMq4Di5MKWNwwSOtwZfugb8qLZwzBZubTmn2Z/YHvRbxSVDIn0Zr0gIRQ
-	JaqZZMLqliB2xcOUS3Q/kRmCIz14nWfsG5SDLl8c2xluvwtM8rUoUjXO0nKcCO0/hRK
-	SVYC0tkEcCLCOYM/CUJb+pQ02MGTup33iPjC3DaU=
-Received: by mx.zohomail.com with SMTPS id 1784736936244387.407806640693;
-	Wed, 22 Jul 2026 09:15:36 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id E5F2618090F; Wed, 22 Jul 2026 18:15:30 +0200 (CEST)
-Date: Wed, 22 Jul 2026 18:15:30 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Alexey Charkov <alchark@flipper.net>
-Cc: Quentin Schulz <quentin.schulz@cherry.de>, 
-	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Brian Masney <bmasney@redhat.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Wyon Bi <bivvy.bi@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, Detlev Casanova <detlev.casanova@collabora.com>, 
-	Sugar Zhang <sugar.zhang@rock-chips.com>, YouMin Chen <cym@rock-chips.com>, 
-	Dragan Simic <dsimic@manjaro.org>, Liang Chen <cl@rock-chips.com>, linux-clk@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] clk: rockchip: Fractional PLL coefficient on
- RK3588/RK3576 is two's complement
-Message-ID: <amDqgsh38FJN0tNC@venus>
+	id 1wmZjJ-0000000CKK2-34cW;
+	Wed, 22 Jul 2026 16:23:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=X4aOAhCIGbQmkj8pfrFxHkKi8Xrm93t52GBvPKdZXrs=; b=vA6xfOIOdGbL7huGD/ih26/ABU
+	Im2+evznOv+fllB1iqbxLTtiHmj/XMRijTT0QNbDDHxbwbQK1pxWm9dRJ+BwPpnV3FdvwqBudl1sK
+	JCnDEZaJcQwmp1YEOJKYRyH06adXqR/RKbhDU5PpBDVw2jjslXKlH8DfOCLHfHe9L+EosVmBMuufV
+	3jEIgfMR2661FMvcL4aq41d3Lz8/XRoelHQhEzwcD/mS2hThJ2KhlY6H/h12R76u1XMLq+geRkhaT
+	A3z3wLKDRIlJpP6gTdkFlgQJV2jn/GewsULlvbYgVV6CVOGj10eo2XbJlfpTBoJLhSVUlBJL+jtrB
+	+naTNsBQ==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Quentin Schulz <quentin.schulz@cherry.de>,
+ Alexey Charkov <alchark@flipper.net>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Wyon Bi <bivvy.bi@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Sugar Zhang <sugar.zhang@rock-chips.com>, YouMin Chen <cym@rock-chips.com>,
+ Dragan Simic <dsimic@manjaro.org>, Liang Chen <cl@rock-chips.com>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] clk: rockchip: Fractional PLL coefficient on RK3588/RK3576 is
+ two's complement
+Date: Wed, 22 Jul 2026 18:23:10 +0200
+Message-ID: <3482742.0oRPG1VZx4@diego>
+In-Reply-To: <CAKTNdwE=s6XG==4HvbaEV86DATWO6egVxLgNE4LpjFaXNQP7_g@mail.gmail.com>
 References: <20260721-rk3588-fracpll-v1-1-b289bf17cf17@flipper.net>
  <7f3924ab-52fc-4fb6-91b4-42a5e55d5c76@cherry.de>
  <CAKTNdwE=s6XG==4HvbaEV86DATWO6egVxLgNE4LpjFaXNQP7_g@mail.gmail.com>
- <b0111164-3726-4a1b-bc3a-0e678ea2ecad@cherry.de>
- <amDC9ZfBAD2xbhqa@venus>
- <CAKTNdwFEEd2LF0F2E2yR5jPfYB4sh-NaYyXn2GTFwCpACaqAfw@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAKTNdwFEEd2LF0F2E2yR5jPfYB4sh-NaYyXn2GTFwCpACaqAfw@mail.gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.732.17
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_091553_005682_D3D222A6 
-X-CRM114-Status: GOOD (  40.32  )
+X-CRM114-CacheID: sfid-20260722_092333_831679_1A25A1F7 
+X-CRM114-Status: GOOD (  28.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,136 +71,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1212420338681243997=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============1212420338681243997==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="32vooojpiitecxiz"
-Content-Disposition: inline
-
-
---32vooojpiitecxiz
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] clk: rockchip: Fractional PLL coefficient on
- RK3588/RK3576 is two's complement
-MIME-Version: 1.0
-
-Hello Alexey,
-
-On Wed, Jul 22, 2026 at 05:54:15PM +0400, Alexey Charkov wrote:
-> On Wed, Jul 22, 2026 at 5:44=E2=80=AFPM Sebastian Reichel
-> <sebastian.reichel@collabora.com> wrote:
-> > On Wed, Jul 22, 2026 at 02:59:25PM +0200, Quentin Schulz wrote:
-> > > On 7/22/26 1:00 PM, Alexey Charkov wrote:
-> > > > On Wed, Jul 22, 2026 at 2:35=E2=80=AFPM Quentin Schulz <quentin.sch=
-ulz@cherry.de> wrote:
-> > > > > On 7/21/26 9:17 PM, Alexey Charkov wrote:
-> > > > > > Not adding Cc stable, because while this fixes a real bug it's =
-not a
-> > > > > > regression, as the issue was introduced in the same commit that=
- added the
-> > > > > > RK3576/RK3588 support.
-> > > > >
-> > > > > I don't think this is a valid reason :)
-> > > >
-> > > > I believe Linus frowns upon changes like "it never worked, but we've
-> > > > fixed it now" being submitted as fixes. It's been broken for years,
-> > > > and since nobody complained yet, going via the normal development p=
-ath
-> > > > (i.e. -next) seems perfectly fine to me.
-> > >
-> > > My bet is because of the Fixes: it'll get backported anyway even
-> > > if you don't put Cc: stable. In any case, I don't care too much :)
-> >
-> > FWIW you are mixing up things. Linus does not handle the stable
-> > kernels. He does the release candidates and the initial version of
-> > every kernel release. The stable releases are handled by the stable
-> > maintainers. Linus only said, that he does not want to get these
-> > kind of fixes during late -rc phase. That makes sense considering
-> > fixes also have a chance of introducing regressions.
-> >
-> > But if patches end up in a pull request for an -rc kernel or in the
-> > pull request for the next merge window depends on the maintainer
-> > applying the patch (i.e. Heiko). The maintainer can queue a patch
-> > with all those tags into the normal for-next queue targeting the
-> > following merge window. This results in the patch being in
-> > linux-next for a while, then being added to the master branch during
-> > a merge window and then being added to the stable trees (as stable
-> > only picks patches that are in mainline).
-> >
-> > The maintainer can also merge a patch to the queue for -rc kernels
-> > without the Cc stable. That is exactly what happens for a regression
-> > from a normal patch in the merge window, since the affected patch
-> > wouldn't be in any stable kernel.
-> >
-> > TLDR: The Cc stable tag has nothing to do with Linus.
->=20
-> Indeed, I made a logical leap here. In my view, however, this patch
-> doesn't need to go into 7.2 fixes (it wasn't broken during the 7.2
-> merge window), nor necessarily into stable backports (no-one seems to
-> have used the affected PLL rates in older kernels, so there is nothing
-> to fix for them either).
->=20
-> However, it will become relevant for driving arbitrary display clocks
-> for DP video output because several display modes (and consequently,
-> PLL rates) I needed for those monitors I tested require new table
-> entries with negative PLL coefficients. Those would be 7.3+ material
-> anyway.
-
-That's a different argument. FWIW I don't see any issues with not
-Cc'ing stable. I suggest to put that info into the commit
-description. E.g.:
-
-While this patch fixes a few PLL rates, there are no known users of
-the affected rates in the mainline kernel. Thus there is no need to
-backport this. The fixed rate calculation will become relevant for
-driving arbitrary display clocks for DP video output in the future.
-
-That helps anyone to understand what is going on regarding stable
-backport (incl. the bot).
-
-Greetings,
-
--- Sebastian
-
---32vooojpiitecxiz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpg7JcACgkQ2O7X88g7
-+pow7Q/9EW+wY9JpCb5S4paI8GIRGS5rnbJay/pUKrWROaoT74PrU4sZgoRaA+bT
-84fZ0m28wkZ6ZVKCokysF9IlTL+K3s24Mz3+ZvjKrTo4l7k8t142Rn4yyIeU2bQP
-ZbOG13Wr9BSE97oWnXwCWlNNcv3J5BPd/Aw/vlExejhqf/gnw3ZhgBcPC5HFIYGs
-IQvmd5rTvj43Q+PgdKQwDmyhTSaLnhn32lmeADODWagnEP803877jq1gkg31aQjn
-KyQ4L1JMP2kidNVVwpMrfkUw5wLyZKY3XgjMtNkkMySZwuABNp9rfEFE03MHmzWQ
-6eq/KXDgdPohAnpfMoo2GFOdLcvy+9tlkLmRkGTzvL8KUy6PokJThz3049K8tfce
-qTbFXvMlQN9sMKHGNX+z9AV00MPMcpmNBGKKY3npNY3MTu60Ycqp0r1WGR16Isxc
-LIBRZu1vNyoVoAZRvCClc61buBeJqdaDmhpTwxxm2u8MzBkBwtNAQ6ZLbABJ0qFg
-j23YPrmXhcpqEY/h53fW/tBT+6jWskB2caFN7ktB/+YAuvh0HR51qwD0y9lK5U4S
-CNs6FiKT9luwrM8fGE1zspOp29xJfiqvii/Dt5OXgYUzqC+ZVL0Ic7jQ12uCxyQ2
-LyYhP/3n31ytwDQr6qMPDrPt4OQudGczZFjijnwwPuxGvzOMGUY=
-=ssKd
------END PGP SIGNATURE-----
-
---32vooojpiitecxiz--
-
-
---===============1212420338681243997==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1212420338681243997==--
-
+QW0gTWl0dHdvY2gsIDIyLiBKdWxpIDIwMjYsIDEzOjAwOjQ3IE1pdHRlbGV1cm9ww6Rpc2NoZSBT
+b21tZXJ6ZWl0IHNjaHJpZWIgQWxleGV5IENoYXJrb3Y6Cj4gSGkgUXVlbnRpbiwKPiAKPiBPbiBX
+ZWQsIEp1bCAyMiwgMjAyNiBhdCAyOjM14oCvUE0gUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2No
+dWx6QGNoZXJyeS5kZT4gd3JvdGU6Cj4gPgo+ID4gSGkgQWxleGV5LAo+ID4KPiA+IE9uIDcvMjEv
+MjYgOToxNyBQTSwgQWxleGV5IENoYXJrb3Ygd3JvdGU6Cj4gPiA+IFdoZW4gdGhlIFBMTCByYXRl
+cyB0YWJsZSB3YXMgZmlyc3QgY29tbWl0dGVkIGZvciBSSzM1ODggKGFuZCBsYXRlciByZXVzZWQK
+PiA+ID4gZm9yIFJLMzU3NiksIHRoZSBmcmFjdGlvbmFsIFBMTCBjb2VmZmljaWVudCB3YXMgZGVm
+aW5lZCBhcyBhbiB1bnNpZ25lZAo+ID4gPiB2YWx1ZSwgd2hpbGUgdGhlIFRSTSBjbGVhcmx5IHN0
+YXRlcyB0aGF0IGl0IGlzIGEgdHdvJ3MgY29tcGxlbWVudCAxNi1iaXQKPiA+ID4gdmFsdWUuCj4g
+PiA+Cj4gPiA+IFJvY2tjaGlwJ3MgZG93bnN0cmVhbSBrZXJuZWwgbGF0ZXIgcmV2aXNlZCB0aGUg
+ZnJhY3Rpb25hbCBQTEwgY29kZSBbMV0gdG8KPiA+ID4gYWNjb3VudCBmb3IgdGhlIHR3bydzIGNv
+bXBsZW1lbnQgbmF0dXJlIG9mIHRoZSBjb2VmZmljaWVudCwgYnV0IHRoYXQKPiA+ID4gY2hhbmdl
+IHdhc24ndCB1cHN0cmVhbWVkLgo+ID4gPgo+ID4gPiBDaGFuZ2UgdGhlIFBMTCB0YWJsZSBkZWZp
+bml0aW9uIHRvIHVzZSB0d28ncyBjb21wbGVtZW50IGZvciB0aGUKPiA+ID4gZnJhY3Rpb25hbCBj
+b2VmZmljaWVudCBhbmQgdXBkYXRlIGl0cyB1c2VycyBhY2NvcmRpbmdseS4KPiA+ID4KPiA+ID4g
+Tm90ZSB0aGF0IGEgbmVnYXRpdmUgZnJhY3Rpb25hbCBjb2VmZmljaWVudCBpcyBtZWFudCB0byBi
+ZSBzdWJ0cmFjdGVkIGZyb20KPiA+ID4gdGhlIG5leHQgbGFyZ2VyIGludGVnZXIgbXVsdGlwbGll
+ciwgc28gdGhlIF9tIHZhbHVlcyBpbiB0aGUgdGFibGUgYXJlCj4gPiA+IGFsc28gYWRqdXN0ZWQg
+YWNjb3JkaW5nbHkgZm9yIHRoZSB0d28gbmVnYXRpdmUtayBlbnRyaWVzLgo+ID4gPgo+ID4gPiBX
+aGlsZSBhdCBpdCwgZml4IHRoZSBkZW5vbWluYXRvciBvZiB0aGUgZnJhY3Rpb25hbCBQTEwgY2Fs
+Y3VsYXRpb24gdG8gdXNlCj4gPiA+IDY1NTM2IGluc3RlYWQgb2YgNjU1MzUsIGFzIHBlciB0aGUg
+VFJNIChSSzM1NzYgVFJNIFBhcnQgMSBWMS4yLCBTZWN0aW9uCj4gPiA+IDIuMTMuMS40IFNldHRp
+bmcgR3VpZGUgb24gUCwgTSwgUywgYW5kIEspOgo+ID4gPgo+ID4gPiBGb3V0ID0gKChtICsgay82
+NTUzNikgKiBGaW4pIC8gKHAgKiAyXnMpCj4gPiA+Cj4gPiA+IExpbms6IGh0dHBzOi8vZ2l0aHVi
+LmNvbS9mbGlwcGVyZGV2aWNlcy9yb2NrY2hpcC1saW51eC9jb21taXQvN2E3MmJjMDVkY2MzYTUx
+ZTg1YWU1MzE3NDllNjI3MGJmOWI5MjEyZCBbMV0KPiA+ID4gRml4ZXM6IGYxYzUwNmQxNTJmZiAo
+ImNsazogcm9ja2NoaXA6IGFkZCBjbG9jayBjb250cm9sbGVyIGZvciB0aGUgUkszNTg4IikKPiA+
+ID4gRml4ZXM6IGNjNDBmNWJhYTkxYiAoImNsazogcm9ja2NoaXA6IEFkZCBjbG9jayBjb250cm9s
+bGVyIGZvciB0aGUgUkszNTc2IikKPiA+ID4gU2lnbmVkLW9mZi1ieTogQWxleGV5IENoYXJrb3Yg
+PGFsY2hhcmtAZmxpcHBlci5uZXQ+Cj4gPiA+IC0tLQo+ID4gPiBOb3QgYWRkaW5nIENjIHN0YWJs
+ZSwgYmVjYXVzZSB3aGlsZSB0aGlzIGZpeGVzIGEgcmVhbCBidWcgaXQncyBub3QgYQo+ID4gPiBy
+ZWdyZXNzaW9uLCBhcyB0aGUgaXNzdWUgd2FzIGludHJvZHVjZWQgaW4gdGhlIHNhbWUgY29tbWl0
+IHRoYXQgYWRkZWQgdGhlCj4gPiA+IFJLMzU3Ni9SSzM1ODggc3VwcG9ydC4KPiA+ID4KPiA+Cj4g
+PiBJIGRvbid0IHRoaW5rIHRoaXMgaXMgYSB2YWxpZCByZWFzb24gOikKPiAKPiBJIGJlbGlldmUg
+TGludXMgZnJvd25zIHVwb24gY2hhbmdlcyBsaWtlICJpdCBuZXZlciB3b3JrZWQsIGJ1dCB3ZSd2
+ZQo+IGZpeGVkIGl0IG5vdyIgYmVpbmcgc3VibWl0dGVkIGFzIGZpeGVzLiBJdCdzIGJlZW4gYnJv
+a2VuIGZvciB5ZWFycywKPiBhbmQgc2luY2Ugbm9ib2R5IGNvbXBsYWluZWQgeWV0LCBnb2luZyB2
+aWEgdGhlIG5vcm1hbCBkZXZlbG9wbWVudCBwYXRoCj4gKGkuZS4gLW5leHQpIHNlZW1zIHBlcmZl
+Y3RseSBmaW5lIHRvIG1lLgoKUGVyc29uYWxseSwgSSBhbHNvIGRvbid0IHRoaW5rIHRoaXMgX25l
+ZWRzXyBhIHN0YWJsZSB0YWcuClRoZSB3aG9sZSBpZiBpdCBhaW4ndCBicm9rZSB0aGluZyAuLi4u
+CgpJZiBzdGFibGUtbWFpbnRhaW5lcnMgZG8gdGhpbmsgaXQgdmFsdWFibGUgb24gdGhlaXIgb3du
+ICh3aXRob3V0IHN0YWJsZSB0YWcpCnRoZW4gYnkgYWxsIG1lYW5zLCBidXQgY2hhbmdpbmcgaG93
+IHRoZSBQTEwgcmF0ZSBzdHVmZiB3b3JrcyBoYXMgdGhlCl9hYmlsaXR5XyB0byBpbnRyb2R1Y2Ug
+b3RoZXIgYmVoYXZpb3VyIF9zb21ld2hlcmVfLgoKCj4gPiBJbiBhbnkgY2FzZSwgdGhpcyBwYXRj
+aCBpcyBkb2luZyB0b28gbWFueSB0aGluZ3MgYXQgb25jZS4gSSBzZWUgdGhlCj4gPiBmb2xsb3dp
+bmcgdGhpbmdzIHRoYXQgd291bGQgd2FycmFudCBpbmRpdmlkdWFsIHBhdGNoZXM6Cj4gPgo+ID4g
+MSkgZml4IHRoZSB3cm9uZyBkZW5vbWluYXRvciwgc3RhYmxlIGNhbmRpZGF0ZSBJTU8sCj4gCj4g
+SSBjb3VsZCBzcGxpdCB0aGlzIG9uZSBvdXQsIGJ1dCBzaW5jZSBpdCdzIGEgdHJpdmlhbCBvbmUt
+bGluZXIsIEknZAo+IGxpa2UgdG8gaGVhciB3aGF0IEhlaWtvIHByZWZlcnMuCgp5ZXMgcGxlYXNl
+LgotIFN1YmplY3Q6IEZvbyBhbmQgQmFyCi0gQ29tbWl0IG1lc3NhZ2Ugd2l0aCAid2hpbGUgYXQg
+aXQiCmFyZSBjbGVhciBpbmRpY2F0b3JzIHRoYXQgdGhlIGNoYW5nZSB3YW50cyB0byBnZXQgc3Bs
+aXQgOy0pCgpTbyBwbGVhc2Ugc3BsaXQgb3V0IHRoYXQgIndoaWxlIGF0IGl0IiBwYXJ0LiBUaGUg
+cmVzdCBjYW4gc3RheQp0b2dldGhlciB0aG91Z2guCgoKVGhhbmtzCkhlaWtvCgoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
