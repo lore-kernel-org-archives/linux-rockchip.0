@@ -4,112 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C350AC44539
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 15:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D7DEC44532
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 16:08:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/mqphKKSudG2y91YT+pRe/E/vyZJo4i9ODKlyqbzWH8=; b=3tHctIfNouKG0E
-	ioEc64ahQjCSz+ZjFoZyp1B1FXo/M5RNzViSHD839wpHkKxOb5zJlq240cLgYBATXZo9OX0bL6byn
-	GSW8zKn9CnGZzKcQ+B064B+hICpyD1/AXqnpHaw9XxnqicAfFsVfQ3CQVPt4hqbTndQTLEeFNYyv9
-	VmpNJOnyUQR88/1hXx/S+TRbd73LrR3rvtC7UAHtlbWhSbu4GaCCudGYBdd2eFrAjJs3RABPSp99o
-	yhVFyePWkV+Q2eWq10IOK2Gx+9b+P2AXaK43PQcGQi0yMG+Rm31u6ojWUqpfLSB8CWXacd6E0y+be
-	knb935RgYYVbSG/6Rxxg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TOWRY6DZ6fMexr3r/a/nIhZKbzZOAxsdTIsfUvaDztU=; b=rZU1pp5KdDpaAK
+	2COvu9jHgO04Zssgs9/scFuNEhLmHly4l5ohPyaq4DEwIBiicpx3RPXB02655Gtj9dsudEueafQWi
+	uEF6iXrcaVGdJxpsszr4CnWm9lHt5b6F8VglPOXoubLlxqvub4G4FGOyyVIJmGlWkPnjfdjLDm/WL
+	Dx8+8rao6lLeQkoPq80GmDLT3tcHS1aJ9VnLz6dKWebmP7+dTSaOFkgGsIu/q88rrea7UfRnTxQcQ
+	LRUk5FwF+5UIfnnA/5MeXO/19+8SsmhKPer+/MGkRZ9vpMxaZrRgBqHlrgAFWQqJO8in0h8DZmNDk
+	KFheDzJlzWq7+2mnF8Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZ5Z-0000000CDdY-2cHS;
-	Wed, 22 Jul 2026 15:42:29 +0000
+	id 1wmZUv-0000000CHuW-06JB;
+	Wed, 22 Jul 2026 16:08:41 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZ5X-0000000CDae-1hMd
+	id 1wmZUt-0000000CHu9-29g1
 	for linux-rockchip@bombadil.infradead.org;
-	Wed, 22 Jul 2026 15:42:27 +0000
+	Wed, 22 Jul 2026 16:08:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=a0mdfiM3qjdIeg57ItkPiqiLUsLGffK5s/s59dcT3jw=; b=hcFIexYK9a6Ekl45WiueMzifeP
-	GflrgZN2t96atfDxzK/6kIK7PL7SDoAMPep5Vru+ttXV7yexk79pY6FfohtMwRiPtPJaY53BpjFuI
-	pIkn7nOx+bbXew5kiwqyoDn2tS8DKZDCCxidtO1zo3ho8WVCeoXI7THTFwmKzPR8LQFL1EHx2jEwd
-	j4h+RpnVgB0Vcrd7DsCEDK4WFCRwg9ucZRNe8Iyvzq0qNgdUilDbygj9Ilze9cDr+FqAF5gdoE6vq
-	z+gjipdzp1KY5pkVLEWMGbRPOgGWwosbPuHThJLr59okJG8ygr965CQI5NbHsfPV3WMOY9SFquOTG
-	yFuHdw+A==;
-Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=ZgrQnMgwlgoUFEsEQmGeH4aaMMul+JyM5frck2aQVIE=; b=QOUYXU8PjriT2bJe2qNh3QSwXz
+	luLIZsxSa5ZqRl0wgW6C9827tKkfqvd1/9TN8pkAOru3Z020c1YusmAtdaXYhL/43mdehaN1jFhDw
+	gDeYIWzIJU/j5DAyRzKYngoolfPhZtKxAjvVR8jv9eZz+Rcbn1AA8eFiL81WrYpEJRm6s36vWnqqG
+	4uHUWZ/ZuzoP00T974kkfeb2oRFV1qVUYCYoqP5rRrnXMG4vxPypXH3nR1ynYxCqYEkisvSIWiN30
+	Xjvc9zsmDsqaEvcs0DPDHPwD/L9JLDrpzWcQn4xji/ZjcGPH+wm0iOPg+Xwz2lrpI0rH0h9CGcF/X
+	shjcpt7A==;
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wmZ5U-00000000xqY-2Pns
+	id 1wmZUq-00000000ztz-2QCX
 	for linux-rockchip@lists.infradead.org;
-	Wed, 22 Jul 2026 15:42:26 +0000
-Received: by mail-oo1-xc33.google.com with SMTP id 006d021491bc7-6a1160a2c42so8421228eaf.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 08:42:23 -0700 (PDT)
+	Wed, 22 Jul 2026 16:08:38 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-84874b52eabso12383415b3a.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 09:08:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784734942; x=1785339742; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=a0mdfiM3qjdIeg57ItkPiqiLUsLGffK5s/s59dcT3jw=;
-        b=amjYLGBihdc5i4DuPaI+ldIvD5fQFEV3Y1pkKP4w7JH3xSu77FLUCBAsvaynEuaYE+
-         gOJIDnJFx77eASMqPJj+f/OHNatU/Oc1KZteFWUoNtQ7RNHbFZkYRRJZgYGJMkaG0CqE
-         XaQXK2lAvQyTwx1vEGgO9k5ns0WOzakmuT3rdwMsvZqB5+2Dncr9RTe/4z6eMRkmzi67
-         DWS0l8NjPTQqAUXxvdybKjmSRzuKo5wCKZdXql0+iRteKO/NwOAWCAONz/044VAPjxUC
-         +YNI+x64CHld8TaReeu3Bqg3uWUbGn/IzFPqS+DxKdJ2rZwe0jSTTXKRbDNmxE1ljjl7
-         bbFQ==
+        d=gmail.com; s=20251104; t=1784736514; x=1785341314; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=ZgrQnMgwlgoUFEsEQmGeH4aaMMul+JyM5frck2aQVIE=;
+        b=pzW0i/iniMoKaPjBZquzySP6hKfiRO3/7tfbCsA6HLAUot+bJdKZBmpi+NZCdFoqPd
+         30VCFSXU1RhhS1tjxJYUIHCXJ71uDtk4QoknE6OmDh/HCNAj7kplRCZzShuyWCb6xPky
+         bqNzIn97S8ASmg1ZOOWiCUj1s8AX2TpUpe1KzOriMh+WsTksgbKqfD3JuxwmMnJht/z8
+         hERwTHBkRU/TK//dSLLmAaWb5x4BievN68NJH4KnDSM0cmaVvySU+0VnV4pVE+UximZG
+         W2w83qFzR2RY472Zqjws3rlIcy2M8BDKmUn66uGTaWa6lkgGPLF9zCuvQbGc8ElwErpg
+         zgSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784734942; x=1785339742;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=a0mdfiM3qjdIeg57ItkPiqiLUsLGffK5s/s59dcT3jw=;
-        b=QfovMq1Q6ItOx9Ic9Yv4pwXdntrd1HHw5BukFo5ABQ2Z1NtZC3Tjr1t8GDhMwRPhue
-         xg/JaBLaDFY1r/3r/iza50MSfxdp9f0orvcD63bMS64Rhx/50gGGstNd5O2MiPQbvnBk
-         IkJnnrkkWc8N1WrDgW6ruz/Pf9PX3k9iarxUkQg5oXXf7XwdvocusbSX3DdvwuN0PaJW
-         ZKTDHuTEQSRkhQliycaqHC1OTAxD2y0VY+ansxeGA8bI5R+cijcj0eJ1DpU4Kn7xM2Ry
-         T7EZMbZa9D1GYKgYjeYK22PBeK2UUZwFsF9kk+6ND4m6Im2kjsFXbTTu5RVPZLwKNLCC
-         gX1A==
-X-Forwarded-Encrypted: i=1; AHgh+Ro9MRZJ2j/h4hEXLwMcCGeY3sPPa4NxEX2gWQZPeqh1gY1XQsfVVxSy6Czj4GdbNIhGCWpsx/47LNSa73puvw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyG8522eSfTdQ24O0pr3L2qKdKzmOmBr6L/eDIf5mHpfukmydVE
-	j4kVjGkTidnr5dFSdMVr2lLWzTEAVTtQVt3QnM0Bc310EHAhrC5jLDqY
-X-Gm-Gg: AR+sD13Rh5P2INst2rXKlW7SusWDGKdqERfK39siY7it5D61/u17n6r3vfegEhAt/Xp
-	+aWZs4LWDT1cbEZCBmH6KqiYsbGgeztAuNXwpebM96f60giAUK5LuLVWh6+8nO1EdA5z4KDEUsd
-	iTJRZ5mKtKhGbnJX0koKZ5XLTkPIdjCAyB8O1wYS/GY45iHg4ZELqvK1v8xXKSzxYiA3vVu/csO
-	mRRM7aR3dF3XuCtDM1zwldhLeil0msPy1gVbUlHiPY1y41cgyzRS1r/wbxaJPFYYPIfEt5aN1ZS
-	dlRhHo58cRGsQFBmuKrDCmDhOY6fZgV/EA71+ypf81uFypcTgKs1blL2Od0p01wR1/vS96nXFpu
-	6QrjoP/1A7IgHmKrOxpp490qWC69Rve6hRvul7UkKUL2k/1B3d/xQwkalDXhJ48ndV0TDzR3niA
-	hA
-X-Received: by 2002:a05:6820:c91:b0:69e:97da:285a with SMTP id 006d021491bc7-6a5366ba46dmr11304145eaf.29.1784734942387;
-        Wed, 22 Jul 2026 08:42:22 -0700 (PDT)
-Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6aac3a494d4sm1300804eaf.3.2026.07.22.08.42.21
+        d=1e100.net; s=20251104; t=1784736514; x=1785341314;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ZgrQnMgwlgoUFEsEQmGeH4aaMMul+JyM5frck2aQVIE=;
+        b=Q3jjVfyloltO/YehvlIAuaVdqmOCKhE5oHu8nzBnyqrBZPGmRb3dPCriC9LcNsNPFp
+         ou9d313oikr7IPEE9iFecrSH4Sb12kQoiM+jWt1RAjU+NSEw+r1jqvaSzOMosPiLajcm
+         Boz9u2WUfviq4ze/2JmZh9JY0TD3XeiwVDMwnR9gn0XY82gnLwx+9/otJSDvhdUhY1m3
+         BSk1Ww77eJZA9meP2p2cfG/kYBz44Du34a+hArfbdNgulQsNvM87CUlt9FBOn43M4H7A
+         BCVrAK2iTy9NBb5LxpeoW+1RrlckYyPE8KDvvHgvCV93hQEpQje5QqEyM3WXDK1DGKop
+         whtQ==
+X-Forwarded-Encrypted: i=1; AHgh+RqxqHEPBDceOkohcRXkj112Q/aAPZCBExAMptJnZAFxMaGjv/0Cn6aWP+vYBN3UPVgn1m8XZmcy+hibkqjRZg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyO/bmcOiECah1MFWtyv4FVd4iB0lKcBvkNDumZTHaEjWLZPzh6
+	Yub/jWRatEAqVXbCYH3wEcQQdEglhip2huBvhWEJXuA8Z5m6rMMBzH5gbtGHISL07fo=
+X-Gm-Gg: AR+sD10TVFQU0t4TEBRa9VgL7ghxK0vDb6LlbyQev3mw9PcxNPbiY2gr9eOfd1XZoF7
+	eskaRghqLuy6RS2iSRcuQlkSAzcd7VEw4XSBK7Ozf6exVTMmcTPidbxBAueEUC43V9GeqihkIbu
+	cbzYUriHZLEnnPB73T1tzS7R33Z6ymMNhS0d3k/FUMegFBc5/UUm6hyBR/00xaBN66aMJ3MgCzl
+	UH6QD8dW1rn9aT3P5J/V/09uJcXCGSV7kf6GTA/qSU07r972tIcJwvLbK0EiL+5aMV2JTY1ffPk
+	xCeMqmr0zSfcet62u0NTi+dptyN3BoDm8XLAZgumUFR+4oXDrOs5XrG1jUXOnxOPFIX4GkAof0B
+	CKwqS+j/ww/xQQiXicdnCa7EUx0L9rwg4RpBjTDkSbNyvB0gxgM/dyECWCCgj00CPjOPaDgahAu
+	Lq3PsDQiUGX+AljqSJCBmV+9uUlgjoMVBUqQE8rq3VgaVLXUDDb1D/pBsahA4wMID3yVfoTUg=
+X-Received: by 2002:a05:6a00:451c:b0:842:6004:3fda with SMTP id d2e1a72fcca58-84c292e057dmr23852827b3a.25.1784736513793;
+        Wed, 22 Jul 2026 09:08:33 -0700 (PDT)
+Received: from debian-rockchip-rock5b-rk3588.. ([184.22.136.210])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84e175a64e3sm1639440b3a.42.2026.07.22.09.08.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Jul 2026 08:42:21 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-iio@vger.kernel.org
-Cc: andy@kernel.org,
-	nuno.sa@analog.com,
-	dlechner@baylibre.com,
-	jic23@kernel.org,
-	jean-baptiste.maneyrol@tdk.com,
+        Wed, 22 Jul 2026 09:08:33 -0700 (PDT)
+From: Tharit Tangkijwanichakul <tharitt97@gmail.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	andriy.shevchenko@intel.com,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V19 9/9] arm64: dts: rockchip: Add icm42607p IMU for RG-DS
-Date: Wed, 22 Jul 2026 10:39:40 -0500
-Message-ID: <20260722153942.144387-10-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260722153942.144387-1-macroalpha82@gmail.com>
-References: <20260722153942.144387-1-macroalpha82@gmail.com>
+	linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	linux-kernel-mentees@lists.linux.dev,
+	skhan@linuxfoundation.org,
+	me@brighamcamplbell.com,
+	jkoolstra@xs4all.nl,
+	Tharit Tangkijwanichakul <tharitt97@gmail.com>
+Subject: [PATCH] media: hantro: disable runtime PM before hardware teardown
+Date: Wed, 22 Jul 2026 16:08:19 +0000
+Message-ID: <20260722160820.2401-1-tharitt97@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_164224_747196_10D76CAC 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260722_170836_785807_4B88C9F8 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,37 +124,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+Removing the Hantro driver may trigger an SError on RK3588:
+	SError Interrupt on CPU6, code 0x00000000be000011 -- SError
+	...
+	do_serror+0x5c/0x74
+	el1h_64_error_handler+0x34/0x50
+	el1h_64_error+0x6c/0x70
+	regmap_mmio_read32le+0x10/0x20 (P)
+	_regmap_bus_reg_read+0x6c/0xb4
+	_regmap_read+0x60/0xdc
+	regmap_read+0x4c/0x80
+	rockchip_pd_power+0xe4/0x600
+	rockchip_pd_power_off+0x1c/0x60
+	_genpd_power_off+0x98/0x198
+	genpd_power_off.part.0+0x178/0x288
+	genpd_runtime_suspend+0x210/0x300
+	__rpm_callback+0x48/0x1e0
+	rpm_callback+0x74/0x80
+	rpm_suspend+0x10c/0x580
+	rpm_idle+0x134/0x1b8
+	update_autosuspend+0x30/0xc4
+	__pm_runtime_use_autosuspend+0x48/0x64
+	hantro_remove+0x8c/0xa8 [hantro_vpu]
+	...
 
-Add the Invensense ICM42607P IMU for the Anbernic RG-DS. Mount-matrix
-was tested with iio-sensor-proxy and reports correct orientation.
+hantro_remove() currently asserts the device resets before disabling
+runtime PM.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Calling pm_runtime_dont_use_autosuspend() causes an idle device to be
+runtime-suspended immediately. At that point the Hantro hardware has
+already been torn down, while the generic power-domain genpd code
+still performs the power-off sequence. genpd regmap_mmio_read causes panic
+subsequently because the reset lines were asserted.
+
+Disable runtime PM before asserting the reset lines so that no runtime-PM
+transition can race with hardware teardown.
+
+Apply the same ordering to the probe error paths as well.
+
+Fixes: ea71631b7129 ("media: hantro: add support for reset lines")
+Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ drivers/media/platform/verisilicon/hantro_drv.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts b/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
-index 8d906ab02c5f..b770bfd5268d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
-@@ -871,7 +871,13 @@ aw87391_pa_r: audio-codec@5b {
- 		sound-name-prefix = "Right Amp";
- 	};
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 2e81877f640f..bbeec5ae509a 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -1212,7 +1212,7 @@ static int hantro_probe(struct platform_device *pdev)
+ 	ret = clk_bulk_prepare(vpu->variant->num_clocks, vpu->clocks);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to prepare clocks\n");
+-		goto err_rst_assert;
++		goto err_pm_disable_assert_reset;
+ 	}
  
--	/* invensense,icm42607p at 0x68 */
-+	icm42607p: imu@68 {
-+		compatible = "invensense,icm42607p";
-+		reg = <0x68>;
-+		mount-matrix = "-1", "0", "0",
-+			       "0", "1", "0",
-+			       "0", "0", "-1";
-+	};
- };
+ 	ret = v4l2_device_register(&pdev->dev, &vpu->v4l2_dev);
+@@ -1266,8 +1266,11 @@ static int hantro_probe(struct platform_device *pdev)
+ 	v4l2_device_unregister(&vpu->v4l2_dev);
+ err_clk_unprepare:
+ 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+-err_rst_assert:
++err_pm_disable_assert_reset:
++	pm_runtime_dont_use_autosuspend(vpu->dev);
++	pm_runtime_disable(vpu->dev);
+ 	reset_control_assert(vpu->resets);
++	return ret;
+ err_pm_disable:
+ 	pm_runtime_dont_use_autosuspend(vpu->dev);
+ 	pm_runtime_disable(vpu->dev);
+@@ -1287,9 +1290,9 @@ static void hantro_remove(struct platform_device *pdev)
+ 	v4l2_m2m_put(vpu->m2m_dev);
+ 	v4l2_device_unregister(&vpu->v4l2_dev);
+ 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+-	reset_control_assert(vpu->resets);
+ 	pm_runtime_dont_use_autosuspend(vpu->dev);
+ 	pm_runtime_disable(vpu->dev);
++	reset_control_assert(vpu->resets);
+ }
  
- &i2c3 {
+ #ifdef CONFIG_PM
+
+base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
 -- 
-2.43.0
+2.47.3
 
 
 _______________________________________________
