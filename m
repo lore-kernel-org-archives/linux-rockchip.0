@@ -4,54 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F6D6C4451C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 07:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35089C4452D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jul 2026 07:34:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y01UAnycndta99j+7LDVYkNeJoZFs1yz5zatY/C2fKQ=; b=nnnD/nfrWXWEfq
-	HbOjxnuRLVIIDvaRWXR71ilBtRdlhEFtnXUH4hfiQ/bIdLUA1XK0Axk1S/I9zgkkTQsoyggJhEm8o
-	BpjIzd7zTioLTdN4nDhq4F30cw8MYhh76ZRlXJgZ1ngdbXSeT113eycdiGBxVtlokSmYwFLIY0jMT
-	5nOH7n+GXwCnm24zv8cTZquszh3+lbsYyLcL1QtJO/Uid8fBWTsixqMUZC3pIxsyNiOq2/nD9/G4y
-	mHVFYxfNoqnKEVRMNhYIL1ow21TxSRB8tGT3VyDW+1nrZd6Yx5BnUAAwKu429mSyOf5oDbwvdZmi4
-	vut1uzTV1Grl5PWkrZug==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2o4kIMqqNoQkaFRXkdS3tZ0aokj8bu82oUOO6QeK1ns=; b=0eY1ejqzAwjAa0
+	zcBUinrI6gjAosy/zceax1+KNi9J65N3FymjXhUWZjS7SRpYPYOicIZvFVh780it4KUxmuAL0uvtR
+	4Tgj5VRW1JcY8Yosb6BOWAXHYK+hrYvpv2k1Ujf09HbJEOHq0Pa6harZ5MDlsj+9Un6M6/ivcfYt7
+	9mOVw67JPFtJ/viUSlUYRj2zudf5fQ9wPBWcjc6ti9yGoc/ubcF7oekjMgy1IXybm0qbIPFB5QPB1
+	10ZPDHTH3vKI1mDok1VOzq246hCXP1yoHbEDSh6MkdDext8zEEmdcbB2NXyYwirrR/KuBXikIoZ56
+	BgZHheKMRhCyGAAQvDqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmRHN-0000000B3bG-3j4e;
-	Wed, 22 Jul 2026 07:22:09 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wmRTM-0000000B4fe-3TB8;
+	Wed, 22 Jul 2026 07:34:32 +0000
+Received: from flow-b2-smtp.messagingengine.com ([202.12.124.137])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmRHL-0000000B3ar-47zH;
-	Wed, 22 Jul 2026 07:22:08 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 26F1D60A67;
-	Wed, 22 Jul 2026 07:22:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18DA21F000E9;
-	Wed, 22 Jul 2026 07:22:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784704926;
-	bh=yr/OrBC+qRuEY7Yqo7iUWp5/J7OekvuX5jORhC8HqGk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=EypVTYXuhH1X+r3duiINXfNRT1lSn8Jg5CsmTAswYqKaOLuxHa3MqNG5z1buQiASQ
-	 9B9DJp/OnSHch96/gNZEAD8KfPYfcIvTH/qvVe2JNaPFgVt3K7qPT3lyT7o/MobhoO
-	 Vj16I+a9TIOAh85/TyNk7kL1xyfnCCK9KuhDIr1hE6iBK2/5P4mbzICLgCShu4KQiA
-	 /QHgNBd6PNMNm9mSa7LjDJB32g9stv92ExHVmpdAg8KBMlrKdJX6cmNCil23SLMSRv
-	 0E22QcvyT4orDsM/ux7G4rujnYD9HgGqpXCNnN6y5svkQb92Ebirf9qbr/rGLVJMbg
-	 CtvuyfaxKFVoQ==
-Date: Wed, 22 Jul 2026 09:22:03 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH v4 09/10] dt-bindings: display: rockchip: dw-dp: Fix
- sound DAI cells
-Message-ID: <20260722-enchanted-mandrill-of-refinement-adc7b3@quoll>
-References: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
- <20260721-synopsys-dw-dp-improvements-v4-9-f0f4a4ede712@collabora.com>
+	id 1wmRTJ-0000000B4dS-144E;
+	Wed, 22 Jul 2026 07:34:31 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+	by mailflow.stl.internal (Postfix) with ESMTP id AD3A9130009C;
+	Wed, 22 Jul 2026 03:34:25 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-05.internal (MEProxy); Wed, 22 Jul 2026 03:34:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm1; t=1784705665; x=1784709265; bh=mL8afbJIEV
+	bivI++LDqKDCSnrT+9HSwzh/VJgECEmYM=; b=X4R5+NnKpjr8SCtmlYsZcpcCE7
+	OvXUUGXcdRJ1pqlt5OQcjgiDblWe8+MSMXCYgcRrsCqXgyeMNwR8XlIDgFxIc/yS
+	XmUu7vlf4uk395wV6lqOIlHwUVOg+bhrD6qAmMrjcspaVy2mq+Y7HT6Ukef0HQsn
+	LRi/mZNGWp4arKx4XETGevQBFW4LY1O2OBawZS5xVsGF0HQ40Jum39ihxEmZf20D
+	oCxFJVCt6aau12F4akCo1hM0DkfVwg/TJ5Qj5YVwh7qsbN2WJ0k1Qh8KdT+9UvYh
+	PuzlM2IKRMnMRu1alByXIQzQq561JqEttXX6XJC+6AlllYBQX065BGDzxRRQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+	1784705665; x=1784709265; bh=mL8afbJIEVbivI++LDqKDCSnrT+9HSwzh/V
+	JgECEmYM=; b=hAp+KRjjWrZjLQG4ZK5qf22PLGC6rbQtRboCycfUHFBbGODcdZt
+	il7suGjGl6kB6XAhnOiq2raZG3FLlgzRH4O+u85Zkw4J2Ej6u+K6IW/kAurFu+Y1
+	6J+W/v6yX67/3djVbaFA1hlcv7CWYGLkzBrovgFwW3UjxVQSqomhGSE35jPpqESD
+	iDQo8h4QGsNuAurF9NiNf706nm1d+qrcIhT9I37IBF5FEIcEGM2SUlcqt79FrLi8
+	PAyoW80aMcKNtJET3HHYke4K4UHApiWuzq+UhKJgYIxL3sr+rDVXZfDHpirT4tnm
+	ad/AOznwgHHEhJcX+OxbTZZnXOD6gqdYmKQ==
+X-ME-Sender: <xms:gXJgahaqXmifA7A4U1ySUPjFulgrnusH0fZMtHmUbDg32e3vOMqHqQ>
+    <xme:gXJgan9uhPuH4qKIouPBb9ucm1JkCjXXRUbs8ZSlVlHMVWoJKKxa9h3KSDsQzahpr
+    yhNxigxTEUBKfRgxCQWMU27eJtKabtvrfhHiyKbM4Oh1IAV6s1jufQ>
+X-ME-Received: <xmr:gXJgaoS5OPQxiqjevM1RmpkjZYyD6OECGgkKpeITf-pIcUrCvb_T-nDpI-oYM_Y4yz7o1MhytA>
+X-ME-Proxy-Cause: dmFkZTEnr+Ic820deR54trKtaw3+ZMPYT0z62lQjtuu6UfAkjZ+uTHXJ6JAc3qBaopJ/VD
+    y81AFwdddvH7jDoLvUS+TpqpNhXqqS3vkrDnUeH4Iciiof/VqnkaVhiIAEoC/MscM10Rey
+    J2ydCEUZ4x8qvxl9a4qh9fbZCz3h00im/nDgXcLDCw4NXpybKjjfHigBxBYt0zC122SDri
+    M7lg7lT7xWP0tBpUy03bU7YYu/sTa9s5FkbkBjHneQODLPttTe7Iy3yvPOjQ0S3nuWR0Yq
+    GVUnV4Cr0zjLffjRGrcPSX0OY/6J60ZTr0w9dnFhg19yAo6cIus9+6Sllcn1FEoPoThdf2
+    c3Aq9wCBck3PfoZJ5H4WBwsgfW8uci+ftgevpiSCpZQJWFbHAI0Y1zdVD7F2YBwDsN0fQV
+    5onNEi0UsxpG/v1W7BB+1vYZ66KTBe3PIfjS/Y8Go3zNIXsD7+28+HLp/quh0Ry0pnbMMD
+    vKCAPyeDIEXL3ctn152wqFe+FLad8bhZAxJqlMyYhhl41bep9aytMQZRfPfmvIjKCoip8E
+    vqnh9u+ptls+Z7gD7VblxNDpERYDZhWAWVCuC/BE8oPlnfR2xM0WTrLu6dHWOvcCggqVqw
+    Wjb14DCDwf1o1rWNoGRFMRCi2Nrh80TpN5uji0aiZh54q66Y3NeignjuPTyg
+X-ME-Proxy: <xmx:gXJgaiIVZLFFJE01TKTGHRsZ9CiotLIGtx2Bd85IHKbSuh_i2c77Vw>
+    <xmx:gXJgaqQcrazNbAHxv-S9ZapnXDLsQ9S_PSoH07O5G_ujR4ndtdMkYQ>
+    <xmx:gXJgaqKe1TNZHndnd0AZ1tqo0Kmy2QNi_m8SqlNqexMW0NohwAbEbQ>
+    <xmx:gXJgat-2mGTcM8b7rkI7htTw-mKQJhLdjK0Lrb5aynxUxuj1lZyPoA>
+    <xmx:gXJgag-1z6GSFenfD9WruHXGj5aaTjSOOHh-8vLW1dxyE7WGiTEFxI8m>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 22 Jul 2026 03:34:20 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: mchehab@kernel.org,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	nicolas.dufresne@collabora.com
+Cc: ezequiel@vanguardiasur.com.ar,
+	linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: [RFC PATCH 0/3] media: rockchip: VEPU510 H.264 encoder for RK3576
+Date: Wed, 22 Jul 2026 19:34:14 +1200
+Message-ID: <20260722073417.2064667-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260721-synopsys-dw-dp-improvements-v4-9-f0f4a4ede712@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260722_003429_674942_E13932C2 
+X-CRM114-Status: GOOD (  17.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,100 +108,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Alexey Charkov <alchark@flipper.net>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 21, 2026 at 07:52:39PM +0200, Sebastian Reichel wrote:
-> The RK3588 and RK3576 DesignWare DisplayPort controllers both have two
-> possible DAI interfaces: I2S and S/PDIF. Thus an argument is needed to
-> to select the right interface.
-> 
-> In addition to that the RK3576 has the same IP as RK3588, but configured
-> with Multi Stream Transport (MST) enabled for up to 3 displays and thus
-> has a total of 6 DAI interfaces (I2S and S/PDIF for each possible
-> stream). Meanwhile the RK3588 does not support MST and thus has only 2
-> DAI interfaces.
-> 
-> The binding update from this patch has only been tested with the simple
-> single stream transport (SST) setup as the Linux driver does not yet
-> support MST.
-> 
-> For MST it is unclear what a good binding should look like. Technically
-> there are a couple of options:
-> 
-> 1. Stay with the single cell, but add more numbers. I.e.
->    0 = I2S on stream 0,
->    1 = S/PDIF on stream 0
->    2 = I2S on stream 1,
->    3 = S/PDIF on stream 1
->    4 = I2S on stream 2,
->    5 = S/PDIF on stream 2
+This is an RFC for a from-scratch mainline V4L2 driver for the H.264
+hardware video encoder (VEPU510) on the Rockchip RK3576.  It is a
+stateful mem2mem encoder (NV12 in, H.264 Annex-B out) modelled on the
+verisilicon/hantro driver, not on the downstream MPP-service model.
 
-This looks simpler and anyway the numbers are abstract, so they do not
-need to match "stream X".
+I'm posting it as an RFC because intra frames work but inter frames do
+not, and I'd like a second pair of eyes on the inter-frame problem
+before this is worth a real submission.
 
-> 
-> 2. Add yet another cell, so that there is one argument for the stream ID
->    and one argument to select between S/PDIF and I2S. I.e.
->    0 0 = I2S on stream 0
->    0 1 = S/PDIF on stream 0
->    1 0 = I2S on stream 1
->    1 1 = S/PDIF on stream 1
->    2 0 = I2S on stream 2
->    2 1 = S/PDIF on stream 2
-> 
-> 3. Create one subnode for each stream in the DP controller with its
->    own graph for the video streams. This would mean the MST binding
->    is quite different from the SST one.
-> 
-> As it is unclear which way is the most sensible at this point in time,
-> just go with the most simple option for now and revisit this once MST
-> is added.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml     | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-> index 2b0d9e23e943..c4f8959dd65d 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
-> @@ -25,7 +25,7 @@ description: |
->    * Supports up to 8/10 bits per color component
->    * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
->    * Pixel clock up to 594MHz
-> -  * I2S, SPDIF audio interface
-> +  * I2S, S/PDIF audio interface
->  
->  properties:
->    compatible:
-> @@ -46,7 +46,7 @@ properties:
->        - description: DisplayPort AUX clock
->        - description: HDCP clock
->        - description: I2S interface clock
-> -      - description: SPDIF interfce clock
-> +      - description: S/PDIF interfce clock
->  
->    clock-names:
->      minItems: 3
-> @@ -83,7 +83,8 @@ properties:
->      maxItems: 1
->  
->    "#sound-dai-cells":
-> -    const: 0
-> +    const: 1
-> +    description: 0 for I2S, 1 for S/PDIF
+What works
+----------
 
-This is ABI change, which might be backwards compatible or not, but
-commit msg should explain that. I can easily imagine drivers where
-written that way that they will fail with an old DTB.
+Intra-only (I-frame) encoding is confirmed on real hardware (Radxa
+ROCK 4D).  With GOP size 1 the driver produces a valid H.264 stream the
+reference decoder accepts.  This already exercises the full path: V4L2
+m2m, the register programming, the software SPS/PPS prepend, and the
+hardware slice output.
 
-Best regards,
-Krzysztof
+There is no upstream userspace involved (an encoder needs no request
+API); I drive it with a small ioctl test program that feeds NV12 frames
+and writes the CAPTURE buffers to a .h264 file.
+
+The open problem: inter (P-frame) frames hang
+---------------------------------------------
+
+Every P-frame stalls the encoder's own hardware watchdog (INT_STA bit 8,
+~20 ms after the kick) and produces essentially no bitstream.  I have
+spent a lot of time narrowing this; it is sharply localized but I cannot
+close it:
+
+  - The P-frame register writes match a real register-write trace of the
+    vendor stack encoding the same content, byte for byte (I traced the
+    vendor kernel's writes and diffed against this driver's).
+
+  - The reconstruction the previous frame writes is *valid*: dumping the
+    recon buffer after the I-frame shows correct reconstructed pixels.
+
+  - If the P-frame reads its own (older, settled) recon slot instead of
+    the immediately-preceding frame's, it completes.  Reading the
+    immediately-preceding frame's *fresh* reconstruction as the
+    reference is what hangs.
+
+  - It is not FBC: storing the reconstruction uncompressed
+    (enc_pic.rec_fbc_dis = 1) still hangs.
+
+  - The first frame of a session always works; the first P-frame hangs;
+    after a couple of failures + core resets, later frames sometimes
+    start completing.  It behaves like a warm-up / settling problem on
+    the reference-read path, not a wrong register value.
+
+So the encoder programs identically to the vendor and reads a valid
+reference, but stalls fetching the previous frame's reconstruction as
+the inter reference on the first inter frame of a session.  My best
+guess is that the vendor does something between consecutive frame
+submissions -- a completion/drain wait, a cache/coherency step, or a
+per-frame re-arm -- that I am missing, but I have not found it.  If
+anyone recognizes this on VEPU5xx, or knows what the reference-read path
+needs between frames, a pointer would be very welcome.
+
+The shape of this -- the first operation of a power session works, the
+next stalls, and a reset/warm-up sometimes helps -- is the same one I
+ran into bringing up this SoC's NPU (accel/rocket RKNN), where the
+second/chained submit in a session would not fire [1].  I can't claim
+they share a root cause, but if this is a known RK3576-wide submit /
+re-arm quirk rather than an encoder-specific bug, that would be good to
+know.
+
+[1] https://lore.kernel.org/all/20260718031146.3368811-1-gahing@gahingwoo.com/
+
+Notes for review
+----------------
+
+  - The PARAM/SQI register classes are programmed from mpp's constant
+    "default tuning" tables (not derived per-frame), as noted in the
+    code.  They are required: leaving them unwritten stalls even the
+    I-frame.
+
+  - Rate control is fixed-QP only for now (the bitrate control is
+    advisory).
+
+  - H.264 baseline/main, single slice, 4:2:0 only.
+
+  - Tested at 176x144; other resolutions are not yet validated.
+
+Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+
+Jiaxing Hu (3):
+  dt-bindings: media: add Rockchip RK3576 VEPU H.264 encoder
+  media: rockchip: add VEPU510 H.264 encoder driver for RK3576
+  arm64: dts: rockchip: rk3576: add VEPU H.264 encoder nodes
+
+ .../bindings/media/rockchip,rk3576-vepu.yaml       |   94 ++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           |   50 +
+ drivers/media/platform/rockchip/Kconfig            |    1 +
+ drivers/media/platform/rockchip/Makefile           |    1 +
+ drivers/media/platform/rockchip/rkvenc/Kconfig     |   14 +
+ drivers/media/platform/rockchip/rkvenc/Makefile    |    6 +
+ .../media/platform/rockchip/rkvenc/rkvenc-h264.c   | 1095 ++++++++++++++++++++
+ .../media/platform/rockchip/rkvenc/rkvenc-regs.h   |  929 +++++++++++++++++
+ drivers/media/platform/rockchip/rkvenc/rkvenc.c    |  892 ++++++++++++++++
+ drivers/media/platform/rockchip/rkvenc/rkvenc.h    |  212 ++++
+ 10 files changed, 3294 insertions(+)
+--
+2.43.0
 
 
 _______________________________________________
