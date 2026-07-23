@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAD4FC531C8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 01:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CDC2C531D8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 01:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ds/G7XSODD5+aY+oPebneFt1tYwAl9a2akfKHbmkoo4=; b=WFltJA66mVG3Lz
-	y+jDiZHVAwXVLs5bgbyRGR5w0OpmwU7H5q1+f3u/xkk8xywDdvqR6GhyNPjkQzmO93CdQQBYh0owk
-	+EOVjuHTkXEtWatlIXLqvIkxoL3xAhwNJQGlEplsmg2lrINQA47nX6GjkOhMqlHDTGK6wZehpiR/K
-	sHIx94Tzz3geunjvkIcRuLCd28cNAnfiUtilM6AYE1P7K7YJX5vXn71CJFvHOgTNg5kcTZAwij69d
-	MdNPVeboHG+nvAsEniV3zQeAw4WDM6Yq8aXP4FyKd7R4aqRqowfVgEuCuREHJYTP0U5XVkMldxOzy
-	b5prlDYMJhmqAUlfJFDg==;
+	List-Owner; bh=knKi+IUiYwOF9VK39iwQIfmDNljkuKPixLB3pwES3fo=; b=QrtwsDvwHgdj2m
+	L7UrmvBGnky+5KRz77I6eypKKZt2kEr1cVpBVhEpAmuViwaS89KfC6ttjk911sVEJz6l6qNMFclGW
+	7WymEryP/SR9cHiaOfheHwq2uCReHPw+mwl7a+YNtZHIp6XW/7z9qaGm2BLwZZUvSoP+9QqrSO8fX
+	aCzmeB2sAEiDCPIWBN3yGmOze7ZShoY7hqmMeR5XURMWxk8bkx+qgp184RboFtL2g1Rx05BGDW/z+
+	/G4NQwSc6NmucVbeMNPWNNchCJLJFLG+Cs1jlB3ugRafXdLLIpmtYkkyLbrHDezI/Xgw5GTAGqsO5
+	cVEXxsBRJsv7c8zuKZgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiLo-0000000D3yo-1Y3z;
-	Thu, 23 Jul 2026 01:35:52 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wmiLp-0000000D41u-34Vn;
+	Thu, 23 Jul 2026 01:35:53 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiLD-0000000D2w2-41Sa;
+	id 1wmiLE-0000000D2wr-22qr;
 	Thu, 23 Jul 2026 01:35:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1784770514;
-	bh=C+qlzdbw0LrRZWJU2laNITp1UVPSNhb2R/WB9UGEDqc=;
+	bh=vkmohHBcUSuwS6ZyFCylIMegc4f1JtD3hk0obLRPOFI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UC7lq7OdUtFVuKSwcH5MXuHlxPYA2NGlvUY/IoHyWaF1r/rD116EUoPZ7jTtc5qGO
-	 swduMaxzRWuBuc2z8ejhM/bQXZkcpt77SG4ZQsb4eCF7CFB2V/S3MnpnDiiqm4oZHQ
-	 AoP1Lg5xyMB7JokhzTys3H2LHd6Ng+jaP5a/VdO/6p5rzxiWRo6KC6fO0h3GUiJ60C
-	 dn7tRz7ujAxuGO9E7Vj/oOeERMaPyZzX7/yQq4Dubo8HynAEdcqLEbfm+a7awNb0Nz
-	 VmZv0H4+VTVMNJbOAImM22YxCzABtFZnmMI7GoI80ufY22o6BAs3KmJfXu/ur34SHj
-	 f4QaOSTdcfmYw==
+	b=JZBYr7+C00r1wL0e/BjKmWVhQ8Pi6A+THSPgl+/zp8kk99hx+dS4egmsocS1JLzS4
+	 9qjuKCEvxTXcNCgMRgwBBOCc1tdf5UjPaQihvz6BsAraa4UMlCcH4OJivmIwngKz5Y
+	 xSYGriIuRQNqHuI0eLim8jGkUI6enyKwjb6CUG2117DUbrUk/Lr5CQOGcrr7qQAOZP
+	 D1/uhFonnoT6QKT8RfD/JJtZTQxvYs+k2nFpVBKQJN8x9hPoG+5AzhHAao7gAhreyj
+	 aXyPLR4GXzbxCvtgRgtVb1WOID+vpfiDhYlwUJffI4+aZIJyAG87tvDAQx6rtDkeOm
+	 37adn59VBGxyw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EA04E17E371F;
-	Thu, 23 Jul 2026 03:35:13 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9F81117E1064;
+	Thu, 23 Jul 2026 03:35:14 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 23 Jul 2026 04:35:06 +0300
-Subject: [PATCH v9 17/61] drm/display: hdmi-state-helper: Sync SCDC state
- on hotplug
+Date: Thu, 23 Jul 2026 04:35:07 +0300
+Subject: [PATCH v9 18/61] drm/display: hdmi-state-helper: Set HDMI
+ scrambling requirement
 MIME-Version: 1.0
-Message-Id: <20260723-dw-hdmi-qp-scramb-v9-17-4fb12ea22ac9@collabora.com>
+Message-Id: <20260723-dw-hdmi-qp-scramb-v9-18-4fb12ea22ac9@collabora.com>
 References: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 In-Reply-To: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -74,8 +74,9 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  Maud Spierings <maud_spierings@hotmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_183516_184495_AF846A71 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20260722_183516_727105_F33DE342 
+X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,64 +93,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-drm_atomic_helper_connector_hdmi_hotplug() does not currently
-synchronize SCDC status on hotplug events, leaving the scrambler state
-potentially inconsistent after (re)connect.
+Set drm_connector_hdmi_state.scrambler_needed when the computed TMDS
+character rate exceeds the HDMI 1.3 maximum TMDS character rate.
 
-Hook drm_connector_hdmi_sync_scdc() into both the connect and disconnect
-paths, replacing the existing TODOs around missing scrambler handling.
+HDMI 2.0 requires scrambling above 340 MHz.  Centralize that clock-based
+requirement in the HDMI state helper so drivers do not need to open-code
+the threshold check.
 
+Acked-by: Maxime Ripard <mripard@kernel.org>
 Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 23 ++++++++++++++---------
- 1 file changed, 14 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index 04d5196a2010..ad59318a3e85 100644
+index ad59318a3e85..d112c1555517 100644
 --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
 +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -1205,13 +1205,16 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
- 					enum drm_connector_status status)
- {
- 	const struct drm_edid *drm_edid;
-+	int ret = 0;
+@@ -594,6 +594,9 @@ hdmi_compute_clock(const struct drm_connector *connector,
  
- 	if (status == connector_status_disconnected) {
--		// TODO: also handle scramber, HDMI sink disconnected.
--		drm_connector_hdmi_audio_plugged_notify(connector, false);
--		drm_edid_connector_update(connector, NULL);
--		drm_connector_cec_phys_addr_invalidate(connector);
--		return 0;
-+		ret = drm_connector_hdmi_sync_scdc(connector, false, ctx);
-+		if (ret != -EDEADLK) {
-+			drm_connector_hdmi_audio_plugged_notify(connector, false);
-+			drm_edid_connector_update(connector, NULL);
-+			drm_connector_cec_phys_addr_invalidate(connector);
-+		}
-+		return ret;
- 	}
+ 	conn_state->hdmi.tmds_char_rate = clock;
  
- 	if (connector->hdmi.funcs->read_edid)
-@@ -1224,12 +1227,14 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
- 	drm_edid_free(drm_edid);
- 
- 	if (status == connector_status_connected) {
--		// TODO: also handle scramber, HDMI sink is now connected.
--		drm_connector_hdmi_audio_plugged_notify(connector, true);
--		drm_connector_cec_phys_addr_set(connector);
-+		ret = drm_connector_hdmi_sync_scdc(connector, true, ctx);
-+		if (ret != -EDEADLK) {
-+			drm_connector_hdmi_audio_plugged_notify(connector, true);
-+			drm_connector_cec_phys_addr_set(connector);
-+		}
- 	}
- 
--	return 0;
-+	return ret;
++	/* TODO: also check drm_display_info.hdmi.scdc.scrambling.low_rates */
++	conn_state->hdmi.scrambler_needed = (clock > HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
++
+ 	return 0;
  }
  
- /**
 
 -- 
 2.55.0
