@@ -4,111 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 492D0C531D2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 14:33:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB6CEC531D1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 15:37:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w9v7NCTfYk5aZQk2XZK3LayL8dznl/XRA4zJiqblBHI=; b=QDGWTGNHskUjUg
-	zcxTMu6oc1ZybcFmt0UhWQ4hwldHyWZFIt3PNPRbpA65PGHS8SOzJnNnUs+6xH3I3KfONxKykvktf
-	yLIq5pzOL4LdFCTgptl60pq5DMQhvQ4RETzeu1Sy2DxW2ncuLdqof3fj+hKw6FV2UukyQfH8huUS3
-	YbNzu0dlznnqUnWhAQVwh1S0/TnMDpdb3Hyh2Fd+OXKygszJIjGWQXHhwRR9L8kJRStP0elEV0LZW
-	1WU78pEcFazBKqSg1KM0kuwP1t9S0eCk3rtnpvhWjF1DR4BROJbdaFuoAFA6wHNUhft53b0MuMXMy
-	r+1jQQljTqWR6MCDdhoA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=H/EURb+93CELsVd5gDDb8BBwCthzJLnt10l4PJKs6pk=; b=1zBS1oWdKosZrx
+	2yDFE6tPmQW0RRuJfcAuR+QkbAGTiYKoNUlpyy41aacM+kAcg6cKsDPM27kHGJprHLPoIJoUkiVyp
+	hSqu8e0GZrUWCvgOzD0jxVAIgUT9yxeG4336SWIK4AwsgJ3RhQwiKNFDDumnpQK6VJd7fPO0YC3Mj
+	oDYeV2eGGjGOLQM5IiQhySzOfkupqAFpuaLCKiarcqw4Ueo1naL+mXiYw/lFndeJlslJXcIUliD6L
+	18gfvj57Dvhi2b/ARZHqUPaVIL12n36OzXpRqzAhGUuLUMBCaEo7hpsmcgBNNKznY2S1RoZLnxiEZ
+	Y+gig1jgo+d4EPR+I0xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmuUb-0000000EVPW-48wR;
-	Thu, 23 Jul 2026 14:33:45 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wmvTw-0000000EcLY-2lso;
+	Thu, 23 Jul 2026 15:37:08 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmuUZ-0000000EVOZ-08kq
+	id 1wmvTu-0000000EcL8-32OI
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Jul 2026 14:33:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1784817220;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2njy+/zspbCzy0izhWL1wi7/dDBKbdf0HpY/B2TDfoY=;
-	b=QTKfXad+ncfLcR+Xpvo+ysfguNhj/X2g05l+MNDXrRJMXlDikMVUxYRJVqZ7n6VPiQtHtT
-	xhr9tZGJtEyNPSCaXh9/5EJxOUTjT2u76QHI1RSOsU5YZwddgSTtjegT7jLPEzLFWuhPoX
-	3wAZnFGIxdiN7iSqMS7HdHcPr4bY2aA=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-369-RwIOU9QFMviPWKgnAkolEA-1; Thu, 23 Jul 2026 10:33:38 -0400
-X-MC-Unique: RwIOU9QFMviPWKgnAkolEA-1
-X-Mimecast-MFC-AGG-ID: RwIOU9QFMviPWKgnAkolEA_1784817218
-Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-8e97889ac8aso14259576d6.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jul 2026 07:33:38 -0700 (PDT)
+	Thu, 23 Jul 2026 15:37:07 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-848595b338cso878292b3a.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jul 2026 08:37:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1784821025; x=1785425825; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=y/CrixQ3EkxP2WoSCLt7vnc1mcHljZIG3GR5HRF0Syc=;
+        b=ae9/kxl+JMOSisX7nU8fA20ECuf8rrBQI9egb4kgaStNqZYkv/H7QPcli2VerUvM8W
+         PQZImL22nDqzrU1tYt1JxnZHS/YpGlpV5N+b3jmNN6dwiOfQI4fL0dtUACSIDNVi511y
+         +hbBl2sCTjjjPxT69ZpTJxjqB0190SfsoaYpgZJb2tRw6kIp68yslp+/EGHwg9uEp5kj
+         ItYyfcWtQUBGUxdfffoGZOpAln5zf9N5wGF0PHMWeJ7EzAmO3XCPTE31vwOSNXV1iYhW
+         EH3kjW2JTyRR/jFS+DA5cwCDJ6O3jTMYreojm1RiyZVjTshLR+meDpAOBHaPYijsifXN
+         ksUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784817218; x=1785422018;
-        h=user-agent:in-reply-to:content-disposition:content-type
-         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=2njy+/zspbCzy0izhWL1wi7/dDBKbdf0HpY/B2TDfoY=;
-        b=cQx8eChQ83Lp92CSE5iXidH7AM6aT2wZCW6XNs1+yEcZCsCfL8Qf1Y46OwF2l/agmm
-         exjBHfpLJjGr5jRBHEBTGjAdrd4rCS2xKZO4uvVbLfE002BLg1LLJt53byRbxmg+x67r
-         lTc6ZEmkHwGjvpDiVxfACZiasy3gGRm+rWgRqc4VqoNwjqlSgca/MGPrmZSAS3lu7z3c
-         0uwA7J57vAWa72aSZrxbF/mpAwbFM0tZizt4fYKnEZC93f3H7Q5Wwzf/BM7iqqypTisJ
-         xptQHK7t8HYuOqaIr1ZlKrhotd9NbHdNMBLyazjEgsuHwemZlrcC/Bo395sCUJhRnRor
-         3FNQ==
-X-Forwarded-Encrypted: i=1; AHgh+Rr+Htub4nKhDHpo5hauhSotf9y221Zp9gOJYckthvbTQfMjsZQZZ5q5LBub/t5/jQSx0hav2VCrCjyOEPM36Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUOurUCfp1X//DVFL9b7DOK6x5//pMxcOiZ90jkexnJ/vvQmpL
-	8Qfw0QVKwBoA/hoxur/PLBo2Bd38YuvIYkElfVoPOBiDxdMUeM81LF0VvvjycQGTLNd1E1lSTJU
-	fk+CNwQi1xwekv1iaYHhwlnx3nUCavHVS5YuWBJbTHO/rTaBI3Gp1vcrYc9IdAgjG5xDKiQNN7A
-	==
-X-Gm-Gg: AR+sD13uKAawT+Mk/qLhgX8Lu935HQlXRLvuK76vO7MteO+KzbOCB/HqOtyVz1MPrRT
-	CFP4H8OScX/DjlaSJHHnNJGiDoa6hpUIKSM7B5fAytF1fzTm3gqvjtOzL7TP2c9xis8AwkJYree
-	DbYGXBOGv//4CHVndXZZOOiy8nQeQLeM0585YL1Nrh0MrnKP/UnU3jI9xnenFQJLxlM2OcPMZ0X
-	tfUbRNkv1xZkjki/r02nikYrHoToD/o47eDdX/6mOWVlWzsMA+33szboBU1ZVNRIcVQPaLiSykF
-	j9D8tdmEG1VWD5ZRNb+fij7a3yzU3KddSMftP4CVMpsrdnuEddzhh52bZEIK6Hx+i7dCH5TUxn5
-	NHaxezI6mJTiCkrvstbKnYC7qgK98nJuLHf4=
-X-Received: by 2002:a05:6214:2aa5:b0:907:aec2:6cdf with SMTP id 6a1803df08f44-907ca363063mr40225886d6.8.1784817218115;
-        Thu, 23 Jul 2026 07:33:38 -0700 (PDT)
-X-Received: by 2002:a05:6214:2aa5:b0:907:aec2:6cdf with SMTP id 6a1803df08f44-907ca363063mr40225316d6.8.1784817217491;
-        Thu, 23 Jul 2026 07:33:37 -0700 (PDT)
-Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-907ba8b5f85sm46744846d6.2.2026.07.23.07.33.35
+        d=1e100.net; s=20251104; t=1784821025; x=1785425825;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=y/CrixQ3EkxP2WoSCLt7vnc1mcHljZIG3GR5HRF0Syc=;
+        b=Hh5MLGHaxLX9ZCU+49c9F4EUiqp27YgKBmSF8hKJRdZOqTQDoZTr4NHg4D3Lps+BKh
+         fTGw6CHhwQfEoyy/QXxRPTXVJesFv2SeOiB6Bf8yjJyhpSTyi3dQWu7iRVEyB7TrFfdm
+         gRupP9Ey3R4d2RE6yhLXnYjGLxW82+97iVmiOvoD2ZqVksjgQelYe2bbYIwNeOLCfpmV
+         fz7UFUjCqtxeXH6HT+RTmaEja0+dDpnRsSz/xRfLVv7tddU4LELHWd8JeuQc7e8BJ78r
+         2i/EJscvDOsDWpj0bLwAfei6uA1/Cv/g15xi5Com2oJHxpzKzYD0aix3pRxjhJSeAbVY
+         g20A==
+X-Forwarded-Encrypted: i=1; AHgh+RrPgI/N/aF9/qEVkdScve/vJYGaqoj1sMakvWCwKYPLn4KkNxPf6+JHHxDH3rfgzQ+pyyKviziVlcmxfajN7A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw91BEo5gDCcROpuGioghLiAyPW9YSYAcMgqnOpXzFYo+T+MRym
+	0hlB6hGMhGe4XSQkBHYilxSRpO3YAkICEYHV4fR61W0LmGkXnFDG0RNV
+X-Gm-Gg: AR+sD11tFqOCZczDy0ICYzh/cBLMHsqQyFUrfUczZfjV4HsHXdsqeqEcQImgin24Q8c
+	6E+pxjqemrokiyB7NirGHtujfOAGh/fu8kq6kVFz29wq5JmfTiQqrQh3LRST12YgnVwr+H51ho0
+	6qPR+EokIGIIREFxF3jCK2uOq1Y6dLmSY36SKgHOnaiz6+xTHrJ2LP7TqS/xcYwhKXcOGi1vIRz
+	nIrhgbRWLDA2u9aa8auxuhE6/hy7Fy5hvue+hDn6A0XuN3iqcLPQEwKj7ZTP9INXRI12qCrKsuy
+	+5QMhml3HNV9adw1LFWudK2u4vrkUltupjtbuvMZDWXIU9ngveohaRgC018wA7KAejWoo4tpbkm
+	Ztl20gCRQG2E024Em7jjTlZGDSSsaEzPFUAFxHJl50Naf4twXDYNzon/SBuZt/FIdnfJr1kML4T
+	OCp1njDPAN6fwmfgP9wZ3Gh0TXc4HMBmXIr62nA2BS/NAJhwGBt+DzW3eKp4RG
+X-Received: by 2002:a05:6a00:181d:b0:84c:4d9a:ae42 with SMTP id d2e1a72fcca58-84e2b8bf838mr4448206b3a.27.1784821024558;
+        Thu, 23 Jul 2026 08:37:04 -0700 (PDT)
+Received: from debian-rockchip-rock5b-rk3588.. ([184.22.136.124])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84e1723643esm3212522b3a.3.2026.07.23.08.37.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jul 2026 07:33:36 -0700 (PDT)
-Date: Thu, 23 Jul 2026 10:33:35 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Jerome Brunet <jbrunet@baylibre.com>
-Cc: Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Tero Kristo <kristo@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
-	linux-omap@vger.kernel.org
-Subject: Re: [PATCH] clk: clean-up simple provider misuse of the consumer API
-Message-ID: <amImP6sFlv-sNhMh@redhat.com>
-References: <20260723-clk-provider-simple-clean-v1-1-0c9668240467@baylibre.com>
+        Thu, 23 Jul 2026 08:37:04 -0700 (PDT)
+From: Tharit Tangkijwanichakul <tharitt97@gmail.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: linux-kernel-mentees@lists.linux.dev,
+	skhan@linuxfoundation.org,
+	me@brighamcamplbell.com,
+	jkoolstra@xs4all.nl,
+	Tharit Tangkijwanichakul <tharitt97@gmail.com>
+Subject: [PATCH] media: verisilicon: vp9: do not arm watchdog on preparation failure
+Date: Thu, 23 Jul 2026 15:36:56 +0000
+Message-ID: <20260723153656.2167-1-tharitt97@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-In-Reply-To: <20260723-clk-provider-simple-clean-v1-1-0c9668240467@baylibre.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 9Dt6oEC9DrK39_z0KsCdHZf7N0PbWoRylg7MtzgKhAQ_1784817218
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_073343_144660_DCCE749F 
-X-CRM114-Status: GOOD (  14.06  )
+X-CRM114-CacheID: sfid-20260723_083706_781865_5C95B046 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,40 +105,124 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2026 at 03:20:59PM +0200, Jerome Brunet wrote:
-> Clock provider should not be using the consumer interface.
-> In other words, a provider should not be dealing with struct clk.
-> 
-> This change targets occurrences for which the provider uses the
-> consumer interface and corresponding clk_hw interface exist:
-> * __clk_get_name() -> clk_hw_get_name()
-> * __clk_is_enabled() -> clk_hw_is_enabled()
-> * clk_get_rate() -> clk_hw_get_rate()
-> 
-> Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
-> ---
-> The change being very simple, I did not think it was necessary
-> to split it into multiple changes. If you prefer it to be split,
-> just let me know how.
-> ---
->  drivers/clk/mvebu/clk-cpu.c            |  2 +-
->  drivers/clk/qcom/clk-hfpll.c           |  4 ++--
->  drivers/clk/qcom/clk-krait.c           |  2 +-
->  drivers/clk/qcom/clk-rcg.c             |  4 ++--
->  drivers/clk/qcom/clk-rcg2.c            |  2 +-
->  drivers/clk/renesas/r9a06g032-clocks.c |  2 +-
->  drivers/clk/rockchip/clk-pll.c         | 24 ++++++++++++------------
->  drivers/clk/st/clkgen-pll.c            | 20 ++++++++++----------
->  drivers/clk/tegra/clk-tegra210.c       |  2 +-
->  drivers/clk/ti/clockdomain.c           |  2 +-
->  10 files changed, 32 insertions(+), 32 deletions(-)
+hantro_g2_vp9_dec_run() calls hantro_end_prepare_run() when
+start_prepare_run() fails to find one of the required VP9 controls.
 
-This looks good to me however can you split this up by clk subsystem at
-the very least so that the various submaintainers can pick up these up?
+hantro_end_prepare_run() completes the control request, but also schedules
+the hardware watchdog. Since the decode operation has not been started on
+this error path, the watchdog should not be scheduled.
 
-With that:
+Factor the control-request completion out of hantro_end_prepare_run() and
+call it directly from the VP9 preparation error path. This preserves the
+pairing with hantro_start_prepare_run() without scheduling the watchdog.
 
-Reviewed-by: Brian Masney <bmasney@redhat.com>
+Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
+---
+Testing:
+
+- Built with the Verisilicon Hantro driver enabled.
+- Not runtime-tested: the available RK3588 board does not expose a Hantro
+  G2 VP9 decoder.
+
+ drivers/media/platform/verisilicon/hantro_drv.c    | 13 +++++++++----
+ .../media/platform/verisilicon/hantro_g2_vp9_dec.c | 14 +++++++++-----
+ drivers/media/platform/verisilicon/hantro_hw.h     |  1 +
+ 3 files changed, 19 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 2e81877f640f..04167e4be003 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -147,10 +147,17 @@ void hantro_start_prepare_run(struct hantro_ctx *ctx)
+ 	}
+ }
+ 
+-void hantro_end_prepare_run(struct hantro_ctx *ctx)
++void hantro_complete_ctrl_request(struct hantro_ctx *ctx)
+ {
+ 	struct vb2_v4l2_buffer *src_buf;
+ 
++	src_buf = hantro_get_src_buf(ctx);
++	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
++				   &ctx->ctrl_handler);
++}
++
++void hantro_end_prepare_run(struct hantro_ctx *ctx)
++{
+ 	if (!ctx->is_encoder && ctx->dev->variant->late_postproc) {
+ 		if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt))
+ 			hantro_postproc_enable(ctx);
+@@ -158,9 +165,7 @@ void hantro_end_prepare_run(struct hantro_ctx *ctx)
+ 			hantro_postproc_disable(ctx);
+ 	}
+ 
+-	src_buf = hantro_get_src_buf(ctx);
+-	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
+-				   &ctx->ctrl_handler);
++	hantro_complete_ctrl_request(ctx);
+ 
+ 	/* Kick the watchdog. */
+ 	schedule_delayed_work(&ctx->dev->watchdog_work,
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+index 56c79e339030..e08db6e3f6f9 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
+@@ -36,12 +36,14 @@ static int start_prepare_run(struct hantro_ctx *ctx, const struct v4l2_ctrl_vp9_
+ 
+ 	ctrl = v4l2_ctrl_find(&ctx->ctrl_handler, V4L2_CID_STATELESS_VP9_FRAME);
+ 	if (WARN_ON(!ctrl))
+-		return -EINVAL;
++		goto err_complete_request;
++
+ 	*dec_params = ctrl->p_cur.p;
+ 
+ 	ctrl = v4l2_ctrl_find(&ctx->ctrl_handler, V4L2_CID_STATELESS_VP9_COMPRESSED_HDR);
+ 	if (WARN_ON(!ctrl))
+-		return -EINVAL;
++		goto err_complete_request;
++
+ 	prob_updates = ctrl->p_cur.p;
+ 	vp9_ctx->cur.tx_mode = prob_updates->tx_mode;
+ 
+@@ -86,6 +88,10 @@ static int start_prepare_run(struct hantro_ctx *ctx, const struct v4l2_ctrl_vp9_
+ 	v4l2_vp9_fw_update_probs(&vp9_ctx->probability_tables, prob_updates, *dec_params);
+ 
+ 	return 0;
++
++err_complete_request:
++	hantro_complete_ctrl_request(ctx);
++	return -EINVAL;
+ }
+ 
+ static struct hantro_decoded_buffer *
+@@ -894,10 +900,8 @@ int hantro_g2_vp9_dec_run(struct hantro_ctx *ctx)
+ 	int ret;
+ 
+ 	ret = start_prepare_run(ctx, &decode_params);
+-	if (ret) {
+-		hantro_end_prepare_run(ctx);
++	if (ret)
+ 		return ret;
+-	}
+ 
+ 	src = hantro_get_src_buf(ctx);
+ 	dst = hantro_get_dst_buf(ctx);
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index 13e573f1f19d..9d4e858f17c7 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -430,6 +430,7 @@ void hantro_watchdog(struct work_struct *work);
+ void hantro_irq_done(struct hantro_dev *vpu,
+ 		     enum vb2_buffer_state result);
+ void hantro_start_prepare_run(struct hantro_ctx *ctx);
++void hantro_complete_ctrl_request(struct hantro_ctx *ctx);
+ void hantro_end_prepare_run(struct hantro_ctx *ctx);
+ 
+ irqreturn_t hantro_g1_irq(int irq, void *dev_id);
+
+base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
+-- 
+2.47.3
 
 
 _______________________________________________
