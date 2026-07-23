@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4643BC531CB
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A374EC531C7
 	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 01:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5cw5dIuE0JoEFwaqRlz1ivSmGECmmVN2trn77xdsMJg=; b=Ohzcf5hJArpCZv
-	QXppAJY5p5665zIpWRHYF7s8iEX9it/sxmF3WGr+7lFtqOzvo7isjiTdzpWjTRI1LXlQVYEjOF3C5
-	VeAGCs1i9OC5rqGTchgbPtBP7gEpfBN5b5PUES+a03R3Ov72EqWXLGwFsFcEbGMRMkWkSOPL9mCGt
-	BorM8dZ3S14f0BAsOS3XzLF/RlnMFKOHnE3161/+Of0jQd54vNlJEvv7Ia0xnSCCk61bQEWlFh3lH
-	aV05TIiVHqdXTncjkJ7K15/uIOwLpEvk3Q8QYwohcA/wYoCfKOVEuZ9+GiStPcq5rO8LNV7nqKCXU
-	HgI3rqEzolVSml4pXwXQ==;
+	List-Owner; bh=duHBEYjH9+XkKOWcuC3sUndCR7nqtjQDCf+oPVgEkdk=; b=BCWS9gxHothTOn
+	rVcUgXh5G3Kr7tbad/tor3Pr9UOC5jTNmX2ILakxKQ9EMbURWocXQche+rNshaAliyz1XptsyErS2
+	sd2EtX3gNR6cwBQ1teH0eNgWtIkZK9fK47G1tjGeAEYJguOA4MnePu/JvfxZJ1+UltXepQHAi7mFr
+	eFlp1GDPXYptQc9pyg6vHkdOywq/lBMkG7o6nNYrOmiYf2ICqEx5wP1R7HVHm3vSCOQqWHLaIKm1u
+	33iBuq0VJbL8bsPJTQZDlr8hicjptpxxf6vZgaevPMkCYB+VfCXGY7k6XXCKbmzqWBuXxFYFo8E2t
+	da/5ETkG+lxiSMQ9h0Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiLd-0000000D3WP-1fzp;
-	Thu, 23 Jul 2026 01:35:41 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wmiLe-0000000D3Y9-0ICC;
+	Thu, 23 Jul 2026 01:35:42 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiL8-0000000D2r3-2sEl;
+	id 1wmiL9-0000000D2rd-0iR6;
 	Thu, 23 Jul 2026 01:35:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784770508;
-	bh=0p335ODob3vf741ZjOZFVQVXgjwYRbsBqdw3GvcClIU=;
+	s=mail; t=1784770509;
+	bh=Pse1bTSm1Byr6z8ofKg6/5V6m8w5K69CIVMkbjjUiOE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=IAHPb+PrY/PB/aOrRfSnol8NHCytSzRyNZz3/9fQiLiLwlz1/0Wab5RC3LZN8JH9A
-	 iMEq61VUl9x4SmDlKfT5B1hwFPGdQVy+SMf16jgdcZAbXorA+UnKzom4Zq3hBphq1Q
-	 BvjxSa8mnvooGmDVUkB4VBX3Lu4Hvf+Tj581F2PjeB4AsLIwpRE987jkubYFtAB3JE
-	 5msn8+3Co05hTCOxJleU59gEkJ96u8gLMKSBqU0dNrzSAFpXWAXJFNytPE9HQbr3+8
-	 T7Wq5f865I26AYzmgLxK9efy7uB7KQ6NUvPOn/35357zziRX3fM5ptWtlihlU24CTm
-	 6Elfv9HlCFDjA==
+	b=UEy9GKKKrYaQTIX0Th0B2Xj/1R+ryvugqGKcN5HIBbosQpBNf/NK0m6y+e+UY1g9X
+	 2muf0y0IoDjbiS6MDz/t4m6OGSQt9unI5qTectDbaPJ4YoNRD6JpuLbTE3jnw6sLOL
+	 8O88hF2uuAabMSqCikLuQbH74m/w0m4T8O+76ogVD+z2IJSivvEFqhS4vAfVeYTxHE
+	 cGU5noPz9p1rkmepum8dIrHo4nXD58bMuoXnQOP8l7wQlE/KUSLTuoTXVgMLDiZy6A
+	 2vvTfDUBUJs7gkEYNTPW3StNzAZccWoD63NkGD6PMca7P2IPobEyK1/AzOHdMJfWJ2
+	 p+5WTlj/owlMw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4A40817E3686;
-	Thu, 23 Jul 2026 03:35:08 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 07E4017E36BC;
+	Thu, 23 Jul 2026 03:35:09 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 23 Jul 2026 04:34:58 +0300
-Subject: [PATCH v9 09/61] drm/display: hdmi: Advertise SCDC source version
- when scrambling
+Date: Thu, 23 Jul 2026 04:34:59 +0300
+Subject: [PATCH v9 10/61] drm/bridge: Remove redundant error check in
+ drm_bridge_helper_reset_crtc()
 MIME-Version: 1.0
-Message-Id: <20260723-dw-hdmi-qp-scramb-v9-9-4fb12ea22ac9@collabora.com>
+Message-Id: <20260723-dw-hdmi-qp-scramb-v9-10-4fb12ea22ac9@collabora.com>
 References: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 In-Reply-To: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -71,11 +71,12 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Maud Spierings <maud_spierings@hotmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_183510_923910_C686B58F 
-X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-CacheID: sfid-20260722_183511_435489_97FDEEDF 
+X-CRM114-Status: UNSURE (   9.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,46 +94,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HDMI 2.0 spec advises that compliant Source devices report their
-SCDC version in the Source Version register.  Do so when enabling
-scrambling by calling drm_scdc_set_source_version().
+Remove the no-op error check after drm_atomic_helper_reset_crtc() since
+the goto target is the immediately following label and the return value
+is already propagated correctly without it.
 
-Failures are non-fatal: SCDC version negotiation is purely informational
-and does not gate scrambling or any high-bitrate functionality, so a
-flaky DDC bus should not block scrambling setup.
-
-Acked-by: Maxime Ripard <mripard@kernel.org>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_helper.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/gpu/drm/drm_bridge_helper.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_helper.c b/drivers/gpu/drm/display/drm_hdmi_helper.c
-index b9be0a2e833a..e66ee8aa4ebc 100644
---- a/drivers/gpu/drm/display/drm_hdmi_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_helper.c
-@@ -16,6 +16,7 @@
- #include <drm/drm_print.h>
- #include <drm/drm_property.h>
+diff --git a/drivers/gpu/drm/drm_bridge_helper.c b/drivers/gpu/drm/drm_bridge_helper.c
+index 420f29cf3e54..0a3c8fee66b3 100644
+--- a/drivers/gpu/drm/drm_bridge_helper.c
++++ b/drivers/gpu/drm/drm_bridge_helper.c
+@@ -50,8 +50,6 @@ int drm_bridge_helper_reset_crtc(struct drm_bridge *bridge,
  
-+#define DRM_HDMI_SCDC_SOURCE_VERSION	1
- #define DRM_HDMI_SCDC_POLL_DELAY_MS	1000
+ 	crtc = connector->state->crtc;
+ 	ret = drm_atomic_helper_reset_crtc(crtc, ctx);
+-	if (ret)
+-		goto out;
  
- static inline bool is_eotf_supported(u8 output_eotf, u8 sink_eotf)
-@@ -541,6 +542,12 @@ int drm_connector_hdmi_enable_scrambling(struct drm_connector *connector,
- 	if (!connector->ddc)
- 		return -EINVAL;
- 
-+	/*
-+	 * Advertise our SCDC source version. This is purely informational and
-+	 * does not gate scrambling, so failures are non-fatal.
-+	 */
-+	drm_scdc_set_source_version(connector, DRM_HDMI_SCDC_SOURCE_VERSION);
-+
- 	drm_dbg_kms(dev, "Enabling scrambling\n");
- 
- 	if (!hdmi->scdc_work_initialized) {
+ out:
+ 	drm_modeset_unlock(&dev->mode_config.connection_mutex);
 
 -- 
 2.55.0
