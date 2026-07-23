@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25BBDC531D2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 01:35:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68E07C531D7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 01:35:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uzfImaG3Kn8GTjveqb+HJ6daMoyFKTd1aXBMjxYtLE0=; b=IXogrWTGquRAS5
-	QB3+L2dIG4Rptvj1PaHjtzyt87eTPC6EGxteDFrnQdZjhZErZBh2SY6/hSWJxqZesBYpvVXN6HKL1
-	RMPekHN9wx6mtX9yi09OMza18HSyQWheRMWMGmFAqaOenSTBdwfSJpGU/R9i3QwDedM7j4CYJdIl1
-	91yddV6VXKNpVHUy+HdFc71XhBbzgefngF4Rl9EoH4OnseYwy7XVQ3nZdnlJIPlOLZg1K8v3uzvzY
-	w7PVfv536laV3uvJo4qh8PEyasJ1b2CHAZo3lVWlatJl6az9xLGIDPliZAXW7RNbvR4JoxRAAb7q/
-	OTIDq1jGCRC1uJxCwrkg==;
+	List-Owner; bh=iQ+OvPrbNzSRs3LFaT0/VSF/Zu1U0KxyWGHBs9sAwtQ=; b=ck4vJJGR+zUVfW
+	caivZBhtAuitz/8CGBu/R8C6LMY4kZkkgykFsgOMKljvRR5pySemRz7z/5XifosqnaE7gHv7h8cd1
+	ozLup0E2qi03ZWGQ+e80eaeAgHlgKeTaeOBf//LLPnf3h9kYYd45mWNcKn0InjP7aJZ8NpUeomUXA
+	TYGNTSHoUgg8WgyTjQKVpfv7wc53nUztcvxoA5/CNWHpjDEJQn5RtqkGaBreWZFsiwX/hWVhVQC7o
+	od2/80IZc/OHczDpm8HVSoWR44kf0UyPyyNMBfoaCj45qpX6ZwyuOh+29rM3jGes0LQ2JbLJeuh0l
+	hhRnekiVtCXzAsEqPfiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiLh-0000000D3gg-2XzL;
-	Thu, 23 Jul 2026 01:35:45 +0000
+	id 1wmiLl-0000000D3qZ-2FnO;
+	Thu, 23 Jul 2026 01:35:50 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiLA-0000000D2sw-2BRd;
-	Thu, 23 Jul 2026 01:35:14 +0000
+	id 1wmiLC-0000000D2ud-1zBf;
+	Thu, 23 Jul 2026 01:35:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784770510;
-	bh=mwL8ae49QUUkBlXkuups0sLux9R4GBOLTfkp54k4AbE=;
+	s=mail; t=1784770512;
+	bh=q7cBSlf+upKqhrzdvUOmPKZalLVFqUdAibNT8ES0Wh8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=lfVLY6SlY1dooyxpL4mlnfadPeoYnAwABocro1kleW6gnVdzemmpIs8aJElZqSjxn
-	 wHBIDgu1pUbT+ZfR2TXXcj/rM52JRb2h36AHH9ey+mHX/HEmvS5jf1F46jbtA1u+f1
-	 StZloE7UPowaTVxSUUbQupf1Hq8MbFQstUG/HvS8WIvBa+IEvziHt9HVtfGI2exdL3
-	 HGihNIBF3+EOIX826ZPTJNzQdhA5zj2BOHT6mvFqOjDdqYvu9Sty70m1S3MESOXH84
-	 St8cDP8wHCgQv65ulpL4NEhRqEyNEL765d2IqR5V3WSG0C4cVjWV/BOhEtbnEOMa3R
-	 Is58NPZ4rV1FQ==
+	b=Xlm3nEiqPidMcbYeRy0tg5+GlmpdRMFQ15QBe1oqUwMUxBWlNpDq8QVl2fn6dDC/X
+	 K0cNlYAQqZYv3LuQ7oKwiL1RTF9dq8q93JvBC0VhRzqdtz6fB72o/sXBRrrNHjnMcq
+	 7zca/+JEF/yMUmf/r1Sn4w0EbYWfGc4Wu618tUdQGEN2Cl2yzOw75umFonjuBjZelC
+	 CnCK2kOYZsjvoGPoLUGHsBe/USAZeAouFPUC+u2yVBpr1tGumS7uhmc5qJOnbz1OhK
+	 8QyFVU1Vtkdk5wNCJnvlJNz1kA0YGkpQ2QrXxnOgVDfKt8IFeQY46L3Cs9cKbhUepv
+	 MDiSnpb1NGoIw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 69C9C17E0857;
-	Thu, 23 Jul 2026 03:35:10 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 880BD17E36D7;
+	Thu, 23 Jul 2026 03:35:12 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 23 Jul 2026 04:35:01 +0300
-Subject: [PATCH v9 12/61] drm/display: bridge_connector: Use cached
- connector status in .get_modes()
+Date: Thu, 23 Jul 2026 04:35:04 +0300
+Subject: [PATCH v9 15/61] drm/display: hdmi-state-helper: Add source TMDS
+ rate validation
 MIME-Version: 1.0
-Message-Id: <20260723-dw-hdmi-qp-scramb-v9-12-4fb12ea22ac9@collabora.com>
+Message-Id: <20260723-dw-hdmi-qp-scramb-v9-15-4fb12ea22ac9@collabora.com>
 References: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 In-Reply-To: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -71,12 +71,12 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Maud Spierings <maud_spierings@hotmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_183512_737728_4BD4CB02 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20260722_183514_843234_2D806EA4 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,41 +93,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace the active drm_bridge_connector_detect() call in get_modes()
-with a read of the already-cached connector->status.
+Validate the computed TMDS character rate against
+connector->hdmi.max_tmds_char_rate, when provided by the driver/source.
 
-The .get_modes() callback is only invoked from
-drm_helper_probe_single_connector_modes(), which has already retrieved
-the connector status.  Calling detect again is redundant and triggers a
-duplicate hotplug event.  This is also a prerequisite for switching to
-the .detect_ctx() hook, which requires a drm_modeset_acquire_ctx not
-available in the .get_modes() path.
+This gives HDMI connectors common support for rejecting modes whose TMDS
+character rate exceeds the source supported limit, while still allowing
+drivers with custom validation requirements to implement their own
+tmds_char_rate_valid() callback.
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_bridge_connector.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index 9ad31e9df0ab..8a833c813101 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -325,12 +325,10 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
- static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
- 					       struct drm_bridge *bridge)
- {
--	enum drm_connector_status status;
- 	const struct drm_edid *drm_edid;
- 	int n;
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index ce17eeefc2da..92be6278ea44 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -560,6 +560,10 @@ hdmi_clock_valid(const struct drm_connector *connector,
+ 	if (info->max_tmds_clock && clock > info->max_tmds_clock * 1000)
+ 		return MODE_CLOCK_HIGH;
  
--	status = drm_bridge_connector_detect(connector, false);
--	if (status != connector_status_connected)
-+	if (connector->status != connector_status_connected)
- 		goto no_edid;
++	if (connector->hdmi.max_tmds_char_rate &&
++	    clock > connector->hdmi.max_tmds_char_rate)
++		return MODE_CLOCK_HIGH;
++
+ 	if (funcs && funcs->tmds_char_rate_valid) {
+ 		enum drm_mode_status status;
  
- 	drm_edid = drm_bridge_edid_read(bridge, connector);
 
 -- 
 2.55.0
