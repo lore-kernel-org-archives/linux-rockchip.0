@@ -4,98 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F497C531F7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 17:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D6EC531D0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 18:42:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EqZIxcH9XA6OpfS2wDm05TQa6++U4eA7AOxrOhT7/pQ=; b=Pxedh5mYUbUiF7
-	EwcT8AyXtkAa/R9ML5f1k1YbwH9nUUeB2mi79pGVieRvWXmQyXiyd+jPKNAf3biyaqj2gDp6xWzZe
-	3XDEWwmQ+KMysdsxGqGocOCfKYE+uYTUweR9YFEOXyKOBwTQWPvLVIIZmc2aPH81vstIeJIwhpWC8
-	pBROPhQ8gWRkkFKX4pktOgAWSFot3UtO6yJdkGMi8ur5KxqxqZ7LKdQoWPKKhGzUs5C/7Dv4J1zjc
-	tKxnf5vSqTWPZKZLQZEe0xZLIEJCCmvT65b1+dciYmue3QfdbtiWgEphmmxLtsE0huAqyzXiykT5b
-	bEVSircDfnyeq5iPkCUg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N9MOQAQnz6pDpyNrI/j3C8zVWY0cFXi4yLP5kEColt0=; b=2/CaG0cfJ7zWLl88lT5YRAF9l3
+	6OM39rxSw18UM3repf0jTeNPwYz1iOFBToV131wiHCk0PASEU1c1CkqH9B8suFiK8Ofwx9HIyS1NA
+	m8J+RRzWL+HaVcShDinZsqgLQ3C+F5XaIdJfDrOE0I2R8vDQ/YSPQnR4qmLspZjb6hMwHHP4LYmm+
+	U9Vc0sAIw2/UvKU2XMxsNFzUB4qt5tG93rwWj9dEjdfAi1gtSmhFMCu6aLVKDJPi17jDDKElQTxp4
+	I2qUJBNgfoItd3UqbyZGL7CznyqeIzlaqhno+rG478txoKzTKO+DURnNZfesAB3t8OmYoTe8bPc4L
+	xOMqg+cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmwqT-0000000ElZZ-43Kp;
-	Thu, 23 Jul 2026 17:04:29 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1wmyMw-0000000EuFj-3lrf;
+	Thu, 23 Jul 2026 18:42:06 +0000
+Received: from leonov.paulk.fr ([185.233.101.22])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmwqR-0000000ElYj-05fO
-	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Jul 2026 17:04:28 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-47f3b39f2a1so830450f8f.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jul 2026 10:04:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1784826265; x=1785431065; darn=lists.infradead.org;
-        h=content-type:mime-version:message-id:date:user-agent:references
-         :in-reply-to:subject:cc:to:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=jhojDdHC94+BdjAE5gd50YRzJP7qSAXpLrLf8nMSLLo=;
-        b=HjGQQ7YCZY3NW9pJcNY6cKLsLBe8scZt50mkwns5uLuXkoQNXkSun+vpj9rLF5Hx0j
-         AzEmFqJo9AhvnTQ0Bz00Ue6dk9lYHx6AQvB3bei6fhnpqeiDG5pvufDtNrQt/25DzH/J
-         PBe8fSXwVdC/OKgh/FwlHIkfJuhDMh3dY5VqEemmyOjgdUqb8PKqzk0GUoql9RbKQXcG
-         dZJ67y4/MQ0AXo+qTQ3scOkkoJaTsYY8GpGH3FoumQkwgxxG2E/UrCI5jQ0lAmSBRhN/
-         wVi/p2FRhJnJhcFEvqpWGd/SXUOTAsQw/hVT21k0JqlXb2cmFgIf04j55GLRHoX2tXef
-         cgsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784826265; x=1785431065;
-        h=content-type:mime-version:message-id:date:user-agent:references
-         :in-reply-to:subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=jhojDdHC94+BdjAE5gd50YRzJP7qSAXpLrLf8nMSLLo=;
-        b=ry1bWAxVD2u+yPP3dpABI6l2RyToPhsCu3Yi+PWzVwDF53PUqRs0pNqB1RNq3Q/tJ/
-         Lkt4laDmQBm1e9f9T5DtD+9LD5eBS/o0wiMBIlTMoGzyei/WctJj5HPPRKPtylPxxl6q
-         8mzxrzvpIwRxSn8tGoDseGLIJ4kZazRRvqMNXAdsy78lAeWLy4fSLKiSFUy8ZDfcuGAs
-         fGfyI37BQZl4SXCSF5d59P/mazI/3IR3oe0c5pdUmM9YiylE9H79PNnpz05QH5LoORDD
-         cNXh8XqReuP6lLS1MNenDMgP8RChqun6nriCVGUY95kLeaPdRn+tVKj+lrInJvBfioqG
-         kh2Q==
-X-Forwarded-Encrypted: i=1; AHgh+Rp7F9yH9UYvhuJOy4JdQMABxIVQgyEtTLqf05txipHHOkVf4I00vTqd5dQ3KPwmWx7yuGBD9DlU+r5D85uTaw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyDqs5UdKZlSj8eZ+zB8R/Ii19Jd+sR87FTuqYk7eSXnanUsZM8
-	wsIJ3aBIu9K7Zh8/Py04AD+UrJFEo2r6JWBl6EVk10sMIqRlfOjX/q7nLdeO47kk4uM=
-X-Gm-Gg: AR+sD13cu177N0/K+jKX8z/0kkGEgaeA6S/VwHOsfsXznQTwTTqUGRARaMaZBvsL8vW
-	gEcZWL29pfmxtGhV8kXxfFoMCpaSZoj5sd0TOROAqa1LkwWetfU/f5cC+bCbpqJ5VptBzopShDx
-	d47DdnKhOMjls6NKOzQWUvoRpI/OEl4lEL2d94c2V/f2DjLphDjM3NdbzaFHYHChm6Yz2wOG+YR
-	AWNZTFg4NYVUnMeriw5nsYBSiqQxrk7K3fLb8qztgGzlp19VoxkBBzSzxvgMK0+L4q/U1oFIoyW
-	FZKoHAY7C4qTnnTV4+B9jQtmkIEOA5oyEZCGTj/F/ghGyQ2B6jg9TkMcLsqL+acGwPoefS2xW6j
-	rlFERb335GASSBCgcvfnmmZZHbMAgKp7pnfE5aLjYIKo1UkxHFzbP/eep3n6S+75lSOkzuNRSvp
-	VH
-X-Received: by 2002:a05:6000:230a:b0:47f:8aba:8a9a with SMTP id ffacd0b85a97d-47f8d71c7eamr5497660f8f.18.1784826265170;
-        Thu, 23 Jul 2026 10:04:25 -0700 (PDT)
-Received: from localhost ([2a01:e0a:3c5:5fb1:5f98:8c28:3e2c:1c72])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-47f85c67339sm17937986f8f.31.2026.07.23.10.04.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jul 2026 10:04:22 -0700 (PDT)
-From: Jerome Brunet <jbrunet@baylibre.com>
-To: Brian Masney <bmasney@redhat.com>
-Cc: Andrew Lunn <andrew@lunn.ch>,  Gregory Clement
- <gregory.clement@bootlin.com>,  Sebastian Hesselbarth
- <sebastian.hesselbarth@gmail.com>,  Michael Turquette
- <mturquette@baylibre.com>,  Stephen Boyd <sboyd@kernel.org>,  Bjorn
- Andersson <andersson@kernel.org>,  Geert Uytterhoeven
- <geert+renesas@glider.be>,  Heiko Stuebner <heiko@sntech.de>,  Prashant
- Gaikwad <pgaikwad@nvidia.com>,  Thierry Reding
- <thierry.reding@kernel.org>,  Jonathan Hunter <jonathanh@nvidia.com>,
-  Tero Kristo <kristo@kernel.org>,  linux-arm-kernel@lists.infradead.org,
-  linux-clk@vger.kernel.org,  linux-kernel@vger.kernel.org,
-  linux-arm-msm@vger.kernel.org,  linux-renesas-soc@vger.kernel.org,
-  linux-rockchip@lists.infradead.org,  linux-tegra@vger.kernel.org,
-  linux-omap@vger.kernel.org
-Subject: Re: [PATCH] clk: clean-up simple provider misuse of the consumer API
-In-Reply-To: <amImP6sFlv-sNhMh@redhat.com> (Brian Masney's message of "Thu, 23
-	Jul 2026 10:33:35 -0400")
-References: <20260723-clk-provider-simple-clean-v1-1-0c9668240467@baylibre.com>
-	<amImP6sFlv-sNhMh@redhat.com>
-User-Agent: mu4e 1.12.9; emacs 30.1
-Date: Thu, 23 Jul 2026 19:04:08 +0200
-Message-ID: <1j5x25d4dz.fsf@starbuckisacylon.baylibre.com>
+	id 1wmyMt-0000000EuEn-0WA1;
+	Thu, 23 Jul 2026 18:42:06 +0000
+Received: from laika.paulk.fr (12.234.24.109.rev.sfr.net [109.24.234.12])
+	by leonov.paulk.fr (Postfix) with ESMTPS id 4B6C43700EC1;
+	Thu, 23 Jul 2026 18:41:57 +0000 (UTC)
+Received: by laika.paulk.fr (Postfix, from userid 65534)
+	id 655A7B49E0C; Thu, 23 Jul 2026 18:41:55 +0000 (UTC)
+Received: from collins (unknown [192.168.1.1])
+	by laika.paulk.fr (Postfix) with ESMTPSA id 63EE7B49DF6;
+	Thu, 23 Jul 2026 18:41:54 +0000 (UTC)
+Date: Thu, 23 Jul 2026 20:41:52 +0200
+From: Paul Kocialkowski <paulk@sys-base.io>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Jiaxing Hu <gahing@gahingwoo.com>, detlev.casanova@collabora.com,
+	mchehab@kernel.org, heiko@sntech.de, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org,
+	ezequiel@vanguardiasur.com.ar, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH 0/3] media: rockchip: VEPU510 H.264 encoder for RK3576
+Message-ID: <amJgcHf2vVDb75nR@collins>
+References: <20260722073417.2064667-1-gahing@gahingwoo.com>
+ <082e1141c38205222a91abf13b1a97d9a00e117a.camel@collabora.com>
+ <20260723004642.2075233-1-gahing@gahingwoo.com>
+ <210b72e32d1bd757a36b2baf532dd9f7d46ca5dc.camel@collabora.com>
 MIME-Version: 1.0
+In-Reply-To: <210b72e32d1bd757a36b2baf532dd9f7d46ca5dc.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_100427_080068_5F8E18A5 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20260723_114203_510924_92E212AC 
+X-CRM114-Status: GOOD (  39.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,55 +65,156 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5500950369111664087=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On jeu. 23 juil. 2026 at 10:33, Brian Masney <bmasney@redhat.com> wrote:
+--===============5500950369111664087==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="y1RuMRkspY6MNcmg"
+Content-Disposition: inline
 
-> On Thu, Jul 23, 2026 at 03:20:59PM +0200, Jerome Brunet wrote:
->> Clock provider should not be using the consumer interface.
->> In other words, a provider should not be dealing with struct clk.
->> 
->> This change targets occurrences for which the provider uses the
->> consumer interface and corresponding clk_hw interface exist:
->> * __clk_get_name() -> clk_hw_get_name()
->> * __clk_is_enabled() -> clk_hw_is_enabled()
->> * clk_get_rate() -> clk_hw_get_rate()
->> 
->> Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
->> ---
->> The change being very simple, I did not think it was necessary
->> to split it into multiple changes. If you prefer it to be split,
->> just let me know how.
->> ---
->>  drivers/clk/mvebu/clk-cpu.c            |  2 +-
->>  drivers/clk/qcom/clk-hfpll.c           |  4 ++--
->>  drivers/clk/qcom/clk-krait.c           |  2 +-
->>  drivers/clk/qcom/clk-rcg.c             |  4 ++--
->>  drivers/clk/qcom/clk-rcg2.c            |  2 +-
->>  drivers/clk/renesas/r9a06g032-clocks.c |  2 +-
->>  drivers/clk/rockchip/clk-pll.c         | 24 ++++++++++++------------
->>  drivers/clk/st/clkgen-pll.c            | 20 ++++++++++----------
->>  drivers/clk/tegra/clk-tegra210.c       |  2 +-
->>  drivers/clk/ti/clockdomain.c           |  2 +-
->>  10 files changed, 32 insertions(+), 32 deletions(-)
->
-> This looks good to me however can you split this up by clk subsystem at
-> the very least so that the various submaintainers can pick up these up?
+--y1RuMRkspY6MNcmg
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Will do
+Hi,
 
->
-> With that:
->
-> Reviewed-by: Brian Masney <bmasney@redhat.com>
+Le Thu 23 Jul 26, 12:14, Nicolas Dufresne a =C3=A9crit :
+> Le jeudi 23 juillet 2026 =C3=A0 12:46 +1200, Jiaxing Hu a =C3=A9crit=C2=
+=A0:
+> > I'm not attached to the stateful interface -- I used it to get something
+> > running on real silicon, not out of conviction. Before I commit to
+> > reworking, I'd like to be sure I understand what "converge" means here,
+> > because I see two fairly different directions in the thread: Paul's V4L2
+> > stateless H.264 encoder (kernel-side reflist/rbsp/RC core), and the
+> > Vulkan-Video split you describe for Detlev (thin kernel module + Mesa
+> > userspace). Those differ a lot in kind and in effort. Which is the
+> > intended target for the Rockchip encoders, or is that still open? Is
+> > there a branch, early code or spec draft I should read beyond Paul's
+> > series?
 
--- 
-Jerome
+I would recommend taking a look at the slides of the talks I gave at the
+Linux Media Summit last year and this year, which should give you more
+context and insight about the design choices.
+
+- https://paulk.fr/talks/2025-linux-media-summit/2025-linux-media-summit-v4=
+l2-stateless-video-encoding-uapi.pdf
+- https://paulk.fr/talks/2026-linux-media-summit/2026-linux-media-summit-v4=
+l2-stateless-video-encoding-uapi-progress-update.pdf
+
+Generally speaking the idea of this proposal is to stick with the same
+design idea that we had for stateless decoders, including V4L2 M2M queues,
+dedicated controls and media requests.
+
+Like Nicolas explained, some hardware can be a good fit for both
+approaches. I think we agreed that it wouldn't be a problem to have two
+drivers (one v4l2, one drm-ish) for the same hardware, so the question is
+really about what you prefer to do and get involved with.
+
+My V4L2-based proposal is already rather usable, although it has not yet
+reached its final form. I have a GStreamer implementation ready that has
+been used extensively too, but it will also need to be reworked before
+it can reach upstream.
+
+The DRM-ish proposal is at an earlier stage and will likely require a
+complete redesign of your driver, moving most things in userspace.
+
+> Paul does not have this hardware protection, so I think he needs a higher=
+ level
+> interface for the driver, and at the point, why not base it on existing k=
+ernel
+> interface. Though, V4l2 is massively larger (probably around 100x) interf=
+ace
+> then what we are drafting currently for RKVENC in a drm style driver.
+>=20
+> The common part is the rate control. Typically, stateful encoder are firm=
+ware
+> based, and the rate control is in the firmware. We need an in kernel rate
+> control for performance reason. The programming latency is going to be to=
+o high
+> otherwise. The point of convergence, is that we can share helpers for that
+> purpose, and Paul's work is really clean, and already in the shape of hel=
+pers
+> not tied to v4l2.
+
+Well there is some level of dependency to v4l2 in some places, but I'm
+sure we can extract relevant parts and make them common so that a drm-ish
+subsystem can reuse them easily.
+
+> > Either way the RK3576 hardware enablement and the reference-read fix are
+> > shared with RK3588, so I'd much rather contribute the VEPU510 side to a
+> > common base than maintain a parallel one -- I'd just like to know which
+> > base that is before rebuilding on it.
+>=20
+> This is our experience with decoder too, its relatively easy to support b=
+oth,
+> differences being minor. I will ping Detlev today and see if he can help =
+here. I
+> know in his case he was trying to avoid reconstructed frame compression, =
+and it
+> only started working when he enable that compression. Though, he had mmu =
+faults
+> prior to that.
+
+In my opinion it would be fine to have two drivers, but it's really up
+to you. Since you already have a v4l2 base for it, I would encourage you
+to move it to my proposal, which will probably be finalized in a shorter
+time frame than the other proposal and lets you reuse the code you've
+already written. Then you could also add RK3576 support to the drm-ish
+Vulkan Video proposal without too much work when it is ready, reusing the
+RK3588 work.
+
+But again, it's really your decision. And it's hard to say how long
+things will take to finalize. But I think it would be beneficial to have
+two drivers for this hardware and not trash the work you've done.
+
+All the best,
+
+Paul
+
+--=20
+Paul Kocialkowski,
+
+Independent contractor - sys-base - https://www.sys-base.io/
+Free software developer - https://www.paulk.fr/
+
+Expert in multimedia, graphics and embedded hardware support with Linux.
+
+--y1RuMRkspY6MNcmg
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEAbcMXZQMtj1fphLChP3B6o/ulQwFAmpiYHAACgkQhP3B6o/u
+lQzhCQ//eEM+ZMphhJvq6bc0sgRl6B9jBmP3PVjzgcuz+TnIhJkSmgtwMxjh8JjT
+0xP+8Gut4Mnz59rETlRaCw5Y+xxoh6CNb4v0DtaSt0P5Ljnv/dAPIhGcw9b38gXE
+Y4kMug69WWsoi/iG4dZJqhci4u+QFoY3aFTVGxMG0EALywmwpSbKbSl4MPNkjrM/
+5EZBicsAyWuxZXjpPVu4m1ULmAd5dwLAD2JUxun58uXFL/lhM0jRQkmJQdjUADTS
+GuyLfMqsLHBJSJc4lXnYZaMJKXy59pQUiFaRF7ZT5+s9mP9IT73xY6OCbypvqnJe
+mxb24FDHDQklyk3qkOCstplpJMir3tVv0khdWNpnQtRETAXQZUKGUbwjrG0hEr+L
+LRdeS5EN/tSiGvIpaafyaflHi/Y7Rynew6/lq+Msb00przHOcZsG5gYhSsmdH9KJ
+IzcGYKq+9hU9C8Fpu1aI6nPcry3lqpzBtjYSOyv8A3Vir2vt5fVXiKz+xC+oIf2W
+3K+JoMZzw83MV+FqnXw3uSDjtMaOTZ7RcDz2X5RrrtZ/Vit628BXjnSsfRuP0Hds
+GXtpAjhl0HuDmGjF/c4ietBePTrsNQSCw76WygulOhY7nQlEr8CsoYkh7SERCrKW
+593Hsh9d4t9X+zSfLEj7JQwhMnb4ChtPM7v8Ylg/ZO83PzAefzM=
+=25OK
+-----END PGP SIGNATURE-----
+
+--y1RuMRkspY6MNcmg--
+
+
+--===============5500950369111664087==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5500950369111664087==--
+
