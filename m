@@ -4,91 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB6CEC531D1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 15:37:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 705BDC531D1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 15:48:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=H/EURb+93CELsVd5gDDb8BBwCthzJLnt10l4PJKs6pk=; b=1zBS1oWdKosZrx
-	2yDFE6tPmQW0RRuJfcAuR+QkbAGTiYKoNUlpyy41aacM+kAcg6cKsDPM27kHGJprHLPoIJoUkiVyp
-	hSqu8e0GZrUWCvgOzD0jxVAIgUT9yxeG4336SWIK4AwsgJ3RhQwiKNFDDumnpQK6VJd7fPO0YC3Mj
-	oDYeV2eGGjGOLQM5IiQhySzOfkupqAFpuaLCKiarcqw4Ueo1naL+mXiYw/lFndeJlslJXcIUliD6L
-	18gfvj57Dvhi2b/ARZHqUPaVIL12n36OzXpRqzAhGUuLUMBCaEo7hpsmcgBNNKznY2S1RoZLnxiEZ
-	Y+gig1jgo+d4EPR+I0xw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=E13zrA/4GmyUIjdYe9Q4MJ7+2YEN72HwBKs/Az+u6DI=; b=XkLiChmPanXv44
+	oQn9uvhbHsY2XmMQVASkvGbAXqInLciT2u7vIxWACfn1CXaLPP4dz7wWwDjiAojafG8eFFBoCqi0E
+	pd+cTszoCyYZiVE8FE7dWQhmZ33xx4Y0FDg/OWIAvEY4ffUKc6/CkCxV3Ftcp5z7zHKOxqlEdjRpP
+	0r4YjWaPnDN20b2zlm6beHc6oEhUJt6DAPawRKpX83gPoaNfb5lB5dvu5HN7SubZaEUYEqLb3wDb2
+	nz2b1nKRtp5yiCyL6E7VTly/ilej2gwy13yMLh9cj2PylWv9pfDi8udUgogsyeKTjciEatii4ALmM
+	HC9XxpklmQG1Tj0h3c3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmvTw-0000000EcLY-2lso;
-	Thu, 23 Jul 2026 15:37:08 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1wmveV-0000000EdLh-1LPy;
+	Thu, 23 Jul 2026 15:48:03 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmvTu-0000000EcL8-32OI
+	id 1wmveS-0000000EdKh-1Ojv
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Jul 2026 15:37:07 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-848595b338cso878292b3a.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jul 2026 08:37:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784821025; x=1785425825; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=y/CrixQ3EkxP2WoSCLt7vnc1mcHljZIG3GR5HRF0Syc=;
-        b=ae9/kxl+JMOSisX7nU8fA20ECuf8rrBQI9egb4kgaStNqZYkv/H7QPcli2VerUvM8W
-         PQZImL22nDqzrU1tYt1JxnZHS/YpGlpV5N+b3jmNN6dwiOfQI4fL0dtUACSIDNVi511y
-         +hbBl2sCTjjjPxT69ZpTJxjqB0190SfsoaYpgZJb2tRw6kIp68yslp+/EGHwg9uEp5kj
-         ItYyfcWtQUBGUxdfffoGZOpAln5zf9N5wGF0PHMWeJ7EzAmO3XCPTE31vwOSNXV1iYhW
-         EH3kjW2JTyRR/jFS+DA5cwCDJ6O3jTMYreojm1RiyZVjTshLR+meDpAOBHaPYijsifXN
-         ksUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784821025; x=1785425825;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=y/CrixQ3EkxP2WoSCLt7vnc1mcHljZIG3GR5HRF0Syc=;
-        b=Hh5MLGHaxLX9ZCU+49c9F4EUiqp27YgKBmSF8hKJRdZOqTQDoZTr4NHg4D3Lps+BKh
-         fTGw6CHhwQfEoyy/QXxRPTXVJesFv2SeOiB6Bf8yjJyhpSTyi3dQWu7iRVEyB7TrFfdm
-         gRupP9Ey3R4d2RE6yhLXnYjGLxW82+97iVmiOvoD2ZqVksjgQelYe2bbYIwNeOLCfpmV
-         fz7UFUjCqtxeXH6HT+RTmaEja0+dDpnRsSz/xRfLVv7tddU4LELHWd8JeuQc7e8BJ78r
-         2i/EJscvDOsDWpj0bLwAfei6uA1/Cv/g15xi5Com2oJHxpzKzYD0aix3pRxjhJSeAbVY
-         g20A==
-X-Forwarded-Encrypted: i=1; AHgh+RrPgI/N/aF9/qEVkdScve/vJYGaqoj1sMakvWCwKYPLn4KkNxPf6+JHHxDH3rfgzQ+pyyKviziVlcmxfajN7A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw91BEo5gDCcROpuGioghLiAyPW9YSYAcMgqnOpXzFYo+T+MRym
-	0hlB6hGMhGe4XSQkBHYilxSRpO3YAkICEYHV4fR61W0LmGkXnFDG0RNV
-X-Gm-Gg: AR+sD11tFqOCZczDy0ICYzh/cBLMHsqQyFUrfUczZfjV4HsHXdsqeqEcQImgin24Q8c
-	6E+pxjqemrokiyB7NirGHtujfOAGh/fu8kq6kVFz29wq5JmfTiQqrQh3LRST12YgnVwr+H51ho0
-	6qPR+EokIGIIREFxF3jCK2uOq1Y6dLmSY36SKgHOnaiz6+xTHrJ2LP7TqS/xcYwhKXcOGi1vIRz
-	nIrhgbRWLDA2u9aa8auxuhE6/hy7Fy5hvue+hDn6A0XuN3iqcLPQEwKj7ZTP9INXRI12qCrKsuy
-	+5QMhml3HNV9adw1LFWudK2u4vrkUltupjtbuvMZDWXIU9ngveohaRgC018wA7KAejWoo4tpbkm
-	Ztl20gCRQG2E024Em7jjTlZGDSSsaEzPFUAFxHJl50Naf4twXDYNzon/SBuZt/FIdnfJr1kML4T
-	OCp1njDPAN6fwmfgP9wZ3Gh0TXc4HMBmXIr62nA2BS/NAJhwGBt+DzW3eKp4RG
-X-Received: by 2002:a05:6a00:181d:b0:84c:4d9a:ae42 with SMTP id d2e1a72fcca58-84e2b8bf838mr4448206b3a.27.1784821024558;
-        Thu, 23 Jul 2026 08:37:04 -0700 (PDT)
-Received: from debian-rockchip-rock5b-rk3588.. ([184.22.136.124])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84e1723643esm3212522b3a.3.2026.07.23.08.37.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jul 2026 08:37:04 -0700 (PDT)
-From: Tharit Tangkijwanichakul <tharitt97@gmail.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: linux-kernel-mentees@lists.linux.dev,
-	skhan@linuxfoundation.org,
-	me@brighamcamplbell.com,
-	jkoolstra@xs4all.nl,
-	Tharit Tangkijwanichakul <tharitt97@gmail.com>
-Subject: [PATCH] media: verisilicon: vp9: do not arm watchdog on preparation failure
-Date: Thu, 23 Jul 2026 15:36:56 +0000
-Message-ID: <20260723153656.2167-1-tharitt97@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	Thu, 23 Jul 2026 15:48:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1784821674; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=nV3GWbEp0XVXoaHH8AELKpRqI5Ple7OfQZc6LPrS0wbJiCOiU1kZOu+gh9idRaimyX4rqaA+vPIKTMwfhTtmbDY+XJAqwFNooF2/CQjx0ytDw2VoJDYpZaEb7XOdWBbtjNmaSX/x2s6xKURT+4rW0TZSoaUT+Wpi80rMzvi4UOo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1784821674; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=4f10VgaedUle4y917j0RkomsQFduTcKlicQl04iv244=; 
+	b=iDozdgvqLZVSbXnmx986QBg63V5ontWBSgTJFvFf3D4T0VVr0eupXl4Szo85VYBMjxh8PUGxzlvHSTeLsjxLzlSUzOlPG5MUg1bIofgAEhxBDhPeoiIO8BIX1mOzMx177gQJt5nMhJYEA9bv2g7E/dmaby8e+f4w75urHm6aIVU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
+	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784821674;
+	s=zohomail; d=collabora.com; i=benjamin.gaignard@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=4f10VgaedUle4y917j0RkomsQFduTcKlicQl04iv244=;
+	b=TkZ8ufJv+ODKNZ7LV1Wkje/LBQkGE/i2X/j6bwD+Ki/kmjhlXxn5vMWjhZotelwS
+	+nMbPXS+OUPGv2B4fz5IuVBTm/NGKObRlPMChnIJt7ohsB7FI8w60bbwvegZd8IrnL0
+	HfAvohhqLBHbwJOFyOfkqLnyomldxOab1GzlCqUE=
+Received: by mx.zohomail.com with SMTPS id 1784821672515696.391367355813;
+	Thu, 23 Jul 2026 08:47:52 -0700 (PDT)
+Message-ID: <f005676b-0229-47a2-9ea7-bd1809396c43@collabora.com>
+Date: Thu, 23 Jul 2026 17:47:47 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] media: hantro: disable runtime PM before hardware
+ teardown
+To: Tharit Tangkijwanichakul <tharitt97@gmail.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Hans Verkuil
+ <hverkuil@kernel.org>, Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ linux-kernel-mentees@lists.linux.dev, skhan@linuxfoundation.org,
+ me@brighamcamplbell.com, jkoolstra@xs4all.nl
+References: <20260722160820.2401-1-tharitt97@gmail.com>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <20260722160820.2401-1-tharitt97@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_083706_781865_5C95B046 
-X-CRM114-Status: GOOD (  13.95  )
+X-CRM114-CacheID: sfid-20260723_084800_416083_52A33858 
+X-CRM114-Status: GOOD (  19.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,132 +81,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-hantro_g2_vp9_dec_run() calls hantro_end_prepare_run() when
-start_prepare_run() fails to find one of the required VP9 controls.
-
-hantro_end_prepare_run() completes the control request, but also schedules
-the hardware watchdog. Since the decode operation has not been started on
-this error path, the watchdog should not be scheduled.
-
-Factor the control-request completion out of hantro_end_prepare_run() and
-call it directly from the VP9 preparation error path. This preserves the
-pairing with hantro_start_prepare_run() without scheduling the watchdog.
-
-Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
----
-Testing:
-
-- Built with the Verisilicon Hantro driver enabled.
-- Not runtime-tested: the available RK3588 board does not expose a Hantro
-  G2 VP9 decoder.
-
- drivers/media/platform/verisilicon/hantro_drv.c    | 13 +++++++++----
- .../media/platform/verisilicon/hantro_g2_vp9_dec.c | 14 +++++++++-----
- drivers/media/platform/verisilicon/hantro_hw.h     |  1 +
- 3 files changed, 19 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 2e81877f640f..04167e4be003 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -147,10 +147,17 @@ void hantro_start_prepare_run(struct hantro_ctx *ctx)
- 	}
- }
- 
--void hantro_end_prepare_run(struct hantro_ctx *ctx)
-+void hantro_complete_ctrl_request(struct hantro_ctx *ctx)
- {
- 	struct vb2_v4l2_buffer *src_buf;
- 
-+	src_buf = hantro_get_src_buf(ctx);
-+	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
-+				   &ctx->ctrl_handler);
-+}
-+
-+void hantro_end_prepare_run(struct hantro_ctx *ctx)
-+{
- 	if (!ctx->is_encoder && ctx->dev->variant->late_postproc) {
- 		if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt))
- 			hantro_postproc_enable(ctx);
-@@ -158,9 +165,7 @@ void hantro_end_prepare_run(struct hantro_ctx *ctx)
- 			hantro_postproc_disable(ctx);
- 	}
- 
--	src_buf = hantro_get_src_buf(ctx);
--	v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
--				   &ctx->ctrl_handler);
-+	hantro_complete_ctrl_request(ctx);
- 
- 	/* Kick the watchdog. */
- 	schedule_delayed_work(&ctx->dev->watchdog_work,
-diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-index 56c79e339030..e08db6e3f6f9 100644
---- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-+++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-@@ -36,12 +36,14 @@ static int start_prepare_run(struct hantro_ctx *ctx, const struct v4l2_ctrl_vp9_
- 
- 	ctrl = v4l2_ctrl_find(&ctx->ctrl_handler, V4L2_CID_STATELESS_VP9_FRAME);
- 	if (WARN_ON(!ctrl))
--		return -EINVAL;
-+		goto err_complete_request;
-+
- 	*dec_params = ctrl->p_cur.p;
- 
- 	ctrl = v4l2_ctrl_find(&ctx->ctrl_handler, V4L2_CID_STATELESS_VP9_COMPRESSED_HDR);
- 	if (WARN_ON(!ctrl))
--		return -EINVAL;
-+		goto err_complete_request;
-+
- 	prob_updates = ctrl->p_cur.p;
- 	vp9_ctx->cur.tx_mode = prob_updates->tx_mode;
- 
-@@ -86,6 +88,10 @@ static int start_prepare_run(struct hantro_ctx *ctx, const struct v4l2_ctrl_vp9_
- 	v4l2_vp9_fw_update_probs(&vp9_ctx->probability_tables, prob_updates, *dec_params);
- 
- 	return 0;
-+
-+err_complete_request:
-+	hantro_complete_ctrl_request(ctx);
-+	return -EINVAL;
- }
- 
- static struct hantro_decoded_buffer *
-@@ -894,10 +900,8 @@ int hantro_g2_vp9_dec_run(struct hantro_ctx *ctx)
- 	int ret;
- 
- 	ret = start_prepare_run(ctx, &decode_params);
--	if (ret) {
--		hantro_end_prepare_run(ctx);
-+	if (ret)
- 		return ret;
--	}
- 
- 	src = hantro_get_src_buf(ctx);
- 	dst = hantro_get_dst_buf(ctx);
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index 13e573f1f19d..9d4e858f17c7 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -430,6 +430,7 @@ void hantro_watchdog(struct work_struct *work);
- void hantro_irq_done(struct hantro_dev *vpu,
- 		     enum vb2_buffer_state result);
- void hantro_start_prepare_run(struct hantro_ctx *ctx);
-+void hantro_complete_ctrl_request(struct hantro_ctx *ctx);
- void hantro_end_prepare_run(struct hantro_ctx *ctx);
- 
- irqreturn_t hantro_g1_irq(int irq, void *dev_id);
-
-base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
--- 
-2.47.3
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDIyLzA3LzIwMjYgw6AgMTg6MDgsIFRoYXJpdCBUYW5na2lqd2FuaWNoYWt1bCBhIMOpY3Jp
+dMKgOgo+IFJlbW92aW5nIHRoZSBIYW50cm8gZHJpdmVyIG1heSB0cmlnZ2VyIGFuIFNFcnJvciBv
+biBSSzM1ODg6Cj4gCVNFcnJvciBJbnRlcnJ1cHQgb24gQ1BVNiwgY29kZSAweDAwMDAwMDAwYmUw
+MDAwMTEgLS0gU0Vycm9yCj4gCS4uLgo+IAlkb19zZXJyb3IrMHg1Yy8weDc0Cj4gCWVsMWhfNjRf
+ZXJyb3JfaGFuZGxlcisweDM0LzB4NTAKPiAJZWwxaF82NF9lcnJvcisweDZjLzB4NzAKPiAJcmVn
+bWFwX21taW9fcmVhZDMybGUrMHgxMC8weDIwIChQKQo+IAlfcmVnbWFwX2J1c19yZWdfcmVhZCsw
+eDZjLzB4YjQKPiAJX3JlZ21hcF9yZWFkKzB4NjAvMHhkYwo+IAlyZWdtYXBfcmVhZCsweDRjLzB4
+ODAKPiAJcm9ja2NoaXBfcGRfcG93ZXIrMHhlNC8weDYwMAo+IAlyb2NrY2hpcF9wZF9wb3dlcl9v
+ZmYrMHgxYy8weDYwCj4gCV9nZW5wZF9wb3dlcl9vZmYrMHg5OC8weDE5OAo+IAlnZW5wZF9wb3dl
+cl9vZmYucGFydC4wKzB4MTc4LzB4Mjg4Cj4gCWdlbnBkX3J1bnRpbWVfc3VzcGVuZCsweDIxMC8w
+eDMwMAo+IAlfX3JwbV9jYWxsYmFjaysweDQ4LzB4MWUwCj4gCXJwbV9jYWxsYmFjaysweDc0LzB4
+ODAKPiAJcnBtX3N1c3BlbmQrMHgxMGMvMHg1ODAKPiAJcnBtX2lkbGUrMHgxMzQvMHgxYjgKPiAJ
+dXBkYXRlX2F1dG9zdXNwZW5kKzB4MzAvMHhjNAo+IAlfX3BtX3J1bnRpbWVfdXNlX2F1dG9zdXNw
+ZW5kKzB4NDgvMHg2NAo+IAloYW50cm9fcmVtb3ZlKzB4OGMvMHhhOCBbaGFudHJvX3ZwdV0KPiAJ
+Li4uCj4KPiBoYW50cm9fcmVtb3ZlKCkgY3VycmVudGx5IGFzc2VydHMgdGhlIGRldmljZSByZXNl
+dHMgYmVmb3JlIGRpc2FibGluZwo+IHJ1bnRpbWUgUE0uCj4KPiBDYWxsaW5nIHBtX3J1bnRpbWVf
+ZG9udF91c2VfYXV0b3N1c3BlbmQoKSBjYXVzZXMgYW4gaWRsZSBkZXZpY2UgdG8gYmUKPiBydW50
+aW1lLXN1c3BlbmRlZCBpbW1lZGlhdGVseS4gQXQgdGhhdCBwb2ludCB0aGUgSGFudHJvIGhhcmR3
+YXJlIGhhcwo+IGFscmVhZHkgYmVlbiB0b3JuIGRvd24sIHdoaWxlIHRoZSBnZW5lcmljIHBvd2Vy
+LWRvbWFpbiBnZW5wZCBjb2RlCj4gc3RpbGwgcGVyZm9ybXMgdGhlIHBvd2VyLW9mZiBzZXF1ZW5j
+ZS4gZ2VucGQgcmVnbWFwX21taW9fcmVhZCBjYXVzZXMgcGFuaWMKPiBzdWJzZXF1ZW50bHkgYmVj
+YXVzZSB0aGUgcmVzZXQgbGluZXMgd2VyZSBhc3NlcnRlZC4KPgo+IERpc2FibGUgcnVudGltZSBQ
+TSBiZWZvcmUgYXNzZXJ0aW5nIHRoZSByZXNldCBsaW5lcyBzbyB0aGF0IG5vIHJ1bnRpbWUtUE0K
+PiB0cmFuc2l0aW9uIGNhbiByYWNlIHdpdGggaGFyZHdhcmUgdGVhcmRvd24uCj4KPiBBcHBseSB0
+aGUgc2FtZSBvcmRlcmluZyB0byB0aGUgcHJvYmUgZXJyb3IgcGF0aHMgYXMgd2VsbC4KPgo+IEZp
+eGVzOiBlYTcxNjMxYjcxMjkgKCJtZWRpYTogaGFudHJvOiBhZGQgc3VwcG9ydCBmb3IgcmVzZXQg
+bGluZXMiKQo+IFNpZ25lZC1vZmYtYnk6IFRoYXJpdCBUYW5na2lqd2FuaWNoYWt1bCA8dGhhcml0
+dDk3QGdtYWlsLmNvbT4KClJldmlld2VkLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4u
+Z2FpZ25hcmRAY29sbGFib3JhLmNvbT4KCj4gLS0tCj4gICBkcml2ZXJzL21lZGlhL3BsYXRmb3Jt
+L3ZlcmlzaWxpY29uL2hhbnRyb19kcnYuYyB8IDkgKysrKysrLS0tCj4gICAxIGZpbGUgY2hhbmdl
+ZCwgNiBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2Rydi5jIGIvZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fZHJ2LmMKPiBpbmRleCAyZTgxODc3ZjY0MGYu
+LmJiZWVjNWFlNTA5YSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3Zlcmlz
+aWxpY29uL2hhbnRyb19kcnYuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNp
+bGljb24vaGFudHJvX2Rydi5jCj4gQEAgLTEyMTIsNyArMTIxMiw3IEBAIHN0YXRpYyBpbnQgaGFu
+dHJvX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAJcmV0ID0gY2xrX2J1
+bGtfcHJlcGFyZSh2cHUtPnZhcmlhbnQtPm51bV9jbG9ja3MsIHZwdS0+Y2xvY2tzKTsKPiAgIAlp
+ZiAocmV0KSB7Cj4gICAJCWRldl9lcnIoJnBkZXYtPmRldiwgIkZhaWxlZCB0byBwcmVwYXJlIGNs
+b2Nrc1xuIik7Cj4gLQkJZ290byBlcnJfcnN0X2Fzc2VydDsKPiArCQlnb3RvIGVycl9wbV9kaXNh
+YmxlX2Fzc2VydF9yZXNldDsKPiAgIAl9Cj4gICAKPiAgIAlyZXQgPSB2NGwyX2RldmljZV9yZWdp
+c3RlcigmcGRldi0+ZGV2LCAmdnB1LT52NGwyX2Rldik7Cj4gQEAgLTEyNjYsOCArMTI2NiwxMSBA
+QCBzdGF0aWMgaW50IGhhbnRyb19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+
+ICAgCXY0bDJfZGV2aWNlX3VucmVnaXN0ZXIoJnZwdS0+djRsMl9kZXYpOwo+ICAgZXJyX2Nsa191
+bnByZXBhcmU6Cj4gICAJY2xrX2J1bGtfdW5wcmVwYXJlKHZwdS0+dmFyaWFudC0+bnVtX2Nsb2Nr
+cywgdnB1LT5jbG9ja3MpOwo+IC1lcnJfcnN0X2Fzc2VydDoKPiArZXJyX3BtX2Rpc2FibGVfYXNz
+ZXJ0X3Jlc2V0Ogo+ICsJcG1fcnVudGltZV9kb250X3VzZV9hdXRvc3VzcGVuZCh2cHUtPmRldik7
+Cj4gKwlwbV9ydW50aW1lX2Rpc2FibGUodnB1LT5kZXYpOwo+ICAgCXJlc2V0X2NvbnRyb2xfYXNz
+ZXJ0KHZwdS0+cmVzZXRzKTsKPiArCXJldHVybiByZXQ7Cj4gICBlcnJfcG1fZGlzYWJsZToKPiAg
+IAlwbV9ydW50aW1lX2RvbnRfdXNlX2F1dG9zdXNwZW5kKHZwdS0+ZGV2KTsKPiAgIAlwbV9ydW50
+aW1lX2Rpc2FibGUodnB1LT5kZXYpOwo+IEBAIC0xMjg3LDkgKzEyOTAsOSBAQCBzdGF0aWMgdm9p
+ZCBoYW50cm9fcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAJdjRsMl9t
+Mm1fcHV0KHZwdS0+bTJtX2Rldik7Cj4gICAJdjRsMl9kZXZpY2VfdW5yZWdpc3RlcigmdnB1LT52
+NGwyX2Rldik7Cj4gICAJY2xrX2J1bGtfdW5wcmVwYXJlKHZwdS0+dmFyaWFudC0+bnVtX2Nsb2Nr
+cywgdnB1LT5jbG9ja3MpOwo+IC0JcmVzZXRfY29udHJvbF9hc3NlcnQodnB1LT5yZXNldHMpOwo+
+ICAgCXBtX3J1bnRpbWVfZG9udF91c2VfYXV0b3N1c3BlbmQodnB1LT5kZXYpOwo+ICAgCXBtX3J1
+bnRpbWVfZGlzYWJsZSh2cHUtPmRldik7Cj4gKwlyZXNldF9jb250cm9sX2Fzc2VydCh2cHUtPnJl
+c2V0cyk7Cj4gICB9Cj4gICAKPiAgICNpZmRlZiBDT05GSUdfUE0KPgo+IGJhc2UtY29tbWl0OiBk
+YzU5ZTRmZWE5ZDgzZjAzYmFkNmJkZGYzZmEyZTUyNDkxNzc3NDgyCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
