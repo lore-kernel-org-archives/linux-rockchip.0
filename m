@@ -4,58 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BFB4C531D0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 20:19:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECDD4C531CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 20:50:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UK+RL8WWLeNZGnfoCbMNo5tF8+Rh7+Y5He8jSaVbGx0=; b=kBh2fiHG+z26HlVl6B4Qcm5vrL
-	KrYS1i1HmitJQDxivNwBO1kJSGtAyjpa6GBsXinOTwsW1Sx9WdTHbjhbEVo19H814HuY9QnK2ZVBD
-	IQ4MbFx84Y0MNxrLnhrRLt2vQHEoJewXPFn85clfsf2RJ9vpC1q+TJwo2t4U9XaJJa+a6c9RKZ0IP
-	JfnUzNo3JgnpGgK3k0V0CeRZLhiL8DRQoNZ2iyAM731Q0lGvxPiFN7U/hWm6jPZ5F0N61YYlDP4Oa
-	MclLw0yfrev5vPEYwwPraXYM+BDMflYbQR7mUYgY2ZbfCXg0jZfNGnFhar9odXW7jsDSXszjcTTzt
-	26VxUqrg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=07sWEfATTFhT83/MmauAJnUg2NXIe7KBpH4fxZ8bLM0=; b=JbN4ZKGjb6O3BT
+	OrJGbWQpT6q91p4CNOIghY8CT/PsScbW1nRFTlaB7G6j1D6HFHbrVtxcgwEoSA0+6Yr/bHu7O8PBZ
+	+6ByntF9qznD21hclmd5X27JE9Y7/41X2dyCa/v8GhlsVkqdx4jJPyngq6oz7B1HGKdbyRbpmxAT/
+	xQNxA2iAZhQXjz8P0wo/h8oVCAxg1+PfH4oceabEKGprEof0MOA7Ds1Aqln9RTvRnbg74Ww4PtpD+
+	5djttnc9g8av7viCT5MZDZ6/OahyaGkRdXnFjmI3T38cOSG31ifPM3EJgxyCecZPO/lqOeQMSeRKb
+	8LQqtJebMA46hA2BsJqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmzse-0000000F1Pr-2ama;
-	Thu, 23 Jul 2026 20:18:56 +0000
-Received: from leonov.paulk.fr ([185.233.101.22])
+	id 1wn0NH-0000000F4iz-12rR;
+	Thu, 23 Jul 2026 20:50:35 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmzsb-0000000F1P7-49AO;
-	Thu, 23 Jul 2026 20:18:55 +0000
-Received: from laika.paulk.fr (12.234.24.109.rev.sfr.net [109.24.234.12])
-	by leonov.paulk.fr (Postfix) with ESMTPS id 46F973700EC1;
-	Thu, 23 Jul 2026 20:18:48 +0000 (UTC)
-Received: by laika.paulk.fr (Postfix, from userid 65534)
-	id DB8C1B49E9F; Thu, 23 Jul 2026 20:18:46 +0000 (UTC)
-Received: from collins (unknown [192.168.1.1])
-	by laika.paulk.fr (Postfix) with ESMTPSA id C5575B49E99;
-	Thu, 23 Jul 2026 20:18:45 +0000 (UTC)
-Date: Thu, 23 Jul 2026 22:18:44 +0200
-From: Paul Kocialkowski <paulk@sys-base.io>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Jiaxing Hu <gahing@gahingwoo.com>, detlev.casanova@collabora.com,
-	mchehab@kernel.org, heiko@sntech.de, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org,
-	ezequiel@vanguardiasur.com.ar, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH 0/3] media: rockchip: VEPU510 H.264 encoder for RK3576
-Message-ID: <amJ3JJjhlBokyzB5@collins>
-References: <20260722073417.2064667-1-gahing@gahingwoo.com>
- <082e1141c38205222a91abf13b1a97d9a00e117a.camel@collabora.com>
- <20260723004642.2075233-1-gahing@gahingwoo.com>
- <210b72e32d1bd757a36b2baf532dd9f7d46ca5dc.camel@collabora.com>
- <amJgcHf2vVDb75nR@collins>
- <252d53c9e497530f9416599f9991b02c0c276a1f.camel@collabora.com>
+	id 1wn0NE-0000000F4iW-48we;
+	Thu, 23 Jul 2026 20:50:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1784839818; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=XMG/wr4GN4vLYna9aU05B4HrXbD6HwxQ9DsJPRslUljs/9cAloicWqRSsLUMHs5c6vu5P37fi7oEWupHs6ZoJnLQIKXy7MDeFtqrjWXEB8cqe4qvOmQiA+ZyOGDl7loEJTTdk9avMJst6z9ijGF6SQTkURsLLHbqblq0DQ0Ybmc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1784839818; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=eM65QZLrWtYxIQiPT84qffHAidOGo3FICK3E0OXeoJo=; 
+	b=OxU8crpuLIfTfXyNuVpPUMYgrK7x44YMeGPATsa5zLa8UGZujZSraMhXYXduemhlPBIa1b1ucf7jYUJ9dAASLJ2TqyBzHXmP6LD8EE73nTNRwed6pxP4NVVKNRExjgD6ProZT3trOzqIFBufjJzIcoI+Di2f81GPrvxXpVP4WP8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784839818;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=eM65QZLrWtYxIQiPT84qffHAidOGo3FICK3E0OXeoJo=;
+	b=ZiTB9pM5t2Ueeg9IP/5bxQYmUT0C61Z3Ef+pSNXhTVr2ByZFg9PZKStLTyml4zYD
+	5sS5sJq34hQ/BxWyisIwE779c1SPJ5WGLl3yjZDGEznrufd5umBTUwspcgxJ7L+5TJc
+	kpXufWJPajCzKkj3z4k1y3JNtv4YHQOPxxxn75jc=
+Received: by mx.zohomail.com with SMTPS id 1784839814772605.7006110620167;
+	Thu, 23 Jul 2026 13:50:14 -0700 (PDT)
+Message-ID: <58b7f1fd-997c-48af-9a7c-a0a5738a5d42@collabora.com>
+Date: Thu, 23 Jul 2026 23:50:09 +0300
 MIME-Version: 1.0
-In-Reply-To: <252d53c9e497530f9416599f9991b02c0c276a1f.camel@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 2/4] media: synopsys: hdmirx: add HDMI audio capture
+ support
+To: Igor Paunovic <royalnet026@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20260721064115.64809-1-royalnet026@gmail.com>
+ <20260721064115.64809-3-royalnet026@gmail.com>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260721064115.64809-3-royalnet026@gmail.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_131854_356567_BC48B586 
-X-CRM114-Status: GOOD (  29.23  )
+X-CRM114-CacheID: sfid-20260723_135033_147403_78FAFE35 
+X-CRM114-Status: GOOD (  21.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,128 +80,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5835871095210562000=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5835871095210562000==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5NbzU9qqaTRP7CtZ"
-Content-Disposition: inline
+On 7/21/26 09:41, Igor Paunovic wrote:
+> The Synopsys DesignWare HDMI RX controller extracts the audio stream
+> embedded in the incoming HDMI signal and feeds it to an on-SoC I2S
+> controller. Expose it as an ALSA capture device by registering the
+> generic hdmi-codec as a child of the controller, so that a
+> simple-audio-card in the device tree can bind the HDMI RX audio DAI.
+> 
+> The sample rate is recovered from the ACR N/CTS values together with the
+> measured TMDS character rate. A periodic worker keeps the local audio
+> reference clock locked to the source by nudging it in small ppm steps to
+> hold the audio FIFO fill level near its target, which avoids FIFO
+> under/overflow and the resulting dropped samples.
+> 
+> Across system suspend the worker is stopped before the controller
+> clocks are gated. Resume fully resets the controller, wiping the audio
+> configuration, so when a capture stream is active it re-programs the
+> audio path from the last known sample rate and re-arms the worker,
+> whose rate change and FIFO error paths resynchronize once the source
+> delivers audio again.
+> 
+> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+> ---
+> Changes in v4:
+> - use swab32() for the ACR word reversal: readl() already abstracts
+>   bus endianness, so the reversal must be unconditional (be32_to_cpu
+>   is a no-op on big-endian)
+> - support system suspend: stop the worker in suspend before the
+>   clocks are gated; resume fully resets the controller, so re-program
+>   the audio path and re-arm the worker while a capture stream is
+>   active, through a hdmirx_audio_setup() helper shared with
+>   hw_params() (Dmitry Osipenko; validated with an active capture
+>   stream across suspend/resume)
+> 
+> Changes in v3:
+> - restore the v1 audio teardown in remove(): audio_shutdown() already
+>   stops the worker when the stream closes, so the extra flag clear
+>   and trailing cancel added in v2 were redundant (Dmitry Osipenko)
+> - rename the ACR read locals and add a comment documenting the
+>   register byte packing
+> - drop the get_dai_id stub so OF-graph cards resolve the DAI index
+>   from the reg property
+> 
+> Changes in v2:
+> - register the S/PDIF DAI so the indexes match the binding and reject
+>   it with -EOPNOTSUPP until wired up (Sebastian Reichel)
+> - use platform_device_register_data() and drop the fixed 32-bit DMA
+>   mask (Dmitry Osipenko)
+> - don't leave an ERR_PTR in audio_pdev on registration failure
+> - fix teardown ordering in remove()
+> - stop the worker before reprogramming shared state in hw_params()
+> - look up the "audio" clock by name instead of indexing clks[1]
+> - keep the worker on system_unbound_wq when re-arming
+>  .../platform/synopsys/hdmirx/snps_hdmirx.c    | 306 ++++++++++++++++++
+>  .../platform/synopsys/hdmirx/snps_hdmirx.h    |   8 +
+>  2 files changed, 314 insertions(+)
 
---5NbzU9qqaTRP7CtZ
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Note: Current variant of audio support requires userspace to manually
+select appropriate audio freq on capture. This needs to be improved
+later on for regular userspace apps by dynamically registering audio
+CODEC on HDMI cable plug event and reading out actual audio freq on the
+wire, restricting the CODEC's rate, which might require extension of the
+hdmi_codec_ops.
 
-Hi Nicolas,
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Tested-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
-Le Thu 23 Jul 26, 15:39, Nicolas Dufresne a =C3=A9crit :
-> Hi Paul.
->=20
-> Le jeudi 23 juillet 2026 =C3=A0 20:41 +0200, Paul Kocialkowski a =C3=A9cr=
-it=C2=A0:
-> > In my opinion it would be fine to have two drivers, but it's really up
-> > to you. Since you already have a v4l2 base for it, I would encourage you
-> > to move it to my proposal, which will probably be finalized in a shorter
-> > time frame than the other proposal and lets you reuse the code you've
-> > already written. Then you could also add RK3576 support to the drm-ish
-> > Vulkan Video proposal without too much work when it is ready, reusing t=
-he
-> > RK3588 work.
->=20
-> My main concern is that once you exposed an API, the transition path is n=
-ear
-> impossible unless you accept to support both APIs concurrently. So I may =
-raise a
-> slight objection on the above proposal.
-
-Well there could be a recommended implementation using your design and a
-more experimental v4l2 implementation that is discouraged to use but
-still available.
-
-But that means another driver to maintain and more long-term involvement
-=66rom Jiaxing Hu. I am not sure it is worth it, but I don't think we
-should entirely close the door on the idea. I also understand that there
-can be a bit of frustration with trashing code and a desire to continue
-working on it (especially now that it can benefit from the technical
-knowledge acquired from your work). But I'm just speculating here.
-
-Still I would be interested to eventually be able to compare performance
-between the two approaches on the same hardware :)
-
-> Once we have the code shared (Detlev is
-> working on it), you'll see that Detlev (and Daniel Almeida) implementatio=
-n is
-> just a step ahead, and adding RK3576 to an RK3588 is just a minor update =
-(its
-> the same chip, different minor version). On top of which, once the kernel=
- driver
-> will have settled, adding more codecs will mostly (or entirely) happen in
-> userspace.
->=20
-> With no offense, the RFC here requires significant work before it can be
-> upstreamed. A lot of the code is hex tables generated from inspecting a r=
-unning
-> driver. So there is a lot of work to decipher this into clean code.
-
-Yes I'm sure there is still a lot of work to do.
-
-All the best,
-
-Paul
-
-> On that aspect, if you are missing any reference code or technical
-> documentation, let us know, though I believe most of this is public infor=
-mation
-> for this chip.
->=20
-> regards,
-> Nicolas
-
-
-
---=20
-Paul Kocialkowski,
-
-Independent contractor - sys-base - https://www.sys-base.io/
-Free software developer - https://www.paulk.fr/
-
-Expert in multimedia, graphics and embedded hardware support with Linux.
-
---5NbzU9qqaTRP7CtZ
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEEAbcMXZQMtj1fphLChP3B6o/ulQwFAmpidyQACgkQhP3B6o/u
-lQxJyQ//UloJz5n2lXdGyt3Z62A+B4oIbB2DTJ/v3EPlh37fTfmMOnXOR25G/Em+
-I/4rc0DjJmSROIwu4b8DnZ5VC3NVG/K1F1+MxV67UXImGveKxrKzzs8CJ5/7GoOB
-Gb8Xm6XzGYgsT+gYuNq5pxSIOZkO5RjrXlZdXGY1kkCO+0ht4ZBOZgSHWktIYWva
-1wLIDQkt+eHnQ26lVLs1bDFjy8zE3UZXYTC04Qx/P0RNMA59f0iajMuVEOR9smvA
-DqDQV7kklKA6wwqXYY4ksgDdIdyYuJVSLrBYMAIuS0CcGQEKkc3nB841bRT2Ow6y
-ll8iHyq2ACkhJMZbG5uZ8W4258sLZ7Cp1bCAlK4dWwM9e0CArnqAdP7Y8g1RBfMn
-ydWXbCl5wKIr1tQOTXDlu+pH+3k1lXj11FBi8zlB3CqwaFIibx9zTy3gAapzPJX5
-ZHLw8t7dcK8xpaHAJXb0iDuffX+iOoa1irhTt9WCgfkZhOaPyh529N9GVHm1l54N
-pLWa3cw4IkJ4n2HuKPnzkB/2sJrY/l7cng9yQH7+ls/7Weq5x/R4qMJCKOCu42GX
-tpU5Dv13enniO8YpCbm94KetXN1OqLlC259A71vC9MlalzSmyGYr/RL8RICQ0+9O
-kHxrS0Syc2qOjAfePLfm2KAMwbvsJ0K8iLN5wvSUa3gLnIkpJSc=
-=Nec2
------END PGP SIGNATURE-----
-
---5NbzU9qqaTRP7CtZ--
-
-
---===============5835871095210562000==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5835871095210562000==--
-
