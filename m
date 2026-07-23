@@ -4,67 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 770EAC531F8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 17:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F497C531F7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 17:04:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bcxQCgYQFLB+xkK3BkYqAtPOOCnu0N652pRrgNf10MA=; b=rYkdDC53Sjw1ldSpL2VOESWhKr
-	2GZUbhQAjxYQSNzBIDD30rSg5VXVc/hACNexlrbO6PWH7SXa5nLdQe2xifuylVcLAsMxJmScyMMf1
-	grF9x1pLz8SZwKAuRivpOU02k1tPhijLSypF0g1R1WowB9dsdhHSl6WhykRyquJvAbW3NvAQt1W25
-	c+v2kK4y/rX7pwp+weXELnShKDx5kB5rlrJd+GpIquh2n4I9mV4SGow8gfMDtcTxZJX+02MMvUY/g
-	g0RNqhRCvWTuu7xtlkOpCXzSDuefurD2oVtc/73vhnHokXBwVa7kNS0FrYoMrZB22IUCTnD7jMY+1
-	WeFPr8og==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EqZIxcH9XA6OpfS2wDm05TQa6++U4eA7AOxrOhT7/pQ=; b=Pxedh5mYUbUiF7
+	EwcT8AyXtkAa/R9ML5f1k1YbwH9nUUeB2mi79pGVieRvWXmQyXiyd+jPKNAf3biyaqj2gDp6xWzZe
+	3XDEWwmQ+KMysdsxGqGocOCfKYE+uYTUweR9YFEOXyKOBwTQWPvLVIIZmc2aPH81vstIeJIwhpWC8
+	pBROPhQ8gWRkkFKX4pktOgAWSFot3UtO6yJdkGMi8ur5KxqxqZ7LKdQoWPKKhGzUs5C/7Dv4J1zjc
+	tKxnf5vSqTWPZKZLQZEe0xZLIEJCCmvT65b1+dciYmue3QfdbtiWgEphmmxLtsE0huAqyzXiykT5b
+	bEVSircDfnyeq5iPkCUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmwnf-0000000ElCE-1nj3;
-	Thu, 23 Jul 2026 17:01:35 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wmwqT-0000000ElZZ-43Kp;
+	Thu, 23 Jul 2026 17:04:29 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmwnc-0000000ElBU-0WCA;
-	Thu, 23 Jul 2026 17:01:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1784826042; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=doS9sUPk+xpDWSk8tCrzWBa+aaPxn1Jb+AA0lPlS3//cL+6+Dlr3R6UIBq1LBXs5WJeBKRj5RDAK7xlTahbemgSo/xTIhGhOnjwHvkargsQoxr5y8A2SeXEcxfPnTb5uhhryTB+nUaP1QRVJ8CGImSTUxamGMM6coFS3RXPV9Ug=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1784826042; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=rMKSwtZHtjgdlF9Y2LNT13qUbh7U8eJLngFZngp7Gpg=; 
-	b=YFQfjKEi0XTVS+E1Q7qXhMxuxhb5gXIjxwniYiu2T+mCFxsg/jJbLhBN5lqGWr64CMBnNvjVIU/EgjHvmljStijdK8ZnfMoj2WicqCrEe5oQe/0Uprd4TYZeSpKZQ+WC9C0veBRvcnfVLvyS11H638SgbhCW9mJ/j8/T+LKQh+o=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784826042;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=rMKSwtZHtjgdlF9Y2LNT13qUbh7U8eJLngFZngp7Gpg=;
-	b=Dl0kJ+qgOiIYFbVvHNu4IwgO8vb8YneY5/bpzX6VCYTCGqXv7iB74202ozSCxoXV
-	8k6eJR2j/nN7DnWuRFph9tzFIZo5EoKkI+CfosRHErnYcAgQYbxlTHhOlVrl1RiF6TX
-	zR0RjsU98kQ2lEATtqBR/hKXCDfndYFt+hZ8E5dg=
-Received: by mx.zohomail.com with SMTPS id 1784826038872548.0819904631492;
-	Thu, 23 Jul 2026 10:00:38 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id C4FB31808C6; Thu, 23 Jul 2026 19:00:31 +0200 (CEST)
-Date: Thu, 23 Jul 2026 19:00:31 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH v4 09/10] dt-bindings: display: rockchip: dw-dp: Fix
- sound DAI cells
-Message-ID: <amJE9v5OHDBWzRwD@venus>
-References: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
- <20260721-synopsys-dw-dp-improvements-v4-9-f0f4a4ede712@collabora.com>
- <20260722-enchanted-mandrill-of-refinement-adc7b3@quoll>
+	id 1wmwqR-0000000ElYj-05fO
+	for linux-rockchip@lists.infradead.org;
+	Thu, 23 Jul 2026 17:04:28 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-47f3b39f2a1so830450f8f.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jul 2026 10:04:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre.com; s=google; t=1784826265; x=1785431065; darn=lists.infradead.org;
+        h=content-type:mime-version:message-id:date:user-agent:references
+         :in-reply-to:subject:cc:to:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=jhojDdHC94+BdjAE5gd50YRzJP7qSAXpLrLf8nMSLLo=;
+        b=HjGQQ7YCZY3NW9pJcNY6cKLsLBe8scZt50mkwns5uLuXkoQNXkSun+vpj9rLF5Hx0j
+         AzEmFqJo9AhvnTQ0Bz00Ue6dk9lYHx6AQvB3bei6fhnpqeiDG5pvufDtNrQt/25DzH/J
+         PBe8fSXwVdC/OKgh/FwlHIkfJuhDMh3dY5VqEemmyOjgdUqb8PKqzk0GUoql9RbKQXcG
+         dZJ67y4/MQ0AXo+qTQ3scOkkoJaTsYY8GpGH3FoumQkwgxxG2E/UrCI5jQ0lAmSBRhN/
+         wVi/p2FRhJnJhcFEvqpWGd/SXUOTAsQw/hVT21k0JqlXb2cmFgIf04j55GLRHoX2tXef
+         cgsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784826265; x=1785431065;
+        h=content-type:mime-version:message-id:date:user-agent:references
+         :in-reply-to:subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=jhojDdHC94+BdjAE5gd50YRzJP7qSAXpLrLf8nMSLLo=;
+        b=ry1bWAxVD2u+yPP3dpABI6l2RyToPhsCu3Yi+PWzVwDF53PUqRs0pNqB1RNq3Q/tJ/
+         Lkt4laDmQBm1e9f9T5DtD+9LD5eBS/o0wiMBIlTMoGzyei/WctJj5HPPRKPtylPxxl6q
+         8mzxrzvpIwRxSn8tGoDseGLIJ4kZazRRvqMNXAdsy78lAeWLy4fSLKiSFUy8ZDfcuGAs
+         fGfyI37BQZl4SXCSF5d59P/mazI/3IR3oe0c5pdUmM9YiylE9H79PNnpz05QH5LoORDD
+         cNXh8XqReuP6lLS1MNenDMgP8RChqun6nriCVGUY95kLeaPdRn+tVKj+lrInJvBfioqG
+         kh2Q==
+X-Forwarded-Encrypted: i=1; AHgh+Rp7F9yH9UYvhuJOy4JdQMABxIVQgyEtTLqf05txipHHOkVf4I00vTqd5dQ3KPwmWx7yuGBD9DlU+r5D85uTaw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyDqs5UdKZlSj8eZ+zB8R/Ii19Jd+sR87FTuqYk7eSXnanUsZM8
+	wsIJ3aBIu9K7Zh8/Py04AD+UrJFEo2r6JWBl6EVk10sMIqRlfOjX/q7nLdeO47kk4uM=
+X-Gm-Gg: AR+sD13cu177N0/K+jKX8z/0kkGEgaeA6S/VwHOsfsXznQTwTTqUGRARaMaZBvsL8vW
+	gEcZWL29pfmxtGhV8kXxfFoMCpaSZoj5sd0TOROAqa1LkwWetfU/f5cC+bCbpqJ5VptBzopShDx
+	d47DdnKhOMjls6NKOzQWUvoRpI/OEl4lEL2d94c2V/f2DjLphDjM3NdbzaFHYHChm6Yz2wOG+YR
+	AWNZTFg4NYVUnMeriw5nsYBSiqQxrk7K3fLb8qztgGzlp19VoxkBBzSzxvgMK0+L4q/U1oFIoyW
+	FZKoHAY7C4qTnnTV4+B9jQtmkIEOA5oyEZCGTj/F/ghGyQ2B6jg9TkMcLsqL+acGwPoefS2xW6j
+	rlFERb335GASSBCgcvfnmmZZHbMAgKp7pnfE5aLjYIKo1UkxHFzbP/eep3n6S+75lSOkzuNRSvp
+	VH
+X-Received: by 2002:a05:6000:230a:b0:47f:8aba:8a9a with SMTP id ffacd0b85a97d-47f8d71c7eamr5497660f8f.18.1784826265170;
+        Thu, 23 Jul 2026 10:04:25 -0700 (PDT)
+Received: from localhost ([2a01:e0a:3c5:5fb1:5f98:8c28:3e2c:1c72])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-47f85c67339sm17937986f8f.31.2026.07.23.10.04.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 23 Jul 2026 10:04:22 -0700 (PDT)
+From: Jerome Brunet <jbrunet@baylibre.com>
+To: Brian Masney <bmasney@redhat.com>
+Cc: Andrew Lunn <andrew@lunn.ch>,  Gregory Clement
+ <gregory.clement@bootlin.com>,  Sebastian Hesselbarth
+ <sebastian.hesselbarth@gmail.com>,  Michael Turquette
+ <mturquette@baylibre.com>,  Stephen Boyd <sboyd@kernel.org>,  Bjorn
+ Andersson <andersson@kernel.org>,  Geert Uytterhoeven
+ <geert+renesas@glider.be>,  Heiko Stuebner <heiko@sntech.de>,  Prashant
+ Gaikwad <pgaikwad@nvidia.com>,  Thierry Reding
+ <thierry.reding@kernel.org>,  Jonathan Hunter <jonathanh@nvidia.com>,
+  Tero Kristo <kristo@kernel.org>,  linux-arm-kernel@lists.infradead.org,
+  linux-clk@vger.kernel.org,  linux-kernel@vger.kernel.org,
+  linux-arm-msm@vger.kernel.org,  linux-renesas-soc@vger.kernel.org,
+  linux-rockchip@lists.infradead.org,  linux-tegra@vger.kernel.org,
+  linux-omap@vger.kernel.org
+Subject: Re: [PATCH] clk: clean-up simple provider misuse of the consumer API
+In-Reply-To: <amImP6sFlv-sNhMh@redhat.com> (Brian Masney's message of "Thu, 23
+	Jul 2026 10:33:35 -0400")
+References: <20260723-clk-provider-simple-clean-v1-1-0c9668240467@baylibre.com>
+	<amImP6sFlv-sNhMh@redhat.com>
+User-Agent: mu4e 1.12.9; emacs 30.1
+Date: Thu, 23 Jul 2026 19:04:08 +0200
+Message-ID: <1j5x25d4dz.fsf@starbuckisacylon.baylibre.com>
 MIME-Version: 1.0
-In-Reply-To: <20260722-enchanted-mandrill-of-refinement-adc7b3@quoll>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.802.37
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_100132_225266_3179B83D 
-X-CRM114-Status: GOOD (  22.99  )
+X-CRM114-CacheID: sfid-20260723_100427_080068_5F8E18A5 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,127 +107,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Alexey Charkov <alchark@flipper.net>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: multipart/mixed; boundary="===============1386444223972316386=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On jeu. 23 juil. 2026 at 10:33, Brian Masney <bmasney@redhat.com> wrote:
 
---===============1386444223972316386==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="24edahvaidyqhl6v"
-Content-Disposition: inline
+> On Thu, Jul 23, 2026 at 03:20:59PM +0200, Jerome Brunet wrote:
+>> Clock provider should not be using the consumer interface.
+>> In other words, a provider should not be dealing with struct clk.
+>> 
+>> This change targets occurrences for which the provider uses the
+>> consumer interface and corresponding clk_hw interface exist:
+>> * __clk_get_name() -> clk_hw_get_name()
+>> * __clk_is_enabled() -> clk_hw_is_enabled()
+>> * clk_get_rate() -> clk_hw_get_rate()
+>> 
+>> Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
+>> ---
+>> The change being very simple, I did not think it was necessary
+>> to split it into multiple changes. If you prefer it to be split,
+>> just let me know how.
+>> ---
+>>  drivers/clk/mvebu/clk-cpu.c            |  2 +-
+>>  drivers/clk/qcom/clk-hfpll.c           |  4 ++--
+>>  drivers/clk/qcom/clk-krait.c           |  2 +-
+>>  drivers/clk/qcom/clk-rcg.c             |  4 ++--
+>>  drivers/clk/qcom/clk-rcg2.c            |  2 +-
+>>  drivers/clk/renesas/r9a06g032-clocks.c |  2 +-
+>>  drivers/clk/rockchip/clk-pll.c         | 24 ++++++++++++------------
+>>  drivers/clk/st/clkgen-pll.c            | 20 ++++++++++----------
+>>  drivers/clk/tegra/clk-tegra210.c       |  2 +-
+>>  drivers/clk/ti/clockdomain.c           |  2 +-
+>>  10 files changed, 32 insertions(+), 32 deletions(-)
+>
+> This looks good to me however can you split this up by clk subsystem at
+> the very least so that the various submaintainers can pick up these up?
 
+Will do
 
---24edahvaidyqhl6v
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v4 09/10] dt-bindings: display: rockchip: dw-dp: Fix
- sound DAI cells
-MIME-Version: 1.0
+>
+> With that:
+>
+> Reviewed-by: Brian Masney <bmasney@redhat.com>
 
-Hi,
-
-On Wed, Jul 22, 2026 at 09:22:03AM +0200, Krzysztof Kozlowski wrote:
-> > diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchi=
-p,dw-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,=
-dw-dp.yaml
-> > index 2b0d9e23e943..c4f8959dd65d 100644
-> > --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp=
-=2Eyaml
-> > +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp=
-=2Eyaml
-> > @@ -25,7 +25,7 @@ description: |
-> >    * Supports up to 8/10 bits per color component
-> >    * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
-> >    * Pixel clock up to 594MHz
-> > -  * I2S, SPDIF audio interface
-> > +  * I2S, S/PDIF audio interface
-> > =20
-> >  properties:
-> >    compatible:
-> > @@ -46,7 +46,7 @@ properties:
-> >        - description: DisplayPort AUX clock
-> >        - description: HDCP clock
-> >        - description: I2S interface clock
-> > -      - description: SPDIF interfce clock
-> > +      - description: S/PDIF interfce clock
-> > =20
-> >    clock-names:
-> >      minItems: 3
-> > @@ -83,7 +83,8 @@ properties:
-> >      maxItems: 1
-> > =20
-> >    "#sound-dai-cells":
-> > -    const: 0
-> > +    const: 1
-> > +    description: 0 for I2S, 1 for S/PDIF
->=20
-> This is ABI change, which might be backwards compatible or not, but
-> commit msg should explain that. I can easily imagine drivers where
-> written that way that they will fail with an old DTB.
-
-It sure is an ABI break on paper, but I don't think it makes sense
-to have an enum allowing 0 or 1.
-
-mainline kernel:
-At the moment mainline RK3576 dtsi does not have any
-#sound-dai-cells in its DP node and RK3588 has it set to <0>
-(Which will complain after this change. I have a fix for that
-updating it to <1>). But the mainline kernel has absolutely no
-driver support for audio and doesn't use the property at all.
-Not having the cell means the driver would have to assume that
-either I2S or S/PDIF is meant implicitly. But that is also not
-documented.
-
-vendor kernel:
-The only other driver for the DP controller that I am aware of is
-=66rom the vendor kernel tree. That does have #sound-dai-cells =3D 1 on
-RK3588 and uses subnodes for RK3576 (and thus no #sound-dai-cells at
-all).
-
-Thus I argue this is a theoretical ABI break, which affects nothing.
-I will look into adding this info to the commit message after
-dropping the other ideas for <2> and the subnodes.
-
-Greetings,
-
--- Sebastian
-
---24edahvaidyqhl6v
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpiSKkACgkQ2O7X88g7
-+poM0RAApP2rNA3K/01XsRMbbhbADGMBv3BNt+uco66/KnZMQp6/l4t14Aev8Jcj
-nSgeSHh7TQwORQc5LFT+pNWNXBkLSYfY9hKQ91TNG8i51JyxLsUEZw2LUFXlL8TH
-PemKZCoaUikZqp/bKTxaULuTYW7Q8i7FkFytohTnnyQx6sxppTSj9mE6CeJC6Wif
-ljJRqhvTd+wLw2yab7L+fGMttwtLmo/ad3oO4GUIjh43YKExs4ee7+3U4COkuFX3
-VY6sDFbxQE2g3b4YBqCuYqHxljMl300P4/8N1PRoYvo3IEPYEuqTPinkuviSbPjQ
-wakqJARxmE3WyVHvE3qFqdg5U/jkn1Pp52Knr6p69Z96wKZdDOMJjF3C+/cKS8Mg
-cgQIY+E6PXtaSVcVozKGAc72ohBNtGm721M6dckJ1u9Ch+A7QdK3jlHPPzgpNKVO
-rE7PgzD57uxjgc6+S0tja9QAQpyO0SVGzBb9Iyi3d4g8hp2Sxa5WDiiPoO/cGH6k
-JkpgOFjS9ttdGjvlGUgdnfRv7t+zhZpgNPZPdVEhq11HNxU2zuPLHkP9gTMe7pVf
-xCXwbb0BzrNf0KZuQWSTZVB1QTx9Fa9U4TyjvsTs5iYidmhAKmhi5XDcb8RYLPyO
-oIAtQHge6m+uVo29D2LjcG6JKvJgNs9rgOdl8Z/tlan150EYVqU=
-=mgtU
------END PGP SIGNATURE-----
-
---24edahvaidyqhl6v--
-
-
---===============1386444223972316386==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Jerome
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1386444223972316386==--
-
