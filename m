@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DA6CC53200
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 22:17:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEA7AC53215
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 22:17:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cXi32iem5kBD5NU8joSo4QN+78gSpE6DrGp7x7t6V0E=; b=PRRVyGyy2ehrHB
-	dl860FF+Oe1ljRxaRX2XpFens2ELPlBvk42rAjg4eFAeWLX+/Ur3saNh9qbdcymwhOQc+rROtXa80
-	UN7z0WYw/mXM3Q7hm0zFdW9ykOigZOLZO2cxfHMdegIvySrOTJiD/dyz2kGfCMY8tOS4A/2cz/sVw
-	fa+eKXT4XSS9Xf7iKZgHej9yEAyRaR0rXJPG1NBZrQpi2+QXoN1XhO7TFqrpPUSTp/FY0CAhg9+P0
-	b7oedBmMbltLhuGt2LxH59G1SYSc0tY5YjV1c7eHtq0wy9Tkq0dcxVz2n9D+UDQJNTL/WZBUp3U3j
-	Pk7JdM1yCy3RL9LJlcKg==;
+	List-Owner; bh=GzDXBW0S6eWuX7rSgMIdgTmgG5ioWXIUPBgIFuR9EUs=; b=AxKtNIxqQ71o3i
+	Hacl8feT49c310KM8d9vYn72A/KqGxKbLEqH0YVLESOr9PNL+f6ka0Q2tFyJXS8pb8hopLL5tHj77
+	zFhbnanDUjPPElg/0lAtVlNfpTA8npv7RY+3j9ypLjjvDMI5iRglJ2gtb9hot3be+YGcB+yHQHjxf
+	YPnQ3pRwlDjNogMC/+Q09ZnIsaCaOkvbFCGuknJPn53JdGnsKicQvWz5oNSnfRbfgxiRM0cYHwjJw
+	dJSoBKijJWzkPIag39IqK0VRxkwEwBYq0HhWwwH4/lAtMAWMv2xvsvH3ljexcTh3QCWCn5qBTijbp
+	0BANbd6xVU7DSeCkUd5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn1jb-0000000FARO-1rc3;
-	Thu, 23 Jul 2026 22:17:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wn1jd-0000000FAV8-0ZLo;
+	Thu, 23 Jul 2026 22:17:45 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn1jM-0000000FACS-3ZS7;
-	Thu, 23 Jul 2026 22:17:30 +0000
+	id 1wn1jN-0000000FADJ-3qzo;
+	Thu, 23 Jul 2026 22:17:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784845043;
-	bh=KYozak7rIfIhFylDJ62mqmda5vQGHAVtZhaEHfRl5tc=;
+	s=mail; t=1784845042;
+	bh=9OEEVTGH6CtYBorsugsyey8Z+5Bz4/YUYRXLfK0S0LI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KdXwRV0gqM3toPRPACwtJfFPRLoRLmM6oWg2F7igcLp6J4bzzfIg9JSLjrAzDJaDS
-	 ulJgkjWq6Qq/RrZsxoIzuf/z5dTZ/4VL+gc8t03foRzSntQ1wXAepBT3IsUAd1i63Z
-	 tuZpbXhqRngnnocJ/BHxG9BMYylJ5cTuJku4koZf7yLOmfMfhmEN6i4Lo0xRC7Y9ZC
-	 AprTV2NCWt/UxS9H1n25BcKOHXsx5bemcM9k0lGD1hJaAoXA5kazRdjhZRgZoH+X7P
-	 os98r+SLTJx3bW3MwBYXr70ee/5lGFOmV966/Up7JUqdukUp6kDZxkOzaZ/dVO9cdc
-	 c7OHz2WtuYSFw==
+	b=iT9Wi0cAWTk0BPVkRYcxlGX3MliTvt/gODTwhFi4S0nfu9V/IBde4G62OY1yd00Kw
+	 iJcyaCzuqpPJ1517o0eqJ2qgwPAAfz0sOVrurasLJyilM0UEZxyI6Fa+oElt6nMhxZ
+	 LI26p1u/ZznLKxEpI/Q+u/zTWcmwRMEVgtsUpjBsEbLPcFelJsKEpRz/072136dFGG
+	 CkHW3J/zZ0AG4lzcGdFp/v7Fw6YkehxjjknVmRgGPMGu5Cl8iRXLDsl1nIpf+Ceddi
+	 6t5Z6Wu33kg8P5JxprZm0J/L6CEi5BK4zT75SkVqkZfFTVYIzWu1YqjROKTEWwlWjU
+	 7CFqYuqwWr2Ow==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C3DAF17E39BB;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC39217E38B5;
 	Fri, 24 Jul 2026 00:17:22 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1C431480048; Fri, 24 Jul 2026 00:17:22 +0200 (CEST)
+	id 159B4480038; Fri, 24 Jul 2026 00:17:22 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 24 Jul 2026 00:17:19 +0200
-Subject: [PATCH v5 11/15] drm/rockchip: dw_dp: Add runtime PM support
+Date: Fri, 24 Jul 2026 00:17:15 +0200
+Subject: [PATCH v5 07/15] drm/bridge: Add out-of-band HPD notify handler
 MIME-Version: 1.0
-Message-Id: <20260724-synopsys-dw-dp-improvements-v5-11-9445c2e87441@collabora.com>
+Message-Id: <20260724-synopsys-dw-dp-improvements-v5-7-9445c2e87441@collabora.com>
 References: <20260724-synopsys-dw-dp-improvements-v5-0-9445c2e87441@collabora.com>
 In-Reply-To: <20260724-synopsys-dw-dp-improvements-v5-0-9445c2e87441@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -67,26 +67,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4368;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2377;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=KYozak7rIfIhFylDJ62mqmda5vQGHAVtZhaEHfRl5tc=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpikvFvd+2eWWxFgYSd9KMxTdgGjzaCWYNWr
- DoDDsu1oONL64kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqYpLxAAoJENju1/PI
- O/qaILcQAJlL3+e3pZun+4gmOOkKA5W1MNbrBn9wM9MDRX7zjgxIeoTXkaNXP/9s6CCecoYJJls
- yOhN1MuN9wrKOCa8h6d9s8NshHJHGPWeRXmDJnXLvtiP4ONrjJ5vVOgCD//s87TdaMuP0aHOlTD
- Lnj66PuQ6ke5rtNglslnkJLYrpEvZcTYtnboCqMnSEr9N2zt0NWqkMw7d3VkTxpaFYF/u/TI4N+
- YANijCFEfsIGqRV/q8KRfaQXh+hjxWXfN+DC+/Q/E5r4cN4e5K2gZLeOKYcY7O6Gi5+qaWN874H
- iLr4dAX6i2B7hZc1GetQj+cZsmUVJie/uxMg+v1Rrv4UIFb4qEQnJSV+nmVySm2L88QDcuo2rCW
- 5sFLi7rxFCS/VKv1XhtGioe3lX5Z0hyI1ly+bAotw0F3LTjS0YSivybOWT/c3DhHlguTa52jmhH
- qQqNk08ZpSqvEjdEhsuscqFNBRlz3Mn8zZBWqAc74OLDoFzaUQWUT8f81musSsXtIckwh5f8eDc
- HsX5OO/mn3U/HXSutUq93ujeXJzDkQLvyiMbBR/6ZjWSuxPIKLTCeeAfwUOjp+/IEYLe/h4YYu6
- FrcIceymfsrf+ciUyI1IsJLKQ2WuAl/SlzxhO9aBKaYZeh5WPxQWp5gdCfzI4W0Z0NKAA0/WY9x
- dSqTNDgvgymEab0INsZgv8A==
+ bh=9OEEVTGH6CtYBorsugsyey8Z+5Bz4/YUYRXLfK0S0LI=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpikvEEFbg1F+E1M6qoMRfvy0KuRci4qdYC6
+ V79mAVPRAvWn4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqYpLxAAoJENju1/PI
+ O/qarzAQAJdojaS8SDGjiYlZdLf0MSDQ65NzfF7jQsJfIDqC+0s7ey9pDH+0dZZGJIqlBr6xblz
+ wXU+f+LBaxkYcKbHKC4WFAxiaWim5PeAJJM8hkS9q1YvuO+bHiZJAi39YfopEAxlAfUBF7BDpm9
+ hMq/UJD/gvzRC4PgqJDxo29UcRiHqyw/wwFkO1K+J+9wZij09KuwbdSF/tGhbqTVrS0kBfQpzZj
+ bMC3OSSBBUQYLfPe0tlVEpMDA6m6xrpsJUnVXCQOBoQupExYhlAWmzsFLcMYVl4o4erhgs7sS8c
+ IP5ec8CevrRcb5/wUhAvUHye/K03ptXojnckLqZoMP9Q1Ih9PpDerzH4iX+bYtIPa/es/M19CNC
+ osykMeKpI98CToC+F5zA6TBZoXEMkFFbAD25grA+Dt6NsUFrUZT1Fbc9iocYirN0H02kay9+bYm
+ cACXoKBq+nijkk5FGZH2ZaA/aMiSK+1pAevN0N/54xw3MXA5yTZ4yVSbqoUoBKYXIGXyERf2YgG
+ 7qNNWNJ/XlwTVCCeRWqXkWUOkM9TApCvOi/zWM1w3qgbDShW9tZ/zCiP7lkrO4fEozHcN6yIiMD
+ 1BSsNidIJ58nN9p4Fw+zlTyNN9S+6cdpT6Pb3v69TIUZ4qVZRKxptkSSfpdOM1GOFrju2rDRJ6j
+ Ey+bvpCT/H68s4ct3hl8eGA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_151729_180473_2AD3D02C 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20260723_151730_151397_D4B0DD54 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,148 +104,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for runtime PM to the Rockchip RK3576/3588 Synopsys
-DesignWare DisplayPort driver.
+For DP bridges, that can be used for DP AltMode, it might be necessary
+to enforce HPD status. There is an existing ->oob_hotplug_event() on
+the DRM connector, but it currently just calls into hpd_notify().
+
+As DP bridge drivers usually also implement .detect and that also
+generates calls into hpd_notify, this is a bad place to force the
+HPD status as the follow-up detect call might force it off again
+resulting in all follow-up calls to the detection routine also
+failing.
+
+Avoid this by having a dedicated function for OOB events.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 65 +++++++++++++++++++++++++++++--
- 1 file changed, 62 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/display/drm_bridge_connector.c |  6 ++++++
+ include/drm/drm_bridge.h                       | 14 ++++++++++++++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-index 0ecbad24dd4e..b1a69d8821a2 100644
---- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-@@ -12,6 +12,7 @@
- #include <linux/mfd/syscon.h>
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/videodev2.h>
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index 8b54069fa53a..632cc3ae3b54 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -180,6 +180,12 @@ static void drm_bridge_connector_oob_hotplug_event(struct drm_connector *connect
+ 	struct drm_bridge_connector *bridge_connector =
+ 		to_drm_bridge_connector(connector);
  
-@@ -54,9 +55,15 @@ static void dw_dp_rockchip_hpd_sw_sel(void *data, bool force_hpd_from_sw)
- {
- 	struct rockchip_dw_dp *dp = data;
- 	u32 hpd_reg = dp->pdata->hpd_reg[dp->id];
-+	int ret;
- 
- 	dp->hpd_sel = force_hpd_from_sw;
- 
-+	PM_RUNTIME_ACQUIRE_IF_ENABLED_AUTOSUSPEND(dp->dev, pm);
-+	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-+	if (ret)
-+		return;
++	/* Notify all bridges in the pipeline of hotplug events. */
++	drm_for_each_bridge_in_chain(bridge_connector->encoder, bridge) {
++		if (bridge->funcs->oob_notify)
++			bridge->funcs->oob_notify(bridge, connector, status);
++	}
 +
- 	regmap_write(dp->vo_grf, hpd_reg,
- 		     FIELD_PREP_WM16(ROCKCHIP_VO_GRF_DP_SINK_HPD_SEL, dp->hpd_sel));
- }
-@@ -65,11 +72,17 @@ static void dw_dp_rockchip_hpd_sw_cfg(void *data, bool hpd)
- {
- 	struct rockchip_dw_dp *dp = data;
- 	u32 hpd_reg = dp->pdata->hpd_reg[dp->id];
-+	int ret;
- 
- 	dev_dbg(dp->dev, "Force HPD connected=%s\n", str_yes_no(hpd));
- 
- 	dp->hpd_cfg = hpd;
- 
-+	PM_RUNTIME_ACQUIRE_IF_ENABLED_AUTOSUSPEND(dp->dev, pm);
-+	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-+	if (ret)
-+		return;
-+
- 	regmap_write(dp->vo_grf, hpd_reg,
- 		     FIELD_PREP_WM16(ROCKCHIP_VO_GRF_DP_SINK_HPD_CFG, dp->hpd_cfg));
- }
-@@ -165,18 +178,32 @@ static int dw_dp_rockchip_bind(struct device *dev, struct device *master, void *
- 		return ret;
- 	drm_encoder_helper_add(encoder, &dw_dp_encoder_helper_funcs);
- 
-+	pm_runtime_use_autosuspend(dev);
-+	pm_runtime_set_autosuspend_delay(dev, 500);
-+	pm_runtime_set_active(dev);
-+	pm_runtime_enable(dev);
-+
- 	ret = dw_dp_bind(dp->base, encoder);
- 	if (ret)
- 		return ret;
- 
- 	connector = drm_bridge_connector_init(drm_dev, encoder);
- 	if (IS_ERR(connector)) {
--		dw_dp_unbind(dp->base);
--		return dev_err_probe(dev, PTR_ERR(connector),
--				     "Failed to init bridge connector\n");
-+		ret = PTR_ERR(connector);
-+		dev_err_probe(dev, ret, "Failed to init bridge connector\n");
-+		goto error;
- 	}
- 
-+	pm_request_idle(dev);
-+
- 	return 0;
-+
-+error:
-+	pm_runtime_dont_use_autosuspend(dev);
-+	pm_runtime_resume(dev);
-+	pm_runtime_disable(dev);
-+	dw_dp_unbind(dp->base);
-+	return ret;
+ 	drm_bridge_connector_handle_hpd(bridge_connector, status);
  }
  
- static void dw_dp_rockchip_unbind(struct device *dev, struct device *master,
-@@ -185,6 +212,9 @@ static void dw_dp_rockchip_unbind(struct device *dev, struct device *master,
- 	struct rockchip_dw_dp *dp = dev_get_drvdata(dev);
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 3ac84ed57ab2..f38010d2edd1 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -540,6 +540,20 @@ struct drm_bridge_funcs {
+ 	 */
+ 	void (*hpd_disable)(struct drm_bridge *bridge);
  
- 	dw_dp_unbind(dp->base);
-+	pm_runtime_dont_use_autosuspend(dev);
-+	pm_runtime_resume(dev);
-+	pm_runtime_disable(dev);
- }
- 
- static const struct component_ops dw_dp_rockchip_component_ops = {
-@@ -254,6 +284,34 @@ static void dw_dp_rockchip_remove(struct platform_device *pdev)
- 	component_del(&pdev->dev, &dw_dp_rockchip_component_ops);
- }
- 
-+static int dw_dp_rockchip_runtime_suspend(struct device *dev)
-+{
-+	struct rockchip_dw_dp *dp = dev_get_drvdata(dev);
++	/**
++	 * @oob_notify:
++	 *
++	 * Notify the bridge of out of band hot plug detection.
++	 *
++	 * This callback is optional, it may be implemented by bridges that
++	 * need to be notified of display connection or disconnection for
++	 * internal reasons. One use case is to force the DP controllers HPD
++	 * signal for USB-C DP AltMode.
++	 */
++	void (*oob_notify)(struct drm_bridge *bridge,
++			   struct drm_connector *connector,
++			   enum drm_connector_status status);
 +
-+	return dw_dp_runtime_suspend(dp->base);
-+}
-+
-+static int dw_dp_rockchip_runtime_resume(struct device *dev)
-+{
-+	struct rockchip_dw_dp *dp = dev_get_drvdata(dev);
-+	u32 hpd_reg = dp->pdata->hpd_reg[dp->id];
-+	int ret;
-+
-+	ret = dw_dp_runtime_resume(dp->base);
-+	if (ret)
-+		return ret;
-+
-+	regmap_write(dp->vo_grf, hpd_reg,
-+		     FIELD_PREP_WM16(ROCKCHIP_VO_GRF_DP_SINK_HPD_SEL, dp->hpd_sel) |
-+		     FIELD_PREP_WM16(ROCKCHIP_VO_GRF_DP_SINK_HPD_CFG, dp->hpd_cfg));
-+
-+	return 0;
-+}
-+
-+static const struct dev_pm_ops dw_dp_pm_ops = {
-+	RUNTIME_PM_OPS(dw_dp_rockchip_runtime_suspend, dw_dp_rockchip_runtime_resume, NULL)
-+};
-+
- static const struct rockchip_dw_dp_plat_data rk3588_dp_plat_data = {
- 	.num_ctrls = 2,
- 	.ctrl_ids = {0xfde50000, 0xfde60000},
-@@ -288,5 +346,6 @@ struct platform_driver dw_dp_driver = {
- 	.driver = {
- 		.name = "dw-dp",
- 		.of_match_table = dw_dp_of_match,
-+		.pm = pm_ptr(&dw_dp_pm_ops),
- 	},
- };
+ 	/**
+ 	 * @hdmi_tmds_char_rate_valid:
+ 	 *
 
 -- 
 2.53.0
