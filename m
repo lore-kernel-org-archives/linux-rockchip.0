@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFEB8C531D0
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBFD0C531CD
 	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 10:22:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WKv5s+x2Zl0MeoCR8ujMPmBu6LPnFsHCf/bttvlj9xQ=; b=P+qpJLS6BUgCtE
-	U3GOFKEujwPw86SUB6wgLKxhaVairsyOAhj64yQ+ce53tGkZsdFac8vtuz9k6sbV2BCy8StN4L6it
-	BKsGQdI07xuGjT4xFKF/Mbpa80VuPEnTLVGTEHpQyOiDYzd1ORp+o9utP13tmPhLggAHxwJAi2bQH
-	YjK5FSK25+NKAisTqPPwNK6J+ACeI9W2zmmTTxOmO3BnLNv5DDCK6C3Ng8AQt3wWvqyoZ+oOfTC7q
-	papLE31t1++Fumq6SjLAtR7cgC44K4Y5wZvTBUgOJQJysgcunuqTZzhpKB9GVXGGcxc5l46i1+F2n
-	2C6Y0q3B1F/+4p+SSqcg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3qLdMvDThR2Ugs9b1++nZRZQt8wglgLLQFzn76/X098=; b=3ZE6HidCxM36Nv
+	b99O36YL4YIkMby3FmYDEwwDGGYQCPof2N93V7frnZpfdMKzKsmDFHeJfCc1HfJfQX7kDxZ/EjIXV
+	qDoSNnlTMEHGTV9Y8+iPARopoJ5VruWIOxuSix9Js6ylIDtks4SGWoUFGYhraomKxoICBNshLiB6g
+	cSPGlW7cNkjasvx8DxYvmXZctSkpKdHfRBlOK+ldG6UTP0mfnmYdItXQ+mPs5Vu4rDP+OZIqapkAw
+	YQODW0+oOFmJrJlV/zUlxD13pYZBpr2DdJvkr8NMjbrNcWvzTWY4s6wKcDo8e7QhNINhzscsWVp/7
+	Q1b1t4PoqrSwzFUduQ5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmqZJ-0000000E0gs-0aXJ;
-	Thu, 23 Jul 2026 10:22:21 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1wmqZF-0000000E0fF-3cFT;
+	Thu, 23 Jul 2026 10:22:17 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmqZG-0000000E0f8-24Op
+	id 1wmqZC-0000000E0eU-3nWC
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Jul 2026 10:22:19 +0000
-Received: by mail-ed1-x530.google.com with SMTP id 4fb4d7f45d1cf-698beff7178so810542a12.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jul 2026 03:22:17 -0700 (PDT)
+	Thu, 23 Jul 2026 10:22:17 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-69c7ab350e9so792675a12.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jul 2026 03:22:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1784802136; x=1785406936; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=P5GvXCyDbMywePvpWfEAV2wGSAk98JtrF+QMdiv9nn4=;
-        b=Wb3mePyXlT6Jyxn6o/ZfbVQsUBuWOpQIivQNjFc1C2USvk+/BCVAOMABET4QLG+87+
-         tHzrBVtaZcHASGAaa0FNwaLmPbmTCWpQnSBMXm2Cg1qf4pOwnUHM8ORI+typfn7oNkcZ
-         7opMe8QZ42yoSHlRBWaspqwk2GmZ3N1sY8x4InUWW3ZLzOCI4tJLHTi2OpI3aMcLLst4
-         p/iCaFEOwx4NwQYl9Bu4dtVLG59qV8GBYdSJ6cX3Z0Ybvb3E33UvVVff9PlykgLJKRh3
-         bTy92HqbR2vCfFSC6y5gYUC6/Fr3mt3Jamo0wuZ2FhmY96ixsbOu2ZM5Met8/EwxIsn8
-         R3wQ==
+        d=flipper.net; s=google; t=1784802133; x=1785406933; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=kzj0fk/cPMNrKTYV5MOF5u7NMggcty/MWwr6k4CAmao=;
+        b=dAfD7SxqQs9MwuQaN0sZuJmxtuC1os6L3+IQuAEQ3Go/u3VGPDz22Pn2Jz8T3YXzcO
+         q9RJorIn2M+zX8uLrSSPZALLFwMurEBUpk+E9dBC6IPLlIXRx9ml1EXc3KsmlIXteX7D
+         lhnKtV/RG6TGznrhjZ/RP22p6ibEFPDVpO/TYt81PMCde3siulMnFwbnNHNIz2Dpd0q3
+         IFJdIW/0QG0AVCf46iGDRGDmnoqJ3RYVYzL73zNid+8J3B9KnzHl/lMxZGto/j3yL+1+
+         tnqkA98ZA5J+RG4Lfs5EnWH3VnBjmqIpcX+icKjelDXmhSqhgkXjq3rIIoYkbwP6GdP+
+         pKeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784802136; x=1785406936;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=P5GvXCyDbMywePvpWfEAV2wGSAk98JtrF+QMdiv9nn4=;
-        b=Cx187MsjdDAPZpiEB0E11OcM6aCBdV3ZG5Ms9zTxCYOBbW3RV4vq327U46O6lXpFKR
-         hl8KPIvX72pfUWkRHv4JUEaNh384kJSFUZFPPU4BvvGm70I5x64QvqoVIrYp5G0ZIzHo
-         YoagSyD795xO1ds4Xj8mdeNET6WoQPnhCA4xFfvkrK3vYO8QgFCkS7yN7YckG2HWqb0c
-         VB8iBm2I40lh0eWTnuyTQL8Z/O9M5Wcva6qYo4RPxV0Zh4Uh58iHzyA2BEg80SpNOVNj
-         3iFAxuJM3KSR4pqEefWM6cqY4GlKVMMyfFqM7BNdZzCuOoOx9me9XIFoaCdBcN7rb9Jx
-         CC7Q==
-X-Forwarded-Encrypted: i=1; AHgh+Rq4NQBjI0qcOOBLlJQ+Jfa+pjKiu9gviI+9WjJBJ/wXHHqDVdz+lnf0q41dtMn87J+OJaisZPd/JOSdeyu3dA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzdueIiZ1O7PLzBXL2ckUQB7SMb+GBe9/3SBGoMfsjdtfmKEkC6
-	gw2VMlH+DgkJ7dhm53tfE/eiNjjJiSmHqZ+qGJHVNdNa2rAzBhFARi0T3soKCyJ1dQU=
-X-Gm-Gg: AR+sD1076htoNujSB+znL6DiyGVdihfjWqrJO1FhtDizJI9btO4zzJ/pOX1RLxbx04s
-	FK1eILlRmdrHwBLf7E57r6Xp1k2f4Um7VA4HfO9dLnzBQz7D+Kff2cN2Z5wfxVrEYtzgZyP0ldF
-	SPJDY4UB/6JmOG4JXPvHXCNRQ9xb/Wf9qk6Iq4gKaPOzvIOse4pDFUSdM+a7Wl2XIIK9DkBJm6o
-	H9AY3+PORoUsOu7H4OVG8JfE8rsIUXLTnbx4L5bqIEA8bjq8p51CxWcDDanjvmO4W1idpVJG+D1
-	YE4ccGFA0hiw2+0EbXfIpQZRUnkxFqTXq34m8Yog7oyc3AKMBYD4X03XPop7qtpIRkd2rVNOJiS
-	ZXkoEuFujEgD1K+XmYzoTZT68D0sQ3NCIohOa/wFAjb00aoEUcN2gXZ2b6XHa3LyMb29ToFuhr/
-	I2xUx6jymDS0Vby6HV+zYLiA==
-X-Received: by 2002:a05:6402:551b:b0:69c:7985:5aa0 with SMTP id 4fb4d7f45d1cf-69f6bf195b5mr892015a12.16.1784802136598;
-        Thu, 23 Jul 2026 03:22:16 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1784802133; x=1785406933;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=kzj0fk/cPMNrKTYV5MOF5u7NMggcty/MWwr6k4CAmao=;
+        b=dyRIMvLVWn8ZQWcl5H9Zbv6wI/lNc0+XdVYLKo3bRUwVvu556ZBD9n7TYrneNSl9AO
+         hFjWR9RvMrOmNhDc023+X37sCAHMaz09BVHu7yJMb1aG1Zf1yYT3L0s2AU/kAWpIPMcA
+         aNXL2ZN7tB3Q5Q+ZhohVstemKij24NgoiI1wcVyVrsOqNyeDvZ0EK/49z26ZFdIYR5bL
+         unz10Kh6PKunickADtEhTEXbQjZ0hBqC/J6z58Dq5+1RD1kCl9nAg1+CxcaVDGLVgWPT
+         6EikXlMQ91/vR1eF5zUNrdIMBq9tp9xiHMg8TWWlaEjB42uRiBcQ1zY/oNXeGA36JoTc
+         aKCw==
+X-Forwarded-Encrypted: i=1; AHgh+RpFPnVYSdNBBWso7qfzHYfqETl7W4tqVZVTSmhsqYeMNr/MZQuitxiHGKVgKXkySc0z2TMq+cdRfFUrfZM8tA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyuwxC8AWRQr2g58w0ArEr5WrsU/3rQbIhWRS3FPzFZJfwhOb9f
+	gJSP06Q+o5PNFDaxsXQAckfDwYHIjUmAIbefUyv7pA8686vxBy00k+wcle3WM1Fx8CI=
+X-Gm-Gg: AR+sD115RhLa4zYddT65ZMVVAXp03HQ38XS218QoDIenHoPEcwLfXIB6w+lgI13ru8e
+	wKC3NSkn1G6SXDetS829zHMbwP2olzfYT0Dk05+hrqfCnCDt+sXhAYpYopQaDN3G2crioKhcfuO
+	C4HY9TZzJz9b8rYBo3fowVU7YOfGKDL1lx4lQJffVQGYTt+zV2hjcCpL+GUQhF0Os9wyl3KENa7
+	Oha6xlYBIye3tVRnKUg4Dju1CvfgCks9JAHssxeEwW5+sTKtadATdNMBHlBAGZfZGMHHT7xXcp+
+	jBAfagvwJESiA0oOsxySmzufncLfiPA7Fy+NZMk2FYCztQ68SB5GDj9AAhznPW78w8O+OAjvdw2
+	EJ5b1myDGoh0krT7V5alZMltFed7I6kobuve4SR9uuG3gG4VRAQOHJ5adSSoryGIPEz4cAWHTzN
+	gH5b4I/dGdE0SU+Uitd7ytKw==
+X-Received: by 2002:a05:6402:360f:b0:698:4291:b85c with SMTP id 4fb4d7f45d1cf-69f6b62e844mr1014125a12.8.1784802132716;
+        Thu, 23 Jul 2026 03:22:12 -0700 (PDT)
 Received: from alchark-surface.localdomain ([193.32.126.214])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-69f35020dcfsm1944928a12.20.2026.07.23.03.22.13
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-69f35020dcfsm1944928a12.20.2026.07.23.03.22.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jul 2026 03:22:16 -0700 (PDT)
+        Thu, 23 Jul 2026 03:22:12 -0700 (PDT)
 From: Alexey Charkov <alchark@flipper.net>
-Date: Thu, 23 Jul 2026 14:21:58 +0400
-Subject: [PATCH v2 1/2] clk: rockchip: pll: Fix the fractional part
- denominator on RK3588/RK3576
+Subject: [PATCH v2 0/2] Fix RK3576/RK3588 fractional PLL rate calculation
+Date: Thu, 23 Jul 2026 14:21:57 +0400
+Message-Id: <20260723-rk3588-fracpll-v2-0-3adfb9dda235@flipper.net>
 MIME-Version: 1.0
-Message-Id: <20260723-rk3588-fracpll-v2-1-3adfb9dda235@flipper.net>
-References: <20260723-rk3588-fracpll-v2-0-3adfb9dda235@flipper.net>
-In-Reply-To: <20260723-rk3588-fracpll-v2-0-3adfb9dda235@flipper.net>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNwQ6CMBBEf4Xs2Rpa1BZO/ofhAGUrqwSaLRIN6
+ b9b8OxhDi+ZebNCQCYMUGUrMC4UaBoTqEMGtm/GOwrqEoPK1SXXSgp+FmdjhOPG+mEQ7lRobTu
+ Tl6aANPKMjt678Fb/OLzaB9p5s2yNnsI88Wd/XOTW+ytfpJCiVaZsndQ25eoG8h75OOIMdYzxC
+ 87QhPjAAAAA
+X-Change-ID: 20260721-rk3588-fracpll-f4377cd80983
 To: Michael Turquette <mturquette@baylibre.com>, 
  Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, 
  Heiko Stuebner <heiko@sntech.de>, 
@@ -92,17 +93,17 @@ Cc: Dragan Simic <dsimic@manjaro.org>, Liang Chen <cl@rock-chips.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Alexey Charkov <alchark@flipper.net>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2122; i=alchark@flipper.net;
- h=from:subject:message-id; bh=jqtEtaQJKghCWQEk2fjI4x9WFEAteFPftL5uLjU7sBI=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQlvvZq/Tax+UyJXQSjSdG9r+cSuRpOND07vMZbwq3TZ
- fnb033tHRNZGMS4GCzFFFnmfltiO9WIb9YuD4+vMHNYmUCGSIs0MAABCwNfbmJeqZGOkZ6ptqGe
- oZGOsY4RAxenAEz1jAmMDGf1FxS+Z5m+PGMVe/ec0MPTnzm/ePReOV9O+I7ehRMB3VkMfwXOq3/
- ZrqSrL30u0pVX6OyUn9yODO1avPmq7VMncge+YwEA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2625; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=vnZAqLwPovH/ju9j2Cyh+UYxWO+gHOZuE8JwAskYk/k=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQlvvZSt3l+8tDEaeF+5ZclWoXF4mTeHPNpu6nBsnjpi
+ xfn3mTEd0xkYRDjYrAUU2SZ+22J7VQjvlm7PDy+wsxhZQIZIi3SwAAELAx8uYl5pUY6Rnqm2oZ6
+ hkY6xjpGDFycAjDV7RIMf7gCWNtZbgd/bo03N2560bkzYeHSyfVvQjtDO8y2xFuVCDAy7Ju+aX5
+ 2xjVn98mXPH5nlqbvvFez5/WkKznH/7yfL/9MnhMA
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_032218_715501_AC6555C0 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20260723_032215_013568_2B27BA50 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,59 +120,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to the TRM, the fractional PLL coefficient should be divided by
-65536 rather than 65535 to obtain the output rate.
+Fractional PLL rate recalculation for RK3576/RK3588 doesn't correspond to
+what the hardware actually does due to two issues: wrong denominator for
+the fractional component, and wrong signedness of the fractional
+component. The result is the kernel-visible PLL rate being off by about
+2 MHz for the two affected PLL rates vs. what the hardware produces.
 
-Fix the denominator and add a comment with the TRM provided clock formulae
-for future reference.
+While this fixes a real bug it's not a regression, as the issue was
+introduced in the same commit that added the RK3576/RK3588 support.
 
-See RK3576 TRM Part 1 V1.2 section 2.13.1.4 Setting Guide on P, M, S and K
-or equivalently RK3588 TRM part 1 V1.0 section 2.17.1.4 Setting Guide on P,
-M, S and K.
+Note that there is a separate unrelated issue with the rate table, namely
+the 2256000000 Hz entry currently leads to a VCO frequency of 4512 MHz,
+which is just above the TRM-stated maximum of 4500 MHz. Also multiple
+entries in the table end up with Fvco < 3 GHz, which according to the
+TRM leads to a PLL period jitter of +-2% vs. the +-1% for Fvco > 3 GHz.
+To be revisited and optimized separately.
 
-Fractional PLL rates don't seem to be used by any current mainline
-consumers, so this is purely a correctness fix. It will also be important
-to properly support DisplayPort output going forward, as the video output
-controller derives its pixel clock from system PLLs with no dedicated PHY
-PLL option for DP unlike HDMI, and some display modes are only achievable
-with fractional PLL rates.
-
-Fixes: 8f6594494b1c ("clk: rockchip: add pll type for RK3588")
 Signed-off-by: Alexey Charkov <alchark@flipper.net>
 ---
- drivers/clk/rockchip/clk-pll.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+Changes in v2:
+- Split out the denominator fix into its own patch (thanks Heiko)
+- Reword the commit description for clarity (thanks Quentin and Sebastian)
+- Add relevant clock derivation formulas and key constraints directly into
+  a code comment for easier future reference
+- Link to v1: https://patch.msgid.link/20260721-rk3588-fracpll-v1-1-b289bf17cf17@flipper.net
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 6b853800cb6b..bf8acf7cee0d 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -900,6 +900,13 @@ static void rockchip_rk3588_pll_get_params(struct rockchip_clk_pll *pll,
- 	rate->k = ((pllcon >> RK3588_PLLCON2_K_SHIFT) & RK3588_PLLCON2_K_MASK);
- }
- 
-+/*
-+ * 2250 MHz <= Fvco <= 4500 MHz
-+ * For Fvco > 3 GHz: period jitter +-1% frac PLL, +-0.75% int PLL
-+ * For Fvco < 3 GHz: period jitter +-2% frac PLL, +-1.50% int PLL
-+ * Fvco = ((m + k / 65536) * Fin) / p
-+ * Fout = ((m + k / 65536) * Fin) / (p * 2^s)
-+ */
- static unsigned long rockchip_rk3588_pll_recalc_rate(struct clk_hw *hw, unsigned long prate)
- {
- 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-@@ -915,7 +922,7 @@ static unsigned long rockchip_rk3588_pll_recalc_rate(struct clk_hw *hw, unsigned
- 		/* fractional mode */
- 		u64 frac_rate64 = prate * cur.k;
- 
--		postdiv = cur.p * 65535;
-+		postdiv = cur.p * 65536;
- 		do_div(frac_rate64, postdiv);
- 		rate64 += frac_rate64;
- 	}
+To: Michael Turquette <mturquette@baylibre.com>
+To: Stephen Boyd <sboyd@kernel.org>
+To: Brian Masney <bmasney@redhat.com>
+To: Heiko Stuebner <heiko@sntech.de>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Wyon Bi <bivvy.bi@rock-chips.com>
+To: Finley Xiao <finley.xiao@rock-chips.com>
+To: Liang Chen <cl@rock-chips.com>
+To: YouMin Chen <cym@rock-chips.com>
+Cc: linux-clk@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Dragan Simic <dsimic@manjaro.org>
 
--- 
-2.54.0
+---
+Alexey Charkov (2):
+      clk: rockchip: pll: Fix the fractional part denominator on RK3588/RK3576
+      clk: rockchip: Fractional PLL coefficient on RK3588/RK3576 is two's complement
+
+ drivers/clk/rockchip/clk-pll.c    | 16 ++++++++++++----
+ drivers/clk/rockchip/clk-rk3576.c |  4 ++--
+ drivers/clk/rockchip/clk-rk3588.c |  4 ++--
+ drivers/clk/rockchip/clk.h        |  8 ++++----
+ 4 files changed, 20 insertions(+), 12 deletions(-)
+---
+base-commit: b4515cf4156356e8f4fe6e0fdc17f59adab9772f
+change-id: 20260721-rk3588-fracpll-f4377cd80983
+
+Best regards,
+--  
+Alexey Charkov <alchark@flipper.net>
 
 
 _______________________________________________
