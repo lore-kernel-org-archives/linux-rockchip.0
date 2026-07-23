@@ -4,82 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4A6EC531CA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 13:27:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C615C531D2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 14:04:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QYkkVjZGl4Lql78BXkWZINnJx20KQjso1ro8BRNnArc=; b=Oy6enLXHwrDNdr
-	ZsYGUdFqYvkFDmr7p8YRBU1T6kjwLicyW1p+UybOCBRdjEYRqLP2oopwTS+X8fEVyhrh1BtffLw1+
-	jOc/NgL0qRtAJQngjq5lX0mj+GVdX7M5U5xmV5N+5qjJSMthzdFBGbWhS6RLVC3pZOBbtBzEC27C/
-	miBAWi2GL5cFFXZ859C6p7+SW15LYIzan4qAfsSQekWmNqNFPqHagR1T89efX5J0JWmWfp9l+Esjv
-	vyQP4mbO+Gf25U8AkxzOD36yDIP6YuN09a2myrXqSk/0DO6/KL46/X8gCvXIp8vOl4eCJNSBX8Odd
-	YawuX55BO34X1ZSsd9xw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XY1vw4u1krbO6MWPZmwSi79iCNaCQazhSoFozgqUlPE=; b=HaCUXNy1vhPkhP
+	krcVXBaJlGqp3iDwWQjbrdkvJt5BWPQnfLcP856G8eXtEdfVTN2IOqFI6nyiqFZT5QRfc4hLz10Vn
+	1iBC7X/ThPA78HiP21r11LvRhfBiA+X/xt+Ij9Mdj0TslcU+xlBob7o8nqNS/o5D/5szdFFAmQy86
+	hWv8+IEHuihWXKiVAewLs38XO4zPNHoV6rsXxkscQ+DOOscsAJdQjPfYtHtbb1G+bNgUGoDkKwBVg
+	iSoszAEYdShNQfGORdL3OpRikss1p3SMzN7RUErEuJcYeUg98fs6HSzgNIeFfQZfzx1a3SUIXxk1l
+	VJyi/jCD6NkqAr1X9vKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmtSp-0000000ENDH-1Fn9;
-	Thu, 23 Jul 2026 13:27:51 +0000
-Received: from smtpbgjp3.qq.com ([54.92.39.34])
+	id 1wmu2V-0000000ES4r-2f5m;
+	Thu, 23 Jul 2026 14:04:43 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmtSl-0000000ENAr-2lEP;
-	Thu, 23 Jul 2026 13:27:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniontech.com;
-	s=onoh2408; t=1784813222;
-	bh=lrToqYOLFhH+a37iAKtn2F1YCzMAXjDxk7/I/zejNW8=;
-	h=From:To:Subject:Date:Message-Id:MIME-Version;
-	b=kLVYbUv8S31hEiEjkUjGqRJL7g2q6PIOawQpaEHNT0EoXhyyV34gQVnGL0Z+6Dc/u
-	 tEbiCmcl79LS6CVpVvm3LGKPZZ+/JX9s5LhKbHJn7Cocm3NKbrfVU9ptdfGBqh6tBB
-	 PQyJ9bZCTC5M0chhVZUGRXTh2h0zFvGkshKodfXk=
-X-QQ-mid: esmtpgz13t1784813216t40ea92be
-X-QQ-Originating-IP: lLHxSerqMQiIyDtaLEoMK+5mS6xI575gAoG/gj5UYic=
-Received: from localhost.localdomain ( [1.202.39.170])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 23 Jul 2026 21:26:47 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 1
-X-BIZMAIL-ID: 13695719421709608333
-EX-QQ-RecipientCnt: 9
-From: ZhaoJinming <zhaojinming@uniontech.com>
-To: Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>
-Cc: Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	ZhaoJinming <zhaojinming@uniontech.com>
-Subject: [PATCH] iommu/rockchip: Fix silent probe success when all MMU resources fail
-Date: Thu, 23 Jul 2026 21:26:43 +0800
-Message-Id: <20260723132643.2853525-1-zhaojinming@uniontech.com>
-X-Mailer: git-send-email 2.20.1
+	id 1wmu2T-0000000ES4H-3r4J;
+	Thu, 23 Jul 2026 14:04:41 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9325A433BD;
+	Thu, 23 Jul 2026 14:04:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8028B1F000E9;
+	Thu, 23 Jul 2026 14:04:40 +0000 (UTC)
+Date: Thu, 23 Jul 2026 07:04:38 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, davem@davemloft.net, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Russell King
+ <linux@armlinux.org.uk>, Heiner Kallweit <hkallweit1@gmail.com>, Alexis
+ =?UTF-8?B?TG90aG9yw6k=?= <alexis.lothore@bootlin.com>, Jan Petrous
+ <jan.petrous@oss.nxp.com>, Heiko Stuebner <heiko@sntech.de>, Nobuhiro
+ Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, Keguang Zhang
+ <keguang.zhang@gmail.com>, Yao Zi <me@ziyao.cc>, Mohd Ayaan Anwar
+ <mohd.anwar@oss.qualcomm.com>, Romain Gantois <romain.gantois@bootlin.com>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, Drew Fustini
+ <fustini@kernel.org>, Guo Ren <guoren@kernel.org>, Fu Wei
+ <wefu@redhat.com>, Inochi Amaoto <inochiama@gmail.com>, Emil Renner
+ Berthing <kernel@esmil.dk>, Minda Chen <minda.chen@starfivetech.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, thomas.petazzoni@bootlin.com,
+ linux-arm-kernel@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-rockchip@lists.infradead.org, linux-mips@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+ s32@nxp.com
+Subject: Re: [PATCH net] MAINTAINERS: Add myself for stmmac ethernet driver
+ maintainance
+Message-ID: <20260723070438.69c158ba@kernel.org>
+In-Reply-To: <20260722142125.1767689-1-maxime.chevallier@bootlin.com>
+References: <20260722142125.1767689-1-maxime.chevallier@bootlin.com>
 MIME-Version: 1.0
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:uniontech.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: M3ziZXKDk+iOfQ0hQvGGhHXfzZJ7D/54sqqKuhRYVGErTw0U0BNDLmt3
-	AO3cxtQaQTbmR7ndocYm3xnx9BkKhL32SnCK29XkcGU3XaafDQH3POIi9bRPhonfFOxNWch
-	HEFNnEL5hWU7d83jV3zUdSjHIqlEKEeWxaVVEkOjTA8O/Py1dqN8Nu52ws02YV1Cw9vsHjA
-	ItxrhB+7CPw4Rwf43/BcAjZeV0nU95I8tFGpC+dj7W1Q5TZv10PIzKYHfqSrMyglUzejROa
-	rmRjByBLDndfeN0V8VkLZyUA8QZG6CJ4u7SLT2sFGbHtrRIZbOMmOQ/d+utWQrMPqpR5EpI
-	h31e6JReyo/Nmw1nh0c2I7oVWZvwul+zx33t7ZHAdm1vXyfFHP7RNLQ5RAFhEhBC1COmG6X
-	IuMo4YvJNc1pW5+UWJ+e01g4RHZC1xUDcIOX1Qfo9rlpp/i4mcOwqNUKpxw0f7w3mgegv1Y
-	EidcPCRS/0osBQuxrgXnauBz9Hwygt2VqHNo2LOKq/thjg/PBHEUiY8xn6MshYT2JogdAM9
-	rlI/Ersv32th4sXxd6dStYfLFFVf7GP+wiFO1FN/mVM+8aCgP1DLmzqvTHhYQ0Ocycs0hZk
-	fy5rJqti3ROKrG/43ZnD9F847lvSHJPeasmjerMacW5uBPDpbA003jQqvRSshar7JhVR6rW
-	c2SSfdZq2wfR3YPSdMh8RSR4vME247c1aLAehP5/yA/q8+u+ShznMLHTQ7MX0J23Iv20IZZ
-	DXe9QWqeevmGBLp8xwsNRSjmwXMHlk0ZHhRF5MbX9o2kh7IDRUvNuNh+RkAnPXeJlcoU7Yd
-	lRWe8S54PAGC2m7GQ7dnjk3EiKjAKAihgjGqTf3r8xDD741I4HiA/GZ1nwW7kQxbg/tjoJX
-	bU3z93mPQM0GLor1rwlMWYf1bHPOijKLsTRJDXD+xba14lpCfSm3qOzlkgojKfAO0y44lhd
-	zPnBWkxoTCz4Zh0diqzMyx6G9lHMj3YLPM9N4bhch7uxTC593WhATyHwOA6yCm228XGnBsT
-	0R/qG2hnx/2TKmtmkwjKZQQdOddBnRkgjY2/PL/BxVDTgpEKFzu5R9J9HUgCs=
-X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
-X-QQ-RECHKSPAM: 0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_062748_284769_A9BAECB3 
-X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,33 +76,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When all MMU register mappings fail in rk_iommu_probe(), the error
-path returns PTR_ERR(iommu->bases[0]). However, bases[0] can be NULL
-if the first platform_get_resource() also returned NULL, causing
-PTR_ERR(NULL) to evaluate to 0 and the probe to succeed silently.
+On Wed, 22 Jul 2026 16:21:24 +0200 Maxime Chevallier wrote:
+> The stmmac driver based on Synopsys' dwmac IP is used in a very wide
+> variety of SoCs and is currently very actively used and contributed to.
+> 
+> It has been orphaned in January 2025 after the previous maintainers
+> became inactive, but Russell King was providing very valuable reviews
+> and fixes for the driver at that point.
+> 
+> Now we're seeing more and more activity on the driver, but are lacking
+> people to test and review contributions to both glue drivers as well as
+> core stmmac code.
+> 
+> I have access to some variety of stmmac-based platforms such as socfpga
+> CycloneV, imx8mp, some Allwinner SoCs and stm32mp1xx boards that I can
+> run regression tests on, and I'm offering to step-up as a maintainer for
+> driver, for the time being at least.
+> 
+> Let's hope other people will eventually join this effort.
 
-Return -ENODEV directly instead.
-
-Signed-off-by: ZhaoJinming <zhaojinming@uniontech.com>
----
-drivers/iommu/rockchip-iommu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 87ae036d6414..32868ea5fa03 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1245,7 +1245,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 		iommu->num_mmu++;
- 	}
- 	if (iommu->num_mmu == 0)
--		return PTR_ERR(iommu->bases[0]);
-+		return -ENODEV;
- 
- 	iommu->num_irq = platform_irq_count(pdev);
- 	if (iommu->num_irq < 0)
--- 
-2.20.1
+Thanks a lot for taking this on :)
 
 _______________________________________________
 Linux-rockchip mailing list
