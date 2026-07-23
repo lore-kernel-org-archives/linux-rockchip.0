@@ -4,95 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75E70C44524
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 05:34:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D67D0C4453E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 06:38:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nKCJmfO0lxWzEW8XGG2Yndo+chrxon+tIrx0pQWicVo=; b=lHGU8PAVt6cr2N
-	aKLI1VmIptL+eCJFnuzx279HaQ5MpJULP0nkYQftgKcZ561kIXnlsrJeOnkfZp/Cns0LmMs8pVMFl
-	xFT8HfwsQZRhzu0elSKrnH3pWJfbEgevDKkduoZNbrFvmaZcOBwhcW3VaA9MzyF3SpNbU+FS8RnD3
-	2eBituRBKH5nU5dtNc6gbfgtHtDQs8wKi+jlCrwLaAbPAlIXRdO4fhyZGXVj10O+Hy1HPVGxAKfnZ
-	BKiEZ5NRf1DFVjCngPDF+Eo1/izXgEyr2wYiVkldUjuWjfExCvBkOzCGFMDggAnupsCp++wuiMUD3
-	xQ8R5EAEJdzmxMMEGFAQ==;
+	List-Owner; bh=jBNmHxTA7l7btifbQ0hRIiDHMLol3SBsnGf50RM5BZ8=; b=k9b3mXoZ1GnRan
+	Psma6tA7rAoch+Cxgt3MpUllBIuaToY+H4zjLzw6o48JPvJKdJ2YmDBbb6MA/WL2azj6h49xbWgI0
+	wiaYgInakXB6mHSjCMGFAy9WoMWMO4SEMrlUvx8mY9vtY4t7vH0JVOKNv8OJDQreRUBvFIiF8pQMo
+	CfiYSJsdKdWzlBgNUlmc9U2fFiyuFLuKZOBtKvOlm40uKQGbyTRt/cHK9ScspZL7Y9T70/70LHZ1S
+	V3gMEOjw3v2vRnUY6ubveIfI2ioJcV4lpBopZAQH+Aa0nqVCoAjQPaein2mCkQv7yQrhlv+s4gmbp
+	0r+OvHfPoaJwCmwzyAmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmm4U-0000000DU5B-1b2B;
-	Thu, 23 Jul 2026 05:34:14 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1wmn4G-0000000DYcq-1SD4;
+	Thu, 23 Jul 2026 06:38:04 +0000
+Received: from mail-m60119.netease.com ([210.79.60.119])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmm4R-0000000DU4W-2i9L
-	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Jul 2026 05:34:12 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-69e08ad526cso316884a12.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 22 Jul 2026 22:34:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pardini.net; s=google; t=1784784849; x=1785389649; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=Z9Xvw9T6eAQSk6Ziei+kwmi6b3zyorGLKbWsnxvpWlc=;
-        b=hS+/4OoyR+X+Nj98bDjby88mscWRHyR1M7OjWCFT8FUwfJASJKzKf2gGmZOySJrPR6
-         gjCJ/03Lhe48bCIYXMmFdgF5w40byyZ0ggJuaJK5Mh5Iw/TXeOqiwBA7mlt828JDoe1h
-         F2rTSzS70ALT8ovj6ovQybA4Ne+4cVTWMz2E1QutKQlruehLCp0jsFdiDFfQ30NLW1IE
-         XCOZjDyWqugtrOUutNxozBn7p8U8YND4H/AQZkSCAEzJJYezI+aHHJoIECGxbcfySiCQ
-         lqobcHHm3KkaANx/kKEK7WFuqhbMqbWuvaCRj/ovqB1RSYJnVzkZ2RUV++q2L2CSPpjw
-         XGDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784784849; x=1785389649;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Z9Xvw9T6eAQSk6Ziei+kwmi6b3zyorGLKbWsnxvpWlc=;
-        b=noXSflf+qmSdSMdSDoIcLchm5v10AsPIsJ8NzTs7aWfudtMA5uXDD9bsXdLox+2YRM
-         XOiADCgXSCTjEhsQxFgZoOYWZUZZZCu+5fdPB31Dz7lQ3ItQj9zG93iL0HIo69GtYC/s
-         2Dhu0008A0+XWczCrDnBX6kaVXMfYHO/o7JKvctyZmTrcccbpegcHUzE4qckGBVPf+g3
-         eQJsgjHhwUkKtuuKDrkzuFHEETxqfpXKPcYYnaAWZymQBrU6uQcaNtB4nVyz6JSGUjbo
-         FVmG7qbLWsbudqWWPYvWtvfqEPeOS4KtHNQRq3wmIKJxI4p5H+LyeQm/MQTUxx7UEJqA
-         0qAw==
-X-Forwarded-Encrypted: i=1; AHgh+RprmdHkkLHEBQtFSUKQmMIgzCn7bhF9e2JGrK5OWr74N0O2VnLjdDxGbvgNlZ9B7Nb64kArbUmvowTEbDQ1Sg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YysEXdYWTDNGseMnvA2Yp/0/2xf/oIqId+IJbtVwJ7UVArBZNFg
-	UfHD9gSJIX/pbMj6KOUWNhjPZMIy7sHcLSTRTS9LJjW/Rxh/8ucrRqDbmIJ1kWf6eA==
-X-Gm-Gg: AR+sD10H7VH2OaDO5jG2eJ6sxCN+BRVXU+9yRAeCziJu3w9Yc610UumQRKy93lLTh5j
-	kbroFvJWBoaFIsCppgKmEZBPeC9OW3AtPC1dga+34WMn+nQ+2ExQEdFMbahecAPROlNOQkpvYTr
-	2smtH8bkM4eWrSf2Wb3xa2lbqJ9afY3aYk6nzJbP4jRdfW0f5Q+dPmwvZjmstxgI4qrlAhfcysW
-	CWFiAOj4AWaOik7mbHbfwgnakgtqRierVF5aMS2vOtxF7G/k1l36WnnS0kD7XfIU+KTJbJoLjzh
-	HPNGWsrQYUsULzpazHPEjVdg2GswEzGW5im7CejpNTi1o3EAqdd38+MyophkR2XVvro2my/ATcn
-	zOjYJoC8x3i8HJDXwq44SmAlmjC88uiKv8mztN8lyqCFUtQDaWcEzyu3k3scWDQwCve7vh53kNK
-	sm8hdRCkz3muJZZV+grUWIXeoIYiJTCrSu2HSkD79FbhGyf8/nP8DAUHkqBgvd+tDzG4SAqtHm9
-	q3iwnRNFBFuKCaFUOIW7ea4imppYTRtWGSjIQvZ03lr6vyDrtPAxg==
-X-Received: by 2002:a05:6402:4555:b0:698:99be:29d6 with SMTP id 4fb4d7f45d1cf-69f6c4ef29dmr358015a12.29.1784784848988;
-        Wed, 22 Jul 2026 22:34:08 -0700 (PDT)
-Received: from ?IPV6:2a02:a466:4d7a:0:30b7:a679:c7a7:7d05? (2a02-a466-4d7a-0-30b7-a679-c7a7-7d05.fixed6.kpn.net. [2a02:a466:4d7a:0:30b7:a679:c7a7:7d05])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-69f345b1b18sm1838609a12.2.2026.07.22.22.34.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 Jul 2026 22:34:07 -0700 (PDT)
-Message-ID: <6cc68287-ee87-4db6-8f40-531ec2d92fb2@pardini.net>
-Date: Thu, 23 Jul 2026 07:34:05 +0200
+	id 1wmn4B-0000000DYbW-3D15;
+	Thu, 23 Jul 2026 06:38:02 +0000
+Received: from [172.16.12.74] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4746d9e60;
+	Thu, 23 Jul 2026 14:37:43 +0800 (GMT+08:00)
+Message-ID: <97e28cf5-dd68-499f-9b05-95690807a5b6@rock-chips.com>
+Date: Thu, 23 Jul 2026 14:37:43 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] clk: rockchip: rk3588: don't disable unused I2S MCLK
- output gates
-To: Heiko Stuebner <heiko@sntech.de>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Daniele Briguglio <hello@superkali.me>
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Diederik de Haas <diederik@cknow-tech.com>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-References: <20260624123914.1767374-1-hello@superkali.me>
- <178267399833.3089434.5140309637329023610.b4-ty@sntech.de>
+Subject: Re: [PATCH v6 0/5] Add eDP lane mapping support
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260707040613.1992841-1-damon.ding@rock-chips.com>
 Content-Language: en-US
-From: Ricardo Pardini <ricardo@pardini.net>
-In-Reply-To: <178267399833.3089434.5140309637329023610.b4-ty@sntech.de>
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20260707040613.1992841-1-damon.ding@rock-chips.com>
+X-HM-Tid: 0a9f8db1bbfc03a8kunmce2c72a238580c
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGh1IS1ZCQxlOHk5NGB
+	pMSE1WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSEpKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=BRDErc+nOga+bu2rulXIPEgszcRtzplx0OBArAZBL8pXrQtJGw2+BRjUNroUJKjfDGWnaHBTTqPQhcrAsMdYAORLDKlyrnpFquwd/zm15pJqzIeaHNc3sV6C06heK9Nu1/Z3lF0D6jdo0w77EZEhEmpvp2/J+n1epPFgzk+9QV4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=hPnxwzBAhZxcG9oWTVfy2nq7tEgZYFpIDiq2DYBjWcA=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_223411_768397_5EC599B8 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20260722_233800_425899_BA1A2C1E 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,36 +85,73 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 28/06/2026 21:13, Heiko Stuebner wrote:
-> 
-> On Wed, 24 Jun 2026 14:39:14 +0200, Daniele Briguglio wrote:
->> No in-tree board references these gates yet. Boards drive the codec
->> MCLK through the parent I2S*_8CH_MCLKOUT, and now that the gates are
->> managed clocks, clk_disable_unused() turns them off at boot. On a board
->> that relied on firmware leaving the output enabled, that cuts the MCLK
->> and analog audio stops working.
->>
->> Mark the four gates CLK_IGNORE_UNUSED so an unreferenced gate keeps the
->> state firmware left. A board that wants the kernel to own the gate can
->> reference I2S*_8CH_MCLKOUT_TO_IO from DT instead.
->>
->> [...]
-> 
-> Applied, thanks!
-> 
-> [1/1] clk: rockchip: rk3588: don't disable unused I2S MCLK output gates
->        commit: 946352b2f88fd2378f0341312e47dff1e8dc2fac
-> 
+Gentle ping.
 
-Hi Heiko, Stephen,
-
-sorry to pester, but do you think it's possible to include this in the 
-next -fixes for Linus?
-It's been in mmind v7.2-clk/fixes for a few weeks now, but I haven't 
-seen it in -rc4.
-
-Thanks,
-Ricardo
+On 7/7/2026 12:06 PM, Damon Ding wrote:
+> This series adds configurable eDP physical lane mapping support via
+> device tree data-lanes property.
+> 
+> Lane mapping is mainly used for below scenarios:
+> 1. Correct PCB lane swap and differential line routing crossover
+>     without hardware changes;
+> 2. Adapt mismatched lane pin definitions between SoC and eDP panel;
+> 3. Support multiple panel hardware variants on the same board
+>     by configuring data-lanes in device tree only.
+> 
+> The series includes driver implementation and device tree binding
+> updates to support custom lane mapping configuration from endpoint
+> node, and keeps default linear lane order if no configuration is given.
+> 
+> Patch 1: Add endpoint data-lanes property to analogix-dp binding
+> Patch 2: Add DRM DP helper API to validate DP lane counts
+> Patch 3: Restore mandatory for samsung,link-rate and samsung,lane-count
+>           properties
+> Patch 4: Add validation for samsung,lane-count property as preparation
+> Patch 5: Implement lane mapping in analogix_dp driver
+> 
+> Damon Ding (5):
+>    dt-bindings: display: bridge: analogix-dp: Add data-lanes support for
+>      endpoint
+>    drm/dp: Add helper to validate DP lane counts
+>    drm/bridge: analogix_dp: Restore mandatory samsung DP DT properties
+>    drm/bridge: analogix_dp: Add validation for samsung,lane-count
+>      property
+>    drm/bridge: analogix_dp: Add support for optional data-lanes mapping
+> 
+>   .../bindings/display/bridge/analogix,dp.yaml  | 19 +++--
+>   .../rockchip/rockchip,analogix-dp.yaml        |  1 +
+>   .../drm/bridge/analogix/analogix_dp_core.c    | 70 +++++++++++++++++--
+>   .../drm/bridge/analogix/analogix_dp_core.h    |  4 +-
+>   .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 15 ++--
+>   .../gpu/drm/bridge/analogix/analogix_dp_reg.h |  4 ++
+>   include/drm/display/drm_dp_helper.h           |  6 ++
+>   7 files changed, 101 insertions(+), 18 deletions(-)
+> 
+> ---
+> 
+> Changes in v2:
+> - Add lane mapping application scenarios in commit message.
+> - Remove redundant deprecated property 'data-lanes' for eDP node.
+> - Update port@1 $ref to /schemas/graph.yaml#/$defs/port-base.
+> 
+> Changes in v3:
+> - Squash [PATCH v2 2/3] into [PATCH v2 1/3].
+> - Add unevaluatedProperties: false to both the port@1 and endpoint
+>    nodes.
+> 
+> Changes in v4:
+> - Add validation for samsung,lane-count property as preparation.
+> 
+> Changes in v5:
+> - Add DRM DP helper API to validate DP lane counts.
+> - Apply DRM DP helper API to check the validity of samsung,lane-count
+>    property.
+> - Add Acked-by and Reviewed-by tags.
+> 
+> Changes in v6:
+> - Add a seperate commit to restore mandatory samsung DP DT properties.
+> - Add Reviewed-by tag.
+> 
 
 
 _______________________________________________
