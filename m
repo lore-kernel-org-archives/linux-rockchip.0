@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5F69C531FF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 22:17:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A95C53209
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 22:17:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f0kfmmIXr4vjMU0i4UUkhaaAUllxctYy5gU5XqDPTLg=; b=V7RWdstQ5CXyoF
-	KPzFuAQBIwzgxXcuuKtjCqyoMtkz2PLxozZuHjXV71bKvMtPzmnAIdAhp1LOOFpg/69hu/rQe4/Gt
-	vT3+5oToGW9BZJAJxt+8+WGS2b3BwO86NVeybBD9DBKLQhGmX0a/lyFAUVV3PUc3WQAyKpaNYyOvK
-	W8fz2TDKl+iQdU6suz0NK6EYgFl9mhWA8lfPxB67AuTs4hgPyQa2wGTeYAAOOZBr8/lmPAR0dcpgT
-	ovKVMsqsrZofXOGxJgLgGAQ3o13dEB88L+ghSExSZuHtJD56lg+cUuNf+1ponNCCMYhZc19XL187D
-	FE2Yz+nzBRT+V2Oyhf4Q==;
+	List-Owner; bh=wAayGCfbTcbonbU2Eon4jgnTLrN4vbteG8dvo5jHZ3A=; b=Nnynh57x12d3D5
+	MyjTdtYNJ1n1JRfZzFFRfX5PwUzMHgHFOoSe6IKGk7692XWz8wxW0XapPStHSa7KdSvsmHb9yBoLc
+	1hk5tBRcG9OXZC+OfuSdl59tCl1RZCqsJnxJoCf3/8qT8QT2dNn/gOA6Qz2EcGzSx2LvTzgPPL2x7
+	LA16nRg6WU5hy8QZYXKiPq4M2V+qSfAU2q8/I88DxAVrtjtuxhJbKS+7MS670jSDWgYZrKWez5ys8
+	W8y7cYs2U0hPPLvDG/+CbfGsOviU3Z7RimHRngd/XozdizK/G2R90kikSRFXXDS3yFq+ZSY4+E9k/
+	J4qT/Nud4QHxjWb2yKqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn1ja-0000000FAPW-2pjj;
-	Thu, 23 Jul 2026 22:17:42 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wn1jc-0000000FASU-00PB;
+	Thu, 23 Jul 2026 22:17:44 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn1jJ-0000000FAB4-2R0E;
-	Thu, 23 Jul 2026 22:17:28 +0000
+	id 1wn1jN-0000000FACw-2UEZ;
+	Thu, 23 Jul 2026 22:17:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784845042;
-	bh=PB8Tqf1O8v17mcbdbRA29Xc31/9NEqmOM81aKdJaZhw=;
+	s=mail; t=1784845043;
+	bh=k0eRRol0juQKDRwk26Fz36sBhpAIKfOBZOjBCwiTCgw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=HAycovQ80e7VLRGjVtZAEACtRZBnCRvIOWWB9oiOiB7DWjDovwVQykHKqS6WR40PW
-	 4MV6a03su0aCU9R0EXvZ5L9RNumA54VARszG4j8ckGWwKYZEN48CFAN5Ivd1V9dgT+
-	 qoaFvrxUljGCxsGBUJ4F9knMjF74hlciYXDwOkC63PXpUNTA7mv7JWG7TDZDAJtF+e
-	 QGn8E+P7yb89ogNkdgNYS4ZP8Ab15VKByqxU28iq3DsaDo4ewHn6RWZH7MEpRZGjMB
-	 Y6PvaANfR3TyNQvXsYUx5j/txpf7ToviJJjpvMQ9+tr10gsrv3PI0IrepZyFsxfZV+
-	 qNHnfcTyiBjZw==
+	b=NB1+Vu1fCV1nTwlfRNX8qIOTQOeHT0VDJjO29BiOv5/vnbUH4W9CcWE8u0QCO+uRe
+	 414bGO78KmWtQrpd6debnqr4phILoNI3K/4igfqD43wC2Nds3qeMtHg4Bm1K9rU48V
+	 i6GEQElMGrMVhGiP7EoIC9cSGeFkQUNPoDWlRwBhbnVclhdg9Z6WNmjloZZBeOnhv+
+	 bQXqA2X9zz5a/Xw3yDQ6O9S4+OvHnEm+KKRIeAZykv00vAthEHMF3DjLuvw7+ybp+I
+	 Avg+Gveuxsd1XnVuTxD2r6DLKm01n75bMzggSBYZTUGWzmRgJQrWF/B6QXMenm8Hae
+	 wv8hZ+5gEbhTg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 55C9317E0ED6;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D2AD917E3BAF;
 	Fri, 24 Jul 2026 00:17:22 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 0C914480028; Fri, 24 Jul 2026 00:17:22 +0200 (CEST)
+	id 20F9F480052; Fri, 24 Jul 2026 00:17:22 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 24 Jul 2026 00:17:09 +0200
-Subject: [PATCH v5 01/15] drm/bridge: synopsys: dw-dp: Fix incorrect
- resource lifetimes in bind callback
+Date: Fri, 24 Jul 2026 00:17:22 +0200
+Subject: [PATCH v5 14/15] dt-bindings: display: rockchip: dw-dp: Fix sound
+ DAI cells
 MIME-Version: 1.0
-Message-Id: <20260724-synopsys-dw-dp-improvements-v5-1-9445c2e87441@collabora.com>
+Message-Id: <20260724-synopsys-dw-dp-improvements-v5-14-9445c2e87441@collabora.com>
 References: <20260724-synopsys-dw-dp-improvements-v5-0-9445c2e87441@collabora.com>
 In-Reply-To: <20260724-synopsys-dw-dp-improvements-v5-0-9445c2e87441@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,26 +68,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=9493;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3080;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=PB8Tqf1O8v17mcbdbRA29Xc31/9NEqmOM81aKdJaZhw=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpikvFmjo4oqGQq33iQIPJNizqkjvFUvub+g
- Z3GVQrquNErnIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqYpLxAAoJENju1/PI
- O/qabgUP/i3tGgscgIGP0WBKLljQ0F1NhxEM/X02rLFlMhJWx78sSG5TufSbeMeH/ZkqhYzkaAl
- H6G8R3GmntfYvJnbAKeC68ALEZjKVO7+8ZhvSY/Lwm5L0nrPYQSe8GIahouJw8vFKJIzDNkPWG7
- G+B6zWKRVwpk+SW/ARlM2lLNoQiT1ggITgs98q0LaJ0ddnUh+x1g5FTbvUiK2rdmRYRBb0BkumO
- WMO6HleimI2d/We8EsOgXjDKLFjWH4MIgnYqu+9FXzYtxEnbQ3XAISvrT9ysYJE2ZGg8ewXVQ4y
- lW//fvflPvhFGTgzhwzXdTRKhP1+3OKLkEZH6wdXWvp01onngR+FHXLuI6kl0BrtCALG7YyiH3F
- Dl0uSal3rBzuSm+r8qy5eo7AoVetiXMWx9FJnA3AZsK+dO6Oi3aAZXU2+Rc7WgrFhdkvLn71Oi1
- HhLHS3aU+0JxBnO6ebiYjL3jkYIQjypJ2M04QoiJPHew+W0soSwC1jFs0N7Yqg/pdOPdKML6tkd
- GoR1ag/X0LVSAfSCQPoMEJrYao6/GktR9PmqW+6kBabLGLI9R+sThFIFMAKrYdX94jCUpdwKelH
- M3bkKLa2S6XKwEDD63NaYVt95mPrJ7cLL/BwNu2aWymWcU0smat+1Dqy0XJyeSoSBLxFlQ8a6/E
- TKFUt5na0svHKTdD4FScuqA==
+ bh=k0eRRol0juQKDRwk26Fz36sBhpAIKfOBZOjBCwiTCgw=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpikvGv9aRl1I9rdbdJ6KY1XhUsBepalYuih
+ ZEu76KK2kiAaYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqYpLxAAoJENju1/PI
+ O/qaRUgQAKkImUwS1rKg0zuMtEhVWrCaFS3D5vDthyqS7K+2R1JO/YNMsOFmSckaE2J1kcPhZt7
+ AifYn6vnevhgWbH+rGjA/RheouA/KtUDjgpLrYD15Pxt58NTZUB6AMHUor2kuIKNVP03PLE0gul
+ EVmrOFYUMwIccgtsfWn+9JwXXJWYTatbeRrL4VszH5iE4LDUnd/R6SAJ0sq9Gj9OdR5BInO8G6V
+ tr/mB7HrqmkgZ6hPBTsnB/jv0ODAk+fbr4XPXvk8+JBnrlC9xudDSqhvizZSt9MTaH9CIktX7TK
+ bHSRw7SyRgxjq27rtuVVQvC6V1zLquKTvzu7ACPn+PtiDFRpcUQ9mSz6tDkHIayTRRL849eplhE
+ lmv3FXv6Ycun3P7IvxN99pObMxVBMTVkfmFvY4tGNIhxs121VLnt/XpOG0YXM9JKuhUxg6v63Ct
+ /hjPG9RPmR7NGxczUFwfCfCB7PlpNqEGRUbCJ/6f15HKgeIf4icimMvzpyya+m3XFW+UGlcshZg
+ X/wwQJC2JrMMYN2oXexH9GCBrLJ5MMQTLWhDxln21sUV/B+5dfUgNcMVDDVjVL6yUWpqwaWOXmu
+ 6ecd2oKlbOHfyaVBujoM1A6PN66D1wc2LOR1ED3AtYgOCkaA+AisE9tvt+C/RJibbnBLFwu+LDX
+ VqChl59YcHs6czxMnJ6o3lQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_151725_797814_FA6CD981 
-X-CRM114-Status: GOOD (  21.00  )
+X-CRM114-CacheID: sfid-20260723_151729_861229_7C94C216 
+X-CRM114-Status: GOOD (  19.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,315 +99,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Sashiko <sashiko-bot@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently the Synopsys DesignWare DP controller driver's bind function
-requests lots of resources using device managed functions. These are
-free'd on driver removal instead of at unbind time. Fix this discrepancy
-by introducing a new probe helper function and moving over most of the
-early resource acquisitions.
+The RK3588 and RK3576 DesignWare DisplayPort controllers both have two
+possible DAI interfaces: I2S and S/PDIF. Thus an argument is needed to
+to select the right interface.
 
-Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
+In addition to that the RK3576 DisplayPort controller is configured
+with Multi Stream Transport (MST) enabled for up to 3 displays and
+thus has a total of 6 DAI interfaces (I2S and S/PDIF for each possible
+stream). Meanwhile the RK3588 does not support MST and thus has only 2
+DAI interfaces.
+
+The binding update from this patch has only been tested with the simple
+single stream transport (SST) setup as the Linux driver does not yet
+support MST. Once MST support is added, the plan is to simply add more
+numbers to the argument, so that it looks like this for RK3576:
+
+0 = I2S on stream 0,
+1 = S/PDIF on stream 0
+2 = I2S on stream 1,
+3 = S/PDIF on stream 1
+4 = I2S on stream 2,
+5 = S/PDIF on stream 2
+
+As the arguments are not part of the binding itself the audio side
+is also ready for MST after this change.
+
+Switching '#sound-dai-cells' from 0 to 1 without keeping compatibility
+is an ABI break. The rationale for going that way is, that there is not
+a single known driver implementation for the current binding. It's also
+unclear how the current binding would be used (only support I2S or
+S/PDIF for stream 0?). The mainline rk3588 DTS include sets it to 0, but
+does not have any soundcard using the DAI. This will be fixed up
+separately. The RK3576 does not set it at all.
+
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c   | 128 +++++++++++++++---------------
- drivers/gpu/drm/rockchip/dw_dp-rockchip.c |  53 ++++++++-----
- include/drm/bridge/dw_dp.h                |   5 +-
- 3 files changed, 99 insertions(+), 87 deletions(-)
+ .../devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml     | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 3445c82e6f50..368e1f85e625 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1954,20 +1954,72 @@ static const struct regmap_config dw_dp_regmap_config = {
- 	.rd_table = &dw_dp_readable_table,
- };
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+index 2b0d9e23e943..c4f8959dd65d 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+@@ -25,7 +25,7 @@ description: |
+   * Supports up to 8/10 bits per color component
+   * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
+   * Pixel clock up to 594MHz
+-  * I2S, SPDIF audio interface
++  * I2S, S/PDIF audio interface
  
--static void dw_dp_phy_exit(void *data)
-+int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
- {
--	struct dw_dp *dp = data;
-+	struct device *dev = dp->dev;
-+	struct drm_bridge *bridge;
-+	int ret;
-+
-+	bridge = &dp->bridge;
-+	bridge->of_node = dev->of_node;
-+	bridge->ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
-+	bridge->type = DRM_MODE_CONNECTOR_DisplayPort;
-+	bridge->ycbcr_420_allowed = true;
-+
-+	drm_bridge_add(bridge);
-+
-+	dp->aux.dev = dev;
-+	dp->aux.drm_dev = encoder->dev;
-+	dp->aux.name = dev_name(dev);
-+	dp->aux.transfer = dw_dp_aux_transfer;
-+	ret = drm_dp_aux_register(&dp->aux);
-+	if (ret) {
-+		dev_err_probe(dev, ret, "Aux register failed\n");
-+		goto unregister_bridge;
-+	}
-+
-+	ret = drm_bridge_attach(encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-+	if (ret) {
-+		dev_err_probe(dev, ret, "Failed to attach bridge\n");
-+		goto unregister_aux;
-+	}
-+
-+	dw_dp_init_hw(dp);
+ properties:
+   compatible:
+@@ -46,7 +46,7 @@ properties:
+       - description: DisplayPort AUX clock
+       - description: HDCP clock
+       - description: I2S interface clock
+-      - description: SPDIF interfce clock
++      - description: S/PDIF interfce clock
  
-+	ret = phy_init(dp->phy);
-+	if (ret) {
-+		dev_err_probe(dev, ret, "phy init failed\n");
-+		goto unregister_aux;
-+	}
-+
-+	enable_irq(dp->irq);
-+
-+	return 0;
-+
-+unregister_aux:
-+	drm_dp_aux_unregister(&dp->aux);
-+
-+unregister_bridge:
-+	drm_bridge_remove(bridge);
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(dw_dp_bind);
-+
-+void dw_dp_unbind(struct dw_dp *dp)
-+{
-+	disable_irq(dp->irq);
- 	phy_exit(dp->phy);
-+	drm_dp_aux_unregister(&dp->aux);
-+	drm_bridge_remove(&dp->bridge);
- }
-+EXPORT_SYMBOL_GPL(dw_dp_unbind);
+   clock-names:
+     minItems: 3
+@@ -83,7 +83,8 @@ properties:
+     maxItems: 1
  
--struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
--			 const struct dw_dp_plat_data *plat_data)
-+struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_data *plat_data)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	struct dw_dp *dp;
--	struct drm_bridge *bridge;
-+	struct device *dev = &pdev->dev;
- 	void __iomem *res;
-+	struct dw_dp *dp;
- 	int ret;
+   "#sound-dai-cells":
+-    const: 0
++    const: 1
++    description: 0 for I2S, 1 for S/PDIF
  
- 	dp = devm_drm_bridge_alloc(dev, struct dw_dp, bridge, &dw_dp_bridge_funcs);
-@@ -1976,9 +2028,8 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ required:
+   - compatible
+@@ -144,7 +145,7 @@ examples:
+         resets = <&cru SRST_DP0>;
+         phys = <&usbdp_phy0 PHY_TYPE_DP>;
+         power-domains = <&power RK3588_PD_VO0>;
+-        #sound-dai-cells = <0>;
++        #sound-dai-cells = <1>;
  
- 	dp->dev = dev;
- 	dp->pixel_mode = plat_data->pixel_mode;
--
- 	dp->plat_data.max_link_rate = plat_data->max_link_rate;
--	bridge = &dp->bridge;
-+
- 	mutex_init(&dp->irq_lock);
- 	INIT_WORK(&dp->hpd_work, dw_dp_hpd_work);
- 	init_completion(&dp->complete);
-@@ -2035,69 +2086,20 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
- 		return ERR_CAST(dp->rstc);
- 	}
- 
--	bridge->of_node = dev->of_node;
--	bridge->ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
--	bridge->type = DRM_MODE_CONNECTOR_DisplayPort;
--	bridge->ycbcr_420_allowed = true;
--
--	ret = devm_drm_bridge_add(dev, bridge);
--	if (ret)
--		return ERR_PTR(ret);
--
--	dp->aux.dev = dev;
--	dp->aux.drm_dev = encoder->dev;
--	dp->aux.name = dev_name(dev);
--	dp->aux.transfer = dw_dp_aux_transfer;
--	ret = drm_dp_aux_register(&dp->aux);
--	if (ret) {
--		dev_err_probe(dev, ret, "Aux register failed\n");
--		return ERR_PTR(ret);
--	}
--
--	ret = drm_bridge_attach(encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
--	if (ret) {
--		dev_err_probe(dev, ret, "Failed to attach bridge\n");
--		goto unregister_aux;
--	}
--
--	dw_dp_init_hw(dp);
--
--	ret = phy_init(dp->phy);
--	if (ret) {
--		dev_err_probe(dev, ret, "phy init failed\n");
--		goto unregister_aux;
--	}
--
--	ret = devm_add_action_or_reset(dev, dw_dp_phy_exit, dp);
--	if (ret)
--		goto unregister_aux;
--
- 	dp->irq = platform_get_irq(pdev, 0);
--	if (dp->irq < 0) {
--		ret = dp->irq;
--		goto unregister_aux;
--	}
-+	if (dp->irq < 0)
-+		return ERR_PTR(dp->irq);
- 
- 	ret = devm_request_threaded_irq(dev, dp->irq, NULL, dw_dp_irq,
--					IRQF_ONESHOT, dev_name(dev), dp);
-+					IRQF_ONESHOT | IRQF_NO_AUTOEN, dev_name(dev), dp);
- 	if (ret) {
- 		dev_err_probe(dev, ret, "failed to request irq\n");
--		goto unregister_aux;
-+		return ERR_PTR(ret);
- 	}
- 
- 	return dp;
--
--unregister_aux:
--	drm_dp_aux_unregister(&dp->aux);
--	return ERR_PTR(ret);
- }
--EXPORT_SYMBOL_GPL(dw_dp_bind);
--
--void dw_dp_unbind(struct dw_dp *dp)
--{
--	drm_dp_aux_unregister(&dp->aux);
--}
--EXPORT_SYMBOL_GPL(dw_dp_unbind);
-+EXPORT_SYMBOL_GPL(dw_dp_probe);
- 
- MODULE_AUTHOR("Andy Yan <andyshrk@163.com>");
- MODULE_DESCRIPTION("DW DP Core Library");
-diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-index b23efb153c9e..005938dc66c9 100644
---- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-@@ -26,7 +26,7 @@
- struct rockchip_dw_dp {
- 	struct dw_dp *base;
- 	struct device *dev;
--	struct rockchip_encoder encoder;
-+	struct rockchip_encoder *encoder;
- };
- 
- static int dw_dp_encoder_atomic_check(struct drm_encoder *encoder,
-@@ -73,37 +73,28 @@ static const struct drm_encoder_helper_funcs dw_dp_encoder_helper_funcs = {
- 
- static int dw_dp_rockchip_bind(struct device *dev, struct device *master, void *data)
- {
--	struct platform_device *pdev = to_platform_device(dev);
--	const struct dw_dp_plat_data *plat_data;
-+	struct rockchip_dw_dp *dp = dev_get_drvdata(dev);
- 	struct drm_device *drm_dev = data;
--	struct rockchip_dw_dp *dp;
- 	struct drm_encoder *encoder;
- 	struct drm_connector *connector;
- 	int ret;
- 
--	dp = drmm_kzalloc(drm_dev, sizeof(*dp), GFP_KERNEL);
--	if (!dp)
-+	dp->encoder = drmm_kzalloc(drm_dev, sizeof(*dp->encoder), GFP_KERNEL);
-+	if (!dp->encoder)
- 		return -ENOMEM;
- 
--	dp->dev = dev;
--	platform_set_drvdata(pdev, dp);
--
--	plat_data = of_device_get_match_data(dev);
--	if (!plat_data)
--		return -ENODEV;
--
--	encoder = &dp->encoder.encoder;
-+	encoder = &dp->encoder->encoder;
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev, dev->of_node);
--	rockchip_drm_encoder_set_crtc_endpoint_id(&dp->encoder, dev->of_node, 0, 0);
-+	rockchip_drm_encoder_set_crtc_endpoint_id(dp->encoder, dev->of_node, 0, 0);
- 
- 	ret = drmm_encoder_init(drm_dev, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
- 	if (ret)
- 		return ret;
- 	drm_encoder_helper_add(encoder, &dw_dp_encoder_helper_funcs);
- 
--	dp->base = dw_dp_bind(dev, encoder, plat_data);
--	if (IS_ERR(dp->base))
--		return PTR_ERR(dp->base);
-+	ret = dw_dp_bind(dp->base, encoder);
-+	if (ret)
-+		return ret;
- 
- 	connector = drm_bridge_connector_init(drm_dev, encoder);
- 	if (IS_ERR(connector)) {
-@@ -128,12 +119,30 @@ static const struct component_ops dw_dp_rockchip_component_ops = {
- 	.unbind = dw_dp_rockchip_unbind,
- };
- 
--static int dw_dp_probe(struct platform_device *pdev)
-+static int dw_dp_rockchip_probe(struct platform_device *pdev)
- {
-+	const struct dw_dp_plat_data *plat_data;
-+	struct device *dev = &pdev->dev;
-+	struct rockchip_dw_dp *dp;
-+
-+	plat_data = of_device_get_match_data(dev);
-+	if (!plat_data)
-+		return -ENODEV;
-+
-+	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
-+	if (!dp)
-+		return -ENOMEM;
-+	platform_set_drvdata(pdev, dp);
-+	dp->dev = dev;
-+
-+	dp->base = dw_dp_probe(pdev, plat_data);
-+	if (IS_ERR(dp->base))
-+		return PTR_ERR(dp->base);
-+
- 	return component_add(&pdev->dev, &dw_dp_rockchip_component_ops);
- }
- 
--static void dw_dp_remove(struct platform_device *pdev)
-+static void dw_dp_rockchip_remove(struct platform_device *pdev)
- {
- 	component_del(&pdev->dev, &dw_dp_rockchip_component_ops);
- }
-@@ -161,8 +170,8 @@ static const struct of_device_id dw_dp_of_match[] = {
- MODULE_DEVICE_TABLE(of, dw_dp_of_match);
- 
- struct platform_driver dw_dp_driver = {
--	.probe	= dw_dp_probe,
--	.remove = dw_dp_remove,
-+	.probe	= dw_dp_rockchip_probe,
-+	.remove = dw_dp_rockchip_remove,
- 	.driver = {
- 		.name = "dw-dp",
- 		.of_match_table = dw_dp_of_match,
-diff --git a/include/drm/bridge/dw_dp.h b/include/drm/bridge/dw_dp.h
-index 22105c3e8e4d..a82412a9e769 100644
---- a/include/drm/bridge/dw_dp.h
-+++ b/include/drm/bridge/dw_dp.h
-@@ -22,7 +22,8 @@ struct dw_dp_plat_data {
- 	u8 pixel_mode;
- };
- 
--struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
--			 const struct dw_dp_plat_data *plat_data);
-+int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder);
- void dw_dp_unbind(struct dw_dp *dp);
-+
-+struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_data *plat_data);
- #endif /* __DW_DP__ */
+         ports {
+           #address-cells = <1>;
 
 -- 
 2.53.0
