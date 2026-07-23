@@ -4,56 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D6EC531D0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 18:42:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EDA5C531CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 19:40:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N9MOQAQnz6pDpyNrI/j3C8zVWY0cFXi4yLP5kEColt0=; b=2/CaG0cfJ7zWLl88lT5YRAF9l3
-	6OM39rxSw18UM3repf0jTeNPwYz1iOFBToV131wiHCk0PASEU1c1CkqH9B8suFiK8Ofwx9HIyS1NA
-	m8J+RRzWL+HaVcShDinZsqgLQ3C+F5XaIdJfDrOE0I2R8vDQ/YSPQnR4qmLspZjb6hMwHHP4LYmm+
-	U9Vc0sAIw2/UvKU2XMxsNFzUB4qt5tG93rwWj9dEjdfAi1gtSmhFMCu6aLVKDJPi17jDDKElQTxp4
-	I2qUJBNgfoItd3UqbyZGL7CznyqeIzlaqhno+rG478txoKzTKO+DURnNZfesAB3t8OmYoTe8bPc4L
-	xOMqg+cA==;
+	bh=QNcq1CPqptt6sDI+QiY9fHV9WxxnHVpvCTUhgTiWZ5g=; b=duMYDOpOA34RRz2EGBbq2+xtA5
+	R46X9O6SneKKyJtdgqt96IFR36o2m0xeegOUJStN/1BItJ80w9GprvMGoPChHWJxwaAEBzxPYkcpz
+	C+OFm3euaq6jF4vDwjrV6KToo+EMdGLmJZTFdQS3xm5BeP/jj5uxi0NqAkKS5IqXoEwsx5yUC9R+s
+	f5uaU3EuQEvwZ41SJIYkHMBbu5ZDOko5eZn0hWHbs0RydtXsM+IdFocLe8z+KtCwrBT+KKNXCdp7e
+	QunTFUrs0sqtd6N/sLE5bWqFtAO9BL5tI8nHFCZI3dW/J56nLy7ieuFd+BGEkA60NoRT/sNpRGhlE
+	1LOnHAng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmyMw-0000000EuFj-3lrf;
-	Thu, 23 Jul 2026 18:42:06 +0000
-Received: from leonov.paulk.fr ([185.233.101.22])
+	id 1wmzGt-0000000EyYG-3TbY;
+	Thu, 23 Jul 2026 19:39:55 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmyMt-0000000EuEn-0WA1;
-	Thu, 23 Jul 2026 18:42:06 +0000
-Received: from laika.paulk.fr (12.234.24.109.rev.sfr.net [109.24.234.12])
-	by leonov.paulk.fr (Postfix) with ESMTPS id 4B6C43700EC1;
-	Thu, 23 Jul 2026 18:41:57 +0000 (UTC)
-Received: by laika.paulk.fr (Postfix, from userid 65534)
-	id 655A7B49E0C; Thu, 23 Jul 2026 18:41:55 +0000 (UTC)
-Received: from collins (unknown [192.168.1.1])
-	by laika.paulk.fr (Postfix) with ESMTPSA id 63EE7B49DF6;
-	Thu, 23 Jul 2026 18:41:54 +0000 (UTC)
-Date: Thu, 23 Jul 2026 20:41:52 +0200
-From: Paul Kocialkowski <paulk@sys-base.io>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Jiaxing Hu <gahing@gahingwoo.com>, detlev.casanova@collabora.com,
-	mchehab@kernel.org, heiko@sntech.de, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org,
-	ezequiel@vanguardiasur.com.ar, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH 0/3] media: rockchip: VEPU510 H.264 encoder for RK3576
-Message-ID: <amJgcHf2vVDb75nR@collins>
+	id 1wmzGr-0000000EyXZ-00Fb;
+	Thu, 23 Jul 2026 19:39:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784835588;
+	bh=G0M9MI9dB901g7cMmjTeOdPTQ6Gbf1ggOTiUNsSEHfQ=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Pfv6T1TPiUoHMM8XOwWq3m9en+TZtkiHrQ2rbxona1O1sAaw25V90llKOZcuzq3f7
+	 j68dTeoDGGFEtv6qdvAFgBM8BhHhUj9xDL2zPqB7HSg2Ia6CpY0HLHMF4OBicd4icm
+	 hK7V43P/axbMKKilDlAJ9dsbhUJ00ExG9dxCAtbXATaaalmhzvLEnfbH9qctlVehG7
+	 t+rnoePEbI5Z1kquA8jSiue5lGvcaH3uTW8X5ETrVSiwYAYMsDaPyzkgXtEBWe4tDl
+	 otZc6woBFcv91VTkf1f1ozczcSAnT6ad3K8p1AiGJYB5U+Q+dyBZFkt/fTbOmp5Ovk
+	 Nge3QqZdiDmJQ==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D36BA17E0A46;
+	Thu, 23 Jul 2026 21:39:46 +0200 (CEST)
+Message-ID: <252d53c9e497530f9416599f9991b02c0c276a1f.camel@collabora.com>
+Subject: Re: [RFC PATCH 0/3] media: rockchip: VEPU510 H.264 encoder for
+ RK3576
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Paul Kocialkowski <paulk@sys-base.io>
+Cc: Jiaxing Hu <gahing@gahingwoo.com>, detlev.casanova@collabora.com, 
+	mchehab@kernel.org, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, ezequiel@vanguardiasur.com.ar,
+ linux-media@vger.kernel.org, 	devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Date: Thu, 23 Jul 2026 15:39:45 -0400
+In-Reply-To: <amJgcHf2vVDb75nR@collins>
 References: <20260722073417.2064667-1-gahing@gahingwoo.com>
- <082e1141c38205222a91abf13b1a97d9a00e117a.camel@collabora.com>
- <20260723004642.2075233-1-gahing@gahingwoo.com>
- <210b72e32d1bd757a36b2baf532dd9f7d46ca5dc.camel@collabora.com>
+	 <082e1141c38205222a91abf13b1a97d9a00e117a.camel@collabora.com>
+	 <20260723004642.2075233-1-gahing@gahingwoo.com>
+	 <210b72e32d1bd757a36b2baf532dd9f7d46ca5dc.camel@collabora.com>
+	 <amJgcHf2vVDb75nR@collins>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-In-Reply-To: <210b72e32d1bd757a36b2baf532dd9f7d46ca5dc.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_114203_510924_92E212AC 
-X-CRM114-Status: GOOD (  39.27  )
+X-CRM114-CacheID: sfid-20260723_123953_203744_948ED884 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,147 +91,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5500950369111664087=="
+Content-Type: multipart/mixed; boundary="===============8631905010008296418=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5500950369111664087==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="y1RuMRkspY6MNcmg"
-Content-Disposition: inline
 
---y1RuMRkspY6MNcmg
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+--===============8631905010008296418==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-dZVtlSGeZCfvrclufsh3"
+
+
+--=-dZVtlSGeZCfvrclufsh3
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi,
+Hi Paul.
 
-Le Thu 23 Jul 26, 12:14, Nicolas Dufresne a =C3=A9crit :
-> Le jeudi 23 juillet 2026 =C3=A0 12:46 +1200, Jiaxing Hu a =C3=A9crit=C2=
-=A0:
-> > I'm not attached to the stateful interface -- I used it to get something
-> > running on real silicon, not out of conviction. Before I commit to
-> > reworking, I'd like to be sure I understand what "converge" means here,
-> > because I see two fairly different directions in the thread: Paul's V4L2
-> > stateless H.264 encoder (kernel-side reflist/rbsp/RC core), and the
-> > Vulkan-Video split you describe for Detlev (thin kernel module + Mesa
-> > userspace). Those differ a lot in kind and in effort. Which is the
-> > intended target for the Rockchip encoders, or is that still open? Is
-> > there a branch, early code or spec draft I should read beyond Paul's
-> > series?
+Le jeudi 23 juillet 2026 =C3=A0 20:41 +0200, Paul Kocialkowski a =C3=A9crit=
+=C2=A0:
+> In my opinion it would be fine to have two drivers, but it's really up
+> to you. Since you already have a v4l2 base for it, I would encourage you
+> to move it to my proposal, which will probably be finalized in a shorter
+> time frame than the other proposal and lets you reuse the code you've
+> already written. Then you could also add RK3576 support to the drm-ish
+> Vulkan Video proposal without too much work when it is ready, reusing the
+> RK3588 work.
 
-I would recommend taking a look at the slides of the talks I gave at the
-Linux Media Summit last year and this year, which should give you more
-context and insight about the design choices.
+My main concern is that once you exposed an API, the transition path is nea=
+r
+impossible unless you accept to support both APIs concurrently. So I may ra=
+ise a
+slight objection on the above proposal. Once we have the code shared (Detle=
+v is
+working on it), you'll see that Detlev (and Daniel Almeida) implementation =
+is
+just a step ahead, and adding RK3576 to an RK3588 is just a minor update (i=
+ts
+the same chip, different minor version). On top of which, once the kernel d=
+river
+will have settled, adding more codecs will mostly (or entirely) happen in
+userspace.
 
-- https://paulk.fr/talks/2025-linux-media-summit/2025-linux-media-summit-v4=
-l2-stateless-video-encoding-uapi.pdf
-- https://paulk.fr/talks/2026-linux-media-summit/2026-linux-media-summit-v4=
-l2-stateless-video-encoding-uapi-progress-update.pdf
+With no offense, the RFC here requires significant work before it can be
+upstreamed. A lot of the code is hex tables generated from inspecting a run=
+ning
+driver. So there is a lot of work to decipher this into clean code.
 
-Generally speaking the idea of this proposal is to stick with the same
-design idea that we had for stateless decoders, including V4L2 M2M queues,
-dedicated controls and media requests.
+On that aspect, if you are missing any reference code or technical
+documentation, let us know, though I believe most of this is public informa=
+tion
+for this chip.
 
-Like Nicolas explained, some hardware can be a good fit for both
-approaches. I think we agreed that it wouldn't be a problem to have two
-drivers (one v4l2, one drm-ish) for the same hardware, so the question is
-really about what you prefer to do and get involved with.
+regards,
+Nicolas
 
-My V4L2-based proposal is already rather usable, although it has not yet
-reached its final form. I have a GStreamer implementation ready that has
-been used extensively too, but it will also need to be reworked before
-it can reach upstream.
-
-The DRM-ish proposal is at an earlier stage and will likely require a
-complete redesign of your driver, moving most things in userspace.
-
-> Paul does not have this hardware protection, so I think he needs a higher=
- level
-> interface for the driver, and at the point, why not base it on existing k=
-ernel
-> interface. Though, V4l2 is massively larger (probably around 100x) interf=
-ace
-> then what we are drafting currently for RKVENC in a drm style driver.
->=20
-> The common part is the rate control. Typically, stateful encoder are firm=
-ware
-> based, and the rate control is in the firmware. We need an in kernel rate
-> control for performance reason. The programming latency is going to be to=
-o high
-> otherwise. The point of convergence, is that we can share helpers for that
-> purpose, and Paul's work is really clean, and already in the shape of hel=
-pers
-> not tied to v4l2.
-
-Well there is some level of dependency to v4l2 in some places, but I'm
-sure we can extract relevant parts and make them common so that a drm-ish
-subsystem can reuse them easily.
-
-> > Either way the RK3576 hardware enablement and the reference-read fix are
-> > shared with RK3588, so I'd much rather contribute the VEPU510 side to a
-> > common base than maintain a parallel one -- I'd just like to know which
-> > base that is before rebuilding on it.
->=20
-> This is our experience with decoder too, its relatively easy to support b=
-oth,
-> differences being minor. I will ping Detlev today and see if he can help =
-here. I
-> know in his case he was trying to avoid reconstructed frame compression, =
-and it
-> only started working when he enable that compression. Though, he had mmu =
-faults
-> prior to that.
-
-In my opinion it would be fine to have two drivers, but it's really up
-to you. Since you already have a v4l2 base for it, I would encourage you
-to move it to my proposal, which will probably be finalized in a shorter
-time frame than the other proposal and lets you reuse the code you've
-already written. Then you could also add RK3576 support to the drm-ish
-Vulkan Video proposal without too much work when it is ready, reusing the
-RK3588 work.
-
-But again, it's really your decision. And it's hard to say how long
-things will take to finalize. But I think it would be beneficial to have
-two drivers for this hardware and not trash the work you've done.
-
-All the best,
-
-Paul
-
---=20
-Paul Kocialkowski,
-
-Independent contractor - sys-base - https://www.sys-base.io/
-Free software developer - https://www.paulk.fr/
-
-Expert in multimedia, graphics and embedded hardware support with Linux.
-
---y1RuMRkspY6MNcmg
-Content-Type: application/pgp-signature; name=signature.asc
+--=-dZVtlSGeZCfvrclufsh3
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEAbcMXZQMtj1fphLChP3B6o/ulQwFAmpiYHAACgkQhP3B6o/u
-lQzhCQ//eEM+ZMphhJvq6bc0sgRl6B9jBmP3PVjzgcuz+TnIhJkSmgtwMxjh8JjT
-0xP+8Gut4Mnz59rETlRaCw5Y+xxoh6CNb4v0DtaSt0P5Ljnv/dAPIhGcw9b38gXE
-Y4kMug69WWsoi/iG4dZJqhci4u+QFoY3aFTVGxMG0EALywmwpSbKbSl4MPNkjrM/
-5EZBicsAyWuxZXjpPVu4m1ULmAd5dwLAD2JUxun58uXFL/lhM0jRQkmJQdjUADTS
-GuyLfMqsLHBJSJc4lXnYZaMJKXy59pQUiFaRF7ZT5+s9mP9IT73xY6OCbypvqnJe
-mxb24FDHDQklyk3qkOCstplpJMir3tVv0khdWNpnQtRETAXQZUKGUbwjrG0hEr+L
-LRdeS5EN/tSiGvIpaafyaflHi/Y7Rynew6/lq+Msb00przHOcZsG5gYhSsmdH9KJ
-IzcGYKq+9hU9C8Fpu1aI6nPcry3lqpzBtjYSOyv8A3Vir2vt5fVXiKz+xC+oIf2W
-3K+JoMZzw83MV+FqnXw3uSDjtMaOTZ7RcDz2X5RrrtZ/Vit628BXjnSsfRuP0Hds
-GXtpAjhl0HuDmGjF/c4ietBePTrsNQSCw76WygulOhY7nQlEr8CsoYkh7SERCrKW
-593Hsh9d4t9X+zSfLEj7JQwhMnb4ChtPM7v8Ylg/ZO83PzAefzM=
-=25OK
+iHQEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCamJuAQAKCRDZQZRRKWBy
+9ChrAQDFYy3+9EG1k90i3qFuQHquFaa7OckWKYC1S7LgGkjApAD2KOYjLf8wKd7p
+VqiNDw9wJaVm7ANxBYaRrp7s4J2DCw==
+=OgIE
 -----END PGP SIGNATURE-----
 
---y1RuMRkspY6MNcmg--
+--=-dZVtlSGeZCfvrclufsh3--
 
 
---===============5500950369111664087==
+--===============8631905010008296418==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -216,5 +172,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5500950369111664087==--
+--===============8631905010008296418==--
 
