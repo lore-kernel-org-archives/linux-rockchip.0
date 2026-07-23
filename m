@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A590C531D0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 19:42:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5703C531F7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 19:42:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fIT3w2gpdA7fyyUqeR9jPF9KdRiuXZC8KwQacDMcM2w=; b=LF04l/hmtptSFv
-	Yoeolmhs4CHLa44NUSa23ADn3MDj9TrG4YDVBTpg+5mB7Kvlvsp4U+YBvikZ37HDssE4IRakte3li
-	xE8KA3M3pjera8OrnKxBfbjkPa8sWbs19jyoWO6MDk7G2VKE1oBIG1Qz9AeaWj+nZd75ssAvpBXFd
-	lKmXUE00FdeZAhFqmUxjATsAe4L5vgOyuMRYiJ2b7Tz5HHX8KYbwZo6WIbaGAMN9ocl3PDBgtBWNJ
-	OivCID99Z1+2yDxr7btegERPNiyObnIw7HmmBysrcvZKWUn+SdFOQPjishoLswmKpe8qEhuyKNUBz
-	4vDOcLmAFCqBwnEEaLyw==;
+	List-Owner; bh=6LO1wC+UAX8X0AJ4OpsdRMz1uZS6+ADo/7fYUhdOw68=; b=OMcL0yFRxziG2+
+	15jDIw6FKjxaoQ7g8V33rjQc6W0X+WNY2iQhAk646BIANtSp+GAT1s1FWeTrsQaj1p4kisdalvLVi
+	B7mqVF4jMKyDNn3ve542k6sIrCVnVridAV8Q28eNonyTiohkJR2pl9MoSn3q7mzKfQrVd79mgwQ13
+	D5hyZFVnCIh8O8IQrGH3bx2yu5ues6FFfZvTHAqmXJG2UqF3EKN0wZSqpOW25K2BoqlZXgWx1QWeu
+	/JpeZ0Vp37Vt0MLOtcsjcseGHQRswihhXYAQJDFf9Z+Kg9LfaHMQbsnqdstA6Mp+vQkTjbdjx1lT0
+	Qcj0Rl2tXs7nNlt/BVsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmzJB-0000000Ez22-00wO;
-	Thu, 23 Jul 2026 19:42:17 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wmzJI-0000000Ez8n-1vWp;
+	Thu, 23 Jul 2026 19:42:24 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmzIm-0000000EyjP-2DdT;
-	Thu, 23 Jul 2026 19:41:54 +0000
+	id 1wmzIo-0000000EykL-3tMC;
+	Thu, 23 Jul 2026 19:41:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784835709;
-	bh=5sGfimKm9sYIHnBzOCtycoKCwoNHkaa8YO7d2RCED3U=;
+	s=mail; t=1784835711;
+	bh=FA6gjb7yFKww1Ld0T7YnzSA/v31jHcXY9TgmognE7xI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NKmedy4PE1wOgOX+OoAsyHTHhRCmr3jdrQf0+qzUqm4Ssu6jBfRHzsyZF3avsd+2D
-	 xI6bLapWTaFlxqoNz1zozgJ+wBY5pYgO3GKhfyD+VrHzvrxbaDD3c4/mqXwbohPEYx
-	 f5g3Wzaw4jnyBtHZKlE9zGng3TnmZwfsbUQ8rCmzRo1PVLM5+ZwWPa7yrBLkkkkYCe
-	 rPVC+qoOox/B2p2WcOlhnOe6/hH/Z7Bs7+pJ7g/uyQRnUtdqUt5UTBxjOXog8/63Hl
-	 x/x3pzig1OxQlS4jNR6LcS04/HLQzfNFFpaW4Bqr9myxWF26lNSeHmEj9iTVAPqW9B
-	 +Z68TnPa6Uq3A==
+	b=LQSFi6NUPLkoLFJprgnNXsnuPUlUhF2CcJo4R1InI8d2146/7s0p4EszApB3rAUuM
+	 6VJGB/yMKpX0Rt52z5DCrhtGj8bB+PLWK99B76YD756NSixPzW7iz6IzQXodGjbXUs
+	 AQCEcOplFzd81kKwE4a4HDjZZtXa42BV4PhOpKhYh4KHazUK5Rzi+7h8EmpTui7Ljo
+	 sJCC1qUdln/c6rOPBVmL7cDdwKVOVWAmnyc/yo+Tkza30dmEYO78hwi8n6ofs51Da5
+	 cpvkMH4jmDggDX/yU7xXww5vnJH5nvOHKmBO9yeP0hJGQghbyBPthFllWNRISQnW3C
+	 +9SfkOLtjNDIw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7A55A17E0DC1;
-	Thu, 23 Jul 2026 21:41:49 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0B08F17E124A;
+	Thu, 23 Jul 2026 21:41:51 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 23 Jul 2026 22:41:47 +0300
-Subject: [PATCH v5 04/10] phy: rockchip: samsung-hdptx: Fix rate
- recalculation for 3.2GHz FRL
+Date: Thu, 23 Jul 2026 22:41:49 +0300
+Subject: [PATCH v5 06/10] phy: rockchip: samsung-hdptx: Drop TMDS rate
+ setup workaround
 MIME-Version: 1.0
-Message-Id: <20260723-hdptx-clk-fixes-v5-4-8e786067865f@collabora.com>
+Message-Id: <20260723-hdptx-clk-fixes-v5-6-8e786067865f@collabora.com>
 References: <20260723-hdptx-clk-fixes-v5-0-8e786067865f@collabora.com>
 In-Reply-To: <20260723-hdptx-clk-fixes-v5-0-8e786067865f@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -57,14 +57,14 @@ To: Vinod Koul <vkoul@kernel.org>,
  Dmitry Baryshkov <lumag@kernel.org>
 Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
- Diederik de Haas <diederik@cknow-tech.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ linux-kernel@vger.kernel.org, 
+ =?utf-8?q?Thomas_Niederpr=C3=BCm?= <dubito@online.de>, 
+ Simon Wright <simon@symple.nz>, Diederik de Haas <diederik@cknow-tech.com>, 
  Andy Yan <andy.yan@rock-chips.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_124152_779595_4A73D4AB 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20260723_124155_126838_3831FE66 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,82 +76,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk_hdptx_phy_clk_calc_rate_from_pll_cfg() is currently unable to handle
-cascade mode for the 3.2GHz FRL operating mode, as it relies solely on
-LCPLL_LCVCO_MODE_EN_MASK to determinate the rate from the
-rk_hdptx_frl_lcpll_cfg array.  Since there is no entry for this
-particular rate, the function returns 0.
-
-This is the only rate which requires LC_REF_CLK_SEL to be set in
-GRF_HDPTX_CON0, hence extend the FRL matching accordingly.
-
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://sashiko.dev/#/patchset/20260611-hdptx-clk-fixes-v3-0-67b1b0c00e16@collabora.com?part=1
-Fixes: de5dba833118 ("phy: rockchip: samsung-hdptx: Add HDMI 2.1 FRL support")
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Reviewed-by: Andy Yan <andy.yan@rock-chips.com>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 33 ++++++++++++++++-------
- 1 file changed, 24 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index fcf04e9814cc..3a1a43ec2552 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -2206,16 +2206,31 @@ static u64 rk_hdptx_phy_clk_calc_rate_from_pll_cfg(struct rk_hdptx_phy *hdptx)
- 			return 0;
- 		lcpll_hw.sdc_n = (val & LCPLL_SDC_N_MASK) >> 1;
- 
--		for (i = 0; i < ARRAY_SIZE(rk_hdptx_frl_lcpll_cfg); i++) {
--			const struct lcpll_config *cfg = &rk_hdptx_frl_lcpll_cfg[i];
-+		ret = regmap_read(hdptx->grf, GRF_HDPTX_CON0, &val);
-+		if (ret)
-+			return 0;
- 
--			if (cfg->pms_mdiv == lcpll_hw.pms_mdiv &&
--			    cfg->pms_sdiv == lcpll_hw.pms_sdiv &&
--			    cfg->sdm_num_sign == lcpll_hw.sdm_num_sign &&
--			    cfg->sdm_num == lcpll_hw.sdm_num &&
--			    cfg->sdm_deno == lcpll_hw.sdm_deno &&
--			    cfg->sdc_n == lcpll_hw.sdc_n)
--				return cfg->rate;
-+		if (val & LC_REF_CLK_SEL) {
-+			if (lcpll_hw.pms_mdiv == 0x6b &&
-+			    lcpll_hw.sdm_num_sign == 0x01 &&
-+			    lcpll_hw.sdm_num == 0x02 &&
-+			    lcpll_hw.sdm_deno == 0x09 &&
-+			    lcpll_hw.sdc_n == FIELD_GET(LCPLL_SDC_N_MASK, 0x02))
-+				return FRL_8G4L_RATE;
-+		} else {
-+			const struct lcpll_config *cfg;
-+
-+			for (i = 0; i < ARRAY_SIZE(rk_hdptx_frl_lcpll_cfg); i++) {
-+				cfg = &rk_hdptx_frl_lcpll_cfg[i];
-+
-+				if (cfg->pms_mdiv == lcpll_hw.pms_mdiv &&
-+				    cfg->pms_sdiv == lcpll_hw.pms_sdiv &&
-+				    cfg->sdm_num_sign == lcpll_hw.sdm_num_sign &&
-+				    cfg->sdm_num == lcpll_hw.sdm_num &&
-+				    cfg->sdm_deno == lcpll_hw.sdm_deno &&
-+				    cfg->sdc_n == lcpll_hw.sdc_n)
-+					return cfg->rate;
-+			}
- 		}
- 
- 		dev_dbg(hdptx->dev, "%s no FRL match found\n", __func__);
-
--- 
-2.55.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+U2luY2UgY29tbWl0IGJhOWMyZmUxOGMxNyAoImRybS9yb2NrY2hpcDogZHdfaGRtaV9xcDogU3dp
+dGNoIHRvCnBoeV9jb25maWd1cmUoKSIpIHRoZSBUTURTIHJhdGUgc2V0dXAgZG9lc24ndCByZWx5
+IGFueW1vcmUgb24gdGhlCnVuY29udmVudGlvbmFsIHVzYWdlIG9mIHRoZSBidXMgd2lkdGgsIGlu
+c3RlYWQgaXQgaXMgbWFuYWdlZCBleGNsdXNpdmVseQp0aHJvdWdoIHRoZSBIRE1JIFBIWSBjb25m
+aWd1cmF0aW9uIEFQSS4KCkRyb3AgdGhlIG5vdyBvYnNvbGV0ZSB3b3JrYXJvdW5kIHRvIHJldHJp
+ZXZlIHRoZSBUTURTIGNoYXJhY3RlciByYXRlIHZpYQpwaHlfZ2V0X2J1c193aWR0aCgpIGR1cmlu
+ZyBwb3dlcl9vbigpLgoKVGVzdGVkLWJ5OiBUaG9tYXMgTmllZGVycHLDvG0gPGR1Yml0b0Bvbmxp
+bmUuZGU+ClRlc3RlZC1ieTogU2ltb24gV3JpZ2h0IDxzaW1vbkBzeW1wbGUubno+ClRlc3RlZC1i
+eTogRGllZGVyaWsgZGUgSGFhcyA8ZGllZGVyaWtAY2tub3ctdGVjaC5jb20+ICAjIE5hbm9QQy1U
+NiBMVFMKUmV2aWV3ZWQtYnk6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KU2ln
+bmVkLW9mZi1ieTogQ3Jpc3RpYW4gQ2lvY2FsdGVhIDxjcmlzdGlhbi5jaW9jYWx0ZWFAY29sbGFi
+b3JhLmNvbT4KLS0tCiBkcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtc2Ftc3VuZy1o
+ZHB0eC5jIHwgMTkgKysrLS0tLS0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0
+aW9ucygrKSwgMTYgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9waHkvcm9ja2No
+aXAvcGh5LXJvY2tjaGlwLXNhbXN1bmctaGRwdHguYyBiL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3Bo
+eS1yb2NrY2hpcC1zYW1zdW5nLWhkcHR4LmMKaW5kZXggNzkyZWI1Nzc1NWViLi4zMWFiZmY1YWRh
+OWUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1zYW1zdW5n
+LWhkcHR4LmMKKysrIGIvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXNhbXN1bmct
+aGRwdHguYwpAQCAtMTY2MCwyMiArMTY2MCw2IEBAIHN0YXRpYyBpbnQgcmtfaGRwdHhfcGh5X3Bv
+d2VyX29uKHN0cnVjdCBwaHkgKnBoeSkKIAllbnVtIHBoeV9tb2RlIG1vZGUgPSBwaHlfZ2V0X21v
+ZGUocGh5KTsKIAlpbnQgcmV0LCBsYW5lOwogCi0JaWYgKG1vZGUgIT0gUEhZX01PREVfRFApIHsK
+LQkJaWYgKCFoZHB0eC0+aGRtaV9jZmcucmF0ZSAmJiBoZHB0eC0+aGRtaV9jZmcubW9kZSAhPSBQ
+SFlfSERNSV9NT0RFX0ZSTCkgewotCQkJLyoKLQkJCSAqIEZJWE1FOiBUZW1wb3Jhcnkgd29ya2Fy
+b3VuZCB0byBzZXR1cCBUTURTIGNoYXIgcmF0ZQotCQkJICogZnJvbSB0aGUgUksgRFcgSERNSSBR
+UCBicmlkZ2UgZHJpdmVyLgotCQkJICogV2lsbCBiZSByZW1vdmVkIGFzIHNvb24gdGhlIHN3aXRj
+aCB0byB0aGUgSERNSSBQSFkKLQkJCSAqIGNvbmZpZ3VyYXRpb24gQVBJIGhhcyBiZWVuIGNvbXBs
+ZXRlZCBvbiBib3RoIGVuZHMuCi0JCQkgKi8KLQkJCWhkcHR4LT5oZG1pX2NmZy5yYXRlID0gcGh5
+X2dldF9idXNfd2lkdGgoaGRwdHgtPnBoeSkgJiAweGZmZmZmZmY7Ci0JCQloZHB0eC0+aGRtaV9j
+ZmcucmF0ZSAqPSAxMDA7Ci0JCX0KLQotCQlkZXZfZGJnKGhkcHR4LT5kZXYsICIlcyByYXRlPSVs
+bHUgYnBjPSV1XG4iLCBfX2Z1bmNfXywKLQkJCWhkcHR4LT5oZG1pX2NmZy5yYXRlLCBoZHB0eC0+
+aGRtaV9jZmcuYnBjKTsKLQl9Ci0KIAlyZXQgPSBya19oZHB0eF9waHlfY29uc3VtZXJfZ2V0KGhk
+cHR4KTsKIAlpZiAocmV0KQogCQlyZXR1cm4gcmV0OwpAQCAtMTcwNCw2ICsxNjg4LDkgQEAgc3Rh
+dGljIGludCBya19oZHB0eF9waHlfcG93ZXJfb24oc3RydWN0IHBoeSAqcGh5KQogCQlpZiAocmV0
+KQogCQkJcmtfaGRwdHhfcGh5X2NvbnN1bWVyX3B1dChoZHB0eCwgdHJ1ZSk7CiAJfSBlbHNlIHsK
+KwkJZGV2X2RiZyhoZHB0eC0+ZGV2LCAiJXMgcmF0ZT0lbGx1IGJwYz0ldVxuIiwgX19mdW5jX18s
+CisJCQloZHB0eC0+aGRtaV9jZmcucmF0ZSwgaGRwdHgtPmhkbWlfY2ZnLmJwYyk7CisKIAkJaWYg
+KGhkcHR4LT5wbGxfY29uZmlnX2RpcnR5KQogCQkJcmV0ID0gcmtfaGRwdHhfcGxsX2Ntbl9jb25m
+aWcoaGRwdHgpOwogCgotLSAKMi41NS4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
