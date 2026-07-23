@@ -4,82 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EDA5C531CC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 19:40:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28041C531FA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 19:41:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QNcq1CPqptt6sDI+QiY9fHV9WxxnHVpvCTUhgTiWZ5g=; b=duMYDOpOA34RRz2EGBbq2+xtA5
-	R46X9O6SneKKyJtdgqt96IFR36o2m0xeegOUJStN/1BItJ80w9GprvMGoPChHWJxwaAEBzxPYkcpz
-	C+OFm3euaq6jF4vDwjrV6KToo+EMdGLmJZTFdQS3xm5BeP/jj5uxi0NqAkKS5IqXoEwsx5yUC9R+s
-	f5uaU3EuQEvwZ41SJIYkHMBbu5ZDOko5eZn0hWHbs0RydtXsM+IdFocLe8z+KtCwrBT+KKNXCdp7e
-	QunTFUrs0sqtd6N/sLE5bWqFtAO9BL5tI8nHFCZI3dW/J56nLy7ieuFd+BGEkA60NoRT/sNpRGhlE
-	1LOnHAng==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pycejk3NpqZJAS1If17d8GrYenb5XFq37ZdGAvaeaRs=; b=vC3E7M6LwyhM8G
+	LlP8ZktOW9phwupPl+ul78ln+QGFnD4UzyZC9Kmg6hlN77qvraxNqzfsve7eV48I9VL7rAazAH9Y7
+	YCUc3mQrDVPscix7hxjUEIKtsRCNKzL13DW6Bem770sOC8an1DEg1mbfN7bIJhqCCtuhhD1b1//3t
+	qGNJ6aTZdkFeTB8xtDi+Y14OaRZCA4N3w8Xz4KOOzfn90AG7+N0s53jL7SrB5Dq6mKcJ76RfTeuhg
+	HeZD/J2Fr3pC/iIjjFPUDiEukTmzjU3/PPcBXhQC8JRwVdveUeFCKDZiDZ5uEPGZhzcgHvBPKDJPL
+	GVlFK+Q8CvJyylfewvuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmzGt-0000000EyYG-3TbY;
-	Thu, 23 Jul 2026 19:39:55 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wmzIo-0000000EylR-2Gwe;
+	Thu, 23 Jul 2026 19:41:54 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmzGr-0000000EyXZ-00Fb;
-	Thu, 23 Jul 2026 19:39:54 +0000
+	id 1wmzIk-0000000Eyif-2j1q;
+	Thu, 23 Jul 2026 19:41:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784835588;
-	bh=G0M9MI9dB901g7cMmjTeOdPTQ6Gbf1ggOTiUNsSEHfQ=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Pfv6T1TPiUoHMM8XOwWq3m9en+TZtkiHrQ2rbxona1O1sAaw25V90llKOZcuzq3f7
-	 j68dTeoDGGFEtv6qdvAFgBM8BhHhUj9xDL2zPqB7HSg2Ia6CpY0HLHMF4OBicd4icm
-	 hK7V43P/axbMKKilDlAJ9dsbhUJ00ExG9dxCAtbXATaaalmhzvLEnfbH9qctlVehG7
-	 t+rnoePEbI5Z1kquA8jSiue5lGvcaH3uTW8X5ETrVSiwYAYMsDaPyzkgXtEBWe4tDl
-	 otZc6woBFcv91VTkf1f1ozczcSAnT6ad3K8p1AiGJYB5U+Q+dyBZFkt/fTbOmp5Ovk
-	 Nge3QqZdiDmJQ==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
+	s=mail; t=1784835706;
+	bh=CVgepNtrE3nYdIXJRW7JJoS4g/eOsGCVCVNybVfjzzo=;
+	h=From:Subject:Date:To:Cc:From;
+	b=Z3u3IYgKdCRUtpTOiqSGIUiRpiJ0qW6/eagZXylC8FIlENwUTXoHZ9rpiuDEclmKQ
+	 JujJzzjjIS7OblA/YFnBOxESbS4FjwprUoJl0qHbCJlBe1Zh3hnxf0aJLiCZiKEmDc
+	 1/FeRfvCyhmo+t+pG1tDNY/POsYFvj5h6hwbJZvSO9xmYoZ7tX0cMa4UQ8k037YLDR
+	 qvYR78lt89RBqwTIrDC+7IM6S/O9L0vKX+Y2L5fxc+UYp3wfx2R8wCL88lLoon5PCW
+	 mDM2Yp1VYQI72FpCQfMctIrYiJnr4T1k42myjM4IVpeSDyFPOrfHxgZ9PO4EgPWDH5
+	 m/bHoowMFaxAQ==
+Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D36BA17E0A46;
-	Thu, 23 Jul 2026 21:39:46 +0200 (CEST)
-Message-ID: <252d53c9e497530f9416599f9991b02c0c276a1f.camel@collabora.com>
-Subject: Re: [RFC PATCH 0/3] media: rockchip: VEPU510 H.264 encoder for
- RK3576
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Paul Kocialkowski <paulk@sys-base.io>
-Cc: Jiaxing Hu <gahing@gahingwoo.com>, detlev.casanova@collabora.com, 
-	mchehab@kernel.org, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, 
-	conor+dt@kernel.org, ezequiel@vanguardiasur.com.ar,
- linux-media@vger.kernel.org, 	devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Date: Thu, 23 Jul 2026 15:39:45 -0400
-In-Reply-To: <amJgcHf2vVDb75nR@collins>
-References: <20260722073417.2064667-1-gahing@gahingwoo.com>
-	 <082e1141c38205222a91abf13b1a97d9a00e117a.camel@collabora.com>
-	 <20260723004642.2075233-1-gahing@gahingwoo.com>
-	 <210b72e32d1bd757a36b2baf532dd9f7d46ca5dc.camel@collabora.com>
-	 <amJgcHf2vVDb75nR@collins>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5AB0717E09A3;
+	Thu, 23 Jul 2026 21:41:46 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH v5 00/10] phy: rockchip: samsung-hdptx: Clock fixes and API
+ transition cleanups
+Date: Thu, 23 Jul 2026 22:41:43 +0300
+Message-Id: <20260723-hdptx-clk-fixes-v5-0-8e786067865f@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3XNQQ7CIBAF0KsY1mJgSgfrynsYFxQGS6xiwDQa0
+ 7tL3Wi0Lv+f/DcPlikFymyzeLBEQ8ghnkuolwtmO3M+EA+uZAYCUABo3rnL9cZtf+Q+3ChzpRU
+ gVuDXCKysLolehzLa7UvuQr7GdH89GOTU/rcGyQX3TbP2oBGc8Fsb+960MZmVjSc2eQO8jVrKX
+ wOKgahIyUo31rRzRvU2cM6oJkO3shVWCJI4Z6hPA34NVQxLNUmnarTOfBvjOD4Bw9sagn4BAAA
+ =
+X-Change-ID: 20260227-hdptx-clk-fixes-47426632f862
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ =?utf-8?q?Thomas_Niederpr=C3=BCm?= <dubito@online.de>, 
+ Simon Wright <simon@symple.nz>, Diederik de Haas <diederik@cknow-tech.com>, 
+ Andy Yan <andyshrk@gmail.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Sashiko <sashiko-bot@kernel.org>, Andy Yan <andy.yan@rock-chips.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_123953_203744_948ED884 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20260723_124150_849045_5132DAA1 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,86 +82,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8631905010008296418=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This series provides a set of bug fixes and cleanups for the Rockchip
+Samsung HDPTX PHY driver.
 
---===============8631905010008296418==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-dZVtlSGeZCfvrclufsh3"
+The first part of the series addresses clock rate calculation and
+synchronization issues.  Specifically, it fixes edge cases where the PHY
+PLL is pre-programmed by an external component (like a bootloader) or
+when changing the color depth (bpc) while keeping the modeline constant.
+Because the Common Clock Framework .set_rate() callback might not be
+invoked if the pixel clock remains unchanged, this previously led to
+out-of-sync states between CCF and the actual HDMI PHY configuration.
 
+The second part focuses on code cleanups and modernizing the register
+access.  Now that dw_hdmi_qp driver has fully switched to using
+phy_configure(), we can drop the deprecated TMDS rate setup workarounds
+and the restrict_rate_change flag logic.  Finally, it refactors the
+driver to consistently use standard bitfield macros.
 
---=-dZVtlSGeZCfvrclufsh3
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Changes in v5:
+- Collected R-b/T-b tags from Dmitry, Andy & Diederik
+- Added new patch to guard against clk rate integer underflow (Sashiko)
+- Updated debug message in "Prevent divide-by-zero when computing clk
+  rate" to be consistent with the one introduced in the "underflow"
+  patch above
+- Added separate patch to consolidate consumer_put in
+  rk_hdptx_phy_power_on() error path (Dmitry)
+- Rebased series onto latest phy/next
+- Link to v4: https://patch.msgid.link/20260612-hdptx-clk-fixes-v4-0-ce5e1d456cda@collabora.com
 
-Hi Paul.
+Changes in v4:
+- Added new patches to address new findings from Sashiko:
+  * Prevent divide-by-zero when computing clk rate
+  * Fix rate recalculation for 3.2GHz FRL
+- Updated patch "Consistently use bitfield macros" to handle a few more
+  bit operations
+- Link to v3: https://patch.msgid.link/20260611-hdptx-clk-fixes-v3-0-67b1b0c00e16@collabora.com
 
-Le jeudi 23 juillet 2026 =C3=A0 20:41 +0200, Paul Kocialkowski a =C3=A9crit=
-=C2=A0:
-> In my opinion it would be fine to have two drivers, but it's really up
-> to you. Since you already have a v4l2 base for it, I would encourage you
-> to move it to my proposal, which will probably be finalized in a shorter
-> time frame than the other proposal and lets you reuse the code you've
-> already written. Then you could also add RK3576 support to the drm-ish
-> Vulkan Video proposal without too much work when it is ready, reusing the
-> RK3588 work.
+Changes in v3:
+- Replaced div_u64() with DIV_ROUND_CLOSEST_ULL() in Patch 1 (Sashiko)
+- Fixed theoretical usage_count unbalanced issue in Patch 2 (Sashiko)
+- Rebased series onto latest phy/next
+- Link to v2: https://patch.msgid.link/20260511-hdptx-clk-fixes-v2-0-664e41379cab@collabora.com
 
-My main concern is that once you exposed an API, the transition path is nea=
-r
-impossible unless you accept to support both APIs concurrently. So I may ra=
-ise a
-slight objection on the above proposal. Once we have the code shared (Detle=
-v is
-working on it), you'll see that Detlev (and Daniel Almeida) implementation =
-is
-just a step ahead, and adding RK3576 to an RK3588 is just a minor update (i=
-ts
-the same chip, different minor version). On top of which, once the kernel d=
-river
-will have settled, adding more codecs will mostly (or entirely) happen in
-userspace.
+Changes in v2:
+- Collected Tested-by tags from Thomas and Simon
+- Fixed a typo in commit description of patch 1
+- Added a comment in patch 2 explaining why PLL config errors are
+  ignored for rk_hdptx_phy_consumer_get()
+- Added a missed FIELD_GET conversion for lcpll_hw.pms_sdiv in patch 6
+- Rebased onto latest phy/fixes
+- Link to v1: https://lore.kernel.org/r/20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com
 
-With no offense, the RFC here requires significant work before it can be
-upstreamed. A lot of the code is hex tables generated from inspecting a run=
-ning
-driver. So there is a lot of work to decipher this into clean code.
+---
+Cristian Ciocaltea (10):
+      phy: rockchip: samsung-hdptx: Fix rate recalculation for high bpc
+      phy: rockchip: samsung-hdptx: Prevent divide-by-zero when computing clk rate
+      phy: rockchip: samsung-hdptx: Guard against clk rate integer underflow
+      phy: rockchip: samsung-hdptx: Fix rate recalculation for 3.2GHz FRL
+      phy: rockchip: samsung-hdptx: Handle uncommitted PHY config changes
+      phy: rockchip: samsung-hdptx: Drop TMDS rate setup workaround
+      phy: rockchip: samsung-hdptx: Consolidate consumer_put on error path
+      phy: rockchip: samsung-hdptx: Drop restrict_rate_change handling
+      phy: rockchip: samsung-hdptx: Simplify GRF access with FIELD_PREP_WM16()
+      phy: rockchip: samsung-hdptx: Consistently use bitfield macros
 
-On that aspect, if you are missing any reference code or technical
-documentation, let us know, though I believe most of this is public informa=
-tion
-for this chip.
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 276 +++++++++++-----------
+ 1 file changed, 138 insertions(+), 138 deletions(-)
+---
+base-commit: ee6aa0f01d4e8eddf1c7fda49d65c7ef12444e78
+change-id: 20260227-hdptx-clk-fixes-47426632f862
 
-regards,
-Nicolas
-
---=-dZVtlSGeZCfvrclufsh3
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHQEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCamJuAQAKCRDZQZRRKWBy
-9ChrAQDFYy3+9EG1k90i3qFuQHquFaa7OckWKYC1S7LgGkjApAD2KOYjLf8wKd7p
-VqiNDw9wJaVm7ANxBYaRrp7s4J2DCw==
-=OgIE
------END PGP SIGNATURE-----
-
---=-dZVtlSGeZCfvrclufsh3--
-
-
---===============8631905010008296418==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8631905010008296418==--
-
