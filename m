@@ -4,80 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C43AAC531F7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 16:14:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 770EAC531F8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 17:01:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oxRNLWug6w3zWaWd6dSsjWJCTqL/e+kSV7VloZ0X3w0=; b=ZT7MMr+czGARjzsAxlbB2kD0+u
-	2Trp8VOF/uN4g4cG5dgOMrzLL7QB8LrhngZV25GG1K16PCF/aHZqrdtZypNS7LBmQ1Bma34KMXCF5
-	tmC5ExSYlRGGXsODyFduwCdom7GCZVapUWa9d8kN0E2CXCXicmsit54eZO7QkS3JwrcNSWv6vBZ57
-	mghZGL3QoU7LyQbWqFaR8L4d/pQIJPUbxcIb3oMjNNI6zob/hRfwxEPEDiy3/d7O02Ms7urEZiufs
-	eX1x/Vkh0QWHvP3N6LKj4r/VH9/qMO7P2ME9RGwafIUz9lF9oDffD9JQ5IHxpO65XlfAZcUUdg2pG
-	YSN4vkKw==;
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bcxQCgYQFLB+xkK3BkYqAtPOOCnu0N652pRrgNf10MA=; b=rYkdDC53Sjw1ldSpL2VOESWhKr
+	2GZUbhQAjxYQSNzBIDD30rSg5VXVc/hACNexlrbO6PWH7SXa5nLdQe2xifuylVcLAsMxJmScyMMf1
+	grF9x1pLz8SZwKAuRivpOU02k1tPhijLSypF0g1R1WowB9dsdhHSl6WhykRyquJvAbW3NvAQt1W25
+	c+v2kK4y/rX7pwp+weXELnShKDx5kB5rlrJd+GpIquh2n4I9mV4SGow8gfMDtcTxZJX+02MMvUY/g
+	g0RNqhRCvWTuu7xtlkOpCXzSDuefurD2oVtc/73vhnHokXBwVa7kNS0FrYoMrZB22IUCTnD7jMY+1
+	WeFPr8og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmw4B-0000000EhC0-3t8d;
-	Thu, 23 Jul 2026 16:14:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wmwnf-0000000ElCE-1nj3;
+	Thu, 23 Jul 2026 17:01:35 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmw47-0000000EhB4-49X9;
-	Thu, 23 Jul 2026 16:14:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784823268;
-	bh=hCVbUrdO72+2/XTtGQ9LHNVevDpF7W1nNXw/5+2SG+s=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=V/FRfrqwv99v90BjmaqoR58HkKxCnSkgL5+TmqserGROedRVHXEo01bTz5omnT820
-	 dSfYDonOkXeNWMywBYXFhjLBy1Wkjw6L+b491galdIFM/zWkzzeUXKdaB8JTEZV2pL
-	 KvelzdoLM1xNbIWmYkUqC0sM5YOCibEbbEh4S/xiT1fO2rMI3MalCPfRDTqlWbdPf9
-	 FeJQQh7+Q9bJlolrdqJS0LRw6PYT3earjiECvCJ5EqLWhabsMWJb+0ku84aiirvqEf
-	 0I2nmrZ8zDqNpy201Hn4kfZzArJyC2wzwcIpPALC88EN48MGjUXlyPKJ5r4541VZDv
-	 TgdO2WIYJguew==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 852E017E09AA;
-	Thu, 23 Jul 2026 18:14:26 +0200 (CEST)
-Message-ID: <210b72e32d1bd757a36b2baf532dd9f7d46ca5dc.camel@collabora.com>
-Subject: Re: [RFC PATCH 0/3] media: rockchip: VEPU510 H.264 encoder for
- RK3576
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Jiaxing Hu <gahing@gahingwoo.com>, detlev.casanova@collabora.com, paulk
-	 <paulk@sys-base.io>
-Cc: mchehab@kernel.org, heiko@sntech.de, robh@kernel.org,
- krzk+dt@kernel.org, 	conor+dt@kernel.org, ezequiel@vanguardiasur.com.ar,
- linux-media@vger.kernel.org, 	devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Date: Thu, 23 Jul 2026 12:14:24 -0400
-In-Reply-To: <20260723004642.2075233-1-gahing@gahingwoo.com>
-References: <20260722073417.2064667-1-gahing@gahingwoo.com>
-	 <082e1141c38205222a91abf13b1a97d9a00e117a.camel@collabora.com>
-	 <20260723004642.2075233-1-gahing@gahingwoo.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1wmwnc-0000000ElBU-0WCA;
+	Thu, 23 Jul 2026 17:01:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1784826042; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=doS9sUPk+xpDWSk8tCrzWBa+aaPxn1Jb+AA0lPlS3//cL+6+Dlr3R6UIBq1LBXs5WJeBKRj5RDAK7xlTahbemgSo/xTIhGhOnjwHvkargsQoxr5y8A2SeXEcxfPnTb5uhhryTB+nUaP1QRVJ8CGImSTUxamGMM6coFS3RXPV9Ug=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1784826042; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=rMKSwtZHtjgdlF9Y2LNT13qUbh7U8eJLngFZngp7Gpg=; 
+	b=YFQfjKEi0XTVS+E1Q7qXhMxuxhb5gXIjxwniYiu2T+mCFxsg/jJbLhBN5lqGWr64CMBnNvjVIU/EgjHvmljStijdK8ZnfMoj2WicqCrEe5oQe/0Uprd4TYZeSpKZQ+WC9C0veBRvcnfVLvyS11H638SgbhCW9mJ/j8/T+LKQh+o=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784826042;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=rMKSwtZHtjgdlF9Y2LNT13qUbh7U8eJLngFZngp7Gpg=;
+	b=Dl0kJ+qgOiIYFbVvHNu4IwgO8vb8YneY5/bpzX6VCYTCGqXv7iB74202ozSCxoXV
+	8k6eJR2j/nN7DnWuRFph9tzFIZo5EoKkI+CfosRHErnYcAgQYbxlTHhOlVrl1RiF6TX
+	zR0RjsU98kQ2lEATtqBR/hKXCDfndYFt+hZ8E5dg=
+Received: by mx.zohomail.com with SMTPS id 1784826038872548.0819904631492;
+	Thu, 23 Jul 2026 10:00:38 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id C4FB31808C6; Thu, 23 Jul 2026 19:00:31 +0200 (CEST)
+Date: Thu, 23 Jul 2026 19:00:31 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v4 09/10] dt-bindings: display: rockchip: dw-dp: Fix
+ sound DAI cells
+Message-ID: <amJE9v5OHDBWzRwD@venus>
+References: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
+ <20260721-synopsys-dw-dp-improvements-v4-9-f0f4a4ede712@collabora.com>
+ <20260722-enchanted-mandrill-of-refinement-adc7b3@quoll>
 MIME-Version: 1.0
+In-Reply-To: <20260722-enchanted-mandrill-of-refinement-adc7b3@quoll>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.802.37
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_091432_231850_305ADF3D 
-X-CRM114-Status: GOOD (  22.03  )
+X-CRM114-CacheID: sfid-20260723_100132_225266_3179B83D 
+X-CRM114-Status: GOOD (  22.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,106 +76,118 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8470120933331255298=="
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Alexey Charkov <alchark@flipper.net>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Content-Type: multipart/mixed; boundary="===============1386444223972316386=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============8470120933331255298==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-k7OG+sVfO5YN88klwPen"
+--===============1386444223972316386==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="24edahvaidyqhl6v"
+Content-Disposition: inline
 
 
---=-k7OG+sVfO5YN88klwPen
-Content-Type: text/plain; charset="UTF-8"
+--24edahvaidyqhl6v
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 09/10] dt-bindings: display: rockchip: dw-dp: Fix
+ sound DAI cells
+MIME-Version: 1.0
 
 Hi,
 
-Le jeudi 23 juillet 2026 =C3=A0 12:46 +1200, Jiaxing Hu a =C3=A9crit=C2=A0:
-> I'm not attached to the stateful interface -- I used it to get something
-> running on real silicon, not out of conviction. Before I commit to
-> reworking, I'd like to be sure I understand what "converge" means here,
-> because I see two fairly different directions in the thread: Paul's V4L2
-> stateless H.264 encoder (kernel-side reflist/rbsp/RC core), and the
-> Vulkan-Video split you describe for Detlev (thin kernel module + Mesa
-> userspace). Those differ a lot in kind and in effort. Which is the
-> intended target for the Rockchip encoders, or is that still open? Is
-> there a branch, early code or spec draft I should read beyond Paul's
-> series?
+On Wed, Jul 22, 2026 at 09:22:03AM +0200, Krzysztof Kozlowski wrote:
+> > diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchi=
+p,dw-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,=
+dw-dp.yaml
+> > index 2b0d9e23e943..c4f8959dd65d 100644
+> > --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp=
+=2Eyaml
+> > +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp=
+=2Eyaml
+> > @@ -25,7 +25,7 @@ description: |
+> >    * Supports up to 8/10 bits per color component
+> >    * Supports RBG, YCbCr4:4:4, YCbCr4:2:2, YCbCr4:2:0
+> >    * Pixel clock up to 594MHz
+> > -  * I2S, SPDIF audio interface
+> > +  * I2S, S/PDIF audio interface
+> > =20
+> >  properties:
+> >    compatible:
+> > @@ -46,7 +46,7 @@ properties:
+> >        - description: DisplayPort AUX clock
+> >        - description: HDCP clock
+> >        - description: I2S interface clock
+> > -      - description: SPDIF interfce clock
+> > +      - description: S/PDIF interfce clock
+> > =20
+> >    clock-names:
+> >      minItems: 3
+> > @@ -83,7 +83,8 @@ properties:
+> >      maxItems: 1
+> > =20
+> >    "#sound-dai-cells":
+> > -    const: 0
+> > +    const: 1
+> > +    description: 0 for I2S, 1 for S/PDIF
+>=20
+> This is ABI change, which might be backwards compatible or not, but
+> commit msg should explain that. I can easily imagine drivers where
+> written that way that they will fail with an old DTB.
 
-This is a fair point, and something that will certainly bring some level of
-confusion in the short term. My personal goal, and what Detlev is actively
-working on, is to move all codecs drivers toward Vulkan Video, using the mo=
-st
-meaningful driver interface for the purpose. The drivers needs to stay safe
-though, so it matters that the HW can protect memory access.
+It sure is an ABI break on paper, but I don't think it makes sense
+to have an enum allowing 0 or 1.
 
-Detlev and I picked the RKVENC because there was no upstream driver for it,=
- so a
-good place for a clean transition. It has an IOMMU and can ensure per proce=
-ss
-memory access protection. If a process miss-program the encoder and make it
-corrupt on other encoding session it owns, its all right, its not different=
- then
-writing a C program with multiple thread and corrupting another thread. But
-corruption other process session, or the system is not acceptable, and some=
-thing
-Linux driver must protect against.
+mainline kernel:
+At the moment mainline RK3576 dtsi does not have any
+#sound-dai-cells in its DP node and RK3588 has it set to <0>
+(Which will complain after this change. I have a fix for that
+updating it to <1>). But the mainline kernel has absolutely no
+driver support for audio and doesn't use the property at all.
+Not having the cell means the driver would have to assume that
+either I2S or S/PDIF is meant implicitly. But that is also not
+documented.
 
-Paul does not have this hardware protection, so I think he needs a higher l=
-evel
-interface for the driver, and at the point, why not base it on existing ker=
-nel
-interface. Though, V4l2 is massively larger (probably around 100x) interfac=
-e
-then what we are drafting currently for RKVENC in a drm style driver.
+vendor kernel:
+The only other driver for the DP controller that I am aware of is
+=66rom the vendor kernel tree. That does have #sound-dai-cells =3D 1 on
+RK3588 and uses subnodes for RK3576 (and thus no #sound-dai-cells at
+all).
 
-The common part is the rate control. Typically, stateful encoder are firmwa=
-re
-based, and the rate control is in the firmware. We need an in kernel rate
-control for performance reason. The programming latency is going to be too =
-high
-otherwise. The point of convergence, is that we can share helpers for that
-purpose, and Paul's work is really clean, and already in the shape of helpe=
-rs
-not tied to v4l2.
+Thus I argue this is a theoretical ABI break, which affects nothing.
+I will look into adding this info to the commit message after
+dropping the other ideas for <2> and the subnodes.
 
-> Either way the RK3576 hardware enablement and the reference-read fix are
-> shared with RK3588, so I'd much rather contribute the VEPU510 side to a
-> common base than maintain a parallel one -- I'd just like to know which
-> base that is before rebuilding on it.
+Greetings,
 
-This is our experience with decoder too, its relatively easy to support bot=
-h,
-differences being minor. I will ping Detlev today and see if he can help he=
-re. I
-know in his case he was trying to avoid reconstructed frame compression, an=
-d it
-only started working when he enable that compression. Though, he had mmu fa=
-ults
-prior to that.
+-- Sebastian
 
-cheers,
-Nicolas
-
---=-k7OG+sVfO5YN88klwPen
+--24edahvaidyqhl6v
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCamI94AAKCRDZQZRRKWBy
-9KsMAQCH7G0RS3a1tFXKb4SlKY0bUWf7PK/zcqYnZteXtdYzNwD+MfXtoIz0SKsL
-LwqjvoUnRoSdy/JFQbJB445pUEbAoAA=
-=ucod
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpiSKkACgkQ2O7X88g7
++poM0RAApP2rNA3K/01XsRMbbhbADGMBv3BNt+uco66/KnZMQp6/l4t14Aev8Jcj
+nSgeSHh7TQwORQc5LFT+pNWNXBkLSYfY9hKQ91TNG8i51JyxLsUEZw2LUFXlL8TH
+PemKZCoaUikZqp/bKTxaULuTYW7Q8i7FkFytohTnnyQx6sxppTSj9mE6CeJC6Wif
+ljJRqhvTd+wLw2yab7L+fGMttwtLmo/ad3oO4GUIjh43YKExs4ee7+3U4COkuFX3
+VY6sDFbxQE2g3b4YBqCuYqHxljMl300P4/8N1PRoYvo3IEPYEuqTPinkuviSbPjQ
+wakqJARxmE3WyVHvE3qFqdg5U/jkn1Pp52Knr6p69Z96wKZdDOMJjF3C+/cKS8Mg
+cgQIY+E6PXtaSVcVozKGAc72ohBNtGm721M6dckJ1u9Ch+A7QdK3jlHPPzgpNKVO
+rE7PgzD57uxjgc6+S0tja9QAQpyO0SVGzBb9Iyi3d4g8hp2Sxa5WDiiPoO/cGH6k
+JkpgOFjS9ttdGjvlGUgdnfRv7t+zhZpgNPZPdVEhq11HNxU2zuPLHkP9gTMe7pVf
+xCXwbb0BzrNf0KZuQWSTZVB1QTx9Fa9U4TyjvsTs5iYidmhAKmhi5XDcb8RYLPyO
+oIAtQHge6m+uVo29D2LjcG6JKvJgNs9rgOdl8Z/tlan150EYVqU=
+=mgtU
 -----END PGP SIGNATURE-----
 
---=-k7OG+sVfO5YN88klwPen--
+--24edahvaidyqhl6v--
 
 
---===============8470120933331255298==
+--===============1386444223972316386==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -199,5 +198,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8470120933331255298==--
+--===============1386444223972316386==--
 
