@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7DFDC4453F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 01:40:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B432C4453D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 01:40:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1HCMzes5SWWVxM8Fs+UJdv0GkSpecLC5j5/jD2oO4YM=; b=kmxbWX2lMtJHR0
-	Rbz5qloVq8s5HE6Z4JiSxevw/6IO2LlqU/LURmlTsh8Xi7aIZ6fD3Jwmj1iGHyH6Um/4rFT/y811g
-	NTFM4BSZwU0ezKaoBsreE0+QdANThjC858ok0XpB64zATjz7TiHpSUoeYscDMVhv+48vUZXhkglpB
-	EBWq3nvg/nyED+ek9gaol7sbQB6iZx6cigAiwaCBSf+/Ih/B8jsUkA6oHx5K/sgiVmFCR+jy2TWDR
-	qgWe6zEJvn2Qo6v3X3IgGtuSkhlqW7as5x26cspvGUh0+y6LetWnKYQOpM1SCh8CxquUV9p/aoL/t
-	/CBDccs1L+C6OByvkRwA==;
+	List-Owner; bh=xj9okVMIgmnVQKbtV3fScRbBgQIX8VVcX2UVP5yr3d0=; b=xgjBJmSWO40v7W
+	gPbBQjQu3KmF7T3LFPmNQvnDoBJKvJde0+lqFLv/udzTjPm1upJuEBMMHWeyIJvy3Pur9Yieeso/W
+	jjy2eXjOOpl6FsryWfkgTxjSZXeGGIU1d3O/+gpsAnEUYJ1EzHNSuGnDfqkko+frMMHJ2i3Lq/sou
+	cRn5/lhRIe9hJktcF/qnKUMCfako0VFz1MB1GBv3sDVaiwWScNzpgNlnZK0nXDzZPukPZcJE9C/oQ
+	jUGKqOliGhubK4KqaHzUEVfW2NWgIFdkphoTmCH3ES4H70dRjkrLmJm16cuNgOOa7TPxlm/uEkNcE
+	vjmSohvyEWoAu2B9TSdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiQG-0000000D8mA-1aWT;
-	Thu, 23 Jul 2026 01:40:28 +0000
+	id 1wmiQM-0000000D90L-0GcU;
+	Thu, 23 Jul 2026 01:40:34 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiLh-0000000D3d4-3gTu;
+	id 1wmiLj-0000000D3gD-0qdB;
 	Thu, 23 Jul 2026 01:36:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784770543;
-	bh=8hXXUUWxa+3B2LxPEQqVUJAD9gifC9YUHL9RlKRVeXw=;
+	s=mail; t=1784770544;
+	bh=UFenE8b9l203KPkwjscWRWUv0CqTKDKqkM2fzA5eH1A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=SipcEpV9lZVbWiJqjW++uRT7tNPUstveDehNOmR+cR2MtSfMCu8W/G3Em3vbJJ/YT
-	 fvtoF4bXI5cHgwLTQLqUrNpEQRdZsqH2VSUOoGkpFuAjwXbG81atqn75IsrG4e+/W1
-	 /nV6Nl8q+kfWMwJjpArrKxr0vRsqkWK8gXnoOK6wo0+YJDTlNVHwDo62D11CPh8MSD
-	 Ald7kzKEwyvGje0+PQ1R5+7X9X2Ci458ft3cQDgVLabMcJD4YDyQ5D36FtWE0cqHX3
-	 TV9u/fNuyzhB59udhwurrm7XzVgSO7W9zCJr7lGWkpeKL9dKG8dF+eavLU+mJvH64e
-	 Qrkz4AvfsYoKw==
+	b=N8X1IRj3NgXv2W9YL3MFlJRs0DiouHztHVjHdnRQqhPiV57NNcntnIIyCImrH03iF
+	 5y5lPpWpBID3ZYoD46VPQnv9HHn7s3gpCvPguNIWtEn/0kjpWeaB28hgIm9+uwo+m/
+	 j/DCDeuwzIIn0uOFLolEx+bh2OtUqoIW7wKeFrVZw3Qc9ryrxiTFDNrvPeO+As8Cih
+	 lrBit/Rj91JdOu01bk/b6tybFvfTZvzYDXnM2wv6RVjG5NzzCYz3S5jPXO2ipfowdn
+	 2Fe7kMlPpcKlZw8m99CbCtRxS7ZESvVfMiDElwpGyFngNrPLuFMIwX1wavaz6t7bfR
+	 XWEtBLCQQR+aw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CA98917E3869;
-	Thu, 23 Jul 2026 03:35:43 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 80EFC17E38B6;
+	Thu, 23 Jul 2026 03:35:44 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 23 Jul 2026 04:35:49 +0300
-Subject: [PATCH v9 60/61] drm/connector: Drop redundant hdmi
- supported_formats field
+Date: Thu, 23 Jul 2026 04:35:50 +0300
+Subject: [PATCH v9 61/61] drm/connector: Drop redundant max_bpc field
 MIME-Version: 1.0
-Message-Id: <20260723-dw-hdmi-qp-scramb-v9-60-4fb12ea22ac9@collabora.com>
+Message-Id: <20260723-dw-hdmi-qp-scramb-v9-61-4fb12ea22ac9@collabora.com>
 References: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 In-Reply-To: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -73,8 +72,8 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_183546_244301_A8F76045 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20260722_183547_458436_346650B6 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,65 +91,79 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Now that all users migrated to the new drmm_connector_hdmi_init()
-signature, supported_formats is provided through struct
-drm_connector_hdmi_funcs, a reference to which is already stored in
-drm_connector_hdmi.
+signature, max_bpc is provided through struct drm_connector_hdmi_funcs,
+a reference to which is already stored in drm_connector_hdmi.
 
-Drop the redundant field from drm_connector_hdmi and point its users to
-hdmi.funcs->supported_formats instead.
+Drop the redundant connector->max_bpc field and point its users to
+hdmi.funcs->max_bpc instead.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 3 ++-
- drivers/gpu/drm/drm_connector.c                 | 3 ---
- include/drm/drm_connector.h                     | 6 ------
- 3 files changed, 2 insertions(+), 10 deletions(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 6 +++---
+ drivers/gpu/drm/drm_connector.c                 | 2 --
+ include/drm/drm_connector.h                     | 5 -----
+ 3 files changed, 3 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index bb4dd9d0b482..83af9426c69b 100644
+index 83af9426c69b..f0b9141ab05a 100644
 --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
 +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -426,7 +426,8 @@ sink_supports_format_bpc(const struct drm_connector *connector,
- 		return false;
- 	}
+@@ -319,7 +319,7 @@
+ void __drm_atomic_helper_connector_hdmi_state_init(struct drm_connector *connector,
+ 						   struct drm_connector_state *new_conn_state)
+ {
+-	unsigned int max_bpc = connector->max_bpc;
++	unsigned int max_bpc = connector->hdmi.funcs ? connector->hdmi.funcs->max_bpc : 0;
  
--	if (!(connector->hdmi.supported_formats & BIT(format))) {
-+	if (!connector->hdmi.funcs ||
-+	    !(connector->hdmi.funcs->supported_formats & BIT(format))) {
- 		drm_dbg_kms(dev, "%s format unsupported by the connector.\n",
- 			    drm_hdmi_connector_get_output_format_name(format));
- 		return false;
+ 	new_conn_state->max_bpc = max_bpc;
+ 	new_conn_state->max_requested_bpc = max_bpc;
+@@ -678,7 +678,7 @@ hdmi_compute_config(const struct drm_connector *connector,
+ {
+ 	unsigned int max_bpc = clamp_t(unsigned int,
+ 				       conn_state->max_bpc,
+-				       8, connector->max_bpc);
++				       8, connector->hdmi.funcs->max_bpc);
+ 	enum drm_output_color_format fmt;
+ 	int ret;
+ 
+@@ -811,7 +811,7 @@ static int hdmi_generate_hdr_infoframe(const struct drm_connector *connector,
+ 	if (!connector->hdmi.funcs->hdr_drm.write_infoframe)
+ 		return 0;
+ 
+-	if (connector->max_bpc < 10)
++	if (connector->hdmi.funcs->max_bpc < 10)
+ 		return 0;
+ 
+ 	if (!conn_state->hdr_output_metadata)
 diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-index 837dbaa65eb0..27dfc26c6100 100644
+index 27dfc26c6100..5ada9cc579d1 100644
 --- a/drivers/gpu/drm/drm_connector.c
 +++ b/drivers/gpu/drm/drm_connector.c
-@@ -610,9 +610,6 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
- 	if (ret)
- 		return ret;
+@@ -670,8 +670,6 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+ 	}
  
+ 	drm_connector_attach_max_bpc_property(connector, 8, hdmi_funcs->max_bpc);
 -	/* TODO: remove after conversion to new drmm_connector_hdmi_init() */
--	connector->hdmi.supported_formats = hdmi_funcs->supported_formats;
--
- 	/*
- 	 * The supported HDMI version can be used to determinate the maximum
- 	 * TMDS character rate allowed by the specification. Some controllers,
+-	connector->max_bpc = hdmi_funcs->max_bpc;
+ 
+ 	if (hdmi_funcs->max_bpc > 8)
+ 		drm_connector_attach_hdr_output_metadata_property(connector);
 diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 03f4e6751165..e2ee5af6f7ac 100644
+index e2ee5af6f7ac..36221c21a623 100644
 --- a/include/drm/drm_connector.h
 +++ b/include/drm/drm_connector.h
-@@ -2119,12 +2119,6 @@ struct drm_connector_hdmi_audio {
-  * struct drm_connector_hdmi - DRM Connector HDMI-related structure
-  */
- struct drm_connector_hdmi {
+@@ -2385,11 +2385,6 @@ struct drm_connector {
+ 	 */
+ 	struct drm_property_blob *path_blob_ptr;
+ 
 -	/**
--	 * @supported_formats: Bitmask of @drm_output_color_format
--	 * supported by the controller.
+-	 * @max_bpc: Maximum bits per color channel the connector supports.
 -	 */
--	unsigned long supported_formats;
+-	unsigned int max_bpc;
 -
  	/**
- 	 * @max_tmds_char_rate: Maximum TMDS character rate, in Hz,
- 	 * supported by the controller.
+ 	 * @max_bpc_property: Default connector property for the max bpc to be
+ 	 * driven out of the connector.
 
 -- 
 2.55.0
