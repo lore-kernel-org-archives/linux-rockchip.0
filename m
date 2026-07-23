@@ -4,49 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8C65C531D0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 22:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CEF3C531CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 23:02:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uGynqpf/YhrHcOm3vCnVslqDisnhxPiFgzvqLYhIKDU=; b=CWrFSyYMOkvTo5
-	B/2AbAChFVXCoIYmSJ+rMuKBbnQTJ+5O5E/AHZonrrPjhtfuqDQA/YbNjokoCzAWL5n18TPIVQ3E+
-	2jDpGnYfHjpAyCbrQU8t71kGq3//IOlPDgfBH5b7noJYz2rv2hB0Ypg36bEHbd5Q7HKMQ/KLMovfY
-	wrUKePBcKvxR52KGfs0TILbTlvc7GY6fnzxID1H45aeE+CXnbphASn4cUSV7PDkXv7BuuffGQqgNu
-	ezwvhz9JD9LUha3YGA9SnaWJqH/x0zldyD2mWRs3fPhQoRGhgc7lv+akGx05c3Z5CUcDDAGCjqPhq
-	veNLtVRAhcXlzgeJpZUA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6t3whXu+xS99NOhlDjr6zqqUWH0CFG3tCc3m3ERZLg0=; b=1hnsYB6EBO57Uy
+	5c06PRAln71JN4mKOmTIMgW2oPa5qWixfWlhiHfVCaTsgLseqm8OxivAfLhvW9nTtqUHXMp9vpxAl
+	F77JTkkD9z+9B8VxgJZYWFy5E47M3kCmI3HGhEyf+XmgNvjPTMldTK76yB3qwvg0bVtQsL0qTcYuR
+	hU2BknRXh28iz8CyKcleu95AcUZWSx3YvfHCN8ulK5a3x/lgpWp45mG41l4TxnWa5awZidQzlNoAe
+	2lftOdJH0n7PXCJ5o2zvRe2OSSBUTjMUcNYxlql4Gf3rAZauuOHh4WVahv8tGTrZuJWdPuBRokWN4
+	KX3p8SGD640Fh0saQcfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn1zP-0000000FDrZ-40EP;
-	Thu, 23 Jul 2026 22:34:03 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wn2Qm-0000000FEvE-2aPG;
+	Thu, 23 Jul 2026 23:02:20 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn1zN-0000000FDqm-2kGw
+	id 1wn2Qk-0000000FEv3-3J1b
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Jul 2026 22:34:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=MpEHESMNTRc4WI9oAvqXsy9cYc98aqQpHvwBNvy6r/M=; b=LYoJwbLRmOOK88zsXAWXGyU0p4
-	ZkOuAekdXCRuIQH8poWjT1b3CsxALXIH4E6ppW+HTl4++ehT2Z/4ZHU5VtUYBElrJFnjOs8IJkRtG
-	NyaeRWtuMOwUY+KQXQLyncNVK6aOT14AKbeiG01M2lzt885WNxR0fZk6b2rRzkb234mbJSDQvpMYI
-	yDLMSwuvJOnnrfqYHqA7hG6+uj7brrlFlGn4B8hePNALZDb+3UB7vVtfn6gi1BxsplQ90GpbA6Eky
-	h79kTEZNeBm138X21pZ8s0K6nyku9yfZP3Q6AfRfV3NfiqmXaO30qQv5iflBPMe0wYfsoIBooXfQP
-	QuezOEjw==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [GIT PULL] Rockchip clock fixes for 7.2-rc
-Date: Fri, 24 Jul 2026 00:33:43 +0200
-Message-ID: <1912648.b8e9qBsS6s@diego>
+	Thu, 23 Jul 2026 23:02:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 193944093F;
+	Thu, 23 Jul 2026 23:02:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B535E1F000E9;
+	Thu, 23 Jul 2026 23:02:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784847738;
+	bh=7UNqZ4A5NZ/sz3LYwH+ygbQXhe+aJgx7hitGbQj8Rz4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=h/WC+S/LvDz+scCgVsvtO5/mSBQF2MeVHHigum+eGlJc3lGXAGx7fXpbnBUHHJgmX
+	 WGt+pdllFGvKcF64zqPuYQKhcP+fVqm+VMP/pQawx7FDN1sfffNBdNHMTTgye6e5j/
+	 yls1q0mukcRbWwsMep7PLgJNjUNgie2xqYy2tdBZ4qt3M8Yu8YoqAVjccCDT7yFIqX
+	 2y4V+MlxBXNQ5NO6Bt9FsgIe0AJp4d0ozOpw8pvvOcOGdnr/EX2Q6fSUxUmq3rOQN7
+	 GgkbIuxrC7437cNL7tP2SXPo8gpvVTDLxUEYdvG0AEhYHcLZwDM2X6aOpHUA5qOg2Z
+	 kBfjXraEkwjXg==
+Date: Fri, 24 Jul 2026 00:02:12 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Chris Morgan
+ <macroalpha82@gmail.com>, linux-iio@vger.kernel.org, andy@kernel.org,
+ nuno.sa@analog.com, dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ andriy.shevchenko@intel.com
+Subject: Re: [PATCH v16 02/10] dt-bindings: iio: imu: icm42600: Remove
+ interrupts from required
+Message-ID: <20260724000212.775169c4@jic23-huawei>
+In-Reply-To: <DS4PR19MB997335033645A4555221CC6006A5C32@DS4PR19MB997335.namprd19.prod.outlook.com>
+References: <20260713215842.69097-1-macroalpha82@gmail.com>
+	<20260713215842.69097-3-macroalpha82@gmail.com>
+	<20260715-mottled-uncovered-mastodon-6c08be@quoll>
+	<PH0PR19MB997338D80EB8ABB7C623850A23A5F82@PH0PR19MB997338.namprd19.prod.outlook.com>
+	<82e3c736-f06f-484a-887c-9e156cb7cb44@kernel.org>
+	<PH0PR19MB99733836951FBC9755A5361641A5F82@PH0PR19MB997338.namprd19.prod.outlook.com>
+	<20260719001848.435886e0@jic23-huawei>
+	<DS4PR19MB997335033645A4555221CC6006A5C32@DS4PR19MB997335.namprd19.prod.outlook.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_153401_722601_CD015D30 
-X-CRM114-Status: UNSURE (   7.26  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,44 +81,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mike, Stephen,
+On Mon, 20 Jul 2026 12:16:46 -0500
+Chris Morgan <macromorgan@hotmail.com> wrote:
 
-here is one of those seldom PRs for a needed clock-related fix for the
-current development cycle, which fixes a regression by keeping
-newly added clocks on, if they're not handled by a driver.
+> On Sun, Jul 19, 2026 at 12:19:00AM +0100, Jonathan Cameron wrote:
+> > On Wed, 15 Jul 2026 15:34:53 -0500
+> > Chris Morgan <macromorgan@hotmail.com> wrote:
+> >   
+> > > On Wed, Jul 15, 2026 at 08:29:44PM +0200, Krzysztof Kozlowski wrote:  
+> > > > On 15/07/2026 16:52, Chris Morgan wrote:    
+> > > > > On Wed, Jul 15, 2026 at 07:52:52AM +0200, Krzysztof Kozlowski wrote:    
+> > > > >> On Mon, Jul 13, 2026 at 04:58:32PM -0500, Chris Morgan wrote:    
+> > > > >>> From: Chris Morgan <macromorgan@hotmail.com>
+> > > > >>>
+> > > > >>> Interrupts are almost never required for IIO devices per upstream
+> > > > >>> maintainers. Remove interrupt as a required parameter for the
+> > > > >>> devicetree binding.    
+> > > > >>
+> > > > >> That's an odd statement. We do require interrupts when the hardware
+> > > > >> requires them. We do not require interrupts, not because we have such
+> > > > >> policy, but because hardware does not require them.
+> > > > >>
+> > > > >> Plus, we do require interrupts when software implementing ABI requires
+> > > > >> them.
+> > > > >>
+> > > > >> Above commit msg is simply inaccurate and misleading. Instead, please
+> > > > >> use actual hardware arguments or how ABI is actually used. You must not
+> > > > >> introduce changes to ABI just "because" while for example making that
+> > > > >> ABI conflicting with existing implementation.    
+> > > > > 
+> > > > > I will defer then to Jonathan on the specifics of this, but from what I
+> > > > > can tell:
+> > > > > 
+> > > > > 1) The icm42600 devices don't need an interrupt for operation other
+> > > > > than for buffered mode or wake on movement. One-shot should work
+> > > > > without it.
+> > > > > 
+> > > > > 2) The existing icm42600 driver does require an interrupt however, and
+> > > > > refuses to bind without it. The driver could in theory be modified to
+> > > > > not require an interrupt though and skip using buffered mode and WoM
+> > > > > when no interrupt is present; however I don't plan on making these
+> > > > > changes at this time.
+> > > > > 
+> > > > > 3) The new icm42607 driver I'm trying to upstream does not use an
+> > > > > interrupt, because on my current test device it's not even wired up.
+> > > > > On future devices that I have with this chip I may pursue using an
+> > > > > interrupt, but it will never be required.
+> > > > > 
+> > > > > So should I go back to requiring the interrupt for all devices except
+> > > > > for the new driver then?    
+> > > > 
+> > > > You mentioned two drivers, I don't know how does this relate to them. In
+> > > > any case your commit msg is inaccurate and not a correct reason to make
+> > > > a change.
+> > > > 
+> > > > Best regards,
+> > > > Krzysztof    
+> > > 
+> > > I'm confused, so again should I just go back to the way things were?
+> > > 
+> > > This binding is to describe the hardware for devices using two distinct
+> > > drivers, the inv_icm42600 and the new (that I am trying to finish)
+> > > inv_icm42607 driver. The hardware requires an interrupt if you want to
+> > > use features such as wake-on-motion or hardware buffers. The existing
+> > > driver inv_icm42600 always assumes an interrupt is present and thus
+> > > fails to probe if one is not (making it a "requirement"). The new
+> > > driver I'm writing does not use the interrupt, because I don't have
+> > > one.  
+> > 
+> > For dt-bindings, look at it from the question of 'is the hardware useful
+> > without this interrupt?'  Answer is yes for vast majority of sensors as we
+> > can either reduce features but still have some useful ones, or use another
+> > approach such as polling a ready flag to replace doing it with an interrupt.
+> > It is very common for boards to come out where none of the interrupts are
+> > wired.
+> > 
+> > The only time I've seen that they are actually required for IIO stuff is
+> > for very simple devices where the interrupt is the data - e.g. stand alone
+> > threshold detectors with no ADC like functionality.
+> > 
+> > All this is independent of the driver working without the interrupt.
+> > It is fully allowed to refuse to probe because it relies on something
+> > optional in the DT-binding.
+> > 
+> > Jonathan
+> >   
+> 
+> At this point (if it's okay with you) I'll just make sure the interrupt
+> is not required for the new chips supported, as the distinction between
+> whether the hardware needs it versus the driver is a bit lost on me;
+> however for now the driver will fail on all the older chips if the
+> interrupt isn't present.
 
+Ok. We can leave relaxing the requirement for the older devices for now.
 
-So, please pull :-) 
+Jonathan
 
-Thanks a lot
-Heiko
-
-
-
-The following changes since commit dc59e4fea9d83f03bad6bddf3fa2e52491777482:
-
-  Linux 7.2-rc1 (2026-06-28 12:01:31 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.2-rockchip-clkfixes1
-
-for you to fetch changes up to 946352b2f88fd2378f0341312e47dff1e8dc2fac:
-
-  clk: rockchip: rk3588: don't disable unused I2S MCLK output gates (2026-06-28 21:09:50 +0200)
-
-----------------------------------------------------------------
-Fix for the recently added i2s clocks, to make it backwards compatible
-with the existing devicetrees.
-
-----------------------------------------------------------------
-Daniele Briguglio (1):
-      clk: rockchip: rk3588: don't disable unused I2S MCLK output gates
-
- drivers/clk/rockchip/clk-rk3588.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-
+> 
+> Thank you,
+> Chris
+> 
+> >   
+> > > 
+> > > I'm thinking I'll just go back to the way it was previously, unless
+> > > Jonathan disagrees. The interrupt will be listed as required for all
+> > > devices using the inv_icm42600 driver, and not required for devices
+> > > using the inv_icm42607 driver.
+> > > 
+> > > Thank you.
+> > >   
+> >   
+> 
 
 
 _______________________________________________
