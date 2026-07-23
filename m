@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44F08C531FA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 23:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56CD9C531FA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 23:16:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p1Oh6cP0MoNfDT1FIc2Xg0iMeU0NgEgQfmqwUcFvAvw=; b=l1dGc7C5sMbwcd
-	dniCCJUYNQuPeBiOrk4KCrzGKoAGMlJ7UTY3DAE6DgpNJbIN5QV+t5qH44dHeJwZThvdVTO92Iifa
-	DjgrVASsuWUcziX0ND9u7P09o1sJogTXk+MZ0tf2VtLaBXH0gXpXIlDd7ePKkTdQN0UtnzdHcHtuW
-	bSnCy0cWyKgP/k7JEsClzz++4aM1O8S54g7q57pwQysKXnIZDvcWJ6XZ49tLxjvZutjR2lKo2i+be
-	+bQh226ETW+rHsb4ag9dNYPiUPh85xegynaUxmrZJct9eFOl3ccXFQ/LiOwi2wSbdfCNZZLzRh3k5
-	IfmaUz7GjX/9UU9q8V+A==;
+	List-Owner; bh=9h8DijCN5bRX7K1hqRCtDmP0XoiQf1yjJ38GwoRgpas=; b=nWds6qDv+A/fUj
+	FL4VdCRVZ5CNdMGLFyiZRP3VMHHcmC8s419g+7kJq4+sW2FLqH4EYr+rkR7xRamsXEosDdU1rQeDn
+	XB3AuOQyRpi7wwQU3vq7r6eAMOkMxvb4XMUNMb0NDPQR6Ni9szFOa9sIXd4cmWHRN65dKUoSejhut
+	sGwz42M8Tba9FsBvgJN008nCBQ37Z374C6GkrBhapKKHbEM8lSSooHjVlikjOqPUJvogKiW2c+gt8
+	qBtga8a6b4FeNiZEtX7DJ/jdmQgpCQQDyuje2r+Uk9nJiuNBLf1VVsDEnshFLEvD99WAO54WNGv2X
+	Kj22UD/FidLPo7OgyE3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn2di-0000000FFWn-3FyI;
-	Thu, 23 Jul 2026 23:15:42 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wn2eq-0000000FFe8-3n4j;
+	Thu, 23 Jul 2026 23:16:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn2dh-0000000FFWb-2ju9
+	id 1wn2eq-0000000FFdx-0Hbx
 	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Jul 2026 23:15:41 +0000
+	Thu, 23 Jul 2026 23:16:52 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C617F600AD;
-	Thu, 23 Jul 2026 23:15:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7654D1F000E9;
-	Thu, 23 Jul 2026 23:15:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7ED3D43886;
+	Thu, 23 Jul 2026 23:16:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07CF21F000E9;
+	Thu, 23 Jul 2026 23:16:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784848540;
-	bh=yFszR+aoiyfsqBGg5FluY44HniJLCj3pYOcguVsSajE=;
+	s=k20260515; t=1784848611;
+	bh=BFrMt62NqeFuclmvLG54QxWcXXQphRnPpV2D2DMQvWE=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=d0vIRSI4UckEKljXRVTQyYQQEPewZ0fcFxotGaOgpq+7qKFDqXB37RCmMPfl9tPz3
-	 +fW/ZzA0EgYgbNVyjolcmNIfW9XZVu4EzW08Qoj9lgoJAIdjDkV0TOWjq+btM0yupb
-	 Mslvf10ELmmL5YsYmlfL3GDegyj4dkufbIPAQ81m8HUL0T0G0l+enQqjBqsAsudT5q
-	 oKvJhU/lixlndcj+aBiVsXFee+2pShQy34wAt/EJ09hyS68U0l+DwXuYfo53+5tSlQ
-	 VKz2RqBUTzMkZFjRdoZ8rnorkY+wK5Tk7OJnCTOyckbJ2CI4yXCTHRodmg+iQKXpN5
-	 +lf2p2aDjj9Tw==
-Date: Fri, 24 Jul 2026 00:15:35 +0100
+	b=GiS989qKpihuRzkk1feA0KG3d20Qw3TAUn9oTnxZxC8M+6dxiiYrsfwfkE/2w8a01
+	 McSOvwN77a/FW4JdASB6JwIpD71C3/nNTz8RFpJnbWG4vwnGVhFG+Xoq63YMB7gX6N
+	 vRrFG03gW7OCh+NwcjVle+0fuRjTQ0Ehoo4dTfZUF4ut4gcX6sbLlTMrKVhSZO9zoj
+	 FBrL/fK995h3SB7vqZ9pWLsqGrrpP3gm3thDihlbmw0Hv2iiU3l16HzlEjOvBZ3cwd
+	 +m5Ebr/U6WzCxdiD8194CtSEGTDYOIcFBXAatotfY3F4l4QblZjXY3cETACyIHFEeX
+	 uaW9yOMkXl/RQ==
+Date: Fri, 24 Jul 2026 00:16:47 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>
+To: Chris Morgan <macromorgan@hotmail.com>
 Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
  andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
  jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com, Chris
- Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH v16 04/10] iio: imu: inv_icm42607: Add inv_icm42607 Core
+ krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
+Subject: Re: [PATCH V17 3/9] iio: imu: inv_icm42607: Add inv_icm42607 Core
  Driver
-Message-ID: <20260724001535.5991853b@jic23-huawei>
-In-Reply-To: <alYoUSf_jGegFP9E@monoceros>
-References: <20260713215842.69097-1-macroalpha82@gmail.com>
-	<20260713215842.69097-5-macroalpha82@gmail.com>
-	<alYoUSf_jGegFP9E@monoceros>
+Message-ID: <20260724001647.42af95ff@jic23-huawei>
+In-Reply-To: <DS4PR19MB9973350E9251D329E03A96066FA5C32@DS4PR19MB997335.namprd19.prod.outlook.com>
+References: <20260716182637.24310-1-macroalpha82@gmail.com>
+	<20260716182637.24310-4-macroalpha82@gmail.com>
+	<20260719000530.62bad145@jic23-huawei>
+	<DS4PR19MB9973350E9251D329E03A96066FA5C32@DS4PR19MB997335.namprd19.prod.outlook.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -71,41 +71,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAxNCBKdWwgMjAyNiAxNDoxODo1MyArMDIwMApVd2UgS2xlaW5lLUvDtm5pZyA8dS5r
-bGVpbmUta29lbmlnQGJheWxpYnJlLmNvbT4gd3JvdGU6Cgo+IEhlbGxvLAo+IAo+IE9uIE1vbiwg
-SnVsIDEzLCAyMDI2IGF0IDA0OjU4OjM0UE0gLTA1MDAsIENocmlzIE1vcmdhbiB3cm90ZToKPiA+
-ICsjaW5jbHVkZSA8bGludXgvaTJjLmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L21vZF9kZXZpY2V0
-YWJsZS5oPiAgCj4gCj4gUGxlYXNlIGRvbid0IHVzZSA8bGludXgvbW9kX2RldmljZXRhYmxlLmg+
-LCB0byBnZXQgaTJjX2RldmljZV9pZCBhbmQKPiBvZl9kZXZpY2VfaWQgaXQncyBlbm91Z2ggdG8g
-aGF2ZSA8bGludXgvaTJjLmg+Lgo+IAo+ID4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgaTJjX2Rldmlj
-ZV9pZCBpbnZfaWNtNDI2MDdfaWRbXSA9IHsKPiA+ICsJewo+ID4gKwkJLm5hbWUgPSAiaWNtNDI2
-MDciLAo+ID4gKwkJLmRyaXZlcl9kYXRhID0gKGtlcm5lbF91bG9uZ190KSZpbnZfaWNtNDI2MDdf
-aHdfZGF0YSwKPiA+ICsJfSwgewo+ID4gKwkJLm5hbWUgPSAiaWNtNDI2MDdwIiwKPiA+ICsJCS5k
-cml2ZXJfZGF0YSA9IChrZXJuZWxfdWxvbmdfdCkmaW52X2ljbTQyNjA3cF9od19kYXRhLAo+ID4g
-Kwl9LAo+ID4gKwl7IH0KPiA+ICt9Owo+ID4gK01PRFVMRV9ERVZJQ0VfVEFCTEUoaTJjLCBpbnZf
-aWNtNDI2MDdfaWQpOwo+ID4gKwo+ID4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lk
-IGludl9pY200MjYwN19vZl9tYXRjaGVzW10gPSB7Cj4gPiArCXsKPiA+ICsJCS5jb21wYXRpYmxl
-ID0gImludmVuc2Vuc2UsaWNtNDI2MDciLAo+ID4gKwkJLmRhdGEgPSAmaW52X2ljbTQyNjA3X2h3
-X2RhdGEsCj4gPiArCX0sIHsKPiA+ICsJCS5jb21wYXRpYmxlID0gImludmVuc2Vuc2UsaWNtNDI2
-MDdwIiwKPiA+ICsJCS5kYXRhID0gJmludl9pY200MjYwN3BfaHdfZGF0YSwKPiA+ICsJfSwKPiA+
-ICsJeyB9Cj4gPiArfTsKPiA+ICtNT0RVTEVfREVWSUNFX1RBQkxFKG9mLCBpbnZfaWNtNDI2MDdf
-b2ZfbWF0Y2hlcyk7ICAKPiAKPiBJdCB3b3VsZCBiZSBlbm91Z2ggdG8gcHJvdmlkZSB0aGUgZHJp
-dmVyX2RhdGEgcG9pbnRlcnMgaW4gdGhlCj4gaTJjX2RldmljZV9pZCBhcnJheSBvbmx5LgpJJ2Qg
-cHJlZmVyIHRvIGtlZXAgdGhlbSBpbiBib3RoLgoKVGhlIG1hdGNoIGZ1bmN0aW9uIHRyaWVzIHRo
-ZSBvZl9kZXZpY2VfaWQgcGF0aCBmaXJzdCBhbmQgaWYgd2UKc2hvdWxkIGV2ZXIgZ2V0IGEgdHlw
-byBvciBtaXNtYXRjaCB3ZSBjYW4gZW5kIHVwIHdpdGggYSBkcml2ZXIKZmFpbGluZyBpbiBhIHdh
-eSB0aGF0IGlzIGFubm95aW5nbHkgaGFyZCB0byB0cmFjayBkb3duLiAgCkl0IGhhcyBoYXBwZW5l
-ZCA6KCAgTm93IEknZCBsb3ZlIHVzIHRvIGdldCB0byB0aGUgcG9pbnQKd2hlcmUgd2UgY291bGQg
-anVzdCBoYXZlIHRoZSBvZl9kZXZpY2VfaWQgdGFibGUgKGFuZCBtYXliZQpBQ1BJIG9uIG9jY2Fz
-aW9uKSBidXQgd2UgYXJlbid0IHRoZXJlIHRvZGF5LgoKVGhpcyBjYW1lIHVwIGluIHYxNyB3aGVy
-ZSBJIGFza2VkIHdoeSB0aGV5IHdlcmUgbWlzc2luZyBhbmQgQ2hyaXMKbWVudGlvbmVkIGl0IHdv
-dWxkIGJlIGZpbmUgdG8gZHJvcCB0aGVtLgoKSm9uYXRoYW4KCj4gCj4gQmVzdCByZWdhcmRzCj4g
-VXdlCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+On Mon, 20 Jul 2026 12:15:06 -0500
+Chris Morgan <macromorgan@hotmail.com> wrote:
+
+> On Sun, Jul 19, 2026 at 12:05:30AM +0100, Jonathan Cameron wrote:
+> > On Thu, 16 Jul 2026 13:26:30 -0500
+> > Chris Morgan <macroalpha82@gmail.com> wrote:
+> >   
+> > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > 
+> > > Add the core component of a new inv_icm42607 driver. This includes
+> > > a few setup functions and the full register definition in the
+> > > header file, as well as the bits necessary to compile and probe the
+> > > device when used on an i2c bus.
+> > > 
+> > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > > Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>  
+> > 
+> > Hi Chris,
+> > 
+> > Just one small thing below given you are probably going to do
+> > a v18.  If it had just been this I might have tweaked it whilst
+> > applying
+> > 
+> > Thanks,
+> > 
+> > Jonathan
+> > 
+> >   
+> > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> > > new file mode 100644
+> > > index 000000000000..8f74bf38aad1
+> > > --- /dev/null
+> > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c  
+> > 
+> > ...
+> >   
+> > > +static int inv_icm42607_probe(struct i2c_client *client)
+> > > +{
+> > > +	struct device *dev = &client->dev;
+> > > +	const struct inv_icm42607_hw *hw;
+> > > +	struct regmap *regmap;
+> > > +
+> > > +	hw = i2c_get_match_data(client);
+> > > +	if (!hw)
+> > > +		return dev_err_probe(dev, -ENODEV, "Failed to get i2c data\n");
+> > > +
+> > > +	regmap = devm_regmap_init_i2c(client, &inv_icm42607_regmap_config);
+> > > +	if (IS_ERR(regmap))
+> > > +		return dev_err_probe(dev, PTR_ERR(regmap),
+> > > +				     "Failed to register i2c regmap\n");
+> > > +
+> > > +	return inv_icm42607_core_probe(regmap, hw, inv_icm42607_i2c_bus_setup);
+> > > +}
+> > > +
+> > > +static const struct i2c_device_id inv_icm42607_id[] = {
+> > > +	{
+> > > +		.name = "icm42607",
+> > > +		.driver_data = (kernel_ulong_t)&inv_icm42607_hw_data,
+> > > +	}, {
+> > > +		.name = "icm42607p",
+> > > +		.driver_data = (kernel_ulong_t)&inv_icm42607p_hw_data,
+> > > +	},
+> > > +	{ }
+> > > +};
+> > > +MODULE_DEVICE_TABLE(i2c, inv_icm42607_id);
+> > > +
+> > > +static const struct of_device_id inv_icm42607_of_matches[] = {
+> > > +	{
+> > > +		.compatible = "invensense,icm42607",  
+> > 
+> > I'd expect to see the data here as well.  Look at implementation of i2c_get_match_data()
+> > and consider what would happen if there was a slightly mismatch between which devices
+> > were listed in each table.  To avoid that fragility we normally just put
+> > the data pointers in both places.  
+> 
+> I was advised in the notes for patch v16 that it could be removed. Should I go back and
+> undo the remove?
+
+Ah. I missed Uwe's comment. I've replied to that email. Let's give
+it a day or two to see if Uwe comes back with an reason beyond it
+working without it (which is true as long as the IDs always match!)
+
+Jonathan
+
+> 
+> Thank you,
+> Chris
+> 
+> >   
+> > > +	}, {
+> > > +		.compatible = "invensense,icm42607p",
+> > > +	},
+> > > +	{ }
+> > > +};
+> > > +MODULE_DEVICE_TABLE(of, inv_icm42607_of_matches);  
+> > 
+> >   
+> 
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
