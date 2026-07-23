@@ -4,90 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 548B3C531FC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 22:17:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AEE3C531D0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 22:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8yaZ/UrnMQc9mh3BUctDwuGwT2UPBrBhQfuUFI5wbRc=; b=EVwVoxqL3+1KPP
-	WBpX0Ux8e3VMgbrE0IeAC+s8AXICIOfCIdhBkqeLiPsVP0jZ7CWrP4wRic0dUaADAKp1A6egLs+kV
-	8xcKT25xvhJVG8f238n7gd4/2pSA3pDp05xMscZjNBFYkx0WYld7miilLFGWp1Grr0CwKyfunaEZT
-	gikb+Lv7N0p/QNFimTuCIzOWH2fr+9UrTQVBID/J5VoCZlHHqVTC+rB/Q2sp7S4WBSbWpCX5HCUXS
-	tgFmkOt4/L9zHEGvd/sT/Zow46ywikEMBBWH7tN4pu9kwYDvvT0IbMAXh1M2XkNSBrxhejoJts/Zg
-	JzwgTqh+G5svhHwSG3iA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QmQPrILgpKn/r1Pb2C9PvvKKm6QWIuTqPwauoBSYRR4=; b=oJ84ucivUp1++VvwVraaAokVrW
+	Sg9D2anGKd8llJQYaeVScAs1mpmL+8BBOpEB1GPcP/KBl1BCH89dckhuG2pVq7OtpnZhQwZTSAtli
+	uFhHJUkRh7WktLg4ptLBYa/I03dPHcj13MUP6Skar5gSqvRI7M9tRTXb4dKQJqpRp5WkZmNGmnclc
+	PEUsS5uBIuKQESd6ajyeBq++SLpJhKzrL6rgCAE3wkaVwqrF1/yjSKp0s7b5Y+qYy5DEZZUzjxuM6
+	nDLwZF9SK4rQs2FbN5v+xWLY4Gs9dIFjZu2W1BATDAcIowi4fbnHufV4NGAYNeT+U1Zbar/WyHLir
+	3bLR0dUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn1jk-0000000FApc-3VUq;
-	Thu, 23 Jul 2026 22:17:52 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wn1pk-0000000FCx6-3DGy;
+	Thu, 23 Jul 2026 22:24:04 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn1jN-0000000FADP-46q3;
-	Thu, 23 Jul 2026 22:17:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784845042;
-	bh=t8Mqbzoc6212UuCXZ0+fMZ6NzFgfwWLL+NvwDZjkfKY=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=VHicXYaP7g3muPeZyWBRPrXdCuQqzxoJy3IzQQyPEahRFUgojQ0G9cLjYZ5P32r6k
-	 mz95BLsdusqTeaplMV9ehbUcYIgaPKhx3fjqCFjYahzfKD1DcqQAgjflj3L7fD9aXa
-	 ohvKgxBl4COHkKeE7rLUeEH08kuQRAE63hgk3EU+T6Zk2okK3XKRYboutlhn9fYl5J
-	 FsRHxuF37JL03O22H4Hck4sfHTCK5BXggHF2a5lLezxzzd/kQHRY05DNgZGSiHOvO1
-	 T/OnPhitkKoV0/IGgQHk2xWtFFn4c7Ci+KkB5zGN16tnHFSN1rU7LSIvB0aew3g22i
-	 ARCswvN2AN7fg==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AF59717E38B6;
-	Fri, 24 Jul 2026 00:17:22 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1747248003A; Fri, 24 Jul 2026 00:17:22 +0200 (CEST)
+	id 1wn1pi-0000000FCwH-16gX;
+	Thu, 23 Jul 2026 22:24:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1784845409; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ODlG6/Dr7zfVNBITK5q+zjIGFVJwHoF3Bw6Dx9mPdVJq9rzeWWRHTpnNs4Xgc8LNvEJ9bNVR9xDCgUZ5ihh2TvduoLW2M+C2pBoqHb4j8bSneC8Ihw9i9VmCsWzuqzdoGDlTPdKZc5ZmEWZhBtx4odsng6WXJpLsgYC/cL1j1Sg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1784845409; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=labg2PG4k0Dzn6qu2NEbidh5NuZ5vUXyu6act9w5b5E=; 
+	b=Gksvwk12D1+wcpV+T3dCaxJ4OYqElAqU1jmOijkhoRUveFCq3um4bDPCFxwvcn3u8x5GfnTqtlMWQEJNfycU6GZ9K3trd4GGMbtMLyZWjJTrgWZsOEQKGjQJ+zSBroagEUe6V9vuAxFKzeWZ0KnHhihkiqvHUiYJtVnB6Jmg+Wc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784845409;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=labg2PG4k0Dzn6qu2NEbidh5NuZ5vUXyu6act9w5b5E=;
+	b=jmojtjpCXy4ZR2FmCnIyyooeiIjisSXYm0jkwMhbDoLBw9IH3grG63kXbxEoUQ3T
+	h+C24vvYaZVhvKf4QFAe57JMMBBdAFbij3lagYwaClOVzF6ygw3ysB5AyjIz3pbxgqM
+	09ljknNPU/nJWG/jYUQJEFl6V4h3nnRjLpF9EeSc=
+Received: by mx.zohomail.com with SMTPS id 1784845407293120.01048474195886;
+	Thu, 23 Jul 2026 15:23:27 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 8DA081803EC; Fri, 24 Jul 2026 00:23:20 +0200 (CEST)
+Date: Fri, 24 Jul 2026 00:23:20 +0200
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 24 Jul 2026 00:17:16 +0200
-Subject: [PATCH v5 08/15] drm/bridge: synopsys: dw-dp: Support software
- triggered OOB HPD
+To: Alexey Charkov <alchark@flipper.net>
+Subject: Re: [PATCH v4 10/10] drm/bridge: synopsys: dw-dp: Add audio support
+Message-ID: <amKTDtSFeiv2hoOK@venus>
+References: <20260721-synopsys-dw-dp-improvements-v4-0-f0f4a4ede712@collabora.com>
+ <20260721-synopsys-dw-dp-improvements-v4-10-f0f4a4ede712@collabora.com>
+ <CAKTNdwE6OOPHYpMQXYfWPtdA26AiPJjSi6N_J-yGSU0mSL7HSg@mail.gmail.com>
 MIME-Version: 1.0
-Message-Id: <20260724-synopsys-dw-dp-improvements-v5-8-9445c2e87441@collabora.com>
-References: <20260724-synopsys-dw-dp-improvements-v5-0-9445c2e87441@collabora.com>
-In-Reply-To: <20260724-synopsys-dw-dp-improvements-v5-0-9445c2e87441@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3756;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=t8Mqbzoc6212UuCXZ0+fMZ6NzFgfwWLL+NvwDZjkfKY=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpikvEpWrME5AXYAoPHKMhcZBh4Kqldrw4Eb
- dWQ8Ure5GEtlYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqYpLxAAoJENju1/PI
- O/qa1FIP/R+fPpNYBgQQ9s9lOt+U6WdFf5sTP2rZwZ/zwpDviDUlIrE7tjbQd5IikWD8GIaMwYF
- 8fhKpWnrH/rkEI/P3+EjBLad+DzTX72clKVKGXjW9YDnTTbGKV7H//zhI4s0KDP7lt70EZ6h6nn
- eHCO6WjcObI+jNS5sfkBVSImNY6OJU5/pudsR0DrU6GpUFx/i+NhnnJzEoD/0URVaHr4gyEVNhR
- K82/b0mUq5Vp5FKutyzSLTAJgcKyVlbZXjmtQCwikbD6uNPUtBTnbrWOehilOERdW9KGbfErHms
- mmZJ3dDkg05lfbFh0G5aLb4a7NRS7N6AUq0ZYH4LpM4kHwkwNctxYi5k3+cqOwAauLdZ8VeEvjv
- WZ+OKGU5EClmJadTq+bIJGg2ZuBChGnnP6Fpl61jjhgUwgIR8p7Jg38Fy3FTzIZgvVYzFPxkI/K
- ADfuLHDPdAlVtaeR9/0Hk9gnKgo4jVBBanv6EJipQgD+cjonwYmTVJMilDdhBROabBV40BqJmOH
- wS9JqvJUHu7rmdsQo77NYnaW5CarAiaj4XB9VuXWdtko8gcQY1EdzFO6y4SKiIOXopdBx11HYLs
- fy0C98VJbqiwmxFIc1sMmNUc/+VFTXFZW/Y5kpdDGfCAcrF+FmiubLOxmmECwlA57tMgEqcfS8d
- bvjEX4zoYWYY4zbvOPGojpQ==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+In-Reply-To: <CAKTNdwE6OOPHYpMQXYfWPtdA26AiPJjSi6N_J-yGSU0mSL7HSg@mail.gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.825.77
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_151730_246454_62DD8F0D 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20260723_152402_356219_0E96E70E 
+X-CRM114-Status: GOOD (  23.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,121 +75,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Content-Type: multipart/mixed; boundary="===============0074656130438028374=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for USB-C DP AltMode out-of-band hotplug handling. The
-handling itself is implemented in the platform specific driver as the
-registers to force HPD state are not part of the Designware DisplayPort
-IP itself. Instead the platform integration might provide the necessary
-functionality to mux the HPD signal.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 38 +++++++++++++++++++++++++++++++++
- include/drm/bridge/dw_dp.h              |  3 +++
- 2 files changed, 41 insertions(+)
+--===============0074656130438028374==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bji6xdkqdan63e5y"
+Content-Disposition: inline
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index b9d6dff9e0af..9975df8ea37e 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1860,6 +1860,19 @@ static struct drm_bridge_state *dw_dp_bridge_atomic_duplicate_state(struct drm_b
- 	return &state->base;
- }
- 
-+static void dw_dp_bridge_oob_notify(struct drm_bridge *bridge,
-+				    struct drm_connector *connector,
-+				    enum drm_connector_status status)
-+{
-+	bool hpd_high = status != connector_status_disconnected;
-+	struct dw_dp *dp = bridge_to_dp(bridge);
-+
-+	if (dp->plat_data.hpd_sw_cfg)
-+		dp->plat_data.hpd_sw_cfg(dp->plat_data.data, hpd_high);
-+	else
-+		dev_err_once(dp->dev, "Missing platform handler for OOB HPD handling\n");
-+}
-+
- static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
- 	.atomic_duplicate_state = dw_dp_bridge_atomic_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-@@ -1872,6 +1885,7 @@ static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
- 	.atomic_disable = dw_dp_bridge_atomic_disable,
- 	.detect = dw_dp_bridge_detect,
- 	.edid_read = dw_dp_bridge_edid_read,
-+	.oob_notify = dw_dp_bridge_oob_notify,
- };
- 
- static int dw_dp_link_retrain(struct dw_dp *dp)
-@@ -2001,6 +2015,19 @@ static const struct regmap_config dw_dp_regmap_config = {
- 	.rd_table = &dw_dp_readable_table,
- };
- 
-+static bool dw_dp_is_routed_to_usb_c(struct drm_encoder *encoder)
-+{
-+	struct drm_bridge *last_bridge __free(drm_bridge_put) = NULL;
-+	struct fwnode_handle *fwnode;
-+
-+	last_bridge = drm_bridge_chain_get_last_bridge(encoder);
-+	if (!last_bridge)
-+		return false;
-+
-+	fwnode = of_fwnode_handle(last_bridge->of_node);
-+	return fwnode_device_is_compatible(fwnode, "usb-c-connector");
-+}
-+
- int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
- {
- 	struct device *dev = dp->dev;
-@@ -2045,6 +2072,13 @@ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
- 		goto put_next_bridge;
- 	}
- 
-+	if (dw_dp_is_routed_to_usb_c(encoder)) {
-+		dev_dbg(dev, "USB-C mode\n");
-+
-+		if (dp->plat_data.hpd_sw_sel)
-+			dp->plat_data.hpd_sw_sel(dp->plat_data.data, 1);
-+	}
-+
- 	dw_dp_init_hw(dp);
- 
- 	ret = phy_init(dp->phy);
-@@ -2094,6 +2128,10 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
- 
- 	dp->dev = dev;
- 	dp->pixel_mode = plat_data->pixel_mode;
-+
-+	dp->plat_data.hpd_sw_sel = plat_data->hpd_sw_sel;
-+	dp->plat_data.hpd_sw_cfg = plat_data->hpd_sw_cfg;
-+	dp->plat_data.data = plat_data->data;
- 	dp->plat_data.max_link_rate = plat_data->max_link_rate;
- 
- 	INIT_WORK(&dp->hpd_work, dw_dp_hpd_work);
-diff --git a/include/drm/bridge/dw_dp.h b/include/drm/bridge/dw_dp.h
-index a82412a9e769..79b2cdf0df99 100644
---- a/include/drm/bridge/dw_dp.h
-+++ b/include/drm/bridge/dw_dp.h
-@@ -20,6 +20,9 @@ enum {
- struct dw_dp_plat_data {
- 	u32 max_link_rate;
- 	u8 pixel_mode;
-+	void *data;
-+	void (*hpd_sw_sel)(void *data, bool hpd);
-+	void (*hpd_sw_cfg)(void *data, bool hpd);
- };
- 
- int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder);
 
--- 
-2.53.0
+--bji6xdkqdan63e5y
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 10/10] drm/bridge: synopsys: dw-dp: Add audio support
+MIME-Version: 1.0
 
+Hi,
+
+On Wed, Jul 22, 2026 at 12:06:33PM +0400, Alexey Charkov wrote:
+> On Tue, Jul 21, 2026 at 9:52=E2=80=AFPM Sebastian Reichel
+> <sebastian.reichel@collabora.com> wrote:
+> >
+> > Implement audio support for the Synopsys DesignWare DisplayPort
+> > controller.
+> >
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > ---
+> >  drivers/gpu/drm/bridge/synopsys/dw-dp.c | 230 ++++++++++++++++++++++++=
++++++++-
+> >  1 file changed, 229 insertions(+), 1 deletion(-)
+>=20
+> Thanks for your work on this!
+>=20
+> Quick question. It looks like the audio-related change along with the
+> DT binding update is independent of the hotplug/PM part, and shouldn't
+> really depend on the (large!) USBDP PHY changes. Would it be possible
+> to split it out as a separate mini-series, so that the whole thing
+> doesn't have to wait for the fate of the USBDP PHY series?
+
+It does not strictly depend on it, but
+
+ * It requires quite some rebasing as it is at the end of the
+   series, after the cleanups and runtime PM
+ * Doing runtime PM without the USB-C bits is useless, since
+   it's always enabled anyways
+ * I cannot test this without USB-C
+
+But the series applies, compiles and runs on the Sige5 without the
+USBDP series. It would fail without the USBDP patches, if DT
+contains the proper link to USBDP. As that depends on the acked,
+but unmerged binding change from the USBDP series we should be
+fine to land this before the USBDP series lands.
+
+I've just send v5 with the Sashiko feedback on v4 fixed.
+
+Greetings,
+
+-- Sebastian
+
+--bji6xdkqdan63e5y
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpilFAACgkQ2O7X88g7
++prIqQ//TqmMMk8KT0xyqmoOdCmaCS7civhFT5L8EX46vD4vvq8ZVxsEhyWPcM3L
+5v5PNqNrwhXMFjKyNrahWNTUFmGysRzeMM4ZDVMsOW9IvYPa1hA7C2O0XUC4PYZp
+IY+xOgGQg+A+zeayKd/HWbA4B2ZSKMci8cqFJF1PC9GLkW6DJf+rv17BvoGunkjy
+0oGPJgqTwYuMnKSOpG1kL/ymOxVhNl/7UayaMHoBjz2/9hGs5y6eLtMYGeDPF3B1
+FQRiqsBYM0ha5a4N/zp83B9jaK1AbmLKlFkGrGu5MX651vrB21wn1f7c4oJ1SYpg
+l2QP2X2x8bsg1mUQmORHRwh3nnqSOFe79svokpd0R457XvWTJ2hShX0HSUeIjBop
+9jEel1C0Ik/jjlvF+YlCYE7jDcnq4GKm/7HEPIcxC8ENwzZy30Pt7kG6YfBRbxiu
+teJ7e0FgNokY9qfXXXJmFaHT59CkUhVQczavnpt8TXZRsNmy/yJuLTkNykr9/04y
+GnmDF5R4+Di5aQ7Ih1t0kzoBsPeKwOuyn/r6YUXpeXb+6pl6xBa6EN9ENRZWH8Y/
+HPR5Laa9PWC4wTHUUsaCYwi3DagjTZAS76b9I9ssZbVvIcMJAwb5eDYDrkO72SBd
+mtHdirW8FMuQNQ5BVgPGw5dTzUfs7e+y5NJ3kln8R0ogXkyIyW4=
+=snkY
+-----END PGP SIGNATURE-----
+
+--bji6xdkqdan63e5y--
+
+
+--===============0074656130438028374==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0074656130438028374==--
+
