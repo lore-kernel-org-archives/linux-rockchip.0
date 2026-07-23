@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D67D0C4453E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 06:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23446C531CB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 09:02:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
+	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jBNmHxTA7l7btifbQ0hRIiDHMLol3SBsnGf50RM5BZ8=; b=k9b3mXoZ1GnRan
-	Psma6tA7rAoch+Cxgt3MpUllBIuaToY+H4zjLzw6o48JPvJKdJ2YmDBbb6MA/WL2azj6h49xbWgI0
-	wiaYgInakXB6mHSjCMGFAy9WoMWMO4SEMrlUvx8mY9vtY4t7vH0JVOKNv8OJDQreRUBvFIiF8pQMo
-	CfiYSJsdKdWzlBgNUlmc9U2fFiyuFLuKZOBtKvOlm40uKQGbyTRt/cHK9ScspZL7Y9T70/70LHZ1S
-	V3gMEOjw3v2vRnUY6ubveIfI2ioJcV4lpBopZAQH+Aa0nqVCoAjQPaein2mCkQv7yQrhlv+s4gmbp
-	0r+OvHfPoaJwCmwzyAmw==;
+	List-Owner; bh=SCat/Rh1sm59lfhfxxkkLRsQHVywkvQknhizboiKbTg=; b=42hgULPV2ivH0h
+	CxDMyM03BzVouyI2/fRq9RTsVncSpSVBMIwVhR/vpKJSfQ5V7vOdJW2fzVlKpF4IaQprWToCOiNWs
+	rJS1b7EgXqBlUJDUxfz2ZCWjqWvGvPXv4mSeJmXgh9Swpd5hlZXgk1+q0GQ3Veotp2QtZNIhb5P+Y
+	T+9hjDP8vWCwD13Y3UhKYVcT0sv0qjm8w4Nx6xDY9MpRuEI3bep23Ol1pWgR34aMEgunIfIvkm29P
+	fRk3VKAcG6ZSFdAOS6R0cAdLgtcDOYKt1LlCOlfW6Wv5xyV8263CMJpRJmps5Kd7KQaobdVj9lE3M
+	XpwMFRs6DVbDLsnRpZfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmn4G-0000000DYcq-1SD4;
-	Thu, 23 Jul 2026 06:38:04 +0000
-Received: from mail-m60119.netease.com ([210.79.60.119])
+	id 1wmpJy-0000000DnQN-04ku;
+	Thu, 23 Jul 2026 09:02:26 +0000
+Received: from out-171.mta0.migadu.com ([91.218.175.171])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmn4B-0000000DYbW-3D15;
-	Thu, 23 Jul 2026 06:38:02 +0000
-Received: from [172.16.12.74] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4746d9e60;
-	Thu, 23 Jul 2026 14:37:43 +0800 (GMT+08:00)
-Message-ID: <97e28cf5-dd68-499f-9b05-95690807a5b6@rock-chips.com>
-Date: Thu, 23 Jul 2026 14:37:43 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 0/5] Add eDP lane mapping support
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20260707040613.1992841-1-damon.ding@rock-chips.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260707040613.1992841-1-damon.ding@rock-chips.com>
-X-HM-Tid: 0a9f8db1bbfc03a8kunmce2c72a238580c
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGh1IS1ZCQxlOHk5NGB
-	pMSE1WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUpLSEpKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=BRDErc+nOga+bu2rulXIPEgszcRtzplx0OBArAZBL8pXrQtJGw2+BRjUNroUJKjfDGWnaHBTTqPQhcrAsMdYAORLDKlyrnpFquwd/zm15pJqzIeaHNc3sV6C06heK9Nu1/Z3lF0D6jdo0w77EZEhEmpvp2/J+n1epPFgzk+9QV4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=hPnxwzBAhZxcG9oWTVfy2nq7tEgZYFpIDiq2DYBjWcA=;
-	h=date:mime-version:subject:message-id:from;
+	id 1wmpJv-0000000DnPD-2yvw
+	for linux-rockchip@lists.infradead.org;
+	Thu, 23 Jul 2026 09:02:24 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1784797330;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1PrK33UFnL51Yikk7HZvEthg4vpaBxc9dwwZV4cmtgs=;
+	b=oYmHFakPdPtNeOnn7Mn+PFTTcil1Fls8CvNpv3K5nlbPtwcTVmeVzAV7Bvl7lyhnhvH5dE
+	kZ0zBp6xdH+C3LLTbSKZswNmCpAZiMOzTrLcqxIK2LLUAopEfy/wwBLsZi6scpkCB9WB9u
+	zCbdL7bYPNpz+2+GcEBVOMg/BxF9ZTiY8fikx9ajMOSqQvLj9LsslXTUQdUOMPyUhKRJ0Q
+	MFTHVoDBv21bTzN/5Hs7+4VjKJJlswmVclcljHUNFHV0cdl/J28Q13U6RTFPZVWQ34nUR9
+	UahL+2Vao1t+OQftY+ywsrz/V8nGFAKqGxeHQ8cC1rRq1/q4v7tmeoLpfYwLpw==
+Date: Thu, 23 Jul 2026 11:02:03 +0200
+Message-Id: <DK5TUJBKSK19.ZXEOSCVMTN6T@cknow-tech.com>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Andrzej Hajda"
+ <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
+ "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
+ <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
+ "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Luca Ceresoli"
+ <luca.ceresoli@bootlin.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
+ <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Chen-Yu Tsai"
+ <wens@kernel.org>, "Samuel Holland" <samuel@sholland.org>, "Dave Stevenson"
+ <dave.stevenson@raspberrypi.com>, =?utf-8?q?Ma=C3=ADra_Canal?=
+ <mcanal@igalia.com>, "Raspberry Pi Kernel Maintenance"
+ <kernel-list@raspberrypi.com>, "Sandy Huang" <hjc@rock-chips.com>,
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Andy Yan"
+ <andy.yan@rock-chips.com>, "Algea Cao" <algea.cao@rock-chips.com>, "Daniel
+ Stone" <daniels@collabora.com>, "Liu Ying" <victor.liu@nxp.com>, "Phong LE"
+ <ple@baylibre.com>
+Cc: <kernel@collabora.com>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v9 46/61] drm/rockchip: rk3066_hdmi: Advertise HDMI 1.4
+ capabilities
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+References: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
+ <20260723-dw-hdmi-qp-scramb-v9-46-4fb12ea22ac9@collabora.com>
+In-Reply-To: <20260723-dw-hdmi-qp-scramb-v9-46-4fb12ea22ac9@collabora.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_233800_425899_BA1A2C1E 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20260723_020223_896513_D6092038 
+X-CRM114-Status: GOOD (  15.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,78 +84,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Gentle ping.
+Hi Cristian,
 
-On 7/7/2026 12:06 PM, Damon Ding wrote:
-> This series adds configurable eDP physical lane mapping support via
-> device tree data-lanes property.
-> 
-> Lane mapping is mainly used for below scenarios:
-> 1. Correct PCB lane swap and differential line routing crossover
->     without hardware changes;
-> 2. Adapt mismatched lane pin definitions between SoC and eDP panel;
-> 3. Support multiple panel hardware variants on the same board
->     by configuring data-lanes in device tree only.
-> 
-> The series includes driver implementation and device tree binding
-> updates to support custom lane mapping configuration from endpoint
-> node, and keeps default linear lane order if no configuration is given.
-> 
-> Patch 1: Add endpoint data-lanes property to analogix-dp binding
-> Patch 2: Add DRM DP helper API to validate DP lane counts
-> Patch 3: Restore mandatory for samsung,link-rate and samsung,lane-count
->           properties
-> Patch 4: Add validation for samsung,lane-count property as preparation
-> Patch 5: Implement lane mapping in analogix_dp driver
-> 
-> Damon Ding (5):
->    dt-bindings: display: bridge: analogix-dp: Add data-lanes support for
->      endpoint
->    drm/dp: Add helper to validate DP lane counts
->    drm/bridge: analogix_dp: Restore mandatory samsung DP DT properties
->    drm/bridge: analogix_dp: Add validation for samsung,lane-count
->      property
->    drm/bridge: analogix_dp: Add support for optional data-lanes mapping
-> 
->   .../bindings/display/bridge/analogix,dp.yaml  | 19 +++--
->   .../rockchip/rockchip,analogix-dp.yaml        |  1 +
->   .../drm/bridge/analogix/analogix_dp_core.c    | 70 +++++++++++++++++--
->   .../drm/bridge/analogix/analogix_dp_core.h    |  4 +-
->   .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 15 ++--
->   .../gpu/drm/bridge/analogix/analogix_dp_reg.h |  4 ++
->   include/drm/display/drm_dp_helper.h           |  6 ++
->   7 files changed, 101 insertions(+), 18 deletions(-)
-> 
+On Thu Jul 23, 2026 at 3:35 AM CEST, Cristian Ciocaltea wrote:
+> Bridges using DRM_BRIDGE_OP_HDMI are now expected to also provide a
+> supported HDMI version.  This is not yet enforced, but will become
+> mandatory once the migration to the new caps-based HDMI connector
+> initialization API is completed.
+>
+> The RK3066 HDMI TX supports HDMI 1.4a, as described in commit
+> f84d3d37b7fb ("drm: rockchip: introduce rk3066 hdmi").  However, the
+> driver does not currently enforce a maximum TMDS character rate, it only
+> filters non-CEA modes and excludes VIC 1 (640x480) via the .mode_valid
+> callback.
+>
+> Advertise HDMI 1.4 support for now so that modes exceeding the 340 MHz
+> TMDS limit are rejected by the core.
+>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
-> 
-> Changes in v2:
-> - Add lane mapping application scenarios in commit message.
-> - Remove redundant deprecated property 'data-lanes' for eDP node.
-> - Update port@1 $ref to /schemas/graph.yaml#/$defs/port-base.
-> 
-> Changes in v3:
-> - Squash [PATCH v2 2/3] into [PATCH v2 1/3].
-> - Add unevaluatedProperties: false to both the port@1 and endpoint
->    nodes.
-> 
-> Changes in v4:
-> - Add validation for samsung,lane-count property as preparation.
-> 
-> Changes in v5:
-> - Add DRM DP helper API to validate DP lane counts.
-> - Apply DRM DP helper API to check the validity of samsung,lane-count
->    property.
-> - Add Acked-by and Reviewed-by tags.
-> 
-> Changes in v6:
-> - Add a seperate commit to restore mandatory samsung DP DT properties.
-> - Add Reviewed-by tag.
-> 
+>  drivers/gpu/drm/rockchip/rk3066_hdmi.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+> index f28d6a883e09..c080abe676c4 100644
+> --- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+> +++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+> @@ -14,6 +14,7 @@
+>  #include <drm/drm_probe_helper.h>
+>  
+>  #include <linux/clk.h>
+> +#include <linux/hdmi.h>
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+> @@ -712,6 +713,7 @@ rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
+>  	hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
+>  	hdmi->bridge.vendor = "Rockchip";
+>  	hdmi->bridge.product = "RK3066 HDMI";
+> +	hdmi->bridge.supported_hdmi_ver = HDMI_VERSION_1_3;
+
+Is this correct or should this be HDMI_VERSION_1_4 ?
+In the other 'Advertise HDMI N.M capabilities' patches, there is a (direct)
+match between the version mention in the commit summary and the
+supported_hdmi_ver property, but not here.
+
+Cheers,
+  Diederik
+>  
+>  	hdmi->bridge.ddc = rk3066_hdmi_i2c_adapter(hdmi);
+>  	if (IS_ERR(hdmi->bridge.ddc))
 
 
 _______________________________________________
