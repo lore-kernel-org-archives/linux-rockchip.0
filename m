@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 125CBC44536
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 01:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FBDBC44532
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jul 2026 01:37:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T1xJAtrM0PAWwoeU/GPDC/m7znIdZzmA5cB06vSBOqg=; b=diFZRX+Qi7D1Bh
-	6X9ppsqmeMe/pTRTktYzyTkBzeEDx+2zuQ6SqpluEg8HW1C6uwx4osYrMFBk34ChPYhDVqkEdT1Si
-	p8nWKtcgc8KCsgyoFaXfOHNF4rSdF/fy1pgGabHX0nozCTbsRxHnKaxPwFrYD3I/mvZMVeRSjLWI4
-	vGV6tWuM3eGQM68nSLxM3iWg4RYD22W7wXumBFZnT2N/33uq6/mCLXFwPNyGa3o8vP6HRxhPwf7KF
-	Qk88CmbZpQWYeQOhMsoJz/JPYtRTsBJMUjWuZny176A2mazrqCxKdcad1Dubz5tgObWGPZteI51gt
-	rc57J6dh8ufruZasVjQw==;
+	List-Owner; bh=41M5NUx4ckt6PyDjUoGXkxSkHCOZy0J0e3lHtKGyvfc=; b=I8wURMDaPV0aLy
+	ZfeaMG6H4IqtoAd36MK9BqWJDHXppbBZqekGdtw1F3D8Syx5Ttyc84EEfRKz2lBo6uo4ONPuNlmm7
+	Q2KDQQmSedcvioZ4g2wJZuzqMuspLPLbcNMSwoKkzI+uFqEJ9Ytg0l2cllew2C+OIDqjwKTAFhRMW
+	GoCDxbUEYDoWzQO6c221IhX1iD4AkEU/3AIFbCnkxBf+qjTge1VhHo9agkVYkCKQfUPOBZlTeICp9
+	U3pUg3jd/eT50/xu3KJdLovQHlQNB9NGzwhOUiFUEHFDT3oTg0Tk0WOlNR7H+NljYTJIiDYXSxsyH
+	uaN1cygaDzASpXqAs11A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiMv-0000000D5at-2ZLP;
-	Thu, 23 Jul 2026 01:37:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wmiN2-0000000D5ia-1Euy;
+	Thu, 23 Jul 2026 01:37:08 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmiLK-0000000D33w-3oYz;
-	Thu, 23 Jul 2026 01:35:24 +0000
+	id 1wmiLM-0000000D356-058I;
+	Thu, 23 Jul 2026 01:35:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1784770521;
-	bh=wWLl8695JDs0BsUy84dPLaWbC2/ie2tOUX4OkJkjWNI=;
+	bh=JK6P5UAbM3NE2Aex3+EekMPGlR0EjlGKe8ACksT/7DE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Ivz3i2YEDNObGW3Y7mLk6whYaaQ1iaR+PPd8OMDECjR7LNAUwLJ12XBoYXALxohfs
-	 eO4P0IChzTDWt/k9c0p8RgbeD3IJFxZFjJJKxYyPlpe12uG0DLothaEi7193I64+34
-	 2fDAe3QSk09CPPZD9W/WM8+2wVH/OSAQrPs4PDGJlvOebHIKgueIZJXT0LRrcTActf
-	 I1N6DcA0JCm+cgTLE9wQLoa/nCu42G/lh2w7s0EWlGt8vv2K40WtEjoO6QSiUa2253
-	 zm/7SknOEC8SbxTVyfqQ69BV2gfOfBd/YRrlk1/T1nEO5RRP80H+CezqJ9tnAlTCZJ
-	 9B7Yv8YUt7agg==
+	b=gRn2FdE3pvd5rOvjLJs5ed4mdiu0o/wP+9LBw53Cm08GotuCILQWJDe5Ijku3pNrb
+	 XjaUep4PAHzt1oSbb2kpHuNlKKxnfvx84UgyxPFfYNd0khODr3fVv2FxmT+SHx67Iw
+	 +SlDGnGV9XomsUEMqsUJS34/3Q9zKosbzQNtoC8bTWr/DfAZZ0tUGiFVTjfKo98C3y
+	 A2qVNRGJjgCIrFmUkh9+CRgG8U/csCIfGOIoCkRcetZISjBLTAWwtRlRQBXwhjXmJ4
+	 Omw/i1ZzTQNhk+JAFBFHc3h7IkRJeEbioxg/pwFdOkQdPEysDWCcXFfoSJn1k+wmQO
+	 u9AMfm1ngG6bA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DE2DC17E1313;
-	Thu, 23 Jul 2026 03:35:20 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 96E6E17E151D;
+	Thu, 23 Jul 2026 03:35:21 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 23 Jul 2026 04:35:16 +0300
-Subject: [PATCH v9 27/61] drm/rockchip: dw_hdmi_qp: Avoid spurious HPD IRQ
- thread wakeups
+Date: Thu, 23 Jul 2026 04:35:17 +0300
+Subject: [PATCH v9 28/61] drm/rockchip: dw_hdmi_qp: Mask RK3576 HPD IRQ in
+ io_init
 MIME-Version: 1.0
-Message-Id: <20260723-dw-hdmi-qp-scramb-v9-27-4fb12ea22ac9@collabora.com>
+Message-Id: <20260723-dw-hdmi-qp-scramb-v9-28-4fb12ea22ac9@collabora.com>
 References: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 In-Reply-To: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -71,11 +71,11 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- Sashiko <sashiko-bot@kernel.org>
+ Maud Spierings <maud_spierings@hotmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_183523_104648_4EC8D4AD 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20260722_183524_212965_55404084 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,66 +92,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3576 and RK3588 HPD hardirq handlers read shared status registers
-and currently wake the threaded handler whenever any bit in those
-registers is set.  This can wake the HDMI IRQ thread for unrelated
-status bits, and on RK3588 can also wake the thread for the other HDMI
-port.
+Start with HPD masked, matching RK3588, so the bridge framework controls
+when interrupts are armed via hpd_enable().
 
-Mask the status value with the SoC-specific HPD interrupt bit before
-deciding whether to wake the threaded handler.  On RK3588, select the
-HDMI0 or HDMI1 HPD bit according to the instance port id.
-
-No stable backport is needed.  The issue may only cause spurious IRQ
-thread wakeups and does not cause functional breakage.
-
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260702151346.5A4EC1F000E9@smtp.kernel.org/
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 2aceff11d14b..7e3e86d05611 100644
+index 7e3e86d05611..12cd8db7cc50 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -34,6 +34,7 @@
+@@ -432,7 +432,7 @@ static void dw_hdmi_qp_rk3576_io_init(struct rockchip_hdmi_qp *hdmi)
  
- #define RK3576_IOC_HDMI_HPD_STATUS	0xa440
- #define RK3576_HDMI_LEVEL_INT		BIT(3)
-+#define RK3576_HDMI_OHPD_INT		BIT(4)
+ 	regmap_write(hdmi->vo_regmap, RK3576_VO0_GRF_SOC_CON14, val);
  
- #define RK3576_VO0_GRF_SOC_CON1		0x0004
- #define RK3576_HDMI_FRL_MOD		BIT(0)
-@@ -64,7 +65,9 @@
- #define RK3588_HPD_HDMI1_IO_EN_MASK	BIT(13)
- #define RK3588_GRF_SOC_STATUS1		0x0384
- #define RK3588_HDMI0_LEVEL_INT		BIT(16)
-+#define RK3588_HDMI0_OHPD_INT		BIT(17)
- #define RK3588_HDMI1_LEVEL_INT		BIT(24)
-+#define RK3588_HDMI1_OHPD_INT		BIT(25)
- #define RK3588_GRF_VO1_CON3		0x000c
- #define RK3588_GRF_VO1_CON6		0x0018
- #define RK3588_COLOR_DEPTH_MASK		GENMASK(7, 4)
-@@ -348,7 +351,7 @@ static irqreturn_t dw_hdmi_qp_rk3576_hardirq(int irq, void *dev_id)
- 	u32 intr_stat, val;
+-	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0);
++	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 1);
+ 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
+ }
  
- 	regmap_read(hdmi->regmap, RK3576_IOC_HDMI_HPD_STATUS, &intr_stat);
--	if (intr_stat) {
-+	if (intr_stat & RK3576_HDMI_OHPD_INT) {
- 		val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 1);
- 
- 		regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
-@@ -381,6 +384,8 @@ static irqreturn_t dw_hdmi_qp_rk3588_hardirq(int irq, void *dev_id)
- 
- 	regmap_read(hdmi->regmap, RK3588_GRF_SOC_STATUS1, &intr_stat);
- 
-+	intr_stat &= hdmi->port_id ? RK3588_HDMI1_OHPD_INT : RK3588_HDMI0_OHPD_INT;
-+
- 	if (intr_stat) {
- 		if (hdmi->port_id)
- 			val = FIELD_PREP_WM16(RK3588_HDMI1_HPD_INT_MSK, 1);
 
 -- 
 2.55.0
