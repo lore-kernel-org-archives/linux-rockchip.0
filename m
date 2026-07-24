@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D1B3C53219
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 18:04:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D93C5321A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 18:04:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zr3UYGUqn7jV4S2uyduYBX9LC15EMFIF1kuLbnK5OTk=; b=b75FSmdTP6RCG2
-	GmGOL4lawDNstGVrhiHvRWmVu3CraAp4wUMNuWUliJFR81rGFRaa01runst6s0OTTGNSSvUxoGg+G
-	uHXq0eXCiwD/aBMhKpdxRtuAL4BwXYvvZ/JqdWWrEEXpzbHy3/fpLr7vH7UG3KOr5t8eao/ptKXjx
-	yi+627HXH8XUNVSjbdcvC/LTWeEIa5TupTlJtg6ISCTROyWfoR0chM0RTIwe413RbI59BKFBYypLS
-	gkp5mktlrZYxIuqKIOtQsnBxHekST5UKjN7BcHoV39ZFL+giUdRnnxB95ByuAGUYbC/dPgCX72HQI
-	9CReaEK18W82W3p02RKQ==;
+	List-Owner; bh=LrF1UOaKXVtNXBiSOtuEeB/9D5Dk1nd5ZqzHmh1+foM=; b=lH8MD6PMXQmk17
+	RyP9EA4BfudsVqQWF/R55BcyaNXHmVr+QrA52aoBrIwGYGUH+2LUB9nGpHrw23XOI6G8j7/gWV+RI
+	zzmn0NPkRDdXHl7ex4hv2sxe52oV99e7EdMZY8cjGaBj5aNnzxdo+8tBYhUYIP5BGA8L0W80RK2ku
+	b79+jWPCByfSTkf7YRBo8+NuJeidt9J4JyCX9AXSb9ECJjPs4aVNsmm6sfln+XIkAlgyRNZYoLhj9
+	Pt0QyOIgSAAP3uBbP5X4Fu8BhsGAoaVQU4DckWPaTLlCmyiFMy6eTbD/wCyUfNBb1uzQCPlERbtYU
+	/iPujHR4/ZQ7y53wuJMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnKFa-0000000H0Va-1wl3;
-	Fri, 24 Jul 2026 18:03:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wnKFc-0000000H0Zz-0XZY;
+	Fri, 24 Jul 2026 18:04:00 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnKFF-0000000H0E9-1gGo;
-	Fri, 24 Jul 2026 18:03:38 +0000
+	id 1wnKFF-0000000H0EI-2dVZ;
+	Fri, 24 Jul 2026 18:03:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1784916209;
-	bh=dLprRk9J+zndsqWeaTFRzrwihRtem60oKo0i5iDhVd0=;
+	bh=Sb21u3BNR0bBte5cLcHkxQTLZNLzTlV8x9Hr4lta62A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=iXYkkLueVoJXq6Rd2d/C11rDNonx15sT8NOQrtDQH6ElQOG2J+i3Fx1/9B2YqAYJ4
-	 HdKSbgPZBkuFid4aD+scYweWZFyGWttR9D5Tt5dEV2FJoJMl6+okuIZLWH9fi/USwb
-	 zMv8LgJWl82moU51h5Eu0D0/D9pXK9POtPCWGEHDphquczhZTzOCGZo2h/XSSqsmQW
-	 F/VPQA8/HwrBgy0Z13yX4BB0/7JrMLp+ppYtavQWQYovl75NAa+IfZ/wggI57u6qxe
-	 y5BK2SfQC+L8dmFINKRT8oNIbdUs2A5HZ7Ol9BOQxDKPuBUT1CPpg7GTn+iAbINRmh
-	 OwGYrJHRK0noA==
+	b=ZmmsIIVn9mr+DPlqwRbYu3fJ44dJSXYBDZ8e6D0GNPg4RqdUCDlI9e5rTEt01Tqad
+	 cCqgsvqDGYoswrBBeaGfljhpGzBJnThr1Aihtevya4CgKC0dyrvrbummnaILsZcGJ5
+	 NT6TkuR0Jk6YoI/EB5b9W97KejsZDr2E6K64uPTlees6vhJnB33+w/185Y4kp0lJJW
+	 E6LVxAuiac/9E6WZhI2EjlcF0PDC8sIyEgpJca+sJUOa2yGSi0hxFxHuXhMDYNDD6w
+	 aJ6TGRrXQJEDh2l2/nP7NVVMF7eOBlGw7CVD0vVYXWAebpgtUcwUUFojeIYD2BnqbS
+	 7B5F+ZS3emI/Q==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AA8B717E031C;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9E4EE17E02B6;
 	Fri, 24 Jul 2026 20:03:29 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id EF24448004E; Fri, 24 Jul 2026 20:03:28 +0200 (CEST)
+	id EC285480048; Fri, 24 Jul 2026 20:03:28 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 24 Jul 2026 20:03:35 +0200
-Subject: [PATCH v6 13/16] drm/bridge: synopsys: dw-dp: Protect sdp_reg_bank
- from concurrent access
+Date: Fri, 24 Jul 2026 20:03:33 +0200
+Subject: [PATCH v6 11/16] drm/bridge: synopsys: dw-dp: Add Runtime PM
+ support
 MIME-Version: 1.0
-Message-Id: <20260724-synopsys-dw-dp-improvements-v6-13-041d99a19c4e@collabora.com>
+Message-Id: <20260724-synopsys-dw-dp-improvements-v6-11-041d99a19c4e@collabora.com>
 References: <20260724-synopsys-dw-dp-improvements-v6-0-041d99a19c4e@collabora.com>
 In-Reply-To: <20260724-synopsys-dw-dp-improvements-v6-0-041d99a19c4e@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,26 +68,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2444;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6907;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=dLprRk9J+zndsqWeaTFRzrwihRtem60oKo0i5iDhVd0=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpjqPBVMhcy6iA7F5gRVzKZAYpQElrVafDQ7
- TXjXZjF6zNBEIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqY6jwAAoJENju1/PI
- O/qavxoQAKL/6K2DSitLSKpLVeV9PvmBZFKZf31q98ns9qpHGryljkGMFQFrKOB3Zmx0T70rqs/
- Dvl8jPVxzeWxs1Ces4XL8iICY6lYMe1c7uSun+0LEvDYPBo1DspgxZI6oI+VS8mRFbGPEJ4rUMj
- gAxDnn9+uGmYD6B9R5cDibWuM2Nix8AD+h0VLRyKair/GK6Mc7E/hJH6BheqxymRDG4i8N9XOzw
- 8l63Xl+3PNKYvu3Yl507OxmnOWshaCK8y+d9lRyLcf6D3ptyFLd5GhxTnjM9EjNOjrOiP3Ce88w
- QkudCN6WjpZHZ/3m44qymyvJOHbg+kGiOE+lgMUeL8mz5w/c8qLuE4PEgpKcUdplVjUsu+1a21O
- 60XHZsUKQIMuByAkalVfDklT6OYxjXRWF92AteninKc/AI7PVfAc/xCEvhuE8sgTp7g1EgK+BuU
- vP7kF5S7S8fyLdG1IvpCRzXpQg6QHYq0DRZr6ARqqnaUko07EwoMHTEpVZmRB+BXAvMxzTBJnjl
- zf/9oG6nW+h5vtTG7697n44n8jGdrPpHil5+KFrvPwyUDQ1uwMrVA6+nIg+AtIKDDnf5OlETznR
- 6tOwpkGV5GgIcWEAPGKBGEL7WLhhLMgTtspR39pqLcVVT61lcECLQjWKD+2N+c5ApOpZY0rY0LL
- Tt0VPi7n5yDsNIAT1q9I07A==
+ bh=Sb21u3BNR0bBte5cLcHkxQTLZNLzTlV8x9Hr4lta62A=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpjqPA/sE7y0qSSAl0Zke+p0nmcK8ASN0Aeb
+ UXvUipGAJjQtYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqY6jwAAoJENju1/PI
+ O/qacvYP/08UR0/e3lPD6mtBcYgFo+IHAY8bI2BsYuSuuHoef2qc1f39Yba1LsslvGBk/hpRllm
+ OCWvhz/yB2LbG8Hi+CYSTuLi+tfQc0rfSgjxbFVYy1GdztdYErnBUORC63bcDn4LrXCifLVHpy5
+ eVjJ551Wgk3mwVSXxGUYmo3q6XUjLfpiZaG6GcqRl2PEc/jN/nW/xqlTQlPdBP1fQKtmA3Baqe6
+ AEi0rki9x9GIQhPCHpaRqwpNi8e+ApJz9db6ib16zuElnnTQ0iSyGECpyR+Dmxg7mr3rQ2KVU3l
+ yWgdbgSPQqaOVcdMzfCacQRWH0217bqrYX3y3q9OLiYFEjaUgMGMd6Nx/FACz9DAzcUJkh/9EKb
+ a6hPxj3aEak7MqVgd+1RYcokJC98NK7oUksP1ts4xs0RT/hAsk1Nas0ePVVPR89vpaB5uLBoYhb
+ yywF2aQ1cLcq5RRMg+Gg1zWAgz7dSnkgEFN+gYMLnAfrvYXyhFg6OHsaZ5s5ptkOceJHbMgpA/Q
+ kaRYvLVpnJ7zKM4SCRvwIn346bJSoAG5mdDoWbXlI4tk+IB+15psOD8FB9vGqP5hug94KL7zm4w
+ eP80l6gY+Mn6cAjO9ABPTguWT1F9j870FUihDURKjlvYoND7uXC4eD/EwCBZaIFPAeGssppLdK7
+ nqWtCitB8WmpdgOusk94uIQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_110337_604514_60F57878 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20260724_110337_853052_DA3CB0D2 
+X-CRM114-Status: GOOD (  19.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,80 +105,234 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Right now sdp_reg_bank is only used during atomic enable/disable and
-thus there is no risk of two threads accidently claiming the same bit.
-
-This changes once more SDP users (like audio support) are added, so
-introduce a mutex to protect concurrent access to the bitmap.
+Add runtime PM stubs to the Synopsys DesignWare DisplayPort bridge
+driver. Support is not enabled automatically and must be hooked up
+in the vendor specific glue code.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 24 +++++++++++++++++-------
- 1 file changed, 17 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 107 +++++++++++++++++++++++++++++---
+ include/drm/bridge/dw_dp.h              |   3 +
+ 2 files changed, 102 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 1bbb39b8d0be..88b95938649a 100644
+index 2042bc00f906..1bbb39b8d0be 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -322,6 +322,8 @@ struct dw_dp {
- 	struct dw_dp_hotplug hotplug;
- 	/* Serialize hpd status access */
- 	struct mutex irq_lock;
-+	/* Serialize sdp_reg_bank access */
-+	struct mutex sdp_lock;
+@@ -328,6 +328,7 @@ struct dw_dp {
+ 	struct dw_dp_link link;
+ 	struct dw_dp_plat_data plat_data;
+ 	u8 pixel_mode;
++	bool usbc_mode;
  
- 	struct drm_dp_aux aux;
+ 	struct drm_bridge *next_bridge;
  
-@@ -1045,11 +1047,13 @@ static int dw_dp_send_sdp(struct dw_dp *dp, struct dw_dp_sdp *sdp)
- 	u32 reg;
- 	int i, nr;
+@@ -1467,6 +1468,11 @@ static ssize_t dw_dp_aux_transfer(struct drm_dp_aux *aux,
+ 	if (WARN_ON(msg->size > 16))
+ 		return -E2BIG;
  
--	nr = find_first_zero_bit(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
--	if (nr < SDP_REG_BANK_SIZE)
--		set_bit(nr, dp->sdp_reg_bank);
--	else
--		return -EBUSY;
-+	scoped_guard(mutex, &dp->sdp_lock) {
-+		nr = find_first_zero_bit(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
-+		if (nr < SDP_REG_BANK_SIZE)
-+			set_bit(nr, dp->sdp_reg_bank);
-+		else
-+			return -EBUSY;
++	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dp->dev, pm);
++	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
++	if (ret)
++		return ret;
++
+ 	reinit_completion(&dp->complete);
+ 
+ 	switch (msg->request & ~DP_AUX_I2C_MOT) {
+@@ -1659,6 +1665,12 @@ static void dw_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 	struct drm_connector_state *conn_state;
+ 	int ret;
+ 
++	ret = pm_runtime_get_active(dp->dev, RPM_TRANSPARENT);
++	if (ret) {
++		dev_err(dp->dev, "runtime PM failure\n");
++		return;
 +	}
++
+ 	connector = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
+ 	if (!connector) {
+ 		dev_err(dp->dev, "failed to get connector\n");
+@@ -1713,6 +1725,7 @@ static void dw_dp_bridge_atomic_disable(struct drm_bridge *bridge,
+ 	dw_dp_link_disable(dp);
+ 	bitmap_zero(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
+ 	dw_dp_reset(dp);
++	pm_runtime_put_autosuspend(dp->dev);
+ }
  
- 	reg = DW_DP_SDP_REGISTER_BANK + nr * 9 * 4;
+ static bool dw_dp_hpd_detect_link(struct dw_dp *dp, struct drm_connector *connector)
+@@ -1733,6 +1746,10 @@ static enum drm_connector_status dw_dp_bridge_detect(struct drm_bridge *bridge,
+ {
+ 	struct dw_dp *dp = bridge_to_dp(bridge);
  
-@@ -1683,7 +1687,8 @@ static void dw_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 		return;
++	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dp->dev, pm);
++	if (PM_RUNTIME_ACQUIRE_ERR(&pm))
++		return connector_status_disconnected;
++
+ 	if (!dw_dp_hpd_detect(dp))
+ 		return connector_status_disconnected;
+ 
+@@ -1915,6 +1932,11 @@ static void dw_dp_hpd_work(struct work_struct *work)
+ 	bool long_hpd;
+ 	int ret;
+ 
++	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dp->dev, pm);
++	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
++	if (ret)
++		return;
++
+ 	mutex_lock(&dp->irq_lock);
+ 	long_hpd = dp->hotplug.long_hpd;
+ 	mutex_unlock(&dp->irq_lock);
+@@ -1966,6 +1988,9 @@ static irqreturn_t dw_dp_irq(int irq, void *data)
+ 	struct dw_dp *dp = data;
+ 	u32 value;
+ 
++	/* interrupt can only trigger for running device */
++	guard(pm_runtime_noresume)(dp->dev);
++
+ 	regmap_read(dp->regmap, DW_DP_GENERAL_INTERRUPT, &value);
+ 	if (!value)
+ 		return IRQ_NONE;
+@@ -2064,25 +2089,51 @@ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
+ 		goto put_next_bridge;
  	}
  
--	set_bit(0, dp->sdp_reg_bank);
-+	scoped_guard(mutex, &dp->sdp_lock)
-+		set_bit(0, dp->sdp_reg_bank);
+-	if (dw_dp_is_routed_to_usb_c(encoder)) {
+-		dev_dbg(dev, "USB-C mode\n");
++	dp->usbc_mode = dw_dp_is_routed_to_usb_c(encoder);
  
- 	ret = dw_dp_link_enable(dp);
- 	if (ret < 0) {
-@@ -1723,7 +1728,8 @@ static void dw_dp_bridge_atomic_disable(struct drm_bridge *bridge,
+-		if (dp->plat_data.hpd_sw_sel)
+-			dp->plat_data.hpd_sw_sel(dp->plat_data.data, 1);
++	ret = pm_runtime_get_active(dev, RPM_TRANSPARENT);
++	if (ret) {
++		dev_err_probe(dev, ret, "Failed to get runtime PM\n");
++		goto put_next_bridge;
+ 	}
  
- 	dw_dp_video_disable(dp);
- 	dw_dp_link_disable(dp);
--	bitmap_zero(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
-+	scoped_guard(mutex, &dp->sdp_lock)
-+		bitmap_zero(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
- 	dw_dp_reset(dp);
- 	pm_runtime_put_autosuspend(dp->dev);
- }
-@@ -2189,6 +2195,10 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
- 	if (ret)
- 		return ERR_PTR(ret);
- 
-+	ret = devm_mutex_init(dev, &dp->sdp_lock);
-+	if (ret)
-+		return ERR_PTR(ret);
+-	dw_dp_init_hw(dp);
++	/* resume once if runtime PM is disabled */
++	if (!pm_runtime_enabled(dev)) {
++		ret = dw_dp_runtime_resume(dp);
++		if (ret)
++			goto put_runtime_pm;
++	}
 +
- 	res = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(res))
- 		return ERR_CAST(res);
++	if (dp->plat_data.hpd_sw_sel)
++		dp->plat_data.hpd_sw_sel(dp->plat_data.data, dp->usbc_mode);
+ 
+ 	ret = phy_init(dp->phy);
+ 	if (ret) {
+ 		dev_err_probe(dev, ret, "phy init failed\n");
+-		goto put_next_bridge;
++		goto put_manual_pm;
+ 	}
+ 
+ 	enable_irq(dp->irq);
+ 
++	/*
++	 * USB-C has out-of-band hotplug detection, so device may enter
++	 * runtime suspend. Native mode needs to be resumed for working
++	 * hotplug detection.
++	 */
++	if (dp->usbc_mode) {
++		dev_dbg(dev, "USB-C mode\n");
++		pm_runtime_put_autosuspend(dp->dev);
++	}
++
+ 	return 0;
+ 
++put_manual_pm:
++	if (!pm_runtime_enabled(dev))
++		dw_dp_runtime_suspend(dp);
++
++put_runtime_pm:
++	pm_runtime_put_sync(dp->dev);
++
+ put_next_bridge:
+ 	drm_bridge_put(dp->next_bridge);
+ 
+@@ -2101,6 +2152,11 @@ void dw_dp_unbind(struct dw_dp *dp)
+ 	disable_irq(dp->irq);
+ 	cancel_work_sync(&dp->hpd_work);
+ 	phy_exit(dp->phy);
++	if (!dp->usbc_mode)
++		pm_runtime_put_sync(dp->dev);
++	/* suspend once if runtime PM is disabled */
++	if (!pm_runtime_enabled(dp->dev))
++		dw_dp_runtime_suspend(dp);
+ 	drm_bridge_put(dp->next_bridge);
+ 	drm_dp_aux_unregister(&dp->aux);
+ 	drm_bridge_remove(&dp->bridge);
+@@ -2149,13 +2205,13 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
+ 		return ERR_CAST(dp->phy);
+ 	}
+ 
+-	dp->apb_clk = devm_clk_get_enabled(dev, "apb");
++	dp->apb_clk = devm_clk_get(dev, "apb");
+ 	if (IS_ERR(dp->apb_clk)) {
+ 		dev_err_probe(dev, PTR_ERR(dp->apb_clk), "failed to get apb clock\n");
+ 		return ERR_CAST(dp->apb_clk);
+ 	}
+ 
+-	dp->aux_clk = devm_clk_get_enabled(dev, "aux");
++	dp->aux_clk = devm_clk_get(dev, "aux");
+ 	if (IS_ERR(dp->aux_clk)) {
+ 		dev_err_probe(dev, PTR_ERR(dp->aux_clk), "failed to get aux clock\n");
+ 		return ERR_CAST(dp->aux_clk);
+@@ -2200,6 +2256,41 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
+ }
+ EXPORT_SYMBOL_GPL(dw_dp_probe);
+ 
++int dw_dp_runtime_suspend(struct dw_dp *dp)
++{
++	clk_disable_unprepare(dp->aux_clk);
++	clk_disable_unprepare(dp->apb_clk);
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(dw_dp_runtime_suspend);
++
++int dw_dp_runtime_resume(struct dw_dp *dp)
++{
++	int ret;
++
++	ret = clk_prepare_enable(dp->apb_clk);
++	if (ret)
++		return ret;
++
++	ret = clk_prepare_enable(dp->aux_clk);
++	if (ret) {
++		clk_disable_unprepare(dp->apb_clk);
++		return ret;
++	}
++
++	dw_dp_init_hw(dp);
++
++	/*
++	 * HPD_HOT_PLUG bit is asserted only after the sink holds HPD
++	 * high for at least 100ms.
++	 */
++	msleep(110);
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(dw_dp_runtime_resume);
++
+ MODULE_AUTHOR("Andy Yan <andyshrk@163.com>");
+ MODULE_DESCRIPTION("DW DP Core Library");
+ MODULE_LICENSE("GPL");
+diff --git a/include/drm/bridge/dw_dp.h b/include/drm/bridge/dw_dp.h
+index 79b2cdf0df99..f20d2c2c40ca 100644
+--- a/include/drm/bridge/dw_dp.h
++++ b/include/drm/bridge/dw_dp.h
+@@ -29,4 +29,7 @@ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder);
+ void dw_dp_unbind(struct dw_dp *dp);
+ 
+ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_data *plat_data);
++
++int dw_dp_runtime_suspend(struct dw_dp *dp);
++int dw_dp_runtime_resume(struct dw_dp *dp);
+ #endif /* __DW_DP__ */
 
 -- 
 2.53.0
