@@ -4,131 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F9D1C531FA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 16:13:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2AE5C531C9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 18:03:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OTkpiBCZRkWSOm19B7stQ8t1OJfkis2w5qulwOVuKig=; b=Nb94etmQn4PsCK
-	qCfBD/y6j0n5B9NaO1ao884HC8KSp2dcDYDeBKT62RswukAZXTrEXEmgL/HRBTc7A7vxfkWEjj+Be
-	PXsIPUapdLSY9Xf/BZ3q4NJFTvSKsufcXc1VmeZaW6guhtqrf4tFEEMDObPj0Tr46h98EB4r7aJcl
-	XbYhyT8GVz+3bnM3Edj4HqZWKOEBUAKwf6uP60M+KgWVr+Jp8eok8cps0b1Kj4/9LRx/K55hJJ34J
-	vQ//Tp9JiuqvYMeeqTKn0Z2lKXZgw8zircY9jPRNsweDY0w1/lIOGW5i5xHiBHKv6Nj7VBRX2RmZy
-	K3FIxIVvOKXj7thCFwvw==;
+	List-Owner; bh=B3crQK56C4+mJdImNp1MDXKZ0n1ItvRNbC4pMAZlq6s=; b=w0nip8XqKILPDY
+	BCZR1IeiS5f+h4zOXU43s3ZL1GA8yls7TDv0Q9q40QE++gzxeCIXoNdr1+/g4IrYevHUOU06r4y9N
+	mYIp9ISZcVa62bFVjdyqLC6nCrdMlDO0keTXm63luauXH1ZET3WYSi7KokdPmVIO5/KnIxQWaATBl
+	UtlhwoVbgu35xshDDNjlcH+WA0ILkAZLh/5ivqm7JSaA/Da94TNoZT266NhiNeDGsRYC0SqkfJgHb
+	6OaH3I+v1kdF/UGOLOoeznpUAJb0BOLOh4oLWNFwh9HnsyTAmUN74goUBoQzaM5iXU+UaTnPhPvb2
+	SP9N9/0OBg7eyvqGVqMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnIW5-0000000Gn5m-1oAm;
-	Fri, 24 Jul 2026 16:12:53 +0000
-Received: from mail-francesouthazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c207::3] helo=MRWPR03CU001.outbound.protection.outlook.com)
+	id 1wnKFD-0000000H0DZ-1kdW;
+	Fri, 24 Jul 2026 18:03:35 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnIW2-0000000Gn53-1d9d;
-	Fri, 24 Jul 2026 16:12:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=PmFRV+hUnoB1TKItjNlDaoeB8QFlP8Yvg5qg7DbGy3gqtq08EJVpB9hBE4q9zu66wO5TRahPZfEIUjFDZsbVJsegFqoZ6rC62JYv+Q00XxY+djaHS2K5vffC63vUw0A/OESW8ZvlHOn0GjQsIx8s3xH4Vf42ayQxXP3NfAmVtKpFVW5Cb1P5qA1jg2Qgrwt8iu4CNnvy/0GH0sgQJBq0Me2zbqokmCaw74XStjvmtIgs1O8cgJe0kXnywNlXcwjDLNTGMyEHvYR+YnkPQ8M7R0kewHVgznjKMzDn0NX994bW5WhvgPRL1xMkcm8D6C7hRCZC4YcXSxwY8aNIdDvhZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vg4s7YQGEpbn6uVh1jE8hIHTM50DTd5oWkY0y49LalI=;
- b=SRFKTV9wjYCIyYmRamW7jZnlkcicon02kDtI8z4uPvzOyV06AEsKkOgYiDhbEmo9kJicB+hbM9HIt/bM2mfN7UxD78XfjdzNTd2Njn67UF1a/RB85WFHArRjU0g8fzTqwXl2Ns1sXzKOuFUJx9ZIx3kx1bKqBY3hXew8lx5OlMVDxS/DBAXp40sn604ucTVNCkdx6kfCuC6FweJuzMyxx/WIn3+Wf7uPdKuoNgccJTyn4i4YoOsML0lMVawBQa/IEOQtxXeRGB1RZSgJEKzh8LeZ4wDX1isyBUlBzkPz22k8z+cF7Y6v21wgm2Sh6rjlaTanSZsdQ83xq+t865RJGA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vg4s7YQGEpbn6uVh1jE8hIHTM50DTd5oWkY0y49LalI=;
- b=skMiQ6Rq9BWV9LR6oer0nUaubmUvs/mbtv63ZOIGD2yzWO7RzYZvBzx+KT8xQ0n/M/VcewN/WYlZwxAiJ8OqbMjPLmFx8uuKqTLr5qlZlOfwIL5EUf2pSV9xSNOXRF8T7DT4LfZFkGzASzA4vSFJtn9aNO9WNSf1GO376l86ikoihVlBfIZCQJ+knE4aHHf4+/OrRPWgfiFgdbiMhGcsHiqxVP8ITfF+gaGOTNxG097qIieU+OuosAl60Z9KbWUTcj7qeP474OojG25HvCnd4v2B9bMfjjpIMfV1E7u/0bx+2ZJzwkFKcxDJFjpVUu7LLl4s0rflSOaFo69B0WXGsg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
- by DB8PR04MB7132.eurprd04.prod.outlook.com (2603:10a6:10:12e::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.10; Fri, 24 Jul
- 2026 16:12:43 +0000
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c%6]) with mapi id 15.21.0245.010; Fri, 24 Jul 2026
- 16:12:43 +0000
-Date: Fri, 24 Jul 2026 12:12:35 -0400
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Tharit Tangkijwanichakul <tharitt97@gmail.com>
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Hans Verkuil <hverkuil@kernel.org>, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel-mentees@lists.linux.dev, skhan@linuxfoundation.org,
-	me@brighamcampbell.com, jkoolstra@xs4all.nl
-Subject: Re: [PATCH] media: hantro: release runtime resources when device_run
- fails
-Message-ID: <amOO86K_3wuTd_92@lizhi-Precision-Tower-5810>
-References: <20260724111548.2109-1-tharitt97@gmail.com>
-Content-Disposition: inline
-In-Reply-To: <20260724111548.2109-1-tharitt97@gmail.com>
-X-ClientProxiedBy: SN7PR04CA0160.namprd04.prod.outlook.com
- (2603:10b6:806:125::15) To GV2PR04MB11799.eurprd04.prod.outlook.com
- (2603:10a6:150:2cf::9)
+	id 1wnKFB-0000000H0C6-1MQX;
+	Fri, 24 Jul 2026 18:03:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784916209;
+	bh=MgTdUT23fOeo4lJpFf5pU2z6Cd/OH2vC6NoaMbjXKuM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=k8E+4P9gWtCyBsGC+fNRJpAXy+NmeEwgUwwtJgiL6nlITKMBDUIiw5vKM0HjOkuoi
+	 8qT/mv0IcFebqm85MM5FNoJVzf2C2Adx8SchRdtMj61iZnL1pX5ZZkZX4fXZty/DmR
+	 +UTgBjYFztj2aTAz2V6/WvOr/2MOU11+7QSjHWVXXTISJf25fceekzx00GwgHeXvFP
+	 uK5+n16UbBZgOW7VvVOdZodkWf/lQvErHPvDB3eiZ2Qm4Vxcy8Ega61Ifj+RdM+sp9
+	 nPcOamuz0SM9rjrtPNj+TnjeoHWA0HVhWiXozXjLlfwJk0ud/glmxTZUQ3WuyBiRkB
+	 VqHxEsesTDzpg==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 310E817E01FF;
+	Fri, 24 Jul 2026 20:03:29 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id DD2BB48002C; Fri, 24 Jul 2026 20:03:28 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Fri, 24 Jul 2026 20:03:24 +0200
+Subject: [PATCH v6 02/16] drm/bridge: synopsys: dw-dp: Cancel pending HPD
+ work on unbind
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|DB8PR04MB7132:EE_
-X-MS-Office365-Filtering-Correlation-Id: ae0356fa-3881-43fb-f991-08dee99e645a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|23010399003|7416014|19092799006|1800799024|366016|11063799006|56012099006|10067099003|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: KZTAJjFCUckBohTk3T3OB5mG1pRnIqpdtVWm/HwirdDBGMPBn3TymcV0Qxjok85EswYsyIOm1N3sQASVZKY+mtqCImtBzBmWuGftZzUyvyE0SQ7NH2d31sa9qeogeLdUplCo3lpl0K+y6Pb5MdA66mc5pvhiU4DeLh3fEfPpZnV3KpuukkViLSKGgmwSpEBa2iIzW1Yf17BPcJ+TSvslfYNWz/ifCR1sETQe0sJeoZIsmluEUWaf94AT+hIRA9RMgw9Img3E3IxN8gW+aG13gygj40e92A2QJ0hKDtHJdPyq5WnYbnfZ+wtuzo4x12n7hMHjGS71Bdt+ciwfu1WwS4Zeb263wcssmMPB6YDyqIA6NLO45tHug3Dk8zLGdNscmcrMMePCr9NOwktn7NlhBh0NlbybRPZWyIElcESyndfVH+Dc5bWigu6vAuLG5J5JaCbvgyGTCxlfzzByNSAJhfXQPqexwL/TtiiHKWW8w8olkWIKmwf2nHUZC++/DXOnHMdW+OEiCpm0XzW5Re4j2/QdmXVZVmAx+VvAkorG/CPB7ZzNV9z8GJiFnqWQFsuQYSUgP9B8isPo5BbRiZ2g7yIMpq5uWZ8ByU59pk7qpykvcT+eQu/spHTYoCaTC4Rbp+jHdCtI3eY3fPvnMrHwWjm5yXLpao5MeugwD+Xee/4=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(23010399003)(7416014)(19092799006)(1800799024)(366016)(11063799006)(56012099006)(10067099003)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wAlCJgTgaIKLFyRMWhQwk6acgBMSqY4RaDEw43ldU/0X/qSzwDl7wnYRo+MV?=
- =?us-ascii?Q?fYRJUnTCE0gXoTzgskP7h43mGxymiR6aS0ojIDFY764TATBlftd5RQ921nN+?=
- =?us-ascii?Q?Gjv+3p8K2/RQTPZr1Bsu1JyFPtk1X4Am3DqdGy+BhmxSwmP/H4q8DSmZIuUd?=
- =?us-ascii?Q?ZoHdPj1zd1FWuAh46nIoKIs9Ey175Ejz8poqAf6oy9ziNZFFDGM3a8PoTjjl?=
- =?us-ascii?Q?ad37rk05J7ExPEPb1IoBTybLdHW6fU2rb4KRf0w/C+hXlORsbBqEu3skUQZU?=
- =?us-ascii?Q?GpSoGTd/yitDsSMDFQf2zVJODbhQePZW5Ef2Bjd9sxAIBLJVkFQBgKDSNlhB?=
- =?us-ascii?Q?IGASHOEIGbK9G2IHnpDzDYXty7DkDrsISDCMW0FCmJOd1fP3vZv0w6IqIyHc?=
- =?us-ascii?Q?93AauE3py4LVlPbgKBG3lQnz+zbMtBKwhawI6ommWd5Yap/f8ChPF8RR+Lc7?=
- =?us-ascii?Q?ntPdJU8O6LL6XYMqLUR0bhE7caL5ina8e6ubazQWDqODJVrPmqybzTXRhhOl?=
- =?us-ascii?Q?ew3obAUUdznNsrBv7e55Ci9VXyVR63c6oUJbGcanWjHM8Ue4UuOw9qS25CSf?=
- =?us-ascii?Q?W5Oa1mpvF6u/raIJFb34K6OZBDONXDxIUPhw5lvBKB8Np/ByXA+VcYlzkTXx?=
- =?us-ascii?Q?+6xuuns3nzmllpALzqFkehmswBLOJES89b45TJdEIe0ZrGw6uDXvQfvQhryo?=
- =?us-ascii?Q?A934v3hG0TeZ2IRMvYMh1M72d5F5YrPlTgHW1A4skDVwNBlVgDcqfJdJ3euZ?=
- =?us-ascii?Q?VE5En4cNyhrDf3JaGl0Hhjin3ZrPkiJy+/z8Sp04pXB7wNhc8ZEXUWKiZAnE?=
- =?us-ascii?Q?md+dweUaOTdxSm/b6a9ErvwHdNgIOEloLbupSSosw6Xg2EsUF/K1FilAtbFs?=
- =?us-ascii?Q?vXuSBrCzAUqqk5iOL2ECv9yQ1hZmgvg3kZ8+5jffUFosb7vXudOaHNn1qJaa?=
- =?us-ascii?Q?upQevb9J7zs+HjzZqqK7gxHZCDtbWh1+zV3Zo9FuPL1PXAALAzFozG6rMQoX?=
- =?us-ascii?Q?Izt/3xwYAU85bIOJW4IVjnC5N+pvGx+bCYinOqzYB7XHass2d9Vrru9pHYEL?=
- =?us-ascii?Q?18wZyvwYaTq9ZakkWfaOO/kuqiGgNY0OpJpKNlXi/WtAxqf72Rp1pObEwJ9h?=
- =?us-ascii?Q?Waupj+ZAMmQPASK4dbZKc3SP6LbmH3MOGljbucRFBeXMhrtuGgK00d8ml6Z9?=
- =?us-ascii?Q?3RyBW5fePuvI/xf1BriEt9WyDDf7rLttXf45y5MdsxjIRZ2otSum/35P8Njk?=
- =?us-ascii?Q?dGwrVZzX0ooAEVgFFoSw/S7NO0hmGfQllSY5dtfF7AVGpU8PZaoFcUMFxOaI?=
- =?us-ascii?Q?4PrlEulBz+652mShMHfM59JGdCCFdVZlDOdquad1aiAlX4lwCER4eoYtOyh3?=
- =?us-ascii?Q?NcZ8RbDjTuWoqUzVD2wEuruB5So7LK4m9Q5xw9SXqIMbmWGIjuExx7evSz18?=
- =?us-ascii?Q?VQLHuO+OAp+0slJ1jT1o/88dIdnZp4Lzz1fQG+VMdY8rXHmLpZm2AeiB1mnc?=
- =?us-ascii?Q?zpIeZDxReyhdXBIMCDPQdA6txow7GwpvxlK/CAmg5eQGKgT5yO9oMQapeSMI?=
- =?us-ascii?Q?1+6k/Mo4Tq/zRpjqSxViKZlWuRBqFa89hqQ4j5UgfG/rETJo53eG541QF3lx?=
- =?us-ascii?Q?3s8dH9imh7CU2C7isCp/oOmeJb7gnbdpzdbwo2N7sYWL3KHd/WqRfhcbfXoX?=
- =?us-ascii?Q?gK8pW7HQoT+8FTss3CnnzfFUAEl7F4zBs8qjx3HMA6B12EK1YfDF40xUqPIP?=
- =?us-ascii?Q?0+u1AmAZKnmwRc2xAz0i6mh1jryejTIjbImyzqm/SXG3l7d2lFr0?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ae0356fa-3881-43fb-f991-08dee99e645a
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jul 2026 16:12:43.4465
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qtB6OERPWfmkKEmMXGGDxIHV5Xfc+ykIbkRgimBcWOAJVDxUwijLCIOYXkp46I20Fa6sUyDH4hS+ZFQttn9WFSla4Bi3SLAUWjYJ0S8LOpTirECcIqalSAqbHg0h1JWI
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR04MB7132
+Message-Id: <20260724-synopsys-dw-dp-improvements-v6-2-041d99a19c4e@collabora.com>
+References: <20260724-synopsys-dw-dp-improvements-v6-0-041d99a19c4e@collabora.com>
+In-Reply-To: <20260724-synopsys-dw-dp-improvements-v6-0-041d99a19c4e@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1048;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=MgTdUT23fOeo4lJpFf5pU2z6Cd/OH2vC6NoaMbjXKuM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpjqPCsRTRL+xEFbExnTin0ycKqtU7zs8hX4
+ M/+R+uQZi72nIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqY6jwAAoJENju1/PI
+ O/qaMioP/RnwbfK4SHGm0lJrJjaw6Ld0ZL0QwP6M9ywqYvju/3p4uxJ4plofkcdBIetNZqlZemu
+ 4q2u5pyCz+K/TqGf//cRYt6mzSfyDR5Xf68fIQgmS2XWMkuSZoPcZLd1ifAFWEuKlh3KI2UoEc8
+ nacBfLReXeWGs6cOgmQuYRuSK/e7+XIL8V9sSOMniZi42JO47gM68rtR792Iut+8JeO+jqulJPc
+ 2YOYYAakvCywWqd+szBQlAP7YVq48IyqaJsx2X1OWf2RqoTNC+ZlTA1/WFVE3L9zltqjWf2AAlu
+ NzIx2l7fXdtXKGac8OZT1cd/VJBNrJexVD7Eq4cKRAE/Z/nMkXKU0waOGWsO/D6gKEM1Wehk3ik
+ 6x5c/PbCJ/3mEO21dHXIfztJdY5px0kCD8FXowdLZPewthLaSKnWM5Oz0Cs8mZmI39DGpCodRXe
+ 08GYybFAUiNZILYozTYUa3J1uf/XBn/0yd84aMQ9Evwn114vq1nG+Hy4st42AycklhCKN/3HBDy
+ ODpdR48ISroBj6Um197i4EhNe+6cJmqXfmMY0SlWjXU7VWdZZ2ofYEtDJZ9j+UFb+bhP6BNyKGT
+ HOLdFNFA3dpSycfJVo1jX/XzXPpch2295BjmkYn31rOeWKH3+na6zCfFu3SzGp2BI6SQBJ7UQ0G
+ 2t8Fh7kzURUsVe4blvZ495Q==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_091250_459372_E9337E44 
-X-CRM114-Status: GOOD (  21.02  )
+X-CRM114-CacheID: sfid-20260724_110333_524492_FCA931CB 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,88 +100,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Sashiko <sashiko-bot@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 24, 2026 at 11:15:48AM +0000, Tharit Tangkijwanichakul wrote:
-> device_run() acquires a runtime PM reference and enables the VPU clocks
-> before invoking the codec-specific run callback.
->
-> If clk_bulk_enable() fails, the runtime PM reference is left held. If
-> the codec-specific run callback fails, both the enabled clocks and the
-> runtime PM reference are left held.
->
-> Add separate error paths to release the resources acquired by
-> device_run(). Disable the clocks when the codec run callback fails, and
-> drop the runtime PM reference when either clock enabling or the codec
-> run callback fails.
->
-> Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-> Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
-> ---
-> Tested on a Rockchip RK3588 (Rock 5B) board with Fluster:
->   H.264 (JVT-AVC_V1):	     129/135, unchanged
->   MPEG-2 (MPEG2_VIDEO-MAIN): 23/43, unchanged
->   VP8 (VP8-TEST-VECTORS):    61/61, unchanged
->
->  drivers/media/platform/verisilicon/hantro_drv.c | 11 ++++++++---
->  1 file changed, 8 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-> index 2e81877f640f..9daaf129211d 100644
-> --- a/drivers/media/platform/verisilicon/hantro_drv.c
-> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -170,6 +170,7 @@ void hantro_end_prepare_run(struct hantro_ctx *ctx)
->  static void device_run(void *priv)
->  {
->  	struct hantro_ctx *ctx = priv;
-> +	struct hantro_dev *vpu = ctx->dev;
->  	struct vb2_v4l2_buffer *src, *dst;
->  	int ret;
->
-> @@ -178,11 +179,11 @@ static void device_run(void *priv)
->
->  	ret = pm_runtime_resume_and_get(ctx->dev->dev);
->  	if (ret < 0)
-> -		goto err_cancel_job;
-> +		goto err_disable_clock;
->
->  	ret = clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
->  	if (ret)
-> -		goto err_cancel_job;
-> +		goto err_pm_put_autosuspend;
+There is a race condition during device unbind: If the HPD interrupt
+started an HPD worker exactly when the unbind happens, the worker
+thread might access invalid resources. Avoid this by stopping any
+pending work immediately after disabling the interrupt.
 
-Mix use runtime pm and clock is not good.
+Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-You can put clk_bulk_enable() into runtime pm resume call back
-and clk_bulk_disable() into runtime pm suspend call back.
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+index 368e1f85e625..21bd08571dcf 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+@@ -2009,6 +2009,7 @@ EXPORT_SYMBOL_GPL(dw_dp_bind);
+ void dw_dp_unbind(struct dw_dp *dp)
+ {
+ 	disable_irq(dp->irq);
++	cancel_work_sync(&dp->hpd_work);
+ 	phy_exit(dp->phy);
+ 	drm_dp_aux_unregister(&dp->aux);
+ 	drm_bridge_remove(&dp->bridge);
 
-Frank
+-- 
+2.53.0
 
->
->  	v4l2_m2m_buf_copy_metadata(src, dst);
->
-> @@ -191,8 +192,12 @@ static void device_run(void *priv)
->
->  	return;
->
-> +err_disable_clock:
-> +	clk_bulk_disable(vpu->variant->num_clocks, ctx->dev->clocks);
-> +err_pm_put_autosuspend:
-> +	pm_runtime_put_autosuspend(vpu->dev);
->  err_cancel_job:
-> -	hantro_job_finish_no_pm(ctx->dev, ctx, VB2_BUF_STATE_ERROR);
-> +	hantro_job_finish_no_pm(vpu, ctx, VB2_BUF_STATE_ERROR);
->  }
->
->  static const struct v4l2_m2m_ops vpu_m2m_ops = {
->
-> base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
-> --
-> 2.47.3
->
 
 _______________________________________________
 Linux-rockchip mailing list
