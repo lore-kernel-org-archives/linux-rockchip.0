@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7559C531FC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 08:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85E5CC531FA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 08:09:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LXTdtI7vLSHUnbQ8qmkina4KsUqCUhufVS4sahqeiGo=; b=ECj/DuGoof2JPT
-	krsLPJBbWcUHdNb8Dpbo4m7Jgj6ispyAXcw3UB4UcYyIqP6Lq4vu/9pnEjTP1VEoX0wiEHSRfKCq4
-	BT9LVbcjEGQM2PaIqFFrJdoaU/2EhyB4esQhaZfKhe920BzVvzd3zffF5Vpn1NwGF6EB5dmOWS4S8
-	XftMlCyvS1HFDpgjkngN26PSTGAOzBadz52o3AQWYnycuDmduI7lmE/xTM5FhZanNJqZGNInW/Nzy
-	kA0SYT4tbmxrzkPKDwj8yDAOo1dJAV7AXbava8W3UL1HM3NMqS6zrrg/MleYBHs8psPxlt17TKeDC
-	xUSxUMB69ewUmVy6nX7g==;
+	List-Owner; bh=fFtdlv6ynTqkZeq2m+ZfSUZqqydghDNN0s8Gc245jyw=; b=IZrv7FWEexHeQF
+	tr6Xu3Dk1y1dmqzxD8lwX/Ywm7nzj4HtvE8/WiKjlP5BfJBjn7EkYZvggsn9jrDeSJcWClu87bbMS
+	VlvVCcD3YHLfXmr1KLA8FeJlhngwasDTe8SXHLUOcDbZUbXYku2IyuTIIWRm7MAab578CfqYjP9lJ
+	tr8D0CoVoQE9luDPEzsNSosXlrMMoo3d/4knmxPJ8+o2Ujavm1ABAze/zvLxjCmWCmQLPGMt6CJXO
+	nvj/mpnnqqJ3wa7MzseiMuDVHXAOS3NqYsMET6lEPeeSDK1wqkYGsA3yWAIaWQgpUH9uLsyr80dxT
+	FO1IXL4IVUYs+VlaOcEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnAxa-0000000FlHn-1Omq;
-	Fri, 24 Jul 2026 08:08:46 +0000
+	id 1wnAxw-0000000FlSE-3lMR;
+	Fri, 24 Jul 2026 08:09:08 +0000
 Received: from th8-b.mail-neoserv.si ([152.89.234.174])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnAxV-0000000FlEx-3yZW;
-	Fri, 24 Jul 2026 08:08:44 +0000
+	id 1wnAxt-0000000FlOr-3jX1;
+	Fri, 24 Jul 2026 08:09:07 +0000
 ARC-Seal: i=1; cv=none; a=rsa-sha256; d=th8.neoserv.si; s=default;
-	 b=bLhSBkBjUBQXXbMfW/sgpCpyLu7i9NuI1bLPbTkp31vOckzawBPQPANyjx2z+ROJo5JolXIqw5
-	  M4GBBYoiojIW/IH1gDrjeQYgozfQb+hpHtsxzo+grvv18QvLhJkXTrtnQ3c13uIOGOtPeGUKNQ
-	  kP0vrzomT3W4C+A1bRKuORe6qhSk6g/VNgSaLRkIB0tITGhVAxbtdc08Cv/ED+4T/o6a3GKyrU
-	  19+lDtLVnfC4gudJKMj8CcaBtN7aMsMKJXXpTG1DjotYw6WaRK4Yx/ptmtB3CvzL1OtZgTZvlM
-	  sK+GwNPIVWSSKGBpIR/tniV/yhNzHl1Ww9do1kozIyay6A==;
+	 b=bDzJiLwGfDnvzRu8uG4cfvScMD5vIXyArkf23vZmaxB4iabXsUCYfcYRsDPJr2e/YaglTwtySm
+	  DkffUEGZzNOYzmtXXEEsoOVnmrTLDR7F9ZISTFcM34iTUSSR4sHpSQYbgSxA8Vy2nEU6XpMW41
+	  2ng9rUdIGkUICz0bUHLggeRIVcv2jyFqeA9LipVmM9+Tp7xkf9FDTI4QoyL2b/5+NbfHDbVjdK
+	  tmUnihzw3zmWDyx/L//pUGff4M9vQAo+1a+Qwrk/iK2474hmrGUfNQjsTnmeXKSIWG0Mm3qxvH
+	  nGNERWTj8G4o392q87BI7jGfrYdfL+0EBP0ISoXAbLs+DA==;
 ARC-Authentication-Results: i=1; th8.neoserv.si; smtp.remote-ip=193.77.36.193;
 	auth=pass (PLAIN) smtp.auth=rok@kanardia.eu
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed; d=th8.neoserv.si; s=default;
-	bh=ZQ8Cmsj05infuNySaUQsheykvJcBzOdHA0m2LcyiQLU=;
+	bh=zmvwDaEmtiQC/1srLnAabC4qqpmkbkGlQJnQfvBWPwo=;
 	h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:
 	  Date:Subject:Cc:To:From:DKIM-Signature;
-	b=NGcBpE/eOko0hyGFeEQbjGJnyfltluMVxiGQsALhk+IBx05VUeykRxRWB3MAnFVHlsAmoL+nTe
-	  yTonr5SBJOa4kfNWW3UgQ7G25ZxbDfLrEyfA1r7XrffkXX7PQfk8YGoYTMkNI41llc34E49RjO
-	  5YPzG+5MtipfpW/yCAoxGr+bfDQJ87Oj+Km+sUCaaadn7swwPHJcDQlJYuo5GCvBJD+lfvofIz
-	  aMG8uSe+NsRLHqGHUtYw4LY8wgMzVtlcYz1XpmFYgi/1+NEj04G9cCrqUDpsg9XR8hdmHH58Jz
-	  ts5BlQj+H/yveu0lteON8SCZcgccEOAQBgms3hmJ+Foh/g==;
+	b=ieXfNiOoass3sk3OFKyexuJ0/tA/G2MLt02IuL6HB8cYIvW9yBhuSDmwQyrzvi3L5ggkmZ4wo0
+	  rW2dKyBu0cMFUPDV0+OaOxa0XUPfiWUTljSqFLAuuMNPmOeym/60PEt/MY7cTzDXRfvkBmb3cE
+	  om8Ba4gB14balFm9ycYu3OzT2d8XUWUxpD5mjsxifL6Pcv86/4efDPHIhdyJbfpbMXhHWCUlpU
+	  d1hRYQCaDZ+yT49vFqe4baPWT9fq4/0vYv2oSrZTlTyKAZwhSJmv4+DHykNNYc0eTz0SOwbCWZ
+	  DeUyOT9tSnbLBqCwp9t8Q87QRqafH/tHy1blE0bvE3ZpOg==;
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=kanardia.eu
 	; s=default; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
 	List-Post:List-Owner:List-Archive;
-	bh=cm++ZQgvrV2LU/2T+Ex0Y95vEd8ge0y3k7zWNpsu80s=; b=MPU/7YykhW3Y+5/iiCIWsBtp7M
-	nPhatR1qsH3o+DE2WGHbVOYU4lzr4eWKJ17+tinjU6TzSFFsk2amxioi3efeiopIb36ACFQQfN3Da
-	LcWr5D6UEJ1zxTaSB5lD00tyt2Opgzf8fLUEEazBXVfbtJhaZrIPW4aVyWRGhrL8pK0n9CURKQ3vK
-	Lwlq9lPuAT8X8Sa9xmL14++Xgs2jEBy+BnoJ6jeEMtjmBMEzoNP+UHn3/8UubLz3qDoAzkqiR5GFs
-	soaffNi2vTp6Uo0+DDBLGYLY6LKfWKgbhLEeu0iwtxtZ1ANfOUPtaC7YXKjtpG7JHj/pS4+zAyPf8
-	H06Lkhbg==;
+	bh=5vaO/GM91G3rNsV69zS2AeHYbUZzZm3t2t1r+BkuECs=; b=iInyA7bi4kZSnS6rEumt7ravpL
+	FZaKQB5TWF+3Xtil21ZpRPm1ZrKVlYNynjC8SDdILactGS6Xmx0gjpmBR6FAZ/yHRHWlZ+WzISwgt
+	zEKAEL4YoyHQ+8zuAhFen3nCy1p+/3CYiNmCdw0JitE6dVHAxGQa5bBtBitEf11Ja/A7QIzSSzT0n
+	sIuwyMe2o7xyooVO3fCVxhXdLknLvI3r9CCW/fewyYg1/DG5tVEnZHdTS3FemqrmXZ4klOScFpRhw
+	3FwxLqulFjMhr8wazTh1z4ARESJi/EYfeTCYL8eB7Vruz8zujFYcZPe+xsBZwLgDGXmei7k933Mhu
+	g0FYDM3g==;
 Received: from [193.77.36.193] (port=41890 helo=rok-trip.kanardia.eu)
 	by th8.neoserv.si with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
 	(Exim 4.99.4)
 	(envelope-from <rok@kanardia.eu>)
-	id 1wnAxL-0000000AcoX-0w1h;
+	id 1wnAxL-0000000AcoX-0Be1;
 	Fri, 24 Jul 2026 10:08:31 +0200
 From: Rok Markovic <rok@kanardia.eu>
 To: Heiko Stuebner <heiko@sntech.de>,
@@ -80,9 +80,9 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
 	Alibek Omarov <a1ba.omarov@gmail.com>,
 	Rok Markovic <rok@kanardia.eu>
-Subject: [PATCH v2 4/4] arm64: dts: rockchip: rk356x: add LVDS node
-Date: Fri, 24 Jul 2026 10:08:24 +0200
-Message-ID: <20260724080824.115260-5-rok@kanardia.eu>
+Subject: [PATCH v2 1/4] drm/rockchip: lvds: propagate bus_flags to the CRTC state
+Date: Fri, 24 Jul 2026 10:08:21 +0200
+Message-ID: <20260724080824.115260-2-rok@kanardia.eu>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260724080824.115260-1-rok@kanardia.eu>
 References: <20260724080824.115260-1-rok@kanardia.eu>
@@ -90,7 +90,7 @@ MIME-Version: 1.0
 Authentication-Results: th8.neoserv.si;
 	auth=pass (PLAIN) smtp.auth=rok@kanardia.eu
 X-NEOSERV-MailScanner-Information: Please contact the ISP for more information
-X-NEOSERV-MailScanner-ID: 1wnAxL-0000000AcoX-0w1h
+X-NEOSERV-MailScanner-ID: 1wnAxL-0000000AcoX-0Be1
 X-NEOSERV-MailScanner: Found to be clean
 X-NEOSERV-MailScanner-SpamCheck: not spam, SpamAssassin (not cached,
 	score=1.31, required 7, ALL_TRUSTED -1.00, BAYES_50 0.80,
@@ -105,9 +105,8 @@ X-AntiAbuse: Sender Address Domain - kanardia.eu
 X-Get-Message-Sender-Via: th8.neoserv.si: authenticated_id: rok@kanardia.eu
 X-Authenticated-Sender: th8.neoserv.si: rok@kanardia.eu
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_010842_480019_D5181ABB 
-X-CRM114-Status: UNSURE (   7.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260724_010906_106308_6A27D093 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,54 +123,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This commit adds the LVDS transmitter node for the RK356x SoC, assigning
-its D-PHY, GRF handle and power domain. The block has no register block
-and no clock of its own. It is left disabled by default, to be enabled
-by specific board files.
+rockchip_lvds_encoder_atomic_check() sets output_mode and output_type
+but never copies the connector's bus_flags into the Rockchip CRTC
+state, unlike dw_dp-rockchip.c and dw-mipi-dsi2-rockchip.c which both
+do.
+
+panel-lvds parses pixelclk-active from the DT display timing and
+publishes it on the connector as DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE.
+VOP2 reads that flag back out of the CRTC state to decide
+POLFLAG_DCLK_INV. With the flag dropped here, vcstate->bus_flags is
+always zero, so a panel that asks to be clocked on the falling edge is
+driven on the rising one, and there is no way to express the panel's
+requirement from DT at all.
+
+No functional change for the SoCs currently supported by this driver:
+rk3288 and px30 pair with the VOP1 driver (rockchip_drm_vop.c), which
+never reads bus_flags - only VOP2 consumes it. The flag becomes live
+with the RK3568 support added later in this series.
 
 Signed-off-by: Rok Markovic <rok@kanardia.eu>
 Assisted-by: Claude:claude-opus-4-8
 ---
-Changes in v2:
-  - Drop the clock from the LVDS node; the block takes none.
+No changes since v1.
 
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 23 +++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_lvds.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index 64bdd8b..61a932a 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -878,6 +878,29 @@
- 		};
- 	};
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+index 75f898a..95fa0a9 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+@@ -129,7 +129,15 @@ rockchip_lvds_encoder_atomic_check(struct drm_encoder *encoder,
+ 				   struct drm_connector_state *conn_state)
+ {
+ 	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
+-
++	struct drm_connector *connector = conn_state->connector;
++
++	/*
++	 * The VOP derives the pixel clock polarity from this. Without it a
++	 * panel that declares pixelclk-active = <0> is clocked on the wrong
++	 * edge. panel-lvds fills the connector's bus_flags in from the DT
++	 * display timing.
++	 */
++	s->bus_flags = connector->display_info.bus_flags;
+ 	s->output_mode = ROCKCHIP_OUT_MODE_P888;
+ 	s->output_type = DRM_MODE_CONNECTOR_LVDS;
  
-+	lvds: lvds {
-+		compatible = "rockchip,rk3568-lvds";
-+		phys = <&dsi_dphy0>;
-+		phy-names = "dphy";
-+		power-domains = <&power RK3568_PD_VO>;
-+		rockchip,grf = <&grf>;
-+		rockchip,output = "lvds";
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			lvds_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			lvds_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
-+
- 	qos_gpu: qos@fe128000 {
- 		compatible = "rockchip,rk3568-qos", "syscon";
- 		reg = <0x0 0xfe128000 0x0 0x20>;
 -- 
 2.43.0
 
