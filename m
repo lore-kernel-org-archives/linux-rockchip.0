@@ -4,67 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96C7CC531F9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 22:14:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 882C6C531C9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 22:46:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mg59ylCWybaVWccxuMzCaoVVlIi4GShWyvjWYFtit/A=; b=fXG70cuklCLqz/
-	27i1gj+NsPd/R8Ma5FnH2ml2Iy0Wp0qxOGN1aLyHqc6o5eeIeZuK6tjnLQ8tWSm19vZ7o4uYcQCrR
-	Cn+w5x0GStkLyBJQ7WWJTkv9UelrP0NEw64lIzU+ifEFbiXHJrGOzCP57fTCD2ffTHWibndFrQQ6Q
-	nx3sFJ1ebhlLJIKSG8z7PbAujhqzXARHbeNo0emqoa8zVnVo7KvysmEDoX/p4EEdlvWqerCcQWCCq
-	ED6gTbMG6sQV+3kgr3RGFmCxxyXPWV1Bzh4i/K2JmojtlhJUrdC9n6osFekS5AbgAOg+V7R1Vokry
-	fjhkz4CHH0dxWDjJ1PpQ==;
+	List-Owner; bh=TDkB2eHjWnAbpcxPS32+5axq8M2FrjqMK/AY1dTxhaA=; b=GIWbE3JGS9d9Mr
+	+XXKIF5EcjOq8u1ExC6zpXIctq6NKBAFYfNLOZIgtwgrKceNyVMUgddPuiYplumCIPbejUWO4V7Pr
+	26jdM8tGVYr/M8iXcdQazNTXiXLtGAehbaSeHU1QQ1Q522oRB2SC3V9Oaf9Hbyr5iOXhz4z/UaBWw
+	Xy04KAUnE2lnK2ChInI4nrHAw8dX6dUgeZFh9tEbN3cXLZ5L7fSDjNNDixzyu7iJ16U6K4HdsrZ01
+	MpLHGUhKq4Xhj+7uo/CA4Mb+zCJrdcMFpQltYGUmJ2keybkV8uDvR5gxxoxxWXYd3owo3pQ/WwHCC
+	tLQEeN6Jkq6GR30m1FxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnO9S-0000000HIG8-2KlE;
-	Fri, 24 Jul 2026 22:13:54 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wnOeU-0000000HKCE-2M15;
+	Fri, 24 Jul 2026 22:45:58 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnO9R-0000000HIFg-16tO
-	for linux-rockchip@lists.infradead.org;
-	Fri, 24 Jul 2026 22:13:53 +0000
+	id 1wnOeS-0000000HKBl-3w2X;
+	Fri, 24 Jul 2026 22:45:57 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 925E74370B
-	for <linux-rockchip@lists.infradead.org>; Fri, 24 Jul 2026 22:13:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 772A01F00A3E
-	for <linux-rockchip@lists.infradead.org>; Fri, 24 Jul 2026 22:13:52 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C502A600AD;
+	Fri, 24 Jul 2026 22:45:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE7801F000E9;
+	Fri, 24 Jul 2026 22:45:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784931232;
-	bh=aGH1/2toPHVIOQa+jK5UNhDmHBD0aRC5mQRDqAj3tYU=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=FXgNPEcmyUE0kVHZ6djQa3bjOde7CyAnqB+vHKouxeko1ahVwngW3hfMx0OV/00uO
-	 HTYf+nqinj93C3ZO4JmCihblplGsmzaB+1X09ObmzLe/jQAnsj5fmB7N2CXsQ4IDIp
-	 oVBdD67TFc1L+Kzvxy80Kzz06UpCRGGeo55FJfDOPxX/fT91s1ciW6DdBjhpWxwtWB
-	 4QYkwupmYgdeA3zTakFLJIqWH5qK/LX4dd2FDrFNMQ7hiM5YoSPTuIDU2C2IGTnu08
-	 7rBLejOy04THX/qe59JSaPVVOIHTCzOsocUcOnIAUp3vOPi+f1p12IOeI9TOE9vcKh
-	 E7SDad10HXS3A==
-Received: by mail-lf1-f42.google.com with SMTP id 2adb3069b0e04-5aec201b582so930749e87.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 24 Jul 2026 15:13:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RpylEMagAN8oTs6dC2LWHEdzPvqUoiVMPW5CXyPpUus6NiNLIdCj4GVlAMolvYTL19ke5F6pLZ52v9LdiolxQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzLbNwD4ZDJMkgayKI1Ho0BLQtYng35s3Z4k3xaequyD8bz3uak
-	ozUFpTtNVbewHKIhs9Xo/ZSjTtcJAAGM2ruqBZphD73ekW8+di2cXy3v2aJs/OPvLn4eoS4lNvQ
-	pCj2OfrvnSF2H1ns4AklOjY1JLrghJvI=
-X-Received: by 2002:a05:6512:6699:10b0:5ae:bbd3:27e3 with SMTP id
- 2adb3069b0e04-5b2b2e52e52mr1247043e87.5.1784931231294; Fri, 24 Jul 2026
- 15:13:51 -0700 (PDT)
+	s=k20260515; t=1784933155;
+	bh=+Js/I4/QcWnb0zbX3gJ/7hcd5ufvSHyxR3nJSzCYliA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=ezEc5WAtQmjF1QNZEepG+PeGNUSM1i0ETfgxrcmRp2dFbxVSIBg5Ug2rt2jfXSA/J
+	 /BJ8Q7Q8fJGb/Fy06yCqKiRQD6fukqeCaNl+KEz+xTWvMe74o/PDAZ1cOPXC2klD1l
+	 CdT2J1YMHvMXMZovWR/n65Im1ZcZLRVhAL52YiF55A8NElc5hGew7qh1bcT/QdhDYC
+	 8JConp1P0raofTTt2KatNTEbDBNoUctVg2yhjzeIDngIzInOwIGh7DAleTGovW1TFH
+	 VWi+Ae3CHAb/7wh4nSQnZkyyC4s2uq4Zv0pO0d6folIFc8CXTpntfDy+CznQO/i3SV
+	 k/19l+KNqw3Jg==
+From: Jakub Kicinski <kuba@kernel.org>
+To: bartosz.golaszewski@oss.qualcomm.com
+Cc: Jakub Kicinski <kuba@kernel.org>,
+	andersson@kernel.org,
+	konradybcio@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	pabeni@redhat.com,
+	mcoquelin.stm32@gmail.com,
+	alexandre.torgue@foss.st.com,
+	vkoul@kernel.org,
+	peppe.cavallaro@st.com,
+	wens@kernel.org,
+	jernej.skrabec@gmail.com,
+	neil.armstrong@linaro.org,
+	khilman@baylibre.com,
+	jbrunet@baylibre.com,
+	shawnguo@kernel.org,
+	festevam@gmail.com,
+	jan.petrous@oss.nxp.com,
+	s32@nxp.com,
+	mohd.anwar@oss.qualcomm.com,
+	romain.gantois@bootlin.com,
+	geert+renesas@glider.be,
+	magnus.damm@gmail.com,
+	mripard@kernel.org,
+	christophe.roullier@foss.st.com,
+	brgl@kernel.org,
+	radu@rendec.net,
+	linux-arm-msm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	dfustini@tenstorrent.com,
+	linux-sunxi@lists.linux.dev,
+	linux-amlogic@lists.infradead.org,
+	linux-mips@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	sophgo@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	bartosz.golaszewski@linaro.org
+Subject: Re: [PATCH net-next v13 02/10] dt-bindings: phy: document the serdes PHY on sa8255p
+Date: Fri, 24 Jul 2026 15:45:48 -0700
+Message-ID: <20260724224548.1648931-1-kuba@kernel.org>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260713-qcom-sa8255p-emac-v13-2-119f8699ef8e@oss.qualcomm.com>
+References: <20260713-qcom-sa8255p-emac-v13-2-119f8699ef8e@oss.qualcomm.com>
 MIME-Version: 1.0
-References: <20260717075918.1869879-1-hugo@ahdrone.com>
-In-Reply-To: <20260717075918.1869879-1-hugo@ahdrone.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Sat, 25 Jul 2026 00:13:39 +0200
-X-Gmail-Original-Message-ID: <CAD++jL=ASH7jx8YOL2Z5i4K8w4RQd4eWKEGtY1KRBwM-JDaw-g@mail.gmail.com>
-X-Gm-Features: AUfX_mxV3lAJSNoJIi5Cr9GxwAU_Lyd6F8eQg8jRexuVpOK8BgTgzF15KgMIbjM
-Message-ID: <CAD++jL=ASH7jx8YOL2Z5i4K8w4RQd4eWKEGtY1KRBwM-JDaw-g@mail.gmail.com>
-Subject: Re: [PATCH 0/3] pinctrl: rockchip: add support for RK3308B SoC
-To: hugo@ahdrone.com
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Dmitry Yashin <dmt.yashin@gmail.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Jonas Karlman <jonas@kwiboo.se>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,28 +108,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBKdWwgMTcsIDIwMjYgYXQgOTo1OeKAr0FNIEh1Z28gVkFMVElFUiA8aHVnb0BhaGRy
-b25lLmNvbT4gd3JvdGU6Cgo+IFRoZSBSSzMzMDhCIGlzIGEgc2lsaWNvbiByZXZpc2lvbiBvZiB0
-aGUgUkszMzA4IHdpdGggYSBkaWZmZXJlbnQgaW9tdXgKPiByZWdpc3RlciBsYXlvdXQ6IHNldmVy
-YWwgcGlucyAoR1BJTzJfQTIsIEdQSU8yX0EzLCBHUElPMl9DMCwgR1BJTzNfQjIsCj4gR1BJTzNf
-QjMpIGdhaW5lZCAzLWJpdCBtdXggZmllbGRzIGluIG5ldyBHUkYgcmVnaXN0ZXJzIHRoYXQgb3Zl
-cnJpZGUKPiB0aGUgb3JpZ2luYWwgMi1iaXQgZmllbGRzLiBJIGJlbGlldmUgdGhlIGJvb3Rsb2Fk
-ZXIgZW5hYmxlcyB0aGUgbmV3Cj4gcmVnaXN0ZXJzIHZpYSB0aGUgc2VsX3NyY19jdHJsIGJpdHMs
-IGFmdGVyIHdoaWNoIHRoZSBrZXJuZWwncyB3cml0ZXMKPiB0byB0aGUgb2xkIGlvbXV4IHJlZ2lz
-dGVycyBhcmUgc2lsZW50bHkgaWdub3JlZC4gV2hhdGV2ZXIgdGhlIGV4YWN0Cj4gbWVjaGFuaXNt
-LCBvbiBSSzMzMDhCIGJvYXJkcyAoZS5nLiBjdXJyZW50IFJhZHhhIFJPQ0sgUGkgUyByZXZpc2lv
-bnMpCj4gU1BJMSwgSTJDMyBhbmQgb3RoZXIgcGVyaXBoZXJhbHMgb24gdGhlIGFmZmVjdGVkIHBp
-bnMgYXJlCj4gbm9uLWZ1bmN0aW9uYWwgd2l0aG91dCB0aGlzIHNlcmllcy4KPgo+IFRoaXMgaXMg
-YSBjb250aW51YXRpb24gb2YgRG1pdHJ5IFlhc2hpbidzIHNlcmllcyBmcm9tIDIwMjQgWzFdLCB3
-aGljaAo+IHdhcyBuZXZlciByZXN1Ym1pdHRlZCBhZnRlciByZXZpZXcgYW5kIGdvdCBkcm9wcGVk
-LiBGb2xsb3dpbmcgdGhlCgpObyByZWFjdGlvbnMgZm9yIGEgd2VlayBzbyBwYXRjaGVzIGFwcGxp
-ZWQuCgpBbnkgcmVtYWluaW5nIHNuYWdzIGNhbiBsaWtlbHkgYmUgZml4ZWQgd2l0aCBmb2xsb3ct
-dXAgcGF0Y2hlcy4KCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
+---
+dt-bindings: phy: document the serdes PHY on sa8255p
+
+This patch adds a YAML binding describing the SGMII/SerDes PHY present on
+Qualcomm sa8255p platforms, where the same hardware as on sa8775p rev3 is
+managed by firmware over SCMI.
+
+> diff --git a/Documentation/devicetree/bindings/phy/qcom,sa8255p-dwmac-sgmii-phy.yaml b/Documentation/devicetree/bindings/phy/qcom,sa8255p-dwmac-sgmii-phy.yaml
+> new file mode 100644
+> index 000000000000..9e846e381555
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/qcom,sa8255p-dwmac-sgmii-phy.yaml
+> @@ -0,0 +1,50 @@
+
+[ ... ]
+
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  power-domain-names:
+> +    maxItems: 1
+
+[Low]
+This isn't a bug, but would it be worth tightening the power-domain-names
+schema to constrain the actual string value, along the lines of:
+
+  power-domain-names:
+    items:
+      - const: serdes
+
+As written, only the number of entries is constrained and any arbitrary
+string would pass validation, whereas the example uses "serdes":
+
+    power-domains = <&scmi7_dvfs 0>;
+    power-domain-names = "serdes";
+
+Would matching the example with a const also help keep naming consistent
+across DTs using this binding?
+
+[ ... ]
+-- 
+pw-bot: cr
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
