@@ -4,89 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEBFFC53219
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 18:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96C7CC531F9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 22:14:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xXWSylxO+Xb1LKDZXBRelwRDQ3QGUEcSBfhtToQ/qiU=; b=EUR12c2x0duxzC
-	Rq4ekoP/LkkFpyBFjP0wgqLyJrJdzBp09Jj77peyna5CD3Y4WeojR87XES8ZdYemFa+KaoLZOoshE
-	cRjObR+nn03prGshyi+PwUnl7+1aXdW363M03ij3ISaxvMEqJgbb/KkIbibdWnqJzFYOK9dXymjNA
-	dCBJii+JSBeULQhPL1yptPjpS+txw2qbpUS3BDuMYq4qAGI+YGQWKvOODmDqfnOVc0VYQ6/s1Ovqa
-	IHxRu8nkIuMJl/qy8DYO/qk2ra511aYH6dkXmUyJaCT0GOQnYb5xCZ2Dkm8jpLisY2gQMQdtmBKYS
-	eBVzGOQZ/ZabgSAFQukA==;
+	List-Owner; bh=mg59ylCWybaVWccxuMzCaoVVlIi4GShWyvjWYFtit/A=; b=fXG70cuklCLqz/
+	27i1gj+NsPd/R8Ma5FnH2ml2Iy0Wp0qxOGN1aLyHqc6o5eeIeZuK6tjnLQ8tWSm19vZ7o4uYcQCrR
+	Cn+w5x0GStkLyBJQ7WWJTkv9UelrP0NEw64lIzU+ifEFbiXHJrGOzCP57fTCD2ffTHWibndFrQQ6Q
+	nx3sFJ1ebhlLJIKSG8z7PbAujhqzXARHbeNo0emqoa8zVnVo7KvysmEDoX/p4EEdlvWqerCcQWCCq
+	ED6gTbMG6sQV+3kgr3RGFmCxxyXPWV1Bzh4i/K2JmojtlhJUrdC9n6osFekS5AbgAOg+V7R1Vokry
+	fjhkz4CHH0dxWDjJ1PpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnKFj-0000000H0vF-3ALM;
-	Fri, 24 Jul 2026 18:04:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wnO9S-0000000HIG8-2KlE;
+	Fri, 24 Jul 2026 22:13:54 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnKFI-0000000H0HO-12fO;
-	Fri, 24 Jul 2026 18:03:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784916210;
-	bh=5CzJeiuI6wo/L5OxHOxynGVIdB4Nvan/pG5/QCPCpeY=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=kzc6rivKRcJOre09ylKjq2AIGCnjGXpRBHi4LF1oWk+6Xku/5qh0lX3Pbf7N4W2cP
-	 3AOMnyJk2dq2QLcqqZsdPCKZN3TxXt+Pa3Uxcq06yFb4D+8kFnDVWN3zHr6XU87SWD
-	 exsnBkoVHLbzobdA3go97j/eTIZbuREz4r4JF+Z8r8aXj+IFzsyzRjQPl5pZiv7Fyn
-	 JUyfkuxl7ohpx5szlpFOfcMJXNaV6NdEbXt+Gg8thHj5hkLENITleUt9MQh/JWA2v1
-	 jFMyZMURt4neosUwfuw/qm7zWDpUd1DD2UAkRcGMv8eEjnx/CbudchvZwTeBQ7MNwJ
-	 oG8szxnHBBMvQ==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D376F17E037A;
-	Fri, 24 Jul 2026 20:03:29 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id F3C02480061; Fri, 24 Jul 2026 20:03:28 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 24 Jul 2026 20:03:38 +0200
-Subject: [PATCH v6 16/16] drm/bridge: synopsys: dw-dp: Add audio support
+	id 1wnO9R-0000000HIFg-16tO
+	for linux-rockchip@lists.infradead.org;
+	Fri, 24 Jul 2026 22:13:53 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 925E74370B
+	for <linux-rockchip@lists.infradead.org>; Fri, 24 Jul 2026 22:13:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 772A01F00A3E
+	for <linux-rockchip@lists.infradead.org>; Fri, 24 Jul 2026 22:13:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784931232;
+	bh=aGH1/2toPHVIOQa+jK5UNhDmHBD0aRC5mQRDqAj3tYU=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=FXgNPEcmyUE0kVHZ6djQa3bjOde7CyAnqB+vHKouxeko1ahVwngW3hfMx0OV/00uO
+	 HTYf+nqinj93C3ZO4JmCihblplGsmzaB+1X09ObmzLe/jQAnsj5fmB7N2CXsQ4IDIp
+	 oVBdD67TFc1L+Kzvxy80Kzz06UpCRGGeo55FJfDOPxX/fT91s1ciW6DdBjhpWxwtWB
+	 4QYkwupmYgdeA3zTakFLJIqWH5qK/LX4dd2FDrFNMQ7hiM5YoSPTuIDU2C2IGTnu08
+	 7rBLejOy04THX/qe59JSaPVVOIHTCzOsocUcOnIAUp3vOPi+f1p12IOeI9TOE9vcKh
+	 E7SDad10HXS3A==
+Received: by mail-lf1-f42.google.com with SMTP id 2adb3069b0e04-5aec201b582so930749e87.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 24 Jul 2026 15:13:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RpylEMagAN8oTs6dC2LWHEdzPvqUoiVMPW5CXyPpUus6NiNLIdCj4GVlAMolvYTL19ke5F6pLZ52v9LdiolxQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzLbNwD4ZDJMkgayKI1Ho0BLQtYng35s3Z4k3xaequyD8bz3uak
+	ozUFpTtNVbewHKIhs9Xo/ZSjTtcJAAGM2ruqBZphD73ekW8+di2cXy3v2aJs/OPvLn4eoS4lNvQ
+	pCj2OfrvnSF2H1ns4AklOjY1JLrghJvI=
+X-Received: by 2002:a05:6512:6699:10b0:5ae:bbd3:27e3 with SMTP id
+ 2adb3069b0e04-5b2b2e52e52mr1247043e87.5.1784931231294; Fri, 24 Jul 2026
+ 15:13:51 -0700 (PDT)
 MIME-Version: 1.0
-Message-Id: <20260724-synopsys-dw-dp-improvements-v6-16-041d99a19c4e@collabora.com>
-References: <20260724-synopsys-dw-dp-improvements-v6-0-041d99a19c4e@collabora.com>
-In-Reply-To: <20260724-synopsys-dw-dp-improvements-v6-0-041d99a19c4e@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=10909;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=5CzJeiuI6wo/L5OxHOxynGVIdB4Nvan/pG5/QCPCpeY=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpjqPD5VanXxrsiDazqxguJKDUeTqF7mC4eC
- QShh4/HG0QdgYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqY6jwAAoJENju1/PI
- O/qafbQP/jVLXAMR0FA4ht6+qHo+V0SkQjW/RH6Bl9qKnnnadc9+ynT4bg1o1Ld1yiaFQd7bSwF
- HF2Rku7YKVEp5BDEDb4hUmtDGspmSDoyD3ew9B74oDFdM/2BpDwOsGVIC52vyFPvne7KtIPv3re
- BoZWiH17+yA98lbYrgXI2/PGGKhSV6w+jto9OveDi7bt4CLeSDnz5dE9htfXpmBFZv6+0u5ziwN
- UavdqmWvufb92iHUJqQl66iKTkTgWycq/9Et7A6NZ53YJZuo1F9EoT2SU7nmeLBTnOW31hLZxDW
- 0IIKvHpw96pgSbNmbFOAn0wErztYqldyldPVOaNU9tgHl1hmzLtWZugq42IxiPg/1pc6pTdS3cp
- xpyq4QkPK/UPDefiwVY0JLFP+qh65MP3GRDwlGam0Y1+VQvwOuZU0ohfwFgbiMpMoIi2UUFbug0
- yqmd9P9E46LXYK9MK9eHDISPZiKSFoE9k9B0l1RmU84U9MBgXuiO/2IP8bUTibOVd4xJEc9c0UT
- G0cnVH9IboUTijjCUwgJS12co51aWdkeAsFK+dbUTTU5uRwHNC0sLIrb3ChC2V8gLbpiCIFFr/x
- /+iuLeO0q86sel9bAfqUMqIAg18vG09l2QhJRJtBbJkyj8tI+OLi90tK6cwZzNiaBp8A2B3ITGo
- +I7I/H3rRZkvSEuEC9d8mwA==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_110340_685101_337E3E32 
-X-CRM114-Status: GOOD (  24.09  )
+References: <20260717075918.1869879-1-hugo@ahdrone.com>
+In-Reply-To: <20260717075918.1869879-1-hugo@ahdrone.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Sat, 25 Jul 2026 00:13:39 +0200
+X-Gmail-Original-Message-ID: <CAD++jL=ASH7jx8YOL2Z5i4K8w4RQd4eWKEGtY1KRBwM-JDaw-g@mail.gmail.com>
+X-Gm-Features: AUfX_mxV3lAJSNoJIi5Cr9GxwAU_Lyd6F8eQg8jRexuVpOK8BgTgzF15KgMIbjM
+Message-ID: <CAD++jL=ASH7jx8YOL2Z5i4K8w4RQd4eWKEGtY1KRBwM-JDaw-g@mail.gmail.com>
+Subject: Re: [PATCH 0/3] pinctrl: rockchip: add support for RK3308B SoC
+To: hugo@ahdrone.com
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Dmitry Yashin <dmt.yashin@gmail.com>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Jonas Karlman <jonas@kwiboo.se>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,370 +76,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Implement audio support for the Synopsys DesignWare DisplayPort
-controller.
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 263 +++++++++++++++++++++++++++++++-
- 1 file changed, 261 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 44a13b5d62d3..c7d6f63b5e9a 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -23,17 +23,21 @@
- #include <drm/drm_bridge.h>
- #include <drm/drm_bridge_connector.h>
- #include <drm/display/drm_dp_helper.h>
-+#include <drm/display/drm_hdmi_audio_helper.h>
- #include <drm/drm_edid.h>
- #include <drm/drm_of.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_simple_kms_helper.h>
- 
-+#include <sound/hdmi-codec.h>
-+
- #define DW_DP_VERSION_NUMBER			0x0000
- #define DW_DP_VERSION_TYPE			0x0004
- #define DW_DP_ID				0x0008
- 
- #define DW_DP_CONFIG_REG1			0x0100
-+#define AUDIO_SELECT				GENMASK(2, 1)
- #define DW_DP_CONFIG_REG2			0x0104
- #define DW_DP_CONFIG_REG3			0x0108
- 
-@@ -110,6 +114,10 @@
- #define HBR_MODE_ENABLE				BIT(10)
- #define AUDIO_DATA_WIDTH			GENMASK(9, 5)
- #define AUDIO_DATA_IN_EN			GENMASK(4, 1)
-+#define AUDIO_DATA_IN_EN_CHANNEL12		BIT(0)
-+#define AUDIO_DATA_IN_EN_CHANNEL34		BIT(1)
-+#define AUDIO_DATA_IN_EN_CHANNEL56		BIT(2)
-+#define AUDIO_DATA_IN_EN_CHANNEL78		BIT(3)
- #define AUDIO_INF_SELECT			BIT(0)
- 
- #define DW_DP_SDP_VERTICAL_CTRL			0x0500
-@@ -253,6 +261,8 @@
- 
- #define SDP_REG_BANK_SIZE			16
- 
-+#define DW_DP_SDP_VERSION			0x12
-+
- struct dw_dp_link_caps {
- 	bool enhanced_framing;
- 	bool tps3_supported;
-@@ -305,6 +315,19 @@ struct dw_dp_hotplug {
- 	bool long_hpd;
- };
- 
-+enum dw_dp_audio_interface_support {
-+	DW_DP_AUDIO_I2S_ONLY = 0,
-+	DW_DP_AUDIO_SPDIF_ONLY = 1,
-+	DW_DP_AUDIO_I2S_AND_SPDIF = 2,
-+	DW_DP_AUDIO_NONE = 3,
-+};
-+
-+enum dw_dp_audio_interface {
-+	DW_DP_AUDIO_I2S = 0,
-+	DW_DP_AUDIO_SPDIF = 1,
-+	DW_DP_AUDIO_UNUSED,
-+};
-+
- struct dw_dp {
- 	struct drm_bridge bridge;
- 	struct device *dev;
-@@ -320,6 +343,9 @@ struct dw_dp {
- 	int irq;
- 	struct work_struct hpd_work;
- 	struct dw_dp_hotplug hotplug;
-+	enum dw_dp_audio_interface audio_interface;
-+	int audio_channels;
-+	int audio_sdp_nr;
- 	/* Serialize hpd status access */
- 	struct mutex irq_lock;
- 	/* Serialize sdp_reg_bank access */
-@@ -1073,7 +1099,19 @@ static int dw_dp_send_sdp(struct dw_dp *dp, struct dw_dp_sdp *sdp)
- 		regmap_set_bits(dp->regmap, DW_DP_SDP_HORIZONTAL_CTRL,
- 				EN_HORIZONTAL_SDP << nr);
- 
--	return 0;
-+	return nr;
-+}
-+
-+static void dw_dp_clear_sdp(struct dw_dp *dp, int nr)
-+{
-+	regmap_clear_bits(dp->regmap, DW_DP_SDP_VERTICAL_CTRL,
-+			  EN_VERTICAL_SDP << nr);
-+
-+	regmap_clear_bits(dp->regmap, DW_DP_SDP_HORIZONTAL_CTRL,
-+			  EN_HORIZONTAL_SDP << nr);
-+
-+	scoped_guard(mutex, &dp->sdp_lock)
-+		clear_bit(nr, dp->sdp_reg_bank);
- }
- 
- static int dw_dp_send_vsc_sdp(struct dw_dp *dp)
-@@ -1886,6 +1924,212 @@ static void dw_dp_bridge_oob_notify(struct drm_bridge *bridge,
- 		dev_err_once(dp->dev, "Missing platform handler for OOB HPD handling\n");
- }
- 
-+static int dw_dp_audio_infoframe_send(struct dw_dp *dp)
-+{
-+	struct hdmi_audio_infoframe frame;
-+	struct dw_dp_sdp sdp;
-+	int ret;
-+
-+	ret = hdmi_audio_infoframe_init(&frame);
-+	if (ret < 0)
-+		return ret;
-+
-+	frame.coding_type = HDMI_AUDIO_CODING_TYPE_STREAM;
-+	frame.sample_frequency = HDMI_AUDIO_SAMPLE_FREQUENCY_STREAM;
-+	frame.sample_size = HDMI_AUDIO_SAMPLE_SIZE_STREAM;
-+	frame.channels = dp->audio_channels;
-+
-+	ret = hdmi_audio_infoframe_pack_for_dp(&frame, &sdp.base, DW_DP_SDP_VERSION);
-+	if (ret < 0)
-+		return ret;
-+
-+	sdp.flags = DW_DP_SDP_VERTICAL_INTERVAL;
-+
-+	return dw_dp_send_sdp(dp, &sdp);
-+}
-+
-+static int dw_dp_audio_startup(struct drm_bridge *bridge,
-+			       struct drm_connector *connector)
-+{
-+	struct dw_dp *dp = bridge_to_dp(bridge);
-+
-+	dev_dbg(dp->dev, "audio startup\n");
-+
-+	return pm_runtime_resume_and_get(dp->dev);
-+}
-+
-+static void dw_dp_audio_unprepare(struct drm_bridge *bridge,
-+				  struct drm_connector *connector)
-+{
-+	struct dw_dp *dp = bridge_to_dp(bridge);
-+
-+	if (dp->audio_sdp_nr >= 0) {
-+		dw_dp_clear_sdp(dp, dp->audio_sdp_nr);
-+		dp->audio_sdp_nr = -1;
-+	}
-+
-+	regmap_clear_bits(dp->regmap, DW_DP_SDP_VERTICAL_CTRL,
-+			  EN_AUDIO_STREAM_SDP | EN_AUDIO_TIMESTAMP_SDP);
-+	regmap_clear_bits(dp->regmap, DW_DP_SDP_HORIZONTAL_CTRL,
-+			  EN_AUDIO_STREAM_SDP);
-+
-+	regmap_clear_bits(dp->regmap, DW_DP_AUD_CONFIG1, AUDIO_DATA_IN_EN);
-+
-+	if (dp->audio_interface == DW_DP_AUDIO_SPDIF)
-+		clk_disable_unprepare(dp->spdif_clk);
-+	else if (dp->audio_interface == DW_DP_AUDIO_I2S)
-+		clk_disable_unprepare(dp->i2s_clk);
-+
-+	dp->audio_interface = DW_DP_AUDIO_UNUSED;
-+}
-+
-+static int dw_dp_audio_prepare(struct drm_bridge *bridge,
-+			       struct drm_connector *connector,
-+			       struct hdmi_codec_daifmt *daifmt,
-+			       struct hdmi_codec_params *params)
-+{
-+	struct dw_dp *dp = bridge_to_dp(bridge);
-+	u8 audio_data_in_en, supported_audio_interfaces;
-+	enum dw_dp_audio_interface audio_interface;
-+	u32 cfg1;
-+	int ret;
-+
-+	/*
-+	 * prepare might be called multiple times, so release the clocks
-+	 * from previous calls to keep the calls in balance.
-+	 */
-+	if (dp->audio_interface != DW_DP_AUDIO_UNUSED)
-+		dw_dp_audio_unprepare(bridge, connector);
-+
-+	/* The hardware is limited to 1,2 or 8 channels */
-+	dp->audio_channels = params->cea.channels;
-+	switch (params->cea.channels) {
-+	case 1:
-+	case 2:
-+		audio_data_in_en = AUDIO_DATA_IN_EN_CHANNEL12;
-+		break;
-+	case 8:
-+		audio_data_in_en = AUDIO_DATA_IN_EN_CHANNEL12 |
-+				   AUDIO_DATA_IN_EN_CHANNEL34 |
-+				   AUDIO_DATA_IN_EN_CHANNEL56 |
-+				   AUDIO_DATA_IN_EN_CHANNEL78;
-+		break;
-+	default:
-+		dev_err(dp->dev, "invalid audio channels %d\n", dp->audio_channels);
-+		return -EINVAL;
-+	}
-+
-+	if (params->sample_width < 16 || params->sample_width > 24) {
-+		dev_err(dp->dev, "invalid data sample width %d\n", params->sample_width);
-+		return -EINVAL;
-+	}
-+
-+	switch (daifmt->fmt) {
-+	case HDMI_SPDIF:
-+		audio_interface = DW_DP_AUDIO_SPDIF;
-+		break;
-+	case HDMI_I2S:
-+		/*
-+		 * It is recommended to use SPDIF instead of I2S, since I2S mode requires
-+		 * manually inserting PCUV control bits from userspace and this is done
-+		 * automatically in hardware for SPDIF mode.
-+		 */
-+		audio_interface = DW_DP_AUDIO_I2S;
-+		break;
-+	default:
-+		dev_err(dp->dev, "invalid DAI format %d\n", daifmt->fmt);
-+		return -EINVAL;
-+	}
-+
-+	regmap_read(dp->regmap, DW_DP_CONFIG_REG1, &cfg1);
-+	supported_audio_interfaces = FIELD_GET(AUDIO_SELECT, cfg1);
-+
-+	if (supported_audio_interfaces != DW_DP_AUDIO_I2S_AND_SPDIF &&
-+	    supported_audio_interfaces != audio_interface) {
-+		dev_err(dp->dev, "unsupported DAI %d\n", daifmt->fmt);
-+		return -EINVAL;
-+	}
-+
-+	ret = clk_prepare_enable(dp->spdif_clk);
-+	if (ret)
-+		return ret;
-+
-+	ret = clk_prepare_enable(dp->i2s_clk);
-+	if (ret) {
-+		clk_disable_unprepare(dp->spdif_clk);
-+		return ret;
-+	}
-+
-+	regmap_update_bits(dp->regmap, DW_DP_AUD_CONFIG1,
-+			   AUDIO_DATA_IN_EN | NUM_CHANNELS | AUDIO_DATA_WIDTH |
-+			   AUDIO_INF_SELECT | HBR_MODE_ENABLE,
-+			   FIELD_PREP(AUDIO_DATA_IN_EN, audio_data_in_en) |
-+			   FIELD_PREP(NUM_CHANNELS, dp->audio_channels - 1) |
-+			   FIELD_PREP(AUDIO_DATA_WIDTH, params->sample_width) |
-+			   FIELD_PREP(AUDIO_INF_SELECT, audio_interface) |
-+			   FIELD_PREP(HBR_MODE_ENABLE, 0));
-+
-+	/* Wait for inf switch */
-+	usleep_range(20, 40);
-+
-+	if (audio_interface == DW_DP_AUDIO_I2S)
-+		clk_disable_unprepare(dp->spdif_clk);
-+	else if (audio_interface == DW_DP_AUDIO_SPDIF)
-+		clk_disable_unprepare(dp->i2s_clk);
-+
-+	dp->audio_interface = audio_interface;
-+
-+	/*
-+	 * Send audio stream during vertical and horizontal blanking periods.
-+	 * Send out audio timestamp SDP once per video frame during the vertical
-+	 * blanking period
-+	 */
-+	regmap_update_bits(dp->regmap, DW_DP_SDP_VERTICAL_CTRL,
-+			   EN_AUDIO_STREAM_SDP | EN_AUDIO_TIMESTAMP_SDP,
-+			   FIELD_PREP(EN_AUDIO_STREAM_SDP, 1) |
-+			   FIELD_PREP(EN_AUDIO_TIMESTAMP_SDP, 1));
-+	regmap_update_bits(dp->regmap, DW_DP_SDP_HORIZONTAL_CTRL,
-+			   EN_AUDIO_STREAM_SDP,
-+			   FIELD_PREP(EN_AUDIO_STREAM_SDP, 1));
-+
-+	dp->audio_sdp_nr = dw_dp_audio_infoframe_send(dp);
-+	if (dp->audio_sdp_nr < 0) {
-+		dev_err(dp->dev, "failed to send audio infoframe\n");
-+		dw_dp_audio_unprepare(bridge, connector);
-+		return dp->audio_sdp_nr;
-+	}
-+
-+	dev_dbg(dp->dev, "audio prepare with %d channels using DAI=%d\n",
-+		dp->audio_channels, dp->audio_interface);
-+
-+	return 0;
-+}
-+
-+static void dw_dp_audio_shutdown(struct drm_bridge *bridge,
-+				 struct drm_connector *connector)
-+{
-+	struct dw_dp *dp = bridge_to_dp(bridge);
-+
-+	dev_dbg(dp->dev, "audio shutdown\n");
-+
-+	dw_dp_audio_unprepare(bridge, connector);
-+	pm_runtime_put_autosuspend(dp->dev);
-+}
-+
-+static int dw_dp_audio_mute_stream(struct drm_bridge *bridge,
-+				   struct drm_connector *connector,
-+				   bool enable, int direction)
-+{
-+	struct dw_dp *dp = bridge_to_dp(bridge);
-+
-+	dev_dbg(dp->dev, "audio %smute\n", enable ? "" : "un");
-+
-+	regmap_update_bits(dp->regmap, DW_DP_AUD_CONFIG1, AUDIO_MUTE,
-+			   FIELD_PREP(AUDIO_MUTE, enable));
-+
-+	return 0;
-+}
-+
- static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
- 	.atomic_duplicate_state = dw_dp_bridge_atomic_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-@@ -1899,6 +2143,11 @@ static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
- 	.detect = dw_dp_bridge_detect,
- 	.edid_read = dw_dp_bridge_edid_read,
- 	.oob_notify = dw_dp_bridge_oob_notify,
-+
-+	.dp_audio_startup = dw_dp_audio_startup,
-+	.dp_audio_prepare = dw_dp_audio_prepare,
-+	.dp_audio_shutdown = dw_dp_audio_shutdown,
-+	.dp_audio_mute_stream = dw_dp_audio_mute_stream,
- };
- 
- static int dw_dp_link_retrain(struct dw_dp *dp)
-@@ -2057,10 +2306,20 @@ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
- 
- 	bridge = &dp->bridge;
- 	bridge->of_node = dev->of_node;
--	bridge->ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
-+	bridge->ops = DRM_BRIDGE_OP_DP_AUDIO |
-+		      DRM_BRIDGE_OP_DETECT |
-+		      DRM_BRIDGE_OP_EDID |
-+		      DRM_BRIDGE_OP_HPD;
- 	bridge->type = DRM_MODE_CONNECTOR_DisplayPort;
- 	bridge->ycbcr_420_allowed = true;
- 
-+	dp->audio_interface = DW_DP_AUDIO_UNUSED;
-+	dp->audio_sdp_nr = -1;
-+	bridge->hdmi_audio_dev = dev;
-+	bridge->hdmi_audio_max_i2s_playback_channels = 8;
-+	bridge->hdmi_audio_dai_port = 1;
-+	bridge->hdmi_audio_spdif_playback = true;
-+
- 	drm_bridge_add(bridge);
- 
- 	dp->aux.dev = dev;
-
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBKdWwgMTcsIDIwMjYgYXQgOTo1OeKAr0FNIEh1Z28gVkFMVElFUiA8aHVnb0BhaGRy
+b25lLmNvbT4gd3JvdGU6Cgo+IFRoZSBSSzMzMDhCIGlzIGEgc2lsaWNvbiByZXZpc2lvbiBvZiB0
+aGUgUkszMzA4IHdpdGggYSBkaWZmZXJlbnQgaW9tdXgKPiByZWdpc3RlciBsYXlvdXQ6IHNldmVy
+YWwgcGlucyAoR1BJTzJfQTIsIEdQSU8yX0EzLCBHUElPMl9DMCwgR1BJTzNfQjIsCj4gR1BJTzNf
+QjMpIGdhaW5lZCAzLWJpdCBtdXggZmllbGRzIGluIG5ldyBHUkYgcmVnaXN0ZXJzIHRoYXQgb3Zl
+cnJpZGUKPiB0aGUgb3JpZ2luYWwgMi1iaXQgZmllbGRzLiBJIGJlbGlldmUgdGhlIGJvb3Rsb2Fk
+ZXIgZW5hYmxlcyB0aGUgbmV3Cj4gcmVnaXN0ZXJzIHZpYSB0aGUgc2VsX3NyY19jdHJsIGJpdHMs
+IGFmdGVyIHdoaWNoIHRoZSBrZXJuZWwncyB3cml0ZXMKPiB0byB0aGUgb2xkIGlvbXV4IHJlZ2lz
+dGVycyBhcmUgc2lsZW50bHkgaWdub3JlZC4gV2hhdGV2ZXIgdGhlIGV4YWN0Cj4gbWVjaGFuaXNt
+LCBvbiBSSzMzMDhCIGJvYXJkcyAoZS5nLiBjdXJyZW50IFJhZHhhIFJPQ0sgUGkgUyByZXZpc2lv
+bnMpCj4gU1BJMSwgSTJDMyBhbmQgb3RoZXIgcGVyaXBoZXJhbHMgb24gdGhlIGFmZmVjdGVkIHBp
+bnMgYXJlCj4gbm9uLWZ1bmN0aW9uYWwgd2l0aG91dCB0aGlzIHNlcmllcy4KPgo+IFRoaXMgaXMg
+YSBjb250aW51YXRpb24gb2YgRG1pdHJ5IFlhc2hpbidzIHNlcmllcyBmcm9tIDIwMjQgWzFdLCB3
+aGljaAo+IHdhcyBuZXZlciByZXN1Ym1pdHRlZCBhZnRlciByZXZpZXcgYW5kIGdvdCBkcm9wcGVk
+LiBGb2xsb3dpbmcgdGhlCgpObyByZWFjdGlvbnMgZm9yIGEgd2VlayBzbyBwYXRjaGVzIGFwcGxp
+ZWQuCgpBbnkgcmVtYWluaW5nIHNuYWdzIGNhbiBsaWtlbHkgYmUgZml4ZWQgd2l0aCBmb2xsb3ct
+dXAgcGF0Y2hlcy4KCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
