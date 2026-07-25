@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07277C531D0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jul 2026 12:02:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9450C531D0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jul 2026 12:04:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eLteYN0tMEajivsUWVyW7zAV5CPtNp+PzBnZFdn9QN4=; b=KGtkEGflb7Gh3x
-	nQnQ8p+vWoKPKZnbWGsVXdTn1qActoC7/NEF/7LniPCGUUtUeDfiAetIPtgFtfgkacbMrrsmXKay0
-	TdS7xHtbfn8TvIlOdp8S9GSc0pPaHHASAjYRy2VlM1L7AySdMRFjcbc7+V6l+q2tz9ZiKaA4CRPs+
-	4BVsO0U0iJRaIiRPZL6rK/mhzqHMLYDcYosNKfTKxfO4Gqieh7rlOCv943+/yS9mGF4izY8YLAz/2
-	pV1NzInQYz/4bzKQ69/HYIdzyQqlfcIq6spkh9bKmJw8fMoROs3l9dJ97mpwmN2lqOCYW1IDgaqxI
-	Z2gL59/guZ/6cKHNHNgw==;
+	List-Owner; bh=xnaCiytIKn1Iw0tWraUZ/ueEtHML4zpepIu8vAJjgW4=; b=NhE5ZaB0wBSXSw
+	n5Fp1w/hr2w6/R34mhHzfKjDgHxIzjg3emx0ZlcfcBpW1xvpVBeWkOpYFj1i8ypBzekkXXvALmzRi
+	qu+dsHHO5rmByoYFyQlAqgx56qzl6wN3ZNwnlshLVHd8ijDCAfZliffLZnkSAYgONK9pYsy3qrYih
+	Oo1Kp1ecLbmdBH/sIA5U0vB26lIHBFvWE7tTe+4cjskggD+GrJPr3AooCx2cZrayQAATztBUGeg8C
+	RLJQK+M8KylVZBIg1AkZQKEOLDL9MdtjlotDv79+GFXWLICplBpCoSRylrfkDm1nT7F3AxTJTZzEg
+	/VhTQVfrDIWtbS0KGX9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnb4z-00000000JnM-2Dib;
-	Sat, 25 Jul 2026 12:02:09 +0000
+	id 1wnb6v-00000000Jwl-3h25;
+	Sat, 25 Jul 2026 12:04:09 +0000
 Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnb4w-00000000Jmv-1u2w;
-	Sat, 25 Jul 2026 12:02:07 +0000
+	id 1wnb6u-00000000JwJ-0J3b;
+	Sat, 25 Jul 2026 12:04:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1784980923; bh=mC5Gbuu/d1cJUlqqjL5J8aXmwyGbebaXGr9ziWy7HGE=;
+	t=1784981045; bh=RuYx6NjvEw/XsepDvA6VtGRNm2EpiQIrvv2o76b+0y8=;
 	h=From:To:Cc:Subject:Date:From;
-	b=ylf0hQW9y26NvyAWZDQVOuOEwKAAHUwYFHS46KgwNaUmCsgacvjzw/BSyfxYrW/Qb
-	 XIpEUcJJnn8Oo9TPHE3e1KxF20ALjgMNyIBKKZFTuNoY/WzkuqgVnAk2QF8uPHm2yV
-	 XJ+v5aGGMY5FBEQSP+hKSH13dhlYtHGWamm1+KZE=
+	b=XP8HrP8zo6UYPtvWCDzf0lk+M5ODcJdqFJp0GMWj/MHc++9ayqJbGanqMS8+Q4gTZ
+	 1q+qOe1Or5NdHnbKpTKa0fk3JnoL/16Sy6dHRHZFst/P10WWQJMcWbAcF1YZn/RLXn
+	 uagk1E9Q2HAD1N/688PoCWavUa19pDIQ7bFt2c4Q=
 From: =?UTF-8?q?Ond=C5=99ej=20Jirman?= <megi@xff.cz>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org,
@@ -46,13 +46,13 @@ Cc: linux-kernel@vger.kernel.org,
 	Simona Vetter <simona@ffwll.ch>,
 	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS FOR ROCKCHIP),
 	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support)
-Subject: [PATCH] drm/rockchip: dw-mipi-dsi-rockchip: Fix ISP1 PHY initialization
-Date: Sat, 25 Jul 2026 14:00:23 +0200
-Message-ID: <20260725120200.2260152-1-megi@xff.cz>
+Subject: [PATCH] drm/rockchip: Fix panic on reboot when DRM device fails to bind
+Date: Sat, 25 Jul 2026 14:04:01 +0200
+Message-ID: <20260725120403.2261569-1-megi@xff.cz>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260725_050206_795736_B0FFF6FD 
-X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-CacheID: sfid-20260725_050408_263221_CA240599 
+X-CRM114-Status: UNSURE (   8.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,33 +72,34 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Ondrej Jirman <megi@xff.cz>
 
-After suspend/resume cycle, ISP1 would stop receiving data.
-Re-initializing DPHY during PHY power on fixes the issue.
+When DRM device is freed, we need to clear the drvdata pointer, because
+it now points to invalid memory.
 
 Signed-off-by: Ondrej Jirman <megi@xff.cz>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 3547d91b25d3..10d84bdda8cd 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -1255,6 +1255,14 @@ static int dw_mipi_dsi_dphy_power_on(struct phy *phy)
- 		goto err_phy_cfg_clk;
- 	}
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 3099408e9d05..8b9992843162 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -210,6 +210,7 @@ static int rockchip_drm_bind(struct device *dev)
+ 	component_unbind_all(dev, drm_dev);
+ err_free:
+ 	drm_dev_put(drm_dev);
++	dev_set_drvdata(dev, NULL);
+ 	return ret;
+ }
  
-+	if (dsi->cdata->dphy_rx_init) {
-+		ret = dsi->cdata->dphy_rx_init(phy);
-+		if (ret < 0) {
-+			DRM_DEV_ERROR(dsi->dev, "hardware-specific phy init failed: %d\n", ret);
-+			goto err_pwr_on;
-+		}
-+	}
-+
- 	/* do soc-variant specific init */
- 	if (dsi->cdata->dphy_rx_power_on) {
- 		ret = dsi->cdata->dphy_rx_power_on(phy);
+@@ -226,6 +227,7 @@ static void rockchip_drm_unbind(struct device *dev)
+ 	rockchip_iommu_cleanup(drm_dev);
+ 
+ 	drm_dev_put(drm_dev);
++	dev_set_drvdata(dev, NULL);
+ }
+ 
+ DEFINE_DRM_GEM_FOPS(rockchip_drm_driver_fops);
 -- 
 2.54.0
 
