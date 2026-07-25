@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A3F6C531FA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F889C531F9
 	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jul 2026 07:06:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -13,55 +13,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=JR0hFFqE7niYi1681ZPsfWRJNz0IP9d+dg5Sx9E3hNc=; b=TNumsE2L+uSY9qhNh4qu3t8e/N
-	ePE4HjitRJ5FddkWty48sUeROOb32EhYqBRW4pRzc6+A9H0x0ZE5XqpTI8HjR5m2NjnLsbSZ83UCd
-	GZd3dz369rBAkmfBDM6V4zDxjJPcv4ts2l6OvYubMiIEjg67IrBAbVtamRDXi5mGNUQssruMwkKv9
-	n7ROa7jxH5TXfj5qjqKy2kGJG9Mq3wC3j+ibNZS0ubEKVa+5W2L0OWb1fR9+ALkFRk3G5r0XfW4Gg
-	OlpDAkanHn6Z0BJfnig8Zdgv+cKXliXRMXimbSvfj6ivi3w9zSqkKNNAzj0KfvfaIDYoEk0By9aj8
-	eyx1qE0A==;
+	bh=F2QQaCO/XeTaEwVnjkKg7PQzLOkuSjDXM/RK11BX1iI=; b=O6tQjUI+qzLEcFXEbciAnKliyi
+	JNgomBAEIKcr8GiDLr2/mFpOYa8GyVe/unl/iOkWtJ/ZL0lF+R1P+ptTuyo1rfp6LHj7C/87hH9/3
+	vGr86i2R28n3jtaXrs4fp5jjtL9foQGM4azLutETt/sEUgZecu1ocpc1prTAOK5aMgmgSjHXuwHV6
+	Lf3DJfyMjkte7wf2SQ3HhLdbgkvJRkYaU/Ol2xvlqOShahqTtQKRhRf2WoYw72NEKTuLuAbTEQYhe
+	38AOX+vVkUBOg2Lm+cs1NNYYp9av9BYz6BFnEa/IDMASwW0h0n90numrC78PIjSwH7Y9wNIHiJwTr
+	J0RhzExg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnWTF-0000000089m-36o9;
+	id 1wnWTF-0000000088q-1hse;
 	Sat, 25 Jul 2026 07:06:53 +0000
-Received: from out162-62-57-87.mail.qq.com ([162.62.57.87])
+Received: from out203-205-221-149.mail.qq.com ([203.205.221.149])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnWT4-0000000083L-2JMa;
+	id 1wnWT2-0000000082s-2cPk;
 	Sat, 25 Jul 2026 07:06:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1784963197; bh=L3LDk1ob8lSeDF4p3l0ihZVgutygUEgJnbVoCOXhudc=;
+	t=1784963191; bh=Vz7yzuowqwsGsfyfQvMihkNn4ZFIprdXXMLcR6PYob8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=XWf8dGWaqENWJRpUNGuwCb21rKHWpa/CJRRpSK+m7Rfq4ZdUNAoFFCSNyD9ZbGAj3
-	 QrG1PxwZekOUlBe3z2IYs795Kcr6qUCWTw1tng7coAXX1CwkBq3mXzSak6NKI7PGb+
-	 Uo+rWo+bRlW4EqwGF5T6sRnaafpFBSdkTD4RYc7c=
+	b=nBM5G76EomdYu6Mtfaa1Bg+4j5FbbUhAGzMY2LgEjJMQuyE56jgLq2W0NAzLzwVZg
+	 SgDU5Xa4nx/w2SqTVaAtI/COZvcDu6LseDm8FflNXcOSeo11mZIYv26kK3nhyicsNq
+	 KacebA7SMSx1ovVYa6l68WPemxyArme74VfRgiZM=
 Received: from ubuntu2204.localdomain ([2409:8d20:22b:54c:9e54:40ff:fe02:3f0f])
 	by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
 	id 19989659; Sat, 25 Jul 2026 15:06:25 +0800
-X-QQ-mid: xmsmtpt1784963194t29xv9a84
-Message-ID: <tencent_8E35228F9F4F133FCDBCCC4902F6887D0006@qq.com>
-X-QQ-XMAILINFO: N2ZoPGp9lKFW6O+7p5ZF8g+DCHmxkQcPFO9v1rbFeYY0V7uOwLUPdFrXOHVysY
-	 piP0nwKdWprL4pEiZgFSN9bI0pG9g1C1nkheUdlHLBxmvve8zKbtzGCuvvopyXnQP+6soTSEhh6D
-	 Kk9OLi1vKr0lK+OjJ6PU66i55uSLgIXsLZsA9GueukkLYEdM5MkFjR7RJv551QUWoi1ZqkvcWJU4
-	 t/TTw9riTDgt2E8QFLIxQOiTQZ2OoEUIUW7hvk8fBOBErUUZNLM+eZoEbJdb2O7o/UsAv+XOdc4b
-	 9QOfCKE36W5ub9smZwb2VUGld4c8NchI5JqEwYkpwlYkGux7XASFxGoH1Y54drfstuWxj3JKNSst
-	 XgIIf7CKk14Pui6+dearVzb+77RazXLx+uf/KEvOL8lBkp0CfCooXjk3wLEFyQwmM8vHhXRuv+O5
-	 oCzOuOpWZ4cMlocWw4mg5aIt2sZxjMIglU6HSmqBU62PoSuNt1TBXjGGW2RRsxXwRxwHn+IEBV4H
-	 ewOIMb4epPaRDxD9c8Ye0506mKxlBRRjKojQ/EJTpJPUtGzDmEy5T2xRfDuYLwRjpQPhygOxrJ6G
-	 f/QDXRPc1YBHYUhD8Xf8UKxCVhCBOpM69wr2wnAhuYnUIPhMz+EnZCwyWYVUN72iaR5Ebqo8dyJK
-	 5QA/p4aES+TgJyTSUbDEKrtwU11zE4FBRoKK+7ORqjpD6Z294xCmusITWozh78s2GLQVAwa0ifFZ
-	 2rVYD8Bnuw/31XoQ7pssED7UxKBw4OPhTkhMC43Q075u1SDlAWu/vqhqJggrfzUDEU9H6QLvkN6k
-	 KW7btVpLcJ4DmAmhete/Tyg0AagMqf+ydoSdLU2O6EJLJ8JXkfkMWFYuBVisbxD9ppW247IVdVMC
-	 lAiJ1eUQqbF7GzFz86UGy4195Y6d9f7zDP+6UetApcYOlv78jabYoLcREt20buAYXa8J8Ydx7txV
-	 2bd3XgxnL2eIHtrZBvCUTFchUMt1TSEIc7Y2SOMLcyCsnz4pLXa0EVma8HXpZEi1z48TDJF87N0d
-	 nONVjvlY+F+H43JoXG2wnBH8UxNPo4x31GVUikMVMAr+oNdbZaC/HxXVQBmdGaVUu2EaVoHxGFYO
-	 atnmVshJZUg+YTvNoAY2hecZaLhCfCsb79UdnnBOdrCBN3l9O6zUQmnuApXlNgYh9hai3u+f4umT
-	 tr/i0m8HcaT+9Um0L6rsD+YOlgUtkTcXn50tA=
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
+X-QQ-mid: xmsmtpt1784963188t0x0rjvih
+Message-ID: <tencent_76C8BC251C8C3C068C23BAF859351DD3300A@qq.com>
+X-QQ-XMAILINFO: NbgegmlEc3Jue+F2vLrGacXGOKYvYWpO/RUL+wYGsTf9uoi7RscE/8TTfquBm2
+	 vySwgYzgaR2oSCHZ6b2EkQdw1AsaUJv7hwj/PVw25xNkQ42W/C90hKpHj0eW5QmmO3fFTiWu/Ddz
+	 xAJaukWp5J4UtF7go9HnWgi2oFwpOZE0wAihCXYdPc3dHRitJQGIaJ1MRWnKUQpKnZp1+IvFGaZ6
+	 VHQpIeaBODL5FO/MDOf7S4A8avPl04TrJXhGgkVKiG5zoOo3wb6oHk9JDSc9/ZFb+RwQqEcVq1n3
+	 eQW9iq50zlUUSdqfbf69GOeAeHnV7r7MahllGHb5+tQ58Gasr5Kfz1J1M7JmmwqvZwTxH/ESFHTj
+	 /SPF9zm0HHXd+h/hHoWw5oDQ8x9Ha0jVwWMcJCH2QcdcWkZHjmgAqjXTzFzYPRRQKCrGy26MJUj9
+	 gfmtmquyIg+P/sRuf1iIDtIGV34fcCvlL7kjxaqkHWq17V3mm3lcE52gh86UzuXvtyrR5tqC0vlb
+	 pe52R5KGhgz3IZMoNeICC7zihGldGARJNmUtVCMvfEHwUPAJViGKgebb7y8tCB/tZf4P7tlE4W6o
+	 SlO69PBFux5sqCZutf8J5jHgqC9VaovsBJ2q2KoCPs18eAP2NvQuBD/STEhzqL8/ITLJygM/KC9F
+	 OtdXhGFU0y6UFH5Vm3dC+TyP5q1E3waIGhlvESHrVPz9Snw8yplCtG7M13XaLv+YGRpSMF5qSXy4
+	 MlPYV144tZcQfp92GRhue/dSlLRlTKKXeymBp1Jgb8g5wj/21F8dttx8xLRqHKPmOd8lIfDxVZE+
+	 XsDu2DgluVZnfdU1lyWBmDdV5K6zMVk3E9zV0X7qG1XzifWnJhH/TzchcG5iF5T0J+ktVW/J1rzq
+	 qiRyBxLYQeejM703DPFtvaGwoSy26DVLFy1toxVr9OvjBA7F2aTJQ6tu+MsrOZzYO2HU6K/H08Fr
+	 jM4QrFv+ShjN1d4YRSPAA0B2iepLkYe9l/JRgYKsZLBZJs3TGryqR9UQqeyy4kU5gIRSpwp4BF2D
+	 0ZscVtRhj80OXAA4FnFklKXtlzzWNn3EWfvAea+ZmRoAj2MLF2KsvDOH4UFhMqCZhfTeGSrrKTay
+	 cgdVFlv9Tetdc5knVzH0wu/1sTibZDpdUSktgvmbAQl4t0c2psis+fXRu5yaa9IBYT28qyR07jAq
+	 t25sBvS/8b8bs6fg==
+X-QQ-XMRINFO: NI4Ajvh11aEjEMj13RCX7UuhPEoou2bs1g==
 From: Cunhao Lu <1579567540@qq.com>
-Date: Sat, 25 Jul 2026 15:03:34 +0800
-Subject: [PATCH v5 4/4] arm64: dts: rockchip: Enable CAN controller on
- RK3588-Tiger-Haikou
+Date: Sat, 25 Jul 2026 15:03:31 +0800
+Subject: [PATCH v5 1/4] dt-bindings: can: rockchip: add rk3588 CAN-FD
+ compatible
 MIME-Version: 1.0
-X-OQ-MSGID: <20260725-master-v5-4-75da459d2b93@qq.com>
+X-OQ-MSGID: <20260725-master-v5-1-75da459d2b93@qq.com>
 References: <20260725-master-v5-0-75da459d2b93@qq.com>
 In-Reply-To: <20260725-master-v5-0-75da459d2b93@qq.com>
 To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
@@ -71,12 +71,11 @@ To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de,
 Cc: linux-can@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Cunhao Lu <1579567540@qq.com>, 
- Heiko Stuebner <heiko.stuebner@cherry.de>
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260725_000643_155019_3C85D7F2 
-X-CRM114-Status: UNSURE (   9.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260725_000641_017823_E4DF6999 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,39 +92,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+RK3588 integrates a Rockchip CAN-FD controller variant that is not
+fully compatible with RK3568v2. The RX FIFO count register field is
+encoded in bits 7:5 on RK3588, while RK3568v2 uses bits 6:4.
 
-CAN0 is piped through the Q7-connector to the CAN-Header on the Haikou
-base-board, so enable support for it there.
+Add a dedicated rockchip,rk3588-canfd compatible to describe this
+variant. Do not use rockchip,rk3568v2-canfd as a fallback, because that
+would describe a register layout that does not match the hardware.
 
-At least on RK3588-Tiger, the CAN clocks default to 99MHz, limiting
-usable CAN bitrates without skew. Errata documentation mentions
-300MHz as the default frequency on RK3568, so replicate this here
-to allow more bitrates.
-
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 Signed-off-by: Cunhao Lu <1579567540@qq.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts | 6 ++++++
- 1 file changed, 6 insertions(+)
+v3 -> v4:
+- Collect Krzysztof's Acked-by tag.
+v2 -> v3:
+- Move the Changelog below ---
+- Collect Heiko's Reviewed-by tag
+v1 -> v2:
+- Use enum for the single-compatible entries, as suggested by Krzysztof.
+- Reword the commit message to explain the hardware difference instead
+  of referring to Linux driver match data.
+---
+ .../devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml          | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-index 873fbeb8daa1..6273e695b039 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-@@ -155,6 +155,12 @@ vddd_audio_1v6: regulator-vddd-audio-1v6 {
- 	};
- };
- 
-+&can0 {
-+	assigned-clocks = <&cru CLK_CAN0>;
-+	assigned-clock-rates = <300000000>;
-+	status = "okay";
-+};
-+
- &combphy2_psu {
- 	status = "okay";
- };
+diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+index a077c0330013..81e2b6dfeb02 100644
+--- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
++++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
+@@ -16,7 +16,9 @@ allOf:
+ properties:
+   compatible:
+     oneOf:
+-      - const: rockchip,rk3568v2-canfd
++      - enum:
++          - rockchip,rk3568v2-canfd
++          - rockchip,rk3588-canfd
+       - items:
+           - const: rockchip,rk3568v3-canfd
+           - const: rockchip,rk3568v2-canfd
 
 -- 
 2.34.1
