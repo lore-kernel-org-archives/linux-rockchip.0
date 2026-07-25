@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD00EC531F9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jul 2026 23:50:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE9D3C531C9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jul 2026 00:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4YsVagV7aamZQgvEeSuzgAuZGlAiy4aroSV9Z1Dsd3w=; b=qZRxYVxjzjbv3jL4QdAZmlo3h9
-	pBm5fZAk8FMZPVhtcvxmBrFckchmNO0ebg7ZcpbzCFz03BwpsA0kP+eoJWC9Bn0MKHZIyVGMN2Ggi
-	ueLxsLLScJANEQvL2gPr/0kQKkcw0jKYAT6XZ5m5sAALMN7Ddp19fCcOT8byVRxI0gbFhFNuYphFF
-	BSpOiawrSFCMp+BPT7oiDb/67O2q99KlRuuEzJUKM9fq2s6gxNPQjQuLapa+iDtYwk3ydGGpaE32I
-	weitsPIlFjK+D71b/p+dL4PFzChgPMM7qsPQFxkonbS/fPCHywf5vrDmGi0jw1TEXKPO/KH1oscPQ
-	2iTpuyaA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QKkGDvMwlhY4gUTnF4kR8pN2o3zpkZc19p+oupOFsVM=; b=ABNpWZzWaBMQGe
+	XLEl24F5HfrhSxYtI1DXmk1yt88EUxjDLmhNOk1rlRxadgf0sNZBzKjW1XL+wTKad0t215zStug1q
+	2ezBH0Opt5xQd8rBSyh0XHQOGl6LLfn/C+kSFTnHyNLNUmiqcoRJd5GeibO3AwwFc9ESb0gPR7wgh
+	+Bh6O2gaq7zTRa0SIxoDUiWYycXIhDFqtTNA82u4JLU8LPxGJnNLbY3aTLKdOFTj9/xqSGlf6CGbk
+	DJKJqDOVlLX829B7BfCgoFcGk2KEKSIVVYF8wVx+dVJXcNR3UVlhZPufbWMbM8SlpxC2erh2yOF+d
+	WiXruBFutnGvY7rdJFug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnPfE-0000000HNTS-0xBD;
-	Fri, 24 Jul 2026 23:50:48 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wnQ3h-0000000HOA8-0Ck2;
+	Sat, 25 Jul 2026 00:16:05 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnPfC-0000000HNSv-1Jv9
+	id 1wnQ3g-0000000HOA2-0OQX
 	for linux-rockchip@lists.infradead.org;
-	Fri, 24 Jul 2026 23:50:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1784937034; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=VULkOJigyteQLneQWwoudSLWqNQxvc42XI6rY4RN7QGqU519LVBA4Uw7Ks3avVw5CNeDNLXE5UvDymGboihvzl4OByi/14SUUrhdX1oHtX0R0T+6zOy8kX2tJAwgx9oKnmYzxmndEBxQVLo17GKhZChhb15orrrZzF+S/SNQyPc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1784937034; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=z2QRsqk7daq3MztyIpPJjGa56JAZ8ivnXP3yG2EVpb0=; 
-	b=QBEcf9IoFaYgMWeBVaI8whSbF/6CRmKn/XVeqGuV8oOTr1aKK86bW6/MQtkjK95tm7MxPKDnHxBKBYzmAgANRaRvqwskuCwAfALE6hSA/rSOJOaWecH/QkN2vCO4bl1qYS038JXIcuhZ028H2u/XOJ1L3APDTXEbO+U2Zt9fdGo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784937034;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=z2QRsqk7daq3MztyIpPJjGa56JAZ8ivnXP3yG2EVpb0=;
-	b=EIRak2y0y+kYlUBbA+U/kkTGIE1HQRliglda0Ufu85x6P2yge8yk5T1vhxLcz74H
-	RKCUV37fvapTHRIX1Sraa6uIo0t7gOHewTNMuaZ+dwFQrJ7dCya7tg18NrrUR+yvzwt
-	cPCqJ0L1lz10e5/2sBrdRC3ljOaBMTS5WSqj6K3k=
-Received: by mx.zohomail.com with SMTPS id 1784937031509923.2465304793352;
-	Fri, 24 Jul 2026 16:50:31 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 2BE0B181F16; Sat, 25 Jul 2026 01:50:28 +0200 (CEST)
-Date: Sat, 25 Jul 2026 01:50:27 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
+	Sat, 25 Jul 2026 00:16:04 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id CFB3A600AD;
+	Sat, 25 Jul 2026 00:16:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 215DA1F000E9;
+	Sat, 25 Jul 2026 00:16:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784938562;
+	bh=IsJR6O4cuUuSOESjrdR4auMydcz5x6NXnnJ1/M2/xJA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=cuea54eOm7lnglQkdpRO21NteRgYUfWpV/D3jxu65QN4+PRV9usGaMC1kF1poAun1
+	 1jJ9sPI1RcypBFh4jkVcFl99jvA9GqM9UiLOgyLkhWLFHfdR2W8HOM/N+zLxPSib+c
+	 8aJj2moBh0nneD/Xn6kBRLR8WKedGWUqUT3vb1FLIGPZVW+xSfTrHrVheOD/1nEOmc
+	 ocx0ZDWkq/BYmz3LfiDpMaPOI0uOWPUeh3yGx/ofxa5Kh4wwU7xpsnaNhZd5HUcabh
+	 7mUolWVJPS5xBovyC71JsAvuI0FfKDrLiBxC4Oo9uFXju3uNAJfNUo/yDdWXk8vcfK
+	 /0m0PLhqPuHwA==
+Date: Sat, 25 Jul 2026 01:15:57 +0100
+From: Jonathan Cameron <jic23@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	xsf@rock-chips.com, heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, 
-	robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V9 0/4] Add Anbernic RG Vita-Pro
-Message-ID: <amP3nfQCPfmbN8WR@venus>
-References: <20260722165806.161020-1-macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+ dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V19 5/9] iio: imu: inv_icm42607: Add PM support for
+ icm42607
+Message-ID: <20260725011557.2336b2cd@jic23-huawei>
+In-Reply-To: <20260722153942.144387-6-macroalpha82@gmail.com>
+References: <20260722153942.144387-1-macroalpha82@gmail.com>
+	<20260722153942.144387-6-macroalpha82@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20260722165806.161020-1-macroalpha82@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/284.919.37
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_165046_402245_6E68E817 
-X-CRM114-Status: GOOD (  30.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,137 +69,217 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6200313753876468300=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, 22 Jul 2026 10:39:36 -0500
+Chris Morgan <macroalpha82@gmail.com> wrote:
 
---===============6200313753876468300==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="e36kryrmn767kiiq"
-Content-Disposition: inline
-
-
---e36kryrmn767kiiq
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH V9 0/4] Add Anbernic RG Vita-Pro
-MIME-Version: 1.0
-
-Hello Chris,
-
-On Wed, Jul 22, 2026 at 11:58:02AM -0500, Chris Morgan wrote:
 > From: Chris Morgan <macromorgan@hotmail.com>
->=20
-> Add support for the Anbernic RG Vita-Pro, based on the Rockchip RK3576 So=
-C.
->=20
-> Changes Since V1:
->  - Updated documentation filename to matche compatible string.
->  - Corrected order of allocating IRQ in charger driver and switched
->    to using devm managed function to allocate work queue.
-> Changes Since V2:
->  - Corrected issue with naming of panel binding document and added
->    fallback compatible string.
->  - Switched to devm helpers in panel driver. Note that
->    devm_drm_panel_add() is currently only in the drm-next branch.
->  - Optimized setting GPIOs for panel driver.
-> Changes Since V3:
->  - Fixed numerous issues identifed by Sashiko bot, mainly relating
->    to unclamped or improperly clamped values from within the
->    charger driver.
->  - Corrected hard-coded values in the panel driver unprepare routine
->    as well as correcting an improperly checked return condition.
-> Changes Since V4:
->  - Fixed errors identified by Sashiko bot on charger driver that could
->    result in an improper value being written to the registers.
->  - Corrected some error handling in the panel driver.
-> Changes Since V5:
->  - Corrected minor errors in documentation and added default values.
->  - Further corrected clamping behavior in charger driver.
-> Changes Since V6:
->  - Additional corrections as suggested by Sashiko bot to fix potential
->    edge cases during probe for sgm41542.
->  - Corrected an improperly shifted value being written to register for
->    sgm41542.
->  - Changed a MV value to UV in sgm41542 driver to simplify function.
-> Changes Since V7:
->  - Added PM functions to sgm41542 driver per request from Sashiko,
->    which stops the hardware watchdog during suspend.
->  - Switched from device_init_wakeup() to devm_device_init_wakeup().
->  - Confirmed a state change in IRQ handler for sgm41542 to ensure we
->    don't update input current limit except when the vbus goes from
->    not okay to okay.
->  - Removed panel patches, which have already been accepted upstream.
->    Please note that this *may* cause an error about missing bindings.
->    See commit 0fd6ead8270270d859a28d0196a4b47e7d6845b8 in linux-next.
-> Changes Since V8:
->  - Added linux/bitfield.h header to prevent compile errors on certain
->    platforms.
->  - Added regulator to Kconfig as a dependency.
->  - Added mutex to IRQ handling function.
->  - Added update to watchdog enable field in suspend routine to ensure
->    watchdog status "goes back to the way it was" after resume.
->  - Sashiko complains of an issue if userspace updates values after
->    devm_power_supply_register() is called but before the hardware
->    limits are set from the device tree. While this is possible the
->    threat of a problem should be very low given that the hardware
->    limits are set immediately afterward and would overwrite any
->    wrong values from userspace (should happen within a few
->    milliseconds). Unfortunately, given that the function to get these
->    limits requires the power supply be registered in order to read
->    the battery node, it's not something that can be easily fixed at
->    this time. Since it's an *extremely* unlikely edge case, I think
->    that's acceptable.
+> 
+> Add power management support for the ICM42607 device driver.
 
-Looks like there is more sensible Sashiko feedback. Regarding this
-one you can use this new functionality:
+Not quite as you've probably noticed from sashiko commenting
+again on the cleanup :(
 
-https://lore.kernel.org/linux-pm/20260721185904.40756-2-vincent.cloutier@ic=
-loud.com/
+Power management sequences are annoyingly fiddly to get right.
+I keep meaning to find some time to bother explore all the common
+scenarios and write up patterns that are appropriate for each one.
+Never get the time unfortunately.
 
-It's not yet merged, because it needs a user and I had some feedback
-on the follow-up max17042_battery patch using it. But I can take it
-together with the first user, so it's not a blocker.
-
-Greetings,
-
--- Sebastian
-
---e36kryrmn767kiiq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpj+j8ACgkQ2O7X88g7
-+pqplw/9GzDVjxDOFKYHWGpcjeavUnnv0Rf8DfITaRBPfPeuKlA7lHnLsUxByCL2
-Kq7MrW2GzGVTTOnH0QFo7tKjhHkochlbshsRoYRwILjKslWMoYtaGwmV/Ldu2S/3
-ObGTj9vPBTTBXs1gKuHDrhmRE2sCIXMhgmuuvCwCiXnaGrEnX2K4exe9iCwPmG1P
-4luRYsljjrS34FCcyGcgRYwIwXx7P49a1ZrTISORs5Q5reBXK4JsS+OAEH6DPwXQ
-A+OqaSW1yXMh6l6dqZeZ2/L9MpnXCFFBeaKRi/ySq7pmkAWRiEvooLkbDY6r1yJD
-3vFa7Z9AI1axbT1PBq1xXy6qSkKydntcuAVzEkpXwEpHyYvF6Fje1pYA9IrR7doP
-medaXyPyYxB0jKFi/fGMHcMjUNSGj96LCFDKBLPQDI7iKrZ1+kZyvV2UtJADo6lT
-2+rO+Xg3SyEJFaLDyr+qGb2SApCLsorSjEcMzOgc4OT6zNHFNQOBl2bmoeskf24v
-KxDOnfhr+pSCSNxOZBy8xnKQiz4L2B4rmoTRGoS9G9tXkOFzyZEDWfWlCDBxTp5u
-a6XsTgzz946RjJwOtkQYw2vPyeJr5FoXYceiw0N7wxgVaFeHR1HWY+QztAPbLgoa
-y18cklEp5A3C3TeMEeloHD4JC28rq4y1WABdLkQuj8F9cY9OQRs=
-=Eoet
------END PGP SIGNATURE-----
-
---e36kryrmn767kiiq--
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  16 ++
+>  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 173 ++++++++++++++++++
+>  .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |  10 +
+>  .../iio/imu/inv_icm42607/inv_icm42607_spi.c   |  10 +
+>  4 files changed, 209 insertions(+)
 
 
---===============6200313753876468300==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> index 6ec1d730017e..d85eaedef070 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+...
+> +
+> +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
+> +				      enum inv_icm42607_sensor_mode gyro,
+> +				      enum inv_icm42607_sensor_mode accel)
+> +{
+> +	enum inv_icm42607_sensor_mode oldaccel, oldgyro;
+> +	unsigned int sleepval_us;
+> +	unsigned int val;
+> +	s64 disable_wait;
+> +	int ret;
+> +
+> +	ret = inv_icm42607_get_pwr_mgmt0(st, &oldgyro, &oldaccel);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (gyro == oldgyro && accel == oldaccel)
+> +		return 0;
+> +
+> +	/*
+> +	 * Datasheet on page 14.26 says we need to ensure the gyro sensor is on
+> +	 * for a minimum of 45ms. So if we transition from an on state to an
+> +	 * off state make sure at least 45ms have passed before power off and
+> +	 * wait if it hasn't. In case some platforms don't respond well to a
+> +	 * sleep of 0, make sure the fsleep duration is > 0.
+> +	 */
+> +	if (!gyro && oldgyro) {
+> +		disable_wait = clamp(ktime_us_delta(st->conf.gyro_stop, ktime_get()),
+> +				     0, INV_ICM42607_GYRO_STOP_TIME_US);
+> +
+> +		if (disable_wait > 0)
+> +			fsleep(disable_wait);
+> +	}
+> +
+> +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro) |
+> +	      FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/*
+> +	 * If a state change occurs from off to on, sleep for the startup
+> +	 * time of the sensor, unless a sleep_ms is specified. Since more
+> +	 * than one sensor can be transitioned from off to on, select the
+> +	 * maximum time from each of the sensors changing from off to on.
+> +	 * The startup time for the temp sensor is considerably smaller
+> +	 * than the startup time for the other sensors and one or more are
+> +	 * required to be on for the temp sensor to function, so any start
+> +	 * delay should be enough.
+> +	 */
+> +	sleepval_us = 0;
+> +	if (accel && !oldaccel)
+> +		sleepval_us = max(sleepval_us, INV_ICM42607_ACCEL_STARTUP_TIME_US);
+> +
+> +	if (gyro && !oldgyro) {
+> +		sleepval_us = max(sleepval_us, INV_ICM42607_GYRO_STARTUP_TIME_US);
+> +		/* Track the earliest we can turn off the gyroscope. */
+> +		st->conf.gyro_stop = ktime_add_us(ktime_get(),
+> +						  INV_ICM42607_GYRO_STOP_TIME_US);
+> +	}
+> +
+> +	/*
+> +	 * Only sleep if sleepval_us is greater than 0 in case some
+> +	 * platforms have issues with a 0 delay. The 0 delay can happen
+
+Trivial but wrap comments to 80 chars unless there is some other reason.
+
+> +	 * if one or both sensors is shut down.
+> +	 */
+> +	if (sleepval_us > 0)
+> +		fsleep(sleepval_us);
+> +
+> +	return 0;
+> +}
+
+>  int inv_icm42607_core_probe(struct regmap *regmap,
+> @@ -240,6 +352,8 @@ int inv_icm42607_core_probe(struct regmap *regmap,
+>  	if (!st)
+>  		return -ENOMEM;
+>  
+> +	dev_set_drvdata(dev, st);
+> +
+>  	ret = devm_mutex_init(dev, &st->lock);
+>  	if (ret)
+>  		return ret;
+> @@ -275,10 +389,69 @@ int inv_icm42607_core_probe(struct regmap *regmap,
+>  	if (ret)
+>  		return ret;
+>  
+
+So for the devm_add_action_or_reset() it probably wants to be somewhere near
+here as I'd assume the power down effectively undoes something that starts
+from setup?  If it is coupled to nothing at all (can happen if power up
+only occurs later due to userspace input) then put it at the end of probe
+with a comment saying why it is there.
+
+
+> +	ret = devm_pm_runtime_set_active_enabled(dev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	pm_runtime_set_autosuspend_delay(dev, INV_ICM42607_SUSPEND_DELAY_MS);
+> +	pm_runtime_use_autosuspend(dev);
+> +
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
+
+
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> index f2b9067815b0..4a8e4f716803 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> @@ -8,6 +8,7 @@
+>  #include <linux/err.h>
+>  #include <linux/i2c.h>
+>  #include <linux/module.h>
+> +#include <linux/pm_runtime.h>
+>  #include <linux/regmap.h>
+>  
+>  #include "inv_icm42607.h"
+> @@ -56,6 +57,13 @@ static int inv_icm42607_probe(struct i2c_client *client)
+>  	return inv_icm42607_core_probe(regmap, hw, inv_icm42607_i2c_bus_setup);
+>  }
+>  
+> +static void inv_icm42607_i2c_remove(struct i2c_client *client)
+
+Sorry but no this is not the way to solve the pm dance.
+As Sashiko points out mixing devm and not like this is a path to pain.
+
+The usual solution to this is to use a devm_add_action_or_reset()
+at appropriate place in probe.  When runtime pm is involved it can
+get complex.  There are various options, but often the easiest is
+to add a driver flag that says if the device is powered off and
+just check it before powering down.
+
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(&client->dev);
+> +
+> +	inv_icm42607_sensors_off(st);
+> +}
+
+...
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+> index eb04036a6712..99e112c958a0 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+> @@ -7,6 +7,7 @@
+>  #include <linux/dev_printk.h>
+>  #include <linux/err.h>
+>  #include <linux/module.h>
+> +#include <linux/pm_runtime.h>
+>  #include <linux/regmap.h>
+>  #include <linux/spi/spi.h>
+>  
+> @@ -65,6 +66,13 @@ static int inv_icm42607_probe(struct spi_device *spi)
+>  	return inv_icm42607_core_probe(regmap, hw, inv_icm42607_spi_bus_setup);
+>  }
+>  
+> +static void inv_icm42607_spi_remove(struct spi_device *spi)
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(&spi->dev);
+> +
+> +	inv_icm42607_sensors_off(st);
+> +}
+
+Same issue - Remove here ends up out of sequence with the runtime pm disable
+handled by devm cleanup. It needs to be a custom devm callback so it
+can be done in right order using that infrastructure.
+
+Thanks,
+
+Jonathan
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6200313753876468300==--
-
