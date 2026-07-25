@@ -4,78 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F889C531F9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jul 2026 07:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A25ABC531C9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jul 2026 08:00:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=F2QQaCO/XeTaEwVnjkKg7PQzLOkuSjDXM/RK11BX1iI=; b=O6tQjUI+qzLEcFXEbciAnKliyi
-	JNgomBAEIKcr8GiDLr2/mFpOYa8GyVe/unl/iOkWtJ/ZL0lF+R1P+ptTuyo1rfp6LHj7C/87hH9/3
-	vGr86i2R28n3jtaXrs4fp5jjtL9foQGM4azLutETt/sEUgZecu1ocpc1prTAOK5aMgmgSjHXuwHV6
-	Lf3DJfyMjkte7wf2SQ3HhLdbgkvJRkYaU/Ol2xvlqOShahqTtQKRhRf2WoYw72NEKTuLuAbTEQYhe
-	38AOX+vVkUBOg2Lm+cs1NNYYp9av9BYz6BFnEa/IDMASwW0h0n90numrC78PIjSwH7Y9wNIHiJwTr
-	J0RhzExg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Qy8QjTHaZZh2fciXY9mR6FXeKiUkxeru2PRIJ+exWqo=; b=zeB7iSRlWt3GVG
+	t3x4EI1A8/OI5ssUYy5P+EZr1zUfrkBQV93cn89I08C7e6ZNeL7IQqzob4lA1vB/XXHoWDAOV8W3R
+	zvlLKH9tACr6m1N+quscrfzT1CbWUTt9qsZXm01jEGuDzxZ2Lfizbr+A5DVHPqOvv8CLru/6yL/vy
+	dMgOyl2+Qi6Il9uqIg5mfPJ1STbp29mxxomtD0ndxijyKWIbKNeoQ2hyvlKE0vnL/SUXSjo55FLDX
+	vaJv1Mfr1+8kvUz3fff+Wxn9Si5wQSyaHAu4c4HHYbbJeMxLP5FsOgl0eue0AjUttEtxm/vumsxeq
+	Jn51AP+siwVBLiywvGbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnWTF-0000000088q-1hse;
-	Sat, 25 Jul 2026 07:06:53 +0000
-Received: from out203-205-221-149.mail.qq.com ([203.205.221.149])
+	id 1wnXJX-00000000AHo-0lda;
+	Sat, 25 Jul 2026 08:00:55 +0000
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnWT2-0000000082s-2cPk;
-	Sat, 25 Jul 2026 07:06:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1784963191; bh=Vz7yzuowqwsGsfyfQvMihkNn4ZFIprdXXMLcR6PYob8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=nBM5G76EomdYu6Mtfaa1Bg+4j5FbbUhAGzMY2LgEjJMQuyE56jgLq2W0NAzLzwVZg
-	 SgDU5Xa4nx/w2SqTVaAtI/COZvcDu6LseDm8FflNXcOSeo11mZIYv26kK3nhyicsNq
-	 KacebA7SMSx1ovVYa6l68WPemxyArme74VfRgiZM=
-Received: from ubuntu2204.localdomain ([2409:8d20:22b:54c:9e54:40ff:fe02:3f0f])
-	by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
-	id 19989659; Sat, 25 Jul 2026 15:06:25 +0800
-X-QQ-mid: xmsmtpt1784963188t0x0rjvih
-Message-ID: <tencent_76C8BC251C8C3C068C23BAF859351DD3300A@qq.com>
-X-QQ-XMAILINFO: NbgegmlEc3Jue+F2vLrGacXGOKYvYWpO/RUL+wYGsTf9uoi7RscE/8TTfquBm2
-	 vySwgYzgaR2oSCHZ6b2EkQdw1AsaUJv7hwj/PVw25xNkQ42W/C90hKpHj0eW5QmmO3fFTiWu/Ddz
-	 xAJaukWp5J4UtF7go9HnWgi2oFwpOZE0wAihCXYdPc3dHRitJQGIaJ1MRWnKUQpKnZp1+IvFGaZ6
-	 VHQpIeaBODL5FO/MDOf7S4A8avPl04TrJXhGgkVKiG5zoOo3wb6oHk9JDSc9/ZFb+RwQqEcVq1n3
-	 eQW9iq50zlUUSdqfbf69GOeAeHnV7r7MahllGHb5+tQ58Gasr5Kfz1J1M7JmmwqvZwTxH/ESFHTj
-	 /SPF9zm0HHXd+h/hHoWw5oDQ8x9Ha0jVwWMcJCH2QcdcWkZHjmgAqjXTzFzYPRRQKCrGy26MJUj9
-	 gfmtmquyIg+P/sRuf1iIDtIGV34fcCvlL7kjxaqkHWq17V3mm3lcE52gh86UzuXvtyrR5tqC0vlb
-	 pe52R5KGhgz3IZMoNeICC7zihGldGARJNmUtVCMvfEHwUPAJViGKgebb7y8tCB/tZf4P7tlE4W6o
-	 SlO69PBFux5sqCZutf8J5jHgqC9VaovsBJ2q2KoCPs18eAP2NvQuBD/STEhzqL8/ITLJygM/KC9F
-	 OtdXhGFU0y6UFH5Vm3dC+TyP5q1E3waIGhlvESHrVPz9Snw8yplCtG7M13XaLv+YGRpSMF5qSXy4
-	 MlPYV144tZcQfp92GRhue/dSlLRlTKKXeymBp1Jgb8g5wj/21F8dttx8xLRqHKPmOd8lIfDxVZE+
-	 XsDu2DgluVZnfdU1lyWBmDdV5K6zMVk3E9zV0X7qG1XzifWnJhH/TzchcG5iF5T0J+ktVW/J1rzq
-	 qiRyBxLYQeejM703DPFtvaGwoSy26DVLFy1toxVr9OvjBA7F2aTJQ6tu+MsrOZzYO2HU6K/H08Fr
-	 jM4QrFv+ShjN1d4YRSPAA0B2iepLkYe9l/JRgYKsZLBZJs3TGryqR9UQqeyy4kU5gIRSpwp4BF2D
-	 0ZscVtRhj80OXAA4FnFklKXtlzzWNn3EWfvAea+ZmRoAj2MLF2KsvDOH4UFhMqCZhfTeGSrrKTay
-	 cgdVFlv9Tetdc5knVzH0wu/1sTibZDpdUSktgvmbAQl4t0c2psis+fXRu5yaa9IBYT28qyR07jAq
-	 t25sBvS/8b8bs6fg==
-X-QQ-XMRINFO: NI4Ajvh11aEjEMj13RCX7UuhPEoou2bs1g==
-From: Cunhao Lu <1579567540@qq.com>
-Date: Sat, 25 Jul 2026 15:03:31 +0800
-Subject: [PATCH v5 1/4] dt-bindings: can: rockchip: add rk3588 CAN-FD
- compatible
+	id 1wnXJT-00000000AGp-2oCx
+	for linux-rockchip@lists.infradead.org;
+	Sat, 25 Jul 2026 08:00:53 +0000
+Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-92e57a753f9so109189285a.2
+        for <linux-rockchip@lists.infradead.org>; Sat, 25 Jul 2026 01:00:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784966449; cv=none;
+        d=google.com; s=arc-20260327;
+        b=G6XCTPCtDIZGDUc/i8sOGwHPzQ1wBVnHJNQxdQVYhMNAqIXq+FSQqNSKkuN7mvA6pZ
+         W7SeR5Sdm+jSpHPDBgaT4bQF6idyLkEReCaEUXzvYx8rZlFxnQECD5BKEOzhWcduYBlF
+         tS6PhzoUThqwAg6t23VWOjl0K7aifGbSVwptvsJ9SsD5gwle2sBAx0zOwrRi/vWXaEGf
+         Rw0FS2OT8E4Hbs+/tARqpMLTKrRaQxAZo3iYSlTFboHhbUugdOu3UJrKV8ID3K1BlRTG
+         Sjc9TGECGgNq8b7vlWINh33FkSvBNOqURJ6az/Jw5TeukIA49qedbMh9g8atOuTzor02
+         Yh8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=13z8xjIigSLm4fcji9bQpCPHK39sYQC+iiIlSwrcSfw=;
+        fh=Zjclp3Ehf5gzx7qjWxnpYUXUMT6g9MEztJNmi+Ho+6Y=;
+        b=cBUL6ba12r2jxoim0gdBv510BV0ES9rQOgVKYqBbIU+QMrigS1bH7e2N/YFL7XLBKw
+         ecxztNytCW3/0YPEb6KHZug3pRxK34KxAN2J65oZzBdiSYNdxKDsOVc6+oYgEzeeuF8a
+         ruQyen68V4yaIxFrtVW26VOpE7Uua5gMdpTe8F3LXtEOl1/67HrasadO+g4eKGJWxsvM
+         YIIm87pSFgEE6v1ORR9GgBI2xJGZqTMPo30/HrSXntihXKz3m+0rMTEq6s3OROUmt2Js
+         T7KZ/zl3P6MHM3cEYvVgrh9zUmjazJr+qjxEeynvnAP228NKzNlWn8y/HrBjKAUHJT0k
+         Vu1A==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1784966449; x=1785571249; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=13z8xjIigSLm4fcji9bQpCPHK39sYQC+iiIlSwrcSfw=;
+        b=X+7+yY+qxrClaKL2w3R7lmE9XGCpRfge4Ut/wDDgzZxuYcaZwQEd1iT83E4HxLetk0
+         FlvKGDPhxZWRmHSyr0t7LZgzQ+zh4sBrfo3CXiTg0oJoqgZJGe1LD/ZfOh2qAab7zft4
+         rY24PRQqSJpCEgnyKMgfWypQnUh0AhErGhF3eL+Cd5jWl8dfEwP6QdAkfAMjTsPVjm6U
+         sCRS5DxtaYVfdUxBm4tyaQ34FXVB34T1LFtSVld2moMlf9QCtFhSEyVyV9zxy6jjLPBI
+         g9w3AOppW+dG6Fmw0r81EII2bqOc9MwxoMUdtMSVDpcsrlGiBMvTxug8HmN1RhBnjR9l
+         ITYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784966449; x=1785571249;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=13z8xjIigSLm4fcji9bQpCPHK39sYQC+iiIlSwrcSfw=;
+        b=V/J90HjpcOW8Ip7ULXh2+i3+ahDxuMWrT8IdvZmvS2E8m8cnXy06VC/2sF+oh0Q/e9
+         UinRSI8CZ/GIQi3f8ZNCzMRLkWJUJHn6kNQo1Ul0nJCTOKS6dWS6f5s0gpwein0SEjfx
+         HCA5cnYLkqLvpwUNSwwPEh/CfimiIqYh97CrJwpYWGQRox3yzno8BegLGSek84lbGsqB
+         WKmKxIrkhup5e0bcDoNBHOXXD9s+g/0Xpl0ihyiDCFw0uvmNyrQv5jdBWyq8LNbaF0OB
+         DTbqeyIENAnWwiAZIrmeLhqcFrjE9I1hTuXArN3saxDUEwLwVBRuoRqE0ey4GSiRduSE
+         P7ng==
+X-Forwarded-Encrypted: i=1; AHgh+RpP2InaK6LNkjMMddr2LUwvPXOTshoyqGz2scFZhzIIxjB/Rw7J4UAlLoyK1mzOSNzSjLjffhFO3QZEO20yaQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxPpsqLR3qhuHVXSSm5/W7UxrLcw87xS3ZpsiUHvxm4fqI+avTp
+	H8jEyoZI1RL8VWSmna+uyTkkBFOxao9in2D1KZMdWjgBLuQOfN/H+1EnRrnHJ2t8BBFALnaFezr
+	lt3236WaDP3+VqtW5Nc+IQCQoQMU6K4U=
+X-Gm-Gg: AR+sD10pMZep30qJdy1RryjynA/afmew0K7d/BKwxDP1/L3b7fpQBaMMFsnge5hEGQb
+	vkLNzSxNNFrpDaoNdoj3r8JnfSqRG1PHZCEO4u5tw2L0IKVRFI+E6A09oCxiRFshCBdG/WBQvBr
+	WN+FUFETuYt/4ufxUjfJQHrDZSkR48dwiAuqkSd9uIWH8KFfk/buwW1Mrm1lCNpFtn7RyLd+NvL
+	R7H/ReWNUHBSaLfx7xNERFaB3GpwXWImqO1NCuIE2YHTYRtuWn0SOQZ4Ox/GmHZVpPyyf7mk4+S
+	bzg3O2MVtZqO4ulVi/TEw1u7WM6aCk7uMPrN0j0FVf11T+1UxvvO/ugo1bqKv38=
+X-Received: by 2002:a05:620a:2681:b0:930:dd19:11ba with SMTP id
+ af79cd13be357-932df6f0f30mr100360085a.92.1784966449572; Sat, 25 Jul 2026
+ 01:00:49 -0700 (PDT)
 MIME-Version: 1.0
-X-OQ-MSGID: <20260725-master-v5-1-75da459d2b93@qq.com>
-References: <20260725-master-v5-0-75da459d2b93@qq.com>
-In-Reply-To: <20260725-master-v5-0-75da459d2b93@qq.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
- Vincent Mailhol <mailhol@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-can@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Cunhao Lu <1579567540@qq.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: b4 0.15.2
+References: <20260724111548.2109-1-tharitt97@gmail.com> <amOO86K_3wuTd_92@lizhi-Precision-Tower-5810>
+In-Reply-To: <amOO86K_3wuTd_92@lizhi-Precision-Tower-5810>
+From: Tharit Tangkijwanichakul <tharitt97@gmail.com>
+Date: Sat, 25 Jul 2026 15:00:37 +0700
+X-Gm-Features: AUfX_mzCV0IN9fI_10kkKdi3HsilTau4VYjXeApWLMbv2AYQ88l9nYF0tHwG8Pk
+Message-ID: <CACak8wNJsmVKm3m+JwYPSxqfa26MVFRo3jE3YrppJPi5SBBAUg@mail.gmail.com>
+Subject: Re: [PATCH] media: hantro: release runtime resources when device_run fails
+To: Frank Li <Frank.li@oss.nxp.com>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Hans Verkuil <hverkuil@kernel.org>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel-mentees@lists.linux.dev, skhan@linuxfoundation.org, 
+	me@brighamcampbell.com, jkoolstra@xs4all.nl
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260725_000641_017823_E4DF6999 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20260725_010051_707636_5671B683 
+X-CRM114-Status: UNSURE (   6.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,50 +123,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3588 integrates a Rockchip CAN-FD controller variant that is not
-fully compatible with RK3568v2. The RX FIFO count register field is
-encoded in bits 7:5 on RK3588, while RK3568v2 uses bits 6:4.
+> Mix use runtime pm and clock is not good.
+>
+> You can put clk_bulk_enable() into runtime pm resume call back
+> and clk_bulk_disable() into runtime pm suspend call back.
+>
+> Frank
 
-Add a dedicated rockchip,rk3588-canfd compatible to describe this
-variant. Do not use rockchip,rk3568v2-canfd as a fallback, because that
-would describe a register layout that does not match the hardware.
+Hi Frank,
 
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
----
-v3 -> v4:
-- Collect Krzysztof's Acked-by tag.
-v2 -> v3:
-- Move the Changelog below ---
-- Collect Heiko's Reviewed-by tag
-v1 -> v2:
-- Use enum for the single-compatible entries, as suggested by Krzysztof.
-- Reword the commit message to explain the hardware difference instead
-  of referring to Linux driver match data.
----
- .../devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml          | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Thanks for the suggestion. I will inspect the hantro pm_runtime call
+sites and let me implement your suggestion into v3.
 
-diff --git a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-index a077c0330013..81e2b6dfeb02 100644
---- a/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-+++ b/Documentation/devicetree/bindings/net/can/rockchip,rk3568v2-canfd.yaml
-@@ -16,7 +16,9 @@ allOf:
- properties:
-   compatible:
-     oneOf:
--      - const: rockchip,rk3568v2-canfd
-+      - enum:
-+          - rockchip,rk3568v2-canfd
-+          - rockchip,rk3588-canfd
-       - items:
-           - const: rockchip,rk3568v3-canfd
-           - const: rockchip,rk3568v2-canfd
-
--- 
-2.34.1
-
+Best,
+Tharit
 
 _______________________________________________
 Linux-rockchip mailing list
