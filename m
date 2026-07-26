@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B6EC531FA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A481DC531C9
 	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Jul 2026 14:56:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HowQAN+ND6AJZfl7dxr44ngGwoJptAvK9PZwa4l075U=; b=hYg/GTM03O065S
-	wai/swKRfWPY6Tl/7/aSUmXTSBzZi1Obqp6dFk/YeYkgc+f0rh2P4QiROfaWdki0rzxuzpDOBAhrK
-	A5rTQHXVWvqWNlr1ufv8OIWxMddRcg0HWD0zZ71593ctSfpxUo672mRY4QzcC1/25LrqGf4YDc6rT
-	dhJ1eYgDuAr8CVLVhBu6+Kkpwjd20M7Bi9+YjhUxxTConygd7Jb55TIl6Y4v2yZph4aFV321drsW5
-	D1kn5bmlE4IDHVPOpLkqSukf0/FE8aoXuvOlEQ1wJ1gKexx3+BBH3N2YzHX78dQz3G6t/WCuvlucz
-	blPMrAmxcwV/0MGpk6rQ==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bp+LzdHV+Kn62oHuME09TjKO5XJyn0FewupbqmpPL68=; b=ySg6gm5IN9xFR/
+	NUWidRZiQBhWfYPzqFJva9HoD2shV1UG4KKPLvMg6zL7YG03DR5KZdOhfRGZyZ1SfXBzAJePZCJFF
+	VuojgMo5GK/CuK/Kiq2/+JmnsOIzg5zaAQDA3YtLFkJBbReUqrJlabiADdxmV0uBpDsVQOzDCYwX8
+	k4GAp6w6bYa7pu/VtvlzB5cF/G+be48dfaGQwM9VQGG+ozzt5nkJJpNmuqJ1+ftMeTWe7mKqAVuci
+	tKkE11WKxs89CZ2GpTHgaJ3b8lzN5PrvF2sB0G5FjRM/s8AExmrc8R8iEdrKFDtNQkRvHGJDmhASo
+	enlMVu0QwrTtWMyP9djw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo0Gl-00000001G1q-0Yai;
+	id 1wo0Gl-00000001G2p-2ATp;
 	Sun, 26 Jul 2026 14:55:59 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo0GZ-00000001FtW-0N2w;
+	id 1wo0GZ-00000001FtU-18mu;
 	Sun, 26 Jul 2026 14:55:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7A266443E1;
+	by tor.source.kernel.org (Postfix) with ESMTP id 6BE7860008;
 	Sun, 26 Jul 2026 14:55:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3B9C7C2BD00;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 114DDC2BCB3;
 	Sun, 26 Jul 2026 14:55:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1785077746;
-	bh=YHOvKiBFSDhFQ6J2iNluwDWe9h6pblPJ2R4Sxx+5oAc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=PclY6kJuCn9rv4eocnYwnx2iOiu86QPga4JkO2i71K9lXSUHahbpTgV09PQsTIPJa
-	 JNG9e7Rs3CIrNOKdaD9OWpn84o0OQLLpnUYGU2IvnemJJWfN+7OliL4Icdyj+hGStq
-	 H8DvTo8EzhJ8r0yGKgTopqMtYKJphkL7xMaksxKdOdaDDiG+rO2g87JkBM6dLtHjU1
-	 Qm7ppbd4uL5L4485NbG/jwCtHpqYmJOXFdVG+fgRtas2Y1Kbkwv8dPpStjVanqfvW3
-	 yxfpzeMg0P/qtDHM8UV/bhG26gk2via11sb3Cf2a6doJ6ZaTmHsQXPUcl5B7WehVGG
-	 JyVYIcrp0cYhA==
+	bh=Xk0Wg5LA2QTiKljwaqu5yGBrxyPyNVlXfI3hqcUzr3o=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=ixwUaKjIWtxv4sWPaHrQo8zWcaKAEp3EznRc0f/s7nHd2nx07O2ZmO/FvTbicTwrw
+	 QSkbqVrE9wnqYxmhKQHO0F54ipxV4T3q277VfSPr8+rUv0wXibEtmZI9UvY+pIuby3
+	 vg9Slnw4PkZHLQ//3UxiyLWM9Tch32ElbcASlq825lGxjNIbp0Kb4pygRC72F/rQwg
+	 hdDKI2mqOXCBa679dkIHVNgj6AhgrMhzmt8f/2Xxe3beFJ5ge/f75pJ9D1ONyTCshJ
+	 YSFJ0WyFCkftYwiTP55N2kwNu9nwsf8Ms/cZwfVvzWfmSVW2CpafrzwdOThB2rgKb3
+	 wjh5HCYwmqlgw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21906C5321C;
-	Sun, 26 Jul 2026 14:55:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E3D4AC531F9;
+	Sun, 26 Jul 2026 14:55:45 +0000 (UTC)
 From: Jason Yang via B4 Relay <devnull+jason98166.gmail.com@kernel.org>
-Date: Sun, 26 Jul 2026 22:55:46 +0800
-Subject: [PATCH v2 3/4] phy: rockchip-samsung-dcphy: model TX and RX as
- separate PHYs
+Subject: [PATCH v2 0/4] phy: rockchip-samsung-dcphy: support the D-PHY
+ receiver direction
+Date: Sun, 26 Jul 2026 22:55:43 +0800
+Message-Id: <20260726-dcphy-rx-v1-v2-0-cf9cc34a412a@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20260726-dcphy-rx-v1-v2-3-cf9cc34a412a@gmail.com>
-References: <20260726-dcphy-rx-v1-v2-0-cf9cc34a412a@gmail.com>
-In-Reply-To: <20260726-dcphy-rx-v1-v2-0-cf9cc34a412a@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAO8fZmoC/22MywrCMBBFf6XM2pEkVWtc+R/SRZgkzYB9kEhoK
+ fl3Y9fC3ZwL5+yQXGSX4NHsEF3mxPNUQZ0aoGCmwSHbyqCEuolOSbS0hA3jilmiNv7a+dZZbzV
+ UY4nO83rUXn3lwOkzx+2IZ/l7/3fqBF483VsSRIb0cxgNv880j9CXUr4G4YaepgAAAA==
 To: Vinod Koul <vkoul@kernel.org>, 
  Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -62,11 +63,11 @@ Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Jason Yang <jason98166@gmail.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785077744; l=10427;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785077744; l=4521;
  i=jason98166@gmail.com; s=20260721; h=from:subject:message-id;
- bh=enHd/hypPBz3ePteijtVibB3GtTKn9jBTPBLK9hsNYs=;
- b=+aFveRRf2z/bYaV6jwLPnb0SNRF0PUDEmuCKbFzcMsM9TSNgWoYJWbWMyqWXd390iFy/ACwrU
- ebOJyLTPS/cCyQ8dwVn4MKze3ArDP2UXThPKacXDHgoPrS6oFgOKaPl
+ bh=Xk0Wg5LA2QTiKljwaqu5yGBrxyPyNVlXfI3hqcUzr3o=;
+ b=hQamqfOn8VR7SpVEPxCVz9zy1LomDAsw66CcgqjgYUm1i3t0JjaE+Wz1qSEVYZjVSuEP0GAO8
+ 7NMXdF/bQ4YBInrXLvqVXdmJQYYv7u76VR0T2D855RZS+74yqMy/qvH
 X-Developer-Key: i=jason98166@gmail.com; a=ed25519;
  pk=xQmD001Q/ooHl39PxyQtusbUQmgbOsSfpFryRVWZ/k4=
 X-Endpoint-Received: by B4 Relay for jason98166@gmail.com/20260721 with
@@ -89,312 +90,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jason Yang <jason98166@gmail.com>
+The Samsung DC-PHY on RK3588 contains both a MIPI transmitter (DSI)
+and a MIPI receiver (CSI) with separate register banks and resets.
+Mainline currently models only the transmitter. This series adds the
+receiver so a CSI camera can use the PHY, including running both
+directions concurrently (a DSI panel and a CSI camera on the same PHY
+instance).
 
-The DC-PHY drives a MIPI DSI transmitter and a MIPI CSI receiver, and on
-RK3588 both can be wired to the same PHY as independent consumers. The
-PHY core reference-counts power_on() per struct phy, so a single struct
-phy cannot bring the two directions up independently.
+Design notes, to answer the obvious questions up front:
 
-Register one struct phy per direction and move the per-direction state
-(direction, PHY type, lane count and powered flag) into its own driver
-data. of_xlate() accepts the legacy single cell as the transmitter and
-an optional second cell that selects the direction, so existing
-single-cell DSI device trees keep resolving to the transmitter.
-configure() rejects the not yet supported receiver before touching any
-state, and each direction keeps its own lane count.
+- Direction as a phy-cell rather than a phy_set_mode() submode:
+  The PHY core reference-counts power_on() per struct phy. Bringing TX
+  and RX up and down independently requires one struct phy per
+  direction; a submode on a single phy cannot express two concurrent
+  owners. The extra cell selects which of the two phys a consumer
+  gets, following how phy-exynos-mipi-video exposes multiple phys
+  from one register block. The existing single-cell binding still
+  resolves to the transmitter, ensuring shipped device trees remain
+  unaffected.
 
-The PHY's common block contains a single BIAS block shared by both
-directions (RK3588 TRM section 22.2), so it must be programmed only
-once. Whichever direction powers on first enables it; each direction
-records its powered state under the per-provider mutex so that powering
-one direction on does not disturb an already running one. The APB reset
-is issued on the transmitter bring-up path.
-The receiver bring-up itself is added in a later change.
+- BIAS block coordination:
+  The BIAS block is part of the PHY's common block and exists once for
+  both directions (RK3588 TRM section 22.2), so it must be programmed
+  only once. Whichever direction powers on first enables it, and it
+  stays enabled until runtime PM suspends the PHY, matching the
+  existing transmitter-only driver.
 
-Signed-off-by: Jason Yang <jason98166@gmail.com>
-Assisted-by: Claude:claude-opus-4-8
+- RX tuning:
+  RX tuning uses fixed RK3588 defaults. Boards that need finer
+  receiver tuning should extend phy_configure_opts_mipi_dphy rather
+  than add private device-tree properties.
+
+Patch summary:
+  patch 1: dt-bindings: optional second #phy-cells cell for direction
+  patch 2: prep: symmetric TX power on/off helpers, no functional change
+  patch 3: register one struct phy per direction
+  patch 4: implement the receiver
+
+Testing:
+The series was tested on an IEI WAFER-RK3588 board across the following
+configurations:
+- Concurrent TX/RX: IMX219 CSI camera capture (RAW10, multiple
+  resolutions up to 3280x2464) and OV5640 capture (1920x1080) through
+  the DC-PHY RX, running concurrently with a MIPI DSI panel (ILI9881C,
+  720x1280) driven through the TX half of the same PHY instance.
+- DSI-only and CSI-only configurations, and a shipped single-cell DSI
+  device tree resolving unchanged to the transmitter.
+- The board wires two data lanes in each direction. 1-lane receive was
+  additionally exercised end-to-end concurrently with the 2-lane
+  transmitter (with a locally patched ov5640 sensor driver, as the
+  mainline driver hard-codes the sensor's 2-lane mode), which also
+  exercises the per-direction lane bookkeeping introduced in v2. The
+  3- and 4-lane paths share the same table-driven programming but are
+  untested here.
+The DSI half of the concurrent tests additionally required a local
+dw-mipi-dsi2 HS-video fix that is not part of this submission; the
+receiver support added here is exercised independently by the CSI-only
+capture.
+
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 143 +++++++++++++++-------
- 1 file changed, 102 insertions(+), 41 deletions(-)
+Changes in v2:
+- Rename the dt-bindings header to rockchip,rk3588-mipi-dcphy.h
+  (Krzysztof)
+- Move the lane count and the receiver link rate into per-direction
+  state. A receiver configure() could previously overwrite the
+  transmitter's lane count; observed on hardware as the transmitter
+  leaving its second data lane enabled on power-off after the receiver
+  had been configured for one lane.
+- Reject the unsupported direction in configure() before touching any
+  state, and drop the provider lock from configure() (per-direction
+  state no longer needs it).
+- Track each direction's powered state under the provider mutex instead
+  of reading the peer phy's power_count.
+- Switch already-enabled lanes back off when the receiver bring-up
+  fails.
+- Link to v1: https://lore.kernel.org/r/20260721-dcphy-rx-v1-v1-0-4fc83c0ccac9@gmail.com
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-index d0d77421bd4b..95eb1200cab4 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-@@ -5,6 +5,7 @@
-  *      Guochun Huang <hero.huang@rock-chips.com>
-  */
- 
-+#include <dt-bindings/phy/rockchip,rk3588-mipi-dcphy.h>
- #include <dt-bindings/phy/phy.h>
- #include <linux/bitfield.h>
- #include <linux/clk.h>
-@@ -13,6 +14,7 @@
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
-+#include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-@@ -280,6 +282,19 @@ struct samsung_mipi_dcphy_plat_data {
- 	u32 dphy_tx_max_lane_kbps;
- };
- 
-+struct samsung_mipi_dcphy;
-+
-+/* One PHY per direction: transmitter (DSI) and receiver (CSI). */
-+struct samsung_mipi_dcphy_dir {
-+	struct phy *phy;
-+	struct samsung_mipi_dcphy *parent;
-+	u8 dir;
-+	u8 type;
-+	unsigned int lanes;
-+	/* Written under the parent's lock. */
-+	bool powered;
-+};
-+
- struct samsung_mipi_dcphy {
- 	struct device *dev;
- 	struct clk *ref_clk;
-@@ -290,9 +305,9 @@ struct samsung_mipi_dcphy {
- 	struct reset_control *s_phy_rst;
- 	struct reset_control *apb_rst;
- 	struct reset_control *grf_apb_rst;
--	unsigned int lanes;
--	struct phy *phy;
--	u8 type;
-+	struct samsung_mipi_dcphy_dir phys[2];
-+	/* Serialises the two directions' access to the shared PHY state. */
-+	struct mutex lock;
- 
- 	const struct samsung_mipi_dcphy_plat_data *pdata;
- 	struct {
-@@ -995,7 +1010,7 @@ static void samsung_mipi_dphy_lane_enable(struct samsung_mipi_dcphy *samsung)
- 	regmap_update_bits(samsung->regmap, DPHY_MC_GNR_CON0,
- 			   PHY_ENABLE, PHY_ENABLE);
- 
--	switch (samsung->lanes) {
-+	switch (samsung->phys[RK_DCPHY_DIR_TX].lanes) {
- 	case 4:
- 		regmap_write(samsung->regmap, DPHY_MD3_GNR_CON1,
- 			     T_PHY_READY(0x2000));
-@@ -1026,7 +1041,7 @@ static void samsung_mipi_dphy_lane_enable(struct samsung_mipi_dcphy *samsung)
- 
- static void samsung_mipi_dphy_lane_disable(struct samsung_mipi_dcphy *samsung)
- {
--	switch (samsung->lanes) {
-+	switch (samsung->phys[RK_DCPHY_DIR_TX].lanes) {
- 	case 4:
- 		regmap_update_bits(samsung->regmap, DPHY_MD3_GNR_CON0,
- 				   PHY_ENABLE, 0);
-@@ -1334,11 +1349,23 @@ samsung_mipi_dphy_data_lane_timing_init(struct samsung_mipi_dcphy *samsung)
- 
- static int samsung_mipi_dphy_tx_power_on(struct samsung_mipi_dcphy *samsung)
- {
-+	bool first = !samsung->phys[RK_DCPHY_DIR_RX].powered;
- 	int ret;
- 
-+	/*
-+	 * The shared BIAS block is brought up by whichever direction powers
-+	 * on first, leaving an already active peer undisturbed.
-+	 */
-+	if (first) {
-+		reset_control_assert(samsung->apb_rst);
-+		udelay(1);
-+		reset_control_deassert(samsung->apb_rst);
-+	}
-+
- 	reset_control_assert(samsung->m_phy_rst);
- 
--	samsung_mipi_dcphy_bias_block_enable(samsung);
-+	if (first)
-+		samsung_mipi_dcphy_bias_block_enable(samsung);
- 	samsung_mipi_dcphy_pll_configure(samsung);
- 	samsung_mipi_dphy_clk_lane_timing_init(samsung);
- 	samsung_mipi_dphy_data_lane_timing_init(samsung);
-@@ -1368,34 +1395,44 @@ static int samsung_mipi_dphy_tx_power_off(struct samsung_mipi_dcphy *samsung)
- 
- static int samsung_mipi_dcphy_power_on(struct phy *phy)
- {
--	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
--
--	reset_control_assert(samsung->apb_rst);
--	udelay(1);
--	reset_control_deassert(samsung->apb_rst);
-+	struct samsung_mipi_dcphy_dir *pd = phy_get_drvdata(phy);
-+	struct samsung_mipi_dcphy *samsung = pd->parent;
-+	int ret;
- 
--	switch (samsung->type) {
--	case PHY_TYPE_DPHY:
--		return samsung_mipi_dphy_tx_power_on(samsung);
--	default:
--		/* CPHY part to be implemented later */
-+	if (pd->type != PHY_TYPE_DPHY)
- 		return -EOPNOTSUPP;
--	}
- 
--	return 0;
-+	mutex_lock(&samsung->lock);
-+	if (pd->dir == RK_DCPHY_DIR_RX)
-+		ret = -EOPNOTSUPP;
-+	else
-+		ret = samsung_mipi_dphy_tx_power_on(samsung);
-+	if (!ret)
-+		pd->powered = true;
-+	mutex_unlock(&samsung->lock);
-+
-+	return ret;
- }
- 
- static int samsung_mipi_dcphy_power_off(struct phy *phy)
- {
--	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
-+	struct samsung_mipi_dcphy_dir *pd = phy_get_drvdata(phy);
-+	struct samsung_mipi_dcphy *samsung = pd->parent;
-+	int ret;
- 
--	switch (samsung->type) {
--	case PHY_TYPE_DPHY:
--		return samsung_mipi_dphy_tx_power_off(samsung);
--	default:
--		/* CPHY part to be implemented later */
-+	if (pd->type != PHY_TYPE_DPHY)
- 		return -EOPNOTSUPP;
--	}
-+
-+	if (pd->dir == RK_DCPHY_DIR_RX)
-+		return -EOPNOTSUPP;
-+
-+	mutex_lock(&samsung->lock);
-+	ret = samsung_mipi_dphy_tx_power_off(samsung);
-+	if (!ret)
-+		pd->powered = false;
-+	mutex_unlock(&samsung->lock);
-+
-+	return ret;
- }
- 
- static int
-@@ -1488,10 +1525,14 @@ samsung_mipi_dcphy_pll_calc_rate(struct samsung_mipi_dcphy *samsung,
- static int samsung_mipi_dcphy_configure(struct phy *phy,
- 					union phy_configure_opts *opts)
- {
--	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
-+	struct samsung_mipi_dcphy_dir *pd = phy_get_drvdata(phy);
-+	struct samsung_mipi_dcphy *samsung = pd->parent;
- 	unsigned long long target_rate = opts->mipi_dphy.hs_clk_rate;
- 
--	samsung->lanes = opts->mipi_dphy.lanes > 4 ? 4 : opts->mipi_dphy.lanes;
-+	if (pd->dir == RK_DCPHY_DIR_RX)
-+		return -EOPNOTSUPP;
-+
-+	pd->lanes = opts->mipi_dphy.lanes > 4 ? 4 : opts->mipi_dphy.lanes;
- 
- 	samsung_mipi_dcphy_pll_calc_rate(samsung, target_rate);
- 	opts->mipi_dphy.hs_clk_rate = samsung->pll.rate;
-@@ -1501,16 +1542,16 @@ static int samsung_mipi_dcphy_configure(struct phy *phy,
- 
- static int samsung_mipi_dcphy_init(struct phy *phy)
- {
--	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
-+	struct samsung_mipi_dcphy_dir *pd = phy_get_drvdata(phy);
- 
--	return pm_runtime_resume_and_get(samsung->dev);
-+	return pm_runtime_resume_and_get(pd->parent->dev);
- }
- 
- static int samsung_mipi_dcphy_exit(struct phy *phy)
- {
--	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
-+	struct samsung_mipi_dcphy_dir *pd = phy_get_drvdata(phy);
- 
--	pm_runtime_put(samsung->dev);
-+	pm_runtime_put(pd->parent->dev);
- 
- 	return 0;
- }
-@@ -1536,19 +1577,29 @@ static struct phy *samsung_mipi_dcphy_xlate(struct device *dev,
- 					    const struct of_phandle_args *args)
- {
- 	struct samsung_mipi_dcphy *samsung = dev_get_drvdata(dev);
-+	struct samsung_mipi_dcphy_dir *pd;
-+	u8 dir = RK_DCPHY_DIR_TX;
- 
--	if (args->args_count != 1) {
-+	if (args->args_count < 1 || args->args_count > 2) {
- 		dev_err(dev, "invalid number of arguments\n");
- 		return ERR_PTR(-EINVAL);
- 	}
- 
--	if (samsung->type != PHY_NONE && samsung->type != args->args[0])
--		dev_warn(dev, "phy type select %d overwriting type %d\n",
--			 args->args[0], samsung->type);
-+	if (args->args_count == 2) {
-+		if (args->args[1] > RK_DCPHY_DIR_RX) {
-+			dev_err(dev, "invalid direction %u\n", args->args[1]);
-+			return ERR_PTR(-EINVAL);
-+		}
-+		dir = args->args[1];
-+	}
- 
--	samsung->type = args->args[0];
-+	pd = &samsung->phys[dir];
-+	if (pd->type != PHY_NONE && pd->type != args->args[0])
-+		dev_warn(dev, "phy type select %u overwriting type %u\n",
-+			 args->args[0], pd->type);
-+	pd->type = args->args[0];
- 
--	return samsung->phy;
-+	return pd->phy;
- }
- 
- static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
-@@ -1559,6 +1610,7 @@ static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
- 	struct phy_provider *phy_provider;
- 	struct resource *res;
- 	void __iomem *regs;
-+	unsigned int i;
- 	int ret;
- 
- 	samsung = devm_kzalloc(dev, sizeof(*samsung), GFP_KERNEL);
-@@ -1568,6 +1620,7 @@ static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
- 	samsung->dev = dev;
- 	samsung->pdata = device_get_match_data(dev);
- 	platform_set_drvdata(pdev, samsung);
-+	mutex_init(&samsung->lock);
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	regs = devm_ioremap_resource(dev, res);
-@@ -1613,11 +1666,19 @@ static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, PTR_ERR(samsung->grf_apb_rst),
- 				     "Failed to get system grf_apb_rst control\n");
- 
--	samsung->phy = devm_phy_create(dev, NULL, &samsung_mipi_dcphy_ops);
--	if (IS_ERR(samsung->phy))
--		return dev_err_probe(dev, PTR_ERR(samsung->phy), "Failed to create MIPI DC-PHY\n");
-+	for (i = 0; i < ARRAY_SIZE(samsung->phys); i++) {
-+		struct phy *phy = devm_phy_create(dev, NULL,
-+						  &samsung_mipi_dcphy_ops);
- 
--	phy_set_drvdata(samsung->phy, samsung);
-+		if (IS_ERR(phy))
-+			return dev_err_probe(dev, PTR_ERR(phy),
-+					     "Failed to create MIPI DC-PHY\n");
-+
-+		samsung->phys[i].phy = phy;
-+		samsung->phys[i].parent = samsung;
-+		samsung->phys[i].dir = i;
-+		phy_set_drvdata(phy, &samsung->phys[i]);
-+	}
- 
- 	ret = devm_pm_runtime_enable(dev);
- 	if (ret)
+---
+Jason Yang (4):
+      dt-bindings: phy: rockchip,rk3588-mipi-dcphy: support per-direction phys
+      phy: rockchip-samsung-dcphy: factor MIPI D-PHY power on/off into helpers
+      phy: rockchip-samsung-dcphy: model TX and RX as separate PHYs
+      phy: rockchip-samsung-dcphy: add MIPI D-PHY receiver support
 
+ .../bindings/phy/rockchip,rk3588-mipi-dcphy.yaml   |  22 +-
+ drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c  | 478 +++++++++++++++++++--
+ .../dt-bindings/phy/rockchip,rk3588-mipi-dcphy.h   |  13 +
+ 3 files changed, 460 insertions(+), 53 deletions(-)
+---
+base-commit: 1590cf0329716306e948a8fc29f1d3ee87d3989f
+change-id: 20260721-dcphy-rx-v1-9af57f3edfd9
+
+Best regards,
 -- 
-2.43.0
+Jason Yang <jason98166@gmail.com>
 
 
 
