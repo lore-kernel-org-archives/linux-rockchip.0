@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F5FEC531F9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2AD2C53200
 	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Jul 2026 15:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,53 +12,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jdpaMxlSI/ywQUyq2zNFSqbvYABFgSMoaEsXYJC7u9A=; b=C4d8xza7yqlceL
-	ClusfvCvJhiB01SdnmtlZapphEzPw1az7dmhkr+bWsAefiOh0SK4SYgb0yx42w5vrQaMDL4hjBIZn
-	jhY3Iz2zec2WTNuYSZEHJdNgMSXXoGbqtrnLZVdMKChCJIQS88hck/ff1P/oUpnIBW4zQtYgDx+vV
-	g7uEvEU/9Hnbdi19OBk2GtxzTEChfgS5GjgOUwuptPZDA1+ija0CmRNU7QZibWVH4LC8zhKRwyewe
-	GOgFSBzSIy37mS1ESOF2IDLlgLEtSHI5MC2IbyWiSSxBbwiaMSLlnw4oVg4/l6XFKaryB0Xylv78A
-	9DjFQX9gN+EQfm47LoNw==;
+	List-Owner; bh=dCTQrW0liLpPk/6/LYOgOa9QkJdNCzZ4J1bu8RCcIf8=; b=eSnkT4dj6jhYKQ
+	VoryNf69oqPriYD5PqS3biwFlzIDyVKenqgO2xtT8Xg4xk2Dhl3/qk/WbpSSHgkT2e8SskQ+E11qL
+	2YP4sHSnwRQa8QCURAv0kr5wH330bWS0pXhquwAE88qf31Wh1OGvEWUisQzYUo+hqQTRQ3KQY7t5G
+	60FTV603mM4ToE6pBeI4PwCSTbPYtDHA1q26xHBZ00JQIBvdp/0CS9u15qc45Xy1ItcbCMenQun58
+	nhMBK88h08y1QOARjME2Sv5DYAqX0Sa7NMrcWDzbrLNWUQ+VUFKCLBHW0kXhxjy9ZFtR+I7bLOgbL
+	cb9A1TrAvuYuaEYSwpMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo0MB-00000001GuY-0qvt;
-	Sun, 26 Jul 2026 15:01:35 +0000
+	id 1wo0MA-00000001GtQ-2vll;
+	Sun, 26 Jul 2026 15:01:34 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo0M0-00000001Gq7-05Ga;
-	Sun, 26 Jul 2026 15:01:24 +0000
+	id 1wo0Lt-00000001Goz-0Nkl;
+	Sun, 26 Jul 2026 15:01:17 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 771A26004E;
-	Sun, 26 Jul 2026 15:01:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B0351F00A3D;
-	Sun, 26 Jul 2026 15:01:20 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 600836001D;
+	Sun, 26 Jul 2026 15:01:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B267C1F00A3D;
+	Sun, 26 Jul 2026 15:01:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785078083;
-	bh=JeeRZsoebfQ2LxiwKDM/TfxLahtf9YWY0xhqzs6a0rM=;
+	s=k20260515; t=1785078076;
+	bh=KF3WLDnzhawv1E63jb1eZQJNVi9jAWSGddOpTswPwi8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=e+icZZzhRnqNEVXQx7tAkDFpNqQ0rCP6S0VMqLk5icQk3btu7VzjWcLrA6vH6+nYm
-	 wCBGguf+2O4Q8qPWnIOACJGK1Dq1yYAm9jBwknxSa30Gtuv/xYzJesiIWXeCTt+STt
-	 +saFrHPdqArTgCJqKzxb+5OLNgNH6hH7thr3egPI2xSCWDLTLQaYkTco23npmOav5F
-	 8PYI4eufV7qTdH+oHgJAP6vJrFqJ+5WvAm5lj1u8eq9QvkNgcYji5IOHWr8lfw5vwH
-	 9hJ6f2H4RHJHPMy5GFsN+kxHQOTJtargqFdvoU43zglewEj6yUhX59IGPPtqxTpXm8
-	 iYeSlV/PbPjFg==
+	b=k8ADJwIM/9K4aDbthIc6E0Kkyy/oEv6J9w5YEtQwANBLNeCvAdtfmcvcKBClC7kgS
+	 Vu4oxdUR9yQ9vPt0xvaXnpDtb/pLbjmJ39fp9kFIozkvK45h8UiK7QV0Gwfck02YMQ
+	 3s88yuKoxxEgdEoY2v6/gk2rt2+mORJE8CcVZwhObDIWMsdIxJBvZqvjW9MITAl+q+
+	 2Zje31YvYIGq+fQqg00uLmyEqb95ZlKqG93iprGDDNSCeqqJQaLAUiYDkMdyUQE2Fh
+	 ql+wTAFv5Udl1ZNbbrbSTUno603bDlMWXmeWUjbEkUnEK13zCEjloPgCr9R7+Mz5nX
+	 mz0TuyBRixPNg==
 From: Will Deacon <will@kernel.org>
-To: Joerg Roedel <joro@8bytes.org>,
-	ZhaoJinming <zhaojinming@uniontech.com>
+To: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	robin.murphy@arm.com,
+	ulfh@kernel.org,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
 Cc: catalin.marinas@arm.com,
 	kernel-team@android.com,
 	Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
+	chaoyi.chen@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] iommu/rockchip: Fix silent probe success when all MMU resources fail
-Date: Sun, 26 Jul 2026 16:00:56 +0100
-Message-ID: <178506936105.2042687.4098031706954883028.b4-ty@kernel.org>
+Subject: Re: [RFC PATCH v2 0/8] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Sun, 26 Jul 2026 16:00:53 +0100
+Message-ID: <178507139795.2055528.4355657426833307310.b4-ty@kernel.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260723132643.2853525-1-zhaojinming@uniontech.com>
-References: <20260723132643.2853525-1-zhaojinming@uniontech.com>
+In-Reply-To: <20260718031146.3368811-1-gahing@gahingwoo.com>
+References: <20260718031146.3368811-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,20 +87,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 23 Jul 2026 21:26:43 +0800, ZhaoJinming wrote:
-> When all MMU register mappings fail in rk_iommu_probe(), the error
-> path returns PTR_ERR(iommu->bases[0]). However, bases[0] can be NULL
-> if the first platform_get_resource() also returned NULL, causing
-> PTR_ERR(NULL) to evaluate to 0 and the probe to succeed silently.
+On Sat, 18 Jul 2026 15:11:38 +1200, Jiaxing Hu wrote:
+> This adds RK3576 NPU support to accel/rocket.  RFC: the NPU brings up and
+> runs, but full inference is not correct yet, and I would rather get
+> feedback now than sit on it.
 > 
-> Return -ENODEV directly instead.
+> Tested on a Radxa ROCK 4D.  The NPU probes, powers on, brings up its
+> IOMMUs, and runs jobs to completion (rocket + Mesa Teflon).  Getting there
+> took a few fixes outside the driver too: a power-domain settle delay and
+> reset cycling (else a cold power-on throws an async SError), the full
+> clock set on the MMU nodes, clearing a stale firmware page fault, and both
+> NPU power domains on the core.
 > 
 > [...]
 
-Applied to iommu (rockchip), thanks!
+Applied driver changes to iommu (rockchip), thanks!
 
-[1/1] iommu/rockchip: Fix silent probe success when all MMU resources fail
-      https://git.kernel.org/iommu/c/ea0a9d453f60
+[4/8] iommu/rockchip: take all DT clocks
+      https://git.kernel.org/iommu/c/841363ebb508
+[5/8] iommu/rockchip: clear stale page faults before enabling stall
+      https://git.kernel.org/iommu/c/b10d5920cafa
 
 Cheers,
 -- 
