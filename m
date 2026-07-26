@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1FB2C531C9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F5FEC531F9
 	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Jul 2026 15:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,53 +12,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+nciEnPvGdsZewCjLGMsOf9Zi6XcucGLkvrz1whKA4s=; b=py5MxQf/FWvvDe
-	wI830UR+nkAYF+kwRXGQvIhZ1CPw4TNfUOjSWIHICDfAfohw76b6s0XCcBdBTj8p1g8kj7RIvAOST
-	EnLjrtXpwViuWYv0c/8m3n2NXzpuvOV2q/tZMYWhK3iWuGWlu3Z8PB0OPRf8l6pv2FmZXdW0MfUWR
-	xID2mWcXHGfqkGOXU2ka6pGLbu4m1/PCKfmgjor2/V2noB71Wf7pbhJYviAQp+AboKYLiSYYWHpB8
-	57645L2axvzCWJYVu67CJK6L87dtnjABd3ll7PM639xC383iRs+Emx5IY3PNuE69LID4hc0X0RiHz
-	c5tJ8Fa8WOhaqT+2a3xA==;
+	List-Owner; bh=jdpaMxlSI/ywQUyq2zNFSqbvYABFgSMoaEsXYJC7u9A=; b=C4d8xza7yqlceL
+	ClusfvCvJhiB01SdnmtlZapphEzPw1az7dmhkr+bWsAefiOh0SK4SYgb0yx42w5vrQaMDL4hjBIZn
+	jhY3Iz2zec2WTNuYSZEHJdNgMSXXoGbqtrnLZVdMKChCJIQS88hck/ff1P/oUpnIBW4zQtYgDx+vV
+	g7uEvEU/9Hnbdi19OBk2GtxzTEChfgS5GjgOUwuptPZDA1+ija0CmRNU7QZibWVH4LC8zhKRwyewe
+	GOgFSBzSIy37mS1ESOF2IDLlgLEtSHI5MC2IbyWiSSxBbwiaMSLlnw4oVg4/l6XFKaryB0Xylv78A
+	9DjFQX9gN+EQfm47LoNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo0MB-00000001Gu9-046k;
+	id 1wo0MB-00000001GuY-0qvt;
 	Sun, 26 Jul 2026 15:01:35 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo0Lx-00000001Gpf-1K0V;
-	Sun, 26 Jul 2026 15:01:21 +0000
+	id 1wo0M0-00000001Gq7-05Ga;
+	Sun, 26 Jul 2026 15:01:24 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id BE5826001D;
+	by tor.source.kernel.org (Postfix) with ESMTP id 771A26004E;
+	Sun, 26 Jul 2026 15:01:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B0351F00A3D;
 	Sun, 26 Jul 2026 15:01:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52BF11F000E9;
-	Sun, 26 Jul 2026 15:01:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785078080;
-	bh=DPkoltX9TEEEGuCWddp6fep3WTxy0zq+YUKjB2+nxBU=;
+	s=k20260515; t=1785078083;
+	bh=JeeRZsoebfQ2LxiwKDM/TfxLahtf9YWY0xhqzs6a0rM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=SKN/3NraiKo1BeqbR80B42/Kfu8bBunap31U7N8WIucCKiFzNUxJl29OVZKEqrstI
-	 UftN8JQ6Ouf6F3Tgy8hZMju87HClqaEnH1dZLUTXgindLnC4iuvXdOy+O95JV1MBn3
-	 2EVKfvA/5T+0UpxUx/b9L/Aw5x+88hRWD5fWfQisxacw2EZGkDBHgIFDIO+qyC1xNl
-	 u4U/k7k8kRnyo0Z0UOLx50rB9LVyRZOcxbiSs83iHyLwNJA6KsjJ9lkBjbjJ9z+GF4
-	 KK/Bj+5CgYAuh9sPufNeou4BsJibUcUj4B8D8JupbQ9tVwhZlXIq6Q/aFXNpeplu5y
-	 sWBHVLMIbhVSg==
+	b=e+icZZzhRnqNEVXQx7tAkDFpNqQ0rCP6S0VMqLk5icQk3btu7VzjWcLrA6vH6+nYm
+	 wCBGguf+2O4Q8qPWnIOACJGK1Dq1yYAm9jBwknxSa30Gtuv/xYzJesiIWXeCTt+STt
+	 +saFrHPdqArTgCJqKzxb+5OLNgNH6hH7thr3egPI2xSCWDLTLQaYkTco23npmOav5F
+	 8PYI4eufV7qTdH+oHgJAP6vJrFqJ+5WvAm5lj1u8eq9QvkNgcYji5IOHWr8lfw5vwH
+	 9hJ6f2H4RHJHPMy5GFsN+kxHQOTJtargqFdvoU43zglewEj6yUhX59IGPPtqxTpXm8
+	 iYeSlV/PbPjFg==
 From: Will Deacon <will@kernel.org>
 To: Joerg Roedel <joro@8bytes.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Simon Xue <xxm@rock-chips.com>
+	ZhaoJinming <zhaojinming@uniontech.com>
 Cc: catalin.marinas@arm.com,
 	kernel-team@android.com,
 	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Heiko Stuebner <heiko@sntech.de>,
 	iommu@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] iommu/rockchip: Drop global rk_ops in favor of per-device ops
-Date: Sun, 26 Jul 2026 16:00:55 +0100
-Message-ID: <178506896133.2040068.17210762744367310935.b4-ty@kernel.org>
+Subject: Re: [PATCH] iommu/rockchip: Fix silent probe success when all MMU resources fail
+Date: Sun, 26 Jul 2026 16:00:56 +0100
+Message-ID: <178506936105.2042687.4098031706954883028.b4-ty@kernel.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260722073511.403252-1-xxm@rock-chips.com>
-References: <20260722073511.403252-1-xxm@rock-chips.com>
+In-Reply-To: <20260723132643.2853525-1-zhaojinming@uniontech.com>
+References: <20260723132643.2853525-1-zhaojinming@uniontech.com>
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,20 +76,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 22 Jul 2026 15:35:10 +0800, Simon Xue wrote:
-> The driver currently uses a global rk_ops pointer, forcing all IOMMU
-> instances to share the same operations. This restricts the driver from
-> supporting SoCs that might integrate different versions of IOMMU hardware.
+On Thu, 23 Jul 2026 21:26:43 +0800, ZhaoJinming wrote:
+> When all MMU register mappings fail in rk_iommu_probe(), the error
+> path returns PTR_ERR(iommu->bases[0]). However, bases[0] can be NULL
+> if the first platform_get_resource() also returned NULL, causing
+> PTR_ERR(NULL) to evaluate to 0 and the probe to succeed silently.
 > 
-> Since the IOMMU framework passes the master device information to
-> iommu_paging_domain_alloc(), the global variable is no longer needed.
+> Return -ENODEV directly instead.
 > 
 > [...]
 
 Applied to iommu (rockchip), thanks!
 
-[1/1] iommu/rockchip: Drop global rk_ops in favor of per-device ops
-      https://git.kernel.org/iommu/c/414cb6f3ac62
+[1/1] iommu/rockchip: Fix silent probe success when all MMU resources fail
+      https://git.kernel.org/iommu/c/ea0a9d453f60
 
 Cheers,
 -- 
