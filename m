@@ -4,77 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CCE6C531D0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jul 2026 17:58:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D75C531D0
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Jul 2026 01:43:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ALwOaMJwnO4Sjo1BSVbtHwXzMBcijY+UgvpmYY+LRcw=; b=y8NQvqwsfn1MdU
-	LLNsURCPNneCQgbFTUVCyxki6ive6ABOXpg2mJhbjWAQ4pxHDHgZiCnXu46OopnhNhoKoHMpvgVga
-	jjKKnNIVrT18OgfvfugB/+EAIUoSAMVBlyuIxvVkIsuMsuy03t6hqjRI5PwzpcEEarTJjgfdSOnFO
-	uTykwK73c1ZY6L8qZoPyJIZNKZHEwrsS3B4uHqAqzuRItT+S7wt32EpgL4siXh2abj4yIb4esK7WE
-	BHPkx1rviJahxH2gdWh6VXsiTehRtNys6LQgAQtYGjTvaLsrbjrKE0cLzeTc8QnXjK9g3H6a3U1K8
-	WukqT+kSN00qxis9WJvQ==;
+	List-Owner; bh=ug0TvjsJgeN7uGRET5IDxyO97gWgbNFNCLCQLzf7re8=; b=3HRQZx4y9BxNrO
+	YlwQ5BCurZtQRp5hdJwoPI6HDmhpbJjC0soigJPZh2frwlX7e/DwI5SceJsB+oY0MnMga8Qr8hFfz
+	WrUVubutBsZ38Z1sTHfmVOV59evg5vhw2knKW/lnfm4BzSrHVaCpLBhw283M+f1fphFk32omCgYE0
+	4oF4E8oX0g3Ff7yNIXeLyrB0jNFUU5mExjnjRMZuNrMcibuEtPul7zWV+6bx7p56IEIafhFdW3dN/
+	zzitf6T/2GCgsLt8KyCDmIQ7tG6mjVTUeY5teWrS2U/9x87AYgxKobKGOXB5hS/WB8yf8TAZLaM8j
+	OaLcSntow/q7Lhlqzp/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnge9-00000000d3n-1q22;
-	Sat, 25 Jul 2026 17:58:49 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wnntY-00000000ogg-2Fo2;
+	Sun, 26 Jul 2026 01:43:12 +0000
+Received: from flow-a7-smtp.messagingengine.com ([103.168.172.142])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnge6-00000000d3L-3jG7;
-	Sat, 25 Jul 2026 17:58:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1785002311; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=g7YI44btuhP5MiuhLz/EKXLdg/YtTeW8gVShiV1mTxxTJwifsf9emILB1ZGMUuh6GdtsE89iFvJTHCIS01ICcaJ7oXQozj4ntO/LNd1n72prj0sGB53Iq4hoc/ASuykEQ0hI2emKXdEei1yEVfwdRhlNbV5tOHQ+KGRz/8LrzSU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1785002311; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=MRbJi/1N24OFbuQVxv7b6LbUHMhpaoO6runK3Llbbuo=; 
-	b=EnzwLV2gCMlit+OUkB2oI3lT3BmjSxyWs2/HpTfyxqkSkWJC1aFlJPX5AiIFsva/rNs2boJ1B5ozIGRYI2nbsAdRjA842oQrrjuCnwUgf0B06AI8mUL1+ixpkjWmFEMseoV5drqVauy5xC29SlbWhLzpnDPMEBkPg3+MBHXCKYM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1785002311;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=MRbJi/1N24OFbuQVxv7b6LbUHMhpaoO6runK3Llbbuo=;
-	b=QoxLz1Cl4MVPsAUboaaFVWBpj0jAbdcFWzmd+I9/f3+IXgBtzt/jDHrwzhJHXdaD
-	mtzTwotmOVlbnFaA8AyryTfq57v2hE7nMXK9bitw2oTa/SE2WC662nQJXS5tWqsbJgn
-	oTWTDmC2PFQJ4Q+a9A8hfZmZpc3GLCOCqo4GFq94=
-Received: by mx.zohomail.com with SMTPS id 1785002308379763.0905164719212;
-	Sat, 25 Jul 2026 10:58:28 -0700 (PDT)
-Message-ID: <e1034df6-3801-424a-ba1e-a03d61b37222@collabora.com>
-Date: Sat, 25 Jul 2026 20:58:23 +0300
+	id 1wnntV-00000000ogM-41Q6
+	for linux-rockchip@lists.infradead.org;
+	Sun, 26 Jul 2026 01:43:11 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+	by mailflow.phl.internal (Postfix) with ESMTP id 8656A1380125;
+	Sat, 25 Jul 2026 21:43:08 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-05.internal (MEProxy); Sat, 25 Jul 2026 21:43:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm1; t=1785030188; x=
+	1785033788; bh=tH4nlR6FXXewKFWl8uUYtRXQRmtWcj41vnoVTius/+o=; b=D
+	ZIeAaefGbJN97nhQ2zYuuHZ+AFGyQGa4yLjNQClYRc0Uk60ZAo9tejYxMi8da+fU
+	yOuCY3OD3o65oRZ9Ar5rFjfPsiyWvzZV0RtClFt254B9ZfCUREXKa2pzJ1+tYyYM
+	RJik1OgLfA468PZTYsLRinm3k9OfkRNw4MoE7r0rbtbMibgM3QLINun+cZygw7Aa
+	qC+nEuUqUMoPKQGVXp/74pQ7GDzXOiHEfCiiKx2S2wqT0uWNe2LEdA3p9MaOpTfp
+	y1LsKZMerPlbGIEWg6Kz6Zat8kRQlyTCb0qNim4Loh+ZL0sfmFsSkTGNfv5eSjfo
+	4shkDGMn7+0Dv34UgISqg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm2; t=1785030188; x=1785033788; bh=t
+	H4nlR6FXXewKFWl8uUYtRXQRmtWcj41vnoVTius/+o=; b=DvJQhqLkLedu/0p1Q
+	Yg8B4UuWxPV9vOe2B36JiBZwhARJeoSEbjBVJCMEEN6I5Jp9wWAODY1gh1JSJ3qE
+	N9yKFCe9YjW4TDyJ7/o3LW2THfinF7kAVm5HADbDvfSf3c8TTFJoqZc5ZbSflvBR
+	Trb8On7xO+E+rF6tmWtZPkbMc4VC5tQ7VXYypAc9Hba+uKXFVCX9msnVqC3J2E61
+	h3JFF405956LHHJ7j+72wcC1EYfPxjXvNIVlrfE7kogLmUq8H0ow6h2ihLeg8Zeq
+	ql2wBeFpDXcn1Cn1gr8rUuvg5oYN9qaB0j3E1/djRHyq5QZiWYOBjSX1Sbxt7ojY
+	tlKiQ==
+X-ME-Sender: <xms:K2ZlajtJNjr520CYGnBbH6eCjk42nuSZVwrAfwGXlU_p9ErXw8GjUw>
+    <xme:K2ZlagcuBBysjfij2HUk473ne8D8fC8hAZeMIkLeNkZquW__BJrx3g3kVKTK6Hbjt
+    RH1fpLKcBHXP8q2Z04_Ih6FPO3zqZ8AWrmbJ7_uHhEPwETVq4OR5-Q>
+X-ME-Received: <xmr:K2Zlao8zWbLDhT8KOqJ3rrpkGgJ3ja3EpgB_r-lGuCIJPeBzFP1Kkb0wyLxxjxfNrYBGKpaBAw>
+X-ME-Proxy-Cause: dmFkZTGxD8IZGQeknlTKF1p90BOwH0Ou/1rEEe6X/5savyxo+hsDi+1ZDlDZOdLkVsuS5A
+    wQRcNSB9jwVijlFzJd6bDUBkz+Yrm7WeDffE3HDYzig6SonjA2p7DdKmOzuGbdBLT5oDti
+    1UH+gn6qmBtn0WEnft74WZ5dyFBmLv4hYKu4hfK5Dc4dD/h5Y/+sH6L/u+AsE1aCT5yTAo
+    3554/tL3I2xIANEBwhVukuvstkmK00uXFfTTWiHE4BOGHE3miWeF/b8h4R6/+d96Nf66ve
+    zEy9xa/ybjiuuqcjUQlBJYDj6U7pLSDdW8mjJcfXxORZuBt21aF6jCh7PN39SbycRjusjl
+    Km0lT02hwu5WS2C2VAt4WjOUbBU6716K++q1Eazh85LVfSkpaiLsAwAkx1XjmCZRG/OsU7
+    9y31pMhLhZZvII0zEhG1ruvK2MLsMumUMfMkkiyqUwQSyTnlbFF7XryxEO2anYbc/zaRU8
+    kFl1Sj7QKeidP4turtvu6YwCj6/eIEwVGQUBw4jf20VOmdgdVvI1vWrMG4xMS33Hry4XRR
+    QidoPE8DcpiFDut7WXDKptIbgsp08Zd1AMH5jtYNtHJhvqkt5gPQRSbieZXD7YQIqtrut7
+    y/dNqfFTPaGzHSZv5g3UiJ7RGCPkJ+OG8nZxCCVvjImyqHqIDGYtk7XKt7xQ
+X-ME-Proxy: <xmx:K2ZlajRO1dBa3i12S12oitgngIfT9LmXubrq1pywJH-wrntgSYDzng>
+    <xmx:K2ZlahrZIkadHkaBvIbZRLWjMsgfWghrfujXJzJiqUMpUhL0yOP2UQ>
+    <xmx:K2ZlaomBaOm2meBO65NBR0lu3AE9ChcUVsFuI8Z8rJSpHS1Up1Ix3w>
+    <xmx:K2ZlaidtrP-1yQjZqT9nhgT719sBRWe7E_SrCt5E_E_l_ReeyFY-lw>
+    <xmx:LGZlavW6LTmdonWPTMOGuOmw2L-9MR0FnDLrNXuNeo86ZJwIVse-m1ub>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 25 Jul 2026 21:43:04 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: alchark@flipper.net
+Cc: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	chaoyi.chen@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: Re: [RFC PATCH v2 6/8] accel/rocket: add RK3576 NPU (RKNN) support
+Date: Sun, 26 Jul 2026 13:43:01 +1200
+Message-ID: <20260726014301.411518-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260725121601.2970185-1-gahing@gahingwoo.com>
+References: <CAKTNdwHL2Z3h-FN7LLPshz5B0duiMw_pyfe=VG4UDhfm8igZ6Q@mail.gmail.com> <20260725121601.2970185-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/4] media: synopsys: hdmirx: add HDMI audio capture
- support
-To: Igor Paunovic <royalnet026@gmail.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20260718085728.6797-1-royalnet026@gmail.com>
- <20260718085728.6797-3-royalnet026@gmail.com>
- <25922edc-4ff1-4d28-9a64-2c28b2b690cb@collabora.com>
- <CAEWPSH70FecQRuGtA=S8+_CnLY5sMyf1j57Uwzwv54zceS1HZg@mail.gmail.com>
- <b8d63f61-b73e-412e-8119-ced1afdd4551@collabora.com>
- <CAEWPSH5j3tYNb1JKRGwa00PVnYAgCKS+B-Qz07D8Z7TJea5cMw@mail.gmail.com>
- <1ac66aab-8985-4441-8ce1-07e2ea5183bd@collabora.com>
- <CAEWPSH4aB4KZsrLx2TESjPvUG0+A_Z_7uuO=5Rd-VidKU9U3eg@mail.gmail.com>
-Content-Language: en-US
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <CAEWPSH4aB4KZsrLx2TESjPvUG0+A_Z_7uuO=5Rd-VidKU9U3eg@mail.gmail.com>
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260725_105846_989404_4A9D0A7F 
-X-CRM114-Status: GOOD (  19.55  )
+X-CRM114-CacheID: sfid-20260725_184310_365151_B18118D9 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,54 +114,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Correcting myself before anyone builds on it.
 
-On 7/24/26 02:47, Igor Paunovic wrote:
-> Hi Dmitry,
-> 
-> Thank you -- and thank you for reviewing the whole series and testing
-> 2/4. It went through a lot of back-and-forth since the RFC, so having
-> it land with your Tested-by means a lot.
-> 
-> I'll prepare the follow-ups as separate patches once this series is in:
-> 
-> - The video_device lifetime issue on the V4L2 side (the devm-allocated
->   struct with video_device_release_empty that the automated review
->   flagged) -- as a standalone fix for the existing driver, since it's
->   independent of the audio support.
-> - An atomicity fix for the GLOBAL_SWENABLE read-modify-write, now that
->   the audio path adds a second writer to that register alongside the
->   CEC code.
-> 
-> The repeated-suspend wedge I mentioned in the cover letter I'd rather
-> send only once I have a clean, reproducible trigger for it -- it's
-> still under investigation and I don't want to send a fix ahead of a
-> solid repro.
-> 
-> The dynamic codec registration you suggested (bind on the plug event,
-> read the actual wire sample rate and restrict the codec's rate) is the
-> direction I'd like to explore after these, once I've looked at what it
-> needs from hdmi_codec_ops.
+I wrote yesterday:
 
-Good plan
+> The per-op reset is not a workaround, to be clear -- after 90 of them the
+> NPU power domain can't reach idle at power-off and that times out the
+> shared regulator path (-110) and takes the box down.
 
-RE the sample rate restriction, hdmi_codec_ops has get_eld() that
-restricts rate based on HDMI ELD [1]. For RX we could tell the exact
-rate to CODEC without ELD or we could generate ELD in the driver, either
-way should require extension of CODEC driver with support of RX rate
-restriction. This way userspace will see that there is only one rate
-available for capture, so it won't be able to choose wrong rate and will
-resample audio itself as it needs.
+That mechanism is wrong. There is no power-domain problem. What I was
+looking at was a serial console printk flood: my test script ran
+'dmesg -n 8', the debug kernel emits several hundred register-dump lines
+per op, and at 115200 baud that blocks interrupts long enough to time out
+the PMIC I2C. The symptoms I misread --
 
-HDMI plug event -> signal stable -> gate audio rate from ACR -> register
-CODEC device -> ops.get_eld() returns our ELD
+  dwmmc_rockchip: Unexpected interrupt latency
+  cpu4: _set_opp_voltage: failed to set voltage: -110
+  rcu: INFO: rcu_preempt detected stalls on CPUs/tasks
+  rockchip-pm-domain: failed to set idle on domain 'nputop', val=0
 
-[1]
-https://elixir.bootlin.com/linux/v7.1.3/source/sound/soc/codecs/hdmi-codec.c#L477
+-- are that signature, not the NPU's. It reproduces with zero resets, a
+single-op model and the whole probe disabled, and 'dmesg -n 4' makes it
+go away entirely. So please disregard that paragraph; if you were about
+to look at RK3576 genpd on account of it, don't.
 
--- 
-Best regards,
-Dmitry
+The conclusion it was attached to still stands, for a different and duller
+reason: the per-op reset is not a workaround because it does not make the
+MAC produce anything, not because it breaks power-down.
+
+Two other numbers from that mail need tightening, both re-measured on a
+quiet console:
+
+- The wall itself is unchanged and is not a console artifact. op0 fetches
+  and computes (top dt_rd=9408 wt_rd=96, core dt_wr=25088, output
+  distinct=238); every later op reads exactly nothing and writes a
+  degenerate surface.
+
+- "90 resets, 87 interrupts" was one run and I implied a 1:1. It isn't:
+  90 resets now give 63 interrupts. What holds is the qualitative part --
+  dozens of completion interrupts in a single power session against
+  exactly one without resets, and the per-layer input and weight fetch
+  returning in full.
+
+The part of that mail I'd still stand behind is the first half: the vendor
+is interrupt-driven on the same GIC lines, INTERRUPT_MASK 0x300 is writable
+and the line does fire, bit 31 is hardware-set and no register write clears
+it, and the v3 fixes I listed.
+
+Sorry for the noise.
+
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
