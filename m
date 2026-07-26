@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03268C531C9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A38DC53209
 	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Jul 2026 20:28:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,70 +12,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d1OPOEE5gouDqVcDITaeiNQupf0hsL5kAYU5XrkZWnk=; b=EZGorjcYLBdmxg
-	jhOc8Kv6toGWg7YrO4xbE+M0o9Osd+g5+1nbGn5qsey7HU6VhslR2KuE/A4J2S84RmU6eECUQhlZq
-	cHXT1BAsIB60zkbjEVU6rPjKnenm0KdJmy6mY6A9dEVnI2Sx8E/dFPmuxf4qkaRGHtct2HMFA5jGV
-	x6yjDwbJKq2u8fN+fkQ+z1Uq+hI/Hk/veyWN5giSO4o5CYd3WVGQssisxmfujLQ7JMxqrJt/QMdrB
-	l2lpjLBHi0Sm6I/EgqkLaHZE67oywtjm9kHHF0SIlRW2ZGrldVesPC6Y6smMRfTPm6vozAEj6zjXB
-	Rqjp+3onhoEJSoeI3DBg==;
+	List-Owner; bh=81Qp3L6PYPj6qqit6sIxfveDJ8zGvyIHs7XhN1evQMo=; b=I7gq1Ou8pWI/3M
+	2sWiz5qhPsZv+7T83fGhnsfzPYcqENJNYtxBYGlRvPktUAmiiU0JrGIEKowbtPf9ocDbqighApuW/
+	StP60mer9S6h/9Cw6Cwg6XE9Uw8ELJSjsBoFkPmEVmPIgFoT0fX6hGIo2tCRo17QWoOsz/NgixN7J
+	0sRlt8WKYjUHcnffno1QQWFSmBqpwdjAVBx/794752UgA77rxZCeIEYPlV8mjQOCzTwe1HGD1tLIN
+	EMiwIJFJXK7L2QQeUm1Y/52ai0DyVJXEoQadOMhCvPIKT2gEgfDnk0rVA3V2+BMLJF7i8G4KbKWtE
+	KA1zwqgM8FZj5zdj9Ebw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo5Sy-00000001b5S-33bJ;
+	id 1wo5Sy-00000001b3h-03Y2;
 	Sun, 26 Jul 2026 20:28:56 +0000
-Received: from mail-pj2-x01.google.com ([2607:f8b0:4864:39::1])
+Received: from mail-pj2-x09.google.com ([2607:f8b0:4864:39::9])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo5Sq-00000001azr-47um
+	id 1wo5So-00000001axx-3AwD
 	for linux-rockchip@lists.infradead.org;
-	Sun, 26 Jul 2026 20:28:52 +0000
-Received: by mail-pj2-x01.google.com with SMTP id 98e67ed59e1d1-380f4166f80so2027430a91.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Jul 2026 13:28:48 -0700 (PDT)
+	Sun, 26 Jul 2026 20:28:48 +0000
+Received: by mail-pj2-x09.google.com with SMTP id 98e67ed59e1d1-38ed4d37526so1129186a91.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Jul 2026 13:28:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785097728; x=1785702528; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785097726; x=1785702526; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=FbhNNzs08fTZ2K27yGEfF/2tuOjSgn/k+EN2qVB/Pe4=;
-        b=JWbs/PaZd5dXVH6By6HHe+yx058u9pFCTTtNOUSxLiPyDUQMZBoEDaWFjoOCkzzRYw
-         D/qlu4IvXy2mL5KlDO3TAOpbi/4lLsrJ2Ys17n/8k9VTU82Alz71ChQJ9AeYipR6Z3pi
-         sDYevxtzHJcjBo2dA7Czcr93gx04FNi2CizWGxB0JIlweY5Brk33TjmGLaQVYl9keEi1
-         a24tehI9CuVrl+ajbTd6z4xkUhzYmTGg0yyi8JKQMU5hdB8I9Q6Mci9gsA9EMDyebfKg
-         s6fJyQZYDGP25sDFut7nesZEUAexf/Pk7ydjxg440uq1AiRwADiEdlHF4IjbzhD27+B+
-         dSXQ==
+        bh=M8DfFzu+jiw0YwnLPKzMF9rwItgemt8RX14X3+mRhAY=;
+        b=osLT2gOHIxqoqCu5kZ8gKz1w4TK0N194QKxHLBSUeK5EWFTpKRgnGTPGEHlJuVVVwq
+         ghRNyMROgCiHA/kefhncpQU2hLR0sn6PbcQqhdzBrH8BBca9+nl19OlXBV1+XtLThs+j
+         aUn3/76/qiBboCY8vRgiqnyD9PTikyeSd/xjYQ5tcDlSUFi5fd69iVggyoeGMXPHQbur
+         iKvb0oKxYmEk+5LBdAfGpJJnJlYERu9wy6L5r2MJl8xsimIAuqEQc8YAgwoP+cTcAD0P
+         iaiQXkKhTFNZy/zANk5SfAJqzAk0EDiQ64XOt5w0VhBwOm+he2mChJM6HQ7dlO6NMPHW
+         4e7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785097728; x=1785702528;
+        d=1e100.net; s=20251104; t=1785097726; x=1785702526;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=FbhNNzs08fTZ2K27yGEfF/2tuOjSgn/k+EN2qVB/Pe4=;
-        b=AxARgFkIa62wgfs1Bc6xx4bh/+Ccy1bZudWkBYTS52mCYcKgwDyQPv/vf8mo0Prm+n
-         lDEkH++ZwgVe8zGIATMxsmV5n77QxXTvO5SM7G0fJdaUDFfTMJpmeYY/rtKKT0210yQq
-         o5StR1QJHzE3a5/sOFF8fyspWtUDNvPG/LXgyXroGn18s7XCDzHaWd/xf66osWyPD2nR
-         ZvVlz0h0bqwEM093unIyXYTqRb0W+bGZZMZQq/Zyz0+BsHeR+qhri5f2aYr2yRCq6CBg
-         t0XAoONgjmoF2Uaa83ICkSMezT0gsycNcLP2zGA3yX2PjEo8nNrQ3Xrb3b15G5ohkAiB
-         bRqg==
-X-Forwarded-Encrypted: i=1; AHgh+RqCCvVLDE8+kw+iU/c4e/8yJ2a09GTjEPYtUH7iaCIv8KQezaE5JfG3vC3C8yefRa6s/rWjCnms0zbHdt6d8Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxdz8wxBNzOMe+YlcOVEA5WFjf2kLb/dvskGdP6D1txvereo2mi
-	xjWtGulQhSGn3tvi1mCAUzAEHQwhDGapJIdja5BU5E1PAXqvYw6c6uxLylwhI50Zc6h85Q==
-X-Gm-Gg: AR+sD11knhOXuauxk6axwNjno8Rxub9tOVhm1GOeQNS2u2uSt/nepT0c5T/l4OefGHV
-	AncYe7FSu2PbHW1y+0wgF3D96rt/T7OkGKUKdiWQOJfXJfdv6Kg5+84jYUTJ+CVKLf0EaqiIP/B
-	I1yK+33cqCTj3gxjULlCRrBYTytZYHSLIyzprHZr6k5HLnqd09D1NCGsW3Hi2O3eROHqdzIJxVM
-	kgMWO6pHJ2r5AucGUAHSCRqj7vbovq16PSakOPGIbY77+uNRtFx7GbIfWWm0ARwDNPrfjuk8Lyc
-	SpNr+6IqsZKlwBloUgl2owzKyBvvE5wmlBVbjRQrMG2ylrbSjsn8/Af/P+IitsaLqMNs4TqtY9i
-	k7yiFtLBDeUfzcEDnh0y9rphW2p0yLMIGM2XQwjMEVIxXNbZUeQ0djo0OtRd+mN1x+crEb9ym2u
-	TlXGuTjVN4smm0CsI3tCLaplbwiTN6dyR1xAfuITtezFiSvQsh
-X-Received: by 2002:a05:6a21:618e:b0:3c2:dcdd:a861 with SMTP id adf61e73a8af0-3c67df10b92mr5823010637.43.1785097728339;
-        Sun, 26 Jul 2026 13:28:48 -0700 (PDT)
+        bh=M8DfFzu+jiw0YwnLPKzMF9rwItgemt8RX14X3+mRhAY=;
+        b=qxrsGJtrLK19PD0Kr8S3taJi6hiiFkho2p1MCpm9hYp12XW2XBoWI3m7oC5prpSDpF
+         +L6vF3vwwsS5dnYZpqM0S46iBERsP0jJOlARGdqtOCWJHbu3JoGvjzI3nJ+dTb17+c6F
+         kTulbLsGke2DKQ+5Ykz0d80gSI1ipOjwflRA8nbHVYRQtDhbrgXe58gjDxJANFm7Pnnd
+         0rVTGqFY+9W9mS+B4bbXQg381H72iWlPbZu5V0tzvLh8Vj53SmlIYyGJ8TfjTa4M92eH
+         TOMKqc9FgDtrphWIBxpZWO37hmwdENK131j7ZaNNNKBvK8QHDVi8kuKNLNn8Ii6BpKiK
+         S3wA==
+X-Forwarded-Encrypted: i=1; AHgh+RqnzS39Ou70/BqumfPCSytE7yfA/kKli3bSk0zE60+OtLWuXThn8l/22rKOTnrlROJl5UxmV5p/DPg95/dpVQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywm2R2hXPO6Rkzaca6ERFoZ92Ktp2gJjdMshl1Y8EkmFChFcCZc
+	WP5K2ykCnVUq8sMtnl95D2lduMkSi+aj8LQTjRsC4TNhA4zJ++mMtdJB3W0G7bsOezcC5w==
+X-Gm-Gg: AR+sD12LPqB9PbiZscuDT+zCPKCq+bKEwVTB6zprwaYXHfl+AWSlzcz2pXDko6Ld9Vx
+	m6eSir0qGANPYc1pWebJlea9Gl/k0b0WJEB0r2KAZjqr9e/HM8fgtUnA5fwp0kmomOM+HTi+JaB
+	qbx87tLBnR1ejkYeszYlJeRApAxXnI8AM4mknKTwzBP6oihT+PVNUitP2GPOc3z3w8E+Sj9eWuQ
+	IEoeCozvU9mK0Kwm7tumjVA2MIRGSF1woPjSIyU+Kf2JnLkrv1SjjjqkcYEIoSgg9VB+GRnlo9E
+	Ww2DwstF2pvnJ1FmbHPc49kZT/63UiYzUt2alpWNxmJYeeY/zOvGkoPQ3/YUGny/JBzvvWi9pq2
+	5hHMTCsNmCVmEvSeNNNS2yI+Vnfi400BFgNkiBy+G3xPSs6l2qisgnyWFA+azzNUD79AhdKm/S5
+	qSCOx3pzOdKtWEpiBBUdkJUpL2pK9+8IM/OFaA95lrFMa0qJRu
+X-Received: by 2002:a17:90b:390a:b0:38e:7d40:faea with SMTP id 98e67ed59e1d1-38f296189e3mr6139243a91.21.1785097725761;
+        Sun, 26 Jul 2026 13:28:45 -0700 (PDT)
 Received: from [127.0.1.1] ([2601:647:4d7d:1e60:c46f:4bb9:6cdd:73bd])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13e6461ef84sm132697c88.14.2026.07.26.13.28.47
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13e6461ef84sm132697c88.14.2026.07.26.13.28.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Jul 2026 13:28:47 -0700 (PDT)
+        Sun, 26 Jul 2026 13:28:45 -0700 (PDT)
 From: Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>
-Date: Sun, 26 Jul 2026 15:25:37 -0500
-Subject: [PATCH 4/4] media: rkvdec: align bytesperline to 64 bytes in
- rkvdec_fill_decoded_pixfmt()
+Date: Sun, 26 Jul 2026 15:25:35 -0500
+Subject: [PATCH 2/4] media: rkvdec: Move vp9 functions to common file
 MIME-Version: 1.0
-Message-Id: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-4-180fb2d1f10c@gmail.com>
+Message-Id: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-2-180fb2d1f10c@gmail.com>
 References: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-0-180fb2d1f10c@gmail.com>
 In-Reply-To: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-0-180fb2d1f10c@gmail.com>
 To: Detlev Casanova <detlev.casanova@collabora.com>, 
@@ -85,13 +84,11 @@ To: Detlev Casanova <detlev.casanova@collabora.com>,
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Igor Paunovic <royalnet026@gmail.com>, 
- Francesco Saverio Pavone <pavone.lawyer@gmail.com>, 
  Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260726_132849_070781_6D078468 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20260726_132846_804307_8AFD35BA 
+X-CRM114-Status: GOOD (  20.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,44 +105,353 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Igor Paunovic <royalnet026@gmail.com>
+Refactor common VP9 functions in preparation for adding the VDPU381
+variant
 
-Ensure bytesperline is 64-byte aligned and scale sizeimage accordingly.
-
-Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
-Signed-off-by: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
 Signed-off-by: Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>
 ---
- drivers/media/platform/rockchip/rkvdec/rkvdec.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+ drivers/media/platform/rockchip/rkvdec/Makefile    |   1 +
+ .../platform/rockchip/rkvdec/rkvdec-vp9-common.c   |  65 ++++++++++++
+ .../platform/rockchip/rkvdec/rkvdec-vp9-common.h   |  92 +++++++++++++++++
+ .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    | 113 +--------------------
+ 4 files changed, 159 insertions(+), 112 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index 436bb460f04e..6ab6530b1cc9 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -102,12 +102,20 @@ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
- 				       struct v4l2_pix_format_mplane *pix_mp)
- {
- 	const struct rkvdec_variant *variant = ctx->dev->variant;
-+	struct v4l2_plane_pix_format *plane = &pix_mp->plane_fmt[0];
-+	u32 aligned_bpl;
- 
- 	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat, pix_mp->width, pix_mp->height);
- 
--	ctx->colmv_offset = pix_mp->plane_fmt[0].sizeimage;
-+	/* ensure bpl is 64 byte aligned and scale sizeimage accordingly. */
-+	aligned_bpl = ALIGN(plane->bytesperline, 64);
-+	if (aligned_bpl != plane->bytesperline) {
-+		plane->sizeimage = plane->sizeimage / plane->bytesperline * aligned_bpl;
-+		plane->bytesperline = aligned_bpl;
+diff --git a/drivers/media/platform/rockchip/rkvdec/Makefile b/drivers/media/platform/rockchip/rkvdec/Makefile
+index e629d571e4d8..2bbd67b2db11 100644
+--- a/drivers/media/platform/rockchip/rkvdec/Makefile
++++ b/drivers/media/platform/rockchip/rkvdec/Makefile
+@@ -12,4 +12,5 @@ rockchip-vdec-y += \
+ 		   rkvdec-vdpu381-hevc.o \
+ 		   rkvdec-vdpu383-h264.o \
+ 		   rkvdec-vdpu383-hevc.o \
++		   rkvdec-vp9-common.o \
+ 		   rkvdec-vp9.o
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9-common.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9-common.c
+new file mode 100644
+index 000000000000..a802f0acd27b
+--- /dev/null
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9-common.c
+@@ -0,0 +1,65 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Rockchip video decoder VP9 common functions
++ *
++ * Copyright (C) 2019 Collabora, Ltd.
++ *	Boris Brezillon <boris.brezillon@collabora.com>
++ * Copyright (C) 2021 Collabora, Ltd.
++ *	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
++ *
++ * Copyright (C) 2016 Rockchip Electronics Co., Ltd.
++ *	Alpha Lin <Alpha.Lin@rock-chips.com>
++ */
++#include <linux/v4l2-common.h>
++#include <media/v4l2-h264.h>
++#include <media/v4l2-mem2mem.h>
++
++#include "rkvdec.h"
++#include "rkvdec-vp9-common.h"
++
++void write_coeff_plane(const u8 coef[6][6][3], u8 *coeff_plane)
++{
++	unsigned int idx = 0, byte_count = 0;
++	int k, m, n;
++	u8 p;
++
++	for (k = 0; k < 6; k++) {
++		for (m = 0; m < 6; m++) {
++			for (n = 0; n < 3; n++) {
++				p = coef[k][m][n];
++				coeff_plane[idx++] = p;
++				byte_count++;
++				if (byte_count == 27) {
++					idx += 5;
++					byte_count = 0;
++				}
++			}
++		}
 +	}
++}
++
++struct rkvdec_decoded_buffer *
++get_ref_buf_vp9(struct rkvdec_ctx *ctx, struct vb2_v4l2_buffer *dst, u64 timestamp)
++{
++	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
++	struct vb2_queue *cap_q = &m2m_ctx->cap_q_ctx.q;
++	struct vb2_buffer *buf;
++
++	/*
++	 * If a ref is unused or invalid, address of current destination
++	 * buffer is returned.
++	 */
++	buf = vb2_find_buffer(cap_q, timestamp);
++	if (!buf)
++		buf = &dst->vb2_buf;
++
++	return vb2_to_rkvdec_decoded_buf(buf);
++}
++
++void update_dec_buf_info(struct rkvdec_decoded_buffer *buf,
++			 const struct v4l2_ctrl_vp9_frame *dec_params)
++{
++	buf->vp9.width = dec_params->frame_width_minus_1 + 1;
++	buf->vp9.height = dec_params->frame_height_minus_1 + 1;
++	buf->vp9.bit_depth = dec_params->bit_depth;
++}
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9-common.h b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9-common.h
+new file mode 100644
+index 000000000000..0d042215fad2
+--- /dev/null
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9-common.h
+@@ -0,0 +1,92 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Rockchip video decoder VP9 common functions
++ *
++ * Copyright (C) 2019 Collabora, Ltd.
++ *	Boris Brezillon <boris.brezillon@collabora.com>
++ * Copyright (C) 2021 Collabora, Ltd.
++ *	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
++ *
++ * Copyright (C) 2016 Rockchip Electronics Co., Ltd.
++ *	Alpha Lin <Alpha.Lin@rock-chips.com>
++ */
++
++#include <media/v4l2-h264.h>
++#include <media/v4l2-mem2mem.h>
++#include <media/v4l2-vp9.h>
++
++#include "rkvdec.h"
++
++struct rkvdec_vp9_run {
++	struct rkvdec_run base;
++	const struct v4l2_ctrl_vp9_frame *decode_params;
++};
++
++struct rkvdec_vp9_intra_mode_probs {
++	u8 y_mode[105];
++	u8 uv_mode[23];
++};
++
++struct rkvdec_vp9_intra_only_frame_probs {
++	u8 coef_intra[4][2][128];
++	struct rkvdec_vp9_intra_mode_probs intra_mode[10];
++};
++
++struct rkvdec_vp9_inter_frame_probs {
++	u8 y_mode[4][9];
++	u8 comp_mode[5];
++	u8 comp_ref[5];
++	u8 single_ref[5][2];
++	u8 inter_mode[7][3];
++	u8 interp_filter[4][2];
++	u8 padding0[11];
++	u8 coef[2][4][2][128];
++	u8 uv_mode_0_2[3][9];
++	u8 padding1[5];
++	u8 uv_mode_3_5[3][9];
++	u8 padding2[5];
++	u8 uv_mode_6_8[3][9];
++	u8 padding3[5];
++	u8 uv_mode_9[9];
++	u8 padding4[7];
++	u8 padding5[16];
++	struct {
++		u8 joint[3];
++		u8 sign[2];
++		u8 classes[2][10];
++		u8 class0_bit[2];
++		u8 bits[2][10];
++		u8 class0_fr[2][2][3];
++		u8 fr[2][3];
++		u8 class0_hp[2];
++		u8 hp[2];
++		u8 padding6[3];
++	} mv;
++};
++
++struct rkvdec_vp9_probs {
++	u8 partition[16][3];
++	u8 pred[3];
++	u8 tree[7];
++	u8 skip[3];
++	u8 tx32[2][3];
++	u8 tx16[2][2];
++	u8 tx8[2][1];
++	u8 is_inter[4];
++	/* 128 bit alignment */
++	u8 padding0[3];
++	union {
++		struct rkvdec_vp9_inter_frame_probs inter;
++		struct rkvdec_vp9_intra_only_frame_probs intra_only;
++	};
++	/* 128 bit alignment */
++	u8 padding1[8];
++};
++
++void write_coeff_plane(const u8 coef[6][6][3], u8 *coeff_plane);
++
++struct rkvdec_decoded_buffer *
++get_ref_buf_vp9(struct rkvdec_ctx *ctx, struct vb2_v4l2_buffer *dst, u64 timestamp);
++
++void update_dec_buf_info(struct rkvdec_decoded_buffer *buf,
++			 const struct v4l2_ctrl_vp9_frame *dec_params);
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+index d4243ce230c7..495738762713 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+@@ -23,71 +23,12 @@
  
--	pix_mp->plane_fmt[0].sizeimage += variant->ops->colmv_size(pix_mp->width, pix_mp->height);
-+	ctx->colmv_offset = plane->sizeimage;
-+	plane->sizeimage += variant->ops->colmv_size(pix_mp->width, pix_mp->height);
+ #include "rkvdec.h"
+ #include "rkvdec-regs.h"
++#include "rkvdec-vp9-common.h"
+ 
+ #define RKVDEC_VP9_PROBE_SIZE		4864
+ #define RKVDEC_VP9_COUNT_SIZE		13232
+ #define RKVDEC_VP9_MAX_SEGMAP_SIZE	73728
+ 
+-struct rkvdec_vp9_intra_mode_probs {
+-	u8 y_mode[105];
+-	u8 uv_mode[23];
+-};
+-
+-struct rkvdec_vp9_intra_only_frame_probs {
+-	u8 coef_intra[4][2][128];
+-	struct rkvdec_vp9_intra_mode_probs intra_mode[10];
+-};
+-
+-struct rkvdec_vp9_inter_frame_probs {
+-	u8 y_mode[4][9];
+-	u8 comp_mode[5];
+-	u8 comp_ref[5];
+-	u8 single_ref[5][2];
+-	u8 inter_mode[7][3];
+-	u8 interp_filter[4][2];
+-	u8 padding0[11];
+-	u8 coef[2][4][2][128];
+-	u8 uv_mode_0_2[3][9];
+-	u8 padding1[5];
+-	u8 uv_mode_3_5[3][9];
+-	u8 padding2[5];
+-	u8 uv_mode_6_8[3][9];
+-	u8 padding3[5];
+-	u8 uv_mode_9[9];
+-	u8 padding4[7];
+-	u8 padding5[16];
+-	struct {
+-		u8 joint[3];
+-		u8 sign[2];
+-		u8 classes[2][10];
+-		u8 class0_bit[2];
+-		u8 bits[2][10];
+-		u8 class0_fr[2][2][3];
+-		u8 fr[2][3];
+-		u8 class0_hp[2];
+-		u8 hp[2];
+-	} mv;
+-};
+-
+-struct rkvdec_vp9_probs {
+-	u8 partition[16][3];
+-	u8 pred[3];
+-	u8 tree[7];
+-	u8 skip[3];
+-	u8 tx32[2][3];
+-	u8 tx16[2][2];
+-	u8 tx8[2][1];
+-	u8 is_inter[4];
+-	/* 128 bit alignment */
+-	u8 padding0[3];
+-	union {
+-		struct rkvdec_vp9_inter_frame_probs inter;
+-		struct rkvdec_vp9_intra_only_frame_probs intra_only;
+-	};
+-	/* 128 bit alignment */
+-	u8 padding1[11];
+-};
+-
+ /* Data structure describing auxiliary buffer format. */
+ struct rkvdec_vp9_priv_tbl {
+ 	struct rkvdec_vp9_probs probs;
+@@ -136,11 +77,6 @@ struct rkvdec_vp9_intra_frame_symbol_counts {
+ 	struct rkvdec_vp9_refs_counts ref_cnt[2][4][2][6][6];
+ };
+ 
+-struct rkvdec_vp9_run {
+-	struct rkvdec_run base;
+-	const struct v4l2_ctrl_vp9_frame *decode_params;
+-};
+-
+ struct rkvdec_vp9_frame_info {
+ 	u32 valid : 1;
+ 	u32 segmapid : 1;
+@@ -166,27 +102,6 @@ struct rkvdec_vp9_ctx {
+ 	struct rkvdec_regs regs;
+ };
+ 
+-static void write_coeff_plane(const u8 coef[6][6][3], u8 *coeff_plane)
+-{
+-	unsigned int idx = 0, byte_count = 0;
+-	int k, m, n;
+-	u8 p;
+-
+-	for (k = 0; k < 6; k++) {
+-		for (m = 0; m < 6; m++) {
+-			for (n = 0; n < 3; n++) {
+-				p = coef[k][m][n];
+-				coeff_plane[idx++] = p;
+-				byte_count++;
+-				if (byte_count == 27) {
+-					idx += 5;
+-					byte_count = 0;
+-				}
+-			}
+-		}
+-	}
+-}
+-
+ static void init_intra_only_probs(struct rkvdec_ctx *ctx,
+ 				  const struct rkvdec_vp9_run *run)
+ {
+@@ -348,24 +263,6 @@ static void init_probs(struct rkvdec_ctx *ctx,
+ 		init_inter_probs(ctx, run);
  }
  
- static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
+-static struct rkvdec_decoded_buffer *
+-get_ref_buf_vp9(struct rkvdec_ctx *ctx, struct vb2_v4l2_buffer *dst, u64 timestamp)
+-{
+-	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
+-	struct vb2_queue *cap_q = &m2m_ctx->cap_q_ctx.q;
+-	struct vb2_buffer *buf;
+-
+-	/*
+-	 * If a ref is unused or invalid, address of current destination
+-	 * buffer is returned.
+-	 */
+-	buf = vb2_find_buffer(cap_q, timestamp);
+-	if (!buf)
+-		buf = &dst->vb2_buf;
+-
+-	return vb2_to_rkvdec_decoded_buf(buf);
+-}
+-
+ static dma_addr_t get_mv_base_addr(struct rkvdec_decoded_buffer *buf)
+ {
+ 	unsigned int aligned_pitch, aligned_height, yuv_len;
+@@ -446,14 +343,6 @@ static void config_seg_registers(struct rkvdec_ctx *ctx, unsigned int segid)
+ 		(seg->flags & V4L2_VP9_SEGMENTATION_FLAG_ABS_OR_DELTA_UPDATE);
+ }
+ 
+-static void update_dec_buf_info(struct rkvdec_decoded_buffer *buf,
+-				const struct v4l2_ctrl_vp9_frame *dec_params)
+-{
+-	buf->vp9.width = dec_params->frame_width_minus_1 + 1;
+-	buf->vp9.height = dec_params->frame_height_minus_1 + 1;
+-	buf->vp9.bit_depth = dec_params->bit_depth;
+-}
+-
+ static void update_ctx_cur_info(struct rkvdec_vp9_ctx *vp9_ctx,
+ 				struct rkvdec_decoded_buffer *buf,
+ 				const struct v4l2_ctrl_vp9_frame *dec_params)
 
 -- 
 2.43.0
