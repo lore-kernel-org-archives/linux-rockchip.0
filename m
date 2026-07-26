@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BFB9C531C9
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Jul 2026 20:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03268C531C9
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Jul 2026 20:28:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wLCQatNcDk02jvc4G8zPos5mAd4Ddxo71y8Kaq7dIhc=; b=SR6cKcbP/uo6/d
-	5S4PiANwhgcL8dj9cnk4UhSxmYdc+LbVIWuClY2iDOSwDBK37b9Ppm36zIA0vUywAxVtgr3bScCT2
-	1/z9C3ODu7qH//BjqKymAFOQc8o7c+bd1pdPCg2gyQ9urfBMKRM+vtXipAaHRU9OvsH0pfIErjHxk
-	nXOb1+y3VZbXd8k4u47BXFqEq8Oem4kq2BOB0SGSmTTodT5Lv3vevOXXIU0BFSiIiFTgHV2r+2v6H
-	pIf9Q2MdYdL0SU49eM/8aaByM8UoWWPdiFIKjyxk0f4ozzI0QC4bpj8+7/RPUMLX9QmCvbwrRmpeO
-	dU/1tDyRx2cKu54Uam6w==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=d1OPOEE5gouDqVcDITaeiNQupf0hsL5kAYU5XrkZWnk=; b=EZGorjcYLBdmxg
+	jhOc8Kv6toGWg7YrO4xbE+M0o9Osd+g5+1nbGn5qsey7HU6VhslR2KuE/A4J2S84RmU6eECUQhlZq
+	cHXT1BAsIB60zkbjEVU6rPjKnenm0KdJmy6mY6A9dEVnI2Sx8E/dFPmuxf4qkaRGHtct2HMFA5jGV
+	x6yjDwbJKq2u8fN+fkQ+z1Uq+hI/Hk/veyWN5giSO4o5CYd3WVGQssisxmfujLQ7JMxqrJt/QMdrB
+	l2lpjLBHi0Sm6I/EgqkLaHZE67oywtjm9kHHF0SIlRW2ZGrldVesPC6Y6smMRfTPm6vozAEj6zjXB
+	Rqjp+3onhoEJSoeI3DBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo5Sp-00000001ayl-2YZB;
-	Sun, 26 Jul 2026 20:28:47 +0000
-Received: from mail-pj2-x06.google.com ([2607:f8b0:4864:39::6])
+	id 1wo5Sy-00000001b5S-33bJ;
+	Sun, 26 Jul 2026 20:28:56 +0000
+Received: from mail-pj2-x01.google.com ([2607:f8b0:4864:39::1])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wo5Sm-00000001awa-3Ni3
+	id 1wo5Sq-00000001azr-47um
 	for linux-rockchip@lists.infradead.org;
-	Sun, 26 Jul 2026 20:28:45 +0000
-Received: by mail-pj2-x06.google.com with SMTP id 98e67ed59e1d1-38f25802c19so560034a91.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Jul 2026 13:28:44 -0700 (PDT)
+	Sun, 26 Jul 2026 20:28:52 +0000
+Received: by mail-pj2-x01.google.com with SMTP id 98e67ed59e1d1-380f4166f80so2027430a91.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Jul 2026 13:28:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785097723; x=1785702523; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=kdLdmVA9n/pSsrP3UeU927I5NGczIynaa1kz7iUykO8=;
-        b=KxCHJqMV5/L0qjjuKOCulPAqoDtP9alt6+DcrCjnCmpydV91jO9UwsK0/QkyylyO48
-         aovJ/Zt7d1+twR9IweOHPzwuJWfEAhp8KsGStbVaKrhl90nxe2Haf9hXzY/xO71GI8dv
-         RWjAntGuSVpZpgg4zxmJCjg7UQmxmmkvabsUXNsSLEdesQe6DsKMaWb2flfk7a1/opVo
-         3cpoPdJ0u3rBQfNORGBueO9/ns5M8w8CUr6cdbT+Tu+XwYW8+IrFUYEKjpzq6jhperqi
-         vDB1HeO/vB74aEiE6y4RrnOMKFMqEJFf8GnQyMO2D7PAB5awQaLTI3egCPYsd4jBZYIo
-         7b/g==
+        d=gmail.com; s=20251104; t=1785097728; x=1785702528; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=FbhNNzs08fTZ2K27yGEfF/2tuOjSgn/k+EN2qVB/Pe4=;
+        b=JWbs/PaZd5dXVH6By6HHe+yx058u9pFCTTtNOUSxLiPyDUQMZBoEDaWFjoOCkzzRYw
+         D/qlu4IvXy2mL5KlDO3TAOpbi/4lLsrJ2Ys17n/8k9VTU82Alz71ChQJ9AeYipR6Z3pi
+         sDYevxtzHJcjBo2dA7Czcr93gx04FNi2CizWGxB0JIlweY5Brk33TjmGLaQVYl9keEi1
+         a24tehI9CuVrl+ajbTd6z4xkUhzYmTGg0yyi8JKQMU5hdB8I9Q6Mci9gsA9EMDyebfKg
+         s6fJyQZYDGP25sDFut7nesZEUAexf/Pk7ydjxg440uq1AiRwADiEdlHF4IjbzhD27+B+
+         dSXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785097723; x=1785702523;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=kdLdmVA9n/pSsrP3UeU927I5NGczIynaa1kz7iUykO8=;
-        b=eKrlZ/K1TH9UxxSFWikbuty/miwEZIAY8MQieQcB5xXihrlSa/HKmJgpscoLJcVRAy
-         XRF5rdmFV6xFkrjwuedd/i7sctb04sQg81kOAaQ4UbvNpgjCbw/m971OCaL1jwAg9Vcx
-         78+vJVqiTRpkA6soo9XwZCsK6PF1ff9osfwATdLRS9ulm2Ykc5l5nWHDsEmOJe+83Tez
-         eSINeoYGW/g46o7JIpsumDA7rMCfu/M0k083eEVsdsfpeDyigS4p7IxR7zStV0R5hJeB
-         JyglDxVNt9gvaQWFTnI5GzoaR+6Y7puAdriq3Gx5St/9KMvrX4YZNlZVNYHU8lW77VKO
-         LIpg==
-X-Forwarded-Encrypted: i=1; AHgh+RqBzHkAfbiMN+EPgIKb7qisCl0H2WRtw8IpUTGaGDEyj7yxiWH1Mmcjy5vizg3JMx5IXdeEQTsp0Q2TJCSeVg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwlpoMatEvolQaKGGzD/hfqCIww47UQOlWsvye1QaZZsqxKFu+x
-	DSi8/WYw9d9T5rGEcQFg91Olkr4erbEePyAaH8l6EYjIqUeASu1UCBM6iYJ22W1vPkyDJg==
-X-Gm-Gg: AR+sD10muy+UggKnfVvbCLuHq3sNsRTA/7RvpwRjQRaAl8I8O3q7iFhhjaGTajjOAGN
-	ntp66M6Dcre8626jQPBnUOdxctin9HRYAfWWQRobHCRxR8X9OEnx76cqAgKwTHakbDmn4DuhfeC
-	pOw9lBQcEQrttmpyh18SM97hF5LM/k2bhbuoDrt0XaboUImF/qdr02iKjoNPLVryFW+9FrkabAi
-	Aaz0oB/R0uHDkuvCGB78uVWQNe6VBvQ0qM+u4WWyCjrZynQX3DwQZ3rKQuPGkDa5oRVR2blQc1C
-	OwLOaHBhzaBcS4vQ+RUKDd/CWSP0AevG8R02ImuZs31XE+mQrnAR+w7epeEsNAQferJerdtwpRe
-	fXGxhdoOvGsAryCsSip5QBu+5wVpuljfFoSP0347E20v2g+cYpgoZG0Vvln5f0HKgqowmrS6WvO
-	wCLeMM7xWuTkzojMEOwnxtZOyeep0EaaRAdfvPDA==
-X-Received: by 2002:a05:6a21:d8a:b0:3c4:5f94:f22c with SMTP id adf61e73a8af0-3c67df2078fmr5956185637.43.1785097723352;
-        Sun, 26 Jul 2026 13:28:43 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1785097728; x=1785702528;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=FbhNNzs08fTZ2K27yGEfF/2tuOjSgn/k+EN2qVB/Pe4=;
+        b=AxARgFkIa62wgfs1Bc6xx4bh/+Ccy1bZudWkBYTS52mCYcKgwDyQPv/vf8mo0Prm+n
+         lDEkH++ZwgVe8zGIATMxsmV5n77QxXTvO5SM7G0fJdaUDFfTMJpmeYY/rtKKT0210yQq
+         o5StR1QJHzE3a5/sOFF8fyspWtUDNvPG/LXgyXroGn18s7XCDzHaWd/xf66osWyPD2nR
+         ZvVlz0h0bqwEM093unIyXYTqRb0W+bGZZMZQq/Zyz0+BsHeR+qhri5f2aYr2yRCq6CBg
+         t0XAoONgjmoF2Uaa83ICkSMezT0gsycNcLP2zGA3yX2PjEo8nNrQ3Xrb3b15G5ohkAiB
+         bRqg==
+X-Forwarded-Encrypted: i=1; AHgh+RqCCvVLDE8+kw+iU/c4e/8yJ2a09GTjEPYtUH7iaCIv8KQezaE5JfG3vC3C8yefRa6s/rWjCnms0zbHdt6d8Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxdz8wxBNzOMe+YlcOVEA5WFjf2kLb/dvskGdP6D1txvereo2mi
+	xjWtGulQhSGn3tvi1mCAUzAEHQwhDGapJIdja5BU5E1PAXqvYw6c6uxLylwhI50Zc6h85Q==
+X-Gm-Gg: AR+sD11knhOXuauxk6axwNjno8Rxub9tOVhm1GOeQNS2u2uSt/nepT0c5T/l4OefGHV
+	AncYe7FSu2PbHW1y+0wgF3D96rt/T7OkGKUKdiWQOJfXJfdv6Kg5+84jYUTJ+CVKLf0EaqiIP/B
+	I1yK+33cqCTj3gxjULlCRrBYTytZYHSLIyzprHZr6k5HLnqd09D1NCGsW3Hi2O3eROHqdzIJxVM
+	kgMWO6pHJ2r5AucGUAHSCRqj7vbovq16PSakOPGIbY77+uNRtFx7GbIfWWm0ARwDNPrfjuk8Lyc
+	SpNr+6IqsZKlwBloUgl2owzKyBvvE5wmlBVbjRQrMG2ylrbSjsn8/Af/P+IitsaLqMNs4TqtY9i
+	k7yiFtLBDeUfzcEDnh0y9rphW2p0yLMIGM2XQwjMEVIxXNbZUeQ0djo0OtRd+mN1x+crEb9ym2u
+	TlXGuTjVN4smm0CsI3tCLaplbwiTN6dyR1xAfuITtezFiSvQsh
+X-Received: by 2002:a05:6a21:618e:b0:3c2:dcdd:a861 with SMTP id adf61e73a8af0-3c67df10b92mr5823010637.43.1785097728339;
+        Sun, 26 Jul 2026 13:28:48 -0700 (PDT)
 Received: from [127.0.1.1] ([2601:647:4d7d:1e60:c46f:4bb9:6cdd:73bd])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13e6461ef84sm132697c88.14.2026.07.26.13.28.41
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13e6461ef84sm132697c88.14.2026.07.26.13.28.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Jul 2026 13:28:42 -0700 (PDT)
+        Sun, 26 Jul 2026 13:28:47 -0700 (PDT)
 From: Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>
-Subject: [PATCH 0/4] media: rkvdec: Add VP9 support for VDPU381 variant
-Date: Sun, 26 Jul 2026 15:25:33 -0500
-Message-Id: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-0-180fb2d1f10c@gmail.com>
+Date: Sun, 26 Jul 2026 15:25:37 -0500
+Subject: [PATCH 4/4] media: rkvdec: align bytesperline to 64 bytes in
+ rkvdec_fill_decoded_pixfmt()
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAD1tZmoC/x3MwQqEIBAA0F+JOe9AarW1vxIdzBlrWChRkiD69
- 6Tju7wLEkfhBL/qgshZkuxbgfpU4Fa7LYxCxaBr3dVf3eHcoCXC+M/ETmMOA2YKh+kVGlIz9d7
- ZxrdQghDZy/nm43TfD7d6/pFsAAAA
-X-Change-ID: 20260726-b4-add-rkvdec2-vp9-vdpu381-3d1bd8fca4f5
+Message-Id: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-4-180fb2d1f10c@gmail.com>
+References: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-0-180fb2d1f10c@gmail.com>
+In-Reply-To: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-0-180fb2d1f10c@gmail.com>
 To: Detlev Casanova <detlev.casanova@collabora.com>, 
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
  Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -85,13 +85,13 @@ To: Detlev Casanova <detlev.casanova@collabora.com>,
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>, 
  Igor Paunovic <royalnet026@gmail.com>, 
- Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+ Francesco Saverio Pavone <pavone.lawyer@gmail.com>, 
+ Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260726_132844_857793_2392C766 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20260726_132849_070781_6D078468 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,120 +108,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi All,
-This patch series adds the initial VP9 support for VDPU381 present in rk3588.
+From: Igor Paunovic <royalnet026@gmail.com>
 
-VDPU381 supports VP9 Profile 0 and Profile 2 up to 7680x4320@30fps.
+Ensure bytesperline is 64-byte aligned and scale sizeimage accordingly.
 
-Tested with fluster (suite : VP9-TEST-VECTORS, decoder: GStreamer-VP9-V4L2SL-Gst1.0).
-The 224/305 score has been reproduced independently on three RK3588 boards
-across three kernel bases: Orange Pi 5 Pro (RK3588S, 7.2.0-rc3),
-Orange Pi 5 Plus (RK3588, 7.0) and Radxa Rock 5B+ (RK3588, 7.1).
-
-Most of the remaining failures fall into a few known categories:
-
-- All vp90-2-02-size-*.webm variants where either dimension is
-  smaller than 64 pixels fail because the hardware does not support
-  frames smaller than 64x64:
-  vp90-2-02-size-08x08.webm, vp90-2-02-size-08x10.webm,
-  vp90-2-02-size-08x16.webm, vp90-2-02-size-08x18.webm,
-  vp90-2-02-size-08x32.webm, vp90-2-02-size-08x34.webm,
-  vp90-2-02-size-08x64.webm, vp90-2-02-size-08x66.webm,
-  vp90-2-02-size-10x08.webm, vp90-2-02-size-10x10.webm,
-  vp90-2-02-size-10x16.webm, vp90-2-02-size-10x18.webm,
-  vp90-2-02-size-10x32.webm, vp90-2-02-size-10x34.webm,
-  vp90-2-02-size-10x64.webm, vp90-2-02-size-10x66.webm,
-  vp90-2-02-size-16x08.webm, vp90-2-02-size-16x10.webm,
-  vp90-2-02-size-16x16.webm, vp90-2-02-size-16x18.webm,
-  vp90-2-02-size-16x32.webm, vp90-2-02-size-16x34.webm,
-  vp90-2-02-size-16x64.webm, vp90-2-02-size-16x66.webm,
-  vp90-2-02-size-18x08.webm, vp90-2-02-size-18x10.webm,
-  vp90-2-02-size-18x18.webm, vp90-2-02-size-18x32.webm,
-  vp90-2-02-size-18x34.webm, vp90-2-02-size-18x64.webm,
-  vp90-2-02-size-18x66.webm, vp90-2-02-size-32x08.webm,
-  vp90-2-02-size-32x10.webm, vp90-2-02-size-32x18.webm,
-  vp90-2-02-size-32x34.webm, vp90-2-02-size-32x66.webm,
-  vp90-2-02-size-34x08.webm, vp90-2-02-size-34x10.webm,
-  vp90-2-02-size-34x16.webm, vp90-2-02-size-34x34.webm,
-  vp90-2-02-size-34x64.webm, vp90-2-02-size-34x66.webm,
-  vp90-2-02-size-64x08.webm, vp90-2-02-size-64x10.webm,
-  vp90-2-02-size-66x08.webm, vp90-2-02-size-66x10.webm.
-
-- vp90-2-05-resize.ivf, vp90-2-18-resize.ivf and all
-  vp90-2-21-resize_inter_*.webm variants fail. These streams change
-  resolution mid-stream on a non-keyframe, and a reference frame
-  from before the resize ends up unavailable by the time it's
-  needed again. This is being actively looked into:
-  vp90-2-05-resize.ivf, vp90-2-18-resize.ivf,
-  vp90-2-21-resize_inter_1280x720_5_1-2.webm,
-  vp90-2-21-resize_inter_1280x720_5_3-4.webm,
-  vp90-2-21-resize_inter_1280x720_7_1-2.webm,
-  vp90-2-21-resize_inter_1280x720_7_3-4.webm,
-  vp90-2-21-resize_inter_1920x1080_5_1-2.webm,
-  vp90-2-21-resize_inter_1920x1080_5_3-4.webm,
-  vp90-2-21-resize_inter_1920x1080_7_1-2.webm,
-  vp90-2-21-resize_inter_1920x1080_7_3-4.webm,
-  vp90-2-21-resize_inter_320x180_5_1-2.webm,
-  vp90-2-21-resize_inter_320x180_5_3-4.webm,
-  vp90-2-21-resize_inter_320x180_7_1-2.webm,
-  vp90-2-21-resize_inter_320x180_7_3-4.webm,
-  vp90-2-21-resize_inter_320x240_5_1-2.webm,
-  vp90-2-21-resize_inter_320x240_5_3-4.webm,
-  vp90-2-21-resize_inter_320x240_7_1-2.webm,
-  vp90-2-21-resize_inter_320x240_7_3-4.webm,
-  vp90-2-21-resize_inter_640x360_5_1-2.webm,
-  vp90-2-21-resize_inter_640x360_5_3-4.webm,
-  vp90-2-21-resize_inter_640x360_7_1-2.webm,
-  vp90-2-21-resize_inter_640x360_7_3-4.webm,
-  vp90-2-21-resize_inter_640x480_5_1-2.webm,
-  vp90-2-21-resize_inter_640x480_5_3-4.webm,
-  vp90-2-21-resize_inter_640x480_7_1-2.webm,
-  vp90-2-21-resize_inter_640x480_7_3-4.webm.
-
-- vp90-2-09-aq2.webm,
-  vp90-2-09-lf_deltas.webm,
-  vp90-2-15-segkey_adpq.webm,
-  vp90-2-19-skip-01.webm,
-  vp90-2-19-skip-02.webm,
-  vp90-2-19-skip.webm,  vp90-2-22-svc_1280x720_3.ivf,
-  are still failing and not yet root-caused.
-
-- vp91-2-04-yuv422.webm
-  vp91-2-04-yuv444.webm
-  fail because the hardware does not support the format these
-  streams use (4:2:2/4:4:4), only 4:2:0.
-
-The base vdpu381 VP9 driver support was introduced by me. Profile 2 support
-was added by Igor Paunovic. Francesco Saverio Pavone fixed bugs in
-the segmentation map size calculation and in the altref vertical
-scale factor. Igor Paunovic also fixed a decoded-frame stride bug, aligning
-bytesperline to 64 bytes in rkvdec_fill_decoded_pixfmt().
-
+Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+Signed-off-by: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+Signed-off-by: Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>
 ---
-Igor Paunovic (1):
-      media: rkvdec: align bytesperline to 64 bytes in rkvdec_fill_decoded_pixfmt()
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-Venkata Atchuta Bheemeswara Sarma Darbha (3):
-      media: rkvdec: vp9: Changing get_ref_buf function name to get_ref_buf_vp9
-      media: rkvdec: Move vp9 functions to common file
-      media: rkvdec: Add VP9 support for VDPU381 variant
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+index 436bb460f04e..6ab6530b1cc9 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+@@ -102,12 +102,20 @@ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
+ 				       struct v4l2_pix_format_mplane *pix_mp)
+ {
+ 	const struct rkvdec_variant *variant = ctx->dev->variant;
++	struct v4l2_plane_pix_format *plane = &pix_mp->plane_fmt[0];
++	u32 aligned_bpl;
+ 
+ 	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat, pix_mp->width, pix_mp->height);
+ 
+-	ctx->colmv_offset = pix_mp->plane_fmt[0].sizeimage;
++	/* ensure bpl is 64 byte aligned and scale sizeimage accordingly. */
++	aligned_bpl = ALIGN(plane->bytesperline, 64);
++	if (aligned_bpl != plane->bytesperline) {
++		plane->sizeimage = plane->sizeimage / plane->bytesperline * aligned_bpl;
++		plane->bytesperline = aligned_bpl;
++	}
+ 
+-	pix_mp->plane_fmt[0].sizeimage += variant->ops->colmv_size(pix_mp->width, pix_mp->height);
++	ctx->colmv_offset = plane->sizeimage;
++	plane->sizeimage += variant->ops->colmv_size(pix_mp->width, pix_mp->height);
+ }
+ 
+ static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
 
- drivers/media/platform/rockchip/rkvdec/Makefile    |    2 +
- .../platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h |  234 +++++
- .../platform/rockchip/rkvdec/rkvdec-vdpu381-vp9.c  | 1067 ++++++++++++++++++++
- .../platform/rockchip/rkvdec/rkvdec-vp9-common.c   |   65 ++
- .../platform/rockchip/rkvdec/rkvdec-vp9-common.h   |   92 ++
- .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    |  121 +--
- drivers/media/platform/rockchip/rkvdec/rkvdec.c    |   73 +-
- drivers/media/platform/rockchip/rkvdec/rkvdec.h    |    1 +
- 8 files changed, 1537 insertions(+), 118 deletions(-)
----
-base-commit: 1229e2e57a5c2980ccd457b9b53ea0eed5a22ab3
-change-id: 20260726-b4-add-rkvdec2-vp9-vdpu381-3d1bd8fca4f5
-
-Best regards,
---  
-Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>
+-- 
+2.43.0
 
 
 _______________________________________________
