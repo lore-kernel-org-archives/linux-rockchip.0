@@ -4,106 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90558C531FC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Jul 2026 06:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C79F6C531D0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Jul 2026 06:45:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iUGT+C9F0gUykzIrHx/1ZNOGmeHhVcyo/KreHgdTp+U=; b=HMgaSAei6MG6Qt
-	q/YjkDfhBNaySWEpCWOqwLQRS8B5MWLTHqKhWmtlAwJGO+FcbrbBu1SVjGVxqo3qR3A4bzbfjhp+o
-	YVKAh8FM+cLXCkj3pfdGoyMVQis0bC1wQUlsAN/SoWFupqYb21+VaNHd9ydjuicvgvDrBG4R/gdq7
-	rxyuIvA/0Q+dLcFhf5ThFoZMvGIcZZTiwf95mk+f7shRIFr/X24ZJL5+44RPlZyqr0IZlybAdKDyb
-	lyV8a2B9BC7OxBU4YTVBVmTLkoZTL4MjEmi3f+JkG6wtuGDfpm3hAk0iNxEZh0k57uaRUKiEExpS6
-	Y9CjwR32OEvmBsTOYHQQ==;
+	List-Owner; bh=bazI3NhY6yBMjOy87R3JDOxdkRf+wXjQ8TanhK9tV8E=; b=kNkoZDkdKs+u54
+	V1H4OXovCNaBUmeb5RsqN86Q+E9ytdxZ2FN2ZSHz6hfBpXo9wu6S2DhCZTC05DbIoIOiZCjl0IROW
+	gPbUL+ML8V+eprKGblNuCDFIY6nYdQ0uFboQgOdcd99Bo4M/ovmCsqWg+olSt1zDIIGca3aXGGLF9
+	CnRVsZxAdfGUg8KWBPBGKh6xB4gRekr3277cJrXywHCEqCEgEvLeFW3UZ2szCEXSDxiM6Ny0NR3s/
+	NNKqQoIrfQc6i6QxjAMrb/SDXsLcHLrldgtrPsHKjOiryw8W2XERDhhmeCCVOMTuhAbaUTPqoSl6g
+	bhoypt8YOuyct0HlFn/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woF4j-000000022ke-3AlB;
-	Mon, 27 Jul 2026 06:44:33 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1woF5a-000000022xb-0eRp;
+	Mon, 27 Jul 2026 06:45:26 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woF4g-000000022je-3CKY
-	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Jul 2026 06:44:32 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-38e7109321dso1217361a91.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 26 Jul 2026 23:44:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785134669; cv=none;
-        d=google.com; s=arc-20260327;
-        b=gaw6f5wzwXRRobbmvbFvx3MWw/uwCzcsvNA2Dn0byQ8oRThdgOl2YajgS4vzkL1qh0
-         T+mQ8SfEVIl3HG//1L1hTwrZkoJ+NIoU8ShfuoeZSbDq9CbBQSA1PG6mYqW9TXR/t9f+
-         dFV8Ob/ou2UCIqSLSDi4caSPwJjfRqJ3ye7z43CiwXPZP97Wjc1tG2zh+5zZGYZ6FQ4b
-         Jr7BC3P9y7XWdfSE0xu0zp+xdOaFc9b5gl3pJHcTqG8F4dIU71fkRiaAudSbeqstaGOr
-         HseIuUgS0ZCQoGAZUSNv6wb2TqCvZXGo+f8EsGRG8xBKTwmxhenUVdBa5XXyFRy4HSnl
-         hBDQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=VVhy2zBHRxUQesgFWLmDsfBmAyKMFgT84KyKy5f5YfE=;
-        fh=y6ctMU20UoOPBeoP7FDKDz1UyCQJB9HoWsdUf2Vrs90=;
-        b=SuPJD4e+zaUDBNi20VtuweNN9Yp872SR6/WFkYW/j+JVDMQi1XrSgmK5uxMqkAuYzw
-         T0q8VWAvbXW10NzE8rybakCWB65ikQynrLlP/e6PsQtHxyhOXox72wtU3nHp5CHzDof0
-         oiyG5C0rOnT/jwGu0RalVIhLfgJCk59TvDB3g4kYgRpysucMCxOJkUfcDcFPCTJkFPVS
-         UZZag/sppRP2zZ9hu0yZ0e7jOkzJUpPE06Wfl1hwn89tTOz5t0SHBrjTO59XLxRAYCWr
-         V3/WOLD3Edh2mdlKoyKjF1Gv9XJti89Dt1ocFach2HsnVjNhhTvlH2K0LwhJxr68HWf6
-         BLvA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785134669; x=1785739469; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=VVhy2zBHRxUQesgFWLmDsfBmAyKMFgT84KyKy5f5YfE=;
-        b=dA/+hzElyuldR355XqffI9nDKECmpgPknEFaSMfYTDxb9aUfBWGpfqNQgAu4zOoBgQ
-         BHZLNQJYvFs+e6a2UUsYbKhBMZ7dwK+MuDc0qtDYqK6lHv9bVxtmD9+C2XVIIyzaJYPX
-         b8j1r0BBUPSrPV8d6etE9sZfm6b+4YzpHHDM+xKOho6B6GODDZ3haGW7kVQLo2NMJuK7
-         qHc8Gz7zitNNGN2M+DEiEvqOmpzd7mDtnVQblk7jTgOtLf7QI76ocKT0aoRq8Xn9Rq7e
-         wXVzVd5ZxslqqahpnGC7D+xpz5Wm6vXHZtAuRoQPJhvlW1Y+VdI+CakgCGSQu+Z7ZI3v
-         8Nig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785134669; x=1785739469;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=VVhy2zBHRxUQesgFWLmDsfBmAyKMFgT84KyKy5f5YfE=;
-        b=bh0kDahqQNJTVxcVxw/LvwBS9cWC9Eme6GJMf6zznlVwOcmbdC2AoluuCLd9Fwsx4G
-         +DMA0fWioRzEL9Evja/4u2TeZw+AL3+XX/0eKhdmqhwVQX7Lkn/ugr9LtLxQuKJ0mfWJ
-         JYJrvl+BioJ+KBKxUtOlK1m6/IlV5IfVXRCvx8IiOGqlYhet97b4mnBXYTSX0PL9RfmF
-         sSUk7P0ooMII4sCxAMqvtFr9U6cRuJ+lQUenwLw73catXdZr3MCJb5/iBr8uzQj1jAcO
-         gHBqhD+RatsFzfACr1wkvz3KF27vVyvFRslYXERnBRNwngUerAuw5w43PK+EzmK2aL8P
-         hANA==
-X-Forwarded-Encrypted: i=1; AHgh+Ro140u9wNOfODQpsIhcFPxWEuVgFzbVdTD6rZLs8OC0qdOZmSrnnFvK6j01Tqa4ZpyhT9se/LsFBza74GNYWQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxbbunfZEj0uwAi+z/EHjpB6xkjTaGNz9A6aGVHOv0wJYryiHXo
-	uKYvp7bxnNyrWnA8HHGa6UNlN12wsm7UQujmpWGZpcKySHOpIr922Uka9PMJ+Rl0LS6yHhE2E6c
-	hDsSPdzi2w4Ouo++FQyKo2GgT9Z6akA==
-X-Gm-Gg: AR+sD12XSsl1tNPBSljM3xbmEwu0K4V2vxubzJEo027rKD+syWCSyq0HA8ZLD1gjd+/
-	qS+SWfIICYeZ59NDJGxUtudI6QT+2SLmGbn+9BdLkvAm45UrznZRHi+fOSOVWn27fjRZdeyKoU3
-	YlYc/SzBxKheSu5+DTQLEuFphZe5M5fMs/d9Vy1vPT3wF48f4qFvE1m7WPM62nSswwLD4PPQF+m
-	Knt3yv4w8gWQaQOIZftk0G8hMHoq8M5EdK60Wo2wwJgH0B8EIegeWURII2wdiMCyzoN0whw6VJw
-	MyEvsiRQNEqT+bibpOK5G+6lLpuz
-X-Received: by 2002:a17:90b:3e47:b0:38e:4011:465f with SMTP id
- 98e67ed59e1d1-38f2960cd53mr6833918a91.23.1785134669331; Sun, 26 Jul 2026
- 23:44:29 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-0-180fb2d1f10c@gmail.com>
-In-Reply-To: <20260726-b4-add-rkvdec2-vp9-vdpu381-v1-0-180fb2d1f10c@gmail.com>
-From: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
-Date: Mon, 27 Jul 2026 08:44:17 +0200
-X-Gm-Features: AUfX_mwqcqnNQMcZqt04xa55VFBtNE5LGKsPbm1cl7GlNjH5cXHOSWUWokyx1_s
-Message-ID: <CAMhzubo-NJMro7+XbxD=MhSXiRp14chatDcn-=1Hsiak786uQw@mail.gmail.com>
-Subject: Re: [PATCH 0/4] media: rkvdec: Add VP9 support for VDPU381 variant
-To: Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>, 
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Igor Paunovic <royalnet026@gmail.com>
+	id 1woF5W-000000022tk-3HNf;
+	Mon, 27 Jul 2026 06:45:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1785134680;
+	bh=0RTzPafltaazrRSyLxjVEGPsM2NQMO3dAbcjHX9A5Js=;
+	h=From:To:Subject:Date:Message-Id;
+	b=r/TktP5Ld+WWTvzDRiuXCPNLWf+JdR6QK0wp/0dnFL9CQrdAdMTd6Kw8BeMozhRwh
+	 DSPdNw4FyJ0StM/GmzXUJNYOKksRNa8Kj+aEiAySi8TRQL7Opc6LF+rThj45igCHCC
+	 R0IQgQwGclgi8lU4p5ms73quIbtq62Xb1blQHJQA=
+X-QQ-mid: esmtpgz10t1785134678t321df366
+X-QQ-Originating-IP: FIo2NFa+CPIcguk3dsFKhKkZ+lavMf+1Wwj3ZSwK65s=
+Received: from DESKTOP-8BT1A2O.localdomain ( [61.154.14.86])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 27 Jul 2026 14:44:35 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 8511555732185011648
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-phy@lists.infradead.org
+Subject: [PATCH v4 2/5] drm/bridge: aux: Add drm_aux_bridge_register_from_node()
+Date: Mon, 27 Jul 2026 14:44:05 +0800
+Message-Id: <20260727064408.101-3-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20260727064408.101-1-kernel@airkyi.com>
+References: <20260727064408.101-1-kernel@airkyi.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: MCk7GSmjSGXyPd3ehGERA9Sl1gZ3M3YUxSO5kjYODANOGAHm1uS4S5FB
+	OWE/XcM1LUekLlnY8cnEg8yjQ6/QP/POJDPaCwsM+ABDrhj8jYRcgKSouCdaIXxtY9LdsTq
+	fxfZSZV9BzOCLdofCV4nSU6xxGOkiAnJvkIiKh/YhukpdjSGvKDCSZu2xGBnwElby25Y/OC
+	lYkhVrsncDNGx5G6K+CNbqN43vzRHd1vvTV7qTlI8rbo4NBFSsmbDw8lfL2PiKzFXFk0On/
+	cplEWxADW0n/gAAQDGu95EHaCS4gsoRhL/HkG/6qkqQZsMGowdSgS2HfJCaMT9uZFzflZ3e
+	nIDOqazePhi6lO+p4x91oUviuMcyY2ejkLDYgwveKAtozkGCZ7fnr7QXYL6LVbeFqibWCov
+	iH6fFDOU2gpxkPPBvwwvgvZqaSpUQLmqpMf3sJ0PhMkKxSuZC3KgbsriIPVEVv5Ik7BdA8i
+	RtLhLS8TBLws1ctOft1MkhRKqd1+y+B82cz/x5JzGE/E/Ic3DXyi9m9wUOM6wSTOL2gXmpX
+	X7UCdM50A8yUB0N1LC6Tq2G9k53DHAgOHtZ39hLwBM6q6W86eDVhB7ZV9VcB0FhOHcSOAb8
+	39YvEx1W0RXmH/7MXPguQHkxqsRRMxkzgJQx8QwL5576rIAMJOJ8cLtG6W9wGPlPYRCjkjE
+	CCHFnMrxeRN0UCXsxteQxq2nla+7aoXtyv03bqO/M2V2P3WXjpeV2B2ikXMefbsNO86kJMg
+	LwPWTn7UCm8Z6mevCoGv17DfW6ApfEq5/9JT2phvYwNxDpX7YdFNdD9vkup6s4kMcbfJNXx
+	8HRPCwr+aS+lQ+kqjN3qphHGQzg0SHeHvPAj7mEPD4qF0kB5dQ2rBxe4WJb7mF13JPu7eJI
+	yGsTEAVtefjtzh2AidiWNaxk8wjkKOaUptU7669q5peWolQuL7WYRZYKhitQLZHVuzx1Wvz
+	1PtSzvJCn/3xvLzgKBuPll5yW5eYk9YF5JkwIyoYIqbxqY3ktvJwcHONtynbFjCFvNI1wUd
+	ExhQ1MsM5pfNb+bwSrA9C2ZtZ+hGIHU55hx48IaSh6vtQ43Pzz
+X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260726_234430_810390_2415DFE4 
-X-CRM114-Status: GOOD (  19.21  )
+X-CRM114-CacheID: sfid-20260726_234523_303126_DB32BB5D 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,135 +107,120 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rock 5B+ leg of the three-board run in the cover letter, as a tag you can
-pick up. 7.1 base carrying this code, not a build of the series as posted.
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+The drm_aux_bridge_register() uses the device->of_node as the
+bridge->of_node.
 
+This patch adds drm_aux_bridge_register_from_node() to allow
+specifying the of_node corresponding to the bridge.
 
-Il giorno dom 26 lug 2026 alle ore 22:28 Venkata Atchuta Bheemeswara
-Sarma Darbha <vdarbha0473@gmail.com> ha scritto:
->
-> Hi All,
-> This patch series adds the initial VP9 support for VDPU381 present in rk3588.
->
-> VDPU381 supports VP9 Profile 0 and Profile 2 up to 7680x4320@30fps.
->
-> Tested with fluster (suite : VP9-TEST-VECTORS, decoder: GStreamer-VP9-V4L2SL-Gst1.0).
-> The 224/305 score has been reproduced independently on three RK3588 boards
-> across three kernel bases: Orange Pi 5 Pro (RK3588S, 7.2.0-rc3),
-> Orange Pi 5 Plus (RK3588, 7.0) and Radxa Rock 5B+ (RK3588, 7.1).
->
-> Most of the remaining failures fall into a few known categories:
->
-> - All vp90-2-02-size-*.webm variants where either dimension is
->   smaller than 64 pixels fail because the hardware does not support
->   frames smaller than 64x64:
->   vp90-2-02-size-08x08.webm, vp90-2-02-size-08x10.webm,
->   vp90-2-02-size-08x16.webm, vp90-2-02-size-08x18.webm,
->   vp90-2-02-size-08x32.webm, vp90-2-02-size-08x34.webm,
->   vp90-2-02-size-08x64.webm, vp90-2-02-size-08x66.webm,
->   vp90-2-02-size-10x08.webm, vp90-2-02-size-10x10.webm,
->   vp90-2-02-size-10x16.webm, vp90-2-02-size-10x18.webm,
->   vp90-2-02-size-10x32.webm, vp90-2-02-size-10x34.webm,
->   vp90-2-02-size-10x64.webm, vp90-2-02-size-10x66.webm,
->   vp90-2-02-size-16x08.webm, vp90-2-02-size-16x10.webm,
->   vp90-2-02-size-16x16.webm, vp90-2-02-size-16x18.webm,
->   vp90-2-02-size-16x32.webm, vp90-2-02-size-16x34.webm,
->   vp90-2-02-size-16x64.webm, vp90-2-02-size-16x66.webm,
->   vp90-2-02-size-18x08.webm, vp90-2-02-size-18x10.webm,
->   vp90-2-02-size-18x18.webm, vp90-2-02-size-18x32.webm,
->   vp90-2-02-size-18x34.webm, vp90-2-02-size-18x64.webm,
->   vp90-2-02-size-18x66.webm, vp90-2-02-size-32x08.webm,
->   vp90-2-02-size-32x10.webm, vp90-2-02-size-32x18.webm,
->   vp90-2-02-size-32x34.webm, vp90-2-02-size-32x66.webm,
->   vp90-2-02-size-34x08.webm, vp90-2-02-size-34x10.webm,
->   vp90-2-02-size-34x16.webm, vp90-2-02-size-34x34.webm,
->   vp90-2-02-size-34x64.webm, vp90-2-02-size-34x66.webm,
->   vp90-2-02-size-64x08.webm, vp90-2-02-size-64x10.webm,
->   vp90-2-02-size-66x08.webm, vp90-2-02-size-66x10.webm.
->
-> - vp90-2-05-resize.ivf, vp90-2-18-resize.ivf and all
->   vp90-2-21-resize_inter_*.webm variants fail. These streams change
->   resolution mid-stream on a non-keyframe, and a reference frame
->   from before the resize ends up unavailable by the time it's
->   needed again. This is being actively looked into:
->   vp90-2-05-resize.ivf, vp90-2-18-resize.ivf,
->   vp90-2-21-resize_inter_1280x720_5_1-2.webm,
->   vp90-2-21-resize_inter_1280x720_5_3-4.webm,
->   vp90-2-21-resize_inter_1280x720_7_1-2.webm,
->   vp90-2-21-resize_inter_1280x720_7_3-4.webm,
->   vp90-2-21-resize_inter_1920x1080_5_1-2.webm,
->   vp90-2-21-resize_inter_1920x1080_5_3-4.webm,
->   vp90-2-21-resize_inter_1920x1080_7_1-2.webm,
->   vp90-2-21-resize_inter_1920x1080_7_3-4.webm,
->   vp90-2-21-resize_inter_320x180_5_1-2.webm,
->   vp90-2-21-resize_inter_320x180_5_3-4.webm,
->   vp90-2-21-resize_inter_320x180_7_1-2.webm,
->   vp90-2-21-resize_inter_320x180_7_3-4.webm,
->   vp90-2-21-resize_inter_320x240_5_1-2.webm,
->   vp90-2-21-resize_inter_320x240_5_3-4.webm,
->   vp90-2-21-resize_inter_320x240_7_1-2.webm,
->   vp90-2-21-resize_inter_320x240_7_3-4.webm,
->   vp90-2-21-resize_inter_640x360_5_1-2.webm,
->   vp90-2-21-resize_inter_640x360_5_3-4.webm,
->   vp90-2-21-resize_inter_640x360_7_1-2.webm,
->   vp90-2-21-resize_inter_640x360_7_3-4.webm,
->   vp90-2-21-resize_inter_640x480_5_1-2.webm,
->   vp90-2-21-resize_inter_640x480_5_3-4.webm,
->   vp90-2-21-resize_inter_640x480_7_1-2.webm,
->   vp90-2-21-resize_inter_640x480_7_3-4.webm.
->
-> - vp90-2-09-aq2.webm,
->   vp90-2-09-lf_deltas.webm,
->   vp90-2-15-segkey_adpq.webm,
->   vp90-2-19-skip-01.webm,
->   vp90-2-19-skip-02.webm,
->   vp90-2-19-skip.webm,  vp90-2-22-svc_1280x720_3.ivf,
->   are still failing and not yet root-caused.
->
-> - vp91-2-04-yuv422.webm
->   vp91-2-04-yuv444.webm
->   fail because the hardware does not support the format these
->   streams use (4:2:2/4:4:4), only 4:2:0.
->
-> The base vdpu381 VP9 driver support was introduced by me. Profile 2 support
-> was added by Igor Paunovic. Francesco Saverio Pavone fixed bugs in
-> the segmentation map size calculation and in the altref vertical
-> scale factor. Igor Paunovic also fixed a decoded-frame stride bug, aligning
-> bytesperline to 64 bytes in rkvdec_fill_decoded_pixfmt().
->
-> ---
-> Igor Paunovic (1):
->       media: rkvdec: align bytesperline to 64 bytes in rkvdec_fill_decoded_pixfmt()
->
-> Venkata Atchuta Bheemeswara Sarma Darbha (3):
->       media: rkvdec: vp9: Changing get_ref_buf function name to get_ref_buf_vp9
->       media: rkvdec: Move vp9 functions to common file
->       media: rkvdec: Add VP9 support for VDPU381 variant
->
->  drivers/media/platform/rockchip/rkvdec/Makefile    |    2 +
->  .../platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h |  234 +++++
->  .../platform/rockchip/rkvdec/rkvdec-vdpu381-vp9.c  | 1067 ++++++++++++++++++++
->  .../platform/rockchip/rkvdec/rkvdec-vp9-common.c   |   65 ++
->  .../platform/rockchip/rkvdec/rkvdec-vp9-common.h   |   92 ++
->  .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    |  121 +--
->  drivers/media/platform/rockchip/rkvdec/rkvdec.c    |   73 +-
->  drivers/media/platform/rockchip/rkvdec/rkvdec.h    |    1 +
->  8 files changed, 1537 insertions(+), 118 deletions(-)
-> ---
-> base-commit: 1229e2e57a5c2980ccd457b9b53ea0eed5a22ab3
-> change-id: 20260726-b4-add-rkvdec2-vp9-vdpu381-3d1bd8fca4f5
->
-> Best regards,
-> --
-> Venkata Atchuta Bheemeswara Sarma Darbha <vdarbha0473@gmail.com>
->
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+
+(no changes since v3)
+
+Changes in v2:
+- Fix incorrect function names in the documentation comments.
+
+---
+ drivers/gpu/drm/bridge/aux-bridge.c | 26 +++++++++++++++++++++++---
+ include/drm/bridge/aux-bridge.h     |  6 ++++++
+ 2 files changed, 29 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/aux-bridge.c b/drivers/gpu/drm/bridge/aux-bridge.c
+index 1ed21a8713bf..06a1466f49bd 100644
+--- a/drivers/gpu/drm/bridge/aux-bridge.c
++++ b/drivers/gpu/drm/bridge/aux-bridge.c
+@@ -33,8 +33,9 @@ static void drm_aux_bridge_unregister_adev(void *_adev)
+ }
+ 
+ /**
+- * drm_aux_bridge_register - Create a simple bridge device to link the chain
++ * drm_aux_bridge_register_from_node - Create a simple bridge device to link the chain
+  * @parent: device instance providing this bridge
++ * @np: device node pointer corresponding to this bridge instance
+  *
+  * Creates a simple DRM bridge that doesn't implement any drm_bridge
+  * operations. Such bridges merely fill a place in the bridge chain linking
+@@ -42,7 +43,7 @@ static void drm_aux_bridge_unregister_adev(void *_adev)
+  *
+  * Return: zero on success, negative error code on failure
+  */
+-int drm_aux_bridge_register(struct device *parent)
++int drm_aux_bridge_register_from_node(struct device *parent, struct device_node *np)
+ {
+ 	struct auxiliary_device *adev;
+ 	int ret;
+@@ -62,7 +63,10 @@ int drm_aux_bridge_register(struct device *parent)
+ 	adev->dev.parent = parent;
+ 	adev->dev.release = drm_aux_bridge_release;
+ 
+-	device_set_of_node_from_dev(&adev->dev, parent);
++	if (np)
++		device_set_node(&adev->dev, of_fwnode_handle(np));
++	else
++		device_set_of_node_from_dev(&adev->dev, parent);
+ 
+ 	ret = auxiliary_device_init(adev);
+ 	if (ret) {
+@@ -80,6 +84,22 @@ int drm_aux_bridge_register(struct device *parent)
+ 
+ 	return devm_add_action_or_reset(parent, drm_aux_bridge_unregister_adev, adev);
+ }
++EXPORT_SYMBOL_GPL(drm_aux_bridge_register_from_node);
++
++/**
++ * drm_aux_bridge_register - Create a simple bridge device to link the chain
++ * @parent: device instance providing this bridge
++ *
++ * Creates a simple DRM bridge that doesn't implement any drm_bridge
++ * operations. Such bridges merely fill a place in the bridge chain linking
++ * surrounding DRM bridges.
++ *
++ * Return: zero on success, negative error code on failure
++ */
++int drm_aux_bridge_register(struct device *parent)
++{
++	return drm_aux_bridge_register_from_node(parent, NULL);
++}
+ EXPORT_SYMBOL_GPL(drm_aux_bridge_register);
+ 
+ struct drm_aux_bridge_data {
+diff --git a/include/drm/bridge/aux-bridge.h b/include/drm/bridge/aux-bridge.h
+index c2f5a855512f..7dd1f17a1354 100644
+--- a/include/drm/bridge/aux-bridge.h
++++ b/include/drm/bridge/aux-bridge.h
+@@ -13,11 +13,17 @@ struct auxiliary_device;
+ 
+ #if IS_ENABLED(CONFIG_DRM_AUX_BRIDGE)
+ int drm_aux_bridge_register(struct device *parent);
++int drm_aux_bridge_register_from_node(struct device *parent, struct device_node *np);
+ #else
+ static inline int drm_aux_bridge_register(struct device *parent)
+ {
+ 	return 0;
+ }
++
++static inline int drm_aux_bridge_register_from_node(struct device *parent, struct device_node *np)
++{
++	return 0;
++}
+ #endif
+ 
+ #if IS_ENABLED(CONFIG_DRM_AUX_HPD_BRIDGE)
+-- 
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
