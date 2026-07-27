@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9DBEC531FC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Jul 2026 15:35:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D473FC531D0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Jul 2026 15:36:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/QIMOoLsM6Gl9FADRQSI0oeYFs/MC1oB5Soi27jE7i4=; b=KBncYoXe3JAsolzyHmSHU+GixY
-	tB7sCr5hY3kWb695iLm7sno4J6CuN1TLrKeGsJ8+atUUvc6jhMMo951bAOWEjuHEVpRVR7nnh7/f+
-	8+6C8cfw0LR10zUZOr3Hd4uqRlooP9sN0Pui5YHWvN8RJi3AsbYgibu1XvHuP2MrmcG4Zfo9+llX1
-	awL+ZKa+1tYLjT01UMmrE+96Tg9qdpTFhYPKUEDsOUnGwWtgxiUA+3RXJcz2PAwJkhYWMcW5vCQU7
-	81dnZLXkz84u9zmqUZ8T0onwzOJ72Bz4TgfzgOsAHK0BORTswChZ6WlvqPZyKTOs/t1lLA1qFsODB
-	SbVBEMSg==;
+	bh=ouloAoBwQPEztCBcDGi0vsZ8rLuTJZtDR3HPwMmhADs=; b=vX7iawyMnJCD+LAk4oKjjeQZ2u
+	go6rbpjSYIKZlPcfZZDVtanpyfrTqa5v9koTozyJegKt1ySCLLVfMBVxiYUcMwPEIuYysueQx7fGK
+	p1VyWaogvsRvg5eh5Nbr7qbprQG9s8qUQbKBfkFxl660Wa8WGyE1fGBZWcCLqvDqIKFPc1/QFZJwq
+	7WI29VQwYIu0KvAsLC5ythmcRi7L1UtaBoP7iDuMRAgJFrmR6skqlO3P2AVM7bh1ypRXTsz0vLLTK
+	CgLlHt4zHKauGcnAh498UjsPEGT1lnXSTx9PjAdP+G5AKozC52sGvzAdENIFkGeHTJ5hQiyT52XWj
+	RJrNyQKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woNMg-00000003Bjq-2L50;
-	Mon, 27 Jul 2026 15:35:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1woNN5-00000003Brg-3Bv4;
+	Mon, 27 Jul 2026 15:36:03 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woNMf-00000003Bj7-04sT;
-	Mon, 27 Jul 2026 15:35:37 +0000
+	id 1woNN3-00000003Bqu-47Jx;
+	Mon, 27 Jul 2026 15:36:02 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 533674070E;
-	Mon, 27 Jul 2026 15:35:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A53C21F000E9;
-	Mon, 27 Jul 2026 15:35:35 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6438741576;
+	Mon, 27 Jul 2026 15:36:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B419D1F000E9;
+	Mon, 27 Jul 2026 15:36:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785166536;
-	bh=6pimLA8PXpe/KB2O0/HbQ+QwyvJSF7KITGTCYTL5PK8=;
+	s=k20260515; t=1785166561;
+	bh=rH0dfJwx6TaUJRP9778eSVp+cuHpBPdxCqvvTxPFEdM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=kPGyshABvDxW3Ih+0CYOdp7ZetMFxAj2p4xEAoU4nrm+vWZ44ccOoqz64YO5hUEEG
-	 QvHaF3VO65kWPjOh2uqE1OaZIMSaFqAu3K9HnsjbqXYyuqX5n8xaapj4qeHA/5wr+4
-	 92YRfeMwxNcWOCMZr921uKVmanLykM2B8wSC+vT45+s6HjCs+MOT/P4ytTm/yhm1nB
-	 mBYgbIvIorqVh8Iqh/Z60kRsAA4NObO39857pZVg5SmgqnrOHER9MrVKuDU2FJuO3Y
-	 3rt3l1Z/Hni31UcWyk/3RJbV88Q9trPXsexJgI2uyXEDHzVwhEul1+RiSgFf6KyOEI
-	 R4zKa6Bw3KdsQ==
-Date: Mon, 27 Jul 2026 17:35:33 +0200
+	b=VR0PAk25kOTzE8THqAMeXyIQ4iDVWM4cRIM07AXEHoe/7C/k/ktnbEHFIWB8fJeQj
+	 VjNd1r5ZFVqeMOoBTDTlUS0MEY4OGSnwJAXzBIEUvMnewMoWOWDHjMULcPcaoSLK2z
+	 a7aPaVwplqFn+8mNoq1biGH2vNiSKFWmL/hRwdRp5ZvQmBim74pLuCmuTKHXGiSvPZ
+	 sNEcCsoZnPdqbHixGkvHC+yysAjMjqmx2WTTOlNp1Rh401XT3XgyxxE4YCaK4bqBT1
+	 3kbMqNHU24jY2NCnD5v0NKGwkjWGgtF99j1vSPP9hJpBZccswonp6S8m7iTYTGNC3R
+	 daVrbOWXZhdyg==
+Date: Mon, 27 Jul 2026 17:35:58 +0200
 From: Thierry Reding <thierry.reding@kernel.org>
 To: Jerome Brunet <jbrunet@baylibre.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, 
@@ -53,13 +53,13 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
 	Tero Kristo <kristo@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
 	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org
-Subject: Re: [PATCH v2 2/7] clk: qcom: clean-up simple provider misuse of the
- consumer API
-Message-ID: <amd6vhL9bX0YmjE3@orome>
+Subject: Re: [PATCH v2 3/7] clk: renesas: clean-up simple provider misuse of
+ the consumer API
+Message-ID: <amd61_Itb8wOTq0H@orome>
 References: <20260724-clk-provider-simple-clean-v2-0-56f306156d25@baylibre.com>
- <20260724-clk-provider-simple-clean-v2-2-56f306156d25@baylibre.com>
+ <20260724-clk-provider-simple-clean-v2-3-56f306156d25@baylibre.com>
 MIME-Version: 1.0
-In-Reply-To: <20260724-clk-provider-simple-clean-v2-2-56f306156d25@baylibre.com>
+In-Reply-To: <20260724-clk-provider-simple-clean-v2-3-56f306156d25@baylibre.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,26 +71,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4665579592708447539=="
+Content-Type: multipart/mixed; boundary="===============3775047373887992692=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============4665579592708447539==
+--===============3775047373887992692==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zq5ldklgurjwxspu"
+	protocol="application/pgp-signature"; boundary="d7jdk6oml7vjgb7j"
 Content-Disposition: inline
 
 
---zq5ldklgurjwxspu
+--d7jdk6oml7vjgb7j
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 2/7] clk: qcom: clean-up simple provider misuse of the
- consumer API
+Subject: Re: [PATCH v2 3/7] clk: renesas: clean-up simple provider misuse of
+ the consumer API
 MIME-Version: 1.0
 
-On Fri, Jul 24, 2026 at 11:03:53AM +0200, Jerome Brunet wrote:
+On Fri, Jul 24, 2026 at 11:03:54AM +0200, Jerome Brunet wrote:
 > Clock provider should not be using the consumer interface.
 > In other words, a provider should not be dealing with struct clk.
 >=20
@@ -100,38 +100,35 @@ On Fri, Jul 24, 2026 at 11:03:53AM +0200, Jerome Brunet wrote:
 > Reviewed-by: Brian Masney <bmasney@redhat.com>
 > Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
 > ---
->  drivers/clk/qcom/clk-hfpll.c | 4 ++--
->  drivers/clk/qcom/clk-krait.c | 2 +-
->  drivers/clk/qcom/clk-rcg.c   | 4 ++--
->  drivers/clk/qcom/clk-rcg2.c  | 2 +-
->  4 files changed, 6 insertions(+), 6 deletions(-)
+>  drivers/clk/renesas/r9a06g032-clocks.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Thierry Reding <treding@nvidia.com>
 
---zq5ldklgurjwxspu
+--d7jdk6oml7vjgb7j
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmpnesUACgkQ3SOs138+
-s6EEqxAAlCFaxoVTCA1CfgRp8dzwZafYmIYgEsE0ClMOdVhcykkwkw+zzREQzNWw
-zrNc8zItDXLD59chu4jB1t5x3EUCI0fm0ykDZzAvFdWGIam/VRhf+5fFE0LlKMLC
-b3C/IFiDNgi4b+iSQYBVAxsPIxXXTiCtua/+8Hfkc049kvL5g+q0Z+snYb6nWRvt
-+It5/oxa3V/Gbb02LDDOyoJudwBB2AuMyBWQIgpLly214d7YySjLH75z5RIjzklN
-XeD+uB6bfmKllsYQzn8Gg3IXQS0JDQMaAUGWMQV828p5fiDPRZFo/fHXN+2wkLk9
-wDdJTU4u6WcZ7s//S/KMekniPws8XtvC2Qf/X0JC5WeZbKW5cPn5KGIZfEjaZfGv
-MVVB7C6coPw4pK8S4enaKy+iEvCsbWSTqa9D1Zlj5yo+7X0gghxJ02FFeahPb2pH
-QS6xzkZZkIWaihgjvJ93QmV01HmV8YIY5c2gPayBfjHacGtT+VeY4CqQrhpH8q3Q
-wR2akmStfmHdp4RUHXCUKHwG3hVi0BOJtFxYjl2yTQPPesgNk7MP8tmObDyK0wRD
-3ObUnCOiWqqQV8JbpMo3d9cbrdcnN0S5fTEb7ETSaVVTzwn4YXQpjSPWeiGLQKVE
-RxiLGS6vCX5VSLCFMhFxQwB2bcol+N4e+sibrz68qhc99kNk1aU=
-=kezw
+iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmpnet4ACgkQ3SOs138+
+s6HboA//b1oIVu6KgMhWD7qHih0fVg+6Q3uvEb6OaReWRKDnD3Nqllw7sGwwDz5D
+kcOBUi3cZBA0RzeiEphBBZ9Tp4kHSIi7RRYW3W+RNHqYHHe1tkqUyJwbrKVawxEA
+e6CZMYf754GInAjT1QnThDGLTCK2ufz9jo2ljLyBhPkS1kuqJcLHIrXO52LdAvEh
+BwCzJDc5lpSVOnsaHh+bx1qUFRgcI5p/LOyfkhhFMGxpT4OnHZMJlZRdKfQti3QZ
+Pbk73asqPr5USZXPiPj8RRce9EwuKvq5+UppVu6MHKiP/Kq6jwPAcgVGYBf1+w2n
+cKtNv4/xKTEDBwcaZQ2I5VyCsoA4dLGj+q2ZvAvdtjI7xYziBrwRzQSYhZYtMeaK
+mSEmRzoZuOjcfajc1Gi4r920wTMcRgSnuLodSVQGxThjnDD7pPZSeP/PiXc+Q7pG
+C3z656rLQjarmY1iua5rt57KAwkr4kC0iuoHnGJuj2jcxOINB870xeTmjP15jzKB
+KjhvHs/g9wItAZcDYVaeQlN1sWv7doDJNp7U4b8xqB9ZIk29RcHYfdaSlTbxtVuW
+CVbxn10yKOVPws4Aq/M7vai+p8nxcSA4MdK6obo8lvcLf3h0s+BFhRkDQ0CEmfIr
+bolWFbEuM9bXdBRTMeA1FjyuThd6KZIokWYXTHif5SMV8hrTwf4=
+=VEtD
 -----END PGP SIGNATURE-----
 
---zq5ldklgurjwxspu--
+--d7jdk6oml7vjgb7j--
 
 
---===============4665579592708447539==
+--===============3775047373887992692==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -142,5 +139,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============4665579592708447539==--
+--===============3775047373887992692==--
 
