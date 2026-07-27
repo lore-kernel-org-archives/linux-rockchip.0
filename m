@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A69C54F4C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14DE4C54EFC
 	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Jul 2026 16:50:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,64 +12,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vp6l3bHRqDeI53vDuRlak06eNdJj2WlKk+OZDIbei7A=; b=cJlUzSCa2j7yyj
-	bk2ZoXYZwY0be5JHDkBoyb+OASmx+WbKp/NXwhCqobaJWQzJg8FsCaGPNswrOasbu7nlJCWK4Fxol
-	URnfhKx3v1aLi4k+5JZf9RoEp85dkAJVjnm0yPIEftbvNkIjOnFmLl2Z4JyLeHf5WEh1kdDj56CYW
-	7xpoO+0NdjJlBeNCi6Cd2ZvKaJH+Tj5JM0bUiKh0KTgTP5f6x05XR/uGAec/PPZqIVYNICBXFZPkg
-	xLv8FfL0zlNDCM8UQQOHYGqmxNFv/pbjjrlIH5kFJxCAlQHpvAG8lAEc4Km7Wel7TunuBDtmzyPHT
-	AFQuQfRcAIr38M0PzejA==;
+	List-Owner; bh=9/N/9pj7z66BB8vTgPPVrza2mRf+Kt14WkrNbv7fMaM=; b=kY6TQFyPIu4PNn
+	UGYF1S32vqPLuBw5H0PeLAR/JnoMy1bOt9qk2nUFJxUwCqBZHh6XAi2SEEjYtVG3bK1UYrqqxjWE/
+	kGgF+scExhTkJL67yLJLi1TMOF127lPrX/3dOHQptiNYFk7HWpNmNqt8uz6VJuS6aVW1DeMr+2r2k
+	vTgvb3lHye5eDk+ht3EQ+4aGU3GWZ/Ej5Q0VKhpdB7XmqqBEg0boxb7Ki3HQ+ocYFR8uYgtPg9kSx
+	QmxEVG4w970gHpCi/+OfHN6gXtX9og5j62nbIbGEtuLJWGO8JTjzPILe3UJPzuZ3XxnAy0ru/q+lu
+	ndEHM0G63UIZxmLwus1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woOXW-00000003Rj2-3ToS;
+	id 1woOXW-00000003Ric-2xaB;
 	Mon, 27 Jul 2026 16:50:54 +0000
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
+Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woOXV-00000003Rfn-0iIC
+	id 1woOXT-00000003Re9-2c2f
 	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Jul 2026 16:50:54 +0000
-Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-446f87b6de1so1540822fac.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 27 Jul 2026 09:50:52 -0700 (PDT)
+	Mon, 27 Jul 2026 16:50:52 +0000
+Received: by mail-oi1-x229.google.com with SMTP id 5614622812f47-4a456e44e01so1329102b6e.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 27 Jul 2026 09:50:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785171052; x=1785775852; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=Wl9o3TvwIe6azyl0fzewV3G3JV6iqHTXJnL2mLZsxjM=;
-        b=qR11HiOv1lqznjsUfKpGCkGA6r8m96eqzvYopRjtc/K0VvBlzHzNf0puElYuszw3Hu
-         el3nB7k7DgK68bnDXNYQo+l4edRivqFqfNN5czTYu9CWrnuv5jdyQNFbEirVfQ0PqGhH
-         h7wFsW5LmcnJc+gydRZPMnycUA0ZBcSjGmsk/tCHqpnKk1wbyx861uMw1Kxd9KFwGvyD
-         IEAGBIwrh3/VSvFpsTYTy2op1zrFUoXqMjvSK5kGvyQe+Rwm48kFJpmkli5qF7xyTP61
-         b2VZqmjgbMQ6bhIKxG5G/s7kikpRkGOIuX/SyQ4VPKDluKVvWrz6XmvuHcyNih/8/lEB
-         C0rQ==
+        d=gmail.com; s=20251104; t=1785171050; x=1785775850; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=z1vHS3GC9KHIreLzjIX6UY70hcwimN7Td/ySF/0cKHU=;
+        b=W00N4M7kFnXKZ+DA08/XDFkCFhnyMUB+iSs7n83QjxeTU2zRZWWk84zO4Ec2TJi6q6
+         jfDowULmGUXMsS9sRSYVTu4GJRGoggAt9C5flFZro5jZq0aaU5Z35bBzyMk2BXjxEczU
+         SMXcwiYks2V/gzrYvS61agwtXiLD3opEJoKHZe8VrWRBxGKn+DYx1cGmTmOvagjJUM26
+         4wNb+Z3v89ibHKj0Be10P5/0CjmRQtyVO2aizrpcw/dtLG0ISL3jYUklJk+Zk41sxqHi
+         JEB/lSwZ5FHPMkVVSA56Nf+coA551bBp3g8KOAxa6Urmsd0EFmMD5xVZFNBxRNDNRvjg
+         QENA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785171052; x=1785775852;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=Wl9o3TvwIe6azyl0fzewV3G3JV6iqHTXJnL2mLZsxjM=;
-        b=qaCb6IYCINZvPihP653pe2v8N8ZEVmCgf7ljue8+gYVC1pDAFZCIPO8A7CPtUpgR2m
-         CsqfZall3tYNH2nYbRuOso8BseiiK6dj9GWiro3a+E9t4hGQxxudoCXhkgklIUoLJz4n
-         TwQKO6HPRV2BFik+uWjPgXQfUaMrjK0J7GsFNw1YJvm7b9mwU6DFPGI8U9ZuabHt1WEh
-         5EU/oF0BMnaF2YlFZDyuWaEMQrrvgTbcQYzLPdbRidyOAnJSJEg5sSLq8Ri6R3MaEeRn
-         s4rD625RgrBTvbsDuZAOJsgW4JvyGgtt4p13Sjp/AEo5OtJmxgl6UXLkBXoSz/PpdR+e
-         i14w==
-X-Forwarded-Encrypted: i=1; AHgh+Rro0lSPDhfPkZ6v8k0xHrZqPd7OcOYuYAlG0VMG0EPdbU7cOXcSLG6eid5RpHvPHbDuGtNZ3drtkTtYUGD5xg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywz/bHC7dlDN1lYHbG/bSXYGqvSgIhGxUf/rCt2IoOBdSAXi/dH
-	+KXpmQQG6OhvdjdKjjcYNCcz+U3jH8g9z71xgiyEsKVbqGmDV0kh+xd9
-X-Gm-Gg: AR+sD11jwUkvoIhX7ee4THVi7JKsVWSc8arYfEPOX/lMUHKmNqtSvpLfPh3k4tfbHrz
-	H34lWwMY+FLvXU6z58ku3rx1Sr0++cp3iLEdc/AuZw3ecB6b1QVHa8VailWU/TBgXPUp3zO10Bf
-	8EciJPO5fC+8fOopgUZBFoGjGrg9NPYmhY1nWf1Q+HdDOvXrvG4d4cySxsRm2L4XpuFj0MzWu9s
-	/sytqx96vXaKShkLsv/awLeNW/NLLPt8uytb5Hccvceofsg+HGoXOTaZbfX6U4fki2Tt7frucq/
-	lIIKpoDwNPpL/zYXZKUynDvWo9eR/xp77GxslFWXjP3pPxyNdPu24SCQVnygunKv2J+c0ajtVAs
-	By+UD9oUtlPhHdzs6DENOd6YrtIkMNzJQFcllUGwKFuJV0EX7jWIKZ8Q3HZFSMbyjwfhpNhx0TP
-	+JNc6FUVbEZpg0cUrGA7VAgt708MQUfXA=
-X-Received: by 2002:a05:6808:1921:b0:494:dbda:f3ce with SMTP id 5614622812f47-4ad55d2177dmr68271b6e.33.1785171051967;
-        Mon, 27 Jul 2026 09:50:51 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1785171050; x=1785775850;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=z1vHS3GC9KHIreLzjIX6UY70hcwimN7Td/ySF/0cKHU=;
+        b=Kz1kK6rGrP1engO0ic9WzEBmgChJME5uH2YAvGngda8/ajok9g4LH8V8+xdbalm1pd
+         8tBi+Zc/MLvv1xe8bMyL5e2dmuKB4sxyJDZhN6urNSyRNpgjhX04g6rxCv2MfXFTrl3X
+         geE6wsGdx55kOAz43zv4GRNOcXejyIF/1jpSWZH9eR3QxxTP8VtoKDU5xXNx+v3JLYaO
+         uePNqMy77EAAF9q9I2MGHBojn4jiLOA+g1x3l3mfcVQRDgi2OgNCflz3TTwS9fPOHzWz
+         jJWH+x4HW629Lt2D7t66frqWk0Rop69Prl0vrgOuJ3lbmPk0VsxX2uGKpWNLDShnqaHt
+         zMQA==
+X-Forwarded-Encrypted: i=1; AHgh+Rp5Tz8Qv+ACl1/yrKvVRYi4sjKU2yn6LkbyLIcs+cqrKk4yfiZwt+0OYfXTcga89lU+NAM7S/iMWlecmkkw2Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyUPKfEdqddkG5jvm8QT4Mj/xb0BChIG5jCRoJ4Yge14NFMPA2R
+	4UJ0DdKxObuSz7c5UrqOckRljrocSG90Cq9Fr1gygavpzM6DHTTMvh/J
+X-Gm-Gg: AR+sD13mPb8dI1YoM+n6bBTC4pJj5DZgK8JzFehadUIT1bAKU5B1WdQYqWWrWmmfKLD
+	zDdbA15WE6jVfCHiwU4OK2Vlwi2SRK/U33fbT2JVOI2Qad/N9m2s/Do6AOQtkcrbKVo4kDOvMtN
+	BSERxm9yiIuSOVC6ZVnOMLx5LAHuZxdN7R+4fH4eKa+etTbs9vuSqygS/Simso9oivD8tu/Whgm
+	7ReVels0QifYnTyjiJ3CqHGXN6cg952O/fI4fYwg5j0f0mbi7+GE9tuORnaUdKsOSruiLheMoMy
+	lECMDKx3pa/alCutPZPPyWFgTHZagMzS/yMiPHuDE1TixpMLi5huu4C4AJveMMHLzQ3LuhGdz0R
+	zVcHRlloO65KmvWUhPa6/y7zz1rUN0Fsg6pIaiizcfP5sjYrJblmFMqBtBq2A6ZMmGC+VyexQVo
+	u2NtYj3c3Mlx+Zm6PKLnKg+NchaXaz7ME=
+X-Received: by 2002:a05:6808:1304:b0:4ab:2447:e74 with SMTP id 5614622812f47-4ad55b78163mr82911b6e.24.1785171050502;
+        Mon, 27 Jul 2026 09:50:50 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0:30e7:7cd7:b59:5863])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-4ab0c7a1912sm11395050b6e.2.2026.07.27.09.50.50
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-4ab0c7a1912sm11395050b6e.2.2026.07.27.09.50.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jul 2026 09:50:51 -0700 (PDT)
+        Mon, 27 Jul 2026 09:50:49 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-iio@vger.kernel.org
 Cc: andy@kernel.org,
@@ -85,16 +84,16 @@ Cc: andy@kernel.org,
 	robh@kernel.org,
 	andriy.shevchenko@intel.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V20 8/9] iio: imu: inv_icm42607: Add Temp Support in icm42607
-Date: Mon, 27 Jul 2026 11:48:12 -0500
-Message-ID: <20260727164815.65190-9-macroalpha82@gmail.com>
+Subject: [PATCH V20 7/9] iio: imu: inv_icm42607: Add Gyroscope to icm42607
+Date: Mon, 27 Jul 2026 11:48:11 -0500
+Message-ID: <20260727164815.65190-8-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260727164815.65190-1-macroalpha82@gmail.com>
 References: <20260727164815.65190-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_095053_222356_A9128263 
-X-CRM114-Status: GOOD (  22.62  )
+X-CRM114-CacheID: sfid-20260727_095051_685503_10CECEF3 
+X-CRM114-Status: GOOD (  20.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,150 +105,397 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KCkFkZCBmdW5jdGlv
-bnMgZm9yIHJlYWRpbmcgdGVtcGVyYXR1cmUgc2Vuc29yIGRhdGEuCgpTaWduZWQtb2ZmLWJ5OiBD
-aHJpcyBNb3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgotLS0KIGRyaXZlcnMvaWlvL2lt
-dS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgICAgICAgICB8ICAxICsKIC4uLi9paW8vaW11L2ludl9p
-Y200MjYwNy9pbnZfaWNtNDI2MDdfYWNjZWwuYyB8ICA4ICsrCiAuLi4vaWlvL2ltdS9pbnZfaWNt
-NDI2MDcvaW52X2ljbTQyNjA3X2d5cm8uYyAgfCAgOCArKwogLi4uL2lpby9pbXUvaW52X2ljbTQy
-NjA3L2ludl9pY200MjYwN190ZW1wLmMgIHwgOTggKysrKysrKysrKysrKysrKysrKwogLi4uL2lp
-by9pbXUvaW52X2ljbTQyNjA3L2ludl9pY200MjYwN190ZW1wLmggIHwgMzggKysrKysrKwogNSBm
-aWxlcyBjaGFuZ2VkLCAxNTMgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
-cnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuYwogY3JlYXRlIG1vZGUg
-MTAwNjQ0IGRyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaAoK
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgYi9kcml2
-ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L01ha2VmaWxlCmluZGV4IDhlNzMzODVjOGY0Yi4uN2I5
-MDdlMDE5NjAxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L01ha2Vm
-aWxlCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUKQEAgLTQsNiAr
-NCw3IEBAIG9iai0kKENPTkZJR19JTlZfSUNNNDI2MDcpICs9IGludi1pY200MjYwNy5vCiBpbnYt
-aWNtNDI2MDcteSArPSBpbnZfaWNtNDI2MDdfY29yZS5vCiBpbnYtaWNtNDI2MDcteSArPSBpbnZf
-aWNtNDI2MDdfZ3lyby5vCiBpbnYtaWNtNDI2MDcteSArPSBpbnZfaWNtNDI2MDdfYWNjZWwubwor
-aW52LWljbTQyNjA3LXkgKz0gaW52X2ljbTQyNjA3X3RlbXAubwogCiBvYmotJChDT05GSUdfSU5W
-X0lDTTQyNjA3X0kyQykgKz0gaW52LWljbTQyNjA3LWkyYy5vCiBpbnYtaWNtNDI2MDctaTJjLXkg
-Kz0gaW52X2ljbTQyNjA3X2kyYy5vCmRpZmYgLS1naXQgYS9kcml2ZXJzL2lpby9pbXUvaW52X2lj
-bTQyNjA3L2ludl9pY200MjYwN19hY2NlbC5jIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYw
-Ny9pbnZfaWNtNDI2MDdfYWNjZWwuYwppbmRleCBmNTYzYzc3MDg0MjAuLjBiM2YwMzVjMmRhMCAx
-MDA2NDQKLS0tIGEvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfYWNj
-ZWwuYworKysgYi9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L2ludl9pY200MjYwN19hY2Nl
-bC5jCkBAIC0xNSw2ICsxNSw3IEBACiAjaW5jbHVkZSA8bGludXgvdHlwZXMuaD4KIAogI2luY2x1
-ZGUgImludl9pY200MjYwNy5oIgorI2luY2x1ZGUgImludl9pY200MjYwN190ZW1wLmgiCiAKICNk
-ZWZpbmUgSU5WX0lDTTQyNjA3X0FDQ0VMX0NIQU4oX21vZGlmaWVyLCBfaW5kZXgsIF9leHRfaW5m
-bykJCQlcCiB7CQkJCQkJCQkJCVwKQEAgLTQwLDYgKzQxLDcgQEAgZW51bSBpbnZfaWNtNDI2MDdf
-YWNjZWxfc2NhbiB7CiAJSU5WX0lDTTQyNjA3X0FDQ0VMX1NDQU5fWCwKIAlJTlZfSUNNNDI2MDdf
-QUNDRUxfU0NBTl9ZLAogCUlOVl9JQ000MjYwN19BQ0NFTF9TQ0FOX1osCisJSU5WX0lDTTQyNjA3
-X0FDQ0VMX1NDQU5fVEVNUCwKIH07CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgaWlvX2NoYW5fc3Bl
-Y19leHRfaW5mbyBpbnZfaWNtNDI2MDdfYWNjZWxfZXh0X2luZm9zW10gPSB7CkBAIC01NCw2ICs1
-Niw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgaWlvX2NoYW5fc3BlYyBpbnZfaWNtNDI2MDdfYWNj
-ZWxfY2hhbm5lbHNbXSA9IHsKIAkJCQlpbnZfaWNtNDI2MDdfYWNjZWxfZXh0X2luZm9zKSwKIAlJ
-TlZfSUNNNDI2MDdfQUNDRUxfQ0hBTihJSU9fTU9EX1osIElOVl9JQ000MjYwN19BQ0NFTF9TQ0FO
-X1osCiAJCQkJaW52X2ljbTQyNjA3X2FjY2VsX2V4dF9pbmZvcyksCisJSU5WX0lDTTQyNjA3X1RF
-TVBfQ0hBTihJTlZfSUNNNDI2MDdfQUNDRUxfU0NBTl9URU1QKSwKIH07CiAKIHN0YXRpYyBjb25z
-dCBpbnQgaW52X2ljbTQyNjA3X2FjY2VsX3NjYWxlX25hbm9bXVsyXSA9IHsKQEAgLTE4Nyw2ICsx
-OTAsMTEgQEAgc3RhdGljIGludCBpbnZfaWNtNDI2MDdfYWNjZWxfcmVhZF9yYXcoc3RydWN0IGlp
-b19kZXYgKmluZGlvX2RldiwKIAlzd2l0Y2ggKGNoYW4tPnR5cGUpIHsKIAljYXNlIElJT19BQ0NF
-TDoKIAkJYnJlYWs7CisJY2FzZSBJSU9fVEVNUDoKKwkJaWYgKG1hc2sgIT0gSUlPX0NIQU5fSU5G
-T19TQU1QX0ZSRVEpCisJCQlyZXR1cm4gaW52X2ljbTQyNjA3X3RlbXBfcmVhZF9yYXcoaW5kaW9f
-ZGV2LCBjaGFuLAorCQkJCQkJCSAgdmFsLCB2YWwyLCBtYXNrKTsKKwkJYnJlYWs7CiAJZGVmYXVs
-dDoKIAkJcmV0dXJuIC1FSU5WQUw7CiAJfQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9paW8vaW11L2lu
-dl9pY200MjYwNy9pbnZfaWNtNDI2MDdfZ3lyby5jIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200
-MjYwNy9pbnZfaWNtNDI2MDdfZ3lyby5jCmluZGV4IGI2OGQ0ZDZmNWMzZi4uNWI0NjgzYzJkZDFl
-IDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L2ludl9pY200MjYwN19n
-eXJvLmMKKysrIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfZ3ly
-by5jCkBAIC0xNSw2ICsxNSw3IEBACiAjaW5jbHVkZSA8bGludXgvdHlwZXMuaD4KIAogI2luY2x1
-ZGUgImludl9pY200MjYwNy5oIgorI2luY2x1ZGUgImludl9pY200MjYwN190ZW1wLmgiCiAKICNk
-ZWZpbmUgSU5WX0lDTTQyNjA3X0dZUk9fQ0hBTihfbW9kaWZpZXIsIF9pbmRleCwgX2V4dF9pbmZv
-KQkJCVwKIHsJCQkJCQkJCQkJXApAQCAtNDAsNiArNDEsNyBAQCBlbnVtIGludl9pY200MjYwN19n
-eXJvX3NjYW4gewogCUlOVl9JQ000MjYwN19HWVJPX1NDQU5fWCwKIAlJTlZfSUNNNDI2MDdfR1lS
-T19TQ0FOX1ksCiAJSU5WX0lDTTQyNjA3X0dZUk9fU0NBTl9aLAorCUlOVl9JQ000MjYwN19HWVJP
-X1NDQU5fVEVNUCwKIH07CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgaWlvX2NoYW5fc3BlY19leHRf
-aW5mbyBpbnZfaWNtNDI2MDdfZ3lyb19leHRfaW5mb3NbXSA9IHsKQEAgLTU0LDYgKzU2LDcgQEAg
-c3RhdGljIGNvbnN0IHN0cnVjdCBpaW9fY2hhbl9zcGVjIGludl9pY200MjYwN19neXJvX2NoYW5u
-ZWxzW10gPSB7CiAJCQkgICAgICAgaW52X2ljbTQyNjA3X2d5cm9fZXh0X2luZm9zKSwKIAlJTlZf
-SUNNNDI2MDdfR1lST19DSEFOKElJT19NT0RfWiwgSU5WX0lDTTQyNjA3X0dZUk9fU0NBTl9aLAog
-CQkJICAgICAgIGludl9pY200MjYwN19neXJvX2V4dF9pbmZvcyksCisJSU5WX0lDTTQyNjA3X1RF
-TVBfQ0hBTihJTlZfSUNNNDI2MDdfR1lST19TQ0FOX1RFTVApLAogfTsKIAogc3RhdGljIGNvbnN0
-IGludCBpbnZfaWNtNDI2MDdfZ3lyb19zY2FsZV9uYW5vW11bMl0gPSB7CkBAIC0xODQsNiArMTg3
-LDExIEBAIHN0YXRpYyBpbnQgaW52X2ljbTQyNjA3X2d5cm9fcmVhZF9yYXcoc3RydWN0IGlpb19k
-ZXYgKmluZGlvX2RldiwKIAlzd2l0Y2ggKGNoYW4tPnR5cGUpIHsKIAljYXNlIElJT19BTkdMX1ZF
-TDoKIAkJYnJlYWs7CisJY2FzZSBJSU9fVEVNUDoKKwkJaWYgKG1hc2sgIT0gSUlPX0NIQU5fSU5G
-T19TQU1QX0ZSRVEpCisJCQlyZXR1cm4gaW52X2ljbTQyNjA3X3RlbXBfcmVhZF9yYXcoaW5kaW9f
-ZGV2LCBjaGFuLAorCQkJCQkJCSAgdmFsLCB2YWwyLCBtYXNrKTsKKwkJYnJlYWs7CiAJZGVmYXVs
-dDoKIAkJcmV0dXJuIC1FSU5WQUw7CiAJfQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9paW8vaW11L2lu
-dl9pY200MjYwNy9pbnZfaWNtNDI2MDdfdGVtcC5jIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200
-MjYwNy9pbnZfaWNtNDI2MDdfdGVtcC5jCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAw
-MDAwMDAwMC4uODY4MWVmMmI0OWUyCi0tLSAvZGV2L251bGwKKysrIGIvZHJpdmVycy9paW8vaW11
-L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfdGVtcC5jCkBAIC0wLDAgKzEsOTggQEAKKy8vIFNQ
-RFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9yLWxhdGVyCisvKgorICogQ29weXJpZ2h0
-IChDKSAyMDI2IEludmVuU2Vuc2UsIEluYy4KKyAqLworCisjaW5jbHVkZSA8bGludXgvY2xlYW51
-cC5oPgorI2luY2x1ZGUgPGxpbnV4L2RldmljZS5oPgorI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgor
-I2luY2x1ZGUgPGxpbnV4L2lpby9paW8uaD4KKyNpbmNsdWRlIDxsaW51eC9tdXRleC5oPgorI2lu
-Y2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KKyNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KKyNp
-bmNsdWRlIDxsaW51eC90eXBlcy5oPgorI2luY2x1ZGUgPGxpbnV4L3VuYWxpZ25lZC5oPgorCisj
-aW5jbHVkZSAiaW52X2ljbTQyNjA3LmgiCisjaW5jbHVkZSAiaW52X2ljbTQyNjA3X3RlbXAuaCIK
-Kworc3RhdGljIGludCBpbnZfaWNtNDI2MDdfdGVtcF9yZWFkKHN0cnVjdCBpbnZfaWNtNDI2MDdf
-c3RhdGUgKnN0LCBzMTYgKnRlbXApCit7CisJc3RydWN0IGludl9pY200MjYwN19zZW5zb3JfY29u
-ZiBjb25mID0gSU5WX0lDTTQyNjA3X1NFTlNPUl9DT05GX0lOSVQ7CisJc3RydWN0IGRldmljZSAq
-ZGV2ID0gcmVnbWFwX2dldF9kZXZpY2Uoc3QtPm1hcCk7CisJaW50IHJldCwgZ3lyb19tb2RlLCBh
-Y2NlbF9tb2RlOworCXVuc2lnbmVkIGludCB2YWw7CisJdTggcmF3WzJdOworCisJUE1fUlVOVElN
-RV9BQ1FVSVJFX0FVVE9TVVNQRU5EKGRldiwgcG0pOworCXJldCA9IFBNX1JVTlRJTUVfQUNRVUlS
-RV9FUlIoJnBtKTsKKwlpZiAocmV0KQorCQlyZXR1cm4gcmV0OworCisJZ3VhcmQobXV0ZXgpKCZz
-dC0+bG9jayk7CisKKwkvKgorCSAqIENoZWNrIGlmIGJvdGggdGhlIGd5cm8gYW5kIGFjY2VsIGFy
-ZSBvZmYgYW5kIGlmIHNvLCBlbmFibGUgb25lCisJICogb2YgdGhlbS4gVGhlIHRlbXAgc2Vuc29y
-IGNhbm5vdCBiZSByZWFkIGlmIGJvdGggdGhlIGd5cm8gYW5kCisJICogYWNjZWwgc2Vuc29yIGFy
-ZSBvZmYuIFByZWZlciB0byBlbmFibGUgdGhlIGFjY2VsIG92ZXIgdGhlIGd5cm8KKwkgKiBhcyB0
-aGUgZGF0YXNoZWV0IHNheXMgdGhlIGd5cm8gdXNlcyA1eCBtb3JlIHBvd2VyIGFuZCBpdCBoYXMK
-KwkgKiBhIG1pbmltdW0gcnVuIHRpbWUgb2YgNDVtcy4KKwkgKi8KKwlyZXQgPSByZWdtYXBfcmVh
-ZChzdC0+bWFwLCBJTlZfSUNNNDI2MDdfUkVHX1BXUl9NR01UMCwgJnZhbCk7CisJaWYgKHJldCkK
-KwkJcmV0dXJuIHJldDsKKworCWFjY2VsX21vZGUgPSBGSUVMRF9HRVQoSU5WX0lDTTQyNjA3X1BX
-Ul9NR01UMF9BQ0NFTF9NT0RFX01BU0ssIHZhbCk7CisJZ3lyb19tb2RlID0gRklFTERfR0VUKElO
-Vl9JQ000MjYwN19QV1JfTUdNVDBfR1lST19NT0RFX01BU0ssIHZhbCk7CisJaWYgKCFneXJvX21v
-ZGUgJiYgIWFjY2VsX21vZGUpIHsKKwkJLyogZW5hYmxlIGFjY2VsIHNlbnNvciAqLworCQljb25m
-Lm1vZGUgPSBJTlZfSUNNNDI2MDdfU0VOU09SX01PREVfTE9XX05PSVNFOworCQlyZXQgPSBpbnZf
-aWNtNDI2MDdfc2V0X3NlbnNvcl9jb25mKHN0LCAmY29uZiwgSUlPX0FDQ0VMKTsKKwkJaWYgKHJl
-dCkKKwkJCXJldHVybiByZXQ7CisJfQorCisJcmV0ID0gcmVnbWFwX2J1bGtfcmVhZChzdC0+bWFw
-LCBJTlZfSUNNNDI2MDdfUkVHX1RFTVBfREFUQTEsCisJCQkgICAgICAgcmF3LCBzaXplb2YocmF3
-KSk7CisJaWYgKHJldCkKKwkJcmV0dXJuIHJldDsKKworCSp0ZW1wID0gZ2V0X3VuYWxpZ25lZF9i
-ZTE2KHJhdyk7CisJaWYgKCp0ZW1wID09IElOVl9JQ000MjYwN19EQVRBX0lOVkFMSUQpCisJCXJl
-dHVybiAtRUlOVkFMOworCisJcmV0dXJuIDA7Cit9CisKK2ludCBpbnZfaWNtNDI2MDdfdGVtcF9y
-ZWFkX3JhdyhzdHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2LAorCQkJCXN0cnVjdCBpaW9fY2hhbl9z
-cGVjIGNvbnN0ICpjaGFuLAorCQkJCWludCAqdmFsLCBpbnQgKnZhbDIsIGxvbmcgbWFzaykKK3sK
-KwlzdHJ1Y3QgaW52X2ljbTQyNjA3X3N0YXRlICpzdCA9IGlpb19kZXZpY2VfZ2V0X2RydmRhdGEo
-aW5kaW9fZGV2KTsKKwlzMTYgdGVtcDsKKwlpbnQgcmV0OworCisJc3dpdGNoIChtYXNrKSB7CisJ
-Y2FzZSBJSU9fQ0hBTl9JTkZPX1JBVzoKKwkJcmV0ID0gaW52X2ljbTQyNjA3X3RlbXBfcmVhZChz
-dCwgJnRlbXApOworCQlpZiAocmV0KQorCQkJcmV0dXJuIHJldDsKKwkJKnZhbCA9IHRlbXA7CisJ
-CXJldHVybiBJSU9fVkFMX0lOVDsKKwkvKgorCSAqIFTCsEMgPSAodGVtcCAvIDEyOCkgKyAyNQor
-CSAqIFRtwrBDID0gMTAwMCAqICgodGVtcCAqIDEwMCAvIDEyODAwKSArIDI1KQorCSAqIHNjYWxl
-OiAxMDAwMDAgLyAxMjgwMCB+PSA3LjgxMjUKKwkgKiBvZmZzZXQ6IDMyMDAKKwkgKi8KKwljYXNl
-IElJT19DSEFOX0lORk9fU0NBTEU6CisJCSp2YWwgPSA3OworCQkqdmFsMiA9IDgxMjUwMDAwMDsK
-KwkJcmV0dXJuIElJT19WQUxfSU5UX1BMVVNfTkFOTzsKKwljYXNlIElJT19DSEFOX0lORk9fT0ZG
-U0VUOgorCQkqdmFsID0gMzIwMDsKKwkJcmV0dXJuIElJT19WQUxfSU5UOworCWRlZmF1bHQ6CisJ
-CXJldHVybiAtRUlOVkFMOworCX0KK30KZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZf
-aWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaCBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2
-MDcvaW52X2ljbTQyNjA3X3RlbXAuaApuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAw
-MDAwMDAuLjE4NDk5YjRkMGI5NAotLS0gL2Rldi9udWxsCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9p
-bnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaApAQCAtMCwwICsxLDM4IEBACisvKiBTUERY
-LUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMC1vci1sYXRlciAqLworLyoKKyAqIENvcHlyaWdo
-dCAoQykgMjAyNiBJbnZlblNlbnNlLCBJbmMuCisgKi8KKworI2lmbmRlZiBJTlZfSUNNNDI2MDdf
-VEVNUF9IXworI2RlZmluZSBJTlZfSUNNNDI2MDdfVEVNUF9IXworCisjaW5jbHVkZSA8bGludXgv
-Yml0b3BzLmg+CisKK3N0cnVjdCBpaW9fZGV2Oworc3RydWN0IGlpb19jaGFuX3NwZWM7CisKKyNk
-ZWZpbmUgSU5WX0lDTTQyNjA3X1RFTVBfQ0hBTihfaW5kZXgpCQkJCVwKK3sJCQkJCQkJCVwKKwku
-dHlwZSA9IElJT19URU1QLAkJCQkJXAorCS5pbmZvX21hc2tfc2VwYXJhdGUgPQkJCQkJXAorCQlC
-SVQoSUlPX0NIQU5fSU5GT19SQVcpIHwJCQlcCisJCUJJVChJSU9fQ0hBTl9JTkZPX09GRlNFVCkg
-fAkJCVwKKwkJQklUKElJT19DSEFOX0lORk9fU0NBTEUpLAkJCVwKKwkuaW5mb19tYXNrX3NoYXJl
-ZF9ieV9hbGwgPQkJCQlcCisJCUJJVChJSU9fQ0hBTl9JTkZPX1NBTVBfRlJFUSksCQkJXAorCS5p
-bmZvX21hc2tfc2hhcmVkX2J5X2FsbF9hdmFpbGFibGUgPQkJCVwKKwkJQklUKElJT19DSEFOX0lO
-Rk9fU0FNUF9GUkVRKSwJCQlcCisJLnNjYW5faW5kZXggPSBfaW5kZXgsCQkJCQlcCisJLnNjYW5f
-dHlwZSA9IHsJCQkJCQlcCisJCS5zaWduID0gJ3MnLAkJCQkJXAorCQkucmVhbGJpdHMgPSAxNiwJ
-CQkJCVwKKwkJLnN0b3JhZ2ViaXRzID0gMTYsCQkJCVwKKwkJLmVuZGlhbm5lc3MgPSBJSU9fQkUs
-CQkJCVwKKwl9LAkJCQkJCQlcCit9CisKK2ludCBpbnZfaWNtNDI2MDdfdGVtcF9yZWFkX3Jhdyhz
-dHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2LAorCQkJICAgICAgIHN0cnVjdCBpaW9fY2hhbl9zcGVj
-IGNvbnN0ICpjaGFuLAorCQkJICAgICAgIGludCAqdmFsLCBpbnQgKnZhbDIsIGxvbmcgbWFzayk7
-CisKKyNlbmRpZgotLSAKMi40My4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Chris Morgan <macromorgan@hotmail.com>
+
+Add gyroscope functions to the icm42607 driver.
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ drivers/iio/imu/inv_icm42607/Makefile         |   1 +
+ drivers/iio/imu/inv_icm42607/inv_icm42607.h   |   4 +
+ .../iio/imu/inv_icm42607/inv_icm42607_core.c  |   5 +
+ .../iio/imu/inv_icm42607/inv_icm42607_gyro.c  | 305 ++++++++++++++++++
+ 4 files changed, 315 insertions(+)
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
+
+diff --git a/drivers/iio/imu/inv_icm42607/Makefile b/drivers/iio/imu/inv_icm42607/Makefile
+index 372c6d6bdcec..8e73385c8f4b 100644
+--- a/drivers/iio/imu/inv_icm42607/Makefile
++++ b/drivers/iio/imu/inv_icm42607/Makefile
+@@ -2,6 +2,7 @@
+ 
+ obj-$(CONFIG_INV_ICM42607) += inv-icm42607.o
+ inv-icm42607-y += inv_icm42607_core.o
++inv-icm42607-y += inv_icm42607_gyro.o
+ inv-icm42607-y += inv_icm42607_accel.o
+ 
+ obj-$(CONFIG_INV_ICM42607_I2C) += inv-icm42607-i2c.o
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+index fd3e57ee4f14..4d51b0da1aa1 100644
+--- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+@@ -138,6 +138,7 @@ struct inv_icm42607_hw {
+  *  @lock:		lock for serializing multiple registers access.
+  *  @map:		regmap pointer.
+  *  @indio_accel:	accelerometer IIO device.
++ *  @indio_gyro:	gyroscope IIO device.
+  *  @vddio_supply:	I/O voltage regulator for the chip.
+  *  @vddio_en:		I/O voltage status for runtime PM.
+  *  @conf:		chip sensors configurations.
+@@ -148,6 +149,7 @@ struct inv_icm42607_state {
+ 	struct mutex lock;
+ 	struct regmap *map;
+ 	struct iio_dev *indio_accel;
++	struct iio_dev *indio_gyro;
+ 	struct regulator *vddio_supply;
+ 	bool vddio_en;
+ 	struct inv_icm42607_conf conf;
+@@ -412,6 +414,8 @@ int inv_icm42607_core_probe(struct regmap *regmap,
+ 			    const struct inv_icm42607_hw *hw,
+ 			    inv_icm42607_bus_setup bus_setup);
+ 
++struct iio_dev *inv_icm42607_gyro_init(struct inv_icm42607_state *st);
++
+ struct iio_dev *inv_icm42607_accel_init(struct inv_icm42607_state *st);
+ 
+ #endif
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+index 22cd37e0616e..0603fa744c00 100644
+--- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+@@ -594,6 +594,11 @@ int inv_icm42607_core_probe(struct regmap *regmap,
+ 	if (IS_ERR(st->indio_accel))
+ 		return PTR_ERR(st->indio_accel);
+ 
++	/* Initialize IIO device for Gyro */
++	st->indio_gyro = inv_icm42607_gyro_init(st);
++	if (IS_ERR(st->indio_gyro))
++		return PTR_ERR(st->indio_gyro);
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
+new file mode 100644
+index 000000000000..b68d4d6f5c3f
+--- /dev/null
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
+@@ -0,0 +1,305 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * Copyright (C) 2026 InvenSense, Inc.
++ */
++
++#include <linux/array_size.h>
++#include <linux/bits.h>
++#include <linux/cleanup.h>
++#include <linux/device/devres.h>
++#include <linux/err.h>
++#include <linux/iio/iio.h>
++#include <linux/mutex.h>
++#include <linux/pm_runtime.h>
++#include <linux/regmap.h>
++#include <linux/types.h>
++
++#include "inv_icm42607.h"
++
++#define INV_ICM42607_GYRO_CHAN(_modifier, _index, _ext_info)			\
++{										\
++	.type = IIO_ANGL_VEL,							\
++	.modified = 1,								\
++	.channel2 = _modifier,							\
++	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),				\
++	.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),			\
++	.info_mask_shared_by_type_available = BIT(IIO_CHAN_INFO_SCALE),		\
++	.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),		\
++	.info_mask_shared_by_all_available = BIT(IIO_CHAN_INFO_SAMP_FREQ),	\
++	.scan_index = _index,							\
++	.scan_type = {								\
++		.sign = 's',							\
++		.realbits = 16,							\
++		.storagebits = 16,						\
++		.endianness = IIO_BE,						\
++	},									\
++	.ext_info = _ext_info,							\
++}
++
++enum inv_icm42607_gyro_scan {
++	INV_ICM42607_GYRO_SCAN_X,
++	INV_ICM42607_GYRO_SCAN_Y,
++	INV_ICM42607_GYRO_SCAN_Z,
++};
++
++static const struct iio_chan_spec_ext_info inv_icm42607_gyro_ext_infos[] = {
++	IIO_MOUNT_MATRIX(IIO_SHARED_BY_ALL, inv_icm42607_get_mount_matrix),
++	{ }
++};
++
++static const struct iio_chan_spec inv_icm42607_gyro_channels[] = {
++	INV_ICM42607_GYRO_CHAN(IIO_MOD_X, INV_ICM42607_GYRO_SCAN_X,
++			       inv_icm42607_gyro_ext_infos),
++	INV_ICM42607_GYRO_CHAN(IIO_MOD_Y, INV_ICM42607_GYRO_SCAN_Y,
++			       inv_icm42607_gyro_ext_infos),
++	INV_ICM42607_GYRO_CHAN(IIO_MOD_Z, INV_ICM42607_GYRO_SCAN_Z,
++			       inv_icm42607_gyro_ext_infos),
++};
++
++static const int inv_icm42607_gyro_scale_nano[][2] = {
++	[INV_ICM42607_GYRO_FS_2000DPS] = { 0, 1065264 },
++	[INV_ICM42607_GYRO_FS_1000DPS] = { 0, 532632 },
++	[INV_ICM42607_GYRO_FS_500DPS] = { 0, 266316 },
++	[INV_ICM42607_GYRO_FS_250DPS] = { 0, 133158 },
++};
++
++static int inv_icm42607_gyro_read_scale(struct iio_dev *indio_dev,
++					int *val, int *val2)
++{
++	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
++	unsigned int idx;
++
++	guard(mutex)(&st->lock);
++
++	idx = st->conf.gyro.fs;
++
++	*val = inv_icm42607_gyro_scale_nano[idx][0];
++	*val2 = inv_icm42607_gyro_scale_nano[idx][1];
++	return IIO_VAL_INT_PLUS_NANO;
++}
++
++static int inv_icm42607_gyro_write_scale(struct iio_dev *indio_dev,
++					 int val, int val2)
++{
++	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
++	struct device *dev = regmap_get_device(st->map);
++	unsigned int idx;
++	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
++	size_t scales_len = ARRAY_SIZE(inv_icm42607_gyro_scale_nano);
++	int ret;
++
++	for (idx = 0; idx < scales_len; idx++) {
++		if (val == inv_icm42607_gyro_scale_nano[idx][0] &&
++		    val2 == inv_icm42607_gyro_scale_nano[idx][1])
++			break;
++	}
++	if (idx == scales_len)
++		return -EINVAL;
++
++	conf.fs = idx;
++
++	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
++	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
++	if (ret)
++		return ret;
++
++	guard(mutex)(&st->lock);
++
++	return inv_icm42607_set_sensor_conf(st, &conf, IIO_ANGL_VEL);
++}
++
++/* IIO format int + micro , values 0-4 reserved. */
++static const int inv_icm42607_gyro_odr[][2] = {
++	[INV_ICM42607_ODR_1600HZ] = { 1600, 0 },
++	[INV_ICM42607_ODR_800HZ] = { 800, 0 },
++	[INV_ICM42607_ODR_400HZ] = { 400, 0 },
++	[INV_ICM42607_ODR_200HZ] = { 200, 0 },
++	[INV_ICM42607_ODR_100HZ] = { 100, 0 },
++	[INV_ICM42607_ODR_50HZ] = { 50, 0 },
++	[INV_ICM42607_ODR_25HZ] = { 25, 0 },
++	[INV_ICM42607_ODR_12_5HZ] = { 12, 500000 },
++};
++
++static int inv_icm42607_gyro_read_odr(struct inv_icm42607_state *st,
++				      int *val, int *val2)
++{
++	unsigned int odr;
++	unsigned int i;
++
++	guard(mutex)(&st->lock);
++
++	odr = st->conf.gyro.odr;
++
++	for (i = INV_ICM42607_ODR_1600HZ; i < ARRAY_SIZE(inv_icm42607_gyro_odr); i++) {
++		if (i == odr)
++			break;
++	}
++	if (i == ARRAY_SIZE(inv_icm42607_gyro_odr))
++		return -EINVAL;
++
++	*val = inv_icm42607_gyro_odr[i][0];
++	*val2 = inv_icm42607_gyro_odr[i][1];
++
++	return IIO_VAL_INT_PLUS_MICRO;
++}
++
++static int inv_icm42607_gyro_write_odr(struct iio_dev *indio_dev,
++				       int val, int val2)
++{
++	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
++	struct device *dev = regmap_get_device(st->map);
++	unsigned int idx;
++	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
++	int ret;
++
++	for (idx = INV_ICM42607_ODR_1600HZ;
++	     idx < ARRAY_SIZE(inv_icm42607_gyro_odr); idx++) {
++		if (val == inv_icm42607_gyro_odr[idx][0] &&
++		    val2 == inv_icm42607_gyro_odr[idx][1])
++			break;
++	}
++	if (idx == ARRAY_SIZE(inv_icm42607_gyro_odr))
++		return -EINVAL;
++
++	conf.odr = idx;
++
++	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
++	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
++	if (ret)
++		return ret;
++
++	guard(mutex)(&st->lock);
++
++	return inv_icm42607_set_sensor_conf(st, &conf, IIO_ANGL_VEL);
++}
++
++static int inv_icm42607_gyro_read_raw(struct iio_dev *indio_dev,
++				      struct iio_chan_spec const *chan,
++				      int *val, int *val2, long mask)
++{
++	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
++	s16 data;
++	int ret;
++
++	switch (chan->type) {
++	case IIO_ANGL_VEL:
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	switch (mask) {
++	case IIO_CHAN_INFO_RAW:
++		ret = inv_icm42607_read_sensor(indio_dev, chan, &data);
++		if (ret)
++			return ret;
++		*val = data;
++		return IIO_VAL_INT;
++	case IIO_CHAN_INFO_SCALE:
++		return inv_icm42607_gyro_read_scale(indio_dev, val, val2);
++	case IIO_CHAN_INFO_SAMP_FREQ:
++		return inv_icm42607_gyro_read_odr(st, val, val2);
++	default:
++		return -EINVAL;
++	}
++}
++
++static int inv_icm42607_gyro_read_avail(struct iio_dev *indio_dev,
++					struct iio_chan_spec const *chan,
++					const int **vals,
++					int *type, int *length, long mask)
++{
++	switch (mask) {
++	case IIO_CHAN_INFO_SCALE:
++		if (chan->type != IIO_ANGL_VEL)
++			return -EINVAL;
++		*vals = (const int *)inv_icm42607_gyro_scale_nano;
++		*type = IIO_VAL_INT_PLUS_NANO;
++		*length = ARRAY_SIZE(inv_icm42607_gyro_scale_nano) * 2;
++		return IIO_AVAIL_LIST;
++	case IIO_CHAN_INFO_SAMP_FREQ:
++		*vals = (const int *)inv_icm42607_gyro_odr[INV_ICM42607_ODR_1600HZ];
++		*type = IIO_VAL_INT_PLUS_MICRO;
++		*length = (ARRAY_SIZE(inv_icm42607_gyro_odr) -
++			   INV_ICM42607_ODR_1600HZ) * 2;
++		return IIO_AVAIL_LIST;
++	default:
++		return -EINVAL;
++	}
++}
++
++static int inv_icm42607_gyro_write_raw(struct iio_dev *indio_dev,
++				       struct iio_chan_spec const *chan,
++				       int val, int val2, long mask)
++{
++	int ret;
++
++	switch (mask) {
++	case IIO_CHAN_INFO_SCALE:
++		if (chan->type != IIO_ANGL_VEL)
++			return -EINVAL;
++		ret = inv_icm42607_gyro_write_scale(indio_dev, val, val2);
++		return ret;
++	case IIO_CHAN_INFO_SAMP_FREQ:
++		return inv_icm42607_gyro_write_odr(indio_dev, val, val2);
++	default:
++		return -EINVAL;
++	}
++}
++
++static int inv_icm42607_gyro_write_raw_get_fmt(struct iio_dev *indio_dev,
++					       struct iio_chan_spec const *chan,
++					       long mask)
++{
++	switch (mask) {
++	case IIO_CHAN_INFO_SCALE:
++		if (chan->type != IIO_ANGL_VEL)
++			return -EINVAL;
++		return IIO_VAL_INT_PLUS_NANO;
++	case IIO_CHAN_INFO_SAMP_FREQ:
++		return IIO_VAL_INT_PLUS_MICRO;
++	default:
++		return -EINVAL;
++	}
++}
++
++static const struct iio_info inv_icm42607_gyro_info = {
++	.read_raw = inv_icm42607_gyro_read_raw,
++	.read_avail = inv_icm42607_gyro_read_avail,
++	.write_raw = inv_icm42607_gyro_write_raw,
++	.write_raw_get_fmt = inv_icm42607_gyro_write_raw_get_fmt,
++};
++
++struct iio_dev *inv_icm42607_gyro_init(struct inv_icm42607_state *st)
++{
++	struct device *dev = regmap_get_device(st->map);
++	const char *name;
++	struct inv_icm42607_sensor_state *gyro_st;
++	struct iio_dev *indio_dev;
++	int ret;
++
++	name = devm_kasprintf(dev, GFP_KERNEL, "%s-gyro", st->hw->name);
++	if (!name)
++		return ERR_PTR(-ENOMEM);
++
++	indio_dev = devm_iio_device_alloc(dev, sizeof(*gyro_st));
++	if (!indio_dev)
++		return ERR_PTR(-ENOMEM);
++
++	gyro_st = iio_priv(indio_dev);
++	gyro_st->power_mode = INV_ICM42607_SENSOR_MODE_LOW_NOISE;
++	gyro_st->filter = INV_ICM42607_FILTER_BW_73HZ;
++
++	indio_dev->name = name;
++	indio_dev->info = &inv_icm42607_gyro_info;
++	indio_dev->modes = INDIO_DIRECT_MODE;
++	indio_dev->channels = inv_icm42607_gyro_channels;
++	indio_dev->num_channels = ARRAY_SIZE(inv_icm42607_gyro_channels);
++	iio_device_set_drvdata(indio_dev, st);
++
++	ret = devm_iio_device_register(dev, indio_dev);
++	if (ret)
++		return ERR_PTR(ret);
++
++	return indio_dev;
++}
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
