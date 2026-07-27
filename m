@@ -4,104 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C2ACC531FC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Jul 2026 15:11:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90C71C531FC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Jul 2026 15:18:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nS2AZ0LInPkOFW8wlq6hqJJy6sJOh1Cq7B0fo5o/+QA=; b=t+fB/CXIFfDfcQ
-	FbfmnuvmykvJeHyDFizaxAA2nEUksOfxXE+dmnhREagFWeX4xDUlLL/sAx/OzzrX52aTxRaL77aUO
-	yU18OQ2gjxVESegZRwbXKYjwbSdWbgz8hxVykz1km/f0/zUWLb6Lp9FJG/GzGZEYDVmeaty4rRLW1
-	PuPT1JhoqB265+UUPrYhHDi61e/0i5sdi1IqjM73y9zhAEe/HpCIJwn1rrPb4VKmy/5nz7uKEh7gJ
-	JY8pJb1SqEczTjJPtReUu4fOeH210RYrrsWAy3S51nLXyF+PUa53GUCCXRW6sbH+1UXP4gU8O3HJ5
-	nTXVp5bpKTz69sXNa7uA==;
+	List-Owner; bh=+losaURa8r0DBb9mHWECKhEVMg+EtWIOgv6bWK0mOIY=; b=vtrObdpgXhyOFj
+	cK8N1GL4d20M7qdEM9WBbWHOlfNJXQH3fWrdJp4Yo4LjkWwTke5IO6vfsp2vOfjUqpeO/EcSKUv6C
+	bHZPo9ANiJ32AIW+K5tSWCG7c08JzJMhfgEm0/XzxUFYS1pvzwHDT2BXkIFtimIB+oemDzGsMG2HE
+	oZtqP/RdwW3Jc//x8y2zJAMAdzGMOZ+bHZnfFwMKXr+MMmFKhBF1sbSuRCNyGeEBvLa40eFMDp9Iy
+	i7PWFcOOE3ZD68+d2rmCPvW6YPR42tzMq4txezO2omDmB58vlmvFZzyDWFTvdCjmvMInseEqrToIz
+	f8/qdJNBw1t4yHuJBNuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woMzJ-000000038Am-1we0;
-	Mon, 27 Jul 2026 15:11:29 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1woN6S-000000039S0-1rB4;
+	Mon, 27 Jul 2026 15:18:52 +0000
+Received: from mail-francesouthazon11011029.outbound.protection.outlook.com ([40.107.130.29] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woMzH-000000038A1-0JV3
+	id 1woN6L-000000039PX-3yVi
 	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Jul 2026 15:11:28 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-c9c26a5fb98so1989662a12.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 27 Jul 2026 08:11:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785165086; cv=none;
-        d=google.com; s=arc-20260327;
-        b=ZeZ426jSGnzacOuOaaCqfa2ldHpxxmIYRhL/dC7hzPNiprBtsUXMflSlMyQmHPqqPe
-         lnn8QLzjwdE5An1olriCnC+dRLo+pPJ2yPFh8chpm4qZYH32MAPnsgWREDVZ+OTUgBzM
-         /61s72aCRaRiJuxK9NKj2aVCejXuGot0eF7d5IQgI40I1fDF2wJi8vv94AVOZVJc9ryp
-         gEKcb9gdwbRPaGKt18rR6cLFUWVWzOn5F3UbxqoJpEreLifcZpTofue4SLETBPIzVltT
-         NvkM6lElJPJO8wecC90RS7eMM/LwPGGB5Qxi4LaJ9LthbMGqjDD5Tmb3vvgFDF0vbsv/
-         gTIQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=DLprF9ab5aanfA37nxhElQ/PL48JoVdr0fckQzmPSz0=;
-        fh=LWhZ1DnaScluJCJEzBox3jljyhDRJO7tRUqsUtpvn8Q=;
-        b=A/t4Pz16aqvvZjYu74dqTytCDjJkJjO7fC2BR0JXS4HSkbuyr8YMyP3W7a1C+lwwtt
-         Qh8FmKPvQDkbqHombbm8LU76HfiC5zf9g6LkJmg+LR6ZmHCIgSAT3P4StgeCvgtQEp3f
-         dbHn186V5hAD7ec5XcNlvPCHuS1Yl8JOSn8yZ14v3WUkRx8cx5+7ywwHe8N3VBh7/a2n
-         7Z2TgN2RQtTIJX5YpMTl3qbT1MG7hwg0GG/tRY50hlBAtSK/BO+Q0cR7T2zwUrk4Ghfq
-         rMB5bT0KwnG3n9Xg5fEd8cEFkxK7orxgctCHZ0f7lRyHC5r31+QA78CPghqZ/LGFLSW4
-         hMrw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785165086; x=1785769886; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=DLprF9ab5aanfA37nxhElQ/PL48JoVdr0fckQzmPSz0=;
-        b=ZNmBlwWfpgkUpPI0ThaT00NqsaeNT53ZO1rtWFXM6yPZ1Hx5c36tGTe8wk7aEGVj55
-         zcT9Uza2SS0WkW9kZxZE6xq1HbAjdabJXHxBv6FBLY9XUM2IRO8VJznTQK4FjiKa+GO5
-         mHo7X3yBpj8OVO1phoqR1wqrawTR62nbxXrPg0Beq04KQ+S12Ih5POOOjPxy89UMLb2u
-         mAWsf/bc0DpJJqYe55QwKzr5TdAxL6wiTNcsUJkCZQGtCUfiYva4zeoDYAIe1aIy9dl4
-         XA3sRywo426zufX9oeTTY0dm4cyo1lnLfokyEuzN5Z43HdpuP8sCYVUMrU62GJ4XdxGa
-         iWpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785165086; x=1785769886;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=DLprF9ab5aanfA37nxhElQ/PL48JoVdr0fckQzmPSz0=;
-        b=PIvI1p7ZUJor+xxFeRRqICcehGfhGfFEEmRSaBZX5n8SFksjEe3BWzVJkFr7T+6N8P
-         WRWkeiSQKYnkfUaBg2IDVxb3adrwPKnh72LMUZNRtk3nF+Vk6bUVwmvJt8eEdpS3T7NW
-         zBI6Cy9ycrZdNUZ+akwzM2ICbQupEmdg681iR6f2YqXC2ZXqHv/0VRHBQNVPkncThLLV
-         j//VdhXnHs0kSVdAOhU+ENIKcXvruV+cvXeFOjJFHF2eaCFLDCrnt1Ddz/N9NZ880YG8
-         MuxLNGTqTEsAV5IlbaDN/Sqh0vMEzV9KWSdS+8ynUc34sl9nyUtPfz4BAsbidEPNui0A
-         qAEg==
-X-Forwarded-Encrypted: i=1; AHgh+Ro0p708Kv57sKuVhLRSnGvrrHX4mlPWa6xUVoxOHfMQYDRCHxfcUgloQ412FdTJh2vrB6MUm5onJjjP3FNkXg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxxR8Na002Vd4tTtVWrOcQmnDqsJ5A8C+FusTt4KRvz1ZPwIlQO
-	8th8yCvNlm+XSv2o4QfFfbR8CcWG8V36JxcIasqOPhx/x2mhIysnxeWhlghdZnZy335e9C6ERj7
-	BTDsXsBxpa/eu75Bc3yxTDuh2DTrkEEOicAg=
-X-Gm-Gg: AR+sD10g38/mhIxtltm1Uj4KRsEuDfwRycmJi4Ra94RmljPRxIdto3tPJyBtIdCCdnk
-	qEyFMuIV27El4C5pfdMjH++0J9V4uxh0D6jltRRjd2ZCM87VWVxU0RVHc6SniyualvyMvNmgXQ2
-	u3v+HVZa4Mq5OPVxa3lOO3RxXC1X4Bj7dky2iz/6lY4c+iXOXaKiwQYcbuSw5s+tRIgiJhEzZbj
-	sEGrN3fUvdIHkkNj7EaI+XNoRBjvJPDbHdY5cTkwX99CqzeitDcigQXgAog1T0DXfifWspG8uMZ
-	pZHhAD8n5GUIma6pmavYs8kka1ne
-X-Received: by 2002:a05:6a21:117:b0:3b5:6b5a:4f31 with SMTP id
- adf61e73a8af0-3c67267fd31mr10484309637.27.1785165085845; Mon, 27 Jul 2026
- 08:11:25 -0700 (PDT)
+	Mon, 27 Jul 2026 15:18:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=jpTofPwefvlhVpq+pZ8YzQO+D6vtkwYukBpu+OLN+C4dDw1pzNBA43itiN0TsndZVPVC6cB38K9MTJ2zqA+KIfff/wOVmkoSWGE9arEZZHU9b6lm7yAGb7skJDXdK9X3/btgT3YcxyKK95Qeh/JZA5vCBhtRPBg3dpKjD203AmkTelrF9iul02+COSd+toXkMiXE8kKD5wXHQrjw/FDXXSGojKIF+o5RyMjquRmD09qR59bH+S7r6Ie61Cse6CIfkGHV2QI6MXMNmd3StfYkk0P3niudrmHky6COcM/cG/I6aoj1O9FURQJdbsEZrID7144fxUencvJp8dZ5xuXXPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=I9pt0b+TDbm7q//eLZdpRXXQp6kWgA1UWd1e5dvCL8M=;
+ b=iP9ozPSG22j3gnQjmRLLMMcr9U5cn3CSbpG6CorqOoXCAqdmZyczS6jGohPqFphkY6Huw2z7bK1Qt5c2klmZw4LF5Ujn+vqFG8Y1O66Qj4Z6JhQYZDQD0CSVYk9mWwXKiRmpvsumLjSVoEphubGenLxfZrvxfPOArzbILtgHVQtmpHsjpYwGCElw/8Mou9Ip41dggtxhK+1N/OwyPvWiJZmkSpNiIZRf3yUVzElMUqlKhLcbQNMP3acD+UKdY80VHI4vH7AnQkhdKjydsPuUp6mmQQc46LrmDwTWC0Kxw+EJMoqEg1iyYeJ+rN5/r6FJEIBKyOtgiEaDtCLm0RDEgw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
+ s=selector1-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=I9pt0b+TDbm7q//eLZdpRXXQp6kWgA1UWd1e5dvCL8M=;
+ b=M1QH2q+SPSm4Zvyc+QwWJRchbOHHdThEcQtJi5zTV64muTN3Qgx/rQ/VcTbNosWlHwfVTtlWTHp/Z5WGonELymXC6ncNWIEqYYbskQDrAA98+E9wwxhxxFGSccv5qlXulQMt44ruT/2sodWPgwItnKXsoUO2DXsDR0hPIEm8X5ciBZuA0zzTCa5Bih1t5diL6f2NvRkWH5hXpyT2ChrNi+pLaLzY7b60/W6pYPBSQg2gH6Pl4Ndpe2kNkO5ErSdkQTk9sWlqBQylQ5FY3Tt2gpcN3tUHEXhMG21gpTFbRJVc4V4a2zKvxx4/PF+Bc64XdNBxWMAdCX1jADF5lhHDdA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=oss.nxp.com;
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
+ by DUZPR04MB10016.eurprd04.prod.outlook.com (2603:10a6:10:4dd::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.13; Mon, 27 Jul
+ 2026 15:18:39 +0000
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c%6]) with mapi id 15.21.0245.012; Mon, 27 Jul 2026
+ 15:18:39 +0000
+Date: Mon, 27 Jul 2026 10:18:30 -0500
+From: Frank Li <Frank.li@oss.nxp.com>
+To: Tharit Tangkijwanichakul <tharitt97@gmail.com>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Hans Verkuil <hverkuil@kernel.org>, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-kernel-mentees@lists.linux.dev, skhan@linuxfoundation.org,
+	me@brighamcampbell.com, jkoolstra@xs4all.nl
+Subject: Re: [PATCH v3] media: hantro: release runtime resources when
+ device_run fails
+Message-ID: <amd2xoJdT5VffcoO@SMW015318>
+References: <20260724131208.2315-1-tharitt97@gmail.com>
+ <20260726024243.730-1-tharitt97@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20260726024243.730-1-tharitt97@gmail.com>
+X-ClientProxiedBy: SA0PR11CA0146.namprd11.prod.outlook.com
+ (2603:10b6:806:131::31) To GV2PR04MB11799.eurprd04.prod.outlook.com
+ (2603:10a6:150:2cf::9)
 MIME-Version: 1.0
-References: <20260717154505.83935-1-pavone.lawyer@gmail.com>
-In-Reply-To: <20260717154505.83935-1-pavone.lawyer@gmail.com>
-From: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
-Date: Mon, 27 Jul 2026 17:11:13 +0200
-X-Gm-Features: AUfX_mxQeAYfmsp5ndscJp3cVl_h1riLkJOcLZ-AQknL2ZhHaJnGBD90JFOpFcw
-Message-ID: <CAMhzubpF5UQZ6b3F9EUM7U_HJUJ6gB9Px-9v=dCW6v-4CVBLKw@mail.gmail.com>
-Subject: Re: [PATCH v4] media: rkvdec: fix clk reference leak on unbind
-To: jonas@kwiboo.se, detlev.casanova@collabora.com, 
-	nicolas.dufresne@collabora.com, hverkuil@kernel.org, mchehab@kernel.org
-Cc: ezequiel@vanguardiasur.com.ar, heiko@sntech.de, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|DUZPR04MB10016:EE_
+X-MS-Office365-Filtering-Correlation-Id: f8ebd7d5-8cf1-4467-fba7-08deebf255f3
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|366016|1800799024|19092799006|7416014|376014|10067099003|11063799006|4143699003|56012099006|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: L+6sKWchwY/bVB5z/7K9Ze6zhjwxFutu5BoPrSDIW/9uEN7hDqHIwPUfEdRMqn1oL1b1xQLNQwn+g0C7TCKSp8udeqpjN7Ht8TRI0N/EdTJ/WaeCieV7KQlLK1Pwlq15tW5a9kl5m7H5ivFLKIYMSLXQ3RVfA8GaQgNw3pLlPpW/uLK5GFxJgy8i+2wV0yo+Bgb1UF18LTUtiEYUbBeyQIlKdMjLZYfPkIqEquWF2bIbZ1/IpE2nBAHJ5r5yi+gudcy/7+Zwheq3QIX23ITzPrr3GtZSdGb1biTKBYVfB6G5upuJUpGbHvfnhnOCymIFfk9yw/XYn6/Wf6aeLY5+LqY396jV/b7eIC3Hisp6V+U91jc9OZAqikCtGoB3cTY7h7lbXPtpSYf3Lu2fVayzt6xZhKuMmM26nc9NU1Dr86tvNWidZFRa8/hmpmpSJShRbGxha2Nocaz9322g0ss0BZ1GWPspfXYgo8Akv/roVgo6DeRyUR/0yo3lXZqM9Unx5NejjOn4cJWYm1EEJ3smoXgK8ShanykBdDGlYE8/exUuZ7cFMPTrvIiygW3uLBUGgt9ll2fl8lYwgARoYfS2tB1rcrrNrjxeyfPZoyl36x3fjGGOG5RQ6BK8c8q1XUWJOwbybL9NSej46bBqyr7Ve7HNWxt4Xust8x6k4vpYzsE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(366016)(1800799024)(19092799006)(7416014)(376014)(10067099003)(11063799006)(4143699003)(56012099006)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?G8111dwA09rq1RJ2BFf4Rp5Ka824jXKzj41NcT8U8SasHgUHlcLXBZ+cB8se?=
+ =?us-ascii?Q?jzVJPGsFp07cF+OrZ62+vxwm0Gp2MS9UqWaQiCn50Drig9RJ5QrD7stiZ9B8?=
+ =?us-ascii?Q?TVHOIhl+09ljVvpQejiMHkCqL4ksXaBk9pjAaaK5BWmylQuH2+5abRKbOmNa?=
+ =?us-ascii?Q?ntdyXVjPVP2pn7KO9O2s+fiXRcBfV+h+0FLFrpMKVhQgT0wnRruH4HLzhD2Z?=
+ =?us-ascii?Q?c/tuHsEgmhWa++gWb/3fNrQIdNib0c4XL+y3VDWcdztSy528730WJyGuxgJv?=
+ =?us-ascii?Q?5NN5XeavA5zirawro7t+JIrUtJlLnTR3wrwbcz7I7M5TqjZCedU/SY36FxY5?=
+ =?us-ascii?Q?x6tWWLHMc4OAzLM+1+K8eVFk32/r2xSSu1CFHZQZxjXzxEu36NvRiGG4smHx?=
+ =?us-ascii?Q?FPaihEcMYkywrvA/1vhDnhgl6wfbwSaiyYaG7KJf7AVDCouWw+DOPK6Ux1X4?=
+ =?us-ascii?Q?GRjSQ6Xqb/lCNOoBCyk2Oe6SnfYycflD6BMfGu1zsOodaV6H5pfAba0T1M2K?=
+ =?us-ascii?Q?t2KxfghQyk0+9Jx6jrGCmx2RqNy0s7S0Wat0/H6LKJvWHRU/a8EniIwPm27m?=
+ =?us-ascii?Q?TsQgW2vuNG34uvoTr2WQFD7GxnsmLOM6zZpW0rUoVGmHdgs5MIuxh5pU84vJ?=
+ =?us-ascii?Q?zsIccvvg54PLZo33CAJNASBNYRvYe8B6XEyuHAeuG7MF4GkNsw/pfEqy75kT?=
+ =?us-ascii?Q?SkjS2/hGwOO+1jlQJRTG+L9kPpQWG6uG/psJuz9ki+MAqWQo6GC7k9Rw0Mzv?=
+ =?us-ascii?Q?U3szdH1PM0d4vCtnZ7dKLSTWcWcKsj64k1pu/UvXGz5/ErDV88EqC+Kj/fj1?=
+ =?us-ascii?Q?4ynra+WAWe3M5+IfMULuHl8bJodJRJBuc+1YCDPhq3nkjh15boB/3brZrYaw?=
+ =?us-ascii?Q?3E/gACEvIo8yCI9dOmeX1vDruQgiKtqKYnKcFzzUNvzagdt5gq5bS+GkXumj?=
+ =?us-ascii?Q?N1DH+0IeSzi6RzPbdmrmw0FVXUszTDvfpfdobg032S+/fC7zzyaBd1LGfG41?=
+ =?us-ascii?Q?myRbkmpqfb2mlHapjAOKyiYS2L++ZncJ0aDQus9Y2djMEKp/bZ3ISDL8wrpJ?=
+ =?us-ascii?Q?pe3ZgvEpO1/OzekeBseBz0x9Swf/nCvhTGvYfnKq6oCNNwoGgtbUH1Ki9jqe?=
+ =?us-ascii?Q?UF5Dft8hI1XdJNXqLpqD9QtK6vVTWGTE2hB3F4KdXg4ZEH8NqFzSYRhPFH8D?=
+ =?us-ascii?Q?cnLp4UyYqgsyO3PqxDYWRKAVb0ch7V1Krg+g9uYV5+hXlMEGpNQU3IPB/2UB?=
+ =?us-ascii?Q?NgAldq8mbfj1VFUgzL05X7Z9Ma1eRqwTKHVB8oNteNAph3pS7+bHou4PO7VO?=
+ =?us-ascii?Q?Mjwjv4cw14gkMwVz/27+mPxvW+YzUQW+qmjUu+u/8ocYu/eVC34ej3SP7a/g?=
+ =?us-ascii?Q?jtUDur0SdTpW5lQPoXiW5RJE71Pzdf+mIBzB0/9neRbnsI0IoEe0ABtAbL4Y?=
+ =?us-ascii?Q?FZkuGGtbAq2eq5fTNO35fAM/WdJY7QKl4eed+kaFxKWD6e5xDZrvfy3N57ic?=
+ =?us-ascii?Q?5RDzkvyrrXAxn+PGHCCK8lIvEKgAIo9+cgKFFKoAOU+f3EnYr5gS8VY1XAex?=
+ =?us-ascii?Q?VlazJx99XGOF0bP73wcQJpYv1shqt18Hh8PJOZxZJVPWmzwTrqU5uBhVkIr3?=
+ =?us-ascii?Q?kwsaht+MZpF1JfQt4QF1TrUdA98oJ4RokXWdq/4spjfOfK7bZ0TjkqVdSlne?=
+ =?us-ascii?Q?97kLoFDmXO0qYkT+H/XwB8xCwgmC0aivD6nyPrQjYeCke55xh0M8+54eIkfs?=
+ =?us-ascii?Q?L00kq5bh9hXMa8pRaIBaTzviU5ABhkXxa5PBSPJDnwK0MO6bFCW3?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f8ebd7d5-8cf1-4467-fba7-08deebf255f3
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2026 15:18:39.3113
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 99Eb4XlzFYn88bJgTRayPzW3qlmJhYtbWPoJ5dqqJcBbiNwFUdXjVY5gnewk2fH7xB+A744GtaCojqUG0KeLomgmhc0cIFXvWUP8Eb/qjn7qJdIcWVCAv+DtM0KXI3cU
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DUZPR04MB10016
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_081127_128817_8F960187 
-X-CRM114-Status: GOOD (  45.20  )
+X-CRM114-CacheID: sfid-20260727_081846_173411_A6E01572 
+X-CRM114-Status: GOOD (  31.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,177 +145,198 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Self-review after running this on a Rock 5B+. The reorder closes the
-clk leak, but it opens a window I missed when I sent it.
-Moving the PM teardown ahead of rkvdec_v4l2_cleanup() is necessary,
-for the drvdata reason in the commit message. The side effect is that
-video_unregister_device() is now the last thing remove() does, so
-/dev/videoN stays open-able while the empty IOMMU domain is already
-freed.
-A job queued in that window reaches rkvdec_iommu_restore() and touches
-the freed domain. Before the reorder, cleanup ran first and the window
-did not exist.
-Splitting the helper keeps both properties: unregister the media and
-video devices first, which stops new jobs, then tear down PM, then
-release the m2m and V4L2 device. Only that last step clears drvdata,
-so rkvdec_runtime_suspend() still finds its state.
-
-   cancel_delayed_work_sync(&rkvdec->watchdog_work);
-
-   rkvdec_v4l2_unregister(rkvdec); /* media + video unregister */
-
-   pm_runtime_dont_use_autosuspend(&pdev->dev);
-
-   if (rkvdec->empty_domain)
-     iommu_domain_free(rkvdec->empty_domain);
-
-   pm_runtime_disable(&pdev->dev);
-   rkvdec_v4l2_release(rkvdec); /* media cleanup, m2m, v4l2 */
-
-Running here on 7.2-rc5: unbind then rebind returns the rkvdec clock
-enable counts to their pre-unbind values and /dev/video0 comes back.
-I can send this as a v5 carrying both changes, or as a follow-up patch
-on top of v4, whichever you prefer.
-Thanks,
-Francesco
-
-Il giorno ven 17 lug 2026 alle ore 17:45 Francesco Saverio Pavone
-<pavone.lawyer@gmail.com> ha scritto:
+On Sun, Jul 26, 2026 at 02:42:43AM +0000, Tharit Tangkijwanichakul wrote:
+> [You don't often get email from tharitt97@gmail.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
 >
-> From: Jonas Karlman <jonas@kwiboo.se>
+> device_run() acquires a runtime PM reference and enables the VPU clocks
+> before invoking the codec-specific run callback.
 >
-> remove() calls pm_runtime_disable() before
-> pm_runtime_dont_use_autosuspend(), so the second call can never suspend
-> the device: it reaches rpm_idle(), which returns -EACCES once PM runtime
-> is disabled. The probe error path has had the two the other way round
-> since the driver was merged.
+> If clk_bulk_enable() fails, the runtime PM reference is left held. If
+> the codec-specific run callback fails, both the enabled clocks and the
+> runtime PM reference are left held.
 >
-> This shows up when the device is unbound while the 100ms autosuspend
-> window is still open, which is what an rmmod right after a decode does.
-> device_release_driver() calls pm_runtime_put_sync() before .remove(),
-> and rpm_idle() adds RPM_AUTO on its own, so that put only arms the
-> autosuspend timer. pm_runtime_disable() then cancels the timer, and
-> pm_runtime_reinit() relabels the device suspended without calling the
-> driver back. The clk_bulk reference taken by rkvdec_runtime_resume() is
-> never dropped, and a later probe does not reclaim it, so every such
-> unbind leaks one enable count.
+> Make the clocks part of the device's runtime PM state by enabling them
+> from the runtime-resume callback and disabling them from the
+> runtime-suspend callback.
 >
-> Drop autosuspend first, so the callback still runs and releases the
-> clocks.
->
-> The PM calls also have to move ahead of rkvdec_v4l2_cleanup() rather
-> than just swap with each other. rkvdec_runtime_suspend() looks its state
-> up with dev_get_drvdata(), and v4l2_device_unregister() clears it:
-> struct rkvdec_dev has v4l2_device as its first member, so
-> &rkvdec->v4l2_dev and rkvdec are the same address and the check in
-> v4l2_device_disconnect() matches. That is harmless today because
-> pm_runtime_disable() suppresses the callback, but once the callback can
-> run, a suspend after the V4L2 teardown dereferences NULL. Swapping only
-> the two PM calls oopses on every unbind.
->
-> Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> [fsp: wrote the commit message; the diff is unchanged]
-> Tested-by: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
-> Assisted-by: Claude:claude-opus-4-8
-> Signed-off-by: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+> Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+> Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
 > ---
-> Changes in v4:
->  - No functional change. Resent as its own thread (no In-Reply-To on v2),
->    per Nicolas's note that a new version should be its own thread for
->    patchwork tracking. Same diff and same commit message as v3.
->
 > Changes in v3:
->  - Rewrote the commit message, and dropped the VP9 claim from v1 and v2.
->    Those said this fixed a VP9 inter-prediction bug on RK3588, green chroma
->    from the second ALTREF frame onward. The bug is real, but this is not
->    what fixes it, and I should have established that before sending v1.
+> - Move clock enable and disable operations into the runtime PM
+>   callbacks, as suggested by Frank Li.
+> - Remove vpu from argument in hantro_job_finish() and
+>   hantro_job_finish_no_pm(). It is accessible by ctx.
 >
->    What happened: I took this patch out of chewitt's tree along with two
->    others and tested the three as a batch. The green is fixed by "media:
->    rkvdec: implement reset controls" from Alex Bee, which adds the
->    reset_control handling that recovers the VDPU381 after a transient error
->    (COLMV_REF_ERR_STA and friends) instead of leaving it dirty for the next
->    inter frame. Randy Li's PMU idle export goes with it. This patch was the
->    third one in that batch and got the credit.
+> Changes in v2:
+> - Fix the codec run failure path to disable the clocks before dropping
+>   the runtime PM reference.
+> - Use a local vpu variable in device_run().
 >
->    Retested this week on the same Rock 5B+ with an unpatched driver: a VP9
->    Profile 0 1080p clip with alt-ref frames decodes byte-identical to the
->    libvpx reference, across five rmmod/insmod cycles and after an unbind
->    inside the autosuspend window. The green does not come back, because the
->    reset_control work is in the tree I test on. Sorry for the review and the
->    testing you spent on that basis.
+> Tested on a ROCK 5B (RK3588) using the Hantro G1 decoder and Fluster:
 >
->  - Worth flagging separately: mainline rkvdec has no reset_control support
->    at all, so the VDPU381 is never recovered after a transient error. That
->    is a real gap, it is just not this patch. I can write it up properly if
->    that is useful.
+>   H.264 (JVT-AVC_V1):          129/135, unchanged
+>   MPEG-2 (MPEG2_VIDEO-MAIN):    23/43, unchanged
+>   VP8 (VP8-TEST-VECTORS):       61/61, unchanged
 >
->  - The diff is unchanged from v1 and v2. It is Jonas's 2020 commit verbatim,
->    and his original one-line subject already described exactly what it does.
->    The wrong story was mine, not his.
+>  .../media/platform/verisilicon/hantro_drv.c   | 68 +++++++++++--------
+>  1 file changed, 39 insertions(+), 29 deletions(-)
 >
->  - The subject changed with the message: "media: rkvdec: fix PM runtime
->    teardown ordering in remove" in v1 and v2, "media: rkvdec: fix clk
->    reference leak on unbind" here, since that is what it actually fixes.
+> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+> index 2e81877f640f..7978bb72569e 100644
+> --- a/drivers/media/platform/verisilicon/hantro_drv.c
+> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
+> @@ -59,8 +59,7 @@ static const struct v4l2_event hantro_eos_event = {
+>         .type = V4L2_EVENT_EOS
+>  };
 >
->  - What is left is measured. With a dev_info() at the top of
->    rkvdec_runtime_suspend(), autosuspend_delay raised to 60s to take the
->    timer out of the race, and unbind driven through sysfs:
->        unpatched: 0 suspend callbacks, aclk_rkvdec0 enable_count 1 -> 2
->        patched:   1 suspend callback,  enable_count 1 -> 1
->    The leak survives rmmod and accumulates one per unbind. With
->    autosuspend_delay=0 both orders suspend once, which is the control: the
->    difference only exists inside the window.
->
->  - Fixes: was wrong in v1 and v2. ff8c5622f9f7 has the two pm_runtime calls
->    as context and only added iommu_domain_free(). cd33c830448b added remove()
->    with the reversed order, and the probe error path with the right one, so
->    the tag points there now.
->
->  - Dropped Cc: stable. A clk reference leaked on unbind is not backport
->    material, and the tag was only there for the VP9 claim.
->
->  - Dropped your Reviewed-by and Tested-by from v2: they were given for a fix
->    to something else.
->
->  - Not included, happy to send as follow-ups: clearing empty_domain after
->    iommu_domain_free(), and hoisting the unregisters to the top of remove()
->    as you suggested on v2.
->
-> Tested on a Radxa Rock 5B+ (RK3588) on a 7.1 tree where the six calls in
-> rkvdec_v4l2_cleanup() are open-coded; the executed sequence is the one this
-> patch produces. VP9 decode stays byte-identical to libvpx, and five
-> rmmod/insmod cycles leave dmesg clean.
->
-> Link to v1: https://lore.kernel.org/all/20260518105413.42147-1-pavone.lawyer@gmail.com/
-> Link to v2: https://lore.kernel.org/all/20260518145414.64514-1-pavone.lawyer@gmail.com/
-> Link to v3: https://lore.kernel.org/all/20260717150440.77079-1-pavone.lawyer@gmail.com/
->  drivers/media/platform/rockchip/rkvdec/rkvdec.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> index 1d1e9bfef8e9..0ec3fca9cccc 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -1869,12 +1869,13 @@ static void rkvdec_remove(struct platform_device *pdev)
->
->         cancel_delayed_work_sync(&rkvdec->watchdog_work);
->
-> -       rkvdec_v4l2_cleanup(rkvdec);
-> -       pm_runtime_disable(&pdev->dev);
->         pm_runtime_dont_use_autosuspend(&pdev->dev);
->
->         if (rkvdec->empty_domain)
->                 iommu_domain_free(rkvdec->empty_domain);
-> +
-> +       pm_runtime_disable(&pdev->dev);
-> +       rkvdec_v4l2_cleanup(rkvdec);
+> -static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
+> -                                   struct hantro_ctx *ctx,
+> +static void hantro_job_finish_no_pm(struct hantro_ctx *ctx,
+>                                     enum vb2_buffer_state result)
+>  {
+>         struct vb2_v4l2_buffer *src, *dst;
+> @@ -86,15 +85,13 @@ static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
+>                                          result);
 >  }
 >
->  #ifdef CONFIG_PM
+> -static void hantro_job_finish(struct hantro_dev *vpu,
+> -                             struct hantro_ctx *ctx,
+> +static void hantro_job_finish(struct hantro_ctx *ctx,
+>                               enum vb2_buffer_state result)
+>  {
+> -       pm_runtime_put_autosuspend(vpu->dev);
+> -
+> -       clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
+> +       struct hantro_dev *vpu = ctx->dev;
+>
+> -       hantro_job_finish_no_pm(vpu, ctx, result);
+> +       pm_runtime_put_autosuspend(vpu->dev);
+> +       hantro_job_finish_no_pm(ctx, result);
+>  }
+>
+>  void hantro_irq_done(struct hantro_dev *vpu,
+> @@ -111,7 +108,7 @@ void hantro_irq_done(struct hantro_dev *vpu,
+>         if (cancel_delayed_work(&vpu->watchdog_work)) {
+>                 if (result == VB2_BUF_STATE_DONE && ctx->codec_ops->done)
+>                         ctx->codec_ops->done(ctx);
+> -               hantro_job_finish(vpu, ctx, result);
+> +               hantro_job_finish(ctx, result);
+>         }
+>  }
+>
+> @@ -127,7 +124,7 @@ void hantro_watchdog(struct work_struct *work)
+>                 vpu_err("frame processing timed out!\n");
+>                 if (ctx->codec_ops->reset)
+>                         ctx->codec_ops->reset(ctx);
+> -               hantro_job_finish(vpu, ctx, VB2_BUF_STATE_ERROR);
+> +               hantro_job_finish(ctx, VB2_BUF_STATE_ERROR);
+>         }
+>  }
+>
+> @@ -170,29 +167,24 @@ void hantro_end_prepare_run(struct hantro_ctx *ctx)
+>  static void device_run(void *priv)
+>  {
+>         struct hantro_ctx *ctx = priv;
+> +       struct hantro_dev *vpu = ctx->dev;
+>         struct vb2_v4l2_buffer *src, *dst;
+>         int ret;
+>
+>         src = hantro_get_src_buf(ctx);
+>         dst = hantro_get_dst_buf(ctx);
+>
+> -       ret = pm_runtime_resume_and_get(ctx->dev->dev);
+> -       if (ret < 0)
+> -               goto err_cancel_job;
+> -
+> -       ret = clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
+> -       if (ret)
+> -               goto err_cancel_job;
+> +       ret = pm_runtime_resume_and_get(vpu->dev);
+> +       if (ret < 0) {
+> +               hantro_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
+> +               return;
+> +       }
+>
+>         v4l2_m2m_buf_copy_metadata(src, dst);
+>
+> -       if (ctx->codec_ops->run(ctx))
+> -               goto err_cancel_job;
+> -
+> -       return;
+> -
+> -err_cancel_job:
+> -       hantro_job_finish_no_pm(ctx->dev, ctx, VB2_BUF_STATE_ERROR);
+> +       ret = ctx->codec_ops->run(ctx);
+> +       if (ret)
+> +               hantro_job_finish(ctx, VB2_BUF_STATE_ERROR);
+>  }
+>
+>  static const struct v4l2_m2m_ops vpu_m2m_ops = {
+> @@ -1292,22 +1284,40 @@ static void hantro_remove(struct platform_device *pdev)
+>         pm_runtime_disable(vpu->dev);
+>  }
+>
+> -#ifdef CONFIG_PM
+>  static int hantro_runtime_resume(struct device *dev)
+>  {
+>         struct hantro_dev *vpu = dev_get_drvdata(dev);
+> +       int ret;
+>
+> -       if (vpu->variant->runtime_resume)
+> -               return vpu->variant->runtime_resume(vpu);
+> +       ret = clk_bulk_enable(vpu->variant->num_clocks, vpu->clocks);
+> +       if (ret)
+> +               return ret;
+> +
+> +       if (vpu->variant->runtime_resume) {
+> +               ret = vpu->variant->runtime_resume(vpu);
+> +               if (ret)
+> +                       goto err_disable_clocks;
+> +       }
+>
+>         return 0;
+> +
+> +err_disable_clocks:
+> +       clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
+> +       return ret;
+> +}
+> +
+> +static int hantro_runtime_suspend(struct device *dev)
+> +{
+> +       struct hantro_dev *vpu = dev_get_drvdata(dev);
+> +
+> +       clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
+> +       return 0;
+>  }
+> -#endif
+>
+>  static const struct dev_pm_ops hantro_pm_ops = {
+>         SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
+>                                 pm_runtime_force_resume)
+> -       SET_RUNTIME_PM_OPS(NULL, hantro_runtime_resume, NULL)
+> +       SET_RUNTIME_PM_OPS(hantro_runtime_suspend, hantro_runtime_resume, NULL)
+
+You need convert to model RUMTIME_PM_OPS and SYSTEM_SLEEP_PM_OPS
+
+pm_ptr(hantro_pm_ops) at below hantro_driver
+
+and remove CONFIG_PM first,
+
+then add move clock manage into runtime pm management
+
+If you remove "CONFIG_PM" here, cause build error at some special config.
+
+Or keep CONFIG_PM at this patch, then convert to RUMTIME_PM_OPS() in
+following patch.
+
+Frank
+
+>  };
+>
+>  static struct platform_driver hantro_driver = {
 > --
-> 2.54.0
+> 2.47.3
 >
 
 _______________________________________________
