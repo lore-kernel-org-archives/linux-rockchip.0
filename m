@@ -4,188 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C711C531FC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Jul 2026 14:48:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C2ACC531FC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Jul 2026 15:11:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kBmdOZ3M1WeklCVn2CSUy12Zzz3BpIaOuBonIlhpHuU=; b=ezi341lZBVnoEyUzblT1crFd5D
-	5swQTpa1q04AN8uwPKLw5HkBxCkgWBMI0Buoq8RdfZJsxx4CsK41nCFFJPhR7acLy1BThiHrgBkYl
-	opLKeyqQJSxmJIZ7oZ2uaQy/nFK92FkRzqiXOrVLV9EiXUgoXq/gB+HAkBq2qw8sr5ajA1KUm2zVd
-	V309NxWxbQiWBacBpKy5ia/W/4vIOX6DONDIAyUzrb1OoDyHyb/F9exLKzxPQyGcR/LP5I/lkOYqT
-	O8hVWsdZGQlsvdk6qKb0+fDGPixeLmjJQC6mJgFnUCKsptSukShw3baxwWDD37wmSFKtd/Ih2/dZo
-	3M4EF/Qg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nS2AZ0LInPkOFW8wlq6hqJJy6sJOh1Cq7B0fo5o/+QA=; b=t+fB/CXIFfDfcQ
+	FbfmnuvmykvJeHyDFizaxAA2nEUksOfxXE+dmnhREagFWeX4xDUlLL/sAx/OzzrX52aTxRaL77aUO
+	yU18OQ2gjxVESegZRwbXKYjwbSdWbgz8hxVykz1km/f0/zUWLb6Lp9FJG/GzGZEYDVmeaty4rRLW1
+	PuPT1JhoqB265+UUPrYhHDi61e/0i5sdi1IqjM73y9zhAEe/HpCIJwn1rrPb4VKmy/5nz7uKEh7gJ
+	JY8pJb1SqEczTjJPtReUu4fOeH210RYrrsWAy3S51nLXyF+PUa53GUCCXRW6sbH+1UXP4gU8O3HJ5
+	nTXVp5bpKTz69sXNa7uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woMcu-000000034cm-0Fuy;
-	Mon, 27 Jul 2026 14:48:20 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1woMzJ-000000038Am-1we0;
+	Mon, 27 Jul 2026 15:11:29 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woMcG-000000034Vw-3W7C
+	id 1woMzH-000000038A1-0JV3
 	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Jul 2026 14:48:19 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66RDlZ5H4115071
-	for <linux-rockchip@lists.infradead.org>; Mon, 27 Jul 2026 14:47:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	Sjxi0sQi0TP4rOMmNMZaggGGPh9+KGnMQPNHWuRXro4=; b=fg9OMB4Rp/B/Bd1a
-	GrpthF/QtlbaAJU2PpzNOItCg991o2X9dkm5yrkmtr8CrowFIn+Shxou5cw9ZP7f
-	YBtFbT2KvY2lq9c96rvjO/2EIDjJt2lbb9plwY/K3twlDZA3rJFxfLdsUa9/kGix
-	VUIpfzBZjXlKlmZMocc2sQ6hP60Zi4RApif2RpmpxUDCD1RsSFuZqMqdNn+rGXqj
-	vJ5HQMGmBwNovecawlleETMT1Jif2YeucA3R3/UFe+nml0LZaOW2CO2DfzNrdQLE
-	ueC64Nnn7zgHHMamZcQvOaUFjH2mTu8jbBI0zfvY20wrI8nO4jw/cSnPDwpFLWN7
-	cRTbcA==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fp4mrs8jn-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Mon, 27 Jul 2026 14:47:39 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-52827090cc5so36287321cf.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 27 Jul 2026 07:47:39 -0700 (PDT)
+	Mon, 27 Jul 2026 15:11:28 +0000
+Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-c9c26a5fb98so1989662a12.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 27 Jul 2026 08:11:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785165086; cv=none;
+        d=google.com; s=arc-20260327;
+        b=ZeZ426jSGnzacOuOaaCqfa2ldHpxxmIYRhL/dC7hzPNiprBtsUXMflSlMyQmHPqqPe
+         lnn8QLzjwdE5An1olriCnC+dRLo+pPJ2yPFh8chpm4qZYH32MAPnsgWREDVZ+OTUgBzM
+         /61s72aCRaRiJuxK9NKj2aVCejXuGot0eF7d5IQgI40I1fDF2wJi8vv94AVOZVJc9ryp
+         gEKcb9gdwbRPaGKt18rR6cLFUWVWzOn5F3UbxqoJpEreLifcZpTofue4SLETBPIzVltT
+         NvkM6lElJPJO8wecC90RS7eMM/LwPGGB5Qxi4LaJ9LthbMGqjDD5Tmb3vvgFDF0vbsv/
+         gTIQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=DLprF9ab5aanfA37nxhElQ/PL48JoVdr0fckQzmPSz0=;
+        fh=LWhZ1DnaScluJCJEzBox3jljyhDRJO7tRUqsUtpvn8Q=;
+        b=A/t4Pz16aqvvZjYu74dqTytCDjJkJjO7fC2BR0JXS4HSkbuyr8YMyP3W7a1C+lwwtt
+         Qh8FmKPvQDkbqHombbm8LU76HfiC5zf9g6LkJmg+LR6ZmHCIgSAT3P4StgeCvgtQEp3f
+         dbHn186V5hAD7ec5XcNlvPCHuS1Yl8JOSn8yZ14v3WUkRx8cx5+7ywwHe8N3VBh7/a2n
+         7Z2TgN2RQtTIJX5YpMTl3qbT1MG7hwg0GG/tRY50hlBAtSK/BO+Q0cR7T2zwUrk4Ghfq
+         rMB5bT0KwnG3n9Xg5fEd8cEFkxK7orxgctCHZ0f7lRyHC5r31+QA78CPghqZ/LGFLSW4
+         hMrw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1785163659; x=1785768459; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Sjxi0sQi0TP4rOMmNMZaggGGPh9+KGnMQPNHWuRXro4=;
-        b=DKhvoDmvEFjkM4xqnOGlR22O3JsBhK5On7+tZ+Y7SWLzqLA4hGZNcd+SmNhT34CHHh
-         FGPMmdrlHE0NZJvtypZHEi5yTpabjh98jYyhPqZNiXwxWLJlbcWqu/0YpZ+ZyRBMzMUE
-         T2kGu2TlCFcdux4dnXuwprF1h3dnaAQZMTPXeVl/dVndxJkxhHj3Vfusxdh6cxpkdVF6
-         Mq7IDomy7VEIAnhlMHr/yVv/dAZLlSZS1sJgMN0txWHystXHsDxstkJN3LOWO3DhCMpH
-         oV/lDCJwY0IM/cuRRwfSs1NlneZCejCSbWAGyTuHkr/bsggo4cylh38LfXqfItvvcPD2
-         CoNA==
+        d=gmail.com; s=20251104; t=1785165086; x=1785769886; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=DLprF9ab5aanfA37nxhElQ/PL48JoVdr0fckQzmPSz0=;
+        b=ZNmBlwWfpgkUpPI0ThaT00NqsaeNT53ZO1rtWFXM6yPZ1Hx5c36tGTe8wk7aEGVj55
+         zcT9Uza2SS0WkW9kZxZE6xq1HbAjdabJXHxBv6FBLY9XUM2IRO8VJznTQK4FjiKa+GO5
+         mHo7X3yBpj8OVO1phoqR1wqrawTR62nbxXrPg0Beq04KQ+S12Ih5POOOjPxy89UMLb2u
+         mAWsf/bc0DpJJqYe55QwKzr5TdAxL6wiTNcsUJkCZQGtCUfiYva4zeoDYAIe1aIy9dl4
+         XA3sRywo426zufX9oeTTY0dm4cyo1lnLfokyEuzN5Z43HdpuP8sCYVUMrU62GJ4XdxGa
+         iWpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785163659; x=1785768459;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Sjxi0sQi0TP4rOMmNMZaggGGPh9+KGnMQPNHWuRXro4=;
-        b=i8tsFzDMIgLEcRRfyne56z5Q8QepYDxE3r24mLkjcWETJ14iPqZWQAqAmnogqVbTUZ
-         I4qalNNfKA8mOWRzzlL/fvcwaYAK2l+T6t+ksi8pQZAoZgbk0sdIRTBq00CnJDdO8tZh
-         MB2FshzICcfSOX2fxJ0nEJD6v9HQpX9NJdehHyE1QZActBXR26IkoXAJGRQszy6NL9Xi
-         5zKaEkRrkGIrg4W6tBBTSfiv6J3Bw38WyUvUo5MY7kuGGmuhPSLOPzgh83LSrUmT57dk
-         SyxkEYfuNErcJnn/3rQpyYkx1ohQjSOLNpuyxVil9hCxiNZmVhm6h9Nonz9t7wUHE7ds
-         N0BA==
-X-Forwarded-Encrypted: i=1; AHgh+Rq0k85LGWwXx6vwBlzYnIj0FkdMVS/p0zDgwupqDHFjYuSvCrFn87WdPoEywpbCq8hkYLZ9oL+iejvGHr8EGA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx9vp/ttOO8AbBoMEVZbdVevNXkp6i4RnZri07GHo7vZEu6UeDW
-	Q2LxhWE51qdXZKBfA4sEcr3inV5y446hCyBsxJF2gnDaYRcysVu4nMriiMKnPH3OgYotdP+mZpq
-	Vj8HUfmrT0NON7I6DSdFzU6MZDpn/y/5/fTTc7b31ijhzPSH4pWEX8nvjdibg4TUTCWBqq5dL/A
-	Y=
-X-Gm-Gg: AR+sD13p3+iMPyyizCyuwwTBF+FqmgHVr9D5foAH/qXRHrKALk+Gg2VPeNXUqYCviCl
-	2HZV3+fb7KYC1ULpqngKl3oSH9w/iQKdPFcpo6vncIloK1q2N7V2uDFacjjFlC/NDc4GfdQnkT8
-	wbwbVY3pffIv/jZz7FN387cI33yxWXdE2b1rqjpI1wNNUcLRlbZlP3QU0Tm68GfJ47J0vOdS19d
-	KmSa3jW4bHh2xrqERKB+GUvBzrL669r+za4LwpRci8cy0mUSzkUrgKv7EGSL383+SE93Z8qYY6K
-	1TUzo4kAEJmF5xnuwgxGRHoLo0PK70SUDmVDDSo+vk8yckwILgOsZQo/gY/KFsVZw8w1QngpYus
-	TZu7N+OnSp6hH5LIErJRtqJf94pQM8pXQss3sLTpC+2e0UA==
-X-Received: by 2002:a05:622a:314:b0:517:c65c:4987 with SMTP id d75a77b69052e-5295d37817emr113813231cf.22.1785163659227;
-        Mon, 27 Jul 2026 07:47:39 -0700 (PDT)
-X-Received: by 2002:a05:622a:314:b0:517:c65c:4987 with SMTP id d75a77b69052e-5295d37817emr113812621cf.22.1785163658666;
-        Mon, 27 Jul 2026 07:47:38 -0700 (PDT)
-Received: from [192.168.2.1] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-496b4f5f9f8sm227610155e9.9.2026.07.27.07.47.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 Jul 2026 07:47:37 -0700 (PDT)
-Message-ID: <07d7fd69-808a-4106-a02a-dd77430bbc4f@oss.qualcomm.com>
-Date: Mon, 27 Jul 2026 16:47:21 +0200
+        d=1e100.net; s=20251104; t=1785165086; x=1785769886;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=DLprF9ab5aanfA37nxhElQ/PL48JoVdr0fckQzmPSz0=;
+        b=PIvI1p7ZUJor+xxFeRRqICcehGfhGfFEEmRSaBZX5n8SFksjEe3BWzVJkFr7T+6N8P
+         WRWkeiSQKYnkfUaBg2IDVxb3adrwPKnh72LMUZNRtk3nF+Vk6bUVwmvJt8eEdpS3T7NW
+         zBI6Cy9ycrZdNUZ+akwzM2ICbQupEmdg681iR6f2YqXC2ZXqHv/0VRHBQNVPkncThLLV
+         j//VdhXnHs0kSVdAOhU+ENIKcXvruV+cvXeFOjJFHF2eaCFLDCrnt1Ddz/N9NZ880YG8
+         MuxLNGTqTEsAV5IlbaDN/Sqh0vMEzV9KWSdS+8ynUc34sl9nyUtPfz4BAsbidEPNui0A
+         qAEg==
+X-Forwarded-Encrypted: i=1; AHgh+Ro0p708Kv57sKuVhLRSnGvrrHX4mlPWa6xUVoxOHfMQYDRCHxfcUgloQ412FdTJh2vrB6MUm5onJjjP3FNkXg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxxR8Na002Vd4tTtVWrOcQmnDqsJ5A8C+FusTt4KRvz1ZPwIlQO
+	8th8yCvNlm+XSv2o4QfFfbR8CcWG8V36JxcIasqOPhx/x2mhIysnxeWhlghdZnZy335e9C6ERj7
+	BTDsXsBxpa/eu75Bc3yxTDuh2DTrkEEOicAg=
+X-Gm-Gg: AR+sD10g38/mhIxtltm1Uj4KRsEuDfwRycmJi4Ra94RmljPRxIdto3tPJyBtIdCCdnk
+	qEyFMuIV27El4C5pfdMjH++0J9V4uxh0D6jltRRjd2ZCM87VWVxU0RVHc6SniyualvyMvNmgXQ2
+	u3v+HVZa4Mq5OPVxa3lOO3RxXC1X4Bj7dky2iz/6lY4c+iXOXaKiwQYcbuSw5s+tRIgiJhEzZbj
+	sEGrN3fUvdIHkkNj7EaI+XNoRBjvJPDbHdY5cTkwX99CqzeitDcigQXgAog1T0DXfifWspG8uMZ
+	pZHhAD8n5GUIma6pmavYs8kka1ne
+X-Received: by 2002:a05:6a21:117:b0:3b5:6b5a:4f31 with SMTP id
+ adf61e73a8af0-3c67267fd31mr10484309637.27.1785165085845; Mon, 27 Jul 2026
+ 08:11:25 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/18] thermal/drivers: Remove redundant error messages on
- IRQ request failure
-To: Pan Chuang <panchuang@vivo.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
-        Daniel Lezcano <daniel.lezcano@kernel.org>,
-        Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-        Miquel Raynal
- <miquel.raynal@bootlin.com>,
-        Markus Mayer <mmayer@broadcom.com>,
-        Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
-        Florian Fainelli <florian.fainelli@broadcom.com>,
-        Frank Li
- <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        zhanghongchen
- <zhanghongchen@loongson.cn>,
-        Yinbo Zhu <zhuyinbo@loongson.cn>, Amit Kucheria <amitk@kernel.org>,
-        Thara Gopinath <thara.gopinath@gmail.com>,
-        =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
-        Geert Uytterhoeven <geert+renesas@glider.be>,
-        Magnus Damm <magnus.damm@gmail.com>,
-        John Madieu <john.madieu.xa@bp.renesas.com>,
-        Heiko Stuebner
- <heiko@sntech.de>,
-        Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Peter Griffin <peter.griffin@linaro.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Thierry Reding <thierry.reding@kernel.org>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
-        Laura Nao <laura.nao@collabora.com>,
-        Mason Chang <mason-cw.chang@mediatek.com>,
-        Fei Shao <fshao@chromium.org>,
-        Frank Wunderlich <frank-w@public-files.de>,
-        Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
-        Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-        "Jiri Slaby (SUSE)" <jirislaby@kernel.org>,
-        Svyatoslav Ryhel <clamor95@gmail.com>,
-        "open list:THERMAL" <linux-pm@vger.kernel.org>,
-        open list <linux-kernel@vger.kernel.org>,
-        "moderated list:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
-        "open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <imx@lists.linux.dev>,
-        "open list:QUALCOMM TSENS THERMAL DRIVER" <linux-arm-msm@vger.kernel.org>,
-        "open list:RENESAS R-CAR THERMAL DRIVERS"
- <linux-renesas-soc@vger.kernel.org>,
-        "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-        "open list:SAMSUNG THERMAL DRIVER" <linux-samsung-soc@vger.kernel.org>,
-        "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>,
-        "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
- <linux-mediatek@lists.infradead.org>
-References: <20260709023048.599150-1-panchuang@vivo.com>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
-In-Reply-To: <20260709023048.599150-1-panchuang@vivo.com>
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI3MDEzOSBTYWx0ZWRfXx/ZnClWjeVom
- /DkcUrWdCPvJ20wIeS0SP/mqnXnKS3z0HJBcXOIB+TG+fFuHFGfGh8FeCAwVm5O7GMQyecLpCbp
- 7miqagqgXxJ2lN+G0EiH82pBToe8n+E=
-X-Authority-Analysis: v=2.4 cv=UYBhjqSN c=1 sm=1 tr=0 ts=6a676f8b cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=uw/3876vWhRnNVL35W6mqQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=pSU5Y2q4KNMKwdsDY74A:9 a=QEXdDO2ut3YA:10 a=a_PwQJl-kcHnX1M80qC6:22
-X-Proofpoint-GUID: xVl4iXjJDUf-96CqZyTSGScYd6GYKJ4I
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI3MDEzOSBTYWx0ZWRfX5vd8LKal66hX
- LyDXrgwio2YxHO33+wgjM+N/Yweq1Bpa6CocaK2pNHWylhMAyKwGmcDITsEwcljFEL2L+y9MBNc
- DyIZzMd/qFsj2IKQVOKwIV5HcVQDtTbYBua64ymkumBlUrU58NDV/n+4RLrGp/YzjCg1a3m6+Gu
- DPyniLe8SAQjmujTY5OHBNCgf+Pm6DET6kYjdNybeizXlD5bTNLcH4Hc/SlPIA+/hLrFVHDU2P8
- z+fCao/yBJ2B0gDzMhH+rHlx410uf98pRsZTaeSceQxn4zHAYLf8nC3mIVr87Kpuua+L49cmqUD
- v3zOhXE8QpvvaSWByNPn5B2hop5vNpqONTz9tQD2tLq07STYruXTQXOfn1h9eIl3u8oXwvK9TFf
- lEdS6tlDZf1kCfuBn8HdKymvdJOBtkyypIFVWEdOByvWYiMLEYBGOVHBn0wv/PpT+/vAgIADRf7
- z1BEzGgy5GVTmWqXI+g==
-X-Proofpoint-ORIG-GUID: xVl4iXjJDUf-96CqZyTSGScYd6GYKJ4I
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-27_04,2026-07-24_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 lowpriorityscore=0 suspectscore=0 bulkscore=0 clxscore=1011
- priorityscore=1501 phishscore=0 adultscore=0 impostorscore=0 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607270139
+References: <20260717154505.83935-1-pavone.lawyer@gmail.com>
+In-Reply-To: <20260717154505.83935-1-pavone.lawyer@gmail.com>
+From: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+Date: Mon, 27 Jul 2026 17:11:13 +0200
+X-Gm-Features: AUfX_mxQeAYfmsp5ndscJp3cVl_h1riLkJOcLZ-AQknL2ZhHaJnGBD90JFOpFcw
+Message-ID: <CAMhzubpF5UQZ6b3F9EUM7U_HJUJ6gB9Px-9v=dCW6v-4CVBLKw@mail.gmail.com>
+Subject: Re: [PATCH v4] media: rkvdec: fix clk reference leak on unbind
+To: jonas@kwiboo.se, detlev.casanova@collabora.com, 
+	nicolas.dufresne@collabora.com, hverkuil@kernel.org, mchehab@kernel.org
+Cc: ezequiel@vanguardiasur.com.ar, heiko@sntech.de, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_074740_997852_0CB3F79B 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20260727_081127_128817_8F960187 
+X-CRM114-Status: GOOD (  45.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -197,31 +113,183 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/9/26 04:30, Pan Chuang wrote:
-> Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
-> error handling in devm_request_*_irq()") added automatic error
-> logging to devm_request_threaded_irq() and
-> devm_request_any_context_irq() via the new devm_request_result()
-> helper, which prints device name, IRQ number, handler functions, and
-> error code on failure.
-> 
-> Since devm_request_irq() is a static inline wrapper around
-> devm_request_threaded_irq(), it also benefits from this automatic
-> logging.
-> 
-> Remove the now-redundant dev_err() and dev_err_probe() calls in
-> thermal drivers that follow these devm_request_*_irq() functions, as
-> the core now provides more detailed diagnostic information on failure.
-> 
+Self-review after running this on a Rock 5B+. The reorder closes the
+clk leak, but it opens a window I missed when I sent it.
+Moving the PM teardown ahead of rkvdec_v4l2_cleanup() is necessary,
+for the drvdata reason in the commit message. The side effect is that
+video_unregister_device() is now the last thing remove() does, so
+/dev/videoN stays open-able while the empty IOMMU domain is already
+freed.
+A job queued in that window reaches rkvdec_iommu_restore() and touches
+the freed domain. Before the reorder, cleanup ran first and the window
+did not exist.
+Splitting the helper keeps both properties: unregister the media and
+video devices first, which stops new jobs, then tear down PM, then
+release the m2m and V4L2 device. Only that last step clears drvdata,
+so rkvdec_runtime_suspend() still finds its state.
 
-Applied, all non-x86 changes
+   cancel_delayed_work_sync(&rkvdec->watchdog_work);
 
-Thanks for the cleanup
+   rkvdec_v4l2_unregister(rkvdec); /* media + video unregister */
+
+   pm_runtime_dont_use_autosuspend(&pdev->dev);
+
+   if (rkvdec->empty_domain)
+     iommu_domain_free(rkvdec->empty_domain);
+
+   pm_runtime_disable(&pdev->dev);
+   rkvdec_v4l2_release(rkvdec); /* media cleanup, m2m, v4l2 */
+
+Running here on 7.2-rc5: unbind then rebind returns the rkvdec clock
+enable counts to their pre-unbind values and /dev/video0 comes back.
+I can send this as a v5 carrying both changes, or as a follow-up patch
+on top of v4, whichever you prefer.
+Thanks,
+Francesco
+
+Il giorno ven 17 lug 2026 alle ore 17:45 Francesco Saverio Pavone
+<pavone.lawyer@gmail.com> ha scritto:
+>
+> From: Jonas Karlman <jonas@kwiboo.se>
+>
+> remove() calls pm_runtime_disable() before
+> pm_runtime_dont_use_autosuspend(), so the second call can never suspend
+> the device: it reaches rpm_idle(), which returns -EACCES once PM runtime
+> is disabled. The probe error path has had the two the other way round
+> since the driver was merged.
+>
+> This shows up when the device is unbound while the 100ms autosuspend
+> window is still open, which is what an rmmod right after a decode does.
+> device_release_driver() calls pm_runtime_put_sync() before .remove(),
+> and rpm_idle() adds RPM_AUTO on its own, so that put only arms the
+> autosuspend timer. pm_runtime_disable() then cancels the timer, and
+> pm_runtime_reinit() relabels the device suspended without calling the
+> driver back. The clk_bulk reference taken by rkvdec_runtime_resume() is
+> never dropped, and a later probe does not reclaim it, so every such
+> unbind leaks one enable count.
+>
+> Drop autosuspend first, so the callback still runs and releases the
+> clocks.
+>
+> The PM calls also have to move ahead of rkvdec_v4l2_cleanup() rather
+> than just swap with each other. rkvdec_runtime_suspend() looks its state
+> up with dev_get_drvdata(), and v4l2_device_unregister() clears it:
+> struct rkvdec_dev has v4l2_device as its first member, so
+> &rkvdec->v4l2_dev and rkvdec are the same address and the check in
+> v4l2_device_disconnect() matches. That is harmless today because
+> pm_runtime_disable() suppresses the callback, but once the callback can
+> run, a suspend after the V4L2 teardown dereferences NULL. Swapping only
+> the two PM calls oopses on every unbind.
+>
+> Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> [fsp: wrote the commit message; the diff is unchanged]
+> Tested-by: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+> Assisted-by: Claude:claude-opus-4-8
+> Signed-off-by: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+> ---
+> Changes in v4:
+>  - No functional change. Resent as its own thread (no In-Reply-To on v2),
+>    per Nicolas's note that a new version should be its own thread for
+>    patchwork tracking. Same diff and same commit message as v3.
+>
+> Changes in v3:
+>  - Rewrote the commit message, and dropped the VP9 claim from v1 and v2.
+>    Those said this fixed a VP9 inter-prediction bug on RK3588, green chroma
+>    from the second ALTREF frame onward. The bug is real, but this is not
+>    what fixes it, and I should have established that before sending v1.
+>
+>    What happened: I took this patch out of chewitt's tree along with two
+>    others and tested the three as a batch. The green is fixed by "media:
+>    rkvdec: implement reset controls" from Alex Bee, which adds the
+>    reset_control handling that recovers the VDPU381 after a transient error
+>    (COLMV_REF_ERR_STA and friends) instead of leaving it dirty for the next
+>    inter frame. Randy Li's PMU idle export goes with it. This patch was the
+>    third one in that batch and got the credit.
+>
+>    Retested this week on the same Rock 5B+ with an unpatched driver: a VP9
+>    Profile 0 1080p clip with alt-ref frames decodes byte-identical to the
+>    libvpx reference, across five rmmod/insmod cycles and after an unbind
+>    inside the autosuspend window. The green does not come back, because the
+>    reset_control work is in the tree I test on. Sorry for the review and the
+>    testing you spent on that basis.
+>
+>  - Worth flagging separately: mainline rkvdec has no reset_control support
+>    at all, so the VDPU381 is never recovered after a transient error. That
+>    is a real gap, it is just not this patch. I can write it up properly if
+>    that is useful.
+>
+>  - The diff is unchanged from v1 and v2. It is Jonas's 2020 commit verbatim,
+>    and his original one-line subject already described exactly what it does.
+>    The wrong story was mine, not his.
+>
+>  - The subject changed with the message: "media: rkvdec: fix PM runtime
+>    teardown ordering in remove" in v1 and v2, "media: rkvdec: fix clk
+>    reference leak on unbind" here, since that is what it actually fixes.
+>
+>  - What is left is measured. With a dev_info() at the top of
+>    rkvdec_runtime_suspend(), autosuspend_delay raised to 60s to take the
+>    timer out of the race, and unbind driven through sysfs:
+>        unpatched: 0 suspend callbacks, aclk_rkvdec0 enable_count 1 -> 2
+>        patched:   1 suspend callback,  enable_count 1 -> 1
+>    The leak survives rmmod and accumulates one per unbind. With
+>    autosuspend_delay=0 both orders suspend once, which is the control: the
+>    difference only exists inside the window.
+>
+>  - Fixes: was wrong in v1 and v2. ff8c5622f9f7 has the two pm_runtime calls
+>    as context and only added iommu_domain_free(). cd33c830448b added remove()
+>    with the reversed order, and the probe error path with the right one, so
+>    the tag points there now.
+>
+>  - Dropped Cc: stable. A clk reference leaked on unbind is not backport
+>    material, and the tag was only there for the VP9 claim.
+>
+>  - Dropped your Reviewed-by and Tested-by from v2: they were given for a fix
+>    to something else.
+>
+>  - Not included, happy to send as follow-ups: clearing empty_domain after
+>    iommu_domain_free(), and hoisting the unregisters to the top of remove()
+>    as you suggested on v2.
+>
+> Tested on a Radxa Rock 5B+ (RK3588) on a 7.1 tree where the six calls in
+> rkvdec_v4l2_cleanup() are open-coded; the executed sequence is the one this
+> patch produces. VP9 decode stays byte-identical to libvpx, and five
+> rmmod/insmod cycles leave dmesg clean.
+>
+> Link to v1: https://lore.kernel.org/all/20260518105413.42147-1-pavone.lawyer@gmail.com/
+> Link to v2: https://lore.kernel.org/all/20260518145414.64514-1-pavone.lawyer@gmail.com/
+> Link to v3: https://lore.kernel.org/all/20260717150440.77079-1-pavone.lawyer@gmail.com/
+>  drivers/media/platform/rockchip/rkvdec/rkvdec.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> index 1d1e9bfef8e9..0ec3fca9cccc 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> @@ -1869,12 +1869,13 @@ static void rkvdec_remove(struct platform_device *pdev)
+>
+>         cancel_delayed_work_sync(&rkvdec->watchdog_work);
+>
+> -       rkvdec_v4l2_cleanup(rkvdec);
+> -       pm_runtime_disable(&pdev->dev);
+>         pm_runtime_dont_use_autosuspend(&pdev->dev);
+>
+>         if (rkvdec->empty_domain)
+>                 iommu_domain_free(rkvdec->empty_domain);
+> +
+> +       pm_runtime_disable(&pdev->dev);
+> +       rkvdec_v4l2_cleanup(rkvdec);
+>  }
+>
+>  #ifdef CONFIG_PM
+> --
+> 2.54.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
