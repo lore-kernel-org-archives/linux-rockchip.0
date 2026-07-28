@@ -4,57 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BCCEC54F54
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 19:16:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 304ACC54F56
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 19:16:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DDTQGpIef/5SmcB47TeRuU91T2Dt79hc9sc993miNR0=; b=V4RExk6tEG9uCO
-	JXACUTAxrUvl3IotZ5GzV/Kn3m/mt4CrAtsbfm0ToW3GHmW26FiNNUpZj00oeYsa6KRE7YQdQsu+R
-	HapDbAWuzIA4jnVUCkJCyUmeLVWnimA80IIN/BfGYdoKaSQXfIaDr+KSTuQRW5ct9U2QEjpJw8QL5
-	gxUI90YYxyKVeCTO/R8vZXW6hVXYsIgPZdnkOfwPcZcFb79LJ6cb7AkczBTBexHRzz0FfBJIhJwPY
-	OHJBvUSnrKBUZQSI0+lEOCakVPfRAaYW/TUqiUKutnNBncgdKq7mmRYHTNsca7oj6cwb4WNrVNKq6
-	IqEbogB/yVUXnRKiiE5A==;
+	List-Owner; bh=0asOsna/uOTEmYpE43CaNOZ648/Rj3RRp5MjoVQYMUc=; b=S1GyjYdIIZXE88
+	IC9KAiUwzYQONvyKYrtQb7/GMyxa5pfHOA9crYnfX6wLL4B/1OUqxlBG0RF9oWEFKWKGPwaZ0saqA
+	3zwsj0QYzKv/i7fgiYJBjjNZpfEaBvOiyJZkbG1Hj182+abHWl+eGe6lGwsE8j/Lu6c5q02wYNT5Z
+	VvWYsyUsHSQExr/14CLptQSOpHfHNpN6LAlpfYDLyP5x0lz9oG42BYkJcbC5G73FwtLOxoxRb3E+B
+	i3lU4105zPJWCUN9SmU4B7kwWxyPrUUYwYIY9Aet6FC3JE4Kdr8xBhFfJkvgz35t6Ma7rktPTE7FK
+	xaSCIQpgdjIK1AsVULTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wonIE-000000067el-2NAq;
+	id 1wonIE-000000067eY-1tgA;
 	Tue, 28 Jul 2026 19:16:46 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wonIB-000000067cJ-3aoh;
+	id 1wonIB-000000067cP-3yWt
+	for linux-rockchip@lists.infradead.org;
 	Tue, 28 Jul 2026 19:16:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=YMdC5OLdtmiOOau9BgRbCPEDWqt/ahOGgghr1EDyiXY=; b=YQudPMPeq9W2ExjxJJkOP6tE2l
-	H5WGZMKRcb5ynaCnDPK8xUYbwyYfdN7zYhLQ0KNQgTltCu8pCIh+Y58qhdv/0BecJQsthc1YO/y5N
-	r33QEwXqlNdskiDD1/dLiW6flWSGPcZCptxKUxFwvlPsMQVVNdrqSlfI/G9bm/gsxuulzXmebXbaP
-	8msP/wXjSLzVMEWWRFtXYkSBprBfIUJuFnDbwBx01qcKdwyXYI4KZU5nILm9h4Y6AOIjLP9hVFUNK
-	KItBEyTEXunH/Jx60FkX6Cz6Sr+apyw0Ov8Ef5WzdH3zq2AT9Hs2BXCM2Ew90a2cDTqvzOTOVSDLG
-	Fm3384oA==;
+	bh=EEmBmwtUxYixgDDvolM4waYljKOFYZdLR/vUhPt1oKU=; b=dDAIIRH2zMqHKkENbt8s+Nxetl
+	sUqR17+shS7adYNSlgpELENo5qYRTjmZ0O/2IMBrteZAeuLK7Q7IVwVxPesZLxwbBQLAinswt1mtr
+	q41fP+9yiBeyS1yAc8rOIAPKraP49UMzBrpWeJEWEyFfLUw13S1+5zRMNgP6BFZyjPWruazGdj4cP
+	kGCNf5YngBjZ419vjmhLiUINwnyNXSisYsgZglA6sY+yA9J5oKRNSrp3oQMK0WrkI8yZuu6OApKa7
+	bZ2hWunRaQgnbuqwAP66nupA5xksbaLKY0CyOSqpf6zLIs+pKKETvqFIsQy1VoBDWUR8HV5Vhj8Sq
+	mHzb/zJA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Hrushiraj Gandhi <hrushirajg23@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	conor+dt@kernel.org,
+To: linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 0/2] arm64: dts: rockchip: Add Vicharak Vaaman2 board support
-Date: Tue, 28 Jul 2026 21:16:32 +0200
-Message-ID: <178526609456.300371.2885999135285384351.b4-ty@sntech.de>
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Jensen Huang <jensenhuang@friendlyarm.com>,
+	Vic B <linux@vicb.net>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: fix label of sys_led for nanopi-r4s
+Date: Tue, 28 Jul 2026 21:16:34 +0200
+Message-ID: <178526609481.300371.14540350960348344552.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260714054653.266842-1-hrushirajg23@gmail.com>
-References: <20260714054653.266842-1-hrushirajg23@gmail.com>
+In-Reply-To: <al0cKhqvPbBO_5q8@vicb.net>
+References: <al0cKhqvPbBO_5q8@vicb.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_121644_049462_A6ECA864 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20260728_121644_050117_2EC2D7A2 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,25 +74,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 14 Jul 2026 11:16:51 +0530, Hrushiraj Gandhi wrote:
-> This patch series adds device tree support for the Vicharak Vaaman2,
-> a single-board computer based on the Rockchip RK3588 SoC.
+On Sun, 19 Jul 2026 20:49:14 +0200, Vic B wrote:
+> This commit corrects the system LED configuration for the NanoPi R4S by
+> replacing the deprecated label property with color and function.
 > 
-> The Vaaman2 board features include:
->   - RK3588 SoC
->   - eMMC storage and microSD support
->   - RK806 PMIC and multiple RK8602/RK8603 regulators
->   - Real-time clock and status LED
->   - UART serial console and SARADC
+> This changes the resulting label of mislabeled sys_led from red:power
+> to green:status, while the labels of the other two leds stay intact
+> (green:lan for lan_led and green:wan for wan_led).
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: Add Vicharak Vaaman2
-      commit: 89be7a07156c0b4109d07644664474cb20782f43
-[2/2] arm64: dts: rockchip: Add Vicharak Vaaman2 board
-      commit: 896e4c4508b66f9b4c9ff12b536bd1a031621aa5
+[1/1] arm64: dts: rockchip: fix label of sys_led for nanopi-r4s
+      commit: f4fb08d6d735ddd64ae507e0b32679df0135cd8e
 
 Best regards,
 -- 
