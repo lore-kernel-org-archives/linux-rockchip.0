@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 138D9C54F53
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 09:16:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE080C53219
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 10:45:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pup3p+QnSyR9XaB1qpdbnn+L4WTQF+k+Qot03IqnBfM=; b=4QfBc8xedzUjt3
-	sOu3NKJX/wQRTymCfLFSxsDNDoz4jK33Q33oSoOxYZ61ZyGgxYduGbUWQVlxXjHDPe1wxO8DPiIaJ
-	cknrjJMzrb2iYsPIx3MErzU9QNGf1cLD5wuf6O/1fplBAp/i/NQIU2MHvHIDSzczF0DLey27QNnGM
-	cqn+sNx9vjv5YKAI7pCiFDsS2cyBq5TH2gLFUE4MghOkBfIDYFdkaxs7Lp0gd/pu5IuJXn7QFJZ7I
-	9FUrIkc8ppqWLcN79iWKyLFLlmtJMbSmBp0wkhkps310LieQov1/G5039BzzXBtOJBNeToXnhDzzc
-	SWS7BE0pSB1u7F19PsgA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JOeIZZehUQdImHeMDG30DGzYLE2+UNe8DIP30//SKCM=; b=TxfIi0pjoqvnzUAVLcNcQjWc1V
+	Umqr68FhMHtydxJSqOtynvtwuhAyL+TV67tgNlAz/zALIeiBB0XTZbI68E3SZ1ZE/TzuXhuTGsc+8
+	B/OTfv2luHq/Ng1TI2QFYiliKQxJncxtVDJqzmZOFBsGyeeN6r74KGAyETfFQka21B1LBvm7nowgn
+	NXtSEM+ORLXXIhuH2gFE5jICH20SDnFmpSGlcONPVc8sfBWCbkZO6/CivN9W58/0rtBLN93+xTLUj
+	vEH+T/5rRqJOtILGbx2rDqwgmDALIZfP0afN6vmuFj9O2FwPF/NpkgqAFnAZk6Lu+U7KCO/SmApjV
+	sZtGXA0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wodvZ-00000004mRR-0N4J;
-	Tue, 28 Jul 2026 09:16:45 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wofJ9-000000050Js-0TD2;
+	Tue, 28 Jul 2026 10:45:11 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wodvT-00000004mOr-27xK;
-	Tue, 28 Jul 2026 09:16:42 +0000
-X-UUID: 04c05b348a6511f1aa26b74ffac11d73-20260728
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:6a9f690e-e496-4a73-b272-695dbc2bbecf,IP:0,U
-	RL:0,TC:0,Content:100,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:125
-X-CID-META: VersionHash:e7bac3a,CLOUDID:d6b7cd34311be6d9ab0bb9b23191ac42,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|136|850|865|898,TC:nil,Content:3|1
-	5|50,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:
-	0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 04c05b348a6511f1aa26b74ffac11d73-20260728
-X-User: lilinmao@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <lilinmao@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 511392512; Tue, 28 Jul 2026 17:16:30 +0800
-From: Linmao Li <lilinmao@kylinos.cn>
-To: Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Caesar Wang <wxt@rock-chips.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Linmao Li <lilinmao@kylinos.cn>
-Subject: [PATCH 1/2] mailbox: rockchip: disable pclk on probe failure and unbind
-Date: Tue, 28 Jul 2026 17:16:22 +0800
-Message-Id: <20260728091623.3691198-2-lilinmao@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20260728091623.3691198-1-lilinmao@kylinos.cn>
-References: <20260728091623.3691198-1-lilinmao@kylinos.cn>
+	id 1wofJ6-000000050Il-2wW5;
+	Tue, 28 Jul 2026 10:45:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1785235472; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=TS0P/0Nn92hCK1UO819Km2MemRUN+2D33lo2frqf//bJxFnoJIr7T65oIx0zivNwVD1r5lraVuz1EoSw34DwqAG5d1qClgsDfKhat0jYsUEqdTMMGe1OwmGOyCInP+3Jz2LUDnuH/d/4/8EEiLKnhm3bU2ZYqCgdqjYgTnEpPHE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1785235472; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=J5NLQiylXqrWyBPL2yr2b7NQ7oFXg0+MPXbRfux3ho4=; 
+	b=IRXdtf59S7jGJhi8MXAh58hXoH8k/EH3GaQHA69kv0T6DNaI8cDTvrSfqduMO7QptuzQ5jcrKxfIkxxeLNrs4rZweTIo+Fi31iaXVoE8CSgfd+tFCSdDJjJRRXf+4/tYkggGyayV1WDcR+J09IUYcpeGoA62PXAgt6NSPXLlNsI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1785235471;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=J5NLQiylXqrWyBPL2yr2b7NQ7oFXg0+MPXbRfux3ho4=;
+	b=GGua9EmJpb0QbnYEztrILvP8aRP7TwU3zXt41VIPig6tUXnnHf9Y8hCXp5NS8CCa
+	5gDr3hllYE6vRrSsLBaP3kDAj+d+kwNwy/4TIQvWH8/TTPDzUbQ3aOmFaQgrxi4EHNI
+	98OWGiPzqBJaw8WYVhjwwMX9GAeUhBsYwVS1hUas=
+Received: by mx.zohomail.com with SMTPS id 1785235470064180.6244091784373;
+	Tue, 28 Jul 2026 03:44:30 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id E2EBA181F68; Tue, 28 Jul 2026 12:44:23 +0200 (CEST)
+Date: Tue, 28 Jul 2026 12:44:23 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Vinod Koul <vkoul@kernel.org>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-phy@lists.infradead.org
+Subject: Re: [PATCH v4 0/5] This series is split from the v15 "Add Type-C DP
+ support for RK3399 EVB
+Message-ID: <amh1sK_4KnD5zTlZ@venus>
+References: <20260727064408.101-1-kernel@airkyi.com>
+ <amgMXujurBrB5B0L@venus>
+ <e22072d9-7fee-4f83-9ae9-5428e45c7507@rock-chips.com>
 MIME-Version: 1.0
+In-Reply-To: <e22072d9-7fee-4f83-9ae9-5428e45c7507@rock-chips.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/285.228.97
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_021639_868938_79E14B45 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20260728_034508_796045_E0135EF8 
+X-CRM114-Status: GOOD (  20.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,64 +88,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6187902065798688731=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rockchip_mbox_probe() enables the peripheral clock and then keeps going.
-None of the later failure paths - platform_get_irq(),
-devm_request_threaded_irq() and devm_mbox_controller_register() - disables
-it again. The driver has no remove callback either, so the clock also stays
-prepared and enabled once the device is unbound, and its enable count keeps
-growing over bind/unbind cycles.
 
-Use devm_clk_get_enabled() to tie disabling and unpreparing the clock to
-the device lifetime. It is registered before the interrupts and the mailbox
-controller, so devres releases it after both are gone.
+--===============6187902065798688731==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nrz2q7rk3saejmon"
+Content-Disposition: inline
 
-While rewriting the error path, switch it to dev_err_probe() so that a
-deferred probe is not reported as an error.
 
-Fixes: f70ed3b5dc8b ("mailbox: rockchip: Add Rockchip mailbox driver")
-Signed-off-by: Linmao Li <lilinmao@kylinos.cn>
----
- drivers/mailbox/rockchip-mailbox.c | 17 ++++-------------
- 1 file changed, 4 insertions(+), 13 deletions(-)
+--nrz2q7rk3saejmon
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 0/5] This series is split from the v15 "Add Type-C DP
+ support for RK3399 EVB
+MIME-Version: 1.0
 
-diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
-index a1a7dee64356..d55cbf7f2cb6 100644
---- a/drivers/mailbox/rockchip-mailbox.c
-+++ b/drivers/mailbox/rockchip-mailbox.c
-@@ -196,19 +196,10 @@ static int rockchip_mbox_probe(struct platform_device *pdev)
- 	/* Each channel has two buffers for A2B and B2A */
- 	mb->buf_size = (size_t)resource_size(res) / (drv_data->num_chans * 2);
- 
--	mb->pclk = devm_clk_get(&pdev->dev, "pclk_mailbox");
--	if (IS_ERR(mb->pclk)) {
--		ret = PTR_ERR(mb->pclk);
--		dev_err(&pdev->dev, "failed to get pclk_mailbox clock: %d\n",
--			ret);
--		return ret;
--	}
--
--	ret = clk_prepare_enable(mb->pclk);
--	if (ret) {
--		dev_err(&pdev->dev, "failed to enable pclk: %d\n", ret);
--		return ret;
--	}
-+	mb->pclk = devm_clk_get_enabled(&pdev->dev, "pclk_mailbox");
-+	if (IS_ERR(mb->pclk))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(mb->pclk),
-+				     "failed to get and enable pclk_mailbox clock\n");
- 
- 	for (i = 0; i < mb->mbox.num_chans; i++) {
- 		irq = platform_get_irq(pdev, i);
--- 
-2.25.1
+Hello Chaoyi,
 
+On Tue, Jul 28, 2026 at 10:33:48AM +0800, Chaoyi Chen wrote:
+> >> Changes in v4:
+> >> - Link to v3: https://lore.kernel.org/all/20260717072323.96-1-kernel@a=
+irkyi.com/
+> >> - Scan the entire typec_bus and attempt to register the hpd bridge,
+> >>   so as not to miss devices that were already added during initializat=
+ion.
+> >=20
+> > While that may help with the module being loaded late, it does not
+> > help with triggering the module load in the first place.
+> >=20
+> > The module does not have any MODULE_DEVICE_TABLE() helping with
+> > that. So basically any system relying on the automatic hpd bridge
+> > registration and using a modular kernel (e.g. the arm64 defconfig or
+> > the kernels usually provided by Linux distributions) requires
+> > manually loading that module to get any graphical output.
+> >
+>=20
+> Thank you for pointing this out. I will add it in v5.
+
+Add what exactly? As this code is quite generic, you don't have
+anything for a MODULE_DEVICE_TABLE() (i.e. no OF, no I2C, ...).
+
+One solution I see to keep the notifier design would be to add
+
+MODULE_SOFTDEP("pre: aux-hpd-typec-dp-bridge")
+
+to some other module and piggy-back on it. Alternatively integrate
+it directly to some other module, such as "drm_display_helper",
+which already has DRM_DISPLAY_DP_HELPER and DRM_DISPLAY_DP_TUNNEL.
+Adding TypeC DP AltMode as part of it seems sensible to me.
+
+FWIW I suggest you test booting your patches work with the arm64
+defconfig before your next submission ;)
+
+Greetings,
+
+-- Sebastian
+
+--nrz2q7rk3saejmon
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpoh/wACgkQ2O7X88g7
++po6mg//Ul+tqXSZBMWv39myTySZkpRAFl7a7wi9guXnO1l8taMD1Dut/6OI7XSh
+9YwrPNaNV91Ky5SlMl/Yj3/pjT/FIk10Ltd3EREWrrWJoPlZMVOVM1Rv3Rg4mzgg
+jZ7IowUe3zwG9xnITCsQ/bZ2dQkmHrnGnUoUNkcuws1QZqbUzMke/eTG7mHVeS0x
+sWTMLSyLvXQPKnDVF7/Iu7wuKUs8Ia5N6BgLqLoXIuBogrpy960yu1zyNCKNkQaH
+i6PxgcYmfo8+J9+tSxnYwCZBATn1PUDUPrDrthYSlr/eQyNKmVU6xHf4OTjRd2jG
+q4BAXrZRu1bzbYaqFbaeRJ/DSnPDnTiB2aWKT4OtMqvfDOC2aSBCxa86DaSp8ehl
+aPvi3CiBe+shpteIdY8dy4T7NUFSpJCN+ihGO5cjRuaIrHto3yyLIa4hpl8apeqn
+tyzvk60TmL0Sjnrq+K8DjuLgk5yM0Y7zb3iur+XYnzVvwifcBvqcbMWSiNzrMiau
+2GyY3PP2h0B6ExG8edpIu7vqhSlmStw8HtLNOattN4PZvqdRDg/1JEFu0V6a5Cdt
+FDwKKKwht1Kshkl41y0eGBPN3i5ym7bIeoE5GreW/1dkV+7UQlXZj473tagywHuy
+P51/AQYyjVWv51g7bhF8ZWQszkCaov53iUKMyjlWpVYA3XSYmaw=
+=ZCR1
+-----END PGP SIGNATURE-----
+
+--nrz2q7rk3saejmon--
+
+
+--===============6187902065798688731==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6187902065798688731==--
+
