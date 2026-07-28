@@ -4,53 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4AD3C54F54
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 17:41:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA35C53219
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 17:41:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lcIOsKS/IKeynRnij0SSGrt+ozy9a3nNqlTyukmckfM=; b=4FlE/D8QwDZJpK
-	i/Zj29jjr9KjCuBengoNby8Nl6v9uGidfUKyQd/Ht5P/W3nY/XLko+0lNuDv9+F3cSDaBGkKJHz2o
-	vwTDUD5a5ASUi9XHg1hn39NYcx+H8AcGyM2OM3RI+HVdibUVZTZwNTce6Gj1fFrCuP37A/XpuWwfQ
-	Bb2uV5UT9dFjMkBYj/8t9WyYYZ/gLt32kYoz/o/ZNGnomUtzMVpYm1FbKHoDzSbTAn/Wd97e980gl
-	EM6d1wpaKPEp68auVewT9p/jYLnohtAWXd4+4qokXu62cXxZVSe2wNIn4Jje0gcNXa78ZlxfFRH0y
-	kOdKohh/gQwcQJmI+/Og==;
+	List-Owner; bh=bhNhlSR6BtGo1FrfmoqSJzv738eHXN5HHrXva0sNzzg=; b=NlYlXrzalooyCJ
+	zcOWMzam+ndvyWiQNVGtcmLyNtwL8f0soo4i1D/DyMNg66/+elSlZEXQjF1HwZXfEn7PtBz8e4v2n
+	lu+f7I9sNsYRBJTz76hhc/s1jJX6hb9IwxDcdksh3mB05WmHaadTeuBMrgu5HwE2OXoG0Re0MZWOa
+	kh7xw9IdzyIcgwGaV1MGlf94rfTQ5j8Q/BiNSG0IsgWcQL5bFG/GlS3sDTrIvyAQHqzZfamzElEUt
+	yCBDGPu9EZYZnuIBnWoxX0r0VJqwUsGhhxSv4z728X9LYoQallstRHVYndl4F4Cg69ZY23oQqSbzT
+	tya7VEFVqXSffsm570Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wolo0-00000005zen-09xd;
-	Tue, 28 Jul 2026 17:41:28 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wolo1-00000005zhI-0Oce;
+	Tue, 28 Jul 2026 17:41:29 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wolnV-00000005z6A-0nhH;
+	id 1wolnW-00000005z8K-1qYS;
 	Tue, 28 Jul 2026 17:40:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=BWFrFrjVtfbKBBjs4r4K1bZlmTng9wcO1QH/xLCh+dY=; b=m4fLL8+K4rOoXgmJ56fP5aYiog
+	sca6X/6RxYUtabJq2L4UsVJAlOXajuaR/MbIMCxDt5STSVM7PyBWXUVX6NCQJLRfHdTd5shOdTVdS
+	8g503mI7U8FGGrWzy8soobOrmrd2/yCiAl5g9pgRvxS0fIqW1E2/nnSMZZcXZ08ZuOuN/ajOGXPBH
+	mnANgyegjDzm7YDJ9sl1omRzAOZSdddjUVBoGnBIKESpliCEdXy3ovWunSRAIHDln/Qg1J889AqDk
+	yk7DN5Tmj+MOrbBd+ZetyK3j6BR6+TIr9os+6gpnA3+2wivGKcxvhlkkXB8u0WwmY7uYEp3/skxaT
+	sotZP7Nw==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wolnT-00000005AT2-1krf;
+	Tue, 28 Jul 2026 17:40:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1785260447;
-	bh=0YCsZJX71B73vAdxDS8uxgokNO/lK8lrhxEaeQjUJ7Q=;
+	bh=rAX8Gkdd0l2SvPThxGwSATdesygL1W5j4bmXRGpe4TM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=jI1/8MQcxpPhgdwJWnSUICz6F6lF3ma4Am5PJR+O3qUd4tEBZiKGXbnKRwNgaj7hq
-	 fw/o3S/O+oDvfNnuJ9EjslKzWv2i7CZWU6RS8f4wEBDY4l1Qk+0Olk5KUby5Jm4PrD
-	 RSBpQibGObKz6He+zIsBhI2F0jj8bdqeyW07OaLtYTcz1aeAcm3BD116PrUOcuDl1W
-	 aEk93z+/icrHRYlj2B7Y7wSodc+7YoJKZXy/F+Q9bRS0t4oID0HfKJXYt974ihSeMg
-	 AAH5wxXwU2uO7/pcKVroDmIw45b1pgafmYn5nafSN9FrJ0KOCp1vURyFPSOMTdPhor
-	 yQjBnt6injHrg==
+	b=G+fvByOASJgoMAIldqBYVIXiu137feeqTaiJF2WEySZ3/v1e14a93d2UzxJ/+Vqu8
+	 uHlx4VdJxm7mJOzNSUZlKK4q4YMWpFBzLPxzCnFN0F2iztDmY0aMqlCT1nNPt5ymSH
+	 INs4jo0w7MMohMoExl+JRygKg/hnPa7HSU3U1k4+YFQo0INrcn3zR2PAAKnpwJnsXf
+	 /fXb7FKBJ/6IEBZQyGJx4HOwRZxKynjGv7jjiHC/23wVDMEV7kz2NjMfOfe/M2tQL1
+	 UGF/p8lmEkEQKaefmWxh/ur9/g7Xy34RMp25O8dvzuDPty1l1GDi7M9av91j6rEsMi
+	 yMeY+VRR9jHtw==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0252417E07B6;
-	Tue, 28 Jul 2026 19:40:47 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B72D917E0756;
+	Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1FE5E480055; Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
+	id 16C8648003D; Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 28 Jul 2026 19:40:51 +0200
-Subject: [PATCH v7 15/18] drm/bridge: synopsys: dw-dp: Use regmap_set_bits
- in dw_dp_send_sdp
+Date: Tue, 28 Jul 2026 19:40:45 +0200
+Subject: [PATCH v7 09/18] drm/bridge: Add out-of-band HPD notify handler
 MIME-Version: 1.0
-Message-Id: <20260728-synopsys-dw-dp-improvements-v7-15-b7640fa8cf48@collabora.com>
+Message-Id: <20260728-synopsys-dw-dp-improvements-v7-9-b7640fa8cf48@collabora.com>
 References: <20260728-synopsys-dw-dp-improvements-v7-0-b7640fa8cf48@collabora.com>
 In-Reply-To: <20260728-synopsys-dw-dp-improvements-v7-0-b7640fa8cf48@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,26 +81,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1254;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2377;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=0YCsZJX71B73vAdxDS8uxgokNO/lK8lrhxEaeQjUJ7Q=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpo6Z32oSfdSbmHxGy0bdvFOvtnkqG9Su+Xd
- 5LX6mT2nXcvMokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqaOmdAAoJENju1/PI
- O/qaeAYP/Ru58oYU/vd4ZpInM/v+55BIQSIjtii4grvbhAJpkPKSQC4oxSlTkCBRsPuUbowfs8G
- myZ19mrMrRK+wsqpI4kGRQgDnfG3JxdmuAfFlg6Ih/gg6lnGljWK8YCNE7pTWlYzDdord9cWCMv
- o+1iwwPKQuGUA+ZtQlAG4LUBiUxdmHZ9fsbS+B/82p2XneFZJQB3NYAW14LDM9jfwoN11GlVZ+U
- +E0G5/AUOutV4PQ5EGEfHZHuhiT1hBLtWf/9GuEfA2841zdoGV6ajbJUnU0VEpq1uIs1JqV/vSB
- amp/B+tBh/GBPT3QSDDPve0TIssio0yFsS+spbqrK8xoNf4FO8hdKyb7H7gnRhF5eIsElg7uPvk
- 0OO48h+thC14YGbFgI8oaZMUh/puRahRyvbAuXoFGdxmRHQqEq8ouuGlTSzRudVru5wACVS8KkC
- DkVcYh5KSBwqTq0uxU2Iy9CZui7Hne2wq3MGBHJDDbjo3NDzDpItAg/Z1Ix7u792KA4bqFKMf4Z
- +USqr315hX7mZTfQ5cDa+ki43MCfkxF2UTEyDfUzuN/f8ijYWkloBHUF9NCchN7EFMJD07i3NEE
- JfFC9tVgeyfr7KbbKaVP98UY1wna1wVNTeWpG8XyTJT3n1MzAi8xQSrZ5orvjoz9grDq6hc4X49
- onguzuiome75l8KP8jBczrA==
+ bh=rAX8Gkdd0l2SvPThxGwSATdesygL1W5j4bmXRGpe4TM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpo6Z0o8v0iYcY6Iu4WxMuyaNbBCyc3P/vGN
+ 0PGLYtHiBdJOYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqaOmdAAoJENju1/PI
+ O/qasZIP/1cdbGjsaPiKlFubB/cv1qUi6WyaR3BEXm6bZsdMWxvwqv5+TDVS12u9Wit6x3W3vML
+ 2AAnWOe8tLyRjRJRwu21y1TcsCBtc2SoEiamr1OkAYMiq76NmfGr7+A81l609vOtgyTv5VfaVzp
+ /1iAkQ8Q5tsM5Hej0+0j4zQUzY6WQwjYtAg7GKAfEgTai4OcbGnucUBV/3w7pwmhZWnLbErIbdu
+ AVAPFLRsMdCXxmBCVaO5Eyhs9Cagj14zPN76YXgGgihK3JvjAuOT6dxbhBiJYxE9GIkT/8N/de1
+ j1+nDZYia5Bwl1q9HU8fxtSZulRXHhi4LPt4TEx0MxvLuDAoDWz0pYGpB289gfOMwzxBIRQpLGG
+ yDNvVdXvbqNOjQX4Op6K7+bVCdcXwVLDfXc+U/Nzf54fzh69fMoLCNOaZmJJP+IvKd6N2WHNz4U
+ MXw7qOvOuw9KKkm/73WQ5saqtSkGH9aTYp1gCx1Wf8HiYCnebLu6yOzIT6vz9O4c9EDZQ1BVxAa
+ UCllBE/Ng02HkdCe3o4uyjUDwiiJWr1sMj5CJNMLWHcqpqkz2iJsmJKwhX9cCzKEtWblY3oT23i
+ 6a8/6NK1xSqYll/6WBE4namyLlNaGLPcJ+3X62m+C3nyhPBZU7P2mtyra8A475wbhbdKRINUkAK
+ BU8ti+siDe+iFwl/tsZ81GA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_104057_406639_E9EF0E3D 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20260728_184055_698735_40BB25D4 
+X-CRM114-Status: GOOD (  14.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,39 +118,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simplify dw_dp_send_sdp() a little bit by making use of
-regmap_set_bits.
+For DP bridges, that can be used for DP AltMode, it might be necessary
+to enforce HPD status. There is an existing ->oob_hotplug_event() on
+the DRM connector, but it currently just calls into hpd_notify().
 
-No functional change intended.
+As DP bridge drivers usually also implement .detect and that also
+generates calls into hpd_notify, this is a bad place to force the
+HPD status as the follow-up detect call might force it off again
+resulting in all follow-up calls to the detection routine also
+failing.
+
+Avoid this by having a dedicated function for OOB events.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/display/drm_bridge_connector.c |  6 ++++++
+ include/drm/drm_bridge.h                       | 14 ++++++++++++++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 50eb7a467932..fcee47c6716a 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1068,14 +1068,12 @@ static int dw_dp_send_sdp(struct dw_dp *dp, struct dw_dp_sdp *sdp)
- 			     FIELD_PREP(SDP_REGS, get_unaligned_le32(payload)));
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index 8b54069fa53a..632cc3ae3b54 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -180,6 +180,12 @@ static void drm_bridge_connector_oob_hotplug_event(struct drm_connector *connect
+ 	struct drm_bridge_connector *bridge_connector =
+ 		to_drm_bridge_connector(connector);
  
- 	if (sdp->flags & DW_DP_SDP_VERTICAL_INTERVAL)
--		regmap_update_bits(dp->regmap, DW_DP_SDP_VERTICAL_CTRL,
--				   EN_VERTICAL_SDP << nr,
--				   EN_VERTICAL_SDP << nr);
-+		regmap_set_bits(dp->regmap, DW_DP_SDP_VERTICAL_CTRL,
-+				EN_VERTICAL_SDP << nr);
- 
- 	if (sdp->flags & DW_DP_SDP_HORIZONTAL_INTERVAL)
--		regmap_update_bits(dp->regmap, DW_DP_SDP_HORIZONTAL_CTRL,
--				   EN_HORIZONTAL_SDP << nr,
--				   EN_HORIZONTAL_SDP << nr);
-+		regmap_set_bits(dp->regmap, DW_DP_SDP_HORIZONTAL_CTRL,
-+				EN_HORIZONTAL_SDP << nr);
- 
- 	return 0;
++	/* Notify all bridges in the pipeline of hotplug events. */
++	drm_for_each_bridge_in_chain(bridge_connector->encoder, bridge) {
++		if (bridge->funcs->oob_notify)
++			bridge->funcs->oob_notify(bridge, connector, status);
++	}
++
+ 	drm_bridge_connector_handle_hpd(bridge_connector, status);
  }
+ 
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 58fff047f43b..713652fca033 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -540,6 +540,20 @@ struct drm_bridge_funcs {
+ 	 */
+ 	void (*hpd_disable)(struct drm_bridge *bridge);
+ 
++	/**
++	 * @oob_notify:
++	 *
++	 * Notify the bridge of out of band hot plug detection.
++	 *
++	 * This callback is optional, it may be implemented by bridges that
++	 * need to be notified of display connection or disconnection for
++	 * internal reasons. One use case is to force the DP controllers HPD
++	 * signal for USB-C DP AltMode.
++	 */
++	void (*oob_notify)(struct drm_bridge *bridge,
++			   struct drm_connector *connector,
++			   enum drm_connector_status status);
++
+ 	/**
+ 	 * @hdmi_tmds_char_rate_valid:
+ 	 *
 
 -- 
 2.53.0
