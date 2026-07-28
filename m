@@ -4,92 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7E5CC54F4C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 06:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C85A9C54EFC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 09:16:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8cClFjY2e203xZCSrPhBZVtuNKWMyxaZPeN56nHDLAs=; b=hw3gWC0rennR/O
-	thLE1So1cf4J9tioQ7mo6kqqBPLhWIROuHigQDVbWzcjPhFsMSIfNAxpXl7vHhltsUv5ty5YOdeQt
-	HodOh9NZKAX/mYhwfKDi/Z/e5IhcWa+JrssgqMUvUBGFpO6tiwDGIbiXd3KNWv3NEVhxXvFkki1U+
-	QORspC9BzXQgWUDC7E+rbyU7pG2YfLFoGVEsNDkD0RkF6cHU4ElpKEFYHPsNwxef9ae22L1ofDTv6
-	iBoGgJpUQZEC7eur3RMnCsgHEmuMX778Zfe2pP5zhApx/io2griCL3vFpEKM1gtmXQa5Ryyh00ku7
-	lQxkWM5o/o/aVKQpFItg==;
+	List-Owner; bh=vX7+loXMKfeWu8RcDcBeGeNgpAwHBkhma4EtzGo+SSg=; b=VpKyuIUg5zUTsT
+	Jtpz62H/PyGqQe5Mz8V5I0C4YDGl683ENTi0h1O5Alj5yBw9A0nBc/1j0ad2NJirkLTBJ/jZ4X4t/
+	oodiGahvDdLc8VZbe/kHi4rPIFsrYZaPURqgWDmXyeTnMB5y55r9yTvKPCXaiGzZAUCaNdsKoNVBs
+	LwrVdejRaTAbeHIho9EsFlYvbJ22W7nCoipMJ7sUtDsEKcKmLvzF87xmNXODZuQV08tZU31/YCTKc
+	1bC4gVYxUWYa8arn7cG179ti2g5CmbqjOeaZjeNx+jb3oBqojhJIh+FuGJZzLew14NXudA0Dqgbc/
+	cEeUkRPAWV8u6y//nAIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wobHz-00000004XBn-2hw9;
-	Tue, 28 Jul 2026 06:27:43 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1wodvg-00000004mU5-15E4;
+	Tue, 28 Jul 2026 09:16:52 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wobHu-00000004XAj-3mtb;
-	Tue, 28 Jul 2026 06:27:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1785220059; x=1816756059;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=n61/Ko2KpmPXrNRArmSqenWM8pHBLVFT+MXAHy832ds=;
-  b=csqszLbYrRJlJY78iHTjszmmCGOpJ6vq5wKsT+L3izWAYBqqjeysjx5H
-   8rBKNNEfmKlHSzAlufEi8vNCd4SeQE09eEUNz27Oi/+SlCzgxt6JebfF6
-   eBPNd38rQr0qH0sDnyYQ0z9+OkPX/VVMX8V9s+qZfCerpxymNaeODYTN1
-   94pXeSH6f/ukYM3AZloriNENafuplGPNlj/6Nmf3Wvt+0kkPcz11qHJ2+
-   x7tFlTQTNk1fyjtrBzAMBl4JF48PcOtrdnal2Z8OdeYLdVCkmJLAT0/nV
-   46gUUpq58odYB4o2xpCyGh1+UA43jxRv5iOrdoq3JvsKbLqx80/w83hR/
-   Q==;
-X-CSE-ConnectionGUID: UOkUUL1zTsWRmJA2mrr5aA==
-X-CSE-MsgGUID: YeKPAtglRcWJCQpwnVmfLg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11858"; a="85916866"
-X-IronPort-AV: E=Sophos;i="6.25,189,1779174000"; 
-   d="scan'208";a="85916866"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jul 2026 23:27:37 -0700
-X-CSE-ConnectionGUID: 7lUQRfEHQpKN9hWm0txrsQ==
-X-CSE-MsgGUID: YAB21esTSxytgpm7w8nVtg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,189,1779174000"; 
-   d="scan'208";a="284154898"
-Received: from kniemiec-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.244.69])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jul 2026 23:27:32 -0700
-Received: from kekkonen.localdomain (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 1FDE0121C02;
-	Tue, 28 Jul 2026 09:27:32 +0300 (EEST)
-Date: Tue, 28 Jul 2026 09:27:32 +0300
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Frank.Li@oss.nxp.com, "Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>,
-	Loic Poulain <loic.poulain@oss.qualcomm.com>,
-	driver-core@lists.linux.dev, linux-acpi@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+	id 1wodvU-00000004mP6-2QVg;
+	Tue, 28 Jul 2026 09:16:43 +0000
+X-UUID: 05d2458c8a6511f1aa26b74ffac11d73-20260728
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:a62d4715-a76f-47cc-83fd-abc701faeea0,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:cf06b6394694ad75066f2c9fe09520e6,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|865|898,TC:nil,Content:0|1
+	5|50,EDM:2,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:
+	0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 05d2458c8a6511f1aa26b74ffac11d73-20260728
+X-User: lilinmao@kylinos.cn
+Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <lilinmao@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 862983219; Tue, 28 Jul 2026 17:16:31 +0800
+From: Linmao Li <lilinmao@kylinos.cn>
+To: Jassi Brar <jassisinghbrar@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Caesar Wang <wxt@rock-chips.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev, Guoniu Zhou <guoniu.zhou@nxp.com>,
-	Frank Li <Frank.Li@nxp.com>, Guoniu Zhou <guoniu.zhou@oss.nxp.com>,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-Subject: Re: [PATCH v3 1/4] device property: Introduce
- fwnode_graph_for_each_endpoint_scoped()
-Message-ID: <amhL1BkIG0uTPceL@kekkonen.localdomain>
-References: <20260625-fw_scoped-v3-0-ffd0868e498d@nxp.com>
- <20260625-fw_scoped-v3-1-ffd0868e498d@nxp.com>
+	Linmao Li <lilinmao@kylinos.cn>
+Subject: [PATCH 2/2] mailbox: rockchip: drop unneeded runtime pointer (pclk)
+Date: Tue, 28 Jul 2026 17:16:23 +0800
+Message-Id: <20260728091623.3691198-3-lilinmao@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20260728091623.3691198-1-lilinmao@kylinos.cn>
+References: <20260728091623.3691198-1-lilinmao@kylinos.cn>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260625-fw_scoped-v3-1-ffd0868e498d@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_232738_961967_62465452 
-X-CRM114-Status: GOOD (  25.23  )
+X-CRM114-CacheID: sfid-20260728_021640_921128_3972EF1C 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,64 +79,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rafael, Danilo,
+The pclk pointer is only used in rockchip_mbox_probe() and is not needed
+after probe completes.
 
-Can we merge this via the media tree (assuming you're fine with the
-change)?
+Make it a local variable and drop it from struct rockchip_mbox, which
+saves a little bit of runtime memory.
 
-On Thu, Jun 25, 2026 at 10:17:21AM -0400, Frank.Li@oss.nxp.com wrote:
-> From: Frank Li <Frank.Li@nxp.com>
-> 
-> Similar to recently propose for_each_child_of_node_scoped() this new
-> version of the loop macro instantiates a new local struct fwnode_handle *
-> that uses the __free(fwnode_handle) auto cleanup handling so that if a
-> reference to a node is held on early exit from the loop the reference will
-> be released. If the loop runs to completion, the child pointer will be NULL
-> and no action will be taken.
-> 
-> The reason this is useful is that it removes the need for
-> fwnode_handle_put() on early loop exits. If there is a need to retain the
-> reference, then return_ptr(child) or no_free_ptr(child) may be used to
-> safely disable the auto cleanup.
-> 
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> Reviewed-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-> Signed-off-by: Frank Li <Frank.Li@nxp.com>
-> ---
-> change in v3
-> - fix missed a tab before \
-> 
-> change in v2
-> - collect Andy and Guoniu's reviewed-by tags
-> - fix indention
-> - remove extra space in commit message
-> ---
->  include/linux/property.h | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/include/linux/property.h b/include/linux/property.h
-> index 14c304db46648..c71177ca16a95 100644
-> --- a/include/linux/property.h
-> +++ b/include/linux/property.h
-> @@ -545,6 +545,11 @@ unsigned int fwnode_graph_get_endpoint_count(const struct fwnode_handle *fwnode,
->  	for (child = fwnode_graph_get_next_endpoint(fwnode, NULL); child;	\
->  	     child = fwnode_graph_get_next_endpoint(fwnode, child))
->  
-> +#define fwnode_graph_for_each_endpoint_scoped(fwnode, child)			\
-> +	for (struct fwnode_handle *child __free(fwnode_handle) =		\
-> +		fwnode_graph_get_next_endpoint(fwnode, NULL);			\
-> +	     child; child = fwnode_graph_get_next_endpoint(fwnode, child))
-> +
->  int fwnode_graph_parse_endpoint(const struct fwnode_handle *fwnode,
->  				struct fwnode_endpoint *endpoint);
->  
-> 
+Signed-off-by: Linmao Li <lilinmao@kylinos.cn>
+---
+ drivers/mailbox/rockchip-mailbox.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
+index d55cbf7f2cb6..bc2f9dd798dd 100644
+--- a/drivers/mailbox/rockchip-mailbox.c
++++ b/drivers/mailbox/rockchip-mailbox.c
+@@ -40,7 +40,6 @@ struct rockchip_mbox_chan {
+ 
+ struct rockchip_mbox {
+ 	struct mbox_controller mbox;
+-	struct clk *pclk;
+ 	void __iomem *mbox_base;
+ 
+ 	/* The maximum size of buf for each channel */
+@@ -166,6 +165,7 @@ static int rockchip_mbox_probe(struct platform_device *pdev)
+ 	struct rockchip_mbox *mb;
+ 	const struct rockchip_mbox_data *drv_data;
+ 	struct resource *res;
++	struct clk *pclk;
+ 	int ret, irq, i;
+ 
+ 	if (!pdev->dev.of_node)
+@@ -196,9 +196,9 @@ static int rockchip_mbox_probe(struct platform_device *pdev)
+ 	/* Each channel has two buffers for A2B and B2A */
+ 	mb->buf_size = (size_t)resource_size(res) / (drv_data->num_chans * 2);
+ 
+-	mb->pclk = devm_clk_get_enabled(&pdev->dev, "pclk_mailbox");
+-	if (IS_ERR(mb->pclk))
+-		return dev_err_probe(&pdev->dev, PTR_ERR(mb->pclk),
++	pclk = devm_clk_get_enabled(&pdev->dev, "pclk_mailbox");
++	if (IS_ERR(pclk))
++		return dev_err_probe(&pdev->dev, PTR_ERR(pclk),
+ 				     "failed to get and enable pclk_mailbox clock\n");
+ 
+ 	for (i = 0; i < mb->mbox.num_chans; i++) {
 -- 
-Kind regards,
+2.25.1
 
-Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
