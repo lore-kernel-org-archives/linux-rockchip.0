@@ -4,53 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CBBBC53219
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 17:41:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8076C54F4D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 17:41:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TG2NwnjANq74c/6fF3O6XahpE7EUT55tn26frFz/nCQ=; b=XVLyeTRlo6UYX4
-	d20HMajd8l5yMniX3DLeEcFX4N8FcpjKJPb4xtfLn5MKZ+4NDmMfGgCVYbkkVgG0UyWrSCoukXk9P
-	1ea1bNejp5/51c2BfabR3sv9HJPuBykDxrn1eZsdxKja43EtXBxN6RHLirYGqvi/vfk1XDYi3MeLY
-	lPgTvEgJkIOuWDE2SxPtafdfAjq83WsFzqeEpJYi0RmpKgJhcp5V3+LOi6pFbPBn7d/gVcvlLtZlR
-	R8DUQjAbWMwNZB7jIheTxGNkgRDborqQ8jwEV6oWYcKH3sTaAIOcr6EhaDA1Hrk7kXwy55ZAEMk8+
-	LtpfnIQ5LWN/mAxiPtDA==;
+	List-Owner; bh=aJvm0SNM21ZpyQVPYdX/RpUlC20eLI2bb7mFTK/P1tw=; b=nRyFopXjbG0dBC
+	g7RJUH2eRS0IiHj+hnBMz7Ojq4f4GajkOFv9gsVfYLwYxhkuPdex5ysr0Uh8GVe+W8QYwzHwXEz4t
+	264mhTrqbPqfbLCy3HMFKxJbPwA7ZaopgQor9tjPLEWAO/MBIlRKdNn9jCDuxv+H6a2pUEfLyJC7S
+	PzMThrDBE1AwudF59Ybzy4MY6JVZGZo0hiPxwHlD6jrCBUthRwTuYbHBE3Ue3RrHaaFO8fTrUx2SC
+	vDmGTlkFtpbklcUm74jLGtVkg7SbS5jU4BgWvZjrkWwimGkLvXGbq0Bv72rB3J8LzkvwLeU4EnUQd
+	GSwdWwdl3cIyS1tdIdcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wolnq-00000005zN2-487B;
-	Tue, 28 Jul 2026 17:41:18 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wolnu-00000005zQ7-1t24;
+	Tue, 28 Jul 2026 17:41:22 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wolnR-00000005z2T-1Uu3;
+	id 1wolnT-00000005z4f-0nYL;
+	Tue, 28 Jul 2026 17:40:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=McQrk7K55tIpRKJTRu0lobzSlBfF7gTh/Rv/YIc4Hig=; b=OZWNz55htLiCdyWiWMFRn8EY3A
+	vGuCizsomRbigtHopPUUHYfto+YOz30/yyLho6zpnc3b0vHWNrp5tH9CMvjy/7Daf9+1SI1WsrS69
+	+6IXDteUprko6I4Jw/JAOtz7MnP1MF7UJSOGza7zm9/kmQGn3DdgFWD5dP12maC8WVuRZagD7J5V1
+	5hYjbDfSn4RDyfWke8fKBo4woOCnwJtxgBsxZ2eA7/6RgkKVIpj2wmb/y3edBRt6OO7rBGw4XzCqp
+	qe/YSwuE+V7LSYi3s4urvLxNht+WPflYU0rmCAtzqqkTMJFAQT2HvgugpN0hO/QHQYr0vscLoXLFa
+	nHNSVOrQ==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wolnQ-00000005AQc-0ovO;
 	Tue, 28 Jul 2026 17:40:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1785260446;
-	bh=Ccx+QhJeQ1KNv7xuRbgnsS8npvB/wRINLZz8iwrkLyk=;
+	bh=OX2jzq6LTYnokROmR6vmx/MpA8RbT9nBSteYSjgWJCo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=g4XPpNlaT7gZK98tmTUODI//Ku9evjTe/ATkJaZXTo/W1QqsYQ+EY3iwzXwQg8lYd
-	 HRysTQmP3t4LTIqSl/eRGuF44UFsniLagGU0drSIIcHoY3NDdkfCPdZK/phLQzQick
-	 azdNoE23npSnTui9J0TrNlyO1PpJYqf4WIJLZ38phEyn5tRh4Qp/VpPyFP21Qv2RAN
-	 UBBd7Sl4/J959dSWmiwHuftgwzFWjWMQB8TpVCaiv8n8jqwaO1Hb4BvLdWP3susw2j
-	 RLr57FoxSiV/OHpn9UMcUVbZud4oeGFYlVXgyuWFv1QuB1J2f6b7mhsN6dx/FWBAVR
-	 vh4YmBSicZmBw==
+	b=LFMOwsmd39+wWTlz+v6wCu/Lej0zYyHG3YrCC8M0Eqp73au6KCZkqkwKCNM1gpzYr
+	 yJqRnahWrlSRT5DiA+guRfZu6h227BV8we67ZcQ7fRYxANScaQ0BmK0TiNdzni9kYK
+	 /Li3AfC9EcO7/UbC3cHTAb7f9yRm8rYq8o8L5oCGCRSzQNSMlpXcgMEAdf4SI4+BB3
+	 amZy1JLO3trxl40/JccYv7tNweiEjjPsNFpxf299gdxLdmqQKuZoiSw5U9sU7GOAaI
+	 RDNAaFQmY9UIHJG0l9Ki+adz+VB57TVs/9kvrJriG7JfuQ5ZjYT95Ky6ElQzgoQRPV
+	 n9qRHGBT08KJA==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A978617E0742;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 595D817E0700;
 	Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 12785480035; Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
+	id 0DD8D48002F; Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 28 Jul 2026 19:40:42 +0200
-Subject: [PATCH v7 06/18] drm/bridge: synopsys: dw-dp: Free output_fmts
- when none are valid
+Date: Tue, 28 Jul 2026 19:40:39 +0200
+Subject: [PATCH v7 03/18] drm/bridge: synopsys: dw-dp: Add missing mutex
+ cleanups on module removal
 MIME-Version: 1.0
-Message-Id: <20260728-synopsys-dw-dp-improvements-v7-6-b7640fa8cf48@collabora.com>
+Message-Id: <20260728-synopsys-dw-dp-improvements-v7-3-b7640fa8cf48@collabora.com>
 References: <20260728-synopsys-dw-dp-improvements-v7-0-b7640fa8cf48@collabora.com>
 In-Reply-To: <20260728-synopsys-dw-dp-improvements-v7-0-b7640fa8cf48@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,26 +82,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1057;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1101;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=Ccx+QhJeQ1KNv7xuRbgnsS8npvB/wRINLZz8iwrkLyk=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpo6Z2VOflWC8HvxPS5FNVqexeGhxvDVz8Fl
- cjjXCwxkY1yL4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqaOmdAAoJENju1/PI
- O/qa/YsP/1nWJ9Pl4XZcTE431N5GCG0Hk7Y2ZRgSE2ffZivIsg3j5MaNYWCpDsk1EUbdxiWcvAQ
- DBf0IALCKRLdgfvTBCJpii8rhis9LD4T8dkjL8enC4F7iYvDge33S6q+KQ73PC10OQx/I/niUz3
- V7ED2SnmUuKd/GjYU4DM9Y+4GdIf8Igr4T4/jDaBUceXWpAE/MG9u1s90K10aUsWLfwDpeycjBa
- myDatRGFNzTkhB6undPhOyhv3Le8JCf5RsVMj4kK7BYoibIFZx7LpRixH+gbT2YqvVxptHcv1Li
- Zc+Azx8RFvPqamn0bKJX51arsuc2SYTSg4NisVDLNkhFF7KQeOQnSZZHdOYRfR+U+5idykRlOdO
- jag3Ne/yRFZLlZrvY7kzmMoBVow6moOCsBgmlU6MvPpcO+j013Ii62CDWqLBWpHSb66vboCyyMU
- zL2w391lK8L8LmyUf0PWc2+EH4oLNqw/6MC4G1me2x5frgTw0SMs7/Pi2uEeQM8MZIPi/Pxyw8n
- puV3P2f8k1l7J2WqxZNlZ+2USkZxWmeTbskLcVw62Hu4Z+UInPNjktRbrpH4yiG/dHMNwEgA9K1
- L/2/VYaV3YGmCbMfRTFyBAkbyqI+pUEyTWwjl8q7DEUsCkYc7F+536ARvBE+XEfMgkaCHjhnbzC
- gzqb8HUGubaQJCtst79c0hg==
+ bh=OX2jzq6LTYnokROmR6vmx/MpA8RbT9nBSteYSjgWJCo=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpo6Z2y8w1RsJUyogyHJbaoJrOfzo3yR401n
+ PSoGUh9lAwyc4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqaOmdAAoJENju1/PI
+ O/qaeqEQAJgknaElleOGsDqJmWaIXJEPj9svC1LU2hxOm9WKUiesqZvc0//DWXo0fPwwI0JLyhN
+ 51fuaZuTP6fDvXx68aqILDpNT9wKBpxstX1MCQrnRlIcDEOF+mz1WVd5UgMwl4TOxbrY9316IZd
+ yE+Vn0aV2is8X7SDVudZliS+7TXdwaaYKs5TPE1nnPKu9RkqZBtm15zwrInStf1aGrD/eCpUeEw
+ lFlzSA5xGATHeyWbTS12reQ08AYdTT2DNb4ziZsxjqaU1fnc41M9q+QMTNnBPMpuDQLRZyhQvJ2
+ rR+zRifG+3NuB/AKTUtMjVCMBxqesDS9zgI2hBg3YRGMdQfaHSD78yi0OlWTNnmM+vYTdR645US
+ IDOr2nxc4a3t7m4+hl8uVNffpcuwh611SYpaGIG9HQ05t9MeYUrs8Soyv3WldE1fgs1RM8kPmux
+ SYoLxNvAbhCeAsbwLGvnoDP0cq6PqFpLBvISOAJnPYJzhQzK5j5LIiSSVjEZsumudcz2bX/fPKs
+ nAGZ7cX9/VffcvZzuNSs7d3zRxAoG+vwXOxOmYwQ7fSLpY6MoXALjPJc8KhE8qp4FFZ1QTHrlSy
+ oY9IFriJyx1BZNY1ojz7C6k3ijo2ZPGkBVcxJcNeyh6tL3SdwIELuQJg159GU9QU1gUoqjjkVcM
+ oDlO6+cRTJ7TBmaZkZ+As3Q==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_104053_557165_4D7B3931 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20260728_184052_377587_937F22A1 
+X-CRM114-Status: GOOD (  12.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,34 +119,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If dw_dp_bandwidth_ok() returns false for all formats, *num_output_fmts
-might end up becoming 0. In this case functions calling it assume that
-nothing needs to be free'd, so free output_fmts within the function to
-avoid leaking memory.
+The driver is currently missing to fully clean up after itself. Ensure
+that the mutex is cleaned up.
 
 Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
 Reported-by: Sashiko <sashiko-bot@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 1281fe28b0f9..ebb7280ad84c 100644
+index 8393f9c9b0f0..ca7ff544d243 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1802,6 +1802,11 @@ static u32 *dw_dp_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
- 		output_fmts[j++] = fmt->bus_format;
- 	}
+@@ -2028,10 +2028,13 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
+ 	if (ret)
+ 		return ERR_PTR(ret);
  
-+	if (j == 0) {
-+		kfree(output_fmts);
-+		output_fmts = NULL;
-+	}
+-	mutex_init(&dp->irq_lock);
+ 	INIT_WORK(&dp->hpd_work, dw_dp_hpd_work);
+ 	init_completion(&dp->complete);
+ 
++	ret = devm_mutex_init(dev, &dp->irq_lock);
++	if (ret)
++		return ERR_PTR(ret);
 +
- 	*num_output_fmts = j;
- 
- 	return output_fmts;
+ 	res = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(res))
+ 		return ERR_CAST(res);
 
 -- 
 2.53.0
