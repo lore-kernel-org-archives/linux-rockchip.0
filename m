@@ -4,96 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABB1FC54F51
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 22:58:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A672C53219
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 23:09:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UgFBYmSFUoO8ph0LZSF3NhgYutd0ilxS2IYz05wOo6o=; b=MumM2EeaM0ZxC3
-	3dvjKLUsm9G9vS5AbiInhnGdJiXU/qNOaANdGRrssl8x+HkIZPcnODUEOJhzuOjrb0gKMpZD8c2+Z
-	LtkhE5SxOvTY7OgBYnFgMLdvvRra0N6ShsVxRT1d4tSXyBbLyPutj7JqRz25Zc6eGLMuale7W7POa
-	h9e8G8Uqb9D4ymUEQDbZkii7mvIxmobnn4tVeGamwJVU0F2ZIuVS2LLpzC+Eb+1oERwO4mTWKztAC
-	BWWsa9HI+J0OfH2LrGJnShhaAngAJI7M1LyJVcGjIGh+bWqhl9S9Iq9q0bWaiM+9DevNMfSV8OplZ
-	nD7LqWSL5u28/5nRGDgw==;
+	List-Owner; bh=wMS53Lw9tvkEZ3pGXOlMCRX3cVk3CBF/dHwCCHYPNI8=; b=0mnrMmg9I8fR40
+	/Wipt5EwC/69j8A4y8wnyi6urawYK4Cbz8XscjaRUYdxILCRZ8/D3VbQLlTRa4fNSpuce/0bnphZS
+	vxZK/etsil2EjdxvIRSqwWdzro7FTtLThSSy+XLsn+5jLjOWmEt3C9O1wfk2I4YZpmoWf1OleeIjh
+	2Rmh5/9yqE/WKFJuDb0Ogh50H6pw3iIhWUBoJweHs0U67GVfjM47iFK/VpoNV3wFaVW7pJFviKr4y
+	I9hHhQG9XA2i/JNIX8hvmkF6d6BEN+X1duIJKzK/+Yn1xA3L3/uImZgqTQzTeDEVboXykFjZn1Zlp
+	5oZd9SLbw533ue3b7RRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woqkg-00000006S1g-1HZ5;
-	Tue, 28 Jul 2026 22:58:22 +0000
-Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
+	id 1woqvY-00000006Smr-1X6H;
+	Tue, 28 Jul 2026 23:09:37 +0000
+Received: from flow-a7-smtp.messagingengine.com ([103.168.172.142])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woqkX-00000006Rsk-0tZY
+	id 1woqvV-00000006SmW-1BxP
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Jul 2026 22:58:16 +0000
-Received: by mail-oo1-xc2b.google.com with SMTP id 006d021491bc7-6aa9606ddadso330841eaf.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Jul 2026 15:58:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785279492; x=1785884292; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=NpN+ZPzDDJIi2OGVLAIGzdkpJCAVWletSuzbfhlaAMU=;
-        b=Qvw6DbUub0DnjTLCyixHniKWH5rXH0vV5RVOhJkASj+2NYp0Ixml+b8FMTY87p9her
-         I1MifWyk570QM0OnPCT6MSlyAr0zpbq2Dn3DkEyx+LxgHIFFM1lWY7PTWk36ZVlqKm8D
-         w6Lh2G2S1MPCRN9EpVWVv3ulyf4h6dOylbvcsNpDfnZwCoZO/Rj5lvPyFjeCbH43twPo
-         p84DvrQ9zBrNJVGE31w4pochnVbOONPHMt4AiR+5+gHECgXC02/u9QEZmhXRMoIcY+F/
-         mqdDrV8cfj49fCoKiskqy4xeYlaYlODHfmRzb0W6Ah6C50sGeQOoWVjfZPeuILie3AzL
-         xL9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785279492; x=1785884292;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=NpN+ZPzDDJIi2OGVLAIGzdkpJCAVWletSuzbfhlaAMU=;
-        b=lZhPAcNosIwyPn5FXkcfltKEdVDg4/xylauZs+BAjYGvY54IbP5d4sSV8e03u6nqDA
-         2SB1XMmTY7M71/Lsq03FFQTNRpg91T/GslXWY5/oDvN6Kg81LLJwwsY9WSzkTvwFMKMp
-         uWWEYIpf7hAiVVIOXfO9iESNNe9QsAMwSiTVHt3FWOE1YOHDPdqVr5PZqytZ9op3JVy2
-         LrNhGYr59nPFVopDNe7hfsHI2EcOsjTaMVg/r4qPak0FFC3YC7ORihI5kL4v6j5HyRcB
-         5h7zEfeqZKkLBEK1FVx7tnfY1M4cYfjScZN0HDjJTwoBsoE+Q+aPENzcryjreRK5kiRL
-         sWew==
-X-Forwarded-Encrypted: i=1; AHgh+RpejzlQHgxX/5ycSoXXY+Pfs0GyFyeEY5c6ptvXiFVj6Mg/1QseYfolWPuhso2KmtWS7aHx9GY4HwUo+8/7Pw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YykHK2kP/NsXqB2biLZBDWeyRLLa7eTYFAX24Jf5WhFjxHOtup4
-	X9gNLLNth+lfQ7kmhTCJ3gdGDKzY4tr+Ye04vdv48YQlhHPtW6WdAiZo
-X-Gm-Gg: AR+sD102++PX2i57na1o1ZSdDCVt59I/AyylSrZiiNHa7mqU28ciW/H/6wRLIR06tPA
-	MTk7H80VGsikLs+Gr9bun2xk/+4aELR+vsu2XLJj6IpDBBSNMVwMSgeWSriPlOC+PU8AzAaBQZ+
-	HDKZDC84WJKsf8MHv5LNS29Rp/Dk9HhE5ApbmkfAnb7CVCxqdDo2KI/97Jt4mf4MA7svn8IHiUd
-	2BTeDG93ghjfKAO2alGhOr1zeU/OjNeO3MPh6LiShfMZ6Efcl/jJRCuVD39OcvhmA7sKqaAdKvv
-	aeo1aK/NOVT3NLw1WK2lAhhQjYTP970nJa2D7QHmcGpIdy/2+/7G83X5va4uXK/DjV7Rbn6dub1
-	d4nm4ODwuA8Olhw2pEMisxODdO22ZFJFfY3jv+ZmoMxyQbqGJbIjyF+6npWDWb+Gp75y+/rDDFi
-	85EOwlkNPDmCciAzZ6h27ZwA==
-X-Received: by 2002:a05:6820:1806:b0:6a3:7761:b50d with SMTP id 006d021491bc7-6ac96ce07d1mr2464385eaf.55.1785279492096;
-        Tue, 28 Jul 2026 15:58:12 -0700 (PDT)
-Received: from localhost.localdomain ([2600:1700:fb0:1bc0:9162:e42b:cb94:2d55])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4588646ade0sm990277fac.5.2026.07.28.15.58.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Jul 2026 15:58:11 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-iio@vger.kernel.org
-Cc: andy@kernel.org,
-	nuno.sa@analog.com,
-	dlechner@baylibre.com,
-	jic23@kernel.org,
-	jean-baptiste.maneyrol@tdk.com,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
+	Tue, 28 Jul 2026 23:09:34 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+	by mailflow.phl.internal (Postfix) with ESMTP id 8594013803A9;
+	Tue, 28 Jul 2026 19:09:29 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-05.internal (MEProxy); Tue, 28 Jul 2026 19:09:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm1; t=1785280169; x=
+	1785283769; bh=i/v2RaSJaTvaJyiuYWqiQo6FQ6f004XdRm6DgERiK0U=; b=s
+	uy9UXfR/3JyFv01zvKrXxUxnFjTr5DsaFWSstqYLRpW8FvzCGRqTqLUXOi+WxAxn
+	cq8Ewez1+hWWgbj+l9xdqojZkj/4kBIlGp2m6vnR5CkZY/3Z7yPAl6WYJ8uRw0Us
+	u7W6eW0TMAiSh1I0+ua1Dq/y7rl/1yAZX7JajJdzHNW6b/RVnwHK8+3Uf/tu4Cd/
+	tmd38+60zvASTiB8T2D+ZHzXsUimX8Mu00AfrwvEwxEqT4PTS94F5svLxYZT6Mne
+	qWJvMIQBHTJzQqsQTIS/t5XM3pDXkmxFjOPQrKMJhPXtN1PELVqAoirjjdmbE7mr
+	mMbBnIdPbwRKzwiK0tI2g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm2; t=1785280169; x=1785283769; bh=i
+	/v2RaSJaTvaJyiuYWqiQo6FQ6f004XdRm6DgERiK0U=; b=VjbgAg+PrmoD4z+5W
+	7lrKfJKxA7BdyNG+lphqj1s/UR+VwSaHD/pcnYFAyr8qvLIR8i7qgjHRFcG1sAng
+	3GvgZcsXWbCDqUXUIwjE1jtqh6Vle+xFOV4IYeRDgLv0m6b56mSTFYGzw/HQQa2/
+	aXXBs3s9r2SfHwTrgsFeYoqt7Ju9hX/3LFreO7SmdX4sbniypvhiIg98QUcoFXIt
+	XDq/XopDJK2lbVdWQXCCBtoL3+riC80v9n+KB9wt5HCQWliNkWv6MQCBRGrR3nwm
+	dQAWI1SD2vAZJLCsvFEsu28XI9ilXOkSLdaRMPcIZMw3FA7IXHy/97r2zgleJ8GR
+	TSSMw==
+X-ME-Sender: <xms:qDZpaudfzG7TEW2apUfz_uNWUGMh0olSS85lBb5tznNfrTRD0diWxA>
+    <xme:qDZpanqDiaEkU89bFehZdywYxZeW_oHN0AVHo00WkNnFAebofItWVRVoVnDu_DGT2
+    ME8Z4Bkx5IpLdMW6StmCxM_OFNg5pRHUkOCzrM9_eNp6KPjNbE0Pb4>
+X-ME-Received: <xmr:qDZpagmcT-jOgnDZztvnEmmwimmwUtIouarOBeCa8gQkTuZz_28UZYzARa7j6mw6v0hnwtBfzQHNjN-gZ57bCzEl_zK-huWeqMNgiMdlIP1b>
+X-ME-Proxy-Cause: dmFkZTFBLgUAwYceiAZYCfSZxetME8tYMXEjtYBYwbB1XcaiQ89MQfYVgcMBY+xn3/bB1q
+    SUerqOjLDgkqSL7B9ism0wXKyyMqwwopWkiPj2+J+SnWsGIASckSf5TvBem11b9kw3sx5k
+    F7bqnP76hT1uH/m8fJeD654iuabUyclFF0CspLNz/52P7sM9URF2o0FRtO6Y8lBulPxDs9
+    CglSZ+duGLxl4vyJvpEsY+whzTiuX5XXLPqz7MaYqVR56Nv5er1KhBhNs5UtgdFQ/vdXCS
+    x1vDgco07M7Eke8+zqT/aPlFaeioKboTPDMU9g8CR895vGWc9c0dbRsLtZM8TmOlUoRSRU
+    s6hi3H0E2n7Z4dSP9Q4ZY7t+BuCiiC0yXm7QJc7mQmAFVakfwXORVd8QVhV9iYri6iInUa
+    xkZ0Y2RlxI6d7yFvZCIe1jVOjOn0KuXW2tc98kmTQamxrO6rGt0k5oYd/2kPfjwgGj/Taw
+    NR5eTKa8SWoAwTZEWSqBTSvzWDjVyIh/C1MTd+A6blrhlKqPRKQsiZtF1p7Ux0TFdqedy9
+    G5EqyObI5a7ohJKBUbcIWhIxEwfo3Qt7jUKuXDG2wSMDaqrb4hCz+Xtplp+D5JqAmkIqZj
+    /vDXmssnOqXKmxsZctPi0+iBJyq68vPEVncMJzwV0bw7ryxzj9LPNYeivFCg
+X-ME-Proxy: <xmx:qDZpagT5C0pA60VC9rjRO25ViNuOYn1_CfIjB-TfkVv8nm9cDJzRdA>
+    <xmx:qDZpauYOZrHunHuk7Bj8FfgwsB1B_iHWbnCCM7rVTRWB9TcInsY5Vg>
+    <xmx:qDZpao_LcMD0NtLSHyUxp_j0mABZL37I4lE_AsLTivF3b1uDwe1zcg>
+    <xmx:qDZpaokwaAvQZ34A38auaICDUuEAe0VB86iIJjtFCja-jhr_nI_MpA>
+    <xmx:qTZpaoGWO9yM0Wym9sPd05yvHPsiLJMUUw53lElulDy2G4PjAfpAugfT>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 28 Jul 2026 19:09:22 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: andrew@lunn.ch
+Cc: alchark@gmail.com,
+	attinagaoxu@gmail.com,
+	Frank.Sae@motor-comm.com,
+	hkallweit1@gmail.com,
+	linux@armlinux.org.uk,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	netdev@vger.kernel.org,
+	maxime.chevallier@bootlin.com,
 	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	andriy.shevchenko@intel.com,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V21 7/9] iio: imu: inv_icm42607: Add Gyroscope to icm42607
-Date: Tue, 28 Jul 2026 17:55:38 -0500
-Message-ID: <20260728225542.174825-8-macroalpha82@gmail.com>
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH net-next v2] net: phy: motorcomm: enable the reference clock for YT8521 and YT8531
+Date: Wed, 29 Jul 2026 11:09:16 +1200
+Message-ID: <20260728230916.1239080-1-gahing@gahingwoo.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260728225542.174825-1-macroalpha82@gmail.com>
-References: <20260728225542.174825-1-macroalpha82@gmail.com>
+In-Reply-To: <37c2162d-134d-48c5-92d8-3355306f15ec@lunn.ch>
+References: <37c2162d-134d-48c5-92d8-3355306f15ec@lunn.ch>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_155813_402490_98CBFBC3 
-X-CRM114-Status: GOOD (  20.62  )
+X-CRM114-CacheID: sfid-20260728_160933_592767_5A83E591 
+X-CRM114-Status: UNSURE (   5.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,390 +120,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+> Look around at other drivers. Is it generally put into a tiny helper,
+> or used inline?
+>
+> My gut feeling from reviewing lots of drivers is that it is inline.
 
-Add gyroscope functions to the icm42607 driver.
+Agreed. v3 open-codes the get-and-enable in both yt8521_probe and
+yt8531_probe, with no helper. I had already sent it before this mail:
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- drivers/iio/imu/inv_icm42607/Makefile         |   1 +
- drivers/iio/imu/inv_icm42607/inv_icm42607.h   |   4 +
- .../iio/imu/inv_icm42607/inv_icm42607_core.c  |   5 +
- .../iio/imu/inv_icm42607/inv_icm42607_gyro.c  | 305 ++++++++++++++++++
- 4 files changed, 315 insertions(+)
- create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
+  https://lore.kernel.org/all/20260728055659.1211459-1-gahing@gahingwoo.com/
 
-diff --git a/drivers/iio/imu/inv_icm42607/Makefile b/drivers/iio/imu/inv_icm42607/Makefile
-index 372c6d6bdcec..8e73385c8f4b 100644
---- a/drivers/iio/imu/inv_icm42607/Makefile
-+++ b/drivers/iio/imu/inv_icm42607/Makefile
-@@ -2,6 +2,7 @@
- 
- obj-$(CONFIG_INV_ICM42607) += inv-icm42607.o
- inv-icm42607-y += inv_icm42607_core.o
-+inv-icm42607-y += inv_icm42607_gyro.o
- inv-icm42607-y += inv_icm42607_accel.o
- 
- obj-$(CONFIG_INV_ICM42607_I2C) += inv-icm42607-i2c.o
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-index fd3e57ee4f14..4d51b0da1aa1 100644
---- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-@@ -138,6 +138,7 @@ struct inv_icm42607_hw {
-  *  @lock:		lock for serializing multiple registers access.
-  *  @map:		regmap pointer.
-  *  @indio_accel:	accelerometer IIO device.
-+ *  @indio_gyro:	gyroscope IIO device.
-  *  @vddio_supply:	I/O voltage regulator for the chip.
-  *  @vddio_en:		I/O voltage status for runtime PM.
-  *  @conf:		chip sensors configurations.
-@@ -148,6 +149,7 @@ struct inv_icm42607_state {
- 	struct mutex lock;
- 	struct regmap *map;
- 	struct iio_dev *indio_accel;
-+	struct iio_dev *indio_gyro;
- 	struct regulator *vddio_supply;
- 	bool vddio_en;
- 	struct inv_icm42607_conf conf;
-@@ -412,6 +414,8 @@ int inv_icm42607_core_probe(struct regmap *regmap,
- 			    const struct inv_icm42607_hw *hw,
- 			    inv_icm42607_bus_setup bus_setup);
- 
-+struct iio_dev *inv_icm42607_gyro_init(struct inv_icm42607_state *st);
-+
- struct iio_dev *inv_icm42607_accel_init(struct inv_icm42607_state *st);
- 
- #endif
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-index 68e84597241a..190e998f7b8e 100644
---- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-@@ -635,6 +635,11 @@ int inv_icm42607_core_probe(struct regmap *regmap,
- 	if (IS_ERR(st->indio_accel))
- 		return PTR_ERR(st->indio_accel);
- 
-+	/* Initialize IIO device for Gyro */
-+	st->indio_gyro = inv_icm42607_gyro_init(st);
-+	if (IS_ERR(st->indio_gyro))
-+		return PTR_ERR(st->indio_gyro);
-+
- 	return 0;
- }
- EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
-new file mode 100644
-index 000000000000..b68d4d6f5c3f
---- /dev/null
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
-@@ -0,0 +1,305 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (C) 2026 InvenSense, Inc.
-+ */
-+
-+#include <linux/array_size.h>
-+#include <linux/bits.h>
-+#include <linux/cleanup.h>
-+#include <linux/device/devres.h>
-+#include <linux/err.h>
-+#include <linux/iio/iio.h>
-+#include <linux/mutex.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
-+#include <linux/types.h>
-+
-+#include "inv_icm42607.h"
-+
-+#define INV_ICM42607_GYRO_CHAN(_modifier, _index, _ext_info)			\
-+{										\
-+	.type = IIO_ANGL_VEL,							\
-+	.modified = 1,								\
-+	.channel2 = _modifier,							\
-+	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),				\
-+	.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),			\
-+	.info_mask_shared_by_type_available = BIT(IIO_CHAN_INFO_SCALE),		\
-+	.info_mask_shared_by_all = BIT(IIO_CHAN_INFO_SAMP_FREQ),		\
-+	.info_mask_shared_by_all_available = BIT(IIO_CHAN_INFO_SAMP_FREQ),	\
-+	.scan_index = _index,							\
-+	.scan_type = {								\
-+		.sign = 's',							\
-+		.realbits = 16,							\
-+		.storagebits = 16,						\
-+		.endianness = IIO_BE,						\
-+	},									\
-+	.ext_info = _ext_info,							\
-+}
-+
-+enum inv_icm42607_gyro_scan {
-+	INV_ICM42607_GYRO_SCAN_X,
-+	INV_ICM42607_GYRO_SCAN_Y,
-+	INV_ICM42607_GYRO_SCAN_Z,
-+};
-+
-+static const struct iio_chan_spec_ext_info inv_icm42607_gyro_ext_infos[] = {
-+	IIO_MOUNT_MATRIX(IIO_SHARED_BY_ALL, inv_icm42607_get_mount_matrix),
-+	{ }
-+};
-+
-+static const struct iio_chan_spec inv_icm42607_gyro_channels[] = {
-+	INV_ICM42607_GYRO_CHAN(IIO_MOD_X, INV_ICM42607_GYRO_SCAN_X,
-+			       inv_icm42607_gyro_ext_infos),
-+	INV_ICM42607_GYRO_CHAN(IIO_MOD_Y, INV_ICM42607_GYRO_SCAN_Y,
-+			       inv_icm42607_gyro_ext_infos),
-+	INV_ICM42607_GYRO_CHAN(IIO_MOD_Z, INV_ICM42607_GYRO_SCAN_Z,
-+			       inv_icm42607_gyro_ext_infos),
-+};
-+
-+static const int inv_icm42607_gyro_scale_nano[][2] = {
-+	[INV_ICM42607_GYRO_FS_2000DPS] = { 0, 1065264 },
-+	[INV_ICM42607_GYRO_FS_1000DPS] = { 0, 532632 },
-+	[INV_ICM42607_GYRO_FS_500DPS] = { 0, 266316 },
-+	[INV_ICM42607_GYRO_FS_250DPS] = { 0, 133158 },
-+};
-+
-+static int inv_icm42607_gyro_read_scale(struct iio_dev *indio_dev,
-+					int *val, int *val2)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	unsigned int idx;
-+
-+	guard(mutex)(&st->lock);
-+
-+	idx = st->conf.gyro.fs;
-+
-+	*val = inv_icm42607_gyro_scale_nano[idx][0];
-+	*val2 = inv_icm42607_gyro_scale_nano[idx][1];
-+	return IIO_VAL_INT_PLUS_NANO;
-+}
-+
-+static int inv_icm42607_gyro_write_scale(struct iio_dev *indio_dev,
-+					 int val, int val2)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	struct device *dev = regmap_get_device(st->map);
-+	unsigned int idx;
-+	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
-+	size_t scales_len = ARRAY_SIZE(inv_icm42607_gyro_scale_nano);
-+	int ret;
-+
-+	for (idx = 0; idx < scales_len; idx++) {
-+		if (val == inv_icm42607_gyro_scale_nano[idx][0] &&
-+		    val2 == inv_icm42607_gyro_scale_nano[idx][1])
-+			break;
-+	}
-+	if (idx == scales_len)
-+		return -EINVAL;
-+
-+	conf.fs = idx;
-+
-+	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
-+	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-+	if (ret)
-+		return ret;
-+
-+	guard(mutex)(&st->lock);
-+
-+	return inv_icm42607_set_sensor_conf(st, &conf, IIO_ANGL_VEL);
-+}
-+
-+/* IIO format int + micro , values 0-4 reserved. */
-+static const int inv_icm42607_gyro_odr[][2] = {
-+	[INV_ICM42607_ODR_1600HZ] = { 1600, 0 },
-+	[INV_ICM42607_ODR_800HZ] = { 800, 0 },
-+	[INV_ICM42607_ODR_400HZ] = { 400, 0 },
-+	[INV_ICM42607_ODR_200HZ] = { 200, 0 },
-+	[INV_ICM42607_ODR_100HZ] = { 100, 0 },
-+	[INV_ICM42607_ODR_50HZ] = { 50, 0 },
-+	[INV_ICM42607_ODR_25HZ] = { 25, 0 },
-+	[INV_ICM42607_ODR_12_5HZ] = { 12, 500000 },
-+};
-+
-+static int inv_icm42607_gyro_read_odr(struct inv_icm42607_state *st,
-+				      int *val, int *val2)
-+{
-+	unsigned int odr;
-+	unsigned int i;
-+
-+	guard(mutex)(&st->lock);
-+
-+	odr = st->conf.gyro.odr;
-+
-+	for (i = INV_ICM42607_ODR_1600HZ; i < ARRAY_SIZE(inv_icm42607_gyro_odr); i++) {
-+		if (i == odr)
-+			break;
-+	}
-+	if (i == ARRAY_SIZE(inv_icm42607_gyro_odr))
-+		return -EINVAL;
-+
-+	*val = inv_icm42607_gyro_odr[i][0];
-+	*val2 = inv_icm42607_gyro_odr[i][1];
-+
-+	return IIO_VAL_INT_PLUS_MICRO;
-+}
-+
-+static int inv_icm42607_gyro_write_odr(struct iio_dev *indio_dev,
-+				       int val, int val2)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	struct device *dev = regmap_get_device(st->map);
-+	unsigned int idx;
-+	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
-+	int ret;
-+
-+	for (idx = INV_ICM42607_ODR_1600HZ;
-+	     idx < ARRAY_SIZE(inv_icm42607_gyro_odr); idx++) {
-+		if (val == inv_icm42607_gyro_odr[idx][0] &&
-+		    val2 == inv_icm42607_gyro_odr[idx][1])
-+			break;
-+	}
-+	if (idx == ARRAY_SIZE(inv_icm42607_gyro_odr))
-+		return -EINVAL;
-+
-+	conf.odr = idx;
-+
-+	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
-+	ret = PM_RUNTIME_ACQUIRE_ERR(&pm);
-+	if (ret)
-+		return ret;
-+
-+	guard(mutex)(&st->lock);
-+
-+	return inv_icm42607_set_sensor_conf(st, &conf, IIO_ANGL_VEL);
-+}
-+
-+static int inv_icm42607_gyro_read_raw(struct iio_dev *indio_dev,
-+				      struct iio_chan_spec const *chan,
-+				      int *val, int *val2, long mask)
-+{
-+	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
-+	s16 data;
-+	int ret;
-+
-+	switch (chan->type) {
-+	case IIO_ANGL_VEL:
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_RAW:
-+		ret = inv_icm42607_read_sensor(indio_dev, chan, &data);
-+		if (ret)
-+			return ret;
-+		*val = data;
-+		return IIO_VAL_INT;
-+	case IIO_CHAN_INFO_SCALE:
-+		return inv_icm42607_gyro_read_scale(indio_dev, val, val2);
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		return inv_icm42607_gyro_read_odr(st, val, val2);
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int inv_icm42607_gyro_read_avail(struct iio_dev *indio_dev,
-+					struct iio_chan_spec const *chan,
-+					const int **vals,
-+					int *type, int *length, long mask)
-+{
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		if (chan->type != IIO_ANGL_VEL)
-+			return -EINVAL;
-+		*vals = (const int *)inv_icm42607_gyro_scale_nano;
-+		*type = IIO_VAL_INT_PLUS_NANO;
-+		*length = ARRAY_SIZE(inv_icm42607_gyro_scale_nano) * 2;
-+		return IIO_AVAIL_LIST;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		*vals = (const int *)inv_icm42607_gyro_odr[INV_ICM42607_ODR_1600HZ];
-+		*type = IIO_VAL_INT_PLUS_MICRO;
-+		*length = (ARRAY_SIZE(inv_icm42607_gyro_odr) -
-+			   INV_ICM42607_ODR_1600HZ) * 2;
-+		return IIO_AVAIL_LIST;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int inv_icm42607_gyro_write_raw(struct iio_dev *indio_dev,
-+				       struct iio_chan_spec const *chan,
-+				       int val, int val2, long mask)
-+{
-+	int ret;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		if (chan->type != IIO_ANGL_VEL)
-+			return -EINVAL;
-+		ret = inv_icm42607_gyro_write_scale(indio_dev, val, val2);
-+		return ret;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		return inv_icm42607_gyro_write_odr(indio_dev, val, val2);
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int inv_icm42607_gyro_write_raw_get_fmt(struct iio_dev *indio_dev,
-+					       struct iio_chan_spec const *chan,
-+					       long mask)
-+{
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		if (chan->type != IIO_ANGL_VEL)
-+			return -EINVAL;
-+		return IIO_VAL_INT_PLUS_NANO;
-+	case IIO_CHAN_INFO_SAMP_FREQ:
-+		return IIO_VAL_INT_PLUS_MICRO;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static const struct iio_info inv_icm42607_gyro_info = {
-+	.read_raw = inv_icm42607_gyro_read_raw,
-+	.read_avail = inv_icm42607_gyro_read_avail,
-+	.write_raw = inv_icm42607_gyro_write_raw,
-+	.write_raw_get_fmt = inv_icm42607_gyro_write_raw_get_fmt,
-+};
-+
-+struct iio_dev *inv_icm42607_gyro_init(struct inv_icm42607_state *st)
-+{
-+	struct device *dev = regmap_get_device(st->map);
-+	const char *name;
-+	struct inv_icm42607_sensor_state *gyro_st;
-+	struct iio_dev *indio_dev;
-+	int ret;
-+
-+	name = devm_kasprintf(dev, GFP_KERNEL, "%s-gyro", st->hw->name);
-+	if (!name)
-+		return ERR_PTR(-ENOMEM);
-+
-+	indio_dev = devm_iio_device_alloc(dev, sizeof(*gyro_st));
-+	if (!indio_dev)
-+		return ERR_PTR(-ENOMEM);
-+
-+	gyro_st = iio_priv(indio_dev);
-+	gyro_st->power_mode = INV_ICM42607_SENSOR_MODE_LOW_NOISE;
-+	gyro_st->filter = INV_ICM42607_FILTER_BW_73HZ;
-+
-+	indio_dev->name = name;
-+	indio_dev->info = &inv_icm42607_gyro_info;
-+	indio_dev->modes = INDIO_DIRECT_MODE;
-+	indio_dev->channels = inv_icm42607_gyro_channels;
-+	indio_dev->num_channels = ARRAY_SIZE(inv_icm42607_gyro_channels);
-+	iio_device_set_drvdata(indio_dev, st);
-+
-+	ret = devm_iio_device_register(dev, indio_dev);
-+	if (ret)
-+		return ERR_PTR(ret);
-+
-+	return indio_dev;
-+}
--- 
-2.43.0
+It carries your Reviewed-by and Gavin's Tested-by.
 
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
