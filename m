@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7BBDC54F55
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 19:16:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACAB0C54F54
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 19:17:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1b2OTNflqej2YvWz1hwX/4FSaSsn6EF00pGkftNh8oo=; b=ddQATMgYO1pOBP
-	YIgl4l2XELEFJS0LDPrjX98lHoR3M4wayWPtbtAWd9iSIhv2UGcrMASi7d/sbq3aA8fZYHmwuP5/h
-	nQAGEfdRwCH0joKQyuYm0VlRs6z8cJkZL2EDbhwPk6y+8NR6Fj3jgE98m2VlWaJfgty8w7k2ER37j
-	Ntl5nGipZIyzF3UB58OUVBgC6GeUq0ltedGZ5im7QvLoWgGqgCVXi6tn1QMCR6gWF9BIGzQacRJZB
-	NaU+F2vBNf3gjJznlBr0aaljn4JbODr1U8TwGHwbnzHn1yWrrnRWY1DOPs7aJqCqnogFO4l5B/NUj
-	SUFH1DngWaqBywyQTPmw==;
+	List-Owner; bh=LMoU/lGm8KRNdLf5Nl32SE8MxNCdmJvJuZn53t1cbYE=; b=zuTV6ltgm8KFpr
+	aBR6Z82qHyu+Wvbbe+SX0iSrXCIJ08r5kgLB8wBHtd/duK3afs5Zukb9mcQxVXJX/KuDmTTjw9+DD
+	BSwsWLowfdwAFZ5B0vgY5/KjSXbewEpn+tMLA0AciRVzhNVJZuv2thFlGJuaoK7VMINdoTX533CUg
+	Gbo0cZwVTeYYr+Bi/1NfexkilO1RQ8zqsbfV5vuktVHP91JUDLJBu1btsjmWybZKTlIgMeu5o+fPi
+	XVkOTd3+Tz2P7e3JxLthdrOI8PThRJ8h2d2z0F+444ff2g1weE2YO5ONWRFGyRHF6eJ1IE0b+NwJL
+	Ha9u4pLnWmVKEkLVQHWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wonIL-000000067k7-0f2v;
-	Tue, 28 Jul 2026 19:16:53 +0000
+	id 1wonIV-000000067sq-1Vo9;
+	Tue, 28 Jul 2026 19:17:03 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wonIC-000000067cR-1WpQ;
+	id 1wonIC-000000067cT-2X0N;
 	Tue, 28 Jul 2026 19:16:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=8bK24QqH1MNg0V4HdxTREFUnJXUUlGEAwlZf4X/A6iM=; b=St1zC0AxH8GKdqWjAI5d1VfXgc
-	Aq985pDBFVOZX7ZD28rgjynBDISyml6dkGkUSxa1YV6FtgF1mVlUVCCP86xNAxps2eKyq1LF0Qt1Z
-	UsarZiv1jthS1+LbK3wFgg6SP4JzbdwjsCsV82mNs/tuYwL77iIzKxhMgEaVjioMxFfD8jXVmu+Fv
-	rUygAnk6Hom6HL2b17XAvoxkaKnpO0Q+STRxYRX8rtI07rTRQbpP9LkkNMG9B8/aFbnpoxzEcfBp1
-	Gh7lDcdh/aO1EHhbqRWzP9xgvBby2fa6+GK/uWlJfgUgunxUcxhj2eU4lmoy8pt7rlvH8QouHvQKH
-	IvSrx4ZA==;
+	bh=k/OibEZQ9hPIHLYPL4MyyZBX8Z5atnq/wmS2oE46q4w=; b=1CVnMMTxlNzj0OJXouLgQ++8ay
+	7OzH4qCIG0KVj06YxY4gggMgajfEIFa/sS9Fj32V9VDpjDGZWf2Ql2M7JlIuIO3t7XJgL57PEs/GU
+	hWxMx7cz0jC8a7x/b2ZanC4pb3OH9pWSK/MLgopiZ8Omqhj+lcNNE2QWfDUnNOJ7L22jF3fHR8s+t
+	ksGX602+hSj2eIC0fXZ8Sj2Dyafo1biBx2iMFauSWdyWWWsVicn73s4dABK9bTerL1ZJmGAWmg6KV
+	244KBJL8y2q7oce8kx+5u/IPjrskaKyHZL2rcJvIXQYPTfSmhe7+R9itUAgVbVgpNHCCJY37o1Kwl
+	buU4ZbRQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Fabio Estevam <festevam@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	robh@kernel.org,
+To: robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix Gru WLAN sideband interrupt
-Date: Tue, 28 Jul 2026 21:16:28 +0200
-Message-ID: <178526609462.300371.16764379143271807563.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 0/2] arm64: dts: rockchip: Add ArmSoM CM5 and CM5-IO
+Date: Tue, 28 Jul 2026 21:16:31 +0200
+Message-ID: <178526609483.300371.1972096741019410847.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260721133445.44283-1-festevam@gmail.com>
-References: <20260721133445.44283-1-festevam@gmail.com>
+In-Reply-To: <20260719034611.3623066-1-gahing@gahingwoo.com>
+References: <20260719034611.3623066-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_121644_398926_C3E50879 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260728_121644_639425_788A0A73 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,21 +72,31 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 21 Jul 2026 10:34:45 -0300, Fabio Estevam wrote:
-> The Marvell WLAN host wake interrupt is wired to GPIO0 8 and is not
-> one of the PCI INTx interrupts. The PCI device schema therefore
-> interprets the two-cell GPIO interrupt specifier as an invalid PCI
-> interrupt and reports dtbs_check warnings:
+On Sun, 19 Jul 2026 15:46:09 +1200, Jiaxing Hu wrote:
+> Add mainline support for the ArmSoM CM5, an RK3576 compute module, and
+> its CM5-IO carrier board.
 > 
-> pcie@0,0: wifi@0,0:interrupts:0:0: 8 is not one of [1, 2, 3, 4]
-> pcie@0,0: wifi@0,0:interrupts:0: [8, 8] is too long
+> Patch 1 adds the binding, patch 2 the module dtsi and the carrier dts.
+> 
+> The on-module YT8531 PHY has no crystal and takes its 25 MHz reference
+> from the SoC. Following review of v4, the reference is now handled the
+> way Andrew Lunn and Maxime Chevallier asked for: the PHY is the consumer
+> and enables the clock itself. That needs a small motorcomm change sent
+> to netdev [1]; the clock is optional so this DTS still applies without
+> it. The earlier dwmac-rk MAC-side patch is dropped.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Fix Gru WLAN sideband interrupt
-      commit: a761818d9ee11183df0aefd16bf9fe46cc1c4c6d
+[1/2] dt-bindings: arm: rockchip: Add ArmSoM CM5 and CM5-IO
+      commit: f60f44c24b10fe7fd1fa76b360646def1bea193a
+[2/2] arm64: dts: rockchip: Add ArmSoM CM5 and CM5-IO
+      commit: 44a48a23974b86d2c551afbabee15ad70b249df5
+
+Adapted the styling a bit, fixed some dt-checker warnings including the
+2nd ethernet-phy compatible - I left the most specific one.
+
 
 Best regards,
 -- 
