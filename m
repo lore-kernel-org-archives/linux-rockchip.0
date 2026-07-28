@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02F8FC53219
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EED3EC54F57
 	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 17:41:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w/znptNOMvDEM83Z6NkyC7UTJGrg+72HY4md8qFfOLc=; b=L08fj/uP3UKkF0
-	33Fist1Jb/2616U1ugIXrfSsogfjv37LId0m97kd0KHi/nJPWg4p5X2wUXa1A0UK+DyxPJAu/8Hi0
-	VK2O1l2nqmnX7mwJHUgVBIyTBzE1ajrtBgs6s3OitcqbIoN8S1fB7r8uQnbOUPCRnfo39gAJv4bmr
-	+AAxv/2VGWpwFt9zgyyG7vckY4DFCjtgR/ry7zhyyJJbBSNVz7CUYPVoqdNcqgyCFghRblOWsgADG
-	U9xE7BJWB+LehHnivrheqh+6Pj+J0SC13DZV1TwJa/3TK83hvJ7y17QVBP8AEtMzCyfgWAYSO5FHw
-	aFmS+U9WAHkSDNH8yTdg==;
+	List-Owner; bh=8V4WK6UTKEDAbv99ld2oq5YwrHn+cEPlv2hM4jKAgFY=; b=241nXe0bkngrPd
+	JOD7mad/ehBz/AVYobQdiCnRc7kxgRlop55tVBN37iPKq1c74uuf2sMB1sxrqpE5b8X4MeD15ZCIh
+	C5/TWeBnOdM2KjfoAngntqFvP6lAbep4NpVZhDRNrgq80svayeqCxAWfpHQVCXZHNUECC2I/HTo4E
+	0doevb3mnoNr2KRmEunhagqr7RNdqjrpqdSlrrg3j638rsYlab9dbKS1cnpLq1mM6tWE/ABPZSsoS
+	aIC3ZkdOQc2BIsLLylzL4efsg+2nQYQScrvucTKq0JmShd2AyabFLlmZAQnFf3BPpKze/DPNnSsvf
+	dABJ9x2pc0tNYivpSuGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wolnu-00000005zQd-38YJ;
-	Tue, 28 Jul 2026 17:41:22 +0000
+	id 1wolnv-00000005zRW-0bKT;
+	Tue, 28 Jul 2026 17:41:23 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wolnR-00000005z2j-4AeI;
+	id 1wolnR-00000005z2k-49QQ;
 	Tue, 28 Jul 2026 17:40:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1785260446;
-	bh=eiHbGZC/P9XkiRI28/xkqRUSq2InYi/4+hfl52mIH2Y=;
+	bh=52cVYZKJL8pFg8EqIp7KJVygDv198u5nbIuiljjR+48=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=G9qGVhKneeDyu6liuvjKzU/PzIrnbzGMypcKcYL3e4Cd7JXqwscsyk6tKFos3p7br
-	 EPQMdDK1pCpll1om5QmpMbEhWVxgle4hhQ6/fxjwgcqavmUGj3+0WCslmpJuHyx23p
-	 ZU+RLxAhZoRzf7APlZLH75e6EXJjNGqVY5dboAp9BvQCqPQxlOMdWmQ256bad6ieK8
-	 hEctl8Fhzc9mCwIHM/Kk6J9WVr9yLhg9uolwNZ0LuleZl8sY3DjQ3vBbbUyDO1TFyt
-	 LB3qSBe0u5yxdGmrRbLadONSlhudk+qkVvD6k8fcBhtUTuCLKpFjvoEFTItaT/+AWC
-	 Xm8Ns9daAxs3Q==
+	b=Jo/mHEzw1mvPZBT51/V0UrlR4MbY2lAc006k1RyCH6dtmA9tI9FB7Sv9IIo2e0twC
+	 daINQ3IHoMhxWzHTiD6QuFsppjddVLMqYAX53Zr1mHyoaYWv3tMgeNyd2iH3KNIj9u
+	 tmQP3yZJ+khsXZTY7JWbO4t+5Xc1zBiHGq8mrlza84RgfmMcWcljMdIawPAfV1lJmT
+	 wKuR22SdpzqIMPhIWNjVU6iVgHjixyEMzK4gkoJniLfvczum4UUviby1eOLk7HqhM0
+	 n3oBq5pGvIbh02hcJgH+V1KCm+CNBIg248MY28mMODnN72i8kMR0vXpnsC63SgvdzQ
+	 mJIyMYORaj/yw==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A785517E0739;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BD5F817E075D;
 	Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 10FEA480031; Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
+	id 181EF48002B; Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 28 Jul 2026 19:40:41 +0200
-Subject: [PATCH v7 05/18] drm/bridge: synopsys: dw-dp: Reset AUX channel on
- transfer timeout
+Date: Tue, 28 Jul 2026 19:40:46 +0200
+Subject: [PATCH v7 10/18] drm/bridge: synopsys: dw-dp: Support software
+ triggered OOB HPD
 MIME-Version: 1.0
-Message-Id: <20260728-synopsys-dw-dp-improvements-v7-5-b7640fa8cf48@collabora.com>
+Message-Id: <20260728-synopsys-dw-dp-improvements-v7-10-b7640fa8cf48@collabora.com>
 References: <20260728-synopsys-dw-dp-improvements-v7-0-b7640fa8cf48@collabora.com>
 In-Reply-To: <20260728-synopsys-dw-dp-improvements-v7-0-b7640fa8cf48@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,26 +68,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1517;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3736;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=eiHbGZC/P9XkiRI28/xkqRUSq2InYi/4+hfl52mIH2Y=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpo6Z3v9APPH1sA3rP3N/t1ILUDSzolOtgwa
- sYCJi2Cc+CGbokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqaOmdAAoJENju1/PI
- O/qaVzcP/iFaDaK1V0Nbo+DS5xGD3WenxNQhQAjjP3XnTUsLCajOCpjkeFnE62pOKlavMMyrwir
- /CJy8a10AFKesPxdsFgBYpqXZD2dhuGGpst94yA6nyIj+VHBmHOY1euAfypoYBxR0xeuW+U2K1c
- XF4Lu8MiWoyruMqFYGy6DQGqWMU5Qb/gKT+ExO3aYC13JHjYLVvcslVntkr9S0pWui2eg/F3jl3
- 1ZXjGkndP+BXLpCrasnYWikZSUv6/tr8ScLN3xE17puovNRegpPA3NZ0n8mgsdhghaBCfAoAprB
- 8Ss9lT4gZA3hRKMCWQvnir6+S/2URLyui9SwaKhClurOZuq6mTxYBrYqFvnOlX8B0WhCrzgfzUJ
- mdiY6w7FQKWtJWGX3yPPsMtQ5vP/2Er3pIE8/0eYVuvUxk0f291N98u7UBjp5ZswHDL1Xlv00V5
- w2Z7Ytc88IQ83v3WByj7HAxAEHkTXJiUo2GYS6Io+uRtCx7pi95oxNsp9EiuNxUL0O3cFYTUjrk
- NmSQ7t2cNdOLJ0hy8hfadLduO6ycDvCBqNQJGS7RA98Mw/ob8cmWqd53sC2Ah8Yhga2Er3fLHo2
- UaBdJQZZycPt200cDy7y1UQ+QTLKGQDxfuhQ6raakmj4gfWS3aRaWg5fpe23GJHL1nIPjMiQ6yW
- 9KX469RXcIKxS7hfhYUkvqA==
+ bh=52cVYZKJL8pFg8EqIp7KJVygDv198u5nbIuiljjR+48=;
+ b=kA0DAAoB2O7X88g7+poByyZiAGpo6Z2hN9vVs5czYRPsvXcBD/9DHxIQRYb9uimfEfge6NQge
+ YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqaOmdAAoJENju1/PIO/qai5QP/iQY
+ ftE+bsQZygH98NNzHcdnaK5h4EYZOBLJDZuAyP1VVd3zZNB8XXbA8jbRzlT++UMT4UEdlGK0f6r
+ /tc9Rvc3AAonr0FNwdzmN13qLTIN/nEJX2NvxsRrf7LeyPO79tQuhgMs46rbDknJlPAb0k49567
+ ldMboeCaTawDUQDFY+fEX6vSdVijp2LF/9tYHrNZ5yHsT3DoOFJkoDYtA4abG7sBFLfVzqUxQF3
+ Nrdk0mjA8mKscuYHrRICw6uwWkPXjIklz8WZcD8gn5qjvrRjuHf1U/dP3VYcuhMqg3pHDAGqNel
+ Y2txqgl70oT/XZ6r7L2CICWDbkkHy25NrOtiQ+ekEjc4f0xQB1AVDCqusmP6gMwQaz4sMuKSrKq
+ agFSwCPi4Iknm8/qpn3lcXHVFnGSlbIKCADTx/v+nZqpKN4reE2M1tQdVx9kiFKPG8dWgyDDbOR
+ Tavvdg30410/FO5WczF7Yt0nnejwT00raijCnF/qvXKlYzNGJmowVyRoPeeT28U7ZiL0nyqhHdp
+ UY2ZQBwIRpt1nR4Nq0/pWLzwDsqUaPVTAg6LydbFaKkcCPqUFK173L5SprlHl05wnG7r87JXHLC
+ tOQD5XoRBAbd4eqm2clb0SHoozvjK02YcWKG3WyKv1Z0qY8AsEIduWouMc43BLwWUgjPfH09iml
+ u3il4
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_104054_192290_9C483D45 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20260728_104054_190106_DCD8423E 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,44 +99,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Sashiko <sashiko-bot@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Re-initializing the completion before each transfer discards a stale
-completion that has already been signalled, but it does not protect
-against a reply interrupt that fires after reinit_completion(): the
-delayed complete() then satisfies the wait of the following transfer,
-which reads back the status and data of the aborted transaction.
+Add support for USB-C DP AltMode out-of-band hotplug handling. The
+handling itself is implemented in the platform specific driver as the
+registers to force HPD state are not part of the Designware DisplayPort
+IP itself. Instead the platform integration might provide the necessary
+functionality to mux the HPD signal.
 
-Avoid this by resetting the AUX controller when a transfer times out,
-so no delayed reply interrupt can leak into a subsequent transfer.
-
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 38 +++++++++++++++++++++++++++++++++
+ include/drm/bridge/dw_dp.h              |  3 +++
+ 2 files changed, 41 insertions(+)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 951f1e280e47..1281fe28b0f9 100644
+index 719f22578ed6..d4f75b7f85d0 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1493,6 +1493,11 @@ static ssize_t dw_dp_aux_transfer(struct drm_dp_aux *aux,
- 	status = wait_for_completion_timeout(&dp->complete, timeout);
- 	if (!status) {
- 		dev_err(dp->dev, "timeout waiting for AUX reply\n");
-+		regmap_update_bits(dp->regmap, DW_DP_SOFT_RESET_CTRL,
-+				   AUX_RESET, FIELD_PREP(AUX_RESET, 1));
-+		usleep_range(10, 20);
-+		regmap_update_bits(dp->regmap, DW_DP_SOFT_RESET_CTRL,
-+				   AUX_RESET, FIELD_PREP(AUX_RESET, 0));
- 		return -ETIMEDOUT;
+@@ -1857,6 +1857,19 @@ static struct drm_bridge_state *dw_dp_bridge_atomic_duplicate_state(struct drm_b
+ 	return &state->base;
+ }
+ 
++static void dw_dp_bridge_oob_notify(struct drm_bridge *bridge,
++				    struct drm_connector *connector,
++				    enum drm_connector_status status)
++{
++	bool hpd_high = status != connector_status_disconnected;
++	struct dw_dp *dp = bridge_to_dp(bridge);
++
++	if (dp->plat_data.hpd_sw_cfg)
++		dp->plat_data.hpd_sw_cfg(dp->plat_data.data, hpd_high);
++	else
++		dev_err_once(dp->dev, "Missing platform handler for OOB HPD handling\n");
++}
++
+ static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
+ 	.atomic_duplicate_state = dw_dp_bridge_atomic_duplicate_state,
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+@@ -1869,6 +1882,7 @@ static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
+ 	.atomic_disable = dw_dp_bridge_atomic_disable,
+ 	.detect = dw_dp_bridge_detect,
+ 	.edid_read = dw_dp_bridge_edid_read,
++	.oob_notify = dw_dp_bridge_oob_notify,
+ };
+ 
+ static int dw_dp_link_retrain(struct dw_dp *dp)
+@@ -1998,6 +2012,19 @@ static const struct regmap_config dw_dp_regmap_config = {
+ 	.rd_table = &dw_dp_readable_table,
+ };
+ 
++static bool dw_dp_is_routed_to_usb_c(struct drm_encoder *encoder)
++{
++	struct drm_bridge *last_bridge __free(drm_bridge_put) = NULL;
++	struct fwnode_handle *fwnode;
++
++	last_bridge = drm_bridge_chain_get_last_bridge(encoder);
++	if (!last_bridge)
++		return false;
++
++	fwnode = of_fwnode_handle(last_bridge->of_node);
++	return fwnode_device_is_compatible(fwnode, "usb-c-connector");
++}
++
+ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
+ {
+ 	struct device *dev = dp->dev;
+@@ -2032,6 +2059,13 @@ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
+ 		goto put_next_bridge;
  	}
  
++	if (dw_dp_is_routed_to_usb_c(encoder)) {
++		dev_dbg(dev, "USB-C mode\n");
++
++		if (dp->plat_data.hpd_sw_sel)
++			dp->plat_data.hpd_sw_sel(dp->plat_data.data, 1);
++	}
++
+ 	dw_dp_init_hw(dp);
+ 
+ 	ret = phy_init(dp->phy);
+@@ -2078,6 +2112,10 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
+ 
+ 	dp->dev = dev;
+ 	dp->pixel_mode = plat_data->pixel_mode;
++
++	dp->plat_data.hpd_sw_sel = plat_data->hpd_sw_sel;
++	dp->plat_data.hpd_sw_cfg = plat_data->hpd_sw_cfg;
++	dp->plat_data.data = plat_data->data;
+ 	dp->plat_data.max_link_rate = plat_data->max_link_rate;
+ 
+ 	bridge = &dp->bridge;
+diff --git a/include/drm/bridge/dw_dp.h b/include/drm/bridge/dw_dp.h
+index a82412a9e769..79b2cdf0df99 100644
+--- a/include/drm/bridge/dw_dp.h
++++ b/include/drm/bridge/dw_dp.h
+@@ -20,6 +20,9 @@ enum {
+ struct dw_dp_plat_data {
+ 	u32 max_link_rate;
+ 	u8 pixel_mode;
++	void *data;
++	void (*hpd_sw_sel)(void *data, bool hpd);
++	void (*hpd_sw_cfg)(void *data, bool hpd);
+ };
+ 
+ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder);
 
 -- 
 2.53.0
