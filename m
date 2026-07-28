@@ -4,49 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0BA0C53219
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 22:21:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE80DC54F51
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 22:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5zsrkw3enhRX3Egur4uDnc8G57ms8tOQ7qzP1UhbxgY=; b=w2K44ytfimJ4n9
-	VXFaCxPtyLIGPyUkubor89hSQk3ZboDrxkJlFUvt7/ruNpOAYwGO0fWAtyeDZZHV5Udiv2sva4KrF
-	DL7I5niNMrIdUFQrhypLWuaJxuLIYLlkSeLN1zk7Ws8bMINaQH4oA9bC3X5kDp/NKKPovSSTZmuQX
-	nNSUmVPdTengsXSXA1wXBysUCRQTXaqHxvnhKK27lgYWcgyaNIL1ICNYovjL/9yrN/zLtGrJCoaKc
-	ycCFcCuY9EcXZuBrarOjFyRlR/RCzeE+cFQ1VpD+8gnoEk2AKkzK/YeSs+IZIowtV45Tt9A0pCqFM
-	rraT9vlj6yyT5G1CquhQ==;
+	List-Owner; bh=7UlIqkfsBlheCSHoOKgvSDWn/YQ9FB4iCyH900/hvpw=; b=vU0kI+P5WArq62
+	TxNum5iFm63vIvFT0RgVtYSypd9xdS79ZhBdajMzyVWtgypUR3jN3Wf9B1/781rQKMUtB/Lu5AWUC
+	6yptlfsD61b7ODYbpIb3NOWfeobAKHi9zNFmLGDiRrat72g11DpgtK7khvYih1Exph7bF5SOy8U9a
+	arNu/SVMFhQ46mSOsfB9cTvBdYbFqb/mKp1sqmHIFhfbeVWs7HIL7Dlr3whaMB5HvLzJiQaBN3dJJ
+	suLuK1SAk8IRt4cRlHeG5YBpDAahPCG4cW/N4D1olEypo8h7VUmuoN2mj6DlJYmtX9KRUuwz5yuir
+	xzWMocN03n4MkMN31Djg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woqBO-00000006Q40-0Zq8;
-	Tue, 28 Jul 2026 22:21:54 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1woqkT-00000006Rqe-1SU6;
+	Tue, 28 Jul 2026 22:58:09 +0000
+Received: from mail-oo1-xc29.google.com ([2607:f8b0:4864:20::c29])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woqBN-00000006Q3s-0I8Y
+	id 1woqkR-00000006RpP-0ivI
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Jul 2026 22:21:53 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6FB43433F3;
-	Tue, 28 Jul 2026 22:21:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AE711F000E9;
-	Tue, 28 Jul 2026 22:21:52 +0000 (UTC)
-Received: by venus (Postfix, from userid 1000)
-	id 85777181F68; Wed, 29 Jul 2026 00:15:21 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: linux-rockchip@lists.infradead.org, 
- Chris Morgan <macroalpha82@gmail.com>
-Cc: devicetree@vger.kernel.org, xsf@rock-chips.com, sre@kernel.org, 
- heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, 
- Chris Morgan <macromorgan@hotmail.com>
-In-Reply-To: <20260728203832.166402-1-macroalpha82@gmail.com>
-References: <20260728203832.166402-1-macroalpha82@gmail.com>
-Subject: Re: (subset) [PATCH V10 0/4] Add Anbernic RG Vita-Pro
-Message-Id: <178527692151.79336.909222279024554544.b4-ty@b4>
-Date: Wed, 29 Jul 2026 00:15:21 +0200
+	Tue, 28 Jul 2026 22:58:08 +0000
+Received: by mail-oo1-xc29.google.com with SMTP id 006d021491bc7-6ab04bbcc8fso269632eaf.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Jul 2026 15:58:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785279486; x=1785884286; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=WxqHxPUa9L2NZw56x5rjpnMUEgtzHtU12VwEmNtWQoHZ4n2mARlCwVl1Y3cg68NK+X
+         45yGK/f/JHys6ZSkJO17MCpXc3LKcXn5TAM/97rHTEj37aYZcUAevAdJamGxDcKA82+N
+         epg7Fz6aZzGtT5gpbN0nCugD9gq3OnY0BIDsZywmKiq1xtFx5SStdwkEU11t8HGiIpBJ
+         e50Jnk1IdvsuSnX7u7cpHHn9MFHx2zJm7pkx9ZTLfWrUift+2vT1ZlJiZlDzuZIvQl/3
+         +bL09SqdpgiKabVALbCsCoZqMD2pEBixU5mb7bprev35beJ0kF5VGinQkVtkgUtvwJ79
+         jaog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785279486; x=1785884286;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=NNAh7KWrzRy8ROiFJ95oQzwBJCgchwpbcnlUO6AMrenaG/UTnWHGwCQsKRv142VNCg
+         aQo0fwpAQIl21oGbo8nWlkTrxdI/gfn+KE7OeUo8CwjTbhUM7y6hKtsdsYsyrywa0bC2
+         HN8b/243k4Q10Ow0taRWFnLJX9rGSX0OO9WsrBCPsvBBTNF3Txza+jSDoqTXpKX1wtyr
+         ZGZhv95s/t43w2FoAUupGKpqANPB2B0yUiLqSLEr39PRglz1mwH3ZqVjQ9MJQNR3JpiI
+         tKZt4X6ZE153c0jkqG9QtlO5l+LnHxWXfQ/SwKblhgD+feiToT8gWvWVU6crVWOoVKaw
+         Ykbw==
+X-Forwarded-Encrypted: i=1; AHgh+Rq8KoM1Y+5cSdxsGkEOSUfdtZp8rIb+S6F6Xxcp9CoQBVBSodTTskAdcVyt2GonEVcXX3jIUAGEG+yI4ynLVQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwQ51dJ51dWW7FwhYitr8NUfkLwm49XUahkL7im8QKo5X/tmcb0
+	Jer01E4DNLIQ0mB4k/4hOKWy0DsSPS1Xf6JMkilchwNqvBj5Pe5l3MwT
+X-Gm-Gg: AR+sD12/SnJ07/aMT1MOaMM0l0iJoRJ5X56o8g4PKh+jPeNdyDxn6aW15jzZm9+CucA
+	+zg9supG+LXbgsIzA4tum+8WkXPOoSwRJBbySPlWg3Ks4eqyA5ZCw/1IJ691ncCiaPsUy4ilFEb
+	DE4iSy3w1eiI7ADoJGGtMm9ZHW4Rg1nakQu3MqmDYUj0A4yTF+v71vBvJqFlSzN7utpYNNoMXqH
+	N/yFeJPsxmx/C9UTVizY6DUA3N25VqPmRka3PfZxqihm2BeJ0nMsqJ1JBdgNQuH51PtmDAV4YPa
+	LyjUha1CWWZJBH1ytPuQoZJDrByeCGjWJQVT/sgZM16p2emK/OOJYjZnbIZYFRyO4mKaFRfmq8W
+	7yxSDQmLVbIuUHzzo4+humxhF1zOmqqt6NoD1W2392XrA9xAaISDYiPu2LkPdfB5ZwQEyRkJQcM
+	+Mvor40RUr1mq5Zidpw962nA==
+X-Received: by 2002:a05:6820:818b:b0:6aa:f2f9:b3ee with SMTP id 006d021491bc7-6ac969c2ebcmr2480939eaf.6.1785279486135;
+        Tue, 28 Jul 2026 15:58:06 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0:9162:e42b:cb94:2d55])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4588646ade0sm990277fac.5.2026.07.28.15.58.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Jul 2026 15:58:05 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-iio@vger.kernel.org
+Cc: andy@kernel.org,
+	nuno.sa@analog.com,
+	dlechner@baylibre.com,
+	jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	andriy.shevchenko@intel.com,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH V21 1/9] dt-bindings: iio: imu: icm42600: Add mount-matrix
+Date: Tue, 28 Jul 2026 17:55:32 -0500
+Message-ID: <20260728225542.174825-2-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260728225542.174825-1-macroalpha82@gmail.com>
+References: <20260728225542.174825-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.15.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260728_155807_225299_001CC710 
+X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,88 +112,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Chris Morgan <macromorgan@hotmail.com>
 
-On Tue, 28 Jul 2026 15:38:28 -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Add support for the Anbernic RG Vita-Pro, based on the Rockchip RK3576 SoC.
-> 
-> Changes Since V1:
->  - Updated documentation filename to matche compatible string.
->  - Corrected order of allocating IRQ in charger driver and switched
->    to using devm managed function to allocate work queue.
-> Changes Since V2:
->  - Corrected issue with naming of panel binding document and added
->    fallback compatible string.
->  - Switched to devm helpers in panel driver. Note that
->    devm_drm_panel_add() is currently only in the drm-next branch.
->  - Optimized setting GPIOs for panel driver.
-> Changes Since V3:
->  - Fixed numerous issues identifed by Sashiko bot, mainly relating
->    to unclamped or improperly clamped values from within the
->    charger driver.
->  - Corrected hard-coded values in the panel driver unprepare routine
->    as well as correcting an improperly checked return condition.
-> Changes Since V4:
->  - Fixed errors identified by Sashiko bot on charger driver that could
->    result in an improper value being written to the registers.
->  - Corrected some error handling in the panel driver.
-> Changes Since V5:
->  - Corrected minor errors in documentation and added default values.
->  - Further corrected clamping behavior in charger driver.
-> Changes Since V6:
->  - Additional corrections as suggested by Sashiko bot to fix potential
->    edge cases during probe for sgm41542.
->  - Corrected an improperly shifted value being written to register for
->    sgm41542.
->  - Changed a MV value to UV in sgm41542 driver to simplify function.
-> Changes Since V7:
->  - Added PM functions to sgm41542 driver per request from Sashiko,
->    which stops the hardware watchdog during suspend.
->  - Switched from device_init_wakeup() to devm_device_init_wakeup().
->  - Confirmed a state change in IRQ handler for sgm41542 to ensure we
->    don't update input current limit except when the vbus goes from
->    not okay to okay.
->  - Removed panel patches, which have already been accepted upstream.
->    Please note that this *may* cause an error about missing bindings.
->    See commit 0fd6ead8270270d859a28d0196a4b47e7d6845b8 in linux-next.
-> Changes Since V8:
->  - Added linux/bitfield.h header to prevent compile errors on certain
->    platforms.
->  - Added regulator to Kconfig as a dependency.
->  - Added mutex to IRQ handling function.
->  - Added update to watchdog enable field in suspend routine to ensure
->    watchdog status "goes back to the way it was" after resume.
->  - Sashiko complains of an issue if userspace updates values after
->    devm_power_supply_register() is called but before the hardware
->    limits are set from the device tree. While this is possible the
->    threat of a problem should be very low given that the hardware
->    limits are set immediately afterward and would overwrite any
->    wrong values from userspace (should happen within a few
->    milliseconds). Unfortunately, given that the function to get these
->    limits requires the power supply be registered in order to read
->    the battery node, it's not something that can be easily fixed at
->    this time. Since it's an *extremely* unlikely edge case, I think
->    that's acceptable.
-> Changes Since V9:
->  - Made a few minor tweaks as suggested by sashiko.dev.
->  - Adopted new init function for __power_supply_register() so that I
->    can have the proper min and max values from the firmware prior to
->    exposing the charger to userspace. New init function is part of
->    this series here: https://lore.kernel.org/all/20260720011144.1280219-2-vincent.cloutier@icloud.com/
-> 
-> [...]
+Add mount-matrix attribute to schema. This attribute has been supported
+since the first revision of this driver, but was not documented.
 
-Applied, thanks!
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+---
+ .../devicetree/bindings/iio/imu/invensense,icm42600.yaml        | 2 ++
+ 1 file changed, 2 insertions(+)
 
-[1/4] dt-bindings: power: supply: sgm41542: document sgm41542
-      commit: 15c53209e67ad450fb791aff5e0bd3dcc4349e36
-[2/4] power: supply: sgm41542: Add SG Micro sgm41542 charger
-      commit: 5584ad5706e594c7648655171785aa4fffdd3db5
-
-Best regards,
+diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+index 119e28a833fd..9b2af104f186 100644
+--- a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
++++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+@@ -53,6 +53,8 @@ properties:
+   drive-open-drain:
+     type: boolean
+ 
++  mount-matrix: true
++
+   vdd-supply:
+     description: Regulator that provides power to the sensor
+ 
 -- 
-Sebastian Reichel <sebastian.reichel@collabora.com>
+2.43.0
 
 
 _______________________________________________
