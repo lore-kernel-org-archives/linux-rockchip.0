@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D96A6C54F5D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 17:41:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB6A8C53219
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 17:41:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OZOT5wnMkrONhL4gQ78kgrnX1Z0SCfQi1HUmLVX7b0Q=; b=K6E3SRt7m92S8I
-	WBHVN60DVDfsgWUIFDW+KFO7lX8do5v4/lUqUxC11sSixf0dFJmaaTpyukeC2VI90IjuIKa6beMJZ
-	87tR2wBnEappb7FZWpP7JnSiHcFybcxBA7wS7Ot4DuYA+LYtiE9tf9NzdhCiLloidVLpOpaoAIctA
-	fTdxDrTTvJcd7YOKYj5n6uqbgUw0LCLqW9x2tJeJTQZS4SWWdzxWHPIWbjyQSbfKB0/Z9i07r7gdX
-	wxqauuHPP8d2tMh87+c5P67TMoc4lYm6c1vliZx6vvyiQJKubxbMoWlp/2J+i8hVCN8fiISFP3ge2
-	fSo5tcOo6jNAyL0U/nWA==;
+	List-Owner; bh=hd9t9TirKLVhHy68+qtPKBoF8dOvA1q2XQFqK4qWT44=; b=vjAArQ+hfqmkfH
+	qfiu+wRQhGa3h4UO77SgVTCzjscMEDmdHCpfARmLaUXtDDTy0gCBqHsKnv8vTji00fewG0gJ9+BjS
+	ss5ry2Q9IXsM2IuYcTCTE/B5t0LR42k3VW3XHYGLEzYguRy0hB/0olhENJcbELUtNrTtfjvaHqthn
+	xqsvpX/NAU6++outwFPq5hPARqv3gLjFzrPY8owNIp8u6qBfgFP58ieT/amELJviObn7p2Kd2rn5F
+	ZD4aZS6QcqTTniLQsUVjcwB7I/vCNJFy4k8SKitOOrc3zbtQHSJcu6wrB69Ar+PwnGPuMF1hjiUdn
+	dzOJIiZeCHFP9gn5e7pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wolnw-00000005zVR-1bpE;
-	Tue, 28 Jul 2026 17:41:24 +0000
+	id 1wolnw-00000005zWr-4ByP;
+	Tue, 28 Jul 2026 17:41:25 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wolnV-00000005z7C-0i5Z;
-	Tue, 28 Jul 2026 17:40:57 +0000
+	id 1wolnW-00000005z84-0TLj;
+	Tue, 28 Jul 2026 17:40:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=YYF5DcZcBF5HiwdgPjpSTOYVR0b25zgxSFUDzq+0tnI=; b=ZsEhygrP0mzkeAbtHv5nFoVIy8
-	H+oMZbZGFUVU0Jzfrwj0bE7afPxkJE34Mg6DKHR+2hj44NZyZZLgauvm/L+gylKRKEm+UJYkkFgFp
-	1M5OeB9ZW8wnPMcL+x6Vtk2g2QNOfzPxt1Qvo99VVdFCVzfhz4v1lcnxfM16xU0rYzZ8riGGm+owR
-	43w0BIxIcQpJUfi2S9QWLpLGJZrayW1T+dcQ2gm5eXCgWww3pWD9EBvwTZ5823gcm3R3c9i2aL3v8
-	4ZjuJgWR9/Cbwfl/mv6alOy+T+V6yKTjgJAapiCHgdwMTgh7TcNvrcA07aUaCnn9TJBbNryWFkRBO
-	v7n6oxag==;
+	bh=me76gfa083Bz+Fxc2GR6IjUD/a+qv9VYLjgZFsNWVp0=; b=RZHHtGNEYYvDWyCDSahuolfjzq
+	no2Tajq2ERckjBShTWLADenmEP86WdE2cSiapS5i2sCSiRKXKIm4WeSBLhsGOp1JD73FzmrukVsrC
+	L1qCLCETbfBGg6awsQm5XqHKPR0oWrmfVaYHeY9ZdrGWcwUILo5d5jAgF31Ucz1REMNmGX64IfTJV
+	MR3GOhSvzIPGzsZdA1cTDyp4y30jccbVx4OIwM8gtd8vNvVQON9n+ZDLaMaTVpRoB5ngRPNyPF4Ny
+	0K3Af+0BY6DUNTWO0Em/DWAdn5ACMgWUdj6iKAWkMjid8o9H0/rpsMxJpivFwYNDrR7LmKgox2jTJ
+	0ccIh4qQ==;
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wolnS-00000005ARc-09CW;
-	Tue, 28 Jul 2026 17:40:56 +0000
+	id 1wolnS-00000005ARZ-096P;
+	Tue, 28 Jul 2026 17:40:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1785260446;
-	bh=iuepzF46vx4t40BFUI2mkkHoErvXD0YpFQPdNln7noo=;
+	bh=kliqiDd2GEcL2/dFAYKEsuIFXYanMIvS7kx0B6ns2YY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=kB0vlKJ7E2nSeV2e9/cDGGWi76DwUHw1MGJxgav/F0QGci4zz5JW3Ws+SOJcM8IJk
-	 Y1gUlYMayTBqvN3F70r/6TlxQCZ7ejg1POQPh0Ln5yJzz5cvYS8gIK2aS9E6qH/T9N
-	 +Gp/nYuRBYR/u4HK4lMVUaOQGPYtjPKrjUD8fHuZ8nz3b/4LxQ1gbK6I5bIfpu6v/e
-	 7EgLBDVW5kDc0Qct3/oPj+p2kjnIJfbpBqXCnrzopfcQG7/I/qmC9B2x3CjGeBkWGB
-	 ds7PJa0mx0ynQ3iGO6ux2penU+5083AWs0Fge+IBLvnZqKgXBEFVOHcU4FZr8NyX4F
-	 PlJ8rPf9uGaZQ==
+	b=oM6iAQVUpWb5P01s1ORxe0Y3N+6BtltvtOUm/XZxzGF8IICQ0jzB6h91Mt8jypXuN
+	 FDyY7gQfFg026LO18rEMLpkwgcVGq1yenFv03z1obQcZXByYXekOoaAQke9a6JVQ2Y
+	 J36d+vnZfI9uuqxaN+DwdcpkOWkHLHCEcwTXNsMPSSMg5Tv801xEWjsoSu73HH28Fl
+	 2ackBagDLYFIO2Cg5MET2/ROHAoiqYsmkbEwT4NK/Z4t6xfcnQ8FnokkDLvtdPBRFO
+	 oiM9urj/gALHl0To8rBaHSq91LnEfal1K2Gyd/bD0HaLL5oWs15da/rlDwUWsL3WYI
+	 AT5+CSeITdDjg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B05FC17E074F;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AF4F217E0749;
 	Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 156A848003A; Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
+	id 140E0480038; Tue, 28 Jul 2026 19:40:46 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 28 Jul 2026 19:40:44 +0200
-Subject: [PATCH v7 08/18] drm/bridge: synopsys: dw-dp: Add follow-up bridge
- support
+Date: Tue, 28 Jul 2026 19:40:43 +0200
+Subject: [PATCH v7 07/18] drm/bridge: synopsys: dw-dp: Support
+ MEDIA_BUS_FMT_FIXED
 MIME-Version: 1.0
-Message-Id: <20260728-synopsys-dw-dp-improvements-v7-8-b7640fa8cf48@collabora.com>
+Message-Id: <20260728-synopsys-dw-dp-improvements-v7-7-b7640fa8cf48@collabora.com>
 References: <20260728-synopsys-dw-dp-improvements-v7-0-b7640fa8cf48@collabora.com>
 In-Reply-To: <20260728-synopsys-dw-dp-improvements-v7-0-b7640fa8cf48@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -82,26 +82,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2801;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3804;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=iuepzF46vx4t40BFUI2mkkHoErvXD0YpFQPdNln7noo=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpo6Z0MWfpmmaLhNYjXgeNpJ1pmy+gXb8Oiz
- Xayi6XSa5MkOIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqaOmdAAoJENju1/PI
- O/qaYjwQAJaw2rroWtoNVAd1WszsVq/YikSnc0ks6pSu/QeJJx8oUEbdBvvISAEMN7IB47ZPw1i
- hbOBIIQ/tpNitEIprliJoRhaFUUmQ//XrWkle/73iS9aYQcOHG9YjwRZoOetwwlApBM4nR9muP+
- K/grYXptyk/pWn2IwKvmuLOraKiZlgYy8bFb8Rk6C40cBlkOXs81vewv0hXJctDy1g8n3qSbUNZ
- xzyccJpjkwDNw9FyQ0VLeED0cu/7cQlYWd3XCwTdwlPU8K0nm+bzDH+wTcBzCYAMMZ1DABnEFEw
- Pf5JvvioLRcTjFfdxElj4JONlO/10wOOjeeUCRLEYPslff88JUQ2JzBMnirN+zSb8Kyp7VPGLMi
- fNLL0dLZFLesQj7TaR/ljzxMjGvblVWzZfveTjbZmvP0bosM6WJT8I/sFj7eVff4NdwEAi5T5UC
- mOawo83+qN8+nu2974P5ib4eMouRmb4DQOHLuAmZi1d4yXBIPStCzfPqmSB0LHyrKJ/ypQsQjLm
- +hDKGUeaopyAvJJL0wztgH5W8/jPZ58SKhv+8hyb7pz+Cxmth7GWVpqLyomiKr8yws8qZl1wE62
- 6J1RGzm0AeX2kvr4MNISqW1Yz/hRYmdzvlpQZbVmMhcksCG+cN3ijoC+knZ4BT84jI9CMoZL7XF
- YpbYX6vOvfqWgssr4X/Eyzw==
+ bh=kliqiDd2GEcL2/dFAYKEsuIFXYanMIvS7kx0B6ns2YY=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpo6Z2cfBNyc70j7kjRN/MJo9/cVOkOzpuxO
+ n9YPA8SCU2H74kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqaOmdAAoJENju1/PI
+ O/qaZ/QP/1rhc6R/yq6dGUhLoe6PDYeBAXHh0ZXikIesLuFNmOWYANbnT6xScKQa3btUGq4hk5n
+ gLREEiL4XpdzsyTLGFPeouN5Gor4k8N3lR4YtSa3MjJkl09TBe4RJJMMlTD7G7cVO8gHxSpywdh
+ lypH5GdXwAAkUkni82ctSOLBM2pDflP57Umi5pEqD3yP0oWcI2irJnXfIQHSoZEfufspO89QiGN
+ sq0AOwrK3eqyQ6MgQIWP4/A+HoNbI8UQe23ahVPeX1JJxDamfZlcmW1fQbd1mv5ndPoplzirIG1
+ CSkRBz276mw3IiZuQRuHdzSW6LZHlzuV220wmug2bb28M+TkVQkXo51yFUsfy8Flak58vz/k+Ub
+ 109wG8siT8Q/9FAbINVmZ1GGLSyxKSveKo06cs9LAU4Ow/OiWs6QzUpPWqbVehHSHx/Sh12TkDK
+ aD/T2OstdzB795BpDJ+wg62M4ilyl+sPZ72JjT7lSfSZr337H5GPFwol8npvSwqr36MuhYd60yA
+ u9zsmfspMeg7AwRSksspTjFzKIVMxLXSoNbxtIeF5DnQLr2LVwltA/D7TJB8MWLBBSXG24E4wjm
+ 9qIzMFiGU9ibhTNMRSTQk0MDU/+js8Zo/+W5nDrSjXZii3CPoLH69I3kESTL3dn2UuNXL3bjIgz
+ 6ExfcxgY2Alfos81Clqw2ZA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_184054_289255_D7D8C408 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20260728_184054_346780_71C84410 
+X-CRM114-Status: GOOD (  16.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,96 +119,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support to use USB-C connectors with the DP altmode helper code on
-devicetree based platforms. To get this working there must be a DRM
-bridge chain from the DisplayPort controller to the USB-C connector.
-E.g. on Rockchip RK3576:
+Add support for MEDIA_BUS_FMT_FIXED, which is e.g. requested for USB-C
+DP chains as the last bridge in the chain (aux-hpd-bridge) does not
+implement atomic_get_output_bus_fmts(), which results in the generic
+drm_atomic_bridge_chain_select_bus_fmts() code using MEDIA_BUS_FMT_FIXED
+instead. For decent support of this, two areas are changed:
 
-root@rk3576 # cat /sys/kernel/debug/dri/0/encoder-0/bridges
-bridge[0]: dw_dp_bridge_funcs
-        refcount: 7
-        type: [10] DP
-        OF: /soc/dp@27e40000:rockchip,rk3576-dp
-        ops: [0x47] detect edid hpd
-bridge[1]: drm_aux_bridge_funcs
-        refcount: 4
-        type: [0] Unknown
-        OF: /soc/phy@2b010000:rockchip,rk3576-usbdp-phy
-        ops: [0x0]
-bridge[2]: drm_aux_hpd_bridge_funcs
-        refcount: 5
-        type: [10] DP
-        OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
-        ops: [0x4] hpd
+1. In atomic_check, resolving MEDIA_BUS_FMT_FIXED output format by
+   using the negotiated input format.
 
-It's fine to fatally error out when there is no follow-up bridge
-as the Rockchip Designware Displayport controller is the only
-user of the bridge helper and has the port marked as required
-in its binding.
+2. Implementing a custom .atomic_get_input_bus_fmts hook that, on
+   MEDIA_BUS_FMT_FIXED, advertises all bandwidth-validated formats
+   from dw_dp_bridge_atomic_get_output_bus_fmts(). This lets the
+   upstream encoder negotiate the best mutually supported format.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 34 +++++++++++++++++++++++++++++++--
+ 1 file changed, 32 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 2a1ed27a19fe..719f22578ed6 100644
+index ebb7280ad84c..2a1ed27a19fe 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -329,6 +329,8 @@ struct dw_dp {
- 	struct dw_dp_plat_data plat_data;
- 	u8 pixel_mode;
+@@ -1535,6 +1535,7 @@ static int dw_dp_bridge_atomic_check(struct drm_bridge *bridge,
+ 				     struct drm_connector_state *conn_state)
+ {
+ 	struct drm_display_mode *adjusted_mode = &crtc_state->adjusted_mode;
++	unsigned int out_bus_format = bridge_state->output_bus_cfg.format;
+ 	struct dw_dp *dp = bridge_to_dp(bridge);
+ 	struct dw_dp_bridge_state *state;
+ 	const struct dw_dp_output_format *fmt;
+@@ -1545,7 +1546,10 @@ static int dw_dp_bridge_atomic_check(struct drm_bridge *bridge,
+ 	state = to_dw_dp_bridge_state(bridge_state);
+ 	mode = &state->mode;
  
-+	struct drm_bridge *next_bridge;
+-	fmt = dw_dp_get_output_format(bridge_state->output_bus_cfg.format);
++	if (out_bus_format == MEDIA_BUS_FMT_FIXED)
++		out_bus_format = bridge_state->input_bus_cfg.format;
 +
- 	DECLARE_BITMAP(sdp_reg_bank, SDP_REG_BANK_SIZE);
- };
++	fmt = dw_dp_get_output_format(out_bus_format);
+ 	if (!fmt)
+ 		return -EINVAL;
  
-@@ -2016,18 +2018,35 @@ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
- 		goto unregister_aux;
- 	}
- 
-+	dp->next_bridge = of_drm_get_bridge_by_endpoint(dev->of_node, 1, 0);
-+	if (IS_ERR(dp->next_bridge)) {
-+		ret = PTR_ERR(dp->next_bridge);
-+		dev_err_probe(dev, ret, "failed to get follow-up bridge.\n");
-+		goto unregister_aux;
-+	}
-+
-+	ret = drm_bridge_attach(encoder, dp->next_bridge, bridge,
-+				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
-+	if (ret) {
-+		dev_err_probe(dev, ret, "Failed to attach next bridge\n");
-+		goto put_next_bridge;
-+	}
-+
- 	dw_dp_init_hw(dp);
- 
- 	ret = phy_init(dp->phy);
- 	if (ret) {
- 		dev_err_probe(dev, ret, "phy init failed\n");
--		goto unregister_aux;
-+		goto put_next_bridge;
- 	}
- 
- 	enable_irq(dp->irq);
- 
- 	return 0;
- 
-+put_next_bridge:
-+	drm_bridge_put(dp->next_bridge);
-+
- unregister_aux:
- 	drm_dp_aux_unregister(&dp->aux);
- 
-@@ -2040,6 +2059,7 @@ void dw_dp_unbind(struct dw_dp *dp)
- 	disable_irq(dp->irq);
- 	cancel_work_sync(&dp->hpd_work);
- 	phy_exit(dp->phy);
-+	drm_bridge_put(dp->next_bridge);
- 	drm_dp_aux_unregister(&dp->aux);
+@@ -1812,6 +1816,32 @@ static u32 *dw_dp_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
+ 	return output_fmts;
  }
- EXPORT_SYMBOL_GPL(dw_dp_unbind);
+ 
++static u32 *
++dw_dp_bridge_atomic_get_input_bus_fmts(struct drm_bridge *bridge,
++				       struct drm_bridge_state *bridge_state,
++				       struct drm_crtc_state *crtc_state,
++				       struct drm_connector_state *conn_state,
++				       u32 output_fmt,
++				       unsigned int *num_input_fmts)
++{
++	/*
++	 * MEDIA_BUS_FMT_FIXED means the downstream bridge does not constrain
++	 * the bus format. In that case, advertise all formats supported by the
++	 * DP link so the upstream encoder can negotiate the best match.
++	 */
++	if (output_fmt == MEDIA_BUS_FMT_FIXED)
++		return dw_dp_bridge_atomic_get_output_bus_fmts(bridge,
++							       bridge_state,
++							       crtc_state,
++							       conn_state,
++							       num_input_fmts);
++
++	return drm_atomic_helper_bridge_propagate_bus_fmt(bridge, bridge_state,
++							 crtc_state, conn_state,
++							 output_fmt,
++							 num_input_fmts);
++}
++
+ static struct drm_bridge_state *dw_dp_bridge_atomic_duplicate_state(struct drm_bridge *bridge)
+ {
+ 	struct dw_dp_bridge_state *state;
+@@ -1829,7 +1859,7 @@ static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
+ 	.atomic_duplicate_state = dw_dp_bridge_atomic_duplicate_state,
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+ 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
+-	.atomic_get_input_bus_fmts = drm_atomic_helper_bridge_propagate_bus_fmt,
++	.atomic_get_input_bus_fmts = dw_dp_bridge_atomic_get_input_bus_fmts,
+ 	.atomic_get_output_bus_fmts = dw_dp_bridge_atomic_get_output_bus_fmts,
+ 	.atomic_check = dw_dp_bridge_atomic_check,
+ 	.mode_valid = dw_dp_bridge_mode_valid,
 
 -- 
 2.53.0
