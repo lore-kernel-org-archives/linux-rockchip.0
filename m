@@ -4,98 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DD0DC54F4C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 05:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01665C54F4C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jul 2026 05:06:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UwY53YFXV2rkw8e/LeU4u8Qx9/fs3wEW5fVhPYNOxYk=; b=Ncm+6v1kenCT+L
-	yO5PSeC8ZfhQXrHQjvjo8/vxmBcKPjNwMaozDc/wXalICyQWbuIVH9B2U3viJALMHW44Hk3G+/G43
-	/lsDahfTuEZ9AuHpC7wGD2DByYIAY/tHdDbMr1e/irCkDDa4h/iao3inkOS1uyGVsFy3rnHZ738Ml
-	8q+2TT5F6EtXZo0GDP+736T3b2/x3tdY3OJbLiSRhZefsDawG1GobCQmfDDAV2Q6WVEb0sqbdCwg6
-	Q1QKLcU6QzGlu2IcsXJD6JzD6KIvFHc6ewnIjgtvNq6rhT+irqinzCZOwRpeIJs4UeAknt7pdUDSF
-	opq8cK07B/7S8++1NfIg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WdpndJ8R9++tIoKU3YGU+2nB86CI/jelLeTYS3NWE+A=; b=Sh/NNkT0wZg7k7rEC5M1o3+qWb
+	dCL1zH2XxQTzJ/KTH0W+O1SlSGDmUY3MAWYssm208QMXKqY7LKBH4Q93bDNdGpHpoEciTFEnQvgKd
+	vRs4nkUKNQQh+Z8rM6Up/X2tXcMDQ2SG4dN4jNTgp1G1I0F3Lr5v5XDyCVZ8fhR86zfbpNh1RaCnZ
+	HvdM413dTCAMysXulpvID46eIpqyTfkR6uwSWn1DVd5e43dI4ex4SeujKpx8JIWeWi9fmHE46CVnD
+	rYW4ffrlwJo45p5LndJeX7zvq4UG6nagvbEu5ujPflPOelpFXQxk0fMyd0jfImFPZZH9/33YNkVNQ
+	40YR4VPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woZwc-00000004Q53-1Ex1;
-	Tue, 28 Jul 2026 05:01:34 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1woa1n-00000004QHR-0c5j;
+	Tue, 28 Jul 2026 05:06:55 +0000
+Received: from mx0a-0002e601.pphosted.com ([148.163.150.75])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woZwa-00000004Q4G-0HMQ
-	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Jul 2026 05:01:33 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2cab973140bso46185285ad.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 27 Jul 2026 22:01:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785214891; x=1785819691; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=EXLw2qYAX9E/FJ2MopzGW6N4TvWUucHeTTJeGbPG6U4=;
-        b=QaAAnRKo5zhV2iW4zRBH/im97uACSfVHTJhsZCbUtwdCm9ZMCGowp+cUXxzetnlm9d
-         uF5cbTeTq+a4wg+MpSo2H64JfrcRB3LmYG4d5i2l+hPz/TemVryTBzI4nSisjuNipngJ
-         hmLsd805v4ZByMhW5zucm1QJCfQE7qNleT0EGrPgYRO/DtR0uIah1uW5m/RACCALX+5d
-         jZuU8ncnbFaIL+rVNmmFZz4Id8NLRSgm0Je8S7/9P26PG7gwOdBTmhtV+T6j8p9CQnNU
-         SecY9P0gdmctUXyXSLEVyqN9V2zWgglv959HQggQXdF/HQxCkJJtKcr/KE+IflxjRXjH
-         IkeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785214891; x=1785819691;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=EXLw2qYAX9E/FJ2MopzGW6N4TvWUucHeTTJeGbPG6U4=;
-        b=GcN43T8Bki0YFBszhpmWuThuWQ7IDJd46dgBM1snDIZjv6LfN2FR9w+cF0QKuUWFHU
-         12cAvjKqmV1Er3x3CV+Gp3Qr8+3m0OO7DRIfZAxvlN42efi0RrZhU2peyZ5humchQXgE
-         iyPSEam69cdFCdHqEI7gARjRfXYSNgcOwmFxRfBHk26n0U7iu3wludBY9i3b6gKOshEh
-         g5+drEol2N2jFHDxhcUz6iwJwbJDGaZYWWwlIE8XYz7fLq2qQJWccxrl+vYMzZA/T6sp
-         3dv1cRdVfGANrHNjGbljfWm+aiQ+5lR4VJeXu0NYAAclv72eXPgwc1mFvBfjkZfZjT4j
-         uFog==
-X-Forwarded-Encrypted: i=1; AHgh+RoYPk7d24tXH7Qgnn8mLF7D7iDFyE7cSMhvHgMRItxyHkPlhIAfZNIN2BlzBExde2F89JNXfgM+USuqT92QDg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzFkmR6S2+D0hFNj+5YQr/OH/R7EziVXuNGblY2zt45bafNQssn
-	WIQtxMjWXvvRhGTVBRRIEglJP5M7VfcX/fakKqww4SaC8yrCOU7HdcQV
-X-Gm-Gg: AR+sD10goQLeHbY+ig4HLG/63YjzvVHxg1putYmfJSpVK0L66y670rcupghq+JUV6jr
-	EtEh0TJjXdyOsP1xA2J7uMv0xAlodaYODhUMN+31gynTvVaKLuuHfGogfL9thc8YhNOjG+LZ2Sa
-	SkP2bW50+FA4ftC5hl/wBrCWPLkBAEpBcgaSBL0NJ3+tiNhqLIoFt2KG9Kn/EmK+1LXd/Ok8wWJ
-	7g5LzZPSw1ppI6FMKtknAwXkeauRv1/k3L1sjJw2EMPAKy9Ud0MyJYgop9a6rCzazzG324YPopW
-	WHhYjBiVL11KbQoTe7JcQ9XE8Nvdex1rktIWSgoTBn0T6TdjM17PGdhKSbwi+p/sRmR6/Ft8yGd
-	lvRyROzDcceulWIu5FyqucBeTi7vI5EnIF4CejFbzLV4zNoqIijjuaTDjX2+N1biiuYk/296GKV
-	w+lgo6vWY0lJpq7egxQqmaTGP91xvLcpMAVoM14H7owAqLVRlDGfeEnfk10wC7ynpI
-X-Received: by 2002:a17:902:fda5:b0:2ca:20b1:3e0a with SMTP id d9443c01a7336-2d015c8fbcemr11383945ad.3.1785214890986;
-        Mon, 27 Jul 2026 22:01:30 -0700 (PDT)
-Received: from debian-rockchip-rock5b-rk3588.. ([2405:9800:b670:b64b:1c6e:95da:41c0:e7b6])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cfde7bc57asm44882835ad.45.2026.07.27.22.01.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jul 2026 22:01:30 -0700 (PDT)
-From: Tharit Tangkijwanichakul <tharitt97@gmail.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel-mentees@lists.linux.dev,
-	skhan@linuxfoundation.org,
-	me@brighamcampbell.com,
-	jkoolstra@xs4all.nl,
-	Frank.li@oss.nxp.com,
-	Tharit Tangkijwanichakul <tharitt97@gmail.com>
-Subject: [PATCH v4] media: hantro: release runtime resources when device_run fails
-Date: Tue, 28 Jul 2026 04:59:21 +0000
-Message-ID: <20260728045921.4761-1-tharitt97@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260726024243.730-1-tharitt97@gmail.com>
-References: <20260726024243.730-1-tharitt97@gmail.com>
+	id 1woa1j-00000004QGk-1zpU;
+	Tue, 28 Jul 2026 05:06:53 +0000
+Received: from pps.filterd (m0384305.ppops.net [127.0.0.1])
+	by m0384305.ppops.net (8.18.1.11/8.18.1.11) with ESMTP id 66S48ZtY243823;
+	Tue, 28 Jul 2026 00:06:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	proofpoint-05-2026; bh=CkiAQeVAKkH7hUVTEUjybYX20/aLiCXNaVwrlNfpc
+	WE=; b=naffeZxS/CNWc72NBuwnRkuSFTkx2owZvYVPqtEzaaTAohGuWbGgiiXqw
+	qW7fIn5hYGlT73FK9YBjjII2WXgJk99zRLShaWmJHU/iD7NO1OCZhUnvuWONLrdG
+	48Ma1qjORTrqB5kVh7CoJq+fCM9avnnw9shalgX1lpeTbJFnmodShNUqHJWuVtfB
+	3AvEhRPUY6wUvdCnzX3sMeq9Ds/4WPVThJm3rtVO2WbJiRiaDouGt0bEm8hRDC1s
+	8zAUhru49NXVxWIOYYaHZAMvbbt4RQf+xAWbsPK3zuIJ58XZyl/KsXUXtkEQAQMd
+	/0SANyX05ZJAi9ilMFlDoqjVdW19g==
+Received: from sj2pr03cu001.outbound.protection.outlook.com (mail-westusazon11012062.outbound.protection.outlook.com [52.101.43.62])
+	by m0384305.ppops.net (PPS) with ESMTPS id 4fpn4rg9jy-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+	Tue, 28 Jul 2026 00:06:31 -0500 (CDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=U/2hqaHQoKWULtU26BiGYXd3fVWnHcc91iFpbbk1+Ia8oBSdX3vnLidRDRbaD/2LJffZeA10PtKjEtIjXpxD141bPUpQCSJqQJtuDhSA3oHoGRwe5mf4wN425KVm6OczG3XGFfyQR0L6IH8VuFR9d37FzD/mURNTW8JZEjZp3cxkkXBOkfPKeyinmdAeXA05avI50iZJPbpUllN04/96WbsyQq5ZNcI4sS6VNonxV188ptP2E0NENoqEiBKDY7oAqhmAe5ULYuGWBQ1IyNssYyxQuxVQJPngZ4H8WjaXlfLDnqQvdTbwc70ePucp6q5vPQ05Eh+LFE1zHFW3qlY8kg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CkiAQeVAKkH7hUVTEUjybYX20/aLiCXNaVwrlNfpcWE=;
+ b=GrXdtB59xeuAGFRWj9HP+goHNud34qrfD+sxC81IeVvzwEokornTvZ43qPmGlLaDX9TzPYQzP/w5Ehr3xBcqZ8Jf+cg3T6tLg7dpoux9suXt3+t9gvPSaFkDgtI0RnKV3c6VNZrJiu4QG6V0AHiI6pRkS8dm0Foqxzxx0QXKYSylj7ZCjnIDS1b4Gk1cTHhyYD0YILgb4G5S8EKz/WEMWhXbdNteOflBv5KZvqghJeFZlSlEvCZrwGBonq8zOXSIYryCvq0EjkfIG+KADRRWhNHFcs4lbWsirxvtGNRCYhfTyfh88ytZzuhcslSza6vH1jivn7p7xAYFEcm1DZBzWQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 198.47.21.195) smtp.rcpttodomain=lists.infradead.org smtp.mailfrom=ti.com;
+ dmarc=pass (p=quarantine sp=none pct=100) action=none header.from=ti.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CkiAQeVAKkH7hUVTEUjybYX20/aLiCXNaVwrlNfpcWE=;
+ b=d9Otb+dWg9pHLmOaFjKsSdG9/N2p5X26KzcopocVpc5MxCaNxKzwbVqSwBDR824OnkiwVLpAqq0GvBxULDmWolAQlqdGUN6VI9fCooxahKfhhN7TaV8wFe9UyTt82eUqlFY8kxPddi7IzUOlOKF8lpebUCSxeGO20PeHmH/UIec=
+Received: from SJ0PR13CA0156.namprd13.prod.outlook.com (2603:10b6:a03:2c7::11)
+ by LV8PR10MB7966.namprd10.prod.outlook.com (2603:10b6:408:202::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.12; Tue, 28 Jul
+ 2026 05:06:28 +0000
+Received: from CO1PEPF000066ED.namprd05.prod.outlook.com
+ (2603:10b6:a03:2c7:cafe::13) by SJ0PR13CA0156.outlook.office365.com
+ (2603:10b6:a03:2c7::11) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.270.12 via Frontend Transport; Tue,
+ 28 Jul 2026 05:06:28 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 198.47.21.195)
+ smtp.mailfrom=ti.com; dkim=none (message not signed) header.d=none;dmarc=pass
+ action=none header.from=ti.com;
+Received-SPF: Pass (protection.outlook.com: domain of ti.com designates
+ 198.47.21.195 as permitted sender) receiver=protection.outlook.com;
+ client-ip=198.47.21.195; helo=flwvzet201.ext.ti.com; pr=C
+Received: from flwvzet201.ext.ti.com (198.47.21.195) by
+ CO1PEPF000066ED.mail.protection.outlook.com (10.167.249.10) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.270.5 via Frontend Transport; Tue, 28 Jul 2026 05:06:26 +0000
+Received: from DFLE207.ent.ti.com (10.64.6.65) by flwvzet201.ext.ti.com
+ (10.248.192.32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.37; Tue, 28 Jul
+ 2026 00:05:46 -0500
+Received: from DFLE212.ent.ti.com (10.64.6.70) by DFLE207.ent.ti.com
+ (10.64.6.65) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.37; Tue, 28 Jul
+ 2026 00:05:46 -0500
+Received: from lelvem-mr06.itg.ti.com (10.180.75.8) by DFLE212.ent.ti.com
+ (10.64.6.70) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.37 via Frontend
+ Transport; Tue, 28 Jul 2026 00:05:46 -0500
+Received: from [10.24.68.110] (uda0492258.dhcp.ti.com [10.24.68.110])
+	by lelvem-mr06.itg.ti.com (8.18.1/8.18.1) with ESMTP id 66S55bJ81950176;
+	Tue, 28 Jul 2026 00:05:38 -0500
+Message-ID: <6d12ce30-28fa-426e-9688-4c2900e63d14@ti.com>
+Date: Tue, 28 Jul 2026 10:39:06 +0530
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] PCI: dwc: Handle return value from endpoint .init
+ callback
+To: Marek Vasut <marek.vasut+renesas@mailbox.org>
+References: <20260728012548.465139-1-marek.vasut+renesas@mailbox.org>
+ <20260728012548.465139-2-marek.vasut+renesas@mailbox.org>
+Content-Language: en-US
+From: Siddharth Vadapalli <s-vadapalli@ti.com>
+In-Reply-To: <20260728012548.465139-2-marek.vasut+renesas@mailbox.org>
+X-C2ProcessedOrg: 333ef613-75bf-4e12-a4b1-8e3623f5dcea
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PEPF000066ED:EE_|LV8PR10MB7966:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3516af2f-126a-4d67-2bfe-08deec65fa3c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|82310400026|23010399003|36860700016|376014|7416014|22082099003|18002099003|10067099003|4143699003|56012099006;
+X-Microsoft-Antispam-Message-Info: wR7blJv1l+z04szw72sO59iL4tY+fZYqnMXurI4a2JZfsQTs/JesYhbzDif+QIy4z2DOypH3LQ0Y0klHazK0jFrjXFZ3/8eBvVhPQSXjrx/Q/WaeLdha3X6HGrua/tNVAkkPScu5YzigvbaBa2y+5w3flwN+X2rUb03k6sDA7Vi5fybpo9qMwWfhqxmelPvjS/aw2CXf/NEPR+8eTGrO8+LM3BtK4da3vYZSRhYNPA35MzFkwrFn9kQwuvz7SeBNc14xsk1SHQD2bNKnG03OEsA+QviCNjgMO90yHeCTFM4HDdcY69eVSUAQHBlaMaMWI1p+cmUY1T46NdjokhU6OxLJLd5Pt85E16fCp3hCUvY7BfdOPIwkNYsSKkt0px4GT7r929uWtUoKA5+2BalI5e/BpHy7nht2UZtOwSNjmfDu7145/u3nc7mPwmnw7c2c3FTCe12bMQdmFsToqN3b8pgvhDEc+20/AMXpx5kHAhYqZXSRMqPDHiMhqhw9BmFw5PmH/qBPRB5pA354ZK1kdeRCmTkNukJZvuPuQjzYqam2iWvhb7BVncQc5vcAeeuJn5Pf4rBtaWS5f7Vaq77VrkrlVP8eCd8yajTlfLZz/vb4Nmbcd6t6HEEdUNtcLFQAdWKgW3PSjP3jsgtVPB/q/8QXI4nD05/i0ZszZkSSGDIxU4AOq3fik3pPHEC2+uZnkqPME56eO1ssatsfpeq73Q==
+X-Forefront-Antispam-Report: CIP:198.47.21.195;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:flwvzet201.ext.ti.com;PTR:ErrorRetry;CAT:NONE;SFS:(13230040)(1800799024)(82310400026)(23010399003)(36860700016)(376014)(7416014)(22082099003)(18002099003)(10067099003)(4143699003)(56012099006);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: O0pJsjVx+g7HTcZr3jK+xTHbjFX05DiEOLUTOhy72c3gBgoTTzKTytVQWJWV8if2ut+BcvuinfZwvgrLEu+aG8+iapCdndSjuw3Lz6a2LNE4PVdyq/GZlNzIFOF5B/JSmIz4n4UBRZzDnSWbPREHg7eJfrF2+HAyh7PZclCGunfl+1cpJu1O7Gz5MYU4wsIQV7AfKqvixLLNGTVrGd0ePAN9xlji2MtM8/BpvVlvMCQppW6TuNwtzZ34hrbX/VDXWhnrYDo7ztoSWfF5hDo0bQeJTDP0wLKuAX3reI1OdFwlPpr3tZ+xv1XEWThCpXMYLuvjz7SZSaJDulTjP3jcjZX4RekwEuveEmF6rOH+WjfWanDPPYt+TKdJR1d4UGOxQ3Oe1uy4Bf1q+qqH6e6O2/tO3B/uivQ+BDzDDLXsh/o623db3QlGYSPwYWzK1oeL
+X-Exchange-RoutingPolicyChecked: ZybAsea4fORB2R1r1EVkb2wB6qSpRWdqwWe+ab/pwjqOIkMu3v2TmckUenU/GkiXeQrnquTyo1517lst/x36MD/BG6EHDca8+iRkRut3QJhIlFP9sqlEjofNspnhekG+H9REDgWWwvToF8yA8VomO9ZEnep868kty42RJLwX1mSPTYSFP9wil58j/znfiZ/w4qGSBNrBMV7oJL/10X3kIBjFHIMFlFE+d4Z7a4bg8H6XG9qQucwZ7rURsB/zsZ5ifoWG9DnIcWbd5T9uVIS2jj8rq/DHN9tUG3mgbFozxA8kROT7lpbTjEf0LQFwusvzTtmq3D55FBsk0vhfJJ87sA==
+X-OriginatorOrg: ti.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jul 2026 05:06:26.6336
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3516af2f-126a-4d67-2bfe-08deec65fa3c
+X-MS-Exchange-CrossTenant-Id: e5b49634-450b-4709-8abb-1e2b19b982b7
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=e5b49634-450b-4709-8abb-1e2b19b982b7;Ip=[198.47.21.195];Helo=[flwvzet201.ext.ti.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000066ED.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR10MB7966
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI4MDA0NCBTYWx0ZWRfX3U1Bh6rje52z
+ u+H1WrFAQIHP43bfpWmzZQAnIasqN4OG5Z2ShrIV3KYxJS1s+a7YNoGeFvCqMuvIqMI1En2D0o4
+ ymkplv7oucER38mHFd3goWUWp2MZ1M+91CELTQhajRDxZjxHFrXpU7o9j0DjrgwW3W5RRpJ0Xz4
+ X90bfgwjxuqpZxr9ex+3xHWvcd818qosd+Iwu7VdlCIl8PWC913NfwkBTlXLREcxjLXOVLn6jJx
+ YfiJ/fjEDEj+yPivCKib7mcQCjS66XRcr2TFGLNDQd/YXCUIWtlRtd0ftm2cAZ3V3aQaUc/5vw2
+ h6/qyw6JDA9btee2rKu9U+cc10a7LbFjBp6lnwZf/diQO9B0uj8KgDD6qix6bZHwR+Mn4nYVCXi
+ e1Kg1Uc7ehWDmNOcu4DJ1v6oXYYcGtqIjYuJimVxxJ5V4kUMdjZ5AFAkKO6pAi3NZBxloPmVpzb
+ HW6mchf/vyI6BVwIwOw==
+X-Authority-Analysis: v=2.4 cv=GfsnWwXL c=1 sm=1 tr=0 ts=6a6838d7 cx=c_pps
+ a=qMfGPIaByV4ZnHoTJsbowg==:117 a=tJyPKKxUohctrY4NYmUjkA==:17
+ a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
+ a=V5UXEbMT0ywA:10 a=VkNPw1HP01LnGYTKEx00:22 a=Z8NIEmU8O1QQgoT56wFK:22
+ a=taLDd7a_hP9WKsMzeGRc:22 a=b3CbU_ItAAAA:8 a=sozttTNsAAAA:8
+ a=5ldtadBcu8Fm5Uq-hBcA:9 a=QEXdDO2ut3YA:10 a=Rh4KQ1K2KoEA:10
+ a=Rv2g8BkzVjQTVhhssdqe:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI4MDA0NCBTYWx0ZWRfX4ebUiNrBeXuM
+ AEr3GDC16wQXbHnsCK/ZNxdgzGPI5Z4UR4lieBTTXjpofQoxhvyon5V910l1+AEGHj68C9G1Qx5
+ +j50ubt0oTEp/WARJ61BKWR1nCz3aAQ=
+X-Proofpoint-GUID: xQGyWoxoUnnwaxkoaAuouPW4TP1fMDHC
+X-Proofpoint-ORIG-GUID: xQGyWoxoUnnwaxkoaAuouPW4TP1fMDHC
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-28_01,2026-07-27_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 clxscore=1011 impostorscore=0 adultscore=0 spamscore=0
+ suspectscore=0 priorityscore=1501 phishscore=0 bulkscore=0 lowpriorityscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607280044
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_220132_107113_EE8F31D0 
-X-CRM114-Status: GOOD (  20.64  )
+X-CRM114-CacheID: sfid-20260727_220651_656707_4A0E9EAD 
+X-CRM114-Status: UNSURE (   6.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,183 +171,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: imx@lists.linux.dev, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Vignesh Raghavendra <vigneshr@ti.com>, linux-pci@vger.kernel.org, Lorenzo Pieralisi <lpieralisi@kernel.org>, Frank Li <Frank.Li@nxp.com>, Niklas Cassel <cassel@kernel.org>, Koichiro Den <den@valinux.co.jp>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Rob Herring <robh@kernel.org>, Jesper Nilsson <jesper.nilsson@axis.com>, Magnus Damm <magnus.damm@gmail.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, s-vadapalli@ti.com, Shawn Lin <shawn.lin@rock-chips.com>, Srikanth Thokala <srikanth.thokala@intel.com>, Manivannan Sadhasivam <mani@kernel.org>, Qiang Yu <qiang.yu@oss.qualcomm.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-omap@vger.kernel.org, Qianfeng Rong <rongqianfeng@vivo.com>, Mingkai Hu <mingkai.hu@nxp.com>, Roy Zang <roy.zang@nxp.com>, Minghuan
+ Lian <minghuan.Lian@nxp.com>, Jingoo Han <jingoohan1@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Nicolas
+ Frattaroli <nicolas.frattaroli@collabora.com>, Yuho Choi <dbgh9129@gmail.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-device_run() acquires a runtime PM reference and enables the VPU clocks
-before invoking the codec-specific run callback.
+On 28/07/26 06:54, Marek Vasut wrote:
+> Add return value handling for struct dw_pcie_ep_ops .init callback.
+> 
+> Signed-off-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
 
-If clk_bulk_enable() fails, the runtime PM reference is left held. If
-the codec-specific run callback fails, both the enabled clocks and the
-runtime PM reference are left held.
+Reviewed-by: Siddharth Vadapalli <s-vadapalli@ti.com>
 
-Make the clocks part of the device's runtime PM state by enabling them
-from the runtime-resume callback and disabling them from the
-runtime-suspend callback.
-
-Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
----
-Changes in v4:
-- Keep CONFIG_PM guard to avoid possible build error, as suggested by Frank Li.
-
-Changes in v3:
-- Move clock enable and disable operations into the runtime PM
-  callbacks, as suggested by Frank Li.
-- Remove vpu from argument in hantro_job_finish() and 
-  hantro_job_finish_no_pm(). It is accessible by ctx.
-
-Changes in v2:
-- Fix the codec run failure path to disable the clocks before dropping
-  the runtime PM reference.
-- Use a local vpu variable in device_run().
-
-Tested on a ROCK 5B (RK3588) using the Hantro G1 decoder and Fluster:
-
-  H.264 (JVT-AVC_V1):          129/135, unchanged
-  MPEG-2 (MPEG2_VIDEO-MAIN):    23/43, unchanged
-  VP8 (VP8-TEST-VECTORS):       61/61, unchanged
- .../media/platform/verisilicon/hantro_drv.c   | 66 +++++++++++--------
- 1 file changed, 39 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 2e81877f640f..d6fcd4f7f9da 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -59,8 +59,7 @@ static const struct v4l2_event hantro_eos_event = {
- 	.type = V4L2_EVENT_EOS
- };
- 
--static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
--				    struct hantro_ctx *ctx,
-+static void hantro_job_finish_no_pm(struct hantro_ctx *ctx,
- 				    enum vb2_buffer_state result)
- {
- 	struct vb2_v4l2_buffer *src, *dst;
-@@ -86,15 +85,13 @@ static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
- 					 result);
- }
- 
--static void hantro_job_finish(struct hantro_dev *vpu,
--			      struct hantro_ctx *ctx,
-+static void hantro_job_finish(struct hantro_ctx *ctx,
- 			      enum vb2_buffer_state result)
- {
--	pm_runtime_put_autosuspend(vpu->dev);
--
--	clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
-+	struct hantro_dev *vpu = ctx->dev;
- 
--	hantro_job_finish_no_pm(vpu, ctx, result);
-+	pm_runtime_put_autosuspend(vpu->dev);
-+	hantro_job_finish_no_pm(ctx, result);
- }
- 
- void hantro_irq_done(struct hantro_dev *vpu,
-@@ -111,7 +108,7 @@ void hantro_irq_done(struct hantro_dev *vpu,
- 	if (cancel_delayed_work(&vpu->watchdog_work)) {
- 		if (result == VB2_BUF_STATE_DONE && ctx->codec_ops->done)
- 			ctx->codec_ops->done(ctx);
--		hantro_job_finish(vpu, ctx, result);
-+		hantro_job_finish(ctx, result);
- 	}
- }
- 
-@@ -127,7 +124,7 @@ void hantro_watchdog(struct work_struct *work)
- 		vpu_err("frame processing timed out!\n");
- 		if (ctx->codec_ops->reset)
- 			ctx->codec_ops->reset(ctx);
--		hantro_job_finish(vpu, ctx, VB2_BUF_STATE_ERROR);
-+		hantro_job_finish(ctx, VB2_BUF_STATE_ERROR);
- 	}
- }
- 
-@@ -170,29 +167,24 @@ void hantro_end_prepare_run(struct hantro_ctx *ctx)
- static void device_run(void *priv)
- {
- 	struct hantro_ctx *ctx = priv;
-+	struct hantro_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *src, *dst;
- 	int ret;
- 
- 	src = hantro_get_src_buf(ctx);
- 	dst = hantro_get_dst_buf(ctx);
- 
--	ret = pm_runtime_resume_and_get(ctx->dev->dev);
--	if (ret < 0)
--		goto err_cancel_job;
--
--	ret = clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
--	if (ret)
--		goto err_cancel_job;
-+	ret = pm_runtime_resume_and_get(vpu->dev);
-+	if (ret < 0) {
-+		hantro_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
-+		return;
-+	}
- 
- 	v4l2_m2m_buf_copy_metadata(src, dst);
- 
--	if (ctx->codec_ops->run(ctx))
--		goto err_cancel_job;
--
--	return;
--
--err_cancel_job:
--	hantro_job_finish_no_pm(ctx->dev, ctx, VB2_BUF_STATE_ERROR);
-+	ret = ctx->codec_ops->run(ctx);
-+	if (ret)
-+		hantro_job_finish(ctx, VB2_BUF_STATE_ERROR);
- }
- 
- static const struct v4l2_m2m_ops vpu_m2m_ops = {
-@@ -1296,10 +1288,30 @@ static void hantro_remove(struct platform_device *pdev)
- static int hantro_runtime_resume(struct device *dev)
- {
- 	struct hantro_dev *vpu = dev_get_drvdata(dev);
-+	int ret;
-+
-+	ret = clk_bulk_enable(vpu->variant->num_clocks, vpu->clocks);
-+	if (ret)
-+		return ret;
-+
-+	if (vpu->variant->runtime_resume) {
-+		ret = vpu->variant->runtime_resume(vpu);
-+		if (ret)
-+			goto err_disable_clocks;
-+	}
-+
-+	return 0;
- 
--	if (vpu->variant->runtime_resume)
--		return vpu->variant->runtime_resume(vpu);
-+err_disable_clocks:
-+	clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
-+	return ret;
-+}
- 
-+static int hantro_runtime_suspend(struct device *dev)
-+{
-+	struct hantro_dev *vpu = dev_get_drvdata(dev);
-+
-+	clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
- 	return 0;
- }
- #endif
-@@ -1307,7 +1319,7 @@ static int hantro_runtime_resume(struct device *dev)
- static const struct dev_pm_ops hantro_pm_ops = {
- 	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
- 				pm_runtime_force_resume)
--	SET_RUNTIME_PM_OPS(NULL, hantro_runtime_resume, NULL)
-+	SET_RUNTIME_PM_OPS(hantro_runtime_suspend, hantro_runtime_resume, NULL)
- };
- 
- static struct platform_driver hantro_driver = {
--- 
-2.47.3
-
+Regards,
+Siddharth.
 
 _______________________________________________
 Linux-rockchip mailing list
