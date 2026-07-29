@@ -4,83 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C60BC54F51
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jul 2026 07:20:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77C54C54F51
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jul 2026 08:59:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XWlE2sFE6TdJjsQCy59yIEiDtrcmAzNVZvnQVzzXGac=; b=PS6Nko+NsWM4S4
-	FWORZ1hrjBe1y2Bi19wSHmj9ngQWrSZ3hL5a050iGJh2G9R7noSuhQXOCz8hJZ/+P6B2+iu1oDYrq
-	PLjpn+cCfrPvb7sPXOzbBPaj1ptDdoAq3qHly/xxORTKAaraGa0ksTZYVIndyP4NKYTSgek0Z6CKM
-	QEiv/Skhzg2mXth9i/izo4MYA//HwNUxoQUuARZyFv25Mq6sPJ9RPu1WPvNOAAK7lnLdL/Y7lOoQ3
-	/9VKNXGyo4Mdc6CrOzFqBasTGE6Z51vnqiw60s7nHirnrJ8mLOnbOjElkSKEEsbbPfyHHQCxUirFG
-	D/YtgRVEmE5wonV1m5Wg==;
+	List-Owner; bh=48KMj1cOJrKYOaEDC7X4xRQ0TSqVD+LrAoSFhebiQsM=; b=0FFOL+kvmHflBx
+	gSKi6LLFrX8swNLUbPawci0z9uuGPtLDXjsOlvB4n3ePZq3qrmBLOhR16F0R141TG/1npaVtuGmld
+	M/rmYUMkDd7NNE7p9aENu09IKhh7fUFZ7d4nEjWAFP2UO769Nc1ZJNSzJW0krWQ2OIY9gza4eOscp
+	X9jJ1di8KLje7RxcCjuu47nd+8Tkd3j57gzLbTL2zfJLB+EAUSEQx+/4OnYC7OQKb8W76ALtpGJD3
+	XVk6gpnyJF+T47RPCb5NH46Z+DrBzfRGwbd2hbR/On1OkgWv2UvQ3EM3vPFAJSC978qqxEAt0Pcj+
+	UD7KKkimXa+CDewFObBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woyat-000000076kx-1Dfh;
-	Wed, 29 Jul 2026 07:20:47 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1wp08B-00000007I92-2Dhy;
+	Wed, 29 Jul 2026 08:59:15 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woyaq-000000076kT-1MQ1
+	id 1wp088-00000007I7u-35sP
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Jul 2026 07:20:45 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4957799b92fso657995e9.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jul 2026 00:20:43 -0700 (PDT)
+	Wed, 29 Jul 2026 08:59:13 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-c96b08cdd1cso429965a12.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jul 2026 01:59:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785309642; x=1785914442; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785315551; x=1785920351; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=u5zRMlGpgUUUYv11AcNG3Mf3jLJNT/tVcH1PiXTLpUQ=;
-        b=LOkFHmA5e4au6vCzGicb/0rEYumbksoRaa+zgpQ30ysNpA6PMUN8XW5bVUCLA16y+G
-         UW+O3HosyktmD2lSFo3kHrdOkasaT2gcKCsH+sPDq2w115OgvEswnrxh757ugYRBN84q
-         yRN9YefSVyH85OtsMRni1RDw2XdmLNbeMRHetHcrvzBTwkCtehOJAtGEhCi66ljeorZB
-         6glQD7u6L2XVAL42odVnBiCJubSCh+GKr/PHGYTsaktHYmCC+pivjlvrR+ERTx+LQoXd
-         oVqa+TDUi9Cnuaoh2vdv/TL1DsxH/PkV2VksVuVU1EysysCaQWhoRgrv1/W6up4QaWJy
-         sXPQ==
+        bh=qJQtueKY7DcQgS7lfvQ6xWjiCToIdui2BYDzzrpTxG8=;
+        b=M+PqA0Syof8n/grD2nQJIwwoGg6vlvV9iwCg+KDETBVgumqY7o7qYoTUNhq/M2QtnG
+         aAau2GhfiWFBZjjWsDnawGwlG1GvBQk+PqGodjfftyRsv3wd9d94I5U3bRTdR4pjMBCb
+         96fzvoe0IjEQV+lr9HyKXeacTE9OZon+wMGQjZkOEx08XKhBRoKyQvKX15ytxRKsV6FC
+         TYBihFPLlSRj2AHm+vNNKa+cfFMbbZjwl4YvF5Z9kzxLRzFnKIBSBGnWQAhd4QMzfmRI
+         1EIKo8geGEDzi+im07+xl70l5JQJyWqUBDATiaDDvkkAAPFepLf6K/kT9Zo7YIk49DBn
+         fnuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785309642; x=1785914442;
+        d=1e100.net; s=20251104; t=1785315551; x=1785920351;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=u5zRMlGpgUUUYv11AcNG3Mf3jLJNT/tVcH1PiXTLpUQ=;
-        b=J0ULdSFvkslgt+Vca+dgW2w0SG941yxS+mRZep3KaGMXhtnSUbGFo66vkmtasHfyeh
-         BeUY7saphb0supz3ORVNu7pMgD1d39bya+FbJWGB6AWGIRHxs6BZPNZIPoebu2TkKRPW
-         YYpFFmxsNd4VKJQBUbNOlo42DsZTJGIp69bFq2zcnSg9rifdkRVNaZtpe75fxxZECvt7
-         F2/55G2VK+CQWYzofiQqIiYlsGK9qRHxjx7rrvgIczqMT7E13yDksJd69NDV4R0Qq6F5
-         HQ/2qLShwkc+94XOodUienx6rOzhjFyKvOgDv6YgTIhJEOO7HNS/fHYL5vfKK/1mpgWH
-         Zvmg==
-X-Gm-Message-State: AOJu0YywXwyZ8A8SW65H+gxv9pSWpnkSPdzW5776e+JpavQH5D/N237O
-	6z7Hoh5VqD4gx7z56ASVuQo/Au2BwGsVHpLeNJhWfnAaVbEkkRiMXUD1
-X-Gm-Gg: AR+sD128mqQW/hhrIUzOFGmUqxKcF25Tbp+W7of8P4tkLwLspcJlLnSvyzGVc789VIP
-	DvlUQk/EGjzYSnTBmyGV8xRfwl6xjb3sZGQouiKWpzHcqsKYDXk6vvv5wZsXN4otq7/BTjS2Ogg
-	zLxO2B7YuIXkjebzZFRGaFg/v59dDSq4s2BsRXqax6G9RnrwTddkPKAj+UdCYmmn34Yeq++O6ZA
-	lisf76pFcXTA1iJXRHiqIVetBfft3sF/zFc6hCkuGgE+XLaumA/y2K28VaOfqNAUzdhFeTIaUn8
-	AzWXk2Rkrm5M5HOYsjeAbzzW+4fptbpV4AbFXTV4zrFKdun+7XwQXqy2zroQQrkn7Ifzq7n1dfX
-	HWcqr4g0QB6gCBQinq6leT/q1vLVemhjkzWXn0R6GMRtyYmVV+7gnLHg5bUW1V80ohJ1BQ4sqER
-	h/BXa2VZBv+cY0sp4EY6FEBPvhKrYM7sHYkOLAvnQEx9avM9uxnATWDDfpZlb/Qregz2JEvk6mJ
-	x5S6Qu/UVAQWYgdUhALbk8MaBia2jhYORJy/k0LJYWpe9WiccLOQNcRsk21cnXFt6ktWQ==
-X-Received: by 2002:a05:600c:c48f:b0:495:71ff:598d with SMTP id 5b1f17b1804b1-496c6415627mr39812045e9.1.1785309641823;
-        Wed, 29 Jul 2026 00:20:41 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B886F0027B74C8463513DA4.dsl.pool.telekom.hu. [2001:4c4e:1b88:6f00:27b7:4c84:6351:3da4])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49764d70014sm54713085e9.3.2026.07.29.00.20.40
+        bh=qJQtueKY7DcQgS7lfvQ6xWjiCToIdui2BYDzzrpTxG8=;
+        b=AJPhOpJVxjswHSMGLo5wTOROhTbbgecereR9QHc3qiMSWia/4yN2t36AY6BwgDkyif
+         u3ZWwnLkweXGJh7sGGWg6CeMxGG5hG+NfUkztKnZwYIwiL8E68QWH5iIMVH5xhRawGjJ
+         6MTkwT1Rysy/RZLvb+LLeIRY5/Ni787ZSS3H98a2tfjTqcUx1f2t81gAHr2KNT9rlqOd
+         UFZ9TqW4/ObzSOWjF10Ft7FgINFMtMv2NF4NHji6qkkbf1s6phzRfhYa9cmls6rOpqZv
+         kmrdfzF4f+GtGUbnpL6o/0X1c7SKUVl09yOoYnzC0z3Tm/I9r1lxvCYl6/0rbFv5/DF4
+         xShA==
+X-Forwarded-Encrypted: i=1; AHgh+Rqb20IHdUEhyxZJQFEgwncny8RUzqlrzN8O9lUxY0QQarBzNWc/igPNYPMxTXdorsDk/4NLFU2jSlei5sTIOQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwX5pFvqLKs/cG9u6cFszDSgzVuhcKDqDM18th9uNzVjuGxZIXd
+	65xnXGQLabWVUA7i3y1Cw49ZXCU3jdZgvog+4vMI+/ZPAQk1JwHXWriw
+X-Gm-Gg: AR+sD11xRH/t2bs1nZy3Zo8RIB8FBXfSvZmXjne4b2zIpA0wwSmk5hpXcUScH/EHArz
+	mtEKYm0BIIDcgM6E3u+Em1fb7CkvUl1/LrNOOY9hNJktX2H3DP45DQ8n3lT6hyB4TaB/bc0mBIY
+	2zJHP0fBpET5C15lG6DyzKqGG/1I8nsMLn6zNp52cmJ5nTOXno9MC6ENf69vyByBipngXOjMTqc
+	3qWMR07SrZKkyvGuu12Rbv5VaX+VYhDgchTPXadkmkHjMRAhuOYtuDbZ84+3/awdpqZhg6giqcZ
+	stiwFerT7U2miWVtpXgJ/dDouXZhIwDcYPNWQnJabKDBOfnag2SqGtRUBC7UypPNk3jYeBrJCko
+	GQscn/S+k7v82QFR2yBNMeFllyB4E2XjUbwx9Y+bzKEfWPCeShRXszqM93bvOjb9tyuommIwDEJ
+	WmhAe/Lq1wA582c6/31VgZxDYPW83lJkpySdCiAs2q1kYHHfVr+YiLh49Qd6dvH0kH2qNZg2u/W
+	PItjQ==
+X-Received: by 2002:a05:6a21:7113:b0:3c0:f772:8128 with SMTP id adf61e73a8af0-3c8ba5eba0amr7062835637.54.1785315551272;
+        Wed, 29 Jul 2026 01:59:11 -0700 (PDT)
+Received: from i386.168.1.127 ([2402:a00:163:2ce9:9c6f:e28:3da8:7980])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-31504cc9dffsm8179352eec.14.2026.07.29.01.59.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Jul 2026 00:20:41 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Igor Paunovic <royalnet026@gmail.com>
-Subject: accel/rocket: clks[].id fix - standalone patch, or would you prefer to split it out?
-Date: Wed, 29 Jul 2026 09:20:19 +0200
-Message-ID: <20260729072019.105907-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
+        Wed, 29 Jul 2026 01:59:10 -0700 (PDT)
+From: Hrushiraj Gandhi <hrushirajg23@gmail.com>
+To: Srinivas Kandagatla <srini@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Hrushiraj Gandhi <hrushirajg23@gmail.com>
+Subject: [PATCH v2 0/2] nvmem: rockchip-efuse: add write support with VQPS gating
+Date: Wed, 29 Jul 2026 14:28:54 +0530
+Message-ID: <20260729085856.226001-1-hrushirajg23@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_002044_381950_22A18869 
-X-CRM114-Status: GOOD (  18.68  )
+X-CRM114-CacheID: sfid-20260729_015912_768108_19C80325 
+X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,60 +107,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jiaxing,
+Add RK3399 eFuse write (OTP programming) support, gated on the presence
+of an optional VQPS programming supply in the device tree.
 
-I have been working with the rocket NPU driver on RK3588 (Orange Pi 5
-Plus) and ran into the missing core->clks[].id initialisation in
-rocket_core_init().
+Changes in v2:
+  - Replaced the rockchip,efuse-write-enable boolean property (v1) with
+    a proper optional vqps-supply regulator, as suggested by Heiko
+    Stuebner. The supply presence acts as the hardware-level gate for
+    write support; the driver owns regulator sequencing entirely inside
+    the write callback (enable before A_PGM strobe loop, disable after).
+  - Removed stale debug dev_info() left from development.
+  - Fixed checkpatch: removed blank line after while open-brace in
+    rockchip_rk3399_efuse_read().
 
-I noticed it while reading the live clock tree rather than the source:
-/sys/kernel/debug/clk/clk_summary shows four "fdab0000.npu" consumer
-handles on aclk_npu0 - and likewise on aclk_npu1/aclk_npu2 for the other
-two cores - while hclk_npu0, pclk_npu_root and scmi_clk_npu have no
-"fdab0000.npu" consumer at all. The driver believes it owns four clocks
-but really holds four handles to the AXI clock.
+Link: https://lore.kernel.org/all/20260715110107.409204-1-hrushirajg23@gmail.com/
 
-Before writing anything up I went through the lists, and I see you
-already fix exactly this as part of
+Hrushiraj Gandhi (2):
+  dt-bindings: nvmem: rockchip-efuse: add optional vqps supply
+  nvmem: rockchip-efuse: add write support with optional VQPS supply
+    gating
 
-  [RFC PATCH v2 6/8] accel/rocket: add RK3576 NPU (RKNN) support
-  Message-Id: <20260718031146.3368811-7-gahing@gahingwoo.com>
+ .../bindings/nvmem/rockchip-efuse.yaml        |   5 +
+ drivers/nvmem/rockchip-efuse.c                | 178 +++++++++++++++---
+ 2 files changed, 158 insertions(+), 25 deletions(-)
 
-so I would rather ask you first than send something that looks like a
-duplicate.
+-- 
+2.47.3
 
-The reason I care: I would like to look into OPP/devfreq support for
-rocket later on - Jonas Karlman mentioned it as future work in the
-RK3568 thread - and today the driver holds no reference at all to the
-clock that actually feeds the NPU ("npu", SCMI_CLK_NPU on RK3588). That
-is in the way of any frequency scaling work. The NPU still runs anyway -
-clk_summary shows scmi_clk_npu with the hardware enable bit set but no
-Linux consumer, i.e. firmware keeps it running - so the bug is latent
-rather than fatal.
-
-Timing-wise this also seems like a natural moment to ask: Will has
-already picked up the two iommu patches from your v2, and after
-Alexey's review you mentioned a v3 respin of the accel patch. Since the
-RK3576 inference issue is still being debugged, the clks[].id fix would
-otherwise sit inside an RFC for a while, even though it is independent
-of that work and the bug it fixes is in mainline today.
-
-Would you prefer to:
-
- (a) split the clks[].id fix out of your series and send it standalone
-     with a Fixes: tag? That way it can land independently of the RK3576
-     enablement work and be backported. I would be glad to give it a
-     Tested-by on RK3588 / Orange Pi 5 Plus.
-
- (b) or, if you would rather keep your series as it is, I can send the
-     standalone fix with you on Cc and a note under the --- pointing at
-     your patch.
-
-Either works for me. I mostly want to avoid us duplicating effort, and
-you posted it first.
-
-Thanks,
-Igor Paunovic
 
 _______________________________________________
 Linux-rockchip mailing list
