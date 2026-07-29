@@ -4,73 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F6CC54F52
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jul 2026 01:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 653BCC54F51
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jul 2026 04:53:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X78hLE0nGCHgmU3H5Sl5oBaM8R0vPgqy9lQi8p1x0zg=; b=tdK86boug8Y9nv
-	u3wqFdplRjREl1+SAHUCFdbWvrvv2V78Uo5VAjPUaVk4kJFIFKmU5GzcYrc/wbbMM/GCxIkwjpGP0
-	vhs3hCL0KQNUysygTkyCBwIOyTwSOC+7bctxAjPx11s0VpO72uSyxIU+I+DG8Ornh72mmpwlketIz
-	Kx4fkp3cwaVUZpS+CxMXOOZAISG18ngIkfSYML+5K7ezB8OaHcRN98dkMCxM+AP1wERGbQqcQbW7H
-	8cuBzUNrTbL9z/2cOcp0Imw9W8P+7keXyDGvu3ao/g/Fgx7t3hEmMy1VMxc4paBXXkH0yq61JZjWw
-	ogG/U3WSZBdO8gM+G48w==;
+	List-Owner; bh=mqU4hVrQ0gFbdVbYI4IxzB1gDtAf8sUs0ljxx8TB21E=; b=JSmizM395DaJSb
+	66UK+3dEkc9zWKQFQJLE9+2/p5w0t4GDnzXTmK64BJN/OyvUkZsHG1AhS6YIyYFt53mOrHN2yjNyv
+	r8FG/hFZLtrHKi7UPMff2c1jK6VU7ou1eeMXAnk+EYFlo0ls/XeUKvdsu/i7ECoI5+E2vpRp+LGO9
+	CQruqItWdsyQGP29xZ5O7W8kuyLt6GYtuaEGQktCjP0H786P2Dz6UtMSk0eCq/H6fx499p7XQp0re
+	oTADd5a3I0VPClte/NpnXwcA4hv7IgKJhchlqXmg8YX6Wlwc8LK2cmJHsHPu9g9UbVdeb2V+9jgAx
+	ay+Af66UnTx7PbCgFzig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wotCK-00000006c0W-1IGy;
-	Wed, 29 Jul 2026 01:35:05 +0000
-Received: from mail-m6080.netease.com ([210.79.60.80])
+	id 1wowHj-00000006sNa-34Uz;
+	Wed, 29 Jul 2026 04:52:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wotCE-00000006bw4-0Pj4;
-	Wed, 29 Jul 2026 01:35:00 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 47f0092e5;
-	Wed, 29 Jul 2026 09:34:46 +0800 (GMT+08:00)
-Message-ID: <e4b1051c-fc91-44a7-ab29-1da888fcc0c2@rock-chips.com>
-Date: Wed, 29 Jul 2026 09:34:44 +0800
+	id 1wowHg-00000006sLP-0iKJ;
+	Wed, 29 Jul 2026 04:52:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3AB204513F;
+	Wed, 29 Jul 2026 04:52:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0F23EC4AF11;
+	Wed, 29 Jul 2026 04:52:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1785300767;
+	bh=H0w/ynldSapDtvHe/YtxJier5MnuzCnZ0HKRinNI3Yw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=A2dtt5qxz/g5+40I6kPAWkUMdGu/s+XlREcdB+KIuySrczseH2qtB9v4WQZ/0o0HC
+	 BVyUl+DiOZ+Vwj7m68DSLf2PlHoD9jvp9w9TSxDu1BP1oOSawGOQcXASH2RsYE2b99
+	 beo8dh/ItpzYzs8Kbt/SR70Hh53SPyNgXy5xKezpDZ21pRk4lBRQjyaerBgaJmRddc
+	 p69TrrukJoqFZ2jQllXfcxtnZaEWuRTrv+JFKtnGWEBFjO6qqTIV2A30tLO8dddAdg
+	 D7uc5KS+GC7Ygkv45fLgFNZ38QRVqK7/2tybeYlmVex91ovwKxCipFuh6fEUp4VkG/
+	 4fH0ecq5l33cw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA09FC54F55;
+	Wed, 29 Jul 2026 04:52:46 +0000 (UTC)
+From: Manivannan Sadhasivam via B4 Relay <devnull+manivannan.sadhasivam.oss.qualcomm.com@kernel.org>
+Date: Wed, 29 Jul 2026 10:22:30 +0530
+Subject: [PATCH v9 4/5] PCI: qcom: Add support for resetting the Root Port
+ due to link down event
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/5] This series is split from the v15 "Add Type-C DP
- support for RK3399 EVB
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Vinod Koul <vkoul@kernel.org>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-phy@lists.infradead.org
-References: <20260727064408.101-1-kernel@airkyi.com> <amgMXujurBrB5B0L@venus>
- <e22072d9-7fee-4f83-9ae9-5428e45c7507@rock-chips.com>
- <amh1sK_4KnD5zTlZ@venus>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <amh1sK_4KnD5zTlZ@venus>
-X-HM-Tid: 0a9fab82895203a7kunm36abcb353ae33c
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDHR0aVh1NT0xNSU0dS0hKSVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
-	5LVUpLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=euk3LVDokfDwuFpxIXJN4jzuLkRvCtZqL8jRDZoAMRvU+JjIgJ35lxzKyNXNiyGRtGCK9NBFxvWfNY3AwjI7dfY2R/DKuVwUmhyZKQT6VIaXik4yqyNkfEz9392PYWmVGRCtPRe5Cchs2S75m7iquG3+ruNflhaXQLxwkVZbv1o=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=R4MBbntBTw+WzVk7B5pQ1YM1qPjQxWB0im3ZJJbI4sU=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_183458_669118_E9135069 
-X-CRM114-Status: GOOD (  17.86  )
+Message-Id: <20260729-pci-port-reset-v9-4-53570b92064d@oss.qualcomm.com>
+References: <20260729-pci-port-reset-v9-0-53570b92064d@oss.qualcomm.com>
+In-Reply-To: <20260729-pci-port-reset-v9-0-53570b92064d@oss.qualcomm.com>
+To: Bjorn Helgaas <bhelgaas@google.com>, 
+ Mahesh J Salgaonkar <mahesh@linux.ibm.com>, 
+ Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Jingoo Han <jingoohan1@gmail.com>, Koichiro Den <den@valinux.co.jp>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>
+Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ Niklas Cassel <cassel@kernel.org>, 
+ Wilfred Mallawa <wilfred.mallawa@wdc.com>, 
+ Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>, 
+ mani@kernel.org, Lukas Wunner <lukas@wunner.de>, 
+ Richard Zhu <hongxing.zhu@nxp.com>, Brian Norris <briannorris@chromium.org>, 
+ Wilson Ding <dingwei@marvell.com>, Frank Li <Frank.Li@nxp.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
+ Manivannan Sadhasivam <mani@kernel.org>
+X-Mailer: b4 0.15.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8445;
+ i=manivannan.sadhasivam@oss.qualcomm.com; h=from:subject:message-id;
+ bh=0VNqEU4prwWnIT6eoPJi5WzXvtmZOtGMD7zvcItLym4=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqaYccBbTP+mr07PXSctdEg6EaFAKQpZAz+fBPO
+ no3/nbpda2JATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCammHHAAKCRBVnxHm/pHO
+ 9bXZB/9pmJZd9UfkT9XZE+WNoa9JUWI2yd/Dr/7/9xkEBptH5uQfKB1fGPoGh/yhOZZvmJaif9Y
+ ymXS52U03vSB25120d2Mr4MxZOBu7VuIVAFYzxwVGGpGyK0iDn8r0taS1Rei9Nv605UD7cQg60m
+ Q4drhGnKhMmN0HiXcfhc551LWnDGoEfXbZxSoJFWUO/Qog0FNsSBHfpz/wg0eSlLzzu6UD8fxd9
+ 1wOOs39Kz+wPM6IymkAXQEXiiRecrgwY5UHDA68Nj3yacMeV/Y9h/B+STMC3/snSaRXh3N0msZL
+ bQm126pGN9lH+clzFQHSa6X6S5itxv7yrJ2T+yqSNACPCOfH
+X-Developer-Key: i=manivannan.sadhasivam@oss.qualcomm.com; a=openpgp;
+ fpr=C668AEC3C3188E4C611465E7488550E901166008
+X-Endpoint-Received: by B4 Relay for
+ manivannan.sadhasivam@oss.qualcomm.com/default with auth_id=461
+X-Original-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,75 +99,275 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: manivannan.sadhasivam@oss.qualcomm.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+From: Manivannan Sadhasivam <mani@kernel.org>
 
-On 7/28/2026 6:44 PM, Sebastian Reichel wrote:
-> Hello Chaoyi,
-> 
-> On Tue, Jul 28, 2026 at 10:33:48AM +0800, Chaoyi Chen wrote:
->>>> Changes in v4:
->>>> - Link to v3: https://lore.kernel.org/all/20260717072323.96-1-kernel@airkyi.com/
->>>> - Scan the entire typec_bus and attempt to register the hpd bridge,
->>>>   so as not to miss devices that were already added during initialization.
->>>
->>> While that may help with the module being loaded late, it does not
->>> help with triggering the module load in the first place.
->>>
->>> The module does not have any MODULE_DEVICE_TABLE() helping with
->>> that. So basically any system relying on the automatic hpd bridge
->>> registration and using a modular kernel (e.g. the arm64 defconfig or
->>> the kernels usually provided by Linux distributions) requires
->>> manually loading that module to get any graphical output.
->>>
->>
->> Thank you for pointing this out. I will add it in v5.
-> 
-> Add what exactly? As this code is quite generic, you don't have
-> anything for a MODULE_DEVICE_TABLE() (i.e. no OF, no I2C, ...).
-> 
+The PCIe link can go down under circumstances such as the device firmware
+crash, link instability, etc... When that happens, the PCIe Root Port needs
+to be reset to make it operational again. Currently, the driver is not
+handling the link down event, due to which the users have to restart the
+machine to make PCIe link operational again. So fix it by detecting the
+link down event and resetting the Root Port.
 
-That is:
+Since the Qcom PCIe controllers report the link down event through the
+'global' IRQ, enable the link down event by setting PARF_INT_ALL_LINK_DOWN
+bit in PARF_INT_ALL_MASK register.
 
-static const struct typec_device_id dp_typec_id[] = {
-	{ USB_TYPEC_DP_SID },
-	{ },
-};
-MODULE_DEVICE_TABLE(typec, dp_typec_id);
+In the case of the event, iterate through the available Root Ports and call
+pci_host_handle_link_down() API with Root Port 'pci_dev' to let the PCI
+core handle the link down condition. Since Qcom PCIe controllers only
+support one Root Port per controller instance, the API will be called only
+once. But the looping is necessary as there is no PCI API available to
+fetch the Root Port instance without the child 'pci_dev'.
 
-Just like the modules in drivers/usb/typec/altmodes/ .
+The API will internally call, 'pci_host_bridge::reset_root_port()' callback
+to reset the Root Port in a platform specific way. So implement the
+callback to reset the Root Port by first resetting the PCIe core, followed
+by reinitializing the resources and then finally starting the link again.
 
-> One solution I see to keep the notifier design would be to add
-> 
-> MODULE_SOFTDEP("pre: aux-hpd-typec-dp-bridge")
-> 
-> to some other module and piggy-back on it. Alternatively integrate
-> it directly to some other module, such as "drm_display_helper",
-> which already has DRM_DISPLAY_DP_HELPER and DRM_DISPLAY_DP_TUNNEL.
-> Adding TypeC DP AltMode as part of it seems sensible to me.
->
+Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Tested-by: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>
+Reviewed-by: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>
+---
+ drivers/pci/controller/dwc/pcie-qcom.c | 140 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 139 insertions(+), 1 deletion(-)
 
-I agree, placing it on the DRM side looks more reasonable.
-
-> FWIW I suggest you test booting your patches work with the arm64
-> defconfig before your next submission ;)
->
-
-Oh, I will. It's just that I've always been using buildroot. I'll check 
-the situation with other distributions.
-
-
-> Greetings,
-> 
-> -- Sebastian
+diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
+index d8eb52857f69..62b222c20464 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom.c
++++ b/drivers/pci/controller/dwc/pcie-qcom.c
+@@ -56,6 +56,10 @@
+ #define PARF_AXI_MSTR_WR_ADDR_HALT_V2		0x1a8
+ #define PARF_Q2A_FLUSH				0x1ac
+ #define PARF_LTSSM				0x1b0
++#define PARF_INT_ALL_STATUS			0x224
++#define PARF_INT_ALL_CLEAR			0x228
++#define PARF_INT_ALL_MASK			0x22c
++#define PARF_STATUS				0x230
+ #define PARF_SID_OFFSET				0x234
+ #define PARF_BDF_TRANSLATE_CFG			0x24c
+ #define PARF_DBI_BASE_ADDR_V2			0x350
+@@ -133,6 +137,13 @@
+ /* PARF_LTSSM register fields */
+ #define LTSSM_EN				BIT(8)
+ #define PARF_LTSSM_STATE_MASK			GENMASK(5, 0)
++#define SW_CLEAR_FLUSH_MODE			BIT(10)
++#define FLUSH_MODE				BIT(11)
++
++/* PARF_INT_ALL_{STATUS/CLEAR/MASK} register fields */
++#define INT_ALL_LINK_DOWN			1
++#define PARF_INT_ALL_LINK_DOWN			BIT(INT_ALL_LINK_DOWN)
++#define PARF_INT_MSI_DEV_0_7			GENMASK(30, 23)
+ 
+ /* PARF_NO_SNOOP_OVERRIDE register fields */
+ #define WR_NO_SNOOP_OVERRIDE_EN			BIT(1)
+@@ -144,6 +155,9 @@
+ /* PARF_BDF_TO_SID_CFG fields */
+ #define BDF_TO_SID_BYPASS			BIT(0)
+ 
++/* PARF_STATUS fields */
++#define FLUSH_COMPLETED				BIT(8)
++
+ /* ELBI_SYS_CTRL register fields */
+ #define ELBI_SYS_CTRL_LT_ENABLE			BIT(0)
+ #define ELBI_SYS_CTRL_PME_TURNOFF_MSG		BIT(4)
+@@ -172,6 +186,7 @@
+ 						PCIE_CAP_SLOT_POWER_LIMIT_SCALE)
+ 
+ #define PERST_DELAY_US				1000
++#define FLUSH_TIMEOUT_US			100
+ 
+ #define QCOM_PCIE_CRC8_POLYNOMIAL		(BIT(2) | BIT(1) | BIT(0))
+ 
+@@ -291,10 +306,13 @@ struct qcom_pcie {
+ 	struct dentry *debugfs;
+ 	struct list_head ports;
+ 	struct gpio_desc *reset;
++	int global_irq;
+ 	bool use_pm_opp;
+ };
+ 
+ #define to_qcom_pcie(x)		dev_get_drvdata((x)->dev)
++static int qcom_pcie_reset_root_port(struct pci_host_bridge *bridge,
++				  struct pci_dev *pdev);
+ 
+ static void __qcom_pcie_perst_assert(struct qcom_pcie *pcie, bool assert)
+ {
+@@ -1406,6 +1424,8 @@ static int qcom_pcie_host_init(struct dw_pcie_rp *pp)
+ 			goto err_assert_reset;
+ 	}
+ 
++	pp->bridge->reset_root_port = qcom_pcie_reset_root_port;
++
+ 	return 0;
+ 
+ err_assert_reset:
+@@ -1734,6 +1754,75 @@ static int qcom_pcie_set_max_opp(struct device *dev)
+ 	return ret;
+ }
+ 
++/*
++ * Qcom PCIe controllers only support one Root Port per controller instance. So
++ * this function ignores the 'pci_dev' associated with the Root Port and just
++ * resets the host bridge, which in turn resets the Root Port also.
++ */
++static int qcom_pcie_reset_root_port(struct pci_host_bridge *bridge,
++				  struct pci_dev *pdev)
++{
++	struct device *dev = bridge->dev.parent;
++	struct qcom_pcie *pcie = dev_get_drvdata(dev);
++	struct dw_pcie *pci = pcie->pci;
++	struct dw_pcie_rp *pp = &pci->pp;
++	u32 val;
++	int ret;
++
++	/* Wait for the pending transactions to be completed */
++	ret = readl_relaxed_poll_timeout(pcie->parf + PARF_STATUS, val,
++					 val & FLUSH_COMPLETED, 10,
++					 FLUSH_TIMEOUT_US);
++	if (ret) {
++		dev_err(dev, "Flush completion failed: %d\n", ret);
++		return ret;
++	}
++
++	/* Clear the FLUSH_MODE to allow the core to be reset */
++	val = readl(pcie->parf + PARF_LTSSM);
++	val |= SW_CLEAR_FLUSH_MODE;
++	writel(val, pcie->parf + PARF_LTSSM);
++
++	/* Wait for the FLUSH_MODE to clear */
++	ret = readl_relaxed_poll_timeout(pcie->parf + PARF_LTSSM, val,
++					 !(val & FLUSH_MODE), 10,
++					 FLUSH_TIMEOUT_US);
++	if (ret) {
++		dev_err(dev, "Flush mode clear failed: %d\n", ret);
++		return ret;
++	}
++
++	qcom_pcie_host_deinit(pp);
++
++	ret = qcom_pcie_host_init(pp);
++	if (ret) {
++		dev_err(dev, "Host init failed\n");
++		return ret;
++	}
++
++	ret = dw_pcie_setup_rc(pp);
++	if (ret)
++		return ret;
++
++	/*
++	 * Re-enable global IRQ events as the PARF_INT_ALL_MASK register is
++	 * non-sticky.
++	 */
++	if (pcie->global_irq)
++		writel_relaxed(PARF_INT_ALL_LINK_DOWN | PARF_INT_MSI_DEV_0_7,
++				pcie->parf + PARF_INT_ALL_MASK);
++
++	qcom_pcie_start_link(pci);
++
++	ret = dw_pcie_wait_for_link(pci);
++	if (ret)
++		return ret;
++
++	dev_dbg(dev, "Root Port reset completed\n");
++
++	return 0;
++}
++
+ static int qcom_pcie_link_transition_count(struct seq_file *s, void *data)
+ {
+ 	struct qcom_pcie *pcie = (struct qcom_pcie *)dev_get_drvdata(s->private);
+@@ -1771,6 +1860,27 @@ static void qcom_pcie_init_debugfs(struct qcom_pcie *pcie)
+ 				    qcom_pcie_link_transition_count);
+ }
+ 
++static irqreturn_t qcom_pcie_global_irq_thread(int irq, void *data)
++{
++	struct qcom_pcie *pcie = data;
++	struct dw_pcie_rp *pp = &pcie->pci->pp;
++	struct device *dev = pcie->pci->dev;
++	struct pci_dev *port;
++	unsigned long status = readl_relaxed(pcie->parf + PARF_INT_ALL_STATUS);
++
++	writel_relaxed(status, pcie->parf + PARF_INT_ALL_CLEAR);
++
++	if (test_and_clear_bit(INT_ALL_LINK_DOWN, &status)) {
++		dev_dbg(dev, "Received Link down event\n");
++		for_each_pci_bridge(port, pp->bridge->bus) {
++			if (pci_pcie_type(port) == PCI_EXP_TYPE_ROOT_PORT)
++				pci_host_handle_link_down(port);
++		}
++	}
++
++	return IRQ_HANDLED;
++}
++
+ static void qcom_pci_free_msi(void *ptr)
+ {
+ 	struct dw_pcie_rp *pp = (struct dw_pcie_rp *)ptr;
+@@ -1990,7 +2100,7 @@ static int qcom_pcie_probe(struct platform_device *pdev)
+ 	struct dw_pcie_rp *pp;
+ 	struct resource *res;
+ 	struct dw_pcie *pci;
+-	int ret;
++	int ret, irq;
+ 
+ 	pcie_cfg = of_device_get_match_data(dev);
+ 	if (!pcie_cfg) {
+@@ -2135,6 +2245,32 @@ static int qcom_pcie_probe(struct platform_device *pdev)
+ 		goto err_phy_exit;
+ 	}
+ 
++	irq = platform_get_irq_byname_optional(pdev, "global");
++	if (irq > 0) {
++		const char *name;
++
++		name = devm_kasprintf(dev, GFP_KERNEL, "qcom_pcie_global_irq%d",
++				      pci_domain_nr(pp->bridge->bus));
++		if (!name) {
++			ret = -ENOMEM;
++			goto err_host_deinit;
++		}
++
++		ret = devm_request_threaded_irq(&pdev->dev, irq, NULL,
++						qcom_pcie_global_irq_thread,
++						IRQF_ONESHOT, name, pcie);
++		if (ret) {
++			dev_err_probe(&pdev->dev, ret,
++				      "Failed to request Global IRQ\n");
++			goto err_host_deinit;
++		}
++
++		writel_relaxed(PARF_INT_ALL_LINK_DOWN | PARF_INT_MSI_DEV_0_7,
++				pcie->parf + PARF_INT_ALL_MASK);
++
++		pcie->global_irq = irq;
++	}
++
+ 	qcom_pcie_icc_opp_update(pcie);
+ 
+ 	if (pcie->mhi)
+@@ -2142,6 +2278,8 @@ static int qcom_pcie_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
++err_host_deinit:
++	dw_pcie_host_deinit(pp);
+ err_phy_exit:
+ 	list_for_each_entry_safe(port, tmp_port, &pcie->ports, list) {
+ 		list_for_each_entry_safe(perst, tmp_perst, &port->perst, list)
 
 -- 
-Best, 
-Chaoyi
+2.51.0
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
