@@ -4,88 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 721D3C54F51
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jul 2026 13:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A40C2C54F51
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jul 2026 13:30:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+jgGU67O1aGBIvPELNHmwDOKQva8Zl8h5++oe3aZsxY=; b=4H5iqYyp5oTzXn
-	fqqWaRvMmlJp5i/QDS7n75j0Bt7LykJjCtFMsj5w2jr6Oe5sFji8IBif4ewGfK22/zmvmYHNYix+0
-	WNC0Q0wjjkspiKtWSZfgZJVPChHexZfPSqHNs/VE7L2OgDEOpWJ+5LgZO3R74UNWTOfaA79b1tT/Z
-	TynxQLNVythAS/7BVMmP0qyJO1maSJnoO4uCY1zdiLTwJEc7YE/wOwkm/pYYgPf12cdztPjhTiqRQ
-	PqJSf8tPNWGdjt8ID6Bru25mQroq48YJ4rMostA/je8EPVfSHtd7rQneLsAckg0mgvNPEI4JeikZW
-	5xUVm49akUCI77c7tBog==;
+	List-Owner; bh=ihm3uQnLVptqQSt4Mqs4fRrooDkWDBZE8qQFuj2+I2U=; b=Vhk0+kuFPn0jYp
+	/DGcLFmINXyQQqufNEIJblw/5IV3CSldwqmXBe34CgdGdXc72fOOnrnG8+dJ2j+NZTcHnXCSRH7V4
+	NeJtvs7SwyRu49OGpUowUqLzHFFsZ4ujucIparE022hvE++nhrR6qM3zNjqJrb1Jy3pMg2lhYYiOl
+	RNMIaVyfgG1Y8EGLipaHSAqbF1Qq0IAQzjBZiTKXAfHqnAvp40i8u+KJGGxhAQnU5wZGSPU4JnFK5
+	Tuq9sGWJ6AgZizqN7QpBJILTR4mjvPETqNhWDWvpCoFvX5e0R8+sdKeK22LvGeQdfHB3bqL1DIKkr
+	vsY1aTLzt7LoMrP6aEYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp411-000000081hL-34Sb;
-	Wed, 29 Jul 2026 13:08:07 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1wp4MQ-000000086PI-3Ep5;
+	Wed, 29 Jul 2026 13:30:14 +0000
+Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp40x-000000081gE-3dW0
+	id 1wp4MO-000000086Nu-32Tz
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Jul 2026 13:08:06 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-49544f26c43so433155e9.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jul 2026 06:08:03 -0700 (PDT)
+	Wed, 29 Jul 2026 13:30:14 +0000
+Received: by mail-oa1-x2d.google.com with SMTP id 586e51a60fabf-4569e871502so252354fac.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jul 2026 06:30:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785330482; x=1785935282; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1785331811; x=1785936611; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Q/pbacYlJpkDaCE9RbWRQcg2zDk1XOgU/3Z2HS4A2NQ=;
-        b=HuOhl7LHF+wsp4EmuVP8s+Bv2rJLcCzRnkUrcZs7F79S6BX4Xaznn4z93Eot4IVBsg
-         9TuyQlChYNQiVFAG2P5DkcUMVclnbDmxuyXIRxsTN2xScleM2SbZZsrD6zIoLoOv7asr
-         6IguRfyn0x9UbNk9024D19upYSh+xazx6fMyAiyAnQniBfAQN9KpuX+Cwgo5u7zIUYQ3
-         UBxtgn7e+PRCasaIPM2V0As2zJ2o8VWpfGZsVyNp5gKWyKoXsiAjFY0/v1JU88clhB4A
-         MQ1eDaLuaf5Ao7/idwjG/v76XW8RccCYMPugShvvVYvdfWwI7dKp8If/PsOYIV9qHJ0N
-         Y5MQ==
+        bh=Vw1Uw662stFve8C9A4vfU5Hm7+9jYZ7QadKCZhiXKXs=;
+        b=IavONC06vHtOFjJ26xVjpyyQ1RRnSaZkJWrz2knJC34jr4E066tAug8OWeEat/lsYu
+         GO3FEFowknooHvJgj73ynTqrEW26EAC+SVpTMlgvg5WWXXcQSq29RjxaRsq+I3OCPRIN
+         P6xrmn9CCbcVgHVR02RL2OagLj3V/IdlETQcw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785330482; x=1785935282;
+        d=1e100.net; s=20251104; t=1785331811; x=1785936611;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Q/pbacYlJpkDaCE9RbWRQcg2zDk1XOgU/3Z2HS4A2NQ=;
-        b=CLpPtrggockhR7sL2ZwMNhTO4nLAnQlB8UvA3YPBf1iiIFRS2ZhrVHflk4aN/GTeD/
-         OSxmKmn2S8SUweyywsKev/7BVCUKvnzqBfdT1UbQkbeeFo4AasKgBwnZXzK54fAbaXu7
-         G4CAutJkwu3iAWc+QYu5eWKK8fLYcuQQ6RT3LS4uTh4ZbMnCl50ViS4XWZ82uwMrwxwg
-         Krrr5FojrCRvLVWN0EOALep17LRcTeHpXncDY8mkH1/e7N5FDNhpy2TIIQPqKlIpYZVr
-         lci5vOvbNQOX/KCY9JontwBWYnL/Pk1KJ33miZ8qfuNyVVLl2BvWufI33OT/RS/b3AZJ
-         GFMg==
-X-Forwarded-Encrypted: i=1; AHgh+RpZGLLRgYK0gSUkWZEqEAS29K6qjKH5RmpOEPxHdClSg+G2Y95T3ybeC+pxBSumKIj85WbUCkoUA+vmiIaTvg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy3Z56QwW9Yj6fposhXa5xeTICzM4x0DEBFxGxg1hStGzVbT19b
-	nL3OPoqmYBJYdq2MvdLqb33yNrQveQs9gtlf0WfldzUjgYbJYrVWMYTj
-X-Gm-Gg: AR+sD11NXNEcQEXl4XblvkNQFwWaLRT5yzH9C4UeRt0KoJVsZPZXHDFebZsdDuI9PPu
-	62ZJsq9gMw8DrblJajoPPuAvx46JDneb2zxnr5hbgjqtom06RACk7JhdyYta3Xnyqrf4m+Rhyfo
-	kkZyEbY87MIfWqV49V+rD8juezrY7GaDq9hiT85CVR3BUiJz8/knrztws/KZBRx1sXNXvLFB8m+
-	/wanVOOmRZmxo6ruhAdf1tlxBp3P+SEoVcz37I/kHEyVQ1nDF2JoL8QhAmI+sv07Rnay3VbkK29
-	uLVXpcF5LLnJgfCoz9zViS97Wusm9j0SnixO1SDSNo5NMXCY8ufM3ytMLLuAMn48c5NGImmGTr8
-	xYayxwOws2TG11nV0iYyyImE+S1MJJHwLx9kXvLprNYygkIC23ApLzQHj1jizWUxgM1QVLO/fab
-	fbYTTjjJGg0oqNcKyhaHldyKqE7+qrtMsbp1eW2S8W+4lkYs0REaJ0mpstWSigQGjcozbW5D48s
-	o9Quyn4oAX6ABz+rRge9PnMImN3BgZtVGlQB/O2ZpILmEj8qlJ96WQS6myrphTmuuAxag==
-X-Received: by 2002:a05:600c:4583:b0:493:f42e:1b3f with SMTP id 5b1f17b1804b1-496c6571e01mr50134555e9.3.1785330481530;
-        Wed, 29 Jul 2026 06:08:01 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B886F0027B74C8463513DA4.dsl.pool.telekom.hu. [2001:4c4e:1b88:6f00:27b7:4c84:6351:3da4])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-497fecfccc7sm37571645e9.12.2026.07.29.06.08.00
+        bh=Vw1Uw662stFve8C9A4vfU5Hm7+9jYZ7QadKCZhiXKXs=;
+        b=NRU5CToIiWx1eZA014dAfVWYW1PSFDjp5AhiTwrJ/wiZEpLzLJMQPl+IdoxdyjnKwN
+         jS5cM4dqSyCIEXs/3YpoZwwMbIDP8HMVfTinws6Gf9yhh9oOd2Fx6v1qonj6g4v1PYGC
+         ZxnsHjvrR3biAqAeTkJLjgqQ3NLKPIdQwacSwQV1boDHG7W+E/AEB3aUiVQVzckBKmAP
+         rjz11ljcwW1oe4QUjSO2q/bWLbVQVXarGashCaeo7fb3sEqHgY2nmdNBdi+8As1FfrZl
+         lT0LHnrdVNl40Y7aW2wi2DOAqpCYffKR3GlQKracpkHAoFSX4Ujj6z936MM0oJM+mPLH
+         kIoA==
+X-Forwarded-Encrypted: i=1; AHgh+RoflsPkcpsg4TuFWfzQiQvhvxlEbWkOI1tPBQBLwTBgxygKAqWKO4IBBDpGqL1SOKh0aI4UiJaR7/Qm6f53jQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzXqh7lBj/sV4CDCBZO8/JSIW+Dg9g2254LexDsDRrxnGSdR1Lh
+	lxaxg1pb8AsL9aGTLmWWz0FtuWfz+6z078yQ8zSYu6DsrvfJn3YWtIL+wPj4ReIJHD6uiLLbnYb
+	cZ+o=
+X-Gm-Gg: AR+sD10NrWydwBKfqlRlWjj2UYUeQx4ofGNGirAUTJ4jyAlPha4t5ITJhEkelPbCrzR
+	m0LwEa6seJNYrOjVKQKvFxL/YvHUr42Ir73omE4gPvcbGobpkVlo4UU+VkwhjWO7rzDjaIKtUAy
+	bXmjZq2odZ/v9FyuKs3PmTceNpINATODXt5lMQKWekLzPw3t7VCV+nmInmIJHP3F+a/+2gtC0NJ
+	brHuPF8DjrYsKP6jWkU24Ng7ZeviiG9O8t6NCzEX738Ghu3vRiMKQUUf0Ygp6tQDP/ajk4+yk2v
+	pliwXILj79p+t4BMrXqWy6pNhGc9/sP2Addk0CERmnY1iZhvExXkZHjtf8sPnUaAP1L2sYKBIz2
+	4atGePXesJ6oeS4ljgC4eStYTOoBXBJlezSqF47O+Qmm5y1eTphZn4JdRWzmfD4Z0U3SsdQxKb0
+	PiMoxBbd2IOe20OJ/DZSpLF/bfqmFErPelju3OqZC3f3TJqJMAEgO4NLw=
+X-Received: by 2002:a05:6808:bcb:b0:496:e0:a46b with SMTP id 5614622812f47-4ad5b7fdbc6mr3443250b6e.3.1785331811275;
+        Wed, 29 Jul 2026 06:30:11 -0700 (PDT)
+Received: from chromium.org ([174.51.25.52])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-4ad6ef5d650sm1712932b6e.9.2026.07.29.06.30.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Jul 2026 06:08:01 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Oded Gabbay <ogabbay@kernel.org>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Jiaxing Hu <gahing@gahingwoo.com>,
+        Wed, 29 Jul 2026 06:30:09 -0700 (PDT)
+From: Simon Glass <sjg@chromium.org>
+To: Linus Walleij <linusw@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Igor Paunovic <royalnet026@gmail.com>
-Subject: [PATCH v2] accel/rocket: request the core clocks by name
-Date: Wed, 29 Jul 2026 15:07:43 +0200
-Message-ID: <20260729130743.128876-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	Rob Herring <robh@kernel.org>,
+	devicetree@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>,
+	linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	Simon Glass <sjg@chromium.org>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Jeffy Chen <jeffy.chen@rock-chips.com>,
+	Ye Zhang <ye.zhang@rock-chips.com>,
+	huang lin <hl@rock-chips.com>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/4] pinctrl: Add support for the Rockchip RV1106
+Date: Wed, 29 Jul 2026 07:27:24 -0600
+Message-ID: <20260729132736.3807082-1-sjg@chromium.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_060803_938159_BE934F7F 
-X-CRM114-Status: GOOD (  18.18  )
+X-CRM114-CacheID: sfid-20260729_063012_797670_DB4871DA 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,93 +107,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rocket_core_init() hands core->clks to devm_clk_bulk_get() without ever
-setting the .id members. The rocket_core array is allocated with
-devm_kcalloc() in rocket_device_init(), and rocket_probe() only fills in
-.rdev, .dev and .index, so all four clk_bulk_data entries are requested
-with a NULL con_id (unlike core->resets, whose ids are set a few lines
-above).
+This series adds pinctrl support for the Rockchip RV1106 and its
+RV1103 package variant, split out from the initial RV1106 enablement
+series [1] following feedback to submit per subsystem.
 
-clk_get(dev, NULL) ends up in of_clk_get_hw(np, 0, NULL), and
-of_parse_clkspec() only consults "clock-names" when a name was passed,
-so the index stays 0 for all four entries. Every entry therefore ends up
-holding a handle to the *first* clock of the DT "clocks" property, i.e.
-ACLK_NPUn. Nothing fails: probe succeeds and the driver believes it owns
-four different clocks.
+On this SoC each GPIO bank has a dedicated IO control (IOC) register
+block, unlike earlier Rockchip designs where the registers of all
+banks share a GRF region. Following Jonas's review of v1, each bank
+node now references the syscon for its own IOC block through a
+rockchip,grf phandle and the driver uses a separate regmap per bank,
+so no regmap crosses a block boundary.
 
-The consequence is that rocket_device_runtime_resume() prepares and
-enables the AXI clock four times, while hclk, pclk and - most
-importantly - the NPU compute clock ("npu", SCMI_CLK_NPU on RK3588) are
-never prepared or enabled by this driver at all. The NPU still works
-only because the Rockchip power-domain driver sets GENPD_FLAG_PM_CLK and
-its attach_dev() callback walks the device node with of_clk_get() and
-adds every clock to the pm_clk list, so genpd happens to keep the
-remaining clocks running. The bug is therefore latent today, but it
-means the driver holds no reference to the clock that actually feeds the
-NPU, which stands in the way of any future frequency scaling
-(OPP/devfreq) work.
+This v3 is tested on a Luckfox Pico Mini B (RV1103): pinctrl and the
+four GPIO banks probe, and the sdmmc pinctrl state is applied through
+the per-bank IOC regmaps, with the SD card working.
 
-Found on an Orange Pi 5 Plus (RK3588) by reading the live clock tree:
-/sys/kernel/debug/clk/clk_summary shows four "fdab0000.npu" consumer
-handles on aclk_npu0 (and likewise on aclk_npu1/aclk_npu2 for the other
-two cores), while hclk_npu0, pclk_npu_root and scmi_clk_npu have no
-"fdab0000.npu" consumer at all - their only consumers are the
-"npu@fdab0000" handles created by the power-domain driver via
-of_clk_get().
+The corresponding devicetree changes are part of the main RV1106
+series, which goes through the Rockchip tree.
 
-Set the ids explicitly, in the order mandated by the binding
-(Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml):
-aclk, hclk, npu, pclk. After the change the driver holds one handle per
-distinct clock and clk_bulk_prepare_enable() covers all four.
+[1] https://patchwork.kernel.org/project/linux-rockchip/list/?series=1122658
 
-Note that this is a user-visible tightening for out-of-tree DTs: the
-old NULL-id requests resolved by index and succeeded no matter what
-"clock-names" contained, while the named requests fail probe with
--ENOENT when one of the four names is missing. That is the right
-outcome for in-tree users - the binding requires exactly these four
-clock-names and rk3588-base.dtsi carries them on all three cores - but
-a DT that relied on the permissive lookup goes from silently running on
-the wrong clock handles to not probing at all, so record the change
-here where git log will find it.
+Changes in v3:
+- Add new patch moving the drive-strength decoding to the get function
+- Declare the 8-bit level drive type on the banks so that reads decode
+  correctly
+- Return an error from the iomux functions when a bank has no IOC
+  regmap, rather than falling back to the shared regmap
 
-Fixes: ed98261b4168 ("accel/rocket: Add a new driver for Rockchip's NPU")
-Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
-Reviewed-by: Jiaxing Hu <gahing@gahingwoo.com>
+Changes in v2:
+- Add new patch for the per-bank IOC reference
+- Use a separate IOC regmap per bank, taken from the rockchip,grf
+  phandle of each bank node and identified by the gpio alias, with
+  block-relative register offsets
+- Reject drive-strength requests for GPIO0 pins above 6, which have no
+  drive-strength registers
+- Specify only the first iomux offset for each bank, letting the driver
+  calculate the increments
+
+Simon Glass (4):
+  pinctrl: rockchip: Decode drive strength in the get function
+  dt-bindings: gpio: rockchip,gpio-bank: Add rockchip,grf property
+  dt-bindings: pinctrl: rockchip: Add RV1106 compatible
+  pinctrl: rockchip: Add RV1106 pinctrl support
+
+ .../bindings/gpio/rockchip,gpio-bank.yaml     |   7 +
+ .../bindings/pinctrl/rockchip,pinctrl.yaml    |   1 +
+ drivers/pinctrl/pinctrl-rockchip.c            | 230 ++++++++++++++++--
+ drivers/pinctrl/pinctrl-rockchip.h            |   4 +
+ 4 files changed, 223 insertions(+), 19 deletions(-)
+
 ---
-v2:
- - document that resolving by name is a behaviour change for DTs that
-   do not carry all four clock-names (Jiaxing Hu)
- - collect Jiaxing's Reviewed-by
-v1: https://lore.kernel.org/linux-rockchip/20260729092939.118779-1-royalnet026@gmail.com/
+base-commit: fc02acf6ac0ccde0c805c2daa9148683cdd01ba8
+branch: rv1106b3
 
-The same four id assignments are board-tested on RK3576 (ROCK 4D) as
-part of Jiaxing's RK3576 enablement series (v2 6/8), so the change has
-been exercised on two SoCs between us.
+-- 
+2.43.0
 
-Verified on RK3588 (Orange Pi 5 Plus): after the change clk_summary
-shows one consumer handle per clock instead of four handles on aclk, the
-NPU still powers up and down cleanly through runtime PM, and a
-MobileNetV1 inference run via the Teflon TFLite delegate produces
-bit-identical output tensors to the unpatched driver.
-
- drivers/accel/rocket/rocket_core.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/rocket_core.c
-index b3b2fa9..5dd260b 100644
---- a/drivers/accel/rocket/rocket_core.c
-+++ b/drivers/accel/rocket/rocket_core.c
-@@ -28,6 +28,10 @@ int rocket_core_init(struct rocket_core *core)
- 	if (err)
- 		return dev_err_probe(dev, err, "failed to get resets for core %d\n", core->index);
-
-+	core->clks[0].id = "aclk";
-+	core->clks[1].id = "hclk";
-+	core->clks[2].id = "npu";
-+	core->clks[3].id = "pclk";
- 	err = devm_clk_bulk_get(dev, ARRAY_SIZE(core->clks), core->clks);
- 	if (err)
- 		return dev_err_probe(dev, err, "failed to get clocks for core %d\n", core->index);
 
 _______________________________________________
 Linux-rockchip mailing list
