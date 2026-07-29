@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C629C54F51
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jul 2026 13:36:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7EF5C53200
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jul 2026 13:36:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jdXPA7ewC+xRwgLCKqz5dANZEMsdZe1cUxpbWbWDjdc=; b=B+1Cbzcl/y5PXD
-	/Mx89HNavC0kzlXMmM6lvRcNp+NH+5H62JYQ2YCCMXpVKB9pAinmgiudHaayxdpx5pbPN1K/O4mDV
-	At98mHj7OiFPGtorayx8aHcLFHiVqN6C0JwWACw3E0GvAph+hAqEZfoQx3yCgeCZTFS4HxZlDNcKM
-	DAqADbmYCYMMsTgp9+h3Vtf5ugpX4z069cVOxNt/ZF6E9vcL4z1WmX/pngtnXy+BGsqt3EgdKghye
-	jELNAQUH0waG4DmmmJ5jx0gbbBRve/G5Apcn9GHISpsjMjxfk8qRd4MrS+93rW+P3LXp7yE1MbteP
-	UomcLE/9oIPiUW/vatqw==;
+	List-Owner; bh=bXBJu4LvO39BP/d+0mh48us7Sq/1mSlDY8NZutvfRno=; b=CbGp+0luB0E5fU
+	c54hgK9Ri17AJvsKhohgHRSaQAG2gcY0AuB9oltQllBYYuQvKRUtIjUbGQxCcC8hpVjEOstr27Vwj
+	csEegFtn2NMcHXhQiOPCtKQ8GkHMYggwY1rigOFX2nqbSZrxGYJ1cLFLbxA0r3f7S1tLUsI7FSp9Q
+	/ijB1BVx+2sRgD7t3AO+pX2uxPWc8/JwuunPBqg5w85+oBadk02GMrLnRRcu2lYbs34pKPUV31wTr
+	oLT1uyiNB1DmOnQBAavG0BFuj1AfX82nt8QdeuAcVXc89GbS3+9hZRAgfOfcVRkifNYli8o41xBZ7
+	lUnG6J+t053sIkoGTjHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp4SR-000000087j0-2tvu;
-	Wed, 29 Jul 2026 13:36:27 +0000
-Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+	id 1wp4SZ-000000087og-0N1s;
+	Wed, 29 Jul 2026 13:36:35 +0000
+Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp4SO-000000087h1-34WU
+	id 1wp4SS-000000087jK-1u6y
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Jul 2026 13:36:26 +0000
-Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-7eb64371a2aso694736a34.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jul 2026 06:36:24 -0700 (PDT)
+	Wed, 29 Jul 2026 13:36:31 +0000
+Received: by mail-oo1-xc32.google.com with SMTP id 006d021491bc7-6aae244ef49so722470eaf.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jul 2026 06:36:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1785332184; x=1785936984; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1785332187; x=1785936987; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Zz7wK3lXlBfdGPmLEplszd2Ds3cyplTLPP38sJuKpsQ=;
-        b=Dqq9IOCNXsTzgvnu0GE/KEaCTiF1Wv/7ZkNf+VOXBkSg+KWiQ67Z1f68j6CeEBebjS
-         MgJa4Gd4pmqdbxfgY4yJMGXuIMk/FpGYgXqNZuO5sN0ccsjNkQl+taWO4/BaQBMJfdCn
-         mBdsjME/bJ7Bdtc6HsiSK9sVA4Gt49xZyHeB0=
+        bh=v8cW59PYse3VFS/z1iDTnBKfS8waRnnbJauRpGCW/XI=;
+        b=GpJ2DjBAA5dMH+FE2xfi2XBECjgXF0NTyzwqLlG9jX87NNihSVkkaqXV9zocet8biu
+         sjOhW2KCyRoOM6FaE0G5X1F+cH9YjWvWayvytQphFNdj9NjM0AMBPnPQ8b29RZ1/dZrN
+         vfkd8eFGeXafTsNjs/S7xFylTgGvSqNku9n7I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785332184; x=1785936984;
+        d=1e100.net; s=20251104; t=1785332187; x=1785936987;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Zz7wK3lXlBfdGPmLEplszd2Ds3cyplTLPP38sJuKpsQ=;
-        b=EzPtLMoEPmOVq6kVd9X4VA0UodZdJ6LmjqtRpUQdXhvFhkVreSwxtXbgFIfU83/mNa
-         mKBAHW7vIISerZiKsxaiE6RJFA6M2snNONGAyayzpJWNFvGBB4oEPV4MCJDxO7LqjSUF
-         sj7QiZP3NNUK1q6C92lxbj20mPcNKid6qaFqSoBaLjeZ3fPyWUiJ+Njk5m5i92DyX3YE
-         BA3eXwkuoFkzAgiLP8/y5KOlTvD/d7cEaFP2YHmA4S3yi1JM+FTTtzN3QHifI+DBfihj
-         IR+rxZfl9+r2VQYMKJkFCBgXwwRIz7LhW+TREg0YO9OpiU3kQglMD88ts3fyMBgcHTUG
-         d/Mw==
-X-Forwarded-Encrypted: i=1; AHgh+RoMfdAbi8lfRrVCPxEVv74F+GOisL4nPqgRJcq9EtW9PzBSDRK5diaOlU4+XFOOea605zIN5FvfQFMqA0ktHw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw3bX8QoRGuQPWOn7hzCdWVM6sFLPbN7tOaMTDgcB6KrFLujX8H
-	aN9mUaefnbf4Tw9nVXCu6eP28YmmsNGST4fJ8au3lhTzC1XisnHBbTXClNVDl66hUg==
-X-Gm-Gg: AR+sD113uPZzUzknF7jubr9kXj6AZig8nwgrSnuEywycNDrrEwR4GrC6QpQyKNR3Rs4
-	0ks6wnWmm5uPS0O+vI/9W2BjMqLZqy2zvTDPL9WhZT55cIQ8IQOnwQyzon8MzNrEhPkw3S5L89t
-	tuEyLEwdBEqFnk1sDuU9GQmMbd7ztuLfV50MKeyUL7qEA2rBig9oyub6YISdCHohqGq6Nxgxyou
-	F9OmU5BULb61v0J7qJwtu01nhHaNYLDbc4FX29j6ddw4+hEEYEq0wuWwkQQobg5Aqj06pYcrDGX
-	jXLy0LTCfPxfDlTLtiQcK3DUppUrV2jSYhI+hQGPJpfASFZ0MWc0HoI51+gREMgggC6su++aeqq
-	ImrMoOSlZJWUYZrjYvnp6thpOQxZQl1jzG1xK0gcYUAq7HP+w2JP7HUC8y9oS8HSILQbg+nQ98X
-	b/TLmSb98S1KU+7Fn0BsU7X8zRMX+g2e1B/gtkUuNzLdyCHQETlxLtLos=
-X-Received: by 2002:a05:6820:2912:b0:6ac:a9ec:2a54 with SMTP id 006d021491bc7-6aca9ec2c6emr983428eaf.70.1785332183759;
-        Wed, 29 Jul 2026 06:36:23 -0700 (PDT)
+        bh=v8cW59PYse3VFS/z1iDTnBKfS8waRnnbJauRpGCW/XI=;
+        b=PN9duTTQaDw+MUpdHxZRlckW1z+q/xTTgMl6HwoLv/l4ef9oCdjN/V3Ag9CIYTrZrT
+         iWONalamkz/vSQQeEQ3zDUHB1eWdyVZgbChspcR54gubsJ/5tosdVdfDtxAcLx+XQik0
+         UIY+M7CQWlbvPBIoxF4T9NPaRSFx8rSjEwi+D59HmXCE7yMunNNqzHtxgZnUobanEBvx
+         sYE+dpqJkKQw55GhJOtoaF4A880EX4khhTEh4hKPfao/RsAFMKhk4dyO0G45eJ/kXmde
+         VnVvbcptKOfdTkMuJcZJMcuLOpdlGu3wAhNpX5UmdIntyWH39HyxRdH7NORNF3DbkFvs
+         6lkg==
+X-Forwarded-Encrypted: i=1; AHgh+Rr7o4bxJPG8j55/z/PejXguDm6zWWbyIjiAWUw470S/cxJqeW9+lJKSMmd/taeHe7mf0XUuAAbXGNV1Ni08DA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwLFGP+FqihWMAv3hZ8PqjIbH3Esf5ULqxhPhcpnGM3xRQJDyNN
+	SUpuOPSMQ4ZcYuZCzfckqMHyAeBZh2yqAwe+rVZmcYBz6BAW0TDMiV6MtIQHSj9txA==
+X-Gm-Gg: AR+sD13MxKgU9t+usxIdSiqeHVdrjV3Lx100BM7gdPMLCf8gohrkb9moBdDKeAPdphY
+	lXC+r/ybUVoNCAg/2KvXKVqkswGrKwLIaUZO6WCPSD++KOUp3Ik8EpNVpI17WWKIz4u0nb8YcZP
+	ydtn+DyXPRw8P6j1U1X+3mGz+a2lVSclf9ocztSgSUfjO5SFVseVhuy0SdOUdeHIgSotW8BmKf8
+	YqOipz2pH3VAYSAq+8AcRtLbSEnnPDA9TTa6mhnfJqMtjN+OOQcxpMPBtUPyhDBC2cVqCyQ/sf0
+	nWsl+icJeEQFHZAzAydpfhwCL0c5kjB0a/HdIMLQ02CNyZE7jG4vOaw2OM52ZTvCz65mSS4J2ZP
+	Y98TUOTd98sBi7mYFHvbqOjzPeEQBeTWR+bzEVqpavNBSYkQv864rPWnAOX07BP38sR/pctjd+d
+	laXOaImp3nOVTgg6jskUfcS0g8lGlvxHKHfIrzIlpYwL5vGv6WE0rk88DhlfUrPY5yjg==
+X-Received: by 2002:a05:6820:814:b0:6a3:77b0:f751 with SMTP id 006d021491bc7-6ac96ddd0acmr3222823eaf.64.1785332187109;
+        Wed, 29 Jul 2026 06:36:27 -0700 (PDT)
 Received: from chromium.org ([174.51.25.52])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6aca527fe83sm1956196eaf.6.2026.07.29.06.36.22
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6aca527fe83sm1956196eaf.6.2026.07.29.06.36.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Jul 2026 06:36:23 -0700 (PDT)
+        Wed, 29 Jul 2026 06:36:25 -0700 (PDT)
 From: Simon Glass <sjg@chromium.org>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Fabio Estevam <festevam@nabladev.com>,
@@ -74,26 +74,23 @@ Cc: Fabio Estevam <festevam@nabladev.com>,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Simon Glass <sjg@chromium.org>,
-	Rob Herring <robh@kernel.org>,
 	Brian Masney <bmasney@redhat.com>,
-	Conor Dooley <conor+dt@kernel.org>,
 	Jeffy Chen <jeffy.chen@rock-chips.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
 	huang lin <hl@rock-chips.com>,
 	linux-clk@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/6] dt-bindings: clock: rockchip: Add RV1106 CRU support
-Date: Wed, 29 Jul 2026 07:35:48 -0600
-Message-ID: <20260729133609.3465563-2-sjg@chromium.org>
+Subject: [PATCH v3 2/6] clk: rockchip: Add clock controller for the RV1106
+Date: Wed, 29 Jul 2026 07:35:49 -0600
+Message-ID: <20260729133609.3465563-3-sjg@chromium.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260729133609.3465563-1-sjg@chromium.org>
 References: <20260729133609.3465563-1-sjg@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_063624_792539_6186E0FE 
-X-CRM114-Status: GOOD (  18.28  )
+X-CRM114-CacheID: sfid-20260729_063628_620251_18F46CA8 
+X-CRM114-Status: GOOD (  22.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,411 +107,1177 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the clock binding header and schema for the Rockchip RV1106 clock
-and reset unit. The clock IDs are numbered continuously from 0, in the
-same way as the RV1103B. The header also covers the MMC drive and
-sample phase clocks, which the CRU provides using control registers in
-the GRF region.
+Add the clock and reset controller driver for the Rockchip RV1106,
+based on the vendor kernel from the Luckfox Pico SDK [1] at commit
+824b817f8 (a Linux 5.10.160 kernel tree), adapted to the upstream
+clock framework.
+
+The MMC drive and sample phase clocks have their control registers in
+the GRF region. The CRU provides these clocks itself, using the syscon
+referenced by the rockchip,grf property as an auxiliary regmap, in the
+same way as the RK3528.
 
 The RV1103 is a package variant of the RV1106 and uses the same CRU.
 
+[1] https://github.com/LuckfoxTECH/luckfox-pico
+
 Signed-off-by: Simon Glass <sjg@chromium.org>
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 ---
 
 Changes in v3:
-- Add IDs for the internal clocks, so that anonymous branches cannot
-  overwrite the APLL entry in the clock array
+- Register the CRU as a platform driver, like the RK3528
+- Give the internal clocks real IDs so that they cannot overwrite the
+  APLL entry in the clock array
+- Drop the pre-mux write of the alternate divider, which overwrites the
+  safe divider calculated by the CPU clock framework, and the post-mux
+  write, which duplicates the framework's own clean-up
+- Add CLK_SET_RATE_PARENT to clk_vicap_m1_frac, matching m0
 
 Changes in v2:
-- Renumber the clock IDs to be continuous, starting from 0
-- Provide the MMC phase clocks from the CRU rather than a grf-cru
-- Mention the MMC phase clocks in the rockchip,grf description
+- Provide the MMC phase clocks from the CRU via an auxiliary GRF regmap
+  rather than from a separate grf-cru clock provider
 
- .../bindings/clock/rockchip,rv1106-cru.yaml   |  60 ++++
- .../dt-bindings/clock/rockchip,rv1106-cru.h   | 306 ++++++++++++++++++
- 2 files changed, 366 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1106-cru.yaml
- create mode 100644 include/dt-bindings/clock/rockchip,rv1106-cru.h
+ drivers/clk/rockchip/Kconfig      |    7 +
+ drivers/clk/rockchip/Makefile     |    1 +
+ drivers/clk/rockchip/clk-rv1106.c | 1099 +++++++++++++++++++++++++++++
+ 3 files changed, 1107 insertions(+)
+ create mode 100644 drivers/clk/rockchip/clk-rv1106.c
 
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rv1106-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rv1106-cru.yaml
+diff --git a/drivers/clk/rockchip/Kconfig b/drivers/clk/rockchip/Kconfig
+index 85133498f013..4b55f48d72c2 100644
+--- a/drivers/clk/rockchip/Kconfig
++++ b/drivers/clk/rockchip/Kconfig
+@@ -23,6 +23,13 @@ config CLK_RV1103B
+ 	help
+ 	  Build the driver for RV1103B Clock Driver.
+ 
++config CLK_RV1106
++	bool "Rockchip RV1106 clock controller support"
++	depends on ARM || COMPILE_TEST
++	default y
++	help
++	  Build the driver for RV1106 Clock Driver.
++
+ config CLK_RV110X
+ 	bool "Rockchip RV110x clock controller support"
+ 	depends on ARM || COMPILE_TEST
+diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
+index 7c984ee006c6..554b7eb83dc9 100644
+--- a/drivers/clk/rockchip/Makefile
++++ b/drivers/clk/rockchip/Makefile
+@@ -19,6 +19,7 @@ clk-rockchip-$(CONFIG_RESET_CONTROLLER) += softrst.o
+ 
+ obj-$(CONFIG_CLK_PX30)          += clk-px30.o
+ obj-$(CONFIG_CLK_RV1103B)	+= clk-rv1103b.o
++obj-$(CONFIG_CLK_RV1106)	+= clk-rv1106.o
+ obj-$(CONFIG_CLK_RV110X)        += clk-rv1108.o
+ obj-$(CONFIG_CLK_RV1126)        += clk-rv1126.o
+ obj-$(CONFIG_CLK_RV1126B)	+= clk-rv1126b.o rst-rv1126b.o
+diff --git a/drivers/clk/rockchip/clk-rv1106.c b/drivers/clk/rockchip/clk-rv1106.c
 new file mode 100644
-index 000000000000..b99dce9ff935
+index 000000000000..3f26573e6cb7
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rv1106-cru.yaml
-@@ -0,0 +1,60 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/clock/rockchip,rv1106-cru.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip RV1106 Clock and Reset Unit
-+
-+maintainers:
-+  - Simon Glass <sjg@chromium.org>
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+description:
-+  The RV1106 clock controller generates the clock and also implements a
-+  reset controller for SoC peripherals.
-+
-+properties:
-+  compatible:
-+    const: rockchip,rv1106-cru
-+
-+  reg:
-+    maxItems: 1
-+
-+  "#clock-cells":
-+    const: 1
-+
-+  "#reset-cells":
-+    const: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    const: xin24m
-+
-+  rockchip,grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the syscon managing the "general register files" (GRF).
-+      If missing, pll rates are not changeable due to the missing pll
-+      lock status, and the MMC drive and sample phase clocks, whose
-+      control registers live in the GRF region, are not registered.
-+
-+required:
-+  - compatible
-+  - reg
-+  - "#clock-cells"
-+  - "#reset-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    clock-controller@ff3b0000 {
-+      compatible = "rockchip,rv1106-cru";
-+      reg = <0xff3b0000 0x20000>;
-+      rockchip,grf = <&grf>;
-+      #clock-cells = <1>;
-+      #reset-cells = <1>;
-+    };
-diff --git a/include/dt-bindings/clock/rockchip,rv1106-cru.h b/include/dt-bindings/clock/rockchip,rv1106-cru.h
-new file mode 100644
-index 000000000000..80244988e139
---- /dev/null
-+++ b/include/dt-bindings/clock/rockchip,rv1106-cru.h
-@@ -0,0 +1,306 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
++++ b/drivers/clk/rockchip/clk-rv1106.c
+@@ -0,0 +1,1099 @@
++// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright (c) 2022 Rockchip Electronics Co. Ltd.
 + * Author: Elaine Zhang <zhangqing@rock-chips.com>
 + */
 +
-+#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RV1106_H
-+#define _DT_BINDINGS_CLK_ROCKCHIP_RV1106_H
++#include <linux/clk-provider.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <dt-bindings/clock/rockchip,rv1106-cru.h>
++#include "clk.h"
 +
-+/* pll clocks */
-+#define PLL_APLL		0
-+#define PLL_DPLL		1
-+#define PLL_CPLL		2
-+#define PLL_GPLL		3
-+#define ARMCLK			4
++/*
++ * Register offsets inside the CRU region. The RV1106 CRU is split into
++ * several sub-blocks, one per power domain, all accessed through a
++ * single register window.
++ */
++#define RV1106_TOPCRU_BASE		0x10000
++#define RV1106_PERICRU_BASE		0x12000
++#define RV1106_VICRU_BASE		0x14000
++#define RV1106_NPUCRU_BASE		0x16000
++#define RV1106_CORECRU_BASE		0x18000
++#define RV1106_VEPUCRU_BASE		0x1a000
++#define RV1106_VOCRU_BASE		0x1c000
++#define RV1106_DDRCRU_BASE		0x1e000
++#define RV1106_SUBDDRCRU_BASE		0x1f000
 +
-+/* clk (clocks) */
-+#define PCLK_DDRPHY		5
-+#define PCLK_DDR_ROOT		6
-+#define PCLK_DDRMON		7
-+#define CLK_TIMER_DDRMON	8
-+#define PCLK_DDRC		9
-+#define PCLK_DFICTRL		10
-+#define ACLK_DDR_ROOT		11
-+#define ACLK_SYS_SHRM		12
-+#define HCLK_NPU_ROOT		13
-+#define ACLK_NPU_ROOT		14
-+#define PCLK_NPU_ROOT		15
-+#define HCLK_RKNN		16
-+#define ACLK_RKNN		17
-+#define PCLK_ACODEC		18
-+#define MCLK_ACODEC_TX		19
-+#define CLK_CORE_CRYPTO		20
-+#define CLK_PKA_CRYPTO		21
-+#define ACLK_CRYPTO		22
-+#define HCLK_CRYPTO		23
-+#define ACLK_DECOM		24
-+#define PCLK_DECOM		25
-+#define DCLK_DECOM		26
-+#define ACLK_DMAC		27
-+#define PCLK_DSM		28
-+#define MCLK_DSM		29
-+#define CCLK_SRC_EMMC		30
-+#define HCLK_EMMC		31
-+#define PCLK_GPIO4		32
-+#define DBCLK_GPIO4		33
-+#define PCLK_I2C0		34
-+#define CLK_I2C0		35
-+#define PCLK_I2C2		36
-+#define CLK_I2C2		37
-+#define PCLK_I2C3		38
-+#define CLK_I2C3		39
-+#define PCLK_I2C4		40
-+#define CLK_I2C4		41
-+#define HCLK_I2S0		42
-+#define PCLK_DFT2APB		43
-+#define HCLK_IVE		44
-+#define ACLK_IVE		45
-+#define PCLK_PWM0_PERI		46
-+#define CLK_PWM0_PERI		47
-+#define CLK_CAPTURE_PWM0_PERI	48
-+#define PCLK_PERI_ROOT		49
-+#define ACLK_PERI_ROOT		50
-+#define HCLK_PERI_ROOT		51
-+#define CLK_TIMER_ROOT		52
-+#define ACLK_BUS_ROOT		53
-+#define HCLK_SFC		54
-+#define SCLK_SFC		55
-+#define PCLK_UART0		56
-+#define CLK_PVTM_CORE		57
-+#define PCLK_UART1		58
-+#define CLK_CORE_MCU_RTC	59
-+#define PCLK_PWM1_PERI		60
-+#define CLK_PWM1_PERI		61
-+#define CLK_CAPTURE_PWM1_PERI	62
-+#define PCLK_PWM2_PERI		63
-+#define CLK_PWM2_PERI		64
-+#define CLK_CAPTURE_PWM2_PERI	65
-+#define HCLK_BOOTROM		66
-+#define HCLK_SAI		67
-+#define MCLK_SAI		68
-+#define PCLK_SARADC		69
-+#define CLK_SARADC		70
-+#define PCLK_SPI1		71
-+#define CLK_SPI1		72
-+#define PCLK_STIMER		73
-+#define CLK_STIMER0		74
-+#define CLK_STIMER1		75
-+#define PCLK_TIMER		76
-+#define CLK_TIMER0		77
-+#define CLK_TIMER1		78
-+#define CLK_TIMER2		79
-+#define CLK_TIMER3		80
-+#define CLK_TIMER4		81
-+#define CLK_TIMER5		82
-+#define HCLK_TRNG_NS		83
-+#define HCLK_TRNG_S		84
-+#define PCLK_UART2		85
-+#define HCLK_CPU		86
-+#define PCLK_UART3		87
-+#define CLK_CORE_MCU		88
-+#define PCLK_UART4		89
-+#define PCLK_DDR_HWLP		90
-+#define PCLK_UART5		91
-+#define ACLK_USBOTG		92
-+#define CLK_REF_USBOTG		93
-+#define CLK_UTMI_USBOTG		94
-+#define PCLK_USBPHY		95
-+#define CLK_REF_USBPHY		96
-+#define PCLK_WDT_NS		97
-+#define TCLK_WDT_NS		98
-+#define PCLK_WDT_S		99
-+#define TCLK_WDT_S		100
-+#define CLK_DDR_FAIL_SAFE	101
-+#define XIN_OSC0_DIV		102
-+#define CLK_DEEPSLOW		103
-+#define PCLK_PMU_GPIO0		104
-+#define DBCLK_PMU_GPIO0		105
-+#define CLK_PMU			106
-+#define PCLK_PMU		107
-+#define PCLK_PMU_HP_TIMER	108
-+#define CLK_PMU_HP_TIMER	109
-+#define CLK_PMU_32K_HP_TIMER	110
-+#define PCLK_I2C1		111
-+#define CLK_I2C1		112
-+#define PCLK_PMU_IOC		113
-+#define PCLK_PMU_MAILBOX	114
-+#define CLK_PMU_MCU		115
-+#define CLK_PMU_MCU_RTC		116
-+#define CLK_PMU_MCU_JTAG	117
-+#define CLK_PVTM_PMU		118
-+#define PCLK_PVTM_PMU		119
-+#define CLK_REFOUT		120
-+#define CLK_100M_PMU		121
-+#define PCLK_PMU_ROOT		122
-+#define HCLK_PMU_ROOT		123
-+#define HCLK_PMU_SRAM		124
-+#define PCLK_PMU_WDT		125
-+#define TCLK_PMU_WDT		126
-+#define CLK_DFICTRL		127
-+#define CLK_DDRMON		128
-+#define CLK_DDR_PHY		129
-+#define ACLK_DDRC		130
-+#define CLK_CORE_DDRC_SRC	131
-+#define CLK_CORE_DDRC		132
-+#define CLK_50M_SRC		133
-+#define CLK_100M_SRC		134
-+#define CLK_150M_SRC		135
-+#define CLK_200M_SRC		136
-+#define CLK_250M_SRC		137
-+#define CLK_300M_SRC		138
-+#define CLK_339M_SRC		139
-+#define CLK_400M_SRC		140
-+#define CLK_450M_SRC		141
-+#define CLK_500M_SRC		142
-+#define CLK_I2S0_8CH_TX_SRC	143
-+#define CLK_I2S0_8CH_TX_FRAC	144
-+#define CLK_I2S0_8CH_TX		145
-+#define CLK_I2S0_8CH_RX_SRC	146
-+#define CLK_I2S0_8CH_RX_FRAC	147
-+#define CLK_I2S0_8CH_RX		148
-+#define I2S0_8CH_MCLKOUT	149
-+#define MCLK_I2S0_8CH_RX	150
-+#define MCLK_I2S0_8CH_TX	151
-+#define CLK_REF_MIPI0_SRC	152
-+#define CLK_REF_MIPI0_FRAC	153
-+#define CLK_REF_MIPI0_OUT	154
-+#define CLK_REF_MIPI1_SRC	155
-+#define CLK_REF_MIPI1_FRAC	156
-+#define MCLK_REF_MIPI0		157
-+#define MCLK_REF_MIPI1		158
-+#define CLK_REF_MIPI0		159
-+#define CLK_REF_MIPI1		160
-+#define CLK_UART0_SRC		161
-+#define CLK_UART0_FRAC		162
-+#define CLK_UART0		163
-+#define SCLK_UART0		164
-+#define CLK_UART1_SRC		165
-+#define CLK_UART1_FRAC		166
-+#define CLK_UART1		167
-+#define SCLK_UART1		168
-+#define CLK_UART2_SRC		169
-+#define CLK_UART2_FRAC		170
-+#define CLK_UART2		171
-+#define SCLK_UART2		172
-+#define CLK_UART3_SRC		173
-+#define CLK_UART3_FRAC		174
-+#define CLK_UART3		175
-+#define SCLK_UART3		176
-+#define CLK_UART4_SRC		177
-+#define CLK_UART4_FRAC		178
-+#define CLK_UART4		179
-+#define SCLK_UART4		180
-+#define CLK_UART5_SRC		181
-+#define CLK_UART5_FRAC		182
-+#define CLK_UART5		183
-+#define SCLK_UART5		184
-+#define CLK_VICAP_M0_SRC	185
-+#define CLK_VICAP_M0_FRAC	186
-+#define CLK_VICAP_M0		187
-+#define SCLK_VICAP_M0		188
-+#define CLK_VICAP_M1_SRC	189
-+#define CLK_VICAP_M1_FRAC	190
-+#define CLK_VICAP_M1		191
-+#define SCLK_VICAP_M1		192
-+#define DCLK_VOP_SRC		193
-+#define PCLK_CRU		194
-+#define PCLK_TOP_ROOT		195
-+#define PCLK_SPI0		196
-+#define CLK_SPI0		197
-+#define SCLK_IN_SPI0		198
-+#define CLK_UART_DETN_FLT	199
-+#define HCLK_VEPU		200
-+#define ACLK_VEPU		201
-+#define CLK_CORE_VEPU		202
-+#define CLK_CORE_VEPU_DVBM	203
-+#define PCLK_GPIO1		204
-+#define DBCLK_GPIO1		205
-+#define HCLK_VEPU_PP		206
-+#define ACLK_VEPU_PP		207
-+#define HCLK_VEPU_ROOT		208
-+#define ACLK_VEPU_COM_ROOT	209
-+#define ACLK_VEPU_ROOT		210
-+#define PCLK_VEPU_ROOT		211
-+#define PCLK_VICAP_VEPU		212
-+#define PCLK_CSIHOST0		213
-+#define CLK_RXBYTECLKHS_0	214
-+#define PCLK_CSIHOST1		215
-+#define CLK_RXBYTECLKHS_1	216
-+#define PCLK_GPIO3		217
-+#define DBCLK_GPIO3		218
-+#define HCLK_ISP3P2		219
-+#define ACLK_ISP3P2		220
-+#define CLK_CORE_ISP3P2		221
-+#define PCLK_MIPICSIPHY		222
-+#define CCLK_SRC_SDMMC		223
-+#define HCLK_SDMMC		224
-+#define CLK_SDMMC_DETN_FLT	225
-+#define HCLK_VI_ROOT		226
-+#define ACLK_VI_ROOT		227
-+#define PCLK_VI_ROOT		228
-+#define PCLK_VI_RTC_ROOT	229
-+#define PCLK_VI_RTC_TEST	230
-+#define PCLK_VI_RTC_PHY		231
-+#define DCLK_VICAP		232
-+#define PCLK_VICAP		233
-+#define ACLK_VICAP		234
-+#define HCLK_VICAP		235
-+#define I0CLK_VICAP		236
-+#define I1CLK_VICAP		237
-+#define RX0PCLK_VICAP		238
-+#define RX1PCLK_VICAP		239
-+#define ISP0CLK_VICAP		240
-+#define PCLK_GPIO2		241
-+#define DBCLK_GPIO2		242
-+#define ACLK_MAC		243
-+#define PCLK_MAC		244
-+#define CLK_GMAC0_50M_O		245
-+#define CLK_GMAC0_TX_50M_O	246
-+#define CLK_GMAC0_REF_50M	247
-+#define CLK_GMAC0_TX_50M	248
-+#define CLK_GMAC0_RX_50M	249
-+#define ACLK_MAC_ROOT		250
-+#define CLK_MACPHY		251
-+#define CLK_OTPC_ARB		252
-+#define PCLK_OTPC_NS		253
-+#define CLK_SBPI_OTPC_NS	254
-+#define CLK_USER_OTPC_NS	255
-+#define PCLK_OTPC_S		256
-+#define CLK_SBPI_OTPC_S		257
-+#define CLK_USER_OTPC_S		258
-+#define PCLK_OTP_MASK		259
-+#define CLK_PMC_OTP		260
-+#define HCLK_RGA2E		261
-+#define ACLK_RGA2E		262
-+#define CLK_CORE_RGA2E		263
-+#define CCLK_SRC_SDIO		264
-+#define HCLK_SDIO		265
-+#define PCLK_TSADC		266
-+#define CLK_TSADC		267
-+#define CLK_TSADC_TSEN		268
-+#define ACLK_VO_ROOT		269
-+#define HCLK_VO_ROOT		270
-+#define PCLK_VO_ROOT		271
-+#define ACLK_VOP_ROOT		272
-+#define HCLK_VOP		273
-+#define DCLK_VOP		274
-+#define ACLK_VOP		275
-+#define CLK_RTC_32K		276
-+#define PCLK_MAILBOX		277
++#define RV1106_PMUCLKSEL_CON(x)		((x) * 0x4 + 0x300)
++#define RV1106_PMUCLKGATE_CON(x)	((x) * 0x4 + 0x800)
++#define RV1106_PLL_CON(x)		((x) * 0x4 + RV1106_TOPCRU_BASE)
++#define RV1106_MODE_CON			(0x280 + RV1106_TOPCRU_BASE)
++#define RV1106_CLKSEL_CON(x)		((x) * 0x4 + 0x300 + RV1106_TOPCRU_BASE)
++#define RV1106_CLKGATE_CON(x)		((x) * 0x4 + 0x800 + RV1106_TOPCRU_BASE)
++#define RV1106_GLB_SRST_FST		(0xc08 + RV1106_TOPCRU_BASE)
++#define RV1106_PERICLKSEL_CON(x)	((x) * 0x4 + 0x300 + RV1106_PERICRU_BASE)
++#define RV1106_PERICLKGATE_CON(x)	((x) * 0x4 + 0x800 + RV1106_PERICRU_BASE)
++#define RV1106_VICLKSEL_CON(x)		((x) * 0x4 + 0x300 + RV1106_VICRU_BASE)
++#define RV1106_VICLKGATE_CON(x)		((x) * 0x4 + 0x800 + RV1106_VICRU_BASE)
++#define RV1106_NPUCLKSEL_CON(x)		((x) * 0x4 + 0x300 + RV1106_NPUCRU_BASE)
++#define RV1106_NPUCLKGATE_CON(x)	((x) * 0x4 + 0x800 + RV1106_NPUCRU_BASE)
++#define RV1106_CORECLKSEL_CON(x)	((x) * 0x4 + 0x300 + RV1106_CORECRU_BASE)
++#define RV1106_CORECLKGATE_CON(x)	((x) * 0x4 + 0x800 + RV1106_CORECRU_BASE)
++#define RV1106_VEPUCLKSEL_CON(x)	((x) * 0x4 + 0x300 + RV1106_VEPUCRU_BASE)
++#define RV1106_VEPUCLKGATE_CON(x)	((x) * 0x4 + 0x800 + RV1106_VEPUCRU_BASE)
++#define RV1106_VOCLKSEL_CON(x)		((x) * 0x4 + 0x300 + RV1106_VOCRU_BASE)
++#define RV1106_VOCLKGATE_CON(x)		((x) * 0x4 + 0x800 + RV1106_VOCRU_BASE)
++#define RV1106_DDRCLKSEL_CON(x)		((x) * 0x4 + 0x300 + RV1106_DDRCRU_BASE)
++#define RV1106_DDRCLKGATE_CON(x)	((x) * 0x4 + 0x800 + RV1106_DDRCRU_BASE)
++#define RV1106_SUBDDRCLKSEL_CON(x)	((x) * 0x4 + 0x300 + RV1106_SUBDDRCRU_BASE)
++#define RV1106_SUBDDRCLKGATE_CON(x)	((x) * 0x4 + 0x800 + RV1106_SUBDDRCRU_BASE)
++#define RV1106_SUBDDRMODE_CON		(0x280 + RV1106_SUBDDRCRU_BASE)
 +
-+/* mmc phase clocks */
-+#define SCLK_EMMC_DRV		278
-+#define SCLK_EMMC_SAMPLE	279
-+#define SCLK_SDMMC_DRV		280
-+#define SCLK_SDMMC_SAMPLE	281
-+#define SCLK_SDIO_DRV		282
-+#define SCLK_SDIO_SAMPLE	283
++/* Register offsets inside the GRF region for the MMC phase clocks */
++#define RV1106_VI_GRF_BASE		0x50000
++#define RV1106_VO_GRF_BASE		0x60000
 +
-+/* internal clocks */
-+#define XIN_OSC0_HALF		284
-+#define PCLK_DBG		285
-+#define PCLK_CPU_ROOT		286
-+#define CLK_RTC32K_FRAC		287
++#define RV1106_EMMC_CON0		0x20
++#define RV1106_EMMC_CON1		0x24
++#define RV1106_SDMMC_CON0		(0x4 + RV1106_VI_GRF_BASE)
++#define RV1106_SDMMC_CON1		(0x8 + RV1106_VI_GRF_BASE)
++#define RV1106_SDIO_CON0		(0x1c + RV1106_VO_GRF_BASE)
++#define RV1106_SDIO_CON1		(0x20 + RV1106_VO_GRF_BASE)
 +
-+#endif
++#define CRU_PVTPLL0_CON0_L		0x11000
++#define CRU_PVTPLL0_CON0_H		0x11004
++#define CRU_PVTPLL0_CON1_L		0x11008
++#define CRU_PVTPLL0_CON2_H		0x11014
++
++#define CRU_PVTPLL1_CON0_L		0x11030
++#define CRU_PVTPLL1_CON0_H		0x11034
++#define CRU_PVTPLL1_CON1_L		0x11038
++#define CRU_PVTPLL1_CON2_H		0x11044
++
++#define RV1106_GRF_SOC_STATUS0		0x10
++#define CPU_PVTPLL_CON0_L		0x40000
++#define CPU_PVTPLL_CON0_H		0x40004
++
++#define PVTPLL_RING_SEL_MASK		0x7
++#define PVTPLL_RING_SEL_SHIFT		8
++#define PVTPLL_EN_MASK			0x3
++#define PVTPLL_EN_SHIFT			0
++#define PVTPLL_LENGTH_SEL_MASK		0x7f
++#define PVTPLL_LENGTH_SEL_SHIFT		0
++
++#define CPU_CLK_PATH_BASE		RV1106_CORECLKSEL_CON(0)
++#define CPU_PVTPLL_PATH_CORE		(BIT(12) | BIT(28))
++
++#define RV1106_FRAC_MAX_PRATE		1200000000
++
++enum rv1106_plls {
++	apll, dpll, cpll, gpll,
++};
++
++static struct rockchip_pll_rate_table rv1106_pll_rates[] = {
++	/* _mhz, _refdiv, _fbdiv, _postdiv1, _postdiv2, _dsmpd, _frac */
++	RK3036_PLL_RATE(1608000000, 1, 67, 1, 1, 1, 0),
++	RK3036_PLL_RATE(1600000000, 3, 200, 1, 1, 1, 0),
++	RK3036_PLL_RATE(1584000000, 1, 132, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1560000000, 1, 130, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1536000000, 1, 128, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1512000000, 1, 126, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1488000000, 1, 124, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1464000000, 1, 122, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1440000000, 1, 120, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1416000000, 1, 118, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1400000000, 3, 350, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1392000000, 1, 116, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1368000000, 1, 114, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1344000000, 1, 112, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1320000000, 1, 110, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1296000000, 1, 108, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1272000000, 1, 106, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1248000000, 1, 104, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1200000000, 1, 100, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1188000000, 1, 99, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1104000000, 1, 92, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1100000000, 3, 275, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1008000000, 1, 84, 2, 1, 1, 0),
++	RK3036_PLL_RATE(1000000000, 3, 250, 2, 1, 1, 0),
++	RK3036_PLL_RATE(993484800, 1, 124, 3, 1, 0, 3113851),
++	RK3036_PLL_RATE(984000000, 1, 82, 2, 1, 1, 0),
++	RK3036_PLL_RATE(983040000, 1, 81, 2, 1, 0, 15435038),
++	RK3036_PLL_RATE(960000000, 1, 80, 2, 1, 1, 0),
++	RK3036_PLL_RATE(936000000, 1, 78, 2, 1, 1, 0),
++	RK3036_PLL_RATE(912000000, 1, 76, 2, 1, 1, 0),
++	RK3036_PLL_RATE(900000000, 1, 75, 2, 1, 1, 0),
++	RK3036_PLL_RATE(888000000, 1, 74, 2, 1, 1, 0),
++	RK3036_PLL_RATE(864000000, 1, 72, 2, 1, 1, 0),
++	RK3036_PLL_RATE(840000000, 1, 70, 2, 1, 1, 0),
++	RK3036_PLL_RATE(816000000, 1, 68, 2, 1, 1, 0),
++	RK3036_PLL_RATE(800000000, 3, 200, 2, 1, 1, 0),
++	RK3036_PLL_RATE(700000000, 3, 350, 4, 1, 1, 0),
++	RK3036_PLL_RATE(696000000, 1, 116, 4, 1, 1, 0),
++	RK3036_PLL_RATE(624000000, 1, 104, 4, 1, 1, 0),
++	RK3036_PLL_RATE(600000000, 1, 100, 4, 1, 1, 0),
++	RK3036_PLL_RATE(594000000, 1, 99, 4, 1, 1, 0),
++	RK3036_PLL_RATE(504000000, 1, 84, 4, 1, 1, 0),
++	RK3036_PLL_RATE(500000000, 1, 125, 6, 1, 1, 0),
++	RK3036_PLL_RATE(496742400, 1, 124, 6, 1, 0, 3113851),
++	RK3036_PLL_RATE(491520000, 1, 40, 2, 1, 0, 16106127),
++	RK3036_PLL_RATE(408000000, 1, 68, 2, 2, 1, 0),
++	RK3036_PLL_RATE(312000000, 1, 78, 6, 1, 1, 0),
++	RK3036_PLL_RATE(216000000, 1, 72, 4, 2, 1, 0),
++	RK3036_PLL_RATE(96000000, 1, 96, 6, 4, 1, 0),
++	{ /* sentinel */ },
++};
++
++#define RV1106_DIV_ACLK_CORE_MASK	0x1f
++#define RV1106_DIV_ACLK_CORE_SHIFT	7
++#define RV1106_DIV_PCLK_DBG_MASK	0x1f
++#define RV1106_DIV_PCLK_DBG_SHIFT	0
++#define RV1106_CORE_SEL_MASK		0x3
++#define RV1106_CORE_SEL_SHIFT		5
++
++#define RV1106_CLKSEL0(_aclk_core)					\
++{									\
++	.reg = RV1106_CORECLKSEL_CON(0),				\
++	.val = HIWORD_UPDATE(_aclk_core, RV1106_DIV_ACLK_CORE_MASK,	\
++			     RV1106_DIV_ACLK_CORE_SHIFT),		\
++}
++
++#define RV1106_CLKSEL1(_pclk_dbg)					\
++{									\
++	.reg = RV1106_CORECLKSEL_CON(1),				\
++	.val = HIWORD_UPDATE(_pclk_dbg, RV1106_DIV_PCLK_DBG_MASK,	\
++			     RV1106_DIV_PCLK_DBG_SHIFT),		\
++}
++
++#define RV1106_CLKSEL2(_is_pvtpll)					\
++{									\
++	.reg = RV1106_CORECLKSEL_CON(0),				\
++	.val = HIWORD_UPDATE(_is_pvtpll, RV1106_CORE_SEL_MASK,		\
++			     RV1106_CORE_SEL_SHIFT),			\
++}
++
++#define RV1106_CPUCLK_RATE(_prate, _aclk_core, _pclk_dbg, _is_pvtpll)	\
++{									\
++	.prate = _prate,						\
++	.divs = {							\
++		RV1106_CLKSEL0(_aclk_core),				\
++		RV1106_CLKSEL1(_pclk_dbg),				\
++	},								\
++	.post_muxs = {							\
++		RV1106_CLKSEL2(_is_pvtpll),				\
++	},								\
++}
++
++static struct rockchip_cpuclk_rate_table rv1106_cpuclk_rates[] __initdata = {
++	RV1106_CPUCLK_RATE(1608000000, 3, 7, 1),
++	RV1106_CPUCLK_RATE(1584000000, 3, 7, 1),
++	RV1106_CPUCLK_RATE(1560000000, 3, 7, 1),
++	RV1106_CPUCLK_RATE(1536000000, 3, 7, 1),
++	RV1106_CPUCLK_RATE(1512000000, 3, 7, 1),
++	RV1106_CPUCLK_RATE(1488000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1464000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1440000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1416000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1392000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1368000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1344000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1320000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1296000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1272000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1248000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1224000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1200000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1104000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1096000000, 2, 5, 1),
++	RV1106_CPUCLK_RATE(1008000000, 1, 5, 1),
++	RV1106_CPUCLK_RATE(912000000, 1, 5, 1),
++	RV1106_CPUCLK_RATE(816000000, 1, 3, 1),
++	RV1106_CPUCLK_RATE(696000000, 1, 3, 0),
++	RV1106_CPUCLK_RATE(600000000, 1, 3, 0),
++	RV1106_CPUCLK_RATE(408000000, 1, 1, 0),
++	RV1106_CPUCLK_RATE(312000000, 1, 1, 0),
++	RV1106_CPUCLK_RATE(216000000,  1, 1, 0),
++	RV1106_CPUCLK_RATE(96000000, 1, 1, 0),
++};
++
++static const struct rockchip_cpuclk_reg_data rv1106_cpuclk_data = {
++	.core_reg[0] = RV1106_CORECLKSEL_CON(0),
++	.div_core_shift[0] = 0,
++	.div_core_mask[0] = 0x1f,
++	.num_cores = 1,
++	.mux_core_alt = 2,
++	.mux_core_main = 0,
++	.mux_core_shift = 5,
++	.mux_core_mask = 0x3,
++};
++
++PNAME(mux_pll_p)			= { "xin24m" };
++PNAME(mux_armclk_p)			= { "apll", "cpu_pvtpll", "gpll" };
++PNAME(mux_24m_32k_p)			= { "xin24m", "clk_rtc_32k" };
++PNAME(mux_gpll_cpll_p)			= { "gpll", "cpll" };
++PNAME(mux_gpll_24m_p)			= { "gpll", "xin24m" };
++PNAME(mux_100m_50m_24m_p)		= { "clk_100m_src", "clk_50m_src", "xin24m" };
++PNAME(mux_150m_100m_50m_24m_p)		= { "clk_150m_src", "clk_100m_src", "clk_50m_src", "xin24m" };
++PNAME(mux_500m_300m_100m_24m_p)		= { "clk_500m_src", "clk_300m_src", "clk_100m_src", "xin24m" };
++PNAME(mux_400m_300m_pvtpll0_pvtpll1_p)	= { "clk_400m_src", "clk_300m_src", "clk_pvtpll_0", "clk_pvtpll_1" };
++PNAME(mux_500m_300m_pvtpll0_pvtpll1_p)	= { "clk_500m_src", "clk_300m_src", "clk_pvtpll_0", "clk_pvtpll_1" };
++PNAME(mux_339m_200m_pvtpll0_pvtpll1_p)	= { "clk_339m_src", "clk_200m_src", "clk_pvtpll_0", "clk_pvtpll_1" };
++PNAME(mux_400m_200m_100m_24m_p)		= { "clk_400m_src", "clk_200m_src", "clk_100m_src", "xin24m" };
++PNAME(mux_200m_100m_50m_24m_p)		= { "clk_200m_src", "clk_100m_src", "clk_50m_src", "xin24m" };
++PNAME(mux_300m_200m_100m_24m_p)		= { "clk_300m_src", "clk_200m_src", "clk_100m_src", "xin24m" };
++PNAME(mux_500m_300m_200m_24m_p)		= { "clk_500m_src", "clk_300m_src", "clk_200m_src", "xin24m" };
++PNAME(mux_50m_24m_p)			= { "clk_50m_src", "xin24m" };
++PNAME(mux_400m_24m_p)			= { "clk_400m_src", "xin24m" };
++PNAME(clk_rtc32k_pmu_p)			= { "clk_rtc32k_frac", "xin32k", "clk_pvtm_32k" };
++PNAME(mux_200m_100m_24m_32k_p)		= { "clk_200m_src", "clk_100m_src", "xin24m", "clk_rtc_32k" };
++PNAME(mux_100m_pmu_24m_p)		= { "clk_100m_pmu", "xin24m" };
++PNAME(mux_200m_100m_24m_p)		= { "clk_200m_src", "clk_100m_pmu", "xin24m" };
++PNAME(mux_339m_200m_100m_24m_p)		= { "clk_339m_src", "clk_200m_src", "clk_100m_pmu", "xin24m" };
++PNAME(mux_dpll_300m_p)			= { "dpll", "clk_300m_src" };
++PNAME(clk_i2s0_8ch_tx_p)		= { "clk_i2s0_8ch_tx_src", "clk_i2s0_8ch_tx_frac", "i2s0_mclkin", "xin_osc0_half" };
++PNAME(clk_i2s0_8ch_rx_p)		= { "clk_i2s0_8ch_rx_src", "clk_i2s0_8ch_rx_frac", "i2s0_mclkin", "xin_osc0_half" };
++PNAME(i2s0_8ch_mclkout_p)		= { "mclk_i2s0_8ch_tx", "mclk_i2s0_8ch_rx", "xin_osc0_half" };
++PNAME(clk_ref_mipi0_p)			= { "clk_ref_mipi0_src", "clk_ref_mipi0_frac", "xin24m" };
++PNAME(clk_ref_mipi1_p)			= { "clk_ref_mipi1_src", "clk_ref_mipi1_frac", "xin24m" };
++PNAME(clk_uart0_p)			= { "clk_uart0_src", "clk_uart0_frac", "xin24m" };
++PNAME(clk_uart1_p)			= { "clk_uart1_src", "clk_uart1_frac", "xin24m" };
++PNAME(clk_uart2_p)			= { "clk_uart2_src", "clk_uart2_frac", "xin24m" };
++PNAME(clk_uart3_p)			= { "clk_uart3_src", "clk_uart3_frac", "xin24m" };
++PNAME(clk_uart4_p)			= { "clk_uart4_src", "clk_uart4_frac", "xin24m" };
++PNAME(clk_uart5_p)			= { "clk_uart5_src", "clk_uart5_frac", "xin24m" };
++PNAME(clk_vicap_m0_p)			= { "clk_vicap_m0_src", "clk_vicap_m0_frac", "xin24m" };
++PNAME(clk_vicap_m1_p)			= { "clk_vicap_m1_src", "clk_vicap_m1_frac", "xin24m" };
++
++static struct rockchip_pll_clock rv1106_pll_clks[] __initdata = {
++	[apll] = PLL(pll_rk3328, PLL_APLL, "apll", mux_pll_p,
++		     CLK_IGNORE_UNUSED, RV1106_PLL_CON(0),
++		     RV1106_MODE_CON, 0, 10, 0, rv1106_pll_rates),
++	[cpll] = PLL(pll_rk3328, PLL_CPLL, "cpll", mux_pll_p,
++		     0, RV1106_PLL_CON(8),
++		     RV1106_MODE_CON, 2, 10, 0, rv1106_pll_rates),
++	[dpll] = PLL(pll_rk3328, PLL_DPLL, "dpll", mux_pll_p,
++		     CLK_IGNORE_UNUSED, RV1106_PLL_CON(16),
++		     RV1106_SUBDDRMODE_CON, 0, 10, 0, NULL),
++	[gpll] = PLL(pll_rk3328, PLL_GPLL, "gpll", mux_pll_p,
++		     0, RV1106_PLL_CON(24),
++		     RV1106_MODE_CON, 4, 10, 0, rv1106_pll_rates),
++};
++
++#define MFLAGS CLK_MUX_HIWORD_MASK
++#define DFLAGS CLK_DIVIDER_HIWORD_MASK
++#define GFLAGS (CLK_GATE_HIWORD_MASK | CLK_GATE_SET_TO_DISABLE)
++
++static struct rockchip_clk_branch rv1106_rtc32k_pmu_fracmux __initdata =
++	MUX(CLK_RTC_32K, "clk_rtc_32k", clk_rtc32k_pmu_p, CLK_SET_RATE_PARENT | CLK_SET_RATE_NO_REPARENT,
++			RV1106_PMUCLKSEL_CON(0), 6, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_i2s0_8ch_tx_fracmux __initdata =
++	MUX(CLK_I2S0_8CH_TX, "clk_i2s0_8ch_tx", clk_i2s0_8ch_tx_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(19), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_i2s0_8ch_rx_fracmux __initdata =
++	MUX(CLK_I2S0_8CH_RX, "clk_i2s0_8ch_rx", clk_i2s0_8ch_rx_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(21), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_ref_mipi0_fracmux __initdata =
++	MUX(CLK_REF_MIPI0, "clk_ref_mipi0", clk_ref_mipi0_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(27), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_ref_mipi1_fracmux __initdata =
++	MUX(CLK_REF_MIPI1, "clk_ref_mipi1", clk_ref_mipi1_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(29), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_uart0_fracmux __initdata =
++	MUX(CLK_UART0, "clk_uart0", clk_uart0_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(7), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_uart1_fracmux __initdata =
++	MUX(CLK_UART1, "clk_uart1", clk_uart1_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(9), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_uart2_fracmux __initdata =
++	MUX(CLK_UART2, "clk_uart2", clk_uart2_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(11), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_uart3_fracmux __initdata =
++	MUX(CLK_UART3, "clk_uart3", clk_uart3_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(13), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_uart4_fracmux __initdata =
++	MUX(CLK_UART4, "clk_uart4", clk_uart4_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(15), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_uart5_fracmux __initdata =
++	MUX(CLK_UART5, "clk_uart5", clk_uart5_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(17), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_vicap_m0_fracmux __initdata =
++	MUX(CLK_VICAP_M0, "clk_vicap_m0", clk_vicap_m0_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(31), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_vicap_m1_fracmux __initdata =
++	MUX(CLK_VICAP_M1, "clk_vicap_m1", clk_vicap_m1_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(33), 0, 2, MFLAGS);
++
++static struct rockchip_clk_branch rv1106_clk_branches[] __initdata = {
++
++	FACTOR(XIN_OSC0_HALF, "xin_osc0_half", "xin24m", 0, 1, 2),
++
++	/* PD_CORE */
++	GATE(CLK_PVTM_CORE, "clk_pvtm_core", "xin24m", 0,
++			RV1106_CORECLKGATE_CON(0), 14, GFLAGS),
++	GATE(CLK_CORE_MCU_RTC, "clk_core_mcu_rtc", "xin24m", 0,
++			RV1106_CORECLKGATE_CON(1), 6, GFLAGS),
++	COMPOSITE(HCLK_CPU, "hclk_cpu", mux_gpll_24m_p, CLK_IS_CRITICAL,
++			RV1106_CORECLKSEL_CON(2), 5, 1, MFLAGS, 0, 5, DFLAGS,
++			RV1106_CORECLKGATE_CON(0), 12, GFLAGS),
++	COMPOSITE(CLK_CORE_MCU, "clk_core_mcu", mux_gpll_24m_p, 0,
++			RV1106_CORECLKSEL_CON(3), 11, 1, MFLAGS, 6, 5, DFLAGS,
++			RV1106_CORECLKGATE_CON(1), 1, GFLAGS),
++	COMPOSITE_NOMUX(PCLK_DBG, "pclk_dbg", "armclk", CLK_IS_CRITICAL,
++			RV1106_CORECLKSEL_CON(1), 0, 5, DFLAGS | CLK_DIVIDER_READ_ONLY,
++			RV1106_CORECLKGATE_CON(0), 6, GFLAGS),
++	GATE(PCLK_CPU_ROOT, "pclk_cpu_root", "pclk_dbg", CLK_IS_CRITICAL,
++			RV1106_CORECLKGATE_CON(0), 10, GFLAGS),
++	GATE(PCLK_MAILBOX, "pclk_mailbox", "pclk_cpu_root", 0,
++			RV1106_CORECLKGATE_CON(1), 8, GFLAGS),
++
++	/* PD _TOP */
++	COMPOSITE(CLK_50M_SRC, "clk_50m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(0), 5, 1, MFLAGS, 0, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 1, GFLAGS),
++	COMPOSITE(CLK_100M_SRC, "clk_100m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(0), 11, 1, MFLAGS, 6, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 2, GFLAGS),
++	COMPOSITE(CLK_150M_SRC, "clk_150m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(1), 5, 1, MFLAGS, 0, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 3, GFLAGS),
++	COMPOSITE(CLK_200M_SRC, "clk_200m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(1), 11, 1, MFLAGS, 6, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 4, GFLAGS),
++	COMPOSITE(CLK_250M_SRC, "clk_250m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(2), 5, 1, MFLAGS, 0, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 5, GFLAGS),
++	COMPOSITE(CLK_300M_SRC, "clk_300m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(2), 11, 1, MFLAGS, 6, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 6, GFLAGS),
++	COMPOSITE_HALFDIV(CLK_339M_SRC, "clk_339m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(3), 5, 1, MFLAGS, 0, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 7, GFLAGS),
++	COMPOSITE(CLK_400M_SRC, "clk_400m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(3), 11, 1, MFLAGS, 6, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 8, GFLAGS),
++	COMPOSITE_HALFDIV(CLK_450M_SRC, "clk_450m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(4), 5, 1, MFLAGS, 0, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 9, GFLAGS),
++	COMPOSITE(CLK_500M_SRC, "clk_500m_src", mux_gpll_cpll_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(4), 11, 1, MFLAGS, 6, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 10, GFLAGS),
++
++	COMPOSITE_NODIV(PCLK_TOP_ROOT, "pclk_top_root", mux_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_CLKSEL_CON(24), 5, 2, MFLAGS,
++			RV1106_CLKGATE_CON(2), 9, GFLAGS),
++
++	COMPOSITE(CLK_I2S0_8CH_TX_SRC, "clk_i2s0_8ch_tx_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(17), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(1), 13, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_I2S0_8CH_TX_FRAC, "clk_i2s0_8ch_tx_frac", "clk_i2s0_8ch_tx_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(18), 0,
++			RV1106_CLKGATE_CON(1), 14, GFLAGS,
++			&rv1106_i2s0_8ch_tx_fracmux),
++	GATE(MCLK_I2S0_8CH_TX, "mclk_i2s0_8ch_tx", "clk_i2s0_8ch_tx", 0,
++			RV1106_CLKGATE_CON(1), 15, GFLAGS),
++	COMPOSITE(CLK_I2S0_8CH_RX_SRC, "clk_i2s0_8ch_rx_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(19), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(2), 0, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_I2S0_8CH_RX_FRAC, "clk_i2s0_8ch_rx_frac", "clk_i2s0_8ch_rx_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(20), 0,
++			RV1106_CLKGATE_CON(2), 1, GFLAGS,
++			&rv1106_i2s0_8ch_rx_fracmux),
++	GATE(MCLK_I2S0_8CH_RX, "mclk_i2s0_8ch_rx", "clk_i2s0_8ch_rx", 0,
++			RV1106_CLKGATE_CON(2), 2, GFLAGS),
++	MUX(I2S0_8CH_MCLKOUT, "i2s0_8ch_mclkout", i2s0_8ch_mclkout_p, CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(21), 2, 2, MFLAGS),
++	COMPOSITE(CLK_REF_MIPI0_SRC, "clk_ref_mipi0_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(25), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(3), 4, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_REF_MIPI0_FRAC, "clk_ref_mipi0_frac", "clk_ref_mipi0_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(26), 0,
++			RV1106_CLKGATE_CON(3), 5, GFLAGS,
++			&rv1106_clk_ref_mipi0_fracmux),
++	GATE(MCLK_REF_MIPI0, "mclk_ref_mipi0", "clk_ref_mipi0", 0,
++			 RV1106_CLKGATE_CON(3), 6, GFLAGS),
++	COMPOSITE(CLK_REF_MIPI1_SRC, "clk_ref_mipi1_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(27), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(3), 7, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_REF_MIPI1_FRAC, "clk_ref_mipi1_frac", "clk_ref_mipi1_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(28), 0,
++			RV1106_CLKGATE_CON(3), 8, GFLAGS,
++			&rv1106_clk_ref_mipi1_fracmux),
++	GATE(MCLK_REF_MIPI1, "mclk_ref_mipi1", "clk_ref_mipi1", 0,
++			 RV1106_CLKGATE_CON(3), 9, GFLAGS),
++	COMPOSITE(CLK_UART0_SRC, "clk_uart0_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(5), 5, 1, MFLAGS, 0, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 11, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_UART0_FRAC, "clk_uart0_frac", "clk_uart0_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(6), 0,
++			RV1106_CLKGATE_CON(0), 12, GFLAGS,
++			&rv1106_clk_uart0_fracmux),
++	GATE(SCLK_UART0, "sclk_uart0", "clk_uart0", 0,
++			RV1106_CLKGATE_CON(0), 13, GFLAGS),
++	COMPOSITE(CLK_UART1_SRC, "clk_uart1_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(7), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(0), 14, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_UART1_FRAC, "clk_uart1_frac", "clk_uart1_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(8), 0,
++			RV1106_CLKGATE_CON(0), 15, GFLAGS,
++			&rv1106_clk_uart1_fracmux),
++	GATE(SCLK_UART1, "sclk_uart1", "clk_uart1", 0,
++			 RV1106_CLKGATE_CON(1), 0, GFLAGS),
++	COMPOSITE(CLK_UART2_SRC, "clk_uart2_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(9), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(1), 1, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_UART2_FRAC, "clk_uart2_frac", "clk_uart2_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(10), 0,
++			RV1106_CLKGATE_CON(1), 2, GFLAGS,
++			&rv1106_clk_uart2_fracmux),
++	GATE(SCLK_UART2, "sclk_uart2", "clk_uart2", 0,
++			 RV1106_CLKGATE_CON(1), 3, GFLAGS),
++	COMPOSITE(CLK_UART3_SRC, "clk_uart3_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(11), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(1), 4, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_UART3_FRAC, "clk_uart3_frac", "clk_uart3_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(12), 0,
++			RV1106_CLKGATE_CON(1), 5, GFLAGS,
++			&rv1106_clk_uart3_fracmux),
++	GATE(SCLK_UART3, "sclk_uart3", "clk_uart3", 0,
++			 RV1106_CLKGATE_CON(1), 6, GFLAGS),
++	COMPOSITE(CLK_UART4_SRC, "clk_uart4_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(13), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(1), 7, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_UART4_FRAC, "clk_uart4_frac", "clk_uart4_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(14), 0,
++			RV1106_CLKGATE_CON(1), 8, GFLAGS,
++			&rv1106_clk_uart4_fracmux),
++	GATE(SCLK_UART4, "sclk_uart4", "clk_uart4", 0,
++			 RV1106_CLKGATE_CON(1), 9, GFLAGS),
++	COMPOSITE(CLK_UART5_SRC, "clk_uart5_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(15), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(1), 10, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_UART5_FRAC, "clk_uart5_frac", "clk_uart5_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(16), 0,
++			RV1106_CLKGATE_CON(1), 11, GFLAGS,
++			&rv1106_clk_uart5_fracmux),
++	GATE(SCLK_UART5, "sclk_uart5", "clk_uart5", 0,
++			 RV1106_CLKGATE_CON(1), 12, GFLAGS),
++	COMPOSITE(CLK_VICAP_M0_SRC, "clk_vicap_m0_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(29), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(3), 10, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_VICAP_M0_FRAC, "clk_vicap_m0_frac", "clk_vicap_m0_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(30), 0,
++			RV1106_CLKGATE_CON(3), 11, GFLAGS,
++			&rv1106_clk_vicap_m0_fracmux),
++	GATE(SCLK_VICAP_M0, "sclk_vicap_m0", "clk_vicap_m0", 0,
++			 RV1106_CLKGATE_CON(3), 12, GFLAGS),
++	COMPOSITE(CLK_VICAP_M1_SRC, "clk_vicap_m1_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(31), 7, 1, MFLAGS, 2, 5, DFLAGS,
++			RV1106_CLKGATE_CON(3), 13, GFLAGS),
++	COMPOSITE_FRACMUX(CLK_VICAP_M1_FRAC, "clk_vicap_m1_frac", "clk_vicap_m1_src", CLK_SET_RATE_PARENT,
++			RV1106_CLKSEL_CON(32), 0,
++			RV1106_CLKGATE_CON(3), 14, GFLAGS,
++			&rv1106_clk_vicap_m1_fracmux),
++	GATE(SCLK_VICAP_M1, "sclk_vicap_m1", "clk_vicap_m1", 0,
++			 RV1106_CLKGATE_CON(3), 15, GFLAGS),
++	COMPOSITE(DCLK_VOP_SRC, "dclk_vop_src", mux_gpll_cpll_p, 0,
++			RV1106_CLKSEL_CON(23), 8, 1, MFLAGS, 3, 5, DFLAGS,
++			RV1106_CLKGATE_CON(2), 6, GFLAGS),
++
++	/* PD_DDR */
++	COMPOSITE_NODIV(PCLK_DDR_ROOT, "pclk_ddr_root", mux_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_DDRCLKSEL_CON(0), 0, 2, MFLAGS,
++			RV1106_DDRCLKGATE_CON(0), 0, GFLAGS),
++	COMPOSITE_NODIV(ACLK_DDR_ROOT, "aclk_ddr_root", mux_500m_300m_100m_24m_p, CLK_IS_CRITICAL,
++			RV1106_DDRCLKSEL_CON(0), 8, 2, MFLAGS,
++			RV1106_DDRCLKGATE_CON(0), 12, GFLAGS),
++	GATE(PCLK_DDRPHY, "pclk_ddrphy", "pclk_ddr_root", CLK_IGNORE_UNUSED,
++			RV1106_DDRCLKGATE_CON(1), 3, GFLAGS),
++	GATE(PCLK_DDR_HWLP, "pclk_ddr_hwlp", "pclk_ddr_root", CLK_IGNORE_UNUSED,
++			RV1106_DDRCLKGATE_CON(1), 2, GFLAGS),
++	GATE(PCLK_DDRMON, "pclk_ddrmon", "pclk_ddr_root", 0,
++			RV1106_DDRCLKGATE_CON(0), 7, GFLAGS),
++	GATE(CLK_TIMER_DDRMON, "clk_timer_ddrmon", "xin24m", 0,
++			RV1106_DDRCLKGATE_CON(0), 8, GFLAGS),
++	GATE(PCLK_DDRC, "pclk_ddrc", "pclk_ddr_root", CLK_IGNORE_UNUSED,
++			RV1106_DDRCLKGATE_CON(0), 5, GFLAGS),
++	GATE(PCLK_DFICTRL, "pclk_dfictrl", "pclk_ddr_root", CLK_IS_CRITICAL,
++			RV1106_DDRCLKGATE_CON(0), 11, GFLAGS),
++	GATE(ACLK_SYS_SHRM, "aclk_sys_shrm", "aclk_ddr_root", CLK_IS_CRITICAL,
++			RV1106_DDRCLKGATE_CON(0), 13, GFLAGS),
++
++	/* PD_NPU */
++	COMPOSITE_NODIV(HCLK_NPU_ROOT, "hclk_npu_root", mux_150m_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_NPUCLKSEL_CON(0), 0, 2, MFLAGS,
++			RV1106_NPUCLKGATE_CON(0), 0, GFLAGS),
++	COMPOSITE_NODIV(ACLK_NPU_ROOT, "aclk_npu_root", mux_500m_300m_pvtpll0_pvtpll1_p, CLK_IS_CRITICAL,
++			RV1106_NPUCLKSEL_CON(0), 2, 2, MFLAGS,
++			RV1106_NPUCLKGATE_CON(0), 1, GFLAGS),
++	COMPOSITE_NODIV(PCLK_NPU_ROOT, "pclk_npu_root", mux_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_NPUCLKSEL_CON(0), 4, 2, MFLAGS,
++			RV1106_NPUCLKGATE_CON(0), 2, GFLAGS),
++	GATE(HCLK_RKNN, "hclk_rknn", "hclk_npu_root", 0,
++			RV1106_NPUCLKGATE_CON(0), 9, GFLAGS),
++	GATE(ACLK_RKNN, "aclk_rknn", "aclk_npu_root", 0,
++			RV1106_NPUCLKGATE_CON(0), 10, GFLAGS),
++
++	/* PD_PERI */
++	COMPOSITE_NODIV(PCLK_PERI_ROOT, "pclk_peri_root", mux_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_PERICLKSEL_CON(1), 0, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(0), 0, GFLAGS),
++	COMPOSITE_NODIV(ACLK_PERI_ROOT, "aclk_peri_root", mux_400m_200m_100m_24m_p, CLK_IS_CRITICAL,
++			RV1106_PERICLKSEL_CON(1), 2, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(0), 1, GFLAGS),
++	COMPOSITE_NODIV(HCLK_PERI_ROOT, "hclk_peri_root", mux_200m_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_PERICLKSEL_CON(1), 4, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(0), 2, GFLAGS),
++	COMPOSITE_NODIV(ACLK_BUS_ROOT, "aclk_bus_root", mux_300m_200m_100m_24m_p, CLK_IS_CRITICAL,
++			RV1106_PERICLKSEL_CON(9), 0, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(6), 8, GFLAGS),
++	GATE(PCLK_ACODEC, "pclk_acodec", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(6), 3, GFLAGS),
++	COMPOSITE_NOMUX(MCLK_ACODEC_TX, "mclk_acodec_tx", "mclk_i2s0_8ch_tx", 0,
++			RV1106_PERICLKSEL_CON(8), 0, 8, DFLAGS,
++			RV1106_PERICLKGATE_CON(6), 4, GFLAGS),
++	COMPOSITE_NODIV(CLK_CORE_CRYPTO, "clk_core_crypto", mux_300m_200m_100m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(6), 5, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(3), 11, GFLAGS),
++	COMPOSITE_NODIV(CLK_PKA_CRYPTO, "clk_pka_crypto", mux_300m_200m_100m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(6), 7, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(3), 12, GFLAGS),
++	GATE(ACLK_CRYPTO, "aclk_crypto", "aclk_bus_root", 0,
++			RV1106_PERICLKGATE_CON(3), 13, GFLAGS),
++	GATE(HCLK_CRYPTO, "hclk_crypto", "hclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(3), 14, GFLAGS),
++	GATE(ACLK_DECOM, "aclk_decom", "aclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(5), 9, GFLAGS),
++	GATE(PCLK_DECOM, "pclk_decom", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(5), 10, GFLAGS),
++	COMPOSITE_NODIV(DCLK_DECOM, "dclk_decom", mux_400m_200m_100m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(7), 14, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(5), 11, GFLAGS),
++	GATE(ACLK_DMAC, "aclk_dmac", "aclk_bus_root", 0,
++			RV1106_PERICLKGATE_CON(5), 8, GFLAGS),
++	GATE(PCLK_DSM, "pclk_dsm", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(6), 2, GFLAGS),
++	GATE(MCLK_DSM, "mclk_dsm", "mclk_i2s0_8ch_tx", 0,
++			RV1106_PERICLKGATE_CON(6), 1, GFLAGS),
++	COMPOSITE(CCLK_SRC_EMMC, "cclk_src_emmc", mux_400m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(7), 6, 1, MFLAGS, 0, 6, DFLAGS,
++			RV1106_PERICLKGATE_CON(4), 12, GFLAGS),
++	GATE(HCLK_EMMC, "hclk_emmc", "hclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(4), 13, GFLAGS),
++	GATE(PCLK_GPIO4, "pclk_gpio4", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(2), 0, GFLAGS),
++	GATE(DBCLK_GPIO4, "dbclk_gpio4", "xin24m", 0,
++			RV1106_PERICLKGATE_CON(2), 1, GFLAGS),
++	GATE(PCLK_I2C0, "pclk_i2c0", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(1), 6, GFLAGS),
++	COMPOSITE_NODIV(CLK_I2C0, "clk_i2c0", mux_200m_100m_50m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(1), 8, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(1), 7, GFLAGS),
++	GATE(PCLK_I2C2, "pclk_i2c2", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(1), 10, GFLAGS),
++	COMPOSITE_NODIV(CLK_I2C2, "clk_i2c2", mux_200m_100m_50m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(1), 12, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(1), 11, GFLAGS),
++	GATE(PCLK_I2C3, "pclk_i2c3", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(1), 12, GFLAGS),
++	COMPOSITE_NODIV(CLK_I2C3, "clk_i2c3", mux_200m_100m_50m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(1), 14, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(1), 13, GFLAGS),
++	GATE(PCLK_I2C4, "pclk_i2c4", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(1), 14, GFLAGS),
++	COMPOSITE_NODIV(CLK_I2C4, "clk_i2c4", mux_200m_100m_50m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(2), 0, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(1), 15, GFLAGS),
++	GATE(HCLK_I2S0, "hclk_i2s0", "hclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(6), 0, GFLAGS),
++	GATE(PCLK_DFT2APB, "pclk_dft2apb", "pclk_peri_root", CLK_IGNORE_UNUSED,
++			RV1106_PERICLKGATE_CON(6), 7, GFLAGS),
++	GATE(HCLK_IVE, "hclk_ive", "hclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(6), 9, GFLAGS),
++	GATE(ACLK_IVE, "aclk_ive", "aclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(6), 10, GFLAGS),
++	GATE(PCLK_PWM0_PERI, "pclk_pwm0_peri", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(7), 3, GFLAGS),
++	COMPOSITE_NODIV(CLK_PWM0_PERI, "clk_pwm0_peri", mux_100m_50m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(11), 0, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(7), 4, GFLAGS),
++	GATE(CLK_CAPTURE_PWM0_PERI, "clk_capture_pwm0_peri", "xin24m", 0,
++			RV1106_PERICLKGATE_CON(7), 5, GFLAGS),
++	GATE(CLK_TIMER_ROOT, "clk_timer_root", "xin24m", 0,
++			RV1106_PERICLKGATE_CON(0), 3, GFLAGS),
++	GATE(HCLK_SFC, "hclk_sfc", "hclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(4), 14, GFLAGS),
++	COMPOSITE(SCLK_SFC, "sclk_sfc", mux_500m_300m_200m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(7), 12, 2, MFLAGS, 7, 5, DFLAGS,
++			RV1106_PERICLKGATE_CON(5), 0, GFLAGS),
++	GATE(PCLK_UART0, "pclk_uart0", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(6), 11, GFLAGS),
++	GATE(PCLK_UART1, "pclk_uart1", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(6), 15, GFLAGS),
++	GATE(PCLK_PWM1_PERI, "pclk_pwm1_peri", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(3), 15, GFLAGS),
++	COMPOSITE_NODIV(CLK_PWM1_PERI, "clk_pwm1_peri", mux_100m_50m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(6), 9, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(4), 0, GFLAGS),
++	GATE(CLK_CAPTURE_PWM1_PERI, "clk_capture_pwm1_peri", "xin24m", 0,
++			RV1106_PERICLKGATE_CON(4), 1, GFLAGS),
++	GATE(PCLK_PWM2_PERI, "pclk_pwm2_peri", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(4), 2, GFLAGS),
++	COMPOSITE_NODIV(CLK_PWM2_PERI, "clk_pwm2_peri", mux_100m_50m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(6), 11, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(4), 3, GFLAGS),
++	GATE(CLK_CAPTURE_PWM2_PERI, "clk_capture_pwm2_peri", "xin24m", 0,
++			RV1106_PERICLKGATE_CON(4), 4, GFLAGS),
++	GATE(HCLK_BOOTROM, "hclk_bootrom", "hclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(0), 7, GFLAGS),
++	GATE(HCLK_SAI, "hclk_sai", "hclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(5), 13, GFLAGS),
++	GATE(MCLK_SAI, "mclk_sai", "mclk_i2s0_8ch_tx", 0,
++			RV1106_PERICLKGATE_CON(5), 14, GFLAGS),
++	GATE(PCLK_SARADC, "pclk_saradc", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(3), 3, GFLAGS),
++	COMPOSITE_NOMUX(CLK_SARADC, "clk_saradc", "xin24m", 0,
++			RV1106_PERICLKSEL_CON(6), 0, 3, DFLAGS,
++			RV1106_PERICLKGATE_CON(3), 4, GFLAGS),
++	GATE(PCLK_SPI1, "pclk_spi1", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(3), 6, GFLAGS),
++	COMPOSITE_NODIV(CLK_SPI1, "clk_spi1", mux_200m_100m_50m_24m_p, 0,
++			RV1106_PERICLKSEL_CON(6), 3, 2, MFLAGS,
++			RV1106_PERICLKGATE_CON(3), 7, GFLAGS),
++	GATE(PCLK_STIMER, "pclk_stimer", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(0), 15, GFLAGS),
++	GATE(CLK_STIMER0, "clk_stimer0", "clk_timer_root", 0,
++			RV1106_PERICLKGATE_CON(1), 0, GFLAGS),
++	GATE(CLK_STIMER1, "clk_stimer1", "clk_timer_root", 0,
++			RV1106_PERICLKGATE_CON(1), 1, GFLAGS),
++	GATE(PCLK_TIMER, "pclk_timer", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(0), 8, GFLAGS),
++	GATE(CLK_TIMER0, "clk_timer0", "clk_timer_root", 0,
++			RV1106_PERICLKGATE_CON(0), 9, GFLAGS),
++	GATE(CLK_TIMER1, "clk_timer1", "clk_timer_root", 0,
++			RV1106_PERICLKGATE_CON(0), 10, GFLAGS),
++	GATE(CLK_TIMER2, "clk_timer2", "clk_timer_root", 0,
++			RV1106_PERICLKGATE_CON(0), 11, GFLAGS),
++	GATE(CLK_TIMER3, "clk_timer3", "clk_timer_root", 0,
++			RV1106_PERICLKGATE_CON(0), 12, GFLAGS),
++	GATE(CLK_TIMER4, "clk_timer4", "clk_timer_root", 0,
++			RV1106_PERICLKGATE_CON(0), 13, GFLAGS),
++	GATE(CLK_TIMER5, "clk_timer5", "clk_timer_root", 0,
++			RV1106_PERICLKGATE_CON(0), 14, GFLAGS),
++	GATE(HCLK_TRNG_NS, "hclk_trng_ns", "hclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(3), 9, GFLAGS),
++	GATE(HCLK_TRNG_S, "hclk_trng_s", "hclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(3), 10, GFLAGS),
++	GATE(PCLK_UART2, "pclk_uart2", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(2), 3, GFLAGS),
++	GATE(PCLK_UART3, "pclk_uart3", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(2), 7, GFLAGS),
++	GATE(PCLK_UART4, "pclk_uart4", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(2), 11, GFLAGS),
++	GATE(PCLK_UART5, "pclk_uart5", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(2), 15, GFLAGS),
++	GATE(ACLK_USBOTG, "aclk_usbotg", "aclk_bus_root", 0,
++			RV1106_PERICLKGATE_CON(4), 7, GFLAGS),
++	GATE(CLK_REF_USBOTG, "clk_ref_usbotg", "xin24m", 0,
++			RV1106_PERICLKGATE_CON(4), 8, GFLAGS),
++	GATE(PCLK_USBPHY, "pclk_usbphy", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(5), 1, GFLAGS),
++	GATE(CLK_REF_USBPHY, "clk_ref_usbphy", "xin24m", 0,
++			RV1106_PERICLKGATE_CON(5), 2, GFLAGS),
++	GATE(PCLK_WDT_NS, "pclk_wdt_ns", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(1), 2, GFLAGS),
++	GATE(TCLK_WDT_NS, "tclk_wdt_ns", "xin24m", 0,
++			RV1106_PERICLKGATE_CON(1), 3, GFLAGS),
++	GATE(PCLK_WDT_S, "pclk_wdt_s", "pclk_peri_root", 0,
++			RV1106_PERICLKGATE_CON(1), 4, GFLAGS),
++	GATE(TCLK_WDT_S, "tclk_wdt_s", "xin24m", 0,
++			RV1106_PERICLKGATE_CON(1), 5, GFLAGS),
++
++	/* PD_PMU */
++	COMPOSITE_FRACMUX(CLK_RTC32K_FRAC, "clk_rtc32k_frac", "xin24m", CLK_IGNORE_UNUSED,
++			RV1106_PMUCLKSEL_CON(6), 0,
++			RV1106_PMUCLKGATE_CON(1), 14, GFLAGS,
++			&rv1106_rtc32k_pmu_fracmux),
++	DIV(CLK_100M_PMU, "clk_100m_pmu", "clk_200m_src", 0,
++			RV1106_PMUCLKSEL_CON(0), 0, 3, DFLAGS),
++	COMPOSITE_NODIV(PCLK_PMU_ROOT, "pclk_pmu_root", mux_100m_pmu_24m_p, CLK_IS_CRITICAL,
++			RV1106_PMUCLKSEL_CON(0), 3, 1, MFLAGS,
++			RV1106_PMUCLKGATE_CON(0), 1, GFLAGS),
++	COMPOSITE_NODIV(HCLK_PMU_ROOT, "hclk_pmu_root", mux_200m_100m_24m_p, CLK_IS_CRITICAL,
++			RV1106_PMUCLKSEL_CON(0), 4, 2, MFLAGS,
++			RV1106_PMUCLKGATE_CON(0), 2, GFLAGS),
++	GATE(CLK_PMU, "clk_pmu", "xin24m", CLK_IS_CRITICAL,
++			RV1106_PMUCLKGATE_CON(1), 0, GFLAGS),
++	GATE(PCLK_PMU, "pclk_pmu", "pclk_pmu_root", CLK_IS_CRITICAL,
++			RV1106_PMUCLKGATE_CON(1), 1, GFLAGS),
++	GATE(CLK_DDR_FAIL_SAFE, "clk_ddr_fail_safe", "clk_pmu", 0,
++			RV1106_PMUCLKGATE_CON(1), 15, GFLAGS),
++	GATE(PCLK_PMU_GPIO0, "pclk_pmu_gpio0", "pclk_pmu_root", 0,
++			RV1106_PMUCLKGATE_CON(1), 2, GFLAGS),
++	COMPOSITE_NODIV(DBCLK_PMU_GPIO0, "dbclk_pmu_gpio0", mux_24m_32k_p, 0,
++			RV1106_PMUCLKSEL_CON(0), 15, 1, MFLAGS,
++			RV1106_PMUCLKGATE_CON(1), 3, GFLAGS),
++	GATE(PCLK_I2C1, "pclk_i2c1", "pclk_pmu_root", 0,
++			RV1106_PMUCLKGATE_CON(0), 3, GFLAGS),
++	COMPOSITE_NODIV(CLK_I2C1, "clk_i2c1", mux_200m_100m_24m_32k_p, 0,
++			RV1106_PMUCLKSEL_CON(0), 6, 2, MFLAGS,
++			RV1106_PMUCLKGATE_CON(0), 4, GFLAGS),
++	GATE(PCLK_PMU_MAILBOX, "pclk_pmu_mailbox", "pclk_pmu_root", 0,
++			RV1106_PMUCLKGATE_CON(2), 10, GFLAGS),
++	GATE(CLK_PMU_MCU, "clk_pmu_mcu", "hclk_pmu_root", 0,
++			RV1106_PMUCLKGATE_CON(0), 9, GFLAGS),
++	GATE(CLK_PMU_MCU_RTC, "clk_pmu_mcu_rtc", "xin24m", 0,
++			RV1106_PMUCLKGATE_CON(0), 13, GFLAGS),
++	COMPOSITE_NOMUX(CLK_PVTM_PMU, "clk_pvtm_pmu", "xin24m", 0,
++			RV1106_PMUCLKSEL_CON(1), 0, 5, DFLAGS,
++			RV1106_PMUCLKGATE_CON(1), 4, GFLAGS),
++	GATE(PCLK_PVTM_PMU, "pclk_pvtm_pmu", "pclk_pmu_root", 0,
++			RV1106_PMUCLKGATE_CON(1), 5, GFLAGS),
++	GATE(CLK_REFOUT, "clk_refout", "xin24m", 0,
++			RV1106_PMUCLKGATE_CON(2), 13, GFLAGS),
++	GATE(HCLK_PMU_SRAM, "hclk_pmu_sram", "hclk_pmu_root", CLK_IGNORE_UNUSED,
++			RV1106_PMUCLKGATE_CON(0), 8, GFLAGS),
++	GATE(PCLK_PMU_WDT, "pclk_pmu_wdt", "pclk_pmu_root", 0,
++			RV1106_PMUCLKGATE_CON(2), 8, GFLAGS),
++	COMPOSITE_NODIV(TCLK_PMU_WDT, "tclk_pmu_wdt", mux_24m_32k_p, 0,
++			RV1106_PMUCLKSEL_CON(7), 2, 1, MFLAGS,
++			RV1106_PMUCLKGATE_CON(2), 9, GFLAGS),
++
++	/* PD_SUBDDR */
++	COMPOSITE(CLK_CORE_DDRC_SRC, "clk_core_ddrc_src", mux_dpll_300m_p, CLK_IGNORE_UNUSED,
++			RV1106_SUBDDRCLKSEL_CON(0), 5, 1, MFLAGS, 0, 5, DFLAGS,
++			RV1106_SUBDDRCLKGATE_CON(0), 2, GFLAGS),
++	GATE(CLK_DFICTRL, "clk_dfictrl", "clk_core_ddrc_src", CLK_IGNORE_UNUSED,
++			RV1106_SUBDDRCLKGATE_CON(0), 5, GFLAGS),
++	GATE(CLK_DDRMON, "clk_ddrmon", "clk_core_ddrc_src", CLK_IGNORE_UNUSED,
++			RV1106_SUBDDRCLKGATE_CON(0), 4, GFLAGS),
++	GATE(CLK_DDR_PHY, "clk_ddr_phy", "clk_core_ddrc_src", CLK_IGNORE_UNUSED,
++			RV1106_SUBDDRCLKGATE_CON(0), 6, GFLAGS),
++	GATE(ACLK_DDRC, "aclk_ddrc", "clk_core_ddrc_src", CLK_IS_CRITICAL,
++			RV1106_SUBDDRCLKGATE_CON(0), 1, GFLAGS),
++	GATE(CLK_CORE_DDRC, "clk_core_ddrc", "clk_core_ddrc_src", CLK_IS_CRITICAL,
++			RV1106_SUBDDRCLKGATE_CON(0), 3, GFLAGS),
++
++	/* PD_VEPU */
++	COMPOSITE_NODIV(HCLK_VEPU_ROOT, "hclk_vepu_root", mux_200m_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VEPUCLKSEL_CON(0), 0, 2, MFLAGS,
++			RV1106_VEPUCLKGATE_CON(0), 0, GFLAGS),
++	COMPOSITE_NODIV(ACLK_VEPU_COM_ROOT, "aclk_vepu_com_root", mux_400m_200m_100m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VEPUCLKSEL_CON(0), 2, 2, MFLAGS,
++			RV1106_VEPUCLKGATE_CON(0), 1, GFLAGS),
++	COMPOSITE_NODIV(ACLK_VEPU_ROOT, "aclk_vepu_root", mux_300m_200m_100m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VEPUCLKSEL_CON(0), 4, 2, MFLAGS,
++			RV1106_VEPUCLKGATE_CON(0), 2, GFLAGS),
++	COMPOSITE_NODIV(PCLK_VEPU_ROOT, "pclk_vepu_root", mux_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VEPUCLKSEL_CON(0), 6, 2, MFLAGS,
++			RV1106_VEPUCLKGATE_CON(0), 3, GFLAGS),
++	GATE(PCLK_SPI0, "pclk_spi0", "pclk_vepu_root", 0,
++			RV1106_VEPUCLKGATE_CON(1), 2, GFLAGS),
++	COMPOSITE_NODIV(CLK_SPI0, "clk_spi0", mux_200m_100m_50m_24m_p, 0,
++			RV1106_VEPUCLKSEL_CON(0), 12, 2, MFLAGS,
++			RV1106_VEPUCLKGATE_CON(1), 3, GFLAGS),
++	GATE(CLK_UART_DETN_FLT, "clk_uart_detn_flt", "xin24m", 0,
++			RV1106_VEPUCLKGATE_CON(1), 8, GFLAGS),
++	GATE(HCLK_VEPU, "hclk_vepu", "hclk_vepu_root", 0,
++			RV1106_VEPUCLKGATE_CON(0), 8, GFLAGS),
++	GATE(ACLK_VEPU, "aclk_vepu", "aclk_vepu_root", 0,
++			RV1106_VEPUCLKGATE_CON(0), 9, GFLAGS),
++	COMPOSITE_NODIV(CLK_CORE_VEPU, "clk_core_vepu", mux_400m_300m_pvtpll0_pvtpll1_p, 0,
++			RV1106_VEPUCLKSEL_CON(0), 8, 2, MFLAGS,
++			RV1106_VEPUCLKGATE_CON(0), 10, GFLAGS),
++	COMPOSITE_NODIV(CLK_CORE_VEPU_DVBM, "clk_core_vepu_dvbm", mux_200m_100m_50m_24m_p, 0,
++			RV1106_VEPUCLKSEL_CON(0), 10, 2, MFLAGS,
++			RV1106_VEPUCLKGATE_CON(0), 13, GFLAGS),
++	GATE(PCLK_GPIO1, "pclk_gpio1", "pclk_vepu_root", 0,
++			RV1106_VEPUCLKGATE_CON(0), 15, GFLAGS),
++	GATE(DBCLK_GPIO1, "dbclk_gpio1", "xin24m", 0,
++			RV1106_VEPUCLKGATE_CON(1), 0, GFLAGS),
++	GATE(HCLK_VEPU_PP, "hclk_vepu_pp", "hclk_vepu_root", 0,
++			RV1106_VEPUCLKGATE_CON(0), 11, GFLAGS),
++	GATE(ACLK_VEPU_PP, "aclk_vepu_pp", "aclk_vepu_root", 0,
++			RV1106_VEPUCLKGATE_CON(0), 12, GFLAGS),
++
++	/* PD_VI */
++	COMPOSITE_NODIV(HCLK_VI_ROOT, "hclk_vi_root", mux_150m_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VICLKSEL_CON(0), 0, 2, MFLAGS,
++			RV1106_VICLKGATE_CON(0), 0, GFLAGS),
++	COMPOSITE_NODIV(ACLK_VI_ROOT, "aclk_vi_root", mux_339m_200m_100m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VICLKSEL_CON(0), 2, 2, MFLAGS,
++			RV1106_VICLKGATE_CON(0), 1, GFLAGS),
++	COMPOSITE_NODIV(PCLK_VI_ROOT, "pclk_vi_root", mux_150m_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VICLKSEL_CON(0), 4, 2, MFLAGS,
++			RV1106_VICLKGATE_CON(0), 2, GFLAGS),
++	COMPOSITE_NODIV(PCLK_VI_RTC_ROOT, "pclk_vi_rtc_root", mux_50m_24m_p, 0,
++			RV1106_VICLKSEL_CON(0), 6, 1, MFLAGS,
++			RV1106_VICLKGATE_CON(0), 3, GFLAGS),
++
++	GATE(PCLK_CSIHOST0, "pclk_csihost0", "pclk_vi_root", 0,
++			RV1106_VICLKGATE_CON(1), 3, GFLAGS),
++	GATE(PCLK_CSIHOST1, "pclk_csihost1", "pclk_vi_root", 0,
++			RV1106_VICLKGATE_CON(1), 5, GFLAGS),
++	GATE(PCLK_GPIO3, "pclk_gpio3", "pclk_vi_root", 0,
++			RV1106_VICLKGATE_CON(1), 15, GFLAGS),
++	GATE(DBCLK_GPIO3, "dbclk_gpio3", "xin24m", 0,
++			RV1106_VICLKGATE_CON(2), 0, GFLAGS),
++	GATE(HCLK_ISP3P2, "hclk_isp3p2", "hclk_vi_root", 0,
++			RV1106_VICLKGATE_CON(0), 7, GFLAGS),
++	GATE(ACLK_ISP3P2, "aclk_isp3p2", "aclk_vi_root", 0,
++			RV1106_VICLKGATE_CON(0), 8, GFLAGS),
++	COMPOSITE_NODIV(CLK_CORE_ISP3P2, "clk_core_isp3p2", mux_339m_200m_pvtpll0_pvtpll1_p, 0,
++			RV1106_VICLKSEL_CON(0), 7, 2, MFLAGS,
++			RV1106_VICLKGATE_CON(0), 9, GFLAGS),
++	GATE(PCLK_MIPICSIPHY, "pclk_mipicsiphy", "pclk_vi_root", 0,
++			RV1106_VICLKGATE_CON(1), 14, GFLAGS),
++	COMPOSITE(CCLK_SRC_SDMMC, "cclk_src_sdmmc", mux_400m_24m_p, 0,
++			RV1106_VICLKSEL_CON(1), 14, 1, MFLAGS, 8, 6, DFLAGS,
++			RV1106_VICLKGATE_CON(1), 11, GFLAGS),
++	GATE(HCLK_SDMMC, "hclk_sdmmc", "hclk_vi_root", 0,
++			RV1106_VICLKGATE_CON(1), 12, GFLAGS),
++	GATE(CLK_SDMMC_DETN_FLT, "clk_sdmmc_detn_flt", "xin24m", 0,
++			RV1106_VICLKGATE_CON(1), 13, GFLAGS),
++	GATE(PCLK_VI_RTC_TEST, "pclk_vi_rtc_test", "pclk_vi_rtc_root", 0,
++			RV1106_VICLKGATE_CON(2), 5, GFLAGS),
++	GATE(PCLK_VI_RTC_PHY, "pclk_vi_rtc_phy", "pclk_vi_rtc_root", 0,
++			RV1106_VICLKGATE_CON(2), 6, GFLAGS),
++	COMPOSITE_NODIV(DCLK_VICAP, "dclk_vicap", mux_339m_200m_100m_24m_p, 0,
++			RV1106_VICLKSEL_CON(0), 9, 2, MFLAGS,
++			RV1106_VICLKGATE_CON(0), 10, GFLAGS),
++	GATE(ACLK_VICAP, "aclk_vicap", "aclk_vi_root", 0,
++			RV1106_VICLKGATE_CON(0), 12, GFLAGS),
++	GATE(HCLK_VICAP, "hclk_vicap", "hclk_vi_root", 0,
++			RV1106_VICLKGATE_CON(0), 13, GFLAGS),
++
++	/* PD_VO */
++	COMPOSITE_NODIV(ACLK_MAC_ROOT, "aclk_mac_root", mux_300m_200m_100m_24m_p, 0,
++			RV1106_VOCLKSEL_CON(1), 12, 2, MFLAGS,
++			RV1106_VOCLKGATE_CON(1), 4, GFLAGS),
++	COMPOSITE_NODIV(ACLK_VO_ROOT, "aclk_vo_root", mux_400m_200m_100m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VOCLKSEL_CON(0), 0, 2, MFLAGS,
++			RV1106_VOCLKGATE_CON(0), 0, GFLAGS),
++	COMPOSITE_NODIV(HCLK_VO_ROOT, "hclk_vo_root", mux_200m_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VOCLKSEL_CON(0), 2, 2, MFLAGS,
++			RV1106_VOCLKGATE_CON(0), 1, GFLAGS),
++	COMPOSITE_NODIV(PCLK_VO_ROOT, "pclk_vo_root", mux_150m_100m_50m_24m_p, CLK_IS_CRITICAL,
++			RV1106_VOCLKSEL_CON(0), 4, 2, MFLAGS,
++			RV1106_VOCLKGATE_CON(0), 2, GFLAGS),
++	COMPOSITE_NODIV(ACLK_VOP_ROOT, "aclk_vop_root", mux_300m_200m_100m_24m_p, 0,
++			RV1106_VOCLKSEL_CON(1), 10, 2, MFLAGS,
++			RV1106_VOCLKGATE_CON(0), 11, GFLAGS),
++
++	GATE(PCLK_GPIO2, "pclk_gpio2", "pclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(3), 0, GFLAGS),
++	GATE(DBCLK_GPIO2, "dbclk_gpio2", "xin24m", 0,
++			RV1106_VOCLKGATE_CON(3), 1, GFLAGS),
++	GATE(ACLK_MAC, "aclk_mac", "aclk_mac_root", 0,
++			RV1106_VOCLKGATE_CON(1), 8, GFLAGS),
++	GATE(PCLK_MAC, "pclk_mac", "pclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(1), 9, GFLAGS),
++	FACTOR(CLK_GMAC0_50M_O, "clk_gmac0_50m_o", "clk_50m_src", 0, 1, 1),
++	FACTOR(CLK_GMAC0_REF_50M, "clk_gmac0_ref_50m", "clk_gmac0_50m_o", 0, 1, 1),
++	DIV(CLK_GMAC0_TX_50M_O, "clk_gmac0_tx_50m_o", "clk_gmac0_50m_o", 0,
++			RV1106_VOCLKSEL_CON(2), 1, 6, DFLAGS),
++	GATE(CLK_MACPHY, "clk_macphy", "xin24m", 0,
++			RV1106_VOCLKGATE_CON(2), 13, GFLAGS),
++	GATE(CLK_OTPC_ARB, "clk_otpc_arb", "xin24m", 0,
++			RV1106_VOCLKGATE_CON(2), 11, GFLAGS),
++	GATE(PCLK_OTPC_NS, "pclk_otpc_ns", "pclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(2), 3, GFLAGS),
++	GATE(CLK_SBPI_OTPC_NS, "clk_sbpi_otpc_ns", "xin24m", 0,
++			RV1106_VOCLKGATE_CON(2), 5, GFLAGS),
++	COMPOSITE_NOMUX(CLK_USER_OTPC_NS, "clk_user_otpc_ns", "xin24m", 0,
++			RV1106_VOCLKSEL_CON(3), 10, 3, DFLAGS,
++			RV1106_VOCLKGATE_CON(2), 6, GFLAGS),
++	GATE(PCLK_OTPC_S, "pclk_otpc_s", "pclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(2), 7, GFLAGS),
++	GATE(CLK_SBPI_OTPC_S, "clk_sbpi_otpc_s", "xin24m", 0,
++			RV1106_VOCLKGATE_CON(2), 9, GFLAGS),
++	COMPOSITE_NOMUX(CLK_USER_OTPC_S, "clk_user_otpc_s", "xin24m", 0,
++			RV1106_VOCLKSEL_CON(3), 13, 3, DFLAGS,
++			RV1106_VOCLKGATE_CON(2), 10, GFLAGS),
++	GATE(PCLK_OTP_MASK, "pclk_otp_mask", "pclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(2), 14, GFLAGS),
++	GATE(CLK_PMC_OTP, "clk_pmc_otp", "clk_sbpi_otpc_s", 0,
++			RV1106_VOCLKGATE_CON(2), 15, GFLAGS),
++	GATE(HCLK_RGA2E, "hclk_rga2e", "hclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(0), 7, GFLAGS),
++	GATE(ACLK_RGA2E, "aclk_rga2e", "aclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(0), 8, GFLAGS),
++	COMPOSITE_NODIV(CLK_CORE_RGA2E, "clk_core_rga2e", mux_400m_200m_100m_24m_p, 0,
++			RV1106_VOCLKSEL_CON(1), 8, 2, MFLAGS,
++			RV1106_VOCLKGATE_CON(0), 9, GFLAGS),
++	COMPOSITE(CCLK_SRC_SDIO, "cclk_src_sdio", mux_400m_24m_p, 0,
++			RV1106_VOCLKSEL_CON(2), 13, 1, MFLAGS, 7, 6, DFLAGS,
++			RV1106_VOCLKGATE_CON(1), 14, GFLAGS),
++	GATE(HCLK_SDIO, "hclk_sdio", "hclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(1), 15, GFLAGS),
++	GATE(PCLK_TSADC, "pclk_tsadc", "pclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(2), 0, GFLAGS),
++	COMPOSITE_NOMUX(CLK_TSADC, "clk_tsadc", "xin24m", 0,
++			RV1106_VOCLKSEL_CON(3), 0, 5, DFLAGS,
++			RV1106_VOCLKGATE_CON(2), 1, GFLAGS),
++	COMPOSITE_NOMUX(CLK_TSADC_TSEN, "clk_tsadc_tsen", "xin24m", 0,
++			RV1106_VOCLKSEL_CON(3), 5, 5, DFLAGS,
++			RV1106_VOCLKGATE_CON(2), 2, GFLAGS),
++	GATE(HCLK_VOP, "hclk_vop", "hclk_vo_root", 0,
++			RV1106_VOCLKGATE_CON(0), 13, GFLAGS),
++	GATE(DCLK_VOP, "dclk_vop", "dclk_vop_src", 0,
++			RV1106_VOCLKGATE_CON(0), 14, GFLAGS),
++	GATE(ACLK_VOP, "aclk_vop", "aclk_vop_root", 0,
++			RV1106_VOCLKGATE_CON(0), 15, GFLAGS),
++
++	/* IO CLK */
++	GATE(RX0PCLK_VICAP, "rx0pclk_vicap", "rx0pclk_vicap_io", 0,
++			RV1106_VICLKGATE_CON(1), 0, GFLAGS),
++	GATE(RX1PCLK_VICAP, "rx1pclk_vicap", "rx1pclk_vicap_io", 0,
++			RV1106_VICLKGATE_CON(1), 1, GFLAGS),
++	GATE(ISP0CLK_VICAP, "isp0clk_vicap", "isp0clk_vicap_io", 0,
++			RV1106_VICLKGATE_CON(1), 2, GFLAGS),
++	GATE(I0CLK_VICAP, "i0clk_vicap", "i0clk_vicap_io", 0,
++			RV1106_VICLKGATE_CON(0), 14, GFLAGS),
++	GATE(I1CLK_VICAP, "i1clk_vicap", "i1clk_vicap_io", 0,
++			RV1106_VICLKGATE_CON(0), 15, GFLAGS),
++	GATE(PCLK_VICAP, "pclk_vicap", "pclk_vicap_io", 0,
++			RV1106_VICLKGATE_CON(0), 11, GFLAGS),
++	GATE(CLK_RXBYTECLKHS_0, "clk_rxbyteclkhs_0", "clk_rxbyteclkhs_0_io", 0,
++			RV1106_VICLKGATE_CON(1), 4, GFLAGS),
++	GATE(CLK_RXBYTECLKHS_1, "clk_rxbyteclkhs_1", "clk_rxbyteclkhs_1_io", 0,
++			RV1106_VICLKGATE_CON(1), 6, GFLAGS),
++
++	GATE(PCLK_VICAP_VEPU, "pclk_vicap_vepu", "pclk_vicap_vepu_io", 0,
++			RV1106_VEPUCLKGATE_CON(0), 14, GFLAGS),
++	GATE(SCLK_IN_SPI0, "sclk_in_spi0", "sclk_in_spi0_io", 0,
++			RV1106_VEPUCLKGATE_CON(1), 4, GFLAGS),
++
++	GATE(CLK_UTMI_USBOTG, "clk_utmi_usbotg", "clk_utmi_usbotg_io", 0,
++			RV1106_PERICLKGATE_CON(4), 9, GFLAGS),
++};
++
++static struct rockchip_clk_branch rv1106_grf_clk_branches[] __initdata = {
++	MMC_GRF(SCLK_EMMC_DRV, "emmc_drv", "cclk_src_emmc",
++		RV1106_EMMC_CON0, 1, grf_type_sys),
++	MMC_GRF(SCLK_EMMC_SAMPLE, "emmc_sample", "cclk_src_emmc",
++		RV1106_EMMC_CON1, 1, grf_type_sys),
++	MMC_GRF(SCLK_SDMMC_DRV, "sdmmc_drv", "cclk_src_sdmmc",
++		RV1106_SDMMC_CON0, 1, grf_type_sys),
++	MMC_GRF(SCLK_SDMMC_SAMPLE, "sdmmc_sample", "cclk_src_sdmmc",
++		RV1106_SDMMC_CON1, 1, grf_type_sys),
++	MMC_GRF(SCLK_SDIO_DRV, "sdio_drv", "cclk_src_sdio",
++		RV1106_SDIO_CON0, 1, grf_type_sys),
++	MMC_GRF(SCLK_SDIO_SAMPLE, "sdio_sample", "cclk_src_sdio",
++		RV1106_SDIO_CON1, 1, grf_type_sys),
++};
++
++static void __init rv1106_pvtpll_init(struct rockchip_clk_provider *ctx)
++{
++	/* set pvtpll ref clk mux */
++	writel_relaxed(CPU_PVTPLL_PATH_CORE, ctx->reg_base + CPU_CLK_PATH_BASE);
++
++	if (!IS_ERR(ctx->grf)) {
++		regmap_write(ctx->grf, CPU_PVTPLL_CON0_H,
++			     HIWORD_UPDATE(0x7, PVTPLL_LENGTH_SEL_MASK,
++					   PVTPLL_LENGTH_SEL_SHIFT));
++		regmap_write(ctx->grf, CPU_PVTPLL_CON0_L,
++			     HIWORD_UPDATE(0x1, PVTPLL_RING_SEL_MASK,
++					   PVTPLL_RING_SEL_SHIFT));
++		regmap_write(ctx->grf, CPU_PVTPLL_CON0_L,
++			     HIWORD_UPDATE(0x3, PVTPLL_EN_MASK,
++					   PVTPLL_EN_SHIFT));
++	}
++
++	writel_relaxed(0x007f0000, ctx->reg_base + CRU_PVTPLL0_CON0_H);
++	writel_relaxed(0xffff0018, ctx->reg_base + CRU_PVTPLL0_CON1_L);
++	writel_relaxed(0xffff0004, ctx->reg_base + CRU_PVTPLL0_CON2_H);
++	writel_relaxed(0x00030003, ctx->reg_base + CRU_PVTPLL0_CON0_L);
++
++	writel_relaxed(0x007f0000, ctx->reg_base + CRU_PVTPLL1_CON0_H);
++	writel_relaxed(0xffff0018, ctx->reg_base + CRU_PVTPLL1_CON1_L);
++	writel_relaxed(0xffff0004, ctx->reg_base + CRU_PVTPLL1_CON2_H);
++	writel_relaxed(0x00030003, ctx->reg_base + CRU_PVTPLL1_CON0_L);
++}
++
++static int __init clk_rv1106_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *np = dev->of_node;
++	struct rockchip_clk_provider *ctx;
++	unsigned long clk_nr;
++	void __iomem *reg_base;
++	int ret;
++
++	clk_nr = rockchip_clk_find_max_clk_id(rv1106_clk_branches,
++					      ARRAY_SIZE(rv1106_clk_branches)) + 1;
++	clk_nr = max(clk_nr,
++		     rockchip_clk_find_max_clk_id(rv1106_grf_clk_branches,
++					ARRAY_SIZE(rv1106_grf_clk_branches)) + 1);
++	reg_base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(reg_base))
++		return dev_err_probe(dev, PTR_ERR(reg_base),
++				     "could not map cru region");
++
++	ctx = rockchip_clk_init(np, reg_base, clk_nr);
++	if (IS_ERR(ctx))
++		return dev_err_probe(dev, PTR_ERR(ctx),
++				     "rockchip clk init failed");
++
++	rv1106_pvtpll_init(ctx);
++
++	rockchip_clk_register_plls(ctx, rv1106_pll_clks,
++				   ARRAY_SIZE(rv1106_pll_clks),
++				   RV1106_GRF_SOC_STATUS0);
++
++	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
++				     mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
++				     &rv1106_cpuclk_data, rv1106_cpuclk_rates,
++				     ARRAY_SIZE(rv1106_cpuclk_rates));
++
++	rockchip_clk_register_branches(ctx, rv1106_clk_branches,
++				       ARRAY_SIZE(rv1106_clk_branches));
++
++	/*
++	 * The MMC drive and sample phase clocks have their control
++	 * registers in the GRF region, so they can only be provided when
++	 * the rockchip,grf property points at a valid syscon.
++	 */
++	if (!IS_ERR(ctx->grf)) {
++		ret = rockchip_clk_add_grf(ctx, ctx->grf, grf_type_sys);
++		if (ret)
++			dev_err(dev, "failed to add grf: %d\n", ret);
++		else
++			rockchip_clk_register_branches(ctx,
++					rv1106_grf_clk_branches,
++					ARRAY_SIZE(rv1106_grf_clk_branches));
++	}
++
++	rockchip_register_restart_notifier(ctx, RV1106_GLB_SRST_FST, NULL);
++
++	rockchip_clk_of_add_provider(np, ctx);
++
++	return 0;
++}
++
++static const struct of_device_id clk_rv1106_match_table[] = {
++	{ .compatible = "rockchip,rv1106-cru" },
++	{ /* end */ }
++};
++
++static struct platform_driver clk_rv1106_driver = {
++	.driver = {
++		.name			= "clk-rv1106",
++		.of_match_table		= clk_rv1106_match_table,
++		.suppress_bind_attrs	= true,
++	},
++};
++builtin_platform_driver_probe(clk_rv1106_driver, clk_rv1106_probe);
 -- 
 2.43.0
 
