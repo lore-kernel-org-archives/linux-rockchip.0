@@ -4,137 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5D0BC55164
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 15:21:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF84AC55164
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 15:36:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=px+hnmyoTE5DohVX8woZHjiicClicBfy27YqZVYK0AA=; b=BcjlT2L3Q0wdljYJtsOqliKonu
-	fGesGUf8k6ygB2jQlbqRcmNpeP46EiqqGHJaRuJoDgWNdSJYwFPOpeEzEsQpG0T+F5ggox9vSh/1r
-	3yzyed7kAcsSB1kbLOd6CnEAppeoVaOf8YKzobMqm86vCZX28gQj6IOWRpYDg75yXYlSNgZYhcsO/
-	NHWzYpQdQgAJmIvdxQTSY1y7nL5vb5U81kAwfqnbK9PZ/zBtgnt6+S31+bwYRRTFTz6Utkh2ZaTMS
-	p4Kr9ouEW9B0Uqz8auJ+s1iT1+N+vhGcVLeatPGEz0xoQrevApuUP1Ig88RyTjeVbyx3uk1Cy0ePs
-	ng4wyK2A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WMwlL/c3fDs8SrcutTLZoMySq3ZXezJaOis64KYQVhM=; b=IO8YgiTdlnoQua
+	MtC/yCDbSZM8TsHhsWrh2Og6i0dm9NUHFXjvqOyYK5PJASICaCHKGEVpVsQF9Ns3XeqAlxRo4pEU9
+	heMbBg9yjGxtGRYS1gNvDPwZlWsK2j4d1iX3XP5AigfIOPCyvXpjcS2Mhc1tOJUun5cUwPV4JbEmm
+	e06Avz+GdGu0XUuwS6ujZptPdTAc3L8ObVLYHP9tzm44ck4O8i85WQLmpqr2DINUkAlQ0lQ8SSPBL
+	71MlCTdROriLZXdVZOyBYIHpEP4lzHaKj3Gn6hxwnjigxZqXVs3/qFs1kDaASxBx5Xm4p7H8aOCPw
+	WrLcS4m5VxeFZf+jtD1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpSZw-0000000Aq6a-1pTo;
-	Thu, 30 Jul 2026 15:21:48 +0000
-Received: from mail-westeuropeazon11013055.outbound.protection.outlook.com ([52.101.72.55] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1wpSo1-0000000As45-0p1p;
+	Thu, 30 Jul 2026 15:36:21 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpSZs-0000000Aq5c-3AS1;
-	Thu, 30 Jul 2026 15:21:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=hfKtTjcDtrnQDGMHn5iadomKUFFFKBuyjlfQcIRXM+vbubPdHg4m/q9j0CxIRQChKkh7HKqcFvsBUIfTh74oMMhHsVSa40oJDvnaizpG7lZC083NZ3uBzi+hmc/dXfTbQYedFxYX+FfvHekjZR7fspQD82cKcB4AWZyZwXlKWXi7/e8S+wqw0zCfUYU4KPsDELBkO7jK/BDIUCcfyvyG5PtbQl54YbIeVECjzmH94azX5AslnNnetU1AZJx+7qe6b3B+6/fLnRdyL6tmHFGyrhvZScdhydgS+DZ5kJO5LZYmwsxe20wB9zg6q4Syqx7GZqktL4wE2myb9KSebdKwrA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gurVjpa+FxGcc5JDGH4iqrszVOvSbB78c2N1hLBEYJ0=;
- b=KtEZmhPc9AHHF+7grFrPRS7Byg6JwjVBRVhcJVrXod7DdxD4dWDFrncRkE9xcIavOGk8EDpsjUIWjYLbNy1Q18/zjrQ1FlhjyxWbY5ka4otHfEuVCk1v85ZKDvj7crItgfpEtr/vZk5vIdLYsCGChjy5rp1TTM8SL6ysJnv0W0dpYp9H+pl/07dfZ4i2qbLbqqfeg8KDA8X4XrOOgSRrzU2noWiBG1ijQwc6bIBoXXXIhqx/L5VcHe37mFQeCVlTFqwRJW1EAnSJYXzgaJsZffuJPSClWJzbUV1ofcda5iSkSBkcIyFYOI9YDrxsW57DQfz+wRTwqYFZIbKDaV6fqg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gurVjpa+FxGcc5JDGH4iqrszVOvSbB78c2N1hLBEYJ0=;
- b=QF2z09a1EBYquni5w+6oOo1nYtJeE/LOGJvc4gjZwMTdLYsLgNY1RbAIR9oiVAq7KjvibfxmXAo25rc9t/XppzG/lYGo4GBUsL0ke7TW5RjuZkzQlmF/Jcv4zND4g8p96rgVWbPAOH5yuGQibS3jb5aZjRDFeHKx0afclbw4NfY=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from PA4PR04MB7743.eurprd04.prod.outlook.com (2603:10a6:102:b8::20)
- by GV1PR04MB10558.eurprd04.prod.outlook.com (2603:10a6:150:20f::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.270.15; Thu, 30 Jul
- 2026 15:21:36 +0000
-Received: from PA4PR04MB7743.eurprd04.prod.outlook.com
- ([fe80::9a4e:252f:2fd:97b7]) by PA4PR04MB7743.eurprd04.prod.outlook.com
- ([fe80::9a4e:252f:2fd:97b7%6]) with mapi id 15.21.0270.012; Thu, 30 Jul 2026
- 15:21:36 +0000
-Message-ID: <d83d2d39-7c58-44e6-9454-6d8e38511bf5@cherry.de>
-Date: Thu, 30 Jul 2026 17:21:35 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 4/4] arm64: dts: rockchip: Enable CAN controller on
- RK3588-Tiger-Haikou
-To: Cunhao Lu <1579567540@qq.com>, Marc Kleine-Budde <mkl@pengutronix.de>,
- kernel@pengutronix.de, Vincent Mailhol <mailhol@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-can@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20260730-master-v6-0-dfb63e234775@qq.com>
- <tencent_A982C9885A401DE2AB5F405336CDA14C7C06@qq.com>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <tencent_A982C9885A401DE2AB5F405336CDA14C7C06@qq.com>
-X-ClientProxiedBy: AM0P309CA0028.EURP309.PROD.OUTLOOK.COM
- (2603:10a6:20b:28f::6) To PA4PR04MB7743.eurprd04.prod.outlook.com
- (2603:10a6:102:b8::20)
+	id 1wpSny-0000000As3G-2U9C
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Jul 2026 15:36:20 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2caced6038eso11112805ad.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 08:36:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785425777; x=1786030577; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=eemCSxLVEosFJ70MWmOxEAPXsjZ44shUjMRdUXsw+jc=;
+        b=o4ZXHPVsEO9B7+nZt6MFql5AzTw5Ap+Aj9Lv4CdRlbT2ncFbbOZ4GXXwBW2T64eJDU
+         DhJYAqn6yFXZKBvJZkooTqTsotVOEZvx7jERAETkjbvrbfiAzR9+x6bt0oNtBL68cPKA
+         CWB061GT/WBOkEQ1tVaBXDsa4U08YXsanq1Xa0FHb9C34vkgU4DwOWqTDKui4EIcfTs7
+         gc/XdbAI/JluK/adGAYZTKgEbFyM2aqnCT9i6up1Y2/GZF9ydA/ECY4b8N9mTS4Xp2gI
+         Xuz3stetkjTUtI+Yxp5rYGhwjCYMTOqj/6NOtkXmA4mEVqVkMxGSwVofqlQezGY856zW
+         00Rw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785425777; x=1786030577;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=eemCSxLVEosFJ70MWmOxEAPXsjZ44shUjMRdUXsw+jc=;
+        b=C6iG43WvpwNkQeb1WKAa+exGtw/c+L7fsFZ9SQ2brparGUgUHchss6QJBIbGq3xuJa
+         9XmTT2cFwtlzpIvipfPWAmkbi7jS/0OLkiMJAJohYzKmZlMynK+Omzcgh314o1ra1oo3
+         BnUwKF472YT1rG1kZbF0m7WfSHRVbBOo2jEVyfUcDy7Xx0MzG8A4KOvajsxi+psqhZJS
+         UFceqBBZiK1DJILmp7I709k/P0Jtcew4yOudPDcmqJS+gjc/6iQJ53UDxdvcfQf0Nfqq
+         eDEiG4uBbpTa2FV2Gn3KCmXehK9twCz1bOm1lOX14+1WzUhpBI99gb1gK1HpTtNe++Tp
+         4a0Q==
+X-Forwarded-Encrypted: i=1; AHgh+Rq3y+6NCNX3ixKTIbSiQanPGfzVTEvp6XoFZAPLWZwpTq13A+P8Byb5QGoRSHW4sVcNHK/7qLyxpH+pdEn4AA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz3pq6ECRxoMxPkiu/TMQdAKZ8camJkEw1gDnyZlBJtprhmQ23k
+	ipsGJ75edwlK2Rk2foM/L5sv2C5HljvQm2aziet8vwbzM0f8Pr3szJhshe4we22+
+X-Gm-Gg: AR+sD11Ms2UMx0MrMakmAt2h100ZLjssRDgrKf12w7cYrKyxjfMpqIio+/jALysXikP
+	nWegW0CDv0PBaXBNrXwat1RwIW5r2ZaWpMsnld7VCHW7x7PcAa9dPBNdCTXPEThbSMRXLR/ITqH
+	LiBuuFyPwr0OIU/G17kOqxoj8pR0PRiR481y0pXweTIfKTizqucrJAWKBS73b4e3HpAL5FmWstT
+	OMvUYBR9cIPqUmViKd3UL7y2qYumLtKkzFPa1BysCGizUKQvX6Swsy9KbM/xnrEYTZzCZ5YXwzI
+	kZWvKKFgf53c3ic70dFZ+8g5Y3h6uCGB1FKGzH7pd4ZrMhRkbs9woglWuPYmm7/09/yemUJ6it2
+	VDo0PvfG9Q/pzdPQccXZdykDpZiSgYwfSQE4MIlMobilo9dplkCCvPSZq0WPYBKe/XxDkvhHtXl
+	27Tw9270/is+6JqZukeAQcpbKMi5qocSip5pbmPnrbhKLRrTZPxAVDHDe8CNptI2DkrXriGuzoY
+	sSGAbTiSfsSYD8k+KPUCaFRfOmbwdDCROpmIHFszfkugg==
+X-Received: by 2002:a17:903:1104:b0:2c9:d8c5:d55d with SMTP id d9443c01a7336-2d03e9b6bd5mr5417115ad.16.1785425777367;
+        Thu, 30 Jul 2026 08:36:17 -0700 (PDT)
+Received: from debian-rockchip-rock5b-rk3588.. ([184.22.25.116])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d022a46969sm28820085ad.25.2026.07.30.08.36.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jul 2026 08:36:17 -0700 (PDT)
+From: Tharit Tangkijwanichakul <tharitt97@gmail.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-kernel-mentees@lists.linux.dev,
+	skhan@linuxfoundation.org,
+	me@brighamcampbell.com,
+	jkoolstra@xs4all.nl,
+	Tharit Tangkijwanichakul <tharitt97@gmail.com>
+Subject: [PATCH] media: rkvdec: fix v4l2-compliance failure
+Date: Thu, 30 Jul 2026 15:36:03 +0000
+Message-ID: <20260730153603.5721-1-tharitt97@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB7743:EE_|GV1PR04MB10558:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3717e1d6-5921-40b7-f494-08deee4e3eec
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|1800799024|376014|7416014|10067099003|4143699003|11063799006|6133799003|56012099006|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: QNa3dnXJ2BwR0OnRaQ2ilFqYnVT9rpynNo/1Yx7r5+212hXVgFkemQrXXEa7qX5ssm+uw/pMbDYzsWLGuQOh08xVpF9LzUFYO6hm/L8p8On4WrXkDKWFNVUyh/IBA74wS6vEv00YxxmLSNlGDdas/aA9xqy1HYNFopmeolZReaCZlDmQ8+ulvNPa3tOFiqmNQu6C7Zsnea5yvUGKuCfzlplAfssAcme55x5lE3Ui2pDP7fyLUaX2AeHeJBJ+ymgejE2dh2VTRJFnEqH7PDVCEO/697U1fIpVuTchwzqfWG6+UvoTUmJdCSbEtnB3KTitBFfOQfpc9PBuZOvDqG4REeuQAnqbgTnKe9HJRPv8RQbawEPCBz/vnMhdcaAmnPX2kMw0x0YqQJ2/pYxqkpBzeCp9EHHUXbl3YOg2owqn0qtNgAECPnrYqthrQ4A+AVBu9a8uJ1upR77bNtdBScD/EMjqmVCA/8qg7QQObhDRP93hpAN1qH5HEWt3RTfMQ/cO9Px3s3A0xrkBxlda+/NTv41BdyyZVULTEAz4lND8/YIvpYk4zcDuaFk5KEWjC6pHXXdtagmaIrfaCqD4bzGU5SJpHpvLzNTRm00MstZWWh59bo+WD/+aS7qT/nFxYBUNL/f3FQMNTu8/YkCr6TkAbL9GH+c9cqqa7zxiU3+xTqo=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB7743.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(7416014)(10067099003)(4143699003)(11063799006)(6133799003)(56012099006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VW9jZzQ5T0NQWDZIcTdvUU9POTRqRDBjb3R1dVg3RlltQW9PalBFOWhjODRo?=
- =?utf-8?B?QjErZ3JZb3o3VWE4OWhmU0dkaTliTHgwY0RyUUkzalh5ZFFOcDA4aGl1UHJV?=
- =?utf-8?B?Q0tudFJtaGdVVW5tQTAySFQ3QjlzVlRmekxVVCtsc2JQMFNESmg3ekhYbTBh?=
- =?utf-8?B?RElHNHFwRTRuN21VeXRKM3dKUHd1L09sclVrY1ZkZmhBTnBzMUd0NFJGeXIw?=
- =?utf-8?B?M0JtM3dISmNQYmJxSjVyeG1XYzV4MmVQVkVkZjM2ZWdXbjQxYnR6YUdwODlL?=
- =?utf-8?B?VGdCM2YxLzJWYkM2cDBXcmorUHUyZ1AyU3hyRk5nWVNVem82d0ZtRWtmSVho?=
- =?utf-8?B?UEZSM25QNmE5QmgwcnRta3hZUUc3THFQK09NcjVwQ01ROGozYk9YeU1UdUNa?=
- =?utf-8?B?Z0lFdjZPZTVQVlcyR0FES0tONjJqRjFGWjRsWTV1YU5ZVmlxSDBjN3BPQVp0?=
- =?utf-8?B?Z3U5R0JTWGFVV2IrRlYwM1lyUm5ONm9ILzU4WU5zUlRuVVBDUTY2ZHgwMloy?=
- =?utf-8?B?Y1FVeTk1NXF3TitSMWNsYmpXYWg0THVvQ0kyMWdiSDVtMTJQbUJJY0x3dmFo?=
- =?utf-8?B?Zmt2ODBtUkh1a1gwTWUzN0dQck9Lbk5RYStnQnBwVnJjSFVFSnY3ZTIybmNl?=
- =?utf-8?B?MlJsZkszb1Y0SzNjN3dsV3crb0NIZmQ0b0dNTnQ1MUhlTUs3SmtOclNNMXZC?=
- =?utf-8?B?bFQ4a1kxZnJKeHptWUNjWmpIT0I5UmxmZmczdUJLK0lzVXZxVDBmeU1LR2cx?=
- =?utf-8?B?bnRtWGtZOGYyUXBMQVlNTnFwOGh6YXRuTS9oWk5QOTEvQ0IzUy80QVhPN2V4?=
- =?utf-8?B?T1g3ZmsyWEtyRHZVN2FpRE9jay9VaFR6SHhzZFhjdEFSWXJlME9QbnRuV1Uz?=
- =?utf-8?B?SVVpTHpkSkhESUhoTVhuR3RiaHRRYjRhVXRXdDlGdXB2RlhEYmh0a3BKMFNV?=
- =?utf-8?B?a0dUMk5HSXlLVXBPOXl3VFZVZ3VZZ2JMa292WkVkeDdEZEtNMGxWbTVIR0I3?=
- =?utf-8?B?NHE1eEVhK3E2KzlaYndvM1NPUEF0UlIxNHk3dnFiUGlQeXB2MkgxeElGbTNt?=
- =?utf-8?B?cUhyYUJWQmt5TU1idHF3c1ZGNmRBb1loL3FZOWdxenk0aWMvSEZtRHEwWlZO?=
- =?utf-8?B?WHVXUDNPbWp5UG96TFRzYW5SNlQrTUZmcVVwZitqKzlkUVd1THd4ak13ZjhL?=
- =?utf-8?B?c1QxMEtxeEozMm9xUEJmcEduN0FqNkw4aEtQMW1uVmkrS2x2UExlNjhwOXpP?=
- =?utf-8?B?ZCt2TVkwNkNiT01VNHhCZms2ankvTDcrY05JWVlzbENTNDdCZHBCVHVDdmJG?=
- =?utf-8?B?d3QyYlkxVFl2Ylk2RG9OYkp1c3Rtdzh4VE0rQytQS1phN21KQndQVGk2V0Q1?=
- =?utf-8?B?NDRDQ0tkUTZUTkJtRVZXMW1keXdxM2tSc3F0alMwck9FR24zOEVWS3J0cE9v?=
- =?utf-8?B?bC9QVjgvOWREUVhWMWRxbGNxRnJLeHc2VGdIc1dMWHc5MjlZOWpJbmluMmRw?=
- =?utf-8?B?dUZRa09vMVIxYWRITCtUQU9hQkJxV2l2ZmxVTE5WeWRLT3Y0SXdDMndMMjJi?=
- =?utf-8?B?TUZZWnRqK0ZtYUxCTVBVN1Z4cXd1MCtFVzdEMkNCMHZ6OXJNQ3dLblhlSjU1?=
- =?utf-8?B?Qnp5dk94d3lqK3puOHlHekpJMS9ETFNwNVZFblN1Rll1bmpFNzh5YWpnNit4?=
- =?utf-8?B?UGpTSkhoWkMvRDZLSHRITlQweUtWYVVlSk9NYXpwTWZoN1dmWXQyK3FHOVJD?=
- =?utf-8?B?NkJESkJCVG12em1rVStaVlJXUnNVcUt6RDVrTEpwNDBXeHdBMzlWL09sNU1T?=
- =?utf-8?B?Yk54TlZPM2pXODh0OWdTWnh4T29WQU4xL0Nja1M3TWhTbjluYi9FVVVXT0sv?=
- =?utf-8?B?WkVqQS9yQkdOMk83eWNjaDhZQVJFb1I4SXV3N0V0dlVXaHEvNmpDWjdMNFVX?=
- =?utf-8?B?b1ByRTVrSE1NU1FRUnU2ZEgzRGk5ejkwTndoMU8ydk1hODRISytwMHFTZUxC?=
- =?utf-8?B?SmVKbFRScm8vK3J0ZlZZQnAwQkRTQlg0VUJXRjNORklkcDVaWmxRVlNQblNp?=
- =?utf-8?B?UXVYZzQ0bnZKOWxoRUVmMVpJSGxRd21FMDd4ZUhFRTByMkk1bW9EQzBPZnNT?=
- =?utf-8?B?Zy9vSVhyNjhyS3g1b0lWaXZKbVR4eVpJVmZZSCtVWTJSM3dTbXhxemRSTk83?=
- =?utf-8?B?NitpYzlGOExKQTg5RFMxT1VFZWxTZzRzT2ZwTEt2Mm1KYWVQeDdaT0RUeEx1?=
- =?utf-8?B?bmFPODJzL3R1RlNES2VVRHdDL0ZnWkQzSVFSZ083S25HYjF1YU00dEVjSlIr?=
- =?utf-8?B?WFEvWnY1czhBODNCdThlM0hlTkVoNC9TWnBISEV0WkJLOTl2YXpNZz09?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3717e1d6-5921-40b7-f494-08deee4e3eec
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB7743.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jul 2026 15:21:36.7018
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: LOkG2YI2QZQe3bUpgYJ/m/4YoTg3h+/YILTqr2QVv3zi7l4NCvaZe2EZKYLVusgzg7niXgTctJF+PJ9uyVenBzGBMQNGF0ApZ7zIaFI1P+o=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR04MB10558
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_082144_807058_C0D7E0D3 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20260730_083618_640329_39EFC3FA 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,34 +104,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cunhao,
+rkvdec fails v4l2-compliance in two tests related to
+V4L2_CID_STATELESS_HEVC_SPS. The Control ioctls test reads the control
+with GET_EXT_CTRLS and writes the same value back; TRY_EXT_CTRLS then
+returns -EINVAL because the VDPU38x rkvdec_hevc_validate_sps() rejects
+sps->chroma_format_idc == 0, which is the value returned when the
+control has no default.
 
-On 7/30/26 4:34 PM, Cunhao Lu wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> CAN0 is piped through the Q7 connector to the CAN header on the Haikou
-> baseboard, so enable support for it there.
-> 
-> At least on RK3588 Tiger, the CAN clocks default to 99 MHz, limiting
-> usable CAN bitrates without skew. The RK3568 errata documentation
-> mentions 300 MHz as the default frequency, so request the same rate to
-> allow more bitrates.
-> 
-> The CAN clock setup is common to the Tiger SoM regardless of which
-> carrier board exposes CAN0, so place it in rk3588-tiger.dtsi. Keep CAN0
-> disabled by default and enable it in rk3588-tiger-haikou.dts, where the
-> carrier board routes it to a transceiver.
-> 
+    v4l2-compliance 1.33.0-5491, 64 bits, 64-bit time_t
+    v4l2-compliance SHA: b32589c51481 2026-07-16 08:51:38
+    Control ioctls:
+        fail: v4l2-test-controls.cpp(942):
+	try_ext_ctrls returned an error (22)
+      test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
+    Buffer ioctls:
+        fail: v4l2-test-buffers.cpp(3102): node->streamon(q.g_type())
+        fail: v4l2-test-buffers.cpp(3157): testBlockingDQBuf(node, m2m_q)
+      test blocking wait: FAIL
 
-Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
+Provide a control default via p_def with chroma_format_idc = 1 (4:2:0),
+which is the only value the VDPU38x SPS validation accepts.
+This fixes both the Control ioctls and the Buffer ioctls failures.
 
-Thanks!
-Quentin
+Tested on Radxa Rock 5B (RK3588).
+
+Fixes: c9a59dc2acc7 ("media: rkvdec: Add HEVC support for the VDPU381 variant")
+Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
+---
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+index 1d1e9bfef8e9..37603f049788 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+@@ -236,6 +236,10 @@ static const struct rkvdec_ctrls rkvdec_hevc_ctrls = {
+ 	.num_ctrls = ARRAY_SIZE(rkvdec_hevc_ctrl_descs),
+ };
+ 
++static struct v4l2_ctrl_hevc_sps vdpu38x_hevc_sps_default = {
++	.chroma_format_idc = 1,
++};
++
+ static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctrl_descs[] = {
+ 	{
+ 		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
+@@ -243,6 +247,7 @@ static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctrl_descs[] = {
+ 	{
+ 		.cfg.id = V4L2_CID_STATELESS_HEVC_SPS,
+ 		.cfg.ops = &rkvdec_ctrl_ops,
++		.cfg.p_def.p_hevc_sps = &vdpu38x_hevc_sps_default,
+ 	},
+ 	{
+ 		.cfg.id = V4L2_CID_STATELESS_HEVC_PPS,
+-- 
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
