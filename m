@@ -4,74 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95C6BC531D0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 06:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53D94C531D0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 08:04:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Hi9bIyHO4n9N+suLJeihIw4l21ZJFsD/tAEdT1sTDA4=; b=xOBTsWUvc2wOETi49M8sOHbd4X
-	kiiQHrF6d7zwMaTjA4TWx6Y2zdoiFynB6eKA0CPo4KS1FYmSi0ShOoe6Ktu1/550+JV9yEW3EgHyk
-	Q4hxs84jApNWPwaBrkfdlhkbopAZ1ackDlzqZlEW2saQYYqNq40Fahct9dqrcewUOUq5/+JeiaGT7
-	MXMYckaKqGH1FUnVqMa5MTCZpdXfL4Wfh/81f7kBZD3/EUd8kLlzSFOg2Lj4M2B0mtlZJ/EwcE7Ch
-	wRDMn+ZOfiygM8GvoTaks+ckJ0xi2XMOgwoKjxTF6w67AOrcgvVqCOAZapyb/D3ukyDsBodF4QPSE
-	cJUs1sUA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aVthOiHjsEDpP0nF8CRKLuztXtAE5ZIACa5jtoA1FbY=; b=nShQrmKSqCqByg
+	0M7zlAaE/BD1FNto9apTdaWMi3HnHDxdbT7/uuTHJuhIpr/PFdhMuCDZJM8oPttNc87EStGHvxuLs
+	pDMLDF4/jdKIay27QqFAMo3txVy4BUgVDrUyukAt4fXycLnMYXuhdNj5hohjLMkKA8QqYYGnvyqQp
+	rqgVZXRMKoHzP+8/1VK0//L+JKhiItUIjkoINyJ89OEwfqAWHIcxcJswzaANLfabpxDvRC7d1JziX
+	ANPyz6QBOy97tc6XgETZF+LG+OajecSqHY/Hkibhui2BKdEHWstNhsd9vCdw+4qTCB0Qs1adFgSCi
+	fUw00wc2zgIJc5joe83A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpJzw-00000009aGt-1nHz;
-	Thu, 30 Jul 2026 06:12:04 +0000
-Received: from out162-62-58-211.mail.qq.com ([162.62.58.211])
+	id 1wpLkY-00000009nDE-1wki;
+	Thu, 30 Jul 2026 08:04:18 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpJzb-00000009a6V-2xwS;
-	Thu, 30 Jul 2026 06:11:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1785391898; bh=nlZTsgnbbJOQ4Kw5FO9bYTWSI0lPdEHPYEesfd2N20M=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=ubucALjpvBDO5I7Jw/OKvYJmOjXO/IFytgBgvMiggtgPb5uckbng9Klkxlp3ZhXpm
-	 8kvUQQcRBAp4efIsqNB45+6FMHu/bDOjl2F+/XB9o06x2qCJFwuQxQn8R6OtAl/wKG
-	 9U69ljiaV4NJOuD4SkYcbJVkJAfbd52KFjKmhmQE=
-Received: from ubuntu2204.localdomain ([2409:8d20:22b:54c:9e54:40ff:fe02:3f0f])
-	by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
-	id 2DF15055; Thu, 30 Jul 2026 14:11:31 +0800
-X-QQ-mid: xmsmtpt1785391896toeby3vry
-Message-ID: <tencent_C90955232A016C88A17E174D20340932BE08@qq.com>
-X-QQ-XMAILINFO: NMOcRb7Tb1o3eFzvTEV7czmDls0rjJPNRZ55XGowOt+34o+uDXg7vADq7+SEA/
-	 mETeGlhl7lgwntEjiSGFL3TazMjyHgBGqBBVUcADOk7CFrRj0HKqJkdFxuvJBEJW+hNRRWdT1eT5
-	 RSqtukQykHDrptGwz9AJHvIblBR47DFg6HAY/zS2Y2oC5Ej+nI0SA0uRvC+YIUbXuBOrzJzBLIb7
-	 boQIHQSAf+tX5GuEeumv/3LyjEvOs4vn5TmKaGbLxuBD93zrpbHv2V/IeMrBgPSeUrreoY9wTPz2
-	 VRbi99aiYqjs0QmjdowusSu5W0Khh+HX+qYMLYkGwlN2TfYUtXW45jJH+MNTuVpxK0bBMaz4Cxfb
-	 4CUTNiBTgi2D2py4LsblQkLDeMqIZW57JApL9gxVmUiJRtVW2eA5D6hrvn1Kvy7K0Ik2zOaHqysw
-	 1WMwq24yG8DNvvZWO6lmBg3QBgUI2PTRK6pQnoEycsl9rpsZpqx8Da/rj7bmSdKyaU58abEOUghe
-	 m3xTjFJCzevs57olYOjatAf0n4rklOCVwzqmmfpFnKHIBzdtquvIe5n/ieJG5AMNwi/sTN7mbELX
-	 U9hhC/Wx72eRwXgPqnU8M85E7mPrCo0yIlrZKJCGhf0XscG7+VSyTf/qcqPe7nvZVRdaI4t+VwIT
-	 U6c9paV3GGdWLnMQPbSsbiM5EYsXMtmMjiy8CA9YNhg+UD3na+5r3BYsXIK+lMeE/o//uzz+8WOW
-	 5S8HAF0ZRx9FaCimswuDx8/uaHzJeOGZqHXZKwRtNoQnOVcPIaY0bQmpENRdLgs53LS0CuXDEKqM
-	 zcuUb7xU2LOYLxM599FiV1sUe6147+g3XYYTC/tnF6cFMXzUf2L4pKB7tJ9KADr9dUm0YovvFSTQ
-	 wrnNNIBJnRlMtu5M2zoSpqv7qoKkoZ2f+avN8Q7O0aht3Mm7dTs4WkuxtMuD2SQ5/13njlI40uV8
-	 8KE6W2Roev9k1+IFtejbSeUB0zciOq2Jy29xfsKfWW3vdT6/Dq/cg/vd9XUdtfHbSKaHmr+jefZm
-	 PXM3JoITYcss/Ze805Fzdioa2eLOt/TglvOv1+ot6gcJp6zlJRKVr16Cxpgd4GgvaQml6vTrkYV7
-	 9MSs+zK09gqNBmmtBDyHgcdL16cScbbszILzE8FovPBzMVdjKTzvIWOl6wzrBWHNDFcSssjNJubR
-	 Uby6MGOMteSV4qyw==
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
-From: Cunhao Lu <1579567540@qq.com>
-Date: Thu, 30 Jul 2026 14:11:24 +0800
-Subject: [PATCH 3/3] can: rockchip_canfd: fix TX echo skb race
+	id 1wpLkT-00000009nBr-42H8
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Jul 2026 08:04:15 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-47f6981d244so131745f8f.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 01:04:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785398652; x=1786003452; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=VrwtyRX2qDPBxX3r7OeFon4kOmzwfovTWycGAbMSmog=;
+        b=GWRh2tEeXp0DxtIE9wVn1dGkIKhVJ1AfnvmweD/JqpBXmnWBKODDlxZWCA12eua4Jm
+         ArwKE3Ep0FywAPy26TNbQiGtiv8QNBgziNEkX8na9abXWbDYtWoOv7GWkY0GirdUNzA8
+         +dhhyOEL64IQieh7eYMGq6QzAvhsBW+Kkp2btpCCr0ekjhEORnFWMkPKJCNqn5aDDKvD
+         Awp4qT7LNFUqFZh4yL0g21K03Rsb7mf0ytovG8g2NC4+xE9TKleUJ1HNVurZZNbP6/iE
+         HnHsKCCo960/aWtdhbw6WKUjZiOpwbLjZ9R6lJNsz7Rp0Js0oL8ebX2y0eEl0nCiRvPY
+         xCVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785398652; x=1786003452;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=VrwtyRX2qDPBxX3r7OeFon4kOmzwfovTWycGAbMSmog=;
+        b=R21iEaJordKiP8Mvc5rFlx/s3yBwQZ2zNhwxBqaGzYNXs89DlzD7F7XsZX7y0dOEM6
+         JBc2pcBmxJ0RbQUYQGK6Re3eTWkq3VpbRfxCU3NsGjFEV/hg8RFPwvnIzNfAreaq0WVi
+         gKuHy+gI0BHlNiG641/iPyoGIvUmXzoTWHH22ZVPLstpld2YrZLPOVZNJhgFK+0hifVB
+         HOptC7qwPap3jbf3jxuGE84FNuo/PuuQb50rOXO8j3QtM4zvcAPaOMC055tbh/30H30e
+         8bAMcsSA5GHbntEl9/1qziaSegkgJ9L/EO2StjCpIR0clwG/VN7RvqdZ7UJ0nUUH0wMI
+         my3g==
+X-Forwarded-Encrypted: i=1; AHgh+RoMjSV4QjR0WLsfGWF2Xt+Xxqy45nvuant81rr0qVqRVPKzaspk3SbBUQRinP5eKHkDo18hI8CWnUkeAechsQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwjCffvRF+rvywaahj1UFrLCMz+6OL5yhQiUxNtUFAeY4U7Pg9+
+	H8HZF5NW7hYRDHW/rviKK9KyBYh8Hoh4i8ddh8t6oQwwDd4yVR2rcbxh98Vitw==
+X-Gm-Gg: AR+sD11ow7Oi9NO5J2VBmOgtxWNy9bqJtsFM84AqEdJI7WqFXOMRVwfRirBEumH5fVA
+	rrzs8aYzsPkZ4MzU/FbK1ksLj+BqR8J9m2PnYfMGljrj+AyQVjK6USMPAw79xAQcp45pCDFta3v
+	yWi4bOGvcgjNIKVZ+joclv48iDVPMan3Xveyuhp60Y8EgVBvusrDS/Awt9W5dRFXabn9A/aw5Eq
+	3UwM1LFjwu4lSXKZSrq/REz6BEO92E3uBS4JxSvuTnFezl6QDuvXtpgApPnqW72MYxYdJ/FwOSC
+	lH63R+noBVB1XhabGYA+zGmTNV4KDIO7j7QYZvj1GRI0czEjvYT73jMoEoIbz/BPYk/crMpOHC6
+	F9AWtn4xHqa1403o7mpmFZyx1Y0yR1gAPlDMhhDiTGNDf7o4iIO6gTPQZECyvCEoyLRuonrePTd
+	+YjxU6CljBE5a0GbUTQV+5fweUiU9jSFufsnUwjdkw48s1x5qCCA1ITNpKqyUttYSqGqJ+6DB/l
+	L9yBWcx+KBSsHC1cWEyDA/9rdSZDA0fWJB0YfqyUYGMMA08p9nowqwKPphJnS14ku2SWgPLborp
+	89Rl
+X-Received: by 2002:a5d:5e82:0:b0:47f:6fbd:f23e with SMTP id ffacd0b85a97d-47fc8329a61mr1706891f8f.4.1785398651803;
+        Thu, 30 Jul 2026 01:04:11 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8A5A00BF2D55A7591B4173.dsl.pool.telekom.hu. [2001:4c4e:1b8a:5a00:bf2d:55a7:591b:4173])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47fc88e4055sm3347685f8f.13.2026.07.30.01.04.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jul 2026 01:04:10 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Oded Gabbay <ogabbay@kernel.org>,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Guangshuo Li <lgs201920130244@gmail.com>,
+	Jiaxing Hu <gahing@gahingwoo.com>,
+	Igor Paunovic <royalnet026@gmail.com>
+Subject: [PATCH 1/2] accel/rocket: release the shared device's devres on teardown
+Date: Thu, 30 Jul 2026 10:03:53 +0200
+Message-ID: <20260730080355.177422-2-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260730080355.177422-1-royalnet026@gmail.com>
+References: <20260730080355.177422-1-royalnet026@gmail.com>
 MIME-Version: 1.0
-X-OQ-MSGID: <20260730-master-v1-3-6945fdd4f0ff@qq.com>
-References: <20260730-master-v1-0-6945fdd4f0ff@qq.com>
-In-Reply-To: <20260730-master-v1-0-6945fdd4f0ff@qq.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
- Vincent Mailhol <mailhol@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, Cunhao Lu <1579567540@qq.com>
-X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_231144_284659_D10624E1 
-X-CRM114-Status: GOOD (  20.07  )
+X-CRM114-CacheID: sfid-20260730_010414_030194_E1BD1669 
+X-CRM114-Status: GOOD (  17.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,262 +106,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The TX completion path removes an echo skb before advancing tx_tail. In
-parallel, the transmit path reads tx_head, tx_tail and the tail echo slot
-when applying the erratum 6 queue restriction. There is no synchronization
-between these operations.
+rocket_device_init() attaches its allocations to the shared "rknn"
+platform device via devres: devm_drm_dev_alloc(), devm_kcalloc() for
+the cores array and devm_mutex_init(). That device is registered at
+module init, never binds to a driver, and is only unregistered at
+module exit - so its devres list is not released for as long as the
+module is loaded.
 
-On SMP, the transmit path can consequently observe a pending frame with
-an empty echo slot:
+rocket_device_fini() only calls drm_dev_unregister(): it does not run
+the drm_dev_put() devres action or free any of the other entries.
+Every fini/re-init cycle therefore leaks the previous rocket_device
+(with its embedded drm_device and all drmm state, including the accel
+minor number), the cores array and the mutex devres node. The cycle is
+easy to trigger: unbind the last bound core and bind one again, or
+fail the first core's probe (-EPROBE_DEFER retries included).
 
-  rockchip_canfd fea60000.can can0: rkcanfd_tx_tail_is_eff:
-  echo_skb[0]=NULL tx_head=0x00060f7d tx_tail=0x00060f7c
+Observable symptom, RK3588 (Orange Pi 5 Plus): each unbind/rebind
+cycle of all three cores moves the accel node forward -
+/dev/accel/accel0 comes back as accel1, then accel2 - because every
+leaked drm_device keeps its minor pinned.
 
-It can also keep a pointer to an echo skb while the completion path removes
-and frees it. The inconsistent snapshot can stop the netdev TX queue when
-there is no later completion to wake it.
+Wrap the initialization in a devres group and release exactly that
+group wherever the device is torn down: on the rocket_device_init()
+error path, when the first core's rocket_core_init() fails, and when
+the last core is removed. Each fini now frees what the matching init
+allocated, and the accel minor is reusable again.
 
-Add a TX state lock and use it to protect tx_head, tx_tail and the echo skb
-ring as one state. Keep the queue completion and wake operation outside
-the lock to avoid nesting the TX state lock with the netdev TX queue lock.
-
-Fixes: ae002cc32ec4 ("can: rockchip_canfd: prepare to use full TX-FIFO depth")
-Cc: stable@vger.kernel.org
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
+Fixes: ed98261b4168 ("accel/rocket: Add a new driver for Rockchip's NPU")
+Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
 ---
- drivers/net/can/rockchip/rockchip_canfd-core.c |  1 +
- drivers/net/can/rockchip/rockchip_canfd-rx.c   | 31 +++++++++++++++++++-------
- drivers/net/can/rockchip/rockchip_canfd-tx.c   | 26 ++++++++++++++++++---
- drivers/net/can/rockchip/rockchip_canfd.h      |  4 +++-
- 4 files changed, 50 insertions(+), 12 deletions(-)
+This applies on top of Guangshuo Li's pending fix, which it depends on:
+"accel/rocket: clear rdev on device init failure"
+https://lore.kernel.org/dri-devel/20260708062845.716487-1-lgs201920130244@gmail.com/
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 29de0c01e4ed..c8257858b452 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -904,6 +904,7 @@ static int rkcanfd_probe(struct platform_device *pdev)
- 	priv->can.do_set_mode = rkcanfd_set_mode;
- 	priv->can.do_get_berr_counter = rkcanfd_get_berr_counter;
- 	priv->ndev = ndev;
-+	spin_lock_init(&priv->tx_lock);
+Verified on RK3588 (Orange Pi 5 Plus): with the patch, repeated
+unbind/rebind cycles keep /dev/accel/accel0 stable (previously the
+minor incremented on every cycle); normal three-core probe, runtime PM
+and a MobileNetV1 inference run via the Teflon TFLite delegate are
+unaffected.
+
+ drivers/accel/rocket/rocket_drv.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+index 67e7f54..d29c5ee 100644
+--- a/drivers/accel/rocket/rocket_drv.c
++++ b/drivers/accel/rocket/rocket_drv.c
+@@ -24,6 +24,7 @@
+  */
+ static struct platform_device *drm_dev;
+ static struct rocket_device *rdev;
++static void *rdev_group;
  
- 	match = device_get_match_data(&pdev->dev);
- 	if (match) {
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-index 475c0409e215..9f57a35672ed 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-@@ -99,15 +99,26 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 	struct rkcanfd_stats *rkcanfd_stats = &priv->stats;
- 	const struct canfd_frame *cfd_nominal;
- 	const struct sk_buff *skb;
-+	unsigned long flags;
- 	unsigned int tx_tail;
+ static void
+ rocket_iommu_domain_destroy(struct kref *kref)
+@@ -163,14 +164,19 @@ static int rocket_probe(struct platform_device *pdev)
  
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+
-+	if (!rkcanfd_get_tx_pending(priv))
-+		goto out_unlock;
-+
- 	tx_tail = rkcanfd_get_tx_tail(priv);
- 	skb = priv->can.echo_skb[tx_tail];
- 	if (!skb) {
-+		const unsigned int tx_head = priv->tx_head;
-+		const unsigned int tx_tail_full = priv->tx_tail;
-+
-+		spin_unlock_irqrestore(&priv->tx_lock, flags);
-+
- 		netdev_err(priv->ndev,
- 			   "%s: echo_skb[%u]=NULL tx_head=0x%08x tx_tail=0x%08x\n",
- 			   __func__, tx_tail,
--			   priv->tx_head, priv->tx_tail);
-+			   tx_head, tx_tail_full);
+ 	if (rdev == NULL) {
+ 		/* First core probing, initialize DRM device. */
++		rdev_group = devres_open_group(&drm_dev->dev, NULL, GFP_KERNEL);
++		if (!rdev_group)
++			return -ENOMEM;
+ 		rdev = rocket_device_init(drm_dev, &rocket_drm_driver);
+ 		if (IS_ERR(rdev)) {
+ 			int err = PTR_ERR(rdev);
  
- 		return -ENOMSG;
- 	}
-@@ -123,17 +134,18 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 		rkcanfd_handle_tx_done_one(priv, ts, &frame_len);
- 
- 		WRITE_ONCE(priv->tx_tail, priv->tx_tail + 1);
-+		*tx_done = true;
-+
-+		spin_unlock_irqrestore(&priv->tx_lock, flags);
- 		netif_subqueue_completed_wake(priv->ndev, 0, 1, frame_len,
- 					      rkcanfd_get_effective_tx_free(priv),
- 					      RKCANFD_TX_START_THRESHOLD);
- 
--		*tx_done = true;
--
- 		return 0;
+ 			dev_err(&pdev->dev, "failed to initialize rocket device\n");
+ 			rdev = NULL;
++			devres_release_group(&drm_dev->dev, rdev_group);
+ 			return err;
+ 		}
++		devres_close_group(&drm_dev->dev, rdev_group);
  	}
  
- 	if (!(priv->devtype_data.quirks & RKCANFD_QUIRK_RK3568_ERRATUM_6))
--		return 0;
-+		goto out_unlock;
+ 	unsigned int core = rdev->num_cores;
+@@ -190,6 +196,7 @@ static int rocket_probe(struct platform_device *pdev)
+ 		if (rdev->num_cores == 0) {
+ 			rocket_device_fini(rdev);
+ 			rdev = NULL;
++			devres_release_group(&drm_dev->dev, rdev_group);
+ 		}
+ 	}
  
- 	/* Erratum 6: Extended frames may be send as standard frames.
- 	 *
-@@ -143,7 +155,7 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 	 */
- 	if (!(cfd_nominal->can_id & CAN_EFF_FLAG) ||
- 	    (cfd_rx->can_id & CAN_EFF_FLAG))
--		return 0;
-+		goto out_unlock;
- 
- 	/* Not affected if:
- 	 * - standard part and RTR flag of the TX'ed frame
-@@ -151,20 +163,20 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 	 */
- 	if ((cfd_nominal->can_id & (CAN_RTR_FLAG | CAN_SFF_MASK)) !=
- 	    (cfd_rx->can_id & (CAN_RTR_FLAG | CAN_SFF_MASK)))
--		return 0;
-+		goto out_unlock;
- 
- 	/* Not affected if:
- 	 * - length is not the same
- 	 */
- 	if (cfd_nominal->len != cfd_rx->len)
--		return 0;
-+		goto out_unlock;
- 
- 	/* Not affected if:
- 	 * - the data of non RTR frames is different
- 	 */
- 	if (!(cfd_nominal->can_id & CAN_RTR_FLAG) &&
- 	    memcmp(cfd_nominal->data, cfd_rx->data, cfd_nominal->len))
--		return 0;
-+		goto out_unlock;
- 
- 	/* Affected by Erratum 6 */
- 	u64_stats_update_begin(&rkcanfd_stats->syncp);
-@@ -185,6 +197,9 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 
- 	rkcanfd_xmit_retry(priv);
- 
-+out_unlock:
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+
- 	return 0;
+@@ -213,6 +220,7 @@ static void rocket_remove(struct platform_device *pdev)
+ 		/* Last core removed, deinitialize DRM device. */
+ 		rocket_device_fini(rdev);
+ 		rdev = NULL;
++		devres_release_group(&drm_dev->dev, rdev_group);
+ 	}
  }
  
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-index c4ecdc9411cc..c3811d3179b6 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-@@ -14,6 +14,8 @@ static bool rkcanfd_tx_tail_is_eff(const struct rkcanfd_priv *priv)
- 	const struct sk_buff *skb;
- 	unsigned int tx_tail;
- 
-+	lockdep_assert_held(&priv->tx_lock);
-+
- 	if (!rkcanfd_get_tx_pending(priv))
- 		return false;
- 
-@@ -33,13 +35,22 @@ static bool rkcanfd_tx_tail_is_eff(const struct rkcanfd_priv *priv)
- 	return cfd->can_id & CAN_EFF_FLAG;
- }
- 
--unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv)
-+unsigned int rkcanfd_get_effective_tx_free(struct rkcanfd_priv *priv)
- {
-+	unsigned long flags;
-+	unsigned int tx_free;
-+
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+
- 	if (priv->devtype_data.quirks & RKCANFD_QUIRK_RK3568_ERRATUM_6 &&
- 	    rkcanfd_tx_tail_is_eff(priv))
--		return 0;
-+		tx_free = 0;
-+	else
-+		tx_free = rkcanfd_get_tx_free(priv);
-+
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
- 
--	return rkcanfd_get_tx_free(priv);
-+	return tx_free;
- }
- 
- static void rkcanfd_start_xmit_write_cmd(const struct rkcanfd_priv *priv,
-@@ -60,6 +71,8 @@ void rkcanfd_xmit_retry(struct rkcanfd_priv *priv)
- 	const unsigned int tx_tail = rkcanfd_get_tx_tail(priv);
- 	const u32 reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_tail);
- 
-+	lockdep_assert_held(&priv->tx_lock);
-+
- 	rkcanfd_start_xmit_write_cmd(priv, reg_cmd);
- }
- 
-@@ -69,6 +82,7 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 	u32 reg_frameinfo, reg_id, reg_cmd;
- 	unsigned int tx_head, frame_len;
- 	const struct canfd_frame *cfd;
-+	unsigned long flags;
- 	int err;
- 	u8 i;
- 
-@@ -124,8 +138,11 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 			      *(u32 *)(cfd->data + i));
- 
- 	frame_len = can_skb_get_frame_len(skb);
-+	spin_lock_irqsave(&priv->tx_lock, flags);
- 	err = can_put_echo_skb(skb, ndev, tx_head, frame_len);
- 	if (err) {
-+		spin_unlock_irqrestore(&priv->tx_lock, flags);
-+
- 		if (err == -EINVAL)
- 			dev_kfree_skb_any(skb);
- 
-@@ -141,6 +158,7 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 	WRITE_ONCE(priv->tx_head, priv->tx_head + 1);
- 
- 	rkcanfd_start_xmit_write_cmd(priv, reg_cmd);
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
- 
- 	netif_subqueue_maybe_stop(priv->ndev, 0,
- 				  rkcanfd_get_effective_tx_free(priv),
-@@ -157,6 +175,8 @@ void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
- 	unsigned int tx_tail;
- 	struct sk_buff *skb;
- 
-+	lockdep_assert_held(&priv->tx_lock);
-+
- 	tx_tail = rkcanfd_get_tx_tail(priv);
- 	skb = priv->can.echo_skb[tx_tail];
- 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 93131c7d7f54..3cf283a7b380 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -15,6 +15,7 @@
- #include <linux/netdevice.h>
- #include <linux/reset.h>
- #include <linux/skbuff.h>
-+#include <linux/spinlock.h>
- #include <linux/timecounter.h>
- #include <linux/types.h>
- #include <linux/u64_stats_sync.h>
-@@ -462,6 +463,7 @@ struct rkcanfd_priv {
- 	struct can_rx_offload offload;
- 	struct net_device *ndev;
- 
-+	spinlock_t tx_lock; /* protects tx_head, tx_tail and echo_skb */
- 	void __iomem *regs;
- 	unsigned int tx_head;
- 	unsigned int tx_tail;
-@@ -544,7 +546,7 @@ void rkcanfd_timestamp_start(struct rkcanfd_priv *priv);
- void rkcanfd_timestamp_stop(struct rkcanfd_priv *priv);
- void rkcanfd_timestamp_stop_sync(struct rkcanfd_priv *priv);
- 
--unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv);
-+unsigned int rkcanfd_get_effective_tx_free(struct rkcanfd_priv *priv);
- void rkcanfd_xmit_retry(struct rkcanfd_priv *priv);
- netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev);
- void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
-
--- 
-2.34.1
-
 
 _______________________________________________
 Linux-rockchip mailing list
