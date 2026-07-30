@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ADCAC55162
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 14:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5967AC55162
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 14:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YNEtnshBFjXQ/Ka3XhAADis2Rk/O9EUC5oBE9vpHNzo=; b=pM6EuTKpGZW2OF
-	K+v/UfoEBcSobm9LlTjIwJ+x7vdQQ52xc78Cex/M1aFHsaTO1Ef8q6yuH7sQy8FQnpT+Sd6x6bZbs
-	zSEXzIJlvMEbwIx32SqXZ6/duNfIKOnBnaWJmTBGw9077x0XEuLUBO+MWOjADxKEO1x4HoQubqjOx
-	9I3FeOiA0y+6zdY7HVcTLJ1IYuhi0NGeKx2n4+w7AhhHJxeyJWSAeUVWDkjcH7UxXnkAew2kywgcb
-	Da1otrUkPvrQ+HYAHBAN/jjslK558Xq+NZ6F8ManmanOdOpANHtsMGZwZt1dekxGyEDLelUzAg/C4
-	lV789qE5/f8kno/EioBA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n9kSWKtvVM2e/7VT8MyF7do8nZYynPoupg+dcmttPM8=; b=ctkAzV8fVefSm47ItVFZMMHLQl
+	WTQOicJ8QSPCYvCyTa6jMPcSiwWrf3wT7z5dv5DxpaeSXVPaXoOvvfCbkUxyPol/oBkt0ZqYKNIx4
+	BmVKO36I+NKWABYV0ZxtuVa1rm1vT/oixy1uJF5B4a1bbUyXyNygtwypcNVDm5qIEWzLXD56QPu4c
+	5HoYwAsF3rwunIRfQ+AHb8zjWZhzzVq+gPDA+pRSadJ+DeF5njAO3Q2wjBDidSkTz3K9nNN0ND2Zp
+	4u1oLKETYG/sT4NiS21NIw7gp8cfk84Xmskp6PQg52S52D+/i/UnWP2YoIjIfzfKXCunEHqPh8YpY
+	9Kete2uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpRNT-0000000AhRG-08Ye;
-	Thu, 30 Jul 2026 14:04:51 +0000
-Received: from xmbghk7.mail.qq.com ([43.163.128.43])
+	id 1wpRSS-0000000Ai1Q-4Bmy;
+	Thu, 30 Jul 2026 14:10:01 +0000
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpRNQ-0000000AhPj-1O2U;
-	Thu, 30 Jul 2026 14:04:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1785420285; bh=tGTkNpzchZNpj9HV/ywwb5I5HWM8o4egLfUtXR/eyws=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=k4Rkd8v5CBpNWsHys2gIx7tEERm/Gg2BZm6q6Q9XXLbVLW/O08S9tD+I2YavdOcUD
-	 LYNHIAU6PG0tGn9BBCyr166QNRNvZvqHMeEYxl8gV3FOIsjMQOdH/4ncpbuT/t8/S3
-	 Dp1wPH1cGn2x42uHEHHHA3efA0eQoj0jwtE+11aw=
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
-X-QQ-XMAILINFO: OSDxAxedUaWCj2nTIt4SlIaffdcH5TQCRrGH0D8KpcaLyWVb1AwgKVCVXs2DWK
-	 LNtUkzL9ckzg8n/vwGTDh37CuOMJ/jk8m5P2ov6ji0h8i0yEPAD6g8f13u6Wzvf8NQWblMCL6tdi8
-	 n84Y8Gd93c6wwHxiY2CzcTWxSFpNxquPtjltH5Gohg78FP8n2Rgses0ZLPqL+q1jBmr4BUGRRWLoJ
-	 mzgRxKscnUWbxpcbn90kGBkb8Zk4nJEs9avZKYXhgZ40ZW3D6TNOdTT0iHsTcVifVYbgKcEkwwxsi
-	 XVASX+rDPXebyz8IBUKXCDZrgCTDTXsx/RsXySzy16SymfY2jx/UuPWOhpcFLmkjk5rHciEsLMV32
-	 GlsyqsInI/qWW+vp5H3gPDkqmQcMOpqwSCY0tO5mpzeDFr74EmfKcCjnBQG8PDP5pwpTdwxRm1gQn
-	 IFxpqjvHYIOiImt4hWSx3Cicy4n7csvilLZDluDJIozh1MPeazckTOZvaTWi+1ApHoWAeXUTX1yGy
-	 mXtwgxV5S52elwF8LB5VUw9AjdSlcvI7bcDD6QURAcB87LS4+vaoa+eT557/Ytw+7yf5i5m2aGKXd
-	 OJcssUEls/O2bkeVxtHV0SIqwQ0KCDKzj1Bxhmz+WbArbmARae7VtMQtTyrkeTZuNNHqng7pioyRY
-	 Q26hUwSyXzU6RQyZnYoWfS/Xgu0G5AjrAiBno6ow+d1FRZnmI05yA9uj/yX04MS3HCso5Hr480RX3
-	 iFx6FDfaGiUZJ4bCZRgw4wJMK7iYXxOo6LAsYriEOg0nVcdNmqfqMgnDg0FzvXLxb7sOYcuHPTYt+
-	 1jz/U2htRblg2PcEVv54uyluXpuCBQfzZp2IRSWKaG6miMeP2sAtZYSu5V/34MSg9AbfxxqGvCBT6
-	 V7aoav8ab4frjDX4Zg8Zjs42YbdzPme6ruHELpPa9dlB2XegZjQ9DxJCoKA57zh2gwGn1tHa/8OSv
-	 mUcin/yiwLi889aRRZonur5oBq8pv8DnHV8CC8LQUTA7Hb1X2GPnsBQGD1VrIKZzbVIXcDBSQseUc
-	 7Tn2yI4ueKfxmtSocjSKhS0ut9haSKXoBYqzznJ/1nIhbHa8z51U+xFdNBfQr6fNBT2q1XzWMHrrl
-	 TcdV4PWUzIr3nQ==
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?UXVlbnRpbiBTY2h1bHo=?=" <quentin.schulz@cherry.de>, "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>
-Cc: "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v5 4/4] arm64: dts: rockchip: Enable CAN controller on RK3588-Tiger-Haikou
-Mime-Version: 1.0
-Date: Thu, 30 Jul 2026 22:04:43 +0800
-X-Priority: 3
-Message-ID: <tencent_34D00CC80826788DD404902246F9ED36E10A@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <20260725-master-v5-0-75da459d2b93@qq.com>
- <tencent_8E35228F9F4F133FCDBCCC4902F6887D0006@qq.com>
-	<7628bc49-b4e7-4716-9579-022c20bbf134@cherry.de>
-In-Reply-To: <7628bc49-b4e7-4716-9579-022c20bbf134@cherry.de>
-X-QQ-mid: xmsezb41-0t1785420283tmh58ymmo
+	id 1wpRSQ-0000000Ai0U-03uq;
+	Thu, 30 Jul 2026 14:10:00 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
+	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id A6C26202C4D;
+	Thu, 30 Jul 2026 16:09:51 +0200 (CEST)
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1wpRSJ-0023mQ-1p;
+	Thu, 30 Jul 2026 16:09:51 +0200
+Received: from pengutronix.de (p4ffb2dc6.dip0.t-ipconnect.de [79.251.45.198])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 46A05577064;
+	Thu, 30 Jul 2026 14:09:51 +0000 (UTC)
+Date: Thu, 30 Jul 2026 16:09:50 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Cunhao Lu <1579567540@qq.com>
+Cc: Vincent Mailhol <mailhol@kernel.org>, kernel@pengutronix.de, 
+	Heiko Stuebner <heiko@sntech.de>, linux-can@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: [PATCH v3 3/3] can: rockchip_canfd: serialize TX state and
+ command writes
+Message-ID: <20260730-accelerated-ambitious-sparrow-44e187-mkl@pengutronix.de>
+References: <20260730-master-v3-0-91cf030c337d@qq.com>
+ <tencent_DF0D7ED74DEC340D32DF095A239B01238808@qq.com>
+MIME-Version: 1.0
+In-Reply-To: <tencent_DF0D7ED74DEC340D32DF095A239B01238808@qq.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_070448_724117_F7EEE53D 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20260730_070958_214336_9D979A12 
+X-CRM114-Status: GOOD (  38.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,33 +70,273 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5130282192151788182=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Quentin,
 
-> Can you please move the assigned-clocks* properties to rk3588-tiger.dtsi
-> instead? RK3588 Tiger is a SOM and Haikou is a carrierboard. The
-> carrierboard takes the signal directly from the SoC and route those to a
-> transceiver. I'm assuming all carrierboards for Tiger will need those
-> two properties, so better have them in the SoM DTSI.
+--===============5130282192151788182==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="djdjifzti4t4ojeh"
+Content-Disposition: inline
+
+
+--djdjifzti4t4ojeh
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 3/3] can: rockchip_canfd: serialize TX state and
+ command writes
+MIME-Version: 1.0
+
+On 30.07.2026 21:48:40, Cunhao Lu wrote:
+> The TX completion path removes an echo skb before advancing tx_tail. In
+> parallel, the transmit path reads tx_head, tx_tail and the tail echo slot
+> when applying the erratum 6 queue restriction. There is no synchronization
+> between these operations.
 >
-> on top of this patch and squash and we'll have what I would like to have.
+> On SMP, the transmit path can consequently observe a pending frame with
+> an empty echo slot:
 >
-> If there's no need for a v6, I'm assuming Heiko can simply fix that when
-> applying and thus there may be no need to send a v6 just for that (but
-> if you need to send a v6, please consider doing the suggested changes
-> above).
+>   rockchip_canfd fea60000.can can0: rkcanfd_tx_tail_is_eff:
+>   echo_skb[0]=3DNULL tx_head=3D0x00060f7d tx_tail=3D0x00060f7c
+>
+> It can also keep a pointer to an echo skb while the completion path remov=
+es
+> and queues it for NAPI, where it can be freed on another CPU. The
+> inconsistent snapshot can stop the netdev TX queue when there is no later
+> completion to wake it.
+>
+> There is a second race in the command submission sequence.
+> rkcanfd_start_xmit() runs in softirq context while rkcanfd_xmit_retry() is
+> called from the RX interrupt handler. On controllers affected by erratum
+> 12, both execute a MODE/CMD/MODE register sequence. The interrupt handler
+> can restore the default MODE between the softirq writes, causing the
+> resumed softirq to issue CMD without SPACE_RX_MODE and bypass the erratum
+> 12 workaround.
+>
+> Add a TX state lock and use it to protect tx_head, tx_tail and the echo s=
+kb
+> ring as one state. The same lock serializes the MODE/CMD/MODE sequence
+> between the transmit and interrupt paths. Keep the queue completion and
+> wake operation outside the lock to avoid nesting the TX state lock with
+> the netdev TX queue lock.
+>
+> Tested on an RK3588 rev2.2 at 1 Mbit/s with 100,000 extended CAN frames.
+> The run triggered 138 erratum 6 retries and completed without drops, queue
+> stalls or driver warnings. RK3588 does not enable erratum 12, so this test
+> does not exercise that hardware workaround.
+>
+> Fixes: ae002cc32ec4 ("can: rockchip_canfd: prepare to use full TX-FIFO de=
+pth")
+> Fixes: 83f9bd6bf39d ("can: rockchip_canfd: implement workaround for errat=
+um 12")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Cunhao Lu <1579567540@qq.com>
+>
+> ---
+> Changes in v3:
+> - Adjust for the can_put_echo_skb() ownership change in patch 1; no
+>   functional changes.
+>
+> Changes in v2:
+> - Serialize the erratum 12 MODE/CMD/MODE sequence with the TX lock.
+> - Add the erratum 12 commit to the Fixes tags.
+> - Add RK3588 extended-frame stress-test results.
+> ---
+>  drivers/net/can/rockchip/rockchip_canfd-core.c |  1 +
+>  drivers/net/can/rockchip/rockchip_canfd-rx.c   | 31 +++++++++++++++++++-=
+------
+>  drivers/net/can/rockchip/rockchip_canfd-tx.c   | 26 ++++++++++++++++++---
+>  drivers/net/can/rockchip/rockchip_canfd.h      |  4 +++-
+>  4 files changed, 50 insertions(+), 12 deletions(-)
+>
+> diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net=
+/can/rockchip/rockchip_canfd-core.c
+> index 29de0c01e4ed..c8257858b452 100644
+> --- a/drivers/net/can/rockchip/rockchip_canfd-core.c
+> +++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
+> @@ -904,6 +904,7 @@ static int rkcanfd_probe(struct platform_device *pdev)
+>  	priv->can.do_set_mode =3D rkcanfd_set_mode;
+>  	priv->can.do_get_berr_counter =3D rkcanfd_get_berr_counter;
+>  	priv->ndev =3D ndev;
+> +	spin_lock_init(&priv->tx_lock);
+>
+>  	match =3D device_get_match_data(&pdev->dev);
+>  	if (match) {
+> diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/c=
+an/rockchip/rockchip_canfd-rx.c
+> index 475c0409e215..9f57a35672ed 100644
+> --- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
+> +++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+> @@ -99,15 +99,26 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *=
+priv,
+>  	struct rkcanfd_stats *rkcanfd_stats =3D &priv->stats;
+>  	const struct canfd_frame *cfd_nominal;
+>  	const struct sk_buff *skb;
+> +	unsigned long flags;
+>  	unsigned int tx_tail;
 
-I will move the assigned-clocks and assigned-clock-rates properties to
-rk3588-tiger.dtsi. I am preparing v6 now and will post it
-shortly with these changes.
+nitpick: please keep reverse xmas tree for variable declaration, move
+flags to the end.
 
-Thanks,
-Cunhao
+>
+> +	spin_lock_irqsave(&priv->tx_lock, flags);
+> +
+> +	if (!rkcanfd_get_tx_pending(priv))
+> +		goto out_unlock;
+> +
+>  	tx_tail =3D rkcanfd_get_tx_tail(priv);
+>  	skb =3D priv->can.echo_skb[tx_tail];
+>  	if (!skb) {
+> +		const unsigned int tx_head =3D priv->tx_head;
+> +		const unsigned int tx_tail_full =3D priv->tx_tail;
+
+nitpick: As it's both the unmasked head and tail, please use the same
+suffix for both.
+
+> +
+> +		spin_unlock_irqrestore(&priv->tx_lock, flags);
+> +
+>  		netdev_err(priv->ndev,
+>  			   "%s: echo_skb[%u]=3DNULL tx_head=3D0x%08x tx_tail=3D0x%08x\n",
+>  			   __func__, tx_tail,
+> -			   priv->tx_head, priv->tx_tail);
+> +			   tx_head, tx_tail_full);
+>
+>  		return -ENOMSG;
+>  	}
+> @@ -123,17 +134,18 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv=
+ *priv,
+>  		rkcanfd_handle_tx_done_one(priv, ts, &frame_len);
+>
+>  		WRITE_ONCE(priv->tx_tail, priv->tx_tail + 1);
+> +		*tx_done =3D true;
+> +
+> +		spin_unlock_irqrestore(&priv->tx_lock, flags);
+>  		netif_subqueue_completed_wake(priv->ndev, 0, 1, frame_len,
+>  					      rkcanfd_get_effective_tx_free(priv),
+>  					      RKCANFD_TX_START_THRESHOLD);
+>
+> -		*tx_done =3D true;
+> -
+>  		return 0;
+>  	}
+>
+>  	if (!(priv->devtype_data.quirks & RKCANFD_QUIRK_RK3568_ERRATUM_6))
+> -		return 0;
+> +		goto out_unlock;
+>
+>  	/* Erratum 6: Extended frames may be send as standard frames.
+>  	 *
+> @@ -143,7 +155,7 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *=
+priv,
+>  	 */
+>  	if (!(cfd_nominal->can_id & CAN_EFF_FLAG) ||
+>  	    (cfd_rx->can_id & CAN_EFF_FLAG))
+> -		return 0;
+> +		goto out_unlock;
+>
+>  	/* Not affected if:
+>  	 * - standard part and RTR flag of the TX'ed frame
+> @@ -151,20 +163,20 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv=
+ *priv,
+>  	 */
+>  	if ((cfd_nominal->can_id & (CAN_RTR_FLAG | CAN_SFF_MASK)) !=3D
+>  	    (cfd_rx->can_id & (CAN_RTR_FLAG | CAN_SFF_MASK)))
+> -		return 0;
+> +		goto out_unlock;
+>
+>  	/* Not affected if:
+>  	 * - length is not the same
+>  	 */
+>  	if (cfd_nominal->len !=3D cfd_rx->len)
+> -		return 0;
+> +		goto out_unlock;
+>
+>  	/* Not affected if:
+>  	 * - the data of non RTR frames is different
+>  	 */
+>  	if (!(cfd_nominal->can_id & CAN_RTR_FLAG) &&
+>  	    memcmp(cfd_nominal->data, cfd_rx->data, cfd_nominal->len))
+> -		return 0;
+> +		goto out_unlock;
+>
+>  	/* Affected by Erratum 6 */
+>  	u64_stats_update_begin(&rkcanfd_stats->syncp);
+> @@ -185,6 +197,9 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *=
+priv,
+>
+>  	rkcanfd_xmit_retry(priv);
+>
+> +out_unlock:
+> +	spin_unlock_irqrestore(&priv->tx_lock, flags);
+> +
+>  	return 0;
+>  }
+>
+> diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/c=
+an/rockchip/rockchip_canfd-tx.c
+> index 2b5cd6aab31b..ff9d8b77499c 100644
+> --- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
+> +++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+> @@ -14,6 +14,8 @@ static bool rkcanfd_tx_tail_is_eff(const struct rkcanfd=
+_priv *priv)
+>  	const struct sk_buff *skb;
+>  	unsigned int tx_tail;
+>
+> +	lockdep_assert_held(&priv->tx_lock);
+> +
+>  	if (!rkcanfd_get_tx_pending(priv))
+>  		return false;
+>
+> @@ -33,13 +35,22 @@ static bool rkcanfd_tx_tail_is_eff(const struct rkcan=
+fd_priv *priv)
+>  	return cfd->can_id & CAN_EFF_FLAG;
+>  }
+>
+> -unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *pr=
+iv)
+> +unsigned int rkcanfd_get_effective_tx_free(struct rkcanfd_priv *priv)
+>  {
+> +	unsigned long flags;
+> +	unsigned int tx_free;
+
+nitpick: please use reverse xmas tree for the variables, move tx_free
+first.
+
+Marc
+
+--
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--djdjifzti4t4ojeh
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCamtbLAAKCRDMOmT6rpmt
+0ksiAQD7vcEPzavi0oGiOx79XuJq7fuxdJDV9+CGtNjF7R1AAQEA3j7WKRRhizg/
+j/lebtLFK4Lp3LtU5hqdjPUZFqPylwk=
+=I9MM
+-----END PGP SIGNATURE-----
+
+--djdjifzti4t4ojeh--
+
+
+--===============5130282192151788182==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5130282192151788182==--
+
