@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C21DC54FDF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 08:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67BA2C54FDF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 08:28:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FOVKl1xpoD2eGIGXaWB9LiEJ6evrmQhzZR3bkNYJNmA=; b=hXzQr30ouEF2sp
-	7efXzLBGoVvpCwWGuCqJoHS8ALvMT8WOVSLTVwgGSE3w1NS9rlFRpCmZgPXuB5TT3uJUXQlFTzdgW
-	NFi7+YNmx4qGkkIJIok3GiMBLaXIxCaP7viy3XRaSVk0VIZ7o6b3On3pUSwYmKvUeWAhBV87ejbn/
-	aqVsKH1s9RpIGbo9JZdD7P6famfu1nlTaTRjivh1qsun6z9YDsGG/tBeoJZFZ6mMZpMx3aNRez1bh
-	VRyYgAzleudfykKgr4bd6FA8hF08Bo73151tWajcxgBbWQzW44PvcXzjuOokxhRGNLo8yf+fWRq+P
-	ikZNOPJvghS9XZNYtf9Q==;
+	List-Owner; bh=QSaml83iLEzpqDzWb57nVi0OnINkDm/kAey9nUSTKX8=; b=Rej4nORHpY1hFi
+	NXY4k+NRI6IvP1/IHaGZ32NE33b4axr8R6pL4giYps2UpfhL68iEzq6BGM5QkMXP07k1Iym2lp/8G
+	5/m2RuT2RH1LvHkuWqQMXbJCs2Srwi6LOPdKry090My0vjS26pvklZQkcWWq3DRuVsF0k2rdBO1Ok
+	Gbapdc2fxcniJN2AhJ/Ad633OAh1fcKa+y0ep7qBjEz/mBqEPSk7E6kaeThT+LQ8jUf453OUSfSVY
+	fpe2yujvXfjhejZPdLUaFZtgW6JppP4Ts8UJCmpDXZfeq2bQmd0GlHtoo2JtPtPhatJ95mzC0kve7
+	E8qkemrnE1cSsIER7OQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpM6q-00000009rPg-1R0P;
-	Thu, 30 Jul 2026 08:27:20 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wpM7s-00000009rif-43eH;
+	Thu, 30 Jul 2026 08:28:24 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpM6o-00000009rOx-2qaM;
-	Thu, 30 Jul 2026 08:27:18 +0000
+	id 1wpM7m-00000009rh2-2r4x;
+	Thu, 30 Jul 2026 08:28:18 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7992C600B0;
-	Thu, 30 Jul 2026 08:27:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 093921F000E9;
-	Thu, 30 Jul 2026 08:27:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E82F3600BC;
+	Thu, 30 Jul 2026 08:28:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09F251F000E9;
+	Thu, 30 Jul 2026 08:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785400036;
-	bh=ynUIE+OmGITuTnDcYm4pdy5E15n1t8RviFFzWHgFPBQ=;
+	s=k20260515; t=1785400096;
+	bh=IqWfPHowzypNS3fC5xvMrVulrkg/53CBTJvxev8Nx5k=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=YGORvmoonkdoewLciDAteO2KJ+3ljKDoXhdVceRx1MQblS/hxzAlNumE6DegrAgoM
-	 Zcgtg9bNa35V4lD6OvtC/bJa4Z7nda/TOHETtITwT7n6yrGNGehZdcG1sB+o47Y9e1
-	 OS086oRjJUHJWz4uPDrgOA1ayuR6dtb055dWa2CBfO+4mFHchvXsZ/BFuvaEOyTSc4
-	 R+rItOGG9z9ZbrYGU9AAdwtKpigwvUn3L43zXnIYTqaImXFcOQjfA2wA/qd53xC92n
-	 0SGAoJVhIS/hrew2ODhgZWXv3Por6U7OXARoHqlz94+wVqdycwyeJNVrolpawBJV4B
-	 GGgtCRyXc2A0A==
-Date: Thu, 30 Jul 2026 10:27:11 +0200
+	b=Dxi1cOyszRtlP/OETbzH9DzS1JrcmsxerAuE1GIeA4eMSLgfQxwXEVtPcz45v6Jk+
+	 rA2Bks3auZ1nx2bGDNs1LFcWAjBoxlIVoYdQQAbVUCPNEMbFFwA/99atlIdEc/e0FK
+	 Q4q0EhvQbJsdKHIH+4Wh/EEPMOKTtz5h12QXlKgLsdMVsDhzfiGJI1a7uPWNkTkhlL
+	 6oBTm9s571O/TBpR2hhYdjXIeRJ20qGx+dTOlKb4oElWzDStMNGNlCLHpNAHVCS9BO
+	 naVZLLc713RhicSXOhVRgNOpzqzdebsGnG8DLHLn90BHePFJ4XNGVKTTBQCYKHaSd/
+	 9WrV7yUewA71w==
+Date: Thu, 30 Jul 2026 10:28:10 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Gavin Gao <attinagaoxu@gmail.com>
 Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com, 
@@ -54,14 +54,14 @@ Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH net-next 1/3] dt-bindings: net: rockchip-dwmac: Add 25M
- refout clock
-Message-ID: <20260730-lucky-strict-oryx-9ce8de@quoll>
+Subject: Re: [PATCH net-next 2/3] arm64: dts: rockchip: Add RK3576 GMAC 25M
+ refout clocks
+Message-ID: <20260730-complex-funky-angelfish-dc9aad@quoll>
 References: <20260727021048.3375444-1-attinagaoxu@gmail.com>
- <20260727021048.3375444-2-attinagaoxu@gmail.com>
+ <20260727021048.3375444-3-attinagaoxu@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260727021048.3375444-2-attinagaoxu@gmail.com>
+In-Reply-To: <20260727021048.3375444-3-attinagaoxu@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +78,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 27, 2026 at 10:10:45AM +0800, Gavin Gao wrote:
-> Some Rockchip GMAC instances can provide a 25 MHz reference clock output
-> for an external RGMII PHY.
+On Mon, Jul 27, 2026 at 10:10:46AM +0800, Gavin Gao wrote:
+> RK3576 provides REFCLKO25M_GMAC0_OUT and REFCLKO25M_GMAC1_OUT clocks
+> for the two GMAC instances.
 > 
-> Add a clock name for this 25 MHz reference output so SoC dtsi files can
-> describe it separately from the existing MAC reference clocks.
+> Describe these clocks with the clk_mac_25m_refout clock name so boards
+> using RGMII output clock mode can let the MAC driver manage the 25 MHz
+> reference output.
 > 
 > Signed-off-by: Gavin Gao <attinagaoxu@gmail.com>
 > ---
->  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 1 +
->  1 file changed, 1 insertion(+)
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> index 0ac7c4b47d6b..074ac274f2e0 100644
-> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> @@ -81,6 +81,7 @@ properties:
->          - pclk_mac
->          - clk_mac_ref
->          - clk_mac_refout
-> +        - clk_mac_25m_refout
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> index 70e67d4dccb8..f1125c2f88ab 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> @@ -1692,10 +1692,10 @@ gmac0: ethernet@2a220000 {
+>  			reg = <0x0 0x2a220000 0x0 0x10000>;
+>  			clocks = <&cru CLK_GMAC0_125M_SRC>, <&cru CLK_GMAC0_RMII_CRU>,
+>  				 <&cru PCLK_GMAC0>, <&cru ACLK_GMAC0>,
+> -				 <&cru CLK_GMAC0_PTP_REF>;
+> +				 <&cru CLK_GMAC0_PTP_REF>, <&cru REFCLKO25M_GMAC0_OUT>;
+>  			clock-names = "stmmaceth", "clk_mac_ref",
+>  				      "pclk_mac", "aclk_mac",
+> -				      "ptp_ref";
+> +				      "ptp_ref", "clk_mac_25m_refout";
 
-That's the same as clk_mac_ref and clk_mac_refout. clocks are not
-outputs but inputs, so explain how does the device take three SAME
-clocks: clk_mac_ref, clk_mac_refout and clk_mac_25m_refout?
+Where is clk_mac_refout? Why do you claim this is a different input
+(important: INPUT)?
 
 Best regards,
 Krzysztof
