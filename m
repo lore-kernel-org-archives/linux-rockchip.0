@@ -4,61 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C02BC55162
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 11:39:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9305C55160
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 11:39:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7hF3fZBKw/MN5gARf9K8tCABqgibICAl+F/2Mk6o2hg=; b=UrhmJ2uwp5FlZG2npshHOdBp25
-	Zf+z0Ct5IpVKqHsUaq5QYOKZ8AqRHrUmqScln5JIO1PfLA99qijNfd3ryI4pjGNEGDACrZB79yLze
-	E8o/L9X1rJtr8xYUOzmQMEIx/XhfYv92ZHBFNpV3JLVclCPt3tbgwLt2oXMzSrZ1csieoDETA7ytD
-	P/RehwI4O9xpDx39QjnmI34BJ5uSZyRusB19G4WB6qbdoIlKgyN0XBM2rbl2nLgdCapcNb4/7JeSO
-	O7OKsElzvhEVPW7qlrfgpmj/q74rtNtEl+zD8MDeqctHbdFhR5fRdHJw5kGZyegww05BS/uJVJ281
-	I67K27HA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=eAN2dKE8QnngchOQ48bZTarUF5nGfwAXGJSNrtrVKjU=; b=TrBvsgOjZ6/a0h
+	WFZOKhV5jNazCs+O9YVNVf3kitKr1SaqrzXN+Fv+z+NShLyU2Cds1TIgK57m5WoGUo1X2ABSJKE+F
+	SVFFqxsyDz/p4BZdOK7jomPA0upAwA53gWfJ8ZhJ0FSw8RHRaYmhDItaQdkAj/HSNzzxsT1iFR+27
+	ZOUX+4HTMO4z1LwtQT224hci9e9EQNMAusxzVDOaq4zdypYlFUuGMMFHL8hx7FVHIgWId5FhGpOM2
+	64ZY+joxCKFDZ5edR9ofGwEwLQbcG36n+2TfohnGANdcGJduo/IW3Nnk7cF5csr5gGHmhuElxi9W8
+	Oa6jE9Fo5yBHcOpd1D5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpP6Q-0000000AMsg-1A5X;
-	Thu, 30 Jul 2026 11:39:06 +0000
-Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
+	id 1wpP6Z-0000000AMwj-1SlR;
+	Thu, 30 Jul 2026 11:39:15 +0000
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpP6L-0000000AMrG-3VFI;
-	Thu, 30 Jul 2026 11:39:04 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
-	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 7CC41202AE8;
-	Thu, 30 Jul 2026 13:38:58 +0200 (CEST)
-Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1wpP6I-0022Td-1G;
-	Thu, 30 Jul 2026 13:38:58 +0200
-Received: from pengutronix.de (p4ffb2dc6.dip0.t-ipconnect.de [79.251.45.198])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id 1DA1C576EA4;
-	Thu, 30 Jul 2026 11:38:58 +0000 (UTC)
-Date: Thu, 30 Jul 2026 13:38:57 +0200
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Cunhao Lu <1579567540@qq.com>
-Cc: kernel@pengutronix.de, Vincent Mailhol <mailhol@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] can: rockchip_canfd: prevent TX stall on echo skb
- failure
-Message-ID: <20260730-secret-soft-swallow-4da108-mkl@pengutronix.de>
-References: <tencent_D802EB485A801362BF9F54130C0D990C6206@qq.com>
- <tencent_5E44473FC626379A34998A84DF11E6000807@qq.com>
+	id 1wpP6W-0000000AMuU-3InR
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Jul 2026 11:39:14 +0000
+Received: by mail-yw1-x112a.google.com with SMTP id 00721157ae682-81062fdeaf5so10669687b3.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 04:39:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785411551; cv=none;
+        d=google.com; s=arc-20260327;
+        b=hEjbMvnxoXDUikoBlN0lTX8mUxBoZodeOf0Kb2S34q4J3GJivmPQpb8hBsdOLwtg1D
+         yq8wgDa9xv8Gx3hMLUmQIxKP6UulgPrD52Z+foj5QsJMOHifp6X1Wp8vyNk1ACd9Fabn
+         m+o2gQbjYBVQpFqcsi7FrXMwUh6mAzJAehRXzZl9GGI+dX2vCJyMiqh1U2jFphjtBqBy
+         wwlV2nFH1lgmor3OamDUb9PuZc1GRSMpkRbgxc9F4vFPdO8yk9NXV1DnqCSLBZ7LNGLe
+         8YXcpks2EAr01cce105TRO1SVpUGPCQ+7+j0MKL8L9mATMzIcbA2qMLKedMzDD67shnj
+         BC0g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=GOxhSnayK8QxbrD63cf2oNZmoFkPournY0d5EVv7OdM=;
+        fh=J1IQY/ePkyuHcdBOLo8zdl1iltE7QIv4WF1u8NbkrEE=;
+        b=S+dxpb0cTjCuKs/G3OoQhkYGegTCx6ylJT0NsQiS39hqWKBVp2TFNsn9hJTs5FiiHs
+         pb+W37RAQ0Se/QeOmwJ8HBT5tG1JZPDDsWiNXY/hu750xg20NdvyP3vejxMhGBVtTn/G
+         a8vWZD1GtEidVWf7n+LKrCTj6mrF/IJ0hDrOPJb1CzRH9hRCKSpi4b9d0w27xIPpoGdG
+         /cs0rwIkVMxWYBhnUcbOgLf6VgPyFa00jgbXTLI7nd3rr5DJjfa/ILXx0Hy0sgj4b661
+         rsPJGAABNAMt2YUB9aRD5dPCFCahj3EaRCkBc5uQQEjCRqWXGvjBy6XhTN16pH2HRLUj
+         qEqg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785411551; x=1786016351; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=GOxhSnayK8QxbrD63cf2oNZmoFkPournY0d5EVv7OdM=;
+        b=Ft10VygswMHpyJI6Oxs5YcS3bSVErOVAL1PbLrOx8/DMEY7zreDHNN8SglL5Tphb1g
+         910EVn/UPh5wG8OflRSfP5Ox1bQZ3UHnNPC/anyWuvUv1/I5BgaPY19yxGIEDt20UGWq
+         4OlQUJ1NZcKcSEGirXat9QITXF5A8xSd8tWZ73EdcUWgkhvPgOikt1q4N95GRHwwknwN
+         bO+PiDu0UkSImWaZU0uq86ws9cnn/k+pzm/U+cl3+OVkqwfMgl36htUAAj3lZ1JBv9aI
+         LeTgi07U6Gx2yZqqd8/dihStlMb1WtIuRP3ZEBKTlq1iqBiT7AFnpY9/2+qqIcRDC0m0
+         iWfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785411551; x=1786016351;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=GOxhSnayK8QxbrD63cf2oNZmoFkPournY0d5EVv7OdM=;
+        b=FX/NL63CRzVFupMim0TvQJ8QnO3tfls6CWlVRA8VsKQHpPPWiKvRuZPkDfRNUOp+gJ
+         Ee14cqWQBnYct1TBDHJNpiRuM1OF47ytOtdBgBpr1abvI/NZG/d7q5qEEuNIlnJ26fuO
+         nbgBVTX/Somo1ItPAcPrJd8oIjE5foFWPTXfupfek1faf6AEyEVmP8NKN/jxoYHJHrH6
+         RDZiF3yNp2d8cDRUlakm0zwijK2wV+Agxp0kdk2EpdpdG7CmWTKnMLDcCHOFqHV6Q0/B
+         qCbdGsSu5fge2PP5vRQL0cKBUtl78LyrmCR3cjOSZ9S92OOJuEKO/I6qRJzkFJzlDFXt
+         R72g==
+X-Forwarded-Encrypted: i=1; AHgh+RqPypX2LqN/yV8lWqh0OUPpyMdqOt61NK6ovkAOQyh7dn3LoHNc+5Yc8TacoDbZbBv61iGJIPo494EsWnRDhg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxenRPgsTRThubDj3RD6imITQ8YVAHVAmR7cyOQfANrLmItkUMr
+	/kAR1IyBT83SCZDkkx8JtE9ABR29FTKK6c9GU3jAASpsFkz01wkX1SHHBAc0lkHCcPJkJSo2ik6
+	cAuBjIH2m5g2K2C7a6m1R3P/mY0VIAto=
+X-Gm-Gg: AR+sD137tQBFnE0h7bXr8tC8XdCoA1wuBHx5t+TBO+lw1bVXybjDMGsReoghHdLe/6N
+	XJDqDT2v0NF9xXQFRGliAqPx79thFfVWOea52jlbACjEx7YaHArPgJB5d5KZ0VfeBG0H4nC8JOy
+	TnfO9XIh73chIC/ECFjtDnJysG+1Kc/0OsQg0XjWFGSuNjQfrR33Qt/8hToFTybaeeauMEkCxES
+	YpYbOAQc4xqxHcD2+onWH6uTocMj1fFWkFuCXmA+g3WfDkePq1d/C/P19nRz9Tqv2hgSeLYihKM
+	IPgivjGDS8ZDJ0wyvjan84EASNUUhA6sfXUm46JZbgAi
+X-Received: by 2002:a05:690c:6b01:b0:7fd:5508:b2dd with SMTP id
+ 00721157ae682-81fb97f7a2emr12051367b3.22.1785411551310; Thu, 30 Jul 2026
+ 04:39:11 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <tencent_5E44473FC626379A34998A84DF11E6000807@qq.com>
+References: <20260727021048.3375444-1-attinagaoxu@gmail.com>
+ <20260727021048.3375444-2-attinagaoxu@gmail.com> <20260730-lucky-strict-oryx-9ce8de@quoll>
+In-Reply-To: <20260730-lucky-strict-oryx-9ce8de@quoll>
+From: Gavin Gao <attinagaoxu@gmail.com>
+Date: Thu, 30 Jul 2026 19:38:57 +0800
+X-Gm-Features: AUfX_mzaCwnwh8yAtjVvunPNaTB-XiGKKcyJxT9ge1AJjv97-ODm4c4wF7ehf-4
+Message-ID: <CAK2JjQVoaHjzf4Z=_LDVzTj0R-ey1Z4T+1OF_xYACdz1C4yReQ@mail.gmail.com>
+Subject: Re: [PATCH net-next 1/3] dt-bindings: net: rockchip-dwmac: Add 25M
+ refout clock
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com, 
+	kuba@kernel.org, pabeni@redhat.com, heiko@sntech.de, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, mcoquelin.stm32@gmail.com, 
+	alexandre.torgue@foss.st.com, richardcochran@gmail.com, 
+	nicolas.frattaroli@collabora.com, sebastian.reichel@collabora.com, 
+	sashal@kernel.org, alchark@gmail.com, chaoyi.chen@rock-chips.com, 
+	amadeus@jmu.edu.cn, rmk+kernel@armlinux.org.uk, horms@kernel.org, 
+	alok.a.tiwari@oracle.com, david.wu@rock-chips.com, netdev@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_043902_033068_19C721E4 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20260730_043912_847852_16852E8B 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,110 +123,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3162871425559036441=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============3162871425559036441==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="275kakqmhn4gk3eu"
-Content-Disposition: inline
-
-
---275kakqmhn4gk3eu
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 1/3] can: rockchip_canfd: prevent TX stall on echo skb
- failure
-MIME-Version: 1.0
-
-On 30.07.2026 18:11:46, Cunhao Lu wrote:
-> rkcanfd_start_xmit() advances tx_head and requests transmission even when
-> can_put_echo_skb() fails. This creates a pending TX entry without the echo
-> skb that the RXSTX completion path needs to match the self-received frame.
-> The entry cannot be completed, and the netdev TX queue can remain stopped
-> after the two-entry software FIFO fills.
->
-> Do not advance tx_head or request transmission if the echo skb cannot be
-> installed. Account the frame as dropped and report the error. The
-> -ENOMEM and -EBUSY paths have already consumed the skb; explicitly free
-> it on -EINVAL, where ownership remains with the caller.
-
-Can you update can_put_echo_skb() to always free the skb in the error case?
-
-> Fixes: b6661d73290c ("can: rockchip_canfd: add TX PATH")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Cunhao Lu <1579567540@qq.com>
-> ---
->  drivers/net/can/rockchip/rockchip_canfd-tx.c | 14 ++++++++++++--
->  1 file changed, 12 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/c=
-an/rockchip/rockchip_canfd-tx.c
-> index 12200dcfd338..d2cbe25c46d6 100644
-> --- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
-> +++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-> @@ -125,8 +125,18 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, =
-struct net_device *ndev)
->
->  	frame_len =3D can_skb_get_frame_len(skb);
->  	err =3D can_put_echo_skb(skb, ndev, tx_head, frame_len);
-> -	if (!err)
-> -		netdev_sent_queue(priv->ndev, frame_len);
-> +	if (err) {
-> +		if (err =3D=3D -EINVAL)
-> +			dev_kfree_skb_any(skb);
-> +
-> +		ndev->stats.tx_dropped++;
-> +		if (net_ratelimit())
-> +			netdev_err(ndev, "%s: failed to put echo skb: %pe\n",
-> +				   __func__, ERR_PTR(err));
-
-Is this error message needed? In the -EINVAL case can_put_echo_skb()
-already emits an error. If skb allocation I think in -ENOMEM case the
-kernel already throws an error, right?
-
-> +
-> +		return NETDEV_TX_OK;
-> +	}
-> +	netdev_sent_queue(priv->ndev, frame_len);
->
->  	WRITE_ONCE(priv->tx_head, priv->tx_head + 1);
-
-Marc
-
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde          |
-Embedded Linux                   | https://www.pengutronix.de |
-Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
-
---275kakqmhn4gk3eu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCams3zgAKCRDMOmT6rpmt
-0tPFAQDy6JtgZotjJ8v6LUFvroXnCHocuILjVvgcmAvujXv6nAEAhhhtmLqAGAdb
-EcHrrOylui+MjrU7+T/Sau//YioFSgc=
-=qTFm
------END PGP SIGNATURE-----
-
---275kakqmhn4gk3eu--
-
-
---===============3162871425559036441==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3162871425559036441==--
-
+T24gVGh1LCBKdWwgMzAsIDIwMjYgYXQgNDoyN+KAr1BNIEtyenlzenRvZiBLb3psb3dza2kgPGty
+emtAa2VybmVsLm9yZz4gd3JvdGU6Cj4KPiBPbiBNb24sIEp1bCAyNywgMjAyNiBhdCAxMDoxMDo0
+NUFNICswODAwLCBHYXZpbiBHYW8gd3JvdGU6Cj4gPiBTb21lIFJvY2tjaGlwIEdNQUMgaW5zdGFu
+Y2VzIGNhbiBwcm92aWRlIGEgMjUgTUh6IHJlZmVyZW5jZSBjbG9jayBvdXRwdXQKPiA+IGZvciBh
+biBleHRlcm5hbCBSR01JSSBQSFkuCj4gPgo+ID4gQWRkIGEgY2xvY2sgbmFtZSBmb3IgdGhpcyAy
+NSBNSHogcmVmZXJlbmNlIG91dHB1dCBzbyBTb0MgZHRzaSBmaWxlcyBjYW4KPiA+IGRlc2NyaWJl
+IGl0IHNlcGFyYXRlbHkgZnJvbSB0aGUgZXhpc3RpbmcgTUFDIHJlZmVyZW5jZSBjbG9ja3MuCj4g
+Pgo+ID4gU2lnbmVkLW9mZi1ieTogR2F2aW4gR2FvIDxhdHRpbmFnYW94dUBnbWFpbC5jb20+Cj4g
+PiAtLS0KPiA+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L3JvY2tjaGlw
+LWR3bWFjLnlhbWwgfCAxICsKPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPiA+
+Cj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9y
+b2NrY2hpcC1kd21hYy55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25l
+dC9yb2NrY2hpcC1kd21hYy55YW1sCj4gPiBpbmRleCAwYWM3YzRiNDdkNmIuLjA3NGFjMjc0ZjJl
+MCAxMDA2NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9uZXQv
+cm9ja2NoaXAtZHdtYWMueWFtbAo+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL25ldC9yb2NrY2hpcC1kd21hYy55YW1sCj4gPiBAQCAtODEsNiArODEsNyBAQCBwcm9w
+ZXJ0aWVzOgo+ID4gICAgICAgICAgLSBwY2xrX21hYwo+ID4gICAgICAgICAgLSBjbGtfbWFjX3Jl
+Zgo+ID4gICAgICAgICAgLSBjbGtfbWFjX3JlZm91dAo+ID4gKyAgICAgICAgLSBjbGtfbWFjXzI1
+bV9yZWZvdXQKPgo+IFRoYXQncyB0aGUgc2FtZSBhcyBjbGtfbWFjX3JlZiBhbmQgY2xrX21hY19y
+ZWZvdXQuIGNsb2NrcyBhcmUgbm90Cj4gb3V0cHV0cyBidXQgaW5wdXRzLCBzbyBleHBsYWluIGhv
+dyBkb2VzIHRoZSBkZXZpY2UgdGFrZSB0aHJlZSBTQU1FCj4gY2xvY2tzOiBjbGtfbWFjX3JlZiwg
+Y2xrX21hY19yZWZvdXQgYW5kIGNsa19tYWNfMjVtX3JlZm91dD8KPgo+IEJlc3QgcmVnYXJkcywK
+PiBLcnp5c3p0b2YKPgoKVGhpcyBpcyBub3QgdGhlIGV4aXN0aW5nIGNsa19tYWNfcmVmb3V0IGNs
+b2NrLiBPbiBSSzM1NzYgdGhlClJFRkNMS08yNU1fR01BQ1swMV1fT1VUIGNsb2NrcyBhcmUgc2Vw
+YXJhdGUgMjUgTUh6IHJlZmVyZW5jZSBjbG9jayBvdXRwdXRzCmludGVuZGVkIGZvciBSR01JSSBQ
+SFlzLCB3aGlsZSBjbGtfbWFjX3JlZm91dCBpcyB0aGUgZXhpc3RpbmcgcmVmb3V0IGNsb2NrCnVz
+ZWQgYnkgdGhlIFJvY2tjaGlwIERXTUFDIGJpbmRpbmcgZm9yIHRoZSBSTUlJIHJlZmVyZW5jZSBv
+dXRwdXQgcGF0aC4KCi0tIApCZXN0IFJlZ2FyZHMsCkdhdmluIEdhbwoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
