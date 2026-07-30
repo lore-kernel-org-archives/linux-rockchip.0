@@ -4,80 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3564CC54FD2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 10:19:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C02BC55162
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 11:39:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jYodXxAq/ha1pd9XXTAKfSD0SI9iufeZjw+us7UPr3k=; b=esueYCKisMPyvY
-	jmPji3MftDEq63EIIszpbuTCKPyACOZ7DplBIDZiB5+NDDHfnsglM5i1eyfUJBw8CGdJM3NIApjF0
-	K8lZ9AvWxWMox3IaeH9YXEhG3teFvtYhKzE0/UDe0LCEHTXyMCOZjK8VJjGUQYSvYDSIURRGrTnOr
-	JBBUc04bu/XlaQu/dXXw3AmkaXHMJyfzv6AJ9skCnFFPTC/fLR8UfFVsvnA2YtLXFYLDLjVOH3ZYb
-	+FKDxHBefpFgQ9UaV/4NaW8e7ONjOkQ1g7AZgjgT4WD3172YP7UgZeLMkANJAYE1mj3Tc+p34xQZe
-	IFQIXm/51Gck97HcyoTA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7hF3fZBKw/MN5gARf9K8tCABqgibICAl+F/2Mk6o2hg=; b=UrhmJ2uwp5FlZG2npshHOdBp25
+	Zf+z0Ct5IpVKqHsUaq5QYOKZ8AqRHrUmqScln5JIO1PfLA99qijNfd3ryI4pjGNEGDACrZB79yLze
+	E8o/L9X1rJtr8xYUOzmQMEIx/XhfYv92ZHBFNpV3JLVclCPt3tbgwLt2oXMzSrZ1csieoDETA7ytD
+	P/RehwI4O9xpDx39QjnmI34BJ5uSZyRusB19G4WB6qbdoIlKgyN0XBM2rbl2nLgdCapcNb4/7JeSO
+	O7OKsElzvhEVPW7qlrfgpmj/q74rtNtEl+zD8MDeqctHbdFhR5fRdHJw5kGZyegww05BS/uJVJ281
+	I67K27HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpNr4-0000000AAdD-1oh3;
-	Thu, 30 Jul 2026 10:19:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wpP6Q-0000000AMsg-1A5X;
+	Thu, 30 Jul 2026 11:39:06 +0000
+Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpNr1-0000000AAc9-0bfO;
-	Thu, 30 Jul 2026 10:19:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785406744;
-	bh=Tn7t5jxGrWrTDZ5FWs65zFahjQJ4IKGASBS+IKuom9w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZLJLlXl/SQ03XxUMbNbK5A+kU+fYVaJEO/4d8jO8gOgVEvevQgFGFKbNX0r1lpg63
-	 6f4OKrTbtw9uKGiRSahSf1IImDoAETjAqNy5rjL1y9G7ewYTLDd1Jw3xYsDpEjqKf8
-	 IyrabVG1pARYE5we6LHYdSW3BA7sbSbLFLz5zbupwunSAHBvRVI+gFVozms1sAf5VE
-	 +ayh4GSATHzIc9apkAd5cxA/Etjfewu5mjKUqhOQlKlTRER+2FZ1+lByuKNe/ehIBG
-	 wubNcFagvOYXpPFI9QSK894hL+RDeVk4FPcEiGVtesVeRvJ80RlxXUfE64fIQk4LYK
-	 0wzwK9RRYFsIA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	id 1wpP6L-0000000AMrG-3VFI;
+	Thu, 30 Jul 2026 11:39:04 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
+	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 7CC41202AE8;
+	Thu, 30 Jul 2026 13:38:58 +0200 (CEST)
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1wpP6I-0022Td-1G;
+	Thu, 30 Jul 2026 13:38:58 +0200
+Received: from pengutronix.de (p4ffb2dc6.dip0.t-ipconnect.de [79.251.45.198])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9A82B17E0254;
-	Thu, 30 Jul 2026 12:19:03 +0200 (CEST)
-Message-ID: <48c1b5d7-97fd-4ba0-896b-0485eda395f6@collabora.com>
-Date: Thu, 30 Jul 2026 13:19:03 +0300
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 1DA1C576EA4;
+	Thu, 30 Jul 2026 11:38:58 +0000 (UTC)
+Date: Thu, 30 Jul 2026 13:38:57 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Cunhao Lu <1579567540@qq.com>
+Cc: kernel@pengutronix.de, Vincent Mailhol <mailhol@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Subject: Re: [PATCH v2 1/3] can: rockchip_canfd: prevent TX stall on echo skb
+ failure
+Message-ID: <20260730-secret-soft-swallow-4da108-mkl@pengutronix.de>
+References: <tencent_D802EB485A801362BF9F54130C0D990C6206@qq.com>
+ <tencent_5E44473FC626379A34998A84DF11E6000807@qq.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 00/61] Add HDMI 2.0 support to DW HDMI QP TX
-To: Diederik de Haas <diederik@cknow-tech.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chen-Yu Tsai <wens@kernel.org>, Samuel Holland <samuel@sholland.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Algea Cao <algea.cao@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
- Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Maud Spierings <maud_spierings@hotmail.com>, Sashiko <sashiko-bot@kernel.org>
-References: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
- <DKBTALC5PUJ3.2KU1C4MRVBQNT@cknow-tech.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <DKBTALC5PUJ3.2KU1C4MRVBQNT@cknow-tech.com>
+In-Reply-To: <tencent_5E44473FC626379A34998A84DF11E6000807@qq.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_031907_344932_9E62A5B3 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20260730_043902_033068_19C721E4 
+X-CRM114-Status: GOOD (  22.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,39 +70,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3162871425559036441=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Diederik,
 
-On 7/30/26 12:52 PM, Diederik de Haas wrote:
-> Hi Cristian,
-> 
-> On Thu Jul 23, 2026 at 3:34 AM CEST, Cristian Ciocaltea wrote:
->> Enable HDMI 2.0 display modes (e.g. 4K@60Hz) on the Synopsys DW HDMI QP
->> TX controller, as found in Rockchip RK3576 & RK3588 SoCs, by adding SCDC
->> management for high TMDS clock ratio and scrambling.  Since SCDC state
->> is lost on sink disconnects, the bridge driver needs to trigger a CRTC
->> reset during connector detection.
-> 
-> I tested the v1 series when it consisted of a 'bit' less patches, so I
-> figured I'd test it again with v9.
+--===============3162871425559036441==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="275kakqmhn4gk3eu"
+Content-Disposition: inline
 
-Sadly, this is still growing - I added a few more patches to address some of the
-Sashiko findings and will probably send v10 later today.
 
-> So feel free to add/update to the Rockchip related patches
-> 
-> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+--275kakqmhn4gk3eu
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 1/3] can: rockchip_canfd: prevent TX stall on echo skb
+ failure
+MIME-Version: 1.0
 
-Thanks for (re)testing!
+On 30.07.2026 18:11:46, Cunhao Lu wrote:
+> rkcanfd_start_xmit() advances tx_head and requests transmission even when
+> can_put_echo_skb() fails. This creates a pending TX entry without the echo
+> skb that the RXSTX completion path needs to match the self-received frame.
+> The entry cannot be completed, and the netdev TX queue can remain stopped
+> after the two-entry software FIFO fills.
+>
+> Do not advance tx_head or request transmission if the echo skb cannot be
+> installed. Account the frame as dropped and report the error. The
+> -ENOMEM and -EBUSY paths have already consumed the skb; explicitly free
+> it on -EINVAL, where ownership remains with the caller.
 
-Regards,
-Cristian
+Can you update can_put_echo_skb() to always free the skb in the error case?
+
+> Fixes: b6661d73290c ("can: rockchip_canfd: add TX PATH")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Cunhao Lu <1579567540@qq.com>
+> ---
+>  drivers/net/can/rockchip/rockchip_canfd-tx.c | 14 ++++++++++++--
+>  1 file changed, 12 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/c=
+an/rockchip/rockchip_canfd-tx.c
+> index 12200dcfd338..d2cbe25c46d6 100644
+> --- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
+> +++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+> @@ -125,8 +125,18 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, =
+struct net_device *ndev)
+>
+>  	frame_len =3D can_skb_get_frame_len(skb);
+>  	err =3D can_put_echo_skb(skb, ndev, tx_head, frame_len);
+> -	if (!err)
+> -		netdev_sent_queue(priv->ndev, frame_len);
+> +	if (err) {
+> +		if (err =3D=3D -EINVAL)
+> +			dev_kfree_skb_any(skb);
+> +
+> +		ndev->stats.tx_dropped++;
+> +		if (net_ratelimit())
+> +			netdev_err(ndev, "%s: failed to put echo skb: %pe\n",
+> +				   __func__, ERR_PTR(err));
+
+Is this error message needed? In the -EINVAL case can_put_echo_skb()
+already emits an error. If skb allocation I think in -ENOMEM case the
+kernel already throws an error, right?
+
+> +
+> +		return NETDEV_TX_OK;
+> +	}
+> +	netdev_sent_queue(priv->ndev, frame_len);
+>
+>  	WRITE_ONCE(priv->tx_head, priv->tx_head + 1);
+
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--275kakqmhn4gk3eu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCams3zgAKCRDMOmT6rpmt
+0tPFAQDy6JtgZotjJ8v6LUFvroXnCHocuILjVvgcmAvujXv6nAEAhhhtmLqAGAdb
+EcHrrOylui+MjrU7+T/Sau//YioFSgc=
+=qTFm
+-----END PGP SIGNATURE-----
+
+--275kakqmhn4gk3eu--
+
+
+--===============3162871425559036441==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3162871425559036441==--
+
