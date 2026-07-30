@@ -4,59 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F00AC55167
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 22:31:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69F7EC55165
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 22:57:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/Rgyiywz+DQv6/xv/KUf2kuquI4kOdacD5TjBFk1ayw=; b=EMcEavyoBxbmgm
-	eVwkRSrB+gdMXl/8DajR80u7hR9WFcmtpsnWPwEwBtXD9e6qSBaBA+huyxOzbLYEToy/TJDke4p3K
-	I1kwwA+XmhF5rIcTVvWuuiggDtoYq5zJ4SWENImi2fth3jzerhurGweAQGaZKvU++AugEUbWAIEw5
-	Fpy8CbWgSDhoHS6nSCBIp4457I5JeuzQd3ovomaIkrjrTBLgsfRKHCCqAisCj/DntEq0aHWKEqKin
-	uFObIozIA5Q0qZBVjrYg3aXfeHn6B/FAELEvM2/RFCqGhBE2r72/7sKLCQigFbNRJPO/sY3NSgY7Y
-	rfE7tDu3pXld035j4jLQ==;
+	List-Owner; bh=Hmd4g7t5xBy/j+YbDkZ1CqdWyOYW253g/aZG2i6EjQ4=; b=Pk/xeGobpDLGpg
+	CzMdsMsnf57iK450/q93+de7w8yz2h58ka80rGMpCQkdIoZtT68wd4bZJ/iir8LDMMaN1kfQxHX1V
+	QtaSVNXZtps2GlYgH3uO4Muup2H4S/GKGyjgJTfeFIJ+V4M8tuxDkixFkZJUB8vkWTD3pSWfJTSrc
+	fTFsFxtV6nwu2i0/7SEkhjQXx9juIj9KpVaVthxymqvqOZT7onHS65YnS/YfKmLixHAm0AIdgWOJH
+	31Xp+PmelFjN6Zs8Wc9lkrxfO2O8lNiHXY0hE5IgqZ1rz7kBlN342rxR9A4HPpw3UUxhKTkSIYEfv
+	JQYcj4IPnP5AGlnPsnag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpZI8-0000000BQzV-3isq;
-	Thu, 30 Jul 2026 22:31:52 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wpZh5-0000000BSZy-2VkM;
+	Thu, 30 Jul 2026 22:57:39 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpZI7-0000000BQzM-2qaW
+	id 1wpZh3-0000000BSZZ-1hei
 	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Jul 2026 22:31:51 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1A448601E0;
-	Thu, 30 Jul 2026 22:31:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5CB0F1F000E9;
-	Thu, 30 Jul 2026 22:31:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785450709;
-	bh=lia3VttcYmNU28MbjTLvi9iby44TkIBK7PduY4/5a4I=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=MHRYPcHl32Os8tLIr+AZQxCTXycWR8ryuEvpKsT108bOjmnJrjtwLNDWnaQd27FAa
-	 UwXtYFeWV7lbRfUntzIOGku5tj33PDMJAW1TTI7jJ1kJs9VR4xSdsFE3VKY2sPdn66
-	 NcARGkHHdhN2zVzvgSw+XdiguKBRVJd/wo7uE/hKN0taiAerNwp2AwBhO3K+Qrgko4
-	 ppOyYpS3WNYKofJc8BPiKBLZf/hu8SpXaBz3kh+yMHiDeknHuNE4Asq8AdjHVA8fIC
-	 cutMZ6Jjze/RNuqwZPM0nkwZCCKKdvFIVYs1bzN1mFFMC1fc6EwMjowPKixiodWEW/
-	 vgXvNdE3mLP4w==
-Date: Thu, 30 Jul 2026 15:31:48 -0700
-From: Jakub Kicinski <kuba@kernel.org>
+	Thu, 30 Jul 2026 22:57:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=rq6DhXoJSfP2dTmR2uAW9IXm4yZ2ZNBtw1Qq8dDX+to=; b=2ttGjQq6wv/PFdL46LUIruGsJs
+	x0IWZtDuHz4T2vVpzCJwdPaGOmT1vJq1THzn7zLG1w0FgQ4VTYnM5r2sltBEKYG7oAiESZNMrXbhR
+	8S9xvDph4SY2dxBB9BbZ63PFbwEIE322ZVZGF1caxXAq9F5LvG2RQ22kOfUNjD7BEVn5dVpaLkrHY
+	6GRkUGfw9S9Vk3kvpNjuPXd15a3DYfxTQ8qi/rC7oV3P9d1urDQiYZjX7STv/n74BnrRvSI6uMpS6
+	YZunVSm3ECSbT83vL+TqGT9SV0fUar5VkJ6ON20mrD5ZKsB67JchJYXuLpI5wp5+DQDobRjenxdA7
+	mTKIqsbg==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
 To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: Frank.Sae@motor-comm.com, andrew@lunn.ch, hkallweit1@gmail.com,
- linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
- pabeni@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- maxime.chevallier@bootlin.com, heiko@sntech.de,
- linux-rockchip@lists.infradead.org, attinagaoxu@gmail.com,
- alchark@gmail.com
-Subject: Re: [PATCH net-next v3] net: phy: motorcomm: enable the reference
- clock for YT8521 and YT8531
-Message-ID: <20260730153148.3a4052ed@kernel.org>
-In-Reply-To: <20260728055659.1211459-1-gahing@gahingwoo.com>
-References: <20260728055659.1211459-1-gahing@gahingwoo.com>
+Cc: tomeu@tomeuvizoso.net, linux-rockchip@lists.infradead.org,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Jiaxing Hu <gahing@gahingwoo.com>
+Subject: Re: [RFC PATCH v2 2/8] pmdomain/rockchip: add optional per-domain power-on
+ settle delay
+Date: Fri, 31 Jul 2026 00:57:33 +0200
+Message-ID: <10568528.L8ug28u51p@diego>
+In-Reply-To: <20260730113239.1417912-1-gahing@gahingwoo.com>
+References: <20260718031146.3368811-3-gahing@gahingwoo.com> <3322194.D8ZAKjAxdT@diego>
+ <20260730113239.1417912-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260730_155737_505810_050E70A6 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,23 +63,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 28 Jul 2026 17:56:59 +1200 Jiaxing Hu wrote:
-> These PHYs need a 25 MHz reference. On boards without a local crystal
-> it is fed from the SoC and described as a clock on the PHY node. Get and
-> enable it in probe, in both yt8521_probe and yt8531_probe, so the PHY is
-> clocked before its registers are accessed. The clock is optional, so
-> crystal-clocked boards are unaffected.
-
-does not apply please rebase on net-next/main and repost
--- 
-pw-bot: cr
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRG9ubmVyc3RhZywgMzAuIEp1bGkgMjAyNiwgMTM6MzI6MzggTWl0dGVsZXVyb3DDpGlzY2hl
+IFNvbW1lcnplaXQgc2NocmllYiBKaWF4aW5nIEh1Ogo+IEhpIEhlaWtvLAo+IAo+IFRoYW5rcyBm
+b3IgbG9va2luZy4KPiAKPiBVbmRlcnN0b29kIG9uIHRoZSBuYW1pbmcuIFRoZSBzdWZmaXhlcyBk
+ZXNjcmliZSB0aGUgZmllbGRzIHRoZSBtYWNybwo+IHNldHMsIHNvIGEgdmFyaWFudCB0aGF0IGFs
+c28gY2FycmllcyBhIHdha2V1cCBkZWxheSBzaG91bGQgc2F5IHNvLiBJbiB2Mwo+IEkgd2lsbCBh
+ZGQKPiAKPiAgIERPTUFJTl9NX09fUl9HX1coLi4uLCBnX21hc2ssIGRlbGF5LCB3YWtldXApCj4g
+Cj4gYW5kIGxlYXZlIERPTUFJTl9NX09fUl9HIHdpdGggaXRzIGN1cnJlbnQgc2lnbmF0dXJlLCB3
+aXRoIERPTUFJTl9SSzM1NzYKPiBzd2l0Y2hlZCBvdmVyIHRvIHRoZSBfVyBmb3JtLiBUaGF0IGFs
+c28ga2VlcHMgdGhlIGRpZmYgb2ZmIHRoZSBtYWNybwo+IGV2ZXJ5IG90aGVyIFNvQyBnb2VzIHRo
+cm91Z2gsIHdoaWNoIGlzIG5pY2VyIHRoYW4gd2hhdCBJIHNlbnQuCj4gCj4gT25lIG5vdGUgd2hp
+bGUgSSBhbSB0aGVyZTogRE9NQUlOX1JLMzU3NiBpcyBET01BSU5fTV9PX1JfRydzIG9ubHkKPiBp
+bi10cmVlIHVzZXIsIHNvIGFmdGVyIHRoaXMgdGhlIHBsYWluIGZvcm0gaGFzIG5vIGNhbGxlcnMg
+bGVmdC4gSSB3aWxsCj4ga2VlcCBpdCBhcyB5b3UgYXNrZWQ7IHNheSB0aGUgd29yZCBpZiB5b3Ug
+d291bGQgcmF0aGVyIGl0IGp1c3QgZ2FpbmVkCj4gdGhlIHBhcmFtZXRlciBhZnRlciBhbGwuCgpQ
+bGVhc2UgdGhpcyAuLi4gaS5lLiBub3Qga2VlcCB0aGUgdGhlbiB1bnVzZWQgdmFyaWFudCBhcm91
+bmQuCkFzIHlvdSBzYWlkIFJLMzU3NiBpcyB0aGUgb25seSB1c2VyLCBzbyBqdXN0IHJlbmFtZSB0
+aGF0IERPTUFJTl8qCm1hY3JvIHBsZWFzZS4KCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
