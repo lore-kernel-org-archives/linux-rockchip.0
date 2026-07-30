@@ -4,137 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 196C5C55160
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 13:31:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA33CC55160
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 13:43:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v59iyWpkTnO/YX55IX+bzB0VVDeUK1Oo9l9UYeHXRdc=; b=ce8HPav0+nB6FOyRwWG2DWbvBo
-	n8Lb6Zv0GwrWjeTQb8D39kJE0spbpIYGpRYLpqttkecl8PIljrvYBloo6FhzzChcACzeDwcKuZszQ
-	dCYcyWIdiQ4OBQEvTNlwADraccvUZ32sqzolOVQQ0xgKWKyI18aoJIKI2c6cLZC8RSGWvy2PkDo2O
-	4yRqift94x/aGELRDg7EHVdGioNb3Huyk9Taw51Wdd0HEaxbsgQzhqCTBSD97uIxl7Awdal5/uoNL
-	jQYVVY2r42rRk1mkc9TY5lqrjBDkDta+JmY69hsIsGj+oYWuA0mJFaBfbLHXQBHkXlYkC4HyBqfpo
-	9Pj7Df9A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yBGEW9kb5hKpN1OsTt9Pu8nBLvw5YDrXPt2U/ABzpXY=; b=f76n52/gEo7TPQ
+	v3SIHn9mDsLePZIZinO/Vo9+OHN59ZaNiIXBBnM1lV+XWZibkIK4lTTX1J6kSSn5bMswxnOGIlQl4
+	5sbYi3xftczlvJ1O9mo6GlOp3h1xD7rqwB/aRQfuzN05/clTYZWGthlHRegaJvbjTinMSRFukgGSp
+	eGA7RsjvHmhUlTiakrw7l1PVFYuHpTSsAZRArb8zkUJxpHXTmHjAiPkoLfRZc/4nRsmlWSsdOgbgf
+	RyIy5rTNrLq/X6xfkgc8pQ110KlAOQnLxGK7syHqVF/6Jj52sxMmjAczM+ahIGewx+k9JtZNi1QTp
+	2y+wmQeGBJpsKHpCV4kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpQra-0000000AcCF-2XC1;
-	Thu, 30 Jul 2026 13:31:54 +0000
-Received: from mail-francesouthazon11011041.outbound.protection.outlook.com ([40.107.130.41] helo=MRWPR03CU001.outbound.protection.outlook.com)
+	id 1wpR2R-0000000AdqO-1GPu;
+	Thu, 30 Jul 2026 13:43:07 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpQrW-0000000AcA9-1HDt;
-	Thu, 30 Jul 2026 13:31:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HXE5BybS2xFocLg7w2Voxi2T1u6L5NfG2Fh8WwaGw/ybBv3DYPPY99qqNt71Rx3Cyn/KR8AJ4r2LdoD6ZXb0x2aA6vhyYWqeLi8M9Kght4MIdnfbZZBmq2SCmwuauJEn29r5ymvmJXSj+iKrea8jLDuJqeFrt6Wp1855Fia9FlNYKEzpd4AfhEVLUz35hiUXzHf7h+j6YiZcWrdSHabhPiOD76HdRd7wpByt8KQVLBnhOa0V4pK4sGFyT1eh4kHs5CscAGDoaZcKe1DHIOx6m4lOaugsfA8M4SyFp8pJpIo+oBqGbS5+stsuA/OZ4z4vPej5S+Pi4StqWir5qyQl4w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TicA5Brl4WMeSpIhlH6ZYSFfgW4uIqj5yTacQSEJWAM=;
- b=Gyd396ylQHJ/vQ3JAKAfTakoFU+KbOKfNZ2gdh09kltCrbZFirHapqyM4X3i0UGCq4nF3uuPOu1DlXLbCtdZEP29sG+hPuoSVI1eJto0Zv3ScbIEDfYG9SuCOT+Kp6+AYnRoIQ//4TsNkUzqIqhhNeVmt0eGkNWe21NKr1Zy3TH68KWYtSpyVGN/UniARNRB0NfLunp4Vs4J09JFgyqfkAtVBkJ2vcFwoo4zCjFj0Ypv0XSP05mL42gkORfeObrZdCNHObbSop5PgIcC5+6lWg7PKPsv2bIPnylhXcFD6y+YF+1SPSUyYLDJFLhOZvncvjy6nmIxNHZZ5JfSGI41qg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TicA5Brl4WMeSpIhlH6ZYSFfgW4uIqj5yTacQSEJWAM=;
- b=FXhBY6rr+A/sI77sutA4QjBj7DmxGF4E/cWq8bVPePZ1GAwnpVdx7tPUm2oGMvwDOO9BF0s7dUp8bEZdsl33bVM9AeJPLhLebhvZZ0wo6kQ9D9HI0DW4jSbI0E0SS2kw48UGR/h6NgK10S8moI80vVmT9zLCyBWuL9ZG8wzDJJU=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from PA4PR04MB7743.eurprd04.prod.outlook.com (2603:10a6:102:b8::20)
- by VI1PR04MB6911.eurprd04.prod.outlook.com (2603:10a6:803:12e::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.270.15; Thu, 30 Jul
- 2026 13:31:42 +0000
-Received: from PA4PR04MB7743.eurprd04.prod.outlook.com
- ([fe80::9a4e:252f:2fd:97b7]) by PA4PR04MB7743.eurprd04.prod.outlook.com
- ([fe80::9a4e:252f:2fd:97b7%6]) with mapi id 15.21.0270.012; Thu, 30 Jul 2026
- 13:31:42 +0000
-Message-ID: <7628bc49-b4e7-4716-9579-022c20bbf134@cherry.de>
-Date: Thu, 30 Jul 2026 15:31:41 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 4/4] arm64: dts: rockchip: Enable CAN controller on
- RK3588-Tiger-Haikou
-To: Cunhao Lu <1579567540@qq.com>, Marc Kleine-Budde <mkl@pengutronix.de>,
- kernel@pengutronix.de, Vincent Mailhol <mailhol@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-can@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20260725-master-v5-0-75da459d2b93@qq.com>
- <tencent_8E35228F9F4F133FCDBCCC4902F6887D0006@qq.com>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <tencent_8E35228F9F4F133FCDBCCC4902F6887D0006@qq.com>
-X-ClientProxiedBy: AS4P195CA0033.EURP195.PROD.OUTLOOK.COM
- (2603:10a6:20b:65a::20) To PA4PR04MB7743.eurprd04.prod.outlook.com
- (2603:10a6:102:b8::20)
+	id 1wpR2P-0000000Adpc-1rwC
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Jul 2026 13:43:06 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66UDd1Lm1237434
+	for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 13:43:04 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	LIHC0dGoCfL4jo/TTDqxxd8bs6eGi4j6fVBGNZoeJSw=; b=WuBkjEPEQ6+jaMAP
+	mb7/eJ2DfGQPN8Y84dNiQ6j+CFSIFrqWAsxwUjY42fZuux0vSgKE4CwYUBxJX4y8
+	YW4Lhs5BtJG87JVyfjtLs88SO1AZ9VVRACBDSd1dLjCwmFixdKS+k5Jq8L/SkslP
+	dy7pA3v31WKP9bof+R+XetAssoV7ZE4Lakkcg1MI8X0lJ3jGB5a8srg9e6F3+byW
+	ZbuW12hYQtj5jkMBvX09jKqK0u8ngTBgksd9BOf1ZQrpL6/nfooMFvXsBvRTHLkC
+	ktGGj8VTarBbnRPHMG+yr8jQnddWlMP8CDG+t94qhxht+gDofuOu8d9l73N7yi/E
+	UvDZVw==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fr7pbg0gs-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 13:43:04 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-51cab6f7517so2618231cf.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 06:43:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1785418984; x=1786023784; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=LIHC0dGoCfL4jo/TTDqxxd8bs6eGi4j6fVBGNZoeJSw=;
+        b=G362i7UTG82fPGRFGTR9xYLJhshYxSHC4z9d6L8yS5o/9lZriYUzfpACTR/5BwNFEc
+         bZFVFJh984yb4Owdr8womxgg6Gl2RR707wSpLbwJel0t3Gx4r5/en2WKYKeH+r0xRhkR
+         Dj2OflLH+cd8zGrV4E5cE5lVPw8QTnxAKc2TLxRYRvIdabhXAqaTznrLGIi+McxJaCYc
+         qmhqhm5HH+Yv9rKXIqlDLfC1B84wI+8wJOjzDqUByeqMY9XR78183S/r0gFZX2vXz0sf
+         JCeHrUdjGnxtjj8DhTtKfERexRxIW8nFTiFMGTTB6M16s6INhN8viyRaM+M7tsuVnJCZ
+         eyfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785418984; x=1786023784;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=LIHC0dGoCfL4jo/TTDqxxd8bs6eGi4j6fVBGNZoeJSw=;
+        b=lO3oA+vSQWshOiShMIRzYD1GZPO+EjH2iWMQnq049/SdTFpUPj+ecp/CdhzTZszFNi
+         BeT877G7hpk89iBIyGV/RMw9u2jX1C7Yxiu62l1l+YwhcrmaQCZAO3eM04VWQduinUW/
+         yZe0HA9R5YthUDn5ItkgCT4CFDsqXJMxEBBMy3osDsg/STaH7OlnQrEm9N5W9qhLMlqL
+         ZZRUrsxoJ+m3i2T+EDF1qEgACXY4Ph4sdOjDJg9qepg4cXdpA0Vo/RMizG6ND8tdT5yh
+         +bU8uXdsH1IQ3CL5F5e3LqNTiuq+TQYEfZWTpywfUKZvREypp+51IPo0aIECvRsq1skG
+         6pTA==
+X-Forwarded-Encrypted: i=1; AHgh+RpdjQyCJ9PninwTByk43XxQrGNNfbUHxnxfwaGo1ydou+R9YCKFFWk/fQTWZob/26rkdeD6mUNONRTQZrXjuw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxJii02rdAxyq2uAvxuLkRSTet548ce9vxw9F3ZytUNaXtrHmQD
+	rpjel99AQWQ11sljUkPyhPgKTFIU5u+NKW7s02pgZVQzVHllY1+LLLTm30MPHV6Nn4RvNGF4pTi
+	c3DsN50f/ZT7Bc0ORZploaS4Ki4YcviyAHRPU4aNNrIOAX8foIuZiAMytJUfSjsbeYpZH4ucyQW
+	E=
+X-Gm-Gg: AR+sD1069K59XtN+XKxCX/R3P+wZX5FE1jwO3vUinX/1ZCqupsHm1mYb0jZVBlCnb5m
+	f4ht/ykKgsau3kJG/5V4ordzuyBu88sLsq8QYiXZJ85VJrGpqmkmYeEb5VXJeQZO7OELXgxWEj3
+	wPUyS7oo1CAAKQtSuFdzeKpAV44PeumrgA7RFAPlZePnXzYWYgDiApDI1MMJgeKDp+7csm/8a+x
+	3+WSKvLp5/kfzcaLFJvu6nNTRuOcTs485leQT/FrxGP4xzMe+LWPCLMmBfq4eREGDNWlBhtceDJ
+	cen2q2OCIXkWWhs9eVSu7qJk2OPAf6/xdCsBRQuBAm1nXzOE810gRxBg75FH2B9CvkrBMhOAu4e
+	F/TtNTlTx0LbJYgtZSZ+VEsOo
+X-Received: by 2002:a05:622a:a98b:20b0:51b:f9e0:87b0 with SMTP id d75a77b69052e-52b42b7f23dmr3221681cf.2.1785418983819;
+        Thu, 30 Jul 2026 06:43:03 -0700 (PDT)
+X-Received: by 2002:a05:622a:a98b:20b0:51b:f9e0:87b0 with SMTP id d75a77b69052e-52b42b7f23dmr3221211cf.2.1785418983387;
+        Thu, 30 Jul 2026 06:43:03 -0700 (PDT)
+Received: from [192.168.120.193] ([178.235.128.140])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c1fa8b6dbdesm66080166b.36.2026.07.30.06.42.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Jul 2026 06:43:02 -0700 (PDT)
+Message-ID: <8e55ef12-6c4a-42b4-923b-238b3739ea51@oss.qualcomm.com>
+Date: Thu, 30 Jul 2026 15:42:58 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB7743:EE_|VI1PR04MB6911:EE_
-X-MS-Office365-Filtering-Correlation-Id: c2818d0c-c204-4c33-f2d8-08deee3ee4c7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|366016|1800799024|376014|7416014|10067099003|4143699003|11063799006|56012099006|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: HqfCtY4NEkbFMwZve80Ejx1SH2PVQaaigC8UYfB6kYsmkz99ztQDTwLD+QaIZLZc0u29xgZhnLab1DKbjbwWTtUVgFqf2UNeh8p8zZdfGjLErk15mcmSOC+MVZGHIB5wz9sQS71dlA0rW0I/8q+bt11mxLeSurch8ZBilX4HpG5y2su1YFP4V/rdFLUumQ7jFiR30rEROM48Y/qew/qM8LwoRvOrTC6DJSi30UYHnOXANclieoBryd9nyPVCLR1JZkPZbqd0yO827QmL+UvZVlBI9oMotYATwz3k+Z6fG39yd+IF8TJ25EbQfYZkv26saR1QHeAsV0hJ37zqKzSvt31pww2sE0cb9VaL6uRTe8eYpQywEA2kEPd2WoWOZL6cGR9aqAoDvPPtkyeHq5aUggReZVWxifKK53SPnjh/OtyMFNDLRqaawckXQ5XiED92ByujWMyttK1HzPhErj73Fi0kTBy8QgAQ4Yp5HpGgQ50PzUbMKHzWembyKCrCSA9UhQOUwRe9Sqj1xyfHESggm2BYVb8f0MahleEY+bb74g0Z5028kAEEqHiAu0HKGyCAjRrwhsvYcss9k6pYcqip28av7u1QRQcnPx34zXHR94fT2VV/VIX0wZR4ISsFVe8nij9sS+BRA9z3H5/tpPAoxZCWULY2UNUlyrKdLpDsPSQ=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB7743.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(366016)(1800799024)(376014)(7416014)(10067099003)(4143699003)(11063799006)(56012099006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dmVYcEJucU5LUWlGbHlFaTY1cDFyVXlMZVhTSVVjY2FMMktvQlNsRzZjcjdq?=
- =?utf-8?B?b1hVeDl3YlNZU1lJbVZOb2lNc0ZlelRQYlJTaHgyb1JXdlgycEpkc2Z1REh5?=
- =?utf-8?B?ZnIzL2U0c2RubDBqc3JmZHJFdGoxdzNsSUxBUkFqa1ZVcjdLZW5MVmFxV3d1?=
- =?utf-8?B?bnFiK1NGQklWV2ZRZTJISy8zWG42NWo5ajJoc25qLzJ1OVYvRC9ncnZuWUZp?=
- =?utf-8?B?bEEyKzNvRmZUZUVBSjdVWnI3Q1pRKzY2cTkrQnJwdXkxLzdxUkFZV0FxZUR3?=
- =?utf-8?B?OGVaS3pLS0psV0UvWmY4MW9uT1VkOWZ5TVpUWFYxZ2I0YjdiMUdnYTdOckxB?=
- =?utf-8?B?TldjQzcvaDV5c0VVNW02d1hyWEh6TTN1Vk9sRnloVEZxdHkzYkxwdFZkWlVL?=
- =?utf-8?B?MHRub3JYVjdZcE8rWks0VndxQVNOYUlIRDdXdDhvd3pxN0xsQTgyZGZCdmhs?=
- =?utf-8?B?aTRUNXgySTR4a2R6NElrKzRnNElkdnZ0VzE2UzBLLzhQKzBxNUp3WVdWdjg2?=
- =?utf-8?B?T2VvUUE5Tm03NnF1QklLU08vOGFPZ1RJa1dyYVgrNEl1cjMwSEhEeUdQZEh0?=
- =?utf-8?B?elVCeUNnc0tKYmJBZGNkeTdweFpPTVZlcm1CcUFkMVEvby9OV2ZueE51OTFm?=
- =?utf-8?B?Z2hzQldrb0tscGtnMitYR1hvbk9QaWRjV29XU3NlSC85aHg5ZHUrVE1nRkZY?=
- =?utf-8?B?QzVjNjltZ2tLYmJIUGwyOTlKS0ZoRUIydHBVbFVaOE5oaVRKU1Eva0lNMnVu?=
- =?utf-8?B?eXVlVnZGY2UzUWFPbnVady9DYUxRN3pvUlNSNmFKb2NhRXIzUUc4cEwzRWhu?=
- =?utf-8?B?d0U5ZTJ4UlJpYVFHeFpkQmU2MzVuYzU2MmUxalFQN3hIWDN1TFc2clBtakFC?=
- =?utf-8?B?SjdDaGIvTjFJRzFyaVBGb3daWERFZU9nTWoyOUNxUDZQcWRHajJwUTJBNXl5?=
- =?utf-8?B?ay9tbzZQVkVWZ0N0ejR5TThWZ09jVHhTRVVKWHN6OG9oZVBqamJ6dVVwaE1L?=
- =?utf-8?B?bXhVZmM2QStpY1ZDdkZSckQ1VHhqN1JydnErWnMrNUhJVTNxaXZOSHBXTXlv?=
- =?utf-8?B?Q2xEc3lkZFdJMGxobWhPbDBRMUgrdmJsUlY4dUE5VGxIcHN1Z2RYc3lmRG1T?=
- =?utf-8?B?K3lxcmxFT21yNjl0TlZMaTNZM0pwM0FnelVVQ2ZkQWROMCtBRmVwS1Rya0ZE?=
- =?utf-8?B?VVpOL3Z5Um5BZWk2bWhrWlpJOHdZeUc5RVZ6K2YydTNaUTN4RnZyY1gvVXoy?=
- =?utf-8?B?NklBN2JNcHh4bzVlNlExaU8zb1JydzlkUWxqM2RYQ1Z2K1pkV210Q21zTWx4?=
- =?utf-8?B?UVVESVQ0SFpXU09TVXBkdWRLVEdLZlh5Rlk1UEl0S0s2aCtrK2FrWitLZHND?=
- =?utf-8?B?Q3QyZjRSbllrVGQ1ODlnQmhTMUptcnlSVWVSVDBDeVExUjBzM2NwM2dNeXNQ?=
- =?utf-8?B?enNjTlBSZ3RSV0dnZWt1SFdEV3h0bVdpYVNLRzkxYVdlYVZXdGkrbmlBdnps?=
- =?utf-8?B?ekdDL25yaFNmWWtGL2ZFc1Y5Rjk5ZytVME9TWllmSkgxVVFLc211YXZuWnRL?=
- =?utf-8?B?anFsSHZDWnord3hkTlVsblBSQnlIQ25nWGVRVW5WQVI3aFk3MmtoVmM1ekdx?=
- =?utf-8?B?NjBPTjVxc3NLNU50WW0yVzJYaitRSUlFbU5uWGNjKzhnRHVmZmlNM2NHakxQ?=
- =?utf-8?B?QkhTaXdDdlhqMDBhMWpYQnQzSW1tK09ub25rMFIxbUUxUjB2b0hQR0crQUpx?=
- =?utf-8?B?UWRtNUwzYS9kaWNFQitoL2ZrVGExVWR6WHFna3Fxcm9jWDJjdzRCcy9MeVoz?=
- =?utf-8?B?NTlLcjUreWtwVUdkUVRlcTd3MFJ0dld0NTYxdld3cm9xYXJJREt3aTZVQ0Z3?=
- =?utf-8?B?L3lwamZZaWVVZDVWMkJqZFpwd09UdUFrckoxVzNLQ0I1Ull0bmRteFVUV2RY?=
- =?utf-8?B?MU9GL1VtKy9PcXRady9uZHhBVTdOY21YMW1IUEcxWWlKYngyYUFCNWNnNVYv?=
- =?utf-8?B?Y3orWHd4NldZL1FCUVMzVWFScWZHdWNhdGRYUUpySVBIMVBPdTI4Wm5ldm9E?=
- =?utf-8?B?dVRSQ2lhWlg0NkhaU2xyRVBJdWY5cUtIOG53WGNvd0ZmNU9kbHo3MzNKMk1n?=
- =?utf-8?B?UkhUbmNwT3VUOHZTdHNoT1RSVUtYZyttMjJLajUvV1RPTHNLTmRPa3JaK0o2?=
- =?utf-8?B?VTdkbFRtS2NKMDF1WVVSQ3AyS2pWckRBNWJUSjZaVUlsc1pnZzh6VStObU1O?=
- =?utf-8?B?VzN1ejUxcmlLUi9RbmdDdXpsYmloZWI4cyt0cFd1V2UveFBCSTQ0OUgraXY3?=
- =?utf-8?B?OW9VL01NYWt4eUFSZTk1aVpBNllkRWVlZWx3UmlaY2tleC9uNjAxUT09?=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: c2818d0c-c204-4c33-f2d8-08deee3ee4c7
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB7743.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jul 2026 13:31:42.8238
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Uw+PYhxSGXOAlUbJ4C5BKgxz29gWULaw46b0HSPwqmEyoisuEdSfk1neJqDxU17M6w3JWlqlEW8dLqyAKnTIH5nJRdl04nakh9Q1vj9VYIA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB6911
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] drm/msm: detach the ARM DMA mapping before attaching
+ our own domain
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        "Joerg Roedel (AMD)" <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+        Robin Murphy <robin.murphy@arm.com>,
+        Sricharan Ramabadhran <quic_srichara@quicinc.com>,
+        Joerg Roedel <jroedel@suse.de>, Russell King <linux@armlinux.org.uk>,
+        Lu Baolu <baolu.lu@linux.intel.com>,
+        Jerry Snitselaar <jsnitsel@redhat.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-msm@vger.kernel.org, iommu@lists.linux.dev,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
+        linux-rockchip@lists.infradead.org
+References: <20260730-fix-qcom-smmu-v1-0-b12fa067804e@oss.qualcomm.com>
+ <20260730-fix-qcom-smmu-v1-3-b12fa067804e@oss.qualcomm.com>
+Content-Language: en-US
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+In-Reply-To: <20260730-fix-qcom-smmu-v1-3-b12fa067804e@oss.qualcomm.com>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzMwMDEwMyBTYWx0ZWRfX4MZBMg4QPi2k
+ OlLdr6Xosogqq4glhifTzk5febV6s/tYg94/uiMYxb4dOkOpTe7LMv3w4LXDoeRgg003n/19vcr
+ 1Xuy+OSJeTURMz1+gXDF7izjTvX1DYwuXL1PRErLo/DUlu5e+ZwZRsUKjVwtjCWwxj755G1AqaC
+ z6NIhUSL6nJOH3ekJEnzzCQ39HzqxH+AxZoSySA7azAnNNfFpq05Gd7sep2viXt03HPfCEGKUiO
+ 599rHI0Ne9Cgs351xxJ7tPVESBWgMSwFZVvdK//tvwv6hL/abKS/YuuNHq1WaoTlYHWI+f6HdY6
+ pcxFTuyF9iVcM82KmqI/+xZYutm0SafPzhIXzGssDHaLZp9mVrW/tsIrDi9o5Wpfv8RpZrMIqCW
+ paUtmNYQ8200oE92ol/oTeIYWcm8OaISnySNdpmtFtPaGb6zbrl/sxzyS1JJ+m81RHeo1yN0Tlm
+ yXYkKe6v0rCIggG0Bzg==
+X-Proofpoint-GUID: OY5f_M4nkxRaParH-P5C0XOgVQ2SZAcc
+X-Proofpoint-ORIG-GUID: OY5f_M4nkxRaParH-P5C0XOgVQ2SZAcc
+X-Authority-Analysis: v=2.4 cv=Pq2jqQM3 c=1 sm=1 tr=0 ts=6a6b54e8 cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=PRfkaYvzSr8QmIIGAkY2Sg==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
+ a=mSMHI8jCXtBZcuwA1AYA:9 a=QEXdDO2ut3YA:10 a=a_PwQJl-kcHnX1M80qC6:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzMwMDEwMyBTYWx0ZWRfX+bBq8KB2kIhb
+ Cgdtl89YoHfAW1q0uST6jxnFkjk6S6pCnSmKSfydpWyxWrWx9w18ru0AN7wH6sv3YmqoWg27O+i
+ jZyGDL3ug/zkDP+kQ2EtXQfaBiJRQTY=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-30_04,2026-07-29_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 spamscore=0 suspectscore=0 clxscore=1015 lowpriorityscore=0
+ phishscore=0 impostorscore=0 bulkscore=0 adultscore=0 priorityscore=1501
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607300103
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_063151_121244_7F9BE294 
-X-CRM114-Status: GOOD (  14.76  )
+X-CRM114-CacheID: sfid-20260730_064305_592701_806B4784 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,76 +160,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cunhao Lu,
+On 7/30/26 3:29 PM, Dmitry Baryshkov wrote:
+> On ARM32 with CONFIG_ARM_DMA_USE_IOMMU, arch_setup_dma_ops() creates a
+> dma_iommu_mapping for every IOMMU-backed device and attaches its domain
+> to the device's IOMMU group. That domain is neither the group's default
+> nor its blocking domain, so when msm_iommu_new() later attaches the
+> domain the driver manages itself, __iommu_attach_group() refuses it:
 
-On 7/25/26 9:03 AM, Cunhao Lu wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> CAN0 is piped through the Q7-connector to the CAN-Header on the Haikou
-> base-board, so enable support for it there.
-> 
-> At least on RK3588-Tiger, the CAN clocks default to 99MHz, limiting
-> usable CAN bitrates without skew. Errata documentation mentions
-> 300MHz as the default frequency on RK3568, so replicate this here
-> to allow more bitrates.
-> 
+[...]
 
-Can you please move the assigned-clocks* properties to rk3588-tiger.dtsi 
-instead? RK3588 Tiger is a SOM and Haikou is a carrierboard. The 
-carrierboard takes the signal directly from the SoC and route those to a 
-transceiver. I'm assuming all carrierboards for Tiger will need those 
-two properties, so better have them in the SoM DTSI.
+> +#if defined(CONFIG_ARM_DMA_USE_IOMMU)
+> +#include <asm/dma-iommu.h>
+> +#else
+> +#define arm_iommu_detach_device(...)	({ })
+> +#define arm_iommu_release_mapping(...)	({ })
+> +#define to_dma_iommu_mapping(dev)	NULL
+> +#endif
 
-Just apply:
+I see this is prior art, but should we support this config being off?
 
-"""
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts 
-b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-index 6273e695b0394..6c57c9f54a305 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-@@ -156,8 +156,6 @@ vddd_audio_1v6: regulator-vddd-audio-1v6 {
-  };
-
-  &can0 {
--	assigned-clocks = <&cru CLK_CAN0>;
--	assigned-clock-rates = <300000000>;
-  	status = "okay";
-  };
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi 
-b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-index 139f70e7bbd90..161c89c62bcda 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-@@ -90,6 +90,11 @@ vcc5v0_sys: regulator-vcc5v0-sys {
-  	};
-  };
-
-+&can0 {
-+	assigned-clocks = <&cru CLK_CAN0>;
-+	assigned-clock-rates = <300000000>;
-+};
-+
-  &cpu_b0 {
-  	cpu-supply = <&vdd_cpu_big0_s0>;
-  };
-"""
-
-on top of this patch and squash and we'll have what I would like to have.
-
-If there's no need for a v6, I'm assuming Heiko can simply fix that when 
-applying and thus there may be no need to send a v6 just for that (but 
-if you need to send a v6, please consider doing the suggested changes 
-above).
-
-Thanks!
-Quentin
+Konrad
 
 _______________________________________________
 Linux-rockchip mailing list
