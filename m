@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CE32C54FDF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23935C531D0
 	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 06:11:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -13,54 +13,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=zbVEWW/YnLD84oLIZSxk78nw/4XpIOh95NaC/kG+3Lg=; b=Rkd0sW+b7boB1f7gC6yUWUQgan
-	fwTa2/2bloFHKTc1CtN53w83zAalf1SsFYz3b1PrgDu4kCCiAK+YYJ5gPxPK3tHkTRTQUxDKoHKgT
-	zf1mpvRTGwhB9rpZKSzDswuVGMkEMdfLq9qCOjOKMKNqDn2aEKkprQGhT2wSWd0s2JFUl5isFvMpd
-	1n6/QDtRJqLlBNKe0BM9DE7Wva0A/+85IdaF8FU3KPOXcEgEBwdmGpyY4X2uJZeAO2WZAkgTJDV3Q
-	Qg/OXACJUxhAXdw/3X9jv3h4c1etfy+yihovw6b9auirYsH0XvRnPYdVbooFXrclKk1jVBICxb9rr
-	y5jeb1Bg==;
+	bh=4Q2aCCQGusV575fIUvguQYg9AP5caKDxXSxRRcg+h7o=; b=ES+AoKZ3HOWdAUWf3aamYW7K+g
+	t8rerPeuA6k+0CJjshFa2RiCzR8iTL2seApXRiooq6NBFWkxjq/kF9ZnZOtZwPNsfWkLeTfH3WFN4
+	bezhRf6dzncGrwY6Vg/E9QZPQu9MgWXbAFO0cEV64POT0P9NBMfVVSiG8DUS+Pb07L4q0bE4q42Ja
+	9XwjRAuvOPFbep4R4VsfEd6FKAumQcRqFX4sSPT1gbjBlAllQ5YlchkgSNMh13JUaKN7fbycyumse
+	4ehZ4u0aN4wMVBJqaBLGyKBVleqhbwXtmUhCRNgYX9XE5HxxcL9c7lHWyM0+bQIT4gku2Rfe/aVFp
+	pvGcs9eA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpJzd-00000009a8U-0E6H;
+	id 1wpJzd-00000009a8Y-0RTl;
 	Thu, 30 Jul 2026 06:11:45 +0000
-Received: from xmbghk7.mail.qq.com ([43.163.128.44])
+Received: from xmbghk7.mail.qq.com ([43.163.128.50])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpJza-00000009a6K-0y5g;
+	id 1wpJza-00000009a6J-1Eyo;
 	Thu, 30 Jul 2026 06:11:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1785391897; bh=D2dZ+8WBmAZ8INSWYao28PUGk/5wdatznsr8FR9QCUA=;
+	t=1785391895; bh=6u/mJ1eHhtcpBfaCK5wQm5H38V9X2M73NOfbAlKBO2s=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=uNyvcxUSMLXm6bf3qXnrVpiDSGGh6je2zHc3UNPfkNfhn6mViohUzU5TgQEx0RSNS
-	 0sjsBd8oC57npyDiQUb/FWYVnUZ9z/dSgVvGi/gv2JQ4XWvkezjO7KT5l1iClmqfT2
-	 vmtpr8uAXfe+wN7/LHXdl5edoZNlQ+Ffv85FEcT0=
+	b=E/5YzZOlnYKYQhUb25D9rzbVBcC3ximQTnpVcFZ++ojv79K0Xqdva6S1ukIiq+t90
+	 IGHylDJHv7SLxW0dFMzckw3wzqW65yLiS+NgXH/XrdXhNeXkJXoHsMWxF2hhXUS5Gb
+	 GORfRCT0IS3Wueo0jfJKlhNQDmq2wnFeBcRX1Gc4=
 Received: from ubuntu2204.localdomain ([2409:8d20:22b:54c:9e54:40ff:fe02:3f0f])
 	by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
 	id 2DF15055; Thu, 30 Jul 2026 14:11:31 +0800
-X-QQ-mid: xmsmtpt1785391894txg4lng26
-Message-ID: <tencent_803FA8A6621A5D198504BC91BE003D442007@qq.com>
-X-QQ-XMAILINFO: MfvJ0+4D3P+7xxzKzQ3k6L2jiKfqNsu/rtn1/30H+OnK0sm6vWNyfEuix9tTXR
-	 vdvX5JQOTiSZsPBn0IL25auocfZKs+yeVyeRWfBGthdHk+aQEogSsCHGnfyX9Zze+14qEfsUYm5U
-	 of5zbvG9Jg3JdYKCDecqLUqq9h/IFi3UbTHwWSBwK9pAIYOhlrxQ+IFOMQqsAwi8Zj+yBzEKbyJg
-	 P1LgpNgdeKraeK60uM+GDM+Bj2utZxTxQCulN8teSZdU+srXK3pIcd5hAkEUe2+HcGrM+mXl6vVX
-	 ReicJnrs7Qw9VC8nafSr3DJAW2V5bxiAZubsvThIjvia/WEOqDquNHz+JkiMuzo9ZBXtjCFlN9Ph
-	 cneUd1eFR7wdjHiu9nB+kLYTkzzNMIUv1vNbqUIeUiTY5vFKn0GvzAAXeucE9VkwC2lqdzZ7rp7F
-	 YdQ9CGb+6bqOKkZGf8QOA04pljHragFK9F0ANFCUc0YB5MLcBjguYrR6Y9qPY/X1SpgLUqq9P9Xy
-	 46L2fF/4/V+aO5wkJfM3z7fMPT3Xv4G1jpAuOnrEb9FQ5KtGqEL25QoGzKHMbAMrxMzyvwXEoFea
-	 h8FwxUX8P0C3mBsv6LMs1C3JBTALowTNQ1eEMGQo1weT1oqQfa2z9jQ2uEMQfWQ23BGyKvhkeGZF
-	 UlPKwj6XcBA5pdgWnBg+08eMV0N2sakdFI/t4EKeIslxtD5417h2TqpbMGjJvLxImURrKxJFT74X
-	 uAeB6NSqnkc4E2IFnMwL7hd7vnraS333NfRv03PUrbmI/UqPwcvBNbrfQQX4sprWweBGTBOY3SSV
-	 crvgw61RrNRt8IIv+kuL/FjSBLc88KqDE/2AVVjzUFWHUKj6TUyxAUqL1btEKa1OqVcWPRVtmSwZ
-	 EkwBRrwI0fqpcSXkKiobIkP/PI2ojpFgq4pDHygcVmvmgEdSEBcsGmEX9Zj6BWv1L6x/OPFub75E
-	 f8ujPMF9CzOEObkaRoqS0sni/fkGtoR1K9q3JwksDgZ33GaEr2/u9PYGZbjZbUq8HRwmy+Ap8KA3
-	 ox/n8047qhiaw1eDZDV2XWK1kgSR+6+xZNQhY4WZ7kwLgy9M3DU2vpGJEElgoQqIZfHA5kWkpXEo
-	 nnpyr9UjA3e3VxCwQEQu4x6+9PQxGsLIlM0xURZBXohJipm7QyTI/Z/lrEWTsEhAlIAtEqjymXPs
-	 USv4E=
+X-QQ-mid: xmsmtpt1785391893tsx1kpqqe
+Message-ID: <tencent_D2D30ECD988C5C82D18863401362835F7606@qq.com>
+X-QQ-XMAILINFO: MRMtjO3A6C9XFoMCSl6ZInb3+GuQ8gajxOb7Om5LsBNl3hBTktMJbHRntZirGy
+	 WEbXlXZrp3uCNOWqNT9oDgKKu69NUPTwn1zHvTdfHFLNy9i3tRuYB5y6GckaW/hdsEr+XsDAFUuN
+	 xNLN6kEItGD8z58/qMEWgwXpBqo470jXo8K7NblLlHKp/MhOhRD07phKbNAJSgNzvtmrmqH/8EUu
+	 eTVeHeHWzVt3pnc3Ax/pJ1cs2F3aTD63yNe+eRig/XcKfoZB85RiDJtrb+Xdg8H8ySKvWF83MQy4
+	 dr4PABrhorsb4NW5lSF2wE5cxb4GRGIHk/fcNHLmlO+pVr6gMjlvn4HeW0+yGoLlMzR5PdO1DTYY
+	 9cn6jnn2MQOvxF5vO+fzb7qVcH1iDrEObmbdpmfJ5LUD3AsDLd3q5K4010ltjgn6oC+Nwtjc16xd
+	 2+kJAzIi1aTy2gWJkOcXySui0uATnGaSnwMtTRMpSjXN/igNwQkgCB6Cv1EBJkrUEQWf+ATgyldL
+	 8T1vKtZYJUYzZiKbjHc/+/JnG75lz54jokhV4VmdcgHBECiV420/DHmnwRZG9F8HnKBxZ80lHW1n
+	 5uJImI8U9tevQMnNF0dSq0VtguHUM64+RX+iJcKQrK0C7OFAGYzARDHkPxfIKW9xym8rmcHir9Ps
+	 zoHm0Ka1KnaZA1ENzu/0+25CdGl3D2ygNGtM+z+cVt+Krde1nJ9qgxmQrV7GjDGEndx+a3msRDQU
+	 26ZER9fJitGMRqcdJr11fCQBeNDMSEkYMD9v2I5CvUcVBzzS3pW51o3WQ3XfBy1GEaAvz2+Yyvn1
+	 sbGSScLejuqF27Rm+w6nWObX7cYRejdywBusiY/hqLr9uJFKQxeiv4PGepHOWCXJeLR92aMU9kfG
+	 3O4RNTIVu47GPZ1llU3eSgHzJ5WKWBQ/59ljn2iwxFU6NcOov2uQGpPtCaMRNgylYOfONDNMN9vA
+	 LD2z06wUdMfTVTEacet+hUPXX/cSw806QB+gRpp4ZkjWqC4wH3v0ab8JRKYlhu5FWlGunQzYfp4h
+	 83Ps1S0C9sqfW/bXIkrwYELJxNKRvkyygvvrSIRCly7+Bm0O0CHeXj/+/u2iwcIZv7exifR4k9ZW
+	 A7A0EeN+RWxg4rqgVPRxp4inWAK2O1+CzTszP2zvZ6yVgfHxY=
 X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
 From: Cunhao Lu <1579567540@qq.com>
-Date: Thu, 30 Jul 2026 14:11:23 +0800
-Subject: [PATCH 2/3] can: rockchip_canfd: retry the outstanding TX buffer
+Date: Thu, 30 Jul 2026 14:11:22 +0800
+Subject: [PATCH 1/3] can: rockchip_canfd: prevent TX stall on echo skb
+ failure
 MIME-Version: 1.0
-X-OQ-MSGID: <20260730-master-v1-2-6945fdd4f0ff@qq.com>
+X-OQ-MSGID: <20260730-master-v1-1-6945fdd4f0ff@qq.com>
 References: <20260730-master-v1-0-6945fdd4f0ff@qq.com>
 In-Reply-To: <20260730-master-v1-0-6945fdd4f0ff@qq.com>
 To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
@@ -70,8 +70,8 @@ Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  stable@vger.kernel.org, Cunhao Lu <1579567540@qq.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_231142_595981_9F89B815 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20260729_231142_645300_07FA53E9 
+X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,39 +88,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rkcanfd_xmit_retry() originally operated with a TX FIFO depth of one. At
-that depth, the masked head and tail indices both select buffer 0, so using
-tx_head happened to select the correct buffer.
+rkcanfd_start_xmit() advances tx_head and requests transmission even when
+can_put_echo_skb() fails. This creates a pending TX entry without the echo
+skb that the RXSTX completion path needs to match the self-received frame.
+The entry cannot be completed, and the netdev TX queue can remain stopped
+after the two-entry software FIFO fills.
 
-After the FIFO depth was increased to two, tx_head instead identifies the
-next free buffer when one frame is outstanding. The erratum 6 workaround
-therefore requests transmission from the wrong buffer, leaving the
-outstanding echo entry incomplete and the netdev TX queue stopped.
+Do not advance tx_head or request transmission if the echo skb cannot be
+installed. Account the frame as dropped and report the error. The
+-ENOMEM and -EBUSY paths have already consumed the skb; explicitly free
+it on -EINVAL, where ownership remains with the caller.
 
-Use tx_tail to select the outstanding buffer for retransmission.
-
-Fixes: a5605d61c7dd ("can: rockchip_canfd: enable full TX-FIFO depth of 2")
+Fixes: b6661d73290c ("can: rockchip_canfd: add TX PATH")
 Cc: stable@vger.kernel.org
 Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
- drivers/net/can/rockchip/rockchip_canfd-tx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/can/rockchip/rockchip_canfd-tx.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-index d2cbe25c46d6..c4ecdc9411cc 100644
+index 12200dcfd338..d2cbe25c46d6 100644
 --- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
 +++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-@@ -57,8 +57,8 @@ static void rkcanfd_start_xmit_write_cmd(const struct rkcanfd_priv *priv,
+@@ -125,8 +125,18 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
  
- void rkcanfd_xmit_retry(struct rkcanfd_priv *priv)
- {
--	const unsigned int tx_head = rkcanfd_get_tx_head(priv);
--	const u32 reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_head);
-+	const unsigned int tx_tail = rkcanfd_get_tx_tail(priv);
-+	const u32 reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_tail);
+ 	frame_len = can_skb_get_frame_len(skb);
+ 	err = can_put_echo_skb(skb, ndev, tx_head, frame_len);
+-	if (!err)
+-		netdev_sent_queue(priv->ndev, frame_len);
++	if (err) {
++		if (err == -EINVAL)
++			dev_kfree_skb_any(skb);
++
++		ndev->stats.tx_dropped++;
++		if (net_ratelimit())
++			netdev_err(ndev, "%s: failed to put echo skb: %pe\n",
++				   __func__, ERR_PTR(err));
++
++		return NETDEV_TX_OK;
++	}
++	netdev_sent_queue(priv->ndev, frame_len);
  
- 	rkcanfd_start_xmit_write_cmd(priv, reg_cmd);
- }
+ 	WRITE_ONCE(priv->tx_head, priv->tx_head + 1);
+ 
 
 -- 
 2.34.1
