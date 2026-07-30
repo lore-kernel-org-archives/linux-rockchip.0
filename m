@@ -4,61 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7CC8C55160
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 01:57:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FF09C54FD2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 03:28:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tGbFMgpDfpa+/pH6q9uY94xp4h2/5WJsR+uXa4FpWOM=; b=m/bpG6Pnw+/8k5
-	Cvhc0JTWMB4mPdZYF2rW7p0DVC239eKxihuBrq/g788cRNg4n6PzHA+VFWwTHozHtoS0Nk3d/CW71
-	+TSRIeiWTlM+E3VWl0H+bLa24+VAKL2DgnVk0X0mnx0y39ursJmReyEaV14pBHYR0bJO2Je81M06s
-	biyKtZRJutaBE5JyJ7VRcIJM7xY3vM1NMAg8QRvxBKVCEuVFH9s5FxlCbJ3dNqARs2vBqICyP3MC3
-	ZKVdoi2UkhXBc687OVmChQRteW6cVlpq9m+V7Nwesdf4s8ByRdYN8zP5cPPVZduAI2kjJ9QcM1Lpq
-	V6oJOE9uf6sUcDSZr2Ag==;
+	List-Owner; bh=zFMtZqZnQCmkRBGrWYFyq7iwTUUnYIkBhGki9hyBQ+M=; b=AutUfpfz45bNEa
+	4wdAG7cJamRTT2F945LwTPqUmXrtq0RTTTQx7h6bovnlifKKBefMbzwzzVe76gN0fmlS4JJZTFNQi
+	VYfk3u0tnIuMoDLhun1p+j0Un+DKQOzPs1v/vg+I6/ZXfdInaVqHjkKgSBSD9gd9QhXEb4LvXvP2s
+	H6HtXdp+DeIHPzWWjtCgCXeZrZUzWeqOfPXoFVTa7BHkyxHaga5YMVkuhidh/DjDG+Y8cXPE09aJ7
+	SEMTXtP1zstVcX6Fb3f5/3PRa4WfQevR87m9KH/GWggYZ39tPjjrLBygpm9pSjSlJ5pYut4d5WsIO
+	9XVY+s2ngG+ZUJqNVvew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpG1H-00000009IuL-0O5t;
-	Thu, 30 Jul 2026 01:57:11 +0000
-Received: from mail-m81233.xmail.ntesmail.com ([156.224.81.233])
+	id 1wpHRO-00000009QDd-1nV8;
+	Thu, 30 Jul 2026 03:28:14 +0000
+Received: from mail-m103131191110.xmail.ntesmail.com ([103.131.191.110])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpG1D-00000009Isp-4A2a;
-	Thu, 30 Jul 2026 01:57:10 +0000
-Received: from [127.0.0.1] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 481805a17;
-	Thu, 30 Jul 2026 09:56:57 +0800 (GMT+08:00)
-Message-ID: <24547ed2-0950-48be-92cb-bbb0e1653258@rock-chips.com>
-Date: Thu, 30 Jul 2026 09:56:55 +0800
+	id 1wpHRF-00000009Q9S-2zTd;
+	Thu, 30 Jul 2026 03:28:11 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 481c5dbd2;
+	Thu, 30 Jul 2026 11:28:00 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v1 4/7] drm/bridge: analogix_dp: Extend clear_hotplug_interrupts to accept IRQ bitmask
+Date: Thu, 30 Jul 2026 11:27:41 +0800
+Message-Id: <20260730032744.381566-5-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260730032744.381566-1-damon.ding@rock-chips.com>
+References: <20260730032744.381566-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/rockchip: vop2: give rk3576 VP2 a primary plane
-To: Tomonori Nakagawa <jack@supremeoverlordjabs.co>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260729232450.13797-1-jack@supremeoverlordjabs.co>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20260729232450.13797-1-jack@supremeoverlordjabs.co>
-X-HM-Tid: 0a9fb0bd339503a7kunmf80d911848e5e4
+X-HM-Tid: 0a9fb11090b603a8kunm040f79123746e6
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZTBlDVkodQ0sfHx0aSk4ZS1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTx4dVkMdHUpJSh5OTExLTVYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=Pnsa1UGvoPlSQyjRMpaNfuBLH6zpKreiZ/LmhTDTrbu9ywYQ919LFMrV4aUfVPyVvlebheN3UW2XnJoVrIw5mGQDWfIMSIAYRJ07D4EFQQo7WOtA2FNXjFKslD3GJn6digpbRqqMc1xj1P97jXVVG3FoglfwSceX9vkL3pgrkWU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=xYPdjsXkASKMyTAg3XvVIpdC44k10zS9iryWX8Aia78=;
+	b=jB6P56QTBwB3M2Fe2A7+m3cYOdzAyyO+/ALWzKSzFef9lePJElGn439UWo0KxdA3Y1Fi6ypW12Ffkpj/XlWOxkpT7GapCK3GX9YrwJXG4ALjPigMK/FNr1hnuoKH1Cle6Z7Me9suJiyYIekyee5wik7BhxW/0CeJpHMqXqGizq4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=aLYMustPoXkMtRAN3kGJyKv3pEdMrefd8L2c/gGFsQ8=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_185708_711086_33557195 
-X-CRM114-Status: GOOD (  16.20  )
+X-CRM114-CacheID: sfid-20260729_202806_333025_BED73DE1 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,56 +89,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Tomonori,
+Update analogix_dp_clear_hotplug_interrupts() to take an irq_type
+bitmask argument. Instead of clearing all hotplug interrupt bits
+unconditionally, only clear the interrupt flags corresponding to the
+triggered events.
 
-On 7/30/2026 7:24 AM, Tomonori Nakagawa wrote:
-> The rk3576 VOP2 has three video ports. VP0 and VP1 each have a Cluster
-> window that acts as their primary plane, but VP2 - the port wired to the
-> DesignWare DP controller - only has Esmart windows, all typed
-> DRM_PLANE_TYPE_OVERLAY.
+Pass the detected IRQ bitmask from the irq thread handler, and use the
+full HPD_IRQ mask during HPD initialization.
 
-The description here is not accurate. VP2 can wire to different
-display interfaces which depending on your board configuration.
+This implements fine-grained pending interrupt clearing logic and
+removes limitations brought by unconditional register writes,
+supporting improved accuracy for HPD event handling.
 
-> 
-> The driver requires every active video port to own a
-> DRM_PLANE_TYPE_PRIMARY plane. When VP2 is driven (a board that uses the
-> DP output) it finds none, CRTC creation returns -ENOENT, and the whole
-> VOP2 bind fails, taking down the entire display subsystem.
-> 
-> Promote Esmart0 to DRM_PLANE_TYPE_PRIMARY so VP2 has a primary plane.
-> Esmart0's possible_vp_mask already includes VP2 (BIT(2)) and its
-> layer_sel_id[2] = 0 is a valid VP2 layer slot, while VP0 keeps Cluster0
-> as its primary, so the existing VP0/VP1 assignments are unchanged:
-> 
->   VP0: primary=Cluster0, overlay=Esmart2
->   VP1: primary=Cluster1, overlays=Esmart1, Esmart3
->   VP2: primary=Esmart0,  overlays=Esmart1, Esmart2, Esmart3
-> 
-> Tested on Anbernic RG Vita Pro (rk3576) with the DP alt-mode output.
-> 
-> Signed-off-by: Tomonori Nakagawa <jack@supremeoverlordjabs.co>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> index 17eda592b..e7d013dc3 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> @@ -894,7 +894,7 @@ static const struct vop2_win_data rk3576_vop_win_data[] = {
->  		.format_modifiers = format_modifiers,
->  		.layer_sel_id = { 2, 0xf, 0, 0xf },
->  		.supported_rotations = DRM_MODE_REFLECT_Y,
-> -		.type = DRM_PLANE_TYPE_OVERLAY,
-> +		.type = DRM_PLANE_TYPE_PRIMARY,
->  		.axi_bus_id = 0,
->  		.axi_yrgb_r_id = 0x10,
->  		.axi_uv_r_id = 0x11,
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+---
+ .../drm/bridge/analogix/analogix_dp_core.c    |  2 +-
+ .../drm/bridge/analogix/analogix_dp_core.h    |  2 +-
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 25 +++++++++++++------
+ 3 files changed, 19 insertions(+), 10 deletions(-)
 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 1671f388ef30..5af4150f0e7e 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -729,7 +729,7 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 	}
+ 
+ 	if (irq_type) {
+-		analogix_dp_clear_hotplug_interrupts(dp);
++		analogix_dp_clear_hotplug_interrupts(dp, irq_type);
+ 		analogix_dp_unmute_hpd_interrupt(dp, irq_type);
+ 	}
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index bc13ae45be69..2066e575ce10 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -194,7 +194,7 @@ int analogix_dp_init_analog_func(struct analogix_dp_device *dp);
+ void analogix_dp_init_hpd(struct analogix_dp_device *dp);
+ void analogix_dp_force_hpd(struct analogix_dp_device *dp);
+ u32 analogix_dp_get_irq_type(struct analogix_dp_device *dp);
+-void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp);
++void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp, u32 irq_type);
+ void analogix_dp_reset_aux(struct analogix_dp_device *dp);
+ void analogix_dp_init_aux(struct analogix_dp_device *dp);
+ int analogix_dp_get_plug_in_status(struct analogix_dp_device *dp);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index 42c1da160ad0..816be79a8da6 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -24,6 +24,8 @@
+ #define COMMON_INT_MASK_4	(HOTPLUG_CHG | HPD_LOST | PLUG)
+ #define INT_STA_MASK		INT_HPD
+ 
++#define HPD_IRQ			(DP_IRQ_TYPE_HP_CABLE_IN | DP_IRQ_TYPE_HP_CABLE_OUT | \
++				 DP_IRQ_TYPE_HP_CHANGE | DP_IRQ_TYPE_IRQ_HPD)
+ #define COMMON_INT_4_HPD_IRQ	(DP_IRQ_TYPE_HP_CABLE_IN | DP_IRQ_TYPE_HP_CABLE_OUT | \
+ 				 DP_IRQ_TYPE_HP_CHANGE)
+ 
+@@ -408,18 +410,25 @@ int analogix_dp_init_analog_func(struct analogix_dp_device *dp)
+ 	return 0;
+ }
+ 
+-void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp)
++void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp, u32 irq_type)
+ {
+-	u32 reg;
++	u32 reg = 0;
+ 
+-	if (dp->hpd_gpiod)
++	if (dp->hpd_gpiod || !irq_type)
+ 		return;
+ 
+-	reg = HOTPLUG_CHG | HPD_LOST | PLUG;
+-	writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_STA_4);
++	if (irq_type & COMMON_INT_4_HPD_IRQ) {
++		if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN)
++			reg |= PLUG;
++		if (irq_type & DP_IRQ_TYPE_HP_CABLE_OUT)
++			reg |= HPD_LOST;
++		if (irq_type & DP_IRQ_TYPE_HP_CHANGE)
++			reg |= HOTPLUG_CHG;
++		writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_STA_4);
++	}
+ 
+-	reg = INT_HPD;
+-	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA);
++	if (irq_type & DP_IRQ_TYPE_IRQ_HPD)
++		writel(INT_HPD, dp->reg_base + ANALOGIX_DP_INT_STA);
+ }
+ 
+ void analogix_dp_init_hpd(struct analogix_dp_device *dp)
+@@ -429,7 +438,7 @@ void analogix_dp_init_hpd(struct analogix_dp_device *dp)
+ 	if (dp->hpd_gpiod)
+ 		return;
+ 
+-	analogix_dp_clear_hotplug_interrupts(dp);
++	analogix_dp_clear_hotplug_interrupts(dp, HPD_IRQ);
+ 
+ 	reg = readl(dp->reg_base + ANALOGIX_DP_SYS_CTL_3);
+ 	reg &= ~(F_HPD | HPD_CTRL);
 -- 
-Best, 
-Chaoyi
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
