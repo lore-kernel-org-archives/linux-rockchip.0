@@ -4,75 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A8BDC55164
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 03:28:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4B15C531D0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 03:39:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wFsfbpXOeb2qSaUoAI4iYr7t7d1W9lMYSt7ZqUAT7hk=; b=nTjyGMIV5sqteS
-	jqhFKgqpjm1y1e31ujAMrPmOn2HddpzfVb2UIwS1VHUMqLOqQtFpEU8ZxwK2wE5BulTomarPLlkXR
-	vw+kYBPy+fjc4b9B9xySAPk8wD3a6umPA1uuzKsPAC2IYlSzbyKhfQCmy+A3F5Q8IK51AZO6Rmp5P
-	HWh3DsSjvAVwKl3XPFaBf/BGMX1wH5qpULsxexdztWJ2nv1gDUuikzNS0swl1GjRpd5mJBB/RSW0o
-	+P6KolPer+/akU90uaGsVJopwMR86iTe/6zaJMv6hLyITm43VPGW7mq1jnnBeS9wfVy748J9n0sL6
-	nou49VG5hFEN+Q1jCtAg==;
+	List-Owner; bh=kT4IKFy9pMGTST6vgWR9Mgpo0i5rBWQf5rKhrNhoxKE=; b=oKjmVcVJSqAjA8
+	hYvKJg2Ex3rceVYyiiVVb3Gb4m10LHruknPqJeSc8eqMzG/Ht19lHfQ+aPj+kF7HSsDmIKYbBPt3c
+	RZbqEMSiuwXobCxRnlhsVGsNn7hJz8mDTtNutmAwXbFN4VstVq/tjmlLLCYqs79/FGVbCY++cTcS8
+	kWX5nC4FC1SRdgSDC602HkgemFYPuxgoCmL2q2waNKcW4NVR5koL817TujZB6aBoN1Fz3VtAlg/aF
+	Dv71LtvMwypHgEKcQPDpi5gGegt2iQJiqPWMFTO9w9iLQVvbQeRi81TgLypFYK6HQWLfczHFqTMnP
+	Qi0wbU7NtgUDKZUK5naw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpHRv-00000009QZN-1h2I;
-	Thu, 30 Jul 2026 03:28:47 +0000
-Received: from mail-m10313119118.xmail.ntesmail.com ([103.131.191.18])
+	id 1wpHcY-00000009RfM-11cE;
+	Thu, 30 Jul 2026 03:39:46 +0000
+Received: from mail-gw-fk003.vdone.jp ([160.251.152.193])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpHRI-00000009Q9k-2rwN;
-	Thu, 30 Jul 2026 03:28:13 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 481c5dbe0;
-	Thu, 30 Jul 2026 11:28:03 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v1 6/7] drm/bridge: analogix_dp: Use platform-specific HPD detection scheme
-Date: Thu, 30 Jul 2026 11:27:43 +0800
-Message-Id: <20260730032744.381566-7-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260730032744.381566-1-damon.ding@rock-chips.com>
-References: <20260730032744.381566-1-damon.ding@rock-chips.com>
+	id 1wpHcV-00000009ReX-1v7I
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Jul 2026 03:39:44 +0000
+Received: from mail-gw-fk003.vdone.jp (localhost.localdomain [127.0.0.1])
+	by mail-gw-fk003.vdone.jp (Proxmox) with ESMTP id 0047F401895CC
+	for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 12:39:38 +0900 (JST)
+Received: from e3.valueserver.jp (e3.valueserver.jp [157.7.184.13])
+	by mail-gw-fk003.vdone.jp (Proxmox) with ESMTPS id 582D5401449E3
+	for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 12:39:36 +0900 (JST)
+Received: (qmail 514985 invoked by uid 89); 30 Jul 2026 12:39:36 +0900
+Received: from p1706034-ipxg06601niigatani.niigata.ocn.ne.jp (HELO ?192.168.1.120?) (jack@supremeoverlordjabs.co)
+  by e3.valueserver.jp with ESMTPSA (TLS_AES_128_GCM_SHA256 encrypted, authenticated); 30 Jul 2026 12:39:36 +0900
+Message-ID: <7b6b347d-f5d9-45fe-8255-27e01f23578c@supremeoverlordjabs.co>
+Date: Thu, 30 Jul 2026 12:39:34 +0900
 MIME-Version: 1.0
-X-HM-Tid: 0a9fb11099f703a8kunm040f7912374703
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTx0aVh5MQhhPThgZHh0YGFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=kkqG58EZk/bq0j0078a+tutvBffDoUkUeP5DBcaR2GjxzGZwKm+vFqJzXagP3ujiMTNjxaw7l8eFPr8XwwGj5tTQXqi9q4jFdaFv4E2US4QkXaNiFMb+7PW+9LSmrGF1+W4uatEIaX4Ik8C4Ssv13JBFxiim95ziqeDO0f6HoUw=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=elyGK4QoDPo3Zn9iP3mbc9y7RPMCsYI4PnIQJ5KkDHs=;
-	h=date:mime-version:subject:message-id:from;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/rockchip: vop2: give rk3576 VP2 a primary plane
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>, Sandy Huang
+ <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260729232450.13797-1-jack@supremeoverlordjabs.co>
+ <24547ed2-0950-48be-92cb-bbb0e1653258@rock-chips.com>
+Content-Language: en-US
+From: Tomonori Nakagawa <jack@supremeoverlordjabs.co>
+In-Reply-To: <24547ed2-0950-48be-92cb-bbb0e1653258@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_202809_084139_99328A50 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20260729_203943_662911_5506235A 
+X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,80 +69,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hotplug detection can be implemented either via HOTPLUG_CHG interrupt,
-or the combination of PLUG and HPD_LOST interrupts.
+On 2026/07/30 10:56, Chaoyi Chen wrote:
+ > The description here is not accurate. VP2 can wire to different
+ > display interfaces which depending on your board configuration.
 
-For Rockchip platforms, configure HPD deglitch to 2ms and rely on
-HOTPLUG_CHG interrupt for hotplug events, which is verified as the
-optimal solution through engineering tests. Other platforms continue
-using PLUG + HPD_LOST pair.
+You're right, thanks. VP2 isn't tied to DP - the VP-to-interface
+routing is board/DT dependent. The actual issue is the plane topology:
+on rk3576 the two Cluster windows (the only DRM_PLANE_TYPE_PRIMARY
+windows) both have possible_vp_mask = BIT(0) | BIT(1), so they can only
+attach to VP0/VP1. VP2's only attachable windows are the Esmart ones,
+which are all DRM_PLANE_TYPE_OVERLAY. So whenever a board's DT wires any
+output to video_port2, vop2_create_crtcs() finds no primary plane for it
+and fails with -ENOENT ("no primary plane for vp 2").
 
-Adjust analogix_dp_config_interrupt() to apply platform-specific
-interrupt masking and deglitch settings. Update threaded irq handler
-to check corresponding interrupt flags according to platform type.
-
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
----
- .../gpu/drm/bridge/analogix/analogix_dp_core.c   |  9 +++++++--
- .../gpu/drm/bridge/analogix/analogix_dp_reg.c    | 16 +++++++++++++++-
- 2 files changed, 22 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 5af4150f0e7e..a292bc881b6b 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -719,10 +719,15 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
- {
- 	struct analogix_dp_device *dp = arg;
- 	u32 irq_type;
-+	bool hpd_detected;
- 
- 	irq_type = analogix_dp_get_irq_type(dp);
--	if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN ||
--	    irq_type & DP_IRQ_TYPE_HP_CABLE_OUT) {
-+	if (!dp->hpd_gpiod && analogix_dp_is_rockchip(dp->plat_data->dev_type))
-+		hpd_detected = irq_type & DP_IRQ_TYPE_HP_CHANGE;
-+	else
-+		hpd_detected = (irq_type & DP_IRQ_TYPE_HP_CABLE_IN) ||
-+			       (irq_type & DP_IRQ_TYPE_HP_CABLE_OUT);
-+	if (hpd_detected) {
- 		dev_dbg(dp->dev, "Detected cable status changed!\n");
- 		if (dp->drm_dev)
- 			drm_helper_hpd_irq_event(dp->drm_dev);
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index 42463e18f392..981ce3810e90 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -177,7 +177,21 @@ void analogix_dp_config_interrupt(struct analogix_dp_device *dp)
- 	writel(0, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_2);
- 	writel(0, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_3);
- 
--	analogix_dp_unmute_hpd_interrupt(dp, HPD_IRQ);
-+	if (analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
-+		/*
-+		 * Either HOTPLUG_CHG interrupt or PLUG + HPD_LOST interrupt
-+		 * pair can be used to implement hotplug detection.
-+		 *
-+		 * On Rockchip platforms, configuring HPD deglitch to 2ms and
-+		 * using HOTPLUG_CHG interrupt for hotplug detection is proven
-+		 * as a better solution via engineering verification.
-+		 */
-+		writel(0x80, dp->reg_base + ANALOGIX_DP_HPD_DEGLITCH_L);
-+		writel(0xbb, dp->reg_base + ANALOGIX_DP_HPD_DEGLITCH_H);
-+		analogix_dp_unmute_hpd_interrupt(dp, DP_IRQ_TYPE_HP_CHANGE);
-+	} else {
-+		analogix_dp_unmute_hpd_interrupt(dp, HPD_IRQ);
-+	}
- }
- 
- void analogix_dp_mute_hpd_interrupt(struct analogix_dp_device *dp, u32 irq_type)
--- 
-2.34.1
+I'll reword the commit message accordingly (dropping the DP framing) in
+a v2. Does the fix itself - promoting Esmart0 to PRIMARY - look
+acceptable, or would you prefer a different window or a driver-side
+approach for VP2's primary?
 
 
 _______________________________________________
