@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23935C531D0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 06:11:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9211CC54FD2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 06:11:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=4Q2aCCQGusV575fIUvguQYg9AP5caKDxXSxRRcg+h7o=; b=ES+AoKZ3HOWdAUWf3aamYW7K+g
-	t8rerPeuA6k+0CJjshFa2RiCzR8iTL2seApXRiooq6NBFWkxjq/kF9ZnZOtZwPNsfWkLeTfH3WFN4
-	bezhRf6dzncGrwY6Vg/E9QZPQu9MgWXbAFO0cEV64POT0P9NBMfVVSiG8DUS+Pb07L4q0bE4q42Ja
-	9XwjRAuvOPFbep4R4VsfEd6FKAumQcRqFX4sSPT1gbjBlAllQ5YlchkgSNMh13JUaKN7fbycyumse
-	4ehZ4u0aN4wMVBJqaBLGyKBVleqhbwXtmUhCRNgYX9XE5HxxcL9c7lHWyM0+bQIT4gku2Rfe/aVFp
-	pvGcs9eA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Date:Subject:From:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3WmRi1/KWpRGBlxVvMmCAeSF8UeBeLgG68i9Y7DcLfg=; b=auGp72CXMzIOyZ
+	fRnhYewtRuatuu8FhXYjoLuEkp3kGdlfFMZfbBRNjnri7pzqvcPb2mNFNYbRZ4Hz+eTPdhB0RWgfV
+	GC0swg3wW/VL/axGRcbf4iQOY02f/r8eywfR7zCiGDwB2AM1Z+2b3SI2dD0zuhMZhaBeOIuy/H6t8
+	nOcq6dgajvmkcETzzw2GnRSYVRJ+H1ZsCU2XZcIzcHCAFZfsqZAVFh11uaOty7f+6nzFOskYeRC3Q
+	PJ5jGkudkxT7/ptkYj/dhjViULQa/NL1PZB27B0OJmarQuwXUEc4jnoYq0XdqVZ728d4H7ONsacWX
+	mHzFCZHfAo8uCAxf+bvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpJzd-00000009a8Y-0RTl;
-	Thu, 30 Jul 2026 06:11:45 +0000
+	id 1wpJzp-00000009aCj-0jMI;
+	Thu, 30 Jul 2026 06:11:57 +0000
 Received: from xmbghk7.mail.qq.com ([43.163.128.50])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpJza-00000009a6J-1Eyo;
-	Thu, 30 Jul 2026 06:11:43 +0000
+	id 1wpJza-00000009a6L-1JOM;
+	Thu, 30 Jul 2026 06:11:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1785391895; bh=6u/mJ1eHhtcpBfaCK5wQm5H38V9X2M73NOfbAlKBO2s=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=E/5YzZOlnYKYQhUb25D9rzbVBcC3ximQTnpVcFZ++ojv79K0Xqdva6S1ukIiq+t90
-	 IGHylDJHv7SLxW0dFMzckw3wzqW65yLiS+NgXH/XrdXhNeXkJXoHsMWxF2hhXUS5Gb
-	 GORfRCT0IS3Wueo0jfJKlhNQDmq2wnFeBcRX1Gc4=
+	t=1785391893; bh=xodhZBnx6jfLH4JD+1UDx5RRMPDpkbVj69WOZYwA5Z0=;
+	h=From:Subject:Date:To:Cc;
+	b=h61xOVkpqR8MfvoA3hILcz34EW4h3t11XkbssOfYI5r8sTsnSfvgm9drG2bVLCDtQ
+	 uknWWHxgykIQwXNryg/LGEzsAV4FNFTKlYfH6WZNCoO48StQD2FPGCOnXcZBjjPmBl
+	 3UqFz1Vm++2/3gXHlxNN8XBxiyb/vq2Vwlp8t7qk=
 Received: from ubuntu2204.localdomain ([2409:8d20:22b:54c:9e54:40ff:fe02:3f0f])
 	by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
 	id 2DF15055; Thu, 30 Jul 2026 14:11:31 +0800
-X-QQ-mid: xmsmtpt1785391893tsx1kpqqe
-Message-ID: <tencent_D2D30ECD988C5C82D18863401362835F7606@qq.com>
-X-QQ-XMAILINFO: MRMtjO3A6C9XFoMCSl6ZInb3+GuQ8gajxOb7Om5LsBNl3hBTktMJbHRntZirGy
-	 WEbXlXZrp3uCNOWqNT9oDgKKu69NUPTwn1zHvTdfHFLNy9i3tRuYB5y6GckaW/hdsEr+XsDAFUuN
-	 xNLN6kEItGD8z58/qMEWgwXpBqo470jXo8K7NblLlHKp/MhOhRD07phKbNAJSgNzvtmrmqH/8EUu
-	 eTVeHeHWzVt3pnc3Ax/pJ1cs2F3aTD63yNe+eRig/XcKfoZB85RiDJtrb+Xdg8H8ySKvWF83MQy4
-	 dr4PABrhorsb4NW5lSF2wE5cxb4GRGIHk/fcNHLmlO+pVr6gMjlvn4HeW0+yGoLlMzR5PdO1DTYY
-	 9cn6jnn2MQOvxF5vO+fzb7qVcH1iDrEObmbdpmfJ5LUD3AsDLd3q5K4010ltjgn6oC+Nwtjc16xd
-	 2+kJAzIi1aTy2gWJkOcXySui0uATnGaSnwMtTRMpSjXN/igNwQkgCB6Cv1EBJkrUEQWf+ATgyldL
-	 8T1vKtZYJUYzZiKbjHc/+/JnG75lz54jokhV4VmdcgHBECiV420/DHmnwRZG9F8HnKBxZ80lHW1n
-	 5uJImI8U9tevQMnNF0dSq0VtguHUM64+RX+iJcKQrK0C7OFAGYzARDHkPxfIKW9xym8rmcHir9Ps
-	 zoHm0Ka1KnaZA1ENzu/0+25CdGl3D2ygNGtM+z+cVt+Krde1nJ9qgxmQrV7GjDGEndx+a3msRDQU
-	 26ZER9fJitGMRqcdJr11fCQBeNDMSEkYMD9v2I5CvUcVBzzS3pW51o3WQ3XfBy1GEaAvz2+Yyvn1
-	 sbGSScLejuqF27Rm+w6nWObX7cYRejdywBusiY/hqLr9uJFKQxeiv4PGepHOWCXJeLR92aMU9kfG
-	 3O4RNTIVu47GPZ1llU3eSgHzJ5WKWBQ/59ljn2iwxFU6NcOov2uQGpPtCaMRNgylYOfONDNMN9vA
-	 LD2z06wUdMfTVTEacet+hUPXX/cSw806QB+gRpp4ZkjWqC4wH3v0ab8JRKYlhu5FWlGunQzYfp4h
-	 83Ps1S0C9sqfW/bXIkrwYELJxNKRvkyygvvrSIRCly7+Bm0O0CHeXj/+/u2iwcIZv7exifR4k9ZW
-	 A7A0EeN+RWxg4rqgVPRxp4inWAK2O1+CzTszP2zvZ6yVgfHxY=
-X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
+X-QQ-mid: xmsmtpt1785391891t5q15582x
+Message-ID: <tencent_0E5C2332F801372DD0D4CB4C25B88C18040A@qq.com>
+X-QQ-XMAILINFO: MDbayGdXPuoegJq/HghpgMeM/vEcKqPce/AHIJU6n+h4wmheiLkpGNDuLapRTp
+	 hbZ5/z0BGn20avs+kCt0XScYUpVszTPZ1ZaP8Am33dxwSRnSuUtQ+RMHDAfolnof66caTPvzHy+r
+	 z7BDAhDFuasiFYuCxCStGC+NlZWGHDdKOLWohgOmzeYkcR+nqQFN+zv04AUnY3/ezQtxHlU+u7gZ
+	 ZRqEjiZxRR8Oa9UHhZuTdxDdjwDXNuGl8VrdvZqYtmEUsNcyax6sgDNy96L12YitmAoD/UdolvKN
+	 kDc2/Jke6qRflU7GqPtA9jK8xCu5+1POVqJj39J78zuj6vEtDbmewIjrqXDyb0lwF8xyzznWEuSr
+	 gO3FbQw0cjK7ZsyF3PE+5Q0egqVdRQcmzAlMeyD01cIl7ENz89E7u98qlhIp3W99Amwu9qmFNq//
+	 kqV9+Lmjq9nBHRXBfaW8U98eHUBnMbZvPJZdAAXGT52ZUdsFRvraXOO1e5GvVHgfom69x1HbdM7Y
+	 dVmUfUORA1N/bWeBOwjM4y0P7T1sp5xBl+zZ4jmqcIk+30TeDbTKYVNmo36QcKe26LSWUbRFb5ta
+	 iD/AeK5e10YcdsHfnggxYTBbOantVUcYWUHzhS8Bb0NFl0IfI93/75OLkDCelkYvM9Xasf+BOh41
+	 w9cqGvXAh3s/7GCeZchFVFEKrQTHb8b6QaHVkoVA+DSv6C9WePrh+SQFyjdtIi0dJdmmdkZZQ3fj
+	 1oP1/mVY2Io9mO3kTt70KOHm8HguBl+iZ5EDvVbwOjH/9SlsuB1x3VB3cMKQqFAG46XQOxQ1YFkE
+	 UX4y8I1ZTQYnKazpkfrHGtBT11d6NvreEU/cagX1R0TuMEGUTfiGDYb9X7Ddd5epl7QEBBrOmwow
+	 McJw/DnyRGRt4MW3IcWZGo6LNwVFeUX4JRbO6zbc/bTC82a4xvMhb16hYWVQf/WrhvjhdyGM/sz+
+	 +02QLHtVQCjIUjKKNoQHQABr4LV0AKKjnPZrRpVp5K/0Pe9eH9O2qnZgWhzof9bD7zD0mAQKdF9D
+	 ctQ2N6aiFunfzTXf5x5nNi7GTE153Dl1VPPLq8HOqeO7pmX/JTId5vQC0I7e79oYrifHyfTJiElH
+	 EXutGIJ+0BRfpbi9BCiWZJw/6cqgzzxPwVbmHQY3yj1Y4LIlePjIirFn0HdQ==
+X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
 From: Cunhao Lu <1579567540@qq.com>
-Date: Thu, 30 Jul 2026 14:11:22 +0800
-Subject: [PATCH 1/3] can: rockchip_canfd: prevent TX stall on echo skb
- failure
+Subject: [PATCH 0/3] can: rockchip_canfd: fix TX stalls and echo skb races
+Date: Thu, 30 Jul 2026 14:11:21 +0800
+X-OQ-MSGID: <20260730-master-v1-0-6945fdd4f0ff@qq.com>
 MIME-Version: 1.0
-X-OQ-MSGID: <20260730-master-v1-1-6945fdd4f0ff@qq.com>
-References: <20260730-master-v1-0-6945fdd4f0ff@qq.com>
-In-Reply-To: <20260730-master-v1-0-6945fdd4f0ff@qq.com>
+X-B4-Tracking: v=1; b=H4sIAAnramoC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDc2MD3dzE4pLUIt1EwyRTkyTj5DTTRAMloOKCotS0zAqwQdGxEH5xaVJ
+ WanIJSLdSbS0A/PjexmoAAAA=
+X-Change-ID: 20260730-master-a1b54b3cf5a0
 To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
  Vincent Mailhol <mailhol@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
@@ -70,8 +70,9 @@ Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  stable@vger.kernel.org, Cunhao Lu <1579567540@qq.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_231142_645300_07FA53E9 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20260729_231142_665749_E9CFAB11 
+X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,52 +89,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rkcanfd_start_xmit() advances tx_head and requests transmission even when
-can_put_echo_skb() fails. This creates a pending TX entry without the echo
-skb that the RXSTX completion path needs to match the self-received frame.
-The entry cannot be completed, and the netdev TX queue can remain stopped
-after the two-entry software FIFO fills.
+While running CAN traffic on an RK3588 system, the driver repeatedly
+reported an inconsistent TX echo state:
 
-Do not advance tx_head or request transmission if the echo skb cannot be
-installed. Account the frame as dropped and report the error. The
--ENOMEM and -EBUSY paths have already consumed the skb; explicitly free
-it on -EINVAL, where ownership remains with the caller.
+  rockchip_canfd fea60000.can can0: rkcanfd_tx_tail_is_eff:
+  echo_skb[0]=NULL tx_head=0x00060f7d tx_tail=0x00060f7c
 
-Fixes: b6661d73290c ("can: rockchip_canfd: add TX PATH")
-Cc: stable@vger.kernel.org
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
+The Rockchip CAN-FD driver completes transmissions by matching
+self-received frames with entries in the echo skb ring. The warning above
+is emitted when the driver sees a pending transmission but finds no skb in
+the corresponding echo slot.
+
+The immediate cause is a race between the transmit and completion paths.
+The completion path removes an echo skb before advancing tx_tail, while
+the transmit path reads tx_head, tx_tail and that echo slot without common
+synchronization. It can therefore observe a partially updated state,
+report the warning and stop the TX queue without a later completion to
+wake it.
+
+While investigating the warning, two additional ways for the TX state to
+become inconsistent were found. The transmit path submits a frame and
+advances tx_head even if installing its echo skb fails. In addition, the
+erratum 6 retry path selects tx_head, which denotes the next free buffer
+with a two-entry FIFO, instead of retrying the outstanding buffer at
+tx_tail.
+
+This series makes echo skb setup failure abort the transmission, retries
+the correct hardware buffer, and serializes the TX head, tail and echo
+ring updates with a spinlock.
+
+All three patches pass scripts/checkpatch.pl.
+
 ---
- drivers/net/can/rockchip/rockchip_canfd-tx.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+Cunhao Lu (3):
+      can: rockchip_canfd: prevent TX stall on echo skb failure
+      can: rockchip_canfd: retry the outstanding TX buffer
+      can: rockchip_canfd: fix TX echo skb race
 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-index 12200dcfd338..d2cbe25c46d6 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-@@ -125,8 +125,18 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 
- 	frame_len = can_skb_get_frame_len(skb);
- 	err = can_put_echo_skb(skb, ndev, tx_head, frame_len);
--	if (!err)
--		netdev_sent_queue(priv->ndev, frame_len);
-+	if (err) {
-+		if (err == -EINVAL)
-+			dev_kfree_skb_any(skb);
-+
-+		ndev->stats.tx_dropped++;
-+		if (net_ratelimit())
-+			netdev_err(ndev, "%s: failed to put echo skb: %pe\n",
-+				   __func__, ERR_PTR(err));
-+
-+		return NETDEV_TX_OK;
-+	}
-+	netdev_sent_queue(priv->ndev, frame_len);
- 
- 	WRITE_ONCE(priv->tx_head, priv->tx_head + 1);
- 
+ drivers/net/can/rockchip/rockchip_canfd-core.c |  1 +
+ drivers/net/can/rockchip/rockchip_canfd-rx.c   | 31 +++++++++++++-----
+ drivers/net/can/rockchip/rockchip_canfd-tx.c   | 44 ++++++++++++++++++++++----
+ drivers/net/can/rockchip/rockchip_canfd.h      |  4 ++-
+ 4 files changed, 64 insertions(+), 16 deletions(-)
+---
+base-commit: 11028ab62899e4191e074ee364c712b77823a9c4
+change-id: 20260730-master-a1b54b3cf5a0
 
--- 
-2.34.1
+Best regards,
+--  
+Cunhao Lu <1579567540@qq.com>
 
 
 _______________________________________________
