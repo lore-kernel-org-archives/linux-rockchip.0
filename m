@@ -4,95 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF84AC55164
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 15:36:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9DC2C55162
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 15:57:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WMwlL/c3fDs8SrcutTLZoMySq3ZXezJaOis64KYQVhM=; b=IO8YgiTdlnoQua
-	MtC/yCDbSZM8TsHhsWrh2Og6i0dm9NUHFXjvqOyYK5PJASICaCHKGEVpVsQF9Ns3XeqAlxRo4pEU9
-	heMbBg9yjGxtGRYS1gNvDPwZlWsK2j4d1iX3XP5AigfIOPCyvXpjcS2Mhc1tOJUun5cUwPV4JbEmm
-	e06Avz+GdGu0XUuwS6ujZptPdTAc3L8ObVLYHP9tzm44ck4O8i85WQLmpqr2DINUkAlQ0lQ8SSPBL
-	71MlCTdROriLZXdVZOyBYIHpEP4lzHaKj3Gn6hxwnjigxZqXVs3/qFs1kDaASxBx5Xm4p7H8aOCPw
-	WrLcS4m5VxeFZf+jtD1g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=4TJmI8CVRxr5P3C+3/fnoex97uOMvWrgDHpTVFCTCWo=; b=I7UsGOqHh35G4ZzIjLVmgr1+yQ
+	m9ewbQrg2Drn/LViiR5wzIUcp0jQESv12Vdck5joABoRvI5+aYjGU26vaoYNAVNQ/fOxaJ3MX13NR
+	mHprW7x8Z81ud3PcFMaFDf6tNREAsYIkNKIP/XeMJkqaq2IB4h7zmWoaxmDLrC3S2JAoOcZh3aoqi
+	HUG3/kX+dZAQdVV5/QLRD9gfWpRjeA6eYoufnSuZ4E5QRKO+GFBgg288eMchjaqlE92K6h20d077y
+	c9Z2GkQ8onMMqx60eSHMe4olklq/H+QwO/8Ko4VrzHiZ5DYAxdkNU01UqcxCPJoQGJPzZBppOtzzG
+	1X3+kXYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpSo1-0000000As45-0p1p;
-	Thu, 30 Jul 2026 15:36:21 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1wpT8F-0000000AteM-2nf9;
+	Thu, 30 Jul 2026 15:57:15 +0000
+Received: from xmbghk7.mail.qq.com ([43.163.128.48])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpSny-0000000As3G-2U9C
-	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Jul 2026 15:36:20 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2caced6038eso11112805ad.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 08:36:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785425777; x=1786030577; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=eemCSxLVEosFJ70MWmOxEAPXsjZ44shUjMRdUXsw+jc=;
-        b=o4ZXHPVsEO9B7+nZt6MFql5AzTw5Ap+Aj9Lv4CdRlbT2ncFbbOZ4GXXwBW2T64eJDU
-         DhJYAqn6yFXZKBvJZkooTqTsotVOEZvx7jERAETkjbvrbfiAzR9+x6bt0oNtBL68cPKA
-         CWB061GT/WBOkEQ1tVaBXDsa4U08YXsanq1Xa0FHb9C34vkgU4DwOWqTDKui4EIcfTs7
-         gc/XdbAI/JluK/adGAYZTKgEbFyM2aqnCT9i6up1Y2/GZF9ydA/ECY4b8N9mTS4Xp2gI
-         Xuz3stetkjTUtI+Yxp5rYGhwjCYMTOqj/6NOtkXmA4mEVqVkMxGSwVofqlQezGY856zW
-         00Rw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785425777; x=1786030577;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=eemCSxLVEosFJ70MWmOxEAPXsjZ44shUjMRdUXsw+jc=;
-        b=C6iG43WvpwNkQeb1WKAa+exGtw/c+L7fsFZ9SQ2brparGUgUHchss6QJBIbGq3xuJa
-         9XmTT2cFwtlzpIvipfPWAmkbi7jS/0OLkiMJAJohYzKmZlMynK+Omzcgh314o1ra1oo3
-         BnUwKF472YT1rG1kZbF0m7WfSHRVbBOo2jEVyfUcDy7Xx0MzG8A4KOvajsxi+psqhZJS
-         UFceqBBZiK1DJILmp7I709k/P0Jtcew4yOudPDcmqJS+gjc/6iQJ53UDxdvcfQf0Nfqq
-         eDEiG4uBbpTa2FV2Gn3KCmXehK9twCz1bOm1lOX14+1WzUhpBI99gb1gK1HpTtNe++Tp
-         4a0Q==
-X-Forwarded-Encrypted: i=1; AHgh+Rq3y+6NCNX3ixKTIbSiQanPGfzVTEvp6XoFZAPLWZwpTq13A+P8Byb5QGoRSHW4sVcNHK/7qLyxpH+pdEn4AA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz3pq6ECRxoMxPkiu/TMQdAKZ8camJkEw1gDnyZlBJtprhmQ23k
-	ipsGJ75edwlK2Rk2foM/L5sv2C5HljvQm2aziet8vwbzM0f8Pr3szJhshe4we22+
-X-Gm-Gg: AR+sD11Ms2UMx0MrMakmAt2h100ZLjssRDgrKf12w7cYrKyxjfMpqIio+/jALysXikP
-	nWegW0CDv0PBaXBNrXwat1RwIW5r2ZaWpMsnld7VCHW7x7PcAa9dPBNdCTXPEThbSMRXLR/ITqH
-	LiBuuFyPwr0OIU/G17kOqxoj8pR0PRiR481y0pXweTIfKTizqucrJAWKBS73b4e3HpAL5FmWstT
-	OMvUYBR9cIPqUmViKd3UL7y2qYumLtKkzFPa1BysCGizUKQvX6Swsy9KbM/xnrEYTZzCZ5YXwzI
-	kZWvKKFgf53c3ic70dFZ+8g5Y3h6uCGB1FKGzH7pd4ZrMhRkbs9woglWuPYmm7/09/yemUJ6it2
-	VDo0PvfG9Q/pzdPQccXZdykDpZiSgYwfSQE4MIlMobilo9dplkCCvPSZq0WPYBKe/XxDkvhHtXl
-	27Tw9270/is+6JqZukeAQcpbKMi5qocSip5pbmPnrbhKLRrTZPxAVDHDe8CNptI2DkrXriGuzoY
-	sSGAbTiSfsSYD8k+KPUCaFRfOmbwdDCROpmIHFszfkugg==
-X-Received: by 2002:a17:903:1104:b0:2c9:d8c5:d55d with SMTP id d9443c01a7336-2d03e9b6bd5mr5417115ad.16.1785425777367;
-        Thu, 30 Jul 2026 08:36:17 -0700 (PDT)
-Received: from debian-rockchip-rock5b-rk3588.. ([184.22.25.116])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d022a46969sm28820085ad.25.2026.07.30.08.36.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jul 2026 08:36:17 -0700 (PDT)
-From: Tharit Tangkijwanichakul <tharitt97@gmail.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-kernel-mentees@lists.linux.dev,
-	skhan@linuxfoundation.org,
-	me@brighamcampbell.com,
-	jkoolstra@xs4all.nl,
-	Tharit Tangkijwanichakul <tharitt97@gmail.com>
-Subject: [PATCH] media: rkvdec: fix v4l2-compliance failure
-Date: Thu, 30 Jul 2026 15:36:03 +0000
-Message-ID: <20260730153603.5721-1-tharitt97@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	id 1wpT8C-0000000Atcj-0kGe;
+	Thu, 30 Jul 2026 15:57:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1785427028; bh=3PHCFlOVYT5AkdAAS5RinGtErzFxHqclGA9MbwMBhMg=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=atIJEyIFwnCG80Vd5d+S9tell50iKk846xc2+5mFikGGJ1YXeRRmydFGS3J2JGLmq
+	 zH8Yxfz/S4kjjwleS0gLf0ohr1vD9hDjAfAF4KSbB/AEhcQvMuBsYMMWhC72PsrbTX
+	 1J8s6LN4UBINuMeLukGuu0gUCv/RejP15shbxI3Y=
+Received: from ubuntu2204.localdomain ([2409:8d20:22b:54c:9e54:40ff:fe02:3f0f])
+	by newxmesmtplogicsvrszb51-1.qq.com (NewEsmtp) with SMTP
+	id E4428204; Thu, 30 Jul 2026 23:57:04 +0800
+X-QQ-mid: xmsmtpt1785427026tu83fufjn
+Message-ID: <tencent_BFFE7E8E4D7E349F32F509B7233D01FB8808@qq.com>
+X-QQ-XMAILINFO: MqyaMAvTBNK5cFtZqOJ2p1BVoXf/6YYa4PkdIMjqWrSIk7CVkp5J40GDx7HbDf
+	 UAbTVsJRsZLEi27padVS4q1rAUQoyRMYtBZd5E2oXLVYKq/7cuyLz4LrddCxufVSlMb3c2RpseFS
+	 ylt1UMHhZhAEu8Ebd56now7Jtx97aVGucSpq7kKX6KbbrQe5KNRZcklo0JrKUNRBBuG8i3KcXNQk
+	 bRUrTAaEV7NSdhz0JoQjdxhVO2zIlQPZmDrLnycLlvGvTGQJzCPIJh6jD4LRqb2PEB7nTNocRYOk
+	 szD9THfEa2oczgpBpYWLneUzijcCicH025bfa6njKSqbbQYbUBlvqr2Vcky3ydZq8lR6C2H8G0Wk
+	 DnEgRBEF/ikXfKdy/X3a6/6D1lI73GVzdU2yAuufAGLZuZfIRoXvST4w3yNetaUVcPJqjE8uZ3B0
+	 bsaYFuByHpdxl97AQC5LFutbsIVcrnvE5oAzz1pnsHs8wuddD3nyZUoRRZsHK+ZVh8P9b4Fe6G1Z
+	 qXb4YCBxZeSDWYTuCe7O32yq5zvq5ABUC2LYQuYzPb9X3XFbO+94luF3t0ih7O3KmiKpk/ik1Inz
+	 VSmCO16ozZ7mdV3E8vqg9MVGFspvOeLM41qB1vUHerezisT5LVntf+ubB7KRV530OVLxVm82aMQx
+	 u3gLiW2W10K4VqDGzeSiR5LH7fQyqAXEQgpqjMNCJYXKfDgLBS/Oc59kllryQ0x+SNrPFLBUxQ8o
+	 IitXNOqayAd2kv/IVConsANgQr+1m9O6Mx1ibJEOsecXihAEedbyZMUKrUKw1xOf3IMEwzoXZzLC
+	 PRcdSs9SxAh3qRccG3deV/eatdRH9Cigzej8ZDAFvhTd2bwlV1DSbz283nRKsu5LqMQ7SCwiZzQR
+	 IsjJO85QV9SfMIwo9SQDs3FgPryK1DqQgrDOXvRwLWKmGtSljWSkxnRUPFe6kr3ywdsnHcRtby7u
+	 KMXDEjgsgwChTiMe2Hzr+rEk2e1bTYxG6le1Js8XA/Hxl19dnSCINWXz5OJdMEI8Op4wga/dK7PD
+	 KUutjNtIEuPD+qSWbr17xHV4PVM1gC8ReaYSiB9ohTyol4J4H7st1x57xLCS4/xoPhqIQsiE38tr
+	 CfeJ4d5l9QPSoVAA1/QtnOUpw0lXHAa+ARiTyJjYqEoGjjL+X6fsDwl4vPVumoesaRiHp0FgBAqs
+	 wHQIqOkoTqz1248jI4WDOy/7ukWjwriY9xITRCgtzcFf3leXp5z2PsREqAN0Bz8Ap0HKodN3mSLo
+	 5cDQ==
+X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
+From: Cunhao Lu <1579567540@qq.com>
+Date: Thu, 30 Jul 2026 23:50:41 +0800
+Subject: [PATCH v4 1/3] can: rockchip_canfd: prevent TX stall on echo skb
+ failure
 MIME-Version: 1.0
+X-OQ-MSGID: <20260730-master-v4-1-07f7952f761d@qq.com>
+References: <20260730-master-v4-0-07f7952f761d@qq.com>
+In-Reply-To: <20260730-master-v4-0-07f7952f761d@qq.com>
+To: Marc Kleine-Budde <mkl@pengutronix.de>, 
+ Vincent Mailhol <mailhol@kernel.org>, kernel@pengutronix.de, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-can@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ stable@vger.kernel.org, Cunhao Lu <1579567540@qq.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_083618_640329_39EFC3FA 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20260730_085712_536656_299859DF 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,61 +91,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rkvdec fails v4l2-compliance in two tests related to
-V4L2_CID_STATELESS_HEVC_SPS. The Control ioctls test reads the control
-with GET_EXT_CTRLS and writes the same value back; TRY_EXT_CTRLS then
-returns -EINVAL because the VDPU38x rkvdec_hevc_validate_sps() rejects
-sps->chroma_format_idc == 0, which is the value returned when the
-control has no default.
+rkcanfd_start_xmit() advances tx_head and requests transmission even when
+can_put_echo_skb() fails. This creates a pending TX entry without the echo
+skb that the RXSTX completion path needs to match the self-received frame.
+The entry cannot be completed, and the netdev TX queue can remain stopped
+after the two-entry software FIFO fills.
 
-    v4l2-compliance 1.33.0-5491, 64 bits, 64-bit time_t
-    v4l2-compliance SHA: b32589c51481 2026-07-16 08:51:38
-    Control ioctls:
-        fail: v4l2-test-controls.cpp(942):
-	try_ext_ctrls returned an error (22)
-      test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
-    Buffer ioctls:
-        fail: v4l2-test-buffers.cpp(3102): node->streamon(q.g_type())
-        fail: v4l2-test-buffers.cpp(3157): testBlockingDQBuf(node, m2m_q)
-      test blocking wait: FAIL
+Do not advance tx_head or request transmission if the echo skb cannot be
+installed, and account the frame as dropped.
 
-Provide a control default via p_def with chroma_format_idc = 1 (4:2:0),
-which is the only value the VDPU38x SPS validation accepts.
-This fixes both the Control ioctls and the Buffer ioctls failures.
+This depends on the standalone can_put_echo_skb() ownership fix. It makes
+the remaining -EINVAL path consume the skb and was posted at:
 
-Tested on Radxa Rock 5B (RK3588).
-
-Fixes: c9a59dc2acc7 ("media: rkvdec: Add HEVC support for the VDPU381 variant")
-Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
+Link: https://lore.kernel.org/linux-can/tencent_944DADCC4B42C8484EC01DA2B15F42132906@qq.com
+Fixes: b6661d73290c ("can: rockchip_canfd: add TX PATH")
+Cc: stable@vger.kernel.org
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
- drivers/media/platform/rockchip/rkvdec/rkvdec.c | 5 +++++
- 1 file changed, 5 insertions(+)
+Changes in v4:
+- Split the can_put_echo_skb() ownership fix into a standalone patch.
+- Rely on the standalone patch for error-path skb ownership.
+- Drop the redundant error message from rkcanfd_start_xmit().
+---
+ drivers/net/can/rockchip/rockchip_canfd-tx.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index 1d1e9bfef8e9..37603f049788 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -236,6 +236,10 @@ static const struct rkvdec_ctrls rkvdec_hevc_ctrls = {
- 	.num_ctrls = ARRAY_SIZE(rkvdec_hevc_ctrl_descs),
- };
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+index 12200dcfd338..b1954b72560c 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+@@ -125,8 +125,11 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
  
-+static struct v4l2_ctrl_hevc_sps vdpu38x_hevc_sps_default = {
-+	.chroma_format_idc = 1,
-+};
-+
- static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctrl_descs[] = {
- 	{
- 		.cfg.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
-@@ -243,6 +247,7 @@ static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctrl_descs[] = {
- 	{
- 		.cfg.id = V4L2_CID_STATELESS_HEVC_SPS,
- 		.cfg.ops = &rkvdec_ctrl_ops,
-+		.cfg.p_def.p_hevc_sps = &vdpu38x_hevc_sps_default,
- 	},
- 	{
- 		.cfg.id = V4L2_CID_STATELESS_HEVC_PPS,
+ 	frame_len = can_skb_get_frame_len(skb);
+ 	err = can_put_echo_skb(skb, ndev, tx_head, frame_len);
+-	if (!err)
+-		netdev_sent_queue(priv->ndev, frame_len);
++	if (err) {
++		ndev->stats.tx_dropped++;
++		return NETDEV_TX_OK;
++	}
++	netdev_sent_queue(priv->ndev, frame_len);
+ 
+ 	WRITE_ONCE(priv->tx_head, priv->tx_head + 1);
+ 
+
 -- 
-2.47.3
+2.34.1
 
 
 _______________________________________________
