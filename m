@@ -4,77 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C77C7C55162
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 14:35:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5D0BC55164
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 15:21:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=3Gtwp4mMaDX4E/HNiojZfuPOHtrNi8CXGSOaAge24l0=; b=we3SYrY2evCMPA2/2tuBzlpH7M
-	7rSNOzuPEq+UgbcMQ/7J0Qw9OqcAhQBcMxO7RXafIMcXFHG3bEIrrsfEoNjZxY/wIuaCyRom5lY+A
-	zYR4L9HdCQ2n08mn6nhKTX2gYTZewpWIX5jQ6kZYhR3SvHJiBnKgrOXzIAQhuxEr6HEKJ5FnwfQSO
-	AwTPkZFN+dw1/aM0Ptmgb+cpbR3+yG/h8XZNjCDKN6dhL9mdbqSEynwEKhQzlMa+ZY0quKX1Ixddg
-	9CMwzNDw9OYHFeANZyv2oyhXEI5xitFlEJA1p4fmk+ynoSfVfNzeuo9JFiN2ySS04Gv1j5Ccj4DpO
-	SRhoLNPQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=px+hnmyoTE5DohVX8woZHjiicClicBfy27YqZVYK0AA=; b=BcjlT2L3Q0wdljYJtsOqliKonu
+	fGesGUf8k6ygB2jQlbqRcmNpeP46EiqqGHJaRuJoDgWNdSJYwFPOpeEzEsQpG0T+F5ggox9vSh/1r
+	3yzyed7kAcsSB1kbLOd6CnEAppeoVaOf8YKzobMqm86vCZX28gQj6IOWRpYDg75yXYlSNgZYhcsO/
+	NHWzYpQdQgAJmIvdxQTSY1y7nL5vb5U81kAwfqnbK9PZ/zBtgnt6+S31+bwYRRTFTz6Utkh2ZaTMS
+	p4Kr9ouEW9B0Uqz8auJ+s1iT1+N+vhGcVLeatPGEz0xoQrevApuUP1Ig88RyTjeVbyx3uk1Cy0ePs
+	ng4wyK2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpRrC-0000000AlXc-1p8I;
-	Thu, 30 Jul 2026 14:35:34 +0000
-Received: from out203-205-221-155.mail.qq.com ([203.205.221.155])
+	id 1wpSZw-0000000Aq6a-1pTo;
+	Thu, 30 Jul 2026 15:21:48 +0000
+Received: from mail-westeuropeazon11013055.outbound.protection.outlook.com ([52.101.72.55] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpRr3-0000000AlNl-2gRG;
-	Thu, 30 Jul 2026 14:35:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1785422102; bh=OiynT78oIPX1RAHlRH5+0StsOYMM0ByoUKjomq2+Khg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=TboLKejonrBMd5pXR1CBLuVkl9eluURMKcm5fu4fnYBS7zV51RgT187dHpm73EJUD
-	 Ey50fn3hIsM4vyAC7nHnRY83U0qNgd9R3YxiYJjLxzCZ+oVaezBAOA4xMdoJkzJfjZ
-	 5NgpOsgv0u8lTevbgwObv9KMe9vZ1g4g1MQWTaaU=
-Received: from ubuntu2204.localdomain ([2409:8d20:22b:54c:9e54:40ff:fe02:3f0f])
-	by newxmesmtplogicsvrszc56-0.qq.com (NewEsmtp) with SMTP
-	id 8B38245A; Thu, 30 Jul 2026 22:34:51 +0800
-X-QQ-mid: xmsmtpt1785422099tb9ugx61j
-Message-ID: <tencent_A982C9885A401DE2AB5F405336CDA14C7C06@qq.com>
-X-QQ-XMAILINFO: M91SeYiYjPckoQIolAYWVdM2SqAync6XSnGvaPkVT9uD+DPfGzokokbZfIz5J7
-	 u2+O1K7ittY2x5epwqXNh7IyfMdeYXWQPcSOxt7V+QRVd5fVpMICUdyan9FT8Gfyoep3+oanVk/6
-	 cnx6L/BBHNtI5XnUaxvKb1/T8pEqvucHjgW59SNh3bJH2rwNc/h8dpiZITmimCXbMlCxD57VEIvG
-	 LSgX/wPef8v0kOw7WPfwKk6wdy8P0URzCwmnk1OmVkKqlcopgyUiIAgcQtG3xRaUB6DpwJTMXkjh
-	 3kVkazuHL0SejqiGO6FjnWTe1dWBCFJt+Fb5WmAZ66nrN3BnwhS1I1jKC0J3PP26XwXAfIcGqI2q
-	 IGb+ZueM8kWoEu+W3es4xiE2Uvclk/d1Zw8jMbaWpukQ8fevoAm7v1KEuBLmrp7Um3FqUzbAJkrQ
-	 pmGWCaISd0ASpIEUdSOi4Y79aHA/dnrLZW2c9X1p76/15fkHXFUj38HcEZWN2cbC2zF2zrVSQQIt
-	 ZOmss7aW5/xKMdnsv67D3rGibt8RE/NR2MG1Kgnl2jDWLZhCxYlFGe+9B7CK1GBwvM77Zp9w2+N6
-	 7OVV9biRr5wQg30s6HIgU22P1AzmcdvjCDigb0k/GLT2A/UKOWwE9A0BHHgfwMkoreMDja3MiNm4
-	 FGk2fr/9DT0G5hOvt1BKaY9BLtpgxJ1K44MCAbD6IpuUZ+uWbZmR+Y+NAVZZrtv7dzby0GfLcVQ2
-	 o4xRGaSKaMrZVMSBoH3CEPaA2McwOaAO9ashwH87dBbasV6IwoeqqxueW2im2pmbVrPmVlbGvmfW
-	 jvhp6GgunIJO6KX1VC/S+SPKhJXpA42c4mo/ux6nxRIK9CII3mvsuo6PNpWLtQ24BmFYJYQ5idMz
-	 4tgoT10j7J7OBPAqPpTViWLyYLkbCSSh8hJccoVLwn00iVer6F/oozyIZKxMwc7hDnQ/CVdTMt/f
-	 C+BtovmeUxuCuKkCGepgRuBePR0Ur4yqTVKSJDoY0BWagSbib0sKqoVopx05HsP4oi9a8q8mDEZR
-	 MwoI7+7cZWk1TWS1nR9m0uiqDlVzReO7Vn+UNQCDqWP9tOy45kEgnEzFlvl89fB2QNc45qTX/VIM
-	 0q7jVX6E4d60p0McchSAhBJUpzgfUJKFbUVqWA7gN3Vw5E9+kOAwV64SnvYJQ3sy7S8Ut0
-X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
-From: Cunhao Lu <1579567540@qq.com>
-Date: Thu, 30 Jul 2026 22:34:05 +0800
-Subject: [PATCH v6 4/4] arm64: dts: rockchip: Enable CAN controller on
+	id 1wpSZs-0000000Aq5c-3AS1;
+	Thu, 30 Jul 2026 15:21:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=hfKtTjcDtrnQDGMHn5iadomKUFFFKBuyjlfQcIRXM+vbubPdHg4m/q9j0CxIRQChKkh7HKqcFvsBUIfTh74oMMhHsVSa40oJDvnaizpG7lZC083NZ3uBzi+hmc/dXfTbQYedFxYX+FfvHekjZR7fspQD82cKcB4AWZyZwXlKWXi7/e8S+wqw0zCfUYU4KPsDELBkO7jK/BDIUCcfyvyG5PtbQl54YbIeVECjzmH94azX5AslnNnetU1AZJx+7qe6b3B+6/fLnRdyL6tmHFGyrhvZScdhydgS+DZ5kJO5LZYmwsxe20wB9zg6q4Syqx7GZqktL4wE2myb9KSebdKwrA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=gurVjpa+FxGcc5JDGH4iqrszVOvSbB78c2N1hLBEYJ0=;
+ b=KtEZmhPc9AHHF+7grFrPRS7Byg6JwjVBRVhcJVrXod7DdxD4dWDFrncRkE9xcIavOGk8EDpsjUIWjYLbNy1Q18/zjrQ1FlhjyxWbY5ka4otHfEuVCk1v85ZKDvj7crItgfpEtr/vZk5vIdLYsCGChjy5rp1TTM8SL6ysJnv0W0dpYp9H+pl/07dfZ4i2qbLbqqfeg8KDA8X4XrOOgSRrzU2noWiBG1ijQwc6bIBoXXXIhqx/L5VcHe37mFQeCVlTFqwRJW1EAnSJYXzgaJsZffuJPSClWJzbUV1ofcda5iSkSBkcIyFYOI9YDrxsW57DQfz+wRTwqYFZIbKDaV6fqg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gurVjpa+FxGcc5JDGH4iqrszVOvSbB78c2N1hLBEYJ0=;
+ b=QF2z09a1EBYquni5w+6oOo1nYtJeE/LOGJvc4gjZwMTdLYsLgNY1RbAIR9oiVAq7KjvibfxmXAo25rc9t/XppzG/lYGo4GBUsL0ke7TW5RjuZkzQlmF/Jcv4zND4g8p96rgVWbPAOH5yuGQibS3jb5aZjRDFeHKx0afclbw4NfY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from PA4PR04MB7743.eurprd04.prod.outlook.com (2603:10a6:102:b8::20)
+ by GV1PR04MB10558.eurprd04.prod.outlook.com (2603:10a6:150:20f::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.270.15; Thu, 30 Jul
+ 2026 15:21:36 +0000
+Received: from PA4PR04MB7743.eurprd04.prod.outlook.com
+ ([fe80::9a4e:252f:2fd:97b7]) by PA4PR04MB7743.eurprd04.prod.outlook.com
+ ([fe80::9a4e:252f:2fd:97b7%6]) with mapi id 15.21.0270.012; Thu, 30 Jul 2026
+ 15:21:36 +0000
+Message-ID: <d83d2d39-7c58-44e6-9454-6d8e38511bf5@cherry.de>
+Date: Thu, 30 Jul 2026 17:21:35 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 4/4] arm64: dts: rockchip: Enable CAN controller on
  RK3588-Tiger-Haikou
-MIME-Version: 1.0
-X-OQ-MSGID: <20260730-master-v6-4-dfb63e234775@qq.com>
-References: <20260730-master-v6-0-dfb63e234775@qq.com>
-In-Reply-To: <20260730-master-v6-0-dfb63e234775@qq.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
- Vincent Mailhol <mailhol@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+To: Cunhao Lu <1579567540@qq.com>, Marc Kleine-Budde <mkl@pengutronix.de>,
+ kernel@pengutronix.de, Vincent Mailhol <mailhol@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Cunhao Lu <1579567540@qq.com>, linux-can@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Heiko Stuebner <heiko.stuebner@cherry.de>
-X-Mailer: b4 0.15.2
+Cc: linux-can@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>
+References: <20260730-master-v6-0-dfb63e234775@qq.com>
+ <tencent_A982C9885A401DE2AB5F405336CDA14C7C06@qq.com>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <tencent_A982C9885A401DE2AB5F405336CDA14C7C06@qq.com>
+X-ClientProxiedBy: AM0P309CA0028.EURP309.PROD.OUTLOOK.COM
+ (2603:10a6:20b:28f::6) To PA4PR04MB7743.eurprd04.prod.outlook.com
+ (2603:10a6:102:b8::20)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PA4PR04MB7743:EE_|GV1PR04MB10558:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3717e1d6-5921-40b7-f494-08deee4e3eec
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|1800799024|376014|7416014|10067099003|4143699003|11063799006|6133799003|56012099006|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: QNa3dnXJ2BwR0OnRaQ2ilFqYnVT9rpynNo/1Yx7r5+212hXVgFkemQrXXEa7qX5ssm+uw/pMbDYzsWLGuQOh08xVpF9LzUFYO6hm/L8p8On4WrXkDKWFNVUyh/IBA74wS6vEv00YxxmLSNlGDdas/aA9xqy1HYNFopmeolZReaCZlDmQ8+ulvNPa3tOFiqmNQu6C7Zsnea5yvUGKuCfzlplAfssAcme55x5lE3Ui2pDP7fyLUaX2AeHeJBJ+ymgejE2dh2VTRJFnEqH7PDVCEO/697U1fIpVuTchwzqfWG6+UvoTUmJdCSbEtnB3KTitBFfOQfpc9PBuZOvDqG4REeuQAnqbgTnKe9HJRPv8RQbawEPCBz/vnMhdcaAmnPX2kMw0x0YqQJ2/pYxqkpBzeCp9EHHUXbl3YOg2owqn0qtNgAECPnrYqthrQ4A+AVBu9a8uJ1upR77bNtdBScD/EMjqmVCA/8qg7QQObhDRP93hpAN1qH5HEWt3RTfMQ/cO9Px3s3A0xrkBxlda+/NTv41BdyyZVULTEAz4lND8/YIvpYk4zcDuaFk5KEWjC6pHXXdtagmaIrfaCqD4bzGU5SJpHpvLzNTRm00MstZWWh59bo+WD/+aS7qT/nFxYBUNL/f3FQMNTu8/YkCr6TkAbL9GH+c9cqqa7zxiU3+xTqo=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB7743.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(7416014)(10067099003)(4143699003)(11063799006)(6133799003)(56012099006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VW9jZzQ5T0NQWDZIcTdvUU9POTRqRDBjb3R1dVg3RlltQW9PalBFOWhjODRo?=
+ =?utf-8?B?QjErZ3JZb3o3VWE4OWhmU0dkaTliTHgwY0RyUUkzalh5ZFFOcDA4aGl1UHJV?=
+ =?utf-8?B?Q0tudFJtaGdVVW5tQTAySFQ3QjlzVlRmekxVVCtsc2JQMFNESmg3ekhYbTBh?=
+ =?utf-8?B?RElHNHFwRTRuN21VeXRKM3dKUHd1L09sclVrY1ZkZmhBTnBzMUd0NFJGeXIw?=
+ =?utf-8?B?M0JtM3dISmNQYmJxSjVyeG1XYzV4MmVQVkVkZjM2ZWdXbjQxYnR6YUdwODlL?=
+ =?utf-8?B?VGdCM2YxLzJWYkM2cDBXcmorUHUyZ1AyU3hyRk5nWVNVem82d0ZtRWtmSVho?=
+ =?utf-8?B?UEZSM25QNmE5QmgwcnRta3hZUUc3THFQK09NcjVwQ01ROGozYk9YeU1UdUNa?=
+ =?utf-8?B?Z0lFdjZPZTVQVlcyR0FES0tONjJqRjFGWjRsWTV1YU5ZVmlxSDBjN3BPQVp0?=
+ =?utf-8?B?Z3U5R0JTWGFVV2IrRlYwM1lyUm5ONm9ILzU4WU5zUlRuVVBDUTY2ZHgwMloy?=
+ =?utf-8?B?Y1FVeTk1NXF3TitSMWNsYmpXYWg0THVvQ0kyMWdiSDVtMTJQbUJJY0x3dmFo?=
+ =?utf-8?B?Zmt2ODBtUkh1a1gwTWUzN0dQck9Lbk5RYStnQnBwVnJjSFVFSnY3ZTIybmNl?=
+ =?utf-8?B?MlJsZkszb1Y0SzNjN3dsV3crb0NIZmQ0b0dNTnQ1MUhlTUs3SmtOclNNMXZC?=
+ =?utf-8?B?bFQ4a1kxZnJKeHptWUNjWmpIT0I5UmxmZmczdUJLK0lzVXZxVDBmeU1LR2cx?=
+ =?utf-8?B?bnRtWGtZOGYyUXBMQVlNTnFwOGh6YXRuTS9oWk5QOTEvQ0IzUy80QVhPN2V4?=
+ =?utf-8?B?T1g3ZmsyWEtyRHZVN2FpRE9jay9VaFR6SHhzZFhjdEFSWXJlME9QbnRuV1Uz?=
+ =?utf-8?B?SVVpTHpkSkhESUhoTVhuR3RiaHRRYjRhVXRXdDlGdXB2RlhEYmh0a3BKMFNV?=
+ =?utf-8?B?a0dUMk5HSXlLVXBPOXl3VFZVZ3VZZ2JMa292WkVkeDdEZEtNMGxWbTVIR0I3?=
+ =?utf-8?B?NHE1eEVhK3E2KzlaYndvM1NPUEF0UlIxNHk3dnFiUGlQeXB2MkgxeElGbTNt?=
+ =?utf-8?B?cUhyYUJWQmt5TU1idHF3c1ZGNmRBb1loL3FZOWdxenk0aWMvSEZtRHEwWlZO?=
+ =?utf-8?B?WHVXUDNPbWp5UG96TFRzYW5SNlQrTUZmcVVwZitqKzlkUVd1THd4ak13ZjhL?=
+ =?utf-8?B?c1QxMEtxeEozMm9xUEJmcEduN0FqNkw4aEtQMW1uVmkrS2x2UExlNjhwOXpP?=
+ =?utf-8?B?ZCt2TVkwNkNiT01VNHhCZms2ankvTDcrY05JWVlzbENTNDdCZHBCVHVDdmJG?=
+ =?utf-8?B?d3QyYlkxVFl2Ylk2RG9OYkp1c3Rtdzh4VE0rQytQS1phN21KQndQVGk2V0Q1?=
+ =?utf-8?B?NDRDQ0tkUTZUTkJtRVZXMW1keXdxM2tSc3F0alMwck9FR24zOEVWS3J0cE9v?=
+ =?utf-8?B?bC9QVjgvOWREUVhWMWRxbGNxRnJLeHc2VGdIc1dMWHc5MjlZOWpJbmluMmRw?=
+ =?utf-8?B?dUZRa09vMVIxYWRITCtUQU9hQkJxV2l2ZmxVTE5WeWRLT3Y0SXdDMndMMjJi?=
+ =?utf-8?B?TUZZWnRqK0ZtYUxCTVBVN1Z4cXd1MCtFVzdEMkNCMHZ6OXJNQ3dLblhlSjU1?=
+ =?utf-8?B?Qnp5dk94d3lqK3puOHlHekpJMS9ETFNwNVZFblN1Rll1bmpFNzh5YWpnNit4?=
+ =?utf-8?B?UGpTSkhoWkMvRDZLSHRITlQweUtWYVVlSk9NYXpwTWZoN1dmWXQyK3FHOVJD?=
+ =?utf-8?B?NkJESkJCVG12em1rVStaVlJXUnNVcUt6RDVrTEpwNDBXeHdBMzlWL09sNU1T?=
+ =?utf-8?B?Yk54TlZPM2pXODh0OWdTWnh4T29WQU4xL0Nja1M3TWhTbjluYi9FVVVXT0sv?=
+ =?utf-8?B?WkVqQS9yQkdOMk83eWNjaDhZQVJFb1I4SXV3N0V0dlVXaHEvNmpDWjdMNFVX?=
+ =?utf-8?B?b1ByRTVrSE1NU1FRUnU2ZEgzRGk5ejkwTndoMU8ydk1hODRISytwMHFTZUxC?=
+ =?utf-8?B?SmVKbFRScm8vK3J0ZlZZQnAwQkRTQlg0VUJXRjNORklkcDVaWmxRVlNQblNp?=
+ =?utf-8?B?UXVYZzQ0bnZKOWxoRUVmMVpJSGxRd21FMDd4ZUhFRTByMkk1bW9EQzBPZnNT?=
+ =?utf-8?B?Zy9vSVhyNjhyS3g1b0lWaXZKbVR4eVpJVmZZSCtVWTJSM3dTbXhxemRSTk83?=
+ =?utf-8?B?NitpYzlGOExKQTg5RFMxT1VFZWxTZzRzT2ZwTEt2Mm1KYWVQeDdaT0RUeEx1?=
+ =?utf-8?B?bmFPODJzL3R1RlNES2VVRHdDL0ZnWkQzSVFSZ083S25HYjF1YU00dEVjSlIr?=
+ =?utf-8?B?WFEvWnY1czhBODNCdThlM0hlTkVoNC9TWnBISEV0WkJLOTl2YXpNZz09?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3717e1d6-5921-40b7-f494-08deee4e3eec
+X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB7743.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jul 2026 15:21:36.7018
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: LOkG2YI2QZQe3bUpgYJ/m/4YoTg3h+/YILTqr2QVv3zi7l4NCvaZe2EZKYLVusgzg7niXgTctJF+PJ9uyVenBzGBMQNGF0ApZ7zIaFI1P+o=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR04MB10558
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_073526_547888_6520F4D1 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20260730_082144_807058_C0D7E0D3 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,68 +146,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+Hi Cunhao,
 
-CAN0 is piped through the Q7 connector to the CAN header on the Haikou
-baseboard, so enable support for it there.
+On 7/30/26 4:34 PM, Cunhao Lu wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> CAN0 is piped through the Q7 connector to the CAN header on the Haikou
+> baseboard, so enable support for it there.
+> 
+> At least on RK3588 Tiger, the CAN clocks default to 99 MHz, limiting
+> usable CAN bitrates without skew. The RK3568 errata documentation
+> mentions 300 MHz as the default frequency, so request the same rate to
+> allow more bitrates.
+> 
+> The CAN clock setup is common to the Tiger SoM regardless of which
+> carrier board exposes CAN0, so place it in rk3588-tiger.dtsi. Keep CAN0
+> disabled by default and enable it in rk3588-tiger-haikou.dts, where the
+> carrier board routes it to a transceiver.
+> 
 
-At least on RK3588 Tiger, the CAN clocks default to 99 MHz, limiting
-usable CAN bitrates without skew. The RK3568 errata documentation
-mentions 300 MHz as the default frequency, so request the same rate to
-allow more bitrates.
+Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de>
 
-The CAN clock setup is common to the Tiger SoM regardless of which
-carrier board exposes CAN0, so place it in rk3588-tiger.dtsi. Keep CAN0
-disabled by default and enable it in rk3588-tiger-haikou.dts, where the
-carrier board routes it to a transceiver.
-
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts | 4 ++++
- arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi       | 5 +++++
- 2 files changed, 9 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-index 873fbeb8daa1..6c57c9f54a30 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
-@@ -155,6 +155,10 @@ vddd_audio_1v6: regulator-vddd-audio-1v6 {
- 	};
- };
- 
-+&can0 {
-+	status = "okay";
-+};
-+
- &combphy2_psu {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-index 139f70e7bbd9..161c89c62bcd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
-@@ -90,6 +90,11 @@ vcc5v0_sys: regulator-vcc5v0-sys {
- 	};
- };
- 
-+&can0 {
-+	assigned-clocks = <&cru CLK_CAN0>;
-+	assigned-clock-rates = <300000000>;
-+};
-+
- &cpu_b0 {
- 	cpu-supply = <&vdd_cpu_big0_s0>;
- };
-
--- 
-2.34.1
-
+Thanks!
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
