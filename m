@@ -4,61 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 107B7C55165
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 13:55:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5CA8C55165
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jul 2026 13:57:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EC/0i0fIydG6TnxhWtb/I1QAJRxRnh65oCJSS6Panjw=; b=kNXO5Uuo/Jjm6Jzrl4XuAgSgMh
-	ZOHk3GToZYpZF6FJYJwBcRnaKoEcpeTVQHlk1C6jbcKPEjvqvApvKYla0KF03wP2I6S8lF7qmBlDE
-	uX0nEpAm004QD9oORi08Qj3Pbg2qnEzLE4UFFIzfgpTHpwob6AmIFkYtGdLrcTQFmlYAsmaK19O9N
-	8N+4yx658kPNCkSPILSGtgYcLwx1R47Upt4SbNJM1xePL6dYfUg3sGdrfa3BL7Cor/JKRHgykUryq
-	yuw01mn0Eev6pxTO5EeFbkYTvBVJB6bXHVkcQa+tLX/x8UhVluSZOiJWLjABXJM+s+GJ9+EINDGXo
-	nMP4QvUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6JipJGFW8XhyakJXAd/T12uGPUtbeWqaTdqKqdIXqkU=; b=UGxpZhydm5ci5Z
+	fzXR5E5jpU7VZZjwdMxsvsmnTMsH0lTOPQ0ki3jKmq5IGVry6kHBn8lFxGnHggTjRXWgufNW9kOXU
+	9CyZGPHkccXPvDbF0CCeHkypjTi4swcAu0r6wB+fwoJS98cL/qj92beckSJEqcVOJspl3jB8hRX22
+	HGtn6gR8SW7ri2P3qvokTi4vWZoWLua2BeKHwci5Fs59JDFdAb6HBvaD5rOetc++yM77zs0elPAFO
+	G6Oq2kpBJbKxrK6MdFb2H20g07WOsKM9VdNApu7c5aBFPyk4ysK0rXgAzVnlndnQolhENo7HlXJfW
+	vuVgGLWohJWghr0n04ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpRE5-0000000Afl7-3vT3;
-	Thu, 30 Jul 2026 13:55:09 +0000
-Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
+	id 1wpRGk-0000000Ag3h-1fcq;
+	Thu, 30 Jul 2026 13:57:54 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpRDx-0000000Afhk-3lmR;
-	Thu, 30 Jul 2026 13:55:04 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
-	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id C862F202AC8;
-	Thu, 30 Jul 2026 15:54:53 +0200 (CEST)
-Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <mkl@pengutronix.de>)
-	id 1wpRDp-0023V8-2F;
-	Thu, 30 Jul 2026 15:54:53 +0200
-Received: from pengutronix.de (p4ffb2dc6.dip0.t-ipconnect.de [79.251.45.198])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	(Authenticated sender: mkl-all@blackshift.org)
-	by smtp.blackshift.org (Postfix) with ESMTPSA id 682D257702E;
-	Thu, 30 Jul 2026 13:54:53 +0000 (UTC)
-Date: Thu, 30 Jul 2026 15:54:53 +0200
-From: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Cunhao Lu <1579567540@qq.com>
-Cc: Vincent Mailhol <mailhol@kernel.org>, kernel@pengutronix.de, 
-	Heiko Stuebner <heiko@sntech.de>, linux-can@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH v3 1/3] can: rockchip_canfd: prevent TX stall on echo skb
- failure
-Message-ID: <20260730-pastel-visionary-markhor-d65094-mkl@pengutronix.de>
-References: <20260730-master-v3-0-91cf030c337d@qq.com>
- <tencent_1BD50002C4093F92A6181A5D99D004949107@qq.com>
+	id 1wpRGg-0000000Ag2F-0Hwl
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Jul 2026 13:57:51 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66UDDCZI1372756
+	for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 13:57:49 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	dXD32x4UKkxDB6V0sSMv60ZLLDNzi7VhRUUM6/9KUrQ=; b=iTZIKINYXBw5rW1F
+	0AQNyPGsB/xxWodIgL7ZH5aZtW6UW+dQXYZlejGZoFK/y8a6YTQTG3elh0ukDGiq
+	lZk6EuCJfERrCZesngkrpSNEDsYfHEuQbChd3BhRRYD02fY+Mcpzgf96WKhjhWXq
+	O0sfsd7eWQgeDhSAcG/m62MXaeecBTUlV7NmUoq/JPL2cZKFGlaO00LiEny8K5zR
+	/2DS7bg0HKCDVL5HbqNROHWzrMnMfCjbJw5xSBj8HSVXD63a3kPfKB2pu9mbO9JA
+	oG57cz/v+K8GtfVTBWNVolg05c7yHJ/24RgaxytVSaNW1aOxTV3VGDWjkeOAD/I+
+	mTp26g==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fr70bg93w-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 13:57:49 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-52845bd815bso3719141cf.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 06:57:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1785419868; x=1786024668; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=dXD32x4UKkxDB6V0sSMv60ZLLDNzi7VhRUUM6/9KUrQ=;
+        b=G6tPgRAnDrYJa/Bnl3PMSWg9JZSvlw1G8OTOvLBR8gA9FY+kd5lYUfa0tPvBMZNiPl
+         X1VpkUJEnH4aAv5lpCvwquRk2BtDvgNQJPbclNup4oHavTsTFzhlGV77jBFAfysGNkuH
+         aeduyaCHr+q9d/MZxO1uOy2Ojs/rUw+vVSisD3Du2DmzqpwOgNJCNkgtXu49m0sEw6mf
+         gE/fIk1NGbcvOYIBhy1bnmUB1zlTD7ySzfJi8oXv+oAqNazEKWjWfxxr/m8j6cqK6J6v
+         jw/CPz6tZlziRDb/erBbqGhwGXh1BTOHG3WzM1LxAeriVvscUwLi1zY8Hi/YJlligbNB
+         apCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785419868; x=1786024668;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=dXD32x4UKkxDB6V0sSMv60ZLLDNzi7VhRUUM6/9KUrQ=;
+        b=jua8s4QHWoYWCgBYO0+36FW7Gsp3tV75NEPOM5n+ZO4drTPUT/L35egM4OqQOxzydi
+         lraLRJCacI9Whu2C4K+z0eGmNSXgyaA/UMGE6NNj3xb9fl7o8NeKMzSffknoj/RMoEyk
+         qTLucmKoFPS+7IV9RVHx8QroF40EBno/mbddPVtGPgYuUu5YAlo7WvKKxt7eFYdggg9C
+         549MmPyrG8SXOGN7uJ3K8tPz9uaDE0pk5E2eFpQt5Lzej46xW5eaRc7bZh+sAMDoy+9u
+         1fRhFSOWuHNAMLqkIZZpid9SIP+l349cNDrwPc42xaXuBPDeC2B4/5r9o39e94W4To1W
+         MPXQ==
+X-Forwarded-Encrypted: i=1; AHgh+RrM9LXjdfvWk+CICd15ecZ5C+M6muV6T/YV0VGxAPHs+GLRjCaEgZV8Xjc3r4I6amt/qyxeP3i7gN3DI+8Rwg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwXp5UMwNgsrdGYhPLowYbDLvaHmql1GMvYV2RKsgIkXYsgQg0+
+	gZCtSbPk+syMK4lEo88lpYGXlUmo9aLnpveM1qC26L/VR/o8fXsl3b0hJJudOlE46IfQgV5mng8
+	GErbwnLmFngqUtOLuiwnMrwjgNtgeRI1CIZY9AJLypq/gcPr7mS5p6BDzEcQ/mzmJpBJ4zI4gOE
+	s=
+X-Gm-Gg: AR+sD10nv07Ws/NTH5RIsfdGz1/m7jIfz5aEuGWichbouaDL95dpDNPqrMlLnbqPYil
+	ndXJgbmigyglPLqq/LKTm2vDUXAgPRuEDYmPWLt4RbozGbCjwz7nqLKZMlIK7q8w3ZPLC45e64Q
+	HsGx0WPsyBLJLT1/hdNZ3GaqJC0+f2t9P4HJ3XzwdZeT0wmT2iPNd3++dODE2003Kv9tcTzqENv
+	4pSbLgAAn1IH3ZpFkRO4kRu7KAgF7KcZQVHRLtRgU3PftzfcUABcPVLNUMJBwHIiBVV2GL+1e5i
+	5GtJcwQnGaGSTxs+YwXi76oUix+QWCO1LTU2E257Ykvlosg23IQqU4IrpOVo0svkRktEH7mmGTJ
+	ACR2VkfH0UPj0a7QJyf7mcczE
+X-Received: by 2002:a05:622a:1207:b0:517:5e32:f3ac with SMTP id d75a77b69052e-52b4299d6d8mr5430691cf.0.1785419868327;
+        Thu, 30 Jul 2026 06:57:48 -0700 (PDT)
+X-Received: by 2002:a05:622a:1207:b0:517:5e32:f3ac with SMTP id d75a77b69052e-52b4299d6d8mr5429911cf.0.1785419867788;
+        Thu, 30 Jul 2026 06:57:47 -0700 (PDT)
+Received: from [192.168.120.193] ([178.235.128.140])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6a07d3831ddsm670344a12.17.2026.07.30.06.57.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Jul 2026 06:57:46 -0700 (PDT)
+Message-ID: <c77db81f-9fb8-4803-8efb-078b8cf70fab@oss.qualcomm.com>
+Date: Thu, 30 Jul 2026 15:57:42 +0200
 MIME-Version: 1.0
-In-Reply-To: <tencent_1BD50002C4093F92A6181A5D99D004949107@qq.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] iommu/msm: track a context master per device and
+ IOMMU
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        "Joerg Roedel (AMD)" <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+        Robin Murphy <robin.murphy@arm.com>,
+        Sricharan Ramabadhran <quic_srichara@quicinc.com>,
+        Joerg Roedel <jroedel@suse.de>, Russell King <linux@armlinux.org.uk>,
+        Lu Baolu <baolu.lu@linux.intel.com>,
+        Jerry Snitselaar <jsnitsel@redhat.com>, Jason Gunthorpe <jgg@ziepe.ca>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-msm@vger.kernel.org, iommu@lists.linux.dev,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
+        linux-rockchip@lists.infradead.org
+References: <20260730-fix-qcom-smmu-v1-0-b12fa067804e@oss.qualcomm.com>
+ <20260730-fix-qcom-smmu-v1-1-b12fa067804e@oss.qualcomm.com>
+Content-Language: en-US
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+In-Reply-To: <20260730-fix-qcom-smmu-v1-1-b12fa067804e@oss.qualcomm.com>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzMwMDEwNiBTYWx0ZWRfX5IMVXrf2lVp3
+ TsZlImG+MuLdgaOBLjf/LQIiIMY6TqHwvOakIBaePrEx/E6FuKoLxVb0XJmRyPIrykFwx7OAZ9d
+ yx7GZA5rrecSTYO6unRo70pFFMzKUIgjs23LGoapdKrwMq68vPj0QLYaPgzFPEB8+hjorAml7qw
+ 8pCIrUvmWUQAX+AuPgzBpiFldVooZSPPp1ZSv+mDlIDhb6VNNBKXf234weGxr5V498hETteR2wN
+ bHKb3NdDFN6I1QqU2pU2pQ5EfYKUwzmo9WHED+NB3UrLkSyEoqzYKLUeGariw7N0IqLcxNXlKh6
+ UftvIUev2Id5xULO4+0ddLfK+3vkRtVNP/Y85g0LhZltkSWclF3UmIwhekFUeMzzlrM/jesww8i
+ qtXO6XntJkHcS0bsP/gajnU3eQ/WAxxqAC9l/+3n0y3Tm1LERoaw30nCihiOzx2jRJmf9dtodtt
+ g7jA/QguVVrlfZMIPIg==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzMwMDEwNiBTYWx0ZWRfX9ure79keSwrJ
+ NopZOYMy6jskhBGPxhe3iIjESlfAehHh07bU7O/AFmrLFPHAJJiFps+cx/k4/2C6VsiAkAfuLRL
+ acVycKK4fvcR/r1q3ACLSWeoQG2zaJs=
+X-Proofpoint-GUID: VRLAihnMUc7XsYVBisgw5Nxx_B8WutUl
+X-Proofpoint-ORIG-GUID: VRLAihnMUc7XsYVBisgw5Nxx_B8WutUl
+X-Authority-Analysis: v=2.4 cv=P58KQCAu c=1 sm=1 tr=0 ts=6a6b585d cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=PRfkaYvzSr8QmIIGAkY2Sg==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=dmEO2URhNf-i2iSvwFAA:9 a=QEXdDO2ut3YA:10 a=a_PwQJl-kcHnX1M80qC6:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-30_04,2026-07-29_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 spamscore=0 phishscore=0 bulkscore=0 adultscore=0
+ malwarescore=0 suspectscore=0 priorityscore=1501 clxscore=1015
+ lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607300106
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_065502_108828_AA64B38C 
-X-CRM114-Status: GOOD (  16.77  )
+X-CRM114-CacheID: sfid-20260730_065750_122385_B3F2C626 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,85 +162,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9110948636256109494=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 7/30/26 3:29 PM, Dmitry Baryshkov wrote:
+> insert_iommu_master() decided whether to allocate a struct
+> msm_iommu_ctx_dev by testing whether the IOMMU's ctx_list was empty,
+> caching the result in dev_iommu_priv, then unconditionally dereferenced
+> the master:
 
---===============9110948636256109494==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="isxl4fjmtnaokeil"
-Content-Disposition: inline
+[...]
 
+> -			dev_warn(dev, "Stream ID 0x%x repeated; ignoring\n",
+> -				 sid);
+> +			dev_dbg(dev, "Stream ID 0x%x repeated; ignoring\n",
+> +				sid);
 
---isxl4fjmtnaokeil
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 1/3] can: rockchip_canfd: prevent TX stall on echo skb
- failure
-MIME-Version: 1.0
+Is this intentionally part of the patch?
 
-On 30.07.2026 21:48:38, Cunhao Lu wrote:
-> rkcanfd_start_xmit() advances tx_head and requests transmission even when
-> can_put_echo_skb() fails. This creates a pending TX entry without the echo
-> skb that the RXSTX completion path needs to match the self-received frame.
-> The entry cannot be completed, and the netdev TX queue can remain stopped
-> after the two-entry software FIFO fills.
->
-> Do not advance tx_head or request transmission if the echo skb cannot be
-> installed, and account the frame as dropped. Make can_put_echo_skb()
-> consume the skb on its remaining -EINVAL error path so that callers have
-> consistent skb ownership after an error.
->
-> Fixes: b6661d73290c ("can: rockchip_canfd: add TX PATH")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Cunhao Lu <1579567540@qq.com>
->
-> ---
-> Changes in v3:
-> - Move the -EINVAL skb free into can_put_echo_skb().
-> - Drop the redundant error message from rkcanfd_start_xmit().
-> ---
->  drivers/net/can/dev/skb.c                    | 1 +
->  drivers/net/can/rockchip/rockchip_canfd-tx.c | 7 +++++--
-
-Please split this and send drivers/net/can/dev/skb.c as a stand alone
-patch outside of this series.
-
-regards,
-Marc
-
---=20
-Pengutronix e.K.                 | Marc Kleine-Budde          |
-Embedded Linux                   | https://www.pengutronix.de |
-Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
-Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
-
---isxl4fjmtnaokeil
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCamtXqgAKCRDMOmT6rpmt
-0rvpAP9S6YytcX2HrTpCKlp28NUpqpZ5Z5a4mN/fxFfQCQ1wwAEA6Gd1fREoYcPY
-bE9MZJ+d8RphG0xm33x6xCkxSc13ZQw=
-=yAyp
------END PGP SIGNATURE-----
-
---isxl4fjmtnaokeil--
-
-
---===============9110948636256109494==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Konrad
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9110948636256109494==--
-
