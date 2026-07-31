@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB7DAC55173
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12070C55171
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:24:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xo3yFBdx1YlqYmdgsWAciUhvqeoEC6Kx4stMBl6YrvY=; b=fm3NVARcHe7pTL
-	GuGNNxSG3N/gWMk2lbhIPk4gjmMw2A6PWeySC4irrrHAS/uKvGSaxBuVGGowQlmUGGQ006+oujNOt
-	y8aeBgNZ/IpoSa4iAVfwwlg2Xt5sHWjMvCsk0CBryaxZUzV9X7I4Qcz6NplKefOf2o3wgImm9YJTk
-	HA/YlPl2/RR9WxKgSm+oCNRculsUZwYhwNz/qWZISyra1PLZVt8gFYzLeQplWgTKyctzWLFyLg9fe
-	Xbs4jSjDVpsQ3AznsoOp/cooxGSC5RpptmgRzHhHGhTcj7LIMe6wzJ7rQc9NLkz2Qi/aGyQ1sOuci
-	iko0kQd1uZLaca2bcFeg==;
+	List-Owner; bh=rKtUzB0jptdUBXs+5xMHTB0U7z6N9HyofXGuZBfuF04=; b=WFso3xPICQrOMB
+	YYHGXbxPqwrme151N1Q3Zs0XuBrbiV51XglUeDfTwQoGefqBVUtMttNTGeegtfiLi9UxQHRmQqKnc
+	3v+EwPDi/h+WchFw2wchEQae89vpHBvatA9oi7Ndc6rj1O0ezqMupBdzo7LnuVjT5b2yTZbHEYMiu
+	+KwVcaYbGcDOetvimVj8KRVonCkLmSq8LgVHUKrQsCTiOND2j21RwkEitryA1xwX06TwXK7zFVI9z
+	9NtZH1AlNGz3LG6nus1fsvXgkNvV6fAjYDcn91uGq3fHvVYPSl9GVmZQsOgljk9TWoVzqnQrveNyG
+	JunhWybmDZ9NWarFQmrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpq20-0000000D4Bf-3iNM;
+	id 1wpq20-0000000D49a-2CVa;
 	Fri, 31 Jul 2026 16:24:20 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxm-0000000Czjv-2D2k;
+	id 1wppxk-0000000Czhe-2M6I;
 	Fri, 31 Jul 2026 16:20:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514794;
-	bh=plxawnmT20w7v+1sTZz825WPXTqg1jAro3a9cOhXJdQ=;
+	s=mail; t=1785514792;
+	bh=7rSZ9gXpFQ7En3lTm1pnNmIcuFb2s4vukUXLVZ8mwlQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=bShXLtHKT160n7wYmyOV6tj7a+kfV3Rcc0M0QRyMZ3WJAEcB8y0U7fB15YeS9PzUS
-	 KVQh6eZCYGfL3ZPbGhYhJ9HyyihWzoRa/C3jA98CXtb2GS+y+ZCaNbjaq6EZRoo2iY
-	 pvuJq50RzX4aVYRZH+vS1UVhnIt44j5oHtQA2qBDZur1V2bvnuNY+sgsSzmbbrIEAJ
-	 0H/nvlaG0E5rpc4xgCpNqQzDKjoI6BJbzillghFxcRL1tYYwMAPHQgjRIcjybKD/TM
-	 UZs+kEVCgjtqpZBsxdVdROr/VPyLRHBIFVcAojrFeDR3QRyWitIPPz2WSPmt1NjUHF
-	 wZgRMS1wRJeiw==
+	b=O0OWg0qfNv77GkzxlgnEtfyliP5gCib8NT0g4lJ0AcEpBQCKJHKUP6rrZE2H2/7av
+	 h7PN4nka0RVATZzhNPic9AuKoubn6+UFw2E/e3jztKrnIkQElRqKIzjmsHUzh2AG4b
+	 CMld+32ugq/lLVGGsJybBuD0bEJ9LccjuuB6ID9JSQaJ8zvtPmVL8+l5x4B8FDEQAw
+	 2T4BCTWb69XnL+cPW1EOtUa+9MwkFRTcVwBrkHJCdynEIu805CjlzA6K6oSFBsk3+q
+	 8CNwe9PO0Z14tUNfFitohpwd9hAih3FUMTt10PmEtQAuAoWdQosvWDSIQzufHipQKc
+	 kTEK7NDrgi4TA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DD21C17E0906;
-	Fri, 31 Jul 2026 18:19:53 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7C8D017E08EB;
+	Fri, 31 Jul 2026 18:19:52 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:20:02 +0300
-Subject: [PATCH v10 55/69] drm/sun4i: hdmi: Convert to
- drmm_connector_hdmi_init()
+Date: Fri, 31 Jul 2026 19:20:00 +0300
+Subject: [PATCH v10 53/69] drm/bridge: lontium-lt9611: Advertise HDMI 1.4
+ capabilities
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-55-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-53-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -73,8 +73,8 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091958_864048_3BE763BF 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20260731_091958_690188_A6D85990 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,73 +91,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Switch driver over to the new drmm_connector_hdmi_init() signature and
-advertise HDMI 1.2 support.  The vendor, product, supported_formats and
-max_bpc values previously passed as arguments are now provided through
-struct drm_connector_hdmi_funcs, together with the new
-supported_hdmi_ver field.
+Bridges using DRM_BRIDGE_OP_HDMI are expected to provide the supported
+HDMI version.  This is not enforced yet, but will become mandatory once
+the migration to the caps-based HDMI connector initialization API is
+complete.
 
-The HDMI connector helpers infer the 165 MHz TMDS character rate ceiling
-from supported_hdmi_ver and reject modes exceeding it before invoking
-the driver's .tmds_char_rate_valid() hook.  This makes the explicit mode
-clock check in sun4i_hdmi_connector_clock_valid() redundant, so drop it.
+As LT9611 supposedly cannot drive a TMDS character rate exceeding 297
+MHz, advertise HDMI 1.4 as the supported version.  HDMI 1.4 allows up to
+340 MHz, so set the bridge's max_tmds_char_rate to ensure the connector
+limit derived from supported_hdmi_ver remains within the hardware
+capabilities.
 
-No functional change intended.
+drm_bridge_connector_atomic_check() calls
+drm_atomic_helper_connector_hdmi_check(), which rejects modes whose
+computed TMDS character rate exceeds the connector's max_tmds_char_rate
+before invoking the driver's .tmds_char_rate_valid hook.  Since
+max_tmds_char_rate now carries the existing effective limit,
+lt9611_hdmi_tmds_char_rate_valid() is redundant.  Drop it.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c | 16 +++++++---------
- 1 file changed, 7 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/bridge/lontium-lt9611.c | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
-index 96b2b597caa6..850a8fecf0b5 100644
---- a/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
-+++ b/drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c
-@@ -192,10 +192,6 @@ sun4i_hdmi_connector_clock_valid(const struct drm_connector *connector,
- 	if (mode->flags & DRM_MODE_FLAG_DBLCLK)
- 		return MODE_BAD;
+diff --git a/drivers/gpu/drm/bridge/lontium-lt9611.c b/drivers/gpu/drm/bridge/lontium-lt9611.c
+index fb34f661ee0a..f66e3d1b1b57 100644
+--- a/drivers/gpu/drm/bridge/lontium-lt9611.c
++++ b/drivers/gpu/drm/bridge/lontium-lt9611.c
+@@ -5,6 +5,7 @@
+  */
  
--	/* HDMI 1.0 max TMDS character rate */
--	if (clock > HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ)
--		return MODE_CLOCK_HIGH;
--
- 	rounded_rate = clk_round_rate(hdmi->tmds_clk, clock);
- 	if (rounded_rate > 0 &&
- 	    max_t(unsigned long, rounded_rate, clock) -
-@@ -253,6 +249,11 @@ static struct i2c_adapter *sun4i_hdmi_get_ddc(struct device *dev)
+ #include <linux/gpio/consumer.h>
++#include <linux/hdmi.h>
+ #include <linux/i2c.h>
+ #include <linux/interrupt.h>
+ #include <linux/media-bus-format.h>
+@@ -952,18 +953,6 @@ static int lt9611_hdmi_write_hdmi_infoframe(struct drm_bridge *bridge,
+ 	return 0;
  }
  
- static const struct drm_connector_hdmi_funcs sun4i_hdmi_hdmi_connector_funcs = {
-+	.vendor = "AW",
-+	.product = "HDMI",
-+	.supported_hdmi_ver = HDMI_VERSION_1_2,
-+	.supported_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444),
-+	.max_bpc = 8,
- 	.tmds_char_rate_valid	= sun4i_hdmi_connector_clock_valid,
- 	.avi = {
- 		.clear_infoframe	= sun4i_hdmi_clear_avi_infoframe,
-@@ -653,19 +654,16 @@ static int sun4i_hdmi_bind(struct device *dev, struct device *master,
+-static enum drm_mode_status
+-lt9611_hdmi_tmds_char_rate_valid(const struct drm_bridge *bridge,
+-				 const struct drm_display_mode *mode,
+-				 unsigned long long tmds_rate)
+-{
+-	/* 297 MHz for 4k@30 mode */
+-	if (tmds_rate > 297000000)
+-		return MODE_CLOCK_HIGH;
+-
+-	return MODE_OK;
+-}
+-
+ static int lt9611_hdmi_audio_startup(struct drm_bridge *bridge,
+ 				     struct drm_connector *connector)
+ {
+@@ -1029,7 +1018,6 @@ static const struct drm_bridge_funcs lt9611_bridge_funcs = {
+ 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
+ 	.atomic_get_input_bus_fmts = lt9611_atomic_get_input_bus_fmts,
  
- 	drm_connector_helper_add(&hdmi->connector,
- 				 &sun4i_hdmi_connector_helper_funcs);
--	ret = drmm_connector_hdmi_ini2(drm, &hdmi->connector,
-+	ret = drmm_connector_hdmi_init(drm, &hdmi->connector,
- 				       /*
- 					* NOTE: Those are likely to be
- 					* wrong, but I couldn't find the
- 					* actual ones in the BSP.
- 					*/
--				       "AW", "HDMI",
- 				       &sun4i_hdmi_connector_funcs,
- 				       &sun4i_hdmi_hdmi_connector_funcs,
- 				       DRM_MODE_CONNECTOR_HDMIA,
--				       hdmi->ddc_i2c,
--				       BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444),
--				       8);
-+				       hdmi->ddc_i2c);
- 	if (ret) {
- 		dev_err(dev,
- 			"Couldn't initialise the HDMI connector\n");
+-	.hdmi_tmds_char_rate_valid = lt9611_hdmi_tmds_char_rate_valid,
+ 	.hdmi_write_audio_infoframe = lt9611_hdmi_write_audio_infoframe,
+ 	.hdmi_clear_audio_infoframe = lt9611_hdmi_clear_audio_infoframe,
+ 	.hdmi_write_avi_infoframe = lt9611_hdmi_write_avi_infoframe,
+@@ -1177,6 +1165,8 @@ static int lt9611_probe(struct i2c_client *client)
+ 	lt9611->bridge.hdmi_audio_dev = dev;
+ 	lt9611->bridge.hdmi_audio_max_i2s_playback_channels = 8;
+ 	lt9611->bridge.hdmi_audio_dai_port = 2;
++	lt9611->bridge.supported_hdmi_ver = HDMI_VERSION_1_4;
++	lt9611->bridge.max_tmds_char_rate = 297000000; /* 297 MHz for 4k@30 mode */
+ 
+ 	drm_bridge_add(&lt9611->bridge);
+ 
 
 -- 
 2.55.0
