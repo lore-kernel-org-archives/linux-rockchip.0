@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0510AC5516D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 14:43:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8119C54F54
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 14:43:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6lXMqaSTNBW57CrItONxMFuP8JUFkV2iThD9Dw/0/4c=; b=tojtmhDNIgac2X
-	iqrQpROwDnyErzJU06jYqTRkXuy2w9H5qlG/IA1ulUr80HVn2Lie5sTbG1yNBBvJZ/Q2DGj5vQX2j
-	sFg6RSp7eRo7JHJ6j7b2JcJDLJL1jTKeqA6PTxvN3mFitSvrl6HAurCMJzj5Epvs3z4NJHKR1zS4l
-	lKIDj1GKtecu2qX+w1TGD4GfZ5tEmhyiKIUpu131DHWhD/agzNofhItFkq6cp7dhIAX8R/wrARYsq
-	QUqV6ZZ5NudbzmUI88MyEl54EDbIShcKfeDchB52id79ksyq+Tq+HpfUSWWE2vdrWIEIs5nX+sMgp
-	pmmofMR7Mb5lQGNFIwBg==;
+	List-Owner; bh=hhKrmaRJmJbMjCumCOZ238wbRae5C+rMKhaezqGAAtA=; b=ziPGUEazCj6WX2
+	XMRI+E9UiV8h8p/ACfkCkUlt/YfT+0j//xjWb2lAdvJhN4cmTDZzsahvNW+W5jQy8r/XI3WPN2Xvu
+	cfr7qiyoLqRB//CMjzqOkmS0Y3lmbzUOFamEv/Ij34UmeMwjGTe9BZF+FFSYcnGYfagstFnNUwrDs
+	uMkMmNXNDovGsZi8Wv3ReDunbFVHUJ1APtzad3twHa85zGXuHaXOtUhKrpZPXxqRlFWIUL5VsgmEh
+	k84WxmydCWP0i70qXjjOj75WEyVzwFmrd3HHLHs1M8FrCFYCNe14bxHyB9l4BgNuVBHwNQSs1+wr/
+	Pjzmvr+RnjOLLb3C+9Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpoRx-0000000CmY1-2l4r;
-	Fri, 31 Jul 2026 14:43:01 +0000
+	id 1wpoS7-0000000CmjL-1rRB;
+	Fri, 31 Jul 2026 14:43:11 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpoRE-0000000Clb0-333T;
-	Fri, 31 Jul 2026 14:42:27 +0000
+	id 1wpoRF-0000000ClbP-0zgs;
+	Fri, 31 Jul 2026 14:42:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1785508929;
-	bh=xXEUBll9y6OuU/YT7UswjnBGnWHXZmw9kG8eQXnPYWI=;
+	bh=rrt5YOOAgulVloGhA8XYLb7XVQPmqKwIeo2+VJPjwtM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=XLA3w7EsLv1eu9smNNJYgjge7nU9o5A50HUxaNsZCwgrMx3mAvp8/rCw3hxU8WGAu
-	 pm//pYgbgP/sImpcMJQ29bxCqFQNgCllems7uGnTnUZh6+zSblj2uNHMjvzmKKtGOW
-	 Q+h7lCQbwQouX/BvHhDUomgyXxbynOum1w+OnajehkdGXQcfuMY2bpDyiFKvzrwlas
-	 3zPey4wSqR/486gMst7e2DEYecyhCK4iaIcK339+0doUdUhWwmobljFTBgbTZ0ybIn
-	 e8JPz8p4u77gj9NQvL0wia1N4aw9pZoio86DLiAI6GW0JzQtjAtNdbJeBhuWNPcz70
-	 XUgJU++4DVE6Q==
+	b=MtNpxYUi9XbAo1fed4Wm2aqPkXCznUo6OhXX301G+SJSaRxPb0e3l9XeKWoH652dy
+	 Gpx7Fan3FW1D61d5RrMh/dWO7wK5e5b+3HtdtrjpsK+yTxOtkCeRZe/zzk/hLCI/Qi
+	 Byox237ZWOF+p1Frn/AAvUbWe0ItliE4h2qjGB+yuLcpHzwQRFSp9IJ3tVUM6Hl3ax
+	 z0fa8bnJZZjCnqg5K/bio+7PUdOD3EVWM06U3nCA2hJNUMn20g8z2YdJNjx7JHNVAF
+	 VCspQwGXQDVMvhMhdI9epD26zPBhvYMW+co6O4uBSk32fEm4MPeTcDZmFkdIlw2gsR
+	 xba/81lqTiUKQ==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A0A8317E0916;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AB91817E092C;
 	Fri, 31 Jul 2026 16:42:09 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 067C6480038; Fri, 31 Jul 2026 16:42:09 +0200 (CEST)
+	id 0B18A480047; Fri, 31 Jul 2026 16:42:09 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 31 Jul 2026 16:42:12 +0200
-Subject: [PATCH v8 07/21] drm/bridge: synopsys: dw-dp: Fix support for
- short I2C reads
+Date: Fri, 31 Jul 2026 16:42:15 +0200
+Subject: [PATCH v8 10/21] drm/bridge: synopsys: dw-dp: Add follow-up bridge
+ support
 MIME-Version: 1.0
-Message-Id: <20260731-synopsys-dw-dp-improvements-v8-7-ac1e6a75782f@collabora.com>
+Message-Id: <20260731-synopsys-dw-dp-improvements-v8-10-ac1e6a75782f@collabora.com>
 References: <20260731-synopsys-dw-dp-improvements-v8-0-ac1e6a75782f@collabora.com>
 In-Reply-To: <20260731-synopsys-dw-dp-improvements-v8-0-ac1e6a75782f@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -69,26 +69,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1460;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2515;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=xXEUBll9y6OuU/YT7UswjnBGnWHXZmw9kG8eQXnPYWI=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpstEAQh2CtbiplgbxQz6tO/3/UYpXFPgoF1
- UXjkdynUMWlN4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqbLRAAAoJENju1/PI
- O/qayy0P/RpgiiOe96OD0ClUPwcrk8cEbEZs79HOcyfv5EdIxLptw1aqgzBHMUROMJ+Sc4SGPWu
- bGrzIT4zyoQDFmubk6rme/zStA/H41lGHcT5tyvV1wxGY+MoeFsN4SEwfGAfpt+2RvLOcalPt4Q
- nFlXx/ZtLb7ei2FlwyBqaom8slIGtkRrSrwtUWj5BsU95K0T0x4XKttlsqCTt5Y2LdSuhN9fzZ7
- qBmoYBDB7RauxdcQTF+djEOaIqLhLJbyl0eIh3BAtBP6lzV5zRNieOe5yLZJYOd/CgaXLZbS4eH
- 1gDwGKUnWyLelj64PWNhqMvLRIC+YT6HIUEjLNItyLdGOAO/ZQEgA2dVSjzeqkU+sokmTbex6Q8
- TkOaptX1I+mIuNFtRAFDK4QmHQ0MS11pXQ1/ThS5qbuSv3rpnpv2QUxYTUOE+LDHvLJWwcSBO8N
- Y5V6e6bhlxJHuDMihr3PiHGUpFWeJTk/76F9fYAxorlAApW1kZkajgj7jANQe0I17SaXHTUAMw0
- Qtdq5jtzs3ypK1NXwB8n5F2X/wCOWKHBDHAUgvx4cUnnnztYZx30NzLI/jm5lYW8PjONPyXdUPM
- Tq6E2JcV199aRKGOWdlIH3mUe8O80It4JhP700qG3B0Y5lbdAK7WEj5keJpyEgpXtrriGJKigiD
- M58GeXDACH91sCnmqstIqGg==
+ bh=rrt5YOOAgulVloGhA8XYLb7XVQPmqKwIeo2+VJPjwtM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpstECb1PZQPHkTUx0coHpDEhRO5v68sVK7Y
+ xlXtNAk2100hokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqbLRAAAoJENju1/PI
+ O/qa47gP/2cAZf9HKtm/2zrGPQmMiKs1452MaG+YQ7iDQ/J0w3uIbSckJDW0bVkFtGEmOw3CSYc
+ 9jDj0jFAljkb3viMlQnTvYaoCRXC94fPk88n19MfqILfD1+0LlhZnEsi0ulzTp67gSWNtPrRder
+ nYDOu5P+fAJtjTTbtiep0yV6gz58BL9HRPzDDz1KgsD6EIu0wMqFk2MFxW61NUvo2jquZo6WyLJ
+ Ybm6nlwM8c4JCoc9paTDOq/fZsP0sMe9uxnT6SPiW+2wNYpALLFkIwB3EdZoJwL8XLJQPwoJSqD
+ h2B1AhQ+gEs1fQrgDy4tBBt9RhW7KYmXHDCfqm6BDt75pEK1jbZbKOKB/raIkr5anZgLXgc6ip8
+ REx8MGSff0EPL8zxhtecJUkpcF62o6axLsZnE2kveIzJ8duJZbYqydrt9PlmRiSzgdGX6wV4Plv
+ yoveYAlhUVk2R6iq3oemJEmYveTY7xxKjK5KRCxFItT7pijzjl+gnZzxZFuDtxrwY2Nipk9wATS
+ 9ebnEs9RR84UnAEfrQFSMzO1r3A6xbEk5wORNpg8KmFKfzr9cobeKTBnZ4bsVHYAn1t2x8qeTrn
+ r4zlZh9KgiYwItaWjdQLjsjMJ2hcp+Rv1+YwC/dxtgu6f9kfLKbjGr2oON7KdvT32M/Tpz5uOJS
+ tUgET7ma0mfDVukWFNvUuig==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_074216_954264_736731CA 
-X-CRM114-Status: GOOD (  14.77  )
+X-CRM114-CacheID: sfid-20260731_074217_526518_EFD7A6BF 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,45 +100,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Sashiko <sashiko-bot@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The transfer functions returns the amount of bytes read for
-DP_AUX_I2C_READ. By returning -EBUSY for short reads, the caller has
-less information available what is going wrong and possibly simply
-resends the read request. On sinks not supporting long reads, this will
-simply run into the same issue again.
+Add support to use USB-C connectors with the DP altmode helper code on
+devicetree based platforms. To get this working there must be a DRM
+bridge chain from the DisplayPort controller to the USB-C connector.
+E.g. on Rockchip RK3576:
 
-Instead it makes more sense to return the data from the short read with
-the length information, which allows drm_dp_i2c_do_msg() to read data in
-smaller chunks and succeed in the end.
+root@rk3576 # cat /sys/kernel/debug/dri/0/encoder-0/bridges
+bridge[0]: dw_dp_bridge_funcs
+        refcount: 7
+        type: [10] DP
+        OF: /soc/dp@27e40000:rockchip,rk3576-dp
+        ops: [0x47] detect edid hpd
+bridge[1]: drm_aux_bridge_funcs
+        refcount: 4
+        type: [0] Unknown
+        OF: /soc/phy@2b010000:rockchip,rk3576-usbdp-phy
+        ops: [0x0]
+bridge[2]: drm_aux_hpd_bridge_funcs
+        refcount: 5
+        type: [10] DP
+        OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
+        ops: [0x4] hpd
 
-Due to lack of a sink, which only supports short reads, this change is
-effectively untested.
+It's fine to fatally error out when there is no follow-up bridge
+as the Rockchip Designware Displayport controller is the only
+user of the bridge helper and has the port marked as required
+in its binding.
 
-Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 57b6a8fc98d0..760e1e0f8234 100644
+index 42927335f0fd..7d42067df2cf 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1513,7 +1513,7 @@ static ssize_t dw_dp_aux_transfer(struct drm_dp_aux *aux,
- 		if (msg->request & DP_AUX_I2C_READ) {
- 			size_t count = FIELD_GET(AUX_BYTES_READ, value) - 1;
+@@ -330,6 +330,8 @@ struct dw_dp {
+ 	struct dw_dp_plat_data plat_data;
+ 	u8 pixel_mode;
  
--			if (count != msg->size)
-+			if (!count)
- 				return -EBUSY;
++	struct drm_bridge *next_bridge;
++
+ 	DECLARE_BITMAP(sdp_reg_bank, SDP_REG_BANK_SIZE);
+ };
  
- 			ret = dw_dp_aux_read_data(dp, msg->buffer, count);
+@@ -2037,13 +2039,31 @@ int dw_dp_bind(struct dw_dp *dp, struct drm_encoder *encoder)
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "Failed to attach bridge\n");
+ 
++	dp->next_bridge = of_drm_get_bridge_by_endpoint(dev->of_node, 1, 0);
++	if (IS_ERR(dp->next_bridge)) {
++		ret = PTR_ERR(dp->next_bridge);
++		return dev_err_probe(dev, ret, "failed to get follow-up bridge.\n");
++	}
++
++	ret = drm_bridge_attach(encoder, dp->next_bridge, bridge,
++				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
++	if (ret) {
++		dev_err_probe(dev, ret, "Failed to attach next bridge\n");
++		goto put_next_bridge;
++	}
++
+ 	return 0;
++
++put_next_bridge:
++	drm_bridge_put(dp->next_bridge);
++
++	return ret;
+ }
+ EXPORT_SYMBOL_GPL(dw_dp_bind);
+ 
+ void dw_dp_unbind(struct dw_dp *dp)
+ {
+-	/* nothing to do */
++	drm_bridge_put(dp->next_bridge);
+ }
+ EXPORT_SYMBOL_GPL(dw_dp_unbind);
+ 
 
 -- 
 2.53.0
