@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADF0FC5516F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:20:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB858C54F54
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:21:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vAuOo5adNVS1hO4hiMkxSCNHp06xIoBf3tRuvSSFXHA=; b=clhvLaYu6RMx35
-	8sPR4UToIU5E3ssealthGWqTkatPR2hf32kh2yliQXGtKGfQKBmFSsLOtshMTXaUQp/it1sbUFqh/
-	CtOU6wEI+iYenW1XAsbvXy+L295Keylg5DvRpFj+3aBaNdOky7b43Su0NPpKyFP2FNpLuWFe5ukEr
-	vGiSMnBhydTPjkmdPkYkKii8sOqpnNU7JH8eZbprglUweLoY//QIASlLPALh+ja+JrHWHHYZ2m75b
-	+FnaxZ1Dj0prT3w05H+HG6CQW6OzHYip4pby6fz3fCqoF1CG71HzZRkVTWE63Xx/Dln5cJF3AesW+
-	KGEG+QZ7AqagBGfsGF3Q==;
+	List-Owner; bh=WI/UMuzOccEFijwOnB56OmBm29xq2JCAGJOzDhFALIE=; b=LMtjZdnI8RJ2fe
+	RJDhAoIEFH9CMNfg8he1tM89PgWNmZnKy2urF/BrdoPKVxfsBTlfTlOiGSiPKgqEDlO+BXkx1rp4+
+	s6iyTHKFIRsLCxXe8nLGyEajczNXZa57nW6qDjvdjvB5AkqhqtQ5/9AYWs6aqIr7XB7jBTRPBzUj9
+	1ogbnaDUVdggeYeoqcgI6oUXCkKHbXOFImSmz0BnJbGTK2Q/k17h5WboUb3t8o0Pi9xB65JHRPLu5
+	jqaOoVkSNGQWM56KpCGKlpspjZnHqoIfP2sd+j8WdV/iLBOjXmV/hTQfv84gSWxbum1SLEs58kMRX
+	KUJ23DcrFcwySGS4+xrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppyg-0000000D0fg-1Lkp;
-	Fri, 31 Jul 2026 16:20:54 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wppyr-0000000D0mx-218p;
+	Fri, 31 Jul 2026 16:21:05 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxH-0000000CyrO-3ll1;
-	Fri, 31 Jul 2026 16:19:29 +0000
+	id 1wppxI-0000000CysM-3hxj;
+	Fri, 31 Jul 2026 16:19:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514762;
-	bh=xADD6VVVgtOmKPZTcdjzwmKjLCfsgRP8n3AoLi1tKmE=;
+	s=mail; t=1785514767;
+	bh=FOscVPxk5ijAnlxV+5EsB7BXSUeJJTBPUJmcKia0yJ8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NlFzFtAMJTgoQJcSMgS8jlN99nELF/yDotOoL41GfoqWI0rTlmH9HBU8LTY7YlCk2
-	 bXRiB57Eu5nQLlILc95fm11YfS4zFRkU5rGyq+3AwTvRKjTFihfZGycYsqxTwAefDp
-	 2o+7lC84JLu78GRD5GBejKPN/CYC4vH5D+sSryAUEgbmxSPesuLXoVtzrcqNjgLwWZ
-	 MRuIGXBPbw4wlwoVX+6umBp0rofztyZybALeH6ysT778QCJcWtF5APiOF6FxbqOFRt
-	 BucdqwhLR3LqZ5lEgddCHRZXi/mQ1/ELsB64IhLvVqbf6c8iRFrRPaED/oHn9OrRGt
-	 1CXvGhIJ+ayJw==
+	b=NQ9nSGUD7UgVYTX5BBZ4WhnZSxV3/eyhgx/jT9IjI8U2cRjjK1cjxbDfNzPGS1uJJ
+	 g0gsUsnbjkrK+EE5FdZ8BAGORiaLyxhKGzoCTZZPnNPa00+TJm5vJYjIbp/xgujVzu
+	 DkUbovcBVdGY70kYqqhoXN2wp8sgNDtYesg4eUCqZnDaprE8FF37/55aBV1kuuwK4I
+	 PdNKPyTGKqwBOSv1vjwf8V0O9uL0QC9soUiqsX3YrbL0A/luus0n2p4vc9zLN8hccQ
+	 n6NgdIcc2rNDaU+1AmoklXfOWXlYCvlNmlCQqJjnF3VzoXVDZd5cNJuCCo2pvS6klA
+	 iE55ANZhiD7nA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9CBBF17E091F;
-	Fri, 31 Jul 2026 18:19:22 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F1ADD17E0682;
+	Fri, 31 Jul 2026 18:19:26 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:18 +0300
-Subject: [PATCH v10 11/69] drm/display: hdmi: Advertise SCDC source version
- when scrambling
+Date: Fri, 31 Jul 2026 19:19:24 +0300
+Subject: [PATCH v10 17/69] drm/display: bridge_connector: Switch to
+ .detect_ctx() connector helper
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-11-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-17-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -71,13 +71,13 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Maud Spierings <maud_spierings@hotmail.com>, 
  Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091928_121540_9B933F39 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260731_091929_089531_26FACB0B 
+X-CRM114-Status: GOOD (  12.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,47 +94,123 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HDMI 2.0 spec advises that compliant Source devices report their
-SCDC version in the Source Version register.  Do so when enabling
-scrambling by calling drm_scdc_set_source_version().
+Replace the .detect() connector_funcs callback with the atomic-aware
+.detect_ctx() connector_helper_funcs hook.
 
-Failures are non-fatal: SCDC version negotiation is purely informational
-and does not gate scrambling or any high-bitrate functionality, so a
-flaky DDC bus should not block scrambling setup.
+This is preparatory work to allow propagating the modeset acquire
+context through drm_atomic_helper_connector_hdmi_hotplug() to the HDMI
+connector framework, enabling SCDC state recovery via CRTC reset when
+the sink reconnects during an active display pipeline.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_helper.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/gpu/drm/display/drm_bridge_connector.c | 69 +++++++++++++-------------
+ 1 file changed, 35 insertions(+), 34 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_helper.c b/drivers/gpu/drm/display/drm_hdmi_helper.c
-index cfecfef639ad..493f2728ab86 100644
---- a/drivers/gpu/drm/display/drm_hdmi_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_helper.c
-@@ -16,6 +16,7 @@
- #include <drm/drm_print.h>
- #include <drm/drm_property.h>
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index 8a833c813101..0d44a270b636 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -208,39 +208,6 @@ static void drm_bridge_connector_disable_hpd(struct drm_connector *connector)
+  * Bridge Connector Functions
+  */
  
-+#define DRM_HDMI_SCDC_SOURCE_VERSION	1
- #define DRM_HDMI_SCDC_POLL_DELAY_MS	1000
+-static enum drm_connector_status
+-drm_bridge_connector_detect(struct drm_connector *connector, bool force)
+-{
+-	struct drm_bridge_connector *bridge_connector =
+-		to_drm_bridge_connector(connector);
+-	struct drm_bridge *detect = bridge_connector->bridge_detect;
+-	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
+-	enum drm_connector_status status;
+-
+-	if (detect) {
+-		status = detect->funcs->detect(detect, connector);
+-
+-		if (hdmi)
+-			drm_atomic_helper_connector_hdmi_hotplug(connector, status);
+-
+-		drm_bridge_connector_hpd_notify(connector, status);
+-	} else {
+-		switch (connector->connector_type) {
+-		case DRM_MODE_CONNECTOR_DPI:
+-		case DRM_MODE_CONNECTOR_LVDS:
+-		case DRM_MODE_CONNECTOR_DSI:
+-		case DRM_MODE_CONNECTOR_eDP:
+-			status = connector_status_connected;
+-			break;
+-		default:
+-			status = connector_status_unknown;
+-			break;
+-		}
+-	}
+-
+-	return status;
+-}
+-
+ static void drm_bridge_connector_force(struct drm_connector *connector)
+ {
+ 	struct drm_bridge_connector *bridge_connector =
+@@ -307,7 +274,6 @@ drm_bridge_connector_color_format(const struct drm_connector_state *conn_state)
+ }
  
- static inline bool is_eotf_supported(u8 output_eotf, u8 sink_eotf)
-@@ -556,6 +557,12 @@ int drm_connector_hdmi_enable_scrambling(struct drm_connector *connector,
- 	if (!connector->ddc)
- 		return -EINVAL;
+ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
+-	.detect = drm_bridge_connector_detect,
+ 	.force = drm_bridge_connector_force,
+ 	.fill_modes = drm_helper_probe_single_connector_modes,
+ 	.atomic_create_state = drm_bridge_connector_create_state,
+@@ -322,6 +288,40 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
+  * Bridge Connector Helper Functions
+  */
  
-+	/*
-+	 * Advertise our SCDC source version. This is purely informational and
-+	 * does not gate scrambling, so failures are non-fatal.
-+	 */
-+	drm_scdc_set_source_version(connector, DRM_HDMI_SCDC_SOURCE_VERSION);
++static int drm_bridge_connector_detect_ctx(struct drm_connector *connector,
++					   struct drm_modeset_acquire_ctx *ctx,
++					   bool force)
++{
++	struct drm_bridge_connector *bridge_connector =
++		to_drm_bridge_connector(connector);
++	struct drm_bridge *detect = bridge_connector->bridge_detect;
++	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
++	enum drm_connector_status status;
 +
- 	drm_dbg_kms(dev, "Enabling scrambling\n");
++	if (detect) {
++		status = detect->funcs->detect(detect, connector);
++
++		if (hdmi)
++			drm_atomic_helper_connector_hdmi_hotplug(connector, status);
++
++		drm_bridge_connector_hpd_notify(connector, status);
++	} else {
++		switch (connector->connector_type) {
++		case DRM_MODE_CONNECTOR_DPI:
++		case DRM_MODE_CONNECTOR_LVDS:
++		case DRM_MODE_CONNECTOR_DSI:
++		case DRM_MODE_CONNECTOR_eDP:
++			status = connector_status_connected;
++			break;
++		default:
++			status = connector_status_unknown;
++			break;
++		}
++	}
++
++	return status;
++}
++
+ static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
+ 					       struct drm_bridge *bridge)
+ {
+@@ -413,6 +413,7 @@ static int drm_bridge_connector_atomic_check(struct drm_connector *connector,
  
- 	if (!hdmi->scdc_work_initialized) {
+ static const struct drm_connector_helper_funcs drm_bridge_connector_helper_funcs = {
+ 	.get_modes = drm_bridge_connector_get_modes,
++	.detect_ctx = drm_bridge_connector_detect_ctx,
+ 	.mode_valid = drm_bridge_connector_mode_valid,
+ 	.enable_hpd = drm_bridge_connector_enable_hpd,
+ 	.disable_hpd = drm_bridge_connector_disable_hpd,
 
 -- 
 2.55.0
