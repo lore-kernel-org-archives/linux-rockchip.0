@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73B2CC5516F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:22:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D685C5516F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lTE01sltQjs2OgC4Q6BwFdbUy/eXPh0EtpStDGUfX40=; b=ZgDpImwsVKYOi5
-	n/UHXRqAm6rDYkK1BqjFwzBItJVfjwrbYGKJ9Y0PbLbQ1FOEdWZmzJH3xtF8kJvS2yTEZhloubDoF
-	REhZVF8Oc4AOgst8NU0M4ybpTtojfOkCxN66Z8yqSo7isl2s7xawFVdN9qVed5HorELIsy7jC8Z3u
-	Uw4cNmCkVxiU/w4QjDM2nPkZXHwb1V/K+hX2lqF/LaYxk2Kt3nnEia5oxYjV4/HKG5bRJRz77T6Ls
-	Z4qdi1XoWmA0EFukQK87ahHMrwQ8Yh6YVV0izo4OkWrdiXWKX16UKF8x2IkjZVvC4N8fRKFcQdY+V
-	riAkNrrupmFwgJW5pDvw==;
+	List-Owner; bh=UWcorXrNffVn5W/c74QAi5Xuo267TCiBK7QldfbStmg=; b=cPE+qvHNiRFsdE
+	ChwyZ/Dwl23H87jX/qREiDAAFnPIC798/NY1xenMWaN5TNp1nOElCIABCh0y7zgZGVLzCZ2nq/l8o
+	AYygbgKxjZw1GKhRU4r5tIt08BpgJzit1wANsY12nrLKHPyYZtjyLJbKDdDv7ams+HbETu8/Y+DAz
+	aQy/+gV9WA3ySUTcpKtHheAtdCCu1v+B3wv0uMJEwB9ZrSZ9SuQ3/zgVjsDwV+yGip0IYlblwsFlC
+	YAlrvVPpROyhE3wrTP0KY/4qBgI6Sas2ic/fJvnSBF6gLDCSYrP3GZOgxVJCl7kWRTuhi+H6XbzR2
+	NsS60GWHs3Zoht7Ml/PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppzv-0000000D1WM-267q;
-	Fri, 31 Jul 2026 16:22:12 +0000
+	id 1wpq06-0000000D1hz-0wPw;
+	Fri, 31 Jul 2026 16:22:22 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxO-0000000Cyyr-0Qc8;
-	Fri, 31 Jul 2026 16:19:36 +0000
+	id 1wppxN-0000000Cyx4-1SgR;
+	Fri, 31 Jul 2026 16:19:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514772;
-	bh=Np7wpAYZLHRt1c9crOqakHGhI+KoSOWphtz4jQaYs5Y=;
+	s=mail; t=1785514771;
+	bh=y/oPi/fnmwrFajh0Q2Bmgy/nAjgH57+rFmteNZPqQ30=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Q8uVcg8Gc5mgbp/ldddahcqc2rvbMiA+kjtISS0W172/7czwRf71jj8olFmjRCt6t
-	 ol8XjeJtLyfvHkcVOjo+k3IBUH39XYKhHKs9Sd4Qzh9ZUHjgKgYJRL8OBy7b10IqND
-	 LQxLjRMPhFnX3rVPM70LQe2Xpvd6fLHDDwIJyaB+hVYCeOtShZ6oqc6ycbJaUbglay
-	 VUi7oqXCdt2Y/cWL0semkrTIS0UEfA8RwkJHm1Mxt9yYBe1CIoEwd6HzhxUmOCgsyh
-	 Amr4fPgnGTkjly3im4T118u1Jh3G7YaXkNdHH3Lv5HX/nYUo+37rgVOl3PcPmsBfFI
-	 9+eejfuZrrgzg==
+	b=c5rFA9KSpWytkG1gOfR/SX/kk6TaMt5iTq+mOUZ1i0/fvUP7esFrVUsCTs3Fm3p2b
+	 CefzERDAfHUD7Fb3A7DUOrSyN4Tf7bgedHthno16Apkjmdojp/gSnFeI/q2dHIWzqB
+	 TV54XjGeH4qrSmKRgY+9LC4j+iPpOAjWGzAkCpbA11yMT3/o/TuvQaEYjZGpxmaWTI
+	 yUCMHzAxEj9IRj+TX+phIGg3xplsvkCNnlWCr4pS8yxE3WnA38VtP8klA/MVvGR1cS
+	 soZ2NQhgaY+GMdd4Bzeadkw3LXnAw5jbNTd6UY3vtbwwD91caaGAAzBa0XxNtKV2Xo
+	 dZKFyVO3vSWUA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1145E17E0952;
-	Fri, 31 Jul 2026 18:19:32 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 52C5D17E0582;
+	Fri, 31 Jul 2026 18:19:31 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:31 +0300
-Subject: [PATCH v10 24/69] drm/bridge: dw-hdmi-qp: Rate limit i2c read
- error messages
+Date: Fri, 31 Jul 2026 19:19:30 +0300
+Subject: [PATCH v10 23/69] drm/display: hdmi-state-helper: Set HDMI
+ scrambling requirement
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-24-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-23-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -75,8 +75,9 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091934_476481_89D54FEE 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20260731_091933_703580_4DFF5573 
+X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,47 +94,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-During EDID reads, repeated i2c errors can flood the kernel log:
+Set drm_connector_hdmi_state.scrambler_needed when the computed TMDS
+character rate exceeds the HDMI 1.3 maximum TMDS character rate.
 
-[   25.361716] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
-[   25.363376] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
-...
-[   25.368671] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
-[   25.369440] dwhdmiqp-rockchip fde80000.hdmi: failed to get edid
+HDMI 2.0 requires scrambling above 340 MHz.  Centralize that clock-based
+requirement in the HDMI state helper so drivers do not need to open-code
+the threshold check.
 
-Switch to dev_err_ratelimited() in dw_hdmi_qp_i2c_read() to reduce log
-spam while still reporting the condition.
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Acked-by: Maxime Ripard <mripard@kernel.org>
 Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index cfd1b18c06e6..7475b6b71836 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -561,7 +561,7 @@ static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
- 				dev_dbg_ratelimited(hdmi->dev,
- 						    "i2c read timed out\n");
- 			else
--				dev_err(hdmi->dev, "i2c read timed out\n");
-+				dev_err_ratelimited(hdmi->dev, "i2c read timed out\n");
- 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
- 			return -EAGAIN;
- 		}
-@@ -572,7 +572,7 @@ static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
- 				dev_dbg_ratelimited(hdmi->dev,
- 						    "i2c read error\n");
- 			else
--				dev_err(hdmi->dev, "i2c read error\n");
-+				dev_err_ratelimited(hdmi->dev, "i2c read error\n");
- 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
- 			return -EIO;
- 		}
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index 3377ea936120..9544eb8659aa 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -594,6 +594,9 @@ hdmi_compute_clock(const struct drm_connector *connector,
+ 
+ 	conn_state->hdmi.tmds_char_rate = clock;
+ 
++	/* TODO: also check drm_display_info.hdmi.scdc.scrambling.low_rates */
++	conn_state->hdmi.scrambler_needed = (clock > HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
++
+ 	return 0;
+ }
+ 
 
 -- 
 2.55.0
