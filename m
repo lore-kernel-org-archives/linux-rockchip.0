@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD970C55167
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB1F3C54F54
 	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 06:50:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QmR+GI1q4eaA2win4Qy+e0BX5qcVE+EAP5gH3ts8tAg=; b=YyrrF8oLcvjtHq
-	02p0Lh50bPh60hU9wBhgdx9ItmZSBSaWXr+oRdH74n27PewJ0PZYN3uoJqac8o0+cyTDrdlye3B3l
-	jSiVx5U9prhi1AxsJwJI6ICRiU4uB3ZL5VEukWqVo5siNduzWh9A9srAS2YWox4k8kSxTchXFRPGV
-	4I/dahNz0tGmkO6Axea2S+rQUOHDirHT3f5lXsrasdrUbUM01+Bd+MrOqVV1d0g1bK6Nz+tkG+uCj
-	sq9kZR5efIyROn+6+ZjzJ3328xxSetAcEnHFjcTD0y+PncId6xlBbGosnj2Ia8WtBycBEzjlDFJ8g
-	K7F15V7tZLKRBye+oZMg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=L3YyVN4zVNe1hqZ78ucPhO0WfOGrdnuimVxKxxA31wk=; b=Gr+Isk7W5/vFRp
+	gUTtNmXDVW4BFEEx6kkhXXpxOG9XIZv1/JT4tJCKrZ3GXbf9xsFNVPO92DaLI0FOAvZjqRhY7BmIq
+	SYPl5spiZYnn8meCdSHSJmmwQ1l93fH4ZEaWoyBazBaC8S2btffC8+8YNyrxy68OqRx86+e/Dyu5E
+	yoJTF0nlG0t1dTQkcsiEC+2sfiXqUxb2f/wj4s0pxRCExj9Z/zgHj32HqsvEouXYMwY23NKIJWwgJ
+	bFUN+KkqkpfYeqTHORIjo1ntUrl4v4GnTVeqwqa6tvFUDE+FL5UhQG00dydwd36moWMstM5/rYW3D
+	VP3gIOydPUH8QWhXxlqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wph4E-0000000BuxH-2nTy;
+	id 1wph4E-0000000BuxP-3Lrv;
 	Fri, 31 Jul 2026 06:50:02 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wph4A-0000000BuvW-1iOH
+	id 1wph4C-0000000Buvp-2kKX
 	for linux-rockchip@lists.infradead.org;
-	Fri, 31 Jul 2026 06:50:01 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-47f502ff678so73521f8f.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 23:49:57 -0700 (PDT)
+	Fri, 31 Jul 2026 06:50:02 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-473987fc217so37391f8f.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 23:50:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785480596; x=1786085396; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=vsR6hWzy4D9+PPoxqFEdaQVVVEVdpxP3yoc1mBPPEeI=;
-        b=geeQ23TTiX9pK0xJp4774CdnZhONacImc/M5ZgUo63DpFRmUUR4pXsjJRKT4u0cNMO
-         PI+ONlp1xdOWVZz9mFHp0ARomGCfrcfs+VFSTw5an1qHNaO3MyM/OT6Dy2R+fiCM9BdP
-         GUVMj/OuJn4rJUKRZaD3JVMYk2CgHYF3f6pnzh9MtctVCYdKamjc7f980NeGpGwT1zfX
-         0NMTpY+4GZaw4be3dWtIdaIHSwVLD/6/whdNoEoiHcS60Nk+xV0RyIU32pGqAbLZD6/l
-         Ly5pCfHdE2Ri02+pdxAuRDPzcdhBlYMmJANbpnP69AMnoA/pfEWEZ+Aw2FPk4Pm2GNI1
-         gstA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785480596; x=1786085396;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1785480599; x=1786085399; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=vsR6hWzy4D9+PPoxqFEdaQVVVEVdpxP3yoc1mBPPEeI=;
-        b=YGN5QOcHnpursDdEft6LLf7ZzovxQb4Skjmtj2iTN1gv66d+V7BOPKDNExyjnVTgAz
-         Z7563b0j40HxDxRF8145E9KVshZDDf/0vftB4eUc58Udq1Dr8Gf0DLwLwTeZlMptfFxd
-         Ljx24kkzkzMLNU5zT6uWLtrQwTDm0HfBlLxEV1ZynFxtvjWGoY79+0StNqENKEI4x4NM
-         DZV/6dGzKnY/CG5lI11PNV7gmwIAs2KNLVOdzsZawPd6JXZuO6Q6nZJi4orDFjlra5QJ
-         FTE+ndobtJxdS9wjTfZLkzocRN7OvSpLoujQbLaHLsupSuGCXIlH99kx3Msf9a2W1gbe
-         rmmA==
-X-Forwarded-Encrypted: i=1; AHgh+RoyDFNiMK4luULQrM2nzzgTYIlzsjZ/KlsrQzpbesNdffW4fZebrSSbwwN4Ww6yI8NnpoKfiV8E/N2fgKrMwA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywbl1UULQ9etoRaQhL2U+eEroh0GixPFP55zqMeQoPmENurl2LM
-	Uhz3C9iMh0TC46wOaTyOWNLAdwUTLeAwIy3zrQUhgeeE8YiFiKajFoCo
-X-Gm-Gg: AR+sD11ahz2mt7QTqZ4QwkzoTl/Vd9Fe++0FKes2z+wZzpQCL+NS2y85BlSMWNZbS8A
-	47q3gFYSEBXMP7BOlAK11mD6L5eQ27IXIKH2mpkvP1hfsAm/C5eVNPhIMeMn+QSy5IzW1VhZ0CC
-	LKj5hyDsq0O1ZW9xkRBHw1VNM6fBMlDRYXNo6oZr0fpIOkU4iK1fN/SIkBSHgNtyPVkJHkePPXF
-	6S6rsV9XFvpM6OUx9tniadnW98IS4T1Jvw6Zr60RdNVy9U4XGDOiHUrwYaqfVm0OMzmWoShf+kX
-	/0lOBfFGKSNGTOjfZp7zDkAAfj6+3htxxLeb+pbtP2T6PqPaAZiutUlmF92hLKWkPKaZp/JnuFo
-	1VL4TPDelGFhnZMbCQsUbEMOj34amW0DghSXJTMaJtY2nifXayDWOPzFe/VbmYNpn/moa/4yeOD
-	XjZsRl1jb30DwkDgZGZSyJCxx6YcXGKpZhnMNinRcPDemewWq9aplUDj5qTfp8XYnjE1RHbYpW+
-	nbfU5XdRUAa2T9Chll9kuTv8nnpFA23Mb5XFBdpaiDk0/WOC+yYkDHiuSXgPOT0Gg2s9Q==
-X-Received: by 2002:a5d:64ed:0:b0:47f:7e91:3d55 with SMTP id ffacd0b85a97d-47fd2b3e820mr2256719f8f.2.1785480596373;
-        Thu, 30 Jul 2026 23:49:56 -0700 (PDT)
+        bh=894kL84WjsJ4NuY8JNzhxDjW08BYyE5HOdttjtE66tc=;
+        b=J106nPlLrGtEvsfD1Bxlq+okc01PDmdqN2u2D6f/DZ8nJ8jHLr1uwZnH8G1BDLC5U9
+         WhcTwKG0UIMKIoalsEcIy1uIypwVeskoOM7e2tMZGHaC9xZEMb1oXcNgTmE8V1CGkQsz
+         NH9aJnBD9w6Jzv5yRcudg/N8b/6vVwRgMYuieQMN8x+gHi4ct15peVL6a4uv3ylveCdA
+         CVfxqEu1tJlk8WHwAIAoBZElOnH4gch+dc2qcHy05tHv1MZYXMbOF9hKJel/HHUHfyAv
+         R0RI1xGySmFScC1EoiZZDGJg0uiTXdSkESSOl+AM3PLCHsGsKEn3U+QfF3DNYpC8lmJk
+         w36A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785480599; x=1786085399;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=894kL84WjsJ4NuY8JNzhxDjW08BYyE5HOdttjtE66tc=;
+        b=OSp2pkN40ztVaNFafrpGl1pYyBgvpSlNVx5RLQtRHzBgyyYwr3m5r8VExHItn8HZ0Z
+         yYp1QsszgFjiYSHp9PjuqMF5vi5Na/LB1U5ONrjSxAdX+IZAHUxFu/3CMXze1woWw5gE
+         cuGq1sz5R1c4Wxd651miQdKL0ctHCziAiKO8zoGcclBoxI72Fb20oqw9KjRl/fRGSeM8
+         3uRdxVaP2wpvqzUqZhQVxQulcNHkoY8Gr8yihinYUPFh3sY7RUW/uHsCfA9rLFi23Zv3
+         JzktFXOFOdk9NtgNMdOQHuHAjXLxYvVtxK4n2kkQQUEzjciIwU68NfGuS5U9zMJ2h/jk
+         kEXg==
+X-Forwarded-Encrypted: i=1; AHgh+Rrg09LhAwjiB7oKCqR4xzh+rqgYYZTC907HAgB4tC9VwFZ3li8jEmQMq6E/A1OHKztw40Cw9bPbNZldR96IPA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwsN+jARgV4Yb/Y9LGJ7Yb5yt8Mf3tDhR1YcqZ9AT1H/pYDhZ8J
+	snPnTXICyQPnZDxx1a8kZvpDJwfcJYhgFPPv+DLyLalkheOJ7kZNv38n
+X-Gm-Gg: AR+sD124ApjdO4UZxeuVgzEpiINIRT7RISvdkh5lxYFpuPlUf4Zz/0IRUTtvSkjk/lm
+	x6JKAII9zmWjrt8uEDGegqUoXU4aN9lwD9g6E1aM0GEW7ZO8gDOQF7loHPpyv2bU9X3MJ/3C3dd
+	toemvI6qLTcCmGbVk0ZfSxgdRFvDD3AGvRcttgkroO9nf5fkHfoxJc8VHmLQIOHDCriNZrXJB4t
+	qvXaHINbo4ArmrvZqakvLLZr0k0E2PePK0YXBbjm/52coGiweZ1NPR5xrDWAzVY6f3DqQHHsKlj
+	Ehx/pMZlgF1EaD7VtLyKhnaIVPy+47kdsnA8+C39MkE4MRciM7ZXX/kR6sPh813sp64JuS0Dp0G
+	8+fEHjiYcr/NGP+NE1siaHHbHAfigZAkEVOMtH3Lidqav3ggZG0USRf+6CbuVd/BantUkowTw02
+	nKsTF3ybejKRVlT2vZK8dZovjYpofD5joHL80WZuqu5Hyr+LlDi9YW9sixkliTPPmWW53ZJvADx
+	z/923Z52MMLyhoQMSuVIgxBpu9EUhzgJpsQ8tZw13/N2uSJ8O3mRLwwZFKQfWltyf7e7xX4h8fD
+	GtX5
+X-Received: by 2002:a05:6000:41f8:b0:47f:946b:d3fc with SMTP id ffacd0b85a97d-47fd2b35e88mr2250807f8f.2.1785480598679;
+        Thu, 30 Jul 2026 23:49:58 -0700 (PDT)
 Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8B8B0053881A2C61CA978D.dsl.pool.telekom.hu. [2001:4c4e:1b8b:8b00:5388:1a2c:61ca:978d])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47fd41e2abbsm1212753f8f.9.2026.07.30.23.49.54
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47fd41e2abbsm1212753f8f.9.2026.07.30.23.49.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jul 2026 23:49:55 -0700 (PDT)
+        Thu, 30 Jul 2026 23:49:58 -0700 (PDT)
 From: Igor Paunovic <royalnet026@gmail.com>
 To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
 Cc: Oded Gabbay <ogabbay@kernel.org>,
@@ -79,14 +81,16 @@ Cc: Oded Gabbay <ogabbay@kernel.org>,
 	Guangshuo Li <lgs201920130244@gmail.com>,
 	Jiaxing Hu <gahing@gahingwoo.com>,
 	Igor Paunovic <royalnet026@gmail.com>
-Subject: [PATCH v2 0/2] accel/rocket: fix shared-device lifecycle on probe failure and unbind
-Date: Fri, 31 Jul 2026 08:49:31 +0200
-Message-ID: <20260731064933.12548-1-royalnet026@gmail.com>
+Subject: [PATCH v2 2/2] accel/rocket: keep core slots stable across unbind and rebind
+Date: Fri, 31 Jul 2026 08:49:33 +0200
+Message-ID: <20260731064933.12548-3-royalnet026@gmail.com>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260731064933.12548-1-royalnet026@gmail.com>
+References: <20260731064933.12548-1-royalnet026@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_234958_465631_739BF536 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20260730_235000_796108_8E337A36 
+X-CRM114-Status: GOOD (  25.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,59 +107,227 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rocket driver keeps a single shared DRM device on a driverless
-"rknn" platform device: the first core to probe initializes it, the
-last one to go away tears it down. This series fixes two independent
-bugs in that lifecycle. Both were flagged by the Sashiko AI review on
-my clks patch; I verified each by hand against the code and then on
-hardware before writing the fixes.
+The shared rocket_device tracks bound cores with a single counter and
+uses it for three different jobs at once: find_core_for_dev() searches
+[0, num_cores), rocket_probe() inserts the new core at index num_cores,
+and rocket_remove() only decrements the counter without clearing the
+slot.
 
-Patch 1 releases the devres of the shared device on teardown. Today
-every fini/re-init cycle leaks the previous rocket_device and pins its
-accel minor - observable as /dev/accel/accel0 coming back as accel1,
-then accel2, on unbind/rebind cycles of all cores.
+This bookkeeping falls apart as soon as cores are unbound in any order
+other than strict reverse bind order:
 
-Patch 2 makes the per-core slot bookkeeping stable across unbind and
-rebind in any order. Today unbinding a lower-numbered core makes
-higher-numbered ones unfindable (their runtime PM callbacks start
-returning -ENODEV), a later unbind of such a core is silently skipped,
-and a subsequent bind overwrites a slot whose IRQ handler and DRM
-scheduler are still live.
+ - unbinding core 0 shrinks the search range, so the still-bound core
+   at the highest index can no longer be found: its runtime PM
+   callbacks start failing with -ENODEV and a later unbind of it is
+   silently ignored, skipping rocket_core_fini() entirely;
 
-Verified on RK3588 (Orange Pi 5 Plus, all three cores): the
-unbind/rebind matrix keeps /dev/accel/accel0 stable and every core
-findable; single-core operation works from the highest slot alone
-(confirmed via the per-core IRQ counters moving to that core); the
-forced-init-failure path releases its slot cleanly; and MobileNetV1
-inference via the Teflon TFLite delegate stays bit-identical to the
-stock driver throughout.
+ - a subsequent bind then reuses the index of that still-live core and
+   overwrites its slot while its IRQ handler (dev_id points into
+   cores[]) and its DRM scheduler are still active;
 
-The series applies on top of Guangshuo Li's pending fix, on which
-patch 1 depends textually (reviewed on-list):
-https://lore.kernel.org/dri-devel/20260708062845.716487-1-lgs201920130244@gmail.com/
+ - rocket_open() unconditionally uses cores[0].dev, which after an
+   unbind of core 0 is a stale pointer to an unbound device.
 
+Give the array a fixed capacity (max_cores, the DT core count already
+used to size the allocation) and make .dev the slot-liveness marker:
+probe takes the first free slot and clears it again if core init
+fails, remove clears .dev after rocket_core_fini() and warns if the
+core cannot be found, lookups iterate the full capacity, and
+rocket_open() and rocket_job_open() use only live slots. num_cores
+keeps counting bound cores for the last-core teardown check.
+
+Fixes: ed98261b4168 ("accel/rocket: Add a new driver for Rockchip's NPU")
+Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+---
 v2:
- - patch 2: clear the slot's .dev when rocket_core_init() fails -
-   with .dev as the liveness marker a failed init left a
-   half-initialised core visible to lookups and made
-   rocket_job_open()'s live-slot walk overflow its allocation by one
-   entry (Jiaxing Hu); make the never-initialised slot skip in
-   sched_to_core() explicit; document the synchronous-probe assumption
- - patch 1: unchanged
-v1: https://lore.kernel.org/dri-devel/20260730080355.177422-1-royalnet026@gmail.com/
+ - also clear the slot's .dev when rocket_core_init() fails: with .dev
+   as the liveness marker a failed init left a half-initialised core
+   visible to every lookup, and rocket_job_open()'s live-slot walk
+   could write one entry past its num_cores-sized allocation
+   (Jiaxing Hu)
+ - check .dev in sched_to_core() so skipping never-initialised slots
+   is explicit rather than implied by pointer inequality (Jiaxing Hu)
+ - document the synchronous-probe assumption at the slot scan
+v1: https://lore.kernel.org/dri-devel/20260730080355.177422-3-royalnet026@gmail.com/
 
-Igor Paunovic (2):
-  accel/rocket: release the shared device's devres on teardown
-  accel/rocket: keep core slots stable across unbind and rebind
+Unbinding a core that still has jobs in flight has further
+pre-existing issues (scheduler and open-file lifetime) that are out of
+scope for this bookkeeping fix.
+
+Verified on RK3588 (Orange Pi 5 Plus): out-of-order unbind/rebind
+sequences (including the previously corrupting unbind of core 0 with
+cores 1 and 2 still bound, followed by rebind) keep all three cores
+findable and functional, with MobileNetV1 inference via the Teflon
+TFLite delegate bit-identical to the stock driver. The new failure
+path was exercised by forcing rocket_core_init() to fail for core 2
+with cores 0 and 1 already bound: the slot is released, the device
+comes up with the two remaining cores and inference passes bit-exact.
 
  drivers/accel/rocket/rocket_device.c |  2 ++
  drivers/accel/rocket/rocket_device.h |  3 +++
- drivers/accel/rocket/rocket_drv.c    | 41 ++++++++++++++++++++++++++++++++----
+ drivers/accel/rocket/rocket_drv.c    | 37 ++++++++++++++++++++++++++++++++----
  drivers/accel/rocket/rocket_job.c    | 13 +++++++------
- 4 files changed, 53 insertions(+), 10 deletions(-)
+ 4 files changed, 45 insertions(+), 10 deletions(-)
 
---
-2.53.0
+diff --git a/drivers/accel/rocket/rocket_device.c b/drivers/accel/rocket/rocket_device.c
+index 46e6ee1..8303f05 100644
+--- a/drivers/accel/rocket/rocket_device.c
++++ b/drivers/accel/rocket/rocket_device.c
+@@ -35,6 +35,8 @@ struct rocket_device *rocket_device_init(struct platform_device *pdev,
+ 	if (!rdev->cores)
+ 		return ERR_PTR(-ENOMEM);
+ 
++	rdev->max_cores = num_cores;
++
+ 	dma_set_max_seg_size(dev, UINT_MAX);
+ 
+ 	err = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(40));
+diff --git a/drivers/accel/rocket/rocket_device.h b/drivers/accel/rocket/rocket_device.h
+index ce662ab..7fb6a9d 100644
+--- a/drivers/accel/rocket/rocket_device.h
++++ b/drivers/accel/rocket/rocket_device.h
+@@ -18,6 +18,9 @@ struct rocket_device {
+ 	struct mutex sched_lock;
+ 
+ 	struct rocket_core *cores;
++	/* Slot capacity (DT core count); slots with a NULL .dev are free. */
++	unsigned int max_cores;
++	/* Number of currently bound cores. */
+ 	unsigned int num_cores;
+ };
+ 
+diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+index d29c5ee..7d71a01 100644
+--- a/drivers/accel/rocket/rocket_drv.c
++++ b/drivers/accel/rocket/rocket_drv.c
+@@ -69,11 +69,21 @@ rocket_iommu_domain_put(struct rocket_iommu_domain *domain)
+ 	kref_put(&domain->kref, rocket_iommu_domain_destroy);
+ }
+ 
++static struct rocket_core *rocket_first_live_core(struct rocket_device *rdev)
++{
++	for (unsigned int core = 0; core < rdev->max_cores; core++)
++		if (rdev->cores[core].dev)
++			return &rdev->cores[core];
++
++	return NULL;
++}
++
+ static int
+ rocket_open(struct drm_device *dev, struct drm_file *file)
+ {
+ 	struct rocket_device *rdev = to_rocket_device(dev);
+ 	struct rocket_file_priv *rocket_priv;
++	struct rocket_core *core;
+ 	u64 start, end;
+ 	int ret;
+ 
+@@ -86,8 +96,14 @@ rocket_open(struct drm_device *dev, struct drm_file *file)
+ 		goto err_put_mod;
+ 	}
+ 
++	core = rocket_first_live_core(rdev);
++	if (!core) {
++		ret = -ENODEV;
++		goto err_free;
++	}
++
+ 	rocket_priv->rdev = rdev;
+-	rocket_priv->domain = rocket_iommu_domain_create(rdev->cores[0].dev);
++	rocket_priv->domain = rocket_iommu_domain_create(core->dev);
+ 	if (IS_ERR(rocket_priv->domain)) {
+ 		ret = PTR_ERR(rocket_priv->domain);
+ 		goto err_free;
+@@ -179,10 +195,21 @@ static int rocket_probe(struct platform_device *pdev)
+ 		devres_close_group(&drm_dev->dev, rdev_group);
+ 	}
+ 
+-	unsigned int core = rdev->num_cores;
++	unsigned int core;
+ 
+ 	dev_set_drvdata(&pdev->dev, rdev);
+ 
++	/*
++	 * Take the first free slot: cores can unbind and rebind in any
++	 * order. The scan-then-claim relies on platform probes running
++	 * sequentially; revisit if the driver ever enables async probe.
++	 */
++	for (core = 0; core < rdev->max_cores; core++)
++		if (!rdev->cores[core].dev)
++			break;
++	if (WARN_ON(core == rdev->max_cores))
++		return -ENXIO;
++
+ 	rdev->cores[core].rdev = rdev;
+ 	rdev->cores[core].dev = &pdev->dev;
+ 	rdev->cores[core].index = core;
+@@ -191,6 +218,7 @@ static int rocket_probe(struct platform_device *pdev)
+ 
+ 	ret = rocket_core_init(&rdev->cores[core]);
+ 	if (ret) {
++		rdev->cores[core].dev = NULL;
+ 		rdev->num_cores--;
+ 
+ 		if (rdev->num_cores == 0) {
+@@ -210,10 +238,11 @@ static void rocket_remove(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	int core = find_core_for_dev(dev);
+ 
+-	if (core < 0)
++	if (WARN_ON(core < 0))
+ 		return;
+ 
+ 	rocket_core_fini(&rdev->cores[core]);
++	rdev->cores[core].dev = NULL;
+ 	rdev->num_cores--;
+ 
+ 	if (rdev->num_cores == 0) {
+@@ -234,7 +263,7 @@ static int find_core_for_dev(struct device *dev)
+ {
+ 	struct rocket_device *rdev = dev_get_drvdata(dev);
+ 
+-	for (unsigned int core = 0; core < rdev->num_cores; core++) {
++	for (unsigned int core = 0; core < rdev->max_cores; core++) {
+ 		if (dev == rdev->cores[core].dev)
+ 			return core;
+ 	}
+diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
+index ac51bff..0d8e69e 100644
+--- a/drivers/accel/rocket/rocket_job.c
++++ b/drivers/accel/rocket/rocket_job.c
+@@ -276,8 +276,8 @@ static struct rocket_core *sched_to_core(struct rocket_device *rdev,
+ {
+ 	unsigned int core;
+ 
+-	for (core = 0; core < rdev->num_cores; core++) {
+-		if (&rdev->cores[core].sched == sched)
++	for (core = 0; core < rdev->max_cores; core++) {
++		if (rdev->cores[core].dev && &rdev->cores[core].sched == sched)
+ 			return &rdev->cores[core];
+ 	}
+ 
+@@ -498,16 +498,17 @@ int rocket_job_open(struct rocket_file_priv *rocket_priv)
+ 	struct rocket_device *rdev = rocket_priv->rdev;
+ 	struct drm_gpu_scheduler **scheds = kmalloc_objs(*scheds,
+ 							 rdev->num_cores);
+-	unsigned int core;
++	unsigned int core, n = 0;
+ 	int ret;
+ 
+-	for (core = 0; core < rdev->num_cores; core++)
+-		scheds[core] = &rdev->cores[core].sched;
++	for (core = 0; core < rdev->max_cores; core++)
++		if (rdev->cores[core].dev)
++			scheds[n++] = &rdev->cores[core].sched;
+ 
+ 	ret = drm_sched_entity_init(&rocket_priv->sched_entity,
+ 				    DRM_SCHED_PRIORITY_NORMAL,
+ 				    scheds,
+-				    rdev->num_cores, NULL);
++				    n, NULL);
+ 	if (WARN_ON(ret))
+ 		return ret;
+ 
 
 _______________________________________________
 Linux-rockchip mailing list
