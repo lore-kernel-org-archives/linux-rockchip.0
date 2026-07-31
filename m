@@ -4,109 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E289C55167
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 04:36:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD970C55167
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 06:50:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r808noui/KN12pLKYNUxZC86tJ5ZWw6ZJSG2+30O4FI=; b=HRjNUAJGaIQBko
-	gVqlLho1w5PqZpfHoXgWfcbItozp42Tf/xg7QMbVJ1QS1yrxAw5jo8AYVeuT/gRnKLOWmseT6YbrD
-	Q2Y1TOyu2rfnreWGiV00Ogd78x7MES3TpMdDjrL/2OqUw3Iq31MsGaPAxGltLu7PdhT4HXb0l6BDv
-	KDtXF+wHzdjAQ6Wfew+DwBXcq8tBoZvnrckWMdG4C6y+WxHdmyUBWJAp8OBITOrUsuzPcqG03K167
-	eiyKALyUR5e50yGc5v7uakbEV77GinQ+F/PCIzQ3xTAI0Xv/cumW8Fnw4qOUKZeEduW8fpmDhoXTO
-	J9gFee5K8ijYQFlE8BnQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QmR+GI1q4eaA2win4Qy+e0BX5qcVE+EAP5gH3ts8tAg=; b=YyrrF8oLcvjtHq
+	02p0Lh50bPh60hU9wBhgdx9ItmZSBSaWXr+oRdH74n27PewJ0PZYN3uoJqac8o0+cyTDrdlye3B3l
+	jSiVx5U9prhi1AxsJwJI6ICRiU4uB3ZL5VEukWqVo5siNduzWh9A9srAS2YWox4k8kSxTchXFRPGV
+	4I/dahNz0tGmkO6Axea2S+rQUOHDirHT3f5lXsrasdrUbUM01+Bd+MrOqVV1d0g1bK6Nz+tkG+uCj
+	sq9kZR5efIyROn+6+ZjzJ3328xxSetAcEnHFjcTD0y+PncId6xlBbGosnj2Ia8WtBycBEzjlDFJ8g
+	K7F15V7tZLKRBye+oZMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpeyo-0000000BkhL-14kX;
-	Fri, 31 Jul 2026 04:36:18 +0000
-Received: from flow-a8-smtp.messagingengine.com ([103.168.172.143])
+	id 1wph4E-0000000BuxH-2nTy;
+	Fri, 31 Jul 2026 06:50:02 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpeyb-0000000BkVv-0rnu;
-	Fri, 31 Jul 2026 04:36:06 +0000
-Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
-	by mailflow.phl.internal (Postfix) with ESMTP id 639FB1380308;
-	Fri, 31 Jul 2026 00:36:04 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-05.internal (MEProxy); Fri, 31 Jul 2026 00:36:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1785472564; x=
-	1785476164; bh=rU/iiqj1yZpMF4hepdKdfzRcPTdeuKeK8FfjQz+3zm0=; b=Y
-	bRJQx46papGhlR97wZvzwcVLQ3C86+K/5wFJyX0aYrqg92atvOXIEr1glQjvOsZR
-	jilwQLXzHnuSkKh1eSMzW7MtDFWD4Me69oCY2+E80H3Mw3YftMtGf3+OM+VOVElc
-	vT1h6IxoHBJksmGkH2oZckuvc5nQ2TqT0DgLPzpd0enpG7LFrPIeTLBvf16h69Bx
-	4U2Es/XrcKQ7VVNEI/s2VarhupAHSI8E9xVOT/r3SzOKWWETsPAL2vIunPFTrBLl
-	dWaqaXnlMmMEYuE13L1hLJAegg4eNE9H+wMP0MADC2dleIQ+zTKh/EIYQEH5ZF4R
-	teZorG+jXO57m9Exvv9+Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm2; t=1785472564; x=1785476164; bh=r
-	U/iiqj1yZpMF4hepdKdfzRcPTdeuKeK8FfjQz+3zm0=; b=nLbIKb1EvQuFhk8oO
-	PzPnf8Gfin2EiK+CU7j36Oy1OHWlnvEwh5OuqH0nbRGIMLJvd5ENXGTJ7/06N50U
-	xP+gYfEO9OTOBffO69cY9llWYrJv7856b6UyyVQOoFE8dBh9nbSSh1VCIXRPV3Eh
-	yxY9kx4YLtRY412GkjMCH8Ifw+HgwPayAhYXu40Bto8s7NUZdeY1rOnh5xDD3Jr0
-	oVQXNoShLfqy91rXGoh/xZUDcSZBtqWk//1EHEz0WoTgR++fa0oTV7wpGlMhMIUe
-	yVTPoZWKEk1/4mRjn2S3Jl0htv3te0VwKNTAtd029+MuifPJNbqzlFY8HjgvnB6H
-	apK3Q==
-X-ME-Sender: <xms:NCZsanTtmqXRg8TLhykTSCQSiBKPqrSVLJOMFJPt0qjgPNHumgt0LQ>
-    <xme:NCZsavVb40iYNTt_-foXwPDtDhWco42ZbQVDYr0x-ALKRwtvnOOBmgArQbU-neCIo
-    NUgGZem0JMxxn7---ApWYnVyIgctjAW-F9BG6xjGxn6euGPnlmtMGQ>
-X-ME-Received: <xmr:NCZsauiiK55vw5NgkwiX9z3rDyym_25ZVHaO1r2IvXsTogMMGfuK6A8dksCodIm-IcfV5TGZfA>
-X-ME-Proxy-Cause: dmFkZTGvOKNO9zBdHkgYlF796lTt1g6XhHLwmREClOCu9o9rkxmgV8hTnMScLLO2GDOQ8J
-    r0CGO8ZJUneVHtCq7+dnMIm3qpNwOne25S6y+nf8Qdu2wy6dFmZ65cN6L/zJGBGzwZh6qm
-    Wyu3epeadLOxa+zYzYvJk+kW5lq4IpFJw9WGOL4ZvDEQZlTUiza5ARf616dz3THdtIoWiN
-    c43PlVzZwGonGEEnTWbmkj5hQwCP9V6qOpOqoFK007M45URj5BUap6bF1x5FNVYRizLOGt
-    R0M9nrZam8Fm1iy39qcV45G7pKDxJ8SNQGstN46NIeUIIJqPAT3ZGFI9q5F1oDm6qm3xuF
-    WWTiNTSJqw1sm4AeJiXAJvYJTHnPIzfdLqXRaQb/irMzNXCAU2uQ6c+7L9EcUlfV62wcpg
-    q7P1MmfoXZAqAPSYgEgMD1sKVJWjGv0lh4TFdOWH/PVYkc88MNP0g7CSnzwutxll+/X73x
-    9116DFw/58jVReJ3K/aeQ3Y/MSr7cjqlBqacJBFaXPfxVfbKQqGb1ktl+uasx08GNHi2ZB
-    WDCkTCKOm9ctSeKUhXVL+21Ftv+8iUsmxLTUCucLK+YkVaTT/ZZo9IiJ92Q1dUaVtpkBui
-    PB4bhKCwlC0zMO4xlxXGggM9nrjocXsA+g/q3cacflEkEnXWU03D3ISPiVmA
-X-ME-Proxy: <xmx:NCZsagcfwJz-7IpD-JjBZ3PZD5Z4gPW51vt_G-pworPNMAEJCB2VbA>
-    <xmx:NCZsahe41yrGs840NeOd2hatHOkOkKGOdGIs6EwyGbAUzqxDLh5NJQ>
-    <xmx:NCZsakUA0c6FxG1hDuAo3Ih0JvNgU1OXMqU3gixjNpsj5lpwByTFFA>
-    <xmx:NCZsatfyqGeRcLNumMHM8kencj6XlNVGG8fIEJUvzozj4avZCQoMsw>
-    <xmx:NCZsavUrEDlHwE4Ss0AiJwPWLJCZ3lDh9-gPyXT3P0LjfM5KaUteRO7Z>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 31 Jul 2026 00:35:59 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	ulfh@kernel.org,
-	p.zabel@pengutronix.de,
-	ogabbay@kernel.org
-Cc: chaoyi.chen@rock-chips.com,
-	alchark@flipper.net,
-	royalnet026@gmail.com,
+	id 1wph4A-0000000BuvW-1iOH
+	for linux-rockchip@lists.infradead.org;
+	Fri, 31 Jul 2026 06:50:01 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-47f502ff678so73521f8f.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jul 2026 23:49:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785480596; x=1786085396; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=vsR6hWzy4D9+PPoxqFEdaQVVVEVdpxP3yoc1mBPPEeI=;
+        b=geeQ23TTiX9pK0xJp4774CdnZhONacImc/M5ZgUo63DpFRmUUR4pXsjJRKT4u0cNMO
+         PI+ONlp1xdOWVZz9mFHp0ARomGCfrcfs+VFSTw5an1qHNaO3MyM/OT6Dy2R+fiCM9BdP
+         GUVMj/OuJn4rJUKRZaD3JVMYk2CgHYF3f6pnzh9MtctVCYdKamjc7f980NeGpGwT1zfX
+         0NMTpY+4GZaw4be3dWtIdaIHSwVLD/6/whdNoEoiHcS60Nk+xV0RyIU32pGqAbLZD6/l
+         Ly5pCfHdE2Ri02+pdxAuRDPzcdhBlYMmJANbpnP69AMnoA/pfEWEZ+Aw2FPk4Pm2GNI1
+         gstA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785480596; x=1786085396;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=vsR6hWzy4D9+PPoxqFEdaQVVVEVdpxP3yoc1mBPPEeI=;
+        b=YGN5QOcHnpursDdEft6LLf7ZzovxQb4Skjmtj2iTN1gv66d+V7BOPKDNExyjnVTgAz
+         Z7563b0j40HxDxRF8145E9KVshZDDf/0vftB4eUc58Udq1Dr8Gf0DLwLwTeZlMptfFxd
+         Ljx24kkzkzMLNU5zT6uWLtrQwTDm0HfBlLxEV1ZynFxtvjWGoY79+0StNqENKEI4x4NM
+         DZV/6dGzKnY/CG5lI11PNV7gmwIAs2KNLVOdzsZawPd6JXZuO6Q6nZJi4orDFjlra5QJ
+         FTE+ndobtJxdS9wjTfZLkzocRN7OvSpLoujQbLaHLsupSuGCXIlH99kx3Msf9a2W1gbe
+         rmmA==
+X-Forwarded-Encrypted: i=1; AHgh+RoyDFNiMK4luULQrM2nzzgTYIlzsjZ/KlsrQzpbesNdffW4fZebrSSbwwN4Ww6yI8NnpoKfiV8E/N2fgKrMwA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywbl1UULQ9etoRaQhL2U+eEroh0GixPFP55zqMeQoPmENurl2LM
+	Uhz3C9iMh0TC46wOaTyOWNLAdwUTLeAwIy3zrQUhgeeE8YiFiKajFoCo
+X-Gm-Gg: AR+sD11ahz2mt7QTqZ4QwkzoTl/Vd9Fe++0FKes2z+wZzpQCL+NS2y85BlSMWNZbS8A
+	47q3gFYSEBXMP7BOlAK11mD6L5eQ27IXIKH2mpkvP1hfsAm/C5eVNPhIMeMn+QSy5IzW1VhZ0CC
+	LKj5hyDsq0O1ZW9xkRBHw1VNM6fBMlDRYXNo6oZr0fpIOkU4iK1fN/SIkBSHgNtyPVkJHkePPXF
+	6S6rsV9XFvpM6OUx9tniadnW98IS4T1Jvw6Zr60RdNVy9U4XGDOiHUrwYaqfVm0OMzmWoShf+kX
+	/0lOBfFGKSNGTOjfZp7zDkAAfj6+3htxxLeb+pbtP2T6PqPaAZiutUlmF92hLKWkPKaZp/JnuFo
+	1VL4TPDelGFhnZMbCQsUbEMOj34amW0DghSXJTMaJtY2nifXayDWOPzFe/VbmYNpn/moa/4yeOD
+	XjZsRl1jb30DwkDgZGZSyJCxx6YcXGKpZhnMNinRcPDemewWq9aplUDj5qTfp8XYnjE1RHbYpW+
+	nbfU5XdRUAa2T9Chll9kuTv8nnpFA23Mb5XFBdpaiDk0/WOC+yYkDHiuSXgPOT0Gg2s9Q==
+X-Received: by 2002:a5d:64ed:0:b0:47f:7e91:3d55 with SMTP id ffacd0b85a97d-47fd2b3e820mr2256719f8f.2.1785480596373;
+        Thu, 30 Jul 2026 23:49:56 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8B8B0053881A2C61CA978D.dsl.pool.telekom.hu. [2001:4c4e:1b8b:8b00:5388:1a2c:61ca:978d])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47fd41e2abbsm1212753f8f.9.2026.07.30.23.49.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jul 2026 23:49:55 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Oded Gabbay <ogabbay@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
 	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: [RFC PATCH v3 6/6] arm64: dts: rockchip: rk3576-rock-4d: enable NPU
-Date: Fri, 31 Jul 2026 16:35:07 +1200
-Message-ID: <20260731043507.1832277-7-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260731043507.1832277-1-gahing@gahingwoo.com>
-References: <20260731043507.1832277-1-gahing@gahingwoo.com>
+	linux-rockchip@lists.infradead.org,
+	Guangshuo Li <lgs201920130244@gmail.com>,
+	Jiaxing Hu <gahing@gahingwoo.com>,
+	Igor Paunovic <royalnet026@gmail.com>
+Subject: [PATCH v2 0/2] accel/rocket: fix shared-device lifecycle on probe failure and unbind
+Date: Fri, 31 Jul 2026 08:49:31 +0200
+Message-ID: <20260731064933.12548-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_213605_398713_C8C91BCF 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260730_234958_465631_739BF536 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,49 +103,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable rknn_core_0 and its IOMMU on the Radxa ROCK 4D and supply the
-core from vdd_npu_s0. The core is listed on both NPU power domains, as
-the vendor does from its single NPU node.
+The rocket driver keeps a single shared DRM device on a driverless
+"rknn" platform device: the first core to probe initializes it, the
+last one to go away tears it down. This series fixes two independent
+bugs in that lifecycle. Both were flagged by the Sashiko AI review on
+my clks patch; I verified each by hand against the code and then on
+hardware before writing the fixes.
 
-Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+Patch 1 releases the devres of the shared device on teardown. Today
+every fini/re-init cycle leaks the previous rocket_device and pins its
+accel minor - observable as /dev/accel/accel0 coming back as accel1,
+then accel2, on unbind/rebind cycles of all cores.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 272af1012..09d2fc98b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -442,6 +442,7 @@ regulator-state-mem {
- 			};
- 
- 			vdd_npu_s0: dcdc-reg2 {
-+				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-enable-ramp-delay = <400>;
- 				regulator-min-microvolt = <550000>;
-@@ -869,3 +870,18 @@ vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
- 		remote-endpoint = <&hdmi_in_vp0>;
- 	};
- };
-+
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	/*
-+	 * Power BOTH NPU domains (NPU0 + NPU1) like the vendor's single NPU node,
-+	 * even though rocket computes only on core 0: the CBUF->CMAC read path is
-+	 * only fully powered with NPU1 up. rocket attaches the multi-PD list.
-+	 */
-+	power-domains = <&power RK3576_PD_NPU0>, <&power RK3576_PD_NPU1>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
--- 
-2.43.0
+Patch 2 makes the per-core slot bookkeeping stable across unbind and
+rebind in any order. Today unbinding a lower-numbered core makes
+higher-numbered ones unfindable (their runtime PM callbacks start
+returning -ENODEV), a later unbind of such a core is silently skipped,
+and a subsequent bind overwrites a slot whose IRQ handler and DRM
+scheduler are still live.
 
+Verified on RK3588 (Orange Pi 5 Plus, all three cores): the
+unbind/rebind matrix keeps /dev/accel/accel0 stable and every core
+findable; single-core operation works from the highest slot alone
+(confirmed via the per-core IRQ counters moving to that core); the
+forced-init-failure path releases its slot cleanly; and MobileNetV1
+inference via the Teflon TFLite delegate stays bit-identical to the
+stock driver throughout.
+
+The series applies on top of Guangshuo Li's pending fix, on which
+patch 1 depends textually (reviewed on-list):
+https://lore.kernel.org/dri-devel/20260708062845.716487-1-lgs201920130244@gmail.com/
+
+v2:
+ - patch 2: clear the slot's .dev when rocket_core_init() fails -
+   with .dev as the liveness marker a failed init left a
+   half-initialised core visible to lookups and made
+   rocket_job_open()'s live-slot walk overflow its allocation by one
+   entry (Jiaxing Hu); make the never-initialised slot skip in
+   sched_to_core() explicit; document the synchronous-probe assumption
+ - patch 1: unchanged
+v1: https://lore.kernel.org/dri-devel/20260730080355.177422-1-royalnet026@gmail.com/
+
+Igor Paunovic (2):
+  accel/rocket: release the shared device's devres on teardown
+  accel/rocket: keep core slots stable across unbind and rebind
+
+ drivers/accel/rocket/rocket_device.c |  2 ++
+ drivers/accel/rocket/rocket_device.h |  3 +++
+ drivers/accel/rocket/rocket_drv.c    | 41 ++++++++++++++++++++++++++++++++----
+ drivers/accel/rocket/rocket_job.c    | 13 +++++++------
+ 4 files changed, 53 insertions(+), 10 deletions(-)
+
+--
+2.53.0
 
 _______________________________________________
 Linux-rockchip mailing list
