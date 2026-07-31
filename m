@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7818C55173
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:24:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6B82C54F54
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OM999fa55NSiMzCf4jogkaXXLO1YKp2ITF8Mc6Eohfw=; b=g9gYv0ibTdBVJG
-	ieqkkIkJMr0vTkR1fFhGFixzCnGNDZAr01xma16e6RgQrS7hZO5+56zJf0dP4dchzxDvDJStQBSzt
-	c1c28tZbTiASaU6RFci8IPIYB8HhbZ2TqwNH+PSauZkcTiPLr53kykDUEgbjpl0x1JnO9jWKXEh+s
-	lMgeR5y7WeUuZ1hrQ6z8YBF2emrY1rZkOzldUs0g4KrjMGIZEqUDr7Mg8iDM896zk85ErrUWz1St/
-	3V+D9Ps9/joqsUSKohYwl7YXxaZstCljXfDu7qZ9rIR/MoG/OMcswbny1qJsDkSg19YwP1x4kjBxx
-	2aWBH2HqHy5T0DIDedmQ==;
+	List-Owner; bh=ev4qnQ8+Br7/xOi4xudRThe+H3L/BtLhlEdY10FcQ+k=; b=5BhTGpoWfEAMf9
+	UgKLc1//EGC21p5ysUn6txrZdJL6s2ojJNFOe06JFbSN676ao2Ir69nfYzGtCDYd4cV69oqrK7Wih
+	8ytNv14wNazK1XVYdwD8yhwWg4xquGE1OScvng5OmFNIyMK+DA/mKasOUS6XvEuugSwXdN4TRug3L
+	Ic5atZn6aiS5F3B+L6117u3vYbfuIWG872ib89N1AcyLp0PoFvTzIAd2a/PqRapja1dVJDYc/wDnL
+	S73Vf/ZDvN1puE73brqAgf7TB5XnGvnmm9b6rqZNwIdoUJaIJwbI+o+UswGPE0TZX5pP7LiYOB/5x
+	pyEMekP7afNJp12v1Rtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpq1o-0000000D3eg-1KIN;
-	Fri, 31 Jul 2026 16:24:08 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wpq1p-0000000D3i5-1EBR;
+	Fri, 31 Jul 2026 16:24:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxh-0000000Czch-2gex;
+	id 1wppxf-0000000CzbF-49FG;
 	Fri, 31 Jul 2026 16:20:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514790;
-	bh=FjNG/FbAfUxNWdfXcasZdzMERNWbRLC78jj086GTy6I=;
+	s=mail; t=1785514789;
+	bh=0cXQh/wi9mNTTITbxgaDB3yHqtiGn5+Qa+cNMfRk9UA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Hyrr0XvAvuzJDNa4V3fiG10eP9Etlr1hu5kpnKfXp3XP900r4GhIrAS8DlBN0bjqK
-	 SNAd5iaIPQ97UyS6C8qMrkvdZtYOjJvjNqmnY3uKU7NDWa+/NlAjk2h3hIVRqgKATX
-	 jztlOrxBM8CfmbKFxaZlP9824yanMlGxW911NyDjsuEosqtU8besE0lw9Bf7MkZhF+
-	 0A/1gmYzATtn7uNC+8uquq9pCKWh5CtTad+QxWE8vIYPxruer/e/bnebHK6Kk2G13A
-	 zxgVz8G2mpFHm99QAReBetdo9n4IkSh4RpOlEqK99sla344hDoIbYxzhUft3tegrOg
-	 LXd3FTojNwsHA==
+	b=QokOt9JTCghHQqgaFmv7YW2OfQO804zPDPvd0V9NEdkZNb0xGkFT++WwjQBLlrLlN
+	 I+faxIFULRQi6QJbBp22hUwuvNbcJJJ3kDNIA5bo4Qpk1Zr9VHCMczhHQ9L2o27ox/
+	 9u1MC0KH+4f9esQu4xVGTkAWlG3LuyFk/MfgQDpNrr/3wZ5EvT2CcLN8bWHOs5Pjsl
+	 I1Zdo8+C1n8ootnUPk3AFXvqAlRxFZXybo3KdaBNjRywMd2aeTTVA/j8mIs6Cw0j07
+	 /QlMfkCxRzkRLtelo0r4eOo1sXGP7EaA7CLXKnKm3+8uo1NPiwv8F0E3XI8WlC2Ahh
+	 ZSzW/ZsO9/rDw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6709017E093D;
-	Fri, 31 Jul 2026 18:19:50 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EA51D17E092F;
+	Fri, 31 Jul 2026 18:19:48 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:57 +0300
-Subject: [PATCH v10 50/69] drm/bridge: ite-it6263: Drop redundant
- .mode_valid hook
+Date: Fri, 31 Jul 2026 19:19:55 +0300
+Subject: [PATCH v10 48/69] drm/bridge: adv7511: Advertise HDMI 1.2
+ capabilities
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-50-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-48-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -73,8 +73,8 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091954_308950_3DFB0E6F 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20260731_091953_948068_B2A7BF69 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,68 +91,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Bridges using DRM_BRIDGE_OP_HDMI expect connectors to be created through
-drm_bridge_connector_init(), thereby relying on the bridge connector's
-.mode_valid hook to invoke drm_hdmi_connector_mode_valid().
+Bridges using DRM_BRIDGE_OP_HDMI are now expected to also provide a
+supported HDMI version.  This is not yet enforced, but will become
+mandatory once the migration to the new caps-based HDMI connector
+initialization API is completed.
 
-The generic helper computes the mode's TMDS character rate and forwards
-it to the bridge's .hdmi_tmds_char_rate_valid callback through the
-connector HDMI funcs.  This covers exactly what
-it6263_bridge_mode_valid() does for 8 bpc RGB444, but due to being
-output-format aware, it also handles the validation more thoroughly.
+Since max_mode_clock_khz does not exceed 165 MHz for any of the chip
+variants handled by the driver, advertise HDMI 1.2 as the supported
+version and set the bridge's max_tmds_char_rate so the connector limit
+inferred from supported_hdmi_ver is overridden by the chip-specific
+hardware constraints.
 
-Both the connector and bridge .mode_valid hooks are invoked during
-mode validation through drm_mode_validate_pipeline(), so the custom
-bridge hook is redundant.  Drop it.
-
-While at it, remove the now-unused drm_hdmi_helper.h include.
+drm_bridge_connector_atomic_check() runs
+drm_atomic_helper_connector_hdmi_check(), which rejects modes whose
+computed TMDS character rate exceeds the connector limit before invoking
+the driver's .tmds_char_rate_valid() hook, making
+adv7511_bridge_hdmi_tmds_char_rate_valid() redundant. Drop it.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/bridge/ite-it6263.c | 16 ----------------
- 1 file changed, 16 deletions(-)
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c | 22 +++-------------------
+ 1 file changed, 3 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/ite-it6263.c b/drivers/gpu/drm/bridge/ite-it6263.c
-index 21ac8e58b9d2..550999491086 100644
---- a/drivers/gpu/drm/bridge/ite-it6263.c
-+++ b/drivers/gpu/drm/bridge/ite-it6263.c
-@@ -15,7 +15,6 @@
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
+diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
+index 038b852405b5..c3ef44074477 100644
+--- a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
++++ b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
+@@ -8,6 +8,7 @@
+ #include <linux/clk.h>
+ #include <linux/device.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/hdmi.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/slab.h>
+@@ -775,11 +776,6 @@ static int adv7511_connector_init(struct adv7511 *adv)
+  * DRM Bridge Operations
+  */
  
--#include <drm/display/drm_hdmi_helper.h>
- #include <drm/display/drm_hdmi_state_helper.h>
- #include <drm/drm_atomic.h>
- #include <drm/drm_atomic_helper.h>
-@@ -669,20 +668,6 @@ static void it6263_bridge_atomic_enable(struct drm_bridge *bridge,
- 	regmap_write(regmap, HDMI_REG_PKT_GENERAL_CTRL, ENABLE_PKT | REPEAT_PKT);
+-static const struct adv7511 *bridge_to_adv7511_const(const struct drm_bridge *bridge)
+-{
+-	return container_of(bridge, struct adv7511, bridge);
+-}
+-
+ static void adv7511_bridge_atomic_enable(struct drm_bridge *bridge,
+ 					 struct drm_atomic_commit *state)
+ {
+@@ -817,19 +813,6 @@ static void adv7511_bridge_atomic_disable(struct drm_bridge *bridge,
+ 	adv7511_power_off(adv);
  }
  
 -static enum drm_mode_status
--it6263_bridge_mode_valid(struct drm_bridge *bridge,
--			 const struct drm_display_info *info,
--			 const struct drm_display_mode *mode)
+-adv7511_bridge_hdmi_tmds_char_rate_valid(const struct drm_bridge *bridge,
+-					 const struct drm_display_mode *mode,
+-					 unsigned long long tmds_rate)
 -{
--	unsigned long long rate;
+-	const struct adv7511 *adv = bridge_to_adv7511_const(bridge);
 -
--	rate = drm_hdmi_compute_mode_clock(mode, 8, DRM_OUTPUT_COLOR_FORMAT_RGB444);
--	if (rate == 0)
--		return MODE_NOCLOCK;
+-	if (tmds_rate > 1000ULL * adv->info->max_mode_clock_khz)
+-		return MODE_CLOCK_HIGH;
 -
--	return bridge->funcs->hdmi_tmds_char_rate_valid(bridge, mode, rate);
+-	return MODE_OK;
 -}
 -
- static int it6263_bridge_attach(struct drm_bridge *bridge,
- 				struct drm_encoder *encoder,
- 				enum drm_bridge_attach_flags flags)
-@@ -831,7 +816,6 @@ static const struct drm_bridge_funcs it6263_bridge_funcs = {
+ static enum drm_mode_status adv7511_bridge_mode_valid(struct drm_bridge *bridge,
+ 						      const struct drm_display_info *info,
+ 		const struct drm_display_mode *mode)
+@@ -1006,7 +989,6 @@ static const struct drm_bridge_funcs adv7511_bridge_funcs = {
  	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
  	.atomic_create_state = drm_atomic_helper_bridge_create_state,
- 	.attach = it6263_bridge_attach,
--	.mode_valid = it6263_bridge_mode_valid,
- 	.atomic_disable = it6263_bridge_atomic_disable,
- 	.atomic_enable = it6263_bridge_atomic_enable,
- 	.detect = it6263_bridge_detect,
+ 
+-	.hdmi_tmds_char_rate_valid = adv7511_bridge_hdmi_tmds_char_rate_valid,
+ 	.hdmi_clear_audio_infoframe = adv7511_bridge_hdmi_clear_audio_infoframe,
+ 	.hdmi_write_audio_infoframe = adv7511_bridge_hdmi_write_audio_infoframe,
+ 	.hdmi_clear_avi_infoframe = adv7511_bridge_hdmi_clear_avi_infoframe,
+@@ -1359,6 +1341,8 @@ static int adv7511_probe(struct i2c_client *i2c)
+ 
+ 	adv7511->bridge.vendor = "Analog";
+ 	adv7511->bridge.product = adv7511->info->name;
++	adv7511->bridge.supported_hdmi_ver = HDMI_VERSION_1_2;
++	adv7511->bridge.max_tmds_char_rate = 1000ULL * adv7511->info->max_mode_clock_khz;
+ 
+ #ifdef CONFIG_DRM_I2C_ADV7511_AUDIO
+ 	adv7511->bridge.ops |= DRM_BRIDGE_OP_HDMI_AUDIO;
 
 -- 
 2.55.0
