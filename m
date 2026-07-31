@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08E58C54F54
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 10:33:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0098C5516D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 10:35:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S2De/selCfxpKpLcz+y1qqvfYnHig0sEODRFgn733qc=; b=HZob0U6MJAJQkl
-	/GHlMVIr5LH8Ls1GSoNCwyhYVgyIHFClnpqF6nKhHDL98O5IX9srw7lMqmCuQW6vq9VF9nj6+UvrA
-	n/LuuuB8HYe9uQ4Dk3SBbx9T/HgUHqm99iPFVCn59PD+MkWaGM2MyXZ2JT/prHttPrG3/UnOpkngF
-	tSyH+/whUdySSf95o97sWclpTenRoRZSrbyYgb/8XDJPtfhghrWzE1i74R0CnjxmBAl5uAfCtxzGE
-	pHcwCnmYBw+0hnt55qroUY1JC4oejqSaGDcMU57oCLnSgpIkobDA2RgFjcjXcbgAJ18VWPxJ5V9LZ
-	IcU1gnfZvmGfDM/oa4zw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ITQJYo8BS7k1x1gmRAvyWc8By+zdMrmKTEEDY2cbCzo=; b=1KMSeF7U8Zcfihaypr0+RAyzl4
+	pasqzOEejK3XpRrDrUXgdBLnyrW5/oSVo1TWajvNX0+YlWzZyob3X4KIk9AgWMqQ3pK9u8C27+SGI
+	qwyjSaVgWvOBB7dLJgIPW7JWg430EicrInHaTcgDvmGMSni1qvAJALB4TuOWTscbZYYMQuBVmnZ3y
+	RTP3LU2Y2ndSV7x6k/YdzgEii4ytGq/f0avRL96KzkmmSGIwW1kmoqXdHhrP9aRWraPLdEm43kdna
+	x+pPkSVphydy1dHnB7gLfTl6xVX8c8sqXrL2PGeS/A5roU8CZoyDyhCjyFD1r2z19VyXZVKSSqaG8
+	8Ily02+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpkY4-0000000CK85-3a42;
-	Fri, 31 Jul 2026 10:33:04 +0000
-Received: from out-182.mta0.migadu.com ([91.218.175.182])
+	id 1wpkaR-0000000CKfN-1qnT;
+	Fri, 31 Jul 2026 10:35:31 +0000
+Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpkY1-0000000CK74-2F46
-	for linux-rockchip@lists.infradead.org;
-	Fri, 31 Jul 2026 10:33:02 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1785493969;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uuRw5hJ2mftHt1u3eDzEgfPNP6kuHelSAGaazRJn7TM=;
-	b=Lv4Fq626JJBk/C3kc8zkrhqDPdUjL6bzyFEeyMQaBLrw1+uxbdtBz7qhsf/5sU16eP0lkl
-	sM7bvwh9C1aeBzNbIXFTt9X3TnZu40JdLyC9Q5OpkjaSjZxxAyhKr/8wlGfnlN+6mAESl9
-	wTJnhv5EtsG/+7LZloPJteLS28VJCfPSHqy33X6SSMvRAzL7oLixWdrV+X7RCEmC3p0AR0
-	Y91AxOxqQR1FezH9v33+gOEDQZoTSWfnpSp7iFWcdB+igEBKy8L82X9wlQBmVOUvUP4r5V
-	NWV9oS45FLj6cawfvdMEcckv+bN9jkZkD0ribPfYbdINDH08cF3zfKcZ/bjsBA==
-Date: Fri, 31 Jul 2026 12:32:44 +0200
-Message-Id: <DKCOSBPTPW3J.IG1FJHK4C2OY@cknow-tech.com>
-Cc: <linux-phy@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v4 0/2] phy: rockchip: inno-hdmi: Change TMDS rate
- handling to configure() ops
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Jonas Karlman" <jonas@kwiboo.se>, "Vinod Koul" <vkoul@kernel.org>,
- "Neil Armstrong" <neil.armstrong@linaro.org>, "Heiko Stuebner"
- <heiko@sntech.de>
-References: <20260518180722.2480799-1-jonas@kwiboo.se>
-In-Reply-To: <20260518180722.2480799-1-jonas@kwiboo.se>
-X-Migadu-Flow: FLOW_OUT
+	id 1wpkaM-0000000CKcf-2rqu;
+	Fri, 31 Jul 2026 10:35:30 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
+	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 15034200060;
+	Fri, 31 Jul 2026 12:35:23 +0200 (CEST)
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1wpkaI-002CCS-37;
+	Fri, 31 Jul 2026 12:35:22 +0200
+Received: from pengutronix.de (p4ffb2dc6.dip0.t-ipconnect.de [79.251.45.198])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id A39C8577EF6;
+	Fri, 31 Jul 2026 10:35:22 +0000 (UTC)
+Date: Fri, 31 Jul 2026 12:35:22 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Cunhao Lu <1579567540@qq.com>
+Cc: kernel <kernel@pengutronix.de>, Vincent Mailhol <mailhol@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	linux-can <linux-can@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH v6 2/4] can: rockchip: add RK3588 CAN support
+Message-ID: <20260731-precise-functional-lobster-cd779f-mkl@pengutronix.de>
+References: <tencent_7BAA0052C402BFFD26291A64198084E39107@qq.com>
+ <tencent_207E464D12344B3228096E23A001D6882508@qq.com>
+ <20260731-tall-camouflaged-earthworm-e1a7d0-mkl@pengutronix.de>
+ <tencent_A3698A465C4621E164443B0005D1CC6FAE05@qq.com>
+MIME-Version: 1.0
+In-Reply-To: <tencent_A3698A465C4621E164443B0005D1CC6FAE05@qq.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_033301_720694_A3FC743E 
-X-CRM114-Status: GOOD (  17.16  )
+X-CRM114-CacheID: sfid-20260731_033526_872960_F7426DE5 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,69 +74,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8062391746576961623=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon May 18, 2026 at 8:07 PM CEST, Jonas Karlman wrote:
-> This series adds support for using phy_validate() and phy_configure()
-> with this HDMI PHY as an alternative to current in-tree unused way of
-> using PHY bus width to configure the TMDS character rate.
->
-> The only known users that calls phy_set_bus_width() on this PHY are my
-> out-of-tree HDMI 2.0 patches for Rockchip RK3228/RK3328, i.e. those
-> originating from LibreELEC (also carried by other distros), the
-> downstream vendor kernel uses a different implementation that also calls
-> phy_set_bus_width() on this PHY.
 
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # Rock64
+--===============8062391746576961623==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="cnylr377k2yewvl7"
+Content-Disposition: inline
 
-> Patch "drm/rockchip: dw_hdmi: Configure HDMI PHY in atomic_mode_set()"
-> that calls phy_validate() and phy_configure() on this PHY can be found
-> at [1].
->
-> [1] https://lore.kernel.org/dri-devel/20260510183114.1248840-10-jonas@kwiboo.se/
->
-> This series is part of a larger multi series effort to:
-> - phy: rockchip: inno-hdmi: Change TMDS rate handling to configure() ops [v4]
-> - drm/rockchip: dw_hdmi: Misc cleanup and propagate bus format [v2]
-> - drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID cleanup [v7]
-> - drm/bridge: dw-hdmi: Improve input/output bus format handling
-> - drm/bridge: dw-hdmi: Convert to a HDMI bridge and use of bridge connector
-> - drm/bridge: dw-hdmi: Add and use tmds_char_rate_valid() plat data ops
-> - drm/meson: hdmi: Misc cleanup and use CEC notifier helpers [v1]
-> - drm/rockchip: dw_hdmi: Enable YCbCr and Deep Color modes
-> Link to snapshot: https://github.com/Kwiboo/linux-rockchip/commits/next-20260518-rk-hdmi-v5/
->
-> Changes in v4:
-> - Add NULL opts check in validate()
-> - Only store the opts->hdmi.tmds_char_rate value for later use
-> - Move comments about expected consumer usage from inline to above the
->   functions
-> Link to v3: https://lore.kernel.org/linux-phy/20260515195512.1757363-1-jonas@kwiboo.se/
->
-> Changes in v3:
-> - Change validate() ops to only validate tmdsclock
-> - Add comments about expected consumer usage
-> - Update commit message with a typical call chain
-> Link to v2: https://lore.kernel.org/linux-phy/20260510095731.1222705-1-jonas@kwiboo.se/
->
-> Changes in v2:
-> - Split into two patches, one that adds new ops and a second that remove
->   the old and unused workaround
-> - Add validate() ops to validate that the TMDS rate is supported
-> Link to v1: https://lore.kernel.org/linux-phy/20260503172936.194003-1-jonas@kwiboo.se/
->
-> Jonas Karlman (2):
->   phy: rockchip: inno-hdmi: Add configure() and validate() ops
->   phy: rockchip: inno-hdmi: Remove deprecated way to configure TMDS rate
->
->  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 71 +++++++++++++++----
->  1 file changed, 58 insertions(+), 13 deletions(-)
 
+--cnylr377k2yewvl7
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 2/4] can: rockchip: add RK3588 CAN support
+MIME-Version: 1.0
+
+On 31.07.2026 17:23:45, Cunhao Lu wrote:
+> Hi Marc,
+>
+> > Can you attach the TDC to the CAN framework? See commit 5e1663810e11
+> > ("can: mcp251xfd: fix TDC setting for low data bit rates"). And check if
+> > CAN-FD works on the rk3588 works?
+>
+> Could we leave the RK3588 TDC support out of this patch series for now?
+
+=2E.and mark the rk3588 as RKCANFD_QUIRK_CANFD_BROKEN for now? Fine with me.
+
+> I will test whether CAN-FD works on RK3588 with TDC integrated with the
+> CAN framework and report the test result. If the testing shows that it
+> works, I will enable it in a separate follow-up patch.
+
+Sounds good,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--cnylr377k2yewvl7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCamx6ZwAKCRDMOmT6rpmt
+0vtOAP0UQb/GCgeUljeDGPlvGiMz5FF5kTb5taLlQIf0aMF/eAD/YqQGGpp+XdXD
+XNCbZNGlV/rUCLuJOo4u6txQAqLuzgY=
+=7yZ/
+-----END PGP SIGNATURE-----
+
+--cnylr377k2yewvl7--
+
+
+--===============8062391746576961623==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8062391746576961623==--
+
