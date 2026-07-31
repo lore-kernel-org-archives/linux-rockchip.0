@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81992C5516F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA0EC54F54
 	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:24:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xte00gxF5G3wBN/KDqGsUdUkCq+SaRly+2XywywHU98=; b=HVVccEfV4ETG5N
-	eF/pzYbZBgaYzrVM5PQIFucWE93uUaWXbUWWmDaxuSMJjgIfCCd20ENhBFjxt/0gdhDF59euOcVXp
-	7cWAOXceAErcmeGTHDXR0Jlv2tJ2EyAWTb72ETBW+IXWu42R4ZoIy8jVqRlQtzt9NOLzp03ooRGiu
-	LdA72fL2dn3btLxwxD7qty6vvlRwWFkMKljpIu9mP6FgiRBF2uunrA+s36MsnUmgQ08jSLDvpknsf
-	Xl6+PF0HNebigupyCx6gkzUKPL0RDxLPTwK0+oLA1Asq59TW+SpfoRGHBfTkAbQI/SiEfcy94yR4I
-	SWJy98PXjsfymwvmE7ZQ==;
+	List-Owner; bh=dz2nwGS8TQ3tJAbVTWCmfKr3LSEGOlusvUWUaFOP2E4=; b=SOoiJJT2mQusA/
+	sLAwrRqQWpEoo+QeaRwM1iVxzVsrReX3xotYOePdwVHrGp3EadKAtwJX4JEW5QeWGmzJNnfaW8y3H
+	2KmaukBn4m+MfuQy5kJ4kwsem0lRHMkjSAWPAWr0CTJHqzyWIXaGWiG9Va+RO4absXnmwaW3ouplo
+	3IFlquRqoF7qEzNZDF/k21d5YXXC1R+Xq5Xww/kbapDMAoHcgr1fSx2NFnYluqHhOXg8VdXmCPM53
+	KlNfUeo3y7IraQBQJfjhv3IpIC8saaMN1Tw6dUKYhM93ZDtyOz5bNgRawiF38PoYmFvki3TO8jFT1
+	gT+tnZlJutpDTCUPEmHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpq1q-0000000D3n1-3HWa;
-	Fri, 31 Jul 2026 16:24:10 +0000
+	id 1wpq1r-0000000D3oH-2GGz;
+	Fri, 31 Jul 2026 16:24:11 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxl-0000000Czja-29IE;
-	Fri, 31 Jul 2026 16:20:04 +0000
+	id 1wppxg-0000000CzcS-3Sh3;
+	Fri, 31 Jul 2026 16:20:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514793;
-	bh=Nxh58kkTCJhDJZ7LOkXxKPsnDbbAawY8MD7ZCqqJ5bs=;
+	s=mail; t=1785514789;
+	bh=hse6ZoBRDdkgueZEFZSp6DqlC7adzsHmGMK2OKfFL4E=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KpewS9PA1BDaDp0B//q/gO+9yphcABEgsq9KIxwt/mjHZ+3nObMDEbeyjCRp4k9pp
-	 7TNs6AhYJoyXwy9v1Wji1tb3FoTTJt8FqsrP8oo18um45n5gzB67F2DNUVc58MxGzM
-	 ivtmVXnEwEHqebl2ge/J7XLYI64BuUPAi60OqpxbgS/rWt/6jEnntRQm1f3B7xsKo+
-	 nTNJRG7WuDXCb38b5NL4caiHrVLYlj93yZc40CbFskxARjhuAljeyQTG5JBAUE2UqZ
-	 YDMmtW8z8Ek0JvYYSezDCHqbBLviOXqchG+/RfpV6co1nZKqrdjY3UJ3P79evuGYdM
-	 NDWy/xPTO4gNg==
+	b=IiFq5wARocQVqFD0cNI83kNg5TUsSbclt8ZwoJEBxXDvmO1oxshnL1PymkbQk4abG
+	 J4jCdnMtGv61ajDAZNcicCL+1MZRS8yKjMczkmIByIPRKQQGJwkA+l29u0HhLt8a7q
+	 ENZekvJp2QuJwBKVaIB26gmr9+Zgn/ZB6W89sDgmRlSEH+ivzhiNKK5QGb79wJ3rdh
+	 8wZzraSEvRWQAEMsfiPx6QpJVIhpiVaJVyI35n+zTwYqsg9lHvn5Xr8e1EPXTw0x0/
+	 CW1XJSlNMsLT2rcEa45in5sqzDfpyos2E9g+gjVghMZCZ/BGNZbiCTp628ptZgLZGV
+	 /2rbb4pP7MJ4g==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3431217E08F7;
-	Fri, 31 Jul 2026 18:19:53 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A01BA17E090B;
+	Fri, 31 Jul 2026 18:19:49 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:20:01 +0300
-Subject: [PATCH v10 54/69] drm/rockchip: rk3066_hdmi: Advertise HDMI 1.4
+Date: Fri, 31 Jul 2026 19:19:56 +0300
+Subject: [PATCH v10 49/69] drm/bridge: inno-hdmi: Advertise HDMI 1.2
  capabilities
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-54-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-49-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -73,8 +73,9 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091958_750159_99150372 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20260731_091953_950508_85F9F814 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,39 +97,26 @@ supported HDMI version.  This is not yet enforced, but will become
 mandatory once the migration to the new caps-based HDMI connector
 initialization API is completed.
 
-The RK3066 HDMI TX supports HDMI 1.4a, as described in commit
-f84d3d37b7fb ("drm: rockchip: introduce rk3066 hdmi").  However, the
-driver does not currently enforce a maximum TMDS character rate, it only
-filters non-CEA modes and excludes VIC 1 (640x480) via the .mode_valid
-callback.
-
-Advertise HDMI 1.4 support for now so that modes exceeding the 340 MHz
-TMDS limit are rejected by the core.
+Since inno_hdmi_phy_config.pixelclock does not exceed 165 MHz for any of
+the chip variants handled by the driver, advertise HDMI 1.2 as the
+supported version.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rk3066_hdmi.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/bridge/inno-hdmi.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-index f28d6a883e09..f748700b0ba6 100644
---- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-@@ -14,6 +14,7 @@
- #include <drm/drm_probe_helper.h>
- 
- #include <linux/clk.h>
-+#include <linux/hdmi.h>
- #include <linux/mfd/syscon.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-@@ -712,6 +713,7 @@ rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
+diff --git a/drivers/gpu/drm/bridge/inno-hdmi.c b/drivers/gpu/drm/bridge/inno-hdmi.c
+index dd35f5a875d3..ea3447d4f285 100644
+--- a/drivers/gpu/drm/bridge/inno-hdmi.c
++++ b/drivers/gpu/drm/bridge/inno-hdmi.c
+@@ -1119,6 +1119,7 @@ struct inno_hdmi *inno_hdmi_bind(struct device *dev,
  	hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
- 	hdmi->bridge.vendor = "Rockchip";
- 	hdmi->bridge.product = "RK3066 HDMI";
-+	hdmi->bridge.supported_hdmi_ver = HDMI_VERSION_1_4;
+ 	hdmi->bridge.vendor = "Inno";
+ 	hdmi->bridge.product = "Inno HDMI";
++	hdmi->bridge.supported_hdmi_ver = HDMI_VERSION_1_2;
  
- 	hdmi->bridge.ddc = rk3066_hdmi_i2c_adapter(hdmi);
+ 	hdmi->bridge.ddc = inno_hdmi_i2c_adapter(hdmi);
  	if (IS_ERR(hdmi->bridge.ddc))
 
 -- 
