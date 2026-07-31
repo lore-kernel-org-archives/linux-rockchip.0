@@ -4,77 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B914FC55173
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05D2DC55173
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 22:12:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kZIlzGyH+DAjirSSdZRQ6Br1KA5uKrB36aXT6vXV96w=; b=Gcmjge/zspAkmi
-	kURbgV+gPM9N+lMpd2otC7693pPgxYEYjeKDirSscs0oq7tcCQCKe8aOQbsIWTxvJQ3ChymDDv/FF
-	6Gwcp2ZVWGSW6xFQ3GdOyGzjRT9smQkz+qBWuvJtOUQlyVENocuBTKICWztDVTThkmkotHPZmuQAM
-	NqJID4adbmc9l9pb/AS8K0SGM8FXOHFHUWQ+Z+UuhwijZ/wYTQb7285DCYeeXng9YyTqd0nF/f85y
-	aYIQUv0lGmQiLe+GQVZ2XGaPzjVdo+BxNrgh3t01Da/2ZYqryhnzqS41TXTL6t90HM9xIQgi2XHzN
-	OPM5MZnhCs+EEd1THjDQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rV379tP/BKT7vplb09xi60R+xOubb232gPJADkuuOpo=; b=EONeNGvx4MK/r4
+	hJdT25cEkLVugMHqq2vg20afIFgDi4G1yGAtpsa1A0yCVR6Oj1fy89kJgah38Eas4KEFBP5GsJ854
+	GsIo2rE80ch/bVvSobQzVX+hfxWoF5qCMYyVOmW646SPbQ+Aue4NbAGd2xtKA5A0B43Box2fNRTU/
+	/Ggx5/5UdsA9v0FdnlynUQX9JjJpZxgbCu90Na3mJcJXB5/cglFCo112LPIUFzp2FQ/C9B9IVnuNC
+	/Dm9EPxf8a6POg6XppskXbN4RMku7HkQj7ZT0r/OfEMqIDrf+s2VkdauzOrtoyrAQ+bKwXIBLeDFd
+	+qzzIRmk1rj9xhbawO1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpq2l-0000000D5cW-0pM5;
-	Fri, 31 Jul 2026 16:25:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wpvSe-0000000DfQT-3ucU;
+	Fri, 31 Jul 2026 22:12:12 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxu-0000000CzxV-2jN0;
-	Fri, 31 Jul 2026 16:20:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514801;
-	bh=vWcJ/JgrICjAc8uhqU0IXmoYxp/H9UrDLzNmmi7RCMs=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=p9XQARIxBBnMZPKg8/va8IlWbRR50o3FETfmVCCp8aHR0YPN7W3AhIPJ6aR8N61tF
-	 AbopA7VeDxkf1MgYvERrjrlbZfXvZoQcwvKPdnznlmidnQ2GwRcYcNzaSr7hw5+8pB
-	 3e9LxwO1fHMWxgQSbr3SXd2QvNP+CB2KZ+wD1QMVv9a3NzwIfKcq8m8qHRDcCJ57bl
-	 NJFhOXvc0QQfBSBdtZFOmWevxWiuUz3+MU9tJ/Z/xOTgOuuocImp5LFjdACqr3c9W+
-	 OICIbkuYPxOeCytKyxajMknIP9UQn2WFjNwbfUBMwVB0h3cLfknlIrq9Ds3Z4PruSO
-	 rAjdKF54OypVw==
-Received: from localhost (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E149F17E098E;
-	Fri, 31 Jul 2026 18:20:00 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:20:12 +0300
-Subject: [PATCH v10 65/69] drm/tests: hdmi_state_helper: Cover source-side
- scrambling decision
+	id 1wpvSc-0000000DfPf-2cAX;
+	Fri, 31 Jul 2026 22:12:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=Fn9fvAwbHBdoZnU5Z3GXU92H9WGoBp0GZQN96d0z5ZU=; b=w5HR/1LZw6TbXw/7ZQXQf7yrZj
+	AEVABoOBZE4N4DEIIk4hIr1WvG0y5nmp1Fv+hiReZz0vddTQ5oOSVpF55gqiANvCpwV/pnagYzfXN
+	gsWbnN5zVL3bnxSKY5iOEWVih5rqCBg1wEeqXeHNCa8awS7yztXUaGAW2s5Nolrci89NQPZVEGg0Q
+	09fehZChDG+ZAIIaoSm/gLm1MV3/Ag27qs4k9ROAP72ySaO9OLN9nS2b0u0YdicXmtyMShafSWARg
+	FnxzbFhGAHxfE/OmKQQ25dbQQVMm9tBZIPf/4NUHloWc2bIZQ85L9gZy2pFYo9JFVnWjXRmHrWoAU
+	TLgkev9A==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 7.3 #1
+Date: Sat, 01 Aug 2026 00:12:03 +0200
+Message-ID: <2742274.XQYqjrCR6X@diego>
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-65-294364b2cf15@collabora.com>
-References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
-In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Chen-Yu Tsai <wens@kernel.org>, Samuel Holland <samuel@sholland.org>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Algea Cao <algea.cao@rock-chips.com>, 
- Daniel Stone <daniels@collabora.com>, Liu Ying <victor.liu@nxp.com>, 
- Phong LE <ple@baylibre.com>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_092006_936381_08E9D25D 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20260731_151210_732636_91DAB78F 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,196 +62,159 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a couple of atomic-check cases that initialise an HDMI 2.0
-connector, so the core infers the scrambler support and the 600 MHz TMDS
-limit, and assert that conn_state->hdmi.scrambler_needed stays clear for
-a 1080p@60 CEA mode (~148.5 MHz TMDS) and is set for the 4K@60 RGB
-preferred mode (~594 MHz TMDS), straddling the 340 MHz threshold.
+Hi soc maintainers,
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 151 +++++++++++++++++++++
- 1 file changed, 151 insertions(+)
+please find below Rockchip DT changes for the merge-window for 7.3 .
 
-diff --git a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-index 6d648332aa15..68b442c32a2a 100644
---- a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-+++ b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-@@ -216,6 +216,34 @@ static const struct drm_connector_hdmi_funcs reject_over_165mhz_connector_hdmi_f
- 	},
- };
- 
-+static int accept_scrambler_enable(struct drm_connector *connector)
-+{
-+	return 0;
-+}
-+
-+static int accept_scrambler_disable(struct drm_connector *connector)
-+{
-+	return 0;
-+}
-+
-+static const struct drm_connector_hdmi_funcs scrambler_connector_hdmi_funcs = {
-+	.vendor = "Vendor",
-+	.product = "Product",
-+	.supported_hdmi_ver = HDMI_VERSION_2_0,
-+	.supported_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444),
-+	.max_bpc = 8,
-+	.scrambler_enable	 = accept_scrambler_enable,
-+	.scrambler_disable	 = accept_scrambler_disable,
-+	.avi = {
-+		.clear_infoframe = accept_infoframe_clear_infoframe,
-+		.write_infoframe = accept_infoframe_write_infoframe,
-+	},
-+	.hdmi = {
-+		.clear_infoframe = accept_infoframe_clear_infoframe,
-+		.write_infoframe = accept_infoframe_write_infoframe,
-+	},
-+};
-+
- static int dummy_connector_get_modes(struct drm_connector *connector)
- {
- 	struct drm_atomic_helper_connector_hdmi_priv *priv =
-@@ -2254,6 +2282,127 @@ static void drm_test_check_disable_connector(struct kunit *test)
- 	drm_modeset_acquire_fini(&ctx);
- }
- 
-+/*
-+ * Test that on an HDMI connector with source+sink scrambling support, driving
-+ * a sub-340 MHz CEA mode, we end up with scrambler_needed cleared.
-+ */
-+static void drm_test_check_scrambler_needed_low_rate(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *low_rate_mode;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	unsigned long long rate;
-+	int ret;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
-+				&scrambler_connector_hdmi_funcs,
-+				test_edid_hdmi_4k_rgb_yuv420_dc_max_600mhz);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	conn = &priv->connector;
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_TRUE(test, drm_connector_hdmi_scrambler_supported(conn));
-+	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
-+	KUNIT_ASSERT_TRUE(test, info->hdmi.scdc.supported);
-+	KUNIT_ASSERT_TRUE(test, info->hdmi.scdc.scrambling.supported);
-+
-+	low_rate_mode = drm_kunit_display_mode_from_cea_vic(test, drm, 16);
-+	KUNIT_ASSERT_NOT_NULL(test, low_rate_mode);
-+
-+	rate = drm_hdmi_compute_mode_clock(low_rate_mode, 8, DRM_OUTPUT_COLOR_FORMAT_RGB444);
-+	KUNIT_ASSERT_LT(test, rate, HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
-+
-+	drm_modeset_acquire_init(&ctx, 0);
-+
-+retry_conn_enable:
-+	ret = drm_kunit_helper_enable_crtc_connector(test, drm, crtc, conn,
-+						     low_rate_mode, &ctx);
-+	if (ret == -EDEADLK) {
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_enable;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_LE(test, conn_state->hdmi.tmds_char_rate,
-+			HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
-+	KUNIT_EXPECT_FALSE(test, conn_state->hdmi.scrambler_needed);
-+
-+	drm_modeset_drop_locks(&ctx);
-+	drm_modeset_acquire_fini(&ctx);
-+}
-+
-+/*
-+ * Test that on an HDMI connector with source+sink scrambling support, driving
-+ * the 4K@60 RGB preferred mode (~594 MHz TMDS, above the 340 MHz threshold),
-+ * we end up with scrambler_needed set.
-+ */
-+static void drm_test_check_scrambler_needed_high_rate(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_modeset_acquire_ctx ctx;
-+	struct drm_connector_state *conn_state;
-+	struct drm_display_info *info;
-+	struct drm_display_mode *preferred;
-+	struct drm_connector *conn;
-+	struct drm_device *drm;
-+	struct drm_crtc *crtc;
-+	unsigned long long rate;
-+	int ret;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
-+				&scrambler_connector_hdmi_funcs,
-+				test_edid_hdmi_4k_rgb_yuv420_dc_max_600mhz);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	drm = &priv->drm;
-+	crtc = priv->crtc;
-+	conn = &priv->connector;
-+	info = &conn->display_info;
-+	KUNIT_ASSERT_TRUE(test, drm_connector_hdmi_scrambler_supported(conn));
-+	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
-+	KUNIT_ASSERT_TRUE(test, info->hdmi.scdc.supported);
-+	KUNIT_ASSERT_TRUE(test, info->hdmi.scdc.scrambling.supported);
-+
-+	preferred = find_preferred_mode(conn);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+
-+	rate = drm_hdmi_compute_mode_clock(preferred, 8, DRM_OUTPUT_COLOR_FORMAT_RGB444);
-+	KUNIT_ASSERT_GT(test, rate, HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
-+
-+	drm_modeset_acquire_init(&ctx, 0);
-+
-+retry_conn_enable:
-+	ret = drm_kunit_helper_enable_crtc_connector(test, drm, crtc, conn,
-+						     preferred, &ctx);
-+	if (ret == -EDEADLK) {
-+		ret = drm_modeset_backoff(&ctx);
-+		if (!ret)
-+			goto retry_conn_enable;
-+	}
-+	KUNIT_ASSERT_EQ(test, ret, 0);
-+
-+	conn_state = conn->state;
-+	KUNIT_ASSERT_NOT_NULL(test, conn_state);
-+
-+	KUNIT_EXPECT_GT(test, conn_state->hdmi.tmds_char_rate,
-+			HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
-+	KUNIT_EXPECT_TRUE(test, conn_state->hdmi.scrambler_needed);
-+
-+	drm_modeset_drop_locks(&ctx);
-+	drm_modeset_acquire_fini(&ctx);
-+}
-+
- struct color_format_test_param {
- 	enum drm_connector_color_format fmt;
- 	enum drm_output_color_format expected;
-@@ -2496,6 +2645,8 @@ static struct kunit_case drm_atomic_helper_connector_hdmi_check_tests[] = {
- 	KUNIT_CASE(drm_test_check_tmds_char_rate_rgb_8bpc),
- 	KUNIT_CASE(drm_test_check_tmds_char_rate_rgb_10bpc),
- 	KUNIT_CASE(drm_test_check_tmds_char_rate_rgb_12bpc),
-+	KUNIT_CASE(drm_test_check_scrambler_needed_low_rate),
-+	KUNIT_CASE(drm_test_check_scrambler_needed_high_rate),
- 	KUNIT_CASE_PARAM(drm_test_check_hdmi_color_format,
- 			 check_hdmi_color_format_gen_params),
- 	KUNIT_CASE_PARAM(drm_test_check_hdmi_color_format_420_only,
 
--- 
-2.55.0
+Not sure if it matters, but my pgp key got an update in the kernel keyring.
+The existing keys themself did not change, just the SHA1 signatures from
+the main key to the subkeys got refresh by better ones.
+
+And I added a second signing key that I plan to use in the future.
+
+
+Please pull.
+Thanks
+Heiko
+
+
+The following changes since commit dc59e4fea9d83f03bad6bddf3fa2e52491777482:
+
+  Linux 7.2-rc1 (2026-06-28 12:01:31 -0700)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.3-rockchip-dts64-1
+
+for you to fetch changes up to 7707e4555cf1d52689621e3206df8ad2debaa0dd:
+
+  arm64: dts: rockchip: Fix rk3566-bigtreetech-cb2 touchscreen property (2026-07-24 21:30:31 +0200)
+
+----------------------------------------------------------------
+New boards: Graperain G3568, HINLINK H28K, LCKFB Taishan Pi 3M,
+Orange Pi 5 Pro, Vicharak Axon, Vicharak Vaaman2, Youyeetoo YY3588
+
+New peripherals: eDP support on RK3576
+
+And of course a number of board-fixes, style-fixes and some newly
+enabled board-components.
+
+----------------------------------------------------------------
+Brian Mayer (1):
+      arm64: dts: rockchip: add HYM8563 RTC to Radxa CM5 IO board
+
+Chukun Pan (2):
+      dt-bindings: arm: rockchip: Add HINLINK H28K
+      arm64: dts: rockchip: Add HINLINK H28K
+
+Coia Prant (6):
+      arm64: dts: rockchip: Replace deprecated 'gpio' property with 'gpios' for 9Tripod X3568 v4
+      arm64: dts: rockchip: Add AP6275S support for 9Tripod X3568 v4
+      arm64: dts: rockchip: Fix incorrect interrupt for the 9Tripod X3568 v4
+      dt-bindings: vendor-prefixes: Add graperain
+      dt-bindings: arm: rockchip: Add Graperain G3568 series
+      arm64: dts: rockchip: Add devicetree for the Graperain G3568 v2
+
+Damon Ding (3):
+      arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
+      arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
+      arm64: dts: rockchip: Add eDP node for RK3576
+
+Daniele Briguglio (4):
+      dt-bindings: vendor-prefixes: Add youyeetoo
+      dt-bindings: arm: rockchip: Add Youyeetoo YY3588
+      arm64: dts: rockchip: Add Youyeetoo YY3588
+      arm64: dts: rockchip: fix HDMI-RX signal detect GPIO on yy3588
+
+Dennis Gilmore (4):
+      dt-bindings: arm: rockchip: Add Orange Pi 5 Pro
+      arm64: dts: rockchip: rename PLDO regulator labels to match schematic on rk3588s-orangepi-5
+      arm64: dts: rockchip: refactor items from Orange Pi 5/b to prep for Pro
+      arm64: dts: rockchip: Add Orange Pi 5 Pro board support
+
+Fabio Estevam (5):
+      arm64: dts: rockchip: Fix rk3588s-roc-pc audio description
+      arm64: dts: rockchip: Enable USB device mode on rk3588s-roc-pc
+      arm64: dts: rockchip: Fix Gru WLAN sideband interrupt
+      arm64: dts: rockchip: Fix the rk3566-radxa-cm3 Wifi compatible
+      arm64: dts: rockchip: Fix rk3566-bigtreetech-cb2 touchscreen property
+
+Hrushiraj Gandhi (4):
+      dt-bindings: arm: rockchip: add Vicharak Axon board
+      arm64: dts: rockchip: add Vicharak Axon board
+      dt-bindings: arm: rockchip: Add Vicharak Vaaman2
+      arm64: dts: rockchip: Add Vicharak Vaaman2 board
+
+Jakob Unterwurzacher (1):
+      arm64: dts: rockchip: fix emmc reset polarity on px30-cobra
+
+Krzysztof Kozlowski (1):
+      arm64: dts: rockchip: Correct indentation
+
+Liu Changjie (2):
+      dt-bindings: arm: rockchip: Add LCKFB Taishan Pi 3M
+      arm64: dts: rockchip: Add LCKFB Taishan Pi 3M
+
+Oren Klopfer (1):
+      Revert "arm64: dts: rockchip: Further describe the WiFi for the Pinephone Pro"
+
+Quentin Schulz (2):
+      arm64: dts: rockchip: fix eMMC reset polarity on PP-1516
+      arm64: dts: rockchip: fix eMMC reset polarity on PX30 Ringneck
+
+Ricardo Pardini (1):
+      arm64: dts: rockchip: fix regulator names on NanoPC-T6
+
+Vic B (1):
+      arm64: dts: rockchip: fix label of sys_led for nanopi-r4s
+
+Vsevolod Kozlov (1):
+      arm64: dts: rockchip: fan speed control for FriendlyELEC CM3588 NAS
+
+ .../devicetree/bindings/arm/rockchip.yaml          |   32 +
+ .../devicetree/bindings/vendor-prefixes.yaml       |    4 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    7 +
+ arch/arm64/boot/dts/rockchip/px30-cobra.dtsi       |    2 +-
+ arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi      |    2 +-
+ .../rockchip/px30-ringneck-haikou-video-demo.dtso  |   10 +-
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi    |    2 +-
+ .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   |    3 +-
+ .../arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi |   10 +-
+ .../boot/dts/rockchip/rk3399-pinephone-pro.dts     |   18 -
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi   |    2 +-
+ .../boot/dts/rockchip/rk3528-hinlink-h28k.dts      |  318 ++++++
+ .../boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  |    2 +-
+ arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi |    2 +-
+ .../boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts  |   60 +-
+ .../dts/rockchip/rk3568-graperain-g3568-v2.dts     |  940 ++++++++++++++++
+ .../boot/dts/rockchip/rk3576-lckfb-tspi-3m.dts     |  997 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           |   28 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |    4 +-
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi     |    4 +-
+ .../rockchip/rk3588-friendlyelec-cm3588-nas.dts    |   31 +
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi |   14 +-
+ .../boot/dts/rockchip/rk3588-vicharak-axon.dts     |  842 ++++++++++++++
+ .../boot/dts/rockchip/rk3588-vicharak-vaaman2.dts  |  535 +++++++++
+ .../boot/dts/rockchip/rk3588-youyeetoo-yy3588.dts  | 1180 ++++++++++++++++++++
+ .../boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi   |  256 +++++
+ .../boot/dts/rockchip/rk3588s-orangepi-5-pro.dts   |  358 ++++++
+ .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |    6 +-
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi      |  263 +----
+ .../boot/dts/rockchip/rk3588s-orangepi-5b.dts      |    2 +-
+ .../boot/dts/rockchip/rk3588s-radxa-cm5-io.dts     |   19 +
+ arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts    |   29 +-
+ 32 files changed, 5674 insertions(+), 308 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-graperain-g3568-v2.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-lckfb-tspi-3m.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-vicharak-axon.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-vicharak-vaaman2.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-youyeetoo-yy3588.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-pro.dts
+
+
 
 
 _______________________________________________
