@@ -4,89 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 640A8C5516D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 10:41:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B77F0C5516D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 13:17:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=+3+m9Uy0ogd3x2WwZy6IvnXsFnJbJSvnzPKIu0vIaZA=; b=iIie82Z5j93E/y0lF3funSpphv
-	wphNmhzqACDx45mDz1ubxEKs+aGwcvQC5md6rMYxFvmi42dJ5YgVldsy9kuRgN7jqrmSPJZUP7K1X
-	wB4FS20BleS+YE2W4iGAO9VI+yL2G7eokaQkYY+Ea0nrEgsKeK+zAk6bWxYnieL1ZB3Nc3OaxBiL6
-	gEkKR7RDXxr3QHPKB0+n3gNJHCdMkaa0/nLZpXL50MuF3vTwxe2V/xYsSKqUpnRl82hrBl5Wfl+Se
-	t6rH7d9TIg+Zbhz1aq6WeTQFKzBbBtK4Jbm1HhjAN9v1tmL2PgVkNgtKhYNBDotgjGxojQZQ4JTNp
-	xpsiajqw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+2YctBUmBIbzY7LnDkdUSNCzrvoSOHIHFu6wCxqWteo=; b=WnZxY0oeL0Y+uX
+	qBA9q5b3YcGD2NiR3pRaXBfiKLuT/7VxhqcZ2fTi6lAFbYouJSzfpIgyyewxFwaCPuqYf5k9q7sxc
+	tP2d/pAqR99C4ipZl9kFpQC63mK7XgtgUNlkFn8puCIiTEbE3Y/xIXbiNJy159nKHHYNU9DtcUaSL
+	cmDMUVk9QCuRTCZNUEyciNw2iy7TllC5OhxDLe6ypu5Ra7jcs0tqYDOLi9ZjYfU9mUxHl7UC4XmBr
+	e14Gadqgn0jjIH4EMH1VEz9w/phanszeWTxms91/0r2uiOWN7egJhFuiu4rrZsO/agJdbGLDOmD4q
+	dG4vluAkjcu7aRUDQ5wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpkfh-0000000CLXv-04vf;
-	Fri, 31 Jul 2026 10:40:57 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1wpn75-0000000Cb9V-0Bfc;
+	Fri, 31 Jul 2026 13:17:23 +0000
+Received: from out203-205-221-173.mail.qq.com ([203.205.221.173])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpkfg-0000000CLXd-0Vcl;
-	Fri, 31 Jul 2026 10:40:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Message-ID:Sender:Reply-To:Content-ID:Content-Description;
-	bh=KvZnB8ilLIwu5R8FZVzXX0PY43qv8Q2CmIPD7haY9Qg=; b=dRbpjMulagCbuAbi7CyeUaD80p
-	QH6ItsDje1Ep9t4l/FgxWf+1bTMwaexx49nkaHCN/JhPUN7nshtvdDqxI0M3SrMi/milSJ0iETllP
-	cIYTsCb+e1fLHhc86BCI6DiDxN8zNjPUxo9xg1s+EpQ8x45DsC1E6c0UjMYccLy5FUwN+XshBduyN
-	qCZIyDeSiBKhFdbzLTFaKzgC07Z8s7ksYmPkGQPbXiN9gZGSJma9e+ManZK2OUmAujBXEvaSXmZNR
-	B3hpynVr3dfbimkJ+2dSHUDOQG+E912VVUu903wurnR7GE1jVm+alWaWDfERBpvcuyt18h0K+W7Q1
-	Ko+VeInA==;
-Received: from out162-62-58-216.mail.qq.com ([162.62.58.216])
-	by casper.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpkfb-00000001Swn-0OX3;
-	Fri, 31 Jul 2026 10:40:54 +0000
+	id 1wpn6z-0000000Cb7K-3AUN
+	for linux-rockchip@lists.infradead.org;
+	Fri, 31 Jul 2026 13:17:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1785494443; bh=KvZnB8ilLIwu5R8FZVzXX0PY43qv8Q2CmIPD7haY9Qg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=MVX9UiyzQOJ0lkHuMll1SL59TaavoymL9KpfUCiLuIQSMAjqi2p0vYsk71DDvyCbP
-	 OAmVw3AOudI5S966eg9+ZwoD1g4dpvdH+egdSVdxz6OLoUL+S5k2bwM6HW24Ch5FlI
-	 FYEfxtFfzLzyMItTsEEPtIUcSx291jzXZTp7CdPg=
-Received: from ubuntu2204.localdomain ([2409:8d20:22b:54c:9e54:40ff:fe02:3f0f])
-	by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
-	id 9C92DE69; Fri, 31 Jul 2026 18:39:09 +0800
-X-QQ-mid: xmsmtpt1785494355tg0nre34l
-Message-ID: <tencent_AF224EFBC9343DD238C80824AC8CA805480A@qq.com>
-X-QQ-XMAILINFO: OLHLRPgEm/lFBDX1jZ930v/2ePlaUvWy8OXjkSfa5ei3d28cISUTX3o97Y+yy3
-	 dbEoghbRXI/8h69RkxVxnCNwUUvTon5XfZVWEkjaNvZAD/xqw2lDwM0PeBLthJaapvAtvVpY6v6g
-	 6pykDbZatWeQ17C6JuJniuqgobWyvYRkid7/iwfQK8E54hRucUrWbF6esDDIkdwxxUDk4288HOEr
-	 /a5vHDwxwkeYZ+gPvuY3H7MpO7FiZQ8HbZzqdEy3ERRVw+dX6e1w88XHBt1wOQ1X0lN/sjT4jHu8
-	 1dItL4haq6CLftk72M5TgXaZ7yl3/oYH/Xk4uHUAT2mnVFkcU4fK8F7bY6FOMjX2jTYCsu8pkLrX
-	 z4tkyVHbOrYu3dUVKuTN+FKS9C4tpSx1CR8kH+bMLY+pLxNAnXcgu63pQdQrmT3UdMN9Mouw2URR
-	 gE9KzjEnHsK3hxWLiEqRheuFZkJPRQgOSJHlxV3Gzo5xWDQJ8TpbbGcp4AFpkFoucQJrB8ItBBrM
-	 nc/jrrJPTlKmwZUAIUNjvuibXExclxm2KO5b3x3TH4V6Fs01DBVe8tV52IvbaakmmbZVG8L1aHgy
-	 Ptp/stj55Rek4RgHQHeJS44DLUiCtyHDc6JZnSBOhwfosnQTVRz0VP3I30WgxOrK+z6c+Pazq/8F
-	 Ycv140Ufz3XyydRRM9O6jgcefhRMHhb43F9cuQ6TY+uDIEUkimtO9nYtbJ2bxkT20O5fb0e2TDj3
-	 apyQw2QcdFgXSAKUETdbxrPcomK2BBSrZsypJmMwv1uO5ZeTmyub+MSAlh25y6OvSDp+EYkK9buv
-	 gYCO+3OiWKjhzy8Q5h3Bv+hooFDXoss+BNiNcsrq5jWL9BEqQPMZ5jQ/YKA3pDmwYd3pfbDG0uqY
-	 OjFPMuPiAr4lBtHbixwZbRGQhkjjNYH1Plq5oQsn/LsxqRQ2wuhUZhvsevjOJ+3UOXDxToLTh4nY
-	 ukduDmrH645Dw/lte6Lc9MGq3n6lAmzWqwAEGKLTmgopFLRo8rF4QobOPZ72cTdsMv/IGFSPnro2
-	 rTETFjLedBfEaG9lryPI3by4fQ9pSVhBM9CRw/nHH/9diQLCBkEkNtBb7OKO+QhGFcgR0fCI4/of
-	 PolwG5sjSdO4fS2dE=
-X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
-From: Cunhao Lu <1579567540@qq.com>
-Date: Fri, 31 Jul 2026 18:39:05 +0800
-Subject: [PATCH v5 3/3] can: rockchip_canfd: serialize TX state and command
- writes
-MIME-Version: 1.0
-X-OQ-MSGID: <20260731-master-v5-3-5b27029dee20@qq.com>
-References: <20260731-master-v5-0-5b27029dee20@qq.com>
-In-Reply-To: <20260731-master-v5-0-5b27029dee20@qq.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>, 
- Vincent Mailhol <mailhol@kernel.org>, kernel@pengutronix.de, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: Cunhao Lu <1579567540@qq.com>, linux-can@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, stable@vger.kernel.org
-X-Mailer: b4 0.15.2
+	t=1785503832; bh=gW+tvRQPk481HdTwPz8zkkWSMpWsfa6tS8dyetXXOrU=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=ewV+8ARlCn7ZAMKcE79lizjisbfeU2oczTzpc0TFED9y8m2W5Q9/Sq0Wrs36zYZrc
+	 3KprUZeCURqox5ekUEh57UwE1pr//ENACRGlP1R3xkcvtfF4RxWEQf78d4TQIyv10p
+	 oIpqCvlVFU1JsSWvz2CdzmS/FEQOpiNblyhtLYfI=
+X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
+X-QQ-XMAILINFO: MhgqsjsLyB9lgglpvTRWkq4RtQwA360U8xUnh2PTRxSK+CQBsNgNq1J1FIRxgq
+	 r218z1HFIuJ9IRcNN5zmmaMt/+Swh/pTr+m/FmKmAGPYysj39rXWqFCEG9LDTiz/QS0L5Mt5TDq12
+	 hK8AZIhchdjCP3Y10d3BrioMfVynEtIteUUrAJiEbx36wL1yuA4tr38v1xSg9J7UUf1Ph5rDVJocu
+	 S6a9oD38B8YhsvvwpOCwbJ0ru4XfWofU59ZHPAeP6AylfuSJ12t2gbay4LCiC8XwWLe+g6Vi2xqdn
+	 JYy2A4ISNpdjEcdoKmWT2gTo9aKVmZ3rNFqtnFOd015HhD8uqW/btnIuxVBiaBD1fK3slEOiya8QP
+	 /Os9yMk4OvS+HTRwyI/WWIf+GQ8vyyt8p/gOiAimMRtVh6g0oOztKvqd/VlWM+hxGtpglIfa9U7aa
+	 7Q0AoYrM0EzA9A0jqNO9IFtTr+m6ZzpV40hmGYh06zr49fvC+ri5ridNtnHELqCFSf1YxxZWNzx4t
+	 1s/g6FdM8Mj7tzrqc5yKJJMu9TSMyFUCcme2wdjPZoHq2vZw2zgq01YMDjKrR/KLF9Ijm5V7WuaCq
+	 fW04sxTl5GSnFtdwlK/6uRAx/UkQwWDt+GqomKu8rjDu59JJPVRTbcLP5kLn1q2/TzuVyL0XnVBJe
+	 9rfEdH/l1xFLif18WpiWQXP4mvFIdnR60a7wrKY+xZ0M5pV74OBX4QC6nP5H8L1E8Y7FB4EB6lrk+
+	 HmMzyPoe8rq+3thLJUbXhMtf87Ho+akGM06EE0d/kC52iRq/pEmQmwyupb7BTcMlD31DNapja5TPH
+	 8LFV1Eg/QqmyhzBhJUSuSN6ZpLJEzgUN5s3Ex7lbSNBJmrrJHS4P1ewnVzJHkxck0rrHt7r/p4d9G
+	 kERH+8anl8MLPpkrwcCnsS/tdDnL9YXtZEDChwvx3W+p1rxxb3DUG9GNrlvp+w9GJxSOU4cGxAa4Q
+	 O1wHEbJ4Q29JHduTzjfV24N/6YaJc5OAzeS490Y2lDYDP/jXcAq6Jh3Dbn3iyP9uOWHRUZDUFFKvy
+	 vzpgMqmCwmtuZWjMOuk/9eRMhA9ajLpmh5waTNNmqut1OxsvFQDd0YfNaVutwqokygINboFFp86cn
+	 9D8=
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>
+Cc: "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH v6 2/4] can: rockchip: add RK3588 CAN support
+Mime-Version: 1.0
+Date: Fri, 31 Jul 2026 21:17:10 +0800
+X-Priority: 3
+Message-ID: <tencent_5AC853C017A2AE1F5B13110D854C79C2FF06@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <tencent_7BAA0052C402BFFD26291A64198084E39107@qq.com>
+ <tencent_207E464D12344B3228096E23A001D6882508@qq.com>
+ <20260731-tall-camouflaged-earthworm-e1a7d0-mkl@pengutronix.de>
+ <tencent_A3698A465C4621E164443B0005D1CC6FAE05@qq.com>
+	<20260731-precise-functional-lobster-cd779f-mkl@pengutronix.de>
+In-Reply-To: <20260731-precise-functional-lobster-cd779f-mkl@pengutronix.de>
+X-QQ-mid: xmsezb41-0t1785503830tg7jpmm29
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_114051_767511_0AB3BF2D 
-X-CRM114-Status: GOOD (  21.17  )
+X-CRM114-CacheID: sfid-20260731_061718_950377_1E88F910 
+X-CRM114-Status: GOOD (  17.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,284 +82,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The TX completion path removes an echo skb before advancing tx_tail. In
-parallel, the transmit path reads tx_head, tx_tail and the tail echo slot
-when applying the erratum 6 queue restriction. There is no synchronization
-between these operations.
-
-On SMP, the transmit path can consequently observe a pending frame with
-an empty echo slot. It can also keep a pointer to an echo skb while the
-completion path removes and queues it for NAPI, where it can be freed on
-another CPU. The inconsistent snapshot can stop the netdev TX queue when
-there is no later completion to wake it.
-
-There is a second race in the command submission sequence.
-rkcanfd_start_xmit() runs in softirq context.
-rkcanfd_xmit_retry() runs from the RX interrupt handler. On controllers
-affected by erratum 12, both execute a MODE/CMD/MODE register sequence. The
-interrupt handler can restore the default MODE between the softirq writes.
-The resumed softirq then issues CMD without SPACE_RX_MODE and bypasses the
-erratum 12 workaround.
-
-Add a TX state lock and use it to protect tx_head, tx_tail and the echo skb
-ring as one state. The same lock serializes the MODE/CMD/MODE sequence
-between the transmit and interrupt paths. Keep completion and wakeup
-outside the lock to avoid nesting the TX state lock with the netdev TX
-queue lock. Install the echo skb before loading the hardware TX buffer so
-an echo setup failure cannot desynchronize the hardware and software TX
-state.
-
-Tested on an RK3588 rev2.2 at 1 Mbit/s with 100,000 extended CAN frames.
-The run triggered 138 erratum 6 retries and completed without drops, queue
-stalls or driver warnings. RK3588 does not enable erratum 12, so this test
-does not exercise that hardware workaround.
-
-Fixes: ae002cc32ec4 ("can: rockchip_canfd: prepare to use full TX-FIFO depth")
-Fixes: 83f9bd6bf39d ("can: rockchip_canfd: implement workaround for erratum 12")
-Cc: stable@vger.kernel.org
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
----
- drivers/net/can/rockchip/rockchip_canfd-core.c |  1 +
- drivers/net/can/rockchip/rockchip_canfd-rx.c   | 31 +++++++++++++++++++-------
- drivers/net/can/rockchip/rockchip_canfd-tx.c   | 26 ++++++++++++++++++---
- drivers/net/can/rockchip/rockchip_canfd.h      |  4 +++-
- 4 files changed, 50 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 29de0c01e4ed..c8257858b452 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -904,6 +904,7 @@ static int rkcanfd_probe(struct platform_device *pdev)
- 	priv->can.do_set_mode = rkcanfd_set_mode;
- 	priv->can.do_get_berr_counter = rkcanfd_get_berr_counter;
- 	priv->ndev = ndev;
-+	spin_lock_init(&priv->tx_lock);
- 
- 	match = device_get_match_data(&pdev->dev);
- 	if (match) {
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-index 475c0409e215..02efc8c0cddc 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-@@ -100,14 +100,25 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 	const struct canfd_frame *cfd_nominal;
- 	const struct sk_buff *skb;
- 	unsigned int tx_tail;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+
-+	if (!rkcanfd_get_tx_pending(priv))
-+		goto out_unlock;
- 
- 	tx_tail = rkcanfd_get_tx_tail(priv);
- 	skb = priv->can.echo_skb[tx_tail];
- 	if (!skb) {
-+		const unsigned int tx_head_unmasked = priv->tx_head;
-+		const unsigned int tx_tail_unmasked = priv->tx_tail;
-+
-+		spin_unlock_irqrestore(&priv->tx_lock, flags);
-+
- 		netdev_err(priv->ndev,
- 			   "%s: echo_skb[%u]=NULL tx_head=0x%08x tx_tail=0x%08x\n",
- 			   __func__, tx_tail,
--			   priv->tx_head, priv->tx_tail);
-+			   tx_head_unmasked, tx_tail_unmasked);
- 
- 		return -ENOMSG;
- 	}
-@@ -123,17 +134,18 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 		rkcanfd_handle_tx_done_one(priv, ts, &frame_len);
- 
- 		WRITE_ONCE(priv->tx_tail, priv->tx_tail + 1);
-+		*tx_done = true;
-+
-+		spin_unlock_irqrestore(&priv->tx_lock, flags);
- 		netif_subqueue_completed_wake(priv->ndev, 0, 1, frame_len,
- 					      rkcanfd_get_effective_tx_free(priv),
- 					      RKCANFD_TX_START_THRESHOLD);
- 
--		*tx_done = true;
--
- 		return 0;
- 	}
- 
- 	if (!(priv->devtype_data.quirks & RKCANFD_QUIRK_RK3568_ERRATUM_6))
--		return 0;
-+		goto out_unlock;
- 
- 	/* Erratum 6: Extended frames may be send as standard frames.
- 	 *
-@@ -143,7 +155,7 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 	 */
- 	if (!(cfd_nominal->can_id & CAN_EFF_FLAG) ||
- 	    (cfd_rx->can_id & CAN_EFF_FLAG))
--		return 0;
-+		goto out_unlock;
- 
- 	/* Not affected if:
- 	 * - standard part and RTR flag of the TX'ed frame
-@@ -151,20 +163,20 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 	 */
- 	if ((cfd_nominal->can_id & (CAN_RTR_FLAG | CAN_SFF_MASK)) !=
- 	    (cfd_rx->can_id & (CAN_RTR_FLAG | CAN_SFF_MASK)))
--		return 0;
-+		goto out_unlock;
- 
- 	/* Not affected if:
- 	 * - length is not the same
- 	 */
- 	if (cfd_nominal->len != cfd_rx->len)
--		return 0;
-+		goto out_unlock;
- 
- 	/* Not affected if:
- 	 * - the data of non RTR frames is different
- 	 */
- 	if (!(cfd_nominal->can_id & CAN_RTR_FLAG) &&
- 	    memcmp(cfd_nominal->data, cfd_rx->data, cfd_nominal->len))
--		return 0;
-+		goto out_unlock;
- 
- 	/* Affected by Erratum 6 */
- 	u64_stats_update_begin(&rkcanfd_stats->syncp);
-@@ -185,6 +197,9 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 
- 	rkcanfd_xmit_retry(priv);
- 
-+out_unlock:
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+
- 	return 0;
- }
- 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-index fc338ea865fe..b367341dd0ae 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-@@ -14,6 +14,8 @@ static bool rkcanfd_tx_tail_is_eff(const struct rkcanfd_priv *priv)
- 	const struct sk_buff *skb;
- 	unsigned int tx_tail;
- 
-+	lockdep_assert_held(&priv->tx_lock);
-+
- 	if (!rkcanfd_get_tx_pending(priv))
- 		return false;
- 
-@@ -33,13 +35,22 @@ static bool rkcanfd_tx_tail_is_eff(const struct rkcanfd_priv *priv)
- 	return cfd->can_id & CAN_EFF_FLAG;
- }
- 
--unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv)
-+unsigned int rkcanfd_get_effective_tx_free(struct rkcanfd_priv *priv)
- {
-+	unsigned int tx_free;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+
- 	if (priv->devtype_data.quirks & RKCANFD_QUIRK_RK3568_ERRATUM_6 &&
- 	    rkcanfd_tx_tail_is_eff(priv))
--		return 0;
-+		tx_free = 0;
-+	else
-+		tx_free = rkcanfd_get_tx_free(priv);
-+
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
- 
--	return rkcanfd_get_tx_free(priv);
-+	return tx_free;
- }
- 
- static void rkcanfd_start_xmit_write_cmd(const struct rkcanfd_priv *priv,
-@@ -60,6 +71,8 @@ void rkcanfd_xmit_retry(struct rkcanfd_priv *priv)
- 	const unsigned int tx_tail = rkcanfd_get_tx_tail(priv);
- 	const u32 reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_tail);
- 
-+	lockdep_assert_held(&priv->tx_lock);
-+
- 	rkcanfd_start_xmit_write_cmd(priv, reg_cmd);
- }
- 
-@@ -69,6 +82,7 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 	u32 reg_frameinfo, reg_id, reg_cmd;
- 	unsigned int tx_head, frame_len;
- 	const struct canfd_frame *cfd;
-+	unsigned long flags;
- 	int err;
- 	u8 i;
- 
-@@ -88,10 +102,13 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 		return NETDEV_TX_BUSY;
- 	}
- 
-+	spin_lock_irqsave(&priv->tx_lock, flags);
- 	tx_head = rkcanfd_get_tx_head(priv);
- 	frame_len = can_skb_get_frame_len(skb);
- 	err = can_put_echo_skb(skb, ndev, tx_head, frame_len);
- 	if (err) {
-+		spin_unlock_irqrestore(&priv->tx_lock, flags);
-+
- 		ndev->stats.tx_dropped++;
- 		return NETDEV_TX_OK;
- 	}
-@@ -136,6 +153,7 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 	WRITE_ONCE(priv->tx_head, priv->tx_head + 1);
- 
- 	rkcanfd_start_xmit_write_cmd(priv, reg_cmd);
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
- 
- 	netif_subqueue_maybe_stop(priv->ndev, 0,
- 				  rkcanfd_get_effective_tx_free(priv),
-@@ -152,6 +170,8 @@ void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
- 	unsigned int tx_tail;
- 	struct sk_buff *skb;
- 
-+	lockdep_assert_held(&priv->tx_lock);
-+
- 	tx_tail = rkcanfd_get_tx_tail(priv);
- 	skb = priv->can.echo_skb[tx_tail];
- 
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 93131c7d7f54..3cf283a7b380 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -15,6 +15,7 @@
- #include <linux/netdevice.h>
- #include <linux/reset.h>
- #include <linux/skbuff.h>
-+#include <linux/spinlock.h>
- #include <linux/timecounter.h>
- #include <linux/types.h>
- #include <linux/u64_stats_sync.h>
-@@ -462,6 +463,7 @@ struct rkcanfd_priv {
- 	struct can_rx_offload offload;
- 	struct net_device *ndev;
- 
-+	spinlock_t tx_lock; /* protects tx_head, tx_tail and echo_skb */
- 	void __iomem *regs;
- 	unsigned int tx_head;
- 	unsigned int tx_tail;
-@@ -544,7 +546,7 @@ void rkcanfd_timestamp_start(struct rkcanfd_priv *priv);
- void rkcanfd_timestamp_stop(struct rkcanfd_priv *priv);
- void rkcanfd_timestamp_stop_sync(struct rkcanfd_priv *priv);
- 
--unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv);
-+unsigned int rkcanfd_get_effective_tx_free(struct rkcanfd_priv *priv);
- void rkcanfd_xmit_retry(struct rkcanfd_priv *priv);
- netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev);
- void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
-
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTWFyYywKCj4gPsKgPsKgQ2FuwqB5b3XCoGF0dGFjaMKgdGhlwqBUREPCoHRvwqB0aGXCoENB
+TsKgZnJhbWV3b3JrP8KgU2VlwqBjb21taXTCoDVlMTY2MzgxMGUxMQo+ID7CoD7CoCgiY2FuOsKg
+bWNwMjUxeGZkOsKgZml4wqBUREPCoHNldHRpbmfCoGZvcsKgbG93wqBkYXRhwqBiaXTCoHJhdGVz
+IikuwqBBbmTCoGNoZWNrwqBpZgo+ID7CoD7CoENBTi1GRMKgd29ya3PCoG9uwqB0aGXCoHJrMzU4
+OMKgd29ya3M/Cj4gPgo+ID7CoENvdWxkwqB3ZcKgbGVhdmXCoHRoZcKgUkszNTg4wqBUREPCoHN1
+cHBvcnTCoG91dMKgb2bCoHRoaXPCoHBhdGNowqBzZXJpZXPCoGZvcsKgbm93Pwo+IAo+IC4uYW5k
+wqBtYXJrwqB0aGXCoHJrMzU4OMKgYXPCoFJLQ0FORkRfUVVJUktfQ0FORkRfQlJPS0VOwqBmb3LC
+oG5vdz/CoEZpbmXCoHdpdGjCoG1lLgoKSSBoYXZlIGZpbmlzaGVkIHRlc3RpbmcgdGhlIENBTi1G
+RCBUREMgaW50ZWdyYXRpb24gb24gUkszNTg4LgoKRW5hYmxpbmcgVERDIG1ha2VzIHRoZSB0cmFu
+c21pdHRlciBlbnRlciBidXMtb2ZmIGZvciBldmVyeSBURENPIHZhbHVlCnRlc3RlZC4gVGhpcyBp
+bmNsdWRlcyB0aGUgZnJhbWV3b3JrIHZhbHVlIChURENPPTQ4KSwgVERDTz0wLCBhbmQgdGhlCm5v
+bi16ZXJvIHZhbHVlcyAxLCA4LCAxNiwgMjQsIDMyLCA0MCwgNDggYW5kIDU2LiBXaXRoIFREQ089
+NjMsIG9ubHkgb25lCmZyYW1lIHdhcyByZWNlaXZlZCBkdXJpbmcgYSAxMCBzZWNvbmQgdGVzdCwg
+c28gdGhhdCBzZXR0aW5nIGlzIG5vdCB1c2FibGUuCgpJIGNoZWNrZWQgdGhlIHJlZ2lzdGVyIGRl
+ZmluaXRpb24gYWdhaW5zdCBSb2NrY2hpcCBSSzM1ODggVFJNClYxLjAtUGFydDEtMjAyMjAzMDku
+cGRmLiBUaGUgZHJpdmVyIHVzZXMgQ0FOX1RSQU5TTUlUX0RFTEFZX0NPTVBFTlNBVElPTiBhdApv
+ZmZzZXQgMHgxMDgsIHdpdGggdGRjX29mZnNldCBpbiBiaXRzIDY6MSBhbmQgdGRjX2VuYWJsZSBp
+biBiaXQgMCwgd2hpY2gKbWF0Y2hlcyB0aGUgVFJNLiBUaHVzLCB0aGUgZmFpbHVyZSBpcyBub3Qg
+ZXhwbGFpbmVkIGJ5IGFuIGluY29ycmVjdCByZWdpc3RlcgphZGRyZXNzIG9yIGZpZWxkIGRlZmlu
+aXRpb24uCgpUaGUgdGVzdCBzZXR1cCB3YXM6CgogIEJvYXJkOiAgICAgICAgICAgICBlbWJlZGZp
+cmUscmszNTg4LWx1YmFuY2F0LTVpbwogIENBTiBjbG9jazogICAgICAgICAzMDAgTUh6CiAgTm9t
+aW5hbCBiaXRyYXRlOiAgIDUwMCBrYml0L3MKICBEYXRhIGJpdHJhdGU6ICAgICAgNSBNYml0L3MK
+ICBTYW1wbGUgcG9pbnRzOiAgICAgODAlIG5vbWluYWwsIDgwJSBkYXRhCiAgQnVzOiAgICAgICAg
+ICAgICAgIGNhbjAgYW5kIGNhbjEgZGlyZWN0bHkgY29ubmVjdGVkLCA2MCBPaG0gdGVybWluYXRp
+b24KCldpdGggVERDIGRpc2FibGVkLCBhYm91dCAyOSw3NzUgZnJhbWVzIHdlcmUgcmVjZWl2ZWQg
+aW4gdGhyZWUgc2Vjb25kcyB3aXRoCm5vIGJ1cyBlcnJvcnMuIFdpdGggVERDIGVuYWJsZWQsIGNh
+bjAgdHlwaWNhbGx5IHJlYWNoZWQgYnVzLW9mZiBhZnRlciBhYm91dAoxNS0zMSBidXMgZXJyb3Jz
+LgoKVGhpcyBpcyBhIHByZWxpbWluYXJ5IGluZGljYXRpb24gb2YgYSBwcm9ibGVtIGluIHRoZSBS
+SzM1ODggQ0FOIElQIFREQwpwYXRoLCBhbHRob3VnaCBpdCBpcyBub3Qgc3VmZmljaWVudCB0byBw
+cm92ZSBhIHNpbGljb24gZGVmZWN0LiBJbgpwYXJ0aWN1bGFyLCB0aGUgaGFyZHdhcmUtbWVhc3Vy
+ZWQgdHJhbnNtaXR0ZXIgZGVsYXkgKFREQ1YpIGlzIG5vdCBvYnNlcnZhYmxlCnRocm91Z2ggdGhl
+IHJlZ2lzdGVycyBkZXNjcmliZWQgYnkgdGhlIFRSTSwgc28gdGhlIFREQyBvZmZzZXQgc2VtYW50
+aWNzCnN0aWxsIG5lZWQgdG8gYmUgdmVyaWZpZWQgaW5kZXBlbmRlbnRseS4KClREQyBpcyBub3Qg
+YSBtYW5kYXRvcnkgZmVhdHVyZSBmb3IgYSBDQU4tRkQgaW1wbGVtZW50YXRpb24uIEl0IGNvbXBl
+bnNhdGVzCnRoZSBUWC10by1SWCBsb29wIGRlbGF5IHdoZW4gdGhhdCBkZWxheSB3b3VsZCBvdGhl
+cndpc2UgY29uc3VtZSB0aGUgdGltaW5nCm1hcmdpbiBiZWZvcmUgdGhlIG5vcm1hbCBzYW1wbGUg
+cG9pbnQuIFdoZXRoZXIgaXQgbXVzdCBiZSBlbmFibGVkIGRlcGVuZHMgb24KdGhlIGNvbXBsZXRl
+IGhhcmR3YXJlIHBhdGgsIGluY2x1ZGluZyB0aGUgY29udHJvbGxlciwgdHJhbnNjZWl2ZXIsIFBD
+QiBhbmQKYnVzLiBJdCBpcyB0aGVyZWZvcmUgbm90IHJlcXVpcmVkIHNvbGVseSBiZWNhdXNlIENB
+Ti1GRCBvciBhIHBhcnRpY3VsYXIKZGF0YSBiaXRyYXRlIGlzIHVzZWQuCgpPbiB0aGUgYm9hcmQg
+dXNlZCBmb3IgdGhpcyB0ZXN0LCBDQU4tRkQgcnVucyByZWxpYWJseSBhdCA1IE1iaXQvcyB3aXRo
+IFREQwpkaXNhYmxlZCBhbmQgbm8gbG9zdCBmcmFtZXMuIFRoaXMgZGVtb25zdHJhdGVzIHRoYXQg
+UkszNTg4IHN1cHBvcnRzIENBTi1GRCwKd2hpbGUgdGhlIG1heGltdW0gdXNhYmxlIGRhdGEgYml0
+cmF0ZSBzdGlsbCBkZXBlbmRzIG9uIHRoZSBib2FyZCBkZXNpZ24gYW5kCml0cyBUWC10by1SWCBk
+ZWxheS4gQm9hcmRzIHdpdGggYSBsb25nZXIgZGVsYXkgbWF5IG5lZWQgYSBsb3dlciBkYXRhIGJp
+dHJhdGUsCmp1c3QgYXMgZGlmZmVyZW50IENBTiB0cmFuc2NlaXZlcnMgaGF2ZSBkaWZmZXJlbnQg
+bWF4aW11bSBkYXRhLXJhdGUKc3BlY2lmaWNhdGlvbnMgKGZvciBleGFtcGxlLCA4IE1iaXQvcyBm
+b3Igc29tZSBkZXZpY2VzIGFuZCA1IE1iaXQvcyBmb3IKb3RoZXJzKS4KCkluIG15IG9waW5pb24s
+IGVuYWJsaW5nIENBTi1GRCBzdXBwb3J0IG9uIFJLMzU4OCBpcyBpbmRlcGVuZGVudCBvZiBUREMu
+ClREQyBpcyBhbiBvcHRpbWl6YXRpb24gZm9yIGhhcmR3YXJlIHBhdGhzIHRoYXQgbmVlZCBhZGRp
+dGlvbmFsIFRYLXRvLVJYCmRlbGF5IGNvbXBlbnNhdGlvbiwgcmF0aGVyIHRoYW4gYSBwcmVyZXF1
+aXNpdGUgZm9yIENBTi1GRCBvcGVyYXRpb24uIEkgd291bGQKdGhlcmVmb3JlIHN0aWxsIGxpa2Ug
+dG8gZW5hYmxlIENBTi1GRCBzdXBwb3J0IGZvciBSSzM1ODggaW4gdGhpcyBzZXJpZXMgd2hpbGUK
+a2VlcGluZyBUREMgZGlzYWJsZWQuIFREQyBzdXBwb3J0IGNhbiBiZSBpbnZlc3RpZ2F0ZWQgc2Vw
+YXJhdGVseSBpbiBhCmZvbGxvdy11cCBwYXRjaCBvbmNlIGl0cyBiZWhhdmlvciBoYXMgYmVlbiB1
+bmRlcnN0b29kLgoKQmVzdCByZWdhcmRzLApDdW5oYW8KX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
