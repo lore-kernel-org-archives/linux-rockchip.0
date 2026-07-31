@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D030C5516F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:21:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C89CC55171
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:22:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=85Ojho549PKkuI7fiAuLHdyaRTQE4HWSsgzqeZx7W8U=; b=JD5gF1xijPv2+9
-	yt4JazMv6+M+mXtjBd+JFGrI01SvereazgA44OzbFdYinIFXFyYHZs/M4tBJu78GzEWTghIOcjQSQ
-	i/MtRMfba+H0P9+uMAgn4G6iMrYk0uKStO8PiVf8sycArYsSQ0A/RCcsUyoXxpPR0Lo7zME+Dmn2T
-	EW2AT7qbNOJaJtm5TbNBKSz+fQCdjjXgn2z4vVSEgtq+h8fhh/MrEJWMs+pq+4eXh3mFAS/NJY0/0
-	NTIRgRL0j0kmdZ9IL3wmASFqWWgp+PcXIw9FI89ugC4qLsLK/oABR3X6ukyd6foAfSb6XsSReEgYn
-	ruRGEwaG4lhHDZ6lTuPw==;
+	List-Owner; bh=pKJfCD+8BDaIXJLvzh4yvBX/NeUV1kaYgZRwZRa+BRs=; b=ZTNO1zhthf4dtx
+	thi4XrWfVVEHowe4BnD58cFAr5ovfNWHVN59ZTVTeetrJwgc5cRMZpaIsnVYvmL5e62BocYynFHiU
+	LINNML6iWcJclrySCYA9SIxMdJqSZroM5s2LZ2T8wQ6Zft4TG84E2OswjNETijPDcCa/rfYqpvZ8m
+	HgXZf0dQL64fSI4ap9m/Q4blQ/hA12lgS+0jrtY7eQ8yhgxXc/C6UTnRn7KGESYTRIxzbjPqbeExK
+	sO4phy1QPz+HIaO+Lpo8u4qLZV4LWHRc/jzFPjwktQ2I9/+nK0RcqkdWRbHwLjiKHc3H/wmB/mtaG
+	n9gvrQkJtlkXti2sWN7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppzU-0000000D18Q-48Le;
-	Fri, 31 Jul 2026 16:21:44 +0000
+	id 1wppzg-0000000D1HY-3eEN;
+	Fri, 31 Jul 2026 16:21:56 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxK-0000000Cytt-1pEp;
-	Fri, 31 Jul 2026 16:19:31 +0000
+	id 1wppxM-0000000Cyvr-144P;
+	Fri, 31 Jul 2026 16:19:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514768;
-	bh=8K2UYBSnPY80dXtzmdVQyx34GOgVTImDqKMUj0/HGi8=;
+	s=mail; t=1785514769;
+	bh=/yiHYpv6JDAP8TqmgFqNkriKXPlZVLMG1+AZdUe8aaI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=REUAeMThoT68dG+Q98yoiSGipFezFqECWE8iq7EJU3ol2V9enQrOT9LJZY3iLtqjs
-	 P0lr1v8P1r9WPY0z9wQkIj+PuDp524Fj6y+P+ETd2eVMvbcTHwMRFcKKuHGt3lw9Nm
-	 71TRVZS8ca6tZiX/r9QeAST+XKrTMhJauD1yWbZXQeSBu+EsCNnzA5Yl9ebcz2tZ50
-	 AqeXzk6NMK98y77DUAoW8HJeGA6iXtUZODt4SuYpCoAKQvfhGIjWm79R2F4bWhIbzd
-	 7WQqPi/WqyDenf3TkKOHusCB7nSPvF1CT+oy6wawlsejO9DiYdd2gYIWJWseMh2bMU
-	 m0r1QmfRVkjBw==
+	b=Nx3zp4QP1XWq1RhdyKxkJGxDjKSAnScsdyLyY/Ejw8Maix9gxRsKZmnBh48DMaOk8
+	 Dc8B/0q2srvMM6Vb9cuztdMcU0TndG/ZwvQrn3f7BabQcibqis3G0Z5OFrTgGnHEDp
+	 6g7rAhRyZNC7Hn3BSpy9O50UHugX5cNaCSHEMn3q8m2Ema5cSwb3z/M8aW47RKvGJD
+	 z926IbktF3gvsVSniXa5qoJLtyHVqYc73Bu0yP50EN4pPxa+4xvCnGm3KoBa0/iBxw
+	 FviX8yaiIpnynaWY+ncL+ofGGpKjGi0cC64I2V8wg7+9f8uVXAWGz9LSxL7NkVtCxE
+	 yEOaibzjaAsMg==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6801517E093E;
-	Fri, 31 Jul 2026 18:19:28 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2A77117E0943;
+	Fri, 31 Jul 2026 18:19:29 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:26 +0300
-Subject: [PATCH v10 19/69] drm/display: bridge_connector: Wire up HDMI 2.0
- scrambler callbacks
+Date: Fri, 31 Jul 2026 19:19:27 +0300
+Subject: [PATCH v10 20/69] drm/display: hdmi-state-helper: Add source TMDS
+ rate validation
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-19-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-20-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -75,8 +75,9 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091930_636594_E8C6A91F 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20260731_091932_483314_899B78E6 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,93 +94,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Connect the bridge connector's .scrambler_{enable|disable} callbacks to
-the underlying bridge's .hdmi_scrambler_{enable|disable} funcs when
-HDMI 2.0 conformance is advertised.
+Validate the computed TMDS character rate against
+connector->hdmi.max_tmds_char_rate, when provided by the driver/source.
 
-This completes the bridge connector plumbing so that the SCDC
-scrambling helpers can control source-side scrambling through the
-bridge chain.
+This gives HDMI connectors common support for rejecting modes whose TMDS
+character rate exceeds the source supported limit, while still allowing
+drivers with custom validation requirements to implement their own
+tmds_char_rate_valid() callback.
 
 Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_bridge_connector.c | 40 +++++++++++++++++++++++++-
- 1 file changed, 39 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index 86353a0b9758..80b33d4f6b38 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -577,6 +577,32 @@ static int drm_bridge_connector_write_spd_infoframe(struct drm_connector *connec
- 	return bridge->funcs->hdmi_write_spd_infoframe(bridge, buffer, len);
- }
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index ce17eeefc2da..92be6278ea44 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -560,6 +560,10 @@ hdmi_clock_valid(const struct drm_connector *connector,
+ 	if (info->max_tmds_clock && clock > info->max_tmds_clock * 1000)
+ 		return MODE_CLOCK_HIGH;
  
-+static int drm_bridge_connector_scrambler_enable(struct drm_connector *connector)
-+{
-+	struct drm_bridge_connector *bridge_connector =
-+		to_drm_bridge_connector(connector);
-+	struct drm_bridge *bridge;
++	if (connector->hdmi.max_tmds_char_rate &&
++	    clock > connector->hdmi.max_tmds_char_rate)
++		return MODE_CLOCK_HIGH;
 +
-+	bridge = bridge_connector->bridge_hdmi;
-+	if (!bridge)
-+		return -EINVAL;
-+
-+	return bridge->funcs->hdmi_scrambler_enable(bridge);
-+}
-+
-+static int drm_bridge_connector_scrambler_disable(struct drm_connector *connector)
-+{
-+	struct drm_bridge_connector *bridge_connector =
-+		to_drm_bridge_connector(connector);
-+	struct drm_bridge *bridge;
-+
-+	bridge = bridge_connector->bridge_hdmi;
-+	if (!bridge)
-+		return -EINVAL;
-+
-+	return bridge->funcs->hdmi_scrambler_disable(bridge);
-+}
-+
- static const struct drm_edid *
- drm_bridge_connector_read_edid(struct drm_connector *connector)
- {
-@@ -604,7 +630,7 @@ static const struct drm_connector_hdmi_funcs drm_bridge_connector_hdmi_funcs = {
- 		.clear_infoframe = drm_bridge_connector_clear_hdmi_infoframe,
- 		.write_infoframe = drm_bridge_connector_write_hdmi_infoframe,
- 	},
--	/* audio, hdr_drm and spd are set dynamically during init */
-+	/* scrambler, audio, hdr_drm and spd are set dynamically during init */
- };
+ 	if (funcs && funcs->tmds_char_rate_valid) {
+ 		enum drm_mode_status status;
  
- static const struct drm_connector_infoframe_funcs drm_bridge_connector_hdmi_audio_infoframe = {
-@@ -908,6 +934,11 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
- 			     !bridge->funcs->hdmi_clear_spd_infoframe))
- 				return ERR_PTR(-EINVAL);
- 
-+			if (bridge->supported_hdmi_ver >= HDMI_VERSION_2_0 &&
-+			    (!bridge->funcs->hdmi_scrambler_enable ||
-+			     !bridge->funcs->hdmi_scrambler_disable))
-+				return ERR_PTR(-EINVAL);
-+
- 			bridge_connector->bridge_hdmi = drm_bridge_get(bridge);
- 		}
- 
-@@ -1027,6 +1058,13 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
- 			bridge_connector->hdmi_funcs.spd =
- 				drm_bridge_connector_hdmi_spd_infoframe;
- 
-+		if (bridge_connector->bridge_hdmi->supported_hdmi_ver >= HDMI_VERSION_2_0) {
-+			bridge_connector->hdmi_funcs.scrambler_enable =
-+				drm_bridge_connector_scrambler_enable;
-+			bridge_connector->hdmi_funcs.scrambler_disable =
-+				drm_bridge_connector_scrambler_disable;
-+		}
-+
- 		ret = drmm_connector_hdmi_init(drm, connector,
- 					       &drm_bridge_connector_funcs,
- 					       &bridge_connector->hdmi_funcs,
 
 -- 
 2.55.0
