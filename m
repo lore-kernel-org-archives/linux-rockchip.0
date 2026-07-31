@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F070C54F54
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:21:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A203DC55171
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:21:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GVBGXoprDIdNlLwXp91qqavAui0N7qzpJZL6ukXVvPY=; b=MQFAh7EfakTVyb
-	yFbzZxWm1/EDGbqeWuX9q/Kz5/JDdK779FDgOztNzvF8IW7YfeTBEDz1eC9iAI9l/WQLvi3aerLb6
-	MQHOChevow33bLSvTPG+UD+nXGdeJqBs1YY6oG7eRbtTtKp/l2rt1UVduiIOewEEkQmz3VRUzkXZi
-	d3ulHAmDHchwZdUUkYrDTHVg4bUG0L6Wa7o/g7ba84J/Lvvgyp+B3KDGe66SJSy7dJsubDb8jkDxs
-	WdpmSTjbUo24hHOSZ/fyFEiiuaxLTZSp5e4I9IA6aDkmXz6S9Z77yoBybbHqTAOQSnQKcbRylbDaC
-	IzIwCnzDU93ZJZQ2K4Rw==;
+	List-Owner; bh=qscKQTGZzcp+f3NFQupJFDO2OliM2FLp31Rb4/6a8bA=; b=e1+Whntsca2lra
+	wYc42O3c4dmec6AlWQKJIp6aYGuCYlTCBEZmbOes0mAeqquOrjohCuQR22A8QbuQla1DuoUi99dnV
+	RNzFOl6X2h8Aut054haDCTp73d9UW15M0C7luLowwnNGWBzrUwGrwG0Y70gM4qz8GXan88OIDltPb
+	46loKdcq9YIaH3Q97dGOa5rM/FteuPzOQpuzqX+/qaG2m7d97FwcrT3ef3cYPqBn/b40V7bVrJyjO
+	gyIXtVAqcF3PhcypOvln7/P0syEl7vfJX4Yh6Mwbb9wAiGg4PL8CaEgDYVCDKoFTnPQipDiG/+MSo
+	zlieGR8awJa3HA2N4OYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppyz-0000000D0ta-32yV;
-	Fri, 31 Jul 2026 16:21:14 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wppzA-0000000D0z9-1OBM;
+	Fri, 31 Jul 2026 16:21:24 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxJ-0000000Cyt8-2HwY;
-	Fri, 31 Jul 2026 16:19:30 +0000
+	id 1wppxH-0000000CyrJ-29Ls;
+	Fri, 31 Jul 2026 16:19:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514767;
-	bh=/TKBya/JRolWMqyMoq59j0Jgp+DNbAGSUTJj0kIybwo=;
+	s=mail; t=1785514765;
+	bh=q5EwAZk5tThfOFfPU3cHVXQvyZ71nTre7ie20f65OJw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pjkxXoRUML7OflI1VWYB4yh2ZD1+v//L/vm+F599mt2GJb8l5kypciiwowIDJvJoh
-	 yB266LaFP21ZV119m/yqpOhr244odPvxfcgPTmSfd82hehoOkrP412Y+SKKIxEVf08
-	 QuCqxjEhBqAzPM2q4SV+QPnauZ8uo/lSROZloowftk7eVORduw7lvhpZDVqAuIGwfI
-	 KH0VJur2+v7X7J/5etJCDOM9C4CFdmndp5F/BrteWZr/OH1SZKtGM2rsfSalheiVqP
-	 yASK47x4eusofxz60dvb3Ixt8Z3WkNu1soIjZHtU7NSCsdNe0v2RBRYdc+nNMXE0JS
-	 BSGRLbgbCamvw==
+	b=DdIo5jxi023NLYpqtZRc+FgL4egNHK4YDshSat0ZkcnE8BZMWXS5kz5DIFKNCMkRM
+	 wETpn+b+RqqvdMgvrM8bNWmVamSBGK6og61qWcM41uUEeiULeEh7wGm4B1XVVBwkkn
+	 smxJNatp+2kU5E7CscZ/bdYjNXJT6FYY3CYdLzwtQcPgmj3ahJzUeKiqbfqKPysBgs
+	 JooT8xb05zqhGXsvVE0sbat169whW1r7+ZAS01ygfxTO6Cyx8HK3iodjjkIMQPV/+i
+	 B8Dn3h80B3MzMXjiCjcrlnRiuYG0fpXOiL7CgJwaghx/UhYGw9XxSjeWiuFSkpozUt
+	 vcFHxhLyjSiHw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AB58C17E093D;
-	Fri, 31 Jul 2026 18:19:27 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8F15017E0936;
+	Fri, 31 Jul 2026 18:19:25 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:25 +0300
-Subject: [PATCH v10 18/69] drm/display: bridge_connector: Switch to
- .force_ctx() connector helper
+Date: Fri, 31 Jul 2026 19:19:22 +0300
+Subject: [PATCH v10 15/69] drm/bridge: Add bridge ops for source-side HDMI
+ 2.0 scrambling
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-18-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-15-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -70,11 +70,12 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Phong LE <ple@baylibre.com>
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091929_738468_AA5D2DD8 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20260731_091927_741549_805BD56C 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,77 +92,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Turn drm_bridge_connector_force() into a .force_ctx() implementation and
-hand the acquire context over to
-drm_atomic_helper_connector_hdmi_force_ctx(), so that the HDMI connector
-framework can reset the CRTC to recover the SCDC state when the sink
-reconnects while the display pipeline is active.
+Bridges advertising HDMI 2.0 must be able to enable and disable
+source-side scrambling and the high TMDS clock ratio when the configured
+mode exceeds 340 MHz.
 
-No functional change for non-HDMI bridge connectors, which keep behaving
-as a no-op.
+Add .hdmi_scrambler_{enable|disable}() callbacks covering the
+source-side programming only; sink-side SCDC negotiation remains the job
+of the HDMI connector helpers.
 
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_bridge_connector.c | 25 ++++++++++++++-----------
- 1 file changed, 14 insertions(+), 11 deletions(-)
+ include/drm/drm_bridge.h | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index 0d44a270b636..86353a0b9758 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -208,16 +208,6 @@ static void drm_bridge_connector_disable_hpd(struct drm_connector *connector)
-  * Bridge Connector Functions
-  */
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 5a5a25995471..77b3ffe69230 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -561,6 +561,41 @@ struct drm_bridge_funcs {
+ 				     const struct drm_display_mode *mode,
+ 				     unsigned long long tmds_rate);
  
--static void drm_bridge_connector_force(struct drm_connector *connector)
--{
--	struct drm_bridge_connector *bridge_connector =
--		to_drm_bridge_connector(connector);
--	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
--
--	if (hdmi)
--		drm_atomic_helper_connector_hdmi_force(connector);
--}
--
- static void drm_bridge_connector_debugfs_init(struct drm_connector *connector,
- 					      struct dentry *root)
- {
-@@ -274,7 +264,6 @@ drm_bridge_connector_color_format(const struct drm_connector_state *conn_state)
- }
- 
- static const struct drm_connector_funcs drm_bridge_connector_funcs = {
--	.force = drm_bridge_connector_force,
- 	.fill_modes = drm_helper_probe_single_connector_modes,
- 	.atomic_create_state = drm_bridge_connector_create_state,
- 	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
-@@ -322,6 +311,19 @@ static int drm_bridge_connector_detect_ctx(struct drm_connector *connector,
- 	return status;
- }
- 
-+static int drm_bridge_connector_force_ctx(struct drm_connector *connector,
-+					  struct drm_modeset_acquire_ctx *ctx)
-+{
-+	struct drm_bridge_connector *bridge_connector =
-+		to_drm_bridge_connector(connector);
-+	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
++	/**
++	 * @hdmi_scrambler_enable:
++	 *
++	 * Enable source-side scrambling and the high TMDS clock ratio for the
++	 * mode currently being applied.
++	 *
++	 * This only programs the source side. Sink-side SCDC configuration is
++	 * handled by the HDMI connector helpers.
++	 *
++	 * Mandatory for bridges that set the DRM_BRIDGE_OP_HDMI flag in their
++	 * &drm_bridge->ops and advertise HDMI_VERSION_2_0 or later via
++	 * &drm_bridge->supported_hdmi_ver; unused otherwise.
++	 *
++	 * Returns:
++	 * 0 on success, a negative error code otherwise.
++	 */
++	int (*hdmi_scrambler_enable)(struct drm_bridge *bridge);
 +
-+	if (hdmi)
-+		return drm_atomic_helper_connector_hdmi_force_ctx(connector, ctx);
++	/**
++	 * @hdmi_scrambler_disable:
++	 *
++	 * Disable source-side scrambling and the high TMDS clock ratio.
++	 *
++	 * This only programs the source side. Sink-side SCDC configuration is
++	 * handled by the HDMI connector helpers.
++	 *
++	 * Mandatory for bridges that set the DRM_BRIDGE_OP_HDMI flag in their
++	 * &drm_bridge->ops and advertise HDMI_VERSION_2_0 or later via
++	 * &drm_bridge->supported_hdmi_ver; unused otherwise.
++	 *
++	 * Returns:
++	 * 0 on success, a negative error code otherwise.
++	 */
++	int (*hdmi_scrambler_disable)(struct drm_bridge *bridge);
 +
-+	return 0;
-+}
-+
- static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
- 					       struct drm_bridge *bridge)
- {
-@@ -414,6 +416,7 @@ static int drm_bridge_connector_atomic_check(struct drm_connector *connector,
- static const struct drm_connector_helper_funcs drm_bridge_connector_helper_funcs = {
- 	.get_modes = drm_bridge_connector_get_modes,
- 	.detect_ctx = drm_bridge_connector_detect_ctx,
-+	.force_ctx = drm_bridge_connector_force_ctx,
- 	.mode_valid = drm_bridge_connector_mode_valid,
- 	.enable_hpd = drm_bridge_connector_enable_hpd,
- 	.disable_hpd = drm_bridge_connector_disable_hpd,
+ 	/**
+ 	 * @hdmi_clear_avi_infoframe:
+ 	 *
 
 -- 
 2.55.0
