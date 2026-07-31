@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 074AEC5516F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:24:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9213C54F54
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:25:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=siYws/G+DNO+0+l27E3mIMP28ggZxftpcBx4z/PwtpQ=; b=qovdTqEFuQPBiW
-	ZNrcaNOWOEZEloMj8CT8Ocu/Z6Fb1+xHpzJKWo+r2t1OLFhbbO4/yqxK6eMc6kA7FV41MVNhxOXTT
-	/Hryms7lT1BR5CW58JTUe9xwftLUb84+P/QUtYQ9dy/jxz3W1lLv0HXWUZiD1qjU2KI4MeOXK7vdj
-	i16NLm9Mf3CTCiDDyCTtiqc1e5j6fdpwMSnBiYcD5xAAGmfzyV/gt7dfWhzlDgUZjjabcbq8VN7xs
-	uyKAHJQT+vvQCpI4DtmslVDelnsBDEZKFC8U14oKNTdxI+b/5o7cdQYPemy0gFWoH6Ol1LvxSBTnh
-	7Vff3Tnplnxw2iulxfOQ==;
+	List-Owner; bh=G8QQBmKv409EjdsIdUxVcHAisag49a9wzFH4lf3qCPU=; b=I5JU7mCQBE7BEI
+	+UfbUmGeXH5lP7TMs0gpPavNHFIYp1GCdVo0tsmiTPy7TBp5Jg9Pr5LavoBX4d1xgbUtgNfYhLdhW
+	iUMFNIWrqfnomMe4dCLUV2IO6RGO9+sBnZ1rUQzTz73wGV8pwBBrDDOjvOFu70HG03ZZAD9nMtBxH
+	fM5UXr+UKIVmgB8Tf2A78ZUy3kOf8fYRQ2xXp+6ujGg5lXk+APovjT986TY2gDvna370QIJrO79dc
+	5ZB+s8lXsxbNu0DquXEOecby4Bc3x82daSyABLvs52neSMnxxoHXJ8J20kHRYFB5xWayLR/mw3w0o
+	gpH+QuHZX3DDIY8Z32/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpq2V-0000000D5F8-1sSj;
-	Fri, 31 Jul 2026 16:24:51 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wpq2k-0000000D5a5-0yQw;
+	Fri, 31 Jul 2026 16:25:06 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxu-0000000Czvk-01VB;
-	Fri, 31 Jul 2026 16:20:17 +0000
+	id 1wppxv-0000000CzzA-2wGD;
+	Fri, 31 Jul 2026 16:20:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514800;
-	bh=kA6nVSOFOk0yymzKaCCJLaqlyDMieIsqeSwOvsCsQw8=;
+	s=mail; t=1785514801;
+	bh=kOveINEPDFE/jpZ1VqhFveSV7JndBzIfgD4lhHc2Xo8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=gsBsKEyrH+QYLVtyIIhw4WsfchROQj9KLHlsFV16a+zYXPiYch02urhgW+dCB6eRP
-	 L8PuUyaHvVDzoaFbi2Atg/pHvQohR2mlEfB3FfqZQY7BJJicfFiHSy9Uc8DE1KHctF
-	 AQqmRplXx6o46QmVkwPp/EAp7ggn1jwXFGFnr5EEWYCLw1psNl2U1A8tcyWi243p0Z
-	 YgIyL3VYtSsfIGcbnmRk+FImjMHIRZrrSihkWdsy5rxvHxHdSl3N/ejenV2tZL4ZtT
-	 3F5ikocxfwCKkmgsLTqMJ07Qs2036jCCSqur/DJunzoj5a8zExUaV8qUuAZ3MnGzG3
-	 MtvgZSJ+fvB+A==
+	b=m8DFbOHEzohSYO8ghsln1aKvFG4vYuqTVR9UJvs4pq9rrLSEuhF3YtvhRhSJB/IUa
+	 6rmYffFPV5hwtmRhSY8B5BhaxLkPofyj132CkAZtT+/XpohuJGCyvEZPYPa9+Wrtnp
+	 5Wx+urHWE93QSFQVCii4XutprFif2/Ig6GPocW3SoazXMpR0++VJ5cBSmHngN0vNPM
+	 aoBiB0tmrXqCNYYv08pTcwnE8Su02BW5ty7aes9n8am30ZB5ekG2pa2kqv7d1oU8HE
+	 7Zamw8BrsGv3e2R7OAaA2Ee4gDbDlzpWnOknPkqUe7CLCnM/Q4RG2XKD2PZBBiePN5
+	 8NRzH35MjWRNA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3E30D17E093E;
-	Fri, 31 Jul 2026 18:20:00 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9230D17E0B18;
+	Fri, 31 Jul 2026 18:20:01 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:20:11 +0300
-Subject: [PATCH v10 64/69] drm/tests: hdmi_state_helper: Add
- connector-provided max_tmds_char_rate coverage
+Date: Fri, 31 Jul 2026 19:20:13 +0300
+Subject: [PATCH v10 66/69] drm/connector: Remove drmm_connector_hdmi_ini2()
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-64-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-66-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -70,11 +69,12 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Phong LE <ple@baylibre.com>
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+ Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_092006_303872_136C066D 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20260731_092007_947871_44A9DF94 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,160 +91,154 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Test the hdmi_clock_valid() logic that rejects modes whose TMDS
-character rate exceeds connector->hdmi.max_tmds_char_rate.
+All callers have been converted to the new drmm_connector_hdmi_init()
+signature.  Remove the transitional drmm_connector_hdmi_ini2() function,
+its declaration, its EXPORT_SYMBOL() and its kernel-doc.
 
-Exercise both an explicit limit set through drm_connector_hdmi_funcs'
-supported_tmds_char_rate and the limit inferred from supported_hdmi_ver.
-
-Also verify that a driver hook can further restrict the connector limit.
-
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 116 +++++++++++++++++++++
- 1 file changed, 116 insertions(+)
+ drivers/gpu/drm/drm_connector.c | 106 ----------------------------------------
+ include/drm/drm_connector.h     |   9 ----
+ 2 files changed, 115 deletions(-)
 
-diff --git a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-index f35dc31326bc..6d648332aa15 100644
---- a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-+++ b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
-@@ -190,6 +190,32 @@ static const struct drm_connector_hdmi_funcs reject_100mhz_connector_hdmi_funcs
- 	},
- };
- 
-+static enum drm_mode_status
-+accept_any_connector_tmds_char_rate_valid(const struct drm_connector *connector,
-+					  const struct drm_display_mode *mode,
-+					  unsigned long long tmds_rate)
-+{
-+	return MODE_OK;
-+}
-+
-+static const struct drm_connector_hdmi_funcs reject_over_165mhz_connector_hdmi_funcs = {
-+	.vendor = "Vendor",
-+	.product = "Product",
-+	.supported_hdmi_ver = HDMI_VERSION_1_3,
-+	.supported_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ,
-+	.supported_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444),
-+	.max_bpc = 8,
-+	.tmds_char_rate_valid = accept_any_connector_tmds_char_rate_valid,
-+	.avi = {
-+		.clear_infoframe = accept_infoframe_clear_infoframe,
-+		.write_infoframe = accept_infoframe_write_infoframe,
-+	},
-+	.hdmi = {
-+		.clear_infoframe = accept_infoframe_clear_infoframe,
-+		.write_infoframe = accept_infoframe_write_infoframe,
-+	},
-+};
-+
- static int dummy_connector_get_modes(struct drm_connector *connector)
- {
- 	struct drm_atomic_helper_connector_hdmi_priv *priv =
-@@ -2753,6 +2779,93 @@ static void drm_test_check_mode_valid_reject_max_clock(struct kunit *test)
- 	KUNIT_EXPECT_EQ(test, preferred->clock, 25200);
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index a18410faf040..b2e8d99c0e9a 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -696,112 +696,6 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
  }
+ EXPORT_SYMBOL(drmm_connector_hdmi_init);
  
-+/*
-+ * Test that the max_tmds_char_rate inferred from caps.supported_hdmi_ver
-+ * is applied as a mode-filtering limit: with an HDMI 1.3 connector and no
-+ * driver hook, drm_hdmi_connector_mode_valid() will reject modes whose TMDS
-+ * character rate exceeds 340 MHz, even though the sink itself advertises
-+ * a higher limit (600 MHz).
-+ */
-+static void
-+drm_test_check_mode_valid_reject_inferred_max_tmds_char_rate(struct kunit *test)
-+{
-+	struct drm_connector_hdmi_funcs hdmi_funcs = dummy_connector_hdmi_funcs;
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_display_mode *preferred;
-+
-+	hdmi_funcs.supported_hdmi_ver = HDMI_VERSION_1_3;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test, &hdmi_funcs,
-+					test_edid_hdmi_4k_rgb_yuv420_dc_max_600mhz);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	KUNIT_ASSERT_EQ(test, priv->connector.hdmi.max_tmds_char_rate,
-+			HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
-+
-+	preferred = find_preferred_mode(&priv->connector);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+	KUNIT_EXPECT_EQ(test, preferred->hdisplay, 2560);
-+	KUNIT_EXPECT_EQ(test, preferred->vdisplay, 1600);
-+	KUNIT_EXPECT_EQ(test, preferred->clock, 268500);
-+}
-+
-+/*
-+ * Test that a connector-provided max_tmds_char_rate limit (165 MHz) takes
-+ * precedence over a permissive .tmds_char_rate_valid() driver hook and
-+ * drm_hdmi_connector_mode_valid() will reject modes whose computed TMDS
-+ * character exceeds the connector limit.
-+ */
-+static void
-+drm_test_check_mode_valid_connector_max_tmds_char_rate_precedes_driver_hook(struct kunit *test)
-+{
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_display_mode *preferred;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
-+					&reject_over_165mhz_connector_hdmi_funcs,
-+					test_edid_hdmi_4k_rgb_yuv420_dc_max_600mhz);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	KUNIT_ASSERT_EQ(test, priv->connector.hdmi.max_tmds_char_rate,
-+			HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ);
-+
-+	preferred = find_preferred_mode(&priv->connector);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+	KUNIT_EXPECT_EQ(test, preferred->hdisplay, 2048);
-+	KUNIT_EXPECT_EQ(test, preferred->vdisplay, 1152);
-+	KUNIT_EXPECT_EQ(test, preferred->clock, 162000);
-+}
-+
-+/*
-+ * Test that a connector-provided max_tmds_char_rate (165 MHz) can be further
-+ * limited by a more restrictive (100 MHz) .tmds_char_rate_valid() driver hook
-+ * and drm_hdmi_connector_mode_valid() will reject modes whose computed TMDS
-+ * character exceeds the hook limit.
-+ */
-+static void
-+drm_test_check_mode_valid_driver_hook_limits_connector_max_tmds_char_rate(struct kunit *test)
-+{
-+	struct drm_connector_hdmi_funcs hdmi_funcs = reject_100mhz_connector_hdmi_funcs;
-+	struct drm_atomic_helper_connector_hdmi_priv *priv;
-+	struct drm_display_mode *preferred;
-+
-+	hdmi_funcs.supported_hdmi_ver = HDMI_VERSION_1_3;
-+	hdmi_funcs.supported_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
-+
-+	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test, &hdmi_funcs,
-+					test_edid_hdmi_4k_rgb_yuv420_dc_max_600mhz);
-+	KUNIT_ASSERT_NOT_NULL(test, priv);
-+
-+	KUNIT_ASSERT_EQ(test, priv->connector.hdmi.max_tmds_char_rate,
-+			HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ);
-+
-+	preferred = find_preferred_mode(&priv->connector);
-+	KUNIT_ASSERT_NOT_NULL(test, preferred);
-+	KUNIT_EXPECT_EQ(test, preferred->hdisplay, 1440);
-+	KUNIT_EXPECT_EQ(test, preferred->vdisplay, 900);
-+	KUNIT_EXPECT_EQ(test, preferred->clock, 88750);
-+}
-+
- /*
-  * Test that drm_hdmi_connector_mode_valid() will accept modes that require a
-  * 4:2:0 chroma subsampling, even if said mode would violate maximum clock
-@@ -2843,6 +2956,9 @@ static struct kunit_case drm_atomic_helper_connector_hdmi_mode_valid_tests[] = {
- 	KUNIT_CASE(drm_test_check_mode_valid_reject),
- 	KUNIT_CASE(drm_test_check_mode_valid_reject_rate),
- 	KUNIT_CASE(drm_test_check_mode_valid_reject_max_clock),
-+	KUNIT_CASE(drm_test_check_mode_valid_reject_inferred_max_tmds_char_rate),
-+	KUNIT_CASE(drm_test_check_mode_valid_connector_max_tmds_char_rate_precedes_driver_hook),
-+	KUNIT_CASE(drm_test_check_mode_valid_driver_hook_limits_connector_max_tmds_char_rate),
- 	KUNIT_CASE(drm_test_check_mode_valid_yuv420_only_max_clock),
- 	KUNIT_CASE(drm_test_check_mode_valid_reject_yuv420_only_connector),
- 	KUNIT_CASE(drm_test_check_mode_valid_accept_yuv420_also_connector_rgb),
+-/**
+- * drmm_connector_hdmi_ini2 - Init a preallocated HDMI connector
+- * @dev: DRM device
+- * @connector: A pointer to the HDMI connector to init
+- * @vendor: HDMI Controller Vendor name
+- * @product: HDMI Controller Product name
+- * @funcs: callbacks for this connector
+- * @hdmi_funcs: HDMI-related callbacks for this connector
+- * @connector_type: user visible type of the connector
+- * @ddc: optional pointer to the associated ddc adapter
+- * @supported_formats: Bitmask of @drm_output_color_format listing supported output formats
+- * @max_bpc: Maximum bits per char the HDMI connector supports
+- *
+- * Initialises a preallocated HDMI connector. Connectors can be
+- * subclassed as part of driver connector objects.
+- *
+- * Cleanup is automatically handled with a call to
+- * drm_connector_cleanup() in a DRM-managed action.
+- *
+- * The connector structure should be allocated with drmm_kzalloc().
+- *
+- * The @drm_connector_funcs.destroy hook must be NULL.
+- *
+- * Returns:
+- * Zero on success, error code on failure.
+- */
+-int drmm_connector_hdmi_ini2(struct drm_device *dev,
+-			     struct drm_connector *connector,
+-			     const char *vendor, const char *product,
+-			     const struct drm_connector_funcs *funcs,
+-			     const struct drm_connector_hdmi_funcs *hdmi_funcs,
+-			     int connector_type,
+-			     struct i2c_adapter *ddc,
+-			     unsigned long supported_formats,
+-			     unsigned int max_bpc)
+-{
+-	int ret;
+-
+-	if (!vendor || !product)
+-		return -EINVAL;
+-
+-	if ((strlen(vendor) > DRM_CONNECTOR_HDMI_VENDOR_LEN) ||
+-	    (strlen(product) > DRM_CONNECTOR_HDMI_PRODUCT_LEN))
+-		return -EINVAL;
+-
+-	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
+-	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
+-		return -EINVAL;
+-
+-	if (!supported_formats || !(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444)))
+-		return -EINVAL;
+-
+-	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420)))
+-		return -EINVAL;
+-
+-	if (!(max_bpc == 8 || max_bpc == 10 || max_bpc == 12))
+-		return -EINVAL;
+-
+-	if (!hdmi_funcs->avi.clear_infoframe ||
+-	    !hdmi_funcs->avi.write_infoframe ||
+-	    !hdmi_funcs->hdmi.clear_infoframe ||
+-	    !hdmi_funcs->hdmi.write_infoframe)
+-		return -EINVAL;
+-
+-	ret = drmm_connector_init(dev, connector, funcs, connector_type, ddc);
+-	if (ret)
+-		return ret;
+-
+-	connector->hdmi.supported_formats = supported_formats;
+-	strtomem_pad(connector->hdmi.vendor, vendor, 0);
+-	strtomem_pad(connector->hdmi.product, product, 0);
+-
+-	/*
+-	 * drm_connector_attach_max_bpc_property() requires the
+-	 * connector to have a state.
+-	 */
+-	if (connector->funcs->atomic_create_state) {
+-		struct drm_connector_state *state;
+-
+-		state = connector->funcs->atomic_create_state(connector);
+-		if (IS_ERR(state))
+-			return PTR_ERR(state);
+-
+-		connector->state = state;
+-	} else if (connector->funcs->reset) {
+-		connector->funcs->reset(connector);
+-		if (!connector->state)
+-			return -ENOMEM;
+-	}
+-
+-	drm_connector_attach_max_bpc_property(connector, 8, max_bpc);
+-	connector->max_bpc = max_bpc;
+-
+-	if (max_bpc > 8)
+-		drm_connector_attach_hdr_output_metadata_property(connector);
+-
+-	ret = drm_connector_attach_color_format_property(connector, supported_formats);
+-	if (ret)
+-		return ret;
+-
+-	connector->hdmi.funcs = hdmi_funcs;
+-
+-	return 0;
+-}
+-EXPORT_SYMBOL(drmm_connector_hdmi_ini2);
+-
+ /**
+  * drm_connector_attach_edid_property - attach edid property.
+  * @connector: the connector
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index 89a140d6f064..2ad8d1611e84 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -2676,15 +2676,6 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+ 			     const struct drm_connector_hdmi_funcs *hdmi_funcs,
+ 			     int connector_type,
+ 			     struct i2c_adapter *ddc);
+-int drmm_connector_hdmi_ini2(struct drm_device *dev,
+-			     struct drm_connector *connector,
+-			     const char *vendor, const char *product,
+-			     const struct drm_connector_funcs *funcs,
+-			     const struct drm_connector_hdmi_funcs *hdmi_funcs,
+-			     int connector_type,
+-			     struct i2c_adapter *ddc,
+-			     unsigned long supported_formats,
+-			     unsigned int max_bpc);
+ void drm_connector_attach_edid_property(struct drm_connector *connector);
+ int drm_connector_register(struct drm_connector *connector);
+ int drm_connector_dynamic_register(struct drm_connector *connector);
 
 -- 
 2.55.0
