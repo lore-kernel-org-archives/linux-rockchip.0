@@ -4,79 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F86EC5516D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 14:23:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E870C55174
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 14:42:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IXYW4p145MhfJfv61uOixuwTuhwyhDjfPCr1PX3wyV0=; b=rKyDq0+9o9fz2R5G4lXdZQwyVH
-	4RSrToWUrEHY/HJe7NCXgyVIp8uNTi4SP/ZB6hZ8Ha0jy6TiA1sTHygnnjFZfpZ2DmxLqEEPYbFTB
-	VpFe/ixCLqvhpZStBEIfOBsEthwT9DXcbYM5CSJeiFkqzbOmaZQaLuRrlt26Qu303sZh7J/pE3qAX
-	lu7FxK8LYMEjXFqFjwwcAZNQ3t7OlBZANc8wvvThs778Pu2Cly6zRE4c5YTVvoUqrke6v/JPukqDs
-	Pnt7S3IZo2HJi3ve3NFKvnpxVg/e2VP3zmO3Q+srmaiPpeIosWbCbu9I1ia/8/yzJbTXH2/D8reLl
-	YT696qdQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+kjfaUHR6oORNlnLgxkbBsg/FI0bR4XqXv6jiELAKus=; b=4edDEGT8tZtDJe
+	yv4TKnMmxkemobnWwKYZo93QOHC2ZoLuSCoHmYNFMlMOaCR+ahJMb/NHi1/Ig4d4CH7Ey175skt8Z
+	RnCO5KwcnYDy8ExySH5PQbGlp/TRS4EKAV934HhOmHX9ErtCsXoMifHMAkdS/1sviEvcl5mwE9Jpl
+	XXqOkwlk9vX9tZu3LCEg21shxERiTTa4r/MM5lMH2LodTgKt7sGSmj7Omwk/XeNEAhVnGQH9YKzcb
+	oxHuQ05tWjE7z7BQ0T53p2qexTX+ICKz6cGilgykgxhKK5CQN3nj+GPnLGBpOAx8R/SkHqgdkcKZB
+	juIwTnu+hgOGOGfxRLtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpo8R-0000000Ch0e-31fr;
-	Fri, 31 Jul 2026 14:22:51 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wpoRD-0000000ClbN-2Rya;
+	Fri, 31 Jul 2026 14:42:16 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpo8O-0000000Cgz5-1IQM;
-	Fri, 31 Jul 2026 14:22:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1785507608; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=gonwM0okZ6hITbCN/Ts7G4RSWCX89laF+zumSUVrwAm3oSEImua8/Ip3XZcGnxGl6XULlPKir3oD+3KhbSjsBbHJmflovKlVNIet0TDQsXb8fx/h/+dT+UySSYxxy8WmZuNHv7rmBoz54JNsjmDndkN0KzNKJRvCiAzgsmnR6L0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1785507608; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=GgkkzLgavD1JLOx9pOWVhcYj+T5mcWCBWQkfA5oQhms=; 
-	b=GO84OCE01uj9mMMoC8z/5OXltmEtqpXuHswEdTAQV34Pwa6FrxD8eUBTRduk0R2XrpptLJMj1k37Vv17SECccV8EYkX0jKqBt474eRpYtZiLi7vqIIJ8h7pkAcWX6adfFINnaHCzLHTTNRqrU2sOpFsade18MPzbvyu+6ec57Bg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1785507608;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=GgkkzLgavD1JLOx9pOWVhcYj+T5mcWCBWQkfA5oQhms=;
-	b=QrZir8gD1Fhl9tzI/e8fj0GnAtfLqy68zI9Af7VVWI+IfKh65fPf+imDzAqgKqPD
-	wUDfyPTDepxJe5R4FEnzDMOw676FlFfi2td6hv0a8mj7wfEnofA0ik73cXA2DAn2ojj
-	zzFcZ+pxpDWEmGy+u/SUGIL66JCeHlrmrXRkBV0w=
-Received: by mx.zohomail.com with SMTPS id 1785507607193239.6197346559776;
-	Fri, 31 Jul 2026 07:20:07 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id A7E0118029A; Fri, 31 Jul 2026 16:20:00 +0200 (CEST)
-Date: Fri, 31 Jul 2026 16:20:00 +0200
+	id 1wpoRA-0000000ClWV-0Ib1;
+	Fri, 31 Jul 2026 14:42:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1785508929;
+	bh=T9YLXYV9yscTLz/3RQjqOP1ZHffRl5hykzJn/q2OMQQ=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=nMZ1J49UmJSiylL5ZMc1qaXItfkl7/0AR6+pUUAPTp2pkBXfa+4cIYEFLeVl9p07b
+	 XJF8SDTTv0o+9+wrH3VqvZNIMgSCr4TWzuZrBFrz4pi6Mv4MV9oQTOMLyqQcagiWE6
+	 /2CY8istQMlyDwKxkhKHRLsXyJ+9KoXImfU15IMcjWQxgDxlrPHoRGDomVp5WpJ5ow
+	 VxZoDCuayhm8e1ZYwjOMENZd1ktW0cmotVSqfOKdHUUtzbD+0GDI5KkazDkgMjy2Bn
+	 aINwEP48LyQmPxZJ/14JLOoX4EZ1QOtCWHhp0KUXfO1ophYpDlb6Yw0qjv//XQx3C/
+	 /HF7W6lugRyzQ==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 45C9A17E0700;
+	Fri, 31 Jul 2026 16:42:09 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id F1962480028; Fri, 31 Jul 2026 16:42:08 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Vinod Koul <vkoul@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-phy@lists.infradead.org
-Subject: Re: [PATCH v5 1/6] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-Message-ID: <amyp3C_yzxpKzigR@venus>
-References: <20260730013349.51-1-kernel@airkyi.com>
- <20260730013349.51-2-kernel@airkyi.com>
+Date: Fri, 31 Jul 2026 16:42:06 +0200
+Subject: [PATCH v8 01/21] drm/bridge: synopsys: dw-dp: Register DP AUX on
+ bridge attach
 MIME-Version: 1.0
-In-Reply-To: <20260730013349.51-2-kernel@airkyi.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/285.486.37
-X-ZohoMailClient: External
+Message-Id: <20260731-synopsys-dw-dp-improvements-v8-1-ac1e6a75782f@collabora.com>
+References: <20260731-synopsys-dw-dp-improvements-v8-0-ac1e6a75782f@collabora.com>
+In-Reply-To: <20260731-synopsys-dw-dp-improvements-v8-0-ac1e6a75782f@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3652;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=T9YLXYV9yscTLz/3RQjqOP1ZHffRl5hykzJn/q2OMQQ=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpstED9e8dRXL1rkVWGQsXRgfrnozRvuB2FI
+ PW9+Ga/uMwZ4IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqbLRAAAoJENju1/PI
+ O/qavBkP+gOGNM24u6tNqQ+04hmuwpnFz9zKA3QM7dc0Y9nLYbeSeRDj8VP31IwUlSq9f6xiKdS
+ Na0Aek7k4whkZIw98cOC7lvOjNjh72XsfMyTbHr/NdpEEBy2IKnfyXkvB//0QMk5+6XODoFrBOR
+ ZO7JEkLqyAiQ9ZXu92m+qNkvPh7lJI5Yd+B0sjTvfwB5Roj+wkG/m9oj5g1e/YPWjCmHN7Hwjti
+ RVNxpCwLBTLdcOxjNgJdiZYYPofpLbZ0JsA2olrFeeOevR3aiG6eWXfr6YspGJc60aIDGbSJJ7K
+ Pm4/So1LHLF1cnyOS/jgGESu8PXadOk7pQCsQmRH868y8qANkAN+92HxuE79a3mcpPYLx5bfJ/l
+ QefdizrJmysgB+pgqmgJjWOj/a/F16IJS9WyGrZJs+/G7EOVQ1hla2iG4T9NYizJA+jSfCRiTp3
+ JJTdgUJKki25x6NfrpmuGeBG4VIlOhKgkomyj+m2sk9CEXxfjaRlyHotL5P00ONcGymh3FT6FQG
+ 2KloQ7mvKZCwcFSVaCK+u/yFKSQq2cWhXruJswHD+oPcJMhFAf1U+KBir7h/7oReHNV57rr1nse
+ ThyJbyeCd2GNvbc8uTeR91Q8sSIfTNY0DViWvyYKWKgQfR/deTAnq1NZlTd1Z97YooBjUQrauSt
+ 21nWsYca5kTnGz5VDh6I0mA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_072248_408716_3F20C4D1 
-X-CRM114-Status: GOOD (  40.56  )
+X-CRM114-CacheID: sfid-20260731_074212_304777_2C84B325 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,261 +100,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8074343915684355322=="
+Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Sashiko <sashiko-bot@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Unregister the DP AUX device at the right spot as documented in the
+drm_dp_aux_register() function description. This helps that it is
+only accessed when the DRM device is ready and the bridge is powered
+and initialized (further fixes are required for that).
 
---===============8074343915684355322==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mc36q3ts5ojyt2ub"
-Content-Disposition: inline
+Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 55 +++++++++++++++++++++------------
+ 1 file changed, 35 insertions(+), 20 deletions(-)
 
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+index 3445c82e6f50..112a49911309 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+@@ -1813,7 +1813,36 @@ static struct drm_bridge_state *dw_dp_bridge_atomic_duplicate_state(struct drm_b
+ 	return &state->base;
+ }
+ 
++static int dw_dp_bridge_attach(struct drm_bridge *bridge,
++			       struct drm_encoder *encoder,
++			       enum drm_bridge_attach_flags flags)
++{
++	struct dw_dp *dp = bridge_to_dp(bridge);
++	struct device *dev = dp->dev;
++	int ret;
++
++	dp->aux.dev = dev;
++	dp->aux.drm_dev = encoder->dev;
++	dp->aux.name = dev_name(dev);
++	dp->aux.transfer = dw_dp_aux_transfer;
++
++	ret = drm_dp_aux_register(&dp->aux);
++	if (ret)
++		dev_err(dev, "Aux register failed: %d\n", ret);
++
++	return ret;
++}
++
++static void dw_dp_bridge_detach(struct drm_bridge *bridge)
++{
++	struct dw_dp *dp = bridge_to_dp(bridge);
++
++	drm_dp_aux_unregister(&dp->aux);
++}
++
+ static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
++	.attach = dw_dp_bridge_attach,
++	.detach = dw_dp_bridge_detach,
+ 	.atomic_duplicate_state = dw_dp_bridge_atomic_duplicate_state,
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+ 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
+@@ -2044,20 +2073,10 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ 	if (ret)
+ 		return ERR_PTR(ret);
+ 
+-	dp->aux.dev = dev;
+-	dp->aux.drm_dev = encoder->dev;
+-	dp->aux.name = dev_name(dev);
+-	dp->aux.transfer = dw_dp_aux_transfer;
+-	ret = drm_dp_aux_register(&dp->aux);
+-	if (ret) {
+-		dev_err_probe(dev, ret, "Aux register failed\n");
+-		return ERR_PTR(ret);
+-	}
+-
+ 	ret = drm_bridge_attach(encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+ 	if (ret) {
+ 		dev_err_probe(dev, ret, "Failed to attach bridge\n");
+-		goto unregister_aux;
++		return ERR_PTR(ret);
+ 	}
+ 
+ 	dw_dp_init_hw(dp);
+@@ -2065,37 +2084,33 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ 	ret = phy_init(dp->phy);
+ 	if (ret) {
+ 		dev_err_probe(dev, ret, "phy init failed\n");
+-		goto unregister_aux;
++		return ERR_PTR(ret);
+ 	}
+ 
+ 	ret = devm_add_action_or_reset(dev, dw_dp_phy_exit, dp);
+ 	if (ret)
+-		goto unregister_aux;
++		return ERR_PTR(ret);
+ 
+ 	dp->irq = platform_get_irq(pdev, 0);
+ 	if (dp->irq < 0) {
+ 		ret = dp->irq;
+-		goto unregister_aux;
++		return ERR_PTR(ret);
+ 	}
+ 
+ 	ret = devm_request_threaded_irq(dev, dp->irq, NULL, dw_dp_irq,
+ 					IRQF_ONESHOT, dev_name(dev), dp);
+ 	if (ret) {
+ 		dev_err_probe(dev, ret, "failed to request irq\n");
+-		goto unregister_aux;
++		return ERR_PTR(ret);
+ 	}
+ 
+ 	return dp;
+-
+-unregister_aux:
+-	drm_dp_aux_unregister(&dp->aux);
+-	return ERR_PTR(ret);
+ }
+ EXPORT_SYMBOL_GPL(dw_dp_bind);
+ 
+ void dw_dp_unbind(struct dw_dp *dp)
+ {
+-	drm_dp_aux_unregister(&dp->aux);
++	/* nothing to do */
+ }
+ EXPORT_SYMBOL_GPL(dw_dp_unbind);
+ 
 
---mc36q3ts5ojyt2ub
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v5 1/6] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-MIME-Version: 1.0
+-- 
+2.53.0
 
-Hi,
-
-On Thu, Jul 30, 2026 at 09:33:44AM +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->=20
-> The HPD function of Type-C DP is implemented through
-> drm_connector_oob_hotplug_event(). For embedded DP, it is required
-> that the DRM connector fwnode corresponds to the Type-C port fwnode.
->=20
-> To describe the relationship between the DP controller and the Type-C
-> port device, we usually using drm_bridge to build a bridge chain.
->=20
-> Now several USB-C controller drivers have already implemented the DP
-> HPD bridge function provided by aux-hpd-bridge.c, it will build a DP
-> HPD bridge on USB-C connector port device.
->=20
-> But this requires the USB-C controller driver to manually register the
-> HPD bridge. If the driver does not implement this feature, the bridge
-> will not be create.
->=20
-> So this patch implements a generic DP HPD bridge based on
-> aux-hpd-bridge.c. It will monitor Type-C bus events, and when a
-> Type-C port device containing the DP svid is registered, it will
-> create an HPD bridge for it without the need for the USB-C controller
-> driver to implement it.
->=20
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-> Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->=20
-> (no changes since v5)
->=20
-> Changes in v4:
-> - Scan the entire typec_bus and attempt to register the hpd bridge,
->   so as not to miss devices that were already added during initialization.
->=20
-> (no changes since v3)
->=20
-> Changes in v2:
-> - Add copyright text.
-> - Remove useless goto.
-> ---
->  drivers/gpu/drm/bridge/Kconfig                | 10 +++
->  drivers/gpu/drm/bridge/Makefile               |  1 +
->  .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 64 +++++++++++++++++++
->  3 files changed, 75 insertions(+)
->  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->=20
-> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kcon=
-fig
-> index 4a57d49b4c6d..9739b2a19758 100644
-> --- a/drivers/gpu/drm/bridge/Kconfig
-> +++ b/drivers/gpu/drm/bridge/Kconfig
-> @@ -30,6 +30,16 @@ config DRM_AUX_HPD_BRIDGE
->  	  Simple bridge that terminates the bridge chain and provides HPD
->  	  support.
-> =20
-> +if DRM_AUX_HPD_BRIDGE
-> +config DRM_AUX_HPD_TYPEC_BRIDGE
-> +	tristate
-> +	depends on TYPEC || !TYPEC
-> +	default TYPEC
-> +	help
-> +	  Simple bridge that terminates the bridge chain and provides HPD
-> +	  support. It build bridge on each USB-C connector device node.
-> +endif
-> +
->  menu "Display Interface Bridges"
->  	depends on DRM && DRM_BRIDGE
-> =20
-> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Mak=
-efile
-> index 15cc821d85b7..d88a9e1ccc9a 100644
-> --- a/drivers/gpu/drm/bridge/Makefile
-> +++ b/drivers/gpu/drm/bridge/Makefile
-> @@ -1,6 +1,7 @@
->  # SPDX-License-Identifier: GPL-2.0
->  obj-$(CONFIG_DRM_AUX_BRIDGE) +=3D aux-bridge.o
->  obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) +=3D aux-hpd-bridge.o
-> +obj-$(CONFIG_DRM_AUX_HPD_TYPEC_BRIDGE) +=3D aux-hpd-typec-dp-bridge.o
->  obj-$(CONFIG_DRM_CHIPONE_ICN6211) +=3D chipone-icn6211.o
->  obj-$(CONFIG_DRM_CHRONTEL_CH7033) +=3D chrontel-ch7033.o
->  obj-$(CONFIG_DRM_CROS_EC_ANX7688) +=3D cros-ec-anx7688.o
-> diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/g=
-pu/drm/bridge/aux-hpd-typec-dp-bridge.c
-> new file mode 100644
-> index 000000000000..43af3ea20f20
-> --- /dev/null
-> +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
-> @@ -0,0 +1,64 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +/*
-> + * Copyright (C) 2026 Rockchip Electronics Co., Ltd.
-> + *
-> + * Author: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> + */
-> +#include <linux/of.h>
-> +#include <linux/usb/typec_altmode.h>
-> +#include <linux/usb/typec_dp.h>
-> +
-> +#include <drm/bridge/aux-bridge.h>
-> +
-> +static int drm_typec_bus_event(struct notifier_block *nb,
-> +			       unsigned long action, void *data)
-> +{
-> +	struct device *dev =3D (struct device *)data;
-> +	struct typec_altmode *alt =3D to_typec_altmode(dev);
-> +
-> +	if (action !=3D BUS_NOTIFY_ADD_DEVICE)
-> +		return NOTIFY_OK;
-> +
-> +	/*
-> +	 * alt->dev.parent->parent : USB-C controller device
-> +	 * alt->dev.parent         : USB-C connector device
-> +	 */
-> +	if (is_typec_port_altmode(&alt->dev) && alt->svid =3D=3D USB_TYPEC_DP_S=
-ID)
-> +		drm_dp_hpd_bridge_register(alt->dev.parent->parent,
-> +					   to_of_node(alt->dev.parent->fwnode));
-
-So there are 3 ways to end up with duplicated hpd bridges now:
-
-1. TypeC controller driver already registered one manually
-2. There is a race in drm_aux_hpd_typec_dp_bridge_module_init, if a
-   device appears between registering the notifier and looping
-   through all pre-existing devices
-3. Reloading the aux-hpd-typec-dp-bridge module re-registers the
-   bridges
-
-It's not a huge problem as the system works with the duplicated HPD
-bridges, but it's also quite ugly.
-
-I think it can be trivially avoided by adding this function to
-drivers/gpu/drm/bridge/aux-hpd-bridge.c and then making use of it
-here as an additional check (code untested):
-
-bool drm_device_has_dp_hpd_bridge(struct device *parent)
-{
-	struct device *hpd_bridge =3D device_find_child_by_name(parent, "dp_hpd_br=
-idge");
-
-	if (!hpd_bridge)
-		return false;
-
-	put_device(hpd_bridge);
-	return true;
-}
-EXPORT_SYMBOL_GPL(drm_dev_has_dp_hpd_bridge);
-
-That would solve all of the above, but leaves one problem when this
-module races against manual device creation in a TypeC controller
-driver. That could be avoided by doing the check in
-devm_drm_dp_hpd_bridge_alloc() under a lock, but that's probably not
-worth the trouble (it would require updating all users to handle a
-new error code like -EEXIST) considering manual registration can be
-removed from all drivers anyways.
-
-Greetings,
-
--- Sebastian
-
-> +
-> +	return NOTIFY_OK;
-> +}
-> +
-> +static struct notifier_block drm_typec_event_nb =3D {
-> +	.notifier_call =3D drm_typec_bus_event,
-> +};
-> +
-> +static int check_device_already_added(struct device *dev, void *data)
-> +{
-> +	drm_typec_bus_event(NULL, BUS_NOTIFY_ADD_DEVICE, dev);
-> +	return 0;
-> +}
-> +
-> +static void drm_aux_hpd_typec_dp_bridge_module_exit(void)
-> +{
-> +	bus_unregister_notifier(&typec_bus, &drm_typec_event_nb);
-> +}
-> +
-> +static int __init drm_aux_hpd_typec_dp_bridge_module_init(void)
-> +{
-> +	bus_register_notifier(&typec_bus, &drm_typec_event_nb);
-> +	/*
-> +	 * Before module initialization, some devices may have already been add=
-ed.
-> +         * Register the HPD bridge for these devices.
-> +	 */
-> +	bus_for_each_dev(&typec_bus, NULL, NULL, check_device_already_added);
-> +	return 0;
-> +}
-> +
-> +module_init(drm_aux_hpd_typec_dp_bridge_module_init);
-> +module_exit(drm_aux_hpd_typec_dp_bridge_module_exit);
-> +
-> +MODULE_AUTHOR("Chaoyi Chen <chaoyi.chen@rock-chips.com>");
-> +MODULE_DESCRIPTION("DRM TYPEC DP HPD BRIDGE");
-> +MODULE_LICENSE("GPL");
-> --=20
-> 2.53.0
->=20
-
---mc36q3ts5ojyt2ub
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpsrwkACgkQ2O7X88g7
-+poJkw/+KMpk0PnZBYCg+0tfUFBXNrjPd5jqvIzb1eMIcgN/E1jW9Qt79O6yXAAZ
-uwdcsGKpQ+DG8mmWZwirFCeeNCXP+GWntMKVkNY4SkLJQWNNha+B/KKuP1sobfP9
-c/Td1GfZSMJPG01KtOHpc3lL2R05nJp0v1fZOBPT8TjnH+4E+0XZDgaMtDZataDA
-p8lEUIOy9ZdVIV3yKRHesuGazKtSTxbNxaX23zqoTPipnuuJtqEP/DC/Z4NUIy5f
-yZhCNyNH9r8T6xXjhS3Wrg5A7bqz2x5X2UhEnLtKfVYpCo0TZh1vXgkSbQ9Sx8ff
-n7GQaeDiqZbo87sgCSRtbdXD1TBYgFHoY86qg0cZx2acwEe8mnxYpxV04ScAK4ef
-IsPhu/IlqZ21S0BRJfYLzDxWGofxDNOiB5CSrFwtpk6g4YHpfIbavMgRQNVqeQ92
-s6AiBvA4ot9fqtQTP9dZrT990c8qaluDVZKRoJgdG1nSfVjjZSlsennQi/EpS8yY
-cL41RQQdNNt1edxs/O/L0KcNrgPojwdx9NwydaO5iKEcGnqQRBg47+lrGFRlcnX3
-43HEL5S+F+qcO2cGp7W7B6oFpfSNGxjkMYjIuKmnI+rSCzfodseNcfhEqJLdGbOM
-DxRmSgCpGAlXirP95hduaKSR2UJ1PwvNUYCfR5LAh5mCApd7VuM=
-=DFla
------END PGP SIGNATURE-----
-
---mc36q3ts5ojyt2ub--
-
-
---===============8074343915684355322==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8074343915684355322==--
-
