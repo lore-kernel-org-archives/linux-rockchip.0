@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9421EC55183
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36747C55180
 	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:23:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rK8i0EICa57hRJKLN6tq8n/LMpTOSQkHQesNzn2UUww=; b=VVpgWkKwyel7ua
-	1HgwiBo20ewTIixHaY/xPtCYL73Xt1pODpbu7GQaIOSQpPhHTPzKuwgbyKlSigd35tR2l5Lamty0w
-	Rtb6hmit+vyadzqxWakiR62Eldmr73jZdVsMCCIfw5/i5AWCOAS0yt379aRt56lbZ4Z5OJPGr3u//
-	fOtm7IimLLoWl3dwVSwO2tlB636xUb3PUJsLHpDk3aXw9EXtS3X2M/YoyZBXsC+r0yTV6sLuWsiL1
-	Y5xF7NmetzHFwLjsxL8fsh8jdJti9GYPhoWBYk5ou6hq4BLoY81HW8FEM9OFhoLzEjFJB8FaygPSk
-	evAWeBQnktwNE4zCRqJw==;
+	List-Owner; bh=ZBNf9EU25LoV3oGspda0BVlBgFSJ+G4rqXcPwKNEZWY=; b=y3LTvdyeYfruCw
+	0NJNAG2IpW6fFjvU0ymXk7Rr6f7x+cnLkqVYWzGw9z/PXGdFUPLF787zamVejHFyoUfeMHHThZ64S
+	oitI31tEB7IE/G02SiNVl2+NUnBt1dU/zt0L2c7kAaGH9qwQIN9p9koQ/j0lfn30rgcEcNeCGX7OS
+	w0UqwvyO6vea28u4Kpg5KJZKcypzvtNBHtL/KHIdLg1gFsKPRAP3HGRjv5/mP6m99T2W5JINqz+r3
+	LNvMz9x8OYcwh2dTefUAZKg5ZZK3lKGnDSP7SQT9kwFmLtpGSukVcVGft92beRsG8RzF/aeONDAvM
+	PxEr1OC2O0w015/Wg4lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpq1X-0000000D2z2-0W8u;
-	Fri, 31 Jul 2026 16:23:51 +0000
+	id 1wpq1V-0000000D2w3-49Yj;
+	Fri, 31 Jul 2026 16:23:50 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxc-0000000CzTt-11Mv;
-	Fri, 31 Jul 2026 16:19:59 +0000
+	id 1wppxb-0000000CzSJ-1unt;
+	Fri, 31 Jul 2026 16:19:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514785;
-	bh=KwjregJEK1zHltpBaTSfhes6ErUtOgc/LRhZ6h3oFOI=;
+	s=mail; t=1785514784;
+	bh=hEKxNu2C8ewO/+aCheyfTQqRKZ28rWyZ2tMcGpLe148=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NtmcqgNSXRllEqlJW21sZx46nixZ5YWJzFqDA0DLvVWk07hwsd9sms+ahhduBVtGz
-	 QWOadKsy596BtM/7jAO9ZFaIwS94m8HitODlKf8zG0MtYyHt09pvaLfgVGspcBojma
-	 qu1u0hi3IpVyBxCS9MlyhhdsoEoR7ZJ0B7FHgBe/5nyHeI/xkUus4mzmAoaHV2GGWD
-	 FCzk7tbZXpad4UEyACbzX6bSVBqggvYnKtufy/ePUWMtjPqmuUMtsI4Cit2vucjM9O
-	 c4BTVRyyfOMjdE1Pg1LRBc6v7lz9IcCa0SPrbVA/ls5xqIma+YSWxOIvJ51Ex0O8o7
-	 YM9rVA/DRRMIw==
+	b=Z3rE6q9Cp7WrUcC9hRs9EHgLzZR/YIutuDawEQhKJgH/dBBSsPWw1waoIfSWvBAzD
+	 Bhuip3VcxJC4YKp2duFTkO9Hn6e9Fqtu5MylYhGA/YuQkEqbx/8GxH2QEQiA6l6F6W
+	 fjZPjEjl4L/neFWhl5cpt7ZUFhqrwbV9H8x1m6ba0KkDlLk2O0UwqA7Q1W4LrOG66q
+	 a+GLnh52m+g66/Bxdrprj4LRDyi5uT+QoOZG+Z0y39YONHtPs9mzL9plmksi30sjZ6
+	 yps35to6E65uZtzUOZhXDYCofov0YSubrCC9SvHsQzh9ez3j992zJKHDCY9JSWo501
+	 uuMkuOyRaJxig==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7B05517E092C;
-	Fri, 31 Jul 2026 18:19:45 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BE6E317E0937;
+	Fri, 31 Jul 2026 18:19:44 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:50 +0300
-Subject: [PATCH v10 43/69] drm/vc4: hdmi: Propagate -EDEADLK to the top
- level
+Date: Fri, 31 Jul 2026 19:19:49 +0300
+Subject: [PATCH v10 42/69] drm/vc4: hdmi: Switch to .force_ctx() connector
+ helper
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-43-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-42-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -73,8 +73,8 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091948_461946_A2B38C21 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20260731_091947_718035_C388E871 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,75 +91,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-drm_connector_helper_funcs.detect_ctx() is expected to propagate
--EDEADLK so that context owners, e.g. drm_helper_probe_detect_ctx(), can
-perform the required backoff and retry.
+Use drm_atomic_helper_connector_hdmi_force_ctx() as the .force_ctx()
+implementation, so that the acquire context created by the probe helper
+reaches the HDMI connector framework.
 
-vc4_hdmi_handle_hotplug() instead runs its own retry loop and calls
-drm_modeset_backoff() on an acquire context it does not own.  This drops
-all locks in the context, including connection_mutex held by the core.
-
-Drop the local retry logic and propagate -EDEADLK to the caller instead.
-This aligns VC4 with the expected detect_ctx() semantics.
+This is a prerequisite for converting the driver to the common HDMI 2.0
+scrambling infrastructure, which implicitly handles SCDC state recovery
+through a CRTC reset when the sink reconnects while the display pipeline
+is active.  Note that this does not interfere with the local SCDC
+state-management implementation, since the driver's scrambler capability
+has not yet been exposed through the common helpers.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/vc4/vc4_hdmi.c | 23 +++++++----------------
- 1 file changed, 7 insertions(+), 16 deletions(-)
+ drivers/gpu/drm/vc4/vc4_hdmi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
-index ba16e7944cf3..72042fad04c5 100644
+index 4f7fc6689869..ba16e7944cf3 100644
 --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
 +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-@@ -344,12 +344,11 @@ static int vc4_hdmi_reset_link(struct drm_connector *connector,
- 	return drm_atomic_helper_reset_crtc(crtc, ctx);
+@@ -504,7 +504,6 @@ static void vc4_hdmi_connector_reset(struct drm_connector *connector)
  }
  
--static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
--				    struct drm_modeset_acquire_ctx *ctx,
--				    enum drm_connector_status status)
-+static int vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
-+				   struct drm_modeset_acquire_ctx *ctx,
-+				   enum drm_connector_status status)
- {
- 	struct drm_connector *connector = &vc4_hdmi->connector;
--	int ret;
+ static const struct drm_connector_funcs vc4_hdmi_connector_funcs = {
+-	.force = drm_atomic_helper_connector_hdmi_force,
+ 	.fill_modes = drm_helper_probe_single_connector_modes,
+ 	.reset = vc4_hdmi_connector_reset,
+ 	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+@@ -513,6 +512,7 @@ static const struct drm_connector_funcs vc4_hdmi_connector_funcs = {
  
- 	/*
- 	 * NOTE: This function should really be called with vc4_hdmi->mutex
-@@ -368,17 +367,9 @@ static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
- 	drm_atomic_helper_connector_hdmi_hotplug(connector, ctx, status);
- 
- 	if (status != connector_status_connected)
--		return;
-+		return 0;
- 
--	for (;;) {
--		ret = vc4_hdmi_reset_link(connector, ctx);
--		if (ret == -EDEADLK) {
--			drm_modeset_backoff(ctx);
--			continue;
--		}
--
--		break;
--	}
-+	return vc4_hdmi_reset_link(connector, ctx);
- }
- 
- static int vc4_hdmi_connector_detect_ctx(struct drm_connector *connector,
-@@ -416,10 +407,10 @@ static int vc4_hdmi_connector_detect_ctx(struct drm_connector *connector,
- 			status = connector_status_connected;
- 	}
- 
--	vc4_hdmi_handle_hotplug(vc4_hdmi, ctx, status);
-+	ret = vc4_hdmi_handle_hotplug(vc4_hdmi, ctx, status);
- 	pm_runtime_put(&vc4_hdmi->pdev->dev);
- 
--	return status;
-+	return ret == -EDEADLK ? ret : status;
- }
- 
- static int vc4_hdmi_connector_get_modes(struct drm_connector *connector)
+ static const struct drm_connector_helper_funcs vc4_hdmi_connector_helper_funcs = {
+ 	.detect_ctx = vc4_hdmi_connector_detect_ctx,
++	.force_ctx = drm_atomic_helper_connector_hdmi_force_ctx,
+ 	.get_modes = vc4_hdmi_connector_get_modes,
+ 	.atomic_check = vc4_hdmi_connector_atomic_check,
+ 	.mode_valid = drm_hdmi_connector_mode_valid,
 
 -- 
 2.55.0
