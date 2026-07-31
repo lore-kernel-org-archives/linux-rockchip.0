@@ -4,80 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 341A9C5516F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 15:03:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13DB9C5516F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:11:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9hY1UzvtFFpjV0sqliBWPruYE/ED3Aun2QyGys6J/Ag=; b=dFubhUqsg722lc
-	0IESqP64oiWV+HiQrKO937s2Szh5qIh1uTWaxOCjp7fOCzGX8yjlCCdTBrHqq+gC7gC5zoEGp6oMn
-	eXHBAo2TQr2fYQK7Jvjuc4Zpzxe9enDzjaLRXptsGJ3cDmt37dE3YfE3bKwgM36tptU0EUMSA4ybr
-	SupT+H6V/XD35Vf4d57J7uiUDzGvYw7cveSmw8RRHH2EmbjikRXgpXElDXh0ZutLx4DWxg6p5cidc
-	spPqziiohOt55SBmtGVo73XjuhxENltJuog8uCdq+4TEjRLy9Awzdw9lB+vEBWN42sdK0ZTsWeKc5
-	D07n5aoTFiUDRdS8ITjg==;
+	List-Owner; bh=1v5v7dfnV8r7icavXUVO6r1i6hohQnsIH1pBYgaBBMQ=; b=FJCBnSM4z0vMVs
+	NBTPRUGhGq08fGUsPi73Sb3LIaRmYBX1bH+nmIbJg9onyFtW1fbstHNN6RdudwZEyawARzAMc677q
+	EMG5eX3F+C/dVEd8NFuRNuhVH4W+ZqH2eCsqfrSL+Wp+Blsm4hCoMJkkiUgCLffmdnUeImozlxZDb
+	Fc5te+w1tMYMaTVmjO6tXG13MdCJ2lNwJJHUDpE+A0HxQvmWFDxZ3Gp4A2Dcwty+rTGExMOoSvdoF
+	1dmKreYPoju9e5YTFN8c2Vt/bXy+NXwXjzESlsxBAktPuDIdDmPuVNFQCo+z5728LqPqmNtHznBXn
+	o/KkOvJZiLHWdZie7qtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpoln-0000000Crmh-1hD6;
-	Fri, 31 Jul 2026 15:03:31 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wpppb-0000000CxqP-2I8B;
+	Fri, 31 Jul 2026 16:11:31 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpolk-0000000CrlU-2cML;
-	Fri, 31 Jul 2026 15:03:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785510206;
-	bh=vBzFyziUWjliNDDBkuz8H0vizOlAd/t2Tq+tK2gR2BM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KvffgtfZ7GSQynVjczrV++EGQQxtV4uoiDJGuk3AQ0LFI6XPb4K/6w+HwqRzfNlNa
-	 lJEXFDmZodC6tyToTRWir+A15r0iWmdQEfwie79dYX4ZvExrZlj6D98xIBBVcEoNan
-	 n3eAmFhpV8nNx12OnaA1DDw9o0+l/Jw8wFUCusnNQw5xw0SvMukqlWSKXnO54DK666
-	 jfZ1dR5Gor1XSAG4Ug8nWL7MkUOVGXhY4PhgqfvKjvRy50sJwOU8u/kZUxZYjfuNmC
-	 m6GhCMfscAqMGlVRsBYWbIK+KoRipoIs3zsV3Q+DgccaB5i9RWWCBVKivo98JpT91z
-	 VBqWYYewwHWaA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4C0B317E063E;
-	Fri, 31 Jul 2026 17:03:25 +0200 (CEST)
-Message-ID: <fa854383-a53a-410d-8b0e-554f70b918ac@collabora.com>
-Date: Fri, 31 Jul 2026 18:03:24 +0300
+	id 1wpppY-0000000Cxp2-20AB
+	for linux-rockchip@lists.infradead.org;
+	Fri, 31 Jul 2026 16:11:29 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-c160875e029so13935566b.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 31 Jul 2026 09:11:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785514286; x=1786119086; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=wNXKFZWI3u+GyO4UBU10scwv+ImHf9jHPS32+l+/nu8=;
+        b=tOeQw1/Fqi4989jI79/C67yT+2AKXQu0vaoRLs0ILpknGjzM3a94lZlA0hTTYz6tmO
+         LEG63VW1yZNY8LMg00Rxv8YXPl/LEzUZQc279B1gy69+YWRUEpEoHSPc7I0a/331pO6D
+         I1Lz+kLroKlMRNR7Fq6rDHAmPzC9mGve6izWG7PqtsZkhIUZ0gBEtzYqs878/U2Anff1
+         7e3S5TP+WDH4+aqyIcPXCaun8Ou2KmIdsrZFMrReKGIFHixwkChu085+gt9PjjkR0yHs
+         QTUsuhwRIRgN9UwfdnkaAN9s7wsdyP1qGN1mPsS3+0PcAPuRyPWsJPeP+ipKN5JPW/Gs
+         pktw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785514286; x=1786119086;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=wNXKFZWI3u+GyO4UBU10scwv+ImHf9jHPS32+l+/nu8=;
+        b=r2hhYUH6BjRMBMbz2KTD2hEj6xuPNhE7lkvwJX1t1tcsmG7/ZGmiIWVdzc7RO8rQuI
+         /8ZcmC/I0KfoWY+pk+eEvMhJhmUP3IQSo9E7xOVvMg55kHY1TWrUJbGkBVPsKAIFy2b1
+         6LqWPPVY1qox1Le6eKMtF3ilpJC9Y383AOuEMtaj0jMS5kzcPGCYq44tH/kUUbBeZTXh
+         +3g70Quzn+bniPoe1JiT77QgWZVEcEOXRdHRU6gO1mKCbw7Rqo3cCwaY2Ys31A3TGbrm
+         BzTx4QFEtv/UrKgcnGLPARc1ddB8rvQgvYBCW+EXxt0YsnyVwFqkqK3Bw1lJO+u8xavC
+         Qk8Q==
+X-Forwarded-Encrypted: i=1; AHgh+Rp5R1hHuWiwfnm7V5MTDOP++p2oruLqcAQGXY/5JjhHvIU8adDq1V+MAh231TpJGEleZjTfdBaNlvls1Cs2bw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwPJfOQy5QvC6Y8nUSsWTIou1pqNjgCRXfPbD6qwrH9BKVjko/u
+	z89G0Af0aw3V0UTM6gs/XtLKyrjSfGHKEFJ2VfFqzahkWpuT5ArdfKLS+N06lNM8
+X-Gm-Gg: AR+sD13KJNDW210I6/ZDmdBtp3eO7lAmj4YRS+IaLlJmldRJWIu8o43nQBJ/Ix0fJkY
+	zxMt1cywRcTl1KSJn/SwnwoGSQXiReRoSkVfcE+Fhgw8Waqe84v+RLKrWdZMYzmNGrSeYlE//eW
+	eFeACmxK2nNX2oD1xYjcSTqdemaVKtKbG77ImNq74t/dYBI3oA1JON5zeho3URPndvuuvKw03vD
+	ls/bZboy9hfmAc7DkukJxO3eBi6EMZH1RvxH5Yvg3nHzlSLuzeCkpfLi1jw5VAn175lyXy85zLd
+	UddYmUPr4k9obQl2LJb0GMfxCU/j0piT9h6DbW6dRTpo2Lkl46OSHajBj9dk5D6Dlb3pjcyA0Lz
+	rVaZjH3A4ixbcYVIzA92nYtjwGAEMPgxMOEjZ+jcedJeg0rqXqAigF8sL2oprU6R7otrv+H+BmP
+	FY5ubugWYrrGVfC9KurFEB2MOwOLpyK5LWgyTBoi6Xu3I0wvDGpfZUeVwGFFVyxkG6YhMpXwrlT
+	lJkCfcGsweTwxMIDnH38uxExi7YlkfY7uaENzkbRiup40GyMVsVZbLyslETHVgT3OgWrNKKO5eZ
+	94w=
+X-Received: by 2002:a17:907:9616:b0:c15:ccda:26d5 with SMTP id a640c23a62f3a-c1fe8257a96mr18955666b.4.1785514285948;
+        Fri, 31 Jul 2026 09:11:25 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8B8B002291A327B8340D99.dsl.pool.telekom.hu. [2001:4c4e:1b8b:8b00:2291:a327:b834:d99])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47fd45a1abfsm5826173f8f.37.2026.07.31.09.11.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 31 Jul 2026 09:11:25 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Oded Gabbay <ogabbay@kernel.org>,
+	Alexey Charkov <alchark@flipper.net>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Igor Paunovic <royalnet026@gmail.com>
+Subject: Re: [RFC PATCH v3 4/6] accel/rocket: add RK3576 NPU (RKNN) support
+Date: Fri, 31 Jul 2026 18:10:26 +0200
+Message-ID: <20260731161026.22112-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260731043507.1832277-5-gahing@gahingwoo.com>
+References: <20260731043507.1832277-5-gahing@gahingwoo.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 03/61] drm/connector: Add drmm_connector_hdmi_init()
- with new signature
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chen-Yu Tsai <wens@kernel.org>, Samuel Holland <samuel@sholland.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Algea Cao <algea.cao@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
- Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
-References: <20260723-dw-hdmi-qp-scramb-v9-0-4fb12ea22ac9@collabora.com>
- <20260723-dw-hdmi-qp-scramb-v9-3-4fb12ea22ac9@collabora.com>
- <exkyukl6jnkwwoap62v4n5j4obyhoks5ysbo7iqjdhzhb2ltsu@nyp7csbmzott>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <exkyukl6jnkwwoap62v4n5j4obyhoks5ysbo7iqjdhzhb2ltsu@nyp7csbmzott>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_080328_813384_4DE748B2 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20260731_091128_530836_0A9151F5 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,36 +107,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+Hi Jiaxing,
 
-On 7/30/26 5:19 PM, Dmitry Baryshkov wrote:
-> On Thu, Jul 23, 2026 at 04:34:52AM +0300, Cristian Ciocaltea wrote:
->> In preparation for providing HDMI 2.x source capabilities, move the
->> vendor, product, supported_formats and max_bpc parameters out of the
->> init function into struct drm_connector_hdmi_funcs, and add new
->> supported_hdmi_ver and supported_tmds_char_rate fields there as well.
-> 
-> I really don't like the idea of putting data into the functions. The
-> data might be mutable, it might depend on the particular platform, etc.
-> while funcs are typically static. Even for the drm_bridge case we have
-> two separate structures: static funcs and changeable drm_bridge
-> instance.
-> 
-> I'd suggest populating that data in the drm_connector before calling
-> drmm_connector_hdmi_init(). The only exception would be vendor / product
-> since they use strtomem_pad() to ensure them being properly initialized.
-> I'd suggest leaving those two as is.
+You mentioned you cannot exercise RK3588, so I ran this one on mine.
 
-I don't have a strong preference between the two approaches (functions vs.
-connector). Let's wait for Maxime to confirm that he agrees with your
-suggestion, so that we can hopefully reach consensus before the final round of
-API-related changes.
+Tested on RK3588 (Orange Pi 5 Plus, all three rknn cores). Applied on a
+v7.0-based Rockchip tree rather than next-20260730, so it went in with
+small offsets in rocket_job.c, but the RK3588 paths it touches are
+identical there.
 
-Meanwhile, I plan to submit v10 addressing several findings reported by Sashiko
-and see whether anything else remains outstanding.
+What I checked:
+
+- all three cores probe and report their version, runtime PM suspends
+  and resumes them across a 60 s inference run;
+- a MobileNetV1 run through the Teflon TFLite delegate is bit-identical
+  to the stock driver - five output tensors hashed every iteration,
+  4260 iterations, no mismatch;
+- throughput measured back to back against the unpatched module in the
+  same session: 70.99 vs 71.18 inf/s, i.e. no change. (Both are above
+  my usual ~68 baseline because the firmware happened to be serving
+  the 200 MHz request from a different clock path that session - it is
+  unrelated to your patch, which is why I measured the stock module
+  again straight afterwards rather than reporting the first number.)
+
+Tested-by: Igor Paunovic <royalnet026@gmail.com>
+
+I also went through the RK3588 side of the soc_data conversion, since
+that is the part your board cannot tell you about. All seven soc->
+users keep RK3588 on its old values: num_clks 4 and num_resets 2 match
+the previous ARRAY_SIZE() results, and multi_power_domain and
+poll_completion are both false, so both new branches are skipped. Worth
+noting for anyone reading the diff quickly: growing clks[4] to clks[6]
+is exactly why num_clks had to become explicit - leaving ARRAY_SIZE()
+there would have made RK3588 ask for six clocks and fail probe. The
+conversion looks right to me.
+
+I am not commenting on the RK3576-specific parts - no hardware here for
+that - and I have not tested 2/6 and 3/6, since those are built in and
+would need a kernel rebuild.
 
 Thanks,
-Cristian
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
