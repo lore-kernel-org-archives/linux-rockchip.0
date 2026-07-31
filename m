@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D685C5516F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7177C54F54
 	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UWcorXrNffVn5W/c74QAi5Xuo267TCiBK7QldfbStmg=; b=cPE+qvHNiRFsdE
-	ChwyZ/Dwl23H87jX/qREiDAAFnPIC798/NY1xenMWaN5TNp1nOElCIABCh0y7zgZGVLzCZ2nq/l8o
-	AYygbgKxjZw1GKhRU4r5tIt08BpgJzit1wANsY12nrLKHPyYZtjyLJbKDdDv7ams+HbETu8/Y+DAz
-	aQy/+gV9WA3ySUTcpKtHheAtdCCu1v+B3wv0uMJEwB9ZrSZ9SuQ3/zgVjsDwV+yGip0IYlblwsFlC
-	YAlrvVPpROyhE3wrTP0KY/4qBgI6Sas2ic/fJvnSBF6gLDCSYrP3GZOgxVJCl7kWRTuhi+H6XbzR2
-	NsS60GWHs3Zoht7Ml/PQ==;
+	List-Owner; bh=dj64NtDkp8yfYLjPrnaaYNaAJRUW1dUzWMBqE5tkDfY=; b=c5zimvVCBxgAGL
+	WXd1BUWfifo6+/b2H+Rq+j2kO9g1WtgeRrpZg/eWZl+2ZJ9P1LAtWDZMc1JpiAI18liACecwQZ57E
+	iOnZ1hHnyDV7OwQhsBt2Z/KmtO711lAONs0BjjONBl6Qkq4IVCuCC4kzLfEXh9ia0GUbDY0h3BIXp
+	JppIDM1ITVYv97zhBSVGMP6lluKYYyefZSXgnS52Vh8UFsP3FVGHyQ1aD6AOWyZ3EBFH8p2za4rxk
+	JJOgFuA8Enb2g0Y5SRTVJnei2QFr0bSsryM/DXX64iHHfbdXgWB+f1pVxg+QfEESHEiV87xRUNLfb
+	uLdDcyOfMTWaEMFGQL2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpq06-0000000D1hz-0wPw;
+	id 1wpq06-0000000D1iN-1rEa;
 	Fri, 31 Jul 2026 16:22:22 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxN-0000000Cyx4-1SgR;
-	Fri, 31 Jul 2026 16:19:35 +0000
+	id 1wppxP-0000000Cz1B-00HK;
+	Fri, 31 Jul 2026 16:19:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514771;
-	bh=y/oPi/fnmwrFajh0Q2Bmgy/nAjgH57+rFmteNZPqQ30=;
+	s=mail; t=1785514772;
+	bh=fw8obzJP5OPYqaOUFHt36T0iWpVWKUYn3AqoExbRHJc=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=c5rFA9KSpWytkG1gOfR/SX/kk6TaMt5iTq+mOUZ1i0/fvUP7esFrVUsCTs3Fm3p2b
-	 CefzERDAfHUD7Fb3A7DUOrSyN4Tf7bgedHthno16Apkjmdojp/gSnFeI/q2dHIWzqB
-	 TV54XjGeH4qrSmKRgY+9LC4j+iPpOAjWGzAkCpbA11yMT3/o/TuvQaEYjZGpxmaWTI
-	 yUCMHzAxEj9IRj+TX+phIGg3xplsvkCNnlWCr4pS8yxE3WnA38VtP8klA/MVvGR1cS
-	 soZ2NQhgaY+GMdd4Bzeadkw3LXnAw5jbNTd6UY3vtbwwD91caaGAAzBa0XxNtKV2Xo
-	 dZKFyVO3vSWUA==
+	b=bHUZ9jy0n2KaQdJ+NlJchUfjMKIpNDaY1O2NlzvV3A5HvWXoZMM7IRZTVMG3K7439
+	 s2YHV/HLKccLhBWsoX0GYlj16Gv6MtgPL/dJJOjw7M8cHgTSLQofjn1anIAi3welAa
+	 P3zm2biK/E60UMq7b/mbzTF5degQBChOYnrnjbVOtx2/R8blOQ6Sr44oUjLkh/w97h
+	 xqLijZqfWRRPngypOZXrbdBeF/uYY92mDMOVn6vyjH8E5rCiaaHMXJ3sS26Bo5/d9J
+	 bv3LYG4I5IScefPwS168XUXnna4Vd/im6cE9krxwD4/T2oDvCbEMGbZUUEXoIRbgBr
+	 NMW3x1iQGpgZg==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 52C5D17E0582;
-	Fri, 31 Jul 2026 18:19:31 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B948B17E08E0;
+	Fri, 31 Jul 2026 18:19:32 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:30 +0300
-Subject: [PATCH v10 23/69] drm/display: hdmi-state-helper: Set HDMI
- scrambling requirement
+Date: Fri, 31 Jul 2026 19:19:32 +0300
+Subject: [PATCH v10 25/69] drm/bridge: dw-hdmi-qp: Provide
+ .{enable,disable}_hpd() PHY ops
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-23-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-25-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -75,9 +75,8 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091933_703580_4DFF5573 
-X-CRM114-Status: UNSURE (   8.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260731_091935_208133_2271EBA1 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,35 +93,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Set drm_connector_hdmi_state.scrambler_needed when the computed TMDS
-character rate exceeds the HDMI 1.3 maximum TMDS character rate.
+Implement the .hpd_enable() and .hpd_disable() bridge callbacks and
+extend dw_hdmi_qp_phy_ops with corresponding hooks.
 
-HDMI 2.0 requires scrambling above 340 MHz.  Centralize that clock-based
-requirement in the HDMI state helper so drivers do not need to open-code
-the threshold check.
+This enables the DRM core to control when HPD interrupts are armed,
+which is needed to prevent premature interrupt delivery before the
+connector is fully initialized, and to properly quiesce HPD during
+suspend.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
 Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 18 ++++++++++++++++++
+ include/drm/bridge/dw_hdmi_qp.h              |  2 ++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index 3377ea936120..9544eb8659aa 100644
---- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -594,6 +594,9 @@ hdmi_compute_clock(const struct drm_connector *connector,
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index 7475b6b71836..a0613f0d2ebc 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -1189,6 +1189,22 @@ static int dw_hdmi_qp_cec_transmit(struct drm_bridge *bridge, u8 attempts,
+ #define dw_hdmi_qp_cec_transmit NULL
+ #endif /* CONFIG_DRM_DW_HDMI_QP_CEC */
  
- 	conn_state->hdmi.tmds_char_rate = clock;
- 
-+	/* TODO: also check drm_display_info.hdmi.scdc.scrambling.low_rates */
-+	conn_state->hdmi.scrambler_needed = (clock > HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
++static void dw_hdmi_qp_bridge_hpd_enable(struct drm_bridge *bridge)
++{
++	struct dw_hdmi_qp *hdmi = bridge->driver_private;
 +
- 	return 0;
- }
++	if (hdmi->phy.ops->enable_hpd)
++		hdmi->phy.ops->enable_hpd(hdmi, hdmi->phy.data);
++}
++
++static void dw_hdmi_qp_bridge_hpd_disable(struct drm_bridge *bridge)
++{
++	struct dw_hdmi_qp *hdmi = bridge->driver_private;
++
++	if (hdmi->phy.ops->disable_hpd)
++		hdmi->phy.ops->disable_hpd(hdmi, hdmi->phy.data);
++}
++
+ static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
+ 	.atomic_get_output_bus_fmts = drm_atomic_helper_bridge_get_hdmi_output_bus_fmts,
+ 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+@@ -1197,6 +1213,8 @@ static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
+ 	.atomic_enable = dw_hdmi_qp_bridge_atomic_enable,
+ 	.atomic_disable = dw_hdmi_qp_bridge_atomic_disable,
+ 	.detect = dw_hdmi_qp_bridge_detect,
++	.hpd_enable = dw_hdmi_qp_bridge_hpd_enable,
++	.hpd_disable = dw_hdmi_qp_bridge_hpd_disable,
+ 	.edid_read = dw_hdmi_qp_bridge_edid_read,
+ 	.hdmi_tmds_char_rate_valid = dw_hdmi_qp_bridge_tmds_char_rate_valid,
+ 	.hdmi_clear_avi_infoframe = dw_hdmi_qp_bridge_clear_avi_infoframe,
+diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
+index 6ea9c561cfef..b80fceffc315 100644
+--- a/include/drm/bridge/dw_hdmi_qp.h
++++ b/include/drm/bridge/dw_hdmi_qp.h
+@@ -17,6 +17,8 @@ struct dw_hdmi_qp_phy_ops {
+ 	void (*disable)(struct dw_hdmi_qp *hdmi, void *data);
+ 	enum drm_connector_status (*read_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+ 	void (*setup_hpd)(struct dw_hdmi_qp *hdmi, void *data);
++	void (*enable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
++	void (*disable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+ };
  
+ struct dw_hdmi_qp_plat_data {
 
 -- 
 2.55.0
