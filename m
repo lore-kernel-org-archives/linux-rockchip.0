@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35347C55171
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:19:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22603C55176
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:19:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9b9mJ/HSA7YndR0+lUWEeU7b37blNcv/tE87mtFrP5w=; b=1zPYknOvtoCI1J
-	vqGg/5vD5JExzRIirVsCkE8wiCu4G1cqAS0uejVaWR/ibYJ39ZpvTRnvhz5YeagBVXdn8G254OrVt
-	JkWdDRFJ+rbZuQa7sJh7CfpVETiKQ+zz6BI+LnpDkreTLwsLqNbmA8w5FQdG42ZYmvn7A/H2U1NJW
-	vNIgI6cqqAehx1xx5Nia/kNM8wMEJL/mzM5du+YMnVNHitga8+esOqYmbBde7sl1R8Go5GwN5M/hl
-	jPku5hCNyMogcZZ0bM28UXtGQHvFDcUE9PbWYBBuPFS48Lu4XTBsTs4LIFrjWCdMh9P58KBnZfASp
-	9b6d0pNnauqN829igJEg==;
+	List-Owner; bh=XypItaK8GVsGxEGNrDG3D1USmqzVac+qQSsD6/0lS0g=; b=mBNyWcJRLVwIbz
+	3+77WKpeBVrIWpuVXU4Jcib8Jn4rwz5NFrRbvgq8ws9ufly+0Apcy+qiyUhYs7v9ug5eqBZA/8udi
+	pflM0bxde5dtshXzbwdfDHaEBbeNY5dBwVmpyRuYqnJDk9+I3ABxpWgv+jbQ+SKDWMdgbMgkqz8pK
+	aOrLpd+uvrYBK8MqzVfCy8fDW/0S74w8EsPwffx7emZ8m9kB3c9iR6aNhXedpq89U42t6QZiUGY54
+	0wIzvTRtMwTio+Vc3CQW9yclQUVyFyg97iVkqinhzdWMm+aA04qJZMIxMviMzCbEkudmUakUNAG1X
+	bnq2R83mmGmem2gzZkdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxM-0000000Cyz4-2Dfm;
-	Fri, 31 Jul 2026 16:19:32 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wppxN-0000000Cz1c-1oBT;
+	Fri, 31 Jul 2026 16:19:33 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxB-0000000Cymo-2gcd;
-	Fri, 31 Jul 2026 16:19:23 +0000
+	id 1wppxC-0000000Cymx-19ha;
+	Fri, 31 Jul 2026 16:19:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514757;
-	bh=NoIEJfzsPnttpMy6TCleHNM/qDBVTlWkZiIKX22Bc5g=;
+	s=mail; t=1785514759;
+	bh=zZekc2wO4hv/88Qt7fIQVdz7WdxIyZgalaH2L/jTaLU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=BWSvj1aYnurkJs2uxXnSS26owG5ntL/d5szAEDky5vXgvXrcGzZX3omWQ3eeA7kjp
-	 I/Qkx6d2n/oRr+MpGCyNUbx/+1LdMTop5+CU5EOkZR52suDzJrwTLGrJxTjKH/jfO8
-	 dlx8LIFCsHuEe8CVWHIn2us881q04bGRFWp1Vv2ISrRkGgwOshl8FCS16T7TG5RJFY
-	 ZrdlNmgm/Wt2mEN08QmYrCh8utCav4XlnV3mijR47//uye/34uBrl9J/tbcbW1l1mS
-	 2itLPKiWiDC4D/HYc0qXiif0eEGgMcVgFRmfQ29ose3mesfyy9fRP8YXFZ3bzNijyS
-	 h17IBVEAIksCw==
+	b=YbtuXWh6M2rS59EBp6uD5toPJfpcC2gpfkuP1MOCUSlPNR5yDYmyXg0xQUh4ecfz9
+	 1T6fqVztjllvq68VsDIMWAXeoFJV1+FDH9y8crvEmhse3u2L74n73qimA4xsBQU2B8
+	 1GsgY0ynuv7t+EBsvYgpEURHtluxoUsou15L34vGeuNUFdjkm450bcROBKbQ4SIEX1
+	 Va7pf0Za//tNv0IGIULDeJMrXvNj7t3ENIgPOZ+zLirE4VT7U1q/lP37dbeMWjFpa9
+	 cnZdwuWyzM1M4IYBQAX5P4QdLsmNzPW7TwR+Dj+ZmqHDVLwZD16fmkf2JbLedyQrNf
+	 jldHOD1oUtuYg==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A153417E08E0;
-	Fri, 31 Jul 2026 18:19:17 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1A91017E08EB;
+	Fri, 31 Jul 2026 18:19:19 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:11 +0300
-Subject: [PATCH v10 04/69] drm/connector: Add drmm_connector_hdmi_init()
- with new signature
+Date: Fri, 31 Jul 2026 19:19:13 +0300
+Subject: [PATCH v10 06/69] drm/probe-helper: Introduce .force_ctx()
+ connector callback
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-4-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-6-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -70,12 +70,11 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Phong LE <ple@baylibre.com>
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- Diederik de Haas <diederik@cknow-tech.com>
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091921_843418_E6942BEB 
-X-CRM114-Status: GOOD (  24.12  )
+X-CRM114-CacheID: sfid-20260731_091922_474319_9310EFD7 
+X-CRM114-Status: GOOD (  19.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,271 +91,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In preparation for providing HDMI 2.x source capabilities, move the
-vendor, product, supported_formats and max_bpc parameters out of the
-init function into struct drm_connector_hdmi_funcs, and add new
-supported_hdmi_ver and supported_tmds_char_rate fields there as well.
+The .force() connector callback is invoked by
+drm_helper_probe_single_connector_modes() while the modeset acquire
+context it created is live, but the hook signature provides no way to
+pass it down, e.g. to support implementations needing to lock further
+objects.
 
-Appending more HDMI-specific arguments to that function would not scale
-well, hence introduce drmm_connector_hdmi_init() with the reduced
-signature.
+Add a .force_ctx() variant to drm_connector_helper_funcs, taking the
+acquire context and returning an error code, so that -EDEADLK propagates
+into the existing retry path.  When provided, it takes precedence over
+drm_connector_funcs' .force(), which is kept for existing users.
 
-Additionally, add the max_tmds_char_rate field to struct
-drm_connector_hdmi and use the supported HDMI version to determinate the
-maximum TMDS character rate allowed by the specification.  Some
-controllers, however, may support a lower rate than that version would
-imply.  A non-zero supported_tmds_char_rate lets drivers override this
-default with the actual controller capability.  A value of zero keeps
-the limit inferred from supported_hdmi_ver.
+This is a prerequisite for SCDC status synchronization in the HDMI
+connector framework.
 
-Callers are converted in the following patches, while the old and now
-renamed *_ini2() helper is removed at the end of the series.
-
-No functional changes expected for existing callers.
-
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/drm_connector.c | 136 ++++++++++++++++++++++++++++++++++++++++
- include/drm/drm_connector.h     |  62 +++++++++++++++++-
- 2 files changed, 197 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/drm_probe_helper.c       | 14 +++++++++++++-
+ include/drm/drm_connector.h              |  6 ++++++
+ include/drm/drm_modeset_helper_vtables.h | 28 ++++++++++++++++++++++++++++
+ 3 files changed, 47 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-index 5e520cff6094..4721cdeafc84 100644
---- a/drivers/gpu/drm/drm_connector.c
-+++ b/drivers/gpu/drm/drm_connector.c
-@@ -542,6 +542,142 @@ int drmm_connector_init(struct drm_device *dev,
- }
- EXPORT_SYMBOL(drmm_connector_init);
- 
-+/**
-+ * drmm_connector_hdmi_init - Init a preallocated HDMI connector
-+ * @dev: DRM device
-+ * @connector: A pointer to the HDMI connector to init
-+ * @funcs: callbacks for this connector
-+ * @hdmi_funcs: HDMI-related callbacks and capabilities for this connector
-+ * @connector_type: user visible type of the connector
-+ * @ddc: optional pointer to the associated ddc adapter
-+ *
-+ * Initialises a preallocated HDMI connector. Connectors can be
-+ * subclassed as part of driver connector objects.
-+ *
-+ * Cleanup is automatically handled with a call to
-+ * drm_connector_cleanup() in a DRM-managed action.
-+ *
-+ * The connector structure should be allocated with drmm_kzalloc().
-+ *
-+ * The @drm_connector_funcs.destroy hook must be NULL.
-+ *
-+ * Returns:
-+ * Zero on success, error code on failure.
-+ */
-+int drmm_connector_hdmi_init(struct drm_device *dev,
-+			     struct drm_connector *connector,
-+			     const struct drm_connector_funcs *funcs,
-+			     const struct drm_connector_hdmi_funcs *hdmi_funcs,
-+			     int connector_type,
-+			     struct i2c_adapter *ddc)
-+{
-+	int ret;
+diff --git a/drivers/gpu/drm/drm_probe_helper.c b/drivers/gpu/drm/drm_probe_helper.c
+index e26ead5b5e58..918255bcfa09 100644
+--- a/drivers/gpu/drm/drm_probe_helper.c
++++ b/drivers/gpu/drm/drm_probe_helper.c
+@@ -559,6 +559,7 @@ static int __drm_helper_update_and_validate(struct drm_connector *connector,
+ int drm_helper_probe_single_connector_modes(struct drm_connector *connector,
+ 					    uint32_t maxX, uint32_t maxY)
+ {
++	const struct drm_connector_helper_funcs *funcs = connector->helper_private;
+ 	struct drm_device *dev = connector->dev;
+ 	struct drm_display_mode *mode;
+ 	int count = 0, ret;
+@@ -592,8 +593,19 @@ int drm_helper_probe_single_connector_modes(struct drm_connector *connector,
+ 			connector->status = connector_status_connected;
+ 		else
+ 			connector->status = connector_status_disconnected;
+-		if (connector->funcs->force)
 +
-+	if (!hdmi_funcs)
-+		return -EINVAL;
-+
-+	if (!hdmi_funcs->vendor || !hdmi_funcs->product)
-+		return -EINVAL;
-+
-+	if ((strlen(hdmi_funcs->vendor) > DRM_CONNECTOR_HDMI_VENDOR_LEN) ||
-+	    (strlen(hdmi_funcs->product) > DRM_CONNECTOR_HDMI_PRODUCT_LEN))
-+		return -EINVAL;
-+
-+	if (!hdmi_funcs->supported_formats ||
-+	    !(hdmi_funcs->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444)))
-+		return -EINVAL;
-+
-+	if (connector->ycbcr_420_allowed !=
-+	    !!(hdmi_funcs->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420)))
-+		return -EINVAL;
-+
-+	if (!(hdmi_funcs->max_bpc == 8 ||
-+	      hdmi_funcs->max_bpc == 10 ||
-+	      hdmi_funcs->max_bpc == 12))
-+		return -EINVAL;
-+
-+	if (!hdmi_funcs->avi.clear_infoframe ||
-+	    !hdmi_funcs->avi.write_infoframe ||
-+	    !hdmi_funcs->hdmi.clear_infoframe ||
-+	    !hdmi_funcs->hdmi.write_infoframe)
-+		return -EINVAL;
-+
-+	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
-+	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
-+		return -EINVAL;
-+
-+	ret = drmm_connector_init(dev, connector, funcs, connector_type, ddc);
-+	if (ret)
-+		return ret;
-+
-+	/* TODO: remove after conversion to new drmm_connector_hdmi_init() */
-+	connector->hdmi.supported_formats = hdmi_funcs->supported_formats;
-+
-+	/*
-+	 * The supported HDMI version can be used to determinate the maximum
-+	 * TMDS character rate allowed by the specification. Some controllers,
-+	 * however, may support a lower rate than that version would imply.
-+	 *
-+	 * A non-zero caps->max_tmds_char_rate lets drivers override this
-+	 * default with the actual controller capability. A value of zero keeps
-+	 * the limit inferred from supported_hdmi_ver.
-+	 */
-+	if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_2_0)
-+		connector->hdmi.max_tmds_char_rate = HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ;
-+	else if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_1_3)
-+		connector->hdmi.max_tmds_char_rate = HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
-+	else if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_1_0)
-+		connector->hdmi.max_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
-+
-+	if (hdmi_funcs->supported_tmds_char_rate) {
-+		if (hdmi_funcs->supported_tmds_char_rate > connector->hdmi.max_tmds_char_rate) {
-+			drm_err(dev, "Enforced max_tmds_char_rate exceeds %llu spec limit\n",
-+				connector->hdmi.max_tmds_char_rate);
-+			return -EINVAL;
++		if (funcs && funcs->force_ctx) {
++			ret = funcs->force_ctx(connector, &ctx);
++			if (ret == -EDEADLK) {
++				drm_modeset_backoff(&ctx);
++				goto retry;
++			} else if (ret < 0) {
++				drm_dbg_kms(dev, "[CONNECTOR:%d:%s] force_ctx failed: %d\n",
++					    connector->base.id, connector->name, ret);
++			}
++		} else if (connector->funcs->force) {
+ 			connector->funcs->force(connector);
 +		}
-+		connector->hdmi.max_tmds_char_rate = hdmi_funcs->supported_tmds_char_rate;
-+	}
-+
-+	/* TODO: remove after conversion to new drmm_connector_hdmi_init() */
-+	strtomem_pad(connector->hdmi.vendor, hdmi_funcs->vendor, 0);
-+	strtomem_pad(connector->hdmi.product, hdmi_funcs->product, 0);
-+
-+	/*
-+	 * drm_connector_attach_max_bpc_property() requires the
-+	 * connector to have a state.
-+	 */
-+	if (connector->funcs->atomic_create_state) {
-+		struct drm_connector_state *state;
-+
-+		state = connector->funcs->atomic_create_state(connector);
-+		if (IS_ERR(state))
-+			return PTR_ERR(state);
-+
-+		connector->state = state;
-+	} else if (connector->funcs->reset) {
-+		connector->funcs->reset(connector);
-+		if (!connector->state)
-+			return -ENOMEM;
-+	}
-+
-+	drm_connector_attach_max_bpc_property(connector, 8, hdmi_funcs->max_bpc);
-+	/* TODO: remove after conversion to new drmm_connector_hdmi_init() */
-+	connector->max_bpc = hdmi_funcs->max_bpc;
-+
-+	if (hdmi_funcs->max_bpc > 8)
-+		drm_connector_attach_hdr_output_metadata_property(connector);
-+
-+	ret = drm_connector_attach_color_format_property(connector,
-+							 hdmi_funcs->supported_formats);
-+	if (ret)
-+		return ret;
-+
-+	connector->hdmi.funcs = hdmi_funcs;
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(drmm_connector_hdmi_init);
-+
- /**
-  * drmm_connector_hdmi_ini2 - Init a preallocated HDMI connector
-  * @dev: DRM device
+ 	} else {
+ 		ret = drm_helper_probe_detect(connector, &ctx, true);
+ 
 diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 2e7d75cb0adf..2a49c4d55f77 100644
+index 2a49c4d55f77..a6de3e63b462 100644
 --- a/include/drm/drm_connector.h
 +++ b/include/drm/drm_connector.h
-@@ -1403,8 +1403,50 @@ struct drm_connector_infoframe_funcs {
- 
- /**
-  * struct drm_connector_hdmi_funcs - drm_hdmi_connector control functions
-+ * and controller capabilities
-  */
- struct drm_connector_hdmi_funcs {
-+	/**
-+	 * @vendor: HDMI Controller Vendor name.
-+	 */
-+	const char *vendor;
-+
-+	/**
-+	 * @product: HDMI Controller Product name
-+	 */
-+	const char *product;
-+
-+	/**
-+	 * @supported_hdmi_ver:
-+	 *
-+	 * Maximum HDMI specification version supported by the controller side
-+	 * of this connector. This describes the controller capability only;
-+	 * the effective link capabilities may be further restricted by the
-+	 * sink, bridge, or mode validation.
-+	 */
-+	enum hdmi_version supported_hdmi_ver;
-+
-+	/**
-+	 * @supported_tmds_char_rate:
-+	 *
-+	 * Maximum TMDS character rate supported by the controller, in Hz.
-+	 * A value of 0 means the core should use the default limit implied by
-+	 * @supported_hdmi_ver.
-+	 */
-+	unsigned long long supported_tmds_char_rate;
-+
-+	/**
-+	 * @supported_formats:
-+	 *
-+	 * Bitmask of @drm_output_color_format listing supported output formats.
-+	 */
-+	unsigned long supported_formats;
-+
-+	/**
-+	 * @max_bpc: Maximum bits per char the HDMI connector supports.
-+	 */
-+	unsigned int max_bpc;
-+
- 	/**
- 	 * @tmds_char_rate_valid:
+@@ -1603,6 +1603,12 @@ struct drm_connector_funcs {
+ 	 * the sysfs interfaces or on the kernel cmdline. In that case the
+ 	 * @detect callback isn't called.
  	 *
-@@ -2052,7 +2094,19 @@ struct drm_connector_hdmi {
- 	unsigned long supported_formats;
- 
- 	/**
--	 * @funcs: HDMI connector Control Functions
-+	 * @max_tmds_char_rate: Maximum TMDS character rate, in Hz,
-+	 * supported by the controller.
++	 * New drivers should implement
++	 * &drm_connector_helper_funcs.force_ctx instead, which gets passed
++	 * the modeset acquire context and thus allows taking additional
++	 * locks.  It takes precedence over this callback when both are
++	 * implemented.
 +	 *
-+	 * This is inferred from &drm_connector_hdmi_funcs.supported_hdmi_ver,
-+	 * by default. However, controllers may support a lower rate than that
-+	 * specification version would imply. If that is the case, drivers are
-+	 * expected to set &drm_connector_hdmi_funcs.supported_tmds_char_rate
-+	 * to a non-zero value indicating the actual limit.
-+	 */
-+	unsigned long long max_tmds_char_rate;
-+
-+	/**
-+	 * @funcs: HDMI connector Control Functions and controller capabilities
- 	 */
- 	const struct drm_connector_hdmi_funcs *funcs;
+ 	 * FIXME:
+ 	 *
+ 	 * Note that this hook is only called by the probe helper. It's not in
+diff --git a/include/drm/drm_modeset_helper_vtables.h b/include/drm/drm_modeset_helper_vtables.h
+index ca6268945c28..cf5fe5ba2b18 100644
+--- a/include/drm/drm_modeset_helper_vtables.h
++++ b/include/drm/drm_modeset_helper_vtables.h
+@@ -921,6 +921,34 @@ struct drm_connector_helper_funcs {
+ 			  struct drm_modeset_acquire_ctx *ctx,
+ 			  bool force);
  
-@@ -2549,6 +2603,12 @@ int drmm_connector_init(struct drm_device *dev,
- 			const struct drm_connector_funcs *funcs,
- 			int connector_type,
- 			struct i2c_adapter *ddc);
-+int drmm_connector_hdmi_init(struct drm_device *dev,
-+			     struct drm_connector *connector,
-+			     const struct drm_connector_funcs *funcs,
-+			     const struct drm_connector_hdmi_funcs *hdmi_funcs,
-+			     int connector_type,
-+			     struct i2c_adapter *ddc);
- int drmm_connector_hdmi_ini2(struct drm_device *dev,
- 			     struct drm_connector *connector,
- 			     const char *vendor, const char *product,
++	/**
++	 * @force_ctx:
++	 *
++	 * This function is called to update internal encoder state when the
++	 * connector is forced to a certain state by userspace, either through
++	 * the sysfs interfaces or on the kernel cmdline. In that case the
++	 * @detect_ctx callback isn't called.
++	 *
++	 * This is the atomic version of &drm_connector_funcs.force.  When
++	 * both are implemented, this one takes precedence and
++	 * &drm_connector_funcs.force is not called.
++	 *
++	 * To avoid races against concurrent connector state updates, the
++	 * helper libraries always call this with ctx set to a valid context,
++	 * and &drm_mode_config.connection_mutex will always be locked with
++	 * the ctx parameter set to this ctx. This allows taking additional
++	 * locks as required.
++	 *
++	 * RETURNS:
++	 *
++	 * Zero on success, or a negative error code otherwise.  This includes
++	 * -EDEADLK when a lock acquisition needs to be restarted, in which
++	 * case the helpers take care of backing off and calling this function
++	 * again.
++	 */
++	int (*force_ctx)(struct drm_connector *connector,
++			 struct drm_modeset_acquire_ctx *ctx);
++
+ 	/**
+ 	 * @mode_valid:
+ 	 *
 
 -- 
 2.55.0
