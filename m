@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89B74C55171
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:20:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7929CC5516F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:20:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H2W28po1rK99unZdUc9YQBAY4clyJaSP7+0Cx3/UbkM=; b=JjCyfdhwu6+t+m
-	u3vs9C/u+/UQXa/xtfBbCYlVEYcxnOtZwOsapUFLn4zsOkswTcedfkCu8LHC6clYxShH3z4WVoUNS
-	AbJmFrIAM7l6p04/fVS5RrqcFzz+Tj56zMlnIXA2MZAG+a89XAJR9f7/SO8yJMwYS6IfwYwTxHkxH
-	5RVMoTs5IqHMIha2vQsqaGSnE0ZDOrcBNnV4O3Zf6LEolBLTwi43OxhHJXqtRwBkEhuPh9ahA8PX8
-	jYsggGSj3muMoaN59HULBHARRlrIgWMmmacMQcWowPt0pgkrFvcjHjr0ARN4wQ22xEkuFFrJUZ5Ob
-	YYhDl4k4CnsebfDCNCJg==;
+	List-Owner; bh=RsDEaBFCVNQaIj64bB17jhwC6xsTIBMJrU1R669lyjA=; b=ILcSsb3TYPieIu
+	U+iumdD8uKQVbacphod9LZCwHZOBHJO1qrr+z7FNvFzlZnWXw6J7bv+QcRwLy7QtQI9wkXOSBGDtN
+	08NyQfaqTM6i43R1yy76y1RZ5csqp1Peol1JKGgoxFa/eDNQZjZgEetqGy+sGuSDcrq2CaOje1G32
+	hMJgpRxki4griT3rBuB4A0Dd4n6uZU3rTwUA+ldBw1MITUecmnAQxrpEaAlgnTiFFE86e6s6JzZUt
+	qqRqjvlmA8U0K7Ckj08GI52g+YhIEgpdZB9qpnuj0HGT4WpdD0t8EfPLVl4MWymT5YdUNUn124ZEj
+	TLdJb643S9CbyX78P8tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxu-0000000CzzY-1DeC;
-	Fri, 31 Jul 2026 16:20:06 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wppy7-0000000D0Ii-1lvn;
+	Fri, 31 Jul 2026 16:20:19 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxF-0000000CypW-2bET;
+	id 1wppxG-0000000CyqA-3Blt;
 	Fri, 31 Jul 2026 16:19:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785514763;
-	bh=CUcoRbmERGYIeO3Z961lPfNQR8EGzDg1msKbqGRYj2s=;
+	s=mail; t=1785514765;
+	bh=GINu5YN6iFHFeKdJNvWRwz8yrY1Ka6Rvl6f76x+SBEY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=IPvyMHq2SUa2dC6Oc6b/P3NBBztmzXSQ/OxKtkYdzszJfrag3HPOu8EVb6tjH0vOB
-	 3+mrjfxjtxuBjKPFxwnHfsc6W3AJAlesJWrRlgDj7vyU+d+hGKmQBBEq9IUoBRRzIB
-	 lq5QJtf0jlyChJHs9J+G9dGHyva8/clwp7iRc7lGCXCBFxozyLGtJ9y97jnrxt7jVX
-	 a+I1GzGSTeraQm7E1YbznmlMPIU+DKbop/0EvHj+xu+yTs7ZNGq6vt1DHK1qgni31Y
-	 SdqA4+FxVAjVSs1aIqLgKkrUyqkMlHKUuQdLm3gZGp/xbloeFQg+kjiySmMF8PRKp9
-	 1uLCTDJ7wAWRg==
+	b=AsM8rhD/IHVyq07M9VimKEE+JfV/MLDKpd73PfP1+1HDZRVkGBp8UWUBS1BlyYcLH
+	 Lyu79H5BaRIvPJJ248QOZ3Jhq98T7oo6g2o+zqMRhnfzna5Q9XOPQsRUGa7dTzj6lZ
+	 qlu2kuhZBCiDZ43SQ6rd/fz8c4RHhysWKDWCN0a94XNKgk/vVFtBqFO7wwkmOWplu3
+	 Gdu/0uaeqRIwxz+Nnd5HwT/VL5gnIoD2SriEbElXR5dLpI8VrS3cpPI9yuunJLdPzV
+	 9K5h5Lj2yK4LLpTa7MWmJywQ31zrYdcD098dY/EkbTiSqRSpj88mbTlrb1LyDExqQN
+	 I+5L2Jh8aqEEQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6322517E092C;
-	Fri, 31 Jul 2026 18:19:23 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D650B17E0934;
+	Fri, 31 Jul 2026 18:19:24 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:19 +0300
-Subject: [PATCH v10 12/69] drm/bridge: Fix unlocked list_del in
- drm_bridge_add()
+Date: Fri, 31 Jul 2026 19:19:21 +0300
+Subject: [PATCH v10 14/69] drm/bridge: Remove redundant error check in
+ drm_bridge_helper_reset_crtc()
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-12-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-14-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -71,11 +71,14 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- Sashiko <sashiko-bot@kernel.org>
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Maud Spierings <maud_spierings@hotmail.com>, 
+ Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091925_814013_26D61C07 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20260731_091926_985981_1CF32012 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,50 +95,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When re-adding a bridge that was previously removed, drm_bridge_add()
-drops it from bridge_lingering_list without holding bridge_lock.
+Remove the no-op error check after drm_atomic_helper_reset_crtc() since
+the goto target is the immediately following label and the return value
+is already propagated correctly without it.
 
-Both bridge_list and bridge_lingering_list are protected by bridge_lock,
-as they are concurrently modified by drm_bridge_remove() and
-__drm_bridge_free(), and walked by the debugfs 'bridges' file.  Running
-the list_empty() test and the list_del_init() outside of the lock may
-therefore corrupt either list.
-
-Perform both under bridge_lock.
-
-Fixes: 17805a15d175 ("drm/bridge: add list of removed refcounted bridges")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260723015004.1F5711F000E9@smtp.kernel.org/
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/drm_bridge.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/drm_bridge_helper.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-index afaae272347c..8b8f71c3ccff 100644
---- a/drivers/gpu/drm/drm_bridge.c
-+++ b/drivers/gpu/drm/drm_bridge.c
-@@ -21,6 +21,7 @@
-  * DEALINGS IN THE SOFTWARE.
-  */
+diff --git a/drivers/gpu/drm/drm_bridge_helper.c b/drivers/gpu/drm/drm_bridge_helper.c
+index 420f29cf3e54..0a3c8fee66b3 100644
+--- a/drivers/gpu/drm/drm_bridge_helper.c
++++ b/drivers/gpu/drm/drm_bridge_helper.c
+@@ -50,8 +50,6 @@ int drm_bridge_helper_reset_crtc(struct drm_bridge *bridge,
  
-+#include <linux/cleanup.h>
- #include <linux/debugfs.h>
- #include <linux/err.h>
- #include <linux/export.h>
-@@ -454,8 +455,10 @@ void drm_bridge_add(struct drm_bridge *bridge)
- 	 * in bridge_lingering_list. Remove it or bridge_lingering_list will be
- 	 * corrupted when adding this bridge to bridge_list below.
- 	 */
--	if (!list_empty(&bridge->list))
--		list_del_init(&bridge->list);
-+	scoped_guard(mutex, &bridge_lock) {
-+		if (!list_empty(&bridge->list))
-+			list_del_init(&bridge->list);
-+	}
+ 	crtc = connector->state->crtc;
+ 	ret = drm_atomic_helper_reset_crtc(crtc, ctx);
+-	if (ret)
+-		goto out;
  
- 	mutex_init(&bridge->hpd_state_mutex);
- 	mutex_init(&bridge->hpd_mutex);
+ out:
+ 	drm_modeset_unlock(&dev->mode_config.connection_mutex);
 
 -- 
 2.55.0
