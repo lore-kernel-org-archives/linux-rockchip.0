@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4779EC55167
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 08:46:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06904C55167
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 09:24:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
 	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iOOc4tcn8ByKNMrxdK6sCKGZonzNR2uYAb+U5HSBCAk=; b=DX/SXpuA1c4f4W
-	KRxwtnazPKkZu9lYxKUYMv5IyZ+rmJPH/lFVeU7qggjCWUNXGE4Ya6yoL+zI3uOQRfCEBh12P5GgR
-	UAkURJWrGyMVCnSWDq6d5EBFi3kTTX2lYjqlPcgKAE4i1yjdH3BS6ShIUjVlWJW39da+hqLex7rac
-	3cGe/ftINnCRjNhcjK4c4plCqmD1wUlo/VBXHoPEqUSqIT/RF0F8JBEkOAGOwGA+G094SUlNHUWSK
-	MAhYLwfQBdgO7HNYXJB6ZHT2DX+ruw5bO5BVueLtk/xdcUalVmCeZROOkGbm4TF2yaM+8fL/Anuvq
-	iN9v8fl02xPOt2op6BMg==;
+	List-Owner; bh=O9rJHFiFtDuCsoFCgkwtr/l6v2DCDue0+ZEmq754fSg=; b=2KnSh5yX+w3tjk
+	0K+Rvz/g0RqTKXF7BHHU05GB8mJ/YeJTrq74R9jni2blKD07TBFrO2TVmkYm0N/dNofsVoakePRgO
+	EOHW8sdXnSNTYOSTjK6cPRteTcFIncGFlKst8zJ9o8JyFLoY9Yxvx/whPSKxdqsbpqHHTFaHlD3Vj
+	2e3AB3pY3I2WXB+k9O9m47K50BnDFECscYz/+ebmaTslIxaZBUomIzWHroK8WI14QCBS5NWU9pWsO
+	QMcvh8an9kVqKCxVzh5HklFyepvCVjhZ4EQwR7dl0z/o6Su4xx7FkV3ss1ajZDs3o1MP9Nc1Ma5U4
+	pCQ7/A86O/UtNLjIvXIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpisu-0000000C68t-2JmL;
-	Fri, 31 Jul 2026 08:46:28 +0000
-Received: from out162-62-57-87.mail.qq.com ([162.62.57.87])
+	id 1wpjTB-0000000CBBj-04oz;
+	Fri, 31 Jul 2026 09:23:57 +0000
+Received: from out162-62-58-216.mail.qq.com ([162.62.58.216])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpisp-0000000C67e-3upS;
-	Fri, 31 Jul 2026 08:46:26 +0000
+	id 1wpjT8-0000000CBAf-0nf1
+	for linux-rockchip@lists.infradead.org;
+	Fri, 31 Jul 2026 09:23:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1785487568; bh=3h0aRc36rgqP3y5iZTknfzFkOzFhyAFk3nFphfGXh5M=;
+	t=1785489828; bh=XiIiDwni9OurStl7pRO7ZhqiyVf3ygxX/NwmFxj//ws=;
 	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=WhiKFrlOeyMdO0HCNTDdGyNMlU8AWBA0U4VCA2GDXAQv3r8voYWXMwvk7qv8Msx7h
-	 ve4zlnuk+fsTM8InwqkqEg9JZq2WFqhvRgfB9dWpmbs1v7L5I7gbOdR9O9vniq77zJ
-	 +mBSE7/29tWS5NfbNzNPLIk5D2oOSIFr5J37ZHoY=
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
-X-QQ-XMAILINFO: MVtLpNyZV6SI+dxp45/lZojaVWA8ckcR2pgCvR1vpVGpk4g4C00in87UmIAIh/
-	 r6I9e863sIupjN7K0QfKEEFmm4lL9hOE8ml5tM3ah0VdSkF4tDqsRuKtFEe/Y+2reWuaRXRBQ+GOa
-	 RcJwI760bbBpozHzHK72sLrvmdi+YCTABcab3gBZYKOKmaQiDM7etdBmUU1n4UvlSGJJt+yp7V4SP
-	 5gVZzP/8iFQ4pyxNFQny2hzBOL/lKWmg9YNzqcUC53yADXhJC0IIdbYJ4alK2v6XmPceuwV16jL6D
-	 oQrHGuVPF3VtyIwUU/31diIiFSif1ZFSTqZ2tNSC4Avj4BUjPhVKmEDbG6XjpKQEjIWReERTuPsJM
-	 aHx19s2lacjH9kY7wQMFHwpZMjnwee5uJsvoSzZOnc7WgR4SkPUdTImMovhicvl3MsSpA17NOTchD
-	 FMMgXtUIuySAEFwim1cUIGEd+U2eha5ygmlGaTtJCGl7/Ejuq6Jw8Z4/iT1n54yP5Nctz3BKh2bhm
-	 R9Dxj/3qqNX08AylsJG9qietCyakLpqAguAp+3scmt3Uo30j2ZnGNIUqLFBSIYja5He5MsEh9NkWF
-	 mQi7GyUS0sEbZLfgPmmvzYGKuGsDRTfJfoDJz8TksWnue9+REM+rUTbP6P/24kAtNQL63NA9r+UmL
-	 Dm6rFMzem2BfMxvEtmt3I1B5L4MVrd/yB//8SPo4BYaVx7VY/rNre/1t16QNT6HhLiBH26W7/19+T
-	 GXXV2Ha+0J9reF4AFGaMEaXqpKIPg9zGi1OY7OwEAlmZ2B6L2AsFyCWTDqFmzpx7RUI4QV7Xq4U9s
-	 ppdWzGaMNLDNk83808OlXumdOmznd471APmQTBbXafo1cPbhjaODL+cHbCpQFsQlqw+Z6anjYQhAf
-	 ViI15KE4qUmCP3l9v/lGz0ju0OLPZ32Dkjq8hbu5SLAPFsO1jxhx/gRNzKqdsvhmWN+lnS50inOEi
-	 VCdSao367NzdZqzk62RkrFhWkm1zza2xjKSNe/luoj3/lRqnI5qb4881Ebx/ZhETmPsr13EITB9b2
-	 wdH69YIZiN6mTKtax7WPPmuWsb0Ht/6iIbuMAv+JDk3pIMyCXBCbGmdQay0KuBIfbWGXyoGpNwY0c
-	 ubPnkRoz2/0TrcKP/C4RsV9Mhx/7cFXYtox6C7xb9oCCWwCkBijbwV7j
+	b=ZL3eO6DVQIr4Re4Al7cmK8X9Yn21ixyz5yaCqpOiw08ChgoqiY6xNOM93bhhwnPTp
+	 dKIIkuswSpFmhQZGkLEy9z8ccuh+nP85/TsCYnw2AfH3omeay7NKNshFIOxYzBlUTV
+	 hLA7yVo8zC8dsJ2TeI1nuNcZtpyJxjPHjmKOSkOE=
+X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
+X-QQ-XMAILINFO: MdmyWVu0InhASr51t+bh5d00P15ddVfHxAAtw92Y7cy3+tpnleiyxscsCHM8Bo
+	 HSoDUv9Jf67J6A3E7utHTCs2SbiQJE8/ph1uWVKiD7IE0TRGiCeLNpYazT8JzJ3hr2voI7hPsH6CP
+	 ZxQH+Swm4aeJrx0+igr8sq7KaMbwxRoN9LlV7Argn70rFcUVWc48AtF06Gq6ZIrQh+hVRKq5AuteS
+	 ecODuSy08oGNSTrMwnvLTWT6DqvcH48rvKPWBy8AvxeW0lEHDqLYtp8rLsmDdQv8PFICHk7IOWd4y
+	 3O5RbwiPsT7V64ACizMdduFJDLgxpPdn5R1+LpFYlpEKBlCNymOiHGmDEaSlsVai8njwfmGuYS4ZO
+	 689FqoE8+UHVXA/i0zkcQjsbZP2ubdv/l5N1QbaXHRyJ2z6qssJ76xODSrUzCPgWSZFtc92u1CKFb
+	 4v8qomZy8F0fxpdvtsBEuSbxPF4DXWo08a/aQZIrRAPED/pbWRQU0O/CmTJC/OvBnR9x1oAw8k6sZ
+	 DEaHz6IkPmRQqsTQR2KOcaRYYHQHzPAiZVxp8FLinJcPWE52db1akCY+b/b53xi2719JzlQosPPhW
+	 vijCRzF37jWJIKcfIX8UHNxjWISuORHK/UMx9BTPsIKHSzDkwrqOpJmddcd5rqEHHP8641djsgkRS
+	 iG12O6VTtWCri6mIkN8dAOF597q15Bqw3GqiYfWAc1A2FiP3isVovb1Sv/oo9t2uVVE3WrpDJijvp
+	 jhBuKJJ66Ck/2oxzVC/iDshGZApclmOOraBBaFOGL5/2bzsNDh487HP/Zbybcs6ALpVo/coYc5sdM
+	 sRYUPfYbkwc2kr5zfCtUnZUzEuy5uEJYRJCC5OY3ABWmN3HRCaxH+OiX2NaU3XOeg0eK7rV8PdkiA
+	 2cyY8xplPH+0oCcoaf99G8+QTZmjqa4SJKcyMf7dVifyv4C0emQEYBFYklQHOBq0h9kieSz4AIQ7+
+	 s7WIcXMg5DgKuWwU5RDo0wHVww9d3JpKgwu7C70aFsah+5ofxmpj6kqK5V8rExW4DlWPOpX4NhgKp
+	 2uOZrfahfc/QbVtNc+Xy2Y2PXBF5PXGVe7K9flomXjDpD7+E=
 From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
 To: "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>
-Cc: "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>
-Subject: Re: [PATCH v4 1/3] can: rockchip_canfd: prevent TX stall on echo skb failure
+Cc: "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH v6 2/4] can: rockchip: add RK3588 CAN support
 Mime-Version: 1.0
-Date: Fri, 31 Jul 2026 16:46:05 +0800
+Date: Fri, 31 Jul 2026 17:23:45 +0800
 X-Priority: 3
-Message-ID: <tencent_5385C642A636017C2422600C71DA6FBA2905@qq.com>
+Message-ID: <tencent_A3698A465C4621E164443B0005D1CC6FAE05@qq.com>
 X-QQ-MIME: TCMime 1.0 by Tencent
 X-Mailer: QQMail 2.x
 X-QQ-Mailer: QQMail 2.x
-References: <tencent_929320CDB8CC5402DD486A402122B7DF5606@qq.com>
- <tencent_BFFE7E8E4D7E349F32F509B7233D01FB8808@qq.com>
-	<20260731-important-dingo-of-abracadabra-054a28-mkl@pengutronix.de>
-In-Reply-To: <20260731-important-dingo-of-abracadabra-054a28-mkl@pengutronix.de>
-X-QQ-mid: xmsezb41-0t1785487565t14l464yo
+References: <tencent_7BAA0052C402BFFD26291A64198084E39107@qq.com>
+ <tencent_207E464D12344B3228096E23A001D6882508@qq.com>
+	<20260731-tall-camouflaged-earthworm-e1a7d0-mkl@pengutronix.de>
+In-Reply-To: <20260731-tall-camouflaged-earthworm-e1a7d0-mkl@pengutronix.de>
+X-QQ-mid: xmsezb41-0t1785489825tvu85u5sk
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_014625_454288_6FA7EC53 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20260731_022354_772857_574EF0D8 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,20 +87,17 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Marc,
 
-Sorry for overlooking this feedback.
+> Can you attach the TDC to the CAN framework? See commit 5e1663810e11
+> ("can: mcp251xfd: fix TDC setting for low data bit rates"). And check if
+> CAN-FD works on the rk3588 works?
 
-The previous two emails contained the same feedback as the review reply to v1, and I had already replied to that point. As a result, I mistakenly missed this message.
+Could we leave the RK3588 TDC support out of this patch series for now?
 
-> I think it's better to call the can_put_echo_skb() after the
-> "if (!netif_subqueue_maybe_stop())"
+I will test whether CAN-FD works on RK3588 with TDC integrated with the
+CAN framework and report the test result. If the testing shows that it
+works, I will enable it in a separate follow-up patch.
 
-I agree. I will move can_put_echo_skb() to after the TX queue availability check and before any hardware TX FIFO register writes. If it fails, the driver will account the dropped frame and return without modifying the hardware FIFO or software TX state.
-
-I will update the series accordingly in v5.
-
-Sorry again for missing your feedback, and thank you for the review.
-
-Best regards,
+Thanks,
 Cunhao
 _______________________________________________
 Linux-rockchip mailing list
