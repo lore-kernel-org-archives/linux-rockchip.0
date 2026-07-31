@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E372EC55175
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:23:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71D12C54F54
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 16:23:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iYjQPZMrNwn51oZToGilZGFA+stJSr/wI/G6VQs0d2M=; b=pBSrPWxsWZBHnT
-	JLcJnwxyVANKvMhU4fagbFsxzBO28CHg2sx7+rAEAwGvcEAD+ngqNqXWb9IzwHKufrV0npKqd53+D
-	whdL3J6g7mZl58wgkRkbg6eiwsA3EH2aa3dStx5Qe8HY0FKwZexsLwOuqqjznkQnm/iQIC6I07xi2
-	1a8EPG2lr/V+xfBUSl2t7y1/5E712p6NsVgFCihJXCO9287uReOvd1HVvcxYFNYegThTTs6Dpkh9u
-	1yhJjS2ZdbneYyQFWDT2U0jWE6Sh+ziYiPJVyRNtb2XTEjUppHfOr+dMTKo8hkmmJ60pDn1V7MxaT
-	auBRvEM1guRSDh4ZeJJA==;
+	List-Owner; bh=rvQ6O4kJRu5ZpUTiuG/JiCaQVnoGLc7vCBqaPGAgr8Q=; b=3XneU5KNy75EeT
+	xiZ2g+omHKbRB8oJOBLfd590jcR93NWSl9c0UFdbF1B0wh4hEPs9QGMbRK+ck0dW98VnerhWIx6yy
+	bLMl1nXEWJ2f+XMsw9PgZGYT+o9QPoiTe33ui7YVlI4ofvgFIqkqtucNB8/SWjWEVGrR4Zu/LxwRL
+	ZfpkxKv2lx3CXxEvyHlLizobEBmLbZZFmJUT5vnsArmxYRO/etTD/WZCr0xopS6KyIeRzsUq4r9fj
+	TlOzz2XLLUOXHGGZHU47+UVI8ssNEYZ8243DncKIwhEFlKXtBK18HkjH18qX1xN5JMTjruAt0jZSl
+	Be1WMegKXNT8/jTSlAdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpq1M-0000000D2hJ-2Pvh;
-	Fri, 31 Jul 2026 16:23:40 +0000
+	id 1wpq1N-0000000D2jC-0zF5;
+	Fri, 31 Jul 2026 16:23:41 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wppxY-0000000CzLi-0cve;
-	Fri, 31 Jul 2026 16:19:47 +0000
+	id 1wppxY-0000000CzN5-3u3s;
+	Fri, 31 Jul 2026 16:19:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1785514782;
-	bh=DeZtw3F7yKEtM3L+V9bSKt+8ejdCYffKo0KzIQCU4VA=;
+	bh=hMfmPjxTX291Q5EGzy4LRXRcR3XKvgItQhsbL5BpXSo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=IATk21M/72a2R4cXCbUZVF3ePeVq81iTArMzkz7ChPS0RMlzJJH6k9ypb6UJd+bmy
-	 G46sERS2xR/HGIsOqWL8hT7cOfMUqAFSAV+WnZaC3nkgBaAX0amQz69o0xPdcJ/r1O
-	 GqzIkJryyE/AD1Jo/qyYXw2A/CnAMewuAx/cn5SToCilEfMWrZpIeqAySNADG2clDs
-	 Uojg0GB2plD0gF+8UIVxwzxDLkc5sWmM3Pf9ZCSYWnSMJBf/XaD2LxkJa++968r3u9
-	 4jrsghrIAdt5t0wz+4+gc1b5Xc0MBnzjQZLl1Qrv6u83qZhpDq+FO2cQHmdtnxwSrc
-	 UFva8zGFVqLDg==
+	b=Y31T1CbxRMTEv0VHq3rKBFvjGN7T4PHqWzcFv3WBxy+p5EENVAZIrKHCt1X9dcl/t
+	 je//Wvnhilp0J2oKlBjnLkancuuayTRy0xPL6VDqPISVo1mhUWb5N21KlebznHeZv7
+	 Wb7uPlfZKYNFC0/WB0fzG2AA/rKVV6Soy8IsoRHUGiT+RBW+Aezi0dgHr+5LRsgEtb
+	 aXS8WOcs0kZiSNR1pdoaEt7WWnMwgmCsVkGYKhkTJAVVgS1YK09BQdP+Tt6apRJldp
+	 DttKHxr9wdZyTOcIaLeNxwgkPL7xVKhImzHm+DpDJ9kX3h+GdVbGSUB4yxXJIs3xCT
+	 5QYACaAi+DLkQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 03E1F17E0984;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B0C5417E0988;
 	Fri, 31 Jul 2026 18:19:42 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 31 Jul 2026 19:19:45 +0300
-Subject: [PATCH v10 38/69] drm/rockchip: dw_hdmi_qp: Use
- dw_hdmi_qp_hpd_notify() for HPD reports
+Date: Fri, 31 Jul 2026 19:19:46 +0300
+Subject: [PATCH v10 39/69] drm/bridge: dw-hdmi-qp: Drop unused .setup_hpd()
+ phy op
 MIME-Version: 1.0
-Message-Id: <20260731-dw-hdmi-qp-scramb-v10-38-294364b2cf15@collabora.com>
+Message-Id: <20260731-dw-hdmi-qp-scramb-v10-39-294364b2cf15@collabora.com>
 References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -75,8 +75,9 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_091944_481764_B7D0EB90 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20260731_091945_188723_01ECF001 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,54 +94,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Notify only the affected connector instead of polling all of them, and
-ensure .detect_ctx() runs on reconnect to recover SCDC state.
+With the transition to .{enable|disable}_hpd() phy ops complete in both
+the bridge and platform drivers, .setup_hpd() has no remaining callers.
+Drop it.
 
 Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 12 ++----------
- 1 file changed, 2 insertions(+), 10 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 3 ---
+ include/drm/bridge/dw_hdmi_qp.h              | 1 -
+ 2 files changed, 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 253da2162ce6..bbdd47d4f381 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -24,7 +24,6 @@
- #include <drm/drm_bridge_connector.h>
- #include <drm/drm_managed.h>
- #include <drm/drm_of.h>
--#include <drm/drm_probe_helper.h>
- 
- #include "rockchip_drm_drv.h"
- 
-@@ -382,14 +381,8 @@ static void dw_hdmi_qp_rk3588_hpd_work(struct work_struct *work)
- 	struct rockchip_hdmi_qp *hdmi = container_of(work,
- 						     struct rockchip_hdmi_qp,
- 						     hpd_work.work);
--	struct drm_device *drm = hdmi->encoder.encoder.dev;
--	bool changed;
- 
--	if (drm) {
--		changed = drm_helper_hpd_irq_event(drm);
--		if (changed)
--			dev_dbg(hdmi->dev, "connector status changed\n");
--	}
-+	dw_hdmi_qp_hpd_notify(hdmi->hdmi);
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index a2277531182c..fcbc518cd90a 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -1295,9 +1295,6 @@ static void dw_hdmi_qp_init_hw(struct dw_hdmi_qp *hdmi)
+ 	/* Clear DONE and ERROR interrupts */
+ 	dw_hdmi_qp_write(hdmi, I2CM_OP_DONE_CLEAR | I2CM_NACK_RCVD_CLEAR,
+ 			 MAINUNIT_1_INT_CLEAR);
+-
+-	if (hdmi->phy.ops->setup_hpd)
+-		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
  }
  
- static irqreturn_t dw_hdmi_qp_rk3576_hardirq(int irq, void *dev_id)
-@@ -776,8 +769,7 @@ static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
- 
- 	dw_hdmi_qp_resume(dev, hdmi->hdmi);
- 
--	if (hdmi->encoder.encoder.dev)
--		drm_helper_hpd_irq_event(hdmi->encoder.encoder.dev);
-+	dw_hdmi_qp_hpd_notify(hdmi->hdmi);
- 
- 	return 0;
- }
+ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
+index b4fb1c578a5b..ad33f9cafdeb 100644
+--- a/include/drm/bridge/dw_hdmi_qp.h
++++ b/include/drm/bridge/dw_hdmi_qp.h
+@@ -16,7 +16,6 @@ struct dw_hdmi_qp_phy_ops {
+ 	int (*init)(struct dw_hdmi_qp *hdmi, void *data);
+ 	void (*disable)(struct dw_hdmi_qp *hdmi, void *data);
+ 	enum drm_connector_status (*read_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+-	void (*setup_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+ 	void (*enable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+ 	void (*disable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+ };
 
 -- 
 2.55.0
