@@ -4,48 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05D2DC55173
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Jul 2026 22:12:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9704CC5516F
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 00:35:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rV379tP/BKT7vplb09xi60R+xOubb232gPJADkuuOpo=; b=EONeNGvx4MK/r4
-	hJdT25cEkLVugMHqq2vg20afIFgDi4G1yGAtpsa1A0yCVR6Oj1fy89kJgah38Eas4KEFBP5GsJ854
-	GsIo2rE80ch/bVvSobQzVX+hfxWoF5qCMYyVOmW646SPbQ+Aue4NbAGd2xtKA5A0B43Box2fNRTU/
-	/Ggx5/5UdsA9v0FdnlynUQX9JjJpZxgbCu90Na3mJcJXB5/cglFCo112LPIUFzp2FQ/C9B9IVnuNC
-	/Dm9EPxf8a6POg6XppskXbN4RMku7HkQj7ZT0r/OfEMqIDrf+s2VkdauzOrtoyrAQ+bKwXIBLeDFd
-	+qzzIRmk1rj9xhbawO1g==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aNNHQey9/OmvVtEdN6cgPxd/DH2x7MLnoZiqZndLXNM=; b=0wzXcBVv7TASIv
+	FH9YTNRWybN5zama9qORsQuIMTXmn/HBT/iXAAs1zgufDLV0/Y+aY+wBiZhlQHhO2SpVba+6r5MhK
+	P15cq0iyTbxbZwJbD7nteQWNPyRXyT330AF3xokQ3druZDIzvo0/H5csv7FJMJY7HiVt9QBOWjO0d
+	pedA9R2Mc+D2EDgoht/cnZmQBXkKp9aBhupG3a4xdds6CLyEG4Xm6ew+L+56ipArTv0ld5baUc4QL
+	755ot2GiuUzcNforNBnBwk6KPxIFS/L8wwT9jg8jt9qM8dD+UpbYRDqrZ51jYOTnCkuoStf68FDw9
+	2rpmXMVpcUFdyhkpsK5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpvSe-0000000DfQT-3ucU;
-	Fri, 31 Jul 2026 22:12:12 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wpxhO-0000000Dlfi-1GO8;
+	Sat, 01 Aug 2026 00:35:34 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpvSc-0000000DfPf-2cAX;
-	Fri, 31 Jul 2026 22:12:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=Fn9fvAwbHBdoZnU5Z3GXU92H9WGoBp0GZQN96d0z5ZU=; b=w5HR/1LZw6TbXw/7ZQXQf7yrZj
-	AEVABoOBZE4N4DEIIk4hIr1WvG0y5nmp1Fv+hiReZz0vddTQ5oOSVpF55gqiANvCpwV/pnagYzfXN
-	gsWbnN5zVL3bnxSKY5iOEWVih5rqCBg1wEeqXeHNCa8awS7yztXUaGAW2s5Nolrci89NQPZVEGg0Q
-	09fehZChDG+ZAIIaoSm/gLm1MV3/Ag27qs4k9ROAP72ySaO9OLN9nS2b0u0YdicXmtyMShafSWARg
-	FnxzbFhGAHxfE/OmKQQ25dbQQVMm9tBZIPf/4NUHloWc2bIZQ85L9gZy2pFYo9JFVnWjXRmHrWoAU
-	TLgkev9A==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 7.3 #1
-Date: Sat, 01 Aug 2026 00:12:03 +0200
-Message-ID: <2742274.XQYqjrCR6X@diego>
+	id 1wpxhM-0000000DleI-1o2P;
+	Sat, 01 Aug 2026 00:35:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id DC3C145039;
+	Sat,  1 Aug 2026 00:35:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 9CFD3C2BCF7;
+	Sat,  1 Aug 2026 00:35:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1785544531;
+	bh=MwjxCyiJsCeuTiPKzMU/FedWyjS0LP9YP2Og3RvfeEE=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=AoODgjZbMcmAcyZt7TIv9Lx5vJLQ2nWq5TaxvR+h6KnekN4dbzV50A/JTpmoMphlq
+	 M3dlGrCg4c+H3Pa5OA7lZkluiyxjdVj6Nr2NVay+rwyCPJj/MuMm2ACmuUsGBZO9ND
+	 uOeYLUA2qX3/1UFDuZtqPijWLNFNcZUy/lML2D+BeFKw52QbhvBUHyOkAPaE0ScJ4W
+	 3Bmc6/eYy3tAIjhajSadSCh5k0edgbx62Xpa5/Lmw0A+YZ9Wg/SCtP/qqO2c0PPqyR
+	 A7b9rbUc7Z7k9pIKtqy5lkGXfUQ7MEqFOKT0HIOO7Yc1Ce1oH6nfZ6bg3ftEYm8aCv
+	 qfngeXA+WcPdw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D865C55173;
+	Sat,  1 Aug 2026 00:35:31 +0000 (UTC)
+From: David Heidelberg via B4 Relay <devnull+david.ixit.cz@kernel.org>
+Date: Sat, 01 Aug 2026 02:35:21 +0200
+Subject: [PATCH 2/4] arm64: dts: rockchip: rk3399-pinephone-pro: DW9714
+ coil requires higher voltage
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_151210_732636_91DAB78F 
-X-CRM114-Status: GOOD (  17.04  )
+Message-Id: <20260801-pp-pro-camera-v1-2-7b4d90788f9f@ixit.cz>
+References: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
+In-Reply-To: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Ondrej Jirman <megi@xff.cz>, 
+ Olivier Benjamin <olivier.benjamin@bootlin.com>, 
+ Manuel Traut <manut@mecka.net>, 
+ Alexander Warnecke <awarnecke002@hotmail.com>, Frank Li <Frank.Li@nxp.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Martin Kepplinger <martin.kepplinger@puri.sm>, 
+ Shawn Guo <shawnguo@kernel.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, linux-media@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ phone-devel@vger.kernel.org, imx@lists.linux.dev, 
+ David Heidelberg <david@ixit.cz>, stable@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1252; i=david@ixit.cz;
+ h=from:subject:message-id;
+ bh=CtmW0a2W86bMEcZ0dtSszyADwP8LgbVPYzdrAT7lUhE=;
+ b=owEBbQKS/ZANAwAIAWACP8TTSSByAcsmYgBqbT9REkGT6wYkrnw7vVFzBUUDFM/Z1kzdvuRLM
+ Svh7a0sPZ2JAjMEAAEIAB0WIQTXegnP7twrvVOnBHRgAj/E00kgcgUCam0/UQAKCRBgAj/E00kg
+ cij8D/9+k7eLtMvAoLHwLgwTcoON+ku4R3r/iZgjbChEXxwwoyY50stWKatXXAP8hQLuLiX/lYh
+ YpcbJe1OHhF20GPHkuHDl/ro/Z+/l3/Gr0/25KnGGubWHyiCIyv6YAYx0TkkG71LdPUfzRYNo+r
+ mPnyPaw2xjxvwTt+uAp68JurQ0zHeXB+8XeC2boI5uamRdrpBdV0qw3xN8YN7py/kpjh4t4q67E
+ M+vkL8Qf8a7W7xT0drcE5qjtPcXQaeSzhw1MwSuxvmy/4t+ZcLiwQsxGwMJiHFmGU7Rt9tmtfGM
+ 8/OpXLXqE7IMyY0FBMCpbBj0ZASTDfburmVhABNc6Xi4rdVIoNAGttEbEUsF9usaVgQJ4Axazfo
+ vzAGopGLCCxwD4wN45a/KLvJAsYg3SdAogiyCTVMJFxc1yKD8bjD9/ihDdCTRgncr/BdB8obpIj
+ tigr6xti3ytptoQHrPhQ+nJcdKcL8t8chOvER/cz1717ggmmKHtEVm2ikwA4BQvKxfo1wlphAhc
+ SBEDW+L+tqUK1j5dV0xO9uzG+HB+AXAJr9yIOh1H2ibnVB1+OEeZpF/yIiFEW3/p6oQESyxTfhk
+ NEu3IE4dfgSg5P4rqERNdiTH2SPPJ2sEI5YJSQRHPkvzP8TbUkCostDgjkE31+AkUY7IIQNn/Lj
+ +uteGSYwVzO3MJg==
+X-Developer-Key: i=david@ixit.cz; a=openpgp;
+ fpr=D77A09CFEEDC2BBD53A7047460023FC4D3492072
+X-Endpoint-Received: by B4 Relay for david@ixit.cz/default with auth_id=355
+X-Original-From: David Heidelberg <david@ixit.cz>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,163 +101,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: david@ixit.cz
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi soc maintainers,
+From: David Heidelberg <david@ixit.cz>
 
-please find below Rockchip DT changes for the merge-window for 7.3 .
+By datasheet the VDD (in-kernel named vcc) range is between 2.3 to 4.3 V.
+Usually it's around 2.8 V. Here it matches the avdd2v8_dvp.
 
+Fixes: 9336eb829a18 ("arm64: dts: rockchip: describe I2c Bus 1 and IMX258 world camera on PinePhone Pro")
+Cc: stable@vger.kernel.org
+Signed-off-by: David Heidelberg <david@ixit.cz>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Not sure if it matters, but my pgp key got an update in the kernel keyring.
-The existing keys themself did not change, just the SHA1 signatures from
-the main key to the subkeys got refresh by better ones.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+index d46cdfe3f7849..bde35d9b2263e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+@@ -473,17 +473,17 @@ wcam_out: endpoint {
+ 			};
+ 		};
+ 	};
+ 
+ 	wcam_lens: camera-lens@c {
+ 		compatible = "dongwoon,dw9714";
+ 		reg = <0x0c>;
+ 		/* Same I2c bus as both cameras, depends on vcca1v8_codec for power. */
+-		vcc-supply = <&vcc1v8_dvp>;
++		vcc-supply = <&avdd2v8_dvp>;
+ 	};
+ 
+ 	ucam: camera@36 {
+ 		compatible = "ovti,ov8858";
+ 		reg = <0x36>;
+ 		clocks = <&cru SCLK_CIF_OUT>; /* MIPI_MCLK1, derived from CIF_CLK0 */
+ 		clock-names = "xvclk";
+ 		dovdd-supply = <&vcc1v8_dvp>;
 
-And I added a second signing key that I plan to use in the future.
-
-
-Please pull.
-Thanks
-Heiko
-
-
-The following changes since commit dc59e4fea9d83f03bad6bddf3fa2e52491777482:
-
-  Linux 7.2-rc1 (2026-06-28 12:01:31 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.3-rockchip-dts64-1
-
-for you to fetch changes up to 7707e4555cf1d52689621e3206df8ad2debaa0dd:
-
-  arm64: dts: rockchip: Fix rk3566-bigtreetech-cb2 touchscreen property (2026-07-24 21:30:31 +0200)
-
-----------------------------------------------------------------
-New boards: Graperain G3568, HINLINK H28K, LCKFB Taishan Pi 3M,
-Orange Pi 5 Pro, Vicharak Axon, Vicharak Vaaman2, Youyeetoo YY3588
-
-New peripherals: eDP support on RK3576
-
-And of course a number of board-fixes, style-fixes and some newly
-enabled board-components.
-
-----------------------------------------------------------------
-Brian Mayer (1):
-      arm64: dts: rockchip: add HYM8563 RTC to Radxa CM5 IO board
-
-Chukun Pan (2):
-      dt-bindings: arm: rockchip: Add HINLINK H28K
-      arm64: dts: rockchip: Add HINLINK H28K
-
-Coia Prant (6):
-      arm64: dts: rockchip: Replace deprecated 'gpio' property with 'gpios' for 9Tripod X3568 v4
-      arm64: dts: rockchip: Add AP6275S support for 9Tripod X3568 v4
-      arm64: dts: rockchip: Fix incorrect interrupt for the 9Tripod X3568 v4
-      dt-bindings: vendor-prefixes: Add graperain
-      dt-bindings: arm: rockchip: Add Graperain G3568 series
-      arm64: dts: rockchip: Add devicetree for the Graperain G3568 v2
-
-Damon Ding (3):
-      arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
-      arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
-      arm64: dts: rockchip: Add eDP node for RK3576
-
-Daniele Briguglio (4):
-      dt-bindings: vendor-prefixes: Add youyeetoo
-      dt-bindings: arm: rockchip: Add Youyeetoo YY3588
-      arm64: dts: rockchip: Add Youyeetoo YY3588
-      arm64: dts: rockchip: fix HDMI-RX signal detect GPIO on yy3588
-
-Dennis Gilmore (4):
-      dt-bindings: arm: rockchip: Add Orange Pi 5 Pro
-      arm64: dts: rockchip: rename PLDO regulator labels to match schematic on rk3588s-orangepi-5
-      arm64: dts: rockchip: refactor items from Orange Pi 5/b to prep for Pro
-      arm64: dts: rockchip: Add Orange Pi 5 Pro board support
-
-Fabio Estevam (5):
-      arm64: dts: rockchip: Fix rk3588s-roc-pc audio description
-      arm64: dts: rockchip: Enable USB device mode on rk3588s-roc-pc
-      arm64: dts: rockchip: Fix Gru WLAN sideband interrupt
-      arm64: dts: rockchip: Fix the rk3566-radxa-cm3 Wifi compatible
-      arm64: dts: rockchip: Fix rk3566-bigtreetech-cb2 touchscreen property
-
-Hrushiraj Gandhi (4):
-      dt-bindings: arm: rockchip: add Vicharak Axon board
-      arm64: dts: rockchip: add Vicharak Axon board
-      dt-bindings: arm: rockchip: Add Vicharak Vaaman2
-      arm64: dts: rockchip: Add Vicharak Vaaman2 board
-
-Jakob Unterwurzacher (1):
-      arm64: dts: rockchip: fix emmc reset polarity on px30-cobra
-
-Krzysztof Kozlowski (1):
-      arm64: dts: rockchip: Correct indentation
-
-Liu Changjie (2):
-      dt-bindings: arm: rockchip: Add LCKFB Taishan Pi 3M
-      arm64: dts: rockchip: Add LCKFB Taishan Pi 3M
-
-Oren Klopfer (1):
-      Revert "arm64: dts: rockchip: Further describe the WiFi for the Pinephone Pro"
-
-Quentin Schulz (2):
-      arm64: dts: rockchip: fix eMMC reset polarity on PP-1516
-      arm64: dts: rockchip: fix eMMC reset polarity on PX30 Ringneck
-
-Ricardo Pardini (1):
-      arm64: dts: rockchip: fix regulator names on NanoPC-T6
-
-Vic B (1):
-      arm64: dts: rockchip: fix label of sys_led for nanopi-r4s
-
-Vsevolod Kozlov (1):
-      arm64: dts: rockchip: fan speed control for FriendlyELEC CM3588 NAS
-
- .../devicetree/bindings/arm/rockchip.yaml          |   32 +
- .../devicetree/bindings/vendor-prefixes.yaml       |    4 +
- arch/arm64/boot/dts/rockchip/Makefile              |    7 +
- arch/arm64/boot/dts/rockchip/px30-cobra.dtsi       |    2 +-
- arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi      |    2 +-
- .../rockchip/px30-ringneck-haikou-video-demo.dtso  |   10 +-
- arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi    |    2 +-
- .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   |    3 +-
- .../arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi |   10 +-
- .../boot/dts/rockchip/rk3399-pinephone-pro.dts     |   18 -
- arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi   |    2 +-
- .../boot/dts/rockchip/rk3528-hinlink-h28k.dts      |  318 ++++++
- .../boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi  |    2 +-
- arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi |    2 +-
- .../boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts  |   60 +-
- .../dts/rockchip/rk3568-graperain-g3568-v2.dts     |  940 ++++++++++++++++
- .../boot/dts/rockchip/rk3576-lckfb-tspi-3m.dts     |  997 +++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3576.dtsi           |   28 +
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |    4 +-
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi     |    4 +-
- .../rockchip/rk3588-friendlyelec-cm3588-nas.dts    |   31 +
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi |   14 +-
- .../boot/dts/rockchip/rk3588-vicharak-axon.dts     |  842 ++++++++++++++
- .../boot/dts/rockchip/rk3588-vicharak-vaaman2.dts  |  535 +++++++++
- .../boot/dts/rockchip/rk3588-youyeetoo-yy3588.dts  | 1180 ++++++++++++++++++++
- .../boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi   |  256 +++++
- .../boot/dts/rockchip/rk3588s-orangepi-5-pro.dts   |  358 ++++++
- .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |    6 +-
- .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi      |  263 +----
- .../boot/dts/rockchip/rk3588s-orangepi-5b.dts      |    2 +-
- .../boot/dts/rockchip/rk3588s-radxa-cm5-io.dts     |   19 +
- arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts    |   29 +-
- 32 files changed, 5674 insertions(+), 308 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-graperain-g3568-v2.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-lckfb-tspi-3m.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-vicharak-axon.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-vicharak-vaaman2.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-youyeetoo-yy3588.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-pro.dts
-
+-- 
+2.53.0
 
 
 
