@@ -4,92 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C30E1C55172
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 00:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87503C55171
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 02:14:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=puzP/8sjR8ZXUZHzM2wV6K+0r2re+oDlW9D9IWTCrjY=; b=rVZC1JS4qIL5yZ
-	gGRWJq/Qx3X97vpEhwlp9XZVRoXcNJN27JlSYbkmyEt4quGE0zomcBWr6QKu03djCg5nP5zdrZvH/
-	1CH7RfuFpbGFrLhsZfVvjMEW+sBsvppJJlXIOscpZP3O/QU4Vv28UeMg7KDul5ym07N98ThtdZBxl
-	uy7EgsMrVQgSvkC3/bmxbAIBNfMCV5+v9SpLTbKeOYbK4Khmj2dnVxil4UOyEoZo/cF4PSjGfS3XY
-	mitJUGGKuLNETSNAh2OACoENH9r87VJan9gHcG1XbTwubMWHVIfmlOJ+cO5MpGWAaDxxfT+DLDPHJ
-	xG+vnTbwVUIC/FW2wAig==;
+	List-Owner; bh=y6sO4FyB6wjL1csjTn5pH9gDScHo+//Azol357hO6IQ=; b=VO5VNSNhzZn1ei
+	B51hjx5PzyFUeeXs0NuxGjoP2FNOx05/VwVGlpn0wfaC+WhV/FzN9Ju3Vdyz7RkH+MJ+4ZjBp/e5H
+	n4498OsqBBEd8SUG26qeE8RbRjwhQ+O6FOllgy89pMrPZDI0DEeRbYdJG799KXQXIjMI6cpAqD83r
+	mkaA+Etnc463uqnaQNHry2Esmddw7/QVvNJFKXLPIrFc15vFAYMRR5b5NuZjpHPoLebE2nTg4dIQ2
+	qYp1TK5B+UDbIg8NqrFlAbiOL+6NJiaPleyQkF/KlrDoX5eZ2v/W0u0qNSHj9Q4JmRAMyuLJxvB6j
+	v//yPzicfxcVGX+gmGPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpxhO-0000000DlgN-2Hhd;
-	Sat, 01 Aug 2026 00:35:34 +0000
+	id 1wpzF5-0000000Dp7V-3R2q;
+	Sat, 01 Aug 2026 02:14:27 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpxhM-0000000Dleb-3RUO;
-	Sat, 01 Aug 2026 00:35:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id F2BEB4506E;
-	Sat,  1 Aug 2026 00:35:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A7802C2BCF5;
-	Sat,  1 Aug 2026 00:35:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1785544531;
-	bh=IBXJdMv3y2Oce7CYXF7RsNTqmP5WmVy5av905jYjMZI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=FFAfclm8PbPA775JMD6KDx74zWBh6xZjdGHnYXEhZvLvV0AwazooMtoVAQiVPGvPB
-	 C75ypEdM1jlpgPzbR8VJGnKuvY6JvE6YlYRQAdj6Db0jbU8Q9qU2eZImRZAE7pFjgM
-	 yrox42bmfIbD3rXo4bQw1GwMb3FbeH8fel5hCJXhWTUU/cI35kGORazhUA9LE/uVjV
-	 UeXQhyE/8JG00USL4Zn2RybRHZdDr1voYSOD09HsgznH1w6RGgDjsc4L80r0hf+6w8
-	 nnmw1+L4sxm8p8XBaeKsOYcQZ9aR45oqxjtZZlJ6WN11EbVEJA3OXBsTxYDHCrCjIB
-	 pUKo3oklb8ktA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B9F6C5516F;
-	Sat,  1 Aug 2026 00:35:31 +0000 (UTC)
-From: David Heidelberg via B4 Relay <devnull+david.ixit.cz@kernel.org>
-Date: Sat, 01 Aug 2026 02:35:22 +0200
-Subject: [PATCH 3/4] arm64: dts: rockchip: rk3566-pinetab2: DW9714 coil
- requires higher voltage
+	id 1wpzF3-0000000Dp7F-0ndW
+	for linux-rockchip@lists.infradead.org;
+	Sat, 01 Aug 2026 02:14:25 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8753A43405;
+	Sat,  1 Aug 2026 02:14:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C144A1F00AC4;
+	Sat,  1 Aug 2026 02:14:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785550464;
+	bh=orVQNd/2zHKQaSBQxkSy/VCEDjroalGuV+v6+496uno=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=gW2GDjOWYy0gO1UHtOM7NfEABZ6Hh9NQQk2djeQ/ZYQkG1zK324wR8hnc3hMx/KQa
+	 3FjVjVyn7WMVLZ/xABcF779Ym1OUrKI5rXP72hHIw5XZTSnn5KyAGDoNwW60HXpE3U
+	 EMPl7BjxAc4SQ3BzaphMuwPYM6ROAxNs9OfQd0IOOOSTU2kfZN5ZjUJFk7LO55zFz5
+	 kEiKg6ndTtGqjf8rYkGrcbQgaGHuPFudciw+6NUzn9cROQu63VZg5LYzF9zn6j1lZK
+	 oPBZMZpAoaz/n7yG5aAqzgoEsGZuTmQSemq/gYNdqEzjMmRpAHnuPwE1aOhm547Mb9
+	 WQW4yWWhu31PQ==
+Date: Sat, 1 Aug 2026 03:14:18 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+ andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+ jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+ krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
+Subject: Re: [PATCH V21 0/9] Add Invensense ICM42607
+Message-ID: <20260801031418.31ecb46a@jic23-huawei>
+In-Reply-To: <PH0PR19MB99733896FD0C3E2C24017C52AFA5CA2@PH0PR19MB997338.namprd19.prod.outlook.com>
+References: <20260728225542.174825-1-macroalpha82@gmail.com>
+	<PH0PR19MB99733896FD0C3E2C24017C52AFA5CA2@PH0PR19MB997338.namprd19.prod.outlook.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Message-Id: <20260801-pp-pro-camera-v1-3-7b4d90788f9f@ixit.cz>
-References: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
-In-Reply-To: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Ondrej Jirman <megi@xff.cz>, 
- Olivier Benjamin <olivier.benjamin@bootlin.com>, 
- Manuel Traut <manut@mecka.net>, 
- Alexander Warnecke <awarnecke002@hotmail.com>, Frank Li <Frank.Li@nxp.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, 
- Martin Kepplinger <martin.kepplinger@puri.sm>, 
- Shawn Guo <shawnguo@kernel.org>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, linux-media@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- phone-devel@vger.kernel.org, imx@lists.linux.dev, 
- David Heidelberg <david@ixit.cz>, stable@vger.kernel.org
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1171; i=david@ixit.cz;
- h=from:subject:message-id;
- bh=ZHRJuCpp9diTbSoK/fprSuePRcEV0i0y0Y263b51eL0=;
- b=owEBbQKS/ZANAwAIAWACP8TTSSByAcsmYgBqbT9RrWeOzQofKRUF0yXALcXjL6uK++hWoGvII
- zYHZFYlEOSJAjMEAAEIAB0WIQTXegnP7twrvVOnBHRgAj/E00kgcgUCam0/UQAKCRBgAj/E00kg
- cidMD/4olIUWt4Eo80Icz+MSRhbI2hBudu+Q6K2z5p1g4t02GHyJffBgWUluc3uMD3vkezQH/pj
- 64jT96zE0/Rfo0Hju0ey0K1tl2qEHw2+JbmJwWhZUu4XLrAdVUG1TjwY4SvxS/05GHdfEkHzzqX
- vg/fjM328bqC51TAB8PxoTB1VjFd/VzVfSI8KYKmZCAY6KNhtb2VlB3DfmdmEoNjI2qJlqVQ94+
- sEkbty+eERY4OW207ZjWDhmiOp9aZycdZyGJaByTjd6JwRx0Focb6b6txJ6NhE1HUplkyVoRb7a
- j8pvTpfBuKEp/dXYnsNKW/KYz+QqOF8OlxB5vylpcmAfHjpCJT4CFNqrdkXBnAnAwJCJezsRGYL
- 2VAZyFxn6AzoDc8h4ow4MgrkxXxjPOKs7it6rth0wdDiREcTWfQQAPsRhI0hTkw2q36Xytxsk7r
- C1xI61i3r/VsYwdn6cr1TfEm6kbJlg+nAgJk/GNXT3MhpyE7dwsnPJkeWVt+eSUlxqZ4CiHouSC
- j7T7ahrM/65s2MFuEp0HJBFishxK8gurEpEajNSVcv02+Sxho+qdtzzDmjT1lgPw7d/Z3HMYNN4
- yil+aJf3vLU8Z3OllCwX7JwALEDajOvEtZGxYhu5I3JolK6uhRKF6urLZHaSX6wKOGbPq+O7+ow
- 9sT3/on8FxojQaA==
-X-Developer-Key: i=david@ixit.cz; a=openpgp;
- fpr=D77A09CFEEDC2BBD53A7047460023FC4D3492072
-X-Endpoint-Received: by B4 Relay for david@ixit.cz/default with auth_id=355
-X-Original-From: David Heidelberg <david@ixit.cz>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,53 +68,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: david@ixit.cz
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: David Heidelberg <david@ixit.cz>
+On Tue, 28 Jul 2026 19:12:47 -0500
+Chris Morgan <macromorgan@hotmail.com> wrote:
 
-By datasheet the VDD (in-kernel named vcc) range is between 2.3 to 4.3 V.
-Usually it's around 2.8 V. Here it matches the vcc2v8_dvp.
+> On Tue, Jul 28, 2026 at 05:55:31PM -0500, Chris Morgan wrote:
+> > From: Chris Morgan <macromorgan@hotmail.com>
+> > 
+> > Add support for the ICM42607 IMU. This sensor shares the same
+> > functionality but a different register layout with the existing
+> > ICM42600.
+> > 
+> > This driver should work with the ICM42607 and ICM42607P over both I2C
+> > and SPI, however only the ICM42607P over I2C could be tested.
+> > 
+> > Changes Since v19:
+> >  - Removed remove routines and converted call to sensors_off to void,
+> >    and then added a devm_add_action_or_reset() to call it on device
+> >    teardown.
+> > 
+> > Changes Since V20:
+> >  - Added missing include to inv_icm42607_temp.c.
+> >  - Corrected note pointed out by Sashiko.dev as incorrect.
+> >  - Added an additional delay for poweron based on the odr value of the
+> >    given sensor. After doing an extensive amount of testing with low
+> >    odr values (and even the default value for the gyro sensor) I was
+> >    able to intermittently create EINVAL conditions because the driver
+> >    was not waiting long enough after enabling the sensor, even
+> >    accounting for the sleep delay. Adding a delay for the time it takes
+> >    for the sensor to register a value corrected this intermittent issue
+> >    as best I can tell. 
+> > 
+> > Chris Morgan (9):
+> >   dt-bindings: iio: imu: icm42600: Add mount-matrix
+> >   dt-bindings: iio: imu: icm42600: Add icm42607
+> >   iio: imu: inv_icm42607: Add inv_icm42607 Core Driver
+> >   iio: imu: inv_icm42607: Add SPI For icm42607
+> >   iio: imu: inv_icm42607: Add PM support for icm42607
+> >   iio: imu: inv_icm42607: Add Accelerometer for icm42607
+> >   iio: imu: inv_icm42607: Add Gyroscope to icm42607
+> >   iio: imu: inv_icm42607: Add Temp Support in icm42607
+> >   arm64: dts: rockchip: Add icm42607p IMU for RG-DS
+> > 
+> >  .../bindings/iio/imu/invensense,icm42600.yaml |  20 +-
+> >  .../dts/rockchip/rk3568-anbernic-rg-ds.dts    |   8 +-
+> >  drivers/iio/imu/Kconfig                       |   1 +
+> >  drivers/iio/imu/Makefile                      |   1 +
+> >  drivers/iio/imu/inv_icm42607/Kconfig          |  30 +
+> >  drivers/iio/imu/inv_icm42607/Makefile         |  13 +
+> >  drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 421 +++++++++++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_accel.c | 316 ++++++++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 702 ++++++++++++++++++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_gyro.c  | 313 ++++++++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |  97 +++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_spi.c   | 107 +++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_temp.c  |  99 +++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_temp.h  |  38 +
+> >  14 files changed, 2164 insertions(+), 2 deletions(-)
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/Kconfig
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/Makefile
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_temp.c
+> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_temp.h
+> > 
+> > -- 
+> > 2.43.0
+> >   
+> 
+> Woot! Perfect sashiko score. 21st time's the charm...
+Nice and LGTM so applied patches 1-8.  The final one should get picked up
+via the appropriate rockchip tree.  
 
-1.8 V here is likely used for i2c level shifter.
+It was a hard slog, but having watching sashiko rip apart a driver
+of mine this week (long since merged) I definitely sympathise.
 
-Fixes: 1b7e19448f8f ("arm64: dts: rockchip: Add devicetree for Pine64 PineTab2")
-Cc: stable@vger.kernel.org
-Signed-off-by: David Heidelberg <david@ixit.cz>
----
- arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Congratulations. Applied to the testing branch of iio.git where the much
+less 'risky' 0-day build bot will check we didn't miss anything on that front.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-index 08bf40de17ead..96511f1bb51d6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi
-@@ -581,17 +581,17 @@ touchscreen@5d {
- &i2c2 {
- 	clock-frequency = <400000>;
- 	pinctrl-0 = <&i2c2m1_xfer>;
- 	status = "okay";
- 
- 	vcm@c {
- 		compatible = "dongwoon,dw9714";
- 		reg = <0x0c>;
--		vcc-supply = <&vcc1v8_dvp>;
-+		vcc-supply = <&vcc2v8_dvp>;
- 	};
- 
- 	camera@36 {
- 		compatible = "ovti,ov5648";
- 		reg = <0x36>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&camerab_pdn_l &camerab_rst_l>;
- 
+Thanks,
 
--- 
-2.53.0
+Jonathan
 
+> 
+> Thank you,
+> Chris
 
 
 _______________________________________________
