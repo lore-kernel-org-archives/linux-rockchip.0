@@ -4,87 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04A26C55172
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 13:17:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390E6C55173
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 14:23:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=daviaxGWw+GN0F0I0K6Fger5IH5qKM6bXK/ASQp/eNk=; b=4ZrPbSZ/KylXfa
-	1tAtbqcO69cdFAyUhho5rlsbfWCWzmOvTLLceGSrlphOoQtosSQybWrse3EcfUcEdzVAfE/Wds47T
-	DtHs6hLgcW0gieokUOoAtYKCB8k40Y/OUCAiw+9HWuxdQTaj5eSrfuoYCNKPTHfQUU8C/klrzILVc
-	BfTIS4i3b6HaAPesMNIxWVokJJPUVlTLjH1IepPOtC4hOI3RleoO2hLc8jvEvQ79P1ffSV0J5kUU4
-	bqNouMu/QtCZM0nGGYUn0sSE+X1pu//y4pvvzJIUeZsJZ+r3hNZIyifaLmuZ7/aSBzsMHL/jxLUBk
-	dpJ8yzJc74GfjaKYvTKQ==;
+	List-Owner; bh=I3UPww62wx/RH30xiymuMFtMBHtKDp4vHxMH2m8bOOQ=; b=DkYIHz4VfKwnGl
+	Td6cp5fkgx7xy/oGGRdhfBIHeZ5TIuLjIMIqMod+7InKw1QY6fKs80uhpiZfIVmoMfrJGkDeSGl7G
+	Vr4X/6sPTwFyMfjH+MSNx/K4t4qZHKOhVoDex6k6RGz1lXYkF3T8j2gVVQBRTYv5zZ0LubOHoc1IN
+	5F3dXm0Od70BybQcMAz3+snkZFfJTbU0TzIzIM118UAhnE8h5GfAWOM1ra7NXbmz1Unv6HWxGXAr2
+	mVniOu03CVts/myM4u/r60MBGl8Ujw/U2pJSgYH1WiZ0cUtLIIrIm+P0fkmdjgWNxh7NNKJiW/w4/
+	Lx/i7CIULbZXaHUoKcEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wq9ae-0000000EgNZ-3jnf;
-	Sat, 01 Aug 2026 13:17:24 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1wqAcR-0000000EiJC-0H2v;
+	Sat, 01 Aug 2026 14:23:19 +0000
+Received: from mail-pj2-x00.google.com ([2607:f8b0:4864:39::])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wq9ab-0000000EgNB-3kOW
+	id 1wqAcN-0000000EiHV-22kq
 	for linux-rockchip@lists.infradead.org;
-	Sat, 01 Aug 2026 13:17:23 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-4731f5ffa74so179837f8f.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 01 Aug 2026 06:17:21 -0700 (PDT)
+	Sat, 01 Aug 2026 14:23:17 +0000
+Received: by mail-pj2-x00.google.com with SMTP id d9443c01a7336-2cc6bb7476dso2655365ad.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 01 Aug 2026 07:23:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785590240; x=1786195040; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=1s2LQ7bIi+O1AtHBDgwoi4wpOF24m44GqVYWMvJpv0E=;
-        b=ZKxIZw6ekHRymRGQcojkVsDfQw1fNNNjH3qc34/0Vx0Bio5n9Yeyfw8bY42UDmNvab
-         l1TtredW26h7/IKGYW4BSr/G0frhJw0J99i/UEhZoqJGmkCH4vVJ7LMhuTnk5DXNcoQd
-         3flc4wu3U/NfuRlxGhq/2dLfQxN9RR6cli2qa8aLdVbWLEIe4MB/jwfxXHRW4W1gPO2d
-         S33BN8uX541ynD0Kx+KBi0GUMJjG+tza0v9G8zqlv8WdyRKM9qYxBr523LUiPw8mpiwg
-         ADzaapVLfMU8yjdqqPgGcwHRklxP12e4m2ViIbtUyZz09YCf9Z/U61+SF8w/Qi03bYCY
-         tjyg==
+        d=gmail.com; s=20251104; t=1785594194; x=1786198994; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=p2cmtp3VyguNZ1YwnWT1LsNqPKC7k3AOpkhFk6RHh98=;
+        b=hM9vpiTUmXX8ngq+jh84KwfcLkGT/Gr+c8Dg59+nkHo9mEjmchVXYjn3HJX5beTpxY
+         FvndMCzAzI0SS9B7bhMPEudFkpcUPlqfOzNIxeIGQcjZjyEA4WY5kEEU4TxJRXUAxg4/
+         IyXtUZYJdrVvSSAH3hdYWa8slaAv8xzcmWuMdOY9VNcpgZ97wjV1pjaQ9snRCPec4WJ8
+         5/TWEb7poaBEkRnX3rUdsZ0dZhefTrZwiwWtbvEUsOPoGmXCGeyYmYrMxwpacnrf14lA
+         8WUDJZA6fgOYiA4mxacfPFGm9S+f6QlEwjBstIq49l6NQZU4RNKfAOtbYPToVVlfdutN
+         IdrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785590240; x=1786195040;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=1s2LQ7bIi+O1AtHBDgwoi4wpOF24m44GqVYWMvJpv0E=;
-        b=UKLwiFtHO3piQLmRzAEbKRdDkUHnueLtd766XBzH3QSAvpqVZCrrhBImYYxo3bW8CZ
-         p8LD0TFl7RXO91F+PYZ9X8acIosy7siLtlsnQMp6HNufKCcT2H25vuctyvLBMTdj8v3s
-         1vC9yJHaUEhXz9ObLNvyShF8CEfW8fywBtt1/AJVqO29hB0bVRkRkiHbSULKJOPhH+Ts
-         TenyW7YG1OVikp2YjXXqRXh7xSddE+XjlljR60j50K5/cAzmXHARzbXFKkgP4QNG+OhT
-         UtkcAdXTM4c1Iupf6vvHY137yToLnAA21UAbQHjuNQ7eHD3/K6ORzsgw2TvWTyGfxJRE
-         XZIw==
-X-Forwarded-Encrypted: i=1; AHgh+RofrTbsG80so+oQbZvavwvekfCyUTzqGq9lGmNsdcfAtU8m39m1uQ1Yh1XSnQpWaM/qDGOgEL4cc7s9KDJNbA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxGwgfjDsA3WiAgsakEhzvzHpAd7RFZO6EHqEqYsGVUtSeq9GxL
-	3Y8vacKRCpHHx1/IvgiXV3gviEfv9e6Vy5UEluIzDjI1EpA3mvmymZuS
-X-Gm-Gg: AR+sD12vx3v9BJqmrFND9apP0jG2Xun03riyhxJY3gGk9cLm+zGqNmDM81GwwdPaRkG
-	PeiAijP8JmV+SoZvVePSII55BwcYUhlJYKJ05MJCVI9JG3ZG5zVLBwSEITnRyRH0+rB9qrWDJ5O
-	1B0KDbKS7HN9ZxkY7l4ryLIOfgzS2Sly4XhllSFLpxjSI8ZQrKTCVgRFDg1AjJwo6EH/ozYHFFm
-	SxApvnxQU4hvU8VVjMs8vn/RBxd36W5qTFQQCKP4IOj03lHlAV/dO9Jf7PD0ne0DQOlphaNg3Tr
-	w7JBhdKir64XNSVgZfu+IsdulC+c/I9ER3mBKZTVW+0Nm7l7ZfDENg7muIMXdysDxKjtgP1qvDW
-	BvNYUSBc3QMxW9leXQkDRALDic0dUDvZzPHAlUwidOGFE9DzAW4Hgv3wE2i2qP7ZBmUbq83oh4H
-	AlhuOH0ojX7hNILuJmNRPRKk9Nky7NYBF9VgDOaHzzV4nRCqCoS5vZrnadSwUJw3cfqAs2wnY8M
-	+/XdhZzD5+e1KqlSy4aJcf2w6gkkRNIE2gaTyvcU2SzrerP4NS2CEMeokYkvFHm67x2
-X-Received: by 2002:a05:600c:4686:b0:493:ec89:db4a with SMTP id 5b1f17b1804b1-4980c6066b5mr28150325e9.0.1785590239488;
-        Sat, 01 Aug 2026 06:17:19 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B870700E64B9F218DE76E46.dsl.pool.telekom.hu. [2001:4c4e:1b87:700:e64b:9f21:8de7:6e46])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49807b2a61asm40341835e9.0.2026.08.01.06.17.18
+        d=1e100.net; s=20251104; t=1785594194; x=1786198994;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=p2cmtp3VyguNZ1YwnWT1LsNqPKC7k3AOpkhFk6RHh98=;
+        b=Knx5Oysn9RuXa4PK5HSmfPQ7MSfcpW/LxE2qj2r43NqVyfbfqXlYesMSfnSd9X+J5F
+         8/Lq8WcmWecuRW+J/+9b/V2ZLjqiBng0fUGsW/SNL8a8ZvzNicWnLV2ZyXa9arZImaP4
+         GDuR0viPTNxDrI/RRAuEGxNco45X8j2H1vav+ggMHp3lwt0aQOp8/o7BWWBeCUD5coV6
+         FWO17bF44mCUPo3H2GoZVD1bBXhQgrAEfILFAS1bZozaT6LtOWVAuNWDIIgXirNaZBdo
+         TWrz7/K3g4mLGUWQJtOfSWP6bAPULRfFEJNVWaJ1V1R2Np//iHV4IMsyZ/IOUl1vwQKI
+         YmMQ==
+X-Forwarded-Encrypted: i=1; AHgh+Rq11QCrwDf61zgHR9PiOW+hTovaFQptnI8XfK2o5M6YQeiRuOZFWXOkJLTSi+aJsefQrd7JYn58/POpqYLr5w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzt6e3fxE6wXjTGWwHIyYY7wRhNQ8N/kIKDQyanv/WEnTvbNGbq
+	sv+kjRRorpYXcFW1sxCll2v1AVLlq+w7is38b1Mla9HDsPZoY6AP1J6L
+X-Gm-Gg: AR+sD10N4jeAFxjEl1iVMuAEdeaKrGewXeKoxJNM53u713TtKCQH9EaC2deyidViMQG
+	YY4zMRZpp/kU+MU5Dt25Od+rdk8RjkmO1obqwJrDlWjNKtMAirIuBOmc7bX4EgsRnhI1xi+i/lN
+	sRoKMEYtpZdQJ3PNWtNuWgY4xz+IYFwt9HoHWCRURpJwG+RCvy2lBQus7NhC1RZJNZOGrv7OSE+
+	X3OQ1lTp9EYV6RnWxky3Evld+M7aaZ5AuQpWUaseig+6Ju7klnj/cgGCVoFTO/EnvHNfyikgbsp
+	io+1gFei6ZAaf2SN6DkJnzy70+kZqd3d1RvlZO8ZKG6xbr37vovZC4N2kC0Nz0vdreP50Cbo6XI
+	qKUqFts+6ImdItirCQBANYbvPQuMjdFOi9jinCClN+/L3gAi05htghxu11Tgybl7kvnR08H/e2T
+	ywYwMWTaxxB3KAO4dkvaEG/qHwoJwXjPQb05rPLFc6nDFGdcaYcu4k8eE=
+X-Received: by 2002:a17:903:3905:b0:2cc:80d6:b72 with SMTP id d9443c01a7336-2d0536caf12mr31901555ad.20.1785594193454;
+        Sat, 01 Aug 2026 07:23:13 -0700 (PDT)
+Received: from server.lan ([103.213.4.16])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d04ae5ac3dsm18043845ad.23.2026.08.01.07.23.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 01 Aug 2026 06:17:18 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Igor Paunovic <royalnet026@gmail.com>,
+        Sat, 01 Aug 2026 07:23:11 -0700 (PDT)
+From: Coia Prant <coiaprant@gmail.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Jiaxing Hu <gahing@gahingwoo.com>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org
-Subject: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and some numbers
-Date: Sat,  1 Aug 2026 15:16:56 +0200
-Message-ID: <20260801131656.58450-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	Vinod Koul <vkoul@kernel.org>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Romain Gantois <romain.gantois@bootlin.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Coia Prant <coiaprant@gmail.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	David Heidelberg <david@ixit.cz>,
+	netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-renesas-soc@vger.kernel.org
+Subject: [PATCH v2 00/10] net-next: add basic support for RK3568 XPCS
+Date: Sat,  1 Aug 2026 22:22:24 +0800
+Message-ID: <20260801142244.679437-2-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260801_061721_994322_246336D4 
-X-CRM114-Status: GOOD (  30.58  )
+X-CRM114-CacheID: sfid-20260801_072315_597800_A941B278 
+X-CRM114-Status: GOOD (  24.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,172 +118,142 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tomeu,
-
-Since you asked for fixes to be sent upfront I have kept poking at the
-RK3588 NPU, and I ended up implementing devfreq for rocket locally.  It
-works, but on the way there I hit a crash class that I could not find
-documented anywhere, and I also measured something about the vendor OPP
-table that I did not expect.  Both seem worth sharing before I clean any
-of it up for posting, so I would rather ask first than send a series you
-may not want in this shape.
-
-Cc'ing Jiaxing since he is working on the clocks and on RK3576.
-
-
-1. The hardware constraint
-==========================
-
-An NPU power domain cannot be switched on or off while the NPU compute
-clock is above its DT assigned-clock-rate of 200 MHz.
-
-Changing the rate while a domain is already on is fine - I have taken it
-to 1 GHz and back many times without a single error.  It is the domain
-transition that breaks.
-
-What happens when a domain is moved at a high rate:
-
-  rockchip-pm-domain ...: failed to get ack on domain 'nputop', val=0xa9ffe
-  rocket fdab0000.npu: devfreq: cannot power up for rate change: -110
-
-The domain is then wedged: genpd still believes it is on, but the first
-MMIO into it raises an asynchronous SError and the box panics.  Captured
-over the serial console:
-
-  Kernel panic - not syncing: Asynchronous SError Interrupt
-  Comm: rmmod
-   _regmap_read
-   regmap_read
-   rockchip_pd_power
-   rockchip_pd_power_off
-   _genpd_power_off        <- rollback
-   genpd_power_off
-   genpd_power_on          <- failed
-   genpd_runtime_resume
-   device_release_driver
-
-This is not specific to nputop.  I have the same message for 'npu2'
-(val=0xa9fff), which matches the DT: all three NPU domains list the NPU
-clock among their handshake clocks - rk3588-base.dtsi lines 864, 877 and
-885, for RK3588_PD_NPUTOP, RK3588_PD_NPU1 and RK3588_PD_NPU2.
-
-So the clock the domains need for their idle/ack handshake is the same
-clock we would be scaling.  My best explanation is that the PLL that
-produces it lives inside the domain, so once the domain drops, the clock
-state goes with it and the handshake can never complete.  I cannot
-confirm that part - reading the PVTPLL registers is documented as
-hanging the machine, so I have not tried.  The behaviour itself is
-reproducible and cost me four hard hangs before I understood it.
-
-I mention it because it is a trap for anyone adding DVFS here, including
-the RK3576 work, and because it is invisible until the first time you
-let the NPU idle at a raised clock.
-
-
-2. What ended up working
-========================
-
-Runtime PM callbacks are not enough.  The domains are powered on by the
-driver core before probe, powered off from a workqueue after detach, and
-system sleep bypasses runtime PM references entirely - so the driver
-never sees all the transitions.
-
-What does work is hooking the transitions themselves:
-dev_pm_genpd_add_notifier() on all three cores, and on GENPD_NOTIFY_PRE_ON
-and GENPD_NOTIFY_PRE_OFF force the clock back to the DT rate, vetoing the
-transition with notifier_from_errno() if that fails.  Every path -
-runtime PM, system sleep, attach at probe, detach after unbind - goes
-through _genpd_power_on()/_genpd_power_off(), so nothing can slip past.
-If a transition does happen, the boost cancels itself and says so,
-rather than leaving the driver claiming a rate the hardware is not
-running.
-
-This has now survived everything that used to kill the box, including
-repeated sleep/wake cycles at a raised clock and rmmod while boosted.
-
-
-3. The numbers, which are the surprising part
-=============================================
-
-Measured with MobileNetV1 through Teflon, one inference thread pinned to
-one A76, and a bit-exact oracle: sha256 over intermediate tensors on
-every iteration, zero tolerance.  The 600, 900 and 1000 MHz rows are
-30-minute runs of 275k-280k inferences each and the oracle passed
-bit-exact in all three, so none of this is instability; the 200 MHz row
-is a shorter control from the same session.
-
-  nominal    supply    throughput
-  200 MHz    800 mV     68.5 inf/s      (the current fixed rate)
-  600 MHz    800 mV    155.4 inf/s
-  900 MHz    850 mV    152.4 inf/s
-  1000 MHz   850 mV    152.9 inf/s
-
-600 MHz is the optimum.  900 and 1000 are indistinguishable from each
-other and both land about 4% below 600, on a quieter and cooler machine.
-The vendor OPP table decoded from the downstream DTB asks for 700 mV up
-to 700 MHz, 750 mV at 800, 800 mV at 900 and 850 mV at 1000, and I ran
-the top of that range at the voltage it asks for - it does not help.
-
-Backing out an effective clock from the per-chunk time, nominal 600
-appears to deliver more than nominal 900 or 1000 do.  I would not lean
-on that decode, but the throughput ordering does not depend on it.
-
-Thermals were never a factor: the highest I saw all day was 50.8 degC,
-against a critical trip at 115.  This is one board and one model, and
-MobileNetV1 is memory-heavy, so a compute-dense network may well behave
-differently - but for this workload the top half of the vendor table
-buys nothing.
-
-If that holds up elsewhere, an OPP table for rocket probably should not
-simply mirror the vendor one.
-
-
-4. Thermal, separately
-======================
-
-While looking at this I noticed npu-thermal has only a critical trip at
-115 degC - no passive trip, no cooling map, polling-delay-passive is 0 -
-while gpu-thermal, a few lines above in the same file and on the same
-tsadc, has both.  That was harmless while the NPU was pinned at 200 MHz
-because it could not be slowed down anyway; with DVFS it stops being
-harmless.
-
-I have two small patches for that (a #cooling-cells binding update and
-the thermal zone itself), but they only make sense once something
-registers a cooling device, so they would belong with the driver work
-rather than on their own.
-
-
-5. What I am asking
-===================
-
-- Is DVFS for rocket something you want upstream at all, or is it better
-  left alone for now?
-
-- Does the genpd-notifier approach look right to you, or is there a
-  cleaner hook I have missed?
-
-- Given the measurements, would you want the OPP table to stop at
-  600 MHz rather than follow the vendor range?
-
-- If you do want a series, I will need to clean the code up first - it
-  still keeps its state file-static rather than in rocket_device, and it
-  bypasses the OPP layer for the rate change because our own direct
-  writes leave the OPP cache stale.  Both are fixable; I would rather
-  know the shape you want before rewriting.
-
-Happy to send the current code as-is off-list if that is easier to
-comment on than prose.
-
-Thanks,
-Igor
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Q2hhbmdlcyBzaW5jZSB2MToKClBhdGNoIDIgKGR0LWJpbmRpbmdzOiBwaHk6IG5hbmVuZy1jb21i
+cGh5KQotIENoYW5nZWQgYHJvY2tjaGlwLHNnbWlpLW1hYy1zZWxgIGRlZmF1bHQgZnJvbSAwIHRv
+IDEgdG8gbWF0Y2gKICBoYXJkd2FyZSByZXNldCB2YWx1ZSAoR01BQzEpCi0gQWRkZWQgYGlmLXRo
+ZW5gIGNvbmRpdGlvbmFsIGluIGBhbGxPZmAgdG8gcmVzdHJpY3QgdGhlIHByb3BlcnR5CiAgdG8g
+YHJvY2tjaGlwLHJrMzU2OC1uYW5lbmctY29tYnBoeWAgb25seQotIFVwZGF0ZWQgY29tbWl0IG1l
+c3NhZ2UgdG8gcmVmbGVjdCBoYXJkd2FyZSBkZWZhdWx0CgpQYXRjaCAzIChwaHk6IHJvY2tjaGlw
+OiBuYW5lbmctY29tYnBoeSkKLSBDaGFuZ2VkIGBwcml2LT5zZ21paV9tYWNfc2VsYCBpbml0aWFs
+IHZhbHVlIGZyb20gMCB0byAxIHRvIG1hdGNoCiAgaGFyZHdhcmUgZGVmYXVsdAotIFVwZGF0ZWQg
+Y29tbWl0IG1lc3NhZ2UgdG8gYWxpZ24gd2l0aCBiaW5kaW5nIGNoYW5nZXMKClBhdGNoIDQgKGR0
+LWJpbmRpbmdzOiBuZXQ6IHBjczogcm9ja2NoaXAtZHd4cGNzKQotIEZpeGVkIGByZWdgIGZvcm1h
+dCBpbiBleGFtcGxlIHRvIHBhc3MgYGR0X2JpbmRpbmdfY2hlY2tgCi0gQWRkZWQgbWlzc2luZyBg
+I2luY2x1ZGUgPGR0LWJpbmRpbmdzL3BoeS9waHkuaD5gIGluIGV4YW1wbGUKClBhdGNoIDUgKGFy
+bTY0OiBkdHM6IHJvY2tjaGlwOiByazM1NjgpCi0gQ2xhcmlmaWVkIGNvbW1pdCBtZXNzYWdlOiAi
+YWxsIG5vZGVzIGRpc2FibGVkIiByZWZlcnMgdG8gWFBDUwogIGRldmljZSBub2Rlcywgbm90IGZp
+eGVkLWNsb2NrIG5vZGVzCi0gTm90ZWQgdGhhdCBgYXNzaWduZWQtY2xvY2stcGFyZW50c2AgYXJl
+IGFwcGxpZWQgYXQgYm9hcmQgbGV2ZWwKICAoUGF0Y2ggOSksIG5vdCBpbiBTb0MgZHRzaQoKUGF0
+Y2ggNiAobmV0OiBwY3M6IHhwY3M6IGFkZCBBTlJFU1RBUlQgc3VwcG9ydCBmb3IgU0dNSUkgbGlu
+ayByZWNvdmVyeSkKLSBTcGxpdCB0aGUgb3JpZ2luYWwgUkZDIHBhdGNoIGludG8gdHdvOiB0aGUg
+U0dNSUkgc3RhdGUgcmVhZGluZyBmaXggd2FzCiAgc2VudCBzZXBhcmF0ZWx5IHRvIHRoZSBuZXQg
+dHJlZSBhbmQgaGFzIGJlZW4gbWVyZ2VkLiBUaGlzIHBhdGNoIG5vdwogIG9ubHkgYWRkcyB0aGUg
+QU5SRVNUQVJUIGZ1bmN0aW9uYWxpdHkgYXMgYSBuZXcgZmVhdHVyZSBmb3IgbmV0LW5leHQuCi0g
+UmVtb3ZlZCB1bmludGVudGlvbmFsIGBCTUNSX0FOUkVTVEFSVGAgY2hhbmdlIGluIGMzN18xMDAw
+YmFzZXgKICAodGhpcyB3YXMgbm90IHRlc3RlZCBhbmQgc2hvdWxkIG5vdCBoYXZlIGJlZW4gaW5j
+bHVkZWQpCi0gS2VwdCBTR01JSSBwYXRoIGNoYW5nZXMgZm9yIFJLMzU2OCBvbmx5CgpQYXRjaCA3
+IChuZXQ6IHBjczogeHBjczogYWRkIFJvY2tjaGlwIFJLMzU2OCBwbGF0Zm9ybSBnbHVlIGRyaXZl
+cikKLSBBZGRlZCBgLnJlbW92ZWAgY2FsbGJhY2sgd2l0aCBgcG1fcnVudGltZV9mb3JjZV9zdXNw
+ZW5kKClgIHRvIGZpeAogIHBvdGVudGlhbCBDU1IgY2xvY2sgbGVhayBvbiBkZXZpY2UgcmVtb3Zh
+bAotIEFkZGVkIGNvbXBhdGlibGUgc3RyaW5nIHZhbGlkYXRpb24gaW4gYHhwY3NfcmtfY3JlYXRl
+KClgIGJlZm9yZQogIGRlcmVmZXJlbmNpbmcgZHJ2ZGF0YSAodXNpbmcgYG9mX21hdGNoX25vZGUo
+eHBjc19ya19vZl9pZHMsIHBjc19ucClgKQotIFJlbW92ZWQgYF9fbWF5YmVfdW51c2VkYCBmcm9t
+IFBNIHJ1bnRpbWUgY2FsbGJhY2tzCi0gQWRkIGBkZXBlbmRzIG9uIFBNYCBpbiBLY29uZmlnIHRv
+IGVuc3VyZSBgQ09ORklHX1BNYCBpcyBlbmFibGVkIGZvciAKICB0aGlzIGRyaXZlcgoKUGF0Y2gg
+OCAobmV0OiBzdG1tYWM6IGR3bWFjLXJrKQotIE1vdmVkIGBnbWFjX2Nsa19lbmFibGUoKWAgY2Fs
+bCBiZWZvcmUgU0dNSUkgY2hlY2sgdG8gZW5zdXJlIGNsb2NrcyBhcmUKICBlbmFibGVkIGJlZm9y
+ZSByZWdpc3RlciBhY2Nlc3MgaW4gU0dNSUkgbW9kZQotIEFkZGVkIHVuaWZpZWQgZXJyb3IgaGFu
+ZGxpbmcgKGBjbGtfZGlzYWJsZWAgbGFiZWwpIGZvciBhbGwgZmFpbHVyZSBwYXRocwotIEFkZGVk
+IGVycm9yIGhhbmRsaW5nIGZvciBkZWZhdWx0ICh1bmhhbmRsZWQgaW50ZXJmYWNlKSBjYXNlCgo9
+PT0KClRoaXMgc2VyaWVzIGFkZHMgcHJvcGVyIFNHTUlJIHN1cHBvcnQgZm9yIHRoZSBSb2NrY2hp
+cCBSSzM1NjggU29DCnVzaW5nIHRoZSBpbnRlZ3JhdGVkIFN5bm9wc3lzIERlc2lnbldhcmUgWFBD
+UywgYWxvbmcgd2l0aCBuZWNlc3NhcnkKZml4ZXMgYW5kIHJlZmFjdG9yaW5nIGluIHRoZSBzdG1t
+YWMgY29yZSBhbmQgWFBDUyBkcml2ZXIuCgpNb3RpdmF0aW9uCj09PT09PT09PT0KVGhlIFJLMzU2
+OCBpbnRlZ3JhdGVzIGEgRFcgWFBDUyBhY2Nlc3NlZCB2aWEgQVBCMyBhbmQgY29ubmVjdGVkIHRv
+CmEgTmFuZW5nIENvbWJvIFNlckRlcyBQSFkuICBTZXZlcmFsIGJvYXJkcyAoZS5nLiwgQXJpYWJv
+YXJkClBob3RvbmljYXQpIHVzZSB0aGlzIGludGVyZmFjZSBmb3IgR2lnYWJpdCBFdGhlcm5ldC4g
+IEhvd2V2ZXIsIHRoZQpjdXJyZW50IHVwc3RyZWFtIHN0bW1hYyBkcml2ZXIgZG9lcyBub3Qgc3Vw
+cG9ydCB0aGlzIGNvbmZpZ3VyYXRpb24sCmFuZCB0aGUgWFBDUyBkcml2ZXIgaGFzIGlzc3VlcyBp
+biBTR01JSSBwb2xsIG1vZGUgdGhhdCBjYXVzZSB0aGUKbGluayB0byBiZSByZXBvcnRlZCBpbmNv
+cnJlY3RseS4KClRoaXMgc2VyaWVzIGFkZHJlc3NlcyB0aGVzZSBpc3N1ZXMgYnk6Ci0gRml4aW5n
+IHRoZSBYUENTIGRyaXZlcidzIFNHTUlJIEFOIHN0YXRlIGhhbmRsaW5nCi0gUmVmYWN0b3Jpbmcg
+c3RtbWFjIFBDUyBsaWZldGltZSBtYW5hZ2VtZW50IHRvIGFsbG93IHBsYXRmb3JtIGRyaXZlcnMK
+ICBmdWxsIGNvbnRyb2wgb3ZlciBQQ1MgY3JlYXRpb24vZGVzdHJ1Y3Rpb24KLSBBZGRpbmcgYSBS
+b2NrY2hpcCBYUENTIHBsYXRmb3JtIGdsdWUgZHJpdmVyIGFuZCB3aXJpbmcgaXQgdXAgaW4KICBk
+d21hYy1yawoKU2VyaWVzIG92ZXJ2aWV3Cj09PT09PT09PT09PT09PQoKR2VuZXJpYzoKICBQYXRj
+aCAxOiBtb3ZlIFhQQ1MgbGlmZXRpbWUgbWFuYWdlbWVudCB0byBwbGF0Zm9ybSBkcml2ZXJzCiAg
+ICAgICAgICAgKGludHJvZHVjZXMgcGNzX2luaXQvcGNzX2V4aXQgY2FsbGJhY2tzKQoKUEhZOgog
+IFBhdGNoIDI6IERUIGJpbmRpbmcgZm9yIE5hbmVuZyBDb21ibyBQSFkgU0dNSUkgTUFDIHNlbGVj
+dGlvbgogIFBhdGNoIDM6IGltcGxlbWVudCB0aGUgUEhZIFNHTUlJIE1BQyBzZWxlY3Rpb24gaW4g
+ZHJpdmVyCgpSSzM1NjggWFBDUy9TR01JSToKICBQYXRjaCA0OiBEVCBiaW5kaW5nIGZvciBSb2Nr
+Y2hpcCBSSzM1NjggWFBDUwogIFBhdGNoIDU6IGFkZCBYUENTIGFuZCBmaXhlZC1jbG9jayBub2Rl
+cyB0byByazM1NjguZHRzaQogIFBhdGNoIDY6IGFkZCBBTlJFU1RBUlQgc3VwcG9ydCBmb3IgU0dN
+SUkgbGluayByZWNvdmVyeQogIFBhdGNoIDc6IGltcGxlbWVudCB0aGUgUm9ja2NoaXAgWFBDUyBw
+bGF0Zm9ybSBnbHVlIGRyaXZlcgogIFBhdGNoIDg6IHdpcmUgdXAgU0dNSUkgc3VwcG9ydCBpbiBk
+d21hYy1yawogIFBhdGNoIDEwOiB1cGRhdGUgTUFJTlRBSU5FUlMKCkJvYXJkIGVuYWJsZW1lbnQ6
+CiAgUGF0Y2ggOTogZW5hYmxlIFNHTUlJIExBTiBwb3J0IG9uIFBob3RvbmljYXQgYm9hcmQKCktl
+eSBkZXNpZ24gZGVjaXNpb25zCj09PT09PT09PT09PT09PT09PT09Ci0gVGhlIHN0bW1hYyBjb3Jl
+IG5vdyBkZWxlZ2F0ZXMgWFBDUyBjcmVhdGlvbiBlbnRpcmVseSB0byBwbGF0Zm9ybQogIGRyaXZl
+cnMgdmlhIHBjc19pbml0L3Bjc19leGl0LiAgVGhpcyBpcyBuZWNlc3NhcnkgYmVjYXVzZSB0aGUK
+ICBnZW5lcmljIFhQQ1MgY3JlYXRpb24gbG9naWMgd291bGQgb3ZlcnJpZGUgYW55IFhQQ1Mgc2V0
+IHVwIGJ5IHRoZQogIHBsYXRmb3JtIGRyaXZlci4KCi0gVGhlIFJvY2tjaGlwIFhQQ1MgZHJpdmVy
+IGNyZWF0ZXMgYSB2aXJ0dWFsIE1ESU8gYnVzIG92ZXIgdGhlIEFQQjMKICByZWdpc3RlcnMgYW5k
+IGltcGxlbWVudHMgYWRkcmVzcyByZW1hcHBpbmcuICBUaGUgZ2VuZXJpYyBYUENTIGNvcmUKICBo
+YW5kbGVzIGFsbCBQQ1MgY29uZmlndXJhdGlvbiB2aWEgcGh5bGlua19wY3Nfb3BzLgoKLSBPbiBS
+SzM1NjggaW4gU0dNSUkgbW9kZSwgdGhlIE1BQyBjbG9jayBpcyBmaXhlZCBhdCAxMjUgTUh6IGFu
+ZAogIGNhbm5vdCBiZSBkeW5hbWljYWxseSBjaGFuZ2VkLiAgSW4tYmFuZCBtb2RlIGlzIHVzZWQs
+IGFuZCB0aGUKICBnZW5lcmljIHN0bW1hYyBzZXRfY2xrX3R4X3JhdGUgY2FsbGJhY2sgaXMgZGlz
+YWJsZWQgdG8gcHJldmVudAogIGluY29ycmVjdCBjbG9jayB1cGRhdGVzIHRoYXQgd291bGQgYnJl
+YWsgUlguCgotIFRoZSBTZXJEZXMgYW5kIHBvd2VyIGRvbWFpbiBhcmUgYXR0YWNoZWQgdG8gdGhl
+IFhQQ1MgZGV2aWNlIHRyZWUKICBub2RlIHJhdGhlciB0aGFuIHRoZSBNQUMgbm9kZS4gVGhpcyBy
+ZWZsZWN0cyB0aGUgYWN0dWFsIGhhcmR3YXJlCiAgdG9wb2xvZ3kgYW5kIHNpbXBsaWZpZXMgdGhl
+IGR3bWFjLXJrIGRyaXZlciBieSBrZWVwaW5nIGFsbCBQQ1MtcmVsYXRlZAogIHJlc291cmNlcyBz
+ZWxmLWNvbnRhaW5lZC4gSXQgYWxzbyBwcmVwYXJlcyBmb3IgcG9zc2libGUgZnV0dXJlIFFTR01J
+SQogIHN1cHBvcnQsIHdoZXJlIGEgc2luZ2xlIFNlckRlcyBzZXJ2ZXMgbXVsdGlwbGUgTUFDcyBh
+bmQgd291bGQgYmUKICBtb3JlIG5hdHVyYWxseSBtYW5hZ2VkIHVuZGVyIHRoZSBYUENTIG5vZGUu
+CgpUZXN0aW5nCj09PT09PT0KQm9hcmQ6IEFyaWFib2FyZCBQaG90b25pY2F0IChSSzM1NjgpCk9T
+OiBBcm1iaWFuICh0cml4aWUpCktlcm5lbDogNi4xOCAoYmFja3BvcnRzKQpSZXN1bHQ6IFRoZSBT
+R01JSSBpbnRlcmZhY2Ugb2J0YWlucyBhbiBJUCBhZGRyZXNzLCBTU0ggd29ya3MsIGFuZAogICAg
+ICAgIHBpbmcgdHJhZmZpYyBwYXNzZXMgd2l0aG91dCBsb3NzLgoKTm90ZXMKPT09PT0KLSBXaGVu
+IHRlc3Rpbmcgb3V0LWJhbmQgbW9kZSB3aXRoIHNldF9jbGtfdHhfcmF0ZSwgb25seSAxMDAwTWJw
+cwogIHdvcmtzIG9uIGJvdGggVFgvUlg7IDEwLzEwME1icHMgb25seSB3b3JrcyBvbiBUWCBzaWRl
+LgoKRGVwZW5kZW5jaWVzCj09PT09PT09PT09PQpOb25lLiBBbGwgcGF0Y2hlcyBhcHBseSBjbGVh
+bmx5IG9uIHRvcCBvZiB0b3J2YWxkcyBtYXN0ZXIgdHJlZSAodjcuMikuCgpBY2tub3dsZWRnbWVu
+dHMKPT09PT09PT09PT09PT09ClRoaXMgd29yayB3YXMgaW5zcGlyZWQgYnkgYW5kIGJ1aWxkcyB1
+cG9uIHRoZSBleGNlbGxlbnQgd29yayBvZiBvdGhlcnM6Ci0gU2VyZ2UgU2VtaW4ncyBTeW5vcHN5
+cyBEZXNpZ25XYXJlIFhQQ1MgcGxhdGZvcm0gZHJpdmVyIChwY3MteHBjcy1wbGF0LmMpCi0gQ2zD
+qW1lbnQgTMOpZ2VyJ3MgUmVuZXNhcyBNSUlDIGRyaXZlciAocGNzLXJ6bjEtbWlpYy5jKQotIFRo
+ZSBSb2NrY2hpcCBUUk0gYW5kIGRvd25zdHJlYW0gT0VNIGRyaXZlcnMKClRoYW5rcyBpbiBhZHZh
+bmNlLApDb2lhIFByYW50Ci0tLQpDb2lhIFByYW50ICgxMCk6CiAgbmV0OiBzdG1tYWM6IG1vdmUg
+WFBDUyBsaWZldGltZSBtYW5hZ2VtZW50IHRvIHBsYXRmb3JtIGRyaXZlcnMKICBkdC1iaW5kaW5n
+czogcGh5OiByb2NrY2hpcDogbmFuZW5nLWNvbWJwaHk6IGFkZCByb2NrY2hpcCxzZ21paS1tYWMt
+c2VsCiAgICBwcm9wZXJ0eQogIHBoeTogcm9ja2NoaXA6IG5hbmVuZy1jb21icGh5OiBhZGQgU0dN
+SUkgTUFDIHNlbGVjdGlvbiBmb3IgUkszNTY4CiAgZHQtYmluZGluZ3M6IG5ldDogcGNzOiBhZGQg
+cm9ja2NoaXAscmszNTY4LXhwY3MgYmluZGluZwogIGFybTY0OiBkdHM6IHJvY2tjaGlwOiByazM1
+Njg6IGFkZCBYUENTIGFuZCBmaXhlZC1jbG9jayBub2RlcwogIG5ldDogcGNzOiB4cGNzOiBhZGQg
+QU5SRVNUQVJUIHN1cHBvcnQgZm9yIFNHTUlJIGxpbmsgcmVjb3ZlcnkKICBuZXQ6IHBjczogeHBj
+czogYWRkIFJvY2tjaGlwIFJLMzU2OCBwbGF0Zm9ybSBnbHVlIGRyaXZlcgogIG5ldDogc3RtbWFj
+OiBkd21hYy1yazogYWRkIFNHTUlJIHN1cHBvcnQgZm9yIFJLMzU2OAogIGFybTY0OiBkdHM6IHJv
+Y2tjaGlwOiByazM1NjgtcGhvdG9uaWNhdDogZW5hYmxlIFNHTUlJIExBTiBwb3J0CiAgTUFJTlRB
+SU5FUlM6IGFkZCBlbnRyeSBmb3IgUm9ja2NoaXAgWFBDUyBkcml2ZXIKCiAuLi4vYmluZGluZ3Mv
+bmV0L3Bjcy9yb2NrY2hpcC1kd3hwY3MueWFtbCAgICAgfCAxMjcgKysrKysKIC4uLi9waHkvcGh5
+LXJvY2tjaGlwLW5hbmVuZy1jb21icGh5LnlhbWwgICAgICB8ICAxMyArCiBNQUlOVEFJTkVSUyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDkgKwogLi4uL2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzU2OC1waG90b25pY2F0LmR0cyAgIHwgIDc3ICsrLQogYXJjaC9hcm02NC9ib290
+L2R0cy9yb2NrY2hpcC9yazM1NjguZHRzaSAgICAgIHwgIDQ1ICsrCiBkcml2ZXJzL25ldC9ldGhl
+cm5ldC9zdG1pY3JvL3N0bW1hYy9LY29uZmlnICAgfCAgIDEgKwogLi4uL25ldC9ldGhlcm5ldC9z
+dG1pY3JvL3N0bW1hYy9kd21hYy1pbnRlbC5jIHwgIDQ0ICstCiAuLi4vc3RtaWNyby9zdG1tYWMv
+ZHdtYWMtcmVuZXNhcy1nYmV0aC5jICAgICAgfCAgIDcgKy0KIC4uLi9uZXQvZXRoZXJuZXQvc3Rt
+aWNyby9zdG1tYWMvZHdtYWMtcmsuYyAgICB8IDEyMSArKystCiAuLi4vbmV0L2V0aGVybmV0L3N0
+bWljcm8vc3RtbWFjL2R3bWFjLXJ6bjEuYyAgfCAgIDcgKy0KIC4uLi9ldGhlcm5ldC9zdG1pY3Jv
+L3N0bW1hYy9kd21hYy1zb2NmcGdhLmMgICB8ICAgNyArLQogLi4uL25ldC9ldGhlcm5ldC9zdG1p
+Y3JvL3N0bW1hYy9zdG1tYWNfbWRpby5jIHwgIDM3ICstCiBkcml2ZXJzL25ldC9wY3MvS2NvbmZp
+ZyAgICAgICAgICAgICAgICAgICAgICAgfCAgMjMgKwogZHJpdmVycy9uZXQvcGNzL01ha2VmaWxl
+ICAgICAgICAgICAgICAgICAgICAgIHwgICA3ICstCiBkcml2ZXJzL25ldC9wY3MvcGNzLXhwY3Mt
+cmsuYyAgICAgICAgICAgICAgICAgfCA1MzggKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL25l
+dC9wY3MvcGNzLXhwY3MuYyAgICAgICAgICAgICAgICAgICAgfCAgMTcgKy0KIC4uLi9yb2NrY2hp
+cC9waHktcm9ja2NoaXAtbmFuZW5nLWNvbWJwaHkuYyAgICB8ICAgOCArCiBpbmNsdWRlL2xpbnV4
+L3Bjcy9wY3MteHBjcy1yay5oICAgICAgICAgICAgICAgfCAgMTEgKwogMTggZmlsZXMgY2hhbmdl
+ZCwgMTAzMCBpbnNlcnRpb25zKCspLCA2OSBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L3Bjcy9yb2NrY2hpcC1kd3hw
+Y3MueWFtbAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0L3Bjcy9wY3MteHBjcy1yay5j
+CiBjcmVhdGUgbW9kZSAxMDA2NDQgaW5jbHVkZS9saW51eC9wY3MvcGNzLXhwY3MtcmsuaAoKLS0g
+CjIuNDcuMwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
