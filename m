@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86182C55171
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 00:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B274C55173
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 00:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/7QsE0UWigqMFaccxXltFo5cpkfHuYbHEmjr67etzd0=; b=c5KiDs/ogt/mSB
-	2MO0JLxGdGBQ7agXEEdBg8ZmtOQJsdB9uq4mIRI9rj0tmUknwTKGtyaUiaY3MzEPxifl73oGFOS3E
-	suUQtZ7pVen0O/qusnVRlMFXHuqo8tPKTeaSGIggENgQwrZ7Zr/bNzQsR8krK4X3JPMjl0IzUeLsg
-	JpQFt+hIWlpSSY7h2Trk0xARjc5dJ84K42Nk3UOWxTU53WGl1zIlBIL35FMzKwanXU9Qq2NEk0Yf/
-	0qY+fVWetH8qNGklXENKuqVUmv7LBHJG52ndfTZ3BsDjpPkNRDvJcIrIvZjEH0ZvvbK+B8NptVXEg
-	9Dm5RdJxAeaeeaZf7paA==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=L7zxGoIeEJuSQDZEFFlKIBfAYHD8il2/SIqqGn83Gkw=; b=grntni2+opfAn2
+	/A5UJotIILEEbfqrWFhC4Ck2i5m0+NvTcl8zxe8uhn1seNvfEtt+ZMTN9Zc3qCozajjc+Db6KdUdV
+	+iTelJbrekWwQWMFkwAZ+9h6n9nJgkEBqrpOa1HgrQkLHnEwpNQmIbc4+kWoO7NlOwD6CN6fhVMER
+	36hiO2Osmw+2jFGcCKLq/h2HMfJTDs0U3Af4TIepzUqyxBgasy9MMu/iODpixWJ15j38ovoiSGI87
+	Mxkm+o2szSPteCw1h7E5KP/7PXV/Y59DG99lP3C0144KvqSYrynDbZylp+dxti/q5wpd1Pw8PM2nV
+	N5FsM2E/C25wA6nH8Afw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpxhO-0000000Dlgc-31pq;
+	id 1wpxhO-0000000Dlgp-3LEE;
 	Sat, 01 Aug 2026 00:35:34 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpxhM-0000000DleH-3MqG;
-	Sat, 01 Aug 2026 00:35:32 +0000
+	id 1wpxhM-0000000DleJ-45Li;
+	Sat, 01 Aug 2026 00:35:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E30F0600DA;
+	by sea.source.kernel.org (Postfix) with ESMTP id EAC7445061;
 	Sat,  1 Aug 2026 00:35:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 83DD6C2BCB9;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B74AEC2BD05;
 	Sat,  1 Aug 2026 00:35:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1785544531;
-	bh=kFNPUf3nnfqfZfQU98wSE0rwkKlsgeL32eAvFj3Eywc=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=Uak10O1kfSVvtmCusuqvW/oOAlsYMUTh42Wh8PRirDS7eP4/9DJoVeHxHsw+sh4p6
-	 JAZImJZbuTjzmaQmz9NODgbEtnkE8R+hPr67ku2l/Q4ngZXBTDeCC0YRW5v/xiCTpV
-	 rtg+/sbyNBrYfAvUFm6Q9U5ZqseRWR3/dEe1GET0CY1BxawhhjETAggtLsSfiLSjgD
-	 YueJHoXU8sbHqRIrq9dGjh5KvNPCNbxQsNoQ2ayyYKdB2w3D2dBKNIWduXYNRnx5vM
-	 V1Vx0jxVWxnl129w96ZEF7+QE1NOGmjv/Z37nApi+v6MiCoB+TldwrYYth7AgCl6/P
-	 jic/3/GSPA9Vw==
+	bh=1aOmVYCg03e1PY/bmjnJWyzp3iYiKyxizNXP+wV+hl4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=OZNPxc5pZsccMGx2kIB+RPauKTJW2m4OOc3J3TL0t901o4HgeU7CdLZg4IMcKu9Li
+	 GaTk9WCObzU4zgatm4q4BxM5GVFRr3HlPgMyT8w9ZxFUka92bDZ9GVhna2tK/OIQKq
+	 5begqC31jeK1BO2Bb+jOiaFAw3JZh+UCQC7ZtgrD0mIhKviPKxDwhaNBh72zV4EFH7
+	 AZVqi3ugSgRF0dhIgBbPi9hxNXTYTozf0nRvnYTvuzz55y1EaBiHPcRGZqz5i6eVcX
+	 CVJGvstXpK9Gfn8Xb8xdFfSfHSCjl77jIe6nIWf2XxliqVoYumjvgPcZO0Mj+9VnmO
+	 PPdLtx2E29bgg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E8A9C55172;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B316C55178;
 	Sat,  1 Aug 2026 00:35:31 +0000 (UTC)
 From: David Heidelberg via B4 Relay <devnull+david.ixit.cz@kernel.org>
-Subject: [PATCH 0/4] Dongwoon DW9714 - correct vcc/vdd supply voltage
-Date: Sat, 01 Aug 2026 02:35:19 +0200
-Message-Id: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
+Date: Sat, 01 Aug 2026 02:35:23 +0200
+Subject: [PATCH 4/4] arm64: dts: imx8mq-librem5: Dongwoon DW9714 coil
+ requires higher voltage
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqEMAxA0atI1gZaFZG5yuAitlEjqCVVEcS7T
- 0eXb/H/BZFVOMInu0D5kCjrkmDzDNxIy8AoPhkKU9SmMRZDwKArOppZCclW3lJfNaXzkJqg3Mv
- 5/L7t67h3E7vtP4H7/gHafm74cQAAAA==
-X-Change-ID: 20260801-pp-pro-camera-a14d1af483cd
+Message-Id: <20260801-pp-pro-camera-v1-4-7b4d90788f9f@ixit.cz>
+References: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
+In-Reply-To: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
 To: Sakari Ailus <sakari.ailus@linux.intel.com>, 
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -72,21 +71,21 @@ Cc: Krzysztof Kozlowski <krzk@kernel.org>, linux-media@vger.kernel.org,
  phone-devel@vger.kernel.org, imx@lists.linux.dev, 
  David Heidelberg <david@ixit.cz>, stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1312; i=david@ixit.cz;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1318; i=david@ixit.cz;
  h=from:subject:message-id;
- bh=kFNPUf3nnfqfZfQU98wSE0rwkKlsgeL32eAvFj3Eywc=;
- b=owEBbQKS/ZANAwAIAWACP8TTSSByAcsmYgBqbT9RB78Gi5Ef6RsTjwbROwWR0JA3cAkM3fw24
- 7XS9hPcL9+JAjMEAAEIAB0WIQTXegnP7twrvVOnBHRgAj/E00kgcgUCam0/UQAKCRBgAj/E00kg
- crkRD/9UmsyBi/RwaU1Vjh8viYNgJJWAcIj+wICF7ZXkmcfaWQDJppVmp1ssckklT5/WM1j3DHN
- mTDmszRzZ+jz0kYiF9kyc5mnk9+fQKcLKp+m3o9z70bpShyY7kqN5VxmuyK9n2XqOMKGN+jVNFc
- GuZ8EmzC0ebIYPzmfD2woBO3I5o9xobiljACx5iWwmlRsGGX0vPD8OvrFOYPooy39at8p/tJalV
- cwPOgvz7VN3oSIbRfMS2eJ2d6kKBRUq9ssjieIAR+AOI/fOyYpWafxUOpIt92EBozLE546tS5O/
- movPjfaWv4oE3jj8ETBQSzPekesMgb3b6x3lSVJm8brFyx/a3cpQw4STJ0/KkMVTzMMpfQ7mZ/J
- bCPG9Av/0lzUssfmFG5PoPoZH5L71skTRft/XZZheeDgv1QkxsnhFu5e6scKJsKy1gbajcSGuV8
- a3833Jn8j7e8UPsnCJ4raXKgNSYY2uO/u8SVqv1kJafYVLVU/G47No9MpBH6YP3hTdU6pwfo5d3
- nsQGpF9PzEdcEySihLXoVkvpAyMwoCC7uOUiYldqUZn33kGial16lPxVrWMf3jxJxg2ypEhYlJa
- 0dmMESW99y+cHGyU+6nmpKc3LwZZAtcGE0sHo3QBz3/f3gSHGnnltifwyok79NHoWZlcNSW2Xux
- YoDzD8cdfv6beMw==
+ bh=ESuNmKUilcBmwkhuW9k8KZuVDiNGOXfVNdzvY5NO83c=;
+ b=owEBbQKS/ZANAwAIAWACP8TTSSByAcsmYgBqbT9SUDUWs1RjnpAKhNFn6KNoQcgRVwd2qcbcu
+ CY9ZsnEs/SJAjMEAAEIAB0WIQTXegnP7twrvVOnBHRgAj/E00kgcgUCam0/UgAKCRBgAj/E00kg
+ crR1EAC31s20oGV+f/ztpNaROw1wIlei9thofJ3Isn/pL2saX+KwwalKn7SezGY9tzifXXjBFPA
+ mEito6c2HHrmp45mKDMRJWT8NO9E+IKnu7gO5kXj6fg/AmP2onSNeFRZtInpNDvQCRTs2u1EfK7
+ fKlNCy0dAcaPOc021zYB71n5WKK+mtc8ge9ttymu6pEtLGno2lSTfUgrwCcowWCX/UZqfLZWs2Q
+ 5ljMvkeVrJ3Nx4m8oR5qBo1JETFHfz1hMVmqA9a5BX0hs15rbhjTVrE0BBWfwf5UBx0O7pQ3Zor
+ qyRNfrnIhOP2j2wYhscXxtEwhYC8YgJTR9QlAlEcOJT+khdamQz9JPpLGtdt8F9KBD4wbYbfro1
+ ePLcDfRQG236Cju7wENdMZkzsIN9ObKSiBhfn7M3Y2wu9qczYsd2oU5ywl94N1CyjQAHZ4B3Mr3
+ ZRp+rROZTKLr2bapQFeXPD/7fZzvr0U8Ss2KHDdv6PM0b38TrjgDy2bQTBhx9DxwS9KoERi8anX
+ ZrFUORtSQPUNWRd04z/3wu3KwePhUOl2Ea77nTZuY/hp2a1Sxf76VOLbrfU2eluzVaEhihZop9z
+ fbR2dPlUKAh80T0EvdWyuhCSIe9idmAkhCrq0TSz4PS6TfAucHZizmIpoamUCnBCoVbzBIsAxgt
+ mSYT1tlax9RnfdQ==
 X-Developer-Key: i=david@ixit.cz; a=openpgp;
  fpr=D77A09CFEEDC2BBD53A7047460023FC4D3492072
 X-Endpoint-Received: by B4 Relay for david@ixit.cz/default with auth_id=355
@@ -108,34 +107,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-So much mess, as people defines 1.8V i2c level shifters instead of VDD.
+From: David Heidelberg <david@ixit.cz>
 
-I don't pocess any of these devices, so please test carefully,
-you may need to in addition to this change put regulator-always-on to
-the 1.8V which was previously abused instead of VDD. Careful about
-combination when camera which pulls in 1.8V (usually iovdd) as a byproduct
-takes care of i2c supply for the coil.
+By datasheet the VDD (in-kernel named vcc) range is between 2.3 to 4.3 V.
+Usually it's around 2.8 V. Here it matches the reg_vcam_2v8.
 
+1.8 V here is likely used for i2c level shifter.
+
+Fixes: f00df2bdb512 ("arm64: dts: imx8mq-librem5: describe the voice coil motor for focus control")
+Cc: stable@vger.kernel.org
 Signed-off-by: David Heidelberg <david@ixit.cz>
 ---
-David Heidelberg (4):
-      media: dt-bindings: dongwoon,dw9714: Example shouldn't imply 1.8 V
-      arm64: dts: rockchip: rk3399-pinephone-pro: DW9714 coil requires higher voltage
-      arm64: dts: rockchip: rk3566-pinetab2: DW9714 coil requires higher voltage
-      arm64: dts: imx8mq-librem5: Dongwoon DW9714 coil requires higher voltage
+ arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- Documentation/devicetree/bindings/media/i2c/dongwoon,dw9714.yaml | 4 ++--
- arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi                | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts            | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi                | 2 +-
- 4 files changed, 5 insertions(+), 5 deletions(-)
----
-base-commit: 95d6a9ccef99117115e41e9adb271243bd5e985b
-change-id: 20260801-pp-pro-camera-a14d1af483cd
+diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi b/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
+index f5d529c5baf3e..583cba2d3bebf 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
+@@ -1167,17 +1167,17 @@ &i2c4 {
+ 	pinctrl-1 = <&pinctrl_i2c4_gpio>;
+ 	scl-gpios = <&gpio5 20 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+ 	sda-gpios = <&gpio5 21 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+ 	status = "okay";
+ 
+ 	vcm@c {
+ 		compatible = "dongwoon,dw9714";
+ 		reg = <0x0c>;
+-		vcc-supply = <&reg_csi_1v8>;
++		vcc-supply = <&reg_vcam_2v8>;
+ 	};
+ 
+ 	bat: fuel-gauge@36 {
+ 		compatible = "maxim,max17055";
+ 		reg = <0x36>;
+ 		interrupt-parent = <&gpio3>;
+ 		interrupts = <20 IRQ_TYPE_LEVEL_LOW>;
+ 		pinctrl-names = "default";
 
-Best regards,
---  
-David Heidelberg <david@ixit.cz>
+-- 
+2.53.0
 
 
 
