@@ -4,99 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3B65C55171
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 03:36:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8584EC54FCD
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 04:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Subject:Cc:To:From:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uv2dysTbXjrG624nDU/OdxUfhkvfiui1vydLbQxVhoE=; b=B3BZa/Z5YKAfL7
-	nbubDZhH7lF/7RrAc1p4dhED8wb7UoXMXbLMTy3hKnvO8sHBgr43eJ4/9flF9CAEcNebAxstX6HIi
-	gRA9YjRE7xFpw/UHJu/n3ojDULVU33j2bT47a7KbGSz/P+9MB3HlplWpPlo+cmwJ71JPaXSZObtZF
-	bvqkOrudSIBrZxngKl+iN3TwRcgYHTdjBb1quS5Il9VV3yCSUBBbzI9NxCHnxaM8cnS8a6M96BrY0
-	RgX0Rut9EhewH9dTxYhp8+DP015VC+rgomvBLJcErcKjcSP7y4U47WOAZ85+0NjBXlzrhM02EHufM
-	lK8SZMwVJI83EFBxf0CA==;
+	List-Owner; bh=cj7qKFIpIZ/cazdQYpxtOFADSSD96bn794h/mAmTgy8=; b=jAtJy8tfYnx0EB
+	QQ2sz+2y8FXl56YTRBrkuTq037H7hGvHjnCipLPuZe62bAhcZ85Ny2f9GQtsgIlrrxnhdwc8Dy1oO
+	6YqBJuw6QFpu1p+8Srfe4QC84qp7lp4V9K35z7bdsrp9V09YWl5v2Q1XBXDkse+laKJYnRQ88N4l7
+	pUcwozQeAJChDvey/E53OMLEnfa1dOGN56EJ/nu7PzVgoDdxm2PSYnrqp0nvq2UKlxfMzoOs538SD
+	a7zc//cLcoFuoYLSFU5Bs87jxiZDpsgp0SMfw/t/DQf1AHiCQKK9ZJ3RdCDjF1PGqgB+kr7FCIll3
+	IurjPgLECxvvhHV84guQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wq0WU-0000000Drzx-1WjU;
-	Sat, 01 Aug 2026 03:36:30 +0000
-Received: from flow-a2-smtp.messagingengine.com ([103.168.172.137])
+	id 1wq1gQ-0000000DtdV-2cSz;
+	Sat, 01 Aug 2026 04:50:50 +0000
+Received: from out162-62-57-137.mail.qq.com ([162.62.57.137])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wq0WQ-0000000DrzV-2tzH
-	for linux-rockchip@lists.infradead.org;
-	Sat, 01 Aug 2026 03:36:28 +0000
-Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
-	by mailflow.phl.internal (Postfix) with ESMTP id 8CCAE138012B;
-	Fri, 31 Jul 2026 23:36:22 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-03.internal (MEProxy); Fri, 31 Jul 2026 23:36:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1785555382; x=
-	1785558982; bh=Kd/xtjrXL+ZSFGvvYxUao+0BEyM+qeVjXC70r8IO+a0=; b=o
-	z86UqNDQeB62nnfqOmcNnf6aZ3eAairvn0RXbyK3m7QlPX2Rffmcozjefoxmivd8
-	cn/0FwE6fmXfmpfmQ7daoqNkIWmY3NYsRlsMvxP0VBS5mpBxiN6rPK/MfORUXA+N
-	ns142ECvekgIWt2586CJdOleQYQIkEuWmH+4vnvHO9RlMvE1lsdNTAAAYuEbkC3R
-	3+Z10kHHzKDRqOP/ANtc4t04HcYSmN3WP+fS1u+NvPuO/ovJ8NkYNsplPN1/eI+h
-	O32gLAj0qyYxF9Ml7BO1ZBhRiTRX/2VRGu2vJsNMWZP96C9bx70Tiq/mjIoJbaFo
-	Mo7sKNQrfQL45LHeTfrzQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm2; t=1785555382; x=1785558982; bh=K
-	d/xtjrXL+ZSFGvvYxUao+0BEyM+qeVjXC70r8IO+a0=; b=nQFXs9EW0XGKN3zf+
-	jTriL0RUOVUli6tYYs2vouiAxYs2cceQdUPqEhKaMcWZsRt4y93p2JHAFCtkpfHf
-	wyJ/9pDS4z8U0DIJcSK7IOKE978Q5HuMgpItGkQIaYperIRregmB1W0jlHMTzHSY
-	gH/hZu/bhrpOQfN4SiQmNAwn7ENtY3R5ZsF62/ZLghYnMp0Nwrr/4TKp4/T3Icnn
-	sL0KPRX0ZapLQYaRhbzafWTn/tOUO15DIKhZhycVffIx+9RrgYN9TOP8Yx9qBJDR
-	SqZrpvOyf7e3EN6HX/+vQfzWC0+DIX/fK+ylzgQkiuJOG0mxr+qvEpaWaRj9vk+I
-	v76AQ==
-X-ME-Sender: <xms:tWltagHboP1KRtcreQLSKO4wk1UF3MB67l_Fvhve5p0oeXFEDq2rDg>
-    <xme:tWltajaFeZcL9-bFpVDsN5yvyqtNdgx50X4TjutRmskAxVtF6rHBOjtqXzWbxkXZt
-    Dgzu8u0MgryOwbil9E1U91jWZVPvyoP5sNCv8K1Ualkw5WjA5I66P8>
-X-ME-Received: <xmr:tWltaqCXDsLaUgsAb_J0zDOM9QMdDhN76dJjJwwJLJk12FOzRuCT5yJAvyv_EhhQ5uj-m_m57A>
-X-ME-Proxy-Cause: dmFkZTFGtZaGtXrwImdZSICG4DUqUu96tkJF0TuoMDWZLUDTN+ut1sbQE3D/S1YOvP7agd
-    DagK4+sKjqjfOl9Dni90cOTdE7gDKtt1z+cYPOMi3+abEEFyaXJqk242pkBhUJmgbD8YAF
-    M02plys25VQS9ULd0ZD9BWh0lB1k+/8yOpPh9BR4m/YNJ6aJLN/kzTB7SU0AZ+omYCa+bJ
-    kUULTD2vflCE1P1O8N2urjEs0Q6bokgGb1/m9IRU+HsXZO4qX8KJWlRvrsx1AcX4SQ/kd+
-    Wv5h2nNm3stWs/xwTO4vSBKDpp9JcZMq8lKUd3R4c8sLFnOPlrf27aICH0hLl6PAgOE2qx
-    40Tshx/pWouUPk3C8l4dnX5kdA1pJ7k1D4+U3iSahIziJsATLg1q/tE7HpEs9Qwiipv5a6
-    vTeC4VPQB7ELHgGANUuShSs3HKxQB59Ma3pT+pz1T2wYZtypY41OzZqOHebroWD99zm7aU
-    tKv09I443qVoBraCWFhoLCVXomxHG1gSS7r1Vz/P1baPsxoit50lFCIbncViWmw24uUoyj
-    yAR8Axk5yK4FwfPUCokn+GsSDHztBRKqWjEHfeuGnKbgN/gpCEH0lAjIUYxwMYPcP1nJ7m
-    8kNEMLD6g4tdI0uZOFlw02AaYwD1sW7mnLiNkhX18FMFVt9HafiJkFyQHa+Q
-X-ME-Proxy: <xmx:tWltajlKWdLGzSqjTVmVGCd6dw09uKpbVHAJxwyp1BwxaCsiPAfU6A>
-    <xmx:tWltajyOzDatU1DiWTcloE-GCMRQTArVcvXiCsER3V3R1qAXA7CfWA>
-    <xmx:tWltalSVG7mFOsrfvL7RcCSBKwDu9YvVpiM9POppAHzmoLSEiqtG2Q>
-    <xmx:tWltaj-blkIaPSC2882DIxEOB4uNRHqUVqMHqSbLycShQDr8tpNH_A>
-    <xmx:tmltasTxyDpeS7dAzvMcbWXwjwjou4Vcp74vAzupO6v0XGPdXZNRgkeQ>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 31 Jul 2026 23:36:18 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: royalnet026@gmail.com
-Cc: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: Re: [PATCH v2 2/2] accel/rocket: keep core slots stable across unbind and rebind
-Date: Sat,  1 Aug 2026 15:36:14 +1200
-Message-ID: <20260801033614.2008530-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260731064933.12548-3-royalnet026@gmail.com>
-References: <20260731064933.12548-1-royalnet026@gmail.com> <20260731064933.12548-3-royalnet026@gmail.com>
+	id 1wq1gN-0000000DtcK-0Jc1;
+	Sat, 01 Aug 2026 04:50:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1785559841; bh=01J08lZtsLSrVAWFDp4F6uPNfHcjLK4OohuQpvctuYQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=zRmLWFvQaKz9jVLSb1JN8Y8I8xW8vuFMiy3IVY726Djn7jCifMTbdzA+OuIlsmI+6
+	 6vKTW6dTxINiJ59PU2uDXGlbMANVDyHJilthEly09xBULGYbpSZYT6c9rC2mZyKqNM
+	 5J7PFYAdSU5dd023XwK1QTyml1ZCkxqqna0Im5/w=
+Received: from AERO17.taila7786d.ts.net ([112.43.117.189])
+	by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
+	id C9E2EA5C; Sat, 01 Aug 2026 12:50:30 +0800
+X-QQ-mid: xmsmtpt1785559832tox0udywq
+Message-ID: <tencent_567D8D8018183B13498C4150634540C9C206@qq.com>
+X-QQ-XMAILINFO: NT7uTz3cNku23ItSfLE6jgMbokTqZAISMlxNh2psrK3tefVjeRIkLB8w5pkINd
+	 QU18R26sz80qamcZWtIOmnVSWRLeX3HVPkOlH56OGO8hCvgB+O5/cMaHvVfWpw8cU9wPeYJp5Vl/
+	 by6vh+X+GaW9xExk6ZfQRwL+0AowevGrb6iiTCyRw241/m1iGwNTO0ktpHR8VKwStDwQGbSI6f45
+	 y658IOvlSQeSU8iUn7ATrWDFiUTjrQMwFaGPIIYidORgEpFWkt1dGBLxkCasNijpd9snbtKBNIfD
+	 wRTgvB5fosxAGSN8YmArfvNUIdVKqhPHDOPDGNO6MhhXoNsSukkWnRIZHUf8qZ4HDvtd5fDKC/l2
+	 a1gqSThGskjdcCSimGktfvL7L+9W42SIkPpsKHlyqPPsCgRmqCyMvhx+jIXLP96ZhCX+tyoSQLP9
+	 7OpvcsW42w2+eRApfNbxjYPIwAMffcf0KOUZxFAoTPNHfiWAaYKXo/nJGakd8pcIy+PMVT94iIjL
+	 H+Ap1mvW7jg0Uje78lUEUR9h+JZ0RCIEG+ei5cJkwo1K90zKKUUKzJfUS4/l/yc11/+38mr28N4B
+	 8P5GKi2ETrwn+kcMlMRjWSclC0AzRnHdHBvKxhH2E+TZcP18/F9roCcO3TOuYbhAEB0TYnUtnIMu
+	 6qBPbHpwrsWjIuCUGr77KVzHZEsfyUMfxiycUeN7mhR4LSzz0WCqsGlj1GjV3CZWvYnpH+tYOk8o
+	 m0uXEqOr7xQBCYJ9U10z5cyX9LRY0QK4CfWQV25yBiuY8rmRDORGhQmSckXJt2Y2fsfdk/ZkJMdO
+	 tPWfJnSzMUVPEgqwvM+GehQpvZC8gBvsnuN1rEDnMlyXeU4U7T9FYHbjfx3MH7yOB5at0qMSmD2G
+	 YIjWwgOF2dHiCNtyOBwHr3IlwkuDFal92y0KV82A0lejIJLyA+xpQoyp5+2RHGdrplpmp+K9X5ci
+	 KU0bnFi8uIHFdi79Pnc4Pei4XxDSKXE70ykG43YyqaGwio1oIAe5Fwp0bcjhzifvRANRBIfa9kga
+	 zi9ub3Eq+rnkQqLQd9Kvb/ItW1/jjnMCh0FQER0iQvHuxjoY4X5gRf23HgJ7g0kyCHQ5PHOQ==
+X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
+From: Pufan Jin <2254650260@qq.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] arm64: dts: rockchip: Fix fan PWM period on LubanCat 4
+Date: Sat,  1 Aug 2026 12:50:23 +0800
+X-OQ-MSGID: <20260801045025.67512-2-2254650260@qq.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260801045025.67512-1-2254650260@qq.com>
+References: <20260801045025.67512-1-2254650260@qq.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_203627_076434_969CCD09 
-X-CRM114-Status: UNSURE (   5.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260731_215047_640141_994C11B9 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,23 +88,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
+The LubanCat 4 fan header drives a 2-wire fan by chopping its supply with
+a MOSFET, so the fan sees a switched 5V rail rather than a PWM control
+input. With the 5000 ns (200 kHz) period the off-time is far shorter than
+the discharge time of the fan's internal bulk capacitance, so the rail
+never drops and the fan runs at full speed for any non-zero duty cycle.
 
-All three are addressed, and in the right places. The .dev = NULL lands
-in the rocket_core_init() failure path before num_cores is decremented,
-which is what keeps the live slot count and the scheds allocation in
-step. The .dev check in sched_to_core() and the note about synchronous
-probe are both what I had in mind. Thanks for exercising the forced
-init failure path on hardware too.
+Measured on a rev 20241026 board by driving pwm0 directly over the sysfs
+interface, comparing 30% against 100% duty:
 
-Reviewed-by: Jiaxing Hu <gahing@gahingwoo.com>
+  period       frequency   result
+  50000 ns      20 kHz     full speed at both duties
+  100000 ns     10 kHz     slightly reduced, audible coil whine
+  1000000 ns     1 kHz     reduced, loudest coil whine
+  10000000 ns  100 Hz      all four cooling levels distinguishable
 
-And thanks for the Tested-by on my v3. RK3588 is the part I cannot
-check here, so having the soc_data conversion confirmed on all three
-cores is worth a lot.
+At 100 Hz the fan is switched on and off outright and the rotor inertia
+averages the result, which gives proportional control without exciting
+the windings in the range the ear is most sensitive to. Cold start was
+verified down to 15% duty, well below the lowest cooling level, so no
+fan-stop-to-start-percent handling is needed.
 
-Cheers,
-Jiaxing
+Fixes: 6d9430d58714 ("arm64: dts: rockchip: Add EmbedFire LubanCat 4 board")
+Signed-off-by: Pufan Jin <2254650260@qq.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
+index 586741ae7363..bf413de979cd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
+@@ -119,7 +119,7 @@ vcc5v0_usb30_host: regulator-vcc5v0-usb30-host {
+ 	fan: pwm-fan {
+ 		compatible = "pwm-fan";
+ 		cooling-levels = <0 100 150 200 255>;
+-		pwms = <&pwm0 0 5000 0>;
++		pwms = <&pwm0 0 10000000 0>;
+ 		#cooling-cells = <2>;
+ 	};
+ };
+-- 
+2.55.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
