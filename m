@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC793C55173
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 16:28:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E64AC55172
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 16:29:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hA1USfMob8nmUBfjyOiFUawbYLa/ijANlFuR/v1BB10=; b=XYxfqvgZkCt/+G
-	tTwu1oMBESYXnkV8b25bHrfxklABaLnbIST6SOQ3ZKeVHsuAm0MmcstliZRfon5oRBXfRIvvVqwxX
-	hh0w3BKQcDXh7vA8ph/8d3pvN8K4ZrB9WI3phr1BMZClglqVghHe4Pof4+n+T0QnEJxfpSugfFK/L
-	969u45Gjdpyi1p1YCa8mDkyNnjOEaZa03F/q5U+u4WqRSOOMRy5djE0Qv0P/XS+//3E/Ec0j9r9TO
-	Hq+Mq0ZG6CD14D8GzQi70lkW/N/nDcLQ6XcqqmSGm0Vll8pEGq3zAoc8/WZ8zS/1vT88PQzTR1hIj
-	mtediGyFjssyVEbHU6Sg==;
+	List-Owner; bh=lXyieOdbqPs5hLpvPq6FrWEcv5i4bPBP2nwO3sFiuf0=; b=P8nBC9vH+S2NEN
+	AFWepCmkH7n2aCEQvTcR+SDD6v0Jm6Dvme/eG87jSIM/EDpsk4VOXqqm+k48+NUj9KhWsMItse7GG
+	G/gpgKGeKn0BZvB7OZggCAJT1+GHiM/L8BnXWSyGpdRoU4TRJdJ5dSPCu9tnKtSIKijFlxmAXg5TX
+	V3f+ZFAWGn6TPP1SmdFCrhc/cWLyX0YRkUfebP8zM5/NNhHSQYC/+oriKAquZy0R014ossklNbg9i
+	2EPV8lXSSroH7AphVQWTSjFQia9ouvSmTUUVpIC7V2SDPb9SIWre2HSYuh/9oTaiXVhMPMhbGVmn7
+	vQjFcomyIL3m74nDy7RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqCZm-0000000ErSh-0ZMH;
-	Sat, 01 Aug 2026 16:28:42 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wqCaN-0000000ErcS-2iBV;
+	Sat, 01 Aug 2026 16:29:19 +0000
+Received: from out-177.mta0.migadu.com ([2001:41d0:1004:224b::b1])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqCZj-0000000ErS1-0bSp;
-	Sat, 01 Aug 2026 16:28:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=V06eygovF9pqY3vHyXKEpDH3PhLpNuC5Yjsi32fVPNY=; b=GkspQDxIH8XQuNGEPi3OaHsWVb
-	MWqmQLy8kUKXVbYdQCn+ie/STVzV3V1s7aPOK5PK5RjrA5Wiyz8hXdbdIEgc6WcPFfAa21KBC40+n
-	tiyw0Mn+j6oxgkEwMCeuve4BVeBfqLtB2EPeZ7wTyUU4mSmU1sLPii9wSHsjQ5BuPbhAuQtRTEjA5
-	n8pZMtkAH/FxaT++U1I8L6londMFmfOBCEtEEp2HcNsc6P3S1esk+oUHFDqac/TtiB/qTngEgeWVx
-	vxh6+0AgQRrVMtC7TkoRzlWwcomWycXXPeveXnhe6HMtGaMMJNgHU/uwXIYS2D1qggPlKOWmYdUmd
-	HqiZeHug==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- Romain Gantois <romain.gantois@bootlin.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Coia Prant <coiaprant@gmail.com>,
- Coia Prant <coiaprant@gmail.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
- Russell King <linux@armlinux.org.uk>, Shawn Lin <shawn.lin@rock-chips.com>,
- David Heidelberg <david@ixit.cz>, netdev@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH v2 05/10] arm64: dts: rockchip: rk3568: add XPCS and fixed-clock
- nodes
-Date: Sat, 01 Aug 2026 18:28:11 +0200
-Message-ID: <2847036.GUH7pLUipS@diego>
-In-Reply-To: <20260801142244.679437-7-coiaprant@gmail.com>
-References: <20260801142244.679437-2-coiaprant@gmail.com>
- <20260801142244.679437-7-coiaprant@gmail.com>
-MIME-Version: 1.0
+	id 1wqCaJ-0000000ErZH-3Ybh
+	for linux-rockchip@lists.infradead.org;
+	Sat, 01 Aug 2026 16:29:18 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1785601750;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=y0OSr4PVxwlUzl29UswP2Ld/5ySXUrAk1c81FO8Jolo=;
+	b=OW1WNFrkmP6loHKo7sJMqbrXaEig8yZmuh5ybE5188gYLkXVSJTXRRtI3uEBIrOahCqSzL
+	eG9PQEkfPZdpqPo2KEG/FpcgZrkFDnvGFILUkkmIldT/BpE61VLPfUtoDBu8nCVeYWv50t
+	r68PCxXxs+eza3LqF38f+zlGqwUHmraELWVDrFtipvcSr5Ft+8+6AZcNHUnFQ+RS5XKZZn
+	piS2nn94sGCMCSbztvsI/kl/BbDZ0pmcv96INVPwT7FG9rWO44IEREaJdUJXaBjZYJd5mj
+	vbd81zKOnJDFVeZHTUJwZ6SrNgZe22oImoPYpEuOh4UsxiTIhzV8LRbnlYT98w==
+Date: Sat, 01 Aug 2026 18:29:04 +0200
+Message-Id: <DKDQZP8UB0XY.U2JKKNUEA4CV@cknow-tech.com>
+Cc: "Tomeu Vizoso" <tomeu@tomeuvizoso.net>, "Heiko Stuebner"
+ <heiko@sntech.de>, "Jiaxing Hu" <gahing@gahingwoo.com>, "Oded Gabbay"
+ <ogabbay@kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-rockchip@lists.infradead.org>
+Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and
+ some numbers
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Igor Paunovic" <royalnet026@gmail.com>
+References: <DKDOBW9CJ2Y3.10EEIZDTXPYJZ@cknow-tech.com>
+ <20260801144021.7583-1-royalnet026@gmail.com>
+In-Reply-To: <20260801144021.7583-1-royalnet026@gmail.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260801_092839_215141_5A762A9C 
-X-CRM114-Status: GOOD (  18.07  )
+X-CRM114-CacheID: sfid-20260801_092916_503235_915C3481 
+X-CRM114-Status: GOOD (  26.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,66 +69,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gU2Ftc3RhZywgMS4gQXVndXN0IDIwMjYsIDE2OjIyOjI5IE1pdHRlbGV1cm9ww6Rpc2NoZSBT
-b21tZXJ6ZWl0IHNjaHJpZWIgQ29pYSBQcmFudDoKPiBUaGUgUkszNTY4IFNvQyBpbnRlZ3JhdGVz
-IGEgU3lub3BzeXMgRGVzaWduV2FyZSBYUENTIHRoYXQgcHJvdmlkZXMKPiB0aGUgUGh5c2ljYWwg
-Q29kaW5nIFN1YmxheWVyIGZvciAxMDAwQkFTRS1YLCBTR01JSSwgYW5kIFFTR01JSQo+IGludGVy
-ZmFjZXMgdmlhIGl0cyBmb3VyIE1JSSBwb3J0cy4gIEFkZCB0aGUgWFBDUyBkZXZpY2Ugbm9kZSBh
-bmQKPiBpdHMgcGNzLW1paSBzdWItbm9kZXMgdG8gdGhlIFNvQyBkZXZpY2UgdHJlZS4KPiAKPiBU
-aGUgWFBDUyBkZXZpY2UgaXMgYWNjZXNzZWQgdmlhIHRoZSBBUEIzIGJ1cyBhdCAweGZkYTAwMDAw
-IGFuZAo+IHJlcXVpcmVzIHRoZSBDU1IgY2xvY2sgKFBDTEtfWFBDUykgZm9yIHJlZ2lzdGVyIGFj
-Y2VzcyBhbmQgdGhlIEVFRQo+IGNsb2NrIChDTEtfWFBDU19FRUUpIGZvciBFbmVyZ3kgRWZmaWNp
-ZW50IEV0aGVybmV0IG9wZXJhdGlvbi4gIFRoZQo+IFBEX1BJUEUgcG93ZXIgZG9tYWluIG11c3Qg
-YmUgZW5hYmxlZCBiZWZvcmUgYW55IHJlZ2lzdGVyIGFjY2Vzcy4KPiAKPiBBbHNvIGFkZCB0d28g
-Zml4ZWQtY2xvY2sgbm9kZXMgKHhwY3NfZ21hYzBfY2xrIGFuZCB4cGNzX2dtYWMxX2NsaykKPiBw
-cm92aWRpbmcgdGhlIDEyNSBNSHogcmVmZXJlbmNlIGNsb2NrIGZvciB0aGUgR01BQ3Mgd2hlbiBv
-cGVyYXRpbmcKPiB3aXRoIFhQQ1MuICBUaGVzZSBjbG9ja3MgYXJlIHVzZWQgYXMgdGhlIGFzc2ln
-bmVkLWNsb2NrLXBhcmVudHMKPiBmb3IgdGhlIHJlc3BlY3RpdmUgR01BQyBub2RlcyBpbiBib2Fy
-ZC1sZXZlbCBkZXZpY2UgdHJlZXMuCj4gCj4gVGhlIFhQQ1Mgbm9kZSBhbmQgaXRzIHBjcy1taWkg
-c3ViLW5vZGVzIGFyZSBkaXNhYmxlZCBieSBkZWZhdWx0IGFuZAo+IG11c3QgYmUgZW5hYmxlZCBh
-dCB0aGUgYm9hcmQgbGV2ZWwgd2hlbiAxMDAwQkFTRS1YL1NHTUlJL1FTR01JSSBpcwo+IGluIHVz
-ZS4gIFRoZSBmaXhlZC1jbG9jayBub2RlcyBhcmUgYWx3YXlzIHByZXNlbnQgYW5kIGRvIG5vdCBo
-YXZlIGEKPiBzdGF0dXMgcHJvcGVydHksIGFzIHRoZXkgYXJlIHN0YXRpYyBjbG9jayBzb3VyY2Vz
-Lgo+IAo+IFRoZSBYUENTIG5vZGUgYWxzbyByZXF1aXJlcyBhIHJlZmVyZW5jZSB0byB0aGUgYXBw
-cm9wcmlhdGUgTmFuZW5nCj4gQ29tYm8gUEhZIHZpYSB0aGUgcGh5cyBwcm9wZXJ0eSBhdCB0aGUg
-Ym9hcmQgbGV2ZWwuCj4gCj4gU2lnbmVkLW9mZi1ieTogQ29pYSBQcmFudCA8Y29pYXByYW50QGdt
-YWlsLmNvbT4KPiAtLS0KPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjguZHRz
-aSB8IDQ1ICsrKysrKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNDUgaW5z
-ZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzU2OC5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjguZHRzaQo+
-IGluZGV4IDNiYzY1M2YwMjdmMWYuLjk4OWUxNjRjMGViMzkgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjguZHRzaQo+ICsrKyBiL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszNTY4LmR0c2kKPiBAQCAtMTEwLDYgKzExMCw1MSBAQCBzYXRhMDog
-c2F0YUBmYzAwMDAwMCB7Cj4gIAkJc3RhdHVzID0gImRpc2FibGVkIjsKPiAgCX07Cj4gIAo+ICsJ
-eHBjczogcGNzQGZkYTAwMDAwIHsKPiArCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzU2OC14
-cGNzIjsKPiArCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiArCQkjc2l6ZS1jZWxscyA9IDwwPjsK
-PiArCQlyZWcgPSA8MHgwIDB4ZmRhMDAwMDAgMHgwIDB4MjAwMDAwPjsKPiArCQljbG9ja3MgPSA8
-JmNydSBQQ0xLX1hQQ1M+LCA8JmNydSBDTEtfWFBDU19FRUU+Owo+ICsJCWNsb2NrLW5hbWVzID0g
-ImNzciIsICJlZWUiOwo+ICsJCXBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzU2OF9QRF9QSVBF
-PjsKPiArCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICsKPiArCQl4cGNzX21paTA6IHBjcy1taWlA
-MCB7Cj4gKwkJCXJlZyA9IDwwPjsKPiArCQkJc3RhdHVzID0gImRpc2FibGVkIjsKPiArCQl9Owo+
-ICsKPiArCQl4cGNzX21paTE6IHBjcy1taWlAMSB7Cj4gKwkJCXJlZyA9IDwxPjsKPiArCQkJc3Rh
-dHVzID0gImRpc2FibGVkIjsKPiArCQl9Owo+ICsKPiArCQl4cGNzX21paTI6IHBjcy1taWlAMiB7
-Cj4gKwkJCXJlZyA9IDwyPjsKPiArCQkJc3RhdHVzID0gImRpc2FibGVkIjsKPiArCQl9Owo+ICsK
-PiArCQl4cGNzX21paTM6IHBjcy1taWlAMyB7Cj4gKwkJCXJlZyA9IDwzPjsKPiArCQkJc3RhdHVz
-ID0gImRpc2FibGVkIjsKPiArCQl9Owo+ICsJfTsKPiArCj4gKwl4cGNzX2dtYWMwX2NsazogeHBj
-cy1nbWFjMC1jbG9jayB7Cj4gKwkJY29tcGF0aWJsZSA9ICJmaXhlZC1jbG9jayI7Cj4gKwkJY2xv
-Y2stZnJlcXVlbmN5ID0gPDEyNTAwMDAwMD47Cj4gKwkJY2xvY2stb3V0cHV0LW5hbWVzID0gImNs
-a19nbWFjMF94cGNzX21paSI7Cj4gKwkJI2Nsb2NrLWNlbGxzID0gPDA+Owo+ICsJfTsKPiArCj4g
-Kwl4cGNzX2dtYWMxX2NsazogeHBjcy1nbWFjMS1jbG9jayB7Cj4gKwkJY29tcGF0aWJsZSA9ICJm
-aXhlZC1jbG9jayI7Cj4gKwkJY2xvY2stZnJlcXVlbmN5ID0gPDEyNTAwMDAwMD47Cj4gKwkJY2xv
-Y2stb3V0cHV0LW5hbWVzID0gImNsa19nbWFjMV94cGNzX21paSI7Cj4gKwkJI2Nsb2NrLWNlbGxz
-ID0gPDA+Owo+ICsJfTsKCkkgZG9uJ3QgZnVsbHkgYmVsaWV2ZSB0aG9zZSBjbG9ja3MgYXJlICJq
-dXN0IHRoZXJlIiBpbnNpZGUgdGhlIFNvQy4KSW5zdGVhZCBJIF9hc3N1bWVfIHRoZXkgYXJlIGdl
-bmVyYXRlZCBieSBzb21lIG9zY2lsbGF0b3Igb24gdGhlCmluZGl2aWR1YWwgYm9hcmRzPwoKQmVj
-YXVzZSBhcyBkZXNjcmliZWQgdGhlcmUsIHRoZXkgd291bGQgYmUganVzdCBtYWdpY2FsbHkgYmUg
-dGhlcmUuCgpTbyBwbGVhc2UgYWltIGZvciBhIHJlYWwgY2xvY2sgZGVzY3JpcHRpb24gKGxpa2Vs
-eSBvbiBhIGJvYXJkLWxldmVsKQoKCkhlaWtvCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Sat Aug 1, 2026 at 4:40 PM CEST, Igor Paunovic wrote:
+> Hi Diederik,
+>
+> (re-adding the lists, your reply came to me only)
+>
+> Thanks - that pointer was useful, and it changes what I thought I was
+> looking at.  Two things came out of following it.
+
+Then I guess it's useful I add the main part of that pointer to the ML:
+
+  This is all 'above my paygrade', but the 'failed to get ack on domain' is
+  a type of error which seems to surface on a regular basis:
+  https://lore.kernel.org/linux-rockchip/?q=%22failed+to+get+ack+on+domain%22
+
+(My hope was that it may have given Igor pointers wrt the problem)
+
+> First, a data point that may narrow your search rather than widen it:
+> this board is not running upstream TF-A.  Its SCMI implementation
+> identifies itself as Rockchip's own:
+>
+>   arm-scmi arm-scmi.0.auto: SCMI Protocol v2.0 'rockchip:' Firmware version 0x0
+>
+> and it still fails, so whatever this is, it is not exclusive to upstream
+> TF-A BL31.  If rkbin BL31 makes your PineTab2 suspend/resume work, the
+> difference there may be something more specific than the ack handshake
+> itself.
+>
+> Second, going through the archive for that error string, the history is
+> longer than I realised - Peter Geis' and Sebastian Reichel's pmdomain
+> work on RK3588, and further back "arm64: dts: rockchip: add hevc power
+> domain clock to rk3328".  That last one is interesting because the fix
+> was to add a missing clock to the power domain, i.e. the handshake
+> needs its clocks.
+>
+> What I have looks like a neighbouring case rather than the same one.
+> Here the clocks are not missing - all three NPU domains already list the
+> NPU clock (rk3588-base.dtsi lines 864, 877 and 885).  It is the rate
+> that matters: the ack never arrives if the domain is moved while that
+> clock is above its DT assigned-clock-rate, and the same domain moves
+> cleanly once the rate is back down.  I have not seen that variant
+> described anywhere, which is why I wrote it up.
+>
+> That suggests something you could try, though it is a guess and you know
+> your board far better than I do: if any clock listed in a domain you are
+> suspending happens to be at a non-boot rate at that moment - left there
+> by devfreq, by an assigned-clock-rate, or by whatever ran last - then it
+> would be the same shape as what I am seeing.  Pinning those clocks to
+> their boot rates before the transition would be a cheap thing to rule
+> out.  If it does nothing, at least it is eliminated.
+>
+> Thanks again for taking the time, and good luck with the PineTab2.
+>
+> Igor
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
