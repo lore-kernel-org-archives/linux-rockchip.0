@@ -4,98 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95210C55171
-	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Aug 2026 03:12:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA14C55171
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Aug 2026 03:20:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f3tEcPNtK9oQeB8UJ17dS0oKeaZl2+x0LM/VYy8FVM4=; b=BQaXYTJVDhImUS
-	dCFRCcC+eLcNt2RMbzHkpKzaOuBRZikUk2D3iI/+/iDlChLv99gmHsw+uFZ9A8f39JYA3KzFX3Xqm
-	ptL67Q/fz0BRdo2s2QktWPzFU0A3zcpbRs/XlYDeuCyBC4zL/Wu72Bj8Fdwk+7q6kdCjUsIEksHW7
-	N0UcA9UKYrdMmjRsSJFx0RZZjed6jw1COcHxxUHfTE970EIQqb7PCxDaPLUkoIPqaV5id2h84cyMK
-	DXlWhHYTmxe87NP1W2FSrGYPCIJ3vkZZQjIBYJ90UPCB4U2OiVENmFa3kIGmlnoEgQVvtRAR/3MUU
-	WRQ6rPQhUs+qO26ZwoAQ==;
+	List-Owner; bh=DrizRLFZN63FQg+sMSd1l2XvJWAI8Nq7iHwecYhxbV4=; b=DkGepx5RMgTl8L
+	WrDvnzP0M2A8dV79suUay6GdGutoKbnX7vh323oRdstZfpz4Tm9chu+rfNe8WBRLrndqhuwNthTRA
+	yGXKpR72mL2D+/e2RsbMUG13tjO4yd6UUgrvRE1qG7UE9+aHdi3EJYgN3ep2HRBFnfpCkeHivi8OV
+	k3e/jMReXPoMZVemb8N1TpShMGqD69nEKdu+PckAbkFXbD+rI8rPULxHlV81m32lzVttLahM+eyxb
+	gA/VxRS/cJjJDlA+wfoVAFcmkBCjt57oxZ9DfJcOpl7J6pT7Jaw2vCOeYXXXdhl3pc8W3ODvXSDQN
+	lDI/B8syHASOHN+AgXWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqMcP-0000000FIg4-0KOB;
-	Sun, 02 Aug 2026 03:12:05 +0000
-Received: from mail-ed2-x0a.google.com ([2a00:1450:4864:33::a])
+	id 1wqMkg-0000000FItA-3jcu;
+	Sun, 02 Aug 2026 03:20:38 +0000
+Received: from mail-ej2-x01.google.com ([2a00:1450:4864:34::1])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqMc9-0000000FIeV-2Gyj
+	id 1wqMkd-0000000FIrr-3B5V
 	for linux-rockchip@lists.infradead.org;
-	Sun, 02 Aug 2026 03:12:03 +0000
-Received: by mail-ed2-x0a.google.com with SMTP id 4fb4d7f45d1cf-6a0942e63b9so1301621a12.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 01 Aug 2026 20:11:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785640307; cv=none;
+	Sun, 02 Aug 2026 03:20:37 +0000
+Received: by mail-ej2-x01.google.com with SMTP id a640c23a62f3a-c15e0279316so85374566b.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 01 Aug 2026 20:20:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785640834; cv=none;
         d=google.com; s=arc-20260327;
-        b=gNATiIzHCFUE6FhjZVApFx/+K3o4SsYvxrDwu5pfs2yJOb/w9xssoHZPTivqcv548k
-         ukGeHuFPZ6r88enRzvgMMPZa2MoyNpClztyCSi4h+UxLFgr/7m/KjS9GhIDZLCMPTU6B
-         cWoS05lywmtuCHpb/X15d3zN2YiYbEbKGZdCS8vY5xSQ6UmMid7VcNMo8efPvJXDg7fJ
-         OEzDn/EAiRd+x6DGBBXqcSSXsYh0S9dWYHu7DQ0mwE2tYzKRB/ilftq9hXDCPxqHF6uP
-         dAuifVl7uJCqg6s/3S2gj6dt2imc34L6InDRxQn7w20LvQ94XZ1940XB0sUx6qdZibKa
-         0ZFA==
+        b=FT4znDDotwBrSblrtrdu8d0a9KTb0pZv5k7yt7C+Jaw2iNo7R+ilbWXtyGmrcy2wp0
+         uLm/IEsd46pDzHQpHbKZQE/wbU5FlQjcJs0RONdBWl2h4AryYoYbG367G8n1Ti1IMUWo
+         t+Zkv0Ny3RZ2CmKxwPND4SAD5bc5+/oloF9pUiZUS+Z7IhzpAcHVLW7n8mASaU/FuTu6
+         RmvnQYr4dzSm48ipEUbH111sFvdSlLnkGdrffsS4uQ3ZzjHrFpRW0vyh8VikSIIHivh0
+         uyKVFkHrlc2p005O5QJ47tacRSeg0ewgP4F9W5NR7ZF4iS0CSQ2lmcugiDZ/vv5bhsLZ
+         0p6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=c7i9JdeVJzDWpjjDEXDdnp2erjUKykrkBMYRh4KI/Og=;
-        fh=/rrRYK95buWwAxL7STlEvJy+A+kW4sBzebfo3gyW9sE=;
-        b=dmskyejsAvlEunMv5EhwlT2QOr8BS/yFeioOY7EKLEd38b+QYrLezdWlIqQiLX6ks6
-         QoNndd3ArPqvHJcYpBoskx2UgcFr2sElwkdVaFc2lFC84jGeBFEbqQ1+yVg0Fjra7Twn
-         ddVBi8bhJ9F5qhwfYCH7fzjzbFUkUKWlwWTg4aq4xZ86S3K9g8hczYzhR8s9taRRA7Wr
-         wabFGC1/kTQgiy0/HEFW9dfGyUgx5c/5zTy5CuyrmhNxct/H1MA1AEjOUY2ZTGQl645e
-         9wglKOOcjjdOlucmhfHJ/xbG+bZs2WOAUC///wcCLwXngfcg9VQ8OjWWHL12yuGV+X9y
-         J1Ew==;
+        bh=dokjfNwvvyjCQVfo5U9weDVNiEMz1GgnQwdVbTp72Qk=;
+        fh=CXlVh71HdT1mrWdupx49+UruXoa0r4kj5Jeprvo31B4=;
+        b=dANZiX2Op4Cg6zieB8oP5KGJpCyr6tR3Ys9FFSSqrnGkj2rkstrlAYs9sXAOHVhfZS
+         qHPClUN3Gc7y1ahH5XM66IzUMhamhv+QOTBOVqXiEqsIrRU+KnM1Lc5COfS7mQC5bGQT
+         7TEdxLoKIeEUHE9YNT2NdpCgXiH3Rnpxd/BxrS6KOz/Pq771JrbIKP+VOHNxaeY0d84w
+         kThuAhNlEDtsZNoNoXHp3QyNe8iZw78fACt1fH1b8t2pQt5yabn0upOgUTER1Q3TRyEi
+         uy4KAgKir1i91pVp3kIZhzWJtpl7NmhUgHnEdy3EP/CZqCSMJPSIwhOHg4GakCok/2WD
+         QiKg==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785640307; x=1786245107; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785640834; x=1786245634; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=c7i9JdeVJzDWpjjDEXDdnp2erjUKykrkBMYRh4KI/Og=;
-        b=Bvzh4E0eua7Sm815cfpXF0e9LabI8LYQNEeSi2I+Lwd4rG9BCTD827IKdM1TZkGmRV
-         jqkdq8DGpOligfrHL0uSdF3LaFIu4Wi7xZiiy5lpi8qzTigLiBkFSzPtyNf+Tm27mZgc
-         zbvkXn9/qoe+a4wB42USdW9EIciZ3FQw0Ucp1m0AiU/WJEVam8F5XBeBahB0EpPW+0a6
-         D7IwMVQJJSfsW3hGzt+tq/rgWng7MQdOjCmgBKf6vSEbQksZxh67zZus146J58pQhArc
-         TKg2WNmtlKcNDfykqjKTShe+WPFEc+1vnfTDV7Bj2S1DokxkFDnKURPKQ+cbpomk8GlY
-         +xSA==
+        bh=dokjfNwvvyjCQVfo5U9weDVNiEMz1GgnQwdVbTp72Qk=;
+        b=jR9byIyeVY1K/gowtIfYe5PDH244hcj//1Es9ISNhIEBjtNuQamjjIXig1exdaR5CB
+         8hoNpnJHUecPgb6AWaEk62MAti6Rd3wXZHYCFoPLwZVM8qxmUy39NHzOJFP74VUXge5Q
+         mkGlIo3YKGbkbDkw49ex5hmN0d4IxTwK405xV/YJaA82dmbjMnLUAhNPcJDZkia7VGtu
+         u1r9+/c823eS4xdIS4PgDzu++Q084s2ubFCqdt/MFv2sI9UgVoPRGiiDp/w1E6KAfaAt
+         9IQbSIrH0nfmJtq91xb7o6itGfkMA1cen8bi+/gnyYJhtMDoOWt91gysCY+8RoGm04qX
+         vVDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785640307; x=1786245107;
+        d=1e100.net; s=20251104; t=1785640834; x=1786245634;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=c7i9JdeVJzDWpjjDEXDdnp2erjUKykrkBMYRh4KI/Og=;
-        b=WfnFu1GnyxuYzJ5IP4NGsEOgJ4z5UJ8nyrKvhBdErJG2mQb2ziB5GjnlF4wHechpIP
-         8uMx6Sup3bnEapLpRqXUKzelBBHaoSoregRtFkkrLbcIpiCPMh2BWK0QU2ZXUYz4JRju
-         0T+pMz+oR4jGAyesmVJsAS/1d+te4Wy5NJC5AvTtpwgyEKLzt5n++xjm5R8RlWDzXDcv
-         XaND5kls8Jx72BZKEIw5T+4CE9OtSRP5f8cS+A+tINb+k/prYtt8dQzCUEOYlOz2XSAO
-         pWBINStUfo2D6zbYczWUrlaLjuEPwUXpmLheBsKIqopj8PSd9s1IJHsBUxSdu5tVTIkW
-         ZGFw==
-X-Forwarded-Encrypted: i=1; AHgh+RrUUcr3H2w+mXBHsHKvSVYhbSmNx0PW1biiNxswu9c/hdCimRnh7tmThUJoCE6PaX/eHZzllvp0uaiD5TBT0A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx4GU7IqGUqMq8PLl99zO7QwzZtnWJAmbFRFKjc02EPbLIVFpay
-	1HlA8UCzY1ERZsuH+lZbZdQYY1nMbx2x89USoLav0wVMUa0B87ZC9sa1XBSf0VvPyDoiAQuyzeP
-	9hmQVKegUeZgtxHRyoCBKARDCg7L21mA=
-X-Gm-Gg: AR+sD13dq1oiKKe/j4wxYvaOCA9PZaJqUFM3LtAVh2AY4DuiN785YX72i6LXBQwZxWq
-	4NtmmtGHEsvPt2EQ0Q2Nw4R2JYmzp5tAwvtbAdcGhGrSZbSwIr+lJAolbTcuG5P81wt6LfMZByH
-	gAuK0wbI3f2UbP+l0zfUsCcXo6t3NonE4A5aztvt+wY8IFHRG9BwQIy1zkvORjQuwFYi1vR94H/
-	+fHk/0FQ4DsBvbC8daE/GkvwRwaw3h70p9Ku9D/9Ez1VFbq86EsAxMIKJRGIychgtdWBPAsgAYu
-	dl1QyHvsAkYFhVa6sT0FP1ef9xzIlB0zf9s+mudQ+GEAFWStFsHQXugirHg=
-X-Received: by 2002:a17:907:a0a:b0:c16:318:34e3 with SMTP id
- a640c23a62f3a-c1fe7ee16b4mr409057166b.16.1785640307171; Sat, 01 Aug 2026
- 20:11:47 -0700 (PDT)
+        bh=dokjfNwvvyjCQVfo5U9weDVNiEMz1GgnQwdVbTp72Qk=;
+        b=RXvC4g7VfMutcfq3+puuE/0ksCTZh5D3tPGJiKvtYy5LZs3HTZoQmfTsiabJRBR8+J
+         j5hlLSLnz106QqXFB9x+Slzl5irbssU4cldIQrqeOMmNSXTDIpvxSzmPYGhBYOv3luhK
+         TopAPOgVxc0Nn3C4fjKK/bp5Hiuqf5E9D0l1eAS2iYjTa4V6wh7itEL/S3EGsZMYkIBE
+         faYvkUsNDGbzUQZdtmFPBBVOJJZTRYOSfF5pV6+fxGu/tJMjDahKlpP7TOarY3bRyOij
+         mP02gSzeS0YosuawZXbkC5JpqdFl8iUCkBnut3Y2F9yI6Yb1jb54k1OSY43+h2sE5Tmo
+         LCRA==
+X-Forwarded-Encrypted: i=1; AHgh+RqJVezCEaBS9LL1E1mdzFqNcUrSu8w+/le1IAbAh6Im8Dpsa5dOiowWPspK6TJ7I5ZprLSwMfhYqqL8Q31lnQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy+f1+aeRLT9yKQgsAd19nt4JDweyBKF3wcdf9sdineGRP25uDR
+	V7PLWDPqxAox0HqfOvknxWs/7xNhWwvMYN3sdoeXOcKKLp5qY6OiH1leiwerUEaMxDsU5FqCy+2
+	Ok5uju+PHBrPYOGEeGagSzdbg6PET4kg=
+X-Gm-Gg: AR+sD11NcGv3ggU2f79ggn6RcabPTKMB2++geSM1hWdcAt8jo1lRmOM83XctQgHNRaD
+	0QfN8ualQSDevVq92dd//fFkDEDWczE0XcMxIc+PNq0ExFDSMI6L3hq+5i15JmlJVqHenhsqIXK
+	Mzk1dvZjRcRZT+BAg2bK5QARdQW4ABCT/Dmomi2dVtCynoAOp7o4zVudA/QWOCmPs92oZjq2tyI
+	aLKOp2nh9mV9C9DRboYNLEwpY1I/fiUZcd0qFuE1VaW5fjvparqKOFZ3fH98CGetMtWYSfrMV1o
+	TDKjzxYMKeV1W3MwiTuNpJGN7wSXmZd+6tGKmcuL3cXPa2aDnhjyRVrJFduNH1jqZZsg9g==
+X-Received: by 2002:a17:906:d8c3:b0:c12:b227:614b with SMTP id
+ a640c23a62f3a-c1fe80d4099mr321593066b.27.1785640833516; Sat, 01 Aug 2026
+ 20:20:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260801142244.679437-2-coiaprant@gmail.com> <20260801142244.679437-8-coiaprant@gmail.com>
- <cfddb747-11d0-476d-8402-e0886cca582e@lunn.ch>
-In-Reply-To: <cfddb747-11d0-476d-8402-e0886cca582e@lunn.ch>
+References: <20260801142244.679437-2-coiaprant@gmail.com> <20260801142244.679437-9-coiaprant@gmail.com>
+ <23d8e994-8552-466f-98e6-c47d5783525b@lunn.ch>
+In-Reply-To: <23d8e994-8552-466f-98e6-c47d5783525b@lunn.ch>
 From: Coia Prant <coiaprant@gmail.com>
-Date: Sun, 2 Aug 2026 11:11:40 +0800
-X-Gm-Features: AUfX_mxry2V8YGgxr6fvsxNhCSaA_pBDCP69byM5eyulpGFZP2LcAYzvhwycRyM
-Message-ID: <CALj3r0i1TCTgvm8FrJAJqmZgoJp61NCxc_xmVYaDFd-gh4H=7w@mail.gmail.com>
-Subject: Re: [PATCH v2 06/10] net: pcs: xpcs: add ANRESTART support for SGMII
- link recovery
+Date: Sun, 2 Aug 2026 11:20:27 +0800
+X-Gm-Features: AUfX_mxFPztNas3fSYA9l7Pdws6J-Z60lqG9o0kXKtJ3uRladP8seNb6Ax7e_y4
+Message-ID: <CALj3r0i5yVcJY8V75y0Hm5xjtZSBpH0DXSAWKsAUqguChVcxYA@mail.gmail.com>
+Subject: Re: [PATCH v2 07/10] net: pcs: xpcs: add Rockchip RK3568 platform
+ glue driver
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller" <davem@davemloft.net>, 
 	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -110,10 +110,10 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller" <davem@davemloft.net
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	linux-phy@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-renesas-soc@vger.kernel.org, Jiawen Wu <jiawenwu@trustnetic.com>
+	linux-renesas-soc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260801_201149_601260_254EC11C 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20260801_202035_877388_749CF89F 
+X-CRM114-Status: GOOD (  21.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,35 +130,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+> On Sat, Aug 01, 2026 at 10:22:31PM +0800, Coia Prant wrote:
+> > The XPCS block contains four MII ports (0..3), each of which can be
+> > routed to GMAC0 or GMAC1 via the pcs-handle property in the MAC node.
+> > The hardware maps these ports to different MMDs:
+> >   - port 0: MMD 7 (ROCKCHIP_MMD_MII)
+> >   - port 1: MMD 2 (ROCKCHIP_MMD_MII1)
+> >   - port 2: MMD 3 (ROCKCHIP_MMD_MII2)
+> >   - port 3: MMD 4 (ROCKCHIP_MMD_MII3)
+>
+> Why is port 0 called ROCKCHIP_MMD_MII not ROCKCHIP_MMD_MII0 ?
+
 Hi Andrew,
 
-Thanks for the careful review.
+The naming follows the Rockchip TRM. The hardware documentation refers to
+the MMD for the first port as simply "MII" without a numeric suffix, while
+the other ports are named "MII1", "MII2", "MII3". I kept the naming
+consistent with the TRM to make it easier to cross-reference.
 
-> This probably needs more wide spread testing. I would be afraid that
-> if you kick off an AN cycle, you loose the link until it completes?
-> You would of noticed that on your hardware, but other hardware
-> obviously behaves differently...
+As I understand it, this is probably because the MII controls not only
+Port 0, but
+also the entire PCS (these registers are read-only in Ports 1-3 and reflected
+back to the MII).
 
-The trigger condition is: link is down AND an_complete is set. This means
-auto-negotiation has already completed (or completed with failure), but
-the link is still down. In this state, the hardware will not restart AN
-on its own on RK3568, so the link stays dead forever. Kicking ANRESTART
-here is the only way to recover.
+If you prefer, I can rename it to ROCKCHIP_MMD_MII0 for consistency. Let me
+know and I'll update it in v3.
 
-For a working link (link up), state->an_complete may still be set, but
-the function returns earlier at the "if (state->link)" check, so
-ANRESTART is never triggered on an active link. This should not cause
-unexpected link loss on any hardware.
+>
+> > +static int xpcs_rk_read_c22(struct mii_bus *bus, int addr, int reg)
+> > +{
+> > +     struct dw_xpcs_rk *pxpcs = bus->priv;
+> > +     int dev;
+> > +
+> > +     if (!xpcs_rk_mdio_addr_validate(addr))
+> > +             return -ENODEV;
+> > +
+> > +     dev = xpcs_rk_mdio_read_remapping(addr, MDIO_MMD_VEND2, reg);
+>
+> Does this mean C22 registers are mapped into the first 32 of C45
+> MDIO_MMD_VEND2?
 
-Regarding testing:
-- Jiawen Wu has tested this on Wangxun NICs and reported no regression
-  (Tested-by tag included in the patch).
-- On RK3568 (Photonicat board), this fixes the SGMII link recovery issue.
+Yes, exactly. The C22 register space (reg 0-31) is mapped into the first
+32 registers of the VEND2 MMD (MMD 7). This is how the hardware is designed
+and matches the standard C22 to C45 address mapping.
 
-I agree that wider testing is beneficial, and I'm open to running more
-tests on different platforms if needed. However, given the condition is
-strictly limited to "link down + an_complete", the risk of disrupting an
-already-working link is minimal.
+>
+> > +static int xpcs_rk_read_c45(struct mii_bus *bus, int addr, int dev, int reg)
+> > +{
+> > +     struct dw_xpcs_rk *pxpcs = bus->priv;
+> > +
+> > +     if (!xpcs_rk_mdio_addr_validate(addr))
+> > +             return -ENODEV;
+> > +
+> > +     dev = xpcs_rk_mdio_read_remapping(addr, dev, reg);
+>
+> Should it be returning an error for dev == MDIO_MMD_VEND2? Or at least
+> if reg < 32?
+
+No, we cannot simply return an error here. The generic xpcs driver uses
+C45 reads to access the VEND2 MMD for various operations, including reading
+the device ID (xpcs_read_id). If we returned an error for VEND2 or blocked
+reg < 32, the xpcs core driver would fail to identify the device and the
+PCS would not work.
+
+The VEND2 MMD is fully accessible on this hardware and contains the
+standard C22 registers (0-31) as well as vendor-specific registers.
+The remapping function maps the C45 address space to the correct
+hardware MMD, and then the read/write functions handle the actual access.
+This design matches how other xpcs platform drivers (e.g., pcs-xpcs-plat.c)
+handle similar hardware.
+
+For invalid MMIDs (e.g., MDIO_MMD_PCS, MDIO_MMD_VEND1, etc.), the
+xpcs_rk_mdio_read_remapping() function returns -ENXIO, which is then
+returned as 0xffff (meaning "no link" / "unavailable"). This is the
+standard MDIO behavior for unimplemented registers.
 
 Thanks,
 Coia
