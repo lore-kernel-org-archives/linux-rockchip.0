@@ -4,63 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F724C55172
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 Aug 2026 22:35:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14791C55172
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Aug 2026 01:30:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Eemc7tMxqwCmBLMdp7qZGzL9KVaGvS6kzi5iVRcf52A=; b=Kf7g1N51Ldizqg
-	uqcK2SFe79ZW3W2AfkjF7SQu7HBeC0z4wnOY+9xtSHfzhwxmVDKJPCMb7I5Rnm8gMdJ+x6EDGm1kO
-	mWiQSOF0tKaLnsaDLKevPs1hyfny3Ae2ZSGM1ZuSqv4ExRqoUvb4DCnVejk0uo3+c7vesYpY20lL+
-	Pvnzr/IghFkymca2HjtRzqHoqhMXaTNQt+5xjqgJcu1Tb02HfRknz3e8WPlxbgIDLBe53VYq4Ro7V
-	L7PwOvsnm/fwDPqbKfEIEptq19AWo9hk1cay75giJnrlwRZMvyVie168Mr5F/s647F6Q+oJvUM0KS
-	YiSTHOitb/KvGCKc4KXg==;
+	List-Owner; bh=8khLwXlKz+zMkZjbEUrZS7PoIkK7myHHLTIN1WO3WgY=; b=Eonx1xJ/ZN9YCZ
+	jksceMRq4WgzJjVPijyEvFMHXfiSKEM4ewOgy6tsvA4nnYgKVWeRQHfI9OIrQQyQNcnwYgfw1kbRV
+	F5fs4Rr5asYo3+jeN37ULDAbb9MlpWzGGOQFMtTxJ8J6ITB2auIL5+JRXIY9fkLCXYlbkcxfS6Lqb
+	2+cJUoQ9zqV2cXd0tRd+7YAp1fJ7Z62iARnBJK3KP7aXnCJxrD+izYeNDbFcP/FhucrbYKnHJFFP4
+	DEaCvzqghZQtp3gqCUXupVCBEQPL37nhqceRA9+W62miXYux9W6Dl0Hejj1HGMcMrjw5QqM93TSx3
+	T/BXWdMSyAWOU2TIIrWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqIIw-0000000FB8V-2fkc;
-	Sat, 01 Aug 2026 22:35:42 +0000
-Received: from mail-gw-fk003.vdone.jp ([160.251.152.193])
+	id 1wqL1c-0000000FFQY-46o8;
+	Sun, 02 Aug 2026 01:30:00 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqIIt-0000000FB7g-0ox3
-	for linux-rockchip@lists.infradead.org;
-	Sat, 01 Aug 2026 22:35:40 +0000
-Received: from mail-gw-fk003.vdone.jp (localhost.localdomain [127.0.0.1])
-	by mail-gw-fk003.vdone.jp (Proxmox) with ESMTP id 346B3401583AE
-	for <linux-rockchip@lists.infradead.org>; Sun,  2 Aug 2026 07:35:26 +0900 (JST)
-Received: from e3.valueserver.jp (e3.valueserver.jp [157.7.184.13])
-	by mail-gw-fk003.vdone.jp (Proxmox) with ESMTPS id 2A6F0401827EF
-	for <linux-rockchip@lists.infradead.org>; Sun,  2 Aug 2026 07:35:25 +0900 (JST)
-Received: (qmail 849831 invoked by uid 89); 2 Aug 2026 07:35:24 +0900
-Received: from p1706034-ipxg06601niigatani.niigata.ocn.ne.jp (HELO localhost.localdomain) (jack@supremeoverlordjabs.co)
-  by e3.valueserver.jp with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 2 Aug 2026 07:35:24 +0900
-From: Tomonori Nakagawa <jack@supremeoverlordjabs.co>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Tomonori Nakagawa <jack@supremeoverlordjabs.co>
-Subject: [PATCH v2] drm/rockchip: vop2: give rk3576 VP2 a primary plane
-Date: Sun,  2 Aug 2026 07:35:20 +0900
-Message-ID: <20260801223520.8661-1-jack@supremeoverlordjabs.co>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260729232450.13797-1-jack@supremeoverlordjabs.co>
-References: <20260729232450.13797-1-jack@supremeoverlordjabs.co>
+	id 1wqL1a-0000000FFPn-3VwH;
+	Sun, 02 Aug 2026 01:30:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=i1U1AtcK16K4ZDhnzb8W6FriM/O+cMuIM/9uVsxCuh4=; b=PB3BuyjWCE4sq287tegfpOJ1UZ
+	tRhEngfMmVJI6x8qTAGVrvuonUtnZUxkDXvluNybitc/70r7DpcgZA0iXAjEJYDQJzohJBTf/vpi6
+	IC5FYvOuZZFWb5ZZSDTf/n4xEVDz4ZKN+hstQnN4p6Eiakd97zsIMgVnlbmKhlCirJcQ=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wqL1D-00FRwx-29; Sun, 02 Aug 2026 03:29:35 +0200
+Date: Sun, 2 Aug 2026 03:29:35 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Coia Prant <coiaprant@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Romain Gantois <romain.gantois@bootlin.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	David Heidelberg <david@ixit.cz>, netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH v2 07/10] net: pcs: xpcs: add Rockchip RK3568 platform
+ glue driver
+Message-ID: <23d8e994-8552-466f-98e6-c47d5783525b@lunn.ch>
+References: <20260801142244.679437-2-coiaprant@gmail.com>
+ <20260801142244.679437-9-coiaprant@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260801142244.679437-9-coiaprant@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260801_153539_373194_28BC18C6 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20260801_182958_881169_1FC8BD8F 
+X-CRM114-Status: GOOD (  15.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,57 +90,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On rk3576 the two Cluster windows are the only windows typed
-DRM_PLANE_TYPE_PRIMARY, and both have possible_vp_mask = BIT(0) | BIT(1),
-so they can only be attached to VP0 or VP1. VP2's only attachable
-windows are the Esmart windows, which are all DRM_PLANE_TYPE_OVERLAY.
+On Sat, Aug 01, 2026 at 10:22:31PM +0800, Coia Prant wrote:
+> The RK3568 SoC integrates a Synopsys DesignWare XPCS that is accessed
+> via APB3 memory-mapped registers.
+> This driver provides the glue logic to make the XPCS accessible to
+> the generic pcs-xpcs core.
+> 
+> The XPCS block contains four MII ports (0..3), each of which can be
+> routed to GMAC0 or GMAC1 via the pcs-handle property in the MAC node.
+> The hardware maps these ports to different MMDs:
+>   - port 0: MMD 7 (ROCKCHIP_MMD_MII)
+>   - port 1: MMD 2 (ROCKCHIP_MMD_MII1)
+>   - port 2: MMD 3 (ROCKCHIP_MMD_MII2)
+>   - port 3: MMD 4 (ROCKCHIP_MMD_MII3)
 
-vop2_create_crtcs() requires every video port a board wires up (an output
-endpoint on video_portN) to own a DRM_PLANE_TYPE_PRIMARY plane. On a
-board whose DT routes any interface to VP2, no attachable primary plane
-is found and probe fails with -ENOENT ("no primary plane for vp 2"),
-tearing down the whole VOP2.
+Why is port 0 called ROCKCHIP_MMD_MII not ROCKCHIP_MMD_MII0 ?
 
-Promote Esmart0 to DRM_PLANE_TYPE_PRIMARY. Its possible_vp_mask is
-BIT(0) | BIT(2); since vop2_create_crtcs() assigns primaries in window
-array order and Cluster0/Cluster1 precede Esmart0, VP0 and VP1 still take
-Cluster0/Cluster1, and only VP2 gains Esmart0 as its primary:
+> This driver creates a virtual MDIO bus that translates MDIO operations
+> to APB3 register accesses, with proper address remapping for each port.
+> The generic xpcs driver then creates a phylink_pcs instance on top of
+> this bus, allowing the MAC to use the PCS via the standard phylink API.
 
-  VP0: primary Cluster0
-  VP1: primary Cluster1
-  VP2: primary Esmart0
+I would put some of this into the driver itself, but reading the code
+it is not so obvious.
 
-Tested on Anbernic RG Vita Pro (rk3576), which routes its DP output to
-VP2.
+> +static int xpcs_rk_read_c22(struct mii_bus *bus, int addr, int reg)
+> +{
+> +	struct dw_xpcs_rk *pxpcs = bus->priv;
+> +	int dev;
+> +
+> +	if (!xpcs_rk_mdio_addr_validate(addr))
+> +		return -ENODEV;
+> +
+> +	dev = xpcs_rk_mdio_read_remapping(addr, MDIO_MMD_VEND2, reg);
 
-Signed-off-by: Tomonori Nakagawa <jack@supremeoverlordjabs.co>
----
-v2: reword the commit message per Chaoyi Chen's review - VP2 is not
-    DP-specific; describe the plane topology instead (the two
-    PRIMARY-typed Cluster windows are limited to VP0/VP1 by
-    possible_vp_mask, so VP2 has no attachable primary). No functional
-    change.
+Does this mean C22 registers are mapped into the first 32 of C45
+MDIO_MMD_VEND2?
 
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> +static int xpcs_rk_read_c45(struct mii_bus *bus, int addr, int dev, int reg)
+> +{
+> +	struct dw_xpcs_rk *pxpcs = bus->priv;
+> +
+> +	if (!xpcs_rk_mdio_addr_validate(addr))
+> +		return -ENODEV;
+> +
+> +	dev = xpcs_rk_mdio_read_remapping(addr, dev, reg);
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 17eda592b..e7d013dc3 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -894,7 +894,7 @@ static const struct vop2_win_data rk3576_vop_win_data[] = {
- 		.format_modifiers = format_modifiers,
- 		.layer_sel_id = { 2, 0xf, 0, 0xf },
- 		.supported_rotations = DRM_MODE_REFLECT_Y,
--		.type = DRM_PLANE_TYPE_OVERLAY,
-+		.type = DRM_PLANE_TYPE_PRIMARY,
- 		.axi_bus_id = 0,
- 		.axi_yrgb_r_id = 0x10,
- 		.axi_uv_r_id = 0x11,
--- 
-2.54.0
+Should it be returning an error for dev == MDIO_MMD_VEND2? Or at least
+if reg < 32?
 
-
+Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
