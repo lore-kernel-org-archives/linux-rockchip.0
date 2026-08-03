@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BBF7C55174
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 01:39:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D89D6C55162
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 01:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CTMrmUuGFndFuF78PagLoYEO0nWkW37viX8aaiaQ50Q=; b=GDS2uvYnZVKReW
-	sRV/A99luKU2eV/ThhR/888eRlso2wckdpbxmeFR1+JP41ZidMdvXCHVGJUmYNbvpV8eMTe+fQ1KE
-	ObgY3NZVA+PfJ/qVuQTyxElIF0IruyxKISyT0bfUFxBWFjEhebCorBE0yQdoa1+e+n7nPgX8jpF94
-	QyqW8jo8K7k8P/kqLnjdQLGQgZyerYeFoM9yVCKLif9XJzoSmFN34b8iVqnRa7CIHV7euHQIL0Fnr
-	Z+HU69+FLOwR468DAywHTlG5nBjBxKVQ1djjOlBRYB+ryfrBlS1ikMMx2jnIiFB+BSnbQ5QZeul0s
-	QrGYh79p1d2uLTqpPUfg==;
+	List-Owner; bh=OI75ZfsViYcNLJdowlO9t1t+PiukKNjyNwRfLLanv7g=; b=PgubkwiUYVMUs0
+	3VvAwbG8ko3vog+d9PfHF8deYmSibt0fEEw6GxCBJwtGMeu59LBvZY2Jux7uB06l/ygVMte57mJjl
+	/JlxVn1PMKoMyJQEPTwg0YyXjloVDgcz07xvFJqIQCWX2zlXTYJ3AgM/SZG9bhsHohEcZNp1MWhFP
+	0ZztdIENwBFxVw3snrhUI7BVKcl5hBpikKkqKpmYlW4/sbXbO5k5n7Ulmws+9/dbx7oE3+5QuBkZB
+	LcaovrmA4DxpZ6Fl1Q+0lzrfnAVOTNxMJj2ixRVvhtJLVCnz8+kXqbVMgwlBitJoRhCrQV0ftp6Dy
+	4yd9Nz1ORPMnCe7uEU9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqhdk-0000000GALd-3mNT;
-	Mon, 03 Aug 2026 01:38:52 +0000
-Received: from mail-m158132.netease.com ([47.251.158.132])
+	id 1wqhpL-0000000GAmf-0TyN;
+	Mon, 03 Aug 2026 01:50:51 +0000
+Received: from mail-m8399.xmail.ntesmail.com ([156.224.83.99])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqhde-0000000GAKb-3KTa;
-	Mon, 03 Aug 2026 01:38:50 +0000
-Received: from [127.0.0.1] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 487cbd68b;
-	Mon, 3 Aug 2026 09:38:26 +0800 (GMT+08:00)
-Message-ID: <c6728974-3098-4232-927f-40911f0b4e39@rock-chips.com>
-Date: Mon, 3 Aug 2026 09:38:17 +0800
+	id 1wqhpH-0000000GAlr-1Mfk;
+	Mon, 03 Aug 2026 01:50:49 +0000
+Received: from [172.16.12.74] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 487d3130a;
+	Mon, 3 Aug 2026 09:50:31 +0800 (GMT+08:00)
+Message-ID: <a51a6359-c00c-4190-b3ef-13c79bb5bfed@rock-chips.com>
+Date: Mon, 3 Aug 2026 09:50:31 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/6] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+Subject: Re: [PATCH v1 0/7] Add HPD support for Rockchip Analogix DP
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Vinod Koul <vkoul@kernel.org>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-phy@lists.infradead.org
-References: <20260730013349.51-1-kernel@airkyi.com>
- <20260730013349.51-2-kernel@airkyi.com> <amyp3C_yzxpKzigR@venus>
+ Andy Yan <andy.yan@rock-chips.com>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260730032744.381566-1-damon.ding@rock-chips.com>
+ <24131962.ssLaC8jLEa@diego>
+ <44ff5316-43cc-46be-b947-ea6e1f5da1bb@rock-chips.com>
+ <5209243.oAaWjsssbx@diego>
 Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <amyp3C_yzxpKzigR@venus>
-X-HM-Tid: 0a9fc545af7303a7kunmdf79e4127cbc75
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <5209243.oAaWjsssbx@diego>
+X-HM-Tid: 0a9fc550bff503a8kunm98219b2a55f5b9
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCH0hCVhlCSUxCSB5CHx1CHlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDTUlMVkNMT01PSU9MSR8dQ1YVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=Jt5HTmsU9lA0nVJbfxu5LdwAyRIq9ZBtXrW3nIcOVhQXF0H4282MRbkzExrMAbPWV2ZeVjMQYl6mf7ZqUDz8jYEWQLUo/NPo3/7n6w/vYPCXxwIWRW0Tn3FmfFwXuin4YyI0Lqv0nVORUrti9WiKpQkwmAKSxD9cR/jyimtV30o=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=hCaqyyISkfmc8KoVMA+IE9BEl7i+kSQyUjrBtfdkvIc=;
+	b=KbRfJgCDsDrnjcREajGQGc5avyyAbQToOYReFowTyhSSJ7BHpVIUrzum2s11qB4PSjrizUtHAq66dMGoLg93ne4f9uXk7tbb7/Z1CHHKNMtuD3PiQjBBf537wFyD/yAqXgEMRvqx/LeyUP4L7ublfViUYWrJZ9R0eCOY/heSB3M=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=c6wh7zdiLYbCoFb7Xy9PfvQW4nqvBFuzM1gperfrKNs=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260802_183848_725302_1CA6648F 
-X-CRM114-Status: GOOD (  38.03  )
+X-CRM114-CacheID: sfid-20260802_185048_028418_7909E85E 
+X-CRM114-Status: GOOD (  30.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,222 +81,227 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
-
-On 7/31/2026 10:20 PM, Sebastian Reichel wrote:
-> Hi,
-> 
-> On Thu, Jul 30, 2026 at 09:33:44AM +0800, Chaoyi Chen wrote:
->> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>
->> The HPD function of Type-C DP is implemented through
->> drm_connector_oob_hotplug_event(). For embedded DP, it is required
->> that the DRM connector fwnode corresponds to the Type-C port fwnode.
->>
->> To describe the relationship between the DP controller and the Type-C
->> port device, we usually using drm_bridge to build a bridge chain.
->>
->> Now several USB-C controller drivers have already implemented the DP
->> HPD bridge function provided by aux-hpd-bridge.c, it will build a DP
->> HPD bridge on USB-C connector port device.
->>
->> But this requires the USB-C controller driver to manually register the
->> HPD bridge. If the driver does not implement this feature, the bridge
->> will not be create.
->>
->> So this patch implements a generic DP HPD bridge based on
->> aux-hpd-bridge.c. It will monitor Type-C bus events, and when a
->> Type-C port device containing the DP svid is registered, it will
->> create an HPD bridge for it without the need for the USB-C controller
->> driver to implement it.
->>
->> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
->> Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
->> ---
->>
->> (no changes since v5)
->>
->> Changes in v4:
->> - Scan the entire typec_bus and attempt to register the hpd bridge,
->>   so as not to miss devices that were already added during initialization.
->>
->> (no changes since v3)
->>
->> Changes in v2:
->> - Add copyright text.
->> - Remove useless goto.
->> ---
->>  drivers/gpu/drm/bridge/Kconfig                | 10 +++
->>  drivers/gpu/drm/bridge/Makefile               |  1 +
->>  .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 64 +++++++++++++++++++
->>  3 files changed, 75 insertions(+)
->>  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->>
->> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
->> index 4a57d49b4c6d..9739b2a19758 100644
->> --- a/drivers/gpu/drm/bridge/Kconfig
->> +++ b/drivers/gpu/drm/bridge/Kconfig
->> @@ -30,6 +30,16 @@ config DRM_AUX_HPD_BRIDGE
->>  	  Simple bridge that terminates the bridge chain and provides HPD
->>  	  support.
->>  
->> +if DRM_AUX_HPD_BRIDGE
->> +config DRM_AUX_HPD_TYPEC_BRIDGE
->> +	tristate
->> +	depends on TYPEC || !TYPEC
->> +	default TYPEC
->> +	help
->> +	  Simple bridge that terminates the bridge chain and provides HPD
->> +	  support. It build bridge on each USB-C connector device node.
->> +endif
->> +
->>  menu "Display Interface Bridges"
->>  	depends on DRM && DRM_BRIDGE
->>  
->> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
->> index 15cc821d85b7..d88a9e1ccc9a 100644
->> --- a/drivers/gpu/drm/bridge/Makefile
->> +++ b/drivers/gpu/drm/bridge/Makefile
->> @@ -1,6 +1,7 @@
->>  # SPDX-License-Identifier: GPL-2.0
->>  obj-$(CONFIG_DRM_AUX_BRIDGE) += aux-bridge.o
->>  obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += aux-hpd-bridge.o
->> +obj-$(CONFIG_DRM_AUX_HPD_TYPEC_BRIDGE) += aux-hpd-typec-dp-bridge.o
->>  obj-$(CONFIG_DRM_CHIPONE_ICN6211) += chipone-icn6211.o
->>  obj-$(CONFIG_DRM_CHRONTEL_CH7033) += chrontel-ch7033.o
->>  obj-$(CONFIG_DRM_CROS_EC_ANX7688) += cros-ec-anx7688.o
->> diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->> new file mode 100644
->> index 000000000000..43af3ea20f20
->> --- /dev/null
->> +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->> @@ -0,0 +1,64 @@
->> +// SPDX-License-Identifier: GPL-2.0+
->> +/*
->> + * Copyright (C) 2026 Rockchip Electronics Co., Ltd.
->> + *
->> + * Author: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->> + */
->> +#include <linux/of.h>
->> +#include <linux/usb/typec_altmode.h>
->> +#include <linux/usb/typec_dp.h>
->> +
->> +#include <drm/bridge/aux-bridge.h>
->> +
->> +static int drm_typec_bus_event(struct notifier_block *nb,
->> +			       unsigned long action, void *data)
->> +{
->> +	struct device *dev = (struct device *)data;
->> +	struct typec_altmode *alt = to_typec_altmode(dev);
->> +
->> +	if (action != BUS_NOTIFY_ADD_DEVICE)
->> +		return NOTIFY_OK;
->> +
->> +	/*
->> +	 * alt->dev.parent->parent : USB-C controller device
->> +	 * alt->dev.parent         : USB-C connector device
->> +	 */
->> +	if (is_typec_port_altmode(&alt->dev) && alt->svid == USB_TYPEC_DP_SID)
->> +		drm_dp_hpd_bridge_register(alt->dev.parent->parent,
->> +					   to_of_node(alt->dev.parent->fwnode));
-> 
-> So there are 3 ways to end up with duplicated hpd bridges now:
-> 
-> 1. TypeC controller driver already registered one manually
-> 2. There is a race in drm_aux_hpd_typec_dp_bridge_module_init, if a
->    device appears between registering the notifier and looping
->    through all pre-existing devices
-> 3. Reloading the aux-hpd-typec-dp-bridge module re-registers the
->    bridges
-> 
-> It's not a huge problem as the system works with the duplicated HPD
-> bridges, but it's also quite ugly.
-> 
-> I think it can be trivially avoided by adding this function to
-> drivers/gpu/drm/bridge/aux-hpd-bridge.c and then making use of it
-> here as an additional check (code untested):
-> 
-> bool drm_device_has_dp_hpd_bridge(struct device *parent)
-> {
-> 	struct device *hpd_bridge = device_find_child_by_name(parent, "dp_hpd_bridge");
-> 
-> 	if (!hpd_bridge)
-> 		return false;
-> 
-> 	put_device(hpd_bridge);
-> 	return true;
-> }
-> EXPORT_SYMBOL_GPL(drm_dev_has_dp_hpd_bridge);
->
-
-I think deduplication during registration is a good idea. Detecting it
-during alloc seems a bit premature.
-
-Thanks again for your suggestion. I'll try to add it in the next version.
-
-> That would solve all of the above, but leaves one problem when this
-> module races against manual device creation in a TypeC controller
-> driver. That could be avoided by doing the check in
-> devm_drm_dp_hpd_bridge_alloc() under a lock, but that's probably not
-> worth the trouble (it would require updating all users to handle a
-> new error code like -EEXIST) considering manual registration can be
-> removed from all drivers anyways.
-> 
-> Greetings,
-> 
-> -- Sebastian
-> 
->> +
->> +	return NOTIFY_OK;
->> +}
->> +
->> +static struct notifier_block drm_typec_event_nb = {
->> +	.notifier_call = drm_typec_bus_event,
->> +};
->> +
->> +static int check_device_already_added(struct device *dev, void *data)
->> +{
->> +	drm_typec_bus_event(NULL, BUS_NOTIFY_ADD_DEVICE, dev);
->> +	return 0;
->> +}
->> +
->> +static void drm_aux_hpd_typec_dp_bridge_module_exit(void)
->> +{
->> +	bus_unregister_notifier(&typec_bus, &drm_typec_event_nb);
->> +}
->> +
->> +static int __init drm_aux_hpd_typec_dp_bridge_module_init(void)
->> +{
->> +	bus_register_notifier(&typec_bus, &drm_typec_event_nb);
->> +	/*
->> +	 * Before module initialization, some devices may have already been added.
->> +         * Register the HPD bridge for these devices.
->> +	 */
->> +	bus_for_each_dev(&typec_bus, NULL, NULL, check_device_already_added);
->> +	return 0;
->> +}
->> +
->> +module_init(drm_aux_hpd_typec_dp_bridge_module_init);
->> +module_exit(drm_aux_hpd_typec_dp_bridge_module_exit);
->> +
->> +MODULE_AUTHOR("Chaoyi Chen <chaoyi.chen@rock-chips.com>");
->> +MODULE_DESCRIPTION("DRM TYPEC DP HPD BRIDGE");
->> +MODULE_LICENSE("GPL");
->> -- 
->> 2.53.0
->>
-
--- 
-Best, 
-Chaoyi
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSGVpa28sCgpPbiA3LzMxLzIwMjYgNjozMCBQTSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4g
+SGkgRGFtb24sCj4gCj4gQW0gRnJlaXRhZywgMzEuIEp1bGkgMjAyNiwgMTE6NTU6NDIgTWl0dGVs
+ZXVyb3DDpGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBEYW1vbiBEaW5nOgo+PiBPbiA3LzMxLzIw
+MjYgNToyMyBQTSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+PiBBbSBGcmVpdGFnLCAzMS4gSnVs
+aSAyMDI2LCAwNTowODo0NSBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIERh
+bW9uIERpbmc6Cj4+Pj4gT24gNy8zMS8yMDI2IDI6NDkgQU0sIEhlaWtvIFN0w7xibmVyIHdyb3Rl
+Ogo+Pj4+PiBBbSBEb25uZXJzdGFnLCAzMC4gSnVsaSAyMDI2LCAwNToyNzozNyBNaXR0ZWxldXJv
+cMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIERhbW9uIERpbmc6Cj4+Pj4+PiBUaGlzIHNlcmll
+cyBpbXByb3ZlcyB0aGUgSFBEIChIb3RwbHVnIERldGVjdCkgaW50ZXJydXB0IGhhbmRsaW5nIGlu
+Cj4+Pj4+PiB0aGUgQW5hbG9naXggRFAgZHJpdmVyIHRvIGVuYWJsZSByZWxpYWJsZSBuYXRpdmUg
+SFBEIHBpbiBkZXRlY3Rpb24gb24KPj4+Pj4+IFJvY2tjaGlwIHBsYXRmb3JtcywgYW5kIGludHJv
+ZHVjZXMgcGxhdGZvcm0tc3BlY2lmaWMgSFBEIGRldGVjdGlvbgo+Pj4+Pj4gc2NoZW1lcyB3aXRo
+IGZpbmUtZ3JhaW5lZCBpbnRlcnJ1cHQgY29udHJvbC4KPj4+Pj4KPj4+Pj4gWy4uLl0KPj4+Pj4K
+Pj4+Pj4+IFRlc3RlZCBvbiBSSzM1NzYgd2l0aCBib3RoIG5hdGl2ZSBIUEQgcGluIGFuZCBHUElP
+IEhQRCBjb25maWd1cmF0aW9ucy4KPj4+Pj4+Cj4+Pj4+PiBOYXRpdmUgSFBEIHBpbiBtb2RlOgo+
+Pj4+Pj4KPj4+Pj4+ICAgICAgJmVkcCB7Cj4+Pj4+PiAgICAgICAgICBzdGF0dXMgPSAib2theSI7
+Cj4+Pj4+PiAgICAgICAgICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+Pj4+Pj4gICAgICAg
+ICAgcGluY3RybC0wID0gPCZlZHBfdHhtMF9waW5zPjsKPj4+Pj4+ICAgICAgfTsKPj4+Pj4+Cj4+
+Pj4+PiBHUElPIEhQRCBtb2RlOgo+Pj4+Pj4KPj4+Pj4+ICAgICAgJmVkcCB7Cj4+Pj4+PiAgICAg
+ICAgICBzdGF0dXMgPSAib2theSI7Cj4+Pj4+PiAgICAgICAgICBwaW5jdHJsLW5hbWVzID0gImRl
+ZmF1bHQiOwo+Pj4+Pj4gICAgICAgICAgcGluY3RybC0wID0gPCZlZHAwX2hwZD47Cj4+Pj4+PiAg
+ICAgICAgICBocGQtZ3Bpb3MgPSA8JmdwaW80IFJLX1BDMSBHUElPX0FDVElWRV9ISUdIPjsKPj4+
+Pj4+ICAgICAgfTsKPj4+Pj4+Cj4+Pj4+PiAgICAgICZwaW5jdHJsIHsKPj4+Pj4+ICAgICAgICAg
+IGVkcCB7Cj4+Pj4+PiAgICAgICAgICAgICAgZWRwMF9ocGQ6IGVkcDAtaHBkIHsKPj4+Pj4+ICAg
+ICAgICAgICAgICAgICAgcm9ja2NoaXAscGlucyA9IDw0IFJLX1BDMSAwICZwY2ZnX3B1bGxfbm9u
+ZT47Cj4+Pj4+PiAgICAgICAgICAgICAgfTsKPj4+Pj4+ICAgICAgICAgIH07Cj4+Pj4+PiAgICAg
+IH07Cj4+Pj4+Cj4+Pj4+IFlheSBhbmQgdGhhbmtzIGEgbG90IGZvciB3b3JraW5nIG9uIHRoYXQu
+Cj4+Pj4+Cj4+Pj4+IElmIEkgcm9sbCBteSBkaXNwbGF5LXBvcnQgY2FycmllciBib2FyZCBiYWNr
+IHRvIHRoZSBhbmFsb2dpeC1kcCBiZWluZwo+Pj4+PiB0aGUgZW5kcG9pbnQsIHRoaXMgd29ya3Mg
+ZXhhY3RseSBhcyBleHBlY3RlZCA6LSkgLgo+Pj4+Pgo+Pj4+PiBJIGNhbiBwbHVnIGluIHRoZSBk
+aXNwbGF5IGF0IHNvbWUgcG9pbnQgYWZ0ZXIgdGhlIGJvb3QgYW5kIGhhdmUgaXQKPj4+Pj4gZGV0
+ZWN0ZWQgYW5kIHNldHVwIGNvcnJlY3RseS4gU2FtZSB3aXRoIHVucGx1Z2dpbmcgaXQgd2hpbGUK
+Pj4+Pj4gdGhlIHN5c3RlbSBpcyBydW5uaW5nLiBUaGUgY29ubmVjdGlvbiBzdGF0dXMgaXMgY29y
+cmVjdGx5IHJlcG9ydGVkCj4+Pj4+IGluIHN5c2ZzLgo+Pj4+Pgo+Pj4+Pgo+Pj4+PiBUaG91Z2gg
+dGhlcmUgaXMgYSBjYXZlYXQuIFdoZW4gdGhlIGVEUCBpcyBub3QgdGhlIGxhc3QgcGFydCwgdGhp
+cyBkb2VzIG5vdAo+Pj4+PiB3b3JrIGFueW1vcmUuIFRoZSBkZXRlY3QgZnVuY3Rpb24gYWx3YXlz
+IHJldHVybnMgImNvbm5lY3RlZCIgaWYgdGhlcmUgaXMKPj4+Pj4gYSBuZXh0IGJyaWRnZSBhdmFp
+bGFibGUuCj4+Pj4+Cj4+Pj4+IE15IGJvYXJkIFswXSBoYXMgYSBwaHlzaWNhbCBEUCBjb25uZWN0
+b3Igb24gaXQsIHNvIG1vZGVscyBpdCBhcwo+Pj4+PiBkcC1jb25uZWN0b3IsIGJ1dCBpbiB0aGF0
+IGNhc2UgdGhlIEFuYWxvZ2l4IGRyaXZlciBhbHdheXMgcmVwb3J0cyBiZWluZwo+Pj4+PiBjb25u
+ZWN0ZWQuCj4+Pj4+Cj4+Pj4+Cj4+Pj4+IFswXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51
+eC1yb2NrY2hpcC8yMDI1MTAwOTIyNTA1MC44ODE5Mi0zLWhlaWtvQHNudGVjaC5kZS8KPj4+Pj4g
+Li4uIHNhbWUgZWZmZWN0IHdpdGggaHBkLWdwaW9zIGluIGVpdGhlciB0aGUgZWRwIG5vZGUgb3Ig
+ZHAtY29ubmVjdG9yIG5vZGUKPj4+Pj4KPj4+Pj4KPj4+Pgo+Pj4+IE15IHByZXZpb3VzIHRlc3Rz
+IHdlcmUgY2FycmllZCBvdXQgb24gdGhlIG1vZGlmaWVkIFJLMzU3NiBJT1RFU1QgYm9hcmQKPj4+
+PiBEVFMgYmFzZWQgb24gUkszNTc2IEVWQjEsIHdoaWNoIGluY2x1ZGVzIGRwLWNvbm5lY3RvciBi
+eSBkZWZhdWx0LiBJIGFsc28KPj4+PiBkaWQgZXh0cmEgdmVyaWZpY2F0aW9uIHdpdGhvdXQgZHAt
+Y29ubmVjdG9yLCBhbmQgSFBEIGRldGVjdGlvbiB3b3Jrcwo+Pj4+IGNvcnJlY3RseSBpbiBib3Ro
+IGNhc2VzLgo+Pj4+Cj4+Pj4gSSd2ZSB0YWtlbiBhIGxvb2sgYXQgdGhlIFRpZ2VyIGJvYXJkIERU
+IGNvbmZpZ3VyYXRpb24uIFRoZSBwaW5jdHJsCj4+Pj4gc2V0dGluZ3MgZm9yIHRoZSBlRFAgSFBE
+IEdQSU8gbWF5IG5lZWQgYWRqdXN0bWVudDoKPj4+Pgo+Pj4+ICZwaW5jdHJsIHsKPj4+PiAJZWRw
+MCB7Cj4+Pj4gCQllZHAwX2hwZF9sOiBlZHAwLWhwZC1sLXBpbiB7Cj4+Pj4gCQkJcm9ja2NoaXAs
+cGlucyA9IDw0IFJLX1BCNSBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9kb3duPjsKPj4+PiAJCX07
+Cj4+Pj4gCX07Cj4+Pj4gfTsKPj4+Pgo+Pj4+IEl0IGlzIHJlY29tbWVuZGVkIHRvIGNvbmZpZ3Vy
+ZSBHUElPNEI1IGFzIHB1bGwtZG93biBvciBwbGwtbm9uZS4gUHVsbC11cAo+Pj4+IGNvbmZpZ3Vy
+YXRpb24gbWF5IHByZXZlbnQgR1BJTyBpbnRlcnJ1cHRzIGZyb20gYmVpbmcgdHJpZ2dlcmVkIHBy
+b3Blcmx5LAo+Pj4+IHJlc3VsdGluZyBpbiBhIHBlcm1hbmVudCAiY29ubmVjdGVkIiBzdGF0dXMu
+Cj4+Pgo+Pj4gQXQgbGVhc3Qgb24gdGhhdCBEUC1jYXJyaWVyIHRoZSBwaW4gZGlyZWN0aW9uIGlz
+IGRpZmZlcmVudC4KPj4+IEkuZS4gaXQgaXMgYWN0aXZlLWxvdywgbWVhbmluZyAwIGZvciBwbHVn
+Z2VkIGluLgo+Pj4KPj4+IEluIHRoZSBzY2hlbWF0aWNzIEkgZG8gc2VlIGEgaHcgcHVsbCB1cCB0
+b28gLSBzbyBwdWxsLW5vbmUgaW4gdGhlIHBpbmNvbmZpZwo+Pj4gd291bGQgYWxzbyBiZSBwb3Nz
+aWJsZSwgYnV0IHB1bGwtZG93biBpcyBkZWZpbml0bHkgd3Jvbmcgb24gX3RoaXNfIGJvYXJkLgo+
+Pj4KPj4+IFNvIHdlJ3JlIHRhbGtpbmcgYWJvdXQgdGhlIHNhbWUgY29kZSwgSSBwdXQgdGhlIGR0
+cyB1cCBvbiBbMF0gLgo+Pj4KPj4+IEknbSBjdXJyZW50bHkgcnVubmluZyB3aXRoIGEgcHJpbnRr
+IGRpZmYgWzFdIHRvIHNob3djYXNlIHRoZSBpc3N1ZS4KPj4+Cj4+PiBTbyBvbiBib290LCB3aXRo
+IHRoZSBkaXNwbGF5IHVucGx1Z2dlZCBJIGdldDoKPj4+IFsgICAxNC43NTc5MTFdIC0tLT4gZHJt
+X2JyaWRnZV9jb25uZWN0b3JfZGV0ZWN0OiBkZXRlY3QKPj4+IFsgICAxNC43NTc5MTRdIC0tLT4g
+YW5hbG9naXhfZHBfYnJpZGdlX2RldGVjdCBhCj4+PiBbICAgMTQuNzU3OTE4XSAtLS0+IGRybV9i
+cmlkZ2VfY29ubmVjdG9yX2RldGVjdDogZGV0ZWN0Cj4+PiBbICAgMTQuNzczNzc5XSAtLS0+IGFu
+YWxvZ2l4X2RwX2JyaWRnZV9kZXRlY3QgYQo+Pj4gWyAgIDE0LjgzODY1OF0gcm9ja2NoaXAtZHAg
+ZmRlYzAwMDAuZWRwOiBmYWlsZWQgdG8gcmVhZCBkcGNkIGNhcHM6IC0xMTAKPj4+IFsgICAxNC44
+Mzg2NjJdIFtkcm06YW5hbG9naXhfZHBfYnJpZGdlX2F0b21pY19lbmFibGUgW2FuYWxvZ2l4X2Rw
+XV0gKkVSUk9SKiBkcCBjb21taXQgZXJyb3IsIHJldCA9IC0xMTAKPj4+IFsgICAxNC44Mzg2NzBd
+IHJvY2tjaGlwLWRwIGZkZWMwMDAwLmVkcDogZmFpbGVkIHRvIHNldCBicmlkZ2UsIHJldHJ5OiAw
+Cj4+PiBbICAgMTQuODg0NzkxXSByb2NrY2hpcC1kcCBmZGVjMDAwMC5lZHA6IGZhaWxlZCB0byBy
+ZWFkIGRwY2QgY2FwczogLTExMAo+Pj4gWyAgIDE0Ljg4NDc5M10gW2RybTphbmFsb2dpeF9kcF9i
+cmlkZ2VfYXRvbWljX2VuYWJsZSBbYW5hbG9naXhfZHBdXSAqRVJST1IqIGRwIGNvbW1pdCBlcnJv
+ciwgcmV0ID0gLTExMAo+Pj4gWyAgIDE0Ljg4NDc5Nl0gcm9ja2NoaXAtZHAgZmRlYzAwMDAuZWRw
+OiBmYWlsZWQgdG8gc2V0IGJyaWRnZSwgcmV0cnk6IDEKPj4+IFsgICAxNC45MzA5MjVdIHJvY2tj
+aGlwLWRwIGZkZWMwMDAwLmVkcDogZmFpbGVkIHRvIHJlYWQgZHBjZCBjYXBzOiAtMTEwCj4+PiBb
+ICAgMTQuOTMwOTI3XSBbZHJtOmFuYWxvZ2l4X2RwX2JyaWRnZV9hdG9taWNfZW5hYmxlIFthbmFs
+b2dpeF9kcF1dICpFUlJPUiogZHAgY29tbWl0IGVycm9yLCByZXQgPSAtMTEwCj4+PiBbICAgMTQu
+OTMwOTMwXSByb2NrY2hpcC1kcCBmZGVjMDAwMC5lZHA6IGZhaWxlZCB0byBzZXQgYnJpZGdlLCBy
+ZXRyeTogMgo+Pj4gWyAgIDE0Ljk3NzAzMl0gcm9ja2NoaXAtZHAgZmRlYzAwMDAuZWRwOiBmYWls
+ZWQgdG8gcmVhZCBkcGNkIGNhcHM6IC0xMTAKPj4+IFsgICAxNC45NzcwMzRdIFtkcm06YW5hbG9n
+aXhfZHBfYnJpZGdlX2F0b21pY19lbmFibGUgW2FuYWxvZ2l4X2RwXV0gKkVSUk9SKiBkcCBjb21t
+aXQgZXJyb3IsIHJldCA9IC0xMTAKPj4+IFsgICAxNC45NzcwMzddIHJvY2tjaGlwLWRwIGZkZWMw
+MDAwLmVkcDogZmFpbGVkIHRvIHNldCBicmlkZ2UsIHJldHJ5OiAzCj4+PiBbICAgMTUuMDIzMTUw
+XSByb2NrY2hpcC1kcCBmZGVjMDAwMC5lZHA6IGZhaWxlZCB0byByZWFkIGRwY2QgY2FwczogLTEx
+MAo+Pj4gWyAgIDE1LjAyMzE1Ml0gW2RybTphbmFsb2dpeF9kcF9icmlkZ2VfYXRvbWljX2VuYWJs
+ZSBbYW5hbG9naXhfZHBdXSAqRVJST1IqIGRwIGNvbW1pdCBlcnJvciwgcmV0ID0gLTExMAo+Pj4g
+WyAgIDE1LjAyMzE1NV0gcm9ja2NoaXAtZHAgZmRlYzAwMDAuZWRwOiBmYWlsZWQgdG8gc2V0IGJy
+aWRnZSwgcmV0cnk6IDQKPj4+IFsgICAxNS4wMjMxNjhdIHJvY2tjaGlwLWRwIGZkZWMwMDAwLmVk
+cDogdG9vIG1hbnkgdGltZXMgcmV0cnkgc2V0IGJyaWRnZSwgZ2l2ZSBpdCB1cAo+Pj4gWyAgIDE1
+LjA1MjQ4NV0gQ29uc29sZTogc3dpdGNoaW5nIHRvIGNvbG91ciBmcmFtZSBidWZmZXIgZGV2aWNl
+IDgweDMwCj4+PiBbICAgMTUuMjEwNDU3XSByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0ZW06
+IFtkcm1dIGZiMDogcm9ja2NoaXBkcm1mYiBmcmFtZSBidWZmZXIgZGV2aWNlCj4+PiBbICAgMTUu
+MjIzNDQ0XSAtLS0+IGRybV9icmlkZ2VfY29ubmVjdG9yX2RldGVjdDogZGV0ZWN0Cj4+PiBbICAg
+MTUuMjMxOTc0XSAtLS0+IGFuYWxvZ2l4X2RwX2JyaWRnZV9kZXRlY3QgYQo+Pj4gWyAgIDE1LjIz
+OTU4N10gLS0tPiBkcm1fYnJpZGdlX2Nvbm5lY3Rvcl9kZXRlY3Q6IGRldGVjdAo+Pj4gWyAgIDE1
+LjI0NTM0MV0gLS0tPiBhbmFsb2dpeF9kcF9icmlkZ2VfZGV0ZWN0IGEKPj4+Cj4+PiBTbyBhbmFs
+b2dpeF9kcF9icmlkZ2VfZGV0ZWN0KCkgaXMgY2FsbGVkIGFuZCBhbHdheXMgcmV0dXJucyBjb25u
+ZWN0ZWQuCj4+Pgo+Pj4gUGx1Z2dpbmcgaW4gdGhlIHRoZSBkaXNwbGF5LCBJIGdldDoKPj4+IFsg
+IDI5MC41OTIwOTZdIC0tLT4gZGlzcGxheV9jb25uZWN0b3JfZGV0ZWN0IGdwaW8gdmFsdWUgaXMg
+MSAgIHtkaXNwbGF5LWNvbm5lY3RvciByZXR1cm5pbmcgY29ubmVjdGVkfQo+Pj4gWyAgMjkwLjU5
+ODY0OF0gLS0tPiBkcm1fYnJpZGdlX2Nvbm5lY3Rvcl9kZXRlY3Q6IGRldGVjdAo+Pj4gWyAgMjkw
+LjYwNDYzN10gLS0tPiBhbmFsb2dpeF9kcF9icmlkZ2VfZGV0ZWN0IGEKPj4+IFsgIDI5MC42MDk4
+MjZdIC0tLT4gZHJtX2JyaWRnZV9jb25uZWN0b3JfZGV0ZWN0OiBkZXRlY3QKPj4+IFsgIDI5MC42
+MTU3ODRdIC0tLT4gYW5hbG9naXhfZHBfYnJpZGdlX2RldGVjdCBhCj4+Pgo+Pj4gVW5wbHVnZ2lu
+ZyB0aGUgZGlzcGxheSwgSSBnZXQ6Cj4+PiBbICAzMDIuMDgxNDQ0XSAtLS0+IGRpc3BsYXlfY29u
+bmVjdG9yX2RldGVjdCBncGlvIHZhbHVlIGlzIDAgICB7ZGlzcGxheS1jb25uZWN0b3IgcmV0dXJu
+aW5nIGRpc2Nvbm5lY3RlZH0KPj4+IFsgIDMwMi4wODc5OTZdIC0tLT4gZHJtX2JyaWRnZV9jb25u
+ZWN0b3JfZGV0ZWN0OiBkZXRlY3QKPj4+IFsgIDMwMi4wOTM5NDVdIC0tLT4gYW5hbG9naXhfZHBf
+YnJpZGdlX2RldGVjdCBhCj4+PiBbICAzMDIuMDk5MTMxXSAtLS0+IGRybV9icmlkZ2VfY29ubmVj
+dG9yX2RldGVjdDogZGV0ZWN0Cj4+PiBbICAzMDIuMTA1MDkwXSAtLS0+IGFuYWxvZ2l4X2RwX2Jy
+aWRnZV9kZXRlY3QgYQo+Pj4gWyAgMzAyLjE0NDgzNF0gLS0tPiBkcm1fYnJpZGdlX2Nvbm5lY3Rv
+cl9kZXRlY3Q6IGRldGVjdAo+Pj4gWyAgMzAyLjE1MDc4NF0gLS0tPiBhbmFsb2dpeF9kcF9icmlk
+Z2VfZGV0ZWN0IGEKPj4+IFsgIDMwMi4xNTU5MzNdIC0tLT4gZHJtX2JyaWRnZV9jb25uZWN0b3Jf
+ZGV0ZWN0OiBkZXRlY3QKPj4+IFsgIDMwMi4xNjE4NTldIC0tLT4gYW5hbG9naXhfZHBfYnJpZGdl
+X2RldGVjdCBhCj4+Pgo+Pj4KPj4+IFNvIGl0IGxvb2tzIGxpa2Ugb24gdGhlIGdwaW8tc2lkZSB0
+aGUgZGV0ZWN0aW9uIGlzIGNvcnJlY3QgYW5kL2J1dAo+Pj4gYW5hbG9naXhfZHBfYnJpZGdlX2Rl
+dGVjdCgpIGlzIGFsd2F5cyByZXR1cm5pbmcgYSBjb25uZWN0ZWQgc3RhdGUKPj4+ICgiYiIgb3V0
+cHV0IGlzIG5ldmVyIHJlYWNoZWQpLgo+Pj4KPj4+IEknbSBzdGlsbCB3b3JraW5nIG9uIHVuZGVy
+c3RhbmRpbmcgaG93IHRoZSB3aG9sZSBkZXRlY3Rpb24gbG9naWMgd29ya3MKPj4+IGluIGRybSA7
+LSkgLgo+Pj4KPj4+Cj4+Cj4+IEkgdGhpbmsgSSd2ZSBzcG90dGVkIHRoZSBlbnZpcm9ubWVudGFs
+IGRpZmZlcmVuY2UgYmV0d2VlbiBvdXIgc2V0dXBzLgo+PiBZb3VyIERUUyBwbGFjZXMgdGhlIGhw
+ZC1ncGlvcyBwcm9wZXJ0eSB1bmRlciB0aGUgZHAtY29ubmVjdG9yIG5vZGUsCj4+IHdoaWNoIGlz
+IGEgc2NlbmFyaW8gSSBoYXZlbid0IGNvdmVyZWQgeWV0LiBJIHdpbGwgcmVwcm9kdWNlIGFuZCB0
+ZXN0Cj4+IHRoaXMgY2FzZSBsb2NhbGx5Lgo+Pgo+PiBBcyBhIHF1aWNrIGV4cGVyaW1lbnQsIGNv
+dWxkIHlvdSB0cnkgcmVtb3ZpbmcgaHBkLWdwaW9zIGZyb20KPj4gZHAtY29ubmVjdG9yIGFuZCBt
+b3ZlIGl0IHVuZGVyIHRoZSBlZHAgbm9kZSBpbnN0ZWFkPyBBcyBleHBlY3RlZCwgR1BJTwo+PiBI
+UEQgc2hvdWxkIHdvcmsgcHJvcGVybHkgd2l0aCB0aGF0IGNvbmZpZ3VyYXRpb24uCj4gCj4gSSd2
+ZSB1cGRhdGVkIHRoZSBicmFuY2ggaW4gWzBdIHdpdGggdGhhdCBocGQgbW92ZSB0byB0aGUgZWRw
+IG5vZGUsIGJ1dAo+IHRoZSByZXN1bHQgaXMgc2ltaWxhcjoKPiAKPiBXaXRoIHRoZSBwYW5lbCBf
+ZGlzY29ubmVjdGVkXyBvbiBib290IEkgc2VlCj4gWyAgIDEyLjg4NzU1NV0gLS0tPiBkcm1fYnJp
+ZGdlX2Nvbm5lY3Rvcl9kZXRlY3Q6IGRldGVjdAo+IFsgICAxMi44OTMxMDRdIC0tLT4gYW5hbG9n
+aXhfZHBfYnJpZGdlX2RldGVjdCBhCj4gWyAgIDEyLjg5Nzg4MV0gLS0tPiBkcm1fYnJpZGdlX2Nv
+bm5lY3Rvcl9kZXRlY3Q6IGRldGVjdAo+IFsgICAxMi45MDM0MjRdIC0tLT4gYW5hbG9naXhfZHBf
+YnJpZGdlX2RldGVjdCBhCj4gWyAgIDE0LjEyNDg0OF0gW2RybTphbmFsb2dpeF9kcF9icmlkZ2Vf
+YXRvbWljX2VuYWJsZSBbYW5hbG9naXhfZHBdXSAqRVJST1IqIGZhaWxlZCB0byBnZXQgaHBkIHNp
+bmdsZSByZXQgPSAtMTEwCj4gWyAgIDE0LjEyNDg5MV0gcm9ja2NoaXAtZHAgZmRlYzAwMDAuZWRw
+OiBmYWlsZWQgdG8gc2V0IGJyaWRnZSwgcmV0cnk6IDAKPiBbICAgMTQuMjM2MDMxXSBbZHJtOmFu
+YWxvZ2l4X2RwX2JyaWRnZV9hdG9taWNfZW5hYmxlIFthbmFsb2dpeF9kcF1dICpFUlJPUiogZmFp
+bGVkIHRvIGdldCBocGQgc2luZ2xlIHJldCA9IC0xMTAKPiBbICAgMTQuMjM2MDc0XSByb2NrY2hp
+cC1kcCBmZGVjMDAwMC5lZHA6IGZhaWxlZCB0byBzZXQgYnJpZGdlLCByZXRyeTogMQo+IFsgICAx
+NC4zNDY5NDBdIFtkcm06YW5hbG9naXhfZHBfYnJpZGdlX2F0b21pY19lbmFibGUgW2FuYWxvZ2l4
+X2RwXV0gKkVSUk9SKiBmYWlsZWQgdG8gZ2V0IGhwZCBzaW5nbGUgcmV0ID0gLTExMAo+IFsgICAx
+NC4zNDY5OTBdIHJvY2tjaGlwLWRwIGZkZWMwMDAwLmVkcDogZmFpbGVkIHRvIHNldCBicmlkZ2Us
+IHJldHJ5OiAyCj4gWyAgIDE0LjQ1ODU5MF0gW2RybTphbmFsb2dpeF9kcF9icmlkZ2VfYXRvbWlj
+X2VuYWJsZSBbYW5hbG9naXhfZHBdXSAqRVJST1IqIGZhaWxlZCB0byBnZXQgaHBkIHNpbmdsZSBy
+ZXQgPSAtMTEwCj4gWyAgIDE0LjQ1ODYzOF0gcm9ja2NoaXAtZHAgZmRlYzAwMDAuZWRwOiBmYWls
+ZWQgdG8gc2V0IGJyaWRnZSwgcmV0cnk6IDMKPiBbICAgMTQuNTcwMjYyXSBbZHJtOmFuYWxvZ2l4
+X2RwX2JyaWRnZV9hdG9taWNfZW5hYmxlIFthbmFsb2dpeF9kcF1dICpFUlJPUiogZmFpbGVkIHRv
+IGdldCBocGQgc2luZ2xlIHJldCA9IC0xMTAKPiBbICAgMTQuNTcwMzEyXSByb2NrY2hpcC1kcCBm
+ZGVjMDAwMC5lZHA6IGZhaWxlZCB0byBzZXQgYnJpZGdlLCByZXRyeTogNAo+IFsgICAxNC41NzAz
+MjhdIHJvY2tjaGlwLWRwIGZkZWMwMDAwLmVkcDogdG9vIG1hbnkgdGltZXMgcmV0cnkgc2V0IGJy
+aWRnZSwgZ2l2ZSBpdCB1cAo+IFsgICAxNC43NTEzNzFdIC0tLT4gZHJtX2JyaWRnZV9jb25uZWN0
+b3JfZGV0ZWN0OiBkZXRlY3QKPiBbICAgMTQuNzU3MjA3XSAtLS0+IGFuYWxvZ2l4X2RwX2JyaWRn
+ZV9kZXRlY3QgYQo+IAo+IFNvIHdpdGggdGhlIGRpZmYgZnJvbSBlYXJsaWVyLCBhbmFsb2dpeF9k
+cF9icmlkZ2VfZGV0ZWN0KCkgc3RpbGwgcnVucywKPiBmaW5kcyBpdHMgbmV4dCBicmlkZ2UgYW5k
+IHJldHVybnMgImNvbm5lY3RlZCIuCj4gCj4gSS5lLiB0aGUKPj4+ICAgICAgICAgICBpZiAoZHAt
+PnBsYXRfZGF0YS0+bmV4dF9icmlkZ2UpCj4+PiAgICAgICAgICAgICAgICAgICByZXR1cm4gY29u
+bmVjdG9yX3N0YXR1c19jb25uZWN0ZWQ7Cj4gCj4gcGFydC4KPiAKPiAKClRoYW5rcyBhIGxvdCBm
+b3IgcnVubmluZyB0aGUgdGVzdCBhbmQgY29uZmlybWluZyB0aGUgYmVoYXZpb3VyLiBJJ3ZlIAph
+bHNvIHJlcHJvZHVjZWQgdGhpcyBpc3N1ZSBsb2NhbGx5LgoKSSB3aWxsIGRpZyBkZWVwZXIgaW50
+byB0aGlzIHByb2JsZW0gYW5kIGZpeCB0aGlzIGluY29ycmVjdCBjb25uZWN0aW9uIApzdGF0dXMg
+bG9naWMgaW4gdjIuIDotKQoKQmVzdCByZWdhcmRzLApEYW1vbgoKPiAKPiAKPiAKPj4+IFswXSBo
+dHRwczovL2dpdGh1Yi5jb20vbW1pbmQvbGludXgtcm9ja2NoaXAvYmxvYi9kZXYvdjcuMy9yazM1
+ODgtdGlnZXItZHAtY2Fycmllci12NS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4
+OC10aWdlci1kaXNwbGF5cG9ydC1jYXJyaWVyLmR0cwo+Pj4gWzFdCj4+PiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgYi9kcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+Pj4gaW5kZXgg
+N2E4OTU0OGE3YTg4NS4uMGFjY2RmNjI2MzdhZSAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4+PiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+Pj4gQEAgLTkxNSw4
+ICs5MTUsMTAgQEAgYW5hbG9naXhfZHBfYnJpZGdlX2RldGVjdChzdHJ1Y3QgZHJtX2JyaWRnZSAq
+YnJpZGdlLCBzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmUKPj4+ICAgICAgICAgICBzdHJ1Y3Qg
+YW5hbG9naXhfZHBfZGV2aWNlICpkcCA9IHRvX2RwKGJyaWRnZSk7Cj4+PiAgICAgICAgICAgZW51
+bSBkcm1fY29ubmVjdG9yX3N0YXR1cyBzdGF0dXMgPSBjb25uZWN0b3Jfc3RhdHVzX2Rpc2Nvbm5l
+Y3RlZDsKPj4+ICAgIAo+Pj4gK3ByaW50aygiLS0tPiAlcyBhXG4iLCBfX2Z1bmNfXyk7Cj4+PiAg
+ICAgICAgICAgaWYgKGRwLT5wbGF0X2RhdGEtPm5leHRfYnJpZGdlKQo+Pj4gICAgICAgICAgICAg
+ICAgICAgcmV0dXJuIGNvbm5lY3Rvcl9zdGF0dXNfY29ubmVjdGVkOwo+Pj4gK3ByaW50aygiLS0t
+PiAlcyBiXG4iLCBfX2Z1bmNfXyk7Cj4+PiAgICAKPj4+ICAgICAgICAgICBpZiAoIWFuYWxvZ2l4
+X2RwX2RldGVjdF9ocGQoZHApKQo+Pj4gICAgICAgICAgICAgICAgICAgc3RhdHVzID0gY29ubmVj
+dG9yX3N0YXR1c19jb25uZWN0ZWQ7Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS9kaXNwbGF5LWNvbm5lY3Rvci5jIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kaXNwbGF5
+LWNvbm5lY3Rvci5jCj4+PiBpbmRleCAxNmMwNjMxYWRlYjE4Li5iMGMwNzY5NGI4MmUzIDEwMDY0
+NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9kaXNwbGF5LWNvbm5lY3Rvci5jCj4+
+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2Rpc3BsYXktY29ubmVjdG9yLmMKPj4+IEBA
+IC00NSw2ICs0NSw3IEBAIHN0YXRpYyBlbnVtIGRybV9jb25uZWN0b3Jfc3RhdHVzIGRpc3BsYXlf
+Y29ubmVjdG9yX2RldGVjdChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpCj4+PiAgICAgICAgICAgc3Ry
+dWN0IGRpc3BsYXlfY29ubmVjdG9yICpjb25uID0gdG9fZGlzcGxheV9jb25uZWN0b3IoYnJpZGdl
+KTsKPj4+ICAgIAo+Pj4gICAgICAgICAgIGlmIChjb25uLT5ocGRfZ3Bpbykgewo+Pj4gK3ByaW50
+aygiLS0tPiAlcyBncGlvIHZhbHVlIGlzICVkXG4iLCBfX2Z1bmNfXywgZ3Bpb2RfZ2V0X3ZhbHVl
+X2NhbnNsZWVwKGNvbm4tPmhwZF9ncGlvKSk7Cj4+PiAgICAgICAgICAgICAgICAgICBpZiAoZ3Bp
+b2RfZ2V0X3ZhbHVlX2NhbnNsZWVwKGNvbm4tPmhwZF9ncGlvKSkKPj4+ICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgcmV0dXJuIGNvbm5lY3Rvcl9zdGF0dXNfY29ubmVjdGVkOwo+Pj4gICAgICAg
+ICAgICAgICAgICAgZWxzZQo+Pj4gQEAgLTg0LDYgKzg1LDcgQEAgc3RhdGljIGVudW0gZHJtX2Nv
+bm5lY3Rvcl9zdGF0dXMgZGlzcGxheV9jb25uZWN0b3JfZGV0ZWN0KHN0cnVjdCBkcm1fYnJpZGdl
+ICpicmkKPj4+ICAgIHN0YXRpYyBlbnVtIGRybV9jb25uZWN0b3Jfc3RhdHVzCj4+PiAgICBkaXNw
+bGF5X2Nvbm5lY3Rvcl9icmlkZ2VfZGV0ZWN0KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsIHN0
+cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IpCj4+PiAgICB7Cj4+PiArcHJpbnRrKCItLS0+
+ICVzXG4iLCBfX2Z1bmNfXyk7Cj4+PiAgICAgICAgICAgcmV0dXJuIGRpc3BsYXlfY29ubmVjdG9y
+X2RldGVjdChicmlkZ2UpOwo+Pj4gICAgfQo+Pj4gICAgCj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL2Rpc3BsYXkvZHJtX2JyaWRnZV9jb25uZWN0b3IuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9kaXNwbGF5L2RybV9icmlkZ2VfY29ubmVjdG9yLmMKPj4+IGluZGV4IDY0OTk2OWZjYTE0MTMu
+Ljg4MTZkODM3YzlhNzcgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZGlzcGxheS9k
+cm1fYnJpZGdlX2Nvbm5lY3Rvci5jCj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZGlzcGxheS9k
+cm1fYnJpZGdlX2Nvbm5lY3Rvci5jCj4+PiBAQCAtMjE4LDYgKzIxOCw3IEBAIGRybV9icmlkZ2Vf
+Y29ubmVjdG9yX2RldGVjdChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLCBib29sIGZv
+cmNlKQo+Pj4gICAgICAgICAgIGVudW0gZHJtX2Nvbm5lY3Rvcl9zdGF0dXMgc3RhdHVzOwo+Pj4g
+ICAgCj4+PiAgICAgICAgICAgaWYgKGRldGVjdCkgewo+Pj4gK3ByaW50aygiLS0tPiAlczogZGV0
+ZWN0XG4iLCBfX2Z1bmNfXyk7Cj4+PiAgICAgICAgICAgICAgICAgICBzdGF0dXMgPSBkZXRlY3Qt
+PmZ1bmNzLT5kZXRlY3QoZGV0ZWN0LCBjb25uZWN0b3IpOwo+Pj4gICAgCj4+PiAgICAgICAgICAg
+ICAgICAgICBpZiAoaGRtaSkKPj4+Cj4+Pgo+Pj4KPj4+Cj4+Pgo+Pgo+Pgo+IAo+IAo+IAo+IAo+
+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
