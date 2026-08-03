@@ -4,44 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A631EC55179
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 13:30:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA5A0C55184
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 13:40:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nEStfkfMRBuYoYUICXGpuVleQeAgziG0uZcZTl7GIsA=; b=BAsaS6sR51Xivq
-	XsDZQI4tz/rDow4Ua9k3DvFaIN+Vk8C67UaMqPqUWabeP85MqUpTF+CRVZHhk67Lslnu6Sltp7bpC
-	2I8por0tL84aKCZADQiEvKO8N33VTABSyStiyIowkUDt72OV34xCHUkpx2XPHHMwZjBXZBF54Q/uA
-	k4YHcfI8k4MzTTWWeaDFB2NdG0nEK26ZM8J4+HjcHI9vDbSryx5VLht9EkqMoyra+3cJVE4hvZQNQ
-	bVFfFU2zkjfGbO1QLb8AxLJ6NEnYJrESd7hCFeXsJeU7hZUXgzs1KMXYcDF3Q1HzyQTZlgVyT3KnY
-	ZogNLZjEqMPdx5s0jFfQ==;
+	List-Owner; bh=Mq7yXY6nOqeKx92h6gB1ShmUmrIt/43nubiHWELucTU=; b=fbvLHl0a6c6pBI
+	TnDLhT5yJUALofe1rmcTA7ik0RkZeK2FjMu2QxaRKBfMSFIl0xwRH30T4+9v4p8JEPpbauIu5zyP5
+	vS0u5Hcy3V72k4CoOuvI8qbioxgyDvMzOOao005/ZKg7xfbiMWYUdZ2feUb4bX4zaYWtCLusvHDOK
+	yRypjmG8mP3dpHDMTU7UtqcPumQGblNha9hNV4bYS/PW+IyiXvBpBEf7FGPxt5AMfc0i+LEKhTu0e
+	GH46QyKtWD/5PGnXXcc72ctTu5JIid/quqRE17e/HLQ0QZxtl++jGKO0P1M4bE5Xn2wHGnFx/gowB
+	UKmded5Z6COVEnad2vpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqskg-0000000HAKE-3I5O;
-	Mon, 03 Aug 2026 13:30:46 +0000
+	id 1wqsuH-0000000HBHV-2Y4c;
+	Mon, 03 Aug 2026 13:40:41 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqske-0000000HAJK-18C8;
-	Mon, 03 Aug 2026 13:30:45 +0000
+	id 1wqsuE-0000000HBH0-3x7Z;
+	Mon, 03 Aug 2026 13:40:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=s0Nn8hdIgXmWzmhcG99Oh2fhpDgLrw7IOOOOFJwYqeY=; b=DFsKnY+gVEOvTe+do19wn9YHgk
-	jRtADcklHMwQYphjMhoDQN3im0vzjhJqZ+cZcdQM2GvtsYAPRMsh0XeCmjR+RO9EVWjPvFEyPxI3L
-	mV4GVOWX7lPAQ81k17dC9bRNcl+WjRpzx1/y0tvhwiSHxj9sDpNY3vCz1EMcEb8ZaSwc=;
+	bh=yZ42Be3CAijIs1MNORT4K5KkOylX/+uxMp3PqspuDn4=; b=Bd+qoP4il5TLPBh6QS/4b9X0nU
+	HnNfIDbxqVMYSSvKsJHB/wilXUpTzT6MId6khGbs6GirY44D6Qjk9++TBwKdtRzMvb7AQW7BKn6n/
+	0W7y7583P09MTfuHmqsXdBgidD14JrlWZ8EeJhIq/OjcdrBdD67k0INqZLW+jjj5cbcY=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1wqskO-00FjGe-HJ; Mon, 03 Aug 2026 15:30:28 +0200
-Date: Mon, 3 Aug 2026 15:30:28 +0200
+	id 1wqstf-00FjM3-02; Mon, 03 Aug 2026 15:40:03 +0200
+Date: Mon, 3 Aug 2026 15:40:02 +0200
 From: Andrew Lunn <andrew@lunn.ch>
-To: Andre Przywara <andre.przywara@arm.com>
-Cc: James Hilliard <james.hilliard1@gmail.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
+To: James Hilliard <james.hilliard1@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
@@ -50,6 +49,7 @@ Cc: James Hilliard <james.hilliard1@gmail.com>,
 	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
 	Jernej Skrabec <jernej.skrabec@gmail.com>,
 	Samuel Holland <samuel@sholland.org>,
+	Andre Przywara <andre.przywara@arm.com>,
 	Richard Genoud <richard.genoud@bootlin.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
@@ -65,16 +65,16 @@ Cc: James Hilliard <james.hilliard1@gmail.com>,
 	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
 	linux-stm32@st-md-mailman.stormreply.com, mfd@lists.linux.dev,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 00/21] net: phy: add X-Powers AC200/AC300 EPHY support
-Message-ID: <19241d58-1a69-4776-8d91-012de9fc421c@lunn.ch>
+Subject: Re: [PATCH 07/21] dt-bindings: net: x-powers: add AC200 EPHY control
+Message-ID: <2979768f-4f83-4f28-ace3-826f4b4c6844@lunn.ch>
 References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
- <aaec8809-8218-4412-a60d-931406dbf287@arm.com>
+ <20260802-submit-acx00-of-dynamic-v1-v1-7-0a53cd9e21cc@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aaec8809-8218-4412-a60d-931406dbf287@arm.com>
+In-Reply-To: <20260802-submit-acx00-of-dynamic-v1-v1-7-0a53cd9e21cc@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_063044_312141_F8E5506E 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20260803_064039_002355_2EBC699A 
+X-CRM114-Status: UNSURE (   8.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,16 +92,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Just to bring that shallow discussion we had on IRC to the list: I wonder if
-> this is the right solution? Alternatively I was wondering if just patching
-> the DT in U-Boot would simplify things, and also help other DT users like
-> *BSD or U-Boot (proper) itself, to not boil the ocean, but just allowing
-> them to follow a standard DT description.
+> +  phy-mode:
+> +    enum:
+> +      - mii
+> +      - rmii
 
-I've not looked into the MDIO bus probing changes in detail yet, but
-that was also what i was thinking.
+Despite the phy- bit, phy-mode is a MAC property, it defines the MII
+the MAC uses. I would not expect to see this anywhere else.
 
-     Andrew
+The PHY driver is told what MII to use, phydev->interface, which takes
+the values PHY_INTERFACE_MODE_RMII, PHY_INTERFACE_MODE_MII etc.
+
+Please explain why you need this here, why is the MAC nodes phy-mode
+property not sufficient.
+
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
