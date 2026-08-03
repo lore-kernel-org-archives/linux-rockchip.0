@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A30EC55162
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 07:02:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8637C55162
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 07:07:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qXOq14JddVgy2b+GiIwFbr9V2F0wEaQwwningkui91A=; b=JLrB9VyFuCF7vr
-	yytYH7Duz8cz0Xei7oWBigI4cEgMCCp0Ju9N3CJJqBNPlONBeHvKvJpMlvIhzubuKwsW8NIh2bpOZ
-	2xZhlA8VXDyPosNXG50mpY0cgkb/xY1UCR5k+BS+xD/YG0vWiGQgK4Op0+1WUyoJhsO9DCMk+vWG1
-	LojODj8JgtTMCv8sOuEvHPsVFlAGSqZim/KQpaeZC6Y21Yz1I1E8Z2N43eAAoLOXZpaSHHZXyXg+g
-	5tSLNH8q9fLPx0qbXXwlQ7idyPEWS+l9hkl2ZkNTynaQSSJ/RgSggsfLvB7VsCZZ5xwONJntHM5L/
-	QR4z6VPb6rAryAyAyxCg==;
+	List-Owner; bh=PrA460NRuy837GNHny9OI5Hd/eRdzAnCO0lUqvp63XE=; b=F3U39LCOLFC/xL
+	rHcQkRaNot2qFL4iWiO6+N25/4yeSSZ1HlLYMpr+gxfXC4GWdWc0hUF1nhVPR010Dee4LG/yC81LY
+	scVA9wIaPDCUmNJ68jqA8frxxp2Q+6iwHwegTGDtTjzuMalXdrc72NONQ2bI9B4g1o2Dl9Q/OEKoo
+	vfaA6d9GT2dWxJu0HtZwWFNdAuZk3fntUf99KGmKdRo2FLUUvfAwd6sn8wqSqtDzFaoM2uzjfO8O4
+	veg6yE6R+67btC5i4rQMxRgaOqSMPKhhkFrcxbKkMizYFmB7kFGHOvSN5N1GQoxFNb9undI80KYE5
+	1V3L3C39+z0dttVxm6eA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqmgW-0000000GU2H-2hlm;
-	Mon, 03 Aug 2026 07:02:04 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wqmlq-0000000GUey-17Wv;
+	Mon, 03 Aug 2026 07:07:34 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqmgU-0000000GU1W-2YJY;
-	Mon, 03 Aug 2026 07:02:02 +0000
+	id 1wqmlo-0000000GUeT-1CUs;
+	Mon, 03 Aug 2026 07:07:32 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E7B8160A62;
-	Mon,  3 Aug 2026 07:02:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 180691F000E9;
-	Mon,  3 Aug 2026 07:01:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 59CBE600FF;
+	Mon,  3 Aug 2026 07:07:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04ADD1F000E9;
+	Mon,  3 Aug 2026 07:07:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785740520;
-	bh=mXNkCmOUo1oKrupKXDyg7SQqpOCYFMJaA9C9xGO5N/0=;
+	s=k20260515; t=1785740851;
+	bh=ypK3jGgUKK3dY6+nlQbF3+GlhwH+CAiV8k4/9ULVqiU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=h3lJwpv3br2UpB/4mMn2G4DE3xFXYtrZj4Wgw+WpJZJYSpWkkZUxX3HVi2TQUZdC9
-	 3b7tenh8+5g2f3RSFteeCXagHz9EqL1re/bXc33MNEmyQpxAMFDf/ZZ8IY8VVBKOXe
-	 HtiMsxA6aH/R6qXl3mvIaDI8JaBF5biqTjvncEv/d8lmSMtmLKLAFhGf0am701h6ud
-	 m8eZYnaKfN/qjVaLOdxI3Qvy7qHPaVZhc2Vjzq0eGF/BER2HQa/h6R9WJB3v6IMEro
-	 4TVLYhPyogV8POeobe02Vdww3e8QqnTQPIc2oWJGilSjYEaFJZJC2lqXcSWJphxU1V
-	 4W7CUG88WDO2Q==
-Message-ID: <fe4572df-98d2-44a6-818c-1c2d6ca2bba7@kernel.org>
-Date: Mon, 3 Aug 2026 09:01:48 +0200
+	b=fSk4kBSvaHyUrEitakkNQHlGnB82L4TJT+1rk9vp34NQQZ0qMp9B89gDSj8OJvEtb
+	 dCO3xbE9eecQiQ7+TSo/UdR7nQA0EKT0UCQSfUNYnpsEemtUQpJd4Li+6T82ngHPXh
+	 umf8HtssFG8L6qf5IA0jxHqYwSZErY+bvigzSPT+ChqxwQy61yd4rn7pcypFd3m7ik
+	 M+MDUJRrVNrGVnJvSDtc8+WL3oGoQ/RRTfchN38yz9Gj5bm6RylARGPrlGnoXUcwuG
+	 G8Lucm+OT9ai+k4SEEyIWwZpz2z3oJqCyVYsXfjsmOlN3iOJn11gkXDRKAF8og4/dZ
+	 hKFzNiUQWe5iA==
+Message-ID: <f2cc3c90-060f-40c1-a55e-e2ed91e65487@kernel.org>
+Date: Mon, 3 Aug 2026 09:07:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/21] arm64: dts: allwinner: h616: add EMAC1 controller
+Subject: Re: [PATCH 08/21] dt-bindings: mfd: x-powers: add AC200
 To: James Hilliard <james.hilliard1@gmail.com>,
  Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
  <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
@@ -69,7 +69,7 @@ Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
  mfd@lists.linux.dev, linux-rockchip@lists.infradead.org
 References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
- <20260802-submit-acx00-of-dynamic-v1-v1-3-0a53cd9e21cc@gmail.com>
+ <20260802-submit-acx00-of-dynamic-v1-v1-8-0a53cd9e21cc@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -115,7 +115,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
  n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
  qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
-In-Reply-To: <20260802-submit-acx00-of-dynamic-v1-v1-3-0a53cd9e21cc@gmail.com>
+In-Reply-To: <20260802-submit-acx00-of-dynamic-v1-v1-8-0a53cd9e21cc@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,26 +133,83 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 03/08/2026 07:14, James Hilliard wrote:
-> From: Richard Genoud <richard.genoud@bootlin.com>
-> 
-> The H616 has a secondary EMAC controller that supports only RMII at
-> 10/100 Mbps. It connects through PA0-PA9 to an EPHY in a companion
-> AC200 or AC300 package.
-> 
-> Add the EMAC1 controller and RMII pin group. Leave the controller
-> disabled for boards to enable when the companion Ethernet hardware
-> is present.
-> 
-> Signed-off-by: Richard Genoud <richard.genoud@bootlin.com>
-> Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
-> ---
+> The AC200 is an I2C-controlled mixed-signal companion IC containing
+> audio, video, RTC and Fast Ethernet PHY functions.
 
-You order patches quite odd. DTS cannot be in the middle of drivers,
-because it suggests dependency.
+This fails when applied, because you did not explain the
+dependencies/merging of this patchset.
 
-You cannot have such dependency.
+This is THE MOST important information of cover letter. The first thing
+to explain.
 
-Please read submitting patches in DT dir.
+> 
+> Describe the parent device, its input clock, required function supplies,
+> the optional SID bandgap calibration cell used by the vendor initialization
+> sequence, and its optional Ethernet PHY control child. Document the 24 and
+> 27 MHz rates encoded by the public EPHY clock selector.
+> 
+
+...
+
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - ac-ldoin-supply
+> +  - ephy-vcc-supply
+> +  - rtc-vcc-supply
+> +  - tv-vcc-supply
+> +
+> +dependencies:
+> +  interrupts: [ interrupt-controller ]
+> +  interrupt-controller: [ '#interrupt-cells', interrupts ]
+> +  '#interrupt-cells': [ interrupt-controller ]
+> +  nvmem-cells: [ nvmem-cell-names ]
+> +  nvmem-cell-names: [ nvmem-cells ]
+
+Why do you need all these dependencies? What are you trying to express?
+
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        mixed-signal@10 {
+
+...
+
+> +...
+> diff --git a/include/dt-bindings/mfd/x-powers,ac200.h b/include/dt-bindings/mfd/x-powers,ac200.h
+> new file mode 100644
+> index 000000000000..cc59e2ab4912
+> --- /dev/null
+> +++ b/include/dt-bindings/mfd/x-powers,ac200.h
+> @@ -0,0 +1,13 @@
+> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+> +/*
+> + * Interrupt numbers of the X-Powers AC200 interrupt controller.
+> + */
+> +
+> +#ifndef _DT_BINDINGS_MFD_X_POWERS_AC200_H
+> +#define _DT_BINDINGS_MFD_X_POWERS_AC200_H
+> +
+> +#define AC200_IRQ_TVE			0
+> +#define AC200_IRQ_EPHY			1
+> +#define AC200_IRQ_RTC			2
+
+Hardware constants are not really bindings, even though you use them in
+the driver.
+
+> +
+> +#endif /* _DT_BINDINGS_MFD_X_POWERS_AC200_H */
+> 
+
 
 Best regards,
 Krzysztof
