@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1E08C55182
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 14:10:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 359FFC55179
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 14:10:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=W7pX3yIdxYm1GQWYQSDuDFaercvKyDRsijFhvkZD3wg=; b=J2YkkwHZj47T4V
-	qj45csFeMXKCSqsIFofjlZS54wnflzZeYAdUS9l3FluqY4Oe5F6WUq8fY0pNfbwS0yUBKgNnAr5nL
-	F2ZZdy56ZTxKi0nwg5V18tFzIMcEJvS9iiLmpd/I1SDuVgFaLpP+Pg6ENji+/h/YZ3SQnFahKhRyH
-	L1CJsKrGsWuE9cISscYtp5LCQPnN/6LfMTQiGKT0fqtS57ItscUHrUGbwZcEnpwN0nCh4QahCT4be
-	R92kEE5uXx12GKSBoUmQFiwsIwazKmkJMQo50pZT+0OOM3vdKwTunFlRgmgTTVW27rnIuAtNc0dW6
-	ZZTkRmH2VXv3vATRxH2w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DtBvlzbT2CQebdM0S6AUin4GjEtBeUltUEcDO0JEkME=; b=DeX37BJLaAV4GW
+	cxd3CLLQRHOPOJ0rDML/n0XpgiNI8USpR/f1eb/0tzHCX0ACD+sS505Wk1444Nby7d4mPuwSVfImq
+	R03imD+ns1qk7uk8UAJiwGsP426n0GOpVFloi1hGsgVTr64gv9xqhwNK2k/TEFxwwFWLh9KQkJhsy
+	lAjhrG11m6FXhlJrxOtt3JuEKnBN0VXKeemf7muSjAW1IF+1aHjJUQF3sVJB0aW76rw/1hTM4GsFi
+	HyfTJ+ZCHiC9glp0aS/PSZJDc+IVWujy/BuLuhBuXcnwqIpwuwmvu54ku6xFdFHQahEnLKw39rDVm
+	FrvG/mNOK1CBrv4rImow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqtNG-0000000HIhT-3Ngb;
-	Mon, 03 Aug 2026 14:10:38 +0000
-Received: from mail-oa1-x33.google.com ([2001:4860:4864:20::33])
+	id 1wqtNJ-0000000HIjB-3cjl;
+	Mon, 03 Aug 2026 14:10:41 +0000
+Received: from mail-oo1-xc35.google.com ([2607:f8b0:4864:20::c35])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqtNE-0000000HIgZ-0oDF
+	id 1wqtNH-0000000HIhX-35XL
 	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Aug 2026 14:10:37 +0000
-Received: by mail-oa1-x33.google.com with SMTP id 586e51a60fabf-455ca262ccbso2107549fac.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 03 Aug 2026 07:10:35 -0700 (PDT)
+	Mon, 03 Aug 2026 14:10:41 +0000
+Received: by mail-oo1-xc35.google.com with SMTP id 006d021491bc7-6acbbcd3798so2071113eaf.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 03 Aug 2026 07:10:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1785766234; x=1786371034; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Dkd3Vdy/c11kzXWk975o6VbE77tcIPNyghUoE1Wo9PI=;
-        b=Rxookr7ixo4DALpuHjpc2vRcn6LMFkz18g/y1egC/S6VMjBKS/4tR895G0ISpo1T3x
-         MZ1d2PxESnM5ZehWYm+SeriF3ZoB1veQ3CoTOFtt1uZxYPjrBY3oCwiajfgKKvvd94Q5
-         nYiwwMvW4lANHURwNlUyu3iF00xDIEcxUkQfo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785766234; x=1786371034;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1785766238; x=1786371038; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Dkd3Vdy/c11kzXWk975o6VbE77tcIPNyghUoE1Wo9PI=;
-        b=T4sem9GLO0Fug4nammjwY1rV/PtrgjBqat9oneWEGWQ4E4as9Spdm1BvHm1J34jX/3
-         dwy2A/rB3bLYO5pMLpgQreYg3KYMxGLtSE/k6TsnETPFmDrl+2BNO24fAx/DNQkjxjzl
-         RwnwTXHfNAGvRW4hcPbIxtNU/vYrRzQWiKyBZO3/ELoAqtvqosd9jtC9c8c4318r78Ki
-         qPe1lbVp34BvSWGpWeVFEgKEp7+2GO1HK/giVQFKRhCPG5eMtGLQ4112PcJ2DPSv3QPv
-         KcWS8trj70pJOAbkoPWv5IATaiqluFAeu41OMWoLqdfIB/s2iDj5HQX2v4+X1zCcy1Ho
-         WZNQ==
-X-Forwarded-Encrypted: i=1; AHgh+RqxNUbakNMRnhuCcDlY53/zOjoVj/4E5Mebug6l5EyCDpAHT7fz/W6Qo8re8qTL/ozVq28oGPVqnEfgByCC7Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzjFsCFXp6tSygzYlE13i/09V9CnoOjIZDH0xEgNxLdL9tL/hxO
-	dHagmjNbkg3FgudZnN9h9qQcSkyqVEYzBO00z8e2RAH4GYEWmkOuawB/BEOi9YWpWA==
-X-Gm-Gg: AR+sD10E+Ca7CFJ4VRbnGmZ1NgoVjh+sZKV0oYwH5rui1aOltPQFKMUR6FbMB/kSeM/
-	kxXfNgo5JVKIsDinwXk/vAygXfpaw5Mwq08VjmRAHAZpnKC/Geg19/0oG59cgGTjL969pAe3Pik
-	x2GLDBtwOOnT+ilMw8mXodboL260N4SUt8SppLN6Zp/hN65uOye0TXRJVG4WdH0B/R9dQ0ecTBh
-	8F1A7gGDfkc3T+fgBdk5LT9JuH/VmM6ENahUFO1EWn5OPukPaCR9JGWTXfNGLWhCxoZHadIToBR
-	WfHLSrArOChXYU8cu5ABO2tOni2F6tg4e0yu4KOtRl51J2Gxwwi6IKD1wEnoMivSj8zBr+2K+1c
-	XyezHTaShNwVg+k3j18xysI4VaDL1KvjFviPbxxf81g68uS+oBe8h69ce8CLkxBf4K2Ne1jBzNy
-	GRP0Usa0WUpAm2gW+frDVHwJsp4MiWRWQjol1m0Zvtdw/6jr4paCCVK5A=
-X-Received: by 2002:a05:6820:c3d5:b0:6a3:7895:7f30 with SMTP id 006d021491bc7-6ae4358f82cmr10811016eaf.29.1785766234232;
-        Mon, 03 Aug 2026 07:10:34 -0700 (PDT)
+        bh=zn8Ob/lYJrtvb6nSm3sGvGJOnXJvrAS/9UT9vBl2poM=;
+        b=PLaM+gN7FvbUkrnWIQkjPejKcgVS1XMn2B4KNH7oNVRdUCDMhaC/HWO2/uniJvZLBt
+         Z+/6v5/KRF88uyhz/UEvmZYcneNikdkDGG7ANhylX+PFN7Fnx6teaE009R5z8/VsiC23
+         qRccOSp6gvCIpNlowWQ+2ibHxjwtzQ9XbNwwQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785766238; x=1786371038;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=zn8Ob/lYJrtvb6nSm3sGvGJOnXJvrAS/9UT9vBl2poM=;
+        b=muyB4lM9SaCZvOUnDjhxfCYVbmRQNoWsXeYaz9n/+GWX3EDRTlWww9C5nOC1rZF2mM
+         OrxLaY9K9hYtCqfcJhUIcmmWipKRyQpRhA9aXCX7OOyQ7+5NqBPE1HLyCsTuSUcVMLYr
+         Uy2ZdQA7zv106ZJ4TG2qxj8jSMJP6k5KlDiH0kN7CmTrb34wP6vTkDYCtzWW4242vLeN
+         wmyeLrwAly0EIMKPeF9o9k/OJi+nEEsKAyeQIYpAL62fcs9B9o6VKWA3ufcm1lDyq9wf
+         6ypNGOtNC9q0cuxozkHwCkzE8V21ZbHNPiAiIA6eb4TeNIYOA4HjHEcqztrFRRSIxHqT
+         9uZQ==
+X-Forwarded-Encrypted: i=1; AHgh+RpCJwPqUaW0Nnq40+jetmL2TlhFxq4SKXi1bnQKBq37t8CYyHJNuu5eCgzIcbhyUuvQdbQ89fJ/ucDyGeppCQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxPc5El4z5paKZdoZ7qAXbYrj9+ROFNY6lwbI23IamSkQB6LeIb
+	RIulZluCJHaVDWM0BmsobUcvcqFykojLnYAOt0XoSM709hXEMZ8kdrT9U2XNwnw4Tg==
+X-Gm-Gg: AR+sD103toZB70v/iywPZ57zBs30HxFQH+Wfvr/FkOsmOju7RIlIl4vrzKWHOYMs3RD
+	a27MRCd/gNGpc7dBuC2+6rOr+PCQi26GTwu1ipzJrBEjoR7mqC1Z29eVMXUm8eHgi0DgVF5ZKJN
+	03smloWB3jUKdN7Yf75UMTRTc0NxYXFXU9JoNUMwGY01HMtPuuEDp6Xw10hRhVRNKvS+rJrTsgV
+	Yh82SGq9oga0imHfW94GS2nmfecTJjKhV3FDQ1XEMD/rqWw7/U21dv9F1xjyf8OHdLHrO9Ljroa
+	sdvLotqhxazJXK1ATw1dJtEm/tdPBbJCQH3Hs4Y+i0Xw3hRWGo7hmiFlZhszeVi9MEzIZTSgajC
+	g+dojijBX8nIKYEr4qriJEc2/9bjsGkZ//te2LVUpuowzeatXU0rYM47VHfnN/wXoKcsN72yg1k
+	d0sCoJDUc2WZL16CnSj9A4N3x6dYXLl1F90GG/o+ySp2wu213VmlclRkw=
+X-Received: by 2002:a05:6820:4a08:b0:6a1:5b63:2ae2 with SMTP id 006d021491bc7-6ae4334a975mr12207278eaf.29.1785766238536;
+        Mon, 03 Aug 2026 07:10:38 -0700 (PDT)
 Received: from chromium.org ([174.51.25.52])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6ae3a0c9162sm6526695eaf.11.2026.08.03.07.10.32
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6ae3a0c9162sm6526695eaf.11.2026.08.03.07.10.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Aug 2026 07:10:33 -0700 (PDT)
+        Mon, 03 Aug 2026 07:10:37 -0700 (PDT)
 From: Simon Glass <sjg@chromium.org>
 To: Linus Walleij <linusw@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -74,18 +75,19 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	Vladislav Leonov <vlad@zlab.su>,
 	Jonas Karlman <jonas@kwiboo.se>,
 	Simon Glass <sjg@chromium.org>,
-	Fabio Estevam <festevam@nabladev.com>,
 	Jeffy Chen <jeffy.chen@rock-chips.com>,
 	huang lin <hl@rock-chips.com>,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 0/2] pinctrl: rockchip: Two fixes for latent driver bugs
-Date: Mon,  3 Aug 2026 08:10:22 -0600
-Message-ID: <20260803141028.710706-1-sjg@chromium.org>
+Subject: [PATCH 1/2] pinctrl: rockchip: Reset the pin count when recalculating SoC data
+Date: Mon,  3 Aug 2026 08:10:23 -0600
+Message-ID: <20260803081024.1.72f72067ea890a9eac79d63bf655738bec374dfd@changeid>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260803141028.710706-1-sjg@chromium.org>
+References: <20260803141028.710706-1-sjg@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_071036_228591_C785F942 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20260803_071039_798231_DC4E226E 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +104,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series contains two small fixes for pre-existing issues in the
-Rockchip pinctrl driver, found by the sashiko AI review of my RV1106
-series.
+rockchip_pinctrl_get_soc_data() mutates the static per-SoC data. The
+iomux and drive offsets are recalculated idempotently, since a rerun
+anchors at the values calculated before, but the total pin count only
+accumulates: each run adds every bank's pins again. When the probe is
+deferred and runs a second time, nr_pins doubles and every bank's
+pin_base shifts, so later pin lookups resolve to the wrong bank and
+the wrong registers.
 
-The first makes the SoC-data calculation safe when the probe runs
-more than once due to a probe deferral: the pin count currently
-accumulates across runs, shifting every bank's pin base. The second
-aligns the RV1103B drive-type override in the get path with the set
-path, which restricts it to bank 2.
+Reset the pin count at the start of the calculation, so that a rerun
+produces the same values.
 
-The first fix is tested on a Luckfox Pico Mini B by forcing the
-probe to defer once: without the fix the second probe doubles the
-pin count and no GPIO bank comes up, while with it the values are
-recalculated identically and all banks work. The second is a
-behavioural no-op until drive-strength decoding is added to the get
-path, so it is verified by inspection against the set path.
+This is verified on a Luckfox Pico Mini B (RV1103, with the pending
+RV1106 series applied) by forcing the probe to defer once: without
+this patch the second probe calculates nr_pins=304 instead of 152 and
+no GPIO bank comes up; with it the recalculation matches the first
+run and all banks work.
 
-
-Simon Glass (2):
-  pinctrl: rockchip: Reset the pin count when recalculating SoC data
-  pinctrl: rockchip: Restrict the RV1103B 2-bit drive type to bank 2
-
- drivers/pinctrl/pinctrl-rockchip.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+Fixes: d3e5116119bd ("pinctrl: add pinctrl driver for Rockchip SoCs")
+Link: https://sashiko.dev/#/patchset/20260729132736.3807082-1-sjg@chromium.org?part=4
+Assisted-by: Claude:claude-opus-5
+Signed-off-by: Simon Glass <sjg@chromium.org>
 
 ---
-base-commit: fc02acf6ac0ccde0c805c2daa9148683cdd01ba8
-branch: rkpinfix
 
+ drivers/pinctrl/pinctrl-rockchip.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 7e0fcd45fd26..8bfc7ab5de15 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -4296,6 +4296,16 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
+ 	pmu_offs = ctrl->pmu_mux_offset;
+ 	drv_pmu_offs = ctrl->pmu_drv_offset;
+ 	drv_grf_offs = ctrl->grf_drv_offset;
++
++	/*
++	 * This function mutates the static per-SoC data. Most of it is
++	 * idempotent: recalculated iomux and drv offsets anchor at the
++	 * values calculated by a previous run. The pin count is not, so
++	 * reset it here; otherwise it accumulates when the probe runs
++	 * again after a probe deferral, shifting every bank's pin_base.
++	 */
++	ctrl->nr_pins = 0;
++
+ 	bank = ctrl->pin_banks;
+ 	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
+ 		int bank_pins = 0;
 -- 
 2.43.0
 
