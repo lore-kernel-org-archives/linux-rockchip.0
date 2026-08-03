@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03FF2C55838
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 18:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF02FC55822
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 18:16:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G0Iel5iDiPCZuQ34IwEaRTAE5Oc+hVJoz8T+9tmRo2E=; b=zRiyJHCm2VSdik
-	NDXAS7fx6saGMk3Te6FuDLf63zKqbpIuh3/Du7pa/LOUzFyHc4jgGPpMTIGrSBDrjuzyqjZUGbGUi
-	tRqTF/DoeEhwImiJflHzM4PXEFTv2Xr/RUoazfgOxFWyeXNndhU/xLHrRcqc+OU2HErXQnN9rrv63
-	ovWveM4V4utcZy4WUfAZDrbBMTS1HfByaXvqHA+Q9h5GstUmIhaFgIjoeQm3pouwJUXuZiYTX83kb
-	xvyk27/P5b+fMbFVSGxAigKL3iuFUsV7Xbvtwfsv7Tz+C5lQN4HPhke10M3/NTmXZN6ictnthPvZu
-	5kRHbJlSA5UbnowqlVVA==;
+	List-Owner; bh=afB1ip40R1OwtVWcMIcnK7Iwp57Tsb/8wpSqo77sVi4=; b=Y23YkPcSDc3nms
+	tLGHhBrR985iybgl00z1lHERtpZk9rF/yVBjmJo2qMSzjHgw4ZDUz29yKeabXrhZKlQp82ErD0sCS
+	AatlPOp+YSFhr/cu2q4nS3c1/CGiChDtv5sPahv66vFcTu/K7oRZnRPoZSSfu8KkV/iclW/+DhHSV
+	Nh8a1LXYYcCsR1Jt0K9IiFtrYyHqFYth+McYo5h5iJU7n4oCuu1rAeCbegd9M1RUcLm55IOPD7Zvs
+	hsmXBJPmjvKb3RGONiFmoBBvVJQ1KY+7U7w033ODYPKxJHtr73VJ1G3e6WPHurOFjezOc5jSxFcUk
+	4Z4nBrg4yDisdMHYGHbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqx9o-00000000LdD-2mOw;
-	Mon, 03 Aug 2026 18:13:00 +0000
-Received: from ms.puri.sm ([135.181.196.210])
+	id 1wqxD5-00000000MKa-12bm;
+	Mon, 03 Aug 2026 18:16:23 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqx9k-00000000Lao-42Md;
-	Mon, 03 Aug 2026 18:12:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=puri.sm; s=smtp2;
-	t=1785780772; bh=HNTPaYDGutREzLTVPWESt82E01iFz+jQ39UPafEurv0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=J4qIa0M3q9Mja66JJpMWCm3Si2k+eQxKBPYsxWlsjhzfhFhyNWkHOce9T4N2rqDaA
-	 kEmxNLjWJMeQEHDhJ5UGXkpeibsTQ5FNwkQR0x7UnO77zXdxXGMA00/OFQkd/fCgSc
-	 6gZulAcTEPaP0/4e+WFabqGthdJvYdZUuaEdjBfYKwQQ3V4pyKcPDqIGq8SVIBvdNT
-	 XG4o2BAoNJclC5KD2v8WfgpNg7zAq0p3jURjCMHKPQ58y8ibkwVhykQHlXlncggeTq
-	 mDrVCDZBH3C/DsnWTYfXBbi4VpA/j86hwwBXQPHp1E0qCCB5XIeh536HehZjTFh+3v
-	 36zRINnOxbN2Q==
-Received: from pliszka.localnet (79.184.66.106.ipv4.supernova.orange.pl [79.184.66.106])
-	by ms.puri.sm (Postfix) with ESMTPSA id A9F351F617;
-	Mon, 03 Aug 2026 11:12:47 -0700 (PDT)
-From: Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Ondrej Jirman <megi@xff.cz>,
- Olivier Benjamin <olivier.benjamin@bootlin.com>,
- Manuel Traut <manut@mecka.net>,
- Alexander Warnecke <awarnecke002@hotmail.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>,
- Martin Kepplinger <martin.kepplinger@puri.sm>,
- Shawn Guo <shawnguo@kernel.org>, david@ixit.cz
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- phone-devel@vger.kernel.org, imx@lists.linux.dev,
- David Heidelberg <david@ixit.cz>, stable@vger.kernel.org
-Subject: Re: [PATCH 4/4] arm64: dts: imx8mq-librem5: Dongwoon DW9714 coil requires
- higher voltage
-Date: Mon, 03 Aug 2026 20:12:44 +0200
-Message-ID: <yJywMSNTQGGZm3rbxd56Yw@puri.sm>
-In-Reply-To: <20260801-pp-pro-camera-v1-4-7b4d90788f9f@ixit.cz>
-References: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
- <20260801-pp-pro-camera-v1-4-7b4d90788f9f@ixit.cz>
+	id 1wqxD2-00000000MJi-1LeO
+	for linux-rockchip@lists.infradead.org;
+	Mon, 03 Aug 2026 18:16:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1785780979;
+ bh=48pATyxGPcKiHdKzUijPovZ+zH3w+9sc05TXmUj+Rdw=;
+ b=Zenc+w7igAH5rUgvp+Dn/oUyppn1gTmZSAMXJrL+mR+E/LkcZ7FbVOUTO1vIGIJ9ttoL7d/SF
+ M6Xv9Jkn8X09KIV/RY+V9AHwJt//czm+qwR0WtDsdx/KJN6yqFoYWCeJ74zk36mYx7GxzLdBeYW
+ 68MzGB7+75neL1VHhxYcUWeCJGCM23YgQhNtlZSa8oJMpU9j58FTsto50iF9GE+5wIuuZixIxWI
+ j8AMY3hXKJm8LZgGGIbvtyl+5epcNzu42emPTYfAebrwXd8lfokdJ1gCMffMq7Z3UjvGZ4TPA4y
+ PT48bhq46GU7/y7U3ATca0/cw31fvm4H7Rcm9p7e+Buw==
+X-Forward-Email-ID: 6a70daef13b6196e87497e5f
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.13.2
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <1e8da54f-ef87-4d31-9a0a-17c0ff66bee0@kwiboo.se>
+Date: Mon, 3 Aug 2026 20:16:11 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v2] arm64: dts: rockchip: H28K: release RTL8211F reset
+ before MDIO probing
+To: Zhyi <zyheihei_123@163.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Chukun Pan <amadeus@jmu.edu.cn>
+References: <20260803104646.26836-1-zyheihei_123@163.com>
+ <178577533421.26919.15449256732994709630.h28k-rfc-v2@163.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <178577533421.26919.15449256732994709630.h28k-rfc-v2@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_111257_176366_49494137 
-X-CRM114-Status: GOOD (  15.43  )
+X-CRM114-CacheID: sfid-20260803_111620_680407_0F65ECC9 
+X-CRM114-Status: GOOD (  26.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,45 +80,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gc29ib3RhLCAxIHNpZXJwbmlhIDIwMjYgMDI6MzU6MjMgY3phcyDFm3JvZGtvd29ldXJvcGVq
-c2tpIGxldG5pIERhdmlkIApIZWlkZWxiZXJnIHZpYSBCNCBSZWxheSB3cm90ZToKPiBGcm9tOiBE
-YXZpZCBIZWlkZWxiZXJnIDxkYXZpZEBpeGl0LmN6Pgo+IAo+IEJ5IGRhdGFzaGVldCB0aGUgVkRE
-IChpbi1rZXJuZWwgbmFtZWQgdmNjKSByYW5nZSBpcyBiZXR3ZWVuIDIuMyB0byA0LjMgVi4KPiBV
-c3VhbGx5IGl0J3MgYXJvdW5kIDIuOCBWLiBIZXJlIGl0IG1hdGNoZXMgdGhlIHJlZ192Y2FtXzJ2
-OC4KCkl0IGRvZXNuJ3QgLSBWQ0FNXzJWOCBpc24ndCBjb25uZWN0ZWQgdG8gRFc5NzE0IChhbmQg
-bmVpdGhlciBpcyBDU0lfMVY4KTsgClZDQU1fQUZWREQgaXMuCgo+IDEuOCBWIGhlcmUgaXMgbGlr
-ZWx5IHVzZWQgZm9yIGkyYyBsZXZlbCBzaGlmdGVyLgoKSSdtIG5vdCBzdXJlIHdoZXJlIHlvdSd2
-ZSBnb3QgYW4gSTJDIGxldmVsIHNoaWZ0ZXIgZnJvbSwgdGhlcmUncyBub25lIGludm9sdmVkIAp0
-aGVyZS4gQ1NJXzFWOCBpcyBwYXNzZWQgdG8gdGhlIHJlYXIgY2FtZXJhIG1vZHVsZSBhcyBET1ZE
-RCBhbmQgaXMgY29uc3VtZWQgYnkgClM1SzNMNiBhcyBWRERJTywgYW5kIGJvdGggUzVLM0w2IGFu
-ZCBEVzk3MTQgYXJlIGNvbm5lY3RlZCB0byBJMkM0X1NEQS8KSTJDNF9TQ0wsIG9wZXJhdGluZyBh
-dCB0aGUgMS44ViBsZXZlbCwgb25seSB0aG91Z2ggYW4gRU1JIGZpbHRlciAoRjcgaW4gdGhlIApz
-Y2hlbWF0aWMpLgoKPiAKPiBGaXhlczogZjAwZGYyYmRiNTEyICgiYXJtNjQ6IGR0czogaW14OG1x
-LWxpYnJlbTU6IGRlc2NyaWJlIHRoZSB2b2ljZSBjb2lsCj4gbW90b3IgZm9yIGZvY3VzIGNvbnRy
-b2wiKSBDYzogc3RhYmxlQHZnZXIua2VybmVsLm9yZwo+IFNpZ25lZC1vZmYtYnk6IERhdmlkIEhl
-aWRlbGJlcmcgPGRhdmlkQGl4aXQuY3o+Cj4gLS0tCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvZnJl
-ZXNjYWxlL2lteDhtcS1saWJyZW01LmR0c2kgfCAyICstCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
-c2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jv
-b3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEtbGlicmVtNS5kdHNpCj4gYi9hcmNoL2FybTY0L2Jvb3Qv
-ZHRzL2ZyZWVzY2FsZS9pbXg4bXEtbGlicmVtNS5kdHNpIGluZGV4Cj4gZjVkNTI5YzViYWYzZS4u
-NTgzY2JhMmQzYmViZiAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2Fs
-ZS9pbXg4bXEtbGlicmVtNS5kdHNpCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2Nh
-bGUvaW14OG1xLWxpYnJlbTUuZHRzaQo+IEBAIC0xMTY3LDE3ICsxMTY3LDE3IEBAICZpMmM0IHsK
-PiAgCXBpbmN0cmwtMSA9IDwmcGluY3RybF9pMmM0X2dwaW8+Owo+ICAJc2NsLWdwaW9zID0gPCZn
-cGlvNSAyMCAoR1BJT19BQ1RJVkVfSElHSCB8IEdQSU9fT1BFTl9EUkFJTik+Owo+ICAJc2RhLWdw
-aW9zID0gPCZncGlvNSAyMSAoR1BJT19BQ1RJVkVfSElHSCB8IEdQSU9fT1BFTl9EUkFJTik+Owo+
-ICAJc3RhdHVzID0gIm9rYXkiOwo+IAo+ICAJdmNtQGMgewo+ICAJCWNvbXBhdGlibGUgPSAiZG9u
-Z3dvb24sZHc5NzE0IjsKPiAgCQlyZWcgPSA8MHgwYz47Cj4gLQkJdmNjLXN1cHBseSA9IDwmcmVn
-X2NzaV8xdjg+Owo+ICsJCXZjYy1zdXBwbHkgPSA8JnJlZ192Y2FtXzJ2OD47Cj4gIAl9Owo+IAo+
-ICAJYmF0OiBmdWVsLWdhdWdlQDM2IHsKPiAgCQljb21wYXRpYmxlID0gIm1heGltLG1heDE3MDU1
-IjsKPiAgCQlyZWcgPSA8MHgzNj47Cj4gIAkJaW50ZXJydXB0LXBhcmVudCA9IDwmZ3BpbzM+Owo+
-ICAJCWludGVycnVwdHMgPSA8MjAgSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiAgCQlwaW5jdHJsLW5h
-bWVzID0gImRlZmF1bHQiOwoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Zhyi,
+
+On 8/3/2026 6:42 PM, Zhyi wrote:
+> arm64: dts: rockchip: H28K: release RTL8211F reset before MDIO probing
+> 
+> On the HINLINK H28K (RK3528), the RTL8211F reset line (gpio4 RK_PC2,
+> pin 146) is left unconfigured at power-on and reads low, holding the
+> PHY in reset. The PHY node's reset-gpios are only acted upon after the
+> PHY has been found on MDIO (fwnode_mdiobus_register_phy() reads the
+> PHY ID before it requests and toggles the reset GPIO), so the first
+> probe deadlocks and eth0 never gets a link:
+> 
+>     mdio_bus stmmac-0: MDIO device at address 1 is missing.
+>     rk_gmac-dwmac ffbe0000.ethernet eth0: cannot attach to PHY
+>     (error: -ENODEV)
+> 
+> Move the reset to the MDIO bus level: mdiobus_register() asserts and
+> releases the bus reset-gpios before scanning the bus, so the PHY is
+> out of reset when its ID is read. The PHY node no longer declares
+> reset-gpios for the same GPIO (a second consumer would be rejected
+> with -EBUSY).
+> 
+> Fixes: 145d4af4b204 ("arm64: dts: rockchip: Add HINLINK H28K")
+> Signed-off-by: Zhyi <zyheihei_123@163.com>
+> Assisted-by: Codex:gpt-5
+> ---
+> Changes in v2:
+> - The root-cause analysis and this fix were developed with the
+>   assistance of an AI coding assistant (Codex, GPT-5). The resulting
+>   DTS change is minimal and the hardware validation was done by a
+>   human on a stock HINLINK H28K board.
+> - This v2 supersedes the accidental duplicate of my v1 RFC sent from
+>   my Outlook address (Message-ID:
+>   SJ2PR04MB851017E50140354C2F5B3FF3B5D52@SJ2PR04MB8510.namprd04.prod.outlook.com);
+>   apologies for the duplicate.
+> - Use the standard MDIO bus reset properties (mdio.yaml reset-gpios,
+>   reset-delay-us, reset-post-delay-us) instead of the deprecated
+>   snps,reset-gpios on the MAC node, as suggested by Andrew Lunn.
+> - The PHY ID is not hardcoded, so boards populated with either the
+>   RTL8211F or the YT8531 work unchanged (as noted by Chukun Pan).
+> - Thanks to Andrew Lunn and Chukun Pan for the review feedback.
+> - Validated on the stock HINLINK H28K board with Linux 7.1.5:
+>   eth0 shows "PHY [stmmac-0:01] driver [RTL8211F Gigabit Ethernet]"
+>   and phy_id 0x001cc916; both eth0 (GMAC) and eth1 (PCIe RTL8111H)
+>   work.
+> - The U-Boot side (generic RK3528 DT does not configure the reset
+>   line) is out of scope for this DTS fix and may be addressed
+>   separately.
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts b/arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts
+> index 0ec50e9..7ba3fa4 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3528-hinlink-h28k.dts
+> @@ -200,14 +200,14 @@
+>  };
+>  
+>  &mdio1 {
+> +	reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+> +	reset-delay-us = <20000>;
+> +	reset-post-delay-us = <100000>;
+
+This is not really a correct description of the hardware. The GPIO4_C2
+pin is used for PHY reset, not to reset the MDIO bus. The device tree
+should describe hardware, not be used to workaround issues in software.
+Please see [1] for my prior analysis of this software issue.
+
+Please add the rk3528-hinlink-h28k board as a target in mainline U-Boot
+using the board specific device tree. That should help reset the
+Ethernet PHY before Linux is started and solve your issue, as Chukun Pan
+already suggested.
+
+[1] https://lore.kernel.org/linux-rockchip/47d55aca-bee6-810f-379f-9431649fefa6@kwiboo.se/
+
+Regards,
+Jonas
+
+>  	rgmii_phy: ethernet-phy@1 {
+>  		compatible = "ethernet-phy-ieee802.3-c22";
+>  		reg = <0x1>;
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&gmac1_rstn_l>;
+> -		reset-assert-us = <20000>;
+> -		reset-deassert-us = <100000>;
+> -		reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+>  	};
+>  };
+>  
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
