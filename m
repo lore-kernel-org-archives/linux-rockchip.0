@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DE9C55ABA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 892F6C561F8
 	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 18:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=30c+UvS7hz60LtPQvQnMTsfDxZethSh6cU3aTzT0bsU=; b=FyTJIrLcdReDHw
-	pzG2eTKL/BhCG04+s/o+6hMq7KoLB61/QsNobeDe3NoWBUba5GcnDlsS532dB/wFp7BtBA17Tbheo
-	MUKznhIdjwBhogFKadffR9Z6ysi5B/3YkoMYFF+vfTpmYQ+ktxyAL/MLphzaEwgY+ouX2OmVfxAEe
-	L9755jC8UEKsnmDJVUP8X+NYqj24sobZlJmB7hj2Nu5PZM7eAm0uUuVGLGvNcaQ+EAJNrHsatG8su
-	WOVCGSZlordCM2W+69DERVXaNGRN0CqkDSX3e+sKr1Y/NN7xxuFqup4RMZ8km63WEvu9DzfVjnxL8
-	wKwnPEGxlp+pbZX22yRA==;
+	List-Owner; bh=X+/wDEPSDRCymPKJgdOfM53ioJSqCJUE4TKr+JEl98o=; b=V4ry9iH9Yonned
+	8sbOPigZ2p/RZuhLRbd7ZqOtDGGBzjVr1EkFw0Q+GcfzGHlapb4jFdI48G5StC9x6KaWg1TmZnqH8
+	EJPTqpVwekK7LkkIjpW0kkZQIuheSjmp7uTYMSYDJuVQkiZU85CPLqKUuir8b+742F/mITxNOU+TF
+	sVexwIMfb5gqyoC2JMSJksvII5DjmOR7LrkymbXnwFxOyE4RPQVmgF5u6r2F7eKsyMKi+f7eLS3AX
+	A+T6RqvOTe7PsKLjvSHMtTXGIttqrl6H41MyKlyEOdYiHz344mffHJZfFho0nXq4HLMJInpZUlHKU
+	jOkj0gWoIOgeWBPciqiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqx2L-00000000ID9-433S;
-	Mon, 03 Aug 2026 18:05:17 +0000
+	id 1wqx2M-00000000IDZ-0cUZ;
+	Mon, 03 Aug 2026 18:05:18 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqx2F-00000000Hxh-1ENi;
-	Mon, 03 Aug 2026 18:05:13 +0000
+	id 1wqx2F-00000000Hxg-0soC;
+	Mon, 03 Aug 2026 18:05:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1785780304;
-	bh=GcGQu+BFm9oPmZHzAujBqT6aIdDXQL2Hqtb6N/i0x7s=;
+	bh=+hvcTuzTih5vFZbymQZbCa4pv4dlmw/yOyTygYkYfXw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=EIl2wwhTJFInLF67eshJeFf4D5f2bGGjBhuP2tzdaKPQSKgNxIRO/uqv8H7AJUmCt
-	 R82EVIaeSOdwcgJj7OsJEzbSVQN0IBmeFP7aS6hISlUrmgXjtm9MTTpruoYtqwzSiK
-	 KhIZ0x/um63TfcG/BVcYhoUTVohhZpHtrRv+JcWy9QE3hKPLJeXcX4NoAUKunqhOUU
-	 u+JDZxO5U5AeBbj1kd+2BQGNMTw+JRkLLf3ztNKoiN4dUIcqFJOz+INH9zLKNCHQCo
-	 OihEEfsEz62XxahVs8HF+QDGls9hCieoChy7Z3N6s7rbNh47rSAYw5U6AhvJHjn6JI
-	 Z8h4gH6NOHxxQ==
+	b=Rnnvvk+y3ZEPNKGORxSUGqsg+mNaM9ua+oPmZXjTDX25nKW4ZrgKL8Id44CQgPeHd
+	 dgf1MDIyR5EeSgciebeVwtJcOAYxVp1bPzQdMLnZZpf+e6dxk2rjTJzmQDVKP6fexk
+	 ZzX4rtp67mur4VMN8fbrVlCnyKqeHLZwH6JYxiVr7N3cggCCFyqgX827oO5smSpPzs
+	 5IEyqySgMeukcoOhnLsD2CsDwvqo79mkqUSKRuPNvDqatHOi7kQD54fN7YFYf8F9oF
+	 qrVuydhCTdkZac/DDPPeYCPgrwiWT+XOStGalRkexz7pDm0CDIHUewQOOqVkP+4WeO
+	 6K2XG9c9MD1qg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3276617E1104;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 26D2117E10C0;
 	Mon, 03 Aug 2026 20:05:04 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 6D66848003D; Mon, 03 Aug 2026 20:05:03 +0200 (CEST)
+	id 6BE5748003A; Mon, 03 Aug 2026 20:05:03 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Mon, 03 Aug 2026 20:05:10 +0200
-Subject: [PATCH v9 09/22] drm/bridge: synopsys: dw-dp: Free output_fmts
- when none are valid
+Date: Mon, 03 Aug 2026 20:05:09 +0200
+Subject: [PATCH v9 08/22] drm/bridge: synopsys: dw-dp: Fix support for
+ short I2C reads
 MIME-Version: 1.0
-Message-Id: <20260803-synopsys-dw-dp-improvements-v9-9-2e6e46135312@collabora.com>
+Message-Id: <20260803-synopsys-dw-dp-improvements-v9-8-2e6e46135312@collabora.com>
 References: <20260803-synopsys-dw-dp-improvements-v9-0-2e6e46135312@collabora.com>
 In-Reply-To: <20260803-synopsys-dw-dp-improvements-v9-0-2e6e46135312@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -69,26 +69,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1057;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1481;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=GcGQu+BFm9oPmZHzAujBqT6aIdDXQL2Hqtb6N/i0x7s=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpw2E7yZyKT1Iv3rcOC2ucMejbG03+Qo3qdB
- TiKuy/dUbY314kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqcNhOAAoJENju1/PI
- O/qabioP/2eHyDr5D6AtCEohMUlI7OWcgWD52MCFamJhFA+GnQUakQaBeIVvXGS05JVk9GSrRfP
- QXbYseD6JrAn+x8LnAJ2pIocmMf0KgldXpBtOItdehi4VB5hp4ZfnPuacIQ5WxYSD69oeIxlN6W
- Tu2PrsbgHY8BsNXzO8XriNocxRnnTGHZYQTSU+5aiGj2GNSHyHBpbYGw1KvkHgcUyPoY55d/jEt
- d3ud/jjWBMdwQdp1m0lk437BAnewmudgiUzk/BppE7E7hHC2R0M24JQmKxR1oM5myTnFb+24NmH
- M6heUed/v3ay0gjLvLKU4xexxfiY5laQrIk9i6C5ce0RcJKBZAjJ7gvbAi/fLhBleaX+hCRv+Ud
- hAahQClpR0iZxWOakqnRkv7vb9tdwJESXKQ0/ZpddW25P55EPff21MjDicIX7n+WcC3KdXTxA7/
- PF62AiWP0AXpF8Dh51lYpAuTALvwg43retHD1zPLpiDoEhJKWpVab3nAoTzMBqjULC+Uiyjt7PT
- rL4gIA87eUTHj2cHMysZnClraOztkjoJG4XgKCPFk+CTtXQL9EidUdlRq25oeiX5uJKEgEF7qHV
- ar73mQqpBIenJoJXzvgly4uoIhfA0ljtsTePYa5SWlQC3wGqYZefTn1mKwmFgpb4JHEGoMY00Fb
- h1iflOrl3ocpMuwhCq/Au+A==
+ bh=+hvcTuzTih5vFZbymQZbCa4pv4dlmw/yOyTygYkYfXw=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpw2E4HoUBLboib/7pf45ZjmJMYsf9lGaA5k
+ MEBu37ptA23aYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqcNhOAAoJENju1/PI
+ O/qafVIP/i0EYv84rNRDGB2pCStUpY6g7dRwEFWxpysmcS5LJT9JlNgdro7n9hnfkPfb9s6d9xq
+ u578ReQLD9ALqlP3eZJ40BNhpsttHkGd5JwdrReFpagivYXj/YUqBuyLB9BHK6/cqvRgQj7hAmO
+ /Mj1NnRh0OYaUNxXb6r1yB2HkCNgcRThYTJDQ/30RxxaJOk4FcuIwKUg+yu9xpxO7pRrWGai9/B
+ NX8azki7+v7KaSz5I8IFx3cbGEfbTR2dN/050CvJK1Ke+F/eUTXgRoMriDQSjPhs8XyFb/LL5h2
+ 0AOO4ZJrqgYc2WOOfUgQAlhJfSeAvQQCktQB6paFggZ31CwslyAl+4rl+96a6ge3GFQ3HOdhqHq
+ o9F67I6RhzGfmf/EQyuelWysXOw+04DOybo+riXGxjAduL9dQR19HkDlOd+iUTXFbLBWnveFavt
+ PVPJ+1nuXV45uMJ2iWbOQdn1Ky9XTHLN0/ljyq+e8yIMaZIkc8B7LAyh6HenY5oFgrTG41Z/1ST
+ XhooYxMaL6cqsU//gYkROd70I4AYvk6Xx/hpDtmtQQ+dtUKvpZRg4als8LJZ5EF8CR3cxv0CoC5
+ JIsymxjN/uxQC0+I3dR1GgxR2TUCxyXByzAfrvXZe9WkRV5r2g1ynmQJ13n5HeFHvBX8W4WX2yP
+ +OOk8YazaXyw2nqh+mHsq1g==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_110511_526334_DA9E7FBB 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20260803_110511_411859_246A1CC4 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,34 +106,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If dw_dp_bandwidth_ok() returns false for all formats, *num_output_fmts
-might end up becoming 0. In this case functions calling it assume that
-nothing needs to be free'd, so free output_fmts within the function to
-avoid leaking memory.
+The transfer functions returns the amount of bytes read for
+DP_AUX_I2C_READ. By returning -EBUSY for short reads, the caller has
+less information available what is going wrong and possibly simply
+resends the read request. On sinks not supporting long reads, this will
+simply run into the same issue again.
+
+Instead it makes more sense to return the data from the short read with
+the length information, which allows drm_dp_i2c_do_msg() to read data in
+smaller chunks and succeed in the end.
+
+Due to lack of a sink, which only supports short reads, this change is
+effectively untested.
 
 Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
 Reported-by: Sashiko <sashiko-bot@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 22a244de08aa..bde938b0d116 100644
+index 8b587a4c5e93..22a244de08aa 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1813,6 +1813,11 @@ static u32 *dw_dp_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
- 		output_fmts[j++] = fmt->bus_format;
- 	}
+@@ -1513,7 +1513,7 @@ static ssize_t dw_dp_aux_transfer(struct drm_dp_aux *aux,
+ 		if (msg->request & DP_AUX_I2C_READ) {
+ 			size_t count = FIELD_GET(AUX_BYTES_READ, value) - 1;
  
-+	if (j == 0) {
-+		kfree(output_fmts);
-+		output_fmts = NULL;
-+	}
-+
- 	*num_output_fmts = j;
+-			if (count != msg->size)
++			if (!count || count > msg->size)
+ 				return -EBUSY;
  
- 	return output_fmts;
+ 			ret = dw_dp_aux_read_data(dp, msg->buffer, count);
 
 -- 
 2.53.0
