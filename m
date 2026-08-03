@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25D26C5518C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:16:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD3CDC55182
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:16:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bT2+2LmfL4ZdIFK/H+VP+pMFEG+aCnUkCR0J0YEF3Dw=; b=OocDGxFtwGSUM6
-	+VIbP2Xk0XHcl82/sZyWDQolB8mRIyVta+7qypHP8yq+erwd5E3d+i84IGxjbROGePhhDqtGWS1/I
-	y7OH+eJkaIujcQjuX1y900bZdNkWu0eHgUPYk3C2+D2h/Pmnm+ZxGtcYQStkbThOhEUMrzIEgBZOh
-	tOHg6mqM8oi2owNSQkpnlX8WErCVjqpv4U6bqbl1wDhs/JxVq8yakq5REHSnszsfWbFMF5W08UkDp
-	I4J7DKC870H6WkVGwhCmNHQjI090vXwKv+zEpAFyUNRZIT0pcF9EWCkxX5XPhTQMuJ7oExzCNs/HO
-	9buZKk0svhmpQQu9wDKg==;
+	List-Owner; bh=SNwkHO8NCGTL4K8ZAk0Ynew/hmriOBozVz45JMhFC9w=; b=PewsXG+ar56mMD
+	JJXmmpPb2wZGssxMjjw/sYyjONH2q5voLdohJY5QTrpgpWFYqWUS6RmHhnexUNhnjc1K+/QvDqz2b
+	Y0sdSt/POxLvhYVh4wxHlgP4rQBZ9omeAdSjx6IC3Y8WRhKQbaFqK7w1GZkYM8GJ+B+DQ5c5YeXfp
+	JM0x3YsgP4pq2SHyO3yBrR5Fs0mRLS/UplrfTFbasqMRm6LnXF3arJ0eDHY0UUeShImHq0iGFaXkf
+	xt+wmHxtPaZ+kf+mnT15K7GyAirEk6piiDylBLbS0r2SycDuIxCrlwGC1LHh59mRZmqyileJNwSKy
+	SQXvyv9xtcL8sQOGC5Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1t-0000000GLdU-43bm;
-	Mon, 03 Aug 2026 05:16:01 +0000
-Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
+	id 1wql1y-0000000GLoM-1eDP;
+	Mon, 03 Aug 2026 05:16:06 +0000
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1k-0000000GLH0-3uHw
+	id 1wql1s-0000000GLYS-0vsY
 	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Aug 2026 05:15:57 +0000
-Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-497d3e4460aso3200691b6e.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:52 -0700 (PDT)
+	Mon, 03 Aug 2026 05:16:02 +0000
+Received: by mail-ot1-x32e.google.com with SMTP id 46e09a7af769-7e6b554044fso2627436a34.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:16:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785734151; x=1786338951; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785734159; x=1786338959; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=e9FeknYPclzv16XYXDkTzfHxoN/DCYzLCAYv6oC+ejo=;
-        b=AczR8RxuzpapfN0sqDrzdwDRC62mbl+CJC4DbFnzn5OUgIvgWJzBxNonwhIqpMiJN2
-         bZfv++zJ9PGKZodJ+SMO+saLXpWkSr/kiMZLkr1NAMDmoRKA0oaZaJZ3o1F0SD4Dq9W+
-         HtLSQ0HYHtwmF2EycJWCxJc/gcpDsxXNg3Cu2glsZpcGoICa5Ex3MW01zSSPUR0l+ETJ
-         u3ZAxgnGtolnDqs3fR5+gyo/Yqe4gjQKbfFMm2GO1sNvjbQOVx5ZK9dujRfSsI3V+W7y
-         CqUTK8L0Hz9lnf+3WBZOLQZgV7uexhpg3ZTuulCOeNZCJL8NusM4jfKMFsL+5yFEu8Lk
-         jWFw==
+        bh=V3THAfFmoIZwxbw2uyAABLxKH+fs/K6w42J64CA1198=;
+        b=dbxdh1POu3PTtv95rH1YZT7suQ7agxhFJvW8ie7J3IuCwzaGURugr6tNua/3/Zrz74
+         eMebDlhvczcYvHyTaw8kUPuhwUflKQTCURQyOZpGePLxrQo8z+6Xas1ffVOxzDIbW8oY
+         i7pEDyy05AcGICRFep4GMGJfRE+IrBnuOdZs64+bvAQGi/uS9c5md1goNdA0CNnh3TuM
+         ggv3fI+6lF1BojA48g4nsDWjpbSxqMn2R26rpAlPrKGnbHFoWGLUXFZeVXm6zYTOxDs5
+         MoQUuHg7pqv7tKwV403bmdqSyBaX01tChen/4E31l7GyrYUPezZz2nAqtFKuuoQ6vcJX
+         5hqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785734151; x=1786338951;
+        d=1e100.net; s=20251104; t=1785734159; x=1786338959;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=e9FeknYPclzv16XYXDkTzfHxoN/DCYzLCAYv6oC+ejo=;
-        b=YBEDv/7IvS3C1UTScBisTj4BOOVDIF9CYU1SPTUxwfHMR6t5iWObqHX/07O3zcE4NA
-         EnLozRPKt+2/YoWNvcmuIuuD2p/lMWk4F0yQtJet/8rJSGwnQXcdNEw1faJh5Hy8Fpru
-         rpEE9OSmm+3UNjhxzHVts2P6TIrEDkF2yvRtDYaVXOvPjodHgrl472y2ydbrzc4CXu4L
-         Ko+XAUZ0RjtSl8waGAfysBMK91WGT+2UZXhHLXYZUW8iVrdpHmECBXkYywL5vk9vifcz
-         zMJHYnCCEd+xoZ7ySrwuggRYeqryu1TnAUA0AdSCmJqKTqwQuvc0qk6HniEunrMXHDsd
-         AYiA==
-X-Forwarded-Encrypted: i=1; AHgh+RqZfOmPQn5Zt9TlDAbLAgzpKZUjByFNtO0U8SZ8v2INZNhQtdZRhKlCydPtnGdZsrzFoub6AFxH/4eOCT7/cg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx1PNlRDmnOm+j0+EQcsBS+v8ktluqRMyXFzsppx8BS3XPRxjBI
-	eFOlIPMNf3iXtC4YAFcJ5VGCyNAR1SSlGIvmNnEdJMOIhDjqICb6LX/D
-X-Gm-Gg: AR+sD121tramiaaEnx3A7CGxtThWymsoHyrLyuReYh5ut0TBdFTcp8TV22tPZf6aN0l
-	dX5YrtpMzOw6hUc1Z1mZIbFbsQzsD3s0VzS796XTBNcDLTQVKX7pj40jFYTKNMuAStd+hBt3+p4
-	LRM1tuds1dc5QZLkwC3p6WhU7pjx8J1Ke3/ahObLvqYtknn4j+PFJ25GWnM1FGhrxa+4oV5PF8b
-	nXKjSN7nuPgmOHplyiCQ8SXxPCkxVoKNiOTv/kO7woNxvmVLebsffadNG0HZG924HBhv1JellfJ
-	V+kTUYdeI0MH+mYxZiVChq5pDH6akFoQlsIHp1ad/2I7KkvFnfLNpxi5yaqWSt1PbMIoh5bxBwi
-	8OPUrUQ6fZoD2euntOlRG6BtYPzqfMqshwWvXTKEIyQvIrrC/KR+Z4f+C/caVgsi1tyqG+GE2Lv
-	ArR6cMY46Q2iG+qgyYHpDbKq3kFWDwlq0DRGrNN5kTNh7Hvt9pouQQx/enKBsXb+n2rBtOQ5v7x
-	9u0K3pYkQxvhTfQ550CG27mLubnI0xYt3Uf2h93Uni4tkU6iedaPBR3go8I14m3x6riRLXU8W9n
-	UJDxUTVh9dbNp9xjc0yYM5hZaNjaiUQevjZVpMeL5qpUoDYh3B5067IbW/h0tKx+vsKFpA3PsTi
-	xVb0kIB8J3GUDI2JE
-X-Received: by 2002:a05:6808:1797:b0:495:f697:92d9 with SMTP id 5614622812f47-4ae3188b02dmr15246163b6e.7.1785734151556;
-        Sun, 02 Aug 2026 22:15:51 -0700 (PDT)
+        bh=V3THAfFmoIZwxbw2uyAABLxKH+fs/K6w42J64CA1198=;
+        b=Z+gLsB0ouB4BPxi/WjewgdxolK6DJbaWvjZMlFH7CZ+N9/iKMynzpuL1wXi7VXgMp6
+         dOLoo+9IBk/X97+VIb3WluQEoNWDaNG30THpYuZ8JJVMxsXtM4FNJbNYIJOsgcYLl9W7
+         6fWUxb0wuiipPb9outKBYtN4IfbMZb78X9wZthMym8LVsA0G5p8hwBygGiW5eZuENlaD
+         jTBy31C7HR4MM3m6OR66SK4xaMAUIOUmTQIS1mJdYiBH0Cnb6iQ2JnGhxDAI1PxArdVS
+         dy4Up9b2Q5h8gsNyF/Q+kIo5aCNQ5Dh8f3453uySfYtZKhMRYDTpq/zPC9H70EG7fYa4
+         Ypig==
+X-Forwarded-Encrypted: i=1; AHgh+Rot9bjqLUfEsZH6FdFpl8OpEglT68mIca7ff2EvROasFHF4KvCcjEoS+ZJW87vu728FgFt9Hp3LWgcn9uNI5A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxhWLmfiMN5mz4PFvpEEqpyjLKe6RQTzbHmy6TVU5S95sIBoLF2
+	SSXyYNUEQnk/73Bv1302PTl/+VNCEBSmknw+FyDWPiHm3hq0GUJLy/bG
+X-Gm-Gg: AR+sD12JWqEc0qZOU578XNL5yBCaVBeWcXBsGnuU2eQUUesBqj8lxo7UIySDQ41rfYF
+	Y6X0p8b1xGjCQTFeImIfvBWuCwaNgJTmEexCQNCFFk1SHBNBpPERy5TgoQ4+SvAFhmh/jDPWDvK
+	/Uios+goPVP1oEDAzycHUZOMs9VwVqFwc0z1IUC70svMEm+EkCWWh49yCgB8rdBp0Vlf1aHWGem
+	B5EGc9Rlvm3olPQRP0RHbm8P4NmocCz8PAWTxJZrb7643i+6kuoyHdgGmvbNHKP4XKY6IeJ252y
+	ZnmcQtPupk4HAtg5hkyOBJaFX5/leVytBMg/AYIBaj2qlJQ9Y9Ha1fjCEiWWwYcdrIwPVJy/C1T
+	o3033gIIbSCUVyHq2zlp/aNUb34KWP7GhvFlHSkEa2vMs6uZ8WBL/PYy6WaMhhiqOswFtBCTo0Z
+	dXfI4/Dg6VDOywqxG7eMKrkHRtiEonmnOfzDcnJbbOXopf/f2aSz0oyGX9K5rCWOr2WS75t8eIu
+	8bFpvTcgMGIqyiUKxZZa8zSYhAygo7gD9e7mRJe7pgzM+4+WRpcnG8IQaevdxcMC009l4c1hdwU
+	uPSI+ej7PAJuV8mIvGqFG9DKZBAGBT4hJeFYRWO6Ya+6VraiATv+UpINU2OnrEj76gFVkbcvLKB
+	M6mABffAKLGLChharIemgMHPVHpU/D8nFYyrA
+X-Received: by 2002:a05:6830:2a8b:b0:7e6:f7fb:9678 with SMTP id 46e09a7af769-7f196cb65a7mr14526881a34.1.1785734154482;
+        Sun, 02 Aug 2026 22:15:54 -0700 (PDT)
 Received: from [127.0.1.1] (184-96-154-59.hlrn.qwest.net. [184.96.154.59])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.50
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Aug 2026 22:15:51 -0700 (PDT)
+        Sun, 02 Aug 2026 22:15:54 -0700 (PDT)
 From: James Hilliard <james.hilliard1@gmail.com>
-Date: Sun, 02 Aug 2026 23:14:29 -0600
-Subject: [PATCH 19/21] arm64: dts: allwinner: h6: add AC200 EPHY resources
+Date: Sun, 02 Aug 2026 23:14:31 -0600
+Subject: [PATCH 21/21] arm64: defconfig: enable X-Powers ACx00 Ethernet
+ support
 MIME-Version: 1.0
-Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-19-0a53cd9e21cc@gmail.com>
+Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-21-0a53cd9e21cc@gmail.com>
 References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 In-Reply-To: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -106,8 +107,9 @@ Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  James Hilliard <james.hilliard1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260802_221552_988196_D2B8FCCE 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20260802_221600_325987_74E004AF 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,138 +126,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the H6 I2C3 controller and pinmux, the PWM-derived 24 MHz AC200
-clock, SID calibration cells, RMII pinmux, and the AC200 MFD and EPHY
-control nodes.
-
-Describe the co-packaged AC200 INTB output on PB20. Keep both reusable
-AC200 nodes disabled so boards must explicitly enable the parent and its
-EPHY control function when the companion is present.
+Build the H616 PWM clock provider, AC200 MFD, both variant-specific
+EPHY control drivers and the shared link-PHY driver as modules. Enable the
+netdev LED trigger as a module so DT-described PHY LEDs can use hardware
+offload.
 
 Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
- arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi | 73 ++++++++++++++++++++++++++++
- 1 file changed, 73 insertions(+)
+ arch/arm64/configs/defconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
-index 72ce1a75647b..55e6e185a4e5 100644
---- a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
-+++ b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
-@@ -17,6 +17,16 @@ / {
- 	#address-cells = <1>;
- 	#size-cells = <1>;
- 
-+	ac200_pwm_clk: ac200-clock {
-+		compatible = "pwm-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <24000000>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pwm1_pin>;
-+		pwms = <&pwm 1 42 0>;
-+		status = "disabled";
-+	};
-+
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -314,6 +324,15 @@ ths_calibration: thermal-sensor-calibration@14 {
- 			cpu_speed_grade: cpu-speed-grade@1c {
- 				reg = <0x1c 0x4>;
- 			};
-+
-+			ephy_calibration: ethernet-phy-calibration@2c,0 {
-+				reg = <0x2c 1>;
-+				bits = <0 4>;
-+			};
-+
-+			ac200_bandgap: bandgap@30 {
-+				reg = <0x30 2>;
-+			};
- 		};
- 
- 		timer@3009000 {
-@@ -368,6 +387,13 @@ ext_rgmii_pins: rgmii-pins {
- 				drive-strength = <40>;
- 			};
- 
-+			ext_rmii_pins: rmii-pins {
-+				pins = "PA0", "PA1", "PA2", "PA3", "PA4",
-+				       "PA5", "PA6", "PA7", "PA8", "PA9";
-+				function = "emac";
-+				drive-strength = <40>;
-+			};
-+
- 			hdmi_pins: hdmi-pins {
- 				pins = "PH8", "PH9", "PH10";
- 				function = "hdmi";
-@@ -388,6 +414,12 @@ i2c2_pins: i2c2-pins {
- 				function = "i2c2";
- 			};
- 
-+			i2c3_pins: i2c3-pins {
-+				pins = "PB17", "PB18";
-+				function = "i2c3";
-+				bias-pull-up;
-+			};
-+
- 			mmc0_pins: mmc0-pins {
- 				pins = "PF0", "PF1", "PF2", "PF3",
- 				       "PF4", "PF5";
-@@ -414,6 +446,11 @@ mmc2_pins: mmc2-pins {
- 				bias-pull-up;
- 			};
- 
-+			pwm1_pin: pwm1-pin {
-+				pins = "PB19";
-+				function = "pwm1";
-+			};
-+
- 			/omit-if-no-ref/
- 			spi0_pins: spi0-pins {
- 				pins = "PC0", "PC2", "PC3";
-@@ -626,6 +663,42 @@ i2c2: i2c@5002800 {
- 			#size-cells = <0>;
- 		};
- 
-+		i2c3: i2c@5002c00 {
-+			compatible = "allwinner,sun50i-h6-i2c",
-+				     "allwinner,sun6i-a31-i2c";
-+			reg = <0x05002c00 0x400>;
-+			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&ccu CLK_BUS_I2C3>;
-+			resets = <&ccu RST_BUS_I2C3>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&i2c3_pins>;
-+			clock-frequency = <400000>;
-+			status = "disabled";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			ac200: mixed-signal@10 {
-+				compatible = "x-powers,ac200";
-+				reg = <0x10>;
-+				clocks = <&ac200_pwm_clk>;
-+				interrupt-parent = <&pio>;
-+				interrupts = <1 20 IRQ_TYPE_LEVEL_LOW>;
-+				interrupt-controller;
-+				#interrupt-cells = <1>;
-+				nvmem-cells = <&ac200_bandgap>;
-+				nvmem-cell-names = "bandgap";
-+				status = "disabled";
-+
-+				ac200_ephy_ctl: ethernet-phy-control {
-+					compatible = "x-powers,ac200-ephy-ctl";
-+					nvmem-cells = <&ephy_calibration>;
-+					nvmem-cell-names = "calibration";
-+					phy-mode = "rmii";
-+					status = "disabled";
-+				};
-+			};
-+		};
-+
- 		spi0: spi@5010000 {
- 			compatible = "allwinner,sun50i-h6-spi",
- 				     "allwinner,sun8i-h3-spi";
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 654a102cb5bc..53f6b8edaf33 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -475,6 +475,9 @@ CONFIG_DP83869_PHY=m
+ CONFIG_DP83TD510_PHY=y
+ CONFIG_DP83TG720_PHY=m
+ CONFIG_VITESSE_PHY=y
++CONFIG_XPOWERS_AC200_PHY_CTL=m
++CONFIG_XPOWERS_AC300_PHY_CTL=m
++CONFIG_XPOWERS_ACX00_PHY=m
+ CONFIG_XILINX_GMII2RGMII=m
+ CONFIG_CAN_FLEXCAN=m
+ CONFIG_CAN_XILINXCAN=m
+@@ -828,6 +831,7 @@ CONFIG_BCM7038_WDT=m
+ CONFIG_MFD_ADP5585=m
+ CONFIG_MFD_ALTERA_SYSMGR=y
+ CONFIG_MFD_BD9571MWV=y
++CONFIG_MFD_AC200=m
+ CONFIG_MFD_AXP20X_I2C=y
+ CONFIG_MFD_AXP20X_RSB=y
+ CONFIG_MFD_MACSMC=m
+@@ -1325,6 +1329,7 @@ CONFIG_LEDS_TRIGGER_HEARTBEAT=y
+ CONFIG_LEDS_TRIGGER_CPU=y
+ CONFIG_LEDS_TRIGGER_DEFAULT_ON=y
+ CONFIG_LEDS_TRIGGER_PANIC=y
++CONFIG_LEDS_TRIGGER_NETDEV=m
+ CONFIG_EDAC=y
+ CONFIG_EDAC_GHES=y
+ CONFIG_EDAC_LAYERSCAPE=m
+@@ -1726,6 +1731,7 @@ CONFIG_PWM_SAMSUNG=y
+ CONFIG_PWM_SL28CPLD=m
+ CONFIG_PWM_STM32=m
+ CONFIG_PWM_SUN4I=m
++CONFIG_PWM_SUN8I=m
+ CONFIG_PWM_TEGRA=m
+ CONFIG_PWM_TIECAP=m
+ CONFIG_PWM_TIEHRPWM=m
 
 -- 
 2.53.0
