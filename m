@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7EA3C55184
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:16:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25D26C5518C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:16:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MA/AhyYivSeSNlt0s9QC2nEUqT5kH1PQEi8xQKlXJno=; b=n725VoRssoJ5fQ
-	/SHHPcLJk8d9Hd+9GFYJ2lxxbVmyoJwFDgGH1Hu1F43N3F+qNicR5QpgITB9dYox0FeV2cyRUiVsa
-	J7sxTIxSmFB3vhSmldDlMT2M9U8kwb2nDBmX6GrzfwNTOWJdRd4YWNHLi80B0LIxTZUWuNyN/GQYN
-	hMrMdh3oWPukl1lDSQcAsNamfiUu6oGTvfkccpVuabX2xb90NoWVV9PqI0JZaJzv8abzs1zlseUFs
-	0kHJHBtzghHTZmEs3Eaz9ckfcg00FN4hGqH9rSQaYwHLGSMti3udMFt3b6OJmcyqQFCtYyjK88vnk
-	4a30psRTLg3rtYpW9XfQ==;
+	List-Owner; bh=bT2+2LmfL4ZdIFK/H+VP+pMFEG+aCnUkCR0J0YEF3Dw=; b=OocDGxFtwGSUM6
+	+VIbP2Xk0XHcl82/sZyWDQolB8mRIyVta+7qypHP8yq+erwd5E3d+i84IGxjbROGePhhDqtGWS1/I
+	y7OH+eJkaIujcQjuX1y900bZdNkWu0eHgUPYk3C2+D2h/Pmnm+ZxGtcYQStkbThOhEUMrzIEgBZOh
+	tOHg6mqM8oi2owNSQkpnlX8WErCVjqpv4U6bqbl1wDhs/JxVq8yakq5REHSnszsfWbFMF5W08UkDp
+	I4J7DKC870H6WkVGwhCmNHQjI090vXwKv+zEpAFyUNRZIT0pcF9EWCkxX5XPhTQMuJ7oExzCNs/HO
+	9buZKk0svhmpQQu9wDKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1u-0000000GLeO-1UHF;
-	Mon, 03 Aug 2026 05:16:02 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1wql1t-0000000GLdU-43bm;
+	Mon, 03 Aug 2026 05:16:01 +0000
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1m-0000000GLKQ-1qf1
+	id 1wql1k-0000000GLH0-3uHw
 	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Aug 2026 05:15:58 +0000
-Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-7eb4d532e65so1138719a34.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:54 -0700 (PDT)
+	Mon, 03 Aug 2026 05:15:57 +0000
+Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-497d3e4460aso3200691b6e.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785734153; x=1786338953; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785734151; x=1786338951; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=9OpRGWNf+wnvCcP1DS85gL+udlM+7o9ZcunosuNBCWA=;
-        b=LTreJ4p/wG8aKpbkhz8vQa/hMNf39Z4iRlvhNYuPCcRX1JH8Rn3Co1PF3YEDqB938h
-         SftkkTZNEwPOwAabAmx//pfwW2rq2rZzwWd9ZA1vvinOwQABFYfc0VdpK5VQGJbGFZN5
-         13F0rPM2ebaAi4m2hz+gpNxdNWRf6g/ss70YzZN9FpvcRtk3gQWs82o1FcwT37Ih3+Bl
-         7yYt1xs3dyWp+Q+K1ss+QZw1cYEG4onwHmzYJQ27iXhrx0zEZp2sWCjn6fx/8+QPddGI
-         4qixNUFF1OqQroHjR2+TOnAY+mVlYV8lRt1jQpy8c5EvlfVd8w2LoBPWGXBPyrG8AXY7
-         eE6g==
+        bh=e9FeknYPclzv16XYXDkTzfHxoN/DCYzLCAYv6oC+ejo=;
+        b=AczR8RxuzpapfN0sqDrzdwDRC62mbl+CJC4DbFnzn5OUgIvgWJzBxNonwhIqpMiJN2
+         bZfv++zJ9PGKZodJ+SMO+saLXpWkSr/kiMZLkr1NAMDmoRKA0oaZaJZ3o1F0SD4Dq9W+
+         HtLSQ0HYHtwmF2EycJWCxJc/gcpDsxXNg3Cu2glsZpcGoICa5Ex3MW01zSSPUR0l+ETJ
+         u3ZAxgnGtolnDqs3fR5+gyo/Yqe4gjQKbfFMm2GO1sNvjbQOVx5ZK9dujRfSsI3V+W7y
+         CqUTK8L0Hz9lnf+3WBZOLQZgV7uexhpg3ZTuulCOeNZCJL8NusM4jfKMFsL+5yFEu8Lk
+         jWFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785734153; x=1786338953;
+        d=1e100.net; s=20251104; t=1785734151; x=1786338951;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=9OpRGWNf+wnvCcP1DS85gL+udlM+7o9ZcunosuNBCWA=;
-        b=LjCWreE28CCKZUezRGBgB6CLHqhg5Y6ybrrvi+uMsEz021xclLPgVVAiaB0e629sf2
-         U8hYNTyjzxD9lkOBhDTHQDUgLCuNs2UDdZlI5fcv6qpbsIT84MQwadQYXfstMVqWedQG
-         84lVrLnDtiadbYWwp1F5MPOsMQ9MEQKeo5Yy1mA5/pxM9n0gEnhxImDl5sH83b0zwyC8
-         9se7YCyu+Jdbw3PMvMBPWi3ChTTgIZY+5Ur54eXU9/F0RwMVKh1c4F2UHNTA7nq54YIf
-         kaPpWS6c5wr0Wx/beISPU9LL6eoDv/BJPDOtSNNmXhXFQMjFNYrx2vIGdm9MkDoYb59N
-         lLkg==
-X-Forwarded-Encrypted: i=1; AHgh+Rqtzffq+Xhu3LwtP8uZ3/uu2dBSj59VhwwrEFXexT9uSC4w7nC76E8JJL8SP/H5Iq36fMxJb/SHsPbSaZFTBg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwdF88JN9XWiqi6/fFhMZDYbix0aVajOxDOboq0xHYm0H5X3NvC
-	28RYkFCct8pobDnzzLsFZnh3z8a82thc7qSHtV1XlZYiDUL/+rM2eEsv
-X-Gm-Gg: AR+sD11Bp+jEPI9E154DuHrtHnVcNeqV7TZ3GBuRxQ3ZhvVxqm0rO2ykVQ6xkF3XQEN
-	Gk+U2rT0WTjTDLAsst9iuolkszcFBQIEibw2Y9K/Fp9+gEF5goKxhC71cR8qi9FOI2JWCCUy6Qk
-	rGsngcK4XLk5qmtBSyv/wlWIPB31jcLEb0VdhihARWbqETcH/xCBLdsut1IJUjaXDfBcfPnql+9
-	oNuVgbhxJe6IwXSO5j2iRQDGHToSIu5Lqk9gC9OPSQvDzA5RCGS9vBbDg9lU9TxG3rJDoilpF9+
-	1hONa+RLiNBsAbqatprx9/Mo0qkNunorp6YOFUCsvtDXUGmsbbXzEKB2iGy+sf6QngqDHXQ/jnc
-	d3hfAcnwmNAaiciQcxVFYEOgrvdcnpJgOfqs7d2fCbj4Zvv96H6LSaWS2iKPennT/8816cBt4BH
-	A73McyPjCX+LWzCaCE3BQ8eaQmTp3pfLSJwiL2lhl71o4ZH3+E/K+tvgmUz5/U9pV9P9Os1fA4M
-	OEq6G81vvCjJ6CJOOr5Zw4voc2vZw5iux7y6G3wZfsPCClz1CZhwdPGMvsvfoTwpivKY1/pjUWy
-	jvSig1J4g+1eEDVdvxuv8CB0q84cXAiuodAdgpkgQutuZA6OzPF9cK6c5wE+n7uK20Uuya65+/L
-	7rsMEHt5FeVs90I2E
-X-Received: by 2002:a05:6830:3592:b0:7e9:e488:3bce with SMTP id 46e09a7af769-7f196bab78dmr14968611a34.6.1785734148846;
-        Sun, 02 Aug 2026 22:15:48 -0700 (PDT)
+        bh=e9FeknYPclzv16XYXDkTzfHxoN/DCYzLCAYv6oC+ejo=;
+        b=YBEDv/7IvS3C1UTScBisTj4BOOVDIF9CYU1SPTUxwfHMR6t5iWObqHX/07O3zcE4NA
+         EnLozRPKt+2/YoWNvcmuIuuD2p/lMWk4F0yQtJet/8rJSGwnQXcdNEw1faJh5Hy8Fpru
+         rpEE9OSmm+3UNjhxzHVts2P6TIrEDkF2yvRtDYaVXOvPjodHgrl472y2ydbrzc4CXu4L
+         Ko+XAUZ0RjtSl8waGAfysBMK91WGT+2UZXhHLXYZUW8iVrdpHmECBXkYywL5vk9vifcz
+         zMJHYnCCEd+xoZ7ySrwuggRYeqryu1TnAUA0AdSCmJqKTqwQuvc0qk6HniEunrMXHDsd
+         AYiA==
+X-Forwarded-Encrypted: i=1; AHgh+RqZfOmPQn5Zt9TlDAbLAgzpKZUjByFNtO0U8SZ8v2INZNhQtdZRhKlCydPtnGdZsrzFoub6AFxH/4eOCT7/cg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx1PNlRDmnOm+j0+EQcsBS+v8ktluqRMyXFzsppx8BS3XPRxjBI
+	eFOlIPMNf3iXtC4YAFcJ5VGCyNAR1SSlGIvmNnEdJMOIhDjqICb6LX/D
+X-Gm-Gg: AR+sD121tramiaaEnx3A7CGxtThWymsoHyrLyuReYh5ut0TBdFTcp8TV22tPZf6aN0l
+	dX5YrtpMzOw6hUc1Z1mZIbFbsQzsD3s0VzS796XTBNcDLTQVKX7pj40jFYTKNMuAStd+hBt3+p4
+	LRM1tuds1dc5QZLkwC3p6WhU7pjx8J1Ke3/ahObLvqYtknn4j+PFJ25GWnM1FGhrxa+4oV5PF8b
+	nXKjSN7nuPgmOHplyiCQ8SXxPCkxVoKNiOTv/kO7woNxvmVLebsffadNG0HZG924HBhv1JellfJ
+	V+kTUYdeI0MH+mYxZiVChq5pDH6akFoQlsIHp1ad/2I7KkvFnfLNpxi5yaqWSt1PbMIoh5bxBwi
+	8OPUrUQ6fZoD2euntOlRG6BtYPzqfMqshwWvXTKEIyQvIrrC/KR+Z4f+C/caVgsi1tyqG+GE2Lv
+	ArR6cMY46Q2iG+qgyYHpDbKq3kFWDwlq0DRGrNN5kTNh7Hvt9pouQQx/enKBsXb+n2rBtOQ5v7x
+	9u0K3pYkQxvhTfQ550CG27mLubnI0xYt3Uf2h93Uni4tkU6iedaPBR3go8I14m3x6riRLXU8W9n
+	UJDxUTVh9dbNp9xjc0yYM5hZaNjaiUQevjZVpMeL5qpUoDYh3B5067IbW/h0tKx+vsKFpA3PsTi
+	xVb0kIB8J3GUDI2JE
+X-Received: by 2002:a05:6808:1797:b0:495:f697:92d9 with SMTP id 5614622812f47-4ae3188b02dmr15246163b6e.7.1785734151556;
+        Sun, 02 Aug 2026 22:15:51 -0700 (PDT)
 Received: from [127.0.1.1] (184-96-154-59.hlrn.qwest.net. [184.96.154.59])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.47
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Aug 2026 22:15:48 -0700 (PDT)
+        Sun, 02 Aug 2026 22:15:51 -0700 (PDT)
 From: James Hilliard <james.hilliard1@gmail.com>
-Date: Sun, 02 Aug 2026 23:14:27 -0600
-Subject: [PATCH 17/21] arm64: dts: allwinner: h616: add ACx00 EPHY
- resources
+Date: Sun, 02 Aug 2026 23:14:29 -0600
+Subject: [PATCH 19/21] arm64: dts: allwinner: h6: add AC200 EPHY resources
 MIME-Version: 1.0
-Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-17-0a53cd9e21cc@gmail.com>
+Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-19-0a53cd9e21cc@gmail.com>
 References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 In-Reply-To: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -107,8 +106,8 @@ Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  James Hilliard <james.hilliard1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260802_221554_518583_05A78DA7 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20260802_221552_988196_D2B8FCCE 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,25 +124,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Expose logical SID cells for the AC200/AC300 EPHY calibration, the combined
-companion-variant and AC300-calibration-range configuration, and the AC200
-bandgap fields.
+Add the H6 I2C3 controller and pinmux, the PWM-derived 24 MHz AC200
+clock, SID calibration cells, RMII pinmux, and the AC200 MFD and EPHY
+control nodes.
 
-Also describe the PA10/PA11 I2C3 pin group used by the AC200 control
-interface.
+Describe the co-packaged AC200 INTB output on PB20. Keep both reusable
+AC200 nodes disabled so boards must explicitly enable the parent and its
+EPHY control function when the companion is present.
 
 Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
- arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi | 73 ++++++++++++++++++++++++++++
+ 1 file changed, 73 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi
-index 6879f27c2b2b..2cedda6e87a9 100644
---- a/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi
-+++ b/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi
-@@ -252,6 +252,20 @@ ths_calibration: thermal-sensor-calibration@14 {
- 			cpu_speed_grade: cpu-speed-grade@0 {
- 				reg = <0x0 2>;
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
+index 72ce1a75647b..55e6e185a4e5 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
+@@ -17,6 +17,16 @@ / {
+ 	#address-cells = <1>;
+ 	#size-cells = <1>;
+ 
++	ac200_pwm_clk: ac200-clock {
++		compatible = "pwm-clock";
++		#clock-cells = <0>;
++		clock-frequency = <24000000>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pwm1_pin>;
++		pwms = <&pwm 1 42 0>;
++		status = "disabled";
++	};
++
+ 	cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+@@ -314,6 +324,15 @@ ths_calibration: thermal-sensor-calibration@14 {
+ 			cpu_speed_grade: cpu-speed-grade@1c {
+ 				reg = <0x1c 0x4>;
  			};
 +
 +			ephy_calibration: ethernet-phy-calibration@2c,0 {
@@ -151,31 +168,94 @@ index 6879f27c2b2b..2cedda6e87a9 100644
 +				bits = <0 4>;
 +			};
 +
-+			ephy_config: ethernet-phy-configuration@2c {
-+				reg = <0x2c 2>;
-+				bits = <8 2>;
-+			};
-+
 +			ac200_bandgap: bandgap@30 {
 +				reg = <0x30 2>;
 +			};
  		};
  
- 		timer0: timer@3009000 {
-@@ -324,6 +338,13 @@ i2c0_pins: i2c0-pins {
- 				function = "i2c0";
+ 		timer@3009000 {
+@@ -368,6 +387,13 @@ ext_rgmii_pins: rgmii-pins {
+ 				drive-strength = <40>;
  			};
  
-+			/omit-if-no-ref/
-+			i2c3_pa_pins: i2c3-pa-pins {
-+				pins = "PA10", "PA11";
++			ext_rmii_pins: rmii-pins {
++				pins = "PA0", "PA1", "PA2", "PA3", "PA4",
++				       "PA5", "PA6", "PA7", "PA8", "PA9";
++				function = "emac";
++				drive-strength = <40>;
++			};
++
+ 			hdmi_pins: hdmi-pins {
+ 				pins = "PH8", "PH9", "PH10";
+ 				function = "hdmi";
+@@ -388,6 +414,12 @@ i2c2_pins: i2c2-pins {
+ 				function = "i2c2";
+ 			};
+ 
++			i2c3_pins: i2c3-pins {
++				pins = "PB17", "PB18";
 +				function = "i2c3";
 +				bias-pull-up;
 +			};
 +
- 			i2c3_ph_pins: i2c3-ph-pins {
- 				pins = "PH4", "PH5";
- 				function = "i2c3";
+ 			mmc0_pins: mmc0-pins {
+ 				pins = "PF0", "PF1", "PF2", "PF3",
+ 				       "PF4", "PF5";
+@@ -414,6 +446,11 @@ mmc2_pins: mmc2-pins {
+ 				bias-pull-up;
+ 			};
+ 
++			pwm1_pin: pwm1-pin {
++				pins = "PB19";
++				function = "pwm1";
++			};
++
+ 			/omit-if-no-ref/
+ 			spi0_pins: spi0-pins {
+ 				pins = "PC0", "PC2", "PC3";
+@@ -626,6 +663,42 @@ i2c2: i2c@5002800 {
+ 			#size-cells = <0>;
+ 		};
+ 
++		i2c3: i2c@5002c00 {
++			compatible = "allwinner,sun50i-h6-i2c",
++				     "allwinner,sun6i-a31-i2c";
++			reg = <0x05002c00 0x400>;
++			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&ccu CLK_BUS_I2C3>;
++			resets = <&ccu RST_BUS_I2C3>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&i2c3_pins>;
++			clock-frequency = <400000>;
++			status = "disabled";
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			ac200: mixed-signal@10 {
++				compatible = "x-powers,ac200";
++				reg = <0x10>;
++				clocks = <&ac200_pwm_clk>;
++				interrupt-parent = <&pio>;
++				interrupts = <1 20 IRQ_TYPE_LEVEL_LOW>;
++				interrupt-controller;
++				#interrupt-cells = <1>;
++				nvmem-cells = <&ac200_bandgap>;
++				nvmem-cell-names = "bandgap";
++				status = "disabled";
++
++				ac200_ephy_ctl: ethernet-phy-control {
++					compatible = "x-powers,ac200-ephy-ctl";
++					nvmem-cells = <&ephy_calibration>;
++					nvmem-cell-names = "calibration";
++					phy-mode = "rmii";
++					status = "disabled";
++				};
++			};
++		};
++
+ 		spi0: spi@5010000 {
+ 			compatible = "allwinner,sun50i-h6-spi",
+ 				     "allwinner,sun8i-h3-spi";
 
 -- 
 2.53.0
