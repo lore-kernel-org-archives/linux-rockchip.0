@@ -4,85 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D324C55189
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12A3DC5516F
 	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:15:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8iDfjjWh2/KmfdOqcvHHDY8wp69AymF4qm4L08lPur4=; b=xTTa76GSubFG01
-	As0tajiPDR4MRJC2OChaIgZP8CESu4IJMDD20p2vG5Nks6SLuMm8kgK9OZP3P9csZ5spwpetyZVW4
-	wVLmPR9P/ZCEGj4ukb5sf8k0DSsXJlpKOnOX47EPnDfA0LwtGelnlWGn84hH0K6B7CpeL60mB80Qi
-	yYw7cZrTL/uBShHidBL/4SI3GOgm1RHSW9dWwZcr7BQBkSvBTulz+YfVdouDC25Gl1InD9DwiPami
-	lnOYRnnyoqgLwtC1fDGiSKkkPeRqPmEvZQucXFkNdOsTYxtHcaOlj0deKx7uGr54sjXSupxJV4M8b
-	K3EksnESp5P3LeVsrRGA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dJ2xA/gixiO+opwg8Dc6moUk/DbafUzWdcva1ijcnGQ=; b=OBiYorLTJZ7qFc
+	YgSudKaD70IpZv72zIa5qgwyvYP0SZf0j7SG3aND6MwTLEp2Pxo/DN1+MztXYXvPCLbaGTucqWGYs
+	tQnjZsr1YIAJwy2eXUKjnkDu3FpGgGBoC1se+fL2jGS5rku2T7sBc6SwdonphPBNYWRMvWVZnO5w4
+	C87gyBhPKxcXP8FUtHLesiLZ/kAV6EzSUtnR5g7Ox2v7RdEntsppNmrqLZJtd6/9BG8iWjS7NzdwW
+	wL2AkPtihincvJrM2jAUf5ExbTVgPnWxBNMDjKcN4hKZKVHHBBuNgVJv7/EZN4nOimAyz4BkMPsaF
+	VsljowvqSGBC7OUeTz9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1L-0000000GKUO-2nu0;
+	id 1wql1L-0000000GKUK-2Tbk;
 	Mon, 03 Aug 2026 05:15:27 +0000
-Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1J-0000000GKSL-2RLu
+	id 1wql1I-0000000GKRU-1Gju
 	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Aug 2026 05:15:26 +0000
-Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-7eb64085c45so2080289a34.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:25 -0700 (PDT)
+	Mon, 03 Aug 2026 05:15:25 +0000
+Received: by mail-ot1-x329.google.com with SMTP id 46e09a7af769-7eb1dc6bd53so1828488a34.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785734124; x=1786338924; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=74sKA3Fp2KekMkzYHPtGWFK+N4ABlBFoAFD2YVwF/bc=;
-        b=AwWQeQWumvRvtKeGsBil2qsmh/U/T3ahs1VZGOzdVLeMeVKH7uiBRbkKgLCqfVg1+/
-         /A3Tp1gydoTxQODyW8vYWxKfQmnMgoqDbU4XaupiLnhZIOZY2a9AvuhiOe8Ym3kE1Z4X
-         ujaSDQJFmiXmR95gMVXpf/f6PWQo8FdGazL7XmcV4zuTW6qvVApdHcDCss3BbM33Y511
-         YHCWul8Js1lDPBrlK9ABfKGq+DiTJkvxlRhc1bjIQngiyokmJx1jP3YhBSnFzusrBufd
-         bAGlqlKGZiCcpCrpV+DWfIx0HImMpdZof2Bra2yJ1RmnDvsFH5Ve31L1xPtHba75kxVY
-         Foxg==
+        d=gmail.com; s=20251104; t=1785734123; x=1786338923; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=SlcJviNfe1A7bPODjwx5akEOsNAeWr5kscTUhAqnE8U=;
+        b=kDCvawIdsiFv2aWIwjFCvAkCE3forVwKBX11OTTmzCEK6nhXJ2nK/ftBKC1dtqC836
+         6fwxn4WluoqgnC9Srmb1R7ErnGg7AaC+Lh3pH/3opkIS9cgKh7rxvz+vyEGiRbj5Wbkh
+         WtsuQlPwgFknQvmOVjFbLSSJUUz2IibCbuXHUVEyDavx2X3DHx+kCObMfXiQnpSDKdMw
+         SRYxmUmKZi8zMIMAKzK3Z8sdWZ53xJYNBAuiUjY3dVNeDe+2aFTT2ZZqR1SfrKVGrqSs
+         NpQsvvXesVzsTLKIlQhngomZeaxhki/JWIMm03apVkD2gv9utK9njQie0dvxxj9V2v/f
+         eAZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785734124; x=1786338924;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=74sKA3Fp2KekMkzYHPtGWFK+N4ABlBFoAFD2YVwF/bc=;
-        b=aIBVWF6fAwwRlNK9yuUAsY96XT4zbHDceuzkY1UglolxVVgWVD7/M7KVZKlqqPxW+f
-         BsHIWO7sQ3r6phCdLMkvilJuva+LIRByQxTWo/YxPtjl1LP73tT+FGT7VMdou8+pz5/i
-         WN71q/h/74YzCXTdX8LSCOSfTiso+y87655UR7NcWVxbyEjedbeN9UCxCbcRHlz2GS4M
-         MyIwlolsOHGEUijZRJXD9BEh8cKgMPW6cMcyaSh/FP+42TOxSa0htda+RwVFZPUQkw5t
-         szlK/L6oFDml9mwb1HFFKseseoSKfy/Tc8AzgEFPblNGMoJYbeR/nIsLAuE+FrEOUS4/
-         8HaQ==
-X-Forwarded-Encrypted: i=1; AHgh+RrSScY2aLYfW0zutFUkvcBUjGU0Cr6i3Agvj8BMwDZWsr9LNAnLFVyFFnPeN51WbjKPgtK4SwhvJixSZrZPPA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwdmkFlpO0kGgAqU5Awmze4Sf6XhvpMk/AP3m0o8trha/9KgrmO
-	qXpc7BsrtCRgwM5gI2VEqry5i+cb3x5qSPP0HW2fgfB3SQWBP4805iyi
-X-Gm-Gg: AR+sD13o3pc4r+z6ARJHvX4uyN93iw9aWNZs8uqMmC7oyRWdBVKKeXeBIAAHdwUZRS5
-	AC4RLpWSy+lajo6fd5PPM2aeOZTLGHu93XdzaSvrra3BdaB01BzSD7Kc+8KMWy0K4fQHTunJTJn
-	tkjHwP0PBPflK/P3ywEp+vl/FvzN2amKmnUhpPkEt2dHRlXWDflg4Coh5uwngz/XDqjrTnFa9VS
-	IMsdICfdbjQgKKbt82HExjM1m5mqoa0AwyFOxgC3JcekzdJro+kKi3aQWYSSPWHF1+cMjwEWxrd
-	Eo3HsIPAKjG5SOpRmdUTwdssXLgfLBGvsmIaq5fn8U+qhn6wldaKHQAmDBiszh+eJ8CoDJHUVor
-	AokNZPAH2uOHU8hSUzkgbBrSYIiGWudENvPBv/xlR6hkayUxeDSoW1onp7I+QtOBAhG5tEGZECL
-	5WA7HFLlAAxLV6Pefcm+fxZ7QczPJmCCVxxvGe8H0wofl7TbWf51ClqksUbIZg/fVSm2TMwDrXJ
-	3L1W2jvNkaal+EF3lcsTMIlgI+4OtbFAj3OD06fN0NFdwlJEF8P3Y87Mu4V+bpMI9xd/xdyBXjO
-	rGpimaOcqIKn80O4EPKrjofowyWBxtohg2vDQf9csrDutOqRYSpEQcqkrqRM81BtKy+SB0nhTBY
-	JNk3G7kC2gZOanGcm
-X-Received: by 2002:a05:6830:488e:b0:7e9:cce4:803b with SMTP id 46e09a7af769-7f196e9595cmr15400429a34.8.1785734119585;
-        Sun, 02 Aug 2026 22:15:19 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1785734123; x=1786338923;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=SlcJviNfe1A7bPODjwx5akEOsNAeWr5kscTUhAqnE8U=;
+        b=Til4bf6E3/0s9Zja3nG+FCSzxqarGOv3aRFrmbASoIFgzUZA2pXrAS6BN7xS5/5OAV
+         Vkxap69StcLxn1uB0hs8u7AZ4A2cbn0yZGDAULQCBWpbnFKGi72t8HKj9Tu5lmX0juy0
+         KbW4DAXJ6jZecepbwo8aAGqMELND9B9DsMAlMKZOVivKZOrnlfErzpmAkNxbmQ+DOGhp
+         Kh1lsSHIpy+xIO0kCqmq5d/eCxP/uRhB6y9PwakAMhqTo6GKG+6lF2CiQERGe0kdS5c2
+         ZYCUixaYe5fZIH90IIy3JW6MiN4BSIhpABrStn1Noy+1nGd+syYxHwIw/UJEPLqRd7gb
+         g/NA==
+X-Forwarded-Encrypted: i=1; AHgh+RryMTEuq8Gqon9Cxin3YtBtYoUQ0FRr5axsNpO2Vgr0DXfsGutsARJK6x5mDfk/RJ+u+9FppQMXw9Fq2gLQ7Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxuuIRUr9E3IMYt464bcAjNIX5mnbQfzBOXTW1/thY9T1+1VhTz
+	X8Qx2IYpTf+UKagThxijOgAFJ5dmUjFFaLLtkV/5Prfy81Avvrz5OwfM
+X-Gm-Gg: AR+sD10Y9ewWBurwZc0aAfP+hYqjYRqOdbWsmUgozviRoWw6lZoqIlGOumkWPycfiox
+	1BzwUr1uE7/Of61uF1/f02s8vf6DrYMBQAr2n+j9e+uHaukeAAsi0d+0r6loz1soUhEMwN5wkyk
+	D/3cWDrkjXGvCz9K5em7JFGTjggKaGHXPsHgrzwD48FwHE+VT89bpDyciNS0PLg8vAvW1g2hPTk
+	ilncxCXmxKqNA6HX/9QIZOS9n78Zz5+psqSs5u9N6kgCdud0+CoOBUiK/Uim7FNzZHHF5gCLXZo
+	y46HGZC1rthJU0VORVNHooJg0/nhrgjGDJDqRMaF5MfBY6ejsYkCuimiGrxInNRGKe+rTuSWAZu
+	A452HTniAgDvR7Q19YYldT/vPO9YGISfsGvIG8Env/Jmdug9JIF0rdigcCnzlDKXHC9WI+U3/+s
+	QhDOfnL3hZUr3dLAX43oBpkd0LaqkxHhmvW/T7jaZh6IPYbKwl1B09sqt0H7jhRndSRGYDMs026
+	8Cetei7oY7ZOxYpDY5Kgumfmn2PnJ092HDBOmSVQ12cPtamzhkesRVu5imMVqnf00ZnmNcZ3zUq
+	vl7XZHXZ5RtJBBHTblTQNXXe9VIzrXbzBGLd43Mdxhp1m5Hy6ppiBSchsGdLDexQX5ij+S+Ug92
+	wjZisNVXsKo65ByhI
+X-Received: by 2002:a05:6830:211b:b0:7e9:c102:333d with SMTP id 46e09a7af769-7f196f8ad8cmr14493591a34.9.1785734122667;
+        Sun, 02 Aug 2026 22:15:22 -0700 (PDT)
 Received: from [127.0.1.1] (184-96-154-59.hlrn.qwest.net. [184.96.154.59])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.17
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Aug 2026 22:15:18 -0700 (PDT)
+        Sun, 02 Aug 2026 22:15:22 -0700 (PDT)
 From: James Hilliard <james.hilliard1@gmail.com>
-Subject: [PATCH 00/21] net: phy: add X-Powers AC200/AC300 EPHY support
-Date: Sun, 02 Aug 2026 23:14:10 -0600
-Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
+Date: Sun, 02 Aug 2026 23:14:12 -0600
+Subject: [PATCH 02/21] net: stmmac: sun8i: add support for Allwinner H616
+ EMAC1
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2Oy27DIBREf8ViXazLy2CrivofVRY8rlOqGBqwo
- 1RR/r3E6fJIM2fmTiqWiJVM3Z0UvMYac2rA3jriv2w6IY2hMeHABzDAad3cEldq/Q2A5pmG32S
- X6OmV0VFaCJ6pmRtOmuCn4Bxvu/zz+OLW/ka/Po3/iYKXra2urxhZsFa7r07d+z6qQTDFOVM9G
- 7lRI2W0xPathP6EKW/hw+W8nmPqfV4OT6uzFWmD9nPqQCunpZHMBYBBWeGCFVKC0cJrqUdhcBj
- dYMjx8fgD77ZBiw4BAAA=
-X-Change-ID: 20260802-submit-acx00-of-dynamic-v1-94a0dc15f282
+Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-2-0a53cd9e21cc@gmail.com>
+References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
+In-Reply-To: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -109,8 +107,8 @@ Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  James Hilliard <james.hilliard1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260802_221525_640151_BFBB5252 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20260802_221524_424792_C41E46A5 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,119 +125,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Allwinner H616/H618 secondary EMAC is commonly connected to a Fast
-Ethernet PHY in an X-Powers AC200 or AC300 companion package.  The two
-packages expose the same link PHY ID and largely compatible link-side
-registers, but require different control paths before those registers can
-be accessed: AC200 is initialized through its I2C MFD, while AC300 uses a
-non-PHY Clause 22 control endpoint.
+From: Richard Genoud <richard.genoud@bootlin.com>
 
-Some H616-family products were shipped with either package under the same
-board identity.  For those systems, this series uses a SID NVMEM field to
-select the control provider at run time.  With CONFIG_OF_DYNAMIC, the link
-PHY enables only the selected fail-needs-probe provider, so an AC300 board
-does not probe the unused AC200 I2C controller or claim its pins.  The same
-drivers also support fixed descriptions without CONFIG_OF_DYNAMIC: a board
-can reference one enabled provider, or enable both candidates when runtime
-selection is still required.
+The H616 secondary EMAC uses a separate system-control clock register
+and supports only RMII at 10/100 Mbps. Its EPHY is provided by a
+companion AC200 or AC300 package rather than an internal PHY block.
 
-The series adds:
+Add an EMAC1 variant using the dedicated register and mark the PHY as
+external. The register retains the standard five-bit RX and three-bit TX
+clock delay chains, so expose their supported ranges to the shared
+syscon setup.
 
-  - the H616 EMAC1 binding, stmmac variant and controller node;
-  - generic MDIO OF reconfiguration support for PHYs, packages, scanned
-    addresses and generic MDIO devices;
-  - the AC200 MFD and AC200/AC300 EPHY control providers;
-  - the shared AC200/AC300 link-PHY driver, including calibration, power and
-    reset sequencing, MDI/MDI-X, statistics, EDPD, PHY-managed EEE, package
-    LEDs, interrupts and Wake-on-LAN; and
-  - H6 and H616-family device-tree descriptions and arm64 defconfig support.
-
-The AC200 and AC300 control and link paths were exercised on H616-family
-hardware during development, including link traffic, address handling,
-ethtool EDPD/EEE controls, statistics and LEDs.  The H6 interrupt and
-Wake-on-LAN description still needs validation by an H6 hardware user.
-
-This series depends on Richard Genoud's v7 H616 PWM controller series,
-which provides the bypass clock used by the companion EPHY:
-
-  https://lore.kernel.org/all/20260703152215.192859-1-richard.genoud@bootlin.com/
-
-The PWM patches are an external prerequisite and are intentionally not
-included in this 21-patch series.
-
+Signed-off-by: Richard Genoud <richard.genoud@bootlin.com>
 Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
-James Hilliard (18):
-      net: mdio: factor out OF child registration helpers
-      net: mdio: make device map changes hotplug-safe
-      net: mdio: support dynamic OF device changes
-      dt-bindings: net: x-powers: add AC200 EPHY control
-      dt-bindings: mfd: x-powers: add AC200
-      mfd: add X-Powers AC200 support
-      net: phy: add X-Powers AC200 EPHY control driver
-      dt-bindings: net: x-powers: add AC300 EPHY control
-      net: phy: add X-Powers AC300 EPHY control driver
-      dt-bindings: net: x-powers: add AC200/AC300 EPHY
-      net: phy: support configuring PHY-autonomous Tx LPI
-      net: phylink: allow PHY-autonomous EEE without MAC LPI
-      net: phy: add X-Powers AC200/AC300 EPHY driver
-      arm64: dts: allwinner: h616: add ACx00 EPHY resources
-      arm64: dts: allwinner: orangepi-zero2w: enable Ethernet expansion
-      arm64: dts: allwinner: h6: add AC200 EPHY resources
-      arm64: dts: allwinner: h6: tanix: enable AC200 EPHY
-      arm64: defconfig: enable X-Powers ACx00 Ethernet support
+ drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-Richard Genoud (3):
-      dt-bindings: net: allwinner: add H616 EMAC1
-      net: stmmac: sun8i: add support for Allwinner H616 EMAC1
-      arm64: dts: allwinner: h616: add EMAC1 controller
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
+index 48c52eb96233..fdc0c3384af8 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
+@@ -81,6 +81,13 @@ static const struct reg_field sun8i_syscon_reg_field = {
+ 	.msb = 31,
+ };
+ 
++/* EMAC1 clock register @ 0x34 in the "system control" address range */
++static const struct reg_field sun8i_syscon_reg_field_emac1 = {
++	.reg = 0x34,
++	.lsb = 0,
++	.msb = 31,
++};
++
+ /* EMAC clock register @ 0x164 in the CCU address range */
+ static const struct reg_field sun8i_ccu_reg_field = {
+ 	.reg = 0x164,
+@@ -143,6 +150,18 @@ static const struct emac_variant emac_variant_h6 = {
+ 	.tx_delay_max = 7,
+ };
+ 
++static const struct emac_variant emac_variant_h616_emac1 = {
++	.syscon_field = &sun8i_syscon_reg_field_emac1,
++	/*
++	 * The "internal PHY" is in a companion AC200 or AC300 package,
++	 * rather than on the H616 die.
++	 */
++	.soc_has_internal_phy = false,
++	.support_rmii = true,
++	.rx_delay_max = 31,
++	.tx_delay_max = 7,
++};
++
+ #define EMAC_BASIC_CTL0 0x00
+ #define EMAC_BASIC_CTL1 0x04
+ #define EMAC_INT_STA    0x08
+@@ -1278,6 +1297,8 @@ static const struct of_device_id sun8i_dwmac_match[] = {
+ 		.data = &emac_variant_a64 },
+ 	{ .compatible = "allwinner,sun50i-h6-emac",
+ 		.data = &emac_variant_h6 },
++	{ .compatible = "allwinner,sun50i-h616-emac1",
++		.data = &emac_variant_h616_emac1 },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, sun8i_dwmac_match);
 
- .../devicetree/bindings/mfd/x-powers,ac200.yaml    |  118 ++
- .../bindings/net/allwinner,sun8i-a83t-emac.yaml    |   18 +-
- .../devicetree/bindings/net/snps,dwmac.yaml        |    2 +
- .../bindings/net/x-powers,ac200-ephy-ctl.yaml      |   46 +
- .../bindings/net/x-powers,ac300-ephy-ctl.yaml      |   77 ++
- .../bindings/net/x-powers,acx00-ephy.yaml          |  217 +++
- arch/arm64/boot/dts/allwinner/sun50i-h6-tanix.dtsi |   45 +
- arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi       |   73 +
- .../boot/dts/allwinner/sun50i-h616-acx00-ephy.dtsi |   61 +
- arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi     |   51 +
- .../dts/allwinner/sun50i-h618-orangepi-zero2w.dts  |   13 +
- arch/arm64/configs/defconfig                       |    6 +
- drivers/mfd/Kconfig                                |   13 +
- drivers/mfd/Makefile                               |    1 +
- drivers/mfd/ac200.c                                |  302 ++++
- drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c  |   21 +
- drivers/net/mdio/of_mdio.c                         |  508 ++++++-
- drivers/net/phy/Kconfig                            |   30 +
- drivers/net/phy/Makefile                           |    3 +
- drivers/net/phy/mdio_bus.c                         |   14 +-
- drivers/net/phy/mdio_bus_provider.c                |  140 +-
- drivers/net/phy/mdio_device.c                      |  235 +++-
- drivers/net/phy/phy.c                              |   35 +-
- drivers/net/phy/phy_device.c                       |  127 +-
- drivers/net/phy/phylib-internal.h                  |    4 +-
- drivers/net/phy/phylink.c                          |   35 +-
- drivers/net/phy/xpowers-ac200-ctl.c                |  330 +++++
- drivers/net/phy/xpowers-ac300-ctl.c                |  454 ++++++
- drivers/net/phy/xpowers-acx00.c                    | 1457 ++++++++++++++++++++
- drivers/net/phy/xpowers-acx00.h                    |   27 +
- include/dt-bindings/mfd/x-powers,ac200.h           |   13 +
- include/linux/mdio.h                               |    6 +
- include/linux/phy.h                                |   36 +
- 33 files changed, 4384 insertions(+), 134 deletions(-)
----
-base-commit: 075b74841bd0065a3bda3440873c747938e69b68
-change-id: 20260802-submit-acx00-of-dynamic-v1-94a0dc15f282
-prerequisite-message-id: <20260703152215.192859-1-richard.genoud@bootlin.com>
-prerequisite-patch-id: 8c447ebd677ea7bf9e63a77d34d8fdaa05eebe7f
-prerequisite-patch-id: c7574f9c0e2571ce8c6129ac6db7aa959c986ef3
-prerequisite-patch-id: e8b00768102951244927ecf054314f6e02f9ff1b
-prerequisite-patch-id: a3e2055ed7f3b5751a3e02d57e674b25ee404ff7
-
-Best regards,
---  
-James Hilliard <james.hilliard1@gmail.com>
+-- 
+2.53.0
 
 
 _______________________________________________
