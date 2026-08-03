@@ -4,91 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23D50C55838
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 18:11:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03FF2C55838
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 18:13:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aajsuc46QleZ3KZ3Va7kV5HVQk0AAfMUl3Xe5iS47Js=; b=YmCsiTe7AGlsXS
-	ljVkjKLmZ3MO8zBT/dWuNThVbybN3EB4yN7TRso1pY4nleuVkF2lwk9FFYXdNWBKIv2fiTsUIGnww
-	IOtjT4uh1CAJ6LRHglFgyD3I9qFGX6LiTQLJtDeoPUsIBTbKMpfzg5fSc76ml0sxU0jMfNpoqRsVh
-	j5+me2KBcEoDFwN2xioRhzFVz+E8IUsy1ezb2MCIdYLAtypt649WGHzEkDktJcegsd3FxT+JJfulg
-	RYil7+/i4EBFQ3NICVWAPHfYvVMHhK7kh6gbL12q2IYuyd854QPdxRHyktTsCG4+V5lm4wwL5eazV
-	Istl2w7QCD8i+5SjLvLg==;
+	List-Owner; bh=G0Iel5iDiPCZuQ34IwEaRTAE5Oc+hVJoz8T+9tmRo2E=; b=zRiyJHCm2VSdik
+	NDXAS7fx6saGMk3Te6FuDLf63zKqbpIuh3/Du7pa/LOUzFyHc4jgGPpMTIGrSBDrjuzyqjZUGbGUi
+	tRqTF/DoeEhwImiJflHzM4PXEFTv2Xr/RUoazfgOxFWyeXNndhU/xLHrRcqc+OU2HErXQnN9rrv63
+	ovWveM4V4utcZy4WUfAZDrbBMTS1HfByaXvqHA+Q9h5GstUmIhaFgIjoeQm3pouwJUXuZiYTX83kb
+	xvyk27/P5b+fMbFVSGxAigKL3iuFUsV7Xbvtwfsv7Tz+C5lQN4HPhke10M3/NTmXZN6ictnthPvZu
+	5kRHbJlSA5UbnowqlVVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqx7t-00000000L1G-068h;
-	Mon, 03 Aug 2026 18:11:01 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wqx9o-00000000LdD-2mOw;
+	Mon, 03 Aug 2026 18:13:00 +0000
+Received: from ms.puri.sm ([135.181.196.210])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqx7n-00000000Kxy-3EQD;
-	Mon, 03 Aug 2026 18:10:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785780653;
-	bh=W1DWjzmrjuk3PygoGjrJSXgr4rE7/rYJZFBCfsWa26I=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=oAi3o9+faaEi7bKxXpxuoTxjKBou2jiMip3VO8ih429FrMxd0daozCvxmFyc/hgy2
-	 vFvmXmkXG2IyjYbf9eywjX3z4YrXAzeOlX/oyW2L7HTpk4VERYq8Vgev3/E1VcDhjj
-	 9ILfvd7rLyBCMPKRiEgBbqWWAqUPwUVHHMWIp/NOoFv9nAfbkOgH7wew/BjEDTbBiq
-	 zWwlsXlITzVbHh5xmyv6MieiDhBQrm+Q/4zWmg/DjEoRkTj0c7vfmLmbH2eSzyobKA
-	 h20GxuqV45zFHz5d8zR1+tE0KRXTBaRATpQ6b9CcObT/s3P7ltPk8/NQTWjCzuVOgg
-	 nl1Xo1m9RDjYg==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 476B817E0053;
-	Mon, 03 Aug 2026 20:10:53 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7C735480065; Mon, 03 Aug 2026 20:05:03 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Mon, 03 Aug 2026 20:05:20 +0200
-Subject: [PATCH v9 19/22] drm/bridge: synopsys: dw-dp: Clear only enabled
- SDPs on atomic disable
+	id 1wqx9k-00000000Lao-42Md;
+	Mon, 03 Aug 2026 18:12:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=puri.sm; s=smtp2;
+	t=1785780772; bh=HNTPaYDGutREzLTVPWESt82E01iFz+jQ39UPafEurv0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=J4qIa0M3q9Mja66JJpMWCm3Si2k+eQxKBPYsxWlsjhzfhFhyNWkHOce9T4N2rqDaA
+	 kEmxNLjWJMeQEHDhJ5UGXkpeibsTQ5FNwkQR0x7UnO77zXdxXGMA00/OFQkd/fCgSc
+	 6gZulAcTEPaP0/4e+WFabqGthdJvYdZUuaEdjBfYKwQQ3V4pyKcPDqIGq8SVIBvdNT
+	 XG4o2BAoNJclC5KD2v8WfgpNg7zAq0p3jURjCMHKPQ58y8ibkwVhykQHlXlncggeTq
+	 mDrVCDZBH3C/DsnWTYfXBbi4VpA/j86hwwBXQPHp1E0qCCB5XIeh536HehZjTFh+3v
+	 36zRINnOxbN2Q==
+Received: from pliszka.localnet (79.184.66.106.ipv4.supernova.orange.pl [79.184.66.106])
+	by ms.puri.sm (Postfix) with ESMTPSA id A9F351F617;
+	Mon, 03 Aug 2026 11:12:47 -0700 (PDT)
+From: Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Ondrej Jirman <megi@xff.cz>,
+ Olivier Benjamin <olivier.benjamin@bootlin.com>,
+ Manuel Traut <manut@mecka.net>,
+ Alexander Warnecke <awarnecke002@hotmail.com>, Frank Li <Frank.Li@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>,
+ Martin Kepplinger <martin.kepplinger@puri.sm>,
+ Shawn Guo <shawnguo@kernel.org>, david@ixit.cz
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ phone-devel@vger.kernel.org, imx@lists.linux.dev,
+ David Heidelberg <david@ixit.cz>, stable@vger.kernel.org
+Subject: Re: [PATCH 4/4] arm64: dts: imx8mq-librem5: Dongwoon DW9714 coil requires
+ higher voltage
+Date: Mon, 03 Aug 2026 20:12:44 +0200
+Message-ID: <yJywMSNTQGGZm3rbxd56Yw@puri.sm>
+In-Reply-To: <20260801-pp-pro-camera-v1-4-7b4d90788f9f@ixit.cz>
+References: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
+ <20260801-pp-pro-camera-v1-4-7b4d90788f9f@ixit.cz>
 MIME-Version: 1.0
-Message-Id: <20260803-synopsys-dw-dp-improvements-v9-19-2e6e46135312@collabora.com>
-References: <20260803-synopsys-dw-dp-improvements-v9-0-2e6e46135312@collabora.com>
-In-Reply-To: <20260803-synopsys-dw-dp-improvements-v9-0-2e6e46135312@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2746;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=W1DWjzmrjuk3PygoGjrJSXgr4rE7/rYJZFBCfsWa26I=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpw2E+Hx2rjRLnA+GIT79MVmOd7GYZL99ZGy
- TCsecRUbe29dokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqcNhPAAoJENju1/PI
- O/qaOG4P/AmrVOf38b4+dUs3sNcSQT4T+2yhUJ4WXcHIOaFfxrwnlWPlc5AUP96IXEz9UnKFoMd
- Su62LwCPv+lXYSOH57h3HLEqZULNklQ1SZuKQy2dk+Y7pIU87SEJOkZ6JPUE4grVITrv1x2ll6J
- 7HFarseQjHwix9o+EyAbxLzlL0Os7+WCju91evyUP8VZTILKJC9xAJedpOXTpMVd8Wq6VeSt++t
- JrvY6ASNI1tZaOU+d4WAIcxAfPmxFhktr5DvxRZdOmN0NVzhJKpbzlGtRwSmmPbYF244yvcAPfs
- fYEj08hurUAjdi9j+aVrK3L7We9/q38G/yo+sRPM0xKFBtMn69kEQMtnEYUgPNuXJZ4tHaORv8E
- NGj61CfdlNgjOkObYyxXnl4uNlhGJlnLLO1GBqItRv5HrSVHM49pCJUHtPCwmvbMNoIz5hNUc+E
- roMZKDe0cjogs6LhyVzJiZ3ZGoD0DUiB1zVMOMKWTnfFb5DgtvHDpbLQdTY0xuJQJJX3v9vxsJW
- YqA4E4W+W9yyTFvqd6RmOzDvflqHt7JDk9eh6iYEZyeEh9POC3tsN1sNcE8aB5MrmTWKA9rqCIB
- XWlYy6/RogHjGqTHeo1oda3ywtNM7aYJOMLgIpFqy7jsEH+w1KNerpJyFxAgs5PdWv0kyzI+5yD
- DLQSNlL7oUnqpegaeTFUvtA==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_111055_966196_F0A51D6F 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20260803_111257_176366_49494137 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,102 +78,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-dw_dp_bridge_atomic_disable() bulk-cleared the whole SDP register bank
-allocation bitmap via bitmap_zero() resulting in the loss of all
-tracking information. This results in a slot potentially being handed
-out again by dw_dp_send_sdp(), which is still considered to be held
-by the previous owner. Then the previous owner might free up the wrong
-SDP later on.
-
-Instead of bulk clearing the tracking information, the new
-implementation only clears the SDPs actually configured during
-dw_dp_bridge_atomic_enable() instead of the entire bank. The
-introduced functionality for that will also be used by the to-be-added
-audio infrastructure.
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 27 +++++++++++++++++++++++----
- 1 file changed, 23 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 05d3485a4d8d..d8c6a99e93b8 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -337,6 +337,7 @@ struct dw_dp {
- 
- 	struct drm_bridge *next_bridge;
- 
-+	int vsc_sdp_nr;
- 	DECLARE_BITMAP(sdp_reg_bank, SDP_REG_BANK_SIZE);
- };
- 
-@@ -1078,7 +1079,19 @@ static int dw_dp_send_sdp(struct dw_dp *dp, struct dw_dp_sdp *sdp)
- 				   EN_HORIZONTAL_SDP << nr,
- 				   EN_HORIZONTAL_SDP << nr);
- 
--	return 0;
-+	return nr;
-+}
-+
-+static void dw_dp_clear_sdp(struct dw_dp *dp, int nr)
-+{
-+	regmap_clear_bits(dp->regmap, DW_DP_SDP_VERTICAL_CTRL,
-+			  EN_VERTICAL_SDP << nr);
-+
-+	regmap_clear_bits(dp->regmap, DW_DP_SDP_HORIZONTAL_CTRL,
-+			  EN_HORIZONTAL_SDP << nr);
-+
-+	scoped_guard(mutex, &dp->sdp_lock)
-+		clear_bit(nr, dp->sdp_reg_bank);
- }
- 
- static int dw_dp_send_vsc_sdp(struct dw_dp *dp)
-@@ -1396,7 +1409,7 @@ static int dw_dp_video_enable(struct dw_dp *dp)
- 			   FIELD_PREP(VIDEO_STREAM_ENABLE, 1));
- 
- 	if (dw_dp_video_need_vsc_sdp(dp))
--		dw_dp_send_vsc_sdp(dp);
-+		dp->vsc_sdp_nr = dw_dp_send_vsc_sdp(dp);
- 
- 	return 0;
- }
-@@ -1748,8 +1761,12 @@ static void dw_dp_bridge_atomic_disable(struct drm_bridge *bridge,
- 
- 	dw_dp_video_disable(dp);
- 	dw_dp_link_disable(dp);
--	scoped_guard(mutex, &dp->sdp_lock)
--		bitmap_zero(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
-+
-+	if (dp->vsc_sdp_nr >= 0) {
-+		dw_dp_clear_sdp(dp, dp->vsc_sdp_nr);
-+		dp->vsc_sdp_nr = -1;
-+	}
-+
- 	dw_dp_reset(dp);
- 	pm_runtime_put_autosuspend(dp->dev);
- }
-@@ -2338,6 +2355,8 @@ int dw_dp_probe(struct dw_dp *dp)
- 	if (ret)
- 		return ret;
- 
-+	dp->vsc_sdp_nr = -1;
-+
- 	bridge = &dp->bridge;
- 	bridge->of_node = dev->of_node;
- 	bridge->ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
-
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gc29ib3RhLCAxIHNpZXJwbmlhIDIwMjYgMDI6MzU6MjMgY3phcyDFm3JvZGtvd29ldXJvcGVq
+c2tpIGxldG5pIERhdmlkIApIZWlkZWxiZXJnIHZpYSBCNCBSZWxheSB3cm90ZToKPiBGcm9tOiBE
+YXZpZCBIZWlkZWxiZXJnIDxkYXZpZEBpeGl0LmN6Pgo+IAo+IEJ5IGRhdGFzaGVldCB0aGUgVkRE
+IChpbi1rZXJuZWwgbmFtZWQgdmNjKSByYW5nZSBpcyBiZXR3ZWVuIDIuMyB0byA0LjMgVi4KPiBV
+c3VhbGx5IGl0J3MgYXJvdW5kIDIuOCBWLiBIZXJlIGl0IG1hdGNoZXMgdGhlIHJlZ192Y2FtXzJ2
+OC4KCkl0IGRvZXNuJ3QgLSBWQ0FNXzJWOCBpc24ndCBjb25uZWN0ZWQgdG8gRFc5NzE0IChhbmQg
+bmVpdGhlciBpcyBDU0lfMVY4KTsgClZDQU1fQUZWREQgaXMuCgo+IDEuOCBWIGhlcmUgaXMgbGlr
+ZWx5IHVzZWQgZm9yIGkyYyBsZXZlbCBzaGlmdGVyLgoKSSdtIG5vdCBzdXJlIHdoZXJlIHlvdSd2
+ZSBnb3QgYW4gSTJDIGxldmVsIHNoaWZ0ZXIgZnJvbSwgdGhlcmUncyBub25lIGludm9sdmVkIAp0
+aGVyZS4gQ1NJXzFWOCBpcyBwYXNzZWQgdG8gdGhlIHJlYXIgY2FtZXJhIG1vZHVsZSBhcyBET1ZE
+RCBhbmQgaXMgY29uc3VtZWQgYnkgClM1SzNMNiBhcyBWRERJTywgYW5kIGJvdGggUzVLM0w2IGFu
+ZCBEVzk3MTQgYXJlIGNvbm5lY3RlZCB0byBJMkM0X1NEQS8KSTJDNF9TQ0wsIG9wZXJhdGluZyBh
+dCB0aGUgMS44ViBsZXZlbCwgb25seSB0aG91Z2ggYW4gRU1JIGZpbHRlciAoRjcgaW4gdGhlIApz
+Y2hlbWF0aWMpLgoKPiAKPiBGaXhlczogZjAwZGYyYmRiNTEyICgiYXJtNjQ6IGR0czogaW14OG1x
+LWxpYnJlbTU6IGRlc2NyaWJlIHRoZSB2b2ljZSBjb2lsCj4gbW90b3IgZm9yIGZvY3VzIGNvbnRy
+b2wiKSBDYzogc3RhYmxlQHZnZXIua2VybmVsLm9yZwo+IFNpZ25lZC1vZmYtYnk6IERhdmlkIEhl
+aWRlbGJlcmcgPGRhdmlkQGl4aXQuY3o+Cj4gLS0tCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvZnJl
+ZXNjYWxlL2lteDhtcS1saWJyZW01LmR0c2kgfCAyICstCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGlu
+c2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jv
+b3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEtbGlicmVtNS5kdHNpCj4gYi9hcmNoL2FybTY0L2Jvb3Qv
+ZHRzL2ZyZWVzY2FsZS9pbXg4bXEtbGlicmVtNS5kdHNpIGluZGV4Cj4gZjVkNTI5YzViYWYzZS4u
+NTgzY2JhMmQzYmViZiAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2Fs
+ZS9pbXg4bXEtbGlicmVtNS5kdHNpCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2Nh
+bGUvaW14OG1xLWxpYnJlbTUuZHRzaQo+IEBAIC0xMTY3LDE3ICsxMTY3LDE3IEBAICZpMmM0IHsK
+PiAgCXBpbmN0cmwtMSA9IDwmcGluY3RybF9pMmM0X2dwaW8+Owo+ICAJc2NsLWdwaW9zID0gPCZn
+cGlvNSAyMCAoR1BJT19BQ1RJVkVfSElHSCB8IEdQSU9fT1BFTl9EUkFJTik+Owo+ICAJc2RhLWdw
+aW9zID0gPCZncGlvNSAyMSAoR1BJT19BQ1RJVkVfSElHSCB8IEdQSU9fT1BFTl9EUkFJTik+Owo+
+ICAJc3RhdHVzID0gIm9rYXkiOwo+IAo+ICAJdmNtQGMgewo+ICAJCWNvbXBhdGlibGUgPSAiZG9u
+Z3dvb24sZHc5NzE0IjsKPiAgCQlyZWcgPSA8MHgwYz47Cj4gLQkJdmNjLXN1cHBseSA9IDwmcmVn
+X2NzaV8xdjg+Owo+ICsJCXZjYy1zdXBwbHkgPSA8JnJlZ192Y2FtXzJ2OD47Cj4gIAl9Owo+IAo+
+ICAJYmF0OiBmdWVsLWdhdWdlQDM2IHsKPiAgCQljb21wYXRpYmxlID0gIm1heGltLG1heDE3MDU1
+IjsKPiAgCQlyZWcgPSA8MHgzNj47Cj4gIAkJaW50ZXJydXB0LXBhcmVudCA9IDwmZ3BpbzM+Owo+
+ICAJCWludGVycnVwdHMgPSA8MjAgSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiAgCQlwaW5jdHJsLW5h
+bWVzID0gImRlZmF1bHQiOwoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtcm9ja2NoaXAK
