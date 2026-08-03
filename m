@@ -4,48 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EADB3C55184
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 08:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 004D6C55184
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 08:21:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fKmDS8q4dZYa8IpSmVES/wSwe3YdFSaygCfA+RhO7o4=; b=eqSjNCkw+tSzyd
-	bjSGhQkuxgDEd9RsfnTrnYUAv7dAenx8T8ej2rXv+zRNoiL+JflNLz6kdr4LtOmH/5VOxlaIWZ3lj
-	jbi1eT2nrrrRyQu/orchq8PeNurc+2zsKLI65SStdWxZjJ77RB4iAiDAqQNg0BrPiqJ/GjDjMYkvc
-	5x4O2Ov8MyMjnubpRG3WZZplKKhcHyFazKxlo+GeMXrfvjn8WIP0UPDsoPl7WE2NovXnacgWkADvU
-	4dyIuMKQGN6MN4WVIQG5af9s4h6R/P/BzvVIYJIemhavaNP9nXcEFqoRnWGiqZPr2lIRyia11tDJZ
-	Bx14LSB8IoLekjPUOf0Q==;
+	List-Owner; bh=zxTbDR+qj4RR27BBGpk1t7XeBiFB8oNqxlV5DQbX+NY=; b=O2KbBLcaH4KL8v
+	CnV4upqP7iUMM21bD6hl7M8QFETbRhpCeAagwPCmG+v2u6hCxKH8V6o2vYzp44EOwDKKmS1RquyM4
+	JTbwXCuKwJhyjRhvqVN+uOyD175bbWTAH+T4+emAXVAcDN21FADDFZBZhXlE9HtsrRL73aMuQD6oW
+	NHn8agNIld5afg5gOP+l9Ud3NijVNzQ88hM2pkxEvMolYvQXQpicZpdlXw+Ii9QbSkpUMo0Ko1Qm8
+	txRwO6F/7M1GMiKrZ0zMhLKnaP0ltoFgJverj4X9tCJGwP0qchM2y9b4pKal0Fu8JcLtmNUuHedoM
+	Dop91dcSNyOK6KsRYDDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqnuh-0000000Gb71-1UHs;
-	Mon, 03 Aug 2026 08:20:47 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wqnvk-0000000GbJ7-2KRx;
+	Mon, 03 Aug 2026 08:21:52 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqnuf-0000000Gb6o-38fT;
-	Mon, 03 Aug 2026 08:20:45 +0000
+	id 1wqnvi-0000000GbIV-2imP;
+	Mon, 03 Aug 2026 08:21:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 87F9A43726;
-	Mon,  3 Aug 2026 08:20:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBDA81F000E9;
-	Mon,  3 Aug 2026 08:20:32 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CF7BA600FF;
+	Mon,  3 Aug 2026 08:21:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 532B21F000E9;
+	Mon,  3 Aug 2026 08:21:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785745244;
-	bh=oL77ikjGFVW7QH8ozMC74CWfxuPdNOXGLUeFKsMycB8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=V/BStKSGhLspBCfJaAyL/O1UrXPMY+cIrEN87pQ4cFZRFUCkbLwpEucGYZibMqVUt
-	 rKKPxVnP+n5lL5+QJBLYnF+MpSPAAGezZoKLMJvhMp4OLpqwLpztg/FQYzZ4H8GwMh
-	 GOALuLZvqqoAMl7nXGjm5sameAlhvDcgs/wH+OjxV3QiFTrTF/9kYsvLGDtkOpU+6c
-	 SCg+kUQuMhTZJUEp1v2kzIWMJWknuU8nUcZQQeYCNN9B6D2EyCrsQJ5sESITvN3QG8
-	 eJNr0lxm1BPCHAzj9aB1hycB4I//WCPwH3r6mAvQcxxUppMfIXhy2msFbxRPgwV/n7
-	 kqW0dHeBirljA==
-Message-ID: <e198e8fa-6c5e-4c8d-a4de-d8bb25aab0bd@kernel.org>
-Date: Mon, 3 Aug 2026 10:20:30 +0200
+	s=k20260515; t=1785745309;
+	bh=e5uwIV2Y4sYN43Sv15YtOuNlkl0578hRCHETri1JqXY=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To;
+	b=IucJlZnTzfbxH/e0Qk+Z9/AYn5jhp3/hetueeRO6zyjqCEHUwvFT/5690oo0ate+w
+	 rOVwoHcXPW2yYowgVEy2+IdW/gr2lYlQd1s+E4CHMpe3bUNFXR7S0tt9xmOyW6kFWZ
+	 AUSgoUbfrZeyU7/K+cPQHKATQQVNyvDvn1GoMo6f3c9sk+OR4CzLhj9yoMGiKrZXS5
+	 h4sOOrtlaucdEFiTddVsXNLh4cgMiSCpNFlbwM9lq3T5KFzsGbNdHpJcm4GujGtx1U
+	 IZ1ShWsfIfYP3J2fVee9eQuRpyXsEkRJffX8z7wpJ1DGbaNxw8TcYMUBF7sJ3kcZYm
+	 ngmdJrLYaEbTQ==
+Message-ID: <cd177647-827c-481a-9ac6-5f5a1882f14e@kernel.org>
+Date: Mon, 3 Aug 2026 10:21:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 08/21] dt-bindings: mfd: x-powers: add AC200
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: James Hilliard <james.hilliard1@gmail.com>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
  <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
@@ -72,8 +74,7 @@ References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
  <20260802-submit-acx00-of-dynamic-v1-v1-8-0a53cd9e21cc@gmail.com>
  <f2cc3c90-060f-40c1-a55e-e2ed91e65487@kernel.org>
  <CADvTj4q7HnOYJZE-M070-1npEdne__Ct5D9FeUNVVXa8Bsm7qQ@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
+ <e198e8fa-6c5e-4c8d-a4de-d8bb25aab0bd@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -117,7 +118,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
  n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
  qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
-In-Reply-To: <CADvTj4q7HnOYJZE-M070-1npEdne__Ct5D9FeUNVVXa8Bsm7qQ@mail.gmail.com>
+In-Reply-To: <e198e8fa-6c5e-4c8d-a4de-d8bb25aab0bd@kernel.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,66 +130,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDMvMDgvMjAyNiAwOTo1NCwgSmFtZXMgSGlsbGlhcmQgd3JvdGU6Cj4gT24gTW9uLCBBdWcg
-MywgMjAyNiBhdCAxOjA34oCvQU0gS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6a0BrZXJuZWwub3Jn
-PiB3cm90ZToKPj4KPj4gT24gMDMvMDgvMjAyNiAwNzoxNCwgSmFtZXMgSGlsbGlhcmQgd3JvdGU6
-Cj4+PiBUaGUgQUMyMDAgaXMgYW4gSTJDLWNvbnRyb2xsZWQgbWl4ZWQtc2lnbmFsIGNvbXBhbmlv
-biBJQyBjb250YWluaW5nCj4+PiBhdWRpbywgdmlkZW8sIFJUQyBhbmQgRmFzdCBFdGhlcm5ldCBQ
-SFkgZnVuY3Rpb25zLgo+Pgo+PiBUaGlzIGZhaWxzIHdoZW4gYXBwbGllZCwgYmVjYXVzZSB5b3Ug
-ZGlkIG5vdCBleHBsYWluIHRoZQo+PiBkZXBlbmRlbmNpZXMvbWVyZ2luZyBvZiB0aGlzIHBhdGNo
-c2V0Lgo+Pgo+PiBUaGlzIGlzIFRIRSBNT1NUIGltcG9ydGFudCBpbmZvcm1hdGlvbiBvZiBjb3Zl
-ciBsZXR0ZXIuIFRoZSBmaXJzdCB0aGluZwo+PiB0byBleHBsYWluLgo+IAo+IEkgZGlkIG1lbnRp
-b24gaW4gdGhlIGNvdmVyIGxldHRlciB0aGF0IHRoZSBwd20gc2VyaWVzIGlzIGEgZGVwZW5kZW5j
-eToKPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyNjA3MDMxNTIyMTUuMTkyODU5LTEt
-cmljaGFyZC5nZW5vdWRAYm9vdGxpbi5jb20vCgpBcHBseSB0aGlzIHBhdGNoIGFuZCB0ZXN0LgoK
-PiAKPiBXaXRoIHRoZSBwd20gc2VyaWVzIGZpcnN0IHRoaXMgc2hvdWxkIGFwcGx5IG9uIHRvcCBv
-ZiBtYXN0ZXIuIFNob3VsZAo+IEkganVzdCBtZW50aW9uIHRoYXQgaXQgYXBwbGllcyBvbiBtYXN0
-ZXIgb3Igc2hvdWxkIEkgcmVmZXJlbmNlIGEgc3BlY2lmaWMKPiBjb21taXQgaGFzaCBvciBzb21l
-dGhpbmc/Cj4gCj4+Pgo+Pj4gRGVzY3JpYmUgdGhlIHBhcmVudCBkZXZpY2UsIGl0cyBpbnB1dCBj
-bG9jaywgcmVxdWlyZWQgZnVuY3Rpb24gc3VwcGxpZXMsCj4+PiB0aGUgb3B0aW9uYWwgU0lEIGJh
-bmRnYXAgY2FsaWJyYXRpb24gY2VsbCB1c2VkIGJ5IHRoZSB2ZW5kb3IgaW5pdGlhbGl6YXRpb24K
-Pj4+IHNlcXVlbmNlLCBhbmQgaXRzIG9wdGlvbmFsIEV0aGVybmV0IFBIWSBjb250cm9sIGNoaWxk
-LiBEb2N1bWVudCB0aGUgMjQgYW5kCj4+PiAyNyBNSHogcmF0ZXMgZW5jb2RlZCBieSB0aGUgcHVi
-bGljIEVQSFkgY2xvY2sgc2VsZWN0b3IuCj4+Pgo+Pgo+PiAuLi4KPj4KPj4+ICtyZXF1aXJlZDoK
-Pj4+ICsgIC0gY29tcGF0aWJsZQo+Pj4gKyAgLSByZWcKPj4+ICsgIC0gY2xvY2tzCj4+PiArICAt
-IGFjLWxkb2luLXN1cHBseQo+Pj4gKyAgLSBlcGh5LXZjYy1zdXBwbHkKPj4+ICsgIC0gcnRjLXZj
-Yy1zdXBwbHkKPj4+ICsgIC0gdHYtdmNjLXN1cHBseQo+Pj4gKwo+Pj4gK2RlcGVuZGVuY2llczoK
-Pj4+ICsgIGludGVycnVwdHM6IFsgaW50ZXJydXB0LWNvbnRyb2xsZXIgXQo+Pj4gKyAgaW50ZXJy
-dXB0LWNvbnRyb2xsZXI6IFsgJyNpbnRlcnJ1cHQtY2VsbHMnLCBpbnRlcnJ1cHRzIF0KPj4+ICsg
-ICcjaW50ZXJydXB0LWNlbGxzJzogWyBpbnRlcnJ1cHQtY29udHJvbGxlciBdCj4+PiArICBudm1l
-bS1jZWxsczogWyBudm1lbS1jZWxsLW5hbWVzIF0KPj4+ICsgIG52bWVtLWNlbGwtbmFtZXM6IFsg
-bnZtZW0tY2VsbHMgXQo+Pgo+PiBXaHkgZG8geW91IG5lZWQgYWxsIHRoZXNlIGRlcGVuZGVuY2ll
-cz8gV2hhdCBhcmUgeW91IHRyeWluZyB0byBleHByZXNzPwo+IAo+IExvb2tzIGxpa2Ugd2UgcHJv
-YmFibHkgY2FuIGdldCByaWQgb2YgYWxsIGV4Y2VwdCB0aGVzZToKPiBpbnRlcnJ1cHQtY29udHJv
-bGxlcjogWyBpbnRlcnJ1cHRzIF0KPiBudm1lbS1jZWxsczogWyBudm1lbS1jZWxsLW5hbWVzIF0K
-PiAKPiBJIHdhcyBqdXN0IHRyeWluZyB0byBleHByZXNzIHRoZSBNRkQgY29udHJvbGxlciBkZXBl
-bmRlbmNpZXMuCj4gCj4+PiArCj4+PiArYWRkaXRpb25hbFByb3BlcnRpZXM6IGZhbHNlCj4+PiAr
-Cj4+PiArZXhhbXBsZXM6Cj4+PiArICAtIHwKPj4+ICsgICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdz
-L2ludGVycnVwdC1jb250cm9sbGVyL2lycS5oPgo+Pj4gKwo+Pj4gKyAgICBpMmMgewo+Pj4gKyAg
-ICAgICAgI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4+PiArICAgICAgICAjc2l6ZS1jZWxscyA9IDww
-PjsKPj4+ICsKPj4+ICsgICAgICAgIG1peGVkLXNpZ25hbEAxMCB7Cj4+Cj4+IC4uLgo+Pgo+Pj4g
-Ky4uLgo+Pj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHQtYmluZGluZ3MvbWZkL3gtcG93ZXJzLGFj
-MjAwLmggYi9pbmNsdWRlL2R0LWJpbmRpbmdzL21mZC94LXBvd2VycyxhYzIwMC5oCj4+PiBuZXcg
-ZmlsZSBtb2RlIDEwMDY0NAo+Pj4gaW5kZXggMDAwMDAwMDAwMDAwLi5jYzU5ZTJhYjQ5MTIKPj4+
-IC0tLSAvZGV2L251bGwKPj4+ICsrKyBiL2luY2x1ZGUvZHQtYmluZGluZ3MvbWZkL3gtcG93ZXJz
-LGFjMjAwLmgKPj4+IEBAIC0wLDAgKzEsMTMgQEAKPj4+ICsvKiBTUERYLUxpY2Vuc2UtSWRlbnRp
-ZmllcjogKEdQTC0yLjAtb25seSBPUiBCU0QtMi1DbGF1c2UpICovCj4+PiArLyoKPj4+ICsgKiBJ
-bnRlcnJ1cHQgbnVtYmVycyBvZiB0aGUgWC1Qb3dlcnMgQUMyMDAgaW50ZXJydXB0IGNvbnRyb2xs
-ZXIuCj4+PiArICovCj4+PiArCj4+PiArI2lmbmRlZiBfRFRfQklORElOR1NfTUZEX1hfUE9XRVJT
-X0FDMjAwX0gKPj4+ICsjZGVmaW5lIF9EVF9CSU5ESU5HU19NRkRfWF9QT1dFUlNfQUMyMDBfSAo+
-Pj4gKwo+Pj4gKyNkZWZpbmUgQUMyMDBfSVJRX1RWRSAgICAgICAgICAgICAgICAgICAgICAgIDAK
-Pj4+ICsjZGVmaW5lIEFDMjAwX0lSUV9FUEhZICAgICAgICAgICAgICAgICAgICAgICAxCj4+PiAr
-I2RlZmluZSBBQzIwMF9JUlFfUlRDICAgICAgICAgICAgICAgICAgICAgICAgMgo+Pgo+PiBIYXJk
-d2FyZSBjb25zdGFudHMgYXJlIG5vdCByZWFsbHkgYmluZGluZ3MsIGV2ZW4gdGhvdWdoIHlvdSB1
-c2UgdGhlbSBpbgo+PiB0aGUgZHJpdmVyLgo+IAo+IFNob3VsZCBJIGRvIHNvbWV0aGluZyBkaWZm
-ZXJlbnQgZm9yIHRoaXM/CgpJIHdvdWxkIGp1c3QgZHJvcCB0aGUgZGVmaW5lcyBhbmQgdGhlIGhl
-YWRlciwgYmVjYXVzZSB0aGVzZSBhcmUgZml4ZWQKaGFyZHdhcmUgbnVtYmVycy4KCgpCZXN0IHJl
-Z2FyZHMsCktyenlzenRvZgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+On 03/08/2026 10:20, Krzysztof Kozlowski wrote:
+>>>> --- /dev/null
+>>>> +++ b/include/dt-bindings/mfd/x-powers,ac200.h
+>>>> @@ -0,0 +1,13 @@
+>>>> +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
+>>>> +/*
+>>>> + * Interrupt numbers of the X-Powers AC200 interrupt controller.
+>>>> + */
+>>>> +
+>>>> +#ifndef _DT_BINDINGS_MFD_X_POWERS_AC200_H
+>>>> +#define _DT_BINDINGS_MFD_X_POWERS_AC200_H
+>>>> +
+>>>> +#define AC200_IRQ_TVE                        0
+>>>> +#define AC200_IRQ_EPHY                       1
+>>>> +#define AC200_IRQ_RTC                        2
+>>>
+>>> Hardware constants are not really bindings, even though you use them in
+>>> the driver.
+>>
+>> Should I do something different for this?
+> 
+> I would just drop the defines and the header, because these are fixed
+> hardware numbers.
+> 
+
+Hm, unless they are not and you added abstract ID numbers for both DTS
+and drivers? Then this would be fine.
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
