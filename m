@@ -4,58 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD531C55184
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 12:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61311C55184
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 12:58:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oMD3VhI9v0GrI9uQusBwTapC/CM7go5uySKWPX1/iX0=; b=FgdgIWBqZ3nIZE
-	olrhvHByT3wn5jtRUV4wWzfR6RxorF9GATiujtrL7yAdmtYYq/QiYgKS7uq1imQO1K1WvhJ8C7Mmb
-	ntFC3hQZNAfT5VW9Q58Jc1BlG8LhkLr6UFL2x00KgIxP2W5muKx03qmJPJ5/4s3s6ILoU6jH18U2U
-	VoIxtd2pIoozqjtXynVhGEPUPtwmaslshyNhTYT+DZ2IRiqZwyVMGibgu5DEF0v1fgXUgfMRHewY4
-	ROW3vjCASwn3HwbuepRy7sNHJ8nlm6FL5Kf0cXUsOT4m3Zg84/wie7y15eYexGN0VSVefB/aGNqmf
-	vWeptdSlGPxdUTwhN7LQ==;
+	List-Owner; bh=NFRqBCLwZzSHl6UvDQSRPld8ym6fyGkwWLKkFmWY9+o=; b=kLOeAtD/4KGcoW
+	a3FnNXjhs7GyDtaiIttHVMffQg1vqocvb0wgSZJTdtpfyCGMGlWsXMLhKbiHMExzn7O/rFes9t0hK
+	/PzExMu7AM22+n8CI4BH1yn1+fus/yu8T2J7JrFKOPwPF3qx93IoJkuMXb0rJbj5tSesx9hyyZ2QR
+	ojtgbSDTipp+2NE04ihLe7mn3IT8wAsL9gJYGqQS6HMTbKY0j6HKSTqjX6zDztL7jhTQOiJGdQN9W
+	gGcnorBlx2+s+jA7KFAZYeeXiWFZPZHnpSkT4/24UjEA3r7/GuiSKGstOATdLn2gHK3pRvstd2FaR
+	i3T/fAlkmfXLadyxAPBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqrxx-0000000H30c-2knd;
-	Mon, 03 Aug 2026 12:40:25 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1wqsFL-0000000H5rg-3f4B;
+	Mon, 03 Aug 2026 12:58:23 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqrxt-0000000H2xv-07u8;
-	Mon, 03 Aug 2026 12:40:24 +0000
-Received: from Vostro-3710.. (unknown [14.220.232.116])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4895a4bee;
-	Mon, 3 Aug 2026 20:40:09 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: zyheihei_123@163.com
-Cc: amadeus@jmu.edu.cn,
-	andrew@lunn.ch,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [RFC PATCH] arm64: dts: rockchip: H28K: release RTL8211F reset before MDIO probing
-Date: Mon,  3 Aug 2026 20:40:00 +0800
-Message-Id: <20260803124000.840861-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260803104646.26836-1-zyheihei_123@163.com>
-References: <20260803104646.26836-1-zyheihei_123@163.com>
+	id 1wqsFJ-0000000H5qj-2NEn;
+	Mon, 03 Aug 2026 12:58:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=h3RZ9MZrJRlYpmJWGBALRfdgpWl81bAE0/bWp0ApIOY=; b=XPvO/U2DqO7spL0YdgbUNARhiN
+	IV21tBivZ4qqClwaWOpn/2TW1bLemo/ud6v9m73u0/K/JkL+qag97XzdbNhX9tBn0Ypl3DG7xLL17
+	pKxw77Qn0Y3S/+D17G37K3voCR/R4iCeQz4WYq+Yy3QKfguKXLfWC/XKTXGwjtguI2vc=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wqsFF-00Fiw8-46; Mon, 03 Aug 2026 14:58:17 +0200
+Date: Mon, 3 Aug 2026 14:58:17 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: =?utf-8?B?6a2U5YqbIOmXquWFiQ==?= <molishanguang@outlook.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [RFC PATCH] arm64: dts: rockchip: H28K: release RTL8211F reset
+ before MDIO probing
+Message-ID: <d2780faf-54e8-4c0a-8070-93d36c91cb19@lunn.ch>
+References: <SJ2PR04MB851017E50140354C2F5B3FF3B5D52@SJ2PR04MB8510.namprd04.prod.outlook.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9fc7a3819d03a2kunm7af09f8f2859a5
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZTE1CVkhLHkxLQkJOGklIH1YeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpKTVlXWRYaDxIVHRRZQVlPS0hVSktIS0
-	pMS1VKS0tVS1kG
+Content-Disposition: inline
+In-Reply-To: <SJ2PR04MB851017E50140354C2F5B3FF3B5D52@SJ2PR04MB8510.namprd04.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_054021_254252_997C4EDA 
-X-CRM114-Status: UNSURE (   5.79  )
+X-CRM114-CacheID: sfid-20260803_055821_600706_74508BE2 
+X-CRM114-Status: UNSURE (   7.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,20 +75,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+> This is an RFC: snps,reset-gpios is deprecated in favour of the
+> ethernet-PHY reset bindings, so feedback on the preferred way to release
+> the reset early is welcome.
 
-> Release the reset from the MAC node via snps,reset-gpios so it is
-> deasserted before MDIO scanning, and drop the PHY-node reset-gpios (a
-> second consumer on the same GPIO is rejected with -EBUSY).
+> + snps,reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+> + snps,reset-delays-us = <0 20000 100000>;
 
-This is incorrect. Has your uboot's DT been synchronized with the kernel?
-Normally, U-Boot will reset this GPIO. Another way to solve your problem
-is to hardcode the PHY ID here. However, considering that manufacturers
-might use either RTL8211F or YT8531, it's best to let U-Boot handle it.
+  snps,reset-gpio:
+    deprecated: true
+    maxItems: 1
+    description:
+      PHY Reset GPIO
 
-For reference: https://github.com/openwrt/openwrt/commit/384127320e0b
+  snps,reset-active-low:
+    deprecated: true
+    $ref: /schemas/types.yaml#/definitions/flag
+    description:
+      Indicates that the PHY Reset is active low
 
-By the way, you sent this patch twice within two hours...
+  snps,reset-delays-us:
+    deprecated: true
+    description:
+      Triplet of delays. The 1st cell is reset pre-delay in micro
+      seconds. The 2nd cell is reset pulse in micro seconds. The 3rd
+      cell is reset post-delay in micro seconds.
+    minItems: 3
+    maxItems: 3
+
+As you say, deprecated: true. You should not be adding new uses of
+deprecated properties.
+
+Try using the reset properties in mdio.yaml
+
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
