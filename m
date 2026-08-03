@@ -4,82 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D28E0C55182
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 22:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A51FC55184
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 23:49:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tIwA9nK/atajZKV7QCClYmMHquSSqeUyqBo56CXlT6Q=; b=FNZWJgp7z0EqB8
-	2cPe1Se1yUZyKl6I3n1LIRXhedP90q4HgdpFPqhqQhO4HFiTDyffL67apF4OBJj4j9jizCaUtqMN7
-	kK9qMFV5vvucc9tSH5djtQylBTgqgglTtz5NEOdZzA1otfo5OzfLz7BEOuQhkQJFPVWRGnP2Ah15s
-	/j4AHm4zKbmMB8IouZlG2ZIbqkEtBhH3yMH1nebSKB7hX4RN/b+4Is4icPHZzQiZNSAaa4hGdii7O
-	gkUG4Q82i/1gIo/DFQLpSgxfPiDc/PApcm35vxvMxuESDjsOKoCUc6Lgn+J0c4C78g0j2OR261uYF
-	GNgJR1GCLxNF/aSa5REQ==;
+	List-Owner; bh=OBEJd+Noys05GHzW+JIl1dAdkMLESK8qvm4VXH4NV4Y=; b=hpPbe0AlDVA13u
+	33JroZ/KewAicHc7t0zWvCC5sm+eNU2UzYK7GNve49YHywYkG62+uWqfs7WvlbZdNtGUgjjQ44SS/
+	h9WA/UTEgqmjaIVuES5byP/rLoatF7U56C4Re8FbSFIyOSthFom8zw09BBnsUdhdi5HwTL7AUO+D6
+	5lXQfpynidrETiC6QCVUY0R5MaPZbHuigsDndhMDvOvNWhNmqHRkfug3a5JJpZ5GGXWaEnC0uDbER
+	NW3hnKEFYfEay2ruDzYNsxbnXJfz/HuaSw2YXMpBY1Z1l8Kp+iYWlsn41RuGm/uRlbfUghT8Rfcx2
+	JPzPRjuXXBRWnxZGasmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr0oj-00000000Zgb-2xlD;
-	Mon, 03 Aug 2026 22:07:29 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1wr2PV-00000000izl-0oz9;
+	Mon, 03 Aug 2026 23:49:33 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr0og-00000000ZgB-1NK7;
-	Mon, 03 Aug 2026 22:07:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=QyL++FDwNzw7IdQdXo57nrKU13/uhPw2ksNqMZiKcq4=; b=0Pcu5XYZa6u6bBHVkoMq51p4oC
-	9oPuTIzWpb+B0pYjsYag+9gabdjMFyu61niThjASBZE+W8RWHxagMeLlBK7+pOwqUhLLeKjLF1NH7
-	vLNAP6zqfp5B8dLQlDoZ+xwoz1e8V7AQVRvk7xGdiOd95THpMftk9vSGAdOOIQB8x1ls=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1wr0oF-00FqX2-Uc; Tue, 04 Aug 2026 00:06:59 +0200
-Date: Tue, 4 Aug 2026 00:06:59 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: James Hilliard <james.hilliard1@gmail.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Andre Przywara <andre.przywara@arm.com>,
-	Richard Genoud <richard.genoud@bootlin.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Saravana Kannan <saravanak@kernel.org>, Lee Jones <lee@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com, mfd@lists.linux.dev,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 08/21] dt-bindings: mfd: x-powers: add AC200
-Message-ID: <3d5310f6-d0a8-493e-a870-2e017db8cfd1@lunn.ch>
-References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
- <20260802-submit-acx00-of-dynamic-v1-v1-8-0a53cd9e21cc@gmail.com>
- <f2cc3c90-060f-40c1-a55e-e2ed91e65487@kernel.org>
- <CADvTj4q7HnOYJZE-M070-1npEdne__Ct5D9FeUNVVXa8Bsm7qQ@mail.gmail.com>
- <e198e8fa-6c5e-4c8d-a4de-d8bb25aab0bd@kernel.org>
- <CADvTj4rjXGgF2d9Xm6TmeS2LwaM+O2wFFH=rGLA32y+aMk2KOg@mail.gmail.com>
+	id 1wr2PR-00000000iz9-3OCn;
+	Mon, 03 Aug 2026 23:49:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:Content-Type:
+	MIME-Version; bh=QB4+0hrVE5CLViaBG7l1TtGnXdcyF+FMaF/t4P5YnK4=;
+	b=C+/jDnhpBlG3rJ6eHnHrXsiZYBRXkTnlCyXQR5tj1iQFAF2uLO/QbQijhaQQDg
+	TmafTQ/DVm2pQ3yjBs1rWaa6bMoIp03Cs6whKsUlpKOi9HS3ThIwXXhOQHgZFHkq
+	ypu6hRiKhuI3Kl1zZCSLN0KArjBr7MRDYwuBa6oAcBk0s=
+Received: from 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa (unknown [])
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wAnoEvyKHFqO7S+Ng--.58495S2;
+	Tue, 04 Aug 2026 07:49:07 +0800 (CST)
+From: Zhyi <zyheihei_123@163.com>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Andrew Lunn <andrew@lunn.ch>, Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [RFC PATCH v2] arm64: dts: rockchip: H28K: release RTL8211F reset
+ before MDIO probing
+Date: Tue, 04 Aug 2026 07:49:06 +0800
+Message-ID: <178580094649.8348.12264215435109995102.h28k-rfc-v2-withdraw@163.com>
+In-Reply-To: <1e8da54f-ef87-4d31-9a0a-17c0ff66bee0@kwiboo.se>
+References: <20260803104646.26836-1-zyheihei_123@163.com>
+ <178577533421.26919.15449256732994709630.h28k-rfc-v2@163.com>
+ <1e8da54f-ef87-4d31-9a0a-17c0ff66bee0@kwiboo.se>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CADvTj4rjXGgF2d9Xm6TmeS2LwaM+O2wFFH=rGLA32y+aMk2KOg@mail.gmail.com>
+X-CM-TRANSID: _____wAnoEvyKHFqO7S+Ng--.58495S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWrZF45ZrW3uFy8KrWDuryrtFb_yoW3Arb_Ka
+	s0kryDWayvyw4rC3WrtF17XrZFk398CryxtrW8Zan7W3sxXFZYqr9av3W0vw17JF4Ivry3
+	GF90yrn3CwsxujkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRE5Ef7UUUUU==
+X-Originating-IP: [240e:390:2ef3:c801:e498:7ace:78bd:b49f]
+X-CM-SenderInfo: 521kvx5khlsiist6il2tof0z/xtbC9xM912pxKPMxQgAA39
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_150726_387958_8B256D76 
-X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-CacheID: sfid-20260803_164930_252149_E300FB44 
+X-CRM114-Status: UNSURE (   7.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,17 +78,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> How were you applying the series?
+Hi Jonas,
 
-All the networking patches will be applied to net-next.
+Thanks for the analysis, and for the pointer to your earlier write-up
+on the rock-3a issue [1].
 
-https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html
+You are right: GPIO4_C2 is the RTL8211F reset line, so describing it on
+the PHY node is the accurate hardware description, and the MDIO bus
+reset in my RFC was a software workaround rather than a correct device
+tree. I withdraw the RFC v2 change; the kernel DTS stays as the
+accepted upstream commit 145d4af4b204 ("arm64: dts: rockchip: Add
+HINLINK H28K").
 
-You are going to need to split them out.
+I will follow your suggestion and add the rk3528-hinlink-h28k board as
+a target in mainline U-Boot using the board-specific device tree, so
+the Ethernet PHY is reset before Linux starts.
 
-    Andrew
+Thanks,
+Zhyi
 
-    
+[1] https://lore.kernel.org/linux-rockchip/47d55aca-bee6-810f-379f-9431649fefa6@kwiboo.se/
+
 
 _______________________________________________
 Linux-rockchip mailing list
