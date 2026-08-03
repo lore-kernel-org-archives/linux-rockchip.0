@@ -4,95 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B71FAC5516F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F16C9C55182
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:16:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=erg1IRLmy/WuiA/Nk32ayYAv4NJoPWVKq44HSLMeXJQ=; b=fHPb9kinczuClI
-	N7vxdpkAxtQjPG1JiHT449YDHresJV0bAdonUTXmzDSiX7GrHMbDPqnkP6tGmBMlmK5TY9P008yyZ
-	ucGMHXVYJycgAEPGjNtf45uP4vs0I3V3jXNAKyLMy6eUYoi6yaw+4Jrz9mOdnTx2RT7AVWyXh1d7I
-	3gfpS/FThZk7GpZaoUV9P7I/aLLdwbhk3JJNzQ/o3jPYh97GhKeHzq43hh9PqMV0EyUsXmDXXL7UC
-	0m3kmY3DqsFFRp0KWIJ+8mHZSGhK1XuBkPhiu1vkEzqelUhfF6vNU2d5oPpY8y0m4IyVe8cFOgpUz
-	XWGTYYY0fdEL1PqOY9WA==;
+	List-Owner; bh=MQkCYe58Dmk4cGg7UtGQL1hTQWqOk8gTvY7KcgB71+A=; b=dDVqNKP1fToHT0
+	7QfzjNvdRFDucChm4gwqxOxVpnGP67CZl/V7wxSPxjqbGDW9bduRJAiedkUOel8B61NEmgZtA6sfk
+	1O3rj85YqcVHsxx+PErFTuz9vcBUPoeAL32GF/jVr8Ku/+Vobhi9PTo8SxU6XaqYtiVAl4IZ2b4dH
+	jbUNrpcl5bslm2Ach5k/mzgo7DriYy/dhz4isVVDkSXC5xGgwbVvFil4fjYS1889K2Lxca4O62tDh
+	yYbXt3JnYVT96vekpUkTAdwEYqQ3VXYPp3gRzE9dZt4Rongi4eiSozdTUBjMrinRQ1yWWMWBRtf8Z
+	ME/Y/NtIWJVJoaCeraqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql2W-0000000GMkK-2AbM;
-	Mon, 03 Aug 2026 05:16:40 +0000
+	id 1wql2Z-0000000GMmv-3PL5;
+	Mon, 03 Aug 2026 05:16:43 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql2U-0000000GMgP-220G
+	id 1wql2V-0000000GMiv-3oBa
 	for linux-rockchip@bombadil.infradead.org;
-	Mon, 03 Aug 2026 05:16:38 +0000
+	Mon, 03 Aug 2026 05:16:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=1CvTLJea6zWTpGRaWOgZzRKuhjdqcAVM/Zr8VD5aTmI=; b=p5ZD9n5WfnjuyhQezqQ/XVfwJ8
-	jJxLNDAvK96LIolpuXfG8TRzJK5RSTFo01vLDjCt+MJ5827KVH3G7N1PXOZiUmBV1GBYUd3amkIeJ
-	vP9+pID0UIJP5FOa3KeHy80mGKvWgkrk5QhBA1s9pmcMj0hPKYb2Pkffk/jGbpWfSATyIfuXLijUV
-	9wwXwefjhUH2m22waWLP+xVT0O0eGxSlgDw8vi8+OHQOpw5TBiyBSJZf/mOJZfwwIuJf176lhB0m6
-	WpVaTZykN9AG/YsQjq7N755NbmsxXxO/3l6bJ6AK+8H3qQwENAPlCH/4+Z056jcn6dyApCYUDSbTD
-	LaFGRxIg==;
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+	bh=S/5/uq1wl03WMsz5ualIqMKCury9OUeuYtebMNsXO2w=; b=NDD/bK4IYgKUTrxR1KJMk1JJs8
+	B6bDG7egvkME7zn9Zw1K46swpySOi98SK9x/49YK/f2L6V86kMoWeQrW38f4jwlblL/zhfC/LKhtq
+	TDhbbnzs/3P3XhzCD4fR7l2CRwL5OuiEVPYsW2YBTlTs4rGIJ4fcSbvoAPta+QfgwvhS8iqd/fD/D
+	oS131cmdwhaBCIzOjsnyI+VocK6TXIiNpp8Xkvo5oGLqvkDjlQ/WI1TDrlsXSqIEJrA685ikVOJ4L
+	8X+2btEmtbg6MXUfl1MlXeF86mX4WWWIFt4CtsJk/9T3Z4pskqdSKpSkivAMQuyOrZ3R0FHDI9rPh
+	PiYArVqg==;
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wql1s-00000008hsA-2zZT
+	id 1wql1p-00000008hs0-2a9n
 	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Aug 2026 05:16:36 +0000
-Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-7e6b5737bb2so2730413a34.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:55 -0700 (PDT)
+	Mon, 03 Aug 2026 05:16:38 +0000
+Received: by mail-ot1-x32e.google.com with SMTP id 46e09a7af769-7eb61bbeb25so2152044a34.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785734153; x=1786338953; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785734148; x=1786338948; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=1CvTLJea6zWTpGRaWOgZzRKuhjdqcAVM/Zr8VD5aTmI=;
-        b=Rky9C7t+nCwKIsNXV3+ewp5KxdOjLuITNdk+dY9/EwBEdWJqtSAzZIVIcIGjXiieWE
-         2OYhUcxFeeAUuxzjzIWpOyRi8dr7GpsWrMhZBMKTP98qOxhEyvzHjtszs67Hdl9H5QRD
-         uuHPkhgeIpso/Iy2Iy2lt/bHEXKPEVN7TB81OTI7VZe8c7thP2TC4mk+E1q5CA7+0oZF
-         4wmHdggrY5MI5WQH3J4Pv9mL0vlN0deCvmvbdYtU00JPZ04OEqDWlOhOeDSKoJz6Gcam
-         L7XQnKywXwR/bUy4hHdVTHT9csjzGOCWgSU8fpG03EZvkXDp1NC1Ow4ICxtYMsvOTzXn
-         Og0g==
+        bh=S/5/uq1wl03WMsz5ualIqMKCury9OUeuYtebMNsXO2w=;
+        b=CvkpkpZO8NA+EStAQfZr124x3/nwax+DqSz1kJUslawXTe8nQmuZzldCgVMXIvNNeG
+         Ya+/EKTbCBdn25JR1cRinyawaQfkOefjZEZeCU6srLDjoSa97Zmnw/W2znv+4Gb2iErR
+         7RtsarClo8qQVJ3KkQJ8+Qrwc2GD7ROmPZHkjSyzo4YJVyujX8Tt0QRv9ylQa8VESXTR
+         c2kqemWLVosNZ0VXn5vDrUnncBVjtSMcMh+5JJIuV8IJYyjR6lO9h16fHH5v845uSdCy
+         rZ5adCvQoFmquyCMjKccKR1xWglX5+wKVMky4oIYTf5dd5uqKdUpWjiy4MncGqEZapLx
+         6Q4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785734153; x=1786338953;
+        d=1e100.net; s=20251104; t=1785734148; x=1786338948;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=1CvTLJea6zWTpGRaWOgZzRKuhjdqcAVM/Zr8VD5aTmI=;
-        b=PxESsqd8RdcyyJU377Yhul7mLY0x8Ue3juDNhTTgedWqu82GrUG8wdj3tlLFni0XD6
-         +aM8wJXeoSnMbwW7MGTxHnaG1sP9//aCnZR2IJr8lUg/0/PzLkLUcPU4k4kXSwhm7gtX
-         tUUv93X0TA9wTiMoMcMeHFcZohy/E9D7yII68aJIFVFiNVonCEl5KvfeHrLbcPDYPpVn
-         cojyAgv3jrjPc5KppF3LzbrapzDiSr6SGYJzfAe4J/oZp7T95+YIgKGwTkts+Bn7gsIg
-         H9hhGeywH1+E5BfxvUTHQ8FNDXBHo+F37YACgXcg8A9IHCigPzSfAmu0zVlLr7hyP3Ed
-         YDUQ==
-X-Forwarded-Encrypted: i=1; AHgh+Rq4bZVrcg2pvJt1hR3+qGSwkI/M2bOPg2xotKALBiMCsF/2Uvn39CZvREeW0BEbX+P4aUJrLbQCwa6BibNURw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJwXNYt/NjX8KWBPNq6UrfqtfybH5UyQ+7BBwwG6PJ95BuZRwx
-	rOpVm0lrx5qgO5Fn3zlsNNdL7fMarc8/Qr1jhoAaxLa6X7C+eZ3B3N6vGfSRNge2
-X-Gm-Gg: AR+sD13JfGQLWQLV+bdVSXFuKjlt842xYO6XqSmlzJLVfM5Aq9ZEzvxRolkQsNuYIE3
-	+ocTamQgxiLkZRnu9qri6GlTHOG+xlGs6GYP6VUZkLkE7xba94yhdrilRxrZ+ApyDioXhr0jCe2
-	KDLgwo3zsmKmpu9OrAiBpWAFedfDbnsXPo8T4BLcuMwNyoKGlC14oz3SiIOqzx+gSmHz2KYhp3E
-	ngzu/TD6JPd0VwLQs+J15SzN/elvaZE3PZytU9hE8yzpD1kIEsstJHveganQCKXHrKUfeZ65Ecd
-	pPy5cpj4pfuEbm1BcSM/Z/nxfAAeb1ssa3jFjtt9tx5Jwq+vYdkwRHJm8GJrfocSKiqvJzEP707
-	oFJEi3eNAAc2T0HbM42jbqNKT/VfK5JVrdjX1AAO1mcWR8EcbGvy22joa8nr7YByHCOr4KFHxEe
-	lj0qbhSAORUTbeYcXod0ZKrri0+YjqczS0ZlyxQfn2mtlSqaHxZ0ZGgHy/WiSmfcuVxcoVPDP4p
-	AguggpyehMtBjLdYff5eZ3xQ58b1NouAH/sVsBXwsRZ1CNTro9GN6Q7PomcccaQBbroS2EregX+
-	VNRyAQyzHh4iH56aufMknG0ti63t5Wr+v/k3WRJIV3q0kSg2URada2aCs/pnySdHiCR03qZFdQr
-	8KulUssje347DAGCg
-X-Received: by 2002:a05:6830:398d:b0:7dc:e090:68a with SMTP id 46e09a7af769-7f1969181f7mr14873339a34.0.1785734152850;
-        Sun, 02 Aug 2026 22:15:52 -0700 (PDT)
+        bh=S/5/uq1wl03WMsz5ualIqMKCury9OUeuYtebMNsXO2w=;
+        b=S2WZsAAZMZ/q8MWyaF+oc/uYOC1JESkm8TdvyuCJJ7/xHPNLYVEESQCg3RvnD1aAJi
+         qbL5BseHPtPP0KXh4IC/4ItwRH3sgbUTUKwlW1YoHbRimJ2aqg/QQh6u6nswDHuL91x/
+         ul3gPpJbXyuPuc7jDZ8hOfmWZy3y66LD9+gpOZPU76RWz9ZQ+0ROKLLWLeXCBQXAsnQx
+         aZbKX66aGllScVuID4PM8ZxC7XkIsH0kvQ3QEYQL/qfd7fx+rrR57tsK3udFz41rbMy+
+         NNrtRn5WukvOE0yeXR8ocYhnNNPRTD6fbunQnLrxAddIPjO1dQSRInN88hIcZSfq6axf
+         XvZg==
+X-Forwarded-Encrypted: i=1; AHgh+RoSBRSdiYyQyJXBzaWgzsP4LRAstHYks5XHLJaq1K9FB/9RTKQYswIxNrPcRYv0bCZk/f+UdwO13yAoiLXlFw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YylRg8/zKWNHszoRzztkE1jMbcokwX7YDwZIL4V8EdEHLaZBOEn
+	4lzTy3KH4yMrjC0AVpQtjBrOuFZtV8UKHoTtVa2ZOr4qdD6TY9zuFpyU
+X-Gm-Gg: AR+sD10FMxhkmG1VOJVKZtixVCSY3DNFQuRM/f/7ZOfnREdZlDlKVNMSzHQSCob0FFV
+	AbJxYsmcf8BXekHkpScFgu3HbFFGqvlJ3iSS+P0ENsHZ7S56eC17LozBdW17UHjd0UEihEI0F7l
+	n3lpnA9O1Nb+36eSf0eJFjqjQzGxefMSFuFKaB453c9FIBv4eYImp4ViVmnQYIlOKJtJxJxvi8D
+	YrBDZTe349cF+/3W6YWakLJO3JgFqGJ4+ShHr7KZzXrstGOUg080kFUC5JBB+9tNwSdI+flO3VR
+	Yva0TbL3XexXj8ZyVQiW8qKCWGYS4pOPjTbxVIi3ucWgsxAn44GIb72pTW42qln5KnSq5Sb/5T6
+	hmWFOpg9FUqwyW3VaaKrxpdyFySbvEE4xjwMRSLOUGwnz5V9TiIHkzaSzGIOfAcYkWcv8e/ZQ5f
+	MzMa3huGvM1XE20X7w3PTLZxlFPHpif/rvIz79veLoY9BeRz/ob4hppRfzvn77FRaqoN9irlEp+
+	ryNwpa4RrA+urSvcEAKeBhdcV4ODyVBJv2Xun4iqrrsFVP9+n3nsuB6Bq/b65ah8tnILIojnEvc
+	Zj3PJeEPmBfQdXWy7zjdYu0pQpeCdBQkRgXUV27qElC7eKXClW8I9eYp/yAgGULJ5TWFVFoRkBg
+	JsbdBWrnji1giKVmG
+X-Received: by 2002:a05:6830:4114:b0:7e9:bd00:c6ad with SMTP id 46e09a7af769-7f196f29291mr14805744a34.16.1785734143562;
+        Sun, 02 Aug 2026 22:15:43 -0700 (PDT)
 Received: from [127.0.1.1] (184-96-154-59.hlrn.qwest.net. [184.96.154.59])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.51
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Aug 2026 22:15:52 -0700 (PDT)
+        Sun, 02 Aug 2026 22:15:42 -0700 (PDT)
 From: James Hilliard <james.hilliard1@gmail.com>
-Date: Sun, 02 Aug 2026 23:14:30 -0600
-Subject: [PATCH 20/21] arm64: dts: allwinner: h6: tanix: enable AC200 EPHY
+Date: Sun, 02 Aug 2026 23:14:24 -0600
+Subject: [PATCH 14/21] net: phy: support configuring PHY-autonomous Tx LPI
 MIME-Version: 1.0
-Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-20-0a53cd9e21cc@gmail.com>
+Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-14-0a53cd9e21cc@gmail.com>
 References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 In-Reply-To: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -121,8 +121,8 @@ Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  James Hilliard <james.hilliard1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_061628_726820_07F873E9 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20260803_061627_856582_3E6995A0 
+X-CRM114-Status: GOOD (  23.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,104 +139,168 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the AC200 control path and RMII Ethernet link on the Tanix TX6
-family, and provide the board's 3.3 V rail to the AC200 function supplies.
+The ethtool Tx LPI fields currently update phylib software state and
+notify an attached MAC, but they do not configure PHYs which generate LPI
+autonomously. This can make a successful ethtool request leave the PHY
+hardware unchanged.
 
-Route the PHY interrupt through the AC200 interrupt controller and mark
-it as a wakeup source for link interrupts and magic-packet wake.
+Add a PHY driver callback for applying the Tx LPI enable state and timer.
+Call it before updating EEE advertisement, and attempt to restore the old
+hardware state if either the callback itself or the advertisement update
+fails. Use the callback to disable autonomous LPI when phy_support_eee()
+hands LPI control to the MAC, and reapply that state after PHY reset.
+
+Drivers without the new callback retain the existing behavior in which
+the Tx LPI fields configure phylib and the attached MAC. Existing drivers
+which only implement disable_autonomous_eee() therefore need no changes.
 
 Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
- arch/arm64/boot/dts/allwinner/sun50i-h6-tanix.dtsi | 45 ++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
+ drivers/net/phy/phy.c        | 35 +++++++++++++++++++++++++++++++++--
+ drivers/net/phy/phy_device.c | 25 ++++++++++++++++++++-----
+ include/linux/phy.h          | 18 ++++++++++++++++++
+ 3 files changed, 71 insertions(+), 7 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6-tanix.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h6-tanix.dtsi
-index bb7de37c0d58..6cd75961e3cc 100644
---- a/arch/arm64/boot/dts/allwinner/sun50i-h6-tanix.dtsi
-+++ b/arch/arm64/boot/dts/allwinner/sun50i-h6-tanix.dtsi
-@@ -7,9 +7,11 @@
- #include "sun50i-h6-cpu-opp.dtsi"
+diff --git a/drivers/net/phy/phy.c b/drivers/net/phy/phy.c
+index fce9bc7be330..c76d5baa1f84 100644
+--- a/drivers/net/phy/phy.c
++++ b/drivers/net/phy/phy.c
+@@ -1996,6 +1996,8 @@ static void phy_ethtool_set_eee_noneg(struct phy_device *phydev,
+ int phy_ethtool_set_eee(struct phy_device *phydev, struct ethtool_keee *data)
+ {
+ 	struct eee_config old_cfg;
++	bool tx_lpi_cfg_attempted = false;
++	bool tx_lpi_cfg_changed;
+ 	int ret;
  
- #include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/mfd/x-powers,ac200.h>
+ 	if (!phydev->drv)
+@@ -2005,16 +2007,45 @@ int phy_ethtool_set_eee(struct phy_device *phydev, struct ethtool_keee *data)
  
- / {
- 	aliases {
-+		ethernet0 = &emac;
- 		serial0 = &uart0;
- 	};
+ 	old_cfg = phydev->eee_cfg;
+ 	eee_to_eeecfg(&phydev->eee_cfg, data);
++	tx_lpi_cfg_changed = phydev->eee_cfg.tx_lpi_enabled !=
++			     old_cfg.tx_lpi_enabled ||
++			     phydev->eee_cfg.tx_lpi_timer !=
++			     old_cfg.tx_lpi_timer;
++
++	if (tx_lpi_cfg_changed && !phydev->autonomous_eee_disabled &&
++	    phydev->drv->set_tx_lpi) {
++		ret = phydev->drv->set_tx_lpi(phydev, &phydev->eee_cfg);
++		tx_lpi_cfg_attempted = true;
++		if (ret)
++			goto restore_tx_lpi;
++	}
  
-@@ -84,6 +86,22 @@ wifi_pwrseq: wifi-pwrseq {
- 	};
- };
+ 	ret = genphy_c45_ethtool_set_eee(phydev, data);
+ 	if (ret == 0)
+ 		phy_ethtool_set_eee_noneg(phydev, &old_cfg);
+ 	else if (ret < 0)
+-		phydev->eee_cfg = old_cfg;
++		goto restore_tx_lpi;
  
-+&ac200 {
-+	ac-ldoin-supply = <&reg_vcc3v3>;
-+	ephy-vcc-supply = <&reg_vcc3v3>;
-+	rtc-vcc-supply = <&reg_vcc3v3>;
-+	tv-vcc-supply = <&reg_vcc3v3>;
-+	status = "okay";
-+};
-+
-+&ac200_ephy_ctl {
-+	status = "okay";
-+};
-+
-+&ac200_pwm_clk {
-+	status = "okay";
-+};
-+
- &cpu0 {
- 	cpu-supply = <&reg_vdd_cpu_gpu>;
- };
-@@ -104,6 +122,14 @@ &ehci3 {
- 	status = "okay";
- };
+ 	mutex_unlock(&phydev->lock);
  
-+&emac {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&ext_rmii_pins>;
-+	phy-mode = "rmii";
-+	phy-handle = <&ac200_ephy>;
-+	status = "okay";
-+};
+-	return ret < 0 ? ret : 0;
++	return 0;
 +
- &gpu {
- 	mali-supply = <&reg_vdd_cpu_gpu>;
- 	status = "okay";
-@@ -119,6 +145,21 @@ hdmi_out_con: endpoint {
- 	};
- };
++restore_tx_lpi:
++	if (tx_lpi_cfg_attempted) {
++		int rollback_ret;
++
++		rollback_ret = phydev->drv->set_tx_lpi(phydev, &old_cfg);
++		if (rollback_ret)
++			phydev_warn(phydev,
++				    "Failed to restore autonomous Tx LPI: %pe\n",
++				    ERR_PTR(rollback_ret));
++	}
++
++	phydev->eee_cfg = old_cfg;
++
++	mutex_unlock(&phydev->lock);
++
++	return ret;
+ }
+ EXPORT_SYMBOL(phy_ethtool_set_eee);
  
-+&i2c3 {
-+	status = "okay";
-+};
-+
-+&mdio {
-+	ac200_ephy: ethernet-phy@1 {
-+		compatible = "ethernet-phy-id0044.1400";
-+		reg = <1>;
-+		interrupts-extended = <&ac200 AC200_IRQ_EPHY>;
-+		wakeup-source;
-+		x-powers,ac200-control = <&ac200_ephy_ctl>;
-+		x-powers,xmii-rx-clock-inverted;
-+	};
-+};
-+
- &mmc0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&mmc0_pins>;
-@@ -162,6 +203,10 @@ &pio {
- 	vcc-pg-supply = <&reg_vcc1v8>;
- };
+diff --git a/drivers/net/phy/phy_device.c b/drivers/net/phy/phy_device.c
+index f7472a743185..30929b0354b6 100644
+--- a/drivers/net/phy/phy_device.c
++++ b/drivers/net/phy/phy_device.c
+@@ -1357,6 +1357,21 @@ static int phy_poll_reset(struct phy_device *phydev)
+ 	return 0;
+ }
  
-+&pwm {
-+	status = "okay";
-+};
++static int phy_disable_autonomous_tx_lpi(struct phy_device *phydev)
++{
++	struct eee_config config = phydev->eee_cfg;
 +
- &r_ir {
- 	status = "okay";
- };
++	if (phydev->drv->set_tx_lpi) {
++		config.tx_lpi_enabled = false;
++		return phydev->drv->set_tx_lpi(phydev, &config);
++	}
++
++	if (phydev->drv->disable_autonomous_eee)
++		return phydev->drv->disable_autonomous_eee(phydev);
++
++	return 0;
++}
++
+ int phy_init_hw(struct phy_device *phydev)
+ {
+ 	int ret = 0;
+@@ -1395,9 +1410,8 @@ int phy_init_hw(struct phy_device *phydev)
+ 	}
+ 
+ 	/* Re-apply autonomous EEE disable after soft reset */
+-	if (phydev->autonomous_eee_disabled &&
+-	    phydev->drv->disable_autonomous_eee) {
+-		ret = phydev->drv->disable_autonomous_eee(phydev);
++	if (phydev->autonomous_eee_disabled) {
++		ret = phy_disable_autonomous_tx_lpi(phydev);
+ 		if (ret)
+ 			return ret;
+ 	}
+@@ -2973,8 +2987,9 @@ void phy_support_eee(struct phy_device *phydev)
+ 	 * manage LPI signaling instead. The flag is stored so it can be
+ 	 * re-applied after a PHY soft reset (e.g. suspend/resume).
+ 	 */
+-	if (phydev->drv && phydev->drv->disable_autonomous_eee) {
+-		int ret = phydev->drv->disable_autonomous_eee(phydev);
++	if (phydev->drv && (phydev->drv->set_tx_lpi ||
++			    phydev->drv->disable_autonomous_eee)) {
++		int ret = phy_disable_autonomous_tx_lpi(phydev);
+ 
+ 		if (ret)
+ 			phydev_warn(phydev, "Failed to disable autonomous EEE: %pe\n",
+diff --git a/include/linux/phy.h b/include/linux/phy.h
+index 2eba54e068f6..55053b914144 100644
+--- a/include/linux/phy.h
++++ b/include/linux/phy.h
+@@ -1391,6 +1391,24 @@ struct phy_driver {
+ 	 */
+ 	int (*disable_autonomous_eee)(struct phy_device *dev);
+ 
++	/**
++	 * @set_tx_lpi: Configure PHY-autonomous Tx LPI
++	 * @dev: PHY device to configure
++	 * @config: Requested Tx LPI enable state and idle timer
++	 *
++	 * The presence of this callback advertises that the driver supports
++	 * configuring PHY-autonomous LPI through the ethtool EEE Tx LPI fields.
++	 * It is not used for userspace configuration after phylib has handed LPI
++	 * control to the MAC. Drivers without this callback retain the legacy
++	 * behavior in which those fields only configure phylib and the attached
++	 * MAC. A request with Tx LPI disabled must be accepted regardless of the
++	 * timer, since the timer has no meaning while the transmitter is disabled.
++	 *
++	 * Return: 0 on success, negative errno on failure.
++	 */
++	int (*set_tx_lpi)(struct phy_device *dev,
++			  const struct eee_config *config);
++
+ 	/* Get and Set PHY tunables */
+ 	/** @get_tunable: Return the value of a tunable */
+ 	int (*get_tunable)(struct phy_device *dev,
 
 -- 
 2.53.0
