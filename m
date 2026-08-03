@@ -4,57 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54AC3C55184
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 09:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90293C55175
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 09:41:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZRVpAn7lTPwhgiz7fM8Efqw/dACCRXhm90fnqExICjU=; b=3xLTOc+G1FX5Qz
-	L/vcJloYHLRlf7EhhpBdqdIjFIp/5haQnuTm+zSbH/WHdmb1NAiac54nu8RYCzUFioIU2ExoCkEvh
-	+Ppbk73FlUwqQesW/VRR69ICOJL2BZ85QZ9dyasOYCts2x4kexGNONF6piWb0oqEKHx1IHUi4338s
-	0m1DPWH6IF40HYewjMK4gWtNJQXED21FuQzOKq+vibUfIhPfjRY1Re3tmTQ0uyZx07yiohbJOZMBE
-	NcpVQgjvPOeCMgGj0dyqDQ3A6JTtvwsxCj/3oiz75CrjBERPe0fCWgPO+t80HREQ6dlhFgUVp6dt2
-	6UNQvJEXrsfGA9bWyJyA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=M8Iz6H6RUOCn9UGR419TEq8UGHf2lhhFP6ceQQeLI3M=; b=TXwsxis6t22Jt4
+	A2przOEfh2qrl0C99O52ogpS6A9+U1anqcCcdOp0uDSyT3ZGUjjWleC60qwUSnLwsZrvzbN6gc0/W
+	6qhZpIetcg5Z5vYT9hiR8OtlWhRaEO2zYB8Itlmbn5ha7qPFOLz4XlgwyjqGB4B2sdFKZEzmKR0Dv
+	fF448OrxpXtcI5clnv89+qsvUd7p9yGFMoxvj3Sn5OzhPyD3H0Ha2X9Fz6oaX+i1O8oR6PZPlnbX3
+	LrpOD3wM/ygw0BCiEQHFX+cbc6zMXGEDtNY04X2DSIfEsTe9a1Wfi75Brus5gHe0Rd8lAwzzBRaSt
+	iercDIGsqZXZq3aMYxOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqp4b-0000000GhMo-0bzx;
-	Mon, 03 Aug 2026 09:35:05 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wqpB4-0000000GiA1-21nd;
+	Mon, 03 Aug 2026 09:41:46 +0000
+Received: from flow-a8-smtp.messagingengine.com ([103.168.172.143])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqp4Z-0000000GhMN-0DlB;
-	Mon, 03 Aug 2026 09:35:03 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1D79360A64;
-	Mon,  3 Aug 2026 09:35:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED8C11F000E9;
-	Mon,  3 Aug 2026 09:35:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785749701;
-	bh=eDfo9eKyzT0l+RmH5CjS8vrTJvuTqzIw9lkamyHG674=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=kALLZ06UVNda9t0bDcd6uyMs7lEZh8yy04oW5oYTXAi/jJXliuy8VPkQf3sTPe2I5
-	 KTBNJ/ffKMafuE938wVcQlPB8c/rylf5I4MVy519VsajqFxLS75Cj9ySe1pYGOXyYA
-	 TErg+o08hB13kA7aF+srogvZIxD4UIG+GHt1vm8EeKyRbO2TTudacRdj1eRUOyCuZg
-	 9xVzYAMXBawN8qynz57qsLff4Hmk7YK30nfm0ISaH7KewEzewg4BJpoX/eE1q6S9vl
-	 FoYK1zHxgWRw+tvKjwaTvLhLiLBurmt+PJbK3yFD6glUCEZT9Njip2hghUMxpbODcL
-	 +GSM4qrzoPITw==
-Date: Mon, 3 Aug 2026 11:34:56 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add MangoPi M28K
-Message-ID: <20260803-fractal-sly-earthworm-2fe241@quoll>
-References: <20260801080018.3220034-1-amadeus@jmu.edu.cn>
- <20260801080018.3220034-2-amadeus@jmu.edu.cn>
+	id 1wqpB0-0000000Gi8b-3Df5;
+	Mon, 03 Aug 2026 09:41:44 +0000
+Received: from phl-compute-11.internal (phl-compute-11.internal [10.202.2.51])
+	by mailflow.phl.internal (Postfix) with ESMTP id 407B9138007E;
+	Mon,  3 Aug 2026 05:41:39 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-11.internal (MEProxy); Mon, 03 Aug 2026 05:41:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm1; t=1785750099; x=1785753699; bh=TjBZ2sxYTo
+	t4ZxCwMqLsNuQdsX7EDDjtD1qoITGGKpM=; b=FrCshYncSVCqvikUenSbYLRb5P
+	9TZnR8y5PBGqzZNJOOMmurpHTGk5gOcEkEtDHLRWQ07pVsz/yZkfRwFgJaPwbMtA
+	TVLT2wlNiYIiJ5j/IruCIjBxTtYfkQvL2eSsEYkCAKB7qyR7JnWye+59GkDCDqbN
+	fF68moYcYxsMzrPfGUbjwoktzAPlzq+AT0mYqwM4PuXs0TGUamzS6xd8yQCqSSri
+	cbNSNDK5ksm2Ck4CX+5Yp9IifEwveXGcWuOWkKycZpXXyzNK/m4ycA927XmH6miY
+	b9um2lBhdSzahR4HNGXB0rxwBT4SGTQDOQtH1dzQYl5O5+nduMtO38KtcUiw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+	1785750099; x=1785753699; bh=TjBZ2sxYTot4ZxCwMqLsNuQdsX7EDDjtD1q
+	oITGGKpM=; b=QAFgcjBUuJ2/lnyBOL127HlVQQbW258MsnREkCufl0qhpH6QU9P
+	WErmtAP3Hx+Rp6nqaWSZmTA3t6/vV+hYEu6AQN6N/Xt0kq2bmTSBkXIT1sQHURoN
+	lwFlULaC7Y/nzex1Y56Cw5kld21LqcYu8pXBg6f/zJ5xGbBo8Sp1IvUXyntfMtLO
+	E/scyzJslwb0hOPXN74j9CkA7rS7wx+jfI8fNELWkOFZloI9g/JwGc7BEOG+mVcv
+	j55zz05ANs1aPi7JVTLIA+8i7p0NfVA7cnsVVSIm14rJaTr8JPsZvQ3/pnsV1ivZ
+	p6obt/TXW+Wg8CB4rdSQMZYL4Ro7ToN+/Zg==
+X-ME-Sender: <xms:UWJwama0JGuZD2yzVfuBXsjVkAj1ETlKSQPlD5qAKBR-pTmIa1aHOg>
+    <xme:UWJwagcKGBvYx1N4w4GB-KlfH6Ue9p4Qm0QFfnXg-YVBLV658d0DGc3o1eVk4brhE
+    kCKT3pmInBFDqeywhhnp28Cyp9kPorz-zkX1rFaAAVvI3UnV1s88Yqj>
+X-ME-Received: <xmr:UWJwaoqwfHzB7URsBdX3tWsJ5HeODnZyyFSx_qRNFl3rEcEBV-P6g0bR6iDFoY95RSViJcegFQ>
+X-ME-Proxy-Cause: dmFkZTESuhYZ/nFulXLAx1C4KGDGpkzGieIZVlP6P3ydugCkCoYWX0qjJfrh0w8TLqZeex
+    dFfFdDja4AFPvdbTlYXDd6i5/E7TpUsRs7pg1lpMGzkjhIrjBIPY89TtQWl74Qwx8aQhYx
+    MYV9UklLiudZpGdcDVeCm9e95UgpS49LiB2cYCvTi88jtcpwyJaHyezxFJRMHyTVed4GlJ
+    gZixLJTZlCUL+fJPzQ/zk/AOQs/lumu5YjC2fKUR/PsM6ao8XZe0QhRL/gbvhcwHyhG9Dk
+    A74bIdluXV/netX8wsO8Wh2rbeiEOWejshj4VMRJ/tYOHy8RncWw8HiAB9NzZGPvR2PTl3
+    Nhugdkx2NKhTCLAWlqQHqkAbCnH/3pAoUNGgPU+HZ7UMQRZ4pezwSWqLv7MO74My6rntS6
+    cFLxAQw/xwWXl/ycy6GKUTz3hU/qK2oxhdmvQsOzLheRCAhqj110XTBsM4zUbklyGLmaEN
+    BNhz8nXUvosnH2QfKkcmZhfXFdg2Pjm87D8/HXqc8ht3zo7oA6kGZY2paCMi+Ntt+dkzua
+    lp+cMvdDS3AlW9ea+5h00mbdJb6k31Xl7AtZ3ARFI/iLRKJmAAEl5fFVNaSiujyzGc+voB
+    kx64Mewc6QCEvcFjD5MNpZKeirsyd4cIhxLO/fMJQvHuxifbUjaK8n8tvv7w
+X-ME-Proxy: <xmx:UWJwavDa-TxnFuK8Zrzjpov-H7SeZqIlAhAKs176sUltuBJdePBVXw>
+    <xmx:UWJwauXlD-U3vW91zzv1WSC7asjvaZtwEEDPjdllw58BJE-9KLTdsA>
+    <xmx:UWJwar5RPvP37kuA5ojzErdKlaE6jmzur1yOmemgbqNFAeqvemZhxQ>
+    <xmx:UWJwanCGUEnK9mzd9pAe815CYbgMJ_XoUX8hDlO2Eq3-dIcpGS8efA>
+    <xmx:U2JwahhblQcauCLZA8jYH2JGBk6Wkl2kJ4cfQjEOIwHB0f-OW2xXyc3I>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 3 Aug 2026 05:41:30 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	ulfh@kernel.org,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org
+Cc: royalnet026@gmail.com,
+	alchark@flipper.net,
+	chaoyi.chen@rock-chips.com,
+	krzk@kernel.org,
+	will@kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: [RFC PATCH v4 0/6] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Mon,  3 Aug 2026 21:41:19 +1200
+Message-ID: <20260803094125.3285895-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260801080018.3220034-2-amadeus@jmu.edu.cn>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260803_024142_967729_3A7B2337 
+X-CRM114-Status: GOOD (  20.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,17 +120,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 01, 2026 at 04:00:17PM +0800, Chukun Pan wrote:
-> The MangoPi M28K is a dual-gigabit SBC developed by Widora based
-> on the RK3528 SoC. Add devicetree binding documentation for it.
-> 
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+This is a fixes only revision. Nothing here changes what the NPU does; it
+is six bugs found in v3, five of them by the Sashiko review bot and each
+one checked against the vendor DT, the vendor driver or the hardware
+before being believed.
 
-How did you resolve my comments from v1? You split patches instead of
-squashing and removed any explanation I asked for.
+Tested on a Radxa ROCK 4D, on next-20260730.
 
-Best regards,
-Krzysztof
+Changes in v4
+-------------
+
+  * rk3576.dtsi: rknn_core_1 was at the wrong address. The vendor node is
+    reg = <0x27700000 0x8000>, <0x27708000 0x8000> and its driver takes
+    base[i] straight from those, so core 1 lives at 0x27708000, not
+    0x27710000. rknn_mmu_1 at 0x2770a000 was consistent with the vendor
+    layout all along.
+
+  * rk3576.dtsi: both cores carried five reg entries including dpu and
+    dpu_rdma, which the binding does not allow and the driver does not
+    map. Cut to the three the binding defines. I had validated the
+    binding itself in v3 but never ran dtbs_check against it.
+
+  * rk3576.dtsi: rknn_core_1 was missing the CBUF clocks, so it could
+    never have probed on RK3576, where the driver asks for six by name.
+
+  * rk3576.dtsi: each core now lists both NPU power domains. With one
+    domain the driver core auto-attaches it and
+    devm_pm_domain_attach_list() then returns -EEXIST, so the driver
+    could only ever have worked on a board that overrode this, which is
+    exactly what rk3576-rock-4d.dts was doing. The board override is
+    dropped. The IOMMUs keep a single domain each, since they rely on
+    that same auto-attach.
+
+  * accel/rocket: rocket_job_fini() did not cancel the completion poll
+    timer or its work, so unbind could leave them running against freed
+    memory.
+
+  * accel/rocket: a poll work already queued when the interrupt lands
+    could finalise the next job as well. It now carries the sequence
+    number of the job it was started for.
+
+Verified on hardware: the NPU probes with the two domain list, a known
+byte exact convolution stays byte exact six times over, and an
+unbind/rebind cycle rebinds cleanly and runs again with no warning.
+
+Igor Paunovic gave a Tested-by on the v3 driver patch. I have not
+carried it over, since patch 4 changed after it. Igor, the changes are
+in the poll_completion path and in rocket_job_fini, so RK3588 never
+reaches either, but it is your tag to give.
+
+What is still wrong
+-------------------
+
+Unchanged from v3, and the search has narrowed rather than moved.
+
+A single convolution is byte exact, and re-running that same one is byte
+exact every time. What fails is running a different one after it: the
+second configuration computes nothing and writes out a zero point
+surface, while the one already resident keeps working. Going back to it
+is byte exact again.
+
+Tomeu suggested this looked like the ping-pong register bank never
+switching, which fits, and the readback agrees that the pointer is stuck:
+we write S_POINTER bit 0 as 0 and it reads back 1, on every job, for the
+rest of the session. But the driver cannot move it. Flipping bit 0 per
+submit, in the direct writes and in all four regcmd entries, changes
+neither the readback nor the result. Selecting a bank the way
+rk3576_state_init does, with the PP bits cleared, stops the units arming
+at all. Pulsing POINTER_PP_CLEAR, with or without EXECUTER_PP_CLEAR,
+moves nothing. The vendor does not switch banks per submit either; it
+writes 0xe exactly as we do, and only does the 0, 1, 0x1e dance once per
+reset. Adding that sequence verbatim, at the same point the vendor calls
+it, changes nothing.
+
+A read snapshot of every block the driver can reach, pc, cna, core, dpu
+and rdma, 20 KB in total, taken at the same point in a job that computed
+and one that did not, differs in exactly one word, and that word is
+OPERATION_ENABLE. At completion the register state carries no trace of
+which job worked.
+
+So it is not the register writes (both drivers enumerated), not the
+regcmd payload (vendor bytes replayed through rocket still fail), not the
+register state at completion, not the ping-pong controls, and not
+clocks, genpd, IOMMU, cache or resets. The vendor computes different
+configurations correctly on this silicon and this kernel, so a difference
+exists and it is somewhere none of that reaches. Suggestions very
+welcome.
+
+I used Claude Opus 5 to trim this series out of my debugging tree and
+generate the diffs.
+
+Jiaxing Hu (6):
+  dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+  pmdomain/rockchip: add optional per-domain power-on settle delay
+  pmdomain/rockchip: cycle optional power-domain resets on power-on
+  accel/rocket: add RK3576 NPU (RKNN) support
+  arm64: dts: rockchip: rk3576: add NPU (RKNN) nodes
+  arm64: dts: rockchip: rk3576-rock-4d: enable NPU
+
+ .../npu/rockchip,rk3588-rknn-core.yaml        |  15 +-
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      |  10 +
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      |  76 ++++-
+ drivers/accel/rocket/rocket_core.c            |  53 ++-
+ drivers/accel/rocket/rocket_core.h            |  21 +-
+ drivers/accel/rocket/rocket_device.c          |   4 +
+ drivers/accel/rocket/rocket_drv.c             |  25 +-
+ drivers/accel/rocket/rocket_job.c             | 306 ++++++++++++++++++
+ drivers/pmdomain/rockchip/pm-domains.c        |  71 ++--
+ 9 files changed, 550 insertions(+), 31 deletions(-)
+
+-- 
+2.43.0
 
 
 _______________________________________________
