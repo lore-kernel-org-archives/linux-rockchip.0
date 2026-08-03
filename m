@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE7FBC55189
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:15:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD7E2C55162
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:15:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q6tXm6k4ezk4lZW7YIE5Ots0C+X0zF3oy6p9ISKQUzg=; b=HZBu2FGPRevZRd
-	xDn68hEF3ZIs0NUALM4CMNqaU68+dJA4GAfLeuyOGmPuzI/9BA3ahY4fbF0qFI2C1B7pRWRLxzoXL
-	dcUAWLjhphsRkiCmonhlSZCPwCE7PS2rGdd+RsvjD2H5gI+2Uh55YP+DxLNkQLJlq+hIm+bt15roQ
-	rKyxdOEclC7djo27U+f7u4iFIJpwJuUj6OU841266vV82nLBZ/yxyaD4CP33lljws6SG9YBtOmSnu
-	nTe2JsD9KdNFmuImmmk/MpQ6At/KV7XlyeYXYRiHxK+Bx3zTI8voF1RehkVjIJBfcYWhU2ieL0/Pg
-	jDhLSG9qyF5SdzgLTTYg==;
+	List-Owner; bh=YZW0IFKlpJK1FTRLp7nR19nVwvO1zqCu76HVCUrffBw=; b=3sM9pwXb+TLTWF
+	AnEDdFB3HcvROIkLDS23lZDHPPFFIa8dR2db+2ZlMQrZVId5mX7Gkf9/UQrijCclbdNqvYcvtny6K
+	XjDtbqFZrP/B6ppO5J7B0YYn8mC9vbM0UPuqiT2itFQlgPIps6fOVWmgRUFzNmxgVPJBqAwe9irej
+	bGNZhJzANtC4m76DagfCezxxzOj72pXBHul2oz0IXwHqgp73iAaDvRFPkbt5EO9KaOA+4AKhxm5sJ
+	BGILGo1ibylihXdI6v9xc4POkwDrie+ZT5WlfVRQNs7CK+WX+90P+yA06E9p2a6BaxuLUfLOJx8Z8
+	Y+QS1ec13fpfL4sH8KuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1f-0000000GL61-0MN9;
-	Mon, 03 Aug 2026 05:15:47 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	id 1wql1m-0000000GLLO-2DkZ;
+	Mon, 03 Aug 2026 05:15:54 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1b-0000000GKxM-28YX
+	id 1wql1f-0000000GL3z-1eDI
 	for linux-rockchip@lists.infradead.org;
-	Mon, 03 Aug 2026 05:15:45 +0000
-Received: by mail-ot1-x333.google.com with SMTP id 46e09a7af769-7ee37dc91f5so1801433a34.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:43 -0700 (PDT)
+	Mon, 03 Aug 2026 05:15:53 +0000
+Received: by mail-ot1-f43.google.com with SMTP id 46e09a7af769-7eb68bdf53aso1091833a34.3
+        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785734142; x=1786338942; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785734145; x=1786338945; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=GTwjTV5MzEj5mt/lgWMCGvinpE29xZysk84NZ5krcS8=;
-        b=PUKfbFss1ye71ZHl6fpbBU5xTpHY0/UY0NrYXaksZBCCaNqC1lonQe7GA2OXPGbV0/
-         bU/E/wtOfTyjKrqJqEy9qTxT6KaAv23wdSlSTpW60mgHEtGN6Mcaz72v7+MyxqFgj1zK
-         2jpKnv8lAVHBsppZXkE4Kh+e1Xd6ftv4HRszaRHvhqun9aYb2v1LqP+AJxXLETE4S3iJ
-         MkPL3YOnQGniW0fJn8s036qxsuVYJFL6t/y2u287eQsVDuu4mPfGKNZEQXX0gUEFzRwp
-         KFEzyws346X9LCqqlq9f4fbBYOQs08iRyGsw1aVghNe/oSKtVKSDEjIS4dnYbfgZOWEV
-         fq7Q==
+        bh=GBn8+Hx956XQS2N8rfelEGrUn9IDXjKs/rR491vlUQk=;
+        b=hSVQFf15pQHGLsStXBW5aIOsCxHabUlfKCalLEP0QqeFK9lBErllzqpdgA8ZJrXiCW
+         +2bXlVaPW3kzjdly58cwGLw2ZdAADws8bamHrHGBz8iTNjKyQuqsbxIgnwGnSvPQwoNU
+         YvqZqSxLCRHRiK2z8edYNGByKThUUeTqm8JgoiyqoYLyp8mPBmeXjxOWWBa/FQcr8JUU
+         mjeUc3IjVx4Z3yeqMhrqbCt5k69pH4at2ShjpeyCFxWKGt+88X/KZ/N3NlSUEKzR/294
+         p1reuuB/3rcl2KrMXD+zohUvqsz67lWcbQR1xjOcax5tRleCIhxAifBbg7R78u5VjxZv
+         0nWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785734142; x=1786338942;
+        d=1e100.net; s=20251104; t=1785734145; x=1786338945;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=GTwjTV5MzEj5mt/lgWMCGvinpE29xZysk84NZ5krcS8=;
-        b=COWHbJdGxEsx7/TXA6cIjChaLTLsmYuL5iFkCNHTGReCPj2j6zv5vBmOgFm2CfkOri
-         Br14bqXuxvD01qJfXb8AfmG+VghRRydbLLJ7uhlPfORKbcPYnxG2OBkDo5M/qRgxN6O/
-         XUGKmECg/1USIf36fCk6mRB9XBPFfhgacGFA0zU68CPY50IfKAYRk2k1G7LaShdkZ7dj
-         9ak2UBrje4Mzqw5msIkcbQWrFym3Uq3k/y9mSYF6umtUBIoDYNXB/7t43E9yt58lSZ+D
-         8XkSdfZrdWBaX7EOQ2WsTP+z6YgvTdZ4ftMGTqDsM+dbx0imzbSUFRRuFJT4YyNUUF02
-         /Dow==
-X-Forwarded-Encrypted: i=1; AHgh+Ro1z5Hydext6g+yzLgznhIhufKjnpJh7JS/SvludJgY0w1RNfBnIV2aebyIg4T1+GZ/gj5If4x4bVxKRngm/w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yytr6ubUfD7LoUtf/VVthVVfyudjCZBRPaKznDmLQAJ9LJFqRQM
-	rz7zKPRY9IeIaDt6ei6QxxavVIIAe3suPRxCB8OJHRn7tJ2Nha2a+fp/
-X-Gm-Gg: AR+sD12Dqzk5HIQXS4jHjGWGe6uc51+ajJRHbf8rhuipQuM3G7CJtVP/j5RYWmiC9LH
-	kAKX6SrfVt9CyoiadgT1kFtqI5lJSAmdqib84FMeC45kRHmvlr3rNMXPx6No4dRdkHDKdwQQ/ZS
-	J6JzCXKeM78kf/pFaYIlPYZ4ww/+xAXUVK+mF9P9gvfHH6+QEBXUmUr4Rk9ExiOx7URo08w49MT
-	G028hdPty08fVa4BQPLE2PGWoGhaMFjRJ/PmxXoQL6AxuskAOneTn4PVh4UBiafjosO5aRSw/HN
-	NUcC4WpPersyAc/sH+bMavSKlJqC7tSonhcvMfYHta6cGD/kjLfCGPeOmUEZxGEVkuzbfTkUVFS
-	F7euP6rn5dJPTVsZ+SNTlRN1dHdaVD8Vncoi52LOdkN/3b5/M+xxKZT8ycGncvf0JobhN1BjKvz
-	Boe2d/M+CvtiGFccqPJYFbXi+Byy2AzQuSVUImszuhnKnKMxfUF1v5H4r5RhP+pXajBLnn5G/LD
-	B/cOldAwIvnvvkIVWqZPPtKknNvu3hTmfO2zUw5Q7R0JDK2WvckvvZgKgDTYoblOL/W4sANmAhG
-	NjZRTc6H4JpwODXcnsCpWokSM69bDZq+AFgnAkghXDj1Od9vIIHaXGm5Gimx+lc+BqtrIhCkUC/
-	Y7/M0aV0b+pint7JG
-X-Received: by 2002:a05:6830:4489:b0:7e9:cddb:142a with SMTP id 46e09a7af769-7f196bd63a9mr15354948a34.7.1785734137863;
-        Sun, 02 Aug 2026 22:15:37 -0700 (PDT)
+        bh=GBn8+Hx956XQS2N8rfelEGrUn9IDXjKs/rR491vlUQk=;
+        b=kGXxJXyBmma1LMeZfW8uqzx7eLYXEOvJiXrHhu3CYViduiTRcIwFwd7+T3T2DN8vMC
+         5IM8TD69vT664ZwDDYQxTX1wWzXBwlmpzAHlO9spBqNESdKcDn6uI9TPxXw7sYyWbn1o
+         gDwehZ604cCWTYft/PUGQFqzp6TOx7YujwJQl04jRiaYMGDahK6WqO0dVyTirJae17k2
+         Lp5aU9iMlGZKlM73qtysIB9EuQYs914PqivaOlHvDpcqMXA0UVjblSi+PHr+rNNrphS5
+         DuHNAqsMeWLD//Y1zbEcpWM2LRO0uAUGujbyXEN2JEn7W+Jeje46R7mwEuPo+AiBdSPm
+         hUew==
+X-Forwarded-Encrypted: i=1; AHgh+RrGKP/KO6YOgba5gHI9HoKVxKMJxH03f2iIMkLd2JbOMndwtFxUWjJjTG+ORlPX3Qo+9fgDWjlAHIIj0YpHnw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZ4mjxFw6svIdCLNE8DJUw0zrjaPKe/Bv4IzQ4XX/z3CRjjFOu
+	LOElqVVMM5t6t13++tZRfRsXmQGO+uJplECruwx0JtsKfQ4Y4GsCav+a
+X-Gm-Gg: AR+sD13uiiQIlWNck9b6GtnATc0qm2kTMXM2a81I5M2zdHR0z9S0GPWXb4o375emyKG
+	T/k8Y6uRKbg/KU6hnILM00i2pvx5ki1tk6sWgYGG41OHXgGYN22i1L70TvLvvYZR4fUkjrKMURj
+	ip3Ktrsg8YcS1w4cXmxu/JeQLQMjhUsh5zbxODdXtJOa5wmheH5T88txdlDvt+Vsnbqm952TTn8
+	0rph2ZDBS0yedCLRkwzJofAzJ+be4XxzRrKJeaK59yuHgOm+y0cMBKJy2+R/49ZVPWyAgXPnF4v
+	DKXGYNgfIJcOhmlVfQjry2MuJdwCjDPgcH3EpY3XXf1R99YOK49sya42hFuN8ykUdGLKKv0xAEA
+	NFZrUQkLxTkp2lk9ew+idRT3UWaGn3pzIlpswZEpbgdkAHj+gpyNJ7TEE5JM4UhcZmUmCnQaeeq
+	fXiWtBjKmwR4OsKR2XYvbEqgc+qWFJhG0YLNWlqzmdVNvje4s+QiBSz7/5VTjgpqvB8YviateJM
+	lXAFe2FDg4PT7aiarP8+kSh6uDaXsbZ4VfUy/oVOlelwYaXiV6bY/sbYVGYx5ZHs6IEeF9dmZOe
+	tY3Vsk1VyZpjnZdZIu41Zh65+P83VCTzovUL3xWAg7N9f5qIXhtoNavPeW7+c6MmGjEGe7XT7Sh
+	2h4WbIGB8a3rPEg1xjw==
+X-Received: by 2002:a05:6830:f95:b0:7dc:4947:36a1 with SMTP id 46e09a7af769-7f19714f993mr12573380a34.12.1785734145466;
+        Sun, 02 Aug 2026 22:15:45 -0700 (PDT)
 Received: from [127.0.1.1] (184-96-154-59.hlrn.qwest.net. [184.96.154.59])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.36
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Aug 2026 22:15:37 -0700 (PDT)
+        Sun, 02 Aug 2026 22:15:44 -0700 (PDT)
 From: James Hilliard <james.hilliard1@gmail.com>
-Date: Sun, 02 Aug 2026 23:14:21 -0600
-Subject: [PATCH 11/21] dt-bindings: net: x-powers: add AC300 EPHY control
+Date: Sun, 02 Aug 2026 23:14:25 -0600
+Subject: [PATCH 15/21] net: phylink: allow PHY-autonomous EEE without MAC
+ LPI
 MIME-Version: 1.0
-Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-11-0a53cd9e21cc@gmail.com>
+Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-15-0a53cd9e21cc@gmail.com>
 References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 In-Reply-To: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -106,8 +107,8 @@ Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  James Hilliard <james.hilliard1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260802_221543_589866_FC0A00E9 
-X-CRM114-Status: GOOD (  13.03  )
+X-CRM114-CacheID: sfid-20260802_221547_501341_A985D979 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,102 +125,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The AC300 companion IC exposes the Fast Ethernet PHY control registers
-through a separate non-PHY Clause 22 address. The manual defines the
-control address as the link-PHY address plus 16, giving address ranges
-of 16-23 and 0-7 respectively.
+Phylink treats a MAC which implements its LPI operations but advertises no
+LPI capability as incapable of EEE. It disables PHY EEE during attach and
+rejects ethtool EEE requests. The same problem occurs when the MAC supports
+LPI on another interface but not on the interface currently connected to
+the PHY. Both cases are incorrect when the attached PHY can generate LPI
+autonomously without help from the MAC.
 
-Describe the control endpoint, its required VCC1 supply, its 24, 25 or
-27 MHz input clock, interface mode and calibration cell.
+Recognize the PHY autonomous-EEE capability, preserve its EEE
+advertisement, and allow ethtool EEE requests in that configuration.
+Evaluate MAC LPI support for the active interface, and restrict EEE modes
+to the MAC capability mask only when the MAC actually manages LPI.
 
 Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
- .../bindings/net/x-powers,ac300-ephy-ctl.yaml      | 77 ++++++++++++++++++++++
- 1 file changed, 77 insertions(+)
+ drivers/net/phy/phylink.c | 35 ++++++++++++++++++++++++++++-------
+ 1 file changed, 28 insertions(+), 7 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/x-powers,ac300-ephy-ctl.yaml b/Documentation/devicetree/bindings/net/x-powers,ac300-ephy-ctl.yaml
-new file mode 100644
-index 000000000000..a6634fcfafd4
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/x-powers,ac300-ephy-ctl.yaml
-@@ -0,0 +1,77 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/x-powers,ac300-ephy-ctl.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index 18d2ead97aa5..e64f72793aa0 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -1512,6 +1512,19 @@ static void phylink_deactivate_lpi(struct phylink *pl)
+ 	}
+ }
+ 
++static bool phylink_phy_supports_autonomous_eee(struct phy_device *phy)
++{
++	return phy && phy->drv && phy->drv->set_tx_lpi;
++}
 +
-+title: X-Powers AC300 Ethernet PHY control interface
++static bool
++phylink_mac_supports_eee_interface(struct phylink *pl,
++				   phy_interface_t interface)
++{
++	return pl->mac_supports_eee &&
++	       test_bit(interface, pl->config->lpi_interfaces);
++}
 +
-+maintainers:
-+  - James Hilliard <james.hilliard1@gmail.com>
-+
-+description:
-+  The AC300 Fast Ethernet PHY has a separate control interface accessed as a
-+  non-PHY Clause 22 device. Its address is 16 plus the address of the link PHY.
-+
-+properties:
-+  compatible:
-+    const: x-powers,ac300-ephy-ctl
-+
-+  reg:
-+    minimum: 16
-+    maximum: 23
-+
-+  clocks:
-+    maxItems: 1
-+    description:
-+      AC300 input clock. Its configured rate must be 24, 25, or 27 MHz and
-+      determines the corresponding EPHY_CLK_SEL value.
-+
-+  vcc1-supply:
-+    description:
-+      3.3 V supply for the AC300 I/O, bandgap, Ethernet PHY analog front end,
-+      and internal digital LDO
-+
-+  nvmem-cells:
-+    maxItems: 1
-+    description:
-+      SoC SID cell containing the Ethernet PHY calibration value written to
-+      the AC300 BGS_EFFUSE field after adding 3 modulo 16, as prescribed by
-+      the vendor initialization sequence.
-+
-+  nvmem-cell-names:
-+    const: calibration
-+
-+  phy-mode:
-+    enum:
-+      - mii
-+      - rmii
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - vcc1-supply
-+  - nvmem-cells
-+  - nvmem-cell-names
-+  - phy-mode
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    mdio {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        ethernet-phy-control@10 {
-+            compatible = "x-powers,ac300-ephy-ctl";
-+            reg = <0x10>;
-+            clocks = <&pwm 5>;
-+            vcc1-supply = <&reg_3v3>;
-+            nvmem-cells = <&ephy_calibration>;
-+            nvmem-cell-names = "calibration";
-+            phy-mode = "rmii";
-+        };
-+    };
-+...
+ static void phylink_activate_lpi(struct phylink *pl)
+ {
+ 	int err;
+@@ -2090,6 +2103,7 @@ static int phylink_bringup_phy(struct phylink *pl, struct phy_device *phy,
+ {
+ 	struct phylink_link_state config;
+ 	__ETHTOOL_DECLARE_LINK_MODE_MASK(supported);
++	bool mac_eee;
+ 	char *irq_str;
+ 	int ret;
+ 
+@@ -2106,6 +2120,7 @@ static int phylink_bringup_phy(struct phylink *pl, struct phy_device *phy,
+ 	linkmode_copy(supported, phy->supported);
+ 	linkmode_copy(config.advertising, phy->advertising);
+ 	config.interface = interface;
++	mac_eee = phylink_mac_supports_eee_interface(pl, interface);
+ 
+ 	ret = phylink_validate_phy(pl, phy, supported, &config);
+ 	if (ret) {
+@@ -2144,7 +2159,7 @@ static int phylink_bringup_phy(struct phylink *pl, struct phy_device *phy,
+ 	/* If the MAC supports phylink managed EEE, restrict the EEE
+ 	 * advertisement according to the MAC's LPI capabilities.
+ 	 */
+-	if (pl->mac_supports_eee) {
++	if (mac_eee) {
+ 		/* If EEE is enabled, then we need to call phy_support_eee()
+ 		 * to ensure that the advertising mask is appropriately set.
+ 		 * This also enables EEE at the PHY.
+@@ -2165,7 +2180,8 @@ static int phylink_bringup_phy(struct phylink *pl, struct phy_device *phy,
+ 		 */
+ 		linkmode_and(phy->advertising_eee, phy->advertising_eee,
+ 			     pl->supported_lpi);
+-	} else if (pl->mac_supports_eee_ops) {
++	} else if (pl->mac_supports_eee_ops &&
++		   !phylink_phy_supports_autonomous_eee(phy)) {
+ 		/* MAC supports phylink EEE, but wants EEE always disabled. */
+ 		phy_disable_eee(phy);
+ 	}
+@@ -3300,17 +3316,20 @@ EXPORT_SYMBOL_GPL(phylink_get_eee_err);
+  */
+ int phylink_ethtool_get_eee(struct phylink *pl, struct ethtool_keee *eee)
+ {
++	bool mac_eee;
+ 	int ret = -EOPNOTSUPP;
+ 
+ 	ASSERT_RTNL();
++	mac_eee = phylink_mac_supports_eee_interface(pl, pl->cur_interface);
+ 
+-	if (pl->mac_supports_eee_ops && !pl->mac_supports_eee)
++	if (pl->mac_supports_eee_ops && !mac_eee &&
++	    !phylink_phy_supports_autonomous_eee(pl->phydev))
+ 		return ret;
+ 
+ 	if (pl->phydev) {
+ 		ret = phy_ethtool_get_eee(pl->phydev, eee);
+ 		/* Restrict supported linkmode mask */
+-		if (ret == 0 && pl->mac_supports_eee_ops)
++		if (ret == 0 && mac_eee)
+ 			linkmode_and(eee->supported, eee->supported,
+ 				     pl->supported_lpi);
+ 	}
+@@ -3326,10 +3345,11 @@ EXPORT_SYMBOL_GPL(phylink_ethtool_get_eee);
+  */
+ int phylink_ethtool_set_eee(struct phylink *pl, struct ethtool_keee *eee)
+ {
+-	bool mac_eee = pl->mac_supports_eee;
++	bool mac_eee;
+ 	int ret = -EOPNOTSUPP;
+ 
+ 	ASSERT_RTNL();
++	mac_eee = phylink_mac_supports_eee_interface(pl, pl->cur_interface);
+ 
+ 	phylink_dbg(pl, "mac %s phylink EEE%s, adv %*pbl, LPI%s timer %uus\n",
+ 		    mac_eee ? "supports" : "does not support",
+@@ -3337,12 +3357,13 @@ int phylink_ethtool_set_eee(struct phylink *pl, struct ethtool_keee *eee)
+ 		    __ETHTOOL_LINK_MODE_MASK_NBITS, eee->advertised,
+ 		    eee->tx_lpi_enabled ? " enabled" : "", eee->tx_lpi_timer);
+ 
+-	if (pl->mac_supports_eee_ops && !mac_eee)
++	if (pl->mac_supports_eee_ops && !mac_eee &&
++	    !phylink_phy_supports_autonomous_eee(pl->phydev))
+ 		return ret;
+ 
+ 	if (pl->phydev) {
+ 		/* Restrict advertisement mask */
+-		if (pl->mac_supports_eee_ops)
++		if (mac_eee)
+ 			linkmode_and(eee->advertised, eee->advertised,
+ 				     pl->supported_lpi);
+ 		ret = phy_ethtool_set_eee(pl->phydev, eee);
 
 -- 
 2.53.0
