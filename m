@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3F65C55182
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D93E9C55162
 	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Aug 2026 05:15:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,72 +12,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c9Em1rN68ICNnvb7iUnfwbMYMyjFnt++Z6hPVRHmsIY=; b=43sBDYBvEZzGF7
-	r9e3DIB65fRA6gKq4mYpkv706oOQhd22cf2vGYmEj0zZJTFqzjcLdyqW/R5uj5r1NZS+Xu5t4UtNb
-	d3pzhQObCXmex5q9vaeQzKAKTtTIxMFXPdT/i40a/OIdFptk99ZEafCM2n71eZ3neNwI4YhDf4qQs
-	pOLrFthBkNPdZXtZ8d6AOHm8RSzgg9jWyIFfFS2Ob7SIDtCmc0Cj+3MIeBfEel1mmRiCmamG4asQV
-	Go5BctTMGYEYEoeCDqk0+GgVL76WeRA3c0gmF+69T8YqJSIcVmrFcKyKD24jUW35lOJ20sStt1a+v
-	PzfNoETvZT0wNnN+abjw==;
+	List-Owner; bh=D69ZyZpB18+N7odLm0zF2nAAYzYjaCOBo27PEcYHm5g=; b=wrZve6WTB/1g05
+	ZDnfo4vq0P4onfE+iBbXo6uvIelNHxPyZKqJYMqUU7JPiPhjJDEhuf8SC1zk0turUnM75RJkl748Q
+	F078ujXoyEoEwN+5u59zRka6MaStVdJeeIKGQf6GOhyQwhyLeOQHoJoRWr6/6ZHRa3IyDRRSQ+xLH
+	pl8p9FmBUK0Y7JKuWhZCchoaKayXJ0eMHnbT+qFxsPoDC09fPsW2OAF9w+66ytA5/oWPBPWq3NhXp
+	SdTSRBDt2/wRjATnF4yjOniVhPMl67OTBTwY3LK3CAS3INKO8qG1xHs57tXYOYvPYXIz0QoCAfh9r
+	vqvnvqaFzcMcYF+34DxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1N-0000000GKVt-0Jub;
-	Mon, 03 Aug 2026 05:15:29 +0000
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wql1K-0000000GKSY-0MSk
-	for linux-rockchip@lists.infradead.org;
+	id 1wql1L-0000000GKUE-2A18;
 	Mon, 03 Aug 2026 05:15:27 +0000
-Received: by mail-ot1-x336.google.com with SMTP id 46e09a7af769-7e9f1f24cbcso2864736a34.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:25 -0700 (PDT)
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wql1H-0000000GKRD-0cN1
+	for linux-rockchip@lists.infradead.org;
+	Mon, 03 Aug 2026 05:15:25 +0000
+Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-7ec49608332so1441039a34.3
+        for <linux-rockchip@lists.infradead.org>; Sun, 02 Aug 2026 22:15:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785734125; x=1786338925; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785734122; x=1786338922; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=gb4LPnphqc1DtduXOsyl640sXOpfiOxS2LbjD6EtoY4=;
-        b=haX1psl3J1nIR+9iw8MvAqjaAu2YtfVRj2Hv2zjwIdw01ufKSjWotmEYo7ji6zCkuj
-         s61NCUllHu+l+TgY5xH+C82K7Erf+fWnb6ySIcudYkaWfnO7z01oG+04ohF59Gf+QQ9d
-         30xmag/7Cow8dwvrlIyh5k0BiEtfHF/vqjyO168+djXeR2PCmg6lIuE21fCCTzPSRF+F
-         LkYoPVP26fB6DlKV7/76/7bGBfIU/xlMCefYX5p0G60N9w1OuXE/vOSNz61d3Ulm0qZW
-         tclt2moA+7N05w6nurJb9y2fi+9Ifgh2Lgtslw37nPo/Hp+r+tZlqM8RZCG1NxMcannx
-         ppMg==
+        bh=LDt8py0RwqfKJ99qa00T7ayi3DardBnaCg62Nlf4UJY=;
+        b=h6IkIdVcjZWcl1d5WrFHT6jwlyTBZ/WgE10zftJjF3lblbCSWR7jFQCM/23Bo39Uix
+         XZ5Lr2S6zYt/Nivz4LOvcPJvTFllhZiiGZuY43Uvz4GAZJm7MK4F5bgL6avuoS+5JyeZ
+         Q4Et3JUdlThCwtNySidjNLDv9QQkCMYGRpgvb1P/kD0dRQEYfwGsvY7cgS8CGrwP1DpB
+         ndPa0HcBOPZj3TNm+SM8TnqohEGAdBFpnCQYMFYXNnXoY5xAPHwSbFym+sJ1NjCWVGWF
+         XhuN7qT+3lzWEAAWzig/77MZ0TbcMTiqgzuG28Fi/JJIWrYUnuqxCTk1kUeAwHYdzI6X
+         +8YQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785734125; x=1786338925;
+        d=1e100.net; s=20251104; t=1785734122; x=1786338922;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=gb4LPnphqc1DtduXOsyl640sXOpfiOxS2LbjD6EtoY4=;
-        b=ZxP9rNNXclZzjBHJXIiMJEvLtQh7WwS8JSrB1rjVxiGWaAGxzfDDFGLnrl5LIguz/y
-         c4mlO1o5TgJXv0rDD4Yl4UOFFxDbwWFvyN7rFrBN5G0YsSoj7PFgyRKTP51RCiW+4ujx
-         Cd7v5n33wR6La3W8CiMW8pyF6tW4PrcH8PHVPK0dwZ1dFNWpq/S/YWrPck7WgHkpzIX0
-         nKGzf/LsTvJx8+pa98UotR1mLpkpSvNQEjk+cpfEVeQ3iVC8D2VzA6puVYjNf3+ph9dy
-         3mtl2AWiIw+S9rgPylNGsvM0iKqmxOI8phNjbtBcMUjIMjUzigYPoX9TK8H3RZTdiBXU
-         eqWw==
-X-Forwarded-Encrypted: i=1; AHgh+RqJQQF8SwBwH7NVu7mWEGQuyFmrMqKQJ1UDnXBs5x7A98p4IWMxYOnvi7RJerRyoorf1F74BSmEWHZneP2tgg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy5KKw79s8WYn2AGR/A/OkySBOvIHPEkBToOQq0fqWwyMjmcRLb
-	SzAgUBysjj9PtK2lbt6T3LQRiSWtvrz4f7LEtHFWELfFmUSarRrSl8oN
-X-Gm-Gg: AR+sD10dtLoIY3iHCYHbApX3LU86QVlR/OUtgfiKcng6TmrBSB8+WPvcX4uPALOhJ20
-	5mkwl0mD5T3hadAbMYbU5/4BHwnbV5XGzVPHmLZOWFGb6oMJEzMC1XklkfPbCvWVkNBZ9ZL8el0
-	6nNNgL7RdIj7FERq1BCgsNnXzpkwZnNy+arrfJgufPv7Qakp09pYRz40RpeXBsmirEQaWcnwKws
-	GGIMjlKV7MsRV2vXJZHimEwN2lsJi5Ks4TNGfOwZpZV2ErVAv8Xs10vJ/180h8Khr1309PzmI69
-	3wr7AmEVGhq4W9i2tRD9oWnbN9QRR6rvGVdK2crI9jsvfnRhUsvBqNaDsnmJOjljeHrUMTlRuJf
-	I1RpltqfCV4A/vUQC4a/3zgIKyzH5uxdm+qlYjlv0EO3w6LA2KJhbCZhlod3S0z22RAA/punN+f
-	nmyN3appw/t9nKojDI4Xj8IYqQn+94hEdMPETFEg48POiqX+t+mmxL/OGdWgX0/O6lASvxg6UEm
-	uE3ii057R3QqSBzoS1Ns7ELxxG4iGM1gQ0SwSonzL47sES1rsklrAcBpFj9uETcUX50yy69ac3b
-	E3euD49gpQELkK024oEJf4LM/r5fu/Fd6i2s0sUbxEPst1B802YplsSZp+DTd/5blai/J9wf8hE
-	wz0SMIDpHOkmLCgiigi+hVm34iw==
-X-Received: by 2002:a05:6830:7086:10b0:7db:a297:9e62 with SMTP id 46e09a7af769-7f1892c8017mr4283606a34.8.1785734124209;
-        Sun, 02 Aug 2026 22:15:24 -0700 (PDT)
+        bh=LDt8py0RwqfKJ99qa00T7ayi3DardBnaCg62Nlf4UJY=;
+        b=QzovG+NqH1WIqyG6ocEA7BIIbj5LtbAPa/yK3ovgvbpcHR4wsaBj3ynDxIoPyP8FYA
+         PxHAsyUwGTWZlldeZmyFoSCByRQ/9JGnBdXjY0L5UcaDa4AUEnRPeEvTBX7hA9OC0rMI
+         4Yt6lESFKF1Ui7XDMZDxdTdhhj55cQC3bQ/Jcuhj8QhvOac6HnAC71shC+xrZQMFDvgM
+         HAMsr76x/0E3P5+X6lF4P5ff7zQibHzGQs1SLiT8sjTvL96IlCKdxnWGJgMyxIuvOU6C
+         +NUPXPFpYJq2CZeHYZrTT/KMWg6hCt9I4WUu5GoCuetylDiTtaNPMNj56QtanuShJmHJ
+         LnhA==
+X-Forwarded-Encrypted: i=1; AHgh+Rp2PO5PISEfGD6+dBUMmbyFt8XrMiz7z5SytgqoMHshMFVxN5UTBw/P+jiUyGQ/gZBNY9xTyQU7NLpAtijLgQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxIm0Wo4oGEEfpJo+/ZF7///TiGRTxqUZCIvjRB4YbvWrLk61Dc
+	CwtbN0cgU8OrMjFDUHKaQHOytrlmy4uRn9GygA7nXR4CayhLmLRh/NS7
+X-Gm-Gg: AR+sD1070LyTHtbu7SRIApKSnoTeaOSILr83XI0Ma4LPEdDtcAvG6mJkv5hMYzcbRYF
+	eM+5fAdjKurcw+9/WQTUAFb0ml8nRz8ToFP4IQEptbRHSS5y9+Pb6J6YNTD8PZu09xRPs2MHyFo
+	wbi6yaPx0C+2fZE2iTMqp1aOc1kwVqUlFPiz3PgKvXiazTgcZas5R+Q/UBn+KIICXU1l+q84yzC
+	RoZEpVKNbFJo6QfXgJqKsIslkSclP6Kkr0vzLE64f4ObTksEu3F/hvzxJx/b5txTo/fKCDmlDUK
+	awLd5qD9zoOAR0RG5UJrBy8rlYaVxI/WSz2I0oYnRjhqtQgtxU66eV/g5j4yg+lwce+epDFNtWa
+	HxB2f0kWyTvlU0r8YJIltS9mFHD7ojIbzI4/fIjMuqdcrKabWvZ/J67oTKl0fjGGH3XTVw4JfEZ
+	w0dBY1NVn2DnsGrNtX0gBSrMOI0YPlF1P597PAKiyRHp6McJzrcFrR1dAlIC4UbipiKhELver2I
+	oLzvXpyu8nHGUADgr6Q+IFwu1jaoHi638fc86iCACLzKo3Rojsw5QT27kuzfvGSMyivfNTMysgp
+	HLqtIjnid3eVOD9Evf4Wt6nLLBM5PejtbpdJz0SLunMxyqDYDvRYuaM5ca52NR92HBC63yysHbq
+	DZyVq8JxYxvSJcmybQfjCuyQ3R2nVTV6oMwIH
+X-Received: by 2002:a05:6830:83b8:b0:7e9:d277:6e2e with SMTP id 46e09a7af769-7f196cae28amr13872954a34.7.1785734121347;
+        Sun, 02 Aug 2026 22:15:21 -0700 (PDT)
 Received: from [127.0.1.1] (184-96-154-59.hlrn.qwest.net. [184.96.154.59])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.22
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f18f07a5e3sm6787108a34.15.2026.08.02.22.15.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Aug 2026 22:15:23 -0700 (PDT)
+        Sun, 02 Aug 2026 22:15:20 -0700 (PDT)
 From: James Hilliard <james.hilliard1@gmail.com>
-Date: Sun, 02 Aug 2026 23:14:13 -0600
-Subject: [PATCH 03/21] arm64: dts: allwinner: h616: add EMAC1 controller
+Date: Sun, 02 Aug 2026 23:14:11 -0600
+Subject: [PATCH 01/21] dt-bindings: net: allwinner: add H616 EMAC1
 MIME-Version: 1.0
-Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-3-0a53cd9e21cc@gmail.com>
+Message-Id: <20260802-submit-acx00-of-dynamic-v1-v1-1-0a53cd9e21cc@gmail.com>
 References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 In-Reply-To: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -106,8 +106,8 @@ Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  James Hilliard <james.hilliard1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260802_221526_139375_66C34021 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20260802_221523_555970_47EAADAB 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,68 +126,107 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Richard Genoud <richard.genoud@bootlin.com>
 
-The H616 has a secondary EMAC controller that supports only RMII at
-10/100 Mbps. It connects through PA0-PA9 to an EPHY in a companion
-AC200 or AC300 package.
+The H616 secondary EMAC uses a separate system-control clock register
+and supports only RMII at 10/100 Mbps. Add its distinct compatible
+without an older fallback, since using the primary EMAC clock register
+would not work.
 
-Add the EMAC1 controller and RMII pin group. Leave the controller
-disabled for boards to enable when the companion Ethernet hardware
-is present.
+Constrain the PHY interface mode to RMII, matching the hardware. The
+EMAC1 clock register also retains the three-bit TX and five-bit RX delay
+chains, so allow the existing Allwinner delay properties for this
+compatible.
 
 Signed-off-by: Richard Genoud <richard.genoud@bootlin.com>
 Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
- arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi | 30 ++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ .../bindings/net/allwinner,sun8i-a83t-emac.yaml        | 18 ++++++++++++++++--
+ Documentation/devicetree/bindings/net/snps,dwmac.yaml  |  2 ++
+ 2 files changed, 18 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi
-index 90fe56a1d3cd..6879f27c2b2b 100644
---- a/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi
-+++ b/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi
-@@ -432,6 +432,14 @@ pwm5_pin: pwm5-pin {
- 				function = "pwm5";
- 			};
+diff --git a/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml b/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml
+index 323a669fa982..34def84e6c21 100644
+--- a/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml
++++ b/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml
+@@ -21,6 +21,7 @@ select:
+           - allwinner,sun8i-r40-gmac
+           - allwinner,sun8i-v3s-emac
+           - allwinner,sun50i-a64-emac
++          - allwinner,sun50i-h616-emac1
+           - allwinner,sun55i-a523-gmac200
+   required:
+     - compatible
+@@ -33,6 +34,7 @@ properties:
+       - const: allwinner,sun8i-r40-gmac
+       - const: allwinner,sun8i-v3s-emac
+       - const: allwinner,sun50i-a64-emac
++      - const: allwinner,sun50i-h616-emac1
+       - items:
+           - enum:
+               - allwinner,sun20i-d1-emac
+@@ -91,6 +93,17 @@ required:
  
-+			/omit-if-no-ref/
-+			rmii_emac1_pins: rmii-emac1-pins {
-+				pins = "PA0", "PA1", "PA2", "PA3", "PA4",
-+					"PA5", "PA6", "PA7", "PA8", "PA9";
-+				function = "emac1";
-+				drive-strength = <40>;
-+			};
+ allOf:
+   - $ref: snps,dwmac.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: allwinner,sun50i-h616-emac1
 +
- 			/omit-if-no-ref/
- 			spi0_pins: spi0-pins {
- 				pins = "PC0", "PC2", "PC4";
-@@ -789,6 +797,28 @@ mdio0: mdio {
- 			};
- 		};
++    then:
++      properties:
++        phy-mode:
++          const: rmii
++
+   - if:
+       properties:
+         compatible:
+@@ -100,6 +113,7 @@ allOf:
+               - allwinner,sun8i-h3-emac
+               - allwinner,sun8i-v3s-emac
+               - allwinner,sun50i-a64-emac
++              - allwinner,sun50i-h616-emac1
  
-+		emac1: ethernet@5030000 {
-+			compatible = "allwinner,sun50i-h616-emac1";
-+			reg = <0x05030000 0x10000>;
-+			interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "macirq";
-+			clocks = <&ccu CLK_BUS_EMAC1>;
-+			clock-names = "stmmaceth";
-+			resets = <&ccu RST_BUS_EMAC1>;
-+			reset-names = "stmmaceth";
-+			syscon = <&syscon>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&rmii_emac1_pins>;
-+			phy-mode = "rmii";
-+			status = "disabled";
-+
-+			mdio1: mdio {
-+				compatible = "snps,dwmac-mdio";
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+			};
-+		};
-+
- 		gpadc: adc@5070000 {
- 			compatible = "allwinner,sun50i-h616-gpadc",
- 				     "allwinner,sun20i-d1-gpadc";
+     then:
+       properties:
+@@ -109,7 +123,7 @@ allOf:
+           maximum: 700
+           multipleOf: 100
+           description:
+-            External RGMII PHY TX clock delay chain value in ps.
++            PHY interface TX clock delay chain value in ps.
+ 
+         allwinner,rx-delay-ps:
+           default: 0
+@@ -117,7 +131,7 @@ allOf:
+           maximum: 3100
+           multipleOf: 100
+           description:
+-            External RGMII PHY TX clock delay chain value in ps.
++            PHY interface RX clock delay chain value in ps.
+ 
+   - if:
+       properties:
+diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+index 2449311c6d28..102ec98ac2a0 100644
+--- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+@@ -57,6 +57,7 @@ properties:
+         - allwinner,sun8i-r40-gmac
+         - allwinner,sun8i-v3s-emac
+         - allwinner,sun50i-a64-emac
++        - allwinner,sun50i-h616-emac1
+         - amlogic,meson6-dwmac
+         - amlogic,meson8b-dwmac
+         - amlogic,meson8m2-dwmac
+@@ -622,6 +623,7 @@ allOf:
+                 - allwinner,sun8i-r40-gmac
+                 - allwinner,sun8i-v3s-emac
+                 - allwinner,sun50i-a64-emac
++                - allwinner,sun50i-h616-emac1
+                 - loongson,ls2k-dwmac
+                 - loongson,ls7a-dwmac
+                 - ingenic,jz4775-mac
 
 -- 
 2.53.0
