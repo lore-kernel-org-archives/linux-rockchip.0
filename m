@@ -4,59 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 272CFC55184
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 06:40:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D74C55172
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 06:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NtSF/w8muoYdSbpqH/G6RnE6Prt75cnnBGU5pLWNhag=; b=a/sBhg2X6Bpd2Y
-	wqs+pi1drR+r0Qfxh17dvdxlMS/7+SlHR0cjmb3H/SCFz0BpEgn7n1/HHdr/9C49OAxHtk3x+ea35
-	Dtqeyk0Ysn0a69NUU8o4iKT2cnHWHcq9LjoW2SruuclAd2r36xGbTdr0DXczLmO/wOGgHU2mVUMHp
-	NcKH71QyJTM3acqa2+ok6Mh1dKElMBKfplfL2YAW8ob0r37f0UFEj3fvPi0motCC3Yac39YzJk3LY
-	ES3vqi0t0X5DaiuEa/ASFTi2o2xCfsMT2fNhF1vT+4h8yIVc/yqTlOGOD5u+9sfJd+sbY5J/xsmdF
-	X5bc4ZArNDEDkcNGWH9w==;
+	List-Owner; bh=Qg1H5w+ko3stQuTBrohyEef9N43lk3yhXEcamKmU8e0=; b=fzO4QHSumicRAR
+	gmFunrKPPnEpTPOTeOQFhaIOoR149lqOMruvXet135xjJKnr8bNgdObwVo2L9IrZsVgU3Hkf668n0
+	wzVRzk6NgFRtC1mPNgQp4VAjljwJt806lgMG7xu/Q6YK7Zcq6Rs3+4DXIwH0ZW87rIynYaUVLfnYH
+	gZHkWnUwgFezUwDFhvpSgV6bbId4ElqB8BlfyO+iuNWZgPALOLaXgHqkK9pwql+Hu2R6R8nOt4ym7
+	K20A4+uq7UCJWuqShtai+NYGn43KBqnCQafepjYfsKbEhikkAVYHK4M0kE6pCAec+KG4mP0ZPrq8O
+	23gmQdbAiYjPQ09qNUJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr8p3-000000018YE-2qA8;
-	Tue, 04 Aug 2026 06:40:21 +0000
-Received: from [101.71.155.101] (helo=mail-m155101.qiye.163.com)
+	id 1wr8uG-000000019RY-3vM6;
+	Tue, 04 Aug 2026 06:45:44 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr8oz-000000018XZ-3oZv;
-	Tue, 04 Aug 2026 06:40:19 +0000
-Received: from Vostro-3710.. (unknown [14.220.232.116])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 48af19290;
-	Tue, 4 Aug 2026 14:40:07 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: krzk@kernel.org
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	robh@kernel.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add MangoPi M28K
-Date: Tue,  4 Aug 2026 14:40:00 +0800
-Message-Id: <20260804064000.1047278-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260803-fractal-sly-earthworm-2fe241@quoll>
-References: <20260803-fractal-sly-earthworm-2fe241@quoll>
+	id 1wr8uF-000000019Qy-1ieO;
+	Tue, 04 Aug 2026 06:45:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2EC21401B4;
+	Tue,  4 Aug 2026 06:45:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A6741F000E9;
+	Tue,  4 Aug 2026 06:45:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785825943;
+	bh=xBzcxpk4py2B+tQZjh/Qj+nIRpHl8bHVX3OCtpBmygo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=WfWazx7KIBqYhkVa6xwICeTBbmUydbCWsw0YPenRPWVW3Hop2J6WbY74y4uyLHWE3
+	 XZCoDTZrw6C7dKFJygErTim2K0cuz2VrwlpHvAR0A++jTX+H4RXzL3rgXOYvABinNV
+	 6Vjlxxewua1sf0DBTE+FjDLfmcsx4kiCPc18kH4eiGk4tRXDSbyK7Dlbfq5LcvzuJ/
+	 zh2crKnw/YLdVqONUmCewGUYkfw6szZEdTJg7SYaG3J0T7qb9ccwmrvm+NorDAw04X
+	 bqgrIOptFCW9ks/GTV8zTnkTW3hL/kuB1z1UCXCq0szcc+wUK0+j1BM8qmAugZgdHY
+	 2HBXYqJF5JTwA==
+Message-ID: <9de52b72-ce95-440e-8178-461157a157d1@kernel.org>
+Date: Tue, 4 Aug 2026 08:45:37 +0200
 MIME-Version: 1.0
-X-HM-Tid: 0a9fcb803d4c03a2kunm5209684c2b0cfd
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCSR9PVk1LSEgYSE8YTEMfHVYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpKTVlXWRYaDxIVHRRZQVlPS0hVQkJJTk
-	tVSktLVUpCS0JZBg++
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_234018_125698_0156DA00 
-X-CRM114-Status: UNSURE (   5.51  )
-X-CRM114-Notice: Please train this message.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add MangoPi M28K
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de,
+ krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh@kernel.org
+References: <20260803-fractal-sly-earthworm-2fe241@quoll>
+ <20260804064000.1047278-1-amadeus@jmu.edu.cn>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20260804064000.1047278-1-amadeus@jmu.edu.cn>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,21 +115,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 04/08/2026 08:40, Chukun Pan wrote:
+> Hi,
+> 
+>> How did you resolve my comments from v1? You split patches instead of
+>> squashing and removed any explanation I asked for.
+> 
+> My idea is to add an official product link to differentiate them.
+> HINLINK H28K has this link, which I added to the commit message.
+> As for MangoPi, since it's discontinued, there's no product link
+> available. I will include a link to an image of the board in the
+> next patch to show that they are different boards.
+> 
+> Does this solve your problem?
 
-> How did you resolve my comments from v1? You split patches instead of
-> squashing and removed any explanation I asked for.
+I asked you to squash the patches, to avoid work. Instead, you split the
+patchsets giving us more work.
 
-My idea is to add an official product link to differentiate them.
-HINLINK H28K has this link, which I added to the commit message.
-As for MangoPi, since it's discontinued, there's no product link
-available. I will include a link to an image of the board in the
-next patch to show that they are different boards.
-
-Does this solve your problem?
-
-Thanks,
-Chukun
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
