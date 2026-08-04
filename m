@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87BE0C55822
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B54C561E6
 	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 19:44:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,36 +12,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AeOYF5N+/m4QSb8hDi88y3r1cupzPcjOy1WtjidGlBo=; b=ad4oXnzVTcqxMx
-	rZteYx8iOiytlni4EDmGGvIdpG+FyGH6Iui4MVvPLv03VfBeRWYFx9udzWvCptkWEuO6/BszZTUqn
-	yVNcrhcZF4Lay0DwHucfHIt0dg651MD8UB+JE3tYelL8yXt9M9XEJl+9BoHiL9pfd7QvD/ofRwFuL
-	NhX3T16HYNsNYJUuRjufyKiwv10y2PGHqO7+/LR1L9fhD+LGqeQumsL5Zno0rcR5vVwtHmTJOqZ54
-	QEZo0gFcZPhOybDjZ4dr7ELDYgSwElMbf89KbwDj7QiDzLdTxE7rZplyPMKCgzn4Gau6pVaPYi3x7
-	qlwk4aTPg+twzSukitjw==;
+	List-Owner; bh=6U2YjuiyiiBjs/a1kwiZXVtzYrIGnXBBXQwuaGWjYq4=; b=tMenD/h6siZ9jT
+	wMuZoKyXDVRL4IS7OO3jpssYBnIVSchA6BEtBnECmFl0ADe/zEvPczY6/iJVYUAUiy/uQrkY44u1u
+	wkyp1cdwtlMpZ2TfRYI/aOMTvgNadhgytFrv/0VhtNoKZM1lhngp69njL2kU+vxEfLe6CkMtAhhQQ
+	x7biITcYA+7loDhCXNDHYX6UtlXw0tCE0mWh1Co8wxLHtSlUkardJm6Yotmtdl6Q/GLoU4KUl/w+J
+	hKDcCmrmVxWPNorKdXqCKVBcJbUqM+oid5MMqHTaehc/KAICLjO5nHwaVjYHDMMVwU70DJ2N4QYeT
+	XMDAMjMDGIRKN901ZR8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrL3K-00000002h4v-0g7f;
-	Tue, 04 Aug 2026 19:43:54 +0000
+	id 1wrL3J-00000002h4Q-3sR1;
+	Tue, 04 Aug 2026 19:43:53 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrL3G-00000002h0g-3PBM;
-	Tue, 04 Aug 2026 19:43:52 +0000
+	id 1wrL3D-00000002gzX-2vh4;
+	Tue, 04 Aug 2026 19:43:51 +0000
 Received: from [192.168.0.240] (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 09D07268E;
-	Tue,  4 Aug 2026 21:42:38 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7F6AA229A;
+	Tue,  4 Aug 2026 21:42:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1785872559;
-	bh=f8CIFXCp/kJPDsbbmfCONn5JPNI9ufFPAOeMrsVNvBc=;
+	s=mail; t=1785872553;
+	bh=b7wf1MvGqzrmjZLOA7pnXt6FByJlRXjFH8lcGJt/dOc=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Bag0+ouq4dqkh+CTxhYvdEBcdTrhV98I0kjyI3Rk4HqupVCzk1Y9NKROq7X7JCQ25
-	 ljR3nJ4q4SILVnOPM4qVZLm5XH0g7BO6LwVLlr22I/6BIN5ie9s9Sb3OVfNR7TOst4
-	 G+kg4FtolGeiJgnq149Y3gHD7O9IYymrvFuCDmM0=
+	b=SuybL1fpSKTcjPLB5kJTG2BHc9iI15KSGpxYEsCgUk0oB/Thl2oqT3bRSscNkcTn0
+	 wud13PMZnY/NPGhDUtEm4D8wVmLTfQKmdMsVanK2dxA2fEy7DdnAYjBUAqs5mUWTDk
+	 qMfu4w+vEzNTMXoVPgb6YgwcFothIaXJpiVzAQto=
 From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Date: Tue, 04 Aug 2026 20:43:32 +0100
-Subject: [PATCH v4 5/7] arm64: dts: renesas: Convert to new media
- orientation definitions
+Date: Tue, 04 Aug 2026 20:43:28 +0100
+Subject: [PATCH v4 1/7] dt-bindings: media: Add macros for video interface
+ devices
 MIME-Version: 1.0
-Message-Id: <20260804-kbingham-orientation-v4-5-336998dd63b4@ideasonboard.com>
+Message-Id: <20260804-kbingham-orientation-v4-1-336998dd63b4@ideasonboard.com>
 References: <20260804-kbingham-orientation-v4-0-336998dd63b4@ideasonboard.com>
 In-Reply-To: <20260804-kbingham-orientation-v4-0-336998dd63b4@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -74,21 +74,21 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux@ew.tq-group.com, imx@lists.linux.dev, 
  linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
  linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-tegra@vger.kernel.org, 
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- David Heidelberg <david@ixit.cz>
+ linux-tegra@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
+ Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, 
+ David Heidelberg <david@ixit.cz>, 
+ Kieran Bingham <kieran.bingham@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785872619; l=4163;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785872619; l=3682;
  i=kieran.bingham@ideasonboard.com; s=20260204; h=from:subject:message-id;
- bh=YnQhmljTBd9ZWYNzkPxObvsPfVKi0l5BoKiD0zoLJgA=;
- b=XDkFpWbqJG3YJrQ5/+gK01kqs6HNFXdWR5aSuMLAawRdERtjonqFVIAFAnvCVBnhpVFML8oEg
- Wt4nhdzKjWPCiPOrzauWqeRKeFESMiPMoB1y1KoLYSTYm243/X6NqjZ
+ bh=b7wf1MvGqzrmjZLOA7pnXt6FByJlRXjFH8lcGJt/dOc=;
+ b=BC9MuIoK6ZIULs27SianJhWu8A2ay3/+qFpVx1EsOBJpnNjHNlBGO3JiOYMIgFz15dNqq/iWK
+ MsWLjXReFxlD7vgo7v3vZOIq3uamrqjra2eEawOHMS90NgLdEsUwMkl
 X-Developer-Key: i=kieran.bingham@ideasonboard.com; a=ed25519;
  pk=IOxS2C6nWHNjLfkDR71Iesk904i6wJDfEERqV7hDBdY=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_124351_031231_F035661C 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20260804_124347_891156_CD5796E9 
+X-CRM114-Status: GOOD (  16.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,109 +105,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+Add a new dt-bindings/media/video-interface-devices.h header that
+defines macros corresponding to the orientation enumeration types from
+media/video-interface-devices.yaml.
 
-The orientation property for video interface devices now has definitions
-to prevent hardcoded integer values for the enum options.
+Expand the documentation of the video-interface-devices orientation to
+reference the new header which provides human readable defines for the
+orientation enum, to help avoid hardcoding values in dts.
 
-Update the users throughout the renesas device trees to use the new
-definitions.
-
-Signed-off-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+Reviewed-by: Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Acked-by: Michael Riesch <michael.riesch@collabora.com>
 Reviewed-by: David Heidelberg <david@ixit.cz>
+Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
 ---
- .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso | 3 ++-
- .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso | 3 ++-
- .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso | 3 ++-
- .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso | 3 ++-
- 4 files changed, 8 insertions(+), 4 deletions(-)
+ .../bindings/media/video-interface-devices.yaml         | 17 +++++++++++------
+ include/dt-bindings/media/video-interface-devices.h     | 13 +++++++++++++
+ 2 files changed, 24 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso
-index 3acaf714cf248ad8b27b99cbafb594a2ea22bb57..b816382bba0acaa73bf79809969d506ec29bf5d3 100644
---- a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso
-+++ b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso
-@@ -12,6 +12,7 @@
+diff --git a/Documentation/devicetree/bindings/media/video-interface-devices.yaml b/Documentation/devicetree/bindings/media/video-interface-devices.yaml
+index a81d2a155fe668a95e0916c99e702de8b5c07005..c9c3f4f1671969ac2e77f2db4cdc598a6886047b 100644
+--- a/Documentation/devicetree/bindings/media/video-interface-devices.yaml
++++ b/Documentation/devicetree/bindings/media/video-interface-devices.yaml
+@@ -392,17 +392,22 @@ properties:
+       The orientation of a device (typically an image sensor or a flash LED)
+       describing its mounting position relative to the usage orientation of the
+       system where the device is installed on.
++      See include/dt-bindings/media/video-interface-devices.h.
++
+     $ref: /schemas/types.yaml#/definitions/uint32
+     enum:
+-        # Front. The device is mounted on the front facing side of the system. For
+-        # mobile devices such as smartphones, tablets and laptops the front side
+-        # is the user facing side.
++        # MEDIA_ORIENTATION_FRONT
++        # The device is mounted on the front facing side of the system. For
++        # mobile devices such as smartphones, tablets and laptops the front
++        # side is the user facing side.
+       - 0
+-        # Back. The device is mounted on the back side of the system, which is
++        # MEDIA_ORIENTATION_BACK
++        # The device is mounted on the back side of the system, which is
+         # defined as the opposite side of the front facing one.
+       - 1
+-        # External. The device is not attached directly to the system but is
+-        # attached in a way that allows it to move freely.
++        # MEDIA_ORIENTATION_EXTERNAL
++        # The device is not attached directly to the system but is attached in
++        # a way that allows it to move freely.
+       - 2
  
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/media/video-interfaces.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- 
- &{/} {
- 	clk_cam_j1: clk-cam-j1 {
-@@ -44,7 +45,7 @@ cam@10 {
- 		VDIG-supply = <&reg_cam_j1>;
- 		VDDL-supply = <&reg_cam_j1>;
- 
--		orientation = <2>;
-+		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
- 		rotation = <0>;
- 
- 		port {
-diff --git a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso
-index a19bc08403922857402f48e522b4ae3aadf218cf..4019b80a88b757be43a5e74d1d28f37e60e70ad4 100644
---- a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso
-+++ b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso
-@@ -12,6 +12,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/media/video-interfaces.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- 
- &{/} {
- 	clk_cam_j1: clk-cam-j1 {
-@@ -46,7 +47,7 @@ cam@1a {
- 		vdda-supply = <&reg_cam_j1>;
- 		vddd-supply = <&reg_cam_j1>;
- 
--		orientation = <2>;
-+		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
- 		rotation = <0>;
- 
- 		port {
-diff --git a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso
-index 512810b861aac1c886a3ebf0a037ea80ab67e30f..fea1ef4a1178e578d93d14ecf2d48631219d58be 100644
---- a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso
-+++ b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso
-@@ -12,6 +12,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/media/video-interfaces.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- 
- &{/} {
- 	clk_cam_j2: clk-cam-j2 {
-@@ -44,7 +45,7 @@ cam@10 {
- 		VDIG-supply = <&reg_cam_j2>;
- 		VDDL-supply = <&reg_cam_j2>;
- 
--		orientation = <2>;
-+		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
- 		rotation = <0>;
- 
- 		port {
-diff --git a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso
-index a31524b598348d949e5f300f5ab6ee90859f45e5..177201a8a6d20c8e915c4fda187592cadb99bbca 100644
---- a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso
-+++ b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso
-@@ -12,6 +12,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/media/video-interfaces.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- 
- &{/} {
- 	clk_cam_j2: clk-cam-j2 {
-@@ -46,7 +47,7 @@ cam@1a {
- 		vdda-supply = <&reg_cam_j2>;
- 		vddd-supply = <&reg_cam_j2>;
- 
--		orientation = <2>;
-+		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
- 		rotation = <0>;
- 
- 		port {
+ additionalProperties: true
+diff --git a/include/dt-bindings/media/video-interface-devices.h b/include/dt-bindings/media/video-interface-devices.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..d2340b4572927a734f679bcab4f7c845b94454af
+--- /dev/null
++++ b/include/dt-bindings/media/video-interface-devices.h
+@@ -0,0 +1,13 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
++/*
++ * Copyright (C) 2026 Kieran Bingham <kieran.bingham@ideasonboard.com>
++ */
++
++#ifndef __DT_BINDINGS_MEDIA_VIDEO_INTERFACE_DEVICES_H__
++#define __DT_BINDINGS_MEDIA_VIDEO_INTERFACE_DEVICES_H__
++
++#define MEDIA_ORIENTATION_FRONT		0
++#define MEDIA_ORIENTATION_BACK		1
++#define MEDIA_ORIENTATION_EXTERNAL	2
++
++#endif /* __DT_BINDINGS_MEDIA_VIDEO_INTERFACE_DEVICES_H__ */
 
 -- 
 2.53.0
