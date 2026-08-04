@@ -4,46 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7699C56202
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A40C56203
 	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 19:44:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CatxxrDnF37vuuwNFTGboNTz3cjfbNZGo4Ik1A3+2BQ=; b=2QFIwL+E9XshZV
-	fPF4jEZYJEUp2mc7aRgYePemfRCBE44/kxddE8bJmAcx3QdwgxF5G8iPn76GMXpg53OmizWGeW2XJ
-	X5L5U6QgCBhSwX4+9CTPtLs611Sfq+nqVn37kCdn9tAboFGEFYuRHmGvnBsqu2hX2XbSYWrXqV+mm
-	PG6YuGnF/UV+le/nti1n/MoaExlpt8GHm7FWw50LCnGzlPunsn7E6jk/LveBhkHBSfQl6veunBnKk
-	pIF/TYVFxIRUG8DY4dxq423drlzIqh/nBEBA2RqFgdJBj472U5egS13ukXeEvNbHG2aK6hgD9Tcrg
-	cPm4TcVIdorFYKjLVjtg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2mghk/BHvwFH8tsakPDMqX+4GonQPt8MZ1r1AugIZE4=; b=tj+LPAfyi4vblH
+	kgGxvtK0CJnZ+wERjsVMvQGsLY+OxT/p3coQAJKlZnBSGc9o3R0EaIFWEWNnpHXfaUwnb8hH3C6L1
+	rmGnA3iBxhPnhY2uiO7B16+qNZFID35mi0adEYcwuzZ8sYVD+tABg6ba+72eKtdWwM6bgimd0qYED
+	u0prEMnQi4BSKrLr/PXIqxparITL1ujTSFcnTqG90pdfhYxwIRLgwGy07mq+PLK+ISCxavs1OETqF
+	A7nhlWRvWKcCcp5r8nE8RssW+e4O/zevHvuDxXjvAiGEwGqe7/6hJ8zp7ZvTWEA5ph+3tzRC931ki
+	YHu/gSiY28zdXPOwfgaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrL3J-00000002h3c-2OGv;
-	Tue, 04 Aug 2026 19:43:53 +0000
+	id 1wrL3G-00000002h0x-0xjW;
+	Tue, 04 Aug 2026 19:43:50 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrL3E-00000002gzp-10fT;
-	Tue, 04 Aug 2026 19:43:49 +0000
+	id 1wrL3C-00000002gzS-1hY3;
+	Tue, 04 Aug 2026 19:43:48 +0000
 Received: from [192.168.0.240] (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C86D9258D;
-	Tue,  4 Aug 2026 21:42:34 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9D6291E2A;
+	Tue,  4 Aug 2026 21:42:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1785872556;
-	bh=HuS4+qi5c4IQX97JzTFUD5jBTCqgceGOAX/E5u/PVO8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KN6LMu51jcTjrMPnH5l1CCSYiV7QQRJ8s0N6FXMeqVk/PGzBCDb/Guhv0udiRP2+C
-	 uzNLp/i2hQgzX6VhEOxqoQBGnKloTPIQG/3FGsVwwiFzwCqtHkpzSWHfzAClXzkTqE
-	 tRj+Jh7BrmvfqH0hhBO9A1DKBC3K4z3xcza4MbAg=
+	s=mail; t=1785872551;
+	bh=VpQc8qfp9veoR00W6ImThqn1v33YFOWVIw8lQ9hq2es=;
+	h=From:Subject:Date:To:Cc:From;
+	b=MKVMA+GJ07Jfu1h8DOsXnqE30i8Mbkv5+7ii3cohjJ/3ncETcrhWtwxFEVHirSBH7
+	 MlKHkpXDHeq1kkXnx8lqPr+RI6NhqgrsNBt71W1xKREe3G49X3sKsqFmhYC0JyKMNp
+	 mssr57BWKwJrieJ116EgQxLrgeUhYmMTxpBIXf4k=
 From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Date: Tue, 04 Aug 2026 20:43:30 +0100
-Subject: [PATCH v4 3/7] arm64: dts: freescale: Convert to new media
- orientation definitions
+Subject: [PATCH v4 0/7] dt-bindings: Orientation defines
+Date: Tue, 04 Aug 2026 20:43:27 +0100
+Message-Id: <20260804-kbingham-orientation-v4-0-336998dd63b4@ideasonboard.com>
 MIME-Version: 1.0
-Message-Id: <20260804-kbingham-orientation-v4-3-336998dd63b4@ideasonboard.com>
-References: <20260804-kbingham-orientation-v4-0-336998dd63b4@ideasonboard.com>
-In-Reply-To: <20260804-kbingham-orientation-v4-0-336998dd63b4@ideasonboard.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/22NQQ6CMBBFr0JmbU2d1BZceQ/DooUBJoaWtIRoS
+ O9uJS5dvp+893dIFJkS3KodIm2cOPgC6lRBN1k/kuC+MKBELbWsxdOxHyc7i1A8v9q1CAKlHTo
+ 5ON1cDRR1iTTw68g+2sITpzXE9/Gy4Xf9BVH/D24opFDmYmpHDRqn7tyTTcG7YGN/7sIMbc75A
+ 73Xr1W/AAAA
+X-Change-ID: 20260608-kbingham-orientation-20afc0fb6957
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Jacopo Mondi <jacopo@jmondi.org>, 
@@ -74,21 +76,26 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux@ew.tq-group.com, imx@lists.linux.dev, 
  linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
  linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-tegra@vger.kernel.org, 
- Alexander Stein <alexander.stein@ew.tq-group.com>, 
+ linux-tegra@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
+ Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, 
  David Heidelberg <david@ixit.cz>, 
- Kieran Bingham <kieran.bingham@ideasonboard.com>
+ Kieran Bingham <kieran.bingham@ideasonboard.com>, 
+ Alexander Stein <alexander.stein@ew.tq-group.com>, 
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Quentin Schulz <quentin.schulz@cherry.de>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785872619; l=2424;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785872619; l=4772;
  i=kieran.bingham@ideasonboard.com; s=20260204; h=from:subject:message-id;
- bh=HuS4+qi5c4IQX97JzTFUD5jBTCqgceGOAX/E5u/PVO8=;
- b=jPm+VdAr2LX4uKlbCGOOt3PM4pLDOTA63HG3h4fdSqtnBYK/KqcPCAr/oWpWOzmFSDoEXJoKS
- BxNNiDeJTT3C4KfUxkhbzPCW44f81o2DriB72lzkUYmSIe4KQlWPCQ4
+ bh=VpQc8qfp9veoR00W6ImThqn1v33YFOWVIw8lQ9hq2es=;
+ b=7SZI39Py8ffrjnJh1y+hbhPXUnOWY+ZaEQ9KftTGB56v0gDSekjQfN+0f3X93k5+YJyrHR9/v
+ 6RTih1fHC9hD9EvsNdHgSXZpfBshb35aOAVlwCQ6l78f3XdO0TqxsmD
 X-Developer-Key: i=kieran.bingham@ideasonboard.com; a=ed25519;
  pk=IOxS2C6nWHNjLfkDR71Iesk904i6wJDfEERqV7hDBdY=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_124348_433890_36B553EF 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20260804_124346_619406_4BDEF1B8 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,66 +112,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The orientation property for video interface devices now has definitions
-to prevent hardcoded integer values for the enum options.
+Add a new dt-bindings/media/video-interface-devices.h header that
+initially supports the Orientation types and convert existing users
+throughout the code base.
 
-Update the users throughout the freescale/NXP device trees to use the new
-definitions.
+v3 collects tags, and fixes the typo, but drops all hunks that do not
+apply on the media-next tree so that these changes can be merged. Once
+the core feature is accepted a second sweep will convert remaining (new)
+additions of the orientation field.
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Alexander Stein <alexander.stein@ew.tq-group.com>
-Reviewed-by: David Heidelberg <david@ixit.cz>
-Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+v2:
+ - Now expands from the original v1 "dt-bindings: media: Add macros for
+   video interface devices" to update
+   Documentation/devicetree/bindings/media/video-interface-devices.yaml
+   and extend to actually change all users to the new types.
+ - Link to v2: https://lore.kernel.org/r/20260626-kbingham-orientation-v2-0-47178be927b4@ideasonboard.com
+
+v3:
+ - Fix the arch/arm/boot/dts/nvidia/tegra30-lg-x3.dtsi
+   MEDIA_ORIENTATION_REAR to MEDIA_ORIENTATION_BACK
+   - Though this patch is dropped from this series to post the main
+     integration through the media tree.
+ - Drop (temporarily) changes to:
+    - arch/arm/boot/dts/nvidia/tegra30-lg-x3.dtsi
+    - arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
+    - arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso
+    - arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso
+ - Non applying changes will be re-posted after the core feature
+   lands in linux-next, or after those changes appear in media-next.
+
+-v4:
+ - Rebased media-committers/next (v7.2-rc1)
+ - Reintroduced updates to:
+   - arch/arm/boot/dts/nvidia/tegra30-lg-x3.dtsi
+   - arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
+   - arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso
+   - arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso
+ - Squash header introduction and bindings updates
+
 ---
- .../boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso      | 3 ++-
- arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi                      | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+Kieran Bingham (7):
+      dt-bindings: media: Add macros for video interface devices
+      dt-bindings: media: i2c: Utilise video-interface-devices enums
+      arm64: dts: freescale: Convert to new media orientation definitions
+      arm64: dts: qcom: Convert to new media orientation definitions
+      arm64: dts: renesas: Convert to new media orientation definitions
+      arm64: dts: rockchip: Convert to new media orientation definitions
+      ARM: tegra: Convert to new media orientation definitions
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso b/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso
-index e5a2b3780215dfd5fbf4a26ce8dcd0ee72807008..7b44ae0f19b23ac856fbaeae439fe8d351896ae8 100644
---- a/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso
-+++ b/arch/arm64/boot/dts/freescale/imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso
-@@ -9,6 +9,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/media/video-interfaces.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- 
- #include "imx8mp-pinfunc.h"
- 
-@@ -47,7 +48,7 @@ camera@10 {
- 		VANA-supply = <&reg_cam>;
- 		VDIG-supply = <&reg_cam>;
- 		VDDL-supply = <&reg_cam>;
--		orientation = <2>;
-+		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
- 		rotation = <0>;
- 
- 		port {
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi b/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
-index f5d529c5baf3e6848372d9b712acf3664dd2206e..178cfad9348350111cbbd20e02ac082115ecca28 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi
-@@ -8,6 +8,7 @@
- #include "dt-bindings/input/input.h"
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- #include "dt-bindings/pwm/pwm.h"
- #include "dt-bindings/usb/pd.h"
- #include "imx8mq.dtsi"
-@@ -1116,7 +1117,7 @@ camera_front: camera@20 {
- 		vddd-supply = <&reg_vcam_1v2>;
- 		vddio-supply = <&reg_csi_1v8>;
- 		rotation = <90>;
--		orientation = <0>;
-+		orientation = <MEDIA_ORIENTATION_FRONT>;
- 
- 		port {
- 			camera1_ep: endpoint {
+ .../devicetree/bindings/media/i2c/hynix,hi846.yaml      |  3 ++-
+ .../devicetree/bindings/media/i2c/ovti,ov08d10.yaml     |  3 ++-
+ .../devicetree/bindings/media/i2c/ovti,ov4689.yaml      |  3 ++-
+ .../devicetree/bindings/media/i2c/ovti,ov5675.yaml      |  3 ++-
+ .../devicetree/bindings/media/i2c/ovti,ov5693.yaml      |  3 ++-
+ .../devicetree/bindings/media/i2c/ovti,ov64a40.yaml     |  3 ++-
+ .../devicetree/bindings/media/i2c/sony,imx111.yaml      |  3 ++-
+ .../devicetree/bindings/media/i2c/sony,imx355.yaml      |  3 ++-
+ .../devicetree/bindings/media/i2c/sony,imx415.yaml      |  3 ++-
+ .../devicetree/bindings/media/i2c/st,vd55g1.yaml        |  3 ++-
+ .../devicetree/bindings/media/i2c/st,vd56g3.yaml        |  3 ++-
+ .../devicetree/bindings/media/i2c/thine,thp7312.yaml    |  3 ++-
+ .../bindings/media/video-interface-devices.yaml         | 17 +++++++++++------
+ .../dts/nvidia/tegra30-asus-nexus7-grouper-common.dtsi  |  3 ++-
+ .../dts/nvidia/tegra30-asus-transformer-common.dtsi     |  3 ++-
+ arch/arm/boot/dts/nvidia/tegra30-lg-p895.dts            |  4 +++-
+ arch/arm/boot/dts/nvidia/tegra30-lg-x3.dtsi             |  3 ++-
+ .../imx8mp-tqma8mpql-mba8mp-ras314-imx219.dtso          |  3 ++-
+ arch/arm64/boot/dts/freescale/imx8mq-librem5.dtsi       |  3 ++-
+ arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts      |  3 ++-
+ .../boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts     |  3 ++-
+ arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi      |  3 ++-
+ .../renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso |  3 ++-
+ .../renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso |  3 ++-
+ .../renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso |  3 ++-
+ .../renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso |  3 ++-
+ arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi           |  3 ++-
+ .../dts/rockchip/px30-ringneck-haikou-video-demo.dtso   |  3 ++-
+ arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts   |  5 +++--
+ .../rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso  |  3 ++-
+ .../rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso  |  3 ++-
+ include/dt-bindings/media/video-interface-devices.h     | 13 +++++++++++++
+ 32 files changed, 86 insertions(+), 37 deletions(-)
+---
+base-commit: 31152f5b0f8719f92063b8c6196cd5e34106c73d
+change-id: 20260608-kbingham-orientation-20afc0fb6957
 
+Best regards,
 -- 
-2.53.0
+Kieran Bingham <kieran.bingham@ideasonboard.com>
 
 
 _______________________________________________
