@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6443AC55ABA
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 07:16:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AB52C55ABC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 07:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NcCHkwd03yigFsVBhmD+FZE6itl5hU9rC1KYRfp9xWQ=; b=pfwn4ZfgxAsGZA
-	MXohuwc6Hy61ErpDTAMl6uHdeK8Ci6FWEFNBMRX4pKNMzVP+dMOWqiCVhzvI0WwVvtfDBqy9XNMJb
-	PLG8iVRxt38+BtgsaxkYd3r9aw84htv+X8SZiUAEVCGKumMcWwoRBhsxJJTkWhYSsfzCfo3JpnUQD
-	9jTqqmoAgEocdUstiL8Z4L1NXfOTAztNvMIIcdPpMsN5LcmfL+r1DRc6E9Qi1OOfhyk+LPTRDbfMx
-	a3R+eM1AXr0DT4bURHcYDucvy9+yjcjtVd0WhxN8VFJYKo4zF5+FQxEs7J2UDygZOqu1JHCjKyqNU
-	/VL0jLpc1eVqe+t9nnQg==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=S2zoRpQnjGe/o805ut+I0H35bGgJOK7FNv+SqU2oiCE=; b=ynyi9/zjJyYi7A
+	Yxe893gkFuYLsbfVpUQOcHNaos6Xbs27r5hsySRwWcu7p+LD6KEhxXdIHD+myuPzvoj9uetuu7AXO
+	v72n3vGiIrufCk/QNYjnDj09L3xKKQaBhnB2pLDFQXh5FX03gmxbmfIIOEWId67MliEDs3R9Ye80D
+	GE63s7iUD+2NhuzYwJsxFHTV5HLn74ly0bYfp11jAymV6yhTCkuQMvnQJsTwoIGUcxYAcmo2Tb6RA
+	gDneqsKu19nt8ars7lnCm7c8i6XB4XQg+kLkmpBekpP8BKjBhWmevD4Tr+FbzjitGMC9Dd83+qgOD
+	tnD1brpAfHiMcLjtLvnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr9OO-00000001CNG-2yl3;
-	Tue, 04 Aug 2026 07:16:52 +0000
-Received: from smtpbgsg1.qq.com ([54.254.200.92])
+	id 1wr9OQ-00000001CPF-45fo;
+	Tue, 04 Aug 2026 07:16:54 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr9OL-00000001CKm-3QdC;
-	Tue, 04 Aug 2026 07:16:51 +0000
+	id 1wr9ON-00000001CLN-0XZ9;
+	Tue, 04 Aug 2026 07:16:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1785827275;
-	bh=4uFCqu0p0pYyvP6VJhfQU8lFG2oyNVxdn8MamPTgQlc=;
+	s=altu2504; t=1785827279;
+	bh=amLbFrLgaWKdM6iuB7UHZh23ZJ9tGg/UXF/7lGM7lOI=;
 	h=From:To:Subject:Date:Message-Id;
-	b=I0yjU1PQzTUl8uMGMjjlAeTNYSsoxhq3OYQvlMCkqg7Mv4vdAJbvI4R0rziKlLsJK
-	 KHA2qCoY0BSMGETCBhpFt4Urrwu3EC+h9miUpSvaabJzZNq7Zqv1lSjT6WFKCg16dG
-	 zES1BudM3cL4KSETfVcROmu56w+yXzBHXEtlBMsE=
-X-QQ-mid: esmtpsz19t1785827273t108231cc
-X-QQ-Originating-IP: oW8kOPLlM9qGybeiNyNpDJs4YNZHTBEyPC279s2oho8=
+	b=ajVNQUJsNYtpWpHibBj68O0ZfvEmjTRva5PYVPrtXWMNocWW5etM29Xlj50ZaqJe1
+	 aU/dY1xYvSwg1kwfguNlqkdnm4RSwCVQ/BhPY31wEC4dzTC/kUdiCqRhd6HWDXFKqf
+	 UIpVsnE4kqwmRVzZHyzggezHo6jWzvdk2HdbS0cI=
+X-QQ-mid: esmtpsz19t1785827277tf63c1686
+X-QQ-Originating-IP: n7cCnMgNG0f8iJN7ZfLIqZBWbzE4V65U0d+YdsMycP4=
 Received: from DESKTOP-8BT1A2O.localdomain ( [61.154.14.86])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 04 Aug 2026 15:07:49 +0800 (CST)
+	id ; Tue, 04 Aug 2026 15:07:54 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 452998556394821966
+X-BIZMAIL-ID: 13234408375334642489
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -67,33 +67,35 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-phy@lists.infradead.org
-Subject: [PATCH v6 0/7] drm/bridge: Implement generic USB Type-C DP HPD bridge
-Date: Tue,  4 Aug 2026 15:07:23 +0800
-Message-Id: <20260804070730.68-1-kernel@airkyi.com>
+Subject: [PATCH v6 1/7] drm/bridge: aux-hpd-bridge: Add drm_dev_has_dp_hpd_bridge()
+Date: Tue,  4 Aug 2026 15:07:24 +0800
+Message-Id: <20260804070730.68-2-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20260804070730.68-1-kernel@airkyi.com>
+References: <20260804070730.68-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MIAHdi1iQo+zITF9HdJdWmWK40lUOF17tqavC4zys0fyH8qejoS/pbwE
-	np/Zkorx7NcvsgkAwb5bHRabFByV2VX9yWm/0twxyCSXgLPbWpfIq5LuNI+QEsGjzjg516n
-	FIccSAknBx9KjOnLdzK2UUmrsR/SyjvxCY+HhfL/Ri4HMM+ApMUq0g3zIwzDjmnpHn7Smnw
-	dh1Tqpu7w9UF7ItBGBPtMJNoMV5PKa3Ftmgr3hs+FRzs3FinZHlQQ7Cwq7KkvS39VeXVCDO
-	wbHR6j2I5fqRaPJRrqYQhJKb2ZqWMboee3zd9f4sHMMI1lMcYIQxfTic53pCvtAfH/oQpVR
-	F/Idp4k0TnmOKw03UnNnpKK+pNwy98JQTTbxLPMwilI4j64uSVwlspOuD5iJRzQDaEuRtk+
-	cMWl8G2DS/TxY2zJkwk+w9Je851dGr7QuSOagHN3eyc4AQYR2FL5V+xnRkjBb6XDeNsOQ8q
-	LARU+NSKV0Rm4q2YvlNObupzGZO8p+x/+zCRPKH+ehyLk0EZT2GV5hmpPW6Taw+1pawo7mm
-	O4az+lEG36Y6IbTYjzQem2msIXKaaGhz+D42Y+ZHuBe+N77v85JYkpN11AVfv8MaQmbPRhK
-	SowDgI6ead6vPCLMKxuTAwC5Vm8nQgfv6D8CpVjrgnsm10/fFbd8Y2adVlI+8iQ87h/UDts
-	CmWJc4S+bjlW0Qtgf9/LZvYnZ8MddGghTmM1MGb5FbDEfawNce/9x+4qw1+SewdxU9nUFl9
-	D9ISbxk4GUzqJfNcqP07cpXZ+cxnFh5lvghymUx4Z5wtGsb+IAAZ1uf85nUoXjSxal/TzEf
-	znd9CteZYiYAtIktIwN1/tJMjXu+Vr2NwNR4Ecy0ihGtt0xn/TBGfURVSqTKXWVpJPSIC/D
-	ygGK8YymklF0jRfh+LCS9s1JlRToUg3PZE8KHSSR7SMzGHe0qR4bUIZ0vNgjOYYUtQlKOfT
-	lwLNTzt6SPPUQA1jWNh/QE+QmISHgvjWqe8AlkKRkEvrX2MvoIAYz2WZoJmq/pwvDpkOLtr
-	cgcvq2+igQN6uQPH4DIceEWqKHYOWPqJK1GDRxG5JfURzVZPXo
-X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
+X-QQ-XMAILINFO: NG7xP+P+sy64TtYG2Xj/Mfx8Hd53gpXDPG2J2B5YRPydySawGjFE4jmB
+	Tvrf/YoXwHMUA1Y1X6Ly+pFjy0VF98FDEFTv7333tZ5d84HPZpOr26hRIWA4xQd+hMsqiKw
+	vV1zPFjd9d7385GL/K/9NJQi5sIuS2PvNTNL+neg3JpN2qKqIOvTn4HoL7ORdL2CWCzWPXO
+	erDCnOzgKj0J70j+HOjBb+T5PJ53dRCdp4m1g9q7M5H6y/a2qshjl1tby8nyp3f52w5u+5q
+	5Lt2yF3KbeZ/noV5ZH8Qw6UEAsqwoRmE2pGM5DcbplkNXsuKzuugQAcL+Rov3kUKjySGpby
+	NoZ4x2jLIMK9mAvcgvbG5J3ZEWz11PtPu+60nub7oP5bC73+xyyBWyqA4CX2QqIqzxbuC3h
+	Gn4lrL81K3xaPTEL9/ZyG5iWwBXpshhdLZcjDwLmhRvNQcy+2VAomYz0Ocqx4xV/iPosIRj
+	IGdErbzhG3Xq3n3BoWyFj+/nPAnx41QulalkbmdcYs4s/pNUAa3hhSPqHA09VFHcaG6ehXj
+	vtEAGB6GwdNOAsLv5eCWYFN63lR2bCYjK2x21I4QrF2Vqat6pQIpa4EoYaDLb0QGvHgr0r4
+	9TAT+Ue6SlxJ1BNcAijrRtQ4HDPL3FLIeaJz1OLGSH/r+vQYt3aJXWet3xP4qBJjgFIMYqJ
+	oZBYT18BG+NrIH0UMVsZnG6sHoGXw/xuGDkWZ63/Qpy/TqY0NfG9qhvgltboSlvUTsWKxc5
+	TMMUa3O2GOr+SnbYTLRuJFJBRb5QBWFOVUV/i1OAV7h6R4Z0x/7sovgk9BTKVN5a9Mm32Lv
+	4VKmDigisaesStyqdz18dx81NO7HOSj6FMG2fhQzndsd0G9zG4l6Dwlv2nDlYN8rT8G1QV4
+	tc7T9u8glaUP2Igw8Tikb5FDh7QduV43SkR+ZJJLcJN3CvmOsM0V77AzysE1gp7yZECG4k9
+	UPURDc+h2UZEqXbjpd4j6ttAVvbzr9wiIvWzY9wKWqtfhCSXBOpaB58lsNYp4yaJrQ8yNSF
+	FYqjl1uxCprjsO6+F8vMBSURRQoPI=
+X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_001650_243219_03EC8E04 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20260804_001651_654500_201593D4 
+X-CRM114-Status: GOOD (  13.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,97 +115,109 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-This series is split from the v15 "Add Type-C DP support for RK3399 EVB
-IND board" series [1]. It focuses on the DRM bridge and Rockchip
-platform CDN-DP controller changes.
+Add a new API to check whether a DisplayPort HPD bridge has already
+been registered. This helps avoid duplicate registration of the same
+HPD bridge, although the current framework allows doing so.
 
-[1] https://lore.kernel.org/all/20260304094152.92-1-kernel@airkyi.com/
+Suggested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+---
+ drivers/gpu/drm/bridge/aux-hpd-bridge.c | 42 ++++++++++++++++++++++++-
+ include/drm/bridge/aux-bridge.h         |  6 ++++
+ 2 files changed, 47 insertions(+), 1 deletion(-)
 
-====
-1. Generic Type-C DP HPD bridge
-
-Currently, several USB-C controller drivers register their own DP HPD
-bridge via aux-hpd-bridge.c, each duplicating the same logic. For
-devicetree based platforms, the USB-C controller may vary across boards,
-and not every USB-C controller driver implements this feature. Patch 1
-implements a generic DP HPD bridge that monitors Type-C bus events and
-automatically creates an HPD bridge when a Type-C port device with DP
-SVID is registered.
-
-2. Multiple bridge model for CDN-DP
-
-The RK3399 has two USB/DP combo PHY and one CDN-DP controller. Patch 5
-introduces a multi-bridge model where each PHY port gets a separate
-encoder and bridge, allowing flexible selection of the output PHY port.
-This is based on the DRM AUX HPD bridge rather than extcon.
-
-====
-Patch 1 adds new API to check whether a DisplayPort HPD bridge has
-	already been registered(Sebastian).
-Patch 2 adds generic USB Type-C DP HPD bridge (Dmitry, Heikki).
-Patch 3 adds module soft depend for USB Type-C DP HPD bridge(Sebastian).
-Patch 4 adds new API drm_aux_bridge_register_from_node() (Neil).
-Patch 5 adds DRM AUX bridge support for RK3399 USBDP PHY (Neil).
-Patch 6 drops CDN-DP's extcon dependency when Type-C is present (Dmitry).
-Patch 7 adds multiple bridges to support PHY port selection (Dmitry, Luca).
-
-Changes in v6:
-- Link to v5: https://lore.kernel.org/all/20260730013349.51-1-kernel@airkyi.com/
-- Avoid duplicate registration of the same DisplayPort HPD bridge.
-
-Changes in v5:
-- Link to v4: https://lore.kernel.org/all/20260727064408.101-1-kernel@airkyi.com/
-- Add module soft depend for USB Type-C DP HPD bridge.
-
-Changes in v4:
-- Link to v3: https://lore.kernel.org/all/20260717072323.96-1-kernel@airkyi.com/
-- Scan the entire typec_bus and attempt to register the hpd bridge,
-  so as not to miss devices that were already added during initialization.
-
-Changes in v3:
-- Link to v2: https://lore.kernel.org/all/20260608070805.88-1-kernel@airkyi.com/
-  (Sorry, I forgot to add the "v2" title, so it looks like v1.)
-- Remove now-redundant call to drm_connector_attach_encoder()
-- Rebase to v7.2-rc2
-
-Changes in v2:
-- Link to v1: https://lore.kernel.org/all/20260521032854.103-1-kernel@airkyi.com/
-- Add copyright text.
-- Remove useless goto.
-- Fix incorrect function names in the documentation comments.
-- Fix the check logic for dp->active_port (0 is valid).
-- Fix the uninitialized prev_port.
-- Remove duplicate logic from cdn_dp_switch_port().
-- Fix the prototype of cdn_dp_bridge_hpd_notify().
-- Properly release connector->fwnode.
-- Properly release next_bridge.
-
-Chaoyi Chen (7):
-  drm/bridge: aux-hpd-bridge: Add drm_dev_has_dp_hpd_bridge()
-  drm/bridge: Implement generic USB Type-C DP HPD bridge
-  drm/display: Add soft depend for aux-hpd-typec-dp-bridge module
-  drm/bridge: aux: Add drm_aux_bridge_register_from_node()
-  phy: rockchip: phy-rockchip-typec: Add DRM AUX bridge
-  drm/rockchip: cdn-dp: Support handle lane info without extcon
-  drm/rockchip: cdn-dp: Add multiple bridges to support PHY port
-    selection
-
- drivers/gpu/drm/bridge/Kconfig                |  10 +
- drivers/gpu/drm/bridge/Makefile               |   1 +
- drivers/gpu/drm/bridge/aux-bridge.c           |  26 +-
- drivers/gpu/drm/bridge/aux-hpd-bridge.c       |  42 +-
- .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  |  67 ++++
- .../gpu/drm/display/drm_display_helper_mod.c  |   1 +
- drivers/gpu/drm/rockchip/Kconfig              |   1 +
- drivers/gpu/drm/rockchip/cdn-dp-core.c        | 358 ++++++++++++++----
- drivers/gpu/drm/rockchip/cdn-dp-core.h        |  18 +-
- drivers/phy/rockchip/Kconfig                  |   2 +
- drivers/phy/rockchip/phy-rockchip-typec.c     |  13 +-
- include/drm/bridge/aux-bridge.h               |  12 +
- 12 files changed, 479 insertions(+), 72 deletions(-)
- create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
-
---
+diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+index f02a38a2638a..a56c88eba005 100644
+--- a/drivers/gpu/drm/bridge/aux-hpd-bridge.c
++++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+@@ -12,6 +12,8 @@
+ #include <drm/drm_bridge.h>
+ #include <drm/bridge/aux-bridge.h>
+ 
++#define DRM_AUX_HPD_BRIDGE_NAME	"dp_hpd_bridge"
++
+ static DEFINE_IDA(drm_aux_hpd_bridge_ida);
+ 
+ struct drm_aux_hpd_bridge_data {
+@@ -36,6 +38,44 @@ static void drm_aux_hpd_bridge_free_adev(void *_adev)
+ 	auxiliary_device_uninit(_adev);
+ }
+ 
++static int hpd_bridge_match(struct device *dev, const void *data)
++{
++	const struct device_node *np = data;
++	struct auxiliary_device *adev;
++
++	if (!dev_is_auxiliary(dev))
++		return 0;
++
++	adev = to_auxiliary_dev(dev);
++	if (strcmp(adev->name, DRM_AUX_HPD_BRIDGE_NAME))
++		return 0;
++
++	return adev->dev.platform_data == np;
++}
++
++/**
++ * drm_dev_has_dp_hpd_bridge - check whether a HPD DisplayPort bridge is registered
++ * @parent: device instance providing this bridge
++ * @np: device node pointer corresponding to this bridge instance
++ *
++ * Walk the children of @parent and check whether a HPD DisplayPort bridge for
++ * the given @np has already been registered via devm_drm_dp_hpd_bridge_add().
++ *
++ * Return: true if a HPD bridge for @parent / @np already exists, false otherwise
++ */
++bool drm_dev_has_dp_hpd_bridge(struct device *parent, struct device_node *np)
++{
++	struct device *child;
++
++	child = device_find_child(parent, np, hpd_bridge_match);
++	if (child) {
++		put_device(child);
++		return true;
++	}
++	return false;
++}
++EXPORT_SYMBOL_GPL(drm_dev_has_dp_hpd_bridge);
++
+ /**
+  * devm_drm_dp_hpd_bridge_alloc - allocate a HPD DisplayPort bridge
+  * @parent: device instance providing this bridge
+@@ -63,7 +103,7 @@ struct auxiliary_device *devm_drm_dp_hpd_bridge_alloc(struct device *parent, str
+ 	}
+ 
+ 	adev->id = ret;
+-	adev->name = "dp_hpd_bridge";
++	adev->name = DRM_AUX_HPD_BRIDGE_NAME;
+ 	adev->dev.parent = parent;
+ 	adev->dev.release = drm_aux_hpd_bridge_release;
+ 	adev->dev.platform_data = of_node_get(np);
+diff --git a/include/drm/bridge/aux-bridge.h b/include/drm/bridge/aux-bridge.h
+index c2f5a855512f..cca07a8e2d45 100644
+--- a/include/drm/bridge/aux-bridge.h
++++ b/include/drm/bridge/aux-bridge.h
+@@ -25,6 +25,7 @@ struct auxiliary_device *devm_drm_dp_hpd_bridge_alloc(struct device *parent, str
+ int devm_drm_dp_hpd_bridge_add(struct device *dev, struct auxiliary_device *adev);
+ struct device *drm_dp_hpd_bridge_register(struct device *parent,
+ 					  struct device_node *np);
++bool drm_dev_has_dp_hpd_bridge(struct device *parent, struct device_node *np);
+ void drm_aux_hpd_bridge_notify(struct device *dev, enum drm_connector_status status);
+ #else
+ static inline struct auxiliary_device *devm_drm_dp_hpd_bridge_alloc(struct device *parent,
+@@ -44,6 +45,11 @@ static inline struct device *drm_dp_hpd_bridge_register(struct device *parent,
+ 	return NULL;
+ }
+ 
++static inline bool drm_dev_has_dp_hpd_bridge(struct device *parent, struct device_node *np)
++{
++	return false;
++}
++
+ static inline void drm_aux_hpd_bridge_notify(struct device *dev, enum drm_connector_status status)
+ {
+ }
+-- 
 2.53.0
 
 
