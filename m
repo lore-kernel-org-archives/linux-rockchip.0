@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A46C55822
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 17:39:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D2D6C55184
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 18:04:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fsWY+fn3r7prK/PlRLMELsXbUvC2uYRJstBkqIjSPYY=; b=LxfEfj0ZIPO332
-	R0tAuhzvttNU4QmnTB+D+frXgkUCeOWveF9zi7xnecaFYJtQjCe6QZLOt+KPgBAS7+OGrgeDITgP2
-	TiJMblqq5/Z3y3q3vmpCQ0pjbhkxM8uYNPt7GZwALrqL9gnE8aQtB5FKhuC38nlwgyK+yiW2BLtHS
-	GA1Es/LlSmVeY/0dcGsA1R2oijJjAOANg2nXsBTjSzJy/6SBqWClH5W4aQzTLTtYXYQ48LswnrY5P
-	P3OGb9itfcjMgG1u1DJiTUUKardfUjPMCOWe+gbtADt9EZK3bn0rZdQmJXV7Uy53LdaMIel36pS6V
-	/QAmUxzSNVGIu6xl924A==;
+	List-Owner; bh=C5cPav8sWi80XxuMD045N3GYA0TimA9dxxr99+kvH7g=; b=QzEKcd2Ca1e9Eh
+	CsKVKGclx6HyIp+A38K9TdixtfV7lWlzGko2K3YcbuLiZuXaX07fPAZcKcULZ23PBP8+B+tm0nBCp
+	Q9qz9bh7Zd0rt7yEy5gPbEWwW/C5z5UcXfcbsoLLpq4qvLi11WtqalYPLp/W9Mjrqg1N1f5+b1BxG
+	sS5u4T/37GI4a2kpDwR6uji40cIe0DKkhM3RqgFHPAFA7/5XSkarVvvn6Q4lahoNCmppdyy06CwEQ
+	CL9V5vc8kpVNaNmSTgMagF/JCMyxoEixxchvlAyDC0l/vsS0UFq2w7rDKhZfYx5C3o1koDiD3Bu8q
+	FWp5UlgYaQuKi+9gogvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrJ6a-00000002Voo-04Vc;
-	Tue, 04 Aug 2026 17:39:08 +0000
+	id 1wrJVK-00000002ZJZ-1hKr;
+	Tue, 04 Aug 2026 18:04:42 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrJ6X-00000002Vny-2ZJZ;
-	Tue, 04 Aug 2026 17:39:06 +0000
+	id 1wrJVH-00000002ZIW-0z0G;
+	Tue, 04 Aug 2026 18:04:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=iEI0tsAN27gcGUyJPUFdfbIkSDOcl8zJRY+yO6IjA8E=; b=yoyLWprDwgxFu5mYAEn0SWOsHd
-	Oi46csV9zN33JyPIvHApKBtCDW42AQUUUlGXzFn6E7Dze5qPN7pVQwVvCWC4K1hG93ghBJ021aTf0
-	ySxCwlGTz8UX6CmusMreZx/UoBOyZxDReyZBxhEut4FvMZpxKWFxCBhafQuqyXb/cWCc=;
+	bh=6ln+CAvuRtS5oR8LHPuiaJ0WpvoDOfRfT/ABchjoNpM=; b=rDpIfwRla/EZd1ILBlwJNco4l4
+	WfJIK/HAgFAq5aphrTk40f+vvHDbygWv7o6Z7/8p18JwxCsd4QtQBJZVg+Rnl0bNsCpPhaUSIko+w
+	PNJecubs0awQArL1qJnq1JoKDLrt4q0JC6qril3QrQLMaSHRvwF9enPKiJ6onGEd4yYU=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1wrJ63-00G1hx-Un; Tue, 04 Aug 2026 19:38:35 +0200
-Date: Tue, 4 Aug 2026 19:38:35 +0200
+	id 1wrJUz-00G286-VC; Tue, 04 Aug 2026 20:04:21 +0200
+Date: Tue, 4 Aug 2026 20:04:21 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: James Hilliard <james.hilliard1@gmail.com>
-Cc: Jernej =?utf-8?Q?=C5=A0krabec?= <jernej.skrabec@gmail.com>,
-	Andre Przywara <andre.przywara@arm.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
 	Samuel Holland <samuel@sholland.org>,
+	Andre Przywara <andre.przywara@arm.com>,
 	Richard Genoud <richard.genoud@bootlin.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
@@ -65,19 +65,24 @@ Cc: Jernej =?utf-8?Q?=C5=A0krabec?= <jernej.skrabec@gmail.com>,
 	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
 	linux-stm32@st-md-mailman.stormreply.com, mfd@lists.linux.dev,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 00/21] net: phy: add X-Powers AC200/AC300 EPHY support
-Message-ID: <9dd29610-d9e4-48f2-9638-2c92863626f8@lunn.ch>
+Subject: Re: [PATCH 10/21] net: phy: add X-Powers AC200 EPHY control driver
+Message-ID: <fb6f8065-a655-4d53-acfb-8171b2e003dc@lunn.ch>
 References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
- <aaec8809-8218-4412-a60d-931406dbf287@arm.com>
- <CADvTj4qCYjQHOQn1jRTHNNL=xeX6z3Dgc-PLwOBUvX34AU6cuA@mail.gmail.com>
- <AGtA6uUwR9yJMX3xYVDz6g@gmail.com>
- <CADvTj4qBhiPczrP9YC2uTW3xss3W7ghoBzbctM45yUROfsgPhw@mail.gmail.com>
+ <20260802-submit-acx00-of-dynamic-v1-v1-10-0a53cd9e21cc@gmail.com>
+ <05b1e6a2-725e-4b8e-8629-249637bbcb81@lunn.ch>
+ <CADvTj4o0JdjoO+FC4pO=qnjEQ8MRyzQdKp2Hxy9NsPU-gym5OQ@mail.gmail.com>
+ <9b8be475-1fde-409c-a82e-be4b2e402650@lunn.ch>
+ <CADvTj4pBovti19MXgQjFpxm=7aRm0sYQz9jxfo8bu3txH94THQ@mail.gmail.com>
+ <a9ce53dd-0873-41c0-ad6a-fb42e6cc7aaa@lunn.ch>
+ <CADvTj4qpHU3F0DrEmc0vFi+JiwTNERniiMHKo1LmBd8sg58wJA@mail.gmail.com>
+ <205e9051-8e43-44bb-a4b5-4ec69a192fa3@lunn.ch>
+ <CADvTj4qmXWbDsc-vigcSrF1N=zpxmZWGp3YaZ9PFcWK551h3mg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CADvTj4qBhiPczrP9YC2uTW3xss3W7ghoBzbctM45yUROfsgPhw@mail.gmail.com>
+In-Reply-To: <CADvTj4qmXWbDsc-vigcSrF1N=zpxmZWGp3YaZ9PFcWK551h3mg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_103905_649673_B4EA8AAE 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20260804_110439_277350_24FBB453 
+X-CRM114-Status: GOOD (  10.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,60 +99,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> The AC200 Datasheet V1.1 and AC300 User Manual V1.0 block diagrams show
-> effectively the same EPHY organization: MII/RMII, auto-negotiation,
-> Auto-MDIX, 10/100 transmit and receive PCS/PMA blocks, LED and
-> clock/reset logic, a PLL, and the EPHY analog front end. Both variants
-> also report PHY ID 0x00441400, and testing shows compatible link-side
-> paged registers and behavior.
+> > No they don't. There are extra registers in different address domains.
 > 
-> What differs is the surrounding control path.
+> The block diagrams make the distinction clearer. Both diagrams depict
+> an EPHY block with the same internal organization: MII/RMII, auto
+> negotiation, auto-MDIX, 10/100 TX and RX PCS/PMA blocks, LED logic,
+> clock/reset, PLL and EPHY AFE.
 
-Which is still part of the PHY, needs driver code, and so should be
-part of the PHY driver. 
+The block diagram is a vendor diagram, the vendor can draw whatever
+diagram they want. What does the Mainline Linux networking block
+diagram look like?
 
-> AC200 is configured
-> through its RSB/TWI-backed MFD registers, while AC300 has a separate
-> non-PHY MDIO control endpoint.
+O.K. I've somewhat had enough of this discussion.
 
-Which is an implementation detail.
+For the Networking parts: NACK
 
-> I do not think the control-provider reference is artificial. It
-> describes a real functional dependency: the Clause 22 endpoint cannot
-> be accessed until the selected package-specific control block has
-> powered, calibrated and configured it.
+To get that revoked, make the PHY driver drive the PHY.
 
-Nothing too special here. There are PHYs which do this, in the PHY
-driver.
+Hide away as much of this bad networking design in the bootloader.
 
-> I also do not think a bootloader fixup should be the only supported
-> selection mechanism. Boards using the same compatible have shipped with
-> either package, and the SID field provides an authoritative package
-> selector which Linux can read directly. Handling that selector in Linux
-> avoids making support depend on a particular bootloader implementation.
+You are free to continue working on the MFD and other parts which are
+not networking, because i'm not a Maintainer there.
 
-There is a trade off here. If the hardware design is just ugly, badly
-thought out, poorly executed, not following the industries norms, we
-want to push back on the hardware vendor to make the next version
-better. Until that improved version comes out, either the vendor crap
-driver should be used, not Mainline, or we try to hide away the issues
-in the bootloader. A vendor which actually cares will improve, they
-know what Mainline means. And for vendors which don't care, why should
-Mainline care, especially if the issues can be pushed to the
-bootloader.
-
-We don't want to mess up core Linux code to handle one broken device,
-that just makes ongoing Maintenance more expensive for everybody.
-
-> A bootloader fixup remains compatible with this design. If firmware
-> enables only the correct provider, the fixed-description path is used
-> and Linux does not need to change the tree. Runtime selection is used
-> when firmware leaves the package variant unresolved.
-
-So i would not try to fix up the unresolved situation, just do a
-dev_error(dev, "Please upgrade your bootloader"); and return -ENODEV.
-
-	Andrew
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
