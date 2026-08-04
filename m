@@ -4,122 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7BE9C55184
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 15:26:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A46C55822
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 17:39:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D5kQ6H4aWnEMdsDiaU2CjRveYgiRGJ7+GcOODggQRU0=; b=LdFfQ/WHEL9Ooq
-	mzx/Iw0d7SYI+IJEOWTHihx1UtPgQaKNPjDMdsyAZi+9AwovsrlVOhWowGj3iFmaMcbJGhuDOiNAn
-	aXYNQWZKyx78xwFm4PSrqj/MIkTmJQI3hJkwtKoz1xmDPtqVuHw/RrIbXQFnyUORMFTH4OBuRg76h
-	ughy0WUGJZLyLJ+ZOSv1TuBMEIU1/0CQ+UEUKegGHaVVXQbTe0jyBMW62o7iFcZxlglpOdeU6Ab9z
-	XQJPnZk9HFrj5RZJ8NIa7waB/zK2Vy986VSDPQyyGFUIYCfEbrZYaCu2owtDa83XJHUWZw4QhJddV
-	pQbxi6h3FloeLKSZmEXw==;
+	List-Owner; bh=fsWY+fn3r7prK/PlRLMELsXbUvC2uYRJstBkqIjSPYY=; b=LxfEfj0ZIPO332
+	R0tAuhzvttNU4QmnTB+D+frXgkUCeOWveF9zi7xnecaFYJtQjCe6QZLOt+KPgBAS7+OGrgeDITgP2
+	TiJMblqq5/Z3y3q3vmpCQ0pjbhkxM8uYNPt7GZwALrqL9gnE8aQtB5FKhuC38nlwgyK+yiW2BLtHS
+	GA1Es/LlSmVeY/0dcGsA1R2oijJjAOANg2nXsBTjSzJy/6SBqWClH5W4aQzTLTtYXYQ48LswnrY5P
+	P3OGb9itfcjMgG1u1DJiTUUKardfUjPMCOWe+gbtADt9EZK3bn0rZdQmJXV7Uy53LdaMIel36pS6V
+	/QAmUxzSNVGIu6xl924A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrH2Z-00000002DCZ-0tv2;
-	Tue, 04 Aug 2026 15:26:51 +0000
-Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
+	id 1wrJ6a-00000002Voo-04Vc;
+	Tue, 04 Aug 2026 17:39:08 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrH2X-00000002DBQ-052k
-	for linux-rockchip@lists.infradead.org;
-	Tue, 04 Aug 2026 15:26:50 +0000
-Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-97723f98735so2767951241.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 04 Aug 2026 08:26:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785857207; cv=none;
-        d=google.com; s=arc-20260327;
-        b=quGybvQcCgVpJ5RMoL7HLYaiecoihcm9tMPF50XJ1JMg10i4ZWkFAeGLg9sjNk+MmM
-         G7lUjPOlyl2c4zgpOXkCuPwh0t5IngORv++9McmIz8LStkVxWKCxOjL9x444DPdnh9/2
-         vvcoVJtvmvJ+TrfneJMG83fFx1NX1frGc6CgS/i03SETYGouhb5tuUcHRXA24WNKykfV
-         jESOXcbPioeNCWmh1ncYH/gi0niddxeNl3dR1Prmczk8LFuZSRv7keDCHothiR62ztS9
-         x7zQEeJMW+T8KRP/nHbXHdr+hCCHkZP4TdjkDEgwkH2b1r9iqP3tS1jf1w9mC6t+eg+M
-         ta0Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=DIzf+HYojrQvIG1FuzM4Jdr3lr/d2D1NXMxs/JfDycE=;
-        fh=U0Wawddxu70wZjnPeYFV3czfOPoX3csP4OAyw424HVQ=;
-        b=eayjvyE4kjZvJHA82iCnR1dNXv/SxQPEc4OYP79kgDuTX149+rx40T73sFzaqruSUO
-         gbzkqUksVKpkxLWaQCzuhsvETEGEbStNTNGnY4XWvzAbeL6rJtch1NcyyHz8VVLrqJoU
-         K1zRPDxe06syUKP6/3wPYc6FvdQGueDhwAECALMCJNQ5IGK/XKrsLVqhssQXKWSE+Iy+
-         0jrBzwCIhceURDYSHsZ6Ft0HH9dOMRNOTQ12H9upZ+TTZCnf1YOr9qxtbD9b0lfJdtTg
-         66dpB+MDE4epb/a7mkgF1TGsT9XE200aQvaWuXMsaFdiz+anfRTOfEkspNAWfjNIj0zZ
-         uTHA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785857207; x=1786462007; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=DIzf+HYojrQvIG1FuzM4Jdr3lr/d2D1NXMxs/JfDycE=;
-        b=hfbQvme/XCfNPBiWNrmXV6LP3nozNeSzANmgwL0IXY2yFD2vVpVJ6d6Nm6JJAgeI9/
-         Tygacji4RHkOoRCnw6nZ8fyBe8sUHB1aGxybhn4suvUWsuUeQguEhCI7def60TEX3bfy
-         pImx4bboTdOZsVEHP+wDg0suyWGwDU0jxIx+RtK5mA31E+eqNTxiDmRGG1bYwMawpDWH
-         jI54bL3NL89TIq67x5vhk7BH0R+EeQ2JAIn9dQl/Da06PuscGvidMRExeuN7e4pZwI9I
-         d6e/aoVlVkkSwqq/QN71ZclMAMbtv7DLTclYf+RdV0nbCuOLpSb+3PuJO/H2nbVwQzUO
-         e9Dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785857207; x=1786462007;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=DIzf+HYojrQvIG1FuzM4Jdr3lr/d2D1NXMxs/JfDycE=;
-        b=BQFrpNXZ/bDkJZOUNZWx/wGkulk62Yv29GGFdhys6mWV6sO2hWbOVILDHX1GWYTceD
-         KWFGADKE/5nepoQLdI0IAzH32hSdZBrfGitgXjruAXfy8p0AsjdTZ6Db0v6NxhlmXjFX
-         TO74tGeMNFh8bLHHgy7wOtvTVwK252l7c59IGZl5dG8qV2L2eDvutAIPGSf/zjqYIJpa
-         M3g2GB1GW6vSpAcwvgnnPf0k0TZmTq50IMV0ctIE9HDIig/n0oteVhJJYv7352puHjvD
-         mgq3fqYZsCI5jXI2eeIR4gKo1d6bFKMPO/sxrU7wTb/m+4Wj0MGYmH4ZXQUUrfGDAHei
-         PUIA==
-X-Forwarded-Encrypted: i=1; AHgh+Ro/HgUVdw2Rt0n6qVe9/L0F7j9azI9Rvb8X4FyyhmofwHKDkABgpA/kCGE56ySBMofat7Ro9awzq/qleUE9jw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy2T19BbPvQXcEJbglv4f6soiNAfdJbOJJIBiO0tolnZ64c92mE
-	htj/Yq8dzWumV+eVe6AUJ51VHzwtYJJZnYiRewCJt2r/sfzmYeoCF57Eqz4txdG7LHVX1mUp4Do
-	zBqhhWJF7RrByR9qEo2MvxfvKUFAHw6s=
-X-Gm-Gg: AR+sD1061DZRc8P06iQUt/L8ADUfhLcJDenO5rqJxiVBIcQLhqfa+SG57VjLMABxcNn
-	JTCmrQxrprn0W1ZKGBnMA46Bs6Nf82LA78HhLekjcbQz3J4igoFcy9WC/gSE2+fIdAvo6fv+Rl6
-	FFDWxXS6I9NTH/64o7BAMERUpVcuhUUcuTAu1WowxqNLz7PiVZvIRikOPiitkLbWKF/VMOQnmaO
-	oodqcXM9F6wegix6e0VTjcR2DVa/8kRWHVPoyT95Agfcaj8G3EohP+a8g9e3V95srONWmxKKTSp
-	xCyzqSwFGmhTigCCY+udlza0/RbcaLP59qSOFyVH/MG9Ko4ar+oKasmlWs/agq+TqMktbXcDjGs
-	02wYi1LHnbz3OeE5pzGmwIl0dpj4Dl4zjCAR6F9ejMEVhegqztPsB4QVJvLyy/wc4FBIECT24M2
-	vU/puejTh8MSp38zKIeQDmxCH8JZvqYT+TP7Y2
-X-Received: by 2002:a05:6102:5093:b0:740:2717:a1b2 with SMTP id
- ada2fe7eead31-75b21a600f9mr11149553137.1.1785857207439; Tue, 04 Aug 2026
- 08:26:47 -0700 (PDT)
-MIME-Version: 1.0
+	id 1wrJ6X-00000002Vny-2ZJZ;
+	Tue, 04 Aug 2026 17:39:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=iEI0tsAN27gcGUyJPUFdfbIkSDOcl8zJRY+yO6IjA8E=; b=yoyLWprDwgxFu5mYAEn0SWOsHd
+	Oi46csV9zN33JyPIvHApKBtCDW42AQUUUlGXzFn6E7Dze5qPN7pVQwVvCWC4K1hG93ghBJ021aTf0
+	ySxCwlGTz8UX6CmusMreZx/UoBOyZxDReyZBxhEut4FvMZpxKWFxCBhafQuqyXb/cWCc=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wrJ63-00G1hx-Un; Tue, 04 Aug 2026 19:38:35 +0200
+Date: Tue, 4 Aug 2026 19:38:35 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: James Hilliard <james.hilliard1@gmail.com>
+Cc: Jernej =?utf-8?Q?=C5=A0krabec?= <jernej.skrabec@gmail.com>,
+	Andre Przywara <andre.przywara@arm.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
+	Samuel Holland <samuel@sholland.org>,
+	Richard Genoud <richard.genoud@bootlin.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Saravana Kannan <saravanak@kernel.org>, Lee Jones <lee@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com, mfd@lists.linux.dev,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 00/21] net: phy: add X-Powers AC200/AC300 EPHY support
+Message-ID: <9dd29610-d9e4-48f2-9638-2c92863626f8@lunn.ch>
 References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
- <20260802-submit-acx00-of-dynamic-v1-v1-10-0a53cd9e21cc@gmail.com>
- <05b1e6a2-725e-4b8e-8629-249637bbcb81@lunn.ch> <CADvTj4o0JdjoO+FC4pO=qnjEQ8MRyzQdKp2Hxy9NsPU-gym5OQ@mail.gmail.com>
- <9b8be475-1fde-409c-a82e-be4b2e402650@lunn.ch> <CADvTj4pBovti19MXgQjFpxm=7aRm0sYQz9jxfo8bu3txH94THQ@mail.gmail.com>
- <a9ce53dd-0873-41c0-ad6a-fb42e6cc7aaa@lunn.ch> <CADvTj4qpHU3F0DrEmc0vFi+JiwTNERniiMHKo1LmBd8sg58wJA@mail.gmail.com>
- <205e9051-8e43-44bb-a4b5-4ec69a192fa3@lunn.ch>
-In-Reply-To: <205e9051-8e43-44bb-a4b5-4ec69a192fa3@lunn.ch>
-From: James Hilliard <james.hilliard1@gmail.com>
-Date: Tue, 4 Aug 2026 09:26:35 -0600
-X-Gm-Features: AUfX_mxUgphmHVN2nVqeDHtOoQ4DhYlfN2EUsZlGA6OuEq-kXlUnQLFlQtbWoRc
-Message-ID: <CADvTj4qmXWbDsc-vigcSrF1N=zpxmZWGp3YaZ9PFcWK551h3mg@mail.gmail.com>
-Subject: Re: [PATCH 10/21] net: phy: add X-Powers AC200 EPHY control driver
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Andre Przywara <andre.przywara@arm.com>, 
-	Richard Genoud <richard.genoud@bootlin.com>, Maxime Ripard <mripard@kernel.org>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
-	Jose Abreu <joabreu@synopsys.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Russell King <linux@armlinux.org.uk>, Saravana Kannan <saravanak@kernel.org>, Lee Jones <lee@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	mfd@lists.linux.dev, linux-rockchip@lists.infradead.org
+ <aaec8809-8218-4412-a60d-931406dbf287@arm.com>
+ <CADvTj4qCYjQHOQn1jRTHNNL=xeX6z3Dgc-PLwOBUvX34AU6cuA@mail.gmail.com>
+ <AGtA6uUwR9yJMX3xYVDz6g@gmail.com>
+ <CADvTj4qBhiPczrP9YC2uTW3xss3W7ghoBzbctM45yUROfsgPhw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CADvTj4qBhiPczrP9YC2uTW3xss3W7ghoBzbctM45yUROfsgPhw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_082649_070964_6A276AF7 
-X-CRM114-Status: GOOD (  23.48  )
+X-CRM114-CacheID: sfid-20260804_103905_649673_B4EA8AAE 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,60 +89,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBdWcgNCwgMjAyNiBhdCA4OjU04oCvQU0gQW5kcmV3IEx1bm4gPGFuZHJld0BsdW5u
-LmNoPiB3cm90ZToKPgo+ID4gSSBhZ3JlZSB0aGF0IHRoZSBsaW5rIFBIWSBjYW5ub3QgYmUgaWRl
-bnRpZmllZCBieSByZWFkaW5nIGl0cwo+ID4gcmVnaXN0ZXJzIGJlZm9yZSB0aGUgcGFja2FnZSBj
-b250cm9sIHNlcXVlbmNlIGhhcyBydW4uIEkgZG8gbm90IGFncmVlCj4gPiB0aGF0IHRoaXMgbWVh
-bnMgYW4gYXJiaXRyYXJ5IElEIHNob3VsZCBiZSBwbGFjZWQgaW4gRFQsIHRob3VnaC4KPgo+IFRo
-ZSBhYmlsaXR5IHRvIHB1dCB0aGUgSUQgaW4gRFQgaXMgdGhlcmUgZm9yIHR3byByZWFzb25zOgo+
-Cj4gMSkgWW91IGNhbm5vdCBlbnVtZXJhdGUgdGhlIFBIWSBiZWNhdXNlIG9mIG1pc3NpbmcgY2xv
-Y2tzIGV0Yy4KPiAyKSBUaGUgdmVuZG9yIG1lc3NlZCB1cCwgYW5kIGRpZCBub3QgcHV0IGEgdmFs
-aWQgSUQgaW4gcmVnaXN0ZXJzIDIgYW5kIDMuCj4KPiAyIGRvZXMgbm90IGhhcHBlbiB2ZXJ5IG9m
-dGVuLCBidXQgdGhpcyBpcyBvbmUgZXhhbXBsZS4gVGhleSBhcmUKPiBkaWZmZXJlbnQgUEhZcywg
-dGhleSBuZWVkIGRpZmZlcmVudCBkcml2ZXIgY29kZSwgd2hlbiB5b3UgY29uc2lkZXIgdGhlCj4g
-UEhZIGFzIGEgd2hvbGUuCj4KPiBJIGFsc28gd291bmQgbm90IHB1dCBpbiBhbiBhcmJpdHJhcnkg
-SUQsIHBpY2sgYW4gdW51c2VkIElEIGluIHRoZQo+IHZlbmRvcnMgcmFuZ2UuCgpUaGUgdmFsdWUg
-Y3VycmVudGx5IHVzZWQgaW4gRFQgaXMgbm90IGFyYml0cmFyeTogMHgwMDQ0MTQwMCBpcyBleGFj
-dGx5CndoYXQgYm90aCBsaW5rLXNpZGUgQ2xhdXNlIDIyIGVuZHBvaW50cyByZXBvcnQgZnJvbSBy
-ZWdpc3RlcnMgMiBhbmQgMwphZnRlciB0aGUgY29ycmVzcG9uZGluZyBwYWNrYWdlIGNvbnRyb2wg
-c2VxdWVuY2UgaGFzIHJ1bi4gVGhpcyBpcyBjYXNlCigxKSwgcmF0aGVyIHRoYW4gY2FzZSAoMik6
-IHRoZSBJRCBjYW5ub3QgaW5pdGlhbGx5IGJlIHJlYWQgYmVjYXVzZSB0aGUKRVBIWSBoYXMgbm90
-IHlldCBiZWVuIGNsb2NrZWQsIGNvbmZpZ3VyZWQgYW5kIHJlbGVhc2VkIGZyb20gcmVzZXQuCgpU
-aGUgcmVwb3J0ZWQgSUQgZG9lcyBub3QgZGlzdGluZ3Vpc2ggdGhlIHR3byBwYWNrYWdlcywgYnV0
-IHJlcGxhY2luZyBpdAp3aXRoIGEgc3ludGhldGljIHVudXNlZCBJRCB3b3VsZCBtYWtlIGFuIGV0
-aGVybmV0LXBoeS1pZEFBQUEuQkJCQgpjb21wYXRpYmxlIGRpc2FncmVlIHdpdGggdGhlIHZhbHVl
-IGFjdHVhbGx5IHJlcG9ydGVkIGJ5IHJlZ2lzdGVycyAyIGFuZAozLiBJZiBzZXBhcmF0ZSBBQzIw
-MCBhbmQgQUMzMDAgUEhZIGRyaXZlciBlbnRyaWVzIGFyZSBuZWVkZWQgdG8gaWRlbnRpZnkKdGhl
-IGNvbXBsZXRlIHBhY2thZ2UgdmFyaWFudHMsIHRoZXkgY2FuIHVzZSBwYWNrYWdlLXNwZWNpZmlj
-IG1hdGNoIGRhdGEKd2hpbGUgc2hhcmluZyB0aGUgY29tbW9uIGxpbmstUEhZIGltcGxlbWVudGF0
-aW9uLgoKPgo+ID4gQm90aCBBQzIwMCBhbmQgQUMzMDAgZXhwb3NlIHRoZSBzYW1lIGxpbmstc2lk
-ZSBQSFkgSUQgYW5kIHJlZ2lzdGVyCj4gPiBsYXlvdXQuCj4KPiBObyB0aGV5IGRvbid0LiBUaGVy
-ZSBhcmUgZXh0cmEgcmVnaXN0ZXJzIGluIGRpZmZlcmVudCBhZGRyZXNzIGRvbWFpbnMuCgpUaGUg
-YmxvY2sgZGlhZ3JhbXMgbWFrZSB0aGUgZGlzdGluY3Rpb24gY2xlYXJlci4gQm90aCBkaWFncmFt
-cyBkZXBpY3QKYW4gRVBIWSBibG9jayB3aXRoIHRoZSBzYW1lIGludGVybmFsIG9yZ2FuaXphdGlv
-bjogTUlJL1JNSUksIGF1dG8KbmVnb3RpYXRpb24sIGF1dG8tTURJWCwgMTAvMTAwIFRYIGFuZCBS
-WCBQQ1MvUE1BIGJsb2NrcywgTEVEIGxvZ2ljLApjbG9jay9yZXNldCwgUExMIGFuZCBFUEhZIEFG
-RS4KCldoYXQgZGlmZmVycyBpcyB0aGUgc3Vycm91bmRpbmcgdG9wLWxldmVsIGNvbnRyb2wgcGF0
-aC4gSW4gQUMyMDAsCkVfTURDL0VfTURJTyBjb25uZWN0IGRpcmVjdGx5IHRvIHRoZSBFUEhZLCB3
-aGlsZSB0aGUgcGFja2FnZSBjb250cm9sCmxvZ2ljIGFuZCByZWdpc3RlcnMgYXJlIHJlYWNoZWQg
-c2VwYXJhdGVseSB0aHJvdWdoIFJTQi9UV0kuIEluIEFDMzAwLAp0aGUgZXh0ZXJuYWwgTURDL01E
-SU8gcGlucyBmaXJzdCBlbnRlciBhIHRvcC1sZXZlbCBNRElPIHNsYXZlIGFuZApyZWdpc3RlciBi
-bG9jaywgd2hpY2ggdGhlbiBwcm92aWRlcyBpbnRlcm5hbCBNREMvTURJTyBjb25uZWN0aW9ucyB0
-bwp0aGUgRVBIWS4gVGhhdCB0b3AtbGV2ZWwgYmxvY2sgYWxzbyBjb250YWlucyB0aGUgQUMzMDAt
-c3BlY2lmaWMgcmVzZXQsCmNsb2NrLCBJL08gYW5kIGVGdXNlIGNvbnRyb2xzLgoKVGhlcmVmb3Jl
-LCBJIGFncmVlIHRoYXQgc2F5aW5nIHRoZSBjb21wbGV0ZSByZWdpc3RlciBsYXlvdXRzIGFyZSB0
-aGUKc2FtZSB3YXMgdG9vIGJyb2FkLiBUaGUgcGFja2FnZXMgaGF2ZSBkaWZmZXJlbnQgdG9wLWxl
-dmVsIGNvbnRyb2wKcmVnaXN0ZXJzIGluIGRpZmZlcmVudCBhZGRyZXNzIGRvbWFpbnMsIGJ1dCB0
-aGUgZGlhZ3JhbXMgaW5kaWNhdGUgdGhhdAp0aGV5IGNvbnRhaW4gdGhlIHNhbWUgbGluay1mYWNp
-bmcgRVBIWSBpbXBsZW1lbnRhdGlvbi4gVGhhdCBtYXBzCm5hdHVyYWxseSB0byBzaGFyZWQgbGlu
-ay1QSFkgY29kZSB3aXRoIHNlcGFyYXRlIEFDMjAwIGFuZCBBQzMwMCBjb250cm9sCmJhY2tlbmRz
-LCByYXRoZXIgdGhhbiB0d28gY29waWVzIG9mIHRoZSBjb21tb24gRVBIWSBpbXBsZW1lbnRhdGlv
-bi4KCj4KPiAgICAgICAgIEFuZHJldwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+> The AC200 Datasheet V1.1 and AC300 User Manual V1.0 block diagrams show
+> effectively the same EPHY organization: MII/RMII, auto-negotiation,
+> Auto-MDIX, 10/100 transmit and receive PCS/PMA blocks, LED and
+> clock/reset logic, a PLL, and the EPHY analog front end. Both variants
+> also report PHY ID 0x00441400, and testing shows compatible link-side
+> paged registers and behavior.
+> 
+> What differs is the surrounding control path.
+
+Which is still part of the PHY, needs driver code, and so should be
+part of the PHY driver. 
+
+> AC200 is configured
+> through its RSB/TWI-backed MFD registers, while AC300 has a separate
+> non-PHY MDIO control endpoint.
+
+Which is an implementation detail.
+
+> I do not think the control-provider reference is artificial. It
+> describes a real functional dependency: the Clause 22 endpoint cannot
+> be accessed until the selected package-specific control block has
+> powered, calibrated and configured it.
+
+Nothing too special here. There are PHYs which do this, in the PHY
+driver.
+
+> I also do not think a bootloader fixup should be the only supported
+> selection mechanism. Boards using the same compatible have shipped with
+> either package, and the SID field provides an authoritative package
+> selector which Linux can read directly. Handling that selector in Linux
+> avoids making support depend on a particular bootloader implementation.
+
+There is a trade off here. If the hardware design is just ugly, badly
+thought out, poorly executed, not following the industries norms, we
+want to push back on the hardware vendor to make the next version
+better. Until that improved version comes out, either the vendor crap
+driver should be used, not Mainline, or we try to hide away the issues
+in the bootloader. A vendor which actually cares will improve, they
+know what Mainline means. And for vendors which don't care, why should
+Mainline care, especially if the issues can be pushed to the
+bootloader.
+
+We don't want to mess up core Linux code to handle one broken device,
+that just makes ongoing Maintenance more expensive for everybody.
+
+> A bootloader fixup remains compatible with this design. If firmware
+> enables only the correct provider, the fixed-description path is used
+> and Linux does not need to change the tree. Runtime selection is used
+> when firmware leaves the package variant unresolved.
+
+So i would not try to fix up the unresolved situation, just do a
+dev_error(dev, "Please upgrade your bootloader"); and return -ENODEV.
+
+	Andrew
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
