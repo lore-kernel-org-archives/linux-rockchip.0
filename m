@@ -4,72 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C5EC55184
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 14:31:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FFDEC55184
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 14:54:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gkGROQGiSjkcz6T/3q4yrbyMSANsS3wrz9lOjAo+Ui8=; b=eP9CJInKYP8+yW
-	806vZxUDte8CKNcaGgg95K8dUMYwd3ckyn0TypuAEnEatYCzV7kiPXHvahRN108zh/9QLGKeZpW32
-	MAahBsEP6NVpyYukppGROjACo8VMTOzTJypo+kfpnydJABdY5MwjrRVDTOJwU3eOLmdud6PsgkpNL
-	9ZPESFRFSgavw6K7trUzphF/taFoMMN50ftlVqZbySuWGJiWGixC5p7w6GYaE3nyQyqXnmYsQTgYu
-	gdBbLi0ErBEDQZzd8Co4Zh3TObJ9FdOYgLdZHNx/aX3CjbJtMAO1seJb/L1bnDeuSzloST9zsxt7j
-	4wrQ3Y/M+ED4mfZ0RmRQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XHh3xOMcyMavs3zTLHZ+P0Fbt4h/NhSjb+dULHtTbnM=; b=lFXjlr2/z5T5Dk
+	qntLELfMDmtcZLD4V/5ESGIdr/W3v3obaA5UoOwgKAHq2znIqlzsx7ytbSUanScaV6y8mnu4+deDw
+	W5YWr+qxpp+/4oF2GA9CGFgQ1WD5yunRGJqZTjqoKVvC2qRN7/t0ZVENP7v9+JNQ0+3GMDgOfUMiJ
+	yj2aiA1F4sgOQg2W1ZnAJ5oNlLAR4pQpPfAN5HagfJaX+WPrjrvsYiKU92oj0rO5Wpg4UNdJ6W4iV
+	bWnORytg84HPRDeOkI34aYHvj47YOOBP+lT+sRWhbFnA9GyU693Zam+Ef/m4CbzblfYDVUOMH8Yev
+	at4WxfRfZx3mdrON96DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrGAW-000000025Kx-1FAv;
-	Tue, 04 Aug 2026 14:31:00 +0000
-Received: from xmbghk7.mail.qq.com ([43.163.128.44])
+	id 1wrGXQ-000000028gP-1Qcx;
+	Tue, 04 Aug 2026 14:54:40 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrGAT-000000025KI-1LrC;
-	Tue, 04 Aug 2026 14:30:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1785853845; bh=xViXhWZ+qTfa1B4H+kg5+e7aP8kp2Ldm7P7h8I+biF8=;
-	h=From:To:Cc:Subject:Date;
-	b=VrnimCo6YwiQyrGFuQXu7pEy89J1JkoI8KYOJBfM8tBTn0lFIC5q5U3lr1aDvSp/g
-	 wC+ANwubXroioCu+lyrA38k+ntmhxrDXOGOhwC96qjA6+pk0RAIgad9yqLGcSJrdQF
-	 CJylOG3LWhVbWGE6BtLc3w0jw+1hERQgoyEwPEyM=
-Received: from AERO17.taila7786d.ts.net ([2409:8a7c:21c:8010:c675:1308:618e:14ff])
-	by newxmesmtplogicsvrsza53-0.qq.com (NewEsmtp) with SMTP
-	id 7AAA3821; Tue, 04 Aug 2026 22:30:42 +0800
-X-QQ-mid: xmsmtpt1785853842t8u3j3llg
-Message-ID: <tencent_FF56D057857A89EBFD82C037D80A53598C06@qq.com>
-X-QQ-XMAILINFO: MeukCuWaRbQlLeJwg7OhmwL7fTRqWcC9wqWoo7vIJ/2Q4FIk4Y9qOnWkwJb2ST
-	 lQLIFBlMoDU7kNHH0Q3iUkjcn8/os3rea1tHLGzuJlbw0HJYcuIXve1wbXNjdgCYDLF0OS8XTkiH
-	 0fbi5Yzxzt13vQXH63tZIxqM76jh8zOAYiaMURMdzIUr5ful6ASzbAGOjMgjquDLvyo1zuDvzt8P
-	 ZRI43He+Vg4chWhlXa1KYlQD8A1LCw2KWm3L1ncYgPFFcYlQuHYqNchusoC0YnoCKo7rskfsPCpk
-	 /l8XGDOwQms1SC5V9Sax1L2mTo47DhdMq/N8Km/f1VsHv2S8XzerbIYsaJQVc7RLkSZ6ZPb23qAL
-	 QZoEKPj7M2Nffk7o5VSJDgUlzxqesHkEy8AOnke5kmnUiwIHZgXO18L2jhON3/2iGNy/2lUK9RLP
-	 fsFi1iPxB45+wrhDnnojog0mktkHDiT4eyRoUUxQavLhMPRxyqZqqv3ipR4hY44ZI66ed63XqkQg
-	 QYOo/M1II53cHFhrCvzlwzIzmHhzAUwc+ApSnatPPY/6FrCx1ZU4YuDIDRy4dTW5uJzcqDlX6GAW
-	 z6BgyGzDeGEEqKaldz/KEv7ka/K94yT6tZXCv24XSuUmWiTFFW+O8GVqFn9BO4eA9/hzOY6WQY9Q
-	 PzDpJn57FggLj69LD4Zaqca/HwGxnaZ+5rq6Pkp3+VGS33WuUfdJq+utKJc+lSipILrZgvNBQClX
-	 jq2QJqtvAR81LClCCF41WkVFWt+FYhPKiwxDJ2psLXfadN5Ol+Ei2Bi6VqGTEEm7dbLSNIoXunvb
-	 D8JNCHiOG0XH5hW4uI6yXC6DeW2b7HeIoUfTOuvwUkZTb8MlbMc6yQwLg9Ai4v/rKJ3KUJ6ldL0G
-	 ZgN+HM94sBG/AagVmrCqnx48FRjAzJmoi/sa88vYvBa1qT00D6yTntONOxcSEZiNYkpGSJTMHBUm
-	 99ULFT8xfQjMJS9STEAlHWbvg8vYGXI2jyeGvOvEuvrmSnnAivSZTwNMFY4Kr9ui1FWqIFfggql1
-	 2od0UkxW5RdbWH4FYfSLaYN+IkjGfnQewzgfJz4XvX7GXCXA8chJAzeU+mGDF2rxuMMC1fCg==
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-From: Pufan Jin <2254650260@qq.com>
-To: Heiko Stuebner <heiko@sntech.de>,
+	id 1wrGXN-000000028fN-40Gy;
+	Tue, 04 Aug 2026 14:54:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=FVcysNhXi0SKuam3CXUhAeBuqKpKKoH5Agw3hOwh+OQ=; b=G6RA/B6N9QcAQXF9n5BBZcIvR6
+	udxKfvx1udCDq1mUllEsc1W+KanrgLjoCOw7n5czm5NayiKbRiyVAlPiVq39BhGrqwFxmSajG8VZJ
+	WSCcdogKlJa3QF5eqLXoTNEgUkDQf5AUdxIoRjkFYOih/yukSGAQDR/E5KiB/sZOJGrA=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wrGX6-00G0Oe-HM; Tue, 04 Aug 2026 16:54:20 +0200
+Date: Tue, 4 Aug 2026 16:54:20 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: James Hilliard <james.hilliard1@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Enable the NPU on LubanCat 4
-Date: Tue,  4 Aug 2026 22:29:42 +0800
-X-OQ-MSGID: <20260804142942.850982-1-2254650260@qq.com>
-X-Mailer: git-send-email 2.55.0
+	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Andre Przywara <andre.przywara@arm.com>,
+	Richard Genoud <richard.genoud@bootlin.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Saravana Kannan <saravanak@kernel.org>, Lee Jones <lee@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com, mfd@lists.linux.dev,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 10/21] net: phy: add X-Powers AC200 EPHY control driver
+Message-ID: <205e9051-8e43-44bb-a4b5-4ec69a192fa3@lunn.ch>
+References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
+ <20260802-submit-acx00-of-dynamic-v1-v1-10-0a53cd9e21cc@gmail.com>
+ <05b1e6a2-725e-4b8e-8629-249637bbcb81@lunn.ch>
+ <CADvTj4o0JdjoO+FC4pO=qnjEQ8MRyzQdKp2Hxy9NsPU-gym5OQ@mail.gmail.com>
+ <9b8be475-1fde-409c-a82e-be4b2e402650@lunn.ch>
+ <CADvTj4pBovti19MXgQjFpxm=7aRm0sYQz9jxfo8bu3txH94THQ@mail.gmail.com>
+ <a9ce53dd-0873-41c0-ad6a-fb42e6cc7aaa@lunn.ch>
+ <CADvTj4qpHU3F0DrEmc0vFi+JiwTNERniiMHKo1LmBd8sg58wJA@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CADvTj4qpHU3F0DrEmc0vFi+JiwTNERniiMHKo1LmBd8sg58wJA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_073057_668493_6803D815 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20260804_075437_992919_12A79AB6 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,94 +97,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The three RKNN cores and their IOMMUs are disabled by default in the SoC
-dtsi, so the board has to describe the NPU supply before they can be
-enabled.
+> I agree that the link PHY cannot be identified by reading its
+> registers before the package control sequence has run. I do not agree
+> that this means an arbitrary ID should be placed in DT, though.
 
-This board feeds both the NPU logic and its SRAM from a single RK8602
-output on i2c1. The vendor DTS makes that explicit by giving the same
-regulator node two labels, vdd_npu_s0 and vdd_npu_mem_s0, and then
-handing one to rknpu-supply and the other to mem-supply. There is no
-separate memory rail to describe, so npu-supply and sram-supply both
-point at vdd_npu_s0. The binding requires both properties.
+The ability to put the ID in DT is there for two reasons:
 
-Neither property is what actually enables the rail: the rocket driver
-never requests a regulator, it only takes clocks, resets, register
-ranges and a power domain. The rk3588 power domain driver marks
-RK3588_PD_NPU as needing a regulator, so the rail has to be described on
-pd_npu, the root of VD_NPU that the three per-core domains hang off.
-This matches what rock-5b does.
+1) You cannot enumerate the PHY because of missing clocks etc.
+2) The vendor messed up, and did not put a valid ID in registers 2 and 3.
 
-Mainline has no NPU OPP table, so all three cores stay at the 200 MHz
-the SoC dtsi assigns to the shared SCMI clock. Clocking them higher
-needs an OPP table to move vdd_npu_s0 along with the frequency, which is
-left for later work.
+2 does not happen very often, but this is one example. They are
+different PHYs, they need different driver code, when you consider the
+PHY as a whole.
 
-Tested on rev 20241026 hardware: all three cores probe, each reporting
-NPU core version 1179210309 and landing in its own IOMMU group, the
-rocket driver registers /dev/accel/accel0, vdd_npu_s0 comes up enabled
-at 800 mV and dmesg is free of NPU errors.
+I also wound not put in an arbitrary ID, pick an unused ID in the
+vendors range.
 
-Signed-off-by: Pufan Jin <2254650260@qq.com>
----
- .../boot/dts/rockchip/rk3588s-lubancat-4.dts  | 34 +++++++++++++++++++
- 1 file changed, 34 insertions(+)
+> Both AC200 and AC300 expose the same link-side PHY ID and register
+> layout.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
-index a0fc128ce6e1..c623a4c46d22 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
-@@ -365,6 +365,10 @@ &pd_gpu {
- 	domain-supply = <&vdd_gpu_s0>;
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hym8563 {
- 		hym8563_int: hym8563-int {
-@@ -407,6 +411,36 @@ &pwm0 {
- 	status = "okay";
- };
- 
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_2 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_2 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&avcc_1v8_s0>;
- 	status = "okay";
--- 
-2.55.0
+No they don't. There are extra registers in different address domains.
 
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
