@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6F34C561F8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B73B2C56204
 	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 08:17:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pfwP57FDT/42WlcBLvEEWFF2cTPGJiT6Td39jAWaMBA=; b=gQjLGKA5H3sAU4
-	DCJ2K0/6NI2f7jaeElm59q6gd3yMrox7LotEp6Hp2VZGJQQ14DbJZwCFQmKj42OSms92Fb7p+vtLG
-	wLT95wm4+Gd4pExoXNgIe2A/JTicLvtpIDPdozFIyf9d+tP7xypadcDwfEdS58eFUxUQNI+waIdMA
-	Ie4oIkP4THRU2gDFPXvAnMIC3xmcYowd59m9S27yAllfAoPnI5VgpLj/zFKAgOC/mgHrsEluvR5tf
-	5QX2/aucnGx+zMHM8RaytfFLgweUW4GTBkhgo5Csah2lewxiQonlSgRmBqg7jIPORF3nV5A0xwdG1
-	rI9t4t8Ri7nvfxxWa0qg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wdgR9hTq2GTgys1U1zXYEgNDg7J2pxuzGUU9aaKdyn4=; b=v7WE0nGY+wG58R
+	9GuE0BmE1gM8FH5SzmBVkQpQ9ntm/uLmlKcg7/YJ94Yn4P1ZA1Hhz5Lzu+Pwf2UiOx4rFHxSLp89d
+	gSvQZr0y2jsriTtrzLZi20wmGlabiOQdqxiqdr/DwVI5PQ3z/SjmHQFizjUIEVOlQPdI0p1ks+4XQ
+	PEOdqFYCSPcHDH7jx7g1proot/L6wYIG+/Jt5PRTJpXddk7b0c5DaKy2Q1yZ92JU2UNo762d98kaB
+	T4olSc0Ky1YYeCm5hmvcWy0cQowY/T3kOTzdxqdRwMw8wCBb8cNeE216ctUL6E20oR2g453YrEfa/
+	QbxEtOho9eBgSSPm97Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrAL9-00000001IuO-2I2Q;
+	id 1wrAL9-00000001Iuk-2reu;
 	Tue, 04 Aug 2026 08:17:35 +0000
-Received: from mail-m93205.xmail.ntesmail.com ([103.126.93.205])
+Received: from mail-m12886.netease.com ([103.209.128.86])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrAL7-00000001IsT-07Hf;
+	id 1wrAL6-00000001IsU-2HYf;
 	Tue, 04 Aug 2026 08:17:34 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 48b4ffeb8;
-	Tue, 4 Aug 2026 16:17:23 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 48b4ffed3;
+	Tue, 4 Aug 2026 16:17:26 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -53,24 +53,26 @@ Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v2 00/10] Add HPD support for Rockchip Analogix DP
-Date: Tue,  4 Aug 2026 16:17:07 +0800
-Message-Id: <20260804081717.741404-1-damon.ding@rock-chips.com>
+Subject: [PATCH v2 02/10] drm/bridge: analogix_dp: Return bitmask from analogix_dp_get_irq_type()
+Date: Tue,  4 Aug 2026 16:17:09 +0800
+Message-Id: <20260804081717.741404-3-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260804081717.741404-1-damon.ding@rock-chips.com>
+References: <20260804081717.741404-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9fcbd94c8a03a8kunma7b8cbe762b05a
+X-HM-Tid: 0a9fcbd9564d03a8kunma7b8cbe762b080
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZSx0YVkpOGUtNHUMdS01JQlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCThhLVk5PS0hMTx5KTkxMGFYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=B0O3LnFKaGEGcuqFzDxOAAhsrpKAclkoHT8Ss10xQwo8ENT20Orwa4IN82hep3lXA6CRwdqQDTMci+Z3POAAX82poTM6fWsHjSh7L6bV7FjURLE6vCcCANdDb5XUKb72MCOPWVDUCOBvHUXifcf4/Lp8Fhvo2mnRJRT+AsCmf+o=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=XEJwkzKAxzdmwnFl/XhAo3dBSYt45hv0UwpouGA/PdA=;
+	b=H5i8vf53DsHE9nais/Pv+kAcfh/JZX3LR9TRWmXPNM2KVzF9dhdd8/STp9o0bKzm3EtHKAxLDPpHq++mJ/yfUA5Cn06FhOqONNJHADapr3cn2DtJecLn/vg8P2F8AFF8z7tZjVP+99YyjfaI+o8bUxPTA3jXUFPTzFDFcYx/Fq8=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=YGYojIb0fMEZEgKZbtpHU3IN7GPrQMf40SfosYPELAI=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_011733_306943_C00019F7 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20260804_011733_143582_EF547983 
+X-CRM114-Status: GOOD (  14.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,155 +89,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series improves the HPD (Hotplug Detect) interrupt handling in
-the Analogix DP driver to enable reliable native HPD pin detection on
-Rockchip platforms, and introduces platform-specific HPD detection
-schemes with fine-grained interrupt control.
+Analogix DP controllers support two sets of interrupts for hotplug
+detection: HOTPLUG_CHG, and the pair PLUG / HPD_LOST. The current
+driver logic relies on PLUG/HPD_LOST and does not consume HOTPLUG_CHG,
+nor does it check for INT_HPD for IRQ_HPD events.
 
-On Rockchip platforms, the Analogix DP native HPD pin IRQ requires the
-DP controller to remain powered, clocked and initialized to generate
-plug/unplug interrupts. The previous driver enabled/disabled IRQ during
-bridge enable/disable, which left no HPD detection when the display
-pipeline was inactive. Additionally, the interrupt mute/unmute/clear
-routines operated on all HPD interrupt bits unconditionally, lacking
-the granularity needed for per-event control.
+The existing analogix_dp_get_irq_type() returns on the first matched
+interrupt flag. This causes the hardirq handler to unconditionally mute
+all HPD interrupts, including HOTPLUG_CHG and INT_HPD, creating a
+limitation for future extensions.
 
-The series reorganizes IRQ and pm_runtime management into bind/unbind,
-adds IRQF_ONESHOT to eliminate read-modify-write races on interrupt
-mask registers between hardirq and threaded handlers, converts the
-interrupt type detection to a bitmask-based scheme for fine-grained
-mute/unmute/clear operations, and configures Rockchip platforms to use
-the HOTPLUG_CHG interrupt with a 2ms HPD deglitch setting for better
-stability.
+To prepare fine-grained interrupt handling, convert the return type
+from enum dp_irq_type to a u32 bitmask. Accumulate all pending
+interrupt flags instead of returning early, and add detection for
+DP_IRQ_TYPE_IRQ_HPD. Remove DP_IRQ_TYPE_UNKNOWN sentinel; use zero
+to indicate no pending interrupts, which simplifies code and
+facilitates future extension for additional interrupt types.
 
-Patch  1: Move enable_irq()/disable_irq() to bind/unbind and hold a
-          pm_runtime reference for Rockchip native HPD pin mode.
-Patch  2: Convert analogix_dp_get_irq_type() to return a u32 bitmask
-          instead of an enum, accumulating all pending interrupt flags.
-Patch  3: Add IRQF_ONESHOT to prevent hardirq from preempting the
-          threaded handler; remove redundant mute/unmute from runtime
-          IRQ path; move status clearing before event handling.
-Patch  4: Extend clear_hotplug_interrupts() to accept an irq_type
-          bitmask for per-event pending interrupt clearing.
-Patch  5: Extend mute/unmute helpers to accept an irq_type bitmask for
-          init-time platform-specific interrupt mask configuration.
-Patch  6: Simplify analogix_dp_config_interrupt() by removing redundant
-          local macros and leveraging the unmute helper.
-Patch  7: Configure Rockchip platforms to use HOTPLUG_CHG interrupt with
-          2ms HPD deglitch; other platforms keep PLUG + HPD_LOST pair.
-Patch  8: Skip native HPD interrupt register operations for GPIO HPD
-          mode, where hotplug is detected through an external GPIO.
-Patch  9: Restrict the forced connected-status shortcut to panel
-          endpoints only, so DP connector bridges rely on HPD detection.
-Patch 10: Handle HPD notification from downstream bridges (e.g.,
-          display-connector with hpd-gpios) to short-circuit
-          analogix_dp_detect_hpd() when connection is already confirmed.
+This prepares subsequent changes to pass specific irq flags into
+mute/unmute helpers for selective interrupt control.
 
-Tested on RK3576 with both native HPD pin and GPIO HPD configurations.
-
-Native HPD pin mode:
-
-  &edp {
-      status = "okay";
-      pinctrl-names = "default";
-      pinctrl-0 = <&edp_txm0_pins>;
-  };
-
-GPIO HPD mode:
-
-  &edp {
-      status = "okay";
-      pinctrl-names = "default";
-      pinctrl-0 = <&edp0_hpd>;
-      hpd-gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
-  };
-
-  &pinctrl {
-      edp {
-          edp0_hpd: edp0-hpd {
-              rockchip,pins = <4 RK_PC1 0 &pcfg_pull_none>;
-          };
-      };
-  };
-
-Display-connector mode (DP connector without HPD GPIO):
-
-  &edp_out_conn {
-      remote-endpoint = <&dp_con_in>;
-  };
-
-  dp-con {
-      compatible = "dp-connector";
-      label = "DP OUT";
-      type = "full-size";
-
-      port {
-          dp_con_in: endpoint {
-              remote-endpoint = <&edp_out_conn>;
-          };
-      };
-  };
-
-Display-connector mode (DP connector with HPD GPIO):
-
-  dp-con {
-      compatible = "dp-connector";
-      label = "DP OUT";
-      type = "full-size";
-      pinctrl-0 = <&edp0_hpd>;
-      pinctrl-names = "default";
-      hpd-gpios = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
-
-      port {
-          dp_con_in: endpoint {
-              remote-endpoint = <&edp_out_conn>;
-          };
-      };
-  };
-
-All four configurations detect cable plug/unplug events correctly.
-
-Damon Ding (10):
-  drm/bridge: analogix_dp: Manage pm runtime and IRQ for native HPD pin
-    detection
-  drm/bridge: analogix_dp: Return bitmask from
-    analogix_dp_get_irq_type()
-  drm/bridge: analogix_dp: Add IRQF_ONESHOT and simplify IRQ handling
-  drm/bridge: analogix_dp: Extend clear_hotplug_interrupts to accept IRQ
-    bitmask
-  drm/bridge: analogix_dp: Extend mute/unmute HPD interrupts to accept
-    irq bitmask
-  drm/bridge: analogix_dp: Simplify analogix_dp_config_interrupt()
-  drm/bridge: analogix_dp: Use platform-specific HPD detection scheme
-  drm/bridge: analogix_dp: Skip native HPD interrupt ops for GPIO HPD
-  drm/bridge: analogix_dp: Restrict forced connected status only for
-    panel endpoint
-  drm/bridge: analogix_dp: Handle HPD notification from downstream
-    bridge
-
- .../drm/bridge/analogix/analogix_dp_core.c    |  87 +++++++---
- .../drm/bridge/analogix/analogix_dp_core.h    |  12 +-
- .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 152 ++++++++++++------
- 3 files changed, 175 insertions(+), 76 deletions(-)
-
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 ---
+ .../gpu/drm/bridge/analogix/analogix_dp_core.c |  8 ++++----
+ .../gpu/drm/bridge/analogix/analogix_dp_core.h |  4 ++--
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c  | 18 ++++++++++--------
+ 3 files changed, 16 insertions(+), 14 deletions(-)
 
-Changes in v2:
-- Split IRQ enable/disable logic, handle native HPD pin and
-  GPIO/force-HPD modes separately to avoid unbalanced enable_irq()
-  calls.(Sashiko)
-- Add separate patch for IRQF_ONESHOT to resolve interrupt mask issues
-  triggered by interrupt preemption.(Sashiko)
-- Update commit messages to align with newly added IRQF_ONESHOT related
-  commit.
-- Move ANALOGIX_DP_HPD_DEGLITCH_L/ANALOGIX_DP_HPD_DEGLITCH_H configs to
-  analogix_dp_reset().
-- Add new patch to restrict the forced connected-status shortcut to
-  panel endpoints only, allowing DP connector bridges to rely on HPD
-  detection. (Reported by Heiko Stuebner)
-- Add new patch to handle HPD notification from downstream bridges
-  (e.g., display-connector with hpd-gpios).
-
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 18f300b49644..7ef8ef812b55 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -704,10 +704,10 @@ static irqreturn_t analogix_dp_hardirq(int irq, void *arg)
+ {
+ 	struct analogix_dp_device *dp = arg;
+ 	irqreturn_t ret = IRQ_NONE;
+-	enum dp_irq_type irq_type;
++	u32 irq_type;
+ 
+ 	irq_type = analogix_dp_get_irq_type(dp);
+-	if (irq_type != DP_IRQ_TYPE_UNKNOWN) {
++	if (irq_type) {
+ 		analogix_dp_mute_hpd_interrupt(dp);
+ 		ret = IRQ_WAKE_THREAD;
+ 	}
+@@ -718,7 +718,7 @@ static irqreturn_t analogix_dp_hardirq(int irq, void *arg)
+ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ {
+ 	struct analogix_dp_device *dp = arg;
+-	enum dp_irq_type irq_type;
++	u32 irq_type;
+ 
+ 	irq_type = analogix_dp_get_irq_type(dp);
+ 	if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN ||
+@@ -728,7 +728,7 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 			drm_helper_hpd_irq_event(dp->drm_dev);
+ 	}
+ 
+-	if (irq_type != DP_IRQ_TYPE_UNKNOWN) {
++	if (irq_type) {
+ 		analogix_dp_clear_hotplug_interrupts(dp);
+ 		analogix_dp_unmute_hpd_interrupt(dp);
+ 	}
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index c7997677a286..c2eba77f9a81 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -120,7 +120,7 @@ enum dp_irq_type {
+ 	DP_IRQ_TYPE_HP_CABLE_IN  = BIT(0),
+ 	DP_IRQ_TYPE_HP_CABLE_OUT = BIT(1),
+ 	DP_IRQ_TYPE_HP_CHANGE    = BIT(2),
+-	DP_IRQ_TYPE_UNKNOWN      = BIT(3),
++	DP_IRQ_TYPE_IRQ_HPD      = BIT(3),
+ };
+ 
+ struct video_info {
+@@ -193,7 +193,7 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
+ int analogix_dp_init_analog_func(struct analogix_dp_device *dp);
+ void analogix_dp_init_hpd(struct analogix_dp_device *dp);
+ void analogix_dp_force_hpd(struct analogix_dp_device *dp);
+-enum dp_irq_type analogix_dp_get_irq_type(struct analogix_dp_device *dp);
++u32 analogix_dp_get_irq_type(struct analogix_dp_device *dp);
+ void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp);
+ void analogix_dp_reset_aux(struct analogix_dp_device *dp);
+ void analogix_dp_init_aux(struct analogix_dp_device *dp);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index ea8401293a23..f4f859cb2936 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -413,8 +413,9 @@ void analogix_dp_force_hpd(struct analogix_dp_device *dp)
+ 	writel(reg, dp->reg_base + ANALOGIX_DP_SYS_CTL_3);
+ }
+ 
+-enum dp_irq_type analogix_dp_get_irq_type(struct analogix_dp_device *dp)
++u32 analogix_dp_get_irq_type(struct analogix_dp_device *dp)
+ {
++	u32 irq_type = 0;
+ 	u32 reg;
+ 
+ 	if (dp->hpd_gpiod) {
+@@ -426,17 +427,18 @@ enum dp_irq_type analogix_dp_get_irq_type(struct analogix_dp_device *dp)
+ 	} else {
+ 		/* Parse hotplug interrupt status register */
+ 		reg = readl(dp->reg_base + ANALOGIX_DP_COMMON_INT_STA_4);
+-
+ 		if (reg & PLUG)
+-			return DP_IRQ_TYPE_HP_CABLE_IN;
+-
++			irq_type |= DP_IRQ_TYPE_HP_CABLE_IN;
+ 		if (reg & HPD_LOST)
+-			return DP_IRQ_TYPE_HP_CABLE_OUT;
+-
++			irq_type |= DP_IRQ_TYPE_HP_CABLE_OUT;
+ 		if (reg & HOTPLUG_CHG)
+-			return DP_IRQ_TYPE_HP_CHANGE;
++			irq_type |= DP_IRQ_TYPE_HP_CHANGE;
++
++		reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA);
++		if (reg & INT_HPD)
++			irq_type |= DP_IRQ_TYPE_IRQ_HPD;
+ 
+-		return DP_IRQ_TYPE_UNKNOWN;
++		return irq_type;
+ 	}
+ }
+ 
 -- 
 2.34.1
 
