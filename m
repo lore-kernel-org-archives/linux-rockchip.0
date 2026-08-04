@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BFF8C561F8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 08:17:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 654E5C5518F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Aug 2026 08:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9nHaNDeSNy1euy7fLlDubJs8VcH+2ZmEA8HnjaHIVYw=; b=zKQ/R2gQPE4D9l
-	cygKLAxDRHZzAunBncUw5B4a/JYK9zTmcG60nosa7a/15l+cgJmPH68RM4XvkiFAC0dg78ekP4Eep
-	Go4y0XA2nGuxgLc9okdhjCi5kTTfdClN1O2OKwdczXibeoI7ufHcdphSEq7PwnDP+X4bLu6r1JaCZ
-	OHkfJ0Mn+1DXlEapaVEXuHarqlp0ILTCALzxzuuTHzvn80CTVE4kyLclCb/vQBllPGzTuzdi/nHd8
-	9bdH1fmknoFTxxK8WCLpx9kAY7OBrmX2J2vr06ZTdmBh74SrIEExTTMR+01JfmXgrSlqJ5vZIaWxg
-	BCzvhRCWw9wgZLbCd58w==;
+	List-Owner; bh=kgl08mwDycb2F6Ix71GbCV4HghmrzrseryQ0yZ19iEU=; b=V9+iZK/uxEpTPb
+	5lTDCDYzEFEVtqeaTv/Hni1dkIhmpMjAPoVgrBpmrZtrVI6NkvsVI3KbNj7LItB9P4GoS6HWyG3DE
+	XMJSVnNbjnFeoPFPNmDIZKrh3c0iVB7nxZDYN4kdob54OP65Pr8Ug2edJBUjKr/ctLmRfZq7P3a0A
+	Ls+LijXJdn07d745a0OwTvRYkyyU11S3WSu8pyBPgc8e2A2Chg6cR79qJVac9ZWyPPKVz5KCYSkVl
+	jEJYDzPV6J5egVWeRI6HbWcmNtZuJ0ozoKCYi/LzvTckdxYSt2vT2yPdsSHoxvpKts4hHuva+1vP9
+	Ii9Bv+A9umvijtCTRHhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrALK-00000001JFM-2scF;
-	Tue, 04 Aug 2026 08:17:46 +0000
-Received: from mail-m81249.netease.com ([47.88.81.249])
+	id 1wrAgY-00000001MUY-3rQz;
+	Tue, 04 Aug 2026 08:39:42 +0000
+Received: from mail.zlab.su ([109.73.193.145])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrALF-00000001IyC-0zUV;
-	Tue, 04 Aug 2026 08:17:43 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 48b4fff2e;
-	Tue, 4 Aug 2026 16:17:35 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	dri-devel@lists.freedesktop.org,
+	id 1wrAgU-00000001MSa-3vxK;
+	Tue, 04 Aug 2026 08:39:40 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7EF21BFAEB;
+	Tue,  4 Aug 2026 11:39:14 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zlab.su; s=dkim;
+	t=1785832766; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=7LGYalmhQwZrxOtGKmdSjC1WD7j0rRgBEPhRoGP+KSU=;
+	b=XA+D7KGCymenwT0xyMUSjJEQPPERpnUrMdXzeklq/D4KURrG8s8Jixzmcs2Jvk7Vn8xXgR
+	cQt+eV2EPMe5oIRfQD5jQqCBeJUXO4KHluGV62eRFvXPBewayj0KeSE+UOxgYwfufYlVNn
+	KEmNM3RSaSxjp/HVnAJRDxBwCKAxBSNIwEa+chdiKERBy4VPmyNJ8fr+3fVdE/0EdL87fU
+	80bJCYLBgg/D75n6RLRaf1fB48caXUq50Croscbl8I5LB7eSFNKs730GVx7hz7EjYvwENK
+	d3v8Yb0+wU/9Z7ZamYCqowwsHhp83r09HkikMfRX9oagTKpcL4Dr0xxOu07Nxw==
+From: Vladislav Leonov <vlad@zlab.su>
+To: sjg@chromium.org
+Cc: conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
+	festevam@nabladev.com,
+	heiko@sntech.de,
+	hl@rock-chips.com,
+	jeffy.chen@rock-chips.com,
+	jonas@kwiboo.se,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v2 10/10] drm/bridge: analogix_dp: Handle HPD notification from downstream bridge
-Date: Tue,  4 Aug 2026 16:17:17 +0800
-Message-Id: <20260804081717.741404-11-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260804081717.741404-1-damon.ding@rock-chips.com>
-References: <20260804081717.741404-1-damon.ding@rock-chips.com>
+	michael.riesch@collabora.com,
+	robh@kernel.org,
+	vkoul@kernel.org,
+	ziyao@disroot.org,
+	Vladislav Leonov <vlad@zlab.su>
+Subject: Re: [PATCH v3 3/6] dt-bindings: soc: rockchip: grf: Add RV1106 compatibles
+Date: Tue,  4 Aug 2026 11:38:56 +0300
+Message-ID: <20260804083856.11447-1-vlad@zlab.su>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260729133609.3465563-4-sjg@chromium.org>
+References: <20260729133609.3465563-4-sjg@chromium.org>
 MIME-Version: 1.0
-X-HM-Tid: 0a9fcbd97bed03a8kunma7b8cbe762b0fd
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHRpDVhpKTB1NSBkeGBhCTVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=SohnfUmi0MZZEoAoDsZj4vPpj0X0DbQuo4zvxtT26IBgh1dIdNilNr6K5vn773a7/9DDuE9+7RowCZoyy88k4FreVSgDOL4RJO4F7NkhijLqAu4OLzholJq7wh5HuRfyMDm1MCBnf+bXvqoepyUHq8os4msiCivz/uh6DCff1tg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=ihFySqm5GnqPJHRcWS06V+nd4nWFCQ2/QSaKuoAhvMM=;
-	h=date:mime-version:subject:message-id:from;
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_011742_154053_A604E953 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20260804_013939_505804_EFAF320E 
+X-CRM114-Status: UNSURE (   3.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,81 +83,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When the display pipeline includes a display-connector bridge with
-hpd-gpios configured, the connector's hotplug status is managed by the
-display-connector bridge through its GPIO, not by the Analogix DP
-controller's native HPD. In this configuration, the DP controller's
-internal HPD polling in analogix_dp_detect_hpd() does not reflect the
-actual connection state.
+Tested on custom PCB with RV1106G2.
+Comparing with the V2 series, GPIO now works without any issues.
 
-Implement the .hpd_notify bridge callback to receive connection status
-updates from downstream bridges. Cache the connection status in a
-connection_notified flag, and use it to short-circuit
-analogix_dp_detect_hpd() when a downstream bridge has already confirmed
-the connection.
+Regards,
+Vladislav
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
----
- .../gpu/drm/bridge/analogix/analogix_dp_core.c   | 16 ++++++++++++++++
- .../gpu/drm/bridge/analogix/analogix_dp_core.h   |  1 +
- 2 files changed, 17 insertions(+)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index a5a50b9ab8a7..f0476a60ece3 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -68,6 +68,13 @@ static int analogix_dp_detect_hpd(struct analogix_dp_device *dp)
- {
- 	int timeout_loop = 0;
- 
-+	/*
-+	 * Trust connection status from downstream bridge (e.g.,
-+	 * display-connector with hpd-gpios).
-+	 */
-+	if (dp->plat_data->next_bridge && dp->connection_notified)
-+		return 0;
-+
- 	while (timeout_loop < DP_TIMEOUT_LOOP_COUNT) {
- 		if (analogix_dp_get_plug_in_status(dp) == 0)
- 			return 0;
-@@ -1247,6 +1254,14 @@ static void analogix_dp_bridge_atomic_post_disable(struct drm_bridge *bridge,
- 		DRM_ERROR("Failed to enable psr (%d)\n", ret);
- }
- 
-+static void analogix_dp_bridge_notify(struct drm_bridge *bridge, struct drm_connector *connector,
-+				      enum drm_connector_status status)
-+{
-+	struct analogix_dp_device *dp = to_dp(bridge);
-+
-+	dp->connection_notified = (status == connector_status_connected);
-+}
-+
- static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
- 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-@@ -1259,6 +1274,7 @@ static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
- 	.attach = analogix_dp_bridge_attach,
- 	.edid_read = analogix_dp_bridge_edid_read,
- 	.detect = analogix_dp_bridge_detect,
-+	.hpd_notify = analogix_dp_bridge_notify,
- };
- 
- static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index bcb5674801a2..cd8a5d52f973 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -169,6 +169,7 @@ struct analogix_dp_device {
- 	bool			fast_train_enable;
- 	bool			psr_supported;
- 	bool			last_bridge_is_panel;
-+	bool			connection_notified;
- 
- 	u8 dpcd[DP_RECEIVER_CAP_SIZE];
- 
--- 
-2.34.1
-
+Tested-by: Vladislav Leonov <vlad@zlab.su>
 
 _______________________________________________
 Linux-rockchip mailing list
