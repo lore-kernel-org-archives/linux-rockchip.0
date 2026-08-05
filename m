@@ -4,76 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9E6FC55174
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 16:57:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39D17C55174
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 17:00:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Subject:Cc:To:From:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date
+	:From:In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C1vT6EjBW3fRVY9xOUrymKc+n0LwK+yo08HYzWgUGsw=; b=fM4/kSfcJjAizO
-	vPRZh5ctOv1HrQO4AxHmz2GwPIRSvXdXqBI9YW17F5Kc9GxaPodiatvub9agdHmo9Ml/K/+orG99C
-	iBjTEP6MqmLUsXWZoeGhShx/s+FlgpnFVcxy5EVjfIYsj8jTCZasp/kkkSF6WDQ398xOe8nU8Fkjf
-	F2eGwMl6yG+eOqGw8lBvv0sxYUzOEEhZJNvK0U1X2LvK7tAZsKQJGhlbLQ5AqYsqaMzPAjRulL16g
-	spw9CsE6cSq5zqQ0+3pj1c5YBuYpnf1sY+Y/zrZzPAE5y+Zh8ct573o5fZdBGakrf4ypHo1A7Iv8Y
-	fIOzEgaU3cVdOHxCqj+g==;
+	List-Owner; bh=CwyUsR69e7lqiqgjAh05/eTgRLprfMj6p0u5/gee6T0=; b=xAcsThYD2LBDem
+	U/VW2Pa7HeOG+TRZV4q0uMXP1L/jf6CyReeUuJYxBt1s4Xv1ePlwnk9+yP/citiehWuNpheq9EzSE
+	Nl70rP5qsXV2FVb6W0IMCmWIwm8zjdaG+BEYjnZMn9yCPQ4ish3ujGJwT1UbbRzPhsC20Ql9/F74+
+	h7zh0vcrSZZxaR1u9bGFVTBWJdJWiJlciV8t9ayXk1lHjhNM/0FHfLSynvlh78hBHrkDYH9Atmvhn
+	2D8GAUGpYYrSU0Da5l4E6/FmqHzc6gPmTrH1DAp8iG/6hPX7/TVOSLpU6iszM5f3COxve8TR+ls3y
+	3nooq71e04PG4X7me/vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrevr-00000004IsD-1aJC;
-	Wed, 05 Aug 2026 16:57:31 +0000
-Received: from out162-62-57-87.mail.qq.com ([162.62.57.87])
+	id 1wreya-00000004J9q-1JJj;
+	Wed, 05 Aug 2026 17:00:20 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrevo-00000004IrC-2D8r;
-	Wed, 05 Aug 2026 16:57:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1785949039; bh=ZPOeT0UlkDB7bURmE/gi4VgTTsC5oEgCEAZwO5PY7hM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=rTP2MB8VN1LUPdnmON8tLZ/7fT6tkkhZtKH3vJGO/3G4+Rs62lPBNKdOyYh7gje4r
-	 +LPnoJC+4y2CU1RMJLp6qcWewCou/N6GhF+lVn1GtJYDHQPiUrOdSnv08SnKTIZNgW
-	 8oSbUJJ3AYssuB/p8FmtSHDorXS30UI0bYgdC6/A=
-Received: from AERO17.taila7786d.ts.net ([2409:8a7c:21c:8010:c675:1308:618e:14ff])
-	by newxmesmtplogicsvrszb51-1.qq.com (NewEsmtp) with SMTP
-	id E509F079; Thu, 06 Aug 2026 00:57:16 +0800
-X-QQ-mid: xmsmtpt1785949036tj1ii2sgr
-Message-ID: <tencent_9C3151C59C077D547095ACDC1F08B481A50A@qq.com>
-X-QQ-XMAILINFO: MhLcXbI0hPoHMGGAbEH+EabkpcEzS84YEckOoMysrLTZeDMmWWNlq/1vpTr4Dg
-	 3xVE6gSA7ehjrtQGU1HpDNR2KspTxyAwHfj+JRXW+c+n14JN5mNsuIDNtuPExuISGp0bg51TESmg
-	 prZFI7WTW/M8ECpqSWMdVoO/uX6LDRHQxjNNrJM8GJPEhQC7X8An+hDdrKoveYbE3G2KT7wTb9rX
-	 Qa9W764Who91jaJT6bOVVc060H9CkzBRPb3mUka7fsEGQKRClMdUshiq93E+jr3UzMDsGMe1fNCu
-	 hYi7KFybCkgFA/QUAgyepy45wnrjoGM9e8HNo/W2kgTkxqpYffvNySlmnbeK1AsYMjM0qjo0GLTl
-	 ykn8ZoDnlUwqZvYvvoZAdBe9/TaHezOuIfg+ouM7gFYNJh7q2vCi5Fpr9aSDw3Sfn/r/LMUhsfcx
-	 jdghoP7xHufh9X2pp+oP1tgWxhSaDg3qvALYznral//vFn1FJhuzwIwVryr5GYzxRmvB0pO2egTt
-	 5dp0EYk1vfNiS5QXAa9LiU27mFBwQVJAfvr6SsCb/qB3yBBZjeu0XSf3ubfTB5I4cno1CxwVJH7J
-	 llY88vpRofjheWcSB2mZ4iiCvKQpvZ8u2i+lSKf5wnK5wFwi7Hbbc2CfjLHjY0Sv2v8kqHicGMTk
-	 TicXlJQ9WRJhN/BvXR6oMDpx2QBio5L2iffRBXBLu9SsogDXRovjEPW3KZdgC9fBx7vPPrZxq6J2
-	 TWSkXVhqzmkoQ6nSR/u84UVi5p6rjqaVUVhgHEM+5GUilddDDTwT8Oe3kRLRHeyk3Y25/VqJyXzt
-	 ittfCWgtEKFxx+ajxMJtFkBQgvryydD+5Ra9CGYvOJdxjYMB25LHhiu4nd8TDpeCl1LsbtigaWwA
-	 3xM1hETWjnpSODzsQGTRQ5o5lTkgDJ7bs8iHiTyaCtCXrTXux21JF2KOmH5iQa2WbWmM59mb7RoC
-	 HBXztE58Fhy6WTnru9BpWsqJ+6DZo1nU4sWL30iM+2Hq7oHTSgASVoyq6iHCfhf30t0ttKvd8+oL
-	 gNUFRclwaus9UyBUkRu6JW0cwYIV9vANPFCmeg5nHHrancek5qpkvXSyWpv7rKDreA4W1UIjaFve
-	 DZTexdBh8W4qu/cGjJ8jswg/VnUu8e1YpcS5Co1ub3/WdtzShypRqjcTWDmQ==
-X-QQ-XMRINFO: NI4Ajvh11aEjEMj13RCX7UuhPEoou2bs1g==
-From: Pufan Jin <2254650260@qq.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Jimmy Hon <honyuenkwun@gmail.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: Enable the NPU on LubanCat 4
-Date: Thu,  6 Aug 2026 00:57:06 +0800
-X-OQ-MSGID: <20260805165706.137254-1-2254650260@qq.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <tencent_FF56D057857A89EBFD82C037D80A53598C06@qq.com>
-References: <tencent_FF56D057857A89EBFD82C037D80A53598C06@qq.com>
+	id 1wreyY-00000004J9P-3ohG
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Aug 2026 17:00:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id C919F60A94
+	for <linux-rockchip@lists.infradead.org>; Wed,  5 Aug 2026 17:00:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8195D1F00AC4
+	for <linux-rockchip@lists.infradead.org>; Wed,  5 Aug 2026 17:00:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785949217;
+	bh=WBGLmgn1KuR6ekaDfS9NzoAp0N4ym3eZDjfC7Q20pVI=;
+	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc;
+	b=SMWCYEvcM74kJ2TgjQBqvWi4t4taCknixxdGSZjw76yTmZQgqVCHjoSNcC7dx3lF8
+	 JlG6+1yM5zXvibUGlYm6788ep6CZfz+1ar5kTlKPrZ7aujiOudwt8i8xq9HrNG5OQ9
+	 ZZWSqdMBikBMNTBBXvUemGwNQ9Z92E8gukI2Gw9bzwjlsCMn1GVttbrrcRfQuass9V
+	 BxS/F+1nrvQ7i2+4hW3sF4VYf8ctqZHfmE1bBfGuc2IGjf875mk8T0UqP3RCqtJr0t
+	 8LGsjrqufehPnoxwzYCrJ1BZqOHDM0ixpygJhMMO72tZPVLd9yul7BPzpabN6l+XNS
+	 QndKgDwiWk5HA==
+Received: by mail-lj1-f173.google.com with SMTP id 38308e7fff4ca-39db07589caso11650001fa.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 05 Aug 2026 10:00:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+Rq1T7XfeNEcexX+Spj74+Kcc5x6BxHUFqJAYoZtvCwUmWuuPvQYCxgZfXK5mm3wiwxXEGsWqNGRJVrQdV/3mQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxcxFy3njRDvyghvwI4ek62+6DnIiEhL/yqIk7VCrqIOphkgB92
+	L+qJ3TuDhY1+ln8nkX60C0JAsvDHFUt6my3+aGAlT0HWussLdqxKf8hnDY9TELKQ6X9uiF1J9It
+	h+azXx6/LlL9/Wo/DLte8ooDb53ZSlfo=
+X-Received: by 2002:a2e:9a0b:0:b0:39e:b3b2:e95f with SMTP id
+ 38308e7fff4ca-39fbb2646cbmr11047971fa.18.1785949215957; Wed, 05 Aug 2026
+ 10:00:15 -0700 (PDT)
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_095729_102201_BE477768 
-X-CRM114-Status: GOOD (  17.66  )
+References: <20260624123914.1767374-1-hello@superkali.me> <178267399833.3089434.5140309637329023610.b4-ty@sntech.de>
+In-Reply-To: <178267399833.3089434.5140309637329023610.b4-ty@sntech.de>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Thu, 6 Aug 2026 01:00:02 +0800
+X-Gmail-Original-Message-ID: <CAGb2v64kcadr1nAisu_3kyE-=-4oypDXTvAy--jQHa0VhmYoXg@mail.gmail.com>
+X-Gm-Features: AUfX_mzxTaQi5lmCrQEStGQqjdfqlwh8KWbld4ds13aZOb9Ofar8XPEAC5gsAkU
+Message-ID: <CAGb2v64kcadr1nAisu_3kyE-=-4oypDXTvAy--jQHa0VhmYoXg@mail.gmail.com>
+Subject: Re: [PATCH] clk: rockchip: rk3588: don't disable unused I2S MCLK
+ output gates
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Daniele Briguglio <hello@superkali.me>, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Diederik de Haas <diederik@cknow-tech.com>, 
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Ricardo Pardini <ricardo@pardini.net>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,125 +78,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: wens@kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The three RKNN cores and their IOMMUs are disabled by default in the SoC
-dtsi, so the board has to describe the NPU supply before they can be
-enabled.
-
-This board feeds both the NPU logic and its SRAM from a single RK8602
-output on i2c1. The vendor DTS makes that explicit by giving the same
-regulator node two labels, vdd_npu_s0 and vdd_npu_mem_s0, and then
-handing one to rknpu-supply and the other to mem-supply. There is no
-separate memory rail to describe, so npu-supply and sram-supply both
-point at vdd_npu_s0. The binding requires both properties.
-
-Neither property is what actually enables the rail: the rocket driver
-never requests a regulator, it only takes clocks, resets, register
-ranges and a power domain. The rk3588 power domain driver marks
-RK3588_PD_NPU as needing a regulator, so the rail has to be described on
-pd_npu, the root of VD_NPU that the three per-core domains hang off.
-This matches what rock-5b does.
-
-Since pd_npu now controls the rail, drop regulator-always-on from
-vdd_npu_s0 so the domain can power it down while the NPU is idle.
-Nothing else is supplied from this rail, and rock-5b describes the same
-regulator without the property.
-
-Mainline has no NPU OPP table, so all three cores stay at the 200 MHz
-the SoC dtsi assigns to the shared SCMI clock. Clocking them higher
-needs an OPP table to move vdd_npu_s0 along with the frequency, which is
-left for later work.
-
-Tested on rev 20241026 hardware: all three cores probe, each reporting
-NPU core version 1179210309 and landing in its own IOMMU group, the
-rocket driver registers /dev/accel/accel0, and dmesg is free of NPU
-errors. With the rail no longer pinned on, regulator_summary shows
-vdd_npu_s0 at a use count of zero while the NPU is idle, so pd_npu is
-free to drop it.
-
-Signed-off-by: Pufan Jin <2254650260@qq.com>
----
-Changes in v2:
-- Drop regulator-always-on from vdd_npu_s0, so pd_npu can actually power
-  the rail down. Thanks to Jimmy Hon for spotting it. This mirrors
-  commit de5b39d16318 ("arm64: dts: rockchip: Remove workaround that
-  prevented Turing RK1 GPU power regulator control"), which did the same
-  for vdd_gpu_s0 once the domain-supply was in place.
-- Mention the change in the commit message and retest with it.
-- v1: https://lore.kernel.org/linux-rockchip/tencent_FF56D057857A89EBFD82C037D80A53598C06@qq.com/
-
- .../boot/dts/rockchip/rk3588s-lubancat-4.dts  | 35 ++++++++++++++++++-
- 1 file changed, 34 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
-index a0fc128ce6e1..e5c2e77d86c2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
-@@ -276,7 +276,6 @@ vdd_npu_s0: regulator@42 {
- 		reg = <0x42>;
- 		fcs,suspend-voltage-selector = <1>;
- 		regulator-name = "vdd_npu_s0";
--		regulator-always-on;
- 		regulator-boot-on;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
-@@ -365,6 +364,10 @@ &pd_gpu {
- 	domain-supply = <&vdd_gpu_s0>;
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hym8563 {
- 		hym8563_int: hym8563-int {
-@@ -407,6 +410,36 @@ &pwm0 {
- 	status = "okay";
- };
- 
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_2 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_2 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&avcc_1v8_s0>;
- 	status = "okay";
--- 
-2.55.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBKdW4gMjksIDIwMjYgYXQgMzoxM+KAr0FNIEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
+bnRlY2guZGU+IHdyb3RlOgo+Cj4KPiBPbiBXZWQsIDI0IEp1biAyMDI2IDE0OjM5OjE0ICswMjAw
+LCBEYW5pZWxlIEJyaWd1Z2xpbyB3cm90ZToKPiA+IE5vIGluLXRyZWUgYm9hcmQgcmVmZXJlbmNl
+cyB0aGVzZSBnYXRlcyB5ZXQuIEJvYXJkcyBkcml2ZSB0aGUgY29kZWMKPiA+IE1DTEsgdGhyb3Vn
+aCB0aGUgcGFyZW50IEkyUypfOENIX01DTEtPVVQsIGFuZCBub3cgdGhhdCB0aGUgZ2F0ZXMgYXJl
+Cj4gPiBtYW5hZ2VkIGNsb2NrcywgY2xrX2Rpc2FibGVfdW51c2VkKCkgdHVybnMgdGhlbSBvZmYg
+YXQgYm9vdC4gT24gYSBib2FyZAo+ID4gdGhhdCByZWxpZWQgb24gZmlybXdhcmUgbGVhdmluZyB0
+aGUgb3V0cHV0IGVuYWJsZWQsIHRoYXQgY3V0cyB0aGUgTUNMSwo+ID4gYW5kIGFuYWxvZyBhdWRp
+byBzdG9wcyB3b3JraW5nLgo+ID4KPiA+IE1hcmsgdGhlIGZvdXIgZ2F0ZXMgQ0xLX0lHTk9SRV9V
+TlVTRUQgc28gYW4gdW5yZWZlcmVuY2VkIGdhdGUga2VlcHMgdGhlCj4gPiBzdGF0ZSBmaXJtd2Fy
+ZSBsZWZ0LiBBIGJvYXJkIHRoYXQgd2FudHMgdGhlIGtlcm5lbCB0byBvd24gdGhlIGdhdGUgY2Fu
+Cj4gPiByZWZlcmVuY2UgSTJTKl84Q0hfTUNMS09VVF9UT19JTyBmcm9tIERUIGluc3RlYWQuCj4g
+Pgo+ID4gWy4uLl0KPgo+IEFwcGxpZWQsIHRoYW5rcyEKPgo+IFsxLzFdIGNsazogcm9ja2NoaXA6
+IHJrMzU4ODogZG9uJ3QgZGlzYWJsZSB1bnVzZWQgSTJTIE1DTEsgb3V0cHV0IGdhdGVzCj4gICAg
+ICAgY29tbWl0OiA5NDYzNTJiMmY4OGZkMjM3OGYwMzQxMzEyZTQ3ZGZmMWU4ZGMyZmFjCgpJbiBo
+aW5kc2lnaHQgbWF5YmUgaXQgd291bGQgaGF2ZSBiZWVuIGEgYmV0dGVyIGlkZWEgdG8gbWFwIHRo
+ZSBleGlzdGluZwpjbG9jayBJRCBJMlMqXzhDSF9NQ0xLT1VUIHRvIHRoZSBuZXcgZ2F0ZXMsIGFu
+ZCBhZGQgKG9yIG5vdCBhZGQpIG5ldwpjbG9ja3MgZm9yIHRoZSBpbnRlcm5hbCBNQ0xLIGdhdGVz
+LgoKVGhlbiB5b3Ugd291bGRuJ3QgbmVlZCB0byB1cGRhdGUgdGhlIERUcywgd291bGRuJ3QgbmVl
+ZCB0aGlzIHdvcmthcm91bmQsCmFuZCB3b3VsZG4ndCBkZXBlbmQgb24gdGhlIGJvb3Rsb2FkZXIg
+dG8gc2V0IHRoZSByZWdpc3RlcnMgY29ycmVjdGx5IHdoZW4KYm9vdGluZyBhbiBvbGQgRFQuCgoK
+Q2hlbll1CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
