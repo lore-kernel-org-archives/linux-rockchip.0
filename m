@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA298C2A09B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 02:28:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2BA9C56202
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 02:28:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lHLbBdE8rcC3JWqeWOV8b+mX65LW/KEGhZp+95vYMpc=; b=LL4CmPK5QIU6zl
-	5XVDIEynuHTgwS3/7JzebCkP8kfjefIlD/HPvb8TeBqkR8kJf3pu5iL5sRnJ0x2uDsWzNjVnmJw52
-	h9ZIGwLM/5K6vQUAdK6LUNQexwK8uKml/9yv3snUEosXLU2CPOJBaRUKlKpDDiWTeJjJG8z7gmPUU
-	gxs2K1cWeU+siXZk2sSw3WyvKssx/wYXWOTR8v3nUetym1b60k+I4YXzpCIcnczEc9780BcPEKLFb
-	3IODny0Ff0LwLNX6RLfx4DxolTQVPvsOz4756So2l5KPKsMsoCrErURAbPc5D+XqlzTdJ2JmBzo6W
-	UZf6/GtPkbG6wmvb8ooA==;
+	List-Owner; bh=Fx4yumEENUgkjnf4iZHxqVyWWCM2kABA7we4by6BNlE=; b=cSUhvW7Qhff90O
+	iCqQnDVVGDO0Awe/pJk+D3GDJMbogWhy4a8EL7Ih8ods3dLyUvSA6u0V6sgiHQhjy1UjyLfWipvlW
+	oBuUNgH3Dl4J+2757HcyguGMHuPZz2HzBEZB8cA2SKZlsf7vlukI5xgjfWTZGLE7pikjQOirF3vn/
+	pwqaRcNHgjjPxAYvfkeu8B3DN/hWBzW9uNHvhcpqcgXdlJF8qo2VwHwcJuTmyi9IBS7ZfZS4I4mDw
+	H0DqPKrc/J+rjsf6jeISm6rH1r+oxhfnyt2iX/MBYeLUZBds5ixQIwpcB3glzhpnnFnaGlKHu0GGb
+	Axg0iShhFbV8Wnz2l80g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrRN5-000000037Yf-2jyA;
-	Wed, 05 Aug 2026 02:28:43 +0000
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+	id 1wrRN9-000000037e5-0uOr;
+	Wed, 05 Aug 2026 02:28:47 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrRMw-000000037Mp-1oNG
+	id 1wrRMy-000000037PJ-2KNe
 	for linux-rockchip@lists.infradead.org;
-	Wed, 05 Aug 2026 02:28:37 +0000
-Received: by mail-ot1-x32c.google.com with SMTP id 46e09a7af769-7ee4399c423so383915a34.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 04 Aug 2026 19:28:34 -0700 (PDT)
+	Wed, 05 Aug 2026 02:28:39 +0000
+Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-7e6128bd9b3so282134a34.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 04 Aug 2026 19:28:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785896913; x=1786501713; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785896915; x=1786501715; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=AGkeXkcQmVAMhKi4BRouTjNasW9FdK69cwCP5dyljV8=;
-        b=ejbdrZKO5tmSO0J0NCTtEeNAiCemMiw5kx7J9IR8uMRI2qj3WYUuxyZSFhKRdMDqjg
-         eZu0iJnHeTXR50SgsaHKuJLv14B87KeGMWczTWQ54Gv6JeCN+bPkNr4aQBefPj/TPiE7
-         O7XVkJlO04xV+n+El9qieSYPx3aQetvFz16uGFiaDKbMJXnm4BiwcT9qP830Lecj5l/z
-         zdhJP7KEbi1e+uGi1lNRGDjLUt5kkyUbfwZI/TpfsAIv5tfhQhoQNW0WEsrBYlFzeo/W
-         yRuX4aEqFxCJttMF0jyCyb2BU73mqbfSzmTvGGRyK0Hq+HcC7sDTi7QvkRLAWG5xMuUp
-         Da7A==
+        bh=MjVtijpmJ/oNZWvDUTBmnWApL7aWLNJ+r5jlKeKXMpI=;
+        b=PWVNs4EZgH7exHOCR0dEj+2GXjW6mWcsuPGnPUEHaUxIEgJ9SdP6Tqbv4/Y0pBP8+y
+         1Q4417BomauxhVWwHeVLnRC8shuhKHLEBxLamFs2USrlh56keGDiZ61cVGdDttkozyzq
+         /apLW1qM0vyZr66zQT+Ga1ssxOCqzdIZ9KV4Cx5iFm9IzsIvrE/Solxe38x4UItFUFSj
+         16G+5TmXiHFQE7tc4vewjSy9aMLZTdG5iQntp6EgWO7hM91cWSSgGaZrhWy6Kq/YJ+Xz
+         7J8QfgKK/2QfaAW73bpJlgoxbzOgX+lQDacD1X7qUkUR44UY2k6MMFrq8uggd1dueRFJ
+         OPbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785896913; x=1786501713;
+        d=1e100.net; s=20251104; t=1785896915; x=1786501715;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=AGkeXkcQmVAMhKi4BRouTjNasW9FdK69cwCP5dyljV8=;
-        b=Ol8eLFcZWetGWxK15o1fWjf/YlbmU0mT4UM5X0FeabKj+VElRfElZn2HAUR1yTxjmt
-         gQaXfb5zUOw8TQHr4N1mtYffAKyK4O4QHJ1F+y7irWj+1DWRS9EzjtKjBqnhU7cBaD13
-         kBYVXuKLReXEr3ySDc8L/L0Fuiz+CIeMS4yCzg/FVZpbfmaFPBiyiBlrfEVDQH75/FaS
-         SpGZqMyZvk8g0yA6V7XjYLsJZYcR3iIzxaSeIoJlXkONM/rgkKvmsmjBtKHuw6+QZWjh
-         ty0l3Ygz4YPWOcD9vATI1/g0cwiwy0wEDM++52lS4Ue2t6TQMVcIKpBgCYdd2Z+XJ1Iq
-         x7Gw==
-X-Forwarded-Encrypted: i=1; AHgh+RqzvElR6Eq/NUpx3LsH3UtyocrdBT2NAy3M5g3CoAK7w9zWIlJJDy0Vx1hS/Jg2KSOWQCLBoT/JFVzQU/EOHA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yylv8576Z7FHlpZ6/wVpNFVwbTrPtsg4jIlYaC1eqX72DZE+DhH
-	tyErFF07zCKryLIpc88KPc6nCuYFPd1TwbIXHPaTUSkv2NGHuXxFkzfL
-X-Gm-Gg: AR+sD11VawrdRMTWsEGauORalI0696gPl+xTBllU2GHewlXhhZhrqLzsoobflhg0b0j
-	0Jjs3uY0npKNB2Y+lAuZpZ4GCuyy01+7N6+0YvYLHFiZVvsDuw2dNAR5lYyNY+QVCk0K+ZlL2j0
-	B19lEeSsV9jRbFqTV2kb/MvNijlJCPLiEyfxarC0ZX6qf71Ac/LdWzyaVh05pp/Vv7lM8aPTMHE
-	2e2Ut3GPNKBQqSGnpYVCsHjCFh33pI6Ypmxro40+sImWWj7i5GkuW5HavZbqp4zEilYZMPuCPOC
-	S/9ytgeWqk77c7HGz4stszWOcs8GC+SPMVTAbon+BUPoKy3+fzGM452Y4MXxpljBTgHmEiIGOu3
-	v2evR4/DgIO+7H5vl8Cra9/5F4GfP0wEwo8+wf+A7u1yAEj3aw6M3cNTWOtfX2+3veGeETV7+a2
-	X0u4zSamb3rAyBrN/2KWtaxLKgY+C1F1iEI+rlEkET33Ks/BH0K/ckz6Lj9I+fl1Rlottc+6CKy
-	BueOL/iJjDLiHy7AfqTxzHm3YuORxUYiTu/mSqDgiBVE4i7xu/pT8k02rnlfKxQ0+gaHbRDOKqF
-	QWMMrGMIChopYCNSoW8c8B5ejHao0bzBx10pFLgbXeEPW3wi2RIEd+Y+LGn4qLhadnt/1YkTBxM
-	lcvkbvCoaNSuHusD7
-X-Received: by 2002:a05:6830:7010:b0:7e9:d634:77b8 with SMTP id 46e09a7af769-7f1e5c13e8cmr2629082a34.2.1785896913436;
-        Tue, 04 Aug 2026 19:28:33 -0700 (PDT)
+        bh=MjVtijpmJ/oNZWvDUTBmnWApL7aWLNJ+r5jlKeKXMpI=;
+        b=idhy3hEQlsGiUoDFUUstnwpEQBN0C1MeQm32+c2SNOMODb7KxbmzxdzNHeJr1Er+Za
+         JiHIfmDoGbtNrL6FIiIDHinJa6xLlgEvjL3LJ760Ha1SjyHyn7mLvtie/aGz4IFp8Udt
+         OXv6lKpGAwJKDkof6HpTwuZ3IEENC1qvD0WC/aYw1aIAmJSz88V7unXjRfwJhM8Sx3uN
+         nsUwrfg3UhNAVDciTvbQy0Tc87a49c8KX6yk32HAJMf2ZM7zJAfwlGr6AikxMtm/o/qi
+         naY1srv2hVgeXCP5PIF99BRvDcDBMsrHg4KqETOGPqUG7Di+6NaZP1cxr2TpzSl3lnh2
+         NCDQ==
+X-Forwarded-Encrypted: i=1; AHgh+RoPiILL780WJXl7B4b2UvwEAlZcS+ldUufGrzm6B3Fvf2RX1grvzeXU5QtdMSPSQmfZ/BsewHgOUovbPeYLaA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy0kvlw97DqwfdMi+rL29liOf/Avtt6dXSks8paJWqFro4HEq0c
+	tW0o85hD0oaJuzeSyeArYI6M7Xy6lAA3J30rob0E46GjHx82wK7MxyVY
+X-Gm-Gg: AR+sD133JlOPFt0OXdjOrwAqefZGECJDDEyVj2hCixwBmZKBUhYtGkWHuXrg7l3Fepw
+	3Ukk08pe7jCt112FJS9dxwcR0nUutApELaVjjtB2g17vdiE2KqsxlLkKvJGDR6+23jXNonBU6SG
+	jz8MuxK3utX1+uoaxq6L9obGzFLXlhYfmpdMJCtBR58vXedPcrKV4vkUM2aLY78Y94//zSs+QuR
+	IXexWmLktZKtuFX9uW8i86t7sYJ96WKSiypo63/TReVjvVlWMei7lYQPewcoJ0vEGX+taaSiUFD
+	4Tx/39b1WvvAzHvCwcCa93OVElXhIHW7rUwdb+jYTDFzjLJvmnovgsnuBfM3QOx35FPFwqRZ5AP
+	L3qZElCYYR0phNq1ru0tKka7uTUwmfqkjc+FSayDxlCbe5cOb3iNhh8O5Ek7qWNlWvomSHB54cp
+	43i/PJe1yWNnN2xhgLU3EBxczj/wjQ08O4dbrP+I/vPKo51eaSgz6f5wW+opEngY9JjOjGoalcP
+	ifvnQPo4zHUdjDHCn5Ki0aoUS2H1KyE+6eAzBN27mA/xl75s+yQe9LN2GjNOSL62gwyrBcOQPkW
+	7vpFyjbChoFCdBqbAJThRdCcP3VFpDSEkJ8hydOE33uoyMRXqG4l+7fk424urIZcsG2RpNEsAgF
+	e+VwOpAtJGHZdhLobnFaddS4TnO4=
+X-Received: by 2002:a05:6830:3741:b0:7e9:ea28:4c1f with SMTP id 46e09a7af769-7f1e5d893e2mr2408593a34.8.1785896915399;
+        Tue, 04 Aug 2026 19:28:35 -0700 (PDT)
 Received: from [127.0.1.1] (184-96-154-59.hlrn.qwest.net. [184.96.154.59])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f1df565d37sm2078153a34.16.2026.08.04.19.28.32
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f1df565d37sm2078153a34.16.2026.08.04.19.28.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Aug 2026 19:28:33 -0700 (PDT)
+        Tue, 04 Aug 2026 19:28:35 -0700 (PDT)
 From: James Hilliard <james.hilliard1@gmail.com>
-Date: Tue, 04 Aug 2026 20:27:03 -0600
-Subject: [PATCH net-next v2 5/8] dt-bindings: net: x-powers: add AC300 EPHY
- control
+Date: Tue, 04 Aug 2026 20:27:05 -0600
+Subject: [PATCH net-next v2 7/8] dt-bindings: net: x-powers: add
+ AC200/AC300 EPHY
 MIME-Version: 1.0
-Message-Id: <20260804-submit-acx00-of-dynamic-v1-v2-5-3eef49ff1d8c@gmail.com>
+Message-Id: <20260804-submit-acx00-of-dynamic-v1-v2-7-3eef49ff1d8c@gmail.com>
 References: <20260804-submit-acx00-of-dynamic-v1-v2-0-3eef49ff1d8c@gmail.com>
 In-Reply-To: <20260804-submit-acx00-of-dynamic-v1-v2-0-3eef49ff1d8c@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -94,8 +94,8 @@ Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  James Hilliard <james.hilliard1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_192834_628601_0F588BF8 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20260804_192836_642036_0A3B2E55 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,80 +112,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The AC300 exposes its Fast Ethernet PHY control registers through a
-separate non-PHY Clause 22 address. The manual defines that address as
-the link PHY address plus 16, giving control addresses 16 through 23 and
-link addresses 0 through 7.
+The AC200 and AC300 MDIO link interfaces report the same Clause 22
+identifier and use a compatible link-side paged register layout, but need
+different package control interfaces before that identifier can be read.
 
-Describe the control endpoint, its required VCC1 supply, its 24, 25 or
-27 MHz input clock and its SoC SID calibration cell. The actual PHY
-remains a separate ethernet-phy node and supplies the MAC-selected
-interface mode at runtime.
+Describe the forced-ID PHY and require exactly one reference to an
+enabled AC200 or AC300 control device. The PHY node's reg value is
+programmed through the AC200 control interface. For AC300, it must match
+the address selected by the package straps and is therefore limited to 0
+through 7.
+
+Allow a system to provide its optional two-bit SID configuration field.
+Bit 0 identifies the AC200 or AC300 package and must agree with the
+described control device. Bit 1 selects the AC300 low-calibration tuning
+sequence. Omitting the field skips package validation and selects the
+normal calibration sequence.
+
+Also describe the optional xMII receive-clock inversion needed by some
+integrations. Requiring an X-Powers control reference distinguishes these
+integrations from the Rockchip RK630 PHY, which reports the same
+identifier.
 
 Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
- .../bindings/net/x-powers,ac300-ephy-ctl.yaml      | 70 ++++++++++++++++++++++
- 1 file changed, 70 insertions(+)
+ .../bindings/net/x-powers,acx00-ephy.yaml          | 117 +++++++++++++++++++++
+ 1 file changed, 117 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/x-powers,ac300-ephy-ctl.yaml b/Documentation/devicetree/bindings/net/x-powers,ac300-ephy-ctl.yaml
+diff --git a/Documentation/devicetree/bindings/net/x-powers,acx00-ephy.yaml b/Documentation/devicetree/bindings/net/x-powers,acx00-ephy.yaml
 new file mode 100644
-index 000000000000..8a616ff3e89f
+index 000000000000..c280bcf8aa25
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/net/x-powers,ac300-ephy-ctl.yaml
-@@ -0,0 +1,70 @@
++++ b/Documentation/devicetree/bindings/net/x-powers,acx00-ephy.yaml
+@@ -0,0 +1,117 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/net/x-powers,ac300-ephy-ctl.yaml#
++$id: http://devicetree.org/schemas/net/x-powers,acx00-ephy.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: X-Powers AC300 Ethernet PHY control interface
++title: X-Powers AC200 and AC300 Ethernet PHY
 +
 +maintainers:
 +  - James Hilliard <james.hilliard1@gmail.com>
 +
 +description:
-+  The AC300 Fast Ethernet PHY has a separate control interface accessed as a
-+  non-PHY Clause 22 device. Its address is 16 plus the address of the link PHY.
++  The AC200 and AC300 expose Fast Ethernet MDIO link interfaces which report
++  the same PHY ID and use a compatible link-side paged register layout. Each
++  package uses a different control interface to make its MDIO endpoint
++  accessible. A fixed board references its enabled AC200 or AC300 control
++  device. The PHY node's reg value is programmed through the AC200 interface;
++  for AC300 it must match the address selected by the package straps.
++
++select:
++  properties:
++    compatible:
++      contains:
++        const: ethernet-phy-id0044.1400
++  required:
++    - compatible
++  anyOf:
++    - required:
++        - x-powers,ac200-control
++    - required:
++        - x-powers,ac300-control
 +
 +properties:
 +  compatible:
-+    const: x-powers,ac300-ephy-ctl
-+
-+  reg:
-+    minimum: 16
-+    maximum: 23
-+
-+  clocks:
-+    maxItems: 1
-+    description:
-+      AC300 input clock. Its configured rate must be 24, 25, or 27 MHz and
-+      determines the corresponding EPHY_CLK_SEL value.
-+
-+  vcc1-supply:
-+    description:
-+      3.3 V supply for the AC300 I/O, bandgap, Ethernet PHY analog front end,
-+      and internal digital LDO
++    const: ethernet-phy-id0044.1400
 +
 +  nvmem-cells:
 +    maxItems: 1
 +    description:
-+      SoC SID cell containing the Ethernet PHY calibration value written to
-+      the AC300 BGS_EFFUSE field after adding 3 modulo 16, as prescribed by
-+      the vendor initialization sequence.
++      Optional two-bit SoC SID configuration field. Bit 0 selects the package
++      variant, with zero for AC200 and one for AC300, and must agree with the
++      described control device. Bit 1 selects the AC300 vendor low-calibration
++      tuning sequence. Omitting the field selects the normal tuning sequence
++      without validating the package variant.
 +
 +  nvmem-cell-names:
-+    const: calibration
++    const: configuration
++
++  x-powers,ac200-control:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Reference to the AC200 Ethernet PHY control function
++
++  x-powers,ac300-control:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: Reference to the AC300 MDIO Ethernet PHY control device
++
++  x-powers,xmii-rx-clock-inverted:
++    type: boolean
++    description:
++      Invert the xMII receive clock inside the PHY. This is required by some
++      SoC integrations, including the Allwinner H6 AC200 connection.
 +
 +required:
 +  - compatible
-+  - reg
-+  - clocks
-+  - vcc1-supply
-+  - nvmem-cells
-+  - nvmem-cell-names
 +
-+additionalProperties: false
++oneOf:
++  - properties:
++      x-powers,ac300-control: false
++    required:
++      - x-powers,ac200-control
++  - properties:
++      x-powers,ac200-control: false
++    required:
++      - x-powers,ac300-control
++
++dependentRequired:
++  nvmem-cells: [ nvmem-cell-names ]
++
++allOf:
++  - $ref: ethernet-phy.yaml#
++  - if:
++      required:
++        - x-powers,ac300-control
++    then:
++      properties:
++        reg:
++          maximum: 7
++
++unevaluatedProperties: false
 +
 +examples:
 +  - |
@@ -193,13 +240,24 @@ index 000000000000..8a616ff3e89f
 +        #address-cells = <1>;
 +        #size-cells = <0>;
 +
-+        ethernet-phy-control@10 {
-+            compatible = "x-powers,ac300-ephy-ctl";
-+            reg = <0x10>;
-+            clocks = <&pwm 5>;
-+            vcc1-supply = <&reg_3v3>;
-+            nvmem-cells = <&ephy_calibration>;
-+            nvmem-cell-names = "calibration";
++        ethernet-phy@0 {
++            compatible = "ethernet-phy-id0044.1400";
++            reg = <0>;
++            nvmem-cells = <&ephy_configuration>;
++            nvmem-cell-names = "configuration";
++            x-powers,ac300-control = <&ac300_ephy_ctl>;
++        };
++    };
++
++  - |
++    mdio {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        ethernet-phy@1 {
++            compatible = "ethernet-phy-id0044.1400";
++            reg = <1>;
++            x-powers,ac200-control = <&ac200_ephy_ctl>;
 +        };
 +    };
 +...
