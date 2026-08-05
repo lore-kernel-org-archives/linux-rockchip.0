@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5474EC55ABF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 21:13:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7E49C55ABF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 21:15:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LuqywSzWy3dbk48BdUZY7uLiUsZSIYkY1XRrGGKtpeg=; b=bXDX5Rb2cbQMtB
-	JZ/SLeq8SBNAreO+WkwlYB7nWvNXsHDQ8uT2YG1uTpV9NFchjtXKf65VtxQD05HZ3pih2lN2vkIk2
-	4nSKCwk3/qGSCAC1xj52jRtKjs9kCkU1b20mCgHWcaEXaiPTdNKqFWOgShSiEdNDKvJfXqsPctUoP
-	v/9UyMncofIQm0m2mIUg/gB3iV6Sd77RxdB/U9ZkakV9DzSY6/2DEeVEyjAf66aH3arNQKsDTKO9Z
-	mK9tX0rh8/y9MMa58OSxXWcumJ1o3QMWwrEiZ6mxomYC7tPSR0eduNxxO9Qa+w6U/uYE9qdDSpuio
-	OsJS+m9ZDE3Il0uvSg+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cPmmSXRvzes+OmPAXJFx2PDQHgq1d9ToVlAt88fKVwM=; b=mJGILyAl5ZuqEIIFTxWLV2wC76
+	8Wc4oGuDsXFneBA3mtHFH5n8z2ZcaiQoZNY/bA/Oyoj+kDprsJoaaeAdEjf8uSZpS/Z9KWLQ0qbe5
+	/jyG235vwWiyhVaTz+utBtAfcFdXb6TlsLP9RwfhgA87oI+RiXMo1qUPmZ24WEeZ+TkfM1AYH+A6v
+	EKcEzzM9gJynR7+tlEdGhwbXCfRtrh/byZzDjk8VKsa5ymlht5eO0j09pCVUV7MjPiQ+lIXmH6zr2
+	LdwPFE97OIYNSXM73VRlwgbt9joxV6CdFalu+xPxqAiouV6q10nwEXS1VwDgnOBUsqnFB1QGs+HZX
+	cDYuxvKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wriv8-00000004Ytq-3IQs;
-	Wed, 05 Aug 2026 21:13:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wrixW-00000004Z9I-0Dsa;
+	Wed, 05 Aug 2026 21:15:30 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wriv7-00000004YtJ-22Mw;
-	Wed, 05 Aug 2026 21:13:01 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D8A1240ACE;
-	Wed,  5 Aug 2026 21:13:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79BE51F000E9;
-	Wed,  5 Aug 2026 21:13:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785964380;
-	bh=UC3IO8cIp/jhpoXZx6fPB2Bw4heXNVKT+nG8vL5ge50=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=HydHWDqmDA4oYO1lXbKSt6JxI4wlEWZr0Fnnri09qzeBwKTC+Hc14TpFgCu82ZWmM
-	 USmb/p2zBO4ELQc+GUYsrzESrO98fYQf2+kknu9nPjVBnfYNMvBsofrF85WKAB33EL
-	 pAfRrd/f3AcKqqGqTOesUVNxCyDWJwjlTftVzt1162VBFa5Ogdhi7SkrLHVTVepkmo
-	 98mYOwhVTQaPffJuK6CG+d2cTxWS6PtN42bcr+7hYStleZjDqalk66SGsLtnZ4E1L3
-	 y2K8u4MlQE/ZcmWNlgc2U45OucgC/kumrOq/Cpipf62Lrs2UJh06yZJVXrMTe9njLZ
-	 HVtFVevgEBOdQ==
-Date: Wed, 5 Aug 2026 16:12:59 -0500
-From: Rob Herring <robh@kernel.org>
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Lubomir Rintel <lkundrak@v3.sk>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Shree Ramamoorthy <s-ramamoorthy@ti.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Joseph Chen <chenjh@rock-chips.com>,
-	Chris Zhong <zyw@rock-chips.com>,
-	Zhang Qing <zhangqing@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
-	Julien Panis <jpanis@baylibre.com>,
-	Matti Vaittinen <mazziesaccount@gmail.com>,
-	Alexander Kurz <akurz@blala.de>,
-	=?iso-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>,
-	mfd@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, Peng Fan <peng.fan@nxp.com>
-Subject: Re: [PATCH 02/10] dt-bindings: mfd: ti,tps65910: Use generic
- power-controller schema
-Message-ID: <20260805211259.GB1783131-robh@kernel.org>
-References: <20260804-mfd-syspower-v1-0-a440783c2e78@nxp.com>
- <20260804-mfd-syspower-v1-2-a440783c2e78@nxp.com>
+	id 1wrixT-00000004Z8q-1HOK
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Aug 2026 21:15:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1785964518; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jn220RgGLh7QMVmQMjiT8dV/5PhMax3IfUciBQjWp/ImsZKAEZC+/NfvXshbVSKwD2cxpfq7A/yQyU7DuhTfq7eSeP8irAjdsMGqlhGM9InMQzbAEiieayPHVaTR5ehiiLKeDhXikzjyIGWq3k6Y/TQQ+7+H1LY2DKHC5/LB8y0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1785964518; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=+kuukwyGmVsdiICPczWNawr/QJJDBzrSYoQUtDRRpQI=; 
+	b=WiAEnNGe6LukMgRqnQtKDRA0Tsu0y26OpqH5OxSULje7K2t88Ct2V+L2OzDQ3dk5rPFKbdOyzKodpY0MI/BPPqHcWtQy85Kfl9GLqg3Fc2TYoxBN0sqSzFJM4tm42YMoWyMroKiQH0NKx5ODn00L9rEG19r/gsBJLLQyUVEC/F0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1785964518;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=+kuukwyGmVsdiICPczWNawr/QJJDBzrSYoQUtDRRpQI=;
+	b=M7vi0+Hs6zuj6a1X7dhPoFDiUBoB5jn7aCyEDB66lUbUZEWkvL9NsBg4sr91LAnK
+	P3sc4XhCJqn2gIYDWknjmtogH5DsmaxpX3Q0YmohthLf1B5NTvSb7p19tsKzn3kdCeF
+	vTjtfdFfZoV7g8R61D73Sw6BtX8ceN4ssQ5P42R8=
+Received: by mx.zohomail.com with SMTPS id 1785964516685259.9295211317848;
+	Wed, 5 Aug 2026 14:15:16 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 49E1818082F; Wed, 05 Aug 2026 23:15:13 +0200 (CEST)
+Date: Wed, 5 Aug 2026 23:15:13 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Igor Paunovic <royalnet026@gmail.com>
+Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Oded Gabbay <ogabbay@kernel.org>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	Jiaxing Hu <gahing@gahingwoo.com>, Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] accel/rocket: request the core clocks by name
+Message-ID: <anOnZJVTGFErYvii@venus>
+References: <20260729130743.128876-1-royalnet026@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260804-mfd-syspower-v1-2-a440783c2e78@nxp.com>
+In-Reply-To: <20260729130743.128876-1-royalnet026@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/285.956.17
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260805_141527_418360_C3CA31CB 
+X-CRM114-Status: GOOD (  32.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,24 +77,157 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6203744816006733919=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 04, 2026 at 10:16:37PM +0800, Peng Fan (OSS) wrote:
-> From: Peng Fan <peng.fan@nxp.com>
-> 
-> Mark the "ti,system-power-controller" as deprecated and include a reference
-> to power-controller.yaml to uses the common definition.
 
-There's little point in doing this. You can't change existing DTs and 
-you'll have to support both properties in the driver forever. Maybe if 
-there are new devices added and new platforms.
+--===============6203744816006733919==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yq2ul7gd7jb7edtb"
+Content-Disposition: inline
 
-Rob
+
+--yq2ul7gd7jb7edtb
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2] accel/rocket: request the core clocks by name
+MIME-Version: 1.0
+
+Hi,
+
+On Wed, Jul 29, 2026 at 03:07:43PM +0200, Igor Paunovic wrote:
+> rocket_core_init() hands core->clks to devm_clk_bulk_get() without ever
+> setting the .id members. The rocket_core array is allocated with
+> devm_kcalloc() in rocket_device_init(), and rocket_probe() only fills in
+> .rdev, .dev and .index, so all four clk_bulk_data entries are requested
+> with a NULL con_id (unlike core->resets, whose ids are set a few lines
+> above).
+>=20
+> clk_get(dev, NULL) ends up in of_clk_get_hw(np, 0, NULL), and
+> of_parse_clkspec() only consults "clock-names" when a name was passed,
+> so the index stays 0 for all four entries. Every entry therefore ends up
+> holding a handle to the *first* clock of the DT "clocks" property, i.e.
+> ACLK_NPUn. Nothing fails: probe succeeds and the driver believes it owns
+> four different clocks.
+>=20
+> The consequence is that rocket_device_runtime_resume() prepares and
+> enables the AXI clock four times, while hclk, pclk and - most
+> importantly - the NPU compute clock ("npu", SCMI_CLK_NPU on RK3588) are
+> never prepared or enabled by this driver at all. The NPU still works
+> only because the Rockchip power-domain driver sets GENPD_FLAG_PM_CLK and
+> its attach_dev() callback walks the device node with of_clk_get() and
+> adds every clock to the pm_clk list, so genpd happens to keep the
+> remaining clocks running. The bug is therefore latent today, but it
+> means the driver holds no reference to the clock that actually feeds the
+> NPU, which stands in the way of any future frequency scaling
+> (OPP/devfreq) work.
+>=20
+> Found on an Orange Pi 5 Plus (RK3588) by reading the live clock tree:
+> /sys/kernel/debug/clk/clk_summary shows four "fdab0000.npu" consumer
+> handles on aclk_npu0 (and likewise on aclk_npu1/aclk_npu2 for the other
+> two cores), while hclk_npu0, pclk_npu_root and scmi_clk_npu have no
+> "fdab0000.npu" consumer at all - their only consumers are the
+> "npu@fdab0000" handles created by the power-domain driver via
+> of_clk_get().
+>=20
+> Set the ids explicitly, in the order mandated by the binding
+> (Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml):
+> aclk, hclk, npu, pclk. After the change the driver holds one handle per
+> distinct clock and clk_bulk_prepare_enable() covers all four.
+>=20
+> Note that this is a user-visible tightening for out-of-tree DTs: the
+> old NULL-id requests resolved by index and succeeded no matter what
+> "clock-names" contained, while the named requests fail probe with
+> -ENOENT when one of the four names is missing. That is the right
+> outcome for in-tree users - the binding requires exactly these four
+> clock-names and rk3588-base.dtsi carries them on all three cores - but
+> a DT that relied on the permissive lookup goes from silently running on
+> the wrong clock handles to not probing at all, so record the change
+> here where git log will find it.
+>=20
+> Fixes: ed98261b4168 ("accel/rocket: Add a new driver for Rockchip's NPU")
+> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+> Reviewed-by: Jiaxing Hu <gahing@gahingwoo.com>
+> ---
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+-- Sebastian
+
+> v2:
+>  - document that resolving by name is a behaviour change for DTs that
+>    do not carry all four clock-names (Jiaxing Hu)
+>  - collect Jiaxing's Reviewed-by
+> v1: https://lore.kernel.org/linux-rockchip/20260729092939.118779-1-royaln=
+et026@gmail.com/
+>=20
+> The same four id assignments are board-tested on RK3576 (ROCK 4D) as
+> part of Jiaxing's RK3576 enablement series (v2 6/8), so the change has
+> been exercised on two SoCs between us.
+>=20
+> Verified on RK3588 (Orange Pi 5 Plus): after the change clk_summary
+> shows one consumer handle per clock instead of four handles on aclk, the
+> NPU still powers up and down cleanly through runtime PM, and a
+> MobileNetV1 inference run via the Teflon TFLite delegate produces
+> bit-identical output tensors to the unpatched driver.
+>=20
+>  drivers/accel/rocket/rocket_core.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>=20
+> diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/ro=
+cket_core.c
+> index b3b2fa9..5dd260b 100644
+> --- a/drivers/accel/rocket/rocket_core.c
+> +++ b/drivers/accel/rocket/rocket_core.c
+> @@ -28,6 +28,10 @@ int rocket_core_init(struct rocket_core *core)
+>  	if (err)
+>  		return dev_err_probe(dev, err, "failed to get resets for core %d\n", c=
+ore->index);
+>=20
+> +	core->clks[0].id =3D "aclk";
+> +	core->clks[1].id =3D "hclk";
+> +	core->clks[2].id =3D "npu";
+> +	core->clks[3].id =3D "pclk";
+>  	err =3D devm_clk_bulk_get(dev, ARRAY_SIZE(core->clks), core->clks);
+>  	if (err)
+>  		return dev_err_probe(dev, err, "failed to get clocks for core %d\n", c=
+ore->index);
+
+--yq2ul7gd7jb7edtb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpzp90ACgkQ2O7X88g7
++pqV3A/+NVvLDD8/YW0TXzDBH/kzuNQGMGV9ag1uGrEdQMooHP+Ghwi8wChXDscQ
+RM1WYByQfetg+igHca5av5NxSRZ/FL/2RPNQfiNJDVLghPPlOHvHTn4JVi9TKzbf
+maofXNDPCph2DIG2pFFSgQ+n4c5/wXx1/rrHIa2PD7wFVSU/JURprAV8sBcnCVaD
+lfBimICZDON35qnvj4UXbfTga62exuIlkrjOgOjlM4ylrkoPN79UNSHqT8oMnGZz
+CurTaGP28JgpwG6SOmDY277EZ+Ivur+DiVpSlkJ3nVhNgpDHSh8UVXK443K9sPSp
+tbb5t+Hkxnb45ClC8j7DQnLtF1wMgOLVtYjUh7FzypCARqLjtW7aFws9zYWGqgLJ
+ugoBhskJ0DOEOoU0hpVLBiLPWwzWQbfScp0H/qpHlU+hHsRU95XUW36eBKwpAHIM
+h4JJaVEFXYA4gnnC7fO74rUH1aQbU555TIhtJ7enf8vVr1b0MHNrN+sgeKkJy4Q0
+QW0lKWWt0YIL+ipxreHUhxE3Yo0aiEU+KrudMl5Jgo+dLMhpbeMlhNF7ptK32qHG
+/J0ITJTd3wlLLf+d4ESyKp17cjsFmR6cIgtmYLq7XXbKACbq2ZsKOLbShqQxcbn5
+Pgef5NPU+/Cg8CtUUNNI9j2/GvRd+F43wmsddJFDTfypLQTgHV8=
+=0QwP
+-----END PGP SIGNATURE-----
+
+--yq2ul7gd7jb7edtb--
+
+
+--===============6203744816006733919==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6203744816006733919==--
+
