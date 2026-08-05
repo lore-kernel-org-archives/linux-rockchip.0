@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D58DFC55822
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 07:07:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954EEC55822
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 07:08:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y6pR9S9wNonV+AviZJvzGgiNPHUtwikgBldNNjPCbhM=; b=vPolyBbUkHBqP+gOChFuoMWvir
-	+T7xw2vlJDEjLgYVADn2hN2UUWouqeuRB8Nt/Wp7tTCdNJeQbIxKb2rScDSfxtreEumCEsZVFb9pq
-	e5nvbg36jhas7lQxU4gzsE/1N1c0SbFH8bfOdG5RZgIIi7vVtKDjw40Ol4fMq2nAw3+wsrn0V3SgS
-	SfQBRB5D2ueB2qF+Wx46BrLv/slOfFJz6J683sLaAywrZqTocFoRmzvGnooNjeuvB/tVA552p3qDK
-	QON2oe61JtOCRM+SmWp6RLXMXqFh7UNpLFLimFz0OZtdFbmuQJFNCN/fYStDRqKEJ7sZK3/pKMdTR
-	LI5j4jpw==;
+	bh=HnDmVw12F1KHEHwca065lfWjILjrB4qs1rbNos3CacE=; b=qAQl+9m8tCnaU7FFmaNUvz0FfU
+	rMDjGEKNx4kneJIlqMOBYY1ZFVtLQtocT/z/ntM1Cna9HfJb45MUCURSIBAASZ/mgKBD8KNRGspOM
+	ArjEnZaKRIsaZhHkMyd5VV2V2lKUT/5iO9v+K7RPjat/5ixB/cmtbYUkYC+TIQgFCriA8V0/i982O
+	/VwCROzMvdfDDP4PThEZ5cFHSXqlGa4M3MDcZfbVoxAy2tDDOyVMmytgkK/sqjOHhtsWWCItbLDry
+	+QofTd2aRwjZqMmyJxwaS2Jw2Rn7QI7P/8Z8zcmR3Ncg257GU3HEX0bzROvJpPSIVwo6I6Xcmkz6I
+	oKXYhzNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrViw-00000003MvM-1gyX;
-	Wed, 05 Aug 2026 07:07:34 +0000
+	id 1wrVji-00000003N5v-2vlz;
+	Wed, 05 Aug 2026 07:08:23 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrVit-00000003Muj-48QS;
-	Wed, 05 Aug 2026 07:07:32 +0000
+	id 1wrVjg-00000003N4S-2GT1;
+	Wed, 05 Aug 2026 07:08:20 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6C5AC600AE;
-	Wed,  5 Aug 2026 07:07:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5956A1F000E9;
-	Wed,  5 Aug 2026 07:07:30 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id F19AD60A80;
+	Wed,  5 Aug 2026 07:08:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE5631F000E9;
+	Wed,  5 Aug 2026 07:08:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785913651;
-	bh=AQEkViaXZ5mc5evBn4xlg8YvCL2TGNW/en7op+TyPKc=;
+	s=k20260515; t=1785913699;
+	bh=vNEcH5eiRUh8NICgduYDaOl24IADYP9UbXI26pv5SRE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=eJpri3Yv0Tub5OsZjVMbhAeZE70pBERd/6OnSVOU3A9/Dn1G02+hPZ4gKNYTwHjxF
-	 KHOhUmig9WOW+i/ulrb0MC+IFVINef1XXIsw95ns1lUtoS8a0qJaHzNYBx2aBaUlAn
-	 1MUK3Xgc4xS6F6AAH7Uagsi3UA9oWTRTl+aTOszZ5Wjjo2PH5lUQVsCaaZU4CqAJJg
-	 ae0H0d4OHkfQdBHg5wBKZ/1egy8MIV5RrTVQnz8unOtjxBH3PnEp4kyEg5nY5ngGpS
-	 4GvleGQin+Jzd2joagN7iYv0rwA4+moV0fv2f7jL5sbAd47l4qkrk8/D9XpKPj25b0
-	 39lXQx0BkuQDg==
-Date: Wed, 5 Aug 2026 09:07:28 +0200
+	b=c3mCOyRJupjeALk951K9k9qrCVAMZ1QRwiaQgQlnLHQDEOH3pMfR5xqhYUeTrO8WV
+	 /uPS14bgTrexVmJZ2lLL91OeyEwvaEHZ0tEl2a4xByGlqC+dmoiH/5JJ8orkfm0Gl8
+	 puMUKpkpygQTin0GNRnBDSNKkZVAvuHMEOoUzkQvl+VISDrwmKDO7bXVI5yj7dydXT
+	 YjRsEA1O/5ofG1nkNZi9s9qo4s9i53HHBTt7RrC0UY1pKMTg+t/QMxYAEgoHMyfTMJ
+	 1LstaBccT9LgPW3XsWLE23Iz0e/pAvf0niG2dD3BaW2jiv7XvUzaTvhnTh8Gtz/X+h
+	 2fsTYNjabDTZA==
+Date: Wed, 5 Aug 2026 09:08:17 +0200
 From: Thierry Reding <thierry.reding@kernel.org>
 To: Kieran Bingham <kieran.bingham@ideasonboard.com>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -64,15 +64,14 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	linux@ew.tq-group.com, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
 	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
 	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	David Heidelberg <david@ixit.cz>
-Subject: Re: [PATCH v4 5/7] arm64: dts: renesas: Convert to new media
+	Quentin Schulz <quentin.schulz@cherry.de>, David Heidelberg <david@ixit.cz>
+Subject: Re: [PATCH v4 6/7] arm64: dts: rockchip: Convert to new media
  orientation definitions
-Message-ID: <anLhGvz915Ayvock@orome>
+Message-ID: <anLhT24qvnEA4Hts@orome>
 References: <20260804-kbingham-orientation-v4-0-336998dd63b4@ideasonboard.com>
- <20260804-kbingham-orientation-v4-5-336998dd63b4@ideasonboard.com>
+ <20260804-kbingham-orientation-v4-6-336998dd63b4@ideasonboard.com>
 MIME-Version: 1.0
-In-Reply-To: <20260804-kbingham-orientation-v4-5-336998dd63b4@ideasonboard.com>
+In-Reply-To: <20260804-kbingham-orientation-v4-6-336998dd63b4@ideasonboard.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,75 +83,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0605992182162122083=="
+Content-Type: multipart/mixed; boundary="===============4426798112641855216=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0605992182162122083==
+--===============4426798112641855216==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="h7of5i7fzz2typs4"
+	protocol="application/pgp-signature"; boundary="fgh3aexbzhxkl2gy"
 Content-Disposition: inline
 
 
---h7of5i7fzz2typs4
+--fgh3aexbzhxkl2gy
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v4 5/7] arm64: dts: renesas: Convert to new media
+Subject: Re: [PATCH v4 6/7] arm64: dts: rockchip: Convert to new media
  orientation definitions
 MIME-Version: 1.0
 
-On Tue, Aug 04, 2026 at 08:43:32PM +0100, Kieran Bingham wrote:
-> From: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
->=20
+On Tue, Aug 04, 2026 at 08:43:33PM +0100, Kieran Bingham wrote:
 > The orientation property for video interface devices now has definitions
 > to prevent hardcoded integer values for the enum options.
 >=20
-> Update the users throughout the renesas device trees to use the new
+> Update the users throughout the rockchip device trees to use the new
 > definitions.
 >=20
-> Signed-off-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Quentin Schulz <quentin.schulz@cherry.de> # PP-1516 and
 > Reviewed-by: David Heidelberg <david@ixit.cz>
+> Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
 > ---
->  .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso |=
- 3 ++-
->  .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso |=
- 3 ++-
->  .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso |=
- 3 ++-
->  .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso |=
- 3 ++-
->  4 files changed, 8 insertions(+), 4 deletions(-)
+>  arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi                        | 3=
+ ++-
+>  arch/arm64/boot/dts/rockchip/px30-ringneck-haikou-video-demo.dtso    | 3=
+ ++-
+>  arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts                | 5=
+ +++--
+>  .../boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso      | 3=
+ ++-
+>  .../boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso      | 3=
+ ++-
+>  5 files changed, 11 insertions(+), 6 deletions(-)
 
 Reviewed-by: Thierry Reding <treding@nvidia.com>
 
---h7of5i7fzz2typs4
+--fgh3aexbzhxkl2gy
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmpy4TAACgkQ3SOs138+
-s6GkrQ/+OhXaBICC+jLHWm91RNRD7nv9heOLFa+oTyhT+Mmvay9ZZew8cPyd1zz5
-Pu+CwXhsIFQkImIrE5nlaQffppt/QpiglzsKTn3mGmrI4L1u2iWQPkEKMfAaXmOW
-mQ2x2j7YRvHC1gWxKnjairIkEic+BkPzjH1rYNLmZmIVc19X6a1YKNStjFvThPXe
-kOSPt9/mH3MB49k7EN6VTSMf3qCC0M1L9bVl3YabpOHENFKR3Tz2/Zx8wy2HmiFz
-H1P5bE8r7zLvM290iCWbDg4w36262BDPRRsceZ7ULs84+C+diCOwlt2c3jWdROHT
-YZLx4c0nHORztHaTDFxBz0bzfIzSZJ2AIH28V9bBB4CK+ghwW5TZmXk+9dEyeWhS
-ZaUNwX7CFI2qDfSy9DTtGL87hIh7wvgfIO/qHrusuK2YPmN3EE4LoE+BxjqMn3IG
-8ugbhVpsnZDg/7oC5Xk5XW0I3rJ0x4XVMHvZ5ybbRWUSaO2M8twQrSw1xkDVPCJA
-x5REkBa+YvSYWpDB0K4WN+yWw+xAwdY9y9ORDmePqceXyIITEIGgvGhziKKO4b8Z
-nOit024Ueo62Ntdn15DVNctLCNIt3TKWdPGcuvMXRUlET+DIiyrItDbqe+uks1Q3
-PrOqa+YAOkoHrJ/r9G+CSY+W9WwCTBI9WzU2ELs4hEQwukU0mcs=
-=sJ5K
+iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmpy4WEACgkQ3SOs138+
+s6FxpQ//ccqIThK+LrLFr51FSei9dZNGzceLGFOXJBDVy7F9Wor8MoXR9+T5Nicv
+DFoLV/3A36SIHJDDr4kAe2A/RQxRdJ1P4XT8xX3m4rAbrKbpA7slVletVDznuOL3
+NqFcdqOCuGAVzHn36GKzVG7psqDZekFMGFQZZV9ytFjeACObSYy+rnENLJT8ZFIt
+1vjuc5XQhD++Z+Qt14/wt/O+nBFzw6Cwkbv09QqXraCTG9BebWWJoQPOzE9TPRnE
+A2I2uHlZC0RAFY5WfYTFrsMpOvJprE5dKc64tFfwwIYOgZFRfGTT5r3FnshLdkcS
+cZouRDlEqHeMOWtG57WSsl8UPvV8GzUZZoK0wGeG9WO6iWF3yECeB4y2gSdRnWFS
+r7CRFXrWLCvp7CX/9VZ54ixtzttjI27BkqnbYafol41icUNqWCaHy1Ewi102tK2l
+u95l9hxc9lmtvgWsvZKA5dhLpG4Cp2oH5LqNFT5CbV+bPgqHiIOMbiSxEqe00aP2
+CogK/9GsG+264IfGiYc5cb6zI0C0x3POihUky1oMjRe8gDtsQ0g2L31kpPI6yg8k
+uecCcyUs4KKcWR5q6ZN8UiXVf3qZ53lfQmreM7+b8Ud2/amKJvii1p8s+3q3AmSE
+ZggvZyddTpgOudbYr5x0j5VAPTTaOhf/FCb7Ph8XB3cgSKdHcjE=
+=q+Bc
 -----END PGP SIGNATURE-----
 
---h7of5i7fzz2typs4--
+--fgh3aexbzhxkl2gy--
 
 
---===============0605992182162122083==
+--===============4426798112641855216==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -163,5 +162,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0605992182162122083==--
+--===============4426798112641855216==--
 
