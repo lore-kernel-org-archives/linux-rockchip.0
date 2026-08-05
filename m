@@ -4,48 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB93AC55174
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 17:57:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1DC6C55ABA
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 18:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Q8HtGWgDOsbCq2LrN+8cuLVZHYX7IDyl+ULSrWmVUR8=; b=l1PrjE7NpgTV6J
-	7I/2Ii8/3VDlECTZyNndBeTdl7sas9Tkm/N9hCK9gbnTBGm9mTLiCP2hB2oTCvtQsspOKlqdx/EPH
-	YvChVSA2ZuQ3mZdKa2lihYZvbG+SOZlDtWfg/y9rBaBDBcIxGIEAB/r6me71cRb9LZZuXqlh2IUNo
-	oq3WUriJ2Q4MfR/OhQOJCS9KhLZZkOYDgpwc1Vtv2YIhy8xzy1tT+LM/6R4FdzzvzZqZ5lRxUndHK
-	rit1+4L8MwxgdDsMTEBdmEq/PTsY2FrUCwvB7j3fuzTVbkQe4i6IZlWWp9yazPhHBqChY5J1OFMs/
-	pWQgqew8f1U9lwgxj+pA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Cw5iZYVj/TtWVhRKRxTJ2goP/P4cKVEqI6nFe1vOHBQ=; b=yDc7GTRhm26iUK
+	Cv7a2KLGs1/fNmVC8ozs+hf75j8YcX0BsyHpq8Wxe/msakX+ToKbiR0p8fbK2DvdkjssJudAIOpnq
+	sSYbkT0Y3PgQTYpS31YCpS9Lq3A5P9djSO/YibJ/tyM6jltyS7YgEMthgGtP4sDDWanLWPgG68T8f
+	yrzLKzzB2ta7mELQ+dv3HsVSX+41GOz/qTH6yBNWwT5rmQNQgW1PxMiVBE8Q4FHRoYaJrf3WLSyZi
+	0SnDiXbwvU06JKb0bl0SIziUXy2rM0X0HLXz/3C4p+TAxcASRcChE/RqIC2qdv8oZZYqkwhLpkqWU
+	3f1oOuxqdGCxBdCe7SZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrfrz-00000004MsD-2GVA;
-	Wed, 05 Aug 2026 17:57:35 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wrgaW-00000004Pka-29jQ;
+	Wed, 05 Aug 2026 18:43:36 +0000
+Received: from out-187.mta1.migadu.com ([95.215.58.187])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrfrx-00000004Mrp-2GE4;
-	Wed, 05 Aug 2026 17:57:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=aCudNrsThIpmS08OkACwr0UiJe6LKKY9XXTu59xP2MY=; b=qE053dCWVMU1fedRFkRnyTnmom
-	dvY5CEQ0RvwahOTJypZSNRRLHUI4G+tyBzoVIV6gPE31/TJscpjBE8RzjBQg6oYv//ezwIUi4ugab
-	vyfJuyFaxgHn14MZ+IDXl6ur3kRic6+5M2nsh0VoOz6snICx6w2ZTcPznagYfiVKgJim1iRq/cIcn
-	LqRgmcoZVHD+yHOSHwP4xZSPPEfYSYbzV5clvXq8fjrILPReAVZyg9EXHW8l9gsWAkskeeX8k7lTj
-	TUYk0XPCXfOhjIEXMYWl+HpMaFH+w1FC0g6nxruvCZtQQRMT5ia66wYB9YHKFn7teTGTNGWcMoBqt
-	LRTwOdFA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 7.3 #2
-Date: Wed, 05 Aug 2026 19:57:31 +0200
-Message-ID: <5318464.usQuhbGJ8B@diego>
-MIME-Version: 1.0
+	id 1wrgaT-00000004Pjz-1YDG
+	for linux-rockchip@lists.infradead.org;
+	Wed, 05 Aug 2026 18:43:35 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1785955410;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=asjh1e4/12M1U47u0ygycydMMvDwaXnVjTSsGZZSUqA=;
+	b=fvnA+TH6tPFnMy8EEtLfbmcwGCHaFIKnEjq/xXwB96nA0KfwmreSMXYBKBSESKTENGftEt
+	t1eIchoAtsGfwfsYbDF1wKSrjhwkAY4qUA7zR8o+o+MLzPjD/+b30w+KXoyP24Bkym/Aot
+	BbFhURaY1InqkfMQZgIVNHjMfVnZbamW8oRvMPzV1Ca/0KyXlhjdEA3wlcuje0xpfV1s9v
+	G1MeObiamJcQpJgQZHwF8mf+0mHWQVe1qOA9kp9MEuJi4bjnlP+tPqW7vuRp2GDfBXGuFE
+	AEUV2KleJIy+UemZQ6RD47XLE98bkjq0kjVz4KdSOB1naqIXR4E0m8+UFA4vZA==
+Date: Wed, 05 Aug 2026 20:43:27 +0200
+Message-Id: <DKH8CRTZT2XA.1WJNZORRS4109@cknow-tech.com>
+Cc: "Oded Gabbay" <ogabbay@kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ "Jiaxing Hu" <gahing@gahingwoo.com>, "Heiko Stuebner" <heiko@sntech.de>
+Subject: Re: [PATCH v2] accel/rocket: request the core clocks by name
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Igor Paunovic" <royalnet026@gmail.com>, "Tomeu Vizoso"
+ <tomeu@tomeuvizoso.net>
+References: <20260729130743.128876-1-royalnet026@gmail.com>
+In-Reply-To: <20260729130743.128876-1-royalnet026@gmail.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_105733_589047_A47DDF78 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20260805_114333_955347_298B4C6A 
+X-CRM114-Status: GOOD (  30.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,97 +72,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi soc maintainers,
+Hi Igor,
 
-please find below some more Rockchip DT64 changes for the merge-window
-for 7.3 .
+On Wed Jul 29, 2026 at 3:07 PM CEST, Igor Paunovic wrote:
+> rocket_core_init() hands core->clks to devm_clk_bulk_get() without ever
+> setting the .id members. The rocket_core array is allocated with
+> devm_kcalloc() in rocket_device_init(), and rocket_probe() only fills in
+> .rdev, .dev and .index, so all four clk_bulk_data entries are requested
+> with a NULL con_id (unlike core->resets, whose ids are set a few lines
+> above).
+>
+> clk_get(dev, NULL) ends up in of_clk_get_hw(np, 0, NULL), and
+> of_parse_clkspec() only consults "clock-names" when a name was passed,
+> so the index stays 0 for all four entries. Every entry therefore ends up
+> holding a handle to the *first* clock of the DT "clocks" property, i.e.
+> ACLK_NPUn. Nothing fails: probe succeeds and the driver believes it owns
+> four different clocks.
+>
+> The consequence is that rocket_device_runtime_resume() prepares and
+> enables the AXI clock four times, while hclk, pclk and - most
+> importantly - the NPU compute clock ("npu", SCMI_CLK_NPU on RK3588) are
+> never prepared or enabled by this driver at all. The NPU still works
+> only because the Rockchip power-domain driver sets GENPD_FLAG_PM_CLK and
+> its attach_dev() callback walks the device node with of_clk_get() and
+> adds every clock to the pm_clk list, so genpd happens to keep the
+> remaining clocks running. The bug is therefore latent today, but it
+> means the driver holds no reference to the clock that actually feeds the
+> NPU, which stands in the way of any future frequency scaling
+> (OPP/devfreq) work.
+>
+> Found on an Orange Pi 5 Plus (RK3588) by reading the live clock tree:
+> /sys/kernel/debug/clk/clk_summary shows four "fdab0000.npu" consumer
+> handles on aclk_npu0 (and likewise on aclk_npu1/aclk_npu2 for the other
+> two cores), while hclk_npu0, pclk_npu_root and scmi_clk_npu have no
+> "fdab0000.npu" consumer at all - their only consumers are the
+> "npu@fdab0000" handles created by the power-domain driver via
+> of_clk_get().
 
-My personal highlight is of course the Anbernic handheld - mostly because
-I own (and like) that device and am looking forward to getting rid of the
-vendor-BSP-based firmware on it.
+I have confirmed both the 'old' situation and the 'new' one on both my
+NanoPC-T6 LTS and NanoPC-T6 Plus (both RK3588), so feel free to add
 
-
-Please pull.
-Thanks
-Heiko
-
-
-The following changes since commit 7707e4555cf1d52689621e3206df8ad2debaa0dd:
-
-  arm64: dts: rockchip: Fix rk3566-bigtreetech-cb2 touchscreen property (2026-07-24 21:30:31 +0200)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.3-rockchip-dts64-2
-
-for you to fetch changes up to 0f4c49bb3e538d01bdec403052ba6c35858aa0cf:
-
-  arm64: dts: rockchip: Add LincStation E1 (2026-08-02 21:05:51 +0200)
-
-----------------------------------------------------------------
-More new boards: LincStation E1, Vicharak Vaaman, EmbedFire LubanCat 4,
-ArmSoM CM5 + IO-board and the Anbernic RG Vita-Pro handheld
-
-Apart from that some board-level changes and style fixes.
-
-----------------------------------------------------------------
-Chris Morgan (3):
-      dt-bindings: arm: rockchip: Add Anbernic RG Vita-Pro
-      arm64: dts: rockchip: Add Anbernic RG Vita-Pro
-      arm64: dts: rockchip: Add icm42607p IMU for RG-DS
-
-Fabio Estevam (5):
-      arm64: dts: rockchip: Drop data-mapping from Engicam PX30 Core
-      arm64: dts: rockchip: Add CSI-2 bus type to ROCK 5B+ camera overlays
-      arm64: dts: rockchip: Fix rk3399-roc-pc-plus analog audio
-      arm64: dts: rockchip: Enable wireless on rk3399-roc-pc-plus
-      arm64: dts: rockchip: Keep rk3399-roc-pc-plus work LED on
-
-Hrushiraj Gandhi (2):
-      dt-bindings: arm: rockchip: Add Vicharak Vaaman board
-      arm64: dts: rockchip: Add Vicharak Vaaman board
-
-Jiaxing Hu (2):
-      dt-bindings: arm: rockchip: Add ArmSoM CM5 and CM5-IO
-      arm64: dts: rockchip: Add ArmSoM CM5 and CM5-IO
-
-Krzysztof Kozlowski (1):
-      arm64: dts: rockchip: Correct white-space style
-
-Pufan Jin (2):
-      dt-bindings: arm: rockchip: Add EmbedFire LubanCat 4 board
-      arm64: dts: rockchip: Add EmbedFire LubanCat 4 board
-
-Samuel Holland (2):
-      dt-bindings: arm: rockchip: Add LincStation E1
-      arm64: dts: rockchip: Add LincStation E1
-
- .../devicetree/bindings/arm/rockchip.yaml          |   28 +
- arch/arm64/boot/dts/rockchip/Makefile              |    5 +
- .../px30-engicam-px30-core-ctouch2-of10.dts        |    1 -
- arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts     |    2 +-
- .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |    2 +-
- .../arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts |   67 +
- .../boot/dts/rockchip/rk3399-vicharak-vaaman.dts   |  458 +++++++
- .../dts/rockchip/rk3566-onething-edge-cube.dts     |    2 +-
- .../boot/dts/rockchip/rk3568-anbernic-rg-ds.dts    |    8 +-
- .../boot/dts/rockchip/rk3568-lincstation-e1.dts    | 1000 +++++++++++++++
- .../dts/rockchip/rk3576-anbernic-rg-vita-pro.dts   | 1283 ++++++++++++++++++++
- .../boot/dts/rockchip/rk3576-armsom-cm5-io.dts     |  384 ++++++
- .../arm64/boot/dts/rockchip/rk3576-armsom-cm5.dtsi |  566 +++++++++
- .../rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso      |    2 +
- .../rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso      |    2 +
- .../boot/dts/rockchip/rk3588-tiger-haikou.dts      |    2 +-
- .../arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts |  785 ++++++++++++
- 17 files changed, 4591 insertions(+), 6 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-vicharak-vaaman.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-lincstation-e1.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, NanoPC-T6 Plus
 
 
+Cheers,
+  Diederik
+
+>
+> Set the ids explicitly, in the order mandated by the binding
+> (Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml):
+> aclk, hclk, npu, pclk. After the change the driver holds one handle per
+> distinct clock and clk_bulk_prepare_enable() covers all four.
+>
+> Note that this is a user-visible tightening for out-of-tree DTs: the
+> old NULL-id requests resolved by index and succeeded no matter what
+> "clock-names" contained, while the named requests fail probe with
+> -ENOENT when one of the four names is missing. That is the right
+> outcome for in-tree users - the binding requires exactly these four
+> clock-names and rk3588-base.dtsi carries them on all three cores - but
+> a DT that relied on the permissive lookup goes from silently running on
+> the wrong clock handles to not probing at all, so record the change
+> here where git log will find it.
+>
+> Fixes: ed98261b4168 ("accel/rocket: Add a new driver for Rockchip's NPU")
+> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+> Reviewed-by: Jiaxing Hu <gahing@gahingwoo.com>
+> ---
+> v2:
+>  - document that resolving by name is a behaviour change for DTs that
+>    do not carry all four clock-names (Jiaxing Hu)
+>  - collect Jiaxing's Reviewed-by
+> v1: https://lore.kernel.org/linux-rockchip/20260729092939.118779-1-royalnet026@gmail.com/
+>
+> The same four id assignments are board-tested on RK3576 (ROCK 4D) as
+> part of Jiaxing's RK3576 enablement series (v2 6/8), so the change has
+> been exercised on two SoCs between us.
+>
+> Verified on RK3588 (Orange Pi 5 Plus): after the change clk_summary
+> shows one consumer handle per clock instead of four handles on aclk, the
+> NPU still powers up and down cleanly through runtime PM, and a
+> MobileNetV1 inference run via the Teflon TFLite delegate produces
+> bit-identical output tensors to the unpatched driver.
+>
+>  drivers/accel/rocket/rocket_core.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/rocket_core.c
+> index b3b2fa9..5dd260b 100644
+> --- a/drivers/accel/rocket/rocket_core.c
+> +++ b/drivers/accel/rocket/rocket_core.c
+> @@ -28,6 +28,10 @@ int rocket_core_init(struct rocket_core *core)
+>  	if (err)
+>  		return dev_err_probe(dev, err, "failed to get resets for core %d\n", core->index);
+>
+> +	core->clks[0].id = "aclk";
+> +	core->clks[1].id = "hclk";
+> +	core->clks[2].id = "npu";
+> +	core->clks[3].id = "pclk";
+>  	err = devm_clk_bulk_get(dev, ARRAY_SIZE(core->clks), core->clks);
+>  	if (err)
+>  		return dev_err_probe(dev, err, "failed to get clocks for core %d\n", core->index);
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 
 _______________________________________________
