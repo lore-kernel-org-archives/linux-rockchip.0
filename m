@@ -4,113 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01478C55174
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 06:39:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCFB5C55174
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 07:05:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ihtHLkkjg8hbbHOv8OIqN1I2KJCwV/MckECBuLz5VwQ=; b=xEyKetQBIlGJzB
-	ZAaaXDmSRmmOxWpGOWX5cU2RvryX7xCgOr7z20H2vMCgSspHS4hO4aA5DZFeqTY6a1XSV9zM7llFX
-	fIJnOFQYi1ig2NxLIQMiSEKxj5Eg+TbBaQMASEDFebEs/+A0ZpI3TJWpoiyMgiGti52hyucCnx54H
-	p3HYPxDBT9s9FnzlUAi4r12lRBTJ+A/BfCAsiwjrLWElgiUcIWp51ZQQiCGBAGVGW+9vxgJSZAg2K
-	uUPXufxduvIa5BJ7KNyT8CKuRKncJEwQv800f2XaUewNMKiXcYNaF2oERk1S5ofvjnE7/+FfKWSG1
-	qjqq+Qf9I/HdVmGiJLCA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rOdwtTeqR+fqLbHTxTBxlINH+S5LwS4abjjDKV9rchM=; b=eJc8pXmD/m+zLKtDTk7Ypeor4A
+	Ygi3TdunjXjEJ+Z5hXmp9LLK8l9gXLpou6B2wNk0RRYQHfz0RvlXVYpGiGExPwz2ZqFPpJmxk83GS
+	FPjiFuAcqu+k5jICzE3+hNAl9+kI/cvmeycaJmEteDAO/3XAp/Rml9kcdQwbRti+gcx0+l0nH80w9
+	hg4PvHQM7Wd7yvzediS6LaqBvlA6GEt+ggybw/V+y8cEAW2MXC8O8p2/hyhivcrJ3mrKSCWGnynQB
+	bIMi99KKLGYl+FNYltEWVBruQYcETukEEk8ddUxEL43HjIhxFFnMIrLZ/TaUInkPYXa0vVCwqI/gs
+	cRTlOzTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrVIA-00000003KZf-1tbX;
-	Wed, 05 Aug 2026 06:39:54 +0000
-Received: from flow-a7-smtp.messagingengine.com ([103.168.172.142])
+	id 1wrVgo-00000003MMq-1Zhy;
+	Wed, 05 Aug 2026 07:05:22 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrVI6-00000003KVM-1gqK;
-	Wed, 05 Aug 2026 06:39:51 +0000
-Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
-	by mailflow.phl.internal (Postfix) with ESMTP id 94FD713802B4;
-	Wed,  5 Aug 2026 02:39:49 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-01.internal (MEProxy); Wed, 05 Aug 2026 02:39:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1785911989; x=
-	1785915589; bh=sgu7nAbq8Yx5koaOMKJWboxHdobCAGSow6z6pMfKPGU=; b=n
-	nVc6o4SYwwZTj6Vk+l+xfiUe9OeptoP/QtL8JNdxvIZkQ5KoFuw/eKMh2fyqzcDE
-	srF2dOzJA4hg8sYyLN77b6LUGSp9oZbiCbjb3mjOvNDB4vybbGWb4RQnlCcwUD81
-	KLcV16KfnnuyIMEqjJOxaLA2kiGhp2E6br3WjtGDA37ZLlIKdmNWsOn1dLLFx62r
-	fxVSYsvoPPtj6KfeToJyrQrcJARKjBBY+u7ta5xp/j8nMCjc8YMZrWHQ0faUbSNe
-	1JcFxOSvTWcQg1FqWWejRN4lEgbWypJas0d2PBDIF83+eEwFzGzSEggEnhM9DGEg
-	RjfUnKqG6yv96dZzVO8PA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1785911989; x=1785915589; bh=s
-	gu7nAbq8Yx5koaOMKJWboxHdobCAGSow6z6pMfKPGU=; b=i+xsd7rUchE64hOng
-	1d/N+OTO+yPwLPy8M2pVsjrUE7P7Ca7sI7ZSp99Zl+J6tyfxSCt8UHNG6O+9AW1b
-	b1/GngK/9RQDu98v3IHAQJs7bvDX10Fa+8+uKGKy41+fAaEYfQZC63Zrj+DMCw3i
-	MFeXtSRD/U5vSJf9+I13tZxbhBU0tJQ9QxloDVpnSy8854Kq3ZA5vgPdG+/6b73A
-	ljVVSIc7Ke9eYMOgeTPNLPaX8m43iK/bp4GxnRd0QjbvdueWf0m3qFqeC29zqlEY
-	y7zHL3/J+1PeOammtx73rs4m7VCeV9fm5vilblstSyOpWQbiMKqmWGK063qDEU5A
-	YzwAQ==
-X-ME-Sender: <xms:tdpyalwDTzDvtCYRVykQjMJ1hDVJDmA2ZCksfzaaW1RDJQutMTx-jA>
-    <xme:tdpyapNdoz1alAxVduo86h8xu4pHuwNWAh_XOD691wqFEA273TiAPDvsFrHSXNc4a
-    8hgki0T44RZ-aX-OfshzrHjqJEuacbz5eNJvV_b_MMyTbNmVrJLOoBo>
-X-ME-Received: <xmr:tdpyan0p4grVWgU1xRLTkuQHAmc60Py5Qu216I3oqlXKoF5qKriQjWindTnO1cZk2LBM74r4gQ>
-X-ME-Proxy-Cause: dmFkZTEMD1OFu076QwS9SFwNgP6f5aaFBOwJl5YptK3m8ebGw9lTTouZHPU4h9ndohppuA
-    MqhtPKehSzM5cGKuNBr7L6AJ+uKJutNiohMQhyJKCTICyfajJ/xSmO114JbBqjULjhSC0i
-    Xlbxa+pOAxXg2slJctiMdK5ps5AbzNH+rDDT9fXXq0g54RoxSPklkyLc3RP+86Tl3mTPLD
-    /CWbaQf672RUMg9LfQxwI5O+ggniqgBk/wewxNq7ajt7vQQvywjAFU9vcqWNy4/76iwxXo
-    1STNvatirfOQsprQ3D+aYGRSjMJWxbKmD4Sm0dtan9ggAh4pCQ0vJVqSCJ6plnee8sAotn
-    JIPDgs2IkNgZ0ZOs8jBCMoA7smDBf+rP2Oam7L0IFLsMWxzF3Vns/F57rEIAROCMT1PxWC
-    HK0Mmy3KwiK6zDt7qxZMdN6LnjBHZoxeppGyMiwjLMfq1d9+StUlw9Bvn2R8KHgdUHcro0
-    awb5zDKAi0vm+cISnCiCHH7VQahSSVdauGeTmhWTAb3+YzRdQgGLzOSt4UFiiOv6eGcBSr
-    8T3XM2+Z6rZAjiWRkmYqbqkz8Arz5hf1p5eQUIvKWE8SP1VflAt+mbgF9ZPwqiCWazwA6F
-    p+6ZCsWTn7O5JhZZMWRbC/SlfTgk+ULmN1v0VrzK9aL+g0e2sQBEDy0k7nmg
-X-ME-Proxy: <xmx:tdpyahEJqupNNvQselDLjMiNe4ife2dY4smmWJGrfSuoBTMjD-B4Ew>
-    <xmx:tdpyauh0_5Zk-9YPQmb-2cOFzv_SPtktRxa2qctp7UKh4t6t_XzixA>
-    <xmx:tdpyaqdI9sKdpdCWYE8Xyf27G2skeFkgcViGENtLHw75vDxhStuoEg>
-    <xmx:tdpyakwfCGTTSvlTy9GJHYYhkCcbkO9mVX_cvy1mxJwLi3JG89mApQ>
-    <xmx:tdpyajAquqjKv3hUQGr-7NEswes9p9f6VEiDaWcz6yPdJOqaZmtR1til>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 5 Aug 2026 02:39:43 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	ulfh@kernel.org,
-	p.zabel@pengutronix.de,
-	ogabbay@kernel.org,
-	zhangqing@rock-chips.com
-Cc: royalnet026@gmail.com,
-	alchark@flipper.net,
-	chaoyi.chen@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	iommu@lists.linux.dev,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: [RFC PATCH v5 v5 8/8] arm64: dts: rockchip: rk3576-rock-4d: enable NPU
-Date: Wed,  5 Aug 2026 18:38:26 +1200
-Message-ID: <20260805063826.95682-9-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260805063826.95682-1-gahing@gahingwoo.com>
-References: <20260805063826.95682-1-gahing@gahingwoo.com>
+	id 1wrVgm-00000003MML-3dLP;
+	Wed, 05 Aug 2026 07:05:20 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id E31A760A69;
+	Wed,  5 Aug 2026 07:05:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD8A61F00A3A;
+	Wed,  5 Aug 2026 07:05:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785913518;
+	bh=DoXf7tbT+GijFUb8lgA9KilXjWzwUEA0M4rKTFmRF+o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=m1eDJqeCdnafzhh5h3TF31h4Kx8ZVMOH4twLNGsfIT4KTU0H135BCRSBlXs6M5XFx
+	 bojlJfWNyiX6mEQsdfHshfxYVzEpOR3ULPvmyg7DbQitGTL/pcctkL2CLaSW8qTS4Y
+	 oRt85JYkTLtnVxo4LUQIvXqRFnnrn/o1hSRUnf91kuPGTRqR01FfubauOhniWOXthZ
+	 BYZc67/ae9as8G46mp1iy78FvQI2LbidzPAb6Mm14sD3soAp1tgXbm/GxJxzr9eofk
+	 q/ZGW9ZpAqZtTCA1fX12TVkixDwST8oEXozbT1rDYlExGuU8Ye8vPV+vG2rAMx44ln
+	 WbabuA10U4W5A==
+Date: Wed, 5 Aug 2026 09:05:15 +0200
+From: Thierry Reding <thierry.reding@kernel.org>
+To: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Jacopo Mondi <jacopo@jmondi.org>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, Jimmy Su <jimmy.su@intel.com>, 
+	Matthias Fend <matthias.fend@emfend.at>, Mikhail Rudenko <mike.rudenko@gmail.com>, 
+	Daniel Scally <dan.scally@ideasonboard.com>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+	Michael Riesch <michael.riesch@collabora.com>, Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
+	Sylvain Petinot <sylvain.petinot@foss.st.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Paul Elder <paul.elder@ideasonboard.com>, Martin Kepplinger <martin.kepplinger@puri.sm>, 
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>, Tommaso Merciai <tomm.merciai@gmail.com>, 
+	Svyatoslav Ryhel <clamor95@gmail.com>, Richard Acayan <mailingradian@gmail.com>, 
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux@ew.tq-group.com, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	Conor Dooley <conor.dooley@microchip.com>, Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, 
+	David Heidelberg <david@ixit.cz>
+Subject: Re: [PATCH v4 1/7] dt-bindings: media: Add macros for video
+ interface devices
+Message-ID: <anLgoTtDZQ38QzWM@orome>
+References: <20260804-kbingham-orientation-v4-0-336998dd63b4@ideasonboard.com>
+ <20260804-kbingham-orientation-v4-1-336998dd63b4@ideasonboard.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_233950_579509_1E93174B 
-X-CRM114-Status: GOOD (  10.51  )
+In-Reply-To: <20260804-kbingham-orientation-v4-1-336998dd63b4@ideasonboard.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,55 +84,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5341314652204988247=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable rknn_core_0 and its IOMMU on the Radxa ROCK 4D and supply the
-core from vdd_npu_s0.
 
-The supply is marked always-on because the NPU power domains are what
-gate the block here, and dropping the rail underneath them takes an
-async SError on the next power-on rather than a clean retry. Only
-rknn_core_0 is enabled: the driver binds one core per node and the
-second core is left to whoever can test it.
+--===============5341314652204988247==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="j3q7nwjwirtsmzgs"
+Content-Disposition: inline
 
-Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 10 ++++++++++
- 1 file changed, 10 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 272af1012..965e0906b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -442,6 +442,7 @@ regulator-state-mem {
- 			};
- 
- 			vdd_npu_s0: dcdc-reg2 {
-+				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-enable-ramp-delay = <400>;
- 				regulator-min-microvolt = <550000>;
-@@ -869,3 +870,12 @@ vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
- 		remote-endpoint = <&hdmi_in_vp0>;
- 	};
- };
-+
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
--- 
-2.43.0
+--j3q7nwjwirtsmzgs
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 1/7] dt-bindings: media: Add macros for video
+ interface devices
+MIME-Version: 1.0
 
+On Tue, Aug 04, 2026 at 08:43:28PM +0100, Kieran Bingham wrote:
+> Add a new dt-bindings/media/video-interface-devices.h header that
+> defines macros corresponding to the orientation enumeration types from
+> media/video-interface-devices.yaml.
+>=20
+> Expand the documentation of the video-interface-devices orientation to
+> reference the new header which provides human readable defines for the
+> orientation enum, to help avoid hardcoding values in dts.
+>=20
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> Reviewed-by: Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>
+> Reviewed-by: Frank Li <Frank.Li@nxp.com>
+> Acked-by: Michael Riesch <michael.riesch@collabora.com>
+> Reviewed-by: David Heidelberg <david@ixit.cz>
+> Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+> ---
+>  .../bindings/media/video-interface-devices.yaml         | 17 +++++++++++=
+------
+>  include/dt-bindings/media/video-interface-devices.h     | 13 +++++++++++=
+++
+>  2 files changed, 24 insertions(+), 6 deletions(-)
+
+Reviewed-by: Thierry Reding <treding@nvidia.com>
+
+--j3q7nwjwirtsmzgs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmpy4KsACgkQ3SOs138+
+s6FSixAAvF/nuWj8x0EsLtnIBtNApx4xw1S4zIAzPiQ7t5eq2zZYJWFAcZZJPLIJ
+pXoirHiAJCM3MfbvDqNag7+P3Qg31O0jWacsvMhuQCv1sJlZG8MmVbXxkma2/asj
+q1k0p5ODledgKBvIabnlCbEaomZUK+umsCNxBiabNCRuRbl3/Xkpd1+VdJW3cdML
+X2Zs2KoULb13xnF2LXMtH8IlUpnUpUMCPX3hX6BCJAxCTnIUq2P+rYKZAszJ7R8o
+ljbgmv/2odtHZ4o9LlrLUjAZqOJWZyZC+em9aYUu2ywfOHfYcq/gGebPo5yS9f5N
+gNVywyLAPqloKHrsE4qjD6fctMByN+PzuUBKJ1Wlc3dYjBp/hnWcMlqISrB4GYuc
+VAeUoX1A+aYK7/MHQsNOJ2EdkP/ROQkkySOazY2rRpGqkJ/P7PSSPQ1GhchzTun8
+ce2e0+HUhKpEUa1+dPE6cyaSnMlZR2DMkzT1muQAoZlXKHotNbMgUy010SzbYBzE
+Ejwg3UD4KM//QVHejyFg1TKolJyqEFIcyYtizWejLN2F4uyzY1MlA9768XrzuNNG
+mDM/YSoNMVBTJVeYM9js/FSqOpgxrPw0D4fd9EBbCF6qxvkEfkguNSx9iZlahGKh
+Q/N8W4rn+WXb+optFaVTZxwxtSD/7rIy3Iddo4ZCFdzO5gHirdQ=
+=qQ7c
+-----END PGP SIGNATURE-----
+
+--j3q7nwjwirtsmzgs--
+
+
+--===============5341314652204988247==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5341314652204988247==--
+
