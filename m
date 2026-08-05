@@ -4,54 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FA41C55ABA
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 12:13:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 852DFC55ABA
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Aug 2026 12:23:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ec7fprBR4e5n/L/rzppn7TsokcALSc9RSyhVxWg4S6Q=; b=2z6Rrj9gd7Zy7f
-	GL62gDSDj6pYPV0kz0wyU39b2UOTNnHi/MFBhvtPhC3dV9XaW6LTCZxz+vbpktya0KUO8W00fG5RX
-	NNC0u14ZuAhF+guYNaLeA0UyBb9TWUOk3zcMFCdb5nVl0lNZ85QqLHM08/Q9qqvBs83uvdj9ZHfGt
-	Fdqy5Ee1kRbBJDmdzOZz8HkCH43A4GDNk9QY/sgo8p6UPFOdxtJ/Wg1mTYfF9gGM36JMw4baGOmkU
-	S8Mz7vKaXeVgXpFGk1IKX9twp4z1YV2lI4wSPhB3NWLlqV9NJChL3ot3GsdHc+rlB2ZgcviCnLWFf
-	PktD0qWbhUzY3FKglNZA==;
+	List-Owner; bh=8mEwZMZCX0lYlYIxxmfVC7pkJFExutQBoMdEMrfxhlk=; b=hF2C7XVX1G0aiT
+	Rmt7gL1aWXcAKx9oXMSRZ1/dePpDy5azpq41UZQRpSNRjd782riMFBkgIeSDQsAT0gGUzLAJPMVC/
+	gGXk1iBG716dTqPiG5Dplr+/vZA9yfoDHyNdIUgglrXARP8gAiuZXv89EF6yX32LsNf3IaR/m1rVz
+	pm3WsQNB8XdHi2DtG8t6oT9mplJymqHqv4ILL2oGnaqlz/hqRv18Gvik1Uz82meom9BPxOLacGebi
+	38HDyhoPsZTf1jd5lWbXHEo4sYGKPhaNGKOqVmeloAGR++1u2V1bXS2YLFL3BDT0g7Qps680uG9QI
+	GIoIdSXLkvTbqi9l81Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wraVI-00000003sVs-1FDL;
-	Wed, 05 Aug 2026 12:13:48 +0000
-Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
+	id 1wraeM-00000003tlf-2pa0;
+	Wed, 05 Aug 2026 12:23:10 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wraVF-00000003sV2-2HO2;
-	Wed, 05 Aug 2026 12:13:47 +0000
-Received: from [IPv6:2a0a:edc0:0:900:1d::4e] (lupine.office.stw.pengutronix.de [IPv6:2a0a:edc0:0:900:1d::4e])
-	(Authenticated sender: pza@pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 0AF8D201281;
-	Wed, 05 Aug 2026 14:13:41 +0200 (CEST)
-Message-ID: <58c85258b5c3aaa4bf26dbcdb7eea01549864a08.camel@pengutronix.de>
-Subject: Re: [RFC PATCH v5 v5 5/8] pmdomain/rockchip: cycle optional
- power-domain resets on power-on
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Jiaxing Hu <gahing@gahingwoo.com>, tomeu@tomeuvizoso.net,
- heiko@sntech.de, 	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- joro@8bytes.org, 	will@kernel.org, robin.murphy@arm.com, ulfh@kernel.org,
- ogabbay@kernel.org, 	zhangqing@rock-chips.com
-Cc: royalnet026@gmail.com, alchark@flipper.net, chaoyi.chen@rock-chips.com, 
-	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
-	iommu@lists.linux.dev, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Date: Wed, 05 Aug 2026 14:13:40 +0200
-In-Reply-To: <20260805063826.95682-6-gahing@gahingwoo.com>
-References: <20260805063826.95682-1-gahing@gahingwoo.com>
-	 <20260805063826.95682-6-gahing@gahingwoo.com>
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1wraeK-00000003tl1-25IE;
+	Wed, 05 Aug 2026 12:23:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=8XjuuAS9qzELKWMzzGKFt00IGUUpW4MBEhvQC26pWBc=; b=XY4YXHWoFxOikBgzmUK4/FQFSi
+	mHJDkn1jprsIY1vu53fcnRoDUYwGNLBLyh8aA8HGBQFJevr6dktTjyoR/sOhysO/pehiL3Pl+Xfuc
+	PUvomUBObKIB6exaioP9dCxSjP/mjzrFAobd7YCNCg6uQHuqyqeiR+ClP3X8w/cT+YVU=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wrae7-00GAIv-J5; Wed, 05 Aug 2026 14:22:55 +0200
+Date: Wed, 5 Aug 2026 14:22:55 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: James Hilliard <james.hilliard1@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	mfd@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH net-next v2 6/8] net: phy: add X-Powers AC300 EPHY
+ control driver
+Message-ID: <05af101c-62d4-4d46-b170-052487ecb681@lunn.ch>
+References: <20260804-submit-acx00-of-dynamic-v1-v2-0-3eef49ff1d8c@gmail.com>
+ <20260804-submit-acx00-of-dynamic-v1-v2-6-3eef49ff1d8c@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260804-submit-acx00-of-dynamic-v1-v2-6-3eef49ff1d8c@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_051345_730670_8229AC36 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20260805_052308_550739_C546F067 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,74 +81,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mi, 2026-08-05 at 18:38 +1200, Jiaxing Hu wrote:
-> Some Rockchip domains come out of power-on with their bus interface in
-> an undefined state. On the RK3576 NPU this shows up as a hang on the
-> first access after a cold power-on; the vendor kernel cycles the
-> domain's resets at this point and that clears it.
-> 
-> Take the domain node's resets if it has any, and pulse them between
-> releasing idle and restoring QoS. The resets are optional, so domains
-> that do not declare any behave exactly as before.
-> 
-> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
-> ---
->  drivers/pmdomain/rockchip/pm-domains.c | 19 +++++++++++++++++++
->  1 file changed, 19 insertions(+)
-> 
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> index e1857f878..82051f600 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -19,6 +19,7 @@
->  #include <linux/of_clk.h>
->  #include <linux/clk.h>
->  #include <linux/delay.h>
-> +#include <linux/reset.h>
->  #include <linux/regmap.h>
->  #include <linux/regulator/consumer.h>
->  #include <linux/mfd/syscon.h>
-> @@ -103,6 +104,7 @@ struct rockchip_pm_domain {
->  	struct clk_bulk_data *clks;
->  	struct device_node *node;
->  	struct regulator *supply;
-> +	struct reset_control *resets;
->  };
->  
->  struct rockchip_pmu {
-> @@ -688,6 +690,13 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
->  		if (pd->info->delay_us)
->  			udelay(pd->info->delay_us);
->  
-> +		/* Optional: some domains need their resets cycled after power-on. */
-> +		if (pd->resets) {
-> +			reset_control_assert(pd->resets);
-> +			udelay(10);
-> +			reset_control_deassert(pd->resets);
-> +		}
-> +
->  		rockchip_pmu_restore_qos(pd);
->  	}
->  
-> @@ -857,6 +866,14 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
->  	if (error)
->  		goto err_put_clocks;
->  
-> +	pd->resets = of_reset_control_array_get_optional_exclusive(node);
+On Tue, Aug 04, 2026 at 08:27:04PM -0600, James Hilliard wrote:
+> The AC300 Fast Ethernet PHY needs a separate non-PHY Clause 22 endpoint
+> to complete package setup before the link endpoint becomes usable.
 
-Why is this using of_reset_control_array_get_optional_exclusive()
-instead of devm_reset_control_array_get_optional_exclusive() when pd is
-allocated with devm_kzalloc()?
+Please use the functions in phy_package.c
 
-> +	if (IS_ERR(pd->resets)) {
-> +		error = PTR_ERR(pd->resets);
-> +		dev_err(pmu->dev, "%pOFn: failed to get resets: %d\n", node, error);
+    Andrew
 
-dev_err_probe() to avoid printing on -EPROBE_DEFER.
-
-
-regards
-Philipp
+---
+pw-bot: cr
 
 _______________________________________________
 Linux-rockchip mailing list
