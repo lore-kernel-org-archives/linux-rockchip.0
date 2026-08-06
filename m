@@ -4,66 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1416AC561E6
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 09:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1741EC56208
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 09:56:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jeUoeoRwpKGLAnJ2FDQSjLYpvUnYamDt0cpPK51P2hI=; b=LXj5t30GPOWOa/
-	f8uEuqy0nhU+wN7LzNCyUK4yVb04rReVsXVRXHhQSoRbdcoaFJ79zEMIyY2C7HOXucmSrnfrIJE9m
-	u7IF9Zf3Bg3fPbzNHG+B+tbR6Kag9qB4Pq1G+rP+qyt5eVoD/gIACROr81kn5tS/cknhpKhVs7YcE
-	L/iLKjYHaU6zsstJ9yTZDqi8whrF39xJR8uRvjo8v+fgztlxImtjTHjUbhUF5yFTdbvWTyI0Mi9dt
-	y65S6aqOTNgbfl7TyJbvEYtP4cXNcDBvCuLFGj2S98YXuykJJXpTB8LxpqVQsNaMA4YlMrvJT6CGg
-	nLSmKCloCYjljimpVH2A==;
+	List-Owner; bh=XF66ihdaGmNgPxPH26Sj+rjhwANha6heXObgrm55oNY=; b=EXBHA7bf3M03Ny
+	p5+4jghoGMw49+tWJgG8njH8KFrF02gQOEa1kXHmdbAzySm5rQsRtwMYcYLibn0mx+HAbQ2VXwEhq
+	/G7Mp1+RREPuKrzpFaMcb2MbcLXsa1Z/VqtJG/GdMW/WlAJaUAIoYZYr12bH8+T24+0sMl8MAkBJT
+	1D/rcluFkIsW9S7THwB/lvn4dCPCitLxqINT37wx6jN4dhJMjYx6+S8KwnixMP99bwBAbyfQqQirh
+	qkiA6cMYnHpddYA1jsyvF3ryhsLpB2/sxfV7uwpTNrKuQeT2D/a05ltifXqBd4ZI0zOQu/xtw2nfB
+	++ogJe8KJJtf6p7gYYTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wruKl-00000005NLa-2Ydy;
-	Thu, 06 Aug 2026 09:24:15 +0000
-Received: from out-171.mta0.migadu.com ([2001:41d0:1004:224b::ab])
+	id 1wrupd-00000005TnN-3uvr;
+	Thu, 06 Aug 2026 09:56:09 +0000
+Received: from flow-b7-smtp.messagingengine.com ([202.12.124.142])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wruKi-00000005NIn-2s3m
-	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Aug 2026 09:24:14 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1786008236;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=dA4vidVbXhTuIp9QqxNa6zPIHYzqdAruYLG2CSq3Ubg=;
-	b=aUsX59P/Rs0XtXz+pr6ZpDN3xLg2qhYYUcMwU5i5B/YJXki/xjKg/RXiIOPHD3m9wiyjvm
-	jjtHnKM1QWosaYFlpMX5nDchtabNJlbdbH7CS3g+9D2C9VSszWthR0ltCUX05RcmR4QMZ/
-	Xi0EOCqNBIStnzsROASC+WnMZmvfFI1x/8NpxUBVi1nbEflvD/gkv8vGZvdE3TsPPWwZXS
-	CjIV1ID7V6Fmx2Y3YC7X6gKgc9XTIS+8wMAGg2lykgDGb3mM1ENs3gD1WilT84k7Zw+lJc
-	7xdWzeqKxtFOe6gcU83DyeYCC7mrKZAkOp8H2qiDv6OHqQk0mQNkCccyFW6EDg==
-Date: Thu, 06 Aug 2026 11:23:39 +0200
-Message-Id: <DKHR2P0XJF0B.OY937NT39DR7@cknow-tech.com>
-Cc: <royalnet026@gmail.com>, <alchark@flipper.net>,
- <chaoyi.chen@rock-chips.com>, <diederik@cknow-tech.com>,
- <dri-devel@lists.freedesktop.org>, <linux-rockchip@lists.infradead.org>,
- <iommu@lists.linux.dev>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-Subject: Re: [RFC PATCH v6 3/9] dt-bindings: iommu: rockchip: allow the
- RK3576 NPU MMU clock set
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Jiaxing Hu" <gahing@gahingwoo.com>, <tomeu@tomeuvizoso.net>,
- <heiko@sntech.de>, <robh@kernel.org>, <krzk+dt@kernel.org>,
- <conor+dt@kernel.org>, <joro@8bytes.org>, <will@kernel.org>,
- <robin.murphy@arm.com>, <ulfh@kernel.org>, <p.zabel@pengutronix.de>,
- <ogabbay@kernel.org>, <zhangqing@rock-chips.com>
-References: <20260806063413.350184-1-gahing@gahingwoo.com>
- <20260806063413.350184-4-gahing@gahingwoo.com>
-In-Reply-To: <20260806063413.350184-4-gahing@gahingwoo.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1wrupb-00000005Tld-0VJA;
+	Thu, 06 Aug 2026 09:56:08 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+	by mailflow.stl.internal (Postfix) with ESMTP id 5F3391300290;
+	Thu,  6 Aug 2026 05:56:03 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-05.internal (MEProxy); Thu, 06 Aug 2026 05:56:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm1; t=1786010163; x=
+	1786013763; bh=Hk5pDzV8LlRqCkk9aD2kVsGM1I+df21fePiYEfh2vC0=; b=Y
+	sXLvlWh2ZAKEZQbW5GYzkbQz38Y77eMpXhBpHzKoFP6Lo5dKRHyrlXr+ojb6wXST
+	n0gnEVpLXww8wUnFq8PAwbnOkHMip+Ly486OzFf85X0LULur1iLcjiT6Bh+3j/xR
+	R1SEcygIWtJcO5eArp9I/4AY5XMs/KtuVZ9uiGDvbOHzVSy/TdAR/45Mi9IPDxls
+	hGGTuUSmpsjs+68bHd8zbOEwdtw0YlPhGW3u2mAvAN1vqTw+KAMv1jGFXBnqv6P4
+	pjNHA+Y7/A7qEt+MTWcnFE0Y2bMmcGt+EGjFA+vLykiwThS5IITEjYKRbAdFx8I/
+	2RoOmghx1r/FnaLhFUcTQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1786010163; x=1786013763; bh=H
+	k5pDzV8LlRqCkk9aD2kVsGM1I+df21fePiYEfh2vC0=; b=fgRxnaWnMyveS1aXO
+	LjyxkQvlwukS0nrsYJrW86z0bKTxvrlI3X3na6OvG1caBb0sw5qKuVMTs0M+BGmc
+	2e5iAUasBvybW4Q3qlP3+mXgkpPRboLfwugPWTGNiQcC6qGjcJM3nksZDUVxrB2v
+	DEDT41AQlrOwc1O6Hys6SnHM4lmSTDX/8GS1o0Q9gaPfXY17GOyIG9SsihHjK2z2
+	i66wvziKLpOYffjwFS+l2Jz12LfIuXhqiFGuhXHObw3unoz4oXhKJ6eYknNAhKgh
+	HppF4WRDpS5+ufKw6KiOoKeqlYuK2Vel0/fYW2ECZiwWQpMzXyNTtCEiMK+ri2CI
+	keRng==
+X-ME-Sender: <xms:Mlp0ahS0yFPqV1DSkJ01rc_N8Nlb8Mh4K6XLjD4Vwm6bwjVzCK5Aqg>
+    <xme:Mlp0avp7gNVjSKDp4RJAF7xJDKQ0kXIyXdu-o3JGr2CEe5Wz7AXLjoNjU8v361IQQ
+    VMIsbdqVV_Pc8YyK2lUAw1EydPAfpsDa8btk-oveNlXdk6mLMfJ>
+X-ME-Received: <xmr:Mlp0avat26AMe5XEEB0D4mW8NMHpnj9Wu67efEZXmZx4J2HKR1WrG16OfZz3_-BTq5FnTNMIEQ>
+X-ME-Proxy-Cause: dmFkZTEwXjC8I/Apl6hZLAV8DofRZjARxHMzyBPZWfubTPbduEkENL3KBYf+BUJyXx3o1H
+    pohUIUznaqX7Fjr2lTk141FubMEVNnW5UMIuAi4J+njPSv/GG64EL2ET2Hgv347vEiQ3jc
+    KA0wugH9OtAy5ThKMtJS4rzVpp7fazWBBvvGSAaUJ/31Su1HTwA6ygKr329Xzd68/cfp/r
+    kUtih/tfoUuoXMiAlMz4P8El5uMHxKkC1uSTp9CIRwChyeiZFIqFoe0r9cbHs0y91twdaj
+    Ye8UZk8LuQZRgkNIKQp73lZNC19WmkBF37P4XI+j4jl1i7G99ToDHprnGUuph2QJtzRqhk
+    Y/xPeL3aF8NCvUAvbvOzrzZeJFY1DHMXKBPl5POz6R00Vq+rFf8y2F1dCrc9xkjPe7YfPZ
+    MjOxbmc0B5RRhOVoDZJsojJH79Y8knd2ukTaprVv1CJdGpf9/6JpqCv6nvRMe9n9QODaHA
+    Q+1gcsIdDf99agQbM218bGomKOlbXyVQJD/sUEyfT7eypXbzLpHMsTL8FMqfBeRJeU/vgl
+    SXyboeM44NX5RtS1p7+f+mwt7m/oVdEecoNVB4zu/bNgjjZwh24UsPNqSCE0LkkkpjyoXi
+    I52UEBI8XitE2CGOb0uoTffZzjGEuXBj+CKbrmmBfT6/QNoAja0KieikT1Lg
+X-ME-Proxy: <xmx:Mlp0aqRkn2pPE_-1_Gk6aKPEOvIxpvqZV_DT80w1B6u9jjBpMCp1pA>
+    <xmx:Mlp0atcYjaJmkcAgm5FI8QtorqjulkfFcdmBT0IbeJ7Rhg-RFIQJWA>
+    <xmx:Mlp0apmnC6Y0QLAUtxDLe_jhr_w0OD87HpgqAcktESrYlnLSGPL-0Q>
+    <xmx:Mlp0aiiLAdb0nEdrZ2TqARrl0VQSgN4lZ0BhgFK5YJ7skMXdwp4vbw>
+    <xmx:M1p0asBF4N3AsCWRS2JEJAFlWx9N7kdh1VpOIOmmYA_aW2bjq4YRkhS5>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 6 Aug 2026 05:55:54 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: diederik@cknow-tech.com,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	tomeu@tomeuvizoso.net
+Cc: royalnet026@gmail.com,
+	alchark@flipper.net,
+	chaoyi.chen@rock-chips.com,
+	iommu@lists.linux.dev,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: Re: [RFC PATCH v6 3/9] dt-bindings: iommu: rockchip: allow the RK3576 NPU MMU clock set
+Date: Thu,  6 Aug 2026 21:55:51 +1200
+Message-ID: <20260806095551.368456-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <DKHR2P0XJF0B.OY937NT39DR7@cknow-tech.com>
+References: <20260806063413.350184-1-gahing@gahingwoo.com> <20260806063413.350184-4-gahing@gahingwoo.com> <DKHR2P0XJF0B.OY937NT39DR7@cknow-tech.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260806_022412_855407_39A9CFF7 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20260806_025607_297285_A0830271 
+X-CRM114-Status: UNSURE (   7.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,65 +124,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu Aug 6, 2026 at 8:34 AM CEST, Jiaxing Hu wrote:
-> The RK3576 NPU MMUs need more than aclk and iface. With only those two
-> enabled the MMU accepts reads but silently drops register writes: a
-> DTE_ADDR value written from the power domain, while the domain clocks
-> are still on, reads back correctly, and the write rk_iommu_resume() does
-> microseconds later does not land at all. The vendor DT names the CBUF
-> clocks as that MMU's interface clocks and its driver keeps every NPU
-> clock on for as long as the device is powered.
->
-> The driver side of this is already upstream, commit 841363ebb508
-> ("iommu/rockchip: Take all DT clocks"), which switched rk_iommu to
-> devm_clk_bulk_get_all(). Widen the schema to match so those nodes can
-> be described. minItems stays at 2, so every existing devicetree, which
-> all carry exactly aclk and iface, is unaffected.
+Hi Diederik,
 
-I agree with all remarks Sashiko made wrt this patch:
-https://sashiko.dev/#/patchset/20260805063826.95682-1-gahing%40gahingwoo.com?part=3
+> Now every MMU with "rockchip,rk3568-iommu", "rockchip,rk3588-iommu" or
+> "rockchip,rk3576-iommu" is allowed to have a minimum of 2 clocks, instead
+> of having exactly 2 clocks. That does not sound desirable.
 
-Now every MMU with "rockchip,rk3568-iommu", "rockchip,rk3588-iommu" or
-"rockchip,rk3576-iommu" is allowed to have a minimum of 2 clocks, instead
-of having exactly 2 clocks. That does not sound desirable.
+You are right, and it is worse than sounding undesirable, it actually
+happens. I gave an RK3588 NPU MMU a bogus third clock and v6's schema
+accepted it without a word. That is a real loss of coverage for every
+existing Rockchip IOMMU and I should not have sent it that way.
+
+Fixed for v7 the way you and the bot suggest, with a compatible of its
+own:
+
+  compatible = "rockchip,rk3576-npu-iommu", "rockchip,rk3568-iommu";
+
+and an allOf that pins each side:
+
+  if compatible contains rockchip,rk3576-npu-iommu
+    then clocks/clock-names minItems: 5
+    else clocks/clock-names maxItems: 2
+
+so the NPU MMUs are required to carry all five and everything else is
+back to exactly two. Checked in both directions: the three clock RK3588
+node is rejected again, an NPU MMU with only aclk and iface is rejected,
+and every rockchip dtb in the tree validates clean.
+
+No driver change goes with it. rk_iommu matches only "rockchip,iommu"
+and "rockchip,rk3568-iommu", and the fallback stays, so the new string
+is documentation only.
+
+The name is the part I am least sure of. Everything else in that binding
+ends in -iommu, which is why I did not use -mmu to pair with the
+rknn-core node it belongs to. Happy to change it if Heiko or Krzysztof
+prefer something else.
+
+Thanks for catching it.
 
 Cheers,
-  Diederik
->
-> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
-> ---
->  .../devicetree/bindings/iommu/rockchip,iommu.yaml         | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-> index 6ce41d11f..a3cedcaaa 100644
-> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-> @@ -42,14 +42,22 @@ properties:
->      minItems: 1
->  
->    clocks:
-> +    minItems: 2
->      items:
->        - description: Core clock
->        - description: Interface clock
-> +      - description: Compute clock, RK3576 NPU MMUs only
-> +      - description: Convolution buffer core clock, RK3576 NPU MMUs only
-> +      - description: Convolution buffer interface clock, RK3576 NPU MMUs only
->  
->    clock-names:
-> +    minItems: 2
->      items:
->        - const: aclk
->        - const: iface
-> +      - const: npu
-> +      - const: aclk_cbuf
-> +      - const: hclk_cbuf
->  
->    "#iommu-cells":
->      const: 0
-
-
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
