@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 094A0C5ACAB
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 17:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B51C5AC9E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 17:02:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j+GhZGcmxYvxLgNaANgTP0YYzBucp/f096QHEdZ+E+M=; b=V37cvSu3BYQ+39
-	XvrGHCwYQmQdKuXtwKGnQm+TqhdzFmwmtaH9K/AeC/RJ/bonvmyDcMeZpEcXxwx2HLobc0kxkfagg
-	tFuxtU1CoDNKWGiXcAC3i4F5D56Zbaml0AnEU/OZ1qfW9lkcc7X7JTZ9RctrJeO4C8NLyXEksb745
-	U+QvYJSTvghiLBJKt1u5UqE2BGQ57AC0joGTmWlxvKJ6q5T+OfsA5MwEauHf4OQg4VylYhHsAU+4n
-	r8RUXZqIs4hFw7AJQj8Xq8wWq4jcKykzDaeZ1+9U/+1gNGgop/KTYGtlm+V2ATsaBFVGhn7fdFDsx
-	UVXT8/HYQwZmkRrdANtA==;
+	List-Owner; bh=EmmPqylTgcJrdnVsGbXedbavlziF+7ajKiHAQEaSWCY=; b=bWjOt6/MaC0o9W
+	dzzueEBs3BOa1XxnOfjZ/r7ygJnA7PY3vRTKHuBMFpyjv3LD8BwyhqGPDl5VqXRcdEhrntRfbUsqE
+	uy7Ulq9VxZzmxiZNoDBNkbrHS5dWsIEmR4nqX39jD1o5i4ViIlRTjP1FiEaaNSeb9GTFczTCvDPRo
+	pcIdbuCG6zFQ4Q+KHh4dP8cZkEGtC+a8MLQhFx0/SnIGSSn/zvWqqbsdHiQJz3bTkdHvkq0VHhiew
+	UZ+llD0KiTFjp7b7GEj9Qrn/haH3MBMpEHPlY38zdbrBNiU6ZlNYSP7R8pRtiYieGXxB27V+rmj/a
+	5uLY+G0N/rltDPIWa88Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws1UK-00000006HXC-3aAX;
-	Thu, 06 Aug 2026 17:02:36 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ws1UJ-00000006HTp-11tN;
+	Thu, 06 Aug 2026 17:02:35 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws1UF-00000006HMJ-01iA;
-	Thu, 06 Aug 2026 17:02:32 +0000
+	id 1ws1UC-00000006HKi-0wxq;
+	Thu, 06 Aug 2026 17:02:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1786035745;
-	bh=z3MvIWasYELAai6HO3er+8XiHnoakmXomvsc7NcTsdk=;
+	bh=ZiVqmaGM3+H99exZj4TcN/QyJvPS1u6+KkUwem6kKEk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=RI9OHvEvhVNX9locRwSkziAadcxYiqTyGBD6spHUiqTTGhnV9AGVKXv3invUW9QB0
-	 JU9ps3D4b9XSQcZ9Fe3RQuPR/t4gV+LQ64Yoagqy06KPqbU3fZxjxpSh+UXlwsRTVG
-	 wQXlCF2zycM6LNydLeKffrZw3bgrG2BqPD+l0F8LExAGg79JpPPi5yleNbDpt0xQas
-	 lvj31PJG0u2Ai5u7dVIn8oFbfcrAEQeA2/2Z/vtmsvUSSQgvV6IeaFzKLQzmlmLJZ+
-	 T6RKagkVyaSpVJqFQiJDASjideJEVrUjO3vUxgPVXhDVr0pWQYeAFHbL0q9fqOkUdO
-	 gu/MxIC8JGYCw==
+	b=C3EMcZAqreml5h3m2Ml6fRxe0X3k2bu3WHtdMH1W1676QUWC/QS/6mj+CD0EiOjmM
+	 kzuE23Ch1ZPIOrSbtrLGPvsgdTFk6ItWtfOYR0prJG0mu0zezTW3YRPhU6zCtYTsRN
+	 b8Qolru8aAodz8ZjB8gwWGxlwaA8qAKTy8EjN6cboeI6+V5fwvKxAgI0V6tfDruFhE
+	 U1nJrf/q4S9cnK1qvSXl5aNaZBhfrQKsgfLciPXlPoX1LS8IfmZamq3GLKMN+lcvAf
+	 wRBeKZnXqQim2IywvifE3EyizY6Wkp1+s4VfFEvgj9rTOg3bFUo4PVQ/2ym8e+fQhb
+	 ZWiynw57noV4A==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 954E017E107E;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4675717E0B39;
 	Thu, 06 Aug 2026 19:02:25 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id F34ED480031; Thu, 06 Aug 2026 19:02:24 +0200 (CEST)
+	id F02D248002F; Thu, 06 Aug 2026 19:02:24 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 06 Aug 2026 19:02:11 +0200
-Subject: [PATCH v11 05/21] drm/bridge: synopsys: dw-dp: Add missing mutex
- cleanups on module removal
+Date: Thu, 06 Aug 2026 19:02:09 +0200
+Subject: [PATCH v11 03/21] drm/bridge: synopsys: dw-dp: Fix error handling
+ for DP link enablement
 MIME-Version: 1.0
-Message-Id: <20260806-synopsys-dw-dp-improvements-v11-5-0d508505f383@collabora.com>
+Message-Id: <20260806-synopsys-dw-dp-improvements-v11-3-0d508505f383@collabora.com>
 References: <20260806-synopsys-dw-dp-improvements-v11-0-0d508505f383@collabora.com>
 In-Reply-To: <20260806-synopsys-dw-dp-improvements-v11-0-0d508505f383@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -69,26 +69,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1166;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2301;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=z3MvIWasYELAai6HO3er+8XiHnoakmXomvsc7NcTsdk=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp0viBW6sz1S0JiZrIACnfpwmyyq09ddK444
- lv/NdCZw4Ct/4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqdL4gAAoJENju1/PI
- O/qa+JwP/jmE3uFPI8XGt2YYAv04xx6V8D36pd/Cq4rb96Jgt5SrU/fz9MI8bc54IZoPSHea3sG
- TnXmqpwxnnVP3WZ+J8s6puJPBPF92tSwtmDbdEOeZIwMscYs5miNOXvVBMxbaIbsoQdj+hZp3qJ
- RN4A7WpYppvTJC4MSfAvDYP9s6ubZeiQo8hyux5F7ZCxlTqAYSYYyAv/sMYoFxEmsw/6mgcrXlY
- SfLnoFSDKjKiLJgnohF3ouJWVDeM0uPeQJrNgxrPCk5HaIFbajP1B4/bndDKiKVZdsEuSm8FA4K
- bUZwIqi+k9ajw6yc1Xc3Sk2AUKtp8pW/ejNKDU1JtBgpVDhsOGZg2yMMO/wWGAHhjuqj/sJ+5Kc
- m40N70Ex2rk+4n8/PZ8VEL8BdSI6S/vLAfx42oufkZNwbZQAOlk6EToHDVWdGi0FD1I6uwrpjD/
- X9Ce4LNFA/0fLqY5zV7VL2XsO+ZOjxA2oM98UGQ3ffZ+xLLiCbP6iNDKMp6so69r6eLGFPh8Hfs
- AuLtrYVRw9obu2fnZqZRBk8Tu+AontANWZKRYOGXYUIAIutbDSKTBFMA5WXMc1RhCo9f22Zx7UU
- ScZxr2EcTou/eJCX7QwZ6pjMkfmuoHYv4SPnSgGGMIQlWBmPfszWuUHhmW4c+zjm6lQOG86n/DG
- A0pWmKMnjJvHe35aJqsIuMg==
+ bh=ZiVqmaGM3+H99exZj4TcN/QyJvPS1u6+KkUwem6kKEk=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp0viD9wrbCV2uQtPhobuEDk+7q82oZiJ99N
+ Q6StU0enFhCb4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqdL4gAAoJENju1/PI
+ O/qaeU4QAJejIz6YLbMl0+CJgjTL2X6u+TxIhEyh+NgWc+eLf9io6OPqZPWPNbSsrlKEofdAdrz
+ LAmseWMGIPoQmvbyV7Q5JeqjLUzDufRBEtBOF33/2U2fGaU9RhZtho+p0Scw5e+L5bDnKvOkkYM
+ oBb9e+2i+3ZlpB4TyjWZG3257Bq9NwaK4UBtUUdiiPgkarf2EjPyn755NZw8f//vGWnrQOwo/yW
+ aFVZawEj/H4MGtO2HoR933ZOBbBk55Nju33ef69kZxHYL5ceVP1FxSIQYtQeCFmuSyOkpnhta/q
+ /bRGQh2a4R59s0o421VpiNEARfcCndmhjUx1Z+KNiPt8ekn5V17OUht58bVfQOcKpTY1DOmjkiL
+ CytknU1u3Fk7dkbyVGb3vjWzwlt0nO9yEIwc3RKhcTfbzNbntHCj8q+FTOKtWoSj/BBN8ekkxqF
+ ClVxWbyH0pCqW0UUWU5DmiGS2ZH6Fk6WA5JpidaFqDQxV5Humr//WOIWv4iLhiQb/3IVid+q+xX
+ zLwjOlxpQqRrpa2Hfrr9A9mAzH/MNzJullIxIEi1qzp+9l3pjyFiaKAyYvwy7mVoKSzo8fGit3/
+ dd6RUHbKy9CaVI0Ji/clU+xned40y9yoA9VWUw/5TRCr8iSRmYBOc9DlvLn3jdiHhzCO38O0jfC
+ MLiOpMFTtBm8y0wiT/B4/gA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260806_100231_199852_C8B80A48 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20260806_100228_433691_DE491406 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,35 +106,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver is currently missing to fully clean up after itself. Ensure
-that the mutex is cleaned up.
+dw_dp_link_disable() may be called in atomic mode disable even when
+dw_dp_link_enable() (or an earlier step) failed during atomic mode
+enable as there is no error tracking. This would result in broken PHY
+power state.
+
+This is fixed by introducing a new enabled state in the link structure
+to ensure the link disabling only happens if it has been properly
+enabled in the first place.
+
+The patch also adds missing error handling in dw_dp_link_enable()
+itself to ensure the link enablement becomes an atomic operation.
 
 Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
 Reported-by: Sashiko <sashiko-bot@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 52e3b37259a6..b1856418f441 100644
+index d7945f7fe9f0..21d60e89126f 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -2040,10 +2040,13 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
- 	dp->pixel_mode = plat_data->pixel_mode;
- 	dp->plat_data.max_link_rate = plat_data->max_link_rate;
+@@ -280,6 +280,7 @@ struct dw_dp_link {
+ 	unsigned char revision;
+ 	unsigned int rate;
+ 	unsigned int lanes;
++	bool enabled;
+ 	u8 sink_count;
+ 	u8 vsc_sdp_supported;
+ 	struct dw_dp_link_caps caps;
+@@ -1615,6 +1616,9 @@ static void dw_dp_link_disable(struct dw_dp *dp)
+ {
+ 	struct dw_dp_link *link = &dp->link;
  
--	mutex_init(&dp->irq_lock);
- 	INIT_WORK(&dp->hpd_work, dw_dp_hpd_work);
- 	init_completion(&dp->complete);
- 
-+	ret = devm_mutex_init(dev, &dp->irq_lock);
-+	if (ret)
-+		return ERR_PTR(ret);
++	if (!link->enabled)
++		return;
 +
- 	res = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(res))
- 		return ERR_CAST(res);
+ 	if (dw_dp_hpd_detect(dp))
+ 		drm_dp_link_power_down(&dp->aux, dp->link.revision);
+ 
+@@ -1624,6 +1628,7 @@ static void dw_dp_link_disable(struct dw_dp *dp)
+ 
+ 	link->train.clock_recovered = false;
+ 	link->train.channel_equalized = false;
++	link->enabled = false;
+ }
+ 
+ static int dw_dp_link_enable(struct dw_dp *dp)
+@@ -1636,10 +1641,22 @@ static int dw_dp_link_enable(struct dw_dp *dp)
+ 
+ 	ret = drm_dp_link_power_up(&dp->aux, dp->link.revision);
+ 	if (ret < 0)
+-		return ret;
++		goto err_phy_power_off;
+ 
+ 	ret = dw_dp_link_train(dp);
++	if (ret < 0)
++		goto err_link_power_down;
++
++	dp->link.enabled = true;
+ 
++	return 0;
++
++err_link_power_down:
++	drm_dp_link_power_down(&dp->aux, dp->link.revision);
++	dw_dp_phy_xmit_enable(dp, 0);
++
++err_phy_power_off:
++	phy_power_off(dp->phy);
+ 	return ret;
+ }
+ 
 
 -- 
 2.53.0
