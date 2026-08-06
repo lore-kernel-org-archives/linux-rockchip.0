@@ -4,67 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1109FC55ABF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 00:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80F91C55ABF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 01:11:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wD/ju5IDGE9D8OdtaGVrr6cbMPxFRxqymVJw7AzCI6I=; b=VoCxHyML4QwgTFMzY0AOTjDWLl
-	S3QtHkY+c/HiPY2DtnCD1nsUlaUwhPCrSoFxeVRytKYZbS5bTt8FyRafUlVQiDatai8ywVR+O2O03
-	AYth0CSNVOfjnlFbJvzLnNJ9tAHaN0M+0GjBf//2M+tyWU7tbCHHDHr93JrNzN8M26QAugoOB9o6L
-	LePSPe2a0gyyG3tWi5zbwabaJr8JqrHnnXGuzf5D1P0viO8j/3jSRu+CLt2uZc7jt08F2zeRUuctO
-	o46svf9UELKHXjyo1RJWZHGnFaaEAsNegYkh1B74k7dVFngk0DIrw8YFJZiuJsdXSgRtJ1viDRceK
-	7nOdKJSg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BAdPsCljTGlPLYJU0/cln0X8ZsJByMovJVnrGfrkj7Y=; b=oXERiRPZY017z9
+	8DwXb3f/lDMevjWb3/DpYVd0DzoNfcu4J3Yr9ez/jChq8BSns4z7Saz1IN6pfgt9aZT363yx8bgsC
+	d5oaM23jjQcA+ZavZGeAluQO/aPz275xvBbvNCbYdJ9bYKduSZ1JMvDOJXyqdKzVXfpihNbjzV8E3
+	4uR8ze57TfrmNN0d4Q+8aA3iIEKA6+udybZsTKhKNa482Wa18pBbgzsRwiFybV0PCRnqbzQhF5JsC
+	+2SJthfYkiApEVgPA/XKbwwSABIJcLJ0/gfybC3j5hUEFFCl5GgCc7KjGTvHNhFIbAINTnc8xnl08
+	0EV4X3OeO83bT0p2AV/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrmMb-00000004jXG-1ABp;
-	Thu, 06 Aug 2026 00:53:37 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wrmeC-00000004kA1-3WFl;
+	Thu, 06 Aug 2026 01:11:48 +0000
+Received: from mail-francecentralazon11013053.outbound.protection.outlook.com ([40.107.162.53] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrmMY-00000004jWs-2rL2
-	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Aug 2026 00:53:35 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1785977607; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Jpedgj2Xv0w84RfTWOIEKEHDoQN726jvzIoC7FRHpg1n1cVUXLz15UT7uWK7I5AgCTt9QNTSR8S331aHM5uQMBP30EL5jjWYZYGKyALvCL2paqaPKS93OhTcU6h7Vj8WaqPG/XFHuntSVVOKbYnrFWESC0Da8cv8wvPI09Mxyik=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1785977607; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Y0o5aZmeUQ3l4Gcb28XZnKWO7jZtMVtIm69gJCsBCVM=; 
-	b=iW6fO6pwOh4le/9HJDTe5y5ExvVnyH0aKadvfwRlU3DPlnBmECkMGQmyXsSVp4+uya+I3V/lqRkxY5RZOB1b4aT9rIXi+HjwLnIGjXHP74DApC5XaKGeA5tu3FEzEwktMIPZaBFIK91d6yh8Cyvf1hFQtvpzkP6fWSE7gbf4sYQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1785977607;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=Y0o5aZmeUQ3l4Gcb28XZnKWO7jZtMVtIm69gJCsBCVM=;
-	b=Eyt4aTfqq7B+CMdd/U3d8TCdoewcgR8RBWNW8r/+0Uy8D4MMHrsYiXu93a9f9z7p
-	CG52LcW5KGFMROXNor2zgMoHRHR5eKsnUQ9MX+5bcqjg+gzTamiLB5AVvLG/W/aAdif
-	0jbGZlcU/JNbUWELSr9VzFzDV609QOBtrQHihNhg=
-Received: by mx.zohomail.com with SMTPS id 1785977605537152.33915577818743;
-	Wed, 5 Aug 2026 17:53:25 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id F24E2180597; Thu, 06 Aug 2026 02:53:21 +0200 (CEST)
-Date: Thu, 6 Aug 2026 02:53:21 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Igor Paunovic <royalnet026@gmail.com>
-Subject: Re: [PATCH v9 00/22] Synopsys DisplayPort Controller improvements
- for Rockchip platforms
-Message-ID: <anPXvyL4sBjANnhm@venus>
-References: <20260803-synopsys-dw-dp-improvements-v9-0-2e6e46135312@collabora.com>
- <20260804135641.17170-1-royalnet026@gmail.com>
+	id 1wrmeA-00000004k9M-3F9D;
+	Thu, 06 Aug 2026 01:11:47 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=v0RV3CjxU0pmzb0VXQSBkSD6+3ufKtTNIRbo4/T8WNBxMoRcy59nMENdjT31uaXde4ohVD6shpG/RDUwfkpV0vdGrJMtrTRzK/zoSy577wpQX8vVDkVBW/mZOynSRVeSmn2diGKQwhFJUdpdtbieiYlwuHZkyDwgd5TZfVMZ02c2dBIWixWVVeXPdllFeKRI1C0clZidXUGWsPMlj/oRlM/3/qVLwASTyCHc23xMN9hkl1VBDvCXOVE89qHcLaxVDE9TvLFdRXaNUiknQ3N8mHzHBXKZkW2WYTQcX6RICSj0taFE9fkvDqhiqGHqtYzHa0veKJpze9EGhAJuUnzDCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bal3DF24tEuv9v68Mv6uRMQC+Qszsii4odcMK59YhOg=;
+ b=m3A9xL0Xtrk+AODLrBfFfZiRnwR1fCe2oQ9JaXsK5l1QZDNYr11k1vE6N92TC0W7BZLDYiir9Qr3nnc4kVea9Te7iDtQb+FOVHemqHEH8M08nerzf2qB+b3Lz/LzeITjJz01QZa0wqNOQP7D+EQL30lb6riL9zgoMAkqBVD6lv2oNLM4vpl66L4gD/x2QxGB4Hg631SufhGeDKREDJBA1CRKy/NQM2b5f1DzpX6LEQnnrGc9vljO75VlE7lU3LG5mcw+bwJG/6ygBh4PuSJKVlx95xU9oU9c4Bc1eTtEu9SJwvK2Q01KTyP3l7DYWd1RfYhG+VFmhcgS7SImRiTUaQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bal3DF24tEuv9v68Mv6uRMQC+Qszsii4odcMK59YhOg=;
+ b=ZeXrHmv/t7CM2Zgq4NRGup87ajrWTVvo8j3f55hPc1Rb2u9fHNJ3d4AofhrpHe44p45rZW6af3riEgk7ErvkopXPZRH2MPBxUrg/ySPg9aoM5dESudacV3P+zTBlBabkHaEL9Cp1fqqVy7BQsCHKidxZugSqHZE58XmVYz15q3VT07wXudGctoloJY4vBdcLJnKmv5rwj98AAQvgoW4zVwE1AdoVBmThVh7RWdlVXhNw5NsQQV1WqkyjIDXx0yzJVvggjdBSwE8AWk29a76+WtP5X0FtnLgkHjEUBdMvQfHwtOtigURH9UeBCxXK9Fh85YVlv66d5eqTnufkb6FrHQ==
+Received: from MRWPR04MB12330.eurprd04.prod.outlook.com (2603:10a6:501:7f::23)
+ by VI0PR04MB12008.eurprd04.prod.outlook.com (2603:10a6:800:317::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.292.19; Thu, 6 Aug
+ 2026 01:11:38 +0000
+Received: from MRWPR04MB12330.eurprd04.prod.outlook.com
+ ([fe80::ca22:f8c8:6aca:7889]) by MRWPR04MB12330.eurprd04.prod.outlook.com
+ ([fe80::ca22:f8c8:6aca:7889%6]) with mapi id 15.21.0292.018; Thu, 6 Aug 2026
+ 01:11:38 +0000
+From: Peng Fan <peng.fan@nxp.com>
+To: Rob Herring <robh@kernel.org>, "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
+CC: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Lubomir Rintel <lkundrak@v3.sk>, Dmitry
+ Osipenko <digetx@gmail.com>, Shree Ramamoorthy <s-ramamoorthy@ti.com>, Heiko
+ Stuebner <heiko@sntech.de>, Joseph Chen <chenjh@rock-chips.com>, Chris Zhong
+	<zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>, Sebastian
+ Reichel <sebastian.reichel@collabora.com>, Andreas Kemnade
+	<andreas@kemnade.info>, =?iso-8859-1?Q?Jonathan_Neusch=E4fer?=
+	<j.neuschaefer@gmx.net>, Julien Panis <jpanis@baylibre.com>, Matti Vaittinen
+	<mazziesaccount@gmail.com>, Alexander Kurz <akurz@blala.de>,
+	=?iso-8859-1?Q?Andr=E9_Draszik?= <andre.draszik@linaro.org>,
+	"mfd@lists.linux.dev" <mfd@lists.linux.dev>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org"
+	<linux-samsung-soc@vger.kernel.org>
+Subject: RE: [PATCH 00/10] dt-bindings: mfd: Use generic power-controller
+ schema
+Thread-Topic: [PATCH 00/10] dt-bindings: mfd: Use generic power-controller
+ schema
+Thread-Index: AQHdJBwqZOYUhgeTo0eopaQW6T3HuraP9ZQAgABCsEA=
+Date: Thu, 6 Aug 2026 01:11:38 +0000
+Message-ID: <MRWPR04MB12330DBC8F268BBD1118883FC88D22@MRWPR04MB12330.eurprd04.prod.outlook.com>
+References: <20260804-mfd-syspower-v1-0-a440783c2e78@nxp.com>
+ <20260805211054.GA1783131-robh@kernel.org>
+In-Reply-To: <20260805211054.GA1783131-robh@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MRWPR04MB12330:EE_|VI0PR04MB12008:EE_
+x-ms-office365-filtering-correlation-id: 838e7d8c-41f8-4827-a91e-08def357aa9a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014|23010399003|19092799006|22082099003|18002099003|11063799006|56012099006|4143699003|3023799007|38070700021|10067099003;
+x-microsoft-antispam-message-info: B3o3TiTYfeW35zbv46bUt2isnbu/C2IqSMOKXNlR9jqQeHEJk0u29KtaxK+GCGGU0NfKfvu6uo8tyGKNwIoRlUus3iozgXLNW3uk8kg8J21MuIAOGXpKwO+DN7+dgCh6jTk4h3csSXBXZFQrJSw+hiqSGAcbi4haIQxixIvfQPUSPviA4Sy+5I4truMfcNEBfco5X5ww3UU62w5zr1Yzw7Q+uTvOzkyctXcDFy05BtOqJn0rv5V/dN2uW30+mo2mZvUPIdiT8IZbPufGSlruFmYjroGRwmouF8ABsaMzWfrKnZ76P5yCYZEMVs473qeUkzQr/fwb6LMOTdaq51C0R7XnvSWIFIufoRhq446OIvp9eNeWWjk1fnrTJItrJrE7S6YVJFGoB4368nJ/0kWQVNWpamOj+vuZ9w21jhVBpmX0JK6fbB87G9AQtKAPPQ5LqS6rQPUutD7oQWOh5fZSeDTDXT1PcYWw2ff2FfzicyxmUpB/BZTkY3AA00ft4io3IenVbFnscCAhJAqfWXUEmg0bIZILELbomieeVAY7chMaBdevp93F4UH9a/YHdAup8mXi2PDUaOrmhef5aiYabbFc1WU42UwdVmcbf+oe1hAAPTUhLiFGpT7ymx7yMsHH4ira4Zujm21qR7DS85+968+Uk+5pcH79j0yt8MG+a2TBU5PyvthHU8zgUwQ5qmpa5W+fL/mNWV0Q7n9M2k3wiPVxC1fBD2gaSQh0DQD2aSU=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MRWPR04MB12330.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014)(23010399003)(19092799006)(22082099003)(18002099003)(11063799006)(56012099006)(4143699003)(3023799007)(38070700021)(10067099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?908SaPwrspzDur6huYhdKZG12K9YmfVcq49kkUVaqg2LU0tfeToW57tMdt?=
+ =?iso-8859-1?Q?zzBBMlotiCixQAm10hEbZLAoxrVYd3D8H6wFwKmPjzvPzvscMrKaZkdEAP?=
+ =?iso-8859-1?Q?8yv/CrzVTDQLFAjYG7f89m2y1AVR+H+J76mADnPW9thzSv6n6q1VMHR2QE?=
+ =?iso-8859-1?Q?vxXZn69eqOgoBGFKbm2csY/SeLXKwB1Ubae844MQXVfPijxfMLlfsmFEl0?=
+ =?iso-8859-1?Q?73wn403zunNz3ZxjMyew9Sp02pA8xZGRvI7jEHRC0h7GveCn2K1POaAwBV?=
+ =?iso-8859-1?Q?uSmV91HpY78FF2v4LAW5nfhnX0yqAZ56hdKXDhKwwcP/PFyvXEK/wEr4tH?=
+ =?iso-8859-1?Q?T4w5gWgIjpoCsKT9lCX6Gvku7YLUmBpKOhzTdCvRgTBraLdpkX+YrB0BaJ?=
+ =?iso-8859-1?Q?nIIYSy8f6PrzqV1wOB4a3VhFMfcpRRMp9jffk8X+HWZdG2YpOeWKWTciji?=
+ =?iso-8859-1?Q?wb0flAAh7yILYCMPO/BWD1czJ2VqYZHlSmWUFCKZRKZN0qWH7koTrujqHU?=
+ =?iso-8859-1?Q?lEGDIP9Stf2ipQSzvzp2Rjk63rnWBqryYZHuv8Bhd6gKGJMVhAR+lqOJ7o?=
+ =?iso-8859-1?Q?flXOHmmDjKSA5zHizL5Q3lCOsGZljS/Z+KVCzKkC7uiuirTUCF3RM098UL?=
+ =?iso-8859-1?Q?4AAhRu7Ou3jWHeiUlEo5Wjvsu909TmMYtXVbFYIoswCMF/wUH8o3GGzK5m?=
+ =?iso-8859-1?Q?jy937YCDhFAOARSDhg0bgMd2tpZJoxVHYMQqQ7UzA4aG2UGR4SVM5JPiTy?=
+ =?iso-8859-1?Q?LnpaWU7fBZ1dl2UGu8RSBrz8zl5T77qCNMU0wWa9g4BEVBM4Eb14r1ALyx?=
+ =?iso-8859-1?Q?YEXYfEPleQhvnhVyAKJbKnBEp9pIQIUZavl83P5O7Sy4napYyeVGejiLXx?=
+ =?iso-8859-1?Q?/rHzRB57fmp/Q+jta21vdWpcSV0ZIeJ6gEklNLPpLMjz1ez4Mp2BfHvAFY?=
+ =?iso-8859-1?Q?Nwnxssm5UE/b6FUVpAA+k0KTB8yCxdWzx0YV951m5ybDcOLt+eT0jrx/nU?=
+ =?iso-8859-1?Q?f2JA8Q3xmAD3MsVBrrLsCdjQuii6dMCMeYomYfGurGf9g3amLrhKd71Uzc?=
+ =?iso-8859-1?Q?gbEJpGcX2VwyxpSEVUNf9VfVv24A9KYU2nd2xgjdra4Kwu4Mf0zy8DNa6W?=
+ =?iso-8859-1?Q?HoeKxdJN7ig/eVdklrEcKs6vf6A8+Is2/W1OIYXob9mbjtfgnCgyKcez+Q?=
+ =?iso-8859-1?Q?xbq5b/Za+WaJ4VbekOBIM/eA6Wm5O43i2EVyI+21hYdLuusSGd52+36SXd?=
+ =?iso-8859-1?Q?9gAGzZkS5KpcV8uk8u+DY9f+Gc4Ahk64DURpe6Z8qH3IKcqb2GnWXrHltj?=
+ =?iso-8859-1?Q?OoSOgbLwIThh1I8ECKAKtTXWueKBtOdag4c8jJSFRO84ahX1fRvMfQUByO?=
+ =?iso-8859-1?Q?sKWkFvRus0Kdg9gRIjMbvfbK/NZxl1cGTS8dWrr5Pyvhy0SWWZn4oiezDM?=
+ =?iso-8859-1?Q?KLzy1gXFh+U4Kao7X3zsOX+AweTWV5hhGkk/s92SDKq2PoLcsmhpcZoRxo?=
+ =?iso-8859-1?Q?L6CgMmjzG9V/dSwdCWt7HXyFPH+fPNUJhdcsFntEqxQbr2PelomyFOTBJK?=
+ =?iso-8859-1?Q?SwUhvPWrZiRqSKBobgIjJBWWCkmjXgXRvitY3w+KuZ5vXpfYYiNJS6H/fl?=
+ =?iso-8859-1?Q?HIXazrj5vyrJLgOGwY2O/R9oHakd6/DDbYYf5DngT7SE7OqzVC70nWWz2h?=
+ =?iso-8859-1?Q?mMEVFk+UlqDOdKq24SYxxdK4MUTOLiFwkVrJT4vGErgaiqL3uPLwgXErNB?=
+ =?iso-8859-1?Q?6RwsO7ew3cXPAzNCLsp/NPB2Y7RCzOkyTQ1E9MlUcXrBqk?=
 MIME-Version: 1.0
-In-Reply-To: <20260804135641.17170-1-royalnet026@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/285.956.17
-X-ZohoMailClient: External
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MRWPR04MB12330.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 838e7d8c-41f8-4827-a91e-08def357aa9a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Aug 2026 01:11:38.2799
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: GlWCekUsKJj7gWhT68C85utAHqVrfTCVHOb7hoeipG6tnP67n6kxk6Y4dzFP72H0X2tDonimHxnVVL4IBwbiYQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB12008
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_175334_749185_224FFF81 
-X-CRM114-Status: GOOD (  44.93  )
+X-CRM114-CacheID: sfid-20260805_181146_833644_E14FE9B2 
+X-CRM114-Status: GOOD (  21.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,201 +148,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>
-Content-Type: multipart/mixed; boundary="===============3594384914775253471=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Rob,
 
---===============3594384914775253471==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="lgiluf6bs5svv24h"
-Content-Disposition: inline
+> Subject: Re: [PATCH 00/10] dt-bindings: mfd: Use generic power-
+> controller schema
+> 
+> On Tue, Aug 04, 2026 at 10:16:35PM +0800, Peng Fan (OSS) wrote:
+> > The generic power-controller.yaml schema has been added to
+> > dt-schema[1], providing a common definition for the
+> > `system-power-controller` boolean property. Convert MFD bindings
+> that
+> > locally define this property to instead reference the shared schema.
+> >
+> > The common change across all patches is:
+> >  - Add a $ref to /schemas/power/power-controller.yaml#
+> >  - Remove the local `system-power-controller` property definition
+> >  - Switch from additionalProperties to unevaluatedProperties
+> >
+> > This is a pick of patches 2-11 from [2], rebased to linux-next/master,
+> > no changes. Patch 1 (the generic power-controller.yaml schema itself)
+> > is dropped since it has already been picked up by dt-schema.
+> >
+> >
+> > Signed-off-by: Peng Fan <peng.fan@nxp.com>
+> > ---
+> > Peng Fan (10):
+> >       dt-bindings: mfd: ene-kb[3]930: Use generic power-controller
+> schema
+> >       dt-bindings: mfd: ti,tps65910: Use generic power-controller
+> schema
+> >       dt-bindings: mfd: rockchip,rk8x: Use generic power-controller
+> schema
+> >       dt-bindings: mfd: ricoh,rn5t618: Use generic power-controller
+> schema
+> >       dt-bindings: mfd: netronix,ntxec: Use generic power-controller
+> schema
+> >       dt-bindings: mfd: ti,twl: Use generic power-controller schema
+> >       dt-bindings: mfd: ti,tps6594: Use generic power-controller
+> schema
+> >       dt-bindings: mfd: rohm,bd71828-pmic: Use generic power-
+> controller schema
+> >       dt-bindings: mfd: fsl,mc13xxx: Use generic power-controller
+> schema
+> >       dt-bindings: mfd: samsung,s2mpg10-pmic: Use generic
+> > power-controller schema
+> 
+> Can we hold off on this until at least the next cycle. 
 
+Sure. 
 
---lgiluf6bs5svv24h
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v9 00/22] Synopsys DisplayPort Controller improvements
- for Rockchip platforms
-MIME-Version: 1.0
+This change
+> effectively bumps the minimum version of dtschema. While power-
+> controller.yaml is added to dtschema, it is not yet in a released version.
+> I'm not all that sure these changes are much improvement given it is a
+> single boolean.
 
-Hello Igor,
+If you prefer, I could drop the patchset.
 
-On Tue, Aug 04, 2026 at 03:56:40PM +0200, Igor Paunovic wrote:
-> You wrote in the cover letter that parts of this are untested, and asked =
-for
-> comments on the out-of-band hotplug callback.  I have been running this s=
-eries
-> on real hardware, so here is a report from the USB-C DP AltMode side.
->=20
-> Tested-by: Igor Paunovic <royalnet026@gmail.com> # RK3588, Orange Pi 5 Pl=
-us, USB-C DP AltMode
+Thanks,
+Peng.
 
-Thanks. I've just send v10. I expect this to still work, but since
-quite some patches changed I did not carry this over.
-
-> Hardware and base
-> -----------------
->=20
->   Board:  Orange Pi 5 Plus (RK3588)
->   Kernel: v7.2-rc6 + rockchip-devel, pinned at 8c70065a3207, which carries
->           this series at v9 - including 03/22 "Fix error handling in
->           dw_dp_link_enable()", so this is v9 and not an earlier respin.
->           No local changes on top of any dw-dp patch.
->   PHY:    your rockchip-usbdp v13 series, from the same branch
->   Sink:   4K120-capable display, reached both directly and through a USB-C
->           dock, DP AltMode over the Type-C port
->=20
-> Results
-> -------
->=20
-> USB-C DP AltMode works.  I get 4K120 on the Type-C output, which on this =
-board
-> is a third display output that mainline does not otherwise light up at al=
-l.
-> The mode comes up at dclk 594 MHz, which is what 4:2:0 should give at that
-> resolution (two pixels per clock), and it survives a live modeset - I can=
- go
-> from 60 Hz to 120 Hz on a running desktop without unplugging the cable and
-> without dropping to a black screen.
->=20
-> That last part is the change I want to highlight.  On my previous kernel,=
- based
-> on v7.0 without this series and without the usbdp rework, touching the ca=
-ble
-> while the link was up was something I had to actively avoid, and a live 6=
-0->120
-> modeset gave me a black screen that needed a hard reset to recover from. =
- Both
-> of those are gone here.  Whatever the combination of the follow-up bridge=
- work
-> and the PHY re-init on orientation change is doing, from where I sit it i=
-s the
-> difference between "usable" and "do not touch".
->=20
-> I have not exercised the DP audio path (22/22) yet, and I have no board w=
-ith a
-> native DP connector or an HDMI bridge downstream, so I cannot say anything
-> about the code path you flagged as untested.
-
-heh, that's the most interesting ones regarding testing as I haven't
-tested the related paths in the driver. USB-C AltMode should be more
-or less the same on all RK3588/RK3576 boards.
-
-> On the out-of-band HPD callback
-> -------------------------------
->=20
-> You asked for comments, and I have a data point rather than a design opin=
-ion.
->=20
-> On this board the AUX channel is dead at boot until something kicks the T=
-ype-C
-> port controller.  The cause is on the firmware side rather than yours: the
-> board boots through EDK2, which has no TCPM, so it hands Linux a PHY that=
- was
-> never brought into a sane state and a port controller that has never
-> negotiated.  Nothing on the DP side can discover the sink until fusb302 is
-> poked, after which the link comes up normally and stays up.
-
-That's needs to happen anyways independent of the boot process,
-since USB-C can be hot-plugged :)
-
-> I mention it because it is exactly the shape of event your callback is fo=
-r: the
-> hotplug information arrives from outside the DP block, late, and the DP s=
-ide had
-> no way of knowing.  A separate callback rather than reusing hotplug_notif=
-y seems
-> right to me for that reason - the two really are different sources, and o=
-nly one
-> of them is something the DP block could ever have observed itself.  I can=
-not
-> tell you whether there is a cleaner mechanism, but I can tell you that the
-> separation matches how the hardware actually behaves here.
-
-I'm well aware how the hardware works. That does not necessarily
-require a separate notifier, though. But the existing one does not
-work anyways as it does not distinguish the information source. That
-could be changed of course (but with quite some churn involved).
-
-> One neighbouring finding
-> ------------------------
->=20
-> While bringing this up I hit a bug that is not in your series but sits ri=
-ght
-> next to it, so it may be useful to you and to Cristian.
->=20
-> On RK3588, VP2's dclk was parented to the HDMI PHY clock.  When the HDMI =
-PHY is
-> not powered - which is the normal case if you are only driving the Type-C
-> output - that parent is dead, and DP gets no usable pixel clock: nothing =
-above
-> 640x480 comes up.  Re-parenting VP2's dclk to V0PLL in DT fixes it, and t=
-hat is
-> what the 4K120 above is running on.
->=20
-> I see Cristian's "Consolidate HDMI PHY PLL clock parent switch" (v3 09/14=
- of the
-> DW HDMI QP YUV series) touches the same parent-switch logic from the driv=
-er
-> side.  I have not yet worked out whether that series makes the DT change
-> unnecessary, or whether the two are complementary.  I will work that out =
-before
-> I send anything, but I would rather flag it here than have two people dis=
-cover
-> it separately.
->=20
-> Happy to run any specific case you want covered, or to retest on later
-> revisions.
-
-Thanks.
-
-> Thanks for the series - it turns a port that did nothing on mainline into=
- my
-> main display output.
-
-Great. It's obviously too late for 7.3 now, but I hope to get all of
-this upstream in 7.4. It would be a nice start into 2027 :)
-
-Greetings,
-
--- Sebastian
-
---lgiluf6bs5svv24h
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmpz2vYACgkQ2O7X88g7
-+poa8g//V4lZXwFrUKn9W7pvGSKRbQKP4TMFkSKNnWNhOvBYSj9Lzsv9q/hhiVUZ
-lQFGT6wK56WTj1SdcWNxI59e0orTSGSea6gYdMX5BIB6erEkA5NA7QqAKaBc7Pce
-c2I94QDQ20waF3m6YUGdTHh6uBScK8PKtBcK80VYp0+CejhFIYj03aDkzGp6KGVF
-sb+/QSZCfEVSAATdBfWV7UqBqh4jXov+sC3zewDfEYXqY3wg0B9/PSklujUCCECF
-/aND5jg1s+vMqzxb7silXU0rJu5t5k8s4CU1ABtOc0KCKRuMHwif4yWeOlfcaSnJ
-UL1bBqcUW50r2dFxhJsmcySL9ORVUX770vnUTRmJBHxF5k/LNavI9cK1yKKlTmuO
-xfBwR8pJNh6ERdlcYqSsTUjvCdtbtVJUf4c+sagpg3tFX+zgxv2WXi5opJKZl7wc
-uSSUvLrDlvRwEoqAle8BdV2Tu0n8CwbDA4EiE1xUIZh17GjI1FER44D+0Uq/Dw7V
-IJjHoM7ek07RSBBwW9f8UGI4wMLrOGG78Fx50Fl+qOsuH19I9siKv2IaIqwRdudU
-dZ36Vb1extrrNz1yhWmpub7onTCWs+1Cw/X5RSbR8+kFw+w30r3gKDiUo0+gkQOb
-P4SFuJEmfglBS3UCQFTsuBVP9VnE2JsO4VQTcymOHRwEUf+QgLQ=
-=FbcJ
------END PGP SIGNATURE-----
-
---lgiluf6bs5svv24h--
-
-
---===============3594384914775253471==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> 
+> Rob
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3594384914775253471==--
-
