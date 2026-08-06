@@ -4,65 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29A72C5AC7C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 15:57:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60BA3C56205
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 16:14:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yMIVy2ItWRFvD45EUIpDt5YpgZE+XNn0OkWyXbr7zqc=; b=x+Os/8Lz+iiP66
-	wEsPxcOErAVg0hFudb86doGwu2S6TPfl53H/49ZpmsQpF29kigrH6ydv/xlty4sMUyVPWk6A3LtBu
-	C6Gd8I5d6MkBP/rjmXAyHKlL9MgZHZu+lEinOG0BXafGoJzCPkc1Ge57XdhKQZsM9WoDGwCobifNI
-	H+bHVy9O5EJq1VIDTVzBjcifIykxFLTqenbREus40kM5Bk3HfIXH2egfZptyv2Buj5rA6/UsnOm+Q
-	EtujmY+aJREOVqGiaKP0BG1BYE2sD9/M+8pXOprFp+FYzVG6v0Q2OsUUck3XGJw5NmtVNJPVIePiG
-	1Qw484eTnoc/oOT+HZBw==;
+	List-Owner; bh=6muIgIrWPKB6Udf075DkUtwThzERB02Xwbb8q1jAnSc=; b=miSmFPSJ+NCear
+	ifLedqjL5PxjV1bBi20dPJf6V2WgMURZLijNNm1BcM2N2VXsu5oQkbSpjC3AFY8rmBs0c2FTQ0mWk
+	SMm1YFrQx+Dirfq/sINVCMt+he7grKqc/7Her4y4/uIN7HPK+uQfbtFVJ5Kv9/KP55KGa9oB74OhE
+	PgIYLu1aeDMsndkHbf2FxV3HL/YPL24YlXlNCm3JcVRW9qBAWsxHJVvoOmOs5oYwPeLtcaKEvF+Vr
+	CqguTlDyW/Tz94gPBQ62Xtto7DaLuVRMDe4hfbK3dZ393Fwm6MvIX/ycWjBhi60Y+/mNjxqf1XvuH
+	1xaSkugEaiOkbwAILRzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws0Sp-000000069LU-0QuJ;
-	Thu, 06 Aug 2026 15:56:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ws0jT-00000006BIo-3WDy;
+	Thu, 06 Aug 2026 16:14:11 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws0So-000000069KN-0i2Y;
-	Thu, 06 Aug 2026 15:56:58 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 47CB360AB9;
-	Thu,  6 Aug 2026 15:56:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 372BF1F000E9;
-	Thu,  6 Aug 2026 15:56:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786031817;
-	bh=pjRHKsliqvvLYwqfQ+GA2Px/s3f/hlLeRUQ/A/a3Vhc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=aM8CzvZL1kM8bogCR4THoedGsE0LsrmHOW+9scLTFef8/T7iNfbQbqgwneQlJrmVb
-	 zwDA/h8baSVPt2RNqX39wKuflTMuCV7OidrA01gdihp3LswRdZ7e+J5VEwE/nNb32j
-	 B5uTIT+0mN7qqbN+Sg5xFSbj/4/5/UpX8PJQmbiID9wudtYkOuu71mfSYwjGdKy508
-	 r3gSTDHRJgOkLV1tKT5/fE6Dy1EeShHego3b067oJpOC1sph9rk9odxLj2/cTaWJye
-	 +PK4PYBpH9fbPU7d0IkzyCPiCRWtpDcphDgFnF1qfCmWTBVy7uwOMJXI+NIMpixzBY
-	 6DZ7QBk91fWrw==
-Date: Thu, 6 Aug 2026 21:26:53 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: jason98166@gmail.com, Neil Armstrong <neil.armstrong@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Guochun Huang <hero.huang@rock-chips.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+	id 1ws0jQ-00000006BHB-48fy
+	for linux-rockchip@lists.infradead.org;
+	Thu, 06 Aug 2026 16:14:10 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4980dc26022so23598065e9.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 06 Aug 2026 09:14:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1786032846; x=1786637646; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=tXxkSVa+2eu05dZjUDlR4s5Kc7ssR4Aj7dZF9elDO2E=;
+        b=Km1yso2zg5iV7C9xhh3PhRiJelF4SCzfzAgFp5R1Ug224sOkQS5Z0X+urZKIFbWf1I
+         3WPzbE1oRl7IWovRgoFQTc4N+d+vNANJqiJq2LNhIa6RuRxNs4TcAz9uMqx5QT3PgjJC
+         W872uBtjByDW+ejf0jaslXcKDvaOd82a50VFZfpNfxkVCPtHrweY5C5XAyPe9c0NPxM6
+         y8W+tg/KkgwBdIWoaFhHlt8NnSKz6VaSvLm0ARfYamSLSAQDpCotD+dnUAgQTQKpv3EU
+         FcccuyBjLZeQV59awNqBSjzetFhyoFU4gQIZ4n5Hq7ezY04NUCJ0nKRVgGfr/7yb5eD0
+         uNMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786032847; x=1786637647;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=tXxkSVa+2eu05dZjUDlR4s5Kc7ssR4Aj7dZF9elDO2E=;
+        b=m7YIsXHeyleDltLRbjnOmtTisD35aKE5JrKP4GtYO+zttjTOQw+jnvaHQWkDTwRRsF
+         j2WLNtne6sbr6+PfaJ3YNeOX78tnRs7y34lIjklp3OHVw9GM8tVYtK23SEiihzQDaWY6
+         46Bkximq1BTJIa4BPp0vt6gubCjQt3Q2Fkzpw541aZ3vz6gVToAzfx60rYWeFNgQSWRE
+         up/9LrNiaNmHnavIgtXsvn6J2v7JOmyF6H/U2K2gv54CniYRLVJur1wju3hoO+t+7oB7
+         I90KfshRuJd2Q/gt/HFGa7tw39OJOcEqDVccwQNhfvhD2TTmTc5+VVrPYtRRdcgn6tX3
+         CEGQ==
+X-Forwarded-Encrypted: i=1; AHgh+RogZjUQJpOUetPQ7ECZ5FITnqWo2h6P497d+2NMjAtl85Vw2xd1/0uw4MSYwFa3VPeB0juMTm+CZyoxm5F4Ow==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy1S1j1G/KVKfNhnxhyLxuUfK9wVnj4COCLk7nNEZOhRlY292tS
+	pqV+Hnr37emkrGNsTbgv9agumbCPsyMF5cHaacdTiX+L1dj3InQtxA2bNfjiUlieFrk=
+X-Gm-Gg: AR+sD10R3Iwl3ybh0sC1PnxeB2xlnLQMmkl58vYZlmqafBNgZWMItVYWJ6ZqJMRG0+G
+	0Lf+U7WTuX8L0w3VZgE2GucWecIfRRMGQgjscx9U7YzXpszvn4w3QTcDnjwkWkZNycH8nu2p+1H
+	JIicfs1hyr37zWgyS5CxZ1CO3wdvPB6nCI8PCEckvuCUxQb98i8TY4UySmYvkPA9Tkn+1L+KzKb
+	ev2ioFpq76cAUODVIXRhvFtS/j8lGhnyUWWyOy5Y9pP6HvQvATL+7aHBGm5oG7/yw21gVIF3VMR
+	8aRfD8uGjC/RzGJ4AcN4dgQ26wbDXYGC/tqYS2si+00/LvTZYLdaI4yA3BCM2ZezWv5HCpuzJdk
+	0f6KbqeRg22d7rOqkt9EcCYw6+G4tQoTs8hk34/ejVvLVo6uSz8X8WtiIbOVI98d4BidOCej2eE
+	kshoVcec72AX7FNP2rs2ruSeiLnYQBXJkyAg/vkqJgeF7WxoyS3Ubgat3kytJZcL6afD/xVCpFK
+	Q==
+X-Received: by 2002:a05:600c:4ba2:b0:493:b6ee:fcb7 with SMTP id 5b1f17b1804b1-4994e7d3434mr142978515e9.14.1786032846564;
+        Thu, 06 Aug 2026 09:14:06 -0700 (PDT)
+Received: from [192.168.0.101] ([109.76.115.165])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4995421b198sm84909005e9.7.2026.08.06.09.14.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 06 Aug 2026 09:14:06 -0700 (PDT)
+Message-ID: <ccf41669-685c-4657-9ffa-7053719bd539@linaro.org>
+Date: Thu, 6 Aug 2026 17:14:04 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 1/4] dt-bindings: phy: rockchip,rk3588-mipi-dcphy:
  support per-direction phys
-Message-ID: <anSuxfeitSqmSHNr@vaman>
+To: jason98166@gmail.com, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Guochun Huang <hero.huang@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
 References: <20260726-dcphy-rx-v1-v2-0-cf9cc34a412a@gmail.com>
+ <579EMzIB4QpX971YyewFrke7qDRTnb7VISWtBI86oM2PJpls9AOXn5nKFyv8PA9EiZWOiczXm9LbDAO8XTkrig==@protonmail.internalid>
  <20260726-dcphy-rx-v1-v2-1-cf9cc34a412a@gmail.com>
- <82da3622-9c3a-454c-87bc-fb4ec7adb68d@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <82da3622-9c3a-454c-87bc-fb4ec7adb68d@collabora.com>
+From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+Content-Language: en-GB
+In-Reply-To: <20260726-dcphy-rx-v1-v2-1-cf9cc34a412a@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260806_091409_035716_80F933E4 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,28 +106,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 03-08-26, 13:17, Michael Riesch wrote:
-
-> > +      Two cells select the PHY type and the direction, so that the
-> > +      transmitter (DSI) and the receiver (CSI) can be described as
-> > +      independent consumers of the same PHY:
-> > +        - <PHY_TYPE_DPHY RK_DCPHY_DIR_TX>
-> > +        - <PHY_TYPE_DPHY RK_DCPHY_DIR_RX>
+On 26/07/2026 15:55, Jason Yang via B4 Relay wrote:
+> From: Jason Yang <jason98166@gmail.com>
 > 
-> How is that Rockchip specific? As you state above this is either MIPI
-> CSI or MIPI DSI, two perfectly standard protocols.
+> The Samsung MIPI D-/C-PHY block on RK3588 drives a MIPI DSI transmitter
+> and, on the same PHY, can receive a MIPI CSI camera. Describing both as
+> independent consumers of one PHY requires the direction to be expressed
+> in the devicetree.
 > 
-> @all Would it be reasonable to introduce PHY_TYPE_CSI and PHY_TYPE_DSI?
+> Allow "#phy-cells" to be 1 or 2. The existing single-cell form still
+> selects the PHY type and refers to the transmitter, so shipped DSI
+> device trees stay valid; bumping the cell count unconditionally would
+> invalidate them. A second cell adds the direction, letting a DSI (TX)
+> and a CSI (RX) reference the same PHY node as separate consumers.
+> 
+> Add include/dt-bindings/phy/rockchip,rk3588-mipi-dcphy.h for the
+> RK_DCPHY_DIR_TX and RK_DCPHY_DIR_RX direction constants.
+> 
+> Signed-off-by: Jason Yang <jason98166@gmail.com>
+> Assisted-by: Claude:claude-opus-4-8
+LGTM
 
-I think yes...
-
--- 
-~Vinod
+Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
