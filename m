@@ -4,58 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B9EBC5AC7C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 16:26:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0808FC5AC81
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 16:26:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=otH55GNc9QyvBtfV3ZwTPMypu1k8zI+4k1H9RNdOyc8=; b=XPtAwkEXQygeKA
-	ajafg0Hlf8KnyuR6ikzvcFTCZONFTPdZf52arePFwJmkXAhg0AvPepiSxQZSwZlz9Ma33hUv36wZa
-	6Dx5H/LY4I3v5DWb+MtiP4wRESMO7d8kfjTCQVqrBBI4TbzpdQrh2AyIUs+7mL0CpVblpOyu9yKeB
-	ZzCFjad0syWcvyn2jrIVs1HvNXb7hAD8MxJa4PKoiUNSQHOnlP2lb2Zlbk9pv52hamgb6P4MKWM22
-	zvFR3FrhVlHReOpiPWKBHHSX82dBI0X01MFu1oBkPBtzheTSXPv+Vq/B3Rl8CUoS8Wwt/0Trqdwba
-	r3ttId1nT7RoUnzMIbzw==;
+	List-Owner; bh=+k8lbxE5JxfnryoD4vuxdF8ORXIpz1axZVkmTcx8FGQ=; b=4SX35QqQC2Zgeq
+	zOJto+T61m0PigC9Ht5pOGKwo2EXKIvQiA8cRNfy9MdBoFeE5D54mlqOtxQufiVg1ApRxoERFK1fS
+	d6ZK2KtfTscAfCLoTRd75sR8wKJM9fq7nmHQluuMhtIC8+kuYevjyJvAKy+gdPSRBYQK+HQc2mAod
+	p8o3J6wtZLpcE7G9HHuSfWgSxiZ6eTSARoofqzgNvx2EIY4OKnVwyAFcK+YQyXtGSPn7i21rJ/wT+
+	Wk4iEQjTUe3+IZK3RnlbOLIJ/qtd39xA93LaluO19p964g7vY56TOWgc0NCh3X5DRBVmMi/ax7qEz
+	IYWHRCGzz+d43LfvtYzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws0vS-00000006CpK-0Z3r;
-	Thu, 06 Aug 2026 16:26:34 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ws0vU-00000006CrH-1SXj;
+	Thu, 06 Aug 2026 16:26:36 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws0vQ-00000006Coc-45hF;
-	Thu, 06 Aug 2026 16:26:33 +0000
+	id 1ws0vS-00000006Cpe-3EJH;
+	Thu, 06 Aug 2026 16:26:34 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 00F3B60DBB;
+	by sea.source.kernel.org (Postfix) with ESMTP id 770B240F05;
+	Thu,  6 Aug 2026 16:26:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FA4C1F000E9;
 	Thu,  6 Aug 2026 16:26:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 561361F00A3A;
-	Thu,  6 Aug 2026 16:26:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786033591;
-	bh=hD0bHzpZasfcL38d5d9W31p3gaknBWPj0YJDakcdYjc=;
+	s=k20260515; t=1786033594;
+	bh=PBEtqG00000qoISTSaDJxW7MrMY/3zlJT71r5NNxhjE=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=edRoiQNrUGuoHhuPWLn2rm2pKovdkhPVwVR7yuoTp9BAqAjio8nut1f4pj0S76gd6
-	 p/CgqmVaEChePAr0pf4RnkHvLGWm2ure/PNSBtKAkHrtl7bq+LxG/U0zsi77pzgw/0
-	 gu3qUak9paYt7JRI/jjYCl4NnbVeOkd4aB8i9yH1PBHJa4gLIMPx/36Q39ezJujk35
-	 XDmY4YX0XaawZGejnHYHFckp76wmMunxYAgddlIOnyyOndKRGou/8tLfX49kNyGdug
-	 3qQ5/W1cE/BskXKcdaLB/8wUbmWximsPiA3ifFuxHbc3QMnK5gd/2BrNDwK2S2djps
-	 UJGw5pB3E2i3w==
+	b=UAjhaszyTlpwcrCSp64jNeawOWAiAOHtaAliAFD/1VXoGHP/Ov1PP6b/J2wLrhucW
+	 hlIFGf3k8jFSyxJPyN+rxAmC0s2LCZEEeUWm0H2j8C7jOlDO7Vw0hzLJHrtUAQMMQZ
+	 C+mjE+wykgrgcrK3EZtzsZyXaNMIT6kQgv13z4zDB2iWGKO5sDTJYGRbUIUlLpSd6k
+	 1JxiL2oTnESU/cGtZ356Y32wtFZnB2lGxUgpPoVD1UBpSg7t0PkN1N+4avT1gZikL1
+	 oizMvlprgjH5rnjZT/GJv0nRgN0yIVICv1CU009MX4Dv7SC6OH3en3w9p+jVKRAVSn
+	 CWdopAUysl3jQ==
 From: Vinod Koul <vkoul@kernel.org>
 To: Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Gerald Loacker <gerald.loacker@wolfvision.net>
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260725-feature-mipi-csi-dphy-4k60-v4-0-5b2c4626d31e@wolfvision.net>
-References: <20260725-feature-mipi-csi-dphy-4k60-v4-0-5b2c4626d31e@wolfvision.net>
-Subject: Re: [PATCH v4 0/3] phy: rockchip: inno-csidphy: fix 2500 Mbps
- support and add clock lane phase tuning
-Message-Id: <178603358793.674490.17206086804451771679.b4-ty@kernel.org>
-Date: Thu, 06 Aug 2026 21:56:27 +0530
+ Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>
+Cc: linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20260518180722.2480799-1-jonas@kwiboo.se>
+References: <20260518180722.2480799-1-jonas@kwiboo.se>
+Subject: Re: [PATCH v4 0/2] phy: rockchip: inno-hdmi: Change TMDS rate
+ handling to configure() ops
+Message-Id: <178603359190.674490.7659482264928277784.b4-ty@kernel.org>
+Date: Thu, 06 Aug 2026 21:56:31 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.13.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -75,25 +71,25 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 25 Jul 2026 18:56:02 +0200, Gerald Loacker wrote:
-> This series fixes and extends the Rockchip Innosilicon CSI D-PHY driver
-> to support data rates up to 2500 Mbps and adds optional board-specific
-> clock lane phase tuning for signal integrity.
+On Mon, 18 May 2026 18:07:19 +0000, Jonas Karlman wrote:
+> This series adds support for using phy_validate() and phy_configure()
+> with this HDMI PHY as an alternative to current in-tree unused way of
+> using PHY bus width to configure the TMDS character rate.
 > 
-> Patch 1 fixes an off-by-one error in the rk1808 hsfreq range table:
-> the final entry was capped at 2499 Mbps, causing a rejection of the
-> maximum supported rate of 2500 Mbps.
+> The only known users that calls phy_set_bus_width() on this PHY are my
+> out-of-tree HDMI 2.0 patches for Rockchip RK3228/RK3328, i.e. those
+> originating from LibreELEC (also carried by other distros), the
+> downstream vendor kernel uses a different implementation that also calls
+> phy_set_bus_width() on this PHY.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] phy: rockchip: phy-rockchip-inno-csidphy: fix rk1808 hsfreq table
-      commit: 4fae43e33a7c10951fbdc6baf409d51bd66aaefb
-[2/3] dt-bindings: phy: rockchip-inno-csi-dphy: add rockchip,clk-lane-phase property
-      commit: f82ff8609f582ca5105e45f18dfc3e949dfeaef1
-[3/3] phy: rockchip: phy-rockchip-inno-csidphy: add clock lane phase tuning
-      commit: 333c23c31696dbddd7dad28e82bd34e37a67d5ff
+[1/2] phy: rockchip: inno-hdmi: Add configure() and validate() ops
+      commit: 58ca6ff31f6e9f5edf2879b5d7dc7485e92a4931
+[2/2] phy: rockchip: inno-hdmi: Remove deprecated way to configure TMDS rate
+      commit: 4ba747d3d69b12d1221cea23eec9f468ff221cd6
 
 Best regards,
 -- 
