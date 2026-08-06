@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BB2DC56207
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 00:39:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 185B6C56205
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 00:39:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bhNhlSR6BtGo1FrfmoqSJzv738eHXN5HHrXva0sNzzg=; b=gLgRegQg0L0KV6
-	seVcs2CmtObA02ws1wc/Qqk+VDIVNXJziisarwH+eNE44h0WgVsD1v0aL5T3I3j00bGQRtMNjK2lj
-	YPf6VEBz8uRuJEKLydX4Szv7tkfK3cX3Y6Y4GBCNRcLkAVqrOi0wEmuaQQRlDesU4U4d/dFilWKKO
-	jR5c73GvfxOUiQZZB6AhgzGOfEagubgAnFp3xBMFUTNQkh4qvz6yUQRkcgiatihC0FOC1enw4Rsti
-	Ess4salgJZ/bZ5W/gMh5Yw+RER1FJiYWWeO9dUCvYumbW5N2Q2AOSwFvqkR69vm1hPMQJuU1wldr9
-	EX2AynMf9lmU9e88qpKQ==;
+	List-Owner; bh=+lUwhnizsUNHnS2MKZB8rF0cS0+FQ9/vJ25VDkShF14=; b=iH78QytbixyujB
+	W8NnqxLy/xllqErlRPpaHkA07u15yFOW4aomvQwiBA3qlTnMxYQKeujdhHSIs4uR65AalHB0ISg0h
+	GatbyDbaFh/b/QbPUV7y4Y1ajmSbQtLMtymlDPnylyPUlRTwf7ZxS1wIm6uzuh43DLFR6W0e06y9w
+	lb4TJQkUrWBhjA6JrG8GDRJMszgtQDYn3HeZZ9+8K20+leo2iKe2JJPM4F9ecs7kNCD3vYdxj8U00
+	xS2+WviXwNx4fp4O+Xx69HV95ywawAo0lalpvLByuL3RomNTdhQV40qsPqwXCJxJsBU0jny84ufIQ
+	clVcwI0FUeYpna0R9gxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrm8z-00000004h3x-1bCI;
-	Thu, 06 Aug 2026 00:39:33 +0000
+	id 1wrm90-00000004h76-1v6z;
+	Thu, 06 Aug 2026 00:39:34 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrm8l-00000004gcD-3kaD;
+	id 1wrm8l-00000004gby-1Nl6;
 	Thu, 06 Aug 2026 00:39:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1785976751;
-	bh=rAX8Gkdd0l2SvPThxGwSATdesygL1W5j4bmXRGpe4TM=;
+	bh=kXoRBBebvYIox0oNXN0VuZO24XXYD428JSoKN6soJ4A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=QFua4Zhb0W0wJdtBf8ANDBppSl+FLqdeI1+wXp2EBsxDPhxV3N87GvyG383tuME/a
-	 E1/cxQfwMaFbcZFlL2dqYMLn7xrevpgHiRf/TxVKNBR3/Zn2ZU3iCL3OSuL+WY38TU
-	 38bSePdeKz5QqmWHAmzpIZ8dfRX8BXx3WJC8RmTXl08ydYvdSva6BnXrwODKPEQuOE
-	 nCCdC1p7WafGNbmIA7mjFIcXCyvWVee6wA8Ft2N/L9oO+ho1xXEZJYjJTg7jVUS8jf
-	 z5GgQvwsvCig/NCTXGqLRtC+VsEzZWAR1cxP/VOa87JouHvmHs+xJzEZv287vI/XHN
-	 EF8XE0B/eR2rg==
+	b=mP10COIAyj2NaBjzWj0e8vDOj22SHY2533M6Sub5SGaEDvu2nFJLyxIpJlFzXu1GJ
+	 TB7LILix/vRTxTrbr3N6hsCLU46UdHQR8ES7WvyE/cvGEEjtLQYUYbG5waJmpATE3o
+	 k/Er67OCfFnzajAZd5swowTSIKRPU1qBKf/3AgvVhgqbIwcpz7HM1Ut23/ZN27xsLe
+	 S3jSFbujTQV5L9xGmcq77MAmE4Z20Tx/RV56U9SGbJ1mWJ0pOR0veg3a5oWAUmgkxS
+	 BXOFGJI+9M8PR0PtHVHXZ6Rs+50FheyQI7hSLEr1q8lx97UJtuqcg7QA94NjryfYfU
+	 6CHOFmkSaCG1Q==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4EF1717E07F7;
-	Thu, 06 Aug 2026 02:39:11 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D7D0717E07B5;
+	Thu, 06 Aug 2026 02:39:10 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 970DD480048; Thu, 06 Aug 2026 02:39:10 +0200 (CEST)
+	id 8BB6F480030; Thu, 06 Aug 2026 02:39:10 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 06 Aug 2026 02:39:17 +0200
-Subject: [PATCH v10 11/21] drm/bridge: Add out-of-band HPD notify handler
+Date: Thu, 06 Aug 2026 02:39:10 +0200
+Subject: [PATCH v10 04/21] drm/bridge: synopsys: dw-dp: Document missing
+ reset line deassert
 MIME-Version: 1.0
-Message-Id: <20260806-synopsys-dw-dp-improvements-v10-11-d84a26c303d6@collabora.com>
+Message-Id: <20260806-synopsys-dw-dp-improvements-v10-4-d84a26c303d6@collabora.com>
 References: <20260806-synopsys-dw-dp-improvements-v10-0-d84a26c303d6@collabora.com>
 In-Reply-To: <20260806-synopsys-dw-dp-improvements-v10-0-d84a26c303d6@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,26 +69,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2377;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1609;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=rAX8Gkdd0l2SvPThxGwSATdesygL1W5j4bmXRGpe4TM=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpz166vhmZxydrfD1ATurkKAw4amu5bN4ra5
- utkp8KbJs1C64kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqc9euAAoJENju1/PI
- O/qaE/gP/j8WPZxUx62lLvo0IQwmS+iFvhLErdsMkOFm9gE8blbMhIW3w0mdq6C5V016SHL9jET
- ZwqwPu+lBfn014O6KiAppHmxCxs228biavcxXdzo1FQu8TyExGykyRRyieRinkfN1Sr4DsQ+3GG
- gC9sCcKJ53G6LayyneumeSEb2NkwHHleMG8nVqg3sG5hVGhbj5Hfncw7n6YDXyb+85ENrbqZPZ+
- jVW9fx/4B+KF/Syr30yxxOWYu35nZXlqiPY2o9suQp2MkPUxoj7O3pzMnk+DSnzmwuJkfEtskKZ
- 7FDB/opk9i3IdYXoPsAYr2TjM06KdIsHxQcbQ6CXaD9zWaic8W6XpUo1y8IcU70JXSFlDsjEro8
- Ycb1DUz5hBiAwUyavnOKf6FrPpjyjQnv/xcVRUAV1gxnXoxToC9tJHBSkfs7pnOC68Ei2aqMk7h
- QKds4lK7OL16xI1oqXACaYDVzWyhRxoJyD6cIEuV67xsfljWILmrwnEuLoUMNeT9xv1u41/Zp8I
- IRk7p8eSpQYtCAkzcK17XC9zMYvRkMprXuUbAfOFk2F13In3CysM6zIjAATcMPGzsyh6lPEdQ0i
- 20bBJWLA6IZ1uL9En2FNbklteO02ekw1R7m0AQQrytln1b0fVr/+U4wxndZFCBoqmNJdMWeMqo6
- cEzF4c2Hhvmd7SKM2HKwwcQ==
+ bh=kXoRBBebvYIox0oNXN0VuZO24XXYD428JSoKN6soJ4A=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGpz1611MdQU6XuU4EOBdIMThZhdenvp6Xc6q
+ d60Ul5IMtG6aIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqc9etAAoJENju1/PI
+ O/qa9X4P/3z14InEcW0zDYd450FemoZtBW2eH6iMu7XxXhuvVKcZgYEo9YBahsTiWhaO1z6Mw65
+ KEeLiTKLilF0fpyqd/KiFB7jsckouq3SPm4NgnIj2O56ZijRRlzQXpdH+YcWmg/hty1VqU4e/Ds
+ hy8yIQNd5f4KnDzqLovAFuTASkBwbAmwstIwCbBaIRB9KkI7JkXcANWZuLp35CnXgi2GvSzSLfw
+ OIMZxIQi/3S/zjgwVmTKpZjFRvZ3/+B/h5S59ovbprlSzXcI/dqjTa9XuI1qtPsv5wQBabrZ/e/
+ 3o2YZTXwsguFCiyWl5oLcAkWTgCQW2WrZUxMRCG4ECmo8zy+/ZerbjMVFhQt3VmKeFX9R0A+/NR
+ 72J0hbj8vgxEK1vTFC/4zt5ASXl2BG/EMoW3zCnNHVIq+PNzal5n5pMRyfD9MptRA7A99utGJBa
+ KMaigXgX06aTI5dtmXd6Xwnsm0O2Sl0fci3qowztr+GlCR6NOb6ZnPtamAyvooEri8iZOV4/NvB
+ rIsTSsbWAGQkQAUfTw0Vt6UlD4y5L4D0hQU3YzY+YyMaMa/Sk4TIeRZ2QK9gax7PWGZQcAzc+WU
+ T8VxpDCTEiBHNKF94HJbdYrQYTqrSbFjnSxx+6ToDTsAPGAJn8kFUhERzeYfG3UfId+ZQDIOzdm
+ 6EIPhUtI94FVgqGcXEJYsRg==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_173920_204294_21A09118 
-X-CRM114-Status: GOOD (  14.36  )
+X-CRM114-CacheID: sfid-20260805_173919_581206_B08295A1 
+X-CRM114-Status: GOOD (  14.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,72 +100,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Sashiko <sashiko-bot@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For DP bridges, that can be used for DP AltMode, it might be necessary
-to enforce HPD status. There is an existing ->oob_hotplug_event() on
-the DRM connector, but it currently just calls into hpd_notify().
+If the driver uses devm_reset_control_get_exclusive_deasserted() instead
+of devm_reset_control_get() and thus automatically deasserts during
+probe, the SoC will hang when the device is unbound.
 
-As DP bridge drivers usually also implement .detect and that also
-generates calls into hpd_notify, this is a bad place to force the
-HPD status as the follow-up detect call might force it off again
-resulting in all follow-up calls to the detection routine also
-failing.
+This does not happen, when runtime PM is being used (not yet supported
+in mainline), which suggests the power-domain involved requires this reset
+line to be deasserted.
 
-Avoid this by having a dedicated function for OOB events.
+Even with runtime PM there is no gurantee that the power-domain is
+disabled as it is shared. Considering the power-domain does not have
+the reset dependency described in DT, document the problem but leave
+things in the current state until a better solution is found as the
+reset line is deasserted by default on all supported platforms.
 
+Reported-by: Sashiko <sashiko-bot@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/display/drm_bridge_connector.c |  6 ++++++
- include/drm/drm_bridge.h                       | 14 ++++++++++++++
- 2 files changed, 20 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index 8b54069fa53a..632cc3ae3b54 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -180,6 +180,12 @@ static void drm_bridge_connector_oob_hotplug_event(struct drm_connector *connect
- 	struct drm_bridge_connector *bridge_connector =
- 		to_drm_bridge_connector(connector);
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+index 9d46927ead4d..d3f93e9ba60a 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+@@ -2094,6 +2094,10 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
+ 		return ERR_CAST(dp->hdcp_clk);
+ 	}
  
-+	/* Notify all bridges in the pipeline of hotplug events. */
-+	drm_for_each_bridge_in_chain(bridge_connector->encoder, bridge) {
-+		if (bridge->funcs->oob_notify)
-+			bridge->funcs->oob_notify(bridge, connector, status);
-+	}
-+
- 	drm_bridge_connector_handle_hpd(bridge_connector, status);
- }
- 
-diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
-index 58fff047f43b..713652fca033 100644
---- a/include/drm/drm_bridge.h
-+++ b/include/drm/drm_bridge.h
-@@ -540,6 +540,20 @@ struct drm_bridge_funcs {
- 	 */
- 	void (*hpd_disable)(struct drm_bridge *bridge);
- 
-+	/**
-+	 * @oob_notify:
-+	 *
-+	 * Notify the bridge of out of band hot plug detection.
-+	 *
-+	 * This callback is optional, it may be implemented by bridges that
-+	 * need to be notified of display connection or disconnection for
-+	 * internal reasons. One use case is to force the DP controllers HPD
-+	 * signal for USB-C DP AltMode.
++	/*
++	 * This reset line is deasserted by default; asserting it hangs the SoC if the
++	 * related power-domain is still active.
 +	 */
-+	void (*oob_notify)(struct drm_bridge *bridge,
-+			   struct drm_connector *connector,
-+			   enum drm_connector_status status);
-+
- 	/**
- 	 * @hdmi_tmds_char_rate_valid:
- 	 *
+ 	dp->rstc = devm_reset_control_get(dev, NULL);
+ 	if (IS_ERR(dp->rstc)) {
+ 		dev_err_probe(dev, PTR_ERR(dp->rstc), "failed to get reset control\n");
 
 -- 
 2.53.0
