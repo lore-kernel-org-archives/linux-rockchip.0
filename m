@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E940C55838
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 05:23:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8A90C55838
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 05:23:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HXF+97z8Toe+hxDu0DcsaK/fuPrFMVaMFJIZP3XuWUA=; b=Kc8tczKdBbe0D7
-	3d8zO7mqUg1GT5oWq6jPOrBVLhR81E+b4IUZFoV+OrGYt3YRsnimViC+gf8OjyWaTwnd7Q3xq/RPT
-	yONFiOltaq6wXUNjwa9RDldjq42luqhRanI2hlNUceLX+hMAyciZh4+/iQt8fF+JVdm1XSFgoyEjy
-	s2hdJtHIT2AjRaeWCfejGE+XFBja/rhHgvkLHGOJdg948+XE7AozaslDnsgaqCg2c7WI16zeJFX/f
-	zkgUK/yyO4QN3+7e+b+YB+hT31ANoRabKyQQ/TGe8EuK5pG6xyE7n0TuJR+CPFO3g4v+q7fknUmpO
-	68DUhQhzyOl8UV/0SoZg==;
+	List-Owner; bh=KxE20PcOvR2UZD0e9u/BPLKqxew9z8cosWp1fYMv7KE=; b=dGRY0aDR2uxSUF
+	IvTajerHpeZhMR1CZImoWiYypjLN8b4ni1E/lmeyC5u+rOmo+v/EQH7w4AeZMZQA8Y2v9Q8FrER5h
+	tj5pWo4kuuYgec+D6Na6L6femMdIYZP/LaSWBTIsxs0OaWmT1dG6szA0OhqngiisdRr1ibMQPoOQE
+	Cwhy3M1FiFA4I2p8SDuZwLbik+xGrT0SPgJgKamF1I1zSux+e5CRx1/XkzI3TXsygjdA+NImjz9ji
+	dPiDD1ySPvdL+EFZoHcqpwwEFH+9W6FcwkzvF9IeMdg0XcvSFOc3uWOYd926WAYsZTe/YoWVSET2j
+	k/rtR2pp8R8jtjA8cY5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrqZU-00000004y9X-3j41;
-	Thu, 06 Aug 2026 05:23:12 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1wrqZZ-00000004yFr-28wj;
+	Thu, 06 Aug 2026 05:23:17 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrqZQ-00000004y3f-2HhI
+	id 1wrqZU-00000004y9I-3WvW
 	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Aug 2026 05:23:11 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-84864086bfeso1464513b3a.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 05 Aug 2026 22:23:08 -0700 (PDT)
+	Thu, 06 Aug 2026 05:23:15 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-84862b0d5f8so1696322b3a.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 05 Aug 2026 22:23:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785993788; x=1786598588; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785993792; x=1786598592; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=1Ex53QN8qUaM4ezvj3nywtUMeXIR5OlcqRfF6FOJ3bY=;
-        b=LmjFEXivKGUe8q4eqjUE1WbDXXr2oUlrF0n9vYAfiNJydBx/IacUHILnAAmF4wL0cA
-         fmWx+WkAJpe21tzkJVsZVUq3lCfAa1yVT7ImZOASv2s0sjJ0itJ6HBfyOzxWGsxP2GiZ
-         pela823PD5YWSM7KSG8Rrppdp6DzjzxaTUD14CmGOG1M9dAqmJ+7OQZnmzPGfnn5iqXy
-         vgxhl8e9pTfyRA+qvBz5EropfpRoV19tFUvUvBIgIljPxbW2UiEQqaBIpjjxly/LRI0Z
-         aV3a2C323pgn9+5g0aXETz9Qvp0V/vheZwH13G0/ujrzazAO4mbT//HXcGTMXNG0Iaff
-         rb2Q==
+        bh=rju6HFe/S+MJe8cf6yB0HBsbdDH7a0Yg40XL1i/Z1yY=;
+        b=JgOGaXDaimMEZlmxpJnEKuOTZip4RrKKXfFMF1JtWnL/DCZSJeADoNac16Xx6qcEL5
+         q/Ivv+SZHlH+rxcsCX2RtlGyGWuaTI2AeSaDSK3bjibfkdKoiFNLTZpYdbpUYhrtiPlc
+         Wg1oj0TtYQRZB1nZ73nhwgd4sAL28D9K6heOM2dgOf5cryzopkVYEiSojtgdr96jgBUR
+         xwCDeKEtetmhkhESOgqRnLp9Bwir0Q9oJPcoaEvARUAJ0SBEmEOYd/mk1dizDPO5QWSA
+         ZUFFPcy7FsRR2ojndKYeEO3dhz64oJlpSkqZTv41zYlsGxev6GQTiXGjNITAQtQw+qa9
+         xELw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785993788; x=1786598588;
+        d=1e100.net; s=20251104; t=1785993792; x=1786598592;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=1Ex53QN8qUaM4ezvj3nywtUMeXIR5OlcqRfF6FOJ3bY=;
-        b=R2eN9PD2qjKuqDyhWMcTvyGL3gSEIK3NLJmY35tIl6IEOxJOQ/TV4YcT20L8CcE9sg
-         kCLaRX12L9LaTmOmt02wpvcBNrm+gXTrALIh6Z1w1vTU9EKzGozy+XyBbpiY7aK0ZHet
-         Cuqsf4TbP/Uikj+jpKYWP8XLdeDBLpFo5BxpiMuI6h0/b8fGr0Z9mcoe3mxOonCIEPDx
-         RSM36fFXD6dSHmxHuVxuO49bjpY0E/HR3iG4cc+BJx8Fs5H6nMDxiO121g5pTGvd4rmt
-         AoVxXQggpQSCzNdpDOKz2XEPSxDZuH+gYBt5TF0s+Q64/kzrn9azaFH7cWThXHDLS5dh
-         dZjw==
-X-Forwarded-Encrypted: i=1; AHgh+RplfN0XNCA5df8CBLj6ry88PcHxGArHpS2wrr3IY2emS6K6pPKvq4nP3icPxaBxiMDFEOeOBRcSmZaNIMVR0A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzY/JERLPBCAHqe0kSm96OM4vLyRAdnkPn3jXukfKvstukOxlMK
-	fFC1P87GRGiu4+a6Yl7m5DqGmeb8liiCQdr7bpu1AAlVs3Dwnd+xhrgE
-X-Gm-Gg: AR+sD11sZ8UGMdZq7jvlY8ZnR3e5iy+9HM3jUKo7UYEFaFVITA9KH80L+LfF9VLmUab
-	7h23HQ5arqMq5nQlqZR135dbAjakURu3WM+mXJz+usKbjRh5LExnJx4goojhZ9c90aKYDO5IHUQ
-	pj79e2/whyNH0E799goW7YMoK66SYnkF7gcxiw0vQj2tEsRsXtJdEuFPYWN4jCf/SQ7lXn396Rg
-	GA3e+rn4/feZYp0g0NsU2sLI4S94s2jlpYKDcjwKQv9cNPBG0piR3+HEUpuHoUfVofdIK+Zg78u
-	TW4gbOKlYciLlnH8mXp6uCF5PAcDgCphIyxKRU9lcbRMkwG7c0bZ1OcBCDzjnANmnTI7BV0igHv
-	DX2rB+CauXNi9QIvo9EJj5DvAgMIPQQ/CGztG7XRfWZ2fgfRsIJWCprR1RttnIZLM73tDYASl7k
-	02jI3VtnA+2vHMIN62nK1d7GclQcAzkX/xGdG02rkdmnouv4QYa5nmolUYEZMQR+Z9W34yTMO7q
-	sBIfvxV+uRBNRX5UdN1TknOmhvNmdtFtU6oNa7kq1smf2ToLCpqd2k8jEXzchmfdNAcQpvmgPOB
-	LALY
-X-Received: by 2002:a05:6a00:3c89:b0:848:7f56:1e44 with SMTP id d2e1a72fcca58-84f2dfcfcfbmr13260578b3a.7.1785993787706;
-        Wed, 05 Aug 2026 22:23:07 -0700 (PDT)
+        bh=rju6HFe/S+MJe8cf6yB0HBsbdDH7a0Yg40XL1i/Z1yY=;
+        b=oD4dFNXwZqKw6kOzfEmjDfvIOHZ/zkOjgYnR90GVjHbELGIPqRho55KCdWVowO9CNv
+         5vbPAy2kLRwlBU1HCCCUESdUEJJAF+mJrfbWuXvN1681zKKd8V2KJMZ5rBLwR8Pg9GdR
+         UpZoaDWJlJnboC3elNBsg467dwY89sS/C86Hw0nZ7nT+MUQNGOKcUpRptmFG4YJW/fVz
+         NGqNkfu+HdwBPYEU8YZwT7Jzfgi9CO3z9PYMHZh+7lT863S6Y1jmkzYptTy7TOc3/q29
+         a+vhz5TirVhQSdiawQR0i/wZtHx5icsMnBopueYRVrssC/9R9qiDcFwPF+A8hx99SsC9
+         TMHg==
+X-Forwarded-Encrypted: i=1; AHgh+Rri4gWmz+MscyhJlmY3RA7ScEjTyAuPcIAuesEhVY4utSG5HSzc3CFxdZkoS73SvWd/Xe4fZ4LCzfOkS05TKQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw+1qjDFWM03kSgMsiuKw/9+d1Gtl3Jwb9pvxv8ufH4Kskdf5tX
+	96Xiq9KvJXH8qfouwFwZehJIktYrr4f6+2P3XmddCKvW5BQaoEqv38oC
+X-Gm-Gg: AR+sD110mAu0Sv8+h19lWlHKQ12N2nt8tPc/e6EF/CxGh8Gy2OAqhUfbUOvEkLS+jAE
+	AwrxP3owBk1t4hawsIAAqiKpC16L5Y+yOsdAY5JObj5yRSxizkX08xWzQVhOV0r85ulyoSPp91p
+	BJuXBSROubnUAU2cna1L6urPUld7z3zAo12EBcJseM/aDSBKaW2LbKwB+1rIOEW2HsU9NrnzHUF
+	Ai7/V2wY98fr6Fsdd2nFX0njdF0F3hBSR2DVVRbEe2HPPiNOywMEChTUjTn2Gi8czjE4Lw5zdSY
+	w1Goh74Ma4YM2DoGHtsa+zwfUMG8FyNuw6LsPZPr2U1NKEiLfBN7VKt0oaBZsPNRYtm7HMH98tY
+	nMyBwuYdipz4VfjPa/d++XvPv6a8HWLRmpa4aprJ23qbFHwF5EMRfwy/9pxHdO4nj6F0d+J7KHz
+	3yd2tz4Mse1ahtbRNHqZZ8jMK99c99zIRJl+JBv447ZB9F5cBPDMK6W1BX6NflLkKx59MspCMbn
+	NXT9oE85TNQ16DLJTtAHR6yU9izE1iYys6UFz6Ge9MqSRsZ4B7/8BTqekH217xj4is9pq7p+ZPh
+	LE3B
+X-Received: by 2002:a05:6a00:2e1a:b0:848:42a7:1854 with SMTP id d2e1a72fcca58-84f2e0c9c90mr12879556b3a.39.1785993792226;
+        Wed, 05 Aug 2026 22:23:12 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84f45bc9cffsm554279b3a.59.2026.08.05.22.23.04
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84f45bc9cffsm554279b3a.59.2026.08.05.22.23.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Aug 2026 22:23:07 -0700 (PDT)
+        Wed, 05 Aug 2026 22:23:11 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
@@ -84,16 +84,16 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-sound@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 13/14] ASoC: rockchip: rockchip_sai: Drop redundant probe error messages
-Date: Thu,  6 Aug 2026 12:21:35 +0700
-Message-ID: <20260806052136.21034-14-phucduc.bui@gmail.com>
+Subject: [PATCH 14/14] ASoC: rockchip: spdif: Return the original error code
+Date: Thu,  6 Aug 2026 12:21:36 +0700
+Message-ID: <20260806052136.21034-15-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260806052136.21034-1-phucduc.bui@gmail.com>
 References: <20260806052136.21034-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_222308_590010_627310DA 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20260805_222312_893663_EBDB21C9 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,39 +112,34 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-Remove the probe error messages to avoid duplicate error reporting,
-since the error is already reported by the called functions.
+Return the original error code directly and drop the redundant error
+message since the called function already reports the failure.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/rockchip/rockchip_sai.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ sound/soc/rockchip/rockchip_spdif.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
-index 1fdec12a0d4e..30b5e71d0937 100644
---- a/sound/soc/rockchip/rockchip_sai.c
-+++ b/sound/soc/rockchip/rockchip_sai.c
-@@ -1472,18 +1472,14 @@ static int rockchip_sai_probe(struct platform_device *pdev)
- 		return dev_err_probe(&pdev->dev, ret, "Failed to resume device\n");
+diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
+index 7f15bc7f8f35..2d53efd5dd2e 100644
+--- a/sound/soc/rockchip/rockchip_spdif.c
++++ b/sound/soc/rockchip/rockchip_spdif.c
+@@ -396,13 +396,13 @@ static int rk_spdif_probe(struct platform_device *pdev)
  
  	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to register PCM: %d\n", ret);
-+	if (ret)
- 		goto err_runtime_suspend;
--	}
+ 	if (ret)
+-		return dev_err_probe(&pdev->dev, ret, "Could not register PCM\n");
++		return ret;
  
  	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &rockchip_sai_component,
- 					      dai, 1);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to register component: %d\n", ret);
-+	if (ret)
- 		goto err_runtime_suspend;
--	}
+ 					      &rk_spdif_component,
+ 					      &rk_spdif_dai, 1);
+ 	if (ret)
+-		return dev_err_probe(&pdev->dev, ret, "Could not register DAI\n");
++		return ret;
  
- 	pm_runtime_use_autosuspend(&pdev->dev);
- 	pm_runtime_put(&pdev->dev);
+ 	return 0;
+ }
 -- 
 2.43.0
 
