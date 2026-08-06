@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9DA7C56208
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 17:02:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 094A0C5ACAB
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 17:02:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kMZrvT+9LJ6X+6OlFjM8S45aDN2Dryt5uCsRfXZ3qus=; b=mXdo6gtD7qEIc3
-	ZWwbKUu+m7TGncXDzdLaniXwEoZ0IdhwNj/Etyqcb1gFuAKieBWethmrJwjutdIxLL5bsihZsSybf
-	WR251M2AFwFLxH6qTmIXJ4T+Htnmsb0NasvvT0RU0MYeH8R7EzRuVzNFVs8khtGxCTfCoKG1spF2W
-	va2Mxry/wcUuGiT74E494huQwFEJEYehGz9EkwiNnlC+jvTcyJaL1PC4sWar5JFE7wKFBHPpyav63
-	nfFHcz3XfmuFK7RmRY1vGJhVcthuMkva9c9Mqudb9pJz05soDwzPXAlAqw5QyY6k1hM0cw50MTblE
-	zGHSV3QNTwClkviBdbFg==;
+	List-Owner; bh=j+GhZGcmxYvxLgNaANgTP0YYzBucp/f096QHEdZ+E+M=; b=V37cvSu3BYQ+39
+	XvrGHCwYQmQdKuXtwKGnQm+TqhdzFmwmtaH9K/AeC/RJ/bonvmyDcMeZpEcXxwx2HLobc0kxkfagg
+	tFuxtU1CoDNKWGiXcAC3i4F5D56Zbaml0AnEU/OZ1qfW9lkcc7X7JTZ9RctrJeO4C8NLyXEksb745
+	U+QvYJSTvghiLBJKt1u5UqE2BGQ57AC0joGTmWlxvKJ6q5T+OfsA5MwEauHf4OQg4VylYhHsAU+4n
+	r8RUXZqIs4hFw7AJQj8Xq8wWq4jcKykzDaeZ1+9U/+1gNGgop/KTYGtlm+V2ATsaBFVGhn7fdFDsx
+	UVXT8/HYQwZmkRrdANtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws1UE-00000006HN7-3Ft9;
-	Thu, 06 Aug 2026 17:02:30 +0000
+	id 1ws1UK-00000006HXC-3aAX;
+	Thu, 06 Aug 2026 17:02:36 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws1UB-00000006HKf-3Sys;
-	Thu, 06 Aug 2026 17:02:29 +0000
+	id 1ws1UF-00000006HMJ-01iA;
+	Thu, 06 Aug 2026 17:02:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1786035745;
-	bh=+kI5bMPxmKszrrlmZRhrrwGKt5vlPS+riQK99NPB3wM=;
+	bh=z3MvIWasYELAai6HO3er+8XiHnoakmXomvsc7NcTsdk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=WxigxzgjOEdfvfqAUaBwr6+cyQ6UbZVB+m1NJdTljCFDthWNj+6F7izNFE7t76Lmf
-	 GNiBWBXI1GlruQVzEoavgsdmu1xgW+VuMZ10sn1sDrVLAkf0ZDPKJcb46DpM6DXbHt
-	 Fh/wZZ7MhSYlydpB+Gt/xqxPUn0gXTX9GhsD9DJhkEUumAPGaWJnc9nvmtDc2EKlwK
-	 YZb0+EeYUzeupaYGOxGKOFUxz6sOSojijfV0T7tif6hPmIBLN4od7frV9SR8OcDwSZ
-	 Ht14q/m4HoWNXplMpJoB53mGkGkqnNZlT6RfBM0EEoe16N+tyFOPv2vVnlhJds45Ca
-	 +BJ1ISUR/fb9Q==
+	b=RI9OHvEvhVNX9locRwSkziAadcxYiqTyGBD6spHUiqTTGhnV9AGVKXv3invUW9QB0
+	 JU9ps3D4b9XSQcZ9Fe3RQuPR/t4gV+LQ64Yoagqy06KPqbU3fZxjxpSh+UXlwsRTVG
+	 wQXlCF2zycM6LNydLeKffrZw3bgrG2BqPD+l0F8LExAGg79JpPPi5yleNbDpt0xQas
+	 lvj31PJG0u2Ai5u7dVIn8oFbfcrAEQeA2/2Z/vtmsvUSSQgvV6IeaFzKLQzmlmLJZ+
+	 T6RKagkVyaSpVJqFQiJDASjideJEVrUjO3vUxgPVXhDVr0pWQYeAFHbL0q9fqOkUdO
+	 gu/MxIC8JGYCw==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 43E1B17E0967;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 954E017E107E;
 	Thu, 06 Aug 2026 19:02:25 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id EE235480028; Thu, 06 Aug 2026 19:02:24 +0200 (CEST)
+	id F34ED480031; Thu, 06 Aug 2026 19:02:24 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 06 Aug 2026 19:02:07 +0200
-Subject: [PATCH v11 01/21] drm/bridge: synopsys: dw-dp: Register DP AUX on
- bridge attach
+Date: Thu, 06 Aug 2026 19:02:11 +0200
+Subject: [PATCH v11 05/21] drm/bridge: synopsys: dw-dp: Add missing mutex
+ cleanups on module removal
 MIME-Version: 1.0
-Message-Id: <20260806-synopsys-dw-dp-improvements-v11-1-0d508505f383@collabora.com>
+Message-Id: <20260806-synopsys-dw-dp-improvements-v11-5-0d508505f383@collabora.com>
 References: <20260806-synopsys-dw-dp-improvements-v11-0-0d508505f383@collabora.com>
 In-Reply-To: <20260806-synopsys-dw-dp-improvements-v11-0-0d508505f383@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -69,26 +69,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3652;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1166;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=+kI5bMPxmKszrrlmZRhrrwGKt5vlPS+riQK99NPB3wM=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp0viBYkgS88JgmurQUGfLsz3jzVSPVwXMCo
- P6PYTyUraqu5IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqdL4gAAoJENju1/PI
- O/qaEXUP/jdESHAMkmrA1PyAGWyGAvXRq3YiB2TCBK2nj9h/dJ8r4xNwjYJAuu8dpHzT2bX3C2d
- rowDBu2Sfa6RI9R5rR/RW/fJ+6qENWPGq/zDL31coEbm6tg7zH1M/ABoR/g1Nx8YCWE5sNvvhxt
- K225pHGo7Jaen25f1F8jvwLJ5nV9VU+Fy+PrNmvq6aVdWJ3Y4Le2sYWF2Xik63rpnN9dZu7j0S+
- gcpnXDJXtGY2fg2ybFJ9XtTzhJuy9krIRdn1UUTOLX38SKQznSoiz+T64g1fHjbJO9BrX8PL6vy
- GVjKBdb52FVLql8ck2tXZwGJV70l9Sb5O4ALSQHig+I1n2BtIPfoNGYp3FGh4mwPolJsMISlxsz
- 3sSEmmyR3XsfjIPp3UarYpTs/4DjwR1Ifq3s6zehNZjUWXJ6GTIOLusmaVUseHshuOmWbMo8kVc
- JXtKt+4ir+iaXRxB0A7E/pxrakurSrtRgXEKwjjChMWEzQ3aryg5KMOI8jAdxlC2rqDtHNk0C5v
- nETw9sI4V5frhBf8v73HbSdEemuGYC7oF6KjPqf/R7xlPiQDeucUdggc88MVZgTHRaw4lUNioDf
- 9N+fRn8/Rylt1btr9uIo16pS/iutoeB6rM/5Ko3bjx/TQP+7jxABuO0vBdnDHWF25DocnWHYE7D
- T0rul8ij23C5JMU8tpxI4dA==
+ bh=z3MvIWasYELAai6HO3er+8XiHnoakmXomvsc7NcTsdk=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp0viBW6sz1S0JiZrIACnfpwmyyq09ddK444
+ lv/NdCZw4Ct/4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqdL4gAAoJENju1/PI
+ O/qa+JwP/jmE3uFPI8XGt2YYAv04xx6V8D36pd/Cq4rb96Jgt5SrU/fz9MI8bc54IZoPSHea3sG
+ TnXmqpwxnnVP3WZ+J8s6puJPBPF92tSwtmDbdEOeZIwMscYs5miNOXvVBMxbaIbsoQdj+hZp3qJ
+ RN4A7WpYppvTJC4MSfAvDYP9s6ubZeiQo8hyux5F7ZCxlTqAYSYYyAv/sMYoFxEmsw/6mgcrXlY
+ SfLnoFSDKjKiLJgnohF3ouJWVDeM0uPeQJrNgxrPCk5HaIFbajP1B4/bndDKiKVZdsEuSm8FA4K
+ bUZwIqi+k9ajw6yc1Xc3Sk2AUKtp8pW/ejNKDU1JtBgpVDhsOGZg2yMMO/wWGAHhjuqj/sJ+5Kc
+ m40N70Ex2rk+4n8/PZ8VEL8BdSI6S/vLAfx42oufkZNwbZQAOlk6EToHDVWdGi0FD1I6uwrpjD/
+ X9Ce4LNFA/0fLqY5zV7VL2XsO+ZOjxA2oM98UGQ3ffZ+xLLiCbP6iNDKMp6so69r6eLGFPh8Hfs
+ AuLtrYVRw9obu2fnZqZRBk8Tu+AontANWZKRYOGXYUIAIutbDSKTBFMA5WXMc1RhCo9f22Zx7UU
+ ScZxr2EcTou/eJCX7QwZ6pjMkfmuoHYv4SPnSgGGMIQlWBmPfszWuUHhmW4c+zjm6lQOG86n/DG
+ A0pWmKMnjJvHe35aJqsIuMg==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260806_100228_014281_02AC53D1 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20260806_100231_199852_C8B80A48 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,124 +106,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Unregister the DP AUX device at the right spot as documented in the
-drm_dp_aux_register() function description. This helps that it is
-only accessed when the DRM device is ready and the bridge is powered
-and initialized (further fixes are required for that).
+The driver is currently missing to fully clean up after itself. Ensure
+that the mutex is cleaned up.
 
 Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
 Reported-by: Sashiko <sashiko-bot@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 55 +++++++++++++++++++++------------
- 1 file changed, 35 insertions(+), 20 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 8b8529e1723c..60feb3d1e14b 100644
+index 52e3b37259a6..b1856418f441 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1813,7 +1813,36 @@ static struct drm_bridge_state *dw_dp_bridge_atomic_duplicate_state(struct drm_b
- 	return &state->base;
- }
+@@ -2040,10 +2040,13 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
+ 	dp->pixel_mode = plat_data->pixel_mode;
+ 	dp->plat_data.max_link_rate = plat_data->max_link_rate;
  
-+static int dw_dp_bridge_attach(struct drm_bridge *bridge,
-+			       struct drm_encoder *encoder,
-+			       enum drm_bridge_attach_flags flags)
-+{
-+	struct dw_dp *dp = bridge_to_dp(bridge);
-+	struct device *dev = dp->dev;
-+	int ret;
-+
-+	dp->aux.dev = dev;
-+	dp->aux.drm_dev = encoder->dev;
-+	dp->aux.name = dev_name(dev);
-+	dp->aux.transfer = dw_dp_aux_transfer;
-+
-+	ret = drm_dp_aux_register(&dp->aux);
+-	mutex_init(&dp->irq_lock);
+ 	INIT_WORK(&dp->hpd_work, dw_dp_hpd_work);
+ 	init_completion(&dp->complete);
+ 
++	ret = devm_mutex_init(dev, &dp->irq_lock);
 +	if (ret)
-+		dev_err(dev, "Aux register failed: %d\n", ret);
++		return ERR_PTR(ret);
 +
-+	return ret;
-+}
-+
-+static void dw_dp_bridge_detach(struct drm_bridge *bridge)
-+{
-+	struct dw_dp *dp = bridge_to_dp(bridge);
-+
-+	drm_dp_aux_unregister(&dp->aux);
-+}
-+
- static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
-+	.attach = dw_dp_bridge_attach,
-+	.detach = dw_dp_bridge_detach,
- 	.atomic_duplicate_state = dw_dp_bridge_atomic_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
- 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
-@@ -2043,20 +2072,10 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
- 	if (ret)
- 		return ERR_PTR(ret);
- 
--	dp->aux.dev = dev;
--	dp->aux.drm_dev = encoder->dev;
--	dp->aux.name = dev_name(dev);
--	dp->aux.transfer = dw_dp_aux_transfer;
--	ret = drm_dp_aux_register(&dp->aux);
--	if (ret) {
--		dev_err_probe(dev, ret, "Aux register failed\n");
--		return ERR_PTR(ret);
--	}
--
- 	ret = drm_bridge_attach(encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
- 	if (ret) {
- 		dev_err_probe(dev, ret, "Failed to attach bridge\n");
--		goto unregister_aux;
-+		return ERR_PTR(ret);
- 	}
- 
- 	dw_dp_init_hw(dp);
-@@ -2064,37 +2083,33 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
- 	ret = phy_init(dp->phy);
- 	if (ret) {
- 		dev_err_probe(dev, ret, "phy init failed\n");
--		goto unregister_aux;
-+		return ERR_PTR(ret);
- 	}
- 
- 	ret = devm_add_action_or_reset(dev, dw_dp_phy_exit, dp);
- 	if (ret)
--		goto unregister_aux;
-+		return ERR_PTR(ret);
- 
- 	dp->irq = platform_get_irq(pdev, 0);
- 	if (dp->irq < 0) {
- 		ret = dp->irq;
--		goto unregister_aux;
-+		return ERR_PTR(ret);
- 	}
- 
- 	ret = devm_request_threaded_irq(dev, dp->irq, NULL, dw_dp_irq,
- 					IRQF_ONESHOT, dev_name(dev), dp);
- 	if (ret) {
- 		dev_err_probe(dev, ret, "failed to request irq\n");
--		goto unregister_aux;
-+		return ERR_PTR(ret);
- 	}
- 
- 	return dp;
--
--unregister_aux:
--	drm_dp_aux_unregister(&dp->aux);
--	return ERR_PTR(ret);
- }
- EXPORT_SYMBOL_GPL(dw_dp_bind);
- 
- void dw_dp_unbind(struct dw_dp *dp)
- {
--	drm_dp_aux_unregister(&dp->aux);
-+	/* nothing to do */
- }
- EXPORT_SYMBOL_GPL(dw_dp_unbind);
- 
+ 	res = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(res))
+ 		return ERR_CAST(res);
 
 -- 
 2.53.0
