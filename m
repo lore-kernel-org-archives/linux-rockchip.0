@@ -4,82 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B964DC5AC80
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 17:25:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E9F9C56205
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 17:57:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tStlHUr3sk3r2RyUSxRlcNql7Zig8dyMd3rYvCBwk3o=; b=S2IwJW9z6tZn57
-	U5nc3LMMWB/8CMXnFD84EaRgpEx88D/9vv6ggbsCxk9eKNsEeE2LgSc7gl4gucDPt0mAkmO60PXna
-	AWjKUyYryrLlnVt5QC3a89wLIN3u/P9+JFNzufMlZ366g7OCEVQU1vuWaajPIZG8fM3SU8iRAil3X
-	2Du6sUkFTwLKs7CwX7azw6xX9U719cH5dcF/Vo6ZwKClaGu0M83lrPK9qnZrDIjKM2IMVMNYWn4V/
-	h3TNvXoXmc27MhDxRCxg8H/WCRgyUYXtHZVeK8z3sIuqehyShQ9Dfhndv4IGwmXT/WYdoJ7J9n94+
-	dyQ2wMRQkaO5zVswVnXw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7RNwGkfwpMZutO4KNp3D6jsv+SjUUjB0Kpw4Gk5u21A=; b=PYLW0kzHAcO/4o2cWOYjg34lqm
+	vmiUTsZGPske/zMBAsxpGIh9EZSg1myWIWubJi0McFRkJtAhHaIAVKAr4zRB2CphRAhsjqeJbN19t
+	7cr2TqOWtRcW4NMgD35/6zgtHUc1mJX3Tl1klrKzSwot5pvVE95sbNnMWdWKBsGg2xAEqLRXqyfmr
+	UDS0Rb0wNmon5VO9HYHz5wOUmbVgjJEFDN+v0Dc3yQzFXuLJsVvfiDxgz3uLF7nC7zbHS3Ge4Xsum
+	EF+8CK69HJcvUUjzi90jI2PxxQK33F43wOJSVA+ZIIuJidwvCQiUwdeYAAwc2QgVSEzVRxABAEw3j
+	HYA+14VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws1qH-00000006MpO-0P6R;
-	Thu, 06 Aug 2026 17:25:17 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1ws2Lm-00000006PyY-1myi;
+	Thu, 06 Aug 2026 17:57:50 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws1qB-00000006Ml9-3dzy;
-	Thu, 06 Aug 2026 17:25:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1786037110;
-	bh=kZgKoVVIFup432J5wyz+w2YrxBYWFvZYNT1wMMh2tgY=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ZUhr8TDul89hyUnLDsO+FRh5lXOQvN2xTIH9JXCqs49FoZlfGjca5FTVqFEU2XIXp
-	 YlQYBtLWGm82M35MjIDL/pArdeA7sbVEe34/IoE9vRscbVOIkmcyGF5BaJ9gSU+GlL
-	 sgbGiC50ZBmgf2l7CFYz/rD/3gtA2d/QTFha2hAWSNpRaSXwlVRkz5Lwr/939isEoK
-	 wfQSp4B2ScR0OTX1G3Pntqq9gUI+SE7CJ9AV7O8kAya4HXwBRVZiFD42vMi4MJbw9L
-	 zgBKGEvCFbiWm5Da/XCgB5WJ8Q3yqeZHXeGfKDlKrvgnPiWTr5G22GHkOTt+jUwoj2
-	 //Emss92YgbKQ==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C647317E0B39;
-	Thu, 06 Aug 2026 19:25:09 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7D348480028; Thu, 06 Aug 2026 19:25:09 +0200 (CEST)
+	id 1ws2Lj-00000006Pxr-2JmO;
+	Thu, 06 Aug 2026 17:57:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1786039023; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ZFXJbF+uCUZNw+eEaDW5/JhYp93Db5Hqqko0UmTN24ysW6SuIQSB2aLdBUhpgCgz7qHVmKwUru53W6h67x2JkC7lxCbfI20cXJBpNaBout4CgQ2tNm/0ZkwrdzxvoUb9mHtrlIeC+ErP3lJc5U3VTvz0pjXis/NDzgUlGLjMl7U=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1786039023; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=7t2ppmEV8KZPQctXq3NUCSS5AXEtR6dC/YbrnTJetEs=; 
+	b=NjPBIc8XI2v5ookPpLYAmEprwtm2lmLdWHJ32BMu8hEwM4lddPgXhmnGWsc4kiw3WC0bpEOKC198UY0zBXo4GdKOqr/gphV5L9TEEW9R7Zvl6VysD1IKdqkA0/xNhcFoE6Uv9ypOvpOc6/YkpQGGpFCa8Xm7odQLpkuJ42bVNgI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1786039023;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=7t2ppmEV8KZPQctXq3NUCSS5AXEtR6dC/YbrnTJetEs=;
+	b=A88Zm4h1XJd75PKpCw9Qd2ouL8JgScvKbLul8lq5fGefFN3GsNc6BoxuM+i6F2LG
+	B91VeeXuXo8UKZpI+4YlP43oNGHJKYw7wrpdTd6F9vTk7oiYPCbeyh7eMwd/KrMi3X/
+	zhBg1wdeFxC1yohQ4BnYDH6mPQBSssxidTYOwGMg=
+Received: by mx.zohomail.com with SMTPS id 178603901993027.6707984562496;
+	Thu, 6 Aug 2026 10:56:59 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id D00661808BD; Thu, 06 Aug 2026 19:56:53 +0200 (CEST)
+Date: Thu, 6 Aug 2026 19:56:53 +0200
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 06 Aug 2026 19:24:56 +0200
-Subject: [PATCH 1/4] arm64: defconfig: enable Rockchip VDEC
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Vinod Koul <vkoul@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-phy@lists.infradead.org
+Subject: Re: [PATCH v6 1/7] drm/bridge: aux-hpd-bridge: Add
+ drm_dev_has_dp_hpd_bridge()
+Message-ID: <anTHNpUryNm72aGM@venus>
+References: <20260804070730.68-1-kernel@airkyi.com>
+ <20260804070730.68-2-kernel@airkyi.com>
 MIME-Version: 1.0
-Message-Id: <20260806-rockchip-defconfig-additions-v1-1-6b1d8baa0bf5@collabora.com>
-References: <20260806-rockchip-defconfig-additions-v1-0-6b1d8baa0bf5@collabora.com>
-In-Reply-To: <20260806-rockchip-defconfig-additions-v1-0-6b1d8baa0bf5@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Michael Riesch <michael.riesch@collabora.com>, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=754;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=kZgKoVVIFup432J5wyz+w2YrxBYWFvZYNT1wMMh2tgY=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp0w3V4MpxaQx8VBjtposIXJIzyIdcFEzc78
- UZHB05hrNoWhIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqdMN1AAoJENju1/PI
- O/qaVD4P/1cnzDHENypa2GuwJZKgH8VZzH+EqpAj8MQSfu+zlEKAHqSI67Lne4XBYyD0P5MzazQ
- wgPdVZQNjSJbJuong+ySDIjGNZipsc5mrHgYjyIX96qVkmUQFwkMWYK1B0/nSEVYo5DJohZfJyK
- W1rRXTs/2fko8+pYDyMbGiBzqjlsa4ky9f+ZjlVaIeFXJHGPp4S+YwdIw4duASrH+Nb/sLZMVbq
- IujJoyqNaykGbxsCHOac1gI0bLN0y9X/zjlTIX8aWR5dAkVPp/lHoSRqTCDHL2Q9Z+TuGo9Y5VM
- U5tOTWPD0A5GXola1tbtFGElnXOuQ7zCyrOUC/A+q/sZjUx9bRjR/h1bVHPtjWbUOBjQ/tt2gKT
- LkWO0Oy6lJJrSbPQ0jyaw/yFMq3W17gaiWm3YKuAZ+KBo8lf30VIwDvE3lnTyRSI8fTmKkbviCs
- M9Q8Wi9Aq5X+awnjdM3BynqhWb8bvdof1+ClFI/SNc1ZTwR9ipSl9795AjX917yHCJ5g0W5Y+Yy
- 6suOt5IE7JKGBZCu/flRbj5eiJrcyXSvH6hTskKo4wdmgFy4NSBpCdpo2c/OnceCgnGv0CpIzrf
- HOvAaCg2pB3g4+Li+YYj4n50XhyhIy/C9RdMMB2WTR/54j8srss7bvtFHTE8da0mUZQhqh5Gspc
- LPEDcmQ2JBcqDfB/uPrcpZw==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+In-Reply-To: <20260804070730.68-2-kernel@airkyi.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/286.26.37
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260806_102512_065010_F67A4913 
-X-CRM114-Status: UNSURE (   8.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260806_105747_622896_8DFD1D31 
+X-CRM114-Status: GOOD (  26.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,37 +88,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5120534660486862773=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the VDPU381/VDPU383 video decoder driver used for H.264 and H.265
-decoding on any board using Rockchip RK3588 or RK3576 SoCs.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+--===============5120534660486862773==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="lmyx267gariqvzno"
+Content-Disposition: inline
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 654a102cb5bc..c84df0a9cf6e 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -939,6 +939,7 @@ CONFIG_VIDEO_RENESAS_VSP1=m
- CONFIG_VIDEO_RCAR_DRIF=m
- CONFIG_VIDEO_ROCKCHIP_RGA=m
- CONFIG_VIDEO_ROCKCHIP_CIF=m
-+CONFIG_VIDEO_ROCKCHIP_VDEC=m
- CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
- CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
- CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
 
--- 
-2.53.0
+--lmyx267gariqvzno
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 1/7] drm/bridge: aux-hpd-bridge: Add
+ drm_dev_has_dp_hpd_bridge()
+MIME-Version: 1.0
 
+Hi,
+
+On Tue, Aug 04, 2026 at 03:07:24PM +0800, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>=20
+> Add a new API to check whether a DisplayPort HPD bridge has already
+> been registered. This helps avoid duplicate registration of the same
+> HPD bridge, although the current framework allows doing so.
+>=20
+> Suggested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> ---
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+I still see the bridge registered twice for fusb302. Apparently the
+the new notifier is faster than the explicit registration in the
+driver. The code added here works though; reloading
+aux_hpd_typec_dp_bridge does not register more and more bridges :)
+
+Greetings,
+
+-- Sebastian
+
+>  drivers/gpu/drm/bridge/aux-hpd-bridge.c | 42 ++++++++++++++++++++++++-
+>  include/drm/bridge/aux-bridge.h         |  6 ++++
+>  2 files changed, 47 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.c b/drivers/gpu/drm/br=
+idge/aux-hpd-bridge.c
+> index f02a38a2638a..a56c88eba005 100644
+> --- a/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+> +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
+> @@ -12,6 +12,8 @@
+>  #include <drm/drm_bridge.h>
+>  #include <drm/bridge/aux-bridge.h>
+> =20
+> +#define DRM_AUX_HPD_BRIDGE_NAME	"dp_hpd_bridge"
+> +
+>  static DEFINE_IDA(drm_aux_hpd_bridge_ida);
+> =20
+>  struct drm_aux_hpd_bridge_data {
+> @@ -36,6 +38,44 @@ static void drm_aux_hpd_bridge_free_adev(void *_adev)
+>  	auxiliary_device_uninit(_adev);
+>  }
+> =20
+> +static int hpd_bridge_match(struct device *dev, const void *data)
+> +{
+> +	const struct device_node *np =3D data;
+> +	struct auxiliary_device *adev;
+> +
+> +	if (!dev_is_auxiliary(dev))
+> +		return 0;
+> +
+> +	adev =3D to_auxiliary_dev(dev);
+> +	if (strcmp(adev->name, DRM_AUX_HPD_BRIDGE_NAME))
+> +		return 0;
+> +
+> +	return adev->dev.platform_data =3D=3D np;
+> +}
+> +
+> +/**
+> + * drm_dev_has_dp_hpd_bridge - check whether a HPD DisplayPort bridge is=
+ registered
+> + * @parent: device instance providing this bridge
+> + * @np: device node pointer corresponding to this bridge instance
+> + *
+> + * Walk the children of @parent and check whether a HPD DisplayPort brid=
+ge for
+> + * the given @np has already been registered via devm_drm_dp_hpd_bridge_=
+add().
+> + *
+> + * Return: true if a HPD bridge for @parent / @np already exists, false =
+otherwise
+> + */
+> +bool drm_dev_has_dp_hpd_bridge(struct device *parent, struct device_node=
+ *np)
+> +{
+> +	struct device *child;
+> +
+> +	child =3D device_find_child(parent, np, hpd_bridge_match);
+> +	if (child) {
+> +		put_device(child);
+> +		return true;
+> +	}
+> +	return false;
+> +}
+> +EXPORT_SYMBOL_GPL(drm_dev_has_dp_hpd_bridge);
+> +
+>  /**
+>   * devm_drm_dp_hpd_bridge_alloc - allocate a HPD DisplayPort bridge
+>   * @parent: device instance providing this bridge
+> @@ -63,7 +103,7 @@ struct auxiliary_device *devm_drm_dp_hpd_bridge_alloc(=
+struct device *parent, str
+>  	}
+> =20
+>  	adev->id =3D ret;
+> -	adev->name =3D "dp_hpd_bridge";
+> +	adev->name =3D DRM_AUX_HPD_BRIDGE_NAME;
+>  	adev->dev.parent =3D parent;
+>  	adev->dev.release =3D drm_aux_hpd_bridge_release;
+>  	adev->dev.platform_data =3D of_node_get(np);
+> diff --git a/include/drm/bridge/aux-bridge.h b/include/drm/bridge/aux-bri=
+dge.h
+> index c2f5a855512f..cca07a8e2d45 100644
+> --- a/include/drm/bridge/aux-bridge.h
+> +++ b/include/drm/bridge/aux-bridge.h
+> @@ -25,6 +25,7 @@ struct auxiliary_device *devm_drm_dp_hpd_bridge_alloc(s=
+truct device *parent, str
+>  int devm_drm_dp_hpd_bridge_add(struct device *dev, struct auxiliary_devi=
+ce *adev);
+>  struct device *drm_dp_hpd_bridge_register(struct device *parent,
+>  					  struct device_node *np);
+> +bool drm_dev_has_dp_hpd_bridge(struct device *parent, struct device_node=
+ *np);
+>  void drm_aux_hpd_bridge_notify(struct device *dev, enum drm_connector_st=
+atus status);
+>  #else
+>  static inline struct auxiliary_device *devm_drm_dp_hpd_bridge_alloc(stru=
+ct device *parent,
+> @@ -44,6 +45,11 @@ static inline struct device *drm_dp_hpd_bridge_registe=
+r(struct device *parent,
+>  	return NULL;
+>  }
+> =20
+> +static inline bool drm_dev_has_dp_hpd_bridge(struct device *parent, stru=
+ct device_node *np)
+> +{
+> +	return false;
+> +}
+> +
+>  static inline void drm_aux_hpd_bridge_notify(struct device *dev, enum dr=
+m_connector_status status)
+>  {
+>  }
+> --=20
+> 2.53.0
+>=20
+
+--lmyx267gariqvzno
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmp0yuIACgkQ2O7X88g7
++po3bQ//XxQC2aSQqCssQjBwMzPwUFwLFuI1cswQEnui/0Ma+SOGA796JIx+7t4U
+aaoov8lNcVLA8v6jA+VHswHsj+iy31uUHdXOJDl06b3CS+wNvxLbelMMQUQ+liFr
+XxJ/pgkwSeDY455N996scnB1WG+tYQJSquY95aTlHFitgcp9sLUQ8gQjSNits0nq
+qteTIoAV/wzBIAn3gH1XY/aEGSQHg/rXMi+/E8NNgZxuKcMABIbkipi7CG0PGL6F
+1GR7OzGOJBAaYBCOTzf+IXXSOs9URotGfXp60kU4ClIGR9WcrdeM+vBVVQteTQeB
+d5Cxu7dPTMIeGtpB37xLwlVHb187pE7szjjBi1SWpf5IXv4S3feA5uZnpTwagsR8
+rXsD/jEDWZ/3oi5CtDdtAduZEGIxBNAKY2yzC9xze+vM0j8i6RoOHwBTa4vwL7A2
+ZwbLdiz+S29nlbImHxcN7riTJOcU31V6ccXtdYVn2REqNzi4wn7kzxP2zMG/pfDr
+QpvXOj9UtsFZyo/uCukbBFu6jP6pu08u0qdTa6AUAXYsSgkfaV9jVyDtPboX6fp3
+1kxaxqm5IcwdOa6Nz9brODhsigM+qqMrd3WGGurmW4sN8ADfz5Vsdv4dMXOlUGO4
+kT0gbbmbtdS1GZ4S6BDC7sNiokDFT0JCJwwL0dIwfiJRr9y1aUU=
+=GGPA
+-----END PGP SIGNATURE-----
+
+--lmyx267gariqvzno--
+
+
+--===============5120534660486862773==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5120534660486862773==--
+
