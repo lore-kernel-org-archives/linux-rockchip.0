@@ -4,99 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CFC3C5AC7A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 09:09:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68D09C5AC7C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 11:25:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I2Xf3vGlutA48vOhl7wzQT+yV3yf5YZfTiIqp7VPPJs=; b=yVI/RS+b0aMlhy
-	Ig6lJHJHcdq9r2tF7Gj4YquUYTO//sSvSOPVd6UvsIP4VE5FH3OprTA+s24k+xaBBb9FKxBu9yU6x
-	H9AiuRSFmdBdr+WgC2bjC0zE0qZ8Skl84HnbgebI679xPw1otkUb0BUMZPE1mnnsU6kUDHZmOmjf0
-	aS1S7Po3DwB3n+dY/bcyDll+Cr1cG9YzzQZa3lNtFSvX+nTXqyeH7dVq7cCcCvp38I1Qcmw3jLnyo
-	KTE37nu1AiUjR4oHlPlXtlcaxgquoBKs2TNjmx/977qMnYpQdh9HQN9qapaDSDZHAoa7jYIoAqvW2
-	IPmqqEqC8lHOJ+h5Y/HA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ekkNiO2YNYPcki3rjDXR3kbiZEYbn+w3y7QofZy05zE=; b=raFo7RF11gsQ2/
+	B14Nc+0XNPPXPg+IrjNY4b+ZuJvQHIMW1HaXlBIzyM+g6uCLVfVR3WWB+Ad9oRejuIYL0+Q0KgUnJ
+	aHKZHTn85vQGxFvkGXVDnzmtLXKS384lyvvaTwZCFg/QUl7X4xN72icUqtRQKaBj5dloBIGbFRyj8
+	7XOdJhVWwyFYq+JB1MnUK97WsmUBgSeZ72IQ61+f9ZR7OttwZZMdPHozcPi/TN1BDFciGg7NP6vGC
+	KbvyCLwtNYv9mbtNOfpe+4mV7T7UZ8Qg5w7W3Rkzes3fvX8ncLjvbVZQoZFu15xRxJxPMvYLdDZYl
+	bgHk+j0JXytZxGTlHwfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsGa0-00000007UDV-3uJ5;
-	Fri, 07 Aug 2026 09:09:28 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1wsIgy-00000007reS-3y2q;
+	Fri, 07 Aug 2026 11:24:48 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsGZz-00000007UCV-0RdB
+	id 1wsIgw-00000007rd4-2KDR
 	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Aug 2026 09:09:28 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-49556f97a9dso20138075e9.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 07 Aug 2026 02:09:26 -0700 (PDT)
+	Fri, 07 Aug 2026 11:24:47 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-84a652535dcso2193352b3a.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 07 Aug 2026 04:24:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1786093765; x=1786698565; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=jjSX3DSji4nKkqVPKbNZg/lqBAxi+8jNL2xKHv5aM18=;
-        b=g6n7YhdGFEfmbUsAKXpe7wZGacqu9MDdGZn3MwAKfCLlIqiupmhrmhe9Yzz9xdWXZP
-         v8wiNV2OjWcxLsnCzDBHg2MAOx8Fl9CtjoBhLG6sP5W7emZqGo21Bpv7ev10jV1Mow11
-         mfZrrBHplLGm0PzzLgyv0iWpWy06NBildKcUsUKhdmoX1oZRVkejEwPZG7EowFZTANBn
-         5L46pmoBqfj1UdgaKhPLT2qcYGQJY3mSLI6j4qP/VPnzPdb9TW+ZlIMCKmwtujDodgr9
-         Eog5t0+cENZzGq1Za2XytlLNS5qVN0JbrcFDQDqZTf+VmIssY5TlBN7cOfmUcVo+M0o8
-         1ENQ==
+        d=gmail.com; s=20251104; t=1786101886; x=1786706686; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Pnu3iLD2kYSjbeTomVdCVLxo+qs2c03NdwMIpYQOFt8=;
+        b=PBrIad+DPJyi8TMmzdNKN4nL7V8fHXzDlRCruNK5DoVYktVzYcpsc1pm+wE5FCLh/S
+         J76LcMJZ9sg+7OSBfami5gu5rGI2QWOcAnWJ4HnDGGQXj0uiPEYgj6mxADMRd7kXN1J0
+         IgZZsfAcXFe2WbhGz9Z5xUbx1s/bhLMj1XEfw8odauUBjCjbdLBrvFf03O3VC/KU41jH
+         GFI3o5BrVGJZ8pQeEsCfI41Okq0vJU49D9AEJm3jLkBPvK1GcYZiw/uEAk/yIQWpQYBU
+         ReQp8dEzW8SypkwHadwl2iK+7MDwPBi7jP1cyZCRn5OzDm5TOEVH0iGHBSt4pMXUvnwW
+         tOzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786093765; x=1786698565;
-        h=content-transfer-encoding:content-type:in-reply-to:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20251104; t=1786101886; x=1786706686;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=jjSX3DSji4nKkqVPKbNZg/lqBAxi+8jNL2xKHv5aM18=;
-        b=Kfly778be5Vk3Qx530BjWsgCW6w8I0AQ1vnIoT5x+5LhVinIdwduvWhJ9llSfKhuY9
-         bWbr40HXmLGozWeS4b21CDB9OAJR9g7fWtefg/LFDcaUbx9tjghLkpJ+UYo+9z69Sknq
-         ydTZH5xfHnjZfImsRfUvUE9x/4ajbZnKDKTwotrlS92MWxbQuy8rJNft20+Z9J8zjKp7
-         f1aBPaazplJJwT7NFRs28QyiRzmW7G+m00Mmjgj4zy/YTaDMKSebLn3AMjPZVLd0k2Bv
-         e/SVeYVtIWqqTkThhBEZMHovb8RdfCT7auB40j7Z0x2/OdqUKMaVx0ldFFyjgWUxpdGk
-         RE7Q==
-X-Forwarded-Encrypted: i=1; AHgh+RqV9xdYUsl0ZIsY21NX0ARnnfY50qQRCQxNkHdFVL/klRcOVobrjxFh/ygX2fBPTWZGRPRQ2JGWo4XlmglGBg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwkHl09ibmuO9VJhxbPajD/fMLE3ldXtroIdbmEPMTmTusD7RUx
-	lmJtdlQ7rY1rx78gGCxHY7jQXM5EBn1CvuM+4w6rXe6j/6bTWWm58uT3/ZQul+JDKKQPND6KEUh
-	TtciaR6w=
-X-Gm-Gg: AR+sD10O+vBDPq+bxhp0pIT3ls2R+o6AZxhAmsEUblrc1mHUUdxLmoWAu4N6bGV5ojA
-	vZtI7BizwDav5VP59fKZZ+LNIvj3m1uuS7Q9rVLu2Luz6pFg37Mw024JgLUAGtbbayw+9tB1yWS
-	ZeXqxXBXxk4iAtByCokRvQ1qN1Air9JXBfsrB9XLs4HVSYYrfkOgpOEuYvI2FTtDg9o7iH7yxZQ
-	qvthASLTJlmdi3V7SKMRjFvtXCGW2EhmiU99RF8rLzm3l/KQxzta3ktebymE75ymnA0FedDQlwY
-	izj9p6Lq3JHBv7sOrKPnX1aTfLbL29EyfGuN4li3/Tg3MYpOXsCgy/+VZFwh/m5Tb4U7nwGxr9c
-	8wuHmcDw/X4P8qBgUfuH8hh9IgfR4ZxeS9dSvx4MgyCH+6RIDR4zkE6+kGH2g5m38dqniX4S4EY
-	GhjMflKcsZw8d0fG2RE76UqwFAblxqM2lnPYzJL1qFoBt3YzSNIKixCTiaHqKa60bFWzb65McG
-X-Received: by 2002:a05:600c:4e87:b0:493:e365:ace9 with SMTP id 5b1f17b1804b1-4994e7c0356mr282890995e9.11.1786093765114;
-        Fri, 07 Aug 2026 02:09:25 -0700 (PDT)
-Received: from [192.168.0.101] ([109.77.30.205])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48002145966sm3871692f8f.5.2026.08.07.02.09.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 07 Aug 2026 02:09:24 -0700 (PDT)
-Message-ID: <c3cbebcf-19f5-4944-9e20-04dbb442c4d9@linaro.org>
-Date: Fri, 7 Aug 2026 10:09:23 +0100
+        bh=Pnu3iLD2kYSjbeTomVdCVLxo+qs2c03NdwMIpYQOFt8=;
+        b=LrBpRkup2ATFYur55TWk3zshi6V9+Zd1fKLG2TdVw7VuvIYgKCarAbRG5C9TuGsS4u
+         51RsCjd9neTrQt/7OLfWlQr3vpZeotMZuQHfelGwSYbb0K180rgNoMdmBc8/gNvPr4lq
+         V+YPBWLDQsVUtSDcVgkvt3Ob0b4ktdXfLtRrH4tgNE0bmnSKyiA/XmeWs/yAu3KCuKUP
+         aeFZOuguiRe3KhPPLaN5ECkkK/OsmtKk9bWtJZSytd4JeQ4GGCW8qiKyXL6DmfLAQD1O
+         lAAVf3TVgCS/YXQes++iOzYLlh0aNgGIuq8iYguCKdJzqkfMnOuOXskEfF4teZHfYkYr
+         UxNg==
+X-Forwarded-Encrypted: i=1; AHgh+RqtT5FlNbr8Edz6wgPNxhec5iRP51D/Wdmypvatpm2JkHAghFoiwbdbUB2CuDNdigr5+uZzzRm1HSVqauVH1Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxGk1zGKBtH0eOhsTIz2g7NPOl9nSr6lDmaG02pv7ocLbPjjM4D
+	AGXOFexHRrH9Gn38HusB8KOyzDKPeKmw1XytKuAu6OlQ1I1xEn4yVoUL
+X-Gm-Gg: AR+sD13krw2iaQP0D+q1DrZ93EahVj84B9P4CFVPM5tvjv6AtEncrNRDIhtQNc+Ndek
+	XIiTOyUs+BmoNX7DjfB/Z3Ngj8aisz5jMlSrnX/tpig/VE/EIYc+M5lHr695eBgN1D/Ymtkc/Si
+	9CYCjMPGwphBCltFZQjg5vgsaIXn7oNdTAsmatBgc0ckZYyjFw31FzLFdNzNgwxt2PqiU8uDiMQ
+	v9CdraeUYNTyI3lG7MUkqYRJXn0Bi1sxgxZYZ7UoqXlKqzoQEqwJOtfNFF+5TuvayOqTTQNdunZ
+	LWJa6CdYv1foK+fYPxTnbbwCZSbU7VDVNbQN0qDRbQ83dpRStYyqV512XCrd9L/p62OfrchU0sg
+	5oujkmBqC5UrJrr0PAC63Wi/mh0uJvcGsLV3Bh5hz/F8oaaKHcum9A/vCy+NmOJygjBL59VEaQ4
+	kEwOm8e+sdziOpeh07A1RNhUGrj4tCeyCUGBfpGEiJGKkSUpZh7QRyVL4aibi53/Uo03aA7+lGU
+	dQqg/kK3Zjpx15xuQHc6dB1DCDgoig4B/ukLg==
+X-Received: by 2002:a05:6a20:cfa2:b0:3c3:875d:c52f with SMTP id adf61e73a8af0-3cb85dc28femr29154698637.10.1786101885389;
+        Fri, 07 Aug 2026 04:24:45 -0700 (PDT)
+Received: from fabio-X870-EAGLE-WIFI7.. ([2804:1b3:a801:e1cd:daf4:8fac:b7e6:4f37])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1410199bfd8sm6349351c88.2.2026.08.07.04.24.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Aug 2026 04:24:44 -0700 (PDT)
+From: Fabio Estevam <festevam@gmail.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Fabio Estevam <festevam@gmail.com>
+Subject: [PATCH v2 1/2] arm64: dts: rockchip: Fix the BT clock-names on rk3399-hugsun-x99
+Date: Fri,  7 Aug 2026 08:24:31 -0300
+Message-ID: <20260807112432.49685-1-festevam@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/4] phy: rockchip-samsung-dcphy: factor MIPI D-PHY
- power on/off into helpers
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: jason98166@gmail.com, Vinod Koul <vkoul@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Guochun Huang <hero.huang@rock-chips.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-phy@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260726-dcphy-rx-v1-v2-0-cf9cc34a412a@gmail.com>
- <Ji-6adk9LJbP87Y7X6SfOcAyVnGpO4dbHk0lBikX3NGAPz3dynWpvL8QjkVM3G3jEnwTrTV0p7nOqBxPRaH0MQ==@protonmail.internalid>
- <20260726-dcphy-rx-v1-v2-2-cf9cc34a412a@gmail.com>
- <43327fb2-0085-4d86-b408-8723d852c258@linaro.org> <anTgZiqnol4226Le@venus>
-From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-Content-Language: en-GB
-In-Reply-To: <anTgZiqnol4226Le@venus>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_020927_168287_A3117AD0 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260807_042446_592811_8F69B6A9 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,28 +98,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDYvMDgvMjAyNiAyMDozMSwgU2ViYXN0aWFuIFJlaWNoZWwgd3JvdGU6Cj4+IFRoaXMgbG9v
-a3MgYSBiaXQgZnVubnkuCj4+Cj4+IERvIHlvdSBoYXZlIGFuIGludCBtZXRob2QoKSB7fSB3aXRo
-IGEgZmluYWwgcGF0aCB0aGF0IHJldHVybnMgbm8gdmFsdWUgPwo+Pgo+PiBUb29saW5nL2NvbXBp
-bGVycyB3aWxsIGRlZmluaXRlbHkgYW5kIHJpZ2h0bHkgY29tcGxhaW4gYWJvdXQgdGhhdC4KPiBp
-bnQgZnVuY3Rpb24oKSB7Cj4gICAgICAuLi4KPiAKPiAgICAgIHN3aXRjaChmb28pIHsKPiAgICAg
-IGNhc2UgNDI6Cj4gICAgICAgICAgcmV0dXJuIDE7Cj4gICAgICBkZWZhdWx0Ogo+ICAgICAgICAg
-IHJldHVybiAwOwo+ICAgICAgfQo+ICAgICAgLyogY2Fubm90IGJlIHJlYWNoZWQgKi8KPiB9Cj4g
-Cj4gR3JlZXRpbmdzLAo+IAo+IC0tIFNlYmFzdGlhbgoKSG1tLgoKVGhlIExMTSB0ZWxscyBtZSB0
-aGVyZSBpcyBubyBjb21waWxlciB2ZXJzaW9uIHRoYXQgd2lsbCBnZW5lcmF0ZSBhIAp3YXJuaW5n
-IGZvciB0aGlzLgoKRW50ZXJ0YWluaW5nIG92ZXJkb25lIHRvbwoKIkFjcm9zcyBjb21waWxlcnMg
-dGhhdCB3aWxsIGV2ZXIgc2VlIHRoaXMgY29kZTogeWVzLCBhbmQgSSBjYW4gbm93IHNob3cgCml0
-IHJhdGhlciB0aGFuIGFzc2VydCBpdCDigJQgSSBpbnN0YWxsZWQgdGhlIHNwcmVhZC4gZ2NjIDEy
-LCAxMywgMTQgYW5kIApjbGFuZyAxOCwgZnJvbSAtV2FsbCAtV2V4dHJhIC1XcGVkYW50aWMgdXB3
-YXJkOiBjbGVhbi4gVGhlbiB0aGUgZGVjaXNpdmUgCm9uZTogY2xhbmcgLVdldmVyeXRoaW5nIOKA
-lCBldmVyeSBkaWFnbm9zdGljIGNsYW5nIHBvc3Nlc3NlcywgYSBzdHJpY3QgCnN1cGVyc2V0IG9m
-IGFueSBDSSBjb25maWd1cmF0aW9uIHRoYXQgY2FuIGV4aXN0IOKAlCBvbiBTZWJhc3RpYW4ncyBl
-eGFjdCAKZnVuY3Rpb246IHplcm8gb3V0cHV0LiIKCk1laAoKLS0tCmJvZAoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+According to brcm,bluetooth.yaml, the correct clock-names to describe
+the 32768kHz Low Power Oscillator is "lpo".
+
+Change it accordingly to fix the following dt-schema warning:
+
+clock-names: 'oneOf' conditional failed, one must be fixed:
+        ['ext_clock'] is too short
+        'extclk' was expected
+        'txco' was expected
+        'lpo' was expected
+
+Signed-off-by: Fabio Estevam <festevam@gmail.com>
+---
+Changes since v1:
+- Use "lpo" name instead. (Sashiko)
+
+ arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+index 352c8efb37e0..27ebbbc66633 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+@@ -703,7 +703,7 @@ &uart0 {
+ 	bluetooth {
+ 		compatible = "brcm,bcm43438-bt";
+ 		clocks = <&rk808 1>;
+-		clock-names = "ext_clock";
++		clock-names = "lpo";
+ 		device-wakeup-gpios = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
+ 		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
+ 		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
