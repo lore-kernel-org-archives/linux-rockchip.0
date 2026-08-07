@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D215DC5ACAB
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 13:33:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79C8BC2A09B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 14:19:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AGM3Wm5G037ykCCBn1+VIgTCieIGtMmG7t9Lra74BlY=; b=E8oM3ZU06v4pKk
-	ZKEvZgCp3oDnMgMovbHUrdbn3q+IuCpQLrxu2qPSIYFSFyKmGv1n+NwgNejfZvvdYAdQSVdzrbmvj
-	M80yiIrho03IrbYg9PlYA0DWqjy9fIDlwjPV+Pw1417XUqVV/x7D3aL+eWhL1DcJ4VHJzAXfn0axi
-	J213TUQKZ6OsAqaZCj3AzsdvPybRsogtbbunzgotr3YnEewooDJ1Dd39ZSj65q6x7EjYY3/9tYY9E
-	X0gM4ocfn6Rs+cKAfJ3yJz8lxff4jWZ7JyLHHsg7oz14LgmcGjReEY9V+8ahYopkFYm73b8muB27l
-	Ll592USw3f445/9JOJmw==;
+	List-Owner; bh=seNkun+cUSCuD8Ih/3+mvTv1BFNYRn2lG6sL4hk16N4=; b=wLVzLVmZXmuw2U
+	vi4YxzlX1o6tkgKRyQYEqnvKVDRnA4cmWRMsAHa4MuRMfakd0lvILlpfVwOkIcjYfl1RHAWGUSngb
+	uIkCdt0EryosWL+8vdej52amfZjG+Mb9UTHzkJJE/E6ZDg8fy3ntvyhs2Aoc3Jexa1OM1PJmvczu7
+	0kzGUMQl9H3Ko6FjoBp9MgBmIgb8kMOc4WhL8Vk+9T94NGwK2EyvpBVExWQjsXr9nIIPqqxkcjViI
+	qlwY9qzOq7zxlgPJn7ISZk/iCfepiyqPcJrOUE8l8DKytPvh8Hk8m6fHlhRaTvB8sZWx8622KJ7Zx
+	NJd0aMmTMuKbDuM0apTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsKhM-000000089Aw-1bup;
-	Fri, 07 Aug 2026 13:33:20 +0000
-Received: from out-174.mta1.migadu.com ([95.215.58.174])
+	id 1wsLQ8-00000008Fen-1P2o;
+	Fri, 07 Aug 2026 14:19:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsKhJ-00000008998-2ttg
-	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Aug 2026 13:33:19 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1786109585;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+n8Po8atSSkMnPysk0cqVTEi9Ye8QqiCHIVEioALzPE=;
-	b=b0KVAaI/pv6kp+yfCYn3YYDHWnfZnrLzbBjAc7J0fWB0yU+BGkTD9gBklUKIRPlMGP1UmG
-	iLV/byVAOt2RGu/78okKn+Az+NsAw7d7PZ7PV0xXRPvUgVxPrP2UgTk3Hity2+EvLn60vm
-	K0hzqZEhHP5VaM8bovkIcDxp9lzroZkGHqTMJELbohLhTgjRxCSMl9z5B4HOfgB9YpYaLj
-	LCpObAZHLExhCQeQjcEY9p8H0ulFZYXNCMiLqq9St4/9sjBimMDJsQX18r+07sNxx3WocS
-	vYQBU3HJBxewZHW5DWg7X+V0cIlkORa87DI+z8yBQVn/isxzM6bX5N8Kg4WK4w==
-Date: Fri, 07 Aug 2026 15:32:52 +0200
-Message-Id: <DKIR028TZNJ3.3BGQJYSWX2BMN@cknow-tech.com>
-Cc: <royalnet026@gmail.com>, <alchark@flipper.net>,
- <chaoyi.chen@rock-chips.com>, <dri-devel@lists.freedesktop.org>,
- <linux-rockchip@lists.infradead.org>, <iommu@lists.linux.dev>,
- <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [RFC PATCH v6 7/9] accel/rocket: add RK3576 NPU (RKNN) support
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Robin Murphy" <robin.murphy@arm.com>, "Diederik de Haas"
- <diederik@cknow-tech.com>, "Jiaxing Hu" <gahing@gahingwoo.com>,
- <tomeu@tomeuvizoso.net>, <heiko@sntech.de>, <robh@kernel.org>,
- <krzk+dt@kernel.org>, <conor+dt@kernel.org>, <joro@8bytes.org>,
- <will@kernel.org>, <ulfh@kernel.org>, <p.zabel@pengutronix.de>,
- <ogabbay@kernel.org>, <zhangqing@rock-chips.com>
-References: <20260806063413.350184-1-gahing@gahingwoo.com>
- <20260806063413.350184-8-gahing@gahingwoo.com>
- <DKIKXY8XZVPF.3RFR4ISK6Y4QX@cknow-tech.com>
- <fb94bd28-fdbf-4f99-a6ff-b5ab18c64345@arm.com>
-In-Reply-To: <fb94bd28-fdbf-4f99-a6ff-b5ab18c64345@arm.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1wsLQ4-00000008Fcp-3MGu;
+	Fri, 07 Aug 2026 14:19:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1786112368;
+	bh=hgwRBzRiQJNn4iMUuJnS82O/yDS20iHLzWusYFbGalo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nu7JHy7YiD0+TngKozpgIkC3QZ4PsngzLPvbc9+b86Uvi6/uZoSc7+2OGspM4b1y5
+	 +Q6MVKTSa848xdcw7eaWVRhBPbVmPry5EyAnl+ApGANht+g4b/lMNY8BLFjVJCNusU
+	 nvF1TWQJHJcbHSfQPCXNWP0ClV2hOL0a/O2cuacerjVN2613+ZbwjatYQyfsOjbliy
+	 2Q41W4DrLYDK8aoOfQeUbiMmzbMe1XKEeDr2EzNTNQUe/tOr1znajcWUcz7gT7tGYd
+	 lRkTSUWQJp1biW6b7IAnS8tJ8bj/3ibxImaA3XliRDXmXEug2VcczhQh6w/G66+FLO
+	 ATOk9Wz0lCQcg==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DBC1817E0048;
+	Fri, 07 Aug 2026 16:19:27 +0200 (CEST)
+Message-ID: <605f96b2-709c-49f6-9446-49ed3bff7d96@collabora.com>
+Date: Fri, 7 Aug 2026 17:19:27 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 02/10] phy: rockchip: samsung-hdptx: Prevent
+ divide-by-zero when computing clk rate
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Algea Cao <algea.cao@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
+ kernel@collabora.com, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>,
+ Diederik de Haas <diederik@cknow-tech.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Andy Yan <andy.yan@rock-chips.com>
+References: <20260723-hdptx-clk-fixes-v5-0-8e786067865f@collabora.com>
+ <20260723-hdptx-clk-fixes-v5-2-8e786067865f@collabora.com>
+ <qe6i5bvrn32xmwncl4zq3f5w6twpwfwvq5alaacsceq3vxn3nt@mbeytagr77j3>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <qe6i5bvrn32xmwncl4zq3f5w6twpwfwvq5alaacsceq3vxn3nt@mbeytagr77j3>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_063317_871289_C041E69F 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20260807_071933_016862_4E3D3C15 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,61 +84,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri Aug 7, 2026 at 2:55 PM CEST, Robin Murphy wrote:
-> On 07/08/2026 9:48 am, Diederik de Haas wrote:
->> On Thu Aug 6, 2026 at 8:34 AM CEST, Jiaxing Hu wrote:
->>> The RK3576 has two cores of the same RKNN block and a few platform
->>> differences:
->>>
->>>   - the CBUF (convolution buffer) has its own clock domain, so the core
->>>     needs six clocks rather than four;
->>>   - the BIU reset moved into the power domain, leaving one reset here;
->>>   - the NPU spans two power domains, and a device with more than one is
->>>     skipped by the driver-core single-domain auto-attach, so the list has
->>>     to be attached explicitly;
->>>   - the DPU completion interrupt is armed exactly as on RK3588 but never
->>>     reaches the GIC. The completion is visible in INTERRUPT_RAW_STATUS,
->> 
->> I don't know if it's relevant, so just a data point:
->> - RK3588 has Cortex A-76 + A-55, which have an External GICv4
->> - RK3576 has Cortex A-72 + A-53, which have an External GICv3
->
-> Nope, RK3588 has GIC-600, which is very much v3 still. I guess RK3576 
-> probably has GIC-500 like RK3399 given the CPUs, but that shouldn't make 
-> any meaningful difference here.
+Hi Mani,
 
-Unsurprisingly, you're (almost) correct :)
-I looked at this document when I wrote that:
-https://www.arm.com/-/media/Arm%20Developer%20Community/PDF/Cortex-A%20R%20M%20datasheets/Arm%20Cortex-A%20Comparison%20Table_v4.pdf
+On 8/7/26 3:56 PM, Manivannan Sadhasivam wrote:
+> On Thu, Jul 23, 2026 at 10:41:45PM +0300, Cristian Ciocaltea wrote:
+>> Calculating 'sdm' fraction in rk_hdptx_phy_clk_calc_rate_from_pll_cfg()
+>> could trigger a divide-by-zero, as it uses div_u64() with a denominator
+>> read directly from hardware: the values ropll_hw.sdm_deno,
+>> ropll_hw.sdc_deno, ropll_hw.sdc_n, and ropll_hw.sdc_num are populated
+>> from PLL registers which, in theory, could be left by the bootloader
+>> uninitialized/misconfigured.
+>>
+>> Provide the necessary sanitization to avoid trusting the hardware state.
+>>
+>> Reported-by: Sashiko <sashiko-bot@kernel.org>
+>> Closes: https://sashiko.dev/#/patchset/20260611-hdptx-clk-fixes-v3-0-67b1b0c00e16@collabora.com?part=1
+>> Fixes: 3481fc04d969 ("phy: rockchip: samsung-hdptx: Compute clk rate from PLL config")
+>> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS
+>> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+>> Reviewed-by: Andy Yan <andy.yan@rock-chips.com>
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 11 ++++++++---
+>>  1 file changed, 8 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>> index 710603afff86..44e99343f249 100644
+>> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+>> @@ -2270,10 +2270,15 @@ static u64 rk_hdptx_phy_clk_calc_rate_from_pll_cfg(struct rk_hdptx_phy *hdptx)
+>>  
+>>  	fout = PLL_REF_CLK * ropll_hw.pms_mdiv;
+>>  	if (ropll_hw.sdm_en) {
+>> +		val = 16U * ropll_hw.sdm_deno *
+>> +		      (ropll_hw.sdc_deno * ropll_hw.sdc_n - ropll_hw.sdc_num);
+>> +		if (!val) {
+>> +			dev_dbg(hdptx->dev, "Invalid ROPLL hw state: deno == 0\n");
+> 
+> If the hardware state is invalid, why can't this be a hard failure?
 
-But the RK3588 TRM Part 1 Chapter 11 'GIC600' says:
-"The GIC600 supports the GICv3 architecture ..."
-"The version of GIC600 is r1p6-00rel0."
+This is an internal helper called from the .recalc_rate clk_op, which tries to
+compute the current rate by reading back the hardware state. 
 
-The RK3576 TRM Part 1 Chapter 13 'Generic Interrupt Controller (GIC)' says:
-"There is a generic interrupt controller (GIC400) in RK3576 which generates
-physical interrupts to Cortex-A53/Cortex-A72."
+Since .recalc_rate returns unsigned long, we cannot propagate errors to the
+caller.  However, per the clk_ops documentation, the driver is expected to
+return 0 if it cannot figure out the rate.
 
-And RK3399 TRM Part 1 Chapter 11 'Generic Interrupt Controller (GIC)' says:
-"The GIC-500 in RK3399 provides registers for managing interrupt sources,
-interrupt behavior, and interrupt routing to one or more cores."
+Moreover, this condition isn't really fatal, as it only means the PLL
+configuration currently stored in hardware can't be translated into a rate.  The
+next .set_rate should program a valid configuration and help with the recovery.
 
-Cheers,
-  Diederik
+Thanks for reviewing!
 
-> If the interrupt never fires at all then possibly the signal depends on 
-> some additional clock or power domain in order to propagate, or it's 
-> just described incorrectly; or if other interrupt sources within the 
-> NPU/IOMMU do still work then maybe there's some additional masking 
-> control that's been overlooked, or perhaps it it just terminally broken.
->
-> (And FWIW I'm also inclined to agree with the other comments that 
-> refactoring existing code to make room for new stuff, then actually 
-> adding the new stuff, should probably be two separate steps if it's not 
-> completely trivial)
->
-> Thanks,
-> Robin.
+Regards,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
