@@ -4,92 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56660C5AC7A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 11:25:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29B90C2A09B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 12:56:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B7k7epiI/LuthYpDPhHpCB9PVVBm02FwRruUkbOAu7c=; b=JerVbC4wZzmZ6j
-	MRXoVFOoCwQsyxw3RVICuD8CUtXun9fkp3U4+KBBhkIlzciW51kQv9ds/rfwhqkY7Mojwv9Lwa3fu
-	pHcZxVEbgVdzKHFYsGdwrM58ltXbpWRHU+rS0mX37XHnbKr+l8Q6zTBCiRedV/yn2/G/VZmKcyIUH
-	m1RD+MST3Vq9hzkSMUTdyh78vuXOTTz2MaTRoShJm2iuW2CgfneAX+8LErZGAdUpc0rETLT7q7YHD
-	qx0xtj7muYOcjFTYdToRxvUW/Tg+IpZdVSsGWClKWBPUa7u+9IOZyTotLZgjj0/OV/HFc8olgYnq9
-	Q85OftDfoPpjlSi1XyLQ==;
+	List-Owner; bh=fMAqik3UIu7z8FkbcD/PNdxyjZ0S5CY97rZ/37zR3lo=; b=dRp56N1ST7LuQ0
+	PlP40iXG8Wr/0qNjRzeJXZKa1HGqulruxgO1g8S99/dWDrbzHjfWaioOvoW00ezB9/qeJMKpYcKjF
+	IjcKOuHUuwbUlmE4dlY6Reg3OvjH1G861FqSr4VtqgcX2T2lfYNAi3PMJAl0VSElhrjC3QbcGKpAI
+	ezUI1dy0owgskDJPI5EFgFxy9qwYVJhraC6duFicCfR9wuKG3WKpM0tDkkNY9lvKHefqQpXWtT76G
+	I1jMmkOXwuTH2NIdNHileWGm4yMhEw8CwhtAmFGCq1Z9NPjstgnMOhXkK61KF8R/R+YSiw9JcQMFD
+	8vZg1k24so6xa/DRrxVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsIh8-00000007rkZ-1InS;
-	Fri, 07 Aug 2026 11:24:58 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsIh0-00000007rfM-3T6l
-	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Aug 2026 11:24:56 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-8485bd28dd0so3654404b3a.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 07 Aug 2026 04:24:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786101890; x=1786706690; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=M5riwbZHq+AMgQ552tOielo/7w+UwrIhHqPxa46W+qA=;
-        b=appvmyxhbFnqO1J7bfMi3WNv/rYpzKVg6uPGhOkoPRV27VxMaHhTyZMQ2XY9JZ1nWY
-         8RdXsqw1jOKVafWKsbLa2nfv/UKtCpmDGyYFNZKQeHjk9qiyfh5VCQuWDqggdnqG/jOf
-         ant/pku/HVUO6zflFiG6aqgkOlTMrwtoSKqmjdMIiH40a9WLKZ4DnAo0/O1gC4bZGaMd
-         phNxEBqCZ9ZM/KjRwOgz6QctRdYBiaEIZttwL1Nin1859OCVoi+Nh/ArBgTZOTxO2LLh
-         2zCT68LWT+RggeebYBTDl5MwQhMwy+p1u1Eb3rtZonEz86ScTbmnBRX/yQmxii66IEc4
-         cQ/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786101890; x=1786706690;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=M5riwbZHq+AMgQ552tOielo/7w+UwrIhHqPxa46W+qA=;
-        b=ELv8q89AvjHCktZgrjPoo8nEMDusI5n1FaKp3XJ9wt2qyWh27/N/BECIAoRvVOZ4JP
-         0/EnAQQAp80vclrw0U33ri7FQKtw1qvS5rG7KICU9pxT24uoirS0CM8uPFRUe6o4vyGI
-         4kmS7fhuEyiwPbmwutyqe0GzpGgGB/igqec7Jdm66np3qepQJsAzaesjFCKvoqaSCBAq
-         Dyq0btS5cDspE7jdW/tONZhPxQIDh2ZggeQWrvv9p0oJQwID5np50HMtrurdE7zBsh9f
-         g4+/XwTmSHXsbln5avep9l0aonIwWsfKR4P9uBZM6XdwGJtCgsWiRlYDT5pKZGx9glQK
-         uiSQ==
-X-Forwarded-Encrypted: i=1; AHgh+RpNZHLk1W8TnwfcDNm1+0Im4QdxXFItHw2sKZz/5Nv1B9PZ2I/a4KREJln3N4k/Y9zSgmB8LVF2zXRZFMxcog==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxM0czzd4aitc37matx2VqQRpI11OhR5wVNL3IJWFKVTSME+lNY
-	7Ui+v7INwODCYXwvkHZdYaMmfBy/9Wf7OO4MQYk/5Nic+yNxMfrdThwY
-X-Gm-Gg: AR+sD10+2f0KMrIzXD5XsJjB+YKiDg9dv3SgS2w04pFOXyTd5FJp2KUAvrsXvHQ8cAN
-	tqDi+BYmEZMTCwJBTLkeWSH6zUb2A0Xh00ae4YgzvYsgGRomQKC8e73fAGM8srBDrO97hUlEIkJ
-	SehPURnD2ofKNJJR5sa6QN1wumXV+e737xZ1T0e1kCOYkeC6RkYuJGwpscVWSUE7FiuBzPZB2Yg
-	Q4vkwKh40y0fSs2ob9LbpjDoRsQXD77Ksw+lQ3gSQ6s+aNrZWDgCI4z8SwwUImL6EIOYP0/CLxD
-	TdUgMkhzyN2cuDmdVcf+rCgwDcoPz0T+xnVk8JEZgoQGgpIqEyPBrRZGopgGW3Cho5Nku3RfSZR
-	+foyX+wR9JZrVFgQEfq2q05yNjcO3lDGT8JMwrwmkENJPf5ycjVkgDe8okNQWMXWpfTC8vVLDS0
-	U5WNZ2Bjb2qVxybgqd/MHNAe/akUMN7jKqycPhO+D/FP4IlWvzOuMs2IVPePj8azMSoFqzem3ub
-	AQtSKZ0hqK3Gi/r3lzA+WMLz38q+ht/SmhaHg==
-X-Received: by 2002:a05:6a21:46c9:b0:3b1:882a:607b with SMTP id adf61e73a8af0-3cb85e6c917mr25902715637.22.1786101889728;
-        Fri, 07 Aug 2026 04:24:49 -0700 (PDT)
-Received: from fabio-X870-EAGLE-WIFI7.. ([2804:1b3:a801:e1cd:daf4:8fac:b7e6:4f37])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1410199bfd8sm6349351c88.2.2026.08.07.04.24.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Aug 2026 04:24:49 -0700 (PDT)
-From: Fabio Estevam <festevam@gmail.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Fabio Estevam <festevam@gmail.com>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Fix the BT clock-names on rk3399-leez-p710
-Date: Fri,  7 Aug 2026 08:24:32 -0300
-Message-ID: <20260807112432.49685-2-festevam@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260807112432.49685-1-festevam@gmail.com>
-References: <20260807112432.49685-1-festevam@gmail.com>
+	id 1wsK7I-000000082WT-2bqM;
+	Fri, 07 Aug 2026 12:56:04 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wsK7G-000000082Vs-2Crp;
+	Fri, 07 Aug 2026 12:56:03 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 154911516;
+	Fri,  7 Aug 2026 05:55:54 -0700 (PDT)
+Received: from [10.2.212.23] (e121345-lin.cambridge.arm.com [10.2.212.23])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5A5A23F9A2;
+	Fri,  7 Aug 2026 05:55:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1786107358; bh=xfEgerLRPb7madfeMA7wFM70ghEiPOqFAV7kOwYDnuI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fzFGtKZvoitFZaUTdqu0c54B3XFfBCnXIAu/DR2Mq58FOkjjok0wWgUeiV77bfx2i
+	 5q1rdjt9kOAEo6MqfhqtZKpEHpW1a4PCLERem8+pzB/f5B6iA0LCqEseD/LNCkk0CH
+	 gCGZKTgzam0wS2V+g0p36SPV6wRRpQ51dE0RYrRc=
+Message-ID: <fb94bd28-fdbf-4f99-a6ff-b5ab18c64345@arm.com>
+Date: Fri, 7 Aug 2026 13:55:53 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v6 7/9] accel/rocket: add RK3576 NPU (RKNN) support
+To: Diederik de Haas <diederik@cknow-tech.com>,
+ Jiaxing Hu <gahing@gahingwoo.com>, tomeu@tomeuvizoso.net, heiko@sntech.de,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, joro@8bytes.org,
+ will@kernel.org, ulfh@kernel.org, p.zabel@pengutronix.de,
+ ogabbay@kernel.org, zhangqing@rock-chips.com
+Cc: royalnet026@gmail.com, alchark@flipper.net, chaoyi.chen@rock-chips.com,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ iommu@lists.linux.dev, linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260806063413.350184-1-gahing@gahingwoo.com>
+ <20260806063413.350184-8-gahing@gahingwoo.com>
+ <DKIKXY8XZVPF.3RFR4ISK6Y4QX@cknow-tech.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <DKIKXY8XZVPF.3RFR4ISK6Y4QX@cknow-tech.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_042450_884624_8D3BF6CC 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20260807_055602_776910_163BB922 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,46 +72,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to brcm,bluetooth.yaml, the correct clock-names to describe
-the 32768kHz Low Power Oscillator is "lpo".
+On 07/08/2026 9:48 am, Diederik de Haas wrote:
+> Hi Jiaxing,
+> 
+> On Thu Aug 6, 2026 at 8:34 AM CEST, Jiaxing Hu wrote:
+>> The RK3576 has two cores of the same RKNN block and a few platform
+>> differences:
+>>
+>>   - the CBUF (convolution buffer) has its own clock domain, so the core
+>>     needs six clocks rather than four;
+>>   - the BIU reset moved into the power domain, leaving one reset here;
+>>   - the NPU spans two power domains, and a device with more than one is
+>>     skipped by the driver-core single-domain auto-attach, so the list has
+>>     to be attached explicitly;
+>>   - the DPU completion interrupt is armed exactly as on RK3588 but never
+>>     reaches the GIC. The completion is visible in INTERRUPT_RAW_STATUS,
+> 
+> I don't know if it's relevant, so just a data point:
+> - RK3588 has Cortex A-76 + A-55, which have an External GICv4
+> - RK3576 has Cortex A-72 + A-53, which have an External GICv3
 
-Change it accordingly to fix the following dt-schema warning:
+Nope, RK3588 has GIC-600, which is very much v3 still. I guess RK3576 
+probably has GIC-500 like RK3399 given the CPUs, but that shouldn't make 
+any meaningful difference here.
 
-clock-names: 'oneOf' conditional failed, one must be fixed:
-        ['ext_clock'] is too short
-        'extclk' was expected
-        'txco' was expected
-        'lpo' was expected
+If the interrupt never fires at all then possibly the signal depends on 
+some additional clock or power domain in order to propagate, or it's 
+just described incorrectly; or if other interrupt sources within the 
+NPU/IOMMU do still work then maybe there's some additional masking 
+control that's been overlooked, or perhaps it it just terminally broken.
 
-Signed-off-by: Fabio Estevam <festevam@gmail.com>
----
-Changes since v1:
-- Use "lpo" name instead. (Sashiko)
+(And FWIW I'm also inclined to agree with the other comments that 
+refactoring existing code to make room for new stuff, then actually 
+adding the new stuff, should probably be two separate steps if it's not 
+completely trivial)
 
- arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-index 2cdc2013c320..c449eaa84edc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-@@ -588,7 +588,7 @@ &uart0 {
- 	bluetooth {
- 		compatible = "brcm,bcm43438-bt";
- 		clocks = <&rk808 1>;
--		clock-names = "ext_clock";
-+		clock-names = "lpo";
- 		device-wakeup-gpios = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
- 		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
- 		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
--- 
-2.43.0
-
+Thanks,
+Robin.
 
 _______________________________________________
 Linux-rockchip mailing list
