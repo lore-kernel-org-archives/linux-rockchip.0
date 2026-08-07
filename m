@@ -4,67 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04F5DC5AC7C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 08:10:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E48CC5AC7C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 08:48:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
 	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qpki2Y/PvEUPV1dpWbHlLcVAzmDW13uTp3LVkrlKoUE=; b=TlZbnZO7MceS5o
-	TbE7R0MWbqwzStvwX6Kx8UW08waUGlkupTOINNiA1MpBA5RF2d9jyxW1qL9BJ0x/yhxVoo/JirerJ
-	IvilO3R5x41DPdK++/PMig5p7vERE1tnpJZRisSogKA5v+/Nf7huZd5iX3aR94vehnFD7BZZJotAY
-	brxKMFxIVY9Vqq3ju9R5ptoAD+3TLa0/bwoKM/Jg2SQjts3tCHQpVvwH7/eKQQaZs0nrA8b7qLilm
-	g4nbWNDfATFTMLlKw4XMr/we+yjXufi5vGAe2Jyxey3fY+dldPmorOsFMp4HeBAmknhERk802t2iH
-	BkOgwn+FubUd8WOdBZpA==;
+	List-Owner; bh=zBRYz7X1xG0+XSokqtSPTyaQOpNK3dwEoqsYsmHQJvw=; b=LbPI5vnlUs/k+u
+	I8Yxg1cdHILyl184IXp1bmPj6SOhMk7Wm3o6Xfp2DL2aSINGZQz7o4vBLI83Ozhd0db45W5SeQBJq
+	WwJTZOMCp2snyo21/a10ZB8hui0C/63k8zsCzDyo3x77l+OF5DyEuI+qBlFWSoIXqynxnO8euk7EI
+	/DuMrf/8bogM1Jc9OVfX4U4w+8A352AltsB4bMHVQLeWPnAYoZIgmO+BScTF30gZFncG3rCpj9u93
+	IJWA5OGl+ZkMeVDxSq2OfzDD4Sa83uFIeTHIOzEuA+JLVoJ1x3v0+9lebZ8snFunbAFHbM3wt+FLo
+	C+9cM5eqGM8IfFShrM9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsFf6-00000007Mf2-2Bhf;
-	Fri, 07 Aug 2026 08:10:40 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wsGFx-00000007SWZ-2fvS;
+	Fri, 07 Aug 2026 08:48:45 +0000
+Received: from out-187.mta1.migadu.com ([95.215.58.187])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsFf0-00000007MUm-46hg
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 07 Aug 2026 08:10:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:References:To:From:Subject
-	:Cc:Message-Id:Date:Content-Type:Content-Transfer-Encoding:Mime-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=myxhS2a8E7aAq3z2l/Oupz4nK0+6QMT2wFctmDznMP4=; b=oW6eXRNX5RENb5hhKdayydD37T
-	MNq52IY/KS02KlxWAO2id0ctDJoZ1cBe6hv3n3TwC++/OSfQb4PGvXjQnxbaD43aOmSX3ZoiasSna
-	DEtQCkTjH1OkszuyLYNQjTp0eEG8Y9I/TMGSLR6KBV4DSaQZIwe1ujhIB1dV4ek7DKhUyw3u6tb2R
-	kKZqSmksu/4cH40UWvB8N6pagvBcc47IhAQ0+yhh0ke8+61Rrbf6AzVHXyQfXDoHpWHCvoNOo+VDZ
-	N4XznC8pIr58pIImgJjyECy5nyocCwZkb7xl54xQUVIR32XY7O4xW64Vbb4bm0yh8azKaJQQJiTao
-	ZVLb9unw==;
-Received: from out-183.mta1.migadu.com ([95.215.58.183])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wsFex-0000000CAv7-06w6
+	id 1wsGFu-00000007SVM-1Wqw
 	for linux-rockchip@lists.infradead.org;
-	Fri, 07 Aug 2026 08:10:33 +0000
+	Fri, 07 Aug 2026 08:48:44 +0000
 Mime-Version: 1.0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1786090227;
+	s=key1; t=1786092510;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=myxhS2a8E7aAq3z2l/Oupz4nK0+6QMT2wFctmDznMP4=;
-	b=ebXw3sGvz+JoVvAk2f5cLlPmCLtklqiquZ6SRIOKvuDAm7og00AMWvjQlMvicxCkd9cU6m
-	dQklT4aNT4kz4uf/Bi54wlZkE3jWAOfUxQ4OzH9W0cMJUZRFWapie/1ER1oSmwl+XyAvYR
-	Gc9sBN10/D0LIXz3dv9OisQUHGAo5oFhlErTQtSt1b73iw4K8bBLmSABn8VueSVNXyvs+4
-	0Fqi8aerCyp4BwsCmqHdqslkHMwchI3VKh6OcDsEFuy3k76wdxv+qGgbVsq9GWuMWUNzsc
-	Vr3w2gRdQwKlo/c1qaOKmYIgwAwiCoAvatNF+DPNNmPyN/6BuHIrkQqecMkqTg==
-Date: Fri, 07 Aug 2026 10:10:08 +0200
-Message-Id: <DKIK4YHEVYA5.Y03RHE1E8FGQ@cknow-tech.com>
+	bh=dEuxmQTnVjhJU7Df2L3KNy3dMjT4Vz37tWHsKItKJRY=;
+	b=Gv7mV7zB4H3/CeFdDP5fwigh1QVtNacIjYIxlxwC8eAqjAIa8JoG8AcEZU6ACbHkEm5BMw
+	5cUvU+Z2mVReQamxY5Zb+390VEXHW+NFu9eGPUtRmv+lBhLrzRLU9sr5pLb0aiVlGT5yd5
+	596rol5/tIgzkpV7vF6NsPa+paUbTgmWMXN/DfwFIRy+Gx0M18jcnmQZZ91aLJyLCFM2AD
+	0jyCCG0NJHZeXh5nkxquuoPETUe3s6L2QJ3ULAsNQbqdJH4xUOZd+1/eUty1KvvWxCyLae
+	3WdpzHI7R0R7+g2D79kTI/WEIqEPSQHjgJxHadmyLPVh3mL9eD8Ynl6feh0tZg==
+Date: Fri, 07 Aug 2026 10:48:00 +0200
+Message-Id: <DKIKXY8XZVPF.3RFR4ISK6Y4QX@cknow-tech.com>
 Cc: <royalnet026@gmail.com>, <alchark@flipper.net>,
  <chaoyi.chen@rock-chips.com>, <diederik@cknow-tech.com>,
  <dri-devel@lists.freedesktop.org>, <linux-rockchip@lists.infradead.org>,
  <iommu@lists.linux.dev>, <linux-pm@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-kernel@vger.kernel.org>
-Subject: Re: [RFC PATCH v6 6/9] accel/rocket: select the per-core clock and
- reset counts from match data
+Subject: Re: [RFC PATCH v6 7/9] accel/rocket: add RK3576 NPU (RKNN) support
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 From: "Diederik de Haas" <diederik@cknow-tech.com>
 To: "Jiaxing Hu" <gahing@gahingwoo.com>, <tomeu@tomeuvizoso.net>,
@@ -73,12 +57,12 @@ To: "Jiaxing Hu" <gahing@gahingwoo.com>, <tomeu@tomeuvizoso.net>,
  <robin.murphy@arm.com>, <ulfh@kernel.org>, <p.zabel@pengutronix.de>,
  <ogabbay@kernel.org>, <zhangqing@rock-chips.com>
 References: <20260806063413.350184-1-gahing@gahingwoo.com>
- <20260806063413.350184-7-gahing@gahingwoo.com>
-In-Reply-To: <20260806063413.350184-7-gahing@gahingwoo.com>
+ <20260806063413.350184-8-gahing@gahingwoo.com>
+In-Reply-To: <20260806063413.350184-8-gahing@gahingwoo.com>
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_091031_441219_8B5443C5 
-X-CRM114-Status: GOOD (  28.65  )
+X-CRM114-CacheID: sfid-20260807_014842_852030_E93495F8 
+X-CRM114-Status: GOOD (  42.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,184 +82,384 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Hi Jiaxing,
 
 On Thu Aug 6, 2026 at 8:34 AM CEST, Jiaxing Hu wrote:
-> The RK3576 carries the same RKNN block with a different set of clocks and
-
-nit: same RKNN block as what? And if it has a different set of clocks/resets,
-is it still the same (HW) block?
-
-> resets, so the counts cannot stay compile-time constants. Add a soc_data
-> struct to the of_device_id match data and take the bulk counts from it.
-> RK3588 keeps four clocks and two resets, so nothing changes for it.
+> The RK3576 has two cores of the same RKNN block and a few platform
+> differences:
 >
-> rocket_core_reset() is switched over as well. It is the same array, and
-> leaving it on ARRAY_SIZE() would walk entries that were never acquired
-> once a SoC asks for fewer.
+>  - the CBUF (convolution buffer) has its own clock domain, so the core
+>    needs six clocks rather than four;
+>  - the BIU reset moved into the power domain, leaving one reset here;
+>  - the NPU spans two power domains, and a device with more than one is
+>    skipped by the driver-core single-domain auto-attach, so the list has
+>    to be attached explicitly;
+>  - the DPU completion interrupt is armed exactly as on RK3588 but never
+>    reaches the GIC. The completion is visible in INTERRUPT_RAW_STATUS,
 
-but now comes the point I actually want to make:
+I don't know if it's relevant, so just a data point:
+- RK3588 has Cortex A-76 + A-55, which have an External GICv4
+- RK3576 has Cortex A-72 + A-53, which have an External GICv3
 
-> While moving through this path, take the two register writes in
-> rocket_job_handle_irq() under job_lock. rocket_job_hw_submit() writes
-> OPERATION_ENABLE from inside the lock, so a completion handled outside it
-> can write the zero after that one and stop a task that has just started.
-
-This should be its own separate commit (with a Fixes tag) ... which
-probably doesn't have/should be part of this (RFC) series?
-
+>    so sample that from an hrtimer rather than wait for an interrupt that
+>    does not come. The interrupt stays armed, and if it ever does arrive
+>    the two paths agree on which submit each completion belongs to.
+>
+> All of it hangs off the soc_data added earlier, so the RK3588 path keeps
+> its existing counts and behaviour.
 >
 > Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
 > ---
->  drivers/accel/rocket/rocket_core.c |  8 ++++----
->  drivers/accel/rocket/rocket_core.h |  9 ++++++++-
->  drivers/accel/rocket/rocket_drv.c  | 12 +++++++++---
->  drivers/accel/rocket/rocket_job.c  | 12 +++++++++---
->  4 files changed, 30 insertions(+), 11 deletions(-)
+>  drivers/accel/rocket/rocket_core.c   |  18 ++++
+>  drivers/accel/rocket/rocket_core.h   |  15 ++-
+>  drivers/accel/rocket/rocket_device.c |   4 +
+>  drivers/accel/rocket/rocket_drv.c    |  10 ++
+>  drivers/accel/rocket/rocket_job.c    | 142 ++++++++++++++++++++++++---
+>  5 files changed, 174 insertions(+), 15 deletions(-)
 >
 > diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/rocket_core.c
-> index 5dd260bac..b202d1581 100644
+> index b202d1581..1c865e247 100644
 > --- a/drivers/accel/rocket/rocket_core.c
 > +++ b/drivers/accel/rocket/rocket_core.c
-> @@ -23,7 +23,7 @@ int rocket_core_init(struct rocket_core *core)
+> @@ -8,6 +8,7 @@
+>  #include <linux/err.h>
+>  #include <linux/iommu.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/pm_domain.h>
+>  #include <linux/pm_runtime.h>
+>  #include <linux/reset.h>
 >  
+> @@ -21,6 +22,7 @@ int rocket_core_init(struct rocket_core *core)
+>  	u32 version;
+>  	int err = 0;
+>  
+> +	/* RK3576 moves the BIU reset into its power domain and takes only srst_a. */
 >  	core->resets[0].id = "srst_a";
 >  	core->resets[1].id = "srst_h";
-> -	err = devm_reset_control_bulk_get_exclusive(&pdev->dev, ARRAY_SIZE(core->resets),
-> +	err = devm_reset_control_bulk_get_exclusive(&pdev->dev, core->soc->num_resets,
->  						    core->resets);
->  	if (err)
->  		return dev_err_probe(dev, err, "failed to get resets for core %d\n", core->index);
-> @@ -32,7 +32,7 @@ int rocket_core_init(struct rocket_core *core)
+>  	err = devm_reset_control_bulk_get_exclusive(&pdev->dev, core->soc->num_resets,
+> @@ -32,6 +34,9 @@ int rocket_core_init(struct rocket_core *core)
 >  	core->clks[1].id = "hclk";
 >  	core->clks[2].id = "npu";
 >  	core->clks[3].id = "pclk";
-> -	err = devm_clk_bulk_get(dev, ARRAY_SIZE(core->clks), core->clks);
-> +	err = devm_clk_bulk_get(dev, core->soc->num_clks, core->clks);
+> +	/* RK3576 clocks the CBUF separately; the compute path stalls without these. */
+> +	core->clks[4].id = "aclk_cbuf";
+> +	core->clks[5].id = "hclk_cbuf";
+>  	err = devm_clk_bulk_get(dev, core->soc->num_clks, core->clks);
 >  	if (err)
 >  		return dev_err_probe(dev, err, "failed to get clocks for core %d\n", core->index);
+> @@ -69,6 +74,19 @@ int rocket_core_init(struct rocket_core *core)
+>  		return err;
+>  	}
 >  
-> @@ -109,9 +109,9 @@ void rocket_core_fini(struct rocket_core *core)
+> +	/*
+> +	 * RK3576 spans two power domains, and a multi-domain device is skipped
+> +	 * by the driver-core single-domain auto-attach, so attach the list here.
+> +	 */
+> +	if (core->soc->multi_power_domain) {
+> +		struct dev_pm_domain_list *pd_list;
+> +
+> +		err = devm_pm_domain_attach_list(dev, NULL, &pd_list);
+> +		if (err < 0)
+> +			return dev_err_probe(dev, err,
+> +					     "failed to attach NPU power domains\n");
+> +	}
+> +
+>  	pm_runtime_use_autosuspend(dev);
 >  
->  void rocket_core_reset(struct rocket_core *core)
->  {
-> -	reset_control_bulk_assert(ARRAY_SIZE(core->resets), core->resets);
-> +	reset_control_bulk_assert(core->soc->num_resets, core->resets);
->  
->  	udelay(10);
->  
-> -	reset_control_bulk_deassert(ARRAY_SIZE(core->resets), core->resets);
-> +	reset_control_bulk_deassert(core->soc->num_resets, core->resets);
->  }
+>  	/*
 > diff --git a/drivers/accel/rocket/rocket_core.h b/drivers/accel/rocket/rocket_core.h
-> index f6d738285..0f424bb86 100644
+> index 0f424bb86..205ff070d 100644
 > --- a/drivers/accel/rocket/rocket_core.h
 > +++ b/drivers/accel/rocket/rocket_core.h
-> @@ -27,16 +27,23 @@
->  #define rocket_core_writel(core, reg, value) \
->  	writel(value, (core)->core_iomem + (REG_CORE_##reg) - REG_CORE_S_STATUS)
+> @@ -6,6 +6,7 @@
 >  
-> +/* Per-SoC differences, selected by the of_device_id match data. */
-> +struct rocket_soc_data {
-> +	unsigned int num_clks;		/* clk_bulk count */
-> +	unsigned int num_resets;	/* reset_bulk count */
-> +};
-> +
+>  #include <drm/gpu_scheduler.h>
+>  #include <linux/clk.h>
+> +#include <linux/hrtimer.h>
+>  #include <linux/io.h>
+>  #include <linux/mutex_types.h>
+>  #include <linux/reset.h>
+> @@ -29,8 +30,10 @@
+>  
+>  /* Per-SoC differences, selected by the of_device_id match data. */
+>  struct rocket_soc_data {
+> -	unsigned int num_clks;		/* clk_bulk count */
+> -	unsigned int num_resets;	/* reset_bulk count */
+> +	unsigned int num_clks;		/* clk_bulk count: 4 base, 6 with CBUF */
+> +	unsigned int num_resets;	/* reset_bulk count: 2 base, 1 on RK3576 */
+> +	bool multi_power_domain;	/* device spans more than one PM domain */
+> +	bool poll_completion;		/* completion IRQ never reaches the GIC */
+>  };
+>  
 >  struct rocket_core {
->  	struct device *dev;
->  	struct rocket_device *rdev;
-> +	const struct rocket_soc_data *soc;
->  	unsigned int index;
+> @@ -59,6 +62,14 @@ struct rocket_core {
+>  		atomic_t pending;
+>  	} reset;
 >  
->  	int irq;
->  	void __iomem *pc_iomem;
->  	void __iomem *cna_iomem;
->  	void __iomem *core_iomem;
-> -	struct clk_bulk_data clks[4];
-> +	struct clk_bulk_data clks[6];
->  	struct reset_control_bulk_data resets[2];
+> +	struct hrtimer poll_timer;
+> +	struct work_struct poll_work;
+> +	atomic_t poll_active;
+> +	unsigned int poll_ticks;
+> +	unsigned int poll_seq;
+> +	unsigned int poll_work_seq;
+> +	bool poll_dying;
+> +
+>  	struct drm_gpu_scheduler sched;
+>  	u64 fence_context;
+>  	u64 emit_seqno;
+> diff --git a/drivers/accel/rocket/rocket_device.c b/drivers/accel/rocket/rocket_device.c
+> index 46e6ee1e7..bfb00f967 100644
+> --- a/drivers/accel/rocket/rocket_device.c
+> +++ b/drivers/accel/rocket/rocket_device.c
+> @@ -31,6 +31,10 @@ struct rocket_device *rocket_device_init(struct platform_device *pdev,
+>  		if (of_device_is_available(core_node))
+>  			num_cores++;
 >  
->  	struct iommu_group *iommu_group;
+> +	for_each_compatible_node(core_node, NULL, "rockchip,rk3576-rknn-core")
+> +		if (of_device_is_available(core_node))
+> +			num_cores++;
+> +
+>  	rdev->cores = devm_kcalloc(dev, num_cores, sizeof(*rdev->cores), GFP_KERNEL);
+>  	if (!rdev->cores)
+>  		return ERR_PTR(-ENOMEM);
 > diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
-> index 8bbbce594..6e7dc91c5 100644
+> index 6e7dc91c5..7f7dfa374 100644
 > --- a/drivers/accel/rocket/rocket_drv.c
 > +++ b/drivers/accel/rocket/rocket_drv.c
-> @@ -176,6 +176,7 @@ static int rocket_probe(struct platform_device *pdev)
->  
->  	rdev->cores[core].rdev = rdev;
->  	rdev->cores[core].dev = &pdev->dev;
-> +	rdev->cores[core].soc = of_device_get_match_data(&pdev->dev);
->  	rdev->cores[core].index = core;
->  
->  	rdev->num_cores++;
-> @@ -213,8 +214,13 @@ static void rocket_remove(struct platform_device *pdev)
->  	}
->  }
->  
-> +static const struct rocket_soc_data rk3588_soc_data = {
-> +	.num_clks = 4,
-> +	.num_resets = 2,
+> @@ -217,10 +217,20 @@ static void rocket_remove(struct platform_device *pdev)
+>  static const struct rocket_soc_data rk3588_soc_data = {
+>  	.num_clks = 4,
+>  	.num_resets = 2,
+> +	.multi_power_domain = false,
+> +	.poll_completion = false,
 > +};
 > +
->  static const struct of_device_id dt_match[] = {
-> -	{ .compatible = "rockchip,rk3588-rknn-core" },
-> +	{ .compatible = "rockchip,rk3588-rknn-core", .data = &rk3588_soc_data },
+> +static const struct rocket_soc_data rk3576_soc_data = {
+> +	.num_clks = 6,
+> +	.num_resets = 1,
+> +	.multi_power_domain = true,
+> +	.poll_completion = true,
+>  };
 
-While it technically fits on 1 line, putting the ``.data = `` part on its
-own line is easier to read and likely more future proof. 
+You should not modify the rk3588_soc_data while adding rk3576_soc_data in
+the same commit. Extending the _soc_data should be done on its own.
+
+>  
+>  static const struct of_device_id dt_match[] = {
+>  	{ .compatible = "rockchip,rk3588-rknn-core", .data = &rk3588_soc_data },
+> +	{ .compatible = "rockchip,rk3576-rknn-core", .data = &rk3576_soc_data },
+>  	{}
+>  };
+>  MODULE_DEVICE_TABLE(of, dt_match);
+> diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
+> index aa26e2977..c5f91f4c5 100644
+> --- a/drivers/accel/rocket/rocket_job.c
+> +++ b/drivers/accel/rocket/rocket_job.c
+> @@ -7,6 +7,7 @@
+>  #include <drm/drm_file.h>
+>  #include <drm/drm_gem.h>
+>  #include <drm/rocket_accel.h>
+> +#include <linux/hrtimer.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/overflow.h>
+>  #include <linux/iommu.h>
+> @@ -21,6 +22,15 @@
+>  
+>  #define JOB_TIMEOUT_MS 500
+>  
+> +/*
+> + * RK3576 arms the same DPU completion as RK3588, but the interrupt never
+> + * reaches the GIC. The completion itself is visible in INTERRUPT_RAW_STATUS,
+> + * so sample that instead. The tick cap bounds jobs that never raise it at all,
+> + * which is the same open problem as the wrong inference results.
+> + */
+> +#define RK3576_POLL_INTERVAL_NS	1000000LL	/* 1 ms */
+> +#define RK3576_POLL_MAX_TICKS	8
+> +
+>  static struct rocket_job *
+>  to_rocket_job(struct drm_sched_job *sched_job)
+>  {
+> @@ -151,6 +161,14 @@ static void rocket_job_hw_submit(struct rocket_core *core, struct rocket_job *jo
+>  
+>  	rocket_pc_writel(core, OPERATION_ENABLE, PC_OPERATION_ENABLE_OP_EN(1));
+>  
+> +	if (core->soc->poll_completion) {
+> +		core->poll_ticks = 0;
+> +		WRITE_ONCE(core->poll_seq, core->poll_seq + 1);
+> +		atomic_set(&core->poll_active, 1);
+> +		hrtimer_start(&core->poll_timer, ns_to_ktime(RK3576_POLL_INTERVAL_NS),
+> +			      HRTIMER_MODE_REL);
+> +	}
+> +
+>  	dev_dbg(core->dev, "Submitted regcmd at 0x%llx to core %d", task->regcmd, core->index);
+>  }
+>  
+> @@ -341,30 +359,108 @@ static struct dma_fence *rocket_job_run(struct drm_sched_job *sched_job)
+>  	return ERR_PTR(ret);
+>  }
+>  
+> +static enum hrtimer_restart rocket_poll_timer_fn(struct hrtimer *timer)
+> +{
+> +	struct rocket_core *core = container_of(timer, struct rocket_core, poll_timer);
+> +	u32 raw;
+> +
+> +	if (!atomic_read(&core->poll_active))
+> +		return HRTIMER_NORESTART;
+> +
+> +	WRITE_ONCE(core->poll_work_seq, READ_ONCE(core->poll_seq));
+> +
+> +	raw = rocket_pc_readl(core, INTERRUPT_RAW_STATUS);
+> +	if ((raw & (PC_INTERRUPT_RAW_STATUS_DPU_0 | PC_INTERRUPT_RAW_STATUS_DPU_1)) ||
+> +	    ++core->poll_ticks >= RK3576_POLL_MAX_TICKS) {
+> +		atomic_set(&core->poll_active, 0);
+> +		schedule_work(&core->poll_work);
+> +		return HRTIMER_NORESTART;
+> +	}
+> +
+> +	hrtimer_forward_now(timer, ns_to_ktime(RK3576_POLL_INTERVAL_NS));
+> +	return HRTIMER_RESTART;
+> +}
+> +
+> +/* Start the job's next task, or retire it. Caller holds job_lock. */
+> +static void rocket_job_next_locked(struct rocket_core *core)
+> +{
+> +	lockdep_assert_held(&core->job_lock);
+> +
+> +	if (!core->in_flight_job)
+> +		return;
+> +
+> +	if (core->in_flight_job->next_task_idx < core->in_flight_job->task_count) {
+> +		rocket_job_hw_submit(core, core->in_flight_job);
+> +		return;
+> +	}
+> +
+> +	iommu_detach_group(NULL, iommu_group_get(core->dev));
+> +	dma_fence_signal(core->in_flight_job->done_fence);
+> +	pm_runtime_put_autosuspend(core->dev);
+> +	core->in_flight_job = NULL;
+> +}
+> +
+> +static void rocket_poll_work_fn(struct work_struct *work)
+> +{
+> +	struct rocket_core *core = container_of(work, struct rocket_core, poll_work);
+> +
+> +	pm_runtime_mark_last_busy(core->dev);
+> +
+> +	scoped_guard(mutex, &core->job_lock) {
+> +		/*
+> +		 * The interrupt can land while this work is queued, retire the job
+> +		 * and start the next task. poll_seq only advances under job_lock,
+> +		 * in hw_submit, so comparing it here says whether that happened.
+> +		 */
+> +		if (READ_ONCE(core->poll_dying) ||
+> +		    READ_ONCE(core->poll_work_seq) != core->poll_seq)
+> +			return;
+> +
+> +		/*
+> +		 * Unlike an interrupt there is no hardware condition to ack here,
+> +		 * so with no job in flight there is nothing to write, and the
+> +		 * device may have autosuspended underneath this work already.
+> +		 */
+> +		if (!core->in_flight_job)
+> +			return;
+> +
+> +		rocket_pc_writel(core, OPERATION_ENABLE, 0x0);
+> +		rocket_pc_writel(core, INTERRUPT_CLEAR, 0x1ffff);
+> +
+> +		rocket_job_next_locked(core);
+> +	}
+> +}
+> +
+>  static void rocket_job_handle_irq(struct rocket_core *core)
+>  {
+> +	unsigned int seq = 0;
+> +
+> +	if (core->soc->poll_completion) {
+> +		seq = READ_ONCE(core->poll_seq);
+> +		atomic_set(&core->poll_active, 0);
+> +		hrtimer_cancel(&core->poll_timer);
+> +	}
+> +
+>  	pm_runtime_mark_last_busy(core->dev);
+>  
+>  	scoped_guard(mutex, &core->job_lock) {
+>  		/*
+> -		 * Stopping the block belongs under the lock. hw_submit() writes
+> -		 * OPERATION_ENABLE too, and outside the lock this zero can land
+> -		 * after that one and kill a task that has only just started.
+> +		 * Stopping the block belongs under the lock. A submit from the
+> +		 * other completion path writes OPERATION_ENABLE too, and outside
+> +		 * the lock this zero can land after that one and kill a task that
+> +		 * has only just started.
+>  		 */
+
+You're modifying a comment which you added in patch 6/9 ...
+
+>  		rocket_pc_writel(core, OPERATION_ENABLE, 0x0);
+>  		rocket_pc_writel(core, INTERRUPT_CLEAR, 0x1ffff);
+>  
+> -		if (core->in_flight_job) {
+> -			if (core->in_flight_job->next_task_idx < core->in_flight_job->task_count) {
+> -				rocket_job_hw_submit(core, core->in_flight_job);
+> -				return;
+> -			}
+> +		/*
+> +		 * Where both completion paths are live, one whose submit the other
+> +		 * has already retired must not go on to start a further task.
+> +		 */
+> +		if (core->soc->poll_completion && seq != core->poll_seq)
+> +			return;
+>  
+> -			iommu_detach_group(NULL, iommu_group_get(core->dev));
+> -			dma_fence_signal(core->in_flight_job->done_fence);
+> -			pm_runtime_put_autosuspend(core->dev);
+> -			core->in_flight_job = NULL;
+> -		}
+> +		rocket_job_next_locked(core);
+
+... while also changing its implementation ... in a commit which should
+'just' add support for RK3576's NPU. Don't combine separate things in one
+commit which do not belong together (in a single commit).
 
 Cheers,
   Diederik
 
->  	{}
->  };
->  MODULE_DEVICE_TABLE(of, dt_match);
-> @@ -240,7 +246,7 @@ static int rocket_device_runtime_resume(struct device *dev)
->  	if (core < 0)
->  		return -ENODEV;
->  
-> -	err = clk_bulk_prepare_enable(ARRAY_SIZE(rdev->cores[core].clks), rdev->cores[core].clks);
-> +	err = clk_bulk_prepare_enable(rdev->cores[core].soc->num_clks, rdev->cores[core].clks);
->  	if (err) {
->  		dev_err(dev, "failed to enable (%d) clocks for core %d\n", err, core);
->  		return err;
-> @@ -260,7 +266,7 @@ static int rocket_device_runtime_suspend(struct device *dev)
->  	if (!rocket_job_is_idle(&rdev->cores[core]))
->  		return -EBUSY;
->  
-> -	clk_bulk_disable_unprepare(ARRAY_SIZE(rdev->cores[core].clks), rdev->cores[core].clks);
-> +	clk_bulk_disable_unprepare(rdev->cores[core].soc->num_clks, rdev->cores[core].clks);
->  
->  	return 0;
+>  	}
 >  }
-> diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
-> index bb77b6bf0..aa26e2977 100644
-> --- a/drivers/accel/rocket/rocket_job.c
-> +++ b/drivers/accel/rocket/rocket_job.c
-> @@ -345,10 +345,15 @@ static void rocket_job_handle_irq(struct rocket_core *core)
+>  
+> @@ -466,6 +562,11 @@ int rocket_job_init(struct rocket_core *core)
+>  	int ret;
+>  
+>  	INIT_WORK(&core->reset.work, rocket_reset_work);
+> +	INIT_WORK(&core->poll_work, rocket_poll_work_fn);
+> +	hrtimer_setup(&core->poll_timer, rocket_poll_timer_fn, CLOCK_MONOTONIC,
+> +		      HRTIMER_MODE_REL);
+> +	atomic_set(&core->poll_active, 0);
+> +	core->poll_dying = false;
+>  	spin_lock_init(&core->fence_lock);
+>  	mutex_init(&core->job_lock);
+>  
+> @@ -507,8 +608,23 @@ int rocket_job_init(struct rocket_core *core)
+>  
+>  void rocket_job_fini(struct rocket_core *core)
 >  {
->  	pm_runtime_mark_last_busy(core->dev);
+> +	/*
+> +	 * Stop the poll from starting hardware work before tearing anything
+> +	 * down: it submits the next task, and drm_sched_fini() does not wait
+> +	 * for work already queued. Cancel after the scheduler is gone, so a
+> +	 * job running now cannot re-arm the timer behind the cancel.
+> +	 */
+> +	if (core->soc->poll_completion)
+> +		WRITE_ONCE(core->poll_dying, true);
+> +
+>  	drm_sched_fini(&core->sched);
 >  
-> -	rocket_pc_writel(core, OPERATION_ENABLE, 0x0);
-> -	rocket_pc_writel(core, INTERRUPT_CLEAR, 0x1ffff);
-> +	scoped_guard(mutex, &core->job_lock) {
-> +		/*
-> +		 * Stopping the block belongs under the lock. hw_submit() writes
-> +		 * OPERATION_ENABLE too, and outside the lock this zero can land
-> +		 * after that one and kill a task that has only just started.
-> +		 */
-> +		rocket_pc_writel(core, OPERATION_ENABLE, 0x0);
-> +		rocket_pc_writel(core, INTERRUPT_CLEAR, 0x1ffff);
->  
-> -	scoped_guard(mutex, &core->job_lock)
->  		if (core->in_flight_job) {
->  			if (core->in_flight_job->next_task_idx < core->in_flight_job->task_count) {
->  				rocket_job_hw_submit(core, core->in_flight_job);
-> @@ -360,6 +365,7 @@ static void rocket_job_handle_irq(struct rocket_core *core)
->  			pm_runtime_put_autosuspend(core->dev);
->  			core->in_flight_job = NULL;
->  		}
+> +	if (core->soc->poll_completion) {
+> +		atomic_set(&core->poll_active, 0);
+> +		hrtimer_cancel(&core->poll_timer);
+> +		cancel_work_sync(&core->poll_work);
 > +	}
+> +
+>  	cancel_work_sync(&core->reset.work);
+>  	destroy_workqueue(core->reset.wq);
 >  }
->  
->  static void
 
 
 
