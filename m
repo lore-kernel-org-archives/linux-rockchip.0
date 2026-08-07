@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D027EC5AC7A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 16:19:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B3C1C5AC7A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 16:38:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lQBdeS5S6FZrMbkCq89q/+TqnQclTTaQwsHQXaHEg+E=; b=d/VxGT/kStMDZcqMBYEStX29EL
-	TO3ZBor3PV5+gkMirw8JeaPcF+zuxkaDNYMOzvJvDy6dxrqvZbnDMoBvf4WfoxGHez7L5fBUw2PQa
-	okgT04uMi6g1hViDdsjREJgvf+3YuJxXMW2ZgAnEpIAN1BjTVyk4f9MuPSo8w3GQzfzvp24Dj5iKN
-	H8r9i80VASCIYunNkBlKXqgP6Nbwv+L6s0BjzkEIre2M9V9Wn3fo9QI06BH2VKzFarwIbdB7/R65o
-	zrKtITPFmnuzPJj1k5gZvXrEtrX2xwmfVB8z481WvVwe81s/DVoLPR7GG3jwxLGHGQFY93DXswLaG
-	FQnYMhBA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fOMod5FIVkOZBimxZAj12dOIMCmva1ITJI1bmBVaH9Q=; b=QKClisunAPfU4/
+	d5cB987cpelQaq2mKUIsPs5XjbF/ExoyQA5gj77NDavG0orc2W/3N3TIRoj/T3OE5jnWA0bWRCEnX
+	vaNstPDh49wkiV3NQJH7T7OU+WGQ292DJD5suyOPAP3WOaL4CFxsg0kSrFbNQHYH8Hb0G3HdD1H/m
+	juL1bLxU8bxtAdcajc3FOlGn/zIkfTaa59rijnG52mT8hc8UFIvk32hyB5hXqva/VK1oHi6lWEAux
+	dg/hijCqUSGluvgUG3In4ejvaXxotPoHGOGptqfFTDV0zlUOsnyXdHCrH/EwNehtVIq7tN8AysvCn
+	naEw7/qGKdF/DAgljZpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsNI0-00000008PXf-3NbY;
-	Fri, 07 Aug 2026 16:19:20 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wsNae-00000008REj-3ISn;
+	Fri, 07 Aug 2026 16:38:36 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsNHy-00000008PWV-2SK9;
-	Fri, 07 Aug 2026 16:19:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1786119544; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=K0GKjJZQNPnOHDjePSuGREZI05FJypSOLeHZgpMKQyRR1NgTC60dOneQUW4Xll63zonEwVeazpiOXVz9/LISKOji9T961WqHfvETLEnSmznC+PxAL3D4DN/tFwjxykBXNaGJ/j6JVvKw/X5wX1qL2f3nJaMV7bnGiwZY9hs/TVo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1786119544; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=mr9R/vZWzqwYTjCnEi+TnE43sdFKQDE+DCRlrW5kI6w=; 
-	b=TD2n7Opj4uQb5hmxfJ+rsqx7q/8SLYN62zrG1qyT9kmyIJei2N8uIJwvuH71kfUU+Wd58K+G8Ov3WWPpa1NVf4txnn+H+TTQx84nlIeWqRZN1nNTExyL8n61cj3VQBLca3kr+G0b55PGA0eHTjJzKLyEtpggirpzJ3kTCJRADm0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1786119544;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=mr9R/vZWzqwYTjCnEi+TnE43sdFKQDE+DCRlrW5kI6w=;
-	b=kHQpO1Uj89RaOq+NSlmkxU8+Cc8cPLnyWx4chvrDmpZiXbYvxD+tmrhIio6CKu41
-	MHfTCxUngxdYTHBMJTWJ9+2d2st3kf/jw7NuetcMyIAC0oRdZ18PIiz5IvmZa0kqVxb
-	5NtbrkMXC8GbR3a2vtSx4bU6Cyxccb8iYvaaxb6I=
-Received: by mx.zohomail.com with SMTPS id 1786119540982740.1421283012713;
-	Fri, 7 Aug 2026 09:19:00 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id ECAFC180895; Fri, 07 Aug 2026 18:18:56 +0200 (CEST)
-Date: Fri, 7 Aug 2026 18:18:56 +0200
+	id 1wsNab-00000008RDZ-3cYZ;
+	Fri, 07 Aug 2026 16:38:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1786120710;
+	bh=tLm0zigixPAVvP3oK+s64VXFhk0oX1AZNsKqugMnHKc=;
+	h=From:Date:Subject:To:Cc:From;
+	b=mVmzX/avb8gOJbXIFfcRmkjiLyvtsAbDpVM4nu92apRen/k3ewBcz8yYfGXbw7DRu
+	 IDrRGZDwawffWBJ5C8/ehScertL46TvD6nAj4yzp1hNmHEsDrDTSY9qU87oBWQcj6k
+	 qVk4R2msy+AHo2tq7tVRam9JCabD6JXHNUBtwvWrc2tZNaGXR1zcr2YMzFk6g+MdYr
+	 oYaqAu83wW+Idk5m8cIKZnlfjIq0YPnCU37R4Ah7LvcnM0Z7bNslAJoBPaFt8LJbnq
+	 ZfcR82JHqlzeW7UU0fWs4MRpgSp5xnOCkyH8xVtfxhu4zJUXzeCGr1OhZSpe/odI2u
+	 AUTw+ZkhJnzug==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9C2B417E0075;
+	Fri, 07 Aug 2026 18:38:30 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 511A9480029; Fri, 07 Aug 2026 18:38:30 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, 
-	Detlev Casanova <detlev.casanova@collabora.com>, Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	Michael Riesch <michael.riesch@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH 4/4] arm64: defconfig: enable Rockchip NPU support
-Message-ID: <anXy1u7n-OFcQok0@venus>
-References: <20260806-rockchip-defconfig-additions-v1-0-6b1d8baa0bf5@collabora.com>
- <20260806-rockchip-defconfig-additions-v1-4-6b1d8baa0bf5@collabora.com>
- <c28f33bc-bab4-4d64-9e53-007bceb4d321@kernel.org>
+Date: Fri, 07 Aug 2026 18:38:19 +0200
+Subject: [PATCH v2] arm64: defconfig: enable Rockchip Multimedia drivers
 MIME-Version: 1.0
-In-Reply-To: <c28f33bc-bab4-4d64-9e53-007bceb4d321@kernel.org>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/286.110.97
-X-ZohoMailClient: External
+Message-Id: <20260807-rockchip-defconfig-additions-v2-1-cbb8eef87be6@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42NQQ6CMBBFr0JmbU0pQogr70FYtNMpjCIlLRIN4
+ e4WvIDLl7z//gqRAlOEa7ZCoIUj+zGBOmWAvR47EmwTg5KqkrWsRPD4wJ4nYcmhHx13QlvLc9p
+ FUZCryxIvtlAEKTEFcvw+8k374/gyd8J5b+5Gz3H24XP8L/nu/Xm15EKKyuS2NlpL48ob+mHQx
+ gd9Rv+Edtu2L9TmaV7eAAAA
+X-Change-ID: 20260806-rockchip-defconfig-additions-3ef855c4d32e
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Detlev Casanova <detlev.casanova@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2589;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=tLm0zigixPAVvP3oK+s64VXFhk0oX1AZNsKqugMnHKc=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp2CgJb4Bp6++MC8TzrUoo6SauZjzNjme8rS
+ XYXSEF7SKkqz4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqdgoCAAoJENju1/PI
+ O/qaNkkP/R7NRhzL/J34VCyrymq6xoJX+uU5pGeKgsleFRnp9vAZDWsL0hv51LpuISMXHfOcUEh
+ tS1m4o+yqJJA+2frPykseduoRalKQShUm0PmvPB5D4wiy+eR0m0QHK4bOPh3fL0BU0iEMt5ow9J
+ DEmIYGH9YohRzrMe+qm+LtRZsWphxzuz9XE4dkjja4DUwm3FU+NGzZN+JjeBQ4OaFLAWg8vrGZg
+ oY2ktvzV6gBNBF+7F6IvPbOkVDCOZnEW6r0q8uQkbzd9oR9i7QJZco2rGrRS8y9z0fJulLpBDDv
+ 5MOcMdSFxmwu+kGJjlBRaBJFOa/f67h4nRJ4eyEuXf6VeJtIQHC5/SPRAP3JhztRS+X3RiAMuAJ
+ wRcSqzxkwdmSVXGpAdARtpxLY00xxJUcJjLrmcdt0CM11n6TTXeHq5LGoMRLwooiXK20OTtHsQl
+ tWEAfWysvKk4RCdMTSWoSg3/dqUPQRK70Panl5/MHTNrKfVWpXGR+NuTiyMiUo+tdLaAUOau1QX
+ 93T9P1Drwz4y0Vq1ZjPVNRQSfSJllQbqBlxr+pU1CZEbgKLopDBQDmjLmFQDiEvdSN33PlOY7u5
+ UBmWHpYMQJqWIxUhMV1RKY9QoUiUkcYv853a8s/EMp+Uy8U3xD61daCBm8pZ52OhVvV1lFnsxgO
+ ieQlJd3hGNvClrbdwz4wqdQ==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_091918_671906_7FD5CD19 
-X-CRM114-Status: GOOD (  15.70  )
+X-CRM114-CacheID: sfid-20260807_093834_054254_4966CEE9 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,80 +94,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7524305687182802959=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Enable multimedia related drivers used by the Radxa ROCK 5B (and most
+other RK3588/RK3576 boards), so that all hardware is supported by the
+default config.
 
---===============7524305687182802959==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tycb5hee5jq7unt4"
-Content-Disposition: inline
+ * RKVDEC - RK3588/RK3576 video decoder for H.264 and H.265
+ * Sony IMX415 - Sensor used by the Radxa Cam 4K module
+ * Rocket - RK3588 NPU driver
+ * Verisilicon IOMMU - IOMMU used by RK3588 AV1 video decoder
+ * Rockchip MIPI RX Innosilicon D-PHY - CSI PHY
 
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+Changes in v2:
+- Link to v1: https://patch.msgid.link/20260806-rockchip-defconfig-additions-v1-0-6b1d8baa0bf5@collabora.com
+- Squash all patches (Krzysztof Kozlowski)
 
---tycb5hee5jq7unt4
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 4/4] arm64: defconfig: enable Rockchip NPU support
-MIME-Version: 1.0
+The Verisilicon IOMMU defconfig change has previously been sent by
+Benjamin as part of the IOMMU series, but did not reach upstream:
 
-Hi,
+https://lore.kernel.org/all/20260415072349.44237-6-benjamin.gaignard@collabora.com/
+---
+ arch/arm64/configs/defconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-On Fri, Aug 07, 2026 at 07:58:51AM +0200, Krzysztof Kozlowski wrote:
-> On 06/08/2026 19:24, Sebastian Reichel wrote:
-> > Enable support for the Rockchip NPU, which can be used with upstream
-> > mesa on many RK3588 boards, such as the Radxa Rock 5 family or the
-> > Orange Pis.
-> >=20
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
->=20
-> This should be squashed with the previous ones. Do not enable item by
-> item. All your three last patches do the same logical thing: enable
-> multimedia drivers for Radxa Rock 5 (+ others).
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 654a102cb5bc..5faccf00b897 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -939,6 +939,7 @@ CONFIG_VIDEO_RENESAS_VSP1=m
+ CONFIG_VIDEO_RCAR_DRIF=m
+ CONFIG_VIDEO_ROCKCHIP_RGA=m
+ CONFIG_VIDEO_ROCKCHIP_CIF=m
++CONFIG_VIDEO_ROCKCHIP_VDEC=m
+ CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
+ CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
+ CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
+@@ -949,6 +950,7 @@ CONFIG_VIDEO_TI_J721E_CSI2RX=m
+ CONFIG_VIDEO_HANTRO=m
+ CONFIG_VIDEO_IMX219=m
+ CONFIG_VIDEO_IMX412=m
++CONFIG_VIDEO_IMX415=m
+ CONFIG_VIDEO_OV5640=m
+ CONFIG_VIDEO_OV5645=m
+ CONFIG_VIDEO_S5KJN1=m
+@@ -1063,6 +1065,8 @@ CONFIG_BACKLIGHT_GPIO=m
+ CONFIG_LOGO=y
+ # CONFIG_LOGO_LINUX_MONO is not set
+ # CONFIG_LOGO_LINUX_VGA16 is not set
++CONFIG_DRM_ACCEL=y
++CONFIG_DRM_ACCEL_ROCKET=m
+ CONFIG_SOUND=m
+ CONFIG_SND=m
+ CONFIG_SND_ALOOP=m
+@@ -1611,6 +1615,7 @@ CONFIG_ROCKCHIP_IOMMU=y
+ CONFIG_TEGRA_IOMMU_SMMU=y
+ CONFIG_APPLE_DART=m
+ CONFIG_MTK_IOMMU=y
++CONFIG_VSI_IOMMU=m
+ CONFIG_REMOTEPROC=y
+ CONFIG_IMX_REMOTEPROC=y
+ CONFIG_MTK_SCP=m
+@@ -1785,6 +1790,7 @@ CONFIG_PHY_RZ_G3E_USB3=m
+ CONFIG_PHY_ROCKCHIP_EMMC=y
+ CONFIG_PHY_ROCKCHIP_INNO_HDMI=m
+ CONFIG_PHY_ROCKCHIP_INNO_USB2=y
++CONFIG_PHY_ROCKCHIP_INNO_CSIDPHY=m
+ CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY=m
+ CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=m
+ CONFIG_PHY_ROCKCHIP_PCIE=m
 
-IMHO this is as much one logical thing as sending a camera driver
-and a video decoder as one patch would be, but I can send a v2 with
-all patches squashed together of course.
+---
+base-commit: 2d578cd590adc2133aa24496afcd7c3f7f9ba36a
+change-id: 20260806-rockchip-defconfig-additions-3ef855c4d32e
 
-Greetings,
+Best regards,
+--  
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
--- Sebastian
-
---tycb5hee5jq7unt4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmp2BW0ACgkQ2O7X88g7
-+ppnaA//VH8Rl33oLLJq04KuJNBdH+PYwHjyV0qG9cDm276Icv0hV6RpXdDaqyZS
-A2qHC4C1DMN4Cu5tVbrhu6TqizeencqELehIDv+JMJSZWh0cftn7BvzY1rUWgapK
-quOF4zUj7KRAJ06qyS17m4WL4oniFQ8Uk3zdf7gQAqCroympQdmo426R+RZip0ip
-BNJyqEmGZnNVq4o/OComPRV3ulZjxCEj+7T7az7ddMve59+XGHMmrzQG/iFHOJwB
-dDl1b7rABdMo27LPSM1VDs8/TJHdwyq4sLZGBCySUeWBVVK5Hrx6MNmPq9Jj6Ml0
-BZeuyoKUASuyiHnVNW3GZBrr8USSHwxmt64TCKftJhHgGurUEHEN4n0iNzLrOha3
-UznHEcguvw3PHHbAg29DlqOtksMtC/zlbTI6pmpbTeS3MflSGFkdWQ3pi7zQXPRL
-M8eJqfEwgcWdKTSnaW4q99W1RHkgxt0b3zDIy2/jpb6AzwrrYjAi+ftPjjXRMSuJ
-Di9vwlwbSnBNSQP4YT/SPQ8EItgjFElX/2bG/20Tf6wrQB7u3TfhV3U/MtqrakGe
-nPOBpbZs8PYNs/7/+G7i2AFCWL6ts3HZ2e7S0kpa6lscRudVsQ6mFU/A2Jh5XUPK
-5TnzS5TZ64FhMn6v7NXNUbCEo7akHJHTmG76M3osA17gHkPA6kU=
-=jKaS
------END PGP SIGNATURE-----
-
---tycb5hee5jq7unt4--
-
-
---===============7524305687182802959==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7524305687182802959==--
-
