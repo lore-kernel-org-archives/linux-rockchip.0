@@ -4,85 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B3C1C5AC7A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 16:38:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CF5FC5AC7A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 21:17:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fOMod5FIVkOZBimxZAj12dOIMCmva1ITJI1bmBVaH9Q=; b=QKClisunAPfU4/
-	d5cB987cpelQaq2mKUIsPs5XjbF/ExoyQA5gj77NDavG0orc2W/3N3TIRoj/T3OE5jnWA0bWRCEnX
-	vaNstPDh49wkiV3NQJH7T7OU+WGQ292DJD5suyOPAP3WOaL4CFxsg0kSrFbNQHYH8Hb0G3HdD1H/m
-	juL1bLxU8bxtAdcajc3FOlGn/zIkfTaa59rijnG52mT8hc8UFIvk32hyB5hXqva/VK1oHi6lWEAux
-	dg/hijCqUSGluvgUG3In4ejvaXxotPoHGOGptqfFTDV0zlUOsnyXdHCrH/EwNehtVIq7tN8AysvCn
-	naEw7/qGKdF/DAgljZpw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0RMzJxtvZ0qARwVl3mOHBHkIVGTRJC/4A3kVjUIUJEU=; b=cTo5gZn7+eZnyu
+	YRSVGtqAtNBYq6IcA9Ff49tydRbsxpIwdKs2O65YKD6Q3dA1L6VdqAH/7EpiT19bvyCqmJX0cO6TS
+	KBIiUF0rNIkyvMxqNpVL1lHsYnVqUqBWeOufpPN7joHRZnCMR2vgd2YMRiMVCxLOOXZ6NplvYmPyx
+	Hdas3uE/5Wzvd6HKYKN3eBQ3UK5p3IUNl+BhMzI3G6Z62B1o7jGzXEZvO6lwmZ6wGEf4gnzqpj1CD
+	JrijUZu4akv9KBcUXDmbb/0hIPlkxzmP/CxlsFk6pmgsDnSbB7vMA7JB/ryrtd3XDMkYW/VSlLoxy
+	QfFc3ymuzSviH2PY157A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsNae-00000008REj-3ISn;
-	Fri, 07 Aug 2026 16:38:36 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wsRvy-00000008khB-3OUr;
+	Fri, 07 Aug 2026 21:16:54 +0000
+Received: from flow-b6-smtp.messagingengine.com ([202.12.124.141])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsNab-00000008RDZ-3cYZ;
-	Fri, 07 Aug 2026 16:38:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1786120710;
-	bh=tLm0zigixPAVvP3oK+s64VXFhk0oX1AZNsKqugMnHKc=;
-	h=From:Date:Subject:To:Cc:From;
-	b=mVmzX/avb8gOJbXIFfcRmkjiLyvtsAbDpVM4nu92apRen/k3ewBcz8yYfGXbw7DRu
-	 IDrRGZDwawffWBJ5C8/ehScertL46TvD6nAj4yzp1hNmHEsDrDTSY9qU87oBWQcj6k
-	 qVk4R2msy+AHo2tq7tVRam9JCabD6JXHNUBtwvWrc2tZNaGXR1zcr2YMzFk6g+MdYr
-	 oYaqAu83wW+Idk5m8cIKZnlfjIq0YPnCU37R4Ah7LvcnM0Z7bNslAJoBPaFt8LJbnq
-	 ZfcR82JHqlzeW7UU0fWs4MRpgSp5xnOCkyH8xVtfxhu4zJUXzeCGr1OhZSpe/odI2u
-	 AUTw+ZkhJnzug==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9C2B417E0075;
-	Fri, 07 Aug 2026 18:38:30 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 511A9480029; Fri, 07 Aug 2026 18:38:30 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 07 Aug 2026 18:38:19 +0200
-Subject: [PATCH v2] arm64: defconfig: enable Rockchip Multimedia drivers
+	id 1wsRvw-00000008kgf-1pDU;
+	Fri, 07 Aug 2026 21:16:53 +0000
+Received: from phl-compute-09.internal (phl-compute-09.internal [10.202.2.49])
+	by mailflow.stl.internal (Postfix) with ESMTP id 1220313000A9;
+	Fri,  7 Aug 2026 17:16:49 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-09.internal (MEProxy); Fri, 07 Aug 2026 17:16:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm1; t=1786137408; x=
+	1786141008; bh=u65a33YsPGkrm5DbFwjYqKu3v67PWiH6b2m7nICjwnc=; b=J
+	NpXQYwyedpKQgkLt/svWlAD7a4eXz7jjz4I4cwX//0AGaTe3bXw0IHZFyBo4Fh8R
+	N4S9wbXMnTQ9c+ukWkn4XHfZz9KsuhtFSQkEj7jK1OiRAfi8128BdYbSI2zdvMhi
+	gYncV3KDt1aWDPWgTShgsb3I8CqHpR1yxsQRMw59yJ7WOZy2bjUksDn+ZIwmpUOM
+	OtBOkrKZlIF5hWfcG7YQVIFFk67mnaDygTUqkFRllLLgt4FA4am5HwU9+DqXLaHX
+	Ze9Zkpyr7lbdU/CzmGyHzFrI6co3pwUUswPOQw7jucuX0CVNTpJS2wqKldm/KOVs
+	IXAUGoJJVpD9b7rl9oUiQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1786137408; x=1786141008; bh=u
+	65a33YsPGkrm5DbFwjYqKu3v67PWiH6b2m7nICjwnc=; b=JcV3+jCohCCw8xe8T
+	+NRlD5bdDvDK/XsEwBXTlwYTax4FDlbx2yDDOvXiZzJKTrntkoz26i7p78kVfMbY
+	f8sap9GRH9rBsdk0sHpcys4phR6Gm3jpLJj/iSQ5yhgdrJlN8vmC10I+q0U0Jf1v
+	M4IMXmCW5LY74T0Y/1fKG9YHLKWGcXKjD8do5x7DE6/74D/qIzq4Z9qrphGe4Jc+
+	2VntX3FvY5X80QwIcWUSXBp2tFMe3ZrdF+m4LMpMzCDsDRwybmFxFoZvh2GawI5I
+	8nT6QByOpJsxWzj2xDsGFCkPvBJtf92xNN5mMIWMjFUE7Qt2+Rmom1X11fl62nHH
+	UvnGw==
+X-ME-Sender: <xms:P0t2akcJ2AtI38arOXbPxmWwavby04k9k7MKFUpR0VRO7BIlaJSsEg>
+    <xme:P0t2ask7MJWEiYtEyzG6EGTr9e8VMBAtzP4Ij0JlGXmSHalPxlV7G_wAL8uXaAQKT
+    PJnCKmH__RtXbHENAt9CQwvYWRFBvKybIk6gQo-A5VU_Nif5Y5WUP3K>
+X-ME-Received: <xmr:P0t2ahwsfMPv5gx3uq0_Hj_T5TBbBfljrQTb8sxSk0LzhUayqlZyoaaWrqaqxSU5V1l0bIW7jw>
+X-ME-Proxy-Cause: dmFkZTE3CiQE/dtghaiNWTxUzA4DwineYnqEv0+tvipTjALwsm+Cw+C6zo0v0EpTPzQ9Mn
+    7K1v0ISkThNVVdy9zT5enDYkQ328ZPmg6XlQV24kjuLO8JSp/o3UAwjIiW7c+/M1ggiOLe
+    e4yOmhkBGm8SdJk3E7Ut7gVXAcjY0fjeeXkdFqLwFfbSm0l6Hyn8QaoHJTecyEmZU8CZ9n
+    6Ju102hHhiwTi+oz9n3BMsoA/hR5W7g4QG9Nz1simaYp4M9rij/GI69isZiqLTFlK1jQii
+    qt4HQgekyTZKyvh26ermFRPZ+C17B8wWUThV3JaE3FaDaba9TRf0wNfL1JiePztdQ5+eGb
+    MNbiiPkbAahx9X54l+3mAUMxZZKU6BHwCWKlCCcvfylxNMXpoANnG87I1IH1lRAL8quzpW
+    91rs4ZzdXxSXRdrvNuY8NkFSIAogxZDkYqrpsi2MzE/r57hZYruyXCprUmUxFFXkgnngq0
+    aSE6/tL3UyBu0rT70BW78/qJ6XR8+mgRWmVDS6+6JK4kTkOpMezMFy1+TXtyeSScKo0Vv2
+    3uTUrY7GYDxp7NryNgnWatk3UhEVV4uiGCchk/alsA9YMKXwkKO+K19BaV/g5QyAR7lHKx
+    sLmpnZ5RgUrD3P2tI47I4Of9meLGI4MZHiGXw5YSAfh29d0Qb5j2XcCZikxA
+X-ME-Proxy: <xmx:P0t2anyPvSI9fwDnt9X0jnw6wyMFSXtCS4UNOQRxXEYETMfbje7H4Q>
+    <xmx:P0t2apWK2YBu-Dvx037tvqsy6fVYAaL8BoLIkkMfcgUEPJ3nvZC_LA>
+    <xmx:P0t2amQrKFQW43WUVjDAFPPZlVFZmccJeGVSkTyS8KuXkuEcLUmm4w>
+    <xmx:P0t2apQ0NB4tq6za52cwSFmo3z357rvTQQUBjPoFXEd8A8B-r6Yv3Q>
+    <xmx:QEt2atVbsXb-QeqYKrl8Fi7mBfulVh_009mUPQqh4i_IFvWHOw5EB3Vu>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 7 Aug 2026 17:16:36 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: robin.murphy@arm.com,
+	diederik@cknow-tech.com,
+	tomeu@tomeuvizoso.net,
+	heiko@sntech.de
+Cc: royalnet026@gmail.com,
+	alchark@flipper.net,
+	chaoyi.chen@rock-chips.com,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH v6 7/9] accel/rocket: add RK3576 NPU (RKNN) support
+Date: Sat,  8 Aug 2026 09:16:28 +1200
+Message-ID: <20260807211629.1573228-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <fb94bd28-fdbf-4f99-a6ff-b5ab18c64345@arm.com>
+References: 
 MIME-Version: 1.0
-Message-Id: <20260807-rockchip-defconfig-additions-v2-1-cbb8eef87be6@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42NQQ6CMBBFr0JmbU0pQogr70FYtNMpjCIlLRIN4
- e4WvIDLl7z//gqRAlOEa7ZCoIUj+zGBOmWAvR47EmwTg5KqkrWsRPD4wJ4nYcmhHx13QlvLc9p
- FUZCryxIvtlAEKTEFcvw+8k374/gyd8J5b+5Gz3H24XP8L/nu/Xm15EKKyuS2NlpL48ob+mHQx
- gd9Rv+Edtu2L9TmaV7eAAAA
-X-Change-ID: 20260806-rockchip-defconfig-additions-3ef855c4d32e
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2589;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=tLm0zigixPAVvP3oK+s64VXFhk0oX1AZNsKqugMnHKc=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp2CgJb4Bp6++MC8TzrUoo6SauZjzNjme8rS
- XYXSEF7SKkqz4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqdgoCAAoJENju1/PI
- O/qaNkkP/R7NRhzL/J34VCyrymq6xoJX+uU5pGeKgsleFRnp9vAZDWsL0hv51LpuISMXHfOcUEh
- tS1m4o+yqJJA+2frPykseduoRalKQShUm0PmvPB5D4wiy+eR0m0QHK4bOPh3fL0BU0iEMt5ow9J
- DEmIYGH9YohRzrMe+qm+LtRZsWphxzuz9XE4dkjja4DUwm3FU+NGzZN+JjeBQ4OaFLAWg8vrGZg
- oY2ktvzV6gBNBF+7F6IvPbOkVDCOZnEW6r0q8uQkbzd9oR9i7QJZco2rGrRS8y9z0fJulLpBDDv
- 5MOcMdSFxmwu+kGJjlBRaBJFOa/f67h4nRJ4eyEuXf6VeJtIQHC5/SPRAP3JhztRS+X3RiAMuAJ
- wRcSqzxkwdmSVXGpAdARtpxLY00xxJUcJjLrmcdt0CM11n6TTXeHq5LGoMRLwooiXK20OTtHsQl
- tWEAfWysvKk4RCdMTSWoSg3/dqUPQRK70Panl5/MHTNrKfVWpXGR+NuTiyMiUo+tdLaAUOau1QX
- 93T9P1Drwz4y0Vq1ZjPVNRQSfSJllQbqBlxr+pU1CZEbgKLopDBQDmjLmFQDiEvdSN33PlOY7u5
- UBmWHpYMQJqWIxUhMV1RKY9QoUiUkcYv853a8s/EMp+Uy8U3xD61daCBm8pZ52OhVvV1lFnsxgO
- ieQlJd3hGNvClrbdwz4wqdQ==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_093834_054254_4966CEE9 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20260807_141652_651801_84CC3F39 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,84 +115,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable multimedia related drivers used by the Radxa ROCK 5B (and most
-other RK3588/RK3576 boards), so that all hardware is supported by the
-default config.
+On 07/08/2026 1:56 pm, Robin Murphy wrote:
+> If the interrupt never fires at all then possibly the signal depends on
+> some additional clock or power domain in order to propagate, or it's
+> just described incorrectly; or if other interrupt sources within the
+> NPU/IOMMU do still work then maybe there's some additional masking
+> control that's been overlooked, or perhaps it it just terminally broken.
 
- * RKVDEC - RK3588/RK3576 video decoder for H.264 and H.265
- * Sony IMX415 - Sensor used by the Radxa Cam 4K module
- * Rocket - RK3588 NPU driver
- * Verisilicon IOMMU - IOMMU used by RK3588 AV1 video decoder
- * Rockchip MIPI RX Innosilicon D-PHY - CSI PHY
+Robin, Diederik, I owe you both a correction before you spend any more
+time on this. The premise is wrong. The interrupt is fine, and the
+polling in patch 7 should not exist.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-Changes in v2:
-- Link to v1: https://patch.msgid.link/20260806-rockchip-defconfig-additions-v1-0-6b1d8baa0bf5@collabora.com
-- Squash all patches (Krzysztof Kozlowski)
+The completion interrupt does reach the GIC on RK3576. With the fix
+below and the hrtimer disabled, so that only a real interrupt can retire
+a job, a single int8 convolution runs correctly three times out of three
+on three different inputs with zero timeouts and /proc/interrupts
+counting up. No extra clock, no extra power domain, no extra mask.
 
-The Verisilicon IOMMU defconfig change has previously been sent by
-Benjamin as part of the IOMMU series, but did not reach upstream:
+What was actually wrong is one register write. PC_TASK_CON packs the
+task number, and rocket_registers.h is derived from RK3588, where that
+field is 12 bits wide with TASK_PP_EN, TASK_COUNT_CLEAR and RESERVED_0
+above it at bits 12, 13 and 14. RK3576 uses a 16 bit task number, so
+those three controls sit at bits 16, 17 and 18 instead:
 
-https://lore.kernel.org/all/20260415072349.44237-6-benjamin.gaignard@collabora.com/
----
- arch/arm64/configs/defconfig | 6 ++++++
- 1 file changed, 6 insertions(+)
+  rocket, v1 through v6:  TASK_CON = 0x00007001
+  vendor driver, RK3576:  TASK_CON = 0x00070001
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 654a102cb5bc..5faccf00b897 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -939,6 +939,7 @@ CONFIG_VIDEO_RENESAS_VSP1=m
- CONFIG_VIDEO_RCAR_DRIF=m
- CONFIG_VIDEO_ROCKCHIP_RGA=m
- CONFIG_VIDEO_ROCKCHIP_CIF=m
-+CONFIG_VIDEO_ROCKCHIP_VDEC=m
- CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
- CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
- CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
-@@ -949,6 +950,7 @@ CONFIG_VIDEO_TI_J721E_CSI2RX=m
- CONFIG_VIDEO_HANTRO=m
- CONFIG_VIDEO_IMX219=m
- CONFIG_VIDEO_IMX412=m
-+CONFIG_VIDEO_IMX415=m
- CONFIG_VIDEO_OV5640=m
- CONFIG_VIDEO_OV5645=m
- CONFIG_VIDEO_S5KJN1=m
-@@ -1063,6 +1065,8 @@ CONFIG_BACKLIGHT_GPIO=m
- CONFIG_LOGO=y
- # CONFIG_LOGO_LINUX_MONO is not set
- # CONFIG_LOGO_LINUX_VGA16 is not set
-+CONFIG_DRM_ACCEL=y
-+CONFIG_DRM_ACCEL_ROCKET=m
- CONFIG_SOUND=m
- CONFIG_SND=m
- CONFIG_SND_ALOOP=m
-@@ -1611,6 +1615,7 @@ CONFIG_ROCKCHIP_IOMMU=y
- CONFIG_TEGRA_IOMMU_SMMU=y
- CONFIG_APPLE_DART=m
- CONFIG_MTK_IOMMU=y
-+CONFIG_VSI_IOMMU=m
- CONFIG_REMOTEPROC=y
- CONFIG_IMX_REMOTEPROC=y
- CONFIG_MTK_SCP=m
-@@ -1785,6 +1790,7 @@ CONFIG_PHY_RZ_G3E_USB3=m
- CONFIG_PHY_ROCKCHIP_EMMC=y
- CONFIG_PHY_ROCKCHIP_INNO_HDMI=m
- CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-+CONFIG_PHY_ROCKCHIP_INNO_CSIDPHY=m
- CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY=m
- CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=m
- CONFIG_PHY_ROCKCHIP_PCIE=m
+So the PC read our word as task_number = 0x7001, that is 28673 tasks,
+with the count clear landing on nothing. It never signalled completion
+because by its own count it was never finished, and only a full reset
+ever cleared the counter. That also explains the other symptom in the
+cover letter, that only the first job after a reset computed anything.
 
----
-base-commit: 2d578cd590adc2133aa24496afcd7c3f7f9ba36a
-change-id: 20260806-rockchip-defconfig-additions-3ef855c4d32e
+  rocket_pc_writel(core, TASK_CON, (0x7u << 16) | task_count);
 
-Best regards,
---  
-Sebastian Reichel <sebastian.reichel@collabora.com>
+I found it by taking an ordered trace of every register write our driver
+makes during one submit and diffing it against the same trace from the
+vendor driver on the same board. Exactly one value differed. I should
+have done that before writing a workaround, and before describing a
+hardware limitation I had not established.
 
+Two guesses I made the same night, a per job IOMMU teardown and the
+vendor's post completion sequence, were both wrong, which is the other
+half of the lesson.
+
+So for v7: patch 7 loses the polling and the "the interrupt does not
+arrive" text. I would rather not carry a bounded poll at all. Jobs that
+compute incorrectly do still time out, but that is a driver bug on my
+side rather than something the hardware needs help with, and the
+scheduler timeout already covers it. Diederik, this is what you warned
+me about off list, that a poll reads as a workaround for an
+undetermined problem. You were right and the problem is now determined.
+
+The rest of v7 follows what you both asked for: the job_lock fix becomes
+its own patch with a Fixes tag and leaves the RFC series, the
+rk3588_soc_data change is separated from adding rk3576_soc_data,
+refactoring comes before the new support rather than inside it, and I
+will stop editing a comment in the patch after the one that added it.
+
+On the GIC question, for the record, so the thread has it in one place:
+RK3576 is GICv2, gic-400 in the upstream DT, not GICv3. It made no
+difference here, as you said it would not.
+
+Thanks for digging into this, and sorry for pointing you at a fault that
+was mine.
+
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
