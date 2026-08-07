@@ -4,68 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ADB5C56208
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Aug 2026 22:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 977BCC5AC7A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 02:51:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CK1KjFCHLecnM2sVb2ZAO5jyNORYrqDWS0L4WIZsquU=; b=0C4gdd4PCKOIJn
-	yHEaRpVTnk34xD6c0GTn/O1WTDhlV4HvyqzkbynS8ojCrgPAPftZBUDy28IsmukdcZgfP/FWBazu3
-	FSOwgFXtA5Ps7Pc8KvsdWCFvrKGXs3qSlIRHgKP1vLe3XeluClLY6fFmNxAiDBA3CdVdsOPLYhB9p
-	XztzCd47OL6kK+g06Hg6EgjIJpEEX1j1n9zTxOpF2vNFqWhqDz1WyjQqClQd8Sadpnox4X9IbsTe7
-	pmOwNSoOfr6rXmdLGnwErLl2HjXNqAFQGdcaopiijOmnV7aK0RaeKt+HXol/790G4zQ7O9edhamA1
-	NsT6IvPOs1mGMlWEofMQ==;
+	List-Owner; bh=+59tlW6DgxK8YMfzPK3nsLpU7Vb3arXcyyKHwBJm3n0=; b=szIzGNdKyjTHm0
+	a5XK8mSfXZT/HnDmHiI4xx+LuEhfHfSrgZ23392drqbIXd6XYy36ete5wjTj13cZUnG98jsDZzI5V
+	cZPKKpC+sNsudLHKxOXCw6xXkAIYPIkC4N/JV6w5TfKZVCtWeWReJmqcC6i2zVWTtT59SAMwjlxRL
+	GoRJFZ3/JgnJNQEuKOpLhNld8BG/sL4l9VKe6H1b2SvC8V5hknl4DUQhzUqn9VrT/I6AbLCZrMjhF
+	OSzJ6kQHoMeEsa+tvDACq1auCdfB++/RC30L0RSPDaVQs/AGJEmKAS1oR4q0UfMVCEjd3yIHqdVBj
+	maPXBykCr+8Cgv5mEA1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws6Kq-00000006n0M-17g7;
-	Thu, 06 Aug 2026 22:13:08 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wsAfn-000000070UZ-0Xc1;
+	Fri, 07 Aug 2026 02:51:03 +0000
+Received: from mail-m93180.xmail.ntesmail.com ([103.126.93.180])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws6Ko-00000006mz5-2Wsh
-	for linux-rockchip@lists.infradead.org;
-	Thu, 06 Aug 2026 22:13:06 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id EF9CC43D3B
-	for <linux-rockchip@lists.infradead.org>; Thu,  6 Aug 2026 22:13:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4B531F00ACF
-	for <linux-rockchip@lists.infradead.org>; Thu,  6 Aug 2026 22:13:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786054385;
-	bh=vjzTiVXW2/y+MU8ujdi+EYr76HH3zaimBCpOT0o3bgI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=hLHo7vAfuR3iX5N3dSh/v5YiHmKofEzbCGMRnW5ZtjHIcnWMSdm/PGkpNgggjnE8o
-	 ASNxZzhQ1mGUB4ChfjpQygQo6C54rznb63Nz2Wjd9rNLjMzFrrUJsCT9PebR4yFSaX
-	 s0JEmzfQZgPGdSDoegb4zlDyT4KY3TqytVolY1caalzlSmAvBqjFYXWOPSoWJY4+0+
-	 tfxiMuT83DM6M94FzDXpH07AxhvLifTlTcapKBUw97Lb17TlwpKrFAQe877W2pZS7K
-	 O2/4Osr2CMF124x9Eh46GOTEwv2pRgovVlbdOTYo0wgvqfFtM0ufjq6VKLBhFL99+o
-	 nukkIiuEloK0Q==
-Received: by mail-lf1-f51.google.com with SMTP id 2adb3069b0e04-5aeb2bc82ccso3367919e87.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 06 Aug 2026 15:13:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+Ro0DOnjYeiDSWG99SlNC3FiJJAt6mP/Kwcnqsp/jcNgFiVkxb8mv/SoOmknc2g6NKzXRf71XRYFJwuf4fQ59A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwGd6GdnAY4GIT+ujYnbFHQqpwuFRQNMxVYBz3muE3AP5VZElr5
-	PaicyYv025RTUENMjPE+cl28Aot99bDhtGp+OFXcdx3gGUVHIahpggAmLC12Lt6VWc0hvfUWqSX
-	GWA2BfOJOj0mdWhO2e5Z2PtPTxbDBHIM=
-X-Received: by 2002:a05:651c:198f:b0:39b:b6d:59a1 with SMTP id
- 38308e7fff4ca-39fbb0622a3mr22304141fa.3.1786054384637; Thu, 06 Aug 2026
- 15:13:04 -0700 (PDT)
+	id 1wsAfi-000000070Ti-2Pv3;
+	Fri, 07 Aug 2026 02:51:01 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 491b644d0;
+	Fri, 7 Aug 2026 10:50:40 +0800 (GMT+08:00)
+Message-ID: <a9b77d07-89de-4b86-8227-2cdd419629c7@rock-chips.com>
+Date: Fri, 7 Aug 2026 10:50:25 +0800
 MIME-Version: 1.0
-References: <20260803141028.710706-1-sjg@chromium.org>
-In-Reply-To: <20260803141028.710706-1-sjg@chromium.org>
-From: Linus Walleij <linusw@kernel.org>
-Date: Fri, 7 Aug 2026 00:12:51 +0200
-X-Gmail-Original-Message-ID: <CAD++jLn8nZT9a0Qe+wtk+2zJ5tPvHjAq4PDPt18ANWiyJPdXpw@mail.gmail.com>
-X-Gm-Features: AUfX_my-q5AZNQnyrDKzTBxgtSjpIToNkuwuVSkTL2dNFQAFVD3IOuhBlGJ6384
-Message-ID: <CAD++jLn8nZT9a0Qe+wtk+2zJ5tPvHjAq4PDPt18ANWiyJPdXpw@mail.gmail.com>
-Subject: Re: [PATCH 0/2] pinctrl: rockchip: Two fixes for latent driver bugs
-To: Simon Glass <sjg@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	Vladislav Leonov <vlad@zlab.su>, Jonas Karlman <jonas@kwiboo.se>, Fabio Estevam <festevam@nabladev.com>, 
-	Jeffy Chen <jeffy.chen@rock-chips.com>, huang lin <hl@rock-chips.com>, 
-	linux-kernel@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 10/21] drm/bridge: synopsys: dw-dp: Add follow-up
+ bridge support
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+References: <20260806-synopsys-dw-dp-improvements-v11-0-0d508505f383@collabora.com>
+ <20260806-synopsys-dw-dp-improvements-v11-10-0d508505f383@collabora.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20260806-synopsys-dw-dp-improvements-v11-10-0d508505f383@collabora.com>
+X-HM-Tid: 0a9fda21428903a7kunm17d9edf98123b
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCS04dVhpOSkhJS0IeSk9JGlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=IL8agv80TbgEJ/ektDWcbhjL7ehF9V68i2rOBuIUN5Z4FrUVZREaVYpGYHYTbM5jlfBZjC0Syh4ZgffUKg1ajhGjZJfXsxtthQ/aClyW6MWb9maeUbGyZPcRZjwJp5WOwGdULyJo+d7kkV9bqArSwfnYMdnYzkM/LKZaBu7lsOc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=slu4UXv1MBP6pJpI4M9su9mc+PRdIjhnDUo1lMf+9Cc=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260806_195059_204093_0169AAB1 
+X-CRM114-Status: GOOD (  20.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,32 +65,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Alexey Charkov <alchark@flipper.net>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgU2ltb24sCgpPbiBNb24sIEF1ZyAzLCAyMDI2IGF0IDQ6MTDigK9QTSBTaW1vbiBHbGFzcyA8
-c2pnQGNocm9taXVtLm9yZz4gd3JvdGU6Cgo+IFRoaXMgc2VyaWVzIGNvbnRhaW5zIHR3byBzbWFs
-bCBmaXhlcyBmb3IgcHJlLWV4aXN0aW5nIGlzc3VlcyBpbiB0aGUKPiBSb2NrY2hpcCBwaW5jdHJs
-IGRyaXZlciwgZm91bmQgYnkgdGhlIHNhc2hpa28gQUkgcmV2aWV3IG9mIG15IFJWMTEwNgo+IHNl
-cmllcy4KPgo+IFRoZSBmaXJzdCBtYWtlcyB0aGUgU29DLWRhdGEgY2FsY3VsYXRpb24gc2FmZSB3
-aGVuIHRoZSBwcm9iZSBydW5zCj4gbW9yZSB0aGFuIG9uY2UgZHVlIHRvIGEgcHJvYmUgZGVmZXJy
-YWw6IHRoZSBwaW4gY291bnQgY3VycmVudGx5Cj4gYWNjdW11bGF0ZXMgYWNyb3NzIHJ1bnMsIHNo
-aWZ0aW5nIGV2ZXJ5IGJhbmsncyBwaW4gYmFzZS4gVGhlIHNlY29uZAo+IGFsaWducyB0aGUgUlYx
-MTAzQiBkcml2ZS10eXBlIG92ZXJyaWRlIGluIHRoZSBnZXQgcGF0aCB3aXRoIHRoZSBzZXQKPiBw
-YXRoLCB3aGljaCByZXN0cmljdHMgaXQgdG8gYmFuayAyLgo+Cj4gVGhlIGZpcnN0IGZpeCBpcyB0
-ZXN0ZWQgb24gYSBMdWNrZm94IFBpY28gTWluaSBCIGJ5IGZvcmNpbmcgdGhlCj4gcHJvYmUgdG8g
-ZGVmZXIgb25jZTogd2l0aG91dCB0aGUgZml4IHRoZSBzZWNvbmQgcHJvYmUgZG91YmxlcyB0aGUK
-PiBwaW4gY291bnQgYW5kIG5vIEdQSU8gYmFuayBjb21lcyB1cCwgd2hpbGUgd2l0aCBpdCB0aGUg
-dmFsdWVzIGFyZQo+IHJlY2FsY3VsYXRlZCBpZGVudGljYWxseSBhbmQgYWxsIGJhbmtzIHdvcmsu
-IFRoZSBzZWNvbmQgaXMgYQo+IGJlaGF2aW91cmFsIG5vLW9wIHVudGlsIGRyaXZlLXN0cmVuZ3Ro
-IGRlY29kaW5nIGlzIGFkZGVkIHRvIHRoZSBnZXQKPiBwYXRoLCBzbyBpdCBpcyB2ZXJpZmllZCBi
-eSBpbnNwZWN0aW9uIGFnYWluc3QgdGhlIHNldCBwYXRoLgoKUGF0Y2hlcyBsb29rcyBnb29kIGFu
-ZCB0aGUgUm9ja2NoaXAgbWFpbnRhaW5lcnMgaGF2ZW4ndApjb21tZW50ZWQgb24gdGhlIG90aGVy
-IHdlZWstb2xkIHBhdGNoZXMgeWV0IHNvIEkgYXBwbGllZAp0aGVzZSB0d28gcGF0Y2hlcy4KCklm
-IHRoZSBtYWludGFpbmVycyBoYXZlIGlzc3VlcyB3aXRoIHRoZW0gSSBjYW4gcHVsbCB0aGVtIG91
-dC4KCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 8/7/2026 1:02 AM, Sebastian Reichel wrote:
+> Add support to use USB-C connectors with the DP altmode helper code on
+> devicetree based platforms. To get this working there must be a DRM
+> bridge chain from the DisplayPort controller to the USB-C connector.
+> E.g. on Rockchip RK3576:
+> 
+> root@rk3576 # cat /sys/kernel/debug/dri/0/encoder-0/bridges
+> bridge[0]: dw_dp_bridge_funcs
+>         refcount: 7
+>         type: [10] DP
+>         OF: /soc/dp@27e40000:rockchip,rk3576-dp
+>         ops: [0x47] detect edid hpd
+> bridge[1]: drm_aux_bridge_funcs
+>         refcount: 4
+>         type: [0] Unknown
+>         OF: /soc/phy@2b010000:rockchip,rk3576-usbdp-phy
+>         ops: [0x0]
+> bridge[2]: drm_aux_hpd_bridge_funcs
+>         refcount: 5
+>         type: [10] DP
+>         OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
+>         ops: [0x4] hpd
+> 
+> It's fine to fatally error out when there is no follow-up bridge
+> as the Rockchip Designware Displayport controller is the only
+> user of the bridge helper and has the port marked as required
+> in its binding.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-dp.c | 34 +++++++++++++++++++++++++++++++++
+>  1 file changed, 34 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+> index b9864a17c01d..a6099f7ddc87 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+> @@ -330,6 +330,8 @@ struct dw_dp {
+>  	struct dw_dp_plat_data plat_data;
+>  	u8 pixel_mode;
+>  
+> +	struct drm_bridge *next_bridge;
+> +
+
+To be nitpicky, this field would be better placed before the u8.
+
+Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+
+>  	DECLARE_BITMAP(sdp_reg_bank, SDP_REG_BANK_SIZE);
+>  };
+>  
+> @@ -1894,7 +1896,22 @@ static int dw_dp_bridge_attach(struct drm_bridge *bridge,
+>  
+>  	enable_irq(dp->irq);
+>  
+> +	ret = drm_bridge_attach(encoder, dp->next_bridge, bridge,
+> +				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to attach next bridge: %d\n", ret);
+> +		goto err_disable_irq;
+> +	}
+> +
+>  	return 0;
+> +
+> +err_disable_irq:
+> +	disable_irq(dp->irq);
+> +	cancel_work_sync(&dp->hpd_work);
+> +
+> +	drm_dp_aux_unregister(&dp->aux);
+> +
+> +	return ret;
+>  }
+>  
+>  static void dw_dp_bridge_detach(struct drm_bridge *bridge)
+> @@ -2060,6 +2077,13 @@ void dw_dp_unbind(struct dw_dp *dp)
+>  }
+>  EXPORT_SYMBOL_GPL(dw_dp_unbind);
+>  
+> +static void dw_dp_put_next_bridge(void *data)
+> +{
+> +	struct dw_dp *dp = data;
+> +
+> +	drm_bridge_put(dp->next_bridge);
+> +}
+> +
+>  static void dw_dp_phy_exit(void *data)
+>  {
+>  	struct dw_dp *dp = data;
+> @@ -2157,6 +2181,16 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
+>  		return ERR_PTR(ret);
+>  	}
+>  
+> +	dp->next_bridge = of_drm_get_bridge_by_endpoint(dev->of_node, 1, 0);
+> +	if (IS_ERR(dp->next_bridge)) {
+> +		dev_err_probe(dev, PTR_ERR(dp->next_bridge), "failed to get follow-up bridge\n");
+> +		return ERR_CAST(dp->next_bridge);
+> +	}
+> +
+> +	ret = devm_add_action_or_reset(dev, dw_dp_put_next_bridge, dp);
+> +	if (ret)
+> +		return ERR_PTR(ret);
+> +
+>  	dw_dp_init_hw(dp);
+>  
+>  	ret = phy_init(dp->phy);
+> 
+
+
+
+-- 
+Best, 
+Chaoyi
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
