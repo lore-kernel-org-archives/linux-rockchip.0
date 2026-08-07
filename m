@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE0CFC5ACD1
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 21:33:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D32C5AD2B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Aug 2026 22:31:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HXRlxizh9+GYR+nx5WErPTtA07SoDEMh/tMZkD7rpPg=; b=N8KVujh5tHfEM8
-	LM4HTw7qR4QZAYA6vRkIVmmb4KcxOwa72ihZe6FuKn/ZZgrVnyHnJpqFtIqmBR8XA+g/ZRkMAlW8P
-	U0wvuIkrvq2Sy7zGWePwMMnpdzv0UDMn2zg6xrimpmx7slNP4f+jbIqkmKpPDeJq+6Z/M1bbZD14y
-	d8Rd22sqndWAUxALq90vilQdSLIvdX09o9RCHk1kOLyf/7ZPD8x1+AHrCy/FhpZ1g0W3ZWPSsH0KN
-	MwnGtED86kCBBgEOS0Uw0ptJ/n4cnhM7ONL0yrPoSR7fQzq0h4EXUlf59gJdRYJMHgvvnyJnOylQ/
-	o3iuyI6GSqP2jhp+OE8g==;
+	List-Owner; bh=yuLzOlY1BZqQVCE8rkAkENOh9q69F54UIohzfrndbKk=; b=wMARGHx94/Npmt
+	XYkUmYeXUzIeyoLSLKEf64G8z34DA/v+ZOfHqSV8L8FTEfyt/bq6NWs3XR7dhHqzBilf/KZYhnL2D
+	Z48Urv358kiMmlUHDtf2JlUVyeRckgAfr1jFSV6ool+yZ1T9Vofr6iFqFCrYG19iWhTa2Qp2D0q8N
+	PDtZukwm5O/9cdwsaN6slEUGPjXl3gzgW5ZzV/ooF3jCzJAVsW81y5Ra1fXIW2J+dm9LNlwotn7IN
+	/z8wISvts2gBRm11EyS4biVKOGMayuoWbAirdwFhtfy7yEsgwQXPTBQMxXBnrmLOoiWGA3sdu92V2
+	L9rqLMr0mnPpcOJS0jcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsSCH-00000008lna-2CsP;
-	Fri, 07 Aug 2026 21:33:45 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wsT6C-00000008ohe-2Wmg;
+	Fri, 07 Aug 2026 22:31:32 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsSCE-00000008ln1-2zIn;
-	Fri, 07 Aug 2026 21:33:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1786138415; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Wc23WidJGbIWp8Fc9+M+I68bZ4PE3481CJXMH84ECEWzumbc0wNNsxO+/eCvPGGyz2F+4cPGXI8HdocWkO0gPZmjOeJbsHsV3tivVdlZ1T4hTuuGjAeOdpxBPAPvezjK/OQrQeKCbARbZmrM7PAz7WyUYou4xOZx0cBjnJCkBcs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1786138415; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=pHBBxbPUVANpahMUOGZWz4stezBioU5NTMq0eeFgIz8=; 
-	b=CZ1Zq/UXMOXV8BWTC7lqowJhTyKrjo3mdIzxHp+IVlTuwMdLTo/5yiiidivXnQnMg+7fWe1t0uKVMz3YOSvzRF+Hh4CMSLuWHdGVNgjvaVr3zVVO3IqiWAcYdZtH/QdLs6n8z/WEMVXpu5WPtN/f/OQDO3kfPgZPcd/DEP5998w=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
-	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1786138415;
-	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=pHBBxbPUVANpahMUOGZWz4stezBioU5NTMq0eeFgIz8=;
-	b=bJpBgN4XzSb+MF16ZgRzB3MeQ8Wh9DbgPv4TJJezvakTcET2asvMlAfgzZLS6roH
-	iL2djC89XDNBWidHr7yQ8DpHNX0sW39++lmX8eU9EPOkLbTMnXIgCnsMWK0lgrxgCFI
-	yRxOWBaPytGeg/DBKbZtGqe44RrBeNh9EFAAC2l0=
-Received: by mx.zohomail.com with SMTPS id 1786138412992223.01443850100577;
-	Fri, 7 Aug 2026 14:33:32 -0700 (PDT)
-Message-ID: <2f63364d-6653-4f78-ab0f-c75b4fd5bb9c@collabora.com>
-Date: Fri, 7 Aug 2026 23:33:28 +0200
+	id 1wsT6B-00000008ohN-2Ghx;
+	Fri, 07 Aug 2026 22:31:31 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id D943E41B02;
+	Fri,  7 Aug 2026 22:31:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96C7E1F000E9;
+	Fri,  7 Aug 2026 22:31:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1786141890;
+	bh=rMkepXodHcjAHv4k3kbfASgmHhaapX67FkS7mzBnl8g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=QI+TQ0g2XiM91hMCmbqBLOuz5d62beq2cXgCahE6l3Xg2tJozP0wTTWLGBb5AsyhB
+	 Wet35EPPofdYWtnrnexJYL5+eUn1Ma4lcpUWRzy+2yXEohPltSyzwpMZzXE9RDyOih
+	 h+ol+8tq0T+CV7qFz81POsJcicjvyeJIi29PBVD1dcUDLwK3EyXsyX/Vve3o8Fnx3X
+	 C+ylr+EESJeJnHNDqh6XDVdzv/OwbQXaclqt2PDM7mGgVZ8b1wiZMk1Nmu5icUg1MG
+	 IcwULv+ahLRIoPj7YG1baa8RyP2CZkIQpOj/YQiiwYY0/lGnpF3kxcq9HUYMI7Kwcl
+	 +AfXq2tYrsbUQ==
+Date: Fri, 7 Aug 2026 17:31:29 -0500
+From: Rob Herring <robh@kernel.org>
+To: Rok Markovic <rok@kanardia.eu>
+Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Alibek Omarov <a1ba.omarov@gmail.com>
+Subject: Re: [PATCH v2 2/4] dt-bindings: display: rockchip,lvds: add RK3568
+Message-ID: <20260807223129.GA2151152-robh@kernel.org>
+References: <20260724080824.115260-1-rok@kanardia.eu>
+ <20260724080824.115260-3-rok@kanardia.eu>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] dt-bindings: phy: rockchip,rk3588-mipi-dcphy:
- support per-direction phys
-To: Vinod Koul <vkoul@kernel.org>
-Cc: jason98166@gmail.com, Neil Armstrong <neil.armstrong@linaro.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Guochun Huang <hero.huang@rock-chips.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-phy@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260726-dcphy-rx-v1-v2-0-cf9cc34a412a@gmail.com>
- <20260726-dcphy-rx-v1-v2-1-cf9cc34a412a@gmail.com>
- <82da3622-9c3a-454c-87bc-fb4ec7adb68d@collabora.com> <anSuxfeitSqmSHNr@vaman>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <anSuxfeitSqmSHNr@vaman>
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_143342_814319_EF3BD8F8 
-X-CRM114-Status: UNSURE (   7.62  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20260724080824.115260-3-rok@kanardia.eu>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,32 +78,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Vinoud,
-
-Thanks for your feedback.
-
-On 8/6/26 17:56, Vinod Koul wrote:
-> On 03-08-26, 13:17, Michael Riesch wrote:
+On Fri, Jul 24, 2026 at 10:08:22AM +0200, Rok Markovic wrote:
+> The RK3568 LVDS transmitter has no register block of its own: it is
+> programmed entirely through the GRF and re-uses the MIPI DSI0 D-PHY
+> (rockchip,rk3568-dsi-dphy) in LVDS mode. It therefore takes the same
+> shape as px30: phys/phy-names, no reg, and no clock of its own.
 > 
->>> +      Two cells select the PHY type and the direction, so that the
->>> +      transmitter (DSI) and the receiver (CSI) can be described as
->>> +      independent consumers of the same PHY:
->>> +        - <PHY_TYPE_DPHY RK_DCPHY_DIR_TX>
->>> +        - <PHY_TYPE_DPHY RK_DCPHY_DIR_RX>
->>
->> How is that Rockchip specific? As you state above this is either MIPI
->> CSI or MIPI DSI, two perfectly standard protocols.
->>
->> @all Would it be reasonable to introduce PHY_TYPE_CSI and PHY_TYPE_DSI?
+> Since the block exposes no MMIO, nothing in the LVDS path is clocked
+> from the DSI controller's APB clock; that gate is held off while LVDS
+> scans out. It has no analog supplies of its own and no pinctrl either:
+> the lanes are dedicated D-PHY pins, not muxable GPIOs.
 > 
-> I think yes...
+> Signed-off-by: Rok Markovic <rok@kanardia.eu>
+> Assisted-by: Claude:claude-opus-4-8
+> ---
+> Changes in v2:
+>   - RK3568 now takes no clock (clocks/clock-names disabled, as for
+>     px30): the block has no register space, so nothing consumes the
+>     DSI controller's APB clock.
 > 
+>  .../display/rockchip/rockchip,lvds.yaml       | 22 +++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,lvds.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,lvds.yaml
+> index 03b002a..b77d4fa 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,lvds.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,lvds.yaml
+> @@ -15,6 +15,7 @@ properties:
+>      enum:
+>        - rockchip,px30-lvds
+>        - rockchip,rk3288-lvds
+> +      - rockchip,rk3568-lvds
+>  
+>    reg:
+>      maxItems: 1
+> @@ -121,6 +122,27 @@ allOf:
+>          - avdd1v8-supply
+>          - avdd3v3-supply
+>  
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3568-lvds
+> +
+> +    then:
+> +      properties:
+> +        reg: false
+> +        clocks: false
+> +        clock-names: false
+> +        avdd1v0-supply: false
+> +        avdd1v8-supply: false
+> +        avdd3v3-supply: false
+> +        pinctrl-names: false
+> +        pinctrl-0: false
 
-Jason, could you incorporate that in a v3?
+Other than pinctrl props, this is the same as the existing px30 if/then 
+schema, so just add the compatible there. pinctrl properties are 
+implicitly always allowed.
 
-Thanks for your work and best regards,
-Michael
+Really, I think this and px30 and this should be its own schema. There's 
+not a lot of common parts.
 
+Finally, if the only interface is the GRF, then this should be a child 
+of the GRF node.
+
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
