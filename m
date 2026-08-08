@@ -4,68 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32A99C5AD2C
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Aug 2026 08:44:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E16EC5AD2B
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Aug 2026 09:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/8DVfhV7P/rk7zIOp9EH0bC4mDevzo1+9+aiSZ/39NQ=; b=KIf7PaJfrp85+C
-	3JEFJyev/l8D8rO/MS2DVtpmYRFRgtwDMGm6h8aS+xp3viximrUcJa5FzqcJZ4yiBMNsnlF37yYcZ
-	iIvqP2igNmZ/i+FuP/8OONheWhQnZov3PEqpnYw2muI3S1dO21ym0D7lw7WrvZjc6Z+irTuXJnj72
-	0HWVNT4iqqBYBhZmD1mQEV47k9zglwYcYo16WCHiGfsdVIN2WduHmtzXMzNqsCahyrbDIAAo4Wf12
-	xEp967+ybNGguKKwyE2KzYtnmZswBH27qNDtHxeLQmfkoDNeEfKHrWfWuo7tDBUrOYTG5Svo/3Dov
-	VHnvWGbUQGqhtSJ1XmMQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=n4V9i4PNfmkYIJRlqAhD6/cx07KphOzD71uPe5MC1os=; b=GFQ96IbBxtD0hd
+	7LyWohsiaZJ3Vwkyztm+BG2RfKu8p7gqwUfGgPZFrTb3o/q3KCPRba8ovVLqrJ1ue+Qs9NXJQCXCW
+	u11vOzicVYHdIeBdrB1jQMtGEH1gXhN3dPJ5qhrSYBR9vb6JSPJ1BWkMH1pXKwcQmHjUCQIMjIgtt
+	kkmCPXSapU4Ud2QkReYwxicVxbBkkohnhw0Doncp40zsQWy0lZro4e3Xzf+37QSaQmZLLfxIksgCT
+	J/ttFJO2NtINIBR8eu6uvjdoBd0qzAxvIPkPyFFDRVNxLSh+mBUNTWac1IBBx68Vturg18t1DxznW
+	HJ7RpbVpsl1WEXo74fXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wscfZ-00000009B9v-0GQZ;
-	Sat, 08 Aug 2026 08:44:41 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wsdO1-00000009DfP-0cj7;
+	Sat, 08 Aug 2026 09:30:37 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wscfV-00000009B9R-3Kml;
-	Sat, 08 Aug 2026 08:44:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1786178664; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=O6o7PvYQedvv2uZu/FYjSAGqHs9cr5r7uOP0d4fpnDK2VsirmnAGBTPuxeLwV/ZFlEpHoQc78SMfVXEZy/ZqBbemIwdzgZyfpfIwXdZOlEKZpfBJdiG1/+T2EgxWFU6RSM9HaUMugvisETBLb9nyBx3SJ3DvtJMbNeQPVMno0G0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1786178664; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=QV75BRbt2CB92kRO16SraDrNN/ZBOwKcH3HzU3OG5Bg=; 
-	b=NYNm/DURxkB+kI6lL5Dms2AGw+H7q3UR/pNsln03WwLt8VzgMxR+CCGI5dltb0nn2ENJEDt8YUx9qDqPf+kZHx0Mp5c+bx0GZmC0nfoII2/s3o69lRlkQV7NceAmMCJoeiQJLT1YgNi5XHR/FmUKhZvUxcjfelpZhCSe3vbfSXI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
-	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1786178664;
-	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=QV75BRbt2CB92kRO16SraDrNN/ZBOwKcH3HzU3OG5Bg=;
-	b=OLWW+BCEJLD5jvXpKNmbCWfxuGclnyFBgzRXyGve9X6bDVHUSNtU9RO7fFfYqH4r
-	6nU0xa2rASlwA+YvOPiEb1l50c9I2yfYU198wr1IpcYAwtHGfFnb+qF1TNk+zZ/RRlP
-	BoLtN6YeK+0z3R3kDUECkZwKU3pOnnrW22wQJVm0=
-Received: by mx.zohomail.com with SMTPS id 1786178662065837.6873440277666;
-	Sat, 8 Aug 2026 01:44:22 -0700 (PDT)
-Message-ID: <db32b01d-66f5-4ba0-8697-a0bde9e230cf@collabora.com>
-Date: Sat, 8 Aug 2026 10:44:18 +0200
+	id 1wsdNz-00000009Dei-083T
+	for linux-rockchip@lists.infradead.org;
+	Sat, 08 Aug 2026 09:30:36 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2cea3004256so4499535ad.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 08 Aug 2026 02:30:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786181434; x=1786786234; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=gC2ItiHuCYFgaLZeaOk4o80zqG6tRez0H0meLhFxwtI=;
+        b=S+TyMf1xisGxQivmb4h/5rqgo2TgwHVomMTksNh48li9ydxSnYa7cY8tfu63ja4Rqu
+         PVqJVfWg1Wq1j7JNFurpmkbzDS+iL6WoJgKDpYpQMCpq7dy4OD+6W36oxam82yIHcP7H
+         57u0YDfA9U4BaAJxWZk74Ww51pspbA89FK9yJxuAyKzsrwqhofTJ/ZuWysm+mCsmRqfm
+         VNiIDkvHswfqXw6ma3J3pAlXwpQM3yZwYzYQ5rA+6QTkR8snHneio26vfPHUYNHKB6mE
+         7YZBt2OZHoWN2MjW2fZXowQnIGN/q18yJvq5f/m8xgOPSyPgviw8juNyYAL7AC9m346l
+         dX1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786181434; x=1786786234;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=gC2ItiHuCYFgaLZeaOk4o80zqG6tRez0H0meLhFxwtI=;
+        b=NGwancweeftwmxQq8xAmlyaDmCefQQFQcpMhhzFdx+sd566O7uP5Ooi9LVTpC+8vN9
+         Zp+2y1FnIxlcz68mgcCbU0M+aMW8SXHl4INypnJonZInyPruuoriOuEv9QVzx30aHCZ6
+         2aSY4x/TgSuJG2gL1kTjmWwq4nASYLnTE5pT2/xxJpgTo/vBwmuQ2zAeVSUGctz6TbWx
+         LW1tJhMa6Z67nugQlFJXMYjAZ3j8m0Hhi5QZd9JK1exSvwuLZgUOZjy1dBicRKgxFGVb
+         02TARBLcZ3M8k2ZaN3rAxziKUP9lDOlsElbdupodw6NaYaoxMdXHzdYQEPTg94dULfri
+         NMjg==
+X-Forwarded-Encrypted: i=1; AHgh+RpGW/2L1w2dcnK2qZaiGTiFvAsnBm18g/Ie3afHnSur7pGLr+AXENGz6z5+cxqqcMVKzaOxNFKWQfIM5m79oA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxXn3/JQalG43pqAo/psA9zr9mt+U2H2ITDjhZwDn4/yx0VLhbR
+	ZEbNfXbNhZ7UBSUR6gP00n0D4HYIudLxkmqW7xUwoO2f1u9zT03pgY3U
+X-Gm-Gg: AR+sD10QqRY3/9fIiICA4fRVKjxHlxJ0h6lIdVUSE3uKT3+NWZkIjF4PLc8tApTW5yc
+	uMSO+PDccBMk77nKy17rYzCLoxPGp4BiABxQ4T73/PIKavQ3AeblhMO3kcs366VwByBfyomgDxM
+	v2Aw6zSePP8eCSTPahuMdUhsVxozMm0Z5yVEypOjXWGt+SzSv7QQineLLqd04AQTLSGWCgsnvQ8
+	pXYknpfUnln+6q3qOVMkphNK4du9ul3I0SC34GMzWjsxlsAGJDIWWCcoUbaMG+5+P+oeJslXgbd
+	dtNwu5B03O2N3SbMiS1EHRgC+VwE9pxFOLTqgUA8HxXVZNqFMT61PVLytbvxO5F2zHZK73oBIqy
+	FbkV+xk0oqQSMBJfPlmQO3F7hkq3e886olRMcK2ipfF1hSeuUjm9tjfmvIL0MLJRuJHDRzBV+JP
+	laVYEisEbyhrJhooTvZ6aeXpb+AW6OO3UXUJ5e50yZzqfRxY4semC9y/Z0c7DmSojHMpys
+X-Received: by 2002:a17:903:3201:b0:2d0:401c:2ebb with SMTP id d9443c01a7336-2d0ca7125cemr362470225ad.4.1786181434060;
+        Sat, 08 Aug 2026 02:30:34 -0700 (PDT)
+Received: from lgs.. ([101.76.249.46])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d14ccac0f1sm17098055ad.7.2026.08.08.02.30.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 08 Aug 2026 02:30:33 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Corentin Labbe <clabbe@baylibre.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	"David S. Miller" <davem@davemloft.net>,
+	Heiko Stuebner <heiko@sntech.de>,
+	John Keeping <john@keeping.me.uk>,
+	linux-crypto@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Guangshuo Li <lgs201920130244@gmail.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] crypto: rockchip: fix autosuspend cleanup during teardown
+Date: Sat,  8 Aug 2026 17:30:16 +0800
+Message-ID: <20260808093016.2738659-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] arm64: defconfig: enable Rockchip Multimedia drivers
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20260808-rockchip-defconfig-additions-v3-1-0ed67877e94d@collabora.com>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260808-rockchip-defconfig-additions-v3-1-0ed67877e94d@collabora.com>
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260808_014437_869689_6EDBC91F 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20260808_023035_394929_2211025F 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,115 +104,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+rk_crypto_pm_init() calls pm_runtime_use_autosuspend(), but the
+autosuspend setting is not undone if pm_runtime_set_suspended() fails
+or when runtime PM is later torn down by rk_crypto_pm_exit().
 
-Thanks for the patch!
+If the autosuspend delay is set to a negative value while autosuspend
+is enabled, the runtime PM core increments usage_count to prevent
+runtime suspend. Without calling pm_runtime_dont_use_autosuspend()
+during cleanup, this reference is not dropped and usage_count remains
+unbalanced.
 
-On 8/8/26 02:42, Sebastian Reichel wrote:
-> Enable multimedia related drivers used by the Radxa ROCK 5B (used as an
-> example, the config options are relevant for most Rockchip RK3588 and
-> RK3576 boards), so that all hardware is supported by the default config.
-> 
->  * Synopsys MIPI CSI2RX - RK3588 CSI2 Controller
->  * RKVDEC - RK3588/RK3576 video decoder for H.264 and H.265
->  * Sony IMX415 - Sensor used by the Radxa Cam 4K module
->  * Rocket - RK3588 NPU driver
->  * Verisilicon IOMMU - IOMMU used by RK3588 AV1 video decoder
->  * Innosilicon CSI D-PHY - RK3588 CSI PHY (one of them)
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Undo the autosuspend setting when pm_runtime_set_suspended() fails and
+in rk_crypto_pm_exit() before disabling runtime PM.
 
-In particular for the camera/video capture side of it:
+This issue was found by manual code inspection.
 
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+Fixes: a216be3964c1 ("crypto: rockchip - introduce PM")
+Cc: stable@vger.kernel.org
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+---
+ drivers/crypto/rockchip/rk3288_crypto.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Best regards,
-Michael
-
-> ---
-> Changes in v3:
-> - Link to v2: https://patch.msgid.link/20260807-rockchip-defconfig-additions-v2-1-cbb8eef87be6@collabora.com
-> - Also add CONFIG_VIDEO_DW_MIPI_CSI2RX=m and update commit message
-> 
-> Changes in v2:
-> - Link to v1: https://patch.msgid.link/20260806-rockchip-defconfig-additions-v1-0-6b1d8baa0bf5@collabora.com
-> - Squash all patches (Krzysztof Kozlowski)
-> 
-> The Verisilicon IOMMU defconfig change has previously been sent by
-> Benjamin as part of the IOMMU series, but did not reach upstream:
-> 
-> https://lore.kernel.org/all/20260415072349.44237-6-benjamin.gaignard@collabora.com/
-> 
-> The Synopsys CSI controller defconfig change has previously been sent
-> by Michael as part of the driver series, but did not reach upstream:
-> 
-> https://lore.kernel.org/linux-rockchip/20260522-rk3588-vicap-v5-0-d1d1f5265c56@collabora.com/
-> ---
->  arch/arm64/configs/defconfig | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-> index 654a102cb5bc..49f836ba67a5 100644
-> --- a/arch/arm64/configs/defconfig
-> +++ b/arch/arm64/configs/defconfig
-> @@ -915,6 +915,7 @@ CONFIG_SDR_PLATFORM_DRIVERS=y
->  CONFIG_V4L_MEM2MEM_DRIVERS=y
->  CONFIG_VIDEO_AMPHION_VPU=m
->  CONFIG_VIDEO_CADENCE_CSI2RX=m
-> +CONFIG_VIDEO_DW_MIPI_CSI2RX=m
->  CONFIG_VIDEO_WAVE_VPU=m
->  CONFIG_VIDEO_E5010_JPEG_ENC=m
->  CONFIG_VIDEO_MEDIATEK_JPEG=m
-> @@ -939,6 +940,7 @@ CONFIG_VIDEO_RENESAS_VSP1=m
->  CONFIG_VIDEO_RCAR_DRIF=m
->  CONFIG_VIDEO_ROCKCHIP_RGA=m
->  CONFIG_VIDEO_ROCKCHIP_CIF=m
-> +CONFIG_VIDEO_ROCKCHIP_VDEC=m
->  CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
->  CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
->  CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
-> @@ -949,6 +951,7 @@ CONFIG_VIDEO_TI_J721E_CSI2RX=m
->  CONFIG_VIDEO_HANTRO=m
->  CONFIG_VIDEO_IMX219=m
->  CONFIG_VIDEO_IMX412=m
-> +CONFIG_VIDEO_IMX415=m
->  CONFIG_VIDEO_OV5640=m
->  CONFIG_VIDEO_OV5645=m
->  CONFIG_VIDEO_S5KJN1=m
-> @@ -1063,6 +1066,8 @@ CONFIG_BACKLIGHT_GPIO=m
->  CONFIG_LOGO=y
->  # CONFIG_LOGO_LINUX_MONO is not set
->  # CONFIG_LOGO_LINUX_VGA16 is not set
-> +CONFIG_DRM_ACCEL=y
-> +CONFIG_DRM_ACCEL_ROCKET=m
->  CONFIG_SOUND=m
->  CONFIG_SND=m
->  CONFIG_SND_ALOOP=m
-> @@ -1611,6 +1616,7 @@ CONFIG_ROCKCHIP_IOMMU=y
->  CONFIG_TEGRA_IOMMU_SMMU=y
->  CONFIG_APPLE_DART=m
->  CONFIG_MTK_IOMMU=y
-> +CONFIG_VSI_IOMMU=m
->  CONFIG_REMOTEPROC=y
->  CONFIG_IMX_REMOTEPROC=y
->  CONFIG_MTK_SCP=m
-> @@ -1785,6 +1791,7 @@ CONFIG_PHY_RZ_G3E_USB3=m
->  CONFIG_PHY_ROCKCHIP_EMMC=y
->  CONFIG_PHY_ROCKCHIP_INNO_HDMI=m
->  CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-> +CONFIG_PHY_ROCKCHIP_INNO_CSIDPHY=m
->  CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY=m
->  CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=m
->  CONFIG_PHY_ROCKCHIP_PCIE=m
-> 
-> ---
-> base-commit: 2d578cd590adc2133aa24496afcd7c3f7f9ba36a
-> change-id: 20260806-rockchip-defconfig-additions-3ef855c4d32e
-> 
-> Best regards,
-> --  
-> Sebastian Reichel <sebastian.reichel@collabora.com>
-> 
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+index b77bdce8e7fc..cfca472f996f 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.c
++++ b/drivers/crypto/rockchip/rk3288_crypto.c
+@@ -150,14 +150,17 @@ static int rk_crypto_pm_init(struct rk_crypto_info *rkdev)
+ 	pm_runtime_set_autosuspend_delay(rkdev->dev, 2000);
+ 
+ 	err = pm_runtime_set_suspended(rkdev->dev);
+-	if (err)
++	if (err) {
++		pm_runtime_dont_use_autosuspend(rkdev->dev);
+ 		return err;
++	}
+ 	pm_runtime_enable(rkdev->dev);
+ 	return err;
+ }
+ 
+ static void rk_crypto_pm_exit(struct rk_crypto_info *rkdev)
+ {
++	pm_runtime_dont_use_autosuspend(rkdev->dev);
+ 	pm_runtime_disable(rkdev->dev);
+ }
+ 
+-- 
+2.43.0
 
 
 _______________________________________________
