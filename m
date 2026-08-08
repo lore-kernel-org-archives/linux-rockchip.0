@@ -4,85 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 910B3C5AD2B
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Aug 2026 00:43:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AE44C5AD4E
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Aug 2026 08:01:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dp8Cf9XNgue/4h+VUM2REsxVzZ53VRHVJPUK9NOtm9c=; b=cVW6tzgTqX8/hu
-	g6a/yvPr9Mq/H9Gty9Hd416y25kNrI18M8RKSG6X/5DTVz+s+cYDJaFpbwA8XM9ZAjG9RvlxodTnN
-	XFEd9LPADST//Zakwo1Tmuz3rb4In7/2gvWNtkPQgoEytdgYS95ttfGUySfaKhpr/EOx+I23vtmQH
-	VOGGc0iCDkv6OKOcJCqLYtXkCUm4awlrSiNxcya3iBtm/TS+9JFyH70GMMGExhk4MSxIwGUGnszM2
-	AEtKfGoJlBVpFGeySie5UdeF56JuDsXMM3/HOLCQgrbalR6UlinVTcBVFeZvvUhg8zN7nUZ4YEeN9
-	vtUS509uzORjYod66FHQ==;
+	List-Owner; bh=+vJTQu2LTIbuDuF3Eill3t24BTQ4/rb3qlIWtB2csDs=; b=W3xwJLjxbKgI6l
+	AWTP4F6bp3iyuNuJfItKbLpG03OCuS45TVEtN0E+Vx0totV02w4Qy+6zzArXkrPmgFc+g5caPdoTS
+	xvzbtP499eVYROpm3do7FDOHE5ERn6J8E8kAeuPOebumET3bv9UUbMNYeDjOj21lGwMfM9XGbjaUv
+	TIKotI/En8imPz1yU34RdpnqkqHq5j8UUdwMGIxeXalmWLKK08x+Yd14yhNH3DSFD5ttR8BTcXUsR
+	ISuS0vjEnJLv4lvJRq9QXoHWVdit9oSQM2aoqeNV0lqCHltIQPZDolKNZmZIQAbkr0HNy6vQM+OWO
+	0qj+MXobYcGsTowuM4Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsV9K-00000008vg5-14mZ;
-	Sat, 08 Aug 2026 00:42:54 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wsbz4-00000009913-2Xiu;
+	Sat, 08 Aug 2026 08:00:46 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsV9G-00000008vfL-32oE;
-	Sat, 08 Aug 2026 00:42:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1786149767;
-	bh=DPJWc5LLnfBOgsLYxHBXQR+txSIQtgzzVgAXoE+jDSQ=;
-	h=From:Date:Subject:To:Cc:From;
-	b=mTlvNCEpU6XFMLapHS/Zo2pal7dNUwmejL0UwP02HMRYMiP4wFqUmhbvdKLOthst7
-	 YqJPngGdBZtil+UA3SUs15B+u3uR1dJEJKD24XoO8+S3rhf+HKPmTaLa4OaSVGTb+I
-	 1JuExqd1yEC3KfcajpBmlp2qriqGIJ4XfLE3gECfnT5aMmBv/rbClH5/Wo1wT64GZi
-	 Fq9DMQgctw3sLcL6Qbo+1MpS9zChFNFaejmC5svGbeF36H3ajA8FaZVlg2R0toOCEh
-	 jK5g7KvalaXHEyEIPUw87peNu7KqooW/9fVXSxRR73epyyiWARea4NM7d79NXxNe4c
-	 uJIlVP/szCi7A==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BB9F117E052F;
-	Sat, 08 Aug 2026 02:42:47 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 6BC69480029; Sat, 08 Aug 2026 02:42:47 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Sat, 08 Aug 2026 02:42:26 +0200
-Subject: [PATCH v3] arm64: defconfig: enable Rockchip Multimedia drivers
-MIME-Version: 1.0
-Message-Id: <20260808-rockchip-defconfig-additions-v3-1-0ed67877e94d@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42PMQ7CMAxFr1JlxihNaamYuAdiSByHGkqDkhKBU
- O9OCgtigfFJ3+/JDxEpMEWxKR4iUOLIfshQLQqBnR4OBGwzCyVVI1vZQPB4wo4vYMmhHxwfQFv
- LY76LUJFr6xpXtlIksuISyPHtpd/t3xyv5kg4zs550XEcfbi/+qmcd3+mUgkSGlPa1mgtjau36
- PteGx/0Ev1ZzLmkPoXrH0IFJaAxLeUn1oaab+E0TU9Qw8H4LwEAAA==
-X-Change-ID: 20260806-rockchip-defconfig-additions-3ef855c4d32e
+	id 1wsbyy-000000098zD-4BvO;
+	Sat, 08 Aug 2026 08:00:45 +0000
+Received: from Vostro-3710.. (unknown [14.220.232.127])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 494038e86;
+	Sat, 8 Aug 2026 16:00:27 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
 To: Heiko Stuebner <heiko@sntech.de>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3407;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=DPJWc5LLnfBOgsLYxHBXQR+txSIQtgzzVgAXoE+jDSQ=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp2e4eDotkv3A7JVcJi7M7J2z/D/46djg/P2
- VhgKChzDviyBIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqdnuHAAoJENju1/PI
- O/qaKQQP/00Jtqb4YOsxU8lRiRqBhJaa0X1EerKVWvvWPSh33wmS05M3xjN/bzkc++6S7geY8sn
- fifLovg6by2Ha1cOuX0sYqlnNA5/PurAs6KqEmBgZVBe67X+FGlH/+TQfPADDGuEJKBz5uo2mT4
- IARtrb8+CCQNvAcv4/ccERkhLHMl5VUHtMWJxlpVWMwCq83xDUlVdSek0B3Hxc7ypgJYYan217P
- SpsoOWALgt5lD3r4/prSoXlQqrsbBeDR6uueGP8pHzsJsqyHjoRv8pR/ApNcO/JvGDCPk0F47EM
- DiwhEc7HGEuJE0gSd5fTo8S3R1/MpAGQO9Gi3pvr5SkCCYARoQ3XSGJkv8BtIECfwwAHfD48zv9
- BfSJ1OAoLDm1iiCMP5eXshzscc5KWdvKBie4hPvO2TnyF+bWac3KU1PnEk6Wy2cROiCWc5VJsTC
- kuLUqLG0AZ2Wh93LSCu6EaWpY71NcfoEXzrNKFmh8CbmbUHdWdP3XogrKUg0NvqKmluDDjr4h0B
- m4EEKQ0lf9sHf+Dd461SUFvrZdiq0NyyInzT7x41LEy+bwBKD3Kyqet6x/jz0WQqpaK5Rq01QF9
- 6VV4RQ7UdAcxsEKJ6Z/bl4lrMG/zupozXFxqwnQ57eHjXrCY6hD7wyiufkSipV3oXeVvwBJ6iEB
- UYMJRVYyz03J9flffk4sx8g==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+Cc: Rob Herring <robh@kernel.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH 0/2] arm64: dts: rockchip: Add Radxa E54C
+Date: Sat,  8 Aug 2026 16:00:16 +0800
+Message-Id: <20260808080018.1492239-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+X-HM-Tid: 0a9fe0633abc03a2kunm975b5a9f61259
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDHktJVk0aTExKHktDTB1JGFYeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpJTFlXWRYaDxIVHRRZQVlPS0hVSktIS0
+	pMS1VKS0tVS1kG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_174250_924485_1A2242C1 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20260808_010041_227801_32C704BC 
+X-CRM114-Status: UNSURE (   8.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,101 +71,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable multimedia related drivers used by the Radxa ROCK 5B (used as an
-example, the config options are relevant for most Rockchip RK3588 and
-RK3576 boards), so that all hardware is supported by the default config.
+This series requires the following commit in Linux v7.2 to make the
+switch work: https://github.com/torvalds/linux/commit/9da2c8672f77
 
- * Synopsys MIPI CSI2RX - RK3588 CSI2 Controller
- * RKVDEC - RK3588/RK3576 video decoder for H.264 and H.265
- * Sony IMX415 - Sensor used by the Radxa Cam 4K module
- * Rocket - RK3588 NPU driver
- * Verisilicon IOMMU - IOMMU used by RK3588 AV1 video decoder
- * Innosilicon CSI D-PHY - RK3588 CSI PHY (one of them)
+There was a conflict between eMMC and SPI Flash, so the unmounted
+eMMC was disabled. The schematic can be found below:
+https://dl.radxa.com/e/e54c/hw/radxa_e54c_v1.2_schematic.pdf
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-Changes in v3:
-- Link to v2: https://patch.msgid.link/20260807-rockchip-defconfig-additions-v2-1-cbb8eef87be6@collabora.com
-- Also add CONFIG_VIDEO_DW_MIPI_CSI2RX=m and update commit message
+The following functions were tested:
+- Boot from SD card using generic-rk3588 u-boot
+- USB Type-C connection to RTL8153 network card
+- USB Type-C connection to USB 3.0 drive
+- 2x USB 2.0 and 1x USB 3.0 Type-A HOST
+- RTL8367RB 4-Port Gigabit Switch
+- HDMI 1080P Output
+- Button and LED
+- PCIe NVMe SSD
 
-Changes in v2:
-- Link to v1: https://patch.msgid.link/20260806-rockchip-defconfig-additions-v1-0-6b1d8baa0bf5@collabora.com
-- Squash all patches (Krzysztof Kozlowski)
+Chukun Pan (2):
+  dt-bindings: arm: rockchip: Add Radxa E54C
+  arm64: dts: rockchip: Add Radxa E54C
 
-The Verisilicon IOMMU defconfig change has previously been sent by
-Benjamin as part of the IOMMU series, but did not reach upstream:
+ .../devicetree/bindings/arm/rockchip.yaml     |    6 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3582-radxa-e54c.dts   | 1182 +++++++++++++++++
+ 3 files changed, 1187 insertions(+), 2 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3582-radxa-e54c.dts
 
-https://lore.kernel.org/all/20260415072349.44237-6-benjamin.gaignard@collabora.com/
-
-The Synopsys CSI controller defconfig change has previously been sent
-by Michael as part of the driver series, but did not reach upstream:
-
-https://lore.kernel.org/linux-rockchip/20260522-rk3588-vicap-v5-0-d1d1f5265c56@collabora.com/
----
- arch/arm64/configs/defconfig | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 654a102cb5bc..49f836ba67a5 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -915,6 +915,7 @@ CONFIG_SDR_PLATFORM_DRIVERS=y
- CONFIG_V4L_MEM2MEM_DRIVERS=y
- CONFIG_VIDEO_AMPHION_VPU=m
- CONFIG_VIDEO_CADENCE_CSI2RX=m
-+CONFIG_VIDEO_DW_MIPI_CSI2RX=m
- CONFIG_VIDEO_WAVE_VPU=m
- CONFIG_VIDEO_E5010_JPEG_ENC=m
- CONFIG_VIDEO_MEDIATEK_JPEG=m
-@@ -939,6 +940,7 @@ CONFIG_VIDEO_RENESAS_VSP1=m
- CONFIG_VIDEO_RCAR_DRIF=m
- CONFIG_VIDEO_ROCKCHIP_RGA=m
- CONFIG_VIDEO_ROCKCHIP_CIF=m
-+CONFIG_VIDEO_ROCKCHIP_VDEC=m
- CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
- CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
- CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
-@@ -949,6 +951,7 @@ CONFIG_VIDEO_TI_J721E_CSI2RX=m
- CONFIG_VIDEO_HANTRO=m
- CONFIG_VIDEO_IMX219=m
- CONFIG_VIDEO_IMX412=m
-+CONFIG_VIDEO_IMX415=m
- CONFIG_VIDEO_OV5640=m
- CONFIG_VIDEO_OV5645=m
- CONFIG_VIDEO_S5KJN1=m
-@@ -1063,6 +1066,8 @@ CONFIG_BACKLIGHT_GPIO=m
- CONFIG_LOGO=y
- # CONFIG_LOGO_LINUX_MONO is not set
- # CONFIG_LOGO_LINUX_VGA16 is not set
-+CONFIG_DRM_ACCEL=y
-+CONFIG_DRM_ACCEL_ROCKET=m
- CONFIG_SOUND=m
- CONFIG_SND=m
- CONFIG_SND_ALOOP=m
-@@ -1611,6 +1616,7 @@ CONFIG_ROCKCHIP_IOMMU=y
- CONFIG_TEGRA_IOMMU_SMMU=y
- CONFIG_APPLE_DART=m
- CONFIG_MTK_IOMMU=y
-+CONFIG_VSI_IOMMU=m
- CONFIG_REMOTEPROC=y
- CONFIG_IMX_REMOTEPROC=y
- CONFIG_MTK_SCP=m
-@@ -1785,6 +1791,7 @@ CONFIG_PHY_RZ_G3E_USB3=m
- CONFIG_PHY_ROCKCHIP_EMMC=y
- CONFIG_PHY_ROCKCHIP_INNO_HDMI=m
- CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-+CONFIG_PHY_ROCKCHIP_INNO_CSIDPHY=m
- CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY=m
- CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=m
- CONFIG_PHY_ROCKCHIP_PCIE=m
-
----
-base-commit: 2d578cd590adc2133aa24496afcd7c3f7f9ba36a
-change-id: 20260806-rockchip-defconfig-additions-3ef855c4d32e
-
-Best regards,
---  
-Sebastian Reichel <sebastian.reichel@collabora.com>
+-- 
+2.34.1
 
 
 _______________________________________________
