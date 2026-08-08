@@ -4,95 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47C30C5AC67
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Aug 2026 12:39:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF57C55174
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Aug 2026 14:06:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=57RLXiEzVJXkjWVTo19hXL6gTM2/3yLYFNs72HaRed4=; b=t4bDFW/bY2peVL
-	UWqY/47afy+2xsqm7hYcezBLxQ792EV27WwiU+WwynJUZXdFlbTq0+BxfWT3jfYJx7fWuO+1tZ13O
-	2Opoq0OcQjYYyldwZ0G//jjJvGBrsaXbFlpGtAQR0Yh0AMXbfH+1et1FzLVThvz/VkWycXucVzCEX
-	tDisIVSZrRBR1Db269tYSo/7mnrE3+j60YRDCBaodsQqbRD+q7TNGa2XbYZjcZHCujWuZc8nteAUW
-	MkY/cKGee53oiuRpSgxjgUmtPOp8k8u65W08yu+NbTq2hdYhA7JcPb6RYxxv6kW1L+oJ7xVyc6oyN
-	7iYBQa96NtoMKj4/CXjg==;
+	List-Owner; bh=ni5CU+Boevd+3a+klr5vz8kgmhFpvN70fYKPzRoI/Wo=; b=morrI9QeAVsKwK
+	kcsI1yzvG59EpNtyzf3uVOCiJXleiGuZ4W4WmY86nCNXmGXisOILokEa6A9tRDB8nT75GEgmtogvP
+	FLV5ag7BPNMfnS8FylVB80zmI5eWYBRAHOhWPPMqcZnlw82UAH4ftD3ghk9WGtFG58HxTAGlpej8y
+	glWzqCu9x9cPeQjwd7jtWlgQVZ67i9cKfScihjRgw93cEiflLVeKJ3ZVTI2fLqmidaXPJruf6hoVX
+	GU8qsS570Quq4kTZFbAmMknNMCzAlX329ekXpqNUBiCH6sItvrUD1GywlHDh30rqiisQK4mt1MM8z
+	Yvc/ryNyBRXJTAxn5zjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsgL9-00000009MSA-4A0X;
-	Sat, 08 Aug 2026 12:39:52 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1wshgu-00000009QvO-3qh6;
+	Sat, 08 Aug 2026 14:06:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsgL7-00000009MR8-2WwN
-	for linux-rockchip@lists.infradead.org;
-	Sat, 08 Aug 2026 12:39:50 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-490791a3e92so438405e9.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 08 Aug 2026 05:39:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786192788; x=1786797588; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=/7Z80X9FpgglIlhnFzOdLw8386r1jX4AyfOgEB2R9U4=;
-        b=GpieTRhOZAFyuQlUkTeOCvgxSbjAPFKxDZL9J9me90K7WhpaSXsu4EdtkhQtKe1q29
-         zywiyaxU6cKUSlvj3kYJZRd3IpGIIz8nInTOfK9wnAmHKpeBB7CENDkguZqxffnkhFgg
-         XHvaufRi470FRfRaZ14DYIufORelM9DBgt89FgUQvHegibjxw83kpTF6H3j9JBz1UjZW
-         vf6DXzC4+DhPWFEvfqzWYCirZTIvD98S99shrJEi3BwZA9lhmZJv4S7clvIyvj1Edls2
-         7iiMKl6gw+csegORkeJwb2qPrk61smYbwS8Dmd4bAXjwFdlihA9F6nuKgRmgcjXOz3Go
-         LOVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786192788; x=1786797588;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=/7Z80X9FpgglIlhnFzOdLw8386r1jX4AyfOgEB2R9U4=;
-        b=BLzmM/hINqZ5RNOmaMxQvS5Z9hC57Xn4IGEEWJ/zdgtrnroqXV5VaUPVh3p3LJw5w4
-         BNPlREVVGX3n6eLUAXHwS2ajJhWp5+6r8EaNNHuNO2kY/j5g/av9amUpZhBuaG0qQVZU
-         OfgNWLQPPm45X528otORalLfP2CPfJ7A054oKTClKHn0yGeiEhdjdGAtC9QSpYab//uH
-         racm3SeXU/fkJjnhYuXbecLx2OWVavHWboLSb2ATd0kdJRYgV8wCDG3aoELEfedG28sn
-         cjq9zeCSEwydaOKlH9qtTkZBfwbYJJNLthBN2+yHgqQfo+3lnf3uDN7j2sfxxeKLiGKK
-         PKyA==
-X-Forwarded-Encrypted: i=1; AHgh+RqpbwVAGMWrKRdZayF/Ml/n4LrvpnKIy0t+Cyw0R/exkVPuni54c8oCxKoDgff4K3FINaI7snO+e6HFDedvjA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyxR9QmrkyqOVXmljrjvoJE73oYBbrbeIoRVVQq4Uq2xIUcLQXP
-	51ntwLEgcl1t6cZtZo/+a3wf6s8FUFzIgWAp3cV+YmcI5Yk3a4ZxCUkf
-X-Gm-Gg: AR+sD10izGo7j+p0vL8DhQB7AeDsoxiFNLfHeHi8hlDOHKMSMNbbFIjnWqNa9hiJeJ+
-	rDr62K7HrP7L+u1Q6Xdb3BLt3xxpGUH2PCYNrEoM4see6njJw3OVHkNnKC+Hk2yAuge2yO5cPD9
-	iqqfRhDJoViAXiz7yvoUQOWQkM0k1RHPPy3typugAOzb5JaqNKtrlPmpgSVnfFWiFv/aiktVs7T
-	Y8dLd9HGJyuwfaILxGQYnXqDazimV+dprd0Z0wfnGTaF19/MrW4viWdYheHWopjbtWGvl8wGNT4
-	WnVmIn1bGqBkOph778FcLNIdeAzek8FlVjItPCfVCc8c49s4XtUzwmfBFUfeTMUkhAkKrrHIdYi
-	PRp80/Om8tYRht2sLZxTXpEfGDUhnE8lIr7N9wp1R3BUTPxwgVzizS2C5S6P2etvsgedKOKQh/T
-	ooa4r/+xM6m0CrMci6j+OgBbZwigRNzKlSWd7O+Q0dbcwz41EcYJLpsHbJOSaT5nzd8jSFy/8QE
-	qejJ0uI3yANpZdXHWFJHVqryxCYnqor98h+Xndhx+1DVsIgiIlXhuvu5npJ1CpHWQ36jg==
-X-Received: by 2002:a05:600c:4ecb:b0:499:59a1:96f7 with SMTP id 5b1f17b1804b1-49959a19770mr126652915e9.1.1786192787600;
-        Sat, 08 Aug 2026 05:39:47 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8E20009911270F4BEC2300.dsl.pool.telekom.hu. [2001:4c4e:1b8e:2000:9911:270f:4bec:2300])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4995ea2e038sm115426525e9.14.2026.08.08.05.39.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 08 Aug 2026 05:39:47 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: Igor Paunovic <royalnet026@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Alexey Charkov <alchark@flipper.net>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH v6 7/9] accel/rocket: add RK3576 NPU (RKNN) support
-Date: Sat,  8 Aug 2026 14:39:24 +0200
-Message-ID: <20260808123926.23903-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260807211629.1573228-1-gahing@gahingwoo.com>
-References: <20260807211629.1573228-1-gahing@gahingwoo.com>
+	id 1wshgs-00000009Qur-2QEo;
+	Sat, 08 Aug 2026 14:06:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=5ebnFlhGfPY/u8sqmzY0u9+7RW6uNfi/nEVHqXeV5ng=; b=qXcQILVo27/aWkFhjRyOiOsi4X
+	Bxp+PI/tUnmsvz8qbQSBSczRY0vpvQz6ccaImBh4pUoW8hptHAn+lHTi0MetWpJZwlQy4ms13g9kO
+	dlZ255191DZ2xwu0xH0vv91XLso8gMjnO/zPmPJg91YRQifZUedm+KuAbcQ/KOM/A4Ka20LisKqgb
+	lrv8GD+U39CECg4hGIOeFkAKyUwkF7VX4mlBYSTPrOmrFjupWDJ/zXNT/NNqxz3f91AbK7kqCy07z
+	GgLRJ0mtoY6j5m6OaBdbc26cX8tnwqzibO8Ll3B/7mFxNf5nkSApGwB5ZnxGQNVbUnEXSNZLDKDor
+	htlq0zvQ==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Detlev Casanova <detlev.casanova@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@collabora.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v3] arm64: defconfig: enable Rockchip Multimedia drivers
+Date: Sat, 08 Aug 2026 16:06:03 +0200
+Message-ID: <5738059.NG923GbCHz@diego>
+In-Reply-To: <20260808-rockchip-defconfig-additions-v3-1-0ed67877e94d@collabora.com>
+References: <20260808-rockchip-defconfig-additions-v3-1-0ed67877e94d@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260808_053949_659248_1AC2928F 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20260808_070622_677338_4DA5E7DE 
+X-CRM114-Status: GOOD (  19.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,59 +63,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jiaxing,
-
-No need to apologise - you found it, and you found it properly.  Diffing
-an ordered trace of every register write against the vendor driver on
-the same board is the right tool for exactly this class of problem, and
-a 12 bit versus 16 bit field in a header derived from another SoC is not
-something a reviewer was going to catch by reading.
-
-I had gone through v6 with the RK3588 side in mind and had a list of
-comments on the poll path in 7/9.  Most of it goes away with the
-polling, so I will not spend your time on it.
-
-One item outlives it, because it is not part of the poll machinery.  In
-rocket_core_init(), the new multi-power-domain attach returns without
-unwinding rocket_job_init():
-
-> +	if (core->soc->multi_power_domain) {
-> +		struct dev_pm_domain_list *pd_list;
-> +
-> +		err = devm_pm_domain_attach_list(dev, NULL, &pd_list);
-> +		if (err < 0)
-> +			return dev_err_probe(dev, err,
-> +					     "failed to attach NPU power domains\n");
-> +	}
-
-The path immediately above it shows what is missing: rocket_job_init()'s
-own failure path puts the iommu_group reference back before returning.
-If the attach fails here, the scheduler, the ordered workqueue and that
-iommu_group reference all stay behind.  Since RK3576 still needs the
-attach in v7, I expect the same shape to survive the rewrite.
-
-Smaller, and it may disappear anyway now that you are splitting 6/9: the
-commit message says nothing changes for RK3588, but struct rocket_core's
-clks[] grows from 4 to 6 there while the two extra names only arrive in
-7/9.  Either a line in the message or moving the growth to the patch
-that uses it.
-
-For v7 on my side: once the poll is gone, the only change my hardware
-executes is the job_lock move, which you are taking out of the series
-anyway.  I am happy to run the series on all three cores here - probe,
-multi-task jobs, all cores in parallel, a forced timeout and reset, and
-runtime-PM cycling checked against a bit-exact oracle - and report what
-I see.  I would rather send you results than a tag that covers less than
-it looks like it does.
-
-Igor
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gU2Ftc3RhZywgOC4gQXVndXN0IDIwMjYsIDAyOjQyOjI2IE1pdHRlbGV1cm9ww6Rpc2NoZSBT
+b21tZXJ6ZWl0IHNjaHJpZWIgU2ViYXN0aWFuIFJlaWNoZWw6Cj4gRW5hYmxlIG11bHRpbWVkaWEg
+cmVsYXRlZCBkcml2ZXJzIHVzZWQgYnkgdGhlIFJhZHhhIFJPQ0sgNUIgKHVzZWQgYXMgYW4KPiBl
+eGFtcGxlLCB0aGUgY29uZmlnIG9wdGlvbnMgYXJlIHJlbGV2YW50IGZvciBtb3N0IFJvY2tjaGlw
+IFJLMzU4OCBhbmQKPiBSSzM1NzYgYm9hcmRzKSwgc28gdGhhdCBhbGwgaGFyZHdhcmUgaXMgc3Vw
+cG9ydGVkIGJ5IHRoZSBkZWZhdWx0IGNvbmZpZy4KPiAKPiAgKiBTeW5vcHN5cyBNSVBJIENTSTJS
+WCAtIFJLMzU4OCBDU0kyIENvbnRyb2xsZXIKPiAgKiBSS1ZERUMgLSBSSzM1ODgvUkszNTc2IHZp
+ZGVvIGRlY29kZXIgZm9yIEguMjY0IGFuZCBILjI2NQo+ICAqIFNvbnkgSU1YNDE1IC0gU2Vuc29y
+IHVzZWQgYnkgdGhlIFJhZHhhIENhbSA0SyBtb2R1bGUKPiAgKiBSb2NrZXQgLSBSSzM1ODggTlBV
+IGRyaXZlcgo+ICAqIFZlcmlzaWxpY29uIElPTU1VIC0gSU9NTVUgdXNlZCBieSBSSzM1ODggQVYx
+IHZpZGVvIGRlY29kZXIKPiAgKiBJbm5vc2lsaWNvbiBDU0kgRC1QSFkgLSBSSzM1ODggQ1NJIFBI
+WSAob25lIG9mIHRoZW0pCj4gCj4gU2lnbmVkLW9mZi1ieTogU2ViYXN0aWFuIFJlaWNoZWwgPHNl
+YmFzdGlhbi5yZWljaGVsQGNvbGxhYm9yYS5jb20+CgpJJ20gbm90IHN1cmUgd2hhdCB0aGUgYWN0
+dWFsIHJ1bGUgZm9yIGRlZmNvbmZpZyBjaGFuZ2VzIGlzLgoKSW4gc29tZSBwYXN0IHRocmVhZCBJ
+IHJlbWVtYmVyIChob3BlZnVsbHkgY29ycmVjdGx5KSBLcnp5c3p0b2Ygc2F5aW5nCnRoYXQgdGhl
+IGFybTY0IGRlZmNvbmZpZyBpcyBub3Qgc3VwcG9zZWQgdG8gYmUgYSBkaXN0cm8tY29uZmlnLCBz
+bwplbmFibGluZyBlYWNoIGFuZCBldmVyeSBkcml2ZXIgd2FzIG5vdCB0aGUgZ29hbC4KCk9uIHRo
+ZSBvdGhlciBoYW5kLCBoZSBkaWQgbm90IHJlcGVhdCB0aGF0IGluIGhpcyByZXBseSB0byB5b3Vy
+IHYxIDstKSAuCgpXZSdyZSBhdCAtcmM3IHRvbW9ycm93LCBzbyBpdCdkIGJlIDcuNCBtYXRlcmlh
+bCBhbnl3YXksIHNvIGVub3VnaCB0aW1lCnRvIGdldCAiY29tcGxhaW50cyIgSSBndWVzcyA7LSkg
+LgoKCkhlaWtvCgo+IC0tLQo+IENoYW5nZXMgaW4gdjM6Cj4gLSBMaW5rIHRvIHYyOiBodHRwczov
+L3BhdGNoLm1zZ2lkLmxpbmsvMjAyNjA4MDctcm9ja2NoaXAtZGVmY29uZmlnLWFkZGl0aW9ucy12
+Mi0xLWNiYjhlZWY4N2JlNkBjb2xsYWJvcmEuY29tCj4gLSBBbHNvIGFkZCBDT05GSUdfVklERU9f
+RFdfTUlQSV9DU0kyUlg9bSBhbmQgdXBkYXRlIGNvbW1pdCBtZXNzYWdlCj4gCj4gQ2hhbmdlcyBp
+biB2MjoKPiAtIExpbmsgdG8gdjE6IGh0dHBzOi8vcGF0Y2gubXNnaWQubGluay8yMDI2MDgwNi1y
+b2NrY2hpcC1kZWZjb25maWctYWRkaXRpb25zLXYxLTAtNmIxZDhiYWEwYmY1QGNvbGxhYm9yYS5j
+b20KPiAtIFNxdWFzaCBhbGwgcGF0Y2hlcyAoS3J6eXN6dG9mIEtvemxvd3NraSkKPiAKPiBUaGUg
+VmVyaXNpbGljb24gSU9NTVUgZGVmY29uZmlnIGNoYW5nZSBoYXMgcHJldmlvdXNseSBiZWVuIHNl
+bnQgYnkKPiBCZW5qYW1pbiBhcyBwYXJ0IG9mIHRoZSBJT01NVSBzZXJpZXMsIGJ1dCBkaWQgbm90
+IHJlYWNoIHVwc3RyZWFtOgo+IAo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI2MDQx
+NTA3MjM0OS40NDIzNy02LWJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20vCj4gCj4gVGhl
+IFN5bm9wc3lzIENTSSBjb250cm9sbGVyIGRlZmNvbmZpZyBjaGFuZ2UgaGFzIHByZXZpb3VzbHkg
+YmVlbiBzZW50Cj4gYnkgTWljaGFlbCBhcyBwYXJ0IG9mIHRoZSBkcml2ZXIgc2VyaWVzLCBidXQg
+ZGlkIG5vdCByZWFjaCB1cHN0cmVhbToKPiAKPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51
+eC1yb2NrY2hpcC8yMDI2MDUyMi1yazM1ODgtdmljYXAtdjUtMC1kMWQxZjUyNjVjNTZAY29sbGFi
+b3JhLmNvbS8KPiAtLS0KPiAgYXJjaC9hcm02NC9jb25maWdzL2RlZmNvbmZpZyB8IDcgKysrKysr
+Kwo+ICAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2Fy
+Y2gvYXJtNjQvY29uZmlncy9kZWZjb25maWcgYi9hcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmln
+Cj4gaW5kZXggNjU0YTEwMmNiNWJjLi40OWY4MzZiYTY3YTUgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9h
+cm02NC9jb25maWdzL2RlZmNvbmZpZwo+ICsrKyBiL2FyY2gvYXJtNjQvY29uZmlncy9kZWZjb25m
+aWcKPiBAQCAtOTE1LDYgKzkxNSw3IEBAIENPTkZJR19TRFJfUExBVEZPUk1fRFJJVkVSUz15Cj4g
+IENPTkZJR19WNExfTUVNMk1FTV9EUklWRVJTPXkKPiAgQ09ORklHX1ZJREVPX0FNUEhJT05fVlBV
+PW0KPiAgQ09ORklHX1ZJREVPX0NBREVOQ0VfQ1NJMlJYPW0KPiArQ09ORklHX1ZJREVPX0RXX01J
+UElfQ1NJMlJYPW0KPiAgQ09ORklHX1ZJREVPX1dBVkVfVlBVPW0KPiAgQ09ORklHX1ZJREVPX0U1
+MDEwX0pQRUdfRU5DPW0KPiAgQ09ORklHX1ZJREVPX01FRElBVEVLX0pQRUc9bQo+IEBAIC05Mzks
+NiArOTQwLDcgQEAgQ09ORklHX1ZJREVPX1JFTkVTQVNfVlNQMT1tCj4gIENPTkZJR19WSURFT19S
+Q0FSX0RSSUY9bQo+ICBDT05GSUdfVklERU9fUk9DS0NISVBfUkdBPW0KPiAgQ09ORklHX1ZJREVP
+X1JPQ0tDSElQX0NJRj1tCj4gK0NPTkZJR19WSURFT19ST0NLQ0hJUF9WREVDPW0KPiAgQ09ORklH
+X1ZJREVPX1NBTVNVTkdfRVhZTk9TX0dTQz1tCj4gIENPTkZJR19WSURFT19TQU1TVU5HX1M1UF9K
+UEVHPW0KPiAgQ09ORklHX1ZJREVPX1NBTVNVTkdfUzVQX01GQz1tCj4gQEAgLTk0OSw2ICs5NTEs
+NyBAQCBDT05GSUdfVklERU9fVElfSjcyMUVfQ1NJMlJYPW0KPiAgQ09ORklHX1ZJREVPX0hBTlRS
+Tz1tCj4gIENPTkZJR19WSURFT19JTVgyMTk9bQo+ICBDT05GSUdfVklERU9fSU1YNDEyPW0KPiAr
+Q09ORklHX1ZJREVPX0lNWDQxNT1tCj4gIENPTkZJR19WSURFT19PVjU2NDA9bQo+ICBDT05GSUdf
+VklERU9fT1Y1NjQ1PW0KPiAgQ09ORklHX1ZJREVPX1M1S0pOMT1tCj4gQEAgLTEwNjMsNiArMTA2
+Niw4IEBAIENPTkZJR19CQUNLTElHSFRfR1BJTz1tCj4gIENPTkZJR19MT0dPPXkKPiAgIyBDT05G
+SUdfTE9HT19MSU5VWF9NT05PIGlzIG5vdCBzZXQKPiAgIyBDT05GSUdfTE9HT19MSU5VWF9WR0Ex
+NiBpcyBub3Qgc2V0Cj4gK0NPTkZJR19EUk1fQUNDRUw9eQo+ICtDT05GSUdfRFJNX0FDQ0VMX1JP
+Q0tFVD1tCj4gIENPTkZJR19TT1VORD1tCj4gIENPTkZJR19TTkQ9bQo+ICBDT05GSUdfU05EX0FM
+T09QPW0KPiBAQCAtMTYxMSw2ICsxNjE2LDcgQEAgQ09ORklHX1JPQ0tDSElQX0lPTU1VPXkKPiAg
+Q09ORklHX1RFR1JBX0lPTU1VX1NNTVU9eQo+ICBDT05GSUdfQVBQTEVfREFSVD1tCj4gIENPTkZJ
+R19NVEtfSU9NTVU9eQo+ICtDT05GSUdfVlNJX0lPTU1VPW0KPiAgQ09ORklHX1JFTU9URVBST0M9
+eQo+ICBDT05GSUdfSU1YX1JFTU9URVBST0M9eQo+ICBDT05GSUdfTVRLX1NDUD1tCj4gQEAgLTE3
+ODUsNiArMTc5MSw3IEBAIENPTkZJR19QSFlfUlpfRzNFX1VTQjM9bQo+ICBDT05GSUdfUEhZX1JP
+Q0tDSElQX0VNTUM9eQo+ICBDT05GSUdfUEhZX1JPQ0tDSElQX0lOTk9fSERNST1tCj4gIENPTkZJ
+R19QSFlfUk9DS0NISVBfSU5OT19VU0IyPXkKPiArQ09ORklHX1BIWV9ST0NLQ0hJUF9JTk5PX0NT
+SURQSFk9bQo+ICBDT05GSUdfUEhZX1JPQ0tDSElQX0lOTk9fRFNJRFBIWT1tCj4gIENPTkZJR19Q
+SFlfUk9DS0NISVBfTkFORU5HX0NPTUJPX1BIWT1tCj4gIENPTkZJR19QSFlfUk9DS0NISVBfUENJ
+RT1tCj4gCj4gLS0tCj4gYmFzZS1jb21taXQ6IDJkNTc4Y2Q1OTBhZGMyMTMzYWEyNDQ5NmFmY2Q3
+YzNmN2Y5YmEzNmEKPiBjaGFuZ2UtaWQ6IDIwMjYwODA2LXJvY2tjaGlwLWRlZmNvbmZpZy1hZGRp
+dGlvbnMtM2VmODU1YzRkMzJlCj4gCj4gQmVzdCByZWdhcmRzLAo+IC0tICAKPiBTZWJhc3RpYW4g
+UmVpY2hlbCA8c2ViYXN0aWFuLnJlaWNoZWxAY29sbGFib3JhLmNvbT4KPiAKPiAKCgoKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
