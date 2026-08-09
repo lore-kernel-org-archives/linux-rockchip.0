@@ -4,66 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 293D6C5AD44
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Aug 2026 20:20:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B06C5AD4E
+	for <linux-rockchip@archiver.kernel.org>; Sun,  9 Aug 2026 09:40:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cn2kPueOFinwISFI0tO7IbOyfKnObzlPvPLOBA/ub/Y=; b=P14QpEZSt/lbWJDACmjw5af2sC
-	wzMNgmMmhxWvCPTyDa+xRn4ownlbl9ZhZ6T7r59vECCUC86N8MjjdmEMMtBDGTfLC3AZ9PqQrZN8L
-	wvepb7yszW05hUCAb5PmneUK/+KOgI7q4WGG5L9+Kg5nP+O5+YyUqJuUFfJHoPkPHNzjFEtdxQc4H
-	HlS0aqqoPpB3XdZJY+mkMcVmt0k6CAFKVOzjJvdvouovs5URUqyJlgnsKhkxjMJKPWz70ovXRTJp0
-	EGwfEF1cwM0xdqjBDHkeVpQMyLdCy7aT/RwVVvjJOXAPjf+RVV1/ldSXuhbadbmOuQobhxwFTAVcn
-	2CQzFAVw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fUxRrLx6s5cbwfkEZFElunyt8vE9myzNtgNz1y9UfHc=; b=yOmeWrMeFr31w0
+	YvJ2Ege61snBFCm16iZuV0d3/VKcuZniywiCHU+yOe3tY5RfSsgHuiOc0QZROz74OVOG7idRFyGV1
+	e/5dvYmPWxGo/B2Gg3GxPiGQoqyBz3YvFC4qeBdugDfPWXr4bYAxPxlunZYUzpycJ6E/TSLDRikIh
+	gfTX/KXDNvQRwlmTigEQg2KZuerNn3ivseLWtccKY7VfVqZGKcIppAVlcmiJPvhfxETcIn3ZlZnE+
+	2Mdi32xRPrSUAIQSUnlWkvdJAH1wsWvpPBe/I191ByHWgkScfp1arSJA5M8DcJQCp1lRTHYCAaqMB
+	zklea7xxO8VLK01wH6VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsnXB-00000009iH1-3F3x;
-	Sat, 08 Aug 2026 20:20:45 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wt00S-0000000A99y-0zWy;
+	Sun, 09 Aug 2026 09:39:49 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsnX8-00000009iGP-3whb;
-	Sat, 08 Aug 2026 20:20:44 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1786220392; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=nQD+fGqxB6UkDIh6ab8llSRtZtAVdtmjXM55X4ftMoqQV0GLZJCSWlhUNX6ngEyMXI7AmhJJLZW2nwP4sJKkYsn4UcOU+zuKgzKUWGr7XypA/uq+lcwUmoKYbV0L4HSjTsGaUZLnOnuFLVydVQQC25s2SDvzFog7AAmsnZ/c38s=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1786220392; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=dTyEmAFMXg2QOXmlZRaJiP5I5NyDAILJNF6EwnDocl8=; 
-	b=CE/G2sMo9Mw9AKCz4lFbfyR9wVUahgjz1b0uCkNXEnB6JByCLVOJp5sQgGViBzusDJJf3I6TDNQjtPOAa7lIWThGkSnhIFgjlaHWW3KFKXlgyeB8PBs+hwQT4Tjx5WhEI9Eb422NQ6N+wft3ZjX0PeoYtFOyNUtuwieIFV2Xa6k=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1786220391;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=dTyEmAFMXg2QOXmlZRaJiP5I5NyDAILJNF6EwnDocl8=;
-	b=cE3SLerBAaQutJ7S37S5guKr19nYqY+YMpqOXCgt069b/O0KhnZYMHocj/VbZ0pi
-	NlT3B4uUFl26JqZKRKL370SK/gjkCYtADtPFm3UpqjShqjaQaaQ3JOx0FwcXzJ9bMkE
-	QvXJ6u/3NNnm7FJ1BpzX96szDMbhcQtXH3NeNAdg=
-Received: by mx.zohomail.com with SMTPS id 1786220389882229.9479842488364;
-	Sat, 8 Aug 2026 13:19:49 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 8F47B180679; Sat, 08 Aug 2026 22:19:42 +0200 (CEST)
-Date: Sat, 8 Aug 2026 22:19:42 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Igor Paunovic <royalnet026@gmail.com>
-Subject: Re: [PATCH v11 00/21] Synopsys DisplayPort Controller improvements
- for Rockchip platforms
-Message-ID: <aneNCDU12OzG99UX@venus>
-References: <20260806-synopsys-dw-dp-improvements-v11-0-0d508505f383@collabora.com>
- <20260808094138.7205-1-royalnet026@gmail.com>
+	id 1wt00P-0000000A99N-04TQ;
+	Sun, 09 Aug 2026 09:39:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=e2tV2waLfrz+hH7M5PM5u39hRzN3D90MNpx1km/idhU=; b=zZEPnCMzwhtm9l/12WM55pnpXJ
+	aXqeg/pf8AM+3OfOkQm9xRDfhU877IiEfaiycVhVXjJXKgtO9/vshQht/ubQcimNW1RFBwadzEPx8
+	gcFFCrOWc4XUdKhMQkNiX7tRF/K1utYsd18M/xf2uapKYbsXdu/GKDsUq+oKhOT6HCCXgOTgTm9V2
+	3NPXNTMiFx5s91rKAyXPEyulaFJ8X/gPnklIxGSmFz6ype0gW9/xoR4OQqO6kNiaP4MB5RhLhZV43
+	KjE36/0/e2HHZ0lO6K2JNMrgNf0OVSrNJJq8Vz7CrQPKFKNbHNpd8lHblTOy4WNvIdBpd4s42FsR6
+	NXdMd7hg==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Linus Walleij <linusw@kernel.org>, Simon Glass <sjg@chromium.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ devicetree@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org,
+ Simon Glass <sjg@chromium.org>, Jeffy Chen <jeffy.chen@rock-chips.com>,
+ Ye Zhang <ye.zhang@rock-chips.com>, huang lin <hl@rock-chips.com>,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/4] pinctrl: rockchip: Decode drive strength in the get
+ function
+Date: Sun, 09 Aug 2026 11:39:33 +0200
+Message-ID: <8942531.Sb9uPGUboI@diego>
+In-Reply-To: <20260729132736.3807082-2-sjg@chromium.org>
+References: <20260729132736.3807082-1-sjg@chromium.org>
+ <20260729132736.3807082-2-sjg@chromium.org>
 MIME-Version: 1.0
-In-Reply-To: <20260808094138.7205-1-royalnet026@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/286.208.17
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260808_132043_008370_D7E2D07A 
-X-CRM114-Status: GOOD (  34.04  )
+X-CRM114-CacheID: sfid-20260809_023945_138635_DE76EE49 
+X-CRM114-Status: GOOD (  18.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,155 +66,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Alexey Charkov <alchark@flipper.net>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Sandy Huang <hjc@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: multipart/mixed; boundary="===============4729967781197202692=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============4729967781197202692==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hivxea73q5gk46gz"
-Content-Disposition: inline
-
-
---hivxea73q5gk46gz
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v11 00/21] Synopsys DisplayPort Controller improvements
- for Rockchip platforms
-MIME-Version: 1.0
-
-Hi,
-
-On Sat, Aug 08, 2026 at 11:41:32AM +0200, Igor Paunovic wrote:
-> The Tested-by tag is at the bottom.  Short version: v11 works here on
-> an Orange Pi 5 Plus over USB-C DP AltMode.  It needs your usbdp v13
-> series underneath to probe at all, and above 2560x1440@144 it needs a
-> VOP2 ACLK change that has nothing to do with your patches.
->=20
-> One caveat first, so that the next paragraph is not misread: dp0 is
-> disabled in the mainline RK3588 DTS, so none of this is reachable on
-> an untouched tree.  I enable it with a local board DT patch.
->=20
-> With dp0 enabled but without usbdp v13, dw-dp never finishes probing.
-> It stops at "failed to get follow-up bridge" (dw-dp.c), because
-> mainline phy-rockchip-usbdp has no drm_aux_bridge_register() at all;
-> that call arrives with usbdp v13 patch 16/35 ("phy: rockchip: usbdp:
-> Register DP aux bridge"). The component bind then never completes, so
-> both HDMI outputs stay dark as well - the symptom is much wider than
-> the cause, which cost me a boot to work out.
-
-Correct, that's why I mentioned the explicit dependency in earlier
-versions. But without the usbdp series you should not have DP0
-connected to the USBDP in the first place, because the USBDP DT
-binding does not yet have 'ports' described in its binding.
-
-> Hardware: Samsung Odyssey G70B behind a USB-C to HDMI 2.1 protocol
-> converter.  DPCD extended revision 1.4, the link trains at HBR2 x4,
-> VSC SDP colorimetry is supported.  The converter ships a malformed
-> EDID, so a boot script feeds a corrected one through the debugfs
-> edid_override and kicks fusb302 once; without that the 4K modes are
-> dropped and AUX stays dead.  Both are adapter problems, not driver
-> ones.
->=20
-> What I saw:
->=20
->   - DP-1 comes up connected, the EDID reads through the converter,
->     the link trains, and KWin drives the output.
->   - At the stock VOP2 ACLK rate, modes up to 2560x1440@144 are clean.
->     I left the machine at 2560x1440@143.99 for more than eight hours
->     with no DRM or VOP2 errors.
->   - 3840x2160@120 comes up, but the picture is unusable until the
->     VOP2 ACLK is raised.  With it raised the picture is correct
->     immediately.
->=20
-> That last point is a platform issue rather than a dw-dp one, so I have
-> sent it as its own thread to dri-devel and linux-rockchip with you on
-> Cc: "drm/rockchip: vop2: ACLK_VOP pinned at 500 MHz starves DP 4K120
-> on RK3588".
->=20
-> Two small things I noticed while I was in there:
->=20
-> Kconfig: ROCKCHIP_DW_DP selects nothing, and DRM_DW_DP does not select
-> DRM_BRIDGE_CONNECTOR either, while ROCKCHIP_ANALOGIX_DP,
-> ROCKCHIP_CDN_DP, ROCKCHIP_DW_HDMI_QP, ROCKCHIP_LVDS and ROCKCHIP_RGB
-> all do.  Since dw_dp-rockchip.c calls drm_bridge_connector_init(), a
-> configuration with only ROCKCHIP_DW_DP enabled fails to link.  This
-> predates your series; I am happy to send the one-liner if you agree it
-> is worth fixing.
-
-Makes sense to handle this independently.
-
-> sound-dai-cells: the dt-bindings patch in this series ("dt-bindings:
-> display: rockchip: dw-dp: Fix sound DAI cells") notes that the
-> mainline rk3588 DTS still sets 0 and will be fixed up separately.  Is
-> that DTS patch already queued somewhere?  I would rather not duplicate
-> it.
-
-You can see it in the Collabora rockchip-devel branch; I did not yet
-send it because it needs the DT binding patch. See the discussion
-with Rob on the binding patch.=20
-
-> DP audio: it does work here, but on my rockchip-devel based daily
-> kernel, which carries the v9 generation of the audio patch - a
-> simple-audio-card with cpu &spdif_tx2 and codec <&dp0 1>, picked up by
-> PipeWire unaided, playing over the same cable as the video.  I have
-> not retested audio on the v11 tree, so the tag below covers video
-> only.
-
-Great (barely anything audio related changed between those versions)
-:)
-
-> Tested on drm-misc-next of 2026-08-07 (dc2f9f7fed1a) with this series,
-> usbdp v13, two local board DT patches (enable DP AltMode on the USB-C
-> connector; pin DCLK_VOP2 to V0PLL), and a one-line local change to
-> clk.c so that I could set clock rates from debugfs.
->=20
-> Thanks for the series.
->=20
-> Tested-by: Igor Paunovic <royalnet026@gmail.com>
-
-Thanks. Hopefully the USB-C DP AltMode work makes it into 7.4 :)
-
-Greetings,
-
--- Sebastian
-
---hivxea73q5gk46gz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmp3j1sACgkQ2O7X88g7
-+ppntQ/9E94S+hS6IHgfueAiTitlAsEJW+1Wvoxat8JqDtfqDFq1EWK++yaHk9z1
-xSKhCo5CMNXumO5yMRrtHpzNrW4+8aOAefc3e9V5hhoqvaXPpZrkU8AMfFWFm8zE
-DG++XGGua7rwXFPXNbwnQHwreZnMG4ssDQoudECym8raNn9u7/usjw99TzopfLJQ
-bHJf6kE+Su3VHXWVDlOryRAIFj+YyfzPspsBt97fUGOPRZZcfT9eDCkGbQt5Tf5O
-jLvklZlvTXWOQS4PKrt32qApDHr4NYGTkloaM9bQIh/QkAP3lcLZ5U33fBen0ftv
-Ku+KCOswZqdpcs9FbxAhS9ko2kRNrIuAiA7L6h9XActtP2J9StTxG4RMiMtgcbVN
-f9Yd5eL438Dqav1Qym6DmL5IGsLT291+31IYGrt8Wnq3yLMaFHdVJPwZGXdTiLhd
-3ylaEeabjZ2X9CAbZc6jcAvIWyfS5coAC8f1KEn+Kdf4So/He6mW5IR6deOYJ34s
-PcKvNVyYTU6qBEED5tNNwhwO/9/YMBHHGgrfxcASGNroLkTMluQvT6R50lP/GYEi
-oaL4BK8ZtjMlfUa/MexMSD/W3DvpI7P6kZZ0GUBGNxovWV7101Odq+XejVoDNzVs
-kANFNXa6KS6Z7mrPGJDXbb5xm7pRCXQ3c5pohdKEMcOmLWXGJx4=
-=492A
------END PGP SIGNATURE-----
-
---hivxea73q5gk46gz--
-
-
---===============4729967781197202692==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4729967781197202692==--
-
+QW0gTWl0dHdvY2gsIDI5LiBKdWxpIDIwMjYsIDE1OjI3OjI1IE1pdHRlbGV1cm9ww6Rpc2NoZSBT
+b21tZXJ6ZWl0IHNjaHJpZWIgU2ltb24gR2xhc3M6Cj4gVGhlIGRlY29kaW5nIG9mIHRoZSAyLWJp
+dCBhbmQgOC1iaXQgbGV2ZWwgZHJpdmUtc3RyZW5ndGggdmFsdWVzIHNpdHMgaW4KPiByb2NrY2hp
+cF9zZXRfZHJpdmVfcGVycGluKCksIHdoZXJlIGl0IGlzIHVucmVhY2hhYmxlOiB0aGUgU29DcyB3
+aG9zZQo+IGJhbmtzIGRlY2xhcmUgdGhlc2UgZHJpdmUgdHlwZXMgKFJLMzUwNiBhbmQgUlYxMTAz
+QikgdGFrZSB0aGUgZWFybHkKPiBjdHJsLT50eXBlIGJyYW5jaCBpbiB0aGUgc2V0IHBhdGgsIGFu
+ZCB0aGUgcmVhZC1hbmQtZGVjb2RlIGxvZ2ljIGluIGEKPiBzZXQgZnVuY3Rpb24gaGFzIG5vIHB1
+cnBvc2UuIE1lYW53aGlsZSByb2NrY2hpcF9nZXRfZHJpdmVfcGVycGluKCkKPiBsYWNrcyB0aGUg
+ZGVjb2RpbmcsIHNvIHBpbl9jb25maWdfZ2V0KCkgYW5kIHRoZSBkZWJ1Z2ZzIG91dHB1dCByZXBv
+cnQKPiAtRUlOVkFMIGZvciB0aGVzZSBTb0NzLgo+IAo+IE1vdmUgdGhlIHR3byBjYXNlcyB0byBy
+b2NrY2hpcF9nZXRfZHJpdmVfcGVycGluKCksIHdoZXJlIHRoZXkgYmVsb25nLgo+IAo+IEZpeGVz
+OiBkYmQyMzE3ZDdiOWYgKCJwaW5jdHJsOiByb2NrY2hpcDogQWRkIHJrMzUwNiBwaW5jdHJsIHN1
+cHBvcnQiKQo+IFNpZ25lZC1vZmYtYnk6IFNpbW9uIEdsYXNzIDxzamdAY2hyb21pdW0ub3JnPgoK
+UmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cgo+IC0tLQo+IAo+
+IENoYW5nZXMgaW4gdjM6Cj4gLSBBZGQgbmV3IHBhdGNoIG1vdmluZyB0aGUgZHJpdmUtc3RyZW5n
+dGggZGVjb2RpbmcgdG8gdGhlIGdldCBmdW5jdGlvbgo+IAo+ICBkcml2ZXJzL3BpbmN0cmwvcGlu
+Y3RybC1yb2NrY2hpcC5jIHwgMzggKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tCj4gIDEg
+ZmlsZSBjaGFuZ2VkLCAxOSBpbnNlcnRpb25zKCspLCAxOSBkZWxldGlvbnMoLSkKPiAKPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcm9ja2NoaXAuYyBiL2RyaXZlcnMvcGlu
+Y3RybC9waW5jdHJsLXJvY2tjaGlwLmMKPiBpbmRleCA3ZTBmY2Q0NWZkMjYuLjA4YTQ2YTA0YTgx
+NSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1yb2NrY2hpcC5jCj4gKysr
+IGIvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcm9ja2NoaXAuYwo+IEBAIC0zMjY3LDYgKzMyNjcs
+MjUgQEAgc3RhdGljIGludCByb2NrY2hpcF9nZXRfZHJpdmVfcGVycGluKHN0cnVjdCByb2NrY2hp
+cF9waW5fYmFuayAqYmFuaywKPiAgCWNhc2UgRFJWX1RZUEVfSU9fMVY4X09OTFk6Cj4gIAkJcm1h
+c2tfYml0cyA9IFJLMzI4OF9EUlZfQklUU19QRVJfUElOOwo+ICAJCWJyZWFrOwo+ICsJY2FzZSBE
+UlZfVFlQRV9JT19MRVZFTF8yX0JJVDoKPiArCQlyZXQgPSByZWdtYXBfcmVhZChyZWdtYXAsIHJl
+ZywgJmRhdGEpOwo+ICsJCWlmIChyZXQpCj4gKwkJCXJldHVybiByZXQ7Cj4gKwkJZGF0YSA+Pj0g
+Yml0Owo+ICsKPiArCQlyZXR1cm4gZGF0YSAmIDB4MzsKPiArCWNhc2UgRFJWX1RZUEVfSU9fTEVW
+RUxfOF9CSVQ6Cj4gKwkJcmV0ID0gcmVnbWFwX3JlYWQocmVnbWFwLCByZWcsICZkYXRhKTsKPiAr
+CQlpZiAocmV0KQo+ICsJCQlyZXR1cm4gcmV0Owo+ICsJCWRhdGEgPj49IGJpdDsKPiArCQlkYXRh
+ICY9ICgxIDw8IDgpIC0gMTsKPiArCj4gKwkJcmV0ID0gaHdlaWdodDgoZGF0YSk7Cj4gKwkJaWYg
+KHJldCA+IDApCj4gKwkJCXJldHVybiByZXQgLSAxOwo+ICsJCWVsc2UKPiArCQkJcmV0dXJuIC1F
+SU5WQUw7Cj4gIAlkZWZhdWx0Ogo+ICAJCWRldl9lcnIoZGV2LCAidW5zdXBwb3J0ZWQgcGluY3Ry
+bCBkcml2ZSB0eXBlOiAlZFxuIiwgZHJ2X3R5cGUpOwo+ICAJCXJldHVybiAtRUlOVkFMOwo+IEBA
+IC0zMzkwLDI1ICszNDA5LDYgQEAgc3RhdGljIGludCByb2NrY2hpcF9zZXRfZHJpdmVfcGVycGlu
+KHN0cnVjdCByb2NrY2hpcF9waW5fYmFuayAqYmFuaywKPiAgCWNhc2UgRFJWX1RZUEVfSU9fMVY4
+X09OTFk6Cj4gIAkJcm1hc2tfYml0cyA9IFJLMzI4OF9EUlZfQklUU19QRVJfUElOOwo+ICAJCWJy
+ZWFrOwo+IC0JY2FzZSBEUlZfVFlQRV9JT19MRVZFTF8yX0JJVDoKPiAtCQlyZXQgPSByZWdtYXBf
+cmVhZChyZWdtYXAsIHJlZywgJmRhdGEpOwo+IC0JCWlmIChyZXQpCj4gLQkJCXJldHVybiByZXQ7
+Cj4gLQkJZGF0YSA+Pj0gYml0Owo+IC0KPiAtCQlyZXR1cm4gZGF0YSAmIDB4MzsKPiAtCWNhc2Ug
+RFJWX1RZUEVfSU9fTEVWRUxfOF9CSVQ6Cj4gLQkJcmV0ID0gcmVnbWFwX3JlYWQocmVnbWFwLCBy
+ZWcsICZkYXRhKTsKPiAtCQlpZiAocmV0KQo+IC0JCQlyZXR1cm4gcmV0Owo+IC0JCWRhdGEgPj49
+IGJpdDsKPiAtCQlkYXRhICY9ICgxIDw8IDgpIC0gMTsKPiAtCj4gLQkJcmV0ID0gaHdlaWdodDgo
+ZGF0YSk7Cj4gLQkJaWYgKHJldCA+IDApCj4gLQkJCXJldHVybiByZXQgLSAxOwo+IC0JCWVsc2UK
+PiAtCQkJcmV0dXJuIC1FSU5WQUw7Cj4gIAlkZWZhdWx0Ogo+ICAJCWRldl9lcnIoZGV2LCAidW5z
+dXBwb3J0ZWQgcGluY3RybCBkcml2ZSB0eXBlOiAlZFxuIiwgZHJ2X3R5cGUpOwo+ICAJCXJldHVy
+biAtRUlOVkFMOwo+IAoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
