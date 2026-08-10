@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C191C5AE5D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FE0FC5AC82
 	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 12:15:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,31 +12,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yxLUj/nLKBVThsGW5DOqprm5ZGrkMpqTmTdAXTXEnlE=; b=SJC2n9VvDWq8xs
-	Qm+GVkhPzDrk/wkH/WtfORyIk48IGVUnpjkIvTzrPb19r7wj5nDe0LV6rUQZ6X/6/6UHWHVt/s40g
-	N01Aqued0gZdeilVqjLu5H28i9H+p2Xy/ieNJthVzyXmIjucMIT1xTlZZC8iQDiMhpZ5V410hxvLB
-	CaQqljAWQe4YIc1/wTqymJIFE0UQrsugqo5c3/eL9bKtn4s0uWBedAagG/2hh1oDAdicsW4lHTEFH
-	1v6NbRs08n4l/cpnqnX+DDmls8cFt9u7gxZS+DnVLhD65Em6o7fDG0Wuj8HFa1RiOqwGbseE0NNNC
-	Uqr+RMSO99w2tuvRGLng==;
+	List-Owner; bh=kUaHPR2tiyoUgKnPAJ98uIeMl5CglflvdaCHBoJu0uo=; b=PrQTnVW86f+3vB
+	5fbLT+Akme7UTNrTuynos1WlVn1nPbPjWtMrH34NXv3h+b1bLWWSNodDU1vstX1HJh9SNfTOv8rxu
+	4CXPn10+lWzaVwrSVCBuppiImJK2MLwFNMWGAThFu7/1qqrRC0FoJK77NkfpnoTQ23renxP7M7jAx
+	8NElppd1PTaQ1w2beqcFq5TA19xl1NR80QxGFbQTNOgf3Q0/ngeylrsh4bc4zmHDTkQO//bfJjiQ5
+	jZGFkRSz8Zws7GNTLopP/oGBv5e3sfp3/WShX8zyrlvPe9tURnbPAPvvTXiZyvjWQWhiSa56OeNN5
+	86ioGCxHS2QMB+h0/zKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtOv1-0000000BiTL-1fAj;
+	id 1wtOv1-0000000BiUY-30RY;
 	Mon, 10 Aug 2026 12:15:51 +0000
 Received: from mail.zlab.su ([109.73.193.145])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtOuu-0000000BiJH-0BkG;
-	Mon, 10 Aug 2026 12:15:45 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7CB72C0516;
-	Mon, 10 Aug 2026 15:15:40 +0300 (MSK)
+	id 1wtOux-0000000BiNc-3m4Q;
+	Mon, 10 Aug 2026 12:15:49 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id BB833BFA89;
+	Mon, 10 Aug 2026 15:15:42 +0300 (MSK)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zlab.su; s=dkim;
-	t=1786364141; h=from:subject:date:message-id:to:cc:mime-version:
+	t=1786364144; h=from:subject:date:message-id:to:cc:mime-version:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=v1XLSf6ZDB/wEqrRtkdlR8YK8IVnmgU/VbtIqk1IzZk=;
-	b=jd2e4MtboCVn2w1QPDe/Im5f/LMETb6HuTl6ESnZ4NMjl7H/x6TkM3szAKfDAbQDrU1S0r
-	Xoj2sdSLWDJFDtqPT9hlfMiPQpSH1EQhU04PyARXyehUa4SvzGMVy/ayGzXO8FT2uBKMVF
-	VJLEJSXxNbYUcuOUMrz5UYjOedsXukd440taUfpf1sMxTLEeXCAf1l5DOLKSrVwEIRH2Y+
-	6I7LJLeiW3fa5alzAf1ASqUUYkL4OAk+LykgL7P30kq3l75MerT4ShUdS61brB1xIBc4LK
-	8zHWxqTy4JACFR+c+4XL3g0a0MiNoNlKuquogslOVgqcqjoPCQJm9hua47Kg3Q==
+	bh=Hf3hq9uUQWUEz8YvFbiRVgRTtJAkRTrXQ6MRYpIYIEw=;
+	b=UeIEk5zMajwNW4r8+weqNaNRWkDcX2R+4atx7y05y44m8kQkfK4J0lgfbgNpBSgxIOE/jV
+	gDX1GEexBCpwzJ1mllZ9trQnv7mjFLGJ5ArO7FYqnWxcbizrpnUzbZUk3l4/W+JN6pNUHw
+	A1dfYLT8jDIf5gCCTsbiP275HG8GFp6rJOEfjTneZqocPnbC49wvnftdmeg2iZiEemi54O
+	CwwgmNseusKz7usvNoa7dhbEzLG/lX2EawL5RONj0oViXHKOWq94hFMdHBMqxsaKt8rDaJ
+	kK2UbRp3MYteDJoxE6M5iE4S/1fJ9Xedf4jtwwwqxtMLmUy6+wuaHyb0Mv5XNQ==
 From: Vladislav Leonov <vlad@zlab.su>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -45,21 +45,28 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Vladislav Leonov <vlad@zlab.su>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
 	Conor Dooley <conor+dt@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	David Wu <david.wu@rock-chips.com>,
+	Eric Dumazet <edumazet@google.com>,
 	Heiko Stuebner <heiko@sntech.de>,
+	Jakub Kicinski <kuba@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>
-Subject: [PATCH 03/25] ARM: dts: rockchip: Add reset bindings to RV1106
-Date: Mon, 10 Aug 2026 15:10:54 +0300
-Message-ID: <20260810121121.210040-4-vlad@zlab.su>
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	netdev@vger.kernel.org
+Subject: [PATCH 04/25] dt-bindings: net: rockchip-dwmac: add RV1106 compatible
+Date: Mon, 10 Aug 2026 15:10:55 +0300
+Message-ID: <20260810121121.210040-5-vlad@zlab.su>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260810121121.210040-1-vlad@zlab.su>
 References: <20260810121121.210040-1-vlad@zlab.su>
 MIME-Version: 1.0
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260810_051544_279837_9B3DD7A9 
-X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-CacheID: sfid-20260810_051548_152879_7DE57912 
+X-CRM114-Status: UNSURE (   8.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,28 +84,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Include the RV1106 CRU reset-ID header so device tree nodes can
-reference reset lines by name, matching the reset controller support
-added in the previous commit.
+Add compatible string for RV1106 gmac, and constrain it to
+be compatible with Synopsys dwmac 4.20a.
 
 Signed-off-by: Vladislav Leonov <vlad@zlab.su>
 ---
 
- arch/arm/boot/dts/rockchip/rv1106.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rockchip/rv1106.dtsi b/arch/arm/boot/dts/rockchip/rv1106.dtsi
-index 70d3da6bd03e..fa5d0d7f4dcb 100644
---- a/arch/arm/boot/dts/rockchip/rv1106.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rv1106.dtsi
-@@ -4,6 +4,7 @@
-  */
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index 80c252845349..65eee45f7d7e 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -29,6 +29,7 @@ select:
+           - rockchip,rk3568-gmac
+           - rockchip,rk3576-gmac
+           - rockchip,rk3588-gmac
++          - rockchip,rv1106-gmac
+           - rockchip,rv1108-gmac
+           - rockchip,rv1126-gmac
+   required:
+@@ -56,6 +57,7 @@ properties:
+               - rockchip,rk3568-gmac
+               - rockchip,rk3576-gmac
+               - rockchip,rk3588-gmac
++              - rockchip,rv1106-gmac
+               - rockchip,rv1126-gmac
+           - const: snps,dwmac-4.20a
  
- #include <dt-bindings/clock/rockchip,rv1106-cru.h>
-+#include <dt-bindings/reset/rockchip,rv1106-cru.h>
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
 -- 
 2.47.3
 
