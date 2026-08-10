@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8839CC5AE49
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 03:42:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08BC4C5AD55
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 03:42:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8buMy5pUYbxPekko74wB4KUcWtRyzbkZY/w5DWnSV24=; b=xgMk/vePYCYaX0
-	0CvbOcjAbvJ3rAd7OmaONwCA90cANVG8T6rdsSSadt948hEUiTtstow7nWOQ7knWXKv3m8Vf85jS8
-	ZA3nhDKMuEJzHw0T3aIEtJayEarpkU6h2Otl/1ABGzup/w9cyevtRuaZH2+BQSxHUuFVz+yYl9zOx
-	dmL8IY1r7L+oHtznEeYt3iWmY/TK6Vpp6EpOLrK5Ukmwkja8fnQgE8sdlm2gdJnm949HXidHXIh90
-	TJCjrlaOPz2BINdhrjhc8VFtFSlk85zKFovrJoVHa1wY1khX+Z7upgIKxnsDO3H/BefPRtylpU/cq
-	fqmOCWlO6dsRR8zwIX5A==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CzLCwCygajf3KRdJnBK6C4phLXu2SxIXNE05jn2w5Yw=; b=R82lVoiffyoLKA
+	S2Cv1PZWxBNPkrE4yIZzJ0hF/uoM5Bvi/FpYzAXDP7efCKzNpxUs+fPyro5uQBpIMn8aqTdthhRbr
+	rYNSVo2IvnLV65xlVGZptix9pvtVN48Ey8X0kCKwTI4MqahrLCJkEJp40s+fpGnAJPpC+xUbMPU+G
+	V9HIS8J8Aw3k7cJ35MO1LGuJEj/mHkSxZerdov887EyC4resfmpdxEkluVHSJouGkuQXJPf3/q/ek
+	nX7wg2SnPomohBpHYqfvWecAQKMJpJf2wviYrvjjiQRSHGnLQg+aB02kOV186Js7fG51ZC2A9ICFH
+	3lsnAN+XYg1zlDgvalLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtGuW-0000000AxuR-36ul;
+	id 1wtGuW-0000000Axud-3y81;
 	Mon, 10 Aug 2026 03:42:48 +0000
-Received: from smtpbgjp3.qq.com ([54.92.39.34])
+Received: from smtpbguseast2.qq.com ([54.204.34.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtGuQ-0000000Axsk-0rzy;
-	Mon, 10 Aug 2026 03:42:46 +0000
+	id 1wtGuQ-0000000Axso-3lH9;
+	Mon, 10 Aug 2026 03:42:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1786333321;
-	bh=zZPHKAb4cQrm49yOWXVCco4Ik7cW5gVTYE6ZncjdyGU=;
+	s=altu2504; t=1786333308;
+	bh=Z8AUauJqA+r3pT/B0qrPy70O7l5e8ImJzUTG647LH5c=;
 	h=From:To:Subject:Date:Message-Id;
-	b=i7a45yaUOw+8mK15w0QhWF24XhWCJQEFm4lTj6qWKBBRIx7IDIaZBIN685CxAIFuh
-	 MgwlDQ9G7YmId/CMzwmTuM3i+y0cSogKThnBut5HQmVAJUW0KYUL0KMAy7vwOBoYxz
-	 y/7ZU0V2IgS++pJljjst1EDqKmCuh3RwhOUsrVtk=
-X-QQ-mid: esmtpgz11t1786333319ta5004747
-X-QQ-Originating-IP: FzKXUfXcJRl+i5lpm+GZGGkz2W35HG/bWGSZUC3Gv2k=
+	b=eezR/5CXrl/olfuipUMB1TrDY2J/ryA2zSnXrl92wvmknnonmk224Jep6aCnYEwuz
+	 LH1tjyv2YYKOWYCAXsqNMlfNCx/9eQTLMFP2pwWQdEB4pDwikaYmbe/LYADo2YrQGF
+	 eDkgsbwUdwdPMuhvWMWUn1lorIBODXeixyG2r74g=
+X-QQ-mid: esmtpgz11t1786333305t01702f6b
+X-QQ-Originating-IP: PgJMsdmQ2ZvNvkE+yrtkeVW07WCleVAPDiFefrOZEaU=
 Received: from DESKTOP-8BT1A2O.localdomain ( [61.154.14.86])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 10 Aug 2026 11:41:56 +0800 (CST)
+	id ; Mon, 10 Aug 2026 11:41:43 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 5057061470933120758
+X-BIZMAIL-ID: 3484612477660433064
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -55,35 +55,34 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH v3 3/3] drm/rockchip: dsi: Relax the lane rate margin requirements
-Date: Mon, 10 Aug 2026 11:41:39 +0800
-Message-Id: <20260810034139.148-4-kernel@airkyi.com>
+Subject: [PATCH v3 0/3] DSI Controller improvements for Rockchip platforms
+Date: Mon, 10 Aug 2026 11:41:36 +0800
+Message-Id: <20260810034139.148-1-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20260810034139.148-1-kernel@airkyi.com>
-References: <20260810034139.148-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: Me7Lc1PqlyGBLxyGTN4KUFCwVev0JeWu4sgyCqkdibQ16buVKkZ3zU2r
-	x0eWcf5v3QBd+S5YFM9JJvnhRpLOCVvpvAVkNsfGrzteGL//ubqHAT9TpZUNSJUALnuJUl/
-	r8LaNGGzuHqYzJB3D+GsXTb34cRNbVJcUyWbEACUpUwN1fBNvyr/0XIb0bTEzdRY3+dZlPV
-	LupqY8fqt2AsnzwO5iVxECGg8j8TKAJ3dYCZnJ/H9Rm7oJF9xNgi6fK0cqad9NIE0rf/Un2
-	xl5W5yUZLx/u+jzQjOU/NbRGPUmrYh1QORxQf1cXyYrEORvonKi0CDZHeMWLxpXvo+9Q7Y4
-	aiJms3aS8tqIHXb9NkEliOKCg5vZXnu6o6FV/htpgRqr2nWjWbhPym6enDdlbb3IBhNvXsH
-	Mg0oem8tGvG1x50HPZSPwrrhYRx20n9k+285XrHPQXeFJEd+Bdlpea76WYKcnjRTLzIi4bB
-	i8Hv1nwdXH5ICiEQax94rB2a3pdRWEVrpv/cQ13dy+v+DR5ACiPdVrwEO/dJOdtsCALRETE
-	K3CHuyIAoefxwJY+Jh4TZDEJUNRD+EE6ICpuE1koszJkw1NVIfUBMe9rMQaGJeSMkmPBIaN
-	8sIRt9VEF3W6zEa4WkNDSgqqVBMTvf5O/8WujUC+BhxIqCN8HHtdYc9XYjpqFgpBRfcUaFs
-	PsqimdcTQvoMciItq6x0qXGNp3z7xsDsiX5tjKjfvV2xbMU2/VYZ6YtYyPU5F21lc6mdIR/
-	hBKHo3aLSFiLYEiLVVWPOmUEj8/O56kZGiiN4e/VRG9ZEWWVmxnrMPTwGerqezSqGNlyz8L
-	ytgNy4+e6CKNlbU9w1ru94XC6XWO1a+hklKg/8eyyxIs8p40S6smLD+4I3dyw4Wu+hQlQXX
-	vSkXDBY+YJJycDmQ0GYesSrwMlaaMihNOMNrF5CYK86vX9aBt/Sy8a/LHaEO5Li5AOY8bWr
-	BDUgUGBptg2cp0kXfyeUDPzD+su5hTqSWZ9eWdMFX40ovtjm5Lp1lDCn6Bw+H/E1EM990qB
-	eZJn8wAa1jB5IDmk5lb8lpc2S4FlE=
-X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
+X-QQ-XMAILINFO: ND42uzdxTIzrFGecMR8iHevg5r7qdZi0GrkFF5q/942MN1ALdOxRn22K
+	wbd34LlALqR3saLn7pAB8iH48/EB75w2gKZ5piLBRqz3EfYbO8kDPqts3WyDaujBTFm7EF+
+	J1jPP7uL8V0icOHjMWQa2OIncBTQjGetjtK4GbslxXAo+yZNKShBt1bUjy9pqbs4cd5IKIG
+	g0zyesWYW9H41JnjPkmiFgByYyxnjMRSp1jSUmfhK9qtmiwG2ER+sAAaucDUkw6k/hUpf28
+	d0dBhA4oJzMncaUVn4DwcJAsv4qyxBTAsTrcAZlkh6RY+bMh6u1I3/kP4N04BoI4zKTsrEo
+	S5dQnBOD1HKR57sAX0OQONL6NHbLqBZmf1ChroELG6Do/n0VxDqRmID6bb57fZJmBKU/U30
+	C+wUIisKZ8Uqkos29eviAn62+lzXKirJVAJBlk2TRNW7xXIdRMecn/sjM2h19b2FxmtZz6K
+	Su5p6AmGRg9bjICioB9lZMsroDkoTBejKFndsVlZYh28TPlR10fjfZCGKasB79UwFijjLZr
+	dhSfy4Cd8S9Yg8l05uNu38NIw1iiAjK/nvZZbiiX3FaqNkMTL3n6NbNPikTLVQTIEUJ3oWF
+	ri0jS+FCuJuw8DDWCWX0cuGTpnTXcP98/FdFfilMDOvKRx04YMPOYN4On/9xcmZ397f4Ras
+	jgW/g6hvxC+QfptMbxI1x4Ftu9j6noFFjzpyPNfbl3ArypBpZ5znbOUxSm682UBybViR9Sl
+	lfi6uHZJ+RTvnlAk6eHboQaIyfpDJLhA7FTPmYfmseHEByvTE8wlJ4491CdqkopPHdyKMga
+	mwd61pUYclLuMGNyIEJ+PJSsT65I8dG8a3LMIBUCv63okvP1XsMIlqbjEecNN/JvUEdioHi
+	dfrfdpydlzqT+3jINGyPV6bOSgW3HeCZMi+yN2bpqjt1QAtjUVt9fEx3xcp3EFh+dQI+6W+
+	k2bkcLid/3iVC/9vhzKSYQpwChJON9ev5MCSFoWvf/7Do+wQ+17HEWcdW2H5S6v1NtrhqAp
+	g3mny8RKub4/vuvayn
+X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260809_204242_567932_292C1392 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20260809_204243_413458_039D5B44 
+X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,57 +102,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-The lane rate is calculated as follows:
+This series is dedicated to enhancing the DSI controller and PHY timing
+interaction, refining the lane rate calculation, and addressing the
+associated hardware limitations.
 
-	Lane_Rate = Pixel_Clk * BPP / lanes * Overhead
-
-The overhead factor is set to 1/0.8, equivalent to a 25% overhead.
-
-Now let's consider the case of RGB888 (BPP24) with a pclk of 148.5MHz.
-The lane rate equals 148.5M * 24 / 4 * 1.25 = 1113.75 Mbps.
-
-However, this is beyond the capability of certain platforms limited to a
-1Gbps lane rate. On the other hand, we have observed that some DSI panel
-actually perform worse with higher overhead.
-
-So we are considering relaxing the bandwidth margin requirements.
-According to the downstream test results, adopting 1/0.9 seems to
-be a sound approach, corresponding to an overhead of about 11%.
-
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
 Changes in v3:
+- Link to v2: https://lore.kernel.org/all/20260603033532.164-1-kernel@airkyi.com/
 - Rebase to Linux v7.2
 
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Changes in v2:
+- Link to v1: https://lore.kernel.org/all/20260324085838.90-1-kernel@airkyi.com/
+- Fix the unit conversion for max_mbps.
+- Split the lane rate calculation into a separate patch.
+- Add more comment about timing config.
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index e64dfc327891..8af9d6934d27 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -590,8 +590,8 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
- 
- 	mpclk = DIV_ROUND_UP(mode->clock, MSEC_PER_SEC);
- 	if (mpclk) {
--		/* take 1 / 0.8, since mbps must big than bandwidth of RGB */
--		tmp = mpclk * (bpp / lanes) * 10 / 8;
-+		/* take 1 / 0.9, since mbps must big than bandwidth of RGB */
-+		tmp = mpclk * (bpp / lanes) * 10 / 9;
- 		if (tmp < max_mbps)
- 			target_mbps = tmp;
- 		else
-@@ -601,7 +601,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
- 
- 	/* for external phy only a the mipi_dphy_config is necessary */
- 	if (dsi->phy) {
--		phy_mipi_dphy_get_default_config(mode->clock * 1000 * 10 / 8,
-+		phy_mipi_dphy_get_default_config(mode->clock * 1000 * 10 / 9,
- 						 bpp, lanes,
- 						 &dsi->phy_opts.mipi_dphy);
- 		dsi->lane_mbps = target_mbps;
--- 
+Chaoyi Chen (3):
+  drm/rockchip: dsi: Add maximum per lane bit rate calculation
+  drm/rockchip: dsi: Add dphy_get_timing support for multiple PHY types
+  drm/rockchip: dsi: Relax the lane rate margin requirements
+
+ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 66 +++++++++++++++++--
+ 1 file changed, 60 insertions(+), 6 deletions(-)
+
+--
 2.53.0
 
 
