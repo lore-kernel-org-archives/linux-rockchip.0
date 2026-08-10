@@ -4,62 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE51EC5AC82
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 09:11:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A967DC5AD4E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 10:03:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4oqu+rNS3I67R/lo1xJ0HGM58tPoqOQpcIXpO7jwrT0=; b=cUmPmu+T7xycqE
-	AHEuCnvhTqcw1W4LZ3zr64qWhN+C0bgtHrXACKIpwOu7ST1r3AH1PidyhpYWUzhk7yeuZ3Zp5fG2z
-	Q53HSZ0+2PIiNDMxTii83my2aqRKlCo5A+0mR3G3BNnw/evud9dpYVUwF7b+3IRjHM1KMCoCRx/8D
-	z101RrVoF2sAcNRZkfyrybgcBQ7jzkB4DQlf844DrEJkAbGHVb5eVFh7rTBpkkyBjAAZCCknC3xLH
-	oMh288foxQpy2nobOQf+7wk/tHgKUE7fAbbk502JE0fVlk0tGT39Vi4uS/goS7aBvMzOs6ulrpLWu
-	58hibdOgYTs0kKiIpbkQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2K2taehdg3kTcFhXWMCQCtkxyiBA6HcYPljGTNs8umo=; b=0/0UgC93kqtLd1
+	qK4bQ372bVUvjxzzg7zZDlLzABSAol1NGGZSeKwYA2hvoBKfhGTEF9X2GAEO/3bxEnp0pLDS689vH
+	faQ8czb78YA2KVUr8g2DfcQJZVuyhWxfISgg5C+IwL3IWn5UrPkCZtYnH6so7TiWK/oGYNRBgOC76
+	uDmmjowkCUzJ38EcdafU/IGhDy/8sbPFpF3PqHb/F0PFvBhlRY6KqvJXD3jK6knPz1iOctHMIEw0W
+	8tyNugylnqmpkncrycQSX56xFwNchBTrAZ5yqWTF6R9u4lDSKAo7yplGJLucwAfskqnvib1pOx99b
+	k0rQo1M/ItecCy+kb05w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtM2J-0000000BMn8-3ebB;
-	Mon, 10 Aug 2026 09:11:11 +0000
-Received: from mail.zlab.su ([109.73.193.145])
+	id 1wtMqt-0000000BSBA-11Wj;
+	Mon, 10 Aug 2026 10:03:27 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtM2G-0000000BMl8-215H;
-	Mon, 10 Aug 2026 09:11:10 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5404DBFAE6;
-	Mon, 10 Aug 2026 12:10:48 +0300 (MSK)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zlab.su; s=dkim;
-	t=1786353058; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=xyle+PTVvJI9HtkNC+doJ7iKTHR2VjoZcHSFBrvKbps=;
-	b=KWJ9hcB3IAX8O35ipyuGOgsC7dWdATXvVpfc9LgZAENQ1kSGfkWfAeWSJxDB5OErCxxbIZ
-	ca1Gq533PI8Dzqke5MI1U3js+lZlErHQQP63ppDjOigcZLA86R8RCkK2VJgqc+PCif8rXA
-	PYIeG0wl+g9b77h4d/piOj603eGybY6mkOFyZmnVC2D9Ie9h/eC7QqaqFlByoxnoGIdtUX
-	XgIWShh7jQRnXSTz4mmk6RVDYAJEkIQmGa97/PQsm7lD1DoK60hkr6tyGrLFc4xYGjRGbD
-	Azzxw69tSQeEvbYE+xgp25uywODWCVaMcp0PMcG2se7XyJH7A88DhZUxLn6xOQ==
-From: Vladislav Leonov <vlad@zlab.su>
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: David Lechner <dlechner@baylibre.com>,
-	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Simon Glass <sjg@chromium.org>,
-	linux-iio@vger.kernel.org,
+	id 1wtMqo-0000000BS9q-2uPD;
+	Mon, 10 Aug 2026 10:03:25 +0000
+Received: from Vostro-3710.. (unknown [14.220.232.127])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4968750ad;
+	Mon, 10 Aug 2026 18:03:07 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Vladislav Leonov <vlad@zlab.su>
-Subject: [PATCH] iio: adc: rockchip_saradc: Add support for RV1106
-Date: Mon, 10 Aug 2026 12:08:26 +0300
-Message-ID: <20260810090826.146758-1-vlad@zlab.su>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260714131631.v2.1.0b846080833e4b836793c43fc26d1c6d817cf9b4@changeid>
-References: <20260714131631.v2.1.0b846080833e4b836793c43fc26d1c6d817cf9b4@changeid>
+	devicetree@vger.kernel.org
+Subject: [PATCH 1/1] arm64: dts: rockchip: enable NPU on Radxa E52C
+Date: Mon, 10 Aug 2026 18:00:00 +0800
+Message-Id: <20260810100000.2643814-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-Last-TLS-Session-Version: TLSv1.3
+X-HM-Tid: 0a9feb203fea03a2kunmb045b936d508a
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGUJCVh4aTB5PH0JOS05IQ1YeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpJTFlXWRYaDxIVHRRZQVlPS0hVSktISk
+	5MTlVKS0tVSkJLS1kG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260810_021109_046102_4ECC48D2 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20260810_030322_926851_E418E431 
+X-CRM114-Status: UNSURE (   6.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,86 +70,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Successive Approximation ADC (SARADC) in RV1106 uses the v2
-controller and supports:
-- 10-bit resolution
-- Up to 1MS/s sampling rate
-- 2 single-ended input channels
+Like the RK3588, the RK3582 has NPUs. Enable the NPU cores and their
+MMUs, and connect the regulators.
 
-"dt-bindings: iio: adc: rockchip-saradc: Add RV1106 compatible"
-documents "rockchip,rv1106-saradc" as falling back to
-"rockchip,rk3588-saradc" (see Link below). The two IP blocks are not
-equivalent, though: per the RV1106 TRM v0.3, chapter 20 (SAR-ADC),
-RV1106 only has 2 channels at 10-bit resolution, versus 8 channels
-at 12-bit on RK3588. Without a dedicated match entry, the driver
-binds via the fallback compatible and uses the RK3588 channel table,
-which reports 8 channels instead of 2, and an in_voltage_scale that
-is off by exactly 4x (4096 vs 1024 full-scale).
-
-Add a dedicated compatible/data pair for RV1106 with the correct
-2-channel, 10-bit layout.
-
-Tested on a custom RV1106-based board, with:
-
-  &saradc {
-	vref-supply = <&vcc_saradc>; /* 1.8V fixed regulator */
-	status = "okay";
-  };
-
-Before this patch:
-  # ls /sys/bus/iio/devices/iio:device0/in_voltage*_raw | wc -l
-  8
-  # cat /sys/bus/iio/devices/iio:device0/in_voltage_scale
-  0.439453125
-
-After this patch:
-  # ls /sys/bus/iio/devices/iio:device0/in_voltage*_raw | wc -l
-  2
-  # cat /sys/bus/iio/devices/iio:device0/in_voltage_scale
-  1.757812500
-
-Link: https://lore.kernel.org/all/20260714131631.v2.1.0b846080833e4b836793c43fc26d1c6d817cf9b4@changeid/
-Signed-off-by: Vladislav Leonov <vlad@zlab.su>
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
 ---
- drivers/iio/adc/rockchip_saradc.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ .../boot/dts/rockchip/rk3582-radxa-e52c.dts   | 34 +++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index 0f0bf2906af0..5c45fae11890 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -348,6 +348,19 @@ static const struct rockchip_saradc_data rk3588_saradc_data = {
- 	.read = rockchip_saradc_read_v2,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+index 854c118418eb..dd29a3ea7031 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+@@ -300,6 +300,10 @@ &pcie2x1l2 {
+ 	status = "okay";
  };
  
-+static const struct iio_chan_spec rockchip_rv1106_saradc_iio_channels[] = {
-+	SARADC_CHANNEL(0, "adc0", 10),
-+	SARADC_CHANNEL(1, "adc1", 10),
++&pd_npu {
++	domain-supply = <&vdd_npu_s0>;
 +};
 +
-+static const struct rockchip_saradc_data rv1106_saradc_data = {
-+	.channels = rockchip_rv1106_saradc_iio_channels,
-+	.num_channels = ARRAY_SIZE(rockchip_rv1106_saradc_iio_channels),
-+	.clk_rate = 1000000,
-+	.start = rockchip_saradc_start_v2,
-+	.read = rockchip_saradc_read_v2,
-+};
-+
- static const struct of_device_id rockchip_saradc_match[] = {
- 	{
- 		.compatible = "rockchip,saradc",
-@@ -370,6 +383,9 @@ static const struct of_device_id rockchip_saradc_match[] = {
- 	}, {
- 		.compatible = "rockchip,rk3588-saradc",
- 		.data = &rk3588_saradc_data,
-+	}, {
-+		.compatible = "rockchip,rv1106-saradc",
-+		.data = &rv1106_saradc_data,
- 	},
- 	{ }
+ &pinctrl {
+ 	keys {
+ 		pwm15_ir_m1: pwm15-ir-m1 {
+@@ -354,6 +358,36 @@ &pwm14 {
+ 	status = "okay";
  };
+ 
++&rknn_core_0 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_1 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_2 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_mmu_0 {
++	status = "okay";
++};
++
++&rknn_mmu_1 {
++	status = "okay";
++};
++
++&rknn_mmu_2 {
++	status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&vcca_1v8_s0>;
+ 	status = "okay";
 -- 
-2.47.3
+2.34.1
 
 
 _______________________________________________
