@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2D3C5AD55
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 14:05:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9A1CC5AE49
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 14:09:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OpTYO2eY52r0CnvoVgsDg9v+RInSSS1vN8V/OOLLf7A=; b=aHDtdjGEwn/w6488M5aE2AdW1q
-	a/2qdz9FjwweEsKqrKIb0pkwiYxycBLccWksOiUcstjtauUljqWypRUCALpoFw4FV9Wrj1KG4FNVG
-	XDk50WLYNPMfYnIqfKlFUmie8GAanL/4Z6HfQdWn/hzpyk3udJY2wS7wWAQw+SxSaI4KIG/KKWSUl
-	IuNYp7Lxdnjo0yV0aNFeLMtf8gqwB7Y62YECAo3uWHYqc8rtj9uV7cK+MoNV55slZ+LSP5ce2ojc4
-	clTbGfD7dA07KlipGfRs/2gcfJLIXSDefI3YUOQ3J7IJ/pYxVY9D1tj5owIPfRLEME7M5L5qiK6JG
-	mUXGVYCQ==;
+	bh=gXOQGEMv6k008Mxa8CmLZbQdCpUnm5zhtgCeeWl6yHs=; b=TZBl91zh8suArQq/OTdXpwiUjk
+	RPoTl/7gVgWtywRgSYxl7tp4l6h2DXsxYDgr1ly9tALaB9vPMeguCMs7lciFOsbt4z333rtQnABaS
+	sZBjuX+YQ5R0NtUvrmrAtKdax54h0rht+absKGvqesk66z3bZVqN8rNNooKNKACZQKJ0MrnbAaAdT
+	gQ5F+7R1vz7xeIICHwhMV8fw7IkOo3ENinWPdNbCDiweBX5TBjHEPFCqdb6nufDmgrcNLezO99f9D
+	KI+73e68dSCaq5ZMnFpY94tD4GcbRDWUQljksst+XzSgZYmY9++7KEtmpuODOi3pemXMqIupjGhg5
+	bDBpsDRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtQdI-0000000Bx5l-1sqg;
-	Mon, 10 Aug 2026 14:05:40 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wtQhL-0000000Bxg2-3Wy4;
+	Mon, 10 Aug 2026 14:09:51 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtQdF-0000000Bx4r-3xn9;
-	Mon, 10 Aug 2026 14:05:39 +0000
+	id 1wtQhJ-0000000BxfU-22aV
+	for linux-rockchip@lists.infradead.org;
+	Mon, 10 Aug 2026 14:09:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1786370732;
-	bh=3is/7Qz5EMpjjXNHjtJS3LzE2Ultwl4Sfu9h9ip4T0s=;
+	s=mail; t=1786370987;
+	bh=q9XZ9PFaOttrJScNyLsrJJf0rfpu9aYHOmG8UewkSsY=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=oiVuW0lT5Of6lm7Z/ZOFbtbkfKJmtmRybLKH5/+JTRZfY5YBjhdCC9fnKBmrSNgp4
-	 /3ttdMNe6ljisIWCM1OWoCOGD+nI1gX64un1PPBrBugd5fWvs3vvPG6yBHzvjAw/0o
-	 he8YPYGU8V6GFNV+EPtpOOulef/iSA8jqy4Y0Afzq+GrSaTyy5dicu1A50bgfdTuOx
-	 pc5xGk35pkbWwdsS89406fqCHac7m/G/1FEEBsPSEXQ2H+jTWttF5sq1g/ihh6/5VI
-	 U0mVpbI4q9HzJETpBZo4WT2hJzndItkoD12pg4Xz3po41ffeKtoPqD/g8k2l1g5ft7
-	 qOJeJ8inm9AoA==
+	b=WVUqf6kdmhif9DQCIU3WmUyS9amW1W3+89dBAQ4c4TpXeOM93wAwIRg9ldbukcGCd
+	 FkvKkZaDBYXJdQyWH2OO/5rMSjn8H1WLRBoJ69zxAXuZS53cUti7M0pfZ88yde7KfP
+	 L+NPf9SBo6N2AG44qWzVDMhDdJ6LvnX1CtvNJMpNMN/W9W5vLZULfeomUAaVfB4Sz9
+	 vgC/G75pQnH4f8wjOOaghgJPWVvykDkruRUaxe1JwxkwLskpXG1muD015U71AcuTlA
+	 mjJTYLNVR7c/j3nfF69QD0wYHXA23pZELAldzjSyAZ6+Q4Q+OtjlJOTsYHP18dTzD5
+	 uru3kEg16fptA==
 Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange secp256r1)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6874D17E080A;
-	Mon, 10 Aug 2026 16:05:30 +0200 (CEST)
-Message-ID: <3cfca6fd11f39c6ce161d5a2e7fb650b2e9289ec.camel@collabora.com>
-Subject: Re: [PATCH] media: rkvdec: fix v4l2-compliance failure
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9709617E077F;
+	Mon, 10 Aug 2026 16:09:45 +0200 (CEST)
+Message-ID: <2a5abb0004aa453c2f985aff41c72d4952006fc9.camel@collabora.com>
+Subject: Re: [PATCH] media: hantro: Harden MPEG-2 control access against NULL
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Tharit Tangkijwanichakul <tharitt97@gmail.com>, Detlev Casanova	
- <detlev.casanova@collabora.com>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>,  Hans Verkuil <hverkuil+cisco@kernel.org>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+To: Tharit Tangkijwanichakul <tharitt97@gmail.com>, Benjamin Gaignard	
+ <benjamin.gaignard@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	linux-media@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil	
+ <hverkuil@kernel.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	linux-kernel-mentees@lists.linux.dev, skhan@linuxfoundation.org, 
 	me@brighamcampbell.com, jkoolstra@xs4all.nl
-Date: Mon, 10 Aug 2026 10:05:29 -0400
-In-Reply-To: <20260730153603.5721-1-tharitt97@gmail.com>
-References: <20260730153603.5721-1-tharitt97@gmail.com>
+Date: Mon, 10 Aug 2026 10:09:44 -0400
+In-Reply-To: <20260731140751.1183-1-tharitt97@gmail.com>
+References: <20260731140751.1183-1-tharitt97@gmail.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -75,8 +76,8 @@ Organization: Collabora Canada
 User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260810_070538_139430_1172F9D9 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20260810_070949_680017_A4BECE4B 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,112 +89,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7358379726153407919=="
+Content-Type: multipart/mixed; boundary="===============5021151945862766334=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7358379726153407919==
+--===============5021151945862766334==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-TzX0jms5qUDK0lg++uvs"
+	protocol="application/pgp-signature"; boundary="=-zKDJou/lVj/KGzVMp1c8"
 
 
---=-TzX0jms5qUDK0lg++uvs
+--=-zKDJou/lVj/KGzVMp1c8
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi,
-
-Le jeudi 30 juillet 2026 =C3=A0 15:36 +0000, Tharit Tangkijwanichakul a =C3=
-=A9crit=C2=A0:
-> rkvdec fails v4l2-compliance in two tests related to
-> V4L2_CID_STATELESS_HEVC_SPS. The Control ioctls test reads the control
-> with GET_EXT_CTRLS and writes the same value back; TRY_EXT_CTRLS then
-> returns -EINVAL because the VDPU38x rkvdec_hevc_validate_sps() rejects
-> sps->chroma_format_idc =3D=3D 0, which is the value returned when the
-> control has no default.
+Le vendredi 31 juillet 2026 =C3=A0 14:07 +0000, Tharit Tangkijwanichakul a =
+=C3=A9crit=C2=A0:
+> The MPEG-2 sequence and picture controls are validated
+> before a job is queued, so hantro_get_ctrl() is not expected to return
+> NULL in hantro_g1_mpeg2_dec_run(). The controls are nonetheless
+> dereferenced unconditionally.
 >=20
-> =C2=A0=C2=A0=C2=A0 v4l2-compliance 1.33.0-5491, 64 bits, 64-bit time_t
-> =C2=A0=C2=A0=C2=A0 v4l2-compliance SHA: b32589c51481 2026-07-16 08:51:38
-> =C2=A0=C2=A0=C2=A0 Control ioctls:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fail: v4l2-test-controls.cpp(9=
-42):
-> 	try_ext_ctrls returned an error (22)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
-> =C2=A0=C2=A0=C2=A0 Buffer ioctls:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fail: v4l2-test-buffers.cpp(31=
-02): node->streamon(q.g_type())
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fail: v4l2-test-buffers.cpp(31=
-57): testBlockingDQBuf(node, m2m_q)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test blocking wait: FAIL
+> Harden the invariant by checking the sequence and picture controls with
+> WARN_ON().
 >=20
-> Provide a control default via p_def with chroma_format_idc =3D 1 (4:2:0),
-> which is the only value the VDPU38x SPS validation accepts.
-> This fixes both the Control ioctls and the Buffer ioctls failures.
+> Found by code inspection.
 >=20
-> Tested on Radxa Rock 5B (RK3588).
->=20
-> Fixes: c9a59dc2acc7 ("media: rkvdec: Add HEVC support for the VDPU381 var=
-iant")
+> Fixes: f329e21e9dad ("media: uapi: mpeg2: Split sequence and picture para=
+meters")
 > Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
-> ---
-> =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.c | 5 +++++
-> =C2=A01 file changed, 5 insertions(+)
->=20
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
-dia/platform/rockchip/rkvdec/rkvdec.c
-> index 1d1e9bfef8e9..37603f049788 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -236,6 +236,10 @@ static const struct rkvdec_ctrls rkvdec_hevc_ctrls =
-=3D {
-> =C2=A0	.num_ctrls =3D ARRAY_SIZE(rkvdec_hevc_ctrl_descs),
-> =C2=A0};
-> =C2=A0
-> +static struct v4l2_ctrl_hevc_sps vdpu38x_hevc_sps_default =3D {
-> +	.chroma_format_idc =3D 1,
-> +};
-> +
-> =C2=A0static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctrl_descs[] =3D =
-{
-> =C2=A0	{
-> =C2=A0		.cfg.id =3D V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
-> @@ -243,6 +247,7 @@ static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctr=
-l_descs[] =3D {
-> =C2=A0	{
-> =C2=A0		.cfg.id =3D V4L2_CID_STATELESS_HEVC_SPS,
-> =C2=A0		.cfg.ops =3D &rkvdec_ctrl_ops,
-> +		.cfg.p_def.p_hevc_sps =3D &vdpu38x_hevc_sps_default,
 
-Thanks for your patch. Have you considered setting this default in v4l2-com=
-mon
-instead ? Monochrome is rarely supported of implemented in codecs, so setti=
-ng
-the global default to 4:2:0 seems like it would be valid for all drivers.
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+p.s. this is a bit cosmetic, since only a programming error could lead to t=
+hat,
+once a control is registered, it has a value. But that makes it consistent =
+with
+all other use of hantro_get_ctrl() in this driver, which I like.
 
 Nicolas
 
-> =C2=A0	},
-> =C2=A0	{
-> =C2=A0		.cfg.id =3D V4L2_CID_STATELESS_HEVC_PPS,
+> ---
+> Tested on a Rockchip RK3588 (Rock 5B) board with Fluster:
+> =C2=A0 MPEG-2 (MPEG2_VIDEO-MAIN): 23/43, unchanged
+>=20
+> =C2=A0drivers/media/platform/verisilicon/hantro_g1_mpeg2_dec.c | 5 +++++
+> =C2=A01 file changed, 5 insertions(+)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/hantro_g1_mpeg2_dec.c b/d=
+rivers/media/platform/verisilicon/hantro_g1_mpeg2_dec.c
+> index e0d6bd0a6e44..6a942f4b8a2d 100644
+> --- a/drivers/media/platform/verisilicon/hantro_g1_mpeg2_dec.c
+> +++ b/drivers/media/platform/verisilicon/hantro_g1_mpeg2_dec.c
+> @@ -161,8 +161,13 @@ int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
+> =C2=A0
+> =C2=A0	seq =3D hantro_get_ctrl(ctx,
+> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 V4L2_CID_STATELESS_MPEG2_SEQUENCE=
+);
+> +	if (WARN_ON(!seq))
+> +		return -EINVAL;
+> +
+> =C2=A0	pic =3D hantro_get_ctrl(ctx,
+> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 V4L2_CID_STATELESS_MPEG2_PICTURE)=
+;
+> +	if (WARN_ON(!pic))
+> +		return -EINVAL;
+> =C2=A0
+> =C2=A0	reg =3D G1_REG_DEC_AXI_RD_ID(0) |
+> =C2=A0	=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 G1_REG_DEC_TIMEOUT_E(1) |
 
---=-TzX0jms5qUDK0lg++uvs
+--=-zKDJou/lVj/KGzVMp1c8
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCannaqQAKCRDZQZRRKWBy
-9G57AP92mrNZWgsDBwsQ2XuKqcBeRf0Gxt9wn6CCa0p8jJZaggEAtrJ7HoEDXOBa
-hQUTaEu7DxXMJvm07IaizMrkf6mhqgw=
-=XESv
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCannbqAAKCRDZQZRRKWBy
+9PC2AQDVAd/UdtrSKkwnBgNQg0ktJGp/cu6WEQ6j3In+PD+JiAEA0ZU60FJ2OJJD
+VeT5C82uLSGrdUmNhdpqYU1ti06g2w8=
+=2WtK
 -----END PGP SIGNATURE-----
 
---=-TzX0jms5qUDK0lg++uvs--
+--=-zKDJou/lVj/KGzVMp1c8--
 
 
---===============7358379726153407919==
+--===============5021151945862766334==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -204,5 +185,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7358379726153407919==--
+--===============5021151945862766334==--
 
