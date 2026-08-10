@@ -4,104 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A04EC5AD55
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 12:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45E82C5AE5D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 12:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GTSOumMczpJpFY5p7v2UfaH84jEbhfwpb4VR30Mkp5I=; b=trscNPYFocCJzo
-	3eoTR6VyncWgoyNmz7gxYY34HCTv2HSHEqUy157fZFGmJ8gRkJk4trtjDzxZdhRzMIkOXFcMOxotx
-	ni61mjCUaN9WQA7388xOjSOh5JRJRLJkySp22ioZHKVYYdIR8FbR3ul5IKPMLkCqVMx+YdJSSBZts
-	abD8jBprA/j5JNfD/yJjJsko7F3WLgKrYvqzbWrcaqRsMTxRnj004MpLIpqGW55uk6jkSs31xW0P6
-	L2eZqtk8rTthVSiYtIB2t/fR9rEf9ZLmFZQAhixanBUPgNLAIAJdUud6A0Pbz4awlFBVD4WQGnSng
-	UgeTIMAtoLVtQoCtxbZQ==;
+	List-Owner; bh=75+6NvYv2UCjMjYjUdHm4dzDbVuDIUxnNFVJu3Izq9A=; b=328X2ueNt5HBs4
+	OGknmDZd9uWHTVfNDvsT7H2lzEGeDQzV6xk3Kj3uDbWh3YroM4PppstmB0YbVaKm8NGuIrVrM5Mjk
+	HkpEjfzEYc8b2U4k0SpV1duGw4HFbxJ8eIzNpaWLZX6IixObZRN5zDc18sFWic+9gzgpcQfs+pHfv
+	Ny6HptojCR86+9sqBOOC8mkI3gCKUcf7eT4jPX0aYR/bZUSt3xVEMRYH1f6D3/E6hf3Sili3bUuyo
+	I6Z1p8YuuH/2/rjY3MtXVcOLRjjx5vON6UUMUDFjOYgz+x8FR8h1KcMbMjMVjfEdpCFkycPiaf67x
+	zWoApa14yVbQioOUK/Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtOoP-0000000Bgx4-0MSG;
-	Mon, 10 Aug 2026 12:09:01 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1wtOpa-0000000BhAY-44fC;
+	Mon, 10 Aug 2026 12:10:14 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtOoM-0000000BgwH-1557
-	for linux-rockchip@lists.infradead.org;
-	Mon, 10 Aug 2026 12:09:00 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-c2074710751so233183466b.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 10 Aug 2026 05:08:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786363735; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Cr4u4RZpAZMyizIY+D3Tv6Yxp6DFv6sUKLsqIvOcoeQbN85Lru+PSClO+X6AXTgcUn
-         U4cEJxODsC9+P3hvXWYaaJL3sVXE+EV4YNja87WNw1CbWCGsrypIFJ9E2aKoSppz7Ti8
-         ZXamRvcY12OCatKzSXbQ4zgo+6Kip5uTN7XqSRTuM160maHI6OlxBRYeGynuQ9Zhpml+
-         MxHIZHSwrTP0tQMb9swIg41m+TXpGViEajVFijwAMC/zEEA0p9k7vEkCpPbOrKibv+zZ
-         oJhyKZd89/RF+ABO7D5N+Smeu0hqqxIeos30dflYs1qloWXNGwHLejn1l00Bpd7+nXFO
-         i0bw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=qQpWbJttwi61w+33UaX9aual3LIjiZRDlQt6M32wCuQ=;
-        fh=Gt2ebLk+yloDnFk+AD8d6Y0AQFnYTzkBMir+RNRDTfo=;
-        b=HiIQrXxosxLeqYP6MA9pVNTLwU0GVlThO8803AHAH1/AXsFF4s55+HWGF+UMsPW60V
-         I2w5FaHqt123eRZ3HmZQU+2qqbzC9mwAO3PRPtObS/zO1LjHgzefzisAwnshHDy+L8ZH
-         NlbVR95q7g1MQXwK5Tw9p1pHyFJwCvdXIkEpbNhVYKezMu9C/Hy3CCDHvMuldB+NR5Fu
-         agltIW1oEHgHR6A2kDguPrA9CgJJwzEvTSBoAPDpuv8H6koErvJ4ncXDYSfvM0/o/sp1
-         76TBTcPkcuCRtY+OWHwMDT4AgL3Ietlz1nLVtrgl0MYi8QM30X4IibXU7zUx9ndCP7h9
-         +Wkw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1786363735; x=1786968535; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=qQpWbJttwi61w+33UaX9aual3LIjiZRDlQt6M32wCuQ=;
-        b=bXYcCsYuvXws5MiAg75L+M0NZyLE0n9DQoXiKiOGVXJnqzU0ziOveH3k5fDysGqgUq
-         KgoC6ESVLuYILxwIR7gAwFqrrKaKeig479BwOFXjq2o58J7R7erSEwCm+1iGVQqGA+KQ
-         hcH02QKTM95HKsTk/3ypr6T9jcMUyKAn2x9GTpSqma+hLw7ngGdVDSNxH5Z+/P9o15VC
-         gIZt7aDv2NzBtX//HepjdWiWfIF37kYtmkdYD35ji8SJThxsiqR1kd/pGoEJ4jh6vz1w
-         fQgrqN+jBX+iXomjoUDg6K0bKXfRIYkiLbk2rbw06S8Kuzh7lBTt173t4hKkZyP8Jgxx
-         5uHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786363735; x=1786968535;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=qQpWbJttwi61w+33UaX9aual3LIjiZRDlQt6M32wCuQ=;
-        b=QaVtlJemNlFDjiQ1idElXVZBISJl3bXoQt+lkx8JAEJnPc16H0RXgMyaTpWSjWHFcF
-         gZ9cZeNxj0DiiJvuYiMPPnPmKfzHeUcHys+FUGdJDisQKtgO9tvolQTnKmdugTTiD3LE
-         3j9aucgmh8lT3jGRU1/ItQWfZKsXGHpaLNPaAc2ZBv1aa4Aeo5t0tNUxjYpCxTcw3KzG
-         UjurE5Arzy3wZl8NG4qPcuhRqj4FnxMMzQG68ZmlLYbxDQKXCCI9B3W8V8UrXzUKbJSl
-         bsnvBf22RRz6Jj1pDkVVVOtmmSt11AXYpcd2oXqF1mR+eGENXnuxV96YjM41c0EW2WoR
-         itHQ==
-X-Forwarded-Encrypted: i=1; AHgh+Ro/UCRJ/Xjl8ICkGKsJsPPSBbi6Oh8CwR8caXJWAmNGZmguJwr3HbS3T9N0mYsDXd7QwETSfVDQJlfPIaREZQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxkSgDJnVWzOlhYikXBLjN6z7bqFtv6c8XKx3Du7T3M4Xl7/Kl5
-	zVqSN0P+rJz+FJcR1dvdKJLI8O4xXPPB4pHGlHaxXIwqSOvBD5Jn19aE/07n2RG61Xqx27XrV1U
-	uXb3ZKsVNMo+AznYjgeGtyyFdfHYulWNykHbMQjrtig==
-X-Gm-Gg: AR+sD12xBiKoIpMJ6/fDJ18bFENw9JM9rEHynShAiyb88e6VAyCmccH2vgufMhvkenU
-	MCvlp+HzYfB/8/EEvAFksp1DRr1tJKbalqdLLfZwDDLU5cpD1mDGGlq6HPerDIW/3qch8TvSUDz
-	OtSWuAxTAB+pFnFoA0f9PrQZnAkdEtOCnnez3n+7YFsBLQaO363BKj9SLWVAtHALkPGcBhQSPgY
-	5E5YGRsycaE3c1Y+c/O97lIKs+awrqXnQY/L7bhg6jlc67vRLCUD1c3taCbpY5UqV5ix9/KCnhn
-	nuTNMJIkOZoCh1CctWU364CWDyvJEAu9m+yOQm3ZeTtSfMXJenU1AiWou3ClAHe3EEH3sqw5y+C
-	t
-X-Received: by 2002:a17:907:728b:b0:c1c:4858:251a with SMTP id
- a640c23a62f3a-c20c6782f60mr50310366b.8.1786363735166; Mon, 10 Aug 2026
- 05:08:55 -0700 (PDT)
+	id 1wtOpW-0000000Bh7O-3jEs;
+	Mon, 10 Aug 2026 12:10:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6403143E28;
+	Mon, 10 Aug 2026 12:10:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0AE48C2BCF4;
+	Mon, 10 Aug 2026 12:10:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1786363810;
+	bh=u/xE6kMTpgEqTDti8OA+5hTsroD4qAS6oCcbdy5lRqw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=CRmerNKTIVlgXXoc1sg3jZ4F3ZaSDEWR2FrzIU8dzo3Kr6IWt73er7K7CmA9piORP
+	 PBWN+BKsEiiC62ARY01mxExrk/Vx2MXT5D611VvG6jU1Y6KvQ2x5/E9wGtx1bdxmBO
+	 g1+jIDUlHGCMSlXfUN5xVDdd6JB/WrRNZdvJN1QXlMzk2PEXpUas5Tmmfs/I0sS40A
+	 fueOf4B8B/leZKrAyYYam8fVa6VF3+VMdB9oBM3BG6gCfl2+gtsYRKni9kbub7AUfD
+	 y+hcm0bZAt+lzP0qiwL4+HjHIkTiUXeFwy6d01DKVcmG8wdwROAbCk+jHa4QCqyr0G
+	 me3VOAi32wb2w==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DEE7FC5AC82;
+	Mon, 10 Aug 2026 12:10:09 +0000 (UTC)
+From: Jason Yang via B4 Relay <devnull+jason98166.gmail.com@kernel.org>
+Date: Mon, 10 Aug 2026 20:10:10 +0800
+Subject: [PATCH v3 2/5] dt-bindings: phy: rockchip,rk3588-mipi-dcphy: allow
+ DSI and CSI consumers
 MIME-Version: 1.0
-References: <20260806-synopsys-dw-dp-improvements-v11-0-0d508505f383@collabora.com>
- <20767137.geO5KgaWL5@diego>
-In-Reply-To: <20767137.geO5KgaWL5@diego>
-From: Alexey Charkov <alchark@flipper.net>
-Date: Mon, 10 Aug 2026 16:08:36 +0400
-X-Gm-Features: AUfX_mzk8t-Db9KtlR_l-8Y27DWWGagvh3frNOmzayIZmNSq8DatjvUHckrxFLI
-Message-ID: <CAKTNdwFPhVrjb4iVpN19f0Nw+MA_BxXLOLs4V50fuyf+_rbEPg@mail.gmail.com>
-Subject: Re: [PATCH v11 00/21] Synopsys DisplayPort Controller improvements
- for Rockchip platforms
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260810_050858_320743_EE8538B1 
-X-CRM114-Status: GOOD (  20.55  )
+Message-Id: <20260810-dcphy-rx-v1-v3-2-a2d25c29adfc@gmail.com>
+References: <20260810-dcphy-rx-v1-v3-0-a2d25c29adfc@gmail.com>
+In-Reply-To: <20260810-dcphy-rx-v1-v3-0-a2d25c29adfc@gmail.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Guochun Huang <hero.huang@rock-chips.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Michael Riesch <michael.riesch@collabora.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Jason Yang <jason98166@gmail.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1786363808; l=1904;
+ i=jason98166@gmail.com; s=20260721; h=from:subject:message-id;
+ bh=L0YFn/UorcpfoUu13dEjPV7h6qsLNW5q4tce+B7/JmY=;
+ b=2pBufMxgPOxO3btd9FczwqemLe23DIEutco22KEz5ID7y3QW4jQ/bxM0oeyYGZqlsKxMMvIKo
+ dJ0U+RwUZ62C2KJvvdxYPdF18H7iJdfnViN38Rwc1YIVucNEv2800w5
+X-Developer-Key: i=jason98166@gmail.com; a=ed25519;
+ pk=xQmD001Q/ooHl39PxyQtusbUQmgbOsSfpFryRVWZ/k4=
+X-Endpoint-Received: by B4 Relay for jason98166@gmail.com/20260721 with
+ auth_id=887
+X-Original-From: Jason Yang <jason98166@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,54 +85,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Sashiko <sashiko-bot@kernel.org>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Sandy Huang <hjc@rock-chips.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: jason98166@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiBNb24sIEF1ZyAxMCwgMjAyNiBhdCAzOjQ54oCvUE0gSGVpa28gU3TDvGJu
-ZXIgPGhlaWtvQHNudGVjaC5kZT4gd3JvdGU6Cj4KPiBIaSBTZWJhc3RpYW4sCj4KPiBBbSBEb25u
-ZXJzdGFnLCA2LiBBdWd1c3QgMjAyNiwgMTk6MDI6MDYgTWl0dGVsZXVyb3DDpGlzY2hlIFNvbW1l
-cnplaXQgc2NocmllYiBTZWJhc3RpYW4gUmVpY2hlbDoKPiA+IFRoaXMgcGF0Y2ggc2VyaWVzIHVw
-ZGF0ZXMgdGhlIFN5bm9wc3lzIERlc2lnbndhcmUgRGlzcGxheVBvcnQgYnJpZGdlCj4gPiB0b2dl
-dGhlciB3aXRoIHRoZSBvbmx5IGV4aXN0aW5nIHVzZXI6IFRoZSBSb2NrY2hpcCBSSzM1NzYvUksz
-NTg4Ogo+ID4KPiA+ICAxLiBGb2xsb3ctdXAgYnJpZGdlcyAoUEhZLCBVU0ItQyBjb25uZWN0b3Ip
-Cj4gPiAgICAgVGhpcyBpcyBuZWVkZWQgdG8gZ2V0IFVTQi1DIERQIEFsdE1vZGUgd29ya2luZzsg
-SSd2ZSBmb2xsb3dlZAo+ID4gICAgIHRoZSBRdWFsY29tbSBkcml2ZXIgYXMgcmVmZXJlbmNlCj4g
-Pgo+ID4gIDIuIFJ1bnRpbWUgUE0KPiA+ICAgICBUaGUgaW5pdGlhbCBkcml2ZXIgaGFzIGJlZW4g
-dXBzdHJlYW1lZCB3aXRob3V0IFJQTTsgYWRkIGl0IHRvCj4gPiAgICAgYXZvaWQgd2FzdGluZyBw
-b3dlciB3aGVuIG5vdGhpbmcgaXMgcGx1Z2dlZAo+ID4KPiA+ICAzLiBBdWRpbwo+ID4gICAgIFRo
-ZSBpbml0aWFsIGRyaXZlciBoYXMgYmVlbiB1cHN0cmVhbWVkIHdpdGhvdXQgYXVkaW8gc3VwcG9y
-dDsKPiA+ICAgICB0aGlzIGFkZHMgYWxsIG1pc3NpbmcgYml0cyBmb3IgYXVkaW8gd2l0aCBzaW5n
-bGUgc3RyZWFtIHRyYW5zcG9ydAo+ID4KPiA+IFRvIHByb3Blcmx5IG1ha2UgdXNlIG9mIHRoZSBi
-cmlkZ2UgY29kZSB0aGUgZm9sbG93aW5nIFVTQkRQIFBIWSBzZXJpZXMKPiA+IGlzIGFsc28gbmVl
-ZGVkOgo+ID4KPiA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI2MDcxNC1yb2NrY2hp
-cC11c2JkcC1jbGVhbnVwLXYxMy0wLTZjYjNlNzY5ZDRjNUBjb2xsYWJvcmEuY29tLwo+Cj4gSSd2
-ZSBub3cgaGFkIHRpbWUgdG8gdGVzdCBib3RoIHNlcmllcyAoZHctZHAgKyB1c2JkcCkgOi0pCj4K
-PiAtIE9uIG15IDEwODBwIGRpc3BsYXkgSSBnZXQgbmljZSBvdXRwdXQKPiAtIE9uIG15IDRLIGRp
-c3BsYXkgSSBnZXQgInNvbWUiIG91dHB1dCBhZnRlciBpbmNyZWFzaW5nIHRoZSBBQ0xLX1ZPUCB0
-bwo+ICAgNzUwTUh6IC0gYWx0aG91Z2ggdGhlIG91dHB1dCBpdHNlbGYgaXMgZ2FyYmxlZC4gQmVm
-b3JlIHRoZXJlIHdhcyBubwo+ICAgb3V0cHV0IGF0IGFsbAoKT25lIG1vcmUgdGhpbmcgbGlrZWx5
-IHRvIGdvIHdyb25nIG9uIGFuIG90aGVyd2lzZSB1bnBhdGNoZWQga2VybmVsIGlzCmRjbGsuIENv
-dWxkIHlvdSBwbGVhc2UgY2hlY2sgd2hhdCBwaXhlbCBjbG9jayB5b3VyIDRLIGRpc3BsYXkgbW9k
-ZQp3YW50cz8gSSBiZXQgaXQncyBub3QgdGhlIDExODggTUh6IHRoZSBkZWZhdWx0IFBMTCBjb25m
-aWd1cmF0aW9uCnByb3ZpZGVzLgoKV2hlbiBteSBjb2xsZWFndWVzIGFuZCBJIHRlc3RlZCBhIHBy
-ZXZpb3VzIGl0ZXJhdGlvbiBvZiB0aGVzZSBvbiBvdmVyCmhhbGYgYSBkb3plbiBUeXBlLUMgbW9u
-aXRvcnMgd2UgY291bGQgZ2V0IG91ciBoYW5kcyBvbiwgSSBoYWQgdG8gcGF0Y2gKYSB3aG9sZSBi
-dW5jaCBvZiBQTEwgcmF0ZXMgWzFdIGludG8gdGhlIHRhYmxlLCBhbmQgcmVwYXJlbnQgdGhlIHZp
-ZGVvCnBvcnQgY2xvY2sgZHJpdmluZyB0aGUgRFAgb3V0cHV0IHRvIGFuIG90aGVyd2lzZSB1bnVz
-ZWQgc3lzdGVtIFBMTAp3aXRoIGZyYWN0aW9uYWwgY2FwYWJpbGl0eSAoVlBMTCBpbiBjYXNlIG9m
-IFJLMzU3NikuIEknbSBub3QgeWV0CnRyeWluZyB0byB1cHN0cmVhbSB0aG9zZSByYXRlIGNoYW5n
-ZXMgdGhvdWdoLCBiZWNhdXNlIG91ciBwcm90b3R5cGUKYm9hcmQsIHdoaWNoIHdlIHdlcmUgdGVz
-dGluZyB0aG9zZSBvbiwgaGFkIHNpZ25hbCBpbnRlZ3JpdHkgaXNzdWVzIG9uCnR3byBvdXQgb2Yg
-Zm91ciBEUCBwYWlycywgc28gdGhleSBuZWVkIGFkZGl0aW9uYWwgdGVzdGluZy4KCkluIG15IGV4
-cGVyaWVuY2UsIGFueSBkY2xrIG1vcmUgdGhhbiAwLjElIG9mZiB0aGUgcmF0ZSByZXF1aXJlZCBi
-eSB0aGUKZGlzcGxheSBtb2RlIGlzIHZlcnkgbGlrZWx5IHRvIHByb2R1Y2UgYSBibGFuayBzY3Jl
-ZW4gb24gRFAuCgpHYXJibGVkIG91dHB1dCBzb3VuZHMgbW9yZSBsaWtlIGFuIGFydGlmYWN0IG9m
-IGFuIG92ZXJjbG9ja2VkIFZPUDIgdGhvdWdoLgoKWzFdIGh0dHBzOi8vZ2l0aHViLmNvbS9mbGlw
-cGVyZGV2aWNlcy9mbGlwcGVyLWxpbnV4LWtlcm5lbC9jb21taXQvYTRjOGNlNzczYjA2OTY3MmYw
-ZGQ0ZWNiNzk3MTFiYzdkMzMxOWIzOAoKQmVzdCByZWdhcmRzLApBbGV4ZXkKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Jason Yang <jason98166@gmail.com>
+
+The Samsung MIPI D-/C-PHY block on RK3588 drives a MIPI DSI
+transmitter and, on the same PHY, can receive from a MIPI CSI camera.
+Describing both as independent consumers of one PHY requires the
+devicetree to tell them apart.
+
+Let the existing single cell also take PHY_TYPE_DSI or PHY_TYPE_CSI,
+selecting the PHY by the protocol the consumer speaks. PHY_TYPE_DPHY
+stays accepted and equivalent to PHY_TYPE_DSI so shipped device trees
+remain valid, and PHY_TYPE_CPHY keeps selecting a C-PHY transmitter.
+The receiver support added by this series is D-PHY only.
+
+Signed-off-by: Jason Yang <jason98166@gmail.com>
+Assisted-by: Claude:claude-fable-5
+---
+ .../devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml   | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
+index c8ff5ba22a86..1f7c2e2ddfc1 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
++++ b/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
+@@ -22,9 +22,14 @@ properties:
+   "#phy-cells":
+     const: 1
+     description: |
+-      Argument is mode to operate in. Supported modes are:
+-        - PHY_TYPE_DPHY
+-        - PHY_TYPE_CPHY
++      The block contains a MIPI transmitter and a MIPI receiver, which
++      can be referenced independently. The argument selects one of
++      them:
++        - PHY_TYPE_DSI: the transmitter, for a MIPI DSI host
++        - PHY_TYPE_CSI: the receiver, for a MIPI CSI-2 host
++        - PHY_TYPE_DPHY: the transmitter in D-PHY mode; equivalent to
++          PHY_TYPE_DSI and kept for existing device trees
++        - PHY_TYPE_CPHY: the transmitter in C-PHY mode
+       See include/dt-bindings/phy/phy.h for constants.
+ 
+   clocks:
+
+-- 
+2.43.0
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
