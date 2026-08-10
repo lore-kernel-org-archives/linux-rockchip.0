@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 685ADC5B569
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 12:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2881FC5B56A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 12:16:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QzmNEfBvzaZBkU2UJ8aiMFMnwPGbz+kbkgu0gGSlQdk=; b=jZ0CF3jdVw27W4
-	K/7D6UEroxbq1a2taom9GBS/jywswIb9O2epAR7s4F21hMSKtURx/vTkA6aI9aBMSuZuujzQnuymq
-	JPhsxSNGGcrMC0GY2JGCjedtp7eedEveMYYVFn1PotyoSQhF9FoJmjlH30zwJ6F2csF1GzhAsKncF
-	uxBoA6RdyyiJuE2aSMY142WWEUeGmA//8yb6Pn9lZVy27w9Y3S2kM6TgabJU8pIDuM4OCsPVNgwjn
-	CNlbWYIK93I9jj2M/infR4k1an9PSE9Xe4R74Lzegyi5RL07LqasbnutDsndGTojS1lHzL1MiTllI
-	akqA7wzebQheQH5uyGgQ==;
+	List-Owner; bh=r7D11EH5Fp8SA37VquEXI8R/R4u/QE+b+g/6YpEIxtI=; b=SSqD90i4EZssoM
+	blwokh/XIu28VM9Rc8B2fQXHFqFKgKbrIcB5KluCnky7DIcLgJMj/Q6aS4Ec2UvZ5ABtiSVZJVjeO
+	klyRUVp61YLr0/dF+Mn5f0qoTRLJ/6f5FdfRL3DqeMnN3Ee7oSn1IYxUXj7B/d4OgrY+gPVvcfEYK
+	gLp4lRwdue+pyATThGcEWYxn9JSNGkBLxcxZoWDfQGVu3FC/3AJSG40Jbkx5lZSADUzRp5ISfDfUI
+	fayVegPRn9LesuWLkix/Oe5aEE9BEzfBFTkKA1rtosU5ki0VoZRjy5kyWz7si6dE7/PbubMBt4V/a
+	XBwt5znhR7eqLhf4v51g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtOv8-0000000Bida-1Cxe;
-	Mon, 10 Aug 2026 12:15:58 +0000
+	id 1wtOvK-0000000BipT-46OJ;
+	Mon, 10 Aug 2026 12:16:10 +0000
 Received: from mail.zlab.su ([109.73.193.145])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtOv1-0000000BiRY-1dNl;
-	Mon, 10 Aug 2026 12:15:52 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9BB7BC0517;
-	Mon, 10 Aug 2026 15:15:46 +0300 (MSK)
+	id 1wtOv6-0000000BiYR-30tC;
+	Mon, 10 Aug 2026 12:15:58 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5A5D2C0519;
+	Mon, 10 Aug 2026 15:15:52 +0300 (MSK)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zlab.su; s=dkim;
-	t=1786364149; h=from:subject:date:message-id:to:cc:mime-version:
+	t=1786364154; h=from:subject:date:message-id:to:cc:mime-version:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=ja3ddn8Iyrr0BPUQgL0q4vghx18v/jp3QyN5ZHrPqoo=;
-	b=EupqziQltR4M0MziVrus8tmeNouchv6VjiDPgtVw/CnZ/Xkk5OjmGmZKXQgQxjIxe5sQ3e
-	ghMdgnPty6SMJghCBu5sFgnJBpBB3ytSkam3ttej8Ax8rPYzoXvNwQqPqhUj3nVGHxT0j5
-	X50lCTYYm3IvMiw+xO/yRsIG56vxB/Xf5KC5jNT7xBxN4asHahNXGu4Njv8e/LATX3II68
-	67fwUFva8u3F81TvAh7WFmqcpKI5q3R3a1klP/uG4ji2cz+/WwEFY1AgwW50dwgLVt1s4y
-	99rn7TEuKNIKNc97tgyM/URj99DByOIcWvuR++LmxFwPcZfhNxQPQQCUpB19NA==
+	bh=cDtG0QjaIvwPANkpMnYor9ZJCrij1s8L69sJNuEhQRw=;
+	b=nnuhJ48/kMqZtnMtY0k5ZMoQmuIJec10u3anCmK4xdzZX4yufAnkC1zsUpbZe9T/xGMzQ3
+	5IHfQYI1O+whLQNflzFD9CLBonOzqQPwK7p0BA8EezpQeaKjHWyKJQBm3kqBKQ49F/GH+x
+	3ddMnyDyUeS7l7aSCR1mKDNIb7/b0zr1+Erka+leg12BkR+0SEfWqR1rfd7xZQ3k9V7KXC
+	ao+D0T7DuKOlrurGy9KcYevfpIzzx+RObgZrNnlvRvCM7wk5p9SOdU5/aXCjeJ1w94CWyD
+	fMtWao7pPtZ/pUs7oHcEY/fCiDa9gbF1LH8iXKOOwUrNmFs3W/jmBHvEgqPm4g==
 From: Vladislav Leonov <vlad@zlab.su>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -45,28 +45,25 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Vladislav Leonov <vlad@zlab.su>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	netdev@vger.kernel.org
-Subject: [PATCH 05/25] net: ethernet: stmicro: stmmac: dwmac-rk: Add RV1106 support
-Date: Mon, 10 Aug 2026 15:10:56 +0300
-Message-ID: <20260810121121.210040-6-vlad@zlab.su>
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	linux-phy@lists.infradead.org
+Subject: [PATCH 07/25] dt-bindings: phy: rockchip,inno-usb2phy: Add RV1106 compatible
+Date: Mon, 10 Aug 2026 15:10:58 +0300
+Message-ID: <20260810121121.210040-8-vlad@zlab.su>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260810121121.210040-1-vlad@zlab.su>
 References: <20260810121121.210040-1-vlad@zlab.su>
 MIME-Version: 1.0
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260810_051551_647522_F5AC6588 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20260810_051557_123804_A5C3DABE 
+X-CRM114-Status: UNSURE (   9.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,87 +80,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RV1106 GMAC 10/100 ethernet controller.
+The RV1106 has a single USB2 PHY with only an OTG port. Its OTG port
+also exposes a "disconnect" interrupt in addition to the existing
+otg-bvalid/otg-id/linestate, needed for reliable HS device unplug
+detection, so allow up to 4 interrupts for that variant.
+
+Add the "rockchip,rv1106-usb2phy" compatible and require
+"rockchip,usbgrf" for it, matching the other Rockchip PHYs that need
+GRF access.
 
 Signed-off-by: Vladislav Leonov <vlad@zlab.su>
 ---
 
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 55 +++++++++++++++++++
- 1 file changed, 55 insertions(+)
+ .../devicetree/bindings/phy/rockchip,inno-usb2phy.yaml   | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 8d7042e68926..a1bf545467cc 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -1034,6 +1034,60 @@ static const struct rk_gmac_ops rk3588_ops = {
- 	},
- };
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+index f50fc69fbbe4..4bc418376b18 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
++++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+@@ -25,6 +25,7 @@ properties:
+       - rockchip,rk3568-usb2phy
+       - rockchip,rk3576-usb2phy
+       - rockchip,rk3588-usb2phy
++      - rockchip,rv1106-usb2phy
+       - rockchip,rv1108-usb2phy
  
-+#define RV1106_VOGRF_GMAC_CLK_CON		0X60004
-+
-+#define RV1106_VOGRF_MACPHY_RMII_MODE		GRF_BIT(0)
-+#define RV1106_VOGRF_GMAC_CLK_RMII_DIV2		GRF_BIT(2)
-+#define RV1106_VOGRF_GMAC_CLK_RMII_DIV20	GRF_CLR_BIT(2)
-+
-+#define RV1106_VOGRF_MACPHY_CON0		0X60028
-+
-+static void rv1106_set_to_rmii(struct rk_priv_data *bsp_priv)
-+{
-+	regmap_write(bsp_priv->grf, RV1106_VOGRF_GMAC_CLK_CON,
-+		     RV1106_VOGRF_MACPHY_RMII_MODE |
-+		     RV1106_VOGRF_GMAC_CLK_RMII_DIV2);
-+}
-+
-+static int rv1106_set_speed(struct rk_priv_data *bsp_priv,
-+			    phy_interface_t interface, int speed)
-+{
-+	unsigned int val;
-+
-+	if (interface != PHY_INTERFACE_MODE_RMII)
-+		return 0;
-+
-+	if (speed == SPEED_10)
-+		val = RV1106_VOGRF_GMAC_CLK_RMII_DIV20;
-+	else if (speed == SPEED_100)
-+		val = RV1106_VOGRF_GMAC_CLK_RMII_DIV2;
-+	else
-+		return -EINVAL;
-+
-+	regmap_write(bsp_priv->grf, RV1106_VOGRF_GMAC_CLK_CON, val);
-+
-+	return 0;
-+}
-+
-+static void rv1106_integrated_phy_powerup(struct rk_priv_data *bsp_priv)
-+{
-+	rk_gmac_integrated_fephy_powerup(bsp_priv, RV1106_VOGRF_MACPHY_CON0);
-+}
-+
-+static void rv1106_integrated_phy_powerdown(struct rk_priv_data *bsp_priv)
-+{
-+	rk_gmac_integrated_fephy_powerdown(bsp_priv, RV1106_VOGRF_MACPHY_CON0);
-+}
-+
-+static const struct rk_gmac_ops rv1106_ops = {
-+	.set_to_rmii = rv1106_set_to_rmii,
-+	.set_speed = rv1106_set_speed,
-+	.integrated_phy_powerup = rv1106_integrated_phy_powerup,
-+	.integrated_phy_powerdown = rv1106_integrated_phy_powerdown,
-+
-+	.supports_rmii = true,
-+};
-+
- #define RV1108_GRF_GMAC_CON0		0X0900
+   reg:
+@@ -121,7 +122,7 @@ properties:
  
- /* RV1108_GRF_GMAC_CON0 */
-@@ -1628,6 +1682,7 @@ static const struct of_device_id rk_gmac_dwmac_match[] = {
- 	{ .compatible = "rockchip,rk3568-gmac", .data = &rk3568_ops },
- 	{ .compatible = "rockchip,rk3576-gmac", .data = &rk3576_ops },
- 	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
-+	{ .compatible = "rockchip,rv1106-gmac", .data = &rv1106_ops },
- 	{ .compatible = "rockchip,rv1108-gmac", .data = &rv1108_ops },
- 	{ .compatible = "rockchip,rv1126-gmac", .data = &rv1126_ops },
- 	{ }
+       interrupts:
+         minItems: 1
+-        maxItems: 3
++        maxItems: 4
+ 
+       interrupt-names:
+         oneOf:
+@@ -131,6 +132,11 @@ properties:
+               - const: otg-bvalid
+               - const: otg-id
+               - const: linestate
++          - items:
++              - const: otg-bvalid
++              - const: otg-id
++              - const: linestate
++              - const: disconnect
+ 
+       phy-supply:
+         description:
+@@ -160,6 +166,7 @@ allOf:
+             enum:
+               - rockchip,rk3528-usb2phy
+               - rockchip,rk3568-usb2phy
++              - rockchip,rv1106-usb2phy
+               - rockchip,rv1108-usb2phy
+     then:
+       required:
 -- 
 2.47.3
 
