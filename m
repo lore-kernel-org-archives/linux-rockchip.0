@@ -4,139 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B87FC5B56A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 13:13:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2D3C5AD55
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 14:05:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mE+PSIN3w6sg6y/7/jsqBmPbXXIWE0bo8g0+hFhQE5M=; b=VYNIFodDe/6btk
-	O36vwCaEruhjqTmjoi5RtNCb4JztYaoNofFiRQdB9b1JBx+k3ZEsJsMv4q1/MT/vBI7r5LCQR3MCH
-	bmJJAXHunHF73ClEWtSXiFnDMZzs2q1UkOKF8jdKU5bp6yI/vvl70BoG/ix8JLOUv44DITFriMF1W
-	nN9lMfUTjuUMkwuN6KZ39SgutBEt9Zf0DUTgjYPVBdE2pivVReSReI+g3M3wLAYBWKfawAWUg/YQ6
-	WVrcIW7Lhf73phmxBdI+XgsAH5U6hJPm3lEPLm4nUb4tfyCmTSyedm86zOTB3T60E26ghD/RQN0yC
-	c5ZCPhfXjTzGIsVxdjxg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OpTYO2eY52r0CnvoVgsDg9v+RInSSS1vN8V/OOLLf7A=; b=aHDtdjGEwn/w6488M5aE2AdW1q
+	a/2qdz9FjwweEsKqrKIb0pkwiYxycBLccWksOiUcstjtauUljqWypRUCALpoFw4FV9Wrj1KG4FNVG
+	XDk50WLYNPMfYnIqfKlFUmie8GAanL/4Z6HfQdWn/hzpyk3udJY2wS7wWAQw+SxSaI4KIG/KKWSUl
+	IuNYp7Lxdnjo0yV0aNFeLMtf8gqwB7Y62YECAo3uWHYqc8rtj9uV7cK+MoNV55slZ+LSP5ce2ojc4
+	clTbGfD7dA07KlipGfRs/2gcfJLIXSDefI3YUOQ3J7IJ/pYxVY9D1tj5owIPfRLEME7M5L5qiK6JG
+	mUXGVYCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtPom-0000000BsSJ-3ePd;
-	Mon, 10 Aug 2026 13:13:28 +0000
-Received: from mail-westeuropeazon11010019.outbound.protection.outlook.com ([52.101.69.19] helo=AM0PR83CU005.outbound.protection.outlook.com)
+	id 1wtQdI-0000000Bx5l-1sqg;
+	Mon, 10 Aug 2026 14:05:40 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtPoi-0000000BsP3-1nQO;
-	Mon, 10 Aug 2026 13:13:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=WlbeIAvGW+1TDqEpR74zdLcYUwrkhapgxiVXpfF2F39VFQjMUjfp1iMnrRuXTUnM5+PeIG6jyTTmF5Yu5uB6YZLyc30xvqLCiWbQlLAC30bt/8KX2y9fhbntmNzG41HeW3ZYPd6x1ZzZVwHDrdWvKvA1/VyiBRPr7u6KdNcAD8EMEH54Ufb0POzAw8hzWt33EHEbor4KYippwo9y9LTTh2EbZkipVLoIhEvw6d60mVFM9B6rMQQTtQy8Z19C09WSkpT/j1UVFMQ+o+0opI7iJGbPjv/wt5E7I6lqjK2OpGZ2oRw8/2zQwJx42+xcJzUq3xyav9I4X0y4Ca1S1H/jdQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NyC1pDdFT9Shp1cvPmu6ghYNHDBZqey+R1DDC9Z7h2Q=;
- b=Djl/FBoo0xiDEg+yjWur/jD3Zxw/EBkaa2Hi/W8X+gEW0U7qCutGiZOEvSYeODVAIgFscK2Io6ym3/VdHRONZ1sFMS6gQwmrmCzafXBSkUwwrifYTBeDbwqz4eSPTt8zUE3ccKoPbPZqJWbb+Im00izTF3bMBEoO2qcW1bomUrJOwNqScMm0B8D91Ry/IQT20KTz5Vq+c7ETBHxE58CXnMW3r7X5JYZPyejZRf0LHsw6qzCIYxK1toZ96VDSK0e0u6mkIKLjpbHmlHSyt13H0/OovbRPCNR0GM8x+emT/aLM0jvteoZqTyxgT97nRb2g6uqd/nyBJNPVXFx63PWIug==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NyC1pDdFT9Shp1cvPmu6ghYNHDBZqey+R1DDC9Z7h2Q=;
- b=PKQQIRGPR/RZUhwPVWcdyJIcDDAVTPgOKN1NHp+mzNb7gWL+6lBJB44NMlvibFAwZ4cR76lvtOxJ8aC7cmoUhXwVnG4R48bGQREDSZkYZbuf8WX9xlhGekG8+RRIgoulpCvOH+FC+YO/nzUny0t4tzNZ1GHnDdhdm6O24FCG+628WImxnFtO2SxuyYcAC+vpPk/9M+aSUwFyUMJP24IhyD8sEhDiUQ7COe7sVgOv5cg7iKs+W8OJPKTEboHlwDBvW22QBuHjAZ/+eeXvDJx/TEuVmayUAcvnR9U/ePBdIL/rQXUxNyn9W5ttXLvJJl4brPzSx6S1XhiuQmxR99QXWg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM0PR04MB6900.eurprd04.prod.outlook.com (2603:10a6:208:17d::10)
- by AM7PR04MB6773.eurprd04.prod.outlook.com (2603:10a6:20b:dc::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.292.25; Mon, 10 Aug
- 2026 13:13:19 +0000
-Received: from AM0PR04MB6900.eurprd04.prod.outlook.com
- ([fe80::7fda:8431:ca1b:b023]) by AM0PR04MB6900.eurprd04.prod.outlook.com
- ([fe80::7fda:8431:ca1b:b023%4]) with mapi id 15.21.0292.024; Mon, 10 Aug 2026
- 13:13:19 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: dri-devel@lists.freedesktop.org
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Inki Dae <inki.dae@samsung.com>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Dmitry Baryshkov <lumag@kernel.org>
-Subject: [PATCH v9 1/2] drm: add <linux/pm_runtime.h> where missing
-Date: Mon, 10 Aug 2026 16:13:13 +0300
-Message-Id: <20260810131314.452865-2-vladimir.oltean@nxp.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260810131314.452865-1-vladimir.oltean@nxp.com>
-References: <20260810131314.452865-1-vladimir.oltean@nxp.com>
-X-ClientProxiedBy: FR4P281CA0355.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:f4::8) To AM0PR04MB6900.eurprd04.prod.outlook.com
- (2603:10a6:208:17d::10)
+	id 1wtQdF-0000000Bx4r-3xn9;
+	Mon, 10 Aug 2026 14:05:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1786370732;
+	bh=3is/7Qz5EMpjjXNHjtJS3LzE2Ultwl4Sfu9h9ip4T0s=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=oiVuW0lT5Of6lm7Z/ZOFbtbkfKJmtmRybLKH5/+JTRZfY5YBjhdCC9fnKBmrSNgp4
+	 /3ttdMNe6ljisIWCM1OWoCOGD+nI1gX64un1PPBrBugd5fWvs3vvPG6yBHzvjAw/0o
+	 he8YPYGU8V6GFNV+EPtpOOulef/iSA8jqy4Y0Afzq+GrSaTyy5dicu1A50bgfdTuOx
+	 pc5xGk35pkbWwdsS89406fqCHac7m/G/1FEEBsPSEXQ2H+jTWttF5sq1g/ihh6/5VI
+	 U0mVpbI4q9HzJETpBZo4WT2hJzndItkoD12pg4Xz3po41ffeKtoPqD/g8k2l1g5ft7
+	 qOJeJ8inm9AoA==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6874D17E080A;
+	Mon, 10 Aug 2026 16:05:30 +0200 (CEST)
+Message-ID: <3cfca6fd11f39c6ce161d5a2e7fb650b2e9289ec.camel@collabora.com>
+Subject: Re: [PATCH] media: rkvdec: fix v4l2-compliance failure
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Tharit Tangkijwanichakul <tharitt97@gmail.com>, Detlev Casanova	
+ <detlev.casanova@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>,  Hans Verkuil <hverkuil+cisco@kernel.org>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-kernel-mentees@lists.linux.dev, skhan@linuxfoundation.org, 
+	me@brighamcampbell.com, jkoolstra@xs4all.nl
+Date: Mon, 10 Aug 2026 10:05:29 -0400
+In-Reply-To: <20260730153603.5721-1-tharitt97@gmail.com>
+References: <20260730153603.5721-1-tharitt97@gmail.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM0PR04MB6900:EE_|AM7PR04MB6773:EE_
-X-MS-Office365-Filtering-Correlation-Id: db34864d-1262-477d-bbe7-08def6e12564
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|19092799006|376014|7416014|23010399003|22082099003|18002099003|10067099003|56012099006|11063799006;
-X-Microsoft-Antispam-Message-Info: hytCnns9zUrdARctKvmZlCCWdE5LHyEwZtvC/+OR9naDjPz2lN9fBRbBQcVTSwGqiiOd4LEMt/PYXvl3Ya9sccccKC+qckHG6mx1eW0FrUfKBIoTC7+Ca+hAATolFMIvgvhxR9I6W0YREPP94OQvQjovjUuX7LQw42Q5AbAediqVN/0xFigNXWOBPAOdQas9UP+CEcbgBb0TYfnzLKrYQIRdhYF0fX0uqQpa1IS42Gm+ND4qAhHNEjTFygFK81MxPbJdrX4spyaXoaTOi9ZqkDZI6jk7baWR42FoRuxJXoI9SzBA9l/vlCpj577eDHXB9lo32o7C0oj5StbOEYX8eqRZ4jRbsNceAVeM7ytTAN+JXImUy1GYB9LjABcaSVRY5nKCnfyJ88mv7Ei6yVpUS3Jj0oQOG2aMxW/n1fLQeGd9NpIvoUG5eclYwCI/ZKoIxbMrUHoU0r8m+RQ7XA+oghB4w6J3DBMdO8/7Wcy2oN7D+VAZoxvAZlYTCB94llMuZW27wC0OCr2oExwnKIWmcNdtuL+H2Gi7ZzhLmTmy8EKmFeQ+up7bb2ukxonRi3PdW51VTVnuTzTmBEJkCjjsuWX6lgNWkjS9cxMbvN+K8RKcvLvngreVrfwToYD10DlZBN34pTY/pAdiXv9CAZbRTHcVSEfHllAOCMIDycgGPBc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM0PR04MB6900.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(19092799006)(376014)(7416014)(23010399003)(22082099003)(18002099003)(10067099003)(56012099006)(11063799006);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?04AuVrQCmYz+KCZ/yED5MW5v8D61Ot6RkTijxy08tu4PUJEjHJYVmmPs1GRa?=
- =?us-ascii?Q?gdkTFhGIdprHbwZJHFauGfsJzU8FEBLzaMClXM8dxBHQZbbjzOgBrGTt6fb4?=
- =?us-ascii?Q?f9cRKHfZm2/Tykit/lnxix+HJPUHMQpD8zU7b9qAxIVTTw/eOj8lRxPSLuGU?=
- =?us-ascii?Q?chR+cr9PYSzmxmVP32N29k+0VbTWJVDhDWCpenp2U8iHoXQ+RLUrAHAb8+L+?=
- =?us-ascii?Q?nTAgYgB/BcDXRV/v5HJ+H6s/aFvFp0zSfWVsmLwXghyGEi3gOu2mIOic8XcC?=
- =?us-ascii?Q?ezDx7jvM3L+lHqhOSAqq3KrCAXfi3pMQt4X8S0uvuAXpemz0O6VCE+541Xuj?=
- =?us-ascii?Q?QKBz1zbiEaYdcy7SAJ4WK71FS/6cO+iShhDpeq4qM9nWzYNbFhj6E+/cbFbP?=
- =?us-ascii?Q?VDtzjMcv3Csm412St6HkyQGENFBlDvEORCAFHP4Ze3C/LKWi3f7cwiG9du4K?=
- =?us-ascii?Q?rZGHhaxFXdRc7Vdl3nkJQEjn2yEY63yCNDBa2MfIEz3ANgCADwVqJHSEtfb5?=
- =?us-ascii?Q?XLL0ElCG5vbAmwaD/nNsI94Z7bBINGdEMZRfJEE1jVrUqV1QiYZyX+H0yf7H?=
- =?us-ascii?Q?55Rk+T3EHCn4hpmGI6c9RZ6WYelnlOjmIwspVF9AV/Cb5zq+rkGeDdNaPYXs?=
- =?us-ascii?Q?3ogw8bklXRxPgX2/dVi5vpJSA+A9yap0uwl5nFGaHhh7orXE0byJ64aWadWn?=
- =?us-ascii?Q?PgvaK1OHOpCsBMwbd/a1Lc7CsI2mpdLJM9FT07TBuj7tXVz5oOnE0rcd2s8L?=
- =?us-ascii?Q?uqtvjjvoJf3xoXxVKbJx+39r6laFe1dpBb2JDXkf4kMcY37ZLI007IsVZDTJ?=
- =?us-ascii?Q?CdDBrAYHtNUfr5qHDK+HB+WSDMUyrd1Pbpn2iUSG27Zxur+yJVLKAqk14XLh?=
- =?us-ascii?Q?uUyY+CjKfJDxKXLSwPlDiCaADvtHQX9Q1E8kLM+7jXaUV/VDuIlldp8SAICU?=
- =?us-ascii?Q?p2jU6M2J2vxEtPC+rCe5eDWntcEq/CxLydKxqARxlfu2vpGjxMqgVQ72NkPn?=
- =?us-ascii?Q?sDGcZ9QnsHl3E0i3I0EXkLAFeaKPbTridLrOiL1KMJBaOXgh0WpeaxLczeBe?=
- =?us-ascii?Q?6E/rkCYmvlGTvTSNdUE016zBKAaJ0CLEcNn78C9elq4vZhR3gZrx41XIKE3p?=
- =?us-ascii?Q?zdCu3IDE2MqLk8sJW14m/9L0q68gpKRJRpo9Yy7x3j1sgKnEJPhkuSWMtRFH?=
- =?us-ascii?Q?7xIXQFIgQLWhkJeRaHx44UBEMmz6rIS1Ln999ME/xiyF3gnuTusMccIRNoe4?=
- =?us-ascii?Q?zC2LGCt7spk7qgrHmYjdLQ3efkOewrm/ClmWAwXhc6n9+ed5C7dGk3Oa3H+M?=
- =?us-ascii?Q?NrdT4rDOdS//XbZW1WQ6BMjR6P8hQ+o9AGAuKaY6miz3SKm4KpVbIzKOHLaG?=
- =?us-ascii?Q?tZrUvUKPZAcT2ecpDZMZ6L5FKKwYXVGdzOfdpkLmeqkSJx1fs2YVG6PzhOyR?=
- =?us-ascii?Q?qRGGZtREnbuRJGukxb+o3wRV2Ceenw/fWseK+sI3L1RqJHteu8DrdcMVtmPc?=
- =?us-ascii?Q?sj2KBlazvFgh0vEupB+c5itoSH9M8xvGRYgNaDNcFm9r58ZQCwynI01dUNj6?=
- =?us-ascii?Q?GSTyXZ7f6QJD+O1XyxZYXpt5cxn87b4e2ja4BeU1lJ4iKRJYEhYr+tnS0q74?=
- =?us-ascii?Q?1wDwy6Ei6cLItmpllJOUszf4tAUK6cNYw3WbrnAMq4UoZ3vLDvetsRCExKXA?=
- =?us-ascii?Q?jEVOnWt32MYMeDqRwutYu0EWf3tmpuQ+JR4g3lMDD4U4XSftk5o72dzffxYh?=
- =?us-ascii?Q?Tj0xPS34vA=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: db34864d-1262-477d-bbe7-08def6e12564
-X-MS-Exchange-CrossTenant-AuthSource: AM0PR04MB6900.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Aug 2026 13:13:18.9554
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: n7cPfEqwXqNUR/n1QtY+94qDncsm5I8WfAIroEuCuTVv+e9vESLNN75VTGuqjamD7ourYL2VCaeP/tusYMeS4A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR04MB6773
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260810_061324_472240_A18A39C0 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20260810_070538_139430_1172F9D9 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,124 +88,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7358379726153407919=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Multiple DRM bridge drivers use runtime PM operations without
-including the proper header, instead relying on transitive inclusion
-by <linux/phy/phy.h>.
 
-The PHY subsystem wants to get rid of headers it provides for no reason,
-so modify these drivers to include what they need directly.
+--===============7358379726153407919==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-TzX0jms5qUDK0lg++uvs"
 
-Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
----
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Robert Foss <rfoss@kernel.org>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: Jonas Karlman <jonas@kwiboo.se>
-Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-Cc: Maxime Ripard <mripard@kernel.org>
-Cc: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: David Airlie <airlied@gmail.com>
-Cc: Simona Vetter <simona@ffwll.ch>
-Cc: Inki Dae <inki.dae@samsung.com>
-Cc: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: Rob Clark <robin.clark@oss.qualcomm.com>
-Cc: Dmitry Baryshkov <lumag@kernel.org>
 
-v1->v9: none
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c  | 1 +
- drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c | 1 +
- drivers/gpu/drm/bridge/nwl-dsi.c                    | 1 +
- drivers/gpu/drm/bridge/samsung-dsim.c               | 1 +
- drivers/gpu/drm/msm/dp/dp_aux.c                     | 1 +
- drivers/gpu/drm/rockchip/cdn-dp-core.c              | 1 +
- 6 files changed, 6 insertions(+)
+--=-TzX0jms5qUDK0lg++uvs
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 30c0c0b41d5a..06b427653d21 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -19,6 +19,7 @@
- #include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- 
- #include <drm/bridge/analogix_dp.h>
- #include <drm/display/drm_dp_aux_bus.h>
-diff --git a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c b/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
-index 504a3186ebb3..c99151fdaf03 100644
---- a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
-+++ b/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
-@@ -32,6 +32,7 @@
- #include <linux/phy/phy.h>
- #include <linux/phy/phy-dp.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/slab.h>
- #include <linux/wait.h>
- 
-diff --git a/drivers/gpu/drm/bridge/nwl-dsi.c b/drivers/gpu/drm/bridge/nwl-dsi.c
-index 09992529f3d8..3d9d0bddcb31 100644
---- a/drivers/gpu/drm/bridge/nwl-dsi.c
-+++ b/drivers/gpu/drm/bridge/nwl-dsi.c
-@@ -18,6 +18,7 @@
- #include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/sys_soc.h>
-diff --git a/drivers/gpu/drm/bridge/samsung-dsim.c b/drivers/gpu/drm/bridge/samsung-dsim.c
-index e2fc69fc51b6..59eef9697a5e 100644
---- a/drivers/gpu/drm/bridge/samsung-dsim.c
-+++ b/drivers/gpu/drm/bridge/samsung-dsim.c
-@@ -20,6 +20,7 @@
- #include <linux/of.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/units.h>
- 
- #include <video/mipi_display.h>
-diff --git a/drivers/gpu/drm/msm/dp/dp_aux.c b/drivers/gpu/drm/msm/dp/dp_aux.c
-index 3825a2fb48e2..5ee22f88bd28 100644
---- a/drivers/gpu/drm/msm/dp/dp_aux.c
-+++ b/drivers/gpu/drm/msm/dp/dp_aux.c
-@@ -6,6 +6,7 @@
- #include <linux/delay.h>
- #include <linux/iopoll.h>
- #include <linux/phy/phy.h>
-+#include <linux/pm_runtime.h>
- #include <drm/drm_print.h>
- 
- #include "dp_reg.h"
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 68aa66915e8a..a78de7eabd15 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -10,6 +10,7 @@
- #include <linux/firmware.h>
- #include <linux/mfd/syscon.h>
- #include <linux/phy/phy.h>
-+#include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- 
--- 
-2.34.1
+Hi,
 
+Le jeudi 30 juillet 2026 =C3=A0 15:36 +0000, Tharit Tangkijwanichakul a =C3=
+=A9crit=C2=A0:
+> rkvdec fails v4l2-compliance in two tests related to
+> V4L2_CID_STATELESS_HEVC_SPS. The Control ioctls test reads the control
+> with GET_EXT_CTRLS and writes the same value back; TRY_EXT_CTRLS then
+> returns -EINVAL because the VDPU38x rkvdec_hevc_validate_sps() rejects
+> sps->chroma_format_idc =3D=3D 0, which is the value returned when the
+> control has no default.
+>=20
+> =C2=A0=C2=A0=C2=A0 v4l2-compliance 1.33.0-5491, 64 bits, 64-bit time_t
+> =C2=A0=C2=A0=C2=A0 v4l2-compliance SHA: b32589c51481 2026-07-16 08:51:38
+> =C2=A0=C2=A0=C2=A0 Control ioctls:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fail: v4l2-test-controls.cpp(9=
+42):
+> 	try_ext_ctrls returned an error (22)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
+> =C2=A0=C2=A0=C2=A0 Buffer ioctls:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fail: v4l2-test-buffers.cpp(31=
+02): node->streamon(q.g_type())
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fail: v4l2-test-buffers.cpp(31=
+57): testBlockingDQBuf(node, m2m_q)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 test blocking wait: FAIL
+>=20
+> Provide a control default via p_def with chroma_format_idc =3D 1 (4:2:0),
+> which is the only value the VDPU38x SPS validation accepts.
+> This fixes both the Control ioctls and the Buffer ioctls failures.
+>=20
+> Tested on Radxa Rock 5B (RK3588).
+>=20
+> Fixes: c9a59dc2acc7 ("media: rkvdec: Add HEVC support for the VDPU381 var=
+iant")
+> Signed-off-by: Tharit Tangkijwanichakul <tharitt97@gmail.com>
+> ---
+> =C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.c | 5 +++++
+> =C2=A01 file changed, 5 insertions(+)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
+dia/platform/rockchip/rkvdec/rkvdec.c
+> index 1d1e9bfef8e9..37603f049788 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> @@ -236,6 +236,10 @@ static const struct rkvdec_ctrls rkvdec_hevc_ctrls =
+=3D {
+> =C2=A0	.num_ctrls =3D ARRAY_SIZE(rkvdec_hevc_ctrl_descs),
+> =C2=A0};
+> =C2=A0
+> +static struct v4l2_ctrl_hevc_sps vdpu38x_hevc_sps_default =3D {
+> +	.chroma_format_idc =3D 1,
+> +};
+> +
+> =C2=A0static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctrl_descs[] =3D =
+{
+> =C2=A0	{
+> =C2=A0		.cfg.id =3D V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
+> @@ -243,6 +247,7 @@ static const struct rkvdec_ctrl_desc vdpu38x_hevc_ctr=
+l_descs[] =3D {
+> =C2=A0	{
+> =C2=A0		.cfg.id =3D V4L2_CID_STATELESS_HEVC_SPS,
+> =C2=A0		.cfg.ops =3D &rkvdec_ctrl_ops,
+> +		.cfg.p_def.p_hevc_sps =3D &vdpu38x_hevc_sps_default,
+
+Thanks for your patch. Have you considered setting this default in v4l2-com=
+mon
+instead ? Monochrome is rarely supported of implemented in codecs, so setti=
+ng
+the global default to 4:2:0 seems like it would be valid for all drivers.
+
+Nicolas
+
+> =C2=A0	},
+> =C2=A0	{
+> =C2=A0		.cfg.id =3D V4L2_CID_STATELESS_HEVC_PPS,
+
+--=-TzX0jms5qUDK0lg++uvs
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCannaqQAKCRDZQZRRKWBy
+9G57AP92mrNZWgsDBwsQ2XuKqcBeRf0Gxt9wn6CCa0p8jJZaggEAtrJ7HoEDXOBa
+hQUTaEu7DxXMJvm07IaizMrkf6mhqgw=
+=XESv
+-----END PGP SIGNATURE-----
+
+--=-TzX0jms5qUDK0lg++uvs--
+
+
+--===============7358379726153407919==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7358379726153407919==--
+
