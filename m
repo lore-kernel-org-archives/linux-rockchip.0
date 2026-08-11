@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 504CFC5AD55
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Aug 2026 20:08:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DD8BC5AD7B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 01:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=du1XGe/zxWiVCEwer6A4x8l8PcoPtU9BUywl6pMaMGM=; b=EI/zGpdWEVb/uy
-	SaBCN0u0WjD+b40zjLMM9OUzQ4Fzf6hgi+lKtnWl4XLydCeFvqbiGMhmOdYrAeR+0cLU1xPOs8R/+
-	+0nqa9NUrE4L64Eq0UMXQKQ6xOgyG6H6+oh0Yo2Od9NolHxJRccn8H4XVOKCYyMwJbuPKqiPgaTEg
-	+doZUnnKuZAXMDpYwV45PphdRFejX9iSNw7FGc9KscF4RllLzedXkzsih/FF0vyt/FnbdsSlet39z
-	/QJsPfJKRAc1wswx0PXvbLKp1UOHMx027NxgobMbnWvIs1d4Nq0dW6plsRnEmNdDrFf38W1H7lugz
-	R6ATKQpHZfoj6dxiw7Tg==;
+	List-Owner; bh=nNdAwxpA9Yw+dOuHwEBHlX0CwH+sCtZ0QtTeO+maSwo=; b=2Mzor+CW77AoCc
+	RwUspLuZEkpEqAIqI8d+0Jzg+nqxoOlN1bbFQTK6B2+3V9ZL3eArd3juFyofWo66GvLI+16QH9acF
+	U7CLoYwbqheD6gfvcBNAJ1iMZ2Km2hsKmneePS5M9K7F+XSj1d9msU2DrTBUQO9LHy/kNQePiIXzz
+	Lwd/ioK0R2AfVWQlUR+Bz5qydzAPhbC15HECgg/161ZISipETaN/dVflycTsWuED/+lU0OIVovTMF
+	Rpa5KJ0jdbjUDY/VJVVgmv4lqAfPH81mR+/VKuBEnEcLypFjc3gY1+NyuzcPzxce4KE8B8ECZQX+F
+	Tg0qyeVHiM5s5cHoaL9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtWIm-0000000Co3X-1XXa;
-	Mon, 10 Aug 2026 20:08:52 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wtazS-0000000D6NY-2RHc;
+	Tue, 11 Aug 2026 01:09:14 +0000
+Received: from mail-m128196.netease.com ([103.209.128.196])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtWIj-0000000Co2m-0b8j
-	for linux-rockchip@lists.infradead.org;
-	Mon, 10 Aug 2026 20:08:49 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9640D600BB
-	for <linux-rockchip@lists.infradead.org>; Mon, 10 Aug 2026 20:08:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F8B11F01558
-	for <linux-rockchip@lists.infradead.org>; Mon, 10 Aug 2026 20:08:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786392528;
-	bh=PVxB+HpF5gJwn2MewfiHQ8qVkVDyA4ChZQAvP9r8du0=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=iPdlCCN1WHTnrcp4qPCqZCeN22izSXVTan9/YjPJthQrocMAP9W+RrvsB2pUbj7G+
-	 oumeICBSdrpNvAS909YhYiPabCdMcYvyWCXXsW6zPPJ5Ewq+h1cthK//m9a4CFjwof
-	 KjnvVTm+MidK7yw+mJOlN89Hu0bMJR/SrMdhNry1B12zgkZgDkhrXHVCOYVhWLcLaO
-	 4yd2h2RlyVAmRlHahaOlf2xMoYS3C1r8jHu1ByyOrg5exuLpbfL2AAjpPxfV4NF91I
-	 +4k/j8+aug8l14E5/obNdCxyhoLVGAJllAxbJsCIUXpjm9nrUrupRbOAc/Un0HA3d6
-	 7XxJiIGK8f++w==
-Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-5b01cb18515so2343256e87.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 10 Aug 2026 13:08:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+Rq76PRAAAaOP3Lnx013FyxQj7Jj8IBEpm/TlLQZyGT61VeXcqoG8sM+oKgVo60OkB1HaiP83nPq87n4S5shKQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzZV8uQteoaT7xrgSsPL5FLY3mOZQ82WdpyeDoRle6zXGiAmVWC
-	ZzdCGBdMtu2WKdlAE1+xe+0ICf/hWs45+u9T0q7G6q4DNMJsc4zcTvmYiN0au7AV99XUVI8ppHl
-	5PlM4KChkFKCVnXVy5FLly+A13u8T4pw=
-X-Received: by 2002:a05:6512:668d:20b0:5b0:23b4:be97 with SMTP id
- 2adb3069b0e04-5b2f4b801a6mr3693256e87.6.1786392527084; Mon, 10 Aug 2026
- 13:08:47 -0700 (PDT)
+	id 1wtazO-0000000D6Mb-3mPM;
+	Tue, 11 Aug 2026 01:09:13 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 497cc1d3b;
+	Tue, 11 Aug 2026 09:09:00 +0800 (GMT+08:00)
+Message-ID: <c1571659-0e9c-4d00-b517-c344c2772f9e@rock-chips.com>
+Date: Tue, 11 Aug 2026 09:08:59 +0800
 MIME-Version: 1.0
-References: <20260729132736.3807082-1-sjg@chromium.org> <20260729072727.v3.4.0af20e702c540f54a3d1694654b158a9b783d68e@changeid>
-In-Reply-To: <20260729072727.v3.4.0af20e702c540f54a3d1694654b158a9b783d68e@changeid>
-From: Linus Walleij <linusw@kernel.org>
-Date: Mon, 10 Aug 2026 22:08:34 +0200
-X-Gmail-Original-Message-ID: <CAD++jLmXtsWNdJ3ecPcpnSHK9E00fQSUmv5r1ooCC9n_zp91pA@mail.gmail.com>
-X-Gm-Features: AUfX_mxsREooqobH0O-veo6ClRCAIrzdMTMqoFk0qwAXfbPSfoYfYy7nEvygW94
-Message-ID: <CAD++jLmXtsWNdJ3ecPcpnSHK9E00fQSUmv5r1ooCC9n_zp91pA@mail.gmail.com>
-Subject: Re: [PATCH v3 4/4] pinctrl: rockchip: Add RV1106 pinctrl support
-To: Simon Glass <sjg@chromium.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	devicetree@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>, linux-gpio@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
-	linux-rockchip@lists.infradead.org, Jeffy Chen <jeffy.chen@rock-chips.com>, 
-	huang lin <hl@rock-chips.com>, linux-kernel@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v6 7/9] accel/rocket: add RK3576 NPU (RKNN) support
+To: Jiaxing Hu <gahing@gahingwoo.com>, royalnet026@gmail.com,
+ heiko@sntech.de, tomeu@tomeuvizoso.net, robin.murphy@arm.com,
+ diederik@cknow-tech.com
+Cc: alchark@flipper.net, linux-rockchip@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260806063413.350184-1-gahing@gahingwoo.com>
+ <20260806063413.350184-8-gahing@gahingwoo.com>
+ <20260807211629.1573228-1-gahing@gahingwoo.com>
+ <4f300b78-d96d-4d98-8819-dc292b0c9b97@rock-chips.com>
+ <20260810104718.1214191-1-gahing@gahingwoo.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20260810104718.1214191-1-gahing@gahingwoo.com>
+X-HM-Tid: 0a9fee5d9f0403a7kunm580812a34372e1
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaGh1NVhhMTExPHRgZQ0IYGFYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
+	5LVUpLS1VKQktCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=AhgqQMgoktMUJi3o7cEQ1EXjE1h6vtnke8qGBVEBJXyJDfTCkhJFBq8MVGdaqDT9vTZ56M6MTDOe66Ite3rdCLeZ0M0xfI9/E8D252RhX8EzIQcvcNwD9fp8kw5XsyrUNE9tiwlGaSiDNoUtyt7rrxxO3ZuecyLg7PZ3vsemUqw=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=5ox2pSQcRMCfh620cnCM//FeEtDAYOQ5T3MWVhlTcio=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260810_180911_511258_DCDA317C 
+X-CRM114-Status: GOOD (  17.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,26 +72,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBKdWwgMjksIDIwMjYgYXQgMzozMOKAr1BNIFNpbW9uIEdsYXNzIDxzamdAY2hyb21p
-dW0ub3JnPiB3cm90ZToKCj4gQWRkIHBpbmN0cmwgc3VwcG9ydCBmb3IgdGhlIFJvY2tjaGlwIFJW
-MTEwNiwgYmFzZWQgb24gdGhlIHZlbmRvcgo+IGtlcm5lbCBpbiB0aGUgTHVja2ZveCBQaWNvIFNE
-SyBbMV0gYXQgY29tbWl0IDgyNGI4MTdmOCAoYSBMaW51eAo+IDUuMTAuMTYwIGtlcm5lbCB0cmVl
-KS4gRWFjaCBHUElPIGJhbmsgaGFzIGl0cyBvd24gSU8gY29udHJvbCAoSU9DKQo+IHJlZ2lzdGVy
-IGJsb2NrLCByZWZlcmVuY2VkIGJ5IHRoZSByb2NrY2hpcCxncmYgcGhhbmRsZSBvZiB0aGUgYmFu
-awo+IG5vZGU7IHRoZSByZWdpc3RlciBvZmZzZXRzIGFyZSByZWxhdGl2ZSB0byB0aGUgYmFuaydz
-IG93biBibG9jay4gVGhlCj4gZHJpdmUgc3RyZW5ndGggdXNlcyB0aGUgUkszNTY4LXN0eWxlIGV4
-cG9uZW50aWFsIGVuY29kaW5nIGFuZCBvbmx5Cj4gcGlucyAwLTYgb2YgR1BJTzAgaGF2ZSBkcml2
-ZS1zdHJlbmd0aCByZWdpc3RlcnMuCj4KPiBUaGUgUlYxMTAzIGlzIGEgcGFja2FnZSB2YXJpYW50
-IG9mIHRoZSBSVjExMDYgd2l0aCBmZXdlciBwaW5zIGFuZCB1c2VzCj4gdGhlIHNhbWUgcGluIGNv
-bnRyb2xsZXIuCj4KPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL0x1Y2tmb3hURUNIL2x1Y2tmb3gt
-cGljbwo+Cj4gU2lnbmVkLW9mZi1ieTogU2ltb24gR2xhc3MgPHNqZ0BjaHJvbWl1bS5vcmc+Cj4g
-UmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpQYXRjaCBhcHBs
-aWVkIQoKWW91cnMsCkxpbnVzIFdhbGxlaWoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Jiaxing,
+
+On 8/10/2026 6:47 PM, Jiaxing Hu wrote:
+> Hi Chaoyi,
+> 
+> Thank you, that settles it, and no apology needed for not reading the
+> series.
+> 
+>> For RK3576:
+>>
+>> - BIT[15:0] task_number
+>> - BIT[16] task_pp_en
+>> - BIT[17] task_count_clear
+>> - BIT[18] task_last_layer_clear
+> 
+> That matches the register trace bit for bit, and it is worth more than
+> the trace, because the trace could only say which word the vendor writes
+> and not what the bits in it are.
+> 
+> BIT[18] is new to me. I was setting it because the vendor's word had it
+> set and clearing it was not something I wanted to try blind. Now it can
+> be named rather than shipped as 0x7 << 16:
+> 
+>   #define PC_TASK_CON_TASK_NUMBER		GENMASK(15, 0)
+>   #define PC_TASK_CON_TASK_PP_EN		BIT(16)
+>   #define PC_TASK_CON_TASK_COUNT_CLEAR		BIT(17)
+>   #define PC_TASK_CON_TASK_LAST_LAYER_CLEAR	BIT(18)
+> 
+> with the RK3588 positions kept beside them, since the two differ only in
+> the width of the first field and that is exactly what made v1 through v6
+> wrong.
+> 
+> One question, if you have a moment. Is task_last_layer_clear meant to be
+> set on every submit, or only on the task that ends a layer? Setting it
+> unconditionally works on RK3576 here, but working and being right are
+> not the same thing, and I would rather not encode a guess in a driver
+> other people will copy from.
+
+I think it should be for every submit. That is, when you set task_count_clear,
+you should also set task_last_layer_clear at the same time.
+
+> 
+> Thanks again,
+> Jiaxing
+> 
+> 
+
+-- 
+Best, 
+Chaoyi
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
