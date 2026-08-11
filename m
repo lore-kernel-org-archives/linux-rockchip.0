@@ -4,65 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F3E9C5AD55
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 01:34:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDCBBC5AD7B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 02:08:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LyDcL4+iIIZi9+Z+I6mwQnQSeE6cZXZqb5RSzvO6Sbg=; b=sTAB4ee82Xf96z
-	U4yjOa+sbL2AcYLn1AvGndfe/YeuPJKUINkc/gptJA8XMsBwplmAWoVbxOyh0f5zPQ0II3NS20TY1
-	JNS2UcMig9zChWDcAEaPzHIaEMnJtmTqyvjrNo+GeGWtfOrO5ByBNV6IqA0El33CGZOWrfS69Oe6J
-	oHBUoMdyWerKho+S8FcnMutt4YvRwbhxLRS4u6Gl40qIrEQJB1uaU8dZAVGHLF0e9CsC3mB7aoZ8N
-	unnnSaBJgiwDQ+7bgeQDLV4ShW8xxpNEa+PN48y/n1X4bUj+rrAMzSsuL4iR6s00ahL1HU5IP48xg
-	SwWVt0KJFjWb+vpLjBpQ==;
+	List-Owner; bh=ph/sW6x1PQ5WQfrv/dqkWDYxsOg1ussZDaqyceL6e7k=; b=QdjUchXwqpYC9f
+	mcXlAexBNb4tu0l9xs3mOjuv3mLmxVPGHUcHqbGdVlpqtOPvInIBnyj3Z39BT1zbWZduJN5amRZyp
+	pIWcqodvdmq0xF2TDRosJMHX0fPjTLIqCN5f5enUovQwa7s6DqtWNnj0NKAOz7enMGBn1c8FrofK2
+	U36DFJ2yVDZSQtKPDXi8EElbdq5HVqBg/KtJI2vJfFrdXFhkJC9LfIY7JV+0Nea6BFCygviRhaexz
+	QM9c7Fx3GxY1HLoYsgw8dp1fNPQN6iP4mHI1pPDTI0GiJ5xvyxhGmwlxfdJgUlNlEEFFc6q2iBv/5
+	JgUeg/uphqusuxiWC6BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtbNw-0000000D7fg-3pXz;
-	Tue, 11 Aug 2026 01:34:32 +0000
-Received: from mail-m16023653242.xmail.ntesmail.com ([160.236.53.242])
+	id 1wtbug-0000000D9AL-1uSM;
+	Tue, 11 Aug 2026 02:08:22 +0000
+Received: from flow-b6-smtp.messagingengine.com ([202.12.124.141])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtbNt-0000000D7ew-21hV;
-	Tue, 11 Aug 2026 01:34:31 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 497d9ce87;
-	Tue, 11 Aug 2026 09:34:15 +0800 (GMT+08:00)
-Message-ID: <c0a7521d-9c19-4197-802b-2b64a6ddea28@rock-chips.com>
-Date: Tue, 11 Aug 2026 09:34:13 +0800
+	id 1wtbuc-0000000D99m-3Sxo;
+	Tue, 11 Aug 2026 02:08:21 +0000
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+	by mailflow.stl.internal (Postfix) with ESMTP id D263E130008F;
+	Mon, 10 Aug 2026 22:08:14 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-02.internal (MEProxy); Mon, 10 Aug 2026 22:08:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm1; t=1786414094; x=
+	1786417694; bh=rWm9RHbtzazf993VOPOsupHPiD1NvDkD8ms+u6UxPHc=; b=J
+	lUTAAg7ypbKUVWXMw62mJurmR9MhUq5rfmwaNndjWP6fTJvnCfeayGTgFXHIbzny
+	HsqewVInRovsf4hYMlAn/7J9YXHICXBLAPoCR6xu6wD/pSFYVyVCQIPvuCv4nAiK
+	PNUrT303GsDCyw3rnTEOzYnJSG7IKS+y+CkDstvGYNxtI7E5Ru+yDQuDzhcYAVLi
+	jaSrYdBxYeXN+y6ZXd8rC8jBB7f3u18+zJuBD9phBaxietgdq0e6FPDlqiPFUkww
+	kBW4esosI5oRd8wev15if3ngh+Y56XAd6ST1+PQ/wUpZbhCcZwausbHseaaNBOyb
+	LoPrDf3CbhxmwKj4xd0cA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1786414094; x=1786417694; bh=r
+	Wm9RHbtzazf993VOPOsupHPiD1NvDkD8ms+u6UxPHc=; b=IG8kQt2DXynm+w/82
+	+vPHRp02FIYGa7Uh9BCLaaf7VGJMq7Jry8Di0R+f8DaUh2m0p7iV5wTDtzxDbPFE
+	ii683faabUgyR1sCWyxoCrsHN1oCZDHzg4HGw6aXJTsZyMdzQqrbW0yfz6yLH4rq
+	8eghTC/Pa6W/6iFYJMfzFGMa6Vr1lob3SEDjpMyA9DXVQwJ10waGt1t4QLHEw5ZC
+	D9qfPcqmBfTrZai1qeDOBicsdWjtRT8UsuydHZUE49i4+Vzv1MDcMlsqZMQIB8Bs
+	k8nTfqnuXLvUO+4s3oOpzasZ4O+MoQNEsT+o4KdsC4kY4G8LbamswqpXstY1zf5+
+	IHVdw==
+X-ME-Sender: <xms:DoR6alQWd_KRZ3ungJaulrfVDtU8Kk3T65C73QJ6mnn7Vc1yqB-iog>
+    <xme:DoR6alJ4nvrM2IbupZG-8CE-nicjJaGClXc7ANA-bOfcyqhL0I1qpvhaUqGV6z97A
+    kSKj3JJGb2AEoHRx-xxMQnWKFzIUIld26cBvpVypgJ7kCcZwDWf5oM>
+X-ME-Received: <xmr:DoR6anEIG5pz-PsQyA6pitWcoGARlynUHaBRH6Jx1s0xrwP4vgMZc1eutW7cer0r5zmD4AtXow>
+X-ME-Proxy-Cause: dmFkZTERbI1xbd5afPRWYP3f2skAMeglpOkczslCfBYcEYR3djMQW1qlWyWV/djaOiLGyB
+    jCqnT/qEQac9T+QQxqLt0cOIA598/BpHvO5omQCz3QbUsbNxGDGcCubRIfrxy4hpvIhjct
+    TW8FkzIdmi01QffYDmEb+MjTyO4pkSV+l8JoM08XDklG8EPPcc54YdVzBpusM91cNaToE2
+    Qvld2OMSe6kPDjEmkESLxjAFOAH24FisU5Ut9KwCYj4zPUxBGKl/Q1SU7YU4QS/fpya02c
+    2tn8jX0JUWNKiJRSx+jUM4x0hU9rJ6qB0gX5QZB9cNvKFCAtjRI1z0L8U4oEUppb0sossh
+    49XfuwWqudVJ5zPnObaG4tO5rE+cRooRkUgQrnVj6KeRVZ8G1A5RySKbCS9lDLzVZ2WyEZ
+    kAmeAUbRtTwW3uVf+w8QOo21fyX0npTD1rRsdb1y1oVSUZoqJNuf6MmQu6J9bxf81uqQE7
+    X7zRm3FXGnzrLocmt356t8g/cc5tDeo72/HTHKa34MyXyhu3xAOExKE0h5w/6YWEwCtnY/
+    dAkDQmJ9Sj0tdVbqBelIAPDjE+aGe/sVsmMVXWRQ6tI9/IMT3qrcIyUwX+cZ0gvgg+4URK
+    I0itSAPlUCR9AOFVC3ZM1peWnlXxOL/Q4WCWlRzhtxZ24yazYQwkYRWT+vKg
+X-ME-Proxy: <xmx:DoR6aq29sRK-sM1KhiqLDMXFjEacxMPwzCzV1IisE2HQQv77i_SmvA>
+    <xmx:DoR6anI7fSBaa3B5kz4JI4mow_ko-p9UTYGhvErYG0hF2dIzDwZn2g>
+    <xmx:DoR6an0HfQ-zkE49LsbD3I8PU0-5MMwpww_c3ISVazNw-OMsHRXi7Q>
+    <xmx:DoR6ajlhILSYjctLT-HLA81qdImd5ZE0G3bpIj3J6F6ubrL6_F5E1A>
+    <xmx:DoR6ao89ArTV7tWdcNp-ae8-pqmQ1ExxdCrH-eX-Dqi9v2q0h6DjAzVh>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 10 Aug 2026 22:08:10 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: chaoyi.chen@rock-chips.com,
+	royalnet026@gmail.com,
+	heiko@sntech.de,
+	tomeu@tomeuvizoso.net,
+	robin.murphy@arm.com,
+	diederik@cknow-tech.com
+Cc: alchark@flipper.net,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: Re: [RFC PATCH v6 7/9] accel/rocket: add RK3576 NPU (RKNN) support
+Date: Tue, 11 Aug 2026 14:08:07 +1200
+Message-ID: <20260811020807.1605238-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <4f300b78-d96d-4d98-8819-dc292b0c9b97@rock-chips.com>
+References: <20260806063413.350184-1-gahing@gahingwoo.com> <20260806063413.350184-8-gahing@gahingwoo.com> <20260807211629.1573228-1-gahing@gahingwoo.com> <4f300b78-d96d-4d98-8819-dc292b0c9b97@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: drm/rockchip: vop2: ACLK_VOP pinned at 500 MHz starves DP 4K120
- on RK3588
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Igor Paunovic <royalnet026@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Sandy Huang <hjc@rock-chips.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Alexey Charkov <alchark@flipper.net>
-References: <20260808104240.13776-1-royalnet026@gmail.com>
- <33bd4a94-11af-4cf3-ae44-b7f8944250f6@collabora.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <33bd4a94-11af-4cf3-ae44-b7f8944250f6@collabora.com>
-X-HM-Tid: 0a9fee74ba5003a7kunmb83a8d5243ccb1
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaGEpJVkNIHUwaTh9LQh5NHlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=Fby754QUoVSX3qKOhJ+T9zxxpIaZ3/AFBleWT4T32EkawxyBDqdkx9/0/s7x2fpaPxlxUdT9qVIz0jsSH1tDv8G3Sv3acy3G8bwXvRFJ96vLWnGdDpKzqV4wUfEurumYph+GwPsn4pggilYltD8AbHX6a7CUnoqhVrf/6CAPi7s=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=+IE9jJ9s7tH4WhZu0h21Uh01ObG+BVF23Qpj2OsjRpQ=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260810_183429_872761_3A969E7D 
-X-CRM114-Status: GOOD (  33.01  )
+X-CRM114-CacheID: sfid-20260810_190819_590713_D84931C8 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,137 +117,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Cristian, Igor,
+Hi Chaoyi,
 
-On 8/10/2026 11:36 PM, Cristian Ciocaltea wrote:
-> Hi Igor,
-> 
-> On 8/8/26 1:42 PM, Igor Paunovic wrote:
->> Hello,
->>
->> On RK3588 the VOP2 AXI clock is pinned to 500 MHz by device tree and
->> nothing in mainline ever raises it.  For DisplayPort at 3840x2160@120
->> that is not enough bandwidth, and the failure is not graceful: the
->> video port floods POST_BUF_EMPTY interrupts and the picture is
->> corrupted.
->>
->> I mentioned this in passing when I sent a Tested-by for the dw-dp v11
->> series:
->> https://lore.kernel.org/all/20260808094138.7205-1-royalnet026@gmail.com/
->>
->> The pin is explicit.  In arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
->> the cru node lists <&cru ACLK_VOP> in assigned-clocks with 500000000 in
->> the matching position of assigned-clock-rates.  It is a deliberate
->> assignment rather than a boot default, and it is identical in mainline
->> and in the Collabora rockchip-devel branch.
->>
->> The rate request does propagate.  ACLK_VOP is registered as a gate with
->> flags 0 in clk-rk3588.c, but drivers/clk/rockchip/clk.c adds
->> CLK_SET_RATE_PARENT for every branch_gate, so a request on aclk_vop
->> travels up through aclk_vop_sub_src (a mux carrying the same flag) to
->> aclk_vop_root, which is a settable composite.
->>
->> What I measured, on an Orange Pi 5 Plus driving a DP monitor over USB-C
->> Alt Mode at 3840x2160@120 (YCbCr 4:2:0, so dclk sits at 594 MHz), on
->> drm-misc-next of 2026-08-07 (dc2f9f7fed1a) plus the dw-dp v11 and usbdp
->> v13 series.  I built with CLOCK_ALLOW_WRITE_DEBUGFS and changed the
->> rate by writing aclk_vop_root's clk_rate in clock debugfs, one level
->> up, which has the same effect.  The mode was unchanged across all three
->> phases, so dclk stayed at 594 MHz and the AXI rate was the only thing
->> that moved:
->>
->>   500 MHz:  vop2_isr reported ~594000 suppressed callbacks per 5 s,
->>             roughly 119k interrupts per second, all POST_BUF_EMPTY on
->>             the DP video port; picture unusable
->>   750 MHz:  no POST_BUF_EMPTY logged at all for 42 s, the whole phase;
->>             the picture became correct the moment the write landed
->>   500 MHz:  ~607000 suppressed callbacks per 5 s; broken again
->>
->> Both transitions are immediate, and the timestamps line up with the
->> phases of my test script.
->>
->> Everything I can drive up to 2560x1440@144 (about 586 MHz pixel clock)
->> stays clean at 500 MHz; 3840x2160@120 (1188 MHz) does not.  That
->> comparison comes from a mode sweep on my rockchip-devel based daily
->> kernel rather than from the run above, and my monitor offers nothing in
->> between, so I cannot bisect the threshold.
->>
->> In mainline rockchip_drm_vop2.c there is no clk_set_rate() on the VOP
->> aclk at all; the only clk_set_rate() in the file is on vp->dclk.  To
->> reproduce: enable dp0 on an RK3588 board - it is disabled in the
->> mainline DTS, so this needs a board DT change - drive a DP monitor at
->> 3840x2160@120, and watch dmesg or the vop interrupt count in
->> /proc/interrupts.
->>
->> The only code I know of that raises the rate is a commit in the
->> Collabora rockchip-devel branch, "drm/rockchip: vop2: Scale ACLK rate
->> up for RK3588 FRL display modes" by Cristian Ciocaltea.  It defines a
->> 750 MHz rate and calls clk_set_rate() from vop2_crtc_atomic_enable()
->> and _disable(), gated on vcstate->frl_enabled with a refcount over the
->> video ports.  I could not find it on lore, but I may well have missed
->> it.
-> 
-> I haven't submitted that yet; it's part of a work-in-progress FRL enablement
-> patchset that's currently blocked on the HDMI 2.0 support series [1], still
-> under review upstream.
-> 
->> If that is the intended shape of the fix, DisplayPort still would not
->> benefit: frl_enabled is set only by dw_hdmi_qp-rockchip.c, and neither
->> dw-dp.c nor dw_dp-rockchip.c mentions FRL at all, so the condition is
->> HDMI specific while the bandwidth problem is not.  It also explains
->> what I had been seeing since I enabled dp0 on this board last week:
->> 4K120 over USB-C only worked while an HDMI output happened to be
->> running in FRL mode.
->>
->> Raising the DT rate to 750 MHz unconditionally would be simpler, but it
->> would cost power on boards that never drive such a mode, which is
->> presumably the reason for making it dynamic.
-> 
-> Yes.
-> 
->> Cristian, Heiko - hence my question: should the ACLK rate be derived
->> from the bandwidth the enabled video ports actually need, rather than
->> from an HDMI-specific link flag?  A per-video-port requirement combined
->> with max() across the active ports would cover DP and HDMI under one
->> rule and would not need a refcount.
-> 
-> Unfortunately, deriving ACLK purely from bandwidth wouldn't suffice as a general
-> solution for HDMI. FRL and TMDS overlap for certain display modes, and hardware
-> may impose its own limits on max TMDS character rate and/or supported min/max
-> FRL bandwidth - so the same mode can map to different ACLK requirements
-> depending on which link type is used. 
-> 
-> Later, we might want to support user-prioritization of FRL over TMDS, even for
-> modes that TMDS could otherwise handle cleanly. Since FRL uses fixed rates
-> regardless of the active display mode, ACLK can't be reliably inferred from the
-> mode alone for HDMI.
-> 
-> DP may still follow a bandwidth-derived max() rule, though I haven't been
-> personally involved in the DP use-case. I recall Alexey (added to CC) mentioning
-> additional issues with PLL rates on RK3576, I think [2] is the most recent one.
+> I think it should be for every submit. That is, when you set
+> task_count_clear, you should also set task_last_layer_clear at the same
+> time.
 
-In my opinion, POST BUF EMPTY has nothing to do with the display
-interface actually being used, but rather relates to the plane you
-are actually using.
+That is what the driver does, and now it does it on purpose rather than by
+inheritance. v7 writes
 
-For example, when using DP at 4K@120, we can perfectly well use a
-lower ACLK with a smaller 1080P plane without encountering the POST
-BUF EMPTY issue. Similarly, when using 4K@60, if multiple 4K ARGB
-planes are displayed simultaneously, we may encounter the same issue 
-as well.
+  PC_TASK_CON_TASK_LAST_LAYER_CLEAR |
+  PC_TASK_CON_TASK_COUNT_CLEAR |
+  PC_TASK_CON_TASK_PP_EN |
+  PC_TASK_CON_TASK_NUMBER(n)
 
-> 
-> Cheers,
-> Cristian
-> 
-> [1] https://lore.kernel.org/all/20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com/
-> [2] https://lore.kernel.org/all/CAKTNdwFPhVrjb4iVpN19f0Nw+MA_BxXLOLs4V50fuyf+_rbEPg@mail.gmail.com
-> 
-> 
+per submit, with the three RK3576 bits at 16, 17 and 18 and the RK3588 ones at
+12 and 13 beside them.
 
--- 
-Best, 
-Chaoyi
+Thank you for both answers. The layout settles a register this driver had only
+been able to reach by comparing traces, and the bit at 18 is one it was setting
+without knowing what it was.
+
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
