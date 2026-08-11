@@ -4,85 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CAE9C5B56A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 21:24:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61C90C5AC67
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 21:28:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=boErgnJsrWJOwtXMDOVMkVACxmWqgeMYL8liyVMrVOg=; b=LIiMkZjYgoDqYC
-	7/NVrEVyv6Nzf2phm6CB0N33lzcb721iQGKlMSPINIodJJB/aVeWz/k/5GprHBlDlk6JC1uHwMqsh
-	R7vI8RMUYVKl7s3t81MXmmyqdmiRJl1vmG9SWPpfOojOlBSAMvhTIPbJonjlcmibFv6rcux8yE8Bw
-	1/2ZsjXuNzDB9HnFWJe7Z7/KjGYHaSmNlPhnb1VS0jCFG201o2gBJleBNohkzrsEAL13gIxJp4+GD
-	P+dGJEhl/Nxh4FF8lmrgyW+K3cNIwUBK35b/e6MMv+2RlldsGEEbpKLLnumpMErmqq8kRINweiQ88
-	51AxfrfeOsuxRzH+/Wzw==;
+	List-Owner; bh=V0ZksfzW8cVfO/zv/Vp7viDwiuQxHhH8YjlLLL9bqOA=; b=pEBVXUraa4je2J
+	1D5xsU5ZE9WLcu5Jt61J/nqLudS3Zo0luQl+VlAwFHdLWFZAZKaUUun9Dr2r7cTSknKkaoxwd4mVt
+	kX/fHqTTxOnjfAOoX0oxz/ms9I+Tbczk/LGv+6ns7HPAVIW86WBuvb5gIYqO90xglnWl064ndo33Z
+	vvNc3rt3OwWCJANiowVpCcPkDxTxmaYHc7vbklrbHEoVKm9+aibL6KSqS4oMUBg75HN1VEOKESRaT
+	8G3WUjUGju8xG2wXmQuXrIWY6ibL18pBgeQDO2GP2qqnSlpF3+D+MbSSHN5xNGBZTwemSUI+BeFV9
+	Cdeh+rUFChPC6BYLUrLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wttxV-0000000Ez35-1zJ2;
-	Tue, 11 Aug 2026 21:24:29 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1wtu1a-0000000EzMj-0AP4;
+	Tue, 11 Aug 2026 21:28:42 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wttxS-0000000Ez2B-2oTE
+	id 1wtu1X-0000000EzMF-2iuB
 	for linux-rockchip@lists.infradead.org;
-	Tue, 11 Aug 2026 21:24:28 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-47f706438c3so27152f8f.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 11 Aug 2026 14:24:25 -0700 (PDT)
+	Tue, 11 Aug 2026 21:28:41 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4996c452e95so295875e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 11 Aug 2026 14:28:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786483464; x=1787088264; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1786483718; x=1787088518; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=WvCeOL9JP58AfB/MRzhZ0CTB3RYi+jJQ1QyJ9ty4SVE=;
-        b=oJQUBMhpvM99ZWXuHGto1Bp7ykVWmNX4Ze2O/EA9vp+ordAnUZ7NZkbz07Q3ttCo1N
-         7J626cJRWnO8phPxODD48Fq6JewYYd2arMyo94ACyOyu6bbV45nhPg8JPcxT0mQg3x8s
-         r56IpTaUbXIW5wUcz91F2kKKOEQIJ2A7OzI9yPKea5S1v+nc5T5dO628tyyuJ1XC9wdY
-         UJd4nr+7KIQAc2R7taX2O7tz02DLkEtTt7kHXiKv8yUoKf0ZUy0TIbRiOxe8EDv2jWY/
-         xTDLSjQTUrYUukSF1+e3m/h34ZSrfgK2PHJPilIiRCD8YtnscX7u52S067q8BV+IPJDM
-         EfOQ==
+        bh=Gp0euUyLe4l7U+iJjP259imx6iGI99L5pT79qh+F49U=;
+        b=fRQoSn+mvTdyMdyyg6cpkICwE2WCWlT1EyeeASR4nBpvdj6j3m3O01TJD//43mIspZ
+         l6S1ndCQJ3TkYvfuHk3QotoEDU4rkuD8WMWA+0MZHUwQrZMcm5oMA3U0B0Pbmh1i5vrG
+         vRQJ3GiPTw9in8B2G8NPRH6KNmaZqc6UUSaUjBtpUvrGXXXJcU3ISOw0CyTV7h4XEgeJ
+         ce72vQcsZM1uZVsJWjY7bFvnl1uu6VMS5W5MEaMmj1JwL4WVSlxNolnbJOm4snphgkhh
+         99R7Cj3YThsiP1dfO62Yp+ZijzpY5enVyh39mjEZgVc2BwGu4FCkbNlhyCRnSENOZgNr
+         5WRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786483464; x=1787088264;
+        d=1e100.net; s=20251104; t=1786483718; x=1787088518;
         h=content-transfer-encoding:content-type:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=WvCeOL9JP58AfB/MRzhZ0CTB3RYi+jJQ1QyJ9ty4SVE=;
-        b=crTghmiY9JS3Na/JMr+/B6b4Mfbl4fjaZS1mhHm5O3ZgE8TD+1M4RRoj62FurQ8Tsm
-         cDbrm+Jw6ENXloJ/UPXzMxkvVZwO2rVvLLIUJOuRNoSz/cC+v35X+gr2mQE+qMEn0wtZ
-         ck/aD19YXBfCG2tB0kzQyo6NoEjlyrzITEdEZSmp5RELVh2J9m7HKW2KRl73JI2Cib04
-         14+wAEtfImCX6CnaqKQRWu6MY1POjO1bqQzRu8RtO6T/OyPRETRey5QCbu7H0R2wg/Dx
-         B24ccoSpXuR3yMOsRn0WSWzuxaUZ4sAgLHGPKDQykLrKNyJs4cwts06h3mx6dEwiVw0X
-         1v6A==
-X-Forwarded-Encrypted: i=1; AHgh+Ro3mhPhfNUMB7r74M8qrH/sj2/SYPxJuiKDVbNdVySZ+L3cKUMluUqLKhUZSQNvetIhCDfOh6LGmIgji3njXA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzQndI4ijQps6UdixQF6jyIoTchIhofTs7U7r+91iQDWPglQRij
-	mZlvSQqzctLGmuZfU6Puqc/h4qvr2JmJGylLg0HKS2FxZi/+yD4vqtrlxFks1FiS
-X-Gm-Gg: AR+sD115mJWFpEQ3MaB3omk14vAa9ojjbBtaQKPDZ/g6wgkYRu6Oh1bLYc2Wxub0kxn
-	nBA0O9yHK64HpTgMTXVaN7N/c5bijq4y4AGM818vatM96shmiJZv0gFT8rqjos7t+Yl5q1+jvge
-	suc7/PTQphjhbOaos0b2QDglfosIQFlzJ5GSfxugwLQ9UCCIiqe/NwLeOmcMkgzaEpBujLddo5I
-	NKxBPcilkkqMkQ8UtHe06lGH3nPazNMgJcO3PuQ6CwYkY9JvpwkGNp5BXyrqlZfmDdzdu3xVdK4
-	w0p/t4ypIQfv9fV6lOskgoE99L/htSzQOJ/FsW2WAy0BgJ+xd/3nH8lWzNtWd+2ixdBc/zLahGQ
-	A1gspQN+oywt9I28eG1jd17cmVRQbSJHbfTqe3Y7K/mAUezB+aFhlyoyV/5gWQIZRX/Qf9TZQA+
-	IOXB6g6VipGU7+lP3SaThBBE6uCMQcuqnISm9Am+8TqpfYW4spNeBljNOHGWImly/kh/oqcMF7X
-	ifxbCx/kT/xeDazSoxHq7GPkwYR+0Uzuu/D/6D3yuwTSzI6yajXqBHw3EAWsutunexzdw==
-X-Received: by 2002:a05:600c:1f82:b0:496:bbce:ef with SMTP id 5b1f17b1804b1-4997c15bc31mr801435e9.3.1786483464434;
-        Tue, 11 Aug 2026 14:24:24 -0700 (PDT)
+        bh=Gp0euUyLe4l7U+iJjP259imx6iGI99L5pT79qh+F49U=;
+        b=Ap4hRUsIOGxfsqUUNm+jDKcr2TF0u9et9lnrhzcYZd0L8Ed7fZzdplA5ilBm8EQkOr
+         mEqHuawSftxh8cVlEm2V+ygF8vOJ3j1t1lBw8WLPkqsJTzxHvbis5WU2dOSFR9Qqgi3s
+         QNJKE4HOxI2PU6KfGjeg/caNPFSDGRwt/EAIYGXxy6tD0j8urZJDvKqjwKEXOZoL5xUZ
+         0A2xkJg9JEeEivr6aacD2n8nW3b3bmlVTD4vQAgYUPHGtNLAtQonzTgQnhKGhA38uaSn
+         oRKxfUAyvmN58hXG+5oUk0ETPrlnOZBsciu43T7uznUZl6aDQayEgHSSeGdaLG3Albqp
+         eoCw==
+X-Forwarded-Encrypted: i=1; AHgh+RpZe2MzZiHtzZdEUBkkQeop3ocl5vLw4tnwMakASpPe4aJafJZ22Guxr52uyIqr8vAN8a+XiksMaaBpHkwETw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzvzkSxw1vxk0VvNu1VFnvgPhRA17kLQPwXmKupuyOx4kSgSiwv
+	SZNGY2O1ADzkCqbHV6C8ltCJ8SRdYhotNzravnJuhiQzO6hXYEAbgWGU
+X-Gm-Gg: AR+sD11TGbUYMJN2i8LIJmMxHA9oBX/yAmo9RWQl0gXE3VPkE5l5cpz7w6iMKchM6Kk
+	lmpaqUVGA5o3tq2yH1yzKhigLsdw0ovYS31pFf5HmL0by/qHzpRwDq9VLpD8SNuedFOntEHDxd4
+	rkopkC4rxS9B0jROGVbMhCa90zS3PA64OlQd5FOr3OHprDry52/Ph+s5B7vcRRBXmTCdc9uhDTZ
+	PqbHW0uXLUb1b5/IoQaQBSwyx7ZW3ohxFDOIEXzVlL0wDR5i0XZP73D6aqfh3DRNf1b4houqNMX
+	j3reC7M1ubU2vMzoCUF8iDF/2Ec54WUkbm13J0u885xsfXYUO+v9zSpehvOWl60OYuXxeb6Xj8U
+	/7Ik6HxNqmaEFH34cGwwnlO0eUr5sYXjrq0dPurRuTWDME1pP+AzUdi37ka9ksTAjjYBE/oLvSh
+	X/n08QiXppgPq9EX0FXOmbsz7+BdgdL+e6iTzav0kkAD4q3Lqjw1dwDs87PbTZo1qtM0TG1vo9u
+	OsKPY/rhySsy35z3YdLtYVlb2EkemfoZl3Mrvnd8nKlWs682N9jg4h84bIxOoJf8y1V/w==
+X-Received: by 2002:a05:600c:a48:b0:499:73ca:c419 with SMTP id 5b1f17b1804b1-4997c12c6c7mr1024745e9.4.1786483717603;
+        Tue, 11 Aug 2026 14:28:37 -0700 (PDT)
 Received: from OrangePi5-Plus.BB-HOME (20014C4E1B94ED005B06BF1B5A09FFE4.dsl.pool.telekom.hu. [2001:4c4e:1b94:ed00:5b06:bf1b:5a09:ffe4])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4997aac6e85sm20674225e9.14.2026.08.11.14.24.23
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48150c057f0sm1359078f8f.9.2026.08.11.14.28.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Aug 2026 14:24:23 -0700 (PDT)
+        Tue, 11 Aug 2026 14:28:37 -0700 (PDT)
 From: Igor Paunovic <royalnet026@gmail.com>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: Re: drm/rockchip: vop2: ACLK_VOP pinned at 500 MHz starves DP 4K120 on RK3588
-Date: Tue, 11 Aug 2026 23:23:50 +0200
-Message-ID: <20260811212358.9980-1-royalnet026@gmail.com>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	Oded Gabbay <ogabbay@kernel.org>,
+	Jiaxing Hu <gahing@gahingwoo.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Sidong Yang <sidong.yang@furiosa.ai>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] accel/rocket: request the core clocks by name
+Date: Tue, 11 Aug 2026 23:28:14 +0200
+Message-ID: <20260811212818.10487-1-royalnet026@gmail.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <c0a7521d-9c19-4197-802b-2b64a6ddea28@rock-chips.com>
-References: <20260808104240.13776-1-royalnet026@gmail.com> <33bd4a94-11af-4cf3-ae44-b7f8944250f6@collabora.com> <c0a7521d-9c19-4197-802b-2b64a6ddea28@rock-chips.com>
+In-Reply-To: <20260729130743.128876-1-royalnet026@gmail.com>
+References: <20260729130743.128876-1-royalnet026@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260811_142427_407310_4D12E80B 
-X-CRM114-Status: GOOD (  22.84  )
+X-CRM114-CacheID: sfid-20260811_142839_702955_C94ADE4A 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,89 +104,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Igor Paunovic <royalnet026@gmail.com>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sandy Huang <hjc@rock-chips.com>, Maxime Ripard <mripard@kernel.org>, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chaoyi, Cristian,
+Hi Tomeu,
 
-Chaoyi, your reading fits my own measurements better than mine did.
+A gentle ping on this one. It has been on the list since 29 July and has
+picked up review and test coverage in the meantime:
 
-The link in that test was running YCbCr 4:2:0, so dclk sat at 594 MHz
-for a 3840x2160@120 mode - the interface rate was the cheap part. What
-was not cheap was what the video port had to compose: a single
-full-screen 3840x2160 ARGB plane at 120 Hz. So the case I reported is
-one where the interface was modest and the composition was not, which
-is the direction you are pointing in. I framed it as a DisplayPort
-problem because DisplayPort was the only thing I changed; that was the
-wrong axis.
+  Reviewed-by: Jiaxing Hu <gahing@gahingwoo.com>
+  Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+  Tested-by: Sidong Yang <sidong.yang@furiosa.ai>
+  Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, NanoPC-T6 Plus
 
-I should say what this bears on directly, because it is not
-hypothetical for me. I have a patch here that I have not sent, which
-replaces the frl_enabled condition with a threshold on the pixel clock:
+so it now carries two reviews and two independent test reports, covering
+the two NanoPC-T6 variants besides my own board.
 
-  static bool vop2_needs_aclk_boost(struct drm_crtc_state *crtc_state)
-  {
-      return vcstate->frl_enabled ||
-             crtc_state->adjusted_mode.crtc_clock > VOP2_HIGH_BW_PIXCLK_KHZ;
-  }
+The reason I am pinging rather than simply waiting: Jiaxing's RK3576
+enablement series is based on this patch as of v6,
 
-with VOP2_HIGH_BW_PIXCLK_KHZ at 1000000, so that any video port needing
-the bandwidth can ask for the higher rate. It also guards the refcount
-on the way, since atomic_disable() runs for ports that were never
-enabled and the counter is unsigned. It is written against the
-rockchip-devel branch, on top of the commit Cristian mentions, and I
-was holding it back until I had a threshold I could defend.
+  https://lore.kernel.org/linux-rockchip/20260806063413.350184-1-gahing@gahingwoo.com/
 
-Your reply says the quantity I keyed it on is the wrong one, and I
-cannot argue against that from my own data. The measurement the
-threshold came from is that at 500 MHz a 2560x1440@144 mode stays clean
-while 3840x2160@120 does not. But in both cases the port was composing
-a single full-screen plane at the mode's own resolution, so mode and
-composition moved together and the comparison cannot separate them. If
-the rule belongs in terms of what the port composes, then the pixel
-clock is at best a proxy that happens to fit the two points I have.
+and he has a v7 in preparation. Up to v5 that series carried a duplicate
+of the same hunk, which would have conflicted whichever of the two landed
+first. Basing on this patch is the right fix, but it does mean his series
+is now waiting behind it.
 
-I would rather learn that before sending the patch than after. Two
-things I can run here:
+Nothing has changed in the patch itself since v2 and there is no open
+comment on it, so it should apply as is. Happy to resend it with the tags
+collected if that is easier for you.
 
-  - your first case: hold 3840x2160@120 on DP, leave ACLK at 500 MHz,
-    and scan out a 1080p plane instead of the full-screen one. If that
-    comes up clean, the pixel clock is not the variable and the patch
-    as written is keyed on the wrong thing.
-
-  - your second case: a modest mode with several 4K ARGB planes
-    composed at once. I can drive that over HDMI, without the USB-C
-    adapter in the path, so it is a cleaner test than the first.
-
-Is there a form of the condition you would consider correct? What your
-description suggests to me is something derived from the composed pixel
-rate summed over a video port's enabled planes, with max() across the
-active ports rather than a refcount - but you know what the hardware
-actually stalls on, and I am inferring it from an interrupt counter.
-
-Cristian, understood on HDMI. If FRL and TMDS can serve the same mode
-at different fixed rates, the mode cannot determine the rate on its own
-and a bandwidth rule cannot be the whole story there. That answers what
-I asked. Whatever shape this ends up taking should keep working for the
-FRL case you already handle rather than replace it.
-
-One thing worth carrying across from the dw-dp v11 thread, since not
-everyone on this Cc list is on that one. Heiko reported that on his 4K
-display he gets no output at all at the stock rate, and some output
-after raising ACLK_VOP to 750 MHz, although that output is garbled:
-
-  https://lore.kernel.org/all/20767137.geO5KgaWL5@diego/
-
-So the starvation reproduces on hardware other than mine, which until
-now I could not tell apart from a fault in my adapter. The garbling at
-750 MHz is not something I see here - the picture was correct the
-moment the write landed and stayed correct - so that looks like a
-separate problem, and I have replied to him on that thread rather than
-fold it into this one.
-
+Thanks,
 Igor
 
 _______________________________________________
