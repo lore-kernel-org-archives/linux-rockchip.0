@@ -4,61 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06B7FC5AC67
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 10:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 166C9C5CFCF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 10:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F+byMa5a4JZLJldPBl2VOCZTjYQ4l7qQtLfAayjaRsE=; b=FB+PyrikJ5N2oI
-	A0rEfTYktcctrFfWBhGA8G2yLpu5GIN+KJysyInmoeprKR0JEXuR7xa5sgMg34wlZ2KRCuq9w+uCJ
-	0QDDatagmV8Kv5JKo+g80yyiuikCtFR0bvLMw3Mj1Enl0tllY9LHy0mtNn8vasNq24fMt7eplTviA
-	NYw+Krlju059GwXf6kWCnUBBQPZb2qBwHzS29WDxQQHhyZz4hIStFy47YY1gyO2N2yhCUh1g71OD8
-	VL63NOtHEMl/iUaSI/paGFo6RT4Mn1PXlapT+H96CIpYPI2RZL82eyrmXAWw8A1M79iw4aERDHjb7
-	wQXzcjLP519x9JxTxGoA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8fmhla2PEbsfh4xvmZvPAnk7377OxXaHljg+PS5L8IE=; b=P5Jpl+AxsS25icFNQIm8sni+Al
+	M+xal9MegzSxheQx3Fzn6LMTL3/hMxQATWL/ElLY13xzuxHwq+RDnpkiiITgBT8WYpMpswjzUx+DV
+	r8LJ5DMtII4kg69/RcgDMalGQ9Snxb6REMWhn95aWfstSp7m6T24G2TvZyoGi51ad5C7fxh7PTmT+
+	jJIwumfJkriYzizlJ5q/64QRm5fGa/O6xmCj92i18TooSjsj5VEJEXsisskollCw4CMiaenQTHBLY
+	eYn8f7VjbGSYrOxN+vqNNvZlLPgqiH76EGL0DAV+zjOT/5298ycIptPJKX9BII+OinqMVFmfeIZ/j
+	EJSGxtDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtjHR-0000000DnYU-3HCb;
-	Tue, 11 Aug 2026 10:00:21 +0000
-Received: from out-180.mta0.migadu.com ([2001:41d0:1004:224b::b4])
+	id 1wtjwe-0000000Ds3Q-2Xjr;
+	Tue, 11 Aug 2026 10:42:56 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtjHK-0000000DnVY-3tZW
-	for linux-rockchip@lists.infradead.org;
-	Tue, 11 Aug 2026 10:00:20 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1786442401;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Gb9mM62YNa3M980jvsV0Wc3c2VWrJY0STu0zD6FpqT8=;
-	b=jVuhIJGPr2KT8VjXH4U3yJK1pu3vLLHRt1BQIVy9d9kQqYhLDZmifAp2f4x4PFL3WTQ2Np
-	Jx76bQc4wLFA8wQ4ZaMnvmo8sP5mZIgVw8X2/46QiG2MOFxX0ftzoLwhI2JX84/NSEvMui
-	8sZ83raoI40xnIlE3DQQLNSSaVoUg172Qi+fgmNv4nbUM3lIH5P5SAvtay0HJVwIzB9NCx
-	5NpqSWL9WBs8aNy2WEzzSTdMDW52wLEni4OKKL2wRJI+480JDArORR28B9b9Fle0mZ4RBj
-	3cK7qBDVH8WCs43qJu+YThfxjOz8xlkBiCh8sehzJazHWk/xhghUhcG6+jAS2Q==
-Date: Tue, 11 Aug 2026 11:59:33 +0200
-Message-Id: <DKM0YWWP935E.3K38J0LJL6AEE@cknow-tech.com>
-Cc: "Heiko Stuebner" <heiko@sntech.de>, "Rob Herring" <robh@kernel.org>,
- "Conor Dooley" <conor+dt@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, "Jonas Karlman" <jonas@kwiboo.xyz>, "Joachim
- Eastwood" <joachim.eastwood@gmail.com>
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: enable NPU on Radxa E52C
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Jimmy Hon" <honyuenkwun@gmail.com>, "Chukun Pan" <amadeus@jmu.edu.cn>
-References: <20260810100000.2643814-1-amadeus@jmu.edu.cn>
- <CALWfF7K2t4nt05a4TugBjOQkaQK=M=+wDSeG26B33znyMMzhAQ@mail.gmail.com>
-In-Reply-To: <CALWfF7K2t4nt05a4TugBjOQkaQK=M=+wDSeG26B33znyMMzhAQ@mail.gmail.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1wtjwc-0000000Ds2s-0lxu;
+	Tue, 11 Aug 2026 10:42:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1786444962; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=UDgpdepGLc+/s96UhWWfyxvqKzKcX+Rkee+5j0s/Dw4qEOz1NP7pFaHpnng0oKcFXekb55gkvKHWg1U916TcWJwtRvD04v3g24O0+5gTnQDTp/KrkZbFSUB7brQ+ZVZOjt8nhqIYOspNhN5AOdtJSYJju7/hzKK4XwTjKonU+tc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1786444962; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=25yiAMZ/1b9W5h2xLR5CigmM3pn7DC+Zp5Nh2UiqgXM=; 
+	b=YJr8HehQbHbqjk7WXfPnVjwP3iyMOf2UDihyQClirwEeelYG6Z5NxoBVdpYwdvR0o4PSDiL1Zj0M0/CyXleIqhw2BL07xbdC/WKV6DTjONDGuIiarRmJRFY9SYoMffWzd54EO5SBA/HmjCaT7BZ/XFlFd2z0xCKr/fH089WpUdc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1786444962;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=25yiAMZ/1b9W5h2xLR5CigmM3pn7DC+Zp5Nh2UiqgXM=;
+	b=RW7NwS9MiymfTmzMxABWzWGWaapHmGDM7YfPyLk156EYOmFQAzFondjDAODAZEaw
+	w4Ilh3PBS7e4ZuenkGmpCs8YUP6etoIH471fUXIgHV61HIf89nSiRIUCpZ4zBHp2KWC
+	b5+194SY6uvmaXoZGV7iczHB/IixHDoOPtLERUbs=
+Received: by mx.zohomail.com with SMTPS id 1786444959879540.8535890370583;
+	Tue, 11 Aug 2026 03:42:39 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 2B83718025E; Tue, 11 Aug 2026 12:42:36 +0200 (CEST)
+Date: Tue, 11 Aug 2026 12:42:36 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Cole Munz <Munzzyy1@proton.me>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Alexey Charkov <alchark@gmail.com>, 
+	Alexey Charkov <alchark@flipper.net>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: rk3576: add cache hierarchy
+ information to CPU nodes
+Message-ID: <anr6ryIsMg84w-ei@venus>
+References: <8a8f808a4c7b8325bc253add15e51b396a7d62d1.1785260742.git.Munzzyy1@proton.me>
+MIME-Version: 1.0
+In-Reply-To: <8a8f808a4c7b8325bc253add15e51b396a7d62d1.1785260742.git.Munzzyy1@proton.me>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/286.434.97
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260811_030015_122901_D99B17A1 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20260811_034254_265773_4CADC57E 
+X-CRM114-Status: GOOD (  20.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,38 +80,244 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8718343653234013861=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlIEF1ZyAxMSwgMjAyNiBhdCA2OjM5IEFNIENFU1QsIEppbW15IEhvbiB3cm90ZToKPiBP
-biBNb24sIEF1ZyAxMCwgMjAyNiBhdCA2OjIw4oCvQU0gQ2h1a3VuIFBhbiA8YW1hZGV1c0BqbXUu
-ZWR1LmNuPiB3cm90ZToKPj4KPj4gTGlrZSB0aGUgUkszNTg4LCB0aGUgUkszNTgyIGhhcyBOUFVz
-LiBFbmFibGUgdGhlIE5QVSBjb3JlcyBhbmQgdGhlaXIKPj4gTU1VcywgYW5kIGNvbm5lY3QgdGhl
-IHJlZ3VsYXRvcnMuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IENodWt1biBQYW4gPGFtYWRldXNAam11
-LmVkdS5jbj4KPj4gLS0tCj4+ICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTgyLXJhZHhhLWU1
-MmMuZHRzICAgfCAzNCArKysrKysrKysrKysrKysrKysrCj4+ICAxIGZpbGUgY2hhbmdlZCwgMzQg
-aW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9yazM1ODItcmFkeGEtZTUyYy5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzU4Mi1yYWR4YS1lNTJjLmR0cwo+PiBpbmRleCA4NTRjMTE4NDE4ZWIuLmRkMjlhM2VhNzAz
-MSAxMDA2NDQKPj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODItcmFk
-eGEtZTUyYy5kdHMKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODIt
-cmFkeGEtZTUyYy5kdHMKPj4gQEAgLTMwMCw2ICszMDAsMTAgQEAgJnBjaWUyeDFsMiB7Cj4+ICAg
-ICAgICAgc3RhdHVzID0gIm9rYXkiOwo+PiAgfTsKPj4KPj4gKyZwZF9ucHUgewo+PiArICAgICAg
-IGRvbWFpbi1zdXBwbHkgPSA8JnZkZF9ucHVfczA+Owo+PiArfTsKPiBOb3cgdGhhdCB0aGUgcG93
-ZXIgZG9tYWluIGhhcyBjb250cm9sIG9mIHRoZSByZWd1bGF0b3IuIFRoZSByZWd1bGF0b3IKPiBz
-aG91bGQgaGF2ZSByZWd1bGF0b3ItYWx3YXlzLW9uIHJlbW92ZWQsIHNvIGl0IGNhbiBiZSBwb3dl
-cmVkIGRvd24uCgpOZXh0IHRvIHRoYXQsIHF1b3RpbmcgYSBxdWVzdGlvbiB0aGF0IHdhcyByYWlz
-ZWQgZWFybGllciBoZXJlOgpodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvYjlhNWJlYjYtYjcw
-MS00MzBjLWI2NjctNDQ3ODA3MzZkZDg5QGt3aWJvby54eXovCgoiV2h5IGlzIGJvb3Qtb24ga2Vw
-dD8sIE5QVSBpcyBsaWtlbHkgbm90IG5lZWRlZCB1bnRpbCBPUyBoYXMgc3RhcnRlZC4KCldpdGgg
-UEQgZG9tYWluLXN1cHBseSB0aGUgcmVndWxhdG9yIHNob3VsZCBiZSBlbmFibGVkIGF1dG9tYXRp
-Y2FsbHksIG9yCmlzIHRoZXJlIHNvbWUgb3RoZXIgaXNzdWUgdGhhdCByZXF1aXJlcyBib290IGZp
-cm13YXJlIHRvIGVuYWJsZSB0aGlzCnJlZ3VsYXRvciBiZWZvcmUgT1MgaXMgc3RhcnRlZD8iCgpJ
-IGRvIHJlYWxpemUgcXVpdGUgYSBmZXcgb3RoZXIgYm9hcmRzIGhhdmUgaXQgdG9vLCBidXQgbWF5
-YmUgdGhleQpzaG91bGRuJ3QgaGF2ZSBpdC90aGVtIGVpdGhlcj8KCkNoZWVycywKICBEaWVkZXJp
-awoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+
+--===============8718343653234013861==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="c4glmvlaj5ehl2ro"
+Content-Disposition: inline
+
+
+--c4glmvlaj5ehl2ro
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] arm64: dts: rockchip: rk3576: add cache hierarchy
+ information to CPU nodes
+MIME-Version: 1.0
+
+Hi,
+
+On Tue, Jul 28, 2026 at 05:46:14PM +0000, Cole Munz wrote:
+> The RK3576 CPU nodes carry no cache properties, so cache_setup_of_node()
+> fails with -ENOENT on the first CPU. That error propagates out of
+> cache_shared_cpu_map_setup(), which discards the topology arm64 had
+> already derived from CLIDR, and the boot log gets
+>=20
+>   cacheinfo: Unable to detect cache hierarchy for CPU 0
+>=20
+> Add L1 i/d cache size, line-size and sets to all eight CPU nodes, plus
+> per-cluster unified L2 nodes wired up through next-level-cache. Sizes
+> come from the RK3576 datasheet: the Cortex-A72 cluster has 48KB L1 I and
+> 32KB L1 D per core with 1MB of L2, the Cortex-A53 cluster has 32KB L1 I
+> and 32KB L1 D per core with 512KB of L2. Line size and associativity are
+> architecturally fixed per the Cortex-A53 and Cortex-A72 TRMs, so the
+> *-sets values follow as size / (line-size * ways).
+>=20
+> With this applied, lscpu reports the full hierarchy instead of only the
+> level, type and shared_cpu_list:
+>=20
+>  NAME ONE-SIZE ALL-SIZE WAYS TYPE        LEVEL SETS PHY-LINE COHERENCY-SI=
+ZE
+>  L1d       32K     256K    4 Data            1  128                      =
+64
+>  L1i       32K     320K    2 Instruction     1  256                      =
+64
+>  L2       512K     1.5M   16 Unified         2  512                      =
+64
+>=20
+> Tested-by: Alexey Charkov <alchark@flipper.net>
+> Signed-off-by: Cole Munz <Munzzyy1@proton.me>
+> ---
+
+I've checked the numbers against RK3576 TRM and ARM information.
+Looks all good to me:
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Greetings,
+
+-- Sebastian
+
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 74 ++++++++++++++++++++++++
+>  1 file changed, 74 insertions(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/d=
+ts/rockchip/rk3576.dtsi
+> index e12a2a0cfb89..656513aa999f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> @@ -117,6 +117,13 @@ cpu_l0: cpu@0 {
+>  			dynamic-power-coefficient =3D <120>;
+>  			cpu-idle-states =3D <&CPU_SLEEP>;
+>  			#cooling-cells =3D <2>;
+> +			i-cache-size =3D <0x8000>;
+> +			i-cache-line-size =3D <64>;
+> +			i-cache-sets =3D <256>;
+> +			d-cache-size =3D <0x8000>;
+> +			d-cache-line-size =3D <64>;
+> +			d-cache-sets =3D <128>;
+> +			next-level-cache =3D <&l2_cache_l>;
+>  		};
+> =20
+>  		cpu_l1: cpu@1 {
+> @@ -129,6 +136,13 @@ cpu_l1: cpu@1 {
+>  			operating-points-v2 =3D <&cluster0_opp_table>;
+>  			cpu-idle-states =3D <&CPU_SLEEP>;
+>  			#cooling-cells =3D <2>;
+> +			i-cache-size =3D <0x8000>;
+> +			i-cache-line-size =3D <64>;
+> +			i-cache-sets =3D <256>;
+> +			d-cache-size =3D <0x8000>;
+> +			d-cache-line-size =3D <64>;
+> +			d-cache-sets =3D <128>;
+> +			next-level-cache =3D <&l2_cache_l>;
+>  		};
+> =20
+>  		cpu_l2: cpu@2 {
+> @@ -141,6 +155,13 @@ cpu_l2: cpu@2 {
+>  			operating-points-v2 =3D <&cluster0_opp_table>;
+>  			cpu-idle-states =3D <&CPU_SLEEP>;
+>  			#cooling-cells =3D <2>;
+> +			i-cache-size =3D <0x8000>;
+> +			i-cache-line-size =3D <64>;
+> +			i-cache-sets =3D <256>;
+> +			d-cache-size =3D <0x8000>;
+> +			d-cache-line-size =3D <64>;
+> +			d-cache-sets =3D <128>;
+> +			next-level-cache =3D <&l2_cache_l>;
+>  		};
+> =20
+>  		cpu_l3: cpu@3 {
+> @@ -153,6 +174,13 @@ cpu_l3: cpu@3 {
+>  			operating-points-v2 =3D <&cluster0_opp_table>;
+>  			cpu-idle-states =3D <&CPU_SLEEP>;
+>  			#cooling-cells =3D <2>;
+> +			i-cache-size =3D <0x8000>;
+> +			i-cache-line-size =3D <64>;
+> +			i-cache-sets =3D <256>;
+> +			d-cache-size =3D <0x8000>;
+> +			d-cache-line-size =3D <64>;
+> +			d-cache-sets =3D <128>;
+> +			next-level-cache =3D <&l2_cache_l>;
+>  		};
+> =20
+>  		cpu_b0: cpu@100 {
+> @@ -166,6 +194,13 @@ cpu_b0: cpu@100 {
+>  			dynamic-power-coefficient =3D <320>;
+>  			cpu-idle-states =3D <&CPU_SLEEP>;
+>  			#cooling-cells =3D <2>;
+> +			i-cache-size =3D <0xc000>;
+> +			i-cache-line-size =3D <64>;
+> +			i-cache-sets =3D <256>;
+> +			d-cache-size =3D <0x8000>;
+> +			d-cache-line-size =3D <64>;
+> +			d-cache-sets =3D <256>;
+> +			next-level-cache =3D <&l2_cache_b>;
+>  		};
+> =20
+>  		cpu_b1: cpu@101 {
+> @@ -178,6 +213,13 @@ cpu_b1: cpu@101 {
+>  			operating-points-v2 =3D <&cluster1_opp_table>;
+>  			cpu-idle-states =3D <&CPU_SLEEP>;
+>  			#cooling-cells =3D <2>;
+> +			i-cache-size =3D <0xc000>;
+> +			i-cache-line-size =3D <64>;
+> +			i-cache-sets =3D <256>;
+> +			d-cache-size =3D <0x8000>;
+> +			d-cache-line-size =3D <64>;
+> +			d-cache-sets =3D <256>;
+> +			next-level-cache =3D <&l2_cache_b>;
+>  		};
+> =20
+>  		cpu_b2: cpu@102 {
+> @@ -190,6 +232,13 @@ cpu_b2: cpu@102 {
+>  			operating-points-v2 =3D <&cluster1_opp_table>;
+>  			cpu-idle-states =3D <&CPU_SLEEP>;
+>  			#cooling-cells =3D <2>;
+> +			i-cache-size =3D <0xc000>;
+> +			i-cache-line-size =3D <64>;
+> +			i-cache-sets =3D <256>;
+> +			d-cache-size =3D <0x8000>;
+> +			d-cache-line-size =3D <64>;
+> +			d-cache-sets =3D <256>;
+> +			next-level-cache =3D <&l2_cache_b>;
+>  		};
+> =20
+>  		cpu_b3: cpu@103 {
+> @@ -202,6 +251,31 @@ cpu_b3: cpu@103 {
+>  			operating-points-v2 =3D <&cluster1_opp_table>;
+>  			cpu-idle-states =3D <&CPU_SLEEP>;
+>  			#cooling-cells =3D <2>;
+> +			i-cache-size =3D <0xc000>;
+> +			i-cache-line-size =3D <64>;
+> +			i-cache-sets =3D <256>;
+> +			d-cache-size =3D <0x8000>;
+> +			d-cache-line-size =3D <64>;
+> +			d-cache-sets =3D <256>;
+> +			next-level-cache =3D <&l2_cache_b>;
+> +		};
+> +
+> +		l2_cache_l: l2-cache-cluster0 {
+> +			compatible =3D "cache";
+> +			cache-level =3D <2>;
+> +			cache-unified;
+> +			cache-size =3D <0x80000>;
+> +			cache-line-size =3D <64>;
+> +			cache-sets =3D <512>;
+> +		};
+> +
+> +		l2_cache_b: l2-cache-cluster1 {
+> +			compatible =3D "cache";
+> +			cache-level =3D <2>;
+> +			cache-unified;
+> +			cache-size =3D <0x100000>;
+> +			cache-line-size =3D <64>;
+> +			cache-sets =3D <1024>;
+>  		};
+> =20
+>  		idle-states {
+> --=20
+> 2.55.0
+>=20
+>=20
+
+--c4glmvlaj5ehl2ro
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmp6/JgACgkQ2O7X88g7
++po1nw/9G+lG+42+fXZrm08LTFL00t1oNw8LoUhYPM+7n6UwbDJfVEN40XawgOz4
+PDKyg/DwYSATccqFdg9YbankJU3hzs1WB6WVto0grv4XkGnn85BMsDp5QO7N1eGW
+zDgMQbFbaSTQrHBYsJFAGASWMJcL3i1rxQIX0F0rmCEDlVqUgbHdmO43OsiwyRdH
+MVYpIdInKx/xLxpo/z0C5ZMNp5NlfIJ+qYvpJmYOEiFjKzgU6TK+he1+nMM867DH
+KCi9eg8GQ+wmITjOaWM1Z81Hs8i/Ntte5YODMcHPt9YDBRiE/Ry0hX3E6ThUCIc6
+ti8apfBqFT390KhrNCdlRg6PPx7jlHhunBPffpu6cPEWS5cLba8X/zjaab3ugrlD
+jsobXYRcVOxlvIjfb+RnfLqCC0cqYUSZPkSbTffnye0wpl05sbh1y8eBZNtmksNN
+L2LObbm8SeDu8YksIdLxnXOAYoLDEhIO3Csj43tU6BKHpDnHVLg7uSSFkeKu2+6c
+Gv3Nzo1EATkB9ii0aoXrnDkZb8/3Rh+kCV0g2PDtdi5560UbcfwLl3UMYMyfLp8o
+u29D+J/VTtrzxODN8PY+OufE90jjyWZNXfjEo50YkjZwsvl9/e4c/2bzORP52Bnv
+c3w1lXhoEgqqtxuE4aEdsC6ORLBz+Oaaf+0BguB7/JsxobjKyYs=
+=K2VW
+-----END PGP SIGNATURE-----
+
+--c4glmvlaj5ehl2ro--
+
+
+--===============8718343653234013861==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8718343653234013861==--
+
