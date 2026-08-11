@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD75C5AC67
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 13:46:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04A9FC5CFCF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 14:02:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VZxU1Ic5T3VoL5kzRLnqx/gfeWFfA09hj22ncZD7GMU=; b=KQwtffdSKwwuuB
-	TFr51N0sNwsGZn0Cg2jIWkdZGHz/l9PznHl+KohgeJZB81hLoiFQlmq6DfxKx5tUQPo8ugfT4W900
-	oHDW66vrhuuvCy7P8L7y0pgw+7VVayjWFWbsHd0nn32b3O+fHyN2bivCeg+nWERI0wrg+ddwMRash
-	btzShqyqza1U1i4hUb5CGzVW9t6ApIR33xAjSo1M/wAo/q2WNFi3pXyxh+F4LEk8t8WHmUkb/20go
-	aJ9xOaYvs49JdfIvbAEyApoY8iCSRuTCNR513pnxVUl3Itv+kCMI9De9rRRAai1gpt1hcJCZlYD32
-	RSiAuLh0MfCQxnBNiUxw==;
+	List-Owner; bh=tUlHsV+CKQaZ6X3I1th+H/9bdqFg9PV1jXHHSCKf5NE=; b=DCj88C7WDUGk/4
+	93Q2tg5Eer6aRbeeig3oYylQ5rejzOR7SOW9uQlsvYCKq5uhXKDfi9Lt6nQJBL+JvefQbq0oYbiAE
+	P8Uo7GlMc1vmgxOadateC8+KH7NDEEbl7vSSqOf12G4/3y29mVKrKKIes2hwJFyCw48J+1JvCfL5x
+	ChYse6eNlPQfKt4i7mY1FprLDitGOzCkaTumoG3XQovYryg7q/lwuS6Om3G3ZsTywKm4xDDkHkq5+
+	GHHW3lGbJIKvdERH97plSzRud8fUy2o9qqFxdl0BaNfpp3wqTavEBWfSVSExC906RwoF0IILrnDPC
+	u5tu/HEuint3+gPdMRMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtmnb-0000000E7qv-37yy;
-	Tue, 11 Aug 2026 13:45:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wtn3B-0000000E9Ok-2SpX;
+	Tue, 11 Aug 2026 14:01:53 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtmna-0000000E7qC-10Eb;
-	Tue, 11 Aug 2026 13:45:46 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 85F52600AD;
-	Tue, 11 Aug 2026 13:45:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 103C51F000E9;
-	Tue, 11 Aug 2026 13:45:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786455945;
-	bh=WJsn94m6kic0rpMASlJenrkAlsCmPp1NHeAGw6wWVxQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Z1nBu3DebBwuYpYckdodFKUrP+ADbfP/H6DZ9Y7liRp4zCqpa1Em/f1dsmucYYZlB
-	 uKxKK9eBm9rDvJXTNMBEGOeutrmvkDldbUFo/u8nLPptd9AD9CTlMepHS0ndurXDNB
-	 E8dIWiONEFU8L85VE5esCGzLvc/K5IZrmyCwsSBPHRdEAwTUvtAT04th3lNApzi+q/
-	 /OlB/3rbUfl9L/OyH2IkRBWCgCVZyGX4+uYz01IvoOl1heuAcBLHr7+bJ5lrRae9NS
-	 sKgu9vcmgiAnVH5ReVr/rNA90/4er3MqtptduNrGJrk7/9FUK14kTH0wFhR+jIvihj
-	 ogEfyug8003eA==
-Date: Tue, 11 Aug 2026 08:45:44 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: David Heidelberg <david@ixit.cz>
-Cc: Manuel Traut <manut@mecka.net>, imx@lists.linux.dev,
-	Krzysztof Kozlowski <krzk@kernel.org>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
-	Ondrej Jirman <megi@xff.cz>,
-	Olivier Benjamin <olivier.benjamin@bootlin.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Alexander Warnecke <awarnecke002@hotmail.com>,
-	Conor Dooley <conor+dt@kernel.org>, Frank Li <Frank.Li@nxp.com>,
-	phone-devel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	linux-media@vger.kernel.org,
-	Martin Kepplinger <martin.kepplinger@puri.sm>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>
-Subject: Re: [PATCH 1/4] media: dt-bindings: dongwoon,dw9714: Example
- shouldn't imply 1.8 V
-Message-ID: <178645594369.2062848.622744149571079300.robh@kernel.org>
-References: <20260801-pp-pro-camera-v1-0-7b4d90788f9f@ixit.cz>
- <20260801-pp-pro-camera-v1-1-7b4d90788f9f@ixit.cz>
+	id 1wtn39-0000000E9Mx-1eG4;
+	Tue, 11 Aug 2026 14:01:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1786456882; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=iuiK3C4LcMuuAYXmzi8fmH4rIobNSTRbQuOLKD7s7cDn+17sSNrfTYNEOycgPnohwEc9XIySHVxfam3lekwmofRtTi27n2r2asJo9v2I8wS5uglq4ZF+7bfyMbf2DByctu5pyRtbk283WZczEPbqESzWhZ/g23myPaQBF4CeiaI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1786456882; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=QTfxfEAC0awN9pGH45+tTaenBH8A7dUoYGm7pbjaa2I=; 
+	b=ErHxCO9IbTfIGd6wJVjZionZxuFsgvHPShn9LR62GylF52mp7/h4HwHvBkxDZtJPhRRJQgtH9F+dl9fkaz9lAuwuq1DT13BsFuqlIxk3wGoe9uNtxwGDIMBorbzm3FqAlsxqmk2xBM6JLePyMafI6WcI5LzbiyGR7VXNV0TU2dc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1786456882;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=QTfxfEAC0awN9pGH45+tTaenBH8A7dUoYGm7pbjaa2I=;
+	b=jd1+QhTc8gfLci1PVGSkH1sM5/sZWgv3+AEyQc2wcPn99fYDlqFOuZXEf2pwCHtY
+	F7UioO+Y3+m2B/dDA96KSn0mAtfYWornn/xjVpsLlAKGKuQlfPwPg4ohAMsmr+N8L7o
+	hWdKqQXV+NTh0Mwq4QrTEf4rOJffpCaIynF/OoYg=
+Received: by mx.zohomail.com with SMTPS id 1786456867632374.5144013643186;
+	Tue, 11 Aug 2026 07:01:07 -0700 (PDT)
+Message-ID: <816c3cc6-fe65-48fa-81d4-72026b66abcf@collabora.com>
+Date: Tue, 11 Aug 2026 17:01:02 +0300
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260801-pp-pro-camera-v1-1-7b4d90788f9f@ixit.cz>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 0/4] media: synopsys: hdmirx: add HDMI audio capture
+ support
+To: Igor Paunovic <royalnet026@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20260721064115.64809-1-royalnet026@gmail.com>
+ <20260805154039.10161-1-royalnet026@gmail.com>
+Content-Language: en-US
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20260805154039.10161-1-royalnet026@gmail.com>
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260811_070151_503985_D713EE7E 
+X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,20 +86,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Sat, 01 Aug 2026 02:35:20 +0200, David Heidelberg wrote:
-> The datasheet says VDD should be between 2.3 to 4.3V, usually around
-> 2.8V. Correct to prevent confusion and extend description.
+On 8/5/26 18:40, Igor Paunovic wrote:
+> Hi Dmitry, Mauro,
 > 
-> Fixes: 2a96b40f366a ("media: dt-bindings: dongwoon,dw9714: convert to dtschema")
-> Signed-off-by: David Heidelberg <david@ixit.cz>
-> ---
->  Documentation/devicetree/bindings/media/i2c/dongwoon,dw9714.yaml | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> First, belated thanks to Dmitry, Sebastian and Krzysztof for the reviews
+> and testing across this series - much appreciated.
 > 
+> A gentle ping: all four patches carry Reviewed-by tags (2/4 also has
+> Dmitry's Tested-by) and no changes have been requested since 23 July. Is
+> there anything needed from my side for the series to be picked up into
+> the media tree?
+You can always send follow up patches separately, referencing to this
+series in cover letter. It may take significant time before patches will
+land to kernel tree. No need to wait.
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
-
+-- 
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
