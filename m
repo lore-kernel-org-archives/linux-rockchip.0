@@ -4,122 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5CEAC5B569
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 07:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDDDDC5CFC1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 08:10:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xPc6BuZVDhLNsBD//wcZQo98Igppj5JankTEGlLUqio=; b=bOBJuyHiEuZOd+
-	rvUTu0faN4NHIVeC5czo+rbOfFiEGmAchPozHjqyna6GguzcThXasPeUAsK3GyX/rgnqMJJnyAJ8I
-	it5Sr5wYOG6iJ21zrf9vIi42+otzVNHp48n9qTjgjHd9AlgbQhCV2LDIYKBQ6Hl7mDIJp1UkK01Bu
-	ZUq0ZA/1rfVP1dccRHbb30V0hPhZOGXqsszGOQkFp+hziu1zIf7+IFhOCKVLJjBDeLYim9m066bFZ
-	ka6JCW6rhdlqyjLl7mCdyVUCQpIrEcGrO26cK5JAalVZHX1PvlJQQrxzDX+GL9358xsEf2N0ZiIPo
-	mVmJ4CfgiMslhCn62U4g==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CAKtVyjFmnMzjwv8TG5Z150PYSvBryeuHwDmk1TFY54=; b=fF3unUkTq+CD8G
+	dVHrJCfC7LExl8Sdt1P12FcGtETDN1iipnMdLjabV/Cdai4OIGyBzrOdzRxjuQlhWvwXTbmOwyBpb
+	gVTgAK5NTRK8tlVvMhGS4YVVBN1LUnk117t5tXPpIOie3Uluq788zLQEVmWiJ17OBnBy4sCN3Ielv
+	3xwXRc3bV1ccuLJAUXZCoz3pTu2o2Qx5FSppCwK3ZbmNBktZW7ZnUNxhOG3W3QVcNPCX4z8WhkkUj
+	a+8lrFofRBsSnmSAiqlEsWPXVIcSTzAhFYT/Auen3FIBJEjXCXKEdQ/1c74PbpD7rR70P2jy5v6h7
+	4WqbcBmk+fGl0J66ZoAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtgXX-0000000DTuY-3nWT;
-	Tue, 11 Aug 2026 07:04:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wthZB-0000000DZkg-0ZDo;
+	Tue, 11 Aug 2026 08:10:33 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtgXW-0000000DTtu-3f3w;
-	Tue, 11 Aug 2026 07:04:46 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 32AF5600AE;
-	Tue, 11 Aug 2026 07:04:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69FEA1F000E9;
-	Tue, 11 Aug 2026 07:04:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786431885;
-	bh=RRxJD7uS+nO+wGMuqirv86ZjQLFUxpRUTbD/rtVYb3w=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=bzM3maFu7p+zTWeUoxvY9teEXaDWe8lw0WRDptVBYW/MXrliJO4Ek+Z5WiZWnTukC
-	 n4MVGOMlpRcFWJGuVNzIHXETHBlnYpsarCfPKFy6aZTC5nkg8geRaMa3jznn6veH7o
-	 92Ttscn5ftruZdhdJZVlWN9+FTaCcHv0VV+35AxqURXvaATR0WfEtqlgq/dJZYSjrc
-	 fbkbXm7hulbuXntCtqGA6tUv4Re7klrQBECAQCJnraVUjWvhBwO4omxc/FgQjxGKBO
-	 4Gof++MhdlvM5HmxssQSTPNz0xrhXJz7Im/e2eiUXitkXagBnavVml09ZG/pXjC0k7
-	 rNpANOWbDGysA==
-Message-ID: <71458ac6-d85b-409c-a48f-ff9fbd0615dc@kernel.org>
-Date: Tue, 11 Aug 2026 09:04:34 +0200
+	id 1wthZ8-0000000DZjm-35Sh;
+	Tue, 11 Aug 2026 08:10:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2FFD24081C;
+	Tue, 11 Aug 2026 08:10:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0548FC2BCC7;
+	Tue, 11 Aug 2026 08:10:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1786435830;
+	bh=tSdXxSArn7IbenIVBMGRTaWfj6BMz2f9MqrXBEtHgwc=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=Kp0JwN/Nuv6smsdkaJCH9aXnuSIrMwT/7GG2g1/a6WKH/IvoW9qxSdgvPiHizTHkr
+	 ngQgfbmdvGiuaZaRdgG3yP4347PA+L9aHafqOKSokhUgBOoeiMiCq/q5YoxoNYwTKW
+	 t21NPZ6HlbQjmLJPw8P+k3rrm3mX6Y/rhBh2Q0X85azN3TiWCwbtA5miLIKDEH9pmh
+	 o7i2B0MXj6j7t4EVCZKdXwgvSDsxqPcTzbHbCnLMlId59JNKpVjEkMqQ+1IJrQQEP7
+	 Y8/8AT+Rttl3o/ehF/BzEbBR9w3gJYnWCmWdAxdfFifDx3djBI/R6RToAXiUO3ret8
+	 WJlvuT53WZq5A==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2C81C5CFC1;
+	Tue, 11 Aug 2026 08:10:29 +0000 (UTC)
+From: Jason Yang via B4 Relay <devnull+jason98166.gmail.com@kernel.org>
+Date: Tue, 11 Aug 2026 16:10:22 +0800
+Subject: [PATCH] phy: rockchip-samsung-dcphy: fix out-of-range max_register
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/21] dt-bindings: mfd: x-powers: add AC200
-To: James Hilliard <james.hilliard1@gmail.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Andre Przywara
- <andre.przywara@arm.com>, Richard Genoud <richard.genoud@bootlin.com>,
- Maxime Ripard <mripard@kernel.org>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Chevallier <maxime.chevallier@bootlin.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, Saravana Kannan <saravanak@kernel.org>,
- Lee Jones <lee@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- mfd@lists.linux.dev, linux-rockchip@lists.infradead.org
-References: <20260802-submit-acx00-of-dynamic-v1-v1-0-0a53cd9e21cc@gmail.com>
- <20260802-submit-acx00-of-dynamic-v1-v1-8-0a53cd9e21cc@gmail.com>
- <f2cc3c90-060f-40c1-a55e-e2ed91e65487@kernel.org>
- <CADvTj4q7HnOYJZE-M070-1npEdne__Ct5D9FeUNVVXa8Bsm7qQ@mail.gmail.com>
- <e198e8fa-6c5e-4c8d-a4de-d8bb25aab0bd@kernel.org>
- <CADvTj4rjXGgF2d9Xm6TmeS2LwaM+O2wFFH=rGLA32y+aMk2KOg@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <CADvTj4rjXGgF2d9Xm6TmeS2LwaM+O2wFFH=rGLA32y+aMk2KOg@mail.gmail.com>
+Message-Id: <20260811-dcphy-maxreg-v1-v1-1-aa63f6a63a64@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAO3YemoC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDC0ND3ZTkgoxK3dzEiqLUdN0yQ11zk0RLS0sTk+Q0UyMloK6CotS0zAq
+ widGxtbUAuNUpvmEAAAA=
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ stable@vger.kernel.org, Jason Yang <jason98166@gmail.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1786435829; l=2208;
+ i=jason98166@gmail.com; s=20260721; h=from:subject:message-id;
+ bh=qv+04pxhwLXk8iXSSS/x/7Q7kow98bcT2dkV1hHRCgE=;
+ b=qPMHHnolquLwGtQkH83g6tkOLMluIQXScxSMyabXwKUys0ySRfFH3x7IazxR8A1svJxuiZgRQ
+ 8Yf65P8a2Y0B0W9UXGpqIzVRgnxJ04M/eQKnfOOB5KihTSXT4RDQNIp
+X-Developer-Key: i=jason98166@gmail.com; a=ed25519;
+ pk=xQmD001Q/ooHl39PxyQtusbUQmgbOsSfpFryRVWZ/k4=
+X-Endpoint-Received: by B4 Relay for jason98166@gmail.com/20260721 with
+ auth_id=887
+X-Original-From: Jason Yang <jason98166@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,29 +81,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: jason98166@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDMvMDgvMjAyNiAyMzozNCwgSmFtZXMgSGlsbGlhcmQgd3JvdGU6Cj4gT24gTW9uLCBBdWcg
-MywgMjAyNiBhdCAyOjIw4oCvQU0gS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6a0BrZXJuZWwub3Jn
-PiB3cm90ZToKPj4KPj4gT24gMDMvMDgvMjAyNiAwOTo1NCwgSmFtZXMgSGlsbGlhcmQgd3JvdGU6
-Cj4+PiBPbiBNb24sIEF1ZyAzLCAyMDI2IGF0IDE6MDfigK9BTSBLcnp5c3p0b2YgS296bG93c2tp
-IDxrcnprQGtlcm5lbC5vcmc+IHdyb3RlOgo+Pj4+Cj4+Pj4gT24gMDMvMDgvMjAyNiAwNzoxNCwg
-SmFtZXMgSGlsbGlhcmQgd3JvdGU6Cj4+Pj4+IFRoZSBBQzIwMCBpcyBhbiBJMkMtY29udHJvbGxl
-ZCBtaXhlZC1zaWduYWwgY29tcGFuaW9uIElDIGNvbnRhaW5pbmcKPj4+Pj4gYXVkaW8sIHZpZGVv
-LCBSVEMgYW5kIEZhc3QgRXRoZXJuZXQgUEhZIGZ1bmN0aW9ucy4KPj4+Pgo+Pj4+IFRoaXMgZmFp
-bHMgd2hlbiBhcHBsaWVkLCBiZWNhdXNlIHlvdSBkaWQgbm90IGV4cGxhaW4gdGhlCj4+Pj4gZGVw
-ZW5kZW5jaWVzL21lcmdpbmcgb2YgdGhpcyBwYXRjaHNldC4KPj4+Pgo+Pj4+IFRoaXMgaXMgVEhF
-IE1PU1QgaW1wb3J0YW50IGluZm9ybWF0aW9uIG9mIGNvdmVyIGxldHRlci4gVGhlIGZpcnN0IHRo
-aW5nCj4+Pj4gdG8gZXhwbGFpbi4KPj4+Cj4+PiBJIGRpZCBtZW50aW9uIGluIHRoZSBjb3ZlciBs
-ZXR0ZXIgdGhhdCB0aGUgcHdtIHNlcmllcyBpcyBhIGRlcGVuZGVuY3k6Cj4+PiBodHRwczovL2xv
-cmUua2VybmVsLm9yZy9hbGwvMjAyNjA3MDMxNTIyMTUuMTkyODU5LTEtcmljaGFyZC5nZW5vdWRA
-Ym9vdGxpbi5jb20vCj4+Cj4+IEFwcGx5IHRoaXMgcGF0Y2ggYW5kIHRlc3QuCj4+Cj4gCj4gSG93
-IHdlcmUgeW91IGFwcGx5aW5nIHRoZSBzZXJpZXM/CgpiNC4gQnV0IGl0IGRvZXMgbm90IG1hdHRl
-ciwgeW91ciBwYXRjaHNldCBzaW1wbHkgZmFpbHMgZm9yIG1haW50YWluZXIuCgpBR0FJTjogYXBw
-bHkgdGhpcyBvbmUgYW5kIHRlc3QuCgoKQmVzdCByZWdhcmRzLApLcnp5c3p0b2YKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Jason Yang <jason98166@gmail.com>
+
+The PHY register block is 64KB, so with a register stride of 4 the
+last accessible register sits at offset 0xfffc. max_register names
+0x10000, one register past the end of the mapping: dumping the
+registers through the regmap debugfs interface reads beyond the
+ioremapped region and oopses on the unmapped page. The oops fires
+with the regmap lock held, so later PHY operations deadlock.
+
+Fixes: b2a1a2ae7818 ("phy: rockchip: Add Samsung MIPI D-/C-PHY driver")
+Cc: stable@vger.kernel.org
+Signed-off-by: Jason Yang <jason98166@gmail.com>
+Assisted-by: Claude:claude-opus-5
+---
+Observed on an RK3588 board (v7.2-rc4): reading the debugfs
+registers file for this PHY faults deterministically at offset
+0x10000 (translation fault in regmap_mmio_read32le), and every
+later PHY operation then blocks on the leaked lock. With
+max_register corrected the dump walks 0x0000-0xfffc and completes,
+and the PHY keeps working afterwards.
+
+Growing the mapping is not an option: the TRM address map lists
+each MIPI CD PHY as a 64KB block and the second PHY starts at the
+next 64KB boundary, so offset 0x10000 of one PHY is register zero
+of the other.
+
+The same mistake was fixed the same way in c7d436a6c1a2
+("dmaengine: xilinx: xdma: Fix regmap max_register").
+
+This is independent of the D-PHY receiver series for the same
+driver and applies in either order.
+---
+ drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+index cbd780556da8..18f5f582d1d7 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+@@ -1526,7 +1526,7 @@ static const struct regmap_config samsung_mipi_dcphy_regmap_config = {
+ 	.reg_bits = 32,
+ 	.val_bits = 32,
+ 	.reg_stride = 4,
+-	.max_register = 0x10000,
++	.max_register = 0xfffc,
+ };
+ 
+ static struct phy *samsung_mipi_dcphy_xlate(struct device *dev,
+
+---
+base-commit: 1590cf0329716306e948a8fc29f1d3ee87d3989f
+change-id: 20260811-dcphy-maxreg-v1-74a99944cf52
+
+Best regards,
+-- 
+Jason Yang <jason98166@gmail.com>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
