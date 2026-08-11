@@ -4,67 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4926C5CFCF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 11:24:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BAADC5AC67
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 12:09:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Eb1MZXzgQUfcBBqBu/YPs244rnNXK69yhGANkWv2VGE=; b=3tU/EbIJiDAORO
-	PYTDXvYs7H/7mXxAGZirwa11E3/8+GquUX6msHCo8BG6Leuud9NFKsrvuxdlMz9usOWfOpewrU+lY
-	jHG1qT08YXbGYuaqAec4YUY/JFlllpW8AMyqEO+ubVxRVmrC8wRSP6fIDDvIOw/AWqKXIGiFFZ65m
-	Y1p2WKJlt8rxjdp63d4qhjb1ky83OEu9V+LwWhabP7hpdymt0JtTRMwBjGDELwmfXRk61rdFe1tXH
-	8/aykFjMIi1j9seIJc8ajZ5Pq+xVgchayLBd4Xbp9IzU7V1mTrbFnZZ+j8asAYrkY4Cx6UCBnJ7mg
-	PxwY76A8YEuqMvdfzMrw==;
+	List-Owner; bh=u8py8AKA5hB7eJNAEWBBLkq900GQVAw3o8PAhHKjHFk=; b=Srt/50UBJKDWas
+	pgJG13CXeaiamkYQJUFm8Z6Ht0SxLyTsiwSB6rsdbqNUrncHphXefN8kpVEFwhg6/ghs9Q2g+oBxb
+	8vHmY2o6cCZAQz+f7nvQ6xQqxUxkg1LZ6oYQB5z0+5JXYk4wRQA8rK+20pAzhfgWEXyubs+uCGzmQ
+	9jHQL6urUfTCc+/iljdCzV15Fc3ufGNwKizRCYWeRRzKeZO8pXnCxsLTHkSdVt9G0jAlSNaa/GY8k
+	ZLRQLIbBQ/+KPeo7H75kcXdIfev6tjtHwLZEI+aJLteuqSCrV9B2zwpen1KDro0C77aqN5hw//ZLe
+	yO2wDrocJxEyT8/W6bww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtkar-0000000Dvax-25z0;
-	Tue, 11 Aug 2026 11:24:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wtlIe-0000000Dz2e-4B62;
+	Tue, 11 Aug 2026 12:09:44 +0000
+Received: from mail-vk1-f171.google.com ([209.85.221.171])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtkaq-0000000DvaL-0pbk;
-	Tue, 11 Aug 2026 11:24:28 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1E7B6600AD;
-	Tue, 11 Aug 2026 11:24:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15E361F000E9;
-	Tue, 11 Aug 2026 11:24:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786447466;
-	bh=AOlRdH/L92fb7OOyEUdkTjMrylhg++68RVW1YX5mrjg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=PucfnLls9TjGXNjOI3mFfEldnHv1DViAqfpQ0uTVvPSXNUbvmG8qWZycxToZ/U/Y0
-	 ffn43ED4fW0PZkmJ/wd7PrnKD9vZeZTUIKZpVZTE3Ue0KLhQV6kPHoGRFMFHIzGcpw
-	 kCAd+SfBAAK2JYbkyFbdGschAsqD2CAkqN5QblWrSoS9NrynFIlxNAKXE2G+e9rRvK
-	 kyFq8b30z4XajvPvX+CiYlnzAgUb7gYmiBemgoFr/3uHSvV2JRAN2e8rrcY2UKw93R
-	 l11azPzStzs0DIWW7kpM1W3PbqFZ5Iy+fotfAJ45oUyBdh+Fq4gOkw3hx3lO2nYbve
-	 xeVXWFuOLUn0A==
-Date: Tue, 11 Aug 2026 16:54:23 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Algea Cao <algea.cao@rock-chips.com>,
-	Dmitry Baryshkov <lumag@kernel.org>, kernel@collabora.com,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Sashiko <sashiko-bot@kernel.org>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v5 02/10] phy: rockchip: samsung-hdptx: Prevent
- divide-by-zero when computing clk rate
-Message-ID: <ansGZ9LUA7ItYHe7@vaman>
-References: <20260723-hdptx-clk-fixes-v5-0-8e786067865f@collabora.com>
- <20260723-hdptx-clk-fixes-v5-2-8e786067865f@collabora.com>
- <qe6i5bvrn32xmwncl4zq3f5w6twpwfwvq5alaacsceq3vxn3nt@mbeytagr77j3>
- <605f96b2-709c-49f6-9446-49ed3bff7d96@collabora.com>
+	id 1wtlIX-0000000Dz10-1kvD
+	for linux-rockchip@lists.infradead.org;
+	Tue, 11 Aug 2026 12:09:40 +0000
+Received: by mail-vk1-f171.google.com with SMTP id 71dfb90a1353d-5c38568d9e1so1212816e0c.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 11 Aug 2026 05:09:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786450176; x=1787054976;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=uoVTJmbd8yKwYcWWlgS08ZgHIJGke3bvkQlHT1fmSY4=;
+        b=W8Nuf2rgI/zsXdqZmUZ95EF3sgcbMbgk2YlMiGDVRoEBlGaIrdYue5pQlTc00uor9y
+         nQDdR3POMCjxW3plc4k5Hm2WRfEx2rQPMGoUUEG6BRq2K4YH+cyJ+33We5dH/CSJfxYC
+         Mxf25r/wXafZWcNr9mveflT3HljU+NRWH//UykLgCK0Ub1iJH6A+RjSwD6rjN9JKS7/G
+         lTTQYi9TzaKZUNIqWvEWD2xaLpXmRPAXCCViTERYaho9lHuuCuyuK1TyMj9RX58ajZ2/
+         +YRKby3ly96CcB9BH7ozoH0ehY7FNiaMGhMWSA4L2a0T0gU13MW8AhqgxIAMvbD0/2Y8
+         l5VA==
+X-Forwarded-Encrypted: i=1; AHgh+RocrfaH6aawzKUb1SQEeYpHF6wlcLDhHMS7Mf/zAzjBzCOhMhXieueEw3tYSM40QqsPtUxoqdMHoQhfrcpq2A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxQbw3HvXLArBg5bAZz3UpjkQYoU0Ba5fX4hIAGDi41GdItqcnE
+	hGCHVE/fvi7eTvjFvPsk9fdK3+w0mjcUADENHCC103xBxn9WG4wOIDrI66+y3Pro
+X-Gm-Gg: AR+sD12wd9blI21aS/JHANiSx1UmiutQvDCPRToK4efTw44pEQmYfg+4xyqoJoUkSoW
+	AzRH6r3QD+qK3JqSQ7t1sDysps3yFTVeETi/mEKHVQ8rE83NpqDcpyZlHpefoSAH6Meu7ljDWeC
+	eyyShLJFyt5KWIL8HcoYngdxzmMgUrVeaBkt+ArQwDzRhRkMbdHpqdlKY1dOk+Dh3hlhEb1k78s
+	lx+9XRJE9f5ZZq48xBH1JcZbA+/kKXXEOeWP2okZlInXAv2js7UZZovIu/5MjTcE/Fe9x3oGHmI
+	9X8Uw7NRCpuD4EvpXd34PErbr3NMDC8uRQw72GfgOgdBaX1f+3MR2OWlL2Ao5/2/ECn2RXmMguC
+	aBL2m8FwZfwpTe+LoUJC/xtaaKAewKmsREFWRaDsTL8vRdgdwDpROsCan6rpUkvPkQGcoVeUL3X
+	afC+OTcr3LEcEV2kcftkM+jGDbyQJOuTj3VNnrs/ICntJ/LFIzgSa67ZAMg2luh/iwnI5joFAaX
+	YM2d1M8NHFMconHpDXnWBQH6g/Cwz+mRDAE
+X-Received: by 2002:a05:6102:14a5:b0:76a:fc18:29bc with SMTP id ada2fe7eead31-76b559806c5mr614369137.4.1786450175870;
+        Tue, 11 Aug 2026 05:09:35 -0700 (PDT)
+Received: from mail-ua1-f51.google.com (mail-ua1-f51.google.com. [209.85.222.51])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-76b63293ea4sm393053137.6.2026.08.11.05.09.35
+        for <linux-rockchip@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 11 Aug 2026 05:09:35 -0700 (PDT)
+Received: by mail-ua1-f51.google.com with SMTP id a1e0cc1a2514c-9773c6ea885so652561241.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 11 Aug 2026 05:09:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RpWiFan8uy+wh3Cn7RrMZNPWqQypX294vF7on7/+O4mU3liQ0O+lq8lECqJgy5z4x/cjvOKpAL8TDeNSZRzFg==@lists.infradead.org
+X-Received: by 2002:a05:6102:15a3:b0:738:cdc6:f59a with SMTP id
+ ada2fe7eead31-76b573b9e9amr650405137.9.1786450174738; Tue, 11 Aug 2026
+ 05:09:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <605f96b2-709c-49f6-9446-49ed3bff7d96@collabora.com>
+References: <20260724-clk-provider-simple-clean-v2-0-56f306156d25@baylibre.com>
+ <20260724-clk-provider-simple-clean-v2-3-56f306156d25@baylibre.com>
+In-Reply-To: <20260724-clk-provider-simple-clean-v2-3-56f306156d25@baylibre.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Tue, 11 Aug 2026 14:09:23 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdW15QrpUhbra1Jg1_8rQWf8CE5TQiE5SUAsqvz5YmEwpQ@mail.gmail.com>
+X-Gm-Features: AUfX_mxAADqzKHeccKVpUAgUM-G2gOwUTpW15Dago95Bl-ey6AOZpFlGkzHgs7Y
+Message-ID: <CAMuHMdW15QrpUhbra1Jg1_8rQWf8CE5TQiE5SUAsqvz5YmEwpQ@mail.gmail.com>
+Subject: Re: [PATCH v2 3/7] clk: renesas: clean-up simple provider misuse of
+ the consumer API
+To: Jerome Brunet <jbrunet@baylibre.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Brian Masney <bmasney@redhat.com>, Bjorn Andersson <andersson@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Prashant Gaikwad <pgaikwad@nvidia.com>, 
+	Thierry Reding <thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Tero Kristo <kristo@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
+	linux-omap@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260811_050937_458201_909760A8 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,62 +107,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07-08-26, 17:19, Cristian Ciocaltea wrote:
-> Hi Mani,
-> 
-> On 8/7/26 3:56 PM, Manivannan Sadhasivam wrote:
-> > On Thu, Jul 23, 2026 at 10:41:45PM +0300, Cristian Ciocaltea wrote:
-> >> Calculating 'sdm' fraction in rk_hdptx_phy_clk_calc_rate_from_pll_cfg()
-> >> could trigger a divide-by-zero, as it uses div_u64() with a denominator
-> >> read directly from hardware: the values ropll_hw.sdm_deno,
-> >> ropll_hw.sdc_deno, ropll_hw.sdc_n, and ropll_hw.sdc_num are populated
-> >> from PLL registers which, in theory, could be left by the bootloader
-> >> uninitialized/misconfigured.
-> >>
-> >> Provide the necessary sanitization to avoid trusting the hardware state.
-> >>
-> >> Reported-by: Sashiko <sashiko-bot@kernel.org>
-> >> Closes: https://sashiko.dev/#/patchset/20260611-hdptx-clk-fixes-v3-0-67b1b0c00e16@collabora.com?part=1
-> >> Fixes: 3481fc04d969 ("phy: rockchip: samsung-hdptx: Compute clk rate from PLL config")
-> >> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS
-> >> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-> >> Reviewed-by: Andy Yan <andy.yan@rock-chips.com>
-> >> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> >> ---
-> >>  drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 11 ++++++++---
-> >>  1 file changed, 8 insertions(+), 3 deletions(-)
-> >>
-> >> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> >> index 710603afff86..44e99343f249 100644
-> >> --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> >> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-> >> @@ -2270,10 +2270,15 @@ static u64 rk_hdptx_phy_clk_calc_rate_from_pll_cfg(struct rk_hdptx_phy *hdptx)
-> >>  
-> >>  	fout = PLL_REF_CLK * ropll_hw.pms_mdiv;
-> >>  	if (ropll_hw.sdm_en) {
-> >> +		val = 16U * ropll_hw.sdm_deno *
-> >> +		      (ropll_hw.sdc_deno * ropll_hw.sdc_n - ropll_hw.sdc_num);
-> >> +		if (!val) {
-> >> +			dev_dbg(hdptx->dev, "Invalid ROPLL hw state: deno == 0\n");
-> > 
-> > If the hardware state is invalid, why can't this be a hard failure?
-> 
-> This is an internal helper called from the .recalc_rate clk_op, which tries to
-> compute the current rate by reading back the hardware state. 
-> 
-> Since .recalc_rate returns unsigned long, we cannot propagate errors to the
-> caller.  However, per the clk_ops documentation, the driver is expected to
-> return 0 if it cannot figure out the rate.
-> 
-> Moreover, this condition isn't really fatal, as it only means the PLL
-> configuration currently stored in hardware can't be translated into a rate.  The
-> next .set_rate should program a valid configuration and help with the recovery.
+On Fri, 24 Jul 2026 at 11:04, Jerome Brunet <jbrunet@baylibre.com> wrote:
+> Clock provider should not be using the consumer interface.
+> In other words, a provider should not be dealing with struct clk.
+>
+> This change targets occurrences for which the provider uses the
+> consumer interface and corresponding clk_hw interface exist.
+>
+> Reviewed-by: Brian Masney <bmasney@redhat.com>
+> Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
 
-This is a good explanation which may not be obvious to everyone. I would
-think that it would be good idea to add a comment for this here
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+i.e. will queue in renesas-clk for v7.4.
+
+Gr{oetje,eeting}s,
+
+                        Geert
 
 -- 
-~Vinod
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-rockchip mailing list
