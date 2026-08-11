@@ -4,65 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C9B4C5B572
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 17:04:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18CE3C5B56A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 18:17:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q8awFvYeoFzGIflYKsoyim0+/8tFuK8Sa413MqRfzGM=; b=zZywUr5DjkxLSU
-	jUkD0mDRm9yewSbZ2OFIWKA6bQGyK2YFHx4s8sez5RrK6GurNZsZqZDV6Xj4HD9IGYcxSluy19XOf
-	BeN2wFdkTu3WIQuMbVwqwLiV4BpwyjTS/9lc1EzWDxTQCA6Ba6NFhPOiD4BciQ0qJRTbboIMMMr+A
-	HPVa7zQ81dEyi2K4t4BnehuphmhcoQX7YnpG/ek7pBC/Erjikf3s/ev/0Kie5tuCSi/IroUn/YUvm
-	t5jygsZdT4Sys6KIjtZxzDGzWe7k56C1RWmDrzeMkdGOKkOKh6+sXjw4pDTrKLohDqyCEzhMj0V7+
-	1sRTTfnmBJAqfWMOLfFg==;
+	List-Owner; bh=R/QEFAIISOeBzLqMkay3LWxKNlKWNCUrr5vfXkqwgUU=; b=MZqaDCTJOsrihW
+	tzZBJpE7iLXz41gu3s7ieqZP7W12rTMUxyEindlW5jA+N2xScy6LWgHlYcHrak+aGdle+NOXKWfSd
+	9jFERtzv+fm1++aQrSEHuFqShtrTvZadJixIS09cg8uGfuj1PbDBEO1QmKodxeKylA/LcLslingPL
+	XHAhQLwWVga2uzcO91j38iHEh6F5qpyPQKpZTkrjMQjgKgf/ykE1gsTw9u/mmWIzH/DaxHjBVGA6+
+	BeqvKYmKtpnTzCLVnioUDnRZTZEk8WFyj16r/92wPksN8E9z0D81WUE72DGHYh/LupVxCRmIVyAvc
+	YqC656AnK2MyIMJceqXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtptO-0000000EaZt-2AnT;
-	Tue, 11 Aug 2026 17:03:58 +0000
+	id 1wtr2C-0000000EjeY-2SFu;
+	Tue, 11 Aug 2026 18:17:08 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtptM-0000000EaYq-2k58;
-	Tue, 11 Aug 2026 17:03:56 +0000
+	id 1wtr2B-0000000Eje3-2xRS
+	for linux-rockchip@lists.infradead.org;
+	Tue, 11 Aug 2026 18:17:07 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 687A741B04;
-	Tue, 11 Aug 2026 17:03:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD5771F00A3A;
-	Tue, 11 Aug 2026 17:03:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2F03C43255;
+	Tue, 11 Aug 2026 18:17:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 007831F000E9;
+	Tue, 11 Aug 2026 18:17:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786467836;
-	bh=584Qz42M+KdOvg2KnEA+L7oWF7uaVELq7LABA5+G+2c=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=or/cagrkjN9wIVzbDtV55iciNMn7vcL59y9Mbo7OZ3y7t9eegy8cQvV7SrA24UP9o
-	 qe0LfI9l3qWJ7htp/iLiQaya1asO8pdaxAL+gdnV0CQL4u2pYkNrNogxO1LgkBpxLe
-	 FZODshtBHhs8hsIDsYyw0AnxYUFwHiWQSt5XIvDZGbuEwbaXB1nQl5JXCOqHs/I10R
-	 lXhYecwZR7cVF88MuFEJiX01n4ZQYq3ceuuU9vsQuHWxkqb58PTlTnQrdksJbidava
-	 JzfHWz+5yf0MFYjxvsa9AysM680J65CSMzXBaBcAOatn782iY5FFCUxdSnZm4cWep1
-	 M9bEizEmGaX+w==
-From: Vinod Koul <vkoul@kernel.org>
-To: Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, 
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- =?utf-8?q?Thomas_Niederpr=C3=BCm?= <dubito@online.de>, 
- Simon Wright <simon@symple.nz>, Diederik de Haas <diederik@cknow-tech.com>, 
- Andy Yan <andyshrk@gmail.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
- Sashiko <sashiko-bot@kernel.org>, Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20260811-hdptx-clk-fixes-v6-0-75bca0ee5753@collabora.com>
-References: <20260811-hdptx-clk-fixes-v6-0-75bca0ee5753@collabora.com>
-Subject: Re: [PATCH v6 00/10] phy: rockchip: samsung-hdptx: Clock fixes and
- API transition cleanups
-Message-Id: <178646783026.1081354.15932403563102392765.b4-ty@kernel.org>
-Date: Tue, 11 Aug 2026 22:33:50 +0530
+	s=k20260515; t=1786472227;
+	bh=W5XrBpVUKV4WztTo9vZTmfxGGynuFCcPzm8dMsNd63I=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date;
+	b=FTlTf5C9VwZHaZyoE2bJfPm9L9zCOH6zIOk8URKsvyGH1xmaAcBlRwEw2Sh6PB5A2
+	 3RVeJLWuT0ZGtPsSCqXF+I+2RzB3oug8Ti6IFIWfxxlqIc9Lj6ldeN/eUn+n8eYIp9
+	 +JfHU4IDvDtGjWR5qCc895Rcct1h+3QDno9QH1xrTpd6RmIDHwTZZMr8sLQETvzlvk
+	 D4GKlRA/TSHrHCWd8aVANYMArOnZmPN48/tyemDbZAaubDkQwFIe1eU1SiLaW+3xVg
+	 WbIt53XYxzvJnH0DHh8iVL7JXD7zDx+hFDUvASzK7qvNaf9bVbgS9iYnzibwFPeyNP
+	 v9EHiiI3G5Xzw==
 MIME-Version: 1.0
-X-Mailer: b4 0.13.0
+In-Reply-To: <1912648.b8e9qBsS6s@diego>
+References: <1912648.b8e9qBsS6s@diego>
+Subject: Re: [GIT PULL] Rockchip clock fixes for 7.2-rc
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
+Date: Tue, 11 Aug 2026 11:17:05 -0700
+Message-ID: <178647222530.5862.1116308311544793627@lazor>
+User-Agent: alot/0.12
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,49 +68,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 11 Aug 2026 18:44:41 +0300, Cristian Ciocaltea wrote:
-> This series provides a set of bug fixes and cleanups for the Rockchip
-> Samsung HDPTX PHY driver.
+Quoting Heiko Stuebner (2026-07-23 15:33:43)
+> Hi Mike, Stephen,
 > 
-> The first part of the series addresses clock rate calculation and
-> synchronization issues.  Specifically, it fixes edge cases where the PHY
-> PLL is pre-programmed by an external component (like a bootloader) or
-> when changing the color depth (bpc) while keeping the modeline constant.
-> Because the Common Clock Framework .set_rate() callback might not be
-> invoked if the pixel clock remains unchanged, this previously led to
-> out-of-sync states between CCF and the actual HDMI PHY configuration.
+> here is one of those seldom PRs for a needed clock-related fix for the
+> current development cycle, which fixes a regression by keeping
+> newly added clocks on, if they're not handled by a driver.
 > 
-> [...]
+> 
+> So, please pull :-) 
+> 
+> Thanks a lot
+> Heiko
+> 
+> 
+> 
+> The following changes since commit dc59e4fea9d83f03bad6bddf3fa2e52491777482:
+> 
+>   Linux 7.2-rc1 (2026-06-28 12:01:31 -0700)
+> 
+> are available in the Git repository at:
+> 
+>   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.2-rockchip-clkfixes1
+> 
+> for you to fetch changes up to 946352b2f88fd2378f0341312e47dff1e8dc2fac:
+> 
+>   clk: rockchip: rk3588: don't disable unused I2S MCLK output gates (2026-06-28 21:09:50 +0200)
+> 
+> ----------------------------------------------------------------
 
-Applied, thanks!
-
-[01/10] phy: rockchip: samsung-hdptx: Fix rate recalculation for high bpc
-        commit: f0c2c9c58a48b621b1cb90f0821da422b31af814
-[02/10] phy: rockchip: samsung-hdptx: Prevent divide-by-zero when computing clk rate
-        commit: c4fe5a9f379055ce0ec930f6495ae62aad237b89
-[03/10] phy: rockchip: samsung-hdptx: Guard against clk rate integer underflow
-        commit: 229788526ff24e0607726e93b74dd2ef157a99cd
-[04/10] phy: rockchip: samsung-hdptx: Fix rate recalculation for 3.2GHz FRL
-        commit: 9ac3daadb9060360e937a5993a5fd88360d6fdad
-[05/10] phy: rockchip: samsung-hdptx: Handle uncommitted PHY config changes
-        commit: aec3e4ce25da4ed37bbbfedcbb7107ae9428b183
-[06/10] phy: rockchip: samsung-hdptx: Drop TMDS rate setup workaround
-        commit: c2dd42e3ebd76f24bdc21eafe17149bec2ce1394
-[07/10] phy: rockchip: samsung-hdptx: Consolidate consumer_put on error path
-        commit: e49e4bc9f90eeb6b672762c6f089e2fafec104c4
-[08/10] phy: rockchip: samsung-hdptx: Drop restrict_rate_change handling
-        commit: 1bb1b4769e43ecc8ed30bd30b6d4514614753f2c
-[09/10] phy: rockchip: samsung-hdptx: Simplify GRF access with FIELD_PREP_WM16()
-        commit: 859fd8ae691e8c89c881da5edf0a827531daa372
-[10/10] phy: rockchip: samsung-hdptx: Consistently use bitfield macros
-        commit: f3a8aba9c36f26b5bb1024653d9083f7e1e6d8c8
-
-Best regards,
--- 
-~Vinod
-
-
+Thanks. Pulled into clk-fixes
 
 _______________________________________________
 Linux-rockchip mailing list
