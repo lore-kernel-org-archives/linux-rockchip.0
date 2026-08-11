@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABF5FC5B56A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 15:06:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB209C5B572
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Aug 2026 15:45:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nCnp8kBPsGirrzi6sPDR0Zebx1WQLnHLGQ+XhkG1Lk8=; b=tHQ67+hm/aPoa9
-	hz3XYINiDhBvFSu8X7+ffQp/fEsppw7GHgWgfm3pxphMxif5p39F8LTTZ6xCaZt9pZLIVJtqvH2yg
-	ClYtvAZQdqxaGyTisYM+AwUEd+z1QEQeTaoogzOfYyP8viFLdx6B5fVZWQwpuY2VUaI/gkvWPt53J
-	A4s095ELyqu4mkSRrFUrOi225OKST0CSWfUElkv3Af+74uc4n79/qBmoArnv6Sbiz3kCz/3SFzhAT
-	RsGb0L+Sr6bAFGHpqHbzQSwAhSEt5iSoq+KJvXZ5c8TZkYMJSbqTwobPKkkOnH8j6M8gf/m0A8sAJ
-	gbnU1OdjiyKo2ZgNqrIA==;
+	List-Owner; bh=QZrAhbLu1thZbB+LJPlSa2ez/sPCadOCCD4/oUNK5PQ=; b=2qJjb0udZVMeOz
+	Nw4z73a3goP6zdOLMG1E3Cpw4SvAoYXFvkX+pGOofewwy+uY/5EoMhZThK939ZOQb42PSLxme2zQw
+	NUq2h+rNrTtE9XHeNxVpRfFTbFt1o+RFowNqmZuHLQLhF+/A3jQLH4Vnaq8rk9bg222mHIGzplWrY
+	L1dT1opK5nMUlwN75Nhi/Npq0ohmizk6+mzJLyLJkLbqPZY9J79C/TJr5AtIBuLCqCNcEmL7KjM2i
+	+nzL7GNfJoID0yOShp+E7fSWVFLPbpZDBfdv+JQZrA0x/wNHsxl0D2SlbAGEaDUhIQcXDUHWg1L57
+	dMkc+J9EYk3588cVrdnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wto34-0000000EHGv-0KBx;
-	Tue, 11 Aug 2026 15:05:50 +0000
-Received: from out203-205-221-173.mail.qq.com ([203.205.221.173])
+	id 1wtofK-0000000EMwQ-1N0W;
+	Tue, 11 Aug 2026 15:45:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wto2s-0000000EHDl-3jU1
-	for linux-rockchip@lists.infradead.org;
-	Tue, 11 Aug 2026 15:05:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1786460731; bh=JnXJjcPnN7WCQDI9YmmqPPD8PQN0x2U1x3SkWwURy6w=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=kOKHV3L2nT02opBVtJMbqbszMD1Ra+I7yNf+gz8CY4Wy2ze3rGwUt9rpBqatx3RpD
-	 nOP4Y89WeeNelxz+pzaMCwY38VlpZpqvYdtZTrKZYkdlPwuDvAXALx1gQmX3QEwmvA
-	 oDGMTqbvuBK/t2LHll251qLJJn+GUfC7twmtFxbQ=
-X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
-X-QQ-XMAILINFO: MOlL/R5ZerVSTpvvGqkZbdOTeCpU10goPmlwQ8WrheTmd2Bi7a0SNk5tSm3w6n
-	 f6Qwza09dYj3Pu0YapByYukr4xSKG7HGP2ZwS6jUoLKRgvCPrKOwO50vc6Itf/4Q/w73nZ8EdIFIb
-	 uTaD8OTkvRmEvZ4erOQCShlm+Ss7xWRREfmITJxjBZhA/OzPTXfGZN5Gy5+cJf+9iTvdqxg9n2sln
-	 qoFsCpELA6C16+32t77/ME+HYWOMD3VSb0SorVpd81xDC1kKbs/BYMkoSZc8Mezza+2nJhzBsNynT
-	 4wMJ8pl8fQtj3K2Ys6IlyZvd0JqmkMMVcF6TEZc+UmLN6xwyW2lfWr7irjbqr77ikR9Xhv543wKAT
-	 7KhWuJednlSHmZlxVzfXJTwX+omrHB1s7ayXZf6lzOIEOOSXNfZTh634j+BAUmujisMn6CRdIzI5T
-	 5L2+SneBu4f01lknp0GGbkIe8ptwWTYuSuQ/Qj+QjAyL1hno+qRi7DxHrHxwtaZ+CPJCXf4gd7pJO
-	 Vz961rvCsFjXSPRxq6Wq/RjFLS+o04p2/V0Itb91RdptGNWBE4I9wzMGwM0iHgLRku5EaBPwOG2Jt
-	 yxXmSgCYjcKSSmkZfVHmEl+uaxMlIQD8Kln3jKPbPWAYYDdL3RaWBAvZ+va/4LuN+Prr8QQu/OLCK
-	 hIiSKYi3Huk6N4NygGCsSt4VX9gnMA+4sozcq/2EMYTStIMJGpyDCJ6H7dbRhOSowS4h5V1CJdN7Q
-	 AhgRQmPd4hnTf6aJJt83rZ6q6fvWTcXyl/IoKr45Yc6Vm2hadM52hONFUqkUs4n2MmqkOEkfroJMY
-	 eodLhnwMG9tdcENP4sLJlifDN/NIGus8cVxLXs9JXxXZySWV1Oi1xfwZiJkSX+yo8efKpi6oOf8hQ
-	 SkC3U8ILMFun0Jpl2ilDgcbIxLbI1UCkcSwFem9uEC4NaKK5eIjnaWSX00xVnGiETbMAcuO1UDP6U
-	 IiKZK2+IuPcr9m9w4Mj64Yk/hrW7GlzBF4BZR/aHC1KuAWgkfbtYlm+bFG+n3CnLzPrIDjKMZinD+
-	 sAMN0phodaf6KMZYW9E+UFjs2j6rg7U69QDE22VTgnokVKIvUAQ0UdqhdeYP7XvVKTJJ3
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>
-Cc: "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v6 2/4] can: rockchip: add RK3588 CAN support
-Mime-Version: 1.0
-Date: Tue, 11 Aug 2026 23:05:29 +0800
-X-Priority: 3
-Message-ID: <tencent_3D3F22AD1F6C1308CD800C4AC2DAC8414006@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <tencent_7BAA0052C402BFFD26291A64198084E39107@qq.com>
- <tencent_207E464D12344B3228096E23A001D6882508@qq.com>
- <20260731-tall-camouflaged-earthworm-e1a7d0-mkl@pengutronix.de>
- <tencent_A3698A465C4621E164443B0005D1CC6FAE05@qq.com>
-	<20260731-precise-functional-lobster-cd779f-mkl@pengutronix.de>
-In-Reply-To: <20260731-precise-functional-lobster-cd779f-mkl@pengutronix.de>
-X-QQ-mid: xmsezb41-0t1786460729t0u1mf5e1
+	id 1wtofG-0000000EMu8-0tlc;
+	Tue, 11 Aug 2026 15:45:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1786463114;
+	bh=VPgeGDdA8QmrtAihuQbdXnoRiqxMYVaaD7wuBUl+Txk=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=fpU96XVq4KjGAlWVkjSh+lbjrdCugOiWPf/6OWGAi0J4B+KaO7muWkPX2HGuVO4iS
+	 jxla3qmP6ttON9IHC33peLnQe5hJlEGNn8tw+40xj7FNDNalthIdR6YXgcfFhJEkYG
+	 hlGKUXZ3Ov3FcJhURmKJtH08hD8qxkO6O46h2/izb06wyPM5GAPPMikQxAPyqJLLdb
+	 7s2CyIQsKaY9T8Ok6u6gMFwq1cATuCxKaKq8WLJq6WGvTK5cchOfbzeTVfwje6nKEL
+	 ehzgErlmpXSr4nOvBg4XesKqltQsfGTSBHrrKV1IRiSqVqmGtwDLlSg37QLl7H9DlE
+	 jgnwz1TDkpetQ==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C07E317E0667;
+	Tue, 11 Aug 2026 17:45:14 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Tue, 11 Aug 2026 18:44:43 +0300
+Subject: [PATCH v6 02/10] phy: rockchip: samsung-hdptx: Prevent
+ divide-by-zero when computing clk rate
+MIME-Version: 1.0
+Message-Id: <20260811-hdptx-clk-fixes-v6-2-75bca0ee5753@collabora.com>
+References: <20260811-hdptx-clk-fixes-v6-0-75bca0ee5753@collabora.com>
+In-Reply-To: <20260811-hdptx-clk-fixes-v6-0-75bca0ee5753@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
+ Diederik de Haas <diederik@cknow-tech.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Andy Yan <andy.yan@rock-chips.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260811_080539_431775_2EAEE31D 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20260811_084519_307390_4C2B1EF8 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +81,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Marc,
+Calculating 'sdm' fraction in rk_hdptx_phy_clk_calc_rate_from_pll_cfg()
+could trigger a divide-by-zero, as it uses div_u64() with a denominator
+read directly from hardware: the values ropll_hw.sdm_deno,
+ropll_hw.sdc_deno, ropll_hw.sdc_n, and ropll_hw.sdc_num are populated
+from PLL registers which, in theory, could be left by the bootloader
+uninitialized/misconfigured.
 
-I would like to follow up on my previous email regarding RK3588 CAN-FD
-and TDC.
+Provide the necessary sanitization to avoid trusting the hardware state.
 
-As reported previously:
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://sashiko.dev/#/patchset/20260611-hdptx-clk-fixes-v3-0-67b1b0c00e16@collabora.com?part=1
+Fixes: 3481fc04d969 ("phy: rockchip: samsung-hdptx: Compute clk rate from PLL config")
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Reviewed-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-> Enabling TDC makes the transmitter enter bus-off for every TDCO value
-> tested. This includes the framework value (TDCO=48), TDCO=0, and the
-> non-zero values 1, 8, 16, 24, 32, 40, 48 and 56. With TDCO=63, only one
-> frame was received during a 10 second test, so that setting is not usable.
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index 710603afff86..d67ced2bf7b2 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -2270,10 +2270,20 @@ static u64 rk_hdptx_phy_clk_calc_rate_from_pll_cfg(struct rk_hdptx_phy *hdptx)
+ 
+ 	fout = PLL_REF_CLK * ropll_hw.pms_mdiv;
+ 	if (ropll_hw.sdm_en) {
++		val = 16U * ropll_hw.sdm_deno *
++		      (ropll_hw.sdc_deno * ropll_hw.sdc_n - ropll_hw.sdc_num);
++		if (!val) {
++			/*
++			 * The PLL config currently stored in hardware can't be
++			 * translated into a rate. The next .set_rate() should
++			 * program a valid configuration and help with recovery.
++			 */
++			dev_dbg(hdptx->dev, "Invalid ROPLL hw state: deno == 0\n");
++			return 0;
++		}
++
+ 		sdm = div_u64(PLL_REF_CLK * ropll_hw.sdc_deno *
+-			      ropll_hw.pms_mdiv * ropll_hw.sdm_num,
+-			      16 * ropll_hw.sdm_deno *
+-			      (ropll_hw.sdc_deno * ropll_hw.sdc_n - ropll_hw.sdc_num));
++			      ropll_hw.pms_mdiv * ropll_hw.sdm_num, val);
+ 
+ 		if (ropll_hw.sdm_num_sign)
+ 			fout = fout - sdm;
 
-I have now also completed a 20-hour CAN-FD test with TDC disabled, using
-the same setup as described in my previous email:
+-- 
+2.55.0
 
-  Board:             embedfire,rk3588-lubancat-5io
-  CAN clock:         300 MHz
-  Nominal bitrate:   500 kbit/s
-  Data bitrate:      5 Mbit/s
-  Sample points:     80% nominal, 80% data
-  Bus:               can0 and can1 directly connected, 60 Ohm termination
 
-The 5 Mbit/s data bitrate is the maximum supported by the CAN
-transceivers on this board.
-
-No frames were lost during the 20-hour test, and no CAN errors were
-reported in the kernel log. The final ifconfig statistics were:
-
-  can0 RX: 607939922 packets, 9613049987 bytes (9.6 GB)
-  can0 TX: 607939922 packets, 9613049987 bytes (9.6 GB)
-  can1 RX: 607939922 packets, 9613049987 bytes (9.6 GB)
-
-The error, dropped, and overrun counters were all zero. The kernel log
-contained fewer than ten TXE_FIFO_FULL_INT informational messages during
-the entire test, with no corresponding frame loss, bus error, or bus-off
-event.
-
-These results show that, on this hardware setup, RK3588 CAN-FD operates
-reliably at 5 Mbit/s when TDC is disabled, while enabling TDC prevents
-normal CAN communication.
-
-Would it therefore be acceptable to drop RKCANFD_QUIRK_CANFD_BROKEN for
-RK3588 and enable CAN-FD support while explicitly keeping TDC disabled?
-
-Alternatively, should I follow your earlier suggestion and add
-RKCANFD_QUIRK_CANFD_BROKEN back for RK3588 in this series?
-
-Best regards,
-Cunhao
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
