@@ -4,60 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B67DC5CFDB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2026 09:06:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77106C5B56A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2026 09:41:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OYwTSpArEZoQmRXiP5G8ZDqPdUCRw1nTUz1A+gusUGU=; b=ri1Ew4qMYiSmTu
-	/mrCdoOG7uT3fmYSmb5KVFkHCqD2XACBeymlmpsBoMO7I+GZs207cMrGbgrO0ZgBR+tPsb+Eo+zDx
-	7EirwPObrx5m+PCjjl7I8PxHuMHXFzF37GC6Az4f/3d4oWRhOoUsT7IzUipj+AuvrKUny+ebkbdCw
-	yeXPX/9Lad78tGLLN1ovH7AEb9B+mvBQ8x6B/+PwlLSX5wwYgW0fSyurm5yglad+N7CAbLTltAJWW
-	aB0FsCIm2TtOhwZQbxjxRbbUHd4x0Kk5DQ8BESeHrQHl9J2I0SIMz9tjFtIT6ECnEy2gYyFAmxGJ+
-	gXDDRN0lnxuYPzAg/1Qg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Zqcdlkri8QsvQzrc/2sT00IzEXuxSB3nmMU273GhA3g=; b=YhN6OjVt60jtpO
+	D2gn1H1mKfYGC5UHed1F2pZGydqvLlntpH5UDPCmfKO0J25jnf9nd1Qbz3mvM43O1LwfAisAWzzRf
+	HKs3yCC3ieSrd4ASEoMRmr+KCSlW5jEsFyWoP2X8AsjKjE58PYpitZm0ixCl1Q04IitHj1AW9a/d7
+	Jy238pbSMTHmX0V4V5RquFwggVtQ+GRtxYu1exyoVBlir9x5tkFkOSrO93yirazggthUsbEMHrWWw
+	QJ4yQ3xR6LNxFIkCpEg1n5CukHFnElnaT3Q4Zs+XH6bICGw+bHiwiTtxz3w4cnM6w6KZfo/vLHp5v
+	zk8wi+W9w2qZhryW5dNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wu4uf-0000000Fh9D-0TWn;
-	Wed, 12 Aug 2026 09:06:17 +0000
-Received: from mail-m83124.xmail.ntesmail.com ([156.224.83.124])
+	id 1wu5Sl-0000000FmPS-0NE8;
+	Wed, 12 Aug 2026 09:41:31 +0000
+Received: from flow-b8-smtp.messagingengine.com ([202.12.124.143])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wu4ua-0000000Fh7B-3i3a;
-	Wed, 12 Aug 2026 09:06:15 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 49b5abffa;
-	Wed, 12 Aug 2026 17:05:57 +0800 (GMT+08:00)
-Message-ID: <47d9ada4-5277-4ff6-b7d4-ed4fcbb6a6f7@rock-chips.com>
-Date: Wed, 12 Aug 2026 17:05:57 +0800
+	id 1wu5Sf-0000000FmNu-2aXP;
+	Wed, 12 Aug 2026 09:41:28 +0000
+Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
+	by mailflow.stl.internal (Postfix) with ESMTP id 31829130082A;
+	Wed, 12 Aug 2026 05:41:19 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-04.internal (MEProxy); Wed, 12 Aug 2026 05:41:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm1; t=1786527679; x=1786531279; bh=XTtrf9QqIJ
+	0aEwhEPUrpZWj0OOWgjuwh9E5x/Ee+vU4=; b=Do3+aaE4i5NUeaY7SfW37Pv25l
+	QUqp2DkEix2OMEKW2ejeNDwBY/EZZJUenQZ9uSZbixupOlZFEntTSb/QgCwgDacH
+	DvRtGzpFbGUAcconqSl45ZnVslcobtb3T2yIbJoFvqL91siSMIHyys2Ik8aeBezx
+	cPSyTv00jaYgSTGCvFJm4FcR0k8+D3jIe7pms7OgT3wSz1chERp709rnNx4cT3VN
+	3kx6Hzw3lUVdqJTzRwjuWoK/dMPvv02dUf7xsWhHSHsqF80UKw80zbNmZzw3hT/s
+	Is3t2Itf6eSVFFeCjLKJv8O438bKp3P29x4jYr8YW7WuK0aVQiYctqgx0+XA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+	1786527679; x=1786531279; bh=XTtrf9QqIJ0aEwhEPUrpZWj0OOWgjuwh9E5
+	x/Ee+vU4=; b=btQRECF23aTza3IYQHkV0GTKQTlE9dEXDtuTd/kLYeJ/N7cEJDm
+	IiWhKkB3lU2kKH62Qxxd8PYm4pFiZExgW8NFXZ2ty+39XHTMUz8KafzqvX33Mz8l
+	bN5z6UeDkps6q495gzqtxHxZdBGRMrlrBkAh6qRmH4108GXIiGlEln6nZVgdrsrB
+	dbtXdnK3n9mgxVWkKzuGMPw26XnJffPU1NZAdNQP5ToIU9YwXdcu5xgjzllOEwZo
+	f8rYVGKQVPAgHql625a8leMv6hzYuM92/u9WEOrL1/PLKNeD58iSHTxu9auqL2cT
+	8JQoyz87j8UF8vYqO3jQhkcMT35PiJFMqbg==
+X-ME-Sender: <xms:vT98agsS4QSOhkQqfbZHJbaLgpeDzpyE7L3Y-NJdEfiMKEh_aLXNwA>
+    <xme:vT98apm_0M54j0_nYdAd-EU1oQhgcJGidYpopFQlqfKZykD40vLEkbOGdnzJBo7HM
+    rhc1FpJLSggX5iIcivIIH27w_OZeW-Q3llEmsgUhumHB7AbnLq1vvJx>
+X-ME-Received: <xmr:vT98anlWWxK6HWMo_ofmolGB5kfxu4NBl0RxXN8h1FSrNT0QeARtr_Grh6jK49GcPP0k99NycQ>
+X-ME-Proxy-Cause: dmFkZTGczlsc6lTmWVXF5EdFbdBVrzj/e7Ns03qZEcXkYEtO1ejPPywerw48yQ4lW5hk3J
+    fT+nPF6HwKq4wLnadj9B/7Dxa+JyDDEx+4c7COf2RfNTk8z5C7N//KLe5jziAvw/TtX/Jp
+    OrC/dIaTR/CyYlCFQH75cyZe9sWyJHnxZXS6yI7T6OJVjuheIcXU/eK6bZTz4XhwORckp+
+    14uoPBgn1Yp6vTSRddKOl657KK8RRAbUi7J1na8KuT9wzNcxlASvghh7F98Jutl24ebq9g
+    llnAP0pM5Ea0ZgFR9n5XPa2NKSElqXsALbI2HKi6XGVMFztOK0Iz3JFRIByX2nDIiMMtXZ
+    UayMLhX5L+S5al0XL9J/cmf77OnCUAbzlK/sgfcDEOMzs5USN3TTAHwETXv90c4PKmhd3E
+    Zmz/EZ0BjpxB8OvYiYRpneXAP1XbgYOrNEKBJcIp5n8s/2jaS0bqmK1X9Vn9sof/vgYmTk
+    bvyl8cFXFIBWFfgbSL2CbvQsUC+cHXRo+QL67C/1tkaNU1MwgMrG1H86LT0nPU5APvaGh/
+    KlRbyLA/BLZ9XeMTVX8Jka4laTBy/2rMvzmVvmGiEmGpS/a8BNddhIHgaQa5EQZWWVVCcX
+    CbidpSWly9KWj0mV1YU1or1O0uOzTW9F4XmzyDq/iNxuoMmBJCXvIZyMncMA
+X-ME-Proxy: <xmx:vT98asgifRk94cDkLTcUXFX_FUWxfgO-0kb2gLskTwBeV5Ojuj0TzQ>
+    <xmx:vT98ahEw5sSI2tHzovJwRUzDykMjOANd2zw1vm7Hrt-VyGlwwnr3pQ>
+    <xmx:vT98avayTAxSp2mQzvqpSvIiwOmlD7KiA7oU_mZBJwpqmrk6-gihEA>
+    <xmx:vT98asOTpXiddBNbBAhaBCxSGY5yEyHgNNio6EsY_QOjmeHZJgZIPA>
+    <xmx:vj98auwTyboyMhBm7PhDqpWlPNQ7n7PA3U2Yrp9MTW6bqezTSakjfVHi>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 12 Aug 2026 05:41:09 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	ulfh@kernel.org,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org,
+	zhangqing@rock-chips.com
+Cc: royalnet026@gmail.com,
+	alchark@flipper.net,
+	chaoyi.chen@rock-chips.com,
+	diederik@cknow-tech.com,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: [PATCH v7 00/10] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Wed, 12 Aug 2026 21:40:55 +1200
+Message-ID: <20260812094106.1391698-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: drm/rockchip: vop2: ACLK_VOP pinned at 500 MHz starves DP 4K120
- on RK3588
-To: Igor Paunovic <royalnet026@gmail.com>
-References: <20260808104240.13776-1-royalnet026@gmail.com>
- <33bd4a94-11af-4cf3-ae44-b7f8944250f6@collabora.com>
- <c0a7521d-9c19-4197-802b-2b64a6ddea28@rock-chips.com>
- <20260811212358.9980-1-royalnet026@gmail.com>
- <7759116b-0beb-4d25-b269-c020a8379cef@rock-chips.com>
- <20260812083857.60460-1-royalnet026@gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20260812083857.60460-1-royalnet026@gmail.com>
-X-HM-Tid: 0a9ff538a45f03a7kunmac5ca8645a5459
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDQkpCVkIYTkpOSRhJTB4dT1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
-	5LVUpLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=JzzBXDF2SqrZWHEEKcqgSl4yADVvsT/qS1YZycy3unyz9vTyTyatY2ZpLX9R2FpQvO3mTO3jiEdmncU5ag4VxDLvYRT8K4H5Zk4GIS7UX3yMphO5Ui+0Atadmj3Cu+uN+XhyuqRebZXF9xQK/eWikF9FvKpPhUer0jdhI2siOfc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=h1el+5bynGwZTxmOlFRx3G0Um3mYKNFZI3qxJs10450=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260812_020613_607362_64F53285 
-X-CRM114-Status: GOOD (  41.95  )
+X-CRM114-CacheID: sfid-20260812_024126_431383_2EDEAC3A 
+X-CRM114-Status: GOOD (  27.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,138 +119,180 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
+Based on Igor Paunovic's "[PATCH v2] accel/rocket: request the core
+clocks by name", as v6 was:
 
-On 8/12/2026 4:38 PM, Igor Paunovic wrote:
-> Hi Chaoyi,
-> 
-> That is exactly what I was missing, thank you. Having the vendor's
-> decision flow meant I could stop guessing and go measure the case where
-> my rule and yours disagree. I have done that now, and the result is
-> worth more than my earlier argument was.
-> 
-> First, on equivalence: I do not think my threshold is equivalent to the
-> linedur_ns term - it is strictly narrower. With
-> linedur_ns = crtc_htotal * 1000000 / crtc_clock, and htotal 4400 for the
-> 4K modes my panel offers:
-> 
->   3840x2160@120  1188000 kHz   linedur_ns 3703
->   3840x2160@60    594000 kHz   linedur_ns 7407
->   2560x1440@144  ~586000 kHz   linedur_ns ~4600-4700
-> 
-> My VOP2_HIGH_BW_PIXCLK_KHZ of 1000000, at htotal 4400, is the same as
-> saying linedur_ns < 4400 - about 1.7x stricter than your 7500. So my
-> rule declines to boost in cases where yours boosts, and 3840x2160@60 is
-> one of them: your rule raises it on two counts (crtc_hdisplay > 2560 and
-> linedur_ns 7407 < 7500), mine does not raise it at all.
-> 
+  https://lore.kernel.org/linux-rockchip/20260729130743.128876-1-royalnet026@gmail.com/
 
-Ah, that's close. What I want to say is that it has a direct
-correlation with dclk and resolution.
+Tested on a Radxa ROCK 4D, on next-20260730.
 
-> So I measured that case. I unplugged both HDMI cables, leaving the
-> DisplayPort output as the only display, and switched it between
-> 3840x2160@120 and 3840x2160@60, reading aclk_vop and dclk_vop2 from
-> clk_summary at each point:
-> 
->                         4K120 (YCbCr 4:2:0)      4K60
->   dclk_vop2             594 MHz                  594 MHz
->   aclk_vop              750 MHz                  500 MHz
->   vop interrupts/s      120                      60
->   POST_BUF_EMPTY        0                        0, over 60 s
-> 
-> The dclk is identical in the two states, because the 4K120 link runs
-> YCbCr 4:2:0 and the 4K60 link does not. The interface rate did not move
-> at all. What moved was what the video port composes - a full-screen 4K
-> ARGB plane at 120 Hz versus the same plane at 60 Hz - and the AXI clock.
-> That is the separation I told you I could not make from my earlier data,
-> where mode and composition moved together. The interrupt counts are one
-> vblank per frame in both states, so there is no starvation at either
-> point.
-> 
-> 3840x2160@60 is therefore clean at ACLK 500 MHz with a full-screen 4K
-> plane. For that case the downstream rule boosts and does not need to.
-> 
-> Putting all four points I now have in terms of composed pixels per ACLK
-> cycle:
-> 
->   3840x2160@120   995.3 Mpx/s   500 MHz   1.99   storms (116630 irq/s)
->   3840x2160@120   995.3 Mpx/s   750 MHz   1.33   clean
->   2560x1440@144   530.8 Mpx/s   500 MHz   1.06   clean
->   3840x2160@60    497.7 Mpx/s   500 MHz   1.00   clean
-> 
-> The boundary sits between 1.33 and 1.99. That quantity does not depend
-> on the connector or on the pixel format, which is what I think you were
-> pointing me at, and it fits every point I have rather than the two I
-> started from.
-> 
-> The honest limit of this: all four are a single full-screen plane on a
-> single video port. They say nothing about plane_num_4k or crtc_num > 1,
-> which are exactly the terms my condition has no counterpart for. I am
-> not proposing to drop your terms - I am saying the two mode-derived ones
-> appear to carry margin for this shape of workload, and I would rather
-> ask than assume.
-> 
-> The other thing I had not appreciated is where the decision lives.
-> rockchip_drm_aclk_adjust() runs from atomic_commit_tail, so it is
-> re-evaluated on every commit with that commit's plane information, and
-> aclk_adjust_frame_num holds the boost for two more commits on the way
-> down. My unsent patch puts the decision in vop2_crtc_atomic_enable() and
-> _disable(), which only run on modeset. A condition that depends on what
-> the planes are composing cannot live there: a client swapping a 1080p
-> plane for a 4K one without a modeset would never be seen. So the
-> placement has to change, not just the condition.
->
+The thing this series has been describing as unsolved since v3 is solved,
+and it was one register write. That changes the cover letter more than it
+changes the patches, so the correction comes first.
 
-Yes, I think it depends on the strategy you adopt.
+The claim I have to withdraw
+============================
 
-> Two things I would still rather learn than guess:
-> 
->   - Is the two-commit hold on the way down a hardware requirement - the
->     rate has to be up before the frame that needs it and stay up for a
->     beat after - or is it belt and braces? It decides whether an
->     upstream version needs the same hysteresis.
->
+Every version of this series from v1 to v6 has said that the RK3576's
+completion interrupt is armed exactly as on RK3588 and never reaches the
+GIC, and v6 shipped an hrtimer that samples INTERRUPT_RAW_STATUS instead
+of waiting for it. That is not true. The interrupt works.
 
-I think this is a software strategy for debouncing.
+It never fired because the block believed it had 28672 tasks left to
+run, so the job was never complete. PC_TASK_CON packs the task number
+with three controls above it, and the field widths are not the same on
+both SoCs:
 
->   - Are the mode-derived terms describing something the hardware stalls
->     on, or are they a conservative stand-in for "this is probably a
->     heavy scene"? My 4K60 and 1440p144 points only make sense to me
->     under the second reading.
->
+  RK3588   BIT[11:0] task_number, BIT[12] pp_en, BIT[13] count_clear
+  RK3576   BIT[15:0] task_number, BIT[16] pp_en, BIT[17] count_clear,
+           BIT[18] last_layer_clear
 
-I think it's both. You can think of the VOP internally as having a FIFO:
-aclk is used to fill the FIFO, while dclk is used to consume from it. 
-This problem occurs when the fill rate cannot keep up with the consumption
-rate.
+rocket_registers.h is generated from the RK3588 description, so writing
+it unchanged on an RK3576 asks for task_number 0x7001, that is 28673
+tasks, and puts TASK_COUNT_CLEAR on a bit that does nothing. The counter
+was then only ever cleared by a reset, which is precisely the "one task
+per reset" shape v6 reported, and it is why every completion path I
+added looked necessary.
 
-In practice, it is difficult to find a quantitative method to determine 
-whether the requirements can be met, so we can only try through 
-experimentation. For now, this strategy appears to satisfy our needs.
+It was found by taking an ordered trace of every register write during
+one submit and diffing it against the same trace from the vendor driver
+on the same board. Exactly one value differed.
 
-> I will rewrite the patch along the lines of your flow rather than the
-> pixel-clock threshold, and move the decision to the commit path. For
-> what it is worth, the version I have been running locally since 7 August
-> has driven 3840x2160@120 HDR over DisplayPort with no HDMI output
-> present at all, which is the case the FRL-gated condition cannot serve;
-> it also drops the rate back to 500 MHz on modeset and restores it, so
-> the refcount side behaves.
-> 
-> Thanks again - this turned a guess into a measurement.
->
+Robin and Diederik, my apologies for the thread that premise cost you.
+Robin's shortlist for an interrupt that never arrives was an extra clock
+or power domain in the path, a masking control that had been overlooked,
+a wrong description, or terminally broken hardware. It was none of those,
+because the interrupt was not the thing that was wrong.
 
-Thank you for doing this, let's see if others have any comments.
+Chaoyi Chen of Rockchip confirmed the layout on the list, including the
+fourth control at BIT(18) that the trace could not have named:
+
+  https://lore.kernel.org/all/4f300b78-d96d-4d98-8819-dc292b0c9b97@rock-chips.com/
+
+I sent a correction to the list when this landed rather than leaving it
+until now:
+
+  https://lore.kernel.org/all/20260807211629.1573228-1-gahing@gahingwoo.com/
+
+So v7 drops the poll entirely. There is no hrtimer, no poll work, no
+second completion path and no arbitration between two of them. A job is
+retired by its interrupt, the way it is on RK3588.
+
+Changes in v7
+=============
+
+  * accel/rocket: PC_TASK_CON is written with the RK3576 field layout.
+    The defines are in rocket_job.c rather than in rocket_registers.h,
+    which is generated and says not to edit it by hand.
+
+  * accel/rocket: the completion poll and everything supporting it is
+    gone: poll_completion, the hrtimer, the work, poll_seq and its
+    mirror, poll_dying, the teardown ordering in rocket_job_fini() and
+    the arbitration in rocket_job_handle_irq(). 7/9 in v6 was 142 added
+    lines in rocket_job.c and 8/10 here is 90, most of which is the
+    comment explaining the register.
+
+  * accel/rocket: the job_lock fix is its own patch now, 1/10, with a
+    Fixes tag. It is an RK3588 bug and it was buried in the middle of a
+    preparation patch in v6, where nobody could backport it.
+
+  * accel/rocket: the power domain list is attached before
+    iommu_group_get() rather than after rocket_job_init(). In v6 a
+    failure there returned without unwinding either of them. Igor caught
+    it. Moving the call is better than adding an unwind path, since
+    everything before that point is devres managed and a plain return is
+    then correct. It also keeps commit f509a081f6a2
+    ("accel/rocket: fix unwinding in error path in rocket_core_init")
+    from having a second copy of itself to keep in step.
+
+  * accel/rocket: struct rocket_core's clks[] no longer grows in 7/10.
+    Igor pointed out that 7/10 claimed nothing changes for RK3588 while
+    growing the array there, with the two extra names only arriving in
+    8/10. The array now grows in the patch that adds the names.
+
+  * The series is 10 patches rather than 9 because of the split above.
+    Nothing else moved.
+
+What this means for the split in 7/10 and 8/10
+==============================================
+
+Diederik asked for the enablement to be split and Igor seconded it, and
+v6 did that. The split survives v7 unchanged: 7/10 is the soc_data
+plumbing with RK3588 keeping four clocks and two resets, and 8/10 is the
+RK3576 enablement. What changed is that 8/10 is now much smaller.
+
+Where it stands
+===============
+
+With every debug knob off, on a ROCK 4D:
+
+  * the NPU probes with the two domain list and no attach failure;
+  * a convolution submitted three times with three different inputs is
+    byte exact against the CPU reference each time, with no reset in
+    between and with nothing retiring the job but the interrupt;
+  * the NPU's line in /proc/interrupts goes from zero to three across
+    those three submits, one each and no more;
+  * unbind and rebind is clean with no warning;
+  * every patch builds on its own;
+  * dt_binding_check is clean on all three bindings the series touches.
+
+The measurement in v6 that could not tell a recomputation from an
+untouched output buffer has been replaced by one that can: the inputs
+differ between submits, so a stale buffer cannot pass.
+
+That was run on this branch with nothing else applied. The out of tree
+work this hardware has needed for the userspace investigation, including
+an rk_iommu flush_iotlb_all that is neither upstream nor in this series,
+is not present, and the userspace results below are the same without it.
+
+The userspace side is a separate matter and is not part of this series.
+It runs regular convolutions, depthwise convolutions and the first
+convolution of MobileNet V1 byte exact per output channel against the
+CPU reference, and two chained operators come out at the accuracy the
+hardware's own arithmetic allows. A whole MobileNet does not run yet.
+Nothing that is still wrong there is in the kernel.
+
+Igor, thank you again for the RK3588 review. Both of the things you
+found in v6 are addressed above and the completion path has changed
+enough that it needs another look rather than a carried tag. Your offer
+to run this on all three RK3588 cores would be very welcome, since the
+only behaviour change to RK3588 in the series is the job_lock ordering
+in 1/10 and I cannot test it here.
+
+Jiaxing Hu (10):
+  accel/rocket: take the completion register writes under job_lock
+  dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+  dt-bindings: power: rockchip: allow resets in a power domain node
+  dt-bindings: iommu: rockchip: allow the RK3576 NPU MMU clock set
+  pmdomain/rockchip: add optional per-domain power-on settle delay
+  pmdomain/rockchip: cycle optional power-domain resets on power-on
+  accel/rocket: select the per-core clock and reset counts from match
+    data
+  accel/rocket: add RK3576 NPU (RKNN) support
+  arm64: dts: rockchip: rk3576: add NPU (RKNN) nodes
+  arm64: dts: rockchip: rk3576-rock-4d: enable NPU
+
+ .../bindings/iommu/rockchip,iommu.yaml        |  8 ++
+ .../npu/rockchip,rk3588-rknn-core.yaml        | 47 +++++++++-
+ .../power/rockchip,power-controller.yaml      |  8 ++
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      | 10 +++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 80 ++++++++++++++++-
+ drivers/accel/rocket/rocket_core.c            | 28 +++++-
+ drivers/accel/rocket/rocket_core.h            | 11 ++-
+ drivers/accel/rocket/rocket_device.c          |  4 +
+ drivers/accel/rocket/rocket_drv.c             | 22 ++++-
+ drivers/accel/rocket/rocket_job.c             | 90 ++++++++++++++-----
+ drivers/pmdomain/rockchip/pm-domains.c        | 71 ++++++++++-----
+ 11 files changed, 324 insertions(+), 55 deletions(-)
 
 -- 
-Best, 
-Chaoyi
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
