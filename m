@@ -4,58 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 151B0C5AC67
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2026 01:26:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC3E4C5AD5A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2026 05:45:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+TgPUDySr2ZAvkHmq21U8UtkDb5o4t3kg9vff5TuNnU=; b=3CVg276WiNELt2
-	T8SandLPy0XUvZtvPm6cIrW/3156E01l6ISrgKspU5OLsUBElXEdPzUnNGtCL816A/GTFDq2NgbrL
-	DoLiF5WNClSMmhPJ7nR0zsX6KE/tbuUSP8+tq180bqgJTKB1MYGv8iAK8rhGy4QJOeo1yjHxWjA/J
-	SHGG8Yso4OLmonkL2c71GkqL5pOTHBlJ6Hrff135Xg1Xm2TpDFqvx0m+h8EO4aNv3Nyqae9NRyHBG
-	mVf1xoiHZ7SK7PpWYXWlfTibH3Je+d2+vYj1M/BZQApIYcG7FYKCdHcHB0l6v2kGDgWeysW6bs5Am
-	2cO6RkTbr4kLtW9m/Q1Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:Message-ID:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wfMOiECgNJMEF8KRYAL0QWXATVH1cwy0GJHOtHQnsEs=; b=on4bshRLODoqEV
+	7YuLFy3NS5d635ZNAEfH/76FJPi5RZHCnBYWaKwjQ4iNL1C22U0tZv0eAInZhLtrlBdykcQDjKm30
+	EwmdOoU28xiFIgpRZ5q+hhm1CQH7UZ91AuuBQia+07+RaO3NGI3208SEGdO9XZiYz4edG9hHFf68c
+	Ay07fFuHguJN+B4cU8GXMdlHrM1gwrhTXMOsVaGY49bjsKeQryvEfbUhWdTpw06BroKZeTZKV8I5M
+	HdtKa9Wmqc1N7tAbQYfQNF2jBrM4qWmLCVt/vX5u+Kt4ZBta97Mfn+hm3iDnq51utaw54sbVktDqM
+	WhKKwRiExDL1i+RDqQUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtxjE-0000000FCaT-06Fi;
-	Wed, 12 Aug 2026 01:26:00 +0000
-Received: from mail-m20521016457.xmail.ntesmail.com ([205.210.164.57])
+	id 1wu1lm-0000000FSBN-2uge;
+	Wed, 12 Aug 2026 05:44:54 +0000
+Received: from mail-francesouthazolkn19011027.outbound.protection.outlook.com ([52.103.39.27] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtxj9-0000000FCZy-4Bc1;
-	Wed, 12 Aug 2026 01:25:58 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 49a33dfec;
-	Wed, 12 Aug 2026 09:25:48 +0800 (GMT+08:00)
-Message-ID: <7759116b-0beb-4d25-b269-c020a8379cef@rock-chips.com>
-Date: Wed, 12 Aug 2026 09:25:46 +0800
-MIME-Version: 1.0
+	id 1wu1lk-0000000FSAl-11Kl;
+	Wed, 12 Aug 2026 05:44:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=L7H53ifq3fXgyxC5flBef0nBWFjvPGqIT0P98TH5+P0pTAbInGGQG+F7iV8YFiq86o+aR1Bqd0A1sO22vmzXzxMlqtaPfbwk5M5ik6dXbYOLebRTAJUJZ9x5SOOO6iWtfH4crDbgxPYRQDAmEGXQ9l8VtYUB37qcy20kAJyLC8Ly8NRnBD6t/FvyC5djxaHE4K3otgjLjWRU+P35mxTQxkBJyXqHQikGDiwbc7ZFYRiCy3oZXBCXrFKMdQkIADHJFHGUoZA/X4i4I1TZHsue3QpiKH/BmctZeb4WcyOtjLoCx5q3ij+o8wgKG0f3Mi3uQ8OwaRzhsUvMzjmr8RBroA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=j2bNJLtB4E+KHCrcE7ucUrW4d+1CU3jDq4OxRDdQllI=;
+ b=bKrcmz2OYdo9y/ugjrjbrYHm369NqEvJylrufxEDWLM8xGryhpSzr/tIkBwfWZZkgHPXCLHuWqUC36ThOWPbdSvoFliZljSnr3Tj2hALnjE/M1clejMGXalBH4lfdU/sihGCbhiC3Nn3I+62Zd1YaTGTzxrhvHx0qXjqUB/JskPc8M7cpleJHXxiJ0yKtl5u8Wr35YoziwNVVsl3Hc9b9F7fX3iTEKCE+I23sadxZKMnXSxpLMb3K/A+rXm5lwQX0IJOngdyAXmsn4/s1YaZiWSWXwZIXsw2RhyWzyFzYnml7VwLzHK/SBDcRR1uzHUv6F6rAW+u/JnYY+cOcFj+OA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=j2bNJLtB4E+KHCrcE7ucUrW4d+1CU3jDq4OxRDdQllI=;
+ b=iNM6f8xUYLvW9cpaVGrf+6hPGJCCKWAFs1ydM3Z0YcvGpKXmWc7YcDYKN2YDSB9+eUrWAnQ0WUGDbX9SKLanMIfx8K69xmxz21h5j5OVQeKNxMn0B2ct4Uq3TX+SaWjk4mnnV1MUMXCNTWaBRdOiD4W+83YM0yS23UzNAPClHOXddvX5SzM65Mt5SJNgvXPR6PDuxU2W8Nim/TLopH7UtbCPpnN7alVnuXtNQWGXm9bB0ejAlg3t2OujzK06z18RSsB8UH4DRJH910dqXVQbS2Qa8GEJPpTUhmRJ79D3/xjdMjGLrLhNXqRYdCYKLnUyphxgAi3rtJ8s1/N/7dZvVg==
+Received: from DU0P190MB2445.EURP190.PROD.OUTLOOK.COM (2603:10a6:10:5a5::8) by
+ FRWP190MB2485.EURP190.PROD.OUTLOOK.COM (2603:10a6:d10:188::13) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.315.12; Wed, 12 Aug 2026 05:44:46 +0000
+Received: from DU0P190MB2445.EURP190.PROD.OUTLOOK.COM
+ ([fe80::5dcd:351e:4e91:2380]) by DU0P190MB2445.EURP190.PROD.OUTLOOK.COM
+ ([fe80::5dcd:351e:4e91:2380%6]) with mapi id 15.21.0292.024; Wed, 12 Aug 2026
+ 05:44:46 +0000
+Message-ID: <DU0P190MB244579F0C395F1F41CA729A8BCDC2@DU0P190MB2445.EURP190.PROD.OUTLOOK.COM>
+Date: Wed, 12 Aug 2026 09:44:40 +0400
 User-Agent: Mozilla Thunderbird
-Subject: Re: drm/rockchip: vop2: ACLK_VOP pinned at 500 MHz starves DP 4K120
- on RK3588
-To: Igor Paunovic <royalnet026@gmail.com>
-References: <20260808104240.13776-1-royalnet026@gmail.com>
- <33bd4a94-11af-4cf3-ae44-b7f8944250f6@collabora.com>
- <c0a7521d-9c19-4197-802b-2b64a6ddea28@rock-chips.com>
- <20260811212358.9980-1-royalnet026@gmail.com>
 Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20260811212358.9980-1-royalnet026@gmail.com>
-X-HM-Tid: 0a9ff3935a1603a7kunma9ed9a6653df7f
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDSkxCVh5CQksdQ0MeHk0YS1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
-	5LVUpLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=cOaDyWdRAxlpsy2UZNaw6jtOHLzKEVO2PH1nfbpU2gGI4ztScBWgDjLI3RaPv+d3AbBmnR09Y0J5rghLR2gFDPknv7vF4fWjrUiRTGMmqaeeQ41edqMZcm9k6cQROed5Gpm6wcA8B8nsdYwH0Iuwi6EktnUe27rSlUwoi2AaoIM=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=nNjRP8b2E5ujn/7f/mFvE77jAW/d1Pb5a/2rPLROufo=;
-	h=date:mime-version:subject:message-id:from;
+From: Muhammed Subair <msubair@hotmail.com>
+To: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
+ Igor Paunovic <royalnet026@gmail.com>
+Subject: RK3576: rockchip-pm-domain fw_devlink device-link failures for nested
+ power-domain nodes
+X-ClientProxiedBy: DX1P273CA0032.AREP273.PROD.OUTLOOK.COM
+ (2603:1086:300:20::19) To DU0P190MB2445.EURP190.PROD.OUTLOOK.COM
+ (2603:10a6:10:5a5::8)
+X-Microsoft-Original-Message-ID: <33aa66b2-cd6d-416d-b1ef-20cc83e0ee10@hotmail.com>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU0P190MB2445:EE_|FRWP190MB2485:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9e624363-e529-451c-6805-08def834d0cf
+X-Microsoft-Antispam: BCL:0;ARA:14566002|15080799012|8060799015|19110799012|25031999004|37011999003|24021099003|23021999003|55001999006|25010399006|6090799003|4140399003|5072599009|53005399003|40105399003|2607281247196008|3412199025|440099028;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?M2o4Nnh5NWVscWg4czlyWkJQNWlKbHZqREVhbmtDcGlrZVZkb25oUkt5Vkxi?=
+ =?utf-8?B?QjFJblowbitqd2diMUg4d3BLUmF0bEdjTEIyV2J6MUNxd1dqMHp0V1c4ZUpG?=
+ =?utf-8?B?dnpRdmpnVTVxSlgrZ2xHYTFQaTljQ3FvdE5RTHpRMDY4elYxSTFSUzU2SDVG?=
+ =?utf-8?B?YWduNWxlTmcxWHZFWFJ2S01KNW9VNWdMNGxQMXltaHFZNTZjSitseXRMdFNv?=
+ =?utf-8?B?b3Z3SDd6ajFTMkV0N3BlVUJpL1JDS2h0ZmMrMGJ1Z2Q4SGl5bC9CSTdXb3Bi?=
+ =?utf-8?B?N3B5R2Jka0tpb2ppODZsbjgrcGlvS3U2dVlBWUJXRHVwcXByMlh3MStsTWIy?=
+ =?utf-8?B?QTZER3BoaGJvRG9aQjJkVmVGeVlZRVJsa3A4aDgyRnV1MjhZNTRoQWdma2R1?=
+ =?utf-8?B?bGIxU3VRT1VrcFdHU3JyR2NGeE16VURXOFM0MjBKOHpwUzEyQjM2NXE1cGR2?=
+ =?utf-8?B?Uk4xN1Nrckk3Z2FhMHVtd3VRQ3Q4OWJzZmJjeFpRU3c5REtOeVlEbmdET21r?=
+ =?utf-8?B?VURZVzVXNUQ4angzaVJvbHZ5bEV5WTNYa3pIUEJJb3ptRUhPbEtXL2JhV0Y3?=
+ =?utf-8?B?NXJRNWRkR2d1aUw5VndMQUI1UVlwS1JTUDFpdVRkU295ZXNOYWU4aG0xN0J4?=
+ =?utf-8?B?YXpQQThEeHVJOEVGVmJSWmd0VGJpcHpGL3VaRjFOMmJjbmwycUExeTh3V0ta?=
+ =?utf-8?B?MUJleWtSMXludGV6N1JFM1dnb3pMTWoyZDhLWlJYbnBaeGtvZCtldjBheFda?=
+ =?utf-8?B?YVFtTU01ZUZYczk0RUNRekM4eWxOTlUxSmI2RmxlK3RIRFltVGhUMUpBUmpt?=
+ =?utf-8?B?VXArdmVSNW5mYnQyd2hkZi9FR2ZOMGdSWkhFU3BqZTlnV3VSWGZ1b3p3azRB?=
+ =?utf-8?B?aFYxOXY4VXMvNElIdVAybDJYb3lqNWFIQkZGSkNOZm5QZzc1a1FhUXZxRmlm?=
+ =?utf-8?B?TXRVd3kzL0xvUjlyNmNka0d4VUYrTksxVXBlZHFLMnoyK2hEYkprWlk2eFJw?=
+ =?utf-8?B?MGRIN1ZwTWxwaWdTZ1FyK0hweHNGd0VCTVYxTFp6WWtUamM1emhLMy9OVlk2?=
+ =?utf-8?B?ZGpDM05lYThhUUdxY3FOSzFSa1NYWi9PTWgxUTdlTUxOb2FYcW5LTDYveCtn?=
+ =?utf-8?B?ejc3T3p6N0h4Sis0RVhFT1lHbHF1WXVYT0pLRCtlY2NYMm9nak93TkJtamlE?=
+ =?utf-8?B?Slk2NmN4Z2VsZTVJWE44ck4yTUtlT0pNeTJ1ZEo1c1hQOGtMWEh5QjhVRmJY?=
+ =?utf-8?B?dkVSWVE4Zi8vZmF3Q3JJTXVXK05hUUsxbEdDMnBMZzZUTzF3bDd2Rkd6UXBw?=
+ =?utf-8?B?bG8xV20rSnpXcDhRWS9FRkxyV2tLbmszUnRrdHFRVEFKQkxUaWRMLzVqVjA1?=
+ =?utf-8?B?dUxQYS9xSkVIYlBJL1RGSktOa21OODJvVE5mQjA3V0F3VWZvbzJuTko1Vklj?=
+ =?utf-8?Q?oqRxyjAG?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TjVOUEYrd3VOSVNRdjZMOHlBeHZMdzE5R0plZ0QwSTNZc01WWVQ1NlhBZHpV?=
+ =?utf-8?B?a3R0ZFROZ2Nnd3NNaElRL29LUEFvZnJ6TG9OZjRhVGRjckN2UFRSRnI1QlNU?=
+ =?utf-8?B?cExFK1hQdGFJaG4vMHd6cWcxZkRnM3phSWR1WjVqd21leHZsSkJveGhENS9I?=
+ =?utf-8?B?Y1lZTnZsblNueVpobi8yK3Q0MXRSVFFYTXBBQ0N2QzBGN29ab3dCWkkwSllI?=
+ =?utf-8?B?Q1lJOFNjeW81ZG1UVjV4Q0owdU1sVnJtNk9RUTZjQUZvYlRDUWdFUU9wZDFx?=
+ =?utf-8?B?MGRRbUNoS0VPRVpHWlFwbUc1RjVSTFRXVFI5RXhvNXhDM3dTdkxZTCsvZXhC?=
+ =?utf-8?B?YnlDTlo0YzF6OXlmajAxK3F1V1BvRzJabzdPNm9GVW5xKzhNVHlRNXdtdzQ5?=
+ =?utf-8?B?VlZPbXFKMk1ZemlFSkVKeVJPYWJQeWJ1Wkh3VVJGclZ3bTNVcmJ5aWpnOFNV?=
+ =?utf-8?B?ZHRHZkRHRE10N1VHbW4yY1hneG5OREFGOE0rYUYyN0tralBON2RxM1AvUXVp?=
+ =?utf-8?B?U3hJdVpJcndQTHloV2hZa0VXV1Z5NERqb0hpQnNsbzEzUnFDQlQ2SkI1SWly?=
+ =?utf-8?B?clN6THNBblE0TDdsZzNidkliZDFxQzltMFNCVU9ZU2RJMEJuQnF4OWJtZEVX?=
+ =?utf-8?B?Mm51U3V6bWtLUkM2QXZCR2hWUWNNYm8rUUNIWVY1YTBHOHYvcTZGdVp0OWhP?=
+ =?utf-8?B?dzdMNUw5dEI4Y1JWQzV6UFpESzR5RWtWOEJrUkI1cXBWd1duU3l3VmtyaDNm?=
+ =?utf-8?B?NVNZbmc3NC9STElaMy9RMUlZVHVWNUxYaHFiM1F1Skxyc0lrVWY5ODBmQmYr?=
+ =?utf-8?B?bzVkYjZlRUJ1Zk5ZYW5MZ0h3K0NXSTBkdmVRU3k4MUQxTXBieElLN1pLT2o3?=
+ =?utf-8?B?eC9lSzdpdER4SFEzRnBldjNNMnNVSEhmQ2VaVmFGWENMNVgyQmc0WW9UQTBn?=
+ =?utf-8?B?TmpNWVpBVVQxTFNRaFhyWVZBMzVsdTlpMjc0VjU4RmV1emhQazFrSjc3N1RT?=
+ =?utf-8?B?dXE4Z2JSbHFBb2ZNV3lLQ3ZLdkh3NDdGb1pyNjVTdVhKNnlrVlp0R1hJYzlS?=
+ =?utf-8?B?d1djczl4NW1pQUkvMnNzWW9oS1AwUjZScGdhQWdORXlFUUpINGhuUkhmOFo0?=
+ =?utf-8?B?RDlzMEdXK2grR0J0azFOdGU4MjdnWUFQRFhNN1pSeTgzcVFpU2tyTXNKYzFB?=
+ =?utf-8?B?ZDhKSXpES2hmc3c1U0RObS9jdUdIRGxUVHZycXBFaGIwNWVIcC9YY1I2YlhJ?=
+ =?utf-8?B?dGNPbk5VYnhGSWEvUkFLcktWd3JZNlZGWDkzTTFhd2ZjNDNIZFBSSDNQRmRr?=
+ =?utf-8?B?K1pUVFlBZG9rbWdNZHFKa3ozZmQ2R1RoT3lxREZhaTFmM3M2TC80NEFnTzNK?=
+ =?utf-8?B?YjBpR2Vib3FrcjBFMGxQbFUyM2JIdVo2aTdwTkh6aWFLN3dCNDJEZlBVeUV0?=
+ =?utf-8?B?NXZTM1NYZkZJc3N2R20rckE0UjJSNDRySDFJMzRPZGdvb053VElLbkFxdFQ0?=
+ =?utf-8?B?UHVvTm1OZmEvNmFRcUNDZWt4VWM4VDBYVjdSTkQ2b0szV1BnTjBwenhxNWwr?=
+ =?utf-8?B?djM2Q1NiM1h6cHdmWnYxZWZ5QnA2TGhxTHhMWmtvb0FLNENIVmxXT1F1eTFK?=
+ =?utf-8?B?eDFNZ3puV0ZUWTdwaFVuQ0pyaEd5dVJEVGNZdEwvemxCV2g0d0p3VFRzQTBS?=
+ =?utf-8?B?Y1VzVTdGdTlOc2ZMWXlNVzJpdEszREVmbEVhYVB3Vi9GRG9aUXk4UUNyakov?=
+ =?utf-8?B?eCtTZUVDblhybXZEL2gxbWFyb29xTEJ1WVhiZUVJYm50TW5CZWpnTkVKVXNQ?=
+ =?utf-8?B?MnZRTmxPK1NsbzAxK3phbnRpelNYMjBxT3IwaEE0bTlIZlpjNlAzSGZVMGc4?=
+ =?utf-8?Q?7fEe0sEcvltOU?=
+X-OriginatorOrg: sct-15-20-9412-3-msonline-outlook-b33f1.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9e624363-e529-451c-6805-08def834d0cf
+X-MS-Exchange-CrossTenant-AuthSource: DU0P190MB2445.EURP190.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Aug 2026 05:44:46.2651
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: FRWP190MB2485
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260811_182556_753182_7E1780C0 
-X-CRM114-Status: GOOD (  36.60  )
+X-CRM114-CacheID: sfid-20260811_224452_320871_23704BE4 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,119 +155,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
-
-On 8/12/2026 5:23 AM, Igor Paunovic wrote:
-> Hi Chaoyi, Cristian,
-> 
-> Chaoyi, your reading fits my own measurements better than mine did.
-> 
-> The link in that test was running YCbCr 4:2:0, so dclk sat at 594 MHz
-> for a 3840x2160@120 mode - the interface rate was the cheap part. What
-> was not cheap was what the video port had to compose: a single
-> full-screen 3840x2160 ARGB plane at 120 Hz. So the case I reported is
-> one where the interface was modest and the composition was not, which
-> is the direction you are pointing in. I framed it as a DisplayPort
-> problem because DisplayPort was the only thing I changed; that was the
-> wrong axis.
-> 
-> I should say what this bears on directly, because it is not
-> hypothetical for me. I have a patch here that I have not sent, which
-> replaces the frl_enabled condition with a threshold on the pixel clock:
-> 
->   static bool vop2_needs_aclk_boost(struct drm_crtc_state *crtc_state)
->   {
->       return vcstate->frl_enabled ||
->              crtc_state->adjusted_mode.crtc_clock > VOP2_HIGH_BW_PIXCLK_KHZ;
->   }
-> 
-> with VOP2_HIGH_BW_PIXCLK_KHZ at 1000000, so that any video port needing
-> the bandwidth can ask for the higher rate. It also guards the refcount
-> on the way, since atomic_disable() runs for ports that were never
-> enabled and the counter is unsigned. It is written against the
-> rockchip-devel branch, on top of the commit Cristian mentions, and I
-> was holding it back until I had a threshold I could defend.
-> 
-> Your reply says the quantity I keyed it on is the wrong one, and I
-> cannot argue against that from my own data. The measurement the
-> threshold came from is that at 500 MHz a 2560x1440@144 mode stays clean
-> while 3840x2160@120 does not. But in both cases the port was composing
-> a single full-screen plane at the mode's own resolution, so mode and
-> composition moved together and the comparison cannot separate them. If
-> the rule belongs in terms of what the port composes, then the pixel
-> clock is at best a proxy that happens to fit the two points I have.
-> 
-> I would rather learn that before sending the patch than after. Two
-> things I can run here:
-> 
->   - your first case: hold 3840x2160@120 on DP, leave ACLK at 500 MHz,
->     and scan out a 1080p plane instead of the full-screen one. If that
->     comes up clean, the pixel clock is not the variable and the patch
->     as written is keyed on the wrong thing.
-> 
->   - your second case: a modest mode with several 4K ARGB planes
->     composed at once. I can drive that over HDMI, without the USB-C
->     adapter in the path, so it is a cleaner test than the first.
-> 
-> Is there a form of the condition you would consider correct? What your
-> description suggests to me is something derived from the composed pixel
-> rate summed over a video port's enabled planes, with max() across the
-> active ports rather than a refcount - but you know what the hardware
-> actually stalls on, and I am inferring it from an interrupt counter.
-> 
-
-In fact, this is similar to what we do in the downstream kernel. 
-The complete decision flow is as follows[0]:
-
-if (vop_bw_info->plane_num_4k || crtc_num > 1 ||
-	crtc->state->adjusted_mode.crtc_hdisplay > 2560 ||
-	crtc->state->adjusted_mode.crtc_vdisplay > 2560 ||
-	linedur_ns < 7500) {/* 4kp60 linedur_ns roughly equal to 7500 ns */
-	
-	/* set aclk to 750M */
-	funcs->set_aclk(crtc, ROCKCHIP_VOP_ACLK_ADVANCED_MODE, vop_bw_info);
-	priv->aclk_adjust_frame_num = 2;
-}
-
-I think the condition above should be equivalent to the
-"linedur_ns < 7500" here :)
-
-[0]: https://github.com/rockchip-linux/kernel/blob/develop-6.6/drivers/gpu/drm/rockchip/rockchip_drm_fb.c#L204
+|Hi Rockchip/kernel folks, I am bringing up an RK3576 board on a 7.1.x 
+based kernel and I see the following early boot errors from 
+fw_devlink/device-links: [ 0.260388] rockchip-pm-domain 
+27380000.power-management:power-controller: Failed to create device link 
+(0x180) with supplier soc for 
+/soc/power-management@27380000/power-controller/power-domain@0/power-domain@1 
+[ 0.262168] rockchip-pm-domain 
+27380000.power-management:power-controller: Failed to create device link 
+(0x180) with supplier soc for 
+/soc/power-management@27380000/power-controller/power-domain@0/power-domain@1/power-domain@2 
+... [ 0.285927] rockchip-pm-domain 
+27380000.power-management:power-controller: Failed to create device link 
+(0x180) with supplier soc for 
+/soc/power-management@27380000/power-controller/power-domain@18/power-domain@17 
+The board otherwise boots and the affected domains appear functional. 
+PCIe/NVMe, HDMI, Ethernet, etc. are working. The RK3576 power-controller 
+node has nested power-domain children. These child domain nodes contain 
+properties such as `clocks` and `pm_qos`, similar to RK3588/RK3568, and 
+`#power-domain-cells` is present as required by 
+`rockchip,power-controller.yaml`. My current understanding is that the 
+Rockchip PM domain driver consumes these child nodes internally and 
+registers the provider from the top-level `power-controller` via 
+`of_genpd_add_provider_onecell()`. However, fw_devlink recurses into the 
+child fwnodes and tries to create proxy supplier links for dependencies 
+such as `clocks`. Since the child power-domain nodes are not normal 
+devices, this ends up as failed links from `rockchip-pm-domain` to 
+supplier `soc`. Is this expected noise for nested Rockchip power-domain 
+nodes, or is RK3576 missing a DT/driver annotation to prevent fw_devlink 
+from trying to create device links for these internal child nodes? I 
+compared with RK3588/RK3568 and did not find an obvious missing property 
+in RK3576. I also do not want to use `fw_devlink=off`, since that hides 
+the issue globally. Could you advise whether the right fix should be: 1. 
+a DT change for RK3576 power-domain nodes, 2. a Rockchip PM-domain 
+driver change to mark child fwnodes as internal/not devices for 
+fw_devlink, or 3. an OF/fw_devlink change to avoid creating proxy links 
+from generic power-domain child nodes? Thanks, Subair|
 
 
-> Cristian, understood on HDMI. If FRL and TMDS can serve the same mode
-> at different fixed rates, the mode cannot determine the rate on its own
-> and a bandwidth rule cannot be the whole story there. That answers what
-> I asked. Whatever shape this ends up taking should keep working for the
-> FRL case you already handle rather than replace it.
-> 
-> One thing worth carrying across from the dw-dp v11 thread, since not
-> everyone on this Cc list is on that one. Heiko reported that on his 4K
-> display he gets no output at all at the stock rate, and some output
-> after raising ACLK_VOP to 750 MHz, although that output is garbled:
-> 
->   https://lore.kernel.org/all/20767137.geO5KgaWL5@diego/
-> 
-> So the starvation reproduces on hardware other than mine, which until
-> now I could not tell apart from a fault in my adapter. The garbling at
-> 750 MHz is not something I see here - the picture was correct the
-> moment the write landed and stayed correct - so that looks like a
-> separate problem, and I have replied to him on that thread rather than
-> fold it into this one.
-> 
-> Igor
-> 
-> 
-
--- 
-Best, 
-Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
