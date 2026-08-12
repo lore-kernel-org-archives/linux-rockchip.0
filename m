@@ -4,86 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329AAC5B567
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2026 07:32:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BC67C5B56A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2026 08:34:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SEBZl2W424knKdGTSvDXpptnlLrMb4cwQMir75EioI4=; b=kKjOK8/rJqBnD6
-	a+qOFeiduwAeIxGow+IEK5HkwSoMPnVroYeETbLqdlL93nuutaV+3iee96/YN4IcWMgMYE9cqIWRU
-	FtzSh/u4g3MJAaTiJ1bUgzgeks6aESy7T8WlHTV4v6YnG6VsJmO4+KloN3xu4iLoe2R/8q6h7TxCt
-	6X6C3+Pszgc78CjqOQUuNE0p1SnUQaG98gG1TJIOFkUVhC21i6eW/ZPyRkKB3hrNh7qK5X/oOAjHH
-	hOWDBBg2zuJZxBVZYQ4iEXD7gfcZQHw3HhuHMo2iRJ8NLtcFYRppdwCC4mysFkYz1gEBC74DZGoht
-	ysT7vkHYMNeZ0lrCALqQ==;
+	List-Owner; bh=jL5LrptRqSgImRh7DVs9xFSRMdoeXhaPX1J2jNPazos=; b=VtO7p9/X2xgtJP
+	d8MD/yvtQpkU4fFO/9yB860DkdS3JliaymxhRSCvvAhggvbCeieNtVaN+z41Qka4pZdJR+1jbXz4Q
+	mb+gbJOd6aj1K0fOM55G5Vo+92NTXNmIYQzr3/UeubZV9n5qZArfz/8RFbjX+aeTiII3t/+3mWyvG
+	jX0ptTaNKdVy0iXUYS7D9FWRIlKWJOEnM5VvaTq6JwGBOGvtqVEYBHmGeInuJJHsuFypmoufuS4sS
+	Nndr2WkvMbJ6xARmPbFVpK/nZFPDHrrdbdy0EcKoSSWlOdCdQMyYw+lyHqvrRkhf/+ww2g/CbUTWU
+	vQhf/H2OR+kDou/mV0PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wu3Ro-0000000FaVQ-3dRo;
-	Wed, 12 Aug 2026 07:32:24 +0000
-Received: from smtpbguseast2.qq.com ([54.204.34.130])
+	id 1wu4Q5-0000000Fejv-3n33;
+	Wed, 12 Aug 2026 08:34:42 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wu3Rj-0000000FaR9-25yr;
-	Wed, 12 Aug 2026 07:32:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1786519876;
-	bh=xwkwTG7s53pnZe6rR+ByPjuw32Fjs/KmR4y/OSRwSjI=;
-	h=From:To:Subject:Date:Message-Id;
-	b=OdjaFTX0RregN4Pcswk3h3kDPfYMXCf3rO99dQJY+I4l2RsjysLqn9tzb+uKrJK5O
-	 ykz7seRzFDpJABU86YkFuBOrdIYgh252euy5mL4KsK9tBtK5dQPfJ8lTb9YpHYS3Eg
-	 rdUOqgcElQ4drPmH3gCpLYNOxd/HMh86DvnLt/I8=
-X-QQ-mid: esmtpsz11t1786519874t58231220
-X-QQ-Originating-IP: DecthGFCCJIjKGuRx0srYCYndBPraDw/pqHun5spefk=
-Received: from DESKTOP-8BT1A2O.localdomain ( [61.154.14.86])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 12 Aug 2026 15:30:20 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 17205722276426766371
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1wu4Q2-0000000Fejd-3BLb
+	for linux-rockchip@lists.infradead.org;
+	Wed, 12 Aug 2026 08:34:40 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-47f5d5dbf80so14393f8f.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 12 Aug 2026 01:34:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786523677; x=1787128477; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=RQFDNJdHLgyl4OSlrYmzm/QJoU+a+hgO0ne2eZ9DCag=;
+        b=bn/2k+LpEfPCyqANY4015wpnilnZZIeeuqrEce4qrCLuZOZeicRvZ7Zswsm+p4Dx9O
+         77dToAAmNrUhES0cMCpcXDZ49otZJXjT1H/J/AO05rpGQewVMCJAWTWlVou6ys2h+bQq
+         xOmXg92lQ2jI6NQSSPNJQUzjK0srb959Uir8iM6OeyfiSBTzRwVKcuqpkOB8LFy9SVsO
+         +OJHY4zRJyn1jUe2gVrS3kV2B5fX78iX680LmyJCYLC7eXr2/JCjernui0Ds7vJqJbVD
+         rG6fKYHA04crpbgB/PYb824J1f2N5ZT41K3aAbElcjROBiqsuAKC6f72TIY0KcVFC0L/
+         eJ7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786523677; x=1787128477;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=RQFDNJdHLgyl4OSlrYmzm/QJoU+a+hgO0ne2eZ9DCag=;
+        b=WPzDAY0DZj3TLgSxZPDZb3thbF/ytf8m+ncNJ+x0uvtahpNPuOgwxN0ccZT25G43M0
+         2S22yuEyH4z9AfXsZjpSZpQGPCEgvHVCtgrp8G2usbbJN/jxQKw2rhLKk9ExMg4N1nte
+         Rogt5k2FzfeBmq0thBtOjASMIfB5Ip8qDTxDF9HKyIfYkNie0sgnHzM36ccvNieb0sCa
+         4J5NdtS6JufaGMpsI421dEFYEtZ4XG1iYlLu5Iy5jgvea2jbCMOzrLsjRsGtI1poIrlN
+         AXQy7BTsr/d/3RqIs6+k9Dn/HUaliRwk6fkN0iSD0p1Jac0iHLloLZDUdM4i0dEjiEms
+         bk9w==
+X-Forwarded-Encrypted: i=1; AHgh+RoD/pmUc7gdI+Ep4WLVfU4ZY9/9jszCym19BJ1wbgF0VlwNfV9LJr1g78SG+3a/b8cNk/FG5tqFvLDgtQnFnQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxufRWPW0fK1PYBHHw+FYb4Vm0lfwNuffFdW4UxZ3MSDwAAq+CA
+	oufAEZzSInSLA/00mYeeKh9HoVXk52Luk6Qt6ye4ioRLUyHWE4H5eUgW
+X-Gm-Gg: AR+sD12eqpAySDPOILxtqAKSgDowHNKeDjHi0+KJTVj3ceAdcXvQ2h5N+poPHMjDbPF
+	vdclNAqVMHOsGDuVINeQXfyviahlbPATOuAi7JfvbBKpkqFJVBmhEGW+2wiMTXQqgM9j1gwVwRW
+	QP/WaFWsIljFSlyrsdwPVhGFeSNJgBbyLoHCmArakPp76kM5BURHftzSfMrSd+cMWOGD7GZWwNj
+	mUnkRSlwBZ+IFpmO0q0pmgypiRyz/rph4gKNsMHjxT0ANx+Raheb0Sx2WzG3D1XcWOZ1ENrZsvX
+	nIxvLxfoJKdwE67fZ8JGXxCRcNvHuucL2CEqirFAzbQJEmaof+GMEcbnyTeRxsR7jQA87ZiS7rR
+	M1mQlB7fRk3PAUbBAXdfX5AyS3kbDTWHj6SVyB9Ylm4JOcdxN/3Lb3JOyKWufbow7Nhgyjt6Rmo
+	Vxf54F5Xz4FPE9+jMYWZzhIpEq/YeHhBPV7Habt2MNb/XmmyUBlrBgvOUT+VTvF7VFuO7bTB+nk
+	P/RZ+jQgYj6HyYP4KX7n1Zw2ershfwBc371PlFhEdSPeMH171xtbHxhN3MPCuaQJtr87w==
+X-Received: by 2002:a05:600c:c8d:b0:495:7561:a9cc with SMTP id 5b1f17b1804b1-4997c16802amr21652985e9.4.1786523676661;
+        Wed, 12 Aug 2026 01:34:36 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B84A600FEFE3CD53078703A.dsl.pool.telekom.hu. [2001:4c4e:1b84:a600:fefe:3cd5:3078:703a])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48150d4e675sm5679637f8f.23.2026.08.12.01.34.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Aug 2026 01:34:36 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	Oded Gabbay <ogabbay@kernel.org>,
+	Jiaxing Hu <gahing@gahingwoo.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Sidong Yang <sidong.yang@furiosa.ai>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH v4 3/3] drm/rockchip: dsi: Relax the lane rate margin requirements
-Date: Wed, 12 Aug 2026 15:30:02 +0800
-Message-Id: <20260812073002.328-4-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20260812073002.328-1-kernel@airkyi.com>
-References: <20260812073002.328-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: Msjb2/dpc05VYijSOcDfHJFcvCbckJp0PwFkAiXi4rhw5lzr5TyGvfxh
-	0xKgBDk4rlo2u3b1xbr+RfGK/bl+gE9ehpHbxqh3983bRyPRKKHAulOgj5JyCGIHT454J0N
-	mRNJilqR0nuT8lVc6qv7C/dIf3NhzIqgf9dWzv1uLMGvNhxEiqCihQk24r4pP51Muuikfre
-	8lEjeYf09e6oeqTuSQD9StbaQRXJfhoeGwNwyLVHTZjxxlRWTpcdOwp9cvW6ahd4/iDg88w
-	Vz8j8aVk42DYRdnlQWsqxXfydjWaYZ6fkt8bZwCm6kHO29kyrK5uTDtqG5BhoCQXcmA53lo
-	XsHcBuiJsgsGDwrBXsfrAgU4e6Bo9q+2QydPMcarjilQkzz390BLwQlYuvbdKJI9CoGdS28
-	XdmENrnmZw3SFpOJovlIGjJUqVxe/Cw7rgdq88Ahz+CW5OWhPBmd0nG3VXP5QSEuIGh7Mjo
-	nAXf/mFBjMXoPP3+n7Xt2Ve1iRiZHSoXgjScDd0b3fCZFZk6tMzVcFFqO17PnZ59ejDpFAV
-	1ut1fGbIUASHr4L8gFip/6p7j8ESHHbNeo7KdQHGVEAFGwiH2RYElcPL4Jw+GJaZvYKv1WW
-	enrKHPRjbnbZGmCElLZEBu+2UrP8FFc4dG4Igu0/eK2pHtQepk8YWzOicz5ocX4JYCOJzky
-	OCXBLeLEBqFdt1qG2MaS5YebtQB6CiYtS24c1YYBqwYZdS3ihNAvOuKNG2asDkxpMGSv+hc
-	t/BeUCbUQvF6HldIiHd1+Du5of/EmxLuvme0JBQ3PH6WAa1ip6hxi4B2yaAHKXoY0vk9zoi
-	VbawNLFOAU03CG5zwz8+DRFsW4mkRnu8jD+PRma3V7hNtmZzUEPOCM2I6WFADeEWEOL2MQ7
-	a1lt+/T09Z48DIWgS0wbh6L80OHxGRtgLqDDoBvuPsL6B8RDY2N6WoQD4U6WmsKk6/0KZxl
-	TJhhO2res9oBnwX/1noXOEpkSLoQwjXGd9oU7SJ5CQVZ8YWdK9taRd62BKobHt5RHnoy93P
-	0Ith4h8PjTDNSGcjXJ311LddjKQ+EzuwJslHAmrInVPQv6PaWP
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-X-QQ-RECHKSPAM: 0
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] accel/rocket: request the core clocks by name
+Date: Wed, 12 Aug 2026 10:33:56 +0200
+Message-ID: <20260812083357.60014-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260811212818.10487-1-royalnet026@gmail.com>
+References: <20260729130743.128876-1-royalnet026@gmail.com> <20260811212818.10487-1-royalnet026@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260812_003220_152018_465F7A13 
-X-CRM114-Status: GOOD (  13.02  )
+X-CRM114-CacheID: sfid-20260812_013439_523392_B7CF1848 
+X-CRM114-Status: UNSURE (   6.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,71 +105,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+A correction to my own message above, before it stands uncorrected in
+the archive.
 
-The lane rate is calculated as follows:
+I wrote that the two test reports cover "the two NanoPC-T6 variants
+besides my own board". That is wrong, and it misattributes Sidong's
+work. Sidong tested on a Radxa ROCK 5B+, not on a NanoPC-T6:
 
-	Lane_Rate = Pixel_Clk * (BPP / lanes) * Overhead
+  https://lore.kernel.org/all/20260802131328.75038-1-sidong.yang@furiosa.ai/
 
-The overhead factor is set to 1/0.8, equivalent to a 25% overhead.
+Diederik's report is the one covering the two NanoPC-T6 variants. So the
+coverage is three boards besides mine, on three different designs:
 
-Now let's consider the case of RGB888 (BPP24) with a pclk of 148.5MHz.
-The lane rate equals 148.5M * (24 / 4) * 1.25 = 1113.75 Mbps.
+  Tested-by: Sidong Yang <sidong.yang@furiosa.ai>        # Radxa ROCK 5B+
+  Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, NanoPC-T6 Plus
 
-However, this is beyond the capability of certain platforms limited to a
-1Gbps lane rate. On the other hand, we have observed that some DSI panel
-actually perform worse with higher overhead.
+Apologies to Sidong for getting his hardware wrong - his report was the
+more thorough of the two, with clk_summary before and after, 90 runtime
+PM cycles across the three cores, and bit-exact inference results, and
+it deserved to be quoted accurately.
 
-So we are considering relaxing the bandwidth margin requirements.
-According to the downstream test results, adopting 1/0.9 seems to
-be a sound approach, corresponding to an overhead of about 11%.
+Nothing else in that message changes.
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
-Changes in v4:
-- Fix potential overflow and underflow issues in bandwidth
-  calculation(sashiko).
-
-Changes in v3:
-- Rebase to Linux v7.2
-
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index d183c82ef9bc..77f9c5883987 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -590,8 +590,8 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
- 
- 	mpclk = DIV_ROUND_UP(mode->clock, MSEC_PER_SEC);
- 	if (mpclk) {
--		/* take 1 / 0.8, since mbps must big than bandwidth of RGB */
--		tmp = mpclk * (bpp / lanes) * 10 / 8;
-+		/* take 1 / 0.9, since mbps must big than bandwidth of RGB */
-+		tmp = DIV_ROUND_UP(mpclk * bpp * 10, lanes * 9);
- 		if (tmp < max_mbps)
- 			target_mbps = tmp;
- 		else
-@@ -601,7 +601,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
- 
- 	/* for external phy only a the mipi_dphy_config is necessary */
- 	if (dsi->phy) {
--		phy_mipi_dphy_get_default_config(mode->clock * 1000 * 10 / 8,
-+		phy_mipi_dphy_get_default_config((u32)mode->clock * 1000 * 10 / 9,
- 						 bpp, lanes,
- 						 &dsi->phy_opts.mipi_dphy);
- 		dsi->lane_mbps = target_mbps;
--- 
-2.53.0
-
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
