@@ -4,90 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D8FC5CFDB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 20:59:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27FD1C5CFDB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 22:07:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O+5UMStQ+HmycKDaGmaocMxQX1NvUdCV2jXffP9Z9QI=; b=PGh9omEXVzfJrL
-	TPf82rTNbg+cR7z8CG7WeyN2DlXrerwGGa2HXrqodiuMBBW2Vpa1ZBVZGC8biyrZo0eX4PmEYKZml
-	H94gn1pRBRMLdmePyr7Z36p+oBWIqsFCxTOsyRXweJL+x2KFDe7hFY44AAEa026gNC9I2RneSzlXo
-	iS3PPahEWUTQ09VrH7/Qo5Gzr7lFTvG8B/RX3P1NqcQonwCv1NiLQ4+l6t7qKxBwh9E0EGm5d+oJO
-	C1jNGgv9wzi5RVK1gs/tpBq1lQV70eTFT1ri6580BmtY3tYYyFSQufZJlMA7r8aa2phyg/UwlSJhJ
-	x6mSTDs7HFgUK/JM1JGQ==;
+	List-Owner; bh=WUaSIootbkdQSEhMoPYo/qVj/t7+33cTz0EI5kSC+yo=; b=cOvpFPwcmmtmmd
+	XzhXnv336wLEVM+bDZu/FSWO3Dj7TLNgvb7/Lyh+QF4jBWhoCbUT7SGVQ7CWe93QssDqaYNtKiuP3
+	qlCDO3fDKOXqNQo7XK3k4u8i0+qHjlLH1BIMiuCY6o7dEV4VUkOJpT68Klc7QuwOVeA3zDZ/PdsOq
+	jxEjNMQQBcVm5OsH5n/9sN6VBzrvor8MykTIlneKQe6WIxMdu4o0rfXGrxorfTw7ZvOtS78Fbh4/x
+	V21uX7635Tg4nWztgCc62x54iBK6eUlqiyWY9JqZhBiTk4LaeM2d3gCEd8KRWZGojkwjhfs9w6khM
+	zBOwREXxSi8DpLBixT3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wucWm-00000001cAQ-3zXc;
-	Thu, 13 Aug 2026 20:59:52 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wudZd-00000001gB2-2Add;
+	Thu, 13 Aug 2026 22:06:53 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wucWj-00000001c9C-10cs;
-	Thu, 13 Aug 2026 20:59:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1786654311;
-	bh=3jZ3XsTAzI6wMwpfaV96FdPbY4A5ppMLD3qENTSviwI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pFjnvinLQPgdeVrT70t6L+UDvW+omYwCZDewAVzq7KuRms0aoY/AWSsM8TLIvZFZW
-	 RPhPFR4NHYhrFmu58U7KeQPm+OXDz65neStLl/KzkT0q4FTJljFihK3JQc9jY2Svhw
-	 1O+WhFz0P1HVqtyF2USmdBR5Kwns6jdSSrrRythYXuOLdEqCF7WNq5IvHIUNTOEgEo
-	 dbT1AM95JStchE6bz7a93c69KJCP02pUtQpvo5urmnh8KW/HYHnvUEP3aGEtXp3PE7
-	 wmOVkNLiqVFuB1IBHKwmidmaCNkzK64gNtujkpHtqVix9CYfWCtgyEtAxeypGpGOIq
-	 ye2YNrffmuCEQ==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1B72A17E35C8;
-	Thu, 13 Aug 2026 22:51:51 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id CCBB948007B; Thu, 13 Aug 2026 22:51:49 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 13 Aug 2026 22:52:19 +0200
-Subject: [PATCH v14 36/38] phy: rockchip: usbdp: Fix power state handling
+	id 1wudZZ-00000001g9w-25Uv
+	for linux-rockchip@lists.infradead.org;
+	Thu, 13 Aug 2026 22:06:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1786658807;
+ bh=zU1zh+2xnSpbv+2JvapkK/MkxD5INkmwoUDjTmGUnZ8=;
+ b=R1AxefibOLpO/PP5KVdkhTuwCQ3XSRcWJ99XIh3O9XrFFMrGc+9yHeFNk4MYATc7WYRrpOsEC
+ +cIhBlpODBdmqNrE6dOY6ZJtsSmtKD+5vwYdMvTEKBtzLnjXhsJ6vm0hTJQJGiB8RjiMJlGNAek
+ JORktaQveiuYKZHzcSymtv/DPG7WEB1CzeyZZhPK5doa6PBxgw8lTj1AynbmRq7YRZSNvsAXgHM
+ sxcSvcEWkO1g/40HUCgJdeYiYooAblqvIQagDt0s+VqMPLimeCnRTpKIkXOT02hmsvkHL8UzUVF
+ aQiR3DwC+ppggKPoqmua1NoHssavKs5yYQD+8rEw0BNA==
+X-Forward-Email-ID: 6a7e3ff3ec3883d7e2c9c323
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 2.13.16
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <77db5493-8f9b-45e3-b313-a90f7a2a8187@kwiboo.se>
+Date: Fri, 14 Aug 2026 00:06:39 +0200
 MIME-Version: 1.0
-Message-Id: <20260813-rockchip-usbdp-cleanup-v14-36-b5ad9c68fa11@collabora.com>
-References: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
-In-Reply-To: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
- Yubing Zhang <yubing.zhang@rock-chips.com>, 
- Alexey Charkov <alchark@flipper.net>, Igor Paunovic <royalnet026@gmail.com>, 
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel@collabora.com, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8068;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=3jZ3XsTAzI6wMwpfaV96FdPbY4A5ppMLD3qENTSviwI=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp+LmVHzNWjhv5taA6PKaTaAxRV2aOmyOOUv
- Z3xpWThyQuL84kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqfi5lAAoJENju1/PI
- O/qasVUP/RgYD8FAVgvNM+5C6XF/naYVIaF9I+BcXdPVXKyO5T1HIaSvH6G7iV8ZaieKgd5V0fO
- 4/Qu37kxRFawvLsFoW2FaWHJ2k8pD36MlzK3nsOT1TK2jPcevhaNJghGit3fw6LltjY1v1sqIyR
- hVnGFUUNjdnvPqhRAxVPUjJteBjVt7dw2s0WohcFjOgiYNrFWFjxJ6qvzQODMp7N1DKNJpo9RUX
- jSWj3YpoxpF0llhJT6NgSKO7v4KkbKtrOZZBNGKln2BKl9R2cFAZP/JHlBVr9jKtUgJb242L86C
- NhXIZ56ukcvkj6U+TdjYnS1HHD1Ic4EEQ6/WcDhCyoMIVqPVHA7TcXV0QunoyzYcISgj8TrgKmm
- wrdQ8G99Ip5Mt+7/lpJYishxcPgyDbsbO044NKl8lcruEaE4az3wyAcsgXH0WUG/pgCbMdgfc8+
- BGH6Hq1LoENLJ4v4IypwymVWphd3pThX5b9ist2QkDJuCwXitVQIvxBHBzqt79G2P71yNNp9K4x
- FY/l4EoihOJSRA175Ar40v1Ego0ooX319iuetD+lM2CbmqwOCz42vN5ShPe4/W1Enhsrf7mgS0/
- hHP+8Lru+me0rB2kwD1HmZBGucd5s2gNINHgoQkXcY6rtLLzUkpJDfuzkS10BUmqYZlvLfih9Yc
- K54PvX++rtq4dCugmwOYw7w==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 4/6] ARM: dts: rockchip: Add support for RV1106 and
+ RV1103
+To: Simon Glass <sjg@chromium.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Fabio Estevam <festevam@nabladev.com>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, Albert Aribaud <albert.u.boot@aribaud.net>,
+ Conor Dooley <conor+dt@kernel.org>, Jeffy Chen <jeffy.chen@rock-chips.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>,
+ huang lin <hl@rock-chips.com>, linux-kernel@vger.kernel.org
+References: <20260729133609.3465563-1-sjg@chromium.org>
+ <20260729133609.3465563-5-sjg@chromium.org>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20260729133609.3465563-5-sjg@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260813_135949_455457_0B0A8569 
-X-CRM114-Status: GOOD (  28.90  )
+X-CRM114-CacheID: sfid-20260813_150650_018758_AA8478DC 
+X-CRM114-Status: GOOD (  21.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,257 +82,434 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Restructure power state handling by introducing sw_mode in addition
-to the hw_mode field, so that the PHY knows about the currently
-supported modes from the hardware perspective, the current modes
-requested by software and the actual hardware status.
+Hi Simon,
 
-Now anything updating either the hardware or software state can simply
-update the status field and call rk_udphy_update_power_state().
+On 7/29/2026 3:35 PM, Simon Glass wrote:
+> Add the devicetree files for the Rockchip RV1106, a Cortex-A7 SoC
+> aimed at IP cameras, and its RV1103 package variant, which has fewer
+> pins and no GPIO2 bank. The pinctrl data comes from the vendor kernel in
+> the Luckfox Pico  SDK [1] at commit 824b817f8 (a Linux 5.10.160 kernel
+> tree).
+> 
+> [1] https://github.com/LuckfoxTECH/luckfox-pico
+> 
+> Signed-off-by: Simon Glass <sjg@chromium.org>
+> ---
+> 
+> Changes in v3:
+> - Use the per-bank IOC compatibles
+> 
+> Changes in v2:
+> - Take the MMC drive and sample phase clocks from the CRU and drop the
+>   grf-cru node
+> - Give each GPIO bank a syscon for its own IOC block, referenced by a
+>   rockchip,grf phandle in the bank node
+> - Add gpio aliases, which the pin controller and gpio drivers use to
+>   identify the bank; the rv1103 removes the gpio2 alias
+> 
+>  arch/arm/boot/dts/rockchip/rv1103.dtsi        |   16 +
+>  .../arm/boot/dts/rockchip/rv1106-pinctrl.dtsi | 1398 +++++++++++++++++
+>  arch/arm/boot/dts/rockchip/rv1106.dtsi        |  321 ++++
+>  3 files changed, 1735 insertions(+)
+>  create mode 100644 arch/arm/boot/dts/rockchip/rv1103.dtsi
+>  create mode 100644 arch/arm/boot/dts/rockchip/rv1106-pinctrl.dtsi
+>  create mode 100644 arch/arm/boot/dts/rockchip/rv1106.dtsi
+> 
+> diff --git a/arch/arm/boot/dts/rockchip/rv1103.dtsi b/arch/arm/boot/dts/rockchip/rv1103.dtsi
+> new file mode 100644
+> index 000000000000..025fde5bf09c
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rockchip/rv1103.dtsi
+> @@ -0,0 +1,16 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2022 Rockchip Electronics Co., Ltd.
+> + */
+> +
+> +#include "rv1106.dtsi"
+> +
+> +/ {
+> +	compatible = "rockchip,rv1103";
+> +
+> +	aliases {
+> +		/delete-property/ gpio2;
+> +	};
+> +};
+> +
+> +/delete-node/ &gpio2;
 
-This makes it a lot more obvious what is going on and also fixes a few
-potential resource leaks identified by Sashiko as a side-effect. For
-example if USB3 is requested by software while the USB-C is in DP-only
-mode, things are decently handled after this.
+[snip]
 
-Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 143 +++++++++++++++++++-----------
- 1 file changed, 90 insertions(+), 53 deletions(-)
+> diff --git a/arch/arm/boot/dts/rockchip/rv1106.dtsi b/arch/arm/boot/dts/rockchip/rv1106.dtsi
+> new file mode 100644
+> index 000000000000..70d3da6bd03e
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rockchip/rv1106.dtsi
+> @@ -0,0 +1,321 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2022 Rockchip Electronics Co., Ltd.
+> + */
+> +
+> +#include <dt-bindings/clock/rockchip,rv1106-cru.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +
+> +/ {
+> +	#address-cells = <1>;
+> +	#size-cells = <1>;
+> +
+> +	compatible = "rockchip,rv1106";
+> +
+> +	interrupt-parent = <&gic>;
+> +
+> +	aliases {
+> +		gpio0 = &gpio0;
+> +		gpio1 = &gpio1;
+> +		gpio2 = &gpio2;
+> +		gpio3 = &gpio3;
+> +		gpio4 = &gpio4;
+> +	};
+> +
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		cpu0: cpu@f00 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a7";
+> +			reg = <0xf00>;
+> +			clocks = <&cru ARMCLK>;
+> +		};
+> +	};
+> +
+> +	arm-pmu {
+> +		compatible = "arm,cortex-a7-pmu";
+> +		interrupts = <GIC_SPI 126 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-affinity = <&cpu0>;
+> +	};
+> +
+> +	timer {
+> +		compatible = "arm,armv7-timer";
+> +		clock-frequency = <24000000>;
+> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
+> +	};
+> +
+> +	xin24m: oscillator {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <24000000>;
+> +		clock-output-names = "xin24m";
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	pinctrl: pinctrl {
+> +		compatible = "rockchip,rv1106-pinctrl";
+> +		rockchip,grf = <&gpio1_ioc>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		ranges;
+> +
+> +		gpio0: gpio@ff380000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0xff380000 0x100>;
+> +			interrupts = <GIC_SPI 5 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_PMU_GPIO0>, <&cru DBCLK_PMU_GPIO0>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			gpio-ranges = <&pinctrl 0 0 32>;
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 405b3d943602..e597cdfe8d79 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -173,9 +173,10 @@ struct rk_udphy {
- 
- 	/* PHY status management */
- 	bool flip;
--	bool phy_needs_reinit;
-+	bool phy_needs_reinit; /* lane mux changed */
- 	u8 hw_mode; /* modes currently supported by hardware */
--	u8 status;
-+	u8 sw_mode; /* modes currently requested */
-+	u8 status; /* current PHY power state */
- 
- 	/* utilized for USB */
- 	bool hs; /* flag for high-speed */
-@@ -985,70 +986,95 @@ static int rk_udphy_parse_dt(struct rk_udphy *udphy)
- 	return rk_udphy_reset_init(udphy, dev);
- }
- 
--static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
-+static int rk_udphy_update_power_state(struct rk_udphy *udphy)
- {
-+	bool usb3_port_enable;
-+	u8 target_mode;
- 	int ret;
- 
--	if (!(udphy->hw_mode & mode)) {
--		dev_info(udphy->dev, "mode 0x%02x is not support\n", mode);
-+	/*
-+	 * Initialize PHY mode according to the hardware setup (either described
-+	 * in DT or negotiated via the Type-C controller) instead of requesting
-+	 * only the needed PHY side, because that would break the USB/DP data
-+	 * streams when the other PHY is being requested. This is not an issue
-+	 * during the Type-C negotiation as that happens during the hotplug phase
-+	 * and not during normal operation. Also disable everything if the
-+	 * software has not requested anything, as there shouldn't be any active
-+	 * data streams in that case.
-+	 */
-+	target_mode = udphy->hw_mode;
-+	if (udphy->sw_mode == UDPHY_MODE_NONE)
-+		target_mode = UDPHY_MODE_NONE;
-+
-+	usb3_port_enable = !udphy->hs && (target_mode & UDPHY_MODE_USB);
-+
-+	if (!udphy->phy_needs_reinit && udphy->status == target_mode) {
-+		if (udphy->sw_mode & UDPHY_MODE_USB)
-+			rk_udphy_u3_port_disable(udphy, !usb3_port_enable);
- 		return 0;
- 	}
- 
--	if (udphy->status == UDPHY_MODE_NONE) {
--		phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_PRE_RESET);
-+	/* Avoid to re-init disabled PHY */
-+	if (udphy->status == target_mode && target_mode == UDPHY_MODE_NONE)
-+		return 0;
- 
-+	/*
-+	 * Inform DWC3 driver, that we are about to reset the PHY, so that it can
-+	 * assert its PIPE reset lines and avoid DWC3 getting into a buggy state.
-+	 * This is intentionally done for a PHY disable, since that also changes
-+	 * the clocks routed to the PHY.
-+	 */
-+	ret = phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_PRE_RESET);
-+	if (ret)
-+		return ret;
-+
-+	/*
-+	 * Disable USB3 port, which among other things re-routes a DWC3 clock to
-+	 * avoid SErrors when the DWC3 registers are accessed while the PHY is
-+	 * disabled. This is only done, when the DWC3 is running as the accessed
-+	 * GRF registers and in PD_USB.
-+	 */
-+	if (udphy->sw_mode & UDPHY_MODE_USB) {
- 		rk_udphy_u3_port_disable(udphy, true);
- 		udelay(10);
-+	}
- 
-+	if (udphy->status == UDPHY_MODE_NONE) {
-+		/* Power up (incl. clocks) */
- 		ret = rk_udphy_setup(udphy);
- 		if (ret) {
- 			phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
- 			return ret;
- 		}
--
--		if (!udphy->hs && udphy->hw_mode & UDPHY_MODE_USB)
--			rk_udphy_u3_port_disable(udphy, false);
--		udphy->phy_needs_reinit = false;
--
--		phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
--	} else if (udphy->phy_needs_reinit) {
--		phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_PRE_RESET);
--
--		rk_udphy_u3_port_disable(udphy, true);
--		udelay(10);
--
-+	} else if (target_mode == UDPHY_MODE_NONE) {
-+		/* Power down (incl. clocks) */
-+		rk_udphy_disable(udphy);
-+	} else {
-+		/* Mode change => re-init */
- 		ret = rk_udphy_init(udphy);
- 		if (ret) {
- 			phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
- 			return ret;
- 		}
--
--		if (!udphy->hs && udphy->hw_mode & UDPHY_MODE_USB)
--			rk_udphy_u3_port_disable(udphy, false);
--		udphy->phy_needs_reinit = false;
--
--		phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
- 	}
- 
--	udphy->status |= mode;
--
--	return 0;
--}
-+	/* Ensure USB3 support is enabled when supported */
-+	if (udphy->sw_mode & UDPHY_MODE_USB)
-+		rk_udphy_u3_port_disable(udphy, !usb3_port_enable);
- 
--static void rk_udphy_power_off(struct rk_udphy *udphy, u8 mode)
--{
--	if (!(udphy->hw_mode & mode)) {
--		dev_info(udphy->dev, "mode 0x%02x is not support\n", mode);
--		return;
--	}
--
--	if (!udphy->status)
--		return;
-+	/*
-+	 * Inform DWC3, that we are done with the reset, so that it can deassert
-+	 * its PIPE reset line. This is sent in pair with a PRE_RESET allowing
-+	 * consumer driver to do paired resource requests (e.g. clocks) in their
-+	 * notification handlers. As we reroute the clocks, its also fine to
-+	 * send this after completely disabling the PHY.
-+	 */
-+	phy_notify_reset(udphy->phy_u3, PHY_NOTIFY_POST_RESET);
- 
--	udphy->status &= ~mode;
-+	udphy->status = target_mode;
-+	udphy->phy_needs_reinit = false;
- 
--	if (udphy->status == UDPHY_MODE_NONE)
--		rk_udphy_disable(udphy);
-+	return 0;
- }
- 
- static int rk_udphy_dp_phy_power_on(struct phy *phy)
-@@ -1057,11 +1083,15 @@ static int rk_udphy_dp_phy_power_on(struct phy *phy)
- 	int ret;
- 
- 	scoped_guard(mutex, &udphy->mutex) {
-+		udphy->sw_mode |= UDPHY_MODE_DP;
-+
- 		phy_set_bus_width(phy, udphy->dp_lanes);
- 
--		ret = rk_udphy_power_on(udphy, UDPHY_MODE_DP);
--		if (ret)
-+		ret = rk_udphy_update_power_state(udphy);
-+		if (ret) {
-+			udphy->sw_mode &= ~UDPHY_MODE_DP;
- 			return ret;
-+		}
- 
- 		rk_udphy_dp_lane_enable(udphy, udphy->dp_lanes);
- 
-@@ -1084,10 +1114,10 @@ static int rk_udphy_dp_phy_power_off(struct phy *phy)
- 
- 	guard(mutex)(&udphy->mutex);
- 
--	rk_udphy_dp_lane_enable(udphy, 0);
--	rk_udphy_power_off(udphy, UDPHY_MODE_DP);
-+	udphy->sw_mode &= ~UDPHY_MODE_DP;
- 
--	return 0;
-+	rk_udphy_dp_lane_enable(udphy, 0);
-+	return rk_udphy_update_power_state(udphy);
- }
- 
- /*
-@@ -1292,16 +1322,24 @@ static const struct phy_ops rk_udphy_dp_phy_ops = {
- static int rk_udphy_usb3_phy_init(struct phy *phy)
- {
- 	struct rk_udphy *udphy = phy_get_drvdata(phy);
-+	int ret;
- 
- 	guard(mutex)(&udphy->mutex);
- 
--	/* DP only or high-speed, disable U3 port */
--	if (!(udphy->hw_mode & UDPHY_MODE_USB) || udphy->hs) {
-+	if (udphy->hs) {
- 		rk_udphy_u3_port_disable(udphy, true);
- 		return 0;
- 	}
- 
--	return rk_udphy_power_on(udphy, UDPHY_MODE_USB);
-+	udphy->sw_mode |= UDPHY_MODE_USB;
-+
-+	ret = rk_udphy_update_power_state(udphy);
-+	if (ret) {
-+		udphy->sw_mode &= ~UDPHY_MODE_USB;
-+		return ret;
-+	}
-+
-+	return 0;
- }
- 
- static int rk_udphy_usb3_phy_exit(struct phy *phy)
-@@ -1310,13 +1348,12 @@ static int rk_udphy_usb3_phy_exit(struct phy *phy)
- 
- 	guard(mutex)(&udphy->mutex);
- 
--	/* DP only or high-speed */
--	if (!(udphy->hw_mode & UDPHY_MODE_USB) || udphy->hs)
-+	if (udphy->hs)
- 		return 0;
- 
--	rk_udphy_power_off(udphy, UDPHY_MODE_USB);
-+	udphy->sw_mode &= ~UDPHY_MODE_USB;
- 
--	return 0;
-+	return rk_udphy_update_power_state(udphy);
- }
- 
- static const struct phy_ops rk_udphy_usb3_phy_ops = {
+This is incorrect hw description, only pins A0-A6 are used from gpio0.
 
--- 
-2.53.0
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +			rockchip,grf = <&gpio0_ioc>;
+> +		};
+> +
+> +		gpio1: gpio@ff530000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0xff530000 0x100>;
+> +			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO1>, <&cru DBCLK_GPIO1>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			gpio-ranges = <&pinctrl 0 32 32>;
+
+Same here, only  pins A0-A4, B0-B3, C0-C7 and D0-D3 are used from gpio1.
+
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +			rockchip,grf = <&gpio1_ioc>;
+> +		};
+> +
+> +		gpio2: gpio@ff540000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0xff540000 0x100>;
+> +			interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO2>, <&cru DBCLK_GPIO2>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			gpio-ranges = <&pinctrl 0 64 32>;
+
+And here, only pins A0-A7 and B0-B1 are used from gpio2.
+
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +			rockchip,grf = <&gpio2_ioc>;
+> +		};
+> +
+> +		gpio3: gpio@ff550000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0xff550000 0x100>;
+> +			interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO3>, <&cru DBCLK_GPIO3>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			gpio-ranges = <&pinctrl 0 96 32>;
+
+And here, only pins A1-A7, B0-B7, C0-C7 and D0-D3 from gpio3.
+
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +			rockchip,grf = <&gpio3_ioc>;
+> +		};
+> +
+> +		gpio4: gpio@ff560000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0xff560000 0x100>;
+> +			interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO4>, <&cru DBCLK_GPIO4>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			gpio-ranges = <&pinctrl 0 128 32>;
+
+And here, only pins A1-A7, B0-B1 and C0-C1 from gpio4.
+
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +			rockchip,grf = <&gpio4_ioc>;
+> +		};
+> +	};
+> +
+> +	soc {
+> +		compatible = "simple-bus";
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		ranges;
+> +
+> +		grf: syscon@ff000000 {
+> +			compatible = "rockchip,rv1106-grf", "syscon";
+> +			reg = <0xff000000 0x68000>;
+
+If we decide to describe all GRFs as a single block, maybe add a comment
+with names and base address of each individual GRF being grouped here?
+
+  PERI_GRF	0xFF000000 
+  VENC_GRF	0xFF010000 
+  NPU_GRF	0xFF018000 
+  PMU_GRF	0xFF020000 
+  DDR_GRF	0xFF030000 
+  CORE_GRF	0xFF040000 
+  VI_GRF 	0xFF050000 
+  VO_GRF	0xFF060000
+
+> +		};
+> +
+> +		gic: interrupt-controller@ff1f0000 {
+> +			compatible = "arm,gic-400";
+> +			reg = <0xff1f1000 0x1000>,
+> +			      <0xff1f2000 0x2000>,
+> +			      <0xff1f4000 0x2000>,
+> +			      <0xff1f6000 0x2000>;
+> +			interrupts = <GIC_PPI 9 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
+> +			interrupt-controller;
+> +			#interrupt-cells = <3>;
+> +			#address-cells = <0>;
+> +		};
+> +
+> +		gpio0_ioc: syscon@ff388000 {
+> +			compatible = "rockchip,rv1106-gpio0-ioc", "syscon";
+> +			reg = <0xff388000 0x8000>;
+> +		};
+> +
+> +		cru: clock-controller@ff3a0000 {
+> +			compatible = "rockchip,rv1106-cru";
+> +			reg = <0xff3a0000 0x20000>;
+> +			clocks = <&xin24m>;
+> +			clock-names = "xin24m";
+> +			rockchip,grf = <&grf>;
+> +			#clock-cells = <1>;
+> +			#reset-cells = <1>;
+> +		};
+> +
+> +		saradc: adc@ff3c0000 {
+> +			compatible = "rockchip,rv1106-saradc", "rockchip,rk3588-saradc";
+> +			reg = <0xff3c0000 0x100>;
+> +			interrupts = <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru CLK_SARADC>, <&cru PCLK_SARADC>;
+> +			clock-names = "saradc", "apb_pclk";
+
+Should probably add default pinctrl here.
+
+> +			#io-channel-cells = <1>;
+> +			status = "disabled";
+> +		};
+> +
+> +		uart0: serial@ff4a0000 {
+> +			compatible = "rockchip,rv1106-uart", "snps,dw-apb-uart";
+> +			reg = <0xff4a0000 0x100>;
+> +			interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
+> +			reg-shift = <2>;
+> +			reg-io-width = <4>;
+> +			clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+> +			clock-names = "baudclk", "apb_pclk";
+> +			status = "disabled";
+> +		};
+> +
+> +		uart1: serial@ff4b0000 {
+> +			compatible = "rockchip,rv1106-uart", "snps,dw-apb-uart";
+> +			reg = <0xff4b0000 0x100>;
+> +			interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+> +			reg-shift = <2>;
+> +			reg-io-width = <4>;
+> +			clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+> +			clock-names = "baudclk", "apb_pclk";
+> +			status = "disabled";
+> +		};
+> +
+> +		uart2: serial@ff4c0000 {
+> +			compatible = "rockchip,rv1106-uart", "snps,dw-apb-uart";
+> +			reg = <0xff4c0000 0x100>;
+> +			interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH>;
+> +			reg-shift = <2>;
+> +			reg-io-width = <4>;
+> +			clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+> +			clock-names = "baudclk", "apb_pclk";
+> +			status = "disabled";
+> +		};
+> +
+> +		uart3: serial@ff4d0000 {
+> +			compatible = "rockchip,rv1106-uart", "snps,dw-apb-uart";
+> +			reg = <0xff4d0000 0x100>;
+> +			interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH>;
+> +			reg-shift = <2>;
+> +			reg-io-width = <4>;
+> +			clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
+> +			clock-names = "baudclk", "apb_pclk";
+> +			status = "disabled";
+> +		};
+> +
+> +		uart4: serial@ff4e0000 {
+> +			compatible = "rockchip,rv1106-uart", "snps,dw-apb-uart";
+> +			reg = <0xff4e0000 0x100>;
+> +			interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_HIGH>;
+> +			reg-shift = <2>;
+> +			reg-io-width = <4>;
+> +			clocks = <&cru SCLK_UART4>, <&cru PCLK_UART4>;
+> +			clock-names = "baudclk", "apb_pclk";
+> +			status = "disabled";
+> +		};
+> +
+> +		uart5: serial@ff4f0000 {
+> +			compatible = "rockchip,rv1106-uart", "snps,dw-apb-uart";
+> +			reg = <0xff4f0000 0x100>;
+> +			interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_HIGH>;
+> +			reg-shift = <2>;
+> +			reg-io-width = <4>;
+> +			clocks = <&cru SCLK_UART5>, <&cru PCLK_UART5>;
+> +			clock-names = "baudclk", "apb_pclk";
+> +			status = "disabled";
+> +		};
+> +
+> +		gpio1_ioc: syscon@ff538000 {
+> +			compatible = "rockchip,rv1106-gpio1-ioc", "syscon";
+> +			reg = <0xff538000 0x8000>;
+> +		};
+> +
+> +		gpio2_ioc: syscon@ff548000 {
+> +			compatible = "rockchip,rv1106-gpio2-ioc", "syscon";
+> +			reg = <0xff548000 0x8000>;
+> +		};
+> +
+> +		gpio3_ioc: syscon@ff558000 {
+> +			compatible = "rockchip,rv1106-gpio3-ioc", "syscon";
+> +			reg = <0xff558000 0x8000>;
+> +		};
+> +
+> +		gpio4_ioc: syscon@ff568000 {
+> +			compatible = "rockchip,rv1106-gpio4-ioc", "syscon";
+> +			reg = <0xff568000 0x8000>;
+> +		};
+> +
+> +		wdt: watchdog@ff5a0000 {
+> +			compatible = "rockchip,rv1106-wdt", "snps,dw-wdt";
+> +			reg = <0xff5a0000 0x100>;
+> +			interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru TCLK_WDT_NS>, <&cru PCLK_WDT_NS>;
+> +			clock-names = "tclk", "pclk";
+> +			status = "disabled";
+> +		};
+> +
+> +		system_sram: sram@ff6c0000 {
+> +			compatible = "mmio-sram";
+> +			reg = <0xff6c0000 0x40000>;
+> +			#address-cells = <1>;
+> +			#size-cells = <1>;
+> +			ranges = <0 0xff6c0000 0x40000>;
+> +		};
+> +
+> +		emmc: mmc@ffa90000 {
+> +			compatible = "rockchip,rv1106-dw-mshc", "rockchip,rk3288-dw-mshc";
+> +			reg = <0xffa90000 0x4000>;
+> +			interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru HCLK_EMMC>, <&cru CCLK_SRC_EMMC>,
+> +				 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
+> +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> +			fifo-depth = <0x100>;
+> +			max-frequency = <200000000>;
+
+Suggest you add default pinctrl here.
+
+> +			status = "disabled";
+> +		};
+> +
+> +		sdmmc: mmc@ffaa0000 {
+> +			compatible = "rockchip,rv1106-dw-mshc", "rockchip,rk3288-dw-mshc";
+> +			reg = <0xffaa0000 0x4000>;
+> +			interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru HCLK_SDMMC>, <&cru CCLK_SRC_SDMMC>,
+> +				 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
+> +			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> +			fifo-depth = <0x100>;
+> +			max-frequency = <200000000>;
+
+Same here.
+
+> +			status = "disabled";
+> +		};
+> +
+> +		sfc: spi@ffac0000 {
+> +			compatible = "rockchip,sfc";
+> +			reg = <0xffac0000 0x4000>;
+> +			interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
+> +			clock-names = "clk_sfc", "hclk_sfc";
+
+And here.
+
+Regards,
+Jonas
+
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +	};
+> +};
+> +
+> +#include "rv1106-pinctrl.dtsi"
 
 
 _______________________________________________
