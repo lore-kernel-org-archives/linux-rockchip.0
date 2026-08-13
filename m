@@ -4,115 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A754C5B572
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 09:25:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5BBC5B572
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 09:27:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=riKUkE4IXwD4JMMm/vgfaLJLevgr0Jog+8la+XpkaqM=; b=stpFNLevt6BOxB
-	BGt86ZE8cLQIMNxgBqY2z8+5wgK5voMUXDGyOl7jWI1ou2karF/SdHDu1mypARQzjT2PRq4zowdhY
-	e5cDt3aOsfHXjTqL4tCNW4L0pReuxs4mLp5Uoq7/3WmQ+9KDPIb1VkYdvzqjsKtFX9CGDQMDq0m6I
-	s47lcMy2Ntxj4/a3NqnoBUxr+RnpVDNCGv5p+B3ds1do+hFrq4Uaa7Z7WAntRHqX8BD6PICMsgleW
-	xqpNIy+IVZAltyanOx7OdtyTlDclixhsfrav/tfpiu8kqiPhy3HKalSSM+m0epvziqHdpRYvITtKe
-	9fQmXoYObPEj9La5KPgg==;
+	List-Owner; bh=zMQOlGRbzaBJwl/vy534XBE/60k3tbBNnWOofTO1VGU=; b=OaDmd2YwCNTVLN
+	dn9Sn6iOXn8lBVW3SjV5WND2gUQSY1BpAfmQ9RWEIQk0FbmfggB6zbhNHtF9QbCfLmei+oWp7snYc
+	YhTV4dsKOomMAeHoYGpVYjzoLdi7Jf/QV2fp02fguqB9JFiq1a5Zw6QU3QlyS7+dyrC6DV1MCkMGz
+	3AARZRoHS5QzfapTrEC/cKiYnf/bUGupcl7a8Bg1Rcw1S8Lx1DPKr1NpI2Uva3CpSt0aljUSjFJ84
+	SAFIGR8Jk/XweydOWB8bu55OQhb058XGUHjz9LyRax8UwvYYJWVH3konhwJDptEKhmNH19QEdnM7s
+	t4Uh4hmrzuKT7tPWi9mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuRgo-00000000I2z-10a8;
-	Thu, 13 Aug 2026 09:25:30 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wuRiW-00000000ISM-40A7;
+	Thu, 13 Aug 2026 09:27:16 +0000
+Received: from flow-b7-smtp.messagingengine.com ([202.12.124.142])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuRgl-00000000I2D-01ts;
-	Thu, 13 Aug 2026 09:25:27 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7175C414E1;
-	Thu, 13 Aug 2026 09:25:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A42A01F000E9;
-	Thu, 13 Aug 2026 09:25:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786613126;
-	bh=Jpvdp1bc4LLxoPVnfFYuFbRFCE9DF8NtLiVPn6mdj/U=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=lJhWSloGJ1u+LtQxvq9O3fRlKPoTjA7cLUjBQhjGXWxYlmYu3So5fp7G0pSV5TOYj
-	 ThpiD1SdNG/Jev1rVG1PSrak9y/Z53I8mSC+y8ljgtOmea+8wI27ynmKyu92DQODl/
-	 GcgrkYdrPlpN8eqwtipklJBr0jQqGIzYQ4WItUny4mpq3XkVcBjZcxbdtkXCjZJZFB
-	 zH4K3REBD3IEW40bl210ynTu+J4ysAVHlsyhY4ijzfAjDyGIJwc4xIKuiK2OSyVoG+
-	 i4rJI6MoaBKx4Rxsw3AgN/HSaH+NMeMQ6uflVY2pvJgR2UD8YPc2P4arbMPMkhfSbV
-	 ZXv9bfZur20gA==
-Message-ID: <85bb8b2b-3d84-4ad1-af41-497d265a704b@kernel.org>
-Date: Thu, 13 Aug 2026 11:25:18 +0200
+	id 1wuRiS-00000000IPy-2JP4;
+	Thu, 13 Aug 2026 09:27:15 +0000
+Received: from phl-compute-12.internal (phl-compute-12.internal [10.202.2.52])
+	by mailflow.stl.internal (Postfix) with ESMTP id C088513002E3;
+	Thu, 13 Aug 2026 05:27:10 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-12.internal (MEProxy); Thu, 13 Aug 2026 05:27:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm1; t=1786613230; x=
+	1786616830; bh=hsFxZ3Ixcxao/UXVeMngQAQyl2hgDxb8MfUV5pS9FUs=; b=X
+	wk8AWY8y35vFRSuC0ov4nAO2Q2loXiexbgX7ejR4U7I7ayhSOnWRtCRvqtVkMqCt
+	NouaXTbR1h7dbbLl2V5tF8dn2dqWA0SELOs15A5AktZjwZi0+5XIwrBSlu/3FsXV
+	i+r/16Riveo7a8euMTs4OyINO4YhS1ZNn1to4VmG3BnR8uQ1ppBIhaG+BH/6JXos
+	clLt90XpluD8XIVWvMKLX/hJQJIlHQ1vVv4qi/yQkNREj83lXosfpb9QKzjMRgDI
+	vi0umdk+QjLUCr/eD+yi/DoOL24V7uXymAxQ+lNL4e+sf67RZYWes+j8eSOWFS0M
+	iYcNjLrOPe0boUhK3n/Gw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1786613230; x=1786616830; bh=h
+	sFxZ3Ixcxao/UXVeMngQAQyl2hgDxb8MfUV5pS9FUs=; b=Q/9SiPgSDD5isYTw/
+	kl2IM8TDJ7SyZd4QGFYywlNOQsHuUbdiqPGmnlXeeTmqAs8rTERrfXHcgk7fa5vL
+	eXyz4MpWlEe46/+Nf88v5J9aNZT7ow5exUvmXSCY5S6Iy0cdaz7YprPjB4V3xX5B
+	PelCSqOkY1wgBaupp9rY31nAvUwsBI83HZHxTpHMRJSjmSz6P21lBFC1CLkeKng3
+	TJfGld6jMDu8s14NO7IpAsrKUkWD8Ic8I8d4DhWJrLwEVfi9OzCdC8Q0i/nGjBvo
+	y9VoYyhw0kH4bkDEdB8LYbxwlAGDQ2Ahl/Kv0RWLAo5gLGIamEIQFJWl15jo4Dy7
+	vMvvw==
+X-ME-Sender: <xms:7I19akugtWEUS6DPZSDisOQRe96mDrKGSRwGSSLpHU9mPMxRqN6LfQ>
+    <xme:7I19apqy7lkyKCGEQIpAznxs8-WiSiQ653uMatsa-uUM2gfrkNbPU37rn1DxhNKmd
+    NzzA1SKwKlns-bCz8jYD4057WoB2KLJ01qq4CuiwrAkxUySaVPEIxA>
+X-ME-Received: <xmr:7I19arUpi3rN-uvQmTa8xKsdhGw3uLMw323IJf2e4O1hfND1WsjrSbM-xH7VcXGWOmVvUj5i8g>
+X-ME-Proxy-Cause: dmFkZTFvkSju2jPjsNthsipJjLLcKiFKo2iZfGlFycdFk+MydEAZMZ8gLXf+IJPcsUPR7q
+    8Lu23Zv43b+dFbQ7TjLTmPjFPmS1byNHUQMmyTnEfd3+zp8aMAPcQyxqEG2X7Wh9zAGCZO
+    ASfeTun9KO56biKJV5zVg16tsQhRU+6nbKkIbeQQqpYAylrTOrls7RmnSCLmRbmc2VPoBx
+    vZ1P4cH26vteFh0edZtGGFBd7vW83H5gdsKKOvjG4hwjTKUneZFr39S9vg1vWvHxW1qTXR
+    zUPf2/JEHD3iDaAfdm0gPNK5y+li0Yp5cV+EPNl29rBRAnACwpAGVl/KnlQtSLM0ttX4J2
+    l/am9K2O25bP9VtmYiIW+Ly6VtUhOdy3nwxs4s4paixrmj2wHjw6niht4buWZq5Asathg6
+    Dbkf3vfYVYIuGsr8OqC4kUSpHnopYqD2B1I1lcBGxFLDwkMzgVNIl9UwDGwBGLeAOHbbt/
+    zrpjS30/nQOBC9mfp6MZRGCNVf5ooC5X9K42rk+Wn7kUL8YNSHsfX23UoiiyVImXKYepqA
+    LZeamRMgClsJiboYwdWqADPrqjEP8BIGfaM/h0cYcfyyurW+EBHPTe3j+7YPmX4UWiLHUV
+    sZPMA1wA7khI+wfKRscvUa0o9jFbm+dsi+zz5LhEmixxzjFL1pi6+NaQzMhg
+X-ME-Proxy: <xmx:7I19ah3mDQBzGkzh83Ngyq0CwEggQu3-m416weoqLJgBeoWeIZD-0A>
+    <xmx:7I19agtMs8Kw7___d7YWK26zmLpWguftRWXsk323Xw3tnFevElH6PQ>
+    <xmx:7I19apUVspdMaNcCZmZAF7KafA8U57BSQJkiVPsBIr8lCXH1si_pfQ>
+    <xmx:7I19aowpXoGEJ410Ikjp4fuTgN7RDhSF8iOoY5aS8sVi7eLE0WCFNg>
+    <xmx:7o19aidqPjfiTHJjLmdGvpruDWgk2Cs0qwl36P7cxE5EfU3kKVTnsL4k>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 13 Aug 2026 05:27:01 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: royalnet026@gmail.com
+Cc: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	chaoyi.chen@rock-chips.com,
+	alchark@flipper.net,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: Re: [PATCH v7 08/10] accel/rocket: add RK3576 NPU (RKNN) support
+Date: Thu, 13 Aug 2026 21:26:56 +1200
+Message-ID: <20260813092656.2568538-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260812124850.6597-1-royalnet026@gmail.com>
+References: <20260812094106.1391698-1-gahing@gahingwoo.com> <20260812094106.1391698-9-gahing@gahingwoo.com> <20260812124850.6597-1-royalnet026@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/5] dt-bindings: phy: Add PHY_TYPE_DSI and
- PHY_TYPE_CSI definitions
-To: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Guochun Huang <hero.huang@rock-chips.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Michael Riesch <michael.riesch@collabora.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260810-dcphy-rx-v1-v3-0-a2d25c29adfc@gmail.com>
- <20260810-dcphy-rx-v1-v3-1-a2d25c29adfc@gmail.com>
- <20260812-refreshing-rampant-gecko-b38ef9@quoll>
- <CAPwA33KM-sWkPVrP1h+swLinvrCZHzxPeS7h25KEO87Q_6WZuA@mail.gmail.com>
- <an0FMnDSWbud8hPc@venus>
- <CAPwA33+7k7HMC7ezwH+MGn64iRHT6tVNK55t6gaC0nkkqWoE4w@mail.gmail.com>
- <20260813-imposing-cunning-raven-fcad40@quoll>
- <CAPwA33L-x=H+FU6-c9A8uKqhKbsfxcAJaaG49rUfnjvWk0f5mA@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <CAPwA33L-x=H+FU6-c9A8uKqhKbsfxcAJaaG49rUfnjvWk0f5mA@mail.gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260813_022713_042484_2DFF2F5A 
+X-CRM114-Status: GOOD (  22.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,20 +109,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTMvMDgvMjAyNiAxMDo0MCwg5qWK5pm65oiQIHdyb3RlOgo+IEkgYW0gc29ycnkgYWJvdXQg
-dGhpcy4gU2luY2UgSXQncyBteSBmaXJzdCB0aW1lIHRvIGNvbW1pdCBwYXRjaCB0byB0aGUKPiBr
-ZXJuZWwsIEkgd2FudCB0byBtYWtlIHN1cmUgbXkgY29kZSBhbmQgcmVwbHkgaXMgY29ycmVjdCwK
-PiBzbyBJIGFjdHVhbGx5IHBhc3RlIG15IHJlcGx5IHRvIEFJIGJlZm9yZSBJIHNlbmQsIGxldCBB
-SSB0byByZXdyaXRlIG15Cj4gd29yZHMuIEkgd2lsbCBmaXggbXkgYXBwcm9hY2gsIGFuZCBtYWtl
-IHN1cmUgVjQgYW5kIGFmdGVyd2FyZCB3b3JrCgpUaGlzIHdhcyBiZXlvbmQgTExNIGxhbmd1YWdl
-IHRyYW5zbGF0aW9uIGFuZCBjb3JyZWN0aW9uLCBidXQgcmF0aGVyIExMTQpwcm9tcHRzIGFuZCBj
-aGF0IGhpc3RvcnkuIEkgaGF2ZSBubyBpbnRlcmVzdHMgaW4gdGFsa2luZyB0aHJvdWdoIGEgcHJv
-eHkKd2l0aCBzb21lb25lJ3MgTExNLgoKQmVzdCByZWdhcmRzLApLcnp5c3p0b2YKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Igor,
+
+Thank you for the run, and for reading the patch rather than only
+testing it. Both of your points are right and both are fixed for v8.
+I am answering your 1/10 question here as well so it stays in one
+place.
+
+> That is the v6 comment for the poll.
+
+Yes, and it should not have shipped. The cover letter withdraws the
+premise that comment states, the patch under it deletes the machinery
+it describes, and it has no code beneath it at all. It is gone in v8.
+
+For the record on how it survived: it was fixed in my tree the day the
+correction went to the list and the fix never made it into the series I
+formatted. That is the second time a fix has existed here and not
+reached what I sent, so I now diff the posted patches against the tree
+before sending rather than trusting that they match.
+
+> It would sit more naturally in 1/10, which already touches that
+> function, or in a patch of its own.
+
+A patch of its own, placed after 1/10 rather than before it. 1/10 is a
+fix with a Fixes tag that someone may want to backport, and it should
+stay the smallest thing that fixes the bug. Refactoring the function
+first would put the backport on top of a restructure it does not need.
+So v8 is 1/10 unchanged, then the extraction on its own, then the
+RK3576 patch with no shared-path changes left in it.
+
+> would a synchronize_irq(core->irq) before the guard in
+> rocket_reset() be worth having as well?
+
+I think yes, and before the guard is the only place it can go. The
+handler takes job_lock, so calling it inside the scoped_guard would
+wait for a handler that is waiting for the lock we hold. Before the
+guard nothing is held, and both callers, the timedout_job callback and
+reset_work, are process context, so it is safe there.
+
+It also closes exactly the window you describe rather than a different
+one. drm_sched_stop() stops the scheduler and returns; a threaded
+handler already running is untouched by it, and the comment sitting
+above that code says "Remaining interrupts have been handled", which is
+the assumption your reading breaks. synchronize_irq() makes that
+sentence true instead of hopeful.
+
+What it does not do is stop a handler that has already read
+in_flight_job from finishing its work on a job the reset is about to
+drop. That one wants the check and the write to be one step under the
+lock, which is what 1/10 does. The two changes are complementary and I
+will send them as such, with the comment reworded to say what is
+actually guaranteed.
+
+Your RK3588 numbers are also the only evidence anyone has that 1/10
+costs nothing on the path it protects, since I cannot run three cores
+here. Carrying the tag to v8:
+
+  Tested-by: Igor Paunovic <royalnet026@gmail.com> # RK3588, three cores
+
+One piece of news from the userspace side, since you run MobileNet
+through Teflon yourself. As of today the whole of MobileNet V1 runs on
+the RK3576 with the open stack: 995 of its 1001 outputs land within one
+count of the CPU reference, against 1001 channels of zero in every run
+before this. The kernel side of that is this series unchanged; what
+moved was four Mesa faults, the last of which was a coefficient buffer
+whose second operand has to be 16 byte aligned, which is why every
+layer whose output channel count was not a multiple of eight came back
+empty.
+
+Thanks again,
+Jiaxing
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
