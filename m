@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81B87C5CFEB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 07:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77C0DC5CFEB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 07:06:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s2KqykRyXsSHs0aSIytJFGhkaQJPaCmvcbA8v7v+VZA=; b=jdZ4mRwuMaI4An
-	A7cnSfWx1gRZZneyso9FCtLRoQ2017Jka3nWAfyHvNrU3FuY8RagiE5cxOiN5xkOuD3tEhBnFJtMo
-	E1X7OCiCYhICVERalCi41gq8exZ7ltUVM+F19+YSyaULG/JU1ZiYi4IHqe2Aye6YHUAW503P/wlkx
-	4l3s6d9gKb2ahFP42DpHjb7UPw2+xLEWx007AjG7imLxOlerd2mB+emHnQILhNTdyB4RyvLVrS+Io
-	QctY+qAfnpFxZsWSmn6SmFcGu8g6EcfbAecN7tcVLPgCSgJxmJJ3teIoSZgs0LfAV5SLjpHm7Ifx8
-	nV133612Q/DMq4C+ZQhw==;
+	List-Owner; bh=d0ZQJjubOn/MjsthTyyfA5x9yhFba1Sds85aN5gUPMc=; b=vTlkVH3MDO7qSc
+	UAGKEsy63yVzrFDC9lwaswgMBnKU6zfAVbwqxUAGzvqFq9DrAh0G8wcdROZS8OVrZcB3JWZ9UcNf6
+	usjf4lpwkiZr9qgCYd84m2+QShMzDIMMWltoS34Z0HKqU6+p5/InIalm1E6kJE5C3Vc+BlvTCD9Ux
+	uSAdZCYtF6I3ALFYK0CaELPUalA2CBQgzq6ix1/UM6yr38QMG4AxAOKo0GMEuYYbzDwZQQLdwWHkp
+	aFnVfgUWS3MV17NHH5uOIR741K/Pr77CTYlXCZnKfBqJIeSyvcjD77Hx631i+9tkP6g18AM7B7Jeo
+	BkrUPFEg+UWd4YnHMHgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuPUe-0000000HYg6-3fCH;
-	Thu, 13 Aug 2026 07:04:48 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wuPWQ-0000000HYrG-0cbE;
+	Thu, 13 Aug 2026 07:06:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuPUd-0000000HYfd-0rb4;
-	Thu, 13 Aug 2026 07:04:47 +0000
+	id 1wuPWO-0000000HYqx-0TxP;
+	Thu, 13 Aug 2026 07:06:36 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id EECED40764;
-	Thu, 13 Aug 2026 07:04:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86A561F000E9;
-	Thu, 13 Aug 2026 07:04:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 79D8840562;
+	Thu, 13 Aug 2026 07:06:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77E071F000E9;
+	Thu, 13 Aug 2026 07:06:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786604686;
-	bh=UgWct9UeMHk4UFxQ8VlRHLlm0oUzUbQW0gcOeCF6jPk=;
+	s=k20260515; t=1786604795;
+	bh=5gkzFo2+VnKiba/m6QDHWuLmIQSEjcsqyeD9BtdYCdE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=D5i0th3pYQMKiwMgNEoa1BpFL/0SSTZCFcvB9XduSctmIHD/XE/DkxQV4Hb7t7a3O
-	 jcxUPx+tHbFnXa51HVopZLAEfDmBsjpBtNo3qvptbCeOEEgvKGX2MwwGT9+/1Rwo1r
-	 Q+J+xq4+PAlB/1EFWPzaSKkl4bQoY0zvPu9cHv8wDrkV0FU/JNZpAUWOkf3jjPHX+x
-	 sv5BgEshyQkr4CuXPXvHydzBfpfl0ZvKdkoLFhbTS8o4N2AZyciqNqqPqU7GsZ5jAG
-	 UpJf5rlnBsuOyUvognZ0TKCPqnHlFtH7r9mXCA/fhoukVVrA2FcnkbYsxZXIXRrltP
-	 bRrcKN9+xOjKg==
-Date: Thu, 13 Aug 2026 09:04:37 +0200
+	b=LO7XnNmksRdPGuuVUvy4uIp1TNqnss+bW1hz0raYz9RVLB9K2Msgsgwbi+S77PMen
+	 EU929j5yne48ccdwHerg5SVsXmfM/l/6Fsc13FOojuYOe4cA+efThVEz/GwEjv+U7g
+	 bEUZuO4PJZ0PxH6thkO1thO+J+W63uADRHQ7BT64/Yjc3vPSNeCe1n4zJaSG47bJHR
+	 /Plvnr6vRz1KaNK4XkEp1In1rN3T/LC5p7IJcb7XUmYuq1E4rA6o95MXLnlu675/Y8
+	 ptXQEUJYFoSiQ8eJSCg0y24KdXivFsYdEEdgPRfs5Mkf3vnB6kIHeAKCl95shEvTqW
+	 XPXivBMAj9aAA==
+Date: Thu, 13 Aug 2026 09:06:24 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Jiaxing Hu <gahing@gahingwoo.com>
 Cc: tomeu@tomeuvizoso.net, heiko@sntech.de, robh@kernel.org, 
@@ -52,14 +52,14 @@ Cc: tomeu@tomeuvizoso.net, heiko@sntech.de, robh@kernel.org,
 	linux-rockchip@lists.infradead.org, iommu@lists.linux.dev, linux-pm@vger.kernel.org, 
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v7 02/10] dt-bindings: npu: rockchip: add
- rockchip,rk3576-rknn-core
-Message-ID: <20260813-apricot-bat-of-vigor-65ba20@quoll>
+Subject: Re: [PATCH v7 03/10] dt-bindings: power: rockchip: allow resets in a
+ power domain node
+Message-ID: <20260813-squid-of-splendid-hail-d968bf@quoll>
 References: <20260812094106.1391698-1-gahing@gahingwoo.com>
- <20260812094106.1391698-3-gahing@gahingwoo.com>
+ <20260812094106.1391698-4-gahing@gahingwoo.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260812094106.1391698-3-gahing@gahingwoo.com>
+In-Reply-To: <20260812094106.1391698-4-gahing@gahingwoo.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,26 +76,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 12, 2026 at 09:40:57PM +1200, Jiaxing Hu wrote:
-> The RK3576 NPU has two cores of the same RKNN block the RK3588 binding
-> already describes, but it wires them up differently: two extra CBUF
-> clocks, two power domains per core, and a single reset instead of two.
-> It also has no NPU SRAM supply.
+On Wed, Aug 12, 2026 at 09:40:58PM +1200, Jiaxing Hu wrote:
+> Some domains do not come up in a usable state on their own and need
+> their resets cycled once power is on. The RK3576 NPU domains are one
+> case: without it the first access after power-on takes an async SError.
 > 
-> Widen the property ranges to cover both, then pin each SoC back to its
-> own shape in allOf so nothing loosens for RK3588, and keep sram-supply
-> required for rockchip,rk3588-rknn-core only.
+> pd-node has no resets property and every nesting level is
+> unevaluatedProperties: false, so describing that in DT is rejected
+> today. Add it alongside clocks.
+
+This paragraph is redundant. Why are you explaining correct syntax?
+
 > 
 > Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
 > ---
->  .../npu/rockchip,rk3588-rknn-core.yaml        | 47 +++++++++++++++++--
->  1 file changed, 44 insertions(+), 3 deletions(-)
+>  .../bindings/power/rockchip,power-controller.yaml         | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> index b41db576f..f23c1a118 100644
+> --- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> +++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> @@ -136,6 +136,14 @@ $defs:
+>            A number of phandles to clocks that need to be enabled
+>            while power domain switches state.
+>  
+> +      resets:
+> +        minItems: 1
+> +        maxItems: 30
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+30 resets per one power domain? and none got to the example in this
+file?
 
-Best regards,
-Krzysztof
+> +        description: |
 
+Do not need '|' unless you need to preserve formatting.
+
+> +          A number of phandles to resets that need to be cycled once the power
+> +          domain has been switched on, for domains whose logic does not come up
+> +          in a usable state by itself.
+> +
+>        domain-supply:
+>          description: domain regulator supply.
+>  
+> -- 
+> 2.43.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
