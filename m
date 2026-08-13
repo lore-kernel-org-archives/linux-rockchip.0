@@ -4,44 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5256C5B572
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 06:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81B87C5CFEB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 07:04:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xx3qgJ4TrdMxIphCXy2/pMqaxvMJFuOKyJd2MiJwf0s=; b=gZwbo+Fz0hGoTG
-	nMHa1g1j6TsjsdaHq4Qx0rg3I81XUSzmjabwwE9Io5m2vgbJFOjzh+/9PktTBhi4KHFnqj5BRY1YR
-	vg/YfL28lfhdZKnKGhPGU1baEKbBsqhjDC5zU0eSvNY8ueXxVdbsy9UWjH/qh8dSlS+uQRfJn6ubl
-	5OxpU7C6am0TCiM+n/lmq3Txom/l4NYQiAVFEGal3E/XxDxZNEsfNDYFNtgPp2jSuZZCZEf4iznDk
-	Jd0+SDikCcvE2NpUnNe2DfnjFavmyP+631ZvpTWkgyqRdOBBGEgRZi2305+DsB8IZPPvZ7i20MEwq
-	Rmsc35DWSs4M6W4pjqgQ==;
+	List-Owner; bh=s2KqykRyXsSHs0aSIytJFGhkaQJPaCmvcbA8v7v+VZA=; b=jdZ4mRwuMaI4An
+	A7cnSfWx1gRZZneyso9FCtLRoQ2017Jka3nWAfyHvNrU3FuY8RagiE5cxOiN5xkOuD3tEhBnFJtMo
+	E1X7OCiCYhICVERalCi41gq8exZ7ltUVM+F19+YSyaULG/JU1ZiYi4IHqe2Aye6YHUAW503P/wlkx
+	4l3s6d9gKb2ahFP42DpHjb7UPw2+xLEWx007AjG7imLxOlerd2mB+emHnQILhNTdyB4RyvLVrS+Io
+	QctY+qAfnpFxZsWSmn6SmFcGu8g6EcfbAecN7tcVLPgCSgJxmJJ3teIoSZgs0LfAV5SLjpHm7Ifx8
+	nV133612Q/DMq4C+ZQhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuP6J-0000000HUd7-2LgN;
-	Thu, 13 Aug 2026 06:39:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wuPUe-0000000HYg6-3fCH;
+	Thu, 13 Aug 2026 07:04:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuP6I-0000000HUcV-1ZiY;
-	Thu, 13 Aug 2026 06:39:38 +0000
+	id 1wuPUd-0000000HYfd-0rb4;
+	Thu, 13 Aug 2026 07:04:47 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 920CA43C24;
-	Thu, 13 Aug 2026 06:39:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4EF91F000E9;
-	Thu, 13 Aug 2026 06:39:27 +0000 (UTC)
-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-To: linux-pci@vger.kernel.org, 
- Marek Vasut <marek.vasut+renesas@mailbox.org>
-In-Reply-To: <20260728012548.465139-1-marek.vasut+renesas@mailbox.org>
-References: <20260728012548.465139-1-marek.vasut+renesas@mailbox.org>
-Subject: Re: [PATCH 0/2] PCI: dwc: Handle return value from endpoint
- .init/.preinit callbacks
-Message-Id: <178660316742.413588.14087680266052241971.b4-ty@b4>
-Date: Thu, 13 Aug 2026 08:39:27 +0200
+	by sea.source.kernel.org (Postfix) with ESMTP id EECED40764;
+	Thu, 13 Aug 2026 07:04:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86A561F000E9;
+	Thu, 13 Aug 2026 07:04:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1786604686;
+	bh=UgWct9UeMHk4UFxQ8VlRHLlm0oUzUbQW0gcOeCF6jPk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=D5i0th3pYQMKiwMgNEoa1BpFL/0SSTZCFcvB9XduSctmIHD/XE/DkxQV4Hb7t7a3O
+	 jcxUPx+tHbFnXa51HVopZLAEfDmBsjpBtNo3qvptbCeOEEgvKGX2MwwGT9+/1Rwo1r
+	 Q+J+xq4+PAlB/1EFWPzaSKkl4bQoY0zvPu9cHv8wDrkV0FU/JNZpAUWOkf3jjPHX+x
+	 sv5BgEshyQkr4CuXPXvHydzBfpfl0ZvKdkoLFhbTS8o4N2AZyciqNqqPqU7GsZ5jAG
+	 UpJf5rlnBsuOyUvognZ0TKCPqnHlFtH7r9mXCA/fhoukVVrA2FcnkbYsxZXIXRrltP
+	 bRrcKN9+xOjKg==
+Date: Thu, 13 Aug 2026 09:04:37 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: tomeu@tomeuvizoso.net, heiko@sntech.de, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, joro@8bytes.org, will@kernel.org, 
+	robin.murphy@arm.com, ulfh@kernel.org, p.zabel@pengutronix.de, ogabbay@kernel.org, 
+	zhangqing@rock-chips.com, royalnet026@gmail.com, alchark@flipper.net, 
+	chaoyi.chen@rock-chips.com, diederik@cknow-tech.com, dri-devel@lists.freedesktop.org, 
+	linux-rockchip@lists.infradead.org, iommu@lists.linux.dev, linux-pm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v7 02/10] dt-bindings: npu: rockchip: add
+ rockchip,rk3576-rknn-core
+Message-ID: <20260813-apricot-bat-of-vigor-65ba20@quoll>
+References: <20260812094106.1391698-1-gahing@gahingwoo.com>
+ <20260812094106.1391698-3-gahing@gahingwoo.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.15.2
+Content-Disposition: inline
+In-Reply-To: <20260812094106.1391698-3-gahing@gahingwoo.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -53,25 +71,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: imx@lists.linux.dev, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Vignesh Raghavendra <vigneshr@ti.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Frank Li <Frank.Li@nxp.com>, Niklas Cassel <cassel@kernel.org>, Koichiro Den <den@valinux.co.jp>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Rob Herring <robh@kernel.org>, Jesper Nilsson <jesper.nilsson@axis.com>, Magnus Damm <magnus.damm@gmail.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Siddharth Vadapalli <s-vadapalli@ti.com>, Shawn Lin <shawn.lin@rock-chips.com>, Srikanth Thokala <srikanth.thokala@intel.com>, Manivannan Sadhasivam <mani@kernel.org>, Qiang Yu <qiang.yu@oss.qualcomm.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-omap@vger.kernel.org, Qianfeng Rong <rongqianfeng@vivo.com>, Mingkai Hu <mingkai.hu@nxp.com>, Roy Zang <roy.zang@nxp.com>, Minghuan Lian <minghuan.Lian@nxp.com>, Jingoo Han <jingoohan1@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Yuho Choi <dbgh9129@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ck9uIFR1ZSwgMjggSnVsIDIwMjYgMDM6MjQ6MjMgKzAyMDAsIE1hcmVrIFZhc3V0IHdyb3RlOgo+
-IFRoaXMgaXMgYSB0cml2aWFsIHByZXBhcmF0b3J5IGNoYW5nZSB3aGljaCBhbGxvd3MgY2hlY2tp
-bmcKPiB0aGUgc3RydWN0IGR3X3BjaWVfZXBfb3BzIC5pbml0Ly5wcmVfaW5pdCByZXR1cm4gdmFs
-dWVzLgo+IAo+IEN1cnJlbnRseSBvbmx5IHRoZSBMYXllcnNjYXBlIFBDSWUgY29udHJvbGxlciBi
-ZW5lZml0cyBmcm9tIHRoaXMgYXMKPiBpdHMgbHNfcGNpZV9lcF9pbml0KCkgbWF5IGZhaWwgaW4g
-ZHdfcGNpZV9lcF9nZXRfZnVuY19mcm9tX2VwKCkgY2FsbCwKPiBidXQgdGhlIFJlbmVzYXMgUi1D
-YXIgR2VuNSB3aWxsIGJlbmVmaXQgZnJvbSB0aGlzIG5leHQuCj4gCj4gWy4uLl0KCkFwcGxpZWQs
-IHRoYW5rcyEKClsxLzJdIFBDSTogZHdjOiBIYW5kbGUgcmV0dXJuIHZhbHVlIGZyb20gZW5kcG9p
-bnQgLmluaXQgY2FsbGJhY2sKICAgICAgY29tbWl0OiBmYWNlMzY1NDU3NDEzMTczZDRlZjRiYWY4
-ODdlOTNiM2UzZWRkODA1ClsyLzJdIFBDSTogZHdjOiBIYW5kbGUgcmV0dXJuIHZhbHVlIGZyb20g
-ZW5kcG9pbnQgLnByZV9pbml0IGNhbGxiYWNrCiAgICAgIGNvbW1pdDogYzEzNjZiNzJhZDRlODdi
-ZTYwYjU3Yjc0NjM1YTNhMGJjNThkMmIwYgoKQmVzdCByZWdhcmRzLAotLSAK4K6u4K6j4K6/4K61
-4K6j4K+N4K6j4K6p4K+NIOCumuCupOCuvuCumuCuv+CuteCuruCvjQoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Wed, Aug 12, 2026 at 09:40:57PM +1200, Jiaxing Hu wrote:
+> The RK3576 NPU has two cores of the same RKNN block the RK3588 binding
+> already describes, but it wires them up differently: two extra CBUF
+> clocks, two power domains per core, and a single reset instead of two.
+> It also has no NPU SRAM supply.
+> 
+> Widen the property ranges to cover both, then pin each SoC back to its
+> own shape in allOf so nothing loosens for RK3588, and keep sram-supply
+> required for rockchip,rk3588-rknn-core only.
+> 
+> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+> ---
+>  .../npu/rockchip,rk3588-rknn-core.yaml        | 47 +++++++++++++++++--
+>  1 file changed, 44 insertions(+), 3 deletions(-)
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
