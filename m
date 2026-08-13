@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94DB9C5DF6E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 20:58:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBF1EC5CFDB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 20:58:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CkS+8f7UEevOi9Gfqp8ciTLCfdiHu8QLV/pa/k+Udxg=; b=r0XnoOmCJO74VE
-	118Aw2ReNpM5RtwihrFAEbAD6qXx2opInp+ZDCUPmGNyUIKnVUWYKwBXMIUI1qkjhqkz4ESZsAr+S
-	tOJK6bHQVzoyuhwm5imnqwb5E8zK9Erh9Aa6vK1fXcXMnl7qywyjWWOZzT8tIKFRuWqIXsnB/lStv
-	Pz128Dh3urmDHoYrEE9o5/cOtlM2xxLDy0y0ryJ/zy9YiFVRgV8yluCrJcG1H2h5XLjIJ2cr8WZ38
-	MhUmJuULjtNTfBp2PRcjARm8lR4TigPXukss4fJQDSoDR0SdMwKJv1mL3MuSD13bCgZYn1NuFPYwm
-	5tsUlxTaKqXoH1puPtRg==;
+	List-Owner; bh=PAJUvvt9h5QYFJA7s1RdCDeMLee6h8sV42jX8Gy7RNg=; b=o4yIc7UiXgfXfH
+	+wHoLygi/lblLBAOqlw50k7EUr9+Yxvljo5+ru5dup9XTSP24XmtC9nCQfLu0E/cTSUZsgabytYq7
+	zJqiiVH8nkOJ5ccERtNoUAmxIbu79u/aYSaxcsKkR3QmPelrilDE64TL2y3HmhaXhlOT0OhsthZ3W
+	AHgZLAX2xxwuKonFvnTFTGOwA7nW9K8BqM8SUfU++H/6SO73G/2TR+xUwBmkerSYE3FXJiCQ1dc8g
+	TevRe1QtXymgr807pncAUDim3P1NbOU5iZWe9mILss2onxiPJj9J2WWVwuQcGEh6MOEuklhAfExXH
+	XczpKYf1FBo0oYKwplIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wucV3-00000001b93-0qXN;
-	Thu, 13 Aug 2026 20:58:05 +0000
+	id 1wucV4-00000001bCE-1Fv3;
+	Thu, 13 Aug 2026 20:58:06 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wucUo-00000001axf-3vMf;
-	Thu, 13 Aug 2026 20:57:53 +0000
+	id 1wucUr-00000001azV-43jD;
+	Thu, 13 Aug 2026 20:57:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1786654668;
-	bh=GHi/0FLE10kzyAmrm07WFRDt6rwX8EVRnOD0MyaLeJY=;
+	s=mail; t=1786654669;
+	bh=5++WUnhYCSGnCuoyK1wn6bt/tbeLPu0eYE6lmnwMe74=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=f7SGli9wg8ZxFYynXep8y2sCZm17P46mGiXOgCK7otAHi1xB4cDNSj9ezTfl4N0CQ
-	 6OBKpueX4MRwTC7ucJwKhxMR2I6wgB+WUp0yHsVgZMGmaSQ9ugWXZjqrULdsBKxkSa
-	 03u4Mgb1bUPQ5vbPg6Wv9pwbz640YhwGEUnS5y5PEegS4IFqxfNjiGYgcHxsLqYqRB
-	 9zu1QbP1VLI5Gboik2VEA4qvtYyMx907h79aEFUEindv8ymVq55hbeQx4goRNY3Ekc
-	 mER6G8JLSkyHRrio8iahXTozDONaBMQ2jrXhlBNGz8ipujZ+LVTv4xbJ+CAH4OFPwJ
-	 NGfMLGP44NBFQ==
+	b=j+gcyugQy04ug1J/cIqWJ+Tdpkqtk+81bso1Ys1M2gR3IuIELh9RtRLNSk8NYLYuG
+	 gd5qFHiUvVjjPAzA7MAAeqBkclV5F66Mu4ELEv+Cfp6URDOlgE4Z/dFAgbLJDKJOKo
+	 4Wd2vekGAAse8lMVh6xdKzlUKhXiWtKDHxbvbe9RG0hfWMpIXlHIHsllOvFKzav8Ah
+	 JSMXnuxkcdwmN4D7K9tEUpy/kxcXTCDm/E0WDB6EJc9Yl8Z4SOau173dVpt0lsjJTg
+	 e78vM3AmQocCmgAVNhUFF4gckN2zTesvM7wAjvOc3qkfm5iKhNM5K9i4Xl0XLgfb1b
+	 9fHcMqxWIU7cg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 93EC017E0F83;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E5C0917E10BC;
 	Thu, 13 Aug 2026 22:57:48 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id CE40148007C; Thu, 13 Aug 2026 22:51:49 +0200 (CEST)
+	id B4A79480067; Thu, 13 Aug 2026 22:51:49 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 13 Aug 2026 22:52:20 +0200
-Subject: [PATCH v14 37/38] phy: rockchip: usbdp: Re-init PHY on mux change
+Date: Thu, 13 Aug 2026 22:52:04 +0200
+Subject: [PATCH v14 21/38] phy: rockchip: usbdp: Properly handle
+ TYPEC_STATE_SAFE and TYPEC_STATE_USB
 MIME-Version: 1.0
-Message-Id: <20260813-rockchip-usbdp-cleanup-v14-37-b5ad9c68fa11@collabora.com>
+Message-Id: <20260813-rockchip-usbdp-cleanup-v14-21-b5ad9c68fa11@collabora.com>
 References: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
 In-Reply-To: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
@@ -66,28 +67,29 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  kernel@collabora.com, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Sashiko <sashiko-bot@kernel.org>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1119;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1828;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=GHi/0FLE10kzyAmrm07WFRDt6rwX8EVRnOD0MyaLeJY=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp+LmUTSX0JDAOgsQKAZtnwnYa5DdOH9Zh+9
- sLairNH6I5T94kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqfi5lAAoJENju1/PI
- O/qaW4YP/1JZq4gwKo3oHTtABtWAa3Si6DOlj1fAcak7W1/qzZw/Y7fGkAgbVFhaRedokSjjVWu
- wa3IvTcM2hxoKCJqJQzHEEHKMIuSAX6MzYJKcBkfuNNBOhXr0VzTOpXcBeGiAPiUAGn/zaxkNxr
- M1nMeFMXGW3blwjj04lXhpEWY2T5Q9GvqT/Y7hTvyqdODz9892v+y36iWISLdo+vDp7sR5lodLj
- F5BV752jyBcbC2ti0ekpBKRhgtr+iQyeCNX97TeYL6Fm+ARhW0NPtP/VemAAyXvOA1Z2M4WD+tY
- 2jiYP/VgTurE85DOOI0E6AFL3VbZuk5zejJcHro3Rvl21nnhfe1wR3HpoXaPRE2BqFLdq5QJgW9
- Bj4DhjucKudph0qyAVR65yYmGgyHx5LkMt690T011/tIrgVbH736zOF0Ie6WzuWMcv7gGkQkCmr
- c2hIfE7HY9kbqyd4LAoTcUtC7fwmU0QQsxaXs2HpakYXEdCoDblj35tDyT8cTaRi1HY1ZFF0Axc
- Nz42Eqvg007rY0C+iz5zOTmRnmJaecyqQhIAMZ5qpWZNvYnu+JSzaEvght6OOb4PbnYTysRAn77
- SKOWk0DcQ1WXyGvLGPzF/vYnclWifha7XvFtXzixkMAFabl+9+lcGSR6Kc6Jxae/otYJLVOqPa/
- JZLU/C4Mo9IMv+uaMPpQuOw==
+ bh=5++WUnhYCSGnCuoyK1wn6bt/tbeLPu0eYE6lmnwMe74=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGp+LmQjR9TiFFz4ChHyq9ZUQNrsfSTyPXsdO
+ YUTRyohqp8uB4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqfi5kAAoJENju1/PI
+ O/qayPQP/RSaRXsnAwHtNUyUJnHjiIVkxyU2STfol3WfWuSVHymkcVRPkbsiI9OOZvDNaeBpHES
+ eo5hyltXzm/JN5vH35uuuT1h0mDX5p6/e8YAlFMSEDXopITScG0pxheqV2OgdHv63yHy1hVRhwG
+ qkmyHvldKyhc/HKLKWfo8YHVdNLMPRQa9m2TRVSRm2x4a/QC+KVKDDBakMcOSHKkWlUBkWFa32t
+ qbhxpbGdkq+KbFfKflbNMtA/HN6zRNYr9UDyMqCj9PeoTz0Es7Az3ofZsVshZO4KE4eewYju0+X
+ 1LTNQ+19+VTpw/RsSYIPrRVn7H23SxkvamGxfDuTsLTkk1ME+3woAxk4MhRn2NMxDZ/Wgw4OUU9
+ pllDbk2NUYcDyMiyjekEYgaiqNxwHh4VnKExvNnPqZRDe243y75WH7DnMwa5euQEO8cuUDQt95+
+ hhJT8dMHRz1PcHvj5JczfmnpzAW3hm7SZWi0MwmEXkX2TSC+2xETBEDugyaEkYDRFc1eh2NHohW
+ onzfpdRDgCJtQevxdDngzMUDVo7ds/85INPD7n62IuacKOZkL37JOH6IGhDS+1M4JF3X/Uo7U2X
+ e5IPA3ZvtaeUigHGtipli64NGqPNGMITazGpaELU78JLZN4W4aYv4ag7tEcq9+Hjxh2A6vnMAA8
+ tqsegZtnzluyl1ZhdTR0r3g==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260813_135751_135925_BAC3C2B6 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20260813_135754_190405_9B45EAEF 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,33 +106,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ensure that the right part of the PHY are powered up when the
-mode changes. This ensures the PHY is re-initialized in the
-following two scenarios, which are currently broken:
-
- - cable orientation changes without DP being involved
- - switching from DP-only into a mode with USB support
+Handle TYPEC_STATE_SAFE and TYPEC_STATE_USB Type-C state events,
+so that the muxing is properly updated when exiting DP AltMode.
 
 Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://sashiko.dev/#/message/20260619155020.CC7361F000E9%40smtp.kernel.org
 Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index e597cdfe8d79..87d6df682176 100644
+index 4e54020d1755..0399cbf96e19 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -1392,7 +1392,7 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+@@ -1293,17 +1293,26 @@ static const struct phy_ops rk_udphy_usb3_phy_ops = {
+ 	.owner		= THIS_MODULE,
+ };
  
- 	rk_udphy_set_typec_state(udphy, state->mode);
++static bool rk_udphy_is_supported_mode(struct typec_mux_state *state)
++{
++	/* Handle Safe State and USB State */
++	if (state->mode < TYPEC_STATE_MODAL)
++		return true;
++
++	/* Handle DP AltMode */
++	if (state->alt && state->alt->svid == USB_TYPEC_DP_SID)
++		return true;
++
++	return false;
++}
++
+ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+ 				  struct typec_mux_state *state)
+ {
+ 	struct rk_udphy *udphy = typec_mux_get_drvdata(mux);
  
--	return 0;
-+	return rk_udphy_update_power_state(udphy);
- }
+-	/*
+-	 * Ignore mux events not involving DP AltMode, because
+-	 * the mode field is being reused, e.g. state->mode == 4
+-	 * could be either TYPEC_MODE_USB4 or TYPEC_DP_STATE_C.
+-	 */
+-	if (!state->alt || state->alt->svid != USB_TYPEC_DP_SID)
++	/* Ignore mux events not involving USB or DP */
++	if (!rk_udphy_is_supported_mode(state))
+ 		return 0;
  
- static void rk_udphy_typec_mux_unregister(void *data)
+ 	mutex_lock(&udphy->mutex);
 
 -- 
 2.53.0
