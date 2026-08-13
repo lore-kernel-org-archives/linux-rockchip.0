@@ -4,94 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF12AC5B572
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 11:08:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D30AC5CFDB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 11:38:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CRylBI5S5jQkYRfKtWWnHQefFatYues++fLF4mD4mtU=; b=tW7aevZ3JbG61F
-	aevmAq1/vYt1CSl+sFAt+L1+lSNd9phvaAmWOfGlC0ssoQMly17NhaPYsSJdBuMRL9G7ry/EgiREn
-	tdDGZ/nAv919Ov8PL6UUfzcgH7s8mEiyI+0XAz4jmfww2onYK5t08jpKGiMhiuZljWHHvRyr4chtR
-	/GxUUDZiLSWQ9wAGUrtrFRQM69tDUV+pQGLW+RlePVCDDZQdf02UAZHYjnIDxgHf3kGFZh0cdOb/X
-	SgsHndLS5uGtO9Xpr38gEPzTFDR/QzgXrLaE0zqn7BuJA/I0Yr2KW2wrfVLjlKbm8+6e1oCNS1zNT
-	54YJ21wCm29X71f2QCAQ==;
+	List-Owner; bh=E9tTYzOkF19CiVZUTEXSO4B2eUfXOQgnpCGIIdtgVpc=; b=1kf+e/RSD/m6rt
+	174It8eblEwpaIh242hJuA6ywfxAifY2+zHii6GoWCwnwHVGc8OY+5ahmc8gudBkpgoHHsyJ411Kb
+	Vcs3XvW6pFaRQQus9SsA5NA+5l8JCtliv7O3QnSxzjjnewjrvG/2nZ7nTlNSEnFs6J15LNKYHXXUn
+	aVFcLzCACvVVwnzuDJXsMemoErpcIkfwuT5iiW1FGYrg1ad6eT7wgo3fO3ztRUO3DfUXd/sG6Btw7
+	xoCvgvB36OJFWCChe4xgJn4zNEoLlIY0Z8yCv7YRMfdPGi3alQmxArHK8k6BHVzHgf+BbkktqMsn8
+	Dw9gnyua/beTrPeZW2KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wupmE-00000002ZIT-2ddq;
-	Fri, 14 Aug 2026 11:08:42 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1wuqEl-00000002bGF-3yGw;
+	Fri, 14 Aug 2026 11:38:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wupmB-00000002ZHQ-3GJA
-	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Aug 2026 11:08:41 +0000
-Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-4954b3c5cbeso346355e9.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 14 Aug 2026 04:08:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786705717; x=1787310517; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=7S7sFuRCjatzs09JKRbH4HGwrINbYlULF/Unkzu0baA=;
-        b=RDqq35jUsTAvM16xD3zfMwdy50gvnedHsFD7CS3h8F5zr5z/uVSGZDljtJEMIkxn0T
-         OjaULCgwZqIOWJCww2Ce5riZpX+9EZ5lAUJaP/U4lXltxj0Ma9OYV9ZUD9O5Pyp6vjXA
-         yex9pPoBQaeNyooGSdERn7+V7WJ5RIXXg9FhAsM+Vk09F/XAJiI9G9UoZcCwX3xSnLNI
-         yYTiRcGZThvkQfBe2Jdao0ycXKb6UnY+v4xitxFFu5Kl8tCSb80FqBgXI1Bre+NiOVkE
-         pKMnG9QAE0Kqri+et91L8tsgkCf0j/9lLMABXKXSZdp0PjQmO+RsWTI53jCYcRP8Cz92
-         luYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786705717; x=1787310517;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=7S7sFuRCjatzs09JKRbH4HGwrINbYlULF/Unkzu0baA=;
-        b=LQ0Jwc/pn0fwEpVApTBkSDDTqdp3OWlkgzmdpfz4eh4Cvv++F3vhbZ7WDF9vZA6aN2
-         sALZrkaueCb/xfAyM/bqz447qOW4VcqIQIGHb6ab3VIopetKzHRca3cYGdX+llSNteQ/
-         a/bnLzkgetTV1ZK4p6l0+oifRT1ZeLobB5UcewHTxynSkAttZKRryX5fiWljfdnv3gnc
-         L1BbeY7GnR3E3RZjAQIWrocbYcYwJJCRNR631/nipsSiJiCfoJu3U/X1OuySbt3nJcUJ
-         LwLd3Yf1WgYwOQj1ET7ckfYN8Ew5lQLKTNmfqILRx7Rqxmw1WhbGXzyIvalj9NxRKbX2
-         NKXA==
-X-Forwarded-Encrypted: i=1; AHgh+RqKqPl/fY/nqDElVvAJD4L2WIjNC/g4s++lgnP3tgfWVufUL2BoPi4Q+lg4S9XhKlcLAmxvjJ+UmF8UTMYgzQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxj2gGCJ3mjAZC88mi1wEqzUaXKwl+JZbzpScWBiqcOOuppLfkK
-	FbJ8VUSSCuIE9Fz9qA0m3Q6qYGQrJODdfb/VlH3mBjSp5J2ArCcZNVXc
-X-Gm-Gg: AR+sD13FohEILSZDw0Gc8gdi8bBH0ittdFq6JWBcanipfmaYGScDmZ89jG9vD/w8TDb
-	IYP1d3xPPE7YPQ6G74f6KjIxno6jcMaT3hgP0CHbKOfEL8M0qupHNVAf67qnQkEjgfsEYFc19ri
-	VGfuW9eTWIqHPEnX1G9nt1bAHCDOFU2BmxRPYNvr5s+ZRNEXbxz5RN3ccj4kdYnSOHgeUEGHZta
-	BeqWSQXK8/YCJClE/jXW3RIpliWimjgGWnQxwCTdIz8d0XS2nrjVEKVkoLiX36KFDH2Yro7KnVu
-	NfEz9zqN1aHi/lK6jiS+wAA1J+Wid0wTU+J8GlcGKA38Q0ihzvfvHUS7GnsVnGvARlrm//rnhjq
-	k5Sg8oVlLZzsan6sImyJXP6n1Xm+6xJQ6rGNNCQxg0/xtMZK4vzl9YygEEBi+zUrlT6Q8YuHXBp
-	Lj2lJlQZt1IAOPcQoEaTAOWNeTZNJ9IS+le3VwAXsjo6tidLkEv1oK71ZcyCOlF3Kcwx4a5sx0j
-	NCvQKojSuorKpU2PWYFiBtPQDRBU59zYTZU71tJsOGDRZBTqqGUwZdhGJqy1uDn5BxfGg==
-X-Received: by 2002:a05:600c:1395:b0:499:77de:78ba with SMTP id 5b1f17b1804b1-499879826b2mr34045235e9.2.1786705717053;
-        Fri, 14 Aug 2026 04:08:37 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8D33002713106A8ABE6E8B.dsl.pool.telekom.hu. [2001:4c4e:1b8d:3300:2713:106a:8abe:6e8b])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-499877d7974sm37724265e9.1.2026.08.14.04.08.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Aug 2026 04:08:35 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: Igor Paunovic <royalnet026@gmail.com>,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	alchark@flipper.net,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v7 08/10] accel/rocket: add RK3576 NPU (RKNN) support
-Date: Fri, 14 Aug 2026 13:08:21 +0200
-Message-ID: <20260814110825.14893-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260814082652.3852617-1-gahing@gahingwoo.com>
-References: <20260812094106.1391698-1-gahing@gahingwoo.com> <20260812094106.1391698-9-gahing@gahingwoo.com> <20260813095718.9747-1-royalnet026@gmail.com> <20260814082652.3852617-1-gahing@gahingwoo.com>
+	id 1wuqEl-00000002bFn-13Vp;
+	Fri, 14 Aug 2026 11:38:11 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 40C85600C3;
+	Fri, 14 Aug 2026 11:38:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F16A1F00A3F;
+	Fri, 14 Aug 2026 11:38:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1786707490;
+	bh=VxlozOHTV0l7kH01VkY8gMQr+CBC1D950EXG7JLaJQA=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=KepxzxOdSYKlibc5rEqXOGzBXVMFs1aQ1AWkQvi595DOpbfObOGWdjN1Mc78QnPxf
+	 CV6LbtEgYVhqByWeVVFCwzbE+vyfMQUqNunj2/5vGwu1hFYOwZHh43k67r52FshhyS
+	 FVwAoFhKIxCB9dYoLpCWOs0dh/il8BKHZAPgpAWboFG+BfaHSEfwyyjhca3erZarrB
+	 ymKGZb5iU0F+Vu+ZyEW9p4NUHFUEYDmTEjt79GSDWwVSKJTkub9/jb70BeNbGtQXTJ
+	 wM5jHPePD3YVU8y8V3hwuHP6NFTP3rXTC8OrMmO2RuJXFgfiZPWwr92Vs1XIZzi+Bk
+	 7Kqrz048g5HMw==
+From: Mark Brown <broonie@kernel.org>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ linux-rockchip@lists.infradead.org, phucduc.bui@gmail.com
+Cc: linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20260806052136.21034-1-phucduc.bui@gmail.com>
+References: <20260806052136.21034-1-phucduc.bui@gmail.com>
+Subject: Re: [PATCH 00/14] ASoC: rockchip: Simplify probe error handling
+Message-Id: <178663242938.110398.4616104123339333100.b4-ty@b4>
+Date: Thu, 13 Aug 2026 15:47:09 +0100
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260814_040839_833519_86AB602C 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3083; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=X+bkHMIykGMfgTnFl5dYB3gFs/d1nAs0ablI5dIyuq4=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqfv4dF0ELklDTaytUOl3gquXr3axUlVMYXBwQo
+ 1zxlqyUExOJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCan7+HQAKCRAk1otyXVSH
+ 0GiuB/4+eK/zn9anwX0PkYIkZrXfGhmYu9bJt/AudK1M4kG6Hscfr/jvlLrncqp0ySlP4PrVWZo
+ y19XgIcfarO6vNf9pESDLYcK4TbEopvlwz1AimPqRRjFMUDVapCXMcA2XASw/JgwQ1HEHNB2hKW
+ xRQMiNQe4DPLp6npE4yZVxMDChCMHuleA2qEGbioQGc+8dEDyzN0CkIJPa3koXXXMgai0SnIkc+
+ lK/1rNPaXlqCdq/oCr0xhi5kVmMQH1lla/liD6ajFrGVQU/Xj3Bz22rRhLfv2Stqed1Y28Tt/bn
+ NZhofyWyJK5k3oUKIBtzLsE6J4ZHJy9BNEnSUeWuMxAD2tW1
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,79 +83,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jiaxing,
+On Thu, 06 Aug 2026 12:21:22 +0700, phucduc.bui@gmail.com wrote:
+> ASoC: rockchip: Simplify probe error handling
+> 
+> From: bui duc phuc <phucduc.bui@gmail.com>
+> 
+> Hi all,
+> 
+> This series simplifies probe error handling across Rockchip ASoC drivers.
+> 
+> [...]
 
-Here is the RK3588 column, all 27 operators, ROCKET_SEED=7, scored the
-way perch.py scores: a channel is good when its maxdiff (md below)
-against max(cpu, output zero point) is at most 1.
+Applied to
 
-Setup: Orange Pi 5 Plus (RK3588), kernel 7.2.0-rc6, the rocket driver
-from this kernel's tree rebuilt with my clocks-by-name and devfreq
-patches on top, Mesa at bf70ab68a21, teflon delegate, model
-mobilenet_v1_1_224_quant.tflite from the Mesa test suite
-(md5 4f348b87dca3315d2b3646cf5a3b31cf), per-operator models generated
-with the four byte output patch you described. The "correct hw" column
-is your chainmodel.py against the same model file. One difference to
-flag up front: against this model file chainmodel prints 36/256 for
-operator 8 where your table has 34/256, so our model files are not
-byte-identical, and the columns below should be read against each
-other rather than against your FINDINGS numbers.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.3
 
-  op  kind        correct hw       RK3588
-  0   conv         32/32   md 1     32/32   md 1
-  1   depthwise    28/32   md 3     28/32   md 3
-  2   1x1          22/64   md 6     22/64   md 6
-  3   depthwise    21/64   md 13    21/64   md 13
-  4   1x1          18/128  md 14     8/128  md 15
-  5   depthwise     9/128  md 13     3/128  md 15
-  6   1x1           4/128  md 23     1/128  md 24
-  7   depthwise     7/128  md 10     3/128  md 12
-  8   1x1          36/256  md 7     20/256  md 17
-  9   depthwise    32/256  md 11    22/256  md 13
-  10  1x1          29/256  md 9     28/256  md 10
-  11  depthwise    53/256  md 8     48/256  md 11
-  12  1x1         166/512  md 11   121/512  md 13
-  13  depthwise   142/512  md 9    137/512  md 12
-  14  1x1          82/512  md 7     72/512  md 10
-  15  depthwise   154/512  md 10   115/512  md 15
-  16  1x1          82/512  md 7     71/512  md 10
-  17  depthwise   156/512  md 14   141/512  md 21
-  18  1x1          92/512  md 7     77/512  md 10
-  19  depthwise   170/512  md 7    152/512  md 12
-  20  1x1         102/512  md 8     84/512  md 10
-  21  depthwise   166/512  md 13   150/512  md 12
-  22  1x1         174/512  md 6    161/512  md 7
-  23  depthwise   293/512  md 5    261/512  md 7
-  24  1x1         671/1024 md 6    636/1024 md 5
-  25  depthwise   718/1024 md 9    684/1024 md 8
-  26  1x1         572/1024 md 25   574/1024 md 23
+Thanks!
 
-Three things stand out from here.
+[01/14] ASoC: rockchip: rk3288_hdmi_analog: Drop redundant probe error messages
+        https://git.kernel.org/broonie/sound/c/931f4a1223e1
+[02/14] ASoC: rockchip: rk3288_hdmi_analog: Use dev_err_probe() for error handling
+        https://git.kernel.org/broonie/sound/c/06f5854050f5
+[03/14] ASoC: rockchip: rockchip_i2s: Use dev_err_probe() for error handling
+        https://git.kernel.org/broonie/sound/c/b5e4b1159743
+[04/14] ASoC: rockchip: rockchip_i2s: Drop redundant probe error messages
+        https://git.kernel.org/broonie/sound/c/c1bf7ae0c87a
+[05/14] ASoC: rockchip: rockchip_i2s: Propagate -EPROBE_DEFER from devm_pinctrl_get()
+        https://git.kernel.org/broonie/sound/c/be4f82d15235
+[06/14] ASoC: rockchip: i2s-tdm: Inline PTR_ERR() in dev_err_probe()
+        https://git.kernel.org/broonie/sound/c/334d5ea7582b
+[07/14] ASoC: rockchip: i2s-tdm: Drop redundant probe error messages
+        https://git.kernel.org/broonie/sound/c/9fea4805ed95
+[08/14] ASoC: rockchip: rockchip_max98090: Drop redundant probe error messages
+        https://git.kernel.org/broonie/sound/c/de983524dcbe
+[09/14] ASoC: rockchip: rockchip_pdm: Drop redundant probe error messages
+        https://git.kernel.org/broonie/sound/c/7d3f7eb890f1
+[10/14] ASoC: rockchip: rockchip_rt5645: Drop redundant probe error messages
+        https://git.kernel.org/broonie/sound/c/b300f1313b00
+[11/14] ASoC: rockchip: rockchip_sai: Propagate -EPROBE_DEFER from IRQ lookup
+        https://git.kernel.org/broonie/sound/c/c97bdbf862c6
+[12/14] ASoC: rockchip: rockchip_sai: Return the original error code
+        https://git.kernel.org/broonie/sound/c/7a2229ef7cdb
+[13/14] ASoC: rockchip: rockchip_sai: Drop redundant probe error messages
+        https://git.kernel.org/broonie/sound/c/26c9632c33f7
+[14/14] ASoC: rockchip: spdif: Return the original error code
+        https://git.kernel.org/broonie/sound/c/5784ef446847
 
-Operators 0 through 3 score identically to your chain simulation --
-same good-channel counts, same maxdiff -- including operator 3, the
-stride 2 depthwise with the asymmetric padding you suspect for the
-first RK3576 divergence. They are not byte-identical to the simulated
-hardware: diffing the raw tensors against the requant_hw chain shows a
-few hundred elements per surface already off by 1-4 at operators 0-3.
-That looks like the same small extra rounding difference that pushes
-the scores below your column from operator 4 on; through operator 3 it
-just stays under the maxdiff <= 1 scoring threshold.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-There is no md 255 anywhere. From operator 4 on, RK3588 sits somewhat
-below the simulation (8 vs 18 at op 4, 1 vs 4 at op 6), but the
-maxdiff never exceeds 24 across all 27 operators and the deep layers
-track the simulation closely (574 vs 572 at op 26).
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-A control run with ROCKET_SEED=11 keeps the same character: operator 0
-still 32/32, no saturated maxdiff anywhere, worst case md 35 at
-operator 6.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-So from the RK3588 side your read looks right: the deep-layer
-compounding is the reference artifact, and the RK3576 collapse from
-operator 4 with maxdiff 255 has no counterpart here.
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-Igor
+Thanks,
+Mark
+
 
 _______________________________________________
 Linux-rockchip mailing list
