@@ -4,128 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7BAFC5B572
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 18:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F04A6C5B572
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2026 18:50:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1VoelfxrA3kin7GV7B3+C7YenA3X4soTd1iTbw3geqM=; b=207S2lt6ySo1+X
-	EJkc4onLB+sUi/2ChaqiBvqSt2kUE7p1ZD7hmSgbK4RYmJ8NU5Ky62gw4N0ZsEskYe6zG28RNRsjS
-	4qFISW5gPe1zMsFkwnbXz4tDoi/nFWPz650fZziCWKNwog+YRSI1XLqRQMuavKvBFVR3XgduaWfrc
-	7IHtV/mESBImLMTTFOrY27TXliOBz7dlySNiJv/ecWjOQt4Wqjr40nPQrWjQEmtCUTLt0aY83TGF5
-	zDtE4EIITl83AAsozqqfszso+UnJOuX/OsFZDguNMET8SblfRTLWTVh/ppfMF0crIz6UfQBkCjpDB
-	bmkK5lWHFXCC1UWSeFfQ==;
+	List-Owner; bh=aJ6KO4d9HDDLcaPf8OdyeA8iZza2HVm7ujGbf7q54zY=; b=1TGIKsROmtZQJ7
+	CCKNhsu7ivfBPif6AdMwLQEXFpdwdLnsZJ25GUt1vcFodXd8JiGQAgrPBdL50usivvUfErCbGQnup
+	o83UjMyfQDgaVInq61gZsSH/Zzyd2omOoYEAfdOXhfLr+XzZ0HmejXuFTo4mw2tj1wFZUGKRt2qSr
+	L7Oz5KgElhTT0FyKCmYPUYmD94uO+lgcHRXwi3FfLj9Mw6xxyFCWIFQWdV81OIbCAQ+Xkc4jPkMkH
+	pl/H0kjGK9CuQA3fNsOaa32tI3sCcEStPPywXzp9fz1oy6olUsaQEATxtsG+o63bmoH3j39EEdSeO
+	+sC+PZNY3xmI6QmXAovQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuaUd-00000001P8B-0jAu;
-	Thu, 13 Aug 2026 18:49:31 +0000
-Received: from mail-northeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c200::3] helo=DU2PR03CU002.outbound.protection.outlook.com)
+	id 1wuaVC-00000001PHH-2MJ6;
+	Thu, 13 Aug 2026 18:50:06 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuaUa-00000001P7e-1OSI;
-	Thu, 13 Aug 2026 18:49:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=gLJ0A65DXq/5P6NrA2jFyC+9SyRMOprNid9JfHJXGjh+qoM+4llT+RVk9j4kME4ki3cUpCD/XwD+QX6SSRB3yPIkufuvmXZM0ZYtXL3Xnj7P0zElu5yFMz0TTRwzsebEA1+yyMIGCZkNnz4JACd8ixikSc59Gm16qsToK0/XgeVIhhBdPq4MAyzvwvA/ovBHTjH3Kj7k9Ghy9rWwZXSmcFn8E25K0UJMWJfg5pEKWd6mQ4c1k1pJUtnmE92BGVaJFIPd0KcdeIo9tVqNEEsllluH4JQyhNEppGOKlM4R8o3KQRMfcnyjlW2EeADBXueu2YaI5uTPNti1HluEC8kAKg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RJoXzZLaV9CrWqVMRDQ7ngwc3lK41lX6j2Op+4khpZY=;
- b=fs/NFYvw0qSzx8hIopeYKGNXzGCAiFRb9EaKU/ozLrLMX7NYpmU/K2Synrxv+eewA+fw0nbSgsbBeufIHRz+2mLH/3n3IDEgbUAXOCxPF0H2RpuOOnE0Mf00BEi30DRyIEeIZiW7eTgP1i2I+smAujyU+CxiJFb+QmNDSITd/VBRXO6Ylx3LF5o67zo/lg2AxHtyb3q4Rbo3j774qg11p92Ka65mV3cYlqpeL6c+KsABsGnTTaZ/XPcKz/vSorcbTljVo9/EVMHg5MOBrAJJDueh6DUlXt9wB4ZZEOghNPtAWod5FN3n2orywTwNkzWo9Q/agFKFWa+FdOVLuGzERg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RJoXzZLaV9CrWqVMRDQ7ngwc3lK41lX6j2Op+4khpZY=;
- b=WZ7XnN647b/6QPYLJVQxEYx+syzOkffBeUBB6dz2oQbKTri0GjCdEb3vn1ZwK3arm6QrSY0WORIfPHo/1DaFCgokhjm4sQ1dKBJqCTGld3tRE2eD9F6+8dyP44nzhzlhgQosXwQKUzcBcS35NQZo7/r2eWv5CRrY4EiKZxVqJuXRWbFLBux6kJMPIjj8hk3jvdB/DgL85/yW0iCKpR+w6SQddFDrMQljyXoCJ83gzK4lH5CTLjKt89+deOy9j6snKsS5hHq767wCQcQ56FIMvKfnRToe8UMvh8YEY7JBfnkBxV5uphFQaHCYu7F/Po0ks5zH2AKS22cl2EUUxyb03A==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
- by AS5PR04MB10060.eurprd04.prod.outlook.com (2603:10a6:20b:676::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.15; Thu, 13 Aug
- 2026 18:49:24 +0000
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0315.014; Thu, 13 Aug 2026
- 18:49:24 +0000
-Date: Thu, 13 Aug 2026 13:49:16 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Hans Zhang <18255117159@163.com>
-Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
-	mani@kernel.org, jingoohan1@gmail.com, imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org, linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 04/16] PCI: dwc: layerscape-ep: Use cached PCIe
- capability offset
-Message-ID: <an4RrIcV2Q6NtQ1X@SMW015318>
-References: <20260720150619.24733-1-18255117159@163.com>
- <20260720150619.24733-5-18255117159@163.com>
-Content-Disposition: inline
-In-Reply-To: <20260720150619.24733-5-18255117159@163.com>
-X-ClientProxiedBy: SA9PR13CA0174.namprd13.prod.outlook.com
- (2603:10b6:806:28::29) To GV2PR04MB11799.eurprd04.prod.outlook.com
- (2603:10a6:150:2cf::9)
+	id 1wuaV8-00000001PEv-46F0;
+	Thu, 13 Aug 2026 18:50:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1786646997;
+	bh=N2tXyEP5k6siy2BStVXxZGhHfQNVOTkLt4pjp7m6PDE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=YkS6aTgAFuPqpi0u5/aB6g7a15Bilrqtg6musRFtx/4kw0wLutmPosTYiyebpbwXK
+	 D4SjwtqCGdGEYgot7Enpzx39nyhwHjnI4I6Ck4E2psL1rnl2W8EUbV/gbg9EO57Bk9
+	 5w4aihJYMG5r+9QVyAUF6u4cOAlFG23dhgsuLfoP11l3Oli/tGFkKfmiEhRIjY0FqT
+	 iloV4uejjNmbKqiUd/ucjDoEXJDJuSz0pmSrrOcKosBhkaHmxpLH8RFgengBl7F49P
+	 Im14ke4nAsRVxlWBT628o28kpmPidzmkBhf7I2KC/Pq7hDNT/O7jZ8YxWpyFwIUc0q
+	 K1BInUr0PUmRw==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D5C7E17E013E;
+	Thu, 13 Aug 2026 20:49:56 +0200 (CEST)
+Message-ID: <7278a889-15a8-42f4-806e-7a28bc7d9495@collabora.com>
+Date: Thu, 13 Aug 2026 21:49:56 +0300
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|AS5PR04MB10060:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9ca7d326-1ca7-4cff-d591-08def96b97bf
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016|23010399003|19092799006|6133799003|56012099006|10067099003|11063799006|4143699003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: wcJvH7zpJFzrE1i9zqbBU1P9ATnBOB39jgkZ+Mr48gdLyySS2SJLyRG08czl17pOfAmA7OhGo7ydbjCbXfAoQcdceJyD7NfAMqon9BJxpKtsovALGpaFvedDyGu18QhIz0DR7fR6z/MCJ8bKxAF55zoFb9qBfigdq6+Zkm/wfcW8Pd+LZVDRCj8H9JjhpK/IV9KjzKRdfwuygcf09u8DbVfsaOScdZDpdTXnOWoFl7Ort5knb0AiZEA/OyZeCi0g3Z56+2UmxvhzEHLDxkehNPi+2+zoj2q2dRIHZL47FZ7wqDhgYgE24jZZq9kV+cMU7wYenJ5Bncr+RNlbKfinGRUk70IX7at6zA3qcehEw0Wl9/vTycDuMzhg7J8Wz7F3yle8JF5VFHRw+foVmhtmt6hFTD7MlBrkbda1X5mKfpdij7B/6EDzfkNH7tyJV2dr3JqxGIEZJU4WXQVn2FVj54VZv8c3thiLh4+mMQS/aGyNAHAxpycroT48e/fUNzzZ32B+Drj/BMV6kBqu49ViRCvAHQm3whetErPvOZloXbZiwTTdwYyxARtNA/uIb4cEObYa+wfNVdIlLkVsof6lrnraXxtJ8oC6jKM0K4jddJ2Nc4WCvEeXRmmXJoaIWqsw/WoLFWX2JKcyoEOXBe/5fHUr90cDigyhER3NOrriTvk=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016)(23010399003)(19092799006)(6133799003)(56012099006)(10067099003)(11063799006)(4143699003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?7S4KOFeu+bq1Jsj4N5leCG2q6tO9QWExUi0FsFauCSp47qD4ysbWzNbnD5Al?=
- =?us-ascii?Q?Iw0Aq5DX2tB4yOh6aRWbbzojrBAHGTO/gXpMF9lZzkpgssMgwGQfJS/HmCgN?=
- =?us-ascii?Q?KDbHrFPvDVh8ctAtOF8Fho+ATaPrWRIRnycx0FnDtZwaKkm7acjdai+wYmRo?=
- =?us-ascii?Q?41I7+xw6l7gFDNTGaiZjmgGUVCIG9Y18NknjkcO0q7iKI1+/hsuni7KvbMW8?=
- =?us-ascii?Q?If/E465RcuSDlir5Lu8ZNa9oT8OSRuV+PUxUlIQ5kz1SMNmjDcDPU5wwm+uK?=
- =?us-ascii?Q?B29xKf/QnwasvL3IZfZhfqIQc2hfJkLS2phRmUyupK7RuXnmqQPP/IAXVlvB?=
- =?us-ascii?Q?83ifPQScCAk9Ftvl1O4/U32DKrlmsjpwVTl/vjguOouXbwcqxUq/gakc4xTf?=
- =?us-ascii?Q?gwDlV1NgI3YzZEkzjJJpQeSQcjUTV8cxHosO16yL+RMFgen3sS4HpAqitQOd?=
- =?us-ascii?Q?h9efQ+Ti7Kz/aJ5J+WvHmlvQvx1nrHqfdIb/8PgKh2pai9c2ylEwHF3+nOJI?=
- =?us-ascii?Q?xI/meyt9dAmwCyEVQ/9JTyYCxMomhCKCSa6eGuDeE/Dj64/d2azQnV4nAC3u?=
- =?us-ascii?Q?50A39Sn7MuuenwFa+ZjLj56Rzs36kDhb9RrD6IPSCFpundSvE0KI8PNwr3Ov?=
- =?us-ascii?Q?ipkaDVtyL8xeJda4Fq6xLuWiKtJ0A68WTu3A3HhK9G7lzE6Zl+gWjJPG2t2+?=
- =?us-ascii?Q?TG+i81LSdh7NisGWHQtriSC1M445e2fP5QDPdPs7YvFhV0a+qXDCbRMOZWvW?=
- =?us-ascii?Q?WtS3szbRveenCh2kChSChz4HEQM36qdjaMLfpZlZjX4i0vOqYHQicKfvfluc?=
- =?us-ascii?Q?fMwalbVbPZloKPwnE6PyetYIjYk58tXPQwNwBewaaFhcuOvlAPs5bJU4GV5b?=
- =?us-ascii?Q?EOC9omX1W4KyGVsZOqVIbaKeLSQMZk/OgbWGsnAZMUzGl6iQAGCY9FJ8CcNK?=
- =?us-ascii?Q?KpR6+0zTWNgpd3bcbVaiVqoiEaqENV/BSFr2Fs00fYI96c970utVDDz0v1bR?=
- =?us-ascii?Q?e7O4F1sFrBY/XI3aoCLn6+i9UUXeJRHVdnSShELDtkxm0MBGLEtyJIKhsVBY?=
- =?us-ascii?Q?25zKXSVWbC1ZZqsQN4WOTtHYMAByJpD1EhkqtL5kxQqrHuBf1+es38U0wB6K?=
- =?us-ascii?Q?/+KdHcZfcR3EFkamXOjqbOy7hP/nV5++hqWtNreXBr8lXogvDvIgfY3ZlxxX?=
- =?us-ascii?Q?ni2gul0jTB6Uoa0rSBMCjnSfkupxXRPJyVH5mmPAZ4OoVr0MGatmvHwSqwX1?=
- =?us-ascii?Q?Z4PASfk/0avQPCDBwtk7OMQMyDZD4puqkTWcn7Dz8dlIWLpX50SjqDkBxjN+?=
- =?us-ascii?Q?Wnr5Qo/726p9B+8HR+2NjK3ss4aVHK+mPhb8NFmtP9QYnWrKblphPA6+HN7m?=
- =?us-ascii?Q?EEdcwvmEXrxSnfBk2DjPXpFJKKktG9cL4GGdbUkup7j9HaPwLLeXn6WqUKN7?=
- =?us-ascii?Q?omKcrmoAjaaQpnajalYz0bBztGxoK1BAXssan+55NLRvxp3zNXhSVVgMVFh1?=
- =?us-ascii?Q?fgY/DRgw0i8Ug+rqUYyjE6/7gSMrf+HTpQyF9XtY8SkJoq1DwEBPfcbq1XAS?=
- =?us-ascii?Q?MRkFpmcpfOui4QIykejWUwnQ2+2TsBMrXkzlFmkxHmPHXVMXB5CmSSk2RnsU?=
- =?us-ascii?Q?rBRIK9j8dIJYhroGPEifiz6CpiijiyAYSIvNfClVbsNCsTCgW117oqb4H7js?=
- =?us-ascii?Q?8QkERrzJ7AdLQNc4lZ1oQjwjStPcsF0LYPExCyj+BH6xIA9inD0ov5L96FS6?=
- =?us-ascii?Q?9pcK30ldnmFQjwyIia42eGv+Nql5G3hsiZ4iEBBNZAxk7p312Urs?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9ca7d326-1ca7-4cff-d591-08def96b97bf
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2026 18:49:23.9809
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: u9Dv8/Lv1MQBrrKRUB3oxVsDeFhkGqNyt0J2YNDwcPjbhzccbl5p8PwwNhxPXF0gmhcVP+HJpqvcCEkVB6cEsmUhWD1smqXV06myv5Z3AkOY34rfrDH+C2cRWryOsdaI
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS5PR04MB10060
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/14] Support 10-bit YUV422 and 8/10-bit YUV420 color
+ format on DW HDMI QP
+To: Igor Paunovic <royalnet026@gmail.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Andy Yan <andyshrk@163.com>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+ Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260709-dw-hdmi-qp-yuv-v3-0-a4a982a9f2e7@collabora.com>
+ <20260813164356.9625-1-royalnet026@gmail.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20260813164356.9625-1-royalnet026@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260813_114928_375725_494AF2E4 
-X-CRM114-Status: GOOD (  19.83  )
+X-CRM114-CacheID: sfid-20260813_115003_185120_7C6A1823 
+X-CRM114-Status: GOOD (  18.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,79 +91,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 20, 2026 at 11:06:07PM +0800, Hans Zhang wrote:
-> [You don't often get email from 18255117159@163.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
->
-> Replace these with dw_pcie_get_pcie_cap(). The hardware is already enabled
-> by the driver before ls_pcie_ep_probe() and before the interrupt handler
-> runs. dw_pcie_get_pcie_cap() will cache the offset on first call, and
-> subsequent calls (including inside dw_pcie_ep_init) will use the cached
-> value without re-searching.
->
-> Signed-off-by: Hans Zhang <18255117159@163.com>
-> ---
+Hi Igor,
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+On 8/13/26 7:43 PM, Igor Paunovic wrote:
+> Hi Cristian,
+> 
+> I tested this series on an RK3588 (Orange Pi 5 Plus) with a sink that
+> actually needs it: a Sony TV with a 256-byte HDMI 1.4 EDID -- max TMDS
+> clock 300 MHz, no HF-VSDB and no SCDC, and 4K above 30 Hz offered only
+> through the YCbCr 4:2:0 Video Data Block (VIC 96/97/101/102). Without
+> YUV420 output this display has had no 4K mode above 30 Hz on the
+> Rockchip HDMI path.
+> 
+> Base: drm-misc-next dc2f9f7fed1a ("drm/komeda: Set display/writeback
+> clone masks"), with the dw-dp v11 and usbdp v13 series applied, plus
+> three local patches: board DT changes enabling USB-C DP Alt Mode and
+> pinning the VP2 dclk to V0PLL (DisplayPort side only; HDMI ran on VP0
+> from the HDMI PHY PLL), and CLOCK_ALLOW_WRITE_DEBUGFS for unrelated
+> clock experiments. On top of that, the samsung-hdptx clock fixes v6
+> [1] as the runtime dependency noted in your cover letter, 
 
-> In pci-layerscape-ep, dw_pcie_find_capability() is called in:
->
->   ls_pcie_ep_probe()
->     -> offset = dw_pcie_find_capability()
->     -> pcie->lnkcap = dw_pcie_readl_dbi(offset + PCI_EXP_LNKCAP)
->     -> dw_pcie_ep_init()
->     -> ls_pcie_ep_interrupt_init()
->         -> devm_request_irq(..., ls_pcie_ep_event_handler)
->           -> ls_pcie_ep_event_handler()
->             -> dw_pcie_find_capability()
-> ---
->  drivers/pci/controller/dwc/pci-layerscape-ep.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/pci/controller/dwc/pci-layerscape-ep.c b/drivers/pci/controller/dwc/pci-layerscape-ep.c
-> index 8936975ff104..b2d0b51df3c5 100644
-> --- a/drivers/pci/controller/dwc/pci-layerscape-ep.c
-> +++ b/drivers/pci/controller/dwc/pci-layerscape-ep.c
-> @@ -74,7 +74,6 @@ static irqreturn_t ls_pcie_ep_event_handler(int irq, void *dev_id)
->         struct ls_pcie_ep *pcie = dev_id;
->         struct dw_pcie *pci = pcie->pci;
->         u32 val, cfg;
-> -       u8 offset;
->
->         val = ls_pcie_pf_lut_readl(pcie, PEX_PF0_PME_MES_DR);
->         ls_pcie_pf_lut_writel(pcie, PEX_PF0_PME_MES_DR, val);
-> @@ -83,9 +82,6 @@ static irqreturn_t ls_pcie_ep_event_handler(int irq, void *dev_id)
->                 return IRQ_NONE;
->
->         if (val & PEX_PF0_PME_MES_DR_LUD) {
-> -
-> -               offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-> -
->                 /*
->                  * The values of the Maximum Link Width and Supported Link
->                  * Speed from the Link Capabilities Register will be lost
-> @@ -93,7 +89,8 @@ static irqreturn_t ls_pcie_ep_event_handler(int irq, void *dev_id)
->                  * that configured by the Reset Configuration Word (RCW).
->                  */
->                 dw_pcie_dbi_ro_wr_en(pci);
-> -               dw_pcie_writel_dbi(pci, offset + PCI_EXP_LNKCAP, pcie->lnkcap);
-> +               dw_pcie_writel_dbi(pci, pci->pcie_cap + PCI_EXP_LNKCAP,
-> +                                  pcie->lnkcap);
->                 dw_pcie_dbi_ro_wr_dis(pci);
->
->                 cfg = ls_pcie_pf_lut_readl(pcie, PEX_PF0_CONFIG);
-> @@ -266,7 +263,7 @@ static int __init ls_pcie_ep_probe(struct platform_device *pdev)
->
->         platform_set_drvdata(pdev, pcie);
->
-> -       offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-> +       offset = dw_pcie_get_pcie_cap(pci);
->         pcie->lnkcap = dw_pcie_readl_dbi(pci, offset + PCI_EXP_LNKCAP);
->
->         ret = dw_pcie_ep_init(&pci->ep);
-> --
-> 2.34.1
->
->
+That is indeed the most recent revision of the PHY fixes - the patches have
+already been applied (available since next-20260812), thereby unblocking this
+series.
+
+> then this series.
+> 
+> Results on the HDMI-A-1 connector:
+> 
+> - The connector now lists 3840x2160 at 60/59.94/50 and 4096x2160 at
+>   60/50 for the first time on this setup, and 3840x2160@60 shows a
+>   stable picture.
+> 
+> - The negotiated wire format matches expectations
+>   (/sys/kernel/debug/dri/0/state):
+> 
+>     output_format=YUV 4:2:0
+>     output_bpc=8
+>     tmds_char_rate=297000000
+> 
+>   and clk_summary agrees: clk_hdmiphy_pixel0 = dclk_vop0 = 297 MHz,
+>   just under the sink's 300 MHz ceiling.
+> 
+> - Cycling 60 -> 30 -> 60 -> 50 -> 60 re-synced cleanly every time,
+>   with no errors in the kernel log and the VOP interrupt rate at the
+>   expected per-frame values throughout (no underrun storms).
+> 
+> To be explicit about the scope, three things were not covered: 10-bit
+> output in either format (this sink's 300 MHz TMDS limit rules out
+> 10-bit 4:2:0 at 4K, and my compositor cannot force an output format
+> to exercise 10-bit 4:2:2 -- I can retest with modetest from a console
+> if that would be useful), and the 4096-wide modes were only verified
+> in the mode list.
+> 
+> For the series as tested above:
+> 
+> Tested-by: Igor Paunovic <royalnet026@gmail.com>
+
+Thanks for checking this out!
+
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
