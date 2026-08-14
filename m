@@ -4,82 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 324E7C5CFCF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 02:26:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF5BC5CFC1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 08:22:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=maV+E34WnCOtj7iQi0VPulEbvV0+qOVYjfZ4GOy+XMo=; b=PeYgbKtPj3gRBy
-	w1o82Gez82MOhdlQnfQL9yLfZpxysSgPjNhTOjE0aUAP69KyaiFyxXyXTmXzemqWGnMUEeozC3XsG
-	9Rt95TBZAdHT+vhavHJzllmd86WPKO5fIgNoaeTu8vaIWcGX7scVqaP0Q+23M82rGRwLPHKNUC1Zg
-	7ducbwWwggu4ZzGstXFVOwBQtFlIB58jNVmEyUIS/JJRlBBoAfXlg0l7Jtoq10tJM3dB2pf6ZUPWH
-	xJD0UjsNtlwFc4rlYJUREhUiXmvorW3a5CWQosv0kOhOf0M9jz964Qlb48EOFhJJQ7Z87cFiCSdmi
-	uYZ4h1zXCaBiR2YSHDsQ==;
+	List-Owner; bh=u+KGKVhFvPb3FjKydRZj+M3RZgj8j5PEL8aOLNpj6a8=; b=PIXKc+Qx05gZ+G
+	GBQjBw08UDCDy/BBAhsUGCDVax2tFrZh8U01ZWQ8ZOalawSQ+ToeD38qV7JQwyYHW0o3VBCL83m2f
+	2FxP2U9DgqcXkBGTW8q6htuYElnQp5FCcK3RYM+N4mIFvdN8aSvqa3evjDPB304xtGQgGjPmaY5ii
+	OgnNs36gb+KtvoCP2WZxfAaeESPOKK3ubTAf/hxxXHWc3DT6JgWx2np207u0K24S8kfYQrg3thiW5
+	JETROHL+L+JRMaC5UopXg1YZ1mR6q71OoaSLZyA0WcM20lVX1f2sOa3C88YxxNrdKDqpggoweHkuH
+	K1CglZCesWD3yel9BRWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuhcm-00000001r9A-3YJ7;
-	Fri, 14 Aug 2026 02:26:24 +0000
-Received: from smtpbgau2.qq.com ([54.206.34.216])
+	id 1wunB9-00000002Gdl-1Kyq;
+	Fri, 14 Aug 2026 08:22:15 +0000
+Received: from flow-a6-smtp.messagingengine.com ([103.168.172.141])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuhcV-00000001qw7-0d4r;
-	Fri, 14 Aug 2026 02:26:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1786674335;
-	bh=zwIQVsJa3bKVMiFSZ+kPNaDWDdjE00ekRDJBwDGVRHQ=;
-	h=From:To:Subject:Date:Message-Id;
-	b=BxlejEfZpiHpBD13kqh95waqcwroRvlN0Hz1hOeuKkIcVmMrDR4MEM8Gg+89e1M5L
-	 W/2fmz4MobI9hEItALRdKp2gKr4EKO4t4+o9Z6jFpS9r+Ty7P27NFtMhMhfhEqpmb9
-	 iaIBy3TykWCxqFPZXDe1HYoRzVkY0QGSNHKf2Xok=
-X-QQ-mid: esmtpgz13t1786674326tbdf7c49c
-X-QQ-Originating-IP: b3yIyDj93Zk6Fw5hzBP5dySljjYsCy8cXF5fAZrH/yE=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 14 Aug 2026 10:25:20 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 7240023971590159997
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jeff Hugo <jeff.hugo@oss.qualcomm.com>
-Cc: linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
+	id 1wunB5-00000002Gch-2n8U;
+	Fri, 14 Aug 2026 08:22:13 +0000
+Received: from phl-compute-12.internal (phl-compute-12.internal [10.202.2.52])
+	by mailflow.phl.internal (Postfix) with ESMTP id CC9221380234;
+	Fri, 14 Aug 2026 04:22:06 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-12.internal (MEProxy); Fri, 14 Aug 2026 04:22:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm1; t=1786695726; x=
+	1786699326; bh=tYbMsjsVclywWT4pqdNdVvgEUPkc32oE3bvrFaDx+p8=; b=q
+	cQ3s3l0LQ19OGpr5qYNO/r4yT0f21MjSi8LdnV4IKLjy/Uel2+CuFUkSO/ZfIvah
+	x5Zomvts4h7qeLy+0tyXRTFEp/uV6ruwIBSn00gzeA4WdtiS8QQ2hs0lIXMQePtZ
+	CgXRmsEjDze/HRZzSAXToBIVSzlind8dovZz70nwGBHVHAAZu1sdOhi321znXNVS
+	yQgv9bv5l59m1W57CXHmnUtI2rIIFqhV9OIVuxK1jHnSkfz3fdxul8ftYarQc1wp
+	7zRWaHtHV16db/9kY96X/mWCw/LVH83rTYJIXdbHUf/U3edZHZvKXyGeDcJLMJOA
+	QQmjYEFNAp/dBhotLgz0A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1786695726; x=1786699326; bh=t
+	YbMsjsVclywWT4pqdNdVvgEUPkc32oE3bvrFaDx+p8=; b=Qtto3IC1Xc6+/iUYo
+	162Qn5KNnllkP26KVmf0UXDaF3qNg81XxDy+1GVH571iYboPq9aromumVTgDUsk6
+	bR1mm9iPVKHwPK8zyqwSEdTOeU6rdjp3iduFbinLtpMq49897PmgelfZ2yg0AeJi
+	wQ/YtUaoawWW1T6Lt1K39way7WZrcQWYqesdJGDuS5BBkETNnA4pgNt1m/JkA0v+
+	1M4XmZ02rYLkCMAAvUWbUTxW6ZeB2IQ7zfZna01DfOCkbDJQFqiFyzWHUBntBZVK
+	a2wfVg/HFdO3BcRXzNmgWLIeB305ruycsDPw05Zm1YM8wu16s5HJTgCDzMFqn41A
+	Bofcw==
+X-ME-Sender: <xms:LdB-alNfGkSoIMmXfAWOdT0VN3wLWkeh7v6AsrWYsUfPGiVRXKHDSQ>
+    <xme:LdB-ahV0yVwNm8E8jTi1I3VSXeb7POAbbbBh203tietHYifiZsDxT7mu3nTekI-Yu
+    0Cj-0Pcg7ysfC65Qto5OB-xmPu3LtDSnEHoLbDcjKyqD3y-Cv5uqghC>
+X-ME-Received: <xmr:LdB-asyIbIkA37gu-j9Hz8SF9FgGbJ1JHTemCFwr-MDX6ZkFiD8jDAqx4ks9TSPVZyMYRMDGiA>
+X-ME-Proxy-Cause: dmFkZTFVlanrXEW8K19TWP1UI6tsJJsG6MwxDm1iiLMNJuK90FsZo1caHlyjFdEE11j5nY
+    CZC2CGq3A+Ut1sUKen/cWewPEce9+IQKVa7Jy61Kup4KPTbB9ytN5SjRQkhnWJYgLQhIPm
+    VRyS/7i0pELo446ufviXofoH9RHcuKkfBOsMxlOavi3G9MW9mePPnvEPD9buRe0GO+pQ8n
+    CRFJuOPmKLfzQl9eYDWKZZm6eHC+LYAtQE8pAJ6wQnzXEUKAqnpJqs3kuWClGGY9Gjp5wm
+    yaI30idSZ5MW+ZHe7Cnj2u03U5r7qw+yBOsncREJtTNrfwrQV8V/ItB/Wrwu64dBL+lPQX
+    3cjLzuzT4miXsEVIGPYdeiK6MJeeHYXuW3yqd5lweMQaa5ZzXeRN34uvf+VIZbFzAqObhS
+    2CU/xO4IT9M7Avntq1oNj1obA29lr+mhu5z+UrO/DDR3RlMNjQmm1Sc739FAZWCpjSHA6U
+    pAKr8ePu3vrTizvTXScxzQgU+6vgr94MlX89l1rAsgeyoNmfnerdZraYmibQsGxaSBubI6
+    eQhdD5FAbSO17gVDFZUqGFqD7zRwVpONbP9L5Wk7NpCNwEUe7SQM1P8ohpUftjhe8Tk4PG
+    Z30OIi1lHZ3DaGcTkK2abWPicZU3fr7vY/d8p6TQjUY+dAq2fvxVjwb3KLyw
+X-ME-Proxy: <xmx:LdB-ahMFZkY8YCwYaCiccxhPRCyzjq2uN1SWt9ijCxqbvvyz233hMg>
+    <xmx:LdB-aupAMKiOjdFOgFLSMZOq8I3qUiYq53JfloN4XezOV0pFqLGy0A>
+    <xmx:LdB-ao-pF2irN6diRDlC9TJQZ3KED7VYps2h0AL5vHQavT7_aETntA>
+    <xmx:LdB-ak1OM6AFIg1T0vwZlcj8HX0I5x9Gl5eBKq6wYX6K9V62BYhZ6g>
+    <xmx:LtB-arbFxQ4kACEdvM790iEBHB7-hvcExhrKbM7F3GHF19N6LcfIrFSW>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 14 Aug 2026 04:21:59 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: krzk@kernel.org
+Cc: heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	ulf.hansson@linaro.org,
+	tomeu@tomeuvizoso.net,
+	royalnet026@gmail.com,
+	diederik@cknow-tech.com,
+	chaoyi.chen@rock-chips.com,
+	devicetree@vger.kernel.org,
+	linux-pm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH 4/4] MAINTAINERS: accel/rocket: Add rockchip mail list for rocket
-Date: Fri, 14 Aug 2026 10:24:53 +0800
-Message-Id: <20260814022453.437-5-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20260814022453.437-1-kernel@airkyi.com>
-References: <20260814022453.437-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: OE1h366RMh4bPIWp9FHW6/AyL21r43hkn7NAzLdL/UoB/ZlYxeaJpgBe
-	jsmaXS+sgNe0JQ+ktXJK+DapnfYapIM8J7P5e3OPctWLYAti++KpBE6pJb7kl3tXGQAhiVf
-	zhYkFdXNLhvWJTHYq+68z/DTy+R9Jqh2KTouquLFmP23/uJVu5dmlx5O/HV/IpcnQk3B1F6
-	hPwpYHjYHciJeCbGnKQrBZBLIC0OobpUjU8GWHsGW+1SVUuGbVBxCT5l75s6DUwjitXgm4r
-	DyRRGtTQ+jYvmfld5drhgavFWEnnLIPaL2pn6GUzZjuO8mmOKJNYyv/8jLB7o3jDN2/VyWD
-	vM6IFkYmt9/Mbei0dOwwzbtYTL7tRS22NLKbJ71q+sRiz5OHAExzzFeBTqtPOsBpyijwkJ/
-	ACgfnCVPIe1Qa4hu+TC3lrg4w8ZId0uDhBpjb2Sjl2+7x3n5KVNftlo5xcZRXCC/APEVedW
-	M/UIpAc0yGfj2n8s8kGALfteq36TI3TeaHKdjVS1DAO5jgdgfdOm0JU+iMsQajlTyUJhnqP
-	sixjDoq0sIIRcxmCt2TVNNqmMXq6xJcvaT/emRnIYKimf/88Jlnw4E6x+WaTipt2IN9SB7z
-	qG+jOyyG/yJQhiDPorbqRBIHOH62kS6JznEN5fTlNrkz4reCff2Osi035wpwBHeHJD2DfK8
-	FpMc0cyRN72K1MwGsHPi65DRq7s3spGgyMUKjjB1dKxRruHhQhozTvI2lxEojBSvZi0QUq6
-	S/aG0yawPQHN8JO2LzTBFkIgoDSEAI3mhXN7SXbQI8eDrwOXCbU7x7iSvFClUXgGI9hfQuq
-	GDTieul7ZVYpUF0qg1WorYi7ZN/HrhTwJmzvAYgTr2D0mtp5u+nZdvcnHW0fwHyGoyKJ1qw
-	bpxC4Fxd5FLU44gAw6EYz9V9Zwj3fJVS0WTSdUeFS1jWjm7eiXp1XY9EhunHFbHNts5XgO+
-	1EoVSu6m2JN5nS90NJfMfcz+lT/vtMj8xMY8wXSDP/MQLgw2pfaM34z7yt9hrgGjn3hHcBu
-	QNeVWI4HWqdOeZHuTyi4ufGGs/2vC2QGNTX1gNQDV5mHLxpsF+
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
-X-QQ-RECHKSPAM: 0
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: Re: [PATCH v7 03/10] dt-bindings: power: rockchip: allow resets in a power domain node
+Date: Fri, 14 Aug 2026 20:21:57 +1200
+Message-ID: <20260814082158.3851740-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260813-squid-of-splendid-hail-d968bf@quoll>
+References: <20260812094106.1391698-1-gahing@gahingwoo.com> <20260812094106.1391698-4-gahing@gahingwoo.com> <20260813-squid-of-splendid-hail-d968bf@quoll>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260813_192611_675912_2DB7C664 
-X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-CacheID: sfid-20260814_012211_917561_84657875 
+X-CRM114-Status: UNSURE (   7.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,37 +116,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Hi Krzysztof,
 
-The rocket is a DRM accel driver for the Rockchip NPU. Add the Rockchip
-mailing listso that changes can be tracked.
+> This paragraph is redundant. Why are you explaining correct syntax?
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+No good reason. v8 drops it.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4a8b0fd665ce..388ec1758ce7 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -7942,6 +7942,7 @@ F:	include/uapi/drm/ivpu_accel.h
- DRM ACCEL DRIVER FOR ROCKCHIP NPU
- M:	Tomeu Vizoso <tomeu@tomeuvizoso.net>
- L:	dri-devel@lists.freedesktop.org
-+L:	linux-rockchip@lists.infradead.org
- S:	Supported
- T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
- F:	Documentation/accel/rocket/
--- 
-2.53.0
+> 30 resets per one power domain? and none got to the example in this
+> file?
 
+One. Both RK3576 NPU domains carry exactly one, SRST_A_RKNN0_BIU and
+SRST_A_RKNN1_BIU, and 30 came from the clocks property above it, copied
+without asking what it would mean here. v8 has maxItems: 1, which is
+what this series actually needs, and it can be widened by whoever turns
+up with a domain that needs more.
+
+And no, nothing got to the example, which it should have. v8 adds one.
+
+> Do not need '|' unless you need to preserve formatting.
+
+v8 drops it.
+
+Nothing above is fixed yet, only decided. I told another reviewer on v6
+that something was fixed for v7 and then sent v7 without it, so I would
+rather say what v8 will contain than describe it as done.
+
+Thanks for the review.
+
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
