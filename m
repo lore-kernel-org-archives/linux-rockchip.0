@@ -4,66 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11242C5CFCF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 14:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DCEC5CFC1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 20:37:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FSCmO03AQTQCwvX1yxVgNyoCYmsLb1T7toLhk5EL8bw=; b=JSmCmWn7NGIZaA
-	CgPltl6p+IJ5+l/7CY84fcoCK/knyEjqj+eSEx8q8/Xi0rFdOkTFj3yFvY13rZ6jDgt+R+/VGrF1C
-	x15OaEH6+iAN1QXLQxsY2dIcB4y4kU+auxKKzK7N7uLh661lW+5Duybdr2WZ2sdQUK/srRH2TDzVf
-	YQjpiiVJkMaBL2GkvoxMtS66xbVBg5IixnEs7ASPo5ZCFzfgLi0izwsrecHVbjm0IudqMYAR/OI3F
-	1CdO3+mqIMKHL/RSOFwpPynfjaV0G5XWz0JbdGqUaB8ILuFvABm+KGaFIP55h5p9tZyL0Yq6nxzN9
-	+no39w6VobjPiwW3pSqg==;
+	List-Owner; bh=NMmjqQvXWHppyrYK14lPd3P1DykAhCi2+kjJJ7PkO5c=; b=drGZwhy5VBIGe2
+	au8W03SgRpjMxBJ2UPwRWFmR1CXFwLZrz7nUtO6hiiLWv6pkEFky0n+DIic7XNbKu7WwJ0ACVRYrn
+	hlgimzfVvtJUb6H4aO9Ajrd2poCN1hPwpJiBh3FkCs1NG5vrqX+/Tq4h61ZLn8PjQMvmet25fjXCI
+	5YCOZVyX5R9XC44KJqXAhqzlGy+KK9QIEztYwqZLZMu6XCr2iDS+M1dfl7R6cGgWzx6zw9cdTNVgl
+	Xya5SY8bKZMzs+FBcGu85JUHBO2ZyPVy2G23O5EsXg0qzpi9I7RjsJ8pUOObG3vApa2AqvZilZq/9
+	GycCgQJyx44VUNgvm9Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wutMt-00000002pP4-1UQB;
-	Fri, 14 Aug 2026 14:58:47 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wuyew-000000039TY-0CRY;
+	Fri, 14 Aug 2026 20:37:46 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wutMs-00000002pOr-0kCk
+	id 1wuyet-000000039RG-40Vl
 	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Aug 2026 14:58:46 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BEAE9418B4;
-	Fri, 14 Aug 2026 14:58:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25B111F00A3A;
-	Fri, 14 Aug 2026 14:58:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786719525;
-	bh=qbjuEYmjCp3FL0DGl8y+0iNTnz1EuXv3yNdLWQSfF10=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=SUiNweHAT1yXLaXRjco8sy6I5QL1ae501xmYmf0sOcnjjET2MIJlZSPLTPm7BQIWW
-	 rFqqcGZihew6waGEY1VGZpwyvxYamHDMp7oth0jGfx0w3CKR9M2s/pEpZnpFYdcmUP
-	 Fm7ptXjoS6Xq50rC8f23NmSmbDlCxjMmynvFMEWBJX/luStPWRVHvpG4Ckd27dWWPX
-	 t975hg22W6a9wFD+pB7VJUVIPxkiPx+ioo6UhwsmEq+50NK+9kEsXPzeSOqz5si2vH
-	 V92ysel5h88Qm9pZOtK2kyQtco8pn2lMANwiLN6QoyglRkIaB/UQXwPODDSnH+sR+C
-	 hqFf/K3hIKNoA==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Fri, 14 Aug 2026 16:57:17 +0200
-Subject: [PATCH v2 28/61] drm/rockchip: Convert to atomic_create_state
+	Fri, 14 Aug 2026 20:37:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1786739863;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=UEzS7cgh0s3kpDJoSKFSaeUbfz26XKFwvX4uV6Y0kQg=;
+	b=L+x3pRnK4T5m2/igTWM7DNbv5iYqmVDtwMg0GBFAb8/9GNha/Djf9z0lCRES64CH3yr2pQ
+	vXCByGAjqv3yq8QzgW1JXGe1ZribZ2s6N8g8FcGV84CS85YDWmEiYNVCUo7HbxP2hf4W0S
+	mnywEVT7JhnB3mOUXkRmURnAHgvLbjA=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-459-oqOvZT7bMEW5oR1aBhdpHw-1; Fri,
+ 14 Aug 2026 16:36:07 -0400
+X-MC-Unique: oqOvZT7bMEW5oR1aBhdpHw-1
+X-Mimecast-MFC-AGG-ID: oqOvZT7bMEW5oR1aBhdpHw_1786739765
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 8FF7D195608A;
+	Fri, 14 Aug 2026 20:36:04 +0000 (UTC)
+Received: from GoldenWind.lan (unknown [10.22.64.233])
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 94B5E197751A;
+	Fri, 14 Aug 2026 20:36:00 +0000 (UTC)
+From: Lyude Paul <lyude@redhat.com>
+To: dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	nouveau@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-hyperv@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	asahi@lists.linux.dev,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-samsung-soc@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	intel-gfx@lists.freedesktop.org,
+	linux-aspeed@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-mips@vger.kernel.org,
+	amd-gfx@lists.freedesktop.org,
+	spice-devel@lists.freedesktop.org,
+	intel-xe@lists.freedesktop.org,
+	imx@lists.linux.dev
+Subject: [PATCH 4/5] drm/vblank: Use drm_for_each_crtc() in drm_vblank_init()
+Date: Fri, 14 Aug 2026 16:35:32 -0400
+Message-ID: <20260814203542.1405135-5-lyude@redhat.com>
+In-Reply-To: <20260814203542.1405135-1-lyude@redhat.com>
+References: <20260814203542.1405135-1-lyude@redhat.com>
 MIME-Version: 1.0
-Message-Id: <20260814-drm-no-more-plane-reset-v2-28-82d2963dd134@kernel.org>
-References: <20260814-drm-no-more-plane-reset-v2-0-82d2963dd134@kernel.org>
-In-Reply-To: <20260814-drm-no-more-plane-reset-v2-0-82d2963dd134@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
- andy.yan@rock-chips.com, heiko@sntech.de, hjc@rock-chips.com, 
- linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6962; i=mripard@kernel.org;
- h=from:subject:message-id; bh=Ux69vbvfu05m5q+F+8J8VljUchkGMmcK+O4PWyu5NeY=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFn1OhfiPTalbJRJfcPH8JNrxZRzOg4PNTmZtnu17b64l
- CPaRuFKx1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZiI1RLG+uryVymbv/AsT2A7
- vNUxoObZEsf6ZUKLZBS82W9NV7+s0rxORJLZx0LeZcGKrkNdgkt9GOsL+Ova3+UWJ+rPy7xzouX
- ajFlOnKlNt1MyfS5lTfBg2lRxzqyH+e5nh6JHTxYvnPf62EIA
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: Oo4KsmEIsfpEjvuzbs_DBjo02HUrJlPNLCe34cQAl7Y_1786739765
+X-Mimecast-Originator: redhat.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260814_133744_062746_8A9D3F62 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,316 +105,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The plane only initializes a pristine state in its reset hook
-using drm_atomic_helper_plane_reset(), which is equivalent to what
-atomic_create_state expects. Convert to it.
+No functional changes yet, we just should be using this iterator here
+instead of manually counting the number of CRTCs anyhow.
 
-The conversion was done using the following Coccinelle semantic patch:
-
-@@
-identifier funcs;
-symbol drm_atomic_helper_plane_reset;
-symbol drm_atomic_helper_plane_create_state;
-@@
-
-struct drm_plane_funcs funcs = {
-  ...,
-- .reset = drm_atomic_helper_plane_reset,
-+ .atomic_create_state = drm_atomic_helper_plane_create_state,
-  ...,
-};
-
-@match_struct_reset@
-identifier funcs, reset_func;
-@@
-struct drm_plane_funcs funcs = {
-    ...,
-    .reset = reset_func,
-    ...,
-};
-
-@reset_uses_helpers depends on match_struct_reset@
-identifier match_struct_reset.reset_func;
-@@
-
- void reset_func(...)
- {
- 	<+...
-(
- 	__drm_atomic_helper_plane_reset(...);
-|
-	__drm_gem_reset_shadow_plane(...);
-)
- 	...+>
- }
-
-@match_struct_destroy@
-identifier funcs, destroy_func;
-@@
-struct drm_plane_funcs funcs = {
-    ...,
-    .atomic_destroy_state = destroy_func,
-    ...,
-};
-
-@script:python renamed_func@
-old_name << match_struct_reset.reset_func;
-new_name;
-@@
-if old_name.endswith("_reset"):
-    coccinelle.new_name = old_name.replace("_reset", "_create_state")
-else:
-    coccinelle.new_name = old_name
-
-@update_struct depends on match_struct_reset && reset_uses_helpers@
-identifier match_struct_reset.funcs, match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-@@
-struct drm_plane_funcs funcs = {
-    ...,
--   .reset = reset_func,
-+   .atomic_create_state = new_name,
-    ...,
-};
-
-@drop_destroy depends on update_struct && match_struct_destroy@
-identifier match_struct_reset.reset_func;
-identifier match_struct_destroy.destroy_func;
-identifier container_func;
-identifier P;
-symbol drm_atomic_helper_plane_destroy_state;
-symbol __drm_atomic_helper_plane_destroy_state;
-@@
-
- void reset_func(struct drm_plane *P)
- {
- 	...
-(
--	if (P->state) {
-- 		<+...
-(
--		drm_atomic_helper_plane_destroy_state(P, P->state);
-|
--		__drm_atomic_helper_plane_destroy_state(P->state);
-|
--		P->funcs->atomic_destroy_state(P, P->state);
-|
--		destroy_func(P, P->state);
-)
-- 		...+>
-- 	}
-|
--	drm_WARN_ON_ONCE(P->dev, P->state);
-|
--	WARN_ON(P->state);
-)
- 	...
-(
--	kfree(P->state);
-|
--	kfree(container_func(P->state));
-|
- 	// kfree is optional
-)
-(
--	P->state = NULL;
-|
- 	// plane->state clearing is optional
-)
- 	...
- }
-
-@drop_destroy_mtk depends on update_struct@
-identifier P;
-symbol __drm_atomic_helper_plane_destroy_state;
-symbol to_mtk_plane_state;
-@@
-
- void mtk_plane_reset(struct drm_plane *P)
- {
- 	...
--	if (P->state) {
--		__drm_atomic_helper_plane_destroy_state(P->state);
--		...
--	} else {
- 		...
--	}
- 	...
- }
-
-@transform_nv50_wndw depends on update_struct@
-identifier S;
-@@
-
- void nv50_wndw_reset(...)
- {
- 	...
--	if (WARN_ON(!(S = kzalloc_obj(*S))))
-+	S = kzalloc_obj(*S);
-+	if (WARN_ON(!S))
- 		return;
- 	...
- }
-
-@transform_kzalloc depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier P, S;
-statement ST;
-statement list STL;
-@@
-
- void reset_func(struct drm_plane *P)
- {
- 	<...
- 	S = kzalloc_obj(*S);
-(
--	if (S)
--	{
--		STL
--	}
-+	if (!S) return;
-+
-+	STL
-|
--	if (S) ST
-+	if (!S) return;
-+
-+	ST
-)
-	...>
- }
-
-@transform_body depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-identifier S, P;
-expression PS;
-@@
-- void reset_func(struct drm_plane *P)
-+ struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	...
- 	S = kzalloc_obj(*S);
-	...
-(
- 	if (!S) {
-		...
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
-|
- 	if (WARN_ON(!S)) {
-		...
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
-|
- 	if (S == NULL) {
- 		...
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
-)
-	...
-(
--	__drm_atomic_helper_plane_reset(P, PS);
-+	__drm_atomic_helper_plane_state_init(PS, P);
-|
--	__drm_gem_reset_shadow_plane(P, PS);
-+	__drm_gem_shadow_plane_state_init(P, PS);
-)
-	...
-}
-
-@update_early_return depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-identifier P;
-expression PS;
-@@
- struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	<+...
--	return;
-+	return ERR_PTR(-EINVAL);
-	...+>
-}
-
-@update_return_plane depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-identifier P;
-expression PS;
-@@
- struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	...
- 	__drm_atomic_helper_plane_state_init(PS, P);
-	...
-+
-+	return PS;
-}
-
-@update_return_shadow depends on update_struct@
-identifier renamed_func.new_name;
-identifier P;
-expression PS;
-@@
- struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	...
- 	__drm_gem_shadow_plane_state_init(P, PS);
-	...
-+
-+	return &PS->base;
-}
-
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
+Signed-off-by: Lyude Paul <lyude@redhat.com>
 ---
-Cc: andy.yan@rock-chips.com
-Cc: heiko@sntech.de
-Cc: hjc@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c  | 2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/drm_vblank.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 0090d8ff0c79..79fd875f6953 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1155,11 +1155,11 @@ static const struct drm_plane_helper_funcs plane_helper_funcs = {
+diff --git a/drivers/gpu/drm/drm_vblank.c b/drivers/gpu/drm/drm_vblank.c
+index 17283e8920378..d57405050554f 100644
+--- a/drivers/gpu/drm/drm_vblank.c
++++ b/drivers/gpu/drm/drm_vblank.c
+@@ -547,19 +547,20 @@ static void drm_vblank_init_release(struct drm_device *dev, void *ptr)
+ int drm_vblank_init(struct drm_device *dev)
+ {
+ 	int ret;
+-	unsigned int num_crtcs = dev->mode_config.num_crtc;
+-	unsigned int i;
++	struct drm_crtc *crtc;
  
- static const struct drm_plane_funcs vop_plane_funcs = {
- 	.update_plane	= drm_atomic_helper_update_plane,
- 	.disable_plane	= drm_atomic_helper_disable_plane,
- 	.destroy = drm_plane_cleanup,
--	.reset = drm_atomic_helper_plane_reset,
-+	.atomic_create_state = drm_atomic_helper_plane_create_state,
- 	.atomic_duplicate_state = drm_atomic_helper_plane_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_plane_destroy_state,
- 	.format_mod_supported = rockchip_mod_supported,
- };
+ 	spin_lock_init(&dev->vbl_lock);
+ 	spin_lock_init(&dev->vblank_time_lock);
  
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 4cce3e336f5b..42853689d6e7 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1495,11 +1495,11 @@ static const struct drm_plane_helper_funcs vop2_plane_helper_funcs = {
+-	dev->vblank = drmm_kcalloc(dev, num_crtcs, sizeof(*dev->vblank), GFP_KERNEL);
++	dev->vblank = drmm_kcalloc(dev, dev->mode_config.num_crtc,
++				   sizeof(*dev->vblank), GFP_KERNEL);
+ 	if (!dev->vblank)
+ 		return -ENOMEM;
  
- static const struct drm_plane_funcs vop2_plane_funcs = {
- 	.update_plane	= drm_atomic_helper_update_plane,
- 	.disable_plane	= drm_atomic_helper_disable_plane,
- 	.destroy = drm_plane_cleanup,
--	.reset = drm_atomic_helper_plane_reset,
-+	.atomic_create_state = drm_atomic_helper_plane_create_state,
- 	.atomic_duplicate_state = drm_atomic_helper_plane_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_plane_destroy_state,
- 	.format_mod_supported = rockchip_vop2_mod_supported,
- };
+ 	dev->has_hw_vblank = true;
  
-
+-	for (i = 0; i < num_crtcs; i++) {
++	drm_for_each_crtc(crtc, dev) {
++		unsigned int i = crtc->index;
+ 		struct drm_vblank_crtc *vblank = drm_vblank_crtc(dev, i);
+ 
+ 		vblank->dev = dev;
 -- 
 2.55.0
 
