@@ -4,107 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF5BC5CFC1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 08:22:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1148EC5B572
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 08:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u+KGKVhFvPb3FjKydRZj+M3RZgj8j5PEL8aOLNpj6a8=; b=PIXKc+Qx05gZ+G
-	GBQjBw08UDCDy/BBAhsUGCDVax2tFrZh8U01ZWQ8ZOalawSQ+ToeD38qV7JQwyYHW0o3VBCL83m2f
-	2FxP2U9DgqcXkBGTW8q6htuYElnQp5FCcK3RYM+N4mIFvdN8aSvqa3evjDPB304xtGQgGjPmaY5ii
-	OgnNs36gb+KtvoCP2WZxfAaeESPOKK3ubTAf/hxxXHWc3DT6JgWx2np207u0K24S8kfYQrg3thiW5
-	JETROHL+L+JRMaC5UopXg1YZ1mR6q71OoaSLZyA0WcM20lVX1f2sOa3C88YxxNrdKDqpggoweHkuH
-	K1CglZCesWD3yel9BRWw==;
+	List-Owner; bh=XeIQ3vWGek7exnclBOJD9ys5wTD054iFbzzRblWPOAI=; b=mE4izY7VkD2WVi
+	Ejg4Cd6YI83oM0JFhgUWpQ4f1fXvwZLTikon55gLU8yKu8GwirJId2sAGHXtpGdCbvNubuH1UG5uD
+	AWZiXXA+PpAcNwMZRT5WBXGQAxZUlPir0mVQjqOy78qlxIbzONc5S4hx0Admg3Y0hkbSgPDuuwrnM
+	qXcKf6MtsOcVtzDtUDLO6uZzwbNTjG16eje7Ov83rVTNlzAAthAr5NE2vm6DRulKVdmrvKW6mQehs
+	6yn1tndHkO0m8o4HaN3FW3z10Q32zBfTW6PpMz9thTF1roXNPj1nmsRsj44ep6TEJSsQtB75LmtSo
+	H8sdPUrIniR+guDrdDew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wunB9-00000002Gdl-1Kyq;
-	Fri, 14 Aug 2026 08:22:15 +0000
+	id 1wunFm-00000002H4d-3A3e;
+	Fri, 14 Aug 2026 08:27:02 +0000
 Received: from flow-a6-smtp.messagingengine.com ([103.168.172.141])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wunB5-00000002Gch-2n8U;
-	Fri, 14 Aug 2026 08:22:13 +0000
-Received: from phl-compute-12.internal (phl-compute-12.internal [10.202.2.52])
-	by mailflow.phl.internal (Postfix) with ESMTP id CC9221380234;
-	Fri, 14 Aug 2026 04:22:06 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-12.internal (MEProxy); Fri, 14 Aug 2026 04:22:06 -0400
+	id 1wunFj-00000002H3T-3a5M;
+	Fri, 14 Aug 2026 08:27:01 +0000
+Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
+	by mailflow.phl.internal (Postfix) with ESMTP id DD626138029B;
+	Fri, 14 Aug 2026 04:26:58 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-06.internal (MEProxy); Fri, 14 Aug 2026 04:26:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
 	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1786695726; x=
-	1786699326; bh=tYbMsjsVclywWT4pqdNdVvgEUPkc32oE3bvrFaDx+p8=; b=q
-	cQ3s3l0LQ19OGpr5qYNO/r4yT0f21MjSi8LdnV4IKLjy/Uel2+CuFUkSO/ZfIvah
-	x5Zomvts4h7qeLy+0tyXRTFEp/uV6ruwIBSn00gzeA4WdtiS8QQ2hs0lIXMQePtZ
-	CgXRmsEjDze/HRZzSAXToBIVSzlind8dovZz70nwGBHVHAAZu1sdOhi321znXNVS
-	yQgv9bv5l59m1W57CXHmnUtI2rIIFqhV9OIVuxK1jHnSkfz3fdxul8ftYarQc1wp
-	7zRWaHtHV16db/9kY96X/mWCw/LVH83rTYJIXdbHUf/U3edZHZvKXyGeDcJLMJOA
-	QQmjYEFNAp/dBhotLgz0A==
+	:reply-to:subject:subject:to:to; s=fm1; t=1786696018; x=
+	1786699618; bh=0nRj2hLp7dpKjdKjqfKtiu3Ukh6tmnaMstGpJ7o7t3s=; b=F
+	yCEQVXCESdDx5Nxk5sAt/aZuRJiSD2hRodCVS09tBhoAIyE9GQ7HleJtLhgt+4nO
+	aKBuhvLM5KCPbIUsIUjUInnYkcXzul71lYXG5NhQS8vdDtIotuthwgghjczeFStx
+	9N5G5seVM3/subPtPNpO4eGgeLF2Q1BF6+6MgbgdIqOx5SfElhQlcurVNikotk67
+	Iosy5WozfyScNfewneDgZoBuJI22BsuHNDOCqqhWykGoyJ0+Z/jKdUfqFYAx7qxx
+	U7hn40fzdY/HkpgNzU9TLh+TOozWY8oRjJrxId0ovkERIUuF3UNYiuT/UpQKGAkI
+	4qRNmuVb51vLpqSMcLleQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1786695726; x=1786699326; bh=t
-	YbMsjsVclywWT4pqdNdVvgEUPkc32oE3bvrFaDx+p8=; b=Qtto3IC1Xc6+/iUYo
-	162Qn5KNnllkP26KVmf0UXDaF3qNg81XxDy+1GVH571iYboPq9aromumVTgDUsk6
-	bR1mm9iPVKHwPK8zyqwSEdTOeU6rdjp3iduFbinLtpMq49897PmgelfZ2yg0AeJi
-	wQ/YtUaoawWW1T6Lt1K39way7WZrcQWYqesdJGDuS5BBkETNnA4pgNt1m/JkA0v+
-	1M4XmZ02rYLkCMAAvUWbUTxW6ZeB2IQ7zfZna01DfOCkbDJQFqiFyzWHUBntBZVK
-	a2wfVg/HFdO3BcRXzNmgWLIeB305ruycsDPw05Zm1YM8wu16s5HJTgCDzMFqn41A
-	Bofcw==
-X-ME-Sender: <xms:LdB-alNfGkSoIMmXfAWOdT0VN3wLWkeh7v6AsrWYsUfPGiVRXKHDSQ>
-    <xme:LdB-ahV0yVwNm8E8jTi1I3VSXeb7POAbbbBh203tietHYifiZsDxT7mu3nTekI-Yu
-    0Cj-0Pcg7ysfC65Qto5OB-xmPu3LtDSnEHoLbDcjKyqD3y-Cv5uqghC>
-X-ME-Received: <xmr:LdB-asyIbIkA37gu-j9Hz8SF9FgGbJ1JHTemCFwr-MDX6ZkFiD8jDAqx4ks9TSPVZyMYRMDGiA>
-X-ME-Proxy-Cause: dmFkZTFVlanrXEW8K19TWP1UI6tsJJsG6MwxDm1iiLMNJuK90FsZo1caHlyjFdEE11j5nY
-    CZC2CGq3A+Ut1sUKen/cWewPEce9+IQKVa7Jy61Kup4KPTbB9ytN5SjRQkhnWJYgLQhIPm
-    VRyS/7i0pELo446ufviXofoH9RHcuKkfBOsMxlOavi3G9MW9mePPnvEPD9buRe0GO+pQ8n
-    CRFJuOPmKLfzQl9eYDWKZZm6eHC+LYAtQE8pAJ6wQnzXEUKAqnpJqs3kuWClGGY9Gjp5wm
-    yaI30idSZ5MW+ZHe7Cnj2u03U5r7qw+yBOsncREJtTNrfwrQV8V/ItB/Wrwu64dBL+lPQX
-    3cjLzuzT4miXsEVIGPYdeiK6MJeeHYXuW3yqd5lweMQaa5ZzXeRN34uvf+VIZbFzAqObhS
-    2CU/xO4IT9M7Avntq1oNj1obA29lr+mhu5z+UrO/DDR3RlMNjQmm1Sc739FAZWCpjSHA6U
-    pAKr8ePu3vrTizvTXScxzQgU+6vgr94MlX89l1rAsgeyoNmfnerdZraYmibQsGxaSBubI6
-    eQhdD5FAbSO17gVDFZUqGFqD7zRwVpONbP9L5Wk7NpCNwEUe7SQM1P8ohpUftjhe8Tk4PG
-    Z30OIi1lHZ3DaGcTkK2abWPicZU3fr7vY/d8p6TQjUY+dAq2fvxVjwb3KLyw
-X-ME-Proxy: <xmx:LdB-ahMFZkY8YCwYaCiccxhPRCyzjq2uN1SWt9ijCxqbvvyz233hMg>
-    <xmx:LdB-aupAMKiOjdFOgFLSMZOq8I3qUiYq53JfloN4XezOV0pFqLGy0A>
-    <xmx:LdB-ao-pF2irN6diRDlC9TJQZ3KED7VYps2h0AL5vHQavT7_aETntA>
-    <xmx:LdB-ak1OM6AFIg1T0vwZlcj8HX0I5x9Gl5eBKq6wYX6K9V62BYhZ6g>
-    <xmx:LtB-arbFxQ4kACEdvM790iEBHB7-hvcExhrKbM7F3GHF19N6LcfIrFSW>
+	:x-me-sender:x-sasl-enc; s=fm3; t=1786696018; x=1786699618; bh=0
+	nRj2hLp7dpKjdKjqfKtiu3Ukh6tmnaMstGpJ7o7t3s=; b=d0q3UoAlPjDQiQFn6
+	d6hB92BxbsdFo1IhQIpht0GsQjENyCaY83qDUYYBAw/QvoLUprnrMA2D34VkrjUv
+	DcEmZHk4FjfXm6n3rznZT5j+btTjjBzC/n1wh9L8PRF5AXH549OUsIWC1ImHK1PJ
+	uFYThG/U2rxShsZga3c88VAPFzwjYdAXtNaRaT3eK6tcmPPqGXEkDsfwSG6/Lkml
+	PjLEF1K/i4OyAskH1w9CwVDWfAA/cTgynd+nGj6JJnNQhqLh5okLu260LlacPKQA
+	9P+0WxM1lWDkqaAAUHyf8PjDOFI3NgS89QW2c0WdIsd2XsoaCn3+BpRMym13ND6V
+	4JfoA==
+X-ME-Sender: <xms:UtF-atIVS1RA6vd00Rdi6fCo7C_lrjH5eJfDvta5_juhrcKORfi_iQ>
+    <xme:UtF-ahUHnVUJ2mDpBzEQRjlQm3kQPu4Q_lxzX5Rod3IhBNFYPPLwwsRunzsh0lawb
+    J8PgRP2lue7jvCAWsLjOwIUKAj7etD9Cq7ahVnmVDSnf0lXirf-Pp7J>
+X-ME-Received: <xmr:UtF-ahSkD89nmNhftsFY-4T-IvZN81xYVhUpl9k5P2K5857po6pFnWbxjTvnb7AvyT-8xIauig>
+X-ME-Proxy-Cause: dmFkZTF1vbujDXZ4zL/lNYTa4cf3hxExvwiiGIWei4lqgO8vpso+bbW5yM/DRSWM/0cJeH
+    El2HgEn1e0YXpWnvHQ/mtXOgjKLkJDApplpOWs73nIOCR1wYMIy6IEPGKbn5dcUxeiyBOi
+    HCGUyKXclYDa7k9zzY4zpzgQxlvoJueA3q51wME8c5WSRv5U4Ud+RMcZXxcVQRa3XcEila
+    p7KrfQxJZxdR+bfs0hB9Ch6VrPhqO/msBa8dfgmimhJYWr12AUU1tiipAAa5sUtBFEam5b
+    xC+dm0LPLR6E+Ymv6XYwiyQcrrXwehicFzdcJe9S/M1z7/rruCtoqgSlheSwn/WuKM1HGw
+    ZjyvcCPYvSVD0Ya7Hpios/BzuRRpSArIGtURCjsalLtW+VnPzlCNLPyK9Ovlt5wu9YZOlu
+    Z3jVhjDPSuziLi6daNpNx82tJZR6loHgoEhFMgYJ2xKNp8Xn2PLSxnni8PL3lhLthSQy8v
+    dB8wqlTmQwtYHiB6j1KCyYXyYZbl6dSz60R+tC1x8Zcb0WwnHjzCds0F4RG1r9pXoS1FT/
+    di00JnAOw8Ca1RAuJtkm389AQIAq1zAIg+7SabTuPa9eLyQXLiW3CmABq8FynWTFUV9PTh
+    NK59+MLOo6WX1rGd/vo8vWXl2IwEdNBJhXP25mUYgUVFaNPyQTe6Np4YGDIw
+X-ME-Proxy: <xmx:UtF-apBa-zMssP7px7-Jq_N4qGjQOEh8C96KDJpo7GsfufLbjFsz8g>
+    <xmx:UtF-agIzcUkhO2S0-BRxY2qVv8UIjEjWykyHi68gQQQElLtG6pk2SA>
+    <xmx:UtF-asBWw7FU5UmCzbGBzfUfPH3QqFdNywpfquua_V0VEIeAhnJ0DA>
+    <xmx:UtF-atuK53hVOPl3iVXy8-WhTI8xluY3tSZgxqKOkkH4J3fB2JJ93A>
+    <xmx:UtF-ajrQeps5mdPrUrCc-ofDB92oCiJBHrcZpBDym-exDLcExiPSG573>
 Feedback-ID: i7a5e4b5f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 14 Aug 2026 04:21:59 -0400 (EDT)
+ 14 Aug 2026 04:26:54 -0400 (EDT)
 From: Jiaxing Hu <gahing@gahingwoo.com>
-To: krzk@kernel.org
-Cc: heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	ulf.hansson@linaro.org,
-	tomeu@tomeuvizoso.net,
-	royalnet026@gmail.com,
-	diederik@cknow-tech.com,
+To: royalnet026@gmail.com
+Cc: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
 	chaoyi.chen@rock-chips.com,
-	devicetree@vger.kernel.org,
-	linux-pm@vger.kernel.org,
+	alchark@flipper.net,
+	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: Re: [PATCH v7 03/10] dt-bindings: power: rockchip: allow resets in a power domain node
-Date: Fri, 14 Aug 2026 20:21:57 +1200
-Message-ID: <20260814082158.3851740-1-gahing@gahingwoo.com>
+Subject: Re: [PATCH v7 08/10] accel/rocket: add RK3576 NPU (RKNN) support
+Date: Fri, 14 Aug 2026 20:26:52 +1200
+Message-ID: <20260814082652.3852617-1-gahing@gahingwoo.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260813-squid-of-splendid-hail-d968bf@quoll>
-References: <20260812094106.1391698-1-gahing@gahingwoo.com> <20260812094106.1391698-4-gahing@gahingwoo.com> <20260813-squid-of-splendid-hail-d968bf@quoll>
+In-Reply-To: <20260813095718.9747-1-royalnet026@gmail.com>
+References: <20260812094106.1391698-1-gahing@gahingwoo.com> <20260812094106.1391698-9-gahing@gahingwoo.com> <20260813095718.9747-1-royalnet026@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260814_012211_917561_84657875 
-X-CRM114-Status: UNSURE (   7.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260814_012659_964357_93BD6998 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,32 +114,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+Hi Igor,
 
-> This paragraph is redundant. Why are you explaining correct syntax?
+> I had the window right and the location wrong.
 
-No good reason. v8 drops it.
+That is the useful half. v8 carries synchronize_irq(core->irq) before the
+guard in rocket_reset(), with the comment above it saying what is
+actually guaranteed rather than "Remaining interrupts have been handled".
+Driving the reset path deliberately rather than waiting for a timeout is
+worth more than the rest of the run put together, since that is the only
+path either change is for.
 
-> 30 resets per one power domain? and none got to the example in this
-> file?
+> Say the word and I will point it at the CPU reference the way you did.
 
-One. Both RK3576 NPU domains carry exactly one, SRST_A_RKNN0_BIU and
-SRST_A_RKNN1_BIU, and 30 came from the clocks property above it, copied
-without asking what it would mean here. v8 has maxItems: 1, which is
-what this series actually needs, and it can be widened by whoever turns
-up with a domain that needs more.
+Please do, and thank you. It is the one comparison I cannot produce, and
+it separates two things that look identical from here: a defect specific
+to this SoC, and the reference's own rounding compounding through a
+chain.
 
-And no, nothing got to the example, which it should have. v8 adds one.
+Two things before you spend time on it.
 
-> Do not need '|' unless you need to preserve formatting.
+The number moved. When I wrote 995 of 1001 there was still one fault
+left in Mesa, an output channel count that is not a multiple of two,
+which the CNA reads in pairs. With that fixed it is 1000 of 1001, so it
+is one output rather than six, and whether one output is even worth
+chasing is a fair question. The comparison is still worth having for the
+LAYERS rather than the final vector.
 
-v8 drops it.
+And the oracle matters more than the run. A per output comparison
+against the CPU is not enough on its own past the first layer or two,
+because tflite's requant and the hardware's disagree by design and that
+disagreement compounds: at operator 6 a flawless accelerator scores 4 of
+128 channels against the CPU. vendor-capture/chainmodel.py in
 
-Nothing above is fixed yet, only decided. I told another reviewer on v6
-that something was fixed for v7 and then sent v7 without it, so I would
-rather say what v8 will contain than describe it as done.
+  https://github.com/gahingwoo/linux-rk3576-npu
 
-Thanks for the review.
+runs the graph twice from the model file, once with tflite's
+SaturatingRoundingDoublingHighMul and RoundingDivideByPOT and once with
+the hardware's single half up shift, and prints what a perfect
+accelerator would score at every operator. Read your numbers against
+that column rather than against 128 of 128, or every deep layer will
+look broken on both SoCs.
+
+If it is easier, mn_L00 through mn_L26 in that repository are MobileNet
+with its graph output moved to each operator's output, which is a four
+byte patch of the flatbuffer and needs no converter. Those are what the
+per layer table came from.
 
 Jiaxing
 
