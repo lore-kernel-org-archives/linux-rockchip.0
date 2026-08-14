@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FE52C5CFCF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 02:25:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B175C5DF66
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 02:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tPD3IkiheaOzzbyV2awblc+Z3uiPy9Pkl6wuMH8yE2o=; b=LkNW/8kklWjxOv
-	cOZRaTDlI2S6a1woTgpQHdEGqunqIep9qTOMnw9MB2joJH+YfZ7Q4gtswh95qFvg8YbO32Enyl6+P
-	dn67U5hv7litH7QYhQY95abuAddytd5xHwuM4/HfEX86HQOhLbU0KaPzwPfCkXiASUDJ9GM1XZBY5
-	X9ln9kRTBFI1FP1t9a67m00PILEQV6XgRglc1zv6lQVhtGjKeAOimU15tdmkq/G1aUBm/eYpEvrbd
-	Pu2zK8UVRcrd+q37AXAtJMVvpgw4Kn5pTMvLBKmOjbXRJP42c9lTaRno/xSp0RtouZfMPE43/+Ys0
-	PfEUpw8jiiu+lT8vtyYg==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=J4yoGLhheCcLWvffMEVmo28prAnsB5ap3mkJAMgNr2o=; b=4mbxwyVSNbslpb
+	1Thd3nc/UzpdSAelBPViye3Yq/Dv9gJE9cyJWOi3dRgA7N6lACOxJaQuCi7+Q8R9gbyPMc829zxO1
+	6tNTM2WslezaQ04ZymbBPfoGiygEGvX4fGwdSxjqFwZQ0rM0+swS2B9TRgiWABi+UqwZXkgNTedtb
+	53fECLv8kxrbhpWplpSq8/rVHDMjeJhN/7k2rz8ciDRToP/laUc237EHRhlahfPAaDWwVlESZxYB0
+	2uzm19S7N2bFceurjXyqp4y/QeqJ4iGAJu9YfNJKpeHmyy6elwDEorNXPMqGxWmd1QkzRzYVNQDGD
+	fnO2evdmpLGB6BrhxXlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuhc9-00000001qtD-3Jrd;
-	Fri, 14 Aug 2026 02:25:45 +0000
-Received: from smtpbg151.qq.com ([18.169.211.239])
+	id 1wuhcS-00000001qyD-0m8a;
+	Fri, 14 Aug 2026 02:26:04 +0000
+Received: from smtpbgsg2.qq.com ([54.254.200.128])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuhc7-00000001qsN-0Lrs;
-	Fri, 14 Aug 2026 02:25:44 +0000
+	id 1wuhcG-00000001qsa-17EP;
+	Fri, 14 Aug 2026 02:26:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1786674317;
-	bh=SpaWK3PMgcYH23+PvWVnfKngFcknKMSYOQ44ycpckiU=;
+	s=altu2504; t=1786674326;
+	bh=/o2N6AOO5SDPq+gKcLIfQMliV3bDPAzt5Mxh6KWAXg8=;
 	h=From:To:Subject:Date:Message-Id;
-	b=hdckW7UAV4Iea2Y1GIXYUrE26Ga2o83CuWof38xJmmtePG3Y4RsJj4I6e4aY5Dmz+
-	 AEetLUh8LbGeSXNlWrXnDbr9Vw54bOKBvsyK5r+xa1d1hQfFIuz/T/xL35GO2sCAGy
-	 F7g7M3DLex4mohGdd7yFqn2Dt0NXlNMNCEdPtS9s=
-X-QQ-mid: esmtpgz13t1786674307t22da9b14
-X-QQ-Originating-IP: iWvQqUUAJ0olDn2cJBrjkWIkUI5jcT0zB2IYDBxM4EQ=
+	b=GE1+24LDg7pw527IWxCXEWnC2L8KWfVuxPyqdIK6gl7EvV2vplNi0QKgg2Ya0iaP1
+	 x3sjjbOkyxxEMXF66VboUAjcIG8vTBf31iXun6e3nJ/uC/mfaohiGjLnRA7f1QGrKL
+	 +pfa5iOf5rkNTdW+x8D+hAbMu93lemZogLmHdd+k=
+X-QQ-mid: esmtpgz13t1786674316t587edcb4
+X-QQ-Originating-IP: ShomYSSLc05a5nnPIAHJ0xSIToXotN6/p8YKknY9MSg=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 14 Aug 2026 10:25:05 +0800 (CST)
+	id ; Fri, 14 Aug 2026 10:25:13 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 7059625967644421893
+X-BIZMAIL-ID: 9044457741757422384
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
 	Oded Gabbay <ogabbay@kernel.org>,
@@ -51,33 +51,35 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH 0/4] accel/rocket: resource leak and stability improvements
-Date: Fri, 14 Aug 2026 10:24:49 +0800
-Message-Id: <20260814022453.437-1-kernel@airkyi.com>
+Subject: [PATCH 2/4] accel/rocket: Fix the panic in rocket_iommu_domain_put when the domain is NULL
+Date: Fri, 14 Aug 2026 10:24:51 +0800
+Message-Id: <20260814022453.437-3-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20260814022453.437-1-kernel@airkyi.com>
+References: <20260814022453.437-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: NpzNf8JHXbEIlAFPEbZYU4ptVzMIIqoPmuPJZdM1OdVokxE3XKynoNBh
-	K0JGxDK7C4DcEG6F5kV7uLo3Y/gKHDiCnmaCamAWk1ETvR/SqPgkK40wYeOJHl4L5tt1mne
-	StFzDdUz/0GZwz10s8zGeWQI9Qpjd6qt7RIR20Xtr7vIN9nGNMwASS4nSHxKMeNk/uVtF9O
-	Wegn9ZCVPmmEhjGuuYbT2IbJ9BFtJfwUBsCm21czOeFgzyYgAZrZujA5RFvr7/0dvvAB1RD
-	f/5ssLliyHIsSg69t9TTL4la7riK2Tzx6GU4cGWIO29nKsGVqgw7LgPMQAtiyYwMFK2fr48
-	WZ0iuW4Irztla+hJ9xUlYWP2+jVrb5xzr/dKrkcgoWFG0zHPgJezFPSycdTAK13T1CoOEyK
-	GkYorjoWsJtnD8sgdT8SBu5xaAoch1gbaLDUJx17cRLuPgRKe/QTyky24HjA1ijYTSr/hZn
-	oFlzpBuNJGj9ZMXDzcpOESzQv4eWqd9pcVVCjoGC8/b46mgJ2Sk2WnX/o7gS3+wO34P4aOf
-	o4rHh5MMO6kt/uAFV/9jZfUxBqNdIN0X9S3HzwERfqHDci83Pen2j23Y8LsErg899N2Guit
-	pET5HDVIRcl2xvoOZ2CsGJcUIFFR1yBaT8blQ9f5Aaz5MlQH/c31xPYAa3TAz7KNZo3wDIW
-	LFfp/yET6c3WdfXWxYX3lM+L04QNkfO8heM8avf5owerZoT380MGRyAT9ZF1n+VOMRD/0M1
-	OI8bSQyO06hXljbzovPRFIzu5ClpfIa1F6T3jJwz1klTWWWtWC5N3gBb18CwXHP/WtOn7ot
-	eQvfKxGNLqB7E9htZO+7kfsSSXIel+vUU5ONNZnBL7MZlDNOQjIi1pq5adL9i5MokddQPE8
-	fgQVyqBPgI/uyYeOtFBV17RMWm2DfuP/SAZV25MSaP6eB8A6cTSCyT284fDPtXAbPQk6eNK
-	TRJaIUBKlPcudnbAj2r9YSTY+Bh5+yGwvTb005/JcjW/5SjjfD8xdWtuH95KedgTPZYY=
-X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
+X-QQ-XMAILINFO: MMnP0fEUKo/h07zcrFdjgHgf/shhYqtpl6SZAKaSVnzuyj8lnkpO3xHu
+	6aBCLumhL/h19tcS1WCAsjwRfyZbJDIUzUd+YuTfU7Gu/CnyASgNlr8yxLgg3w72ccTHnD1
+	0/SUMWW03i0+epR5p/IqR8pb0h2o1/a/D+VJ231UGKam3/RLmGL7VAX4E8E3Wk0bpT/jmlO
+	VERMZFZ7HECKDbjVSxa5Mdt8VjWQXJwFwaRhhyqQ5rrQ4wLmwp1J3c38KOE/VQ35Wu5tkA6
+	4+jH02CT7DwPHqrwulb+1dzLAvpOjICttE8KeWUgOI3rErv0LGH4IwfpmZyBZNBq5V0ZRNz
+	kS5T7+JuKd/Lk3jYx4ZKR7g64AcekD8+MrK+dfqsVpNlavneCl6IGVOork0sm8Yf2qehl5m
+	U0cFMtrBfgOIqsBij1R80CavEaerbs+FQK3vT5Oj3smBKfZh+NDHbNQ0lEp2hxcWWukj75A
+	9sGjl9g6ZfY9kf8/5cUw7qhC0a7ew2JI/RdiK8zcRApPJHHZJ+tuRg4yIiPyf4A4DPd8l32
+	/mnUkFhKcwtJGO1Y9zySwalT7AMmuHvkjMaC/gPc8J+MD1Y8stLyWHstAG7cKTveG7rjWDv
+	c83/JCDgkblmmTwQNrxvaOJ4W2X3yQg2NJFOl6uuZxmlyBHnZqRtNMSn6LeXyEB9DCl+GAK
+	Go033SMoiE1gI0yiKuk8DvHUAYt1jOnHHvxGNebXQms5ASwrm/DySTuP6gzQmETcWVJZv0x
+	7++0o/vDOwIADS6cpxbfClh/hZsrOEYF5AUHJgCKXCe2kbbfII6P2nZBLxdrQqqK+fFld5j
+	h9ssZFAN3ebmkgNfDY5NFbhS2MIIcNT+lj6+B8+E4IUen7xvArban0xySrvkmwZiI26oBVu
+	TJhTvsakEapN/twU3tb3D0MI+w+ffz/4BGFC1AoJkb2sgOZz/fGs0JlFS+TCWQa0g4jEg1O
+	rMle7786GtmWJfKc2YNYiT3LBiWah34zos+9dtoSyt419sO/QKyglRY3mBCn/wMU794GKru
+	pM708hcCAyh4cT0aCo
+X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260813_192543_586795_DD217510 
-X-CRM114-Status: UNSURE (   8.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260813_192553_061196_45764FA1 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,25 +99,33 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Hi,
+In rocket_ioctl_submit_job(), since the domain is assigned last, an
+error before that triggers rocket_job_put() -> rocket_job_cleanup()
+-> rocket_iommu_domain_put() with the domain still NULL,
+causing a panic in that function.
 
-This series fixes rocket driver handling on certain error paths to
-avoid unexpected resource leaks and panics.
+Therefore, the input parameters should be validated.
 
-Chaoyi Chen (4):
-  accel/rocket: Fix the IOMMU domain leak in rocket_ioctl_create_bo
-  accel/rocket: Fix the panic in rocket_iommu_domain_put when the domain
-    is NULL
-  accel/rocket: Fix the extra iommu_group_get call in
-    rocket_job_handle_irq
-  MAINTAINERS: accel/rocket: Add rockchip mail list for rocket
-
- MAINTAINERS                       | 1 +
+Fixes: 658ebeac3351 ("accel/rocket: Add IOCTL for BO creation")
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+---
  drivers/accel/rocket/rocket_drv.c | 3 ++-
- drivers/accel/rocket/rocket_gem.c | 2 ++
- drivers/accel/rocket/rocket_job.c | 2 +-
- 4 files changed, 6 insertions(+), 2 deletions(-)
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+index 8bbbce594883..77cd2ecce001 100644
+--- a/drivers/accel/rocket/rocket_drv.c
++++ b/drivers/accel/rocket/rocket_drv.c
+@@ -65,7 +65,8 @@ rocket_iommu_domain_get(struct rocket_file_priv *rocket_priv)
+ void
+ rocket_iommu_domain_put(struct rocket_iommu_domain *domain)
+ {
+-	kref_put(&domain->kref, rocket_iommu_domain_destroy);
++	if (domain)
++		kref_put(&domain->kref, rocket_iommu_domain_destroy);
+ }
+ 
+ static int
 -- 
 2.53.0
 
