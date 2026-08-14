@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DCEC5CFC1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 20:37:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C111C5DF6A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Aug 2026 20:37:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NMmjqQvXWHppyrYK14lPd3P1DykAhCi2+kjJJ7PkO5c=; b=drGZwhy5VBIGe2
-	au8W03SgRpjMxBJ2UPwRWFmR1CXFwLZrz7nUtO6hiiLWv6pkEFky0n+DIic7XNbKu7WwJ0ACVRYrn
-	hlgimzfVvtJUb6H4aO9Ajrd2poCN1hPwpJiBh3FkCs1NG5vrqX+/Tq4h61ZLn8PjQMvmet25fjXCI
-	5YCOZVyX5R9XC44KJqXAhqzlGy+KK9QIEztYwqZLZMu6XCr2iDS+M1dfl7R6cGgWzx6zw9cdTNVgl
-	Xya5SY8bKZMzs+FBcGu85JUHBO2ZyPVy2G23O5EsXg0qzpi9I7RjsJ8pUOObG3vApa2AqvZilZq/9
-	GycCgQJyx44VUNgvm9Xg==;
+	List-Owner; bh=5fpncU8pKQ5QsN53183Cs1zdvSEFLmT3j65kz1Qnwps=; b=uBwBZqOfgx3699
+	HH1Kd3HrKbQzhPI+bMrELt8Dkc/PW2VFVjsFAQ3blriuTecEZiS2N12H4zqjpY1eNg/R9+dj3H/qI
+	8kwNT2sqHH5Q0wHwxpSC+UO+z7mAOHUrzcZw40tk0PwSdOU1e+ZgRh1Ar+q+DjcEc2oOwbEAgKHGN
+	Rq89Lq2LPwYJJzUsvY+2bcarv36ASCVzGbudVRLlfD63XZcbBtGjEuXNv1eGkc6DPBDKyn/NWlfj1
+	GFj1jeCJwD/1FOd+AePgOwW/OM09bwYC3U2mKxYnegEaULqb32PVmi7Ug8B+1p8G6xVlJbIczBX4v
+	HAPV+N92E2dB5SshRs0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuyew-000000039TY-0CRY;
-	Fri, 14 Aug 2026 20:37:46 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wuyei-000000039Jk-2oUS;
+	Fri, 14 Aug 2026 20:37:32 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuyet-000000039RG-40Vl
+	id 1wuyeg-000000039Hq-29my
 	for linux-rockchip@lists.infradead.org;
-	Fri, 14 Aug 2026 20:37:45 +0000
+	Fri, 14 Aug 2026 20:37:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1786739863;
+	s=mimecast20190719; t=1786739848;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=UEzS7cgh0s3kpDJoSKFSaeUbfz26XKFwvX4uV6Y0kQg=;
-	b=L+x3pRnK4T5m2/igTWM7DNbv5iYqmVDtwMg0GBFAb8/9GNha/Djf9z0lCRES64CH3yr2pQ
-	vXCByGAjqv3yq8QzgW1JXGe1ZribZ2s6N8g8FcGV84CS85YDWmEiYNVCUo7HbxP2hf4W0S
-	mnywEVT7JhnB3mOUXkRmURnAHgvLbjA=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+	bh=Y8HxtGS/+pDsEWZq9YYRCPV84sZrTTgU1WrgrxJbu3s=;
+	b=aMQ05mfA/3pPHVpDzrSRNp9dXflkcoOHebQyRKqP2pRJLABeDCTwlooSXgfFvgf5JsFFBI
+	ZRW5OsLEFtmLmS29hbd1/bmLgTgzgqjBXhd/G/3Z2xCEGeMG/UjnPgeH0eflAcVPlHOF6q
+	6fdq2RvcrDGVWBThPwWGf1DGV9FVmlc=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-459-oqOvZT7bMEW5oR1aBhdpHw-1; Fri,
- 14 Aug 2026 16:36:07 -0400
-X-MC-Unique: oqOvZT7bMEW5oR1aBhdpHw-1
-X-Mimecast-MFC-AGG-ID: oqOvZT7bMEW5oR1aBhdpHw_1786739765
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-553-OoJM1A43PeiGF1bcosKBrg-1; Fri,
+ 14 Aug 2026 16:35:57 -0400
+X-MC-Unique: OoJM1A43PeiGF1bcosKBrg-1
+X-Mimecast-MFC-AGG-ID: OoJM1A43PeiGF1bcosKBrg_1786739754
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 8FF7D195608A;
-	Fri, 14 Aug 2026 20:36:04 +0000 (UTC)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id AC0B919560B5;
+	Fri, 14 Aug 2026 20:35:53 +0000 (UTC)
 Received: from GoldenWind.lan (unknown [10.22.64.233])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 94B5E197751A;
-	Fri, 14 Aug 2026 20:36:00 +0000 (UTC)
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 12FBC197751A;
+	Fri, 14 Aug 2026 20:35:49 +0000 (UTC)
 From: Lyude Paul <lyude@redhat.com>
 To: dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
@@ -77,18 +77,18 @@ To: dri-devel@lists.freedesktop.org,
 	spice-devel@lists.freedesktop.org,
 	intel-xe@lists.freedesktop.org,
 	imx@lists.linux.dev
-Subject: [PATCH 4/5] drm/vblank: Use drm_for_each_crtc() in drm_vblank_init()
-Date: Fri, 14 Aug 2026 16:35:32 -0400
-Message-ID: <20260814203542.1405135-5-lyude@redhat.com>
+Subject: [PATCH 1/5] drm/vblank: Add drm_device.has_hw_vblank
+Date: Fri, 14 Aug 2026 16:35:29 -0400
+Message-ID: <20260814203542.1405135-2-lyude@redhat.com>
 In-Reply-To: <20260814203542.1405135-1-lyude@redhat.com>
 References: <20260814203542.1405135-1-lyude@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: Oo4KsmEIsfpEjvuzbs_DBjo02HUrJlPNLCe34cQAl7Y_1786739765
+X-Mimecast-MFC-PROC-ID: jq0Pz5S3La_PLywyHlqZS-RjWM6u2Ea6vC9VCw1_Mg0_1786739754
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260814_133744_062746_8A9D3F62 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20260814_133730_624623_046E199F 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,43 +105,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-No functional changes yet, we just should be using this iterator here
-instead of manually counting the number of CRTCs anyhow.
+Currently the way we check if a driver supports hardware vblanks or not is
+actually funny and cursed! Likely because it predates KMS.
+
+As it turns out, we only check dev->num_crtcs to see if we have vblank
+support. Why? Because it doesn't actually represent the number of CRTCs on
+the device, unless drm_vblank_init() has been called - which sets
+dev->num_crtcs. And as it turns out, this is the second place we keep track
+of the number of CRTCs we have.
+
+Let's clean this up by starting with adding a variable specifically for
+tracking whether drm_vblank_init() has been called or not.
 
 Signed-off-by: Lyude Paul <lyude@redhat.com>
 ---
- drivers/gpu/drm/drm_vblank.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/drm_vblank.c | 3 ++-
+ include/drm/drm_device.h     | 7 +++++++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/drm_vblank.c b/drivers/gpu/drm/drm_vblank.c
-index 17283e8920378..d57405050554f 100644
+index f90fb2d13e423..d317148af8cb3 100644
 --- a/drivers/gpu/drm/drm_vblank.c
 +++ b/drivers/gpu/drm/drm_vblank.c
-@@ -547,19 +547,20 @@ static void drm_vblank_init_release(struct drm_device *dev, void *ptr)
- int drm_vblank_init(struct drm_device *dev)
- {
- 	int ret;
--	unsigned int num_crtcs = dev->mode_config.num_crtc;
--	unsigned int i;
-+	struct drm_crtc *crtc;
- 
- 	spin_lock_init(&dev->vbl_lock);
- 	spin_lock_init(&dev->vblank_time_lock);
- 
--	dev->vblank = drmm_kcalloc(dev, num_crtcs, sizeof(*dev->vblank), GFP_KERNEL);
-+	dev->vblank = drmm_kcalloc(dev, dev->mode_config.num_crtc,
-+				   sizeof(*dev->vblank), GFP_KERNEL);
+@@ -557,6 +557,7 @@ int drm_vblank_init(struct drm_device *dev, unsigned int num_crtcs)
  	if (!dev->vblank)
  		return -ENOMEM;
  
- 	dev->has_hw_vblank = true;
++	dev->has_hw_vblank = true;
+ 	dev->num_crtcs = num_crtcs;
  
--	for (i = 0; i < num_crtcs; i++) {
-+	drm_for_each_crtc(crtc, dev) {
-+		unsigned int i = crtc->index;
- 		struct drm_vblank_crtc *vblank = drm_vblank_crtc(dev, i);
+ 	for (i = 0; i < num_crtcs; i++) {
+@@ -600,7 +601,7 @@ EXPORT_SYMBOL(drm_vblank_init);
+  */
+ bool drm_dev_has_vblank(const struct drm_device *dev)
+ {
+-	return dev->num_crtcs != 0;
++	return dev->has_hw_vblank;
+ }
+ EXPORT_SYMBOL(drm_dev_has_vblank);
  
- 		vblank->dev = dev;
+diff --git a/include/drm/drm_device.h b/include/drm/drm_device.h
+index 768a8dae83c52..2df08c756afd3 100644
+--- a/include/drm/drm_device.h
++++ b/include/drm/drm_device.h
+@@ -287,6 +287,13 @@ struct drm_device {
+ 	 */
+ 	struct drm_vblank_crtc *vblank;
+ 
++	/**
++	 * @has_hw_vblank:
++	 *
++	 * Has the driver called drm_vblank_init() to setup hardware vblank support?
++	 */
++	bool has_hw_vblank;
++
+ 	/**
+ 	 * @vblank_time_lock:
+ 	 *
 -- 
 2.55.0
 
