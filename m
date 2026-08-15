@@ -4,58 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E545C5B572
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Aug 2026 01:20:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D11CC5DF67
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Aug 2026 03:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OJWj3PbnAabybLU7Y9JoioqHjCL4dKOjnmbQJlw34UI=; b=I3rpqz+bUa0lZP
-	T6+BfWdpj3SrjqJt/Niv3KOQAn7f0OJXfcndh67VnsAKCQpFbQjPRpAM08daOsfED3fTjOllQgDrT
-	zxaEDPpv4T0qPXhXaaN2F/WEpq+SSnkdq05iIDyIynjwWsWeNMfWIvLyLMJvBKkUU2i3SaC1P7cD8
-	lK3/jHv10qwdnJ3Q8tZx3WegBEe0Toy3Gk7kMQrw0MngZIXpPEioAA2BjNXLWniz1zF6aJacK/pjf
-	CfZnRrGcIHpswPe8iw0ZwC874P6ItTajXWkHiLrVB4Szyna7GMAS5YjLKE9OnNIIei005Is++lqkb
-	PgzrCdoREX7bnkNbntFw==;
+	List-Owner; bh=flWoTpc/a2uIP9Vys7b9+h5Dmc6pJaQUwL4+13QB65U=; b=CTq8TdIFShyM7H
+	BCnG+HVEpnU1ZMI7a5SIeEgXiRgHlCZBHbbu78BEbkhgr+2UJR8Gts1ddOPYgE8wMRfXqRA+HBAnM
+	RNo8PHklDnHyRqmSHbL2QpknJa5wAq7z+xNevsN00GyurAG3oBkZj0bUaFn3GHuyDI7sT+GD4Vo+b
+	dNzDTdlYS/3v07uKI17nvpuHNBFzL8bSOtcQ7blzmcORE2ObtcGsewdpZhgv73kPVeVcDdbe4cKSp
+	9yEaZjAYtiPdqfhbgQH3FUZ/Rtx194Y1IBTCK67bemB90qCuiuIHr4ohzMHqfLFAOTvQJcnN/Xf+/
+	pg3LOrp+zLY6dkiBYjdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wv34o-00000003Mfo-2j0d;
-	Sat, 15 Aug 2026 01:20:46 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wv4oz-00000003Qy7-42dn;
+	Sat, 15 Aug 2026 03:12:33 +0000
+Received: from flow-a1-smtp.messagingengine.com ([103.168.172.136])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wv34n-00000003Mfb-3XRV;
-	Sat, 15 Aug 2026 01:20:45 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2B6C542AE7;
-	Sat, 15 Aug 2026 01:20:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB7FA1F000E9;
-	Sat, 15 Aug 2026 01:20:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786756845;
-	bh=e1GbwJutY4GdWm624xBCw3VzOLuvHYbs0MQRC3ke+iI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=O2+Kfnd97Q/YA1Em578zO+4kBFdO/77iJ2SeVvuaxxOSzFIACMcDaloxuvktQITr8
-	 1e2nAq0RFNaiWgjlPsmAVeAAJJPBCUDrC134SZ0q46jzS/MfmWy2QgMZyf4VjfEZcG
-	 HWVOaNS9J04tpNMgxRiNdCscPqJKxF/wgGDvs2oqUwwAMk2znlVluIzU2od9jC/0Z0
-	 Fkzgcg+Amk7f+ABEdv8mrDYnCkhjWJ1RymAdIM0pT4QRnebe0W25xN9EOpcmRfya4p
-	 g2c51qwMQLRgMmlThdm6rsk9FMygyh3F7D4kH3XACnpU6c49fJP2soPl2CVkxBbQRH
-	 +2G6rnQowHWLQ==
-Date: Sat, 15 Aug 2026 02:20:36 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Vladislav Leonov <vlad@zlab.su>
-Cc: David Lechner <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Simon Glass <sjg@chromium.org>,
- linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] iio: adc: rockchip_saradc: Add support for RV1106
-Message-ID: <20260815022036.7c47585e@jic23-huawei>
-In-Reply-To: <20260810090826.146758-1-vlad@zlab.su>
-References: <20260714131631.v2.1.0b846080833e4b836793c43fc26d1c6d817cf9b4@changeid>
-	<20260810090826.146758-1-vlad@zlab.su>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1wv4ow-00000003QxX-2Xdn;
+	Sat, 15 Aug 2026 03:12:32 +0000
+Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
+	by mailflow.phl.internal (Postfix) with ESMTP id 15BC31380143;
+	Fri, 14 Aug 2026 23:12:29 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-06.internal (MEProxy); Fri, 14 Aug 2026 23:12:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm1; t=1786763549; x=
+	1786767149; bh=kA/r/VQ4oatiVrzWTgockk3L+gnj8KfRxkcgdbcdrgY=; b=m
+	y+xzyu4XGxX89R9BPPH2r4HycR70j72NO71yUVejjsHNMmKT5UL+vXJBvPPABrFI
+	DZ1eZw+/hbZVPNYnLWrzAsnEM2/tA9cnNCjVB34vi7aGqniZJP8DkwTnopj31VBj
+	Jm5iskOZEEPZOaG5yjMYIt1t+mIhH7jD9Y8lzwOAYjws0xErS+8Dp5WO4W7perv/
+	ZJj6WkUWlKYMMkfzhQoeTeoTRtNwFb3E4H8FuduD8sqviA+RHZ0pSpHzBfa3jR25
+	lxWdwD+va6lXl/5D3ogHwG8/oHEuBr7mUyXaBpSt6nawDOImb4+sx4fX/RbavKIP
+	aqu5Rj/XI827ApovwrNgQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1786763549; x=1786767149; bh=k
+	A/r/VQ4oatiVrzWTgockk3L+gnj8KfRxkcgdbcdrgY=; b=TLr3AkZPdY1OSoYux
+	mu86NASV1gS2/ZY4RmxJGG1Bf3X/63sJN7tuNPiac5PtSUyuDEXgDni4VZEGDd1H
+	Yb3Lr3tNa0umwZDk2De1bZ38EjatGPw3P1u3JDvFz0LfdASrTO3BIXUfKQQuAB/l
+	wT1tyqQEwtzBguK46ho2JOVJixtPzWOesGbXApnstbue/dvCFdQBtvQP7e6UcVsJ
+	b/ub7FEs94cNDBWunsQqR7HHGxkRUPLanPWEcN/T/bTUm/Y2dmOEArG+DBJKu+Np
+	uikDoGNwJvXvn+PclRm05aRIGno08p7vud9EcuW0iW19bortLKKEYvgO9QFkDNVS
+	GOzbg==
+X-ME-Sender: <xms:G9l_atKqXN089uuc6PNCPQY4pqgYsjI9YAnsvbC_gq73ROTqDomP5w>
+    <xme:G9l_ahV499lvGE4mbeyLIEDOAUBWI0ERKewzCHtk-PHAKu3OtvZtnNWL84eMafRDG
+    j5Z8OE7is4g_msWNziX-B10efBMMrH4hRKjoK1v7SzM163CRjPjsA>
+X-ME-Received: <xmr:G9l_ahTBF5ecTZlYho-xfQHpaYU9hvezcQ3c5Nld3aNnaaAhaGYRQsjry4p6FP4F453DnqHVeg>
+X-ME-Proxy-Cause: dmFkZTFZ5VqGgVICYTHgTtgPrQBIUDcIY34EnsjaahPws85NFbLnwUfD1zbYJtwkWFhAbF
+    HcEX6DZFoTadXmZS8lVH1Tr+kZuEtjBy9n9AjLXYP6roYnZ4WYXyKIp7H3Iw8JSmbqjdeu
+    0BhtvY0WwoH7RH0iz5lKnB/p+pS7FrKo/2mGKz2Q9uTQ1xWFxFgunu51D0VyP/UgSD+YD2
+    eoAndAFcFCAyWlmHfbbBbXgoRQjaUWm5pKlLeXk18SfETRE7XCZl09NNoPcpGTzV5gSOjk
+    7mS93aRmO0qga0dLfv1I1FU9xNoxqWv5uKsjO7BqSmgv1j5yzTEF7qxKvzWNC+X9+ciIiF
+    4DUQfYxRUwooKhtfQB5lGeFzULhZAOx0V14mWgYRkQu3Rpuk/U58PMru+A/6p4epiyOayi
+    UQkykI/88SZIMap43nC97DadGZbFdKNZ5HPknw0+2u3/WQ7GENBzOvR8xKyRLMTu7uBl/w
+    I5aChnxRLrdAW4kCkYgT+MlAU1pDOzjOzHeVweFnroj7GljzoYNrxQ2nfDPKkh4LBYjuIS
+    7PAAQCu7fyCs6SIn73iKCN5j4pjX8CBqt2LuZoQjGjm4yO7PlDgxuhEYTDH0gshXWoRy6l
+    XHA5f2cY7xKXYkRy8k6ZyomlUnnKgr/DQ1Me7m02dLLDHKcNCqZWiujqjBpQ
+X-ME-Proxy: <xmx:G9l_apCzfWUYyiIGRuUth_2Nwj8yinkNMeWTNTGe9WreFd1_Iphgkg>
+    <xmx:G9l_agIY54UB27FMmg6hlqIUcW2cF6QGLKEgyUkntKqyePcleommWQ>
+    <xmx:G9l_asDXs3eVJ_ewV-xQnBk3wgOQ7-B4XZqr0mz5x8zMeU7WixsjSw>
+    <xmx:G9l_att3NMC9WKzrQkuO5SeUU_nEa-BY7qARs0Ty1sPZm9bP3YEjJw>
+    <xmx:HNl_ajoJMhXzR-fmcQXQ87wbYsdYgSOQUWjf-adPSS_AxjgAY2Sho3t5>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 14 Aug 2026 23:12:23 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: royalnet026@gmail.com
+Cc: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	chaoyi.chen@rock-chips.com,
+	alchark@flipper.net,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: Re: [PATCH v7 08/10] accel/rocket: add RK3576 NPU (RKNN) support
+Date: Sat, 15 Aug 2026 15:12:19 +1200
+Message-ID: <20260815031219.3860651-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260814110841.11238-1-royalnet026@gmail.com>
+References: <20260812094106.1391698-1-gahing@gahingwoo.com> <20260812094106.1391698-9-gahing@gahingwoo.com> <20260814110841.11238-1-royalnet026@gmail.com>
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260814_201231_116808_36683463 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,105 +114,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 10 Aug 2026 12:08:26 +0300
-Vladislav Leonov <vlad@zlab.su> wrote:
+Hi Igor,
 
-> The Successive Approximation ADC (SARADC) in RV1106 uses the v2
-> controller and supports:
-> - 10-bit resolution
-> - Up to 1MS/s sampling rate
-> - 2 single-ended input channels
-> 
-> "dt-bindings: iio: adc: rockchip-saradc: Add RV1106 compatible"
-> documents "rockchip,rv1106-saradc" as falling back to
-> "rockchip,rk3588-saradc" (see Link below). The two IP blocks are not
-> equivalent, though: per the RV1106 TRM v0.3, chapter 20 (SAR-ADC),
-> RV1106 only has 2 channels at 10-bit resolution, versus 8 channels
-> at 12-bit on RK3588. Without a dedicated match entry, the driver
-> binds via the fallback compatible and uses the RK3588 channel table,
-> which reports 8 channels instead of 2, and an in_voltage_scale that
-> is off by exactly 4x (4096 vs 1024 full-scale).
-> 
-> Add a dedicated compatible/data pair for RV1106 with the correct
-> 2-channel, 10-bit layout.
-> 
-> Tested on a custom RV1106-based board, with:
-> 
->   &saradc {
-> 	vref-supply = <&vcc_saradc>; /* 1.8V fixed regulator */
-> 	status = "okay";
->   };
-> 
-> Before this patch:
->   # ls /sys/bus/iio/devices/iio:device0/in_voltage*_raw | wc -l
->   8
->   # cat /sys/bus/iio/devices/iio:device0/in_voltage_scale
->   0.439453125
-> 
-> After this patch:
->   # ls /sys/bus/iio/devices/iio:device0/in_voltage*_raw | wc -l
->   2
->   # cat /sys/bus/iio/devices/iio:device0/in_voltage_scale
->   1.757812500
-> 
-> Link: https://lore.kernel.org/all/20260714131631.v2.1.0b846080833e4b836793c43fc26d1c6d817cf9b4@changeid/
-> Signed-off-by: Vladislav Leonov <vlad@zlab.su>
+Thank you. This is the column I cannot produce, and it settles the
+question it was aimed at.
 
-Hi Vladislav,
+First, what you were comparing against has moved. The RK3576 collapse
+from operator 4 with maxdiff 255 is gone; four Mesa faults came out
+between that mail and yours. Against the same simulation RK3576 now
+reads 21/64 md 13, 18/128 md 14, 9/128 md 13, 4/128 md 23 and 7/128
+md 10 at operators 3 to 7, which is the simulation exactly, and
+MobileNet end to end is 1000 of 1001 outputs within one count of the
+CPU. So the thing your run was built to characterise no longer exists,
+and your table is measuring something else.
 
-Could you also send a fix for the dt-binding as it clearly
-shouldn't claim the fallback compatible!
+That something is worth a note, and I do not have an explanation for it.
+From operator 4 on RK3588 sits below the simulation where RK3576 now
+sits on it, 8 of 128 against 18 at operator 4 and 20 of 256 against 36
+at operator 8, with a few hundred elements per surface already off by 1
+to 4 at operators 0 to 3.
 
-Whilst I can see why you did here, in general don't reply
-to an existing series when sending a new one.  Your link tag
-is sufficient to associate the two.
+My first thought was that this is my Mesa tree rather than your silicon,
+since you ran upstream and four fixes are not posted yet. Checking it
+before writing it: three of those four are not gated on the SoC, but
+none of them bite at MobileNet's channel counts.
 
-I'll give this a little longer on list to let other comment, but
-looks good to me.
+  the CBUF row cost fires when ceil(ic/16) is 3 modulo 4, which is 33 to
+  48 or 97 to 112 input channels. MobileNet has 3, 32, 64, 128, 256,
+  512 and 1024, so 1, 2, 4, 8, 16, 32 and 64 atoms. Never 3.
 
-Thanks,
+  the output channel pair rounding fires on an odd count, and the
+  coefficient operand alignment on a count that is not a multiple of 8.
+  In this model that is only operator 28, the 1001 channel classifier,
+  which is past the end of your table.
 
-Jonathan
+  the fourth, the tiled 1x1 weight layout, is inside the RK3576 path.
 
-> ---
->  drivers/iio/adc/rockchip_saradc.c | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
-> 
-> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> index 0f0bf2906af0..5c45fae11890 100644
-> --- a/drivers/iio/adc/rockchip_saradc.c
-> +++ b/drivers/iio/adc/rockchip_saradc.c
-> @@ -348,6 +348,19 @@ static const struct rockchip_saradc_data rk3588_saradc_data = {
->  	.read = rockchip_saradc_read_v2,
->  };
->  
-> +static const struct iio_chan_spec rockchip_rv1106_saradc_iio_channels[] = {
-> +	SARADC_CHANNEL(0, "adc0", 10),
-> +	SARADC_CHANNEL(1, "adc1", 10),
-> +};
-> +
-> +static const struct rockchip_saradc_data rv1106_saradc_data = {
-> +	.channels = rockchip_rv1106_saradc_iio_channels,
-> +	.num_channels = ARRAY_SIZE(rockchip_rv1106_saradc_iio_channels),
-> +	.clk_rate = 1000000,
-> +	.start = rockchip_saradc_start_v2,
-> +	.read = rockchip_saradc_read_v2,
-> +};
-> +
->  static const struct of_device_id rockchip_saradc_match[] = {
->  	{
->  		.compatible = "rockchip,saradc",
-> @@ -370,6 +383,9 @@ static const struct of_device_id rockchip_saradc_match[] = {
->  	}, {
->  		.compatible = "rockchip,rk3588-saradc",
->  		.data = &rk3588_saradc_data,
-> +	}, {
-> +		.compatible = "rockchip,rv1106-saradc",
-> +		.data = &rv1106_saradc_data,
->  	},
->  	{ }
->  };
+So my hypothesis does not survive its own arithmetic and I am not going
+to send it as one. Operators 4 to 26 on your board are unexplained by
+anything I have, which means either RK3588's own path carries a rounding
+difference RK3576 does not, or my simulation is closer to RK3576 than to
+the hardware in general because that is the chip I tuned it against. The
+second is the more likely and the less flattering.
 
+If you ever want to close it, the cheapest probe is operator 28 rather
+than any of the ones you ran: 1001 output channels is odd AND not a
+multiple of 8, so it is the one operator in this model where two of my
+unposted fixes would change anything on RK3588. On RK3576 without them
+it came back an empty convolution.
+
+One more thing, since it cuts against my own earlier note: operator 3
+scoring identically on both chips retires the suspicion in my round 104
+write-up that its asymmetric stride 2 padding was the first RK3576
+divergence. It was not, on either SoC.
+
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
