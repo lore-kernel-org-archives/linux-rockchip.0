@@ -4,99 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE54C5B572
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Aug 2026 04:12:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CD23C5DF66
+	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Aug 2026 10:01:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wn5XG2bssJLiw1ti16H+Hzxf2BKLf/Y8efQnOEFuZ8I=; b=0ve/2TLToKsmsu
-	E9Fa5Qi/b0qrUGZPQdSLTLI/5lT+wleexaQNdm9p6DQdP0ez40IeKbLFQD+RE2kvjT8ejEB2NgMC7
-	Lhe/8V5IGJE+ukmfbMf+kz46klfgbXNM8QTEfAKa/5Mg6kFk8MYznQUBrKZt1L0xP9M12dH7f+8N+
-	SniI8iWc9PjPvTFf5JsAQCcy6mPotZGOoVFJsT0vUpfHP0QU6ytoKFxQumaeZmHlskcP2dk3pZLMl
-	GrBXr7TnUJ+spAe4nFnMBwgv6Uc3Y3/TEBUlrVOhOCE7TLShaHAiKRu72wSr7p0y1x+WRJDHloBVU
-	hPR8luDTRWHpGPYc1vow==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NvUx+OfWKDxW0pUphniPpx0ciImheTfsaSFADaJmDsw=; b=ZTU6fl5nBb0D7S
+	UcUUVtHDUIkzowJSBN4OXNmZqljsKs2QP77lonk0NQV/rO+kaCK9Vtynry8Z65+tBUC7yNKUDGjjU
+	V580cNf6buAyIM4JerrDlOqwFCDty26mfWvJlYjRcWfZSpyfEPyv+QT25hAOVVEhAq4YBE4Pp3Vhv
+	KUhWcpYSE+FdXoTpJS/6pUBEPPN8vcPOGLAMITtOYeeJNhb2WSxM7RbrMCjGm3TyDWRp+fKvLwVtL
+	zLPApYX2Pd2TKhvHAyPJ/bhmbSmL2M6uxD6r/GbpYZsh5EhZs6LqUdiUX0i1rz4ltSn4qpl9L3JBB
+	yp5oLi9llXru/kyX5AIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvSEq-00000004RhF-16iT;
-	Sun, 16 Aug 2026 04:12:48 +0000
-Received: from flow-a1-smtp.messagingengine.com ([103.168.172.136])
+	id 1wvXg8-00000004dB6-1CCX;
+	Sun, 16 Aug 2026 10:01:20 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvSEl-00000004RgQ-1p4N;
-	Sun, 16 Aug 2026 04:12:46 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailflow.phl.internal (Postfix) with ESMTP id 316191380153;
-	Sun, 16 Aug 2026 00:12:40 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-02.internal (MEProxy); Sun, 16 Aug 2026 00:12:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1786853560; x=
-	1786857160; bh=lJ3os724hSt3ktSUr45GRnoaHyq1InmNCTom8Lp4Cp0=; b=N
-	9UiwR5YdgCDMjHjyIwwI2D8MI8jwnFMtBufcYW9sGtahJNn+IZXWCxj/dZAy16H2
-	CEbKBQVbC5jN+nQ+iFEGkCXwBaZekCw+cPW5O4bjTlFZtp84SgRDsqvWu9SEOCSu
-	F4AIqYzlq7RC/o6F1uBrkfjqgTK14yOTUKdygs65q1siYukeYEgfrJaB8Wfv2rMb
-	nL2kdQbp1KfndVUgEyXjUirABp0x+uWQv97XPYKSrqK5oilPs9UINGHCgyd9O1+a
-	zPZvlQQzPpf0p9I9Yr4QfT3y4j7kYekFBpbDldd91dIWAWvrwuT8m/8l3QYqNBLL
-	Vc8vhDStYOOQjHRMfd1sg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1786853560; x=1786857160; bh=l
-	J3os724hSt3ktSUr45GRnoaHyq1InmNCTom8Lp4Cp0=; b=ONomEOrEFd5CcI2QG
-	+P42rYjDC82valwj7k7SklEnlnwq88itdEBnHzbCk4/2HC7QbTp03HLDWhvqd+7N
-	g5bk1gjF/kUBpgq5gQlWSNE89mdyjAznHkFrjTF8gWKJxHHB+5USZQxx6u3zpOLo
-	80wm1HSiVyDbuI91xD+xVkUiT0tF4wbKaj5LO4QPoJdooSPuafGdrOiTnFwB2Dki
-	dGSGusH7SUyCXNyVJ+JCTFrbsBfsHBXVGoNGieE1LxjGbkcEPnAt9MuoBi1J8DOo
-	xtAxNfjKX5XfxTbSAhJLhqHgpTQ6XS0J/YP9DgPxrdVyoK6FJm2yU9k3CX8s01Vz
-	3AP7g==
-X-ME-Sender: <xms:tjiBauRFar-Q-qEQ6nVwaD1Q4ONkH3HvIo8yVXfBtWmFppxAq1v3GA>
-    <xme:tjiBar-qrOM47lYStBzgZPLr3kmZAO5KknmczWlHDDy4KiTndbKW8YCYwHqmsGFEl
-    J5vZWrM7LTrCiX49ByJgupZig1doJY9Aw3zHGtbYRmXJHGgD0r2prw>
-X-ME-Received: <xmr:tjiBanYPe6WXWHDtQY-M780_Ia5UgfvbSwle6WsXIG9aHrfAV8B3DIAsEPoHEsdj6yiKyC-J8w>
-X-ME-Proxy-Cause: dmFkZTFas/+GXIf2+2Hy21pKo1/GKerUN9Ajhwld/TvCJzBGNf4sYLQxUc6KVmATaijvaF
-    VifnljgyxDMkhJGC5y2bWPTCM7k+R/0uS91FvQbeVrn8XlXSf8nYzbK1+KyR/lAoxd7eSe
-    iB9DflzfFdkcdlZ+Kb2NdZpuw2cmf7pM/dHcY0YaJtw4xPL4O70AOWW8JKuAX3AskA26JV
-    5rISjyY8j1JAmbG5jSdJHZqWLO+2clgZCR4uQ2nFakxrsMIDgdOMahN0y0U31TLt+zlzsN
-    1wmoMIIXZLvEZ08N4Ma0Ds+JXs4LyOo1GiM1Tkt10TF5sgX9+XjVInu8rwe/p/5kZkQSMd
-    vy23pZVJQ4MWjz2519yr6dsyQblKT0jO9Y6QsBH7pC5eYBoh6GJVTKd5ZtJRVfiEOgOg4S
-    TNB76rYicjIXiXdFZPe/f1+5X36mCYg6h3ErX3fOT8dEuA2Yudy9q+qHAuc1wE05MgjDkl
-    OegRpxQkAC7VsRoMC2fHZE1Ied/lyO4zvig745AYQx5lP9ufAKZLALVuekSzJrH9roOTLm
-    FzWF1ITagxVxMi9h8xfLMsjfX7G9o/tK+5jHssGJS+yPHuV7SXW5vDTajmEbmM2eSK6lAh
-    2BYXf+3jpE+TEGgWJDxAxIlcuoqe+CtaqjIrbsRsuhbSuKkp1Acf6CrXPkjA
-X-ME-Proxy: <xmx:tjiBakofivz3WHuZmwPrCW6BdEbqD7eGhNz2uaD9JoLABuCFFXmsEQ>
-    <xmx:tjiBajQScpr1UzLu6OY1fIlyEAYp_5-yL6VS11bjYT-OiW70th5cyg>
-    <xmx:tjiBagpLwRXPBBlzZ4kojgTrg-bzqjGM_JX9068Z1sLPyIpWLmK7-g>
-    <xmx:tjiBal0Ku5Vgfk05A413k3jcitqrXQNLwRWQIzThkUP6Bx5Vs6lYKA>
-    <xmx:uDiBarT9haR-XsKxP4MNik_NpQKNm0NrqhuyWGmadiZ1YWfqK_Jd_I2d>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 16 Aug 2026 00:12:35 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: royalnet026@gmail.com
-Cc: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	chaoyi.chen@rock-chips.com,
-	alchark@flipper.net,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
+	id 1wvXg4-00000004dAg-2ijJ;
+	Sun, 16 Aug 2026 10:01:19 +0000
+Received: from Vostro-3710.. (unknown [14.220.232.127])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4a232e329;
+	Sun, 16 Aug 2026 18:01:01 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Chukun Pan <amadeus@jmu.edu.cn>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v7 08/10] accel/rocket: add RK3576 NPU (RKNN) support
-Date: Sun, 16 Aug 2026 16:12:33 +1200
-Message-ID: <20260816041233.3566625-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260815130556.68876-1-royalnet026@gmail.com>
-References: <20260815130556.68876-1-royalnet026@gmail.com>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH v2 1/1] arm64: dts: rockchip: enable NPU on Radxa E52C
+Date: Sun, 16 Aug 2026 18:00:00 +0800
+Message-Id: <20260816100000.3707339-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+X-HM-Tid: 0aa00a047d1d03a2kunmd86a0852222fdb
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTBlOVktJTB5NSk0YGUNNGVYeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpJTFlXWRYaDxIVHRRZQVlPS0hVSktJT0
+	9PS1VKS0tVS1kG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260815_211243_939294_64E5059D 
-X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-CacheID: sfid-20260816_030116_898788_B3959E0D 
+X-CRM114-Status: UNSURE (   8.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,34 +70,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
+Like the RK3588, the RK3582 has NPUs. Enable the NPU cores and their
+MMUs, and connect the regulators. Remove always-on and boot-on from
+the regulator because it is connected to the NPU power domain.
 
-Thank you for running it, and for the unclamped reference.
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ .../boot/dts/rockchip/rk3582-radxa-e52c.dts   | 36 +++++++++++++++++--
+ 1 file changed, 34 insertions(+), 2 deletions(-)
 
-Your 1001 does not discriminate between the two forms, which I should have said
-when I described them. DIV_ROUND_UP(1001,16) is 63, odd, so the parity form
-gives 0x80011011 there and so does oc % 32. They differ only where a count is a
-multiple of neither 32 nor 16. On RK3576 the failing one was 56, and 88 or 120
-would do as well. So your clean result rules nothing out, and I am not reading
-it as support either way.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+index 854c118418eb..640c5be2f0fc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
+@@ -253,8 +253,6 @@ vdd_npu_s0: regulator@42 {
+ 		reg = <0x42>;
+ 		fcs,suspend-voltage-selector = <1>;
+ 		regulator-name = "vdd_npu_s0";
+-		regulator-always-on;
+-		regulator-boot-on;
+ 		regulator-min-microvolt = <550000>;
+ 		regulator-max-microvolt = <950000>;
+ 		regulator-ramp-delay = <2300>;
+@@ -300,6 +298,10 @@ &pcie2x1l2 {
+ 	status = "okay";
+ };
+ 
++&pd_npu {
++	domain-supply = <&vdd_npu_s0>;
++};
++
+ &pinctrl {
+ 	keys {
+ 		pwm15_ir_m1: pwm15-ir-m1 {
+@@ -354,6 +356,36 @@ &pwm14 {
+ 	status = "okay";
+ };
+ 
++&rknn_core_0 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_1 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_2 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_mmu_0 {
++	status = "okay";
++};
++
++&rknn_mmu_1 {
++	status = "okay";
++};
++
++&rknn_mmu_2 {
++	status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&vcca_1v8_s0>;
+ 	status = "okay";
+-- 
+2.34.1
 
-On my side that register turned out to be the whole of it. A 1x1 layer with 56
-output channels had timed out in every round it ever ran, 32 of 56, and with
-the parity form it is 56 of 56 every channel correct, with the old form
-reproducing the timeout in the same log.
-
-You are right about perch.py and there were three of them rather than one. The
-inner maxdiff, the interior statistics and the raw row dump all assume a
-surface with an interior, and all three raise on a 1x1x1001 classifier after
-the useful lines have printed. Fixed here, and checked on the host at 1x1x1001,
-5x5x8 and 56x56x64 before flashing, which is a check I should have been running
-all along.
-
-And I will re-score operator 28 against the unclamped output. The max(cpu, zp)
-reference does move channels that are not wrong, and reading an empty
-convolution off it is the kind of mistake I would rather not make twice.
-
-Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
