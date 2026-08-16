@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C5B8C5DF66
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Aug 2026 11:37:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ED48C5B572
+	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Aug 2026 11:46:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JSwPQHveuSydZnvSsJZVadTqG4EbzFB4XQ1yETP08U4=; b=iyhbmImPRvqv+X
-	Rrq7b60fEvpKdoqTnno6+6Ha2DppsOyTnqagACnqW2/fugaBWN2BmX7Y3FujqQ3f4OAOTxIASNbpI
-	/Zt6RpgcKGb396BV79ZLap2bu6HHzq2/4CerQu7msRrV3O1vCVtpaVR4lDXd0FEMW8X14tT4MvaaN
-	HACi8DmnzODhH17irSvxfThQNbtjAoIkmQIBFP3bqxQoM02ej7BpI9QN8Q3KhbdCm5sDTQG8lBkXw
-	IwM0oKmlWV8EHDtz5J2NuCJuvJ7/rF0QPHVN6NzNYW48kZLp73EcWlOEPlayufrE+FIc6XotzWWRD
-	ABtm4uJIMt974Vj79Iaw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Spkj4OYJY83xu5+kUP3BOiIoRijg1dOM041/IYPNMq0=; b=qDpIBQ1UuOHwcw
+	KpIHbZLj5TvcGg/gbroeUdLTL/2KHoRwsxEQkAcv0vVy5vkddeucI0Sl1Lv/VVZnhbOQCAaAynNjt
+	oGaW0XV11OOeRKgMS8CYjfp0iBzz0FsPhw/Sq53jrygp/8PglWYY3ztEiCjuJ3LqHL9/U6gokkr9e
+	S+2oiqB1oX8m7KiWA5Urk1KtYE+Z2Tv3Lju9QETAW7tPE//6fmOCDliPxHrwdop+4vW9GurShSK08
+	1SLUroAK4JXK/70Eaw5UOsgrRpAUOYEl49ASqeL1Zo/MdIdfYCFjUo6pwwS8RR0bF4vU2mXyO9wGJ
+	gCAQ66+lFcUz20g0JRTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvZBF-00000004it4-0Ank;
-	Sun, 16 Aug 2026 11:37:33 +0000
+	id 1wvZJT-00000004jJQ-3oHw;
+	Sun, 16 Aug 2026 11:46:03 +0000
 Received: from mail.zlab.su ([109.73.193.145])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvZBB-00000004is6-1yhQ;
-	Sun, 16 Aug 2026 11:37:31 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A458DBFF2B;
-	Sun, 16 Aug 2026 14:37:12 +0300 (MSK)
+	id 1wvZJR-00000004jIm-2sfH;
+	Sun, 16 Aug 2026 11:46:03 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 2CDF5BF955;
+	Sun, 16 Aug 2026 14:45:44 +0300 (MSK)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zlab.su; s=dkim;
-	t=1786880238; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding; bh=qp+Df4z+2pjjWixA5hPnYlkZ/MmiE6mxJUeWxdVpxVw=;
-	b=qIp0cxSImv3qd5PHPM877Gq6jtaJOUH7zkrr7XJdh8yJCLTZ5gja1QB71K7V+1TAiRKnHi
-	iAKnN+wFGAmGBVER04iYyeaDVEAVzswokIWSYgRM/sNLDw6z/ny6XiePQMPFlDI9fXW1lr
-	hCkVvUB9NpXDn343M2h+qYURcbSlR9y10t2m1Tw4/ymko2N6hI++px8+v4j46xy0R+wxd2
-	ye+IRzI7jnu4RcOiolUePxt5IriyApPsbVeoDA+6qlVLppL7jKzChtw1JPFXvFRmdBPdOB
-	qpI8uoR0YZqsIbk3KL5fS+iMDIgxmQ/66R6LvlMgxzcC5cH+wilIJ0tVpM+tlQ==
+	t=1786880757; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=jc96mxmG5lKaawG+ldy1b/MyHnPfRmSyj6w7fW+V8nE=;
+	b=WGjL7sglgmjOlqBkToICXDxrXVgFe2epa5glSZBr561V5iYakoM4E5RDIzAGzqPXmDqHXT
+	cs9ap10YICUaiQUVVtrNGlXxFoMd606h/RLNvaz92K4AQVJYykUA2FKCzi5v2oG14C0mhE
+	Il2SZp2Iv8cwyF+OMPND3rn6YETClrPjYVAjG2d6ynFv1XBhaQNQMPjjhR2F9Hsb2uc3s8
+	Q6I09PRlKwcMgmjNiIs5eS8WXp37I/YvvYluRogeaMu9aY5qfP5yrKqX7BMh/MhnBoMRsR
+	GdLM5qFRFFqUXz2YCcyHQrkJgKJqm/JqdPnLDCQKsaY/pLfSooqWP0L9yvMtZQ==
 From: Vladislav Leonov <vlad@zlab.su>
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Andy Shevchenko <andy@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
-	Rob Herring <robh@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Simon Glass <sjg@chromium.org>,
-	linux-iio@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
+To: jic23@kernel.org
+Cc: andy@kernel.org,
+	dlechner@baylibre.com,
+	heiko@sntech.de,
 	linux-arm-kernel@lists.infradead.org,
+	linux-iio@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Vladislav Leonov <vlad@zlab.su>
-Subject: [PATCH] dt-bindings: iio: adc: rockchip-saradc: Fix RV1106 compatible
-Date: Sun, 16 Aug 2026 14:36:36 +0300
-Message-ID: <20260816113636.33635-1-vlad@zlab.su>
+	linux-rockchip@lists.infradead.org,
+	nuno.sa@analog.com,
+	sjg@chromium.org,
+	vlad@zlab.su
+Subject: Re: [PATCH] iio: adc: rockchip_saradc: Add support for RV1106
+Date: Sun, 16 Aug 2026 14:45:44 +0300
+Message-ID: <20260816114544.35502-1-vlad@zlab.su>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260815022036.7c47585e@jic23-huawei>
+References: <20260815022036.7c47585e@jic23-huawei>
 MIME-Version: 1.0
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260816_043730_041561_E031D730 
-X-CRM114-Status: UNSURE (   8.57  )
+X-CRM114-CacheID: sfid-20260816_044601_930145_6503D04A 
+X-CRM114-Status: UNSURE (   4.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,51 +77,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rockchip,rv1106-saradc was folded into the fallback enum together
-with rockchip,rk3576-saradc, falling back to rockchip,rk3588-saradc.
-The two IP blocks are not equivalent, though: per the RV1106 TRM v0.3,
-chapter 20 (SAR-ADC), RV1106 only has 2 channels at 10-bit resolution,
-versus 8 channels at 12-bit on RK3588. Documenting it as falling back
-to rk3588-saradc allows device trees that would bind against the wrong
-channel table and report an incorrect voltage scale.
+Hi Jonathan,
 
-Remove rockchip,rv1106-saradc from the RK3588 fallback enum and give
-it its own standalone compatible entry, matching the dedicated match
-table entry added by the driver patch.
+Sent a separate patch for the dt-binding fix:
 
-Fixes: bdba14f6122c ("dt-bindings: iio: adc: rockchip-saradc: Add RV1106 compatible")
-Link: https://lore.kernel.org/all/20260810090826.146758-1-vlad@zlab.su
-Signed-off-by: Vladislav Leonov <vlad@zlab.su>
----
- .../devicetree/bindings/iio/adc/rockchip-saradc.yaml         | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+  https://lore.kernel.org/all/20260816113636.33635-1-vlad@zlab.su
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-index f0551d665916..dc56855527b8 100644
---- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-+++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-@@ -22,9 +22,7 @@ properties:
-       - const: rockchip,rk3562-saradc
-       - const: rockchip,rk3588-saradc
-       - items:
--          - enum:
--              - rockchip,rk3576-saradc
--              - rockchip,rv1106-saradc
-+          - const: rockchip,rk3576-saradc
-           - const: rockchip,rk3588-saradc
-       - items:
-           - enum:
-@@ -35,6 +33,7 @@ properties:
-               - rockchip,rv1108-saradc
-               - rockchip,rv1126-saradc
-           - const: rockchip,rk3399-saradc
-+      - const: rockchip,rv1106-saradc
- 
-   reg:
-     maxItems: 1
--- 
-2.47.3
-
+Regards,
+Vladislav
 
 _______________________________________________
 Linux-rockchip mailing list
