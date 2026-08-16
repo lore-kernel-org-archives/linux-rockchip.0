@@ -4,55 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CD23C5DF66
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Aug 2026 10:01:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C5B8C5DF66
+	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Aug 2026 11:37:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NvUx+OfWKDxW0pUphniPpx0ciImheTfsaSFADaJmDsw=; b=ZTU6fl5nBb0D7S
-	UcUUVtHDUIkzowJSBN4OXNmZqljsKs2QP77lonk0NQV/rO+kaCK9Vtynry8Z65+tBUC7yNKUDGjjU
-	V580cNf6buAyIM4JerrDlOqwFCDty26mfWvJlYjRcWfZSpyfEPyv+QT25hAOVVEhAq4YBE4Pp3Vhv
-	KUhWcpYSE+FdXoTpJS/6pUBEPPN8vcPOGLAMITtOYeeJNhb2WSxM7RbrMCjGm3TyDWRp+fKvLwVtL
-	zLPApYX2Pd2TKhvHAyPJ/bhmbSmL2M6uxD6r/GbpYZsh5EhZs6LqUdiUX0i1rz4ltSn4qpl9L3JBB
-	yp5oLi9llXru/kyX5AIw==;
+	List-Owner; bh=JSwPQHveuSydZnvSsJZVadTqG4EbzFB4XQ1yETP08U4=; b=iyhbmImPRvqv+X
+	Rrq7b60fEvpKdoqTnno6+6Ha2DppsOyTnqagACnqW2/fugaBWN2BmX7Y3FujqQ3f4OAOTxIASNbpI
+	/Zt6RpgcKGb396BV79ZLap2bu6HHzq2/4CerQu7msRrV3O1vCVtpaVR4lDXd0FEMW8X14tT4MvaaN
+	HACi8DmnzODhH17irSvxfThQNbtjAoIkmQIBFP3bqxQoM02ej7BpI9QN8Q3KhbdCm5sDTQG8lBkXw
+	IwM0oKmlWV8EHDtz5J2NuCJuvJ7/rF0QPHVN6NzNYW48kZLp73EcWlOEPlayufrE+FIc6XotzWWRD
+	ABtm4uJIMt974Vj79Iaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvXg8-00000004dB6-1CCX;
-	Sun, 16 Aug 2026 10:01:20 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1wvZBF-00000004it4-0Ank;
+	Sun, 16 Aug 2026 11:37:33 +0000
+Received: from mail.zlab.su ([109.73.193.145])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvXg4-00000004dAg-2ijJ;
-	Sun, 16 Aug 2026 10:01:19 +0000
-Received: from Vostro-3710.. (unknown [14.220.232.127])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4a232e329;
-	Sun, 16 Aug 2026 18:01:01 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
+	id 1wvZBB-00000004is6-1yhQ;
+	Sun, 16 Aug 2026 11:37:31 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A458DBFF2B;
+	Sun, 16 Aug 2026 14:37:12 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zlab.su; s=dkim;
+	t=1786880238; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding; bh=qp+Df4z+2pjjWixA5hPnYlkZ/MmiE6mxJUeWxdVpxVw=;
+	b=qIp0cxSImv3qd5PHPM877Gq6jtaJOUH7zkrr7XJdh8yJCLTZ5gja1QB71K7V+1TAiRKnHi
+	iAKnN+wFGAmGBVER04iYyeaDVEAVzswokIWSYgRM/sNLDw6z/ny6XiePQMPFlDI9fXW1lr
+	hCkVvUB9NpXDn343M2h+qYURcbSlR9y10t2m1Tw4/ymko2N6hI++px8+v4j46xy0R+wxd2
+	ye+IRzI7jnu4RcOiolUePxt5IriyApPsbVeoDA+6qlVLppL7jKzChtw1JPFXvFRmdBPdOB
+	qpI8uoR0YZqsIbk3KL5fS+iMDIgxmQ/66R6LvlMgxzcC5cH+wilIJ0tVpM+tlQ==
+From: Vladislav Leonov <vlad@zlab.su>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Andy Shevchenko <andy@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
+	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
+	Rob Herring <robh@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Simon Glass <sjg@chromium.org>,
+	linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH v2 1/1] arm64: dts: rockchip: enable NPU on Radxa E52C
-Date: Sun, 16 Aug 2026 18:00:00 +0800
-Message-Id: <20260816100000.3707339-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
+	Vladislav Leonov <vlad@zlab.su>
+Subject: [PATCH] dt-bindings: iio: adc: rockchip-saradc: Fix RV1106 compatible
+Date: Sun, 16 Aug 2026 14:36:36 +0300
+Message-ID: <20260816113636.33635-1-vlad@zlab.su>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-X-HM-Tid: 0aa00a047d1d03a2kunmd86a0852222fdb
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTBlOVktJTB5NSk0YGUNNGVYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpJTFlXWRYaDxIVHRRZQVlPS0hVSktJT0
-	9PS1VKS0tVS1kG
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260816_030116_898788_B3959E0D 
-X-CRM114-Status: UNSURE (   8.35  )
+X-CRM114-CacheID: sfid-20260816_043730_041561_E031D730 
+X-CRM114-Status: UNSURE (   8.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,78 +79,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Like the RK3588, the RK3582 has NPUs. Enable the NPU cores and their
-MMUs, and connect the regulators. Remove always-on and boot-on from
-the regulator because it is connected to the NPU power domain.
+rockchip,rv1106-saradc was folded into the fallback enum together
+with rockchip,rk3576-saradc, falling back to rockchip,rk3588-saradc.
+The two IP blocks are not equivalent, though: per the RV1106 TRM v0.3,
+chapter 20 (SAR-ADC), RV1106 only has 2 channels at 10-bit resolution,
+versus 8 channels at 12-bit on RK3588. Documenting it as falling back
+to rk3588-saradc allows device trees that would bind against the wrong
+channel table and report an incorrect voltage scale.
 
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+Remove rockchip,rv1106-saradc from the RK3588 fallback enum and give
+it its own standalone compatible entry, matching the dedicated match
+table entry added by the driver patch.
+
+Fixes: bdba14f6122c ("dt-bindings: iio: adc: rockchip-saradc: Add RV1106 compatible")
+Link: https://lore.kernel.org/all/20260810090826.146758-1-vlad@zlab.su
+Signed-off-by: Vladislav Leonov <vlad@zlab.su>
 ---
- .../boot/dts/rockchip/rk3582-radxa-e52c.dts   | 36 +++++++++++++++++--
- 1 file changed, 34 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/iio/adc/rockchip-saradc.yaml         | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-index 854c118418eb..640c5be2f0fc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts
-@@ -253,8 +253,6 @@ vdd_npu_s0: regulator@42 {
- 		reg = <0x42>;
- 		fcs,suspend-voltage-selector = <1>;
- 		regulator-name = "vdd_npu_s0";
--		regulator-always-on;
--		regulator-boot-on;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
-@@ -300,6 +298,10 @@ &pcie2x1l2 {
- 	status = "okay";
- };
+diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+index f0551d665916..dc56855527b8 100644
+--- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
++++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+@@ -22,9 +22,7 @@ properties:
+       - const: rockchip,rk3562-saradc
+       - const: rockchip,rk3588-saradc
+       - items:
+-          - enum:
+-              - rockchip,rk3576-saradc
+-              - rockchip,rv1106-saradc
++          - const: rockchip,rk3576-saradc
+           - const: rockchip,rk3588-saradc
+       - items:
+           - enum:
+@@ -35,6 +33,7 @@ properties:
+               - rockchip,rv1108-saradc
+               - rockchip,rv1126-saradc
+           - const: rockchip,rk3399-saradc
++      - const: rockchip,rv1106-saradc
  
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	keys {
- 		pwm15_ir_m1: pwm15-ir-m1 {
-@@ -354,6 +356,36 @@ &pwm14 {
- 	status = "okay";
- };
- 
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_2 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_2 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&vcca_1v8_s0>;
- 	status = "okay";
+   reg:
+     maxItems: 1
 -- 
-2.34.1
+2.47.3
 
 
 _______________________________________________
