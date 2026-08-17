@@ -4,99 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E437C5B572
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2026 08:31:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4ECBC5DF66
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2026 09:43:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CfbMmqjRPMdC2eK2KYVu+Cp8hUMLo0uKsxBocQ6uVZU=; b=PuF/eI1+bpZc2s
-	z47Ism8L9FFtB+7gZAyeSuagjXxb7D4rudwNI29S2yF/tsklGAh12MuLEC4v5gTRA/9e6PvwPs91O
-	d83GUnxGm/TweAxQjaPOdKY1c6yZtS9eIfYBi8oH+D9o7u1rGtFeu0kRBSkwwospZSGkbCzZOc7O1
-	0OJDbivmkijacWJN9alBvHquXUlqk4L+G2Iahnfq2Fm6z+Db/POI475CCWzx5JiJrYgcOBooDbvVt
-	w5DCAIG3e2IKmthvPbrxfK2XRLZhv0Y0EpBUYVdNCQSKOk8eFLac4D4NG665uM9G67RLgiMhsnx0Q
-	3/QWLRjhedFdyqC4UBQw==;
+	List-Owner; bh=vm7kYzsmJy60QkUkgb90MHrNDW2JxXVo8NP5kXvbRuw=; b=eBxp8xt296Ldwx
+	Ccrg1ucZbKrB+YMmQeM8mNzKOjNlWyyT4NMH9o6K0PXhsaX7LTSOqYN3789A7WX/UC7kGyDRlwQu9
+	7YLkQIy+4LglmEXliiNWYgDhe39SL3Ema2VIFWvMgT/Z2S2NCztmz9BdBpLJI5XlmZ4wGVo3AWlMD
+	4X5N+wMgqPLNqfwcNz89t5gSP+tspVzWqbDDDIf45ZMQIHVbPsMQFoZvB7GPX0KlZT9ebxBkCt3H/
+	Cyd58JDe81rqXLW0mP8OOHids9vGAHz+GSvZpDNagEFI2BzH7h0QVdz2zW607GtOKwYA5azwEx9Tu
+	ZJ2Nywx/8JADWsX46nvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvskv-00000005hEz-0QRX;
-	Mon, 17 Aug 2026 08:31:41 +0000
-Received: from flow-a5-smtp.messagingengine.com ([103.168.172.140])
+	id 1wvtsN-00000005prM-1Q0F;
+	Mon, 17 Aug 2026 09:43:27 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvsks-00000005hDy-15oc;
-	Mon, 17 Aug 2026 08:31:40 +0000
-Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
-	by mailflow.phl.internal (Postfix) with ESMTP id F17191380143;
-	Mon, 17 Aug 2026 04:31:34 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-05.internal (MEProxy); Mon, 17 Aug 2026 04:31:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1786955494; x=
-	1786959094; bh=kj9UPD7yNU1rZZL7clJ6XwnELwdTPhFdY55NIi4wXmo=; b=P
-	aaws1DygV6CWPsT1yFuHmNr83IcgjVFY4tw6UsuWXJ10IboxcKYEHhiPdmub196i
-	ZRLNwJUSh8pt4TDsIYZRbMaC0Q99dK4NxLv1iwvtMh/fmXSRHVdVjtgWnfVkHDD4
-	rvDwvPaLRIABQ5TtcjXqJ9rYbk9h+VsHVAE7op5etzF9jB5vh25pjALQHpluStmK
-	bkcwZ/lQjOH2FJ0qwFIWt1Y8m0LUGggQRkLMr0D+EUfprc2MUo/YEWZ7aoR83WB1
-	5HHh1V3/0fZnBs7aH5m6095ra3cASmDqu6YsAMIA8JY6kfcQq1SUozMuRi15jMGs
-	SmX/oO03WThSFbliKrymA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1786955494; x=1786959094; bh=k
-	j9UPD7yNU1rZZL7clJ6XwnELwdTPhFdY55NIi4wXmo=; b=fusojT3AbeEoLiPbg
-	FLFOmF8zEwo96m/weet8nKzJyRvnM38kSuBqPzg7ECqeSIR6boAwgVcaBd86ud5T
-	a4jt29rb7R3Y94qFVUR5WGJOmGkBpbVjhTkf6WKtv/jenLZMuDFq4Jbb92/8gzLD
-	hASefWv8mDADa+BUKsiXNnnRUc7AO/VydbeqTjlrilkbB8m3PhfKJbnA5fmmKSFZ
-	IMj7z1mROBqlPvKORPuiDOSmCt2GoAsgImZrbtiDJ3gq41qFjGYEoXu0jSaRGaqr
-	m4Q1dZe1LtwWe9rpfnC33pg6sG3s8CLTsMQn93+5m2ipsencgOOZ3o/3DdBaBc3w
-	D078g==
-X-ME-Sender: <xms:5caCaj3Knhc7S12quhG9dCJdItmqlvkm_zj1TcdZf8lHydMNcFrtIg>
-    <xme:5caCaqT6_NDNjFsm1TT2XyIkxw4C9jCHglC-AgDiV7B8hMlvnS143-lZX0JIrKcYH
-    DoaV7yHGAImJR5c6iQ_leF8uxyJOPuxwlsGLIRrCzyAGFYTXkWINg7r>
-X-ME-Received: <xmr:5caCavfRkBWuY-wD9o2GjGN4dqOgJLkTlysp0cfUMlpm82J0J0tt3wtkmNrSR07PxG5T29lNUA>
-X-ME-Proxy-Cause: dmFkZTGlNFCMXBhh0Xuz13lLCPT1t5X10ZDK1t62HPqVbkp7Dk4pJngkT1MnhUQxOP8CBI
-    4Bww0yxB4Y+GycYYQ/Y7IrgOz9b/R/OsK5/UGU0LRv9/gimevfWVw8daqMdv+ION89QSgI
-    7s+zEFikrZPNx8xF19L11DeSbGzHrSaxR/TZSxJKcKRrdQZP00IgaOhCzh0paQccyuUEtf
-    2aKpu16E3ur/j753HClRzVnnvutPLto7r+KpP98IaiP2XVEFFj4Tk1xWJTf4Cqn+P1w2vU
-    SCEgsD3w6LJgJzhtuyjGaPlX/83O1ieb2n8w/ROZXZy+7jlI1TxEktInD61673lvBgJkR2
-    IhnZWTGA2wDU5qv9AXMyIXaCXEsC4pH0XzhjEU+A646uGzg9I9l491pxhJ5bZTz0Xy+OMA
-    39mt8uQOc6y0QRnv6YV2PsJ/EGdA9FhU3+OBTVJbhD7dGYnaaPiqssJQWFik5iyUneb2wf
-    hmlTQE4fxuBC8IZfNT/N0IDnFD/QV0XKSEUFXh9xo5hsmNnJEj86mOlovn0N/rXxaIyLta
-    9cDr67UATUOXLmsgbSBPQsvNj62l6wEoZWXNcVtHhqeWQXU7JlelgEzW8721nsZ3SWri0U
-    ck1TzFuhWY3g9JHWGxVws2DxVv6DFDn9IIa2t9Rb9T38dqvIUr1UUsqHhnaA
-X-ME-Proxy: <xmx:5caCajfWeW8AqWCzv1IQ8ExKG4Qjzab_mKuPgXnckUelnDKX43pnjA>
-    <xmx:5caCah3jVxF5N6An0rH8xxJdnhhaLTlSRrmGcpsstkNBHZj6NnC4oQ>
-    <xmx:5caCaj-UGNSkdzbFFAez5V5cQYcQApfPjwm1fJzgc9PkO0j_8DgbWQ>
-    <xmx:5caCau7Thn8zArVn3YylDAOsV9WClJrPdYApZiE-rjWUcpBHyVk4pg>
-    <xmx:5saCagFXsRUYpeT7IdJdCoUrDroJY46akElxp0Q0lGvuqnDB5pDBC7j0>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 17 Aug 2026 04:31:28 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: royalnet026@gmail.com
-Cc: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	chaoyi.chen@rock-chips.com,
-	alchark@flipper.net,
-	dri-devel@lists.freedesktop.org,
+	id 1wvtsL-00000005pqD-0RYz
+	for linux-rockchip@lists.infradead.org;
+	Mon, 17 Aug 2026 09:43:26 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4957739c22fso888205e9.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 17 Aug 2026 02:43:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786959803; x=1787564603; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=iJxT22zdZziRjbZwbed7OeV6jhdxmd27WO3H1gy/w60=;
+        b=dfyotExjc/ttGbgLxTKZMcX0pGCmSHuVsTm4+UvB5muGDjty59izHQ+V7V0Mh1r0e4
+         Z2PyaRlObXPt4X3BA9Aj5EtBm6hhk5eqCTvhtWnX5Xj6Dk9ltrU0gErUtgZoPiNPTNjZ
+         Lk2dFpbmFa2x8C0i4TOko1kW05Yun3YWlAIDHDVyf6kc89zDM+PK3YANi5f6p+qrI9dW
+         uSf7ZKcnEX3T0h8rV4E/TS2pmRVuu/tTCgiY+DWZFCyp/yNxUzvn3gg49UfPzl3kBCGD
+         4oefAtWGE2hRQoEFptlIIjjePqt6mXR+piiwaR4GABXXMQVX2Otxl3N6GeWGVJBi5cOa
+         ZhJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786959803; x=1787564603;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=iJxT22zdZziRjbZwbed7OeV6jhdxmd27WO3H1gy/w60=;
+        b=NbEseR62DYHoxNBavZcKuSArL/aPuAFuqoYep7TQgQ7R+qmwsosn+obEOxSmReNtGb
+         x5UPE/A/pFFQY9HJYiJz9Z/AjGEIVniZm7nG/SXBsOpn+81oLYR3mQFPq0rLaTSGaMjh
+         5eg5tRtrPuHDwu1dp9J6vPZvZ+8vm8pwRotT4PFMiaO08sGpKmmqZ9TSbQUpqpak3kV1
+         4MmYWkPCKJ4vVrG6rqY1KUWKt55jtmIYBda62oP6FxWFIY0xwk6qBf9krDEUa7ZCnOs9
+         y1lWbaQF9qCvrt6tvoS+C+25lwp1C8wqgyJ2rOY+xKIBLUVEVjyiKEBHbqzcKl4HD+th
+         Fp1Q==
+X-Forwarded-Encrypted: i=1; AHgh+RoiRv0JPGsQcX4CKx2jUDCIA8mz7lIbar2JgFJXIx/lbaTyk1sDu6ve6dWA3WNBBO185qwoO2w0pwcpA8Cqmg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyxjbIwY6BeoUPiPCWxivCCn5h2oRS4V1NfRHi2vFF9/fjNHQCe
+	npFahlsoZFnsmij9/dKVaL6W+DRMr5giZZoyO51DQE9DK2l2fjjRcblp
+X-Gm-Gg: AR+sD11XewZrMsYhPmZ5L6RKmuDL1Q2S8jFS2AUdUfK5295T3b42SMXxNJGawLlZLPK
+	ifryHPONx0ZomiLDi38Ghp2Pf899149CMJNqUQxZirHHU1UeRRM1k3h8wK6iuJss2i7mfqZuxcA
+	zOE4TIqT/gwUW4tdRMrJxqY7uFsJoN+VcQN7oQgA0FRmIt1X++Vwj3i0Wquotomajt14PeRUByL
+	1UAY6zXjfv1+F9OCV+3Qg10v/joKQ6hy8/tsoq5PsAqEg5oJeAsDUK0i8TWeapE7n0216b23FKA
+	mGZrb1k2ZpeCvOAj+KNkL5u8yKLA3v/llk+1KNfBpTwWkjxOBBzE2B/7AO3nojVOGUmxux2ZDxF
+	RbVpNG2PvLYXaS8unrQNPt1pZ2lllu3uaht10WWCchY8Gc2hl1l6WL07sc7Ajgrth79/k25dTk5
+	Wg98XRvQTnDr5w+45rH9hifxZUz2VoF18svX1u2wsJngE1212OLvLLGKRbhU/b0DibRUpivOGzp
+	iHA6hrsjL7UAU57MyerttQPN4jLuqNjB8X+NqBQEYGnwpfcDHdJ4ijbxCpJcUc18F3HpA==
+X-Received: by 2002:a05:600c:8714:b0:498:8e6:d463 with SMTP id 5b1f17b1804b1-4998792fee6mr180593925e9.1.1786959802911;
+        Mon, 17 Aug 2026 02:43:22 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8FC50027494B64639367E4.dsl.pool.telekom.hu. [2001:4c4e:1b8f:c500:2749:4b64:6393:67e4])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-482a5b783basm2546509f8f.30.2026.08.17.02.43.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Aug 2026 02:43:22 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Muhammed Subair <msubair@hotmail.com>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Alexey Charkov <alchark@flipper.net>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Ulf Hansson <ulf.hansson@oss.qualcomm.com>,
+	Ulf Hansson <ulfh@kernel.org>,
+	linux-pm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v7 08/10] accel/rocket: add RK3576 NPU (RKNN) support
-Date: Mon, 17 Aug 2026 20:31:26 +1200
-Message-ID: <20260817083126.984173-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <CAEWPSH7ETfw2TDjUfOvcVtDm19FC43x2vP=Lh7m+XPOGptnPWA@mail.gmail.com>
-References: <CAEWPSH7ETfw2TDjUfOvcVtDm19FC43x2vP=Lh7m+XPOGptnPWA@mail.gmail.com>
+Subject: Re: RK3576: rockchip-pm-domain fw_devlink device-link failures for nested power-domain nodes
+Date: Mon, 17 Aug 2026 11:42:53 +0200
+Message-ID: <20260817094258.23332-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <DU0P190MB244579F0C395F1F41CA729A8BCDC2@DU0P190MB2445.EURP190.PROD.OUTLOOK.COM>
+References: <DU0P190MB244579F0C395F1F41CA729A8BCDC2@DU0P190MB2445.EURP190.PROD.OUTLOOK.COM>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260817_013138_771107_003F1636 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20260817_024325_174967_6D6EA6E5 
+X-CRM114-Status: GOOD (  15.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,55 +110,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
+Hi Subair,
 
-That is the measurement I could not make from here, and between your row and one
-of mine the question is answered.
+Your diagnosis is right, and the answer to your first question is: this
+is not RK3576 missing anything. RK3588 does the same thing.
 
-The control you propose is not one I can run in that form. Upstream Mesa has no
-RK3576 path, so its encoder emits the RK3588 register layout, and this SoC does
-not share that layout at the same offsets. I would not expect the result to be a
-convolution at all, and I have not run it to find out.
+From my Orange Pi 5 Plus on mainline 7.2.0-rc7, one line per boot:
 
-What I can run is the vendor userspace, which is the same trade the other way
-around, same silicon and an entirely different stack. Five models, output tensor
-read as int8, the NPU interrupt count advancing by exactly one per run so
-each of them reached the hardware.
+  [    2.215019] rockchip-pm-domain fd8d8000.power-management:power-controller:
+      Failed to create device link (0x180) with supplier spi2.0 for
+      /power-management@fd8d8000/power-controller/power-domain@12
 
-  model    zero point   values below it            sitting exactly on it
-  a_lin       17          2478 of 4096    60.50%      32
-  a_lin2     -14          2420 of 4096    59.08%      41
-  g_cal       -8        108564 of 204800  53.01%    2551
-  pq_oc        0         62720 of 128576  48.78%    3136
-  w_160        0        236287 of 409600  57.69%    2877
+Same driver, same 0x180, same nested-child path, different SoC. And the
+trigger on my board is a different property than yours: power-domain@12
+and power-domain@8 here carry `domain-supply`, so the supplier resolves
+to the SPI-attached PMIC regulator rather than to `soc` via `clocks`.
+Two different properties on two different SoCs producing the same
+message is a fairly strong sign the cause is structural rather than a
+per-SoC DT omission. So I would drop your option 1.
 
-g_cal is conv2d-cal's geometry exactly, 16 input channels to 128 output over an
-80x80 surface, 5x5 at stride 2. pq_oc and w_160 carry conv2d-cal's zero point
-exactly, 0 in int8 being the 128 my tables report in uint8. So the geometry and
-the zero point are each covered by a model that does not clamp. The counts
-sitting on the zero point are 0.7 to 2.4 percent of the surface, which is close
-to what you measured on the other side and close to what the distribution gives.
+On the flags, for whoever picks this up: 0x180 is
+DL_FLAG_SYNC_STATE_ONLY | DL_FLAG_INFERRED, i.e.
+FW_DEVLINK_FLAGS_PERMISSIVE in drivers/base/core.c, and that value is
+taken on the branch where the fwnode declaring the dependency is not the
+device's own fwnode:
 
-The grid now reads
+	if (con->fwnode == link->consumer)
+		flags = fw_devlink_get_flags(link->flags);
+	else
+		flags = FW_DEVLINK_FLAGS_PERMISSIVE;
 
-  RK3576, vendor userspace     does not clamp
-  RK3588, upstream Mesa        does not clamp, your run
-  RK3576, my Mesa              clamps
+which is exactly the nested-child case you describe. Worth noting that
+DL_FLAG_CYCLE is a separate bit, so a cycle-tagged link would print
+0x380.
 
-The first and third rows are the same silicon. So the clamp is mine, and there
-is no hardware behaviour left for me to appeal to. Your third control is the one
-that makes your row carry weight, since fifteen channels off by one is something
-a delegate falling back to the CPU could not produce.
+More usefully: this has already been explained on-list. Sebastian
+Reichel answered the same message class for RK3588 on 12 June 2026,
+replying to Diederik de Haas's reports on nanopc-t6-lts, nanopc-t6-plus
+and Rock 5B (identical 0x180, power-domain@8 and @12, suppliers 2-0042
+and spi2.0):
 
-I have not found it yet. The register stream is byte identical to the vendor's
-at this geometry apart from addresses, the requantisation, the pad value and the
-padding. A, B and C swapped one at a time from the vendor's records each leave
-the floor where it is. The weight buffer is the last thing I have not compared.
+  https://lore.kernel.org/all/aixze8zFboY3huSf@venus/
 
-The 88 and 120 sweep is queued for the next time the board is flashed, and I
-will send what it says either way.
+His explanation is a cyclic dependency arising because all domains are
+provided by a single power-controller device: to probe the regulator you
+need the bus controller, which needs its power domain, which needs the
+power-controller, which needs the regulator. I would read that message
+before going further, and I would not treat this as cosmetic. He is
+explicit that it is "neither super bad, nor completely harmless",
+because the kernel ends up missing dependency information and pays for
+it in extra -EPROBE_DEFER rounds. He also says fixing it properly needs
+substantial restructuring of the Rockchip power-controller driver, which
+is a rather bigger answer than any of your three options.
 
-Jiaxing
+One last thing, and I mean it helpfully: I think you have mailed the
+wrong people. Your To: list is get_maintainer.pl output for
+drivers/gpu/drm/rockchip, which is why five DRM maintainers were on a
+power-domain question while the people who own it were not. For the
+subsystems you are actually asking about:
+
+  drivers/pmdomain/rockchip/  ->  Ulf Hansson, linux-pm@vger.kernel.org
+  drivers/of/ (fw_devlink)    ->  Saravana Kannan,
+                                  devicetree@vger.kernel.org
+
+I have added linux-pm and Ulf here, and dropped the DRM maintainers and
+dri-devel since the topic is not DRM. If you follow up, consider adding
+Saravana and devicetree as well, and run scripts/get_maintainer.pl
+against the files you are asking about rather than reusing a recipient
+list from another thread. That is most likely why this went five days
+without an answer.
+
+Regards,
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
