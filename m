@@ -4,99 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81834C5DF66
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2026 10:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0D6AC5DF66
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2026 11:06:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/g8FFfSRMZUYjo8tTFZ+Lt7+5ifvutuymLwuGXJg6xI=; b=2Yh0FTSgovDSH9
-	5i548PYYpyy+6r7E1Tv00SJDnjN3yDuuAzVJBvRefpLOtvmAuuvMY21vwp4hBi1b39d/wgSxpP3zR
-	Efwr3yAt1YeXqFKLhEZja+yDqv+ONhrc2v+sYJlp6VDAEFd0CTDFopvCJq2Qej9lkUHETm9HMEEP0
-	t31Xz16ccguAqQHGzlPL+x7puMoHOsz8ZoCt9jfSGEpI3UNtHbuka9C2fYVtCnaW73dFvHeY0lrj8
-	tDrpy8NrNhbs7U0uFk7/KuXFElFC2KkS+eLBJrX2Rhc6TW7EALFUuBm9LQmPljWKQKtmCJQGZypjg
-	Nd2P3l7emw9w3+/++wuw==;
+	List-Owner; bh=HIYhgNfoZyGP+kc1BCjNTdbFmIediDUn31RGXBPQ3+4=; b=WTIRkqOc6lKKQ7
+	fd9GGKH6FFK3hgbmWOKkFPO8Sb56xRgvm+NbXtC3XhFZnWwrkWAx/uIgZfHglsJiWUBfscVEmOgzD
+	ekmidBqat6pmpVa29qgLd6QcddKgmfh5CcJm11mmc0/4O/OoJXc2PHnPR3TWpAdiViAODXqu+YN75
+	pfBcjObzdfLkfwFhyKkxIxYuuhysLFXwA/5b1QXCJWUbkcOT3ntrAwYC2segyvg9dRkLbBdCW8M1J
+	6Gtn60qPINjyTSTOBjooIhfi384mk7H3bgXvPkl8USbIWVMi2ZMXyS3gZ9TJbb5QwSLhJhnOcODbg
+	7KXGfuopxdw2WaoTiobQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvuSF-00000005u7M-2wWP;
-	Mon, 17 Aug 2026 10:20:31 +0000
-Received: from flow-a4-smtp.messagingengine.com ([103.168.172.139])
+	id 1wvvAh-00000005zgU-1Nmm;
+	Mon, 17 Aug 2026 11:06:27 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvuSD-00000005u5y-0QSk;
-	Mon, 17 Aug 2026 10:20:30 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailflow.phl.internal (Postfix) with ESMTP id E5BB21380339;
-	Mon, 17 Aug 2026 06:20:27 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-02.internal (MEProxy); Mon, 17 Aug 2026 06:20:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1786962027; x=
-	1786965627; bh=toFR7CttO5z3jj5XX70w7xnXop6+YeM2N8EtwJ/xROQ=; b=k
-	DorzMwYWQ8UBd9lF3s3l7x240IkaADZR/qmhJImi43reP/RpGw0Lbu8OAq9xnPQJ
-	N7d55p43sb5FzAvi4RbwoUsUNTSgUU/Co47Q72YK1hOBet7Q4mU1gNCLLTihyNCJ
-	P/y6bv2M9o2Z+Pozqojf5zHKPrVMjkhaKa79Jwqr6CZdSQyQp74B5iAIIL7Y7F7k
-	nFTRYUICHD4j4s9McTdyx1bxK7EoxBAMw76vZKD8aJaQylZ/C4xEASxTZx8fR2ym
-	In+qbVeW4qi1/4zE/NhXoiYGdoBkZrt+X8sr6DJfueX0YIVbd2/YQ2oE1CdVupoz
-	17VxenK02M5e5aV243Eww==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1786962027; x=1786965627; bh=t
-	oFR7CttO5z3jj5XX70w7xnXop6+YeM2N8EtwJ/xROQ=; b=e3tfk1RbNVgZiG35n
-	O1IDh52BayR9W1ZybJoiZ3gIRPMmNN/ayQ4CH8+Bgk/mAcwTTsZYRR/aF1hKXz88
-	i1xq12MI/QccS5FyR/Y+gJE3Q5tDzBRRVE6rH0XXTfSOEQHmIIUnWRxv/hIkkKDG
-	94GGZgjwvtXFpRGBsOvYRARUeLjlKySU51SOrST8BiKe/U+SnhjlPeua07PMrfaJ
-	VgorMmfxPCdh6SRisZbcKw3JBLrY0Srmz510jZhGNap5koExL/prWg5yGTLuMIyj
-	ZaEGXuHmk3IF/SZsnO/saOKeTlfuxwB+uaWjvB7xfjfEQ3N3hKx2Qv+HRmL55Vuq
-	ESMrQ==
-X-ME-Sender: <xms:a-CCapERq42D396F-WvEVMS96cfIQpAnBdoH8ZhjiBu5uHf62e_z9g>
-    <xme:a-CCamjRvLUwTyKji24L2J8LzcTsf-CZVVrGuhEjG_dLcr-tstYU1q4IasUzwN8WU
-    AuyXDCOX2OinHA8mSW6x4yQMNlkhECJQtanYzgOSUq6NW38-9-cYcYi>
-X-ME-Received: <xmr:a-CCamtb48pTVq1-_GmEXWLUeeCExlicdF9y_ppU39qcTLHc6Gse3F2uDARsa2zbRn7uJMx3Mg>
-X-ME-Proxy-Cause: dmFkZTEav12/xox9dW6FBrGBtqGDntmQw+BK8FNwTWmRZjxu8LmOPvxJLoqU5ERQ2bc4Sh
-    EZTMtc+O1uYQzV11Wxoj4DcdyOim58v1EwZW/KjHoqAFyJ007NUBR20UItdIgPWS9PsXBq
-    pe89jlsR9mJe7k2fRZhSktW/8sOxkpzOe09fjNRCMBiwIlBCHVI5VwWaxGXFrYZdVsWD8T
-    52vMwRkhQIUUgsZdZbEZDtRTbJeWJLpufjCQGCpqCBp5wclqROY2LMMw7OpGz3JD5/Nek5
-    dQqSB/RHcDywRRL7dKDqNv+L32U/Ay+fbsSTUemig8p/3vpdA1ucfND8A/hlnoTuRgaYAs
-    ia75Cchp0mALQLn46Kyahjr00cWOSvN4PUWbMS4ZUD0d7q5xX22cQBTydSFgzjQBnfYhyD
-    TC7Aww6EcaQA9DmAwX1AdDmnHdKv65rcIFjiBijOgxck90DvV3KSAI4UAT6df3la9rS8A+
-    38cOjyG52g/faS8m/k0/X/BQ72gfpc41DePsIED6qD2DLDN7TNZagYSGiPJckbjOjaAJNm
-    gD1p8MNV+iDXIA5UzTTqc1/6bOxxDJomY031pSrkDl61UP/LFvMxFCrRzQdBowoWwZ+hyv
-    EL04bPEmGMesAMuTStxaJrd3yF6LEpoubwOo7Ijdzk3uG2W63mNtaea9UcKg
-X-ME-Proxy: <xmx:a-CCapuUDBoxg3wQqwBDLCTLeE6ojJfspPFPx9t6i-6bXRe3xrrRzQ>
-    <xmx:a-CCarHLEMWt-uZZGYsjvuc3CuDxAgGxZdkCkXbTL-Ar8xC-c5HtBQ>
-    <xmx:a-CCakOTODvED21m5GbAqXQWdXOXa685f0DJXuNxvjFE4f3EBgR2yw>
-    <xmx:a-CCaqIA9LYla2ZnkHi8uK840Ywz6pofG89dde6PybG2zRZz9-jkpg>
-    <xmx:a-CCauVITsaLWtdqyqOfeHeI_8QESZofbuGcX4DUxRTD7NpkHa1RrfwD>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 17 Aug 2026 06:20:23 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: royalnet026@gmail.com
-Cc: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	chaoyi.chen@rock-chips.com,
-	alchark@flipper.net,
+	id 1wvvAf-00000005zfQ-0uUz
+	for linux-rockchip@lists.infradead.org;
+	Mon, 17 Aug 2026 11:06:26 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-47fe76491b8so214017f8f.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 17 Aug 2026 04:06:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786964783; x=1787569583; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=6OwP5HDWaliFgti3Iscv9ilvEY9jqmGVYGbAyk7tFDg=;
+        b=Nz+AMxK8WWFSXSA/Zk5Ygr1EfvHPcD9n0w8TKZYzJ/dM2aZ+k7n5TNo6aQEfAThaeO
+         HblMb+SNKn6E9jDIB3S7Tupa7K0QgXTSAfIJd8e9wACKGFZIQ8Sm6/nCokEFETls7Qj8
+         OtNj/B++fI3bl975oIhRtPJi9DE6YXJbKOONFgm7Chv5YnN5PjTLh611SjyFlGyxd/lX
+         pCeBLdjduDA00629N62s8k/0o1G33BZT3mpfceWOanvLnVOdtcpHIPPRr6hJY6TWczO/
+         ABOJFEa+6uFcuPQEAXO4tw4RrufGgolX/vG9+QY6J9L5dZ/6Px5DuEiSR0VfFRoQG/V1
+         SR4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786964783; x=1787569583;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=6OwP5HDWaliFgti3Iscv9ilvEY9jqmGVYGbAyk7tFDg=;
+        b=ZdsXsuBJnPK75W2XKlL60T7v6K3Vvo0mW/D3ZsBtHq4+zhnrFOMmp5jijQ1wq9ARAR
+         9162dkzsLns/C3qog/llBIIs0GWdB3mcWf1iB3cwKx97rFAZhofzUBIVcBSWeSRV7GEZ
+         Ac97xFh57p7sNEq2XCXNwUW6rTg/1FoBcGGjrDhQSQTqauRKKBIxCA2EQxLA/+bxJXpv
+         cZgJRb/NArEWGWjsdMMBkOBWjfA2hqrnOe3hBgEOj7xKTlp6U11O9Y6htwczz82wX9o/
+         ML1ZVW25JYbkvzpEcAqTn9lyAZWklXHEwwk33dzEBC8ptZD+wKc0lBwMzyRYX/3FXs9p
+         ZyZw==
+X-Forwarded-Encrypted: i=1; AHgh+Ror/I4Bg2X998hFDX31cdCMoiBDo6idFAPh8B64gPgLYo1f1PHl/NNvhkYlwr79u0kl+OpZpmSSrIRP0H/ZOw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwmafW0cevvqNeCIrddTtpw1cv1WPCpZSGSk2BUHmm2VgN4vWTf
+	Q3Sg8DJTB+r02ZQEQtU1KFXS1aF9sOtw20yKD9s+FH4rQmhq+OA3AJdniKY/GA==
+X-Gm-Gg: AR+sD11QHltv+eqnHy5Dig7WJyad/NAQh+EqWKdaiz1wF2a3bWs01cD0YN0lhNIacBj
+	Xr1ykKUjBPTTjC0KuibR0CbjezaUD65C3haPXj/Yof354h69qSjZ+i7miZf/zfFk2ePipO8Mlst
+	2q+c4WZsXoy7DaKxX34Au7QgSsV86bbIAmLY6tb83kq6d642Z/JK0Ftf8q36onVr8A9qXULdwjf
+	C2aytscNpsQTyIjqiOJaMeF/yzPUFV8kXv7Kxsi1EwcWYXm7o4lfzJzbHfu5uHdq/lrRaILnS5l
+	OhZ/nlPQC0SoRoT4Tyc+PgpN+gFBrIuaWxIuJCh0WT+y1T7YYj7tPxphSzk+E14JRiFR4UnYv0i
+	T8cXxIgv4RcEMmLSExOdCEn96/CiTb/ThQtysmgxt1JpRE7G9gIiB5OPrgfKYGqnMw1MV32Q9eD
+	j7i/PuxVjxhafNKVxk1EqG0GPH/BVUq9S7mZBV4GZYwo1rEkHtc6ZZ4lxhPl2ZwEIVjvKa2mped
+	fWZb46cASDCFOJQ/0YhEsQID6ytTg7g+rllloXJXA/zbBRZpCaewQhNtFRY2hBXZGEcMQ==
+X-Received: by 2002:a05:6000:2585:b0:46f:7d90:8124 with SMTP id ffacd0b85a97d-481607738d1mr17922081f8f.2.1786964783101;
+        Mon, 17 Aug 2026 04:06:23 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8FC50027494B64639367E4.dsl.pool.telekom.hu. [2001:4c4e:1b8f:c500:2749:4b64:6393:67e4])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-482a5a3b43dsm2982833f8f.12.2026.08.17.04.06.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Aug 2026 04:06:22 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Alexey Charkov <alchark@flipper.net>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v7 08/10] accel/rocket: add RK3576 NPU (RKNN) support
-Date: Mon, 17 Aug 2026 22:20:21 +1200
-Message-ID: <20260817102021.1226525-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260817100046.24872-1-royalnet026@gmail.com>
-References: <CAEWPSH7ETfw2TDjUfOvcVtDm19FC43x2vP=Lh7m+XPOGptnPWA@mail.gmail.com> <20260817094544.1159366-1-gahing@gahingwoo.com> <20260817100046.24872-1-royalnet026@gmail.com>
+Date: Mon, 17 Aug 2026 13:05:53 +0200
+Message-ID: <20260817110556.31613-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260817102021.1226525-1-gahing@gahingwoo.com>
+References: <CAEWPSH7ETfw2TDjUfOvcVtDm19FC43x2vP=Lh7m+XPOGptnPWA@mail.gmail.com> <20260817094544.1159366-1-gahing@gahingwoo.com> <20260817100046.24872-1-royalnet026@gmail.com> <20260817102021.1226525-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260817_032029_239708_E133767A 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20260817_040625_286010_9F9D96CA 
+X-CRM114-Status: GOOD (  21.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,65 +107,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
+Hi Jiaxing,
 
-First, I sent you to the wrong counts. The two predicates disagree only
-where oc mod 32 falls between 17 and 31, since modulo true implies parity
-true and never the reverse. At 40 and 72 both forms emit the same word, so
-I withdraw them. By the same arithmetic only 56, 88 and 120 of your eight
-carry any parity versus modulo content. The rest still establish something
-better, that the upstream constant computes whole at five remainders on
-RK3588. Discriminating counts nobody has run are 20, 50, 60, 90 and 114.
+Thank you for withdrawing 40 and 72 before I built anything on them, and for
+the field table. I checked the table against registers.xml and it is right in
+all eighteen cells, including RESERVED_0 = 34, which is bits 12 and 16 and is
+not obvious. I also confirmed the part of your reasoning that matters most:
+your two words XOR to 0x100, and 0x124 against 0x80011111 and 0x024 against
+0x80011011 both XOR to 0x80011035. The five-field offset really is common mode
+across the two arms and cancels in an A against B.
 
-Take the code from the merge request rather than my working branch, it has
-no knobs in it.
+One thing I cannot resolve on my own before I write code.
 
-  https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/43804
+You wrote: "Use your own constant with bit 8 cleared instead, 0x124 where the
+predicate is true and 0x024 where it is false." The merge request line you told
+me to take instead of your branch reads
 
   R_DPU(0x4050, (DIV_ROUND_UP(output_channels, FEATURE_ATOMIC_SIZE) & 1)
                    ? 0x80011011 : 0x80011111);
 
-output_channels is task->output_channels_real, the unpadded count, and
-FEATURE_ATOMIC_SIZE is 16.
+which puts the SIZE_E_2 = 0 word on the true arm. Read with that predicate your
+sentence gives me 0x024 at oc = 64, where your merge request emits 0x80011111
+and current upstream emits 0x124, both SIZE_E_2 = 1. Read with "the predicate"
+meaning output_channels % 32 == 0, your sentence is exactly your modulo form at
+every count. Both readings agree at every count with oc mod 32 in 17..31, so
+your five discriminating counts are unaffected either way. They disagree only at
+oc mod 32 == 0 and 1..16 - and oc = 64 is the count you said you most want.
 
-Do not put my two words in an RK3588 build. Against registers.xml
+So, concretely, so that I do not guess: at oc = 64, do you want SIZE_E_2 = 1 or
+SIZE_E_2 = 0? And if you meant your own form rather than the merge request's,
+send me the expression.
 
-  field         upstream 0x124   mine 0x80011111   mine 0x80011011
-  RGP_CNTER            0                8                 8
-  RESERVED_0           0               34                34
-  SIZE_E_2             1                1                 0
-  SIZE_E_1             1                0                 0
-  SIZE_E_0             1                4                 4
-  OW_SRC               0                1                 1
+I would rather we name the arms by value and by count than by the word
+predicate, since it now refers to two different things in this thread.
 
-Mine differ from each other in SIZE_E_2 alone and from yours in five
-further fields. Those five are common to both of my words so they do not
-confound an A against B, but none of them has ever run on an RK3588, and
-if both arms fail for that reason the oc 64 control goes down with them.
+Now the part I think is worth more than the A against B.
 
-Use your own constant with bit 8 cleared instead, 0x124 where the
-predicate is true and 0x024 where it is false. That takes SIZE_E_2 from 1
-to 0, the same move my words make. It assumes the three SIZE_E fields move
-independently, which neither of us has shown.
+I went looking for what SIZE_E means rather than which value works, and I think
+it falls out of the padding. In upstream rkt_task.c the output channel count is
+padded to a multiple of 32 for the normal case (line 87,
+align(MAX2(oc, 32), 32)) and to 64 for depthwise (lines 88-91), and
+FEATURE_ATOMIC_SIZE is 16 (rkt_ml.h:18). So the padded bank is 2 atoms of 16 in
+the normal case and 4 in the depthwise case. Upstream writes SIZE_E = 1 and
+SIZE_E = 3 respectively. That is 2 - 1 and 4 - 1.
 
-Bit 8 does something on RK3576. The table I sent on the 16th forced
-SIZE_E_2 to 1 with every other field identical, and 16 output channels
-went from 16 of 16 to a job timeout, 41 from 41 of 41 to 0 of 41. Whether
-it is the only field that matters is open, and the sweep I promised before
-the series went out covers RGP_CNTER, OW_SRC and two reserved bits but not
-SIZE_E_1 or SIZE_E_0, which are just as fitted.
+  SIZE_E_n + 1 = the number of 16-channel atoms in the final output channel bank
 
-Of your three offers the oc 64 control is the one I want, both ways, since
-that is the side I lost. A count at 20 or 60 would be the first
-discriminating point outside 24 modulo 32. And yes to the generator and
-the scorer, the refusal to emit a constant reference channel is a better
-guard than mine.
+If that reading is right, your parity predicate is not a fit at all, it is this
+same statement: I checked over oc = 1..512 with no exceptions that
+DIV_ROUND_UP(oc, 16) being odd is exactly the condition that the final
+32-channel bank holds one atom rather than two. Odd atom count means a
+half-populated last bank means SIZE_E_2 should be 0. That is the reason you said
+on 16 August you wanted for the field, and it is arithmetically identical to
+what you already wrote.
 
-You are right that none of this touches the timeout. Every modulo run that
-lost channels also raised one, at three counts, and I cannot yet tell
-whether the register causes it or both follow from something else.
+It also explains why my eight counts said nothing, which had been bothering me.
+Upstream hands the padded count to the write path, not the real one -
+rkt_regcmd.c lines 201, 226 and 247 all take task->output_channels, and only
+ORIG_CHANNEL at line 225 takes output_channels_real. So on RK3588 the final bank
+is always declared full, the atom count is always 2, and SIZE_E_2 = 1 is simply
+correct at every remainder. My five new counts could not have discriminated
+anything; they were confirming that upstream never under-declares the last bank.
 
-Jiaxing
+And it predicts your losses arithmetically rather than describing them. An
+under-declared last bank keeps floor(oc/32) * 32 channels, which is 32, 64 and
+96 at oc = 56, 88 and 120 - your three numbers, including the lost ranges 32-55,
+64-87 and 96-119.
+
+Please treat that as a hypothesis. I derived it from the encoder's arithmetic,
+not from a TRM or a vendor document, and it assumes the three SIZE_E fields are
+independent, which is the same assumption you flagged. It also does not touch
+the timeout, and I agree with you that the timeout is unexplained.
+
+What I will run, once the polarity above is settled:
+
+  - oc = 64 both ways with the constant forced, no predicate in the build at
+    all, so the ambiguity cannot reach it. I will patch only the non-depthwise
+    branch at rkt_regcmd.c:239-241; clearing bit 8 in the depthwise arm would be
+    0x36c -> 0x26c, SIZE_E 3 -> 2, a different move. I will verify the emitted
+    word from the submitted register stream rather than the source, because at
+    oc = 64 real and padded are equal and a build that read the wrong one would
+    be invisible.
+  - oc = 20 and oc = 60 on stock upstream as the reference arm. Those need no
+    patch and no answer from you, so I can send them whenever. They also add
+    residues 20 and 28 to the table, which so far only has 1, 4, 8, 16 and 24.
+
+Generator and scorer are on the way in a separate mail.
+
+Two small things. Your sentence "modulo true implies parity true and never the
+reverse" is the wrong way round - parity true is residues 1..16, which is a
+subset of not-a-multiple-of-32, so the implication runs the other way. Nothing
+downstream of it changes. And your five are a sample rather than the set: below
+128 there are sixty counts with oc mod 32 in 17..31, and odd ones are fine since
+33 already ran, so 17, 25, 51, 83 and 117 would do just as well as 20 and 50.
+
+Regards,
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
