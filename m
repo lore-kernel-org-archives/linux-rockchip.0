@@ -4,115 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D93C5DF66
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2026 11:38:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9BB1C5DF66
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2026 12:41:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IyBTO2lMUdWzg8Z6V25JgZjVQHhiBNKBHa+YaZEvvR8=; b=OxrWAz6T8Spvdu
-	Ag+kQjzWs+XJ/YMZk8mqVSahBPOrXW4qWL64qQIFNAt+tbYcGHrmQZ+C0gJbUiGVoOJ7hnrhgqQ68
-	t93gT0hXinCHOjYG+ZNep2MnKeiEyqcst7G5t7umrL+EvCfbO/meuqgYs9OKVDaPhoTsNAhYW8bl9
-	SOByKugMc6xq6CYkTaUDjJ4NQwXD8ILKB2dKS+fImpPWAe5ftD3GBvTqcUmNK2qFuD2yv46eDUPnE
-	EXLJM7FXTwGfOlc7ylfQU8w8K6Z3BUpfsFqghH1S1ZnNCVPRa9/InM6wftl7Jk2HTpYDGlUpKI9rL
-	UneN7/s2jZT122DWCMSA==;
+	List-Owner; bh=/USWru+mnrCFs8X8GLokdfHVntitFrHG4heUfpGRc6c=; b=41rmnbEWdWT02O
+	aRIIZ42ra2lqDFy1A0HI3pw3V4dUsGMAe8gatz6p5qoe69bB95LYt0qCVWEeQgPV8RTU78UEAhQ/j
+	OUxKxt3V4mL9V20aRHhyJYReJICse4qn0+3aTQ7rAhjrGHXQ57KMw0SOc/ETWINEJgXW7w20tY9L2
+	2wQpQJ9y8GIn+BqtQ7wqlyoAbcOfaLatXg0KgRJ8klvKaiVwRQuosZ4tkH4ZzMxbxbTOGNByPA0N5
+	4cT7srj5KEGm93VTZAB+K5WeqtHZf09Jp6gHRxRY09AU0Av3OtG+4p7OBlx5OAyHVRF0gQPejku0a
+	4C2AcsvW+LXrn5VHIknw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvvfW-000000063jL-1iGg;
-	Mon, 17 Aug 2026 11:38:18 +0000
-Received: from flow-a6-smtp.messagingengine.com ([103.168.172.141])
+	id 1wvweQ-000000068oe-0UrM;
+	Mon, 17 Aug 2026 12:41:14 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvvfT-000000063g5-22wQ;
-	Mon, 17 Aug 2026 11:38:16 +0000
-Received: from phl-compute-11.internal (phl-compute-11.internal [10.202.2.51])
-	by mailflow.phl.internal (Postfix) with ESMTP id 9224B138014E;
-	Mon, 17 Aug 2026 07:38:14 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-11.internal (MEProxy); Mon, 17 Aug 2026 07:38:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1786966694; x=
-	1786970294; bh=yyAlnjllRJoc8EnuoheqRfmGGLiMMzIInITnv3UMbRQ=; b=U
-	C6wXu8vzA5KTRsum1Hv57itUDhGNlDDKahmNsuxgF2YX7zRphrSBdny8pybxzZEp
-	bbLtl2INgh3Ki6IHBfjBBFSM4i/kGv0oNUTUUQoJoLLNosy95EVyzQNHgVSUBnsF
-	CWUFCLB/x2yo8GM6kdZqFF0i6gP1uEUlerGtP6cQzQPL4dYeBz/ZAb0jAdcDiZ70
-	1WFqSYLr7+tl7xcNHKj5O0dmEv4sf7dF90kDo4OYX7W4dqXUf9k9YUGzHTzNSMef
-	kwSd3I0kYwvVT7ZdcKBs7hc+pkUhZv3G6EaM9J9eY7OiQy5clOclO2KzTTdJO5Zc
-	JWuzMcE82tGYv0cpxmQlA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1786966694; x=1786970294; bh=y
-	yAlnjllRJoc8EnuoheqRfmGGLiMMzIInITnv3UMbRQ=; b=H1GOyFvU2D9cY8bGn
-	CQduY643hst0y4Df6rpLRDMtNi+VbmpVATovQP9iKyY3YLOKAiv7IQ51bW5WJAgF
-	cej56PbW+Q2Np2/y2KLbQKhc3QpThc917+9v3kXMVzSkcTmzGS/hL0b6sx+4o+Q9
-	QO+Ukh4sHxDK+R6uxCoIquArN6YuBvzFWAJEc3XBBPiSMVKqeUuJJdvWgLqFgIF0
-	Cc07Gy+xgN7hm2kcHT//DxevgjJ3JmyBMWOOQe+dr05DEpSdJfcLU5idYtwrgbb1
-	1JXoY7uQREkB+EmTUBFJU3RbrVgIA0sEzWQwxuWUFXQ83D8z29jnq0dHZ/tlFPqu
-	/9Z4A==
-X-ME-Sender: <xms:pvKCagYqCmrr3DWX6tlQgGORhEcF56bN9PR6AwAM1_JsE-bfk6t0Ow>
-    <xme:pvKCanh3P5IAiKXpW6kPuosAgT_r_J5t2HFOgTf87hSproRHCUQtru50qFVFdvLcm
-    AF4uS4ONyqzyA350Qd2WW_V_Kgnsza6yS93AvYFSX45k3ktsjmng4c>
-X-ME-Received: <xmr:pvKCamz6RaW__STif3I47ItLLGovIrMbGVjnXybdbSGKXHu7PCmMfcA_gVPMxVasnTF-R7vZnA>
-X-ME-Proxy-Cause: dmFkZTFJpbjkSDT6AcryrIHhgbEVj8SvkD3tgmT76I8WU6lQDo3YUCdtzXxAeg/zKqpB+E
-    Srz/I8ZJc3N7HCrgkTkwyaBZdvHNOdURxqLv8+rxKpfV73gGv9LWiSebktKgvlTsmvhDvl
-    7z8e7P5tVZXD1XfHmjG3x7RlOqfrClYofT98201dsDsGzeGalaNI/cy87SBMyHKVxLpD1H
-    cf8c4VtlmLV27PNqhGPBVow9iGRSY0ganIZ7M7ursi5UKI38krV8lOdP4K1YQOgw9wIEpu
-    SQtDihQpP3WqB+Si6LCioT5pFEw0karkUBJswAF2S4IqKtJUmYgRgB9BVHgg2tCz+ac+s9
-    epDgVkO1FTH2DrfrjlowXOa+VdD4IUyGBQAAqcCFT0Lcs6PlYJ4YcbQ+tZT8CbcX7vs/WZ
-    pt8R+i7JQFMFcw1yjpAyQbbfcPaPGKdkhycUsl0htYzlfl2oIk0yDX2ggsV5fl1nVLAFr0
-    dgl266Gp+IJ9IFQjRk8vrshqbDYhh94/pGxW16HcOhGtHxK/HxWiHdf/Q5NMTvgiSW/da5
-    5Z282k6IQtO580HhuRbYF4I/7m49p0OVQTf7OmVFiABhF1B4nQGIPHVpycbGQ9g+JaD6c0
-    40KKE/5EHpextBZxpKXawkitOhohNrUMZReC9KfZTd2OQLqgKjtZvf3YCyag
-X-ME-Proxy: <xmx:pvKCaj9DtVQT2Kmjn1gjQvOMhfxdVR9KhPj1taeShUbPCHveWYNc6w>
-    <xmx:pvKCarzsqohJXjiOBRBfvzBO-GkszcinWehSj3uAAYQAIgPKZOyngA>
-    <xmx:pvKCasWpNmDCfovS3gIQVRLyNBTX12ejR_6ySwfli0REutuVZUaS5w>
-    <xmx:pvKCauaj1W-tqM99YvKPWnr074IftRvD2CGSHp8FgAK7XCROb6dXCg>
-    <xmx:pvKCaps1LB9jOslpzMTc4hVbm_jGnBA96E_HidWVQp6YWhLTppKKrVTd>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 17 Aug 2026 07:38:07 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	ulfh@kernel.org,
-	p.zabel@pengutronix.de,
-	ogabbay@kernel.org,
-	zhangqing@rock-chips.com
-Cc: royalnet026@gmail.com,
-	chaoyi.chen@rock-chips.com,
-	diederik@cknow-tech.com,
-	alchark@flipper.net,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	iommu@lists.linux.dev,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: [PATCH v8 12/12] arm64: dts: rockchip: rk3576-rock-4d: enable NPU
-Date: Mon, 17 Aug 2026 23:36:03 +1200
-Message-ID: <20260817113603.1436067-13-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260817113603.1436067-1-gahing@gahingwoo.com>
-References: <20260817113603.1436067-1-gahing@gahingwoo.com>
+	id 1wvweN-000000068nc-2edA;
+	Mon, 17 Aug 2026 12:41:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1786970472; x=1818506472;
+  h=from:to:subject:in-reply-to:references:date:message-id:
+   mime-version;
+  bh=7X4st2dfy1l8lT+fjQAQC0tAfIF/QQdIXAwtTks4e/k=;
+  b=l5Dql8h1HXRzchklrehTNqunH3+GhqE0rFF1m74/uOEqA9da6yX7K9n9
+   rOew1wZQqPRXmYEDPD9STNPWRHjmWfjb/+fTdHYuEsSjC/YBZgFIyf2En
+   iwDHXzmz7PBbYF/zFM7t5qTLorISeLW37iVPXHNfOGHAen/H0OeIZTv55
+   XkYnuZEJzTGjeW+GQfKpVS72gttYP3k23sJLGVCu97Fx0YJ04ggHg+VqM
+   OSsC5bu1OinHuTOqLN8c6ERheDgx9yG+MXAJH5U8DSoG3JEf0UyELUqst
+   q1ncTxPI1MgJ4+xSeHNiMjNYwohx3EDC36sqs24uw8XN9xroIs99yBboe
+   A==;
+X-CSE-ConnectionGUID: o9NQZOBlSTyAp+L7Gwsw9g==
+X-CSE-MsgGUID: IUIDPVVcTvS1wbxt/b8e0w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11877"; a="98598089"
+X-IronPort-AV: E=Sophos;i="6.25,228,1779174000"; 
+   d="scan'208";a="98598089"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Aug 2026 05:41:10 -0700
+X-CSE-ConnectionGUID: kO9/n7EERguTo2l7wfOCtw==
+X-CSE-MsgGUID: 7ox5dl61Tw6To4e/rrOiGw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,228,1779174000"; 
+   d="scan'208";a="266887598"
+Received: from abityuts-desk1.ger.corp.intel.com (HELO localhost) ([10.245.245.110])
+  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Aug 2026 05:41:05 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Lyude Paul <lyude@redhat.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, freedreno@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, nouveau@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, linux-hyperv@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, asahi@lists.linux.dev,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ linux-aspeed@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-mips@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ spice-devel@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
+ imx@lists.linux.dev
+Subject: Re: [PATCH 0/5] drm/vblank: Enforce all-or-nothing vblank support
+In-Reply-To: <20260814203542.1405135-1-lyude@redhat.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
+ 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
+References: <20260814203542.1405135-1-lyude@redhat.com>
+Date: Mon, 17 Aug 2026 15:41:02 +0300
+Message-ID: <5f06e91a5ff0e5bb887b72e4ff9077c45cd9216e@intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260817_043815_873897_2B9E52F1 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260817_054111_712234_B8292BA6 
+X-CRM114-Status: GOOD (  20.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,62 +94,124 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable rknn_core_0 and its IOMMU on the Radxa ROCK 4D, and hand
-vdd_npu_s0 to the NPU power domain as its domain-supply, so the rail is
-switched by the domain that gates the block.
+On Fri, 14 Aug 2026, Lyude Paul <lyude@redhat.com> wrote:
+> One of the oddities with DRM that is leftover from the old days is how
+> vblank support is implemented by drivers. This has caused some minor
+> issues for the rust bindings for KMS which could be worked around.
+> However, it seems like a much better idea to fix this on the C side.
+> Those oddities are mainly:
+>
+> * There's nothing in the vblank core that actually ensures that all
+>   CRTCs implement vblank support if one of them do. On Rust's side, we
+>   can't have this and have to ensure either the whole device has vblank
+>   support or not - otherwise it would be quite painful ensuring we don't
+>   expose vblank methods to drivers that can't use them.
+>   This additionally means such a situation would lead to UB.
+> * There is a second variable for keeping track of the number of CRTCs
+>   and it's kind of broken and confusing. Even worse, we currently allow
+>   the vblank API to allow a driver to specify a different number of
+>   CRTCs then it actually has.
+>
+> So, let's just go ahead and fix this across the whole tree, and enforce
+> that a driver must either implement hardware vblank support for all
+> CRTCs or no CRTCs.
 
-Measured on a ROCK 4D with this in place. The rail's regulator debugfs
-reports open_count 1, so the domain is the consumer that took it. A
-sampler running beside an inference caught use_count at 1, and three
-reads at rest report use_count 0 with the rail disabled, so it follows
-the domain rather than staying on. Over the same run the genpd
-active_time of all four NPU domains rises by roughly 60ms per inference,
-and the inferences either side of that are 128 of 128 channels against
-the CPU reference.
+For i915, the relevant init order is currently:
 
-rknn_core_0 keeps npu-supply on the same rail, which the binding
-requires. Only rknn_core_0 is enabled: the driver binds one core per
-node and the second core is left to whoever can test it.
+- drm_vblank_init()
+- drm_mode_config_init()
+- drm_crtc_init_with_planes() for each CRTC
 
-Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+For the patch series to work, drm_vblank_init() would have to happen
+after mode config and CRTC init. Off-hand, I couldn't say if there are
+dependencies that make this change difficult.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 272af1012..79e039bee 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -722,6 +722,10 @@ &pcie0 {
- 	status = "okay";
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hdmi {
- 		hdmi_tx_on_h: hdmi-tx-on-h {
-@@ -779,6 +783,15 @@ wifi_en_h: wifi-en-h {
- 	};
- };
- 
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
- &sai6 {
- 	status = "okay";
- };
+I'd be surprised if i915 were the only driver like this.
+
+
+BR,
+Jani.
+
+>
+> Lyude Paul (5):
+>   drm/vblank: Add drm_device.has_hw_vblank
+>   drm/vblank: Remove drm->num_crtcs
+>   drm/vblank: Remove num_crtcs argument from drm_vblank_init()
+>   drm/vblank: Use drm_for_each_crtc() in drm_vblank_init()
+>   drm/vblank: Require all CRTCs implement vblank support in
+>     drm_vblank_init()
+>
+>  drivers/gpu/drm/adp/adp_drv.c                 |  2 +-
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_vkms.c      |  2 +-
+>  drivers/gpu/drm/amd/amdgpu/dce_v10_0.c        |  2 +-
+>  drivers/gpu/drm/amd/amdgpu/dce_v6_0.c         |  2 +-
+>  drivers/gpu/drm/amd/amdgpu/dce_v8_0.c         |  2 +-
+>  .../gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |  2 +-
+>  .../gpu/drm/arm/display/komeda/komeda_kms.c   |  2 +-
+>  drivers/gpu/drm/arm/hdlcd_drv.c               |  2 +-
+>  drivers/gpu/drm/arm/malidp_drv.c              |  2 +-
+>  drivers/gpu/drm/armada/armada_drv.c           |  2 +-
+>  drivers/gpu/drm/aspeed/aspeed_gfx_drv.c       |  2 +-
+>  drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c  |  2 +-
+>  drivers/gpu/drm/drm_vblank.c                  | 60 ++++++++++++-------
+>  drivers/gpu/drm/exynos/exynos_drm_drv.c       |  2 +-
+>  drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_drv.c     |  2 +-
+>  drivers/gpu/drm/gma500/psb_drv.c              |  2 +-
+>  drivers/gpu/drm/gma500/psb_irq.c              |  4 +-
+>  .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  2 +-
+>  .../gpu/drm/hisilicon/kirin/kirin_drm_drv.c   |  2 +-
+>  drivers/gpu/drm/hyperv/hyperv_drm_modeset.c   |  2 +-
+>  .../drm/i915/display/intel_display_driver.c   |  3 +-
+>  drivers/gpu/drm/imx/dc/dc-kms.c               |  2 +-
+>  drivers/gpu/drm/imx/dcss/dcss-kms.c           |  2 +-
+>  drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |  2 +-
+>  drivers/gpu/drm/imx/lcdc/imx-lcdc.c           |  2 +-
+>  drivers/gpu/drm/ingenic/ingenic-drm-drv.c     |  2 +-
+>  drivers/gpu/drm/kmb/kmb_drv.c                 |  2 +-
+>  drivers/gpu/drm/logicvc/logicvc_mode.c        |  2 +-
+>  drivers/gpu/drm/loongson/lsdc_drv.c           |  2 +-
+>  drivers/gpu/drm/mcde/mcde_drv.c               |  2 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  2 +-
+>  drivers/gpu/drm/meson/meson_drv.c             |  2 +-
+>  drivers/gpu/drm/msm/msm_kms.c                 |  2 +-
+>  drivers/gpu/drm/mxsfb/lcdif_drv.c             |  2 +-
+>  drivers/gpu/drm/mxsfb/mxsfb_drv.c             |  2 +-
+>  drivers/gpu/drm/nouveau/nouveau_display.c     |  2 +-
+>  drivers/gpu/drm/omapdrm/omap_drv.c            |  2 +-
+>  drivers/gpu/drm/pl111/pl111_drv.c             |  2 +-
+>  drivers/gpu/drm/qxl/qxl_display.c             |  2 +-
+>  drivers/gpu/drm/radeon/atombios_crtc.c        |  4 +-
+>  drivers/gpu/drm/radeon/radeon_irq_kms.c       |  2 +-
+>  drivers/gpu/drm/radeon/radeon_legacy_crtc.c   |  4 +-
+>  drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c |  2 +-
+>  drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c  |  2 +-
+>  .../gpu/drm/renesas/shmobile/shmob_drm_drv.c  |  2 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |  2 +-
+>  drivers/gpu/drm/sprd/sprd_drm.c               |  2 +-
+>  drivers/gpu/drm/sti/sti_compositor.c          |  2 +-
+>  drivers/gpu/drm/stm/ltdc.c                    |  2 +-
+>  drivers/gpu/drm/sun4i/sun4i_drv.c             |  2 +-
+>  drivers/gpu/drm/tegra/drm.c                   |  2 +-
+>  drivers/gpu/drm/tidss/tidss_kms.c             |  2 +-
+>  drivers/gpu/drm/tilcdc/tilcdc_drv.c           |  2 +-
+>  drivers/gpu/drm/tiny/bochs.c                  |  2 +-
+>  drivers/gpu/drm/tiny/cirrus-qemu.c            |  2 +-
+>  drivers/gpu/drm/tve200/tve200_drv.c           |  2 +-
+>  drivers/gpu/drm/vc4/vc4_kms.c                 |  6 +-
+>  drivers/gpu/drm/verisilicon/vs_drm.c          |  2 +-
+>  drivers/gpu/drm/virtio/virtgpu_display.c      |  2 +-
+>  drivers/gpu/drm/vkms/vkms_drv.c               |  3 +-
+>  drivers/gpu/drm/vmwgfx/vmwgfx_vkms.c          |  2 +-
+>  drivers/gpu/drm/xlnx/zynqmp_kms.c             |  2 +-
+>  include/drm/drm_device.h                      | 10 +++-
+>  include/drm/drm_vblank.h                      |  2 +-
+>  64 files changed, 114 insertions(+), 92 deletions(-)
+>
+>
+> base-commit: 568d4cb5dcc5ec4e22975699b6ea67a30806884c
+
 -- 
-2.43.0
-
+Jani Nikula, Intel
 
 _______________________________________________
 Linux-rockchip mailing list
