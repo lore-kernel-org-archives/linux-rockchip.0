@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89F71C5CFC1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2026 06:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3593C5DF70
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2026 08:15:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/RBp9P29p2csEx+niRArTl4/nrRvry/DsLFce0FIPMA=; b=eHkuBe7rrj72Wx
-	Hd5Q+AEGnkf1SQKT9fdDO5z6YmnzJa7+Ee5A9Mz6SAu73FLg9tBOWn73Ke3JocWLz7hNQbBNUoJhl
-	No/lFvvqDVro3afRjyGUcqBSbvJs8/Smt9f0ylKgnO5z9AHy9lw68fTnIqfK2ieoZDmVvUZZ05FuF
-	D6NZalB7ywLQ5iPbmsAxpkIopofYYXvCof+JPCx7FbX6bgc8h1vQkFCnFbJa2tQZ/uvi6oOKe6VJd
-	H2d0E/U6vRlhTXHTJFeMBaQcnBpnXrAK0NvoU/wIALXJO9aM9WSboGHYDBaDxN2N1AWcDGQlH3ji+
-	vKGmrVfCXS7gUJVP1sPg==;
+	List-Owner; bh=GOxezrNZTc+Pa8cguh/5BJYQUZ3Z2aMPLUiL92i0KEE=; b=w4DsdvJA86/hVI
+	/m/uiEyGOUPFR6A85vohA/eNRVzet9aZglrJpPd/mKpsn940zY3XOx7vpHC7zR3JWSRbH3P87KX7+
+	XkTtRcPl+gT/Qa/W+ARXtgL3Ii6+bnFwnw3WI/0cP5SsRXAEXaFeOIRbiVgZUp8TUR6Xg8zrPsudi
+	Q3r/CsvbRVoiq5MRUYClhcVSlNv35IKv1X2IiiZ3APf/v944+hMeftQidFw9nySd5ld1UBaCskH4K
+	CKvF8DyUvH7QqSpSx8d1g+kFOEZ2+MKbMNnDrgZWTXY2ejuWcufRDiBKR2sGb3Sauo9ap44CUFv6r
+	/6gPmowdw7KERGFBvuEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvrB0-00000005UwG-1jNG;
-	Mon, 17 Aug 2026 06:50:30 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1wvsV4-00000005dgt-1clb;
+	Mon, 17 Aug 2026 08:15:18 +0000
+Received: from out-214.mta1.migadu.com ([2001:41d0:203:375::d6] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvrAv-00000005UvU-1oWO;
-	Mon, 17 Aug 2026 06:50:29 +0000
-Received: from Vostro-3710.lan (unknown [IPV6:240e:3bc:2e87:7f70:16d5:d57:cd0e:58c1])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4a36f9033;
-	Mon, 17 Aug 2026 14:50:18 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: andrew@lunn.ch
-Cc: amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	naoki@radxa.com,
-	robh@kernel.org
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Radxa E54C
-Date: Mon, 17 Aug 2026 14:50:10 +0800
-Message-Id: <20260817065010.4163977-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <6248f137-ff98-4d3e-9ca6-f94741533686@lunn.ch>
-References: <6248f137-ff98-4d3e-9ca6-f94741533686@lunn.ch>
-MIME-Version: 1.0
-X-HM-Tid: 0aa00e7c3e3503a2kunm8aa2e3fb2528f7
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTBgZVh5PHx5NHkxOGRhCT1YeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlJT0seQUgZGEFJHkNMQUwdTEtBSk0fTkEfTkxBGB9LHkFOQx
-	hKWVdZFhoPEhUdFFlBWU9LSFVCQklOS1VKS0tVSkJLQlkG
+	id 1wvsUz-00000005dfp-2msa
+	for linux-rockchip@lists.infradead.org;
+	Mon, 17 Aug 2026 08:15:16 +0000
+X-Envelope-To: linux-rockchip@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=C0O0F0T5Khr4i9evrKR9qQ1b3ukNc51FfJbV+j3oy3Q=;
+ c=simple/simple; d=cknow-tech.com;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1786954510; v=1; x=1787559310;
+ b=hhVhQJO6LkgnZbGnPrn8ZOEQmZ7vWhS+ZVrfUmUxrqh+qv0Lrw3p1WOmQTwfA3WY2wTf5SBI
+ 0tDB9rb2tHUdFs9DxdaIjJJiMseOo/TUH43zMy4zDmw1i8uKCuhHLYknSM1JWHe94JQi4ZJRJOl
+ y7DSQa1EYuOWLuLa5i3Yz4UuPqb4mxRmshbPhrWy2sBSremdXLazCLaAGqrt1wul74Ls8UgjAtQ
+ FJ4oOXzu1Jy8RBfSiUyvZ2ZovLXnBlMoKdC6erXOqhkS5UNWGDOJMEIg1TMH8bEd6GJ/N3O0lsO
+ 95LPnVzzotiEKHIhkkGTkzVOYwfef25S4fEIDjh5vtdNg==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+Received: from localhost (92.254.112.55)
+	by smtp.migadu.com with ESMTPS id 54f7be6b0ec37d4f;
+	Mon, 17 Aug 2026 08:15:00 +0000
+X-Migadu-Flow: FLOW_OUT
+Mime-Version: 1.0
+Date: Mon, 17 Aug 2026 10:14:58 +0200
+Message-Id: <DKR2I3X521F8.J6H7KW07GDD0@cknow-tech.com>
+Subject: Re: [PATCH v3 1/4] dt-bindings: crypto: rockchip: Add RK356x/RK3588
+ crypto engine binding
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Dawid Olesinski" <dawidro@gmail.com>, "Herbert Xu"
+ <herbert@gondor.apana.org.au>, "David S . Miller" <davem@davemloft.net>,
+ "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
+Cc: "Diederik de Haas" <diederik@cknow-tech.com>, "Eric Biggers"
+ <ebiggers@kernel.org>, "Sebastian Reichel"
+ <sebastian.reichel@collabora.com>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>, "Conor Dooley" <conor+dt@kernel.org>, "Corentin
+ Labbe" <clabbe@baylibre.com>, <linux-crypto@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+X-Mailer: aerc 0.22.0
+References: <20260708175837.1718437-1-dawidro@gmail.com>
+ <20260816194112.552100-1-dawidro@gmail.com>
+ <20260816194112.552100-2-dawidro@gmail.com>
+In-Reply-To: <20260816194112.552100-2-dawidro@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260816_235025_670553_CB818051 
-X-CRM114-Status: UNSURE (   4.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260817_011515_057939_6252C704 
+X-CRM114-Status: GOOD (  16.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,15 +83,149 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Dawid,
 
-> Both the MAC and the switch are using rgmii-id? How does that work?
+On Sun Aug 16, 2026 at 9:39 PM CEST, Dawid Olesinski wrote:
+> Add a YAML device tree binding for the Rockchip second-generation (V2)
+> cryptographic hardware accelerator present on the RK3568 and RK3588 SoCs.
+>
+> The IP block exposes AES-ECB, AES-CBC, AES-XTS block ciphers, SHA-1,
+> SHA-224, SHA-256, SHA-384, SHA-512, MD5, and SM3 hash algorithms, each
+> with a hardware DMA engine controlled via linked-list descriptors.
+>
+> The binding covers two compatible strings:
+>
+>   - rockchip,rk3568-crypto: clocks and resets are driven directly by the
+>     non-secure CRU (accessible to Linux at EL1).
+>   - rockchip,rk3588-crypto: clocks and resets live in SECURECRU, a
+>     register bank sandboxed to TrustZone. Linux must request them through
+>     the ARM SCMI firmware interface (scmi_clk / scmi_reset), as direct
+>     MMIO access to SECURECRU from EL1 triggers a bus fault.
+>
+> Co-developed-by: Corentin Labbe <clabbe@baylibre.com>
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> Signed-off-by: Dawid Olesinski <dawidro@gmail.com>
+> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # Quartz64-B,
+> NanoPi R5S, NanoPC-T6 LTS
 
-The switch driver uses phy_interface_mode_is_rgmii() to enter rgmii
-mode. I will change the phy-mode on the switch to "rgmii".
+AFAIK these lines should not have a line break, ie must be on one line.
 
-Thanks,
-Chukun
+Cheers,
+  Diederik
+
+> ---
+>  .../crypto/rockchip,rk3588-crypto.yaml        | 83 +++++++++++++++++++
+>  MAINTAINERS                                   |  2 +
+>  2 files changed, 85 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
+>
+> diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
+> new file mode 100644
+> index 000000000000..32d241c19453
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
+> @@ -0,0 +1,83 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/crypto/rockchip,rk3588-crypto.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip cryptographic offloader
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +  - Corentin Labbe <clabbe@baylibre.com>
+> +  - Dawid Olesinski <dawidro@gmail.com>
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - const: rockchip,rk3568-crypto
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3588-crypto
+> +          - const: rockchip,rk3568-crypto
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: Core clock for the crypto IP internal logic
+> +      - description: AXI interconnect clock interface
+> +      - description: AHB interface clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: core
+> +      - const: aclk
+> +      - const: hclk
+> +
+> +  resets:
+> +    minItems: 1
+> +    maxItems: 3
+> +
+> +  reset-names:
+> +    minItems: 1
+> +    items:
+> +      - const: core
+> +      - const: aclk
+> +      - const: hclk
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - resets
+> +  - reset-names
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
+> +    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+> +
+> +    bus {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
+> +
+> +      crypto@fe370000 {
+> +        compatible = "rockchip,rk3588-crypto", "rockchip,rk3568-crypto";
+> +        reg = <0x0 0xfe370000 0x0 0x2000>;
+> +        interrupts = <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        clocks = <&scmi_clk SCMI_CRYPTO_CORE>, <&scmi_clk SCMI_ACLK_SECURE_NS>,
+> +                 <&scmi_clk SCMI_HCLK_SECURE_NS>;
+> +        clock-names = "core", "aclk", "hclk";
+> +        resets = <&scmi_reset SCMI_SRST_CRYPTO_CORE>;
+> +        reset-names = "core";
+> +      };
+> +    };
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index c8d4b913f26c..50b77a750db3 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -23131,9 +23131,11 @@ F:	drivers/media/platform/rockchip/rkcif/
+>  
+>  ROCKCHIP CRYPTO DRIVERS
+>  M:	Corentin Labbe <clabbe@baylibre.com>
+> +M:	Dawid Olesinski <dawidro@gmail.com>
+>  L:	linux-crypto@vger.kernel.org
+>  S:	Maintained
+>  F:	Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
+> +F:	Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
+>  F:	drivers/crypto/rockchip/
+>  
+>  ROCKCHIP I2S TDM DRIVER
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
