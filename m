@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEB36C5DF70
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 09:27:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA013C5DF7D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 12:12:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sytqCsTIwRsGYTGdoUarvBP1x0UUHApd2DMTe6Du3gA=; b=ViuSaRVoiGuWHo
-	1/Sb974zNNpteJ62eQYzGSTLnqSrLpsuxGByX5BZRq7S95BXBKusrSW+0AHBE0r18wgYlHNMNaKiU
-	tlLCwJpHt92++Vwyr3UjzcMQcN/YJRJ25MMuCKZBXS+jdw4iTDJPA20r/1FhY38C23GgyWJE6pZl2
-	p6gjfGbI2hJF8dZKc5bFPrtgFGi+8YUkfceeKdiNypgaM1s0HHgcQuf51AM8BSpsDenWgx4sbVX0v
-	RsZBh2xMbs6fjyUUp9sF7Ks+7iDYFNNqdBV2QZLlX3SC9o0SqFv+tGOrI7tGTMo9SOUatko5oC4Iu
-	bQunpz68F6/EtsJUw4Ng==;
+	List-Owner; bh=prfy3xSsx7/27yUgd9KoolSkquS8n1Vi0ezlUshsRmw=; b=4njtke+cnRqO4y
+	fYhUjqBd3rqT42Oq6oWAyqQ1ovN+iSOi+8lxsMw4x7G7FgihigFlwn8YerVT5JB3asKd3XZUKVEOV
+	FZrE0luMuyWyDqweHiX4JJcO6EX5eLwWx2OOil5m0DXCxFAl6lunxqhWb8ONVlzGDJrsCVxOz/SAa
+	+q4FBR5Sid+pMc7SW76IsSNlNJEoggkHqJMab7k5C9SXU3A28zpPJqOrCaf272kUPoXtcpcm0po61
+	aI/GN8E3iJ3ALG/UNle35oxi/Z62zHA4wOhL8apMtFkOQ49Ay+2GFXrs+SbOnh9/md84XKahjbBjM
+	J7i52XVckzs2yxSUY6lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwG6M-00000007cPy-3O7T;
-	Tue, 18 Aug 2026 09:27:22 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wwIgF-00000007uEx-0wnT;
+	Tue, 18 Aug 2026 12:12:35 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwG6L-00000007cP0-0kpI;
-	Tue, 18 Aug 2026 09:27:21 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id EA5194365B;
-	Tue, 18 Aug 2026 09:27:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 807891F00A3D;
-	Tue, 18 Aug 2026 09:27:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787045240;
-	bh=pCAeP45dNHcS3g9M4gwt3hWaJQOzRtTIoJ9n13+qIfo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=FXKhSwse5JpUIXXbguePgh5Q4+Wjri1Bk6ZOg8YeaYZemFTg1obCHqVZG2uPbI1Ea
-	 zi6eiRfzz5dqkwzZpjf4gRxD5f5DD4tKT/8aBvA4zmkDWwV/BbCO6tOlMONcexyKou
-	 g0AfU95Db6jL5E0+9H2sBm2hLkTjUPYtCpN2td0tzyqpLwNaB1ECxjqkGFQ5mWelvw
-	 Xn4jH5f6IvgGaQt51GRfoklu1XNSBevKtjELBHLNMiK0+s0c8cIBJ83EHhbHk6IPpk
-	 RVz8GwpdEeLJfzDAaR/JqoUfwUQwZRHwbqldpRS7P93yPKEivpwLdNxzy9R/QKCC+L
-	 oll2GRe8z2ltQ==
-Date: Tue, 18 Aug 2026 11:27:07 +0200
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Yubing Zhang <yubing.zhang@rock-chips.com>, 
-	Alexey Charkov <alchark@flipper.net>, Igor Paunovic <royalnet026@gmail.com>, 
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com, 
-	devicetree@vger.kernel.org, linux-usb@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
-	William Wu <william.wu@rock-chips.com>
-Subject: Re: [PATCH v14 00/38] phy: rockchip: usbdp: Clean up the mess
-Message-ID: <h54c2hrcsv3zjzzgojzf5sjmu3vtpobz6rwloam5kp7mwqqn3n@bqjnlellvnz6>
-References: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
+	id 1wwIgC-00000007uDW-0xIr
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Aug 2026 12:12:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1787055148;
+ bh=IIl9f09sAtLyS8+D8lm8fCz9k0/RNdLNbkzXeNjbF6w=;
+ b=N0WFkzBzuDTy0ijdt+OW6FTEtLbYXhCNykZeV3sTRTZEAmQJs6w0XB5270vNJiwB2215cOn4s
+ djg2ysQevLIqbRjPjZM0XSZ32pWdj9g4tPSYoNqd0jO8TrlLWpuO0MqNjMpK4EsGBKp7qD/X29p
+ c+W6Zg6nnoQc6Jn0msoOcqFJsvT1m5BX45722wiOs+6pdyiPDJf1w130kvEth5umvCUBEniRmK+
+ I0BylIgBxEjDM5U5Cd4dY36e9dy6+vR0ZBcNevptuG2DSOABRdineNaGvtrUf7SCadMa48iwrI9
+ FC8NXknns+nqyNlwZq2R88erkpmN4lGpG0uCoWqsxXkQ==
+X-Forward-Email-ID: 6a844c23b1ee0df32f73bdb3
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.13.16
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <ad1e526e-a4cf-4c34-88ff-1884ef2f3dfe@kwiboo.se>
+Date: Tue, 18 Aug 2026 14:12:15 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and
+ some numbers
+To: Igor Paunovic <royalnet026@gmail.com>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>, Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jiaxing Hu <gahing@gahingwoo.com>,
+ Oded Gabbay <ogabbay@kernel.org>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org
+References: <20260801131656.58450-1-royalnet026@gmail.com>
+ <c495dae1976dab842d77f4a4a142217eb77b6fb7.camel@ndufresne.ca>
+ <20260818072936.41844-1-royalnet026@gmail.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20260818072936.41844-1-royalnet026@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260818_051232_586396_F1A9756B 
+X-CRM114-Status: GOOD (  29.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,36 +76,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBBdWcgMTMsIDIwMjYgYXQgMTA6NTE6NDNQTSArMDIwMCwgU2ViYXN0aWFuIFJlaWNo
-ZWwgd3JvdGU6Cj4gVGhpcyBzZXJpZXMgZG9lcyBhIG1ham9yIG92ZXJoYXVsIG9mIHRoZSBSb2Nr
-Y2hpcCBVU0JEUCBkcml2ZXIuIFRoZQo+IGluaXRpYWwgbWFpbiBnb2FsIHdhcyB0byBhZGQgVVNC
-LUMgRFAgQWx0TW9kZSBzdXBwb3J0IHRvIHRoZSBSSzM1NzYKPiBhbmQgUkszNTg4IGFuZCB0aGlz
-IHNlcmllcyBzdGlsbCBwcmVwYXJlcyB0aGUgUEhZIGRyaXZlciBmb3IgZXhhY3RseQo+IHRoYXQu
-IEJ1dCBpbiBhZGRpdGlvbiB0byB0aGF0IEkgdW5jb3ZlcmVkIGEgaHVnZSBhbW91bnQgb2YgaXNz
-dWVzLAo+IHRoYXQgYXJlIGZpeGVkIGFsb25nIHRoZSB3YXkuIFNvbWUgb2YgdGhlIG1vcmUgaW50
-ZXJlc3Rpbmcgb25lcyBhcmU6Cj4gCj4gICogQ3VycmVudGx5IHRoZSBkcml2ZXIgbWlnaHQgdHJp
-Z2dlciBhIGZhdGFsIFNFcnJvciBvbiBVU0ItQyBob3RwbHVnLAo+ICAgIHNpbmNlIHJlLWluaXRp
-YWxpemluZyB0aGUgUEhZIHN0b3BzIHRoZSBjbG9ja3MgZ29pbmcgdG8gRFdDMy4gSWYKPiAgICB0
-aGUgRFdDMyBkcml2ZXIgdHJpZXMgdG8gYWNjZXNzIGl0cyByZWdpc3RlcnMgYXQgdGhlIHNhbWUg
-dGltZSB0aGUKPiAgICBzeXN0ZW0gd2lsbCBjcmFzaC4KPiAgKiBUaGUgRFdDMyBoYXJkd2FyZSBj
-YW4gZ2V0IGludG8gYSBidWdneSBzdGF0ZSB3aGVuIHRoZSBQSFkgaXMKPiAgICBkaXNhYmxlZCwg
-d2hpY2ggcmVzdWx0cyBpbiB0aGUgUEhZIG5vdCBjb21pbmcgdXAgcHJvcGVybHkgYWdhaW4uCj4g
-ICogU3dpdGhjaW5nIHRoZSBVU0ItQyBjb25uZWN0b3Igb3JpZW50YXRpb24gZHVyaW5nIGhvdHBs
-dWcgYnJlYWtzCj4gICAgVVNCMyBzcGVlZCwgYXMgdGhlIFBIWSBpcyBub3QgYmVpbmcgcmUtaW5p
-dGlhbGl6ZWQuCj4gICogVGhlIGNvZGUgYWx3YXlzIGVuYWJsZXMgRFAgbW9kZSB3aGVuIFVTQi1D
-IGlzIGludm9sdmVkLgo+ICAqIFRoZSBkcml2ZXIgaGFzIHNvbWUgbG9ja2luZyBpc3N1ZXMgdW5j
-b3ZlcmVkIGJ5IFNhc2hpa28uCj4gCj4gSW4gYWRkaXRpb24gdG8gdGhlc2UgYmlnZ2VyIG9uZXMs
-IFNhc2hpa28gYWxzbyBmb3VuZCBhIGJ1bmNoIG9mCj4gbWlub3IgcHJvYmxlbXMsIHdoaWNoIGFy
-ZSBtb3N0bHkgaGFybWxlc3MsIGJ1dCB3ZXJlIGZpeGVkIHdoaWxlCj4gZ29pbmcgYXQgaXQuCj4g
-CgozOCBwYXRjaGVzIGZvciBhIHNpbmdsZSBzZXJpZXMgaXMgdG9vIG11Y2ggdG8gcmV2aWV3LiBQ
-bGVhc2UgY29uc2lkZXIgc3BsaXR0aW5nCml0IHVwIGludG8gbXVsdGlwbGUgc2VyaWVzIG5vdCBl
-eGNlZWRpbmcgfjEwIHBhdGNoZXMgcGVyIHNlcmllcy4gVGhhbmtzIQoKLSBNYW5pCgotLSAK4K6u
-4K6j4K6/4K614K6j4K+N4K6j4K6p4K+NIOCumuCupOCuvuCumuCuv+CuteCuruCvjQoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Igor,
+
+On 8/18/2026 9:27 AM, Igor Paunovic wrote:
+> Hi Nicolas,
+> 
+>> I'm only looking at the RK3588, I suppose all the issues below
+>> related to RK3576 ?
+> 
+> No - everything in the RFC is RK3588 (Orange Pi 5 Plus, all three
+> cores). RK3576 is Jiaxing's enablement series and has its own set of
+> problems; nothing I reported came from there.
+> 
+> I went through the four commits on rock5b-npu-poc-4 today. We
+> converged on the same shape independently, which is encouraging:
+> 200 MHz kept as the suspend rate, a single devfreq instance modelled
+> on panfrost with busy time aggregated across the three cores, and a
+> cooling device on top. Your ~2.5x on the SSD pipeline also matches
+> the 2.58x I measured here with simple_ondemand against the 200 MHz
+> pin.
+> 
+> The TF-A pointer (rk3588_clk.c, PVTPLL vs normal path) is the most
+> valuable part for me - it names the mechanism behind the power-on
+> ack failure I could only demonstrate empirically. I will reference
+> it in the cover letter once I have checked the firmware source
+> myself.
+
+Based on what I learnt when playing around with the SCMI GPU pvtpll [1],
+we must keep core block clock enabled as long as PVTPLL mode is enabled
+instead of the normal PLL mode.
+
+When PVTPLL mode is enabled, the PVTPLL GRF, PD and GPU block is fully
+provided by the PVTPLL clock, i.e. SError when accessing hw regs in
+case Linux disables CLK_GPU.
+
+Linux does not know anything about PVTPLL mode, the SCMI clocks are
+fully controlled by firmware (tf-a) and basically switches to use PVTPLL
+mode for all rates above 100/200/300 MHz.
+
+Vendor kernel typically always changes to use 100/200/300 MHz at system
+and runtime suspend to disable use of PVTPLL.
+
+Because this PVTPLL dependency is not really known to Linux we must
+use workarounds to hide this, ideally we should fully implement PVTPLL
+handling in Linux or ensure firmware always keep dependent clocks
+enabled to avoid SError when accessing regs.
+
+For GPU case I depend on the opp-suspend rate to ensure opp and runtime
+pm framework make best effort to restore normal mode when GPU is unused.
+
+However, opp framework does not provide any integration into pm runtime
+so it will happily clk_set_rate() when pm runtime is suspended. My
+workaround to avoid SError was to use a custom .config_clks() ops in
+struct dev_pm_opp_config that just checks pm_runtime_suspended().
+
+The RFC series at [1] was never posted on mailing list, but is currently
+in use by e.g. Armbian to allow use of full 1 GHz rate of GPU on RK3588.
+
+I am guessing NPU have similar limitations/requirements as the GPU block.
+
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20260619-rk35xx-scmi-gpu-clk/
+
+Regards,
+Jonas
+
+> 
+> Status here: after Tomeu's go-ahead I am preparing the series -
+> bindings, a full-range OPP table in the DT (300-1000 MHz plus the
+> 200 MHz suspend point, so essentially the table you ended up with),
+> a safe-rate-on-suspend guard, the devfreq itself, and a hold-all
+> guard that resumes all cores around any rate change. The guard is
+> ordered before the devfreq patch so no bisect point has scaling
+> without it. The one hard dependency is my "request the core clocks
+> by name" v2, still waiting for pickup.
+> 
+> Agreed on OPP staying optional - the plan in my series is that the
+> driver keeps working with no OPP table in the DT, which I saw you
+> intend to fix on your side as well.
+> 
+> One path worth checking in your PoC, because it is the one that
+> made me write the hold-all guard: a sysfs min_freq/max_freq write
+> while all three cores are runtime-suspended goes straight to
+> clk_set_rate, which can select the PVTPLL path while the domain is
+> off - exactly the case your TF-A reference explains. With the guard
+> in place I measured that write waking the cores and completing
+> cleanly.
+> 
+> One difference in test conditions worth keeping in mind: my numbers
+> are with the vendor bl31 that EDK2 bundles, yours is upstream TF-A.
+> Comparing SCMI behaviour on both seems wise before either of us
+> claims anything firmware-specific.
+> 
+> Thank you for the "take whatever you like" - anything I lift will
+> carry credit, and I will Cc you on the series.
+> 
+> Regards,
+> Igor
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
