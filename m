@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5CA3C5DF7D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 12:31:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F588C5DF7D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 13:06:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r4g0WsJuQ/RPvH5mXQWdDo4aYr0MDCsU5klAwq0B/7A=; b=r0GhjTBRaGbA55
-	VvbfY2PHG1tDWrKkKmk9HCK4Lf801sYL9hDuOZobvlg7I03NGbEZc5ynHVj8GdLZALiZQkBHa9MUF
-	UGXZ5OqD1660ChRWplvwxLC8CNryn2cLrurPTwdZUJDlXh8ovxHPc7XbNZPW7219eeB89MWwU0FaG
-	t6vy9RIPe+cp6lY0HR+rgVyuZcYZrQRClFfBX9lLAGhd0f6+9LHaO0a7GQOvWNB9UoKsZ1jH3M3E2
-	Nqw6/Kf30G84e1vWzpV/D8ClsirMRWKc6G7m/WLYFeBveFcEosMR052iUEYGEtomqXVdSeiMAwUrO
-	+Qb1tpmAtPjl4hZw6Uww==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Subject:From:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9is6MsZusLO4eT0+fGyyb/SDRteS5rFsuDC2QtTDcKs=; b=lXtWrBtbkhyu1c
+	06LpKf6H1xSKSMHEn+Y7ofll6obaNfXglnX9T7jSxI9WzQksvCc8rNhOvJckrIMPV7+w6i0FonISF
+	33PQDrBteBmpZvd4R8Tc2BpAGpPFOP6QoUzcG6dSsgKV33Ro95VSNjfgHzWllYSieT4uGZiLeA/f9
+	5CPys50hx5sTukgFWpSkk/58Sy5tPZ3qliTZ/G9DTcbXgG8uKisYC8JBjfwnhHA2dxS2QBgRGxkdm
+	o17POeICcDBHmLRBjx3CoBeDDn9cAr9hEVbvqwFPVzV6nOQjlqFjRKERLzNp3Xjj+lmJsEdJZstTa
+	2RtKAxQ08XVCNPLgOv6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwIyk-00000007vhq-1nGo;
-	Tue, 18 Aug 2026 12:31:42 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+	id 1wwJVz-000000080PK-1Beu;
+	Tue, 18 Aug 2026 13:06:03 +0000
+Received: from out203-205-221-221.mail.qq.com ([203.205.221.221])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwIyh-00000007vhM-2V2R
-	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Aug 2026 12:31:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: References: Cc:
- To: From: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1787056297;
- bh=ARJYzWHRK1/tvlajVYaQEpB+8GLZSMIM76Ejf69JEc0=;
- b=fIjgEwptE0jhPm/sucBfoItPXR3xusk4tktkyLWsGtYGEN01HE3IgVhXpudiPDH9aihZZR8Ln
- Eyh5SLp3/x9F1QYE4cIs5LcG9Ert5IRvbtSa4X0NmvMYwYxx3GpBSF4cZu+HS61CC2VQyOomRDy
- SA8q8EGVmjkRI80QBfL1DoKD6Zwsm8l8O2+J05A2ArgmSh+4bPJs9pkZobC5YuNGaLlMGMvcKL1
- G8xq8rIu+yA2x2mpLB0yk6jL/7jAL0MsWzge7UitZDyR6EIKs7YFjUO0txsAN18HQgatkeZhzVu
- Q5FruHLugD8OANaV3pHo0Va8V9lFhW0WtaTpw1qrU87g==
-X-Forward-Email-ID: 6a845087b1ee0df32f73c58b
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
-X-Forward-Email-Version: 2.13.16
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <286e8418-fae6-4979-96d1-e13abb04b3a1@kwiboo.se>
-Date: Tue, 18 Aug 2026 14:30:59 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and
- some numbers
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Igor Paunovic <royalnet026@gmail.com>,
- Nicolas Dufresne <nicolas@ndufresne.ca>, Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Heiko Stuebner <heiko@sntech.de>, Jiaxing Hu <gahing@gahingwoo.com>,
- Oded Gabbay <ogabbay@kernel.org>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org
-References: <20260801131656.58450-1-royalnet026@gmail.com>
- <c495dae1976dab842d77f4a4a142217eb77b6fb7.camel@ndufresne.ca>
- <20260818072936.41844-1-royalnet026@gmail.com>
- <ad1e526e-a4cf-4c34-88ff-1884ef2f3dfe@kwiboo.se>
-Content-Language: en-US
-In-Reply-To: <ad1e526e-a4cf-4c34-88ff-1884ef2f3dfe@kwiboo.se>
+	id 1wwJVw-000000080NF-0ziI;
+	Tue, 18 Aug 2026 13:06:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1787058353; bh=Asc17psHKNAaSbNMycO1gd0Irfg/HEZLdr8szashNPw=;
+	h=From:Subject:To:Date;
+	b=gE1uzqCDY44EC3qXSlRjW3t0ZY2d/Z8qjL5Wu4bQVwzl0BSrKhreCQnvLD/HIPxIC
+	 Kf/Rs38MbdNokY+wydyhJs5MN0YOftYq4R9GMSNpnSkf2JoK/W0ZworBW2M7+S/a3t
+	 HHUZhqp8M0jDMaP9MvVGWk/uYrUrF86nYDOXXfRc=
+Received: from [127.0.1.1] ([5.195.0.150])
+	by newxmesmtplogicsvrsza63-0.qq.com (NewEsmtp) with SMTP
+	id 1721C6D8; Tue, 18 Aug 2026 21:05:50 +0800
+X-QQ-mid: xmsmtpt1787058350t92l880bm
+Message-ID: <tencent_DD16C0EEDFEF4ACAFAB5A23EC8235D462707@qq.com>
+X-QQ-XMAILINFO: NbgegmlEc3JuTFiJHSXhG2jjRqHVE0lhZ6fR30r8eFb7fhrQgkuPImiL+Qtb/B
+	 NM88BKMuz/8v4tH+QUMd279UbaBpmn46OEmHiaZeSlfl1WsCqtRDu0sMbg3GB6GdbZvdbKS9NzSD
+	 jjTVzWhszt3cSrOb7QXZ4AXiF2ZKAMA3G3shfUvhK34GpmjoyvsXjjpHKOoKmsOChmDP8RV3kb2k
+	 nKXp1LwevqXaXeLshellpMc3CxrrAXqN24DRqPp3wLlcL6Zu36ueYGAyniny9TxBzoRT04D5vcyS
+	 7AnByDk77D+fJsCnGNv1EllfI4rbsuYm0v2Ink3DmuxOA/cKflbjtKI0f1csRbtQ29rr0QKE1gfC
+	 fAKekd3P5fRDLoCTCUrZ+w2quQexQ6aKQwjPiLz8NsiH3WHSlO+6sfOBv60hdWJziOG7HfBa40GA
+	 kDXqeiilfdxmiSru02V8aT3zcyd2E4LpdgsZKwRh4s/2QKeX74rHQTY4k5et/pEarRy2aPf/Cu4V
+	 4sCQq+D3nTRoNIZQztwxRNeDWD5+oNIlqpPc5HA0IQwqfjd3dVp/0Zdzs0rFC1KlbLoPnm+GI2R4
+	 mYjT/W6DEZ6w/MBMKnUE4GIimhXscSAw9mrZW+OKju6s90xQW4RNBkbxXXwh7+yjtXsDtv0aIMZZ
+	 5sxuLI0rl4cxLUaPIvL5HqHckiO2mYuIZrPiKvUVoOU0GhrDokEC7NV7Raa1shi8GXjDRKb5P/3b
+	 g8UCUAoSZd01fk+McPhY+LZfC63NiMjYNPMBF3TYT/nw7MwIvBrnhnJICRLRMRCjKdHDNdd5ByQD
+	 1ptwrpmo5e19yS5iEI5OYQ7yHJZIRFI1q3uhq3XFEeRodZMXtKDnmJ1hR/PniiLTM7qMHENFD6Hl
+	 fHDVLjJz3radqFmMCGpWt65WNIaSfd40amc7xTbkiIXSVsfM1Mn04BWlaMZfYwgYh/ZDojPLiWTr
+	 /zSegCgF8MDdTwLzAkEBZf8bMmwc6UhLJ8nYaumuyMYN9v7Dl6aywNhPeoV6E4Wcp/aDRBX8915B
+	 RUnm2E7/Bo8d3DzgHP1ef6tV5cGvvNeo56VKdIZw==
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
+From: Jiawen Liu <1298662399@qq.com>
+Subject: [PATCH] spi: rockchip-sfc: disable runtime PM in remove
+To: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Date: Tue, 18 Aug 2026 17:05:50 +0400
+X-OQ-MSGID: <178705835086.291840.15105782669010201958@qq.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260818_053139_756761_FF86B9F7 
-X-CRM114-Status: GOOD (  32.15  )
+X-CRM114-CacheID: sfid-20260818_060600_585566_88984484 
+X-CRM114-Status: UNSURE (   6.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,126 +75,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi again,
+rockchip_sfc_probe enables runtime PM and leaves the device active with
+a usage count held by pm_runtime_get_noresume(). The remove callback
+only disables the clocks and does not disable runtime PM, leaving the
+device in an inconsistent state and leaking the runtime PM reference.
+Add the missing runtime PM teardown in rockchip_sfc_remove to balance
+the probe's enable and get_noresume calls.
 
-On 8/18/2026 2:12 PM, Jonas Karlman wrote:
-> Hi Igor,
-> 
-> On 8/18/2026 9:27 AM, Igor Paunovic wrote:
->> Hi Nicolas,
->>
->>> I'm only looking at the RK3588, I suppose all the issues below
->>> related to RK3576 ?
->>
->> No - everything in the RFC is RK3588 (Orange Pi 5 Plus, all three
->> cores). RK3576 is Jiaxing's enablement series and has its own set of
->> problems; nothing I reported came from there.
->>
->> I went through the four commits on rock5b-npu-poc-4 today. We
->> converged on the same shape independently, which is encouraging:
->> 200 MHz kept as the suspend rate, a single devfreq instance modelled
->> on panfrost with busy time aggregated across the three cores, and a
->> cooling device on top. Your ~2.5x on the SSD pipeline also matches
->> the 2.58x I measured here with simple_ondemand against the 200 MHz
->> pin.
->>
->> The TF-A pointer (rk3588_clk.c, PVTPLL vs normal path) is the most
->> valuable part for me - it names the mechanism behind the power-on
->> ack failure I could only demonstrate empirically. I will reference
->> it in the cover letter once I have checked the firmware source
->> myself.
-> 
-> Based on what I learnt when playing around with the SCMI GPU pvtpll [1],
-> we must keep core block clock enabled as long as PVTPLL mode is enabled
-> instead of the normal PLL mode.
-> 
-> When PVTPLL mode is enabled, the PVTPLL GRF, PD and GPU block is fully
-> provided by the PVTPLL clock, i.e. SError when accessing hw regs in
-> case Linux disables CLK_GPU.
-
-Looking closer at my old commits, it was the PCLK_GPU_ROOT that was
-needed for e.g. RK3576 and RK3528. This clock is not described in RK3588
-clock tree so it never gets disabled by Linux clock framework.
-
-I suspect similarly one of the NPU root clocks is what drives the NPU
-PVTPLL and thus always must be kept enabled when PVTPLL mode is used.
-
-Regards,
-Jonas
-
-> Linux does not know anything about PVTPLL mode, the SCMI clocks are
-> fully controlled by firmware (tf-a) and basically switches to use PVTPLL
-> mode for all rates above 100/200/300 MHz.
-> 
-> Vendor kernel typically always changes to use 100/200/300 MHz at system
-> and runtime suspend to disable use of PVTPLL.
-> 
-> Because this PVTPLL dependency is not really known to Linux we must
-> use workarounds to hide this, ideally we should fully implement PVTPLL
-> handling in Linux or ensure firmware always keep dependent clocks
-> enabled to avoid SError when accessing regs.
-> 
-> For GPU case I depend on the opp-suspend rate to ensure opp and runtime
-> pm framework make best effort to restore normal mode when GPU is unused.
-> 
-> However, opp framework does not provide any integration into pm runtime
-> so it will happily clk_set_rate() when pm runtime is suspended. My
-> workaround to avoid SError was to use a custom .config_clks() ops in
-> struct dev_pm_opp_config that just checks pm_runtime_suspended().
-> 
-> The RFC series at [1] was never posted on mailing list, but is currently
-> in use by e.g. Armbian to allow use of full 1 GHz rate of GPU on RK3588.
-> 
-> I am guessing NPU have similar limitations/requirements as the GPU block.
-> 
-> [1] https://github.com/Kwiboo/linux-rockchip/commits/next-20260619-rk35xx-scmi-gpu-clk/
-> 
-> Regards,
-> Jonas
-> 
->>
->> Status here: after Tomeu's go-ahead I am preparing the series -
->> bindings, a full-range OPP table in the DT (300-1000 MHz plus the
->> 200 MHz suspend point, so essentially the table you ended up with),
->> a safe-rate-on-suspend guard, the devfreq itself, and a hold-all
->> guard that resumes all cores around any rate change. The guard is
->> ordered before the devfreq patch so no bisect point has scaling
->> without it. The one hard dependency is my "request the core clocks
->> by name" v2, still waiting for pickup.
->>
->> Agreed on OPP staying optional - the plan in my series is that the
->> driver keeps working with no OPP table in the DT, which I saw you
->> intend to fix on your side as well.
->>
->> One path worth checking in your PoC, because it is the one that
->> made me write the hold-all guard: a sysfs min_freq/max_freq write
->> while all three cores are runtime-suspended goes straight to
->> clk_set_rate, which can select the PVTPLL path while the domain is
->> off - exactly the case your TF-A reference explains. With the guard
->> in place I measured that write waking the cores and completing
->> cleanly.
->>
->> One difference in test conditions worth keeping in mind: my numbers
->> are with the vendor bl31 that EDK2 bundles, yours is upstream TF-A.
->> Comparing SCMI behaviour on both seems wise before either of us
->> claims anything firmware-specific.
->>
->> Thank you for the "take whatever you like" - anything I lift will
->> carry credit, and I will Cc you on the series.
->>
->> Regards,
->> Igor
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+Signed-off-by: jiawen <1298662399@qq.com>
+---
+diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
+--- a/drivers/spi/spi-rockchip-sfc.c
++++ b/drivers/spi/spi-rockchip-sfc.c
+@@ -743,6 +743,11 @@
+ 	struct spi_controller *host = sfc->host;
+ 
+ 	spi_unregister_controller(host);
++	pm_runtime_get_sync(&pdev->dev);
++	pm_runtime_put_noidle(&pdev->dev);
++	pm_runtime_disable(&pdev->dev);
++	pm_runtime_set_suspended(&pdev->dev);
++	pm_runtime_dont_use_autosuspend(&pdev->dev);
+ 	dma_unmap_single(&pdev->dev, sfc->dma_buffer, sfc->max_iosize,
+ 			 DMA_BIDIRECTIONAL);
+ 	free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
 
 
 _______________________________________________
