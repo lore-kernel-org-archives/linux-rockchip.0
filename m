@@ -4,93 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 597A2C5DF80
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 08:59:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97B30C5DF70
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 09:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hexg25Ip4W63laRLObVNTJHpaRiYEY/QPB0/x3Pu60w=; b=KrviCB8rd/NPms1pC2Gy7prnLR
-	YQ9/0vwHnvSUC/hb6mAehObmt//hzB6Ohw8imKPvnVWwpDDtYsnhj3SxBDkxwUvLfx4i8sgErql+4
-	Llh3N7e3yjt7dJPdQNaop6s4kA6fxJA2nrpXNWCO04Q/+i4vCziMRJaPqfW4GjjGIrwRanVLg1utL
-	CC934wP+O6KHAwrG/Wj4vCirn1hL9Tsxr6IEh/m9bVc2gqtIMvrdODtNaQAjngoUQMEShB9TGEaaw
-	OrUYtivjPO2/KXWJhbX/nZ2FBib2uIEw7OcnqUGnGOVsoMjIKCgXRGciO0SzFMSfp3p8VbNegy5N+
-	Bbdq/zYA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=D1n1M0qurzuUD2cs5QyeuIqlZISrhhyq+4aagSPNOpo=; b=GOPEq1VdiI1PQQ
+	VBV9gH/Fl7ESMjNijuUM+Bg+Rc01W4xgvzLwRtJJQy/l2sDBr1RblJiEC7JFaWHTsC57R3GMnFSMi
+	AlhgwIFtyMDQY2ZdxukjnJDM9Or/Xb9VT058BG/po81vfV8eIeaAmLj1Olq1zQsqtXqUbneYW+i47
+	WFsMkddgCh1iTqfBL1kT24rpw9cfrEXyaMMHFEFSO34dYmFOZGQE1SLA9nglHSEm/tlRJXwILGpcC
+	jml+bmlbfmcdNtmC8o+tj7vPlFPtYFU4UC7j1wrmD208I3LLaEDTmAjS8W6hyDWy7Vf1jENMFLH7o
+	HU0Ut+JnHDPNagtSnk5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwFf8-00000007YkW-06Ns;
-	Tue, 18 Aug 2026 08:59:14 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1wwFkP-00000007ZAC-39ML;
+	Tue, 18 Aug 2026 09:04:41 +0000
+Received: from mail-westeuropeazolkn19011035.outbound.protection.outlook.com ([52.103.33.35] helo=AS8PR04CU009.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwFf5-00000007Yjs-168g
-	for linux-rockchip@lists.infradead.org;
-	Tue, 18 Aug 2026 08:59:12 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-49557167508so44293125e9.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 18 Aug 2026 01:59:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1787043549; x=1787648349; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=q+Aet+yk5wErYuGPUVzhzsTqySNhCGJLGb9Ej6EWM+c=;
-        b=b5OyF6axHLoLj1IdWBfFp+3QbSbvEJWkEDZA/DCbi9BEHslrhBQgTDjyIS46ybI5qN
-         Jp0LN9zdc8bcxFTpE9q71f0hYnlwY0ScymjQXnVahx/qL6izNjDUcTMQn2FEmDxw0Syt
-         iWxbh5ue4w6+3t/OJ49Wr7I8miJcCxNC4Du08zZUo6bdcZiecstrrJY0Z3OHvVyk3MXf
-         Wil6AMoUKJXPZ7jOQ8LZv3FqbmDeAXbvzFR1ZjF+ed8IELQhcstqGOJ4GTBWCndzEDDO
-         IkxZENT1Vk3BaGQiEL73mTNUgqgzcXc2DlzUwbCObye7nuLyIsKAjQ9psj4i/m5n2477
-         ruKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787043549; x=1787648349;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=q+Aet+yk5wErYuGPUVzhzsTqySNhCGJLGb9Ej6EWM+c=;
-        b=RSbC9WYmwc3MdV2baO6z4wuSUrea8xYkig3qF1EwTONif4nqVirBYHmtWQedPMAK+T
-         rQfVPa/r7ByhAIw6dSonbTMJ2N9Rx8+q9MebqkSatm8UFAhxQXw27UbYj8rI6EpdgrVp
-         U0Dx6kXBFkQR5r+B1/I3mMYKjNlBUcd3pF6xnGuLjYEaPOKcuB2byDSfiVqshMHwX2kK
-         3tXFf/yYFj85tDP6bnHreRE/SBH6juerY5E90GTATKj73MH1+L1rGEDx7hgheVAGbgS+
-         MGdjDE79FjDEmWaH2QKKT2fVJvzL2fzwUPpSWQdaHG6jq/GjOke4xt4WnKPSEZi1gkHL
-         7eUA==
-X-Forwarded-Encrypted: i=1; AHgh+RqijJi5I7xZ8+pmraeYgaQslaCB5TzR7TPv7xWCu9wXYPSFS9XiHOe4o2G4jDWn9pjc7CRPTpy2WrwR5YpaAg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxGNBKvs4Lc54hsCLc9xwMDxA8WYQTpjwMv8ujYOQ7eIJYBHVWm
-	W/vkOG8BIoMUl4j317vJICQHHjfKBJmvZj9oqMJp7zkDrKQ230h0IjWfcD9E7yM9PiQ=
-X-Gm-Gg: AR+sD11h9kHUZO3CPgkZ5Ya5iB32DZunEbvK4I7uy/De22Yy5c+bFj0dF8gSYgoFliv
-	/bWqgieIN3ERc1kRyPwqzCtz8T9M5USFVPAF2D1MiKJNjrE2FF/PA/n30TnNOuVnb9WUa4laOaM
-	o1FHKnxAdhCG3j9XMH6/PI8PEK2DzN2tzsh2Z92b1YUjq5kh3/c64TLMMwPQJCzLDYFUDCh8cKQ
-	l1naQD12mxvmSfHyaFPNfvWrkpMOzhfks3YNG8/qzK2eryh/F1KiX1NvjYp9M27GGhPhXCO+rDA
-	wgVXrPnb7aHd93j0pZH0r8sps1xAZBrz+HLEHD4b/FLtMTCyBykj+VLsTWDS/7mHrFus/yGXI3y
-	EYUHDqyOxjaE4I/bnwcRt2KXRkaHpezNbRnHp1xcQ6gbJSsO2zlpUMXH4pNu/8j8UGv2PpDKvXy
-	OnJyDUKeHUoHu3HMiBK2KxOlGGl2gEmfuc/cM86AkFpwNqyfeLC8NrlBrIdO+PFUDG8H2vC+nD1
-	cEpVNnDbGuqM+VsuRW/QGZNwNMjvkqn+71z+DxWHVLbXS+hck6d
-X-Received: by 2002:a05:600c:848e:b0:499:8156:cd3f with SMTP id 5b1f17b1804b1-4999fb3f78bmr112284285e9.8.1787043548729;
-        Tue, 18 Aug 2026 01:59:08 -0700 (PDT)
-Received: from localhost (p200300f65f01710416869d85a644e839.dip0.t-ipconnect.de. [2003:f6:5f01:7104:1686:9d85:a644:e839])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-49987b278fbsm215087975e9.2.2026.08.18.01.59.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Aug 2026 01:59:07 -0700 (PDT)
-Date: Tue, 18 Aug 2026 10:59:06 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: tomeu@tomeuvizoso.net, heiko@sntech.de, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, joro@8bytes.org, will@kernel.org, 
-	robin.murphy@arm.com, ulfh@kernel.org, p.zabel@pengutronix.de, ogabbay@kernel.org, 
-	zhangqing@rock-chips.com, royalnet026@gmail.com, chaoyi.chen@rock-chips.com, 
-	diederik@cknow-tech.com, alchark@flipper.net, dri-devel@lists.freedesktop.org, 
-	linux-rockchip@lists.infradead.org, iommu@lists.linux.dev, linux-pm@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v8 10/12] accel/rocket: add RK3576 NPU (RKNN) support
-Message-ID: <aoQdns-GHS3fg5BJ@monoceros>
-References: <20260817113603.1436067-1-gahing@gahingwoo.com>
- <20260817113603.1436067-11-gahing@gahingwoo.com>
+	id 1wwFkM-00000007Z9Y-1r7L;
+	Tue, 18 Aug 2026 09:04:39 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=dkIAqNe9WTcBUrEBUGlWLhMmydpKfCK30t9JvuU8MCPDVApub2bLTRGUjAVjk6LJZXWOdewZiG9xgP4aJophu4YPO8AV2zqAlxxBzwEGFUf5OcJTD6z47tqXgKvn5sEpA0M/VWlzICfgoOhASFGpq2u6UY/jPQnbo4+RLGuZQIQ9W7frvl7Y1uFCPKzfFdJgUHs6kHvZrqGlWefqIfGdVLg8SVn0BfRngib2pVYFqFkWpGCR1k0UdDF47hIuyrW7/wqi1w0AFCgi3AD9aZIukGf1L/uiEpDogpj+d8V4nQeTAhzqYsUsDR8JOca6sR+iAcg8QSrakqa6MR1Oz5iIHA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=E37irka3ASR0e0P6hO2AODC03Uu9R7rXSxtAsmGlTxI=;
+ b=jv01gYTM+89YmJ4AFG1SaYeFis8mORDKyGKYddTPZmV1u95ibOYri0v3NTt6v5O6PeDznRJ9Jtvn50ojgQZLycodUau7fjOPzTvUmJt+HPakdadX05DsaTVnXox1KH/83HrmFntFGrkt8/MNySC2B32HVflb+Vw2ND9oBA88TSn22pbyJxMrs9qBmKoYERF43Np65WZWYlQm1zlV+ftxnDkoAOAJldWGN5MMC0c5968Gkrr8KuidPqWM0iHV7oLIAIn56rUcxue9tkBsIEWS63kA2QXi2tyCS4erLQd3TqkRFKnF62WfBYo46RRljNNgh5VX7QrcH2cVsNQuIiXVnA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=E37irka3ASR0e0P6hO2AODC03Uu9R7rXSxtAsmGlTxI=;
+ b=QudSGv8fs/Fgh/OBlACZqoSh/vlAy/WSnI+UfYY6TMMRmkjxZLWRziNgi1B/eYrSYkcBWdjyL2T0QTxwcbPqL9vpgEbcX6gK/9wCCo9MAyCsEDlb/RzB8GtZJ4XEowfXG2psxV+4g08yzXj++1MwjXmks/ui2IP2caefsi8OILG1Ght4q5ozpGknZoFzlTEouvGrNl5C94xy6ij9Ou3dZgrgH4vFJdeIIA7tj9Bft2+c5eNOe3Y/YeM7+09i3DDroMrFdw6UXRenYcd/x/voOSWZ9uxS/rwfDFJFdkdbs8YVsvFp+4EFFUkfEun7KsPA7hFjHItqMyHd45U0FEhULw==
+Received: from DU0P190MB2445.EURP190.PROD.OUTLOOK.COM (2603:10a6:10:5a5::8) by
+ DB9P190MB1290.EURP190.PROD.OUTLOOK.COM (2603:10a6:10:22d::5) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.315.17; Tue, 18 Aug 2026 09:04:33 +0000
+Received: from DU0P190MB2445.EURP190.PROD.OUTLOOK.COM
+ ([fe80::5dcd:351e:4e91:2380]) by DU0P190MB2445.EURP190.PROD.OUTLOOK.COM
+ ([fe80::5dcd:351e:4e91:2380%3]) with mapi id 15.21.0315.016; Tue, 18 Aug 2026
+ 09:04:18 +0000
+From: Muhammed Subair <msubair@hotmail.com>
+To: Maxime Ripard <mripard@kernel.org>, "'heiko@sntech.de'" <heiko@sntech.de>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Sebastian Reichel
+	<sebastian.reichel@collabora.com>, "'hjc@rock-chips.com'"
+	<hjc@rock-chips.com>, Alexey Charkov <alchark@flipper.net>,
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Thomas
+ Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "'royalnet026@gmail.com'"
+	<royalnet026@gmail.com>
+Subject: RE: RK3576: rockchip-pm-domain fw_devlink device-link failures 
+Thread-Topic: RK3576: rockchip-pm-domain fw_devlink device-link failures 
+Thread-Index: AQHdLvCMNWbWHsFh9EaBFwHuViS45g==
+Date: Tue, 18 Aug 2026 09:04:18 +0000
+Message-ID: <DU0P190MB24453BCF26CFB4E7B391F609BCA62@DU0P190MB2445.EURP190.PROD.OUTLOOK.COM>
+References: <33aa66b2-cd6d-416d-b1ef-20cc83e0ee10@hotmail.com>
+ <DU0P190MB24456FE9DB02005BCDDEC336BCDA2@DU0P190MB2445.EURP190.PROD.OUTLOOK.COM>
+In-Reply-To: <DU0P190MB24456FE9DB02005BCDDEC336BCDA2@DU0P190MB2445.EURP190.PROD.OUTLOOK.COM>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DU0P190MB2445:EE_|DB9P190MB1290:EE_
+x-ms-office365-filtering-correlation-id: db16e965-e848-4f94-2da2-08defd07af56
+x-microsoft-antispam: BCL:0;ARA:14566002|15080799012|51005399006|24021099003|31061999003|55001999006|13091999003|8060799015|19110799012|8062599012|37011999003|25031999004|25010399006|40105399003|2607281247196008|102099032|440099028|3412199025;
+x-microsoft-antispam-message-info: =?utf-8?B?Y2xuR2RCTjRXODRyam8zNGtoNlpmSjh1dndJWUdMakhLV2s2TVZSMTBBbE1r?=
+ =?utf-8?B?RnlVeGZzVERiclg4S2loL0FReENYQmdHclZrajQ0cTZmWTBvZnF3NFdYbmNR?=
+ =?utf-8?B?ajlYd3AvQ1lEMGRHVUg4SnRtc25yRE1DTmpIM3VqZS9JRFFBbkVFTG9wS1B6?=
+ =?utf-8?B?NG9HN2dmcGtFSjhQYmtjamptcVNLZDFtNFB1MlQ1MW9JVFVRNDBoZjRlTUI5?=
+ =?utf-8?B?WG9NL2NWNEYzb2kzN0dVV0FmMTlqQmNyckRld0MwRURVTDdaVDA2WFM3RkRH?=
+ =?utf-8?B?a2IwMWx0WGxkaU01TDg1andsS09ZNEdEcC9tUjRsS2R4TW1CNE5DVG5Vano1?=
+ =?utf-8?B?TGZaK3c4TzJlY0RzL1Q0czc4MEE0UzhnZGVxeDVlTXBBSjVKK3gwK3FUZDk2?=
+ =?utf-8?B?L0ErMXB1cjN4QzZrRGViTGZGN1l5aTBtaDl5YTUyaU5aTDdubDRTcHRVQ3E2?=
+ =?utf-8?B?L2pqdkhEM3YreUNyTjBKZEhCcGZsdUVNSE82SzRWM2Ztck5sYVZqN1QyeXln?=
+ =?utf-8?B?VFNja2hFaEVaWk40Nll6QWZ0ZXN1RWF0eGsrd1JOMUZGL0NqVmNBTG9ZL01V?=
+ =?utf-8?B?ZHdMWlhIODRxczJyUXQ0N0tPa3JIYk9sRXoxTVNBTk9ER1RoU0RFY0tZaU0x?=
+ =?utf-8?B?bUpnYlFoUm1VQ293cHhOUDJFbkZGL2xzVHZsRko2MWg0Ni9jMkFHZ0VpWjNO?=
+ =?utf-8?B?dUZWZWpjbnZkWmVvd2pwY0UxbnJ2eEZ2bVJNOVRNaldWalU0SHZwSld5UzIx?=
+ =?utf-8?B?alA3U0pvQkYzVWFCTEs5Z2xOaE1NZlVFdFV3NVJEQjVBcTdReEs3aTFMWXU5?=
+ =?utf-8?B?UE5GbWRNbFh5SElDWDU2K3BQQVExcys5eUc5QWNLOXZ3Z01COVM2a3NvWVU4?=
+ =?utf-8?B?am5qWlRIbnI2VUUzU3BxeDhmYWx0d052SDM0Vm1OK2lYOENkUUhUc1VMZHRr?=
+ =?utf-8?B?WVZaVWxHVHJJQTFiTXNwdUpDZTRROVVwUVNlZ1NRcVdWclM3dHFtTnk1QTBP?=
+ =?utf-8?B?Z0NiWGhuOHJ0RFE5ckMycHRvWjNhVTlNWEdHWXkyaTFTVHlmbzhsSGZERG5y?=
+ =?utf-8?B?c2hEUmFsbFdkZEErd29mL3Bva1N1dmxxM1BRbXZlbzFpaGxSMG5TUUlPU3Vl?=
+ =?utf-8?B?QnBTcFZmcHNYcFhyeWZrSmRPQkNINHBrcTBwcjV6dmk4NTNjZHA1dkdJeE41?=
+ =?utf-8?B?SmgvaUdnVGc2T0UwdjU5Qnd1TFJCZ0tuU1c1WTd2ZC8yVGpUQ004ZFVvQ1hk?=
+ =?utf-8?B?ZGZkeHg5djBFTlJoaU5lWmphQTBubjg4eitaK2JReDFwOHBqRlZoQll2Y3hz?=
+ =?utf-8?B?Qmd2QjNzeWlJS2V0TzBhcDJ0QXozME5WNE1CUXZySDdOVVhBczBubi9NV3Ru?=
+ =?utf-8?B?dnB4amhUVzBYQmJXMVhLN2hOZEcvaGFaanAvWnQ3UE9QNERCdkl2MFVwWHFp?=
+ =?utf-8?Q?V/f3znYL?=
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Umk3Qjk3VDJ5WWgvUnU2R2ZGSUhZY1BPSVV1Vi9iZVczKzd2Ri8xTCtsb2Q0?=
+ =?utf-8?B?RXk1RERNbTZoSmhENWNoOFlvazIvcUVJNkZvVi9Ia2w3ckNlZ2xxRTY0Zmhy?=
+ =?utf-8?B?emt1M2pLb0FUZng1bmQvV0FyTjJUaVIxVWFoQ3Z1NjBudXBHZVllWDBUelZW?=
+ =?utf-8?B?N1gxNCswbFFjM0ZmTzA2QTZRRmRCQjFnNm1BUzhHaSt5NkNDL052UEtJNURi?=
+ =?utf-8?B?Nmp6bEFGdVJnUnFqekhCSFlXdVcxUTdUdEg0Njh1ZTNKQ3pXRGRUQWN0WHFK?=
+ =?utf-8?B?ZVZrWUN6cmZJR2t2RlBUVEt5TFBMbHNOblN6clo5ZzIvVFRyOUJZMlM1VVlM?=
+ =?utf-8?B?MnN5WDRWekhoMUJPN2Y3KzhLd2prNXhuMXRBRlQ1Z3JXZWxsZm9YSEFyblEr?=
+ =?utf-8?B?ZEVtc0xmZk1NV24rK2doQmhwNmFoUXZEc2t6U3JyR2pvVnVRdTQ4b1AxWVpR?=
+ =?utf-8?B?SWhaVW1tNW41M2hTaEducG55eW5DM09nc2p6RkFRbVBKbDI4SXBGdDU0eFJZ?=
+ =?utf-8?B?VlB5ZUNWMWZLdU1WT3VUU05LbmNMSXBUTGV6MG9pSzJraGUzQzgrTzNtdGJp?=
+ =?utf-8?B?QkcwNnZrbHFOc1phNEkraTBOUk5YQ2t3ZUNudzIzaUlVWVZ4VHdFSHMxaCtw?=
+ =?utf-8?B?SHpoc0tOUnJuUHVmUm9WSVVSU094dDRVaXErYXJRUVpvbkZRbXpmdmdWWmxu?=
+ =?utf-8?B?Z0J1dCtkdWRsczRyaVpQdy9GeDVYbEIra0QyU2lrOS82bmZrbThRTjcvSnBk?=
+ =?utf-8?B?V2I1TkpqMGtCUjA2UG9lV2tGbVF5aVNVSDVFT2RlMWF6aFE3VFdNT3UvWmpQ?=
+ =?utf-8?B?bVNQcWZtSlJxV29tZEVVUGdsWjVmZzlIc1V3SUFaU3BPSkZmR1pCUEdTdEhv?=
+ =?utf-8?B?R2hENkZLdXpqOEZBU1B1QjRhcFkxTThlcFdncklJc3V3aHErZ3FHTzNnRE9L?=
+ =?utf-8?B?VDFPZURIaEZId0lvaDl5WUpxMmhUbjh5VHJIZFNIVzk4Z09xWXhZdlpPUGxr?=
+ =?utf-8?B?YVBvTWxRNThkVHFtMm00L0NFZTltTDJnSFJrSnRLeFZPOFF0S3cyaUE2QnRq?=
+ =?utf-8?B?NE1UdVgzdG8wWUFaMHhYZHQya1phcWsybU1LKzVTR3hKb1d6dldrbDROeENw?=
+ =?utf-8?B?WmpYdUE5SXdxcFF4MHQvOWJYNkswRkEwMFM1Y0tUOGU0eWhLbkV2cUdGdFVh?=
+ =?utf-8?B?Tmo4Tm5FbFl1c01OdFVLZHFEUEVTSEJmVkdmOWFWYm5LdGpHT0c3QUkxUzBW?=
+ =?utf-8?B?eHNPYVBhT0czRU92ZjYvcWlNVmZhZ09FUDhFUjF4Ylp5dWNZR2VzYy9GK1dH?=
+ =?utf-8?B?QUVBYmVOVnh5NTRGRDVSOUdHN25KMkd3c0RtMDNyZDBmdnZ6NHh2QlZVdXo2?=
+ =?utf-8?B?Mkk4WUo4c3NvN3JCY3h3a2Y2ZGg4SXpsS0YrS3gyUDdHZkVyM05IbHczWDgw?=
+ =?utf-8?B?TkV3dGp1WmFnQ1A2OHpZeElDdHZUNWkzNThSY0p0SGtkYWZQT2d0RmJJckpU?=
+ =?utf-8?B?MnA5MmRkSUtHR0RaZjF6a2o3WXpHUkorbGpFNGtXd2ZRekVmYjkydzM1MTdN?=
+ =?utf-8?B?N2tkajdHOC8wc1JuK3RVWWdhS016bDJqaWEwMytZRzhsUWRuSkJhR0dkY0li?=
+ =?utf-8?B?anpSN3FqbzBsYWZsZjV0S2d0TlNPRWw4Zm5YdVNwWXlCOWo1Y1htRUpVdlJz?=
+ =?utf-8?B?YXp6Vm1FaWdRdWlVUVpsSEMzVEluMFJZZzdsbGIzVkdSRWhDNGV3d2k4bzB6?=
+ =?utf-8?B?cGI0NXA3WEFIZXZYaTBFZjNJL0d2eDdtbDdibDdKSEFjS1BnWHlFdHRJZG1z?=
+ =?utf-8?Q?PXVQxTrGuDIx8+nrg+FH38YdAXLuk9nX8VCgc=3D?=
 MIME-Version: 1.0
-In-Reply-To: <20260817113603.1436067-11-gahing@gahingwoo.com>
+X-OriginatorOrg: sct-15-20-9412-3-msonline-outlook-b33f1.templateTenant
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DU0P190MB2445.EURP190.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: db16e965-e848-4f94-2da2-08defd07af56
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Aug 2026 09:04:18.0545
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9P190MB1290
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260818_015911_309111_1D9DC711 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20260818_020438_492043_9D11F26D 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,74 +159,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1333050308625192597=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============1333050308625192597==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uvayaecgmyelikx3"
-Content-Disposition: inline
+Hi Rockchip/kernel folks, 
+
+I am bringing up an RK3576 board on a 7.1.x based kernel and I see the following early boot errors from
+
+fw_devlink/device-links: [ 0.260388] rockchip-pm-domain
+27380000.power-management:power-controller: Failed to create device link
+(0x180) with supplier soc for
+/soc/power-management@27380000/power-controller/power-domain@0/power-domain@1
+[ 0.262168] rockchip-pm-domain
+27380000.power-management:power-controller: Failed to create device link
+(0x180) with supplier soc for
+/soc/power-management@27380000/power-controller/power-domain@0/power-domain@1/power-domain@2
+... [ 0.285927] rockchip-pm-domain
+27380000.power-management:power-controller: Failed to create device link
+(0x180) with supplier soc for
+/soc/power-management@27380000/power-controller/power-domain@18/power-domain@17
+
+The board otherwise boots and the affected domains appear functional. 
+PCIe/NVMe, HDMI, Ethernet, etc. are working. The RK3576 power-controller node has nested power-domain children. 
+These child domain nodes contain properties such as `clocks` and `pm_qos`, similar to RK3588/RK3568, and `#power-domain-cells` is present as required by `rockchip,power-controller.yaml`. 
+My current understanding is that the Rockchip PM domain driver consumes these child nodes internally and registers the provider from the top-level `power-controller` via `of_genpd_add_provider_onecell()`.
+However, fw_devlink recurses into the child fwnodes and tries to create proxy supplier links for dependencies such as `clocks`. 
+Since the child power-domain nodes are not normal devices, this ends up as failed links from `rockchip-pm-domain` to supplier `soc`. 
+Is this expected noise for nested Rockchip power-domain nodes, or is RK3576 missing a DT/driver annotation to prevent fw_devlink from trying to create device links for these internal child nodes? 
+I compared with RK3588/RK3568 and did not find an obvious missing property in RK3576. I also do not want to use `fw_devlink=off`, since that hides the issue globally. Could you advise whether the right fix should be: 
+
+1. a DT change for RK3576 power-domain nodes, 
+2. a Rockchip PM-domain driver change to mark child fwnodes as internal/not devices for fw_devlink, or 
+3. an OF/fw_devlink change to avoid creating proxy links from generic power-domain child nodes? 
 
 
---uvayaecgmyelikx3
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v8 10/12] accel/rocket: add RK3576 NPU (RKNN) support
-MIME-Version: 1.0
+Thanks, 
 
-Hello,
-
-On Mon, Aug 17, 2026 at 11:36:01PM +1200, Jiaxing Hu wrote:
-> diff --git a/drivers/accel/rocket/rocket_drv.h b/drivers/accel/rocket/roc=
-ket_drv.h
-> index 2c673bb99..0096c4ab1 100644
-> --- a/drivers/accel/rocket/rocket_drv.h
-> +++ b/drivers/accel/rocket/rocket_drv.h
-> @@ -6,10 +6,12 @@
-> =20
->  #include <drm/drm_mm.h>
->  #include <drm/gpu_scheduler.h>
-> +#include <linux/mod_devicetable.h>
-
-Please don't use <linux/mod_devicetable.h> but <linux/device-id/of.h>.
-
-The former is a mixture of many subsystem specifics and thus a
-dependency-hog.
-
-Best regards
-Uwe
-
---uvayaecgmyelikx3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmqEHtYACgkQj4D7WH0S
-/k4U9gf/aUhrYYFY54POvnsxnelsCZk9pbdIP6pqEh4NpwVQM+NfUIh1SYqcLXIf
-NqdrFegte49P8wGlByYbp2BP8P+Vh/KdPn+VPTi15o5ivhF6/lS1s3Smp5hwDS1N
-lDMzlLblQBoye2bS2VSkmaaJyzaZEARrJK3GOBpmc8PXGkMOFRFgF+ZgXiyEC91u
-E3rOSqRX153lKJWaHX3SH4yO0RUjN22sW6htFUwQZTm4iLRG6IzaP2+BM2cpWnCe
-I4RwXW6GaPue9NnC/Bf/659cN68fjK7fUU5JJn80cMtfO47GjXmA3ceX28vIB/rm
-WKAMBlhKd47VGV36uZrPNREsoz3v8g==
-=ee9u
------END PGP SIGNATURE-----
-
---uvayaecgmyelikx3--
-
-
---===============1333050308625192597==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Subair
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1333050308625192597==--
-
