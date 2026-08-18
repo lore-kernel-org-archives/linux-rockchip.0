@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A6B5C5DF7D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 20:38:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA099C5DF7D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 21:43:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PmKXz9XXHft8mLx4770xwdhUqEmqrgiTeAs73d69mpY=; b=LX6AvxiehzcfvE
-	v3nL/h54hTkJvRvLUvJl3P9cUlYqUsAVKCUWsr7ba2GkuouyyxFqjfd5Eqtesxn78m5AksJrIGB52
-	N/jKw2hoO7nd2Aue7bTZrd9kH0bM+bO9fLqp94mbYvNCcGGZtoD5Lqf05m8OIQhk4SMvVzKk9tFHJ
-	hhlsdSHR5TG488IshYFWEReoiu5dxN6vIJe3dYwmd2HHja2/sV4KSrDME5AaupiXYOnU9bQpeSgLB
-	ahbXBKnRWcNe9mnoKyUbQypGKUA7nEUg1cHoSz0Is3QTSPxZNqL5sSOadZSwZMC+uaK3BirD0sneL
-	TbsAZhqyx8ESiwV1k6Bw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gKZT3t/F2QAJCQPLeD/mxqto5G7h0bzjkeFOKTG+MAk=; b=rhp1/GwuH1SCpOT9pa7+cMuZBH
+	wUY8cn6uzoEjHZDhgVATkMSEBv1XvQ43Unx/brNcwpTLtORPjesyhUq3NBi0UtKRKGIye3x2YY7u/
+	P1xhnqoSXK4E5ol/EupUCgO/wsZl4bfriSDosWe7+S4wlTnY35s27XlbqMk8P9JxzZuv4pBhZ7bZL
+	bWByMtW9MArQbXTabAA0JSOobTnqIsqa9cJ6hUWs+UHz4BtdZ3nvayZh9fHHdj8BHameScLvEy+rV
+	NsqlmrSRy5QoO0xI50o/UBxLuBkUh/sWq31WKxAs/92lb5ObOyXaV8PiggYwMF38DGez08hIAVrVG
+	2j7rBGOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwQZL-00000008dnJ-1vEa;
-	Tue, 18 Aug 2026 20:37:59 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wwRaa-00000008gy3-410Q;
+	Tue, 18 Aug 2026 21:43:20 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwQZJ-00000008dme-1ZOA;
-	Tue, 18 Aug 2026 20:37:57 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CDC91601FB;
-	Tue, 18 Aug 2026 20:37:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1C311F000E9;
-	Tue, 18 Aug 2026 20:37:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787085475;
-	bh=vS+hrw7DR5QjvngIhGCIUMUP90zpgBBzUMr8U2SbJEc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=kp3ftP8lgwzzmR4XG4D3ofqWLPKNHPwk31tk6KCBZ4wcRAzJS9CoKTfizilk33tEN
-	 rhX+GqTNYJSKYTogq47ReDOXZiQoiE555xBjVR3wW5XSD03NMgmXcUy625f933ceef
-	 2xM+zufoxlvj1A3ZK3MSHgNx8W8AepObJOl424/vHbLr6YI2rpizHCUPf53RNJK3BI
-	 etRxeEHEhi81pgkcv8lSzvDM4/v0wD4M6HEHtUsZG38z+OxkoVRwLBQQWPooKQJosT
-	 gkV2by9tcrh4zz+wpXh10F3OlKKtBC7HmKfRlTpP4yGjPs8a1uAlVdq9mfI3Xy302C
-	 D7zjY38D7YC7g==
-Date: Tue, 18 Aug 2026 20:37:53 +0000
-From: Eric Biggers <ebiggers@kernel.org>
-To: Diederik de Haas <diederik@cknow-tech.com>
-Cc: Dawid Olesinski <dawidro@gmail.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	"David S . Miller" <davem@davemloft.net>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Corentin Labbe <clabbe@baylibre.com>, linux-crypto@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] crypto: rockchip: Add RK356x/RK3588 cryptographic
- offloader
-Message-ID: <20260818203753.GA3388792@google.com>
-References: <20260708175837.1718437-1-dawidro@gmail.com>
- <DKF8V3IHKTL2.1PUA8O5IVIRYC@cknow-tech.com>
- <20260818185810.GA7030@quark>
- <DKSBIH29Z9DE.1OR442P0XUSCS@cknow-tech.com>
- <20260818200454.GA2718123@google.com>
- <DKSCMAUXS10I.2AB9KERO16FRG@cknow-tech.com>
+	id 1wwRaX-00000008gxN-1BtQ;
+	Tue, 18 Aug 2026 21:43:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1787089379; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=R1G8loKEMmQgzBe9C8b6zMyzqfX1/4AwdWB/Sed7saPCbbb5AJ1w2bfRjaOxkT0k1TBvEcc2oEmyUyTsNMdI8Phm2NcIAh7ypJgfYcj82MG1VlDgfkS91sGe6+JPRbqnuWuVj8eJT3tUYgIhltGYMeCM9UvQFdlGGJCfMkqvhaA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1787089379; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=DpmVj5c9FDXQSwuSsbxK1L8of1AmrLOJ/cZ+cQrHX54=; 
+	b=WmKuFoJbFK0zNMA+rIz0rvuCYT5grWtdUpzoLpsjOlcBjadqk9DuahFhWJU3JSJY7WisfrbNn8aDKtTSyB/C3qjU1M8Svhih2Rz43dO43PXbShJQGrdTOsbcYis/IBNfY2RUJgJ0JRNwki/oWUBgVLZBKmBW6DTMYSOjLFNImpY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1787089379;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=DpmVj5c9FDXQSwuSsbxK1L8of1AmrLOJ/cZ+cQrHX54=;
+	b=EATAvhGjB0BxlGsm+l29SdEaUqqx/UzPjLLQYionr+lI6JBS518mBhoqoQDUlDpH
+	uoijmrTaLxXjR0zjXhhAM7w8DcArp/97HlffwENaSaj5bTGeCddzxwAP8Rg0Ox22vnj
+	kdk3f7mNSWckQ2aigReGzhXzXeuUr2LYsg4Wjxr8=
+Received: by mx.zohomail.com with SMTPS id 178708937710788.45877915239339;
+	Tue, 18 Aug 2026 14:42:57 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 030B6182034; Tue, 18 Aug 2026 23:42:51 +0200 (CEST)
+Date: Tue, 18 Aug 2026 23:42:50 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Yubing Zhang <yubing.zhang@rock-chips.com>, 
+	Alexey Charkov <alchark@flipper.net>, Igor Paunovic <royalnet026@gmail.com>, 
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com, 
+	devicetree@vger.kernel.org, linux-usb@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
+	William Wu <william.wu@rock-chips.com>
+Subject: Re: [PATCH v14 00/38] phy: rockchip: usbdp: Clean up the mess
+Message-ID: <aoTMQtpYYw8O-3cj@venus>
+References: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
+ <h54c2hrcsv3zjzzgojzf5sjmu3vtpobz6rwloam5kp7mwqqn3n@bqjnlellvnz6>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <DKSCMAUXS10I.2AB9KERO16FRG@cknow-tech.com>
+In-Reply-To: <h54c2hrcsv3zjzzgojzf5sjmu3vtpobz6rwloam5kp7mwqqn3n@bqjnlellvnz6>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/287.68.66
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260818_144317_387659_C7A6D6B8 
+X-CRM114-Status: GOOD (  29.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,43 +86,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3137917188333913664=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 18, 2026 at 10:23:18PM +0200, Diederik de Haas wrote:
-> On Tue Aug 18, 2026 at 10:04 PM CEST, Eric Biggers wrote:
-> > tcrypt.c reports cycle counts from get_cycles(), which has an
-> > architecture-dependent meaning.  On x86_64 it is something approximating
-> > the CPU cycles (3-5 GHz) whereas on arm64 it is the ARM Generic Timer
-> > which tends to be around 24 MHz or so, over 100 times slower than the
-> > actual CPU.  So 9044 vs 115 "cycles" for x86_64 vs arm64 sounds about
-> > expected, and they suggest the real times are likely similar but
-> > slightly faster on x86_64 as expected.
-> 
-> Phew, thanks for the explanation :-)
-> 
-> > This sort of thing is why benchmarks usually should measure real time.
-> > The legacy module tcrypt.c unfortunately uses get_cycles() instead.
-> 
-> What would be a better/non-legacy way to test crypto performance?
-> Is that documented somewhere?
 
-The KUnit tests in lib/crypto/tests/ have benchmarks in them.  They can
-be run like any other KUnit tests, though you do need to set
-CONFIG_CRYPTO_LIB_BENCHMARK=y to enable the benchmark test cases.  I'll
-add some more information to libcrypto.rst about how to do this, but
-besides the extra option it's no different from any other KUnit tests.
+--===============3137917188333913664==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="lb64huk2f3isbo5n"
+Content-Disposition: inline
 
-Anyway, that is just for the code that actually matters, not legacy
-drivers like this one.  So you're right to have used tcrypt.c to try to
-benchmark this legacy driver, as it is one of the ways to do so, just it
-is a bit pointless since this type of driver is known to be very slow.
 
-- Eric
+--lb64huk2f3isbo5n
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v14 00/38] phy: rockchip: usbdp: Clean up the mess
+MIME-Version: 1.0
+
+Hello Mani,
+
+On Tue, Aug 18, 2026 at 11:27:07AM +0200, Manivannan Sadhasivam wrote:
+> On Thu, Aug 13, 2026 at 10:51:43PM +0200, Sebastian Reichel wrote:
+> > This series does a major overhaul of the Rockchip USBDP driver. The
+> > initial main goal was to add USB-C DP AltMode support to the RK3576
+> > and RK3588 and this series still prepares the PHY driver for exactly
+> > that. But in addition to that I uncovered a huge amount of issues,
+> > that are fixed along the way. Some of the more interesting ones are:
+> >=20
+> >  * Currently the driver might trigger a fatal SError on USB-C hotplug,
+> >    since re-initializing the PHY stops the clocks going to DWC3. If
+> >    the DWC3 driver tries to access its registers at the same time the
+> >    system will crash.
+> >  * The DWC3 hardware can get into a buggy state when the PHY is
+> >    disabled, which results in the PHY not coming up properly again.
+> >  * Swithcing the USB-C connector orientation during hotplug breaks
+> >    USB3 speed, as the PHY is not being re-initialized.
+> >  * The code always enables DP mode when USB-C is involved.
+> >  * The driver has some locking issues uncovered by Sashiko.
+> >=20
+> > In addition to these bigger ones, Sashiko also found a bunch of
+> > minor problems, which are mostly harmless, but were fixed while
+> > going at it.
+>=20
+> 38 patches for a single series is too much to review. Please
+> consider splitting it up into multiple series not exceeding ~10
+> patches per series. Thanks!
+
+So let me summarize:
+
+ - Vinod wants Sashiko feedback to be acted upon
+ - linux-phy does not want series with dependencies ( [0] )
+ - You don't want series with more than ~10 patches
+ - Generally fixes should be at the start of a series
+
+This tremendously slows down any real work. The first series would
+just be Sashiko fixes without *any* of the work I originally wanted
+to do (DP AltMode). I would have to wait for it to land before
+working on the next bits as there are massive code conflicts with
+the same file being heavily modified. This simply does not scale,
+especially when considering that there are more dependencies on this
+series.
+
+[0] https://lore.kernel.org/linux-phy/20260330233532.ulnqiqrogezswht2@skbuf/
+
+Greetings,
+
+-- Sebastian
+
+--lb64huk2f3isbo5n
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmqE0dMACgkQ2O7X88g7
++pp1WA/9Ehn7r1EMjla99QJRa2MMoOYd+t/cIFPVNbsUDA6t9qfCwIGxmOawRoog
+uUDXe/RqRp5xObb+2jSPMuvb3jelMPX+1357dxVoYaqsmrvPG6jSEjjBFtf4z++7
+62Ws1nWgH0YR1XO45vFBsrNCNv3ELThj/FALxPQmU0pZ/x/7bizhTQtx3PEHW104
+kT+171AqELAfbpfUMM7lYcHHIy8D4hSy0Ah66RFTNpWl1obZCUCFL1B0zuDANnMJ
+CAjqkPtwoJPpVaKRlY2h1YB5JREpQNfJCUl4XVPZ5Tuia+BOF5mvegHPXhU1F+ZT
+lasrChZQHYnkJNOl7EDgMaYpKnc3bJbxagtA1Q3IbqdRZA3jm8GrWH6dLhq9Pdr6
+kFsnhDJo5omh7AskYgm1uZ6ZL6ve/d+BUYS5Bkku8SJNbAb8eLqR20ntn45rDBIH
+29NMHJ9OQ8DKzJ7dxW3x19A6RuLTCHsVd6cQgTqMbgkVgrQehq4ivCMBuPwrpBZO
+fglWS7cNZGv+KYDnEJo9K2KrUOtyHfOYAjdbsOwQEyntf0QxDNtMoQ89LzIyJM7m
+nUsBRW1ZxNJ3NvHrC+580iDz5c+F0yTRwv7LeUNcwcp8SF9+hBEme+EQL4Vid9lH
+TrH9qhoHr/d7ZyZOOtQ4a3vRzVbBN4+cmrWofzpBfmyI7XtjNKU=
+=cryx
+-----END PGP SIGNATURE-----
+
+--lb64huk2f3isbo5n--
+
+
+--===============3137917188333913664==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3137917188333913664==--
+
