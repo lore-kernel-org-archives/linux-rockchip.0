@@ -4,77 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA099C5DF7D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 21:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2595C5DF81
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 23:09:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gKZT3t/F2QAJCQPLeD/mxqto5G7h0bzjkeFOKTG+MAk=; b=rhp1/GwuH1SCpOT9pa7+cMuZBH
-	wUY8cn6uzoEjHZDhgVATkMSEBv1XvQ43Unx/brNcwpTLtORPjesyhUq3NBi0UtKRKGIye3x2YY7u/
-	P1xhnqoSXK4E5ol/EupUCgO/wsZl4bfriSDosWe7+S4wlTnY35s27XlbqMk8P9JxzZuv4pBhZ7bZL
-	bWByMtW9MArQbXTabAA0JSOobTnqIsqa9cJ6hUWs+UHz4BtdZ3nvayZh9fHHdj8BHameScLvEy+rV
-	NsqlmrSRy5QoO0xI50o/UBxLuBkUh/sWq31WKxAs/92lb5ObOyXaV8PiggYwMF38DGez08hIAVrVG
-	2j7rBGOA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=lxjXq58Qzcqfb6emb3FNkfxCUQWlbGNVTajD75CjTj4=; b=G1ctoPaSxYE/P/qVDgoEXCioR4
+	V/jMvo97TBnhsnXR0bqmK399+v4EZChKrM2NXsYIpulDXWp81GRF92escqSwCCAhWvZLCiewHoURm
+	xFOFNFXjvnP0uJEwcEBWJrPypzTGSJSX1190adVeVsWTTa/7VoUzHG7L5XFdBpKj5g0cRPRWFPVnv
+	2v1DN3gTCAHk0QEHtYD2h+uO7WH8yezFFwy5yEVycdHUPKeOx08YcsXQFZE/ojdJKKutMpMfbDecq
+	H8xM1RNJP1mZQuFlnOUnRmEa/cWwO72S9PoWn0X7s+gV2mpVBionBela76L/WeT/OO2OXN7yXVevQ
+	cUOkhmDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwRaa-00000008gy3-410Q;
-	Tue, 18 Aug 2026 21:43:20 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wwSvo-00000008kOU-11Zm;
+	Tue, 18 Aug 2026 23:09:20 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwRaX-00000008gxN-1BtQ;
-	Tue, 18 Aug 2026 21:43:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1787089379; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=R1G8loKEMmQgzBe9C8b6zMyzqfX1/4AwdWB/Sed7saPCbbb5AJ1w2bfRjaOxkT0k1TBvEcc2oEmyUyTsNMdI8Phm2NcIAh7ypJgfYcj82MG1VlDgfkS91sGe6+JPRbqnuWuVj8eJT3tUYgIhltGYMeCM9UvQFdlGGJCfMkqvhaA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1787089379; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=DpmVj5c9FDXQSwuSsbxK1L8of1AmrLOJ/cZ+cQrHX54=; 
-	b=WmKuFoJbFK0zNMA+rIz0rvuCYT5grWtdUpzoLpsjOlcBjadqk9DuahFhWJU3JSJY7WisfrbNn8aDKtTSyB/C3qjU1M8Svhih2Rz43dO43PXbShJQGrdTOsbcYis/IBNfY2RUJgJ0JRNwki/oWUBgVLZBKmBW6DTMYSOjLFNImpY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1787089379;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=DpmVj5c9FDXQSwuSsbxK1L8of1AmrLOJ/cZ+cQrHX54=;
-	b=EATAvhGjB0BxlGsm+l29SdEaUqqx/UzPjLLQYionr+lI6JBS518mBhoqoQDUlDpH
-	uoijmrTaLxXjR0zjXhhAM7w8DcArp/97HlffwENaSaj5bTGeCddzxwAP8Rg0Ox22vnj
-	kdk3f7mNSWckQ2aigReGzhXzXeuUr2LYsg4Wjxr8=
-Received: by mx.zohomail.com with SMTPS id 178708937710788.45877915239339;
-	Tue, 18 Aug 2026 14:42:57 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 030B6182034; Tue, 18 Aug 2026 23:42:51 +0200 (CEST)
-Date: Tue, 18 Aug 2026 23:42:50 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Yubing Zhang <yubing.zhang@rock-chips.com>, 
-	Alexey Charkov <alchark@flipper.net>, Igor Paunovic <royalnet026@gmail.com>, 
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com, 
-	devicetree@vger.kernel.org, linux-usb@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
-	William Wu <william.wu@rock-chips.com>
-Subject: Re: [PATCH v14 00/38] phy: rockchip: usbdp: Clean up the mess
-Message-ID: <aoTMQtpYYw8O-3cj@venus>
-References: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
- <h54c2hrcsv3zjzzgojzf5sjmu3vtpobz6rwloam5kp7mwqqn3n@bqjnlellvnz6>
+	id 1wwSvn-00000008kOF-14jb;
+	Tue, 18 Aug 2026 23:09:19 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 45754601DE;
+	Tue, 18 Aug 2026 23:09:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A08901F000E9;
+	Tue, 18 Aug 2026 23:09:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787094558;
+	bh=B2rI3b8Hia0vW/fa4o3rfnpG+Pj+Dz6m9hUtKiuIVMA=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject;
+	b=j/Z+JW4eF5i8XfXi6M+/mKNpwaMAMODOHQT8SFusgY5fdkEatnADBM7Qas860H2yH
+	 upzwxOdrb/zsix7A6tyuhp/j6nCW6wDoeUmHOP8oluGm4lOAlZzkcVMnp6Prk71NW8
+	 GY+Bl1B52OJ5nqyhickvKFJ+U7nWCtAOxdfkNVq0XFg+w01h4ip5N9YO9PUgDRVDyY
+	 JOBWRGyPSyju2XrHbP2YN7AltitifSQtE9s/aTr9mRkuUU64swBlmdOy8TdmootFl4
+	 qMe/tgRLjkJOIca2Juc8bYDy66XYKvJojMopIc0skNKkA8iL7oL5/sO98GgWNAWl36
+	 2Kko/la8nfTQQ==
+Date: Tue, 18 Aug 2026 18:09:15 -0500
 MIME-Version: 1.0
-In-Reply-To: <h54c2hrcsv3zjzzgojzf5sjmu3vtpobz6rwloam5kp7mwqqn3n@bqjnlellvnz6>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/287.68.66
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260818_144317_387659_C7A6D6B8 
-X-CRM114-Status: GOOD (  29.32  )
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-kernel@vger.kernel.org, tomeu@tomeuvizoso.net, 
+ p.zabel@pengutronix.de, ulfh@kernel.org, will@kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ conor+dt@kernel.org, chaoyi.chen@rock-chips.com, 
+ dri-devel@lists.freedesktop.org, zhangqing@rock-chips.com, 
+ linux-arm-kernel@lists.infradead.org, joro@8bytes.org, 
+ devicetree@vger.kernel.org, iommu@lists.linux.dev, linux-pm@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, alchark@flipper.net, 
+ ogabbay@kernel.org, royalnet026@gmail.com, diederik@cknow-tech.com, 
+ robin.murphy@arm.com, heiko@sntech.de
+To: Jiaxing Hu <gahing@gahingwoo.com>
+In-Reply-To: <20260817113603.1436067-5-gahing@gahingwoo.com>
+References: <20260817113603.1436067-1-gahing@gahingwoo.com>
+ <20260817113603.1436067-5-gahing@gahingwoo.com>
+Message-Id: <178709455518.1014304.1443906758035976924.robh@kernel.org>
+Subject: Re: [PATCH v8 04/12] dt-bindings: npu: rockchip: add
+ rockchip,rk3576-rknn-core
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,107 +73,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3137917188333913664=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============3137917188333913664==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="lb64huk2f3isbo5n"
-Content-Disposition: inline
+On Mon, 17 Aug 2026 23:35:55 +1200, Jiaxing Hu wrote:
+> The RK3576 NPU has two cores of the same RKNN block the RK3588 binding
+> already describes, but it wires them up differently: two extra CBUF
+> clocks, two power domains per core, and a single reset instead of two.
+> It also has no NPU SRAM supply.
+> 
+> Widen the property ranges to cover both, then pin each SoC back to its
+> own shape in allOf so nothing loosens for RK3588, and keep sram-supply
+> required for rockchip,rk3588-rknn-core only.
+> 
+> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> ---
+>  .../npu/rockchip,rk3588-rknn-core.yaml        | 47 +++++++++++++++++--
+>  1 file changed, 44 insertions(+), 3 deletions(-)
+> 
 
+My bot found errors running 'make dt_binding_check' on your patch:
 
---lb64huk2f3isbo5n
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v14 00/38] phy: rockchip: usbdp: Clean up the mess
-MIME-Version: 1.0
+yamllint warnings/errors:
 
-Hello Mani,
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/qcom,spmi-pmic.yaml: Unresolvable reference: /schemas/input/qcom,spmi-haptics.yaml#
 
-On Tue, Aug 18, 2026 at 11:27:07AM +0200, Manivannan Sadhasivam wrote:
-> On Thu, Aug 13, 2026 at 10:51:43PM +0200, Sebastian Reichel wrote:
-> > This series does a major overhaul of the Rockchip USBDP driver. The
-> > initial main goal was to add USB-C DP AltMode support to the RK3576
-> > and RK3588 and this series still prepares the PHY driver for exactly
-> > that. But in addition to that I uncovered a huge amount of issues,
-> > that are fixed along the way. Some of the more interesting ones are:
-> >=20
-> >  * Currently the driver might trigger a fatal SError on USB-C hotplug,
-> >    since re-initializing the PHY stops the clocks going to DWC3. If
-> >    the DWC3 driver tries to access its registers at the same time the
-> >    system will crash.
-> >  * The DWC3 hardware can get into a buggy state when the PHY is
-> >    disabled, which results in the PHY not coming up properly again.
-> >  * Swithcing the USB-C connector orientation during hotplug breaks
-> >    USB3 speed, as the PHY is not being re-initialized.
-> >  * The code always enables DP mode when USB-C is involved.
-> >  * The driver has some locking issues uncovered by Sashiko.
-> >=20
-> > In addition to these bigger ones, Sashiko also found a bunch of
-> > minor problems, which are mostly harmless, but were fixed while
-> > going at it.
->=20
-> 38 patches for a single series is too much to review. Please
-> consider splitting it up into multiple series not exceeding ~10
-> patches per series. Thanks!
+doc reference errors (make refcheckdocs):
+Documentation/translations/pt_BR/process/security-bugs.rst: :doc:`regular path submission </../../../process/submitting-patches>`
+Documentation/translations/zh_CN/how-to.rst: Documentation/translations/zh_CN/xxx.rst
+arch/arm/xen/enlighten.c: Documentation/devicetree/bindings/arm/xen.txt
 
-So let me summarize:
+See https://patchwork.kernel.org/project/devicetree/patch/20260817113603.1436067-5-gahing@gahingwoo.com
 
- - Vinod wants Sashiko feedback to be acted upon
- - linux-phy does not want series with dependencies ( [0] )
- - You don't want series with more than ~10 patches
- - Generally fixes should be at the start of a series
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
-This tremendously slows down any real work. The first series would
-just be Sashiko fixes without *any* of the work I originally wanted
-to do (DP AltMode). I would have to wait for it to land before
-working on the next bits as there are massive code conflicts with
-the same file being heavily modified. This simply does not scale,
-especially when considering that there are more dependencies on this
-series.
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-[0] https://lore.kernel.org/linux-phy/20260330233532.ulnqiqrogezswht2@skbuf/
+pip3 install dtschema --upgrade
 
-Greetings,
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
--- Sebastian
-
---lb64huk2f3isbo5n
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmqE0dMACgkQ2O7X88g7
-+pp1WA/9Ehn7r1EMjla99QJRa2MMoOYd+t/cIFPVNbsUDA6t9qfCwIGxmOawRoog
-uUDXe/RqRp5xObb+2jSPMuvb3jelMPX+1357dxVoYaqsmrvPG6jSEjjBFtf4z++7
-62Ws1nWgH0YR1XO45vFBsrNCNv3ELThj/FALxPQmU0pZ/x/7bizhTQtx3PEHW104
-kT+171AqELAfbpfUMM7lYcHHIy8D4hSy0Ah66RFTNpWl1obZCUCFL1B0zuDANnMJ
-CAjqkPtwoJPpVaKRlY2h1YB5JREpQNfJCUl4XVPZ5Tuia+BOF5mvegHPXhU1F+ZT
-lasrChZQHYnkJNOl7EDgMaYpKnc3bJbxagtA1Q3IbqdRZA3jm8GrWH6dLhq9Pdr6
-kFsnhDJo5omh7AskYgm1uZ6ZL6ve/d+BUYS5Bkku8SJNbAb8eLqR20ntn45rDBIH
-29NMHJ9OQ8DKzJ7dxW3x19A6RuLTCHsVd6cQgTqMbgkVgrQehq4ivCMBuPwrpBZO
-fglWS7cNZGv+KYDnEJo9K2KrUOtyHfOYAjdbsOwQEyntf0QxDNtMoQ89LzIyJM7m
-nUsBRW1ZxNJ3NvHrC+580iDz5c+F0yTRwv7LeUNcwcp8SF9+hBEme+EQL4Vid9lH
-TrH9qhoHr/d7ZyZOOtQ4a3vRzVbBN4+cmrWofzpBfmyI7XtjNKU=
-=cryx
------END PGP SIGNATURE-----
-
---lb64huk2f3isbo5n--
-
-
---===============3137917188333913664==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3137917188333913664==--
-
