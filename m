@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA123C5DF74
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 13:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C081C5DF81
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 17:44:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Subject:From:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hNBBEgajUmj1QBjWjetF3zAJ/hcFABLgK5K/Jlyjacw=; b=ubV1o1cVzekcQF
-	y7L+SjB263dTRCwxOjD2FD/u5OrJV1uEq4KAL9wFty+4D0Kz1gaXaXsrhbMLkMWlFEaZ7uRHNdNZf
-	Fp2TeffhkuYJGNfHNRbhoG4qX/wx2sTwCSi+5Urk7ls5ZwhLK6n7Lkq9kcNCV1EqKX6yAmhGG/Yzc
-	X1thQFPTcYLpRyaB1QcL/Ii/3eyFxeCZBkg9yuab6nb1dxN8xgIw+yzC1cJJfUdVSd1ZqQmM+QxAq
-	kgxhZo7kq3LmdGDXGMMlKbS1eZdpgASvYGbhSi/xGpRodLFj6tHfgCe6FLNWREE8GVDEQg7CKaEH4
-	d0g+pKCVtdRgUYxn8PJA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dRyYTIOIzC2lbyhm7o/lZKr7VOSAUdVppdL16MLNThs=; b=riJApyhI01qeO8
+	cmb2K3LiUJYRf01l/e+aRN7rtnlFw9+Oai71789wMlsydyjEJUVonh0biWkzyorkQamTk0onYLZaZ
+	MBaKx/O4gxkfrE5D3oR658FwwIBPooUOeFUeuYroKX5f27oBN8mUNBIylPIIWe436KhGvr1v+r5Mx
+	+4sVVVifdnVtRGFChUWCs+35MGq0pXXdzurAuBDHoF4ke31IRosWabfbp1lyhBGWm+7Z/j0YHilj6
+	PdkX5SHeyD0GIJWFi7zeQnIlq8k+1IDv/gQoG83sAw3wGzqFA5dkt6WMHBz4huBfFxCIUbUXzyxds
+	esD1e149DFu9a5mMyRbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwJnf-000000082P0-10lA;
-	Tue, 18 Aug 2026 13:24:19 +0000
-Received: from out203-205-221-221.mail.qq.com ([203.205.221.221])
+	id 1wwNqz-00000008SIJ-1WzK;
+	Tue, 18 Aug 2026 17:44:01 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwJnc-000000082OG-3lpC;
-	Tue, 18 Aug 2026 13:24:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1787059454; bh=fjtyryIYmmBpuRdf3jOKdD9JLI/NGQs9gcidVZKkY4Q=;
-	h=From:Subject:To:Date;
-	b=HsWQyjiC5NEdYQp0Fy2i3yj0XXBOnCJaOR58FV4LZ5v2v7su+Hh9QUeg2qTK9Uww6
-	 GhqVThD7giUCf8JHWvbW5coldsV4iFk8+3gcHWGMcQw7imH3cs/4flWWkLuPLaZHHF
-	 IOWvBS+Rur+3N/m2w7MRo3uLOhZmSrHdat4VCsxk=
-Received: from [127.0.1.1] ([5.195.0.150])
-	by newxmesmtplogicsvrsza63-0.qq.com (NewEsmtp) with SMTP
-	id 1721C6D8; Tue, 18 Aug 2026 21:05:50 +0800
-X-QQ-mid: xmsmtpt1787059362tdf415oc5
-Message-ID: <tencent_D59EA2224872DD712706C0EE5FFC4AE27A07@qq.com>
-X-QQ-XMAILINFO: MDbayGdXPuoenuvFrsb4R9ybDGvmupbXOnUzUThfySO2oTEKwR0b9ZJEBJDZBS
-	 UxYmoQD6eu8IV7/Oo28c6OQkJsXG462njTtfZp8i80oucCWsvSESAoq3OxUXI7ji5yl931XM9hVu
-	 5LLW+JZPOYyIRGQmmsK7E5ExnbV3N3a3uxxej0vRHO7KIw9dbr7RpUeYJK6Sa3XJlKbdsG4kpAiS
-	 pnnmqLOO4tvdTuS/r3223svzjvcLkzzSP3ZFI1H34JJiaUYsYnqYhdlDeQefMmaQdDFop1jNNmE0
-	 pfkTQ53116Ds3v0uQDSa7MSJH052y8CZ8MLTtYUSHK6jwdJI9Or1whscFHW09xJJmQtsiyurEHeJ
-	 LDyPweuHjaKtFCVtxeEUttgfo4IdhvcXv4N+yp+sFY2vjqjmyFqwEXJhzbY+GSNajxccE36t+PKS
-	 CfDw0FcGVhlRM4vc586hpwi4nX8c/Stkw2gHv1b8C6JPujYeR4wCW0ZqgEWKsfH1QD25PCmYAQou
-	 /EtUvirJOCm6rp54XTYhcLlFNcdqcrFcSLVTRFBnSvHByQn03g1puIhQDII0nBbIwkmP1TlUh77z
-	 K68HTM3G6wd0ypFc7plHw3R6uHthoLazlM92oU7qAUgn0YEELX+DDZwDIU2sNZpzTsjaVVEN9X9D
-	 BcLzqMvepCiPuAn/H9T2j/NYilVLLkLkecuh7J29dNb+EuEdW4WmQVlsxE+Eyjc/O5NNK41uIZgO
-	 zeUXz/GqBDm3DoDyDN0odR/JJnmoMhT2oWzfEdNH1pPDY60ytbl1PxRwutEcx/eKTIwqcWh8iVCA
-	 bo5WXdTi6YYf7L5J1Z2Fq9MwmeRHHvoLoOCwDakJvGjaGTBNcmHSL+mz7YiGaS8srOtQXkOq1IaZ
-	 unsdnfCoZ9k4YRl1eXs7XindukaqTM5/ZpeO9zk8EVovsgUF5ESpHQGzuLLt+IhwkfWnknQ+lP47
-	 e+xV051UenDpRbFKmsBiU6uPGMgHr9MJzssZY4M1AfL/nBsambPQfpGcKlJJYXmKYyweq+3coipQ
-	 sIH1OMHTnX1Y2PpQz2cJJPK7E9Mt/m99Bg/LnuY32Ntwzdh/5dVVVoF933qac=
-X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
-From: Jiawen Liu <1298662399@qq.com>
-Subject: [PATCH] mailbox: rockchip-mailbox: use devm_clk_get_enabled() for
- probe cleanup
-To: Jassi Brar <jassisinghbrar@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Date: Tue, 18 Aug 2026 17:24:12 +0400
-X-OQ-MSGID: <178705945273.291840.7809734835578127304@qq.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260818_062417_247505_714836B8 
-X-CRM114-Status: UNSURE (   5.65  )
-X-CRM114-Notice: Please train this message.
+	id 1wwNqy-00000008SHc-25ZZ;
+	Tue, 18 Aug 2026 17:44:00 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 93A906020E;
+	Tue, 18 Aug 2026 17:43:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09E0B1F000E9;
+	Tue, 18 Aug 2026 17:43:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787075039;
+	bh=coPuo6DlMjz6XUYFqtoCQOf7Mjzi2tu4MlwoML98W5o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=iG+fdD4TZ8co0TJrZnZRAMEzk+7DBr/xgnXnAamdru7pLg7eIfRerZuseVCPERot/
+	 uQmkQ0ea2dIrg2Cddc82YAq6qdNQuuiicCZnbDZW1BpuclSShfQ041YsZRzbl03R4X
+	 gVUyjtID7cWOcCJu6AfPZW/h4AUUFOaVuaMqO3RQz6mgmFz1IR8PRAb+R/pKOtq2wJ
+	 EjTLQnFASoIoT9YEOzQ9Va0oeibBKHbEpMxFpjDYqoAutZEus9A43SYAEyccBL5EkL
+	 aLZQQD5+B6EiXSEJA7FKesUtTi9wmy/0UIptfDQrICKF/ek7PrcMBbtUmteqD7lz2I
+	 p++vIFK8T3kFg==
+Date: Tue, 18 Aug 2026 10:43:56 -0700
+From: Eric Biggers <ebiggers@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Dawid Olesinski <dawidro@gmail.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	"David S . Miller" <davem@davemloft.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Corentin Labbe <clabbe@baylibre.com>, linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 2/4] crypto: rockchip: Add RK356x/RK3588 cryptographic
+ offloader driver
+Message-ID: <20260818174356.GD2249@quark>
+References: <20260708175837.1718437-1-dawidro@gmail.com>
+ <20260816194112.552100-1-dawidro@gmail.com>
+ <20260816194112.552100-3-dawidro@gmail.com>
+ <20260818-enigmatic-friendly-lizard-bc8aaf@quoll>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260818-enigmatic-friendly-lizard-bc8aaf@quoll>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,46 +78,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make clock enable devm-managed.
+On Tue, Aug 18, 2026 at 09:36:44AM +0200, Krzysztof Kozlowski wrote:
+> On Sun, Aug 16, 2026 at 08:39:45PM +0100, Dawid Olesinski wrote:
+> > Add a driver for the second-generation Rockchip cryptographic hardware
+> > accelerator found on RK3568 and RK3588 SoCs (compatible strings
+> > "rockchip,rk3568-crypto" and "rockchip,rk3588-crypto").
+> > 
+> > The hardware provides:
+> >   - AES block cipher engine: ECB, CBC, and XTS modes, 128/192/256-bit
+> >     keys. XTS hardware is limited to single-SG requests.
+> >   - Hash engine: SHA-1, SHA-256, SHA-384, SHA-512, MD5, SM3.
+> >     The hardware padding engine (HW_PAD) requires the total message
+> >     length upfront and cannot maintain state across LLI descriptor
+> >     boundaries, so multi-SG and unaligned requests are routed to a
+> >     software fallback.
+> >   - DMA engine: linked-list descriptor (LLI) based, with a 20-entry
+> >     coherent descriptor table.
+> 
+> Hardware encryption drivers are being removed or at least tried to be
+> removed multipled times, so would be nice to see here WHY this one
+> should be added.
 
-Probe enables pclk but later platform_get_irq/request_irq/mbox
-registration failures return without disabling it. No remove cleanup for
-non-devm clock.
+Well, it is the usual drivers/crypto/ pattern.  It's being pushed as an
+"accelerator" despite the SoC already having ARMv8 CE which is almost
+certainly much faster (ARMv8 CE support is mentioned in the datasheet),
+MD5 (!) is being pushed for some reason, it's not properly tested, and
+no use case is described.  These crypto driver submissions are basically
+spam at this point.  Only thing that really saves them is that not many
+people have the hardware, so there tend not to be independent voices in
+the room besides the people pushing the driver as a checkbox feature.
 
-Use devm_clk_get_enabled() for pclk cleanup in rockchip_mbox_probe.
-
-Signed-off-by: jiawen <1298662399@qq.com>
----
-diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
---- a/drivers/mailbox/rockchip-mailbox.c
-+++ b/drivers/mailbox/rockchip-mailbox.c
-@@ -196,17 +196,11 @@
- 	/* Each channel has two buffers for A2B and B2A */
- 	mb->buf_size = (size_t)resource_size(res) / (drv_data->num_chans * 2);
- 
--	mb->pclk = devm_clk_get(&pdev->dev, "pclk_mailbox");
-+	mb->pclk = devm_clk_get_enabled(&pdev->dev, "pclk_mailbox");
- 	if (IS_ERR(mb->pclk)) {
- 		ret = PTR_ERR(mb->pclk);
--		dev_err(&pdev->dev, "failed to get pclk_mailbox clock: %d\n",
-+		dev_err(&pdev->dev, "failed to get or enable pclk_mailbox clock: %d\n",
- 			ret);
--		return ret;
--	}
--
--	ret = clk_prepare_enable(mb->pclk);
--	if (ret) {
--		dev_err(&pdev->dev, "failed to enable pclk: %d\n", ret);
- 		return ret;
- 	}
- 
-
+- Eric
 
 _______________________________________________
 Linux-rockchip mailing list
