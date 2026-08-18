@@ -4,62 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0870C5DF70
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 07:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF29CC5DF67
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 07:30:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lqkBav0FBqeeG+icPMro2R44CfnZe8Q0EQ7nFOpc+mg=; b=xTVpGznMrH1k41
-	hpH5nEe+N7AHLLXL05CV86iGOeRT1kYbHuDyPvTk9daz0pMViQjWb7oZVk1F7eRzx9g2W2FGwm6MS
-	BMBy9YWGsxI81eoJUqEhOIUWhCfPhF45TIcrubVu6cNRX4deIdJXI/lpGfPsBDmJjXcPJdzYOWEw1
-	qexWgSBSuDAHAC9n5gRMn5qommMHwZzs+qdssICBBMkv2VW4FgD7dlvPKv62TkOe2ctr0dhifDQjs
-	YvBm0zO088T5cqnTlHcQwGqH4umNiZ/yb7izF9vhouBazfeBshEM3+8fJtfBJIXq2C3WnOKWwU6d3
-	sHa0u5BNXticTPQd6UVw==;
+	List-Owner; bh=rgzR6c+RFGpDreDd2yBL3A2fFk0/WWfQqbLnTYhpghY=; b=cT2zaqlfbm6weq
+	ACEwoN66jNLgocMxVHtRw2BcNIxT5qGLL4jH8BtB7e8YQEXLQj/6UjQyeTtlT9aHTdSH25DTn4qwF
+	osT5rkMZ6M2QkeMMgqn+3sHAdALO979HG6Cp+RKcD4VvUA0wPvT+UrGDxUHHqTykCyeRcAe23uQpZ
+	hNZ5Hb6cx3uscLXCC3Bf7viPLIGx+KgXEbB/HjmInhXf4btn8DKol7T+8T2glZXLK216qoU98i5Wh
+	Tu0eW/srv7dY8ISiS6mrHaWdSPTjN6LDM56pYRCi50V5svy7ngmCUxOVN+FVB00muj2iNbT1xVRgP
+	n60/z5SlMYRN4TJ6w81A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwDts-00000007Qxr-35lp;
-	Tue, 18 Aug 2026 07:06:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wwEGk-00000007SRK-3GQT;
+	Tue, 18 Aug 2026 07:29:58 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwDtr-00000007QxU-08UP;
-	Tue, 18 Aug 2026 07:06:19 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7550342DB5;
-	Tue, 18 Aug 2026 07:06:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 751C61F000E9;
-	Tue, 18 Aug 2026 07:06:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787036778;
-	bh=NGXeti55rfsL+QIxNH+23V/SFO6fjV5CYs9tpc0kf6w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=fnmDUoqzkz6gpC9rE+MpRmsVk4t4fqISEBKKGm0FAVNtaTxh7CSfS6eX10wQVFC2M
-	 afGm7/6KhniQcLBzXVmICJtEKf/Ie9fiN+4u0TeFtq9FmAQmQQBuC5xEydaFk92DNi
-	 0tMxnMJwlttlLoYT8hBhFX3ArF9aK0m1Dhj/F9tWgU/AiV1KzcnACYoseTQjvOQWKQ
-	 wbfd0aK9sNJ22POKHl6f3qi0swzBrTlpFPdOSQdYXHQZTpycUhWs6Hi8Jrc9azl0El
-	 7JEVYeqgjEyvtCdHjc+GtO3J9IswyLHsyXZvaeMOXSXxFQbxGzQbDs7rP0bzi8SuNQ
-	 Hm1SbNdFIlU+w==
-Date: Tue, 18 Aug 2026 09:06:11 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Hans Zhang <18255117159@163.com>, bhelgaas@google.com,
-	Manivannan Sadhasivam <mani@kernel.org>, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, heiko@sntech.de, yue.wang@amlogic.com,
-	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
+	id 1wwEGi-00000007SQs-1UWD
+	for linux-rockchip@lists.infradead.org;
+	Tue, 18 Aug 2026 07:29:57 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-4996c452e95so3863625e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 18 Aug 2026 00:29:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787038194; x=1787642994; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=3jTJ//eajjn4P7tJjJphCt0+k3XaL0BsSvnnhTQJhRM=;
+        b=j9ODaKVd+crZlelDFIOGUhtV1JLNMBAdF1ix4Ih1wZKQsU55nwyVXPI9vYMdu8Hwbw
+         aMtGAMFTWmR2ZurxDv0YR78WTvICG17PwsfJJ9a4xF9QMbGOEH/w7dZLGiuLU0k8Xjts
+         wKkdUZMrMwoQ3oRU214179yUXShxoZTpuuWqCbNQ7lwNmalh/zmEwyXE8djzhvFw8qHF
+         evR41vI3lhoL0HtPacm5M+uSqsL0JhwTxo4I+YNySGfbCNg4UWAveSzbRL4olT4U2xkt
+         OSHmDqoaQ/HgljgWJPUzqOh5kdydxzl8Gy9A5Ctx+AP1uMioJYSQ4BqTwHeRuFp54HTW
+         82VQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787038194; x=1787642994;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=3jTJ//eajjn4P7tJjJphCt0+k3XaL0BsSvnnhTQJhRM=;
+        b=O3o83CIHgB3uB5sVZWKE6ZsnejvFmtqwIFNT5soAkOiB7YRs76AuWi2QqAKHqn998h
+         ZpiEWGM1drvXi5N3nzAwUEkACTdZH4DWk1+S61OtJ88LiinyWCz47JQYGMRjFmCWoPSE
+         PasAF32CURq60J8t90osLTa8Mkjn83e5yUteIy92uezIB3D45vnV3fThcA6cvh+mJvjp
+         L/lwm5Psfo4oMUiqDspDciCk1UH8zxC7xCMt7dfQSQcwkDBhOujwS9z/ZFfFn2wnmkJn
+         Z64UeLQtzNQzX6nN6L06hT/SzlY2GlJwPiHlAiJX/sqGVIRPPITiBtlUiJ7mwDQpQGLL
+         f7Ng==
+X-Forwarded-Encrypted: i=1; AHgh+RomwQt/PkpChjHBhosWEUL/xtb5dcSkxXLmTFqlfjgRzMsq2c8WlPgVM/rPfAb7UMuJHAWTHxKQOl93Fih+Ig==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzd5qFSM7EbDOYmn+M9Zt+mBU/nPMCYIwBopEI5xAj5POWEL+lq
+	lKan+mMkkctguYxBQEumsp6FFBm2+x9zYXvd3cBBi6aCH+fvQgj9lnbVelbuHQ4I
+X-Gm-Gg: AR+sD12VgDYMEaua4Xqt/Gh9fmsEYELM73JDGJFe4QmHYg0LPLnirsWyVTiY2tJuHhY
+	3fV3lavkCF6frvOJlSz8LAEKVlpFI98Xl9hMg8LoePe+GjDajKLNj05+baVacEimP3NtOBttEWb
+	HAmT1fpz8Nk830cxgqoIhOgKDIsph80GCaNRRs1HPbfrhMsqJ4UrRStD4/mbXUaMTpsaRi5yFJy
+	tjczwS+njoqAk6UUz4q7EbJgLdEzpQs51pyGjivNopDCFj5fnk2aPaQ1JVV4C+p0qjLRCT68MSv
+	zd8ZidfFFcO6kAgcgZeypPmfLSYF+4W4hKDPgh+dV4jqPYNjffl6/hyi/1Gfv6yPw8Y7rUfrAiH
+	toTMpUafYYbTL69Nm/VNhq8MyuHDfHrJHaJAi01Io6v278Dpuy70rvmvnu7cu87fi6nPoHBqi5h
+	v5/MX89Z9O+XnrEER3fhrnWs/QKI4k/E+5PvMHAT37QRym6DiEXSFLtjFxPWLxodrYRzTm33BMs
+	pt0UyBc1ieYFYEtEGuaRxwrO6DGDKgrbBsig4ri8GhJ/uESk5tJDcfS3Z5iuilDWTzBLxzq4R1l
+	QNzh
+X-Received: by 2002:a05:600c:a418:b0:499:a660:f4ae with SMTP id 5b1f17b1804b1-499a660f7f5mr1504845e9.1.1787038193769;
+        Tue, 18 Aug 2026 00:29:53 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B90C200E824DF014B0EC292.dsl.pool.telekom.hu. [2001:4c4e:1b90:c200:e824:df01:4b0e:c292])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49987b50869sm174877235e9.0.2026.08.18.00.29.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Aug 2026 00:29:53 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Nicolas Dufresne <nicolas@ndufresne.ca>,
+	Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jiaxing Hu <gahing@gahingwoo.com>,
+	Oded Gabbay <ogabbay@kernel.org>,
+	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 0/2] PCI: Configure Root Port MPS during host probing
-Message-ID: <aoQEY5PDU5iqnD9S@ryzen>
-References: <dae17d36-c7d2-467b-a621-3c55e08a67a8@163.com>
- <20260622171448.GA678675@bhelgaas>
+Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and some numbers
+Date: Tue, 18 Aug 2026 09:27:43 +0200
+Message-ID: <20260818072936.41844-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <c495dae1976dab842d77f4a4a142217eb77b6fb7.camel@ndufresne.ca>
+References: <20260801131656.58450-1-royalnet026@gmail.com> <c495dae1976dab842d77f4a4a142217eb77b6fb7.camel@ndufresne.ca>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260622171448.GA678675@bhelgaas>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260818_002956_407997_6653F3DC 
+X-CRM114-Status: GOOD (  13.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,53 +106,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 22, 2026 at 12:14:48PM -0500, Bjorn Helgaas wrote:
-> On Fri, Jun 19, 2026 at 11:29:39PM +0800, Hans Zhang wrote:
-> > On 5/6/26 22:00, Manivannan Sadhasivam wrote:
-> > > On Fri, Nov 28, 2025 at 01:09:06AM +0800, Hans Zhang wrote:
-> > > > Current PCIe initialization exhibits a key optimization gap: Root Ports
-> > > > may operate with non-optimal Maximum Payload Size (MPS) settings. While
-> > > > downstream device configuration is handled during bus enumeration, Root
-> > > > Port MPS values inherited from firmware or hardware defaults often fail
-> > > > to utilize the full capabilities supported by controller hardware. This
-> > > > results in suboptimal data transfer efficiency throughout the PCIe
-> > > > hierarchy.
-> > > > 
-> > > > This patch series addresses this by:
-> > > > 
-> > > > 1. Core PCI enhancement (Patch 1):
-> > > > - Proactively configures Root Port MPS during host controller probing
-> > > > - Sets initial MPS to hardware maximum (128 << dev->pcie_mpss)
-> > > > - Conditional on PCIe bus tuning being enabled (PCIE_BUS_TUNE_OFF unset)
-> > > >    and not in PCIE_BUS_PEER2PEER mode (which requires default 128 bytes)
-> > > > - Maintains backward compatibility via PCIE_BUS_TUNE_OFF check
-> > > > - Preserves standard MPS negotiation during downstream enumeration
-> > > > 
-> > > > 2. Driver cleanup (Patch 2):
-> > > > - Removes redundant MPS configuration from Meson PCIe controller driver
-> > > > - Functionality is now centralized in PCI core
-> > > > - Simplifies driver maintenance long-term
-> > > > 
-> > > 
-> > > For the series,
-> > > 
-> > > Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
-> > > 
-> > > Bjorn: Could you please take a look? This series has been floating for a
-> > > while...
-> > 
-> > Hello Bjorn,
-> > 
-> > Any chance for this series to be applied?
-> 
-> It's too late for v7.2; we're already more than halfway through the
-> merge window.  We can look again for v7.3 after v7.2-rc1.
+Hi Nicolas,
 
-ping
+> I'm only looking at the RK3588, I suppose all the issues below
+> related to RK3576 ?
 
+No - everything in the RFC is RK3588 (Orange Pi 5 Plus, all three
+cores). RK3576 is Jiaxing's enablement series and has its own set of
+problems; nothing I reported came from there.
 
-Kind regards,
-Niklas
+I went through the four commits on rock5b-npu-poc-4 today. We
+converged on the same shape independently, which is encouraging:
+200 MHz kept as the suspend rate, a single devfreq instance modelled
+on panfrost with busy time aggregated across the three cores, and a
+cooling device on top. Your ~2.5x on the SSD pipeline also matches
+the 2.58x I measured here with simple_ondemand against the 200 MHz
+pin.
+
+The TF-A pointer (rk3588_clk.c, PVTPLL vs normal path) is the most
+valuable part for me - it names the mechanism behind the power-on
+ack failure I could only demonstrate empirically. I will reference
+it in the cover letter once I have checked the firmware source
+myself.
+
+Status here: after Tomeu's go-ahead I am preparing the series -
+bindings, a full-range OPP table in the DT (300-1000 MHz plus the
+200 MHz suspend point, so essentially the table you ended up with),
+a safe-rate-on-suspend guard, the devfreq itself, and a hold-all
+guard that resumes all cores around any rate change. The guard is
+ordered before the devfreq patch so no bisect point has scaling
+without it. The one hard dependency is my "request the core clocks
+by name" v2, still waiting for pickup.
+
+Agreed on OPP staying optional - the plan in my series is that the
+driver keeps working with no OPP table in the DT, which I saw you
+intend to fix on your side as well.
+
+One path worth checking in your PoC, because it is the one that
+made me write the hold-all guard: a sysfs min_freq/max_freq write
+while all three cores are runtime-suspended goes straight to
+clk_set_rate, which can select the PVTPLL path while the domain is
+off - exactly the case your TF-A reference explains. With the guard
+in place I measured that write waking the cores and completing
+cleanly.
+
+One difference in test conditions worth keeping in mind: my numbers
+are with the vendor bl31 that EDK2 bundles, yours is upstream TF-A.
+Comparing SCMI behaviour on both seems wise before either of us
+claims anything firmware-specific.
+
+Thank you for the "take whatever you like" - anything I lift will
+carry credit, and I will Cc you on the series.
+
+Regards,
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
