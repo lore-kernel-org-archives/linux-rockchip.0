@@ -4,55 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 022CFC5DF7E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 13:14:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA123C5DF74
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 13:24:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WJ3PgqBgsX+FbCImliWNj2oD+nCmYZe2dBwzS/utzHY=; b=T2z04PLyizAd2Oom26E5NSzfIr
-	ofu4aRQbcw3cIjxRmM1A84XJjR1L4EXw6uVstNAAu4PcUdJIwhUwFD9u6Teh1JDDleFPJJFauw5Lm
-	9TPITr+4fcZdG9N3mp8VKD4Ghq0XIlRtErZEkklmUqlWV1QbITonh0cEbJE0mcEHWD00jnR3PAE4q
-	pIfk2Cm0DT64ESO/+6h7Ru0vhvzi36dHqKwjmHADd++Hcdp8OY+fCEMC23U3PuynFMee6ywzYnAHP
-	kQKJTIHFaiRZr0wKwX0yU7t2pv4lvYTJ7H40BqOJeSbQOpVZSWRLOo8A6tLe7WkO5u//Wk5WBQOzL
-	jqfgniuw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Subject:From:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hNBBEgajUmj1QBjWjetF3zAJ/hcFABLgK5K/Jlyjacw=; b=ubV1o1cVzekcQF
+	y7L+SjB263dTRCwxOjD2FD/u5OrJV1uEq4KAL9wFty+4D0Kz1gaXaXsrhbMLkMWlFEaZ7uRHNdNZf
+	Fp2TeffhkuYJGNfHNRbhoG4qX/wx2sTwCSi+5Urk7ls5ZwhLK6n7Lkq9kcNCV1EqKX6yAmhGG/Yzc
+	X1thQFPTcYLpRyaB1QcL/Ii/3eyFxeCZBkg9yuab6nb1dxN8xgIw+yzC1cJJfUdVSd1ZqQmM+QxAq
+	kgxhZo7kq3LmdGDXGMMlKbS1eZdpgASvYGbhSi/xGpRodLFj6tHfgCe6FLNWREE8GVDEQg7CKaEH4
+	d0g+pKCVtdRgUYxn8PJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwJeS-000000081RZ-2Pq6;
-	Tue, 18 Aug 2026 13:14:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wwJnf-000000082P0-10lA;
+	Tue, 18 Aug 2026 13:24:19 +0000
+Received: from out203-205-221-221.mail.qq.com ([203.205.221.221])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwJeR-000000081Qx-0BYJ;
-	Tue, 18 Aug 2026 13:14:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 22196601DE;
-	Tue, 18 Aug 2026 13:14:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8736A1F000E9;
-	Tue, 18 Aug 2026 13:14:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787058885;
-	bh=yo8ikXsQN3snpu67JtKmAbi55HP0/87Ih/FPamOhafI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=S6Mz5JONNto/xpitSy88eKC0uTEtFdl+6RNAZwsNO8omAP5c8dNy2D9pcEi1ffSDA
-	 HXbebYthVY2YjH8ea4kR9zGo/3J7xx7/+C6s0HdMIUgWPpR0p6q35p9Oguj+yBcyHu
-	 OZCihV+KLVj1MCIZEA0PZanhSZ3jz8ybVYSSS3zpJBTGWTgLBLvVQstwYuH4gXcGoi
-	 YLWwHmOcNrX0L1h/5+yt7gKhPwXpYp8cmo3lMEebZBPt6mMx/1VSG0dhhGYir4b9lh
-	 MzBysWOdPKrR6BxFYOBfV//iUbNKtCjfftap4doatdKz2c09whJlvr4faMH3FmuGYB
-	 dCmowvTWVEkzQ==
-Date: Tue, 18 Aug 2026 14:14:42 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Jiawen Liu <1298662399@qq.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] spi: rockchip-sfc: disable runtime PM in remove
-Message-ID: <3bf4d561-d98f-465f-9aff-68cabc6f1f80@sirena.org.uk>
-References: <tencent_DD16C0EEDFEF4ACAFAB5A23EC8235D462707@qq.com>
-MIME-Version: 1.0
-In-Reply-To: <tencent_DD16C0EEDFEF4ACAFAB5A23EC8235D462707@qq.com>
-X-Cookie: Smile!  You're on Candid Camera.
+	id 1wwJnc-000000082OG-3lpC;
+	Tue, 18 Aug 2026 13:24:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1787059454; bh=fjtyryIYmmBpuRdf3jOKdD9JLI/NGQs9gcidVZKkY4Q=;
+	h=From:Subject:To:Date;
+	b=HsWQyjiC5NEdYQp0Fy2i3yj0XXBOnCJaOR58FV4LZ5v2v7su+Hh9QUeg2qTK9Uww6
+	 GhqVThD7giUCf8JHWvbW5coldsV4iFk8+3gcHWGMcQw7imH3cs/4flWWkLuPLaZHHF
+	 IOWvBS+Rur+3N/m2w7MRo3uLOhZmSrHdat4VCsxk=
+Received: from [127.0.1.1] ([5.195.0.150])
+	by newxmesmtplogicsvrsza63-0.qq.com (NewEsmtp) with SMTP
+	id 1721C6D8; Tue, 18 Aug 2026 21:05:50 +0800
+X-QQ-mid: xmsmtpt1787059362tdf415oc5
+Message-ID: <tencent_D59EA2224872DD712706C0EE5FFC4AE27A07@qq.com>
+X-QQ-XMAILINFO: MDbayGdXPuoenuvFrsb4R9ybDGvmupbXOnUzUThfySO2oTEKwR0b9ZJEBJDZBS
+	 UxYmoQD6eu8IV7/Oo28c6OQkJsXG462njTtfZp8i80oucCWsvSESAoq3OxUXI7ji5yl931XM9hVu
+	 5LLW+JZPOYyIRGQmmsK7E5ExnbV3N3a3uxxej0vRHO7KIw9dbr7RpUeYJK6Sa3XJlKbdsG4kpAiS
+	 pnnmqLOO4tvdTuS/r3223svzjvcLkzzSP3ZFI1H34JJiaUYsYnqYhdlDeQefMmaQdDFop1jNNmE0
+	 pfkTQ53116Ds3v0uQDSa7MSJH052y8CZ8MLTtYUSHK6jwdJI9Or1whscFHW09xJJmQtsiyurEHeJ
+	 LDyPweuHjaKtFCVtxeEUttgfo4IdhvcXv4N+yp+sFY2vjqjmyFqwEXJhzbY+GSNajxccE36t+PKS
+	 CfDw0FcGVhlRM4vc586hpwi4nX8c/Stkw2gHv1b8C6JPujYeR4wCW0ZqgEWKsfH1QD25PCmYAQou
+	 /EtUvirJOCm6rp54XTYhcLlFNcdqcrFcSLVTRFBnSvHByQn03g1puIhQDII0nBbIwkmP1TlUh77z
+	 K68HTM3G6wd0ypFc7plHw3R6uHthoLazlM92oU7qAUgn0YEELX+DDZwDIU2sNZpzTsjaVVEN9X9D
+	 BcLzqMvepCiPuAn/H9T2j/NYilVLLkLkecuh7J29dNb+EuEdW4WmQVlsxE+Eyjc/O5NNK41uIZgO
+	 zeUXz/GqBDm3DoDyDN0odR/JJnmoMhT2oWzfEdNH1pPDY60ytbl1PxRwutEcx/eKTIwqcWh8iVCA
+	 bo5WXdTi6YYf7L5J1Z2Fq9MwmeRHHvoLoOCwDakJvGjaGTBNcmHSL+mz7YiGaS8srOtQXkOq1IaZ
+	 unsdnfCoZ9k4YRl1eXs7XindukaqTM5/ZpeO9zk8EVovsgUF5ESpHQGzuLLt+IhwkfWnknQ+lP47
+	 e+xV051UenDpRbFKmsBiU6uPGMgHr9MJzssZY4M1AfL/nBsambPQfpGcKlJJYXmKYyweq+3coipQ
+	 sIH1OMHTnX1Y2PpQz2cJJPK7E9Mt/m99Bg/LnuY32Ntwzdh/5dVVVoF933qac=
+X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
+From: Jiawen Liu <1298662399@qq.com>
+Subject: [PATCH] mailbox: rockchip-mailbox: use devm_clk_get_enabled() for
+ probe cleanup
+To: Jassi Brar <jassisinghbrar@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Date: Tue, 18 Aug 2026 17:24:12 +0400
+X-OQ-MSGID: <178705945273.291840.7809734835578127304@qq.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260818_062417_247505_714836B8 
+X-CRM114-Status: UNSURE (   5.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,63 +76,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3833012984800806101=="
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Make clock enable devm-managed.
 
---===============3833012984800806101==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="K96lpHhbSl2dZtMX"
-Content-Disposition: inline
+Probe enables pclk but later platform_get_irq/request_irq/mbox
+registration failures return without disabling it. No remove cleanup for
+non-devm clock.
 
+Use devm_clk_get_enabled() for pclk cleanup in rockchip_mbox_probe.
 
---K96lpHhbSl2dZtMX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: jiawen <1298662399@qq.com>
+---
+diff --git a/drivers/mailbox/rockchip-mailbox.c b/drivers/mailbox/rockchip-mailbox.c
+--- a/drivers/mailbox/rockchip-mailbox.c
++++ b/drivers/mailbox/rockchip-mailbox.c
+@@ -196,17 +196,11 @@
+ 	/* Each channel has two buffers for A2B and B2A */
+ 	mb->buf_size = (size_t)resource_size(res) / (drv_data->num_chans * 2);
+ 
+-	mb->pclk = devm_clk_get(&pdev->dev, "pclk_mailbox");
++	mb->pclk = devm_clk_get_enabled(&pdev->dev, "pclk_mailbox");
+ 	if (IS_ERR(mb->pclk)) {
+ 		ret = PTR_ERR(mb->pclk);
+-		dev_err(&pdev->dev, "failed to get pclk_mailbox clock: %d\n",
++		dev_err(&pdev->dev, "failed to get or enable pclk_mailbox clock: %d\n",
+ 			ret);
+-		return ret;
+-	}
+-
+-	ret = clk_prepare_enable(mb->pclk);
+-	if (ret) {
+-		dev_err(&pdev->dev, "failed to enable pclk: %d\n", ret);
+ 		return ret;
+ 	}
+ 
 
-On Tue, Aug 18, 2026 at 05:05:50PM +0400, Jiawen Liu wrote:
-> rockchip_sfc_probe enables runtime PM and leaves the device active with
-> a usage count held by pm_runtime_get_noresume(). The remove callback
-> only disables the clocks and does not disable runtime PM, leaving the
-> device in an inconsistent state and leaking the runtime PM reference.
-> Add the missing runtime PM teardown in rockchip_sfc_remove to balance
-> the probe's enable and get_noresume calls.
->=20
-> Signed-off-by: jiawen <1298662399@qq.com>
-
-Your name here doesn't match the name you're using in the From: of your
-mail, that's going to make tooling think you've not provided a signoff.
-
---K96lpHhbSl2dZtMX
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqEWsEACgkQJNaLcl1U
-h9DMCAf+KcCcyXPo7j8LdqOXlUjWViQgcLzlmsM2eiKWlA3fQ7dvKJYXlqc7iE2t
-rpeNy1XfD3fIpkYn2C7OgC8brc6H7LjOVR86ItweCHS4hldCjxf5Ck1tZ5tZHSoW
-dDXoTwq+o9DJTo56rKHnbEYAKieI1xA9V7HhXd8ltA2UkNav/ePbj6vqlUk6IzPb
-xoW1UFzJi5dor+Ui3yJWDSp/ZeexJp5Vy9WnNvgM71wosY1egcB/aqTH+6oqIxxx
-buLjQcCdE2KrCy42lsJ6Y5FjaO/sTZKCvr6JKPEo7hyYTmUQTvFeSUW+nsIYNIeO
-qhNAS545Pr0mjAangiK+8zqqVrP2KQ==
-=6fzB
------END PGP SIGNATURE-----
-
---K96lpHhbSl2dZtMX--
-
-
---===============3833012984800806101==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3833012984800806101==--
-
