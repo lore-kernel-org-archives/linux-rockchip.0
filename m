@@ -4,64 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2595C5DF81
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2026 23:09:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C29C5DF81
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2026 01:36:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=lxjXq58Qzcqfb6emb3FNkfxCUQWlbGNVTajD75CjTj4=; b=G1ctoPaSxYE/P/qVDgoEXCioR4
-	V/jMvo97TBnhsnXR0bqmK399+v4EZChKrM2NXsYIpulDXWp81GRF92escqSwCCAhWvZLCiewHoURm
-	xFOFNFXjvnP0uJEwcEBWJrPypzTGSJSX1190adVeVsWTTa/7VoUzHG7L5XFdBpKj5g0cRPRWFPVnv
-	2v1DN3gTCAHk0QEHtYD2h+uO7WH8yezFFwy5yEVycdHUPKeOx08YcsXQFZE/ojdJKKutMpMfbDecq
-	H8xM1RNJP1mZQuFlnOUnRmEa/cWwO72S9PoWn0X7s+gV2mpVBionBela76L/WeT/OO2OXN7yXVevQ
-	cUOkhmDQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=D+NBBKnOaSTLsft9YIHXQOAX31UsZH45zCqTFuUlOpQ=; b=O/+gB9rF59fn8j
+	k3Sd4Fai10uzXwBjL3YJzoKSNnrXqm1JnblcZCdUnFoomlw3nzb4ysmHieNexricln5Ht17L3woL9
+	9kE8ARV80ywb5whMCd0qOwAU7XMa7anXQ93zaEMB4+pOqyPIf4QHWdEZNSBx7Jm4De/XW7eRnCtLo
+	eDpikkxgpv99vsCPhee83ZyW76VMmwLqpziYdcIaunH6bAgVs9QByaBDV1mgaF26xGduB4lIFQC2D
+	A1ka8bnEqMcFyxSRimbInZhUdNTbiWz92tlTRuvoGj6JELb3lgbBy2GG26HHXLK8+g/VWOONt3Ini
+	1/V7kEDLBsAzHZCXyC5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwSvo-00000008kOU-11Zm;
-	Tue, 18 Aug 2026 23:09:20 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wwVE8-00000008pyh-3AhK;
+	Wed, 19 Aug 2026 01:36:24 +0000
+Received: from flow-a4-smtp.messagingengine.com ([103.168.172.139])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwSvn-00000008kOF-14jb;
-	Tue, 18 Aug 2026 23:09:19 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 45754601DE;
-	Tue, 18 Aug 2026 23:09:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A08901F000E9;
-	Tue, 18 Aug 2026 23:09:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787094558;
-	bh=B2rI3b8Hia0vW/fa4o3rfnpG+Pj+Dz6m9hUtKiuIVMA=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject;
-	b=j/Z+JW4eF5i8XfXi6M+/mKNpwaMAMODOHQT8SFusgY5fdkEatnADBM7Qas860H2yH
-	 upzwxOdrb/zsix7A6tyuhp/j6nCW6wDoeUmHOP8oluGm4lOAlZzkcVMnp6Prk71NW8
-	 GY+Bl1B52OJ5nqyhickvKFJ+U7nWCtAOxdfkNVq0XFg+w01h4ip5N9YO9PUgDRVDyY
-	 JOBWRGyPSyju2XrHbP2YN7AltitifSQtE9s/aTr9mRkuUU64swBlmdOy8TdmootFl4
-	 qMe/tgRLjkJOIca2Juc8bYDy66XYKvJojMopIc0skNKkA8iL7oL5/sO98GgWNAWl36
-	 2Kko/la8nfTQQ==
-Date: Tue, 18 Aug 2026 18:09:15 -0500
+	id 1wwVE5-00000008pxz-0bmU;
+	Wed, 19 Aug 2026 01:36:23 +0000
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+	by mailflow.phl.internal (Postfix) with ESMTP id D3AA113801C1;
+	Tue, 18 Aug 2026 21:36:16 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-02.internal (MEProxy); Tue, 18 Aug 2026 21:36:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm2; t=1787103376; x=
+	1787106976; bh=W82d9TdM4QvB5O4Aqa9vRwclhY+zrfjcDgkX82FRBxI=; b=A
+	0hgbFGg9siCRd5/x57OrVwiXiqFiMBqNUNYPy+2XLL4xdoqBAGx9L362OwqEzblO
+	YovPIySygwdsLmSpsKOIOzNmeqgm/x8H71E39/YAvu2fTTtU2pZNXEZ/kRk6nTDR
+	3azCVb1CKVjne5gPmxf6D40Nj65mBuL6vb+itGEg9M0NdzmlvnsOn3Rc6gwC0q/6
+	taBMIAMj/lkjEW46QiVDfwPPrsqYBs/aWS4ZJs21Hiden4oXa6z8ykzk3S6YoWvj
+	mGA0+YCMm71rP44X0inPMdPd5Df+jP3ninCQG3pDNb7rGdvhcrQUz/qes3mPcakr
+	TXVSabncnjl42t4aRRK9Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1787103376; x=1787106976; bh=W
+	82d9TdM4QvB5O4Aqa9vRwclhY+zrfjcDgkX82FRBxI=; b=Id3iv2BQA8ISYaN+c
+	UYNAMZRnIskwTdeUy09KhNYmhpvayJQTaIDhoRZJLNsvVuNveu2fs9nmHzlcpp36
+	LDYOdcVL2PteSVqveEjzQOALNe5YbItZ9uL4qrJJkbHw0azRqCty0VYiDSKa29X8
+	50hR9KZ6wOCgt48GbWh+H8sDoiMWWRUH9fnhziuGDAsFeEJ9cu++ygPoQkFaaTvg
+	RM15ZnowAwjS1mXyJxpcA0i29ZDOodFvUpCexErnxtc/VxO6/xBtQSp0ZKGM4vQ+
+	4aS0A+S0H+jQm2MEBIxR/qyT1j5xLtCyoVfH1ZSHuyMWqAx2lacTi8fyukxQhsFd
+	SUB5A==
+X-ME-Sender: <xms:jgiFakpnkwMZP0AVdhtNUTk9PmeilgWRA6-gtexwLYAjKN116uwSNw>
+    <xme:jgiFai2HORtG3ATiT0jkykTZal5fp7jIoUerbq5MkntGejWiVeJtZhhFzR_ztZ6NT
+    FcBGHtgfp5Ss0Dl4X0HNK6b6BUMxs8EbnBemfN_ko5iotBvlRTRd38>
+X-ME-Received: <xmr:jgiFaky-53PfQN7ylBjsqS7yxAaVniSiYQ4SxjExucP0v_SKLqwrHmjcfqXzp3HcO5w3H4JcOHYC>
+X-ME-Proxy-Cause: dmFkZTFJlow7ZIObXzXNDK8Gm7fvSajn6CpgYcNeN2YqXc1FBAH3xEc0L6H/uuRiMPvvjb
+    vKruD6b0SxiJkrF4ihv5j081zZMpmv0Mmknq2O0bnyskDLSNMfYKMObn0tHjCqIE6hTfn+
+    Gr1r+uZRze9PQIHPWX3G+l4WADWb6trkAxpMYbjWTh79KWwF4yjYCrikKfkpxBCcwBwIH6
+    iHNMOa+SEWgsm9yK+Fha2R3m+uF+bydhmn/h2aAmlWaQ/vcVWFGnqMkB1ubUql8WNBa3gm
+    IR4d6ZrKmHa8bucmMpnHMa9a+MbauXg4QGjKT4u/QEu9EAk7VjO+AVPFgoFs19MeHWfcLt
+    eFwdUgsVdJiePd+zayyDpTwrK2+8CsUWbhoo2cgySk4v463tP/aHk4KymxckhGxr0Hmw57
+    h23BjeqMjFVa5qkwIyxP8Casbh+/aHG/GiiJm4arNyf1A27khSS2Qduw+tOK8403z9xslt
+    2Pm7caxkEY3sl7RjDNZnYOCLmSHxH06iNw7GFSwWGeHkzB5+BD29gMsM3i279K9+sXcE9J
+    cy3AB5perxLXzuUeKqF+FRYQF7cKEnf8aePLX4l9bodFo5tO2dl3JzeBM9OrVuDJF1c1ko
+    eZXDn5nreIxfcyaCxfLwTRpn8FkdrdlZP7m+7KLuhVa2M4NDNDOOmtuf3zaA
+X-ME-Proxy: <xmx:jgiFamjULEfm3a4a-JNEiOFuXAVJoNHvayIvunEpcn6eilXo3izcjg>
+    <xmx:jgiFavojGow0eZeInEg_bdc7P3XRKg94GIKMpfRAtEI6cQzlcM8HiA>
+    <xmx:jgiFaljA0BCi25gfhatgpi5VNjVa7jV8Y2M2Guw4Pf0hzKJEZigz9g>
+    <xmx:jgiFapMQnCbwQTJwFCridH5vBw1L7rTqG4hQ-ziGrJdQJygs7heSXg>
+    <xmx:kAiFahIPiXZudNeGa5FtZOyvB98kJfOACEkdAtsjgUVsn8xQROrNAiPY>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 18 Aug 2026 21:36:12 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: royalnet026@gmail.com
+Cc: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	chaoyi.chen@rock-chips.com,
+	alchark@flipper.net,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v8 02/12] accel/rocket: wait for a running IRQ handler before resetting a core
+Date: Wed, 19 Aug 2026 13:36:09 +1200
+Message-ID: <20260819013609.1613919-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <CAEWPSH7tM9WQUJ0H13ghkiHGzDcdycC1syTuO5B8DpC6cUSnfg@mail.gmail.com>
+References: <CAEWPSH7tM9WQUJ0H13ghkiHGzDcdycC1syTuO5B8DpC6cUSnfg@mail.gmail.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, tomeu@tomeuvizoso.net, 
- p.zabel@pengutronix.de, ulfh@kernel.org, will@kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
- conor+dt@kernel.org, chaoyi.chen@rock-chips.com, 
- dri-devel@lists.freedesktop.org, zhangqing@rock-chips.com, 
- linux-arm-kernel@lists.infradead.org, joro@8bytes.org, 
- devicetree@vger.kernel.org, iommu@lists.linux.dev, linux-pm@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, alchark@flipper.net, 
- ogabbay@kernel.org, royalnet026@gmail.com, diederik@cknow-tech.com, 
- robin.murphy@arm.com, heiko@sntech.de
-To: Jiaxing Hu <gahing@gahingwoo.com>
-In-Reply-To: <20260817113603.1436067-5-gahing@gahingwoo.com>
-References: <20260817113603.1436067-1-gahing@gahingwoo.com>
- <20260817113603.1436067-5-gahing@gahingwoo.com>
-Message-Id: <178709455518.1014304.1443906758035976924.robh@kernel.org>
-Subject: Re: [PATCH v8 04/12] dt-bindings: npu: rockchip: add
- rockchip,rk3576-rknn-core
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260818_183621_757296_3FC14569 
+X-CRM114-Status: GOOD (  16.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,51 +113,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Igor,
 
-On Mon, 17 Aug 2026 23:35:55 +1200, Jiaxing Hu wrote:
-> The RK3576 NPU has two cores of the same RKNN block the RK3588 binding
-> already describes, but it wires them up differently: two extra CBUF
-> clocks, two power domains per core, and a single reset instead of two.
-> It also has no NPU SRAM supply.
-> 
-> Widen the property ranges to cover both, then pin each SoC back to its
-> own shape in allOf so nothing loosens for RK3588, and keep sram-supply
-> required for rockchip,rk3588-rknn-core only.
-> 
-> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> ---
->  .../npu/rockchip,rk3588-rknn-core.yaml        | 47 +++++++++++++++++--
->  1 file changed, 44 insertions(+), 3 deletions(-)
-> 
+I checked all of it against the tree and it holds.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+The lockdep point goes in the commit message. That the wait is on a
+waitqueue rather than a lock, so nothing would have reported the deadlock,
+is a better argument for the placement than mine.
 
-yamllint warnings/errors:
+Masking before the sync, yes. INTERRUPT_MASK is armed in hw_submit and
+cleared only in the hardirq, and rocket_reset never touches it, so on an
+ordinary timeout it is live. Your line numbers are next-20260814 and mine
+have the series on top, so here it is rocket_job.c:165 and :499. I agree
+it is not a hole and that reset.pending already closes the resubmit
+branch. I want the sentence the patch adds to be true on its own, not true
+because something else prevents the case.
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/qcom,spmi-pmic.yaml: Unresolvable reference: /schemas/input/qcom,spmi-haptics.yaml#
+The runtime PM facts are right. rocket_job_is_idle is atomic_read on
+credit_count, runtime_suspend returns -EBUSY only on that and then drops
+the clocks, and drm_sched_stop zeroes the counter until drm_sched_start at
+the end of the reset. The driver does claim idle for the whole body while
+holding nothing, and the two puts differ the way you describe.
 
-doc reference errors (make refcheckdocs):
-Documentation/translations/pt_BR/process/security-bugs.rst: :doc:`regular path submission </../../../process/submitting-patches>`
-Documentation/translations/zh_CN/how-to.rst: Documentation/translations/zh_CN/xxx.rst
-arch/arm/xen/enlighten.c: Documentation/devicetree/bindings/arm/xen.txt
+I am not folding that into 2/12. It changes behaviour in the shared path
+instead of adding a fence, and on this SoC it meets a power domain that
+cycles a bus reset on power-on, so it wants its own patch and a board run.
+It is next in the reset path either way.
 
-See https://patchwork.kernel.org/project/devicetree/patch/20260817113603.1436067-5-gahing@gahingwoo.com
+Your question. MMU_DTE_ADDR predates the rail by about a hundred rounds.
+The entry after a timed out job has come back at one constant with that
+reset error beside it since round 138, recorded in the paper and the
+log-book, and the rail moved to domain-supply in round 241.
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+One near counterexample, since you would find it. The round before the one
+in the cover letter timed a job out and logged no MMU_DTE_ADDR. It had no
+job after the timeout, because the shape that times out runs last on
+purpose, so the attach never happened. Your first bullet from the other
+side.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+I ran your test on the archive. The run with the two MMU_DTE_ADDR lines
+has zero "stall request timed out" and zero "paging request timed out", so
+the MMU is not responding at all rather than sitting in a wrong state.
 
-pip3 install dtschema --upgrade
+The third bullet is what I will build. If put_noidle leaves the device
+active with no idle request pending, the domain never drops between the
+failed job and the next one, and the bus reset that 9/12 cycles on
+power-on never gets cycled. That fits what I have, including the block
+being fine after a reboot and not otherwise. The next image swaps
+put_noidle for put_autosuspend, and separately forces a suspend and resume
+before the next job, so the two do not confound. You get the result either
+way.
 
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+Your aside is right and it is not mine. rocket_reset_work is defined,
+INIT_WORK'd and never queued, and it is that way in the base this series
+sits on, untouched by the twelve.
 
+No tag wanted, for the reason you give.
+
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
