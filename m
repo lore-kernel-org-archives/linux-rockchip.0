@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8920DC5DF86
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2026 12:37:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 731EAC5DF86
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2026 12:38:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
 	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jNXsv42Q+JNNpW/VycCEKN+8evnd/tcG2ZoCw9P5zsQ=; b=4S/vj6MAjPdkxG
-	QZUeBFGAfZiwih150roI2W5ybC5Nu19UzgQMudVZpKQ81MYJLjX9EO4er1k0UJzBIldjDta8v6wWb
-	l46E+GLlFPIrfZF7iPzMLNym1q7oy0ajzPW/b1btzlhvFy2MB8RvV161xysh+se3wnocHz3G/IAlO
-	UVX6+FLv4VPWOlhSoDebNE0WfNWMgvihiGzH4cmg/7WIt7/pDAoh1VwU0aQ4zaLPMksYR8i+a84sq
-	+bac2kPbPIzGgKNnh1Gm/t6YjcrjD1UyoBHyNbGRsFkRoPU5/F9DOScDwaE5URuH9zK35dluFtpI8
-	GM24nuCLWCsvujHmVVOw==;
+	List-Owner; bh=Ky7iZViIDUP3LavulROkBQhvBNMC9rpEKcirfjYBJyM=; b=cl2zKu50eLQ/DK
+	ObAUsaYKpCGvgxaUzy0rwA525hZsB+7VRCd1+M+A5+ADOTypwWufCwG1I2o3iZt496K+qs3tiPr1H
+	ORUmRoWs+Q/69tjlxUv61hbmlH/E5zRSnag/QbFSUoUs+dOXqdh6Nea2KOa5ygbkcvOzFXaFID0Wm
+	7I4Ofc+BwLJ/LRnRIzx841b0DfyVpJtHu7OV7qqL6brXs0LwVhf0mxcgpmYnLfTbQ4X+QrV68fDrE
+	/2fVJPHCQV7Ufwlb8XqducZt3Y7XkE7MujiOOnyxLp28EYpIYCA836XBmEciXpu4KV4QsLlrAH9O3
+	4jgHMOy41n6789FEmtjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwfYI-00000009kyA-0aSt;
-	Wed, 19 Aug 2026 12:37:54 +0000
+	id 1wwfZ4-00000009l4G-1j0g;
+	Wed, 19 Aug 2026 12:38:42 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwfYG-00000009kxh-3MLt;
-	Wed, 19 Aug 2026 12:37:52 +0000
+	id 1wwfZ2-00000009l3n-3oGg;
+	Wed, 19 Aug 2026 12:38:40 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B200F402B7;
-	Wed, 19 Aug 2026 12:37:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EEB81F000E9;
-	Wed, 19 Aug 2026 12:37:51 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 34EE340F48;
+	Wed, 19 Aug 2026 12:38:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 932A01F000E9;
+	Wed, 19 Aug 2026 12:38:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787143071;
-	bh=Y0tJoZ7ZFXTl/tMoaD1TEZl2H8Uq6kgMx3rbwieyM5U=;
+	s=k20260515; t=1787143120;
+	bh=YI5+4EM3RFcICzPCDN2acTJfMmmPcKyBf7I7kSJZ/L0=;
 	h=Date:From:To:Subject:In-Reply-To:References:Cc;
-	b=O6INs1QfspOL+mcZFjses1Bw6NTnyn30eBjytQOVUnC3lv8KvPFc1f5RgXJX5fhd6
-	 U5dTPQUIBGTJshfMXxDQbhx7sdJ0mV3ou6FFBjinfJzZ6gorg3XP9211PcPoXp8xik
-	 reYg8mlQEm8tq44N5if+hlCEEDPmICIeKuyk8wNPQFJ/ibf4oAdbxke1zVFhJTn00q
-	 bC6A9odn2W9OSbmdN0j3Yp2kGQTjp+9LNyCLqby2AQc6X2KYEIH7OJ3+adOQzlljUG
-	 wF2Pi65c8BLpqb7Ty+ibH4vBL6w7pH9QEN65JWzFm/n5dAJPufr/8hjR30X3Pm/y7d
-	 oQhTczfskp9bA==
-Message-ID: <f2765a490c501ccc6e410b94b5497ec8@kernel.org>
-Date: Wed, 19 Aug 2026 12:37:49 +0000
+	b=fBcmiwCKTMtFxhOHtc9GRiO5wFb8YzJryug+nBPRhbxX0Blx+hzT3vEXbe8wkOdGS
+	 yKFYI1ClaHRq+BevdMmiYujzSFX++/qptj30jlVXvilZY6mMGBztqXnP5lFfLnPztx
+	 kG5bW5VkiSG8/LIqhupcHBprl1u3wA1coFPoS4d18Kp75h7L4qoczsF6+CHCNeFfN+
+	 o/uqNvqwSm79VLyfb263d4TAqVXHxGba+W373PsrLL4cWRPKqV/oZHpX7JmTFxIngF
+	 5hvlMAWi4DDiC3WBe2CGHcZF8SbCBJR893oNv06JWQ5G3Pq0saGilyIHFCr0FZF3WL
+	 Ycp5KN3+KK/aQ==
+Message-ID: <256502b250b2bb7ad413489a9bef0ac4@kernel.org>
+Date: Wed, 19 Aug 2026 12:38:38 +0000
 From: "Maxime Ripard" <mripard@kernel.org>
 To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
-Subject: Re: [PATCH v10 10/69] drm/display: hdmi: Add HDMI 2.0 scrambling
- management helpers
-In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-10-294364b2cf15@collabora.com>
-References: <20260731-dw-hdmi-qp-scramb-v10-10-294364b2cf15@collabora.com>
+Subject: Re: [PATCH v10 19/69] drm/display: bridge_connector: Wire up HDMI
+ 2.0 scrambler callbacks
+In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-19-294364b2cf15@collabora.com>
+References: <20260731-dw-hdmi-qp-scramb-v10-19-294364b2cf15@collabora.com>
 Cc: dri-devel@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Algea
  Cao" <algea.cao@rock-chips.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
  Yan" <andy.yan@rock-chips.com>, "Chen-Yu Tsai" <wens@kernel.org>, "Daniel
@@ -80,12 +80,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 31 Jul 2026 19:19:17 +0300, Cristian Ciocaltea wrote:
-> Add helpers to manage the full lifecycle of HDMI 2.0 SCDC scrambling on
-> both source and sink sides:
+On Fri, 31 Jul 2026 19:19:26 +0300, Cristian Ciocaltea wrote:
+> Connect the bridge connector's .scrambler_{enable|disable} callbacks to
+> the underlying bridge's .hdmi_scrambler_{enable|disable} funcs when
+> HDMI 2.0 conformance is advertised.
 > 
-> - drm_hdmi_mode_needs_scrambling(): checks whether a mode, bits per
->   component and output format combination requires scrambling, which is
+> This completes the bridge connector plumbing so that the SCDC
 > 
 > [ ... ]
 
