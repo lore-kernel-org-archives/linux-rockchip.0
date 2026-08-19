@@ -4,123 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A47E2C5DF81
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2026 16:57:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7266C5DF85
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2026 18:47:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iPfCCY4P5GeABzN552zLHhZ9ayrxziivfOQ1msVl56w=; b=oilOIL4GVJIoUL
-	4Jo9jVEAfvNrSz8eB74rCJzCNPDfMQWoAtvGRhaXGNzZVV33PgAv2qPOmTMoidKhjB2JMO9XloIKj
-	ZLxLM9t8PVGjMCOpe7UdWCJ19O9DlDIXKGb+sL5FXiA67B4SE7ZJQ4Ye/AimkTBK96g0uUBSSiLA0
-	GhpeF/QjpZsDR2sCe1ENsf3q0fjsSWkWfGcxiYWCF3AoF0Q7r0ahQA4PBl9RrtqRPPmsrZ+etnuJd
-	c5gNus/THYkORzgYFJzzq+xQ3s9fdQfaHb2fn+LNlPmMyPPG4H3gX8JmQrnr6HSxKf12uldt0ENB9
-	f9IzMLA+/FO3fFrJYGjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1iMFC8kGlVe+4WcroMEDiRH92EkaZKpGXoy2y34hWms=; b=GWGTD9cgbPEjotLK23kpchkPPx
+	DDhOpRWF9kGS1Q/2oDFvD8tGUfZog9mCfFxGM3l5BFVIqlqRM5xDqxetuXnEKMv6bBqLfLGw8sA8g
+	KxdKVedcB27hXYLOufk/PqAK6+73ksZeq9O1ANIOWH3erZ84uAjS9CbyjLur3sqcdAbp3Tmuzaeef
+	JRWaqxoEmKpz2pZOQMKGlBuUlPKdz01FweoOZW+Bazu9nwm00ZN72SmBOC68WcmidhkaRLbhSA8ZT
+	VxXdy9cMI2JhdXOfP6kxhSG+Coshk+y1LgPwWPc1pKNDMVt+rLqGQaMoCI6nVlQLUGIWAqlHihvKG
+	jpdtbp8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwjay-0000000AENa-0QwC;
-	Wed, 19 Aug 2026 16:56:56 +0000
-Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1wwlJs-0000000AOgi-3QVl;
+	Wed, 19 Aug 2026 18:47:24 +0000
+Received: from mail-oi2-x07.google.com ([2607:f8b0:4864:32::7])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwjav-0000000AEMl-3Xfp;
-	Wed, 19 Aug 2026 16:56:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JrOP2KFXg/u70/Lj9HQbzH2Orct3yzeGy3FIkWqAAx/UowBoJgylKct/04PcH3BfY9RPr6SBAkMGU5xTxNfM0rSw9M5S1b27IaTzq4zBnvqWNt8F30vRqqPmdGccGiw6fk7fua7iP1kxocsd/C1YyaxoYbCuZwAd0GWIk1uqUGlYiuVTxudfH0/YmFB2pqsn3OJLBuW84tnh4symZL85llLEDYeknho9LLwG8CNI2ioGq4lS/3OBdqtGTjO/IxuoKIv/ZdjllWtsldxWymM197PBpZUYZI7/30znAaGsZT2092//bGPHZ80GlmMFWAe2Bivvbo7lPCLE/VKMrZ78MA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=efDIOIf3mjthHTHBODGrvUNWG+m7dB76U/PWuFmMTzY=;
- b=MDeGN8cqOb20LrMUDjBbhiTAJtfm/CtTllegAqFa/kB68kbu9LqjS3SA4LZuGF9QcE1W5CPpa79bZfVVxxwu5CQKYYmjseSrCrPS1G8mzDuCk2S722ajoApWqe+et1cYwnGJwSShUDfObx5wO0STbxNASf6NR0jVxpbfbh1jFiIunWjcuwvOmKKjE3+t7zUN3vWS3+3T2qHlgiw0v7iEFx8KI0YkldQo3EMYDf880JYcBgacZPhlZPbinmbB9j9s3999/dEkLi4hZE756eFPVernOTvYw6fXmNt/jbDkW5fQswif54KTYff8Xo7KN3TI727zl1J4dLtTynPIcF73wg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=efDIOIf3mjthHTHBODGrvUNWG+m7dB76U/PWuFmMTzY=;
- b=k0GdovvCzFBP809aBbsVDdX6MDlSqtycgHAhAPpy+isqIhFVCuMVPrwO4iTcR7ti0b4HP10p4R7OgEB4MoY8EpNvckGzkpDMUSKQrQsa1G+VSl9P4wYeo81OuVTfW6r3JKQmZI5cxdBbD5Om7td+9h++spxQG++/U3gU0IVbWsZNJOIb0QEUA0brHIKTjifAWjAIvz/+tEwOFL4XRS+Pw3FBuU6gtByHy7TqFsExxIX5jtgr3H4dny0myVcpwVVtP5zbSYLKtwoNCzdE4Z7WcdaZqpTPJKoW3Z//01lSgZtcIpFDr4V2CsOjT1zNLCAhqFatnkgfAy0c/uOCcKtVMQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
- by AM7PR04MB6888.eurprd04.prod.outlook.com (2603:10a6:20b:107::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.339.8; Wed, 19 Aug
- 2026 16:56:47 +0000
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0339.007; Wed, 19 Aug 2026
- 16:56:47 +0000
-Date: Wed, 19 Aug 2026 12:56:40 -0400
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Michail Tatas <michail.tatas@gmail.com>
-Cc: nicolas.dufresne@collabora.com, benjamin.gaignard@collabora.com,
-	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: verisilicon: rockchip: Fix leaks in init
-Message-ID: <aoXgSKnkbWZVKRui@lizhi-Precision-Tower-5810>
-References: <aoV3LLy5hSoKL4QP@michalis-linux>
-Content-Disposition: inline
-In-Reply-To: <aoV3LLy5hSoKL4QP@michalis-linux>
-X-ClientProxiedBy: PH7P221CA0010.NAMP221.PROD.OUTLOOK.COM
- (2603:10b6:510:32a::18) To GV2PR04MB11799.eurprd04.prod.outlook.com
- (2603:10a6:150:2cf::9)
+	id 1wwlJq-0000000AOgF-2TRF
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Aug 2026 18:47:24 +0000
+Received: by mail-oi2-x07.google.com with SMTP id 46e09a7af769-7ee41f88c50so46710a34.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 19 Aug 2026 11:47:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1787165241; x=1787770041; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=QSwrHGgl2AT1GasXRYkV9GR6hxZV3VVSWH3II1cAJck=;
+        b=jzh87pGJDJyJbIFMlkcXLfh7SxwotI3BVKCWEhFhktkeH5UaUk7Kee01UQrtaD39Z/
+         Jvje9Y0RXm6OToTW/KKMeg9Vvf7DHWQSmVlQB2NavX4KWrnYUVGOJhsBuUbRRaCeu4js
+         SyQaTKAobj3yBdfLIQHDMUv/8b+yvT6gRo0JLrlhYCtpop93YoldB6hQPq9jGcf5uHim
+         BqGjFpOybYlNbbKSVJuL9phfFDfjdVVJxKBfLqerc4QR3GX9q0hUDXXpGoyH684dD6ea
+         s6LCVT6PJOMzkF1Y0glbOnO/qgoIsEnXGvzG1KRzbP/ioc7XtbvgG4ym+p33uNUj42Gf
+         pzCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787165241; x=1787770041;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=QSwrHGgl2AT1GasXRYkV9GR6hxZV3VVSWH3II1cAJck=;
+        b=CQOYZ6JqttwZYwD6jTA8pBUQ74KPp4z0O4y8jXiw8aWB9wkDXqYi8NFFd473S08Hqx
+         tHGcbmvDO9UVWgXQVELTfqMGzWXOAwuEjl9gRMoWm8RcYUrjXg5kAgSgAKtldQdh9Xne
+         mNISdb1EccHJ2NLDegLWonZOopY6AsEYJ26bJolWkU+GZlkNrzG4K6YzIpFGJ415Gcjb
+         PS5iXxGsIbeJ5sWi4om7J8tST9cxTcmfs1hDRjQ5lLM752AlXAyNGNKk4TnD++0jeQLR
+         F9WgUyQ7iTUXVl9kzcaDXHOgNGMvYnpiICV8r1jwljFI/nXSk0ubc/TIH5nWrl9woxg5
+         YzTw==
+X-Forwarded-Encrypted: i=1; AHgh+Rpa4/CGOHwKlA+jWpdWlt2ElZTZoMAVrB56ZTS3VbP5QsVNE6ROKuJ4Z3b53/gZf28SxXFoMo5Jl1gGqTbqiA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZw/ueGh8aAiZg+sY9/+NZsIm1LNhTJqvsRoIO7edL/QuBJPM7
+	y/RRzhl9aUpRVfByieVKlKQw7X+EW+QzLJTRhBGotkzIdl7ngXzACpkdlO2Nh6cJPk8=
+X-Gm-Gg: AR+sD10tobTejATgpq1kQVBElTFy3Pk457aWMGNd5e828WUTeF4xoxTCnx47qpFr752
+	LcoCmKLr+DcNxKdnunj4OjM6QwXYGOc8xtes9791bUkkvS/L1r3ICVgOCUar0AZ7YDDes8j+CUF
+	ZgOOz6sfu6FE7v/3nrfSVSE0MTNKcmG9Jmft2gmPt1JalYDECiPZ9AXgLYhauwhyKRqzJJyBarM
+	YhneEihqSJDLmRpkLwXMUPdScFtXPGjmm1K5FAJbnnl/GlI2vBBD2IoYjFQWlv3JfplPIq+rB+W
+	L+kvXXpnsC2HCLYbCKFbMFPMrPB0yBToRy2bOHidTCgqEbf5nqPhexf5d58he5Obib2zAipxV5C
+	V9ZiE6VgvmXtjlwbl20hZkUOzJK5os+3B2b4QgOSbrqKt9s552H7jhufNFILc6qmH3HlfRtZyQN
+	ZjN8AGUSrwrPWv/NrabbF3KNirnG8c7+XPtgVh4gdAAOyjFyerk8GMwNdCiuSmNp+6CfpEn5Mgh
+	ns=
+X-Received: by 2002:a05:6830:6d17:b0:7e9:adef:4fd4 with SMTP id 46e09a7af769-7f43fa916b2mr7494544a34.11.1787165240632;
+        Wed, 19 Aug 2026 11:47:20 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:15:e221::c41? ([2606:6d00:15:e221::c41])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f440023019sm2466411a34.15.2026.08.19.11.47.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Aug 2026 11:47:19 -0700 (PDT)
+Message-ID: <41ce17bc5d62c2d2a1fb820fa9d4ffb89d20a672.camel@ndufresne.ca>
+Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and
+ some numbers
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Jonas Karlman <jonas@kwiboo.se>, Igor Paunovic <royalnet026@gmail.com>
+Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Heiko Stuebner <heiko@sntech.de>, 
+ Jiaxing Hu <gahing@gahingwoo.com>, Oded Gabbay <ogabbay@kernel.org>,
+ dri-devel@lists.freedesktop.org, 	linux-rockchip@lists.infradead.org
+Date: Wed, 19 Aug 2026 14:47:17 -0400
+In-Reply-To: <3204a0d0-969d-4ac6-adfd-29c57f1c3e0a@kwiboo.se>
+References: <20260801131656.58450-1-royalnet026@gmail.com>
+	 <c495dae1976dab842d77f4a4a142217eb77b6fb7.camel@ndufresne.ca>
+	 <20260818072936.41844-1-royalnet026@gmail.com>
+	 <ad1e526e-a4cf-4c34-88ff-1884ef2f3dfe@kwiboo.se>
+	 <286e8418-fae6-4979-96d1-e13abb04b3a1@kwiboo.se>
+	 <20260819055324.33669-1-royalnet026@gmail.com>
+	 <3204a0d0-969d-4ac6-adfd-29c57f1c3e0a@kwiboo.se>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|AM7PR04MB6888:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3c2dc087-2639-4088-cdcc-08defe12db57
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|23010399003|1800799024|19092799006|56012099006|10067099003|11063799006|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: oZ8Xud8rVigVYvJ3SlTMJi7a4PMgCgDKuxSOH1ymlQUYcvF790RE+kN5nj7Q/56yCt7MHg5XEQiMG6YJKUWjiRK+TkL62FIHeJGLry80P8jM3m55i75Jcs1pxKyiV4+Seo/KJ/SzlY9CEcrm3Bxv94eanqjF1l5Fpot+3mbkkjZkt29hvYimz1XuNhSrbmXV8wLBYuJPwm1AnLiPizwYu9HN56ADSqdyO+bkdviOEXb3ilq8Lr4WVrU1+KvH3QUfbDgsGxhNOujoQGXN7oL9Ki021eQ+Iw/6i/tYz/O11yKXcJATSCTeFM+nC26gC3xevFagMhBbLzArFex7Mquh3tM7zEOdXjXin6LZj+e5B2AmFae8/imODE5XFAq3ldo4c+ia7fS/t73fwSu0gXwZfH4GCTp2YfovZaISevYk8ySM/lgRo9Ojtz+NJ8Ii5vhvcv2vP8jYGdXyxolduYg95Ue/Ih7DWkEntX5UzSIQ4AyXW7zBFd2fUOT0a1WX6VA+iKtr6TzbOn/4rD8s1H1LMl3wctSz0XzbFfp0KHmVD5plJe0d53vhEMRYX6b4IW0nZ9nPNa7MeZLjMrJeeebOSSyKZI+OzCPovRnOI3r8We19WD/K+tG54JDyyk2CHWeotq+dkwxU3bJbcDEzxYFGU63IFtb0NQQFvHy3YThfLrQ=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(23010399003)(1800799024)(19092799006)(56012099006)(10067099003)(11063799006)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?78ySZUOBqKiUzR9wxKUhYY8fjpCtIAYMwKoYqU/ezpUEUc6zmmSFFIkwZIkb?=
- =?us-ascii?Q?bL4K2EQW0TYQ/HKl6e2LsAzw0L0UW83yV6TwMC433j/duw9dBAClcl+a+ycG?=
- =?us-ascii?Q?VGBDjOdabiBCzqxGVKReks7nI7610CUoYrc9VEeCO363LAOyYEsWB3Zo8tKK?=
- =?us-ascii?Q?SNCKXtP7x+3Y0BoYzrzJqIsqwLb5uehR+z1fECnugYvR0ybEHH/EDfgGcmB9?=
- =?us-ascii?Q?dLIexCnFRn2AKesZwNnXzTO36tk7CRI/sTCWu8VAoeaOyKYI7+DWHRXrLCLu?=
- =?us-ascii?Q?kdiKR2dCrG/fgmlYNsTSRlsMvwATFfTtKWIng4cAxyVRjA2TS/0hfhXhZyMV?=
- =?us-ascii?Q?aqiTZt6IovHoHt1j3ySEHl8Gw/G2ospw3RVcC/hYJHpXHhXAoOeImSd7E+zT?=
- =?us-ascii?Q?IwMX8uqRRVhSg10kcU9TLADv7GetvJzJucocPM2nZfo1PdiIWatXfPZw2Rme?=
- =?us-ascii?Q?Pi20bpOHdWnRWz7CdTje9Kptkhn5zq8vQDixBUQwwu2z4k7zGkjUzI4kTQOb?=
- =?us-ascii?Q?P88h362Z4DzlgOkErLhgIH5FqYGG7LxdKIuwsTVCikXDiqumf2c0A81n5NUz?=
- =?us-ascii?Q?9jrXIpmrMPlmipT/2h/wsPyv8pSflnx8kUdGhCNtqVqVbUvaExPxYcPY4rUY?=
- =?us-ascii?Q?b1WwEDujPC+3hElIbRQoo7JVgMATEhAQ0DQOU95sOI07ZfeS3BB9G6O7F1ns?=
- =?us-ascii?Q?zM6h14LM5dzBn0glHvr4lASFB01t2vPQTZIy0GWE5YwI5mIY+lAlHDFl7gNU?=
- =?us-ascii?Q?3rVV6Gtjr46NrLkRGpdkYdToU4viV8cVB0+wMRqAGvoQTM9p/qw0cAuCWYJ8?=
- =?us-ascii?Q?ay7KfVKENVgs8gfbOnAv4dYHzgRTD7CTeOHNz1RBx/iDwBqo+vO1cq8eBY5u?=
- =?us-ascii?Q?9QAGZOSMQwfIKpsaj03tnCuJQQNv18uQv9YhgYhL+TYOMg4y1yTkravgj7LX?=
- =?us-ascii?Q?dNptSv+n9zcr2jI8XorlZ9fwb2K09set3GQiJLudnhUPGcZ0+AeiBhhDjbuI?=
- =?us-ascii?Q?zXheuY2Tke6Krv+HQ0k7fYwpC5EXlZf/Bd3KGFFSd9Uy5MqrMU4xhX/INCqG?=
- =?us-ascii?Q?00r+EFMMr9Y8vtUPe0JbwnYmwRWQIY+wF23FS8dlChkHgqfMTjo5E78wfXj7?=
- =?us-ascii?Q?wrwbAMhrBBtdbZcSCM5E8EdWbw8CvzYkeHH0Yoy9jYVVAAf0Q7SEkpylZmfG?=
- =?us-ascii?Q?jI/LhM409CKvv7FSa4k5TUb/SXgMP7bhKyujSxgVoQ/z7FQjrjcYecVx6Pg3?=
- =?us-ascii?Q?O97uKFTTL9d0bC6Z0AT3V5ZxrRCqU0Edaanmb4QbZ01fDVtAdjTudnGoqjFd?=
- =?us-ascii?Q?7S6OGYMMfUjgLxycY8np1w7VAKqBPY2jAQ23XpMg0hnA2FGRHrAmeA8LVl5q?=
- =?us-ascii?Q?ake9xYVP+2B0cnzSpLN2mjSUPAKMUO2RdwIKWxqjz4YJ1ULVEAf2WKdTeihb?=
- =?us-ascii?Q?KZc57AmncoPxXXmMiqVDszi9r5WyniwREiSRtKgSWJ37fyZK+Lv3ylvE7oJZ?=
- =?us-ascii?Q?Z8OW0Atmm/KKNAC8hK4HMdl3ZN1BeDgKiXKhDlpTJSM3fSRg2VEs0wx9UMEe?=
- =?us-ascii?Q?7Ro26r7gpjAeWYjgkoYixkW+7g9URan9zPEY9xp8sEQBl/RHUeaHjG9RHP0m?=
- =?us-ascii?Q?4qeLQd449G3WpKn5nst7zyE3859x1zopR7B36xKKMfqGFPoTSpn4ZDUjRhlx?=
- =?us-ascii?Q?IxhUt2Ic1OmxloUOL7o2k73v8D2uej2PLaBN+hF18MmeK91AbLwr0krDpljL?=
- =?us-ascii?Q?uX2Ud23HdoE5EYTbvUIPDiTjda1qd3RFViWsIinH9NHlqErdbKB1?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3c2dc087-2639-4088-cdcc-08defe12db57
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Aug 2026 16:56:47.7657
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mq0oY8C0XcuxRxKY32onYPxYBseNlUueCjlXKJk3vb524DJytLzUSm9cxRSbe6w+TZ99n070VYMytvkWqYXwIYhmJ/bRuSGaUcTuJAsSZwiuCnoPymgzGEH8xSK+K8DH
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR04MB6888
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260819_095653_890542_021F97B0 
-X-CRM114-Status: GOOD (  18.91  )
+X-CRM114-CacheID: sfid-20260819_114722_914655_B13469CE 
+X-CRM114-Status: GOOD (  39.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,154 +117,159 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5475346610425434346=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 19, 2026 at 12:28:12PM +0300, Michail Tatas wrote:
-> if one of the dma_alloc_coherent in the init fucntion fails then
-> the previously allocated ones leak.
->
-> Fix by freeing them in the error path.
->
-> Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
-> Signed-off-by: Michail Tatas <michail.tatas@gmail.com>
-> ---
->  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 68 +++++++++++++++----
->  1 file changed, 55 insertions(+), 13 deletions(-)
->
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> index e4e21ad37323..fa77fd402412 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> @@ -369,6 +369,7 @@ void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx)
->
->  int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
->  {
-> +	int ret = 0;
->  	struct hantro_dev *vpu = ctx->dev;
->  	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
->
-> @@ -377,39 +378,54 @@ int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
->  	av1_dec->global_model.cpu = dma_alloc_coherent(vpu->dev, GLOBAL_MODEL_SIZE,
->  						       &av1_dec->global_model.dma,
->  						       GFP_KERNEL);
-> -	if (!av1_dec->global_model.cpu)
-> -		return -ENOMEM;
-> +	if (!av1_dec->global_model.cpu) {
-> +		ret = -ENOMEM;
-> +		goto global_model_cpu_err;
-> +	}
-> +
->  	av1_dec->global_model.size = GLOBAL_MODEL_SIZE;
->
->  	av1_dec->tile_info.cpu = dma_alloc_coherent(vpu->dev, AV1_TILE_INFO_SIZE,
->  						    &av1_dec->tile_info.dma,
->  						    GFP_KERNEL);
-> -	if (!av1_dec->tile_info.cpu)
-> -		return -ENOMEM;
-> +	if (!av1_dec->tile_info.cpu) {
-> +		ret = -ENOMEM;
-> +		goto tile_info_cpu_err;
-> +	}
-> +
 
-This function is called by hantro_probe() if I am correct
+--===============5475346610425434346==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-BonzMBfzDgbeskESyC4p"
 
-there are dmam_alloc_coherent(), use dmam_alloc_coherent() will simple
-error handle and tear down.
 
-Frank
+--=-BonzMBfzDgbeskESyC4p
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
->  	av1_dec->tile_info.size = AV1_TILE_INFO_SIZE;
->
->  	av1_dec->film_grain.cpu = dma_alloc_coherent(vpu->dev,
->  						     ALIGN(sizeof(struct rockchip_av1_film_grain), 2048),
->  						     &av1_dec->film_grain.dma,
->  						     GFP_KERNEL);
-> -	if (!av1_dec->film_grain.cpu)
-> -		return -ENOMEM;
-> +	if (!av1_dec->film_grain.cpu) {
-> +		ret = -ENOMEM;
-> +		goto film_grain_cpu_err;
-> +	}
-> +
->  	av1_dec->film_grain.size = ALIGN(sizeof(struct rockchip_av1_film_grain), 2048);
->
->  	av1_dec->prob_tbl.cpu = dma_alloc_coherent(vpu->dev,
->  						   ALIGN(sizeof(struct av1cdfs), 2048),
->  						   &av1_dec->prob_tbl.dma,
->  						   GFP_KERNEL);
-> -	if (!av1_dec->prob_tbl.cpu)
-> -		return -ENOMEM;
-> +	if (!av1_dec->prob_tbl.cpu) {
-> +		ret = -ENOMEM;
-> +		goto prob_tbl_cpu_err;
-> +	}
-> +
->  	av1_dec->prob_tbl.size = ALIGN(sizeof(struct av1cdfs), 2048);
->
->  	av1_dec->prob_tbl_out.cpu = dma_alloc_coherent(vpu->dev,
->  						       ALIGN(sizeof(struct av1cdfs), 2048),
->  						       &av1_dec->prob_tbl_out.dma,
->  						       GFP_KERNEL);
-> -	if (!av1_dec->prob_tbl_out.cpu)
-> -		return -ENOMEM;
-> +	if (!av1_dec->prob_tbl_out.cpu) {
-> +		ret = -ENOMEM;
-> +		goto prob_tbl_out_cpu_err;
-> +	}
-> +
->  	av1_dec->prob_tbl_out.size = ALIGN(sizeof(struct av1cdfs), 2048);
->  	av1_dec->cdfs = &av1_dec->default_cdfs;
->  	av1_dec->cdfs_ndvc = &av1_dec->default_cdfs_ndvc;
-> @@ -420,11 +436,37 @@ int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
->  						   AV1_TILE_SIZE,
->  						   &av1_dec->tile_buf.dma,
->  						   GFP_KERNEL);
-> -	if (!av1_dec->tile_buf.cpu)
-> -		return -ENOMEM;
-> +	if (!av1_dec->tile_buf.cpu) {
-> +		ret = -ENOMEM;
-> +		goto tile_buf_cpu_err;
-> +	}
-> +
->  	av1_dec->tile_buf.size = AV1_TILE_SIZE;
->
-> -	return 0;
-> +	return ret;
-> +
-> +tile_buf_cpu_err:
-> +	dma_free_coherent(vpu->dev, av1_dec->prob_tbl_out.size,
-> +			  av1_dec->prob_tbl_out.cpu,
-> +			  av1_dec->prob_tbl_out.dma);
-> +prob_tbl_out_cpu_err:
-> +	dma_free_coherent(vpu->dev, av1_dec->prob_tbl.size,
-> +			  av1_dec->prob_tbl.cpu,
-> +			  av1_dec->prob_tbl.dma);
-> +prob_tbl_cpu_err:
-> +	dma_free_coherent(vpu->dev, av1_dec->film_grain.size,
-> +			  av1_dec->film_grain.cpu,
-> +			  av1_dec->film_grain.dma);
-> +film_grain_cpu_err:
-> +	dma_free_coherent(vpu->dev, av1_dec->tile_info.size,
-> +			  av1_dec->tile_info.cpu,
-> +			  av1_dec->tile_info.dma);
-> +tile_info_cpu_err:
-> +	dma_free_coherent(vpu->dev, av1_dec->global_model.size,
-> +			  av1_dec->global_model.cpu,
-> +			  av1_dec->global_model.dma);
-> +global_model_cpu_err:
-> +	return ret;
->  }
->
->  static int rockchip_vpu981_av1_dec_prepare_run(struct hantro_ctx *ctx)
-> --
-> 2.43.0
->
+Le mercredi 19 ao=C3=BBt 2026 =C3=A0 11:40 +0200, Jonas Karlman a =C3=A9cri=
+t=C2=A0:
+> Hi Igor,
+>=20
+> On 8/19/2026 7:52 AM, Igor Paunovic wrote:
+> > Hi Jonas,
+> >=20
+> > On 8/18/2026 2:30 PM, Jonas Karlman wrote:
+> > > Looking closer at my old commits, it was the PCLK_GPU_ROOT that was
+> > > needed for e.g. RK3576 and RK3528. This clock is not described in RK3=
+588
+> > > clock tree so it never gets disabled by Linux clock framework.
+> > >=20
+> > > I suspect similarly one of the NPU root clocks is what drives the NPU
+> > > PVTPLL and thus always must be kept enabled when PVTPLL mode is used.
+> >=20
+> > Thank you - the PCLK_GPU_ROOT observation was the missing piece. I went
+> > through the firmware my board actually runs and can now name the clock
+> > for the NPU case.
+> >=20
+> > First a correction to what I told Nicolas earlier: my BL31 is not the
+> > vendor blob. The boot banner reports v2.12.0-9-gd5c68fd92, which is the
+> > edk2-rk3588 project's TF-A branch: upstream v2.12.0 plus nine feature
+> > commits (SCMI voltage domain, eMMC clock, TRNG, ...). The only one of
+> > those touching rk3588_clk.c adds an eMMC clock; the NPU set_rate/PVTPLL
+> > path is unmodified mainline v2.12. So Nicolas and I are effectively
+> > running the same clock code, and the firmware-difference caveat from my
+> > earlier mail mostly evaporates.
+> >=20
+> > What clk_npu_set_rate() in plat/rockchip/rk3588/drivers/scmi/rk3588_clk=
+.c
+> > does:
+> >=20
+> > - The rate table gives every OPP from 300 MHz up a ring length > 0, so
+> >   they all take the PVTPLL path; 200 MHz has length 0 and takes the
+> >   normal GPLL divider path. The 200 MHz suspend rate we both converged
+> >   on is therefore safe by construction on this SoC.
+> >=20
+> > - For a PVTPLL rate the firmware programs ring_sel/length/calibration
+> >   (cal cnt =3D 24, T =3D 1 us, i.e. a 24 MHz reference) into NPU GRF at
+> >   0xfd5a2000 (NPU_PVTPLL_CON0..2), and only then flips the mux in CRU
+> >   CLKSEL_CON(74) to the PVTPLL path.
+> >=20
+> > The Linux side is where the NPU differs from your GPU case: the NPU
+> > root clocks are fully described in clk-rk3588.c. pclk_npu_root is a
+> > gateable composite (CLKGATE_CON(29) bit 4) and NPU GRF hangs off it
+> > (pclk_npu_grf, CLK_IGNORE_UNUSED). In the mainline DT only core 0
+> > (fdab0000) requests PCLK_NPU_ROOT as its "pclk"; cores 1/2 only hold
+> > their aclk/hclk. So whenever core 0 is runtime-suspended, pclk_npu_root
+> > has no user left and gets gated.
+> >=20
+> > An SCMI set_rate to a PVTPLL rate issued in that state programs a GRF
+> > whose bus clock is off, while the mux write still lands because the CRU
+> > is always clocked - leaving clk_npu_dsu0 parked on a ring that was
+> > never configured. That matches the empirical failure in my RFC exactly:
+> > the sysfs min_freq write while suspended, followed by the power-domain
+> > power-on ack timeout. (I have not put a scope on the APB bus, so "the
+> > GRF write cannot land" is inferred from the failure signature plus the
+> > gate state, not observed directly.)
+>=20
+> Ideally the SCMI firmware code should probably be updated to ensure any
+> required root clock is ungated, and possible also hide some related
+> clocks from OS. I am not even sure this is feasible option and this may
+> diverge too much from vendor blobs and may not be backward compatible.
+>=20
+> >=20
+> > For the series this reinforces the hold-all guard: resuming all cores -
+> > core 0 in particular - around every rate change keeps pclk_npu_root
+> > enabled for the duration of the SCMI call, closing the window for the
+> > sysfs, governor and cooling paths alike. Your .config_clks() +
+> > pm_runtime_suspended() check covers the OPP-initiated paths; I will
+> > reference it and your branch in the cover letter.
+>=20
+> I played around with Nicolas patches and created a more updated
+> config_clks() variant that tries to use the clocks configured for opp
+> instead of keeping track of the clock, see [2]. Have not done any
+> runtime testing of that, but wanted to share the link anyway :-)
+>=20
+> If I remember correctly for the GPU path on RK3576, keeping the 'bus'
+> clock enabled at all times helped ensure any root clock was enabled
+> while GRF is accessed. I cannot remember that I had any issues with GPU
+> GRF access for PD and sysfs governor paths. The config_clks() helped
+> ensure set_rate never was called during GPU probe or when governor was
+> changed. Maybe I missed testing some other paths :-)
+>=20
+> [2] https://github.com/Kwiboo/linux-rockchip/commits/next-20260803-rk-hdm=
+i-v6/
+
+This looks like one of many hacks down, I'll make sure to test and integrat=
+e
+that.
+
+cheers,
+Nicolas
+
+>=20
+> >=20
+> > One open point where your GPU experience may help: besides the GRF
+> > programming interface, do you know whether the ring/monitor logic also
+> > depends on hclk_npu_root, or is the 24 MHz calibration reference
+> > (xin24m, always on) the only other input? If you never had to find out,
+> > I will determine it empirically by holding only pclk and cycling rates.
+>=20
+> I do not know, and never looked too deep into it, with the root clk
+> enabled everything seemed to work great, so I was happy enough with that
+> and just moved on to next thing :-)
+>=20
+> Regards,
+> Jonas
+>=20
+> >=20
+> > Regards,
+> > Igor
+
+--=-BonzMBfzDgbeskESyC4p
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaoX6NQAKCRDZQZRRKWBy
+9LyVAP47C2FSx0QcA5CyoG+DF+6pVuAUKKTgxac0gHmccFpXZAEAgpv4oEEnibPG
+Z9h4UhoOl1Pc1NoDcvVGE6EeBqYNDA8=
+=/Ev9
+-----END PGP SIGNATURE-----
+
+--=-BonzMBfzDgbeskESyC4p--
+
+
+--===============5475346610425434346==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5475346610425434346==--
+
