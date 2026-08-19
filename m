@@ -4,82 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22788C5DF85
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2026 19:33:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B8DEC5DF81
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2026 20:08:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rF/jqlxAoF0/MsjO/hv8+vkWM5mnTCqpH6hOkv5DLMY=; b=oWqRHesSY0MtJt
-	+OilS5YuFsOjS10HIRMxAoO9R6S9DFSGIefIQD309rcDBLKj0Z+72xFEenue0aY8e33rMAoDCMDoL
-	C+JlZvUpIr3Erz/NBdVhjE1IY4syZJm45batnhG5ssG0v5r7lKXCYlLp+gjpCq5ake/OoNj6oqCuu
-	z61otRXuqGfkoQPdJ5ULAG0tDtfj8uVYrtAQWXyceb3momFaKa7MCZGaXrNnrExA6Brysl4RLiN6n
-	2JxSSvnJWUAw7o/KWYW+6W4ma5ATRYB4wy86fjdsKmBog6cWGYBmGw4Xg6MgrDqD9MJMj5Y8f4b6y
-	jrDo/yk5Cmjn0RW2rssg==;
+	List-Owner; bh=8WP/9Sn2VfFkRHpYNnyhXxN47VcrG/YCR3i7qpIfhqM=; b=iWtalsDScnxIh8
+	XwFoKfVUJeMnHUOkDJRlQUZteFsQXrZDn9WG8xQeBKgRxHahsL26NUMsVabCjBey2nEhD4LjoeoVw
+	9rMKPuoQ6HPodavS9Wq25e3WdFw2ZqwZIKtMXWVj8DnTuzzhNDCtKOgMLh9jyacQeRio5JwtaTI31
+	U93qpXllg6WHuCLRJDbmRbGokGYvYQm2RYbbjCSeWa3KYqieYf5TphPowIYOkq2eK/vsUq2+Ok7M4
+	U0fKassbwCXt2G3jkISZ0Ic5rI/reVaCYawlFj9Q+i9s/l80wh/9jncBH9fw2Czmydp7BOeY4lFyr
+	2klcEM99+DmPY28hgOoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwm2C-0000000ASrs-0jRE;
-	Wed, 19 Aug 2026 19:33:12 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wwmaC-0000000AV7R-1d4s;
+	Wed, 19 Aug 2026 20:08:20 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwm28-0000000ASqv-29rL;
-	Wed, 19 Aug 2026 19:33:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1787167985;
-	bh=kMADfvqJCByjsFL1DUPu5iKZB2BEvuf6N8n0yN3fRPk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AfieMMHyQRL41XURO2bGZmSkHtWHDEqArDkWGOzwH0lmBC4AGvhlwJtDrivKTBnuL
-	 wPb14+7hfG1pMLefN7/7N2hUvTKiADLWmO+1NGzZsYfDApIEqMSfPqgog4e5qZbT7C
-	 OKBWrkTdPxvBVZhDTxvmvT1GeUCH/H1PB5vHhQBIWOjPDl6VmNh0bQN0TFNTdSnjVd
-	 zCypTcUTwMvKoi9+xQW0WzK95ZYA/jNdtG+zKmQY3oPrhf2XpUzX7YMTpNEUvB1gTE
-	 8YDnrtVCxKIoBq0Kbh04FViWnXcRy/213kxt7xnKHX9ubX9vmLUar5iqPcNZ2LlP4t
-	 37SUeCXvk10EQ==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4CD517E0110;
-	Wed, 19 Aug 2026 21:33:04 +0200 (CEST)
-Message-ID: <ad65a396-02fb-4816-b978-e3a0c46688b2@collabora.com>
-Date: Wed, 19 Aug 2026 22:33:04 +0300
+	id 1wwma9-0000000AV6x-0yRV
+	for linux-rockchip@lists.infradead.org;
+	Wed, 19 Aug 2026 20:08:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.com;
+	s=s31663417; t=1787170080; x=1787774880; i=boogiepop@gmx.com;
+	bh=F0HN2rt6KtjcYs9YkufiPzjOy9R5j8ZTKh4GWljahIs=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
+	 References:From:In-Reply-To:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=UN/w+ccq1f6JdTFx96Kj4d9RDSS3XU3Kcrekh6EMDNCsOesmghRW2ltxTFgg5X6L
+	 tTV6gGiLDp615IYRxcEh5QI311S+oYqLerxkFzStjoGjH05l0MJgqAnLYzYsv4ouK
+	 flVUZrarnbqQQcNXPDt09C3OBpYpGNAkK3RVv4Y0lb+DHHcMcqT/TtcfcIJTgmoFH
+	 xYWR8Vg58nOlW9KrHomhliQvFbFI4En4QMAKs2j8dHJxY2BtysDuWLyXgkf/ApFe/
+	 YA8dD4w2N6WBzTqefWX8Vp9l8Rij7+srpa+5rDVAfIrr9hzKEY4Bdi88n8vMIdNVO
+	 J1Ao8YdoQb1U3NEfaQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from client.hidden.invalid by mail.gmx.net (mrgmx105
+ [212.227.17.174]) with ESMTPSA (Nemesis) id 1MDywu-1x4Vnw1m5s-00BgSa; Wed, 19
+ Aug 2026 22:08:00 +0200
+Message-ID: <f5241666-9657-4f49-958f-476fd366e408@gmx.com>
+Date: Wed, 19 Aug 2026 22:07:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 07/69] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Chen-Yu Tsai <wens@kernel.org>,
- Samuel Holland <samuel@sholland.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Algea Cao <algea.cao@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
- Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- Maud Spierings <maud_spierings@hotmail.com>,
- Diederik de Haas <diederik@cknow-tech.com>
-References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
- <20260731-dw-hdmi-qp-scramb-v10-7-294364b2cf15@collabora.com>
- <20260819-amigurumi-lorikeet-of-infinity-fd8c2d@houat>
+Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and
+ some numbers
+To: Igor Paunovic <royalnet026@gmail.com>
+Cc: Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Tomeu Vizoso <tomeu@tomeuvizoso.net>, Heiko Stuebner <heiko@sntech.de>,
+ Jiaxing Hu <gahing@gahingwoo.com>, Oded Gabbay <ogabbay@kernel.org>,
+ dri-devel@lists.freedesktop.org, Jonas Karlman <jonas@kwiboo.se>,
+ linux-rockchip@lists.infradead.org
+References: <20260801131656.58450-1-royalnet026@gmail.com>
+ <ad1e526e-a4cf-4c34-88ff-1884ef2f3dfe@kwiboo.se>
+ <286e8418-fae6-4979-96d1-e13abb04b3a1@kwiboo.se>
+ <3204a0d0-969d-4ac6-adfd-29c57f1c3e0a@kwiboo.se>
+ <20260819125932.5853-1-royalnet026@gmail.com>
+ <82c8b17e-7215-45ea-84d1-9991ba6fb541@kwiboo.se>
+ <20260819184807.6665-1-royalnet026@gmail.com>
 Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260819-amigurumi-lorikeet-of-infinity-fd8c2d@houat>
+From: =?UTF-8?Q?H=C3=BCseyin_BIYIK?= <boogiepop@gmx.com>
+In-Reply-To: <20260819184807.6665-1-royalnet026@gmail.com>
+X-Provags-ID: V03:K1:Mlv8S7CUH/7RBz8WXD4sT0R2t5FnyExmoyLbrAdw9qbPOduOzIc
+ dkfXLh3jqXMqDbDCh2fyDkzN0NYNsWI3WCVVKSw7+umm/msOBjFJgwq+3Xt+wAM+1+hO4Ps
+ 1CBmSEonmgLR5Bbz8KdNtDE7dRjFcaiLQEdNhM1kB9KzY/56esS2Am57A2SLYqcyy+voKjE
+ nOsLNrTIq03ONEUCHF5bA==
+UI-OutboundReport: notjunk:1;M01:P0:F5zTgo2ZjLg=;uvySno1TM0IbkTD4AQyqwLhhFki 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 9Ayx3yrDyLA=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260819_123308_725055_BE02CABC 
-X-CRM114-Status: GOOD (  31.21  )
+X-CRM114-CacheID: sfid-20260819_130817_651487_5E823907 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,230 +87,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 8/19/26 1:12 PM, Maxime Ripard wrote:
-> On Fri, Jul 31, 2026 at 07:19:14PM +0300, Cristian Ciocaltea wrote:
->> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
->>
->> - A drm_connector_hdmi_scrambler_supported() helper to report whether
->>   the source supports the scrambling capability, based on the presence
->>   of the newly introduced .scrambler_{enable|disable}() callbacks in
->>   drm_connector_hdmi_funcs are mandatory
->> - A scrambler_needed flag to be managed by the hdmi state helpers based
->>   on the negotiated TMDS character rate and the source/sink scrambling
->>   capabilities
->> - A scrambler_enabled flag to track whether scrambling is currently
->>   active
->> - A delayed work item (scdc_work) to monitor sink-side scrambling status
->>   and retry the setup if the sink resets it
->> - A scdc_work_initialized flag to support lazy initialization of the
->>   work item on the first scrambling enable and guard the teardown paths
->>
->> These are intended to be used by SCDC scrambling helpers to coordinate
->> scrambling setup and teardown between the source driver and the DRM
->> core.
->>
->> Tested-by: Maud Spierings <maud_spierings@hotmail.com>
->> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/gpu/drm/drm_connector.c | 31 ++++++++++++---
->>  include/drm/drm_connector.h     | 83 +++++++++++++++++++++++++++++++++++++++++
->>  2 files changed, 109 insertions(+), 5 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
->> index 4721cdeafc84..a18410faf040 100644
->> --- a/drivers/gpu/drm/drm_connector.c
->> +++ b/drivers/gpu/drm/drm_connector.c
->> @@ -622,12 +622,29 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
->>  	 * default with the actual controller capability. A value of zero keeps
->>  	 * the limit inferred from supported_hdmi_ver.
->>  	 */
->> -	if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_2_0)
->> +	if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_2_0) {
->> +		if (!hdmi_funcs->scrambler_enable || !hdmi_funcs->scrambler_disable) {
->> +			drm_err(dev, "Scrambler callbacks missing for HDMI 2.x\n");
->> +			return -EINVAL;
->> +		}
->> +
->>  		connector->hdmi.max_tmds_char_rate = HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ;
->> -	else if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_1_3)
->> -		connector->hdmi.max_tmds_char_rate = HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
->> -	else if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_1_0)
->> -		connector->hdmi.max_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
->> +	} else {
->> +		/*
->> +		 * Scrambler callbacks are only valid for connectors advertising
->> +		 * HDMI 2.0 capability. drm_connector_hdmi_scrambler_supported()
->> +		 * relies on their presence to report scrambling support.
->> +		 */
->> +		if (hdmi_funcs->scrambler_enable || hdmi_funcs->scrambler_disable) {
->> +			drm_err(dev, "Scrambler callbacks unexpected for HDMI 1.x\n");
->> +			return -EINVAL;
->> +		}
->> +
->> +		if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_1_3)
->> +			connector->hdmi.max_tmds_char_rate = HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
->> +		else if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_1_0)
->> +			connector->hdmi.max_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
->> +	}
-> 
-> I'd put it into a separate test (possibly earlier). Merging both the
-> tmds rate default and the scrambler callbacks check makes it messier
-> than it would be if we had two separate tests.
-
-Ack. How about the following?
-
-	if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_2_0)
-		connector->hdmi.max_tmds_char_rate = HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ;
-	else if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_1_3)
-		connector->hdmi.max_tmds_char_rate = HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
-	else if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_1_0)
-		connector->hdmi.max_tmds_char_rate = HDMI_1_0_TMDS_CHAR_RATE_MAX_HZ;
-
-	if (hdmi_funcs->supported_tmds_char_rate) {
-		if (hdmi_funcs->supported_tmds_char_rate > connector->hdmi.max_tmds_char_rate) {
-			drm_err(dev, "Enforced max_tmds_char_rate exceeds %llu spec limit\n",
-				connector->hdmi.max_tmds_char_rate);
-			return -EINVAL;
-		}
-
-		connector->hdmi.max_tmds_char_rate = hdmi_funcs->supported_tmds_char_rate;
-	}
-
-	if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_2_0) {
-		if (!hdmi_funcs->scrambler_enable || !hdmi_funcs->scrambler_disable) {
-			drm_err(dev, "Scrambler callbacks missing for HDMI 2.x\n");
-			return -EINVAL;
-		}
-	} else {
-		/*
-		 * Scrambler callbacks are only valid for connectors advertising
-		 * HDMI 2.0 capability. drm_connector_hdmi_scrambler_supported()
-		 * relies on their presence to report scrambling support.
-		 */
-		if (hdmi_funcs->scrambler_enable || hdmi_funcs->scrambler_disable) {
-			drm_err(dev, "Scrambler callbacks unexpected for HDMI 1.x\n");
-			return -EINVAL;
-		}
-	}
-
->>  	if (hdmi_funcs->supported_tmds_char_rate) {
->>  		if (hdmi_funcs->supported_tmds_char_rate > connector->hdmi.max_tmds_char_rate) {
->> @@ -635,6 +652,7 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
->>  				connector->hdmi.max_tmds_char_rate);
->>  			return -EINVAL;
->>  		}
->> +
->>  		connector->hdmi.max_tmds_char_rate = hdmi_funcs->supported_tmds_char_rate;
->>  	}
-
-[...]
-
->> +	/**
->> +	 * @scdc_work: Work item currently used to monitor sink-side scrambling
->> +	 * status and retry setup if the sink resets it.
->> +	 */
->> +	struct delayed_work scdc_work;
->> +
->> +	/**
->> +	 * @scdc_work_initialized: Tracks whether @scdc_work has been set up via
->> +	 * INIT_DELAYED_WORK(). The work item is initialized lazily on the first
->> +	 * scrambling enable, so this guards the teardown paths against touching
->> +	 * an uninitialized work item.
->> +	 */
->> +	bool scdc_work_initialized;
->> +
-> 
-> Why should we track whether it's initialized or not? I'd always
-> initialize it, but only ever schedule something if we're using the
-> scrambler.
-
-Having this initialized in the connector would lead to a module dependency
-cycle.
-
-Currently the work function lives in drm_hdmi_helper.c, which is built into
-drm_display_helper module:
-
-static void drm_connector_hdmi_scdc_work(struct work_struct *work)
-{
-	[...]
-	if (READ_ONCE(connector->hdmi.scrambler_enabled) &&
-	    !drm_scdc_get_scrambling_status(connector))
-		drm_connector_hdmi_try_scrambling_setup(connector);
-	[...]
-}
-
-int drm_connector_hdmi_enable_scrambling(struct drm_connector *connector,
-					 const struct drm_connector_state *conn_state)
-{
-
-	[...]
-	if (!hdmi->scdc_work_initialized) {
-		INIT_DELAYED_WORK(&hdmi->scdc_work,
-				  drm_connector_hdmi_scdc_work);
-		hdmi->scdc_work_initialized = true;
-	}
-	[...]
-}
-
-If we move INIT_DELAYED_WORK() into the connector (i.e. in drm.ko), the work
-function has to be reachable from there.  The following attempts to accomplish
-that would fail:
-
-- Keep the work function in drm_hdmi_helper.c and export it from
-  drm_display_helper.
-
-- Move the work function into drm_connector.c and export 
-  drm_connector_hdmi_try_scrambling_setup(), or a wrapper function, from 
-  drm_display_helper.
-
-Either way drm module ends up depending on drm_display_helper, which already 
-depends on drm:
-
-  depmod: ERROR: Cycle detected: drm_display_helper -> drm -> drm_display_helper
-
-My previous approach provided the work function in the connector, and a callback 
-set by the scrambling helper:
-
-/* Part of drm module */
-
-struct drm_connector_hdmi {
-	[...]
-	void (*scdc_cb)(struct drm_connector *connector);
-	[...]
-}
-
-static void drm_connector_hdmi_scdc_work(struct work_struct *work)
-{
-	[...]
-	if (hdmi->scdc_cb)
-		hdmi->scdc_cb(connector);
-	[...]
-}
-
-/* Part of drm_display_helper */
-
-int drm_connector_hdmi_enable_scrambling()
-{
-	[...]
-	hdmi->scdc_cb = drm_scdc_monitor_scrambler;
-	[...]
-}
-
-Since it didn't get positive feedback, I ended up with lazy initialization
-instead.  I think it's the better of the two, as it keeps all the implementation
-logic inside the helper module rather than splitting it across drm and
-drm_display_helper.
-
-Thanks,
-Cristian
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gSWdvcgoKT24gOC8xOS8yNiAyMDo0OCwgSWdvciBQYXVub3ZpYyB3cm90ZToKPiBTbyBh
+IHF1ZXN0aW9uIGZvciB5b3UgYW5kIGZvciBIw7xzZXlpbiAoYWRkZWQgdG8gQ2MpOiBpcyB0aGF0
+Cj4gU1RBVFVTIHJlZ2lzdGVyIHBlcmhhcHMgcmVhZGFibGUgZnJvbSBFTDMgb25seSwgd2l0aCBF
+TDEgcmVhZHMgYXMKPiB6ZXJvPyBUaGF0IHdvdWxkIGV4cGxhaW4gZXZlcnl0aGluZywgc2luY2Ug
+WzNdIHJlYWRzIGl0IGluc2lkZSB0aGUKPiBmaXJtd2FyZS4gSWYgc28sIHRoZSBjbGVhbiBwYXRo
+IGlzIHRoZSBvbmUgWzNdIGFscmVhZHkgaW1wbGVtZW50cyAtCj4gYWZ0ZXIgbXkgdHJpcCBJIHdp
+bGwgY2hlcnJ5LXBpY2sgaXQgaW50byB0aGUgQkwzMSBteSBib2FyZCBydW5zIChpdCBpcwo+IHBs
+YWluIHVwc3RyZWFtIHYyLjEyIHRoZXJlKSBhbmQgcmUtbWVhc3VyZSB0aHJvdWdoIHBsYWluIGNs
+a19nZXRfcmF0ZSwKPiB3aGljaCBhbHNvIHNwYXJlcyB0aGUga2VybmVsIGFueSBHUkYgYWNjZXNz
+IGF0IGFsbC4KCk5vIHlvdSBjYW4gZXZlbiByZWFkIHRoZW0gZnJvbSB1c2Vyc3BhY2Ugd2l0aCBt
+bWFwLiBpIHRoaW5rIHRoZXJlIGlzIAphbHNvIGEgZmlyZXdhbGwgY29uZmlndXJhdGlvbiB3aGVy
+ZSB5b3UgY2FuIHJlc3RyaWN0IHRoZSBhY2Nlc3MgcGVyIGlwIApjb3JlLCBidXQgZGVmYXVsdCBj
+b25maWd1cmF0aW9uIHNob3VsZCBub3QgcmVxdWlyZSBhbnkgRUwgZXNjYWxhdGlvbi4KCklmIHRo
+ZSBzdGF0dXMgcmVnaXN0ZXIgaXMgcHJvdmlkaW5nIDAsIG1vc3QgbGlrZWx5IGl0IGlzIG5vdCBz
+dGFydGVkIChpIAphbSBndWVzc2luZyBieSBwYXN0IGV4cGVyaWVuY2UpLgoKSGVyZSBhcmUgdGhl
+IG1vc3QgcmVsZXZhbnQgcmVnaXN0ZXJzOgpHUkYuQ09OMF9MLnN0YXJ0ID0gMTsgLy8gc3RhcnQg
+dGhlIHN0YXR1cyBjb3VudGVyCkdSRi5DT04wX0wuZW4gPSAxOyAvLyBlbmFibGUgUFRWUExMCkdS
+Ri5DT04wX0wub3NjX3Jpbmdfc2VsID0gbiAvLyByaW5nIHRvIHVzZQpHUkYuQ09OMF9ILnJpbmdf
+c2VsX2xlbiA9IGsgLy8gbGVuZ3RoIG9mIHRoZSByaW5nCkdSRi5DQUxfQ05UID0gMjQgLy8gaG93
+IG1hbnkgc2FtcGxlIHRvIGF2ZXJhZ2UKClJlc3VsdCBpcyBpbjoKR1JGLlNUQVRVUzAuT1NDX0NO
+VCA9IC4uLgoKWW91IGNhbiBhbHNvIG1lc3MgYXJvdW5kIHdpdGggdGhpcyBtbW0gdXNlcnNwYWNl
+IHRvb2wgd2hlcmUgeW91IGNhbiBlZGl0IAp0aGUgR1JGIHJlZ2lzdGVycyB2aXN1YWxseSBpbiBh
+biBlYXN5IHdheSwgdGhlIHB5dGhvbiBjb2RlIGFsc28gc2hvd3MgCmhvdyByZWdpc3RlcnMgaW50
+ZXJhY3Qgd2l0aCBlYWNoIG90aGVyIHdoZW4gY2xvY2sgaXMgY2FsY3VsYXRlZCBpZiB5b3UgCndh
+bnQgdG8gZGlnIGluIGRlZXBlcjoKCmh0dHBzOi8vZ2l0aHViLmNvbS9oYml5aWsvbW1tCgpIZXJl
+IGlzIGEgcXVpY2sgdHV0b3JpYWwgaSBoYWQgd3JpdHRlbiBvbiBob3cgdG8gb2JzZXJ2ZSB0aGUg
+UFZUUExMIApzdGF0dXMgdXNpbmcgbW1tLgpodHRwczovL2ZvcnVtLnJhZHhhLmNvbS90L21tbS1t
+ZW1vcnktbWFwLW1hbmlwdWxhdG9yLXBlcmZlY3QtdG9vbC10by11bi1icmVhay15b3VyLXNvYy8x
+NTMzMi82CgpJIGhvcGUgc2hhcmluZyBsaW5rcyBpcyBmaW5lIGluIG1haWxpbmcgbGlzdC4KCkjD
+vHNleWluCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
