@@ -4,71 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B80C5DF81
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2026 16:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A47E2C5DF81
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2026 16:57:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M9Eu6aQ+6q8T1ihaw++2gRN8onbgLhAZCVqKJSVBXj8=; b=A+N1TdAtCOdlef
-	hzAkX4SDvFIE014pTq58ZvQVB6y21x4JH8Depqr3QHQIzWyKOpC8h6fmDE0EPQbDdKPUDFNDJUkUo
-	jUZ/IG0BSjGwe7YnnFNj0Denj6Ezi/J1doXd8OQyVpprsfgGYhQbkRPReIrre45FIgZD/SV51UiVT
-	IR3Is8fi1j96DDbEQsZT5FAWjVutV3CuD8wFNPDgPUO9pexxVsagxx51zHXs/5skH1EVthjhPYf+R
-	3RECR7EC2WBec0xW7qcRV5+IbX0FjKEXzHiA8EaxmAgVC6GaWMROSSwW0XGtBJXm4ihy1VohaROLq
-	Wh+WGup1qFQDNsXpljAA==;
+	List-Owner; bh=iPfCCY4P5GeABzN552zLHhZ9ayrxziivfOQ1msVl56w=; b=oilOIL4GVJIoUL
+	4Jo9jVEAfvNrSz8eB74rCJzCNPDfMQWoAtvGRhaXGNzZVV33PgAv2qPOmTMoidKhjB2JMO9XloIKj
+	ZLxLM9t8PVGjMCOpe7UdWCJ19O9DlDIXKGb+sL5FXiA67B4SE7ZJQ4Ye/AimkTBK96g0uUBSSiLA0
+	GhpeF/QjpZsDR2sCe1ENsf3q0fjsSWkWfGcxiYWCF3AoF0Q7r0ahQA4PBl9RrtqRPPmsrZ+etnuJd
+	c5gNus/THYkORzgYFJzzq+xQ3s9fdQfaHb2fn+LNlPmMyPPG4H3gX8JmQrnr6HSxKf12uldt0ENB9
+	f9IzMLA+/FO3fFrJYGjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwj1V-0000000AA9C-1Y0M;
-	Wed, 19 Aug 2026 16:20:17 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+	id 1wwjay-0000000AENa-0QwC;
+	Wed, 19 Aug 2026 16:56:56 +0000
+Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwj1S-0000000AA8o-1SJg
-	for linux-rockchip@lists.infradead.org;
-	Wed, 19 Aug 2026 16:20:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1787156413;
- bh=/Ys6PQN2Gy/gC4sjx/MhtQYooND7k7JjSVUYBnPXkNU=;
- b=AOn/L71PhedhMmPNFHZlkZFcn9zWf12E5CfiCB2GSVhXW04G7Gpoi448L6ivD0XsdVMaALMF5
- iACdeDtnmK19OiFEllaIU4X4pOZDL5uKxwhORVmuRod4392QSlxDx1Yh/lkKgZjDz/l/kSrMyyy
- MpoYhSgabJ7YSNKBQkJh/qBMmlQqyCzYnhBbhlgYX9Ay+sOi3GgqW2hP2DA4bKyUFRCbFkd0juS
- PeJyttiDbV4HwDO1lp+/YlzUSlI0FiSojzY5WZzADZR4G7JAKnDYrOXRZe6fxkAJlPWySF+BXAr
- 2ZsNmhXJq6V7SZ50dMHppeO9a3YjvcP36GZ93F5FxnQQ==
-X-Forward-Email-ID: 6a85d7ba03d49fd4b86d3e5c
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
-X-Forward-Email-Version: 2.13.16
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <82c8b17e-7215-45ea-84d1-9991ba6fb541@kwiboo.se>
-Date: Wed, 19 Aug 2026 18:20:06 +0200
+	id 1wwjav-0000000AEMl-3Xfp;
+	Wed, 19 Aug 2026 16:56:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=JrOP2KFXg/u70/Lj9HQbzH2Orct3yzeGy3FIkWqAAx/UowBoJgylKct/04PcH3BfY9RPr6SBAkMGU5xTxNfM0rSw9M5S1b27IaTzq4zBnvqWNt8F30vRqqPmdGccGiw6fk7fua7iP1kxocsd/C1YyaxoYbCuZwAd0GWIk1uqUGlYiuVTxudfH0/YmFB2pqsn3OJLBuW84tnh4symZL85llLEDYeknho9LLwG8CNI2ioGq4lS/3OBdqtGTjO/IxuoKIv/ZdjllWtsldxWymM197PBpZUYZI7/30znAaGsZT2092//bGPHZ80GlmMFWAe2Bivvbo7lPCLE/VKMrZ78MA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=efDIOIf3mjthHTHBODGrvUNWG+m7dB76U/PWuFmMTzY=;
+ b=MDeGN8cqOb20LrMUDjBbhiTAJtfm/CtTllegAqFa/kB68kbu9LqjS3SA4LZuGF9QcE1W5CPpa79bZfVVxxwu5CQKYYmjseSrCrPS1G8mzDuCk2S722ajoApWqe+et1cYwnGJwSShUDfObx5wO0STbxNASf6NR0jVxpbfbh1jFiIunWjcuwvOmKKjE3+t7zUN3vWS3+3T2qHlgiw0v7iEFx8KI0YkldQo3EMYDf880JYcBgacZPhlZPbinmbB9j9s3999/dEkLi4hZE756eFPVernOTvYw6fXmNt/jbDkW5fQswif54KTYff8Xo7KN3TI727zl1J4dLtTynPIcF73wg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
+ s=selector1-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=efDIOIf3mjthHTHBODGrvUNWG+m7dB76U/PWuFmMTzY=;
+ b=k0GdovvCzFBP809aBbsVDdX6MDlSqtycgHAhAPpy+isqIhFVCuMVPrwO4iTcR7ti0b4HP10p4R7OgEB4MoY8EpNvckGzkpDMUSKQrQsa1G+VSl9P4wYeo81OuVTfW6r3JKQmZI5cxdBbD5Om7td+9h++spxQG++/U3gU0IVbWsZNJOIb0QEUA0brHIKTjifAWjAIvz/+tEwOFL4XRS+Pw3FBuU6gtByHy7TqFsExxIX5jtgr3H4dny0myVcpwVVtP5zbSYLKtwoNCzdE4Z7WcdaZqpTPJKoW3Z//01lSgZtcIpFDr4V2CsOjT1zNLCAhqFatnkgfAy0c/uOCcKtVMQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=oss.nxp.com;
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
+ by AM7PR04MB6888.eurprd04.prod.outlook.com (2603:10a6:20b:107::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.339.8; Wed, 19 Aug
+ 2026 16:56:47 +0000
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0339.007; Wed, 19 Aug 2026
+ 16:56:47 +0000
+Date: Wed, 19 Aug 2026 12:56:40 -0400
+From: Frank Li <Frank.li@oss.nxp.com>
+To: Michail Tatas <michail.tatas@gmail.com>
+Cc: nicolas.dufresne@collabora.com, benjamin.gaignard@collabora.com,
+	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] media: verisilicon: rockchip: Fix leaks in init
+Message-ID: <aoXgSKnkbWZVKRui@lizhi-Precision-Tower-5810>
+References: <aoV3LLy5hSoKL4QP@michalis-linux>
+Content-Disposition: inline
+In-Reply-To: <aoV3LLy5hSoKL4QP@michalis-linux>
+X-ClientProxiedBy: PH7P221CA0010.NAMP221.PROD.OUTLOOK.COM
+ (2603:10b6:510:32a::18) To GV2PR04MB11799.eurprd04.prod.outlook.com
+ (2603:10a6:150:2cf::9)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and
- some numbers
-To: Igor Paunovic <royalnet026@gmail.com>
-Cc: Nicolas Dufresne <nicolas@ndufresne.ca>,
- Tomeu Vizoso <tomeu@tomeuvizoso.net>, Heiko Stuebner <heiko@sntech.de>,
- Jiaxing Hu <gahing@gahingwoo.com>, Oded Gabbay <ogabbay@kernel.org>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-References: <20260801131656.58450-1-royalnet026@gmail.com>
- <c495dae1976dab842d77f4a4a142217eb77b6fb7.camel@ndufresne.ca>
- <20260818072936.41844-1-royalnet026@gmail.com>
- <ad1e526e-a4cf-4c34-88ff-1884ef2f3dfe@kwiboo.se>
- <286e8418-fae6-4979-96d1-e13abb04b3a1@kwiboo.se>
- <3204a0d0-969d-4ac6-adfd-29c57f1c3e0a@kwiboo.se>
- <20260819125932.5853-1-royalnet026@gmail.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260819125932.5853-1-royalnet026@gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|AM7PR04MB6888:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3c2dc087-2639-4088-cdcc-08defe12db57
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|23010399003|1800799024|19092799006|56012099006|10067099003|11063799006|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: oZ8Xud8rVigVYvJ3SlTMJi7a4PMgCgDKuxSOH1ymlQUYcvF790RE+kN5nj7Q/56yCt7MHg5XEQiMG6YJKUWjiRK+TkL62FIHeJGLry80P8jM3m55i75Jcs1pxKyiV4+Seo/KJ/SzlY9CEcrm3Bxv94eanqjF1l5Fpot+3mbkkjZkt29hvYimz1XuNhSrbmXV8wLBYuJPwm1AnLiPizwYu9HN56ADSqdyO+bkdviOEXb3ilq8Lr4WVrU1+KvH3QUfbDgsGxhNOujoQGXN7oL9Ki021eQ+Iw/6i/tYz/O11yKXcJATSCTeFM+nC26gC3xevFagMhBbLzArFex7Mquh3tM7zEOdXjXin6LZj+e5B2AmFae8/imODE5XFAq3ldo4c+ia7fS/t73fwSu0gXwZfH4GCTp2YfovZaISevYk8ySM/lgRo9Ojtz+NJ8Ii5vhvcv2vP8jYGdXyxolduYg95Ue/Ih7DWkEntX5UzSIQ4AyXW7zBFd2fUOT0a1WX6VA+iKtr6TzbOn/4rD8s1H1LMl3wctSz0XzbFfp0KHmVD5plJe0d53vhEMRYX6b4IW0nZ9nPNa7MeZLjMrJeeebOSSyKZI+OzCPovRnOI3r8We19WD/K+tG54JDyyk2CHWeotq+dkwxU3bJbcDEzxYFGU63IFtb0NQQFvHy3YThfLrQ=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(23010399003)(1800799024)(19092799006)(56012099006)(10067099003)(11063799006)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?78ySZUOBqKiUzR9wxKUhYY8fjpCtIAYMwKoYqU/ezpUEUc6zmmSFFIkwZIkb?=
+ =?us-ascii?Q?bL4K2EQW0TYQ/HKl6e2LsAzw0L0UW83yV6TwMC433j/duw9dBAClcl+a+ycG?=
+ =?us-ascii?Q?VGBDjOdabiBCzqxGVKReks7nI7610CUoYrc9VEeCO363LAOyYEsWB3Zo8tKK?=
+ =?us-ascii?Q?SNCKXtP7x+3Y0BoYzrzJqIsqwLb5uehR+z1fECnugYvR0ybEHH/EDfgGcmB9?=
+ =?us-ascii?Q?dLIexCnFRn2AKesZwNnXzTO36tk7CRI/sTCWu8VAoeaOyKYI7+DWHRXrLCLu?=
+ =?us-ascii?Q?kdiKR2dCrG/fgmlYNsTSRlsMvwATFfTtKWIng4cAxyVRjA2TS/0hfhXhZyMV?=
+ =?us-ascii?Q?aqiTZt6IovHoHt1j3ySEHl8Gw/G2ospw3RVcC/hYJHpXHhXAoOeImSd7E+zT?=
+ =?us-ascii?Q?IwMX8uqRRVhSg10kcU9TLADv7GetvJzJucocPM2nZfo1PdiIWatXfPZw2Rme?=
+ =?us-ascii?Q?Pi20bpOHdWnRWz7CdTje9Kptkhn5zq8vQDixBUQwwu2z4k7zGkjUzI4kTQOb?=
+ =?us-ascii?Q?P88h362Z4DzlgOkErLhgIH5FqYGG7LxdKIuwsTVCikXDiqumf2c0A81n5NUz?=
+ =?us-ascii?Q?9jrXIpmrMPlmipT/2h/wsPyv8pSflnx8kUdGhCNtqVqVbUvaExPxYcPY4rUY?=
+ =?us-ascii?Q?b1WwEDujPC+3hElIbRQoo7JVgMATEhAQ0DQOU95sOI07ZfeS3BB9G6O7F1ns?=
+ =?us-ascii?Q?zM6h14LM5dzBn0glHvr4lASFB01t2vPQTZIy0GWE5YwI5mIY+lAlHDFl7gNU?=
+ =?us-ascii?Q?3rVV6Gtjr46NrLkRGpdkYdToU4viV8cVB0+wMRqAGvoQTM9p/qw0cAuCWYJ8?=
+ =?us-ascii?Q?ay7KfVKENVgs8gfbOnAv4dYHzgRTD7CTeOHNz1RBx/iDwBqo+vO1cq8eBY5u?=
+ =?us-ascii?Q?9QAGZOSMQwfIKpsaj03tnCuJQQNv18uQv9YhgYhL+TYOMg4y1yTkravgj7LX?=
+ =?us-ascii?Q?dNptSv+n9zcr2jI8XorlZ9fwb2K09set3GQiJLudnhUPGcZ0+AeiBhhDjbuI?=
+ =?us-ascii?Q?zXheuY2Tke6Krv+HQ0k7fYwpC5EXlZf/Bd3KGFFSd9Uy5MqrMU4xhX/INCqG?=
+ =?us-ascii?Q?00r+EFMMr9Y8vtUPe0JbwnYmwRWQIY+wF23FS8dlChkHgqfMTjo5E78wfXj7?=
+ =?us-ascii?Q?wrwbAMhrBBtdbZcSCM5E8EdWbw8CvzYkeHH0Yoy9jYVVAAf0Q7SEkpylZmfG?=
+ =?us-ascii?Q?jI/LhM409CKvv7FSa4k5TUb/SXgMP7bhKyujSxgVoQ/z7FQjrjcYecVx6Pg3?=
+ =?us-ascii?Q?O97uKFTTL9d0bC6Z0AT3V5ZxrRCqU0Edaanmb4QbZ01fDVtAdjTudnGoqjFd?=
+ =?us-ascii?Q?7S6OGYMMfUjgLxycY8np1w7VAKqBPY2jAQ23XpMg0hnA2FGRHrAmeA8LVl5q?=
+ =?us-ascii?Q?ake9xYVP+2B0cnzSpLN2mjSUPAKMUO2RdwIKWxqjz4YJ1ULVEAf2WKdTeihb?=
+ =?us-ascii?Q?KZc57AmncoPxXXmMiqVDszi9r5WyniwREiSRtKgSWJ37fyZK+Lv3ylvE7oJZ?=
+ =?us-ascii?Q?Z8OW0Atmm/KKNAC8hK4HMdl3ZN1BeDgKiXKhDlpTJSM3fSRg2VEs0wx9UMEe?=
+ =?us-ascii?Q?7Ro26r7gpjAeWYjgkoYixkW+7g9URan9zPEY9xp8sEQBl/RHUeaHjG9RHP0m?=
+ =?us-ascii?Q?4qeLQd449G3WpKn5nst7zyE3859x1zopR7B36xKKMfqGFPoTSpn4ZDUjRhlx?=
+ =?us-ascii?Q?IxhUt2Ic1OmxloUOL7o2k73v8D2uej2PLaBN+hF18MmeK91AbLwr0krDpljL?=
+ =?us-ascii?Q?uX2Ud23HdoE5EYTbvUIPDiTjda1qd3RFViWsIinH9NHlqErdbKB1?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3c2dc087-2639-4088-cdcc-08defe12db57
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Aug 2026 16:56:47.7657
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: mq0oY8C0XcuxRxKY32onYPxYBseNlUueCjlXKJk3vb524DJytLzUSm9cxRSbe6w+TZ99n070VYMytvkWqYXwIYhmJ/bRuSGaUcTuJAsSZwiuCnoPymgzGEH8xSK+K8DH
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR04MB6888
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260819_092014_840146_65B842D5 
-X-CRM114-Status: GOOD (  33.52  )
+X-CRM114-CacheID: sfid-20260819_095653_890542_021F97B0 
+X-CRM114-Status: GOOD (  18.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,119 +137,147 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
+On Wed, Aug 19, 2026 at 12:28:12PM +0300, Michail Tatas wrote:
+> if one of the dma_alloc_coherent in the init fucntion fails then
+> the previously allocated ones leak.
+>
+> Fix by freeing them in the error path.
+>
+> Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
+> Signed-off-by: Michail Tatas <michail.tatas@gmail.com>
+> ---
+>  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 68 +++++++++++++++----
+>  1 file changed, 55 insertions(+), 13 deletions(-)
+>
+> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> index e4e21ad37323..fa77fd402412 100644
+> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> @@ -369,6 +369,7 @@ void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx)
+>
+>  int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
+>  {
+> +	int ret = 0;
+>  	struct hantro_dev *vpu = ctx->dev;
+>  	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+>
+> @@ -377,39 +378,54 @@ int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
+>  	av1_dec->global_model.cpu = dma_alloc_coherent(vpu->dev, GLOBAL_MODEL_SIZE,
+>  						       &av1_dec->global_model.dma,
+>  						       GFP_KERNEL);
+> -	if (!av1_dec->global_model.cpu)
+> -		return -ENOMEM;
+> +	if (!av1_dec->global_model.cpu) {
+> +		ret = -ENOMEM;
+> +		goto global_model_cpu_err;
+> +	}
+> +
+>  	av1_dec->global_model.size = GLOBAL_MODEL_SIZE;
+>
+>  	av1_dec->tile_info.cpu = dma_alloc_coherent(vpu->dev, AV1_TILE_INFO_SIZE,
+>  						    &av1_dec->tile_info.dma,
+>  						    GFP_KERNEL);
+> -	if (!av1_dec->tile_info.cpu)
+> -		return -ENOMEM;
+> +	if (!av1_dec->tile_info.cpu) {
+> +		ret = -ENOMEM;
+> +		goto tile_info_cpu_err;
+> +	}
+> +
 
-On 8/19/2026 2:59 PM, Igor Paunovic wrote:
-> Hi Jonas,
-> 
-> I promised to determine empirically which clock the NPU PVTPLL needs.
-> I ran that today. The answer is not what either of us expected, and it
-> comes with two corrections to my previous mail, so those first.
-> 
-> Correction 1: I wrote that only core 0 requests PCLK_NPU_ROOT in the
-> mainline DT. That is wrong - all three rknn-core nodes request it as
-> their "pclk" (my grep had truncated the clocks list; verified since in
-> the tree and in the live FDT). The hazard window is unchanged in
-> practice - the gate still closes whenever all three cores are
-> runtime-suspended, which is the normal idle state - but the sentence
-> as I wrote it was false.
-> 
-> Correction 2: my inferred failure mechanism ("the GRF write cannot
-> land, the mux still switches, the ring is left unconfigured and the
-> failure appears later as a power-on ack timeout") understated reality
-> considerably. Measured today:
-> 
-> Test module, on the same v2.12 firmware discussed earlier: acquire the
-> clocks via the core DT node, verify all three cores runtime-suspended,
-> then issue one clk_set_rate(scmi npu clk, 600 MHz - a PVTPLL-path
-> rate). Serial console at loglevel 8, captured by a recorder on a
-> second machine, so the last lines survive whatever happens. Three
-> arms, one variable:
-> 
->   held during set_rate          outcome
->   pclk_npu_root                 SoC resets, U-Boot 0.58 s after the call
->   pclk + hclk (the PD pair)     identical, 0.58 s
->   nothing (control)             identical, 0.58 s
-> 
-> No oops, no SError trace, nothing on the console after the set_rate
-> marker in any arm - the SoC dies at firmware level and the reset
-> latency is constant to the millisecond across all three. Bus clocks
-> are simply irrelevant to this failure: my open question ("does the
-> ring also need hclk_npu_root?") turns out to be the wrong question.
-> No root clock makes a domain-off set_rate safe.
+This function is called by hantro_probe() if I am correct
 
-Correct, the power domain must be powered on when PVTPLL is used, I
-thought this had already been concluded. It is hard to fully keep track
-when context keeps being removed in each new mail ;-)
+there are dmam_alloc_coherent(), use dmam_alloc_coherent() will simple
+error handle and tear down.
 
-The GPU/NPU related PVTPLL, GRF etc lives inside its PD, at least on
-RK3588. And I also think there was some dependency on the bus clock.
-So when PVTPLL is used instead of a normal PLL from CRU, the PD must be
-kept alive, and we must switch to a normal PLL before PD is powered off,
-it is likely that some bus clock is also needed in addition to PD.
+Frank
 
-> 
-> The explanation most consistent with the data is that the NPU GRF (or
-> the PVTPLL block behind it) sits inside the NPU power island, so the
-> EL3 write to 0xfd5a2000 with the island off is fatal regardless of any
-> bus clock state. I cannot rule out that the firmware dies elsewhere in
-> that path, but the clock-independence is measured, not inferred.
-
-I thought it was possible to access the GRF when normal PLL from CRU is
-used and clocks where enabled, but maybe there is also a dependency on
-PD being powered on to access GRF in normal PLL mode.
-
-> 
-> The counterpart run closes the loop: same module, same set_rate to a
-> PVTPLL rate (1 GHz), with the cores resumed first - completes cleanly,
-> and the GRF readback then matches the firmware table exactly (ring
-> length 12 for 1 GHz in CON0_H, cal_cnt 0x18 in CON1, 0x40000 gating
-> interval in CON2). So the sequence we discussed is confirmed live in
-> the registers, and the domain state is the single discriminating
-> variable.
-> 
-> For the series the consequence is now sharp: every path that can issue
-> an SCMI set_rate - governor, sysfs, cooling, OPP init - must guarantee
-> the domain is powered first. The hold-all guard stays ordered before
-> the devfreq patch, and your pm_runtime_suspended() check in
-> config_clks() guards the OPP-initiated paths for exactly the same
-> reason. On mainline as-is the NPU exposure is theoretical only because
-> nothing scales the clock yet.
-
-It is probably not just set_rate, with PD and/or CLKs disabled just
-reading clk_summary to read SCMI clock rate can issue SError or a freeze.
-At least that was something I managed to trigger when I was playing
-around with using SCMI clock for GPU on RK3588, RK3576 or RK3528.
-
-One option is to fully move GPU/NPU clocks and power domains to SCMI
-firmware, and fully hide GPU/NPU related CRU clocks and PDs for from OS.
-
-> 
-> One small ask: we tried to read a ring frequency counter in the NPU
-> GRF (candidate offset +0x24) to publish measured ring frequency vs
-> voltage; it reads zero with the ring demonstrably running, so the
-> candidate is wrong. If you happen to know the OSC counter offset in
-> the GPU GRF from your experiments, the pointer would save a TRM dig -
-> if not, no matter.
-
-To my knowledge there are status regs that can be used to get the
-measured rate of the PVTPLL, at least upstream TF-A have a commit [3]
-for RK3588 that changes to report the measured rate when PVTPLL mode is
-used.
-
-It is possible the measured value only can be read back when PVTPLL mode
-is used, ring is configured, PD is alive and bus clock is enabled and
-enough time has passed.
-
-[3] https://git.trustedfirmware.org/plugins/gitiles/TF-A/trusted-firmware-a.git/+/d2d6928641bacfa2370a9bb38cdddad229d99ad6
-
-Regards,
-Jonas
-
-> 
-> Regards,
-> Igor
-
+>  	av1_dec->tile_info.size = AV1_TILE_INFO_SIZE;
+>
+>  	av1_dec->film_grain.cpu = dma_alloc_coherent(vpu->dev,
+>  						     ALIGN(sizeof(struct rockchip_av1_film_grain), 2048),
+>  						     &av1_dec->film_grain.dma,
+>  						     GFP_KERNEL);
+> -	if (!av1_dec->film_grain.cpu)
+> -		return -ENOMEM;
+> +	if (!av1_dec->film_grain.cpu) {
+> +		ret = -ENOMEM;
+> +		goto film_grain_cpu_err;
+> +	}
+> +
+>  	av1_dec->film_grain.size = ALIGN(sizeof(struct rockchip_av1_film_grain), 2048);
+>
+>  	av1_dec->prob_tbl.cpu = dma_alloc_coherent(vpu->dev,
+>  						   ALIGN(sizeof(struct av1cdfs), 2048),
+>  						   &av1_dec->prob_tbl.dma,
+>  						   GFP_KERNEL);
+> -	if (!av1_dec->prob_tbl.cpu)
+> -		return -ENOMEM;
+> +	if (!av1_dec->prob_tbl.cpu) {
+> +		ret = -ENOMEM;
+> +		goto prob_tbl_cpu_err;
+> +	}
+> +
+>  	av1_dec->prob_tbl.size = ALIGN(sizeof(struct av1cdfs), 2048);
+>
+>  	av1_dec->prob_tbl_out.cpu = dma_alloc_coherent(vpu->dev,
+>  						       ALIGN(sizeof(struct av1cdfs), 2048),
+>  						       &av1_dec->prob_tbl_out.dma,
+>  						       GFP_KERNEL);
+> -	if (!av1_dec->prob_tbl_out.cpu)
+> -		return -ENOMEM;
+> +	if (!av1_dec->prob_tbl_out.cpu) {
+> +		ret = -ENOMEM;
+> +		goto prob_tbl_out_cpu_err;
+> +	}
+> +
+>  	av1_dec->prob_tbl_out.size = ALIGN(sizeof(struct av1cdfs), 2048);
+>  	av1_dec->cdfs = &av1_dec->default_cdfs;
+>  	av1_dec->cdfs_ndvc = &av1_dec->default_cdfs_ndvc;
+> @@ -420,11 +436,37 @@ int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
+>  						   AV1_TILE_SIZE,
+>  						   &av1_dec->tile_buf.dma,
+>  						   GFP_KERNEL);
+> -	if (!av1_dec->tile_buf.cpu)
+> -		return -ENOMEM;
+> +	if (!av1_dec->tile_buf.cpu) {
+> +		ret = -ENOMEM;
+> +		goto tile_buf_cpu_err;
+> +	}
+> +
+>  	av1_dec->tile_buf.size = AV1_TILE_SIZE;
+>
+> -	return 0;
+> +	return ret;
+> +
+> +tile_buf_cpu_err:
+> +	dma_free_coherent(vpu->dev, av1_dec->prob_tbl_out.size,
+> +			  av1_dec->prob_tbl_out.cpu,
+> +			  av1_dec->prob_tbl_out.dma);
+> +prob_tbl_out_cpu_err:
+> +	dma_free_coherent(vpu->dev, av1_dec->prob_tbl.size,
+> +			  av1_dec->prob_tbl.cpu,
+> +			  av1_dec->prob_tbl.dma);
+> +prob_tbl_cpu_err:
+> +	dma_free_coherent(vpu->dev, av1_dec->film_grain.size,
+> +			  av1_dec->film_grain.cpu,
+> +			  av1_dec->film_grain.dma);
+> +film_grain_cpu_err:
+> +	dma_free_coherent(vpu->dev, av1_dec->tile_info.size,
+> +			  av1_dec->tile_info.cpu,
+> +			  av1_dec->tile_info.dma);
+> +tile_info_cpu_err:
+> +	dma_free_coherent(vpu->dev, av1_dec->global_model.size,
+> +			  av1_dec->global_model.cpu,
+> +			  av1_dec->global_model.dma);
+> +global_model_cpu_err:
+> +	return ret;
+>  }
+>
+>  static int rockchip_vpu981_av1_dec_prepare_run(struct hantro_ctx *ctx)
+> --
+> 2.43.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
