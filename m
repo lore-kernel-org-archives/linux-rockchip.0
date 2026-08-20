@@ -4,52 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C83EC5DF81
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 10:04:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 758B8C5DF82
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 10:10:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:References:In-Reply-To:
-	Cc:To:Subject:From:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tDHufkTU+sYqqetABghMQtJvnAFwKS0O4Trz1j78tFw=; b=KccegdsmdZAHWE
-	Qy1Ms/OG6Tt7uTsWv5yU/0WuPYHKzXrkTS663FOWTMrGnqHoloAXPqZHWFMhfKqcvUcH7nuEmGU5G
-	3LScTRZ7Zmvznf00v7fTWmIPxolF6Qu7DBJhIbBc/mYebtBmBUww58vVORvA32o0cjPAm2SnWmRpd
-	o4N9rmhkpklGNH/c5INrvYP7EWpZtu+/zWKyfaBkD0C5h82xjWWWw6wCQ2tX+I9ZPz/iiWr40DKMr
-	y6hqiVxxv+mLsm/DBuVM8pPACfiWAcXf2PITkVFjh9tABiz0iqz1u9hgiuDbDeAIwJhCHI2/EHto9
-	AdyCbkFrH73vkj/a9h0A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6+PxMA1itkeIh19JBPTG4Vi5ULtBzwyON2GUTZhCey0=; b=3R+yMJazGyhpIeGTJzF2YTITCC
+	nuUBmAanlmZLv+xDAhHToubm49p7Dv+K0PSMGQ4YTy38Ih/BpDvyuGSK9dX5SPlYwll2w/+KaV/Pj
+	VJC4tW2WY3Fy1z15XsCBjCHZ6/MTmOGRngWbjn1AgWxuIAs8QRdTsxdzRKLpWz9bfL9ZjmgkM+Zu/
+	UN0qSAq7HHISYu+guYHZ0Ju/lMm8CwsnD83g6Oceoh5jX5sITqR7K6xnLuJL3fVh8CaOo2ATIOr67
+	Pgdj4G2b7GWUxJVTVkCsewbReQP9Ptvb4O3qTgI/GEcK6P1zxqACxU6de9PWLs+nHeVPrlGVFfY1A
+	bGUO2Bsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwzcs-0000000BK8B-3z9F;
-	Thu, 20 Aug 2026 10:03:58 +0000
-Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
+	id 1wwzjZ-0000000BKYK-3jHP;
+	Thu, 20 Aug 2026 10:10:53 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwzcp-0000000BK7W-2mCo;
-	Thu, 20 Aug 2026 10:03:58 +0000
-Received: from [127.0.0.1] (unknown [IPv6:2a02:560:5dd5:4b00:9ebf:dff:fe00:fdb5])
-	(Authenticated sender: sha@pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 044E3200C95;
-	Thu, 20 Aug 2026 12:03:52 +0200 (CEST)
-Message-ID: <5436875c-9724-41f3-aaf9-76d43e05f0a8@pengutronix.de>
-From: "Sascha Hauer" <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 5/7] media: verisilicon: Add Rockchip VPU720 JPEG
- decoder
-To: "Nicolas Dufresne" <nicolas.dufresne@collabora.com>
-Cc: "Sascha Hauer" <s.hauer@pengutronix.de>, "Benjamin Gaignard" <benjamin.gaignard@collabora.com>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, "Mauro Carvalho Chehab" <mchehab@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>, "Andrzej
- Pietrasiewicz" <andrzej.p@collabora.com>, "Hans Verkuil" <hverkuil@kernel.org>, "Chen-Yu
- Tsai" <wenst@chromium.org>, "Rob Herring" <robh@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Lucas
- Sinn" <lucas.sinn@wolfvision.net>, "Mauro Carvalho Chehab" <mchehab+huawei@kernel.org>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-In-Reply-To: <2816bd84651dcbfd0cd76bbc56e461bd409f9611.camel@collabora.com>
-References: <20260819-rk3588-jpegdec-v1-0-33d74cdf369c@pengutronix.de>
- <20260819-rk3588-jpegdec-v1-5-33d74cdf369c@pengutronix.de>
- <2816bd84651dcbfd0cd76bbc56e461bd409f9611.camel@collabora.com>
-Date: Thu, 20 Aug 2026 10:03:51 +0000
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_030355_852350_6FE80EA0 
-X-CRM114-Status: GOOD (  12.07  )
+	id 1wwzjY-0000000BKXt-0Igt;
+	Thu, 20 Aug 2026 10:10:52 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6B20243464;
+	Thu, 20 Aug 2026 10:10:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEE381F00A3F;
+	Thu, 20 Aug 2026 10:10:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787220651;
+	bh=tcc4wkxLTgTSQg0ktCkPrGENxcfhQ/cSa7F/3AbRwiY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=UygmRPmf5pPxm/fBvyEuceXA5BvTByMEyOX2bTYsbkYr+IyPNGbf/rcWUqj35/SGz
+	 aoMeI4YZP0WYC/LOPhvaXxfcXeErW8gcW1yiTj49E4acPCeBE4rmWnCS/YGxVlAAVV
+	 GSHMHMHsdKmXkDGM2/MhBuSrTe+59gnM3ZX3jpTJazNcmAu3hkex75V/FREbVvKiN0
+	 EX7ZwGkQ6bJfuoPYHu0j8in9VXrLYb/nm2HDS90cmqIy+IfY08nPgm0VzL4cDy/IBd
+	 C6Lk9ttYHun7o0x6CZzf9tCN/EwwEw84wlznStZjZhc2byzW3UZa2fPFEs7pwOue9D
+	 BFd5Olkoe7hgQ==
+Date: Thu, 20 Aug 2026 12:10:49 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Chen-Yu Tsai <wens@kernel.org>, 
+	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Algea Cao <algea.cao@rock-chips.com>, 
+	Daniel Stone <daniels@collabora.com>, Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>, 
+	kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+	Diederik de Haas <diederik@cknow-tech.com>
+Subject: Re: [PATCH v10 67/69] drm/connector: Drop redundant hdmi
+ vendor/product fields
+Message-ID: <20260820-strange-rich-tiger-78a5a4@houat>
+References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
+ <20260731-dw-hdmi-qp-scramb-v10-67-294364b2cf15@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-67-294364b2cf15@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,45 +76,234 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============6590120530818058700=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyNi0wOC0xOSAxMTo0OCwgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPiBIaSBTYXNjaGEs
-Cj4gCj4gTGUgbWVyY3JlZGkgMTkgYW/Du3QgMjAyNiDDoCAxMjozNyArMDIwMCwgU2FzY2hhIEhh
-dWVyIGEgw6ljcml0wqA6Cj4gPiArLyogLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICovCj4gPiArLyogUmVnaXN0ZXIgYnl0
-ZSBvZmZzZXRzIGZyb20gZGVjX2Jhc2XCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICovCj4gPiArLyogLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tICovCj4g
-PiArCj4gPiArLyogUkVHMDogSVAgdmVyc2lvbiAvIHByb2R1Y3QgSUQgKi8KPiA+ICsjZGVmaW5l
-IFZEUFU3MjBfUkVHX1ZFUlNJT04JCTB4MDAwCj4gPiArI2RlZmluZSBWRFBVNzIwX1BST0RfTlVN
-CQlHRU5NQVNLKDMxLCAxNikKPiA+ICsjZGVmaW5lIFZEUFU3MjBfQklUX0RFUFRICQlCSVQoOCkK
-PiAKPiBDYW4geW91IHNoYXJlIGEgZHVtcCBhbmQgc2hhcmUgdGhlc2UgcmVnaXN0ZXIgcmVzZXQg
-dmFsdWVzLiBMb29raW5nIGF0IHRoZQo+IGxheW91dCwgY2xlYXJseSBpdHMgaGlnaGx5IG1vZGlm
-aWVkLCBidXQgcHJvYmFibHkgZGVyaXZlZCBmcm9tIFZTSSBtdWx0aS1jb2RlYywKPiBidXQgSSdt
-IHRoaW5raW5nIHBlcmhhcHMgd2UnbGwgbGVhcm4gbW9yZSBmcm9tIHRoYXQuIEl0cyBhbHdheXMg
-bmljZSB0byBqdXN0aWZ5Cj4gd2hlbiBhZGRpbmcgbW9yZSBjaGlwcyB0aGF0IGFyZSBub3Qgc3Ry
-aWN0bHkgVlNJIGRlc2lnbnMgKG9yIG1heWJlIGl0IGlzKSB0byB0aGUKPiBoYW50cm8gZGlydmVy
-LgoKSGVyZSdzIGEgZnVsbCByZWdpc3RlciBkdW1wIHJpZ2h0IGFmdGVyIHJlc2V0OgoKMDAwMDAw
-MDA6IGRiMWYwMDA1IDAwMDAwMDA0IDAwMTIwMDAwIDAwMDAwMDAwCjAwMDAwMDEwOiAwMDAwNDQw
-MCAwMDAwMDAwMCAwMDAwMDAwMCAwMDAwMDAwMAowMDAwMDAyMDogMDAwMDAwMDAgMDAwMDAwMDAg
-MDAwMDAwMDAgMDAwMDAwMDAKMDAwMDAwMzA6IDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwIDAw
-MDAwMDAwCjAwMDAwMDQwOiAwMDAwMDBmZiAwMDAwMDAwMCAwMDAwMDAwMCAwMDAwMDAwMAowMDAw
-MDA1MDogMDAwMDAwMDAgMDAwMDAwMDAgMDAwMDAwMDAgMDAwMDAwMDAKMDAwMDAwNjA6IDAwMDAw
-MDAwIDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwCjAwMDAwMDcwOiAwMDAwMDAwMCAwMDAwMDAw
-MCAwMDAwMDBhOCAwMDAwMDAwMQowMDAwMDA4MDogMDAyMDAwMDAgMDAwODBmMDYgMDAwMDAwMDAg
-MDAwMDAwMDAKMDAwMDAwOTA6IDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwCjAw
-MDAwMGEwOiAwMDA0MDAwMCAwMDAwMTU1NiAwMDAwMDAwMCAwMDAwMDAwMAowMDAwMDBiMDogMDAw
-MDAwMDAgMDAwMDAwMDAgMDAwMDAwMDAgMDAwMDAwMDAKLi4uCjAwMDAwM2YwOiAwMDAwMDAwMCAw
-MDAwMDAwMCAwMDAwMDAwMCAwMDAwMDAwMAoKU2FzY2hhCgotLSAKUGVuZ3V0cm9uaXggZS5LLiAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwK
-U3RldWVyd2FsZGVyIFN0ci4gMjEgICAgICAgICAgICAgICAgICAgICAgIHwgaHR0cDovL3d3dy5w
-ZW5ndXRyb25peC5kZS8gIHwKMzExMzcgSGlsZGVzaGVpbSwgR2VybWFueSAgICAgICAgICAgICAg
-ICAgIHwgUGhvbmU6ICs0OS01MTIxLTIwNjkxNy0wICAgIHwKQW10c2dlcmljaHQgSGlsZGVzaGVp
-bSwgSFJBIDI2ODYgICAgICAgICAgIHwgRmF4OiAgICs0OS01MTIxLTIwNjkxNy01NTU1IHwKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============6590120530818058700==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="ykye35pgouu6733l"
+Content-Disposition: inline
+
+
+--ykye35pgouu6733l
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v10 67/69] drm/connector: Drop redundant hdmi
+ vendor/product fields
+MIME-Version: 1.0
+
+On Fri, Jul 31, 2026 at 07:20:14PM +0300, Cristian Ciocaltea wrote:
+> Now that all users migrated to the new drmm_connector_hdmi_init()
+> signature, vendor and product are provided through struct
+> drm_connector_hdmi_funcs, a reference to which is already stored in
+> drm_connector_hdmi.
+>=20
+> Drop the redundant fields from drm_connector_hdmi and point its users to
+> hdmi.funcs->vendor and hdmi.funcs->product instead.
+>=20
+> This allows simplifying the related connector registration tests by
+> getting rid of the now unnecessary KUNIT_EXPECT_MEMEQ() checks.
+>=20
+> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, R=
+ock 5B
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c |  4 +--
+>  drivers/gpu/drm/drm_connector.c                 |  4 ---
+>  drivers/gpu/drm/tests/drm_connector_test.c      | 41 +++----------------=
+------
+>  include/drm/drm_connector.h                     | 14 ++-------
+>  4 files changed, 8 insertions(+), 55 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gp=
+u/drm/display/drm_hdmi_state_helper.c
+> index 04c9e06b9dc1..83a8fcb41343 100644
+> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> @@ -784,8 +784,8 @@ static int hdmi_generate_spd_infoframe(const struct d=
+rm_connector *connector,
+>  		return 0;
+> =20
+>  	ret =3D hdmi_spd_infoframe_init(frame,
+> -				      connector->hdmi.vendor,
+> -				      connector->hdmi.product);
+> +				      connector->hdmi.funcs->vendor,
+> +				      connector->hdmi.funcs->product);
+>  	if (ret)
+>  		return ret;
+> =20
+> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connec=
+tor.c
+> index b2e8d99c0e9a..f5f38dc4bfa6 100644
+> --- a/drivers/gpu/drm/drm_connector.c
+> +++ b/drivers/gpu/drm/drm_connector.c
+> @@ -656,10 +656,6 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+>  		connector->hdmi.max_tmds_char_rate =3D hdmi_funcs->supported_tmds_char=
+_rate;
+>  	}
+> =20
+> -	/* TODO: remove after conversion to new drmm_connector_hdmi_init() */
+> -	strtomem_pad(connector->hdmi.vendor, hdmi_funcs->vendor, 0);
+> -	strtomem_pad(connector->hdmi.product, hdmi_funcs->product, 0);
+> -
+>  	/*
+>  	 * drm_connector_attach_max_bpc_property() requires the
+>  	 * connector to have a state.
+> diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm=
+/tests/drm_connector_test.c
+> index 3d8500ad8be9..42f804500de6 100644
+> --- a/drivers/gpu/drm/tests/drm_connector_test.c
+> +++ b/drivers/gpu/drm/tests/drm_connector_test.c
+> @@ -771,14 +771,11 @@ static void drm_test_connector_hdmi_init_null_produ=
+ct(struct kunit *test)
+> =20
+>  /*
+>   * Test that the registration of a connector with a valid, shorter than
+> - * the max length, product name succeeds, and is stored padded with 0.
+> + * the max length, product name succeeds.
+>   */
+>  static void drm_test_connector_hdmi_init_product_valid(struct kunit *tes=
+t)
+>  {
+>  	struct drm_connector_init_priv *priv =3D test->priv;
+> -	const unsigned char expected_product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] =
+=3D {
+> -		'P', 'r', 'o', 'd',
+> -	};
+>  	int ret;
+> =20
+>  	priv->hdmi_funcs =3D dummy_hdmi_funcs;
+> @@ -793,25 +790,15 @@ static void drm_test_connector_hdmi_init_product_va=
+lid(struct kunit *test)
+>  				       DRM_MODE_CONNECTOR_HDMIA,
+>  				       &priv->ddc);
+>  	KUNIT_EXPECT_EQ(test, ret, 0);
+> -	KUNIT_EXPECT_MEMEQ(test,
+> -			   priv->connector.hdmi.product,
+> -			   expected_product,
+> -			   sizeof(priv->connector.hdmi.product));
+>  }
+> =20
+>  /*
+>   * Test that the registration of a connector with a valid, at max
+> - * length, product name succeeds, and is stored padded without any
+> - * trailing \0.
+> + * length, product name succeeds.
+>   */
+>  static void drm_test_connector_hdmi_init_product_length_exact(struct kun=
+it *test)
+>  {
+>  	struct drm_connector_init_priv *priv =3D test->priv;
+> -	const unsigned char expected_product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] =
+=3D {
+> -		'P', 'r', 'o', 'd', 'u', 'c', 't',
+> -		'P', 'r', 'o', 'd', 'u', 'c', 't',
+> -		'P', 'r',
+> -	};
+>  	int ret;
+> =20
+>  	priv->hdmi_funcs =3D dummy_hdmi_funcs;
+> @@ -826,10 +813,6 @@ static void drm_test_connector_hdmi_init_product_len=
+gth_exact(struct kunit *test
+>  				       DRM_MODE_CONNECTOR_HDMIA,
+>  				       &priv->ddc);
+>  	KUNIT_EXPECT_EQ(test, ret, 0);
+> -	KUNIT_EXPECT_MEMEQ(test,
+> -			   priv->connector.hdmi.product,
+> -			   expected_product,
+> -			   sizeof(priv->connector.hdmi.product));
+>  }
+>
+>  /*
+> @@ -857,14 +840,11 @@ static void drm_test_connector_hdmi_init_product_le=
+ngth_too_long(struct kunit *t
+> =20
+>  /*
+>   * Test that the registration of a connector with a vendor name smaller
+> - * than the maximum length succeeds, and is stored padded with zeros.
+> + * than the maximum length succeeds.
+>   */
+>  static void drm_test_connector_hdmi_init_vendor_valid(struct kunit *test)
+>  {
+>  	struct drm_connector_init_priv *priv =3D test->priv;
+> -	const char expected_vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] =3D {
+> -		'V', 'e', 'n', 'd',
+> -	};
+>  	int ret;
+> =20
+>  	priv->hdmi_funcs =3D dummy_hdmi_funcs;
+> @@ -879,24 +859,15 @@ static void drm_test_connector_hdmi_init_vendor_val=
+id(struct kunit *test)
+>  				       DRM_MODE_CONNECTOR_HDMIA,
+>  				       &priv->ddc);
+>  	KUNIT_EXPECT_EQ(test, ret, 0);
+> -	KUNIT_EXPECT_MEMEQ(test,
+> -			   priv->connector.hdmi.vendor,
+> -			   expected_vendor,
+> -			   sizeof(priv->connector.hdmi.vendor));
+>  }
+> =20
+>  /*
+>   * Test that the registration of a connector with a vendor name at the
+> - * maximum length succeeds, and is stored padded without the trailing
+> - * zero.
+> + * maximum length succeeds.
+>   */
+>  static void drm_test_connector_hdmi_init_vendor_length_exact(struct kuni=
+t *test)
+>  {
+>  	struct drm_connector_init_priv *priv =3D test->priv;
+> -	const char expected_vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] =3D {
+> -		'V', 'e', 'n', 'd', 'o', 'r',
+> -		'V', 'e',
+> -	};
+>  	int ret;
+> =20
+>  	priv->hdmi_funcs =3D dummy_hdmi_funcs;
+> @@ -911,10 +882,6 @@ static void drm_test_connector_hdmi_init_vendor_leng=
+th_exact(struct kunit *test)
+>  				       DRM_MODE_CONNECTOR_HDMIA,
+>  				       &priv->ddc);
+>  	KUNIT_EXPECT_EQ(test, ret, 0);
+> -	KUNIT_EXPECT_MEMEQ(test,
+> -			   priv->connector.hdmi.vendor,
+> -			   expected_vendor,
+> -			   sizeof(priv->connector.hdmi.vendor));
+>  }
+
+Unfortunately, these tests were useful, and are there to match what the
+spec asks for.
+
+Maxime
+
+--ykye35pgouu6733l
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaobSpAAKCRAnX84Zoj2+
+dramAYCjWXzgq1MCtalAB+zYaNty4o3hVyz5fmoyZfOIGDeNkSVzfl/vUXhlAUk8
+GrGtsbkBgP3nwqkr6NppanVeZeayDRLEyij3Ru99cTZoRLaV0ehGz39hZIN4ulFB
+3pO+8KSu7w==
+=CVix
+-----END PGP SIGNATURE-----
+
+--ykye35pgouu6733l--
+
+
+--===============6590120530818058700==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6590120530818058700==--
+
