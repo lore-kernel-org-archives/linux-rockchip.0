@@ -4,82 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 335C0C5DF87
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 14:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1000AC5DF81
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 14:49:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q8L9Hgfu1avKLG6rvmGkNXoLFCF+222HMDwSXWZKVNM=; b=42DpZIuhBlNi2+
-	JaV8hW6VZev/WvRooDu4Pv7vZLmnYBS3NgcWGT3Ljq0aAoAEO84E8g0M/jB1vU4QifRtqGS8GmDRP
-	a3/ZXOsP33t5gaJx+WVVu5vhXO1FeOPtwhfafxCUnk7DYgx6/2+WZZ3F93rqkvzPhp3z3LZUnL/Ju
-	OQplSFMMKu/zioWqkEKz6LRpkFshE/Yp5YR0bG2J7DlYbhiqlsO75L0QOGYeWnmtMGBoi4cVIeu33
-	wapMS+jFZckpUqLiS01uiRp5E+Icxq0Toqvl1VvDg352rYudQAvKoioBn/wpkbzLoRd7majT8gzzW
-	+HwEMngThFBORiB8LBhg==;
+	List-Owner; bh=GiZhML225jLn8Jc8ZNA7R+srZ1PLY6zfsjxsOdoZLz0=; b=Vi4zNWz5k7pMf8
+	t4W0DM6Dg8/A25KFoyPt9d9KhhX/HbCbDkE7HAPmr2Jvg/cNTqBB/KJi4gyC5FPhT/QT6DFuHAxmh
+	epFqmfDFONQo9mIhAwfNNrAE9pWnQLkQpm9fxwFQSzloi+eTbU7tBLmrx4Q/ndJfplxmFYGTORNC/
+	giKz112UPNEER2tEn5hYf53yV1vNPknmuOf4MafH1l4sJJE+BsNhADrnwZtjSlrymkCVRg56Woyei
+	kwKCVoHFhBKQGzz/lO1QEYiyJwn+eqT9xrqdSfKg8E4+s9N0lrGWUFWtsZHMVoteI8buMvuix2Anb
+	VympM1XOfM8Yq9IZIbpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx408-0000000BjF4-0VmL;
-	Thu, 20 Aug 2026 14:44:16 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wx45G-0000000Bjrw-1OEN;
+	Thu, 20 Aug 2026 14:49:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx405-0000000BjDw-1K3H;
-	Thu, 20 Aug 2026 14:44:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1787237049;
-	bh=r+P77I8193wL11BA4etBba+tHuwbkrJlDBvncLxVpGQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NefOKIfS0kIidLqvfhuoMts5ws8TZGCYbHJqJh4sVaTgdEmAPdB/q3PG1EQE7iO6Q
-	 cqzxuAlfR/yeZQUEGjPHZEWKmSZgDulSW2iKPRJ+iF9A7+hEBLIEQ+l+8a/siAVHNP
-	 NIKC/+wYm4AzpxAOVjCaX7gNhl1daeuLJmpKq3v2HKeNeyusj1UH/0IfUENchgCjUV
-	 Dpx/zSzJyt6pb+0nmJNzi7hlzT6n4dGhSCcCYnqGResiqWiZezuXDzelZ9pRFGV/Uy
-	 o9DZmjNZ0B0wTETIZmU3mI/Z2smzQ868bW/dgUZU0u0KzCMKzKFwTM34gL5KctSngW
-	 ikVQS5skLw1+A==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC31117E0756;
-	Thu, 20 Aug 2026 16:44:08 +0200 (CEST)
-Message-ID: <774c38bd-6569-4aff-9fbc-a4e017840a55@collabora.com>
-Date: Thu, 20 Aug 2026 17:44:08 +0300
+	id 1wx45D-0000000Bjqt-3x63;
+	Thu, 20 Aug 2026 14:49:32 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 63E4E60A5D;
+	Thu, 20 Aug 2026 14:49:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82D771F000E9;
+	Thu, 20 Aug 2026 14:49:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787237371;
+	bh=Lm/Rx78wMtGoWFPwmRHhjahPVlYyD41OMTehhsY0hbI=;
+	h=Date:From:Subject:To:Cc:References:In-Reply-To;
+	b=Rw2KmWjzcizZ7kU9/FqALNhvOYPtWjbMRtboICVxslrXufqtN5ORzV3ryxblwW4EO
+	 vGG7ZIWGW4D20Mxp4ae7GsWHrY4EXJeUm3aH9cJvg7Dwonlk8r3Axi5NMy7nffoDtF
+	 G+oXPVpL7muhZfpoU9C45C3YHfzDfKYZidCzJ5b3kVey/QOh6G8Q3pKvnOVWpHXVWb
+	 QKt4ExksIIhwVkMHSZ5FWJ4k2iFrr6M4dQNWqyvpCkJt/JIFp3V0Yb3lOIGk0GZSio
+	 B14rP2741r34n358EUND4IXqIQfjr6Lk5PhuzzZNYJmsrGuYNZSjwgpV1s3RWVbISP
+	 smU53jHPt/Daw==
+Message-ID: <218fb204-ad8d-4005-a995-6ae931fa9942@kernel.org>
+Date: Thu, 20 Aug 2026 16:49:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 22/69] drm/display: hdmi-state-helper: Sync SCDC state
- on hotplug
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Chen-Yu Tsai <wens@kernel.org>,
- Samuel Holland <samuel@sholland.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Algea Cao <algea.cao@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
- Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- Maud Spierings <maud_spierings@hotmail.com>,
- Diederik de Haas <diederik@cknow-tech.com>
-References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
- <20260731-dw-hdmi-qp-scramb-v10-22-294364b2cf15@collabora.com>
- <20260820-accomplished-curly-bandicoot-cc36ba@houat>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH] crypto: rockchip: fix autosuspend cleanup during teardown
+To: Guangshuo Li <lgs201920130244@gmail.com>,
+ Corentin Labbe <clabbe@baylibre.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ "David S. Miller" <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>,
+ John Keeping <john@keeping.me.uk>, linux-crypto@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: stable@vger.kernel.org
+References: <20260808093016.2738659-1-lgs201920130244@gmail.com>
 Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260820-accomplished-curly-bandicoot-cc36ba@houat>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_074413_517039_A0702552 
-X-CRM114-Status: GOOD (  24.05  )
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20260808093016.2738659-1-lgs201920130244@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,93 +117,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 8/20/26 11:53 AM, Maxime Ripard wrote:
-> On Fri, Jul 31, 2026 at 07:19:29PM +0300, Cristian Ciocaltea wrote:
->> drm_atomic_helper_connector_hdmi_hotplug() does not currently
->> synchronize SCDC status on hotplug events, leaving the scrambler state
->> potentially inconsistent after (re)connect.
->>
->> Hook drm_connector_hdmi_sync_scdc() into both the connect and disconnect
->> paths, replacing the existing TODOs around missing scrambler handling.
->>
->> Tested-by: Maud Spierings <maud_spierings@hotmail.com>
->> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 23 ++++++++++++++---------
->>  1 file changed, 14 insertions(+), 9 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
->> index 4a93c279c9a7..3377ea936120 100644
->> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
->> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
->> @@ -1205,13 +1205,16 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
->>  					enum drm_connector_status status)
->>  {
->>  	const struct drm_edid *drm_edid;
->> +	int ret = 0;
->>  
->>  	if (status == connector_status_disconnected) {
->> -		// TODO: also handle scramber, HDMI sink disconnected.
->> -		drm_connector_hdmi_audio_plugged_notify(connector, false);
->> -		drm_edid_connector_update(connector, NULL);
->> -		drm_connector_cec_phys_addr_invalidate(connector);
->> -		return 0;
->> +		ret = drm_connector_hdmi_sync_scdc(connector, false, ctx);
->> +		if (ret != -EDEADLK) {
->> +			drm_connector_hdmi_audio_plugged_notify(connector, false);
->> +			drm_edid_connector_update(connector, NULL);
->> +			drm_connector_cec_phys_addr_invalidate(connector);
->> +		}
+On 08/08/2026 11:30, Guangshuo Li wrote:
+> rk_crypto_pm_init() calls pm_runtime_use_autosuspend(), but the
+> autosuspend setting is not undone if pm_runtime_set_suspended() fails
+> or when runtime PM is later torn down by rk_crypto_pm_exit().
 > 
-> If there's a deadlock, shouldn't we restart the whole sequence there?
+> If the autosuspend delay is set to a negative value while autosuspend
+> is enabled, the runtime PM core increments usage_count to prevent
+> runtime suspend. Without calling pm_runtime_dont_use_autosuspend()
+> during cleanup, this reference is not dropped and usage_count remains
+> unbalanced.
+> 
+> Undo the autosuspend setting when pm_runtime_set_suspended() fails and
+> in rk_crypto_pm_exit() before disabling runtime PM.
+> 
+> This issue was found by manual code inspection.
+> 
+> Fixes: a216be3964c1 ("crypto: rockchip - introduce PM")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+> ---
 
-In that case we do already propagate -EDEADLK and let the callers
-(drm_helper_probe_detect_ctx(), drm_helper_probe_single_connector_modes())
-to ensure the sequence is restarted.
+You sent vast amount of patches, all separate, making it very difficult
+to track and respond in efficient way. Do not do that.
 
-> Ie, we should return ret all the time anyway? And if we do that, we
-> should return ret for drm_edid_connector_update() too.
+Group your work per subsystem.
 
-Per .detect_ctx() contract, implementations shall return a drm_connector_status
-value or -EDEADLK only.  On the other hand, .force_ctx() accepts any error code,
-but the probe helpers just log it.  Hence returning anything else wouldn't
-really have an impact on the functionality.
+You were asked to clarify and respond to incorrect fixes statement. I do
+not see how you clarified and responded at all.
 
-Returning errors from drm_edid_connector_update() would potentially override
-non-deadlock ones from sync_scdc().  Since both helpers already log their own
-failures, I think it isn't worth the trouble.
-
-> Either way, a comment on why we're doing it this way would be nice.
-
-Indeed.  Would the following be too verbose?
-
-/*
- * The SCDC resync may reset the CRTC, which might involve aquiring
- * modeset locks.  If that fails, -EDEADLK is reported and the callers
- * passing a non-NULL @ctx drop the locks and restart the sequence
- * - see drm_helper_probe_detect_ctx() and
- * drm_helper_probe_single_connector_modes().
- *
- * The resync runs first, and the audio and CEC helpers only once the
- * link state has settled: the CRTC reset is a blocking commit, so on
- * success the pipeline is already up again, while on -EDEADLK nothing
- * has been resynced yet and the pending retry redoes everything.  This
- * keeps userspace from acting upon a link that is about to be reset.
- *
- * -EDEADLK is the only status gating the helpers below, as it is the
- * sole one guaranteeing a new run.  The other failures are merely
- * reported: .force_ctx() accepts any error code and the probe helpers
- * just log it, while .detect_ctx() has to swallow it, being only
- * allowed to return a drm_connector_status value or -EDEADLK.
- * Propagating the status of drm_edid_connector_update() on top would
- * therefore only make it compete with an earlier resync failure over a
- * value that triggers no recovery, the more so as both helpers already
- * log their own errors.
- */
-
-Thanks,
-Cristian
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
