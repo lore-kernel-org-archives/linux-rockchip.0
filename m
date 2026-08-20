@@ -4,98 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78DD3C5DF81
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 14:26:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 335C0C5DF87
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 14:44:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AhsqYi6eWoF789GRqvIqB+nTRkJsz8wY0AV1J1Ldf2w=; b=1r9mRkX9wBeUyw
-	VFRJpr2JsujOlNHq2V3xS10mNsr4mcdSS66AJw7IoUxY1NYfPbAtc0MCw8hs8KmCWvKQGzMmM8R+i
-	HHjRbUIryll8Gb/oPhDOV3w2o2XmCW2UqKEQUORwkimkXJyi1r3HEf/+lbYy1Bxq8SPahnYe5lIbT
-	v4ZNc3OJzACBLOBzFrQkVth0Q8x1QwgdEW99vSwVhayMpz4ujEXwlCtD5LuUsl395wbQ0uIPQHeuw
-	0oniDNXnv4qbyEC7WJvFk1wMmhbsckvhM2JWVn6dUdc1hDihzuXaUMRD5owZU0hxejgmYZlVpAoKF
-	zZhCcn+93LgKwFDAtLig==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Q8L9Hgfu1avKLG6rvmGkNXoLFCF+222HMDwSXWZKVNM=; b=42DpZIuhBlNi2+
+	JaV8hW6VZev/WvRooDu4Pv7vZLmnYBS3NgcWGT3Ljq0aAoAEO84E8g0M/jB1vU4QifRtqGS8GmDRP
+	a3/ZXOsP33t5gaJx+WVVu5vhXO1FeOPtwhfafxCUnk7DYgx6/2+WZZ3F93rqkvzPhp3z3LZUnL/Ju
+	OQplSFMMKu/zioWqkEKz6LRpkFshE/Yp5YR0bG2J7DlYbhiqlsO75L0QOGYeWnmtMGBoi4cVIeu33
+	wapMS+jFZckpUqLiS01uiRp5E+Icxq0Toqvl1VvDg352rYudQAvKoioBn/wpkbzLoRd7majT8gzzW
+	+HwEMngThFBORiB8LBhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx3ia-0000000BhPn-1Ukj;
-	Thu, 20 Aug 2026 14:26:08 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1wx408-0000000BjF4-0VmL;
+	Thu, 20 Aug 2026 14:44:16 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx3iY-0000000BhOe-04FH
-	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Aug 2026 14:26:07 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-47fecbbafdaso848199f8f.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 20 Aug 2026 07:26:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787235964; x=1787840764; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=WPrWoN2v8CC925FSKCBaAsH1PVinm6f1QGFGXJ4kZhM=;
-        b=A8jt9nhKfwxBvuxaSGdZdq8yYlUrj0REPxdk5ynNZoJeknsxGIF6VaetE+Zs/fFlIi
-         E+3bouKVh1KaU3UeGBc6uUiosFaaXgnQ2QlR3j8tOPJqqFXE38nTgZr/VF/YdoXHHd9x
-         4as+TejQ7su5P/xjyvhZwaS6ejFTugTiZxV8qF9iekvc9fv6cw6Ar4uB+LxuBSf/ijPF
-         x9mTiPUGkLZ2etYbcSzSBNcRiSnlSvqQQpqtGbi4/Ted+UABEDUUZTNJYD3C8O7hvGok
-         tu3kRCZE10ZhWGHduk/KEY3S5jxewH+3LkE+wuNvB0SBY8tStFp5ozFvfP4Gc6v2CfaK
-         PWwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787235964; x=1787840764;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=WPrWoN2v8CC925FSKCBaAsH1PVinm6f1QGFGXJ4kZhM=;
-        b=ZatdJAI+uqVO/QSfRytLfdwN6mR/F/cFodXjEgnS8Ik/GvaU4E/EABe+ZYi3rT9F7i
-         wO/nv8pngMEt7RQxitrUggRWb/hX+c84/s/9q1UPjAbOAISg8j7f0X6sfsslKxDzuxzg
-         cdzvjPvNKl0Md8HIlnyFuRJHNraZDyfKS9gTsQ0LNUj8yWfncVggaR8WiGZSsA9TGfvE
-         ZcfeaLL/nEC3Pb77Y4kTR+XZ704Fy1zozLuIvknnQo80BcdmKv8LpKa8zQ/tw8CSFz6X
-         lLqPoMeTdrgGpdQP04bYVMtnLDRWB4bNj3e51EVxHS6Ay007CLPl48yieFRE1Z/hNjMj
-         bqEg==
-X-Forwarded-Encrypted: i=1; AHgh+RriwELJFQdsEREpZCh5szt13MLA8HzjGDfaNc956+lzOSS5VXRdnqysI+4b2EI3WSU4XZ7x9zbrVHztSVP6rw==@lists.infradead.org
-X-Gm-Message-State: AFuF++l8rLWa90phM3ZqScQk//bFWvpT6h1Tz66+qL8ZoDcisaA3t2UG
-	tM4jBpBv+oH4qpalJPlW6vPExU6Tw16Ukdu99tsO6F3PgeVwHHpYAeIs
-X-Gm-Gg: AR+sD12S7kDJHcr89NbyfuA7GHw7fdpdSup1kgSC23MzLBKyGTt7fHpRSITgN6v0Ymi
-	tBw6bj2JPwlU2izKt8Z1TkFq41BBTrqaNBqwnmaTsRG9i7/YwiDFhi+v4VKqz2RpSpXppoi7aa1
-	FKIpGTBSLxKVulx/q+z8jwRh33wqYTSj8/g5o2wX2JRi2wRPe3yas8gOifPZEI3LiiA1xF7+r8c
-	FaNF64wIv36bNtifjhJoNaWgjfILBXZWxKQld3lU7VG6rVuEj+6EptcfAICXsWqh2++QsFwQfJd
-	VHDqRHYLgdIfQNdAraxQJhtZv9pjzJ091Abpkwz2urlyg6juMb7KHxKNZIxnPS5/6d3XAVvA1vv
-	IqgaX9AF1yr8Vpiww1Fn/Mon/vnK6llcWMDxbEeXCAbxDmNeNqzVYjbefG7QviVpWwAGqKDPF+7
-	czNIOoRoPB1l1+VlQaSkkGjoN9L+HotTxt+zPE44YdUhNQYFupuVJ3f0YToeMf/S74UwPaD+fi/
-	hEPm78mU2MiZCfl96w5OCp32s4JefPlCie+lwluPK9IcyMQH7/5b38r9Eo=
-X-Received: by 2002:a05:6000:22ca:b0:481:3db1:a62f with SMTP id ffacd0b85a97d-482b1fe6ea8mr22171478f8f.17.1787235963992;
-        Thu, 20 Aug 2026 07:26:03 -0700 (PDT)
-Received: from [127.0.1.1] (lmontsouris-656-1-83-121.w82-127.abo.wanadoo.fr. [82.127.110.121])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-482b145153fsm13594027f8f.12.2026.08.20.07.26.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Aug 2026 07:26:03 -0700 (PDT)
-From: Amin Gattout <amin.gattout@gmail.com>
-Date: Thu, 20 Aug 2026 16:25:53 +0200
-Subject: [PATCH] arm64: dts: rockchip: correct rk3576 SDGMAC GRF reg size
+	id 1wx405-0000000BjDw-1K3H;
+	Thu, 20 Aug 2026 14:44:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1787237049;
+	bh=r+P77I8193wL11BA4etBba+tHuwbkrJlDBvncLxVpGQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NefOKIfS0kIidLqvfhuoMts5ws8TZGCYbHJqJh4sVaTgdEmAPdB/q3PG1EQE7iO6Q
+	 cqzxuAlfR/yeZQUEGjPHZEWKmSZgDulSW2iKPRJ+iF9A7+hEBLIEQ+l+8a/siAVHNP
+	 NIKC/+wYm4AzpxAOVjCaX7gNhl1daeuLJmpKq3v2HKeNeyusj1UH/0IfUENchgCjUV
+	 Dpx/zSzJyt6pb+0nmJNzi7hlzT6n4dGhSCcCYnqGResiqWiZezuXDzelZ9pRFGV/Uy
+	 o9DZmjNZ0B0wTETIZmU3mI/Z2smzQ868bW/dgUZU0u0KzCMKzKFwTM34gL5KctSngW
+	 ikVQS5skLw1+A==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC31117E0756;
+	Thu, 20 Aug 2026 16:44:08 +0200 (CEST)
+Message-ID: <774c38bd-6569-4aff-9fbc-a4e017840a55@collabora.com>
+Date: Thu, 20 Aug 2026 17:44:08 +0300
 MIME-Version: 1.0
-Message-Id: <20260820-fix-sdgmac-v1-1-38e8d222b933@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAHAOh2oC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDCyMD3bTMCt3ilPTcxGTdNAtzE7NUYwsj4zRTJaCGgqJUoCzYsOhYCL+
- 4NCkrNbkEZIJSbS0AzGDhlW4AAAA=
-X-Change-ID: 20260820-fix-sdgmac-f8746e3823f5
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Amin Gattout <amin.gattout@gmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1787235963; l=931;
- i=amin.gattout@gmail.com; s=20260818; h=from:subject:message-id;
- bh=4xe9JdHgCBai0JGH7S0MmxJgvM0Sop7zHwcV6p6Mdp8=;
- b=a0/mk3vw2cDrDCh3N3xb5RpnXZy+PlXS4pMzL5B5MsHyFd5/98OYiE/qHXrJP2oDVRBMDgDeJ
- focdUrojPcfBG0yZEDZIyJ7hrkJoZaLdUz0mN4DF30pUoyrEJEipXIm
-X-Developer-Key: i=amin.gattout@gmail.com; a=ed25519;
- pk=MSIqDPkCOkwtyP8Fns1m+KFU9SgqoDl2mpLe18vL+hQ=
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 22/69] drm/display: hdmi-state-helper: Sync SCDC state
+ on hotplug
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Chen-Yu Tsai <wens@kernel.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Algea Cao <algea.cao@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
+ Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>,
+ kernel@collabora.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ Maud Spierings <maud_spierings@hotmail.com>,
+ Diederik de Haas <diederik@cknow-tech.com>
+References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
+ <20260731-dw-hdmi-qp-scramb-v10-22-294364b2cf15@collabora.com>
+ <20260820-accomplished-curly-bandicoot-cc36ba@houat>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20260820-accomplished-curly-bandicoot-cc36ba@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_072606_086942_4C9F0904 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20260820_074413_517039_A0702552 
+X-CRM114-Status: GOOD (  24.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,36 +96,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3576 TRM lists the SDGMAC_GRF register file as 8KB. Adjust the
-reg property size accordingly.
+On 8/20/26 11:53 AM, Maxime Ripard wrote:
+> On Fri, Jul 31, 2026 at 07:19:29PM +0300, Cristian Ciocaltea wrote:
+>> drm_atomic_helper_connector_hdmi_hotplug() does not currently
+>> synchronize SCDC status on hotplug events, leaving the scrambler state
+>> potentially inconsistent after (re)connect.
+>>
+>> Hook drm_connector_hdmi_sync_scdc() into both the connect and disconnect
+>> paths, replacing the existing TODOs around missing scrambler handling.
+>>
+>> Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+>> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 23 ++++++++++++++---------
+>>  1 file changed, 14 insertions(+), 9 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+>> index 4a93c279c9a7..3377ea936120 100644
+>> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+>> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+>> @@ -1205,13 +1205,16 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
+>>  					enum drm_connector_status status)
+>>  {
+>>  	const struct drm_edid *drm_edid;
+>> +	int ret = 0;
+>>  
+>>  	if (status == connector_status_disconnected) {
+>> -		// TODO: also handle scramber, HDMI sink disconnected.
+>> -		drm_connector_hdmi_audio_plugged_notify(connector, false);
+>> -		drm_edid_connector_update(connector, NULL);
+>> -		drm_connector_cec_phys_addr_invalidate(connector);
+>> -		return 0;
+>> +		ret = drm_connector_hdmi_sync_scdc(connector, false, ctx);
+>> +		if (ret != -EDEADLK) {
+>> +			drm_connector_hdmi_audio_plugged_notify(connector, false);
+>> +			drm_edid_connector_update(connector, NULL);
+>> +			drm_connector_cec_phys_addr_invalidate(connector);
+>> +		}
+> 
+> If there's a deadlock, shouldn't we restart the whole sequence there?
 
-Signed-off-by: Amin Gattout <amin.gattout@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+In that case we do already propagate -EDEADLK and let the callers
+(drm_helper_probe_detect_ctx(), drm_helper_probe_single_connector_modes())
+to ensure the sequence is restarted.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index b0c0d3c8b1b1..d418bfc04097 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -970,7 +970,7 @@ vo1_grf: syscon@26036000 {
- 
- 		sdgmac_grf: syscon@26038000 {
- 			compatible = "rockchip,rk3576-sdgmac-grf", "syscon";
--			reg = <0x0 0x26038000 0x0 0x1000>;
-+			reg = <0x0 0x26038000 0x0 0x2000>;
- 		};
- 
- 		ioc_grf: syscon@26040000 {
+> Ie, we should return ret all the time anyway? And if we do that, we
+> should return ret for drm_edid_connector_update() too.
 
----
-base-commit: bd5f485f3f026225b86573e559af0b7254ef4184
-change-id: 20260820-fix-sdgmac-f8746e3823f5
+Per .detect_ctx() contract, implementations shall return a drm_connector_status
+value or -EDEADLK only.  On the other hand, .force_ctx() accepts any error code,
+but the probe helpers just log it.  Hence returning anything else wouldn't
+really have an impact on the functionality.
 
-Best regards,
---  
-Amin Gattout <amin.gattout@gmail.com>
+Returning errors from drm_edid_connector_update() would potentially override
+non-deadlock ones from sync_scdc().  Since both helpers already log their own
+failures, I think it isn't worth the trouble.
 
+> Either way, a comment on why we're doing it this way would be nice.
+
+Indeed.  Would the following be too verbose?
+
+/*
+ * The SCDC resync may reset the CRTC, which might involve aquiring
+ * modeset locks.  If that fails, -EDEADLK is reported and the callers
+ * passing a non-NULL @ctx drop the locks and restart the sequence
+ * - see drm_helper_probe_detect_ctx() and
+ * drm_helper_probe_single_connector_modes().
+ *
+ * The resync runs first, and the audio and CEC helpers only once the
+ * link state has settled: the CRTC reset is a blocking commit, so on
+ * success the pipeline is already up again, while on -EDEADLK nothing
+ * has been resynced yet and the pending retry redoes everything.  This
+ * keeps userspace from acting upon a link that is about to be reset.
+ *
+ * -EDEADLK is the only status gating the helpers below, as it is the
+ * sole one guaranteeing a new run.  The other failures are merely
+ * reported: .force_ctx() accepts any error code and the probe helpers
+ * just log it, while .detect_ctx() has to swallow it, being only
+ * allowed to return a drm_connector_status value or -EDEADLK.
+ * Propagating the status of drm_edid_connector_update() on top would
+ * therefore only make it compete with an earlier resync failure over a
+ * value that triggers no recovery, the more so as both helpers already
+ * log their own errors.
+ */
+
+Thanks,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
