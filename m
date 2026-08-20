@@ -4,66 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B903C5DF86
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 08:55:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77EDAC5DF81
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 09:15:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2Yxj3ohkMJjpanp6Udhh9M8xaJVYbHsH0MHehkOZf8M=; b=swYxgKgEhM/LQ5xR6w1wsmLABK
-	DeKL/yimf4LCyobPDsW6MUsivg4rDBvEQKMijJR9Bo4e6Ja/DvVWZPpzWG5nEaML2IUoBD8UqEzFx
-	v7+PL+5Yvx5y6iREtQIJHf5gGdtmAOPqMSHADgNPJ5a93+1KdPNTltHH0OkcuiSzgoDotB/y/bZcK
-	RibcAMMGix8Cqo7xlo1ey33pgHlTXXDjROS6+J/L8+wnnqe+SPaRT6CL9eIoznAIh1tnBsxtdgFhG
-	pDv8Bo1Dki7nYNzQU1MOTt7G3RSumXFzaOa4Ynf0swJAc4PqCnZR5O2Uh9pA8JsDwBXzXHzwyhDds
-	kC/b3ptQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WLs1ipXg8AJX7E/PmzSfdr1nj3rsL5vOMIOqTMeGnnY=; b=4QZfdg32oEwMK+
+	3x2BUjSgETN4Br/6dMW/Nv1EFaHv1f2OiTDIhEChGOOyAzluy1XvdgtcfzAD6dxduSxxiudJhxrHO
+	W66+mnp7j0Xptoz2mOrEUvES+HMjb9XuDH+8ZYyuvjwjNbnWgNEPS0KNQcpX94w96gZUZxtLXZoVh
+	gE6kSPaQvDtsStvJUI5V1eo18hZj28rDgnXGhBJOxA8B4r7pQoTw74gV3qVIXN1tftp9JxRUWY9tO
+	zuoPOGb+vUtgkdR6lio4nlpHpYTWprG9zDCWCubPKK7tOPnGiuwt+wCDMmItMmxFj4BpYZ0OMvo3g
+	kqj2x/RKvYzLNLt3C5sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwyYL-0000000BCWr-1kfQ;
-	Thu, 20 Aug 2026 08:55:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wwys4-0000000BEa4-1ldb;
+	Thu, 20 Aug 2026 09:15:36 +0000
+Received: from mail-pz2-x00.google.com ([2607:f8b0:4864:3b::])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwyYK-0000000BCWQ-1Hl3;
-	Thu, 20 Aug 2026 08:55:12 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BAD7543783;
-	Thu, 20 Aug 2026 08:55:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B6FB1F000E9;
-	Thu, 20 Aug 2026 08:55:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787216111;
-	bh=l3rPSY8/H1j5rwG0ZinkqkOyB7YrD7s/UlfIdkhJ1Ss=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=oETed9BXxV63wuse+XXarKPoAQ3KSpOTyKnyE7NwwDW3L+GqR6KhcBNOifSEIvzfN
-	 sY7w26iUwAfWzk+FIA2DtXNEcUOOdiQ4DrervBhLHeXyVAA1cKsxNbfW5bm9bnwS7J
-	 r+mTKm/eXeanGOwL6ASPhcNCr/3wvvTZk+QbzSPxEhh+ESK+xBBVh4q2HJ0chhSbpQ
-	 JG0Id8T6ephZcPzHH0lAWDF9p2WVUvwbUYKVSWMSmY0d5JbuVqyZLBnSIaAdVYebgl
-	 yf5/DX1OnarTxQ+YNvY7eqOvwarVqg1OtqgpyBa7tjgYsFUxaB1wf7Yx69A+TNSV/t
-	 QRflykiZOcP5Q==
-Date: Thu, 20 Aug 2026 10:55:09 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Chen-Yu Tsai <wens@kernel.org>, 
-	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Algea Cao <algea.cao@rock-chips.com>, 
-	Daniel Stone <daniels@collabora.com>, Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>, 
-	kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v10 43/69] drm/vc4: hdmi: Propagate -EDEADLK to the top
- level
-Message-ID: <20260820-sceptical-friendly-panther-6cdfd4@houat>
-References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
- <20260731-dw-hdmi-qp-scramb-v10-43-294364b2cf15@collabora.com>
+	id 1wwys1-0000000BEZ8-1jYp
+	for linux-rockchip@lists.infradead.org;
+	Thu, 20 Aug 2026 09:15:35 +0000
+Received: by mail-pz2-x00.google.com with SMTP id 41be03b00d2f7-c96739a46acso1035297a12.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 20 Aug 2026 02:15:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787217332; x=1787822132; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Y1kOOBqdadqKd7sMsBzk2riCQDzvapQr8MFQipboziI=;
+        b=nqh8nZlUQQzDcNGpSBW4REpEaP4uEbYjpzW2RqKVv86sAKJyZurPnx9AslH/PcyCzS
+         aRXNU9HNyv2SmulT+7GR+CoeuEfl04PxvBOodIZg/8blhux9rPE9AlPczqbVS2WmZpFY
+         zOAo6fukSrRasRsVrEZvkMvRvPXXUhI47K9AjxhZdXP5hNQ0zE0pPMZR5QmlPJ6Q/eZc
+         x0ahfA9xBqHZS8jytDEPJ6XIly3yoLlueV4mnrS2nqutsFQRyEHzmcx8wYu1rPyl3AaE
+         KY/+I7MrNwE3i1rv3dDaHSYnDGu2JiJwv6P8kAUQZU39MVQapi9cbVw1Gn5/Mpu85+iK
+         +dBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787217332; x=1787822132;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Y1kOOBqdadqKd7sMsBzk2riCQDzvapQr8MFQipboziI=;
+        b=UGY3z8gafMgZbaQss0CXIlznkeiGbdQSTZgA9RZgjrPgxFv8A0GwJISd8AbYNvpw7e
+         DW8Cez2xSwzsvVEGp7jczh52Lw2FleJiRDLxeWVjLZb2FaRdSryiyrEEbDjgt+s4xRJ8
+         1g0tRSluwt8Qt0DK+fRTainUB6ozaCh3e533SUp0Rjd6TOs7xg1RnVJ9LmWuPkO5J3zG
+         4GXHjyF3vvI9ez1sZgwpCbpDnGeSMRjjXxrUXQ3fGUQgf2XutEtu9zog8uCxsBHq95lu
+         9gfKw+0odc0C8ZKl4+66QOLz4RvtS8JXxhTzHWgiM81qweVjgrxyfr+y2d1UAl1bd1et
+         FfmA==
+X-Forwarded-Encrypted: i=1; AHgh+RobPZpox2RjPJHw2HpcJOT/g4oBKgjs9hw+pGtldZDR6ePzuLiZR9O5MP1fbEXoC9cQDOgQGLif9dhsfDOPyA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy86Ny4WywVrC1w6+VRbBmM93ub4IXYeSqskS82n/B9s5+3I6hB
+	+eWKguX82SWzRJdWZfm+9Z3rwyaHD3nli3FV2qXap5IFOE0v0SnQuHY=
+X-Gm-Gg: AR+sD10HYBpY0Yt3M6db0L2Nc2eOvFiyy2K33xOXJLxYCIiI7blbgPCsixcpNrgNJ5U
+	ZLFbEixNKmH3ArXod6EdCbjH7NHARbXfYFg/ET6MFPqp0hy1Dkg7Tr1IKZ9M0dwO+5io7NDdQmm
+	eq28+SzAsTHyfOLI4Bo5Ntr6r9Gf94j3MvvK6s0AiA+9sCMqzCZf+Ogy9lirbQtWNsASKevFsjm
+	TPBv6G7mtCa1hOuSRUbUX+z2gj7Avg9Qr5KSFRc3LjUqyP4uUjiGnQ057jxEN83yrUhNEU8O+mh
+	faHNmUhfWUPjvL3TUwhdEUee8cCYPhx4sxLTuuoCo37KHjncj0/8qnZGfZNC4NZU/1QH1198biB
+	JkgnsYzCkCOxHSLFnZFCUDMuYbCTvYak5JnBMMj+SFV+QqdUJSdny1hhAasFStyC+QRYE4Shrrd
+	2FhNkNBMDGGY97U2rn/h2Maa+BaLdStZLhlQffUFRZZ8h8rqO0jvcFqACHZs4l+WpYrsV9eve7L
+	w==
+X-Received: by 2002:a05:6a00:2305:b0:84f:dc19:b77d with SMTP id d2e1a72fcca58-851d3953250mr18184469b3a.12.1787217332306;
+        Thu, 20 Aug 2026 02:15:32 -0700 (PDT)
+Received: from DL2XHKPB4.dl.net ([103.63.104.162])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-851d3617434sm1431016b3a.29.2026.08.20.02.15.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 20 Aug 2026 02:15:31 -0700 (PDT)
+From: Triet Hoang <triet.hoang.dev@gmail.com>
+To: andi.shyti@kernel.org
+Cc: chris.packham@alliedtelesis.co.nz,
+	heiko@sntech.de,
+	linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Triet Hoang <triet.hoang.dev@gmail.com>
+Subject: [PATCH] i2c: busses: Convert to DEFINE_SIMPLE_DEV_PM_OPS()
+Date: Thu, 20 Aug 2026 16:15:27 +0700
+Message-ID: <20260820091527.2118302-1-triet.hoang.dev@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-In-Reply-To: <20260731-dw-hdmi-qp-scramb-v10-43-294364b2cf15@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260820_021533_457842_B231FBF0 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,126 +97,140 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1888438854714587016=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Convert the deprecated SIMPLE_DEV_PM_OPS
+to DEFINE_SIMPLE_DEV_PM_OPS and pm_sleep_ptr().
 
---===============1888438854714587016==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="jheie2hl6uizzjqu"
-Content-Disposition: inline
+This lets us drop the __maybe_unused annotations from its suspend and
+resume callbacks, and reduces kernel size in case CONFIG_PM or
+CONFIG_PM_SLEEP is disabled.
 
+Signed-off-by: Triet Hoang <triet.hoang.dev@gmail.com>
+---
+ drivers/i2c/busses/i2c-eg20t.c | 8 ++++----
+ drivers/i2c/busses/i2c-mpc.c   | 8 ++++----
+ drivers/i2c/busses/i2c-rk3x.c  | 6 +++---
+ 3 files changed, 11 insertions(+), 11 deletions(-)
 
---jheie2hl6uizzjqu
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v10 43/69] drm/vc4: hdmi: Propagate -EDEADLK to the top
- level
-MIME-Version: 1.0
+diff --git a/drivers/i2c/busses/i2c-eg20t.c b/drivers/i2c/busses/i2c-eg20t.c
+index 8c67ab4f2aad..405229cf8f1d 100644
+--- a/drivers/i2c/busses/i2c-eg20t.c
++++ b/drivers/i2c/busses/i2c-eg20t.c
+@@ -829,7 +829,7 @@ static void pch_i2c_remove(struct pci_dev *pdev)
+ 	kfree(adap_info);
+ }
+ 
+-static int __maybe_unused pch_i2c_suspend(struct device *dev)
++static int pch_i2c_suspend(struct device *dev)
+ {
+ 	int i;
+ 	struct pci_dev *pdev = to_pci_dev(dev);
+@@ -857,7 +857,7 @@ static int __maybe_unused pch_i2c_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused pch_i2c_resume(struct device *dev)
++static int pch_i2c_resume(struct device *dev)
+ {
+ 	int i;
+ 	struct adapter_info *adap_info = dev_get_drvdata(dev);
+@@ -870,14 +870,14 @@ static int __maybe_unused pch_i2c_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(pch_i2c_pm_ops, pch_i2c_suspend, pch_i2c_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(pch_i2c_pm_ops, pch_i2c_suspend, pch_i2c_resume);
+ 
+ static struct pci_driver pch_pcidriver = {
+ 	.name = KBUILD_MODNAME,
+ 	.id_table = pch_pcidev_id,
+ 	.probe = pch_i2c_probe,
+ 	.remove = pch_i2c_remove,
+-	.driver.pm = &pch_i2c_pm_ops,
++	.driver.pm = pm_sleep_ptr(&pch_i2c_pm_ops),
+ };
+ 
+ module_pci_driver(pch_pcidriver);
+diff --git a/drivers/i2c/busses/i2c-mpc.c b/drivers/i2c/busses/i2c-mpc.c
+index a21fa45bd64c..fc7bc0ddbeee 100644
+--- a/drivers/i2c/busses/i2c-mpc.c
++++ b/drivers/i2c/busses/i2c-mpc.c
+@@ -880,7 +880,7 @@ static void fsl_i2c_remove(struct platform_device *op)
+ 	i2c_del_adapter(&i2c->adap);
+ };
+ 
+-static int __maybe_unused mpc_i2c_suspend(struct device *dev)
++static int mpc_i2c_suspend(struct device *dev)
+ {
+ 	struct mpc_i2c *i2c = dev_get_drvdata(dev);
+ 
+@@ -890,7 +890,7 @@ static int __maybe_unused mpc_i2c_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused mpc_i2c_resume(struct device *dev)
++static int mpc_i2c_resume(struct device *dev)
+ {
+ 	struct mpc_i2c *i2c = dev_get_drvdata(dev);
+ 
+@@ -899,7 +899,7 @@ static int __maybe_unused mpc_i2c_resume(struct device *dev)
+ 
+ 	return 0;
+ }
+-static SIMPLE_DEV_PM_OPS(mpc_i2c_pm_ops, mpc_i2c_suspend, mpc_i2c_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(mpc_i2c_pm_ops, mpc_i2c_suspend, mpc_i2c_resume);
+ 
+ static const struct mpc_i2c_data mpc_i2c_data_512x = {
+ 	.setup = mpc_i2c_setup_512x,
+@@ -942,7 +942,7 @@ static struct platform_driver mpc_i2c_driver = {
+ 	.driver = {
+ 		.name = "mpc-i2c",
+ 		.of_match_table = mpc_i2c_of_match,
+-		.pm = &mpc_i2c_pm_ops,
++		.pm = pm_sleep_ptr(&mpc_i2c_pm_ops),
+ 	},
+ };
+ 
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index fcede9f6ed54..878bf42c4d73 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -1145,7 +1145,7 @@ static int rk3x_i2c_xfer_polling(struct i2c_adapter *adap,
+ 	return rk3x_i2c_xfer_common(adap, msgs, num, true);
+ }
+ 
+-static __maybe_unused int rk3x_i2c_resume(struct device *dev)
++static int rk3x_i2c_resume(struct device *dev)
+ {
+ 	struct rk3x_i2c *i2c = dev_get_drvdata(dev);
+ 
+@@ -1394,7 +1394,7 @@ static void rk3x_i2c_remove(struct platform_device *pdev)
+ 	clk_unprepare(i2c->clk);
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(rk3x_i2c_pm_ops, NULL, rk3x_i2c_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(rk3x_i2c_pm_ops, NULL, rk3x_i2c_resume);
+ 
+ static struct platform_driver rk3x_i2c_driver = {
+ 	.probe   = rk3x_i2c_probe,
+@@ -1402,7 +1402,7 @@ static struct platform_driver rk3x_i2c_driver = {
+ 	.driver  = {
+ 		.name  = "rk3x-i2c",
+ 		.of_match_table = rk3x_i2c_match,
+-		.pm = &rk3x_i2c_pm_ops,
++		.pm = pm_sleep_ptr(&rk3x_i2c_pm_ops),
+ 	},
+ };
+ 
+-- 
+2.53.0
 
-On Fri, Jul 31, 2026 at 07:19:50PM +0300, Cristian Ciocaltea wrote:
-> drm_connector_helper_funcs.detect_ctx() is expected to propagate
-> -EDEADLK so that context owners, e.g. drm_helper_probe_detect_ctx(), can
-> perform the required backoff and retry.
->=20
-> vc4_hdmi_handle_hotplug() instead runs its own retry loop and calls
-> drm_modeset_backoff() on an acquire context it does not own.  This drops
-> all locks in the context, including connection_mutex held by the core.
->=20
-> Drop the local retry logic and propagate -EDEADLK to the caller instead.
-> This aligns VC4 with the expected detect_ctx() semantics.
->=20
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  drivers/gpu/drm/vc4/vc4_hdmi.c | 23 +++++++----------------
->  1 file changed, 7 insertions(+), 16 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdm=
-i.c
-> index ba16e7944cf3..72042fad04c5 100644
-> --- a/drivers/gpu/drm/vc4/vc4_hdmi.c
-> +++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
-> @@ -344,12 +344,11 @@ static int vc4_hdmi_reset_link(struct drm_connector=
- *connector,
->  	return drm_atomic_helper_reset_crtc(crtc, ctx);
->  }
-> =20
-> -static void vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
-> -				    struct drm_modeset_acquire_ctx *ctx,
-> -				    enum drm_connector_status status)
-> +static int vc4_hdmi_handle_hotplug(struct vc4_hdmi *vc4_hdmi,
-> +				   struct drm_modeset_acquire_ctx *ctx,
-> +				   enum drm_connector_status status)
->  {
->  	struct drm_connector *connector =3D &vc4_hdmi->connector;
-> -	int ret;
-> =20
->  	/*
->  	 * NOTE: This function should really be called with vc4_hdmi->mutex
-> @@ -368,17 +367,9 @@ static void vc4_hdmi_handle_hotplug(struct vc4_hdmi =
-*vc4_hdmi,
->  	drm_atomic_helper_connector_hdmi_hotplug(connector, ctx, status);
-> =20
->  	if (status !=3D connector_status_connected)
-> -		return;
-> +		return 0;
-> =20
-> -	for (;;) {
-> -		ret =3D vc4_hdmi_reset_link(connector, ctx);
-> -		if (ret =3D=3D -EDEADLK) {
-> -			drm_modeset_backoff(ctx);
-> -			continue;
-> -		}
-> -
-> -		break;
-> -	}
-> +	return vc4_hdmi_reset_link(connector, ctx);
->  }
-> =20
->  static int vc4_hdmi_connector_detect_ctx(struct drm_connector *connector,
-> @@ -416,10 +407,10 @@ static int vc4_hdmi_connector_detect_ctx(struct drm=
-_connector *connector,
->  			status =3D connector_status_connected;
->  	}
-> =20
-> -	vc4_hdmi_handle_hotplug(vc4_hdmi, ctx, status);
-> +	ret =3D vc4_hdmi_handle_hotplug(vc4_hdmi, ctx, status);
->  	pm_runtime_put(&vc4_hdmi->pdev->dev);
-> =20
-> -	return status;
-> +	return ret =3D=3D -EDEADLK ? ret : status;
-
-Don't we mask any error that isn't EDEADLK here?
-
-Maxime
-
---jheie2hl6uizzjqu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaobA7QAKCRAnX84Zoj2+
-di3CAX9taIN5wWfjabsZQCOc93N9yDXa9ZGCjkYY2vFUSE/fV+whVEefexpHg4/R
-F3pHcVEBgJ20yb1ebjodb2eVDBUxXUD4NaTMlRksgE23J/oyYEmSCvMSew5M3fNh
-7EuqooG5SA==
-=WNEd
------END PGP SIGNATURE-----
-
---jheie2hl6uizzjqu--
-
-
---===============1888438854714587016==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1888438854714587016==--
-
