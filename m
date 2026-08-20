@@ -4,101 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24286C5DF87
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 11:47:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 531C5C5DF87
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 11:47:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b4GnMdWGBoNkrIVpWRjdICgzzH85SBDJwgpybQeQfUc=; b=UHJRAr5yLSaejz
-	xrgDx7vBsI5mrG2PCaCpMINkz0AsV55YYwgGRACZs5/zJRS8hAkNnes3HF6xNTY6qXMBi3pFeOrFL
-	DLnXA5rg8MDtC1/0w+ZnfXaemE7YqWxMh2qcDieu9IT4BvB7RGIpT0y3VLKROKBkdkSuuPomU83I4
-	gug+xJXhSPDHPPHGyctmn99Ri6+XoN/ePLnoiZJM8GVfWAH41ZDSlPMCPhMDEz180GvWSzmRP6vQ9
-	iK4H9TxJ3DQZY266S2KiYYZ2EFQk4cNWc/4lSoM3+NUzLUT1FzoTOKrZM8/3gDGwnVlTR9GTG7O57
-	29639tdR3w1SlkO+Yuyw==;
+	List-Owner; bh=2Z6wLPfWV1dQfsgsyPTJh06akpzedvYET9VTQoP8Brg=; b=01mcN9Rwa2igss
+	ToW0XI/dC7bfC1yRpBqaDR2nHMtVz5KDsdob8hWJRKMvdaeezgza6TjIunjtwRlYAVgKy3Xh7ajF4
+	ayvhytT7l7i+t3OHMd+hnjoMqqAnXrI2E1j2zKrEUJgz9klaWJF9VuaNOcyQZeUkyZtCk35yEM8HD
+	c7QVtluFOq8pLN6581+OVtSRiE55C9RZQRub3gha6V13LTWjipjm4WOViO8lg9GAx0jPyOequXf4e
+	JCTQ6ZQpQZ+B7t1012pjshSI0dLdWQ8/eLl4rKGKPZoGb11IVGkr7x6u+s4PDRL/PBXKkLYo4Vfz5
+	AECpPy8gSPFYscbIl4tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx1F2-0000000BTnq-0Ifw;
-	Thu, 20 Aug 2026 11:47:28 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1wx1FN-0000000BTum-3KlM;
+	Thu, 20 Aug 2026 11:47:49 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx1Ez-0000000BTme-2R8A
+	id 1wx1FK-0000000BTss-48JM
 	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Aug 2026 11:47:27 +0000
-Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-c214321dc32so400294866b.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 20 Aug 2026 04:47:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787226441; cv=none;
+	Thu, 20 Aug 2026 11:47:48 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-c1c50c1e29bso338465666b.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 20 Aug 2026 04:47:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787226465; cv=none;
         d=google.com; s=arc-20260327;
-        b=ZZl/oJ8X4X/NMLc2dLy2M+PJq1wfeS4F5WlTx7vYRHjU70506ZT3Xjqwk80dMsYAi1
-         58Y80Kk6tJLEdKII5dTdu5e0I2b5ZyEbuYHGAw/11VfDN/m9pQTCSlse4NzwjegCXOJ/
-         Am2ZMyIJ1ekOjoQBrWbkfaayK/iS+11Su9hdmRbkSFHRg/1qLhcuHP06dDUY9lt1GRm9
-         lk70aeN2GzeEJwt86l0pDsOQu5RgzE/sznr3TXDmGBr72g55IyforDImeNK3hZoATbxj
-         xC4vRgnBvaVBACHEb6FwQOa1utD3XB5z9bcgdmGAwkph+N5WzLZUzvlay30G0y67JXki
-         boTg==
+        b=YQzNSE7T3QUsXhWORqwnw46sjkPHzUXREPNV2tdaAtT5wW+34SgzrYggGRj9sz0IEu
+         JKyr0AN6/TBRzqnKrIMUc4DpLUt8kRYbIRZ+ffYDTO3JFoPSbNhwsTRVnXQSyt9B5azq
+         U1gJegTdd/5vWksRLJsWQm85XvFxIyPp7hRxvsFL7jOvMjpOGEEAbuti7EsZTEX2zXU4
+         vONwNfTuHgautagTTcLB9JdXD+viT6LtQ7pBb+HnNUxf96QDQhBfHydSK+sTBEp0LOAb
+         1U9Dj0q69b8n9FjBa7+9NczDEfkMyEyMivNUyJKOn6F7MkCBl1rDrWvfbTVFHqsiu0ho
+         OaYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=bXKBm3AfG3en1bXUPpD4OIjt8IDcThCjJyOOTe6eAbU=;
+        bh=paOojrCaYfkKAM5OrAXgPdy+BI/CSmLloSHESiLn3MQ=;
         fh=LA/XrBAHCAWcaQRHP/uehHYiUJ9qdItpM0fxvF5yEtw=;
-        b=f1z4Sp7pftsMBCUB/7fiWumy8qz/Hp/35OkI5lTYcC2pwfCo2eE9BIfne369GF0csk
-         HbrEl/vvrZLfpwm9RAqy3dwWd3QCUQS3RI559kiL+SulPEenR2U5c2MD2HqORSnA2xYm
-         Unajo1pu9XsiZR+iHTE6mQp2Sdd0iF2NciE06dJY1emR7dQ6hJqm+ZiemmiBTQObbABi
-         nuhhWMKuHAfRrT6aOUr4tbQhIjGis7txuaatRdTC2mh0dqQI54ZqCEcmbHhdatWeZNdd
-         5Jt1swfBf8gZgNB4OLG+as0AJQTNI9Y/+qJUXcY0JrkePT9mh+N+wLHG4wy5iqUldHe6
-         mlOg==;
+        b=hfV4IBAZi1JfJsrA0ATnjuf6J4Sk4LAqc8IK8eZ2/R2c7cYsFJI2C+KIc/Mzpd6Mf3
+         TynHq3XCPss6ZYV12P/XGH4+T3z4A5Qd7HQhzKrESJ4SSPF+G/vP65C7wM30ppe5K2e1
+         DPKXfo8Qiz66Zdak5hRxbrFREgDRY6JfzHYzh90MCn91Xg7+/WACBy6j2hOlx05wckvC
+         YLGtC59j3p5pHQhDyWoLiiDg5ol/jGBdF4RwVc+EDxT15HnChks/g9fh35Lterz2OyCa
+         Bb9X0yc2LxoEQ1JreFCxU9mL65A7fdsYI66MnxCIKa8v8Wx6zKvEbrStCLxqZvzQ7eVL
+         1MSA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1787226441; x=1787831241; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1787226465; x=1787831265; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=bXKBm3AfG3en1bXUPpD4OIjt8IDcThCjJyOOTe6eAbU=;
-        b=YJYc+iMOUOjVAr2UDoLMjNih+SQD151AtjdTGbuXuIsOQjLaQNaUgPn2OROW85s8lx
-         B/wRX+PV9e0HmV0lFD2Zzwezp2o5djAyVhZB81rRR82jwMfLBRVaJuWAFeHkMqeudL0M
-         o8iQTZNkc4Z+PYptL8484ZsZHKqSbIUDvKw34=
+        bh=paOojrCaYfkKAM5OrAXgPdy+BI/CSmLloSHESiLn3MQ=;
+        b=gtMBiPhtsGmEaS9zEU/p2r9s5SBGlUKGH+c01n6FSQYVPgPiXhH8HMbpi+vx1LvoKr
+         Yq6YGA/5V0nthXCXaeStjZsOeGZOo6p3JL1IYxVjEK8UPrlFwkGfRJmIuUdkM2jp2kMp
+         A801QeAEhJ9R7sEoY/fM1dqKmCtNayUmRirZc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787226441; x=1787831241;
+        d=1e100.net; s=20251104; t=1787226465; x=1787831265;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=bXKBm3AfG3en1bXUPpD4OIjt8IDcThCjJyOOTe6eAbU=;
-        b=UIA25xvd4s8Aeqf7hw+55tG3o8u7MpdFLrI0yrwVEdgGvaAPLxqVB29mpM8Mg00shj
-         lozSDW/klSQgC5QIcLAMePndrHpjZSKj65BBhb5M3/pwAomr/MPlHWbsG2o5z/lExA4k
-         atSO8/J8LF+l0lMokSFsdd7SgmrRh3vMdt0qStQMYqVvMf153bZOpLzlPY07gzyM9RsO
-         dG+0CFQtwgqwZcn2OlgNbF/xk3ohh+CuzGodbdYqdRgKLgMy2EBXG0vyDE0EMjxHScVL
-         cD01VXXs26KJJCVRHUD8JzaRSbkWgmg3cn6fVEJVAx16FqUSPPFLApLWXzmoER5z90nt
-         7DAg==
-X-Gm-Message-State: AOJu0YwdOVrSLhB2BBaS2B8r/HKIY5kXWbTD88SDsL5DTTCOJ9UiyBcf
-	PJAboVvHJvSbf1nslucAPPvk5gJRSdhmZYN/kZ4IHGkVJ31UeIoyqdMvF+gL2HBPjX95fZpaNlb
-	etGU+mgorHD+bflvYUxbKkpP+doUbfxCuagLLmFLWsq9jVFsn6Yl0gQ==
-X-Gm-Gg: AR+sD10NMWAd3moFKf3F3e95MTIgaVgrmOozNmrMVAY5x6u2nKBfjpQBCnCFKXnYlvo
-	vgJnbsK0RFkGFWn9HaBXAA8OPaBazPzZZSIPdN7Gy0wxcMSmamlEf1Vw5JVgRV11/LDhOQnLAEz
-	eE8SuVCkfObqlB1OMx+hgVBJ/c0y8TTcXx5LImhJQ8qu6e1zQt0QW9maZgEkcFzbxsmTxhudJfk
-	7MdlUtzwvHjW/C+sEgFZdXfwBVDv/34TPJNpx2apghuJ6lizl/1TltXqDR4aJwxKFIzkw6xhstQ
-	dToCy0K9MZmguX0VcDjCMLg3qJ502+nqZTf77U4aqJQ=
-X-Received: by 2002:a17:906:99cd:b0:c21:74ed:4608 with SMTP id
- a640c23a62f3a-c23f9750de3mr814724566b.10.1787226441540; Thu, 20 Aug 2026
- 04:47:21 -0700 (PDT)
+        bh=paOojrCaYfkKAM5OrAXgPdy+BI/CSmLloSHESiLn3MQ=;
+        b=CcslWG+Hk5lZDJ1SpGyVO5ip5Zxp4w9S8Eoa72Lww1fgl13d9B/SirWg7ea5fR1waj
+         tEuefsZsWSbl7bQKMHZ6c7e5/6zrVRbUs7pTYCw33oxsB/mtxkx2NLJoZ2mcio2Uemft
+         nAmVfS5iLCsN3gz/BcFOtgy5o4WmEFFAFuiLO5tltEpo7qEo9hgvI/A4ei8UWFOjq7hT
+         7FpJIZLy8l0c2cXyqXZmsF6PvBRYl5yCBY4CaQ7PhOGDegsfJDt5HCIXsNdaV6/V/6TD
+         KQZgSXbEUMcqxH7ve2lSZh8RgbHBEtljp4oY8vx8Tt7sLLmJiyw58RSg59bjRtHCUtFX
+         guhw==
+X-Gm-Message-State: AOJu0Yx8PtQc/QxHyq3YU+1YuGOKswpzlG8iW/r9ADc0sMyugokpsc8V
+	LJGlzhJ72Q3L+TSz6Rpjv2XSoMC9n577PMEuvgfJ0n4h6RYZgMnvoAxLC5/GcEiLAuJx9439lT7
+	qIxhB8quIn3SJI2s1UgBOTNTqhFeAn1ufY0stbKt+
+X-Gm-Gg: AR+sD10lZvEa/II8+9lTbk+pf3mzejewOgrUdW0NbXcSYnKkycC03qn62jsvClLeDEg
+	0prRAssJ5sLync8Q7NodAc3Ljsjwf0BjOMANEKou15vShMHyUY2NKTzRnNcoSIxdi68bCrMGIVL
+	ltfmwSRkwr1DQvAoEmIt+w8bZPNZoRWyrgwBrg6ulZH15O8KEdbPkFT4IgQ3ALZ4WmJ3AhpSzRv
+	pAQd/1ul/bvCXnTbaC66ezz4zQ8wmEG4+diNbhLhStf8MOuJ1zGWY6MLOO7PXJHZ6scMWN8MUZ0
+	TlvZqYISUKPDfYAeNhfNiI8VwSf48Tf8MqUw1Juk43k=
+X-Received: by 2002:a17:907:84b:b0:c20:1c9d:8d4b with SMTP id
+ a640c23a62f3a-c23f929e232mr710101966b.2.1787226465039; Thu, 20 Aug 2026
+ 04:47:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260810121121.210040-1-vlad@zlab.su> <20260810121121.210040-24-vlad@zlab.su>
-In-Reply-To: <20260810121121.210040-24-vlad@zlab.su>
+References: <20260810121121.210040-1-vlad@zlab.su> <20260810121121.210040-7-vlad@zlab.su>
+In-Reply-To: <20260810121121.210040-7-vlad@zlab.su>
 From: Simon Glass <sjg@chromium.org>
-Date: Thu, 20 Aug 2026 05:47:09 -0600
-X-Gm-Features: AcwNN1UCnC12nuoA1x1viqpRcNtcnZpIWhvuLlHFbx5J3DwZqfYkTadrWwnjlvQ
-Message-ID: <CAFLszTiExzcYKBpe5h2SorR5OJEJgRx9x1bSCdwTtw4mN0Fcfw@mail.gmail.com>
-Subject: Re: [PATCH 23/25] ARM: dts: rockchip: add arm,cpu-registers-not-fw-configured
- to RV1106 timer node
+Date: Thu, 20 Aug 2026 05:47:33 -0600
+X-Gm-Features: AcwNN1Wh5n38wXHkJkuB8H7_benVkiW5QlI5gxabpims6DcR7Y_DZnlEoYHYlzw
+Message-ID: <CAFLszTiuH7KcvCKcpE09tTavFEWGNMj+C1Og0T=k5MvEZdB-OQ@mail.gmail.com>
+Subject: Re: [PATCH 06/25] ARM: dts: rockchip: Add Ethernet GMAC node for RV1106
 To: Vladislav Leonov <vlad@zlab.su>
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
 	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
 	Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_044725_629579_A1F610DC 
-X-CRM114-Status: GOOD (  19.84  )
+X-CRM114-CacheID: sfid-20260820_044747_050595_D2D44D74 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,45 +116,103 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Vladislav,
 
-On Mon, 10 Aug 2026 at 06:16, Vladislav Leonov <vlad@zlab.su> wrote:
+On Mon, 10 Aug 2026 at 06:15, Vladislav Leonov <vlad@zlab.su> wrote:
 >
-> The firmware on RV1106 does not initialize CNTVOFF, so the virtual
-> counter may have a bogus offset relative to the physical one.
->
-> Add the arm,cpu-registers-not-fw-configured property to the arch timer
-> node so the kernel does not trust firmware-configured timer registers
-> and uses the physical timer instead of the virtual one.
+> Rockchip RV1106 has GMAC 10/100 ethernet controller.
 >
 > Signed-off-by: Vladislav Leonov <vlad@zlab.su>
 > ---
 >
->  arch/arm/boot/dts/rockchip/rv1106.dtsi | 1 +
->  1 file changed, 1 insertion(+)
+>  arch/arm/boot/dts/rockchip/rv1106.dtsi | 62 ++++++++++++++++++++++++++
+>  1 file changed, 62 insertions(+)
 >
 > diff --git a/arch/arm/boot/dts/rockchip/rv1106.dtsi b/arch/arm/boot/dts/rockchip/rv1106.dtsi
-> index b31cdb1c19d4..12e87d25c72b 100644
+> index fa5d0d7f4dcb..71dd3dcc386c 100644
 > --- a/arch/arm/boot/dts/rockchip/rv1106.dtsi
 > +++ b/arch/arm/boot/dts/rockchip/rv1106.dtsi
-> @@ -57,6 +57,7 @@ timer {
->                 clock-frequency = <24000000>;
->                 interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>,
->                              <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
-> +               arm,cpu-registers-not-fw-configured;
->         };
+> @@ -19,6 +19,7 @@ / {
+>         interrupt-parent = <&gic>;
 >
->         xin24m: oscillator {
+>         aliases {
+> +               ethernet0 = &gmac;
+>                 gpio0 = &gpio0;
+>                 gpio1 = &gpio1;
+>                 gpio2 = &gpio2;
+> @@ -282,6 +283,67 @@ system_sram: sram@ff6c0000 {
+>                         ranges = <0 0xff6c0000 0x40000>;
+>                 };
+>
+> +               gmac: ethernet@ffa80000 {
+> +                       compatible = "rockchip,rv1106-gmac", "snps,dwmac-4.20a";
+> +                       reg = <0xffa80000 0x10000>;
+> +                       interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
+> +                                       <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
+> +                       interrupt-names = "macirq", "eth_wake_irq";
+> +                       rockchip,grf = <&grf>;
+> +                       clocks = <&cru CLK_GMAC0_TX_50M_O>, <&cru CLK_GMAC0_REF_50M>,
+> +                               <&cru ACLK_MAC>, <&cru PCLK_MAC>;
+
+Should this have a minItems exception like RK3506 and 3528? As it is
+it fails validation for me as it expects 5 clocks.
+
+> +                       clock-names = "stmmaceth", "clk_mac_ref",
+> +                                       "aclk_mac", "pclk_mac";
+> +                       resets = <&cru SRST_A_MAC>;
+> +                       reset-names = "stmmaceth";
+> +
+> +                       snps,mixed-burst;
+> +                       snps,tso;
+> +
+> +                       snps,axi-config = <&stmmac_axi_setup>;
+> +                       snps,mtl-rx-config = <&mtl_rx_setup>;
+> +                       snps,mtl-tx-config = <&mtl_tx_setup>;
+> +
+> +                       phy-mode = "rmii";
+> +                       clock_in_out = "input";
+> +                       phy-handle = <&rmii_phy>;
+> +
+> +                       status = "disabled";
+> +
+> +                       mdio: mdio {
+> +                               compatible = "snps,dwmac-mdio";
+> +                               #address-cells = <0x1>;
+> +                               #size-cells = <0x0>;
+> +                               rmii_phy: ethernet-phy@2 {
+> +                                       compatible = "ethernet-phy-ieee802.3-c22";
+> +                                       reg = <2>;
+> +                                       clocks = <&cru CLK_MACPHY>;
+> +                                       resets = <&cru SRST_MACPHY>;
+> +                                       phy-is-integrated;
+> +                               };
+> +                       };
+> +
+> +                       stmmac_axi_setup: stmmac-axi-config {
+> +                               snps,wr_osr_lmt = <4>;
+> +                               snps,rd_osr_lmt = <8>;
+> +                               snps,blen = <0 0 0 0 16 8 4>;
+> +                       };
+> +
+> +                       mtl_rx_setup: rx-queues-config {
+> +                               snps,rx-queues-to-use = <1>;
+> +                               queue0 {
+> +                                       status = "okay";
+> +                               };
+> +                       };
+> +
+> +                       mtl_tx_setup: tx-queues-config {
+> +                               snps,tx-queues-to-use = <1>;
+> +                               queue0 {
+> +                                       status = "okay";
+> +                               };
+> +                       };
+> +               };
+> +
+>                 emmc: mmc@ffa90000 {
+>                         compatible = "rockchip,rv1106-dw-mshc", "rockchip,rk3288-dw-mshc";
+>                         reg = <0xffa90000 0x4000>;
 > --
 > 2.47.3
 >
-
-I know I am using different hardware from you, but in case it is
-useful, I just wanted to mention that my boot log says "cp15 timer
-running at 24.00MHz (sec-phys)" both with and without this patch, and
-userspace time seems unchanged either way. I am using a board powered
-by USB and that power is removed on each boot.
-
-I do have a Luckfox Pico Pi now and I will make time soon to add it to
-my lab (lab.deinde.dev).
 
 Regards,
 Simon
