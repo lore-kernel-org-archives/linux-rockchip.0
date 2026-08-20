@@ -4,100 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96F51C5DF82
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 07:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666A8C5DF82
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2026 07:47:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KFxunOl36xvKMJL6/plkQDnJ4QgNkAaV7BCJtBETDIY=; b=boBNjxvHkZd9pf
-	4x9TX4MLt+f24NpyZnqEl9N4DovaSM5BKYQB1pBPr7xrN9M+y5V+6jO4AYM7UT6g/Pxo9FtIEUeML
-	MuQeBPZ68MwAYryvWxJwsVXr4pShkIes5rzUddrvc73fe0fsuOEDnC9Sb4BJOLElp/Tp8cSZ+rFDg
-	KNmxlEhqEGZFkXOx0YSSBPZ/nontcHEPeCJcafBeT26HkhmdsfSacm9W55ixCGW2CxpndBiaDP5/V
-	MG2ydoiMrj5sthgZtb4Y6uDm0tU/WV5kxd8muP3TFmV6GMAzZlQl8Zn0+pA0ao+C/CodgzzYse8Tn
-	0pNCkofW8VVwbFPtDhQA==;
+	List-Owner; bh=+L27T54u31W93kSrv7Acr162POaO+8FQrn8j3EwW0NY=; b=hdr/zAfbx+Du7J
+	z0gFxYjlMFWEpLtY1cg4RqAlCeZT3wXTA3ZZs6rdnnOukDidOxK1jD0DlsnBoaEPvKzSAt3GOQYAt
+	rqzX6k888lFgL/p+UjlEkdxMiRFYshemgIhacf9QZkSVCbmwwCYFHlxMLXk1FWfN5XZ3AMBnqN1dX
+	EYVzW0e+BbBwRGGG1T0rEWSMTNF+l5XmMwj2sISTkqD+1I6Gc94dL8QHHMg8lMPcJjYqDFLFSRGt+
+	gAZzLA+3TgXP3+sRvHiOwUhyGarZoEw1+eG3VEv44ac0gmbuyvkGwsMqdkATzZfjf6GTgAqzR8Mqj
+	GXeLLsWVfIviDVUU8vYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwx92-0000000B3GA-2GdA;
-	Thu, 20 Aug 2026 07:25:00 +0000
-Received: from flow-a3-smtp.messagingengine.com ([103.168.172.138])
+	id 1wwxUW-0000000B5k2-14WP;
+	Thu, 20 Aug 2026 07:47:12 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwx8z-0000000B3Ed-2dpN
+	id 1wwxUS-0000000B5iC-40Kv
 	for linux-rockchip@lists.infradead.org;
-	Thu, 20 Aug 2026 07:24:59 +0000
-Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
-	by mailflow.phl.internal (Postfix) with ESMTP id DD0E21380199;
-	Thu, 20 Aug 2026 03:24:56 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-04.internal (MEProxy); Thu, 20 Aug 2026 03:24:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1787210696; x=
-	1787214296; bh=49U1KQDJobQ6fDU08W7OYFd9CFZwvQ7xn+MpNhh8QuI=; b=H
-	UwcTQRNM6p7Jx8hquSLsKdvi/R/v9Ush02kfEKU+TGTUgINNJ9AlvReisBKuqzV6
-	TFgwl+oDOwJH/Q85M1YAcGnWRfgYvM9SFy2WdxTNVyWC7UYOKieVQpcAYI0/KwWs
-	Rejt0dkLjVNqtX8VqE5Fqvmn5VY4vAvAMSEmv/fneGjrKPH/AWcykx6ZZS7nShO2
-	RclhHzUAc6wTSDpffKHUJXdB8Xhyogay7xfbvWEHZ4HJj0Cqvz0XiruUmcvox8LT
-	ZLWkjpLQAuOp9rU5yz/oXXjIy/8kWq8hkdyuAgRYGjVSkO8B8n/3njYOV+EuuA67
-	+p/AXTv1JdQjNfsyjur6Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1787210696; x=1787214296; bh=4
-	9U1KQDJobQ6fDU08W7OYFd9CFZwvQ7xn+MpNhh8QuI=; b=SHPocS+tDTJTUvds8
-	ZwmUuPr9bJgoQ/GL84vbwEEGVFrOm0KJ4esf7e2u22oO/l9ickb1bG3hZlVio6E5
-	mMvCSnv25HWNQg4EWSxHBtn/mHBUQ3eNHXb4G9OEnu+fD0bzFyQCNAPtUkM/Zhui
-	m8oQcKU60DdlecIYCxscLmkGM+1vjJ7x8jL51c9TWERmSil3v4NRlPb/zGnMtNWP
-	TFOSC3CV5oAfh5epacpy+l6tqzKNVPhWhxHNcAb0fdNy/xFrS+/RVoAG5djcOtA2
-	ZRAMClBGg/DoVwrMCeVyaGngDOuY2npt/+Xg8Qg06+A1pExb2WDu8DtK8+TygiJD
-	bFiDQ==
-X-ME-Sender: <xms:yKuGalDxHVKbVJ-3wzhF8TLyuLI9MCvXo_f3Qa1KQef_vAJv5HQBag>
-    <xme:yKuGahwlxhWiy9uQ1KLqJ3fjIox3idGIOgAFe98Tj6nSzQ9koN3lUtCYZgAoXiGBr
-    eo2wyhkDgSigKRg22kn-QXk4NHEtb34oq_G-AmHx4uUfaaIFveR8S4>
-X-ME-Received: <xmr:yKuGap4407_KQ2pwyPsEyPtv1767oWrIXFWWYI-go-xrQTlXjU6t1Ft6zeEaxfQMlc-pTa_tHQ>
-X-ME-Proxy-Cause: dmFkZTGDoCWsctuhusIgeAdpVJpMrx8/Gl5EazEW/ha9rctVSqmrDDgCYGt723FgkNKrUC
-    7rfEAphm+y6djBhX9OJykBguO5ID7j4sjPNQlPIamDK3YCnSa2/qetO6nE91Ann1X7xTi1
-    4OcRfQSy9+eqdj16xEIiqD/xyjv2PeaD2hj5u/5WxNzvbQs15qw1/mtOAwRYHfx4m241vR
-    VIWWHg7vK9hsOUtanKiVCwIDcdwmbqqLhqzPyXBkXkfRvcG33SJoFCIdeRYwc/5gj77UAQ
-    2hHojGpgsyFPvnTkhRcFSQa83w7eAiEE4m1llM2wPl+JVrN65RZAKCn5rVHKLYnHXcZDcJ
-    bfj4Df1Sc5tbVQQ6lil5wBd7T0EIbossJZeAOm4A/vhLKMmItMKogfypiM7Z4/EsXWjagN
-    QR6eHhqpED0UnTmcC1uylQ9wAd6CVw2xOKdmSqG4MFkiEOHxO7Nu/JeVrioh+j60qCYGXL
-    lPWLvSt26DGr2E90MlpTvTYyfsvTVcO2SUQA/05wtuQXOj/bsqBIo3OvzPzUdkJoEV+3+K
-    5GF9FTaz4Uk1aIYOhyJ6IHWTs3DO0t6tdqBmtQBAJXsqIIkVaqDocJoJnx6dyxSZvumB0+
-    sk8exY44JozEBOOUd76WJGDrj7rirTIWxn76v138dnsYGokyYFPnQsNix9vA
-X-ME-Proxy: <xmx:yKuGaiziWZ769tEqEZ2K0M9D5mbdlSfdc1OhzwGYR3C7XCXvrNA9WA>
-    <xmx:yKuGatfv06XzoCo4MEKYhNSbceE9xU6LNEbf0D4O5fJG0nUCBAiD7Q>
-    <xmx:yKuGanCzHU4MNHv9RJgkl9kcghyozsmoVcaZK6bGonn05ok4_GQBNQ>
-    <xmx:yKuGah5AbUWFQFcUha1P26-nZsbVnc7U3taSHe0o3zBBJojbCtIuXA>
-    <xmx:yKuGaq3NzXr0ppkbsJLacudaqZxwsH51bVEdZ0KIhs2Z_-BDlPv_EStb>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 20 Aug 2026 03:24:53 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: robh@kernel.org
-Cc: krzysztof.kozlowski@oss.qualcomm.com,
-	conor+dt@kernel.org,
-	tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v8 04/12] dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
-Date: Thu, 20 Aug 2026 22:16:35 +1200
-Message-ID: <20260820101635.752920-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <178709455518.1014304.1443906758035976924.robh@kernel.org>
-References: <178709455518.1014304.1443906758035976924.robh@kernel.org>
+	Thu, 20 Aug 2026 07:47:10 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 67K6Y0dx1457562
+	for <linux-rockchip@lists.infradead.org>; Thu, 20 Aug 2026 07:47:07 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	FWemyG4N4ylx8AJN2NYbSRutWHMPkhp+MiTGTIekUm4=; b=agAReysmKjIortik
+	PpCcf6FrLsBAFvE0L36aRTnWYqI+2R+0kYuY77jU6VmYzah32kclW2u3mzNnW8OX
+	M4+9abOckXZ1aVh+cheNvogAjrVtl5op3ScbA0oxs18pLFQwmFZE6u51IDK3nA0V
+	AG+BpfPw/uMiNl8Yigark5SmCr0wq6OIJNBtOFYchSOdgDrWOYtfRm0wgHhG8P0F
+	Nd7f2l8UBeQtWDILlHMdk5SsvsbCe5cdm/C7McjEZwwhXr74nCvTNoZUMehQUS8C
+	CGb+yjf1tzdvKdaGaJCxvSQ0UEV5ECe7kaMsaZgJrhH0B1p1NOSSnOcAR84qe4Wt
+	87Yieg==
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com [209.85.160.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g5es4bqks-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Thu, 20 Aug 2026 07:47:06 +0000 (GMT)
+Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-52de05de414so11999131cf.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 20 Aug 2026 00:47:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1787212026; x=1787816826; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=FWemyG4N4ylx8AJN2NYbSRutWHMPkhp+MiTGTIekUm4=;
+        b=Fd57lA7QYSWmc4i11jWOCxs/wQiG/n1J8hqOaY/l/0dV62t2FwO1nMZhabIIamKepG
+         JWnYuGtttOYLB56IqlxBY6Vt4p3fqnx/3ZeGvINmLAi3uhO8/sGIYdmQHhCq2ppYMcL0
+         caJn0t57FSEw7RJKG8+11iuXG7PIW7LPnhlUFUzufhw0hFkanccOOOCf4x6z/rdEFrDY
+         ZGdZyR6dnWtAw8SIn+f4Xw29JDM+gbD6jBxlLZ87Kw1kuTicLNrGlGaHi6ZDy1rdgH+9
+         vL3UQK+ixqRzv13Y/AYoqD1GL901/0clDcqyCQ2aCvEoKAIsQope/ug1YiovvMFdZZAf
+         3img==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787212026; x=1787816826;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=FWemyG4N4ylx8AJN2NYbSRutWHMPkhp+MiTGTIekUm4=;
+        b=TKM9P2Yvg7LE1zhcbIt+ZDeAIIJ3VBxjUrzFrbh9O7QeOpy4ufQnjE8NDSDApPUkz0
+         z0A+qYczGcS+242NUlibuBo6eREOrEfLIUPCO/fnhH5mTfi1CNg0pfovEHv8n9VQ7dgn
+         vCq4vUq0UKSVZO+mMTU36eBk4ggUL9bZ7E+5au+opJRO1Jxj1a31M6fIyQ3F3PsC8ZC5
+         LBO0KtR8UIfy72GtilodpkpIdEqzPPZ/m8+CXYekLGhkPE1fS/rBSzx3ZoCuq/rEz1v2
+         yzMxgmFpsJhjCJUR2/Z0kJbnxCRNYsyLnqTCKB74rLIQIok5+9HEjOhnNee76lCHdIoE
+         s7Uw==
+X-Forwarded-Encrypted: i=1; AHgh+RoG6pq0IzL9/2Nz3jQ2eEABya+KyrcBBJ8LSyvqBbdWK5CC9x4Rp3XIM42CoGTrZQCJVX+rNid2DnVBY8G/Bg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxw00e9dOEF5ESPHcFD57BP5hZ9nZTEuD5XcioizhLNt0AbWR4K
+	VMxWG3PDnkJpcnzXKB3h/P6SF3pN8dKRB7R/knJnv/mZkykYoVaRLO524bjAuRmfyXB7oYBwafu
+	WpIZwBXDbpEN2xDsGld7q04rtE2K7iXuf+pYq1Sd/Qy4kphZTq94oROhF3WoPO/wXOEnSAnxt/2
+	E=
+X-Gm-Gg: AR+sD12xOAAB+bkPlUYYEBH+3DtDZFjquujpHXolFliv6K8Fg/W0OIv7LfRI3AGc4x+
+	ewBQ8Hn770nSdb7ST/MFW88sxwyEl5IfbVSYVCz1f6+tQhS9YaqahyuywCIA2jH0erhhvdT8Rj6
+	Oht3qUvIRbH2ShihltKZkGeR7JGK+SC2Zag0MdvboSIpln9hSdOmQjk3BOif3MpelUaAe0cmxFU
+	FmGt12lcNy/6GD08vAC5bmpBC3tVFCOYw5M0QyxBNZmdodWfkhh1+JEcycj1WsZofb/gkSkh7Nn
+	+YRmBxd2n5VoMbKzL373fz08jzgTQNDUfRZHfr70seU9O1DnLblKYiZKmxLoXnKMBlOz94BCW4g
+	KzDXYz9yJ1v2MUR7kG/ChLAxEDbJa
+X-Received: by 2002:a05:622a:2b4b:b0:51c:a70:5ed with SMTP id d75a77b69052e-52dd5c9313dmr98105131cf.30.1787212026504;
+        Thu, 20 Aug 2026 00:47:06 -0700 (PDT)
+X-Received: by 2002:a05:622a:2b4b:b0:51c:a70:5ed with SMTP id d75a77b69052e-52dd5c9313dmr98104821cf.30.1787212026125;
+        Thu, 20 Aug 2026 00:47:06 -0700 (PDT)
+Received: from [192.168.1.110] ([178.197.219.214])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-499aa0dd5fcsm133844445e9.14.2026.08.20.00.47.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Aug 2026 00:47:05 -0700 (PDT)
+Message-ID: <0f8f3d24-41ec-4878-8182-c805c7db7c23@oss.qualcomm.com>
+Date: Thu, 20 Aug 2026 09:47:02 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 04/12] dt-bindings: npu: rockchip: add
+ rockchip,rk3576-rknn-core
+To: "Rob Herring (Arm)" <robh@kernel.org>, Jiaxing Hu <gahing@gahingwoo.com>
+Cc: linux-kernel@vger.kernel.org, tomeu@tomeuvizoso.net,
+        p.zabel@pengutronix.de, ulfh@kernel.org, will@kernel.org,
+        conor+dt@kernel.org, chaoyi.chen@rock-chips.com,
+        dri-devel@lists.freedesktop.org, zhangqing@rock-chips.com,
+        linux-arm-kernel@lists.infradead.org, joro@8bytes.org,
+        devicetree@vger.kernel.org, iommu@lists.linux.dev,
+        linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+        krzk+dt@kernel.org, alchark@flipper.net, ogabbay@kernel.org,
+        royalnet026@gmail.com, diederik@cknow-tech.com, robin.murphy@arm.com,
+        heiko@sntech.de
+References: <20260817113603.1436067-1-gahing@gahingwoo.com>
+ <20260817113603.1436067-5-gahing@gahingwoo.com>
+ <178709455518.1014304.1443906758035976924.robh@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <178709455518.1014304.1443906758035976924.robh@kernel.org>
+X-Proofpoint-ORIG-GUID: rG8jnLsP3VddEzExfijmyezz2JODmE8p
+X-Authority-Analysis: v=2.4 cv=PZXPQChd c=1 sm=1 tr=0 ts=6a86b0fb cx=c_pps
+ a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=+bKQE0WJfmhK2875HamI0Q==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=9GNsruGHAAAA:8 a=EUspDBNiAAAA:8 a=SdGosrV6Qt3YffhYJa8A:9 a=QEXdDO2ut3YA:10
+ a=dawVfQjAaf238kedN5IG:22 a=gf-oSkQAjqHFJRp-GQfY:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODIwMDA1NSBTYWx0ZWRfX2SiUMv5bHCJp
+ HfuVvJbKa6W/v2qXEKM27QKbu8sA8uVYN6COldukldUlpzpKEvzbMFP26yUsH5UA+M6iDM/paJb
+ ftooeRdCbFHInn34P/2GIWnFVkigVR4=
+X-Proofpoint-GUID: rG8jnLsP3VddEzExfijmyezz2JODmE8p
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIwMDA1NSBTYWx0ZWRfXwVtgagXhAxYk
+ 1wlrGimZvPwzDRp+InMwTpwCwp+uHZWPUi3p+TQWwz633qVDHBO/oR4xu0UWQRTGTpaGczr5k7z
+ hh0IoMcmndw6NEFOu9+LT0tiT3gYgr1XoRAeY9GfNaAff/G6Sj/TgfWPK0putJOhEMtgkzstR9+
+ VOw0A1h1prdf95TGrRKLnEIOxUyZcYCLWvNeamCoQHInK5yfjBaxM9hN20LrF3DvaP2oknusPY0
+ HgiZXqLGGq88Zqe96Ug4h1ocvJtS2DKU1B1G/cwmweTSLUucHR1nQd2BJKMJhtiU16XlkcmzMHL
+ WF6w79cwdZHARNv3XjocUJFLigoHmR3uj+vJWVD+A/IC79EoFSYauhhAwNbGIpfsABP2itujIFy
+ uMSmq5ZMh/whCrLj9lR/gONR8YBkRDPCcvkcALoGY8q4fKoBA4EkaZfuQcGg9y5dwUk7iDWtIJe
+ 1B5kCTFi4BZear9oChw==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-19_06,2026-08-19_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 phishscore=0 spamscore=0 lowpriorityscore=0 suspectscore=0
+ impostorscore=0 clxscore=1015 malwarescore=0 priorityscore=1501 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608200055
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_002457_772381_E495EB4A 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20260820_004709_104801_98967882 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,40 +159,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+On 19/08/2026 01:09, Rob Herring (Arm) wrote:
+> 
+> On Mon, 17 Aug 2026 23:35:55 +1200, Jiaxing Hu wrote:
+>> The RK3576 NPU has two cores of the same RKNN block the RK3588 binding
+>> already describes, but it wires them up differently: two extra CBUF
+>> clocks, two power domains per core, and a single reset instead of two.
+>> It also has no NPU SRAM supply.
+>>
+>> Widen the property ranges to cover both, then pin each SoC back to its
+>> own shape in allOf so nothing loosens for RK3588, and keep sram-supply
+>> required for rockchip,rk3588-rknn-core only.
+>>
+>> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+>> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+>> ---
+>>  .../npu/rockchip,rk3588-rknn-core.yaml        | 47 +++++++++++++++++--
+>>  1 file changed, 44 insertions(+), 3 deletions(-)
+>>
+> 
+> My bot found errors running 'make dt_binding_check' on your patch:
+> 
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/qcom,spmi-pmic.yaml: Unresolvable reference: /schemas/input/qcom,spmi-haptics.yaml#
+> 
+> doc reference errors (make refcheckdocs):
+> Documentation/translations/pt_BR/process/security-bugs.rst: :doc:`regular path submission </../../../process/submitting-patches>`
+> Documentation/translations/zh_CN/how-to.rst: Documentation/translations/zh_CN/xxx.rst
+> arch/arm/xen/enlighten.c: Documentation/devicetree/bindings/arm/xen.txt
 
-Taking the last paragraph first, since that is the actionable one.
+Most likely false positive due to other things in the kernel broken.
 
-In v9 the dependency will be in the patch itself, as a git note that
-format-patch carries below the ---, rather than only in the cover letter where
-it is now. It says the patch touches only Documentation and applies to
-v7.2 on its own, and that the series it belongs to is based on next-20260814 plus
-Igor Paunovic's "[PATCH v2] accel/rocket: request the core clocks by name",
-which the driver patches need and this one does not.
+But just in case - be sure you tested the bindings.
 
-  https://lore.kernel.org/linux-rockchip/20260729130743.128876-1-royalnet026@gmail.com/
-
-I re-ran dt_binding_check after your mail, on the three bindings this series
-touches, with dtschema 2026.6, which is the current release on PyPI,
-and yamllint 1.38.0.
-
-  npu/rockchip,rk3588-rknn-core.yaml       clean
-  power/rockchip,power-controller.yaml     clean
-  iommu/rockchip,iommu.yaml                clean
-
-None of the three reports in your mail is in a file this patch touches. The
-unresolvable reference is in mfd/qcom,spmi-pmic.yaml, and the refcheckdocs
-hits are in two translations and arch/arm/xen/enlighten.c. I mention it only
-so it is clear I read them rather than assumed, not to argue the bot was
-wrong to print them.
-
-v9 is not posted yet, so please read the note as what it will carry and not as
-done. I am holding it because v8 drew three reviewers within a day of going out
-and I would rather collect the rest of that than reset the thread. Say the word
-if you would prefer the respin now and I will send it.
-
-Regards,
-Jiaxing
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
