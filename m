@@ -4,67 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB638C5DF93
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 14:42:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A667AC5DF93
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 14:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SOdnoyQWFAI1PiuSaQkxJD9JygrGExufr6urX0z9hQA=; b=KBtqsCRgh/IRto
-	GrxfPqVk/KpI9wIGr0f3FnbqUC4iED9I3izu5E69M3cA52RjQTJW3y7lUn6LAEDf1LUg4npa/ynri
-	J3RrL+3AXfQtEYYhZdZIH7widUKXNTl/us0CbYrkdRUINuqFBWvmB1xtpxz67rSr3eu02zEfAPw/j
-	63kFge1R39oMFhOH0xS/vxqTqLLPsemr+joS40OCr3cg1LGIkhIjiw+cpys2ZNk4NowioPo3yF0hR
-	yUYmybV2U467i4yTAjL7q/KnfVNI3jHfmiGNvQKNR3YPmTOzMnxlyRi8LW5KRV0PoYeDqAU0F8CjP
-	toJljhKX+tJDbWb43Vgw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5NIW6NsSU4QkTe3h7MhoHlRIBuV8H5odgqn51x8ZY44=; b=NvGXXqgzwIqa3S
+	xhEBkPP64TwtwiWlzmyQVku0xYQqFfIRKbRIN+G5Inl0BetEkMv67K27C/3bXkI7h1663DD7vDCJR
+	Fz5GajxQ95cq8JhmWBQgTCR38kczLrrFo/WIztxC0F23d4Zx4RTkQGCnVsQKeH8A/elRE8oOIqIWJ
+	8qfiRSmivRZWjUqJIBgD5KBIGEdWUUbtQ/kdssTIfEyhVSG/8HQp+4uA4nv1STZ6fLXC/I7ZG3Gv7
+	QDKtV8m9vEAl/7c+pgydNX2xLSvx5iFl8jkTRN74UaTWU3zoHOStve3SiZ6Uh7YJaiD7ZifTVTK2g
+	6CdIMYLP32wn4847nPKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxQRL-0000000Da4l-2fZw;
-	Fri, 21 Aug 2026 14:41:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wxQef-0000000DbG2-25yT;
+	Fri, 21 Aug 2026 14:55:37 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxQRK-0000000Da4f-0mXs
-	for linux-rockchip@lists.infradead.org;
-	Fri, 21 Aug 2026 14:41:50 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9E4EC6187B;
-	Fri, 21 Aug 2026 14:41:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC1AA1F00A3E;
-	Fri, 21 Aug 2026 14:41:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787323309;
-	bh=TBXd7/4Rqp6FiQW2cUZbg8tqHqkkn81QlQlR8YTCzTw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=oRAnMYL4ZLMIuGPbX8sz5CzD+LPHfx4DEe4wCg46X1xFzviJf1rdyJx0h6S/VMjqS
-	 KA0nbdQ8pHO3R34darHcuOAyKtUtGsqY6QY+6GRvJ7fBOAea9fsGanGv7K2ituc2Bq
-	 LYM9Z+WUxZ37+SzbfLvwOOgHcrwtNcSMdJdmb5S85oQG2rCTme6GuRZega55grgsDk
-	 BdR4wAgejHMAtbhyUFqdJJxACEJzQr2SZki4f23DAOTjubYmBouRcKT+YW9jDkul/N
-	 iFU3zBoH4ZkWlNJaHYOR6Hkj64RaSfdOEqyVf9+TA2FEs0y6tOst/WBJioXDNdIB4a
-	 OHdfv2f65v3aw==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Fri, 21 Aug 2026 16:39:37 +0200
-Subject: [PATCH 61/70] drm/rockchip: vop: Convert to atomic_create_state
+	id 1wxQeZ-0000000DbFA-0753;
+	Fri, 21 Aug 2026 14:55:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1787324127;
+	bh=1NQCXjNbBWwickplrcTUufFSsIqB6xtRWIcoEJzcS/c=;
+	h=From:Date:Subject:To:Cc:From;
+	b=BN/hgGc7tJB5TOhqbH1VtlDpFPjq0Z/o1jiL//Vm4uzbjSaUY95N3M25kDlPQFDSU
+	 n4KADhUWh+TQUO3YwPY9QDHDGu0axorVn1ca56HXUTPqZ9MTGLv9XQHqkI+PJHresr
+	 j5+Rnwm6R+xPDWJGddvBXa4fI20SFDOFWH8x67tWb4ed+vJh7bdDg5b02Oz0+xj7s9
+	 FWBsQE7XzO9slQOJQfzIRmCZEl5P/aR/bBAewVwBme8s+E9d07Y6usHA2Gz0bM5jve
+	 CmLIngEseZ+rDYd7z6fqgZwzmNS/9XA/x6n9aWnhMCYnMGewrkXZQyxtu7P9Pqi4aE
+	 mpx9mDTUeKIGQ==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3212E17E07FC;
+	Fri, 21 Aug 2026 16:55:27 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id DE7E3480029; Fri, 21 Aug 2026 16:55:26 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Fri, 21 Aug 2026 16:55:25 +0200
+Subject: [PATCH] drm/connector: Cache out-of-band hotplug events
 MIME-Version: 1.0
-Message-Id: <20260821-drm-no-more-crtc-reset-v1-61-fb793475c05a@kernel.org>
-References: <20260821-drm-no-more-crtc-reset-v1-0-fb793475c05a@kernel.org>
-In-Reply-To: <20260821-drm-no-more-crtc-reset-v1-0-fb793475c05a@kernel.org>
+Message-Id: <20260821-drm-connector-oob-hotplug-cache-v1-1-e92e146fdc7b@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXNQQ6CMBCF4auQWTsJLaFWr2JcwDDQGu2QKRgSw
+ t2tuvwW7387ZNbIGa7VDsrvmKOkAnOqgEKXJsY4FIOtrau9NTjoC0lSYlpEUaTHIMv8XCekjgK
+ jaRrv3Pky+tZCqczKY9x+D7f733ntH2X+zcJxfADhoKoMgwAAAA==
+X-Change-ID: 20260821-drm-connector-oob-hotplug-cache-13386679f852
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>, 
- linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2600; i=mripard@kernel.org;
- h=from:subject:message-id; bh=bfFf2guEIBmZHiLt3zPAdPPtsiW6cXZqlcuZTPqYWsA=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFkdycI3E9Yt3CTDaZDn8NLuhrZ081PzC9cEO+/9ZFtvV
- disGNzYMZWFQZiTQVZMkeWJTNjp5e2LqxzsV/6AmcPKBDKEgYtTACby5y1jw2ePhqyvMRWFG5Wb
- BV5ci5wqvcqH3TFk+ivfzScuCzHJXL4efuPGwb1W56sFrH2PMoZuZqwvqNXdyzQ/K9Jue484l5Z
- jU9f3m9mmCQ+eMxt5VS6cJazDP+mfk98n9li5+eVe2WmOVQA=
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Heiko Stuebner <heiko@sntech.de>, Dmitry Baryshkov <lumag@kernel.org>
+Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+ Yongxing Mou <yongxing.mou@oss.qualcomm.com>, 
+ Igor Paunovic <royalnet026@gmail.com>, Alexey Charkov <alchark@flipper.net>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8127;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=1NQCXjNbBWwickplrcTUufFSsIqB6xtRWIcoEJzcS/c=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqIZt4ubM9D3a95wpwtPauhCcqBVhY12e2Iy
+ 4WVohUQYtf6DYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqiGbeAAoJENju1/PI
+ O/qaM4oQAJLqYGr/dRsHKecUjFoHDbkSwLOS3splckwN6j7W/kNnfYZAlyaItktY9BFssum3Gp5
+ eDhbScjxPc96yxeSOC9CbyK3PnFpyNz6phr4HygpskbJDl2NwQILyAEscnIrOY42BjxINCmU54k
+ JtykrXzwEbAwtYyxfjTa8adMNxfF8Mte00eTM+vuUZVFc78r/RQeN/v+oD0z3M61B5PcMFm4zRr
+ TrG/j5vdwb+BgQb8mxQCgaEx+7Cg8++N/uMSaxGBR0IX/92n1IvIDAEWPW0SivDsiaZqNa5Lo6f
+ MpwK3tmATyy66PgkfJcShVCnpfyD5TwdUQcYj3Y+5a9B7WDKiH+JAHVW1V2U4hBhwUN29c2Koxo
+ CZm03EpXn9zaZFOSjNVXBziusgGQmasmQJ6puj2XHBMxJus/nuYUq7tg0RgsIm4qtQQC4A5P1wZ
+ /eE3pc38MEAHgRS0kEe53Rqld7f4NQLr0+Q7p1ASxFowUEfZKEvRoVV8crjv+W9qY5qSlwwN20L
+ XztmdpVXjH3GZNF3tepcnRgXVksp//Gg6/F3DKMsMwNxRL0HCXa+4V4wu+QWdE5ZSRpCMnCSsId
+ t4njpEAdN9CXglcJDnZzpE/x3QatCDdLCM6FXddalWhI39dQt32wCTMPwGtBjkr9pobRVaBqOL2
+ DqjrwEkXqbmg6otZ/Nr4lcA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260821_075531_290958_4933492F 
+X-CRM114-Status: GOOD (  24.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,56 +96,253 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIHJvY2tjaGlwIHZvcCBjcnRjIGltcGxlbWVudGF0aW9uIHByb3ZpZGVzIGEgY3VzdG9tIHJl
-c2V0IGhvb2suCkhvd2V2ZXIsIHRoaXMgaG9vayBvbmx5IGFsbG9jYXRlcyB0aGUgc3RhdGUsIGlu
-aXRpYWxpemVzIGl0IHdpdGgKX19kcm1fYXRvbWljX2hlbHBlcl9jcnRjX3Jlc2V0KCksIGFuZCBm
-cmVlcyB0aGUgcHJldmlvdXMgc3RhdGUuIEl0CmRvZXMgbm90IHBlcmZvcm0gYW55IGhhcmR3YXJl
-IHJlc2V0LgoKU2luY2UgdGhpcyBpcyBleGFjdGx5IHdoYXQgdGhlIGF0b21pY19jcmVhdGVfc3Rh
-dGUgaG9vayBpcyBtZWFudCB0bwpkbywgbWludXMgdGhlIG9sZCBzdGF0ZSBjbGVhbnVwIHdoaWNo
-IHRoZSBjYWxsZXIgaGFuZGxlcywgY29udmVydCB0aGUKaW1wbGVtZW50YXRpb24gdG8gdXNlIGF0
-b21pY19jcmVhdGVfc3RhdGUgd2l0aApfX2RybV9hdG9taWNfaGVscGVyX2NydGNfc3RhdGVfaW5p
-dCgpIGluc3RlYWQuCgpTaWduZWQtb2ZmLWJ5OiBNYXhpbWUgUmlwYXJkIDxtcmlwYXJkQGtlcm5l
-bC5vcmc+Ci0tLQpDYzogIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPgpDYzogQW5k
-eSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgpDYzogU2FuZHkgSHVhbmcgPGhqY0Byb2Nr
-LWNoaXBzLmNvbT4KQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKLS0tCiBk
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIHwgMTggKysrKysrKysr
-LS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygt
-KQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCmluZGV4IDAw
-OTBkOGZmMGM3OS4uYmQwMjU5N2RjMmQ3IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fdm9wLmMKQEAgLTE2NTQsMjEgKzE2NTQsMjEgQEAgc3RhdGljIHZvaWQgdm9w
-X2NydGNfZGVzdHJveV9zdGF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCiAKIAlfX2RybV9hdG9t
-aWNfaGVscGVyX2NydGNfZGVzdHJveV9zdGF0ZSgmcy0+YmFzZSk7CiAJa2ZyZWUocyk7CiB9CiAK
-LXN0YXRpYyB2b2lkIHZvcF9jcnRjX3Jlc2V0KHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKK3N0YXRp
-YyBzdHJ1Y3QgZHJtX2NydGNfc3RhdGUgKnZvcF9jcnRjX2NyZWF0ZV9zdGF0ZShzdHJ1Y3QgZHJt
-X2NydGMgKmNydGMpCiB7Ci0Jc3RydWN0IHJvY2tjaGlwX2NydGNfc3RhdGUgKmNydGNfc3RhdGUg
-PSBremFsbG9jX29iaigqY3J0Y19zdGF0ZSk7CisJc3RydWN0IHJvY2tjaGlwX2NydGNfc3RhdGUg
-KmNydGNfc3RhdGU7CiAKLQlpZiAoY3J0Yy0+c3RhdGUpCi0JCXZvcF9jcnRjX2Rlc3Ryb3lfc3Rh
-dGUoY3J0YywgY3J0Yy0+c3RhdGUpOworCWNydGNfc3RhdGUgPSBremFsbG9jX29iaigqY3J0Y19z
-dGF0ZSk7CisJaWYgKCFjcnRjX3N0YXRlKQorCQlyZXR1cm4gRVJSX1BUUigtRU5PTUVNKTsKIAot
-CWlmIChjcnRjX3N0YXRlKQotCQlfX2RybV9hdG9taWNfaGVscGVyX2NydGNfcmVzZXQoY3J0Yywg
-JmNydGNfc3RhdGUtPmJhc2UpOwotCWVsc2UKLQkJX19kcm1fYXRvbWljX2hlbHBlcl9jcnRjX3Jl
-c2V0KGNydGMsIE5VTEwpOworCV9fZHJtX2F0b21pY19oZWxwZXJfY3J0Y19zdGF0ZV9pbml0KCZj
-cnRjX3N0YXRlLT5iYXNlLCBjcnRjKTsKKworCXJldHVybiAmY3J0Y19zdGF0ZS0+YmFzZTsKIH0K
-IAogI2lmZGVmIENPTkZJR19EUk1fQU5BTE9HSVhfRFAKIHN0YXRpYyBzdHJ1Y3QgZHJtX2Nvbm5l
-Y3RvciAqdm9wX2dldF9lZHBfY29ubmVjdG9yKHN0cnVjdCB2b3AgKnZvcCkKIHsKQEAgLTE3MzYs
-MTEgKzE3MzYsMTEgQEAgdm9wX2NydGNfdmVyaWZ5X2NyY19zb3VyY2Uoc3RydWN0IGRybV9jcnRj
-ICpjcnRjLCBjb25zdCBjaGFyICpzb3VyY2VfbmFtZSwKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBk
-cm1fY3J0Y19mdW5jcyB2b3BfY3J0Y19mdW5jcyA9IHsKIAkuc2V0X2NvbmZpZyA9IGRybV9hdG9t
-aWNfaGVscGVyX3NldF9jb25maWcsCiAJLnBhZ2VfZmxpcCA9IGRybV9hdG9taWNfaGVscGVyX3Bh
-Z2VfZmxpcCwKIAkuZGVzdHJveSA9IGRybV9jcnRjX2NsZWFudXAsCi0JLnJlc2V0ID0gdm9wX2Ny
-dGNfcmVzZXQsCisJLmF0b21pY19jcmVhdGVfc3RhdGUgPSB2b3BfY3J0Y19jcmVhdGVfc3RhdGUs
-CiAJLmF0b21pY19kdXBsaWNhdGVfc3RhdGUgPSB2b3BfY3J0Y19kdXBsaWNhdGVfc3RhdGUsCiAJ
-LmF0b21pY19kZXN0cm95X3N0YXRlID0gdm9wX2NydGNfZGVzdHJveV9zdGF0ZSwKIAkuZW5hYmxl
-X3ZibGFuayA9IHZvcF9jcnRjX2VuYWJsZV92YmxhbmssCiAJLmRpc2FibGVfdmJsYW5rID0gdm9w
-X2NydGNfZGlzYWJsZV92YmxhbmssCiAJLnNldF9jcmNfc291cmNlID0gdm9wX2NydGNfc2V0X2Ny
-Y19zb3VyY2UsCgotLSAKMi41NS4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+When the USB-C state machine finished negotiating DP AltMode before the
+DRM device has been probed, the out-of-band hotplug events fired to
+early and are lost. Without replugging the display or reloading the
+USB-C driver, the DRM driver assumes nothing is plugged.
+
+Reproducing this race condition at boot time depends on kernel
+configuration and exact USB-C equipment due to timing, but it can easily
+be reproduced by reloading the DRM driver consuming the out-of-band
+hotplug events without reloading the USB-C driver.
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+This has been tested together with the patch series adding USB-C DP
+AltMode support for Rockchip RK3588/RK3576. This is mostly independent
+and should also affect other platforms, so I'm sending it separately.
+
+I ran into this during development via the module reload path, but it
+seems Heiko [0] and Igor [1] managed to hit the race condition with a
+normal boot.
+
+[0] https://lore.kernel.org/dri-devel/20767137.geO5KgaWL5@diego/
+[1] https://lore.kernel.org/dri-devel/20260811211534.8618-1-royalnet026@gmail.com/
+---
+ drivers/gpu/drm/drm_connector.c     | 106 ++++++++++++++++++++++++++++++++++++
+ drivers/gpu/drm/drm_crtc_internal.h |   1 +
+ drivers/gpu/drm/drm_drv.c           |   1 +
+ 3 files changed, 108 insertions(+)
+
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index 8b4baed060f3..b69e3776b153 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -33,6 +33,7 @@
+ #include <drm/drm_sysfs.h>
+ #include <drm/drm_utils.h>
+ 
++#include <linux/cleanup.h>
+ #include <linux/export.h>
+ #include <linux/platform_device.h>
+ #include <linux/property.h>
+@@ -81,6 +82,22 @@
+ static DEFINE_MUTEX(connector_list_lock);
+ static LIST_HEAD(connector_list);
+ 
++/*
++ * List of connector fwnodes with their last out-of-band hotplug status
++ * required to forward them to a connector on registration. This ensures
++ * the connector sees a HPD event, if the event arrived before the DRM
++ * driver was probed (either due to module reload, or because of bad
++ * timing during bootup).
++ */
++struct drm_oob_hotplug_state {
++	struct list_head head;
++	struct fwnode_handle *fwnode;
++	enum drm_connector_status status;
++};
++
++static DEFINE_MUTEX(oob_hotplug_list_lock);
++static LIST_HEAD(oob_hotplug_list);
++
+ struct drm_conn_prop_enum_list {
+ 	int type;
+ 	const char *name;
+@@ -130,6 +147,19 @@ void drm_connector_ida_destroy(void)
+ 		ida_destroy(&drm_connector_enum_list[i].ida);
+ }
+ 
++void drm_connector_oob_hotplug_cleanup(void)
++{
++	struct drm_oob_hotplug_state *e, *tmp;
++
++	scoped_guard(mutex, &oob_hotplug_list_lock) {
++		list_for_each_entry_safe(e, tmp, &oob_hotplug_list, head) {
++			list_del(&e->head);
++			fwnode_handle_put(e->fwnode);
++			kfree(e);
++		}
++	}
++}
++
+ /**
+  * drm_get_connector_type_name - return a string for connector type
+  * @type: The connector type (DRM_MODE_CONNECTOR_*)
+@@ -829,6 +859,36 @@ void drm_connector_cleanup(struct drm_connector *connector)
+ }
+ EXPORT_SYMBOL(drm_connector_cleanup);
+ 
++/**
++ * drm_connector_replay_oob_hotplug_event - send cached OOB HPD event
++ * @connector: the connector that should receive the event
++ *
++ * Send the cached out-of-band hotplug as a new out-of-band hotplug event.
++ */
++static void drm_connector_replay_oob_hotplug_event(struct drm_connector *connector)
++{
++	struct fwnode_handle *fwnode = connector->fwnode;
++	enum drm_connector_status status;
++	struct drm_oob_hotplug_state *e;
++	bool found = false;
++
++	if (!fwnode || !connector->funcs->oob_hotplug_event)
++		return;
++
++	scoped_guard(mutex, &oob_hotplug_list_lock) {
++		list_for_each_entry(e, &oob_hotplug_list, head) {
++			if (e->fwnode == fwnode || fwnode->secondary == e->fwnode) {
++				status = e->status;
++				found = true;
++				break;
++			}
++		}
++	}
++
++	if (found)
++		connector->funcs->oob_hotplug_event(connector, status);
++}
++
+ /**
+  * drm_connector_register - register a connector
+  * @connector: the connector to register
+@@ -849,6 +909,7 @@ EXPORT_SYMBOL(drm_connector_cleanup);
+  */
+ int drm_connector_register(struct drm_connector *connector)
+ {
++	bool replay_oob_hotplug = false;
+ 	int ret = 0;
+ 
+ 	if (!connector->dev->registered)
+@@ -888,6 +949,7 @@ int drm_connector_register(struct drm_connector *connector)
+ 	mutex_lock(&connector_list_lock);
+ 	list_add_tail(&connector->global_connector_list_entry, &connector_list);
+ 	mutex_unlock(&connector_list_lock);
++	replay_oob_hotplug = true;
+ 	goto unlock;
+ 
+ err_late_register:
+@@ -898,6 +960,10 @@ int drm_connector_register(struct drm_connector *connector)
+ 	drm_sysfs_connector_remove(connector);
+ unlock:
+ 	mutex_unlock(&connector->mutex);
++
++	if (replay_oob_hotplug)
++		drm_connector_replay_oob_hotplug_event(connector);
++
+ 	return ret;
+ }
+ EXPORT_SYMBOL(drm_connector_register);
+@@ -3671,6 +3737,41 @@ struct drm_connector *drm_connector_find_by_fwnode(struct fwnode_handle *fwnode)
+ 	return found;
+ }
+ 
++/**
++ * drm_connector_record_oob_hotplug_status - Cache OOB hotplug status
++ * @fwnode - fwnode for the DRM connector
++ * @status - out-of-band status info
++ *
++ * Cache the latest out-of-band hotplug status for a fwnode so it can be
++ * (re)played from when the DRM device is (re)registered after this event
++ * arrived.
++ */
++static void drm_connector_record_oob_hotplug_status(struct fwnode_handle *fwnode,
++						    enum drm_connector_status status)
++{
++	struct drm_oob_hotplug_state *e;
++
++	if (!fwnode)
++		return;
++
++	guard(mutex)(&oob_hotplug_list_lock);
++
++	list_for_each_entry(e, &oob_hotplug_list, head) {
++		if (e->fwnode == fwnode) {
++			e->status = status;
++			return;
++		}
++	}
++
++	e = kzalloc(sizeof(*e), GFP_KERNEL);
++	if (!e)
++		return;
++
++	e->fwnode = fwnode_handle_get(fwnode);
++	e->status = status;
++	list_add_tail(&e->head, &oob_hotplug_list);
++}
++
+ /**
+  * drm_connector_oob_hotplug_event - Report out-of-band hotplug event to connector
+  * @connector_fwnode: fwnode_handle to report the event on
+@@ -3683,12 +3784,17 @@ struct drm_connector *drm_connector_find_by_fwnode(struct fwnode_handle *fwnode)
+  *
+  * This function can be used to report these out-of-band events after obtaining
+  * a drm_connector reference through calling drm_connector_find_by_fwnode().
++ *
++ * The last status for each fwnode is cached and replayed when a matching DRM
++ * connector device is (re)registered.
+  */
+ void drm_connector_oob_hotplug_event(struct fwnode_handle *connector_fwnode,
+ 				     enum drm_connector_status status)
+ {
+ 	struct drm_connector *connector;
+ 
++	drm_connector_record_oob_hotplug_status(connector_fwnode, status);
++
+ 	connector = drm_connector_find_by_fwnode(connector_fwnode);
+ 	if (IS_ERR(connector))
+ 		return;
+diff --git a/drivers/gpu/drm/drm_crtc_internal.h b/drivers/gpu/drm/drm_crtc_internal.h
+index 83146ffef00c..c2714ea256a7 100644
+--- a/drivers/gpu/drm/drm_crtc_internal.h
++++ b/drivers/gpu/drm/drm_crtc_internal.h
+@@ -188,6 +188,7 @@ int drm_mode_getencoder(struct drm_device *dev,
+ /* drm_connector.c */
+ void drm_connector_ida_init(void);
+ void drm_connector_ida_destroy(void);
++void drm_connector_oob_hotplug_cleanup(void);
+ void drm_connector_unregister_all(struct drm_device *dev);
+ int drm_connector_register_all(struct drm_device *dev);
+ int drm_connector_set_obj_prop(struct drm_mode_object *obj,
+diff --git a/drivers/gpu/drm/drm_drv.c b/drivers/gpu/drm/drm_drv.c
+index 3c570f9393b9..c1aeab297ff9 100644
+--- a/drivers/gpu/drm/drm_drv.c
++++ b/drivers/gpu/drm/drm_drv.c
+@@ -1239,6 +1239,7 @@ static void drm_core_exit(void)
+ 	drm_sysfs_destroy();
+ 	WARN_ON(!xa_empty(&drm_minors_xa));
+ 	drm_connector_ida_destroy();
++	drm_connector_oob_hotplug_cleanup();
+ }
+ 
+ static int __init drm_core_init(void)
+
+---
+base-commit: d3d1e0c4343385fb343a552e4f3b6b97d5762fc2
+change-id: 20260821-drm-connector-oob-hotplug-cache-13386679f852
+
+Best regards,
+--  
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
