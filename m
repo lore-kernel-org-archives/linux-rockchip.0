@@ -4,60 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 473D3C5DF87
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 07:27:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B543C5DF7D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 07:37:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tf4tTCtmvu2yIiPc0yELHsP9aRYuVIVZeosJMnWv9xc=; b=L7fAeFpEGdvnP8
-	eEAN4ycpti9xqyDh2/RwZo+Gbw9A1wDEcKmYUyPNHEY+GkwCNcQs/vTQ8bowPNrbcHz4n1I9y3ena
-	Yb/T0DrWIrvfQbAbnoMccysL9hsYz9aYUuAsCfs+7D+VVwCp5TJVPzmXC6lolN913H/R+BR7+7ct0
-	WEe5A7uyJKkoxIOoPqzZYGeMJOQjHLK3FB8IgIZazM+4KPFtKm+pZcXKk/sWGw3m8jNuGpOMM/kjB
-	MBWhBjj29g0u19UnFC83r4OzmfcT9Nr5IiWOi9S8Bza1jf1CjC1OO8E68VgMasq9M8dLxm1P8RDXH
-	2r4e4+NiTBYPF6fC29Qw==;
+	List-Owner; bh=7k2pZP69s1Idth0FZV5n4HFxo5HR2no3SHQK12efUPU=; b=BsosjWtXFWxIMB
+	oDH7CHH78xjMFmFBa9PiJ0J7glGMckeIIVzYdPwYQQJCjC6aYhxo1Mqzrp8K06Aw6fmh8KxdeNLg4
+	xVIg8oJJN2F8owYKXHQQ3mxy6uhbGLScIEVubGUwoaJPshaDVcaE8iBCpnpWQ0XyKVncKNRFuUoku
+	j6wS9rj04LfYCXMbnjqBdUfAL//ME2BvXqO1EPRfbE/2NgQmnhxTLIDu8QI50lvu3Den/z1WJ2zQR
+	NwCUq8DuLRJchs9DX763D5o9hbbpefl7VOUqflFHlD0bUj6g38tHwQhZRkNohf9XMcekwA5OsV23a
+	XoBsWiFsZDFzHMW3r41g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxJef-0000000ChTI-398k;
-	Fri, 21 Aug 2026 07:27:09 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wxJos-0000000CigY-2CUo;
+	Fri, 21 Aug 2026 07:37:42 +0000
+Received: from mail-m20521016472.xmail.ntesmail.com ([205.210.164.72])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxJed-0000000ChSx-0u6d;
-	Fri, 21 Aug 2026 07:27:07 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2687060A7E;
-	Fri, 21 Aug 2026 07:27:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D60B11F000E9;
-	Fri, 21 Aug 2026 07:27:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787297225;
-	bh=yUdIZCjzGdQCUoVnSmJ5ekBkqW8+FEP5GNixuQZzy7A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=eWVtrVHsQR9xJOfNnb79lgmzA0sUhKpRNHGY2f51sjp4udKyWjKXlkTW6M4yD784i
-	 4fzySkyox3pzR3qkj09hvX/UMSGfaQhO+NnLtFYuYj2biw/YiXqtJ16LxxAYumygx1
-	 oQxziV5j0xAu5d6vXYCiIt0aE93BY6yMNjFPmnY93XRyO45otuwH/rZSipA4jUqdF0
-	 /xNQBbpMutPguzUXjU6b/gA3kHFQ8VhlKIU7ir+3kE+YRMCfNn4t2xGYnEruQLmkRX
-	 bNHVw4LKQNwWbWjEJXAcAFc/ZKfoFQIhaZbOVfPGV/ohRvserZFOreUY6H85vqH2w+
-	 0IxoniNoLH2tw==
-Date: Fri, 21 Aug 2026 09:27:01 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Vladislav Leonov <vlad@zlab.su>
-Cc: Jonathan Cameron <jic23@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Andy Shevchenko <andy@kernel.org>, David Lechner <dlechner@baylibre.com>, 
-	Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, Rob Herring <robh@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, 
-	Simon Glass <sjg@chromium.org>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: iio: adc: rockchip-saradc: Fix RV1106
- compatible
-Message-ID: <20260821-bouncy-sticky-dalmatian-4f72c2@quoll>
-References: <20260816113636.33635-1-vlad@zlab.su>
+	id 1wxJoo-0000000Cif5-1KlT;
+	Fri, 21 Aug 2026 07:37:41 +0000
+Received: from [172.16.12.74] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4ad31442e;
+	Fri, 21 Aug 2026 15:37:19 +0800 (GMT+08:00)
+Message-ID: <7087887e-95e9-4253-a86e-c074eef950fd@rock-chips.com>
+Date: Fri, 21 Aug 2026 15:37:19 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260816113636.33635-1-vlad@zlab.su>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 3/5] drm/bridge: analogix_dp: Restore mandatory samsung
+ DP DT properties
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260819075238.3007087-1-damon.ding@rock-chips.com>
+ <20260819075238.3007087-4-damon.ding@rock-chips.com>
+ <178714408666.358642.12912882529209046607.b4-review@b4>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <178714408666.358642.12912882529209046607.b4-review@b4>
+X-HM-Tid: 0aa02340b79c03a8kunm02f452e245569a
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTBkYVktCQ08aHU8ZS0NKTVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=eEgOCGeoFhbUNQZl237hGLavdog8J0uivhVhnfoxC+IBAIjK4kKrxBv2c9mlueubt6b+KUIinNK38NkoOooSDGNP9C9T1GpTObhCiuWV0fj0/WtkZYMoYnhPyD74yZunKp71VxN4B/rZiRlKbl49qZxVZi3K+bXOy1Ob0T+dJko=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=vwmRpH1OMYfMW+wdngHC16XU1WHD68RBOexz3bP/ZHc=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260821_003739_295620_A63706B6 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,59 +82,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Aug 16, 2026 at 02:36:36PM +0300, Vladislav Leonov wrote:
-> rockchip,rv1106-saradc was folded into the fallback enum together
-> with rockchip,rk3576-saradc, falling back to rockchip,rk3588-saradc.
-> The two IP blocks are not equivalent, though: per the RV1106 TRM v0.3,
-> chapter 20 (SAR-ADC), RV1106 only has 2 channels at 10-bit resolution,
-> versus 8 channels at 12-bit on RK3588. Documenting it as falling back
-> to rk3588-saradc allows device trees that would bind against the wrong
-> channel table and report an incorrect voltage scale.
-> 
-> Remove rockchip,rv1106-saradc from the RK3588 fallback enum and give
-> it its own standalone compatible entry, matching the dedicated match
-> table entry added by the driver patch.
-> 
-> Fixes: bdba14f6122c ("dt-bindings: iio: adc: rockchip-saradc: Add RV1106 compatible")
-> Link: https://lore.kernel.org/all/20260810090826.146758-1-vlad@zlab.su
-> Signed-off-by: Vladislav Leonov <vlad@zlab.su>
-> ---
->  .../devicetree/bindings/iio/adc/rockchip-saradc.yaml         | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-> index f0551d665916..dc56855527b8 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
-> @@ -22,9 +22,7 @@ properties:
->        - const: rockchip,rk3562-saradc
->        - const: rockchip,rk3588-saradc
->        - items:
-> -          - enum:
-> -              - rockchip,rk3576-saradc
-> -              - rockchip,rv1106-saradc
-> +          - const: rockchip,rk3576-saradc
->            - const: rockchip,rk3588-saradc
->        - items:
->            - enum:
-> @@ -35,6 +33,7 @@ properties:
->                - rockchip,rv1108-saradc
->                - rockchip,rv1126-saradc
->            - const: rockchip,rk3399-saradc
-> +      - const: rockchip,rv1106-saradc
+Hi Luca,
 
-So this goes to an enum with all the other single-entries.
+On 8/19/2026 8:54 PM, Luca Ceresoli wrote:
+>> Revert the change that made samsung,link-rate and samsung,lane-count
+>> optional for Exynos DP. Add error checking to fail probe early if the
+>> required DT properties are missing.
+>>
+>> If these properties are zero, &link_train.link_rate and
+>> &link_train.lane_count used in the subsequent link training flow will
+>> also be zero, resulting in link training failure. Although all existing
+>> Exynos DP DT nodes already contain these two properties, this potential
+>> logic issue still needs to be fixed.
+>>
+>> Fixes: 0d0abd894ead ("drm: bridge: analogix/dp: add max link rate and lane count limit for RK3288")
+> 
+> If it's a fix, please add 'Cc: stable' too.
+> 
+> Also please add to the commit message the detailed analysis you wrote in
+> the v6 discussion, so that it will easy to find in the git history, in case
+> it's needed in the future.
+> 
+> With that added you can add: Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> 
+> 
 
-Anyway, where is a driver binding to above compatible (see DT submitting
-patches). git grep on a week old next gave me nothing.
+Yes, will do in v8.
 
 Best regards,
-Krzysztof
+Damon
 
 
 _______________________________________________
