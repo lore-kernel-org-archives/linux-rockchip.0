@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68712C5DF87
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 11:44:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9165DC5DF8E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 12:02:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aUf9VG1I6WjOOWUrGraY8xDyBJDgvdi5TZ5XQIjKYK8=; b=sONwCDtehmBISn
-	3wQGI3F8jf0Si6HwCgX2HaRrWmO+RNdyyIzDwQ8tob9r1/+jO69G2jeIKCC8d7sZcf0QcTUpV4kxX
-	plKFnktkKsHqHiSFPtWGgh4KsVlhQSN4SJFGNAHGxVqMXyhbAbUTouOYSV4xteszXWRxV9vnYucPl
-	m3yMliOyvPcn1XKc1Ycd1fBROuFTDZiKCQkThuBZXfcZyriMAPAkLQu+CSkB6oQDsJ1oIQ90ZW6ed
-	dKoe/HQheJ/QENpw2sy0SHIjxcaQXbOOCc7QGTC3U1q0jt2tpPDA94n9RWUfc9NZlqDfQ9K4h2GRE
-	TIcsPxsgA6z6TiuRCt9w==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mTx7c9bou6iiHEHJikeufopkr1g8J5sFlhCsO0r6a/E=; b=vsgFPf0oCcpDAT
+	0jdPOdqLG8gQEjxVKIviet4sLLFa0snpXSoENWww1frM0v6nBvxFj2EOcjor9J30AcFOKXBN3NKQh
+	9b1OgwqiF2tHbUzqTBFb7gYcVUKdo6orPjE+s8Sm/s97dV9ds5kV4JTCkEyPUuzbE5F+H7a+ZQjs0
+	Pyf4kI7P+F5YXmu1ZGwM+yFmSSjpvkLFCnONhNel26pGV3q9DPr5uXUiaTPhQqTmeb5Jt2AbY89sh
+	IIj+mzxdnX3ciKlW822eh9xU5zaSWa2pXwIvJSKJxechbJaX5aRry3S2Oz+f76awgosNwEpZ07oaY
+	OJ4E19y6c3uRNMh9oorQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxNfb-0000000DDHH-0lwp;
-	Fri, 21 Aug 2026 11:44:23 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wxNxG-0000000DFxv-0Oal;
+	Fri, 21 Aug 2026 12:02:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxNfZ-0000000DDGZ-1MBG;
-	Fri, 21 Aug 2026 11:44:21 +0000
+	id 1wxNxE-0000000DFvr-03WH;
+	Fri, 21 Aug 2026 12:02:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C6D1443247;
-	Fri, 21 Aug 2026 11:44:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A1750C19425;
-	Fri, 21 Aug 2026 11:44:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 95EB944006;
+	Fri, 21 Aug 2026 12:02:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6F9A6C2BCB3;
+	Fri, 21 Aug 2026 12:02:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1787312660;
-	bh=mw69rgogv25Vpqgd3XtEuUAi41G1udw7Gmgj1TV2LTM=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=J/hD0f0sao1bImlmF1Tj0zpOJ4bBliolmzMJYNxkhCFYc4RDYdazM1etOHp/miR9j
-	 leLq7G70IiisjU6tFxl5ntTK7w8eZzs20GTq/AGfz3Wdni19FF+z8firy7VZHWGqOV
-	 YX69smMUZgG4Yyb8+V+3R/CqF7Gd47D/euvElBP9QBMJmPTHUVOmJJNaHrNw48HzbZ
-	 HmykMlk/FC9GgI2YID73X/ToUAW40W76cMBCJtOSdLSTKnTfN2KuiAmBSuWW745wit
-	 C6euo69a8luxWFYCFF9a2B0qN7B6wWE5rCCb+Syj/vYvLdspJBalAtzEabk+HnvIo8
-	 Tbpy/olpBVMwQ==
+	s=k20201202; t=1787313755;
+	bh=7wJCJfN4pMWX9++KJykYlazzN3vmq3alpryAcGcQgv8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=r6F2DXKVZHScJMmdTC3oEPfRertr+qgZlEzikRXkEDoIomjcbKPvasQjziwl+tGBQ
+	 Mlz151reb0G3CdzxYBgccWYDGv/9WpnSAsWWHYkVK9mnMsROC4ukTPfz0H3FoCwb6f
+	 2r7bNf9Hmhbju7PxJlpDKUuWQwKemNTFSdmfWvC8wRD/K3W/C6Mkd0o0U+FchTYL1y
+	 pbSP4q3I8x/Y1kH0By1PgqhLU020k7xZtotC9xTmgGoCoYjPep13OisO/3CqI7AY9v
+	 uSRMFrMspPWiVelxxv4oXEzKTzEUiuFnJ0q1UF/Fo1FHqXGdN1c5HWxpXyz4s0/ubD
+	 5QK7VpAHtpqiQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D2DFC5DF89;
-	Fri, 21 Aug 2026 11:44:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5CD24C5DF7D;
+	Fri, 21 Aug 2026 12:02:35 +0000 (UTC)
 From: Jason Yang via B4 Relay <devnull+jason98166.gmail.com@kernel.org>
-Date: Fri, 21 Aug 2026 19:44:19 +0800
-Subject: [PATCH] phy: rockchip-samsung-dcphy: Enable runtime PM at PHY core
- level
+Date: Fri, 21 Aug 2026 20:02:30 +0800
+Subject: [PATCH v4 2/7] dt-bindings: phy: rockchip,rk3588-mipi-dcphy: Allow
+ DSI and CSI consumers
 MIME-Version: 1.0
-Message-Id: <20260821-dcphy-rpm-v1-v1-1-a7db728b2539@gmail.com>
-X-B4-Tracking: v=1; b=H4sIABI6iGoC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDCyND3ZTkgoxK3aKCXN0yQ11Dk2QLg5TE1OSkNHMloJaCotS0zAqwcdG
- xtbUA9ZQPJF4AAAA=
+Message-Id: <20260821-dcphy-rx-v1-v4-2-f1797634233d@gmail.com>
+References: <20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com>
+In-Reply-To: <20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com>
 To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko.stuebner@cherry.de>, 
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Jason Yang <jason98166@gmail.com>
+ Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Guochun Huang <hero.huang@rock-chips.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Michael Riesch <michael.riesch@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Jason Yang <jason98166@gmail.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1787312659; l=2166;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1787313753; l=2834;
  i=jason98166@gmail.com; s=20260721; h=from:subject:message-id;
- bh=rV+NofLh7S6yCChqGRpahjAqRQEXtDM0htO9np1Bxqo=;
- b=57lr4YbeWUQV/oNo07yMtqo7IjzVndgDcWGOgaLPrTo3CyHIsAirw6wRlUFdK8mWyj0DJbew5
- /a7QHFJ7gIHBi6hFxN2KWVW9a6aXFhoO7j4aDFXxQy2pX4JkjZHmv/N
+ bh=0WXE/NlokgeSzl3fI3FkObkaA99tQXSoViMQEwXn3Mg=;
+ b=3fWLRGuGuybNGBytIyM/G6LIROaQhrm/OnU6jbpr61L/vqpD0BxsqQjQbLKj7ESlidWA1ofMj
+ WHjKv6jee5gBN9kUaAFSAyTOjjemDaF2a8QehcS5jjweyzVlkUv3vrs
 X-Developer-Key: i=jason98166@gmail.com; a=ed25519;
  pk=xQmD001Q/ooHl39PxyQtusbUQmgbOsSfpFryRVWZ/k4=
 X-Endpoint-Received: by B4 Relay for jason98166@gmail.com/20260721 with
@@ -91,56 +94,83 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jason Yang <jason98166@gmail.com>
 
-phy_create() only enables runtime PM on the new PHY device if the parent
-already has it enabled, and this driver enables it afterwards. The PHY
-device therefore never gets runtime PM, and phy_pm_runtime_get_sync()
-returns -ENOTSUPP for every phy_init() and phy_power_on(). The block is
-still resumed today, but only through the supplier link fw_devlink builds
-from the phys phandle, which fw_devlink=off and =permissive do not.
+The Samsung MIPI D-/C-PHY block on RK3588 and RK3576 has a transmitter
+(DSI) and a receiver (CSI) on the same PHY, and two drivers can use them
+at the same time. The single cell this binding has selects the mode, so
+it cannot tell whether a consumer wants the transmitter or the receiver.
 
-Move devm_pm_runtime_enable() before devm_phy_create(), as done for the
-sibling HDPTX PHY in commit 10ba8479f460 ("phy:
-phy-rockchip-samsung-hdptx: Enable runtime PM at PHY core level").
+Allow a second cell that selects the transmitter or the receiver. With
+D-PHY:
 
-Fixes: b2a1a2ae7818 ("phy: rockchip: Add Samsung MIPI D-/C-PHY driver")
+	/* the MIPI DSI host, driving the transmitter */
+	phys = <&mipidcphy0 PHY_TYPE_DPHY PHY_TYPE_DSI>;
+
+	/* the MIPI CSI-2 host, driving the receiver */
+	phys = <&mipidcphy0 PHY_TYPE_DPHY PHY_TYPE_CSI>;
+
+and with C-PHY:
+
+	phys = <&mipidcphy0 PHY_TYPE_CPHY PHY_TYPE_DSI>;
+	phys = <&mipidcphy0 PHY_TYPE_CPHY PHY_TYPE_CSI>;
+
+The transmitter and the receiver cannot operate in different modes [1],
+so the first cell must match in both consumers.
+
+A board that wires up both sets '#phy-cells = <2>'. A board that only
+wires up the transmitter keeps '#phy-cells = <1>', so existing device
+trees are unaffected.
+
+[1] RK3588 TRM: section 22.1 (overview): "The TX and RX only support
+    operate in the same PHY mode."
+
 Signed-off-by: Jason Yang <jason98166@gmail.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ .../bindings/phy/rockchip,rk3588-mipi-dcphy.yaml     | 20 +++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-index cbd780556da8..11e872cc6611 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-@@ -1610,16 +1610,16 @@ static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
- 		return dev_err_probe(dev, PTR_ERR(samsung->grf_apb_rst),
- 				     "Failed to get system grf_apb_rst control\n");
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
+index c8ff5ba22a86..595a71a51ee6 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
++++ b/Documentation/devicetree/bindings/phy/rockchip,rk3588-mipi-dcphy.yaml
+@@ -20,11 +20,25 @@ properties:
+     maxItems: 1
  
-+	ret = devm_pm_runtime_enable(dev);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to enable runtime PM\n");
+   "#phy-cells":
+-    const: 1
++    enum: [1, 2]
+     description: |
+-      Argument is mode to operate in. Supported modes are:
++      A single cell selects the mode to operate in and refers to the
++      transmitter:
+         - PHY_TYPE_DPHY
+         - PHY_TYPE_CPHY
 +
- 	samsung->phy = devm_phy_create(dev, NULL, &samsung_mipi_dcphy_ops);
- 	if (IS_ERR(samsung->phy))
- 		return dev_err_probe(dev, PTR_ERR(samsung->phy), "Failed to create MIPI DC-PHY\n");
++      Two cells select the mode and then the transmitter (DSI) or the
++      receiver (CSI), so that both can be described as independent
++      consumers of the same PHY:
++        - PHY_TYPE_DPHY PHY_TYPE_DSI
++        - PHY_TYPE_DPHY PHY_TYPE_CSI
++        - PHY_TYPE_CPHY PHY_TYPE_DSI
++        - PHY_TYPE_CPHY PHY_TYPE_CSI
++
++      The transmitter (DSI) and the receiver (CSI) cannot operate in
++      different modes, so when both are described, the first cell must
++      match in both consumers.
++
+       See include/dt-bindings/phy/phy.h for constants.
  
- 	phy_set_drvdata(samsung->phy, samsung);
- 
--	ret = devm_pm_runtime_enable(dev);
--	if (ret)
--		return dev_err_probe(dev, ret, "Failed to enable runtime PM\n");
--
- 	phy_provider = devm_of_phy_provider_register(dev, samsung_mipi_dcphy_xlate);
- 	if (IS_ERR(phy_provider))
- 		return dev_err_probe(dev, PTR_ERR(phy_provider),
+   clocks:
+@@ -82,6 +96,6 @@ examples:
+                  <&cru SRST_S_MIPI_DCPHY0>;
+         reset-names = "m_phy", "apb", "grf", "s_phy";
+         rockchip,grf = <&mipidcphy0_grf>;
+-        #phy-cells = <1>;
++        #phy-cells = <2>;
+       };
+     };
 
----
-base-commit: 1590cf0329716306e948a8fc29f1d3ee87d3989f
-change-id: 20260821-dcphy-rpm-v1-14c80daecbf7
-
-Best regards,
 -- 
-Jason Yang <jason98166@gmail.com>
+2.43.0
 
 
 
