@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10566C5DF87
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 12:02:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92061C5DF87
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 12:03:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zUjHfAA+RZ5y3VoQ9i/kjp61WiOB/S6OfmysuSoRIxY=; b=yHXua/6EXaxysj
-	GCnUbgDm4fQ6E5SJ+3gmoFY67hbbFcVfPNOWhJdCxgB+eLtnjAYe0VN2WETc6TnsbD79OQNzoJBnl
-	jz69Y/RiiaizVr/QwYHqF+n7j+hwOgl/CWFtrgAUwHu7ynIe2t3yTPvIpP8eQ3h8J+J+ft92UlI+x
-	yeF0EeGHOYNLi6MPmnDrRR/YcbRZiz/Px9zdIJ+h1N4viWvStb3qSJ8i0YNe1F8VG+B6KQ09slG3c
-	JlH6W0j/AtaBtfNCVUe30zXdE6RlGNE8WU4bVHrshduRioVOmj5I5opjaKvtJYzBgJ1YVvd+ZlmBw
-	e5c06BGTDNT/fF7fRZeQ==;
+	List-Owner; bh=NYhE7GCTf+QFOLIqEcFpXbWXvXjcAVQ+r0Ks3h7lVTs=; b=2QbzIQ4Gr8uiac
+	d00bzMfths4XPyqBE2n+lRvrS4p6NuyI9yioIfsqdQFIqyUVr0xdTMLvJCW+4o8kPdFejAZOQ/Iag
+	4oZ6XpMkfQGD9NI1tcixI9bJmgaOx7iDH3MxonbGYZo/7IfnpajTHN5RjiDLa/pR36TgmqSC1tQQ+
+	xyyU0eub8rlT6JHIvos7MeGi4lxv9x8Ik+E3NdhmWrrvRwta0pz7FaEP/fZaxJJ/emlwn8CRZ9hGq
+	bAFPKkmkfXur/0Crto0/hNHUW5xgE4tihFLJqY3tGR4s/XouY1lEppeWkaOa72r4r8JV7wkD3u2vA
+	yd4RY8MEpzyO1cYBcFUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxNxG-0000000DFyG-0ojO;
-	Fri, 21 Aug 2026 12:02:38 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wxNxf-0000000DGJo-3vOF;
+	Fri, 21 Aug 2026 12:03:03 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxNxE-0000000DFvo-03WF;
+	id 1wxNxE-0000000DFwF-1onG;
 	Fri, 21 Aug 2026 12:02:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 84E3343FE0;
+	by sea.source.kernel.org (Postfix) with ESMTP id D24E444084;
 	Fri, 21 Aug 2026 12:02:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 5736BC2BCF7;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B5A0AC2BCFF;
 	Fri, 21 Aug 2026 12:02:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1787313755;
-	bh=DWRhVzxI1C3wXkqKVNxNuGCTQI6vLn5Bk41TAuSUgsE=;
+	bh=TnI1p+P/50A7HWM9Y8HyRkngg4ldec9pgu0d66QJY5Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=OaFpnvMirgQyd1SxUFyhFisLd4c2TdFX2XbF1+VmPfuOvyunqD6bk+sRJ/q4eqWfw
-	 PAcT97OvrRXAE0qcvYZnNCllELb0RVL/6JqXbM4t4AimuL58aJBOLqbd3Z05vxDwJJ
-	 Sqc4holO2Cy7zZaqUwLFQ7nrRPdWG8FSILrKnwpU0KfG5ynKEgvQg3ROc+RMrwvKuM
-	 DqJKtwpzb8MzJ1S6maLZQZQbFEIeWetL26iLQNOMuIM66MWCktT8JZjYkIlGyBicsT
-	 325PUCo++k/qEUyGLtHWAnK6t/T/DkHbii7qiS4Je4qPwcOMsOPDiac2P7hkN1hquT
-	 CQU2XbRGxoyJQ==
+	b=TroQY1etFEyAwtSBl2bnHKcPIyWCaSr94DsOSVADzv9hdB1dFykOsP7dpp1oSgljr
+	 /41jAxzMxhQav2Pp7GF93hS+bK8Ys59TOPfnVQb/s8cjQV33X3YtrE808HV3QaA8ZV
+	 6i6rgrQCg/4A6RpOLBix2Hhq60uGjDloZvPvpvBzTpczayO6MGN8oCUKN3Q23EAh1a
+	 kvkF+JryigXrpFKxQz9PKlcIsCRLZ10nSinBNv59hQ4iMKRRIwtwbTpfKZdP0pfENr
+	 zGOuP1MyCXkBoYMGwDBgvSabq5A5EfUlMM09ofX/WwjRHE0/sbxvf22Ef/hdUj90qw
+	 LGoGUbQRUgZBQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E2B7C5DF87;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1AA8C5DF87;
 	Fri, 21 Aug 2026 12:02:35 +0000 (UTC)
 From: Jason Yang via B4 Relay <devnull+jason98166.gmail.com@kernel.org>
-Date: Fri, 21 Aug 2026 20:02:29 +0800
-Subject: [PATCH v4 1/7] dt-bindings: phy: Add PHY_TYPE_DSI and PHY_TYPE_CSI
- definitions
+Date: Fri, 21 Aug 2026 20:02:33 +0800
+Subject: [PATCH v4 5/7] phy: rockchip-samsung-dcphy: Factor the transmitter
+ teardown into a helper
 MIME-Version: 1.0
-Message-Id: <20260821-dcphy-rx-v1-v4-1-f1797634233d@gmail.com>
+Message-Id: <20260821-dcphy-rx-v1-v4-5-f1797634233d@gmail.com>
 References: <20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com>
 In-Reply-To: <20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -65,11 +65,11 @@ Cc: Michael Riesch <michael.riesch@collabora.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Jason Yang <jason98166@gmail.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1787313753; l=1230;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1787313753; l=2267;
  i=jason98166@gmail.com; s=20260721; h=from:subject:message-id;
- bh=QW75aipJ7r+1l1HjnUlKV1E5sUZRB/BcBCVtuuiQvtA=;
- b=bz+eOdVuKzA1nXEkvtCyvOk8VSkT+16IY2otvOlUYef0QPyiVMe96H9WbD/KJDy79VrmZVK/z
- DDmmxdPuGQiDWSGcCqly3/fUJ/0N7C73PqqhpJQwbhtO+Kb5DaGPaRK
+ bh=H9C3dBUKHCEqAqQXc3SD6EcAQzNiujpzdtKGk2VKgQE=;
+ b=8OIV6ztcFUOG7ZAoX7MY1eISvfkc4VkrqMa6/7vGpV8pyY1fPXRP+0w9sUvq3clP/0n8GrXdG
+ gtvDeMyM04IBjhrl25Y471zayq7Zy61zpJBQZYAB+Si2HHJHvA6nygk
 X-Developer-Key: i=jason98166@gmail.com; a=ed25519;
  pk=xQmD001Q/ooHl39PxyQtusbUQmgbOsSfpFryRVWZ/k4=
 X-Endpoint-Received: by B4 Relay for jason98166@gmail.com/20260721 with
@@ -94,37 +94,78 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jason Yang <jason98166@gmail.com>
 
-A MIPI D-PHY or C-PHY can be a transmitter (DSI) or a receiver (CSI),
-and in some PHY blocks both work at the same time. The existing
-PHY_TYPE_DPHY and PHY_TYPE_CPHY cannot tell whether a consumer wants
-the transmitter or the receiver.
+The transmitter's power-on path is in samsung_mipi_dphy_tx_power_on(),
+but the power_off callback still does the teardown itself.
 
-Add PHY_TYPE_DSI and PHY_TYPE_CSI, so that a binding can select both
-D-PHY or C-PHY and transmitter or receiver. They do not replace
-PHY_TYPE_DPHY/PHY_TYPE_CPHY, which remain the right choice where a cell
-selects the mode. The first user is the Rockchip RK3588 MIPI DC-PHY
-binding.
+Move the teardown into samsung_mipi_dphy_tx_power_off(), so that
+power-on and power-off are a matching pair. Both callbacks then have a
+type switch whose arms are plain returns. Turn each into an early guard
+for the not yet supported C-PHY and drop the unreachable trailing
+return.
 
-Suggested-by: Michael Riesch <michael.riesch@collabora.com>
-Link: https://lore.kernel.org/r/82da3622-9c3a-454c-87bc-fb4ec7adb68d@collabora.com
+No functional change intended.
+
 Signed-off-by: Jason Yang <jason98166@gmail.com>
 ---
- include/dt-bindings/phy/phy.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 31 ++++++++++-------------
+ 1 file changed, 14 insertions(+), 17 deletions(-)
 
-diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
-index 979b5dfd8353..8ee3f88e6d80 100644
---- a/include/dt-bindings/phy/phy.h
-+++ b/include/dt-bindings/phy/phy.h
-@@ -24,6 +24,8 @@
- #define PHY_TYPE_CPHY		11
- #define PHY_TYPE_USXGMII	12
- #define PHY_TYPE_XAUI		13
-+#define PHY_TYPE_DSI		14
-+#define PHY_TYPE_CSI		15
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+index f58907dec733..5d9d44a1d6a2 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+@@ -1361,37 +1361,34 @@ static int samsung_mipi_dphy_tx_power_on(struct samsung_mipi_dcphy *samsung)
+ 	return 0;
+ }
  
- #define PHY_POL_NORMAL		0
- #define PHY_POL_INVERT		1
++static int samsung_mipi_dphy_tx_power_off(struct samsung_mipi_dcphy *samsung)
++{
++	samsung_mipi_dphy_tx_lane_disable(samsung);
++	samsung_mipi_dcphy_pll_disable(samsung);
++
++	return 0;
++}
++
+ static int samsung_mipi_dcphy_tx_power_on(struct phy *phy)
+ {
+ 	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
+ 
+-	switch (samsung->type) {
+-	case PHY_TYPE_DPHY:
+-		return samsung_mipi_dphy_tx_power_on(samsung);
+-	default:
+-		/* CPHY part to be implemented later */
++	/* CPHY part to be implemented later */
++	if (samsung->type != PHY_TYPE_DPHY)
+ 		return -EOPNOTSUPP;
+-	}
+ 
+-	return 0;
++	return samsung_mipi_dphy_tx_power_on(samsung);
+ }
+ 
+ static int samsung_mipi_dcphy_tx_power_off(struct phy *phy)
+ {
+ 	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
+ 
+-	switch (samsung->type) {
+-	case PHY_TYPE_DPHY:
+-		samsung_mipi_dphy_tx_lane_disable(samsung);
+-		break;
+-	default:
+-		/* CPHY part to be implemented later */
++	/* CPHY part to be implemented later */
++	if (samsung->type != PHY_TYPE_DPHY)
+ 		return -EOPNOTSUPP;
+-	}
+ 
+-	samsung_mipi_dcphy_pll_disable(samsung);
+-
+-	return 0;
++	return samsung_mipi_dphy_tx_power_off(samsung);
+ }
+ 
+ static int
 
 -- 
 2.43.0
