@@ -4,125 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82290C5DF94
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 15:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 994BEC5DF94
+	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 15:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5/mE6k59gSDTIpUdjn2sIBLLMlYl0LJjHeTsyqh+dP0=; b=5BNfVzCawxacTf
-	CDbBnyjJTDR5Kg5ibzqf0awQznMQctX8PfDHT5NXUYVbVjw696l9bWkEkKX88dWxQzCtTo+RAI1ly
-	CsKAnYvZJt8cLgdGAjrxyzWaaXazRQByaIHSHBb+5tbrBUe9S9w4/i5mPmnwZAblDEjEu97brdQwe
-	hKd9oguXx8PQBZcxmBCbw1vrE3daCPGtat8Ad32CP5nZRisyungVE5fTUkgqg7jiLiLZLfyjbQgPV
-	saqMNr6XX9oUnDhk7I+xTsi80uY0afhZCp2Xu1odkW2Z/ZIO47Y4KVOKKwXBZSaISqwY1qNo/OvrX
-	doHPOFSQXq90w3Px3CKw==;
+	List-Owner; bh=Xn0YO/qo20n3N+0eaFGp2myiAFSNuXERA9Yf0gAtyM8=; b=w3qSxHFOjtvvA7
+	vyUF7TUwcGHcTvDnwhqp2T4AZ6pvBKzIOT/dsuzkeWBba+hxze+R+PL3eaPDgb3+c+Slq6yHgEoSD
+	HBA9rzL2GuR0ofsFxbgt5TfeCz1gzpYZMYyYqjQ2Qbs/v5KVr+TDYSQsxaCUwPVH9dtjLu4ifOY7N
+	yF4c9h0kvgo8t/klOAwXVuZhHpYCVgQ06tiyQ0L4W+gwUD/Z06FvEh5bf0EWxHGgJVoh+25NBoPe5
+	OrQgU7vx7ByO+6pNqCCvnehyJF9hOR8C748tjC3Ql9zQLmKzRtQQlQOymK6HnwsCwSLRaf6Iw2Uth
+	YsZLVSyDJDBI3kfiuH9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxQyI-0000000De7v-3d64;
-	Fri, 21 Aug 2026 15:15:54 +0000
-Received: from mail-northeuropeazon11010025.outbound.protection.outlook.com ([52.101.84.25] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1wxRCb-0000000DgiJ-06lR;
+	Fri, 21 Aug 2026 15:30:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxQyD-0000000De6Y-3cb1;
-	Fri, 21 Aug 2026 15:15:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=aIEYrWnKynLLrQGdKCWB4JOfNRorCrG9hkNj74NQMUCGV8M+N8XFOcon3Yzu6ILtTg2aCg829r9KWMygzHwgit3dR5XkGcXhHm5hxlBtxauTJ4dcIQ/6PPAmicGUaE9iAu1xEb/ykEuwnZQj3HGVFnz/oIA8ISB4c/b24MO4WvzrmW/yqLaYWIZatfodrBjh1yfDyEqgQUOfQCtPvYXQXJx8U2tXauMEFMiH+Y8Po6fLrdk5gmuIJBatjc9L/jkzbbAd4u0yrcx6Ne6LjzsFfo74o/EWBmj//wetliXoC+Pu51vwXN5r/U9iAbGc3xIiwHgh6SG+KOZ57OmYgV58cA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fudzCWYZCqhWnyRX8VAhAx9Pe9K2t+yDgpDseW7BBmU=;
- b=hpqeCDOaoCv1QpwPEbPC4cWQxp3fvsoWCLpSfgN7r+UlqtmpQpXLgqSX4y4t2FUBskrgU0kGCnSUD+nNUEyFG+50V3nsXOhbzWkdbiwwd6IUMrdhAON3H4O0jIFphmn9r2zgrFKbuMFKh/qqTFwjB5Xn4bQCeg9dXbrxiGK0o+40guoJ0BPPM3SNiNCgBWKxVLvLKjTFDpk47KfV+Pv0p78D/NdOjIwOCkAjo9YicbmS2lgCihRBjNq1gugnn87DtORvif6PLXsAynzhZDmVRYcIGrdDNudJ/EWMeVJJ11yEdX6qgEO9wKuiRL740xjVokEaHM+eiY+uYWezgsRW9Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fudzCWYZCqhWnyRX8VAhAx9Pe9K2t+yDgpDseW7BBmU=;
- b=Tzs0mUK6caHD5OQdzvpdFAJLaQG9nmCwr2YLzHXgwZtDq0jIQ5o3b/CgyVMegyyqiqK7xrxG09k+JJjtQB4wGSUNwdON/4DNi1FxbmTQSm+INeKlTORV0BCI2SNT6ptN5pDjC/sCN14/2lr5eIQy7Vys8jNRH+6DOCjlH4SoqESwNa9g8BMyws4PSljFvkhEobui9hXGhAu+MQqk5vxwxpimJicXMoQQyYB7PN19J6vKzxfrEOKckhrD/7sCUxh2AZQPjf+TF7b3pby/HVY10+rjezy3e1d9A3vshjhDg8G84mCWaBxPwPHEbGiKanjln6rpkEHXIvBEh1J0r8cOJQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
- by AS8PR04MB8897.eurprd04.prod.outlook.com (2603:10a6:20b:42c::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.339.11; Fri, 21 Aug
- 2026 15:15:45 +0000
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0339.008; Fri, 21 Aug 2026
- 15:15:45 +0000
-Date: Fri, 21 Aug 2026 10:15:36 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Michail Tatas <michail.tatas@gmail.com>
-Cc: nicolas.dufresne@collabora.com, benjamin.gaignard@collabora.com,
-	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: verisilicon: rockchip: Fix leaks in init
-Message-ID: <aohrmDgzhRxC6M_D@SMW015318>
-References: <aoV3LLy5hSoKL4QP@michalis-linux>
- <aoXgSKnkbWZVKRui@lizhi-Precision-Tower-5810>
- <aodup3TleCfdxcF3@michalis-linux>
-Content-Disposition: inline
-In-Reply-To: <aodup3TleCfdxcF3@michalis-linux>
-X-ClientProxiedBy: SA1P222CA0185.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:806:3c4::11) To GV2PR04MB11799.eurprd04.prod.outlook.com
- (2603:10a6:150:2cf::9)
+	id 1wxRCV-0000000Dgh1-2lKE;
+	Fri, 21 Aug 2026 15:30:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1787326232;
+	bh=0SjnZoAiswH2T2RP04K1GTQXFm/D343GdExP27HzYZ0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZFPXbrY7cH7u2m2aO7U5qtI7tjfoSJzfJXiLX1T6K9gqmwpcOJEmCaGdsFOCY16Ak
+	 sDBsBeZpI+F3ZpqDzMJhxw8e2wIuf/hSXJ0jYkRD9tdHQYjt+jMdYm8BEfULVwOc+L
+	 sgCa80xWk8NrN1hPa7N2uCpJv2bPLEAdsvl9vzlfyQ0wN27U/tK6sc9HbpIlYRxJO1
+	 X0WQO1rR261LhDk2Tl6mAd6KujTLr1D7GsS9eefaWcL46xkLxIaAKPb446rtEoMyYq
+	 b16KIE7u9moyfgcdN78WnKz0l5zSxi0HvA5hm9RtrchSN0Vm5j6ZXkaO2mEu2xs39L
+	 36M4zE9JhNs9g==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC72F17E0829;
+	Fri, 21 Aug 2026 17:30:31 +0200 (CEST)
+Message-ID: <4fc2a3b6-2771-438b-ae99-5574e9c6efc9@collabora.com>
+Date: Fri, 21 Aug 2026 18:30:31 +0300
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|AS8PR04MB8897:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4cd5efcd-29fc-46b5-2dc5-08deff9712c7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|19092799006|23010399003|1800799024|366016|56012099006|11063799006|4143699003|6133799003|22082099003|10067099003|18002099003;
-X-Microsoft-Antispam-Message-Info: mfMk5TSqaHGFIc+ww0X3iQx3ClujRsgX2COWP8xoQn2O/sHFeJSYd++NEjb8mPwF1HukC39e+FpHrxbA3SEerkwxYfeZNmw904vztG2ST04Zx7Wb9IQc79o01DypAAR+fdjjXDxkIPGlWwF71ERCKgYOe2SFs0Be8uWd/8f2NO1XuaJdgxRsSb+ELXjtv9TGvAAEMdnzsSVCXU4fBL2nQsXS90f4fOSI87DgZYGUnVbouLsUV1Q/lPwdXFXnafyD5cIKJULWxXfJCeq7AcZL3Rh5bDjwdQDP7/iM95aaCgr2LLhJKHxW4jM2UeC3LudDGG1rzG1Akd5F7/t8N4EEMtE4XHLdSvJm/XjA1Ue/zuzsr8do/xEUP7K6cX8tqLlpVHykjQrO9Y7ylFlJG3kAkryXVwNbverl0cTdtVvH5MYSivk2wBqUaNAxPdekgsfb9WP0hQmqmNv4oMK6uoFlBYv/+WQjByw+z3Za9N7OnCxz9DbzgFvuABzTGHTm8CbL2bQYEgMetyjtpyMINAPqNdVp/gDpSZ0UR2s7kEYUHdIRhDh9RbkSBrp9SbMmYYvIFYsCqwaye9A/Y6MkySONhRAi5MZvSlA/mbWXZedUvRZaK2ULCl/hsMBnarCdgKpi7W3aXQIChG2fgY0dPPlyiznDNOQhxpP5538MSabW70w=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(19092799006)(23010399003)(1800799024)(366016)(56012099006)(11063799006)(4143699003)(6133799003)(22082099003)(10067099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Ov7/fZNTH9g+bkQbN1XySq0j8HQsDE5LG7imEJAYihvfrksOnS7cVn5AKmbm?=
- =?us-ascii?Q?92sNpjttALOHNz2KUHJu0kocJPkP0pFIGiBXTdXCasochzBE/6zqmB985mET?=
- =?us-ascii?Q?FYlgpwmhoOn94+NU7s+E34Fw1FfWZEk5orlrSLR3kVlcE5aNGvCGtNKT+eJV?=
- =?us-ascii?Q?YPlWrbHt1YehRFkmcAs3xLE5NhJlUxNuJv4y8kmD05AfkrygaXLXMGzXgn92?=
- =?us-ascii?Q?k17AbfEbfDSKOF7gHc1EcqRlpl2Jmp6P0F2OqdC3GSUYPaZzO6jP/jYfYdIC?=
- =?us-ascii?Q?KCI+tF79zJHZb7fKAHz0szHr1dZUaty6o+i4dDcZ/z5AFt7mp0U423QUpvOT?=
- =?us-ascii?Q?hcuRd28y0dGH5P1PI2t8Ti/Lcl/YXtbS++8kKzhkO42pl6CjWqR7mDt0oS1P?=
- =?us-ascii?Q?QaDfz2D1pvC2yb85YVdnDBgoC2lsD8NfroOQrJjhi2Jc2IwQqvK+HH1HlQSY?=
- =?us-ascii?Q?qbicXMqvHwrR3ok+0bAE8P6b5ss+6i3fun6bnnZpO5e8VZjUN0dE03GQh0Ol?=
- =?us-ascii?Q?VZkkPpT220zb4BVGbL54ZZms45FLppeE3s3+zCj3gunA5es5/2P0a3CJhACY?=
- =?us-ascii?Q?bJELUGoa6fP4ZK8ms5WHZtmR9b8LqJ0pFyKyveYCB0X1rTs+lTSEA+lG3cY4?=
- =?us-ascii?Q?rakOas2dTpMOWBBukUU349iSi7ORfhW2J1eRw9eHnpfSHCqVGd2J9687qvd8?=
- =?us-ascii?Q?/bULvO0LON6C018fm2oxmxj7YxoqIxyTjI49HLj7yvbD/rohTjKGdO5vVpbN?=
- =?us-ascii?Q?KlhTx94fuqF5GanHW8nhi1XbI24lhmZE10u1e8DekFV4YWMuvUv2B+fH7oBx?=
- =?us-ascii?Q?cUf5Ew19ig7vxCDYjmZR9SAbIIZqglKOAcCWz6rOdb2g3NuNLG6LGby+CBKR?=
- =?us-ascii?Q?hI7G8ZJ1fkwkDIzRKXgixxUXVLUFyceF4+/3hqON2/uniVDuGugvTL9Exd4P?=
- =?us-ascii?Q?BHPX4TLALbbBg0KH1aHEcwR8mvnj3Pqs0sbKiceF2r+8s9BsgUxFs4i1Ey+t?=
- =?us-ascii?Q?ITBli1+zTLLDdbzzzGOyZiiFOtBTCaj8Z3jxP/QPO8FjVpIQn2GNcb0OpCIR?=
- =?us-ascii?Q?KMy5qYYhmg1Thjv2Yv6U2oZBFEiC5xzePzv1XbwahPkryAcsaqMFowEm1Ek6?=
- =?us-ascii?Q?ghjE5BGPs13WLe5HM6by5TkH2SZlYZswCcovQgnmZ/wTf+wOv2bdGOFaiJi/?=
- =?us-ascii?Q?/smWFrzNPKjCGGQI1c9KkGAFemC9JvWMO0d3cEUbjKkkMLq6GXO9vIzMrgNK?=
- =?us-ascii?Q?49unwWB3rPvnHYU8ZxEhvUxNSWR/cGbIdGOymM8fexF6T5FQkWSmx+dEE6rs?=
- =?us-ascii?Q?wNNG1MxUjWdLju8j9CMnx59dg5Qf4B1437sGwSUZbzcJxFS8CIiKa6pTVb3y?=
- =?us-ascii?Q?06ILYNkxjcEoXAofPNT/bp/VGtegtKJZsURJwiCqRfPbhRaRDlqYG6KI2AEt?=
- =?us-ascii?Q?QLbpVkqClzwD/8/0qBstnPw33w5K9+5XHIrxOmGbc3SnXggsfQqg7OUw2fMd?=
- =?us-ascii?Q?2GngZEbeZuqKFgw1JtOd3UPz7bsBHModtv/lXMsNjgmffiMCP3h8uDkgQWgL?=
- =?us-ascii?Q?cL8db8eOwN6Mkdj+ZKz7OSPiD/oBlxHPTwZgY0HoJ6p6xreNcyPLGe4yRetL?=
- =?us-ascii?Q?FWxz37Vhr2lQPiA52KLlUjX9KucW2Txu/wwFC4ZtomMGi2Zex5wIZrouGtIm?=
- =?us-ascii?Q?eBoRDn00CRyVeyUZdPpTnFsvSLWfv0FmS23n4wwRQsmmQuxhw7xVxqGGd7IS?=
- =?us-ascii?Q?kv/GsbEXTliDzYsxP6y/miuH6txoY/fcqwV5cTnubcVtQwxEJQ1d?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4cd5efcd-29fc-46b5-2dc5-08deff9712c7
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2026 15:15:45.6265
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: iKN68Tpbo7UzczTkD2ro9rXYNhJ4uV7KiaETNJpdOa184ZjhIykrxgW0Rd9CGgtBJQQ1hiKvYQDy4FBbVQpdSYjFl5VzUjhKE2Brh2W4cBUkxUJ/9OfiAqp8klLBko3f
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8897
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 67/69] drm/connector: Drop redundant hdmi
+ vendor/product fields
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Chen-Yu Tsai <wens@kernel.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?Q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Algea Cao <algea.cao@rock-chips.com>, Daniel Stone <daniels@collabora.com>,
+ Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>,
+ kernel@collabora.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ Diederik de Haas <diederik@cknow-tech.com>
+References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
+ <20260731-dw-hdmi-qp-scramb-v10-67-294364b2cf15@collabora.com>
+ <20260820-strange-rich-tiger-78a5a4@houat>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20260820-strange-rich-tiger-78a5a4@houat>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260821_081549_912958_35311724 
-X-CRM114-Status: GOOD (  30.07  )
+X-CRM114-CacheID: sfid-20260821_083037_331690_5B297891 
+X-CRM114-Status: GOOD (  20.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,84 +95,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 21, 2026 at 12:16:23AM +0300, Michail Tatas wrote:
-> On Wed, Aug 19, 2026 at 12:56:40PM -0400, Frank Li wrote:
-> > On Wed, Aug 19, 2026 at 12:28:12PM +0300, Michail Tatas wrote:
-> > > if one of the dma_alloc_coherent in the init fucntion fails then
-> > > the previously allocated ones leak.
-> > >
-> > > Fix by freeing them in the error path.
-> > >
-> > > Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
-> > > Signed-off-by: Michail Tatas <michail.tatas@gmail.com>
-> > > ---
-> > >  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 68 +++++++++++++++----
-> > >  1 file changed, 55 insertions(+), 13 deletions(-)
-> > >
-> > > diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> > > index e4e21ad37323..fa77fd402412 100644
-> > > --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> > > +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> > > @@ -369,6 +369,7 @@ void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx)
-> > >
-> > >  int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
-> > >  {
-> > > +	int ret = 0;
-> > >  	struct hantro_dev *vpu = ctx->dev;
-> > >  	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
-> > >
-> > > @@ -377,39 +378,54 @@ int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
-> > >  	av1_dec->global_model.cpu = dma_alloc_coherent(vpu->dev, GLOBAL_MODEL_SIZE,
-> > >  						       &av1_dec->global_model.dma,
-> > >  						       GFP_KERNEL);
-> > > -	if (!av1_dec->global_model.cpu)
-> > > -		return -ENOMEM;
-> > > +	if (!av1_dec->global_model.cpu) {
-> > > +		ret = -ENOMEM;
-> > > +		goto global_model_cpu_err;
-> > > +	}
-> > > +
-> > >  	av1_dec->global_model.size = GLOBAL_MODEL_SIZE;
-> > >
-> > >  	av1_dec->tile_info.cpu = dma_alloc_coherent(vpu->dev, AV1_TILE_INFO_SIZE,
-> > >  						    &av1_dec->tile_info.dma,
-> > >  						    GFP_KERNEL);
-> > > -	if (!av1_dec->tile_info.cpu)
-> > > -		return -ENOMEM;
-> > > +	if (!av1_dec->tile_info.cpu) {
-> > > +		ret = -ENOMEM;
-> > > +		goto tile_info_cpu_err;
-> > > +	}
-> > > +
-> >
-> > This function is called by hantro_probe() if I am correct
-> >
-> > there are dmam_alloc_coherent(), use dmam_alloc_coherent() will simple
-> > error handle and tear down.
-> >
-> > Frank
->
-> Hello Frank,
->
-> I did not know about the dmam* functions thanks for letting me know.
-> I read some of the docs about them and they seem to not apply to
-> this particular case since this code is not called from the probe
-> function but rather the hantro_start_streaming function. Since
-> dmam_alloc_coherent() only releases memory at device removal,
-> it wouldn't free them when the stream ends and a new stream would
-> re-allocate while the old buffers lingered until detach.
-> So I think manual dma_free_coherent() error path is the correct
-> fit here.
+On 8/20/26 1:10 PM, Maxime Ripard wrote:
+> On Fri, Jul 31, 2026 at 07:20:14PM +0300, Cristian Ciocaltea wrote:
+>> Now that all users migrated to the new drmm_connector_hdmi_init()
+>> signature, vendor and product are provided through struct
+>> drm_connector_hdmi_funcs, a reference to which is already stored in
+>> drm_connector_hdmi.
+>>
+>> Drop the redundant fields from drm_connector_hdmi and point its users to
+>> hdmi.funcs->vendor and hdmi.funcs->product instead.
+>>
+>> This allows simplifying the related connector registration tests by
+>> getting rid of the now unnecessary KUNIT_EXPECT_MEMEQ() checks.
+>>
+>> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  drivers/gpu/drm/display/drm_hdmi_state_helper.c |  4 +--
+>>  drivers/gpu/drm/drm_connector.c                 |  4 ---
+>>  drivers/gpu/drm/tests/drm_connector_test.c      | 41 +++----------------------
+>>  include/drm/drm_connector.h                     | 14 ++-------
+>>  4 files changed, 8 insertions(+), 55 deletions(-)
+>>
+[...]
 
-Okay, make sense.
+>>  /*
+>>   * Test that the registration of a connector with a vendor name at the
+>> - * maximum length succeeds, and is stored padded without the trailing
+>> - * zero.
+>> + * maximum length succeeds.
+>>   */
+>>  static void drm_test_connector_hdmi_init_vendor_length_exact(struct kunit *test)
+>>  {
+>>  	struct drm_connector_init_priv *priv = test->priv;
+>> -	const char expected_vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] = {
+>> -		'V', 'e', 'n', 'd', 'o', 'r',
+>> -		'V', 'e',
+>> -	};
+>>  	int ret;
+>>  
+>>  	priv->hdmi_funcs = dummy_hdmi_funcs;
+>> @@ -911,10 +882,6 @@ static void drm_test_connector_hdmi_init_vendor_length_exact(struct kunit *test)
+>>  				       DRM_MODE_CONNECTOR_HDMIA,
+>>  				       &priv->ddc);
+>>  	KUNIT_EXPECT_EQ(test, ret, 0);
+>> -	KUNIT_EXPECT_MEMEQ(test,
+>> -			   priv->connector.hdmi.vendor,
+>> -			   expected_vendor,
+>> -			   sizeof(priv->connector.hdmi.vendor));
+>>  }
+> 
+> Unfortunately, these tests were useful, and are there to match what the
+> spec asks for.
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+I've just added a new test to cover this, as well as a couple of prerequisites
+to consolidate SPD InfoFrame handling:
 
-Frank
+* video/hdmi: Define SPD InfoFrame field lengths and use strtomem_pad()
 
->
-> Best regards,
-> Michail
+  HDMI specification defines the SPD InfoFrame Vendor Name and Product
+  Description as fixed-size fields, 8 and 16 bytes respectively, padded
+  with zeros and left without any trailing NUL when a name spans the whole
+  field.
+
+  Give those lengths a name and mark the fields as non-strings, so that
+  the copies can be handed over to strtomem_pad(), which implements
+  precisely the required semantics.  This also bounds the reads from the
+  source strings, whereas the open-coded strlen() could run past the end
+  of the buffer in the hdmi_spd_infoframe_unpack() path, where the names
+  come straight from the wire and are not NUL-terminated.
+
+  While at it, replace the related magic numbers in the pack and unpack
+  helpers with the new defines.
+
+* drm/connector: Use the SPD InfoFrame field length defines
+
+  DRM_CONNECTOR_HDMI_{VENDOR,PRODUCT}_LEN used to size the vendor and
+  product arrays in struct drm_connector_hdmi.  Those arrays are gone and
+  both names are now only validated before being copied into the SPD
+  InfoFrame, hence the limits they have to be checked against are the ones
+  of the SPD InfoFrame fields themselves.
+
+  Switch the remaining users over to
+  HDMI_SPD_INFOFRAME_{VENDOR,PRODUCT}_LEN and drop the DRM specific
+  defines, so that the two cannot drift apart.
+
+* drm/tests: hdmi: Add SPD InfoFrame vendor/product coverage
+
+  The vendor and product strings provided through struct
+  drm_connector_hdmi_funcs end up in the SPD InfoFrame, whose fields are
+  defined by the HDMI specification as fixed-size: 8 bytes for the vendor
+  name and 16 bytes for the product description, padded with zeros and
+  left without any trailing NUL when a name spans the whole field.
+
+  Nothing exercises that so far, since the SPD InfoFrame is only generated
+  for connectors implementing the related hooks, which none of the
+  existing test funcs provides.
+
+  Add a connector variant supplying those hooks, along with parametrized
+  tests covering both the padded and the exact length cases.
+
+Thanks,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
