@@ -4,99 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01AE2C5B572
-	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Aug 2026 10:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6D00C5DF97
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Aug 2026 19:48:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x6QS3os7JHVCbHyDeVncS/hB80MLG+lOBuBlwIEb9to=; b=a5nJr/jna2+c+F
-	wJ6t43FG0tUvOM5BCUKXDDjwyInP8Qz+9PeB3GNH+YwBfrqCHQA5vxsf3JoMG8KvDVSALqLLsMFOX
-	/yrwY6j0vbnDC/jSZAngMgywSAcO7Ihq9BAYd3hAMfZB+hFJSUwZbfDxLpsz1m4LB+pOsADPy+dF4
-	2CYNzuEVrg+1X1u+wWoJB4XOcnUHnid83FqLdn3mHqrb6GFi6af0vY/ukrBPkdZZVn9SFRmF+vc0V
-	SMyFxU5GVizkRLukRZ0FIgkdV9cocMOlIPcRvUaQnv8XC1tCV81RfSZ6ey1GAVcZglvRInwAkUjiu
-	c2OLirdfEfp9BCDCIpdw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:From
+	:To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yNbI9pTy/4tH1zyq6M57USCK89uBpoHlh1i3ZNW4ZoM=; b=WY2k/pmxv7Eszm
+	H2/aWsGvf7mEfFq6jcizlZZRjodbw5EvTO6Tj93JTE6Q5QkrQh3BqbFp5L56tQmOMkunOTcpsT7A4
+	0no+ndslP50GKfQqnmbOD/9y5RoaOwrMeERafRAgZYYH2UkKBtDCW1MeM4zcNJ3Xvoz2MvH3f2r8Y
+	k6kIP7QZBK0hXnP8ZL9d+i7Cb9vL7q8nGsshBC101XI9K58K/5AwY99GmgnQY3YIkHmLmeg9f5ip7
+	ay6fq/XqNwhZOrAxQr57+AOdso//prvanO3LgbfVURmfA/hLYFJBQHxqhG73/4j+N2kS1Fvahhmzk
+	wnekGGADacFAeSu+NlXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxig1-0000000ESKP-2u4c;
-	Sat, 22 Aug 2026 10:10:13 +0000
-Received: from flow-a3-smtp.messagingengine.com ([103.168.172.138])
+	id 1wxrhS-0000000EkfX-0yID;
+	Sat, 22 Aug 2026 19:48:18 +0000
+Received: from mail-4322.protonmail.ch ([185.70.43.22])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxifx-0000000ESJo-1DtP;
-	Sat, 22 Aug 2026 10:10:11 +0000
-Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
-	by mailflow.phl.internal (Postfix) with ESMTP id E73B21380161;
-	Sat, 22 Aug 2026 06:10:05 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-03.internal (MEProxy); Sat, 22 Aug 2026 06:10:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1787393405; x=
-	1787397005; bh=YMoogVRYIwk8Wptzr/Oo7EUpCyIlUtkJVK+72BZkIEk=; b=i
-	p7TpOJ9TyXg8JbynvoR5GTVIYShXzyttF7tdrWMJCmhbG3pMIjYpYlnTtkv2Udsa
-	hr1fJABNDI9TWYKdDeqUN26znpzqP+aMgiX9SoBIaQ77wphDts1KyGh0KB3PtFxi
-	ESEYrqr8TDrSGZgFYaGukmg46blFshcTaIbBbKljyJ/XLagm4nlM1RPmxEaHhI8a
-	1A71VzS9LLDYnS2PAkSqlC0gsFAvimjHeUY4711AxPap8jiF/1tkwTPY+uNoijbY
-	MroiuXfIOARxLxRw0UaOaYQ8e2By0gW4bTdnlf/RvFltfanNgjg1jRiK5iuHLGLO
-	TTocKuIcbi6jCiDubheaw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1787393405; x=1787397005; bh=Y
-	MoogVRYIwk8Wptzr/Oo7EUpCyIlUtkJVK+72BZkIEk=; b=X/Mbk6VE+ENJTaU+z
-	5IQirWGDXrtUCv97wArsTuljfZeOMQm49NbM9dw6AXptiIoouPk5WrVqBylNRTq1
-	7qrHp2LECfcGafGSbHsGtZ/hac1lCMxy5aepIkpQnnqH1pprvjen5+RK5Y7SHldU
-	uGXJPx+VVYXQ1/veGgKssvc3percQZwbLuNwvtrLVbY8kOx6sknIoO5JNK5vsPU9
-	nzQt/cbjEF3B/ZE1C+9A851XOdDgvchQjz8wxTgYW5z1zKb75Au6VbHS8Zu/dpk2
-	WfM+7Wo6TQch5WNOTDsYpzy7WZG9+Bb9xduFQYzeLP6dOMaU+zNaPzZ+N90EZwS8
-	OKbiA==
-X-ME-Sender: <xms:fHWJapdgHgrS_SnP1MLC-YitW2OuDFp0xXgWJ9iDVo9dm_TctDFp2w>
-    <xme:fHWJavbaXFnTvZ6cr344qVzBkOUd_LAZXsDQ7iAENxC4VWYboUnVN-TZ5ByHMSMzk
-    e0UzoaAEX6Vgo0BxIBd7jB8TdLN23M_4ZKbD9SOeCnntIAUnswT-cgF>
-X-ME-Received: <xmr:fHWJauEAhTF_fDE8yPBVewTUp6HC3rZP4SIvUNtSpgX1BAV8zs6_fKySFPPX1zbOCsrvk0Yn1A>
-X-ME-Proxy-Cause: dmFkZTGBWdQTFj4HdlU6ENZ1CLSznPDgvJlHM1i8OZX2pVdBj6E3SlQbz5ofJjhRLtzwdL
-    odMhyxzcECGNY8afaO8wGltEZEln4E3CTNc0ty1akhBimzcxuGJLqd2VUDO30PNO0dZ6rt
-    HXiHeO0r/GLHUCDWxRvnwzLqo1AP/zDqjGHTbd9hktWngEeIEmZvz/5PX7WN7391i+3QSh
-    GgJrjllKXTBmxQ45km0dDLQKO195mMeIkX/Qm/H1wJJBTcttcXfVyYRzCZzbyxM0Ob2VJ3
-    wLvOtl3Pkn8vfACC/f5w8rs51cB3r0D+zlKMjzopcXHbEtUSeSr2C/ILjtVBnaK7pIF5ZL
-    +gtXVvELHMhYaQs/Psdfg8IOl/efEp8vS6Rc8rb3w/rttdCmMBIGhLaHyhsq54yXL/2Uif
-    0+N/FUvNWXE37Wu+UCfGghoRDKCNGNq4DZb6cWnXiyD3KItZvzVUQXLtngTyxhLqr8rs63
-    BC0h73a3JbhWInbNsAgFoiCwNincOnFjTwQE3TS54nC76ucshwByBGaMfiNDVAWVWIJBAa
-    QEzSqEwlMAeLIqKfZgAxLHrxMlOw0WWkZUShFOPduv1jZPwFxr0bz11aSfyneCxzLA4UbI
-    DKKqIKKIJZwb1RjIdwtsDVyXfbG7RElDJ1a1G+0MlqQjW1ICRNXdM9us31tg
-X-ME-Proxy: <xmx:fHWJatkLUOTDahuC06Roe7CPeyqAIBzXW7vd_FIaIsbC2akI79Iy2g>
-    <xmx:fHWJahdFFDK6QgbmR-Pv9BAxuS4zpSKBwvrrdPbHlzO_qo-ucOlkGQ>
-    <xmx:fHWJarHnzCIjnoYgYgnljNR5FdCJecRt32EvJjoSM0tr7lMSQN-_Ng>
-    <xmx:fHWJanjHXs55tp5LbyFs9PE2_XesfskU6ZIf-tGQovlIm8fcK7YtCQ>
-    <xmx:fXWJamPYaeKTZxFiNwYwF_4xaG-9iyx4xh1IlcdhAFvYcz5anq3fdmcl>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 22 Aug 2026 06:10:00 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: royalnet026@gmail.com
-Cc: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	chaoyi.chen@rock-chips.com,
-	alchark@flipper.net,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v7 08/10] accel/rocket: add RK3576 NPU (RKNN) support
-Date: Sat, 22 Aug 2026 22:09:56 +1200
-Message-ID: <20260822100956.636407-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260820185056.20643-1-royalnet026@gmail.com>
-References: <20260820185056.20643-1-royalnet026@gmail.com>
+	id 1wxrhO-0000000EkeA-2aw5
+	for linux-rockchip@lists.infradead.org;
+	Sat, 22 Aug 2026 19:48:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1787428084; x=1787687284;
+	bh=+UOlbWmhlZGcXSZas1atuG02Rkmo7MvD1GEC9/IVszM=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=AuUjeS4Qg8skiBG8zgzWsFH8mgr62jLVrdjl+P4UNmaN8E0hnsOICdXWz6yUA5QM8
+	 1kjPq9/ydCZct3aqkuT5/ixqPZoHXQv+jeqbpKNBax16FGVHMf/5QIbW6swx56vj6Y
+	 6FZi16MBpqBZ9TNGIXJwV+TIpG/9oPTLfUjGLEBXBIYqVUlzJwz/CnlKsxf8ynLxUr
+	 FIcBy4NGKFFzXr6u4hobl8AgP90u3ACKn7l74ofcxNR4Nr4Huy+KhZenHgLAGor6rV
+	 VFYOXNsDJSuqxc32zyKthfYrR0pzKNOobFLiR5GJnGlbJLWBKwkpRZ7phE4ijOmTdK
+	 oAhyq4E5Tdc2A==
+Date: Sat, 22 Aug 2026 19:47:58 +0000
+To: Heiko Stuebner <heiko@sntech.de>
+From: Richard DeFrese <richard.defrese@proton.me>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Richard DeFrese <richard.defrese@proton.me>
+Subject: [PATCH] arm64: dts: rockchip: route ES8388 MCLK to the IO pin on Orange Pi 5/5B
+Message-ID: <20260822194730.526392-1-richard.defrese@proton.me>
+Feedback-ID: 216883557:user:proton
+X-Pm-Message-ID: c644c4c6ff2315eb917bb9194d3fe04645365cd6
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260822_031009_807266_37B00825 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20260822_124814_830485_8C03982B 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,51 +67,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
+The on-board ES8388 codec on the Orange Pi 5 and 5B has no analog output:
+the codec's master clock (MCLK) never reaches its pin.
 
-SIZE_E_1 stays at 0 and the diff stays as it is. Your reason is better than the
-one I would have given: a register built from the trace with one field swapped
-to upstream's value is a configuration nothing has ever run.
+RK3588 gates the I2S MCLK-to-IO routing in SYS_GRF SOC_CON6 (bit 1 for
+I2S1), exposed as I2S1_8CH_MCLKOUT_TO_IO. The codec references the internal
+mux (I2S1_8CH_MCLKOUT) instead, so nothing enables the IO gate: the
+12.288 MHz MCLK is generated inside the SoC but never driven out to the
+codec. With the ES8388 as I2S bit/frame master, the SoC I2S controller then
+never receives a valid clock and aborts:
 
-I crossed SIZE_E_1 with the channel count, seven values, with the control beside
-each one in the same boot:
+  rockchip-i2s-tdm fe480000.i2s: clear failed, reset txrx
 
-    N                      16   24   32   40   48   56   64
-    SIZE_E_1 = 1  written  16   24   32   40   48   56   64
-                  correct  16   24   32   40   48   56   64
-    SIZE_E_1 = 0  written   8   24   32   40   48   56   64
-                  correct   8   24   32   40   48   56   64
+Point the codec's "clocks" at I2S1_8CH_MCLKOUT_TO_IO so the ES8388 driver
+enables the gate in clk_prepare_enable() at probe; "assigned-clocks" stays
+on I2S1_8CH_MCLKOUT to keep the 12.288 MHz rate.
 
-Six of the seven are identical. At N = 16 they are not: upstream's 0 asks for
-sixteen channels and delivers eight, in both the words written and the count
-that comes out correct.
+Signed-off-by: Richard DeFrese <richard.defrese@proton.me>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-So your conservative choice is right, and one shape in seven is what two shapes
-could never have found.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
+index 6e081bc06..5ac3e0d9d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
+@@ -87,7 +87,7 @@ &i2c6 {
+ 	es8388: audio-codec@10 {
+ 		compatible = "everest,es8388", "everest,es8328";
+ 		reg = <0x10>;
+-		clocks = <&cru I2S1_8CH_MCLKOUT>;
++		clocks = <&cru I2S1_8CH_MCLKOUT_TO_IO>;
+ 		AVDD-supply = <&vcca_3v3_s0>;
+ 		DVDD-supply = <&vcca_1v8_s0>;
+ 		HPVDD-supply = <&vcca_3v3_s0>;
+-- 
+2.53.0
 
-Two corrections I owe you. The first version of this reply said I had not run
-the cross sweep, and I had; the round is named after you. And I nearly handed
-you an old floor(n/16)*16 shortfall as a possible SIZE_E_1 effect, but the
-traced value writes all 24 at N = 24 in this round too, so that one belongs to
-the channel count register and not to this field.
 
-Separately, on the int4 path at 64 output channels, SIZE_E_2 moves the words the
-block writes but not the channels it computes:
-
-    SIZE_E_2       1    2    3
-    words written  32   36   40
-
-and the correct count stayed at 32 in all three. Additive in fours, not in
-sixteens, which does not sit well with the semantics I sent you on the 17th. It
-is a different register value on a different precision, so it does not refute
-the reading for the path it was read from, and I am not going to pretend it
-supports it either.
-
-The re-run offer is noted and I will take it when v9 goes. Glad the trip was
-fine, and I hope the countryside is treating the board well.
-
-Regards,
-Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
