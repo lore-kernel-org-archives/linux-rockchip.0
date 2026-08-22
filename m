@@ -4,57 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D22CC5DF97
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2026 23:17:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01AE2C5B572
+	for <linux-rockchip@archiver.kernel.org>; Sat, 22 Aug 2026 10:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b10hcIyXPAXrED9mWSxSmQ42Z5rW5osfnaVdoLC405U=; b=h1wZiaa69/CGqk
-	MhBLVuOLw82hpCeAs8IjvUwK8xAPvVE7ELgbOiEgm144dc8dqupHPjpBQao/2RVeVydkqpfHW93Tq
-	vXSwkFE6M3yYDmwRKjuh+JGCStRTkoouFf7wmYmskpnQHTQ57cvwacV8ztEpVPzAKgAE5UYQlMGiX
-	1LZUjnwfHcUIDvtBYozkLUvvkksQEtEjbfsY3HL+8Fk9+hce02MFVD58dmQWw2/5tGZPi3E5EKpNy
-	TIdth3fnIsLa69gN9cw8UBFqYwc1JS/G8JPAc0/pcvjLFcguFf3spoGoU+3clk43ypMBMKOra9sFs
-	Jb6+xHJ9tT2gJPV4DcVA==;
+	List-Owner; bh=x6QS3os7JHVCbHyDeVncS/hB80MLG+lOBuBlwIEb9to=; b=a5nJr/jna2+c+F
+	wJ6t43FG0tUvOM5BCUKXDDjwyInP8Qz+9PeB3GNH+YwBfrqCHQA5vxsf3JoMG8KvDVSALqLLsMFOX
+	/yrwY6j0vbnDC/jSZAngMgywSAcO7Ihq9BAYd3hAMfZB+hFJSUwZbfDxLpsz1m4LB+pOsADPy+dF4
+	2CYNzuEVrg+1X1u+wWoJB4XOcnUHnid83FqLdn3mHqrb6GFi6af0vY/ukrBPkdZZVn9SFRmF+vc0V
+	SMyFxU5GVizkRLukRZ0FIgkdV9cocMOlIPcRvUaQnv8XC1tCV81RfSZ6ey1GAVcZglvRInwAkUjiu
+	c2OLirdfEfp9BCDCIpdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxYUU-0000000E9Xu-0lWJ;
-	Fri, 21 Aug 2026 23:17:38 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wxig1-0000000ESKP-2u4c;
+	Sat, 22 Aug 2026 10:10:13 +0000
+Received: from flow-a3-smtp.messagingengine.com ([103.168.172.138])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxYUS-0000000E9XI-1PnH;
-	Fri, 21 Aug 2026 23:17:36 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9F2C341797;
-	Fri, 21 Aug 2026 23:17:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 374381F000E9;
-	Fri, 21 Aug 2026 23:17:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787354254;
-	bh=qBeQTJcCmTxIDyDVZ2wxVHaFWGBCccQSYczu6X2wyEk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=IJe2+ZflygN5/qQJs4Sul1DBia5fxrGgdQohUaB3jzKfnrtMSH4ZHvJhaeEsC5FVP
-	 F1E0a2XXNtVJtP8mFfDhifzM5zU1zMSV7JRN1moBeLkXs6MRanagHOf/s95I6v0Y4M
-	 bDC0o4EmIxgwX+lGwlfuQdIqDN7rmLsIVRufIZY+5Du8O7tkptIvawld1tmacSqyMz
-	 1xPdrxhjB6xGH4rbDL/B1ci1KEkY1iNHbWZz5FwsSGsLriC+cdZIHwS1fTRCOL4q8s
-	 aR6U1QB1NS2gKwcHjUT/0Bal6twKD0Wb2xbvKfitz4bUXm6v5gDLIgCiUYY/ETlWL8
-	 oW3/lX/qP92xw==
-Date: Sat, 22 Aug 2026 00:17:28 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Vladislav Leonov <vlad@zlab.su>
-Cc: andy@kernel.org, dlechner@baylibre.com, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- nuno.sa@analog.com, sjg@chromium.org
-Subject: Re: [PATCH] iio: adc: rockchip_saradc: Add support for RV1106
-Message-ID: <20260822001728.32f706c5@jic23-huawei>
-In-Reply-To: <20260816114544.35502-1-vlad@zlab.su>
-References: <20260815022036.7c47585e@jic23-huawei>
-	<20260816114544.35502-1-vlad@zlab.su>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1wxifx-0000000ESJo-1DtP;
+	Sat, 22 Aug 2026 10:10:11 +0000
+Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
+	by mailflow.phl.internal (Postfix) with ESMTP id E73B21380161;
+	Sat, 22 Aug 2026 06:10:05 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-03.internal (MEProxy); Sat, 22 Aug 2026 06:10:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm2; t=1787393405; x=
+	1787397005; bh=YMoogVRYIwk8Wptzr/Oo7EUpCyIlUtkJVK+72BZkIEk=; b=i
+	p7TpOJ9TyXg8JbynvoR5GTVIYShXzyttF7tdrWMJCmhbG3pMIjYpYlnTtkv2Udsa
+	hr1fJABNDI9TWYKdDeqUN26znpzqP+aMgiX9SoBIaQ77wphDts1KyGh0KB3PtFxi
+	ESEYrqr8TDrSGZgFYaGukmg46blFshcTaIbBbKljyJ/XLagm4nlM1RPmxEaHhI8a
+	1A71VzS9LLDYnS2PAkSqlC0gsFAvimjHeUY4711AxPap8jiF/1tkwTPY+uNoijbY
+	MroiuXfIOARxLxRw0UaOaYQ8e2By0gW4bTdnlf/RvFltfanNgjg1jRiK5iuHLGLO
+	TTocKuIcbi6jCiDubheaw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1787393405; x=1787397005; bh=Y
+	MoogVRYIwk8Wptzr/Oo7EUpCyIlUtkJVK+72BZkIEk=; b=X/Mbk6VE+ENJTaU+z
+	5IQirWGDXrtUCv97wArsTuljfZeOMQm49NbM9dw6AXptiIoouPk5WrVqBylNRTq1
+	7qrHp2LECfcGafGSbHsGtZ/hac1lCMxy5aepIkpQnnqH1pprvjen5+RK5Y7SHldU
+	uGXJPx+VVYXQ1/veGgKssvc3percQZwbLuNwvtrLVbY8kOx6sknIoO5JNK5vsPU9
+	nzQt/cbjEF3B/ZE1C+9A851XOdDgvchQjz8wxTgYW5z1zKb75Au6VbHS8Zu/dpk2
+	WfM+7Wo6TQch5WNOTDsYpzy7WZG9+Bb9xduFQYzeLP6dOMaU+zNaPzZ+N90EZwS8
+	OKbiA==
+X-ME-Sender: <xms:fHWJapdgHgrS_SnP1MLC-YitW2OuDFp0xXgWJ9iDVo9dm_TctDFp2w>
+    <xme:fHWJavbaXFnTvZ6cr344qVzBkOUd_LAZXsDQ7iAENxC4VWYboUnVN-TZ5ByHMSMzk
+    e0UzoaAEX6Vgo0BxIBd7jB8TdLN23M_4ZKbD9SOeCnntIAUnswT-cgF>
+X-ME-Received: <xmr:fHWJauEAhTF_fDE8yPBVewTUp6HC3rZP4SIvUNtSpgX1BAV8zs6_fKySFPPX1zbOCsrvk0Yn1A>
+X-ME-Proxy-Cause: dmFkZTGBWdQTFj4HdlU6ENZ1CLSznPDgvJlHM1i8OZX2pVdBj6E3SlQbz5ofJjhRLtzwdL
+    odMhyxzcECGNY8afaO8wGltEZEln4E3CTNc0ty1akhBimzcxuGJLqd2VUDO30PNO0dZ6rt
+    HXiHeO0r/GLHUCDWxRvnwzLqo1AP/zDqjGHTbd9hktWngEeIEmZvz/5PX7WN7391i+3QSh
+    GgJrjllKXTBmxQ45km0dDLQKO195mMeIkX/Qm/H1wJJBTcttcXfVyYRzCZzbyxM0Ob2VJ3
+    wLvOtl3Pkn8vfACC/f5w8rs51cB3r0D+zlKMjzopcXHbEtUSeSr2C/ILjtVBnaK7pIF5ZL
+    +gtXVvELHMhYaQs/Psdfg8IOl/efEp8vS6Rc8rb3w/rttdCmMBIGhLaHyhsq54yXL/2Uif
+    0+N/FUvNWXE37Wu+UCfGghoRDKCNGNq4DZb6cWnXiyD3KItZvzVUQXLtngTyxhLqr8rs63
+    BC0h73a3JbhWInbNsAgFoiCwNincOnFjTwQE3TS54nC76ucshwByBGaMfiNDVAWVWIJBAa
+    QEzSqEwlMAeLIqKfZgAxLHrxMlOw0WWkZUShFOPduv1jZPwFxr0bz11aSfyneCxzLA4UbI
+    DKKqIKKIJZwb1RjIdwtsDVyXfbG7RElDJ1a1G+0MlqQjW1ICRNXdM9us31tg
+X-ME-Proxy: <xmx:fHWJatkLUOTDahuC06Roe7CPeyqAIBzXW7vd_FIaIsbC2akI79Iy2g>
+    <xmx:fHWJahdFFDK6QgbmR-Pv9BAxuS4zpSKBwvrrdPbHlzO_qo-ucOlkGQ>
+    <xmx:fHWJarHnzCIjnoYgYgnljNR5FdCJecRt32EvJjoSM0tr7lMSQN-_Ng>
+    <xmx:fHWJanjHXs55tp5LbyFs9PE2_XesfskU6ZIf-tGQovlIm8fcK7YtCQ>
+    <xmx:fXWJamPYaeKTZxFiNwYwF_4xaG-9iyx4xh1IlcdhAFvYcz5anq3fdmcl>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 22 Aug 2026 06:10:00 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: royalnet026@gmail.com
+Cc: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	chaoyi.chen@rock-chips.com,
+	alchark@flipper.net,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v7 08/10] accel/rocket: add RK3576 NPU (RKNN) support
+Date: Sat, 22 Aug 2026 22:09:56 +1200
+Message-ID: <20260822100956.636407-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260820185056.20643-1-royalnet026@gmail.com>
+References: <20260820185056.20643-1-royalnet026@gmail.com>
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260822_031009_807266_37B00825 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,26 +113,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 16 Aug 2026 14:45:44 +0300
-Vladislav Leonov <vlad@zlab.su> wrote:
+Hi Igor,
 
-> Hi Jonathan,
-> 
-> Sent a separate patch for the dt-binding fix:
-> 
->   https://lore.kernel.org/all/20260816113636.33635-1-vlad@zlab.su
-> 
-Just for completeness (as I replied to that just now)
-please send them both as a series so all the info is easily available
-to anyone looking at either part.
+SIZE_E_1 stays at 0 and the diff stays as it is. Your reason is better than the
+one I would have given: a register built from the trace with one field swapped
+to upstream's value is a configuration nothing has ever run.
 
-Thanks
+I crossed SIZE_E_1 with the channel count, seven values, with the control beside
+each one in the same boot:
 
-Jonathan
+    N                      16   24   32   40   48   56   64
+    SIZE_E_1 = 1  written  16   24   32   40   48   56   64
+                  correct  16   24   32   40   48   56   64
+    SIZE_E_1 = 0  written   8   24   32   40   48   56   64
+                  correct   8   24   32   40   48   56   64
 
-> Regards,
-> Vladislav
+Six of the seven are identical. At N = 16 they are not: upstream's 0 asks for
+sixteen channels and delivers eight, in both the words written and the count
+that comes out correct.
 
+So your conservative choice is right, and one shape in seven is what two shapes
+could never have found.
+
+Two corrections I owe you. The first version of this reply said I had not run
+the cross sweep, and I had; the round is named after you. And I nearly handed
+you an old floor(n/16)*16 shortfall as a possible SIZE_E_1 effect, but the
+traced value writes all 24 at N = 24 in this round too, so that one belongs to
+the channel count register and not to this field.
+
+Separately, on the int4 path at 64 output channels, SIZE_E_2 moves the words the
+block writes but not the channels it computes:
+
+    SIZE_E_2       1    2    3
+    words written  32   36   40
+
+and the correct count stayed at 32 in all three. Additive in fours, not in
+sixteens, which does not sit well with the semantics I sent you on the 17th. It
+is a different register value on a different precision, so it does not refute
+the reading for the path it was read from, and I am not going to pretend it
+supports it either.
+
+The re-run offer is noted and I will take it when v9 goes. Glad the trip was
+fine, and I hope the countryside is treating the board well.
+
+Regards,
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
