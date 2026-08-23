@@ -4,90 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23E6FC5DF81
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Aug 2026 12:29:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 144BBC5DF8C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Aug 2026 12:36:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FzDgVQQ+8z6MkDyeupqxCdGLKOTKiycMywnMR5WcmXk=; b=dpgCPm/2+0Ht7r
-	+vDdMdeyJl4lvejcuS6S2JTOEmq7PGwVUq5SKyipsSdbgJwf70DK4yx8xGiGhtuqreMGm7lysq/Aw
-	VrFlBsS0dI3wlB+OW8rDK4tyTuqyOQ+HweBRStgtjm/a0kSPOh08Wm4bxstbBuebgvfbhi+BNO/9h
-	eSpxY6xmbwcB8STQy0dZDQ4q8y95bTuf645eRm7zbyBIwePkctV7uwWwaSlrtA63l7y9Kcyyd0AnF
-	va/CUoDwXXU7ccVdzB9XZGQXoYKT6sQi0aow//Gzij/EACrEYvFZQxk3YhV4yzOD9KINuXspY6kDX
-	KO3FQ7v/h5dK/9ybWgtw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=u9ILHBBFVfgpKdyk+z/a6v7a6oOp9q4GFIyECt0pufU=; b=LE7Cej7eJaKQFm
+	jxz53z8bqOGUO2p682ERxQWxkZxdJ03SUBgDEv1GJG6fDNgb2zjPu4UOEUZ+DE/NWiqN3xWlAGdFY
+	NsIhK+DHXjBmq4+CUNsZ4McefBT5v8AU7qWNNovBAgkqUzLMBHwtn0GwczH7thC3uj3PGauyGGOES
+	r9t4McmsDDtIhWUP0/NNsHPb0tCALlv6D9oWukY/W1LvaM2PbPJ6NWti4ecY0D3mbAopQG4Y5NLNf
+	e8qO0ino3gN6Sdmp4z2mTplXyGbCy5M/PpKzAcX0be6/opijcht4/2DDBE/xFciBLuEsdsS9SmvoT
+	A44HJUkWbpOLzsm3qndw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wy7K9-0000000FLJh-2ZQo;
-	Sun, 23 Aug 2026 12:29:17 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1wy7RT-0000000FLyE-0O5X;
+	Sun, 23 Aug 2026 12:36:51 +0000
+Received: from mail.zlab.su ([109.73.193.145])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wy7K7-0000000FLJ2-0ym4
-	for linux-rockchip@lists.infradead.org;
-	Sun, 23 Aug 2026 12:29:16 +0000
-Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-69a33fb0031so423575a12.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 23 Aug 2026 05:29:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787488151; x=1788092951; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:content-language:cc:to
-         :subject:from:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=gQbaM/nV7s8rQwS5hxI6vhWiwkwOmBmwl7dlesgVmd0=;
-        b=gLANTptY7CnRqkp5wmjhA+4mPZ2a/lZbO4DfU9T/+xDD8zHIBzMhXuMhkFV4UHc5+v
-         UzLfa5M1YXFoHfrt9Tu99qSg0D+YP0Uukg0otDjHxmxdFrEqvDORpEtfRYN8Lk1VNWC+
-         MCYQVNrx5HLCLVEnf7KkjDvUksbUbQEEhdI+bqUM9HC9bofyyYha7cUehky4vCKJPaxL
-         gOxYN0TNojKwErGd2AOYFSHiF2iJlHU/daqvesSbg9WYl4xKYoObVCretQYIMM/mC/P4
-         d+4/uL89C7ESKCvIIaYynhaRzfplZcqNKQmyEMbN7s6gLInoWSBYn9g0GxB/g46ltFYR
-         auuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787488151; x=1788092951;
-        h=content-transfer-encoding:content-type:content-language:cc:to
-         :subject:from:user-agent:mime-version:date:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=gQbaM/nV7s8rQwS5hxI6vhWiwkwOmBmwl7dlesgVmd0=;
-        b=ZJfKO9ru7Gpk3Fv0Rpgu9mz3uW7wgK/0qsx8hmop/PnGb7BAp1fBWDDEYcYzH7BLD1
-         urvbikTbXd2M1lvsSeRCytui7PB932QUsYH0xR6E7wfSR1ELRXTv9ttDMR0GVRnyK027
-         XMotpMW/B3SSsrcDY1gHcuULFBiTJj2Jxi69YsI1U5AkgxrkgC1MMj3AoPvl+onMnRbu
-         WYLzPukdT4R9TL+DU5+dduppUsEc3cD79TutEH3TsQsM5aXobuxRkFOeqZ5x1LEaUbSd
-         CoGcPtPLdrFrb+IWzdOzGZvUwex9YFYpkywtkDaXaINTCZlJhSNXfVfv2IFqsOU61De6
-         XIpg==
-X-Forwarded-Encrypted: i=1; AHgh+RrwapjItAR6uuRC9TWgiVS8s2IwfFh+KA9fop0Ey5Y8BznyEQ1HW4Ou9oh3rh38qgegRQbOaDrZUcqm6G9zRA==@lists.infradead.org
-X-Gm-Message-State: AFuF++liTptXIIsXPiusBxiRXVcnQNK3arSxABeMHtTZjiiL46BkiGdg
-	PQjn/kWkLYuU3bScVuwMwHbHqz9bDVtq6yYINL42roDJ43e2cfcfCKY2
-X-Gm-Gg: AR+sD12orRSrWYyXlqdvl6Pq/eCd6GTB/h/E+eLuK85s/vOmPMXBZXnKdNfMYBp9m+n
-	ORGK9sivlMN5R1Sb4vtxDWVe0f4t1zsdT7qIYbHnU47E6ngzcqHyhbUsCVHRu52tEAmPQ3xq+gk
-	cDSkkJfAQ/N9DWJ98ArYbHse056ozFj5FK6UDqm7gXrjEi27go3u7yVgKo0EZAw77Hm3jWWSXZL
-	EQiCf9BhnTL0u51AbjzYx7BeyqdM/QOeNb/3eHB2F/dOiHkFc0u8WR0SSvP5F1HcuzgF49dOyb1
-	vd1oN7sEcOSr1/RRlB+kGCZorv3TNU3wBlgQK2hAvAYMxOkLBc+O1T0mE8doCP0uDM8KmIKiCd2
-	ZDYdSSLSQ2oumr1oMLztB7ST152YEJWPT9vH/s5kCnLVrQcsntB6D/jOgHY5zY8aie5omHq3yG6
-	XHv8Mq1rdpx+8yh1eEMPxGeoMHgA9cVEYp3s6L9ZBoSGSu41eX9D4wipAZLCDFJ9Iu+uwChARRR
-	ekLA2vvs7WNxGrqiIjgtTIWvI0=
-X-Received: by 2002:a17:907:1c26:b0:c21:8555:5f55 with SMTP id a640c23a62f3a-c246a65eda7mr1238908466b.2.1787488150919;
-        Sun, 23 Aug 2026 05:29:10 -0700 (PDT)
-Received: from ?IPV6:2a02:a449:4071:0:32d0:42ff:fe10:6983? ([2a02:a449:4071:0:32d0:42ff:fe10:6983])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c24966f9c9fsm738037566b.39.2026.08.23.05.29.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 23 Aug 2026 05:29:10 -0700 (PDT)
-Message-ID: <1ab6fb88-3b84-49b5-aa05-202a84edbd3d@gmail.com>
-Date: Sun, 23 Aug 2026 14:29:09 +0200
+	id 1wy7RN-0000000FLwt-0GPs;
+	Sun, 23 Aug 2026 12:36:49 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 35A7DBFD8D;
+	Sun, 23 Aug 2026 15:21:39 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zlab.su; s=dkim;
+	t=1787487701; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=Xyd94O5ucYyASZOwn/menIsiXveXzi9oR7nKej3n2Ig=;
+	b=TF49ASepgpcLcF9HdLr1/hObVNd/CtTttC1CbR4Sk/Q4M0bOqdD61PbIXhaa2IfXAIKuj4
+	ITz3UtbRnnpe7ZbAkshx7ULIl7DUqiUqslvox8r8zjDMRcn8gKq/fVwOIqGGUSjebVwM20
+	AWkAiaqQjOprwJodnjMTJTNl8DyAtlq8NnESWhZAjVdS4fs0GJHVQxxW3f1Xzoc/bbSt9i
+	1CAC42+NcMBtv85IWZ0PKD8VR+1TFS5ypyoOEPULDRAcSM6oEklSiOiiVXXI8nmCjdxDRa
+	AOqvMMbPAvq1pO8trRogTO7v3KaHnRwHpR7xRujziFnzr/di7Wsa0Wt/+G+cDA==
+From: Vladislav Leonov <vlad@zlab.su>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Vladislav Leonov <vlad@zlab.su>,
+	David Lechner <dlechner@baylibre.com>,
+	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Joshua Crofts <joshua.crofts1@gmail.com>,
+	Simon Glass <sjg@chromium.org>,
+	linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzk@kernel.org>
+Subject: [PATCH v2 2/3] dt-bindings: iio: adc: rockchip-saradc: Group single-entries into an enum list
+Date: Sun, 23 Aug 2026 15:20:33 +0300
+Message-ID: <20260823122039.20831-3-vlad@zlab.su>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260823122039.20831-1-vlad@zlab.su>
+References: <20260823122039.20831-1-vlad@zlab.su>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [RFC PATCH v1] drm: rockchip: add
- drm_plane_create_blend_mode_property
-To: heiko@sntech.de
-Cc: hjc@rock-chips.com, andy.yan@rock-chips.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, simona@ffwll.ch, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Content-Language: en-US, ar-EG
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260823_052915_285742_66A2BFEA 
-X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-CacheID: sfid-20260823_053645_623810_4E0C4CD8 
+X-CRM114-Status: UNSURE (   8.23  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,33 +83,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-A validate_blend_mode_for_alpha_formats() function was added that
-fills the kernel log with warnings for Rockchip VOP version 1 SoCs.
-Add a drm_plane_create_blend_mode_property() function as fix.
+Group single-entries into an enum list
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Suggested-by: Krzysztof Kozlowski <krzk@kernel.org>
+Signed-off-by: Vladislav Leonov <vlad@zlab.su>
 ---
 
-https://lore.kernel.org/all/20260526181700.25310-3-leandro.ribeiro@collabora.com/
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 ++
- 1 file changed, 2 insertions(+)
+Changes in v2:
+- Patch introduced in v2.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 0090d8ff0c79..0bc5b606f021 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1850,6 +1850,8 @@ static void vop_plane_add_properties(struct drm_plane *plane,
- 	if (flags)
- 		drm_plane_create_rotation_property(plane, DRM_MODE_ROTATE_0,
- 						   DRM_MODE_ROTATE_0 | flags);
-+	drm_plane_create_blend_mode_property(plane,
-+					     BIT(DRM_MODE_BLEND_PIXEL_NONE));
- }
- 
- static int vop_create_crtc(struct vop *vop)
+ .../bindings/iio/adc/rockchip-saradc.yaml           | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+index f0551d665916..78ec9a33da24 100644
+--- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
++++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+@@ -12,15 +12,16 @@ maintainers:
+ properties:
+   compatible:
+     oneOf:
+-      - const: rockchip,saradc
+-      - const: rockchip,rk3066-tsadc
+-      - const: rockchip,rk3399-saradc
+-      - const: rockchip,rk3528-saradc
++      - enum:
++          - rockchip,saradc
++          - rockchip,rk3066-tsadc
++          - rockchip,rk3399-saradc
++          - rockchip,rk3528-saradc
++          - rockchip,rk3562-saradc
++          - rockchip,rk3588-saradc
+       - items:
+           - const: rockchip,rk3506-saradc
+           - const: rockchip,rk3528-saradc
+-      - const: rockchip,rk3562-saradc
+-      - const: rockchip,rk3588-saradc
+       - items:
+           - enum:
+               - rockchip,rk3576-saradc
 -- 
-2.39.5
+2.47.3
 
 
 _______________________________________________
