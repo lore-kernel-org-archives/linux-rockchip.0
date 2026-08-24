@@ -4,100 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D381C5DF9C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2026 15:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9826C5DF9C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2026 16:24:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IknD2G6QYrXMp4YMbXSe158Iq6gUTuIszR1H0ajWCc4=; b=d2T/+Gbh3949Xu
-	GZmCEg0LG0634AK0cbEKOLxNcr0E/LNx2MIA4Al186Q1vfa2toPkaXLQQ3VjYo3rwUo7G0oiUcNEe
-	0H2u6A1MIGkaItFiIxD2r1sOR34vEpJMTvH0rjeGfFS9I1rZ+ZSgWAiG82hvYM8vK0psogqyaekNU
-	4JPzjrSNFWVMZ3d+Uzo/bztZDJ3pEuJ5/4+A5TUCOfpy9dvgZTrrVbIxckt6GPpbkaJxUn66MQTMk
-	CE/oxMGBMef1ABVjyykpA+rQ6PyQOFydD+bNvT1+yul1B1msmFywKf3plD91UPg4IiHuagzh3+3et
-	1cCq3CF6WiIvplKZIURg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=taX+D5bhUCJTDxFRuCcf4K5OWNYVJKkI2Pc+gLpkivw=; b=SokT4GlKa/2V3nxA8EMNs8EKbU
+	vUU4/Wvk1dkXqrTzT/cGO38okzF5SGtgtp9HwMX0llvr1uoSMI7r4dIGtcjNq1EOLXi8H6V+SLCuE
+	wW+r8BroAI5J2vlc3rJ5S4EV0fEmalFbzlL+uaK+ijFSG4G2axp27FHKMw3sQ7YRnOnRe+BEOVumI
+	F/Lyh9o6BeXn8NP3Z/hNIlwdukbkQXeFmAms28TD4QHmDMz4M9ygqEdVU4qluGiHgZNubm50YgQ55
+	MD+SzgHJVIv9BV8Lw+fQlguYf/5wFTkR7fvg/Qe8wezxkoQHQ4Riy/baTY7w7HTXG6J6yokgSM5Eh
+	pDIsFQBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyWWk-0000000Guw5-1iam;
-	Mon, 24 Aug 2026 15:23:58 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wyXTO-0000000H2S9-00vj;
+	Mon, 24 Aug 2026 16:24:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyWWf-0000000Gutn-04Lt
-	for linux-rockchip@lists.infradead.org;
-	Mon, 24 Aug 2026 15:23:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1787585032;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=t3RhcvzE2LDgfcbnY3j5KII1AB4sSFJ69Dx82UdW9TY=;
-	b=iy+z0aozX5vWBjlAoHAHrmeDI4AofDhMbBhAIyGvnKKZPkwQvd88WGj3xbghEGNd8Lhn03
-	fEXNYfhAZgVWvETlXfs+6XxtX1m/0LT5otvbjsT7NayCnmFmJWbq1NJuDvINVH1I7sweAs
-	Nk+BL60oxCjkRMULgRV6O1GEcaRDNCE=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-433-oNBTLa6-OXiPpNaBezrAjg-1; Mon, 24 Aug 2026 11:23:50 -0400
-X-MC-Unique: oNBTLa6-OXiPpNaBezrAjg-1
-X-Mimecast-MFC-AGG-ID: oNBTLa6-OXiPpNaBezrAjg_1787585029
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-92e63df032bso701485a.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 24 Aug 2026 08:23:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787585029; x=1788189829;
-        h=user-agent:in-reply-to:content-disposition:content-type
-         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=t3RhcvzE2LDgfcbnY3j5KII1AB4sSFJ69Dx82UdW9TY=;
-        b=CemuxPh69rrsDwwls71HGu8uA+rSfqPVJsN+RKqxxuF8BzEmYo1Rtqlr1lTutkynAL
-         8+hcy9mvlY8BYuMSuzmSdBUImq57oqWvrHviTMk5aVJxofcWAsZOOeKJpbT1TXDT95zl
-         bl26YEZ/4aHqmKJHV1EHjWdw+oHp/oFZS82rnY5VBKkuU1XFMwoBglAnolahivv/V/es
-         1hbIph0galpRbn4l/27FMdcxbvpa5drOd4d0REi93tjPewjUfTPv/y/n7iRk3/GkPwOs
-         QT6c9cyliaJ0RlmZ0G+10qon/bqp9ux+3RjQ4+pWqswBVtKSbPG4FEGfTSYLNl231TkD
-         7SlQ==
-X-Forwarded-Encrypted: i=1; AHgh+RphAaqLEmZ6L7TUP5BDgrK6qrvTqfd0asnlB9r3Kyz1PgNRwCTohHAHsddJCrfkkmcGqhF9ebRSym0EHlij1w==@lists.infradead.org
-X-Gm-Message-State: AFuF++l3AVLNNh1xKZkEbx0nZYLiLORASveq97Z8QBfpIU8Fw0YbTAiV
-	BOh42qmlbX3n1JZxqPn2qxhzIC7Z1GMYB89bgn3OYj/k7amuhpSrgomJhmY3nEMa5zNTZgtrL5W
-	MVyjpfvtuFgtSVgRAvQOJ5HxFGnXE0qtWMZPcad2812ymb2kP9uoOh/p5R3z37d61OduKbixYUw
-	==
-X-Gm-Gg: AR+sD11f8kXwTsm9ieqHKaVCx/AxnhL3oVBJwbziLB2q1xJcvyRcJluMazVNVZfKMUR
-	Joz1h/2B7+/RfmXTn1mgj2ulpsuv/0UTa6AJYeeDFU7hsrFXolo+DVXTUMJJJzRp72nYxb003C0
-	MuFEmKYcXup7bl3LrFPfLJaKBfDJcR/eTm0Tipir8DhN0xpL5OQt9UVC3ZmmO93AoGVWSNOPeaj
-	9Bd/8MQE+elrX8lJxe7VvxPqoH4gtzNlejvPr6V6LTdBvO6Z9KJ2QFEWQbrakyCCGuhcUxbYZyf
-	00YfflFO+OslOez15NleSqwn7an1NKqVY/j1dCqsaHvlX00vYGVf1UhICDnChwIaeV9XE6O5pez
-	zIlAqZsoNdTlw6kVS+GIVaz33fJ6jIS34S5Y=
-X-Received: by 2002:a05:620a:410b:b0:918:7e9e:de74 with SMTP id af79cd13be357-93728511a13mr3206789085a.17.1787585029399;
-        Mon, 24 Aug 2026 08:23:49 -0700 (PDT)
-X-Received: by 2002:a05:620a:410b:b0:918:7e9e:de74 with SMTP id af79cd13be357-93728511a13mr3206778885a.17.1787585028700;
-        Mon, 24 Aug 2026 08:23:48 -0700 (PDT)
-Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-93749ae390esm523684385a.16.2026.08.24.08.23.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Aug 2026 08:23:48 -0700 (PDT)
-Date: Mon, 24 Aug 2026 11:23:47 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
-Subject: Re: [PATCH 0/2] phy: Make sure clk_init_data is fully initialized
-Message-ID: <aoxiAyoETWEZ1bue@redhat.com>
-References: <cover.1787240165.git.geert+renesas@glider.be>
+	id 1wyXTG-0000000H2Q4-0i6y;
+	Mon, 24 Aug 2026 16:24:31 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 46E5E6011F;
+	Mon, 24 Aug 2026 16:24:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89FAB1F000E9;
+	Mon, 24 Aug 2026 16:24:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787588665;
+	bh=uZTtou1nRtbS6X9wfhp/PYfrCMog+YyUjJyHyt53b9w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=CSoDI9sQ9BHabsbH51rW1u8jLgL4QG++cA48MrXJMxPR4bDejclsFyhIgG3qxIHIo
+	 pmI6mr2UaRmsJztTzXiQ6OAPaqTOB2Z0m5Ky2JSuWSmtOMQIEZs/BirC1kXNi6UpfC
+	 CqivYmGPQTbjfAGmbJeqAvLGfB1bl7AiiRcY76XiVO+Jr3VpbXzs8Q9GWE9XsVAiTh
+	 1tcWhwMQ9lriNfxV6NwPEi2bKFQD812en2/eKGMC8Ye1YzUcHxfikkhBPEsxIRtNa4
+	 PgNIad6IHpt5nuuGNR8MWaGouLZ65pnAT8yueKCumctr/hVmi9i4l6qDRwTKw675Fd
+	 5lWdCxADZsxtA==
+Date: Mon, 24 Aug 2026 17:24:18 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: tomeu@tomeuvizoso.net, heiko@sntech.de, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, joro@8bytes.org,
+	will@kernel.org, robin.murphy@arm.com, ulfh@kernel.org,
+	p.zabel@pengutronix.de, ogabbay@kernel.org,
+	zhangqing@rock-chips.com, royalnet026@gmail.com,
+	u.kleine-koenig@baylibre.com, chaoyi.chen@rock-chips.com,
+	diederik@cknow-tech.com, alchark@flipper.net,
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v9 06/13] dt-bindings: power: rockchip: allow resets in a
+ power domain node
+Message-ID: <20260824-hardening-tinwork-60c54a562c8a@spud>
+References: <f1805c2bce56c89d8ace35f67c665b24bab90965.1787568944.git.gahing@gahingwoo.com>
+ <c34278613fdb483ee7d771077a9451f66973e89d.1787568944.git.gahing@gahingwoo.com>
 MIME-Version: 1.0
-In-Reply-To: <cover.1787240165.git.geert+renesas@glider.be>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: hd0QSwoQ_Q0i-HALEX5IkHVZ7TG8nyt-QfS7PHbef3I_1787585029
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_082353_124196_01F9350F 
-X-CRM114-Status: GOOD (  16.33  )
+In-Reply-To: <c34278613fdb483ee7d771077a9451f66973e89d.1787568944.git.gahing@gahingwoo.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,45 +73,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============9034747924973209014=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 21, 2026 at 12:08:38PM +0200, Geert Uytterhoeven wrote:
-> 	Hi all,
-> 
-> The clk_init_data structure contains several mutually-exclusive members
-> for different methods to specify the possible parents of a clock,
-> prompting drivers to initialize only the members they need.  However,
-> not initializing all members may cause subtle issues, which are only
-> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
-> enabled.
-> 
-> Hence this series aims to make sure all members are fully initialized,
-> to avoid such bugs, and to prevent future breakage when converting
-> drivers to a different method for specifying the parents.
-> 
-> Part One[1] fixed all cases that I identified to be real bugs, in
-> response to a crash I saw on BeagleBone Black.
-> 
-> This series is the PHY subpart of Part Two, which fixes remaining cases
-> that are currently harmless.  These are still fragile, and may cause
-> future breakage when converting drivers to a different method for
-> specifying the parents.
-> 
-> Thanks for your comments!
-> 
-> [1] "[PATCH treewide 0/5] clk: Make sure clk_init_data is fully
->      initialized (part 1)"
->     https://lore.kernel.org/cover.1787165329.git.geert+renesas@glider.be
+--===============9034747924973209014==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="+tDi0f/c68q1mpsR"
+Content-Disposition: inline
 
-For the series:
+--+tDi0f/c68q1mpsR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Brian Masney <bmasney@redhat.com>
+On Mon, Aug 24, 2026 at 11:08:55PM +1200, Jiaxing Hu wrote:
+> Some domains do not come up in a usable state on their own and need
+> their resets cycled once power is on. The RK3576 NPU domains are one
+> case: without it the first access after power-on takes an async SError.
 
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
+
+>=20
+> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+> ---
+>  .../bindings/power/rockchip,power-controller.yaml         | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/power/rockchip,power-contr=
+oller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-control=
+ler.yaml
+> index b41db576f..83741f048 100644
+> --- a/Documentation/devicetree/bindings/power/rockchip,power-controller.y=
+aml
+> +++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.y=
+aml
+> @@ -136,6 +136,13 @@ $defs:
+>            A number of phandles to clocks that need to be enabled
+>            while power domain switches state.
+> =20
+> +      resets:
+> +        maxItems: 1
+> +        description:
+> +          A phandle to a reset that needs to be cycled once the power do=
+main has
+> +          been switched on, for domains whose logic does not come up in =
+a usable
+> +          state by itself.
+> +
+>        domain-supply:
+>          description: domain regulator supply.
+> =20
+> @@ -216,6 +223,7 @@ examples:
+>                      reg =3D <RK3399_PD_IEP>;
+>                      clocks =3D <&cru ACLK_IEP>,
+>                               <&cru HCLK_IEP>;
+> +                    resets =3D <&cru SRST_A_IEP>;
+>                      pm_qos =3D <&qos_iep>;
+>                      #power-domain-cells =3D <0>;
+>                  };
+> --=20
+> 2.43.0
+>=20
+
+--+tDi0f/c68q1mpsR
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaoxwMgAKCRB4tDGHoIJi
+0kv+AP0WeUFb4dKPJSmjaR2SbLsqglAK44hwzBB4HyxQNKxIqgEA+h8O0hVC2kna
+C84nBPE3JorbtfSL3jl4fvdc2oOxcAc=
+=lpjX
+-----END PGP SIGNATURE-----
+
+--+tDi0f/c68q1mpsR--
+
+
+--===============9034747924973209014==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============9034747924973209014==--
+
