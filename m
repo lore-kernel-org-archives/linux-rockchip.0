@@ -4,103 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF6E9C5DF94
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2026 10:53:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8403CC5DF81
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2026 11:09:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S7J+ggUZVPHC2TLVWeswdP2EVu91wSs9Ibslj+RlTPU=; b=P0UXedpLsdBJ6p
-	NA+7MFR/WaxMv+YVbk5DM+Y8LMsGxbIjKKDVNeqhurI89nVq6++nCSos2o7xD02tVnT5Zx8GvszCa
-	bqaMKCkZ8ljDSvXaOIEdLQjiFdzNW/bWVgNhGcwVsTjscxaO5NI1MfqptsOjDE57EYGky4+3ijbge
-	gihuMg9EPi0C7R3vA8t7qRNe3VFgBdyk8n0+Qlgb62NiHfekmsSWmLqKCOmVSNsk/X0P2wf2zzx/j
-	TZR6YdsWjszwoiR/AKjl7pUXp9Xr7MRs+PcumL+VDGd5S0FIYXAAcWQ6apBfX7RPSQQCoo7z03lTZ
-	7G9ifH7eEoidKby6sMKQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=j5EZWXYmMls8L5EH8+FlpjeKGOtaKOqutN9p3VSJROY=; b=RD8DZst8IfWr8k
+	beUvsv8aHYS4EhJwyU/qkHi6khFW3WN8UBQk2zVN/+B//e0HQJbzH+bAjYZbJLuphv9n1QtR2yn6P
+	gENeoxFIF7G1wjo+2LVphj3nds6fDFDLIqbpf/798T9ctxmOWIObqV21P4lm0V2RR7Y+a05fTSlP3
+	C+n1mdlAUycVzHXTVfesydcYgL3+2kGCfCzBtTPVx7TT7wcONnzOBUSz2k5PBLQZrNz7BrZG9V/g6
+	BoOXg+40FAY/9aeApXlnNCIfdu/aLnNQllANJd9MhHJu+GPx4S+557M8n6RRcQgfyCtGYSJEwYboz
+	Wvklr+2D0lJu/VEe+T+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wySIf-0000000GR6W-3gv3;
-	Mon, 24 Aug 2026 10:53:09 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wySYM-0000000GSZP-08gz;
+	Mon, 24 Aug 2026 11:09:22 +0000
+Received: from flow-b1-smtp.messagingengine.com ([202.12.124.136])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wySIc-0000000GR5h-2FPj;
-	Mon, 24 Aug 2026 10:53:07 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2063D600C8;
-	Mon, 24 Aug 2026 10:53:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93E0A1F000E9;
-	Mon, 24 Aug 2026 10:53:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787568783;
-	bh=fcd+vXPL1cf35aspIvOuzP59f2xpzJU2+HsZSxprbes=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=Aq68ML6L4hwbv1yIcsrOqOO02erQtrajmRwHD1TjeJaWXgj7i5TiLsMPb8o0Fam7N
-	 kKB2CPq++jzPh1RJBsrQjmuM1oV63kDT9u4uqCz+yLDeQyrmuxYInfb1n/abkUqkIl
-	 bksM/JJcTxCG7xj1lxuu3dNil+EzXqv4laVvBUsm0DHCVxnHS+Wl/7D1shtQHzmoRj
-	 FDOdebV7RsxbVNygCW2WLHpcooo7eyMb66swqP1bf5qfHzn8/UvT/rgauUFVjQaYP4
-	 yljdNdxPOQpWLLl4/IStRWaF7fIS9qWzX+LNJc23QlOvkEehngpE4aQ1rF3qIVssIp
-	 RbC/08CWgDvbg==
-Message-ID: <9c763002-7fad-4319-93a8-90adf02eca20@kernel.org>
-Date: Mon, 24 Aug 2026 12:52:58 +0200
+	id 1wySYI-0000000GSWz-0qGR;
+	Mon, 24 Aug 2026 11:09:20 +0000
+Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
+	by mailflow.stl.internal (Postfix) with ESMTP id 2525C1300124;
+	Mon, 24 Aug 2026 07:09:14 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-06.internal (MEProxy); Mon, 24 Aug 2026 07:09:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm2; t=1787569753; x=1787573353; bh=oKDwkKFdwr
+	cmFN7x0IH5wcFZWSaTZtPwLThwa5S+U3E=; b=klN+LqOf/qYi0/5sz3c48ozaRL
+	sbRav5EW6VfC3hCckf6j0Ycbc0b5AmFqR/d16ewvoh1+k5MmvlpuyqsoHCResYzV
+	v+Z0X2ZTjGpw2+e0LYnYsIX4L1mnTQ3yy7o0MXYGVxvAZo780X7XVIK04k8USwS3
+	sB0veH9CpTbRG0w7mpFUIPfEh9c4j0JCPu3ogfuPIViIYZ+SdPe4nHhZuRtUxbNT
+	xz70OseChRqrytJBd3qGF1MpFsSsFkkMb0kXylzotDi6XqUruWNycraERVXiLsE0
+	5PYymyOKm+YZh45iiXZdBteGgHNJlxi4d6x7IkRzNSI98/HrsZo4JxpDAqLw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+	1787569753; x=1787573353; bh=oKDwkKFdwrcmFN7x0IH5wcFZWSaTZtPwLTh
+	wa5S+U3E=; b=chjWAmYOTiDOzYds7G+pP43Kt79gfwddn/0MNNpBioNWzS36PAe
+	vvYtTYJrqA9cEmAT4nBTUY2A4yn6FnoIYOkyQYDg8utooBnXCVFP4MS1pjlR9QYj
+	NCCogsWaxBilZkLqAKmukcJ4xTVEzWIKiPS5SlfFWk17FMymfeJSi5g0xpgqf0gJ
+	mg6C0WjB8a5gNUjOb8iuqTEatsTb75IDjQgrpiXl64XaN72OnG61JwuTeh6Znaws
+	UbywihBsReSB2Cv6KHvc0Ilvzj190iA7Z4LKvaGVvHK4TcwTI1ubq7PoUblygmsx
+	FePInCAWY3PDNFqFXmoPRblTBY3vSobalZQ==
+X-ME-Sender: <xms:VyaMal0Sf4gum3Zrhe7v1_BrGLz_NA-lOvJf9_N2gcxNZVYweiJFTw>
+    <xme:VyaMar_eOP0hCl0j99HxffZKuk4nS3xyWBSad5zkoD16RHbZ9YLHVVMQJwoxDB1bp
+    8HAEeaPhpIXXpaB-hp8jGMWpnu1D4CWEOok3PF1tW-Rl5UVmuHsPYt2>
+X-ME-Received: <xmr:VyaMajN4QjrgCU6GEoEa2w3uIShxhGcUXqLX_ypGCvIccfr-W5rZxQOph2SEhKASy1bLsdBxNQ>
+X-ME-Proxy-Cause: dmFkZTEmiCd0WkfWdWqfQiCmPz7vfgcmfReIbpni7lOV+CDWG0kkA23NO/IVtO+gBTF1hE
+    sRR82hYA857JlUBXdSxvNZxNiHA7XKFBVmcM7J4iD0HWSGI2S7jdSuwkfw6MrzYiPjHrEH
+    pMdj5rmGeTwSmpfbatYhAR81nxpJ+JyZS00wEMkE9Y1pzdQgBhPU9RYhrIr82Wz9o4xzjM
+    E0EYKk8e7qzT3f6yrgtQL2hx1o7o+VLbTxjs5pwQxd2B6p1a9ApbDsaYkHnBgmaiQZjJ8G
+    p+76A7WdT4gh0IYQTmP706Q1s3Hm4vQQFgnKTsej9PiVx0Ka1yLX+NmljEW9kcNe42YVZ9
+    cF4JgRGEzVaG8b/VW3caDnB/MiNHVHcPAXS0J818xRTZV9NJCfZ16cdzNe/VvB9wt2HEPt
+    FFIatQiN0LOXMmmhJE1bpEBF6eSYxW2pRl4ICoNRrq9oRTTQy69QHfftvvFvhTgZcdZPya
+    0JE4tcIYNWZOUNoHDioIpOK9TOYMSS+t1ZEeu3JNZ1PzMoFqxSHmpjw+skmuw+dvsg6Ovd
+    un5umSAqdpYL/5EzjgzZZwNKm6/WeRipo2gmFooWbOfzT8kzMtGu9z/ycgG21n+NMC944o
+    a4BmdNvCpg5PYjSPa/h7WEPC3PKCnkpeMJ7Fe41fb0IyTMgZGfKQKei8beKQ
+X-ME-Proxy: <xmx:VyaMavC2_3ZOCTtj2GgaPw-Nv9blcBx76zZqcLO-A-sBUuU_YNLXJA>
+    <xmx:VyaMalNZBGUs3GRSH-eENCE1eccR4F4AuPtGgte9YsinDw1trL6Pww>
+    <xmx:VyaMalbgeJANa4v8WjT1Khj9RblHmN-MFSQBkmnebY3IQmCF5JEU_w>
+    <xmx:VyaMakOEnZ5eQv4wS854ZIqZk7sD3i1kYDHb5UFrKa3TR3O0bKnkHA>
+    <xmx:WSaMageWIVIYxp37zZKQ5DbfsRt4i9PLT_jgDpHX9aHdhgR8rowxPJH6>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 24 Aug 2026 07:09:04 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	ulfh@kernel.org,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org,
+	zhangqing@rock-chips.com
+Cc: royalnet026@gmail.com,
+	u.kleine-koenig@baylibre.com,
+	chaoyi.chen@rock-chips.com,
+	diederik@cknow-tech.com,
+	alchark@flipper.net,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: [PATCH v9 00/13] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Mon, 24 Aug 2026 23:08:49 +1200
+Message-ID: <cover.1787568658.git.gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/5] arm64: dts: rockchip: add ISP nodes to rk3588
-To: Paul Elder <paul.elder@ideasonboard.com>,
- laurent.pinchart@ideasonboard.com
-Cc: Xu Hongfei <xuhf@rock-chips.com>, michael.riesch@collabora.com,
- stefan.klug@ideasonboard.com, mehdi.djait@linux.intel.com,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>
-References: <20260824090406.3695880-1-paul.elder@ideasonboard.com>
- <20260824090406.3695880-3-paul.elder@ideasonboard.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <20260824090406.3695880-3-paul.elder@ideasonboard.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260824_040918_725166_B2AAC308 
+X-CRM114-Status: GOOD (  18.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,26 +125,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/08/2026 11:03, Paul Elder wrote:
-> From: Xu Hongfei <xuhf@rock-chips.com>
-> 
-> Add device tree nodes for the ISP and their iommus on the RK3588.
-> 
-> Signed-off-by: Xu Hongfei <xuhf@rock-chips.com>
-> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> 
-> ---
-> No change in v2
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 57 +++++++++++++++++++
->  1 file changed, 57 insertions(+)
-> 
+Based on Igor Paunovic's "[PATCH v2] accel/rocket: request the core
+clocks by name", as v6 through v8 were.
 
-Why is DTS in the middle of driver patches? Please organize your work
-correctly, see submitting patches in DT.
+  https://lore.kernel.org/linux-rockchip/20260729130743.128876-1-royalnet026@gmail.com/
 
-Best regards,
-Krzysztof
+Tested on a Radxa ROCK 4D, on next-20260814.
+
+This adds the RK3576 NPU to accel/rocket, which today supports RK3588
+only. The RK3576 carries two cores of the same RKNN block, wired up
+differently. Two extra convolution buffer clocks, two power domains per
+core, one reset rather than two, no NPU SRAM rail, and a PC_TASK_CON
+that packs the task number into sixteen bits rather than twelve.
+
+What changed since v8
+
+A new 3/13, and the rest is answers to the v8 thread.
+
+RK3576 did not recover from a job timeout. The block came back with
+MMU_DTE_ADDR complaining and every following inference returned the
+output zero point. rocket_reset() called pm_runtime_put_noidle(), which
+drops the usage count without starting the idle path, so the core stayed
+runtime-active, the power domain never dropped, the BIU reset the domain
+cycles on power-on never fired, and the MMU never answered again.
+
+pm_runtime_put_autosuspend() is the whole fix. Measured three runs in one
+boot on a ROCK 4D with one variable between them, each forcing a timeout
+and then running the same convolution:
+
+  put                after the timeout          the next inference
+  put_noidle         runtime-active, rail up    0 of 128, MMU_DTE_ADDR
+  put_autosuspend    suspended, rail down       128 of 128, no message
+  put_noidle again   runtime-active, rail up    0 of 128, MMU_DTE_ADDR
+
+The third run is there so the failure reads as deterministic rather than
+intermittent.
+
+Igor Paunovic ran the differential on RK3588: 45 induced resets across
+three cores, with and without 1/13 and 2/13, and the domain dropped every
+time with no MMU message on either kernel. That is what scopes this to
+RK3576. An earlier draft of 3/13 carried Reported-by on his name and that
+was wrong. He called it "your non-recovery" and said he could not
+reproduce it, and the put_noidle against put_autosuspend split was mine.
+He is on 3/13 for the RK3588 result, which is what he contributed.
+
+2/13 now masks the block before synchronize_irq(). hw_submit() arms
+INTERRUPT_MASK on every submit and only the hardirq clears it, so on an
+ordinary timeout it is still live and a completion can arrive after the
+sync returns. The next submit re-arms it. Igor Paunovic raised this and
+wrote the line.
+
+That write is guarded by pm_runtime_get_if_active(), and it needs to be.
+It is the first register access rocket_reset() has ever made, and the
+function holds no runtime PM reference of its own. The only one in the
+window belongs to in_flight_job, and the completion path can have put it
+before the timeout worker arrives. drm_sched_stop() sits in between, can
+block, and subtracts every pending job's credits, so nothing keeps the
+core resumed. A register access with the domain down takes an async
+SError on this hardware, which is the failure 6/13 and 8/13 describe from
+the power-on side. Igor asked the general form of this on v8, whether
+rocket_reset() should hold a reference, and it was deferred because
+nothing in the path touched a register. 2/13 is what makes it matter.
+
+His Tested-by on the v8 shape of that patch is deliberately not carried
+here, because this is not the patch he tested. 1/13 is unchanged and
+keeps his.
+
+11/13 includes <linux/device-id/of.h> rather than
+<linux/mod_devicetable.h>, which Uwe Kleine-Koenig asked for. The driver
+needed nothing else out of the wider header.
+
+5/13 carries a git note naming the base and the one prerequisite, so the
+dependency is in the patch rather than only in this letter, which Rob
+Herring's bot asked for. dt_binding_check is clean on all three bindings
+the series touches with dtschema 2026.6 and yamllint 1.38.0, and
+CHECK_DTBS is clean on all 13 rk3576 and all 48 rk3588 dtbs.
+
+Two things I have left alone and would rather hear about than guess at.
+8/13 does three things: it adds the settle delay, renames a macro, and
+gives RK3576_PD_NPU a regulator, which also makes every RK3576 board
+force that domain off at probe. It may want splitting. And 12/13 gives
+each core both NPU domains, which is the description that has been
+tested here rather than the topology; if it should be one domain per
+core, 5/13's minItems has to change with it.
+
+Nothing else moved. The completion path, the register field layout v7
+corrected, and the rail and reset arrangement v8 settled are all
+unchanged.
+
+Jiaxing Hu (13):
+  accel/rocket: take the completion register writes under job_lock
+  accel/rocket: wait for a running IRQ handler before resetting a core
+  accel/rocket: let the core suspend after a reset
+  accel/rocket: factor the completion tail out of the IRQ handler
+  dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+  dt-bindings: power: rockchip: allow resets in a power domain node
+  dt-bindings: iommu: rockchip: describe the RK3576 NPU MMU
+  pmdomain/rockchip: add optional per-domain power-on settle delay
+  pmdomain/rockchip: cycle optional power-domain resets on power-on
+  accel/rocket: select the per-core clock and reset counts from match
+    data
+  accel/rocket: add RK3576 NPU (RKNN) support
+  arm64: dts: rockchip: rk3576: add NPU (RKNN) nodes
+  arm64: dts: rockchip: rk3576-rock-4d: enable NPU
+
+ .../bindings/iommu/rockchip,iommu.yaml        |  28 +++++
+ .../npu/rockchip,rk3588-rknn-core.yaml        |  47 ++++++-
+ .../power/rockchip,power-controller.yaml      |   8 ++
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      |  13 ++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      |  82 +++++++++++-
+ drivers/accel/rocket/rocket_core.c            |  28 ++++-
+ drivers/accel/rocket/rocket_core.h            |  11 +-
+ drivers/accel/rocket/rocket_device.c          |   7 +-
+ drivers/accel/rocket/rocket_drv.c             |  28 ++++-
+ drivers/accel/rocket/rocket_drv.h             |   2 +
+ drivers/accel/rocket/rocket_job.c             | 119 ++++++++++++++----
+ drivers/pmdomain/rockchip/pm-domains.c        |  75 +++++++----
+ 12 files changed, 385 insertions(+), 63 deletions(-)
+
+
+base-commit: d589af98928d20eb39b04ecce3eecbe7ec802222
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
