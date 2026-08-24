@@ -4,57 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B39FC5DF9D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2026 09:04:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F08FC5DF81
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2026 09:04:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PT/fFzF6Cw1geeW9rPZorTiduoGwarZq30SN+K3F6cA=; b=IYhKhQzkYUPqk6
-	AJk7BVEW8E9aAruSz9SrPb2fo/a63cxcAFAcfAfICC2T9rR/oA49UtIAF1BmTXY7z0+/LtSVVG8Ss
-	ZrFWRHL/V3/dOFgHwIz8efQ+DkxOntzpoC6+RSZ3cFBnGq0+H6mHn8Pi2CGp8fmfKIlQFV+9TZKf9
-	Z7kVWx2UsDXIJpdrlSWUB4hY19Pj7HOyYRAbrJHs+8jVJAQq27PSe1D/jrV8yYOZspveeTHu2H1FC
-	fJTiPEf/oeHF8/QGS6zL7xYlH6YtmlIl7VGa36SQpntf5Khi4iewKsGRLDoKvCeYlgt/VGLIHKvAp
-	t5iC+TBlYkDvYc4Aso0g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OEB6EhNJPQOyDwSZD/vl8b8/B5uYX8Qz1LkFHBjGKL0=; b=fnAJDqCdAgtYwp
+	oliITXjz9V+kww+9BULAeJYwwV6lOE4Q3647jd2CAQXLZqVuuwUsLCOl2de/8TIM+1JmxntV52wRB
+	3iCL2J2f+MXShPMQVN2tuHvpvaga0bqenuPGYC2AJrVu5T8TUAo3gY67LPuE3NTTK6I3BjIpyew/X
+	/IIP7IFX0awQuauj7rwGx0zYuzl4i/WB7WurpV9XqgqBsHofLk3ZrHj7qfOjKKef7358t93tYNn8q
+	oM2NGltbd7RZPGiM9Ui7qunDKDBtOkkyNdoSABItJtdCsZd5M5sWyRzCsOydxQU2jklABfnjz5BkN
+	mtusGgaAN8lPdoXE7WKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyQbX-0000000GFzs-2Ovg;
-	Mon, 24 Aug 2026 09:04:31 +0000
+	id 1wyQbm-0000000GGCM-3TjL;
+	Mon, 24 Aug 2026 09:04:46 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyQbS-0000000GFsX-1dEy;
-	Mon, 24 Aug 2026 09:04:29 +0000
+	id 1wyQbW-0000000GFx5-2Ik3;
+	Mon, 24 Aug 2026 09:04:32 +0000
 Received: from neptunite.hamster-moth.ts.net (unknown [IPv6:2400:2411:160:2f00:e616:f172:fe90:f1b5])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 48B5B2F8;
-	Mon, 24 Aug 2026 11:02:53 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4B031C14;
+	Mon, 24 Aug 2026 11:03:01 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1787562176;
-	bh=nTyxLcXJ9s/f7lXgQ9mtDig7a+cVfGOHJ9iwbz+sdw8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=iR4YXkbCaNdskNfpx1B7j9t+XEyuiikXdptSat6Ii8uXfu1CPMYglA3HEmVVA3N0s
-	 ttaYw46bO7pYf3JpXFWA+QcR4ldwqFZHSVYXSHbGjYuhc+onKNbeNPR6lRwITXIo05
-	 mQnXE4NZmNhSXDrMdD1cZtE0jAdcou3dFzV49Tfc=
+	s=mail; t=1787562184;
+	bh=C2rKS+teZoKMQfluRGdL4Oe8gFk9wbGJj4eEUmXqiYU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=QZXpGMcIY0J04Kc3DSzXY25RNLURjNL0CSoZEyhY3+SsM7dnRqTzij8jd9H7F1Fx5
+	 067lFPSFn0gDr9TBVkpbNu860/cqczU6JSphpLpwz02FLh/n9sBoIiFdpFc/ywnmfV
+	 bWEmEn3fRWKeO6kjd0Z9bEUL7PVQ4mZFOx1hLw2Q=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: laurent.pinchart@ideasonboard.com
-Cc: Paul Elder <paul.elder@ideasonboard.com>,
+Cc: Xu Hongfei <xuhf@rock-chips.com>,
 	michael.riesch@collabora.com,
-	xuhf@rock-chips.com,
 	stefan.klug@ideasonboard.com,
 	mehdi.djait@linux.intel.com,
 	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/5] media: rockchip: rkisp2: Add driver for ISP on Rk3588
-Date: Mon, 24 Aug 2026 18:03:57 +0900
-Message-ID: <20260824090406.3695880-1-paul.elder@ideasonboard.com>
+	linux-kernel@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v2 2/5] arm64: dts: rockchip: add ISP nodes to rk3588
+Date: Mon, 24 Aug 2026 18:03:59 +0900
+Message-ID: <20260824090406.3695880-3-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20260824090406.3695880-1-paul.elder@ideasonboard.com>
+References: <20260824090406.3695880-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_020426_594871_B281E923 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20260824_020430_756790_CC119E71 
+X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,92 +75,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello everyone!
+From: Xu Hongfei <xuhf@rock-chips.com>
 
-This patch series adds a new rkisp2 driver that aims to support all
-Rockchip 2.x and 3.x series ISPs. Here we add support for the version on
-the RK3588, which as far as I'm aware is a 3.0.
+Add device tree nodes for the ISP and their iommus on the RK3588.
 
-Patches 1 and 2 add dt bindings and dt nodes; patches 3~5 add the actual
-driver.
+Signed-off-by: Xu Hongfei <xuhf@rock-chips.com>
+Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
 
-Notable changes from the RFC version:
-- fixed a couple potential page fault storms
-- use extensible stats (previously only params were extensible)
-- no more subdev pad crops; all cropping has been moved to parameter
-  buffers so that they can be configured synchronously
-- the DMA RX sink pads and the main/self path source pads on the ISP
-  subdev have been split into individual pads
-- an unused sink pad has been allocated on the ISP subdev for future
-  inline mode support (to prevent uapi from changing)
+---
+No change in v2
+---
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 57 +++++++++++++++++++
+ 1 file changed, 57 insertions(+)
 
-This series is based on the latest version (v7.2-rc1) (at the time of
-posting) of media-commiters/next [0], with some patches on top for
-testing on the Orange Pi CM5 Base with an imx708. I have a branch [1]
-that integrates this series on top of said patches and
-media-committers/next.
-
-Corresponding libcamera patches+branch will be coming soon (within
-minutes), but since I cannot send and link these simultanously, you will
-have to search the libcamera mailing list :)
-
-[0] https://gitlab.freedesktop.org/linux-media/media-committers/-/tree/4900cad020c0580dfb1be27776ff10a4ef110cfa
-[1] https://git.ideasonboard.com/epaul/linux/src/branch/epaul/v7.2-rc1/rk3588/rkisp2/upstream-v2
-
-Paul Elder (3):
-  media: dt-bindings: Add rockchip rkisp2 bindings
-  media: rkisp2: Add parameters output video node
-  media: rkisp2: Add statistics capture video node
-
-Xu Hongfei (2):
-  arm64: dts: rockchip: add ISP nodes to rk3588
-  media: rockchip: rkisp2: Add rkisp2 driver
-
- .../bindings/media/rockchip-isp2.yaml         |  125 +
- .../userspace-api/media/v4l/meta-formats.rst  |    1 +
- .../media/v4l/metafmt-rkisp2.rst              |   88 +
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |   57 +
- drivers/media/platform/rockchip/Kconfig       |    1 +
- drivers/media/platform/rockchip/Makefile      |    1 +
- .../media/platform/rockchip/rkisp2/Kconfig    |   19 +
- .../media/platform/rockchip/rkisp2/Makefile   |   14 +
- .../platform/rockchip/rkisp2/rkisp2-capture.c | 1540 ++++++++
- .../platform/rockchip/rkisp2/rkisp2-common.c  |  180 +
- .../platform/rockchip/rkisp2/rkisp2-common.h  |  619 +++
- .../platform/rockchip/rkisp2/rkisp2-debug.c   |  234 ++
- .../platform/rockchip/rkisp2/rkisp2-dev.c     |  371 ++
- .../platform/rockchip/rkisp2/rkisp2-dmarx.c   |  706 ++++
- .../platform/rockchip/rkisp2/rkisp2-isp.c     |  839 ++++
- .../platform/rockchip/rkisp2/rkisp2-params.c  | 1161 ++++++
- .../rockchip/rkisp2/rkisp2-regs-v2x.h         | 2625 +++++++++++++
- .../rockchip/rkisp2/rkisp2-regs-v3x.h         | 3428 +++++++++++++++++
- .../platform/rockchip/rkisp2/rkisp2-regs.h    | 1736 +++++++++
- .../platform/rockchip/rkisp2/rkisp2-resizer.c |  404 ++
- .../platform/rockchip/rkisp2/rkisp2-stats.c   |  508 +++
- drivers/media/v4l2-core/v4l2-ioctl.c          |    2 +
- include/uapi/linux/rkisp1-config.h            |    1 +
- include/uapi/linux/rkisp2-config.h            |  605 +++
- include/uapi/linux/videodev2.h                |    4 +
- 25 files changed, 15269 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/rockchip-isp2.yaml
- create mode 100644 Documentation/userspace-api/media/v4l/metafmt-rkisp2.rst
- create mode 100644 drivers/media/platform/rockchip/rkisp2/Kconfig
- create mode 100644 drivers/media/platform/rockchip/rkisp2/Makefile
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-capture.c
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-common.c
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-common.h
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-debug.c
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-dev.c
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-dmarx.c
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-isp.c
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-params.c
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-regs-v2x.h
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-regs-v3x.h
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-regs.h
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-resizer.c
- create mode 100644 drivers/media/platform/rockchip/rkisp2/rkisp2-stats.c
- create mode 100644 include/uapi/linux/rkisp2-config.h
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index fc1fdbfd3162..22b78465a823 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -3590,6 +3590,63 @@ gpio4: gpio@fec50000 {
+ 			#interrupt-cells = <2>;
+ 		};
+ 	};
++
++	isp0: isp@fdcb0000 {
++		compatible = "rockchip,rk3588-isp";
++		reg = <0x0 0xfdcb0000 0x0 0x7f00>;
++		interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "isp_irq", "mi_irq";
++		clocks = <&cru ACLK_ISP0>, <&cru HCLK_ISP0>,
++			 <&cru CLK_ISP0_CORE>, <&cru CLK_ISP0_CORE_MARVIN>,
++			 <&cru CLK_ISP0_CORE_VICAP>;
++		clock-names = "aclk", "hclk", "clk_core",
++			      "clk_core_marvin", "clk_core_vicap";
++		power-domains = <&power RK3588_PD_VI>;
++		iommus = <&isp0_mmu>;
++		status = "disabled";
++	};
++
++	isp0_mmu: iommu@fdcb7f00 {
++		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdcb7f00 0x0 0x100>;
++		interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_ISP0>, <&cru HCLK_ISP0>;
++		clock-names = "aclk", "iface";
++		power-domains = <&power RK3588_PD_VI>;
++		#iommu-cells = <0>;
++		rockchip,disable-mmu-reset;
++		status = "disabled";
++	};
++
++	isp1: isp@fdcc0000 {
++		compatible = "rockchip,rk3588-isp";
++		reg = <0x0 0xfdcc0000 0x0 0x7f00>;
++		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "isp_irq", "mi_irq";
++		clocks = <&cru ACLK_ISP1>, <&cru HCLK_ISP1>,
++			 <&cru CLK_ISP1_CORE>, <&cru CLK_ISP1_CORE_MARVIN>,
++			 <&cru CLK_ISP1_CORE_VICAP>;
++		clock-names = "aclk", "hclk", "clk_core",
++			      "clk_core_marvin", "clk_core_vicap";
++		power-domains = <&power RK3588_PD_ISP1>;
++		iommus = <&isp1_mmu>;
++		status = "disabled";
++	};
++
++	isp1_mmu: iommu@fdcc7f00 {
++		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdcc7f00 0x0 0x100>;
++		interrupts = <GIC_SPI 136 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_ISP1>, <&cru HCLK_ISP1>;
++		clock-names = "aclk", "iface";
++		power-domains = <&power RK3588_PD_ISP1>;
++		#iommu-cells = <0>;
++		rockchip,disable-mmu-reset;
++		status = "disabled";
++	};
+ };
+ 
+ #include "rk3588-base-pinctrl.dtsi"
 -- 
 2.47.2
 
