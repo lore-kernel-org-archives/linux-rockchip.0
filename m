@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DEA9C5DF94
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2026 06:16:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2535DC61DBC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2026 07:21:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dkT8q5K+f41rkrQ/VQDvwEsjdCfvOeXgQwvGte6YtgU=; b=YYpAcrsSKfGYUT
-	G2WInwmO36fKQVNY4OuBRa1f6XCVprXg41VXgFjSuyRvT4DLm+SsHobPzIeRZU45IMuEDEp0Mk6vp
-	Bar0l5ibyLcqYR3CXNlGBbfHFBGgp5hVIWlTSHb4APPwcoErXmKYZdzx+Zcups7xsp5KSQdvnnH69
-	lVqo7LKt7RrtS1+XeWTjny2Wr5GCRhYReaZfTDoj9uHLbs066sb9FmEQ7njb4o44h7LSFR7VELr7a
-	dkEieAhP5L8XOiNLBlSQxFYT66C5HOpSmXb9BB8F9dPtfdILHbA9qA1J6B7Qt7zJi2trsOw4hMOdj
-	IOrRAW+dETtrD0024K1w==;
+	List-Owner; bh=eEKI1/ZAOC5vWnwRk8cnqMaV9EHXCJEudMTVQVfGfF8=; b=zPaTbQ2yOVCFaU
+	NXWXDxUDB59ewVfboUcC2Lopv1HtSRhXHtiQcF8f8Vs6AQA5ncmUx8kleE0v2F2NvrpBReAiCD7TB
+	kRRZ/q+ubH1uVRpv4KoSo5ILOPqn7QtYaRyLem/UPHDPJLYXWcZBAFBcQLs6kOdR6KjpYa/nfURNS
+	kzJnc86eme66P8uzNap5wLG2kegqZjNfPbIwbV+cmA590sHRrALrBfrDy0yTxFI7YLfYHssu69aI6
+	yz5lhUB9wRHEDwOk6fb0zEiRnFI9+tcuAsgZag1uUC2Lmfmy4/DLGyGqKxIgVWo8CmmH1lryxDQGu
+	Q3UEdbV2t+QkUCvG0+QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wykRx-00000000DWZ-3ahE;
-	Tue, 25 Aug 2026 06:15:57 +0000
+	id 1wylTc-00000000HJl-0YQw;
+	Tue, 25 Aug 2026 07:21:44 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wykRw-00000000DWD-1Axu;
-	Tue, 25 Aug 2026 06:15:56 +0000
+	id 1wylTZ-00000000HJT-0aa8;
+	Tue, 25 Aug 2026 07:21:42 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3613441FBE;
-	Tue, 25 Aug 2026 06:15:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 812731F000E9;
-	Tue, 25 Aug 2026 06:15:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7F7B24004F;
+	Tue, 25 Aug 2026 07:21:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54B6A1F000E9;
+	Tue, 25 Aug 2026 07:21:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787638555;
-	bh=XT9S6C60Z19LC46LuGKWHv/RBhyq/mOGNIlcql+qxU4=;
+	s=k20260515; t=1787642500;
+	bh=rYTDFbaE1JJfaMo+4gmChPHhIQlrt73MEiayTTjME6k=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=n7a2RDTCbn/JJtgrfz2PbHj/cZvzQbvRon/4Nk6RAOFtrgKZ5MTYo5U6aLqNG+H4q
-	 4w+DKvqez+wl7O77NcwjMiTh91Tt0d4MXmb/5y9rTXiBtPs5b06ChoKH08g+Fxup7H
-	 8W9ec429fVVfh0hsE7GTJkJfuz0bPWA9z4AVfp/y8nSk1HED532Bv5DKgpZ0pTdNaL
-	 Q9qfk41XDc+hEV46hOKn1DxvttLMOGjcWsAekvRIOuGHyjjOJ7PmlS9vcf9eBoidEc
-	 eoKY90g+kcx/zdif+g6JYLqKc+fJ8ZAG2YLv07YnHwqKQWUkz+//blMZ3dKGBiH3aE
-	 F7k0FRaiyzczg==
-Message-ID: <eb56ca7a-c5c0-45d3-ae70-ca48a6551f4a@kernel.org>
-Date: Tue, 25 Aug 2026 08:15:48 +0200
+	b=L5uKnFVN6U7JlDpZjykUYsM31mRreDBUSIQQxhl6O0emTFTI0MCN5iu57fN5BLwsY
+	 clMRmla9IT/J2d4ZtzQkQMz64gKEL7j+jJI4AO7krfKlUj3p3t8nTnI4RUG1dthoIy
+	 yjfFJpTJq3h71mEBqLe51I6RCD3NLSbg8E3K80luAGV1qOEPXwuSMBbwDDIOvILkQj
+	 2Xryd1YQ6/+UlWjX+jTQAUnVzN+56Zu1uB/bcHQxvVaHTLuU7VygGRMRDJ0ZUktl7l
+	 OXg6A4BlxLOq0jhKVFXXk06vroD1BwrvR8kaiEeTwfChjcv/OVzJL3Qkcxpa+d1DXi
+	 9KLhSCW+m64jg==
+Message-ID: <d24d59bb-2330-41c9-a6cc-a4c7053f8526@kernel.org>
+Date: Tue, 25 Aug 2026 09:21:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/5] media: dt-bindings: Add rockchip rkisp2 bindings
-To: Paul Elder <paul.elder@ideasonboard.com>,
- laurent.pinchart@ideasonboard.com
-Cc: michael.riesch@collabora.com, xuhf@rock-chips.com,
- stefan.klug@ideasonboard.com, mehdi.djait@linux.intel.com,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>
-References: <20260824090406.3695880-1-paul.elder@ideasonboard.com>
- <20260824090406.3695880-2-paul.elder@ideasonboard.com>
- <c2ed44e5-ed5c-41f7-a782-57c82968495e@kernel.org>
- <178763791744.3620719.5831445737928843099@neptunite.rasen.tech>
+Subject: Re: [PATCH 1/4] media: dt-bindings: Add Rockchip JPEG decoder
+To: Sascha Hauer <s.hauer@pengutronix.de>,
+ Lucas Sinn <lucas.sinn@wolfvision.net>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260824-rockchip-jpegdec-v1-0-8011822bf500@pengutronix.de>
+ <20260824-rockchip-jpegdec-v1-1-8011822bf500@pengutronix.de>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,7 +102,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
  n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
  qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
-In-Reply-To: <178763791744.3620719.5831445737928843099@neptunite.rasen.tech>
+In-Reply-To: <20260824-rockchip-jpegdec-v1-1-8011822bf500@pengutronix.de>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,41 +119,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/08/2026 08:05, Paul Elder wrote:
-> Hi Krzysztof,
+On 24/08/2026 09:01, Sascha Hauer wrote:
+> Add a devicetree binding schema for the JPEG hardware decoder Rockchip
+> integrates into a number of its SoCs.  Documents the single register
+> window (task registers plus the LLP link-table block at offset 0x300),
+> the decode interrupt, the aclk/hclk clocks, the AXI/AHB resets, the IOMMU
+> and the power domain.
 > 
-> Quoting Krzysztof Kozlowski (2026-08-24 19:52:26)
->> On 24/08/2026 11:03, Paul Elder wrote:
->>> Add documentation for the Rockchip rkisp2 bindings. This is meant to
->>> support multiple versions of Rockchip ISPs going forward, including the
->>> 2.x series and 3.x series. The current version only adds the compatible
->>> for the RK3588, which is a 3.0.
->>>
->>> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
->>
->> Testing is disabled for some time but it's not really a reason to opt out.
->>
->> Please use scripts/get_maintainers.pl to get a list of necessary people
->> and lists to CC. It might happen, that command when run on an older
->> kernel, gives you outdated entries. Therefore please be sure you base
->> your patches on recent Linux kernel.
->>
->> Tools like b4 or scripts/get_maintainer.pl provide you proper list of
->> people, so fix your workflow. Tools might also fail if you work on some
->> ancient tree (don't, instead use mainline) or work on fork of kernel
->> (don't, instead use mainline). Just use b4 and everything should be
->> fine, although remember about `b4 prep --auto-to-cc` if you added new
->> patches to the patchset.
+> The core is not tied to one SoC.  Downstream it is known as the VDPU720
+> and the same block sits on the RK3528, RK3562, RK356x, RK3576, RK3588 and
+> RV1126B, with only the clocks, the resets and the power domain differing,
+> none of which this schema constrains.  A compatible per SoC is all it
+> takes to cover them; the RK3568 and the RK3588 are the two that have been
+> tested and are enabled here.
 > 
-> I did not use b4 but I did use scripts/get_maintainer.pl via --cc-cmd on git
-> send-email. Is that not expected to work?
+> The resets and the power domain are required.  The block cannot be
+> reached with its domain off, and the driver falls back to pulsing the
+> reset lines when a frame times out and the in-block soft reset does not
+> complete, which a node without them would leave with no way to recover.
+> 
+> The IOMMU stays optional.  The driver never refers to it, it is a platform
+> integration detail, and rockchip-vpu.yaml does not require it for the
+> other codec blocks on these SoCs either.
+> 
+> Assisted-by: Claude:claude-opus-5
+> ---
+>  .../bindings/media/rockchip,jpeg-decoder.yaml      | 92 ++++++++++++++++++++++
+>  MAINTAINERS                                        |  8 ++
+>  2 files changed, 100 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/rockchip,jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/rockchip,jpeg-decoder.yaml
+> new file mode 100644
+> index 0000000000000..e20c1bf43ef3e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/rockchip,jpeg-decoder.yaml
+> @@ -0,0 +1,92 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/rockchip,jpeg-decoder.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip JPEG Decoder
+> +
+> +maintainers:
+> +  - Lucas Sinn <lucas.sinn@wolfvision.net>
+> +  - Sascha Hauer <s.hauer@pengutronix.de>
+> +
+> +description:
+> +  Rockchip's in-house JPEG/MJPEG hardware decoder, known downstream as the
+> +  VDPU720.  The same core is integrated into a number of Rockchip SoCs, which
+> +  differ only in the clocks, resets and power domain they are wired to.  A
+> +  dedicated Link List Processor (LLP) register block, located at offset 0x300
+> +  within the same register window, allows the hardware to decode a chain of
+> +  frames autonomously ("link mode").
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk3568-jpegd
+> +      - rockchip,rk3588-jpegd
 
-Works on people setups, but whatever you produced was not sent to right
-folks, so I doubt that you actually scripted it, e.g. like [1].
-Otherwise why script would remove ONLY one specific address from entire
-list it gets?
+How this can be v1 if you send VPU720 for rk3588 already?
 
-[1] https://lore.kernel.org/all/?q=git_send_email
+https://lore.kernel.org/all/20260819-rk3588-jpegdec-v1-4-33d74cdf369c@pengutronix.de/
+
+Were there more versions?
 
 Best regards,
 Krzysztof
