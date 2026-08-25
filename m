@@ -4,105 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2535DC61DBC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2026 07:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B0A9C61DBC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2026 07:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:References:In-Reply-To:
+	Cc:To:Subject:From:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eEKI1/ZAOC5vWnwRk8cnqMaV9EHXCJEudMTVQVfGfF8=; b=zPaTbQ2yOVCFaU
-	NXWXDxUDB59ewVfboUcC2Lopv1HtSRhXHtiQcF8f8Vs6AQA5ncmUx8kleE0v2F2NvrpBReAiCD7TB
-	kRRZ/q+ubH1uVRpv4KoSo5ILOPqn7QtYaRyLem/UPHDPJLYXWcZBAFBcQLs6kOdR6KjpYa/nfURNS
-	kzJnc86eme66P8uzNap5wLG2kegqZjNfPbIwbV+cmA590sHRrALrBfrDy0yTxFI7YLfYHssu69aI6
-	yz5lhUB9wRHEDwOk6fb0zEiRnFI9+tcuAsgZag1uUC2Lmfmy4/DLGyGqKxIgVWo8CmmH1lryxDQGu
-	Q3UEdbV2t+QkUCvG0+QQ==;
+	List-Owner; bh=KcqKyv1viVb18CEkfulBRjV4AZLqG3/nBuKLyLeVwNg=; b=X8zOqFjClnGdNO
+	kFXiyK/ZrgdjpKeaMw3uzEWlbxwVTjfNLwk4nTclrqfQnxpZFVbfhniiNS9L/dfhz0k6GO1oKBtpL
+	UkN8Yu3pNbp9FGZmYUisIGoyckRTP8vK8BPbfHPTW40mzzxCXIrRqGgwDwQtFzftzNFtPE7fi5/sL
+	y5BO/yZGjy90PDbmtAfSVDsjJBRF9aunGvrLicc3gYLfvAiLbbLVGuhPTE815hBbdvtsjB5LnrtBW
+	+5Feoi9So3glLynQ8dIi23Diqo+GtsiYJlbpJy6xdytUfNWJ4+E5iewfpVIyfCmQwkq8sABvFgPzT
+	RW4Ts9HfJPKnaf1JoTdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wylTc-00000000HJl-0YQw;
-	Tue, 25 Aug 2026 07:21:44 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wylkz-00000000IqQ-0Bh2;
+	Tue, 25 Aug 2026 07:39:41 +0000
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wylTZ-00000000HJT-0aa8;
-	Tue, 25 Aug 2026 07:21:42 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7F7B24004F;
-	Tue, 25 Aug 2026 07:21:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54B6A1F000E9;
-	Tue, 25 Aug 2026 07:21:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787642500;
-	bh=rYTDFbaE1JJfaMo+4gmChPHhIQlrt73MEiayTTjME6k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=L5uKnFVN6U7JlDpZjykUYsM31mRreDBUSIQQxhl6O0emTFTI0MCN5iu57fN5BLwsY
-	 clMRmla9IT/J2d4ZtzQkQMz64gKEL7j+jJI4AO7krfKlUj3p3t8nTnI4RUG1dthoIy
-	 yjfFJpTJq3h71mEBqLe51I6RCD3NLSbg8E3K80luAGV1qOEPXwuSMBbwDDIOvILkQj
-	 2Xryd1YQ6/+UlWjX+jTQAUnVzN+56Zu1uB/bcHQxvVaHTLuU7VygGRMRDJ0ZUktl7l
-	 OXg6A4BlxLOq0jhKVFXXk06vroD1BwrvR8kaiEeTwfChjcv/OVzJL3Qkcxpa+d1DXi
-	 9KLhSCW+m64jg==
-Message-ID: <d24d59bb-2330-41c9-a6cc-a4c7053f8526@kernel.org>
-Date: Tue, 25 Aug 2026 09:21:33 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1wylku-00000000Iok-0hPu;
+	Tue, 25 Aug 2026 07:39:39 +0000
+Received: from [127.0.0.1] (unknown [IPv6:2a02:560:5dd5:4b00:9ebf:dff:fe00:fdb5])
+	(Authenticated sender: sha@pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 6E604201021;
+	Tue, 25 Aug 2026 09:39:31 +0200 (CEST)
+Message-ID: <1048ee70-54b2-4e42-ab67-22384961f094@pengutronix.de>
+From: "Sascha Hauer" <s.hauer@pengutronix.de>
 Subject: Re: [PATCH 1/4] media: dt-bindings: Add Rockchip JPEG decoder
-To: Sascha Hauer <s.hauer@pengutronix.de>,
- Lucas Sinn <lucas.sinn@wolfvision.net>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
+To: "Krzysztof Kozlowski" <krzk@kernel.org>
+Cc: "Sascha Hauer" <s.hauer@pengutronix.de>, "Lucas Sinn" <lucas.sinn@wolfvision.net>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, "Rob Herring" <robh@kernel.org>, "Krzysztof
+ Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko
+ Stuebner" <heiko@sntech.de>, "Philipp Zabel" <p.zabel@pengutronix.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <d24d59bb-2330-41c9-a6cc-a4c7053f8526@kernel.org>
 References: <20260824-rockchip-jpegdec-v1-0-8011822bf500@pengutronix.de>
  <20260824-rockchip-jpegdec-v1-1-8011822bf500@pengutronix.de>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <20260824-rockchip-jpegdec-v1-1-8011822bf500@pengutronix.de>
+ <d24d59bb-2330-41c9-a6cc-a4c7053f8526@kernel.org>
+Date: Tue, 25 Aug 2026 07:39:30 +0000
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260825_003936_359196_9063C6D6 
+X-CRM114-Status: GOOD (  29.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,80 +57,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/08/2026 09:01, Sascha Hauer wrote:
-> Add a devicetree binding schema for the JPEG hardware decoder Rockchip
-> integrates into a number of its SoCs.  Documents the single register
-> window (task registers plus the LLP link-table block at offset 0x300),
-> the decode interrupt, the aclk/hclk clocks, the AXI/AHB resets, the IOMMU
-> and the power domain.
+On 2026-08-25 09:21, Krzysztof Kozlowski wrote:
+> On 24/08/2026 09:01, Sascha Hauer wrote:
+> > Add a devicetree binding schema for the JPEG hardware decoder Rockchip
+> > integrates into a number of its SoCs.  Documents the single register
+> > window (task registers plus the LLP link-table block at offset 0x300),
+> > the decode interrupt, the aclk/hclk clocks, the AXI/AHB resets, the IOMMU
+> > and the power domain.
+> > 
+> > The core is not tied to one SoC.  Downstream it is known as the VDPU720
+> > and the same block sits on the RK3528, RK3562, RK356x, RK3576, RK3588 and
+> > RV1126B, with only the clocks, the resets and the power domain differing,
+> > none of which this schema constrains.  A compatible per SoC is all it
+> > takes to cover them; the RK3568 and the RK3588 are the two that have been
+> > tested and are enabled here.
+> > 
+> > The resets and the power domain are required.  The block cannot be
+> > reached with its domain off, and the driver falls back to pulsing the
+> > reset lines when a frame times out and the in-block soft reset does not
+> > complete, which a node without them would leave with no way to recover.
+> > 
+> > The IOMMU stays optional.  The driver never refers to it, it is a platform
+> > integration detail, and rockchip-vpu.yaml does not require it for the
+> > other codec blocks on these SoCs either.
+> > 
+> > Assisted-by: Claude:claude-opus-5
+> > ---
+> >  .../bindings/media/rockchip,jpeg-decoder.yaml      | 92 ++++++++++++++++++++++
+> >  MAINTAINERS                                        |  8 ++
+> >  2 files changed, 100 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/rockchip,jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/rockchip,jpeg-decoder.yaml
+> > new file mode 100644
+> > index 0000000000000..e20c1bf43ef3e
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/rockchip,jpeg-decoder.yaml
+> > @@ -0,0 +1,92 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/media/rockchip,jpeg-decoder.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Rockchip JPEG Decoder
+> > +
+> > +maintainers:
+> > +  - Lucas Sinn <lucas.sinn@wolfvision.net>
+> > +  - Sascha Hauer <s.hauer@pengutronix.de>
+> > +
+> > +description:
+> > +  Rockchip's in-house JPEG/MJPEG hardware decoder, known downstream as the
+> > +  VDPU720.  The same core is integrated into a number of Rockchip SoCs, which
+> > +  differ only in the clocks, resets and power domain they are wired to.  A
+> > +  dedicated Link List Processor (LLP) register block, located at offset 0x300
+> > +  within the same register window, allows the hardware to decode a chain of
+> > +  frames autonomously ("link mode").
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - rockchip,rk3568-jpegd
+> > +      - rockchip,rk3588-jpegd
 > 
-> The core is not tied to one SoC.  Downstream it is known as the VDPU720
-> and the same block sits on the RK3528, RK3562, RK356x, RK3576, RK3588 and
-> RV1126B, with only the clocks, the resets and the power domain differing,
-> none of which this schema constrains.  A compatible per SoC is all it
-> takes to cover them; the RK3568 and the RK3588 are the two that have been
-> tested and are enabled here.
+> How this can be v1 if you send VPU720 for rk3588 already?
 > 
-> The resets and the power domain are required.  The block cannot be
-> reached with its domain off, and the driver falls back to pulsing the
-> reset lines when a frame times out and the in-block soft reset does not
-> complete, which a node without them would leave with no way to recover.
-> 
-> The IOMMU stays optional.  The driver never refers to it, it is a platform
-> integration detail, and rockchip-vpu.yaml does not require it for the
-> other codec blocks on these SoCs either.
-> 
-> Assisted-by: Claude:claude-opus-5
-> ---
->  .../bindings/media/rockchip,jpeg-decoder.yaml      | 92 ++++++++++++++++++++++
->  MAINTAINERS                                        |  8 ++
->  2 files changed, 100 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/rockchip,jpeg-decoder.yaml
-> new file mode 100644
-> index 0000000000000..e20c1bf43ef3e
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip,jpeg-decoder.yaml
-> @@ -0,0 +1,92 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/rockchip,jpeg-decoder.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip JPEG Decoder
-> +
-> +maintainers:
-> +  - Lucas Sinn <lucas.sinn@wolfvision.net>
-> +  - Sascha Hauer <s.hauer@pengutronix.de>
-> +
-> +description:
-> +  Rockchip's in-house JPEG/MJPEG hardware decoder, known downstream as the
-> +  VDPU720.  The same core is integrated into a number of Rockchip SoCs, which
-> +  differ only in the clocks, resets and power domain they are wired to.  A
-> +  dedicated Link List Processor (LLP) register block, located at offset 0x300
-> +  within the same register window, allows the hardware to decode a chain of
-> +  frames autonomously ("link mode").
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk3568-jpegd
-> +      - rockchip,rk3588-jpegd
+> https://lore.kernel.org/all/20260819-rk3588-jpegdec-v1-4-33d74cdf369c@pengutronix.de/
 
-How this can be v1 if you send VPU720 for rk3588 already?
+The above has the JPEG decoder driver integrated into the hantro driver
+which turned out to be the wrong abstraction, so I had to split this
+series up into two, one for the Hantro fixes and one for the now
+standalone JPEG decoder driver which is this series. I decided to start
+freshly for both series instead of treating one as continuation of the
+other.
 
-https://lore.kernel.org/all/20260819-rk3588-jpegdec-v1-4-33d74cdf369c@pengutronix.de/
+> 
+> Were there more versions?
 
-Were there more versions?
+No.
 
-Best regards,
-Krzysztof
+Sascha
+
+--
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
 
 _______________________________________________
 Linux-rockchip mailing list
