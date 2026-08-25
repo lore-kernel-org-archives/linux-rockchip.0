@@ -4,55 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8E27C5DF94
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2026 09:22:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2145DC61DBD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2026 09:25:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vcbWj30dynYe4z/ZrNdE6Whxlqf5RP1UFvhi6ahJtfk=; b=tFEttkCqdEZqSa
-	N9X02PAHMNq6gZfDNWr1+iWe5GxvsIMTbLv9hxeseb3nWtt7H6wrxaTaEWJiycPr/qOrZflGzsY3n
-	0+zNEqmc/5kM2MOPa2YTFsjz7RlLvRA+Eci4BxQqki3h5U2G3nISdDAuSOLxjL4bPRvy1L1rNdLfg
-	xriKO+NDfIoKx40h9sdfTmXoQ+nJG65gz3m+TuCe0dvT6zZqeZNkZCa67XXuIGbR947FXx4advcN1
-	TISF44h8aSaumJezjQt6ZzQg8XzvIopY0i/mJZTo35u3MLz1gPCG8RDbP+madFJkir2NLMs6DTWe4
-	WjQ0QP7aShSaumcX39dg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BylxWaw6sxIA9f05E6jL+35f/r5STcYkSAuGJ+5owj8=; b=K0tIry7Uh5dl/2mFET1b8CXXX9
+	rfOXS2O+QfVaaIH8CVn2QrVK0XYaJGJ5vtk7KT3iJIHygXKAjLAAJo5oH23dRCeUMq0WXoFE/g73w
+	xFPlYBmKKUR86JTWOUsPTF7l80uXW8vAjkauesad/iYCSyHmHz4kWjPaYRQ9EK3zeAyy8PTwtI0yo
+	HE8Y1Kahj07bToromGaEZQ29viHZcFnljpmNmY9bDv1gN7E30pdfOFPKyNB2GKc6bJyXgN/MqdGTj
+	TIef0ka19YRyzABdPbbjMGBM9DdKZqAV656hntPCZtR0zS1Uc1aJrhkWeHG2IKIQeDraHy/04mam8
+	Tp2cuucw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wynM9-00000000TbT-1rK1;
-	Tue, 25 Aug 2026 09:22:09 +0000
-Received: from mail-m24105.xmail.ntesmail.com ([45.195.24.105])
+	id 1wynP3-00000000UFX-1foX;
+	Tue, 25 Aug 2026 09:25:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wynLx-00000000TVS-0BVP;
-	Tue, 25 Aug 2026 09:21:58 +0000
-Received: from xxm-vm.localdomain (unknown [61.154.14.87])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4b3ea0bf1;
-	Tue, 25 Aug 2026 17:21:42 +0800 (GMT+08:00)
-From: Simon Xue <xxm@rock-chips.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Simon Xue <xxm@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 0/2] iommu/rockchip: turn rk_iommu_ops into data
-Date: Tue, 25 Aug 2026 17:21:30 +0800
-Message-Id: <20260825092132.154150-1-xxm@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1wynP2-00000000UEx-1d2L;
+	Tue, 25 Aug 2026 09:25:08 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 0A56D43EF9;
+	Tue, 25 Aug 2026 09:25:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F4581F000E9;
+	Tue, 25 Aug 2026 09:25:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787649907;
+	bh=PbN3JcQcN/L3rATe2NIMWLdEy42ZH2rNAQSCQj1aE2s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=AjGBqDmYl95HbEszRccwf7Fh9YtlOkJEUTIRswM4CIfyKKfyZdu9m5W79hzAvoc2y
+	 v2yMwJIRRIaSn6pdUYxKN996TJBxPQrWDuwmfWrfrajhlhZvjqRsoAOWbd218CE8tZ
+	 BeAdGyvR3QMOTwf3T4jAET5ASFrzlZouVe2jNiwB2ytgB7xCG9C8aeYkP/SWfF97wn
+	 oCm+HFgigiMaqioxYh3Im78NZu2UNC4wfnQMheQBBpbyGbhbgb1P3x+tMqEeW0E+XH
+	 NUKkPd9FuAf4hujsXJQyHYPWD7W4nqh0VHITh5yJwcuKMS9eMEHi7w0dGyFFOUMkmR
+	 rGfa1cnqFKbmg==
+Date: Tue, 25 Aug 2026 11:25:04 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Chen-Yu Tsai <wens@kernel.org>, 
+	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Andy Yan <andy.yan@rock-chips.com>, Algea Cao <algea.cao@rock-chips.com>, 
+	Daniel Stone <daniels@collabora.com>, Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>, 
+	kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+	Maud Spierings <maud_spierings@hotmail.com>, Diederik de Haas <diederik@cknow-tech.com>
+Subject: Re: [PATCH v10 22/69] drm/display: hdmi-state-helper: Sync SCDC
+ state on hotplug
+Message-ID: <20260825-potoo-of-imaginary-unity-7b0999@penduick>
+References: <20260731-dw-hdmi-qp-scramb-v10-0-294364b2cf15@collabora.com>
+ <20260731-dw-hdmi-qp-scramb-v10-22-294364b2cf15@collabora.com>
+ <20260820-accomplished-curly-bandicoot-cc36ba@houat>
+ <774c38bd-6569-4aff-9fbc-a4e017840a55@collabora.com>
 MIME-Version: 1.0
-X-HM-Tid: 0aa03839bba809d3kunm5f4590cc6e02f6
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDSElOVhpDQkhLTR4YGh0ZHlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ0xZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=UYKCtdkRlxVKidrHPgi4BciUkTn3NpnQ5FnpAogYE1irlUL4fx9RgGLqKHq4hX/FAnpJJt5yjQ3XEr1F/eJbD51BRnPdzTplDh1/g3qxpVqU8oyVbtkRbQMR9JsOujX0+nSYPvsT1bIwyDC07Pkv9gPGY2UyYPy+iSy+ou1tq9Y=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=SqxbMX9H0Ng4kw/6ZytaZwsgxluRQNt2mDBI5WtPAdw=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260825_022157_306091_34C8CE24 
-X-CRM114-Status: UNSURE (   5.10  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <774c38bd-6569-4aff-9fbc-a4e017840a55@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,31 +78,175 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7009809572377543969=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series reworks rk_iommu_ops so the per-version behaviour is
-expressed as data instead of function pointers, then uses that to
-reject physical addresses the hardware cannot map.
 
-Patch 1 folds the pt_address/mk_dtentries/mk_ptentries callbacks into
-single encoders selected by paddr_mask. Patch 2 uses paddr_mask to
-reject out-of-range physical addresses before they are silently truncated
+--===============7009809572377543969==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="wvp34r75zg2fljmn"
+Content-Disposition: inline
 
-Simon Xue (2):
-  iommu/rockchip: Reduce rk_iommu_ops to pure data
-  iommu/rockchip: Reject unsupported physical addresses
 
- drivers/iommu/rockchip-iommu.c | 109 ++++++++++++++++-----------------
- 1 file changed, 54 insertions(+), 55 deletions(-)
+--wvp34r75zg2fljmn
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v10 22/69] drm/display: hdmi-state-helper: Sync SCDC
+ state on hotplug
+MIME-Version: 1.0
 
--- 
-2.34.1
+On Thu, Aug 20, 2026 at 05:44:08PM +0300, Cristian Ciocaltea wrote:
+> On 8/20/26 11:53 AM, Maxime Ripard wrote:
+> > On Fri, Jul 31, 2026 at 07:19:29PM +0300, Cristian Ciocaltea wrote:
+> >> drm_atomic_helper_connector_hdmi_hotplug() does not currently
+> >> synchronize SCDC status on hotplug events, leaving the scrambler state
+> >> potentially inconsistent after (re)connect.
+> >>
+> >> Hook drm_connector_hdmi_sync_scdc() into both the connect and disconne=
+ct
+> >> paths, replacing the existing TODOs around missing scrambler handling.
+> >>
+> >> Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+> >> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS=
+, Rock 5B
+> >> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> >> ---
+> >>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 23 ++++++++++++++--=
+-------
+> >>  1 file changed, 14 insertions(+), 9 deletions(-)
+> >>
+> >> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers=
+/gpu/drm/display/drm_hdmi_state_helper.c
+> >> index 4a93c279c9a7..3377ea936120 100644
+> >> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> >> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> >> @@ -1205,13 +1205,16 @@ drm_atomic_helper_connector_hdmi_update(struct=
+ drm_connector *connector,
+> >>  					enum drm_connector_status status)
+> >>  {
+> >>  	const struct drm_edid *drm_edid;
+> >> +	int ret =3D 0;
+> >> =20
+> >>  	if (status =3D=3D connector_status_disconnected) {
+> >> -		// TODO: also handle scramber, HDMI sink disconnected.
+> >> -		drm_connector_hdmi_audio_plugged_notify(connector, false);
+> >> -		drm_edid_connector_update(connector, NULL);
+> >> -		drm_connector_cec_phys_addr_invalidate(connector);
+> >> -		return 0;
+> >> +		ret =3D drm_connector_hdmi_sync_scdc(connector, false, ctx);
+> >> +		if (ret !=3D -EDEADLK) {
+> >> +			drm_connector_hdmi_audio_plugged_notify(connector, false);
+> >> +			drm_edid_connector_update(connector, NULL);
+> >> +			drm_connector_cec_phys_addr_invalidate(connector);
+> >> +		}
+> >=20
+> > If there's a deadlock, shouldn't we restart the whole sequence there?
+>=20
+> In that case we do already propagate -EDEADLK and let the callers
+> (drm_helper_probe_detect_ctx(), drm_helper_probe_single_connector_modes())
+> to ensure the sequence is restarted.
+>=20
+> > Ie, we should return ret all the time anyway? And if we do that, we
+> > should return ret for drm_edid_connector_update() too.
+>=20
+> Per .detect_ctx() contract, implementations shall return a drm_connector_=
+status
+> value or -EDEADLK only.  On the other hand, .force_ctx() accepts any erro=
+r code,
+> but the probe helpers just log it.  Hence returning anything else wouldn't
+> really have an impact on the functionality.
+>=20
+> Returning errors from drm_edid_connector_update() would potentially overr=
+ide
+> non-deadlock ones from sync_scdc().  Since both helpers already log their=
+ own
+> failures, I think it isn't worth the trouble.
+>=20
+> > Either way, a comment on why we're doing it this way would be nice.
+>=20
+> Indeed.  Would the following be too verbose?
+>=20
+> /*
+>  * The SCDC resync may reset the CRTC, which might involve aquiring
+>  * modeset locks.  If that fails, -EDEADLK is reported and the callers
+>  * passing a non-NULL @ctx drop the locks and restart the sequence
+>  * - see drm_helper_probe_detect_ctx() and
+>  * drm_helper_probe_single_connector_modes().
+>  *
+>  * The resync runs first, and the audio and CEC helpers only once the
+>  * link state has settled: the CRTC reset is a blocking commit, so on
+>  * success the pipeline is already up again, while on -EDEADLK nothing
+>  * has been resynced yet and the pending retry redoes everything.  This
+>  * keeps userspace from acting upon a link that is about to be reset.
+>  *
+>  * -EDEADLK is the only status gating the helpers below, as it is the
+>  * sole one guaranteeing a new run.  The other failures are merely
+>  * reported: .force_ctx() accepts any error code and the probe helpers
+>  * just log it, while .detect_ctx() has to swallow it, being only
+>  * allowed to return a drm_connector_status value or -EDEADLK.
+>  * Propagating the status of drm_edid_connector_update() on top would
+>  * therefore only make it compete with an earlier resync failure over a
+>  * value that triggers no recovery, the more so as both helpers already
+>  * log their own errors.
+>  */
 
+You can tell your LLM to be more terse :)
+
+Something like the following would be enough:
+
+  /*
+   * detect_ctx can only ever return an status or EDEADLK. Handle deadlocks=
+, and report any !EDEADLK error.
+   */
+  ret =3D drm_connector_hdmi_sync_scdc(connector, false, ctx);
+  if (ret)
+     if (ret =3D=3D -EDEADLK) {
+     	return ret;
+     } else {
+       drm_warn(connector->dev, "ignored error");
+     }
+
+  drm_connector_hdmi_audio_plugged_notify(connector, false);               =
+                                                                           =
+                                                                           =
+                              =20
+  ret =3D drm_edid_connector_update(connector, NULL);
+  if (ret)
+       drm_warn(connector->dev, "ignored error");
+  drm_connector_cec_phys_addr_invalidate(connector);                       =
+                                                                           =
+                                                                           =
+                              =20
+
+Maxime
+
+--wvp34r75zg2fljmn
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCao1fagAKCRAnX84Zoj2+
+doO/AXsHJJ+Pjgm/6U6AMxPeQmsysVDIATZzk+Au8YVBssNtT1JX5uZmay3DbuzX
+hfXttckBfApSrRSD0trH7kEFJ3aiyLrWuM06roPQ1keiAc2PKZsUeEVaE71QuTOa
+Yucxq/WxyQ==
+=RRtf
+-----END PGP SIGNATURE-----
+
+--wvp34r75zg2fljmn--
+
+
+--===============7009809572377543969==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7009809572377543969==--
+
