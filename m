@@ -4,76 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6736C61CE3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2026 05:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C4FC5DF94
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2026 06:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OZo6/GQ/MTd0dewQNo/b6qnhVKLOP4m21kVKcevT/JM=; b=lDgZQ+xSlcDPT7
-	0kNgdE8d1QgTsW38DEXtJLfVleYMlDmeRhSQKnXKAAjp2Avj4fX2fkxGDld+5IGCcWOUBkIW/MoAE
-	pBOE+eUPrJ6eMRm7nEE5SylrbaOuBCGu8b9fJCdzcb+rWL5Ae/R3HIn7mMGkra7aNN4pyibmSIjae
-	6oHG2Q6BAeeA0BbadtYSmO+9W5fv5v5zg/V3sbihw77cQDZRDFLdbIvs8yudyJJi2Ks2MoRoFqVyp
-	wcNurAL5fJyCW20hKe4gWid5Qhf9avd2u2kVIQdKZuOPcGp118+ogKOO/IwCwfAnvo52o2nEtug92
-	0YKk3KJm7wYVzfQBOiwg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GpjQSBn9KkhUnc+hW0yF310tHiU0tTOEpa1AAHJaRH8=; b=h5NyFZPIqISq5W
+	5rWaUHCNYyNt9379xBqrhb16WTWNbopTGabPJfmG4SzUxcfrSzwCj19Us+/GkYhSXCmaCAgmkBjqh
+	/g7X2jzcUlkx9gpHJDdIb42z/ClkWaOTLEixPkluKffQEpn1qK2YAJr9BLPVlgxvAuvdvLJ9FP/i1
+	mvO0wJ0q2SWdvdo7oWSa2sUtkXHvCVo2UtrsQm187xu1+t/HJ98q/2bbrmocudScKpQ3/7v1Hk96K
+	u8RgIcIabydysFl1reTG1tMcHRnCvWR/z5PIHSHglj9jQuOoc9+/kwxprwn7YjaHX8EEr2GXFEBU4
+	gL1x1gIxritD4EPziYAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyjYD-00000000AWi-1oI9;
-	Tue, 25 Aug 2026 05:18:21 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wykHo-00000000D7j-2sHq;
+	Tue, 25 Aug 2026 06:05:28 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyjYA-00000000AVK-1j6w;
-	Tue, 25 Aug 2026 05:18:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B27A6438D0;
-	Tue, 25 Aug 2026 05:18:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 86997C2BCB8;
-	Tue, 25 Aug 2026 05:18:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1787635097;
-	bh=c8m+kP4UJbinGZZP2vZ7BLyVif62dvbVb9w5w4QtJ2c=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=GlvZm08+42w6wLq6hwEcRYRNHi+RyJXY9zp8MJI4NpgWSBe7BaDWDXlpkF7QVZcx5
-	 bNR1NCG61x3IqaWsFIgol7BKR+Mdyp292HyRHWaWZlWKn2wONi8W3Z6FWawpfs+zCC
-	 +ITBBUPWd+B9tMIrbJCmDgutdeLcdcDb5fshQJfCHe21V5bbWhS1aaYustaSPSbqSS
-	 079hLZLMhQcgu2OA2Z4VyI2WvgG92VltBphNoJsczaTp9uSgOsMhw/uvSpvyRrscQ5
-	 cD8CF3ssojd/SEf3M251aS1lJhDR0lepakd5GUOGKwmiIuIiyY0ercEMiBnBlOjPD7
-	 wwyaGhfJom5SA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62541C5B572;
-	Tue, 25 Aug 2026 05:18:17 +0000 (UTC)
-From: Rudraksha Gupta via B4 Relay <devnull+guptarud.gmail.com@kernel.org>
-Subject: [PATCH v2 0/2] Pinephone Pro Connectivity: Adding Modem,
- Bluetooth, and Wi-Fi
-Date: Mon, 24 Aug 2026 22:18:15 -0700
-Message-Id: <20260824-ppp_connectivity-v2-0-a4b0e11cd62c@gmail.com>
+	id 1wykHl-00000000D6n-2qc2;
+	Tue, 25 Aug 2026 06:05:27 +0000
+Received: from neptunite.rasen.tech (unknown [IPv6:2400:2411:160:2f00:c31d:3341:ef05:614a])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 5363F2EC;
+	Tue, 25 Aug 2026 08:03:57 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1787637837;
+	bh=5SX3XLtrazkTuCQ/ilBaxmWP2RaJblskG7NlcD6dvfo=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=mXM4HMQ0bmP4BxzGxcvQ5bzXkBDgV6ANdQeKF6Xv0flXww8U5mX+isjVZIhXgaPqJ
+	 5hRy5al5QzHjy/Zxjc0XUakNZhTNC9fHuLxfEMqb+HcOffX2jiUlst2mnAXqABZUSu
+	 AuS2shD/vBUc6OO7gN9x874A3sUuITWBDdBom3rY=
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WOQQ6CMBBFr0JmbUlbEZSV9zDEQBlhEmlrWxsJ4
- e5WWDu7N/nz5i/g0RF6qLMFHEbyZHQCechAja0ekFGfGCSXJRdCMmvtXRmtUQWKFGZ2wj5N1RU
- XXkA6sw4f9NmUt2Znh693Mod9CV3rkSkzTRTqLFa5hF9uJB+Mm7cmUWzB/0+jYJzJc9GXeD52U
- sjrMLX0zJMVmnVdv9b81hvYAAAA
-X-Change-ID: 20260112-ppp_connectivity-5edddd7b4904
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Lee Jones <lee@kernel.org>, Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Rudraksha Gupta <guptarud@gmail.com>, linux-clk@vger.kernel.org, 
- mfd@lists.linux.dev, Martijn Braam <martijn@brixit.nl>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1787635096; l=3246;
- i=guptarud@gmail.com; s=20240916; h=from:subject:message-id;
- bh=c8m+kP4UJbinGZZP2vZ7BLyVif62dvbVb9w5w4QtJ2c=;
- b=eDOMM9OmCwYq19j0gxgg9RZnGrdgNhF6ujkRI210fik9net1+FPePUNOMqma7F1PoPW9p2xeD
- a56SRW7MxFjBjIRkeG3gkYif1H3LKFgLDw4rHnhD4d1/WZDeoDS1HWG
-X-Developer-Key: i=guptarud@gmail.com; a=ed25519;
- pk=ETrudRugWAtOpr0OhRiheQ1lXM4Kk4KGFnBySlKDi2I=
-X-Endpoint-Received: by B4 Relay for guptarud@gmail.com/20240916 with
- auth_id=211
-X-Original-From: Rudraksha Gupta <guptarud@gmail.com>
+In-Reply-To: <c2ed44e5-ed5c-41f7-a782-57c82968495e@kernel.org>
+References: <20260824090406.3695880-1-paul.elder@ideasonboard.com> <20260824090406.3695880-2-paul.elder@ideasonboard.com> <c2ed44e5-ed5c-41f7-a782-57c82968495e@kernel.org>
+Subject: Re: [PATCH v2 1/5] media: dt-bindings: Add rockchip rkisp2 bindings
+From: Paul Elder <paul.elder@ideasonboard.com>
+Cc: michael.riesch@collabora.com, xuhf@rock-chips.com, stefan.klug@ideasonboard.com, mehdi.djait@linux.intel.com, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
+To: Krzysztof Kozlowski <krzk@kernel.org>, laurent.pinchart@ideasonboard.com
+Date: Tue, 25 Aug 2026 15:05:17 +0900
+Message-ID: <178763791744.3620719.5831445737928843099@neptunite.rasen.tech>
+User-Agent: alot/0.0.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260824_230525_867110_BAC7B00E 
+X-CRM114-Status: GOOD (  20.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,87 +60,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: guptarud@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Continuing the work on upstreaming Pinephone Pro functionality,
-this patch series gets the connectivity side of the Pinephone Pro
-mainlined. Here are the following sources:
+Hi Krzysztof,
 
-- https://codeberg.org/megi/linux
-- https://gitlab.com/pine64-org/linux/-/commit/f9f847c6fd1
+Quoting Krzysztof Kozlowski (2026-08-24 19:52:26)
+> On 24/08/2026 11:03, Paul Elder wrote:
+> > Add documentation for the Rockchip rkisp2 bindings. This is meant to
+> > support multiple versions of Rockchip ISPs going forward, including the
+> > 2.x series and 3.x series. The current version only adds the compatible
+> > for the RK3588, which is a 3.0.
+> > 
+> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> 
+> Testing is disabled for some time but it's not really a reason to opt out.
+> 
+> Please use scripts/get_maintainers.pl to get a list of necessary people
+> and lists to CC. It might happen, that command when run on an older
+> kernel, gives you outdated entries. Therefore please be sure you base
+> your patches on recent Linux kernel.
+> 
+> Tools like b4 or scripts/get_maintainer.pl provide you proper list of
+> people, so fix your workflow. Tools might also fail if you work on some
+> ancient tree (don't, instead use mainline) or work on fork of kernel
+> (don't, instead use mainline). Just use b4 and everything should be
+> fine, although remember about `b4 prep --auto-to-cc` if you added new
+> patches to the patchset.
 
-All credits to the following folks:
-- Martijn Braam: original author for the Pinephone Pro bringup
-- Kamil Trzcinski: original author for the Pinephone Pro bringup. No
-  longer credited as I can't seem to contact this person
-- Ondrej Jirman: maintains https://codeberg.org/megi/linux
-- Dang Huynh: for the modem patch above
+I did not use b4 but I did use scripts/get_maintainer.pl via --cc-cmd on git
+send-email. Is that not expected to work?
 
-As far as I can tell, I've credited everyone that I know about, but
-may be missing some because of how long its been since the original
-implementation till now has been.
+> You missed at least devicetree list (maybe more), so this won't be
+> tested by automated tooling. Performing review on untested code might be
+> a waste of time.
+> 
+> Please kindly resend and include all necessary To/Cc entries.
+> 
+> A nit, subject: drop second/last, redundant "bindings". The
+> "dt-bindings" prefix is already stating that these are bindings.
+> See also:
+> https://elixir.bootlin.com/linux/v7.1-rc7/source/Documentation/devicetree/bindings/submitting-patches.rst#L23
 
-I've also included a short guide on how to test these patches. This
-generally follows this page:
-https://wiki.postmarketos.org/wiki/PINE64_PinePhone_Pro_(pine64-pinephonepro)
-
-To test, please follow the following steps:
-    https://wiki.postmarketos.org/wiki/PINE64_PinePhone_Pro_(pine64-pinephonepro)#External_storage_(microSD_card)
-
-To build your own image, you will need to do something like this:
-pmbootstrap init    # I typically choose Phosh. Defaults should work
-wget https://gitlab.postmarketos.org/postmarketOS/pmaports/-/raw/main/device/community/linux-pine64-pinephonepro/config-pine64-pinephonepro.aarch64 -O arch/arm64/configs/orangepi_defconfig
-make LLVM=1 CC="ccache clang" O=.output ARCH=arm64 -j $(nproc) W=1 orangepi_defconfig all
-pmbootstrap build --envkernel linux-pine64-pinephonepro
-pmbootstrap build --force device-pine64-pinephonepro
-pmbootstrap install --sdcard=/dev/sdX    # Change /dev/sdX appropriately
-pmbootstrap -y zap -a    # Cleanup everything
-
-Signed-off-by: Rudraksha Gupta <guptarud@gmail.com>
----
-Changes in v2:
-- dropped removing the interrupt GPIO for Wifi as that is now merged into mainline
-- reworked clkout2
-- dropped all the signed-off-by's. credited in cover letter
-- Link to v1: https://lore.kernel.org/r/20260112-ppp_connectivity-v1-0-284d6e83b212@gmail.com
-
-To: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Conor Dooley <conor+dt@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-To: Michael Turquette <mturquette@baylibre.com>
-To: Stephen Boyd <sboyd@kernel.org>
-To: Brian Masney <bmasney@redhat.com>
-To: Lee Jones <lee@kernel.org>
-Cc: devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-clk@vger.kernel.org
-Cc: mfd@lists.linux.dev
-
----
-Martijn Braam (2):
-      arm64: dts: rockchip: Enable the EG25-G modem on the Pinephone Pro
-      clk: rk808: Select the clock function of CLK32KOUT2 on the RK818
-
- .../boot/dts/rockchip/rk3399-pinephone-pro.dts     | 69 ++++++++++++++++++++++
- drivers/clk/clk-rk808.c                            | 46 ++++++++++++++-
- include/linux/mfd/rk808.h                          |  1 +
- 3 files changed, 115 insertions(+), 1 deletion(-)
----
-base-commit: 237a1c39e8dfd3e1c6f1f023eea37a48ec04cc63
-change-id: 20260112-ppp_connectivity-5edddd7b4904
-
-Best regards,
---  
-Rudraksha Gupta <guptarud@gmail.com>
+Indeed I missed that, my bad.
 
 
+Paul
+
+> 
+> 
+> Best regards,
+> Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
