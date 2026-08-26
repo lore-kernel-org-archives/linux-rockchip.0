@@ -4,59 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05D32C61DBE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2026 14:20:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7098EC61DBD
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2026 08:13:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z/BuqAPpipFMzqVpoyd6smktuKjK0s5ndywytXiy5Zw=; b=RmynWJheEaH8qk
-	geXkAG8PQ4ZLOJUqXkjf0VVAcF5LsEzXoWGpcfKL59vKuZ/CbV6id0eVQeBpjsmJ9dbOQmXkbHn7q
-	pkRvQmYHKRgYD6lnZPIbS9EvoIbF0py197IUdGpSwtYNjbCgwjCZIfB/CzgqD6KDdeeoWcNlMFjXP
-	YMQZrVBFMk318LRatIuL4DLyPPwwE4Exw1eIvoPbF4j+gcn7SDDoIjYTVqc+rk/3mM4h6zuSgMiS0
-	8YmbS+09WCSlf1e249lYN4wSV3l4sKkSuuXPufmr74/JaJJEIKrggC04CaLaV7s15oLHihCpsa2zl
-	dcUZCFsL+HaEqfEThB1g==;
+	List-Owner; bh=l8k+QYdYj6cIdKMYC2jTWCnU3zdVigfteklVfULUUWg=; b=WLmLWIUMFmQY5R
+	47xkxJhjkVUJfYrZ+tMQk8CRZW/9v6Fn09CYbSuB091eMHbekacPMIUV2HJeN7Klm3b/BifFENMo4
+	B2jVTVgmFtgGTUffjpVPt7I7oT7k2jfPiPWRWLOuO0cfxrddaA9Q2M+9gCYvcgvd9U8b4GmEBJiZg
+	w7w4JvcAjtf3qajTWazCZDk70enhAAVx0MVRwc+Qkxjz1kb9vSUVP4hkJzwBJSFpNhjFIUTq4vEkI
+	oaR0XC75x4eFrKWrRM1xM74iT1ciH4pmdcxM+X3GnHTKlaJZF340o95suCGGQJbxbfhMg5YH1pPVx
+	dJrk0wDMgyTY7AmND2aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wys0a-00000000wi8-3so5;
-	Tue, 25 Aug 2026 14:20:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wz8kT-000000023st-2Rlg;
+	Wed, 26 Aug 2026 08:12:41 +0000
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wys0O-00000000wZT-2Sr1;
-	Tue, 25 Aug 2026 14:20:00 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with UTF8SMTP id 0822A60254;
-	Tue, 25 Aug 2026 14:20:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with UTF8SMTPSA id 2A0801F000E9;
-	Tue, 25 Aug 2026 14:19:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787667599;
-	bh=7kbOFm9Q7fFBHZscYY11fL/APaCBS5q0JYfHLMJc2GA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Rcb+ITSmpXQ9yDVdZsnOF81C3pecmwfa97695h1hb3I8NjctLJC+MwI00PBhKzVf4
-	 EKRr//m8FaVy9IbJD4b0Fb6WxcoRocR1La5W4q/DJM59VhVtroERIZPkAIcQ3V0p17
-	 RSNK4oiAzjodtv/lcqfAGdBGGEEvtUAYVCL8Na8BsDKOfaytSMkMrclvq5TuiFd8K2
-	 uhEB0MO4/CRKlU30dFqgRE0AbES6UsHs73SJxwEps04kVe8WpO9dhyxZgXbb+Xq8fT
-	 HvT3+74o8vOUBAZHboArXARFl/4pAnp8k9LATT2qktDclS90YkDwannlh8uA7+y8/4
-	 FnrczFpQ+jTMg==
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: Jassi Brar <jassisinghbrar@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v1 3/3] mailbox: rockchip: Convert to use dev_err_probe()
-Date: Tue, 25 Aug 2026 16:19:26 +0200
-Message-ID: <d9fe1f923698066ba364295df7519770e2dc8557.1787667315.git.ukleinek@kernel.org>
-X-Mailer: git-send-email 2.55.0.11.g153666a7d9bb
-In-Reply-To: <cover.1787667315.git.ukleinek@kernel.org>
-References: <cover.1787667315.git.ukleinek@kernel.org>
+	id 1wz8kR-000000023rZ-0YNn
+	for linux-rockchip@lists.infradead.org;
+	Wed, 26 Aug 2026 08:12:40 +0000
+Received: by mail-yx1-xb134.google.com with SMTP id 956f58d0204a3-66d2529310aso610928d50.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 26 Aug 2026 01:12:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787731958; cv=none;
+        d=google.com; s=arc-20260327;
+        b=qWkcipjKinRrvNK7spDRuSLqARoMSigc/bzC6hJpvvapUQVIfNVQyRzVqLlBj86z/K
+         ZwFZX1zth4eKiuC7Zdi5rbmkPDbl39nczPM6K5bhukm3bvRwVPrQIpwi/sUqj3DiITA/
+         q0Hp9RMZa1g4oKYRBjAha0y3YCRjI2KCfDq2VDoj6cuLz2rOVWpjLlt+GCcaoRZfJkWt
+         eQKQMwtW84J1YFgsT3d1/bk3djgLolk8cFWlr7X+AxarpMsVFAq4yZHBAw7s2A4ZlALu
+         sBymS3KRnSx2serKPLgRBeIdLxsth6xTavgGkl+iqobwKYaeH0Mdljt1XEV4lJsZjtUK
+         NYTA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=uWjL7Zpc1RbXxYUhrkjehswpmSWh1RaKUZDsqI6aoKw=;
+        fh=z3sNnKqR5vvuPqTTgoO8zQFyuy+NrzG6Pj5szSVahXo=;
+        b=ShrYhsUitgssYDdEPWMmnIALSGvZS9zIiwR3gCuCufxruxulnqcK19b2wNJzQLta0S
+         Ff84i9lX4CIqzyGIwGX802l1++YWVU/Bpnd4MmmWceCW1rbBtMKMfuavz5Bgo9lU2bMo
+         +uC2MRQLOpclXxPAQRTFxPYjCv+msCThBAQSmashrzjdxLttVelBIt/zgOU06JhRqmRt
+         936aHCT+rhzc/ULPTkBv3CSheBllpHAUbhvCdDZBTZ6WSh5d4FJ9JsV30H65NkMWhlz0
+         4i3Wk/gvyVBxr1RrYl9U7Ag56NHeDlWYx4odxlZbJIbHOYE/kqrk+BhQJ6yDOh2JXtG9
+         J/4Q==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787731958; x=1788336758; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=uWjL7Zpc1RbXxYUhrkjehswpmSWh1RaKUZDsqI6aoKw=;
+        b=Z9kQP24wS2y+aeTcYlQcvc4jNWZVmPXLBTomwk1Js5UhEWJvAnsr5pRTgMhkl5uWx+
+         PJBnPKXjm/fdqOGDKtwYUTR2l4A+/2aK8tKzNdGDzXDq1Cy+kMTTMy3YoOJn1xjZgqJo
+         9SIKK1991sERWMu4u/9M7nzsyQF3w7eFWWzMa/JYymLfdfhmxVnqBlJF9Elp9TDiepId
+         mJ0cgZcvZLKa93QKZyaYDZwU4/xmC/otY5p46qEDekBoaX44YdYhg5Q7VIl96KzmkjRG
+         QfIKtknzrbOUkp9ZzUC+2Bf5qQ6ElOtNINl0vfQiuY5j4ZuUmE2OEN6u9hg/EHe9HYTG
+         DIvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787731958; x=1788336758;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=uWjL7Zpc1RbXxYUhrkjehswpmSWh1RaKUZDsqI6aoKw=;
+        b=jIDDgtkLRd24NE1U3x3Nm6s4VfXdv2ppB4d2RRMwepLqxocC4x6Lzl4ndD6FkNLpgV
+         8SlzxBtBiWQ398WM9wQpbvi2kqr0pE2LtC3H7y4Gtu0/aRMZ1oTBHZPHAmLiRlJJT/0b
+         C/GuKOufu3MqM+sKs5kNzG0TC4LI3YHdgQcuDnHROfs4ne2NtTLoWh8TPJBoMoRtwagn
+         qhUSBsWn5IOxeW4zgpuqojvtCwwWjPGFIQ+yJWkVi8Uc2Oaavkv+6mdGgUbTbMp2tam9
+         LRv39R6gDiLaOQaOQaTRpOQCMb4TAuz9S+MnTdFrW2MyESZlQZAMCHe4tSKfVpJvfHpK
+         6LWA==
+X-Forwarded-Encrypted: i=1; AHgh+RobwkipxKSgVGEm8NVD4kIFGb0+G1PsT+7LbXn6g91kOb4T+YnnDg3VA2vbiaDNQrO/WQFJmbFPhpEM3Z3unw==@lists.infradead.org
+X-Gm-Message-State: AFuF++mBjbhP3+xVndjHRmmBSJOf7D5oicVNdnGAoRAuQkRHwTNsSjNl
+	ddKmHgj76TbjNBPW/4oIzsjN0fczv7v/K+V7mmUg6Krhlp1f5U+0td3uVJQ2exuERL/va3qqx4H
+	lOU6dKJsSI0Rr+VorKsKP39yPoqDDdTU=
+X-Gm-Gg: AR+sD10TZ4DHVyFu46Kd+gt9l7zYDLvqLwtjdTewsVoQ/nqCYk9LzNL5hD4MQsQtjTF
+	MyGghh6hpvmlBNLclFTBxab0gFw4j+AMbv2wf4aPnAmswRYjeKukQe0+RRJABO3UdrlGqLoUWij
+	O4dweJ/BMryRRUAw+YYuzs0S7EYOfSFNT0JL7Em89/CsFyIJhir7I4MyADTYVg1zUvYoNWSOZlH
+	44lDGtH499i4+sKa850xPt+MJs6duQyXX+Yq2DAapeN3h7IEoxbpMk0MF+t+jvcKV1c5/8n86O1
+	jRlcteIWpEm+AwIeC5yiNRH0KkBFQ4JKwe6gHtBWDG/jt9c=
+X-Received: by 2002:a53:d00e:0:b0:66c:fb45:77e2 with SMTP id
+ 956f58d0204a3-66d2575a752mr1255819d50.28.1787731957855; Wed, 26 Aug 2026
+ 01:12:37 -0700 (PDT)
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1347; i=ukleinek@kernel.org; h=from:subject:message-id; bh=e54aXlzGcps+TytsLYfn64m7yyNVmy3TFL/QXt0cNmk=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqjaR8R3+yy+UgL4aM0YFZQKOc+8xHdAh7wkA/n EcZ7UqEc9mJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCao2kfAAKCRCPgPtYfRL+ TuawB/0d681t1JSRae/ZmngcxUkB/0ubaM3S981Usz9hGmomb76gpu0OZ020BdAR5iQyt0jJNCy 7RKE405NSVJbPLV8KF9pYjPme1y5pqBRk0hZiA4Qi68vMJOqLjplzc4EVQ/ecGqplhkKTqt1fZF 59Sqiaf/JzpW+dFjQnUwsojOjHmqeeSM1tBCpsFzS89FtKxMHuceUIQJspNxOdmg/Q6zuA2uzUv EZjxAXNHzx6mUt4iOrCQUkh/caBD2DcQ24ceLdbOObs+eFuS/0Br4YxcjQBcrcIx2GyuQs4GVa7 lIKsnXnJzq9xIe5plIsBD8mucdA8mZfS0kFFxEUcR+RG2Aly
-X-Developer-Key: i=ukleinek@kernel.org; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+References: <20260808093016.2738659-1-lgs201920130244@gmail.com> <218fb204-ad8d-4005-a995-6ae931fa9942@kernel.org>
+In-Reply-To: <218fb204-ad8d-4005-a995-6ae931fa9942@kernel.org>
+From: Guangshuo Li <lgs201920130244@gmail.com>
+Date: Wed, 26 Aug 2026 16:12:25 +0800
+X-Gm-Features: AcwNN1VIwYHf-K-salUzkbrUObzNrM3k5T8nRh7TzSvSmg4UxobHgtjT9MejMlA
+Message-ID: <CANUHTR8Mp2d16Va2uxrnwSw5ro353T9czc8vMvzUvn61Pa9eaw@mail.gmail.com>
+Subject: Re: [PATCH] crypto: rockchip: fix autosuspend cleanup during teardown
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Corentin Labbe <clabbe@baylibre.com>, Herbert Xu <herbert@gondor.apana.org.au>, 
+	"David S. Miller" <davem@davemloft.net>, Heiko Stuebner <heiko@sntech.de>, John Keeping <john@keeping.me.uk>, 
+	linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	stable@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260826_011239_235880_A8FA7063 
+X-CRM114-Status: GOOD (  19.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,36 +114,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogVXdlIEtsZWluZS1Lw7ZuaWcgPHUua2xlaW5lLWtvZW5pZ0BiYXlsaWJyZS5jb20+CgpU
-aGlzIGlzIG1vcmUgY29tcGFjdCBpbiBzb3VyY2UgY29kZSBhbmQgYWxzbyBjb21waWxlcyB0byBz
-bWFsbGVyIGNvZGUuCgpCbG9hdC1vLW1ldGVyIHJlcG9ydHM6CgoJYWRkL3JlbW92ZTogMC8wIGdy
-b3cvc2hyaW5rOiAwLzQgdXAvZG93bjogMC8tNzYgKC03NikKCUZ1bmN0aW9uICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIG9sZCAgICAgbmV3ICAgZGVsdGEKCXJvY2tjaGlwX21i
-b3hfcHJvYmUgICAgICAgICAgICAgICAgICAgICAgICAgMTU5NiAgICAxNTkyICAgICAgLTQKCV9l
-bnRyeV9wdHIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAyNCAgICAgIDE2ICAg
-ICAgLTgKCV9fZnVuY19fICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA2MiAg
-ICAgIDQyICAgICAtMjAKCV9lbnRyeSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIDEzMiAgICAgIDg4ICAgICAtNDQKCVRvdGFsOiBCZWZvcmU9NjY5MywgQWZ0ZXI9NjYxNywg
-Y2hnIC0xLjE0JQoKU2lnbmVkLW9mZi1ieTogVXdlIEtsZWluZS1Lw7ZuaWcgPHUua2xlaW5lLWtv
-ZW5pZ0BiYXlsaWJyZS5jb20+Ci0tLQogZHJpdmVycy9tYWlsYm94L3JvY2tjaGlwLW1haWxib3gu
-YyB8IDQgKystLQogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMo
-LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL21haWxib3gvcm9ja2NoaXAtbWFpbGJveC5jIGIvZHJp
-dmVycy9tYWlsYm94L3JvY2tjaGlwLW1haWxib3guYwppbmRleCBhZGEyYmQ0MTk4ODAuLjc5MGMz
-NGEyMmVjNSAxMDA2NDQKLS0tIGEvZHJpdmVycy9tYWlsYm94L3JvY2tjaGlwLW1haWxib3guYwor
-KysgYi9kcml2ZXJzL21haWxib3gvcm9ja2NoaXAtbWFpbGJveC5jCkBAIC0yMTUsOSArMjE1LDkg
-QEAgc3RhdGljIGludCByb2NrY2hpcF9tYm94X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
-KnBkZXYpCiAKIAlyZXQgPSBkZXZtX21ib3hfY29udHJvbGxlcl9yZWdpc3RlcigmcGRldi0+ZGV2
-LCAmbWItPm1ib3gpOwogCWlmIChyZXQgPCAwKQotCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJGYWls
-ZWQgdG8gcmVnaXN0ZXIgbWFpbGJveDogJWRcbiIsIHJldCk7CisJCXJldHVybiBkZXZfZXJyX3By
-b2JlKCZwZGV2LT5kZXYsIHJldCwgIkZhaWxlZCB0byByZWdpc3RlciBtYWlsYm94XG4iKTsKIAot
-CXJldHVybiByZXQ7CisJcmV0dXJuIDA7CiB9CiAKIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJp
-dmVyIHJvY2tjaGlwX21ib3hfZHJpdmVyID0gewotLSAKMi41NS4wLjExLmcxNTM2NjZhN2Q5YmIK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+Hi Krzysztof,
+
+On Thu, 20 Aug 2026 at 22:49, Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>
+> On 08/08/2026 11:30, Guangshuo Li wrote:
+> > rk_crypto_pm_init() calls pm_runtime_use_autosuspend(), but the
+> > autosuspend setting is not undone if pm_runtime_set_suspended() fails
+> > or when runtime PM is later torn down by rk_crypto_pm_exit().
+> >
+> > If the autosuspend delay is set to a negative value while autosuspend
+> > is enabled, the runtime PM core increments usage_count to prevent
+> > runtime suspend. Without calling pm_runtime_dont_use_autosuspend()
+> > during cleanup, this reference is not dropped and usage_count remains
+> > unbalanced.
+> >
+> > Undo the autosuspend setting when pm_runtime_set_suspended() fails and
+> > in rk_crypto_pm_exit() before disabling runtime PM.
+> >
+> > This issue was found by manual code inspection.
+> >
+> > Fixes: a216be3964c1 ("crypto: rockchip - introduce PM")
+> > Cc: stable@vger.kernel.org
+> > Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+> > ---
+>
+> You sent vast amount of patches, all separate, making it very difficult
+> to track and respond in efficient way. Do not do that.
+>
+> Group your work per subsystem.
+>
+> You were asked to clarify and respond to incorrect fixes statement. I do
+> not see how you clarified and responded at all.
+>
+> Best regards,
+> Krzysztof
+
+Sorry about that. I should have replied to the earlier review comments
+explicitly, and I also should not have sent so many separate patches.
+
+I will group future patches by subsystem and make sure to respond
+clearly to review feedback before resending.
+
+Thanks for pointing this out.
+
+Best regards,
+Guangshuo
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
