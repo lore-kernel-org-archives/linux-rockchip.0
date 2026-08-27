@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85C05C61DC2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2026 10:49:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82EA5C61DB9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2026 11:46:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9f5ZO/O2On8ZldFkCXfdqSF71qK2l3/quHbnt3+vNh0=; b=HnHmVRyqz0le4f
-	MUL78eFDSdIuFxDEq7hxuN0ti97fsIKSGWanG8DaOiG/ALINtvSip8M1HEInKIHuDonm6NwiD2dzN
-	sio8Fv+3IfpkCFI6eJPrHblsd67IrwVs4oT6RRf6YLvTR8I41PN63TjbkA2lrZ7Pmqj50s83ue18c
-	pIAcW6DS8HZIgPx5BEXp4vscqgTL3kHbHA9LmGJmwqyLAbweV1VEGg3dLo0htDjrB7WT4i458qD/a
-	h+8ezy7W/rLjNezyMIv6krMM2+1B5aaapu+TbxHikYUoX86ZX1FA25atX+W285u+911ZHYHIqwum9
-	JVnDE+EaNBClVuqcBxTQ==;
+	List-Owner; bh=tgAWNzsXwMathTF6450dOLPzM5D8vgpDyRc8NpNKW6g=; b=3twsUmx1xQ0tWw
+	xmeWapAB+VV8jU5CSekgFSuHlJtC2h+5RORRQTISSrypV/QGB5uyQoAww6XKgyMTEAJKjf87CTcxQ
+	gp5Z5InsS446hxlZ97UQx4vsjFm61UoebdeDbE4ItxLzhzaXs5gLuJkNMpe0Tc5uPKvVl9X7tqJAH
+	YVK0ULN0H2jKqEN4eVZkzwNjFW/OGP7GgtVv4WmjIRiV+6UbSuYkGybKOoGq94nuDsyTKL/3IvvxW
+	kS8P1AnQ4xj1WXBSgPI06KR3Mslu0JmKs/FK+HOtoKJ9+4ouC0UJzWtLpX11A+5lstha6UyvSSQVW
+	5BLznOSF1kWhhYkx9SBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzXfm-00000003qk5-0iCA;
-	Thu, 27 Aug 2026 10:49:30 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1wzYYa-00000003uGl-1SPU;
+	Thu, 27 Aug 2026 11:46:08 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzXfZ-00000003qah-3j1S;
-	Thu, 27 Aug 2026 10:49:20 +0000
-Received: from neptunite.rasen.tech (unknown [IPv6:2400:2411:160:2f00:306c:5b5b:3c7f:eabd])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1B556145C;
-	Thu, 27 Aug 2026 12:47:44 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1787827669;
-	bh=JiRsPkmNViWw9p/R+dJ/RwJ6LGuCBEdgd54R1D2GkUk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ptw9qBi6p9WQ4SQNghx3oWEqrFKNJRUfF3XLo1owmTaFzwAt/IBvMUJ98zl8gt+Q3
-	 40hIy1ssWTfn5Lz2SCwss4jNPy1wTND1CkW1Lw8YPGbcK5zgVv3EFWvogVw0h7fPDb
-	 yH0TKulRyKjckqLgD51awh0VGA4lJyWnNnQcUR1w=
-From: Paul Elder <paul.elder@ideasonboard.com>
-Date: Thu, 27 Aug 2026 19:48:34 +0900
-Subject: [PATCH v3 5/5] arm64: dts: rockchip: add ISP nodes to rk3588
+	id 1wzYYW-00000003uGD-2L7L;
+	Thu, 27 Aug 2026 11:46:06 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4C7AB600D2;
+	Thu, 27 Aug 2026 11:46:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3620B1F000E9;
+	Thu, 27 Aug 2026 11:46:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787831163;
+	bh=3hAFo1rIdC3agJMCmmn/YuX832v7qzt/wzjEOyHEoqM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=M5vc8wrpHzFOUTNBu00KgjoyXKJr1qmKCRQs0sIzSetk2k3grLN0i5IO6nivL324t
+	 RgV7Z7wp4vIfWKwlCbxsG06aykfD+um8TfU4dSuiaeVCMsXKH4AVfwMypUbUL2xIXn
+	 6nrXQ5kV21nxhcYAe+k+FzKPopwSONnvdU9N/zTzzM/mgv6AUprA82MJZsMnrnKWPu
+	 T06cyHPvR9g4mX396zWHDyzxhu7c1pNX1yiXFC1cvpKQEsSMe5m+zQ3xtQLHIuYI2B
+	 H0kx/uEQilZMsSeVxAbatuM/HE7xQnk+qB2+T2as2rSHoIkC4jWRiBbEnRlLVg5B2M
+	 ArHH1oU7ZFRXg==
+Date: Thu, 27 Aug 2026 13:45:59 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Jason Yang <jason98166@gmail.com>
+Cc: Vinod Koul <vkoul@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Guochun Huang <hero.huang@rock-chips.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Michael Riesch <michael.riesch@collabora.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 1/7] dt-bindings: phy: Add PHY_TYPE_DSI and
+ PHY_TYPE_CSI definitions
+Message-ID: <20260827-thundering-cream-saluki-dd05df@quoll>
+References: <20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com>
+ <20260821-dcphy-rx-v1-v4-1-f1797634233d@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20260827-rkisp2-v3-5-e91ff0a604d6@ideasonboard.com>
-References: <20260827-rkisp2-v3-0-e91ff0a604d6@ideasonboard.com>
-In-Reply-To: <20260827-rkisp2-v3-0-e91ff0a604d6@ideasonboard.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, michael.riesch@collabora.com, 
- stefan.klug@ideasonboard.com, mehdi.djait@linux.intel.com, 
- xuhf@rock-chips.com, zyc@rock-chips.com, dalong.deng@rock-chips.com
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, Paul Elder <paul.elder@ideasonboard.com>
-X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260827_034919_363878_2FF4FDCB 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20260821-dcphy-rx-v1-v4-1-f1797634233d@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,93 +76,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Xu Hongfei <xuhf@rock-chips.com>
+On Fri, Aug 21, 2026 at 08:02:29PM +0800, Jason Yang wrote:
+> A MIPI D-PHY or C-PHY can be a transmitter (DSI) or a receiver (CSI),
+> and in some PHY blocks both work at the same time. The existing
+> PHY_TYPE_DPHY and PHY_TYPE_CPHY cannot tell whether a consumer wants
+> the transmitter or the receiver.
 
-Add device tree nodes for the ISP and their iommus on the RK3588.
+The consumer knows this already, no? Imagine consumer of the phy is some
+ISP receiving data over CSI for given port, thus consumer cannot
+transmit over that link.
 
-Signed-off-by: Xu Hongfei <xuhf@rock-chips.com>
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+All this seems redundant.
 
----
-Changes in v3:
-- reorder patches
+> 
+> Add PHY_TYPE_DSI and PHY_TYPE_CSI, so that a binding can select both
+> D-PHY or C-PHY and transmitter or receiver. They do not replace
+> PHY_TYPE_DPHY/PHY_TYPE_CPHY, which remain the right choice where a cell
+> selects the mode. The first user is the Rockchip RK3588 MIPI DC-PHY
+> binding.
+> 
+> Suggested-by: Michael Riesch <michael.riesch@collabora.com>
+> Link: https://lore.kernel.org/r/82da3622-9c3a-454c-87bc-fb4ec7adb68d@collabora.com
+> Signed-off-by: Jason Yang <jason98166@gmail.com>
 
-No change in v2
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 57 +++++++++++++++++++++++++++
- 1 file changed, 57 insertions(+)
+Where is any DTS using it? I did a search and no results of upstream
+posting.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index fc1fdbfd316223f8fbddfcf6cb3f1863cd8957d4..22b78465a82356361cd00ba363ee0163c7500667 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -3590,6 +3590,63 @@ gpio4: gpio@fec50000 {
- 			#interrupt-cells = <2>;
- 		};
- 	};
-+
-+	isp0: isp@fdcb0000 {
-+		compatible = "rockchip,rk3588-isp";
-+		reg = <0x0 0xfdcb0000 0x0 0x7f00>;
-+		interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 133 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "isp_irq", "mi_irq";
-+		clocks = <&cru ACLK_ISP0>, <&cru HCLK_ISP0>,
-+			 <&cru CLK_ISP0_CORE>, <&cru CLK_ISP0_CORE_MARVIN>,
-+			 <&cru CLK_ISP0_CORE_VICAP>;
-+		clock-names = "aclk", "hclk", "clk_core",
-+			      "clk_core_marvin", "clk_core_vicap";
-+		power-domains = <&power RK3588_PD_VI>;
-+		iommus = <&isp0_mmu>;
-+		status = "disabled";
-+	};
-+
-+	isp0_mmu: iommu@fdcb7f00 {
-+		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
-+		reg = <0x0 0xfdcb7f00 0x0 0x100>;
-+		interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_ISP0>, <&cru HCLK_ISP0>;
-+		clock-names = "aclk", "iface";
-+		power-domains = <&power RK3588_PD_VI>;
-+		#iommu-cells = <0>;
-+		rockchip,disable-mmu-reset;
-+		status = "disabled";
-+	};
-+
-+	isp1: isp@fdcc0000 {
-+		compatible = "rockchip,rk3588-isp";
-+		reg = <0x0 0xfdcc0000 0x0 0x7f00>;
-+		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "isp_irq", "mi_irq";
-+		clocks = <&cru ACLK_ISP1>, <&cru HCLK_ISP1>,
-+			 <&cru CLK_ISP1_CORE>, <&cru CLK_ISP1_CORE_MARVIN>,
-+			 <&cru CLK_ISP1_CORE_VICAP>;
-+		clock-names = "aclk", "hclk", "clk_core",
-+			      "clk_core_marvin", "clk_core_vicap";
-+		power-domains = <&power RK3588_PD_ISP1>;
-+		iommus = <&isp1_mmu>;
-+		status = "disabled";
-+	};
-+
-+	isp1_mmu: iommu@fdcc7f00 {
-+		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
-+		reg = <0x0 0xfdcc7f00 0x0 0x100>;
-+		interrupts = <GIC_SPI 136 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_ISP1>, <&cru HCLK_ISP1>;
-+		clock-names = "aclk", "iface";
-+		power-domains = <&power RK3588_PD_ISP1>;
-+		#iommu-cells = <0>;
-+		rockchip,disable-mmu-reset;
-+		status = "disabled";
-+	};
- };
- 
- #include "rk3588-base-pinctrl.dtsi"
+> ---
+>  include/dt-bindings/phy/phy.h | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
+> index 979b5dfd8353..8ee3f88e6d80 100644
+> --- a/include/dt-bindings/phy/phy.h
+> +++ b/include/dt-bindings/phy/phy.h
+> @@ -24,6 +24,8 @@
+>  #define PHY_TYPE_CPHY		11
+>  #define PHY_TYPE_USXGMII	12
+>  #define PHY_TYPE_XAUI		13
+> +#define PHY_TYPE_DSI		14
+> +#define PHY_TYPE_CSI		15
 
--- 
-2.47.2
+DSI and CSI does not look like types of PHY...
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
