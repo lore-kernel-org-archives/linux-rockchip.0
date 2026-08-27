@@ -4,53 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1064C61DC2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2026 13:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72CFEC61DC4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2026 16:13:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ee1bE59/TTCWJG/i83A28fbVsM/utJDBxpFUdwWG7TU=; b=n2WXU87OEV+j4F
-	oerguMJBtgiKChTHHu7wByV517nrkl1OFTtMG4Hry7FhQidBeOw1R2r+RcO8h/OOIQSPjBXBwG39N
-	jVcV6pl4VqraNe1ZhGOjW7HNuCsOWKTEndtVath8dICl19qdR9TkoxdklAGnHZYoF6+8kyaPrKoJh
-	M1PqEF9qM1rjHzcHqu1N33mAjX2n+QNzIxDy1H7600F+Ul0paoDIHjxnoTd1WlRB5ugOR0HGgga0e
-	nGGNpscBrMtuEz9N1TrB9SB0nDJDVBJ2HH0bkO7B+BtENVARjiLcQ8kyKJti6mfB+t/W/p/qqV8Vp
-	lMXLJxDE4z/CbbDESxjA==;
+	List-Owner; bh=B/EKi4WT6qbZUg4iVrk+/Jsbx1Av4yEAtb+SyBe61u4=; b=4FqenIQ3FkZVpp
+	k4YvishMRo4SnHDRWWXWeS6R513cdMJsezsUkVhL/7WAT+Q3qrYpkctC6EAzbkRuU+c5XIOYyp7tC
+	L18JyRoewU4UdEcP4UF5ezq+D99Sl+GccTGFOvxtsk9/zuWZrD/M1ETQTxVSEsrpZ7mm2jlhOYPeO
+	RRNchXUsQqttYaPEXBCI/cvRIee3pNfUVH5SbesUoCrNAsug1yulIdykCmlM+bn0SSYzrbu2TaMUM
+	7OLfPpaGwROXgX3AsMGjPg6k3aYNduUU/Wzeas/s0lg0DoLJ3naxf9hQEmWTNiqIk0j9H4A3U3iiL
+	soAlbmDI4uPziEk79AjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzaYa-000000046AG-2ygl;
-	Thu, 27 Aug 2026 13:54:16 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wzcis-00000004IX5-1JEc;
+	Thu, 27 Aug 2026 16:13:02 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzaYW-0000000468L-3WPQ;
-	Thu, 27 Aug 2026 13:54:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=rWfd5/uJ5kBo6WJGlskG3tntoc37IMd3ji7UZYIgyR8=; b=pXUzBDvEJRH2f1EWdSQVLIRPD0
-	st02wJxpl1rJYqoYPw3CMLo+Fl6YPud3datM6GryS3PIFiX9JDkxm7vyVKCrzihH785halA13rKcE
-	PTYnbuZIdWtycOfiSlFoqJS+OsCVWKQWD/2mXNbsJcnP900fCotQqRw78QseyYPdwLuCFLocWl9XR
-	t1m/VMl8J2s7/pUoSzxMmYjM6TXt9Tj7awsN0vnz4ZBAphh1rBt8hAkjZ+g+SYyUumBnT1xHjSDIZ
-	yip6AcM5B6C1XByK2mkGoM0Ihm1BVgPeT0j6RrYB7I4ZT/Wfyes2a/gKSVJUoEpmfRB19mCgE3WGz
-	SEGjWgdA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Srinivas Kandagatla <srini@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- Stefan Kerkmann <s.kerkmann@pengutronix.de>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH] nvmem: rockchip-otp: convert to runtime PM
-Date: Thu, 27 Aug 2026 15:54:06 +0200
-Message-ID: <2048906.PYKUYFuaPT@phil>
-In-Reply-To: <20260819-rockchip-nvmem-pmruntime-v1-1-01f1acf80dba@pengutronix.de>
-References: <20260819-rockchip-nvmem-pmruntime-v1-1-01f1acf80dba@pengutronix.de>
+	id 1wzcio-00000004IWi-3TvQ;
+	Thu, 27 Aug 2026 16:12:59 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id F0195600D3;
+	Thu, 27 Aug 2026 16:12:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3BBD1F000E9;
+	Thu, 27 Aug 2026 16:12:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787847177;
+	bh=bW5p7sg37lG2e7fiC+a/D7ld9RprkWkK8hWMZ55d2KQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=WaHaCd9Nu9G4ArFwXjQgTuCAqV3k/KIa6ykHqQucoty/1nkrunZyB0pBKCdvzyJ/A
+	 Ls2T/PweYhD5O5dc0IvmDhpc//CpGRjKLtQwXvnZNApHJ4+San/oHDey2lgt8tYYIQ
+	 Wl/fwE5FKLGY6pU3hYawPK45QoE5PUIg3rk3/jnNZMhHyJV9ywEJ5AV1LRaCeZRnLS
+	 JvoBdUyNriec390XSIhLPFBHvHh2vJDRF5on5TaUqE9NlaPNDlyiO3ESQku7P8DKS4
+	 WL3MMZH6HwQ5IIyFw5XW4oKVAs8A0ItiLN3J3PrRrwL93PdmPUTbsJcgt3xEOX6yot
+	 ycpe+kcOu0hag==
+Date: Thu, 27 Aug 2026 21:42:53 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Alexey Charkov <alchark@flipper.net>,
+	Igor Paunovic <royalnet026@gmail.com>,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel@collabora.com, devicetree@vger.kernel.org,
+	linux-usb@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>,
+	William Wu <william.wu@rock-chips.com>
+Subject: Re: [PATCH v14 00/38] phy: rockchip: usbdp: Clean up the mess
+Message-ID: <apBiBTE-xxmsCdY1@vaman>
+References: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
+ <h54c2hrcsv3zjzzgojzf5sjmu3vtpobz6rwloam5kp7mwqqn3n@bqjnlellvnz6>
+ <aoTMQtpYYw8O-3cj@venus>
+ <kwncmhsrq6sr56rsgf2ng4pc5fvyyqfryp3s2qfskoxunxx7jp@pdq4kedpw4gq>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260827_065412_918664_247109D7 
-X-CRM114-Status: GOOD (  15.34  )
+Content-Disposition: inline
+In-Reply-To: <kwncmhsrq6sr56rsgf2ng4pc5fvyyqfryp3s2qfskoxunxx7jp@pdq4kedpw4gq>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,43 +84,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIDE5LiBBdWd1c3QgMjAyNiwgMTQ6MzM6NDUgTWl0dGVsZXVyb3DDpGlzY2hl
-IFNvbW1lcnplaXQgc2NocmllYiBTYXNjaGEgSGF1ZXI6Cj4gRnJvbTogU3RlZmFuIEtlcmttYW5u
-IDxzLmtlcmttYW5uQHBlbmd1dHJvbml4LmRlPgo+IAo+IFRoZSBkcml2ZXIgZW5hYmxlcyB0aGUg
-T1RQIGNsb2NrcyBpbnNpZGUgcm9ja2NoaXBfb3RwX3JlYWQoKSBhbmQgZHJvcHMKPiB0aGVtIGFn
-YWluIGJlZm9yZSByZXR1cm5pbmcsIHNvIHRoZSBjb250cm9sbGVyIGlzIG9ubHkgYWxpdmUgZm9y
-IHRoZQo+IGR1cmF0aW9uIG9mIGEgbnZtZW0gcmVhZCBpc3N1ZWQgYnkgTGludXguCj4gCj4gT24g
-UkszNTg4IHRoYXQgaXMgbm90IHN1ZmZpY2llbnQuIFBhcnQgb2YgdGhlIE9UUCBhcnJheSBpcyBy
-ZWFkYWJsZSBvbmx5Cj4gZnJvbSB0aGUgc2VjdXJlIHdvcmxkLCBhbmQgT1AtVEVFIHJlYWRzIGl0
-IHRocm91Z2ggdGhpcyBzYW1lIGNvbnRyb2xsZXIuCj4gSXRzIGNsb2NrcyBhcmUgaW4gdGhlIG5v
-cm1hbCB3b3JsZCdzIENSVSBhbmQgYXJlIHBsYWluIGdhdGVzLCBzbyBhbiBTTUMKPiBpbnRvIE9Q
-LVRFRSBoaXRzIGEgY2xvY2stZ2F0ZWQgY29udHJvbGxlciB1bmxlc3MgTGludXggdHVybnMgdGhl
-bSBvbgo+IGZpcnN0LiBPUC1URUUgY2Fubm90IGRvIHRoYXQgd2l0aG91dCBhIENSVSBkcml2ZXIg
-b2YgaXRzIG93biwgd2hpY2gKPiB3b3VsZCBwdXQgYm90aCB3b3JsZHMgb24gdGhlIHNhbWUgZ2F0
-ZSByZWdpc3RlcnMuCj4gCj4gTW92ZSB0aGUgY2xvY2sgaGFuZGxpbmcgaW50byBydW50aW1lIFBN
-IGNhbGxiYWNrcy4gQSBjb25zdW1lciBjYW4gdGhlbgo+IHRha2UgYSBETF9GTEFHX1BNX1JVTlRJ
-TUUgZGV2aWNlIGxpbmsgb24gdGhlIE9UUCBhbmQgaG9sZCBhIHJlZmVyZW5jZQo+IGZvciBhcyBs
-b25nIGFzIGl0IG5lZWRzIHRoZSBjb250cm9sbGVyLCB3aXRob3V0IGtub3dpbmcgYW55dGhpbmcg
-YWJvdXQKPiBpdHMgY2xvY2sgbGlzdC4gREVGSU5FX1JVTlRJTUVfREVWX1BNX09QUygpIHN1cHBs
-aWVzIHRoZSBzeXN0ZW0gc2xlZXAKPiBjYWxsYmFja3MgdG9vLCBzbyBob2xkaW5nIG9uZSBkb2Vz
-IG5vdCBrZWVwIHRoZSBjbG9ja3Mgb24gb3ZlciBzdXNwZW5kLgo+IAo+IEVuYWJsaW5nIHRoZSBj
-bG9ja3MgaXMgbm93IHRoZSBjYWxsYmFja3MnIGpvYiBhbG9uZSwgaGVuY2UgdGhlIGRlcGVuZGVu
-Y3kKPiBvbiBQTTogd2l0aCBDT05GSUdfUE09biB0aGV5IG5ldmVyIHJ1biBhbmQgYSByZWFkIHdv
-dWxkIGdvIG91dCB0byBhIGdhdGVkCj4gY29udHJvbGxlci4gUmVhZHMgYXJlIG90aGVyd2lzZSB1
-bmNoYW5nZWQuCj4gCj4gQXNzaXN0ZWQtYnk6IENsYXVkZTpjbGF1ZGUtb3B1cy01Cj4gU2lnbmVk
-LW9mZi1ieTogU3RlZmFuIEtlcmttYW5uIDxzLmtlcmttYW5uQHBlbmd1dHJvbml4LmRlPgo+IFNp
-Z25lZC1vZmYtYnk6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT4KClJldmll
-d2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoKPiAtLS0KPiBUaGUgZHJp
-dmVyIGVuYWJsZXMgdGhlIE9UUCBjbG9ja3MgaW5zaWRlIHJvY2tjaGlwX290cF9yZWFkKCkgYW5k
-IGRyb3BzCj4gdGhlbSBhZ2FpbiBiZWZvcmUgcmV0dXJuaW5nLCBzbyB0aGUgY29udHJvbGxlciBp
-cyBvbmx5IGFsaXZlIGZvciB0aGUKPiBkdXJhdGlvbiBvZiBhIG52bWVtIHJlYWQgaXNzdWVkIGJ5
-IExpbnV4LgoKeW91ciBjb21taXQgbWVzc2FnZSBnb3QgZHVwbGljYXRlZCBoZXJlLgoKCkhlaWtv
-CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+On 19-08-26, 05:31, Manivannan Sadhasivam wrote:
+> On Tue, Aug 18, 2026 at 11:42:50PM +0200, Sebastian Reichel wrote:
+> > Hello Mani,
+> > 
+> > On Tue, Aug 18, 2026 at 11:27:07AM +0200, Manivannan Sadhasivam wrote:
+> > > On Thu, Aug 13, 2026 at 10:51:43PM +0200, Sebastian Reichel wrote:
+> > > > This series does a major overhaul of the Rockchip USBDP driver. The
+> > > > initial main goal was to add USB-C DP AltMode support to the RK3576
+> > > > and RK3588 and this series still prepares the PHY driver for exactly
+> > > > that. But in addition to that I uncovered a huge amount of issues,
+> > > > that are fixed along the way. Some of the more interesting ones are:
+> > > > 
+> > > >  * Currently the driver might trigger a fatal SError on USB-C hotplug,
+> > > >    since re-initializing the PHY stops the clocks going to DWC3. If
+> > > >    the DWC3 driver tries to access its registers at the same time the
+> > > >    system will crash.
+> > > >  * The DWC3 hardware can get into a buggy state when the PHY is
+> > > >    disabled, which results in the PHY not coming up properly again.
+> > > >  * Swithcing the USB-C connector orientation during hotplug breaks
+> > > >    USB3 speed, as the PHY is not being re-initialized.
+> > > >  * The code always enables DP mode when USB-C is involved.
+> > > >  * The driver has some locking issues uncovered by Sashiko.
+> > > > 
+> > > > In addition to these bigger ones, Sashiko also found a bunch of
+> > > > minor problems, which are mostly harmless, but were fixed while
+> > > > going at it.
+> > > 
+> > > 38 patches for a single series is too much to review. Please
+> > > consider splitting it up into multiple series not exceeding ~10
+> > > patches per series. Thanks!
+> > 
+> > So let me summarize:
+> > 
+> >  - Vinod wants Sashiko feedback to be acted upon
+> 
+> This is fine.
+> 
+> >  - linux-phy does not want series with dependencies ( [0] )
+> 
+> This is not something I expected. I read the reply from Vladimir in [0], and
+> he seems to be sharing the limitation of the build tool of linux-phy. But I
+> don't think that's a big deal. Every subsystem allows sending dependent series
+> as long as the dependency is clearly described in the cover letter and now with
+> b4. So I don't see why linux-phy should be different. If you combine all patches
+> in one series, it makes it impossible for a human reviewer to review it
+> thoroughly.
+> 
+> @vinod: Can you share your view on splitting the series with dependency?
+
+I build locally when I apply and if there is a dependency on fixes,
+cover letter mentioning, I do merge fixes.
+So not sure from a process pov where the gap might be.
+
+Builders are helpful for review and checking sanity :-)
+
+I would say it would be helpful, if it was split. I can pick fixes now
+and get that in for rc. While the rest can go into next
+
+-- 
+~Vinod
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
