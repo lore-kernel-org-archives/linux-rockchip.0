@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AD65C61DB9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 11:46:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41B8AC61DB9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 11:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Yx9QxWfFqKpj6DtyS5pnEKUh0hjw2xhK9sRB88vHmgk=; b=qr9XZBnrBsk7/5
-	sGsKCfxqkveub/JosQfN/0vVxYBWAM8FbQTx4efU5kQ0bo5xPeexjqs6pvNH2HmHXwU2z7LJ8iCuu
-	3MrqdPcYdB2o0xUmiR3eXW/Oojls9h6NwD24iIjDXIO1oS4RggyiCHOGZY1h2rwvZd7bZ4TqmHipI
-	80z3+rUC7/tklvrFL4jvbGK/yhfHazpsUfbxt9OoPbOa5jRZhYopNEAy2X26r9ZtciJvfSJIYDlcp
-	FuPH/EMGLkrWKx5JFcOYiiKhWfpniNBYB171NCqP5KnDl+j3XYsdeA3Qtxi+aqtsuYGteGLsBzUpK
-	yX+pNz4z1e5wlTwscdSg==;
+	List-Owner; bh=mgPVtVZVb4Ounahu4pVuk502leXc1bDDbyJgBV0gIK0=; b=lvbQdNhfCAiSrK
+	RXb67i+MpRyVu+llkX63NFhCnbD02MIgWR4kVPmTesEcYG/CGJNhXrtDsMDwCvBdzjwzUytOXhwH2
+	wOmfC6vOzMhn9rMjtTR85yyEVWoTsWxQhlxOKAFuzQHQZPR9HaOCQau9v+FgxB1vkV4hiIe9TaKEU
+	UakbB2OOldMdsz7dp2a0Q348oswfTavV9USFxTFpjFMOccmMqWOHWdLJLW66Dldu+yWCImu71Qw62
+	8U9yDzCyfr/S0jDGuEHnl++B63I5gk0D75rCVM9hy7gv3EHiPgwKQ6AmibY4BTLiApuij1zVmnB/Y
+	HhIujeujY4cKwkufVkVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzv2K-00000005fsd-0p23;
-	Fri, 28 Aug 2026 11:46:20 +0000
-Received: from out-86.mta0.migadu.com ([2001:41d0:1004:224b::56] helo=mta0.migadu.com)
+	id 1wzv2Q-00000005fxY-3tLM;
+	Fri, 28 Aug 2026 11:46:26 +0000
+Received: from out-132.mta1.migadu.com ([2001:41d0:203:375::84] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzv23-00000005fg8-1RZQ
+	id 1wzv27-00000005fjB-0PJ7
 	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Aug 2026 11:46:04 +0000
+	Fri, 28 Aug 2026 11:46:09 +0000
 X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=wmwMhWrF6KGODbRj6xonI0AjvaUS1Sgws1dCNYUbeRc=;
+DKIM-Signature: a=rsa-sha256; bh=GZ6xCYTSi9co+IIKhthafL94am9XVPBEdirIBtSwOT0=;
  c=simple/simple; d=cknow-tech.com;
  h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1787917561; v=1; x=1788522361;
- b=YD/1b/GtJDqWV6yIst0E6WvjXEm0Z8fs4mNJ0Qnd5JIUvnt0mwChOBOvWyGFzA/jaxWlwdFx
- d4dIGGLFIn3xtO2zkY3cKG0Ib4Av+jR49GqMMHNcY91qJFeKsMztrlyvHC2pX+uzmGaQl69gFOL
- JzzoEjHqF0yx5oSaac3QD/2C3QRExHqYzB4YsuMIABbAmMlpvxLpsFKYIRlAFUhiXj3s65VVqas
- RCkOMNl63ZGAegdXpC3YkRLhC54mokfyne3a1EFsr9DESYVuahRLcEFi+ds9U0qV87pazgZp2JK
- jWcb+CkmkiGuVlOMqMB8arukZPlIGB+bjrJASRQ335i4A==
+ t=1787917565; v=1; x=1788522365;
+ b=QEQQdNdXFBQOheJ1lHP0l3fnpUJyNtKD8mlySnnJaFYxYELojmjqEpFaxy6Q/Dvu5YAbc9Lk
+ /kyQdPTGJE0dsBeM2gqjFpTpEoH+1lw2nILKnTzFhY9vE/llLwRzClc5Klw3GT7/leXgAmUP4nT
+ yt9OwS96Cd9bYejADjSxHs04OqblwMzPkHilvN4N3W1DKellj0EyxFG4Car5JnZoO8YfxuPUIpJ
+ FBVIFGyMeZg+pt0pEOYeuUzHuuQGBm/KY9C18gICTHZARWXX1LpBVBNzbNV8bvcNIXTIqGdB0dQ
+ FnlznTKtQY2gCVj0sli4Khbnmoktv5buHB2Nwp7hc0xeA==
 X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 0812658b5ce5c458;
-	Fri, 28 Aug 2026 11:46:01 +0000
-X-Mizu-Trace-ID: 0812658b5ce5c458
+Received: by smtp.migadu.com with ESMTPS id 8da0395c564e6944;
+	Fri, 28 Aug 2026 11:46:04 +0000
+X-Mizu-Trace-ID: 8da0395c564e6944
 X-Migadu-Flow: FLOW_OUT
 From: Diederik de Haas <diederik@cknow-tech.com>
 To: Rob Herring <robh@kernel.org>,
@@ -56,17 +56,16 @@ Cc: Ricardo Pardini <ricardo@pardini.net>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <diederik@cknow-tech.com>
-Subject: [PATCH 5/7] arm64: dts: rockchip: Sort usb nodes on NanoPC-T6
-Date: Fri, 28 Aug 2026 13:43:05 +0200
-Message-ID: <20260828114530.1315798-6-diederik@cknow-tech.com>
+Subject: [PATCH 6/7] arm64: dts: rockchip: Improve sound config on NanoPC-T6
+Date: Fri, 28 Aug 2026 13:43:06 +0200
+Message-ID: <20260828114530.1315798-7-diederik@cknow-tech.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260828114530.1315798-1-diederik@cknow-tech.com>
 References: <20260828114530.1315798-1-diederik@cknow-tech.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260828_044603_522706_70DB6D8B 
-X-CRM114-Status: UNSURE (   8.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260828_044607_278584_DD4810C0 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,131 +82,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Nodes shall be ordered alpha-numerically by the node name.
+The kernel can manage the I2S MCLK output gates since commit
+02b9b0bb6269 ("clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK output to IO")
+So switch to I2S0_8CH_MCLKOUT_TO_IO to do exactly that.
+
+The audio ports are used in audio-graph-card, but simple-audio-card uses
+sound-dai phandles to establish the DAI links. So drop the pointless ports.
+
+Add a label to the soundcard to be used by tools like alsamixer.
+
+Sort the various properties according to the DTS coding standard.
 
 Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
 ---
- .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   | 72 +++++++++----------
- 1 file changed, 36 insertions(+), 36 deletions(-)
+ .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   | 35 +++++--------------
+ 1 file changed, 9 insertions(+), 26 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index 2c9390d2968c..e42b2a14fc82 100644
+index e42b2a14fc82..eb0eb124c4cd 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -1164,12 +1164,6 @@ &tsadc {
- 	status = "okay";
- };
+@@ -100,14 +100,14 @@ fan: pwm-fan {
  
--&uart2 {
--	pinctrl-0 = <&uart2m0_xfer>;
--	pinctrl-names = "default";
--	status = "okay";
--};
+ 	sound {
+ 		compatible = "simple-audio-card";
+-		pinctrl-names = "default";
++		label = "Onboard Analog Realtek ALC5616";
+ 		pinctrl-0 = <&hp_det>;
++		pinctrl-names = "default";
+ 
+-		simple-audio-card,name = "realtek,rt5616-codec";
+ 		simple-audio-card,format = "i2s";
+-		simple-audio-card,mclk-fs = <256>;
 -
- &u2phy0 {
- 	status = "okay";
- };
-@@ -1186,15 +1180,11 @@ &u2phy1_otg {
- 	status = "okay";
- };
+ 		simple-audio-card,hp-det-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
++		simple-audio-card,mclk-fs = <256>;
++		simple-audio-card,name = "realtek,rt5616-codec";
  
--&u2phy2_host {
--	status = "okay";
--};
+ 		simple-audio-card,widgets =
+ 			"Headphone", "Headphones",
+@@ -121,6 +121,7 @@ sound {
+ 		simple-audio-card,cpu {
+ 			sound-dai = <&i2s0_8ch>;
+ 		};
++
+ 		simple-audio-card,codec {
+ 			sound-dai = <&rt5616>;
+ 		};
+@@ -551,17 +552,11 @@ &i2c7 {
+ 	rt5616: codec@1b {
+ 		compatible = "realtek,rt5616";
+ 		reg = <0x1b>;
+-		clocks = <&cru I2S0_8CH_MCLKOUT>;
++		assigned-clocks = <&cru I2S0_8CH_MCLKOUT_TO_IO>;
++		assigned-clock-rates = <12288000>;
++		clocks = <&cru I2S0_8CH_MCLKOUT_TO_IO>;
+ 		clock-names = "mclk";
+ 		#sound-dai-cells = <0>;
+-		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
+-		assigned-clock-rates = <12288000>;
 -
--&u2phy3_host {
-+&u2phy2 {
- 	status = "okay";
- };
- 
--&u2phy2 {
-+&u2phy2_host {
- 	status = "okay";
- };
- 
-@@ -1202,31 +1192,13 @@ &u2phy3 {
- 	status = "okay";
- };
- 
--&usbdp_phy0 {
--	mode-switch;
--	orientation-switch;
--	sbu1-dc-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
--	sbu2-dc-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
-+&u2phy3_host {
- 	status = "okay";
--
--	port {
--		#address-cells = <1>;
--		#size-cells = <0>;
--
--		usbdp_phy0_typec_ss: endpoint@0 {
--			reg = <0>;
--			remote-endpoint = <&usbc0_ss>;
+-		port {
+-			rt5616_p0_0: endpoint {
+-				remote-endpoint = <&i2s0_8ch_p0_0>;
+-			};
 -		};
+ 	};
+ 
+ 	/* connected with MIPI-CSI1 */
+@@ -573,21 +568,9 @@ &i2c8 {
+ };
+ 
+ &i2s0_8ch {
++	pinctrl-0 = <&i2s0_lrck &i2s0_mclk &i2s0_sclk &i2s0_sdi0 &i2s0_sdo0>;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&i2s0_lrck
+-		     &i2s0_mclk
+-		     &i2s0_sclk
+-		     &i2s0_sdi0
+-		     &i2s0_sdo0>;
+ 	status = "okay";
 -
--		usbdp_phy0_typec_sbu: endpoint@1 {
--			reg = <1>;
--			remote-endpoint = <&usbc0_sbu>;
+-	i2s0_8ch_p0: port {
+-		i2s0_8ch_p0_0: endpoint {
+-			dai-format = "i2s";
+-			mclk-fs = <256>;
+-			remote-endpoint = <&rt5616_p0_0>;
 -		};
 -	};
  };
  
--&usbdp_phy1 {
--	phy-supply = <&vbus5v0_usb>;
-+&uart2 {
-+	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-@@ -1249,16 +1221,44 @@ usb_host0_xhci_drd_sw: endpoint {
- 	};
- };
- 
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
- &usb_host1_xhci {
- 	dr_mode = "host";
- 	status = "okay";
- };
- 
--&usb_host1_ehci {
-+&usbdp_phy0 {
-+	mode-switch;
-+	orientation-switch;
-+	sbu1-dc-gpios = <&gpio4 RK_PA6 GPIO_ACTIVE_HIGH>;
-+	sbu2-dc-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
- 	status = "okay";
-+
-+	port {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		usbdp_phy0_typec_ss: endpoint@0 {
-+			reg = <0>;
-+			remote-endpoint = <&usbc0_ss>;
-+		};
-+
-+		usbdp_phy0_typec_sbu: endpoint@1 {
-+			reg = <1>;
-+			remote-endpoint = <&usbc0_sbu>;
-+		};
-+	};
- };
- 
--&usb_host1_ohci {
-+&usbdp_phy1 {
-+	phy-supply = <&vbus5v0_usb>;
- 	status = "okay";
- };
- 
+ &i2s5_8ch {
 -- 
 2.55.0
 
