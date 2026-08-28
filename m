@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB6F1C61DB9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEA6CC61DD7
 	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 11:45:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bUrpr5lbPcj5wRU7/8uHXD05UkXUF5SvriRDH/efN1c=; b=4G3zGT3BPf6Jw1
-	t/3qhH2ItYBC5GpATLmeRd4WhkoW/XjJbQjVjjTUPHwDbzvHiT84VdbbmhmMyYsLT8TrrYX+IZip9
-	ADfsMQv66UPm2S7UpSBCKyet+FjAMOgzRRyhng2CNSAoNoHXwgrCAg2+9ZTxc6x/sBxQ684Om8rQv
-	D9uUiSaV7E7dFhXfyAvoLz156H3kKiRqp12JUtPjXJzqTMjtA5MojJ/OA3QIZpIXfzRLbJ7hz6Pkf
-	RZLPKfuX86naZbZKlVx+mQ/rP2VaGOWxIQW/KsjA+C5YD2FuRHPnU+gCK/4WIhMvFuYgIb2YH3Pzv
-	PyzS+pA+sZvEOHkEplhA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GTx8XW4XQQPOpmZDaC8y2+zBSX+bdq2CvcX9YbDRcfQ=; b=JHJ/DWhOENjieq
+	4r3Tb+eGB7CHjODPHjlvbCAA+Mi5P6SHRveFCiaK4mTqEn6YurBHB7LJUs+3V1bEKCB3H1D7QTC2l
+	vhKI368xw8srBRcSnhd4r2LI4JMpINNa5/IjKvKLaNt7oG6cxrEDnnvf6kzAuTGYNNX6O5KCjHIcU
+	1fp2KsNw5T3kfRVxJeNibKI8g1x8yuj13TwjzFM9q5VCxfBlF+S47JKJspKEi4U1h3gUz7qD4pikS
+	mhX+YsfJxZS11bGL7bv1s6pZgqc3SfmKvVxxsYjGoPHojqbC6w6syv27O62R5bBdw0KfRXxkYoa6y
+	h26aHvjfqMR3hnlKi8kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzv1v-00000005fZl-00hL;
-	Fri, 28 Aug 2026 11:45:55 +0000
-Received: from out-116.mta1.migadu.com ([2001:41d0:203:375::74] helo=mta1.migadu.com)
+	id 1wzv1t-00000005fZE-3Qqp;
+	Fri, 28 Aug 2026 11:45:53 +0000
+Received: from out-77.mta0.migadu.com ([2001:41d0:1004:224b::4d] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzv1s-00000005fXK-2g8e
+	id 1wzv1p-00000005fWn-3UjS
 	for linux-rockchip@lists.infradead.org;
-	Fri, 28 Aug 2026 11:45:54 +0000
+	Fri, 28 Aug 2026 11:45:51 +0000
 X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=WmzJl/gDki4yCRQarSuDUHp+vGo780vLHnW9dx/7YuI=;
+DKIM-Signature: a=rsa-sha256; bh=hKt0OBC9Ziec3JNJiQiTOs4ZiRMVpV+jL5aTojBkpS0=;
  c=simple/simple; d=cknow-tech.com;
  h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1787917550; v=1; x=1788522350;
- b=hiGTM8YHVvGCyZ/JGYFUvM/aucdzvC8iw+Axb/hY27GC5stllEqGczXKQ4lUnL9gArzWfip/
- kKRgxqV/McUufBA3s5feYb613hMKVvPZw7msSXKPap8X0k0+OGgR89DaTb3aDlb0hzidcu9Oqta
- K6eyDEdIJAwgBo+zSDABJaYHWvRqiwlu2Uk2TFZK6JcppyyO8IPTUY799c+ZTZPN/kmc2HWfY9K
- xvbLWh6luDqw9PPQxSgvY6LBEDysZEV9t+BaRsEzWq1Rxnw8v1Npz/KE+VsRO8VaWeeoLKoRIlo
- i/M2vQShocY+7lO69jJLZD5Q16U+RDOmvluT7DQuTdM+Q==
+ t=1787917545; v=1; x=1788522345;
+ b=YASbBN6ffCYeHsbLBb1EFd0w22zEj7Ri0P0PlL8/ptGrs/weZNb5TxH2mzXlyYQWsNYRDY+2
+ XWTiIdEtFVPX3MqCP9L38hiRouV75PcBkPnXE3W80sBLLNsQQOQBEwLksSi1ks2pciG2XBQ7fxo
+ 8fcrjcnl9IN5xNvigJvrRvLno0yvdg8gZhhpLGvF4I0+Am8sOCOsPKkUwFzhsNvxvTByGr99WI9
+ DHMenQN1XdIkY0HNuC3FNFFglRxRF8MQB8P7SUR4n1G7APTAwhU3INSSD8xpvH8xOiK7wmHpGYV
+ OoAjTLNmMxZd1t0st5065rLoME8jWYAgy7/hb+aG/NqiQ==
 X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 632b3452a606ff6f;
-	Fri, 28 Aug 2026 11:45:40 +0000
-X-Mizu-Trace-ID: 632b3452a606ff6f
+Received: by smtp.migadu.com with ESMTPS id 269a0ce062d2b6cf;
+	Fri, 28 Aug 2026 11:45:45 +0000
+X-Mizu-Trace-ID: 269a0ce062d2b6cf
 X-Migadu-Flow: FLOW_OUT
 From: Diederik de Haas <diederik@cknow-tech.com>
 To: Rob Herring <robh@kernel.org>,
@@ -56,14 +56,16 @@ Cc: Ricardo Pardini <ricardo@pardini.net>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <diederik@cknow-tech.com>
-Subject: [PATCH 0/7] Cleanup DT description of NanoPC-T6
-Date: Fri, 28 Aug 2026 13:43:00 +0200
-Message-ID: <20260828114530.1315798-1-diederik@cknow-tech.com>
+Subject: [PATCH 1/7] arm64: dts: rockchip: Remove unneeded vcc_3v3_pcie20 on NanoPC-T6
+Date: Fri, 28 Aug 2026 13:43:01 +0200
+Message-ID: <20260828114530.1315798-2-diederik@cknow-tech.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260828114530.1315798-1-diederik@cknow-tech.com>
+References: <20260828114530.1315798-1-diederik@cknow-tech.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260828_044552_818188_6E548E0C 
-X-CRM114-Status: UNSURE (   5.14  )
+X-CRM114-CacheID: sfid-20260828_044550_035305_20D223C6 
+X-CRM114-Status: UNSURE (   8.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,26 +83,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series cleans up the DT description of NanoPC-T6 devices by
-- Remove unneeded nodes
-- Align pinctrl names with names used in the schematics
-- Fix sorting of various nodes and their properties
-- Fix an unneeded pull_up
-- Switch to using I2S0_8CH_MCLKOUT_TO_IO for audio
+The ``vcc_3v3_pcie20`` regulator, identified in the schematic with
+``VDD3V3_25GLAN[_B]`` is only separated from ``VCC_3V3_S3`` with a ferrite
+bead. So there's no need to define a separate regulator for that.
 
-Diederik de Haas (7):
-  arm64: dts: rockchip: Remove unneeded vcc_3v3_pcie20 on NanoPC-T6
-  arm64: dts: rockchip: Fix PCIe 2 pinctrl names and sorting on NanoPC-T6
-  arm64: dts: rockchip: Fix hym8563 pinctrl name and sorting on NanoPC-T6
-  arm64: dts: rockchip: Don't pull up rtc int pin on NanoPC-T6
-  arm64: dts: rockchip: Sort usb nodes on NanoPC-T6
-  arm64: dts: rockchip: Improve sound config on NanoPC-T6
-  arm64: dts: rockchip: Drop duplicate USB nodes on NanoPC-T6 LTS
+Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
- .../dts/rockchip/rk3588-nanopc-t6-lts.dts     |  17 --
- .../boot/dts/rockchip/rk3588-nanopc-t6.dtsi   | 165 ++++++++----------
- 2 files changed, 69 insertions(+), 113 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+index cfdb5c13f860..fc49b927ef73 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+@@ -167,16 +167,6 @@ vcc_1v1_nldo_s3: regulator-vcc-1v1-nldo-s3 {
+ 		vin-supply = <&vcc4v0_sys>;
+ 	};
+ 
+-	vcc_3v3_pcie20: regulator-vcc3v3-pcie20 {
+-		compatible = "regulator-fixed";
+-		regulator-name = "vcc_3v3_pcie20";
+-		regulator-always-on;
+-		regulator-boot-on;
+-		regulator-min-microvolt = <3300000>;
+-		regulator-max-microvolt = <3300000>;
+-		vin-supply = <&vcc_3v3_s3>;
+-	};
+-
+ 	vbus5v0_typec: regulator-vbus5v0-typec {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -640,7 +630,7 @@ map1 {
+ 
+ &pcie2x1l0 {
+ 	reset-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
+-	vpcie3v3-supply = <&vcc_3v3_pcie20>;
++	vpcie3v3-supply = <&vcc_3v3_s3>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie2_0_rst>;
+ 	status = "okay";
+@@ -656,7 +646,7 @@ &pcie2x1l1 {
+ 
+ &pcie2x1l2 {
+ 	reset-gpios = <&gpio4 RK_PA4 GPIO_ACTIVE_HIGH>;
+-	vpcie3v3-supply = <&vcc_3v3_pcie20>;
++	vpcie3v3-supply = <&vcc_3v3_s3>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie2_2_rst>;
+ 	status = "okay";
 -- 
 2.55.0
 
