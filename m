@@ -4,53 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41CBFC61DB9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 12:14:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D97C61DBD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 13:25:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wSd2c9YS0LsgaBGOt9p0UIeqlk2wVf+cWB1AKSg92c4=; b=spcHeajE/0O9Um
-	EKv/TUxS26IR8TVBa3u3dgtknnLo6aIrIRyGA8eGkpAqaulUq88nXJAqKC1ZN7xWLWs/BPPzMnLzr
-	dkQVdX25uOUOB42q9QYC5vLBeJJmxzaZgoyMmYkHrAYWqJjBKcsOAPUex/0/dVYTrug8Cyy6FMxR1
-	QJLyhrrqRk25ygp7/pHX5hSV3uqzx9PD6nzfMD5mNuAuvbJrxE+9+ip9iphUXevlxlxYVtf6FIOZS
-	6wSfMh8FPWFZiqfxJqvC1CeepiO168ZU4YA0VoSGY33MZYK070n0KUU5tIuvNa0Hy0b8g3HgDEt1W
-	H2ZHHKodelFIcGG8NcHQ==;
+	List-Owner; bh=mkF6G9MjED+3yD6+Su1hBQWgjq3yH138jLx6sQOnUAs=; b=fT16MtBmAn6R8b
+	pxPua7P2seJdK5UcMTmeRCVVL6wLhdZQ+nDfL5YCG77kud1imRxM1hSB/Wu+aPh9MR6nDt8pR9EOZ
+	0Tv+Ea36GIFTh3vM+uVTbWDX3+QMMv0UaA3AMpaeFbDkWUUsWyBE+0pRQXsQ0OA7C/tcEge5u8osE
+	RrIYtLfeNkMckixWN/pHO87Cl6ztAbbRXISyEjB+8mw8u51DxTHyf5hZqmeKMyugzTMrlhMchqt5e
+	aroL4wpUC2umICAebz+S3+hbOBc6Huq4P/BzBOFF2/NYoSyw2wN1N3ZUWPeGviqgMtYPc44cWrA0y
+	WxWKypYozxJGOcw+QFwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzvTf-00000005iKg-0imb;
-	Fri, 28 Aug 2026 12:14:35 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wzwad-00000005odQ-401O;
+	Fri, 28 Aug 2026 13:25:51 +0000
+Received: from mail-australiaeastazon11022140.outbound.protection.outlook.com ([40.107.40.140] helo=SY5PR01CU010.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzvTd-00000005iK7-10Yy;
-	Fri, 28 Aug 2026 12:14:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=msvDF/LcXKGcuEENSdT1nkJoOjtd4vV0hLHcxOpOB/Y=; b=ZNaQRRzJ6UqWH8EuUm79pM+zlc
-	Gd/esYsnOYqhYI2iVEjEAB9i584MruJIlnem5CqaHGU91jt/WCjkeZkjmFXrHJUSnZDFduLW8eGJp
-	rX7r+7aPLUk1s/t4EQRVmgTWA6kua4gZrfcjhwKNrUTUxrtQ+ufikb7K1ZHK2CFu77NrZqcfJHtR/
-	iDkE/JqPz5aLRXLLkTdg14II7gx05qL8vtvlmJgtP0LgJptN2vCP5jB6ar0H9s3eBGghQMNQIpTN0
-	E1uPFBV6EFZLTCYRnie2bgBGB7XIXR+FNA3jBpjk+IpRMDHxpQyaBvV+Gex6C+IDq4carWtV8SN3Y
-	5hnak8uw==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Rudi Heitbaum <rudi@heitbaum.com>
+	id 1wzwab-00000005ocw-1IbA;
+	Fri, 28 Aug 2026 13:25:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=JyDWkg0iCVo9grs5yBr4DhJSvkrQyo9m1ZF1RFpQiNh1d6OD45gyVBcT3bu6A0ZROCJ5CXH4fEOBiOT2oYxxLNvh5dCP0++W8IdugKg7eeG1xCD4e6xTWc0R2Fl0MTf1jegjNZJoYfCB5mRfbR7uRCUopUTQsHlnoiszChz5hbZICGH3SnGQ6ZfC0cI7Pjuq8Q1Vf8/mOwwDQikugZJcbGUSGlmCqrvRCkCMRX8Jzshd6N13P3sT1OiTkZlSFyX36+/QY+irfX2Ic8b964uXVHRO7HuU7Gqxrs5aaGaH/9hAjweAbdbtrtxxx308UX81PTZeUjjD4z0AZPVdPCtGvA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8micJRkkP8PG/TC8SAHSlqdZY8MnfQwHfpUTwjzmHgk=;
+ b=kwFo/TZPcCGbppLtJ02YS65db1PHuAWb1a3Io0IFHldfavXO323gN/AyRXcl0TYAIXa9Q/Kii0S9Vki9cT4HC8BR+5Brkbzj512odJvKoP3rhwa9X1aj2m/sUEvZbhJC7UsGFtE7z9IPrPcyB8XMWyItJ9YaLQjbPR+I4Z9GdRGf4Ly0QOPHK6aSNPkmeo8IGZmSOpgWYJ3pn3L+x7cWa6WoLoaIROipCfzr2dwHm7ksAvXi9WlWGfUx18V9E3uCyEesXTBvUeX5hG5A9xh5dMweoeGUfOHwupYkRzmcwET6R+4EbzQG9GRCRxpNsg6fhC8W2zTUeS2XAzu3QqvVuw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=heitbaum.com; dmarc=pass action=none header.from=heitbaum.com;
+ dkim=pass header.d=heitbaum.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=heitbaum.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8micJRkkP8PG/TC8SAHSlqdZY8MnfQwHfpUTwjzmHgk=;
+ b=OGbw8qcZbyiWoSuUKs4AT63fniJzLapSCxeA5X5wpBlpzvVYm403Kvu0lTEzv3yUhg8KZnmlRdheGR9OgmmhgdVeAzbQkPce6mzaXMaiqr3qgmTpSFoljfXwoLumtEkr+N8/ZXhOI3VIev44zqdZapHMc4rWuxmVZCGlHJhLU4cI6KmGObn45rIKwB03axz7evu0PzMfu+sUQnIjFB2lcXg1GGBMQe/zrHQg1atKb3owZ1YCi+t6si1FCW533uNTsoZAITzGI3IpUUF2AmFc2yzplbAFq7XB2tcHOlR+PG4w7sPhuwRi0VquF4nNE7oNzPzn7sa4ENvvMA5YUZWjLg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=heitbaum.com;
+Received: from SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM (2603:10c6:10:279::22)
+ by ME5P282MB6017.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:25a::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.11; Fri, 28 Aug
+ 2026 13:24:52 +0000
+Received: from SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::21b6:91f8:614d:1fdd]) by SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::21b6:91f8:614d:1fdd%4]) with mapi id 15.21.0360.008; Fri, 28 Aug 2026
+ 13:24:51 +0000
+Date: Fri, 28 Aug 2026 13:24:34 +0000
+From: Rudi Heitbaum <rudi@heitbaum.com>
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Cc: Matthias Kaehlcke <mka@chromium.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH] usb: onboard_dev: add the Rockchip rk1808
-Date: Fri, 28 Aug 2026 14:14:22 +0200
-Message-ID: <4512468.iIbC2pHGDl@diego>
-In-Reply-To: <apFpPP1O45BWXDv5@5be1eda4e59e>
-References: <aouw7rH6FZxscUTO@0d3a7a881997> <5096877.GXAFRqVoOG@phil>
+Message-ID: <apGMEsCwly8TCOww@5be1eda4e59e>
+References: <aouw7rH6FZxscUTO@0d3a7a881997>
+ <5096877.GXAFRqVoOG@phil>
  <apFpPP1O45BWXDv5@5be1eda4e59e>
+ <4512468.iIbC2pHGDl@diego>
+Content-Disposition: inline
+In-Reply-To: <4512468.iIbC2pHGDl@diego>
+X-ClientProxiedBy: MEWPR01CA0197.ausprd01.prod.outlook.com
+ (2603:10c6:220:1ee::9) To SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM
+ (2603:10c6:10:279::22)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SY7P282MB4909:EE_|ME5P282MB6017:EE_
+X-MS-Office365-Filtering-Correlation-Id: 40442946-6b2d-4100-ba06-08df0507bdb0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|23010399003|1800799024|366016|10067099003|56012099006|18002099003|22082099003|4143699003|3023799007;
+X-Microsoft-Antispam-Message-Info: nO1wKxR3IhzPndRGilA/Y1mARG1+FFHaEy7Xvogwr3tmB79i+Id/kJeOQnUR1Gee6XcSy6T3VlevwRO53A0/WwE/oPpVSrT6P1mfW9m/OYaEKeXo7x4f5SvTuR1OR4djyrvBti8i938jvse1EuhyMjgEaNfhacrRN+FmFRqwP52Iz12uHBYLU5zJocq/nQsdHkt0cqsbDC5rXd6qIZNO2gEjwaaSgjz8SPwAtsoTjtyehIw04WLeK53CrEjeoCj/EPbrgN/H5WS6+k/wDTS0CTf78Eqf8RG1WGmyn5SpZi8UttdUi7EuxeDDfQom72lEFpldbUKLFOl9J/BVNYu7WRoW8H8R9gWH37kF/Ry6Gas2FB0yIFoSmGALLXvk8ZO1HypWGbadIb2IKchYnzUskdrOqzjhVCiDyeVxfRKhU8G7oDsESaMEPdL45I5augBA/oxbEKmf2OY6xeMv3EIURBi1ORw3v8w8wvK3Q5o8wmDBLRjMhnRSWnXESli2GQNiubJJ5etW2j1BQvucholNxWxbw8J/pI9bS3T40uXfckI=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(376014)(23010399003)(1800799024)(366016)(10067099003)(56012099006)(18002099003)(22082099003)(4143699003)(3023799007);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?2O2iPkiZBTsn2HotlIGayyeYtsiKRiED+/j8QE8H1Yc84EhBOXJQndI1gE?=
+ =?iso-8859-1?Q?9O3PDSxcvotxba+XjFUCepHcWt6djsxVtxG0jVUGnKZaA8s1nPb3M5/yyq?=
+ =?iso-8859-1?Q?kSzvmgbsmRZbMUCHrfhuU2b7jeNGeNaXcPxeC07Njs5o4HyXDGzYxc2iql?=
+ =?iso-8859-1?Q?b6ekcqK/Xw4rucyMKNLKn3KymuTw8o2Jq/UbaSsPSxfcZ+3hWIZtAtGGQ8?=
+ =?iso-8859-1?Q?k9Fsguykd/LQZtT5koHxUgzI4iClx97THbJWwn1+i+dM2ukN1jiZ4qFx9X?=
+ =?iso-8859-1?Q?KxxiqVRiZFE04TtLw5LvBw8UYMJouuSO2brGKRuBY3tb/NY0Cs5wy4LnV5?=
+ =?iso-8859-1?Q?yh2kD8xb7hI1Pq6ZeQPmAzpT691+MoZsuVw3H7S60BA2bR+L1vZPqtNbgm?=
+ =?iso-8859-1?Q?NoX+em7J8mNkFm7iRzgX06BRl+qRcFDR1xIzVVkOxcpZ/OaSFIX1ln0R6I?=
+ =?iso-8859-1?Q?RXGyEnAgESh3Ke3Xco1deDcPLhe35ZtagQRwTWk05M1BUJz+NMhlhhGJT7?=
+ =?iso-8859-1?Q?qMHmsgbyQrEf9mKIB73vY+75H7EddT+o482aGUljaGHpHnMssu7/Ofw5ZY?=
+ =?iso-8859-1?Q?0DN/JS0vWIbmAdbOr6Spjh4qMg8C5GjYi/5Moy+h/DAhV5YJ8gKbgIqjX6?=
+ =?iso-8859-1?Q?wZpQYF4+GNmvvVsUrnvs6uBPszbVlDnoisIwCM67m2bQYVfKs1LiQ87rOB?=
+ =?iso-8859-1?Q?OSz3V4jIi37E6+uXp07zsqlSmtItSjAkdq4iWQY2tRfVzRYO9T3d0Qae1c?=
+ =?iso-8859-1?Q?Ioeo5euHdxPqAcx8yBDgquicQhvAaPet9qFcFVYCjP3tJgF1fbSZ0X8gRM?=
+ =?iso-8859-1?Q?tet4ZNRXeaFoV6zfYD54zzM8pFQCGfrtnoW2bF7/DHkVykUPrtMdYouMO6?=
+ =?iso-8859-1?Q?BcVEf9nFvJOP7q6Xkl9bhFQHQ78SwMjdZtGVQpUtudh+PCgFya4Pdk2cvV?=
+ =?iso-8859-1?Q?Hc8B1zOJPNaVVSGGfu5Imx10JJfIrHdA9e4n5syRNG1klWah2Vv2k1KttO?=
+ =?iso-8859-1?Q?EuxfV+QQKtcmEVXzfWSmCzsl6pw9my0Tix7AQeI12GK4c4XHRh7DBVVEmq?=
+ =?iso-8859-1?Q?7LyjcmWcAB//CsRaRMCUbrbmwZuu7EXQl/aUfMSxtpOA3zMjwQQ/4Qw3JP?=
+ =?iso-8859-1?Q?6G0dGUnKDp78OsoVCCAza/eMO5CKR2WEMVTdE2Z7//Zf2kNFpyjnlpUYKP?=
+ =?iso-8859-1?Q?YZmMxeuARt99tv8Y12J94/kwu7l4G16aRZ0LhHEsRtxVd4dZXZQjZFa9Bw?=
+ =?iso-8859-1?Q?OGB7J1Jn47HH7g8R5Bv0vE1QmSy5/ulJNSgTE2Tn8BECysNn0KnfgVBsPG?=
+ =?iso-8859-1?Q?sL2hEd8NgpfPKoHv1CfaCkGtCxOKDansIPtfbj5yy6GXfX/4jZVSNBEL9q?=
+ =?iso-8859-1?Q?HUD4DQE8nZqNzhj3+Qh3q+RyZXFuPFwZBrpmiBU5c6KBroVcyCEHL+T5di?=
+ =?iso-8859-1?Q?sbckEmqm8gSshas4JwJGMdVcNaKqV9GowunBmg6XMKGVx2w35MTNVItub+?=
+ =?iso-8859-1?Q?vC8rY7coN2PfQ0THUw5VezUh4TTXDpbOY1J2RuphuTQrgol/AGHHSh0ULt?=
+ =?iso-8859-1?Q?3plic4/UYVXtWC9TJuR/uC7HBjnGnrsM2R1+KuMOazHbDz6naWOLJZK6IW?=
+ =?iso-8859-1?Q?G/qpHU/m3qu3NM+Bj6o5JqDjSITdzI/MccWkfrepukpyc/5TbHwXevFLrc?=
+ =?iso-8859-1?Q?80p91AIpI0Of8jXDvBFL1gNLmeeld6gj7C2w7blxXd7bzctL8RnrQzja0H?=
+ =?iso-8859-1?Q?S8aQldLIxU2SwBI8sA1GFnaPPj4ANk41QLhSiPAWo4XXAKez9xR+n06s+5?=
+ =?iso-8859-1?Q?cFbXdmFPLQ=3D=3D?=
+X-OriginatorOrg: heitbaum.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 40442946-6b2d-4100-ba06-08df0507bdb0
+X-MS-Exchange-CrossTenant-AuthSource: SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2026 13:24:51.6960
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 35ffebb5-7282-4da6-8519-efab29b0108e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: MtAPFGRBIiKDkJ5lmo3BixPZhvhbOeYbbUZSf8Jl1ADcBFAT/umhWWqAzuO4s85fl2WIn/hyDUZFY/BvwgJtmw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: ME5P282MB6017
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260828_051433_339068_0064F2C3 
-X-CRM114-Status: GOOD (  20.79  )
+X-CRM114-CacheID: sfid-20260828_062549_347327_D067A174 
+X-CRM114-Status: GOOD (  26.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,51 +136,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUnVkaSwKCkFtIEZyZWl0YWcsIDI4LiBBdWd1c3QgMjAyNiwgMTI6NTU6NTYgTWl0dGVsZXVy
-b3DDpGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBSdWRpIEhlaXRiYXVtOgo+IE9uIFRodSwgQXVn
-IDI3LCAyMDI2IGF0IDAzOjI1OjIzUE0gKzAyMDAsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4g
-QW0gTW9udGFnLCAyNC4gQXVndXN0IDIwMjYsIDA0OjUyOjAyIE1pdHRlbGV1cm9ww6Rpc2NoZSBT
-b21tZXJ6ZWl0IHNjaHJpZWIgUnVkaSBIZWl0YmF1bToKPiA+ID4gVGhlIHJrMTgwOCBpcyB0aGUg
-bnB1IGRpZSBpbiBhbiByazMzOTlwcm8gcGFja2FnZS4gSXQgaXMgd2lyZWQgdG8gb25lCj4gPiA+
-IG9mIHRoZSB1c2IzIGNvbnRyb2xsZXJzIHJhdGhlciB0aGFuIHRvIGFuIGV4dGVybmFsIHBvcnQs
-IGFuZCBpdCBuZWVkcwo+ID4gPiBpdHMgcmVmZXJlbmNlIGNsb2NrIHJ1bm5pbmcgYmVmb3JlIGl0
-IHdpbGwgYm9vdCwgd2hpY2ggaXMgZXhhY3RseSB3aGF0Cj4gPiA+IHRoaXMgZHJpdmVyIGV4aXN0
-cyB0byBkbyBmb3Igb25ib2FyZCBkZXZpY2VzLgo+ID4gPiAKPiA+ID4gSXQgdGFrZXMgbm8gc3Vw
-cGx5IGZyb20gdGhlIGRyaXZlcjogdGhlIHJhaWxzIGFyZSBzZXF1ZW5jZWQgZWxzZXdoZXJlLgo+
-ID4gPiBPbmx5IHRoZSBjbG9jayBtYXR0ZXJzIGhlcmUsIGFuZCB0aGF0IGlzIGFscmVhZHkgb3B0
-aW9uYWwgYW5kIGhhbmRsZWQKPiA+ID4gZ2VuZXJpY2FsbHkuCj4gPiAKPiA+IHRoZSAiZWxzZXdo
-ZXJlIiBtaWdodCBuZWVkIGEgYml0IG1vcmUgZXhwbGFuYXRpb24gdG8gdmVyaWZ5IGl0J3MgdGhl
-IHJpZ2h0Cj4gPiBpbXBsZW1lbnRhdGlvbi4gRXZlbiBpZiB0aGUgcmVndWxhdG9ycyBhcmUgYWx3
-YXlzLW9uIG9yIHNvbWV0aGluZywgd2UKPiA+IHN0aWxsIHdhbnQgdGhlIHN1cHBsaWVzIGRlZmlu
-ZWQgLSBmb3IgZnV0dXJlIHVzZXMuCj4gCj4gQXMgZm9sbG93IHVwIG9uIHRoZSBicmluZ3VwIG9m
-IHRoZSBSb2NrLVBpLU4xMCwgdGhlIHByb3Bvc2VkIGNoYW5nZSB0byB0aGUgZHRzaQo+IGZvciB0
-aGUgcmszMzk5cHJvLXZtYXJjLXNvbSBpcyBoZXJlLCBidXQgbmVlZHMgdGhlIHByb3Zpc2lvbiBv
-ZiB0aGUgdXNiIGZpcnN0Lgo+IGh0dHBzOi8vZ2l0aHViLmNvbS9oZWl0YmF1bS9saW51eC9jb21t
-aXQvNmIxMTRiNmZmZjQwMjJjMzMwMDAzZDdmNzBjZTA5OTE1ZmZkNzc0ZgoKSSBtaWdodCBoYXZl
-IGZvcm11bGF0ZWQgdGhhdCBzdHJhbmdseSwgd2hhdCBJIG1lYW50IHdhcywgd2hvIGlzIGVuYWJs
-aW5nCnRoZSBwb3dlciBzdXBwbGllcy4KClRoZSAiTlBVIFBvd2VyIiBwYXJ0IG9mIGFueSByazMz
-OTlwcm8gc2NoZW1hdGljcyAoc2hvdWxkKSBsaXN0IDUgcG93ZXIKc3VwcGxpZXMgZm9yIHRoZSBO
-UFUgYmxvY2sgaXRzZWxmOgoKTlBVX0xPR0lDX1ZERAogICAgLS0+IHJlZ3VsYXRvciBsaWtlbHkg
-bmFtZWQgTlBVX1ZERF9MT0dfUzAKICAgICAgICAtLT4gZW5hYmxlZCBieSBOUFVfUFdSRU5fMiBn
-cGlvIGZpeGVkIHJlZ3VsYXRvcgoKTlBVX0VGVVNFX1ZRUFMKICAgIC0tPiByZWd1bGF0b3IgbGlr
-ZWx5IG5hbWVkIE5QVV9WQ0MxVjhfRUZVU0UKICAgICAgICAtLT4gZW5hYmxlZCBieSBOUFVfRUZV
-U0VfRU5fSCBncGlvIGZpeGVkIHJlZ3VsYXRvcgoKTlBVX0NPUkVfVkRECiAgICAtLT4gcmVndWxh
-dG9yIGxpa2VseSBuYW1lZCBOUFVfVkREX1MwCiAgICAgICAgLS0+IFRDUzQ1MjUgcmVndWxhdG9y
-IHdpdGggdm9sdGFnZSBiZWluZyBzZXQgdmlhIHRoZSBpMmMgY29udHJvbGxlcgogICAgICAgICAg
-ICAgaW5zaWRlIHRoZSBOUFUgLSBidXQgZW5hYmxlZCBieSB0aGUgTlBVX1BXUkVOXzYgZ3BpbyBm
-cm9tCiAgICAgICAgICAgICBjb3JlIFJLMzM5OS4KCk5QVV9DUFVfVkRECiAgICAtLT4gcmVndWxh
-dG9yIGxpa2VseSBuYW1lZCBOUFVfVkREX0NQVV9TMAogICAgICAgIC0tPiBlbmFibGVkIGJ5IE5Q
-VV9QV1JFTl80IGdwaW8gZml4ZWQgcmVndWxhdG9yCgpOUFVfQURDX0FWRERfMVY4CiAgICAtLT4g
-cmVndWxhdG9yIGxpa2VseSBuYW1lZCBOUFVfVkNDXzFWOF9TMwogICAgICAgIC0tPiBlbmFibGVk
-IGJ5IE5QVV9QV1JFTl8zIGdwaW8gZml4ZWQgcmVndWxhdG9yCgpOYW1pbmcgbWlnaHQgdmFyeSwg
-SSBmb3VuZCBqdXN0IHNvbWUgRVZCIHNjaGVtYXRpY3MuCgpTb21lb25lIG5lZWRzIHRvIGVuYWJs
-ZSB0aGVzZSwgc28gdGhlIHF1ZXN0aW9uIHdhcywgd2hvIGlzIGRvaW5nIHRoYXQ/CgpUaGFua3MK
-SGVpa28KCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+On Fri, Aug 28, 2026 at 02:14:22PM +0200, Heiko St=FCbner wrote:
+> Hi Rudi,
+> =
+
+> Am Freitag, 28. August 2026, 12:55:56 Mitteleurop=E4ische Sommerzeit schr=
+ieb Rudi Heitbaum:
+> > On Thu, Aug 27, 2026 at 03:25:23PM +0200, Heiko Stuebner wrote:
+> > > Am Montag, 24. August 2026, 04:52:02 Mitteleurop=E4ische Sommerzeit s=
+chrieb Rudi Heitbaum:
+> > > > The rk1808 is the npu die in an rk3399pro package. It is wired to o=
+ne
+> > > > of the usb3 controllers rather than to an external port, and it nee=
+ds
+> > > > its reference clock running before it will boot, which is exactly w=
+hat
+> > > > this driver exists to do for onboard devices.
+> > > > =
+
+> > > > It takes no supply from the driver: the rails are sequenced elsewhe=
+re.
+> > > > Only the clock matters here, and that is already optional and handl=
+ed
+> > > > generically.
+> > > =
+
+> > > the "elsewhere" might need a bit more explanation to verify it's the =
+right
+> > > implementation. Even if the regulators are always-on or something, we
+> > > still want the supplies defined - for future uses.
+> > =
+
+> > As follow up on the bringup of the Rock-Pi-N10, the proposed change to =
+the dtsi
+> > for the rk3399pro-vmarc-som is here, but needs the provision of the usb=
+ first.
+> > https://github.com/heitbaum/linux/commit/6b114b6fff4022c330003d7f70ce09=
+915ffd774f
+> =
+
+> I might have formulated that strangly, what I meant was, who is enabling
+> the power supplies.
+> =
+
+> The "NPU Power" part of any rk3399pro schematics (should) list 5 power
+> supplies for the NPU block itself:
+> =
+
+> NPU_LOGIC_VDD
+>     --> regulator likely named NPU_VDD_LOG_S0
+>         --> enabled by NPU_PWREN_2 gpio fixed regulator
+> =
+
+> NPU_EFUSE_VQPS
+>     --> regulator likely named NPU_VCC1V8_EFUSE
+>         --> enabled by NPU_EFUSE_EN_H gpio fixed regulator
+> =
+
+> NPU_CORE_VDD
+>     --> regulator likely named NPU_VDD_S0
+>         --> TCS4525 regulator with voltage being set via the i2c controll=
+er
+>              inside the NPU - but enabled by the NPU_PWREN_6 gpio from
+>              core RK3399.
+> =
+
+> NPU_CPU_VDD
+>     --> regulator likely named NPU_VDD_CPU_S0
+>         --> enabled by NPU_PWREN_4 gpio fixed regulator
+> =
+
+> NPU_ADC_AVDD_1V8
+>     --> regulator likely named NPU_VCC_1V8_S3
+>         --> enabled by NPU_PWREN_3 gpio fixed regulator
+> =
+
+> Naming might vary, I found just some EVB schematics.
+> =
+
+> Someone needs to enable these, so the question was, who is doing that?
+
+Hi Heiko,
+
+I hadn't looked in to these from the mainline viewpoint. I had been
+using an adapted vendor script based on the radxa npu_powerctl binary
+which reimplements the npu_reset sequence over GPIO.
+
+This has been the sequence:
+
+gpio0 line 4   NPU_PWREN_1   -> 1, 2 ms
+gpio0 line 10  NPU_PWREN_2   -> 1, 2 ms
+gpio0 line 11  NPU_PWREN_3   -> 1, 2 ms
+gpio1 line 22                -> 1, 2 ms
+gpio1 line 23                -> 1, 2 ms
+gpio1 line 24  NPU_PWREN_6   -> 1, 25 ms
+gpio1 line 0                 -> 1  (reset release)
+
+I have the schematics and the working N10 here, so let me look into
+describing these in the .dts and update the onboard_usb_dev.h.
+
+Would you prefer that once I have a working and tested dts description of
+the rk1808 - submit the onboard_usb_dev.h and rk3399pro-vmarc-som.dtsi
+changes as a patchset - or just update the onboard_usb_dev.h as a v2?
+
+Regards
+Rudi
+
+> Thanks
+> Heiko
+> =
+
+> =
+
+> =
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
