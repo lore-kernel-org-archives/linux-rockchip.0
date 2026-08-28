@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22C2EC61DCD
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35F26C61DD5
 	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 06:52:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,23 +12,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qBHm9JuRc/jmwx2CgpYtG7WMBBLspm3Eb5Ci+SVBXpY=; b=PGSD7DtGjRIwdl
-	BROGYbf271qy3zGhjEBG/ImrutX9RibvBCX94csiiIkopDZLcqGr+JVQwUgHSzZORLGxFfeNXFbms
-	yHV2e+j9rcpWMn5GTnPDh6rOrNvayhmMTfTznJWhbAeWWJeUKO1s9u3g8198e0a813BUafvM6upEm
-	tdp/LPwktbfmYaHl0PEk0CfHN5wZ3lKhh5YbE7yp47gXC3FqeasZo1sNzrsXfwAlEpmfxPB7sZ9ql
-	YIv8bAV9Z6A+Zf+ElT4574NXh8iqSzC69EUW7T/Yt70OTuWu7CUc2YJmJMCxcj8NPTqefj/JTZtIU
-	gGXUXTzB8qNCPLjGeIEQ==;
+	List-Owner; bh=N/JjGyfN813IwNnpimLrV/uhf12rzyxBAoiuYu2Bep8=; b=LPqJ8u1r2ayPxI
+	pWuZxSlqYYIN/fKBS1CidjmEp+ovwZzNc0kVBTBmNqMcAwdvxTXEg4vId2C2ntaTdWUk47japdoJt
+	oXttm+1U93rrdLZpFjqLLlRYPcfMh9LcTov/jPmo+DwKheQeS0RyMCjwD0bQvQOOWoHB6zD8+wgED
+	LfvdBwmHCXWCo/nCgKL0R5zZnVlFdClFQqQ1OOF1J3nVqgIw30HAIe4Qk+eKnklDWzzJGAOLQS1xb
+	k426DeEIoZ44/xSeiGGJJRlSChJI5Uo9Hd8A6cgDAaWOjvWF0n8n6dny5N46Zj2PDYNR1gbE1SMc8
+	MpyDlLcIStubrJ1D/xGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzqRt-00000005DrW-1Mfd;
-	Fri, 28 Aug 2026 06:52:25 +0000
-Received: from mail-m60206.netease.com ([210.79.60.206])
+	id 1wzqS2-00000005DyT-0A1q;
+	Fri, 28 Aug 2026 06:52:34 +0000
+Received: from mail-m16023653176.xmail.ntesmail.com ([160.236.53.176])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzqRk-00000005DlO-0Czh;
-	Fri, 28 Aug 2026 06:52:17 +0000
+	id 1wzqRm-00000005Dkl-1vMk;
+	Fri, 28 Aug 2026 06:52:20 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4bab2d5c3;
-	Fri, 28 Aug 2026 14:52:11 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4bab2d593;
+	Fri, 28 Aug 2026 14:52:04 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -56,27 +56,28 @@ Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v8 5/5] drm/bridge: analogix_dp: Add support for optional data-lanes mapping
-Date: Fri, 28 Aug 2026 14:51:53 +0800
-Message-Id: <20260828065153.590802-6-damon.ding@rock-chips.com>
+	Damon Ding <damon.ding@rock-chips.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v8 1/5] dt-bindings: display: bridge: analogix-dp: Add data-lanes support for endpoint
+Date: Fri, 28 Aug 2026 14:51:49 +0800
+Message-Id: <20260828065153.590802-2-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260828065153.590802-1-damon.ding@rock-chips.com>
 References: <20260828065153.590802-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0aa04723ec2803a8kunm9cc188d518837b
+X-HM-Tid: 0aa04723ce3f03a8kunm9cc188d5188338
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQhkaH1YaShlISh4aGk
-	JDSk5WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQ0xKS1YdSEhMTh5LTR
+	hISElWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
 	tIVUpLSEpKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=TS7Lq4+cqjmu4vyz4wHt52ViZazShlZ9Y19qmzmr2Ff5XJKsGeRI/n59CtNw4xPT6sgghdsIeyQP4RPOr0FoMN2RnW3wOYQF1Ry642hK5U7FQTWX4PG+gNfosiqzKf/swRJO4hHiGrucjESc6fvcDZHIfrQSjafh8mlOgOfOBsE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=07jua1c31UW2L/pF5LvkY8ta4PXpkxHe7lw8I4lCAJA=;
+	b=Ljed/ziL5cCkMGijIK1KOZtH1Vil1rHKaBmH09fh4U6BYzvb02NYrmVqlDCeuUV/Kf4kiCI8shVBRFYb5aY5yLaWgfI+s3Wd8eptjWi2SSnSj5HGaGRixQ8Nu4RYZHph3Y5swHR+DfaKbZrUc9s5FksIvNB4i7jId7Gi2WaKRNI=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=gbO4NOwH9/N0sj4hUDr89N79K9dV9ulbx0CXUgmsDFg=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260827_235216_353636_69BD339F 
-X-CRM114-Status: GOOD (  22.42  )
+X-CRM114-CacheID: sfid-20260827_235218_796078_1D1B8F12 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,11 +94,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Parse the optional 'data-lanes' device tree property to support
-custom physical lane mapping configuration.
-
-If no valid configuration is found, fall back to the default
-lane map (0, 1, 2, 3) automatically and keep the driver running.
+Add data-lanes property support to the port@1 endpoint for physical
+lane mapping configuration.
 
 Lane mapping is mainly used for below scenarios:
 1. Correct PCB lane swap and differential line routing crossover
@@ -106,191 +104,81 @@ Lane mapping is mainly used for below scenarios:
 3. Support multiple panel hardware variants on the same board
    by configuring data-lanes in device tree only.
 
+Additionally, add data-lanes setting in Rockchip eDP DT node example
+to show actual lane mapping usage.
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
 ---
 
 Changes in v2:
 - Add lane mapping application scenarios in commit message.
+- Remove redundant deprecated property 'data-lanes' for eDP node.
+- Update port@1 $ref to /schemas/graph.yaml#/$defs/port-base.
 
-Changes in v5:
-- Add Reviewed-by tag.
+Changes in v3:
+- Squash data-lanes adjustment of Rockchip eDP DT example into this
+  commit.
+- Add unevaluatedProperties: false to both the port@1 and endpoint
+  nodes.
 
-Changes in v8:
-- Fix reg parameter of of_graph_get_endpoint_by_regs() for parsing
-  "data-lanes" endpoint from -1 to 0.
-- Fix the 'tmp' name in analogix_dp_dt_parse_lanes_map() to
-  understandable 'lane_idx'.
-- Add comment to explain the lane map fill loop.
+Changes in v5
+- Add Acked-by and Reviewed-by tags.
+
+Changes in v8
+- Add Reviewed-by tags.
 ---
- .../drm/bridge/analogix/analogix_dp_core.c    | 70 +++++++++++++++++++
- .../drm/bridge/analogix/analogix_dp_core.h    |  4 +-
- .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 15 ++--
- .../gpu/drm/bridge/analogix/analogix_dp_reg.h |  4 ++
- 4 files changed, 84 insertions(+), 9 deletions(-)
+ .../bindings/display/bridge/analogix,dp.yaml  | 19 ++++++++++++++-----
+ .../rockchip/rockchip,analogix-dp.yaml        |  1 +
+ 2 files changed, 15 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index a74c855936b2..18e76d1e78e1 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1244,6 +1244,73 @@ static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
- 	.detect = analogix_dp_bridge_detect,
- };
+diff --git a/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml b/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
+index 62f0521b0924..ecf206871cdd 100644
+--- a/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
++++ b/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
+@@ -42,13 +42,22 @@ properties:
+     properties:
+       port@0:
+         $ref: /schemas/graph.yaml#/properties/port
+-        description:
+-          Input node to receive pixel data.
++        description: Input node to receive pixel data.
  
-+static int analogix_dp_dt_parse_lanes_map(struct analogix_dp_device *dp)
-+{
-+	struct video_info *video_info = &dp->video_info;
-+	struct device_node *endpoint;
-+	u32 lane_idx[LANE_COUNT4];
-+	u32 map[LANE_COUNT4] = {0, 1, 2, 3};
-+	bool used[LANE_COUNT4] = {false};
-+	int num_lanes;
-+	int ret, i;
-+
-+	memcpy(video_info->lane_map, map, sizeof(map));
-+
-+	num_lanes = drm_of_get_data_lanes_count_ep(dp->dev->of_node, 1, 0, 1,
-+						   video_info->max_lane_count);
-+	if (num_lanes < 0)
-+		return -EINVAL;
-+
-+	endpoint = of_graph_get_endpoint_by_regs(dp->dev->of_node, 1, 0);
-+	if (!endpoint)
-+		return -EINVAL;
-+
-+	ret = of_property_read_u32_array(endpoint, "data-lanes", lane_idx, num_lanes);
-+	of_node_put(endpoint);
-+	if (ret)
-+		return -EINVAL;
-+
-+	for (i = 0; i < num_lanes; i++) {
-+		if (lane_idx[i] >= LANE_COUNT4) {
-+			dev_dbg(dp->dev, "data-lanes[%d] = %u is out of range\n", i, lane_idx[i]);
-+			return -EINVAL;
-+		}
-+
-+		if (used[lane_idx[i]]) {
-+			dev_dbg(dp->dev, "data-lanes[%d] = %u is duplicate\n", i, lane_idx[i]);
-+			return -EINVAL;
-+		}
-+
-+		used[lane_idx[i]] = true;
-+		map[i] = lane_idx[i];
-+	}
-+
-+	/*
-+	 * Fill the map[] entries not described by 'data-lanes' with the
-+	 * lane indices not used so far, e.g. for 'data-lanes = <3 1>':
-+	 *
-+	 *	used[]       = {0, 1, 0, 1}  // only lanes 1 and 3 are used
-+	 *	map[] before = {3, 1, x, x}  // x = unassigned
-+	 *	map[] after  = {3, 1, 0, 2}
-+	 *
-+	 * Unused entries have no effect on the current link with fewer
-+	 * lanes in use, but filling them with distinct indices keeps the
-+	 * LANE_MAP register holding a valid permutation, just like its
-+	 * reset value (0xe4), so the mapping remains sane if a sink with
-+	 * a different lane count is connected later, e.g. via DP hot-plug.
-+	 */
-+	for (i = 0; i < LANE_COUNT4 && num_lanes < LANE_COUNT4; i++) {
-+		if (!used[i])
-+			map[num_lanes++] = i;
-+	}
-+
-+	dev_dbg(dp->dev, "Using parsed lane map: <%u %u %u %u>\n", map[0], map[1], map[2], map[3]);
-+
-+	memcpy(video_info->lane_map, map, sizeof(map));
-+
-+	return 0;
-+}
-+
- static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
- {
- 	struct device_node *dp_node = dp->dev->of_node;
-@@ -1282,6 +1349,9 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
- 		break;
- 	}
+       port@1:
+-        $ref: /schemas/graph.yaml#/properties/port
+-        description:
+-          Port node with one endpoint connected to a dp-connector node.
++        $ref: /schemas/graph.yaml#/$defs/port-base
++        unevaluatedProperties: false
++        description: Port node with one endpoint connected to sink device node.
++        properties:
++          endpoint:
++            $ref: /schemas/media/video-interfaces.yaml#
++            unevaluatedProperties: false
++            properties:
++              data-lanes:
++                minItems: 1
++                maxItems: 4
++                items:
++                  enum: [ 0, 1, 2, 3 ]
  
-+	if (analogix_dp_dt_parse_lanes_map(dp))
-+		dev_dbg(dp->dev, "No valid data-lanes found, using default lane map\n");
-+
- 	return 0;
- }
+     required:
+       - port@0
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+index 6548f157fd96..39dafe75a680 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+@@ -160,6 +160,7 @@ examples:
+           reg = <1>;
  
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index c7997677a286..4560597604ad 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -137,6 +137,8 @@ struct video_info {
- 
- 	int max_link_rate;
- 	enum link_lane_count_type max_lane_count;
-+
-+	u32 lane_map[LANE_COUNT4];
- };
- 
- struct link_train {
-@@ -177,7 +179,7 @@ struct analogix_dp_device {
- /* analogix_dp_reg.c */
- void analogix_dp_enable_video_mute(struct analogix_dp_device *dp, bool enable);
- void analogix_dp_stop_video(struct analogix_dp_device *dp);
--void analogix_dp_lane_swap(struct analogix_dp_device *dp, bool enable);
-+void analogix_dp_lane_mapping(struct analogix_dp_device *dp);
- void analogix_dp_init_analog_param(struct analogix_dp_device *dp);
- void analogix_dp_init_interrupt(struct analogix_dp_device *dp);
- void analogix_dp_reset(struct analogix_dp_device *dp);
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index ea8401293a23..c1344a3f013a 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -48,16 +48,15 @@ void analogix_dp_stop_video(struct analogix_dp_device *dp)
- 	writel(reg, dp->reg_base + ANALOGIX_DP_VIDEO_CTL_1);
- }
- 
--void analogix_dp_lane_swap(struct analogix_dp_device *dp, bool enable)
-+void analogix_dp_lane_mapping(struct analogix_dp_device *dp)
- {
-+	u32 *lane_map = dp->video_info.lane_map;
- 	u32 reg;
- 
--	if (enable)
--		reg = LANE3_MAP_LOGIC_LANE_0 | LANE2_MAP_LOGIC_LANE_1 |
--		      LANE1_MAP_LOGIC_LANE_2 | LANE0_MAP_LOGIC_LANE_3;
--	else
--		reg = LANE3_MAP_LOGIC_LANE_3 | LANE2_MAP_LOGIC_LANE_2 |
--		      LANE1_MAP_LOGIC_LANE_1 | LANE0_MAP_LOGIC_LANE_0;
-+	reg = lane_map[0] << LANE0_MAP_SHIFT;
-+	reg |= lane_map[1] << LANE1_MAP_SHIFT;
-+	reg |= lane_map[2] << LANE2_MAP_SHIFT;
-+	reg |= lane_map[3] << LANE3_MAP_SHIFT;
- 
- 	writel(reg, dp->reg_base + ANALOGIX_DP_LANE_MAP);
- }
-@@ -140,7 +139,7 @@ void analogix_dp_reset(struct analogix_dp_device *dp)
- 
- 	usleep_range(20, 30);
- 
--	analogix_dp_lane_swap(dp, 0);
-+	analogix_dp_lane_mapping(dp);
- 
- 	writel(0x0, dp->reg_base + ANALOGIX_DP_SYS_CTL_1);
- 	writel(0x40, dp->reg_base + ANALOGIX_DP_SYS_CTL_2);
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
-index 12735139046c..ac914e37089b 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
-@@ -209,6 +209,10 @@
- #define LANE0_MAP_LOGIC_LANE_1			(0x1 << 0)
- #define LANE0_MAP_LOGIC_LANE_2			(0x2 << 0)
- #define LANE0_MAP_LOGIC_LANE_3			(0x3 << 0)
-+#define LANE3_MAP_SHIFT				(6)
-+#define LANE2_MAP_SHIFT				(4)
-+#define LANE1_MAP_SHIFT				(2)
-+#define LANE0_MAP_SHIFT				(0)
- 
- /* ANALOGIX_DP_ANALOG_CTL_1 */
- #define TX_TERMINAL_CTRL_50_OHM			(0x1 << 4)
+           edp_out_panel: endpoint {
++            data-lanes = <0 1>;
+             remote-endpoint = <&panel_in_edp>;
+           };
+         };
 -- 
 2.34.1
 
