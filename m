@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4C3DC61DBD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 16:50:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A6CCC61DCB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 20:55:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NWfcAcOspkVOai7KDHYMNjox1Xn3gdgoTtkTRp/eZwo=; b=TQNieHMztfSWgL/0DTaENchH1M
-	IJhwQKcTECwSM1dJARl3uyYYzop2PDdEL3+rOCEQtx/rLtk3EXq82xoOFJU/kqMKeuTImjEcqsxQw
-	ZvAc+lUcDcDSmvJl5dwMhi9jlnQDxhRPp0B/uXNsDMEc0yZTJqt1PY5BdODYIBPQz9Fz7q4I53vDo
-	gxZIcyKoLrxxsrHFvhVBxR0A4Yet14tJBpMakvPvx7vRsqyDEvLPRt/94aDldAp43Zr1v/OHQWRmV
-	kWrN0KsU1jqyl8C8n31I/rEHDvyrAKCxjJxdtNK8cu9TQm/YMRaYyCo7OGcQcCGLuJU7N+0rLDSUH
-	C/bEA0zw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=O+JL8hmuX+R+EeQdZa+3QC8wWLFRH6BUu2aZrBV8N1A=; b=XfZWevHhk3gIft
+	JOdfJbqM8Bs4HzUts0AfxfOlPQ9lpBoCik8L7kFx41wsXQoxWf0sGDBNAMs3jr2wsO0L3i1dkWRXo
+	tKJypXvSpct8d9IR7OQaYEq8zp9b0zrJCJqddwQNlJviH2xJT9BWmx/J6++nOUjNs8KymAiO+MSrj
+	pXx3RM7IJqhzATeknoE0JW0UOO3tS3xK1yNTbsWXDdZjeQU7jTELyek0LTHYu5j9+XdyVkeYYoKwi
+	leTBWQ6kPwTiYalHHHFDug4MjBLb/iEEjeAdlDVMYlGcTTr2S97S5B2eONPHIjycE7Q4H9DKGJrxF
+	IkDSHlLyb1b4s3uJZ88Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzzmP-00000006EWA-0rgS;
-	Fri, 28 Aug 2026 16:50:13 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x03bw-00000006QJy-3GOD;
+	Fri, 28 Aug 2026 20:55:40 +0000
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzzmN-00000006EVB-02YY;
-	Fri, 28 Aug 2026 16:50:11 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 32D3F60200;
-	Fri, 28 Aug 2026 16:50:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F8101F000E9;
-	Fri, 28 Aug 2026 16:50:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787935809;
-	bh=Hw/jCmn/KOE2LoDFpFWah+rvYGMtWOdmte3fTa9ScuY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=XxoRvS/pWD7EfKWlPLkqW8pWjkuekfNHrSvJvmaAdzI5X8auF7Qn5/jEDekj4ncxI
-	 2jEmHqbY3k4YyvyXFuSacz8f8GpOr7bqT67VdFZfNvMpbBr1Ekt7XVD73tEKN2eUKb
-	 mrJyA7yxMSBDWNzDtpoXYtfBlsXgO8CLsP3kkvES3ibm8QHxvHfkJ9foYSiyUY5swe
-	 lxSlvUTKJINxWvdGnb28E0bCU3fKxWhlYhaehUcNWzno23zxRoF5GIpX36pmaU6UDe
-	 2Z7/6zpZ9xXAYLv2qcsQ3bADDJhCoO/spbT0lR0/z/+3Qt/+wvjx6mJiJ+/AKg1mbk
-	 pnYtXn7scph8A==
-Date: Fri, 28 Aug 2026 17:50:00 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Michal Wilczynski <m.wilczynski@samsung.com>
-Cc: Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Hal Feng <hal.feng@starfivetech.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,
-	Heiko Stuebner <heiko@sntech.de>, Paul Walmsley <pjw@kernel.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
-	Dominique Belhachemi <db@domibel.de>, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, mfd@lists.linux.dev,
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	Icenowy Zheng <uwu@icenowy.me>, Andy Yan <andyshrk@163.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Maud Spierings <maudspierings@gocontroll.com>,
-	Graham Markall <hello@big-grey.co.uk>
-Subject: Re: [PATCH v2 03/15] dt-bindings: mfd: Add
- starfive,jh7110-hdmi-subsystem
-Message-ID: <20260828-tribune-unguided-672ae7ade441@spud>
-References: <20260828-jh7110-clean-send-v2-0-331680c8b9d1@samsung.com>
- <CGME20260828134819eucas1p2c8e2bb95dd957981ec5e60e1da03223c@eucas1p2.samsung.com>
- <20260828-jh7110-clean-send-v2-3-331680c8b9d1@samsung.com>
+	id 1x03bu-00000006QJK-0rDt
+	for linux-rockchip@lists.infradead.org;
+	Fri, 28 Aug 2026 20:55:39 +0000
+Received: by mail-ot1-x32e.google.com with SMTP id 46e09a7af769-7ec1e9d3359so1540563a34.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 28 Aug 2026 13:55:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787950536; x=1788555336; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=6moimaGhU35+7wiVcKN5sTnTB4vEOgWCO5j8Ay8GP64=;
+        b=h3WbDSkysyT1SboTsIFXVGfUigE+IckdoFxwGYNnaL5kMtwHH8N+A4jrJhx5SW09I4
+         1MaC1Nk1jQAMb512Lf4lM3ak2oyXG7+UarGbq8ik/ct9BqFE02tVOcHcZsmdRL30Pl7a
+         IpCpwB5MGlfKO7jayrC73zXxKKbnLm2MlPnDqNIMk3VnaaAYDPrGKcJE5OQFXoXz94+R
+         bqlQH78A0vZy0ZYWmNXZvEpPmEVFCbYKmv52sB6t4dD+tayKCpk8FzXA/TVsCfwjGIWM
+         szhMc+pWStef6OSUOjGB9o9+BnMat/z1QsYfbBHT5YwfM0v3RzusOTNmdU6DML01NN3u
+         zPLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787950536; x=1788555336;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=6moimaGhU35+7wiVcKN5sTnTB4vEOgWCO5j8Ay8GP64=;
+        b=pwIvVDmzaDPhSi/g1Am50EzHt+hi0V7mC3BMG7VJLTfssrDZGPXsxk6fbc0woJd9OV
+         KICaYitS1ciy8/Xo1hOanj8ELKQ6yE4gk+HCoDsosD6ONACWGhKoViPg7scnrsoDMOpx
+         B/osZNRT7wu1tGAQUVAqeayBFHBj+jX2Eya8lbEVm95Bxn+HtwR79PYm6cCHC2gOTrgd
+         umEDTysymSaKbFoowT3WyPpvcctl57lYFLFZEWweVlJccp7dBfQAhheT98PH7XZOGAgf
+         4KWmTdh+MMixIREV9u8XUrdgTyjkJR3BI4DCY0NvK7o389769DEAEw2hYfLjAv/8wBbR
+         ZkFg==
+X-Gm-Message-State: AFuF++miAtY1tNtr+aNs70VV+caMQYNEQhjITpSSNc2Drl+bZ6C0tJVb
+	aApw6a4JVtt6tqaP8k6n+h3b9BJBKfIKAD7SN3w58RAqjC50yDM3JPAqJ3oulA==
+X-Gm-Gg: AR+sD11eifttQXkrB9ee4tvcNuTmoMTcX8dwmKUdNTbqOzFZXk3oQAUBxHKNxan/yU3
+	Or/HcJfCSnLXIE2Aapmz3PtuBVNyeH/lcBRUHUdDLn2Uf7lUXGFTBMZXK/Ow3zKDYUvaF8wg4VQ
+	jN2k/t4DwrQhORWrXVFUCPm5IFtdveJKqdHUp9cL/UY4LhP3AJUqMEvdn/pCx/CWlrfG72eidcn
+	RXEeDK4NuZOtxQERAIkn8/REEXkayLFv4ne2tJCNZO+DtqDKmdXjo8u8W4dIk4+Cx9borxtS5xn
+	C59SmrUHH0nE2tG+zmhkOZQ3sq4dp2Y+pQ3rPyx6aAHAd9IkFUL+l0wrftEAvAd7+0WgctjTaw7
+	/T8gypuh2p+vPksAHtJuH0VioQqts8vPf4IQ1wM4yba/0RcZw33Y5NolHeSBx4LUSGhfrUCL+iv
+	VTTsvJR+20A0ToHDPpt3A4OerUtxMeF38/if7TjH3sv7rID/QGggwhEt3ykuxfbhrPD0zmjA==
+X-Received: by 2002:a05:6830:6d0e:b0:7dc:d967:63de with SMTP id 46e09a7af769-7f4f23b74aamr12473717a34.3.1787950536215;
+        Fri, 28 Aug 2026 13:55:36 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7f4fa6bc42fsm2035178a34.6.2026.08.28.13.55.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Aug 2026 13:55:35 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Correct Device Orientation
+Date: Fri, 28 Aug 2026 15:53:31 -0500
+Message-ID: <20260828205331.78185-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <20260828-jh7110-clean-send-v2-3-331680c8b9d1@samsung.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260828_135538_273188_A5C7A5A7 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,204 +94,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0458110608280193402=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============0458110608280193402==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Cg0ACwIa4U5WfwqO"
-Content-Disposition: inline
+From: Chris Morgan <macromorgan@hotmail.com>
 
---Cg0ACwIa4U5WfwqO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The display, touchscreen, and IMU are currently not oriented
+consistently. The touchscreen is 90 degrees offset and the IMU is using
+the default mount matrix which is 180 degrees offset.
 
-On Fri, Aug 28, 2026 at 03:47:27PM +0200, Michal Wilczynski wrote:
-> Add the dt-binding for the StarFive JH7110 HDMI subsystem.
->=20
-> The JH7110 HDMI IP is a monolithic block containing both the digital
-> controller and analog PHY in a single register space. This binding
-> defines the parent device, which holds the shared register map and
-> populates its two children: the PHY and the controller. This is
-> necessary to resolve a circular clock dependency between the HDMI block
-> and the VOUT clock generator.
->=20
-> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
-> ---
->  .../mfd/starfive,jh7110-hdmi-subsystem.yaml        | 116 +++++++++++++++=
-++++++
->  1 file changed, 116 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/mfd/starfive,jh7110-hdmi-s=
-ubsystem.yaml b/Documentation/devicetree/bindings/mfd/starfive,jh7110-hdmi-=
-subsystem.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..01f079160ab8c13c6fa4ce3ab=
-aac6607021b3792
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/starfive,jh7110-hdmi-subsyste=
-m.yaml
-> @@ -0,0 +1,116 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/starfive,jh7110-hdmi-subsystem.ya=
-ml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: StarFive JH7110 HDMI subsystem
-> +
-> +maintainers:
-> +  - Michal Wilczynski <m.wilczynski@samsung.com>
-> +
-> +description:
-> +  The StarFive JH7110 HDMI block is a monolithic IP containing both
-> +  the digital controller logic and the analog PHY logic in a single
-> +  register space.
-> +
-> +properties:
-> +  compatible:
-> +    const: starfive,jh7110-hdmi-subsystem
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +    description:
-> +      NoC display bus clock, which gates access to the whole vout
-> +      register region.
-> +
-> +  resets:
-> +    maxItems: 1
-> +    description:
-> +      NoC display bus reset, which gates access to the whole vout
-> +      register region.
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - resets
-> +  - power-domains
+Fix the touchscreen alignment and add a mount matrix for the IMU. When
+the device is held vertically relative to the display hardware, the
+touchscreen 0,0 position is in the top left corner of the display
+(next to the home button), and the IMU reads the correct orientation.
 
-Here you're willing not to have -names properties?
+Fixes: 4e946c447a04 ("arm64: dts: rockchip: Add GameForce Ace")
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-> +
-> +patternProperties:
-> +  "^phy(@[0-9a-f]+)?$":
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
+index 230aac005e8f..d43eb48152e8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
+@@ -596,6 +596,7 @@ regulator-state-mem {
+ &i2c3 {
+ 	status = "okay";
+ 
++	/* Touchscreen is rotated 90 degrees with 0,0 position near home button. */
+ 	touchscreen@14 {
+ 		compatible = "goodix,gt911";
+ 		reg = <0x14>;
+@@ -605,10 +606,8 @@ touchscreen@14 {
+ 		pinctrl-0 = <&touch_int>, <&touch_rst>;
+ 		pinctrl-names = "default";
+ 		reset-gpios = <&gpio1 RK_PA7 GPIO_ACTIVE_HIGH>;
+-		touchscreen-inverted-x;
+ 		touchscreen-size-x = <1080>;
+ 		touchscreen-size-y = <1920>;
+-		touchscreen-swapped-x-y;
+ 	};
+ };
+ 
+@@ -641,11 +640,15 @@ channel@7 {
+ 		};
+ 	};
+ 
++	/* IMU oriented relative to panel, which is rotated 90 degrees. */
+ 	imu@68 {
+ 		compatible = "invensense,mpu6880";
+ 		reg = <0x68>;
+ 		interrupt-parent = <&gpio0>;
+ 		interrupts = <RK_PD3 IRQ_TYPE_EDGE_RISING>;
++		mount-matrix = "-1", "0", "0",
++			       "0", "-1", "0",
++			       "0", "0", "1";
+ 	};
+ };
+ 
+-- 
+2.43.0
 
-These are not pattern properties at all, given they have no variance
-because there's no unit addresses involved!
-pw-bot: changes-requested
-
-Cheers,
-Conor.
-
-> +    $ref: /schemas/phy/starfive,jh7110-inno-hdmi-phy.yaml#
-> +  "^controller(@[0-9a-f]+)?$":
-> +    $ref: /schemas/display/bridge/starfive,jh7110-inno-hdmi-controller.y=
-aml#
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/starfive,jh7110-crg.h>
-> +    #include <dt-bindings/power/starfive,jh7110-pmu.h>
-> +    #include <dt-bindings/reset/starfive,jh7110-crg.h>
-> +
-> +    soc {
-> +        #address-cells =3D <1>;
-> +        #size-cells =3D <1>;
-> +
-> +        hdmi@29590000 {
-> +            compatible =3D "starfive,jh7110-hdmi-subsystem";
-> +            reg =3D <0x29590000 0x4000>;
-> +            clocks =3D <&syscrg JH7110_SYSCLK_NOC_BUS_DISP_AXI>;
-> +            power-domains =3D <&pwrc JH7110_PD_VOUT>;
-> +            resets =3D <&syscrg JH7110_SYSRST_NOC_BUS_DISP_AXI>;
-> +
-> +            controller {
-> +                compatible =3D "starfive,jh7110-inno-hdmi-controller";
-> +                clocks =3D <&voutcrg JH7110_VOUTCLK_HDMI_TX_SYS>,
-> +                         <&voutcrg JH7110_VOUTCLK_HDMI_TX_MCLK>,
-> +                         <&voutcrg JH7110_VOUTCLK_HDMI_TX_BCLK>,
-> +                         <&hdmi_phy>;
-> +                clock-names =3D "sys", "mclk", "bclk", "pclk";
-> +                interrupts =3D <99>;
-> +                phys =3D <&hdmi_phy>;
-> +                phy-names =3D "hdmi-phy";
-> +                resets =3D <&voutcrg JH7110_VOUTRST_HDMI_TX_HDMI>;
-> +                reset-names =3D "hdmi_tx";
-> +
-> +                ports {
-> +                    #address-cells =3D <1>;
-> +                    #size-cells =3D <0>;
-> +
-> +                    port@0 {
-> +                        reg =3D <0>;
-> +
-> +                        endpoint {
-> +                            remote-endpoint =3D <&dpu_out_dpi0>;
-> +                        };
-> +                    };
-> +
-> +                    port@1 {
-> +                        reg =3D <1>;
-> +
-> +                        endpoint {
-> +                            remote-endpoint =3D <&hdmi_con_in>;
-> +                        };
-> +                    };
-> +                };
-> +            };
-> +
-> +            hdmi_phy: phy {
-> +                compatible =3D "starfive,jh7110-inno-hdmi-phy";
-> +                #clock-cells =3D <0>;
-> +                clock-output-names =3D "hdmi_pclk";
-> +                clocks =3D <&xin24m>;
-> +                clock-names =3D "refoclk";
-> +                #phy-cells =3D <0>;
-> +            };
-> +        };
-> +    };
-> +...
->=20
-> --=20
-> 2.34.1
->=20
-
---Cg0ACwIa4U5WfwqO
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCapG8NwAKCRB4tDGHoIJi
-0hpkAP9IEPsKXNupV8il/GXzWDWNOrSDzHB2OymOU4fR89rhBAD+LI4SNgwfyjrP
-7lvK3nlFJ0fQqo4ZtM5vpnIawQnoNwE=
-=PKQG
------END PGP SIGNATURE-----
-
---Cg0ACwIa4U5WfwqO--
-
-
---===============0458110608280193402==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0458110608280193402==--
-
