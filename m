@@ -4,127 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D97C61DBD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 13:25:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C291C61DDA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2026 13:48:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:Cc:To:In-Reply-To:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mkF6G9MjED+3yD6+Su1hBQWgjq3yH138jLx6sQOnUAs=; b=fT16MtBmAn6R8b
-	pxPua7P2seJdK5UcMTmeRCVVL6wLhdZQ+nDfL5YCG77kud1imRxM1hSB/Wu+aPh9MR6nDt8pR9EOZ
-	0Tv+Ea36GIFTh3vM+uVTbWDX3+QMMv0UaA3AMpaeFbDkWUUsWyBE+0pRQXsQ0OA7C/tcEge5u8osE
-	RrIYtLfeNkMckixWN/pHO87Cl6ztAbbRXISyEjB+8mw8u51DxTHyf5hZqmeKMyugzTMrlhMchqt5e
-	aroL4wpUC2umICAebz+S3+hbOBc6Huq4P/BzBOFF2/NYoSyw2wN1N3ZUWPeGviqgMtYPc44cWrA0y
-	WxWKypYozxJGOcw+QFwA==;
+	List-Owner; bh=HUV6LEWk1adkVjoe7ZEA5/hXxl9yJ9U5tu/6LtylUEo=; b=uPecI2NuFlv0o0
+	ZlR4rQyQSeVRMSUJ2rHlNSQgUVc4dotijCfRNYEDuO6ij9+TCEP9o057ALiLk1UJs+ZKX2cuy0+2E
+	f9TG6DfMYOVB8pCq6+X7m/QsfYd5NFYZavTWILwj2aYVWqO2BYvi6N3/gytJqELHz3Nr1StwONCzv
+	glJE0kfcd8/1Tn4ofOVMwWrv0kz/Q6TaVu3ajbEa7MPIRA0tHtNdkGXSW5bzUiFeobo/flKCiU/kH
+	mkJdkij97nGcMYR1GQtFC/hHnUZ5ZTDjvTquG6lhqb2uEOcQLIwAlh6+6wM9tEthn6Dm3RLWK4as6
+	QlnZFS2pYxH+j9qG37Mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzwad-00000005odQ-401O;
-	Fri, 28 Aug 2026 13:25:51 +0000
-Received: from mail-australiaeastazon11022140.outbound.protection.outlook.com ([40.107.40.140] helo=SY5PR01CU010.outbound.protection.outlook.com)
+	id 1wzwwh-00000005rEr-0ivz;
+	Fri, 28 Aug 2026 13:48:39 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzwab-00000005ocw-1IbA;
-	Fri, 28 Aug 2026 13:25:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JyDWkg0iCVo9grs5yBr4DhJSvkrQyo9m1ZF1RFpQiNh1d6OD45gyVBcT3bu6A0ZROCJ5CXH4fEOBiOT2oYxxLNvh5dCP0++W8IdugKg7eeG1xCD4e6xTWc0R2Fl0MTf1jegjNZJoYfCB5mRfbR7uRCUopUTQsHlnoiszChz5hbZICGH3SnGQ6ZfC0cI7Pjuq8Q1Vf8/mOwwDQikugZJcbGUSGlmCqrvRCkCMRX8Jzshd6N13P3sT1OiTkZlSFyX36+/QY+irfX2Ic8b964uXVHRO7HuU7Gqxrs5aaGaH/9hAjweAbdbtrtxxx308UX81PTZeUjjD4z0AZPVdPCtGvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8micJRkkP8PG/TC8SAHSlqdZY8MnfQwHfpUTwjzmHgk=;
- b=kwFo/TZPcCGbppLtJ02YS65db1PHuAWb1a3Io0IFHldfavXO323gN/AyRXcl0TYAIXa9Q/Kii0S9Vki9cT4HC8BR+5Brkbzj512odJvKoP3rhwa9X1aj2m/sUEvZbhJC7UsGFtE7z9IPrPcyB8XMWyItJ9YaLQjbPR+I4Z9GdRGf4Ly0QOPHK6aSNPkmeo8IGZmSOpgWYJ3pn3L+x7cWa6WoLoaIROipCfzr2dwHm7ksAvXi9WlWGfUx18V9E3uCyEesXTBvUeX5hG5A9xh5dMweoeGUfOHwupYkRzmcwET6R+4EbzQG9GRCRxpNsg6fhC8W2zTUeS2XAzu3QqvVuw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=heitbaum.com; dmarc=pass action=none header.from=heitbaum.com;
- dkim=pass header.d=heitbaum.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=heitbaum.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8micJRkkP8PG/TC8SAHSlqdZY8MnfQwHfpUTwjzmHgk=;
- b=OGbw8qcZbyiWoSuUKs4AT63fniJzLapSCxeA5X5wpBlpzvVYm403Kvu0lTEzv3yUhg8KZnmlRdheGR9OgmmhgdVeAzbQkPce6mzaXMaiqr3qgmTpSFoljfXwoLumtEkr+N8/ZXhOI3VIev44zqdZapHMc4rWuxmVZCGlHJhLU4cI6KmGObn45rIKwB03axz7evu0PzMfu+sUQnIjFB2lcXg1GGBMQe/zrHQg1atKb3owZ1YCi+t6si1FCW533uNTsoZAITzGI3IpUUF2AmFc2yzplbAFq7XB2tcHOlR+PG4w7sPhuwRi0VquF4nNE7oNzPzn7sa4ENvvMA5YUZWjLg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=heitbaum.com;
-Received: from SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM (2603:10c6:10:279::22)
- by ME5P282MB6017.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:25a::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.11; Fri, 28 Aug
- 2026 13:24:52 +0000
-Received: from SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM
- ([fe80::21b6:91f8:614d:1fdd]) by SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM
- ([fe80::21b6:91f8:614d:1fdd%4]) with mapi id 15.21.0360.008; Fri, 28 Aug 2026
- 13:24:51 +0000
-Date: Fri, 28 Aug 2026 13:24:34 +0000
-From: Rudi Heitbaum <rudi@heitbaum.com>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Matthias Kaehlcke <mka@chromium.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] usb: onboard_dev: add the Rockchip rk1808
-Message-ID: <apGMEsCwly8TCOww@5be1eda4e59e>
-References: <aouw7rH6FZxscUTO@0d3a7a881997>
- <5096877.GXAFRqVoOG@phil>
- <apFpPP1O45BWXDv5@5be1eda4e59e>
- <4512468.iIbC2pHGDl@diego>
-Content-Disposition: inline
-In-Reply-To: <4512468.iIbC2pHGDl@diego>
-X-ClientProxiedBy: MEWPR01CA0197.ausprd01.prod.outlook.com
- (2603:10c6:220:1ee::9) To SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM
- (2603:10c6:10:279::22)
+	id 1wzwwO-00000005r0G-0FsN;
+	Fri, 28 Aug 2026 13:48:25 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260828134816euoutp018a0c3e2648795ffd6e03561f443696bd~P-DhYbMaO2677926779euoutp018;
+	Fri, 28 Aug 2026 13:48:16 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260828134816euoutp018a0c3e2648795ffd6e03561f443696bd~P-DhYbMaO2677926779euoutp018
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1787924896;
+	bh=uMTpvxWIHTWA5WP2+3K9U8sgXeHo5NdCmMYa7bPSnFI=;
+	h=From:Date:Subject:In-Reply-To:To:Cc:References:From;
+	b=B/w8SZIdtavo0kLqWnRiPR2OA723DIkfCChmZ+OPJqHz5nfOte89SnOIh+yWFQaPv
+	 NQJxv8AiBNCaZDDSihO5pm6DSn6G7W4nQ3kb3msDcDh8cXjR79awH+wMAIcZIuFwmd
+	 itwk5250Em5HcXDkBo2frc2bh01uxLTdtk0OEa4U=
+Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20260828134815eucas1p2b2aabc17e9cc6346e5a93bde5c650958~P-DhB-03v2418024180eucas1p29;
+	Fri, 28 Aug 2026 13:48:15 +0000 (GMT)
+Received: from AMDC4942.eu.corp.samsungelectronics.net (unknown
+	[106.210.136.40]) by eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20260828134813eusmtip1ecc4bb650325f36fd9950693c44853ee~P-DfbWOlr2831928319eusmtip1V;
+	Fri, 28 Aug 2026 13:48:13 +0000 (GMT)
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+Date: Fri, 28 Aug 2026 15:47:25 +0200
+Subject: [PATCH v2 01/15] dt-bindings: phy: Add
+ starfive,jh7110-inno-hdmi-phy
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SY7P282MB4909:EE_|ME5P282MB6017:EE_
-X-MS-Office365-Filtering-Correlation-Id: 40442946-6b2d-4100-ba06-08df0507bdb0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|23010399003|1800799024|366016|10067099003|56012099006|18002099003|22082099003|4143699003|3023799007;
-X-Microsoft-Antispam-Message-Info: nO1wKxR3IhzPndRGilA/Y1mARG1+FFHaEy7Xvogwr3tmB79i+Id/kJeOQnUR1Gee6XcSy6T3VlevwRO53A0/WwE/oPpVSrT6P1mfW9m/OYaEKeXo7x4f5SvTuR1OR4djyrvBti8i938jvse1EuhyMjgEaNfhacrRN+FmFRqwP52Iz12uHBYLU5zJocq/nQsdHkt0cqsbDC5rXd6qIZNO2gEjwaaSgjz8SPwAtsoTjtyehIw04WLeK53CrEjeoCj/EPbrgN/H5WS6+k/wDTS0CTf78Eqf8RG1WGmyn5SpZi8UttdUi7EuxeDDfQom72lEFpldbUKLFOl9J/BVNYu7WRoW8H8R9gWH37kF/Ry6Gas2FB0yIFoSmGALLXvk8ZO1HypWGbadIb2IKchYnzUskdrOqzjhVCiDyeVxfRKhU8G7oDsESaMEPdL45I5augBA/oxbEKmf2OY6xeMv3EIURBi1ORw3v8w8wvK3Q5o8wmDBLRjMhnRSWnXESli2GQNiubJJ5etW2j1BQvucholNxWxbw8J/pI9bS3T40uXfckI=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(376014)(23010399003)(1800799024)(366016)(10067099003)(56012099006)(18002099003)(22082099003)(4143699003)(3023799007);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?2O2iPkiZBTsn2HotlIGayyeYtsiKRiED+/j8QE8H1Yc84EhBOXJQndI1gE?=
- =?iso-8859-1?Q?9O3PDSxcvotxba+XjFUCepHcWt6djsxVtxG0jVUGnKZaA8s1nPb3M5/yyq?=
- =?iso-8859-1?Q?kSzvmgbsmRZbMUCHrfhuU2b7jeNGeNaXcPxeC07Njs5o4HyXDGzYxc2iql?=
- =?iso-8859-1?Q?b6ekcqK/Xw4rucyMKNLKn3KymuTw8o2Jq/UbaSsPSxfcZ+3hWIZtAtGGQ8?=
- =?iso-8859-1?Q?k9Fsguykd/LQZtT5koHxUgzI4iClx97THbJWwn1+i+dM2ukN1jiZ4qFx9X?=
- =?iso-8859-1?Q?KxxiqVRiZFE04TtLw5LvBw8UYMJouuSO2brGKRuBY3tb/NY0Cs5wy4LnV5?=
- =?iso-8859-1?Q?yh2kD8xb7hI1Pq6ZeQPmAzpT691+MoZsuVw3H7S60BA2bR+L1vZPqtNbgm?=
- =?iso-8859-1?Q?NoX+em7J8mNkFm7iRzgX06BRl+qRcFDR1xIzVVkOxcpZ/OaSFIX1ln0R6I?=
- =?iso-8859-1?Q?RXGyEnAgESh3Ke3Xco1deDcPLhe35ZtagQRwTWk05M1BUJz+NMhlhhGJT7?=
- =?iso-8859-1?Q?qMHmsgbyQrEf9mKIB73vY+75H7EddT+o482aGUljaGHpHnMssu7/Ofw5ZY?=
- =?iso-8859-1?Q?0DN/JS0vWIbmAdbOr6Spjh4qMg8C5GjYi/5Moy+h/DAhV5YJ8gKbgIqjX6?=
- =?iso-8859-1?Q?wZpQYF4+GNmvvVsUrnvs6uBPszbVlDnoisIwCM67m2bQYVfKs1LiQ87rOB?=
- =?iso-8859-1?Q?OSz3V4jIi37E6+uXp07zsqlSmtItSjAkdq4iWQY2tRfVzRYO9T3d0Qae1c?=
- =?iso-8859-1?Q?Ioeo5euHdxPqAcx8yBDgquicQhvAaPet9qFcFVYCjP3tJgF1fbSZ0X8gRM?=
- =?iso-8859-1?Q?tet4ZNRXeaFoV6zfYD54zzM8pFQCGfrtnoW2bF7/DHkVykUPrtMdYouMO6?=
- =?iso-8859-1?Q?BcVEf9nFvJOP7q6Xkl9bhFQHQ78SwMjdZtGVQpUtudh+PCgFya4Pdk2cvV?=
- =?iso-8859-1?Q?Hc8B1zOJPNaVVSGGfu5Imx10JJfIrHdA9e4n5syRNG1klWah2Vv2k1KttO?=
- =?iso-8859-1?Q?EuxfV+QQKtcmEVXzfWSmCzsl6pw9my0Tix7AQeI12GK4c4XHRh7DBVVEmq?=
- =?iso-8859-1?Q?7LyjcmWcAB//CsRaRMCUbrbmwZuu7EXQl/aUfMSxtpOA3zMjwQQ/4Qw3JP?=
- =?iso-8859-1?Q?6G0dGUnKDp78OsoVCCAza/eMO5CKR2WEMVTdE2Z7//Zf2kNFpyjnlpUYKP?=
- =?iso-8859-1?Q?YZmMxeuARt99tv8Y12J94/kwu7l4G16aRZ0LhHEsRtxVd4dZXZQjZFa9Bw?=
- =?iso-8859-1?Q?OGB7J1Jn47HH7g8R5Bv0vE1QmSy5/ulJNSgTE2Tn8BECysNn0KnfgVBsPG?=
- =?iso-8859-1?Q?sL2hEd8NgpfPKoHv1CfaCkGtCxOKDansIPtfbj5yy6GXfX/4jZVSNBEL9q?=
- =?iso-8859-1?Q?HUD4DQE8nZqNzhj3+Qh3q+RyZXFuPFwZBrpmiBU5c6KBroVcyCEHL+T5di?=
- =?iso-8859-1?Q?sbckEmqm8gSshas4JwJGMdVcNaKqV9GowunBmg6XMKGVx2w35MTNVItub+?=
- =?iso-8859-1?Q?vC8rY7coN2PfQ0THUw5VezUh4TTXDpbOY1J2RuphuTQrgol/AGHHSh0ULt?=
- =?iso-8859-1?Q?3plic4/UYVXtWC9TJuR/uC7HBjnGnrsM2R1+KuMOazHbDz6naWOLJZK6IW?=
- =?iso-8859-1?Q?G/qpHU/m3qu3NM+Bj6o5JqDjSITdzI/MccWkfrepukpyc/5TbHwXevFLrc?=
- =?iso-8859-1?Q?80p91AIpI0Of8jXDvBFL1gNLmeeld6gj7C2w7blxXd7bzctL8RnrQzja0H?=
- =?iso-8859-1?Q?S8aQldLIxU2SwBI8sA1GFnaPPj4ANk41QLhSiPAWo4XXAKez9xR+n06s+5?=
- =?iso-8859-1?Q?cFbXdmFPLQ=3D=3D?=
-X-OriginatorOrg: heitbaum.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 40442946-6b2d-4100-ba06-08df0507bdb0
-X-MS-Exchange-CrossTenant-AuthSource: SY7P282MB4909.AUSP282.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2026 13:24:51.6960
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 35ffebb5-7282-4da6-8519-efab29b0108e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: MtAPFGRBIiKDkJ5lmo3BixPZhvhbOeYbbUZSf8Jl1ADcBFAT/umhWWqAzuO4s85fl2WIn/hyDUZFY/BvwgJtmw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: ME5P282MB6017
+Message-Id: <20260828-jh7110-clean-send-v2-1-331680c8b9d1@samsung.com>
+In-Reply-To: <20260828-jh7110-clean-send-v2-0-331680c8b9d1@samsung.com>
+To: Vinod Koul <vkoul@kernel.org>,  Neil Armstrong
+	<neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,  Krzysztof
+	Kozlowski <krzk+dt@kernel.org>,  Conor Dooley <conor+dt@kernel.org>, Andrzej
+	Hajda <andrzej.hajda@intel.com>,  Robert Foss <rfoss@kernel.org>,  Laurent
+	Pinchart <Laurent.pinchart@ideasonboard.com>,  Jonas Karlman
+	<jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,  Luca Ceresoli
+	<luca.ceresoli@bootlin.com>, David Airlie <airlied@gmail.com>,  Simona
+	Vetter <simona@ffwll.ch>,  Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>,  Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,  Lee Jones <lee@kernel.org>, Andy
+	Yan <andy.yan@rock-chips.com>,  Philipp Zabel <p.zabel@pengutronix.de>, 
+	Emil Renner Berthing <kernel@esmil.dk>,  Hal Feng
+	<hal.feng@starfivetech.com>,  Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,  Heiko
+	Stuebner <heiko@sntech.de>, Conor Dooley <conor@kernel.org>,  Paul Walmsley
+	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,  Albert Ou
+	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,  Dominique
+	Belhachemi <db@domibel.de>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	mfd@lists.linux.dev, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, Icenowy Zheng <uwu@icenowy.me>,  Andy Yan
+	<andyshrk@163.com>, Marek Szyprowski <m.szyprowski@samsung.com>,  Maud
+	Spierings <maudspierings@gocontroll.com>,  Graham Markall
+	<hello@big-grey.co.uk>,  Michal Wilczynski <m.wilczynski@samsung.com>
+X-Mailer: b4 0.15-dev
+X-CMS-MailID: 20260828134815eucas1p2b2aabc17e9cc6346e5a93bde5c650958
+X-Msg-Generator: CA
+X-RootMTR: 20260828134815eucas1p2b2aabc17e9cc6346e5a93bde5c650958
+X-EPHeader: CA
+X-CMS-RootMailID: 20260828134815eucas1p2b2aabc17e9cc6346e5a93bde5c650958
+References: <20260828-jh7110-clean-send-v2-0-331680c8b9d1@samsung.com>
+	<CGME20260828134815eucas1p2b2aabc17e9cc6346e5a93bde5c650958@eucas1p2.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260828_062549_347327_D067A174 
-X-CRM114-Status: GOOD (  26.97  )
+X-CRM114-CacheID: sfid-20260828_064820_713631_B0842ABD 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,124 +100,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 28, 2026 at 02:14:22PM +0200, Heiko St=FCbner wrote:
-> Hi Rudi,
-> =
+Add the dt-binding for the StarFive JH7110 Innosilicon HDMI PHY.
 
-> Am Freitag, 28. August 2026, 12:55:56 Mitteleurop=E4ische Sommerzeit schr=
-ieb Rudi Heitbaum:
-> > On Thu, Aug 27, 2026 at 03:25:23PM +0200, Heiko Stuebner wrote:
-> > > Am Montag, 24. August 2026, 04:52:02 Mitteleurop=E4ische Sommerzeit s=
-chrieb Rudi Heitbaum:
-> > > > The rk1808 is the npu die in an rk3399pro package. It is wired to o=
-ne
-> > > > of the usb3 controllers rather than to an external port, and it nee=
-ds
-> > > > its reference clock running before it will boot, which is exactly w=
-hat
-> > > > this driver exists to do for onboard devices.
-> > > > =
+This device is a child of the starfive,jh7110-hdmi-subsystem node. It
+functions as both a PHY provider for the controller and as a clock
+provider for the variable pixel clock (hdmi_pclk), which it generates
+from its refoclk.
 
-> > > > It takes no supply from the driver: the rails are sequenced elsewhe=
-re.
-> > > > Only the clock matters here, and that is already optional and handl=
-ed
-> > > > generically.
-> > > =
+Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+---
+ .../phy/starfive,jh7110-inno-hdmi-phy.yaml         | 58 ++++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
 
-> > > the "elsewhere" might need a bit more explanation to verify it's the =
-right
-> > > implementation. Even if the regulators are always-on or something, we
-> > > still want the supplies defined - for future uses.
-> > =
+diff --git a/Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml b/Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..b1ab3c555fbf60a971f511af29a03a6b2e4ae097
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml
+@@ -0,0 +1,58 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/starfive,jh7110-inno-hdmi-phy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: StarFive JH7110 Innosilicon INNO HDMI PHY
++
++maintainers:
++  - Michal Wilczynski <m.wilczynski@samsung.com>
++
++description:
++  The PHY portion of the StarFive JH7110 INNO HDMI IP.
++
++properties:
++  compatible:
++    const: starfive,jh7110-inno-hdmi-phy
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    const: refoclk
++
++  '#clock-cells':
++    const: 0
++
++  clock-output-names:
++    const: hdmi_pclk
++
++  '#phy-cells':
++    const: 0
++
++required:
++  - compatible
++  - clocks
++  - clock-names
++  - '#clock-cells'
++  - clock-output-names
++  - '#phy-cells'
++
++additionalProperties: false
++
++examples:
++  # Shown as a child of the HDMI subsystem node; see
++  # Documentation/devicetree/bindings/mfd/starfive,jh7110-hdmi-subsystem.yaml
++  # for the full node.
++  - |
++    phy {
++        compatible = "starfive,jh7110-inno-hdmi-phy";
++        #clock-cells = <0>;
++        clock-output-names = "hdmi_pclk";
++        clocks = <&xin24m>;
++        clock-names = "refoclk";
++        #phy-cells = <0>;
++    };
++
++...
 
-> > As follow up on the bringup of the Rock-Pi-N10, the proposed change to =
-the dtsi
-> > for the rk3399pro-vmarc-som is here, but needs the provision of the usb=
- first.
-> > https://github.com/heitbaum/linux/commit/6b114b6fff4022c330003d7f70ce09=
-915ffd774f
-> =
-
-> I might have formulated that strangly, what I meant was, who is enabling
-> the power supplies.
-> =
-
-> The "NPU Power" part of any rk3399pro schematics (should) list 5 power
-> supplies for the NPU block itself:
-> =
-
-> NPU_LOGIC_VDD
->     --> regulator likely named NPU_VDD_LOG_S0
->         --> enabled by NPU_PWREN_2 gpio fixed regulator
-> =
-
-> NPU_EFUSE_VQPS
->     --> regulator likely named NPU_VCC1V8_EFUSE
->         --> enabled by NPU_EFUSE_EN_H gpio fixed regulator
-> =
-
-> NPU_CORE_VDD
->     --> regulator likely named NPU_VDD_S0
->         --> TCS4525 regulator with voltage being set via the i2c controll=
-er
->              inside the NPU - but enabled by the NPU_PWREN_6 gpio from
->              core RK3399.
-> =
-
-> NPU_CPU_VDD
->     --> regulator likely named NPU_VDD_CPU_S0
->         --> enabled by NPU_PWREN_4 gpio fixed regulator
-> =
-
-> NPU_ADC_AVDD_1V8
->     --> regulator likely named NPU_VCC_1V8_S3
->         --> enabled by NPU_PWREN_3 gpio fixed regulator
-> =
-
-> Naming might vary, I found just some EVB schematics.
-> =
-
-> Someone needs to enable these, so the question was, who is doing that?
-
-Hi Heiko,
-
-I hadn't looked in to these from the mainline viewpoint. I had been
-using an adapted vendor script based on the radxa npu_powerctl binary
-which reimplements the npu_reset sequence over GPIO.
-
-This has been the sequence:
-
-gpio0 line 4   NPU_PWREN_1   -> 1, 2 ms
-gpio0 line 10  NPU_PWREN_2   -> 1, 2 ms
-gpio0 line 11  NPU_PWREN_3   -> 1, 2 ms
-gpio1 line 22                -> 1, 2 ms
-gpio1 line 23                -> 1, 2 ms
-gpio1 line 24  NPU_PWREN_6   -> 1, 25 ms
-gpio1 line 0                 -> 1  (reset release)
-
-I have the schematics and the working N10 here, so let me look into
-describing these in the .dts and update the onboard_usb_dev.h.
-
-Would you prefer that once I have a working and tested dts description of
-the rk1808 - submit the onboard_usb_dev.h and rk3399pro-vmarc-som.dtsi
-changes as a patchset - or just update the onboard_usb_dev.h as a v2?
-
-Regards
-Rudi
-
-> Thanks
-> Heiko
-> =
-
-> =
-
-> =
+-- 
+2.34.1
 
 
 _______________________________________________
