@@ -4,115 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6E7C61DF0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 04:10:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AE8DC61DE2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 06:42:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IyBTO2lMUdWzg8Z6V25JgZjVQHhiBNKBHa+YaZEvvR8=; b=TWZDXmFXUV539e
-	1QrrNWMca+HI+eU0VEB3Oyy17Hx4U/v7dQpcUK0zOJ03XCmlNII5ljcwOOLEM6ogxxvlTIOB51nhT
-	gCECz8e9jdpWvjis7JxzOgDYY2DKE/IsCWx+9AFkPVu6Srfhx+cwVP//XGHIMzpdFPwI+Km90N+zX
-	PgmjMxhkGEWJ5IRhCaLVdvA3IhPuJr3JpUj9UkpH5cW4EedH0vA7R0NyfbZP0+qgmRueq9Zzxz3S1
-	PlIRL2js4yEvXCWbLhYqzIzEHD5700Feqo3YJRgE8vZGxvhGbd74ElO9szIpESUIWUFrNobQuQObB
-	bENojeSuIjgJEIABIUKg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=B9bDMPvChYlzjKRx4IoLeSOneOInLXVqx3FfCvntaFk=; b=T2lM/wC0vRyXG3
+	bLyVnOzzNm83DI/rIVD9UjNt6HZa4KiBYLOiEBdK/5OJ+GHKHQsIfHd0JiL8a4fe0cP01Pz3oxPHb
+	rFcd5kc8UofwGLVxIDZ9Fry+aPsPzY182b2X7SLc9c8hdShgo9dMbXDQELRRPatUIfZFQgo+S7yUS
+	wcB9augStf9DOWuuOuuyfDUrSDHW87A0laKmX7ncGrKihuGxJSWCENgvHn7XmFptmJBYQAXDulLof
+	VzkmFjGX4f6LW+cUBd5I7c9rrhHJgHpTIiohPO/gnv2gslVQGJ5q/tQPotvlHlg+VCuWmQakxecBX
+	tJCZhWxoczsqh93e/OcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0tLw-00000008SfU-1I0F;
-	Mon, 31 Aug 2026 04:10:36 +0000
-Received: from fout-b2-smtp.messagingengine.com ([202.12.124.145])
+	id 1x0vil-00000008d38-2Ghb;
+	Mon, 31 Aug 2026 06:42:19 +0000
+Received: from mail-m15586.qiye.163.com ([101.71.155.86])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0tLt-00000008Scg-0Jqj;
-	Mon, 31 Aug 2026 04:10:35 +0000
-Received: from phl-compute-10.internal (phl-compute-10.internal [10.202.2.50])
-	by mailfout.stl.internal (Postfix) with ESMTP id C1A191D000E2;
-	Mon, 31 Aug 2026 00:10:31 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-10.internal (MEProxy); Mon, 31 Aug 2026 00:10:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1788149431; x=
-	1788235831; bh=yyAlnjllRJoc8EnuoheqRfmGGLiMMzIInITnv3UMbRQ=; b=p
-	tqF2cjx8J2Yp8MYjYCU6uG9FBoYI5tYG85Z8C/LzvXlE3s7TBg40D2GczawCBWbi
-	xq1daNUDthJ6jybl/nrxF0RvSPPi1ruDApZD1KDc7BWzoSQQ2vS/b8UO/cQtuImX
-	JxLlLD134P95Muo96itFE+eB2Yf8FHxdMNskL7Mv8LXN8qlvDswM3QJF21MzDQB7
-	n0/+IGrIv01kMvG68DL/RAnHI+mH4K/7SDbynuDgr8Uru0z4VxZH8OVtRw5dw994
-	JEBCLvXFRZ1zBY3s8tjJwnkpSUi0OS34dakdHoQCHfcBUC61rChLqCSsFUjRgNSZ
-	9UJQ+f1uL8G8wHJTC/klg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1788149431; x=1788235831; bh=y
-	yAlnjllRJoc8EnuoheqRfmGGLiMMzIInITnv3UMbRQ=; b=HUtxA3IxCZ57NdmV9
-	apaggqOkpQL9I/IkEu5k1GLdjGR1eNwqH8ZwEtlGNY2P/DNjnSfEXZNygovq7a2O
-	DxgLqbF0Ctm0BEbKUVMIZBH961nsHdzYHNlCs1O2RBvGCenOKiNxDeRVW3WkQkiP
-	3kGb74NcMDY9AhPz0R1ll8z1xtlHLrcd9CU18If1i9FN7Yo7U1WXSeLDq1eO1B0X
-	Hf4H2vZmhNioMc70j9Ql3FBdbTT/VpJKzegsdD94rVurfiPhqReo2zgeXEQNE5pn
-	1jGVLxGOHKLxk50kuu/uPRVwS+fRm3yzdxwj2jOZo/1ppyJ50RX3976FtWhkvB54
-	vK+hw==
-X-ME-Sender: <xms:t_6UanlXnad4NTpuOfwYbwhposK5fj_P0g2A59RrE5KBI9A2PjOwSw>
-    <xme:t_6UamX7-KIRuF1I9rdWmlr0tU4NvcVF9Mx9Yu9O88cX3UR1vHmCIKK3xvvqTRwor
-    jxhF_AbNMUpcNQbKVaVyegWtMEUBEqbABcQGxTA-WPcTwu_9jF6QHA>
-X-ME-Received: <xmr:t_6Uajp_rFTsMslCdmg7Bhgv6q6jLzoVcm1ZNJCNuw0KzATnp1ZWxpsUOsGrFYlkdsEJkAM_ug>
-X-ME-Proxy-Cause: dmFkZTGgZgR+VcPfe+PhAzOLd0oIFeQYFsXhiZHiqFEfJLX+Zh5ZMdMCmp7DSb14qyqV39
-    jp/P4WoX1+fWMg7xKNkg19erm52kJxQUcTYbC3fhf7J3kTCWp177f4eiTLGImcgm9FlW/K
-    919HsGQiniAe1IB7e9jl0y2Y9dxEodpqsZNpi/Wh8/Y0aGqz1kZ0NysbtBSq+wCn4J8DOp
-    NMVeqNR7AEscaSespCcNi1Tsf5l8QtvZS5D7uic9GEJ8sDuUqjUvTw65giXWj5Lizkd8mk
-    k6Wvf2Wg5sOErrVa3i9eyoCaEv0ghglB6LbcQ07PYZ4WQgjzQYOd+k7ebFmJtNV5tyGOc8
-    Q/+P0HR1tJLaI3SBZbzhAoTOvs9DTifvbmyzmZx1tJ4++5+zaT1c3uIPPgxmp5ytgjnFHT
-    +f4CW97b8/8yJ5fBwI+tcd1jhH6vdqo3E236BxiJAf9zmbXaGOda7BivbvdcQdohxE5QFR
-    R8yu2LGvJ2AUnPvVP0LU2UFszFa5jWeoZR0VmQM6jaMNlwqI5LiH/6nD5T4yzqJmcZJet/
-    SNvBkSlb9A5eTNfehnYPWlp52+vtYC1PBA6in/+0UhBfmK3lhnS4zVOhD3hFrckJTLWvFO
-    9YcPPPZkdIESfF2zPGtzxGcQlabFsm2VIiH2VPMaw7Z3gn22IJ4l0yh9mIiQ
-X-ME-Proxy: <xmx:t_6UatUcwNPJCVKMjTqa3jbt8MYGN9q4dOqGYWk6PB3YO6aT77lAzQ>
-    <xmx:t_6UarDq6V-AnZyeceAA6M9BTa4V5puiUI5ttupfNbdg_0hm_ZDu_Q>
-    <xmx:t_6UapXIAxhkfUqTkrmsJow2REbRm4qHZnfJZaqs9gZ7Tt6E1_Z1yQ>
-    <xmx:t_6Uah_ecikTMIZze-7yUXtmlsGDp_X6sXX0hKMg9EjZPO_7291a_A>
-    <xmx:t_6UaquAE4pD4eKqbiiCbP5qhUWqxbQr8FXXgtdRI0lmMVUvsxN_G0v1>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 31 Aug 2026 00:10:24 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	ulfh@kernel.org,
-	p.zabel@pengutronix.de,
-	ogabbay@kernel.org,
-	zhangqing@rock-chips.com
-Cc: royalnet026@gmail.com,
-	u.kleine-koenig@baylibre.com,
-	chaoyi.chen@rock-chips.com,
-	diederik@cknow-tech.com,
-	alchark@flipper.net,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	iommu@lists.linux.dev,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1x0vij-00000008d2V-1FHa;
+	Mon, 31 Aug 2026 06:42:18 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4be9c29ca;
+	Mon, 31 Aug 2026 14:36:56 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Neil Armstrong <neil.armstrong@linaro.org>,
+	Vinod Koul <vkoul@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-phy@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: [PATCH v10 13/13] arm64: dts: rockchip: rk3576-rock-4d: enable NPU
-Date: Mon, 31 Aug 2026 16:08:04 +1200
-Message-ID: <20260831040804.24111-14-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260831040804.24111-1-gahing@gahingwoo.com>
-References: <20260831040804.24111-1-gahing@gahingwoo.com>
-MIME-Version: 1.0
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] phy: rockchip: naneng-combphy: Fix TX detect RX termination errata
+Date: Mon, 31 Aug 2026 14:36:44 +0800
+Message-Id: <1788158204-161347-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0aa0568907fa03a4kunmda4bace446a0ab
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGk9CSVZNTx5IHkMeGU
+	1DSUlWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=f6G5P3sjOCx1T9mcIIBZGVZcZPtlosS34n6wryvcpRH1kVxgrKkUT9XimYCecbeM2KpTjfzTWd3NuxG2JwEDNhoa0dxECebzNnwgwfsLksupuDT5g0HRyOPVHLkk6C3eAW7PYFrpmKjqTxbd0+4n+MgJ3huX/ysbU1PEJECtx1A=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=Qoc1zbK+pfmGG4t1HLPMA0l2I29GPvBOn6lUEXanbS8=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260830_211033_156755_4A346E9C 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20260830_234217_555396_A87079E8 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,66 +64,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable rknn_core_0 and its IOMMU on the Radxa ROCK 4D, and hand
-vdd_npu_s0 to the NPU power domain as its domain-supply, so the rail is
-switched by the domain that gates the block.
+Some PHY revisions may fail to detect the peer RX's termination
+resistor (RTERM) under certain critical temperature conditions.
+This causes TX detection failures on PCIe links.
 
-Measured on a ROCK 4D with this in place. The rail's regulator debugfs
-reports open_count 1, so the domain is the consumer that took it. A
-sampler running beside an inference caught use_count at 1, and three
-reads at rest report use_count 0 with the rail disabled, so it follows
-the domain rather than staying on. Over the same run the genpd
-active_time of all four NPU domains rises by roughly 60ms per inference,
-and the inferences either side of that are 128 of 128 channels against
-the CPU reference.
+Add a workaround to force the RTERM detection ready signal for
+affected PHY revisions. This ensures reliable TX-to-RX termination
+detection across all operating temperature ranges.
 
-rknn_core_0 keeps npu-supply on the same rail, which the binding
-requires. Only rknn_core_0 is enabled: the driver binds one core per
-node and the second core is left to whoever can test it.
+The fix applies to RK3562, RK3568, RK3576 and RK3588 SoCs which share
+the same PHY IP with this hardware errata.
 
-Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+Fixes: 7160820d742a ("phy: rockchip: add naneng combo phy for RK3568")
+Fixes: f13bff25161b ("phy: rockchip-naneng-combo: Support rk3562")
+Fixes: ba8ad7eece66 ("phy: rockchip-naneng-combo: add rk3576 support")
+Fixes: a03c44277253 ("phy: rockchip: Add naneng combo phy support for RK3588")
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 272af1012..79e039bee 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -722,6 +722,10 @@ &pcie0 {
- 	status = "okay";
+ drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+index 7843356..3102a99 100644
+--- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+@@ -106,6 +106,9 @@
+ #define RK3568_PHYREG18				0x44
+ #define RK3568_PHYREG18_PLL_LOOP		0x32
+ 
++#define RK3568_PHYREG26				0x64
++#define RK3568_PHYREG26_FORCE_RTERM_DET_RDY	BIT(5)
++
+ #define RK3568_PHYREG30				0x74
+ #define RK3568_PHYREG30_GATE_TX_PCK_SEL         BIT(7)
+ #define RK3568_PHYREG30_GATE_TX_PCK_DLY_PLL_OFF BIT(7)
+@@ -194,6 +197,7 @@ struct rockchip_combphy_cfg {
+ 	unsigned int num_phys;
+ 	unsigned int phy_ids[3];
+ 	const struct rockchip_combphy_grfcfg *grfcfg;
++	bool force_rxterm_det_rdy;
+ 	int (*combphy_cfg)(struct rockchip_combphy_priv *priv);
  };
  
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hdmi {
- 		hdmi_tx_on_h: hdmi-tx-on-h {
-@@ -779,6 +783,15 @@ wifi_en_h: wifi-en-h {
- 	};
+@@ -265,6 +269,17 @@ static int rockchip_combphy_init(struct phy *phy)
+ 
+ 	switch (priv->type) {
+ 	case PHY_TYPE_PCIE:
++		/*
++		 * Hardware Errata: TX fails to detect peer RX termination.
++		 * Some PHY revisions may fail to detect remote RX's RTERM
++		 * (receiver termination resistor) under certain critical
++		 * temperature conditions. Set force rterm detect ready to
++		 * fix it.
++		 */
++		if (priv->cfg->force_rxterm_det_rdy)
++			rockchip_combphy_updatel(priv, RK3568_PHYREG26_FORCE_RTERM_DET_RDY,
++					RK3568_PHYREG26_FORCE_RTERM_DET_RDY, RK3568_PHYREG26);
++		fallthrough;
+ 	case PHY_TYPE_USB3:
+ 	case PHY_TYPE_SATA:
+ 	case PHY_TYPE_SGMII:
+@@ -801,6 +816,7 @@ static const struct rockchip_combphy_cfg rk3562_combphy_cfgs = {
+ 	},
+ 	.grfcfg		= &rk3562_combphy_grfcfgs,
+ 	.combphy_cfg	= rk3562_combphy_cfg,
++	.force_rxterm_det_rdy  = true,
  };
  
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
- &sai6 {
- 	status = "okay";
+ static int rk3568_combphy_cfg(struct rockchip_combphy_priv *priv)
+@@ -998,6 +1014,7 @@ static const struct rockchip_combphy_cfg rk3568_combphy_cfgs = {
+ 	},
+ 	.grfcfg		= &rk3568_combphy_grfcfgs,
+ 	.combphy_cfg	= rk3568_combphy_cfg,
++	.force_rxterm_det_rdy  = true,
  };
+ 
+ static int rk3576_combphy_cfg(struct rockchip_combphy_priv *priv)
+@@ -1219,6 +1236,7 @@ static const struct rockchip_combphy_cfg rk3576_combphy_cfgs = {
+ 	},
+ 	.grfcfg		= &rk3576_combphy_grfcfgs,
+ 	.combphy_cfg	= rk3576_combphy_cfg,
++	.force_rxterm_det_rdy  = true,
+ };
+ 
+ static int rk3588_combphy_cfg(struct rockchip_combphy_priv *priv)
+@@ -1391,6 +1409,7 @@ static const struct rockchip_combphy_cfg rk3588_combphy_cfgs = {
+ 	},
+ 	.grfcfg		= &rk3588_combphy_grfcfgs,
+ 	.combphy_cfg	= rk3588_combphy_cfg,
++	.force_rxterm_det_rdy  = true,
+ };
+ 
+ static const struct of_device_id rockchip_combphy_of_match[] = {
 -- 
-2.43.0
+2.7.4
 
 
 _______________________________________________
