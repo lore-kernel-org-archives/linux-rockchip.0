@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E9FC61DE2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 10:25:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFCD9C61DE2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 11:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jEWF2Mizt/eD4MIhpGnM4A4w15tYUwJQKIv2Fbi/Vhk=; b=sHCAa97F9Sb80f
-	xmRHvPOZQr//ltQ0dFVVkt1UjvTz6P5pmVKlTNQLBcG5mEKTInyiS1pdeoKEcISQB3BAafozC7S6g
-	iPX+PjwW2oPFHiitpc3c/1BzrHGi2wgcQJTGITBE1FNc/JsjMfn50Nv10RRavZulnyNkzSn2Op8Ms
-	4iic2roX1GTm4RCMOvdtkYcfXh6eQuskWKs2ROiXE6eZTri57GzQMIz0ceRgElZmg+KmeKjyX549Q
-	NfHheHW6O1LHkprl2JX5ouMiWJPvlIoM7RKLBadYgaaI1x8Hv9lJjwjh8S6emIqqAOuZTQBUuhOQp
-	+1U/i7qFgqH7DI7ESEbA==;
+	List-Owner; bh=PiyQIRh/u/HApSF8pffgWEvM3lDj8ag61j/NRNsjjjw=; b=YNYI2sQxqDXMSS
+	cRpyYuljvu8ML181cZxI607qu//TZklP55EERmqhVo6gK+lYyU0xPyR2rChst2+QgNFSNyuLHVwzi
+	gKDuiqjMumo0TNACFide9d+KNdMyOsrcqGYRXPQOkUqkVpKV2Ne6ZC/Dq1qHvllg3D3TPx6JIzkY3
+	YG5YMItL44jWhNWymBpsj0dFKltk7Rr5GISJRZYSxFVrao7EOikxbCWz6aoxpCddKE8FDx+Vgpnua
+	MTdcqPP5y8kI4Dhu97bFehTaL0VPAZonX8BBM/7NabaeDj55yxGvkauQZn8v90+2DJzEutbWvYana
+	78ErSku/x0BBvs1TpveQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0zCL-000000096XG-3IN5;
-	Mon, 31 Aug 2026 10:25:05 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x10GB-00000009B72-40f6;
+	Mon, 31 Aug 2026 11:33:07 +0000
+Received: from sender5-pp-f112.zoho.com ([165.173.182.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0zCK-000000096WD-064z;
-	Mon, 31 Aug 2026 10:25:04 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5F71D434D2;
-	Mon, 31 Aug 2026 10:25:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F52C1F000E9;
-	Mon, 31 Aug 2026 10:24:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788171903;
-	bh=zaseKfBKearPYw7Wuabe86eyjpL9spqzKr085aFFM3M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=JwlEeD1AYQjwcUAv68IL1iO2pIcPdLTkGHHVGdpXZpuMdmTjBJhc2u8Z6i04N/LDX
-	 qmDHN67KZvrQqQUz0P1hN3v4pm0coO4+caT2+mPVHnrZWokDN/aLxDlHEKYfyuvhtH
-	 3dWCDefqAMUIGIWySelqyQiMhaTIzzJIhuVcuZJXFsC8cpmQXJjhA4bFf0O5PhJKWF
-	 DILbrSEIX0djfXkoeAUuW/dNd8iiRunMYv08yFvK0Gb5byNnHmwBknZLT9a8W6h62S
-	 QpQ75f/dgPQ6ImlDr7kl6PJB9gFi2m5n5HAgq2qgMwteKBqDZdbmIp+yj8ydPULnNt
-	 6/amISV3gHSCw==
-Date: Mon, 31 Aug 2026 12:24:55 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Koichiro Den <den@valinux.co.jp>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Frank Li <Frank.Li@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Rob Herring <robh@kernel.org>, Aksh Garg <a-garg7@ti.com>,
-	Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
-	Chaitanya Kulkarni <kch@nvidia.com>, Jon Mason <jdmason@kudzu.us>,
-	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Manikanta Maddireddy <mmaddireddy@nvidia.com>,
-	Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>,
-	linux-pci@vger.kernel.org, linux-nvme@lists.infradead.org,
-	ntb@lists.linux.dev, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 0/3] PCI: endpoint: Support hardware-owned MSI-X table
- and PBA
-Message-ID: <apVWd1u9JjTKQczu@ryzen>
-References: <20260830151948.3547577-1-den@valinux.co.jp>
+	id 1x10G6-00000009B3q-1e8r;
+	Mon, 31 Aug 2026 11:33:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1788175966; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=EleetKclAEvQ9L8pxV+F2QaLovXSAX6nfqp7L2Nqd9U8FpNH2/2TX8NZRUHw2KGe/lUdhE0DDlqn3y7qBKG7HfyC9P9FDqBV252NRxoGUUjU/5fQtbkW5W8RosfmAXhHo770nlMqGJpzFLY2Ox8M3syVApjt4Xqzs1Wq3pV1u44=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1788175966; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=1bmoP76gMT2BwTB0k454lDwNfisMmqxZAOhXk7e+A3o=; 
+	b=QUEYz6uRfersySI4lzmZxIKqpG6P0kFTyuKqHiKcGzuzOEmyuY48CuG7VRKnkoAczXTTr1De1qBuK/lyaKiMH9rqjZ8p0shfQVDFJRYikUIX71Gwec89ifnmjmykg5ww8DvHsA11EuxUL7SBM58WWHfecoK3i0iO0FX9QUqEo7s=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788175966;
+	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=1bmoP76gMT2BwTB0k454lDwNfisMmqxZAOhXk7e+A3o=;
+	b=P0k80emAkoE/Zslcoz8ZEZZ/6Y62orx0DOwYdj4TWC9BSjP7pP/X7dKauvmGalyZ
+	fFM7I8rAkBr5T96AjZlb7Is26uO8PthOcrfvQWed1wBJ3cVHZU9zazr//2XgQOhZcms
+	WdUVwqVFOlZcVMozsgbEPIYT55Y9FMczq9B0flWM=
+Received: by mx.zohomail.com with SMTPS id 1788175962298302.1922470156459;
+	Mon, 31 Aug 2026 04:32:42 -0700 (PDT)
+Message-ID: <7425ac83-f6d8-4443-a26e-a47f9306aa24@collabora.com>
+Date: Mon, 31 Aug 2026 13:32:37 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260830151948.3547577-1-den@valinux.co.jp>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/7] dt-bindings: phy: Add PHY_TYPE_DSI and
+ PHY_TYPE_CSI definitions
+To: Krzysztof Kozlowski <krzk@kernel.org>, Jason Yang <jason98166@gmail.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Guochun Huang <hero.huang@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com>
+ <20260821-dcphy-rx-v1-v4-1-f1797634233d@gmail.com>
+ <20260827-thundering-cream-saluki-dd05df@quoll>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20260827-thundering-cream-saluki-dd05df@quoll>
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260831_043302_500582_61C76C8F 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,81 +90,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Koichiro,
+Hi Krzysztof,
 
-On Mon, Aug 31, 2026 at 12:19:45AM +0900, Koichiro Den wrote:
-> Hi,
+On 8/27/26 13:45, Krzysztof Kozlowski wrote:
+> On Fri, Aug 21, 2026 at 08:02:29PM +0800, Jason Yang wrote:
+>> A MIPI D-PHY or C-PHY can be a transmitter (DSI) or a receiver (CSI),
+>> and in some PHY blocks both work at the same time. The existing
+>> PHY_TYPE_DPHY and PHY_TYPE_CPHY cannot tell whether a consumer wants
+>> the transmitter or the receiver.
 > 
-> Some DWC endpoint controllers keep the MSI-X Table and PBA at fixed
-> locations in a reserved BAR. On RK3588, the MSI-X doorbell uses this
-> hardware-owned layout, as discussed in e.g. [1].
+> The consumer knows this already, no? Imagine consumer of the phy is some
+> ISP receiving data over CSI for given port, thus consumer cannot
+> transmit over that link.
 > 
-> The reserved-region types for the Table and PBA were added with the
-> Tegra194 description. The MSI-X setup API, however, still takes only the
-> Table BAR and offset and assumes that the PBA immediately follows it in
-> the same BAR.
+> All this seems redundant.
+
+Indeed the consumer should know what to request. For example, the MIPI
+CSI receivers should request the PHY_TYPE_CSI PHY. But I am not sure why
+this should be redundant?! Can you elaborate? TBH I don't really
+understand your remark.
+
+>> Add PHY_TYPE_DSI and PHY_TYPE_CSI, so that a binding can select both
+>> D-PHY or C-PHY and transmitter or receiver. They do not replace
+>> PHY_TYPE_DPHY/PHY_TYPE_CPHY, which remain the right choice where a cell
+>> selects the mode. The first user is the Rockchip RK3588 MIPI DC-PHY
+>> binding.
+>>
+>> Suggested-by: Michael Riesch <michael.riesch@collabora.com>
+>> Link: https://lore.kernel.org/r/82da3622-9c3a-454c-87bc-fb4ec7adb68d@collabora.com
+>> Signed-off-by: Jason Yang <jason98166@gmail.com>
 > 
-> This series passes the complete layout to pci_epc_set_msix() and adds
-> pci_epc_get_hw_msix_layout() to expose a hardware-owned layout. The core
-> does not select it automatically. The choice stays with the EPF.
+> Where is any DTS using it? I did a search and no results of upstream
+> posting.
 > 
-> A hardware-owned layout is not a direct replacement for every caller.
-> pci-epf-ntb, for example, reads host-programmed Table entries from its
-> own BAR to set up peer outbound mappings.
+>> ---
+>>  include/dt-bindings/phy/phy.h | 2 ++
+>>  1 file changed, 2 insertions(+)
+>>
+>> diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
+>> index 979b5dfd8353..8ee3f88e6d80 100644
+>> --- a/include/dt-bindings/phy/phy.h
+>> +++ b/include/dt-bindings/phy/phy.h
+>> @@ -24,6 +24,8 @@
+>>  #define PHY_TYPE_CPHY		11
+>>  #define PHY_TYPE_USXGMII	12
+>>  #define PHY_TYPE_XAUI		13
+>> +#define PHY_TYPE_DSI		14
+>> +#define PHY_TYPE_CSI		15
 > 
-> The series also fixes an interrupt-type mismatch in vNTB. ntb_hw_epf can
-> select MSI-X, while pci-epf-vntb currently configures and raises only
-> MSI. On RK3588, selecting the fixed BAR4 layout also selects the DWC
-> MSI-X doorbell. EPF-owned layouts continue to use the regular path.
-> 
-> In short:
-> 
-> - pci-epf-vntb gains MSI-X support and uses the hardware-owned layout
->   when available.
-> - pci-epf-test, pci-epf-ntb, and the NVMe PCI EPF keep their EPF-owned
->   layouts. This avoids unnecessary changes and reduces regression risk.
->   They can use a hardware-owned layout later if/when needed.
-> 
-> [1] https://lore.kernel.org/r/aY2q80zeRKSRO21H@fedora
+> DSI and CSI does not look like types of PHY...
 
+Fair point. AFAIK both CSI and DSI are protocols on top of the physical
+CPHY and DPHY communication. Maybe we should stick to
+transmitter/receiver/RX/TX direction/.../something. Would work for me
+too, my simple request is to *NOT* introduce the same magic for each
+combo PHY block over and over again, but create something generic.
 
-Perhaps you could improve the cover letter to more clearly state why you
-are doing this change.
+What about
 
-Some guesses:
-- Better performance. We avoid the need to map + unmap the MSI target
-  address using an iATU each time we raise an MSI-X. We also avoid the
-  need to flush posted write before unmap.
-  Is there any performance difference? If so, it would be nice with some
-  numbers.
-- Allows more concurrent I/Os. By not using an iATU when raising an MSI-X,
-  we have one more iATU available, so we can have one more outstanding I/O.
-- Less waste of BAR space. (Since the MSI-X table and PBA already
-  always takes up space in one of the BARs, it is wasteful to have
-  the EPF drive duplicate it in another BAR.)
+    #define PHY_DIRECTION_RX	0
+    #define PHY_DIRECTION_TX	1
+
+or so?
+
+This is pretty much what Jason had in v1, but 1) generic instead of
+Rockchip-specific (if anything, it probably should be Samsung-specific)
+and 2) switched the constants to match the state of the art in the
+kernel better.
+
+Best regards,
+Michael
 
 
 
-Personally, I don't see why we should only change pci-epf-vntb to use
-the hardware-owned layout when available. I don't see why we would not
-want to change pci-epf-test, pci-epf-ntb, and nvmet-pci-epf as well.
-(If the EPC defines a HW defined MSI-X table + PBA, why not always
-use that? If there is no HW defined MSI-X table + PBA, let the EPF
-put the MSI-X table in any BAR it likes.)
-
-
-I understand that you introduce dw_pcie_ep_msix_layout_is_hw_owned()
-because you want an EPF driver optionally use the HW defined table.
-But if all EPF drivers always use the HW defined table if available, I think
-you can avoid introducing this helper, and let rockchip_pcie_raise_irq()
-unconditionally call dw_pcie_ep_raise_msix_irq_doorbell() for case PCI_IRQ_MSIX.
-
-See e.g. drivers/pci/controller/dwc/pci-layerscape-ep.c which already calls
-dw_pcie_ep_raise_msix_irq_doorbell() unconditionally for case PCI_IRQ_MSIX.
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
