@@ -4,115 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0321CC61DD3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 08:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61BBBC61DE2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 09:14:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IyBTO2lMUdWzg8Z6V25JgZjVQHhiBNKBHa+YaZEvvR8=; b=rWARLJN0BTWr4C
-	Ld8ixtAYNxbgjSbtkp7J1yGq91LDwDc17Yk5pTEKiqiq8X6+Jb9wAY7XuRnaoKlfmr/GoR8uIXLy2
-	3LtxSnEFWuzrnSPK/R6JjJS02VRl+JjamDKNzUHsg33bnH4Ws7n5yj/Z247yqemqlqTwaz1+T5aj5
-	Jhgsba7kNOJqU5pQG+eTGoXz2dK+UZUHrsv2zV+s7VzeagKT1oT+oFxE6HBKFNpz+rxZMugFEjvRF
-	La/GJnjcCXqKx8BkocmtSgCwPRRA4At1h8K5HNjvruXg3RaKLdRu4Rumq+nyVs9tCms0RtpqR07Oi
-	ZjQQeSSYzI8lZc6rduxA==;
+	List-Owner; bh=uwcTIylOx8onO+9CaN5Um+XDlwSsy3nKZociAPK5y5A=; b=cbTWZpwOriJB6k
+	KzSYQxu4Kx4YAILKgDTllYH/q4ywGgdjpWhQhKnfmRy/wk1PYfMBKhAxhuaabeZD9NLJz35Y+BJpz
+	vEUe5gRwFg++gvOFZjQ2ot7lEkutbv6kzyyJpK4EbfIwldniRqntUv1Z/OhKvBQEmZuBjJ4S7vYoW
+	wf+qpnopqWvmw2ZIQrvQFNrYt+lZGWy2B2VVVjdRElMVxsOUB9uH7wOaOqoKWnhXfyZ0twbSGc+0o
+	McHbYyoBXyN297tIQw1TvZRSOXNQaK2LY57YbcypldE4zduCOoKSvOu6EDI0phFSzB6ziMtKJCRJE
+	IgNeRib5ruXhgx6JgZww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0xHl-00000008rqa-2Sgo;
-	Mon, 31 Aug 2026 08:22:33 +0000
-Received: from flow-a4-smtp.messagingengine.com ([103.168.172.139])
+	id 1x0y6I-00000008zuu-3hdF;
+	Mon, 31 Aug 2026 09:14:46 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0xHf-00000008rjn-1D4t;
-	Mon, 31 Aug 2026 08:22:29 +0000
-Received: from phl-compute-11.internal (phl-compute-11.internal [10.202.2.51])
-	by mailflow.phl.internal (Postfix) with ESMTP id 7AC0E1380045;
-	Mon, 31 Aug 2026 04:22:26 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-11.internal (MEProxy); Mon, 31 Aug 2026 04:22:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1788164546; x=
-	1788171746; bh=yyAlnjllRJoc8EnuoheqRfmGGLiMMzIInITnv3UMbRQ=; b=P
-	5vqeOw3ShNwcVBCo0k+wdZQceJK5uqFU/EnL4qZRbrjVznhH5r/SdRUCKEqhIDpP
-	y1h3ZY4Sm1jwrGe7p3Lsabi+MnMnhQ73tiQcRNC3FmJoJCrdADhfikvkLq5gYpZy
-	HG87BJPuMPrHUEPOALX0FOjWhS14GrDssJp6xZPrNuiwA/obU966sk1+zMk08ulF
-	YM7g50Ptv39ILyEs9AREsWIxRlung84TzctmEhAYEi3FGewxS+csk39JRVHdbzaW
-	6M+kj45fhtsDMZ8IBWZam8TvwLMuqE9c/VPSKoItahq630nSb100GJ+TvjxDI10e
-	E/yopNWFLbk+NkYhfdHVw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1788164546; x=1788171746; bh=y
-	yAlnjllRJoc8EnuoheqRfmGGLiMMzIInITnv3UMbRQ=; b=VZ1NMvm9ufm+ap+8t
-	SuJlH6aAjIyhx4gM+mcBuqtMaHkNbpB2nYr+BrYV56iwqCpFB1VUwS3rBezMP3hP
-	1hjUSZEj8B6uqdfdG+TcpgPIzp8RTUp/U+5SBe7QrZDeILnzn6uZteItf2vaZSCH
-	EYG5OxRla/e8bb+AnqDA4yMYHqSxRNm+d6AXbqxgnOb5oG+7aE6Kkkpq+QDAS6c3
-	mP5+2S3h9IYhy2ohBwHQxzsA66zmUyTusjdjzjtPV652oCr22bL25HKVL8w/4myI
-	t4hary/SDcsS2Jcv7bavfTe2BNUJ3CTuStrRAbVnTPfX1Ns3CtJekefeC8mSeqo4
-	4+Hdg==
-X-ME-Sender: <xms:wjmVat0bqC9i3Gc4GDM9cMyiIiw1mRJRyP4ucpYpYZt-lZE_pfm7hA>
-    <xme:wjmVavlxMABW87ynYLKCF9HzH90_l0JdTvD8SrFCMSepAraK1Gggnu8b9lFyqegd2
-    gOevkZ3opUYXpVLMaQk89if2OPw5eifrmB59bDfSXJP1RY6qpeRXYkH>
-X-ME-Received: <xmr:wjmVaj70QoKrX8_AkeGr-LVL5dS68i4zPWrhSlK-xRxjUKikZ4Xu7sCEPMsi2ZgVr63YgKmCaQ>
-X-ME-Proxy-Cause: dmFkZTGO980Yn8uMbt0j2BdcD4QX/iOl9tUTFXCQ903aZIrMv7Tc6fuat3dY7duyg1xULb
-    yz10ob59tw/e4mxHxusC7Au1N4yhmt1yaDLIz0vcL8AJV9F7KQx+2+AsVtAkp8ss8MY4Kn
-    JM/nREETieohMZYv4RIh7Ygrpu4ZhAjUJQvWYoB8T1YSEXSwyUcny6aAbDZsJTqMdR5hRt
-    YbkWmcbdFOkc3c+lkICatwo6JMUCVpLlTOLedKImNWzhQDajBwqfhQjyXd8NbiMRLpQrNO
-    vpYClpYhFWPE/Y0sKG5xjf/eaGk7Zjv8nlP0Vq5z/Uo/jONQQ3T8oIPx3LprFSjLy2zQIk
-    hDBNgVO1mJx4GPGpisLvnD+Rzrr663mMdvMu22MeP6cfBXkMxCEJZNAHoQ/XlY0/PPOs1S
-    JDmj/dMRdpjl/TpDdpzwRbCTSdz8Vq16CRR2y1PCRdCNo20v24Kt9rdjDzTdINn2cB/0dg
-    OxQhrJEJtwez/a31NOTkjaKktqc4zh9EOj1uY0cHFxXLel43FBPKheMPj0xHWxa2nCfkRH
-    TExXjedslOHuXQKdJj0MTUHSw78E5y7IzQdV+VYcO0gqF74uxkEmE8vxl+/DlHyOhlT+EX
-    miAYGYwV+EjxcFrWe1AWjjplN6NrfjBzfiLI6yt/gjvzy1X66z1qKJpW2JYA
-X-ME-Proxy: <xmx:wjmVaomHocHTofk4WSBKAtZXW_qWOCe4y1jDdl2tNHRBmQ1v83YG8Q>
-    <xmx:wjmValQRsqTKowvptCS_erMnfJti375Byf39Og1a-w6BWubEAnb_nA>
-    <xmx:wjmVammUIwsRCv287vwzNlzce58Wg9tAHOixMKwAGGGZMMCOWu1ewA>
-    <xmx:wjmVamMfjf4re-Bgv4zaaoy_gmrlhVwLJo7ejzIgHDrUot5qW-gE4Q>
-    <xmx:wjmVapjs23DSJ9eGdOqiwgdw25xCWfQtfslQzI6LoFvcbMP9P9chJj3_>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 31 Aug 2026 04:22:19 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	ulfh@kernel.org,
-	p.zabel@pengutronix.de,
-	ogabbay@kernel.org,
-	zhangqing@rock-chips.com
-Cc: royalnet026@gmail.com,
-	u.kleine-koenig@baylibre.com,
-	chaoyi.chen@rock-chips.com,
-	diederik@cknow-tech.com,
-	alchark@flipper.net,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	iommu@lists.linux.dev,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: [PATCH v11 14/14] arm64: dts: rockchip: rk3576-rock-4d: enable NPU
-Date: Mon, 31 Aug 2026 20:19:56 +1200
-Message-ID: <20260831081956.84871-15-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260831081956.84871-1-gahing@gahingwoo.com>
-References: <20260831081956.84871-1-gahing@gahingwoo.com>
+	id 1x0y6B-00000008zsY-3j2Q;
+	Mon, 31 Aug 2026 09:14:45 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20260831091434euoutp029e0b5101b7efbc915a7572eadc0d73b4~Q2QaCPr-v3238632386euoutp02Q;
+	Mon, 31 Aug 2026 09:14:34 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20260831091434euoutp029e0b5101b7efbc915a7572eadc0d73b4~Q2QaCPr-v3238632386euoutp02Q
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1788167674;
+	bh=iLiAq5/KXSZI20h/rvdNaMKqZ9O3JX0YW/+nEYN+91k=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=GZlabUyLsSW1C+25w+YhKO0MhPsPRtcYDMi07WTWCTQB3lpOuCDqFZXCQM14Ptsy7
+	 TQSbjifeKM68XGtE0BuiOvNLOGCIxiLi+05e3Qnw0OIEva0KuRDANQ/xLyBi4anlm5
+	 OmzbdjUJch0CuyvtbCd1SvGFINoXJllFhKXXVFfY=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20260831091433eucas1p2176fd27eb0eefa971ac954c8ee5c2bd2~Q2QZPHCRf1671916719eucas1p2r;
+	Mon, 31 Aug 2026 09:14:33 +0000 (GMT)
+Received: from [192.168.1.44] (unknown [106.210.136.40]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20260831091431eusmtip24699d34b786382bf1394417845ac07c5~Q2QXht9KL2368923689eusmtip2b;
+	Mon, 31 Aug 2026 09:14:31 +0000 (GMT)
+Message-ID: <f93b13d4-d6f1-4e75-9fce-926fb0129dca@samsung.com>
+Date: Mon, 31 Aug 2026 11:14:31 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 15/15] MAINTAINERS: Add StarFive JH7110 display
+ subsystem entry
+To: Icenowy Zheng <uwu@icenowy.me>, Vinod Koul <vkoul@kernel.org>, Neil
+	Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss
+	<rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
+	Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Emil
+	Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, Heiko Stuebner
+	<heiko@sntech.de>, Conor Dooley <conor@kernel.org>, Paul Walmsley
+	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
+	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
+	Belhachemi <db@domibel.de>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	mfd@lists.linux.dev, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org, Andy Yan <andyshrk@163.com>, Marek
+	Szyprowski <m.szyprowski@samsung.com>, Maud Spierings
+	<maudspierings@gocontroll.com>, Graham Markall <hello@big-grey.co.uk>
+Content-Language: en-US
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+In-Reply-To: <d64ff3f2a03473e4263e2f68823c2cb0f7fd1599.camel@icenowy.me>
+X-CMS-MailID: 20260831091433eucas1p2176fd27eb0eefa971ac954c8ee5c2bd2
+X-Msg-Generator: CA
+X-RootMTR: 20260828134841eucas1p100590973cc6808103c41d0b0fc82573a
+X-EPHeader: CA
+X-CMS-RootMailID: 20260828134841eucas1p100590973cc6808103c41d0b0fc82573a
+References: <20260828-jh7110-clean-send-v2-0-331680c8b9d1@samsung.com>
+	<CGME20260828134841eucas1p100590973cc6808103c41d0b0fc82573a@eucas1p1.samsung.com>
+	<20260828-jh7110-clean-send-v2-15-331680c8b9d1@samsung.com>
+	<d64ff3f2a03473e4263e2f68823c2cb0f7fd1599.camel@icenowy.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_012227_401934_E6FF0865 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20260831_021440_513265_D6B6E4F7 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,69 +102,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable rknn_core_0 and its IOMMU on the Radxa ROCK 4D, and hand
-vdd_npu_s0 to the NPU power domain as its domain-supply, so the rail is
-switched by the domain that gates the block.
-
-Measured on a ROCK 4D with this in place. The rail's regulator debugfs
-reports open_count 1, so the domain is the consumer that took it. A
-sampler running beside an inference caught use_count at 1, and three
-reads at rest report use_count 0 with the rail disabled, so it follows
-the domain rather than staying on. Over the same run the genpd
-active_time of all four NPU domains rises by roughly 60ms per inference,
-and the inferences either side of that are 128 of 128 channels against
-the CPU reference.
-
-rknn_core_0 keeps npu-supply on the same rail, which the binding
-requires. Only rknn_core_0 is enabled: the driver binds one core per
-node and the second core is left to whoever can test it.
-
-Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 272af1012..79e039bee 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -722,6 +722,10 @@ &pcie0 {
- 	status = "okay";
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hdmi {
- 		hdmi_tx_on_h: hdmi-tx-on-h {
-@@ -779,6 +783,15 @@ wifi_en_h: wifi-en-h {
- 	};
- };
- 
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
- &sai6 {
- 	status = "okay";
- };
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpPbiA4LzI4LzI2IDE2OjAxLCBJY2Vub3d5IFpoZW5nIHdyb3RlOgo+IOWcqCAyMDI2LTA4LTI4
+5LqU55qEIDE1OjQ3ICswMjAw77yMTWljaGFsIFdpbGN6eW5za2nlhpnpgZPvvJoKPj4gVGhlIEpI
+NzExMCBkaXNwbGF5IHN1YnN5c3RlbSBzcGFucyBhIFBIWSBkcml2ZXIsIGEgRFJNIGJyaWRnZSBk
+cml2ZXIsCj4+IGEgcGFyZW50IGRldmljZSBhbmQgdGhlaXIgYmluZGluZ3MsIGFuZCBoYXMgbm8g
+ZXhpc3RpbmcgbWFpbnRhaW5lcgo+PiBlbnRyeS4KPj4KPj4gQWRkIGFuIGVudHJ5IGNvdmVyaW5n
+IHRoZW0gc28gcGF0Y2hlcyByZWFjaCBzb21lb25lIHdobyBjYW4gcmV2aWV3Cj4+IHRoZW0uCj4+
+Cj4+IFNpZ25lZC1vZmYtYnk6IE1pY2hhbCBXaWxjenluc2tpIDxtLndpbGN6eW5za2lAc2Ftc3Vu
+Zy5jb20+Cj4+IC0tLQo+PiAgTUFJTlRBSU5FUlMgfCAxMCArKysrKysrKysrCj4+ICAxIGZpbGUg
+Y2hhbmdlZCwgMTAgaW5zZXJ0aW9ucygrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvTUFJTlRBSU5FUlMg
+Yi9NQUlOVEFJTkVSUwo+PiBpbmRleAo+PiA4MDE0YjlmODI1M2VkZjE1MjMxZGYyMTVkMWIxNDA2
+M2E1NGE1NWVjLi44NGFjNWNmZTYxY2RmNzc1MTY3Y2Y5MDMzODYKPj4gMjcyNGMzNzk0NmE1ZiAx
+MDA2NDQKPj4gLS0tIGEvTUFJTlRBSU5FUlMKPj4gKysrIGIvTUFJTlRBSU5FUlMKPj4gQEAgLTI1
+Nzc4LDYgKzI1Nzc4LDE2IEBAIFM6CU1haW50YWluZWQKPj4gIEY6CURvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9uZXQvc3RhcmZpdmUsamg3MTEwLQo+PiBkd21hYy55YW1sCj4+ICBG
+Oglkcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1zdGFyZml2ZS5jCj4+
+ICAKPj4gK1NUQVJGSVZFIEpINzExMCBESVNQTEFZIFNVQlNZU1RFTQo+PiArTToJTWljaGFsIFdp
+bGN6eW5za2kgPG0ud2lsY3p5bnNraUBzYW1zdW5nLmNvbT4KPiAKPiBGZWVsIGZyZWUgdG8gYWRk
+Cj4gCj4gYGBgCj4gUjogSWNlbm93eSBaaGVuZyA8emhlbmd4aW5nZGFAaXNjYXMuYWMuY24+Cj4g
+YGBgCj4gCj4gaWYgeW91IHdhbnQuIEkgYW0gaW50ZXJlc3RlZCBpbiB0aGlzLgoKU3VyZSwgYWxs
+IGhlbHAgaXMgZ3JlYXRseSBhcHByZWNpYXRlZCAhCgpCZXN0IHJlZ2FyZHMsCi0tIApNaWNoYWwg
+V2lsY3p5bnNraSA8bS53aWxjenluc2tpQHNhbXN1bmcuY29tPgoKPiAKPiBUaGFua3MsCj4gSWNl
+bm93eQo+IAo+PiArUzoJTWFpbnRhaW5lZAo+PiArRjoJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL3N0YXJmaXZlLGpoCj4+IDcxMTAtaW5uby1oZG1pLWNv
+bnRyb2xsZXIueWFtbAo+PiArRjoJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21m
+ZC9zdGFyZml2ZSxqaDcxMTAtaGRtaS0KPj4gc3Vic3lzdGVtLnlhbWwKPj4gK0Y6CURvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9waHkvc3RhcmZpdmUsamg3MTEwLWlubm8tCj4+IGhk
+bWktcGh5LnlhbWwKPj4gK0Y6CWRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvamg3MTEwLWlubm8taGRt
+aS5jCj4+ICtGOglkcml2ZXJzL3BoeS9zdGFyZml2ZS9waHktamg3MTEwLWlubm8taGRtaS5jCj4+
+ICtGOglkcml2ZXJzL3NvYy9zdGFyZml2ZS9qaDcxMTAtaGRtaS1zdWJzeXN0ZW0uYwo+PiArCj4+
+ICBTVEFSRklWRSBKSDcxMTAgRFBIWSBSWCBEUklWRVIKPj4gIE06CUphY2sgWmh1IDxqYWNrLnpo
+dUBzdGFyZml2ZXRlY2guY29tPgo+PiAgTToJQ2hhbmdodWFuZyBMaWFuZyA8Y2hhbmdodWFuZy5s
+aWFuZ0BzdGFyZml2ZXRlY2guY29tPgo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
