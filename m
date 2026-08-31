@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F715C624C6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 14:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CC3EC624A5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 16:10:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sgTx6zzUdj4zOdjAr9YYKNTrpTj4RMNkWxgdIRP2COQ=; b=4wl+X8I6qJPTYX
-	Dlwbw1uhDAFmtaT5EJ1oOl8KQs3oydm7MzRIsmV57wRzRak5b0RTmd4AviieHLC5kGZZyX6oAWG5l
-	1zHD2XYuL/DLoT5Rw2w3ZEpoYk4iH1ZXVJxQMRUMwZ+pq1NkYqtIw9Qo3L/hij0Lmltxm3VOWRo/E
-	URSBjmZ5OPXHABnUAqAzF6e/RV27CGjtxhVXMyh+iHIz/26kQeUrgBBDHGhbk1nBXVpqT0H3PsKiK
-	o17+pSHTy1P7u75kmUDtsAaxXqCH53W89NM6S0f5FMIdNcDAUDudwk8nsNr3BIS9GNB3PU0iEUISZ
-	eTgmv1XjvoJ+V95PQOQQ==;
+	List-Owner; bh=Kk+wPiUCkxn2AS8hGjZSCPK0+0XrdrhkHB09hpgmKUw=; b=pIVxCc7YmLTuwA
+	dOeorb38xi6/t945l85AahFSpm5clqVn9BDGg2TeZvp3is/cXONiHQO5MCT6TKhxiS0IGA3VsjILG
+	7C+qJxPNCMa/LQj35CviXRmD2HV/I71ZsoZZ3RYVP/v9e2qdCX1Df+T0BIXj46Ggz8bA91IAVlvg6
+	3WBUom9cbYqTVt9HCWatIWhc8sanwAec4/TAYR7PODpM2b8PYsnFEMIAeDiUjbfLeBWwU4vuEvkVk
+	wJPkOCCUz949HG5K4uaKb4D1LCEx0dPx7Xzrl4MLxWg0Jr5kCloMkP1xwEpHZayNogTqoZuxccVlo
+	SG3WXrQfcVgFKFPa68GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12tA-00000009cNn-0QRA;
-	Mon, 31 Aug 2026 14:21:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x14aB-00000009yNE-3cZK;
+	Mon, 31 Aug 2026 16:10:03 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12sv-00000009c0f-376l;
-	Mon, 31 Aug 2026 14:21:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788186075;
-	bh=WW3bgWtvchm/ZVcwcd6Is+/46qWg55ayuKIPjH66+G4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=L0UoIPjBpYbdEuMhT9kraRtVJaCNFwqE5rEmRWPpDiEnrcbvvvBAUrVhJntZwWUqe
-	 J3nFscVHYcGsfmnXl5p73eZFMLuVspW6t5EURykGlkRhFqxusYAvuxxSIOhpLKFfsm
-	 0JPfyrkNmHiMsydIBHmDURQHBDgfMHVadYvH8dGCAVSxFP+r8tirEUN4f6cZlqboL2
-	 ZOvF0Q9aGKgTlZXjgp3grs+LuH8l/9/oaJ3BtbQ6RrnJJ6bnn/j0W54qG5ijO2GETV
-	 VYRvYpux+MBzUY3OiakZI0WvR2UA7mGZkFoD0mmBQLgB5o8PO1J7PM95ws5QXFzv3g
-	 ScfaYtL5Jr4KQ==
-Received: from [192.168.0.15] (unknown [100.64.0.170])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4E1B17E0829;
-	Mon, 31 Aug 2026 16:21:13 +0200 (CEST)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-Date: Mon, 31 Aug 2026 10:20:54 -0400
-Subject: [PATCH 7/7] arm64: dts: rockchip: Rename rk3588 HDMI audio cards
+	id 1x14a8-00000009yLX-1dnG;
+	Mon, 31 Aug 2026 16:10:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1788192569; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=UB61ER+pWQTpRPNGrqj376Ipp16JzNa7Yl5QbjOrU5joWPdBenc6M8jUOljzwSAM7hdsTLrEp71CqWwI2HJDmbpsivHjZGXFr5fHQ1y4d6rpY/CuViXTmv4k2rDKjCggkKEV3ROaoTmKPdxtExMPwdDqeMDY3XiY5VBuOtOF030=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1788192569; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=oon13sUUJaLBBHt33XiRqpwiqGJmBJ1ZlxXybmNciIU=; 
+	b=noQLbt0Zut2INYexDZl9j4ktLKWnABF0jGm3qs8LYBCi+LWvykYGGnPZuuu/umxaKDNN0bVqvdkpdvThLC6Ml2vTuDCwBaZRTEXGzNPQZDxaasHpmUCnWDedOqhw5wjNwZ3Voj1ETZUG2v6E8za+WbYVRYz3KsuiJUj2CqnI8zo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788192569;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=oon13sUUJaLBBHt33XiRqpwiqGJmBJ1ZlxXybmNciIU=;
+	b=ZLyI6OrlH4B+wHOArIu9Tgw0HLyK6f7PMAvZY8M5qgcOJ74x0Z6Qsogu3ZlAh9NQ
+	WPA0BC+S/BpLuxmC91dI9ShcSXCTI5KAdcIuEi3QpOGl0zuxA5qS2JyVKJ/awGvRZk4
+	s6lmxPel6nbUKlsBfSi0YSahKYCCresQEdaz6HIM=
+Received: by mx.zohomail.com with SMTPS id 1788192566656889.3740455905123;
+	Mon, 31 Aug 2026 09:09:26 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Daniel Golle <daniel@makrotopia.org>, Pengpeng Hou <pengpeng@iscas.ac.cn>
+Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
+ Aurelien Jarno <aurelien@aurel32.net>, Olivia Mackall <olivia@selenic.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-crypto@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] hwrng: rockchip: propagate reset errors
+Date: Mon, 31 Aug 2026 18:09:22 +0200
+Message-ID: <g-bFxA6aS-CpTGGZJIq8QQ@collabora.com>
+In-Reply-To: <20260830133652.7618-1-pengpeng@iscas.ac.cn>
+References: <20260830133652.7618-1-pengpeng@iscas.ac.cn>
 MIME-Version: 1.0
-Message-Id: <20260831-fix-rockchip-hdmi-audio-names-v1-7-5b155ae05293@collabora.com>
-References: <20260831-fix-rockchip-hdmi-audio-names-v1-0-5b155ae05293@collabora.com>
-In-Reply-To: <20260831-fix-rockchip-hdmi-audio-names-v1-0-5b155ae05293@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Johan Jonker <jbx6244@gmail.com>, Alex Bee <knaerzche@gmail.com>, 
- Christian Hewitt <christianshewitt@gmail.com>, 
- Robin Murphy <robin.murphy@arm.com>, 
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Detlev Casanova <detlev.casanova@collabora.com>
-X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_072117_949582_062DCCBE 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20260831_091000_509626_486B5B5A 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,46 +79,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rename the two cards from "hdmi0"/"hdmi1" to "RK3588 HDMI0"/"RK3588
-HDMI1" so they identify the SoC in user-visible ALSA fields and match
-the naming scheme used across the rest of the Rockchip family.
+On Sunday, 30 August 2026 15:36:52 Central European Summer Time Pengpeng Hou wrote:
+> rk_rng_probe() pulses the optional or required reset array before
+> registering
+> the hardware RNG, but discards errors from both reset operations.
+> 
+> Return reset failures before publishing the RNG device.
+> 
+> Fixes: 8eff8eb83fc0 ("hwrng: rockchip - add support for rk3588's standalone TRNG")
+> Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
+> ---
+>  drivers/char/hw_random/rockchip-rng.c | 9 +++++++--
+>  1 file changed, 7 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
+> index 6e3ed4b856051..ff98fcdc68911 100644
+> --- a/drivers/char/hw_random/rockchip-rng.c
+> +++ b/drivers/char/hw_random/rockchip-rng.c
+> @@ -412,9 +412,14 @@ static int rk_rng_probe(struct platform_device *pdev)
+>  		if (IS_ERR(rst))
+>  			return dev_err_probe(dev, PTR_ERR(rst), "Failed to get reset property\n");
+>  
+> -		reset_control_assert(rst);
+> +		ret = reset_control_assert(rst);
+> +		if (ret)
+> +			return ret;
+> +
+>  		udelay(2);
+> -		reset_control_deassert(rst);
+> +		ret = reset_control_deassert(rst);
+> +		if (ret)
+> +			return ret;
+>  	}
+>  
+>  	platform_set_drvdata(pdev, rk_rng);
+> 
+> base-commit: 08dbfad3f5040f5bdb6c529da20d6d4e81fefd72
+> 
 
-Fixes: b8c6c136971c0 ("arm64: dts: rockchip: Add HDMI audio outputs for rk3588")
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi  | 2 +-
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+The reset controller on rockchip SoCs does not return anything other
+than 0 on the assert/deassert ops, and even if it did, the probe
+function should use dev_err_probe to report those failures.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 376ad04e0786..7892e18a7835 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -376,7 +376,7 @@ hdmi0_sound: hdmi0-sound {
- 		compatible = "simple-audio-card";
- 		simple-audio-card,format = "i2s";
- 		simple-audio-card,mclk-fs = <128>;
--		simple-audio-card,name = "hdmi0";
-+		simple-audio-card,name = "RK3588 HDMI0";
- 		status = "disabled";
- 
- 		simple-audio-card,codec {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index b251bb129cdb..2bcf30d8a338 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -11,7 +11,7 @@ hdmi1_sound: hdmi1-sound {
- 		compatible = "simple-audio-card";
- 		simple-audio-card,format = "i2s";
- 		simple-audio-card,mclk-fs = <128>;
--		simple-audio-card,name = "hdmi1";
-+		simple-audio-card,name = "RK3588 HDMI1";
- 		status = "disabled";
- 
- 		simple-audio-card,codec {
+In other words, this patch only adds (non-ideal) dead code.
 
--- 
-2.55.0
+Kind regards,
+Nicolas Frattaroli
+
 
 
 _______________________________________________
