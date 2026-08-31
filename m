@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B0D1C624D1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59C6C624D0
 	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 13:40:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,51 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kxEb/3g8yKiwbVyCSijDmShk5rKGSJHqvmItGRA5378=; b=xxyXr78mhFTFd7
-	g9nkDpE3ctkuc5lGaVnPier74xypO/rWJYvij00mFK2WNd4sLHyFLEM5GM1B4euKcM5eOgoQH4ni0
-	GnzPpmKczrOXA3ydH1Ke7SD6eNvrUULz5dIU2tdm2tArjwo/Uifbv9Vn5JiTJx2Q/VPCopF6SLnWe
-	q8UOqPNbEYcDc3J9xk1bElyPox7BI5zdF6175cNuRjlUsevfpOG84ji/1TSZdZWBS8rPF/h8lXKLg
-	1s+ZqlTeaDaqZArcafTTxU2wvppD8ur6qOVvc3dtQ14zO86OKoTjSQb7Q506BAsJSp6ZEDG2ZW51o
-	pibmTPWb9RdiT0jTL9EA==;
+	List-Owner; bh=blTmmM/G6B+ZJgEwRZF2AxWWJdYdEHbTCEY7lmu/A68=; b=W6GOt1OuouqSkP
+	HByDkRRhoFG+dh4Ywh2LwJixrt8DjKaeQi2ruI0Gv3d6rk1q9dbd/LSBT/h9g6Ck4sRMI/BlAJyNX
+	b/4Bdfd9yiv2DdtxgpbNNJAFRFuHJ4kZ41yHwQw+TKBEQeAgX8F78X3AH1Z2MoS9cUl8TFANvWlnH
+	gbJ21A+vukZ2eUSBP0mZr8Kpfk112/qc3AtzuEo0ANmEgR5w3+D2MiHIRQ9Vu0NIXRRoSLa2k4T66
+	3b0Rv6P8YaLpVcTNi6P47gkmqHfKGFNJxJ0Lfyc2wNYVXnsMYcQpD5ymzG2o/F7D6HsGlAZoYuCT+
+	yBjHrlTJoFQYuG2CVtVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12FD-00000009SjC-2GG8;
+	id 1x12FD-00000009SjS-32TL;
 	Mon, 31 Aug 2026 13:40:15 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12F9-00000009Scp-0lcq;
-	Mon, 31 Aug 2026 13:40:12 +0000
+	id 1x12F4-00000009SZo-1gwW;
+	Mon, 31 Aug 2026 13:40:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=M6/gR54E6oPAO0ZYT1ptCwiGgBWPwLQA/I5bPLxrvok=; b=w5PNVfsLQutLaDVN/Qm19wDlSV
-	A9TfBbyADHaddupHuqdj2Q6ru9HkuOwORabxepobgQEapNPiPwukZP6IL/YaR5sWFPF8gwwVM0Lz6
-	uKB8qKh5SGClm0DMv5Hfw/XPbB5oPmHQ63NJLY4+Uo7ZgeMrUxHp4AlisU0Ah//FVhYSPqTQEjhpM
-	5azymwbDRkt9phrcfE7IQPbOzGQKqufEuDqPhaLVMdd5VowaACZJu+lbpNRtfWknlEKUYhKmFrCgQ
-	3SSIrzlOD4nB9fGcerhD+pncf2WQq47KF5PW41PlH+ldLWkpDo/IDLkr7zd+EmNE+laC9125J4uN3
-	oHwl6mGA==;
+	bh=hM4ke/zUafKbOleC4RvI9fJgOP0Pa4ovJP1DlgTbhd4=; b=oArI8K3AlqSTeSzPuMtl1J4y1T
+	YUvp+e8+pqJL4PgyF+8mrhBBapf9Ozv7+ppAXj9g1J694c5kmm3kN4ntbSJt9Tw5zQHXoab4xVH7U
+	uoUloe1reIBQomb4EpYGCFluTVz7wAI0EPEiPG7nKIGYk7y9LrFI86nqtQlEyxIQyxbqTYrVxm9Z+
+	CqaoHanp6GN3b/xZx1+Yy6a1kn5FTXsaQSQcBz7bZHuhvqgkgxNxCFyFwMZp+e0cpbAo4YRS+q4Q+
+	gK8DZxQm4+fc7B6+PJpEqlmeTpAi0VrsdXBjBe279vRt1So8slpMduNFbBz5rSNoxW68vEz7V9sOX
+	r9mpswyA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Amin Gattout <amin.gattout@gmail.com>
+To: Jiaxing Hu <gahing@gahingwoo.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: correct rk3576 SDGMAC GRF reg size
-Date: Mon, 31 Aug 2026 15:40:00 +0200
-Message-ID: <178818359737.1934409.16083582780928081843.b4-ty@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix an error and a typo in the CM5-IO comment
+Date: Mon, 31 Aug 2026 15:40:01 +0200
+Message-ID: <178818359738.1934409.17545491709168923043.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260820-fix-sdgmac-v1-1-38e8d222b933@gmail.com>
-References: <20260820-fix-sdgmac-v1-1-38e8d222b933@gmail.com>
+In-Reply-To: <20260819064707.1667292-1-gahing@gahingwoo.com>
+References: <20260819064707.1667292-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_064011_223908_DECB6676 
-X-CRM114-Status: UNSURE (   9.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260831_064008_526638_3196E8F9 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,16 +68,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 20 Aug 2026 16:25:53 +0200, Amin Gattout wrote:
-> The RK3576 TRM lists the SDGMAC_GRF register file as 8KB. Adjust the
-> reg property size accordingly.
+On Wed, 19 Aug 2026 18:47:07 +1200, Jiaxing Hu wrote:
+> Two mistakes in the CM5-IO header comment.
 > 
+> The USB-C line names combphy0, but combphy0 is the M.2 PCIe lane, as the
+> comment above &combphy0_ps says. The USB-C SuperSpeed path is the USBDP
+> PHY.
 > 
+> The USB-A count is also wrong: the carrier has four ports, not two. The
+> RTS5411S USB 3.0 hub fans the single USB3 lane out to four downstream
+> USB-A ports.
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: correct rk3576 SDGMAC GRF reg size
-      commit: a3827558c623db5a4f7033f3cffe214577470df9
+[1/1] arm64: dts: rockchip: fix an error and a typo in the CM5-IO comment
+      commit: 3bcd04b3e009fdd5b051c95f31c742bc9257fcb9
 
 Best regards,
 -- 
