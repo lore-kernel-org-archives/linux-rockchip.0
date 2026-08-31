@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77C16C61DD3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 17:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30DBAC61DD3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2026 20:01:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6pVeg6xDyfkzHKDlPWyiVJUtgNJuWaQo6UUKNRA1KUA=; b=VInsyKUV1hKZiQ
-	Kw3Z735IzfuyjE/bTAJskcsOP3UK1gOk8iGuyu08unyqGIkxB29luj+BHuMMvp77P+VLrvWciWPRM
-	1hrZnrtAy6RElp4YB+JdevAhCEkHHsNFWm1fStYcYo4oMhFblyA9TMOZVZ1xpPeToOyUSsC5BPG2X
-	9uYcDSuLb97tBO8uHghBMG8qj+Hkla9CAzzzlt99jpa7/m7OiwBbRL95SPN/bYEAx8XPfUzU1BVMg
-	NNCqp7l++ZUEUqi8KW9D8XtT2qoQaiv17A71kCVvx1H1SI8xI6oxJnZ5KSr7SYPkIBGGST8AHWmrl
-	8JlfhnkDBWj4oDLk018A==;
+	List-Owner; bh=w6AqMXSIeUQyZ7y3Ged+EOJfw21UyHV/Hv8fbMaZTJY=; b=qadRNv/n/EMuPP
+	zkLL6sfehVNBqc9F+ceJsIZTULnN6Nk/epQyAszPPetS7cEZm6j452ywe5EEgYmg1N0dLOw6eH2bG
+	n5UxtW/4sji8APqcvNeW1mUT3cEMVnUIAFtjNLrGq6Kd21LjOfcnb/KsuUshSricZsLP7PL08mGyz
+	ca56AOZsdUfvK85i5IyFHFQzytY3/1DxvRzgH3o3uzcakunN+98d7ULcWmq/EaszfTOFV/SFPsFn2
+	LwUMhfQwytKy08ZrHM5BsD+1iJZqS+k54EIG0VVTyaYTNbSj3xCM1x5oxbx9sq+gaxxBjXowsSckA
+	Sc7FkXzR4u0qU8CUmBKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x15ow-0000000ACIM-1lfN;
-	Mon, 31 Aug 2026 17:29:22 +0000
-Received: from out-14.mta1.migadu.com ([2001:41d0:203:375::e] helo=mta1.migadu.com)
+	id 1x18CM-0000000APaF-0sBV;
+	Mon, 31 Aug 2026 20:01:42 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x15or-0000000ACHH-32RQ
-	for linux-rockchip@lists.infradead.org;
-	Mon, 31 Aug 2026 17:29:19 +0000
-X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=1kSqhe2+PT1a5oElxIG7Elgw45NvEJRmD8rNlzuc6uQ=;
- c=simple/simple; d=cknow-tech.com;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1788197354; v=1; x=1788802154;
- b=Eg+3TeghJpGSjh9G//MYnADdyR59XsqVK7/yHz2uiF/L9nqgoac8zkCiI+hDQ+FMeF6rdzU2
- shrQ79EMVaAl8/iUmaPDrHCMPb6dV5Zmp4+v9rZkHXA7Fj15X2SN/UzLc/pFX9uqpBSIQncy2vt
- i5YFBeOn3r7eEGzDuXhl66U94DbxGODBrD+hfqI+eYUuc8RkNDdJVLzY0V4R8PoIi2IqwOw2Hom
- bQduCWIHKUNW+C3xya5Jp1DM108azSvBHdb1qDepqLi7So2VlyRZppcyaINh5GmEIbm0IEuL+tx
- ui3h+QW/HALvJDMj5e16DnQQcPYmgDWC19jiQ1WvQ7jxQ==
-X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 3bb6bfbe23dd3995;
-	Mon, 31 Aug 2026 17:29:04 +0000
-X-Mizu-Trace-ID: 3bb6bfbe23dd3995
-X-Migadu-Flow: FLOW_OUT
-Mime-Version: 1.0
-Date: Mon, 31 Aug 2026 19:29:00 +0200
-Message-Id: <DL3B1XH7K4WC.1ZXA6ANI8Q1A0@cknow-tech.com>
-To: "Detlev Casanova" <detlev.casanova@collabora.com>, "Rob Herring"
- <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
- Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Johan
- Jonker" <jbx6244@gmail.com>, "Alex Bee" <knaerzche@gmail.com>, "Christian
- Hewitt" <christianshewitt@gmail.com>, "Robin Murphy"
- <robin.murphy@arm.com>, "Nicolas Frattaroli"
- <frattaroli.nicolas@gmail.com>, "Nicolas Frattaroli"
- <nicolas.frattaroli@collabora.com>, "Kuninori Morimoto"
- <kuninori.morimoto.gx@renesas.com>
-Cc: <kernel@collabora.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 5/7] arm64: dts: rockchip: Rename rk356x HDMI audio card
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-X-Mailer: aerc 0.22.0-9-ge948bb7230f4
-References: <20260831-fix-rockchip-hdmi-audio-names-v1-0-5b155ae05293@collabora.com> <20260831-fix-rockchip-hdmi-audio-names-v1-5-5b155ae05293@collabora.com>
-In-Reply-To: <20260831-fix-rockchip-hdmi-audio-names-v1-5-5b155ae05293@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_102918_336904_6F7821A4 
-X-CRM114-Status: GOOD (  13.02  )
+	id 1x18CK-0000000APZr-2VDm;
+	Mon, 31 Aug 2026 20:01:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id A0183601DE;
+	Mon, 31 Aug 2026 20:01:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 334461F000E9;
+	Mon, 31 Aug 2026 20:01:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788206499;
+	bh=HuXKZEy2/gGYSP0cASGT4oXqgM10s/kica6ZcwczuKk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=YugaleRAWIZdGULgBKX3mJmnVeLCqhhf4x6+DZ/M5f/lmxmjdcCKsoo24JuxKNJTr
+	 J4hyDstawePgx/NwM0qB0musRRnAHBXtoMc7qcgEJp54ZzuqSIbxsiFiuS9YG/TWJP
+	 tj7oIQZxpoyC5Ndon67lqG0YYlVD45sq/stx06Jm3CfVI87XOasFSyH2gPikoapNo2
+	 swBfl/+AXDCW3ma/hux93iYzwnzQhmGmCM1FthoAn68eRTuwh8b3Q9qJgPhr0j7a/S
+	 zOc6ceHwHlppyKu9jyKm5uSgYaOAjbRrGhJJD2jBqGsvgqF2cL79I7g0fs5uGO7N1t
+	 hUQgM5lc6SCyA==
+Date: Mon, 31 Aug 2026 22:01:31 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Koichiro Den <den@valinux.co.jp>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Frank Li <Frank.Li@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Rob Herring <robh@kernel.org>, Aksh Garg <a-garg7@ti.com>,
+	Christoph Hellwig <hch@lst.de>, Sagi Grimberg <sagi@grimberg.me>,
+	Chaitanya Kulkarni <kch@nvidia.com>, Jon Mason <jdmason@kudzu.us>,
+	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Manikanta Maddireddy <mmaddireddy@nvidia.com>,
+	Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>,
+	linux-pci@vger.kernel.org, linux-nvme@lists.infradead.org,
+	ntb@lists.linux.dev, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/3] PCI: endpoint: Support hardware-owned MSI-X table
+ and PBA
+Message-ID: <apXdm2I33edo8kpZ@ryzen>
+References: <20260830151948.3547577-1-den@valinux.co.jp>
+ <apVWd1u9JjTKQczu@ryzen>
+ <pj5vpwwd5tr5tuvhdq3bcpefnq27r6ljvwoysguz2o4tglcqx5@l7zmb6wjnhla>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <pj5vpwwd5tr5tuvhdq3bcpefnq27r6ljvwoysguz2o4tglcqx5@l7zmb6wjnhla>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,38 +86,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon Aug 31, 2026 at 4:20 PM CEST, Detlev Casanova wrote:
-> Rename the card from "HDMI" to "RK356x HDMI" so it identifies the SoC
-> in user-visible ALSA fields and no longer collides with the identical
-> "HDMI" string used by other Rockchip SoCs.
->
-> Fixes: 697ee8546e241 ("arm64: dts: rockchip: Add HDMI audio nodes to rk356x")
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> index a5832895bd39..98785c812fc4 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> @@ -150,7 +150,7 @@ scmi_clk: protocol@14 {
->  
->  	hdmi_sound: hdmi-sound {
->  		compatible = "simple-audio-card";
-> -		simple-audio-card,name = "HDMI";
-> +		simple-audio-card,name = "RK356x HDMI";
+Hello Koichiro,
 
-Move the name property to rk3566.dtsi and rk3568.dtsi and use their actual
-SoC name, thus RK3566 and RK3568?
+On Tue, Sep 01, 2026 at 01:11:09AM +0900, Koichiro Den wrote:
+> This is not driven by a performance target, so I do not have numbers. The
+> immediate issue is correctness. ntb_hw_epf can select MSI-X, but pci-epf-vntb
+> currently configures and raises MSI. I want that MSI-X path to work on RK3588
+> with the controller doorbell. I will make it clear in the next cover letter
+> that, with this series, a doorbell sent from ntb_tool on the pci-epf-vntb side
+> of RK3588 reaches ntb_tool on the ntb_hw_epf host side when MSI-X is selected.
+> I believe that is the simplest E2E test showing what this series fixes.
 
-Cheers,
-  Diederik
->  		simple-audio-card,format = "i2s";
->  		simple-audio-card,mclk-fs = <256>;
->  		status = "disabled";
+Okay, if the main issue is that pci-epf-vntb does not raise MSI-X, even when
+ntb_hw_epf host side has requested MSI-X, then I think that the first patch
+in the series should fix this, so that the fix can easily be backported.
+
+(Right now you fix this in patch 3/3, and the fix in patch 3/3 depends on
+both patches 1/3 and 2/3.)
+
+I think that pci-epf-vntb actually respecting the configured IRQ type by the
+host is a separate logical change from adding support for HW defined layout.
 
 
+> I initially considered making the hardware-owned layout automatic for every EPF.
+> pci-epf-ntb (not vNTB!) is the reason I did not. It currently reads
+> host-programmed MSI-X entries through epf_bar[] backing and uses them to set up
+> peer outbound mappings. A hardware-owned Table has no such backing, and the
+> current EPC API has no generic way to read those entries. I suspect that
+> supporting it there would require a broader design change. Also, I do not have
+> hardware for the pci-epf-ntb bridge configuration.
+> 
+> pci-epf-test and nvmet-pci-epf should be easier to convert. However, converting
+> only those would not remove the per-layout handling while pci-epf-ntb still uses
+> an EPF-owned Table. I would prefer to handle those separately when they can be
+> properly tested. This is what I meant by this part of the cover letter:
+> 
+>      [...]
+> 
+>      layouts. This avoids unnecessary changes and reduces regression risk.
+>      They can use a hardware-owned layout later if/when needed.
+
+Okay, if pci-epf-ntb is special, perhaps we should add a comment in
+pci-epf-ntb which explains why it cannot support HW defined layout.
+
+But for consistency, if we modify pci-epf-vntb, I think it would make sense
+to also modify pci-epf-test and nvmet-pci-epf as well in the same series.
+
+pci-epf-test should be easy to test, just run the pci endpoint selftest.
+
+nvmet-pci-epf should be quite easy to test too, just run the normal fio based
+testing that we usually run, and unless you see worse performance, I think we
+are good. (If we see worse performance, that could be an indication that one
+of the MSI-X for the different completion queues are not being correctly
+triggered. By default, the host side nvme driver creates one completion queue
+(and one submission queue) per host CPU.
+
+
+What I suggest that you instead do something like:
+Patch 1/7: pci-epf-vntb: Fix to actually use MSI-X when requested.
+           This probably includes adding the code that is inside the
+	   if (ret == -ENOENT) { }.
+Patch 2/7: PCI: endpoint: Support hardware-owned MSI-X table and PBA
+Patch 3/7: PCI: dw-rockchip: Support fixed MSI-X table and PBA on RK3588
+Patch 4/7: pci-epf-vntb: Add code that calls pci_epc_get_hw_msix_layout()
+           and uses that layout, if the function returned success.
+Patch 5/7: pci-epf-test: Add code that calls pci_epc_get_hw_msix_layout()
+           and uses that layout, if the function returned success.
+Patch 6/7: nvmet-pci-epf: Add code that calls pci_epc_get_hw_msix_layout()
+           and uses that layout, if the function returned success.
+Patch 7/7: pci-epf-ntb: Add comment that explains why it cannot call
+           pci_epc_get_hw_msix_layout() like all other EPF drivers that
+	   support MSI-X.
+
+
+This way, patch 1/7 can be backported, and will help all users vNTB users,
+even the users that do not use RK3588 as an EPC.
+
+
+> > I understand that you introduce dw_pcie_ep_msix_layout_is_hw_owned()
+> > because you want an EPF driver optionally use the HW defined table.
+> > But if all EPF drivers always use the HW defined table if available, I think
+> > you can avoid introducing this helper, and let rockchip_pcie_raise_irq()
+> > unconditionally call dw_pcie_ep_raise_msix_irq_doorbell() for case PCI_IRQ_MSIX.
+> 
+> Yes, under that assumption I agree. With the current mix, however, the Rockchip
+> callback still has to choose the helper according to the selected layout. That
+> is why the DWC code records which layout was selected.
+> 
+> I will update the cover letter to state the motivation and this boundary more
+> directly. Does keeping the layout choice with each EPF for this reason sound
+> reasonable?
+
+Yes, since pci-epf-ntb apparently is special, I can see why you need
+both ep_func->msix_hw_owned and dw_pcie_ep_msix_layout_is_hw_owned().
+
+
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
