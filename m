@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E64C624D3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45A77C624D6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JjvinITtJNmTsFUUXRpXKGjsFuBt+i85qzb94hG6ScA=; b=WC/zbcCbMx9TKk
-	uzrzQKXKbvkK6po1xOvAnvm0LpKPDqmRVFU6x96Gn0NvYlv0YnGU5fDAZK327i3MqgGSlP2meQmhf
-	b7Yp6CBsjYxPDXhIlaRtwQFL3ZsISUFmVkxcFzJEfgKLsokGPDwDgPX8JWM2Iyxgp4xyCFXPJJDX1
-	ECS8Dc0Hr7WliHAPcTrsr30mHclR2CUzkpfJaX3xRHvYBqIPSSbhJTdLu7J2Y07634s9PRN/Z95c8
-	jkErp9kVKI+yOscEvkYsaOMnslb114FD/r6H7HSfCvjOYXwkC8z2bhZyt0n+MPiNM4KXVCq5NoxzO
-	Xr0OKifRW/vEWIRnwaDA==;
+	List-Owner; bh=c6ypw2wiams5Y5Cz3ihoN+HaXVnMbbSR/BsGCuulPYw=; b=RinEs1+F4OQOYi
+	an4bxIQFT3cTw5AdG0PTtMRMMLsVXRCIdJYHWJAhW0yRUN6oVPmlwZTuNU2dzZmwzNn9aH34pMChx
+	ttm47BwKpOkyzSTTioGBh8uX0o7NQnKFbakpTAlMcrUqDiPAj1AJ2vJ8eY1TB26xPT4XJDyU6o7eu
+	qJBJn5lSV7eE50lswIVCcf/N/KBMSM1le0PiuJaKowmzLgpbymLnXO1tgn265/sAJG5UIH0cqPV9I
+	zRY1TIXpVYAcf0DDUJ0dcCNJol79ZHjkfwfDeMVjRTu0fBSbK0CzF0yAF2HlYT3DHKPEdhypw9lC7
+	OiAdnfCunSaozhQG/w5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TbY-0000000D4bE-3Wiu;
-	Tue, 01 Sep 2026 18:53:08 +0000
+	id 1x1Tbe-0000000D4rg-3lNJ;
+	Tue, 01 Sep 2026 18:53:14 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZY-0000000D0vF-069F;
+	id 1x1TZW-0000000D0rW-1GbD;
 	Tue, 01 Sep 2026 18:51:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288661;
-	bh=8Oq1JKZ+6aISjMBfW/rB+bCdiIclZbkZhtUTs+Enj9E=;
+	s=mail; t=1788288658;
+	bh=dHIKdEC5RHVqcHq82GjtYHGUUOJHjjeCBOpp724uoac=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Og55MvAzDAr7Bv+d9/9T7Q5xhdI+voULqob07G1Tdp5WDSxNtGeZk942RTA7/Qe2g
-	 KeVYppx9jjrVsup/B2RqdtqG7fHCrr2yC9nNysB4J1CmJ3ZiedrG+TUSAly9/TbUQR
-	 gScPyd4HalqHbOSlV4MiFBOjv4N4GxpEn+6V50Dhd5yggK+MF2KTab/lbp7Kfve7/Q
-	 3PLZlKWG245ZLx3Wmjb5Hmz1ZuxCk4qhFEH0XMlSoRSGVILNshQEVvT0dfW8KiUu92
-	 Mj+RQszfDV22FbgHx4BS7hBl3Cg+LjZ+TkdcprSPsDbV2UtJ/yH3cqu+8ebxTXJcz1
-	 Erhzgt/tWP6BQ==
+	b=ACW+ziuWAPd7zQm+209nems4I5iTQK8DxQhfTlIXHAZiHsFxLg+JqCna8mjW0HOHN
+	 9oRrZAu3JtYTlX3chmx8L5lRyVfKDJ4tedh4UDnomz7Z4HGRGJKJa5A43vFlyVsXv/
+	 vycrj6aiyTRjt+Ma0ToXjajA6HX6rGIme9LyvDu8Kp5+VSNbCpQIN5a4zfiNV5mZ6q
+	 zFpBFLN1tNBMGnKm9AN+7aAcRv3xpxFheSMR+zKCIZQw6bAdCULapugytg0YfuNyk2
+	 bFL3CtQHBlrTx1c1/d+SLHBsR7Dau2rqZ/MIlk75FrSmfC3ud9//gOm2Gq9OhGh1zs
+	 zN5/R+JjtaJGA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B9EE917E39A8;
-	Tue, 01 Sep 2026 20:51:01 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3137C17E38DC;
+	Tue, 01 Sep 2026 20:50:58 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:52 +0300
-Subject: [PATCH v11 28/74] drm/bridge: dw-hdmi-qp: Remove unused workqueue
- include and define
+Date: Tue, 01 Sep 2026 21:50:47 +0300
+Subject: [PATCH v11 23/74] drm/display: hdmi-state-helper: Sync SCDC state
+ on hotplug
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-28-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-23-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,12 +73,12 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org
+ linux-fbdev@vger.kernel.org, Maud Spierings <maud_spierings@hotmail.com>, 
+ Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115104_914120_CF0340C7 
-X-CRM114-Status: UNSURE (   9.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260901_115102_592936_EC0BF7ED 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,37 +95,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-linux/workqueue.h is no longer needed, and SCRAMB_POLL_DELAY_MS is
-unused.
+drm_atomic_helper_connector_hdmi_hotplug() does not currently
+synchronize SCDC status on hotplug events, leaving the scrambler state
+potentially inconsistent after (re)connect.
 
-Remove them.
+Hook drm_connector_hdmi_sync_scdc() into both the connect and disconnect
+paths, replacing the existing TODOs around missing scrambler handling.
+Note that per .detect_ctx() contract, implementations shall return a
+drm_connector_status value or -EDEADLK, nothing else.  Therefore, handle
+deadlocks and just report any other errors.  For consistency, also
+report the errors from drm_edid_connector_update().
 
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 34 ++++++++++++++++++++++---
+ 1 file changed, 31 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index a0613f0d2ebc..246c4161e627 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -15,7 +15,6 @@
- #include <linux/module.h>
- #include <linux/mutex.h>
- #include <linux/of.h>
--#include <linux/workqueue.h>
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index 8045b1d17d6e..1e269b203b98 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -1362,12 +1362,29 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
+ 					enum drm_connector_status status)
+ {
+ 	const struct drm_edid *drm_edid;
++	int ret;
  
- #include <drm/bridge/dw_hdmi_qp.h>
- #include <drm/display/drm_hdmi_helper.h>
-@@ -38,8 +37,6 @@
- #define DDC_CI_ADDR		0x37
- #define DDC_SEGMENT_ADDR	0x30
+ 	if (status == connector_status_disconnected) {
+-		// TODO: also handle scramber, HDMI sink disconnected.
++		/*
++		 * .detect_ctx() can only ever return a drm_connector_status or
++		 * -EDEADLK. Handle deadlocks, and report any !EDEADLK error.
++		 */
++		ret = drm_connector_hdmi_sync_scdc(connector, false, ctx);
++		if (ret) {
++			if (ret == -EDEADLK)
++				return ret;
++
++			drm_warn(connector->dev, "Ignored SCDC sync error: %d\n", ret);
++		}
++
+ 		drm_connector_hdmi_audio_plugged_notify(connector, false);
+-		drm_edid_connector_update(connector, NULL);
++
++		ret = drm_edid_connector_update(connector, NULL);
++		if (ret)
++			drm_warn(connector->dev, "Ignored EDID update error: %d\n", ret);
++
+ 		drm_connector_cec_phys_addr_invalidate(connector);
++
+ 		return 0;
+ 	}
  
--#define SCRAMB_POLL_DELAY_MS	3000
--
- /*
-  * Unless otherwise noted, entries in this table are 100% optimization.
-  * Values can be obtained from dw_hdmi_qp_compute_n() but that function is
+@@ -1381,7 +1398,18 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
+ 	drm_edid_free(drm_edid);
+ 
+ 	if (status == connector_status_connected) {
+-		// TODO: also handle scramber, HDMI sink is now connected.
++		/*
++		 * .detect_ctx() can only ever return a drm_connector_status or
++		 * -EDEADLK. Handle deadlocks, and report any !EDEADLK error.
++		 */
++		ret = drm_connector_hdmi_sync_scdc(connector, true, ctx);
++		if (ret) {
++			if (ret == -EDEADLK)
++				return ret;
++
++			drm_warn(connector->dev, "Ignored SCDC sync error: %d\n", ret);
++		}
++
+ 		drm_connector_hdmi_audio_plugged_notify(connector, true);
+ 		drm_connector_cec_phys_addr_set(connector);
+ 	}
 
 -- 
 2.55.0
