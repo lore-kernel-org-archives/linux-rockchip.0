@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84666C624D3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 722DFC624D7
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:51:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+LN99Ii6xpiiKJYpuFGGEhUC/SboL/tYbi/NlV3dSLE=; b=xLNGK/1sSdRz9q
-	bwLrhJlsvSQaVu/g6aiEVOpJJpRVBW3JuWZwRxG1pJa0aQ0zrl7uCajgV2RApwe297KuUsdfvmjiB
-	UFnNs72ntYbtPoOMYuDF3hVz7VRQzId7NPTxL+wxf7qszpWjPBhmn5o1xbZtyau+xge5PXvriVXBW
-	LQPSEqjH31hjBnJIfN2XTv1pwOWEK5Iql1FbB7a5BYMhyjoIVMSwn3q+6QACsA5cKfq0uwCVElPaP
-	7m1r0OOGKVB+6pEfQ5ssw2jX6jG3XmGZSnNbiVGrJCLsWVMdLKlwPhP1iPm1aXVk0Uyc98BTKCz8f
-	TLPSAsS9T9uPIwulorTA==;
+	List-Owner; bh=9Jml/SNoU7XonIdmF8gWlnQVb3abJfBHcpEoRpiXeb0=; b=YXpVhB0H2aI01x
+	jkpH+3pOilKDt8w6SpRTZ5gfs0EsyN/8eDvV2aV6KHmmuMjszE2YS1co/HAsGivZKUmRsd2QhKwC3
+	jnZ+t9DyHnmItytiTXso+yzLqPg+yg9eytEnkAFTPeqR79cDJoPC6tgXcTDbhmTnnAQ+609TvFTHD
+	VnygLFzWXw8T6Ffq+9R7rsJU0acLBnSWPUD6/cGy14Z7Ps9y0/XXL5c9Ce9uK00sJvhOA29qcu0j/
+	qaG2TWw8GRosoW2HSO4aS/GnRUH1u4c7UsAbAv974bZuAAjQRVrG27hkvhFgvZLcvQPjVMGaDT96d
+	YUpny/YSj07pGYaH19mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZv-0000000D1O1-3By8;
-	Tue, 01 Sep 2026 18:51:27 +0000
+	id 1x1TaA-0000000D1ky-2GpJ;
+	Tue, 01 Sep 2026 18:51:44 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZK-0000000D0dH-3wUV;
+	id 1x1TZM-0000000D0eZ-0mZm;
 	Tue, 01 Sep 2026 18:50:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288647;
-	bh=8ZpsUznPm2VnhV+ei8G+M2HW8IhOZe+pjdpRGniTqQA=;
+	s=mail; t=1788288646;
+	bh=LnXnylUSdv6jm5z3ZYqcTeXlK8ki377u+5hmVFhOZfY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=CUd7OD/U1UiWKhz1RFGknqxx5New2fGjDtM1QLgcmF8bxImOuhlNcPQHn1mY7JWGC
-	 kK6KDhB3pUF/cRpvkksJEhXQrq3wImuA4AkdgcCD02sfdYyzT/4nULAdbJ7dt2X+hF
-	 2d2aewJB9ig0G6hUL7nOYfjHV4B3SZEpG75UdC89dAasDD18OhKHV4Ufo/f7BxKB3r
-	 F+OHIkzojwKs3WxUYVJ11BcYLYEQApURxoaZOf6xOhDN0fLaJW2dsEBQp77cENX2L2
-	 MQ54HNl1/HNlBzsQFIK0hmw/dOKT+NBe69AFyGVRsY67hxVw8Tz/TUt1OuLCHERP+f
-	 tdi4jobw+awmQ==
+	b=Kw8xDDiniiCcfeQDzprzO/zAtcq8A0YU7U3uMU4kL4B9pvKySadEUmdtk/mzRAiHQ
+	 B24IZK2cqFKptQEXeCnMtMyE0MSXoIx2Any5j9rWKc0OxxsdomiDAu4fT+lSV1vEiS
+	 XLapGkyB6ccrdYB1wKR4la6aUzSsiaFmkfH3cWdzJZzqCg3iil61pB396R9n8sYIQu
+	 0KU8Pb0qypwk0snK1HjOelVvNvViLA6Ywnuh+922xUWCMjy0ic6UkRKP+D7mJsgCIm
+	 B0QiO1hYmiRONvHhLnZhlrr/4IdIYpcJxeaIU6tgVDMsek+/vFBpMpkNge2YnOiptk
+	 KwYjDDLU7JK1w==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B634617E157A;
-	Tue, 01 Sep 2026 20:50:47 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 44F4217E1298;
+	Tue, 01 Sep 2026 20:50:46 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:33 +0300
-Subject: [PATCH v11 09/74] drm/display: scdc-helper: Add helper to set SCDC
- version information
+Date: Tue, 01 Sep 2026 21:50:31 +0300
+Subject: [PATCH v11 07/74] drm/connector: Add HDMI 2.0 scrambler
+ infrastructure
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-9-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-7-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,14 +73,12 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Maud Spierings <maud_spierings@hotmail.com>, 
+ linux-fbdev@vger.kernel.org, Maud Spierings <maud_spierings@hotmail.com>, 
  Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115051_148137_5680A9F2 
-X-CRM114-Status: GOOD (  18.72  )
+X-CRM114-CacheID: sfid-20260901_115055_882800_AE1E8F17 
+X-CRM114-Status: GOOD (  19.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,121 +95,180 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HDMI 2.x specs mandate that compliant Sink devices report their SCDC
-version in the Sink Version register, which reads as 1 on any
-SCDC-capable sink.
+Add the connector-level infrastructure to support HDMI 2.0 scrambling:
 
-There is also a dedicated Source Version register.  Writing it is not
-compulsory, but the spec advises that compliant Source devices do so, in
-which case the value must be 1.
+- A drm_connector_hdmi_scrambler_supported() helper to report whether
+  the source supports the scrambling capability
+- A .scrambler_{enable,disable}() pair of callbacks in
+  drm_connector_hdmi_funcs to allow scrambling setup on the source side
+- A scrambler_needed flag to be managed by the hdmi state helpers based
+  on the negotiated TMDS character rate and the source/sink scrambling
+  capabilities
+- A scrambler_enabled flag to track whether scrambling is currently
+  active
+- A delayed work item (scdc_work) to monitor sink-side scrambling status
+  and retry the setup if the sink resets it
+- A scdc_work_initialized flag to support lazy initialization of the
+  work item on the first scrambling enable and guard the teardown paths
 
-Add drm_scdc_set_source_version() to follow this recommendation.  The
-Sink Version register is read first, both to log the advertised SCDC
-version and to guard against non-conformant devices: a sink reporting
-version 0 is either not SCDC-version-aware or broken, so writing the
-source version gains nothing and risks upsetting such hardware.  In that
-case the write is skipped.
+These are intended to be used by SCDC scrambling helpers to coordinate
+scrambling setup and teardown between the source driver and the DRM
+core.
 
-The source version is passed as a parameter rather than hardcoded, as
-future spec revisions may define additional rules for the allowable
-version values.  The written value is additionally clamped to the sink's
-reported version so the source never advertises a version the sink does
-not understand.
-
-Acked-by: Maxime Ripard <mripard@kernel.org>
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_scdc_helper.c | 50 +++++++++++++++++++++++++++++--
- include/drm/display/drm_scdc_helper.h     |  2 ++
- 2 files changed, 49 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/drm_connector.c | 10 ++++++
+ include/drm/drm_connector.h     | 79 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 89 insertions(+)
 
-diff --git a/drivers/gpu/drm/display/drm_scdc_helper.c b/drivers/gpu/drm/display/drm_scdc_helper.c
-index 1e7c41d4f926..74388481fc55 100644
---- a/drivers/gpu/drm/display/drm_scdc_helper.c
-+++ b/drivers/gpu/drm/display/drm_scdc_helper.c
-@@ -22,12 +22,13 @@
-  */
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index 38cf853e867e..d94c86bfed86 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -602,6 +602,13 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+ 	    !hdmi_funcs->hdmi.write_infoframe)
+ 		return -EINVAL;
  
- #include <linux/bitfield.h>
--#include <linux/export.h>
--#include <linux/i2c.h>
--#include <linux/slab.h>
- #include <linux/debugfs.h>
- #include <linux/delay.h>
-+#include <linux/export.h>
-+#include <linux/i2c.h>
-+#include <linux/minmax.h>
- #include <linux/overflow.h>
-+#include <linux/slab.h>
++	if (hdmi_funcs->supported_hdmi_ver >= HDMI_VERSION_2_0 &&
++	    (!hdmi_funcs->scrambler_enable ||
++	     !hdmi_funcs->scrambler_disable)) {
++		drm_err(dev, "Scrambler callbacks missing for HDMI 2.x\n");
++		return -EINVAL;
++	}
++
+ 	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
+ 	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
+ 		return -EINVAL;
+@@ -919,6 +926,9 @@ void drm_connector_cleanup(struct drm_connector *connector)
+ 		    DRM_CONNECTOR_REGISTERED))
+ 		drm_connector_unregister(connector);
  
- #include <drm/display/drm_scdc_helper.h>
- #include <drm/drm_connector.h>
-@@ -306,6 +307,49 @@ bool drm_scdc_set_high_tmds_clock_ratio(struct drm_connector *connector,
++	if (connector->hdmi.scdc_work_initialized)
++		cancel_delayed_work_sync(&connector->hdmi.scdc_work);
++
+ 	platform_device_unregister(connector->hdmi_audio.codec_pdev);
+ 
+ 	if (connector->privacy_screen) {
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index f2be06f12b1a..2ee7c59329aa 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -28,6 +28,7 @@
+ #include <linux/ctype.h>
+ #include <linux/hdmi.h>
+ #include <linux/notifier.h>
++#include <linux/workqueue.h>
+ #include <drm/drm_mode_object.h>
+ #include <drm/drm_util.h>
+ #include <drm/drm_property.h>
+@@ -1198,6 +1199,17 @@ struct drm_connector_hdmi_state {
+ 	 * @tmds_char_rate: TMDS Character Rate, in Hz.
+ 	 */
+ 	unsigned long long tmds_char_rate;
++
++	/**
++	 * @scrambler_needed: Whether HDMI 2.0 SCDC scrambling is required
++	 * for the negotiated mode/bpc/format.
++	 *
++	 * Computed by drm_atomic_helper_connector_hdmi_check() according to
++	 * the HDMI 2.0 specification: scrambling is mandatory above a 340 MHz
++	 * TMDS character rate. Optional scrambling at lower rates is
++	 * deliberately not requested by the helper.
++	 */
++	bool scrambler_needed;
+ };
+ 
+ /**
+@@ -1548,6 +1560,36 @@ struct drm_connector_hdmi_funcs {
+ 	 */
+ 	const struct drm_edid *(*read_edid)(struct drm_connector *connector);
+ 
++	/**
++	 * @scrambler_enable:
++	 *
++	 * The callback is invoked via @drm_connector_hdmi_enable_scrambling
++	 * during commit to setup SCDC scrambling and high TMDS clock ratio on
++	 * the source side.
++	 *
++	 * The @scrambler_enable callback is mandatory if HDMI 2.0 is to be
++	 * supported.
++	 *
++	 * Returns:
++	 * 0 on success, a negative error code otherwise
++	 */
++	int (*scrambler_enable)(struct drm_connector *connector);
++
++	/**
++	 * @scrambler_disable:
++	 *
++	 * The callback is invoked via @drm_connector_hdmi_disable_scrambling
++	 * during commit to tear down SCDC scrambling and high TMDS clock ratio
++	 * on the source side.
++	 *
++	 * The @scrambler_disable callback is mandatory if HDMI 2.0 is to be
++	 * supported.
++	 *
++	 * Returns:
++	 * 0 on success, a negative error code otherwise
++	 */
++	int (*scrambler_disable)(struct drm_connector *connector);
++
+ 	/**
+ 	 * @avi:
+ 	 *
+@@ -2178,6 +2220,25 @@ struct drm_connector_hdmi {
+ 	 */
+ 	unsigned long long max_tmds_char_rate;
+ 
++	/**
++	 * @scrambler_enabled: Tracks whether HDMI 2.0 scrambler is currently enabled.
++	 */
++	bool scrambler_enabled;
++
++	/**
++	 * @scdc_work: Work item currently used to monitor sink-side scrambling
++	 * status and retry setup if the sink resets it.
++	 */
++	struct delayed_work scdc_work;
++
++	/**
++	 * @scdc_work_initialized: Tracks whether @scdc_work has been set up via
++	 * INIT_DELAYED_WORK(). The work item is initialized lazily on the first
++	 * scrambling enable, so this guards the teardown paths against touching
++	 * an uninitialized work item.
++	 */
++	bool scdc_work_initialized;
++
+ 	/**
+ 	 * @funcs: HDMI connector Control Functions and controller capabilities
+ 	 */
+@@ -2769,6 +2830,24 @@ drm_connector_is_unregistered(struct drm_connector *connector)
+ 		DRM_CONNECTOR_UNREGISTERED;
  }
- EXPORT_SYMBOL(drm_scdc_set_high_tmds_clock_ratio);
  
 +/**
-+ * drm_scdc_set_source_version - set SCDC source version on the sink
-+ * @connector: connector
-+ * @ver: source version to advertise (per spec, 1)
++ * drm_connector_hdmi_scrambler_supported - does connector support HDMI
++ * scrambling?
++ * @connector: DRM connector
 + *
-+ * Reads the sink version for diagnostics and as a guard, then writes
-+ * the source version unless the sink reports version 0.
++ * Checks whether or not @connector driver supports HDMI scrambling, based on
++ * the HDMI version advertised by the controller.
 + *
 + * Returns:
-+ * 0 on success or when skipped; a negative error code when either
-+ * the read or the write failed.
++ * True if the connector supports scrambling, false otherwise.
 + */
-+int drm_scdc_set_source_version(struct drm_connector *connector, u8 ver)
++static inline bool
++drm_connector_hdmi_scrambler_supported(const struct drm_connector *connector)
 +{
-+	u8 sink_ver;
-+	int ret;
-+
-+	ret = drm_scdc_readb(connector->ddc, SCDC_SINK_VERSION, &sink_ver);
-+	if (ret) {
-+		drm_scdc_dbg(connector, "Failed to read SCDC_SINK_VERSION: %d\n", ret);
-+		return ret;
-+	}
-+
-+	drm_scdc_dbg(connector, "Sink reported SCDC ver. %u\n", sink_ver);
-+
-+	/*
-+	 * Only advertise our source version to sinks that report a
-+	 * non-zero sink version.  A sink reporting version 0 is either
-+	 * not SCDC-version-aware or non-conformant; writing the source
-+	 * version gains nothing and may upset broken hardware.
-+	 */
-+	if (sink_ver) {
-+		ret = drm_scdc_writeb(connector->ddc, SCDC_SOURCE_VERSION,
-+				      min_t(u8, sink_ver, ver));
-+		if (ret)
-+			drm_scdc_dbg(connector,
-+				     "Failed to write SCDC_SOURCE_VERSION: %d\n", ret);
-+	}
-+
-+	return ret;
++	return connector->hdmi.funcs &&
++		connector->hdmi.funcs->supported_hdmi_ver >= HDMI_VERSION_2_0;
 +}
-+EXPORT_SYMBOL(drm_scdc_set_source_version);
 +
- static void
- drm_scdc_parse_status0_flags(u8 val, struct drm_scdc_status_flags *flags)
- {
-diff --git a/include/drm/display/drm_scdc_helper.h b/include/drm/display/drm_scdc_helper.h
-index a3b20adaac7e..6a8be1f16ce0 100644
---- a/include/drm/display/drm_scdc_helper.h
-+++ b/include/drm/display/drm_scdc_helper.h
-@@ -168,6 +168,8 @@ bool drm_scdc_get_scrambling_status(struct drm_connector *connector);
- bool drm_scdc_set_scrambling(struct drm_connector *connector, bool enable);
- bool drm_scdc_set_high_tmds_clock_ratio(struct drm_connector *connector, bool set);
- 
-+int drm_scdc_set_source_version(struct drm_connector *connector, u8 ver);
-+
- int drm_scdc_read_state(struct drm_connector *connector,
- 			struct drm_scdc_state *state);
- void drm_scdc_debugfs_init(struct drm_connector *connector, struct dentry *root);
+ void drm_connector_oob_hotplug_event(struct fwnode_handle *connector_fwnode,
+ 				     enum drm_connector_status status);
+ enum drm_connector_color_format
 
 -- 
 2.55.0
