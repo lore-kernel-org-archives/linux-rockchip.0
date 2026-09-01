@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 234F2C624DC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:51:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAC5EC624DA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:51:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DODlW3Xac/RzF1linBT8SoR0ewMWfqLFUFTS8ebFQuA=; b=q7XqyuhJkjATbx
-	CEB5N9SC/YZT7g8CHmoqtnEzBN1dn2qv8TKkSSzJ7STtZS3uYI2lqHruxCadWP1VY+iwjYOJv88N8
-	422tYzzZm2jbF/DofKYc3A4JQ2lGhVKfFfq5/incHPYHdDWi3Zbeyb7RP4cpcXfiJj5KT2LLj7+XL
-	nItzuriHPhBECCK6gIJPrLhw83Lud9o9kAdsqvv84KI2WhbLRdOSWzpd8xsaHPkTHiWRPIAPPNJV5
-	BiAKaoktoD127eEi4Nwt77s8KS/CmcOzg8CrajEIxWSJjecOBxQ706Xi97CY2LinZpeGPVCym8CC9
-	PRl8b3zfVRaM0Wg2iy0Q==;
+	List-Owner; bh=BfNOCS04ZSMzdDa4yECSKIXWnVnGpcqxvcaRi+TIXl0=; b=SqQGFQuQeMHAaI
+	yA3IdBSiOqgN8HSPL4JPcJ/KgR546DoywxkRK7+tYD8PNq2XodejrfXEPgNTuWE+VGMGgxckFEJ6q
+	hNfHxxgXXXbAlArq5NT1eLnGZcxiQVNg6tUCpZ4I4lmWbRAxaYdPc86GX0QWUvDMJm/bL6JhJnIA0
+	PaQThS2sLXyk1T7qyFHY2YswyKjM9602BBLTO3qZFWXoOXS3wPFv9Bt+RhEqM+ikxzIKPXp4mGjjr
+	wK5FOg40UXgXQtwstR2Q+AVX+EW+G8YxBSYvGfHPQSbfFsYIR8jakp/PJ+7Cgs4Cn8fI5dmQLt9RO
+	FVWLHn/k4BSL3h0K4Zkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TaG-0000000D1vG-2ZM3;
-	Tue, 01 Sep 2026 18:51:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x1TaH-0000000D1ws-0Bhe;
+	Tue, 01 Sep 2026 18:51:49 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZN-0000000D0gH-0CgY;
-	Tue, 01 Sep 2026 18:51:00 +0000
+	id 1x1TZM-0000000D0g0-3P4U;
+	Tue, 01 Sep 2026 18:51:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288650;
-	bh=FYdmAkPWFKCF8O++onHpEmGeuQyVm5oG12OGbdUPBSU=;
+	s=mail; t=1788288645;
+	bh=aCPsNOXneAIWZwZ2Fba20yR834SGq+o+OAWbOT7jfnw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=I9EWgqCEXTO1HQHg65SdoSbw5hytYZgMJMA6p8u+jfLmpEjrhQGG4EJiMqZnRCDsB
-	 Dc0di44ZLXRA8tRKhF1P6oTNQt94LGIvGkt2iERzqSi6/USBZn9VGT/olY9/vut1Lu
-	 X1gy2To1yHvCtyQAhZnSjelA83+9OSrXVBAfu7CCuV++LfRlBJWCyGb+WbMUjll8yp
-	 VCat2m9yWQRBtBO/IebG2njy7jfYa8B30zxBTw3khcaCe/ZQqV8Y2aoiQKZLkso+6B
-	 fjQ7gGCnavuBP+4XqExdhIai0DqfCQGnyHih70BTHcLhD4h2cGrTodPmgOHp5Ql/H/
-	 hOUH8pBl3Vdow==
+	b=NyekdahjMqreSFz57eZFvAZfwcP9BLiuyXSCkR9r1ZyMyPaC+ALo4+ULYJxzOBQ7R
+	 lzhAEzwj9DeBnMetEg6+9mCvyWKL1auQQSCOQA3YDintaoXN1JKCf9WbbqTQeN0BjS
+	 ZxNiN66FOeMX+I65hBnQDPxWnIJ0CzPmSgjznSJHmCPQMiHP3EgmQ9ZSSEmKn2hq4j
+	 qtz6ZXgS8xTcUnXVu5BnMaT40HPwPr7ts1sWxkmpDsIcfQfUPoT0wfZSds+S6A+vsB
+	 t532E6iOmrRKYWTfeVPgurA+3H4+tSalolkHSDVQ1An5xb19FecljO7oacYu//+wxp
+	 gh2cw9GJY2VGw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ADF5117E361B;
-	Tue, 01 Sep 2026 20:50:50 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D57C517E0FCC;
+	Tue, 01 Sep 2026 20:50:44 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:37 +0300
-Subject: [PATCH v11 13/74] drm/bridge: Fix NULL deref in drm_bridge_add()
- for legacy bridges
+Date: Tue, 01 Sep 2026 21:50:29 +0300
+Subject: [PATCH v11 05/74] drm/display: bridge_connector: Convert to
+ drmm_connector_hdmi_init()
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-13-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-5-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,11 +73,12 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>
+ linux-fbdev@vger.kernel.org, Maud Spierings <maud_spierings@hotmail.com>, 
+ Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115056_025018_D0B0FDFD 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20260901_115056_136086_B4B83166 
+X-CRM114-Status: GOOD (  17.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,51 +95,170 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Legacy bridge drivers that embed struct drm_bridge in a zero-initialized
-allocation, rather than obtaining it from devm_drm_bridge_alloc(), never
-run INIT_LIST_HEAD() on bridge->list, leaving next and prev NULL.
-list_empty() compares next against &bridge->list, so it reports such a
-list head as non-empty.  list_del_init() therefore runs and dereferences
-the NULL pointers, panicking the kernel during probe.  Only builds with
-CONFIG_DEBUG_LIST survive, with a list corruption report.
+Switch drm_bridge_connector to the new drmm_connector_hdmi_init()
+signature.  The vendor, product, supported_formats and max_bpc values
+now live in struct drm_connector_hdmi_funcs instead of being passed as
+separate arguments.  This allows future HDMI 2.x capabilities to be
+plumbed without growing the function's argument list.
 
-This affects rk3066_hdmi and the i.MX8 LDB bridges, which still embed a
-bridge in a devm_kzalloc()'d struct.
+Introduce the supported_hdmi_ver field in struct drm_bridge to let
+bridges declare the HDMI specification version they comply with,
+as well as max_tmds_char_rate to allow them to override the limit
+inferred from that version.  This is particularly useful when handling
+chip variants with different capabilities.
 
-Initialize the list head when it is found to be NULL, so that the bridge
-ends up with a valid empty list head and list_del_init() is only reached
-for bridges that can actually be linked.
+Additionally, add a warning in drm_bridge_add() if an HDMI bridge leaves
+supported_hdmi_ver unset.  This alerts bridge drivers setting the
+DRM_BRIDGE_OP_HDMI flag that they must also declare their supported HDMI
+version.
 
-Fixes: 17805a15d175 ("drm/bridge: add list of removed refcounted bridges")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260731175016.C5D591F00AC4@smtp.kernel.org/
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/drm_bridge.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/display/drm_bridge_connector.c | 43 ++++++++++++++++----------
+ drivers/gpu/drm/drm_bridge.c                   |  6 +++-
+ include/drm/drm_bridge.h                       | 14 +++++++++
+ 3 files changed, 46 insertions(+), 17 deletions(-)
 
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index d664237936ec..63cdc6eab132 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -593,6 +593,8 @@ drm_bridge_connector_read_edid(struct drm_connector *connector)
+ }
+ 
+ static const struct drm_connector_hdmi_funcs drm_bridge_connector_hdmi_funcs = {
++	.supported_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444),
++	.max_bpc = 8,
+ 	.tmds_char_rate_valid = drm_bridge_connector_tmds_char_rate_valid,
+ 	.read_edid = drm_bridge_connector_read_edid,
+ 	.avi = {
+@@ -826,8 +828,6 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 	struct drm_connector *connector;
+ 	struct i2c_adapter *ddc = NULL;
+ 	struct drm_bridge *panel_bridge __free(drm_bridge_put) = NULL;
+-	unsigned int supported_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444);
+-	unsigned int max_bpc = 8;
+ 	bool support_hdcp = false;
+ 	int connector_type;
+ 	int ret;
+@@ -910,11 +910,6 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 				return ERR_PTR(-EINVAL);
+ 
+ 			bridge_connector->bridge_hdmi = drm_bridge_get(bridge);
+-
+-			if (bridge->supported_formats)
+-				supported_formats = bridge->supported_formats;
+-			if (bridge->max_bpc)
+-				max_bpc = bridge->max_bpc;
+ 		}
+ 
+ 		if (bridge->ops & DRM_BRIDGE_OP_HDMI_AUDIO) {
+@@ -996,11 +991,31 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 		return ERR_PTR(-EINVAL);
+ 
+ 	if (bridge_connector->bridge_hdmi) {
+-		if (!connector->ycbcr_420_allowed)
+-			supported_formats &= ~BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420);
+-
+ 		bridge_connector->hdmi_funcs = drm_bridge_connector_hdmi_funcs;
+ 
++		bridge_connector->hdmi_funcs.vendor = bridge_connector->bridge_hdmi->vendor;
++		bridge_connector->hdmi_funcs.product = bridge_connector->bridge_hdmi->product;
++
++		if (bridge_connector->bridge_hdmi->supported_hdmi_ver)
++			bridge_connector->hdmi_funcs.supported_hdmi_ver =
++				bridge_connector->bridge_hdmi->supported_hdmi_ver;
++
++		if (bridge_connector->bridge_hdmi->supported_formats)
++			bridge_connector->hdmi_funcs.supported_formats =
++				bridge_connector->bridge_hdmi->supported_formats;
++
++		if (!connector->ycbcr_420_allowed)
++			bridge_connector->hdmi_funcs.supported_formats &=
++				~BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420);
++
++		if (bridge_connector->bridge_hdmi->max_tmds_char_rate)
++			bridge_connector->hdmi_funcs.supported_tmds_char_rate =
++				bridge_connector->bridge_hdmi->max_tmds_char_rate;
++
++		if (bridge_connector->bridge_hdmi->max_bpc)
++			bridge_connector->hdmi_funcs.max_bpc =
++				bridge_connector->bridge_hdmi->max_bpc;
++
+ 		if (bridge_connector->bridge_hdmi->ops & DRM_BRIDGE_OP_HDMI_AUDIO)
+ 			bridge_connector->hdmi_funcs.audio =
+ 				drm_bridge_connector_hdmi_audio_infoframe;
+@@ -1013,14 +1028,10 @@ struct drm_connector *drm_bridge_connector_init(struct drm_device *drm,
+ 			bridge_connector->hdmi_funcs.spd =
+ 				drm_bridge_connector_hdmi_spd_infoframe;
+ 
+-		ret = drmm_connector_hdmi_ini2(drm, connector,
+-					       bridge_connector->bridge_hdmi->vendor,
+-					       bridge_connector->bridge_hdmi->product,
++		ret = drmm_connector_hdmi_init(drm, connector,
+ 					       &drm_bridge_connector_funcs,
+ 					       &bridge_connector->hdmi_funcs,
+-					       connector_type, ddc,
+-					       supported_formats,
+-					       max_bpc);
++					       connector_type, ddc);
+ 		if (ret)
+ 			return ERR_PTR(ret);
+ 	} else {
 diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-index 2c457ad74f3b..a8b6df5c13ea 100644
+index 83f1809a5d37..afaae272347c 100644
 --- a/drivers/gpu/drm/drm_bridge.c
 +++ b/drivers/gpu/drm/drm_bridge.c
-@@ -453,9 +453,16 @@ void drm_bridge_add(struct drm_bridge *bridge)
- 	 * If the bridge was previously added and then removed, it is now
- 	 * in bridge_lingering_list. Remove it or bridge_lingering_list will be
- 	 * corrupted when adding this bridge to bridge_list below.
-+	 *
-+	 * Legacy drivers that allocate the bridge with kzalloc() rather than
-+	 * devm_drm_bridge_alloc() leave list.next NULL. Such a bridge cannot
-+	 * be on any list, and list_del_init() would dereference NULL, so
-+	 * initialize the list head first.
- 	 */
- 	mutex_lock(&bridge_lock);
--	if (!list_empty(&bridge->list))
-+	if (!bridge->list.next)
-+		INIT_LIST_HEAD(&bridge->list);
-+	else if (!list_empty(&bridge->list))
- 		list_del_init(&bridge->list);
- 	mutex_unlock(&bridge_lock);
+@@ -460,9 +460,13 @@ void drm_bridge_add(struct drm_bridge *bridge)
+ 	mutex_init(&bridge->hpd_state_mutex);
+ 	mutex_init(&bridge->hpd_mutex);
  
+-	if (bridge->ops & DRM_BRIDGE_OP_HDMI)
++	if (bridge->ops & DRM_BRIDGE_OP_HDMI) {
++		if (bridge->supported_hdmi_ver == HDMI_VERSION_UNKNOWN)
++			DRM_WARN("HDMI bridge misses supported HDMI version\n");
++
+ 		bridge->ycbcr_420_allowed = !!(bridge->supported_formats &
+ 					       BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420));
++	}
+ 
+ 	mutex_lock(&bridge_lock);
+ 	list_add_tail(&bridge->list, &bridge_list);
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 58fff047f43b..5a5a25995471 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -1081,6 +1081,12 @@ struct drm_bridge {
+ 	 */
+ 	const char *product;
+ 
++	/**
++	 * @supported_hdmi_ver: HDMI version the bridge is conformant with.
++	 * This is only relevant if @DRM_BRIDGE_OP_HDMI is set.
++	 */
++	enum hdmi_version supported_hdmi_ver;
++
+ 	/**
+ 	 * @supported_formats: Bitmask of @drm_output_color_format listing
+ 	 * supported output formats. This is only relevant if
+@@ -1088,6 +1094,14 @@ struct drm_bridge {
+ 	 */
+ 	unsigned int supported_formats;
+ 
++	/**
++	 * @max_tmds_char_rate: Maximum TMDS character rate, in Hz, the HDMI
++	 * bridge supports. A value of 0 means the core should use the default
++	 * limit implied by @supported_hdmi_ver. This is only relevant if
++	 * @DRM_BRIDGE_OP_HDMI is set.
++	 */
++	unsigned long long max_tmds_char_rate;
++
+ 	/**
+ 	 * @max_bpc: Maximum bits per char the HDMI bridge supports. Allowed
+ 	 * values are 8, 10 and 12. This is only relevant if
 
 -- 
 2.55.0
