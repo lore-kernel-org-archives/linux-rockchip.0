@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD447C624D8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:54:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84582C624D3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:54:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QePHxoOHGAAc8WtkYZaG55EcOsb6Ht8RrTUEYEKu0mI=; b=irJHwnFaZOFlXE
-	iD0GYFsNvWySxVGtNpfBlqeLd22fejoeCqsPU/Uaot3a7AqFnhm6zSqZLOsodbB1GvO+dipKZOTBB
-	fGpG+Ro1SbaFsDrkFgAvkWg7NnFcZW77ytX/MtAVx5vq1BWvK7BEzpPDeB+M1sXZIxef1G56d+Nit
-	8QrUPUdFK7JMR9VwGuKX4hoNYFEnPHdDdHDBLXsP3Rf3bepUc7CKrsNBt+7MEqmkcijxAKolOHN9k
-	SOsTD0HgTW0eQ8KMWlbX8cn98QdSgDJqY6X6KA7KiFJFHSYlv999zZ/cfbtSvaBKHUJZCCG2PL6VU
-	dqOGTKD3hZSSxD57pgeQ==;
+	List-Owner; bh=/wlJ/iRAmW+AogbxHc7FoTANo/2Baxqi1cctxjetCPU=; b=1RyEwrqNe3sGf9
+	CqGMPwB4wi3qLb8TxhAVeoVwbUcNPLh3QRKspxSlRh/tNizeC2Xy5loUl5R0l+aeHz5bDyOx9ZxXb
+	Yd1i5F2TAkFaQTWYPRE21YslS2LIaMczefDLITmSomauLyIHHiI/ymc//lVtsc9ux+gjjVJBVj4rJ
+	h8zaFsgU562YClIPCPNami2i39Zi/WWQYT5nvUZgYrjHxG4rxWMFtgrZxA8xEFMnaY/w12tgU6Ggs
+	OJAk8lTtDFC2pFOmdhpQW8J8XEX3tW3I2AI78SzvT+KZBZXJ52FJ+0yEpLFNfEARmWVBl/m6h0N+4
+	2ibu8nnvqi8NL8p6pSFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TcY-0000000D79H-2Glo;
-	Tue, 01 Sep 2026 18:54:10 +0000
+	id 1x1TcU-0000000D730-1KNZ;
+	Tue, 01 Sep 2026 18:54:06 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Ta4-0000000D1bS-2aPY;
+	id 1x1Ta2-0000000D1X0-1sH3;
 	Tue, 01 Sep 2026 18:51:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288694;
-	bh=2FphXkEs5DxSnnWd+PhysCsnj7bm1CbZ3PIGCi97678=;
+	s=mail; t=1788288692;
+	bh=oTnYR6YHaalFFMtLK/1IlAYPejOGFOtQvt5j73EJZXA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=VfTE5yh7FmjPZC7UGIt63cVMRRkKlxjumfIkSCXPIWxWa4Q8Oen/yvdTvBRLWykde
-	 YFznIqMN3zhq535W6FSPg+v+W41AQlYc0fpNhgxaBUGS6o7M8B3v7/xerIX2TCaeyP
-	 hHq8unvKErlXnBp4Ho/zlL27dL0AHYJ+fQaWmDJJ1kqGgdNR5y1MYr1efbqb4e+/FR
-	 2ES0gzUYL/vuZ2kKGJ963DxuCNXSJEbBBuIbH0Oss5KfCToHOh3EO1UVc4laI2gC9x
-	 GEwFKUYAWi3y/2O/NTmJh5qIxfy3n9L/sRYT1zX+H6p7l1UaKlAoxaHQhioZ5x+PaJ
-	 djLkOdkb5YBVg==
+	b=CfLKEVYC39mRDIjkQ9RVyAzrZI69QbSPJWy2Mk5LfAe6KDfNFn2TBLhBhWgGThh0E
+	 MdFzskD2X9Dvhu6VSFQEKIlMoLOGV9G4IYxLl/ag4WXSHzVG3BGleuuVP+FEzv50q0
+	 uzx9/nXUZv8i0+i+uE1T+HzrOMn+ZXG6jn5EVAZjpQFJE9jyinde+ht5/SLQinVQUS
+	 2C3r/R3vSdFb/B7DwLRwnHGMbTNXoDJqFK4GKVKRmkgBGNQXMx7PzYYiovE7Ta/iI9
+	 7NgKkPorZm2QyTJBrmZvvsOGQ8H9G64ZeLj2CsOZVeAqtg+B9s5JZ0QWxATAri9BLz
+	 mmPvBVoT8jQzw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B863F17E3CA7;
-	Tue, 01 Sep 2026 20:51:34 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D639617E3C9F;
+	Tue, 01 Sep 2026 20:51:31 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:51:37 +0300
-Subject: [PATCH v11 73/74] drm/connector: Use the SPD InfoFrame field
- length defines
+Date: Tue, 01 Sep 2026 21:51:33 +0300
+Subject: [PATCH v11 69/74] drm/connector: Drop redundant hdmi
+ vendor/product fields
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-73-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-69-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,11 +73,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org
+ linux-fbdev@vger.kernel.org, Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115137_644725_F894C916 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20260901_115137_901775_85EF39E9 
+X-CRM114-Status: GOOD (  15.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,120 +94,206 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-DRM_CONNECTOR_HDMI_{VENDOR,PRODUCT}_LEN used to size the vendor and
-product arrays in struct drm_connector_hdmi.  Those arrays are gone and
-both names are now only validated before being copied into the SPD
-InfoFrame, hence the limits they have to be checked against are the ones
-of the SPD InfoFrame fields themselves.
+Now that all users migrated to the new drmm_connector_hdmi_init()
+signature, vendor and product are provided through struct
+drm_connector_hdmi_funcs, a reference to which is already stored in
+drm_connector_hdmi.
 
-Switch the remaining users over to
-HDMI_SPD_INFOFRAME_{VENDOR,PRODUCT}_LEN and drop the DRM specific
-defines, so that the two cannot drift apart.
+Drop the redundant fields from drm_connector_hdmi and point its users to
+hdmi.funcs->vendor and hdmi.funcs->product instead.
 
+The connector registration tests used to verify that both names were
+stored zero-padded and without any trailing NUL, as the SPD InfoFrame
+requires.  That will be covered by dedicated SPD InfoFrame tests, hence
+drop the KUNIT_EXPECT_MEMEQ() checks on the removed fields.
+
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/drm_connector.c            |  4 ++--
- drivers/gpu/drm/tests/drm_connector_test.c | 12 ++++++------
- include/drm/drm_connector.h                |  8 ++++----
- 3 files changed, 12 insertions(+), 12 deletions(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c |  4 +--
+ drivers/gpu/drm/drm_connector.c                 |  4 ---
+ drivers/gpu/drm/tests/drm_connector_test.c      | 41 +++----------------------
+ include/drm/drm_connector.h                     | 14 ++-------
+ 4 files changed, 8 insertions(+), 55 deletions(-)
 
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index d661385c3e64..289dce6c6281 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -786,8 +786,8 @@ static int hdmi_generate_spd_infoframe(const struct drm_connector *connector,
+ 		return 0;
+ 
+ 	ret = hdmi_spd_infoframe_init(frame,
+-				      connector->hdmi.vendor,
+-				      connector->hdmi.product);
++				      connector->hdmi.funcs->vendor,
++				      connector->hdmi.funcs->product);
+ 	if (ret)
+ 		return ret;
+ 
 diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-index bb02e8626c0d..4bb43ac50b0a 100644
+index c9540d58719a..4d580aaec247 100644
 --- a/drivers/gpu/drm/drm_connector.c
 +++ b/drivers/gpu/drm/drm_connector.c
-@@ -579,8 +579,8 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
- 	if (!hdmi_funcs->vendor || !hdmi_funcs->product)
- 		return -EINVAL;
+@@ -646,10 +646,6 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+ 		connector->hdmi.max_tmds_char_rate = hdmi_funcs->supported_tmds_char_rate;
+ 	}
  
--	if ((strlen(hdmi_funcs->vendor) > DRM_CONNECTOR_HDMI_VENDOR_LEN) ||
--	    (strlen(hdmi_funcs->product) > DRM_CONNECTOR_HDMI_PRODUCT_LEN))
-+	if ((strlen(hdmi_funcs->vendor) > HDMI_SPD_INFOFRAME_VENDOR_LEN) ||
-+	    (strlen(hdmi_funcs->product) > HDMI_SPD_INFOFRAME_PRODUCT_LEN))
- 		return -EINVAL;
- 
- 	if (!hdmi_funcs->supported_formats ||
+-	/* TODO: remove after conversion to new drmm_connector_hdmi_init() */
+-	strtomem_pad(connector->hdmi.vendor, hdmi_funcs->vendor, 0);
+-	strtomem_pad(connector->hdmi.product, hdmi_funcs->product, 0);
+-
+ 	/*
+ 	 * drm_connector_attach_max_bpc_property() requires the
+ 	 * connector to have a state.
 diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm/tests/drm_connector_test.c
-index be2d24abeeb8..f79cea11d161 100644
+index 0613568ef5b7..be2d24abeeb8 100644
 --- a/drivers/gpu/drm/tests/drm_connector_test.c
 +++ b/drivers/gpu/drm/tests/drm_connector_test.c
-@@ -782,7 +782,7 @@ static void drm_test_connector_hdmi_init_product_valid(struct kunit *test)
- 	priv->hdmi_funcs.product = "Prod";
+@@ -771,14 +771,11 @@ static void drm_test_connector_hdmi_init_null_product(struct kunit *test)
  
- 	KUNIT_ASSERT_LT(test, strlen(priv->hdmi_funcs.product),
--			DRM_CONNECTOR_HDMI_PRODUCT_LEN);
-+			HDMI_SPD_INFOFRAME_PRODUCT_LEN);
- 
- 	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
- 				       &dummy_funcs,
-@@ -805,7 +805,7 @@ static void drm_test_connector_hdmi_init_product_length_exact(struct kunit *test
- 	priv->hdmi_funcs.product = "ProductProductPr";
- 
- 	KUNIT_ASSERT_EQ(test, strlen(priv->hdmi_funcs.product),
--			DRM_CONNECTOR_HDMI_PRODUCT_LEN);
-+			HDMI_SPD_INFOFRAME_PRODUCT_LEN);
- 
- 	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
- 				       &dummy_funcs,
-@@ -828,7 +828,7 @@ static void drm_test_connector_hdmi_init_product_length_too_long(struct kunit *t
- 	priv->hdmi_funcs.product = "ProductProductProduct";
- 
- 	KUNIT_ASSERT_GT(test, strlen(priv->hdmi_funcs.product),
--			DRM_CONNECTOR_HDMI_PRODUCT_LEN);
-+			HDMI_SPD_INFOFRAME_PRODUCT_LEN);
- 
- 	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
- 				       &dummy_funcs,
-@@ -851,7 +851,7 @@ static void drm_test_connector_hdmi_init_vendor_valid(struct kunit *test)
- 	priv->hdmi_funcs.vendor = "Vend";
- 
- 	KUNIT_ASSERT_LT(test, strlen(priv->hdmi_funcs.vendor),
--			DRM_CONNECTOR_HDMI_VENDOR_LEN);
-+			HDMI_SPD_INFOFRAME_VENDOR_LEN);
- 
- 	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
- 				       &dummy_funcs,
-@@ -874,7 +874,7 @@ static void drm_test_connector_hdmi_init_vendor_length_exact(struct kunit *test)
- 	priv->hdmi_funcs.vendor = "VendorVe";
- 
- 	KUNIT_ASSERT_EQ(test, strlen(priv->hdmi_funcs.vendor),
--			DRM_CONNECTOR_HDMI_VENDOR_LEN);
-+			HDMI_SPD_INFOFRAME_VENDOR_LEN);
- 
- 	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
- 				       &dummy_funcs,
-@@ -895,7 +895,7 @@ static void drm_test_connector_hdmi_init_vendor_length_too_long(struct kunit *te
+ /*
+  * Test that the registration of a connector with a valid, shorter than
+- * the max length, product name succeeds, and is stored padded with 0.
++ * the max length, product name succeeds.
+  */
+ static void drm_test_connector_hdmi_init_product_valid(struct kunit *test)
+ {
+ 	struct drm_connector_init_priv *priv = test->priv;
+-	const unsigned char expected_product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] = {
+-		'P', 'r', 'o', 'd',
+-	};
+ 	int ret;
  
  	priv->hdmi_funcs = dummy_hdmi_funcs;
- 	priv->hdmi_funcs.vendor = "VendorVendor";
--	KUNIT_ASSERT_GT(test, strlen(priv->hdmi_funcs.vendor), DRM_CONNECTOR_HDMI_VENDOR_LEN);
-+	KUNIT_ASSERT_GT(test, strlen(priv->hdmi_funcs.vendor), HDMI_SPD_INFOFRAME_VENDOR_LEN);
+@@ -793,25 +790,15 @@ static void drm_test_connector_hdmi_init_product_valid(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+-	KUNIT_EXPECT_MEMEQ(test,
+-			   priv->connector.hdmi.product,
+-			   expected_product,
+-			   sizeof(priv->connector.hdmi.product));
+ }
  
- 	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
- 				       &dummy_funcs,
+ /*
+  * Test that the registration of a connector with a valid, at max
+- * length, product name succeeds, and is stored padded without any
+- * trailing \0.
++ * length, product name succeeds.
+  */
+ static void drm_test_connector_hdmi_init_product_length_exact(struct kunit *test)
+ {
+ 	struct drm_connector_init_priv *priv = test->priv;
+-	const unsigned char expected_product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] = {
+-		'P', 'r', 'o', 'd', 'u', 'c', 't',
+-		'P', 'r', 'o', 'd', 'u', 'c', 't',
+-		'P', 'r',
+-	};
+ 	int ret;
+ 
+ 	priv->hdmi_funcs = dummy_hdmi_funcs;
+@@ -826,10 +813,6 @@ static void drm_test_connector_hdmi_init_product_length_exact(struct kunit *test
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+-	KUNIT_EXPECT_MEMEQ(test,
+-			   priv->connector.hdmi.product,
+-			   expected_product,
+-			   sizeof(priv->connector.hdmi.product));
+ }
+ 
+ /*
+@@ -857,14 +840,11 @@ static void drm_test_connector_hdmi_init_product_length_too_long(struct kunit *t
+ 
+ /*
+  * Test that the registration of a connector with a vendor name smaller
+- * than the maximum length succeeds, and is stored padded with zeros.
++ * than the maximum length succeeds.
+  */
+ static void drm_test_connector_hdmi_init_vendor_valid(struct kunit *test)
+ {
+ 	struct drm_connector_init_priv *priv = test->priv;
+-	const char expected_vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] = {
+-		'V', 'e', 'n', 'd',
+-	};
+ 	int ret;
+ 
+ 	priv->hdmi_funcs = dummy_hdmi_funcs;
+@@ -879,24 +859,15 @@ static void drm_test_connector_hdmi_init_vendor_valid(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+-	KUNIT_EXPECT_MEMEQ(test,
+-			   priv->connector.hdmi.vendor,
+-			   expected_vendor,
+-			   sizeof(priv->connector.hdmi.vendor));
+ }
+ 
+ /*
+  * Test that the registration of a connector with a vendor name at the
+- * maximum length succeeds, and is stored padded without the trailing
+- * zero.
++ * maximum length succeeds.
+  */
+ static void drm_test_connector_hdmi_init_vendor_length_exact(struct kunit *test)
+ {
+ 	struct drm_connector_init_priv *priv = test->priv;
+-	const char expected_vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] = {
+-		'V', 'e', 'n', 'd', 'o', 'r',
+-		'V', 'e',
+-	};
+ 	int ret;
+ 
+ 	priv->hdmi_funcs = dummy_hdmi_funcs;
+@@ -911,10 +882,6 @@ static void drm_test_connector_hdmi_init_vendor_length_exact(struct kunit *test)
+ 				       DRM_MODE_CONNECTOR_HDMIA,
+ 				       &priv->ddc);
+ 	KUNIT_EXPECT_EQ(test, ret, 0);
+-	KUNIT_EXPECT_MEMEQ(test,
+-			   priv->connector.hdmi.vendor,
+-			   expected_vendor,
+-			   sizeof(priv->connector.hdmi.vendor));
+ }
+ 
+ /*
 diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 3b49799d12fd..2a804d42d4b1 100644
+index d62a79b9699a..182946279194 100644
 --- a/include/drm/drm_connector.h
 +++ b/include/drm/drm_connector.h
-@@ -1485,15 +1485,15 @@ struct drm_connector_infoframe_funcs {
+@@ -1485,11 +1485,13 @@ struct drm_connector_infoframe_funcs {
   * and controller capabilities
   */
  struct drm_connector_hdmi_funcs {
--#define DRM_CONNECTOR_HDMI_VENDOR_LEN	8
++#define DRM_CONNECTOR_HDMI_VENDOR_LEN	8
  	/**
--	 * @vendor: HDMI Controller Vendor name.
-+	 * @vendor: HDMI Controller Vendor name, at most
-+	 * HDMI_SPD_INFOFRAME_VENDOR_LEN characters long.
+ 	 * @vendor: HDMI Controller Vendor name.
  	 */
  	const char *vendor;
  
--#define DRM_CONNECTOR_HDMI_PRODUCT_LEN	16
++#define DRM_CONNECTOR_HDMI_PRODUCT_LEN	16
  	/**
--	 * @product: HDMI Controller Product name
-+	 * @product: HDMI Controller Product name, at most
-+	 * HDMI_SPD_INFOFRAME_PRODUCT_LEN characters long.
+ 	 * @product: HDMI Controller Product name
  	 */
- 	const char *product;
- 
+@@ -2190,18 +2192,6 @@ struct drm_connector_hdmi_audio {
+  * struct drm_connector_hdmi - DRM Connector HDMI-related structure
+  */
+ struct drm_connector_hdmi {
+-#define DRM_CONNECTOR_HDMI_VENDOR_LEN	8
+-	/**
+-	 * @vendor: HDMI Controller Vendor Name
+-	 */
+-	unsigned char vendor[DRM_CONNECTOR_HDMI_VENDOR_LEN] __nonstring;
+-
+-#define DRM_CONNECTOR_HDMI_PRODUCT_LEN	16
+-	/**
+-	 * @product: HDMI Controller Product Name
+-	 */
+-	unsigned char product[DRM_CONNECTOR_HDMI_PRODUCT_LEN] __nonstring;
+-
+ 	/**
+ 	 * @supported_formats: Bitmask of @drm_output_color_format
+ 	 * supported by the controller.
 
 -- 
 2.55.0
