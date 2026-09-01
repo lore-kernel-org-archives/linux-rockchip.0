@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92DFAC624D0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01059C624D0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:52:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ItwwfOLzFagEULci0/VxovqLOC21LeRTkdo8S27WbXA=; b=wGCVxnJi7qcTwW
-	qdEXbUqUyEne6jU5mfAcaDMjH9sl1WDlVymGdpJrwMeps921zz7ZdiZHrRpWSAC7cNYm4ljL+fQH3
-	aj3s/symPGBcyNeAj93ZnuliAoTZDIjw9azdQXaBn6BL0dKSe2Oz3+R0mB0Tv6zU46wyZBl2zoD9+
-	i3QEevzjgd906cld5ytF0Wlvf4JBrOE3eFgWBmdsni4i6lI0fehj8uC5Nb+XEWrMCDMXPP8XlHIDQ
-	eL0zhDbm7uRP619gMvCF8nGmV73kkfN8/OIVVBiT1EyC/jwBJmKfL1MV82DtPBZ9NR+dAEKHZYsgN
-	pb2nGnzApdkf95hHRtQg==;
+	List-Owner; bh=AW8VBo2iA4XUZ8bECnJoRYkGYB7ssoF3iGKCYHPLA6c=; b=PujqXkHwlqRWhM
+	mS4vPIIzxNUAhEJEkLEzu7RjBzGMdcjh5PGmxPyZTYHuQmKEPSvl8kvP2T4dopHQO6XmZvY7EUirQ
+	Iba2BM0oBNAVapJSblNR5upka/uk7SnkYV+Flft4B/fEBRuo03Vkzfz4qvcdkg3gCsR6uJhvFfkBn
+	23bz68Q3zaMvbga9QpwZyUfdQBD2xIT2rD8BI3yKSP18Cmzwzync4/HeU4fQvYrIn8d4QJo71RXbe
+	EMgnsERGk6TkeT6ynNWmUD72/MACU8h4gvP+4IzpX5dptD/MjoVGbcJ17xKdEEG3lxssfh79fyKQ/
+	+VapNmAhErCRNtCODshw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Taw-0000000D3Kk-3Yq0;
-	Tue, 01 Sep 2026 18:52:30 +0000
+	id 1x1Tb3-0000000D3b0-2LlE;
+	Tue, 01 Sep 2026 18:52:37 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZh-0000000D1CA-2PAv;
-	Tue, 01 Sep 2026 18:51:15 +0000
+	id 1x1TZo-0000000D1IF-1c5t;
+	Tue, 01 Sep 2026 18:51:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=KisaMHIutm5DN3h2ng9q6TTees/JMa9YN5vJlAhrawA=; b=M6b+4w7RJkZVT3k7WBT1aaa6+c
-	F1QgXLBv0+mxsyhx2Hf3/CecA4hGVIKA6t/lZD+X1g2Hc/5Q1wo8QBi1ItCEZc103LoYDIyJSjz8J
-	x8OJ8pfWUdINDA9Kxy1HXA5Fv4N6aHCgO8zOVOFVMerwtHatfFdqVRVcM+O13WSCvU3QdMiARFW0W
-	Hf2YvGeGdw/sExbAX64zvZkVdwmrKDxDVbqlm3JlFQeSQK+wVFQ05e8OkDfNMGoq5rTTGqYZ2zsVq
-	cUzPUf07eFCNEfKkxa/uGlyfhc5N1Mw3KzylrA7aVw70LnvKEBg1GqZwlOijRgxJ/i/yudXbl20H0
-	X7ISl77A==;
+	bh=x6UMt1C+r6lq7SziOFxONJbX1GLgynAm6BS0LW14lJ0=; b=QhElWnmx6ztZ+7IGtjj7UJcds8
+	Tm8ZglYzUNf+GxXtiDY6nXodPz4/YNvtnPbvEO566i8YXlA8EBAHrB9d7iDGZoWeBbCr8r5/jH6k+
+	jEyF3HUgCsXCDqhaSLVQWNNouPd+gkyzZoSC8nITnwmzWcijr4S1KJZgzEPpsfoNUGbmexg7H6tEk
+	1BNgttG+3iu2Fh8hLIcIW6OJ59CNj34Pd2m8P7E6gS5adoRNSfQSfHIISN3KqQhbLWEMJQqg7GIDE
+	x0aL7GUVn4f9agWEItJoGs7uRpmws5CpLKXqS8JsKlS3ToM7eTzkhVZlrZH/v36qTzC6WVmCf1JtZ
+	z7nlF3NQ==;
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x1TZc-0000000BHQE-0Uh5;
-	Tue, 01 Sep 2026 18:51:10 +0000
+	id 1x1TZl-0000000BHVa-2lXO;
+	Tue, 01 Sep 2026 18:51:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288667;
-	bh=5t2O0x2IaTGAztgGLk1cEPqBZ6e87+dyfW947n6d1x4=;
+	s=mail; t=1788288676;
+	bh=TTJ9k281x820Fhqsww8dePpZZjOZVQAkGWLxEfMxV30=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=c+nyW75/z/MxX2p4pYmS5SMdKdM7qh5WDOjpVp27ID5gVClkIOz91NmvxPae6ZAcN
-	 fsui6xfDq3rUXDxd5SzlZH4/e2JKy9pfzFz4f5R+GyN69C3RxtRdtPiBp6gZ6IsV8Y
-	 8g4Xsz8Ixd1ysu83fPUitehgWXkigKunkngeh9vjEHm/JdhcCf8PSXH8kGEaaFBLIO
-	 DkzGQyDhf8MeECuS4rYFSiqxQhFTDEBQCIhCQ29c8MjJw+7AygPVGwJdkWE7Bn7OI8
-	 RUMQ+JKMSqsQ++BZLh9jAWQdFhvaOsqYkx4lIA8y3KYv4K9y2PTDobMR6GfpO/kVQu
-	 /hF6umpU6GbLg==
+	b=I1mKM0TovFFJY5lflvJFCV0pyXAjh5h+gbj60CWywvIIHC44qMIQxooSH/IHHzrA9
+	 GotZ1+PS1Mv8LeACQ4H6lh/0gYWeNF9SJ1sfOJrqKdqRfSHevLU26Ft67qWXJLa9fJ
+	 R1KitirANFXpH7DmxjT2+OZFI+tv05ykfrKfjWyjNM7g0xZnIVDhZb2SpjY3BKR9SJ
+	 9AX+q2FzfbpNEUkNoKKA6qvVJfvn5lU0b8EFjvZlHCp+me0uAUeCSWdRERLQU+M4cB
+	 bR8vPdXrbnMKX3SIkJ46Kt0Sx/g3EHNVhYST/YVyf7Jldx7We3BVtYezsWN9TQ/8rP
+	 CeMuWNR3xXVwA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DE43E17E04D7;
-	Tue, 01 Sep 2026 20:51:06 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6A52917E3C6D;
+	Tue, 01 Sep 2026 20:51:16 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:59 +0300
-Subject: [PATCH v11 35/74] drm/rockchip: dw_hdmi_qp: Avoid spurious HPD IRQ
- thread wakeups
+Date: Tue, 01 Sep 2026 21:51:12 +0300
+Subject: [PATCH v11 48/74] drm/vc4: hdmi: Defer pixel clock validation to
+ HDMI helpers
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-35-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-48-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -87,12 +87,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
- Diederik de Haas <diederik@cknow-tech.com>
+ linux-fbdev@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_195108_364682_238C29C0 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20260901_195117_905232_765609CF 
+X-CRM114-Status: GOOD (  15.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,67 +108,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3576 and RK3588 HPD hardirq handlers read shared status registers
-and currently wake the threaded handler whenever any bit in those
-registers is set.  This can wake the HDMI IRQ thread for unrelated
-status bits, and on RK3588 can also wake the thread for the other HDMI
-port.
+drm_atomic_helper_connector_hdmi_check() rejects modes whose computed
+TMDS character rate exceeds the connector limit before invoking the
+driver's .tmds_char_rate_valid() hook.
 
-Mask the status value with the SoC-specific HPD interrupt bit before
-deciding whether to wake the threaded handler.  On RK3588, select the
-HDMI0 or HDMI1 HPD bit according to the instance port id.
+BCM2835 is capped at 162 MHz, slightly below the 165 MHz limit of HDMI
+1.2.  Set supported_tmds_char_rate in vc4_hdmi_connector_funcs_hdmi10 so
+that the limit inferred from supported_hdmi_ver is overridden by the
+lower hardware constraint.  All other chip variants rely on the standard
+HDMI 1.4/2.0 limits, so the default validation suffices.
 
-No stable backport is needed.  The issue may only cause spurious IRQ
-thread wakeups and does not cause functional breakage.
+This allows vc4_hdmi_connector_clock_valid() to be simplified by
+dropping the now-redundant max_pixel_clock field from struct
+vc4_hdmi_variant.
 
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260702151346.5A4EC1F000E9@smtp.kernel.org/
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/vc4/vc4_hdmi.c | 10 +---------
+ drivers/gpu/drm/vc4/vc4_hdmi.h |  3 ---
+ 2 files changed, 1 insertion(+), 12 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 456bf2f194d7..dff400233154 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -34,6 +34,7 @@
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index 2451ff85e759..6d3db0d24c38 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -1529,12 +1529,8 @@ vc4_hdmi_connector_clock_valid(const struct drm_connector *connector,
+ 			       const struct drm_display_mode *mode,
+ 			       unsigned long long clock)
+ {
+-	const struct vc4_hdmi *vc4_hdmi = connector_to_vc4_hdmi(connector);
+ 	struct vc4_dev *vc4 = to_vc4_dev(connector->dev);
  
- #define RK3576_IOC_HDMI_HPD_STATUS	0xa440
- #define RK3576_HDMI_LEVEL_INT		BIT(3)
-+#define RK3576_HDMI_OHPD_INT		BIT(4)
+-	if (clock > vc4_hdmi->variant->max_pixel_clock)
+-		return MODE_CLOCK_HIGH;
+-
+ 	if (!vc4->hvs->vc5_hdmi_enable_hdmi_20 && clock > HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ)
+ 		return MODE_CLOCK_HIGH;
  
- #define RK3576_VO0_GRF_SOC_CON1		0x0004
- #define RK3576_HDMI_FRL_MOD		BIT(0)
-@@ -64,7 +65,9 @@
- #define RK3588_HPD_HDMI1_IO_EN_MASK	BIT(13)
- #define RK3588_GRF_SOC_STATUS1		0x0384
- #define RK3588_HDMI0_LEVEL_INT		BIT(16)
-+#define RK3588_HDMI0_OHPD_INT		BIT(17)
- #define RK3588_HDMI1_LEVEL_INT		BIT(24)
-+#define RK3588_HDMI1_OHPD_INT		BIT(25)
- #define RK3588_GRF_VO1_CON3		0x000c
- #define RK3588_GRF_VO1_CON6		0x0018
- #define RK3588_COLOR_DEPTH_MASK		GENMASK(7, 4)
-@@ -348,7 +351,7 @@ static irqreturn_t dw_hdmi_qp_rk3576_hardirq(int irq, void *dev_id)
- 	u32 intr_stat, val;
+@@ -1579,6 +1575,7 @@ static const struct drm_connector_hdmi_funcs vc4_hdmi_connector_funcs_hdmi12 = {
+ 	VC4_HDMI_CONNECTOR_FUNCS_COMMON,
+ 	.max_bpc		= 8,
+ 	.supported_hdmi_ver	= HDMI_VERSION_1_2,
++	.supported_tmds_char_rate = 162000000,
+ };
  
- 	regmap_read(hdmi->regmap, RK3576_IOC_HDMI_HPD_STATUS, &intr_stat);
--	if (intr_stat) {
-+	if (intr_stat & RK3576_HDMI_OHPD_INT) {
- 		val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 1);
+ static const struct drm_connector_hdmi_funcs vc4_hdmi_connector_funcs_hdmi14 = {
+@@ -3185,7 +3182,6 @@ static const struct vc4_hdmi_variant bcm2835_variant = {
+ 	.encoder_type		= VC4_ENCODER_TYPE_HDMI0,
+ 	.debugfs_name		= "hdmi_regs",
+ 	.card_name		= "vc4-hdmi",
+-	.max_pixel_clock	= 162000000,
+ 	.registers		= vc4_hdmi_fields,
+ 	.num_registers		= ARRAY_SIZE(vc4_hdmi_fields),
  
- 		regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
-@@ -381,6 +384,8 @@ static irqreturn_t dw_hdmi_qp_rk3588_hardirq(int irq, void *dev_id)
+@@ -3205,7 +3201,6 @@ static const struct vc4_hdmi_variant bcm2711_hdmi0_variant = {
+ 	.encoder_type		= VC4_ENCODER_TYPE_HDMI0,
+ 	.debugfs_name		= "hdmi0_regs",
+ 	.card_name		= "vc4-hdmi-0",
+-	.max_pixel_clock	= HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ,
+ 	.registers		= vc5_hdmi_hdmi0_fields,
+ 	.num_registers		= ARRAY_SIZE(vc5_hdmi_hdmi0_fields),
+ 	.phy_lane_mapping	= {
+@@ -3234,7 +3229,6 @@ static const struct vc4_hdmi_variant bcm2711_hdmi1_variant = {
+ 	.encoder_type		= VC4_ENCODER_TYPE_HDMI1,
+ 	.debugfs_name		= "hdmi1_regs",
+ 	.card_name		= "vc4-hdmi-1",
+-	.max_pixel_clock	= HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ,
+ 	.registers		= vc5_hdmi_hdmi1_fields,
+ 	.num_registers		= ARRAY_SIZE(vc5_hdmi_hdmi1_fields),
+ 	.phy_lane_mapping	= {
+@@ -3263,7 +3257,6 @@ static const struct vc4_hdmi_variant bcm2712_hdmi0_variant = {
+ 	.encoder_type		= VC4_ENCODER_TYPE_HDMI0,
+ 	.debugfs_name		= "hdmi0_regs",
+ 	.card_name		= "vc4-hdmi-0",
+-	.max_pixel_clock	= HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ,
+ 	.registers		= vc6_hdmi_hdmi0_fields,
+ 	.num_registers		= ARRAY_SIZE(vc6_hdmi_hdmi0_fields),
+ 	.phy_lane_mapping	= {
+@@ -3290,7 +3283,6 @@ static const struct vc4_hdmi_variant bcm2712_hdmi1_variant = {
+ 	.encoder_type		= VC4_ENCODER_TYPE_HDMI1,
+ 	.debugfs_name		= "hdmi1_regs",
+ 	.card_name		= "vc4-hdmi-1",
+-	.max_pixel_clock	= HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ,
+ 	.registers		= vc6_hdmi_hdmi1_fields,
+ 	.num_registers		= ARRAY_SIZE(vc6_hdmi_hdmi1_fields),
+ 	.phy_lane_mapping	= {
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.h b/drivers/gpu/drm/vc4/vc4_hdmi.h
+index f6159c9e6144..61486e7b4ba2 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.h
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.h
+@@ -29,9 +29,6 @@ struct vc4_hdmi_variant {
+ 	/* Filename to expose the registers in debugfs */
+ 	const char *debugfs_name;
  
- 	regmap_read(hdmi->regmap, RK3588_GRF_SOC_STATUS1, &intr_stat);
+-	/* Maximum pixel clock supported by the controller (in Hz) */
+-	unsigned long long max_pixel_clock;
+-
+ 	/* List of the registers available on that variant */
+ 	const struct vc4_hdmi_register *registers;
  
-+	intr_stat &= hdmi->port_id ? RK3588_HDMI1_OHPD_INT : RK3588_HDMI0_OHPD_INT;
-+
- 	if (intr_stat) {
- 		if (hdmi->port_id)
- 			val = FIELD_PREP_WM16(RK3588_HDMI1_HPD_INT_MSK, 1);
 
 -- 
 2.55.0
