@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45A77C624D6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03FD2C624D3
 	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c6ypw2wiams5Y5Cz3ihoN+HaXVnMbbSR/BsGCuulPYw=; b=RinEs1+F4OQOYi
-	an4bxIQFT3cTw5AdG0PTtMRMMLsVXRCIdJYHWJAhW0yRUN6oVPmlwZTuNU2dzZmwzNn9aH34pMChx
-	ttm47BwKpOkyzSTTioGBh8uX0o7NQnKFbakpTAlMcrUqDiPAj1AJ2vJ8eY1TB26xPT4XJDyU6o7eu
-	qJBJn5lSV7eE50lswIVCcf/N/KBMSM1le0PiuJaKowmzLgpbymLnXO1tgn265/sAJG5UIH0cqPV9I
-	zRY1TIXpVYAcf0DDUJ0dcCNJol79ZHjkfwfDeMVjRTu0fBSbK0CzF0yAF2HlYT3DHKPEdhypw9lC7
-	OiAdnfCunSaozhQG/w5Q==;
+	List-Owner; bh=rs1cA29zBkTLYcBCa3tquiKyNp7Rfia7WruPH+w0O3Q=; b=Ps70PuzC46Ypo1
+	x4iZFup/tGdmXxk5oAeZnJhyF4zo+C4VzRoUFdO+hF3MiGb28P0QU1v+dC+5pvhQIVMkivq13ypM8
+	8QV2dCyM0SYBKkMmcBtzlKtV3qFyyieredttGAlxLwRpuLaLiSWj0RihZRD32wTCGECXK9AnUG45f
+	GUW+cRwK4kzoQiodSYU5XGci8CJSzJzVdHQEKwHYy4cHfi8FC12JDMBAP2x3cgHCiQZt84Gx0WOQf
+	pH0MKPtsP2B2bSKZ05j5WhcXmQpPubUmlEaOozG/gBCsEjL0uFYeH7YY2mKNRBd/UYhTUBDB54pez
+	6yfrlpXXVeQhV2Lpvuug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Tbe-0000000D4rg-3lNJ;
-	Tue, 01 Sep 2026 18:53:14 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x1Tbf-0000000D4ud-3Xea;
+	Tue, 01 Sep 2026 18:53:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZW-0000000D0rW-1GbD;
-	Tue, 01 Sep 2026 18:51:20 +0000
+	id 1x1TZr-0000000D1M2-24e5;
+	Tue, 01 Sep 2026 18:51:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=8erPI3FlDm+wON0APsVatUpl/ybjSpq8XyPHUuxDthE=; b=byRDQPMGpH/0sECFMmzb/3Y77k
+	ofcwU8X5H+ZWL5UnMwHeXy+yxeEFZ9t/jLfY6wi5FkfUhkS8q/cnCwpWYfd7sskv7Hr/unOGPewas
+	zSvReci6qd+yMFhGqplf1/zvekq+v//kwfwNdvSgjuXfCjuyYixKzrY79SG4DOn398vWcF4b8VCvx
+	LFibfXEIB5wvt4DdyQLODSHi+TgolSdGi/tpNLChVLVThq4TGy4l56Jk6DEkzgxoozy9rinofcxYk
+	MUHRDwzKNExHKsQ6oY7ZFfFjpmILMxZBZxjhpTrQcH1NT1zIWOA/kMM5jx++P4Fc2gKWqW2dsrKwK
+	ugrC9smA==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x1TZf-0000000BHRa-47Vb;
+	Tue, 01 Sep 2026 18:51:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288658;
-	bh=dHIKdEC5RHVqcHq82GjtYHGUUOJHjjeCBOpp724uoac=;
+	s=mail; t=1788288669;
+	bh=4/YtiZaZ89Twed4oFSRxyYx32iL1zMvuMBIOY5hJe+k=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ACW+ziuWAPd7zQm+209nems4I5iTQK8DxQhfTlIXHAZiHsFxLg+JqCna8mjW0HOHN
-	 9oRrZAu3JtYTlX3chmx8L5lRyVfKDJ4tedh4UDnomz7Z4HGRGJKJa5A43vFlyVsXv/
-	 vycrj6aiyTRjt+Ma0ToXjajA6HX6rGIme9LyvDu8Kp5+VSNbCpQIN5a4zfiNV5mZ6q
-	 zFpBFLN1tNBMGnKm9AN+7aAcRv3xpxFheSMR+zKCIZQw6bAdCULapugytg0YfuNyk2
-	 bFL3CtQHBlrTx1c1/d+SLHBsR7Dau2rqZ/MIlk75FrSmfC3ud9//gOm2Gq9OhGh1zs
-	 zN5/R+JjtaJGA==
+	b=PGzp1SsilCwKYexcs8Bz9AWbenl0kCA6UHdzrNc6drFAF0zRKDQx0sbazIh4l4zr8
+	 nyj7K0MoXR0S3HZsdldbnCOHAhuw8wRQ/AOKPg8RK3FTd+Q1PusLGmFxRPQ92qyWeq
+	 boryLrLsAE0ZO+EgmSa0FtvsE/hRrVisMMLHTjWtfYUMg43Bl6bKMcVdmFotFA6LHV
+	 9d3RpySLf+hRNTJrIWTlBhAF3J98DN4vt4MOCCz9Ztomz/tBXRIxHA0xlWpAqkLkHr
+	 Uw5IhMvrMNYdHy+9iW0DKZdJ7HLWYYPUByQHXJMGtsHOGHMQjPWyvfuuD9yTTYEiYx
+	 jH1CXtdgCP1Pg==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3137C17E38DC;
-	Tue, 01 Sep 2026 20:50:58 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 28D7117E3C56;
+	Tue, 01 Sep 2026 20:51:09 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:47 +0300
-Subject: [PATCH v11 23/74] drm/display: hdmi-state-helper: Sync SCDC state
- on hotplug
+Date: Tue, 01 Sep 2026 21:51:02 +0300
+Subject: [PATCH v11 38/74] drm/rockchip: dw_hdmi_qp: Factor out HPD
+ interrupt (un)mask helpers
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-23-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-38-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,12 +87,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org, Maud Spierings <maud_spierings@hotmail.com>, 
- Diederik de Haas <diederik@cknow-tech.com>
+ linux-fbdev@vger.kernel.org, Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115102_592936_EC0BF7ED 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20260901_195120_803675_874202CA 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,80 +108,161 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-drm_atomic_helper_connector_hdmi_hotplug() does not currently
-synchronize SCDC status on hotplug events, leaving the scrambler state
-potentially inconsistent after (re)connect.
+Extract the GRF-level HPD interrupt mask/unmask register writes into
+dedicated dw_hdmi_qp_rk35{88,76}_{mask,unmask}_hpd() helpers, and use
+them from the .enable_hpd()/.disable_hpd() phy ops as well as the
+hardirq, threaded re-arm and io_init() paths.
 
-Hook drm_connector_hdmi_sync_scdc() into both the connect and disconnect
-paths, replacing the existing TODOs around missing scrambler handling.
-Note that per .detect_ctx() contract, implementations shall return a
-drm_connector_status value or -EDEADLK, nothing else.  Therefore, handle
-deadlocks and just report any other errors.  For consistency, also
-report the errors from drm_edid_connector_update().
+This is a preparatory refactor that separates the SoC-level HPD mask
+from the phy op entry points, so a subsequent change can gate the
+platform HPD IRQ line without affecting the debounce paths.
 
-Tested-by: Maud Spierings <maud_spierings@hotmail.com>
 Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 34 ++++++++++++++++++++++---
- 1 file changed, 31 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 54 ++++++++++++++++++--------
+ 1 file changed, 37 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index 8045b1d17d6e..1e269b203b98 100644
---- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -1362,12 +1362,29 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
- 					enum drm_connector_status status)
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index 9e48ec06eb66..ecf12403101d 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -277,9 +277,8 @@ dw_hdmi_qp_rk3588_read_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
+ 	return val ? connector_status_connected : connector_status_disconnected;
+ }
+ 
+-static void dw_hdmi_qp_rk3588_enable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
++static void dw_hdmi_qp_rk3588_unmask_hpd(struct rockchip_hdmi_qp *hdmi)
  {
- 	const struct drm_edid *drm_edid;
-+	int ret;
+-	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
+ 	u32 val;
  
- 	if (status == connector_status_disconnected) {
--		// TODO: also handle scramber, HDMI sink disconnected.
-+		/*
-+		 * .detect_ctx() can only ever return a drm_connector_status or
-+		 * -EDEADLK. Handle deadlocks, and report any !EDEADLK error.
-+		 */
-+		ret = drm_connector_hdmi_sync_scdc(connector, false, ctx);
-+		if (ret) {
-+			if (ret == -EDEADLK)
-+				return ret;
+ 	if (hdmi->port_id)
+@@ -292,9 +291,8 @@ static void dw_hdmi_qp_rk3588_enable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
+ 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
+ }
+ 
+-static void dw_hdmi_qp_rk3588_disable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
++static void dw_hdmi_qp_rk3588_mask_hpd(struct rockchip_hdmi_qp *hdmi)
+ {
+-	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
+ 	u32 val;
+ 
+ 	if (hdmi->port_id)
+@@ -305,6 +303,20 @@ static void dw_hdmi_qp_rk3588_disable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data
+ 	regmap_write(hdmi->regmap, RK3588_GRF_SOC_CON2, val);
+ }
+ 
++static void dw_hdmi_qp_rk3588_enable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
++{
++	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
 +
-+			drm_warn(connector->dev, "Ignored SCDC sync error: %d\n", ret);
-+		}
++	dw_hdmi_qp_rk3588_unmask_hpd(hdmi);
++}
 +
- 		drm_connector_hdmi_audio_plugged_notify(connector, false);
--		drm_edid_connector_update(connector, NULL);
++static void dw_hdmi_qp_rk3588_disable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
++{
++	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
 +
-+		ret = drm_edid_connector_update(connector, NULL);
-+		if (ret)
-+			drm_warn(connector->dev, "Ignored EDID update error: %d\n", ret);
++	dw_hdmi_qp_rk3588_mask_hpd(hdmi);
++}
 +
- 		drm_connector_cec_phys_addr_invalidate(connector);
+ static const struct dw_hdmi_qp_phy_ops rk3588_hdmi_phy_ops = {
+ 	.init		= dw_hdmi_qp_rk3588_phy_init,
+ 	.disable	= dw_hdmi_qp_rk3588_phy_disable,
+@@ -325,23 +337,31 @@ dw_hdmi_qp_rk3576_read_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
+ 		connector_status_connected : connector_status_disconnected;
+ }
+ 
++static void dw_hdmi_qp_rk3576_unmask_hpd(struct rockchip_hdmi_qp *hdmi)
++{
++	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0,
++		     FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_CLR, 1) |
++		     FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0));
++}
 +
- 		return 0;
++static void dw_hdmi_qp_rk3576_mask_hpd(struct rockchip_hdmi_qp *hdmi)
++{
++	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0,
++		     FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 1));
++}
++
+ static void dw_hdmi_qp_rk3576_enable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
+ {
+ 	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
+-	u32 val;
+ 
+-	val = (FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_CLR, 1) |
+-	       FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0));
+-
+-	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
++	dw_hdmi_qp_rk3576_unmask_hpd(hdmi);
+ }
+ 
+ static void dw_hdmi_qp_rk3576_disable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
+ {
+ 	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
+ 
+-	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0,
+-		     FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 1));
++	dw_hdmi_qp_rk3576_mask_hpd(hdmi);
+ }
+ 
+ static const struct dw_hdmi_qp_phy_ops rk3576_hdmi_phy_ops = {
+@@ -375,7 +395,7 @@ static irqreturn_t dw_hdmi_qp_rk3576_hardirq(int irq, void *dev_id)
+ 	regmap_read(hdmi->regmap, RK3576_IOC_HDMI_HPD_STATUS, &intr_stat);
+ 
+ 	if (intr_stat & RK3576_HDMI_OHPD_INT) {
+-		dw_hdmi_qp_rk3576_disable_hpd(NULL, hdmi);
++		dw_hdmi_qp_rk3576_mask_hpd(hdmi);
+ 		return IRQ_WAKE_THREAD;
  	}
  
-@@ -1381,7 +1398,18 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
- 	drm_edid_free(drm_edid);
+@@ -389,7 +409,7 @@ static irqreturn_t dw_hdmi_qp_rk3576_irq(int irq, void *dev_id)
+ 	mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
+ 			 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
  
- 	if (status == connector_status_connected) {
--		// TODO: also handle scramber, HDMI sink is now connected.
-+		/*
-+		 * .detect_ctx() can only ever return a drm_connector_status or
-+		 * -EDEADLK. Handle deadlocks, and report any !EDEADLK error.
-+		 */
-+		ret = drm_connector_hdmi_sync_scdc(connector, true, ctx);
-+		if (ret) {
-+			if (ret == -EDEADLK)
-+				return ret;
-+
-+			drm_warn(connector->dev, "Ignored SCDC sync error: %d\n", ret);
-+		}
-+
- 		drm_connector_hdmi_audio_plugged_notify(connector, true);
- 		drm_connector_cec_phys_addr_set(connector);
+-	dw_hdmi_qp_rk3576_enable_hpd(NULL, hdmi);
++	dw_hdmi_qp_rk3576_unmask_hpd(hdmi);
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -404,7 +424,7 @@ static irqreturn_t dw_hdmi_qp_rk3588_hardirq(int irq, void *dev_id)
+ 	intr_stat &= hdmi->port_id ? RK3588_HDMI1_OHPD_INT : RK3588_HDMI0_OHPD_INT;
+ 
+ 	if (intr_stat) {
+-		dw_hdmi_qp_rk3588_disable_hpd(NULL, hdmi);
++		dw_hdmi_qp_rk3588_mask_hpd(hdmi);
+ 		return IRQ_WAKE_THREAD;
  	}
+ 
+@@ -418,7 +438,7 @@ static irqreturn_t dw_hdmi_qp_rk3588_irq(int irq, void *dev_id)
+ 	mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
+ 			 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
+ 
+-	dw_hdmi_qp_rk3588_enable_hpd(NULL, hdmi);
++	dw_hdmi_qp_rk3588_unmask_hpd(hdmi);
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -435,7 +455,7 @@ static void dw_hdmi_qp_rk3576_io_init(struct rockchip_hdmi_qp *hdmi)
+ 
+ 	regmap_write(hdmi->regmap, 0xa404, 0xffff0102);
+ 
+-	dw_hdmi_qp_rk3576_disable_hpd(NULL, hdmi);
++	dw_hdmi_qp_rk3576_mask_hpd(hdmi);
+ }
+ 
+ static void dw_hdmi_qp_rk3588_io_init(struct rockchip_hdmi_qp *hdmi)
+@@ -460,7 +480,7 @@ static void dw_hdmi_qp_rk3588_io_init(struct rockchip_hdmi_qp *hdmi)
+ 		val = FIELD_PREP_WM16(RK3588_HDMI0_GRANT_SEL, 1);
+ 	regmap_write(hdmi->vo_regmap, RK3588_GRF_VO1_CON9, val);
+ 
+-	dw_hdmi_qp_rk3588_disable_hpd(NULL, hdmi);
++	dw_hdmi_qp_rk3588_mask_hpd(hdmi);
+ }
+ 
+ static void dw_hdmi_qp_rk3576_enc_init(struct rockchip_hdmi_qp *hdmi,
 
 -- 
 2.55.0
