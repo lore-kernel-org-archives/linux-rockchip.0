@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40EC5C624D0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:51:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 234F2C624DC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8476a88STxL3PCGAJozW5CUOyAoIISxYhIc4L7Ujkr4=; b=EHp07QcJ0Bmx4f
-	Mdfbyg/ejOt+XeBWLirt5KQ0qmurCEkOmE0Wu2NBnydVZvDVQu4Xxdm/2MS4U+vcu8DSjIcZ+sNJn
-	8kgLo5qwYYlLHzB79ZXRJqwd4E4vvQG6xvkMGn6apWeOjYD6h5gdxockR1ngvuTQkJWQ644qfuiVF
-	s/xij130ZjaxjuGPBYqH4bt5wkTbjFqg4WIIYAEPgrK2+yL75PuOu+R5X3Odihjp0mufRe6+e9Miz
-	b/j7uZB70TGkQd/yFgQxMIB14U99cQVz8mop7l2bNhD2S+spjVncTNT9uuMgxsqU4cQC5PdK5RMPR
-	AKBinHoCWfbUaqW7GeTA==;
+	List-Owner; bh=DODlW3Xac/RzF1linBT8SoR0ewMWfqLFUFTS8ebFQuA=; b=q7XqyuhJkjATbx
+	CEB5N9SC/YZT7g8CHmoqtnEzBN1dn2qv8TKkSSzJ7STtZS3uYI2lqHruxCadWP1VY+iwjYOJv88N8
+	422tYzzZm2jbF/DofKYc3A4JQ2lGhVKfFfq5/incHPYHdDWi3Zbeyb7RP4cpcXfiJj5KT2LLj7+XL
+	nItzuriHPhBECCK6gIJPrLhw83Lud9o9kAdsqvv84KI2WhbLRdOSWzpd8xsaHPkTHiWRPIAPPNJV5
+	BiAKaoktoD127eEi4Nwt77s8KS/CmcOzg8CrajEIxWSJjecOBxQ706Xi97CY2LinZpeGPVCym8CC9
+	PRl8b3zfVRaM0Wg2iy0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TaF-0000000D1sd-286s;
-	Tue, 01 Sep 2026 18:51:47 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x1TaG-0000000D1vG-2ZM3;
+	Tue, 01 Sep 2026 18:51:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZL-0000000D0eB-3Pq6;
-	Tue, 01 Sep 2026 18:50:58 +0000
+	id 1x1TZN-0000000D0gH-0CgY;
+	Tue, 01 Sep 2026 18:51:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288649;
-	bh=w5z+v+gxUQnZVHvuiXlsM23VWLX++xiKjUuBeHJS2yo=;
+	s=mail; t=1788288650;
+	bh=FYdmAkPWFKCF8O++onHpEmGeuQyVm5oG12OGbdUPBSU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pxj5cmLO9tJDPHL9OMqZB4ZEQHQyV0h9rhdpXeDEaisBaU+B5Z2btLTzImKAjn3PQ
-	 2zBB9xyOTrHV6tYrPWB7ZyskjBcRkaupm9JEZ7ESOn21n3dwSgu5qxtEdTzjCRw9L5
-	 QbnKi0rbxqqT8GqYa1+QxZV3DLB+p/k6T/Vhu2SJTiH0mWMUqk097lI2+TldakqWpN
-	 qEQTKIk40n6v/fv4uzy5bLy/rboVms0Jtv1+1d+dEWsgrCQZp4ZFU2chLGN6lK8OF5
-	 7PQPqR4YfcElImYwwvjsDerDY3m7aJ/PBsx2sboKuyTuIONLjMDxjGBSYDCcgiFvOb
-	 HanDMOzZHrxwQ==
+	b=I9EWgqCEXTO1HQHg65SdoSbw5hytYZgMJMA6p8u+jfLmpEjrhQGG4EJiMqZnRCDsB
+	 Dc0di44ZLXRA8tRKhF1P6oTNQt94LGIvGkt2iERzqSi6/USBZn9VGT/olY9/vut1Lu
+	 X1gy2To1yHvCtyQAhZnSjelA83+9OSrXVBAfu7CCuV++LfRlBJWCyGb+WbMUjll8yp
+	 VCat2m9yWQRBtBO/IebG2njy7jfYa8B30zxBTw3khcaCe/ZQqV8Y2aoiQKZLkso+6B
+	 fjQ7gGCnavuBP+4XqExdhIai0DqfCQGnyHih70BTHcLhD4h2cGrTodPmgOHp5Ql/H/
+	 hOUH8pBl3Vdow==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4195D17E35CB;
-	Tue, 01 Sep 2026 20:50:49 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ADF5117E361B;
+	Tue, 01 Sep 2026 20:50:50 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:35 +0300
-Subject: [PATCH v11 11/74] drm/display: hdmi: Advertise SCDC source version
- when scrambling
+Date: Tue, 01 Sep 2026 21:50:37 +0300
+Subject: [PATCH v11 13/74] drm/bridge: Fix NULL deref in drm_bridge_add()
+ for legacy bridges
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-11-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-13-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,13 +73,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org, Maud Spierings <maud_spierings@hotmail.com>, 
- Diederik de Haas <diederik@cknow-tech.com>
+ linux-fbdev@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115052_394967_709BCD73 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260901_115056_025018_D0B0FDFD 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,47 +94,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HDMI 2.0 spec advises that compliant Source devices report their
-SCDC version in the Source Version register.  Do so when enabling
-scrambling by calling drm_scdc_set_source_version().
+Legacy bridge drivers that embed struct drm_bridge in a zero-initialized
+allocation, rather than obtaining it from devm_drm_bridge_alloc(), never
+run INIT_LIST_HEAD() on bridge->list, leaving next and prev NULL.
+list_empty() compares next against &bridge->list, so it reports such a
+list head as non-empty.  list_del_init() therefore runs and dereferences
+the NULL pointers, panicking the kernel during probe.  Only builds with
+CONFIG_DEBUG_LIST survive, with a list corruption report.
 
-Failures are non-fatal: SCDC version negotiation is purely informational
-and does not gate scrambling or any high-bitrate functionality, so a
-flaky DDC bus should not block scrambling setup.
+This affects rk3066_hdmi and the i.MX8 LDB bridges, which still embed a
+bridge in a devm_kzalloc()'d struct.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
-Tested-by: Maud Spierings <maud_spierings@hotmail.com>
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+Initialize the list head when it is found to be NULL, so that the bridge
+ends up with a valid empty list head and list_del_init() is only reached
+for bridges that can actually be linked.
+
+Fixes: 17805a15d175 ("drm/bridge: add list of removed refcounted bridges")
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://lore.kernel.org/all/20260731175016.C5D591F00AC4@smtp.kernel.org/
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_helper.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/gpu/drm/drm_bridge.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_helper.c b/drivers/gpu/drm/display/drm_hdmi_helper.c
-index bf1c7963b984..f85cce3d6254 100644
---- a/drivers/gpu/drm/display/drm_hdmi_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_helper.c
-@@ -16,6 +16,7 @@
- #include <drm/drm_print.h>
- #include <drm/drm_property.h>
+diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+index 2c457ad74f3b..a8b6df5c13ea 100644
+--- a/drivers/gpu/drm/drm_bridge.c
++++ b/drivers/gpu/drm/drm_bridge.c
+@@ -453,9 +453,16 @@ void drm_bridge_add(struct drm_bridge *bridge)
+ 	 * If the bridge was previously added and then removed, it is now
+ 	 * in bridge_lingering_list. Remove it or bridge_lingering_list will be
+ 	 * corrupted when adding this bridge to bridge_list below.
++	 *
++	 * Legacy drivers that allocate the bridge with kzalloc() rather than
++	 * devm_drm_bridge_alloc() leave list.next NULL. Such a bridge cannot
++	 * be on any list, and list_del_init() would dereference NULL, so
++	 * initialize the list head first.
+ 	 */
+ 	mutex_lock(&bridge_lock);
+-	if (!list_empty(&bridge->list))
++	if (!bridge->list.next)
++		INIT_LIST_HEAD(&bridge->list);
++	else if (!list_empty(&bridge->list))
+ 		list_del_init(&bridge->list);
+ 	mutex_unlock(&bridge_lock);
  
-+#define DRM_HDMI_SCDC_SOURCE_VERSION	1
- #define DRM_HDMI_SCDC_POLL_DELAY_MS	1000
- 
- static inline bool is_eotf_supported(u8 output_eotf, u8 sink_eotf)
-@@ -556,6 +557,12 @@ int drm_connector_hdmi_enable_scrambling(struct drm_connector *connector,
- 	if (!connector->ddc)
- 		return -EINVAL;
- 
-+	/*
-+	 * Advertise our SCDC source version. This is purely informational and
-+	 * does not gate scrambling, so failures are non-fatal.
-+	 */
-+	drm_scdc_set_source_version(connector, DRM_HDMI_SCDC_SOURCE_VERSION);
-+
- 	drm_dbg_kms(dev, "Enabling scrambling\n");
- 
- 	if (!hdmi->scdc_work_initialized) {
 
 -- 
 2.55.0
