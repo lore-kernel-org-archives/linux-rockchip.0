@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 239FAC624D6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73480C61DD3
 	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=92iWxSLOaI3RtdmYc/LnU3LiWuCbiXqznlRPBP8bCWA=; b=vuY+/MeMl/aAk5
-	4UjGkSSpJ4xdkHnkWslY5vVbp2RFuRZWlWBHR7fSj5p5c7oD80Okkn/lI8z8fR72iDsrGwCPDAHKD
-	n6EX6uJASRKMaA1oBJLvRKLmJm9sX0oqp1VRdnpMnbtXX7UK1HV4c4WxvhWbZCGRZJz2ttDoxxW9N
-	cG7ob85/CMStJly9QzmzH60x5++7IeimlnIzV4Oiz5AvKW297hPT1NfliuG+GSEoEXmdrP7TG/X44
-	l96uIa7Y+SRJK9u/s4SZv6lNprwuZt4mpnO6pHJ/3inK1ozHVuBJxq6d5FezoXXxaHjJQg30scNjo
-	gmLCp1lrPDhPs96n4auA==;
+	List-Owner; bh=EjBiMPL0GA7i1PJVUYSIe8hMYDxE3sYEfklG0MonhK8=; b=ynlei2qKJV+rKU
+	BEGQj9wSglfSdTeCXUGVH5iC9Lw/CFxpK5bd4+xUT+XkNDq54eZeKTGx0AdCjU1tuI1huIa9vqqnZ
+	RuR1QF266CHtYVpxND0yWZqAqWmPhpXN1UOwpbQpVe8csuC0pGRfoGIeo25FIsT4Z2AaY1WahfXjf
+	Jts/kZcHpe7EsE0KlQ1kKEJcogTLcIvwajF13sZRAsZcecADDOwJws/lNydwWf87dTdLIpcgC7M1p
+	hEvTaYf5+3cvMaJR8lYoAsxtdjAZpMG/HThYpQNNABWTgzvp4C7RQuBNntXMQlLXXtzzktWYe4mr4
+	AuoqdNE+PHOT8hAoKUew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Tc1-0000000D5cM-46hB;
-	Tue, 01 Sep 2026 18:53:37 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x1Tc2-0000000D5dA-1QwY;
+	Tue, 01 Sep 2026 18:53:38 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZb-0000000D13Z-2G9Z;
+	id 1x1TZp-0000000D1Ip-1hy7;
 	Tue, 01 Sep 2026 18:51:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=sNYdn9OZQ6wtZ/i/e7RFUhdRPOE4lJ9rjfaR+WZElgA=; b=hnvOn3q5uNnr20gtnC3JBiV6X0
+	H2iy27wPUoy349Bka/oOI8tc46j+u1aRVJH5JzDS4ZCBKn37JP13owCVyfsumneBNB0I3sQbycxkq
+	N5LfiDI79MjDPh8oaELh5XQyBWZ4JrZCsW8w7cKX4PNWiuMKthoR58bTmAqtV7qOPjN15ExZSN417
+	jwthJrK1cc7/+iQ4/RtoZ40F7EWpYR64Mb5/EQ1bzJSmqoi2vQxA5wVynjKHI4rsKBkn+Y1SNCsWw
+	txfdMs0HPjqRdnZRwZSKDHkYyqXxoRcM5yNKNo0fr9VGhNN5W3Se1pq+FgFnUaoMnH3DWugqlJng9
+	6Ro2pT4Q==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x1TZm-0000000BHVy-1mMI;
+	Tue, 01 Sep 2026 18:51:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288665;
-	bh=XdGshjmtYv5GWBbmKyLHSE/ZPJ6Mw3OI2bO6sD97hVk=;
+	s=mail; t=1788288677;
+	bh=7TffjHT/FiznFowY3x4vtvfUjZAAe2Mb5KIXYD9cBBU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=MF9pQ2ZUogOlJtGgoOJzl8GZLIYbY21ePO87Gt8yROnnLaVZOwJoI+Zr97N2CXfns
-	 scfq1xp4vea5DSqB1CSVDEBn77yWaswpTA0JdUXOhZRRQ3HBIlJX4bmJheMJgjruD/
-	 lb4VQT7YOWjI7yWtht/kAczQzSsNNSTrvg4vbiKfn7FIX0uQb89qoIDx6H1PCWp7sv
-	 usvAcoXsj4CI+ed62hGfJeQ5ytEl+sph701YAkDPsJuvo45Bkw46k7WNeIO3F0IT+8
-	 Wlw0e/b6D9GCpUhbb6lLL+QacthUck0yBCPX+Ah3c8e4alMHAAX8Y56AIR0G5PXw+U
-	 HgwwPbCOIKOgQ==
+	b=dNQpFuO2JjXd3aIpv2AD5Fdlo87mTkfdOfX6Fog0LxsbkwpmiFqXuAcKGAoIh6tqX
+	 kdGlN5d3oWVjVeogBMIUsaHRID3/XOKwWE4564YplxsbAhjkQAxuhWeEMwoeKLoSs+
+	 hsQwlznCXZL7rQ+LOUxPjLN3UxieHJM4giristfeaa5YoAlpDoyjqpM/GAdM/9SMzX
+	 0lM4Pk4+gM8j0T8qs1vTdIOvdvX6yJfE3cPsrGB9Bcr9QmzeZdAk6FEpBKoTyT/Mib
+	 xT+Oh2ZR2YEddj9PlW4GJ7u2d10vOuljh6Nenl4os6ZN2rAf9GHh5cMxGLTWgyR9iv
+	 gW3cJpIiyrEPg==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 76D0A17E3B86;
-	Tue, 01 Sep 2026 20:51:05 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 27AF817E3C6E;
+	Tue, 01 Sep 2026 20:51:17 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:57 +0300
-Subject: [PATCH v11 33/74] drm/rockchip: dw_hdmi_qp: Add missing newlines
- in dev_err_probe() messages
+Date: Tue, 01 Sep 2026 21:51:13 +0300
+Subject: [PATCH v11 49/74] drm/display: hdmi-state-helper: Drop
+ drm_atomic_helper_connector_hdmi_force()
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-33-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-49-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,12 +87,12 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org, Maud Spierings <maud_spierings@hotmail.com>, 
- Diederik de Haas <diederik@cknow-tech.com>
+ linux-fbdev@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115108_111669_2A7D0787 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20260901_195118_650347_F54B8D71 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,38 +109,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the missing trailing newlines to a couple of dev_err_probe() calls
-in dw_hdmi_qp_rockchip_bind().
+With all callers converted to the .force_ctx() connector helper, this
+function has no users left.  Remove it.
 
-Fixes: b6736a4ea3fa ("drm/rockchip: dw_hdmi_qp: Improve error handling with dev_err_probe()")
-Fixes: e1f7b7cbd74c ("drm/rockchip: dw_hdmi_qp: Switch to drmm_encoder_init()")
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Tested-by: Maud Spierings <maud_spierings@hotmail.com>
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 15 ---------------
+ include/drm/display/drm_hdmi_state_helper.h     |  1 -
+ 2 files changed, 16 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 42f2627e1a05..df0e2bb1eedc 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -681,12 +681,12 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	drm_encoder_helper_add(encoder, &dw_hdmi_qp_rockchip_encoder_helper_funcs);
- 	ret = drmm_encoder_init(drm, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
- 	if (ret)
--		return dev_err_probe(hdmi->dev, ret, "Failed to init encoder");
-+		return dev_err_probe(hdmi->dev, ret, "Failed to init encoder\n");
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index 7cdb7ca3dc12..d661385c3e64 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -1441,21 +1441,6 @@ int drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *connector,
+ }
+ EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug);
  
- 	hdmi->hdmi = dw_hdmi_qp_bind(pdev, encoder, &plat_data);
- 	if (IS_ERR(hdmi->hdmi))
- 		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->hdmi),
--				     "Failed to bind dw-hdmi-qp");
-+				     "Failed to bind dw-hdmi-qp\n");
+-/**
+- * drm_atomic_helper_connector_hdmi_force - HDMI Connector implementation of the force callback
+- * @connector: A pointer to the HDMI connector
+- *
+- * This function implements the .force() callback for the HDMI connectors. It
+- * can either be used directly as the callback or should be called from within
+- * the .force() callback implementation to maintain the HDMI-specific
+- * connector's data.
+- */
+-void drm_atomic_helper_connector_hdmi_force(struct drm_connector *connector)
+-{
+-	drm_atomic_helper_connector_hdmi_update(connector, NULL, connector->status);
+-}
+-EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_force);
+-
+ /**
+  * drm_atomic_helper_connector_hdmi_force_ctx - HDMI Connector implementation
+  * of the force_ctx callback
+diff --git a/include/drm/display/drm_hdmi_state_helper.h b/include/drm/display/drm_hdmi_state_helper.h
+index 965342f6bbc9..5c827409db45 100644
+--- a/include/drm/display/drm_hdmi_state_helper.h
++++ b/include/drm/display/drm_hdmi_state_helper.h
+@@ -27,7 +27,6 @@ int drm_atomic_helper_connector_hdmi_update_infoframes(struct drm_connector *con
+ int drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *connector,
+ 					     struct drm_modeset_acquire_ctx *ctx,
+ 					     enum drm_connector_status status);
+-void drm_atomic_helper_connector_hdmi_force(struct drm_connector *connector);
+ int drm_atomic_helper_connector_hdmi_force_ctx(struct drm_connector *connector,
+ 					       struct drm_modeset_acquire_ctx *ctx);
  
- 	connector = drm_bridge_connector_init(drm, encoder);
- 	if (IS_ERR(connector))
 
 -- 
 2.55.0
