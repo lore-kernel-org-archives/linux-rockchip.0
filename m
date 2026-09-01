@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73480C61DD3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12743C624DD
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EjBiMPL0GA7i1PJVUYSIe8hMYDxE3sYEfklG0MonhK8=; b=ynlei2qKJV+rKU
-	BEGQj9wSglfSdTeCXUGVH5iC9Lw/CFxpK5bd4+xUT+XkNDq54eZeKTGx0AdCjU1tuI1huIa9vqqnZ
-	RuR1QF266CHtYVpxND0yWZqAqWmPhpXN1UOwpbQpVe8csuC0pGRfoGIeo25FIsT4Z2AaY1WahfXjf
-	Jts/kZcHpe7EsE0KlQ1kKEJcogTLcIvwajF13sZRAsZcecADDOwJws/lNydwWf87dTdLIpcgC7M1p
-	hEvTaYf5+3cvMaJR8lYoAsxtdjAZpMG/HThYpQNNABWTgzvp4C7RQuBNntXMQlLXXtzzktWYe4mr4
-	AuoqdNE+PHOT8hAoKUew==;
+	List-Owner; bh=lcI8vGOomtJh7khPFPIoL6yyjqK03GVwHgzrYfN3fzI=; b=bOy6cV8IpFa+IZ
+	cmZs7+4t2Hti1ft24hRO2wqMJe2uKKcSbYaj4uNrQlXqUq65gfk5eERUVBcoEoFrqT1spE0jr7f75
+	9xQz4h2DbMSrHq7Tlp6qasWwurFLtuFiNNHLQAbnjuTFSfXd134Mzrffr55DJh0nD6SaAw+kY9l88
+	+R8F3LxBZSpxLKNomOFnSzDZPJZTX7ZZCKpswvlM5vVQ1ginAL2HAEdOFWKZMd9MgH/XAU1PL9Zha
+	guyYvZj5r+QEMKn5QR2MYDir1qIxbwkOytw/x5D3mbyozr06NzEwxt26TzMrmApHC4FZnNEhH19BH
+	yJiOn/HMNdZg2ZGHaydA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Tc2-0000000D5dA-1QwY;
-	Tue, 01 Sep 2026 18:53:38 +0000
+	id 1x1Tc3-0000000D5gc-1Xdp;
+	Tue, 01 Sep 2026 18:53:39 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZp-0000000D1Ip-1hy7;
+	id 1x1TZu-0000000D1MO-2Cne;
 	Tue, 01 Sep 2026 18:51:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=sNYdn9OZQ6wtZ/i/e7RFUhdRPOE4lJ9rjfaR+WZElgA=; b=hnvOn3q5uNnr20gtnC3JBiV6X0
-	H2iy27wPUoy349Bka/oOI8tc46j+u1aRVJH5JzDS4ZCBKn37JP13owCVyfsumneBNB0I3sQbycxkq
-	N5LfiDI79MjDPh8oaELh5XQyBWZ4JrZCsW8w7cKX4PNWiuMKthoR58bTmAqtV7qOPjN15ExZSN417
-	jwthJrK1cc7/+iQ4/RtoZ40F7EWpYR64Mb5/EQ1bzJSmqoi2vQxA5wVynjKHI4rsKBkn+Y1SNCsWw
-	txfdMs0HPjqRdnZRwZSKDHkYyqXxoRcM5yNKNo0fr9VGhNN5W3Se1pq+FgFnUaoMnH3DWugqlJng9
-	6Ro2pT4Q==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	bh=8ONPyNz+dNoauuInAMFaArpJZGgJCtCM9Yi0zVigVFk=; b=D29WfVMjIzE6MrwnlBuZL1IQor
+	I63dRTGYoKUX2aCIbSH+1QY1IS92ju0r9Fzg0jBr4LKPCZYw8XomYbvqEhavb25d+JZl+dsKEYyCu
+	wa7LahRFHHfpZIEZ/+fC8BfMsN8AVRL5h1A0fZaujVuyQnnrgBp2wJJiFOiE+E7gfZECSNHQv9kJk
+	fv0gHw0rCwI/wbwwgFnnueAGte0JmYUGpg4YcNk5swXM2+v5DEPiG4z7oO/0t70S3szCo7E3m34nb
+	ML0Ihuk8LMZW97HSWf0ALSlWYqt+h2b63fz2if8n2kmTC+MSj2zaPFj9Dj9jFlSxyW0cdKbnB/Kve
+	e5Hd0aVw==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x1TZm-0000000BHVy-1mMI;
-	Tue, 01 Sep 2026 18:51:20 +0000
+	id 1x1TZq-0000000BHaM-3StE;
+	Tue, 01 Sep 2026 18:51:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288677;
-	bh=7TffjHT/FiznFowY3x4vtvfUjZAAe2Mb5KIXYD9cBBU=;
+	s=mail; t=1788288681;
+	bh=YQBgk0tCInjN78ZsmtnC8gQAxWhSMvfMlnsIg4WQmiU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=dNQpFuO2JjXd3aIpv2AD5Fdlo87mTkfdOfX6Fog0LxsbkwpmiFqXuAcKGAoIh6tqX
-	 kdGlN5d3oWVjVeogBMIUsaHRID3/XOKwWE4564YplxsbAhjkQAxuhWeEMwoeKLoSs+
-	 hsQwlznCXZL7rQ+LOUxPjLN3UxieHJM4giristfeaa5YoAlpDoyjqpM/GAdM/9SMzX
-	 0lM4Pk4+gM8j0T8qs1vTdIOvdvX6yJfE3cPsrGB9Bcr9QmzeZdAk6FEpBKoTyT/Mib
-	 xT+Oh2ZR2YEddj9PlW4GJ7u2d10vOuljh6Nenl4os6ZN2rAf9GHh5cMxGLTWgyR9iv
-	 gW3cJpIiyrEPg==
+	b=U8xjbdh3G5kTDYHASjfYejz3nCp1ujP8CPZTrlxtIs9nj7IrI6f8i39K/Nrg6GNQe
+	 s4Yc5OoPpAQRlqQ7fXYFL5JQzJZ5lsTKfHhNxExG1ZtiazUC4btBC1LzI7fx/ZJKlR
+	 MGcaWV+OLiuU26ETBoP/BVJmR4nYa/xMPCEcuJXh7lL3ekYWn15R4DqQSFtN22sYYG
+	 CUHCk9Cll8ZHrwiki3RaHokeXVCLFq+WLC9naV2hpAusXc07wM+UXN3bnGyn3h7V1k
+	 +Frukvk8PWmTqdrUnBHu8cg/VIn80WzkD6c/knXnrtkNyCWMToy3hZJROMtywk1x3J
+	 tyYvX2lE5Dpow==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 27AF817E3C6E;
-	Tue, 01 Sep 2026 20:51:17 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8D5C217E3C81;
+	Tue, 01 Sep 2026 20:51:21 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:51:13 +0300
-Subject: [PATCH v11 49/74] drm/display: hdmi-state-helper: Drop
- drm_atomic_helper_connector_hdmi_force()
+Date: Tue, 01 Sep 2026 21:51:19 +0300
+Subject: [PATCH v11 55/74] drm/bridge: lontium-lt9611: Advertise HDMI 1.4
+ capabilities
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-49-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-55-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -90,9 +90,8 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  linux-fbdev@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_195118_650347_F54B8D71 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260901_195123_082879_E37FD430 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,53 +108,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With all callers converted to the .force_ctx() connector helper, this
-function has no users left.  Remove it.
+Bridges using DRM_BRIDGE_OP_HDMI are expected to provide the supported
+HDMI version.  This is not enforced yet, but will become mandatory once
+the migration to the caps-based HDMI connector initialization API is
+complete.
 
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
+As LT9611 supposedly cannot drive a TMDS character rate exceeding 297
+MHz, advertise HDMI 1.4 as the supported version.  HDMI 1.4 allows up to
+340 MHz, so set the bridge's max_tmds_char_rate to ensure the connector
+limit derived from supported_hdmi_ver remains within the hardware
+capabilities.
+
+drm_bridge_connector_atomic_check() calls
+drm_atomic_helper_connector_hdmi_check(), which rejects modes whose
+computed TMDS character rate exceeds the connector's max_tmds_char_rate
+before invoking the driver's .tmds_char_rate_valid hook.  Since
+max_tmds_char_rate now carries the existing effective limit,
+lt9611_hdmi_tmds_char_rate_valid() is redundant.  Drop it.
+
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 15 ---------------
- include/drm/display/drm_hdmi_state_helper.h     |  1 -
- 2 files changed, 16 deletions(-)
+ drivers/gpu/drm/bridge/lontium-lt9611.c | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index 7cdb7ca3dc12..d661385c3e64 100644
---- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -1441,21 +1441,6 @@ int drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *connector,
- }
- EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug);
+diff --git a/drivers/gpu/drm/bridge/lontium-lt9611.c b/drivers/gpu/drm/bridge/lontium-lt9611.c
+index 3ebd8992cd94..53444bc8326f 100644
+--- a/drivers/gpu/drm/bridge/lontium-lt9611.c
++++ b/drivers/gpu/drm/bridge/lontium-lt9611.c
+@@ -5,6 +5,7 @@
+  */
  
--/**
-- * drm_atomic_helper_connector_hdmi_force - HDMI Connector implementation of the force callback
-- * @connector: A pointer to the HDMI connector
-- *
-- * This function implements the .force() callback for the HDMI connectors. It
-- * can either be used directly as the callback or should be called from within
-- * the .force() callback implementation to maintain the HDMI-specific
-- * connector's data.
-- */
--void drm_atomic_helper_connector_hdmi_force(struct drm_connector *connector)
+ #include <linux/gpio/consumer.h>
++#include <linux/hdmi.h>
+ #include <linux/i2c.h>
+ #include <linux/interrupt.h>
+ #include <linux/media-bus-format.h>
+@@ -952,18 +953,6 @@ static int lt9611_hdmi_write_hdmi_infoframe(struct drm_bridge *bridge,
+ 	return 0;
+ }
+ 
+-static enum drm_mode_status
+-lt9611_hdmi_tmds_char_rate_valid(const struct drm_bridge *bridge,
+-				 const struct drm_display_mode *mode,
+-				 unsigned long long tmds_rate)
 -{
--	drm_atomic_helper_connector_hdmi_update(connector, NULL, connector->status);
--}
--EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_force);
+-	/* 297 MHz for 4k@30 mode */
+-	if (tmds_rate > 297000000)
+-		return MODE_CLOCK_HIGH;
 -
- /**
-  * drm_atomic_helper_connector_hdmi_force_ctx - HDMI Connector implementation
-  * of the force_ctx callback
-diff --git a/include/drm/display/drm_hdmi_state_helper.h b/include/drm/display/drm_hdmi_state_helper.h
-index 965342f6bbc9..5c827409db45 100644
---- a/include/drm/display/drm_hdmi_state_helper.h
-+++ b/include/drm/display/drm_hdmi_state_helper.h
-@@ -27,7 +27,6 @@ int drm_atomic_helper_connector_hdmi_update_infoframes(struct drm_connector *con
- int drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *connector,
- 					     struct drm_modeset_acquire_ctx *ctx,
- 					     enum drm_connector_status status);
--void drm_atomic_helper_connector_hdmi_force(struct drm_connector *connector);
- int drm_atomic_helper_connector_hdmi_force_ctx(struct drm_connector *connector,
- 					       struct drm_modeset_acquire_ctx *ctx);
+-	return MODE_OK;
+-}
+-
+ static int lt9611_hdmi_audio_startup(struct drm_bridge *bridge,
+ 				     struct drm_connector *connector)
+ {
+@@ -1029,7 +1018,6 @@ static const struct drm_bridge_funcs lt9611_bridge_funcs = {
+ 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
+ 	.atomic_get_input_bus_fmts = lt9611_atomic_get_input_bus_fmts,
+ 
+-	.hdmi_tmds_char_rate_valid = lt9611_hdmi_tmds_char_rate_valid,
+ 	.hdmi_write_audio_infoframe = lt9611_hdmi_write_audio_infoframe,
+ 	.hdmi_clear_audio_infoframe = lt9611_hdmi_clear_audio_infoframe,
+ 	.hdmi_write_avi_infoframe = lt9611_hdmi_write_avi_infoframe,
+@@ -1175,6 +1163,8 @@ static int lt9611_probe(struct i2c_client *client)
+ 	lt9611->bridge.hdmi_audio_dev = dev;
+ 	lt9611->bridge.hdmi_audio_max_i2s_playback_channels = 8;
+ 	lt9611->bridge.hdmi_audio_dai_port = 2;
++	lt9611->bridge.supported_hdmi_ver = HDMI_VERSION_1_4;
++	lt9611->bridge.max_tmds_char_rate = 297000000; /* 297 MHz for 4k@30 mode */
+ 
+ 	drm_bridge_add(&lt9611->bridge);
  
 
 -- 
