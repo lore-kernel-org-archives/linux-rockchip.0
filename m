@@ -4,51 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6455C624D0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:52:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D783C61DD3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:52:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lTE01sltQjs2OgC4Q6BwFdbUy/eXPh0EtpStDGUfX40=; b=jrAvrIcOjYI8Ok
-	+1KOmB3YioTs2iuAgPmv78G04Ch9eCPQDZNSEq2NqXb4fDtUqZrwn0AzTNBs9So50/JYpzrbl4gwI
-	VcojnDRnviHBTWH/WPdYw9/UJlFxhRbfTzi9i7ZQCbBEOL+DoxTo+/ryuseLLtRGnvRHhWdfSlnmu
-	6JFr4oq9HNXvODUPvj7ZR4pKC5fJ0EoLqjDZRKf5h1AinBL1UHGO0C4EOAFYWLHvaoexpB+HMP7+v
-	46j8xFNJUUGeZs14pIClVMkp5w5RsBKRXNGOoMcDBhJdG05UiM7uzcsIZkPQVO26wJdWQUlAcWpHR
-	YiiNz/AV6HeT4utxDLWA==;
+	List-Owner; bh=BZ/rPukU4tmsHLcOWxnycb2nFG68R94w3aora5CsMkY=; b=1bvRh+8vPxBOWw
+	vP20mq/3kCJkBGOys01SNQA5l9QCgnE8bT++KazewnbP+NLFl/KMh9bse7av+3XHr1aPXmyhbnZEO
+	UaMFNmxrFd5bjAQ9tKOvph6seH6/cw1Mc/oKXDQxoUNg9RJYDxfdzk376LKaz/LR8ydrbQfAZpBGF
+	4y7aSsNxV0MtnVya2bkv92jChNgc+pO8RredCSDXv+l3Qa+U1W+XrnSucC8y9VShHxcnIIrVJFiJ+
+	mI3g7WO4v0v+SeXAt0z/QB+W2uXiWTi9I2xlbMQV1aiyBr91xUdibpM8F/bQU3Gu3jhol8cV7+QVF
+	YDjhft1/YnW7jOiv5frA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Tb5-0000000D3fp-1NiW;
-	Tue, 01 Sep 2026 18:52:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x1TbC-0000000D3qH-2OWD;
+	Tue, 01 Sep 2026 18:52:46 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZW-0000000D0rV-1Rdq;
-	Tue, 01 Sep 2026 18:51:17 +0000
+	id 1x1TZl-0000000D1Fj-0Pds;
+	Tue, 01 Sep 2026 18:51:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=Tnv/63dO+mmkwxYOBv/LEM5O4bK+oC/idWp6TMrVOmI=; b=p32wOvf3mSaHOSJ7PblWAKW2zY
+	/oH692ppTXP60t9w4nYnnrL97QtQPws+DCXr8KtXUkFmA1qYlUe3G+olhDFsLBjMYongDWR/Ml/fH
+	do/gKC9ZjTMgHUV2C2prQcv+2ioE7oMbGXOXohI7Qu38/lH24UAZWAnZuuLzsPJUb+vu3FQ9kcie5
+	23kl7OVu4iigmnoyEJu/PY+X5TkKbKObKHGaAC3Tul+kkB8Dzpt60fXT+eIGwCK9EE5i8+F6WLWXd
+	9NpBsTVfq7pxusRaKgLZRjEb8VZ6Ol7Jm560TGWr0mEiYYALoNyXiGK9NOl2gq5H2dZKdg5ZtLJVP
+	VMUNFx8w==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x1TZh-0000000BHT2-1WWk;
+	Tue, 01 Sep 2026 18:51:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288660;
-	bh=Np7wpAYZLHRt1c9crOqakHGhI+KoSOWphtz4jQaYs5Y=;
+	s=mail; t=1788288672;
+	bh=ccpopn9Y9LAmIjVmaGfBkmnfpoFJvMf4XBoclWEOsYY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JR+grpfvhJdyZRSqjI1L5Q/515KONS70bTEa1h5vxrNspDVf0zlUyN1Zlsc3RQfmT
-	 x5CGZiH5ZQfOuAUqLXPaimcWxT7+VXaRCzE1PWdvi/PsrwXFK8zubDyTrpInyAkgzp
-	 YLO57D1oCv5ZLmdfNKDzSKtXraBIqSCAdZjZR4Ny9mB1bhiCtP/oHihaPimXriuFWa
-	 2KiZnLBL+PC40wHA51pzsNgGFZ5XQWwwyJDABzGuJXcJJXzUeYNF4wrK4s7pK7lt7o
-	 OgW9oZptMGxmSoN4pQvYuavaKqc6Z2BL0XZ0ZpSyYALECgrEPLkZhv9/y76bJJo1my
-	 XaZOjm8rg+FWw==
+	b=or31Z5EUeZLCJula8ZWphT2psnkVcg3ge7j7ls0ppZDZEfHuqYGkSgHro5wyprUoD
+	 CeamCOxipccUTP7uxW2igWT1HzaWshSAsECscsDJRRhmG9CgRkn+8mwWa1tAFjp7Sp
+	 s+WkePbzoglvsZ9yomgP4Cp0SA4paobvZ55/ZzkuBciC2xplPCsohtu2XA4IRJ+f2K
+	 /f724833b8cY6mZoL9RFBgxfBYm05JfastzCNNbMBinTHUDiAnGVqskITFwolnOWt6
+	 +C0twwnt4Lw7EExFisL5lIZpkp51vFU1sV72rWhW9NPxp4o3PcgaNBb3dvboOdw8pw
+	 tDwby70I392nw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5D5DC17E3976;
-	Tue, 01 Sep 2026 20:51:00 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 15AD617E3C61;
+	Tue, 01 Sep 2026 20:51:12 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:50 +0300
-Subject: [PATCH v11 26/74] drm/bridge: dw-hdmi-qp: Rate limit i2c read
- error messages
+Date: Tue, 01 Sep 2026 21:51:06 +0300
+Subject: [PATCH v11 42/74] drm/vc4: hdmi: Use common TMDS char rate
+ constants
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-26-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-42-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,12 +87,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org, Maud Spierings <maud_spierings@hotmail.com>, 
- Diederik de Haas <diederik@cknow-tech.com>
+ linux-fbdev@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115102_587602_727D2EBC 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20260901_195113_817254_B5F68311 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,47 +108,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-During EDID reads, repeated i2c errors can flood the kernel log:
+Replace HDMI_14_MAX_TMDS_CLK defined locally with
+HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ provided by linux/hdmi.h.  Note this
+incorrectly referenced HDMI 1.4, as the 340 MHz maximum TMDS character
+rate was actually introduced in HDMI 1.3.
 
-[   25.361716] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
-[   25.363376] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
-...
-[   25.368671] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
-[   25.369440] dwhdmiqp-rockchip fde80000.hdmi: failed to get edid
+Similarly, use HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ instead of the 600000000
+magic number.
 
-Switch to dev_err_ratelimited() in dw_hdmi_qp_i2c_read() to reduce log
-spam while still reporting the condition.
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Tested-by: Maud Spierings <maud_spierings@hotmail.com>
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+Reviewed-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Acked-by: Maxime Ripard <mripard@kernel.org>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/vc4/vc4_hdmi.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index cfd1b18c06e6..7475b6b71836 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -561,7 +561,7 @@ static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
- 				dev_dbg_ratelimited(hdmi->dev,
- 						    "i2c read timed out\n");
- 			else
--				dev_err(hdmi->dev, "i2c read timed out\n");
-+				dev_err_ratelimited(hdmi->dev, "i2c read timed out\n");
- 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
- 			return -EAGAIN;
- 		}
-@@ -572,7 +572,7 @@ static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
- 				dev_dbg_ratelimited(hdmi->dev,
- 						    "i2c read error\n");
- 			else
--				dev_err(hdmi->dev, "i2c read error\n");
-+				dev_err_ratelimited(hdmi->dev, "i2c read error\n");
- 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
- 			return -EIO;
- 		}
+diff --git a/drivers/gpu/drm/vc4/vc4_hdmi.c b/drivers/gpu/drm/vc4/vc4_hdmi.c
+index 3a90dbb61f4e..8e4623ccc4f8 100644
+--- a/drivers/gpu/drm/vc4/vc4_hdmi.c
++++ b/drivers/gpu/drm/vc4/vc4_hdmi.c
+@@ -45,6 +45,7 @@
+ #include <linux/clk.h>
+ #include <linux/component.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/hdmi.h>
+ #include <linux/i2c.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+@@ -113,8 +114,6 @@
+ #define HSM_MIN_CLOCK_FREQ	120000000
+ #define CEC_CLOCK_FREQ 40000
+ 
+-#define HDMI_14_MAX_TMDS_CLK   (340 * 1000 * 1000)
+-
+ static bool vc4_hdmi_supports_scrambling(struct vc4_hdmi *vc4_hdmi)
+ {
+ 	struct drm_display_info *display = &vc4_hdmi->connector.display_info;
+@@ -137,7 +136,7 @@ static bool vc4_hdmi_mode_needs_scrambling(const struct drm_display_mode *mode,
+ {
+ 	unsigned long long clock = drm_hdmi_compute_mode_clock(mode, bpc, fmt);
+ 
+-	return clock > HDMI_14_MAX_TMDS_CLK;
++	return clock > HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ;
+ }
+ 
+ static int vc4_hdmi_debugfs_regs(struct seq_file *m, void *unused)
+@@ -1728,7 +1727,7 @@ vc4_hdmi_connector_clock_valid(const struct drm_connector *connector,
+ 	if (clock > vc4_hdmi->variant->max_pixel_clock)
+ 		return MODE_CLOCK_HIGH;
+ 
+-	if (!vc4->hvs->vc5_hdmi_enable_hdmi_20 && clock > HDMI_14_MAX_TMDS_CLK)
++	if (!vc4->hvs->vc5_hdmi_enable_hdmi_20 && clock > HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ)
+ 		return MODE_CLOCK_HIGH;
+ 
+ 	/* 4096x2160@60 is not reliable without overclocking core */
+@@ -3254,7 +3253,7 @@ static int vc4_hdmi_bind(struct device *dev, struct device *master, void *data)
+ 	 * vc4_hdmi_disable_scrambling() will thus run at boot, make
+ 	 * sure it's disabled, and avoid any inconsistency.
+ 	 */
+-	if (variant->max_pixel_clock > HDMI_14_MAX_TMDS_CLK)
++	if (variant->max_pixel_clock > HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ)
+ 		vc4_hdmi->scdc_enabled = true;
+ 
+ 	ret = variant->init_resources(drm, vc4_hdmi);
+@@ -3384,7 +3383,7 @@ static const struct vc4_hdmi_variant bcm2711_hdmi0_variant = {
+ 	.encoder_type		= VC4_ENCODER_TYPE_HDMI0,
+ 	.debugfs_name		= "hdmi0_regs",
+ 	.card_name		= "vc4-hdmi-0",
+-	.max_pixel_clock	= 600000000,
++	.max_pixel_clock	= HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ,
+ 	.registers		= vc5_hdmi_hdmi0_fields,
+ 	.num_registers		= ARRAY_SIZE(vc5_hdmi_hdmi0_fields),
+ 	.phy_lane_mapping	= {
+@@ -3413,7 +3412,7 @@ static const struct vc4_hdmi_variant bcm2711_hdmi1_variant = {
+ 	.encoder_type		= VC4_ENCODER_TYPE_HDMI1,
+ 	.debugfs_name		= "hdmi1_regs",
+ 	.card_name		= "vc4-hdmi-1",
+-	.max_pixel_clock	= HDMI_14_MAX_TMDS_CLK,
++	.max_pixel_clock	= HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ,
+ 	.registers		= vc5_hdmi_hdmi1_fields,
+ 	.num_registers		= ARRAY_SIZE(vc5_hdmi_hdmi1_fields),
+ 	.phy_lane_mapping	= {
+@@ -3442,7 +3441,7 @@ static const struct vc4_hdmi_variant bcm2712_hdmi0_variant = {
+ 	.encoder_type		= VC4_ENCODER_TYPE_HDMI0,
+ 	.debugfs_name		= "hdmi0_regs",
+ 	.card_name		= "vc4-hdmi-0",
+-	.max_pixel_clock	= 600000000,
++	.max_pixel_clock	= HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ,
+ 	.registers		= vc6_hdmi_hdmi0_fields,
+ 	.num_registers		= ARRAY_SIZE(vc6_hdmi_hdmi0_fields),
+ 	.phy_lane_mapping	= {
+@@ -3469,7 +3468,7 @@ static const struct vc4_hdmi_variant bcm2712_hdmi1_variant = {
+ 	.encoder_type		= VC4_ENCODER_TYPE_HDMI1,
+ 	.debugfs_name		= "hdmi1_regs",
+ 	.card_name		= "vc4-hdmi-1",
+-	.max_pixel_clock	= 600000000,
++	.max_pixel_clock	= HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ,
+ 	.registers		= vc6_hdmi_hdmi1_fields,
+ 	.num_registers		= ARRAY_SIZE(vc6_hdmi_hdmi1_fields),
+ 	.phy_lane_mapping	= {
 
 -- 
 2.55.0
