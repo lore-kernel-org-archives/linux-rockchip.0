@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 553E0C624D3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D546C624D7
 	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sepDjhnl9IyiLBqFlpKgsjwx4sermqcx+XomZb5hk3c=; b=FqrAeZiNY6aaDd
-	xQJMWcS3AS358XWRBGf7/rGQuACrx4ZZ2wpTfwTO2ie6xtQ16Ll5ED0O+j6IbMA0TZPdrRf+0kJzH
-	YTyVN7sVE1WABUHGkXM8Q0j7pQiok4GgA0L4lK/RUjQKE+gWUMBfbhmqgq0UD9ZE3LvcHeA2X+u1/
-	heNb97OCb/IJLVvGHp0buBAoPmKXIs79cAbmsNm73eYBBmuCs3FuTT3jU94T2FI2LBzrOUXTBCI/U
-	yTWxv1NxQqHOk5cJTD/g78lmE5uGnrhpHVy/giiqP40l+nnhR5t/o/vLzYHZrUy9RCLaKH0jqxa0V
-	zcbR0NSLgYu3dPq/m6hw==;
+	List-Owner; bh=PJsF6DG9IrSMawiQJYki/QoYf0PhAKWCIS5sr0ahsLY=; b=AiKJHj8F+4gfIC
+	ETP9p2voEwll93C20nFCUaap0UR21ZSs+x0nNLdzM6pHhRA8zqnGfMr1CR23VAWi0Y05Ggv1OaMcD
+	PHW/4wmlkBdHT7j8XlUzsR0sWj4L2r4GEwJfuEE/CE+4H9afehkCYdAlUD8VmbZ7ReYKg56zxEWvB
+	sWNLTHbroe7fvQu/g/Pxry/OwtPTt91EenL3941GQ0zVBajvRBpg2pgPEzeLJMBbcM0qnKgpk5EKW
+	+IzaB6wZMP6HNZ/VrwDoBqvOwFv7r+zDkumMHBLA4q0PayRZ+dTi3I9BfD6DvssWIFSRvrYSE3u7K
+	AkWcPsu7khJO2z/ksAYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Tan-0000000D31d-09D0;
-	Tue, 01 Sep 2026 18:52:21 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x1Tao-0000000D32z-0a8U;
+	Tue, 01 Sep 2026 18:52:22 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZT-0000000D0nc-2Lq6;
-	Tue, 01 Sep 2026 18:51:09 +0000
+	id 1x1TZh-0000000D1C9-2OSU;
+	Tue, 01 Sep 2026 18:51:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=DtEtsbpRHA9G7bWdNj7DDptncmLtU6r7+aRERSU/0MU=; b=kufEDjYvfgPeZb3cFS1/0vLpvL
+	oDp29tI+Gd1tBuKliNGmnhUSFLwiDUPt8WiGKVKhlS1jwMG/LH5dSPu3UmMVha+v1jte/QT71Fgt0
+	DUK5WdJQ/1JlmFAKy55Br4GNzEBljWboroBDybNERu9Nx8iYqz1Q/zEbkROpZmQaxGvBkJiy/WH97
+	qtllvL4CJUPcU4RPsJV9uixAW2c20sKJLxUfx8VJ/zJgpAkZhgVBe+e7l6Wk/wHjhzuEXZAiJ+4p4
+	1dY512txJaJLVZlHvUJe19NSCmTYYVVIcb84Zt3E6MCwfHr65NZC+DfOuvI2dPrNg30obzohr9zd+
+	uJzIZRTA==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x1TZc-0000000BHQw-3n0e;
+	Tue, 01 Sep 2026 18:51:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288654;
-	bh=wyKOuAOPQO1q8CYDFWwK5liCrFdF8CmhlMWWkqaZIiI=;
+	s=mail; t=1788288667;
+	bh=J2id52QhgWo1E1P95MlPV/yTzEnlNrvgDE2c5comEmM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=M97PwPXrzMSZIraV9pTetj7y78niKhtleIgunCLADkLrmr8UJmIDQimdAmHhIXMWk
-	 8ttQYhM0dK9Xy9mKDn+TuLY1sIWi4/viPDikobkxdY3BT/Igaj5kk3nvgvK6di6Jcu
-	 DNDVeLZoeTdWFIxq3UALPHdOAyA83jMuZH/I17Sb8N7rcYQAaTdkNE8RV5ft0NEHi5
-	 N0NOxc9J/FVjDl5BTN4nRDkgQentzpVQ5YuTKeVrk8ekZQZsjbw9io3W/ZbQV5Iym0
-	 nwqdcjUU6AymfZlEppuxcU2La45pS9JuQU52jSy0eZ2cVBXNoX44I7fabEjxhZVgZ2
-	 OwobbgBAx0O4Q==
+	b=WhYlSmVPSQsjcw+VifNSGNflrABmi0VKg2AfYScGqAiex4T41RkuP/2jd4pETDeGV
+	 1wVnOwb1lZyN4RAM1+iRSwLmEbCrmZjwOVdGyWYTF4C+RuVmNw/XQzgCuKqnIaP16B
+	 liFqEmKZsDwj0rd2XXzyxUy0qlO7E/GUbR2UyhczspI00KoAiN3JlqOU1x5mN/r+h/
+	 /CAsGdob8EjZytSGvnRP1QQYO7MSBGNXAnN9JlUg3wldiNLLQi1uuUG8hURGyxDkQD
+	 kyHFsc9o4R19i/osCoBbTKnINrkKk6XGL5+xY5RBszcPW7nLeNuRufIHy1bDmrs/Ne
+	 VK/1BhBevZa4Q==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7E52617E37A8;
-	Tue, 01 Sep 2026 20:50:54 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9689417E0CAB;
+	Tue, 01 Sep 2026 20:51:07 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:42 +0300
-Subject: [PATCH v11 18/74] drm/display: bridge_connector: Switch to
- .detect_ctx() connector helper
+Date: Tue, 01 Sep 2026 21:51:00 +0300
+Subject: [PATCH v11 36/74] drm/rockchip: dw_hdmi_qp: Mask RK3576 HPD IRQ in
+ io_init
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-18-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-36-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,14 +87,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Maud Spierings <maud_spierings@hotmail.com>, 
- Diederik de Haas <diederik@cknow-tech.com>
+ linux-fbdev@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115100_672318_BEE36CD9 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20260901_195109_138743_86DD2DAC 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,123 +108,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace the .detect() connector_funcs callback with the atomic-aware
-.detect_ctx() connector_helper_funcs hook.
+Start with HPD masked, matching RK3588, so the bridge framework controls
+when interrupts are armed via hpd_enable().
 
-This is preparatory work to allow propagating the modeset acquire
-context through drm_atomic_helper_connector_hdmi_hotplug() to the HDMI
-connector framework, enabling SCDC state recovery via CRTC reset when
-the sink reconnects during an active display pipeline.
-
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Tested-by: Maud Spierings <maud_spierings@hotmail.com>
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_bridge_connector.c | 69 +++++++++++++-------------
- 1 file changed, 35 insertions(+), 34 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index a73c177a3c10..4ad3cd107ecd 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -208,39 +208,6 @@ static void drm_bridge_connector_disable_hpd(struct drm_connector *connector)
-  * Bridge Connector Functions
-  */
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index dff400233154..bcfa6646546e 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -432,7 +432,7 @@ static void dw_hdmi_qp_rk3576_io_init(struct rockchip_hdmi_qp *hdmi)
  
--static enum drm_connector_status
--drm_bridge_connector_detect(struct drm_connector *connector, bool force)
--{
--	struct drm_bridge_connector *bridge_connector =
--		to_drm_bridge_connector(connector);
--	struct drm_bridge *detect = bridge_connector->bridge_detect;
--	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
--	enum drm_connector_status status;
--
--	if (detect) {
--		status = detect->funcs->detect(detect, connector);
--
--		if (hdmi)
--			drm_atomic_helper_connector_hdmi_hotplug(connector, status);
--
--		drm_bridge_connector_hpd_notify(connector, status);
--	} else {
--		switch (connector->connector_type) {
--		case DRM_MODE_CONNECTOR_DPI:
--		case DRM_MODE_CONNECTOR_LVDS:
--		case DRM_MODE_CONNECTOR_DSI:
--		case DRM_MODE_CONNECTOR_eDP:
--			status = connector_status_connected;
--			break;
--		default:
--			status = connector_status_unknown;
--			break;
--		}
--	}
--
--	return status;
--}
--
- static void drm_bridge_connector_force(struct drm_connector *connector)
- {
- 	struct drm_bridge_connector *bridge_connector =
-@@ -310,7 +277,6 @@ drm_bridge_connector_color_format(const struct drm_connector_state *conn_state)
+ 	regmap_write(hdmi->vo_regmap, RK3576_VO0_GRF_SOC_CON14, val);
+ 
+-	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0);
++	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 1);
+ 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
  }
  
- static const struct drm_connector_funcs drm_bridge_connector_funcs = {
--	.detect = drm_bridge_connector_detect,
- 	.force = drm_bridge_connector_force,
- 	.fill_modes = drm_helper_probe_single_connector_modes,
- 	.atomic_create_state = drm_bridge_connector_create_state,
-@@ -325,6 +291,40 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
-  * Bridge Connector Helper Functions
-  */
- 
-+static int drm_bridge_connector_detect_ctx(struct drm_connector *connector,
-+					   struct drm_modeset_acquire_ctx *ctx,
-+					   bool force)
-+{
-+	struct drm_bridge_connector *bridge_connector =
-+		to_drm_bridge_connector(connector);
-+	struct drm_bridge *detect = bridge_connector->bridge_detect;
-+	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
-+	enum drm_connector_status status;
-+
-+	if (detect) {
-+		status = detect->funcs->detect(detect, connector);
-+
-+		if (hdmi)
-+			drm_atomic_helper_connector_hdmi_hotplug(connector, status);
-+
-+		drm_bridge_connector_hpd_notify(connector, status);
-+	} else {
-+		switch (connector->connector_type) {
-+		case DRM_MODE_CONNECTOR_DPI:
-+		case DRM_MODE_CONNECTOR_LVDS:
-+		case DRM_MODE_CONNECTOR_DSI:
-+		case DRM_MODE_CONNECTOR_eDP:
-+			status = connector_status_connected;
-+			break;
-+		default:
-+			status = connector_status_unknown;
-+			break;
-+		}
-+	}
-+
-+	return status;
-+}
-+
- static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
- 					       struct drm_bridge *bridge)
- {
-@@ -416,6 +416,7 @@ static int drm_bridge_connector_atomic_check(struct drm_connector *connector,
- 
- static const struct drm_connector_helper_funcs drm_bridge_connector_helper_funcs = {
- 	.get_modes = drm_bridge_connector_get_modes,
-+	.detect_ctx = drm_bridge_connector_detect_ctx,
- 	.mode_valid = drm_bridge_connector_mode_valid,
- 	.enable_hpd = drm_bridge_connector_enable_hpd,
- 	.disable_hpd = drm_bridge_connector_disable_hpd,
 
 -- 
 2.55.0
