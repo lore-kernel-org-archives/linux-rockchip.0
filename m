@@ -4,77 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F69C624C6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 09:27:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9849AC61DD3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 11:25:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DCFjkSQedm7S3TjjHD5G3BdFDDV9p1VxFN0DOYMUorQ=; b=q7gtBWRRh0JchTTXyM7w2agEPk
-	gqLddrtpcq6yH9+IWbNsW7xdvhRkiwzT195/PJ5ogTlZccYHNVQvqjlOzfw6cdYVaHmxQVSBZ5+Eq
-	YyzCpnFEq1Z2qMN/0bwmBjCC8NT8w9QXCE3O3WCBgt2oI+LALH0ybAN5XJ0rs4I0O0XdUD+vlvRf/
-	Kk4jJfHNw/dmJ3aLJQ8YqWxOc/I4rW0HUipj0by+FDQodtQIl+VjvMGragq49a/BSCMTIMglbkz2H
-	czBh5qqxU+uYvrXx/+ixSt3v/na5EgXREsK05grrQWlUHR6Iynmz5LQbPAPRp/RbeIWoSD3GAr/Rg
-	MOLjpqHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=D6grRP323bF9q5yVdCk/oWIzc9V0hkmgoLhFUu4FvGw=; b=G7s4/9cSxRoMoS
+	/qQkGzJvtLWIsHPylqS6paCbIxsL+hYI+ZoiMM0O2cu6LntwdgYnNzIQR1tpu9xlmEO9IP5+MCL+H
+	vnSS2rPIm7t5Betx3OvJjrhRd9VUi3WRGeG9NnQaSM/bDwEdhDoLdckxnX73fguy9f1dPrpBwIYaN
+	Lf+jsM3QOEFEE7zAcjDcPl950dPTuyIv8XC9vPeqhO70nVzg3zksUD7IQj3mT6Y5Zz1EvbWuzqT4K
+	6o4aSNHqFC5j8497mlsmoRpv6DYlThOq16h7CPvr1OF7AMkJLBnEXenozRrl9YoGfLyWjsHiNRF8K
+	n27XJDeJs267NPSeGK8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Klx-0000000BQa7-0CgQ;
-	Tue, 01 Sep 2026 09:27:17 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1x1Mci-0000000Bgrv-1Eff;
+	Tue, 01 Sep 2026 11:25:52 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Klu-0000000BQYN-1q9d;
-	Tue, 01 Sep 2026 09:27:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1788254814; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=cELpdRA5MqYthZUDYMBNVCiJz6LkZkvB2kG9NiSJa1/+bujCGJWnrClWtlzf2Mx/feTAY4P3q9hmxhAt+4tTjBNFbeIoNk/5Q9DduNlypASdeuYc8986Y54lcjEYhrRuFqRe5djlb8JvKxWRxuCRyRQtc/nuVrAzZKRar6oPe1I=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1788254814; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=WBNE7bb+LspvvsDuZbtWPwLg8gdow8Zcr50MxcZHNoo=; 
-	b=nfGhH4fpIuLXqaDlBAf9j92SMOt5yrZTlmhpfg7RxRrdZfJxGR9BA31OfVN6XX5ItynFFjuRBwTgiI4UN0rb7eLW9y/KiH3hcu1snIcx4CYVmTw4hNoClODKpPpFqWsGVZzsC88rNfU/7YFEp1FE3tcR62ve/FbLyqBi01v9rhM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788254814;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=WBNE7bb+LspvvsDuZbtWPwLg8gdow8Zcr50MxcZHNoo=;
-	b=bW1ntzi3KdmC1QB0gXmsJjQwoQBvg7S5/aL7aa//AhJQaMGzSz/babx98M37ylhg
-	c0IVKi2zGuw7mpm8YJEwrjMb/HyQqoqKTu9QjGHGeCD6V/re0uuvSUIDiLQ4q5jzwau
-	Vew7VZKFqnJGt88JVzrCu7U/SHqglQ1xSVNRBlD0=
-Received: by mx.zohomail.com with SMTPS id 1788254812080376.5012000638063;
-	Tue, 1 Sep 2026 02:26:52 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 37336181B0C; Tue, 01 Sep 2026 11:26:36 +0200 (CEST)
-Date: Tue, 1 Sep 2026 11:26:36 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>
-Cc: Manivannan Sadhasivam <mani@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Yubing Zhang <yubing.zhang@rock-chips.com>, 
-	Alexey Charkov <alchark@flipper.net>, Igor Paunovic <royalnet026@gmail.com>, 
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com, 
-	devicetree@vger.kernel.org, linux-usb@vger.kernel.org
-Subject: Re: [PATCH v14 28/38] phy: core: add notifier infrastructure
-Message-ID: <apaVTYiKviNsydUG@venus>
-References: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
- <20260813-rockchip-usbdp-cleanup-v14-28-b5ad9c68fa11@collabora.com>
- <apBi5sGBpPfwTW4G@vaman>
+	id 1x1Mcf-0000000Bgr2-3EBt
+	for linux-rockchip@lists.infradead.org;
+	Tue, 01 Sep 2026 11:25:50 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-499b2981a7bso53330975e9.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 01 Sep 2026 04:25:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788261947; x=1788866747; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=O15Reb8K9UpgINjG0MBTMyi3oJTA2sKCTZI1fZ2J21s=;
+        b=eKJJB21+RHfhbjLymbqldp7u0rzPTKX7HkuoOn+sbYMNMv9zVf5eHAd1QEbQCYuluM
+         pY32ZitC+MOU4dCvBN5soMty1sAuGd9DD/GGq+bJZjtHzdccM/bf5sfxhHVstZZLyLoD
+         I8wKkINgxXvK27QAMQvhYknwAnodjdVKxbtpbPwozfE73LWcX4lgn1PMGJSJBb0xHdXf
+         VqN+GQxahu/9OZQnp+nbcNdSWqHonrHM2qZx8QtdB2zfmaN7A6JTku03t5LFiRpdbSE0
+         ZJKrt4bfPBqtsIpwqHKs6JOz9qK+nOQ57rPHYxX40QvmMV0PIaF59CSsZnqtYEg2erVh
+         hSEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788261947; x=1788866747;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=O15Reb8K9UpgINjG0MBTMyi3oJTA2sKCTZI1fZ2J21s=;
+        b=n+V6vFt47d+zl3aSUleXZLmvsAkyiaD6aopzO4FiZfD5OxQwxI7djg2Far7aYuzemz
+         vfItEFbVmq/kLTqOEDy7dgb9aUJVgX4Vv5IYm7vIIJBTE6zSo/YxPTHa7eigZMokR6BI
+         bCKM8symoJ49fKD1xo5S0LMffEoMqs9LOJXhmPKS8uAuWeuzzIZoU7BM86L70UfpeS0X
+         hOpoeU+At83YruJF3YmQnxzsCehll9mkRWSkj+k+Os9drV4K7Md1tbyJz4ikp9yVIpFM
+         xImwWIulMF/c70fLHmGPRJ4lDdjUnDhd/tHhOv0zcuFcpDjGA2FsqOAnQluxc1fPaUTH
+         yQoA==
+X-Forwarded-Encrypted: i=1; AHgh+RoBtQLdP/pbarQnGAgObRQP9ggbm7lPQB9XxY9qZUr7GGhVmfDO1avwuRBMZNEq+djqvTYTT2iyatIrmRcSsw==@lists.infradead.org
+X-Gm-Message-State: AFuF++mXKJQ46UsSRyO3TWVp9EqpOJGY0ZwJxz7GMXQRas+FNB+LHBJ5
+	mKjTGv1Ugx6a9JM8KCjjxwmcY/iNGd3+ArHdCrCco71oSTunZm3xGF+T
+X-Gm-Gg: AR+sD13Z83yWzfzYVMDmeUAR/k5Ye8Aod7LrICQzWbCS6f/S5Bfzg76IQyK+ozv9sJq
+	rf0YPsLaGlFBkDw53SrUDW1MfKH8YV/cApQkx2xIA+in3zcqiVvJZL4jvbMDoXocWlLJadvcoNk
+	TAP+Kaz1GsaoczuQRUpwesmM225yYoORpt0JuwqTIEyjnIYzvYykcmuS8f8tGTXuyJ+Wy3bx4qk
+	qBc1nQvVQz03kKJsnWJE74MTBo54atn1S20M5Qt4ZxGDwOPTuHwbVN3eUtI4noNW6578JPeajYd
+	zuIIimFaxcKbI9eF5TjByX0Lq1jmALreFg+NAKRq4KWIhVFnFpJIkM+vqVUEXhcvTDNaVODgVYI
+	GPVQV+wxYCM0zel98o/mGnBgrPO9uEA45mhxctQLKw1hIfTWbeHOhdzRIHzGir4r3D6y+yrECSq
+	GfFCgIcNItpjqKn8l0bcWbRl7qQ7c/TXicLfqjk66mI5qQqE7CZyLMbB6y2NqsL8JO
+X-Received: by 2002:a05:600c:8011:b0:496:bbce:fc with SMTP id 5b1f17b1804b1-49cdc5660bamr148450025e9.12.1788261947024;
+        Tue, 01 Sep 2026 04:25:47 -0700 (PDT)
+Received: from toolbox.. ([87.200.95.144])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49b91c510c9sm226325455e9.0.2026.09.01.04.25.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Sep 2026 04:25:46 -0700 (PDT)
+From: Christian Hewitt <christianshewitt@gmail.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Daniel Stone <daniel@fooishbar.org>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Sugar Zhang <sugar.zhang@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] drm/bridge: dw-hdmi-qp: Compute ACR CTS for unlisted TMDS rates
+Date: Tue,  1 Sep 2026 11:25:41 +0000
+Message-ID: <20260901112541.84588-1-christianshewitt@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <apBi5sGBpPfwTW4G@vaman>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/288.233.38
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_022714_504344_9DC0C77B 
-X-CRM114-Status: GOOD (  20.95  )
+X-CRM114-CacheID: sfid-20260901_042549_830282_A375531F 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,100 +111,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7745360589189479711=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+common_tmds_cts_table[] holds only six TMDS character rates (25.175,
+25.2, 27, 54, 74.25 and 148.5 MHz), so dw_hdmi_qp_find_cts() returns 0
+for everything else. dw_hdmi_qp_set_cts_n() then clears the CTS override
+enable and programs a value of 0, leaving the sink with no CTS to
+regenerate the audio clock from.
 
---===============7745360589189479711==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3dlaegreqn3h62kc"
-Content-Disposition: inline
+Any deep colour link falls into this gap: a 10 bpc RK3576 HDMI output
+runs at 185625000 Hz (148.5 MHz * 1.25), which is absent from both
+tables. N is computed dynamically and comes out correct at 6144, but
+AUDPKT_ACR_CONTROL1 reads back as 0.
 
+Give CTS the same dynamic fallback that N already has, using the formula
+from the Audio chapter of the HDMI specification, and drop the -ENOENT
+returned into an unsigned int for the unlisted sample rates.
 
---3dlaegreqn3h62kc
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v14 28/38] phy: core: add notifier infrastructure
-MIME-Version: 1.0
+Fixes: fd0141d1a8a2a ("drm/bridge: synopsys: Add audio support for dw-hdmi-qp")
+Assisted-by: Claude:claude-opus-5
+Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+---
+This was found after testing unrelated patches from DetlevC that rename
+the RK audio cards to see the impact in Kodi. RK3588 had audio output,
+while RK3576 did not. I'd not used an RK3576 board for a while so tasked
+Claude to help triage the problem, and this was the finding. The problem
+appears to have been exposed since Kodi reworked plane selection logic
+and support for 10bpc planes; earlier Kodi/LibreELEC images were using
+8bpc planes thus avoiding the problem.
 
-Hello Vinod,
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 45 ++++++++++++--------
+ 1 file changed, 27 insertions(+), 18 deletions(-)
 
-On Thu, Aug 27, 2026 at 09:46:38PM +0530, Vinod Koul wrote:
-> On 13-08-26, 22:52, Sebastian Reichel wrote:
-> > Some PHY devices with multiple ports (e.g. USB3 and DP) require a reset
-> > if the configuration changes or cable orientation changes. This is a
-> > problem, as the consumer device will run into undefined behavior.
-> >=20
-> > With the new PHY notifier API introduced in this patch, the consumer
-> > driver can hook into reset events coming from a PHY device to handle the
-> > PHY going down gracefully.
->=20
-> Hmmm how will phy get notified for these events. Typically there is a
-> separate hotplug mechanism to take care of cable changes.
->=20
-> Looking at implementation of this, It seems to me there is checked on
-> power-on, so maybe notifier maynot be right one... ?
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index 5f4718c3b9db..7cf327de0249 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -12,6 +12,7 @@
+ #include <linux/export.h>
+ #include <linux/i2c.h>
+ #include <linux/irq.h>
++#include <linux/math64.h>
+ #include <linux/minmax.h>
+ #include <linux/module.h>
+ #include <linux/mutex.h>
+@@ -307,8 +308,15 @@ static unsigned int dw_hdmi_qp_find_n(struct dw_hdmi_qp *hdmi, unsigned long pix
+ 	return dw_hdmi_qp_compute_n(hdmi, pixel_clk, sample_rate);
+ }
+ 
++static unsigned int dw_hdmi_qp_compute_cts(unsigned long pixel_clk,
++					   unsigned long sample_rate,
++					   unsigned int n)
++{
++	return div64_u64((u64)pixel_clk * n, 128ULL * sample_rate);
++}
++
+ static unsigned int dw_hdmi_qp_find_cts(struct dw_hdmi_qp *hdmi, unsigned long pixel_clk,
+-					unsigned long sample_rate)
++					unsigned long sample_rate, unsigned int n)
+ {
+ 	const struct dw_hdmi_audio_tmds_cts *tmds_cts = NULL;
+ 	int i;
+@@ -320,23 +328,24 @@ static unsigned int dw_hdmi_qp_find_cts(struct dw_hdmi_qp *hdmi, unsigned long p
+ 		}
+ 	}
+ 
+-	if (!tmds_cts)
+-		return 0;
+-
+-	switch (sample_rate) {
+-	case 32000:
+-		return tmds_cts->cts_32k;
+-	case 44100:
+-	case 88200:
+-	case 176400:
+-		return tmds_cts->cts_44k1;
+-	case 48000:
+-	case 96000:
+-	case 192000:
+-		return tmds_cts->cts_48k;
+-	default:
+-		return -ENOENT;
++	if (tmds_cts) {
++		switch (sample_rate) {
++		case 32000:
++			return tmds_cts->cts_32k;
++		case 44100:
++		case 88200:
++		case 176400:
++			return tmds_cts->cts_44k1;
++		case 48000:
++		case 96000:
++		case 192000:
++			return tmds_cts->cts_48k;
++		}
+ 	}
++
++	dev_dbg(hdmi->dev, "Rate %lu missing; compute CTS dynamically\n", pixel_clk);
++
++	return dw_hdmi_qp_compute_cts(pixel_clk, sample_rate, n);
+ }
+ 
+ static void dw_hdmi_qp_set_audio_interface(struct dw_hdmi_qp *hdmi,
+@@ -471,7 +480,7 @@ static void dw_hdmi_qp_set_sample_rate(struct dw_hdmi_qp *hdmi, unsigned long lo
+ 	unsigned int n, cts;
+ 
+ 	n = dw_hdmi_qp_find_n(hdmi, tmds_char_rate, sample_rate);
+-	cts = dw_hdmi_qp_find_cts(hdmi, tmds_char_rate, sample_rate);
++	cts = dw_hdmi_qp_find_cts(hdmi, tmds_char_rate, sample_rate, n);
+ 
+ 	dw_hdmi_qp_set_cts_n(hdmi, cts, n);
+ }
+-- 
+2.43.0
 
-With USB-C you have the TCPM (Type-C Port Manager), which will send
-notifications when the plug orientation changed or a different mux
-configuration is needed (both information are sourced from USB PD).
-You can see typec_switch_register() and typec_mux_register()
-registering handlers for these events.
-
-Effectively there is:
-
-1. TCPM providing information about the hardware configuration
-2. USB controller driver requesting the USB side (software request)
-3. DP controller driver requesting the DP side (software request)
-
-These are combined into the desired PHY state.
-
-If the USB controller driver requested the PHY (happens during
-normal driver probe of dwc3) and then you plug a device into the
-USB-C port, which changes the mux configuration, the PHY needs to
-be restarted/reset. Accessing the USB controller while the PHY is
-restarted results in an SError. This part of the series will
-mitigate the problem.
-
-Greetings,
-
--- Sebastian
-
---3dlaegreqn3h62kc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmqWmkgACgkQ2O7X88g7
-+pq2yw/9FIRH2tguovlpTzibRD3SnDZDhFzWm7UzNHTuOCL8oXbNeEyCytCKUI64
-s1YUTzTNFPRNWl1Zg7KPKNa1RPieRjbqRfgeSLm5DscxeNojst6q4pEwZR21LpLn
-+esC2NWPx4Sdx8l7+idIZEQTOiRJgvOOrmvaOdWPCj9j+FprkM1l4SkUt9ZKt3Uy
-9T0Ud2hZwSD/hsoT9t2DTzINRv/LIPjBCuaNIglzAgRZYlFjIZQYH0n/ag0XAqat
-gXNN2GwPTAZBdLn4SUXmrfFOzPedCQeJA35eGg6MCNsfeSJOAL+X2LCWMs6aYsJL
-iJPz2eITM/0o8fP8Fo+7b8ELqaEYiEDpbpbgLxtE97dwlHu3T+6j5+u+MfNqX5J/
-gQ8OcmjnlLQOejlJyQlS4c4cKboUE7VRCVNJ8J5K6N7OiqiVPMvgb+wRdFEcoara
-zllZekiW1kzY9JfYHDTA2n42E7X6uKl0+/VkhD/jnMlqoRXbRUK/GWXyaaOnDruY
-Reyi2fv12V94rAQXIL6DqZeHClUpaPBRgplQZarklVpnONpfUAla/UR9Enf7bul0
-qJQyJsUys8hjwKQy+VKtqdt+ac9y2/T7MISxuhtpKVkJWh+5IaLaVsveIbdxFjnK
-QJ343srZH6CrqqJ3ZznRZUrddocBc8LTEEAQkXOnMDTGdlP2WZI=
-=nOU6
------END PGP SIGNATURE-----
-
---3dlaegreqn3h62kc--
-
-
---===============7745360589189479711==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7745360589189479711==--
-
