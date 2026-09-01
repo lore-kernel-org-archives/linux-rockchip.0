@@ -4,51 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFFDDC624D3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14B91C624DB
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dj64NtDkp8yfYLjPrnaaYNaAJRUW1dUzWMBqE5tkDfY=; b=UNDHMtu1SdY+v2
-	drJhT7s29NsPwcj9Z7NY8kFr0Ophyf6TNLOMqw6psFmxTnoYfCjV3+v8KXzyEsAHaP3KaJBgM1Bb7
-	hEDHYH534M9YIidlxPhHyD0soxkhefN/fSXN/JJ+nWMgJkdieCHED+57xitEvrNZuhO4C8vvdeiAZ
-	V9eznUaxSkZAkYXGW2WGx23wRONTHrsC39qCIQOJCEscHHqUyC2iZEzqRpL63ZuvSe34dM0pp2FbR
-	xp6Qeida67Wryt7QphOnw+SK/koNOf5SEusPUUDfSmevrnF88Hv3J2xaqC+0GcAv2M8AVR5aokGOL
-	kS3Pjt78byczclRMTQ8A==;
+	List-Owner; bh=ev4qnQ8+Br7/xOi4xudRThe+H3L/BtLhlEdY10FcQ+k=; b=n0mxtBqCdSW4l5
+	miqA0Z2uOoo3dA0JzTouyOOBD/NAk1JRaE/dPzrYDc4FbWvmnE6jFnGQRHQ0fcW+yhuA6CEFAJ884
+	9EIBIttsN+GVy7tprrKHgcUwz3htp82zdXuO8TTFY/iIvb7QG+taCICBEyzaRnlb5EgeadA5OYoPb
+	g5W83UNrsOu0YAJUxY/F621E2D/w718GHrw5+el5OJHPeTlesLlv+3NHw/ko/5FzGNlQvD/C7FAP3
+	gZunI+0A/904lg5WTR28KJ6qKUrK/Zx5+zi10hxLvC2w6u0+L+DKfghPKHcKyrs+5efNITE+3jGBq
+	Md0imz/+BgJHZQmNzA7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Tbz-0000000D5Tz-1MRL;
-	Tue, 01 Sep 2026 18:53:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x1Tc0-0000000D5Vk-0toY;
+	Tue, 01 Sep 2026 18:53:36 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZX-0000000D0sh-0Pco;
+	id 1x1TZq-0000000D1Ln-1l0z;
 	Tue, 01 Sep 2026 18:51:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=xxi61J6EfqocZunJqjbeAiGOxDQSDg6PNPIE6+2MVTU=; b=I/pUZN286m7KoB0ZbCv3pzMaDN
+	vH0aNMoojU8Ko35BX1CdtDWJNZQAYiNwzxzeqp2vR1V/2eFaWeFO/5n4/QM5NBK2X9g+kJQ/3QG5O
+	DY8ehsOgzKQ1diN+Q/mf6R09j8dBMo7+SxfTpahBPUzaTN1H/LRiEdLCmRSyJe4eKcJ+MiMMP1zk1
+	BuGy61gn54gZlIjgmpAJLDzLfDxtr7iO9yIgmp9wcOdSVlGvS0NbbTGTgq/31I1/0PxLpDbOcSExB
+	4rIPfLdgHcXzPJ6VwuVk3MmHBTvRelWb/gp5/pUP4yFuLaX+zmm88oqfSpbwrUmIrIcGf9BcSzFh3
+	QpyPnxpQ==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x1TZn-0000000BHWb-0dEW;
+	Tue, 01 Sep 2026 18:51:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288661;
-	bh=fw8obzJP5OPYqaOUFHt36T0iWpVWKUYn3AqoExbRHJc=;
+	s=mail; t=1788288678;
+	bh=0cXQh/wi9mNTTITbxgaDB3yHqtiGn5+Qa+cNMfRk9UA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=lyhoHWsl5QoCjUe1mZPnym9LTzC3Ptx/LiQw570od6ba1r/6oasTUxYubJwjPTNQY
-	 d+yWLS4xwQK0ucRMZGE9ghkFF6GQHuD4+Kcd39QCfyHnrSYlTXpMohR4D74IyNjjkD
-	 6iyvjS4YgRW/BEl7QYg80Zpj9HFlW8b4S+srNQIO8Xg8VcORflTuPHSnCv1HJa5647
-	 e6cN4M8l5CoTeObxUZ0pqjVd721V/guzUsBD9QgK6V/i2T+r3RUQOtqefCnUaC4rr8
-	 o+r9krSCLJyK+/TidmFsCjWYNGmMUdPlcSPI8lg5tZcvdtCudUn31Fmbza929NVjwk
-	 6KHWiNf8VirjQ==
+	b=bvEMwm0R4HTcJXN0fRwhoeQ9+XkgI9mIBkkLPPDDjMXynwv5r35tGSGkWAmlC+G/1
+	 V6g3L3B+papJwVafaVwroEXhSTBFdwFcnifiJ18PYA6/hM/KGnTia5/0HLfEbGB9Ax
+	 Xl4DiaBBx2xYUz7CbxmgFieMDUfzAwKUJCDOTngb3TZWXhV8KHF3HKAIpHkERR0Pv2
+	 Umc041NnF3oo5NxRj6oi1gO50G/o2hDTpEllAFChOJFURqtBe34kvlhgJ9X1A+T+KO
+	 601K+f1xVcHkI0lThJ+w+TdYSkRuAPrKZcuMEZcdo243ZODSycaVCBa8M/CjKoWv/I
+	 iY4d9aJrag7Jg==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1075A17E39A7;
-	Tue, 01 Sep 2026 20:51:01 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D8BA717E3C71;
+	Tue, 01 Sep 2026 20:51:17 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:50:51 +0300
-Subject: [PATCH v11 27/74] drm/bridge: dw-hdmi-qp: Provide
- .{enable,disable}_hpd() PHY ops
+Date: Tue, 01 Sep 2026 21:51:14 +0300
+Subject: [PATCH v11 50/74] drm/bridge: adv7511: Advertise HDMI 1.2
+ capabilities
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-27-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-50-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,12 +87,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org, Maud Spierings <maud_spierings@hotmail.com>, 
- Diederik de Haas <diederik@cknow-tech.com>
+ linux-fbdev@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115104_986556_EE31B495 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20260901_195119_457324_3B1674F9 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,71 +108,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Implement the .hpd_enable() and .hpd_disable() bridge callbacks and
-extend dw_hdmi_qp_phy_ops with corresponding hooks.
+Bridges using DRM_BRIDGE_OP_HDMI are now expected to also provide a
+supported HDMI version.  This is not yet enforced, but will become
+mandatory once the migration to the new caps-based HDMI connector
+initialization API is completed.
 
-This enables the DRM core to control when HPD interrupts are armed,
-which is needed to prevent premature interrupt delivery before the
-connector is fully initialized, and to properly quiesce HPD during
-suspend.
+Since max_mode_clock_khz does not exceed 165 MHz for any of the chip
+variants handled by the driver, advertise HDMI 1.2 as the supported
+version and set the bridge's max_tmds_char_rate so the connector limit
+inferred from supported_hdmi_ver is overridden by the chip-specific
+hardware constraints.
 
-Tested-by: Maud Spierings <maud_spierings@hotmail.com>
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+drm_bridge_connector_atomic_check() runs
+drm_atomic_helper_connector_hdmi_check(), which rejects modes whose
+computed TMDS character rate exceeds the connector limit before invoking
+the driver's .tmds_char_rate_valid() hook, making
+adv7511_bridge_hdmi_tmds_char_rate_valid() redundant. Drop it.
+
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 18 ++++++++++++++++++
- include/drm/bridge/dw_hdmi_qp.h              |  2 ++
- 2 files changed, 20 insertions(+)
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c | 22 +++-------------------
+ 1 file changed, 3 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index 7475b6b71836..a0613f0d2ebc 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -1189,6 +1189,22 @@ static int dw_hdmi_qp_cec_transmit(struct drm_bridge *bridge, u8 attempts,
- #define dw_hdmi_qp_cec_transmit NULL
- #endif /* CONFIG_DRM_DW_HDMI_QP_CEC */
+diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
+index 038b852405b5..c3ef44074477 100644
+--- a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
++++ b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
+@@ -8,6 +8,7 @@
+ #include <linux/clk.h>
+ #include <linux/device.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/hdmi.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/slab.h>
+@@ -775,11 +776,6 @@ static int adv7511_connector_init(struct adv7511 *adv)
+  * DRM Bridge Operations
+  */
  
-+static void dw_hdmi_qp_bridge_hpd_enable(struct drm_bridge *bridge)
-+{
-+	struct dw_hdmi_qp *hdmi = bridge->driver_private;
-+
-+	if (hdmi->phy.ops->enable_hpd)
-+		hdmi->phy.ops->enable_hpd(hdmi, hdmi->phy.data);
-+}
-+
-+static void dw_hdmi_qp_bridge_hpd_disable(struct drm_bridge *bridge)
-+{
-+	struct dw_hdmi_qp *hdmi = bridge->driver_private;
-+
-+	if (hdmi->phy.ops->disable_hpd)
-+		hdmi->phy.ops->disable_hpd(hdmi, hdmi->phy.data);
-+}
-+
- static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
- 	.atomic_get_output_bus_fmts = drm_atomic_helper_bridge_get_hdmi_output_bus_fmts,
- 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-@@ -1197,6 +1213,8 @@ static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
- 	.atomic_enable = dw_hdmi_qp_bridge_atomic_enable,
- 	.atomic_disable = dw_hdmi_qp_bridge_atomic_disable,
- 	.detect = dw_hdmi_qp_bridge_detect,
-+	.hpd_enable = dw_hdmi_qp_bridge_hpd_enable,
-+	.hpd_disable = dw_hdmi_qp_bridge_hpd_disable,
- 	.edid_read = dw_hdmi_qp_bridge_edid_read,
- 	.hdmi_tmds_char_rate_valid = dw_hdmi_qp_bridge_tmds_char_rate_valid,
- 	.hdmi_clear_avi_infoframe = dw_hdmi_qp_bridge_clear_avi_infoframe,
-diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
-index 6ea9c561cfef..b80fceffc315 100644
---- a/include/drm/bridge/dw_hdmi_qp.h
-+++ b/include/drm/bridge/dw_hdmi_qp.h
-@@ -17,6 +17,8 @@ struct dw_hdmi_qp_phy_ops {
- 	void (*disable)(struct dw_hdmi_qp *hdmi, void *data);
- 	enum drm_connector_status (*read_hpd)(struct dw_hdmi_qp *hdmi, void *data);
- 	void (*setup_hpd)(struct dw_hdmi_qp *hdmi, void *data);
-+	void (*enable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
-+	void (*disable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
- };
+-static const struct adv7511 *bridge_to_adv7511_const(const struct drm_bridge *bridge)
+-{
+-	return container_of(bridge, struct adv7511, bridge);
+-}
+-
+ static void adv7511_bridge_atomic_enable(struct drm_bridge *bridge,
+ 					 struct drm_atomic_commit *state)
+ {
+@@ -817,19 +813,6 @@ static void adv7511_bridge_atomic_disable(struct drm_bridge *bridge,
+ 	adv7511_power_off(adv);
+ }
  
- struct dw_hdmi_qp_plat_data {
+-static enum drm_mode_status
+-adv7511_bridge_hdmi_tmds_char_rate_valid(const struct drm_bridge *bridge,
+-					 const struct drm_display_mode *mode,
+-					 unsigned long long tmds_rate)
+-{
+-	const struct adv7511 *adv = bridge_to_adv7511_const(bridge);
+-
+-	if (tmds_rate > 1000ULL * adv->info->max_mode_clock_khz)
+-		return MODE_CLOCK_HIGH;
+-
+-	return MODE_OK;
+-}
+-
+ static enum drm_mode_status adv7511_bridge_mode_valid(struct drm_bridge *bridge,
+ 						      const struct drm_display_info *info,
+ 		const struct drm_display_mode *mode)
+@@ -1006,7 +989,6 @@ static const struct drm_bridge_funcs adv7511_bridge_funcs = {
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+ 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
+ 
+-	.hdmi_tmds_char_rate_valid = adv7511_bridge_hdmi_tmds_char_rate_valid,
+ 	.hdmi_clear_audio_infoframe = adv7511_bridge_hdmi_clear_audio_infoframe,
+ 	.hdmi_write_audio_infoframe = adv7511_bridge_hdmi_write_audio_infoframe,
+ 	.hdmi_clear_avi_infoframe = adv7511_bridge_hdmi_clear_avi_infoframe,
+@@ -1359,6 +1341,8 @@ static int adv7511_probe(struct i2c_client *i2c)
+ 
+ 	adv7511->bridge.vendor = "Analog";
+ 	adv7511->bridge.product = adv7511->info->name;
++	adv7511->bridge.supported_hdmi_ver = HDMI_VERSION_1_2;
++	adv7511->bridge.max_tmds_char_rate = 1000ULL * adv7511->info->max_mode_clock_khz;
+ 
+ #ifdef CONFIG_DRM_I2C_ADV7511_AUDIO
+ 	adv7511->bridge.ops |= DRM_BRIDGE_OP_HDMI_AUDIO;
 
 -- 
 2.55.0
