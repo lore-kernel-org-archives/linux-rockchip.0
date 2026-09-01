@@ -4,80 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10C88C61DD3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:54:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD16C624D0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 19:55:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YoBi3aY9m1HgXf0T+4ltJ7t/DzDiC9lmYGqM1ZYDc1g=; b=2hqQIpWCn0+Lmd
-	Mr6Mzq4mN099nDb+kPSZG6k3rHRA4MXdUtyKeIJ+xotV5t1nXTDqXrwywbiAovne4ymU5tZCUGMU5
-	mJFILdxDsr8K2tJY4nNkFe+D0P+2nyP8BUKnpO3MXCrw1IDpKp0y1SKIQ9PxXJZW4/uqSZEIyPdSe
-	XBDFmtUht0whwAtEbjRajvXScdcuiJNBpL5axeYl8jHVhNJ1HWTnw0KkxJdvHEPdsTsuee+LNOBT9
-	E+onqYAmHwMPSu1gPXBvuegwl1uQgWeeZzJGHpiX6p+c2d/KI+W/C4UfpDRetQiiq4Doz9k9x0i1/
-	lnr3gDguJ4GMFjhhOmNA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XG2Lw7k77eE78iZKLuYzS/O3PPam0chc7BImNtbzbuI=; b=choloCEDx72AKC
+	LFHGiiAgYpqZVKJxNOaxrMIunIYR/aeDEPRoKS7diIMPf62kCehELwlAVwmScRvPAQz4gojCZuknA
+	9tF0n7lnra0NzrAXL7+T2queIR7OaZi5Q0zNUk4uqyTuWdZULeiRWw06mS8MqZH86PHEqZ5hD2s8t
+	2Zk5h7MmVwPOxli8BisclP1uAbq06GzZz4s4V2dzNgm2KjQt3qFpuPAWlBX72AQoEq/1j/xSueS69
+	RnmNy2EffWLNXIEwzeJunJGcD2FXnFg4XsXhSeKBB82vz7Np7sgX54hOMUUQMxYYnk9Cu4MFLD04r
+	mibNnJBaYxVNLYurUJvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Tcm-0000000D7o5-0gFP;
-	Tue, 01 Sep 2026 18:54:24 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x1UZw-0000000DGXG-0IPI;
+	Tue, 01 Sep 2026 19:55:32 +0000
+Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Ta3-0000000D1bP-4B5I;
-	Tue, 01 Sep 2026 18:51:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288694;
-	bh=gMZvH/XQuHle0y4qmxFGuepyJ+gg6MxKAWPpFnQKQUk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=CHeLv6D1SpaIHwZ1VwZo90Z4Voe1VkTLSbU/6grn1SzcAuimWnmB++CGKsI2PRyNU
-	 nM3MUkO+tJf+2sZWXaVUIs/tPNuAVxN3Q1+nQ89+aD/Rb7r/hDtMb7C97yiV1nvfD1
-	 cMnWZT5VQUCWaxVNdpecybIeGFh4GNVcwFiuvIfFRIPGdmvzVvDkI7dE3mW6oItc9X
-	 /lgVE6jTFFmb3ZOflHVIVDaHxTzoCNkJfQx18QbGA8nnEYGVOI/hxN/HZjLEFqFotV
-	 mFjc2/dBjjLKqOroSXryCUWxsFnAg7CKKKcNuToSqgWDOBpc5Iq95edvAE212+1UoL
-	 etYOWrrCkwVzg==
-Received: from localhost (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0833817E3CA6;
-	Tue, 01 Sep 2026 20:51:34 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:51:36 +0300
-Subject: [PATCH v11 72/74] video/hdmi: Define SPD InfoFrame field lengths
- and use strtomem_pad()
+	id 1x1UZt-0000000DGWG-3fSq
+	for linux-rockchip@lists.infradead.org;
+	Tue, 01 Sep 2026 19:55:31 +0000
+Received: by mail-oo1-xc36.google.com with SMTP id 006d021491bc7-6b0fd2ddea2so192566eaf.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 01 Sep 2026 12:55:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788292528; x=1788897328; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=jE7YeOTH+Slgx2JFrDNEXYntxMlmYaSvMdCwqmpupuI=;
+        b=b1aIoohBJvkLvROKETE0bycfn3/Ulp8m15pUpOrYcsMtgTbq4f+PRCj7bWPHE0Y+up
+         YCWN14RKJX1lyvNo0skClz4QWGU3UHDZu160ZTYm0lMAYpAHNKvxXKS8TIZQq36ZYlip
+         R5H+pkjQWzIxuHoiR4AB6hA+8seRISnbisB0KVGgb2HmeVMHfJahDE0C3tDiisZjOE6n
+         rafBYc0YqnzcbHi7pLHN3VPEvEYc3LKEsO3A3RTP42Wf19o5L2pK+6lsmTogD/yTXhSG
+         1xO790WP8oa7IxvK7mtd0M5g15SRgtpxOACYQzZRnxm28jUfYiae7LbaP5TXoxCDFuJU
+         v1UQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788292528; x=1788897328;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=jE7YeOTH+Slgx2JFrDNEXYntxMlmYaSvMdCwqmpupuI=;
+        b=nZx/KS0TyoDooQYbm2TE5wROxga+scCGkEA9AGVl/sKyGBWwQtT9QfvZQ6guXh+4v2
+         ScowxGJ2dPqAU4mnYmZwOF0gQN1sZmGGoeOcE6Zfbtz8aXtCEjaOZ8M1ltLA+206x11C
+         bzZnlJsEPTpEeamxnlKi1kXomuYOXycWlvkBg9xnUDfA5+LYhHkhnC89fsOtgqu51gy/
+         bMS/WPtHg9kdlV5QyOm4t7K7xsQKxnfH+wV52tirkI3HWGUejEs8fotpNj1NEwgR/VI0
+         lanb4zD//dQzzLDGoLPyWKVu/8CkCkI5cc3norSzQt6mD252F4BqvVR44nrSRytdoOaF
+         NX5Q==
+X-Forwarded-Encrypted: i=1; AHgh+Ro1k5DY0vwsmz/5AOBov0xxd/Q524z9rEDWnAsf0RIrGYOx7kExzazsb9sYssoTkLX+ic8dBU6c/xOSOIItZA==@lists.infradead.org
+X-Gm-Message-State: AFuF++kCNQ/ySuQlqZ/GV73YjrgYsGSAPLA+3S0l8ncDZDHJkJVyUTOm
+	2IDb0fTB+pvYTXUdSPZog4YKDS+G4rQ9Uj4clWXnS+86934whdjV44L8
+X-Gm-Gg: AR+sD12Ek5JMi3RNvcmnFklD/v3R5ya8S9hAAztVIzS1LIsreOPRULYz/CmTiAU4rmv
+	wQ6BKTop7HNHVOO0uSaNLzPJVnTJITPhIlzgS5iaX4gmlxHkOlr/OBXqTwCNV+ZdHEe59dvH2ht
+	BAcXX6fEmk8N4//mdpI+7pmx3+vZOXLDpR0swMuIaKN7U/0DzTSJ5NgA2RqZ7WAXTNx32cCJMmE
+	gH4oEY9KMw4j90who2sFDMasQFjIcdY57yLrOVoB+O0L9gl6evGoNUn7Vq/kBm27gpTFY5oEa3P
+	5VRxdM6qaTtDI2sJ1BIWFyR4Uh/lvEadzZJhxXdyQUwHE2UY81RGs8pcjdJi7+ZXTHB6+xLEnDt
+	+Z3av5vSTPkG00z+0u722Y3SyiS2LGkL3bgUoASw6B4AtO5jN7QEHEGdbFu/kHX+ZfopLlMvKHQ
+	0SvzdcEXVd/6vSxIzgyWSg3nSEEDw4LmGOYM36U1vu/gaFwLwvyeBEy4NxiFYWS0iyny+/OgyJS
+	sVHrkFrZ8ewoP/jNFLSxarXMjqqmKfVy2X7WsTHL80Akak=
+X-Received: by 2002:a05:6820:823:b0:6aa:cce3:ab61 with SMTP id 006d021491bc7-6b372d20e4fmr8604105eaf.9.1788292528131;
+        Tue, 01 Sep 2026 12:55:28 -0700 (PDT)
+Received: from memorizer.localdomain (47-163-111-11.bng01.bytw.tx.frontiernet.net. [47.163.111.11])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6b40f81f374sm868636eaf.14.2026.09.01.12.55.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Sep 2026 12:55:27 -0700 (PDT)
+From: Yudi Yang <2000jedi@gmail.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Damon Ding <damon.ding@rock-chips.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Yudi Yang <2000jedi@gmail.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] drm/rockchip: analogix_dp: bound endpoint name formatting
+Date: Tue,  1 Sep 2026 14:55:11 -0500
+Message-ID: <20260901195511.2761251-1-2000jedi@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-72-bc12954a0688@collabora.com>
-References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
-In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Chen-Yu Tsai <wens@kernel.org>, 
- Samuel Holland <samuel@sholland.org>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
- Raphael Gallais-Pou <rgallaispou@gmail.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, Algea Cao <algea.cao@rock-chips.com>, 
- Daniel Stone <daniels@collabora.com>, Liu Ying <victor.liu@nxp.com>, 
- Phong LE <ple@baylibre.com>, Helge Deller <deller@gmx.de>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org
-X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115137_851905_4E1D00F6 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20260901_125529_950309_D0B004B7 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,115 +110,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-HDMI specification defines the SPD InfoFrame Vendor Name and Product
-Description as fixed-size fields, 8 and 16 bytes respectively, padded
-with zeros and left without any trailing NUL when a name spans the whole
-field.
+rockchip_dp_drm_encoder_enable() uses sprintf() to format a device tree
+path into a 32-byte stack buffer. Device tree paths are not limited to
+this size, so a sufficiently long path can overflow the buffer.
 
-Give those lengths a name and mark the fields as non-strings, so that
-the copies can be handed over to strtomem_pad(), which implements
-precisely the required semantics.  This also bounds the reads from the
-source strings, whereas the open-coded strlen() could run past the end
-of the buffer in the hdmi_spd_infoframe_unpack() path, where the names
-come straight from the wire and are not NUL-terminated.
+Use snprintf() with the destination size to truncate the generated name
+and keep the writes within bounds.
 
-While at it, replace the related magic numbers in the pack and unpack
-helpers with the new defines.
-
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Fixes: 729f8eefdcad ("drm/rockchip: analogix_dp: Add support for RK3588")
+Cc: stable@vger.kernel.org
+Signed-off-by: Yudi Yang <2000jedi@gmail.com>
 ---
- drivers/video/hdmi.c | 23 +++++++++++++----------
- include/linux/hdmi.h |  7 +++++--
- 2 files changed, 18 insertions(+), 12 deletions(-)
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
-index 45b42f14a750..e729c26d61c4 100644
---- a/drivers/video/hdmi.c
-+++ b/drivers/video/hdmi.c
-@@ -217,23 +217,22 @@ EXPORT_SYMBOL(hdmi_avi_infoframe_pack);
-  * @vendor: vendor string
-  * @product: product string
-  *
-+ * Both strings are copied into the fixed-size infoframe fields,
-+ * truncated if too long and padded with zeros otherwise.
-+ *
-  * Returns 0 on success or a negative error code on failure.
-  */
- int hdmi_spd_infoframe_init(struct hdmi_spd_infoframe *frame,
- 			    const char *vendor, const char *product)
- {
--	size_t len;
--
- 	memset(frame, 0, sizeof(*frame));
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 587e60232ec7..efd5a98e80bd 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -241,10 +241,11 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder,
+ 				of_graph_get_remote_port(endpoint.local_node);
  
- 	frame->type = HDMI_INFOFRAME_TYPE_SPD;
- 	frame->version = 1;
- 	frame->length = HDMI_SPD_INFOFRAME_SIZE;
+ 			of_property_read_u32(remote_port, "reg", &port_id);
+-			sprintf(name, "%s vp%d", remote_port_parent->full_name, port_id);
++			snprintf(name, sizeof(name), "%s vp%d",
++				 remote_port_parent->full_name, port_id);
+ 		} else {
+-			sprintf(name, "%s %s",
+-				remote_port_parent->full_name, endpoint.id ? "vopl" : "vopb");
++			snprintf(name, sizeof(name), "%s %s",
++				 remote_port_parent->full_name, endpoint.id ? "vopl" : "vopb");
+ 		}
  
--	len = strlen(vendor);
--	memcpy(frame->vendor, vendor, min(len, sizeof(frame->vendor)));
--	len = strlen(product);
--	memcpy(frame->product, product, min(len, sizeof(frame->product)));
-+	strtomem_pad(frame->vendor, vendor, 0);
-+	strtomem_pad(frame->product, product, 0);
- 
- 	return 0;
- }
-@@ -305,9 +304,11 @@ ssize_t hdmi_spd_infoframe_pack_only(const struct hdmi_spd_infoframe *frame,
- 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
- 
- 	memcpy(ptr, frame->vendor, sizeof(frame->vendor));
--	memcpy(ptr + 8, frame->product, sizeof(frame->product));
-+	memcpy(ptr + HDMI_SPD_INFOFRAME_VENDOR_LEN, frame->product,
-+	       sizeof(frame->product));
- 
--	ptr[24] = frame->sdi;
-+	ptr[HDMI_SPD_INFOFRAME_VENDOR_LEN + HDMI_SPD_INFOFRAME_PRODUCT_LEN] =
-+		frame->sdi;
- 
- 	hdmi_infoframe_set_checksum(buffer, length);
- 
-@@ -1643,11 +1644,13 @@ static int hdmi_spd_infoframe_unpack(struct hdmi_spd_infoframe *frame,
- 
- 	ptr += HDMI_INFOFRAME_HEADER_SIZE;
- 
--	ret = hdmi_spd_infoframe_init(frame, ptr, ptr + 8);
-+	ret = hdmi_spd_infoframe_init(frame, ptr,
-+				      ptr + HDMI_SPD_INFOFRAME_VENDOR_LEN);
- 	if (ret)
- 		return ret;
- 
--	frame->sdi = ptr[24];
-+	frame->sdi = ptr[HDMI_SPD_INFOFRAME_VENDOR_LEN +
-+			 HDMI_SPD_INFOFRAME_PRODUCT_LEN];
- 
- 	return 0;
- }
-diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
-index b80a5ee63bb2..d73ad7b3fa94 100644
---- a/include/linux/hdmi.h
-+++ b/include/linux/hdmi.h
-@@ -267,12 +267,15 @@ enum hdmi_spd_sdi {
- 	HDMI_SPD_SDI_PMP,
- };
- 
-+#define HDMI_SPD_INFOFRAME_VENDOR_LEN   8
-+#define HDMI_SPD_INFOFRAME_PRODUCT_LEN 16
-+
- struct hdmi_spd_infoframe {
- 	enum hdmi_infoframe_type type;
- 	unsigned char version;
- 	unsigned char length;
--	char vendor[8];
--	char product[16];
-+	unsigned char vendor[HDMI_SPD_INFOFRAME_VENDOR_LEN] __nonstring;
-+	unsigned char product[HDMI_SPD_INFOFRAME_PRODUCT_LEN] __nonstring;
- 	enum hdmi_spd_sdi sdi;
- };
- 
-
+ 		DRM_DEV_DEBUG(dp->dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
 -- 
-2.55.0
+2.43.0
 
 
 _______________________________________________
