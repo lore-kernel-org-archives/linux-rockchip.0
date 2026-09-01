@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A301C624CF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 01:19:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F69C624C6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 09:27:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h+1pulaRe3OkFoeW0MsxvPVxDM6YsU2pB3RX2gtUb0A=; b=PyOeEr5MrzGVwu
-	9WckHL7eRYwwgfr5bYf9oQtUptcG+ncZDnz0fcJg799F0wkUlBiMMrKIt9vpNvX0eXk1dUz52t10Q
-	ukq0DkBs7irKqLq4doOSxzgVTuLz0NsrQ4v2GxNd57j1dIvJXVB25b1Hs1BHGPatXHMp56BPeEQun
-	ZBwAu76jCq1c41ATY7OV6OhGqFeSVeD7ozA59w/IVX+wsvAXAVXmgM3q4eTu9LOaGLeU9YeUtX1mu
-	zHGci3zrc9aRVh2GKmIBJWd4qRVQF0h8iZj1yAAu8jSSCA+q5JFF647SVvwFRrdx/vo91t4x7CNmB
-	kWvDCc9KnYT3+mYrVHmA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DCFjkSQedm7S3TjjHD5G3BdFDDV9p1VxFN0DOYMUorQ=; b=q7gtBWRRh0JchTTXyM7w2agEPk
+	gqLddrtpcq6yH9+IWbNsW7xdvhRkiwzT195/PJ5ogTlZccYHNVQvqjlOzfw6cdYVaHmxQVSBZ5+Eq
+	YyzCpnFEq1Z2qMN/0bwmBjCC8NT8w9QXCE3O3WCBgt2oI+LALH0ybAN5XJ0rs4I0O0XdUD+vlvRf/
+	Kk4jJfHNw/dmJ3aLJQ8YqWxOc/I4rW0HUipj0by+FDQodtQIl+VjvMGragq49a/BSCMTIMglbkz2H
+	czBh5qqxU+uYvrXx/+ixSt3v/na5EgXREsK05grrQWlUHR6Iynmz5LQbPAPRp/RbeIWoSD3GAr/Rg
+	MOLjpqHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1D9N-0000000Ambd-14hs;
-	Tue, 01 Sep 2026 01:18:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x1Klx-0000000BQa7-0CgQ;
+	Tue, 01 Sep 2026 09:27:17 +0000
+Received: from sender5-op-o11.zoho.com ([165.173.182.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1D9L-0000000AmbJ-30C9;
-	Tue, 01 Sep 2026 01:18:55 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C1F38601DE;
-	Tue,  1 Sep 2026 01:18:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2511B1F000E9;
-	Tue,  1 Sep 2026 01:18:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788225534;
-	bh=VEw+Ox0DghdKeZ8X4o3noEp8fzw25Y32JHB4BzY58wA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=EXTX43n3Mp30tiy8dMe/16L2DfBWjbn9CXvP5TGjW6VYhMZzLqXGV2KCjnNf7G3c+
-	 EzAgGHAubJSyCedCpY9KUZnsCnmPuLXJ6bVCldZFW+989JzUwkwbtY0tFTnrw+Vpf1
-	 zA87pqo54fknw1bhvcIofjHM/xOuX37XnSOJSB9hZOTfjYOSTjhishxKVQ2GTQFfGo
-	 U9Wgu8Ikd2bFPZBC3kVVxzYP2LBhDu3kh8qlPFxQ9exzOva+dpjJ6KinxPlaam4ceQ
-	 vtokMVS1GxwhOnR3tpKvo8DYxda7YMe++e/DUT6V/M6Xo9EAGricAPjH8h1Ex+S9xT
-	 9mGn23LBSHCqA==
-Date: Tue, 1 Sep 2026 02:18:46 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: Vladislav Leonov <vlad@zlab.su>, David Lechner <dlechner@baylibre.com>,
- Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko
- <andy@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Joshua Crofts
- <joshua.crofts1@gmail.com>, Simon Glass <sjg@chromium.org>,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 0/3] Fix RV1106 SAR-ADC support
-Message-ID: <20260901021846.59b71f5b@jic23-huawei>
-In-Reply-To: <5330090.ejJDZkT8p0@diego>
-References: <20260823122039.20831-1-vlad@zlab.su>
-	<20260831025557.6ee7c42e@jic23-huawei>
-	<5330090.ejJDZkT8p0@diego>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1x1Klu-0000000BQYN-1q9d;
+	Tue, 01 Sep 2026 09:27:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1788254814; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=cELpdRA5MqYthZUDYMBNVCiJz6LkZkvB2kG9NiSJa1/+bujCGJWnrClWtlzf2Mx/feTAY4P3q9hmxhAt+4tTjBNFbeIoNk/5Q9DduNlypASdeuYc8986Y54lcjEYhrRuFqRe5djlb8JvKxWRxuCRyRQtc/nuVrAzZKRar6oPe1I=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1788254814; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=WBNE7bb+LspvvsDuZbtWPwLg8gdow8Zcr50MxcZHNoo=; 
+	b=nfGhH4fpIuLXqaDlBAf9j92SMOt5yrZTlmhpfg7RxRrdZfJxGR9BA31OfVN6XX5ItynFFjuRBwTgiI4UN0rb7eLW9y/KiH3hcu1snIcx4CYVmTw4hNoClODKpPpFqWsGVZzsC88rNfU/7YFEp1FE3tcR62ve/FbLyqBi01v9rhM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788254814;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=WBNE7bb+LspvvsDuZbtWPwLg8gdow8Zcr50MxcZHNoo=;
+	b=bW1ntzi3KdmC1QB0gXmsJjQwoQBvg7S5/aL7aa//AhJQaMGzSz/babx98M37ylhg
+	c0IVKi2zGuw7mpm8YJEwrjMb/HyQqoqKTu9QjGHGeCD6V/re0uuvSUIDiLQ4q5jzwau
+	Vew7VZKFqnJGt88JVzrCu7U/SHqglQ1xSVNRBlD0=
+Received: by mx.zohomail.com with SMTPS id 1788254812080376.5012000638063;
+	Tue, 1 Sep 2026 02:26:52 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 37336181B0C; Tue, 01 Sep 2026 11:26:36 +0200 (CEST)
+Date: Tue, 1 Sep 2026 11:26:36 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Manivannan Sadhasivam <mani@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Yubing Zhang <yubing.zhang@rock-chips.com>, 
+	Alexey Charkov <alchark@flipper.net>, Igor Paunovic <royalnet026@gmail.com>, 
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com, 
+	devicetree@vger.kernel.org, linux-usb@vger.kernel.org
+Subject: Re: [PATCH v14 28/38] phy: core: add notifier infrastructure
+Message-ID: <apaVTYiKviNsydUG@venus>
+References: <20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com>
+ <20260813-rockchip-usbdp-cleanup-v14-28-b5ad9c68fa11@collabora.com>
+ <apBi5sGBpPfwTW4G@vaman>
 MIME-Version: 1.0
+In-Reply-To: <apBi5sGBpPfwTW4G@vaman>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/288.233.38
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260901_022714_504344_9DC0C77B 
+X-CRM114-Status: GOOD (  20.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,44 +86,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7745360589189479711=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAzMSBBdWcgMjAyNiAxMDoxNzoxNyArMDIwMApIZWlrbyBTdMO8Ym5lciA8aGVpa29A
-c250ZWNoLmRlPiB3cm90ZToKCj4gSGkgSm9uYXRoYW4sCj4gCj4gQW0gTW9udGFnLCAzMS4gQXVn
-dXN0IDIwMjYsIDAzOjU1OjU3IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIg
-Sm9uYXRoYW4gQ2FtZXJvbjoKPiA+IE9uIFN1biwgMjMgQXVnIDIwMjYgMTU6MjA6MzEgKzAzMDAK
-PiA+IFZsYWRpc2xhdiBMZW9ub3YgPHZsYWRAemxhYi5zdT4gd3JvdGU6Cj4gPiAgIAo+ID4gPiBU
-aGlzIHNlcmllcyBmaXhlcyB0aGUgc3VwcG9ydCBmb3IgdGhlIFJWMTEwNiBTQVItQURDIGluIHRo
-ZQo+ID4gPiByb2NrY2hpcF9zYXJhZGMgZHJpdmVyIGFuZCBpdHMgZGV2aWNlIHRyZWUgYmluZGlu
-Z3MuICAKPiA+IAo+ID4gSSBkZWJhdGVkIGhvdyB0byBhcHBseSB0aGlzLiAgVGVjaG5pY2FsbHkg
-cGF0Y2ggMyBpcyBhIGZpeCwgMiBpcyBhbiBlbmFibGVyCj4gPiBhbmQgMSBpcyBhbHNvIGEgZml4
-LCBidXQgb25lIGZvciBzb21ldGhpbmcgdGhhdCB3ZSBqdXN0IGVmZmVjdGl2ZWx5IHBhdGNoZWQK
-PiA+IG91dCBmcm9tIHJ1bm5pbmcgaW4gcGF0Y2ggMy4KPiA+IAo+ID4gU28gaW4gdGhlIGVuZCBJ
-J20gdGhpbmtpbmcgdGFrZSB0aGlzIHRoZSBzbG93IHBhdGggZm9yIG5leHQgY3ljbGUuICBTaG91
-dAo+ID4gaWYgYW55b25lIHRoaW5rcyB0aGlzIHNob3VsZCBnbyBpbiBkdXJpbmcgdGhlIC1SQ3Mg
-YW5kIHdoZXRoZXIgYWxsIDMKPiA+IHNob3VsZCBkbyBzbyBvciBqdXN0IHBhdGNoZXMgMiBhbmQg
-MyAobGVhdmluZyB1cyB3aXRob3V0IGRyaXZlciBzdXBwb3J0IGZvcgo+ID4gbm93KS4KPiA+IAo+
-ID4gQXBwbGllZCB0byB0aGUgdGVzdGluZyBicmFuY2ggb2YgaWlvLmdpdCAgCj4gCj4gSSBndWVz
-cyBJIHNob3VsZCBzaG91dCB0aGVuIDstKSAuCj4gCj4gRFQtQmluZGluZyBwYXRjaGVzIGFyZSBz
-b3J0IG9mIGluZGVwZW5kZW50IG9mIHRoZSBkcml2ZXIgY2hhbmdlIGFuZAo+IGFyZSBjb25zaWRl
-cmVkIEFQSSB3aGljaCBzaG91bGQgbm90IGNoYW5nZSBhZnRlciB0aGUgZmFjdC4KPiAKPiBPdXIg
-RFRzIChidXQgYWxzbyBvbmVzIHBvc3NpYmx5IGNvbnRhaW5lZCBpbiBmaXJtd2FyZSBzb21ld2hl
-cmUpIGFyZQo+IHZhbGlkYXRlZCBhZ2FpbnN0IHRoZSBiaW5kaW5nIGFuZCBpdCBzZWVtcyB0aGUg
-Y29ycmVjdCBjb21wYXJ0aWJsZSBnb2VzCj4gZnJvbSAKPiAgICAgInJvY2tjaGlwLHJ2MTEwNi1z
-YXJhZGMiLCAiIHJvY2tjaGlwLHJrMzU4OC1zYXJhZGMiCj4gdG8KPiAgICAgInJvY2tjaGlwLHJ2
-MTEwNi1zYXJhZGMiCj4gCj4gQXMgdGhlIGZpeGVkIGNvbW1pdCBpcyBwYXJ0IG9mIDcuMy1yYzEs
-IEkgZ3Vlc3MgaXQgd291bGQgYmUgbmljZSB0bwo+IGhhdmUgcGF0Y2hlcyAyKzMgaW4gNy4zIGFu
-ZCBwYXRjaCAxIGNhbiB3YWl0IGZvciA3LjQgLgo+IAo+IFdlIGRvbid0IG5lZWQgdGhlIGRyaXZl
-ciBzdXBwb3J0IChkdC1ub2RlcyBqdXN0IGRvZXNuJ3QgYmluZCB0bwo+IGFueXRoaW5nKSwgYnV0
-IGl0IHdvdWxkIGJlIG5pY2UgdG8gbm90IHByb2xpZmVyYXRlIHRoZSB3cm9uZyBiaW5kaW5nIGlu
-Cj4gYW4gYWN0dWFsIHJlbGVhc2UuCgpBaC4gSSBzaG91bGQgaGF2ZSBjaGVja2VkIHdoZW4gdGhl
-IG9yaWdpbmFsIGJ1ZyB3ZW50IGluLgpBcyBpdCdzIHRoaXMgY3VycmVudCBjeWNsZSwgd2hhdCB5
-b3Ugc2F5IGlzIGluZGVlZCBhbiBlYXN5IGZpeC4KCkFwcGxpZWQgMi0zIHRvIHRoZSBmaXhlcy10
-b2dyZWcgYnJhbmNoIGFuZCBsZWZ0IDEgaW4gdGhlIHRlc3RpbmcKYnJhbmNoIGZvciA3LjQuCgpU
-aGFua3MKCkpvbmF0aGFuCgo+IAo+IAo+IG15IDJjdCA6LSkKPiBIZWlrbwo+IAo+IAo+IAoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============7745360589189479711==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="3dlaegreqn3h62kc"
+Content-Disposition: inline
+
+
+--3dlaegreqn3h62kc
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v14 28/38] phy: core: add notifier infrastructure
+MIME-Version: 1.0
+
+Hello Vinod,
+
+On Thu, Aug 27, 2026 at 09:46:38PM +0530, Vinod Koul wrote:
+> On 13-08-26, 22:52, Sebastian Reichel wrote:
+> > Some PHY devices with multiple ports (e.g. USB3 and DP) require a reset
+> > if the configuration changes or cable orientation changes. This is a
+> > problem, as the consumer device will run into undefined behavior.
+> >=20
+> > With the new PHY notifier API introduced in this patch, the consumer
+> > driver can hook into reset events coming from a PHY device to handle the
+> > PHY going down gracefully.
+>=20
+> Hmmm how will phy get notified for these events. Typically there is a
+> separate hotplug mechanism to take care of cable changes.
+>=20
+> Looking at implementation of this, It seems to me there is checked on
+> power-on, so maybe notifier maynot be right one... ?
+
+With USB-C you have the TCPM (Type-C Port Manager), which will send
+notifications when the plug orientation changed or a different mux
+configuration is needed (both information are sourced from USB PD).
+You can see typec_switch_register() and typec_mux_register()
+registering handlers for these events.
+
+Effectively there is:
+
+1. TCPM providing information about the hardware configuration
+2. USB controller driver requesting the USB side (software request)
+3. DP controller driver requesting the DP side (software request)
+
+These are combined into the desired PHY state.
+
+If the USB controller driver requested the PHY (happens during
+normal driver probe of dwc3) and then you plug a device into the
+USB-C port, which changes the mux configuration, the PHY needs to
+be restarted/reset. Accessing the USB controller while the PHY is
+restarted results in an SError. This part of the series will
+mitigate the problem.
+
+Greetings,
+
+-- Sebastian
+
+--3dlaegreqn3h62kc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmqWmkgACgkQ2O7X88g7
++pq2yw/9FIRH2tguovlpTzibRD3SnDZDhFzWm7UzNHTuOCL8oXbNeEyCytCKUI64
+s1YUTzTNFPRNWl1Zg7KPKNa1RPieRjbqRfgeSLm5DscxeNojst6q4pEwZR21LpLn
++esC2NWPx4Sdx8l7+idIZEQTOiRJgvOOrmvaOdWPCj9j+FprkM1l4SkUt9ZKt3Uy
+9T0Ud2hZwSD/hsoT9t2DTzINRv/LIPjBCuaNIglzAgRZYlFjIZQYH0n/ag0XAqat
+gXNN2GwPTAZBdLn4SUXmrfFOzPedCQeJA35eGg6MCNsfeSJOAL+X2LCWMs6aYsJL
+iJPz2eITM/0o8fP8Fo+7b8ELqaEYiEDpbpbgLxtE97dwlHu3T+6j5+u+MfNqX5J/
+gQ8OcmjnlLQOejlJyQlS4c4cKboUE7VRCVNJ8J5K6N7OiqiVPMvgb+wRdFEcoara
+zllZekiW1kzY9JfYHDTA2n42E7X6uKl0+/VkhD/jnMlqoRXbRUK/GWXyaaOnDruY
+Reyi2fv12V94rAQXIL6DqZeHClUpaPBRgplQZarklVpnONpfUAla/UR9Enf7bul0
+qJQyJsUys8hjwKQy+VKtqdt+ac9y2/T7MISxuhtpKVkJWh+5IaLaVsveIbdxFjnK
+QJ343srZH6CrqqJ3ZznRZUrddocBc8LTEEAQkXOnMDTGdlP2WZI=
+=nOU6
+-----END PGP SIGNATURE-----
+
+--3dlaegreqn3h62kc--
+
+
+--===============7745360589189479711==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7745360589189479711==--
+
