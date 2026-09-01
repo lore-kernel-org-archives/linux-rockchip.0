@@ -4,66 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E7BC61DD3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 14:29:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB893C624D3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 15:02:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r1CF4lZBL/NYsg0gY2BAlsQpq3PrEUAVvqN9GLjJPbQ=; b=zf6MOxDNYNjid+EaxRED5h8rx5
-	btP3m4/tBvqGpbNC+sPaiZDMiS80rav6NO0JGD77ZFOUmwI5ECSFns7KCW8FNB2Tc/ujnBKxnG8cp
-	T6U6E0a6R1ocwpirTJgM+HVPStWsn8D6ee6F3bO3UGN1fLm5MOVrIqs9hZwEezqUO6H3KeAh2wiic
-	tTvyiQCmA4zhA5KyfK3pHsRtEi9nnl5q/qW9vYZszLgy0yvCqfpbSUUUN3vlbGXBcDe9++s148MdL
-	QWHRGty6L2TyjBZGB5jfwneuUSjvrDStd3YFcg9DDDEwiIVioLD/MboP1iDXw9WMsTNHUswkv2q1T
-	XjQ+uTCA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1etMiAo14pumqrQC5/dvRLpMaY8QVvp2vjBwqR+pYbA=; b=ToU69zbmUHd59T
+	IPWj27bFJaSG0GgoY+0CzTeV1mfDgR99uvgiz48kF4xXyrN/oHJZv78aSP6kdldDk1UYztpr3zwx3
+	+yA3xOklOThyvWDehZstObr66vWgM9x2pD+VLUBhEgrlEL9EJq2KWlt66TL33jUgpZOLww1Mi/LqQ
+	M/cUvtU1wpGnbJKphVNnpD909Z+EODpseA8Qz0fDGADEDItpSZdRMi8NDMTalC3yZhMjQ7pcdVq4i
+	m/k5mOOlSzbJoLh+5GM1Rwpx2Aoh8YCHAGZMvhcosdZZggBqpsvIksxXYgiAotCGqdgA7psHiVYUM
+	bqOS65THhBDMceFBNQsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1PUf-0000000CL4s-3b7H;
-	Tue, 01 Sep 2026 14:29:45 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1x1Pzs-0000000CP81-2LcW;
+	Tue, 01 Sep 2026 15:02:00 +0000
+Received: from mail-pz2-x01.google.com ([2607:f8b0:4864:3b::1])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1PUe-0000000CL4U-0FKH
+	id 1x1Pzq-0000000CP6k-0pcN
 	for linux-rockchip@lists.infradead.org;
-	Tue, 01 Sep 2026 14:29:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1788272940; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=OE3sMsHGHt+41DVvmLQdFJAlRMi7hLs3HHscY3Ihr6W9OGDbi7H6MB3dGdj9lUocE3NPea0wxNmwZwABOGjF/1vpY0rtdIyvJdvKlXg+EasTyUzzowUzyM9Jn542JzL/OmwFru2YXyuLEO4LjZYBG5qfNN/VFA7IfiMr4nIU7SA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1788272940; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=nibbihiNwTxPtB/Zw0Nqer23SKfgJLqxeJF8NhrvMSg=; 
-	b=gRd+XxzWO0vaHlwcxo29Njy5cgr3XzpTsA81J699eOUFC73RSUNhpUdjZlTzOC3Thxg6d6gbauJu1TUJHtw9vXdRTFHWpivqNKcUd83rBAj5+gGG/q4ekwG2i57ltRk1WOLeSBKbbO7qMDz0Yn2tqlM2bwjaI2/QXm0Zhy4qk3I=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788272940;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=nibbihiNwTxPtB/Zw0Nqer23SKfgJLqxeJF8NhrvMSg=;
-	b=GEX78Z8/TxVCUZ1uHZCye50DQCx+0mIUo5Nyn5oWYrJLQNE/lRXVnCEZtPHkZoNR
-	Hw603To04nIZB9ESBD6b2hFPVoqMbrwz+s6LoKxHeH7okLjsFRgHPaU4SzLN53PP+6H
-	e/E7j7fpTgCJHqK8+nKAJ8NvuX7X1o1uplnkVvwE=
-Received: by mx.zohomail.com with SMTPS id 1788272938687853.5577781362773;
-	Tue, 1 Sep 2026 07:28:58 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 49F6C181B0C; Tue, 01 Sep 2026 16:28:52 +0200 (CEST)
-Date: Tue, 1 Sep 2026 16:28:52 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Christian Hewitt <christianshewitt@gmail.com>
-Subject: Re: [PATCH] drm/bridge: dw-hdmi-qp: Compute ACR CTS for unlisted
- TMDS rates
-Message-ID: <apbgp2h_tSZQzbdV@venus>
-References: <20260901112541.84588-1-christianshewitt@gmail.com>
+	Tue, 01 Sep 2026 15:01:59 +0000
+Received: by mail-pz2-x01.google.com with SMTP id 41be03b00d2f7-c9fe62e0da3so1695089a12.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 01 Sep 2026 08:01:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788274916; x=1788879716; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=G4upqtk25tpRU54+kLrj9L2TKzcfs0ynaE33ROHv7ww=;
+        b=r4QagH35Rv3IGIzZLDaLJ+VqnSjBCexsD/z7N+0hZpqR21WAvN87QHNZhQCL5ydYS8
+         7etOWta4+X6Ktr5Qngye+d8n4naT5b+YI2t8AZ6u0iD0UC4Z4h1VOa2rktC2ryREj68I
+         xs4gq1ukGKYDNYMNdmFqhs8TbiaQ9rScJf3Xe5MfRIb9XRC0COUmZ1xJ45fSJMBNaG2r
+         62bcxTBIanECMXlOV7aBps4HCW1MdTsxdrH6boldT5fnpra5syATEq7CbsboMn+hvQRz
+         9IpCc/70MiHOrbczIwfVvJxMNqKKweQhFwQ9DNbpTBPOHK4fC/Hco2j61oYaFCWfES7M
+         J9hQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788274916; x=1788879716;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=G4upqtk25tpRU54+kLrj9L2TKzcfs0ynaE33ROHv7ww=;
+        b=eRaXSEfbK7SjUua6s6BcZ3HrNDBY/oCZ9RMDFa7Q5xfhZKwBRGMweNvIk08prpCUkR
+         JrJICac5i1MzeDcyL2AsWi2LJ3O36aYXH21Bd9GrZirLVfnOZcJLLln0lL1Va31Cc6YT
+         l9mhO8uWXQ4/sfwODbGvTDAwXj0247/SaeuOMCfOAOc+JMDRaWtXycMh7rf2jKnFBiRs
+         RTl09n+kYHbFi5J5nRRPwpJ+kbfV0x95D0oLNUKFn8+P/MqNacwzcJDu91hxrECJ4wI9
+         k6QkQBaU5hpSwR+qFm74d91sl88D3iqRzvTR3JCaQbVACYE2znzV0VO9RpCEaS179PyJ
+         91EA==
+X-Forwarded-Encrypted: i=1; AHgh+RpRrlP69rY9K5l3DsxwWuAGTRhhdWve2gNLqaAwnokZ4e+2wcEWdRqmva9S0FT8p6GsvnS3I+RB/srAoX+h6w==@lists.infradead.org
+X-Gm-Message-State: AFuF++l9tBdi3KKFghooNNMrtU8JITJUhY/opjUQV1p6u4v910bJ3J3r
+	IRP4tM47M98WOASjcPdQlBc4+pIR8JtLYvWZQf40KFcpVUz6rsaMOCd9bxRjeLhnbgBO3A==
+X-Gm-Gg: AR+sD13fgQs3b82ASTvMq7oLTDdE5GP8U7nr+5adnwzjCspFluhZayWpdKYNqReIOnY
+	ey8MafYukkffG7XZl/U9l4AFHXWHAYa/dOwa+sM6suYZ6lFxkbCCcXvCLc8WJy3OisVvHREN6fW
+	SwnnvC9upKftVUY4mPRYhHl9BOJ1dA1qPfywLrx+8agNP3H54vMBqHCTpjlLfkm97//A+9TIxbK
+	AWBk2HQj0lUvGB5sPFAcp9IuXBgkN3ZZR/Tzb4+XoBi8apL/jCS2r5z2n366k+2igOVYwpkIhq6
+	M8ixWdz7bFutbgR9BppKwipdUlv0G1EbZsPrTbshwDZMRkJpTu7PlZecf3a2HU6LOb5A6xa2tS2
+	F1WO06ZTZLvdjbQbbYDbw4TuKSCRgUsY0c7TKY8IHS0bdG3BP+aYj5qo7yQyuGoLW5RF6RyDGTH
+	8Ct0xBJgyRxeNimNkchzS8XCH5HKsZFu736+cVAUwgfzg2tjCJZa7vdux/j+I=
+X-Received: by 2002:a05:6a00:2d82:b0:857:73e2:9106 with SMTP id d2e1a72fcca58-85773e29373mr34165922b3a.22.1788274915955;
+        Tue, 01 Sep 2026 08:01:55 -0700 (PDT)
+Received: from server.lan ([150.230.217.250])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-85dc0716846sm27914b3a.45.2026.09.01.08.01.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Sep 2026 08:01:54 -0700 (PDT)
+From: Coia Prant <coiaprant@gmail.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Vinod Koul <vkoul@kernel.org>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Romain Gantois <romain.gantois@bootlin.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Coia Prant <coiaprant@gmail.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	David Heidelberg <david@ixit.cz>,
+	netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-renesas-soc@vger.kernel.org
+Subject: [PATCH net-next v3 00/10] net: pcs: add basic support for RK3568 XPCS
+Date: Tue,  1 Sep 2026 23:01:00 +0800
+Message-ID: <20260901150111.141037-1-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-In-Reply-To: <20260901112541.84588-1-christianshewitt@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/288.256.78
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_072944_146195_F0930BEB 
-X-CRM114-Status: GOOD (  28.99  )
+X-CRM114-CacheID: sfid-20260901_080158_255941_73D49E90 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,191 +118,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Detlev Casanova <detlev.casanova@collabora.com>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Daniel Stone <daniel@fooishbar.org>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Douglas Anderson <dianders@chromium.org>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>
-Content-Type: multipart/mixed; boundary="===============5821089617154470244=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============5821089617154470244==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="lydbo5pwj5izjpxk"
-Content-Disposition: inline
-
-
---lydbo5pwj5izjpxk
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] drm/bridge: dw-hdmi-qp: Compute ACR CTS for unlisted
- TMDS rates
-MIME-Version: 1.0
-
-Hi,
-
-On Tue, Sep 01, 2026 at 11:25:41AM +0000, Christian Hewitt wrote:
-> common_tmds_cts_table[] holds only six TMDS character rates (25.175,
-> 25.2, 27, 54, 74.25 and 148.5 MHz), so dw_hdmi_qp_find_cts() returns 0
-> for everything else. dw_hdmi_qp_set_cts_n() then clears the CTS override
-> enable and programs a value of 0, leaving the sink with no CTS to
-> regenerate the audio clock from.
->=20
-> Any deep colour link falls into this gap: a 10 bpc RK3576 HDMI output
-> runs at 185625000 Hz (148.5 MHz * 1.25), which is absent from both
-> tables. N is computed dynamically and comes out correct at 6144, but
-> AUDPKT_ACR_CONTROL1 reads back as 0.
->=20
-> Give CTS the same dynamic fallback that N already has, using the formula
-> from the Audio chapter of the HDMI specification, and drop the -ENOENT
-> returned into an unsigned int for the unlisted sample rates.
->=20
-> Fixes: fd0141d1a8a2a ("drm/bridge: synopsys: Add audio support for dw-hdm=
-i-qp")
-> Assisted-by: Claude:claude-opus-5
-> Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
-> ---
-> This was found after testing unrelated patches from DetlevC that rename
-> the RK audio cards to see the impact in Kodi. RK3588 had audio output,
-> while RK3576 did not. I'd not used an RK3576 board for a while so tasked
-> Claude to help triage the problem, and this was the finding. The problem
-> appears to have been exposed since Kodi reworked plane selection logic
-> and support for 10bpc planes; earlier Kodi/LibreELEC images were using
-> 8bpc planes thus avoiding the problem.
-
-You are looking for this series:
-
-https://lore.kernel.org/linux-rockchip/86fcf349-0a7a-4618-9001-612371b0f71b=
-@symple.nz/
-
-Greetings,
-
--- Sebastian
-
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 45 ++++++++++++--------
->  1 file changed, 27 insertions(+), 18 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/d=
-rm/bridge/synopsys/dw-hdmi-qp.c
-> index 5f4718c3b9db..7cf327de0249 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> @@ -12,6 +12,7 @@
->  #include <linux/export.h>
->  #include <linux/i2c.h>
->  #include <linux/irq.h>
-> +#include <linux/math64.h>
->  #include <linux/minmax.h>
->  #include <linux/module.h>
->  #include <linux/mutex.h>
-> @@ -307,8 +308,15 @@ static unsigned int dw_hdmi_qp_find_n(struct dw_hdmi=
-_qp *hdmi, unsigned long pix
->  	return dw_hdmi_qp_compute_n(hdmi, pixel_clk, sample_rate);
->  }
-> =20
-> +static unsigned int dw_hdmi_qp_compute_cts(unsigned long pixel_clk,
-> +					   unsigned long sample_rate,
-> +					   unsigned int n)
-> +{
-> +	return div64_u64((u64)pixel_clk * n, 128ULL * sample_rate);
-> +}
-> +
->  static unsigned int dw_hdmi_qp_find_cts(struct dw_hdmi_qp *hdmi, unsigne=
-d long pixel_clk,
-> -					unsigned long sample_rate)
-> +					unsigned long sample_rate, unsigned int n)
->  {
->  	const struct dw_hdmi_audio_tmds_cts *tmds_cts =3D NULL;
->  	int i;
-> @@ -320,23 +328,24 @@ static unsigned int dw_hdmi_qp_find_cts(struct dw_h=
-dmi_qp *hdmi, unsigned long p
->  		}
->  	}
-> =20
-> -	if (!tmds_cts)
-> -		return 0;
-> -
-> -	switch (sample_rate) {
-> -	case 32000:
-> -		return tmds_cts->cts_32k;
-> -	case 44100:
-> -	case 88200:
-> -	case 176400:
-> -		return tmds_cts->cts_44k1;
-> -	case 48000:
-> -	case 96000:
-> -	case 192000:
-> -		return tmds_cts->cts_48k;
-> -	default:
-> -		return -ENOENT;
-> +	if (tmds_cts) {
-> +		switch (sample_rate) {
-> +		case 32000:
-> +			return tmds_cts->cts_32k;
-> +		case 44100:
-> +		case 88200:
-> +		case 176400:
-> +			return tmds_cts->cts_44k1;
-> +		case 48000:
-> +		case 96000:
-> +		case 192000:
-> +			return tmds_cts->cts_48k;
-> +		}
->  	}
-> +
-> +	dev_dbg(hdmi->dev, "Rate %lu missing; compute CTS dynamically\n", pixel=
-_clk);
-> +
-> +	return dw_hdmi_qp_compute_cts(pixel_clk, sample_rate, n);
->  }
-> =20
->  static void dw_hdmi_qp_set_audio_interface(struct dw_hdmi_qp *hdmi,
-> @@ -471,7 +480,7 @@ static void dw_hdmi_qp_set_sample_rate(struct dw_hdmi=
-_qp *hdmi, unsigned long lo
->  	unsigned int n, cts;
-> =20
->  	n =3D dw_hdmi_qp_find_n(hdmi, tmds_char_rate, sample_rate);
-> -	cts =3D dw_hdmi_qp_find_cts(hdmi, tmds_char_rate, sample_rate);
-> +	cts =3D dw_hdmi_qp_find_cts(hdmi, tmds_char_rate, sample_rate, n);
-> =20
->  	dw_hdmi_qp_set_cts_n(hdmi, cts, n);
->  }
-> --=20
-> 2.43.0
->=20
-
---lydbo5pwj5izjpxk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmqW4R0ACgkQ2O7X88g7
-+poXfQ/+LDpMXaTNcjSRBdF7rpSOyIoT6KZHOa3awhqdJI9OjPWkqnMgtXC820Tn
-Qpadkaoae0eEaL0DgwK++3m08U0ZSchWttGJWDcxUMnULEwtxuGh0y5wa9MotUOr
-iUmSahIbDW7M9CnpLWvOFIn0na5s5m1NdiWSO57cwMhRJaO2dg+tB2+b7wkaE3ak
-fZVQPlcwx7RpQpKe1Q8Gio9gxZVSPKdGAsbbdxCqsi+AjcDuPe+OVe0FEr12y1LI
-/SjQaTQ8Nb8eFdZ8bqBKWcHlNQ4RPaeA64eKE+hoqy7zgUMM4chfFI8WaksU+1oP
-VdFHkORrU1e6OU4bvDP0zCM3sOyEA7z0O0DSqNAzRquQ4MkoliSwKVTx2NDDY2Sv
-n9iGmeixpIweQWsZJBS1q+3+H1sue3CiaeKlkhKVrXs8wngTbo7gMFF/G+BBRfGs
-cW/hwCzOE+x7H4C2kWKly5YJcl3mt1QNPk++xw5/mafYV9PUwWMlOnu/d4i7FnOo
-I+ZUZ73uAe+KnvKI7lDAlE/bdwtmIRYYbnDHJYVOLFa2BOx/Qwz5kiyvD9Y0NB1S
-n0NJJWqXZjtkDrvF/0E8DqJar54sn5i/9viWWwR1gkpfp6K/J/pNhbt5Tq6Y7+Pd
-DXc6TQE4r8KhDhtsDiY1XW9EVa/zad82OwedhecxHnwUWvFefdY=
-=udif
------END PGP SIGNATURE-----
-
---lydbo5pwj5izjpxk--
-
-
---===============5821089617154470244==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5821089617154470244==--
-
+VGhpcyBzZXJpZXMgYWRkcyBwcm9wZXIgU0dNSUkgc3VwcG9ydCBmb3IgdGhlIFJvY2tjaGlwIFJL
+MzU2OCBTb0MKdXNpbmcgdGhlIGludGVncmF0ZWQgU3lub3BzeXMgRGVzaWduV2FyZSBYUENTLCBh
+bG9uZyB3aXRoIG5lY2Vzc2FyeQpmaXhlcyBhbmQgcmVmYWN0b3JpbmcgaW4gdGhlIHN0bW1hYyBj
+b3JlIGFuZCBYUENTIGRyaXZlci4KCk1vdGl2YXRpb24KPT09PT09PT09PQpUaGUgUkszNTY4IGlu
+dGVncmF0ZXMgYSBEVyBYUENTIGFjY2Vzc2VkIHZpYSBBUEIzIGFuZCBjb25uZWN0ZWQgdG8KYSBO
+YW5lbmcgQ29tYm8gU2VyRGVzIFBIWS4gIFNldmVyYWwgYm9hcmRzIChlLmcuLCBBcmlhYm9hcmQK
+UGhvdG9uaWNhdCkgdXNlIHRoaXMgaW50ZXJmYWNlIGZvciBHaWdhYml0IEV0aGVybmV0LiAgSG93
+ZXZlciwgdGhlCmN1cnJlbnQgdXBzdHJlYW0gc3RtbWFjIGRyaXZlciBkb2VzIG5vdCBzdXBwb3J0
+IHRoaXMgY29uZmlndXJhdGlvbiwKYW5kIHRoZSBYUENTIGRyaXZlciBoYXMgaXNzdWVzIGluIFNH
+TUlJIHBvbGwgbW9kZSB0aGF0IGNhdXNlIHRoZQpsaW5rIHRvIGJlIHJlcG9ydGVkIGluY29ycmVj
+dGx5LgoKVGhpcyBzZXJpZXMgYWRkcmVzc2VzIHRoZXNlIGlzc3VlcyBieToKLSBSZWZhY3Rvcmlu
+ZyBzdG1tYWMgUENTIGxpZmV0aW1lIG1hbmFnZW1lbnQgdG8gYWxsb3cgcGxhdGZvcm0gZHJpdmVy
+cwogIGZ1bGwgY29udHJvbCBvdmVyIFBDUyBjcmVhdGlvbi9kZXN0cnVjdGlvbgotIEZpeGluZyB0
+aGUgWFBDUyBkcml2ZXIncyBTR01JSSBsaW5rIHJlY292ZXJ5Ci0gQWRkaW5nIGEgUm9ja2NoaXAg
+WFBDUyBwbGF0Zm9ybSBnbHVlIGRyaXZlciBhbmQgd2lyaW5nIGl0IHVwIGluCiAgZHdtYWMtcmsK
+ClNlcmllcyBvdmVydmlldwo9PT09PT09PT09PT09PT0KCkdlbmVyaWM6CiAgUGF0Y2ggMTogbW92
+ZSBYUENTIGxpZmV0aW1lIG1hbmFnZW1lbnQgdG8gcGxhdGZvcm0gZHJpdmVycwoKUEhZOgogIFBh
+dGNoIDI6IERUIGJpbmRpbmcgZm9yIE5hbmVuZyBDb21ibyBQSFkgU0dNSUkgTUFDIHNlbGVjdGlv
+bgogIFBhdGNoIDM6IGltcGxlbWVudCB0aGUgUEhZIFNHTUlJIE1BQyBzZWxlY3Rpb24gaW4gZHJp
+dmVyCgpSSzM1NjggWFBDUy9TR01JSToKICBQYXRjaCA0OiBEVCBiaW5kaW5nIGZvciBSb2NrY2hp
+cCBSSzM1NjggWFBDUwogIFBhdGNoIDU6IGFkZCBYUENTIGFuZCBmaXhlZC1jbG9jayBub2RlcyB0
+byByazM1NjguZHRzaQogIFBhdGNoIDY6IGFkZCBBTlJFU1RBUlQgc3VwcG9ydCBmb3IgU0dNSUkg
+bGluayByZWNvdmVyeQogIFBhdGNoIDc6IGltcGxlbWVudCB0aGUgUm9ja2NoaXAgWFBDUyBwbGF0
+Zm9ybSBnbHVlIGRyaXZlcgogIFBhdGNoIDg6IHdpcmUgdXAgU0dNSUkgc3VwcG9ydCBpbiBkd21h
+Yy1yawogIFBhdGNoIDEwOiB1cGRhdGUgTUFJTlRBSU5FUlMKCkJvYXJkIGVuYWJsZW1lbnQ6CiAg
+UGF0Y2ggOTogZW5hYmxlIFNHTUlJIExBTiBwb3J0IG9uIFBob3RvbmljYXQgYm9hcmQKCkNoYW5n
+ZWxvZwo9PT09PT09PT0KCkNoYW5nZXMgc2luY2UgdjI6CgpQYXRjaCA0IChEVCBiaW5kaW5nIGZv
+ciBSb2NrY2hpcCBSSzM1NjggWFBDUykKLSBNYWRlIHBoeXMsIHBoeS1uYW1lcywgcG93ZXItZG9t
+YWlucyByZXF1aXJlZCBwcm9wZXJ0aWVzCi0gUmVtb3ZlZCByZWR1bmRhbnQgZGVzY3JpcHRpb25z
+Ci0gRml4ZXMgcmVnIHJhbmdlcyByZXF1aXJlbWVudHMgZm9yIE1JSSBwb3J0CgpQYXRjaCA3IChu
+ZXQ6IHBjczogeHBjczogYWRkIFJvY2tjaGlwIFJLMzU2OCBwbGF0Zm9ybSBnbHVlIGRyaXZlcikK
+LSBSZW1vdmVkIGBkZXBlbmRzIG9uIFBNIHx8IENPTVBJTEVfVEVTVGAgZnJvbSBLY29uZmlnLAog
+IEFSQ0hfUk9DS0NISVAgYWxyZWFkeSBzZWxlY3RzIFBNLgotIEFkZGVkIGBkZWZhdWx0IEFSQ0hf
+Uk9DS0NISVBgIGluIEtjb25maWcKLSBBZGRlZCBjb21tZW50IGluIHhwY3Nfcmtfc2VyZGVzX3Bo
+eV9wb3dlcm9uKCkgYW5kIHhwY3NfcmtfcmVtb3ZlKCkKLSBBZGRlZCBkZXZpY2VfbG9jaygpL2Rl
+dmljZV91bmxvY2soKSBhcm91bmQgcGxhdGZvcm1fZ2V0X2RydmRhdGEoKQogIGluIHhwY3Nfcmtf
+Y3JlYXRlKCkgdG8gcHJldmVudCBjb25jdXJyZW50IGRydmRhdGEgYWNjZXNzCi0gQWRkZWQgZXJy
+b3IgaGFuZGxpbmcgZm9yIGRldmljZV9saW5rX2FkZCgpIGZhaWx1cmUKLSBTd2l0Y2hlZCBmcm9t
+IFNFVF9SVU5USU1FX1BNX09QUyB0byBERUZJTkVfUlVOVElNRV9ERVZfUE1fT1BTCi0gQ2hhbmdl
+ZCAucG0gZnJvbSBkaXJlY3QgcG9pbnRlciB0byBwbV9wdHIoKSBmb3IgcHJvcGVyIFBNIGhhbmRs
+aW5nCgpQYXRjaCA5IChhcm02NDogZHRzOiByb2NrY2hpcDogcmszNTY4LXBob3RvbmljYXQpCi0g
+Q2hhbmdlZCBQSFkgY29tcGF0aWJsZSBmcm9tICJldGhlcm5ldC1waHktaWQwMDAwLjAxMWEiIHRv
+CiAgImV0aGVybmV0LXBoeS1pZWVlODAyLjMtYzIyIiAoZ2VuZXJpYyBDMjIgUEhZKQotIFJlbW92
+ZWQgZWVlLWJyb2tlbi0qIHByb3BlcnRpZXMgKHVudXNlZCBwcm9wZXJ0aWVzKQoKS2V5IGRlc2ln
+biBkZWNpc2lvbnMKPT09PT09PT09PT09PT09PT09PT0KLSBUaGUgc3RtbWFjIGNvcmUgbm93IGRl
+bGVnYXRlcyBYUENTIGNyZWF0aW9uIGVudGlyZWx5IHRvIHBsYXRmb3JtCiAgZHJpdmVycyB2aWEg
+cGNzX2luaXQvcGNzX2V4aXQuICBUaGlzIGlzIG5lY2Vzc2FyeSBiZWNhdXNlIHRoZQogIGdlbmVy
+aWMgWFBDUyBjcmVhdGlvbiBsb2dpYyB3b3VsZCBvdmVycmlkZSBhbnkgWFBDUyBzZXQgdXAgYnkg
+dGhlCiAgcGxhdGZvcm0gZHJpdmVyLgoKLSBUaGUgUm9ja2NoaXAgWFBDUyBkcml2ZXIgY3JlYXRl
+cyBhIHZpcnR1YWwgTURJTyBidXMgb3ZlciB0aGUgQVBCMwogIHJlZ2lzdGVycyBhbmQgaW1wbGVt
+ZW50cyBhZGRyZXNzIHJlbWFwcGluZy4gIFRoZSBnZW5lcmljIFhQQ1MgY29yZQogIGhhbmRsZXMg
+YWxsIFBDUyBjb25maWd1cmF0aW9uIHZpYSBwaHlsaW5rX3Bjc19vcHMuCgotIE9uIFJLMzU2OCBp
+biBTR01JSSBtb2RlLCB0aGUgTUFDIGNsb2NrIGlzIGZpeGVkIGF0IDEyNSBNSHogYW5kCiAgY2Fu
+bm90IGJlIGR5bmFtaWNhbGx5IGNoYW5nZWQuICBJbi1iYW5kIG1vZGUgaXMgdXNlZCwgYW5kIHRo
+ZQogIGdlbmVyaWMgc3RtbWFjIHNldF9jbGtfdHhfcmF0ZSBjYWxsYmFjayBpcyBkaXNhYmxlZCB0
+byBwcmV2ZW50CiAgaW5jb3JyZWN0IGNsb2NrIHVwZGF0ZXMgdGhhdCB3b3VsZCBicmVhayBSWC4K
+Ci0gVGhlIFNlckRlcyBhbmQgcG93ZXIgZG9tYWluIGFyZSBhdHRhY2hlZCB0byB0aGUgWFBDUyBk
+ZXZpY2UgdHJlZQogIG5vZGUgcmF0aGVyIHRoYW4gdGhlIE1BQyBub2RlLiBUaGlzIHJlZmxlY3Rz
+IHRoZSBhY3R1YWwgaGFyZHdhcmUKICB0b3BvbG9neSBhbmQgc2ltcGxpZmllcyB0aGUgZHdtYWMt
+cmsgZHJpdmVyIGJ5IGtlZXBpbmcgYWxsIFBDUy1yZWxhdGVkCiAgcmVzb3VyY2VzIHNlbGYtY29u
+dGFpbmVkLiBJdCBhbHNvIHByZXBhcmVzIGZvciBwb3NzaWJsZSBmdXR1cmUgUVNHTUlJCiAgc3Vw
+cG9ydCwgd2hlcmUgYSBzaW5nbGUgU2VyRGVzIHNlcnZlcyBtdWx0aXBsZSBNQUNzIGFuZCB3b3Vs
+ZCBiZQogIG1vcmUgbmF0dXJhbGx5IG1hbmFnZWQgdW5kZXIgdGhlIFhQQ1Mgbm9kZS4KClRlc3Rp
+bmcKPT09PT09PQpCb2FyZDogQXJpYWJvYXJkIFBob3RvbmljYXQgKFJLMzU2OCkKT1M6IEFybWJp
+YW4gKHRyaXhpZSkKS2VybmVsOiA2LjE4IChiYWNrcG9ydHMpClJlc3VsdDogVGhlIFNHTUlJIGlu
+dGVyZmFjZSBvYnRhaW5zIGFuIElQIGFkZHJlc3MsIFNTSCB3b3JrcywgYW5kCiAgICAgICAgcGlu
+ZyB0cmFmZmljIHBhc3NlcyB3aXRob3V0IGxvc3MuCgpOb3Rlcwo9PT09PQotIFdoZW4gdGVzdGlu
+ZyBvdXQtYmFuZCBtb2RlIHdpdGggc2V0X2Nsa190eF9yYXRlLCBvbmx5IDEwMDBNYnBzCiAgd29y
+a3Mgb24gYm90aCBUWC9SWDsgMTAvMTAwTWJwcyBvbmx5IHdvcmtzIG9uIFRYIHNpZGUuCgpEZXBl
+bmRlbmNpZXMKPT09PT09PT09PT09Ck5vbmUuIEFsbCBwYXRjaGVzIGFwcGx5IGNsZWFubHkgb24g
+dG9wIG9mIHRvcnZhbGRzIG1hc3RlciB0cmVlICh2Ny4zKS4KCkFja25vd2xlZGdtZW50cwo9PT09
+PT09PT09PT09PT0KVGhpcyB3b3JrIHdhcyBpbnNwaXJlZCBieSBhbmQgYnVpbGRzIHVwb24gdGhl
+IGV4Y2VsbGVudCB3b3JrIG9mIG90aGVyczoKLSBTZXJnZSBTZW1pbidzIFN5bm9wc3lzIERlc2ln
+bldhcmUgWFBDUyBwbGF0Zm9ybSBkcml2ZXIgKHBjcy14cGNzLXBsYXQuYykKLSBDbMOpbWVudCBM
+w6lnZXIncyBSZW5lc2FzIE1JSUMgZHJpdmVyIChwY3MtcnpuMS1taWljLmMpCi0gVGhlIFJvY2tj
+aGlwIFRSTSBhbmQgZG93bnN0cmVhbSBPRU0gZHJpdmVycwoKVGhhbmtzIGluIGFkdmFuY2UsCkNv
+aWEgUHJhbnQKLS0tCkNvaWEgUHJhbnQgKDEwKToKICBuZXQ6IHN0bW1hYzogbW92ZSBYUENTIGxp
+ZmV0aW1lIG1hbmFnZW1lbnQgdG8gcGxhdGZvcm0gZHJpdmVycwogIGR0LWJpbmRpbmdzOiBwaHk6
+IHJvY2tjaGlwOiBuYW5lbmctY29tYnBoeTogYWRkIHJvY2tjaGlwLHNnbWlpLW1hYy1zZWwKICAg
+IHByb3BlcnR5CiAgcGh5OiByb2NrY2hpcDogbmFuZW5nLWNvbWJwaHk6IGFkZCBTR01JSSBNQUMg
+c2VsZWN0aW9uIGZvciBSSzM1NjgKICBkdC1iaW5kaW5nczogbmV0OiBwY3M6IGFkZCByb2NrY2hp
+cCxyazM1NjgteHBjcyBzdXBwb3J0CiAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IHJrMzU2ODogYWRk
+IFhQQ1MgYW5kIGZpeGVkLWNsb2NrIG5vZGVzCiAgbmV0OiBwY3M6IHhwY3M6IGFkZCBBTlJFU1RB
+UlQgc3VwcG9ydCBmb3IgU0dNSUkgbGluayByZWNvdmVyeQogIG5ldDogcGNzOiB4cGNzOiBhZGQg
+Um9ja2NoaXAgUkszNTY4IHBsYXRmb3JtIGdsdWUgZHJpdmVyCiAgbmV0OiBzdG1tYWM6IGR3bWFj
+LXJrOiBhZGQgU0dNSUkgc3VwcG9ydCBmb3IgUkszNTY4CiAgYXJtNjQ6IGR0czogcm9ja2NoaXA6
+IHJrMzU2OC1waG90b25pY2F0OiBlbmFibGUgU0dNSUkgTEFOIHBvcnQKICBNQUlOVEFJTkVSUzog
+YWRkIGVudHJ5IGZvciBSb2NrY2hpcCBYUENTIGRyaXZlcgoKIC4uLi9iaW5kaW5ncy9uZXQvcGNz
+L3JvY2tjaGlwLWR3eHBjcy55YW1sICAgICB8IDExMCArKysrCiAuLi4vcGh5L3BoeS1yb2NrY2hp
+cC1uYW5lbmctY29tYnBoeS55YW1sICAgICAgfCAgMTMgKwogTUFJTlRBSU5FUlMgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA5ICsKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9y
+azM1NjgtcGhvdG9uaWNhdC5kdHMgICB8ICA3NCArKy0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszNTY4LmR0c2kgICAgICB8ICA0NSArKwogZHJpdmVycy9uZXQvZXRoZXJuZXQvc3Rt
+aWNyby9zdG1tYWMvS2NvbmZpZyAgIHwgICAxICsKIC4uLi9uZXQvZXRoZXJuZXQvc3RtaWNyby9z
+dG1tYWMvZHdtYWMtaW50ZWwuYyB8ICA0NCArLQogLi4uL3N0bWljcm8vc3RtbWFjL2R3bWFjLXJl
+bmVzYXMtZ2JldGguYyAgICAgIHwgICA3ICstCiAuLi4vbmV0L2V0aGVybmV0L3N0bWljcm8vc3Rt
+bWFjL2R3bWFjLXJrLmMgICAgfCAxMjEgKysrLQogLi4uL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0
+bW1hYy9kd21hYy1yem4xLmMgIHwgICA3ICstCiAuLi4vZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMv
+ZHdtYWMtc29jZnBnYS5jICAgfCAgIDcgKy0KIC4uLi9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1t
+YWMvc3RtbWFjX21kaW8uYyB8ICAzNyArLQogZHJpdmVycy9uZXQvcGNzL0tjb25maWcgICAgICAg
+ICAgICAgICAgICAgICAgIHwgIDIzICsKIGRyaXZlcnMvbmV0L3Bjcy9NYWtlZmlsZSAgICAgICAg
+ICAgICAgICAgICAgICB8ICAgNyArLQogZHJpdmVycy9uZXQvcGNzL3Bjcy14cGNzLXJrLmMgICAg
+ICAgICAgICAgICAgIHwgNTYxICsrKysrKysrKysrKysrKysrKwogZHJpdmVycy9uZXQvcGNzL3Bj
+cy14cGNzLmMgICAgICAgICAgICAgICAgICAgIHwgIDE2ICstCiAuLi4vcm9ja2NoaXAvcGh5LXJv
+Y2tjaGlwLW5hbmVuZy1jb21icGh5LmMgICAgfCAgIDggKwogaW5jbHVkZS9saW51eC9wY3MvcGNz
+LXhwY3MtcmsuaCAgICAgICAgICAgICAgIHwgIDExICsKIDE4IGZpbGVzIGNoYW5nZWQsIDEwMzMg
+aW5zZXJ0aW9ucygrKSwgNjggZGVsZXRpb25zKC0pCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9wY3Mvcm9ja2NoaXAtZHd4cGNzLnlhbWwK
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL25ldC9wY3MvcGNzLXhwY3MtcmsuYwogY3JlYXRl
+IG1vZGUgMTAwNjQ0IGluY2x1ZGUvbGludXgvcGNzL3Bjcy14cGNzLXJrLmgKCi0tIAoyLjQ3LjMK
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
+b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
+Cg==
