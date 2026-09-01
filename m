@@ -4,65 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12743C624DD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77EEEC624D8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lcI8vGOomtJh7khPFPIoL6yyjqK03GVwHgzrYfN3fzI=; b=bOy6cV8IpFa+IZ
-	cmZs7+4t2Hti1ft24hRO2wqMJe2uKKcSbYaj4uNrQlXqUq65gfk5eERUVBcoEoFrqT1spE0jr7f75
-	9xQz4h2DbMSrHq7Tlp6qasWwurFLtuFiNNHLQAbnjuTFSfXd134Mzrffr55DJh0nD6SaAw+kY9l88
-	+R8F3LxBZSpxLKNomOFnSzDZPJZTX7ZZCKpswvlM5vVQ1ginAL2HAEdOFWKZMd9MgH/XAU1PL9Zha
-	guyYvZj5r+QEMKn5QR2MYDir1qIxbwkOytw/x5D3mbyozr06NzEwxt26TzMrmApHC4FZnNEhH19BH
-	yJiOn/HMNdZg2ZGHaydA==;
+	List-Owner; bh=znkPHB6OgUIXShA5Q+hJvuVlbALxFwBe+X4wmSqNqyA=; b=F/QwogbQoYIbaz
+	uKEx+npbBj5oVJV8MWh/Q3qwVxp8V/zZQJIEOGMXb88TAXG+wUKUqQatZeXjUobUG7y43HYYk0tir
+	rwLt3WtgaiZicy0RF7dgJ2UY+ghImfevJPkgruUu4LFMGwXPtwxp0pjkdhvaht8cDxbDcMJaJR5NF
+	vH0ndscednXBfSMK2/toBdPozouYPVaZLxBBKdr49HPoYou4mXbSVCwhgpB0tpsKUk3VBFQn3jXdu
+	5QM2O73Gl+vVgllYhzT+nk5Xs1Cxx0q27Ti/MVAqgGacV947ng/u4DIyEiUkUjhBlSnzewrryX+Jv
+	LI0uITC6QxH0vjcn9YWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Tc3-0000000D5gc-1Xdp;
-	Tue, 01 Sep 2026 18:53:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x1Tc2-0000000D5eK-3JLL;
+	Tue, 01 Sep 2026 18:53:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZu-0000000D1MO-2Cne;
-	Tue, 01 Sep 2026 18:51:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=8ONPyNz+dNoauuInAMFaArpJZGgJCtCM9Yi0zVigVFk=; b=D29WfVMjIzE6MrwnlBuZL1IQor
-	I63dRTGYoKUX2aCIbSH+1QY1IS92ju0r9Fzg0jBr4LKPCZYw8XomYbvqEhavb25d+JZl+dsKEYyCu
-	wa7LahRFHHfpZIEZ/+fC8BfMsN8AVRL5h1A0fZaujVuyQnnrgBp2wJJiFOiE+E7gfZECSNHQv9kJk
-	fv0gHw0rCwI/wbwwgFnnueAGte0JmYUGpg4YcNk5swXM2+v5DEPiG4z7oO/0t70S3szCo7E3m34nb
-	ML0Ihuk8LMZW97HSWf0ALSlWYqt+h2b63fz2if8n2kmTC+MSj2zaPFj9Dj9jFlSxyW0cdKbnB/Kve
-	e5Hd0aVw==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x1TZq-0000000BHaM-3StE;
-	Tue, 01 Sep 2026 18:51:25 +0000
+	id 1x1TZg-0000000D1Bb-0LnO;
+	Tue, 01 Sep 2026 18:51:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288681;
-	bh=YQBgk0tCInjN78ZsmtnC8gQAxWhSMvfMlnsIg4WQmiU=;
+	s=mail; t=1788288670;
+	bh=/m8gvp9haym0x96FTKhsWUEIJdRrppjWdXwILaWvM/I=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=U8xjbdh3G5kTDYHASjfYejz3nCp1ujP8CPZTrlxtIs9nj7IrI6f8i39K/Nrg6GNQe
-	 s4Yc5OoPpAQRlqQ7fXYFL5JQzJZ5lsTKfHhNxExG1ZtiazUC4btBC1LzI7fx/ZJKlR
-	 MGcaWV+OLiuU26ETBoP/BVJmR4nYa/xMPCEcuJXh7lL3ekYWn15R4DqQSFtN22sYYG
-	 CUHCk9Cll8ZHrwiki3RaHokeXVCLFq+WLC9naV2hpAusXc07wM+UXN3bnGyn3h7V1k
-	 +Frukvk8PWmTqdrUnBHu8cg/VIn80WzkD6c/knXnrtkNyCWMToy3hZJROMtywk1x3J
-	 tyYvX2lE5Dpow==
+	b=lKp0llvsFBoqhydalqLylbjoO5bbx3ZCCVGREnrs2nGAA0kn4YnhE1xDWKNaW0DVl
+	 25x/81+PPFwLbLUyMyLcISRBbJGwlgmGOgvxySTYsxRi+Fq9sxXprTFVEm9edgEwHB
+	 QWskiazOz+w+TyAvMUrTlC6ws+AmZpP28g5Zoxu72YZQFKJ8CFboTsvHYs9tIfxrLL
+	 LzUF4l9ZK9IyxPFM0wH2Oybv8x0mfd6sHdOu+fLRy8K9X8HFCuVVCiOOil9IUdUX8+
+	 Pc3w9wabFqUBzoEpVnjOUV2Z81OjXzjbOg47txbwQJsKoc2iBudiyydtPs9lF4HuSC
+	 kTvXN0dLOkPjQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8D5C217E3C81;
-	Tue, 01 Sep 2026 20:51:21 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D298117E3C58;
+	Tue, 01 Sep 2026 20:51:09 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:51:19 +0300
-Subject: [PATCH v11 55/74] drm/bridge: lontium-lt9611: Advertise HDMI 1.4
- capabilities
+Date: Tue, 01 Sep 2026 21:51:03 +0300
+Subject: [PATCH v11 39/74] drm/rockchip: dw_hdmi_qp: Control the HPD IRQ
+ line via the bridge HPD ops
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-55-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-39-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -87,11 +73,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org
+ linux-fbdev@vger.kernel.org, Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_195123_082879_E37FD430 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20260901_115116_087863_56480A1D 
+X-CRM114-Status: GOOD (  19.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,77 +94,133 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Bridges using DRM_BRIDGE_OP_HDMI are expected to provide the supported
-HDMI version.  This is not enforced yet, but will become mandatory once
-the migration to the caps-based HDMI connector initialization API is
-complete.
+The HPD interrupt must not be delivered before the DRM connector is fully
+set up, and it should be quiesced while the display pipeline is suspended.
+On top of that, the threaded handler re-arms HPD unconditionally after the
+hotplug debounce, which must not override an explicit disable requested by
+the DRM core.
 
-As LT9611 supposedly cannot drive a TMDS character rate exceeding 297
-MHz, advertise HDMI 1.4 as the supported version.  HDMI 1.4 allows up to
-340 MHz, so set the bridge's max_tmds_char_rate to ensure the connector
-limit derived from supported_hdmi_ver remains within the hardware
-capabilities.
+Request the HPD IRQ in bind() with IRQF_NO_AUTOEN so it stays disabled
+until the core arms it, and drive enable_irq()/disable_irq() from the
+phy ops invoked by the bridge through its hpd_{enable,disable}()
+callbacks.  This ensures the line is only armed after the connector is
+ready.  disable_irq() additionally waits for the threaded handler to
+finish, so its GRF re-arm can no longer race with and override a
+core-requested disable.
 
-drm_bridge_connector_atomic_check() calls
-drm_atomic_helper_connector_hdmi_check(), which rejects modes whose
-computed TMDS character rate exceeds the connector's max_tmds_char_rate
-before invoking the driver's .tmds_char_rate_valid hook.  Since
-max_tmds_char_rate now carries the existing effective limit,
-lt9611_hdmi_tmds_char_rate_valid() is redundant.  Drop it.
+Masking the line is not enough on its own, though: the threaded handler
+merely queues hpd_work with a 150 ms debounce, so an event taken shortly
+before the disable would still probe the connector and read the EDID
+long after the core considers HPD quiesced.  Since disable_irq() has
+drained the threaded handler, which is the only site arming the work, it
+can no longer be requeued and dropping it is race-free.
 
+Use the non-syncing cancel_delayed_work() for that: waiting on a running
+callback would pull mode_config.mutex, taken by the work through
+drm_connector_helper_hpd_irq_event(), under the hpd_state_mutex held by
+drm_bridge_hpd_disable().  That inverts the order of the connector probe
+path, which holds mode_config.mutex while reaching hpd_state_mutex via
+drm_kms_helper_poll_enable().  A callback already in progress is drained
+by the system-sleep and unbind paths instead.
+
+Note that IRQF_NO_AUTOEN is incompatible with IRQF_SHARED; the latter is
+dropped as this IRQ has no other users.
+
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/bridge/lontium-lt9611.c | 16 +++-------------
- 1 file changed, 3 insertions(+), 13 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 33 +++++++++++++++++++++-----
+ 1 file changed, 27 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/lontium-lt9611.c b/drivers/gpu/drm/bridge/lontium-lt9611.c
-index 3ebd8992cd94..53444bc8326f 100644
---- a/drivers/gpu/drm/bridge/lontium-lt9611.c
-+++ b/drivers/gpu/drm/bridge/lontium-lt9611.c
-@@ -5,6 +5,7 @@
-  */
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index ecf12403101d..1c547016ee00 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -99,6 +99,7 @@ struct rockchip_hdmi_qp {
+ 	struct phy *phy;
+ 	struct gpio_desc *frl_enable_gpio;
+ 	struct delayed_work hpd_work;
++	int hpd_irq;
+ 	int port_id;
+ 	const struct rockchip_hdmi_qp_ctrl_ops *ctrl_ops;
+ 	unsigned long long tmds_char_rate;
+@@ -308,13 +309,23 @@ static void dw_hdmi_qp_rk3588_enable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
+ 	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
  
- #include <linux/gpio/consumer.h>
-+#include <linux/hdmi.h>
- #include <linux/i2c.h>
- #include <linux/interrupt.h>
- #include <linux/media-bus-format.h>
-@@ -952,18 +953,6 @@ static int lt9611_hdmi_write_hdmi_infoframe(struct drm_bridge *bridge,
- 	return 0;
+ 	dw_hdmi_qp_rk3588_unmask_hpd(hdmi);
++	enable_irq(hdmi->hpd_irq);
  }
  
--static enum drm_mode_status
--lt9611_hdmi_tmds_char_rate_valid(const struct drm_bridge *bridge,
--				 const struct drm_display_mode *mode,
--				 unsigned long long tmds_rate)
--{
--	/* 297 MHz for 4k@30 mode */
--	if (tmds_rate > 297000000)
--		return MODE_CLOCK_HIGH;
--
--	return MODE_OK;
--}
--
- static int lt9611_hdmi_audio_startup(struct drm_bridge *bridge,
- 				     struct drm_connector *connector)
+ static void dw_hdmi_qp_rk3588_disable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
  {
-@@ -1029,7 +1018,6 @@ static const struct drm_bridge_funcs lt9611_bridge_funcs = {
- 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
- 	.atomic_get_input_bus_fmts = lt9611_atomic_get_input_bus_fmts,
+ 	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
  
--	.hdmi_tmds_char_rate_valid = lt9611_hdmi_tmds_char_rate_valid,
- 	.hdmi_write_audio_infoframe = lt9611_hdmi_write_audio_infoframe,
- 	.hdmi_clear_audio_infoframe = lt9611_hdmi_clear_audio_infoframe,
- 	.hdmi_write_avi_infoframe = lt9611_hdmi_write_avi_infoframe,
-@@ -1175,6 +1163,8 @@ static int lt9611_probe(struct i2c_client *client)
- 	lt9611->bridge.hdmi_audio_dev = dev;
- 	lt9611->bridge.hdmi_audio_max_i2s_playback_channels = 8;
- 	lt9611->bridge.hdmi_audio_dai_port = 2;
-+	lt9611->bridge.supported_hdmi_ver = HDMI_VERSION_1_4;
-+	lt9611->bridge.max_tmds_char_rate = 297000000; /* 297 MHz for 4k@30 mode */
++	disable_irq(hdmi->hpd_irq);
+ 	dw_hdmi_qp_rk3588_mask_hpd(hdmi);
++
++	/*
++	 * Cannot use the _sync() variant: the work takes mode_config.mutex,
++	 * which the connector probe path already holds when acquiring the
++	 * hpd_state_mutex this caller runs under. Requeuing is already ruled
++	 * out by disable_irq().
++	 */
++	cancel_delayed_work(&hdmi->hpd_work);
+ }
  
- 	drm_bridge_add(&lt9611->bridge);
+ static const struct dw_hdmi_qp_phy_ops rk3588_hdmi_phy_ops = {
+@@ -355,13 +366,23 @@ static void dw_hdmi_qp_rk3576_enable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
+ 	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
  
+ 	dw_hdmi_qp_rk3576_unmask_hpd(hdmi);
++	enable_irq(hdmi->hpd_irq);
+ }
+ 
+ static void dw_hdmi_qp_rk3576_disable_hpd(struct dw_hdmi_qp *dw_hdmi, void *data)
+ {
+ 	struct rockchip_hdmi_qp *hdmi = (struct rockchip_hdmi_qp *)data;
+ 
++	disable_irq(hdmi->hpd_irq);
+ 	dw_hdmi_qp_rk3576_mask_hpd(hdmi);
++
++	/*
++	 * Cannot use the _sync() variant: the work takes mode_config.mutex,
++	 * which the connector probe path already holds when acquiring the
++	 * hpd_state_mutex this caller runs under. Requeuing is already ruled
++	 * out by disable_irq().
++	 */
++	cancel_delayed_work(&hdmi->hpd_work);
+ }
+ 
+ static const struct dw_hdmi_qp_phy_ops rk3576_hdmi_phy_ops = {
+@@ -584,7 +605,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 	struct resource *res;
+ 	struct clk_bulk_data *clks;
+ 	struct clk *ref_clk;
+-	int ret, irq, i;
++	int ret, i;
+ 
+ 	if (!dev->of_node)
+ 		return -ENODEV;
+@@ -688,14 +709,14 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 	if (plat_data.cec_irq < 0)
+ 		return plat_data.cec_irq;
+ 
+-	irq = platform_get_irq_byname(pdev, "hpd");
+-	if (irq < 0)
+-		return irq;
++	hdmi->hpd_irq = platform_get_irq_byname(pdev, "hpd");
++	if (hdmi->hpd_irq < 0)
++		return hdmi->hpd_irq;
+ 
+-	ret = devm_request_threaded_irq(dev, irq,
++	ret = devm_request_threaded_irq(dev, hdmi->hpd_irq,
+ 					cfg->ctrl_ops->hardirq_callback,
+ 					cfg->ctrl_ops->irq_callback,
+-					IRQF_SHARED, "dw-hdmi-qp-hpd",
++					IRQF_NO_AUTOEN, "dw-hdmi-qp-hpd",
+ 					hdmi);
+ 	if (ret)
+ 		return ret;
 
 -- 
 2.55.0
