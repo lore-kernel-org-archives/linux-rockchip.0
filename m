@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA86CC624D6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:54:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A1D4C61DD3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:54:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2MoY1XiSf1oawo2hGI6BdzWipPdsYmBvzY1Y2ukTV/4=; b=2l+/tO/wdhG45B
-	ZsHWqivJCg13clpPQZS2tGK/5Y5yQ4bbFBoQRBroKZXUmBuQEZM4VV7ZiQRSHGBxH0CqpuUfe8PKq
-	iV6YtyDDBxCymxn+3bb1n7MbJXj+wwPDwejP5ETSeG1U/NPH9vXghs33wzjdD29t8VZxU0uWOUuvt
-	5g2gw79XK3E0fBIvqD9BrTXlK36pcvAAre+bw371c/QyUTf9u2DKrIP+huLBlOuXy6qnHPZv2F7e1
-	ERtKXS6PUDmHHsFkry3Ht3gB3mxkrqiScSn/2BkSRciYs5ZL4vu7Q8jfrSr9BN+xyBj7Nf0jvccd7
-	L0uF2RxTW5vJCjIDi1pw==;
+	List-Owner; bh=NZoWtG0uQ+q0YC7604VEO7BknGhie3sgwEBs1VTVdr4=; b=mr1DTNa4IS2Qa1
+	bjHqF4pQwgf3wMBdGjvklvWcRxGeVF5CQOEXjIPmHe2haZF0PwK/cL+hkAQi8La4bpyYanUM8BbgS
+	pt/XbOpt7oPGNTQxQSLcEfbD9Bq5LxdMcqSzgK7i9Crp77yWnG/B6rbTmONK9spbliuqObGZIMil2
+	cmg3NaHRi5FS4W6nklGPTauwVtJnpGincyZxQz4D6UdT9H8bkIq/M9/FYDHPW23L9GnlV0geBDmmW
+	aFsj6bWV9ATdExXtsRCg7T/xNPzQ15I8r3sBRQXj60isirnR0Z/X75CR7zjJkXiNRjl5+k4iUt5CK
+	zsTOFS3wDgbFuNpjzv+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TcQ-0000000D6pF-1z1x;
-	Tue, 01 Sep 2026 18:54:02 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x1TcT-0000000D6yd-0k4Q;
+	Tue, 01 Sep 2026 18:54:05 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZy-0000000D1RM-16Kn;
-	Tue, 01 Sep 2026 18:51:41 +0000
+	id 1x1Ta3-0000000D1aB-2gO3;
+	Tue, 01 Sep 2026 18:51:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288688;
-	bh=FrhjuUNCO81qN+N5ecDEgIGCe7yPo+Baimk/ZGvUvTY=;
+	s=mail; t=1788288693;
+	bh=pKqbana09aMrPmXoZQ13pSEzcpiBN8VMqBIdy9PyH+U=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NGix7IFylzprYXGkOGaW2G0REydz1DhDuNPTsROIM8iHaD6S5HP7xPb3YOAVt2IGB
-	 czFOlP4OH0a5gDtVx7Oh6Q0F4+u7AzVJ/B4DELlNOO0lQdrf7n/ElldA/uoQHwIFk9
-	 Yg81mcHRMGcbPIdUZunIZBh+LqF02dhuwJNvDCmWyicjoabp5RvsRaVH5jbianOYaT
-	 pQZcuxgvtP7Z2sG66QeyJivfxJRm5lQ4asVGZL0HATixyH2QrHtkENn5jOnMVQx/Ly
-	 uq07ejBWG5qkp9F8Zq5ZnMsoPL+c+SwACoI6OXG4uLU4aq681yf8Yv/Fso1mGJ2YAO
-	 hSdwpI28Zui4w==
+	b=LSViJgRqE5XaH0tu+QeV2Yt5Nhsb4RcPAwkVOkH5zCEPt6mEg1Gv6ogb78QTe/a0D
+	 WchtsdumRXsjJq3bkmfUW36ZJ9PT3xnPkvMHCQnhwPSbYZtQtXI3R6b7+MEJVgjRRW
+	 MbZUllumUzylGiIUZcA20WiDP1JZbQKMs5EmSeO0qNtWbVpPPplO899vulJLTl+Aih
+	 PMSkUyKvbtt+bEkp+b016wPO4vObr6F4sT4nYdJ/3oL1xZ8knb/OUbouBGwvCmYYhp
+	 87God285IcFb+jMcaQ3Spmq5yyfxS0gCG0KMZkm27P7UePPBSnuZ7l8+rhDBIVqlCs
+	 3bavdJFMzX8/A==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 223CA17E3C95;
-	Tue, 01 Sep 2026 20:51:28 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B82F17E3CA3;
+	Tue, 01 Sep 2026 20:51:33 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:51:28 +0300
-Subject: [PATCH v11 64/74] drm/tests: connector: Add HDMI source-side
- scrambler coverage
+Date: Tue, 01 Sep 2026 21:51:35 +0300
+Subject: [PATCH v11 71/74] drm/connector: Drop redundant max_bpc field
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-64-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-71-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -73,11 +72,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
  dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
- linux-fbdev@vger.kernel.org
+ linux-fbdev@vger.kernel.org, Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_115132_437452_D471B83B 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20260901_115137_528855_98B692AF 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,140 +93,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add KUnit tests for the HDMI source-side scrambling validation done by
-the new drmm_connector_hdmi_init() helper.
+Now that all users migrated to the new drmm_connector_hdmi_init()
+signature, max_bpc is provided through struct drm_connector_hdmi_funcs,
+a reference to which is already stored in drm_connector_hdmi.
 
-Connector initialization derives scrambler support from the
-driver-provided supported_hdmi_ver capability.  Therefore, connectors
-that advertise HDMI 2.0 or later must provide both .scrambler_enable()
-and .scrambler_disable() callbacks.  Registration is rejected if either
-callback is missing.
+Drop the redundant connector->max_bpc field and point its users to
+hdmi.funcs->max_bpc instead.
 
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, Rock 5B
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/tests/drm_connector_test.c | 102 +++++++++++++++++++++++++++++
- 1 file changed, 102 insertions(+)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 6 +++---
+ drivers/gpu/drm/drm_connector.c                 | 2 --
+ include/drm/drm_connector.h                     | 5 -----
+ 3 files changed, 3 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/gpu/drm/tests/drm_connector_test.c b/drivers/gpu/drm/tests/drm_connector_test.c
-index 17242d1c1b16..0613568ef5b7 100644
---- a/drivers/gpu/drm/tests/drm_connector_test.c
-+++ b/drivers/gpu/drm/tests/drm_connector_test.c
-@@ -1417,6 +1417,104 @@ static void drm_test_connector_hdmi_init_max_tmds_rate_no_version(struct kunit *
- 	KUNIT_EXPECT_LT(test, ret, 0);
- }
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index 687793c62d55..abe7e3061e4c 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -321,7 +321,7 @@
+ void __drm_atomic_helper_connector_hdmi_state_init(struct drm_connector *connector,
+ 						   struct drm_connector_state *new_conn_state)
+ {
+-	unsigned int max_bpc = connector->max_bpc;
++	unsigned int max_bpc = connector->hdmi.funcs ? connector->hdmi.funcs->max_bpc : 0;
  
-+/*
-+ * Test that the registration of an HDMI connector advertising HDMI 2.0 support
-+ * succeeds when the .scrambler_{enable,disable} callbacks are provided.
-+ */
-+static void drm_test_connector_hdmi_init_scrambler_valid(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	int ret;
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs_scrambler,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_TRUE(test, drm_connector_hdmi_scrambler_supported(&priv->connector));
-+}
-+
-+/*
-+ * Test that the registration of an HDMI connector not advertising HDMI 2.0
-+ * support succeeds, and the connector is not reported as scrambling capable.
-+ */
-+static void drm_test_connector_hdmi_init_scrambler_unsupported(struct kunit *test)
-+{
-+	struct drm_connector_init_priv *priv = test->priv;
-+	int ret;
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       &dummy_funcs,
-+				       &dummy_hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc);
-+	KUNIT_EXPECT_EQ(test, ret, 0);
-+	KUNIT_EXPECT_FALSE(test, drm_connector_hdmi_scrambler_supported(&priv->connector));
-+}
-+
-+enum drm_connector_hdmi_scrambler_cb {
-+	SCRAMBLER_CALLBACK_ENABLE,
-+	SCRAMBLER_CALLBACK_DISABLE,
-+	SCRAMBLER_CALLBACK_ALL,
-+};
-+
-+struct drm_connector_hdmi_init_scrambler_missing_cb_case {
-+	const char *desc;
-+	enum drm_connector_hdmi_scrambler_cb cb;
-+};
-+
-+/*
-+ * Test that the registration of an HDMI connector advertising HDMI 2.0 support
-+ * fails when any single .scrambler_* callback is missing.
-+ */
-+static void drm_test_connector_hdmi_init_scrambler_missing_cb(struct kunit *test)
-+{
-+	const struct drm_connector_hdmi_init_scrambler_missing_cb_case *params = test->param_value;
-+	struct drm_connector_init_priv *priv = test->priv;
-+	int ret;
-+
-+	priv->hdmi_funcs = dummy_hdmi_funcs_scrambler;
-+
-+	switch (params->cb) {
-+	case SCRAMBLER_CALLBACK_ENABLE:
-+		priv->hdmi_funcs.scrambler_enable = NULL;
-+		break;
-+	case SCRAMBLER_CALLBACK_DISABLE:
-+		priv->hdmi_funcs.scrambler_disable = NULL;
-+		break;
-+	case SCRAMBLER_CALLBACK_ALL:
-+		priv->hdmi_funcs.scrambler_enable = NULL;
-+		priv->hdmi_funcs.scrambler_disable = NULL;
-+		break;
-+	}
-+
-+	ret = drmm_connector_hdmi_init(&priv->drm, &priv->connector,
-+				       &dummy_funcs,
-+				       &priv->hdmi_funcs,
-+				       DRM_MODE_CONNECTOR_HDMIA,
-+				       &priv->ddc);
-+	KUNIT_EXPECT_LT(test, ret, 0);
-+}
-+
-+static const struct drm_connector_hdmi_init_scrambler_missing_cb_case
-+drm_connector_hdmi_init_scrambler_missing_cb_tests[] = {
-+	{ "scrambler_enable",	SCRAMBLER_CALLBACK_ENABLE },
-+	{ "scrambler_disable",	SCRAMBLER_CALLBACK_DISABLE },
-+	{ "scrambler_*",	SCRAMBLER_CALLBACK_ALL },
-+};
-+
-+static void
-+drm_connector_hdmi_init_scrambler_missing_cb_desc(const struct drm_connector_hdmi_init_scrambler_missing_cb_case *t,
-+						  char *desc)
-+{
-+	strscpy(desc, t->desc, KUNIT_PARAM_DESC_SIZE);
-+}
-+
-+KUNIT_ARRAY_PARAM(drm_connector_hdmi_init_scrambler_missing_cb,
-+		  drm_connector_hdmi_init_scrambler_missing_cb_tests,
-+		  drm_connector_hdmi_init_scrambler_missing_cb_desc);
-+
- static struct kunit_case drmm_connector_hdmi_init_tests[] = {
- 	KUNIT_CASE(drm_test_connector_hdmi_init_valid),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_bpc_8),
-@@ -1447,6 +1545,10 @@ static struct kunit_case drmm_connector_hdmi_init_tests[] = {
- 	KUNIT_CASE(drm_test_connector_hdmi_init_max_tmds_rate_at_limit),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_max_tmds_rate_off_limit),
- 	KUNIT_CASE(drm_test_connector_hdmi_init_max_tmds_rate_no_version),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_scrambler_valid),
-+	KUNIT_CASE(drm_test_connector_hdmi_init_scrambler_unsupported),
-+	KUNIT_CASE_PARAM(drm_test_connector_hdmi_init_scrambler_missing_cb,
-+			 drm_connector_hdmi_init_scrambler_missing_cb_gen_params),
- 	{ }
- };
+ 	new_conn_state->max_bpc = max_bpc;
+ 	new_conn_state->max_requested_bpc = max_bpc;
+@@ -680,7 +680,7 @@ hdmi_compute_config(const struct drm_connector *connector,
+ {
+ 	unsigned int max_bpc = clamp_t(unsigned int,
+ 				       conn_state->max_bpc,
+-				       8, connector->max_bpc);
++				       8, connector->hdmi.funcs->max_bpc);
+ 	enum drm_output_color_format fmt;
+ 	int ret;
  
+@@ -813,7 +813,7 @@ static int hdmi_generate_hdr_infoframe(const struct drm_connector *connector,
+ 	if (!connector->hdmi.funcs->hdr_drm.write_infoframe)
+ 		return 0;
+ 
+-	if (connector->max_bpc < 10)
++	if (connector->hdmi.funcs->max_bpc < 10)
+ 		return 0;
+ 
+ 	if (!conn_state->hdr_output_metadata)
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index db4d8daacfa0..bb02e8626c0d 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -662,8 +662,6 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+ 	}
+ 
+ 	drm_connector_attach_max_bpc_property(connector, 8, hdmi_funcs->max_bpc);
+-	/* TODO: remove after conversion to new drmm_connector_hdmi_init() */
+-	connector->max_bpc = hdmi_funcs->max_bpc;
+ 
+ 	if (hdmi_funcs->max_bpc > 8)
+ 		drm_connector_attach_hdr_output_metadata_property(connector);
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index d0aaa87dad7b..3b49799d12fd 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -2458,11 +2458,6 @@ struct drm_connector {
+ 	 */
+ 	struct drm_property_blob *path_blob_ptr;
+ 
+-	/**
+-	 * @max_bpc: Maximum bits per color channel the connector supports.
+-	 */
+-	unsigned int max_bpc;
+-
+ 	/**
+ 	 * @max_bpc_property: Default connector property for the max bpc to be
+ 	 * driven out of the connector.
 
 -- 
 2.55.0
