@@ -4,64 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84354C624DA
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC78FC61DD3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 18:53:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CH0GxxOJLNTTEgy87VZJJ8spPuiHkE9kgPTeaitlA1g=; b=T4uZhNP9Idxq7x
-	NRdmdeC3Wx0nTE1lKcUhMwA46ZEDHdcRvsSWbJInBci8FqgvDYVzUf9ufgeirutFhkfnSVx+PEyfj
-	nRHciY7Sb1hbajcTd4qM8WasgrHGNEQwEDiy7SWH09S/e8QkJAyp1/77UFJscRz5w/k1MyeYzSBFL
-	C2bNpnWXjQxPg+oBre1OZMBB/yzPtbSK9M0NEcmbUkcg0X2mw0clCmi1Z4lAftBwvEQoZj2owWZZa
-	pFsYBCUBxkS/uh7y/4/usUdRP91LxMTK6rILxw+Y3iqAjG1f8obXTaxEpWEluwH5hLPNuE9DCicR/
-	I3E7XTczcicdKxmqtavg==;
+	List-Owner; bh=kZIlzGyH+DAjirSSdZRQ6Br1KA5uKrB36aXT6vXV96w=; b=LX4GldVF/E5TxK
+	u4RPziMOQ1mFWu1JaJQ1H2z7SUsE9jJ12I+1OU0qGiNEpP3mz+K0DVp7tk+Hle+I5hd7ux8GeZGUf
+	9dfq0h6sRpxKneyYuiWxN4FPAP2PK6qPo+hVvnsJmdb/sj/DcKvNPNEpAH6yxVPDhA25CVyvAp9ad
+	08k249nwpcJEWnsQ5dlK1sAu5GtwCdkCLitfZs9A9q5FjAJPZ/aDzhs7kuIJKjbRXUc9SHR+AgRe6
+	bLVfUzf4ytp0B2Jw4YvtITZa8v7C0kE0dgrf4HzU9sSpBmgU2oO3gFbN7uq/cMudiF2gDfxTFYaBs
+	JNzI77kP7Ww9az2zsgiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TcG-0000000D6KV-0eAO;
+	id 1x1TcG-0000000D6Ps-3eUT;
 	Tue, 01 Sep 2026 18:53:52 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1TZz-0000000D1To-1WSd;
-	Tue, 01 Sep 2026 18:51:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=GseR/4rIwmv4ssW4cil/yTAT5gQZjTd5OHiT4vt1s7c=; b=diJ5RNslwezE58otZowfFmnZJM
-	MlUO1Oo7cGRjfy0oVrsNTNYpQluF4ES+ScFLVoCjK4JSQpocIaneSFLvkNf+k4VwpRP+5bBNhunrn
-	9AYr6UCVdT8iXFfvY4lyZEzCdaCqDu4Qs6cD8XynI1IRXdVscIx4VkCRF03IMvpRwLFdCBOczv+b1
-	WWgsy8U+GBKG9UrQxYnpWM5DEg6pU9OJ5P1/y6ehK2MTVm+S2S0rH6o4DYwVoAZ0nh/Sy5D1M0Ygt
-	g0N12Fn03Qpmw4HtJIwaiJD4LLKUsNeha2KCpdvm/hb40g0daPMYvPh4mWpOUuUQMhUK6Qr/UXAvN
-	xcCRgP2w==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x1TZv-0000000BHeM-0ZJM;
-	Tue, 01 Sep 2026 18:51:30 +0000
+	id 1x1Ta0-0000000D1Tp-1b5F;
+	Tue, 01 Sep 2026 18:51:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788288686;
-	bh=9+B0lSYbOtT/mNa8n8pzlwF+N7/unRvesgf3I/R8mRg=;
+	s=mail; t=1788288690;
+	bh=vWcJ/JgrICjAc8uhqU0IXmoYxp/H9UrDLzNmmi7RCMs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=mOE/zo47NqcktPeFz6KITCmmEVvDv/qiq04xSJ1SJVWtzw7hAOUd6GhIJEOXOPaPN
-	 lQ1/6SZsU127+3kZQIZYYW6tpGsm5pJYRywXFHWl+heVB+OwAra/QRGc7zkBIj1NCI
-	 fjxamXAaXgxZ/AgM/NBpYF0x8NFHba13o9q0aMHM8cULUfa9UcRDhxrPPrP/ws6TfQ
-	 uatxnHtbLsO48lY3FopDf5cd8R3o7+cQFis0OYzEEucpaC68eXrfZTqUsFY9nbJ7G4
-	 SAAcHiEobWwb22CeTi9i7+qnb0SJNf54Mmocjte5VwyGSfqgc2fNkpowdWU+6uCHlU
-	 mjYLy8m7wGEGg==
+	b=l9Hn9F7RVvnTNqwvLooi67n3kRQuJBuVA5wIwSf4INadHHxsIDPSyfkxlfdujELgH
+	 sh8m3ckFeNM1kxvEgrEBPuaWbTgil9ZwVb30yt55Kh2TGl5ECx5UmHxXQfppZnwPiT
+	 CvA/qQsRJ+cV+9wkp9rWmHgOvMJgA0synP+OtDCE/7qI5zgvCJ/NKRH1N41kr1MnLy
+	 xy1MQaPEwx1x6aAcBjH+DrnxZbAXMRXwF2Rm9wwb0wu4B4UMUnI3Zpt1CVvEqwuD8Z
+	 zUrUhyejv5/EuIzQxH06q4cx7yjjSNQmt6Bh9+tj2Le7Gm+lQ3kaPhCVYWBsg0yFNi
+	 u2aNTNSnY4XdA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4A6D17E3C8F;
-	Tue, 01 Sep 2026 20:51:25 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5FD5A17E3C9B;
+	Tue, 01 Sep 2026 20:51:30 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 01 Sep 2026 21:51:25 +0300
-Subject: [PATCH v11 61/74] drm/tests: bridge: Set supported HDMI version
+Date: Tue, 01 Sep 2026 21:51:31 +0300
+Subject: [PATCH v11 67/74] drm/tests: hdmi_state_helper: Cover source-side
+ scrambling decision
 MIME-Version: 1.0
-Message-Id: <20260901-dw-hdmi-qp-scramb-v11-61-bc12954a0688@collabora.com>
+Message-Id: <20260901-dw-hdmi-qp-scramb-v11-67-bc12954a0688@collabora.com>
 References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -89,9 +76,8 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  linux-fbdev@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_195127_268440_2BB7C7D9 
-X-CRM114-Status: UNSURE (   9.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260901_115133_512287_6EEB9A35 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,41 +94,193 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Bridges using DRM_BRIDGE_OP_HDMI are now expected to also provide a
-supported HDMI version.  This is not yet enforced, but will become
-mandatory once the migration to the new HDMI connector initialization API
-is completed.
-
-Advertise HDMI 1.4 as the default for the test bridges, since that is
-the highest version that does not require additional initialization
-data.  This also avoids implying support for HDMI capabilities they do
-not currently model.
+Add a couple of atomic-check cases that initialise an HDMI 2.0
+connector, so the core infers the scrambler support and the 600 MHz TMDS
+limit, and assert that conn_state->hdmi.scrambler_needed stays clear for
+a 1080p@60 CEA mode (~148.5 MHz TMDS) and is set for the 4K@60 RGB
+preferred mode (~594 MHz TMDS), straddling the 340 MHz threshold.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/tests/drm_bridge_test.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 151 +++++++++++++++++++++
+ 1 file changed, 151 insertions(+)
 
-diff --git a/drivers/gpu/drm/tests/drm_bridge_test.c b/drivers/gpu/drm/tests/drm_bridge_test.c
-index 15583ade8494..a445f71c31b8 100644
---- a/drivers/gpu/drm/tests/drm_bridge_test.c
-+++ b/drivers/gpu/drm/tests/drm_bridge_test.c
-@@ -497,6 +497,7 @@ drm_test_bridge_chain_init(struct kunit *test, unsigned int num_bridges,
- 			bridge->type = DRM_MODE_CONNECTOR_HDMIA;
- 			bridge->vendor = "LNX";
- 			bridge->product = "KUnit";
-+			bridge->supported_hdmi_ver = HDMI_VERSION_1_4;
- 			bridge->supported_formats = (BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444) |
- 						     BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) |
- 						     BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422) |
-@@ -597,6 +598,7 @@ drm_test_bridge_hdmi_init(struct kunit *test, const struct drm_bridge_funcs *fun
- 	bridge->ops |= DRM_BRIDGE_OP_HDMI;
- 	bridge->vendor = "LNX";
- 	bridge->product = "KUnit";
-+	bridge->supported_hdmi_ver = HDMI_VERSION_1_4;
+diff --git a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+index 6d648332aa15..68b442c32a2a 100644
+--- a/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
++++ b/drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c
+@@ -216,6 +216,34 @@ static const struct drm_connector_hdmi_funcs reject_over_165mhz_connector_hdmi_f
+ 	},
+ };
  
- 	ret = drm_kunit_bridge_add(test, bridge);
- 	if (ret)
++static int accept_scrambler_enable(struct drm_connector *connector)
++{
++	return 0;
++}
++
++static int accept_scrambler_disable(struct drm_connector *connector)
++{
++	return 0;
++}
++
++static const struct drm_connector_hdmi_funcs scrambler_connector_hdmi_funcs = {
++	.vendor = "Vendor",
++	.product = "Product",
++	.supported_hdmi_ver = HDMI_VERSION_2_0,
++	.supported_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444),
++	.max_bpc = 8,
++	.scrambler_enable	 = accept_scrambler_enable,
++	.scrambler_disable	 = accept_scrambler_disable,
++	.avi = {
++		.clear_infoframe = accept_infoframe_clear_infoframe,
++		.write_infoframe = accept_infoframe_write_infoframe,
++	},
++	.hdmi = {
++		.clear_infoframe = accept_infoframe_clear_infoframe,
++		.write_infoframe = accept_infoframe_write_infoframe,
++	},
++};
++
+ static int dummy_connector_get_modes(struct drm_connector *connector)
+ {
+ 	struct drm_atomic_helper_connector_hdmi_priv *priv =
+@@ -2254,6 +2282,127 @@ static void drm_test_check_disable_connector(struct kunit *test)
+ 	drm_modeset_acquire_fini(&ctx);
+ }
+ 
++/*
++ * Test that on an HDMI connector with source+sink scrambling support, driving
++ * a sub-340 MHz CEA mode, we end up with scrambler_needed cleared.
++ */
++static void drm_test_check_scrambler_needed_low_rate(struct kunit *test)
++{
++	struct drm_atomic_helper_connector_hdmi_priv *priv;
++	struct drm_modeset_acquire_ctx ctx;
++	struct drm_connector_state *conn_state;
++	struct drm_display_info *info;
++	struct drm_display_mode *low_rate_mode;
++	struct drm_connector *conn;
++	struct drm_device *drm;
++	struct drm_crtc *crtc;
++	unsigned long long rate;
++	int ret;
++
++	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
++				&scrambler_connector_hdmi_funcs,
++				test_edid_hdmi_4k_rgb_yuv420_dc_max_600mhz);
++	KUNIT_ASSERT_NOT_NULL(test, priv);
++
++	drm = &priv->drm;
++	crtc = priv->crtc;
++	conn = &priv->connector;
++	info = &conn->display_info;
++	KUNIT_ASSERT_TRUE(test, drm_connector_hdmi_scrambler_supported(conn));
++	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
++	KUNIT_ASSERT_TRUE(test, info->hdmi.scdc.supported);
++	KUNIT_ASSERT_TRUE(test, info->hdmi.scdc.scrambling.supported);
++
++	low_rate_mode = drm_kunit_display_mode_from_cea_vic(test, drm, 16);
++	KUNIT_ASSERT_NOT_NULL(test, low_rate_mode);
++
++	rate = drm_hdmi_compute_mode_clock(low_rate_mode, 8, DRM_OUTPUT_COLOR_FORMAT_RGB444);
++	KUNIT_ASSERT_LT(test, rate, HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
++
++	drm_modeset_acquire_init(&ctx, 0);
++
++retry_conn_enable:
++	ret = drm_kunit_helper_enable_crtc_connector(test, drm, crtc, conn,
++						     low_rate_mode, &ctx);
++	if (ret == -EDEADLK) {
++		ret = drm_modeset_backoff(&ctx);
++		if (!ret)
++			goto retry_conn_enable;
++	}
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	conn_state = conn->state;
++	KUNIT_ASSERT_NOT_NULL(test, conn_state);
++
++	KUNIT_EXPECT_LE(test, conn_state->hdmi.tmds_char_rate,
++			HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
++	KUNIT_EXPECT_FALSE(test, conn_state->hdmi.scrambler_needed);
++
++	drm_modeset_drop_locks(&ctx);
++	drm_modeset_acquire_fini(&ctx);
++}
++
++/*
++ * Test that on an HDMI connector with source+sink scrambling support, driving
++ * the 4K@60 RGB preferred mode (~594 MHz TMDS, above the 340 MHz threshold),
++ * we end up with scrambler_needed set.
++ */
++static void drm_test_check_scrambler_needed_high_rate(struct kunit *test)
++{
++	struct drm_atomic_helper_connector_hdmi_priv *priv;
++	struct drm_modeset_acquire_ctx ctx;
++	struct drm_connector_state *conn_state;
++	struct drm_display_info *info;
++	struct drm_display_mode *preferred;
++	struct drm_connector *conn;
++	struct drm_device *drm;
++	struct drm_crtc *crtc;
++	unsigned long long rate;
++	int ret;
++
++	priv = drm_kunit_helper_connector_hdmi_init_with_edid_funcs(test,
++				&scrambler_connector_hdmi_funcs,
++				test_edid_hdmi_4k_rgb_yuv420_dc_max_600mhz);
++	KUNIT_ASSERT_NOT_NULL(test, priv);
++
++	drm = &priv->drm;
++	crtc = priv->crtc;
++	conn = &priv->connector;
++	info = &conn->display_info;
++	KUNIT_ASSERT_TRUE(test, drm_connector_hdmi_scrambler_supported(conn));
++	KUNIT_ASSERT_TRUE(test, info->is_hdmi);
++	KUNIT_ASSERT_TRUE(test, info->hdmi.scdc.supported);
++	KUNIT_ASSERT_TRUE(test, info->hdmi.scdc.scrambling.supported);
++
++	preferred = find_preferred_mode(conn);
++	KUNIT_ASSERT_NOT_NULL(test, preferred);
++
++	rate = drm_hdmi_compute_mode_clock(preferred, 8, DRM_OUTPUT_COLOR_FORMAT_RGB444);
++	KUNIT_ASSERT_GT(test, rate, HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
++
++	drm_modeset_acquire_init(&ctx, 0);
++
++retry_conn_enable:
++	ret = drm_kunit_helper_enable_crtc_connector(test, drm, crtc, conn,
++						     preferred, &ctx);
++	if (ret == -EDEADLK) {
++		ret = drm_modeset_backoff(&ctx);
++		if (!ret)
++			goto retry_conn_enable;
++	}
++	KUNIT_ASSERT_EQ(test, ret, 0);
++
++	conn_state = conn->state;
++	KUNIT_ASSERT_NOT_NULL(test, conn_state);
++
++	KUNIT_EXPECT_GT(test, conn_state->hdmi.tmds_char_rate,
++			HDMI_1_3_TMDS_CHAR_RATE_MAX_HZ);
++	KUNIT_EXPECT_TRUE(test, conn_state->hdmi.scrambler_needed);
++
++	drm_modeset_drop_locks(&ctx);
++	drm_modeset_acquire_fini(&ctx);
++}
++
+ struct color_format_test_param {
+ 	enum drm_connector_color_format fmt;
+ 	enum drm_output_color_format expected;
+@@ -2496,6 +2645,8 @@ static struct kunit_case drm_atomic_helper_connector_hdmi_check_tests[] = {
+ 	KUNIT_CASE(drm_test_check_tmds_char_rate_rgb_8bpc),
+ 	KUNIT_CASE(drm_test_check_tmds_char_rate_rgb_10bpc),
+ 	KUNIT_CASE(drm_test_check_tmds_char_rate_rgb_12bpc),
++	KUNIT_CASE(drm_test_check_scrambler_needed_low_rate),
++	KUNIT_CASE(drm_test_check_scrambler_needed_high_rate),
+ 	KUNIT_CASE_PARAM(drm_test_check_hdmi_color_format,
+ 			 check_hdmi_color_format_gen_params),
+ 	KUNIT_CASE_PARAM(drm_test_check_hdmi_color_format_420_only,
 
 -- 
 2.55.0
