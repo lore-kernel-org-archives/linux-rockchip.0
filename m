@@ -4,101 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EDB7C61DD6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 15:34:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496B7C624D3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2026 15:50:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/ZbAOhlnnP5FEZSIXIM6GpAlvZBQ4soUaRFMCH4jwtw=; b=DUB/JLNHye011T
-	dcxfOUm5iuyUnY46Hh8V4pSxj52LNIU7nTOKIOBsSyiqscbuyxR/zIwrM9kT7wNN2I9PvDSWGiomx
-	WmAK7p3Ds9LHAYSE2PX4irSrTw0mQgvQbN3Jxdbz8giC4cnDrlBXHaAltXCM2+FgVowFnBAHl8F+Y
-	4xX+YCZ+lKj1xMF7AP7i4OXr29o+qAN0RJHmVsq9ruxj/vmkwI7NQM1mbqeKZDcphJuf+e9M0xHg3
-	VFPi10o8DzJ2XnFmut2HgiNUuYoX/Hej+qR/WmgN4+G8QXJYdkG+Y3rstNq7ahBb/TiKttvQFtHwe
-	wBBczYWmzFNGET4QIrrQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=T2CJqYUIRwwPdWdTorVtWrXPtHYEY1zVauwghDfLaPs=; b=uIOOZm/uyw7mV7
+	kDoJR4DA+wendSxOEVoC9I8lw7NOlhfLIOWyR+lYBBcSob0CDAXbEQgcFz/gXLwIwIIO0auh+msG7
+	jT+me9ofmjms54pXCXOVqL5obS3FFem5I6Z8xKfz74l+IL7cp7hL9SA0mgILzD72XsMufcq4ilou1
+	icMfYMTQoKKnOJUdbXgxXCuCkPTNKOKlMH/ukwGrWiHmssRbvxHjKWNxGOct5fFe6mXT7i90R3tPS
+	ktPYkGFgK2mD53PLBp1Q09Z3wahqPr8lurlLmC7sy4ZYmTdq7u78OA4zihA58RqMpLhFgxun8+Wwt
+	kbyoCOhAwcuGUYdqcCUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1QUo-0000000CW3u-1FE5;
-	Tue, 01 Sep 2026 15:33:58 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1x1QlA-0000000Cac7-1wv1;
+	Tue, 01 Sep 2026 15:50:52 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1QUl-0000000CW1n-0F0m
+	id 1x1Ql8-0000000CabJ-1458
 	for linux-rockchip@lists.infradead.org;
-	Tue, 01 Sep 2026 15:33:56 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-49556f97a9dso34149015e9.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 01 Sep 2026 08:33:54 -0700 (PDT)
+	Tue, 01 Sep 2026 15:50:51 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-39c95395230so10228341fa.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 01 Sep 2026 08:50:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1788276833; x=1788881633; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=MR/cQZoK7JPxTk5LPqkidwaMJQfEv51POKdRxNvWHUE=;
-        b=ahtQUN7deCnhSB0DI87v2V5QnCxi4i+8cJ0hse4oUg1dWZ1Zp3+axt0bSZeUdIqgE5
-         L3H6iRiKfZMsiFLJ/y8wfcPz8nKqZPCw71ALfIwErTTaHmXZ6Ou4cA/kirGiDspqo4kJ
-         e+bWUA9shEgaqriowWWon8v1NKGxuvM3VPMtF01DBHVZ0hyxIudbInuAuk7ipuahVTaK
-         WjmGn9EXu4jPTznMf35xBh8WmgcuoMJzRASnIr17qHePGxv60PaT9ETffaq+I/8yOSt4
-         +d9Yy97wzMrJkWOtnUZM1aKssqQLx4J0CvgVauLKxYJ640KUJA49mWAx+Fn+b0TPKIQA
-         1FTQ==
+        d=gmail.com; s=20251104; t=1788277848; x=1788882648; darn=lists.infradead.org;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:content-type:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=sIycX/93dP8h/wj5U80nNU52ZrbLgXUgk65pU9prnfM=;
+        b=rnfed+g1e/xNeT8W4IUK1qh1dAIMCKtk5jkK42UBlZOCAFUGY+9ww8b4YPV5t/KiUF
+         QbTKmLMk3gBjBlRBg/01vpbiNcx7leNkF5Amqb5YRfvK8OzNO9oBfJ+IlZaRcqknuF5+
+         sWLlR4YijQ4gHlaXnxFGt8BdDkQ7JusUVutfPkkezncRY4sIQqQYINWZ/53JXXrTVHLU
+         KNAPmofqv3WPS9geQM6T5ObwnH/X6ZXoJFLsA7QdoBY/YTB0cEOMcxg0cKU4YKfZhrw+
+         vFO0emnARnA/1AwwlaLbaKHsJOog/jzNvTcDHdviuKSnu6Q6fCq/KYyHRodippkJHedn
+         7prQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788276833; x=1788881633;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
+        d=1e100.net; s=20251104; t=1788277848; x=1788882648;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:content-type:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=MR/cQZoK7JPxTk5LPqkidwaMJQfEv51POKdRxNvWHUE=;
-        b=imTLqztAl7L2cUk0xO5JrhRtmaLzOhwWth/8GZ8JiMCRyNUIVSfq6fbAYHFWs0WLYj
-         EIKeCeowAML0dPmLOftr5nWkaRBjhycun6tD7fdnAg2+B4O59Qv0LBE1qVGMKYuKPDKg
-         4lUjUQtfIJFYSu2OxY1sfeEwpOe7w+qMuYCnXpqkupP0wseQIW401j4UHoWTCsJGTUbs
-         QTueg19TKJ9oVFYQ52jnCnmvcDKn7U/lKmULqv9EL5kaUu38YGUrFg/YVr9PigOw2BMA
-         UGP2JTua8GJwKphLp4B3A9HnTenoiNwo/ZNs6DmprV5iZJTIDKV/XHutmEI5xXHamyM5
-         PoSw==
-X-Forwarded-Encrypted: i=1; AHgh+RoW9jbX51AkCUhLMIivgAz1zlUEJT0IwxIOsos5iq9eljM6H8mXfrPDfk3UeatMXZ8HSg7a36j9V3YelFN/ZQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++n9uIgJh/7Ma+lMiX+453+mOFBMx7RckqVcPI0hduK2s8UYOwzI
-	BeGVt6CfQs21xRUA/54RWEJrFUfb5obl9e6M7WwDM29vZyWfqYpDle055Z7AM5ahSdo=
-X-Gm-Gg: AR+sD11kXwUTy3jWjlObZhnBTWDatGZu6Xl+3X6gOHoZpi8Nt0ELyqIlOWjGQr0+tq/
-	sZ2cO1IBAeaRtUV5eAbi+8ab10x8syEZr+OHnwDpGGsH52+vItvxS3YdL9z4Ahzjv3o+gvKj5Vb
-	OhHIvoXF8DwrVrBZRZDUVvRB1QQx7g6oSzv4LwPNds6nHmFk4ZOChXWqnr3r0NxsKBEpzkC/kvz
-	TH9oydm88bVYt1Ycer2FExx6ZxSSzO+62n1osTafwNB6arO05psCSIAb885OHpAspmwwb0lN3+g
-	FLhGZ/BbAuLd0g8babDKec6yz/ydhUwQNGKcUSb/1NULPIvB+xeJdW9TG4XAEhP4vkCCVd7K1Gy
-	Ml7q3ittCY5NJh5UJvseDN95LdLomlWPdFy/OietX6xM0wZxDMaOcXt1XoNMXvRHtpGOyCSbj3h
-	U0RYa5qt/3GvsGFozI/BJsGrgNu8FQv/laDiQ66DpSns6GnQxJi0R+alrNGT3rXu15fDTo9osDT
-	a1W9X0Cq5OFpcjkmUQI7B4gWnJomYYss3iG5W9cK3iIuRazZRE=
-X-Received: by 2002:a05:600c:5391:b0:49c:cedf:f870 with SMTP id 5b1f17b1804b1-49cdc555577mr180831445e9.16.1788276804848;
-        Tue, 01 Sep 2026 08:33:24 -0700 (PDT)
-Received: from alchark-surface.localdomain (bba-2-51-220-108.alshamil.net.ae. [2.51.220.108])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49b91c5790csm314541845e9.0.2026.09.01.08.33.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Sep 2026 08:33:24 -0700 (PDT)
-From: Alexey Charkov <alchark@flipper.net>
-Date: Tue, 01 Sep 2026 19:33:11 +0400
-Subject: [PATCH 1/4] nvmem: rockchip-otp: Serialize reads
-MIME-Version: 1.0
-Message-Id: <20260901-rk3576-otp-cpuid-mac-v1-1-ea9135270fc2@flipper.net>
-References: <20260901-rk3576-otp-cpuid-mac-v1-0-ea9135270fc2@flipper.net>
-In-Reply-To: <20260901-rk3576-otp-cpuid-mac-v1-0-ea9135270fc2@flipper.net>
-To: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Michael Walle <michael@walle.cc>, Miquel Raynal <miquel.raynal@bootlin.com>, 
- Finley Xiao <finley.xiao@rock-chips.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Alexey Charkov <alchark@flipper.net>, stable@vger.kernel.org
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2712; i=alchark@flipper.net;
- h=from:subject:message-id; bh=amm6IB2QVHQmS41llynjCeEO9qHZu2xpesEVqtnd22I=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWRN+2C3xbXrK4OeZYvDjPdrr1mZbp/St7fnwfTot49W3
- TD5HCSf3jGRhUGMi8FSTJFl7rcltlON+Gbt8vD4CjOHlQlkiLRIAwMQsDDw5SbmlRrpGOmZahvq
- GRrpGOsYMXBxCsBUx35iZNibP3We43yhXZ16Wn+qpl7LuCJ44ZzTmxzTjRy/HlSF/clg+GfIZX2
- of9I/hUiz98vtfcUeTXiyUHIf56ZrjJturNqyaAEPAA==
-X-Developer-Key: i=alchark@flipper.net; a=openpgp;
- fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
+        bh=sIycX/93dP8h/wj5U80nNU52ZrbLgXUgk65pU9prnfM=;
+        b=ovYLq8w+sZVcTGIr07cj+ClFSR7ppsvJRlByS9vvJPrHZEpO88ruUbnvFifMz9Jot4
+         PYCkroM8UJY2V/8iXiyLKeW2DoGASq4IZb4W7kkKGwQEsh+YAPnjHNxxFyw0c3Fg9pwp
+         1V70g9v2sTpJNYj4QjdAEVIRRTVTmrJZkDIrbH3YgQkn9DEU5KAeG/pEZUNYo3WFd1Hv
+         6BTD5GVCJbONCxVe+qh201CFNb3j1tsd8D1PhvoatqythbkysFnlbgSr2vNmdhI06gtP
+         qvA3p6hrEU2we1Cy8NWeFXp1WXa4xSWbDCVAfapi5Wbt0lqb5zWX63WdZf42TLFrYLVx
+         kpZg==
+X-Forwarded-Encrypted: i=1; AKwUvBy0fQ81hjwRCL4BqP52AKP6kiLezKnqHTz7J98P5ub3nsq1rdy+RDb1eO6D0Vu0YW9tjh+OfhIck6RuOVdrug==@lists.infradead.org
+X-Gm-Message-State: AFuF++kjoPq8aFJXzKc6A6EDOejxN4UAaugaqYK00694RA+cj9m/fN4p
+	tSctfg71X+bQCJdTP4S4Fum8anxuslZWjujMaTc0TiHpatJv2yf8cpfb
+X-Gm-Gg: AYBFou1IofL06Qd12kuG9mBy38P0wolW7Q691Rn/hj9mQgZn/F7mA5BNvEIzTXthbKT
+	0UnlXJib3l7ucNjIQBIv1JQy93VuORmKUg7Dp//+j6nP2KxcZpBn5CTiarcV2pc9/5ni3LAN47H
+	5duGaSBUwyWn6cg1ngtd2xy4ZEFeNh7fOD4mc7/a0Ri4FBlLiPVCdaPdN9SNtB2LgjFSDTZK3M6
+	3Uw/mmEqr4xF3QhumvWXwg8u2rGLvIg+MOoACCYeDRnFYppJBlsN/v3eIPIlvqONB7uuTv89EE8
+	+q9FbCg3TBrO0kAjodTEXVP2euO2v9cqQ4ytHqsZvR7QU9CKw8/igsQjkkckxQ44kQTKSrV/Jxo
+	JrlbKm15NBJ/7wCoSwMHsHvaz833Y6kQtaVsMvpebVfPO2krEGwnbWHV63wJVqSeJ/g1DPjaKZX
+	iIn3NN2gYkgRuntXF8wMAu5OMHYGhiciKWxq4SO9yFPxREZaTileku9t5qCvjOYKiDghZt5IjnQ
+	EAd46TamV7VMq5+PA==
+X-Received: by 2002:a05:651c:2117:b0:3a3:4526:e8f4 with SMTP id 38308e7fff4ca-3a345270387mr8689181fa.6.1788277847338;
+        Tue, 01 Sep 2026 08:50:47 -0700 (PDT)
+Received: from smtpclient.apple ([87.200.95.144])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a34ad010efsm326091fa.21.2026.09.01.08.50.42
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 01 Sep 2026 08:50:46 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.600.51.1.1\))
+Subject: Re: [PATCH] drm/bridge: dw-hdmi-qp: Compute ACR CTS for unlisted TMDS
+ rates
+From: Christian Hewitt <christianshewitt@gmail.com>
+In-Reply-To: <apbgp2h_tSZQzbdV@venus>
+Date: Tue, 1 Sep 2026 19:50:28 +0400
+Message-Id: <1035B0DB-D4B0-4E24-A23B-48854B49A3FA@gmail.com>
+References: <20260901112541.84588-1-christianshewitt@gmail.com>
+ <apbgp2h_tSZQzbdV@venus>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: Apple Mail (2.3864.600.51.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_083355_128703_971C5B87 
-X-CRM114-Status: GOOD (  16.85  )
+X-CRM114-CacheID: sfid-20260901_085050_315270_1D2DB8CF 
+X-CRM114-Status: GOOD (  18.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,88 +96,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Detlev Casanova <detlev.casanova@collabora.com>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Daniel Stone <daniel@fooishbar.org>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Douglas Anderson <dianders@chromium.org>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The OTP controller is driven through a single set of registers holding a
-state machine which has to be stepped through for every word read, yet
-nothing keeps two readers out of each other's way. Concurrent reads
-interleave, and the outcome is either a reader bailing out:
-
-  rockchip-otp 2a580000.otp: timeout during read setup
-
-or, worse, one of them silently taking delivery of the other's data.
-
-Reading two cells in parallel from userspace on RK3576 reproduces both
-within 150 iterations - 53 read errors and 9 corrupted results, the latter
-either losing their first word or, in one case, ending in the two bytes
-which belong to the other reader's cell - whereas the same reads issued
-sequentially never fail. Concurrency is not hypothetical here, as six
-thermal sensors source their trim values from the OTP and reach the driver
-straight from asynchronous driver probing.
-
-Guard the read path with a mutex. Reads are the only way into the hardware,
-as the driver registers no write callback, and they always run in process
-context, so a plain mutex spanning the whole clock-enable, read,
-clock-disable sequence is enough.
-
-Fixes: 755864feb729 ("nvmem: add Rockchip OTP driver")
-Cc: stable@vger.kernel.org
-Signed-off-by: Alexey Charkov <alchark@flipper.net>
----
- drivers/nvmem/rockchip-otp.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
-index 2c0feb036f3f..b034b7455016 100644
---- a/drivers/nvmem/rockchip-otp.c
-+++ b/drivers/nvmem/rockchip-otp.c
-@@ -12,6 +12,7 @@
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/module.h>
-+#include <linux/mutex.h>
- #include <linux/nvmem-provider.h>
- #include <linux/reset.h>
- #include <linux/slab.h>
-@@ -80,6 +81,8 @@ struct rockchip_otp {
- 	void __iomem *base;
- 	struct reset_control *rst;
- 	const struct rockchip_data *data;
-+	/* Serializes access to the OTP controller state machine */
-+	struct mutex mutex;
- 	struct clk_bulk_data clks[];
- };
- 
-@@ -272,6 +275,8 @@ static int rockchip_otp_read(void *context, unsigned int offset,
- 	if (!otp->data || !otp->data->reg_read)
- 		return -EINVAL;
- 
-+	guard(mutex)(&otp->mutex);
-+
- 	ret = clk_bulk_prepare_enable(otp->data->num_clks, otp->clks);
- 	if (ret < 0) {
- 		dev_err(otp->dev, "failed to prepare/enable clks\n");
-@@ -431,6 +436,11 @@ static int rockchip_otp_probe(struct platform_device *pdev)
- 
- 	otp->data = data;
- 	otp->dev = dev;
-+
-+	ret = devm_mutex_init(dev, &otp->mutex);
-+	if (ret)
-+		return ret;
-+
- 	otp->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(otp->base))
- 		return dev_err_probe(dev, PTR_ERR(otp->base),
-
--- 
-2.54.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+PiBPbiAxIFNlcCAyMDI2LCBhdCA2OjI44oCvcG0sIFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3Rp
+YW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tPiB3cm90ZToKPiAKPiBIaSwKPiAKPiBPbiBUdWUsIFNl
+cCAwMSwgMjAyNiBhdCAxMToyNTo0MUFNICswMDAwLCBDaHJpc3RpYW4gSGV3aXR0IHdyb3RlOgo+
+PiBjb21tb25fdG1kc19jdHNfdGFibGVbXSBob2xkcyBvbmx5IHNpeCBUTURTIGNoYXJhY3RlciBy
+YXRlcyAoMjUuMTc1LAo+PiAyNS4yLCAyNywgNTQsIDc0LjI1IGFuZCAxNDguNSBNSHopLCBzbyBk
+d19oZG1pX3FwX2ZpbmRfY3RzKCkgcmV0dXJucyAwCj4+IGZvciBldmVyeXRoaW5nIGVsc2UuIGR3
+X2hkbWlfcXBfc2V0X2N0c19uKCkgdGhlbiBjbGVhcnMgdGhlIENUUyBvdmVycmlkZQo+PiBlbmFi
+bGUgYW5kIHByb2dyYW1zIGEgdmFsdWUgb2YgMCwgbGVhdmluZyB0aGUgc2luayB3aXRoIG5vIENU
+UyB0bwo+PiByZWdlbmVyYXRlIHRoZSBhdWRpbyBjbG9jayBmcm9tLgo+PiAKPj4gQW55IGRlZXAg
+Y29sb3VyIGxpbmsgZmFsbHMgaW50byB0aGlzIGdhcDogYSAxMCBicGMgUkszNTc2IEhETUkgb3V0
+cHV0Cj4+IHJ1bnMgYXQgMTg1NjI1MDAwIEh6ICgxNDguNSBNSHogKiAxLjI1KSwgd2hpY2ggaXMg
+YWJzZW50IGZyb20gYm90aAo+PiB0YWJsZXMuIE4gaXMgY29tcHV0ZWQgZHluYW1pY2FsbHkgYW5k
+IGNvbWVzIG91dCBjb3JyZWN0IGF0IDYxNDQsIGJ1dAo+PiBBVURQS1RfQUNSX0NPTlRST0wxIHJl
+YWRzIGJhY2sgYXMgMC4KPj4gCj4+IEdpdmUgQ1RTIHRoZSBzYW1lIGR5bmFtaWMgZmFsbGJhY2sg
+dGhhdCBOIGFscmVhZHkgaGFzLCB1c2luZyB0aGUgZm9ybXVsYQo+PiBmcm9tIHRoZSBBdWRpbyBj
+aGFwdGVyIG9mIHRoZSBIRE1JIHNwZWNpZmljYXRpb24sIGFuZCBkcm9wIHRoZSAtRU5PRU5UCj4+
+IHJldHVybmVkIGludG8gYW4gdW5zaWduZWQgaW50IGZvciB0aGUgdW5saXN0ZWQgc2FtcGxlIHJh
+dGVzLgo+PiAKPj4gRml4ZXM6IGZkMDE0MWQxYThhMmEgKCJkcm0vYnJpZGdlOiBzeW5vcHN5czog
+QWRkIGF1ZGlvIHN1cHBvcnQgZm9yIGR3LWhkbWktcXAiKQo+PiBBc3Npc3RlZC1ieTogQ2xhdWRl
+OmNsYXVkZS1vcHVzLTUKPj4gU2lnbmVkLW9mZi1ieTogQ2hyaXN0aWFuIEhld2l0dCA8Y2hyaXN0
+aWFuc2hld2l0dEBnbWFpbC5jb20+Cj4+IC0tLQo+PiBUaGlzIHdhcyBmb3VuZCBhZnRlciB0ZXN0
+aW5nIHVucmVsYXRlZCBwYXRjaGVzIGZyb20gRGV0bGV2QyB0aGF0IHJlbmFtZQo+PiB0aGUgUksg
+YXVkaW8gY2FyZHMgdG8gc2VlIHRoZSBpbXBhY3QgaW4gS29kaS4gUkszNTg4IGhhZCBhdWRpbyBv
+dXRwdXQsCj4+IHdoaWxlIFJLMzU3NiBkaWQgbm90LiBJJ2Qgbm90IHVzZWQgYW4gUkszNTc2IGJv
+YXJkIGZvciBhIHdoaWxlIHNvIHRhc2tlZAo+PiBDbGF1ZGUgdG8gaGVscCB0cmlhZ2UgdGhlIHBy
+b2JsZW0sIGFuZCB0aGlzIHdhcyB0aGUgZmluZGluZy4gVGhlIHByb2JsZW0KPj4gYXBwZWFycyB0
+byBoYXZlIGJlZW4gZXhwb3NlZCBzaW5jZSBLb2RpIHJld29ya2VkIHBsYW5lIHNlbGVjdGlvbiBs
+b2dpYwo+PiBhbmQgc3VwcG9ydCBmb3IgMTBicGMgcGxhbmVzOyBlYXJsaWVyIEtvZGkvTGlicmVF
+TEVDIGltYWdlcyB3ZXJlIHVzaW5nCj4+IDhicGMgcGxhbmVzIHRodXMgYXZvaWRpbmcgdGhlIHBy
+b2JsZW0uCj4gCj4gWW91IGFyZSBsb29raW5nIGZvciB0aGlzIHNlcmllczoKPiAKPiBodHRwczov
+L2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC84NmZjZjM0OS0wYTdhLTQ2MTgtOTAwMS02
+MTIzNzFiMGY3MWJAc3ltcGxlLm56LwoKQWhoLCBJIG1pc3NlZCB0aGF0LiBJIGhhdmUgbm93IHRl
+c3RlZCB0aGF0IHBhdGNoIChhbmQgd2lsbCByZXBseQp0byBpdCB3aXRoIGEgVEIpIHNvIHBsZWFz
+ZSBpZ25vcmUgdGhpcyBwYXRjaC4gVGhhbmtzIQoKQ2hyaXN0aWFuCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
