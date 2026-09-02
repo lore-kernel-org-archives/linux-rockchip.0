@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CBDC624D7
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 11:11:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC3B4C61DD6
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 11:11:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OCVu76JcV+M319au7WbUVxxN3dqEPL+i1jkQV04PTL4=; b=oRNWGK9vVMse6y
-	sc6e/ixUG2Q/LSm8O5irszLq041i/Ud+FJ/wMLmhCwBiMgGWuH4eMsVosvsa4qjw/2Bgt7yuBOGok
-	WBjAb7fcZKHUUouynXhj5k7TThh7BVRBytCf1owINOPA+j9kA4RCKTh3b91IRw0F/mKnSJmOZy1qf
-	6Y6vKK5Wa/mJvg9QPH8XDj7dOuPOnsgugds503NIO1leE9yPImsESsX+pQOPb8JfIP8u5CeTnG24E
-	hJLYPj4XBwtTFw53A8jNi08n/w2l0hoVZrCVJeRJLJzl94QAbcjvMXfYNkU0dKzUdNY+L/1V1EeDq
-	6T9dpP36rks1r49dtjfQ==;
+	List-Owner; bh=5CzD2zA5ug6ik43lftsDFzS8Ap8h/6G4vgNs/cscJp4=; b=dnGN7REeLqGE4J
+	ue1Q8Www3ik6KCfNmzQ/INr9sn2pBuNTkcSZl/P7LKrxKVk4454IdiPE31i4mCRCLVPD+6j1yw0ae
+	YSfmIgYLNbZM+vvt39C8I1fd2FHbT0Iic+iBuba1VHvqYszcRvbsTj3T8pNXoYgliQypzy1yw4e46
+	oXOGB8PxKVDBnNSS6s6OOahpldiwZsvaGmwHft8gK9F2mK+WG4jfAMxtRynIhnI336HN7o74I8+FC
+	/VCtOppJ73KKSJjdIgsgHn20XRxQFbH51EgRwxjIhgInJ4K9tlWmSYgsUxl9mgoAH8fNOXNhm9mtB
+	px7gJTknXwq1h8jtj6SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1isP-0000000ESrV-45wV;
-	Wed, 02 Sep 2026 11:11:33 +0000
+	id 1x1isU-0000000ESy1-2D9L;
+	Wed, 02 Sep 2026 11:11:38 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1isN-0000000ESmk-0gVe;
-	Wed, 02 Sep 2026 11:11:32 +0000
+	id 1x1isS-0000000EStd-0pGL;
+	Wed, 02 Sep 2026 11:11:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=e13hcDNI+tjK7ZYito3EK+F+gJpiQQy7yUGftOidPTo=; b=H0QaVw5Qja/LxL3EoDTsZSAWu+
-	DK9KFWSCKqQug6/BxhFEznFPH/fb8uU+FKbmdcmGIJI8l7KZxIVVAK9cnRtqjmT1StRVezLK4ows1
-	ax/aQocKpxQzM0sEV5+ZW1RnbtyO4lylYn+Ot1lL1LQY/I4dktFtVXXuWMv/ScYt71xnXh+/+Wgyt
-	NFxV2Wxct9H+/9xCIV/NoXgBsy3vRKRrSpitX1seuym0/ZoHxX3pLC/RpNUJgSnkOaTQFEwE2qtMl
-	wFnO0cNlZeu84wAPHLH8uFgJSBSEKC9TghfFt8sA78yOqRwkC+svXiAi9OLpcoe6+w71YkDZOUcsz
-	A6FYh+qQ==;
+	bh=NWzAh8NPO04rtRLnNCeigUoQRZfIm1QlqA5u4uhqbpE=; b=J0XKTeuRjTzRKJub7Tyz7N7QFx
+	aD0wgIa/Xo37ePrta76cF2xJ7dWbhw7SYWMdrEdXeQ5f80B6SjkFwyaOEGAzMafqkATGjQDqBUqGb
+	OzOUaXc0/+4cNPsgNRdzmNh2zQtfYRx/lU2Uzhn6uHhg6ubDLQ3NjZCIiGhUJQP3aX15nIPabf4GR
+	2SAho9vaeL8dYhCNs51sAIxCs1AIuPrQWm/uw/+dCm75QukEymWtSYKxaQX9aqVqq2RYhfn4wSoY+
+	L7r0OkBdo6b7n0eh5Ycx2cbO0btUpSomxCiOHTMmq/45KsJg1v8e7+OLH2VagN/tgNzlOLevDc/oL
+	JVs6DSVg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Marc Kleine-Budde <mkl@pengutronix.de>,
-	kernel@pengutronix.de,
-	Vincent Mailhol <mailhol@kernel.org>,
-	Rob Herring <robh@kernel.org>,
+To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Cunhao Lu <1579567540@qq.com>
+	Diederik de Haas <diederik@cknow-tech.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-can@vger.kernel.org,
+	Ricardo Pardini <ricardo@pardini.net>,
+	Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>,
+	Daniele Briguglio <hello@superkali.me>,
+	Hugh Cole-Baker <sigmaris@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: Re: (subset) [PATCH v6 1/4] dt-bindings: can: rockchip: add rk3588 CAN-FD compatible
-Date: Wed,  2 Sep 2026 13:11:12 +0200
-Message-ID: <178834747221.2268650.16431820094445507549.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/7] Cleanup DT description of NanoPC-T6
+Date: Wed,  2 Sep 2026 13:11:13 +0200
+Message-ID: <178834747217.2268650.5352835281518759084.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <tencent_AE1A1199FC8C9ADC680C6458134A46B40309@qq.com>
-References: <tencent_AE1A1199FC8C9ADC680C6458134A46B40309@qq.com>
+In-Reply-To: <20260828114530.1315798-1-diederik@cknow-tech.com>
+References: <20260828114530.1315798-1-diederik@cknow-tech.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_041131_205612_B2A1DB23 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20260902_041136_239055_41EB05DC 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,23 +76,32 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 30 Jul 2026 22:34:02 +0800, Cunhao Lu wrote:
-> RK3588 integrates a Rockchip CAN-FD controller variant that is not
-> fully compatible with RK3568v2. The RX FIFO count register field is
-> encoded in bits 7:5 on RK3588, while RK3568v2 uses bits 6:4.
-> 
-> Add a dedicated rockchip,rk3588-canfd compatible to describe this
-> variant. Do not use rockchip,rk3568v2-canfd as a fallback, because that
-> would describe a register layout that does not match the hardware.
+On Fri, 28 Aug 2026 13:43:00 +0200, Diederik de Haas wrote:
+> This series cleans up the DT description of NanoPC-T6 devices by
+> - Remove unneeded nodes
+> - Align pinctrl names with names used in the schematics
+> - Fix sorting of various nodes and their properties
+> - Fix an unneeded pull_up
+> - Switch to using I2S0_8CH_MCLKOUT_TO_IO for audio
 > 
 > [...]
 
 Applied, thanks!
 
-[3/4] arm64: dts: rockchip: add CAN-FD nodes for RK3588
-      commit: 685b81f8c717b0f7ec7219f35ead626758ef3aec
-[4/4] arm64: dts: rockchip: Enable CAN controller on RK3588-Tiger-Haikou
-      commit: 0fb792388d2d39e35b7b366f491f846a7ebd8630
+[1/7] arm64: dts: rockchip: Remove unneeded vcc_3v3_pcie20 on NanoPC-T6
+      commit: 05956cc8d96b41cee78322d5fd96365e1755cfd5
+[2/7] arm64: dts: rockchip: Fix PCIe 2 pinctrl names and sorting on NanoPC-T6
+      commit: d10b733bec0bb2949beec3bbc3625a9909711602
+[3/7] arm64: dts: rockchip: Fix hym8563 pinctrl name and sorting on NanoPC-T6
+      commit: 21431b76fc0380bb60ec6792492fbdc282847120
+[4/7] arm64: dts: rockchip: Don't pull up rtc int pin on NanoPC-T6
+      commit: d936b4164c9fef5e3d5a12a4f260c7bd2413f83c
+[5/7] arm64: dts: rockchip: Sort usb nodes on NanoPC-T6
+      commit: 6c4aacc5956924fd38703b95df7d67a650fb2db9
+[6/7] arm64: dts: rockchip: Improve sound config on NanoPC-T6
+      commit: 7ac01d4ea7a2c0074d3c92da0272baa6c1591b66
+[7/7] arm64: dts: rockchip: Drop duplicate USB nodes on NanoPC-T6 LTS
+      commit: e4392d3f56f686082f62e27131f4ac233ee05ac7
 
 Best regards,
 -- 
