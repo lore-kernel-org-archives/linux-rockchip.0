@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46915C79F83
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01702C79F84
 	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 22:54:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,42 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nCHkEw3XYAU0vkuY6dMxkz4tDMKxME7Tx1+9t4e4KUA=; b=B+GbujlkPw5htC
-	YEzLv6Dtv9uyfmUxDJMX1eRZiVPIB1NSKnrWZfjMkh6ssYtsTo6pXJELhpZuQnZjhTfwApjBNfymW
-	G+JJIGV8+H3tF2maLQ0VJGDnQJyUXmlrpW6Dqc6Vf/o8sjfisEESaHmdM1JeNbg/QHgSZq3I6uMV5
-	vECtZ2BOzGc70EtRdqgld6ugUcSNlN8yJsiTnliW/RZ4LMfnUi6seWR/0aJkBLp2XRF6j9+9/AKxE
-	qL1STXiaXZZ1CvKzgnVgVm/8Nu+exMgebZX9jOgs9ANTi9TEad+vDvfZPMAOpZqL1RWMOc1nDPzsy
-	r80QbnvxjG7HBOsUgTbg==;
+	List-Owner; bh=/yfoargalsD4kg3gQcM0MdGOWw1T/L09/ncdvuEPgEU=; b=3ErMCw67cqVXjk
+	AtQgUH1E+xA3RtcbKdyHdR/KfxUhSJLeLKZchewMN1M4lcrU6LhS2lw94HnG2uNZ3pEh7xmqSdr23
+	04HTO8nyjWkMc9LeefU6IF7EY+L1KX0QaKF4sMPdBRuy/5V64klg9ldtXeJulqKnvTlOSZL1tyQD2
+	hQu4gEjjXqSUfDC3RzZgjNOw96GCN/MiZSenOjk+3s+c+xJXFHloizrptG4Dnxcmjwaxpe8wXrhv7
+	1IhyCbcgeLc73zxeQ9W/pM16bTmFdQJNTe2ChGHpETgbA6856xwrVGBJ0giyWVlMJ5nL3SyJD+6ZM
+	aEyp6fO/VZVg9/TcL7WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1tqe-0000000G2e5-05EQ;
+	id 1x1tqe-0000000G2fw-25AZ;
 	Wed, 02 Sep 2026 22:54:28 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1tqX-0000000G2Oe-0KPn;
-	Wed, 02 Sep 2026 22:54:23 +0000
+	id 1x1tqX-0000000G2Op-1Vsr;
+	Wed, 02 Sep 2026 22:54:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1788389658;
-	bh=NtHdI1r04ll3cmriR0IAxLz63PsZ/Z1TC0z5wDweaC0=;
+	bh=4Y2qxlgOWfwgTAMIt77CU07XuhytRH/hQI3tSCxInDo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UzObHvXBTtIO2Xd/uiRXnyUZ5voVG+Gbhjq87SeXRZqe4MfePF/+zN7XgsDUIRbJ/
-	 MKA4rccAxlTpcancb3Yko1z4p01gBe/eldyJBYZnYiia+29GQUXz8tGrt/BSSuLmfK
-	 uO51D0t/i50Lj5RJ8hhnernnx9GoAUXdlxPywba1iqYae7cmRnuujjxjOSfRsq9oDt
-	 XTfJ04vX8hnFxyMp9eX77kbIlrxA7E3lO7nXZlLLGIcOcri4PELs13I0BiQqoCywAh
-	 aLwm+PRSeNh3mAZebJr55QoK8z32wZJiKWxM87KR7n9rEWAQRJ9UZa1tq1SfXFKTZk
-	 vS6jGDVHwsq1w==
+	b=XII7FQF7D4ip0eJ8RFs9T5uiC3U5ixz13ooH+KF1pVSchbWcyrg8lGXo1LjzKyjRH
+	 wQNybnWL3Bk0uEA+kePRq9Se5mfa8UEMKEqx2YYbKp7N06NRjjV5q733uWaOyjlD/d
+	 gfJSwHeI/IGyiB42Rlu22WmTkq/mhcRUDMtOTfB3D2J9lkihDq/QRQ+K7Ybn7OtD5i
+	 u7EuKvSjAUg8EGo+sTN9ceGFWXPvUzLK/5yyWJ1SjWTURmjLtmiCbUnhkPN03eem/s
+	 Wk7lO7KKt+WepL26FhiJunX2XEFPtVo5Ab0Md0X7qJVm5+sbYzRPSW/eCskVUKdHrM
+	 IX4hTlQM7QNpQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B115517E157A;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0A16F17E14D2;
 	Thu, 03 Sep 2026 00:54:18 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 03 Sep 2026 01:54:17 +0300
-Subject: [PATCH v4 10/14] drm/rockchip: vop2: Switch to enum vop_csc_format
+Date: Thu, 03 Sep 2026 01:54:16 +0300
+Subject: [PATCH v4 09/14] drm/rockchip: vop2: Consolidate HDMI PHY PLL
+ clock parent switch
 MIME-Version: 1.0
-Message-Id: <20260903-dw-hdmi-qp-yuv-v4-10-fb45bf4147eb@collabora.com>
+Message-Id: <20260903-dw-hdmi-qp-yuv-v4-9-fb45bf4147eb@collabora.com>
 References: <20260903-dw-hdmi-qp-yuv-v4-0-fb45bf4147eb@collabora.com>
 In-Reply-To: <20260903-dw-hdmi-qp-yuv-v4-0-fb45bf4147eb@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -71,8 +72,8 @@ Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>,
  linux-kernel@vger.kernel.org, Igor Paunovic <royalnet026@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_155421_310456_F67BBB17 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20260902_155421_580790_901CD3B7 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,52 +90,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Improve code readability in vop2_setup_csc_mode() by using enum
-vop_csc_format for the csc_mode variable, as well as for the return type
-of the vop2_convert_csc_mode() helper, which already returns CSC_*
-enumerators.
+The DCLK parent switch logic for HDMI0 and HDMI1 PHY PLLs was
+duplicated, with each endpoint repeating the same clk_get_parent(),
+clk_set_parent() and error handling calls.
 
-While at it, replace the nonsensical 'csc_mode = false' assignment in
-the no-conversion branch with the equivalent CSC_BT601L, which carries
-the same value (0) but is type-correct.
+Refactor this by first selecting the appropriate PHY PLL clock handle
+based on the active HDMI endpoint, then performing the parent switch in
+a single shared code path.
 
 Tested-by: Igor Paunovic <royalnet026@gmail.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 36 +++++++++++-----------------
+ 1 file changed, 14 insertions(+), 22 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index e78cddc184d3..04db4c037421 100644
+index 4b4346cf38cd..e78cddc184d3 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -648,7 +648,7 @@ static void vop2_setup_scale(struct vop2 *vop2, const struct vop2_win *win,
+@@ -1964,42 +1964,34 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+ 		unsigned int bpc = vcstate->output_mode == ROCKCHIP_OUT_MODE_YUV422 ?
+ 					8 : (vcstate->output_bpc ?: 8);
+ 		unsigned long max_dclk = DIV_ROUND_CLOSEST_ULL(VOP2_MAX_DCLK_RATE * 8, bpc);
++		struct clk *pll_hdmiphy = NULL;
+ 
+ 		if (clock <= max_dclk) {
+ 			drm_for_each_encoder_mask(encoder, crtc->dev, crtc_state->encoder_mask) {
+ 				struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
+ 
+ 				if (rkencoder->crtc_endpoint_id == ROCKCHIP_VOP2_EP_HDMI0) {
+-					if (!vop2->pll_hdmiphy0)
+-						break;
+-
+-					if (!vp->dclk_src)
+-						vp->dclk_src = clk_get_parent(vp->dclk);
+-
+-					ret = clk_set_parent(vp->dclk, vop2->pll_hdmiphy0);
+-					if (ret < 0)
+-						drm_warn(vop2->drm,
+-							 "Could not switch to HDMI0 PHY PLL: %d\n",
+-							 ret);
++					pll_hdmiphy = vop2->pll_hdmiphy0;
+ 					break;
+ 				}
+ 
+ 				if (rkencoder->crtc_endpoint_id == ROCKCHIP_VOP2_EP_HDMI1) {
+-					if (!vop2->pll_hdmiphy1)
+-						break;
+-
+-					if (!vp->dclk_src)
+-						vp->dclk_src = clk_get_parent(vp->dclk);
+-
+-					ret = clk_set_parent(vp->dclk, vop2->pll_hdmiphy1);
+-					if (ret < 0)
+-						drm_warn(vop2->drm,
+-							 "Could not switch to HDMI1 PHY PLL: %d\n",
+-							 ret);
++					pll_hdmiphy = vop2->pll_hdmiphy1;
+ 					break;
+ 				}
+ 			}
+ 		}
++
++		if (pll_hdmiphy) {
++			if (!vp->dclk_src)
++				vp->dclk_src = clk_get_parent(vp->dclk);
++
++			ret = clk_set_parent(vp->dclk, pll_hdmiphy);
++			if (ret < 0)
++				drm_warn(vop2->drm,
++					 "Failed to switch DCLK to HDMI PHY PLL: %d\n",
++					 ret);
++		}
  	}
- }
  
--static int vop2_convert_csc_mode(int csc_mode)
-+static enum vop_csc_format vop2_convert_csc_mode(int csc_mode)
- {
- 	switch (csc_mode) {
- 	case V4L2_COLORSPACE_SMPTE170M:
-@@ -711,7 +711,7 @@ static void vop2_setup_csc_mode(struct vop2_video_port *vp,
- 	int input_csc = V4L2_COLORSPACE_DEFAULT;
- 	int output_csc = vcstate->color_space;
- 	bool r2y_en, y2r_en;
--	int csc_mode;
-+	enum vop_csc_format csc_mode;
- 
- 	if (is_input_yuv && !is_output_yuv) {
- 		y2r_en = true;
-@@ -724,7 +724,7 @@ static void vop2_setup_csc_mode(struct vop2_video_port *vp,
- 	} else {
- 		y2r_en = false;
- 		r2y_en = false;
--		csc_mode = false;
-+		csc_mode = CSC_BT601L;
- 	}
- 
- 	vop2_win_write(win, VOP2_WIN_Y2R_EN, y2r_en);
+ 	clk_set_rate(vp->dclk, clock);
 
 -- 
 2.55.0
