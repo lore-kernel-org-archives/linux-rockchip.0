@@ -4,109 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CB69C61DFD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 08:43:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33AD8C61DFD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 09:10:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sDitYlaVgf+ZPpf7Ato+lR33oNy/jG/M9WIjDvn77oY=; b=wXR+saFGs71o4m
-	dWRwRYexe5hR9bFLjPRWfKtTL1CuzQqFxaiQtwbET4+kt5fcYLde5wpWynF2Z5bYIqL3nWIMeR4iU
-	Dcx9eZ+IGHnkNGShBYbr3n/vZpQsJpZvec8DgUENK1cHeptT7JyDsNKyWC2A2GTzNGR9sGd5Ozg8T
-	MsdLK5s3AW+ie+7NamdkltLGDAHuN8APlZQ2K9hPT1uAhxJzezhjSrcWP5U7qLgc5CraIsv7N1dVV
-	ZOi6qhOg4pgccmHHe24WZ9wr8OBQa+QoS+dl5iZxSsfObQsIRffcUb61XKnYigZ4kqRFOrYvrOgk/
-	35ygIfL0pZ6j2Iuz1zFw==;
+	List-Owner; bh=TE/KEBgPMtWQuuUdM56C9M8ZPyEJgfpnVWakxXuFsqs=; b=XgtYtkIck9KUlE
+	ewanx2IboHv4485qxLqvsEIjDlT7zbRj8jWBTfUBVMaXVOHdbeJXvrkAncQ8TZQGteZGdYw56Btyj
+	4YWtVDaAQLeeIH+l7yXMe4WPRl5Fo/+xEmXr+nDhaA/jyHYageslDPEddMFc0jXhzk6X9fNngOBAB
+	FyG5vvSOHLJcpvqNNNg7mqJKKJ1ARCLHwk2gASrBPmbFNQ0L05SnlRq/emFaYL0hM+04PaQsUZsVo
+	ES4KXDEKSob4wMCRqds9oVGS8tcs2qPPd8hy+J+ObZOjuaDK2VbcXg9sSW55c6PAtKfrAyFB9T+4F
+	uvziB0ykU5zcrY0iaNXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1gYn-0000000E81B-37Aa;
-	Wed, 02 Sep 2026 08:43:09 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1x1gz6-0000000EBjq-08dz;
+	Wed, 02 Sep 2026 09:10:20 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1gYl-0000000E803-0QRt
+	id 1x1gz3-0000000EBh6-3kgQ
 	for linux-rockchip@lists.infradead.org;
-	Wed, 02 Sep 2026 08:43:08 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-6a374bea882so1292974a12.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 02 Sep 2026 01:43:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1788338585; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Ya3+d3rEcSniebNYmlVy7kULm03nw8/hDUq+Trn9DS6OPetqog/uqPJhb6uBuJtFVR
-         QyfbxgBfKFTJE7Cc50dh5oqNECRMkQGv0N68XTtZH/IHpQHaradXXES6WvtQENPMq1K7
-         LvVqYSCZJqlwtClznv32KVHVrDQw6PcWdmJEH9YivnZOt+mJjJnY7Wf00eUuPQfXKaCc
-         +D4f3gAus/vO6itV2GcLClShvSFj6CRBycxQbBl8yWYnpI5ZhemwC5YQZnbIOgXAKqTC
-         eBzNQj6CagwfBwQ/d+Mnx9xKH4T/TnJ+wdcLIs9vtIc8Nl6wJSJqgHhqQxIfwKg3IFuj
-         G4aw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=/501w4jjREjvvsgS+ZOz+uCZPO58x///HL9BUvCfOWM=;
-        fh=5qEO5FOk058RbXc8qm2t1EXRI85CfQlbhGVyNNL+HUw=;
-        b=SRcsZ+EW6Ad617JXuh69K1+QC4JNrpvL/G/K+IT4uHtJS5f6xjuhkLMsU3ZljC6HGd
-         6Mx1GJ6JDbIKQd9qU/XSUZ03NzSs5MbnXS2k+gE0ukWVrDnDH6b5C1mcbXKXIlu3EfDN
-         2r72Cnkfs335dtd8ND/23r/ZwXmGGGZgFf2Amofm9KS9fiEQzzXIBAOEJqxsYZcmNSWc
-         fNrknxL7rhFEUX+3euVxGsVBbLfF+7qfL9pJADCyQEReI12tErpGGJu9NiUb8MeWUP3m
-         3YI2J9H0jg7nK5a5sk3ms/pbTCRuCdzJyFu8ONX6ec6fO0pOUoBiqlf8xD+116MTi8D+
-         wuYw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1788338585; x=1788943385; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=/501w4jjREjvvsgS+ZOz+uCZPO58x///HL9BUvCfOWM=;
-        b=BAj59jbSXsd8VMCZBRBquj6eAE3fjfADPatRi+K2mGcJW8AFZQ9gNNMeSurMJvW6v3
-         x869LU4cU372DbBsCienB57O3f00XQME0o1X9GTJV2gtcFRe5XEHTd9PgHVS/8ruhbgO
-         tazqtqDUJFxuiB2Pf1To1ZUHeyE163IPJrZyqlpncEnrszWv5gg2RwIx1AWKCtO5XDXn
-         /W+9+clQG+buv4ndf1udY04bN7Hwpe8cVDVjlkfP82sjeJZmSOROpwV7reSetneg7r6F
-         qLFaG1+DgDJ0DtU0bvW/GuhPJdcgk6Us4T+zjlwMb+uchOUywyBl/4b77CgkCDWiNShW
-         UEgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788338585; x=1788943385;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=/501w4jjREjvvsgS+ZOz+uCZPO58x///HL9BUvCfOWM=;
-        b=f5NyeTQkKwg+NFHAEiS7KaAdHYw94vkWJEQspHSzvKjJGxUwMYA9oappYpKwSzKgYx
-         oUXY/8VP2CrKNHwzv7NoDtEANLLFGIzsqu/PeM2wLeEGEWPJ3Y1hh1GZLPeDmnuWK9HV
-         ifO1KwtWeFaepGduYP0d81cspJPd1/d9YrjX1nXoPwl3wt6HHJF0KJ93jCAgF5cmJfTB
-         WtIiTdQNaI1gHsAw/BvGb8FIcsh+1O71yG75WEJEpbfTaCgyMsutt0bCEGX0Y1EdzQLl
-         Ns44DoGhE6D/HjurxYvgB5+Gnz7RVv1cwPQ6/ktmuPpZeePiK2GzUU+jO1FZpfW/SeOC
-         nJew==
-X-Forwarded-Encrypted: i=1; AKwUvBwu11fMaZW0g5VSWg0QFhXY0FNLDCOJHJgY3bkmEoWwMtgiYJz571YLUJfvmRcCDa4bjxTRljjc3l/ZYV+NTg==@lists.infradead.org
-X-Gm-Message-State: AFuF++kwlrZVryRe8g2X/t9HdikKrd9kVE/WP3oOo4+g4ZwrWJ7K0p3g
-	B28z6CRpeK0wE1JGvOwh+voKkeUtkQMWGZB4c0Ze+IWTdrUjKvw+S9F53xeipi2415G2FOowrgq
-	eLBDWzjhuIy2SqE1FxinBhKMOlCcVamPPTFOc5sP7IKcG3FcgszxzkNwytg==
-X-Gm-Gg: AYBFou3tgAHClJC7oM8EhdWOlrutIGhi8jyoQZ5VsykrplUc+RvZCVcQfrw4rD7+RP/
-	rTqdr1xAVTN8SB8B73pOJxFYX4fVHOpBxLOV9J987njKKyULphUVEak+VT9f+a5THtNHMd8TKKY
-	hYj+OSmWJu+f5S298Pnp9msbhUnxooIbEG0fU+tlCQjz/g6lkoLnl43f5XEJudq3yIjB8h2flse
-	zS1OdW6YyHh1wnRmC6s0FjKlWcm9FmbPCJITR4wbutlpnKT3b/Oiwyj5xnk1ma1Nzbd8DI7wTEC
-	sckPDar5UacOI9JbxDWw1GotmvV6PXaA4JP9luwQY60RjvpZr+PcXQ0FTUXNOtCtUw4mnZf3gwJ
-	3
-X-Received: by 2002:a17:907:9625:b0:c25:4f7c:8ec5 with SMTP id
- a640c23a62f3a-c25d5505c79mr194261566b.23.1788338585138; Wed, 02 Sep 2026
- 01:43:05 -0700 (PDT)
+	Wed, 02 Sep 2026 09:10:19 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id C37914E4148F;
+	Wed,  2 Sep 2026 09:10:12 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 935226053C;
+	Wed,  2 Sep 2026 09:10:12 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E1B3A11C792D5;
+	Wed,  2 Sep 2026 11:10:06 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1788340211; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 in-reply-to:references; bh=dWQm08I1k5LyUTw+wBhW0HthtUeHce+mEdC10fdxN/A=;
+	b=1SirV6k9/fAEqVYJRgYQiMtRJcFLFJPD9Qa4SPbnxEoaWVGcRuMj27XmFPWJx+kj88yr6f
+	KM3VAlxhYw00T6QKynkYib37xl0DjDmgT8GWTwD1It91umoj0nBGz1iQ4/gCPi+AM5MZRs
+	1/Pnl1HsFVZSKN19K8BbCJyFMAr4m40pnJvI8stNwbccFQopVO2XbpYfVDZzsyqGzxCUfQ
+	RnQvv2CV5zryqYFdoJYXGLulq7bmwVm6tdMyl9niiFkFa5vqXADjm6hemoiKtSK9iCEp5u
+	Gt6KmJVE68xAjOKQrb+H6RTkhc2xxvicacXTlbPhyIpbN42rWTvyHkQNjK8S2w==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Alexey Charkov <alchark@flipper.net>
+Cc: Srinivas Kandagatla <srini@kernel.org>,  Rob Herring <robh@kernel.org>,
+  Krzysztof Kozlowski <krzk+dt@kernel.org>,  Conor Dooley
+ <conor+dt@kernel.org>,  Heiko Stuebner <heiko@sntech.de>,  Michael Walle
+ <michael@walle.cc>,  Finley Xiao <finley.xiao@rock-chips.com>,  Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>,  devicetree@vger.kernel.org,
+  linux-kernel@vger.kernel.org,  linux-rockchip@lists.infradead.org,
+  linux-arm-kernel@lists.infradead.org,  stable@vger.kernel.org
+Subject: Re: [PATCH 1/4] nvmem: rockchip-otp: Serialize reads
+In-Reply-To: <20260901-rk3576-otp-cpuid-mac-v1-1-ea9135270fc2@flipper.net>
+	(Alexey Charkov's message of "Tue, 01 Sep 2026 19:33:11 +0400")
+References: <20260901-rk3576-otp-cpuid-mac-v1-0-ea9135270fc2@flipper.net>
+	<20260901-rk3576-otp-cpuid-mac-v1-1-ea9135270fc2@flipper.net>
+User-Agent: mu4e 1.12.12; emacs 30.2
+Date: Wed, 02 Sep 2026 11:10:06 +0200
+Message-ID: <87ecfc81e9.fsf@bootlin.com>
 MIME-Version: 1.0
-References: <20260901234351.190506-1-anarsoul@gmail.com>
-In-Reply-To: <20260901234351.190506-1-anarsoul@gmail.com>
-From: Alexey Charkov <alchark@flipper.net>
-Date: Wed, 2 Sep 2026 12:42:57 +0400
-X-Gm-Features: AcwNN1VBSx96Am5bMyza-3Z81_49VCDlB0IsZHW5X9pTU9Oq40nOjzgNhihFkBM
-Message-ID: <CAKTNdwFqSBt4QVCuYJxTyEDsxkW96JbUirFNAgJYWVLHzGpk4A@mail.gmail.com>
-Subject: Re: [PATCH 1/2] clk: rockchip: rk3399: add 85.5 MHz rate to PLL rate table
-To: Vasily Khoruzhick <anarsoul@gmail.com>
-Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
-	Jerome Brunet <jbrunet+clk@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_014307_165752_C214E120 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20260902_021018_082978_D2D49554 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,36 +76,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgVmFzaWx5LAoKT24gV2VkLCBTZXAgMiwgMjAyNiBhdCAzOjQy4oCvQU0gVmFzaWx5IEtob3J1
-emhpY2sgPGFuYXJzb3VsQGdtYWlsLmNvbT4gd3JvdGU6Cj4KPiA4NS41IE1IeiBpcyB0aGUgcGl4
-ZWwgY2xvY2sgb2YgdGhlIHN0YW5kYXJkIERNVCAxMzY2eDc2OEA2MCBtb2RlLAo+IHdoaWNoIGlz
-IHRoZSBuYXRpdmUgbW9kZSBvZiBtYW55IGNoZWFwIEhETUkgcGFuZWxzLgo+Cj4gVXNlIGEgMTM2
-OCBNSHogVkNPICgyNCBNSHogKiA1NywgYWxyZWFkeSB1c2VkIGJ5IHRoZSBleGlzdGluZwo+IDEz
-NjggTUh6IGVudHJ5KSB3aXRoIHBvc3RkaXYxID0gcG9zdGRpdjIgPSA0IHRvIGhpdCA4NS41IE1I
-ego+IGV4YWN0bHkgaW4gaW50ZWdlciBtb2RlLgo+Cj4gQXNzaXN0ZWQtYnk6IENsYXVkZTpjbGF1
-ZGUtZmFibGUtNQo+IFNpZ25lZC1vZmYtYnk6IFZhc2lseSBLaG9ydXpoaWNrIDxhbmFyc291bEBn
-bWFpbC5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYyB8IDEg
-Kwo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPgo+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGst
-cmszMzk5LmMKPiBpbmRleCBjMmIyNDNkN2E1ZTIuLmRiMjQxZDJkZjYyNSAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMKPiArKysgYi9kcml2ZXJzL2Nsay9y
-b2NrY2hpcC9jbGstcmszMzk5LmMKPiBAQCAtOTgsNiArOTgsNyBAQCBzdGF0aWMgc3RydWN0IHJv
-Y2tjaGlwX3BsbF9yYXRlX3RhYmxlIHJrMzM5OV9wbGxfcmF0ZXNbXSA9IHsKPiAgICAgICAgIFJL
-MzAzNl9QTExfUkFURSggMTQ4NTAwMDAwLCAxLCA5OSwgNCwgNCwgMSwgMCksCj4gICAgICAgICBS
-SzMwMzZfUExMX1JBVEUoIDEwNjUwMDAwMCwgMSwgNzEsIDQsIDQsIDEsIDApLAo+ICAgICAgICAg
-UkszMDM2X1BMTF9SQVRFKCAgOTYwMDAwMDAsIDEsIDY0LCA0LCA0LCAxLCAwKSwKPiArICAgICAg
-IFJLMzAzNl9QTExfUkFURSggIDg1NTAwMDAwLCAxLCA1NywgNCwgNCwgMSwgMCksCgpUaGVyZSBp
-cyBhbHJlYWR5IGFuIGVudHJ5IGZvciAxMzY4MDAwMDAwLCB3aGljaCBpcyAxNnggeW91ciByYXRl
-LCBhbmQKdGhlIDE2eCBkaXZpc29yIHNob3VsZCBmaXQgY29tZm9ydGFibHkgaW50byB0aGUgZG93
-bnN0cmVhbSBjbG9jaydzCjgtYml0IGRpdmlzb3IgZmllbGQuIERvIHlvdSByZWFsbHkgbmVlZCBh
-IHNlcGFyYXRlIFBMTCByYXRlPyBIYXZlIHlvdQpjaGVja2VkIHdoYXQgdGhlIGhhcmR3YXJlIGFy
-cml2ZXMgYXQgd2l0aCB0aGUgdW5tb2RpZmllZCBQTEwgdGFibGUgLQplLmcuIHZpYSAvc3lzL2tl
-cm5lbC9kZWJ1Zy9jbGsvY2xrX3N1bW1hcnk/CgpCZXN0IHJlZ2FyZHMsCkFsZXhleQoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 01/09/2026 at 19:33:11 +04, Alexey Charkov <alchark@flipper.net> wrote:
+
+> The OTP controller is driven through a single set of registers holding a
+> state machine which has to be stepped through for every word read, yet
+> nothing keeps two readers out of each other's way. Concurrent reads
+> interleave, and the outcome is either a reader bailing out:
+>
+>   rockchip-otp 2a580000.otp: timeout during read setup
+>
+> or, worse, one of them silently taking delivery of the other's data.
+>
+> Reading two cells in parallel from userspace on RK3576 reproduces both
+> within 150 iterations - 53 read errors and 9 corrupted results, the latter
+> either losing their first word or, in one case, ending in the two bytes
+> which belong to the other reader's cell - whereas the same reads issued
+> sequentially never fail. Concurrency is not hypothetical here, as six
+> thermal sensors source their trim values from the OTP and reach the driver
+> straight from asynchronous driver probing.
+>
+> Guard the read path with a mutex. Reads are the only way into the hardware,
+> as the driver registers no write callback, and they always run in process
+> context, so a plain mutex spanning the whole clock-enable, read,
+> clock-disable sequence is enough.
+>
+> Fixes: 755864feb729 ("nvmem: add Rockchip OTP driver")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Alexey Charkov <alchark@flipper.net>
+
+Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
