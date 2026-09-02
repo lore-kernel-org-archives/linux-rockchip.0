@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC463C624D4
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 22:54:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3439DC624DD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 22:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iaKoS5Tn/HdzKWgaigCxwqoiYW6DZVlGM1LYgM0SmV4=; b=dCClvOGEvq8Ol4
-	2spfxlbOfdLiQGaDEO3ZNkFCAFOroJ2UEvVoJGIp0rkzgAAXfNqdpHmK8k8tA8mdGZJqp8SX4hjuN
-	BhdpY1kOvfPt+uKQseJH8BfPnwTa4zG3JaPLDn7zKUjuc2fIS6xAYLo5cvmZH9HlLbFWzWo5eJSFA
-	RS4B+6VFvPDGinH1zFN594p04r9wrcADEYOrDUmmX9gXCWe+mvnrSVDmD0GDofJTg3NCjw81TYV6R
-	Zje9AczWArYQatVQCzRqqWzqRrCOkKzvJvoha65pC5YgSZ9pR+qv74upP39u5rLI9FCa5plW7yijN
-	hXdG6ADtY+Oai38hnP+g==;
+	List-Owner; bh=ezHLNAgQvr9kR+XPVYRA+Nq9V4n0r7J9AMYriZCt+GI=; b=wRIJ0Czmr0JwsR
+	jcHazwO1/EsC/kBO2cWWipARw8FiFLs/m0QOoYG1+Itn64c1immIJK89qFulNw0hQsRkT6nM4KimG
+	O4ZDQwSkDipbqeJ1vT4yufV/JqrLUXWPqCorOz0yGcmKaNNwuxonRqdaoV81OP/an3tv4iP8ro4J/
+	wMqJxa/XTRB/6uIzQhp9LWl4wnNQBwvtAkHVxfWMOFmsFWmLRperlF+QKmSwLr/fhKL0Cj8m9HkC+
+	h3T6QkHMafhW6OhlQAF9frw3BEcIyVKTdK/yMOanQyItHRgZGBTsqkrq+WufRMASoRR8E49MWD1No
+	HbE1QjCNrSazqTt1RxPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1tqU-0000000G2Nd-0pAO;
-	Wed, 02 Sep 2026 22:54:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x1tqY-0000000G2TM-3JAO;
+	Wed, 02 Sep 2026 22:54:22 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1tqR-0000000G2M5-3ZoZ;
-	Wed, 02 Sep 2026 22:54:17 +0000
+	id 1x1tqT-0000000G2M8-3xkr;
+	Wed, 02 Sep 2026 22:54:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788389652;
-	bh=nePb0kyyjWqyo41M5uZpRKK5NGs/j1qWip36phnEELk=;
+	s=mail; t=1788389654;
+	bh=YV4r8T3ojzOgJhZGbuAEwdatFZPup5YHCOGLl5x/T6E=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qJ0FAEqoVEni6OUx9R97n5GmDzyoSnozbyED1+7NLNSVYzAAqlWgc1qPMXcZ+qHPo
-	 mflP5+PlA038RmY9qTuDUpp1xZWJkWpB2LDRNTH2lfCWTJp+WwqrliYVHHWxnmGf5n
-	 uax01CbgekhA4amgL5ffe3ps4I/b9Rmj2uZEBC9BZDpADsBPXEcAJn86Ny8Q2KdmV2
-	 9dE/4kXLRnj5EVDMV/kLn2+lp1pqH5sDrcI+nhe24miuI43RI66m0tNaif8p4Dme+6
-	 Gx5ujoy57OiyelXuzTG+EKxD1nxgBz1D3tpKfjQizzrvYH6+DwXU0mV0p6StCCZXkk
-	 Sza6vZXr6ACKA==
+	b=mrFm7/mN0JwAAeta/LghL0JBsHJLcMeQwwUeJ0EVfdlCO9lUomKvRdiK0PhNHaUpB
+	 DRTzNVI7CUGig9f6bc7fRNn3RqznloydqPI9HBmtLcSOpCjBUP436PTbNoGAKp9PL8
+	 eMsE2zB8wX5UPJwW9/Rr3UWSeoBDU7la0cr7qa7G9I3a8sY1euBDhlNv+zrilhy8xL
+	 0Mlr7qAnqO5TeKvn6rwR49FwaUaruJawNCCjqY0XeRLy8PF9/hMejDJGK7Onml39pH
+	 gbLG4/KRosipSHKeWti+0K15uSC8wBXu2jUCd4Rk/N7NAS+ajNte8TNW/X9bgT4Q/S
+	 JRQCmm292A5AA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7876A17E0934;
-	Thu, 03 Sep 2026 00:54:12 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 90DFC17E0EB0;
+	Thu, 03 Sep 2026 00:54:14 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 03 Sep 2026 01:54:08 +0300
-Subject: [PATCH v4 01/14] dt-bindings: display: vop2: Add missing reset
- properties
+Date: Thu, 03 Sep 2026 01:54:11 +0300
+Subject: [PATCH v4 04/14] drm/rockchip: vop2: Send pending event when
+ atomic_enable() fails
 MIME-Version: 1.0
-Message-Id: <20260903-dw-hdmi-qp-yuv-v4-1-fb45bf4147eb@collabora.com>
+Message-Id: <20260903-dw-hdmi-qp-yuv-v4-4-fb45bf4147eb@collabora.com>
 References: <20260903-dw-hdmi-qp-yuv-v4-0-fb45bf4147eb@collabora.com>
 In-Reply-To: <20260903-dw-hdmi-qp-yuv-v4-0-fb45bf4147eb@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -69,12 +69,12 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
  dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
+ Igor Paunovic <royalnet026@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_155416_331100_7CD583CE 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20260902_155418_154568_1B77A82F 
+X-CRM114-Status: GOOD (  16.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,105 +91,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document the VOP2 resets corresponding to the AXI, AHB and DCLK_VP0..2
-clocks, which are common to all supported SoCs, plus DCLK_VP3 which is
-provided only on RK3588.
+vop2_crtc_atomic_flush() stashes the CRTC completion event in vp->event
+and relies on the frame start interrupt (VP_INT_FS_FIELD) to deliver it
+later via drm_crtc_send_vblank_event().  Since atomic_enable() runs
+before atomic_flush(), bailing on an error path makes it skip
+drm_crtc_vblank_on() and leave the video port disabled.  atomic_flush()
+still traps the event in vp->event, but since the port never scans out,
+the frame start interrupt does not fire and the event is not delivered.
+Userspace waiting for the flip completion then blocks indefinitely.
 
-While at it, move 'iommus' in the example up into the expected position
-to keep the properties in alphabetical order.
+Note the event cannot be flushed from atomic_disable(), as userspace
+waits for the completion before committing the next state, so the
+disable does not arrive and draining it there would deadlock.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Use the newly added vp->enabled flag to detect this in atomic_flush()
+and send the event immediately when the port did not come up, rather
+than deferring it to an interrupt that will never occur.  This also
+avoids the spurious drm_crtc_vblank_get() WARN previously hit on the
+failed enable path, where the vblank is not on.
+
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://lore.kernel.org/all/20260706194935.AC7601F000E9@smtp.kernel.org/
+Tested-by: Igor Paunovic <royalnet026@gmail.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- .../bindings/display/rockchip/rockchip-vop2.yaml   | 46 +++++++++++++++++++++-
- 1 file changed, 44 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-index 93da1fb9adc4..f993cef0323b 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-@@ -82,6 +82,20 @@ properties:
-       - {}
-       - {}
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 060f9395a235..8755b614df34 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -2083,8 +2083,19 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
+ 	spin_lock_irq(&crtc->dev->event_lock);
  
-+  resets:
-+    minItems: 5
-+    maxItems: 6
+ 	if (crtc->state->event) {
+-		WARN_ON(drm_crtc_vblank_get(crtc));
+-		vp->event = crtc->state->event;
++		/*
++		 * A failed atomic_enable() leaves the video port disabled with
++		 * no scanout, so the frame start interrupt that normally
++		 * delivers vp->event never fires. Send the event right away in
++		 * that case to avoid stalling the flip completion.
++		 */
++		if (vp->enabled) {
++			WARN_ON(drm_crtc_vblank_get(crtc));
++			vp->event = crtc->state->event;
++		} else {
++			drm_crtc_send_vblank_event(crtc, crtc->state->event);
++		}
 +
-+  reset-names:
-+    minItems: 5
-+    items:
-+      - const: axi
-+      - const: ahb
-+      - const: dclk_vp0
-+      - const: dclk_vp1
-+      - const: dclk_vp2
-+      - const: dclk_vp3
-+
-   rockchip,grf:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-@@ -148,6 +162,12 @@ allOf:
-         clock-names:
-           maxItems: 5
+ 		crtc->state->event = NULL;
+ 	}
  
-+        resets:
-+          maxItems: 5
-+
-+        reset-names:
-+          maxItems: 5
-+
-         interrupts:
-           maxItems: 1
- 
-@@ -194,6 +214,12 @@ allOf:
-             - {}
-             - const: pll_hdmiphy0
- 
-+        resets:
-+          maxItems: 5
-+
-+        reset-names:
-+          maxItems: 5
-+
-         interrupts:
-           minItems: 4
- 
-@@ -246,6 +272,12 @@ allOf:
-             - const: pll_hdmiphy0
-             - const: pll_hdmiphy1
- 
-+        resets:
-+          minItems: 6
-+
-+        reset-names:
-+          minItems: 6
-+
-         interrupts:
-           maxItems: 1
- 
-@@ -289,9 +321,19 @@ examples:
-                               "dclk_vp0",
-                               "dclk_vp1",
-                               "dclk_vp2";
--                power-domains = <&power RK3568_PD_VO>;
--                rockchip,grf = <&grf>;
-                 iommus = <&vop_mmu>;
-+                power-domains = <&power RK3568_PD_VO>;
-+                resets = <&cru SRST_A_VOP>,
-+                         <&cru SRST_H_VOP>,
-+                         <&cru SRST_VOP0>,
-+                         <&cru SRST_VOP1>,
-+                         <&cru SRST_VOP2>;
-+                reset-names = "axi",
-+                              "ahb",
-+                              "dclk_vp0",
-+                              "dclk_vp1",
-+                              "dclk_vp2";
-+                rockchip,grf = <&grf>;
-                 vop_out: ports {
-                     #address-cells = <1>;
-                     #size-cells = <0>;
 
 -- 
 2.55.0
