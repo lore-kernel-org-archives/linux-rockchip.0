@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE8F1C624D6
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 11:11:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CBDC624D7
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 11:11:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sXvkFinuzjnGkix5Wcz9D6fkgj5NSmwNythuHzyG1Gk=; b=WsqZ/6nB2MOLTz
-	SnIGP/4PG00/lLYxWZI2/djmvV225RDek2L1nTI3o3thVdcSwMVzTAkGsBa4BbNGVMmXDbe9Bt9fs
-	jrzdqdRSS5+qOHS4NeaVTBWImjV1Qcai2pvoXZ9X6dqezB2F5FJsiSXMd4maA8xOcCRa58EuIDNA/
-	dw9oykFcPNWB+JwBuJAvB5K1sklea1W33M15R/AYzujDl9GEV6wxNF3JmHc0dmzDRYHc+ri1vZFIr
-	Xbe6VkEvmkZlxCD7mMcZVBPBvQ2N7ykQPrg35ZcST/h/7oa6Pi+YLJxlszY3LTbm4RYCH5tGRSVhV
-	wIJby6G2t3kl4ALJzQ/Q==;
+	List-Owner; bh=OCVu76JcV+M319au7WbUVxxN3dqEPL+i1jkQV04PTL4=; b=oRNWGK9vVMse6y
+	sc6e/ixUG2Q/LSm8O5irszLq041i/Ud+FJ/wMLmhCwBiMgGWuH4eMsVosvsa4qjw/2Bgt7yuBOGok
+	WBjAb7fcZKHUUouynXhj5k7TThh7BVRBytCf1owINOPA+j9kA4RCKTh3b91IRw0F/mKnSJmOZy1qf
+	6Y6vKK5Wa/mJvg9QPH8XDj7dOuPOnsgugds503NIO1leE9yPImsESsX+pQOPb8JfIP8u5CeTnG24E
+	hJLYPj4XBwtTFw53A8jNi08n/w2l0hoVZrCVJeRJLJzl94QAbcjvMXfYNkU0dKzUdNY+L/1V1EeDq
+	6T9dpP36rks1r49dtjfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1isQ-0000000ESsB-0v9O;
-	Wed, 02 Sep 2026 11:11:34 +0000
+	id 1x1isP-0000000ESrV-45wV;
+	Wed, 02 Sep 2026 11:11:33 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1isN-0000000ESn6-3JF1;
-	Wed, 02 Sep 2026 11:11:33 +0000
+	id 1x1isN-0000000ESmk-0gVe;
+	Wed, 02 Sep 2026 11:11:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=Y+Lnxa8qAtl3sfnYbsfNIbtAod9H5VSN4WCi19YjAwE=; b=J5MFQB1PK3ZEcm5ibvQufTLHUS
-	HWpV9V6qfQEPIkzcAtU3BIHBZ0Kt4DsNOXF7nRLahualDqKSoOHbNfWjXBB5Lfe/HQDU0W3SQP9Xl
-	jN8iIBtLqash0N94ZgqfWlY/5txdT+2pb5nCCvnLIvgcenvrJCVHyN3kP0xU9Bi/Xmi812q7mDJjA
-	6QRBPrcIfVjXNBMhqmf7O/GViI8XeKvddqOG+oOLNnTG1Cg51nLxekReL/x0/aFoi2lHzJyaF1wes
-	+0HL/cZ8EKyrGWK2cf+4Dm4ECBs0g0FOeAaxfGJL8ZGjrjcSa4l0ovZgVLAD02MxalzNKLaO01rUn
-	EIG0jseg==;
+	bh=e13hcDNI+tjK7ZYito3EK+F+gJpiQQy7yUGftOidPTo=; b=H0QaVw5Qja/LxL3EoDTsZSAWu+
+	DK9KFWSCKqQug6/BxhFEznFPH/fb8uU+FKbmdcmGIJI8l7KZxIVVAK9cnRtqjmT1StRVezLK4ows1
+	ax/aQocKpxQzM0sEV5+ZW1RnbtyO4lylYn+Ot1lL1LQY/I4dktFtVXXuWMv/ScYt71xnXh+/+Wgyt
+	NFxV2Wxct9H+/9xCIV/NoXgBsy3vRKRrSpitX1seuym0/ZoHxX3pLC/RpNUJgSnkOaTQFEwE2qtMl
+	wFnO0cNlZeu84wAPHLH8uFgJSBSEKC9TghfFt8sA78yOqRwkC+svXiAi9OLpcoe6+w71YkDZOUcsz
+	A6FYh+qQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
+To: Marc Kleine-Budde <mkl@pengutronix.de>,
+	kernel@pengutronix.de,
+	Vincent Mailhol <mailhol@kernel.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Quentin Schulz <foss+kernel@0leil.net>
+	Cunhao Lu <1579567540@qq.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Cunhao Lu <1579567540@qq.com>,
-	Marc Kleine-Budde <mkl@pengutronix.de>,
+	linux-can@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Quentin Schulz <quentin.schulz@cherry.de>
-Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: support CAN1-CAN2-UART4 adapter for RK3588 Jaguar + enable CAN0
-Date: Wed,  2 Sep 2026 13:11:14 +0200
-Message-ID: <178834747222.2268650.15149858790607663038.b4-ty@sntech.de>
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: (subset) [PATCH v6 1/4] dt-bindings: can: rockchip: add rk3588 CAN-FD compatible
+Date: Wed,  2 Sep 2026 13:11:12 +0200
+Message-ID: <178834747221.2268650.16431820094445507549.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260811-jaguar-can-v2-0-7e78415b5a08@cherry.de>
-References: <20260811-jaguar-can-v2-0-7e78415b5a08@cherry.de>
+In-Reply-To: <tencent_AE1A1199FC8C9ADC680C6458134A46B40309@qq.com>
+References: <tencent_AE1A1199FC8C9ADC680C6458134A46B40309@qq.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_041131_828355_92EE94C5 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20260902_041131_205612_B2A1DB23 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,22 +77,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 11 Aug 2026 16:08:25 +0200, Quentin Schulz wrote:
-> This depends on the RK3588 CAN driver support series:
-> https://lore.kernel.org/linux-rockchip/tencent_76C8BC251C8C3C068C23BAF859351DD3300A@qq.com/
-> I send this series early to try to prove that CAN2 also works on RK3588
-> as Cunhao Lu stated they only tested CAN0<->CAN1 loop. I cannot test
-> CAN-FD as neither Rk3588 Jaguar nor the Haikou carrierboard for RK3588
-> Tiger have CAN-FD-able transceivers according to their datasheets.
+On Thu, 30 Jul 2026 22:34:02 +0800, Cunhao Lu wrote:
+> RK3588 integrates a Rockchip CAN-FD controller variant that is not
+> fully compatible with RK3568v2. The RX FIFO count register field is
+> encoded in bits 7:5 on RK3588, while RK3568v2 uses bits 6:4.
+> 
+> Add a dedicated rockchip,rk3588-canfd compatible to describe this
+> variant. Do not use rockchip,rk3568v2-canfd as a fallback, because that
+> would describe a register layout that does not match the hardware.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: enable CAN0 on RK3588 Jaguar
-      commit: b217437b8f20cbc745d789ea99244274b9dc592f
-[2/2] arm64: dts: rockchip: support CAN1-CAN2-UART4 adapter for RK3588 Jaguar
-      commit: 7aa165b62ccaf340da22c517074e7c6853db55cd
+[3/4] arm64: dts: rockchip: add CAN-FD nodes for RK3588
+      commit: 685b81f8c717b0f7ec7219f35ead626758ef3aec
+[4/4] arm64: dts: rockchip: Enable CAN controller on RK3588-Tiger-Haikou
+      commit: 0fb792388d2d39e35b7b366f491f846a7ebd8630
 
 Best regards,
 -- 
