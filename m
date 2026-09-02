@@ -4,79 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76328C624D4
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 22:24:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC463C624D4
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 22:54:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GUxjsigYO27MITQN9Sc16YFnc37bivx1/3ufkN0hrkM=; b=g6QGWNkV3ixzPA
-	imwdPXK/tCLI8uPpMSapakWfmnSvbHm/W9RsbIdWisTIl1+r8Xuai7chCxYrNPRBhk/dtEtaDNuNY
-	rAU/mu0+YUmh1gaudkpGikDl6hUd+Zg5Tvllp5uwgpTN9GPuZG+xZtBkh7LU+dO+iCd/cv0l14MKc
-	XtK2GTIiX9JotiXzQeC7j6eBlYhOTJs5IawbyJUSFiql2yN1AS3RCrio7SPeUCYtH2+lALwJ5MDBA
-	PQgd6N5cdHErfhnfXQ+mLZRjMUCtUbl6aknquy5qb+KITk+PlV9YLOpqcgR2w6QpRN9+cMwXN1ami
-	3o4qlwXW8Mqtc98dOB8Q==;
+	List-Owner; bh=iaKoS5Tn/HdzKWgaigCxwqoiYW6DZVlGM1LYgM0SmV4=; b=dCClvOGEvq8Ol4
+	2spfxlbOfdLiQGaDEO3ZNkFCAFOroJ2UEvVoJGIp0rkzgAAXfNqdpHmK8k8tA8mdGZJqp8SX4hjuN
+	BhdpY1kOvfPt+uKQseJH8BfPnwTa4zG3JaPLDn7zKUjuc2fIS6xAYLo5cvmZH9HlLbFWzWo5eJSFA
+	RS4B+6VFvPDGinH1zFN594p04r9wrcADEYOrDUmmX9gXCWe+mvnrSVDmD0GDofJTg3NCjw81TYV6R
+	Zje9AczWArYQatVQCzRqqWzqRrCOkKzvJvoha65pC5YgSZ9pR+qv74upP39u5rLI9FCa5plW7yijN
+	hXdG6ADtY+Oai38hnP+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1tNA-0000000Fzpb-1VfT;
-	Wed, 02 Sep 2026 22:24:00 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1x1tqU-0000000G2Nd-0pAO;
+	Wed, 02 Sep 2026 22:54:18 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1tN6-0000000FzoW-0TMd;
-	Wed, 02 Sep 2026 22:23:58 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id A2C411A1968;
-	Wed,  2 Sep 2026 22:23:53 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 682F45FF79;
-	Wed,  2 Sep 2026 22:23:53 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id C898611C795A7;
-	Thu,  3 Sep 2026 00:23:40 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1788387828; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=WYk4FNP1vreOpbsIcYyMXKlgV124hwvOajDLIuuzHrM=;
-	b=Hsl907RxhvM5OKbp5zT4sP1a5g1yLrMhcO+HShZown8lOdBH+BnT0SyRlBMlk8hUOY1krb
-	JIqR4LmjtpWkXVSS1VqEP5Gp0ZCx8h/jn3O9ntVTZ8pPUTQahIY1/MZRNht9hm74AA/gSk
-	Bi6Vchv25i8u2PZqgqny+GrTEzPf+XkuMTuLRx1xWl/meYF+lhgG3ETQoJRh5r0Ci15Gjq
-	AueIB5XXKGt0H4MoWuOyCH3FPDvM8XpSPa4m30H5b1DWFRV65ZVHYy587IJobAMW0yjkae
-	oDKR0TFuC8yYm26+U/DJwCRXXS3pT7mst8eLn2+qQLzABqCqO3ULLB+Lhu8LIw==
-Message-ID: <50fdfff1-1597-48bb-b164-116d5ca4e865@bootlin.com>
-Date: Thu, 3 Sep 2026 00:23:39 +0200
+	id 1x1tqR-0000000G2M5-3ZoZ;
+	Wed, 02 Sep 2026 22:54:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1788389652;
+	bh=nePb0kyyjWqyo41M5uZpRKK5NGs/j1qWip36phnEELk=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=qJ0FAEqoVEni6OUx9R97n5GmDzyoSnozbyED1+7NLNSVYzAAqlWgc1qPMXcZ+qHPo
+	 mflP5+PlA038RmY9qTuDUpp1xZWJkWpB2LDRNTH2lfCWTJp+WwqrliYVHHWxnmGf5n
+	 uax01CbgekhA4amgL5ffe3ps4I/b9Rmj2uZEBC9BZDpADsBPXEcAJn86Ny8Q2KdmV2
+	 9dE/4kXLRnj5EVDMV/kLn2+lp1pqH5sDrcI+nhe24miuI43RI66m0tNaif8p4Dme+6
+	 Gx5ujoy57OiyelXuzTG+EKxD1nxgBz1D3tpKfjQizzrvYH6+DwXU0mV0p6StCCZXkk
+	 Sza6vZXr6ACKA==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7876A17E0934;
+	Thu, 03 Sep 2026 00:54:12 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Thu, 03 Sep 2026 01:54:08 +0300
+Subject: [PATCH v4 01/14] dt-bindings: display: vop2: Add missing reset
+ properties
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v3 01/10] net: stmmac: move XPCS lifetime
- management to platform drivers
-To: Coia Prant <coiaprant@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Vinod Koul <vkoul@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- Romain Gantois <romain.gantois@bootlin.com>,
- Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
- Russell King <linux@armlinux.org.uk>, Shawn Lin <shawn.lin@rock-chips.com>,
- David Heidelberg <david@ixit.cz>, netdev@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-renesas-soc@vger.kernel.org
-References: <20260901150111.141037-1-coiaprant@gmail.com>
- <20260901150111.141037-2-coiaprant@gmail.com>
-Content-Language: en-US
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-In-Reply-To: <20260901150111.141037-2-coiaprant@gmail.com>
-X-Last-TLS-Session-Version: TLSv1.3
+Message-Id: <20260903-dw-hdmi-qp-yuv-v4-1-fb45bf4147eb@collabora.com>
+References: <20260903-dw-hdmi-qp-yuv-v4-0-fb45bf4147eb@collabora.com>
+In-Reply-To: <20260903-dw-hdmi-qp-yuv-v4-0-fb45bf4147eb@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Daniel Stone <daniels@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_152356_285964_C843968B 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260902_155416_331100_7CD583CE 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,30 +91,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Document the VOP2 resets corresponding to the AXI, AHB and DCLK_VP0..2
+clocks, which are common to all supported SoCs, plus DCLK_VP3 which is
+provided only on RK3588.
 
-On 9/1/26 17:01, Coia Prant wrote:
-> The current XPCS creation logic in stmmac_pcs_setup() is problematic
-> for several reasons.
+While at it, move 'iommus' in the example up into the expected position
+to keep the properties in alphabetical order.
 
-[...]
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ .../bindings/display/rockchip/rockchip-vop2.yaml   | 46 +++++++++++++++++++++-
+ 1 file changed, 44 insertions(+), 2 deletions(-)
 
-> 
-> Existing platform drivers (intel, rzn1, socfpga) are updated to use
-> the new callbacks by moving their XPCS creation and cleanup logic into
-> pcs_init() and pcs_exit(). In their pcs_exit() implementations, the
-> pointer to the destroyed PCS is explicitly set to NULL to avoid
-> dangling pointer references.
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+index 93da1fb9adc4..f993cef0323b 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -82,6 +82,20 @@ properties:
+       - {}
+       - {}
+ 
++  resets:
++    minItems: 5
++    maxItems: 6
++
++  reset-names:
++    minItems: 5
++    items:
++      - const: axi
++      - const: ahb
++      - const: dclk_vp0
++      - const: dclk_vp1
++      - const: dclk_vp2
++      - const: dclk_vp3
++
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description:
+@@ -148,6 +162,12 @@ allOf:
+         clock-names:
+           maxItems: 5
+ 
++        resets:
++          maxItems: 5
++
++        reset-names:
++          maxItems: 5
++
+         interrupts:
+           maxItems: 1
+ 
+@@ -194,6 +214,12 @@ allOf:
+             - {}
+             - const: pll_hdmiphy0
+ 
++        resets:
++          maxItems: 5
++
++        reset-names:
++          maxItems: 5
++
+         interrupts:
+           minItems: 4
+ 
+@@ -246,6 +272,12 @@ allOf:
+             - const: pll_hdmiphy0
+             - const: pll_hdmiphy1
+ 
++        resets:
++          minItems: 6
++
++        reset-names:
++          minItems: 6
++
+         interrupts:
+           maxItems: 1
+ 
+@@ -289,9 +321,19 @@ examples:
+                               "dclk_vp0",
+                               "dclk_vp1",
+                               "dclk_vp2";
+-                power-domains = <&power RK3568_PD_VO>;
+-                rockchip,grf = <&grf>;
+                 iommus = <&vop_mmu>;
++                power-domains = <&power RK3568_PD_VO>;
++                resets = <&cru SRST_A_VOP>,
++                         <&cru SRST_H_VOP>,
++                         <&cru SRST_VOP0>,
++                         <&cru SRST_VOP1>,
++                         <&cru SRST_VOP2>;
++                reset-names = "axi",
++                              "ahb",
++                              "dclk_vp0",
++                              "dclk_vp1",
++                              "dclk_vp2";
++                rockchip,grf = <&grf>;
+                 vop_out: ports {
+                     #address-cells = <1>;
+                     #size-cells = <0>;
 
-Hopefully this covers all the glues out there, fingers crossed for
-the qualcomm one. On Socfpga at least, no breakage reported :)
-
-Romain may be able to run some tests on rzn1 at some point, but I
-suspect this is fine as well.
-
-Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-
-Maxime
+-- 
+2.55.0
 
 
 _______________________________________________
