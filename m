@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B9DBC61DFD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 09:46:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB03C624D0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 10:02:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zG3YMAbmxbqA6hJVFND/XiE7S414y10RrozxBiek5Wg=; b=CGxlCOOKsPNNov
-	Jrp5WXDBV4w66Vl3CPYowDSohSqaT35sYqgm4AWtkmDO75+1oxBISGiSWOdWSEr9asmX9XiOmWodg
-	Q1e1w3stto7PrlU6J0xHnC9jdwzUq8gZAMm3omFXVtQXapVR5VpJLGSrdc8p8p04GZ7m7Rf1IHMFm
-	Fq5TpSkiTQMplsCv4oz+s8pUYJcoSCi4UnEkSzQGn1n4xTjgoKLnypwQLxhMpCKdO1bhha73aA3DR
-	SV/7nvqIjfhrSjWqA+ufLSV5p1Ddnq55XY06cZWl6TlgRiGgHlswNxMPozCVI7g5X2WB6vb7bByLJ
-	oZ5v0RVCguqFgtfg82tA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OlIWIpo4SP3aP92HQqYRhCntoY+O76Ygw6vZ18kvlhA=; b=rvCRYndPqfgdp/
+	HJltgvSGPaw9SzG9Ip1SB1YTt7nQqs86udCm8S9ejPl6TobXMTM8faKVNsiw3mNY68Mrhh6cK3DUF
+	czPr9034XBbEaTK1+UB4jM8JqB8Sw1WHrmX1zS2poamQLd0vnoy7UHI9hbA3KrClNH8TP2OJTTZRt
+	pwiFMOFLVTwZq2R978GSQLh50Fal8s+tHVWcp+fPTRoeXl75iimWxSvFRo7RMQ0i+rqkC1KUlr3xb
+	Z2FEF5x0HrOmFygLVVRBL7mcTj11tNwFkPRmNepGEetkTI8Ft416jn5G4CS8Yr8tEDGAOldE3kHAD
+	ZjuANfdAn8jc0qe38vcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1hXc-0000000EFuW-1erK;
-	Wed, 02 Sep 2026 09:46:00 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1x1hnL-0000000EJ60-48lB;
+	Wed, 02 Sep 2026 10:02:15 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1hXa-0000000EFtb-0sMV
+	id 1x1hnK-0000000EJ4w-0wY4
 	for linux-rockchip@lists.infradead.org;
-	Wed, 02 Sep 2026 09:45:59 +0000
-Received: from [127.0.1.1] (chfd-03-b2-v4wan-176392-cust229.vm15.cable.virginm.net [82.19.20.230])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2BDA419C;
-	Wed,  2 Sep 2026 11:44:22 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1788342262;
-	bh=8oV6y8ZtcTf8WuUM21XZuL0i7ONNvJMzfIYSy8jcdqw=;
-	h=From:Date:Subject:To:Cc:From;
-	b=CeeNuEvCFKyCjbzp28GgY0bu69qLXHVRLlkvH4IBkf8HvSkI0oNf5gTb/igieFp3r
-	 7kCiTE5EqkG6MAw3nZ54JCd0k0ck4huwmLA2Cuwcw1Cg0Hmy22TdnVeOCAhs9ww0Bp
-	 eeGblVWgQWiFlEovd7Er+ZEZJtK+ln21BkvmWVRk=
-From: Daniel Scally <dan.scally@ideasonboard.com>
-Date: Wed, 02 Sep 2026 10:45:43 +0100
-Subject: [PATCH] media: platform: Delay registering rkisp1 media device
+	Wed, 02 Sep 2026 10:02:15 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-48431632951so106318f8f.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 02 Sep 2026 03:02:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788343331; x=1788948131; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=dFXB7NNkv6fd9dgrONxWMWNxCL/FcNjOb3t58PmeVFQ=;
+        b=YImE9tu3DhlEqlcDJaYbtHZzPLYYod95/vCAglqCYVfT1k1jPnhT11H3c/SetFFLJd
+         xuW+pIlUTvysduDmmmVTxQkijmiG54KXxRTwpbQIDu+uZ51Bl7bd+T34KKxyP4Oh5Yy8
+         wO58Di2g0C+sUvqLOIF5XNKdzNfJwZSK125n7rPh3AFKxVOPfYw5IFgSNQvD5/WEv6wn
+         h3p3/jKVOkZge+P4vYp5nbLtbLpd7Nep43ARwenxsUfAYXMCuIMMbGu/Punz57n6UXvP
+         PNEsSeJXEZgEwFUCopsIPZAqdOtWSFaRXS7kHhW7pkMEUtNidsbNfh9lft1NFgw4yEWp
+         fYsg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788343331; x=1788948131;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=dFXB7NNkv6fd9dgrONxWMWNxCL/FcNjOb3t58PmeVFQ=;
+        b=kB13I7mImsuXqUnzAV6uEn5CNYplahawKaEsyrztkbQr6s2wYGbuq2Zlzx6oTflyVd
+         h5ng4dnx0E7oDCMKmkSVCiF4kbTnTPFTmXZBBkioOLkWlKZrTN652ClEMviYPyWZ5ncJ
+         JOG2ye754F5tPkStSfyTYWGXz2DuamKkLbBDfDXBW263c2uZHfI5MOAfKffjYmCchOIK
+         RWV0JK92/aULznrMHU+YFEP2CL/sxXcHifGXVSH7tyXkQ3eCzE+ehRjpoe1EXdCXXqQH
+         Y2Nk1jrcnpHYqTdZyM7Ll8jil0D8+rcRfcuT7m7LpAD/NKJE9cKwmM6QuyTg3nuJMU1o
+         BSFA==
+X-Forwarded-Encrypted: i=1; AHgh+Rq93xeylw1yoPSmcgm8ErqiQf/jHRsK73LUyZoTnb1PsXH3Y6m1zZoZo1fINCAkIELTlGHR6CZOT4PQspbfPQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++lpx8gRtyGqiIC7ggFRA1GvAFO8Em16dwrhX0qMxACuPhMbXwEj
+	VDQURt+wQpNIf8SQdZ9eFE2mUDK1nVobaJngIGgBTqE5t4Lty+M/d96t
+X-Gm-Gg: AR+sD11nRYv09XKfEa6FIY+eIkTuWGjJsvzc1Cwslv8TgxncXfKWGcQcZnbsCv+D9bC
+	qj83p3AsYoajGyyVCQNg4K7IIHoWfr4fR9Ob3I5rvg/81E9STSJY+DNo8SYJsoZQZkWhSFK4a0M
+	Q0ISHAPrTlGJtW8RgFkZy+pC4P2rXZWfhLPt0LbJM0xNkQzL9nu8BFxslT0tSDt5tf2itBolXfq
+	FCKq6h1vYEPtVjDdwmWg3LumjXUA1OWC4D50UZBtyh2v2AVcRpStbfZgXQROFndz6glr3JFlWyW
+	C8V0w+tnmLQ/zyws2vAMbiXS89EmWrQ2d/4xAjPX2BWFkA/r1+8V2LdNEH9aSw9RrzJ5LZlpAZP
+	QcZMTEQlzOF31LI89DhwzCZbEdTb97S0NewND5TudqOvwR95afLm/45/vPTA1h3OkhJLRoxN6sd
+	HsQe6/khAOHuA463QjyZnDoXFYFoS2Wze4XSwViF2HtTtBdtp6ZzzLca1I2mjuPSPk/DKGTc3EZ
+	EPiL8ALProg+ASB4RUOeayGzQ7wb1Bq5xUahOjMtq1Dz0wHp7OdDH0KQz36DucEmfToOw==
+X-Received: by 2002:a05:600c:5487:b0:49c:ca33:9553 with SMTP id 5b1f17b1804b1-49ce580c9b7mr27081125e9.2.1788343331178;
+        Wed, 02 Sep 2026 03:02:11 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B831700C106E30F6C827C62.dsl.pool.telekom.hu. [2001:4c4e:1b83:1700:c106:e30f:6c82:7c62])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49cdd73f7a4sm138612215e9.12.2026.09.02.03.02.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Sep 2026 03:02:10 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v9 05/13] dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+Date: Wed,  2 Sep 2026 12:01:39 +0200
+Message-ID: <20260902100147.16191-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260831040751.24030-1-gahing@gahingwoo.com>
+References: <CAEWPSH5_PmfUCEm5O53=32NQjPKMd4vm--Y2R=4ErMoehtt=tA@mail.gmail.com> <20260831040751.24030-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
-Message-Id: <20260902-enumeration-v1-1-0cb266dd6d41@ideasonboard.com>
-X-B4-Tracking: v=1; b=H4sIAEbwl2oC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDcyMj3dS80tzUosQSoDrdxFQToyRjs9S0FAMTJaCOgqLUtMwKsGnRsbW
- 1AP4nxkJdAAAA
-X-Change-ID: 20260722-enumeration-ae42b36efd04
-To: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org, 
- Kieran Bingham <kieran.bingham@ideasonboard.com>, 
- Daniel Scally <dan.scally@ideasonboard.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3087;
- i=dan.scally@ideasonboard.com; h=from:subject:message-id;
- bh=8oV6y8ZtcTf8WuUM21XZuL0i7ONNvJMzfIYSy8jcdqw=;
- b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBql/BQzYvYoO1KUoFkc55MQKr+MOfUdmyqrEeoq
- ojGJyhXxmCJAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCapfwUAAKCRDISVd6bEV1
- MpdwD/4nNreE/757sxuquaDlvay2VD5LFYUdzeIC7pAMXYcXmqg3hB/2CAuqrqrAWkvIpx6lRqS
- SmB6ytS+gbU7TqAptnil3nZ1bNQMurvPzxKrFROcFD947NHwrdI1Isq1w+uxmLxI7rb2+7i+xuf
- GJQijOtHiWRmVD4g9k9Ys5J1H3kPopN+Heetf8pu9vDkV4eLLaFsBFOLn/ufTMvatxvkecfEpBo
- 1fkatfeQJ80I2twCWKQ2QMfmgD8WRouZ6PeeBjL6M8x6fxKWqtI2K5MDBAtl31FrhpffLpXXY/s
- O7hR1T1ZqvLqCLlA+pLGxnVg+LK39im+BYqLImHmtmU9FLkZ6aSClbz/9mrmxhH0ymUJsv+5VDJ
- VIcuY0rv7vj20s2T0LiRYovQTo+fGLd8SoBsI7dXaBB3RbQSNbMHBSh1xitA6Vk6Jy4XClTOFwM
- ACfwp2wjIbQMYW3HbZEK2u1O6ffArfv61aJoAy/RiiwoLyqlxY1I4UwBgZHoCrED3IAne19PLgy
- OzoBlXN1iB9NAOsy2ekzHGavlZ2tnKLOzmb/0w4fjhCrZaU20KsOfr7mOPvicKo9PQF459kpdUs
- OQRTb89mAccM8DnarM18upl6W2xBvTx/8IX9g5UxTmEfRA8zOKD2VxBvErdcxzTpHQSpPHlntqE
- oGNg/GoiPWR7C0g==
-X-Developer-Key: i=dan.scally@ideasonboard.com; a=openpgp;
- fpr=EEC699ACA1B7CB5D31330C0BBD501C2A3546CCF6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_024558_403127_CF94CCB8 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20260902_030214_288357_D358B970 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,96 +101,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rkisp1 driver registers its media device before creating entities
-or registering the v4l2-async notifier to which the CSI-2 driver (and
-by extension the sensor driver) will bind. This means that the media
-device node will be visible to userspace before the media graph is
-fully prepared.
+Hi Jiaxing,
 
-Delay the registration until the ISP's notifier's .complete()
-callback. As this is the parent callback, that will mean that all
-v4l2-async subdevices must have bound and the graph must therefore be
-fully ready at this point.
+> Here is the table. It does not say what I told you it said, so the
+> retraction comes first.
 
-Suggested-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
----
- .../media/platform/rockchip/rkisp1/rkisp1-dev.c    | 35 +++++++++++++++-------
- 1 file changed, 25 insertions(+), 10 deletions(-)
+Thank you for the table, and for leading with the retraction. The
+replacement is worth more than the sentence it replaces: 364 of 364
+with a single register partitioning the two groups one to one is a
+field with a reason, even if what selects the arm is still open.
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 1791c02a40ae18205f5eb2fd6edca6cda6b459bf..8d423441824ca836dacb0aa1e00cdfc774e61e2e 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -165,8 +165,31 @@ static int rkisp1_subdev_notifier_complete(struct v4l2_async_notifier *notifier)
- {
- 	struct rkisp1_device *rkisp1 =
- 		container_of(notifier, struct rkisp1_device, notifier);
-+	struct v4l2_subdev *sd;
-+	int ret;
-+
-+	ret = v4l2_device_register_subdev_nodes(&rkisp1->v4l2_dev);
-+	if (ret)
-+		return ret;
-+
-+	ret = media_device_register(&rkisp1->media_dev);
-+	if (ret) {
-+		dev_err(rkisp1->dev, "Failed to register media device: %d\n", ret);
-+		goto err_unreg_v4l2_subdev_nodes;
-+	}
-+
-+	return 0;
- 
--	return v4l2_device_register_subdev_nodes(&rkisp1->v4l2_dev);
-+err_unreg_v4l2_subdev_nodes:
-+	list_for_each_entry(sd, &rkisp1->v4l2_dev.subdevs, list) {
-+		if (!sd->devnode)
-+			break;
-+
-+		media_devnode_remove(sd->devnode->intf_devnode);
-+		video_unregister_device(sd->devnode);
-+	}
-+
-+	return ret;
- }
- 
- static void rkisp1_subdev_notifier_destroy(struct v4l2_async_connection *asc)
-@@ -753,16 +776,10 @@ static int rkisp1_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto err_media_dev_cleanup;
- 
--	ret = media_device_register(&rkisp1->media_dev);
--	if (ret) {
--		dev_err(dev, "Failed to register media device: %d\n", ret);
--		goto err_unreg_v4l2_dev;
--	}
--
- 	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
- 		ret = rkisp1_csi_init(rkisp1);
- 		if (ret)
--			goto err_unreg_media_dev;
-+			goto err_unreg_v4l2_dev;
- 	}
- 
- 	ret = rkisp1_entities_register(rkisp1);
-@@ -782,8 +799,6 @@ static int rkisp1_probe(struct platform_device *pdev)
- err_cleanup_csi:
- 	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
- 		rkisp1_csi_cleanup(rkisp1);
--err_unreg_media_dev:
--	media_device_unregister(&rkisp1->media_dev);
- err_unreg_v4l2_dev:
- 	v4l2_device_unregister(&rkisp1->v4l2_dev);
- err_media_dev_cleanup:
+The third value is the honest kind of catch too - a row that breaks
+the lockstep and narrows the claim to the regular datapath instead
+of being averaged into it.
 
----
-base-commit: 34e31390a3b939db2e0cbfef4c40d95052572df0
-change-id: 20260722-enumeration-ae42b36efd04
+> The script that produces every number in it is small enough to
+> send if you want to re-run it against your own corpus.
 
-Best regards,
--- 
-Daniel Scally <dan.scally@ideasonboard.com>
+Yes, please send it. One honest note first: there is no vendor
+.rknn on this disk - everything on my RK3588 side is upstream Mesa
+and generated TFLite, and the script reads .rknn. So the run worth
+doing from here is the axis your corpus cannot test: all 94 of your
+files carry the same 2.3.2 build string, and I will try to collect
+files produced by other toolkit versions and point the script at
+those. If 34/66 <-> 0x4044 holds across versions, that is one more
+thing RESERVED_0 is not.
 
+On v11: the clocks patch carried exactly as sent, authorship chain
+intact. Thank you for doing that carefully.
+
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
