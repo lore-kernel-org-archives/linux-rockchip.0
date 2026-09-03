@@ -4,93 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB026C624A4
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 12:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F84DC624D6
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 13:44:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bESFdsw9FmrED9frdpR5Yor7MQvWdtNYe+gEjjmQReE=; b=A1kaSDTC35U6bf
-	Z9++YxrR3DS1tf7TtVwuhsyX5wUuwOPp6z8tdqbfPiYAlW1kotaJOHPYYXQZiUUWLlX8vaKVBTcmS
-	QZTBeDc30e+saKAmFIuAsdb1xL1YEPWy8KQEUpgCHZ3pGKyDlibQQHpvehMu8JJVLC6VcK2UCHetF
-	qXwk+fgzI66vpWk78gVf1emOHp0waw2GpqoNCY4bbXF6/UGONtbUBEdO8a+w+SU7TIZ+hURhAFA+Z
-	RLa8DsN65iHHG4hKuttcj7OgUafXrgNuuSStsTD0EB3bM56Ew7AdXA4Y6ir61w0AVnr8Ln51dFrco
-	E/Gw28ZyhxhlYB+EJrDg==;
+	List-Owner; bh=Rox12ZRCvW6m7WGNAJDftELYuQqtkHIW7GDAD3FGZlw=; b=O7h+RyFRMIQLSN
+	ifi/aLtkrRg1aVfQ7OTQQNVJbVOegmqhMro3L7i7Qf4gZFf9uVhZHrfB3P12NtciPjcF4ZRsQCjqZ
+	bO2eZqJK2q9K3jibRfXlbTEw0uQw+nLdJCnYUE1kt+T951L92hE0M67nZYf9l1D4P3568qecjYoYk
+	sMu6TmrLbwiGl9Q7R/X4je5JnYIBJV51gGTCKh/b0w3tlak5Jv4KJ4qRVVStHxHY9Wh5i7A80DWqH
+	IbAZQ+QJWjxN8b6+iJLZbXhMX4JG4vWN9EuPEqVbPtIcGT6qHepGOzvFPzdV9LOlNqT3oktnZev3m
+	eGvlUMpgpArEQW0vN3cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x26sf-0000000HLaL-1i78;
-	Thu, 03 Sep 2026 12:49:25 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1x27kM-0000000HR6O-49fZ;
+	Thu, 03 Sep 2026 13:44:54 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x26sb-0000000HLZ1-2IqF;
-	Thu, 03 Sep 2026 12:49:23 +0000
+	id 1x27kI-0000000HR4Q-3pLs;
+	Thu, 03 Sep 2026 13:44:53 +0000
 Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260903124916euoutp01c70c3377e9531d0b4effba39237e9f0d~R0Humhg0D2837828378euoutp01a;
-	Thu,  3 Sep 2026 12:49:16 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260903124916euoutp01c70c3377e9531d0b4effba39237e9f0d~R0Humhg0D2837828378euoutp01a
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20260903134447euoutp0275bc74c23dab134a89925deaae7eed9d~R04MYc5ZA1805318053euoutp02L;
+	Thu,  3 Sep 2026 13:44:47 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20260903134447euoutp0275bc74c23dab134a89925deaae7eed9d~R04MYc5ZA1805318053euoutp02L
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1788439756;
-	bh=21XK8ouXwSbTKoSgpNp9PTnpZIppeDeeNUFwSv6ef0I=;
+	s=mail20170921; t=1788443087;
+	bh=qMyNnEe2VO29svGA0dfmwKzLJS9xqVqR88SLj5rL67k=;
 	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=A84uFu5vC7oRa7UYvp4kb1qaFuO04d7y8EFyNaPGxT8vRYtNhTEAf1v8qbCTK1g9c
-	 ErZ7MNjb63emnIqANJbVFtycOFms2nxzltkpKWI+k2FVQDNvhQLzokz+RsiTTZD/sZ
-	 tbFgIVRs1iU0Hx2ZDAjgQWZBvVwu/E+5h3lOiTJE=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20260903124916eucas1p2046caac892ee377927f97ac1ed022764~R0HuWwHQ41235012350eucas1p2O;
-	Thu,  3 Sep 2026 12:49:16 +0000 (GMT)
+	b=U8EUbmYyR7YXputAFXW91F6pkDdqiKeau6Up/U569s86JZGZrjQ2JLsNl05H6K5/r
+	 0hFYlwS+j8R9Od3vZKWGF0/0pyHsL9U0sl/AurlvAS43GNjIeUqLwAbBAiyOZXRYZY
+	 doo6ZexuZGwqH5fluJw0qhX9JE+CwIG8TWpKrGjQ=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20260903134446eucas1p1999879348f53db4f5dff6cea9a73aee8~R04MCdR2p0462604626eucas1p1n;
+	Thu,  3 Sep 2026 13:44:46 +0000 (GMT)
 Received: from [192.168.1.44] (unknown [106.210.136.40]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20260903124914eusmtip1c88b35a3579efd350fc5d28e52aac15c~R0HsrL5_S2573525735eusmtip1u;
-	Thu,  3 Sep 2026 12:49:14 +0000 (GMT)
-Message-ID: <113c3906-56c1-4940-9857-d611edc64361@samsung.com>
-Date: Thu, 3 Sep 2026 14:49:14 +0200
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20260903134444eusmtip25a6f7671740df53786ab8867ebd33067~R04KVfPcM2229722297eusmtip2R;
+	Thu,  3 Sep 2026 13:44:44 +0000 (GMT)
+Message-ID: <9bd2e8bf-472a-42b8-a259-901062f32cdf@samsung.com>
+Date: Thu, 3 Sep 2026 15:44:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/15] dt-bindings: display: bridge: Add
- starfive,jh7110-inno-hdmi-controller
-To: Conor Dooley <conor@kernel.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
-	<neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
-	Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrzej
-	Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, Laurent
-	Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
-	<jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
-	<luca.ceresoli@bootlin.com>, David Airlie <airlied@gmail.com>, Simona Vetter
-	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
-	Lee Jones <lee@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp
-	Zabel <p.zabel@pengutronix.de>, Emil Renner Berthing <kernel@esmil.dk>, Hal
-	Feng <hal.feng@starfivetech.com>, Michael Turquette
-	<mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Brian Masney
-	<bmasney@redhat.com>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
-	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
-	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
-	Belhachemi <db@domibel.de>, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, mfd@lists.linux.dev,
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, Icenowy
-	Zheng <uwu@icenowy.me>, Andy Yan <andyshrk@163.com>, Marek Szyprowski
-	<m.szyprowski@samsung.com>, Maud Spierings <maudspierings@gocontroll.com>,
-	Graham Markall <hello@big-grey.co.uk>
+Subject: Re: [PATCH v2 13/15] phy: starfive: Add jh7110-inno-hdmi-phy driver
+To: Maud Spierings <maud_spierings@murena.io>
+Cc: Laurent.pinchart@ideasonboard.com, airlied@gmail.com, alex@ghiti.fr,
+	andrzej.hajda@intel.com, andy.yan@rock-chips.com, andyshrk@163.com,
+	aou@eecs.berkeley.edu, bmasney@redhat.com, conor+dt@kernel.org,
+	conor@kernel.org, db@domibel.de, devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, hal.feng@starfivetech.com, heiko@sntech.de,
+	hello@big-grey.co.uk, jernej.skrabec@gmail.com, jonas@kwiboo.se,
+	kernel@esmil.dk, krzk+dt@kernel.org, lee@kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	luca.ceresoli@bootlin.com, m.szyprowski@samsung.com,
+	maarten.lankhorst@linux.intel.com, maudspierings@gocontroll.com,
+	mfd@lists.linux.dev, mripard@kernel.org, mturquette@baylibre.com,
+	neil.armstrong@linaro.org, p.zabel@pengutronix.de, palmer@dabbelt.com,
+	pjw@kernel.org, rfoss@kernel.org, robh@kernel.org, sboyd@kernel.org,
+	simona@ffwll.ch, tzimmermann@suse.de, uwu@icenowy.me, vkoul@kernel.org
 Content-Language: en-US
 From: Michal Wilczynski <m.wilczynski@samsung.com>
-In-Reply-To: <20260828-stylus-bonfire-b71cbfe8b983@spud>
-X-CMS-MailID: 20260903124916eucas1p2046caac892ee377927f97ac1ed022764
+In-Reply-To: <e780ecb8-918f-4816-99c8-b69b10b25a18@murena.io>
+X-CMS-MailID: 20260903134446eucas1p1999879348f53db4f5dff6cea9a73aee8
 X-Msg-Generator: CA
-X-RootMTR: 20260828134817eucas1p2e2756deff8871be4ea8bb5c65f9c179d
+X-RootMTR: 20260830141726eucas1p2c9fe77236f7114b376fabc752f368521
 X-EPHeader: CA
-X-CMS-RootMailID: 20260828134817eucas1p2e2756deff8871be4ea8bb5c65f9c179d
-References: <20260828-jh7110-clean-send-v2-0-331680c8b9d1@samsung.com>
-	<CGME20260828134817eucas1p2e2756deff8871be4ea8bb5c65f9c179d@eucas1p2.samsung.com>
-	<20260828-jh7110-clean-send-v2-2-331680c8b9d1@samsung.com>
-	<20260828-stylus-bonfire-b71cbfe8b983@spud>
+X-CMS-RootMailID: 20260830141726eucas1p2c9fe77236f7114b376fabc752f368521
+References: <20260828-jh7110-clean-send-v2-13-331680c8b9d1@samsung.com>
+	<0ccb4168-ff88-459c-972d-3c091c155db2@murena.io>
+	<CGME20260830141726eucas1p2c9fe77236f7114b376fabc752f368521@eucas1p2.samsung.com>
+	<e780ecb8-918f-4816-99c8-b69b10b25a18@murena.io>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_054922_189181_CA7B9A66 
-X-CRM114-Status: GOOD (  26.09  )
+X-CRM114-CacheID: sfid-20260903_064451_547927_00E3C1C6 
+X-CRM114-Status: GOOD (  27.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,190 +100,243 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 
 
-On 8/28/26 18:47, Conor Dooley wrote:
-> On Fri, Aug 28, 2026 at 03:47:26PM +0200, Michal Wilczynski wrote:
->> Add the dt-binding for the StarFive JH7110 Innosilicon HDMI controller
->> (DRM bridge).
+On 8/30/26 16:17, Maud Spierings wrote:
+> I was still having some glitching happening on the display, but I've found the way to fix that, the question is what is actually happening here.
+> 
+> With just the changes mentioned in my previous email the screen flickers and is very unpleasant. After doing 2 reg writes it behaves as expected:
+>   0x29590000 <- 0x00000061
+> is 0x00000075 before, difference is v_REG_CLK_INV | v_REG_CLK_SOURCE_SYS in drivers/gpu/drm/bridge/inno-hdmi.c, these bits always get set but that seems to break this display so there must be some way to detect that these should not be set: v_VCLK_NOT_INV | v_REG_CLK_SOURCE_TMDS
+
+I'd rather not hardcode this per board in DT if it can be avoided since
+the right value looks like it depends on what is attached rather than on
+the board wiring. If Andy can confirm from the datasheet what selects the
+register clock source, detecting it at runtime would be the better fix.
+
+Either way I don't think this should hold up the series, since it is
+pre existing behaviour in the generic inno-hdmi driver rather than
+something this patchset introduces.
+
+> 
+>   0x29590020 <- 0x00000005
+> This one I have no idea, it is 0x00000009 with this patch series but with the vendor kernel I get the value above. When I hook up my external display (regular 1440p) this becomes 0x0000000D on the vendor kernel.
+> 
+> But I can't find this register being written to anywhere there?
+> 
+> Andy, you are credited on the inno-hdmi driver, do you have a datasheet that gives some further info?
+> 
+> kind regards,
+> Maud
+> 
+> On 8/29/26 20:54, Maud Spierings wrote:
+>> Hi Michal,
 >>
->> This device is the second child of the starfive,jh7110-hdmi-subsystem node.
->> It consumes register access clocks (sys, mclk, bclk) from the voutcrg and
->> both the pixel clock (pclk) and the PHY from its hdmi_phy sibling.
+>> Small request for an eventual v3
 >>
->> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
->> ---
->>  .../starfive,jh7110-inno-hdmi-controller.yaml      | 109 +++++++++++++++++++++
->>  1 file changed, 109 insertions(+)
+>>> Add the HDMI PHY driver for the StarFive JH7110.
+>>>
+>>> This driver binds to the starfive,jh7110-inno-hdmi-phy node and
+>>> gets its regmap from the parent. It has no dependencies on voutcrg, only
+>>> on its refoclk (xin24m), which breaks the probe-time circular
+>>> dependency.
+>>>
+>>> This driver provides two main functions:
+>>>  - Clock Provider: It registers clk_ops to provide the variable pixel
+>>>    clock (hdmi_pclk). The .set_rate operation configures the Pre-PLL
+>>>    registers (0x1a0+) based on the requested rate.
+>>>
+>>>  - PHY Provider: It registers phy_ops for the controller. The .power_on
+>>>    op configures and enables the Post-PLL and other analog blocks (BIAS,
+>>>    LDO, Serializer, etc.).
+>>>
+>>> The JH7110 instantiates the same Innosilicon IP as the Rockchip RK3328,
+>>> with the PHY register block shifted by 0x100 because it sits behind the
+>>> HDMI controller in the shared register space. The pre-PLL programming
+>>> therefore comes from the common Innosilicon helpers; this driver adds
+>>> the JH7110 pixel clock table, the post-PLL and the analog configuration.
+>>>
+>>> Co-developed-by: Dominique Belhachemi <db@domibel.de>
+>>> Signed-off-by: Dominique Belhachemi <db@domibel.de>
+>>> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+>>> ---
+>>>  drivers/phy/starfive/Kconfig                |  20 +
+>>>  drivers/phy/starfive/Makefile               |   1 +
+>>>  drivers/phy/starfive/phy-jh7110-inno-hdmi.c | 567 +++++++++++++++++++ +++++++++
+>>>  3 files changed, 588 insertions(+)
+>>>
 >>
->> diff --git a/Documentation/devicetree/bindings/display/bridge/starfive,jh7110-inno-hdmi-controller.yaml b/Documentation/devicetree/bindings/display/bridge/starfive,jh7110-inno-hdmi-controller.yaml
->> new file mode 100644
->> index 0000000000000000000000000000000000000000..0e584e7b756e24e2f99a62daab3117bbf4b472b6
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/display/bridge/starfive,jh7110-inno-hdmi-controller.yaml
->> @@ -0,0 +1,109 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: https://protect2.fireeye.com/v1/url?k=af8ec5c4-ce05d0f2-af8f4e8b-74fe485cbff1-93a4f693847d5818&q=1&e=48120ebb-9eda-4ddc-b580-e20f8c69d005&u=http%3A%2F%2Fdevicetree.org%2Fschemas%2Fdisplay%2Fbridge%2Fstarfive%2Cjh7110-inno-hdmi-controller.yaml%23
->> +$schema: https://protect2.fireeye.com/v1/url?k=4b8c4737-2a075201-4b8dcc78-74fe485cbff1-8caced678494fd92&q=1&e=48120ebb-9eda-4ddc-b580-e20f8c69d005&u=http%3A%2F%2Fdevicetree.org%2Fmeta-schemas%2Fcore.yaml%23
->> +
->> +title: StarFive JH7110 Innosilicon HDMI Controller
->> +
->> +maintainers:
->> +  - Michal Wilczynski <m.wilczynski@samsung.com>
->> +
->> +description:
->> +  The controller portion of the StarFive JH7110 INNO HDMI IP.
->> +
->> +properties:
->> +  compatible:
->> +    const: starfive,jh7110-inno-hdmi-controller
->> +
->> +  interrupts:
->> +    maxItems: 1
->> +
->> +  clocks:
->> +    items:
->> +      - description: System clock for register access
->> +      - description: Module clock
->> +      - description: Bus clock
->> +      - description: Pixel clock from PHY
->> +
->> +  clock-names:
->> +    items:
->> +      - const: sys
->> +      - const: mclk
->> +      - const: bclk
->> +      - const: pclk
-> 
-> "module" "bus" "pixel" would be more informative than spending most of
-> your characters regurgitating what these are by definition?
-
-So I've reread the TRM and mclk and bclk are named as such there and they
-are audio clocks: section 5.3 lists a "four channel I2S transmitter bit
-clock" among the display subsystem's clock sources, and that is this bclk.
-The already merged starfive,jh7110-voutcrg.yaml names the same input
-"i2stx0_bclk". So I've kept the names and put the information in the
-descriptions instead:
-
- - description: The HDMI controller main clock
- - description: Audio master clock
- - description: Audio bit clock, from the I2S transmitter
- - description: The pixel clock, generated by the PHY
-
-pclk was wrong. In this binding pclk is the register clock, as in
-rockchip,inno-hdmi.yaml, and the generic inno-hdmi driver looks it up by
-that name, holds it enabled for its lifetime and derives the DDC divider
-from its rate. We had it bound to the pixel clock so the pre-PLL stayed
-powered from probe and the divider was sized from 297 MHz instead of
-49.5 MHz, putting the DDC bus at 17 kHz. Slow but not broken which
-is why it went unnoticed.
-
-So in v3 the register clock takes "pclk" and the PHY clock is named
-"pixel".
-
-> 
->> +
->> +  resets:
->> +    maxItems: 1
->> +
->> +  reset-names:
->> +    const: hdmi_tx
->> +
->> +  phys:
->> +    maxItems: 1
->> +
->> +  phy-names:
->> +    const: hdmi-phy
-> 
-> With the trend of ?pointless? -names properties, I'm surprised you don't
-> have interrupt-names? I'd ditch 'em all where there's only a single
-> clock. The _ rather than - in the reset name triggers my OCD.
-> pw-bot: changes-requested
-
-Will do. reset-names and phy-names will be gone which takes the
-underscore in hdmi_tx with them.
-
-Note that in v3 the vout subsystem parent node will be back on Icenowy's
-review, so there will be three new DT patches: bindings for
-starfive,jh7110-vout-subsystem and starfive,jh7110-vout-syscon, and
-starfive,jh7110-dc8200 added to verisilicon,dc.yaml
-
-> 
->> +
->> +  ports:
->> +    $ref: /schemas/graph.yaml#/properties/ports
->> +    description:
->> +      A graph node with one input port and one output port.
->> +
->> +required:
->> +  - compatible
->> +  - interrupts
->> +  - clocks
->> +  - clock-names
->> +  - resets
->> +  - reset-names
->> +  - phys
->> +  - phy-names
->> +  - ports
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  # Shown as a child of the HDMI subsystem node; see
->> +  # Documentation/devicetree/bindings/mfd/starfive,jh7110-hdmi-subsystem.yaml
->> +  # for the full node.
->> +  - |
->> +    #include <dt-bindings/clock/starfive,jh7110-crg.h>
->> +    #include <dt-bindings/reset/starfive,jh7110-crg.h>
->> +
->> +    controller {
-> 
-> "controller" seems over generic for a node, but I guess if the parent is
-> "hdmi-subsystem" or something it makes sense in that context.
-> 
-> Cheers,
-> Conor.
-> 
-> 
->> +        compatible = "starfive,jh7110-inno-hdmi-controller";
->> +        clocks = <&voutcrg JH7110_VOUTCLK_HDMI_TX_SYS>,
->> +                 <&voutcrg JH7110_VOUTCLK_HDMI_TX_MCLK>,
->> +                 <&voutcrg JH7110_VOUTCLK_HDMI_TX_BCLK>,
->> +                 <&hdmi_phy>;
->> +        clock-names = "sys", "mclk", "bclk", "pclk";
->> +        interrupts = <99>;
->> +        phys = <&hdmi_phy>;
->> +        phy-names = "hdmi-phy";
->> +        resets = <&voutcrg JH7110_VOUTRST_HDMI_TX_HDMI>;
->> +        reset-names = "hdmi_tx";
->> +
->> +        ports {
->> +            #address-cells = <1>;
->> +            #size-cells = <0>;
->> +
->> +            port@0 {
->> +                reg = <0>;
->> +
->> +                endpoint {
->> +                    remote-endpoint = <&dpu_out_dpi0>;
->> +                };
->> +            };
->> +
->> +            port@1 {
->> +                reg = <1>;
->> +
->> +                endpoint {
->> +                    remote-endpoint = <&hdmi_con_in>;
->> +                };
->> +            };
->> +        };
->> +    };
->> +
->> +...
+>> [snip]
 >>
->> -- 
->> 2.34.1
+>>> +
+>>> +static const struct inno_hdmi_phy_pre_pll_config pre_pll_cfg_table[] = {
+>>> +    { 25175000, 25175000, 1, 100, 2, 3, 3, 12, 3, 3, 4, 0, 0xF55555 },
+>>> +    { 25200000, 25200000, 1, 100, 2, 3, 3, 12, 3, 3, 4, 0, 0 },
+>>> +    { 27000000, 27000000, 1, 90, 3, 2, 2, 10, 3, 3, 4, 0, 0 },
+>>> +    { 27027000, 27027000, 1, 90, 3, 2, 2, 10, 3, 3, 4, 0, 0x170A3D },
+>>> +    { 28320000, 28320000, 1, 28, 2, 1, 1, 3, 0, 3, 4, 0, 0x51EB85 },
+>>> +    { 30240000, 30240000, 1, 30, 2, 1, 1, 3, 0, 3, 4, 0, 0x3D70A3 },
+>>> +    { 31500000, 31500000, 1, 31, 2, 1, 1, 3, 0, 3, 4, 0, 0x7FFFFF },
+>>> +    { 33750000, 33750000, 1, 33, 2, 1, 1, 3, 0, 3, 4, 0, 0xCFFFFF },
+>>> +    { 36000000, 36000000, 1, 36, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 40000000, 40000000, 1, 80, 2, 2, 2, 12, 2, 2, 2, 0, 0 },
+>>> +    { 46970000, 46970000, 1, 46, 2, 1, 1, 3, 0, 3, 4, 0, 0xF851EB },
+>>> +    { 49500000, 49500000, 1, 49, 2, 1, 1, 3, 0, 3, 4, 0, 0x7FFFFF },
+>>> +    { 49000000, 49000000, 1, 49, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 50000000, 50000000, 1, 50, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 54000000, 54000000, 1, 54, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 54054000, 54054000, 1, 54, 2, 1, 1, 3, 0, 3, 4, 0, 0x0DD2F1 },
+>>> +    { 57284000, 57284000, 1, 57, 2, 1, 1, 3, 0, 3, 4, 0, 0x48B439 },
+>>> +    { 58230000, 58230000, 1, 58, 2, 1, 1, 3, 0, 3, 4, 0, 0x3AE147 },
+>>> +    { 59341000, 59341000, 1, 59, 2, 1, 1, 3, 0, 3, 4, 0, 0x574BC6 },
+>>> +    { 59400000, 59400000, 1, 99, 3, 1, 1, 1, 3, 3, 4, 0, 0 },
+>>> +    { 65000000, 65000000, 1, 130, 2, 2, 2, 12, 0, 2, 2, 0, 0 },
+>>> +    { 68250000, 68250000, 1, 68, 2, 1, 1, 3, 0, 3, 4, 0, 0x3FFFFF },
+>>> +    { 71000000, 71000000, 1, 71, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 74176000, 74176000, 1, 98, 1, 2, 2, 1, 2, 3, 4, 0, 0xE6AE6B },
+>>> +    { 74250000, 74250000, 1, 99, 1, 2, 2, 1, 2, 3, 4, 0, 0 },
+>>> +    { 75000000, 75000000, 1, 75, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 78750000, 78750000, 1, 78, 2, 1, 1, 3, 0, 3, 4, 0, 0xCFFFFF },
+>>> +    { 79500000, 79500000, 1, 79, 2, 1, 1, 3, 0, 3, 4, 0, 0x7FFFFF },
+>>> +    { 83500000, 83500000, 2, 167, 2, 1, 1, 1, 0, 0, 6, 0, 0 },
+>>> +    { 83500000, 104375000, 1, 104, 2, 1, 1, 1, 1, 0, 5, 0, 0x600000 },
+>>> +    { 85500000, 85500000, 1, 85, 2, 1, 1, 3, 0, 3, 4, 0, 0x7FFFFF },
+>>> +    { 85750000, 85750000, 1, 85, 2, 1, 1, 3, 0, 3, 4, 0, 0xCFFFFF },
+>>> +    { 85800000, 85800000, 1, 85, 2, 1, 1, 3, 0, 3, 4, 0, 0xCCCCCC },
+>>> +    { 88750000, 88750000, 1, 88, 2, 1, 1, 3, 0, 3, 4, 0, 0xCFFFFF },
+>>> +    { 89910000, 89910000, 1, 89, 2, 1, 1, 3, 0, 3, 4, 0, 0xE8F5C1 },
+>>> +    { 90000000, 90000000, 1, 90, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 101000000, 101000000, 1, 101, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 102250000, 102250000, 1, 102, 2, 1, 1, 3, 0, 3, 4, 0, 0x3FFFFF },
+>>> +    { 106500000, 106500000, 1, 106, 2, 1, 1, 3, 0, 3, 4, 0, 0x7FFFFF },
+>>> +    { 108000000, 108000000, 1, 90, 3, 0, 0, 5, 0, 2, 2, 0, 0 },
+>>> +    { 119000000, 119000000, 1, 119, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 131481000, 131481000, 1, 131, 2, 1, 1, 3, 0, 3, 4, 0, 0x7B22D1 },
+>>> +    { 135000000, 135000000, 1, 135, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 136750000, 136750000, 1, 136, 2, 1, 1, 3, 0, 3, 4, 0, 0xCFFFFF },
+>>> +    { 147180000, 147180000, 1, 147, 2, 1, 1, 3, 0, 3, 4, 0, 0x2E147A },
+>>> +    { 148352000, 148352000, 1, 98, 1, 1, 1, 1, 2, 2, 2, 0, 0xE6AE6B },
+>>> +    { 148500000, 148500000, 1, 99, 1, 1, 1, 1, 2, 2, 2, 0, 0 },
+>>> +    { 154000000, 154000000, 1, 154, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 156000000, 156000000, 1, 156, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 157000000, 157000000, 1, 157, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 162000000, 162000000, 1, 162, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
+>>> +    { 174250000, 174250000, 1, 145, 3, 0, 0, 5, 0, 2, 2, 0, 0x355555 },
+>>> +    { 174500000, 174500000, 1, 174, 2, 1, 1, 3, 0, 3, 4, 0, 0x7FFFFF },
+>>> +    { 174570000, 174570000, 1, 174, 2, 1, 1, 3, 0, 3, 4, 0, 0x91EB84 },
+>>> +    { 175500000, 175500000, 1, 175, 2, 1, 1, 3, 0, 3, 4, 0, 0x7FFFFF },
+>>> +    { 185590000, 185590000, 1, 185, 2, 1, 1, 3, 0, 3, 4, 0, 0x970A3C },
+>>> +    { 187000000, 187000000, 1, 187, 2, 1, 1, 3, 0, 3, 4, 0, 0 },
 >>
+>> add:
+>> { 235690000, 235690000, 1, 235, 2, 1, 1, 3, 0, 3, 4, 0, 0xB0A3D6},
+
+Sure that is no problem, thank you for debugging the issue.
+
+>>
+>> This matches one of the framework 13 displays (fml13v01 board)
+>>
+>> source: [1]
+>>
+>> edid:
+>>
+>> edid-decode (hex):
+>>
+>> 00 ff ff ff ff ff ff 00 09 e5 5f 09 00 00 00 00
+>> 17 1d 01 03 80 1c 13 78 02 de 50 a3 54 4c 99 26
+>> 0f 50 54 00 00 00 01 01 01 01 01 01 01 01 01 01
+>> 01 01 01 01 01 01 11 5c d0 18 81 e0 2d 50 30 20
+>> 36 00 1d be 10 00 00 1a a7 49 d0 18 81 e0 2d 50
+>> 30 20 36 00 1d be 10 00 00 1a 00 00 00 fe 00 42
+>> 4f 45 20 43 51 0a 20 20 20 20 20 20 00 00 00 fe
+>> 00 4e 45 31 33 35 46 42 4d 2d 4e 34 31 0a 01 21
+>>
+>> 02 03 19 c1 44 83 10 02 01 23 09 07 07 83 01 00
+>> 00 67 03 0c 00 10 00 00 44 11 5c d0 18 81 e0 2d
+>> 50 30 20 36 00 1d be 10 00 00 1a 00 00 00 00 00
+>> 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>> 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>> 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>> 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>> 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
+>>
+>> ----------------
+>>
+>> Block 0, Base EDID:
+>>    EDID Structure Version & Revision: 1.3
+>>    Vendor & Product Identification:
+>>      Manufacturer: BOE
+>>      Model: 2399
+>>      Made in: week 23 of 2019
+>>    Basic Display Parameters & Features:
+>>      Digital display
+>>      Maximum image size: 28 cm x 19 cm
+>>      Gamma: 2.20
+>>      Monochrome or grayscale display
+>>      First detailed timing is the preferred timing
+>>    Color Characteristics:
+>>      Red  : 0.6396, 0.3291
+>>      Green: 0.2998, 0.5996
+>>      Blue : 0.1494, 0.0595
+>>      White: 0.3125, 0.3281
+>>    Established Timings I & II: none
+>>    Standard Timings: none
+>>    Detailed Timing Descriptors:
+>>      DTD 1:  2256x1504   59.998513 Hz   3:2     92.938 kHz    235.690000 MHz (285 mm x 190 mm)
+>>                   Hfront   48 Hsync  32 Hback  200 Hpol P
+>>                   Vfront    3 Vsync   6 Vback   36 Vpol N
+>>      DTD 2:  2256x1504   47.998302 Hz   3:2     74.349 kHz    188.550000 MHz (285 mm x 190 mm)
+>>                   Hfront   48 Hsync  32 Hback  200 Hpol P
+>>                   Vfront    3 Vsync   6 Vback   36 Vpol N
+>>      Alphanumeric Data String: 'BOE CQ'
+>>      Alphanumeric Data String: 'NE135FBM-N41'
+>>    Extension blocks: 1
+>> Checksum: 0x21
+>>
+>> ----------------
+>>
+>> Block 1, CTA-861 Extension Block:
+>>    Revision: 3
+>>    Underscans IT Video Formats by default
+>>    Basic audio support
+>>    Native detailed modes: 1
+>>    Video Data Block:
+>>      VIC   3:   720x480    59.940060 Hz  16:9     31.469 kHz 27.000000 MHz (native)
+>>      VIC  16:  1920x1080   60.000000 Hz  16:9     67.500 kHz 148.500000 MHz
+>>      VIC   2:   720x480    59.940060 Hz   4:3     31.469 kHz 27.000000 MHz
+>>      VIC   1:   640x480    59.940476 Hz   4:3     31.469 kHz 25.175000 MHz
+>>    Audio Data Block:
+>>      Linear PCM:
+>>        Max channels: 2
+>>        Supported sample rates (kHz): 48 44.1 32
+>>        Supported sample sizes (bits): 24 20 16
+>>    Speaker Allocation Data Block:
+>>      FL/FR - Front Left/Right
+>>    Vendor-Specific Data Block (HDMI), OUI 00-0C-03:
+>>      Source physical address: 1.0.0.0
+>>      Maximum TMDS clock: 340 MHz
+>>    Detailed Timing Descriptors:
+>>      DTD 3:  2256x1504   59.998513 Hz   3:2     92.938 kHz    235.690000 MHz (285 mm x 190 mm)
+>>                   Hfront   48 Hsync  32 Hback  200 Hpol P
+>>                   Vfront    3 Vsync   6 Vback   36 Vpol N
+>> Checksum: 0x01  Unused space in Extension Block: 84 bytes
+>>
+>>
+>>> +    { 241500000, 241500000, 1, 161, 1, 1, 1, 4, 0, 2, 2, 0, 0 },
+>>> +    { 241700000, 241700000, 1, 241, 2, 1, 1, 3, 0, 3, 4, 0, 0xB33332 },
+>>> +    { 262750000, 262750000, 1, 262, 2, 1, 1, 3, 0, 3, 4, 0, 0xCFFFFF },
+>>> +    { 296500000, 296500000, 1, 296, 2, 1, 1, 3, 0, 3, 4, 0, 0x7FFFFF },
+>>> +    { 296703000, 296703000, 1, 98, 0, 1, 1, 1, 0, 2, 2, 0, 0xE6AE6B },
+>>> +    { 297000000, 297000000, 1, 99, 0, 1, 1, 1, 0, 2, 2, 0, 0 },
+>>> +    { 594000000, 594000000, 1, 99, 0, 2, 0, 1, 0, 1, 1, 0, 0 },
+>>> +    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+>>> +};
+>>> +
+>>
+>> kind regards,
+>> Maud
+>>
+>> [1]: https://protect2.fireeye.com/v1/url?k=9e0a6938-c19113c6-9e0be277-000babff250c-ea88914414736a98&q=1&e=54b09ed3-c7be-440b-ace0-db9bfc392036&u=https%3A%2F%2Fgithub.com%2FDC-DeepComputing%2Ffml13v01-linux%2F blob/97c64fe2832b6826914b6da7aa4febcdd4d3d444/drivers/gpu/drm/ verisilicon/inno_hdmi.c#L112
+> 
+> 
 
 Best regards,
 -- 
