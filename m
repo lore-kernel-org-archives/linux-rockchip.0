@@ -4,78 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AF69C61DD3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 14:37:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1024C624D6
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 15:12:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=22l62Pa0rsbXUENG4fvbD7s2s62UkF+UVPps596wmEM=; b=QLxORGG1ry0jIG
-	5+6mcudTfzO5icB05cNqbHPV2TO3OkWtHyr6Y41uODL6uDfL4uYUmYtqP/ZdRBvwTCb3RaxfNhB9g
-	w+nBlV5IfHctHdVvitX7vJF/q9zZfotxWjVJbIxsM0XKv+UC9kb0tpQXIl+xhpBL0jfMP3vJbF6IX
-	n/KqK5CG86WhEfnRehvlU3lRv6ABhtYwwZkxjpMmdNYUhkbPD8s4zTy9djSN1pgrNHtmMQqSP5xQp
-	RDBbKf0a3y+SRMISLDxo9tXSlGCp4PdDeDYZI3KFrwTUCf0FQyFL290KmCuZyUPwq0k30B8XECGa0
-	ua62Qb1blBeb3r58oF1g==;
+	List-Owner; bh=Dncht3QJWSCBsU+Yd8Oji1nJGBfSsqtw1KlKhWAoQfU=; b=QuphNWDHbqlVSv
+	79jqpGeJ+kpLukypnTVTi9bjGo8Lt1y3u+Ka3grWAcpT8h0rdN1a8DGWejNuieqS2ZOl0jps2nyMW
+	MWgv69+q5KadgBr215PRkJ2Hznmp3hOFn6MuYotcu5E7QhVdRemIWNGNTatDpn3gF1nr0Ygo9VmMQ
+	MneQ14n5hqGGGhBhxkHwFcfl5WvDVRtszjBEL8UYrg9vqDioJdmVUI74j4v3xYWlCCCyKlM6EaACX
+	zJf4PIoAhHhadHWhXgah1l35ikwSSHqbpMe8sIoDnzjGV1yKGAhOLbHtB1/J9ShkbivXbQ/nMliNk
+	ULxCmqih0bvXoSn7q2mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x28ZA-0000000HWzg-2PMy;
-	Thu, 03 Sep 2026 14:37:24 +0000
-Received: from sender6-pp-f112.zoho.com ([165.173.180.112])
+	id 1x296w-0000000HaFY-1hYD;
+	Thu, 03 Sep 2026 15:12:18 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x28Z7-0000000HWyd-2UUQ;
-	Thu, 03 Sep 2026 14:37:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1788446235; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Jn9OKk668HhFO20QWGGjArwE0JLoqFuFPdeX4ocnPVSFO2U5TVaM1ik6SdrvhYdkcUfkmyypkLPnBRQQpRlCWUoHifpIb7pmk0AgUrhw5Td3s84D2KaJQh5uyIChUw8Y1TxJe3bfjvcZWpyMnqTUR4UgXWZVlrC1cCIjPmKrS64=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1788446235; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=M7InBmUufvhMm7TfH0iam0WESH107icCZyhDamP4Oig=; 
-	b=AVcZ90QIVfsZ44cPd8eohS7G/1Tlvi8wyYZd0ZLujm+D1iIbYXUBVcAkKHxg7SlYv3+OWXyffwWY6pxxebssk0CoDUZwm7+tROfYQoxGOWqCr+f9/X0uAGVii7UfPsDEJS00vUD4wE4AOJg/2I7kI8VFDVPqxdZ1mnkMpL3goEA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
-	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788446235;
-	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=M7InBmUufvhMm7TfH0iam0WESH107icCZyhDamP4Oig=;
-	b=Zk+ilItl2cXsOtvb2vEEw/OuQm6a3seBQkfLo47HP4nxI9goPHBbiSZMPaYF6Een
-	4x4jF8KXvFfKrcCX1D4ac9MHytZjdZbF/NAtFv1EbvN92Gaikeho2mHRVJZs9w4aLWj
-	3NiJBG9nhypBY2Xg+ES3+b4UtfV6yrP6tkDwjzNc=
-Received: by mx.zohomail.com with SMTPS id 1788446233626753.3556779201841;
-	Thu, 3 Sep 2026 07:37:13 -0700 (PDT)
-Message-ID: <824de124-7690-4b51-bd26-71b39ff94f8d@collabora.com>
-Date: Thu, 3 Sep 2026 16:37:08 +0200
+	id 1x296t-0000000HaCd-3s6P;
+	Thu, 03 Sep 2026 15:12:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=uWKbj06GMxVM1AmFAtNOW8Qq7f96OKxmUAD1isOqei0=; b=TLDBITNR1KF/EL7KvbL44EZnS9
+	TzA/Ndl1x7WVjwCVMd5kR8ifD3PzJsBsYgLZZHVYp/sr5iUMlaTZRMiX71hXoxQpEn4cPN/KtxYeG
+	nOcLmRoDFMKcRk3Zw1ZwZ8M8q6ot5H6H9OQPjpgV4DADjNzRZVtcwkMIOkrsH1s4QEAKTL4hKtLtL
+	wbi9+Yzrw59C88C/SJdVcMAgBY/P+RDbSd7+79n6ivpWHpFjfju0Ba2iioznX8OfzLHf7pE/Ye0As
+	1aQeDLw92XgmkD40iZS8vSPrsH1PV5ZaDlM216ASOBIrxA5KXFwbgD9v7A6YPzONlQ/VpytHxsvXU
+	N0U7IpgQ==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ jbx6244@gmail.com
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ =?UTF-8?B?SMO8c2V5aW4=?= BIYIK <boogiepop@gmx.com>,
+ Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v2] drm/rockchip: rk3066_hdmi: convert to devm_drm_bridge_alloc()
+ API
+Date: Thu, 03 Sep 2026 17:12:02 +0200
+Message-ID: <2814844.6tgchFWduM@diego>
+In-Reply-To: <20260824-drm-v2-1-7f9273c6020b@gmail.com>
+References: <20260824-drm-v2-1-7f9273c6020b@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/7] dt-bindings: phy: Add PHY_TYPE_DSI and
- PHY_TYPE_CSI definitions
-To: Krzysztof Kozlowski <krzk@kernel.org>, Jason Yang <jason98166@gmail.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
- <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Guochun Huang <hero.huang@rock-chips.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com>
- <20260821-dcphy-rx-v1-v4-1-f1797634233d@gmail.com>
- <20260827-thundering-cream-saluki-dd05df@quoll>
- <7425ac83-f6d8-4443-a26e-a47f9306aa24@collabora.com>
- <39101571-58f2-43c5-b76d-62f8ab57d551@kernel.org>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <39101571-58f2-43c5-b76d-62f8ab57d551@kernel.org>
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_073721_694191_7915E679 
-X-CRM114-Status: GOOD (  27.79  )
+X-CRM114-CacheID: sfid-20260903_081215_978584_846E621E 
+X-CRM114-Status: GOOD (  16.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,151 +66,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On 9/3/26 11:53, Krzysztof Kozlowski wrote:
-> On 31/08/2026 13:32, Michael Riesch wrote:
->> Hi Krzysztof,
->>
->> On 8/27/26 13:45, Krzysztof Kozlowski wrote:
->>> On Fri, Aug 21, 2026 at 08:02:29PM +0800, Jason Yang wrote:
->>>> A MIPI D-PHY or C-PHY can be a transmitter (DSI) or a receiver (CSI),
->>>> and in some PHY blocks both work at the same time. The existing
->>>> PHY_TYPE_DPHY and PHY_TYPE_CPHY cannot tell whether a consumer wants
->>>> the transmitter or the receiver.
->>>
->>> The consumer knows this already, no? Imagine consumer of the phy is some
->>> ISP receiving data over CSI for given port, thus consumer cannot
->>> transmit over that link.
->>>
->>> All this seems redundant.
->>
->> Indeed the consumer should know what to request. For example, the MIPI
->> CSI receivers should request the PHY_TYPE_CSI PHY. But I am not sure why
->> this should be redundant?! Can you elaborate? TBH I don't really
->> understand your remark.
-> 
-> It is redundant, because consumer CANNOT put there anything else than
-> CSI type and the topology already defines that. It is basically
-> duplicating existing information.
-
-We might not be on same page here, so please let me write down my view
-on this.
-
-For the CSI PHY in this combo block, the consumer on the RK3588 is a
-MIPI CSI receiver, that roughly looks like this:
-
-csi0: csi@fdd10000 {
-  compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
-  [...]
-  phys = <&mipidcphy0 PHY_TYPE_DPHY PHY_DIRECTION_RX>;
-
-  ports {
-    csi0_in: port@0 { /* from image sensor */ }
-    csi0_out: port@1 { /* to RK3588 VICAP */ }
-  }
-}
-
-For the DSI PHY in this combo block, on the other hand:
-
-dsi0: dsi@fde20000 {
-  compatible = "rockchip,rk3588-mipi-dsi2";
-  [...]
-  phys = <&mipidcphy0 PHY_TYPE_DPHY>;
-  // or alternatively:
-  phys = <&mipidcphy0 PHY_TYPE_DPHY PHY_DIRECTION_TX>;
-
-  ports {
-    dsi0_in: port@0 { /* from VOP2 port*/ }
-    dsi0_out: port@1 { /* to display */ }
-  }
-
-That is assuming the DPHY case, of course.
-
-With that in mind, yes, the consumer CAN put something different in
-there as CSI (or RX). The argument can be omitted for backward
-compatibility, in which case DSI (or TX) is selected.
-
-And yes, the topology should make the selection of the PHY obvious, but
-I can't see how the PHY driver should obtain this information if it
-wasn't for an extra PHY_DIRECTION_* argument.
-
-What am I missing here?
-
->>>> Add PHY_TYPE_DSI and PHY_TYPE_CSI, so that a binding can select both
->>>> D-PHY or C-PHY and transmitter or receiver. They do not replace
->>>> PHY_TYPE_DPHY/PHY_TYPE_CPHY, which remain the right choice where a cell
->>>> selects the mode. The first user is the Rockchip RK3588 MIPI DC-PHY
->>>> binding.
->>>>
->>>> Suggested-by: Michael Riesch <michael.riesch@collabora.com>
->>>> Link: https://lore.kernel.org/r/82da3622-9c3a-454c-87bc-fb4ec7adb68d@collabora.com
->>>> Signed-off-by: Jason Yang <jason98166@gmail.com>
->>>
->>> Where is any DTS using it? I did a search and no results of upstream
->>> posting.
->>>
->>>> ---
->>>>  include/dt-bindings/phy/phy.h | 2 ++
->>>>  1 file changed, 2 insertions(+)
->>>>
->>>> diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
->>>> index 979b5dfd8353..8ee3f88e6d80 100644
->>>> --- a/include/dt-bindings/phy/phy.h
->>>> +++ b/include/dt-bindings/phy/phy.h
->>>> @@ -24,6 +24,8 @@
->>>>  #define PHY_TYPE_CPHY		11
->>>>  #define PHY_TYPE_USXGMII	12
->>>>  #define PHY_TYPE_XAUI		13
->>>> +#define PHY_TYPE_DSI		14
->>>> +#define PHY_TYPE_CSI		15
->>>
->>> DSI and CSI does not look like types of PHY...
->>
->> Fair point. AFAIK both CSI and DSI are protocols on top of the physical
->> CPHY and DPHY communication. Maybe we should stick to
->> transmitter/receiver/RX/TX direction/.../something. Would work for me
->> too, my simple request is to *NOT* introduce the same magic for each
->> combo PHY block over and over again, but create something generic.
->>
->> What about
->>
->>     #define PHY_DIRECTION_RX	0
->>     #define PHY_DIRECTION_TX	1
->>
->> or so?
-> 
-> Well, I asked for any DTS user of it and I did not get it except
-> pointing to irrelevant and completely different 15 year old Samsung chip
-> and to some "future" work, so no clue. I still claim that direction is
-> obvious from the graph between producer and consumer, thus is redundant,
-> but I am happy to be corrected by showing me the code.
-> 
-> Talk is cheap.
-
-:-)
-
-I agree that having DTS patches showing how this is used in the RK3588
-would tell more than thousand words. I hope the sketch above helped at
-least a little in that regard.
-
-@Jason: can you include the DTS additions in your series?
-
-Best regards,
-Michael
-
-> 
-> 
-> Best regards,
-> Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCAyNC4gQXVndXN0IDIwMjYsIDEyOjIxOjE5IE1pdHRlbGV1cm9ww6Rpc2NoZSBT
+b21tZXJ6ZWl0IHNjaHJpZWIgSm9oYW4gSm9ua2VyIHZpYSBCNCBSZWxheToKPiBGcm9tOiBIw7xz
+ZXlpbiBCSVlJSyA8Ym9vZ2llcG9wQGdteC5jb20+Cj4gCj4gVGhlIGZ1bmN0aW9uIGRldm1fZHJt
+X2JyaWRnZV9hbGxvYygpIGlzIHRoZSBuZXcgQVBJIGZvciBhbGxvY2F0aW5nIERSTSBicmlkZ2Vz
+Lgo+IFRoaXMgY29udmVyc2lvbiB3YXMgbWlzc2VkIGR1cmluZyB0aGUgaW5pdGlhbCBjb252ZXJz
+aW9uIG9mIGFsbCBicmlkZ2VzIHRvCj4gdGhlIG5ldyBBUEkuCj4gCj4gU2lnbmVkLW9mZi1ieTog
+SMO8c2V5aW4gQklZSUsgPGJvb2dpZXBvcEBnbXguY29tPgo+IFNpZ25lZC1vZmYtYnk6IEpvaGFu
+IEpvbmtlciA8amJ4NjI0NEBnbWFpbC5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yazMwNjZfaGRtaS5jIHwgOCArKysrLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNl
+cnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcmszMDY2X2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yazMw
+NjZfaGRtaS5jCj4gaW5kZXggZjI4ZDZhODgzZTA5Li4zOWM2NWVlMDdjYWEgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2Nl9oZG1pLmMKPiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcmszMDY2X2hkbWkuYwo+IEBAIC03MDMsNyArNzAzLDYgQEAgcmsz
+MDY2X2hkbWlfcmVnaXN0ZXIoc3RydWN0IGRybV9kZXZpY2UgKmRybSwgc3RydWN0IHJrMzA2Nl9o
+ZG1pICpoZG1pKQo+ICAJCQkgRFJNX01PREVfRU5DT0RFUl9UTURTLCBOVUxMKTsKPiAgCj4gIAlo
+ZG1pLT5icmlkZ2UuZHJpdmVyX3ByaXZhdGUgPSBoZG1pOwo+IC0JaGRtaS0+YnJpZGdlLmZ1bmNz
+ID0gJnJrMzA2Nl9oZG1pX2JyaWRnZV9mdW5jczsKPiAgCWhkbWktPmJyaWRnZS5vcHMgPSBEUk1f
+QlJJREdFX09QX0RFVEVDVCB8Cj4gIAkJCSAgIERSTV9CUklER0VfT1BfRURJRCB8Cj4gIAkJCSAg
+IERSTV9CUklER0VfT1BfSERNSSB8Cj4gQEAgLTc0Nyw5ICs3NDYsMTAgQEAgc3RhdGljIGludCBy
+azMwNjZfaGRtaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAqbWFzdGVy
+LAo+ICAJaW50IGlycTsKPiAgCWludCByZXQ7Cj4gIAo+IC0JaGRtaSA9IGRldm1fa3phbGxvYyhk
+ZXYsIHNpemVvZigqaGRtaSksIEdGUF9LRVJORUwpOwo+IC0JaWYgKCFoZG1pKQo+IC0JCXJldHVy
+biAtRU5PTUVNOwo+ICsJaGRtaSA9IGRldm1fZHJtX2JyaWRnZV9hbGxvYyhkZXYsIHN0cnVjdCBy
+azMwNjZfaGRtaSwgYnJpZGdlLAo+ICsJCQkJICAgICAmcmszMDY2X2hkbWlfYnJpZGdlX2Z1bmNz
+KTsKPiArCWlmIChJU19FUlIoaGRtaSkpCj4gKwkJcmV0dXJuIFBUUl9FUlIoaGRtaSk7CgpJZiBJ
+J20gcmVhZGluZyB0aGluZ3MgY29ycmVjdGx5LCB0aGUgcGFydHMgaW4gcmszMDY2X2hkbWlfcmVn
+aXN0ZXIgc2V0dGluZwpoZG1pLT5icmlkZ2UuZHJpdmVyX3ByaXZhdGUgKHNob3VsZCB1c2UgdGhl
+IGNvbnRhaW5lciBmaWVsZCBvZiBzdHJ1Y3QKZHJtX2JyaWRnZSBpbnN0ZWFkKSBhbmQgaGRtaS0+
+YnJpZGdlLmZ1bmNzIGFyZSByZWR1bmRhbnQgYnkgdGhpcyBjaGFuZ2U/CgoKSGVpa28KCgoKPiAg
+Cj4gIAloZG1pLT5kZXYgPSBkZXY7Cj4gIAloZG1pLT5kcm1fZGV2ID0gZHJtOwo+IAo+IC0tLQo+
+IGJhc2UtY29tbWl0OiAyNzA5ZGQ1YWUzMmYwODI4ZjM4NjMyN2M3NmJiYTlmMzlmNjNhMWM2Cj4g
+Y2hhbmdlLWlkOiAyMDI2MDgyNC1kcm0tZTQ2ODlmNjVhYjhjCj4gCj4gQmVzdCByZWdhcmRzLAo+
+IAoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
