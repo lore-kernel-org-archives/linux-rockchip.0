@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A39EC61DD3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 09:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22631C61DD3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 09:53:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9oX0AI+yKccFGMZw/fIU62NT/KuCV2P/B1gN1jDHkJk=; b=pqHZTbVyY747uY
-	kSV6q9H6DhQL2ydeuryfAQ25/r2uMpfXsAZtZ0h0crcOFeemydg7kVMjx0LcXV8CtKauMjQwchGkP
-	9hVie9WBQL3aCEr5q2Zix6Ey+pfkVTUjRvYpDe68HH7Gno0DtaRQYuvoyimNUrc+3VdR7QeKCYgy2
-	AAYXPjbjmWS4WIMqh6viXZqS/L7GKHPeQ1eCk6kODEqo+d4y9QU1R0npCIMBF9QxPjKFQQ6oy44k3
-	/gTxYMnbGyVRq3Hw8U87O35GbnfOP8swbVQzZGyQBsiEPOWtjN6nBEFGJuvQs0Zw7IBIwR09r0YL9
-	pBg37HIJTVugOTieOWaQ==;
+	List-Owner; bh=5bLVKXzwYMwHIStXm2y9kUamm7fK3SWhav5Py/mver8=; b=TFMoGwOJdhZaPo
+	RQwHiOfkGY2kuRwc+mYWFab1YLhbbfSFvha9oudW0Em7RiPA6ETwVtXOS9AMf5wvlef7ETTA5l4xr
+	6u09iv8pOOefM92mVzYCiBaWuCnEdqH/bA3dp9hYXF3hhHYS9vWkrHvY5cz9fpYc9ZmNE0i6LKODe
+	Odpus0A3AodesFnwc6rqFuzoezYbR1UJn8RFncNYMqA8qiwAmRNotOCcja2ej7zj1PLw16U4gkZdm
+	iD1WGbzgA1KfIbLY5AY8+FC+255ykNGqLC9NYorZqMltO7Q1AbEmi5GdpqKcy2VqOraAy2oGKk74v
+	ApkdlEftaKNZGZtfIHiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x245S-0000000Gzh6-2pNm;
-	Thu, 03 Sep 2026 09:50:26 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x2489-0000000H0HA-2fPK;
+	Thu, 03 Sep 2026 09:53:13 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x245R-0000000Gzgj-1dnS;
-	Thu, 03 Sep 2026 09:50:25 +0000
+	id 1x2487-0000000H0GO-3Xa9;
+	Thu, 03 Sep 2026 09:53:12 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C79A04114F;
-	Thu,  3 Sep 2026 09:50:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC4171F000E9;
-	Thu,  3 Sep 2026 09:50:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4D000600C8;
+	Thu,  3 Sep 2026 09:53:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC5531F00A3D;
+	Thu,  3 Sep 2026 09:53:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788429024;
-	bh=7IEfRem7zTAQCSbosICsgQsKH/8v0Vv91wZSp6AITMU=;
+	s=k20260515; t=1788429191;
+	bh=Ig70CvKU23MKJaMu+7vf/X3puEFetI2IvCaYt7MGOTQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=b3ISe/U7RM7n/4cmXA1ZH4dFV3/JXBqCLF/2Zak2LXJ3h0dKjHezk//ZDr7WZHkOQ
-	 cAtJT7YQoYTh4s8cOl5UifKOCqCqDOmbNl7KQa6FwJjBtFVskaPuERB+EgZWxXc+re
-	 B2potJ0/vj+b8GFYIRL8B4ERvVVvzWlU1n+kNvQ/GljOzz7sr82N2VgjDvd08p7Bvy
-	 IDQx91VtvobrsOk0TFtNt06Kx6im4+RS2xI0V6mSi45/R2XghCCBkoOTK7HOekBUCi
-	 XpgY4ImxFAiAuXJnvh+VFLBOw8Pi2m1xm7PUpb90pQL5dBOudrPJ8/dObJck25j39Q
-	 99FHRY4JWYUow==
-Message-ID: <8e10a8c0-3648-47b5-9131-a1abdd7eb8c5@kernel.org>
-Date: Thu, 3 Sep 2026 11:50:15 +0200
+	b=DYpSzabTnx0TQpLw1BRY4h7flD3BtfPblDkynYp8vVUaF5FGUaFOfX2jcsyDUsytE
+	 SaL9yCjT9wTKRm37IVAMOfBEmaT+cAsURwKbzryA+4KvL6x/Z2qbjTtmuui5iaQgSv
+	 qiowfDuqhfmxLL/Et8mZB9RM5kYbzpg9DoGr1UN65qTBsV9CKdbH/Uv3K5bpPDY6x+
+	 En8kdNWM8QZmaBCinQX1ntGVaS5FqE6cWaLnqZqVTr0YLeY5BKOpDVNfIf1wwa6nqR
+	 seVIcW5qrzbmlpKjqAchigCtPUIDf4I77WMbaimexQ7KjlVfViwhkWfZPInhhe4xIq
+	 Lzebs//WeH52A==
+Message-ID: <39101571-58f2-43c5-b76d-62f8ab57d551@kernel.org>
+Date: Thu, 3 Sep 2026 11:53:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 1/7] dt-bindings: phy: Add PHY_TYPE_DSI and
  PHY_TYPE_CSI definitions
-To: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
+To: Michael Riesch <michael.riesch@collabora.com>,
+ Jason Yang <jason98166@gmail.com>
 Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
  <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Guochun Huang <hero.huang@rock-chips.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
- Michael Riesch <michael.riesch@collabora.com>,
  Sebastian Reichel <sebastian.reichel@collabora.com>,
  Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
  linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
@@ -63,7 +63,7 @@ Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
 References: <20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com>
  <20260821-dcphy-rx-v1-v4-1-f1797634233d@gmail.com>
  <20260827-thundering-cream-saluki-dd05df@quoll>
- <CAPwA33K+XSRPDzv9xAcoPneUsp6A9OTwakJ1VJY=zXnHiH+5Wg@mail.gmail.com>
+ <7425ac83-f6d8-4443-a26e-a47f9306aa24@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -109,7 +109,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
  n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
  qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
-In-Reply-To: <CAPwA33K+XSRPDzv9xAcoPneUsp6A9OTwakJ1VJY=zXnHiH+5Wg@mail.gmail.com>
+In-Reply-To: <7425ac83-f6d8-4443-a26e-a47f9306aa24@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,68 +121,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjgvMDgvMjAyNiAxMTozNSwg5qWK5pm65oiQIHdyb3RlOgo+IEhpIEtyenlzenRvZiwKPiAK
-PiBUaGFua3MgZm9yIHRoZSByZXZpZXcuCj4gCj4gKGZyb20gdGhlIHJldmlldyBvZiAyLzcpCj4g
-Cj4+IFBsZWFzZSBsaW5rL3Nob3cgdGhlIHVwc3RyZWFtIERUUyB1c2luZyBzaW11bHRhbmVvdXNs
-eSB0cmFuc21pdHRlciBhbmQKPj4gcmVjZWl2ZXIsIHdoZXJlIHRoZSBjb25zdW1lciBkb2VzIG5v
-dCBrbm93IHdpdGggd2hvbSBpcyBpdCB0YWxraW5nIHRvLgo+IAo+IEkgZ3JlcHBlZCB0aGUgdHJl
-ZSBhbmQgZm91bmQgYSBkZXZpY2UgdHJlZSB0aGF0IGhhcyBzaW11bHRhbmVvdXNseQo+IHRyYW5z
-bWl0dGVyIGFuZCByZWNlaXZlci4gSW4gdGhlIGFyY2gvYXJtL2Jvb3QvZHRzL3NhbXN1bmcvKiwK
-PiBleHlub3M0NDEyLW1pZGFzLmR0c2kgZW5hYmxlcyBjc2lzXzAsIGFuZCBleHlub3M0NDEyLWdh
-bGF4eS1zMy5kdHNpLCB3aGljaAo+IGluY2x1ZGVzIGl0LCBlbmFibGVzIGRzaV8wLiBCb3RoIGNv
-bnN1bWVycyBhcmUgZGVjbGFyZWQgaW4gZXh5bm9zNC5kdHNpLAo+IG9uIHRoZSBzYW1lIHBoeSBu
-b2RlOgo+IAo+ICAgICBkc2lfMDogIHBoeXMgPSA8Jm1pcGlfcGh5IDE+Owo+ICAgICBjc2lzXzA6
-IHBoeXMgPSA8Jm1pcGlfcGh5IDA+Owo+IAo+IFRyYWNpbmcgdGhhdCBiYWNrLCB0aGUgcHJvdmlk
-ZXIgaXMKPiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3NhbXN1bmcsbWlw
-aS12aWRlby1waHkueWFtbCBhbmQKPiBkcml2ZXJzL3BoeS9zYW1zdW5nL3BoeS1leHlub3MtbWlw
-aS12aWRlby5jLgo+IEl0IHJlZ2lzdGVycyBzZXZlcmFsIHN0cnVjdCBwaHkgaW4gb25lIG5vZGUs
-IGFuZCB0aGUgYmluZGluZyBzYXlzOgoKUGxlYXNlIGRvIG5vdCBicmluZyAxNSB5ZWFyIG9sZCBj
-b2RlIGFzIGV4YW1wbGUgaG93IHRoaXMgc2hvdWxkIG9yIGNvdWxkCmJlIGRvbmUuCgpBbmQgaW4g
-U2Ftc3VuZyAtIHdoYXQgbWFrZXMgeW91IHRoaW5raW5nIHRoaXMgaXMgdGhlIHNhbWUgcGh5PyBJ
-dCdzIGp1c3QKd2F5IGhvdyBpdCB3YXMgcmVwcmVzZW50ZWQgaW4gUE1VLCB3aGljaCBpcyBjb250
-cm9sbGluZyBwb3dlciBvZiBlbnRpcmUKU29DLCBpbmNsdWRpbmcgTUlQSSBQSFkwIGFuZCBQSFkx
-LCBldmVuIHRob3VnaCB0aGVyZSBpcyBvbmx5IG9uZSBkZXZpY2UKbm9kZSBpbiB0aGUgY29kZS4g
-V2h5IHRha2luZyBzb21lIHJhbmRvbSBhbnRpLXBhdHRlcm4gaW50byBkaXNjdXNzaW9uCmhlcmUs
-IHJlYWxseS4uLgoKSSB3YW50IHRvIHNlZSB5b3VyIHVwc3RyZWFtIERUUyBjb2RlLgoKCj4gCj4g
-ICAgICAgRm9yIHNhbXN1bmcsczVwdjIxMC1taXBpLXZpZGVvLXBoeSBjb21wYXRpYmxlIFBIWXMg
-dGhlIHNlY29uZCBjZWxsIGluIHRoZQo+ICAgICAgIFBIWSBzcGVjaWZpZXIgaWRlbnRpZmllcyB0
-aGUgUEhZIGFuZCBpdHMgbWVhbmluZyBpcyBhcyBmb2xsb3dzOjoKPiAgICAgICAgIDAgLSBNSVBJ
-IENTSVMgMCwKPiAgICAgICAgIDEgLSBNSVBJIERTSU0gMCwKPiAgICAgICAgIDIgLSBNSVBJIENT
-SVMgMSwKPiAgICAgICAgIDMgLSBNSVBJIERTSU0gMS4KPiAKPiBSZXN1bWluZyBmcm9tIHRoZSBj
-b3ZlciBsZXR0ZXIgaW4gdjQsIEkgdHJlYXQgdGhpcyBwaHkgYXMgb25lIHR4IHBoeSBhbmQgb25l
-Cj4gcnggcGh5LiBNYXliZSBJIGNhbiBmb2xsb3cgdGhpcyBwYXR0ZXJuIGFuZCBpbnRyb2R1Y2Ug
-cGh5IDAgYW5kIHBoeSAxIGluCj4gcm9ja2NoaXAscmszNTg4LW1pcGktZGNwaHkueWFtbCwgYW5k
-IGFkZCBhbiBlbnVtIGZvcgo+IFNBTVNVTkdfTUlQSV9EQ1BIWV9UWC9SWCBpbiB0aGUgZHJpdmVy
-LiBUaGUgYmluZGluZyB3b3VsZCB0aGVuIHNheToKCkJ1dCB3aHkgaXMgdGhpcyBvbmUgcGh5PyBE
-ZXNjcmliZSB5b3VyIGhhcmR3YXJlLCBzaG93IHNvbWUgZGlhZ3JhbXMgZnJvbQp1c2VyIG1hbnVh
-bCBldGMuCgoKPiAKPiAgICAgICBUd28gY2VsbHMgc2VsZWN0IHRoZSBtb2RlIGFuZCB0aGVuIG9u
-ZSBvZiB0aGUgdHdvIFBIWXMgdGhhdCB0aGUKPiAgICAgICBibG9jayBjb250YWluczoKPiAgICAg
-ICAgIDAgLSB0aGUgdHJhbnNtaXR0ZXIsIGZvciBhIE1JUEkgRFNJIGhvc3QKPiAgICAgICAgIDEg
-LSB0aGUgcmVjZWl2ZXIsIGZvciBhIE1JUEkgQ1NJLTIgaG9zdAo+IAo+ICAgICAgIEEgc2luZ2xl
-IGNlbGwgaXMgZXF1aXZhbGVudCB0byBhIHNlY29uZCBjZWxsIG9mIDAuCj4gCj4gSW4gdGhpcyB3
-YXksIEkgZG9uJ3QgbmVlZCB0byBhZGQgUEhZX1RZUEVfQ1NJL0RTSSB0bwo+IGluY2x1ZGUvZHQt
-YmluZGluZ3MvcGh5L3BoeS5oLgo+IEFuZCBJIHRoaW5rIHRoaXMgd2lsbCBub3QgZ28gYWdhaW5z
-dCB0aGUgZGlzY3Vzc2lvbiBpbiB2Miwgd2hlcmUgTWljaGFlbCBwb2ludGVkCj4gb3V0IHRoYXQg
-RFNJIGFuZCBDU0kgYXJlIHN0YW5kYXJkIHByb3RvY29scyBhbmQgc2hvdWxkIG5vdCBiZSBuYW1l
-ZCBpbgo+IGEgUm9ja2NoaXAKPiBzcGVjaWZpYyBoZWFkZXIsIGFuZCBzdWdnZXN0ZWQgaW50cm9k
-dWNpbmcgUEhZX1RZUEVfQ1NJL0RTSToKPiAKPj4gSG93IGlzIHRoYXQgUm9ja2NoaXAgc3BlY2lm
-aWM/IEFzIHlvdSBzdGF0ZSBhYm92ZSB0aGlzIGlzIGVpdGhlciBNSVBJCj4+IENTSSBvciBNSVBJ
-IERTSSwgdHdvIHBlcmZlY3RseSBzdGFuZGFyZCBwcm90b2NvbHMuCj4+Cj4+IEBhbGwgV291bGQg
-aXQgYmUgcmVhc29uYWJsZSB0byBpbnRyb2R1Y2UgUEhZX1RZUEVfQ1NJIGFuZCBQSFlfVFlQRV9E
-U0k/Cj4gCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci84MmRhMzYyMi05YzNhLTQ1NGMtODdi
-Yy1mYjRlYzdhZGI2OGRAY29sbGFib3JhLmNvbQo+IAo+PiBXaGVyZSBpcyBhbnkgRFRTIHVzaW5n
-IGl0PyBJIGRpZCBhIHNlYXJjaCBhbmQgbm8gcmVzdWx0cyBvZiB1cHN0cmVhbQo+PiBwb3N0aW5n
-Lgo+IAo+IFRoZSB1c2VyIHdpbGwgYmUgcmszNTg4LWJhc2UuZHRzaS4gSXQgYWRkcyBjc2kwLzEs
-IHdoaWNoIGNvbm5lY3QgYmFjawo+IHRvIHRoZSBleGlzdGluZyB2aWNhcF9taXBpMC8xIHBvcnRz
-LiBJdCBhbHNvIHNldHMgI3BoeS1jZWxscwoKIldpbGwiIGRvZXMgbm90IHdvcmsgdGhhdCBtdWNo
-IGJlY2F1c2UgSSBkb3VidCBjb3JyZWN0bmVzcyBvZiB5b3VyCmRlc2lnbiBhbmQgdGhhdCBEVFMg
-bWlnaHQgbmV2ZXIgYmUgc2VudCB1cHN0cmVhbS4KClBvc3QgeW91ciBjb21wbGV0ZSB1cHN0cmVh
-bSBEVFMuCgoKQmVzdCByZWdhcmRzLApLcnp5c3p0b2YKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 31/08/2026 13:32, Michael Riesch wrote:
+> Hi Krzysztof,
+> 
+> On 8/27/26 13:45, Krzysztof Kozlowski wrote:
+>> On Fri, Aug 21, 2026 at 08:02:29PM +0800, Jason Yang wrote:
+>>> A MIPI D-PHY or C-PHY can be a transmitter (DSI) or a receiver (CSI),
+>>> and in some PHY blocks both work at the same time. The existing
+>>> PHY_TYPE_DPHY and PHY_TYPE_CPHY cannot tell whether a consumer wants
+>>> the transmitter or the receiver.
+>>
+>> The consumer knows this already, no? Imagine consumer of the phy is some
+>> ISP receiving data over CSI for given port, thus consumer cannot
+>> transmit over that link.
+>>
+>> All this seems redundant.
+> 
+> Indeed the consumer should know what to request. For example, the MIPI
+> CSI receivers should request the PHY_TYPE_CSI PHY. But I am not sure why
+> this should be redundant?! Can you elaborate? TBH I don't really
+> understand your remark.
+
+It is redundant, because consumer CANNOT put there anything else than
+CSI type and the topology already defines that. It is basically
+duplicating existing information.
+
+
+> 
+>>> Add PHY_TYPE_DSI and PHY_TYPE_CSI, so that a binding can select both
+>>> D-PHY or C-PHY and transmitter or receiver. They do not replace
+>>> PHY_TYPE_DPHY/PHY_TYPE_CPHY, which remain the right choice where a cell
+>>> selects the mode. The first user is the Rockchip RK3588 MIPI DC-PHY
+>>> binding.
+>>>
+>>> Suggested-by: Michael Riesch <michael.riesch@collabora.com>
+>>> Link: https://lore.kernel.org/r/82da3622-9c3a-454c-87bc-fb4ec7adb68d@collabora.com
+>>> Signed-off-by: Jason Yang <jason98166@gmail.com>
+>>
+>> Where is any DTS using it? I did a search and no results of upstream
+>> posting.
+>>
+>>> ---
+>>>  include/dt-bindings/phy/phy.h | 2 ++
+>>>  1 file changed, 2 insertions(+)
+>>>
+>>> diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
+>>> index 979b5dfd8353..8ee3f88e6d80 100644
+>>> --- a/include/dt-bindings/phy/phy.h
+>>> +++ b/include/dt-bindings/phy/phy.h
+>>> @@ -24,6 +24,8 @@
+>>>  #define PHY_TYPE_CPHY		11
+>>>  #define PHY_TYPE_USXGMII	12
+>>>  #define PHY_TYPE_XAUI		13
+>>> +#define PHY_TYPE_DSI		14
+>>> +#define PHY_TYPE_CSI		15
+>>
+>> DSI and CSI does not look like types of PHY...
+> 
+> Fair point. AFAIK both CSI and DSI are protocols on top of the physical
+> CPHY and DPHY communication. Maybe we should stick to
+> transmitter/receiver/RX/TX direction/.../something. Would work for me
+> too, my simple request is to *NOT* introduce the same magic for each
+> combo PHY block over and over again, but create something generic.
+> 
+> What about
+> 
+>     #define PHY_DIRECTION_RX	0
+>     #define PHY_DIRECTION_TX	1
+> 
+> or so?
+
+Well, I asked for any DTS user of it and I did not get it except
+pointing to irrelevant and completely different 15 year old Samsung chip
+and to some "future" work, so no clue. I still claim that direction is
+obvious from the graph between producer and consumer, thus is redundant,
+but I am happy to be corrected by showing me the code.
+
+Talk is cheap.
+
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
