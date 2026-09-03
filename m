@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5637C61DD3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 16:10:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED8DDC624A4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 16:34:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xri0u7r/qPLu27g+JIUyvK1vkKKDRcpgxY3u50MaqDo=; b=fstTmzUMx8bWiN
-	0fTTl8KNiMR/rOgasnoxgqMTp6MmRhrBMdKKSCXN1fORXYwLBPNf5obliR5yhF/PnDKRtL2hLuurM
-	a+/L4nhMwb2Vj60bbUAOw3r5mNoZ8RvZ85+pc+HJFr6+XImMduWS2psK302Cg9SvX4zg7paFTRCEZ
-	HXlg+187uOOtlWu5u0tJDdaFW/gRz07tj1oWxQy1ReDn5DjPeyZaxG/9JUc5dutTpJQ1+gJA/fPNd
-	jLKbzbGxDMlCeI4FVbBoNXwAG7AwWc2+lBdfl+aeVCWKk8VJGXvXyILCTOv/p2HjhftbUHHq4JZ7i
-	SNMIwjcb9IYtQ8jRIZZQ==;
+	List-Owner; bh=0Eo8cxXPlb2LHdLTx39/unVfnyTUu/WSRW/z/Oww+E8=; b=GHxeekiI+BiydS
+	f6Tl9lk66BwmYb0/T0u98+Ol8FuJyGftfKD+kwY3R2pIU/QyNs6pF21ZaatjvnMaPqWyApPa3+KCw
+	gFM6n+3go3OmFJnsJp25FfFdaKweybHnnfaAvWoLxBexwvwc+NXnaVRaQbqVfLdvPWRelciOr8+NU
+	aYyR8t7ahegUC4Tpn0zI+zWLWNrAHqozY98/5VxzilD3NvWjrgqf+gcy0yyI4vBv20793gLqUbDis
+	GS5mxOQbIg4YDxWLcXqdq5M6WT448NcFyfg1DgSOFSt4mNZHLwzog80OTduth50Aj4bb5nk57R8Vi
+	64aoSsDHgwefLqMN8i8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2A0f-000000007qQ-0PU5;
-	Thu, 03 Sep 2026 16:09:53 +0000
+	id 1x2AOP-00000000BHb-107j;
+	Thu, 03 Sep 2026 16:34:25 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2A0c-000000007pz-35GD
-	for linux-rockchip@lists.infradead.org;
-	Thu, 03 Sep 2026 16:09:51 +0000
+	id 1x2AOM-00000000BHB-4AZM;
+	Thu, 03 Sep 2026 16:34:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=0F2j0b3N5nABk+G76sOWdFQNdQLNUEsOfL8WiePX1eU=; b=f62wACnsBJRZajkD5HjKr+au6x
-	g/J41+y8dRpjPLFdC3+6o5J0eTXoKedc8Wd4OZkPPP4d6bvf00zXXWKZrSkf1+13SK5zl4G//t/0f
-	+qA5mDF/uFAVm0e7SodRu3Fil+dYJ8mfxw+Z6SnBbYIPuekFphYJ+NvA0EC78LmEDQHnrx9IhErg4
-	vRhKxaF9U9/jPQRoGVaEkI0rr4qChRrBwsgND8F2iEha9/uaFvr7dNJwUXcjQvuOqkLXIyYWeDq2w
-	s9mwTh1BWr7eiDXBXIPiJqJiga6YLmBcvvh0j+B+/MY6KDZX4gYLrZQgjtmuQ7Rkw/b5PpAFAKata
-	Py3kjq/Q==;
+	bh=ZS6D3dNfXN/WHHhWf6mBfOo10yYBtRBlMynvNuuKjhk=; b=kvPpxYWXgdKBe382DNY/BvGN8x
+	DNlFmCjcaldzhRskNDvW3lWW1aU63ogTZtKR7aFVNgvlIRe3QxCRG5LeWrHe2Lp4nqS0vUjA0gNRE
+	oTtS5FKFJI+8bO3sMc/Yu/dP+ajod3lNcOUwNlpaSccHg0xpyOA3s4Rmr3mRnqzdaBvmpV6ZZi7Oe
+	rdBaku5uZ1KfTLQf8lgKMd+yJpG1j+i2hCMriN4bZfmrTzJ9+iwPynAwBxKlOfQrtYUEkBgGvZUYP
+	KQAKJn8u0wVXYO6S7s6xXDpE1nW2CFJwJTjbWRRZ2XsVER4vZiyzRhNIUmrpnHztm8ZW4YW+iJfHW
+	eoC2voKg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Simon Wright <simon@symple.nz>
+To: Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Igor Paunovic <royalnet026@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
 	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
 	Simona Vetter <simona@ffwll.ch>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Algea Cao <algea.cao@rock-chips.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Marius Dinu <m95d+git@psihoexpert.ro>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] drm/bridge: dw-hdmi-qp: use drm_hdmi_acr_get_n_cts() helper for audio N/CTS
-Date: Thu,  3 Sep 2026 18:09:14 +0200
-Message-ID: <178845174737.2601151.16427479820258337465.b4-ty@sntech.de>
+Subject: Re: [PATCH 0/2] drm/rockchip: Add missing DRM_BRIDGE_CONNECTOR selects
+Date: Thu,  3 Sep 2026 18:34:00 +0200
+Message-ID: <178845323373.2687836.517588125431937296.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <86fcf349-0a7a-4618-9001-612371b0f71b@symple.nz>
-References: <86fcf349-0a7a-4618-9001-612371b0f71b@symple.nz>
+In-Reply-To: <20260813144019.12089-1-royalnet026@gmail.com>
+References: <20260813144019.12089-1-royalnet026@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_090950_825144_8350FF62 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260903_093423_029115_A66B5F80 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,22 +79,27 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 21 May 2026 19:36:47 +1200, Simon Wright wrote:
-> dw_hdmi_qp_set_sample_rate() open-coded its own N and CTS lookup
-> tables and search/compute helpers, but it lacked the out-of-table
-> CTS fallback needed by strict HDMI sinks at TMDS rates not in the
-> table.  The original LG G3 OLED audio mute (linux-rockchip 070633)
-> was caused by dw_hdmi_qp_find_cts() returning 0 at 185.625 MHz,
-> leaving AUDPKT_ACR_CTS_OVR_EN clear and falling back to the
-> controller's internal CTS auto-measurement, which produces incorrect
-> timing on the wire at out-of-table rates.
+On Thu, 13 Aug 2026 16:40:17 +0200, Igor Paunovic wrote:
+> While testing the dw-dp v11 series I noticed that ROCKCHIP_DW_DP does
+> not select DRM_BRIDGE_CONNECTOR although dw_dp-rockchip.c calls
+> drm_bridge_connector_init(), and Sebastian suggested handling this
+> independently of that series [1].
+> 
+> The ROCKCHIP_DW_DP gap was in fact found before: Marius Dinu posted
+> the same one-liner in March [2] and dropped it when the failure
+> stopped reproducing in his build. The failure is
+> configuration-dependent - any other enabled option that selects
+> DRM_BRIDGE_CONNECTOR masks it - so it can come and go with unrelated
+> config changes. It still reproduces on current drm-misc-next.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] drm/bridge: dw-hdmi-qp: use drm_hdmi_acr_get_n_cts() helper for audio N/CTS
-      commit: a9f09b5ea0c3db1e2d4c0f8d3ebdd612d8aa0366
+[1/2] drm/rockchip: dw_dp: Select DRM_BRIDGE_CONNECTOR
+      commit: c83e3e806d4c115f1dad9ef756db4cd91448a262
+[2/2] drm/rockchip: rk3066_hdmi: Add missing Kconfig selects
+      commit: d72aa5cf045a69d5fd433cde5dd4e113d9558fd1
 
 Best regards,
 -- 
