@@ -4,94 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8EC9C624A4
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 11:22:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B01C624DB
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 11:28:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pg/xAc4yjfJ1A1u2/VGKDmaSSAjxNTjYK4qC/dbFmO0=; b=Tt8NXDL7oDp9Lp
-	SjqLczqPttkU3PokAo7srsVcSEKsEVlHaKpq8jFbTJ0yUKAg/8LJ2A9Y4O0qC/1ilWngmbJBxsRjX
-	TAZLEM7k6SrDyqRHkDWBVSmZf9bjQyMKFJNCfTnvvsl2bGmXC6cwTJw7YBMuahKpZPanHHZUjXjEP
-	jlkuA24FK0Ks+Yl+BppF1qX26A6VW9QQyfZBn+8lUhnO4s5XNA0OJCxKe/4NkM71O9lfSBeIh3OF0
-	zyGSXhBlLPo+VluAPDzT4wuPjJtoIuW+MTwiyyy6OKULu16zC2uXxZkRClTGhsYqy8rYMoEc5B7eX
-	zpyTjk3i/IcQfngn0cwQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7WDO+M4YPHLKCL7JiSPY1dz8QepbbRHqAgK7Gd5iZEQ=; b=q7oB0/PVRAeUiS
+	1bfdTlewPHsEh8Kqjt5wg2o13ZP59VHdUicrTrSsiIXO+9vO7gxrgL6M60uG5MzvI/2/idUhrV6+o
+	T8DFJcW78HlvXtqP0h+x/TVGCynR7OmKHpHGYC1LWYW7AukNODFXkfQrafGItZFS80Nth+xFmXR/A
+	Ly43ZoU0Uc4H4UsC0Fd7m4zsy+DbIHzH7SFhJBYaO3DzsGsRfAmsf5dV7NaXfc3YwDdv4oWdKgB2p
+	pYl/j+SDi5tY9t+ZEh1bib4ZhoPZSe444QZTx7CH/51iiV6IegRxpo7BbrBk5Q66skXYEvX05+THf
+	VrGfddOF1feqlAEGsy1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x25WP-0000000HBsN-1tSI;
-	Thu, 03 Sep 2026 11:22:21 +0000
-Received: from flow-a5-smtp.messagingengine.com ([103.168.172.140])
+	id 1x25bq-0000000HCe3-46wg;
+	Thu, 03 Sep 2026 11:27:58 +0000
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x25WK-0000000HBrU-1Pkj
+	id 1x25bo-0000000HCcz-3QBB
 	for linux-rockchip@lists.infradead.org;
-	Thu, 03 Sep 2026 11:22:19 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailflow.phl.internal (Postfix) with ESMTP id 020DB138009F;
-	Thu,  3 Sep 2026 07:22:13 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-02.internal (MEProxy); Thu, 03 Sep 2026 07:22:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm2; t=1788434532; x=
-	1788441732; bh=pVZyhrC24Bb9CsTK4ozE4aIxVd8E4fbIDSi7dNReTJg=; b=R
-	8bKYdoGT9wGPfPymcGnikJEyOeMzHIzkwKCrMikK3Oukdos2Gy6XikiCU4Faywbx
-	GxWs3Sc9+ixI/b0S7hb2cOLOtGB6kRrshOYOLWH7HzG0BNarlCu/YSLmMz/yNF4A
-	EvG6HZTwxY+1iQNBXEUCOne+4Zp48+zcBGMNvGLhhtqyUnnpz5LeVt18ntikgbVI
-	WbtCD3n8G187MNqxdxPjBEqBJWmcA3fqlPFRWxEYL6tu0p8E3dHd6bYG/pL0h3bi
-	VA3ekVYHirZAJHcMqTF0L49ZpgZveop0TyQWeTU2oFIeLNIRNhIsyfmn8By1IyHy
-	o303N+KPXFLVdh7Dsn5aQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm1; t=1788434532; x=1788441732; bh=p
-	VZyhrC24Bb9CsTK4ozE4aIxVd8E4fbIDSi7dNReTJg=; b=PECnSdYq1lTx0b5rs
-	uV/tYlXDg/mRu4wBO3SpId0bQSNLr/TtcwUNItoHMbgICoZeAfht1/LYvliGFge/
-	II2Srt/TAj5dlyZBdsWpYXbGNV/0JKMZBvSoH3U793h8Gz+XsRJWsPN8v5H55EOd
-	6Z6Hr9xRLf7PREFbSbn7563bol6a1QU6RoWQetmIZMUbdPXi05Kfa1k7Y0viaOI/
-	AHl3yuyKzOLwxxRCDyuKruKYu8wgxgs37tjDPoCfmR9hi/XLh+R69RLbtAhgQGkD
-	hvRdU6PgSoMEwjgp8wNtaNKaXj5vIk/NSOADJ2SH4gL49VCP0Z6RHs8rNY7BCrN4
-	Z12Dg==
-X-ME-Sender: <xms:ZFiZatkUHPgD9QCeqR4Stl8AwDsoE5SxL5TUNC6chochkfAyqoqY0Q>
-    <xme:ZFiZamrk2x0MfWS41-ol_Me69ajlay1XyjIOTjTKrL8yisFVGCw9xSB2U_wyXdvZW
-    Mw9F7pLZUtEJ9DcqFYrLyYrtIZrrvzaAln18ERm0UQLLwqbVzUZLhio>
-X-ME-Received: <xmr:ZFiZauGy0HAnFkOPWEUQF3L_9X8vZynUsacSTAStNHXeIi2B36fGXmBVUypQiHHaVJK3I4qzsQ>
-X-ME-Proxy-Cause: dmFkZTGuuDOnyVoCHoA0AunpW1l5mr/XXdT4Dh1ggdrtnNj7HK0CtEIkxynie2nMTpTQa8
-    g8BUMpzvSCKwys/anDTx62i9zZifH1loHpK9lUAD++2eDR1UqQAmHL4JLzcNQgrNcLtTra
-    JlCElHeFhpRdjdM1+g5IyvlxKKzlkJHck7LLGs5YYJPY2y0f5Br83CAKAMZibf7/kQYNDs
-    EYlRbjdt0Igi4gJXS3xV55M7Z6/U1lq6nOlowXSGjY2+Xo8vnE/kR8MqpepBlQcvISeWvn
-    VREMrsgSV7bBD7+u42TL+wejtsYK0keTZkM+oIboX1Us1rx56Eu6IW21pTnUNK8ONh8jK7
-    wA/V7iwCjaX/BN51EzpQPqEdNcsh/M7kxjIJ5enAPo/3tLKb0h5+aZa4k5Csded2ZBdQvZ
-    CphDYN92TG5+8crm9zVoGlTS0dsDxJs520jEQqsxdCkiF4s9wN8lbT+VmOQVWjUJguH2L8
-    12l+jRYLSCnDGOL0PQNq8MqZTydXxCn+fn2Y9QPXe8097XPHl4gflARTGUMLKsG/Ay9yRC
-    xd9T0PfUfAMQjC40+pfSGFmmy4gBWaI25/aRxi38xF/4zrkw7oe/cZ+Gmd36LkzY8gci8l
-    TRQR7TWogh2dvb2Ma8Ogd/jyvu0W0WhHBCSua8VE4TQhW2JtNjoJetT4jRxA
-X-ME-Proxy: <xmx:ZFiZaqydlN2J4siKzYdG8wcUL5DfABJrlXpQORithrkHEmUageOlxg>
-    <xmx:ZFiZarq9aujYkRUck0LEUbzNTydjq1QEWPAVSVjKhXCNT3AQCt7McA>
-    <xmx:ZFiZasjKjCpHAB_b9sy3lOQAcGDtqscN4vfc57FuXD-BsKXd_wbqWg>
-    <xmx:ZFiZagialJ8Uu7cF_6P4tShSBT6jCscpV0YCQhrOEPy4rkUrLeWpJg>
-    <xmx:ZFiZarDY1L6xytU5nXkJxR4G5USUNTgPur1_MV7d5YTtGxtDTmZtjWqa>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 3 Sep 2026 07:22:11 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: royalnet026@gmail.com
-Cc: linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v9 05/13] dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
-Date: Thu,  3 Sep 2026 23:22:08 +1200
-Message-ID: <20260903112208.952061-1-gahing@gahingwoo.com>
+	Thu, 03 Sep 2026 11:27:57 +0000
+Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-84e04df8c46so3186656b3a.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 03 Sep 2026 04:27:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788434876; x=1789039676; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=LelVyfkIJElVaV96Bx2ole6PtnzRp3ZrnXJtU0M/fEY=;
+        b=KrhjlmM9cCd1hijDO7gACAD+NSPU4w6artpPj17N0Hi+xITZcGqbE4UhEzj1bRURi0
+         U1qcPouLmQ5zXp+KHQzcya2PWVBAkVvH49qQrd1D8YQgGwfNqmSNp7hiEWRhyyJg9nFp
+         pTG3cF79VHa/nu6K8oyhJPOrYDqgwOHzScEMZi2gecs90tZYQmlY0YfMrCYz9fB6aZfW
+         vsZP/vsQsBNj/rOyGEZgmQLRccACQ0qdh2g+BPcFRQx+lWMwm1HSQ6B/LJlehzEB7uGX
+         ldGCiTMH86uIK6rQ/zK1Q1Ztbl5ZUp+nGjiujU7AczmTAclpZ4AeKPvaV9Q4JCUEVkLm
+         gotA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788434876; x=1789039676;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=LelVyfkIJElVaV96Bx2ole6PtnzRp3ZrnXJtU0M/fEY=;
+        b=L3exnUfMSLl/iJ3Cx7HnT0uWRXEV0l/B/5tMHgfyGjx17KzvDra3r8WpXUGcTZ1etD
+         Prjkakb6zggY+onrFdPt1uT3DW9nBzCYp8D49TKS57nhcWv6k+102Ca3EkH3UocBcGst
+         ReSHcGatfnzpQnuYtuLhYtvtcrRgFVYPSNklYhXFw7OhLqUCycEVANnhMgy2u6+YhvJ4
+         DNChXvWQXt2jNbjmfCSdmZA8VT+dpxRRPZC67Bk7Zb4Wa+a6YIAt5yVDfU2dTaB9cf+y
+         sD6wKNCT0wBfPQSdeH156YKMfix3fQROGZGItkaVOsdPL/6srDFV+F18cFomjDzLyJCE
+         WzVA==
+X-Forwarded-Encrypted: i=1; AKwUvBw+JCFjEKe9Ejbi6QcHdFKLy1c5TKEmx+OJT6vGZhbvRfDhR08niyUqhCLc51TKee0FXKTtk2jjy1oExcRCMA==@lists.infradead.org
+X-Gm-Message-State: AFuF++l6MCKfqfGP1yxkdgpy01GmfO8z3+Krsfw10DVGebBXC60Q47Up
+	ozz7KGbYeagvjoGfh7Uxt/GO6zz6IYfQVz8MtsLrti+q3u0CuxFj6pFv
+X-Gm-Gg: AYBFou1nOCRADLaT0jg7n/H4kcjSyW0xvdn40+oXHctf0L37ILG7CP/W/bKptPkH/L/
+	gLTrfpxI9K2A/H12RuPpUMxGifc2P26ZTaKuxd989dTnLpGGbSLASYk3ALRUYciti5gzm2A7jT7
+	zKYodCXz6MekVkpb7yAYXBRFNMnH4lQ1AO74XgrO5OztcEB9ItOk1IugtZlfiWWwuCJuPqrC8N+
+	pjdz2vifSXiTe/GO19TuW+GkW3t9NAp59379kRc/+qDU5R5iQYz0HRfx9svWjkSY4pDpDEBUZPw
+	FNKfe86ezX667SFKSax70L4tALc6wOu1kDgAlMFQ9gsTXYxur+ol1Kd7m58LwSXhEVbQNGynmrN
+	EUR8g6DTJ4T0Xf0lRiM96/bU4wTK5YVmP1PkBKupgfkYUtn1bqyLuO/2T4/VfuvpVfMYYlMyUIR
+	2xRa7ZPqG75xVLzj++hDLOAG5EMqyjbVImYe2Vkc5bgp/qFpZGXYLfBicsUYNmMO6O8Cih1Kxu2
+	89igssBnIIB7FLID6cHQhAYMSiW90l4BuwmltH40xiefS6c3PwNrozXyHygtAesIx8QIGg49pqK
+	3sJ6ORlc6DtR0Qw=
+X-Received: by 2002:a05:6a21:339f:b0:3b3:216b:2743 with SMTP id adf61e73a8af0-3d9afa068f5mr18626130637.4.1788434875933;
+        Thu, 03 Sep 2026 04:27:55 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cc43d467134sm856084a12.30.2026.09.03.04.27.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Sep 2026 04:27:55 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Sugar Zhang <sugar.zhang@rock-chips.com>,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 1/2] ASoC: rockchip: rockchip_sai: Handle runtime PM resume failures in set_fmt
+Date: Thu,  3 Sep 2026 18:27:38 +0700
+Message-ID: <20260903112739.373621-1-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260902100147.16191-1-royalnet026@gmail.com>
-References: <CAEWPSH5_PmfUCEm5O53=32NQjPKMd4vm--Y2R=4ErMoehtt=tA@mail.gmail.com> <20260831040751.24030-1-gahing@gahingwoo.com> <20260902100147.16191-1-royalnet026@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_042216_845373_B878CEC1 
-X-CRM114-Status: GOOD (  19.99  )
+X-CRM114-CacheID: sfid-20260903_042756_848243_D63938F2 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,624 +107,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-Here it is, below the line. It is the file that printed every number in
-the table, changed only where it had to be before it could run on a
-machine that is not mine. The reader for the container is inlined, so
-it needs numpy and nothing else. The directory is an argument:
+rockchip_sai_set_fmt() calls pm_runtime_get_sync() before accessing
+hardware registers, but ignores its return value.
+If the runtime resume fails, the function continues to perform register
+accesses while the device state is undefined.
+Replace pm_runtime_get_sync() with pm_runtime_resume_and_get() and
+return early on failure to avoid unpowered register accesses.
 
-    python3 reserved0-build.py DIR > out.md
+Fixes: cc78d1eaabad ("ASoC: rockchip: add Serial Audio Interface (SAI) driver")
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
+ sound/soc/rockchip/rockchip_sai.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-And the parts of the page that only hold for my files print only when
-those files are present. That covers the named same-geometry pairs,
-g_pw24, and the note on my earlier mail.
+diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
+index 30b5e71d0937..264a99e618a5 100644
+--- a/sound/soc/rockchip/rockchip_sai.c
++++ b/sound/soc/rockchip/rockchip_sai.c
+@@ -487,7 +487,9 @@ static int rockchip_sai_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+ 	unsigned long flags;
+ 	int ret = 0;
+ 
+-	pm_runtime_get_sync(dai->dev);
++	ret = pm_runtime_resume_and_get(dai->dev);
++	if (ret)
++		return ret;
+ 
+ 	mask = SAI_CKR_MSS_MASK;
+ 	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+-- 
+2.43.0
 
-The meaning of the bits came from trial and error against the files and
-the board, so where your corpus disagrees with mine the numbers will
-disagree. The "What it does follow" block tests the 0x4044 pairing on
-whatever it is given and reports one-to-one or not, with the counts.
-
-Thank you for checking 01/14 in v11.
-
-Regards,
-Jiaxing
-
----8<---
-#!/usr/bin/env python3
-# Copyright (c) 2026 Jiaxing Hu <gahing@gahingwoo.com>
-# SPDX-License-Identifier: GPL-2.0-or-later
-"""
-Build the RESERVED_0 table for DPU register 0x4050, out of the vendor-compiled
-.rknn files in the directory it is given.
-
-This is the table promised to Igor Paunovic on linux-rockchip in the v9 05/13
-thread, where the claim was that RESERVED_0 "is 34 in most of the regular
-models and 66 in a subset", tracking the model series rather than the geometry.
-That claim was written once and never re-derived. This re-derives it from the
-files and prints whatever the files say, including where they contradict it.
-
-Method, so it can be checked rather than believed. A .rknn carries the register
-command stream the vendor runtime submits, as little-endian u64 words
-
-    [63:48] target   [47:16] value   [15:0] register
-
-with 0x0201 CNA, 0x0801 CORE, 0x1001 DPU, 0x2001 DPU_RDMA and a few others. A
-maximal run of such words is one dispatch. Every run of 20 words or more in
-this corpus carries exactly one CNA block and exactly one write of DPU 0x4050,
-so one run is one convolution and there is no ambiguity about which op a value
-belongs to. Nothing here is run on hardware and nothing is taken apart: the
-numbers are read out of files the vendor toolkit produced, and the meaning of
-the bits was arrived at by trial and error against those files and the board.
-
-The field split is upstream's, from mesa's rocket registers.xml, BS_OW_CFG:
-
-    RGP_CNTER  31:28   TP_ORG_EN  27   RESERVED_0  26:11
-    SIZE_E_2   10:8    SIZE_E_1   7:5  SIZE_E_0     4:2
-    OD_BYPASS  1       OW_SRC     0
-
-The geometry columns are read from the same run's CNA registers, so the value
-and the geometry it is being tested against come from one dispatch:
-
-    ic  = (0x1028 & 0xffff) + 1        oc = (0x1024 & 0xffff) + 1
-    k   = sqrt(0x1020 / ic)            stride from 0x1014, which holds (s<<3)|s
-
-On the depthwise path the oc register reads 2 and the channel count is in the
-ic register; those rows are marked and their channel count is the ic one.
-
-Usage:  reserved0-build.py [geom-dir] > reserved0-table.md
-"""
-import glob
-import math
-import os
-import re
-import sys
-from collections import Counter, defaultdict
-
-import numpy as np
-
-# The container reader, the same two functions charsiu's tools/rkllm_regcmd.py
-# carries, copied in so this file runs on its own with numpy and nothing else.
-TARGETS = {0x0201: "CNA", 0x0801: "CORE", 0x1001: "DPU",
-           0x2001: "RDMA", 0x0401: "U28", 0x0041: "SYNC", 0x0081: "BCAST"}
-
-
-def streams(path, min_len=20):
-    """Every maximal run of register command words, as (byte offset, words)."""
-    n = os.path.getsize(path) // 8
-    words = np.memmap(path, dtype="<u8", mode="r", shape=(n,))
-    ok = np.isin((words >> 48).astype(np.uint32), list(TARGETS))
-    idx = np.flatnonzero(ok)
-    if idx.size == 0:
-        return []
-    out = []
-    for run in np.split(idx, np.flatnonzero(np.diff(idx) != 1) + 1):
-        if len(run) >= min_len:
-            out.append((int(run[0]) * 8, words[run[0]:run[-1] + 1]))
-    return out
-
-
-def decode(ws):
-    """One stream as {(target, register): value}, first write wins."""
-    regs = {}
-    for e in ws:
-        e = int(e)
-        key = ((e >> 48) & 0xffff, e & 0xffff)
-        if key not in regs:
-            regs[key] = (e >> 16) & 0xffffffff
-    return regs
-
-GEOM = sys.argv[1] if len(sys.argv) > 1 else "."
-# The sections that name files -- g_cal against bias_k5, g_pw24, and the
-# note on the earlier mail -- are about the corpus this was written against.
-# On another corpus they are skipped rather than printed with the wrong
-# numbers under the same sentences.
-MINE = all(os.path.exists(os.path.join(GEOM, f + "_rk3576.rknn"))
-           for f in ("g_cal", "bias_k5", "g_pw24", "g_k3s1", "pp_k3",
-                     "g_cal_k3", "bias_k3", "p2_k5", "pp_p5"))
-
-CNA, CORE, DPU, RDMA = 0x0201, 0x0801, 0x1001, 0x2001
-
-
-def fields(v):
-    return dict(RGP_CNTER=(v >> 28) & 0xf, TP_ORG_EN=(v >> 27) & 1,
-                RESERVED_0=(v >> 11) & 0xffff, SIZE_E_2=(v >> 8) & 7,
-                SIZE_E_1=(v >> 5) & 7, SIZE_E_0=(v >> 2) & 7,
-                OD_BYPASS=(v >> 1) & 1, OW_SRC=v & 1)
-
-
-def declared(path):
-    """What the file itself says it is: the toolkit build string and the
-    input and output shapes it records, plus the ONNX ops it names."""
-    d = open(path, "rb").read()
-    m = re.search(rb"compiler version: ([0-9][^)]*\))", d)
-    ver = m.group(1).decode().strip() if m else "?"
-    i = re.search(rb"'shape': \[([0-9, ]+)\], 'layout'", d)
-    o = re.search(rb"'output': \{'is_output': True, 'idx': 0, "
-                  rb"'shape': \[([0-9, ]+)\]", d)
-    def shp(mm):
-        if not mm:
-            return "?"
-        p = [x.strip() for x in mm.group(1).decode().split(",")]
-        return "x".join(p[1:])            # drop the batch dimension
-    ops = sorted(set(x.decode() for x in re.findall(rb"([A-Za-z]+):/", d)))
-    return ver, "%s>%s" % (shp(i), shp(o)), ",".join(ops)
-
-
-def read_ops(path):
-    """Every dispatch in one file, as a dict of value and geometry."""
-    out = []
-    for off, ws in streams(path, min_len=20):
-        r = decode(ws)
-        v = r.get((DPU, 0x4050))
-        if v is None:                     # never happens in this corpus
-            out.append(dict(off=off, undecoded=True))
-            continue
-        core = r.get((CORE, 0x3018))
-        mode = (core & 0xff) if core is not None else None
-        dw = mode == 0x0a
-        ic = (r[(CNA, 0x1028)] & 0xffff) + 1 if (CNA, 0x1028) in r else None
-        oc = (r[(CNA, 0x1024)] & 0xffff) + 1 if (CNA, 0x1024) in r else None
-        wbpk = r.get((CNA, 0x1020))
-        k = None
-        if wbpk and ic:
-            root = int(round(math.sqrt(wbpk / ic)))
-            k = root if root * root * ic == wbpk else None
-        st = r.get((CNA, 0x1014))
-        rec = dict(off=off, undecoded=False, v=v, dw=dw, mode=mode,
-                   ic=ic, oc=oc, k=k,
-                   stride=(st & 7) if st is not None else None,
-                   inw=((r[(CNA, 0x102c)] >> 16) & 0xffff) + 1
-                       if (CNA, 0x102c) in r else None,
-                   rows=(r[(CNA, 0x102c)] & 0xffff) + 1
-                       if (CNA, 0x102c) in r else None,
-                   ow=(r[(CNA, 0x1030)] & 0xffff) + 1
-                       if (CNA, 0x1030) in r else None,
-                   pix=r[(CNA, 0x1034)] + 1 if (CNA, 0x1034) in r else None,
-                   surf=(r[(CNA, 0x103c)] >> 16) & 0xffff
-                       if (CNA, 0x103c) in r else None,
-                   r4044=r.get((DPU, 0x4044)), r501c=r.get((RDMA, 0x501c)),
-                   r40ac=r.get((DPU, 0x40ac)), r40b0=r.get((DPU, 0x40b0)),
-                   r40b4=r.get((DPU, 0x40b4)), regs=r)
-        rec.update(fields(v))
-        # the channel count the op really works on
-        rec["chan"] = rec["ic"] if dw else rec["oc"]
-        out.append(rec)
-    return out
-
-
-def geo_key(o):
-    return (o["ic"], o["oc"], o["k"], o["stride"], o["inw"], o["rows"],
-            o["ow"], o["pix"], o["surf"])
-
-
-def main():
-    files = sorted(glob.glob(os.path.join(GEOM, "*.rknn")))
-    if not files:
-        sys.stderr.write("no .rknn files under %s\n" % GEOM)
-        return 1
-    per_file, allops = {}, []
-    for p in files:
-        name = os.path.basename(p).replace("_rk3576.rknn", "")
-        ver, shape, onnxops = declared(p)
-        ops = read_ops(p)
-        for o in ops:
-            o["file"] = name
-        per_file[name] = dict(ver=ver, shape=shape, onnxops=onnxops, ops=ops)
-        allops += ops
-
-    good = [o for o in allops if not o["undecoded"]]
-    bad = [o for o in allops if o["undecoded"]]
-    reg = [o for o in good if not o["dw"]]
-    dwo = [o for o in good if o["dw"]]
-
-    W = []                                 # the report, line by line
-    def p(s=""):
-        W.append(s)
-
-    p("DPU 0x4050 RESERVED_0 across %d vendor-compiled .rknn" % len(files))
-    p("=" * 68)
-    p()
-    p("Regenerate with reserved0-build.py, which reads only the files in")
-    p("the directory it is given and prints this whole page, numbers included.")
-    p()
-
-    # ---------------------------------------------------------------- method
-    p("How the value is obtained")
-    p("-" * 25)
-    p()
-    p("A .rknn carries the register command stream the vendor runtime")
-    p("submits, as little-endian u64 words")
-    p()
-    p("    [63:48] target   [47:16] value   [15:0] register")
-    p()
-    p("with target 0x0201 CNA, 0x0801 CORE, 0x1001 DPU, 0x2001 DPU_RDMA. A")
-    p("maximal run of such words is one dispatch. In this corpus every run of")
-    p("20 words or more carries exactly one CNA block and exactly one write")
-    p("of DPU 0x4050, so a value and the geometry it is tested against always")
-    p("come from the same op and there is no matching to guess at.")
-    p()
-    p("The word is BS_OW_CFG. Split as upstream's registers.xml splits it:")
-    p()
-    p("    RGP_CNTER  31:28   TP_ORG_EN  27   RESERVED_0  26:11")
-    p("    SIZE_E_2   10:8    SIZE_E_1   7:5  SIZE_E_0     4:2")
-    p("    OD_BYPASS  1       OW_SRC     0")
-    p()
-    p("So RESERVED_0 is bits 26:11, and the two values in question are")
-    p()
-    p("    0x80011111 -> RESERVED_0 = 34 = field bits 5 and 1 = word bits 16, 12")
-    p("    0x80021111 -> RESERVED_0 = 66 = field bits 6 and 1 = word bits 17, 12")
-    p()
-    p("One word bit apart, 16 against 17, over a constant word bit 12. The")
-    p("geometry columns come from the CNA registers of the same run:")
-    p()
-    p("    ic  = (0x1028 & 0xffff) + 1     oc = (0x1024 & 0xffff) + 1")
-    p("    k   = sqrt(0x1020 / ic)         stride from 0x1014, which is (s<<3)|s")
-    p()
-    p("Three notes on reading those columns honestly.")
-    p()
-    p("  * The oc register holds the count rounded up to 2, so a 41 channel")
-    p("    output reads 42. pq_ic and pq_oc are the two rows where that shows.")
-    p("  * On the depthwise path, CORE 0x3018 mode 0x0a, the oc register reads")
-    p("    2 and the channel count is in the ic register. Those rows carry the")
-    p("    ic one and are marked dw in the path column.")
-    p("  * On the first convolution path, CORE 0x3018 mode 0x81, three input")
-    p("    channels are packed and the ic register reads 12, so the ic and k")
-    p("    columns on those seven rows are the packed form and not the source")
-    p("    shape. They are marked 1st. All seven read 34 either way.")
-    p()
-    p("Nothing here was run on hardware. These are numbers read out of files")
-    p("the vendor toolkit produced, and what the bits mean was arrived at by")
-    p("trial and error against those files and against the board.")
-    p()
-
-    # ----------------------------------------------------------------- table
-    p()
-    p("The table")
-    p("-" * 9)
-    p()
-    p("One row per file, for the first dispatch in the file. The last column")
-    p("is what the file records about itself, input>output with the batch")
-    p("dropped. A + on the name means the file holds more than one distinct")
-    p("RESERVED_0 across its dispatches; those are broken out below.")
-    p()
-    hdr = "%-15s %-10s %3s %-4s %5s %5s %2s %2s  %s" % (
-        "model", "0x4050", "R_0", "path", "ic", "oc", "k", "s", "file says")
-    p(hdr)
-    p("-" * min(78, len(hdr)))
-
-    def row(name, f, o):
-        vals = set(x["RESERVED_0"] for x in f["ops"] if not x["undecoded"])
-        path = {0x01: "reg", 0x0a: "dw", 0x81: "1st"}.get(o["mode"], "?")
-        return "%-15s 0x%08x %3d %-4s %5s %5s %2s %2s  %s" % (
-            name + ("+" if len(vals) > 1 else ""), o["v"], o["RESERVED_0"],
-            path, o["ic"], o["oc"], o["k"] if o["k"] else "?", o["stride"],
-            f["shape"])
-
-    groups = [("RESERVED_0 = 34   (regular convolutions)",
-               lambda o: not o["dw"] and o["RESERVED_0"] == 34),
-              ("RESERVED_0 = 66   (regular convolutions)",
-               lambda o: not o["dw"] and o["RESERVED_0"] == 66),
-              ("RESERVED_0 = 38   (depthwise; a third value, see below)",
-               lambda o: o["dw"])]
-    counted = 0
-    for title, pred in groups:
-        sel = [(n, f, f["ops"][0]) for n, f in sorted(per_file.items())
-               if not f["ops"][0]["undecoded"] and pred(f["ops"][0])]
-        p()
-        p("  " + title + "   %d files" % len(sel))
-        for n, f, o in sel:
-            p(row(n, f, o))
-        counted += len(sel)
-    left = [n for n, f in sorted(per_file.items())
-            if f["ops"][0]["undecoded"]]
-    if left:
-        p()
-        p("  could not be decoded: %s" % ", ".join(left))
-
-    # ---------------------------------------------------------------- counts
-    p()
-    p()
-    p("The counts")
-    p("-" * 10)
-    p()
-    p("  files                                  %d" % len(files))
-    p("  dispatches in them                     %d" % len(allops))
-    p("  dispatches that could not be decoded   %d" % len(bad))
-    p("  regular dispatches                     %d" % len(reg))
-    p("  depthwise dispatches                   %d" % len(dwo))
-    p()
-    c = Counter(o["RESERVED_0"] for o in good)
-    p("  by dispatch, RESERVED_0")
-    for v, n in sorted(c.items()):
-        p("    %-4d %4d" % (v, n))
-    p()
-    prim = Counter(f["ops"][0]["RESERVED_0"] for f in per_file.values()
-                   if not f["ops"][0]["undecoded"])
-    p("  by file, first dispatch")
-    for v, n in sorted(prim.items()):
-        p("    %-4d %4d" % (v, n))
-    p()
-    cw = Counter(o["v"] for o in good)
-    p("  distinct 0x4050 words, %d of them" % len(cw))
-    p("    %-12s %5s  %-4s %-4s %-4s %-4s %-4s %-4s %s"
-      % ("word", "count", "RGP", "R_0", "S_E2", "S_E1", "S_E0", "OD", "OW"))
-    for v, n in sorted(cw.items(), key=lambda t: -t[1]):
-        f = fields(v)
-        p("    0x%08x %5d  %-4d %-4d %-4d %-4d %-4d %-4d %d"
-          % (v, n, f["RGP_CNTER"], f["RESERVED_0"], f["SIZE_E_2"],
-             f["SIZE_E_1"], f["SIZE_E_0"], f["OD_BYPASS"], f["OW_SRC"]))
-    p()
-    p("  the other fields, for completeness")
-    for fld in ("RGP_CNTER", "TP_ORG_EN", "SIZE_E_0", "SIZE_E_1", "SIZE_E_2",
-                "OD_BYPASS", "OW_SRC"):
-        a = Counter(o[fld] for o in reg)
-        b = Counter(o[fld] for o in dwo)
-        p("    %-10s regular %s" % (fld, dict(sorted(a.items()))))
-        p("    %-10s dw      %s" % ("", dict(sorted(b.items()))))
-
-    # ------------------------------------------------- series or geometry
-    p()
-    p()
-    p("Does it follow the geometry?")
-    p("-" * 28)
-    p()
-    cls = defaultdict(list)
-    for o in reg:
-        cls[geo_key(o)].append(o)
-    confl = [(k, v) for k, v in cls.items()
-             if len(set(x["RESERVED_0"] for x in v)) > 1]
-    p("No. Grouping the %d regular dispatches by their full CNA geometry --" % len(reg))
-    p("ic, oc, kernel, stride, input width, rows, output width, pixels and")
-    p("surface -- gives %d distinct classes, and %d of them contain both" % (len(cls), len(confl)))
-    ngroups = len(set(
-        (tuple(sorted(set(x["file"] for x in v if x["RESERVED_0"] == 34))),
-         tuple(sorted(set(x["file"] for x in v if x["RESERVED_0"] == 66))))
-        for _, v in confl))
-    p("values. Read that as %d facts and not %d: a model appears in several"
-      % (ngroups, len(confl)))
-    p("classes because the compiler splits it into CBUF windows of different")
-    p("heights, and each window is its own class here. Same geometry,")
-    p("different RESERVED_0, in the same corpus:")
-    p()
-    for k, v in sorted(confl, key=lambda t: -len(t[1])):
-        a = sorted(set(x["file"] for x in v if x["RESERVED_0"] == 34))
-        b = sorted(set(x["file"] for x in v if x["RESERVED_0"] == 66))
-        p("  ic %s  oc %s  k %s  stride %s  %sx%s in, %s pixels out"
-          % (k[0], k[1], k[2], k[3], k[4], k[5], k[7]))
-        for tag, lst in (("34", a), ("66", b)):
-            line = "    %s: " % tag
-            for nm in lst:
-                if len(line) + len(nm) + 2 > 78:
-                    p(line.rstrip(", ") + ",")
-                    line = "        "
-                line += nm + ", "
-            p(line.rstrip(", "))
-    p()
-    if MINE:
-        p("The cleanest single pair is g_cal against bias_k5. Both are one ONNX")
-        p("Conv, ic 16, oc 128, 80x80 input, k = 5, stride 2, compiled by the")
-        p("same toolkit build, and the two .onnx sources are the same 205601")
-        p("bytes -- they differ in the weight and bias VALUES and in nothing")
-        p("else. Their first dispatches are 138 registers each and differ in")
-        p("five of them:")
-        a = read_ops(os.path.join(GEOM, "g_cal_rk3576.rknn"))[0]["regs"]
-        b = read_ops(os.path.join(GEOM, "bias_k5_rk3576.rknn"))[0]["regs"]
-        for kk in sorted(set(a) | set(b)):
-            if a.get(kk) != b.get(kk):
-                p("    t=%04x r=%04x   g_cal %08x   bias_k5 %08x"
-                  % (kk[0], kk[1], a.get(kk, 0), b.get(kk, 0)))
-        p()
-        p("Three more same-geometry pairs, one from each of the other groups:")
-        p()
-        for x, y in (("g_k3s1", "pp_k3"), ("g_cal_k3", "bias_k3"),
-                     ("p2_k5", "pp_p5")):
-            ra = read_ops(os.path.join(GEOM, x + "_rk3576.rknn"))[0]["regs"]
-            rb = read_ops(os.path.join(GEOM, y + "_rk3576.rknn"))[0]["regs"]
-            d = [kk for kk in sorted(set(ra) | set(rb)) if ra.get(kk) != rb.get(kk)]
-            p("  %s against %s: %d registers differ, %s"
-              % (x, y, len(d), " ".join("%04x" % kk[1] for kk in d)))
-        p()
-        p("0x40ac, 0x40b0 and 0x40b4 are the output zero point, the requant")
-        p("multiplier and the requant shift. Those differ between any two models")
-        p("with different weights and say nothing here. What is left in every")
-        p("pair is 0x4044, 0x4050 and 0x501c, the same three every time.")
-    else:
-        p("(the named same-geometry pairs of the corpus this was written against")
-        p(" are not in this one, so that comparison is skipped here)")
-
-    p()
-    p()
-    p("Does it follow the model series?")
-    p("-" * 32)
-    p()
-    vers = Counter(f["ver"] for f in per_file.values())
-    p("Not that either, and one form of the guess dies immediately: all %d" % len(files))
-    p("files carry the same toolkit build string,")
-    p()
-    for v, n in vers.most_common():
-        p("    %s   %d files" % (v, n))
-    p()
-    p("so it is not a toolkit version difference.")
-    p()
-    mixed = {n: f for n, f in per_file.items()
-             if len(set(o["RESERVED_0"] for o in f["ops"]
-                        if not o["undecoded"])) > 1}
-    p("And a per-model constant cannot be right, because %d files hold more" % len(mixed)) if mixed else p("No file in this corpus holds more than one value inside a single compile.")
-    if mixed: p("than one value inside a single compile:")
-    p()
-    def dump(n):
-        f = per_file[n]
-        p("  %s, %s, one %s in the source graph." %
-          (n, f["shape"], f["onnxops"] or "?"))
-        p("  Its dispatches, by byte offset in the file:")
-        for o in f["ops"]:
-            p("    0x%-6x 0x%08x  R_0 %-3d %s ic %-5s oc %-5s k %-2s "
-              "%s px"
-              % (o["off"], o["v"], o["RESERVED_0"],
-                 "dw " if o["dw"] else "   ", o["ic"], o["oc"],
-                 o["k"] if o["k"] else "?", o["pix"]))
-    if MINE:
-        dump("g_pw24")
-        p()
-        others = sorted(k for k in mixed if k != "g_pw24")
-        p("  and the same shape in the other %d, all of them dwbig_*:" % len(others))
-        dump(others[0])
-        p("    ... and the same pattern in %s"
-          % ", ".join(others[1:4] + ["..."]) if len(others) > 4
-          else "    ... and the same in " + ", ".join(others[1:]))
-        p()
-        p("g_pw24 is the one that settles it. One Conv in the source graph, one")
-        p("compile, one file, and its two REGULAR dispatches disagree: the 512 to")
-        p("1024 pointwise reads 34 and the one-pixel 16 by 16 op the compiler")
-        p("adds for itself reads 66. Whatever selects the value is decided per")
-        p("dispatch, not per model and not per batch of models.")
-    else:
-        for n in sorted(mixed)[:2]:
-            dump(n)
-        if not mixed:
-            p("  (no file in this corpus does)")
-
-    # --------------------------------------------------------- what it does
-    p()
-    p()
-    p("What it does follow")
-    p("-" * 19)
-    p()
-    lock = Counter((o["RESERVED_0"], o["r4044"]) for o in reg)
-    p("DPU 0x4044, exactly, on every regular dispatch in the corpus:")
-    p()
-    for (r0, v4), n in sorted(lock.items()):
-        p("    RESERVED_0 %-3d  <->  0x4044 = 0x%08x    %d dispatches" % (r0, v4, n))
-    p()
-    r0_to, v4_to = defaultdict(set), defaultdict(set)
-    for r0, v4 in lock:
-        r0_to[r0].add(v4)
-        v4_to[v4].add(r0)
-    onetoone = bool(reg) and all(len(v) == 1 for v in r0_to.values()) \
-               and all(len(v) == 1 for v in v4_to.values())
-    if not reg:
-        p("(no regular dispatches in this corpus, so nothing to pair)")
-    elif onetoone:
-        p("%d of %d, no exceptions. 0x2001/0x501c moves with them:" % (sum(lock.values()), len(reg)))
-    else:
-        p("NOT one-to-one in this corpus: a RESERVED_0 value meets more than one")
-        p("0x4044 value or the other way round, %d regular dispatches. 0x501c:" % len(reg))
-    p()
-    s = defaultdict(Counter)
-    for o in reg:
-        s[o["RESERVED_0"]][o["r501c"]] += 1
-    for r0 in sorted(s):
-        p("    RESERVED_0 %-3d  ->  0x501c %s"
-          % (r0, ", ".join("0x%x (%d)" % (k, v)
-                           for k, v in sorted(s[r0].items()))))
-    p()
-    if MINE:
-        p("Sweeping every register in the stream, 0x4044 is the ONLY one whose")
-        p("value partitions the two RESERVED_0 groups one-to-one, and 0x501c the")
-        p("only other whose value sets are disjoint between them. So the bit is")
-        p("not a loose constant with no company: it is one third of a single")
-        p("per-op decision in the bias-and-scale path of the output stage.")
-        p()
-    dws = Counter((o["RESERVED_0"], o["r4044"], o["r501c"]) for o in dwo)
-    if dws:
-        p("The depthwise dispatches read")
-        for (r0, v4, v5), n in sorted(dws.items()):
-            p("    RESERVED_0 %d, 0x4044 = 0x%x, 0x501c = 0x%x, %d dispatches"
-              % (r0, v4, v5, n))
-    else:
-        p("(no depthwise dispatches in this corpus)")
-    if MINE:
-        p("38 is 34 with field bit 2 -- word bit 13 -- added, so on the word-bit")
-        p("16-against-17 axis depthwise sits with the 34 group while its 0x4044")
-        p("sits with the 66 group. The lockstep is a statement about the regular")
-        p("datapath only, and I am not claiming more than that.")
-        p()
-        p("What selects the arm in the first place is still open. It is not the")
-        p("shape, not the file, not the toolkit build, and not the day the file")
-        p("was compiled: 2026-08-08 and 2026-08-09 each produced both arms.")
-
-    # ------------------------------------------------------ for the driver
-    p()
-    p()
-    p("What this means for the driver")
-    p("-" * 30)
-    p()
-    p("rkt_regcmd.c emits, for a regular convolution,")
-    p()
-    p("    0x4044 = 0x00000001")
-    p("    0x4050 = 0x80011011 or 0x80011111   (RESERVED_0 = 34)")
-    p("    0x501c = 0x00000710")
-    p()
-    p("which is the 34 arm in all three registers at once. It is the arm the")
-    p("vendor takes on %d of its %d regular dispatches, and the driver never"
-      % (lock[(34, 1)], len(reg)))
-    p("mixes an 0x4044 from one arm with a 0x4050 from the other. That is")
-    p("the part I could not say in the earlier mail and can say now.")
-    p()
-    p("The RK3576 encoder has no depthwise path at all -- fill_regcmd_rk3576")
-    p("covers a regular convolution and rkt_ml_operation_supported declines")
-    p("depthwise before it is reached -- so the driver never emits the 38")
-    p("word. That is an observation about the vendor's depthwise datapath")
-    p("and about upstream's RK3588 encoder, not about this one.")
-    p()
-    p("The field is also not free: moved on its own to upstream's 0, on a 5x5")
-    p("at 128 output channels and a pointwise at 88, the output stayed")
-    p("identical to the baseline and the job timed out. So it is a completion")
-    p("field, and 34 is the value that completes.")
-
-    if MINE:
-        # ----------------------------------------------------------- retraction
-        p()
-        p()
-        p("What of the claim I sent")
-        p("-" * 24)
-        p()
-        p("The counting half stands. 34 and 66 are the only two RESERVED_0 values")
-        p("on regular convolutions, 34 is the common one, %d dispatches against" % c[34])
-        p("%d, and %d files against %d by first dispatch." % (c[66], prim[34], prim[66]))
-        p()
-        p("Three things in it were wrong or too small, and I would rather correct")
-        p("them here than let them stand.")
-        p()
-        p("1. \"It does not correlate with oc, ic, spatial size, kernel size or")
-        p("   stride\" is true but it was the weak version of the test. The strong")
-        p("   version is the one you asked for: hold the WHOLE geometry fixed.")
-        p("   %d geometry classes then carry both values, %d of them once the CBUF"
-          % (len(confl), ngroups))
-        p("   windows of one model are folded together, and g_cal against bias_k5")
-        p("   is two files identical in every register but five.")
-        p()
-        p("2. \"What it does track is which batch of models it came from, which")
-        p("   makes a toolkit setting more likely\" does not survive as written.")
-        p("   The batches are uniform, but the batch is not what decides:")
-        p("   g_pw24 carries both values in one compile of one Conv, and the")
-        p("   toolkit build string is identical across all %d files. Why a whole" % len(files))
-        p("   batch lands on one arm I still cannot say.")
-        p()
-        p("3. It only ever mentioned two values. There is a third, 38, on all %d" % len(dwo))
-        p("   depthwise dispatches. The RK3576 encoder declines depthwise so it")
-        p("   never emits that word, but the corpus has it and the table should")
-        p("   have said so.")
-        p()
-        p("The one thing the earlier mail did not have is the answer to your")
-        p("question. It is not a toolkit setting sitting on its own; it is a bit")
-        p("of a three-register per-op choice, and the driver takes one side of")
-        p("that choice consistently.")
-        p()
-
-    out = "\n".join(W)
-    over = [(i + 1, l) for i, l in enumerate(W) if len(l) > 78]
-    sys.stdout.write(out + "\n")
-    if over:
-        sys.stderr.write("WARNING: %d lines over 78 columns\n" % len(over))
-        for i, l in over[:10]:
-            sys.stderr.write("  %d: %d cols: %s\n" % (i, len(l), l))
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
 
 _______________________________________________
 Linux-rockchip mailing list
