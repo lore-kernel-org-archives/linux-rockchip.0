@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0311C79F88
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BD6EC79F82
 	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 21:23:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,57 +12,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5No3LwINnOJPEqVJaxxez3BfAf33SgWKYovfNT4Fn4o=; b=H0DUhdOSV6+bJB
-	9DE5NeX1yhjx34drpIQJMnk6TKHoZStXtbIYoDh5TSg63K1+uOaklDwH0MngC0ZFuxroHoSlRtvR1
-	E7GwquwnVF4eA/NPZS+oof06Y6nRuDen69ftybMpYCMP/IDbOEiPKYE8TDBz54GcdvmlMsrOZLJr/
-	vd/GpvrNUtYRwzJ1hD9bf3vZWlPYuCXROokMukjoThd9/3WIjPqGU9JqpS3PlOwwhL6XrlwypLqZA
-	sixgXhBdRMvshp/E9HtKuyXgZiiWGEUoFElBZojp70eB7ozHIsiXWKG0AqqRD66J1Unifq+d8Wx3F
-	CxCjjuWOjcd3+tAuRUDw==;
+	List-Owner; bh=2vV9Cra/Y0/izk57C0jGtt2MKEjX+Ke3AHn8OxWh2ws=; b=2oiup9YDgg+MYe
+	nt9wjdWCtazpQeZeVYasA6qDyqgtePE3HHHk4x2Y++vOiKcUbsp6ioEHmBTEGW9XS2Dz8IkBWwzXE
+	0CqW232dxwCixcQB0BDRtG5HVvb04pw/zPVwC8ri1NwJMam86GVH6wTbT4e3eFxSIEhoiCMPssu9O
+	pGk6EqmXJSNYFQtNwluyaK757sc70Tq7NEmnubt5T4pZLK4XFLyniUwdNUoiucQr6UPb1HFIXHMUv
+	LcZqPkRgUtbm8QegucJ/EqLbvNMhzoxfe/Wcvx44nC9Nw3HGLNdEHqONv69EDgHHmkK3o4KTeGxvM
+	Hnq37Jpur4iweZi4aPAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2EuV-00000000dNI-33Bx;
-	Thu, 03 Sep 2026 21:23:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x2EuT-00000000dGb-3I1l;
+	Thu, 03 Sep 2026 21:23:49 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2EuR-00000000dCf-2CXb;
+	id 1x2EuR-00000000dDB-0p4p;
 	Thu, 03 Sep 2026 21:23:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9DC2960A64;
+	by sea.source.kernel.org (Postfix) with ESMTP id A0E1B447C1;
 	Thu,  3 Sep 2026 21:23:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 424C3C2BCFB;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 83429C2BD00;
 	Thu,  3 Sep 2026 21:23:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1788470626;
-	bh=0StYnzO+BlIiuZfxctwX7lmcEaDWryBiXL9T1hKk/fc=;
+	bh=bjuAYcTAYsvD4EG8NTxGwBNM7nTpamPPGahbx2pLdsU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=T9CE3o1yhjhlVJpP0mRlZXbgt+wWHyZyNzEc5HzlC6MlaX2AXGLZZbNgEJ6vrSmh5
-	 Ghx+RKHBStIHy6f+Y2hlMgtzvEtH0rzQrjSRE0UceP2nOUhXe8MizaIPLdIdf2W70w
-	 DU8SEt8NrP6cn2hJ89MfnJKSXf0SIKhPf87iGsK5/1RJE2/QFNvJJbvFrv1ICGqKtu
-	 97/iYAmcq9a44wFxte/Kr+lRajZkr3J+1cHVtTkv9579nDQwgUxqZvfU7T/0v+vcHs
-	 zQ8G/yYlewz/QiRhYS5DkDSay6ygaBPKpD4RCYdGsMfsCpl3QCtMCOydByGNBafPEt
-	 3plL+i4m1aWGw==
+	b=PYn7WAgqU6Lv98d1gvRwVzYqz6amDWDqsw1v83AP0bu08hRMvZFtMPwBklmU+xYPh
+	 d3Uyd6iTU9cOnGd58NWI47IMeXW2jY6YodM00oQf4wnaai52jN/Z48gpw4BAwnDJ9n
+	 ZFQDVOJ1y3DMtE9l044ueH8x4WuDvlc77GTgHccJ12EaNLSiBmV2ws4Z7KPfgfGMVp
+	 uTJEWHOWJ2HdibZoN5yzSuenzxV89ZrDVW3mSSUQCxsfIUlMVF3zmmmK+EV8dltb8q
+	 dtINqmLE0W3ebUbkuxKbwM/mQJiTdJEVrjHwiqwLlABEiOwJUMZJWLcWwhZR2Z/qi6
+	 bFyVBbfpid/Hg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23158C624DE;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 717C8C624DE;
 	Thu,  3 Sep 2026 21:23:46 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Thu, 03 Sep 2026 23:23:14 +0200
-Subject: [PATCH v6 02/12] arm64: dts: rockchip: rk3588s-nanopi-r6: fix
- missing sdmmc cd pinctrl
+Date: Thu, 03 Sep 2026 23:23:19 +0200
+Subject: [PATCH v6 07/12] arm64: dts: rockchip: rk3588s-nanopi-r6: remove
+ useless vcc_3v3_pcie20
 MIME-Version: 1.0
-Message-Id: <20260903-nanopi-m6-v6-2-37416bbd6862@gmail.com>
+Message-Id: <20260903-nanopi-m6-v6-7-37416bbd6862@gmail.com>
 References: <20260903-nanopi-m6-v6-0-37416bbd6862@gmail.com>
 In-Reply-To: <20260903-nanopi-m6-v6-0-37416bbd6862@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, diederik@cknow-tech.com, 
- jonas@kwiboo.se, Joachim Eastwood <joachim.eastwood@gmail.com>
+ jonas@kwiboo.se, Joachim Eastwood <joachim.eastwood@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788470611; l=1141;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788470611; l=1725;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=kI3ZjJonY+6nqEWc8m+ryhZH4GnBusVZIougapTsu48=;
- b=37+TIORyCdLeGuvTMWaz5TctjJBBzFvenlELv95qoF5hTn0JVBAGIuyH72ZOur5s1AqRApXm6
- FybQv1lb9jhAonJjfPUyT3o/i+9Pu/WlQZZXO8QfNbkoFBPr6hHozXl
+ bh=w2cXBopYBKJ6Vf2I5uUHUSmKKAcZ+ftsSxy14dp/jMA=;
+ b=Y3KCbLcxa4SGSbJwcG6IrelFcY9Mn97PWJKnVc4TAbqEzioJaAh4LatldDFMUYZJKtkGm0GxQ
+ U+WyBTHq3p+BUOevcjk7djjH/barv4LENZdAyTjXalucX52Hw+YnI9L
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,38 +88,54 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-The cd (card detect) pin is used, but not reserved through pinctrl.
+There is no separate regulator for boards with RTL8125BG MACs.
+The power is only separated from VCC_3V3_S3 with a ferrite bead.
 
-Fixes: 95147bb42bc1 ("arm64: dts: rockchip: Fix the SD card detection on NanoPi R6C/R6S")
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-index 91b6eefd7abf..3ee6853b8752 100644
+index 8953dcebb93e..50af092f9cfa 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-@@ -421,6 +421,10 @@ rtc_int: rtc-int {
+@@ -131,16 +131,6 @@ vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
+ 		vin-supply = <&vcc_3v3_s3>;
  	};
  
- 	sdmmc {
-+		sdmmc_det_pin: sdmmc-det-pin {
-+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
- 		sd_s0_pwr: sd-s0-pwr {
- 			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
-@@ -496,6 +500,8 @@ &sdmmc {
- 	no-mmc;
- 	no-sdio;
- 	sd-uhs-sdr104;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_bus4 &sdmmc_clk &sdmmc_cmd &sdmmc_det_pin>;
- 	vmmc-supply = <&vcc_3v3_sd_s0>;
- 	vqmmc-supply = <&vccio_sd_s0>;
+-	vcc_3v3_pcie20: regulator-vcc3v3-pcie20 {
+-		compatible = "regulator-fixed";
+-		regulator-name = "vcc_3v3_pcie20";
+-		regulator-always-on;
+-		regulator-boot-on;
+-		regulator-min-microvolt = <3300000>;
+-		regulator-max-microvolt = <3300000>;
+-		vin-supply = <&vcc_3v3_s3>;
+-	};
+-
+ 	vcc5v0_usb: regulator-vcc5v0-usb {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_usb";
+@@ -361,7 +351,7 @@ &pcie2x1l1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie20x1_1_perstn_m2>;
+ 	reset-gpios = <&gpio1 RK_PA7 GPIO_ACTIVE_HIGH>;
+-	vpcie3v3-supply = <&vcc_3v3_pcie20>;
++	vpcie3v3-supply = <&vcc_3v3_s3>;
  	status = "okay";
+ };
+ 
+@@ -370,7 +360,7 @@ &pcie2x1l2 {
+ 	pinctrl-0 = <&pcie20x1_2_perstn_m0>, <&pcie20x1m0_clkreqn>;
+ 	supports-clkreq;
+ 	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
+-	vpcie3v3-supply = <&vcc_3v3_pcie20>;
++	vpcie3v3-supply = <&vcc_3v3_s3>;
+ 	status = "okay";
+ };
+ 
 
 -- 
 2.55.0
