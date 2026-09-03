@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BD6EC79F82
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D20CCC79F89
 	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 21:23:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2vV9Cra/Y0/izk57C0jGtt2MKEjX+Ke3AHn8OxWh2ws=; b=2oiup9YDgg+MYe
-	nt9wjdWCtazpQeZeVYasA6qDyqgtePE3HHHk4x2Y++vOiKcUbsp6ioEHmBTEGW9XS2Dz8IkBWwzXE
-	0CqW232dxwCixcQB0BDRtG5HVvb04pw/zPVwC8ri1NwJMam86GVH6wTbT4e3eFxSIEhoiCMPssu9O
-	pGk6EqmXJSNYFQtNwluyaK757sc70Tq7NEmnubt5T4pZLK4XFLyniUwdNUoiucQr6UPb1HFIXHMUv
-	LcZqPkRgUtbm8QegucJ/EqLbvNMhzoxfe/Wcvx44nC9Nw3HGLNdEHqONv69EDgHHmkK3o4KTeGxvM
-	Hnq37Jpur4iweZi4aPAA==;
+	List-Owner; bh=6H06PJayoIXCspZEAQXKlXSnhXGdujB4i4HvmzaQvqY=; b=oc1ignbJhO3YKS
+	5KyfylC1sJjkA568RmTpk9qZ5XY0av5LayJbMXY5gHi4KpJRUT7qnEV68nnl6G7T2Yj/B2m05H2QB
+	54G90IV2AVJUq71rg3sqK1BosJS/lDc5E4drtNeYtegUy7z+YfeFVnBd0PlqZnS7iKZGFLjdLcHrG
+	EPLSPjA93ws9RS878HK0JfWBqLZ4kKTW3IHhPE2rEEIX8ZSALCUaUfjLgcgPWkNduZVZMBwuGIcAi
+	bgQsYRjOM6kYlDb488KemmYXqN6rt95tfYPlbXm3h/ru3CiOb3xb3+1J0g/ErsoMLiu1dUIGaVOUZ
+	ABokv7Xzj2ZkLfy1UHDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2EuT-00000000dGb-3I1l;
-	Thu, 03 Sep 2026 21:23:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x2EuS-00000000dEj-0rsi;
+	Thu, 03 Sep 2026 21:23:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2EuR-00000000dDB-0p4p;
-	Thu, 03 Sep 2026 21:23:47 +0000
+	id 1x2EuQ-00000000dCc-3NpV;
+	Thu, 03 Sep 2026 21:23:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A0E1B447C1;
+	by sea.source.kernel.org (Postfix) with ESMTP id 6029D44522;
 	Thu,  3 Sep 2026 21:23:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 83429C2BD00;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 327ECC2BCC7;
 	Thu,  3 Sep 2026 21:23:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1788470626;
-	bh=bjuAYcTAYsvD4EG8NTxGwBNM7nTpamPPGahbx2pLdsU=;
+	bh=yOFVVJPfeTgL0XmjdCqpthfqUn2/6CYfhyC202nVNW8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=PYn7WAgqU6Lv98d1gvRwVzYqz6amDWDqsw1v83AP0bu08hRMvZFtMPwBklmU+xYPh
-	 d3Uyd6iTU9cOnGd58NWI47IMeXW2jY6YodM00oQf4wnaai52jN/Z48gpw4BAwnDJ9n
-	 ZFQDVOJ1y3DMtE9l044ueH8x4WuDvlc77GTgHccJ12EaNLSiBmV2ws4Z7KPfgfGMVp
-	 uTJEWHOWJ2HdibZoN5yzSuenzxV89ZrDVW3mSSUQCxsfIUlMVF3zmmmK+EV8dltb8q
-	 dtINqmLE0W3ebUbkuxKbwM/mQJiTdJEVrjHwiqwLlABEiOwJUMZJWLcWwhZR2Z/qi6
-	 bFyVBbfpid/Hg==
+	b=r3HUnkgfupAHAGlBxR372xwDG4+txmLcgPlYvrV995LrVL0gRQ5VU8/cQYMbSVOCM
+	 FjiS51rHjSM1cKZyQyh54ZUD1KTfoZQx7BtQQoI5rNF41PH0DgoeBLh3SO0MCEZzct
+	 aPF+M+q14PKgNmyHx5tikLoYJfTq5fMP2xRr3wKwgCZCzZIRk547gYIByz4WNYymub
+	 oow+IakjLUqEn+J5PUxvM9Ds68UKhr1CL3KYU92W3V6dE40zfh193enfNx0ivfVbm/
+	 M1O+Dx3td6e3D+5sNphc/nuCH/j+3HmkZxb4VRS+21+fIsgoGdLzAvA+Uc0M/fsHpR
+	 SCrUITJ9SomTA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 717C8C624DE;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1378AC61DD3;
 	Thu,  3 Sep 2026 21:23:46 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Thu, 03 Sep 2026 23:23:19 +0200
-Subject: [PATCH v6 07/12] arm64: dts: rockchip: rk3588s-nanopi-r6: remove
- useless vcc_3v3_pcie20
+Date: Thu, 03 Sep 2026 23:23:13 +0200
+Subject: [PATCH v6 01/12] dt-bindings: arm: rockchip: add FriendlyElec
+ NanoPi M6
 MIME-Version: 1.0
-Message-Id: <20260903-nanopi-m6-v6-7-37416bbd6862@gmail.com>
+Message-Id: <20260903-nanopi-m6-v6-1-37416bbd6862@gmail.com>
 References: <20260903-nanopi-m6-v6-0-37416bbd6862@gmail.com>
 In-Reply-To: <20260903-nanopi-m6-v6-0-37416bbd6862@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -59,11 +59,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  jonas@kwiboo.se, Joachim Eastwood <joachim.eastwood@gmail.com>, 
  Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788470611; l=1725;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788470611; l=1140;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=w2cXBopYBKJ6Vf2I5uUHUSmKKAcZ+ftsSxy14dp/jMA=;
- b=Y3KCbLcxa4SGSbJwcG6IrelFcY9Mn97PWJKnVc4TAbqEzioJaAh4LatldDFMUYZJKtkGm0GxQ
- U+WyBTHq3p+BUOevcjk7djjH/barv4LENZdAyTjXalucX52Hw+YnI9L
+ bh=fOu3CGhiav38hA01fmgeHu2NF4BeNl5uB34a+yVtkW0=;
+ b=uefJr4FQoxy3pLcdVQ0m00j+rTituvSfrfPZBy4B26LlsCtFFEFinkX0jh3aqoqO/zfu87l+e
+ bcsyBLsPjebC/2ReH6sJ8j3otYOqUl5BiXhlyWuDIHbUeROyJFCwcCE
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -88,54 +88,32 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-There is no separate regulator for boards with RTL8125BG MACs.
-The power is only separated from VCC_3V3_S3 with a ferrite bead.
+Add device tree binding documentation for FriendlyElec NanoPi M6,
+a single-board computer based on the Rockchip RK3588S SoC. Very
+similar to NanoPi R6C and R6S.
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-index 8953dcebb93e..50af092f9cfa 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-@@ -131,16 +131,6 @@ vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
- 		vin-supply = <&vcc_3v3_s3>;
- 	};
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index a799bb843f74..d8cf33f76090 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -369,9 +369,10 @@ properties:
+               - friendlyarm,nanopi-r5s
+           - const: rockchip,rk3568
  
--	vcc_3v3_pcie20: regulator-vcc3v3-pcie20 {
--		compatible = "regulator-fixed";
--		regulator-name = "vcc_3v3_pcie20";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <3300000>;
--		regulator-max-microvolt = <3300000>;
--		vin-supply = <&vcc_3v3_s3>;
--	};
--
- 	vcc5v0_usb: regulator-vcc5v0-usb {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_usb";
-@@ -361,7 +351,7 @@ &pcie2x1l1 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie20x1_1_perstn_m2>;
- 	reset-gpios = <&gpio1 RK_PA7 GPIO_ACTIVE_HIGH>;
--	vpcie3v3-supply = <&vcc_3v3_pcie20>;
-+	vpcie3v3-supply = <&vcc_3v3_s3>;
- 	status = "okay";
- };
- 
-@@ -370,7 +360,7 @@ &pcie2x1l2 {
- 	pinctrl-0 = <&pcie20x1_2_perstn_m0>, <&pcie20x1m0_clkreqn>;
- 	supports-clkreq;
- 	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
--	vpcie3v3-supply = <&vcc_3v3_pcie20>;
-+	vpcie3v3-supply = <&vcc_3v3_s3>;
- 	status = "okay";
- };
- 
+-      - description: FriendlyElec NanoPi R6 series boards
++      - description: FriendlyElec NanoPi6 series boards
+         items:
+           - enum:
++              - friendlyarm,nanopi-m6
+               - friendlyarm,nanopi-r6c
+               - friendlyarm,nanopi-r6s
+           - const: rockchip,rk3588s
 
 -- 
 2.55.0
