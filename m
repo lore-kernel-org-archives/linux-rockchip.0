@@ -4,76 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5295FC624DC
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2026 22:54:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB1C0C61DD6
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 02:45:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d6bsIiHN4IXbnOZSbBA0PSXzEj2BgbzPj1ofTVpJo4o=; b=Epewsi2vUys9M0
-	WMDQQ9rGnS4bVR1KalkCAbyevMZj7ssja9ASw/YoxRNfCG0n0uVVBQCbHCNyYNraX7mu/u8p5M2qS
-	q8UhFd9pJaO2ScKmM3a3o0VfaJWsb5Zl9KlfQXhvfMZ/AYn76lcqyaOFIz5WklKbSFT9Ey+XfsylX
-	kiWuW7bbkCkZPiOfrNSobYSZwrVDtpaGv5XsQ0YX1Vn7XeKOtHXzG7BxKf7BOKna7Zv0nIjrkhKdV
-	fKBVdUOwUoMwzfFa3WS465h2MUVAu5w3QYPw9xjekSDZQQkDR8uuVnPClqkgUbkM75LcCTNTilJrd
-	SuqNxTr1Iiw/5DqvOQuA==;
+	List-Owner; bh=bG8adXyAQNstZ6mtiVjR96MZpb1wmcRIsbu3fGkRcSk=; b=xD9rxQzTxKe2cQ
+	V25ImygtE9stgMNtsX7H2JJvL4hf8OrDzDNdhTntX+3UJMhpkG3mZyd9yywfwFvMPk1Ka4q9TSeb1
+	p0DAqBB0GwZAGCsDtUCp6gglTseRYoYru4y1vfIpTTFvyyEq9FIEqq7V/xR51GPvUVum53ZFwISsH
+	wmk9idZjPaV1/hSFoPcDp/jukDZARtyUo5wa2wpTcQtDGt2G+LT22dSpGUMVrNmzDa4pfEYEAxC/k
+	uRWwlGGAEL2cbSAVHJoYyQEoIpix04rdx3eq4cHkRGhcpr9l25h2DypJFM5IBIn2wcsACk+bxyk8s
+	/nXA2ZiT86YR5iqFENew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1tqg-0000000G2nS-35AB;
-	Wed, 02 Sep 2026 22:54:31 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x1xRp-0000000GEx9-3Gz4;
+	Thu, 03 Sep 2026 02:45:05 +0000
+Received: from mail-m17240.xmail.ntesmail.com ([45.195.17.240])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1tqY-0000000G2Pr-10o4;
-	Wed, 02 Sep 2026 22:54:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788389660;
-	bh=7aCaXpMvMb9vkbj+VVL05e7On5ntn/9+Li0ZFGr1E6s=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OllBWlZ9hh3Qva0dAJ4av0fooiXkncf9VRN/xt91UQyvhkwBSUj3C+um4s3TciuyF
-	 Kqiy82gK5iNW76g2XOI3MjUMTONh/6vsVdYNaO52d6nasP1mlLnPvku1GeN+EFKrDt
-	 bEsShwsZdpAhD3ScvUbk873dpTxy4GXcP7ai649ODsQ9R0oU+QMmcjR4py9K024x9Y
-	 F+n7Hd2wfylh1UVMvl3c0OooaMMTjDGUSFwWexLP3wkbqI2g/XhQlICT9ahyS+HMs4
-	 x1zmy1B+SBGVFMmqGGezWnsvSPalqS6TC4bT5Jrv48YbWOuMY3slW8+XjiMEB0BANw
-	 g+Kt8Q3yP5Dxw==
-Received: from localhost (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1427417E15AD;
-	Thu, 03 Sep 2026 00:54:20 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 03 Sep 2026 01:54:19 +0300
-Subject: [PATCH v4 12/14] drm/rockchip: dw_hdmi_qp: Support 10-bit YUV422
- output format
-MIME-Version: 1.0
-Message-Id: <20260903-dw-hdmi-qp-yuv-v4-12-fb45bf4147eb@collabora.com>
-References: <20260903-dw-hdmi-qp-yuv-v4-0-fb45bf4147eb@collabora.com>
-In-Reply-To: <20260903-dw-hdmi-qp-yuv-v4-0-fb45bf4147eb@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Daniel Stone <daniels@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Igor Paunovic <royalnet026@gmail.com>
-X-Mailer: b4 0.15.2
+	id 1x1xRo-0000000GEvb-0xDt
+	for linux-rockchip@lists.infradead.org;
+	Thu, 03 Sep 2026 02:45:05 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4c5849819;
+	Thu, 3 Sep 2026 10:44:51 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Bjorn Helgaas <bhelgaas@google.com>,
+	Manivannan Sadhasivam <mani@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-pci@vger.kernel.org,
+	Peter Geis <pgwipeout@gmail.com>,
+	Niklas Cassel <cassel@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH 1/2] PCI: dw-rockchip: Bail out if the INTx irq domain creation fails
+Date: Thu,  3 Sep 2026 10:44:36 +0800
+Message-Id: <1788403477-71491-2-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1788403477-71491-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1788403477-71491-1-git-send-email-shawn.lin@rock-chips.com>
+X-HM-Tid: 0aa06527a43003a4kunm355d5a8763ed0
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGhhIQ1ZIGR5KQ01LHh
+	9NGE5WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=UgJ4kgFTHwGbDxyquArR5Bmt3wum1Z2WsBLHGy6kq+f4DVkqFSX1oG9td6XSGM8VLcsCrmqpgDjv9G3TLrCmK4OOHyPJMLarJn8qqGuRKwMoejH4zQR/VxCm9e9pcBQpF3UoAw4aqvbKqgY9gcle0GD5HKyk2tFfTkWX7R9TMek=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=+buA18ALK+RC3oCEXsr81pLBNdzYPp29OxYXJu09Ugs=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_155422_483928_B1451410 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20260902_194504_482203_806C157D 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,62 +68,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip DW HDMI QP encoder supports YUV 4:2:2 output through
-ROCKCHIP_OUT_MODE_YUV422, but was limited to 8-bit depth via
-MEDIA_BUS_FMT_UYVY8_1X16.  Add support for its 10-bit counterpart
-MEDIA_BUS_FMT_UYVY10_1X20, which carries two 10-bit components per clock
-cycle on a 20-bit wide bus.
+rockchip_pcie_init_irq_domain() can fail, e.g. when the DT node is
+missing its "legacy-interrupt-controller" child node. In that case,
+rockchip_pcie_host_init() only prints an error and continues, arming the
+chained INTx handler with a NULL irq_domain. The first INTx interrupt
+then dereferences the NULL irq_domain in rockchip_pcie_intx_handler(),
+which panics the machine.
 
-YUV 4:2:2 always transmits two 12-bit components per pixel, regardless
-of the color depth.  From a clock-rate perspective this is equivalent to
-three 8-bit RGB components, so configure the HDMI PHY with 8 bpc when
-YUV 4:2:2 is in use to keep its output clock aligned with the TMDS
-character rate.  Otherwise the PHY PLL output would be scaled by bpc/8
-for higher color depths, producing a clock rate that confuses downstream
-consumers such as the VOP2 display controller.
+Propagate the error to abort probing, keeping the error message for
+easier debugging.
 
-Tested-by: Igor Paunovic <royalnet026@gmail.com>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Fixes: e8aae154df61 ("PCI: rockchip-dwc: Add legacy interrupt support")
+Cc: Peter Geis <pgwipeout@gmail.com>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 9c4cf68d79d5..78473f9a0fce 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -215,6 +215,7 @@ dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
- 		s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
- 		break;
- 	case MEDIA_BUS_FMT_UYVY8_1X16:
-+	case MEDIA_BUS_FMT_UYVY10_1X20:
- 		s->output_mode = ROCKCHIP_OUT_MODE_YUV422;
- 		break;
- 	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
-@@ -226,7 +227,14 @@ dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
- 	}
- 
- 	phy_cfg.hdmi.tmds_char_rate = conn_state->hdmi.tmds_char_rate;
--	phy_cfg.hdmi.bpc = conn_state->hdmi.output_bpc;
-+	/*
-+	 * YUV422 always transmits two 12-bit components per clock cycle,
-+	 * regardless of the color depth, which from a rate perspective is
-+	 * equivalent to three 8-bit RGB components.  Force 8 bpc here to
-+	 * keep the PHY PLL output aligned with the TMDS character rate.
-+	 */
-+	phy_cfg.hdmi.bpc = (s->output_mode == ROCKCHIP_OUT_MODE_YUV422 ?
-+				8 : conn_state->hdmi.output_bpc);
- 
- 	ret = phy_configure(hdmi->phy, &phy_cfg);
- 	if (!ret) {
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index af26a07..50824c8 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -432,8 +432,10 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+ 	pci->dbi_base2 = pci->dbi_base + PCIE_TYPE0_HDR_DBI2_OFFSET;
+ 
+ 	ret = rockchip_pcie_init_irq_domain(rockchip);
+-	if (ret < 0)
++	if (ret < 0) {
+ 		dev_err(dev, "failed to init irq domain\n");
++		return ret;
++	}
+ 
+ 	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
+ 					 rockchip);
 -- 
-2.55.0
+2.7.4
 
 
 _______________________________________________
