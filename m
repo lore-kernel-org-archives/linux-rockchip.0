@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5142FC79F83
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53757C79F84
 	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 21:23:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ex7CFJxdnUTo4bNbGx1VTPNFf+jW6UTqog5WGRfgmwE=; b=IrNiP//8RAmt3J
-	qvWb597PuxYstKKZ6plkjJArBhWtjrtO4wlxNvIIGZVlqwORdvfsK6X8jA+qLy/HTp3GNqk0gNxFV
-	9Hygy0bHdOdOsoMHWeSMWaHFrttEaICszeNODT93Jsri59PBH+DGM2qAt5VNOCZWtNbaxZbahDlbB
-	bjJjYvxBwAQ6daCORkIm5WgLtDQNz5mosTy6T3LEO73/JCogxLHSrL9cidoNmgKDFAcTZ8oocHjmU
-	kV3uGqJdr1M8jKMAknIM74MShDGnpBuzwnpMhtFajxDksIOHDHIiqv+5XxrakEHR64kn1xlCak5VO
-	3wOPLStOQ66Q2IpCrVww==;
+	List-Owner; bh=/H7ESM9u7t6OxaVAv/lbc3xR82j7k3fV1GJLSnChm9A=; b=FQEZgYZIIllZaM
+	rwCkplz6oj+2Ael5q4SF7s4WbB/FHuPTqbxrDiBZAyB6oRYDNLn/tytFDB7RjwOmY1xsO927C9HQ3
+	XDZgvsrj2QcInXpk2ZP7VmnH9duqhgnwdPVqtwh29WXXPcZmGvjKv+Z91eGoB848E/qS0SmQYQGHd
+	j2QyZzPwB5FBvZt37VLgRwvQN/SUqApZP6hbwvnaA5iZooz/V7arRz2FayqTi05QlkEPfaK1AW4bU
+	dZn53rz+I3eNFslH2g9hbbATo7CebyLlUmnHYTgdvJo+6ViYxwW14EKP+F+7gcetEZ5XwgTwNfZiA
+	nnLAD4Vb2S05j8LYpqpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2EuS-00000000dFQ-3Ebf;
+	id 1x2EuS-00000000dEz-1em2;
 	Thu, 03 Sep 2026 21:23:48 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2EuR-00000000dCt-0It9;
-	Thu, 03 Sep 2026 21:23:47 +0000
+	id 1x2EuQ-00000000dCd-3Ofj;
+	Thu, 03 Sep 2026 21:23:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9296E447BC;
+	by sea.source.kernel.org (Postfix) with ESMTP id 770CB4478B;
 	Thu,  3 Sep 2026 21:23:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 73D5FC4AF09;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 599ACC2BD01;
 	Thu,  3 Sep 2026 21:23:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1788470626;
-	bh=Y7h7sGTVhsEzlVMI5TQ4L554qW/IQlnc5Zu2vSWKmDo=;
+	bh=EbrpFXcP7WqS/VSdLWd1gn6iHNZnciSa+KGonGeazdw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Gs13FnurnXBRKDDqhGAP0Sm+IlBdGBtYW58FlAEG5yTAHTGPJFv/EX5N2lQ8xg9ap
-	 Ap4/NiM7Yf5gy5fiow4DBQAGZhG/p8MfKdzSIN5wDXaBZhwhQCcp8y+oBjc4FhJiak
-	 hi4hu2BUuh1ywVvhdISVI2Kpg/nyxePgaf7QX5Gli61H0JHGTNUSHhNL8NkZ7BqUFf
-	 OwxQ0mgFbiqdxeDOPpKvxBWuiOs4q7DwRD+tsDmexJ00sB2Q49qS6su89L+WVP8Nbj
-	 LhQGOcCcf5rNXxWqXHtW2JPO+Chdi8xu8niqqWt+XgbthToRMiimxS42MP6Ct9z2Rm
-	 5uE+Lw5FHlcBQ==
+	b=JCO5CRD2oUBPcsXtxsbPyHL8umMpuFc++503qKNJrjTWg7aSrGGWgc52GGFLNagO/
+	 EAFbs0qeO9SZmhp92PRRUsVEHI7szGsa39pXxv3NALuTdq4pjbbKZ45uz/6Z91xJab
+	 R6uYKMoYupiZ+WaF0FtWych0EadUQq/+eYRKeNMUpS9RDv+6yGwNq8nAXBtF4gUokv
+	 5K7an9ToMcBe/2sdQas8JWaMxX5qe6m/ApLjGtWyAh9tmkzANfZwNaeCcIv4TYAJ98
+	 ss2TjwJdzirArIFDFV+7jhNXaztzQR2VEkNM3Xa2DRnkfwA2l7+QrpN9XGW9BeFjId
+	 Nnb/9SLhmPDEA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62297C79F81;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43030C624DB;
 	Thu,  3 Sep 2026 21:23:46 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Thu, 03 Sep 2026 23:23:18 +0200
-Subject: [PATCH v6 06/12] arm64: dts: rockchip: rk3588s-nanopi-r6: remove
- always-on and boot-on from vdd_npu_s0 reg
+Date: Thu, 03 Sep 2026 23:23:16 +0200
+Subject: [PATCH v6 04/12] arm64: dts: rockchip: rk3588s-nanopi-r6: remove
+ pull up on rtc int pin
 MIME-Version: 1.0
-Message-Id: <20260903-nanopi-m6-v6-6-37416bbd6862@gmail.com>
+Message-Id: <20260903-nanopi-m6-v6-4-37416bbd6862@gmail.com>
 References: <20260903-nanopi-m6-v6-0-37416bbd6862@gmail.com>
 In-Reply-To: <20260903-nanopi-m6-v6-0-37416bbd6862@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,11 +58,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, diederik@cknow-tech.com, 
  jonas@kwiboo.se, Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788470611; l=843;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788470611; l=849;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=ZXBLHN8naxHdNPducDxsTIU25a1ogqqtD70keJ0VhC4=;
- b=+SsiAjNvAmFyP3bHHhuw/mi1Tm14+BQdE8S5IHBTLrslXnvnTkP9gUW2/J2kw8v9FIupyJgfO
- wAHGjxd3y5FC6dKQNFetpHZJVKNPaLXqttnbTA4DNtzFnq1RxXsUR5h
+ bh=bOUJsEUkqBQ7tLIttYbDSPYSPt/SU6MVMp2Nx20LXH8=;
+ b=M7yWuF50oFtxgqjBxoyFM3rg/PPm8GVwLNk2Ot/cAT5B3uwoCJugIYSKvyac8w0NDw9i8P/rG
+ tF2edHRcShwBzWMqZKxqK5CENm1f5jGbzCoLUVHRi5HLRTUDjBWPezI
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,27 +87,27 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-Since the NPU is hooked up in DT, the always-on and boot-on properties
-on the regulator isn't needed anymore.
+All boards in the RK3588S NanoPi familiy has a pull on the PCB for the
+RTC interrupt pin. So there is no need to enable the pull-up in the SoC.
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 2 --
- 1 file changed, 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-index b120dd98241f..8953dcebb93e 100644
+index 5bbd5d2fc5fa..f2b15e03d5ef 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-@@ -314,8 +314,6 @@ vdd_npu_s0: regulator@42 {
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
- 		regulator-ramp-delay = <2300>;
--		regulator-boot-on;
--		regulator-always-on;
- 		vin-supply = <&vcc5v0_sys>;
+@@ -420,7 +420,7 @@ hdmi0_tx_on_h: hdmi0-tx-on-h {
  
- 		regulator-state-mem {
+ 	hym8563 {
+ 		rtc_int: rtc-int {
+-			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
 
 -- 
 2.55.0
