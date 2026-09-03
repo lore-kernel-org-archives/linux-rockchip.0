@@ -4,98 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D207CC624D4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEE3BC624A4
 	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2026 08:27:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Au4dSv9CyqXVSfFTlbxwD10Mic4mlCuEXaa2cu1ynxA=; b=vTPmb3fxuOve+o
-	Nom4EfhUOJY1vQGrDpukoWB+dWAUBx2YR0DEN/I4uiin8e+kDmbT1YiQtP8nA52FRXsQ/qRP1CDJm
-	la9rex0j7DlJZiqN0x8Nckrp6X+zAhEcvs0/HelBe592t3f0I0jatEIdGc6vfYGdZvXFkSxsd16Fa
-	LWSiwXMEpS8IsO7NBgWVea9vjSBbLdvbFr9OK/yLTD75qxKs/A3mbTojQr2UpsnXWsR7WgBRWNsOs
-	mrhkBdbhyJk2OJzWQQm6/J1Od7zBKfDyEaDfEWa+oCW4AC0vUAwutR7icHI2ZTYLpBtUuqY6HQWpl
-	PfltqEcIJzmbwyq80YXg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zyV/leew8djj8/FGjoFuYRXgW7xgLe+Fw71G8zCRnAk=; b=lRlp8SCSv7aCCm
+	PggJ0U7zKrPkx/Z2AzFTG3I5vVp1QZV+i26HzJXAF//YPdohb1YLRXIak8FI29cYILkG7+c04I1Qz
+	v6uY2d+W5CM5pNXNcEmLKwyevv8+jGtyEB9P9nQ+uSQ1p3AyXVoK8Y3eu64MLk7d8Vd9qUIS2ktpO
+	qBUdeepKpHf25rqoUWRM5ZiXnjaOBtM5buNbvkqEa6O+QH4g/Og5VA5tz9Hl4cv8Dn5jJkpUSqoyD
+	1+lYjGLvUJH+WC5HGbmVmtJodkC7xCIrrTeq1UC0CixJwg8WPGpSgnIh/ka669prsFr9fF3oF2wZI
+	ipAhG5Q8kYiqG6ylkbaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x22nE-0000000GmwD-0Zm0;
-	Thu, 03 Sep 2026 08:27:32 +0000
+	id 1x22nH-0000000GmxQ-2jMT;
+	Thu, 03 Sep 2026 08:27:35 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x22nD-0000000Gmvk-1gd3
+	id 1x22nF-0000000GmwJ-1LG8
 	for linux-rockchip@bombadil.infradead.org;
-	Thu, 03 Sep 2026 08:27:31 +0000
+	Thu, 03 Sep 2026 08:27:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=ygqN/5aySUJAjDby6ggcqL/WOD8GS0n0R4kFPbVzOoI=; b=mNpQxo/TU5O0TEMDAYod4F0D85
-	vfEKaE+PnKMHe07S/aRDnFHV7G/7q4ByOEYTMsb1QvW1wZTXUCy7x+M6aAEL5kZAYbHba3EjBe+io
-	34FwS+8yfVIKk/igZ2d5RkrvvRZ3zfp0Qhg7GqKADwWSQe5/VEAyQT5fVwMdTrrEXW5RIzabGueMM
-	+fAdwjFsjKa0T2cLegyJ+IbsGaB6Bb7Yyred8tXYu3plKB8Gv+Vxc9AZ006qbtewjn4RqHhwgyPml
-	DZrH3u+5WlOV+qETFe+MP1cxHRUSCUSxHhYyzcpcKXntDbABb+d+PdfsXovMWZVtYpKpMKeEpuSNN
-	A9m4uZUA==;
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=uD4nTk1nDi6/4v9OLXfMGR/tGEoZqnYV3jwiBiqPF9U=; b=OsSXBVx8e6ZvTUALtB2Mjj0Bsg
+	BUjfIb4vlcCoNfl4QcHsSAsQOU0anlZZ7mfHQGpdOC2IOOeggZDhZmE6a88yOqklBxvOPJs7KkfZi
+	OMzYaGOC0rHccextxwQH+3zvO73PkVXAmRu8VEc/UPa+9iGq7GYsr7erbE2xHwwE87mEdG984z9/g
+	mjdprtG4+2Fm1xDoY48a6qgDqtNV2Ar6typNX+Hxx6+TLzVVp/prTX1K194J03Qz7yRbr3GrCFX+I
+	jTh6JY7bhvFRU3ZyEalmRlHdyPuyjDB4Mi/39qmmfvPt2++6/XBYIebFr/TV/4QFxlqIHplqUkdNA
+	x4QYFlnA==;
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x22nA-0000000CrX1-2gOI
+	id 1x22nC-0000000CrXM-2qvr
 	for linux-rockchip@lists.infradead.org;
-	Thu, 03 Sep 2026 08:27:30 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-38dfe910e9dso2506593a91.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 03 Sep 2026 01:27:27 -0700 (PDT)
+	Thu, 03 Sep 2026 08:27:32 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-84f38f3b36eso1765118b3a.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 03 Sep 2026 01:27:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788424046; x=1789028846; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ygqN/5aySUJAjDby6ggcqL/WOD8GS0n0R4kFPbVzOoI=;
-        b=hjzgpnEu6QfvAV/R7E/Lfc/CNNDM5A2zeX2KUfkFAuDWQ8kRGEdsqCeukYyEk5R05g
-         vPSGnE+QKIzgJwwHXdFAD6Dj94Vx9KdnZxzwzS2W8NZnj5UtdL1FOrKXABKyqar0yJl5
-         U7P+ZDmTJ800X0REyn+vQXhLRHb/O+B0i1+lPP7W1nCoLRyEbeILHVnCiTW+i/7tsOAo
-         LabmzSk4xmueW6X7j41g+FUihSt42Ec3yP6RM/VDkoMHcoi4r2JzF4zKaVqG0OklG8Bu
-         D47FF4BnAJkfTbXO9uujAlq4S3xUwDpCR0VNtQspe+s+pxiq2ZpFxJUY5gKdVH8Vp/uB
-         dpkw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788424046; x=1789028846;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1788424048; x=1789028848; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=ygqN/5aySUJAjDby6ggcqL/WOD8GS0n0R4kFPbVzOoI=;
-        b=j7qRQ15AZ61WkPzvOaMIIjEYy7Z5KYU+/iWvbJho4AGTYwjOEOQKEmQJWz8Fet0kVQ
-         vUwV97iW8VBbtgxlyFfnsrnAiDSuKsbpmLesGA6UNibOU7MRBPbDa9hmwAjUTNYcBByD
-         oXRs9egWTPxvCuZdE5Pg2iJrGxAOXOmuowMsKJTlyuXU8MNhX/rEp3cCkvdu6zMkBW3y
-         n8I3k6IQ4xh5EeDgRBU/XgaH36gPefPND8/A7xgfrMRIZSsRPtxykmKZE7PubZavE8LB
-         PU+uWBcHFkZGzNSKEMbWF9KlfnYaI2hyVvX+umWrhlvNb6NdEoMxRiRvpqbUPKnRNtx3
-         yhnA==
-X-Gm-Message-State: AFuF++mw8tUmbUxH2BpuOChs17xknEt2aCvrujx0m4ZhJAiDoCdWmOPb
-	JE4FX3hB44bLCGJwwtmh5qwhotPgzyiLPQptlspj7Tbfhdru9ONwdMK99oI4zl+F
-X-Gm-Gg: AYBFou05aov7Ze9cCF1vO7Pu+v5EiEHbS9yil4uCIJBqIy23jNqO4JKPL25zYlcWn3y
-	9so8UmIPD9KL1MtakKTV1zjmCvS7Tor4aqeX+cBXxaXaYuYdGBcvWJMFGjClus/Z+zs5TxM4YYO
-	78R8NpPZ9yZwZ7ZYp1nj3BrFTJ6QH09ih30u2gjMIpCh6rsDA7ICqmIFyP39jWQBe3WTsX5tq9x
-	bLH4FYiOzWJJ3Ra3EwQdy63Pc77hQCpB+qsRf0JiGho1gSWi3OsQ4j/cS85HlVFqLNMIi8yptNR
-	7hpDFZciY241RzKxmDwNULr6qdMKRn21UAfvQnWbSdq5ztipRLcWaEZ7E/kjrXpmd+v/1I/vdDx
-	heJWoqLgFfNcTPBFN7AvNeZyc+R2rMic99Ge5lvWHqOKBO6bJLDYurDHGpm9Qw/z8FfyNn8vCtS
-	ihXvw//aBqLBw2Ze0SOf21frWw73SernAVATGkGd9jr13iDi0rUiwsbUGyJSzXEQUTmAAVuCX5k
+        bh=uD4nTk1nDi6/4v9OLXfMGR/tGEoZqnYV3jwiBiqPF9U=;
+        b=F+U57ZyLmFiCmnlWbvQyPSwqhy0npjXdHYcDWDlqeNJaiozjdfxGnJ36cKWpy4r8Ja
+         o27YDOxLcWONB6cvbNNLLbUKrajBcwuizvcanwMHvQmsjiAnWReA2MwVG6tdZ6KACml3
+         VVfTpUz4z656Ggl0hRm/ydYQVJ1fZFFjLbZPYsRPK0YaghcOKfTacYq5LIK+XU22wpHy
+         i9Eee69UOGAa4De8TewFTF+/LN6kMpvA8CHghp/Lwt/zJ1M3O53xlP/Mmw3G0stPl4st
+         Gu+8Ibm+W5jB2N+OIKFvDCULTtGLkPYZu0c6N3JkiBvD/Bk6HBCLvoABm3h63oypf3jg
+         X8AA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788424048; x=1789028848;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=uD4nTk1nDi6/4v9OLXfMGR/tGEoZqnYV3jwiBiqPF9U=;
+        b=Dc1D2Hji9ceeaKcL4ZhU8+uHRe6dhMrkIi/e5gQ52Hi5+iG3768cwgTL2nR4skNVVK
+         HFmDP7TPvEfT2trns3UFA48qFwnCaotlugxqHRti4LVk4Osk1v9s9v5Y3DtjlZpIfaCX
+         8ovfN0XngupV3R5Qz6zKS4iuRIpssI2+fvHu++quzHlSuH74wzXFn4BHffbOB1420QBd
+         v1Z4OJDDy8iNG8nvW5fzTrNALN6vxHwgBC2asqhlprpusB4AvzMDlsMJ32A9frBGyCek
+         fs4Vsn4S2SRc3ogom995EAvvRoasiZpGKorvbjFfrLCG3PvzlL6swhxzh89F0+7N+hIZ
+         oZYQ==
+X-Gm-Message-State: AFuF++ngvcXlISk0OPVajq6RlXE1fRN7YVK3HC7B3ie7DpA+vb0iLKuQ
+	/oLEtVR6IkNOQdIUDWRLK9Xga4Dr+L33abGwArlwwn3l64aNZmqmmEhr
+X-Gm-Gg: AYBFou3aBrLwR4JZia3Y3/SQsS74oEszyC/Uy9sZF6KjH70C8qPqfQGhe6tsWhz3uGo
+	qlBPSczxMAP/EaqgWcWhuO6ilvxAuB4iuzu2/C6qJtISsFIC3FXVeekBfx/PTdqf9RypVm5GZCF
+	0uSzIwKJPhIKkjm5Y/jTXdutgDxv4Ebc/nUewlNKhNP2szA6ApeHQdTA75HLdfBeBI7yQ2leyTO
+	PGG8JTSFfBjq/wdqqpT7k6ObxQKCnnkw5gLXp1ewr2YrFhJGHge3qHVzRp8z2LkB5DtzZnVXlGO
+	CASuHAPqwPguv1hEr9XhC27DDN1MyP2YuCuGywDl4v5DOT+XWgMlPush75Kr74Tq2eWRcdmzFBR
+	6FHZazh1dViL0dHcO14e2tvcnsNK09DiHa+M9Jrqr5Bel9bArWilf1vMvE7SG/hK6ICOV/bl4Hb
+	MQqTMW/RyxZPeB1IqcGekyS77p5Cnk4Vjj57vy5xXZ8jrcwdpRmb0B7MRdlOymETWfP35mTikRZ
 	g==
-X-Received: by 2002:a17:90b:3d81:b0:38d:fda6:4873 with SMTP id 98e67ed59e1d1-39aedff2b42mr15677641a91.10.1788424045724;
-        Thu, 03 Sep 2026 01:27:25 -0700 (PDT)
+X-Received: by 2002:a05:6a21:114d:b0:3d1:ae83:6fc2 with SMTP id adf61e73a8af0-3d9adac29bamr18789422637.9.1788424048363;
+        Thu, 03 Sep 2026 01:27:28 -0700 (PDT)
 Received: from Aaron-M6 ([188.253.120.162])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1431f86504fsm2135193c88.4.2026.09.03.01.27.23
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1431f86504fsm2135193c88.4.2026.09.03.01.27.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Sep 2026 01:27:25 -0700 (PDT)
+        Thu, 03 Sep 2026 01:27:27 -0700 (PDT)
 From: Yaozhong Li <yaozhonguwl@gmail.com>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	Yaozhong Li <yaozhonguwl@gmail.com>
-Subject: [PATCH 1/2] arm64: dts: rockchip: drop unused i2s0 from rk3399-firefly
-Date: Thu,  3 Sep 2026 16:27:12 +0800
-Message-ID: <20260903082713.192-1-yaozhonguwl@gmail.com>
+Subject: [PATCH 2/2] arm64: dts: rockchip: enable HDMI audio on rk3399-firefly
+Date: Thu,  3 Sep 2026 16:27:13 +0800
+Message-ID: <20260903082713.192-2-yaozhonguwl@gmail.com>
 X-Mailer: git-send-email 2.55.0.windows.3
+In-Reply-To: <20260903082713.192-1-yaozhonguwl@gmail.com>
+References: <20260903082713.192-1-yaozhonguwl@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_092728_839155_D806A8A1 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20260903_092730_845680_D6AEA69B 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,55 +115,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk3399-firefly.dts enables i2s0, but no sound card on this board
-references it: the on-board rt5640 codec is wired to i2s1 and the
-S/PDIF transmitter has its own controller. i2s0 is left over and
-serves no purpose here.
+The Firefly-RK3399 exposes audio over its HDMI 2.0 connector, but
+hdmi_sound is left disabled, so the only outputs available are the
+analog rt5640 jacks and S/PDIF.
 
-Leaving it enabled is not free. The pl330 instance that serves the
-audio block only has six channels:
+Enable it. This depends on i2s0 no longer being enabled, otherwise
+i2s2 cannot get a DMA channel for capture and the card fails to
+probe.
 
-  dma-pl330 ff6d0000.dma-controller: DBUFF-32x8bytes Num_Chans-6 \
-    Num_Peri-12 Num_Events-12
-
-i2s0 claims two of them for its unused tx/rx pair, so only four are
-left for i2s1 (2), i2s2 (2) and spdif (1). i2s2 loses out and cannot
-get a channel for capture:
-
-  rockchip-i2s ff8a0000.i2s: Missing dma channel for stream: 1
-  rockchip-i2s ff8a0000.i2s: ASoC error (-22): at \
-    snd_soc_pcm_component_new() on ff8a0000.i2s
-
-which makes any card bound to i2s2 fail to probe. This is what
-currently prevents HDMI audio from working on this board.
-
-i2s0 is disabled in rk3399-base.dtsi, so simply drop the override.
-With it gone, i2s1, i2s2 and spdif all get the channels they ask for.
-
-Tested on a Firefly-RK3399 board.
+Tested on a Firefly-RK3399 board with a 1920x1080 display attached:
+the hdmi-sound card is registered and plays at both 44.1 and 48 kHz,
+alongside the existing rt5640 and S/PDIF cards.
 
 Signed-off-by: Yaozhong Li <yaozhonguwl@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 6 ------
- 1 file changed, 6 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-index 0568dfa..fa1b8b8 100644
+index fa1b8b8..3d1f84f 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-@@ -618,12 +618,6 @@ accelerometer@68 {
- 	};
+@@ -311,6 +311,10 @@ &hdmi {
+ 	status = "okay";
  };
  
--&i2s0 {
--	rockchip,playback-channels = <8>;
--	rockchip,capture-channels = <8>;
--	status = "okay";
--};
--
- &i2s1 {
- 	rockchip,playback-channels = <2>;
- 	rockchip,capture-channels = <2>;
++&hdmi_sound {
++	status = "okay";
++};
++
+ &i2c0 {
+ 	clock-frequency = <400000>;
+ 	i2c-scl-rising-time-ns = <168>;
 -- 
 2.55.0.windows.3
 
