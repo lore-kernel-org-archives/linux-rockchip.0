@@ -4,59 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7811C79F81
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 01:18:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A08ABC624DB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 02:46:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jFZKeI1fGk8xvP4vQEZjowsxLLq/r0Kdbs5KsZtNrso=; b=Hic8bq7Qw+5aJc
-	2V/8dGaizip42wEcdv1VH6bVHJdDFdRVkKJAKvWWjxkfzB/WsyQJ6rMjqa6OhJOTntSbRqCUWWYDF
-	sG49F4bZnUU2rhkT5yY/qvfJ7DgVDOAPDocyqnjzxtoUcqQ8ZQ5BbTI8PrZ+vDCz8H1OqptFVAOtL
-	iqJ0lyAKCosGzyeBjgGVyhtJP35NT3x95QNv8qFhg1Sefd8WDHM43bBJqEcS6bj4kgDaugiM/tQvR
-	+ItGGjoY1BEoijlfhwIfT5k1F3o0FRlwQ4Cxdh5CSoujcENbbJJwaPU/Fa74J44xVLFgnmbhMJbtQ
-	Mejn13knx55ze5SMn3Qw==;
+	List-Owner; bh=XhgAl2tgEnAjR10O+ydtTovY7hE+0ADNI3cniJaaeGE=; b=j1zfNw7c/hoOwK
+	FjZOK5Lvlwly58frcfolepTS8tTaCgUu2aNrDrC8DQmqCCMBNAMXGdXC6LgRm0C7ubSetSvdKxinE
+	gAhlzGgFmfpLg7IhY+rXHaAqj4IVBgTgyB6lnSNeQHwxLrd80UgwpwPmst9a54Ki/aNKJ18buWi3v
+	gIn2QFZo8YTWu5cm6gACiXnPpJGZZoaSaVOIntJvvt6ZA32WfFpM2bLQaDfvAb4lz4fBKGb4ITJHB
+	PccPBFnlvTRqrhn+Z6zW7FQ4LLxrfCAlznJW7iqRqczudTo+7qGZ1KQ7dTf2WgcvvKJxNnBBjFP5o
+	f4mUoVvce7P+3RsZihGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2IZr-00000000q3B-1woF;
-	Fri, 04 Sep 2026 01:18:47 +0000
-Received: from mail-m160236528.xmail.ntesmail.com ([160.236.52.8])
+	id 1x2Jwf-00000000tEP-0CN3;
+	Fri, 04 Sep 2026 02:46:25 +0000
+Received: from mail-m16023652205.xmail.ntesmail.com ([160.236.52.205])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2IZn-00000000q1k-1c18
-	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Sep 2026 01:18:45 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4c7b37546;
-	Fri, 4 Sep 2026 09:18:38 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-pci@vger.kernel.org,
-	Niklas Cassel <cassel@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>
-Subject: [PATCH v2 1/2] PCI: dw-rockchip: Move the INTx irq setup to probe and make it devm-managed
-Date: Fri,  4 Sep 2026 09:18:28 +0800
-Message-Id: <1788484709-139123-2-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1788484709-139123-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1788484709-139123-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0aa069ff0ede03a4kunm9a952c5910a942
+	id 1x2Jwa-00000000tCK-3Yqt;
+	Fri, 04 Sep 2026 02:46:24 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4c7eb8f85;
+	Fri, 4 Sep 2026 10:46:08 +0800 (GMT+08:00)
+Message-ID: <f2cdc86f-1f8f-405d-a9c1-3e9059d62f96@rock-chips.com>
+Date: Fri, 4 Sep 2026 10:46:06 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] drm/rockchip: vop: don't round the pixel clock when
+ the encoder owns the PLL
+To: Vasily Khoruzhick <anarsoul@gmail.com>
+Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Heiko Stuebner <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+References: <20260901234351.190506-1-anarsoul@gmail.com>
+ <20260901234351.190506-2-anarsoul@gmail.com>
+ <02c265f6-0898-4f11-9954-df7d99d082a0@rock-chips.com>
+ <CA+E=qVeqOahu7v4ser0zxxUU6Fr4dGAVA9m_mgHgu70ChYv9Gg@mail.gmail.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <CA+E=qVeqOahu7v4ser0zxxUU6Fr4dGAVA9m_mgHgu70ChYv9Gg@mail.gmail.com>
+X-HM-Tid: 0aa06a4f2a9003a7kunm70e050c89bd3e
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGUlCTVZOTEtKGk5KGE
-	oYSx1WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUpLSUJDQ0xVSktLVUtZBg++
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTE0dVkgYSkhOQ0pCSRpLS1YVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
+	5LVUpLS1VKQktCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=OZgrY2ZOn8vQYtx9YcrdEAmcxYu92AOyCmq0g5Zt9kdApTdQDu1qVnM2UfYeLGc+wBWCypxR09zsNcc0KSv7wLHPF5yZzUG2l66SR2ylcb8KU00XI+Wl0gbN9UDWGhboMeoD/Qleyj4Tj3Rf6sCynsEf91ZaPUVC0q2mLIlumN8=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=1VF/edNjHzZ5H3ZaP9BRjhpxcC2sS8cJu9ZT9o+c8Gs=;
+	b=i0xSyO6xr+xQMg0Itknu5ALMXB46Nbr8PgbY6KTxEP7jRDixR7wfqEuhzxks5DVCKXq2b+HF8tv4mDcLioBHAlTE+qBwxn25g2m9I9LImEf1AgtwYIdGlJ4FGZz1dywgvScF7fqOxAKhL0ySS8Ofz/HR77PhWhirq066G7BQ+B0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=iRizJp23wPSCe5WsFPxEB6JBq79SZp7y8nKA/UZLjq0=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_181844_047211_511BE637 
-X-CRM114-Status: GOOD (  25.44  )
+X-CRM114-CacheID: sfid-20260903_194621_569047_8CB848DD 
+X-CRM114-Status: GOOD (  30.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,186 +75,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since commit b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port()
-and use for link down"), .reset_root_port() re-runs the host ops
-.init() callback to reprogram the Root Complex after a controller
-reset. That works for the register programming, but .init() is not
-re-entrant: it also creates the INTx irq domain and installs the
-chained INTx handler. Every root port reset therefore ends up with a
-second irq domain registered for the same fwnode: the previous one is
-leaked, as it is never removed, and worse, the INTx virqs of the
-downstream PCI devices were allocated in the previous irq domain and
-are never re-mapped, while the chained handler now looks up virqs in
-the new, empty domain. After a link down recovery, INTx interrupts
-are silently lost.
-
-Fix it by moving the of_irq_get_byname() lookup, the INTx irq domain
-creation and the chained handler installation out of .init() and into
-rockchip_pcie_configure_rc(), right after dw_pcie_host_init(). This
-mirrors how the qcom driver requests its global IRQ, and leaves
-.init() with nothing but idempotent register programming, so both
-.reset_root_port() and dw_pcie_resume_noirq() can safely re-run it.
-Re-running of_irq_get_byname() on every resume is also gone.
-
-With the irq setup now living in probe, tie its lifetime to the device
-with devres: create the irq domain with devm_irq_domain_instantiate()
-and uninstall the chained handler through the
-rockchip_pcie_intx_chained_release() devres action. The driver is
-builtin and cannot be unbound (suppress_bind_attrs), so probe failure
-is the only path that ever needs this cleanup, and devres takes care
-of it without sprinkling it over every error path. Since the irq setup
-is the last step of rockchip_pcie_configure_rc(), the only failure
-point left after the chained handler is installed is
-devm_add_action_or_reset() itself, whose failure mode runs the action,
-so the handler can never run against the devm-freed rockchip
-structure. devres also unwinds in reverse registration order, so the
-handler is always uninstalled before the domain is removed. There is
-no devm API for chained handlers, hence the small devres action
-wrapper.
-
-Fixes: b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port() and use for link down")
-Suggested-by: Niklas Cassel <cassel@kernel.org>
-Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
----
-
-Changes in v2:
-- Moved the of_irq_get_byname() lookup, the INTx irq domain creation
-  and the chained handler installation out of the host ops .init()
-  callback into rockchip_pcie_configure_rc(), right after
-  dw_pcie_host_init(), as suggested by Niklas Cassel. This supersedes
-  v1 patch 1/2, as .init() no longer creates the irq domain, and
-  removes the rockchip_pcie_host_hw_init() helper from v1.
-- Made the INTx irq domain devm-managed with
-  devm_irq_domain_instantiate() and uninstall the chained handler
-  through a devres action, addressing the probe failure leak and
-  use-after-free flagged by the Sashiko review.
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 65 +++++++++++++++++++--------
- 1 file changed, 46 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index af26a07..ecf0d7e 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -113,6 +113,7 @@ struct rockchip_pcie {
- 	struct reset_control *rst;
- 	struct gpio_desc *rst_gpio;
- 	struct irq_domain *irq_domain;
-+	int intx_irq;
- 	const struct rockchip_pcie_of_data *data;
- 	bool supports_clkreq;
- 	struct delayed_work trace_work;
-@@ -187,9 +188,16 @@ static const struct irq_domain_ops intx_domain_ops = {
- 	.map = rockchip_pcie_intx_map,
- };
- 
--static int rockchip_pcie_init_irq_domain(struct rockchip_pcie *rockchip)
-+static void rockchip_pcie_intx_chained_release(void *data)
-+{
-+	struct rockchip_pcie *rockchip = data;
-+
-+	irq_set_chained_handler_and_data(rockchip->intx_irq, NULL, NULL);
-+}
-+
-+static int rockchip_pcie_init_irq_domain(struct device *dev,
-+					 struct rockchip_pcie *rockchip)
- {
--	struct device *dev = rockchip->pci.dev;
- 	struct device_node *intc;
- 
- 	intc = of_get_child_by_name(dev->of_node, "legacy-interrupt-controller");
-@@ -198,12 +206,17 @@ static int rockchip_pcie_init_irq_domain(struct rockchip_pcie *rockchip)
- 		return -EINVAL;
- 	}
- 
--	rockchip->irq_domain = irq_domain_create_linear(of_fwnode_handle(intc), PCI_NUM_INTX,
--							&intx_domain_ops, rockchip);
-+	rockchip->irq_domain = devm_irq_domain_instantiate(dev,
-+			&(struct irq_domain_info){
-+				.fwnode = of_fwnode_handle(intc),
-+				.size = PCI_NUM_INTX,
-+				.ops = &intx_domain_ops,
-+				.host_data = rockchip,
-+			});
- 	of_node_put(intc);
--	if (!rockchip->irq_domain) {
-+	if (IS_ERR(rockchip->irq_domain)) {
- 		dev_err(dev, "failed to get a INTx IRQ domain\n");
--		return -EINVAL;
-+		return PTR_ERR(rockchip->irq_domain);
- 	}
- 
- 	return 0;
-@@ -422,22 +435,9 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
--	struct device *dev = rockchip->pci.dev;
--	int irq, ret;
--
--	irq = of_irq_get_byname(dev->of_node, "legacy");
--	if (irq < 0)
--		return irq;
- 
- 	pci->dbi_base2 = pci->dbi_base + PCIE_TYPE0_HDR_DBI2_OFFSET;
- 
--	ret = rockchip_pcie_init_irq_domain(rockchip);
--	if (ret < 0)
--		dev_err(dev, "failed to init irq domain\n");
--
--	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
--					 rockchip);
--
- 	rockchip_pcie_configure_l1ss(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 	pp->bridge->reset_root_port = rockchip_pcie_rc_reset_root_port;
-@@ -739,6 +739,33 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 		return ret;
- 	}
- 
-+	/*
-+	 * This is done here instead of in the host ops .init() callback,
-+	 * which is also re-run by .reset_root_port(), so that the INTx irq
-+	 * domain is only created once, at probe time.
-+	 */
-+	rockchip->intx_irq = of_irq_get_byname(dev->of_node, "legacy");
-+	if (rockchip->intx_irq < 0)
-+		return rockchip->intx_irq;
-+
-+	ret = rockchip_pcie_init_irq_domain(dev, rockchip);
-+	if (ret < 0) {
-+		dev_err(dev, "failed to init irq domain\n");
-+		return ret;
-+	}
-+
-+	irq_set_chained_handler_and_data(rockchip->intx_irq,
-+					 rockchip_pcie_intx_handler, rockchip);
-+
-+	/*
-+	 * Uninstall the chained handler on probe failure, so that it can
-+	 * never run against the devm-freed rockchip structure.
-+	 */
-+	ret = devm_add_action_or_reset(dev, rockchip_pcie_intx_chained_release,
-+				       rockchip);
-+	if (ret)
-+		return ret;
-+
- 	/* unmask hot reset/link-down reset */
- 	val = FIELD_PREP_WM16(PCIE_LINK_REQ_RST_NOT_INT, 0);
- 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
--- 
-2.7.4
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gVmFzaWx5LAoKT24gOS80LzIwMjYgNjoxOSBBTSwgVmFzaWx5IEtob3J1emhpY2sgd3Jv
+dGU6Cj4gT24gVHVlLCBTZXAgMSwgMjAyNiBhdCA4OjUw4oCvUE0gQ2hhb3lpIENoZW4gPGNoYW95
+aS5jaGVuQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4KPj4gSGVsbG8gVmFzaWx5LAo+IAo+IEhp
+IENoYW95aSwKPiAKPj4gT24gOS8yLzIwMjYgNzo0MiBBTSwgVmFzaWx5IEtob3J1emhpY2sgd3Jv
+dGU6Cj4+PiBPbiBSSzMzOTkgdGhlIEhETUkgcmVmZXJlbmNlIGNsb2NrIGlzIFZQTEwsIGEgZGVk
+aWNhdGVkIFBMTCB0aGF0IGlzIGEKPj4+IHBhcmVudCBvZiB0aGUgVk9QIGRjbGsuIGR3X2hkbWlf
+cm9ja2NoaXBfbW9kZV92YWxpZCgpIGFjY2VwdHMgYSBtb2RlCj4+PiBvbmx5IGlmIFZQTEwgY2Fu
+IHByb2R1Y2UgaXRzIHBpeGVsIGNsb2NrLCBhbmQgZW5jb2RlciBtb2RlX3NldCgpIHRoZW4KPj4+
+IHByb2dyYW1zIFZQTEwgdG8gdGhhdCByYXRlLiBIb3dldmVyIHZvcF9jcnRjX21vZGVfZml4dXAo
+KSByYW4gZmlyc3QsCj4+PiBpbiB0aGUgY2hlY2sgcGhhc2UsIGFuZCByb3VuZGVkIGFkanVzdGVk
+X21vZGUtPmNsb2NrIHRocm91Z2gKPj4+IGNsa19yb3VuZF9yYXRlKCkgb24gdGhlIGRjbGsuIEF0
+IHRoYXQgcG9pbnQgVlBMTCBzdGlsbCBzaXRzIGF0IGl0cwo+Pj4gcHJldmlvdXMgcmF0ZSwgc28g
+dGhlIGRjbGsgY29tcG9zaXRlIHBpY2tzIHdoaWNoZXZlciBvZiBWUExML0NQTEwvR1BMTAo+Pj4g
+Z2V0cyBjbG9zZXN0IGF0IGl0cyAqY3VycmVudCogcmF0ZSBhbmQgc3RvcmVzIHRoYXQgaW5leGFj
+dCB2YWx1ZS4KPj4+Cj4+Cj4+IFdoeSBkaWQgdm9wX2NydGNfbW9kZV9maXh1cCgpIHJ1biBmaXJz
+dD8gV2l0aGluIGRybV9hdG9taWNfaGVscGVyX2NoZWNrX21vZGVzZXQoKSwKPj4gbW9kZV92YWxp
+ZCgpIGlzIGV4ZWN1dGVkIGJlZm9yZSBtb2RlX2ZpeHVwKCkuCj4gCj4gU29ycnksIGFtYmlndW91
+cyB3b3JkaW5nIG9uIG15IHBhcnQgLSAiZmlyc3QiIG1lYW50IGJlZm9yZSB0aGUKPiBlbmNvZGVy
+J3MgbW9kZV9zZXQoKSBwcm9ncmFtcyB0aGUgVlBMTCwgbm90IGJlZm9yZSBtb2RlX3ZhbGlkKCku
+IFRoZQo+IG9yZGVyIGlzIGFzIHlvdSBzYXksIGFuZCB0aGF0J3MgZXhhY3RseSB0aGUgcHJvYmxl
+bTogbW9kZV92YWxpZCgpCj4gcm91bmRzIHRoZSBwaXhlbCBjbG9jayBvbiB0aGUgcmVmIGNsb2Nr
+ICh0aGUgVlBMTCBpdHNlbGYpLCB3aG9zZSByYXRlCj4gdGFibGUgY2FuIHByb2R1Y2UgODUuNSBN
+SHosIHNvIHRoZSBtb2RlIGlzIGFjY2VwdGVkLiBtb2RlX2ZpeHVwKCkKPiBob3dldmVyIHJvdW5k
+cyBvbiB0aGUgZGNsayBjb21wb3NpdGUgLSBhIGRpZmZlcmVudCBjbG9jayAtIHdoaWNoCj4gZXZh
+bHVhdGVzIGl0cyBtdXggcGFyZW50cyBhdCB0aGVpciBjdXJyZW50IHJhdGVzLiBEdXJpbmcgY2hl
+Y2sgdGhlCj4gVlBMTCBzdGlsbCBydW5zIGF0IHRoZSBwcmV2aW91cyBtb2RlJ3MgcmF0ZSwgc28g
+R1BMTC83ID0gODQuODU3IE1Iego+IHdpbnMgYW5kIGdldHMgc3RvcmVkIGluIGFkanVzdGVkX21v
+ZGUtPmNsb2NrLiBtb2RlX3NldCgpIHRoZW4gcHJvZ3JhbXMKPiB0aGUgVlBMTCB0byB0aGF0IGNv
+cnJ1cHRlZCB2YWx1ZSBpbiB0aGUgY29tbWl0IHBoYXNlLiBJIGNhbiByZXdvcmQgdGhlCj4gY29t
+bWl0IG1lc3NhZ2UgdG8gbWFrZSB0aGlzIGNsZWFyZXIuCj4gCgpJIHRoaW5rIEkgdW5kZXJzdGFu
+ZCB5b3VyIHBvaW50IG5vdy4gVGhlIGVuY29kZXIncwptb2RlX2ZpeHVwKCkgeWllbGRzIDg1LjUg
+TUh6LCB3aGlsZSB0aGUgQ1JUQydzIG1vZGVfZml4dXAoKSB5aWVsZHMgCjg0Ljg1NyBNSHouIFRo
+ZSBwYXRjaCBlZmZlY3RpdmVseSBieXBhc3NlcyB0aGUgQ1JUQyBtb2RlX2ZpeHVwKCksIApzbyB0
+aGF0IGJvdGggdGhlIGVuY29kZXIncyBtb2RlX3NldCgpIGFuZCB0aGUgQ1JUQydzIGF0b21pY19l
+bmFibGUoKSAKY2xrX3NldF9yYXRlKCkgZW5kIHVwIHVzaW5nIDg1LjUgTUh6LiBJIHRoaW5rIGl0
+J3Mgd29ydGggbWVudGlvbmluZwp0aGlzIGluIHRoZSBjb21taXQgbWVzc2FnZS4KCj4+PiBGb3Ig
+MTM2Nng3NjggKDg1LjUgTUh6KSB0aGlzIHlpZWxkcyBHUExMLzcgPSA4NC44NTcgTUh6LiBtb2Rl
+X3NldCgpCj4+PiB0aGVuIHJlcXVlc3RzIDg0Ljg1NyBNSHogZnJvbSBWUExMLCB3aGljaCB0aGUg
+UExMIHJhdGUgdGFibGUgc25hcHMKPj4+IGRvd24gdG8gNzQuMjUgTUh6LCBhbmQgdGhlIFZPUCBl
+bmRzIHVwIG9uIEdQTEwvNy4gVGhlIHBhbmVsIHJlY2VpdmVzIGEKPj4+IHRpbWluZyAwLjc1JSBz
+bG93LCB3aGljaCBzb21lIG1vbml0b3JzIG1pc2RldGVjdCAoZS5nLiBhcyAxMTk1eDc2OCkKPj4+
+IGFuZCBkaXNwbGF5IGRpc3RvcnRlZC4gT25seSBtb2RlcyB3aG9zZSBjbG9jayBoYXBwZW5zIHRv
+IGJlIGFuIGV4YWN0Cj4+PiBHUExMIG9yIENQTEwgZnJhY3Rpb24gKDc0LjI1LCAxNDguNSwgMjk3
+IE1IeiwgLi4uKSB3ZXJlIHVuYWZmZWN0ZWQuCj4+Pgo+Pgo+PiBEaWQgeW91IGRlc2lnbmF0ZSBW
+UExMIGFzIHRoZSBwYXJlbnQgY2xvY2sgb2YgdGhlIFZPUCBkY2xrIGluIHRoZSBEVFM/Cj4gCj4g
+Tm8sIGFuZCBpdCBpc24ndCBuZWVkZWQ6IGluIHRoZSBjb21taXQgcGhhc2UgdGhlIGVuY29kZXIn
+cwo+IGF0b21pY19tb2RlX3NldCgpIHNldHMgdGhlIFZQTEwgdG8gZXhhY3RseSB0aGUgcGl4ZWwg
+Y2xvY2sgYmVmb3JlCj4gdm9wX2NydGNfYXRvbWljX2VuYWJsZSgpIHNldHMgdGhlIGRjbGsgKG1v
+ZGUtc2V0IHJ1bnMgYmVmb3JlIGVuYWJsZXMKPiBpbiB0aGUgYXRvbWljIGhlbHBlcnMpLCBzbyBi
+eSB0aGVuIHRoZSBkY2xrIGNvbXBvc2l0ZSBmaW5kcyB2cGxsLzEgYXMKPiBhbiBleGFjdCBtYXRj
+aCBhbmQgdGhlIG11eCBzZWxlY3RzIFZQTEwgYnkgaXRzZWxmLiBWZXJpZmllZCB2aWEKPiBjbGtf
+c3VtbWFyeSBvbiB0aGUgcGF0Y2hlZCBrZXJuZWw6IHZwbGwgPSA4NTUwMDAwMCBmZWVkaW5nIGRj
+bGtfdm9wMCA9Cj4gODU1MDAwMDAuIFBpbm5pbmcgdGhlIHBhcmVudCBpbiBEVCBhbHNvIHdvdWxk
+bid0IGhhdmUgZml4ZWQgdGhlIGJ1ZyAtCj4gd2l0aG91dCBDTEtfU0VUX1JBVEVfUEFSRU5UIHRo
+ZSBjaGVjay1waGFzZSBjbGtfcm91bmRfcmF0ZSgpIGFnYWluc3QKPiB0aGUgc3RpbGwtc3RhbGUg
+VlBMTCB3b3VsZCByZXR1cm4gdGhlIHNhbWUgd3JvbmcgdmFsdWUuCj4gCj4gU2VlIGNsa19zdW1t
+YXJ5IGZvciBicm9rZW4gYW5kIHdvcmtpbmcgY2FzZXMgYXR0YWNoZWQuCj4gCj4+PiBAQCAtMzI3
+LDYgKzMyNywxMiBAQCBkd19oZG1pX3JvY2tjaGlwX2VuY29kZXJfYXRvbWljX2NoZWNrKHN0cnVj
+dCBkcm1fZW5jb2RlciAqZW5jb2RlciwKPj4+Cj4+PiAgICAgICBzLT5vdXRwdXRfdHlwZSA9IERS
+TV9NT0RFX0NPTk5FQ1RPUl9IRE1JQTsKPj4+ICAgICAgIHMtPmJ1c19mb3JtYXQgPSBidXNfZm9y
+bWF0Owo+Pj4gKyAgICAgLyoKPj4+ICsgICAgICAqIFRoZSByZWZlcmVuY2UgY2xvY2sgKGUuZy4g
+VlBMTCBvbiBSSzMzOTkpIGlzIGEgcGFyZW50IG9mIHRoZSBWT1AKPj4+ICsgICAgICAqIGRjbGss
+IGFuZCBtb2RlX3NldCgpIHByb2dyYW1zIGl0IHRvIHRoZSBwaXhlbCBjbG9jaywgd2hpY2gKPj4+
+ICsgICAgICAqIG1vZGVfdmFsaWQoKSBhbHJlYWR5IGd1YXJhbnRlZWQgaXQgY2FuIHByb2R1Y2Uu
+Cj4+PiArICAgICAgKi8KPj4+ICsgICAgIHMtPmRjbGtfZXhhY3QgPSAhIWhkbWktPnJlZl9jbGs7
+Cj4+Pgo+Pgo+PiBXaGF0IGFib3V0IFJLMzMyOD8gSXQgdXNlcyBoZG1pLT5oZG1pcGh5X2Nsay4K
+PiAKPiBSSzMzMjggY2xvY2sgb3duZXJzaGlwIGlzIHRoZSBpbnZlcnNlIG9mIFJLMzM5OSdzLiBo
+ZG1pcGh5X2NsayBpcyBvbmx5Cj4gZXZlciBjb25zdWx0ZWQgKGluIG1vZGVfdmFsaWQoKSk7IHRo
+ZSBlbmNvZGVyJ3MgbW9kZV9zZXQoKSBwcm9ncmFtcwo+IGp1c3QgcmVmX2Nsaywgd2hpY2ggaXMg
+TlVMTCBvbiBSSzMzMjgsIHNvIHRoZSBlbmNvZGVyIG5ldmVyIHNldHMgdGhlCj4gUEhZIFBMTCAt
+IHRoZSBwcm9taXNlIGRjbGtfZXhhY3QgZXhwcmVzc2VzICgidGhlIGVuY29kZXIgd2lsbCBwcm9n
+cmFtCj4gdGhpcyByYXRlIGl0c2VsZiBhdCBtb2RlX3NldCB0aW1lIikgd291bGRuJ3QgYmUgdHJ1
+ZSB0aGVyZS4KPgoKR2l2ZW4gdGhlIGNvbXBsZXhpdHkgb2YgY2xvY2sgdHJlZXMgYWNyb3NzIGRp
+ZmZlcmVudCBwbGF0Zm9ybXMsCkkgdGhpbmsgYSBiZXR0ZXIgYXBwcm9hY2ggd291bGQgYmUgdG8g
+aW1wbGVtZW50IGZ1bmN0aW9ucyBsaWtlCnJvY2tjaGlwX2RybV9kY2xrX3JvdW5kX3JhdGUoKSBh
+bmQgcm9ja2NoaXBfZHJtX2RjbGtfc2V0X3JhdGUoKSwgCndoaWNoIHByb3Blcmx5IGNvbmZpZ3Vy
+ZSB0aGUgcGFyZW50IGNsb2NrIHRvIG1lZXQgdGhlIGZyZXF1ZW5jeQpyZXF1aXJlbWVudHMuIE9m
+IGNvdXJzZSwgdGhlIGN1cnJlbnQgYXBwcm9hY2ggaXMgb2theSBmb3IgbWUuIDopCgo+Pj4gIHN0
+YXRpYyBib29sIHZvcF9kc3BfbHV0X2lzX2VuYWJsZWQoc3RydWN0IHZvcCAqdm9wKQo+Pj4gQEAg
+LTE1NTgsNiArMTU1NCwxOSBAQCBzdGF0aWMgaW50IHZvcF9jcnRjX2F0b21pY19jaGVjayhzdHJ1
+Y3QgZHJtX2NydGMgKmNydGMsCj4+PiAgICAgICBzID0gdG9fcm9ja2NoaXBfY3J0Y19zdGF0ZShj
+cnRjX3N0YXRlKTsKPj4+ICAgICAgIHMtPmVuYWJsZV9hZmJjID0gYWZiY19wbGFuZXMgPiAwOwo+
+Pj4KPj4+ICsgICAgIC8qCj4+PiArICAgICAgKiBSb3VuZCB0aGUgcGl4ZWwgY2xvY2sgdG8gd2hh
+dCB0aGUgZGNsayBjYW4gcmVhbGx5IHByb2R1Y2UsIHVubGVzcwo+Pj4gKyAgICAgICogdGhlIGVu
+Y29kZXIgd2lsbCBwcm9ncmFtIGEgZGVkaWNhdGVkIGRjbGsgcGFyZW50IFBMTCB0byBleGFjdGx5
+Cj4+PiArICAgICAgKiB0aGlzIHJhdGUgYXQgbW9kZV9zZXQgdGltZS4gSW4gdGhhdCBjYXNlIHRo
+ZSBjbG9jayB0cmVlIHNlZW4gaGVyZQo+Pj4gKyAgICAgICogKHdpdGggdGhhdCBQTEwgc3RpbGwg
+YXQgaXRzIG9sZCByYXRlKSB3b3VsZCBwaWNrIGEgd29yc2UsIGluZXhhY3QKPj4+ICsgICAgICAq
+IHNvdXJjZSBhbmQgYmFrZSB0aGF0IHJhdGUgaW50byBhZGp1c3RlZF9tb2RlLCBkZWZlYXRpbmcg
+dGhlIFBMTC4KPj4+ICsgICAgICAqCj4+PiArICAgICAgKiBTYW1lIGNvbmRpdGlvbiB0aGUgYXRv
+bWljIGhlbHBlcnMgdXNlIGZvciB0aGUgbW9kZV9maXh1cCBjYWxsYmFjay4KPj4+ICsgICAgICAq
+Lwo+Pj4gKyAgICAgaWYgKChjcnRjX3N0YXRlLT5tb2RlX2NoYW5nZWQgfHwgY3J0Y19zdGF0ZS0+
+Y29ubmVjdG9yc19jaGFuZ2VkKSAmJgo+Pj4gKyAgICAgICAgICFzLT5kY2xrX2V4YWN0KQo+Pj4g
+KyAgICAgICAgICAgICB2b3BfY3J0Y19hZGp1c3RfY2xvY2sodm9wLCAmY3J0Y19zdGF0ZS0+YWRq
+dXN0ZWRfbW9kZSk7Cj4+PiArCj4+PiAgICAgICByZXR1cm4gMDsKPj4+ICB9Cj4+Pgo+Pgo+PiBX
+aGF0IGFib3V0IG90aGVyIGRpc3BsYXkgaW50ZXJmYWNlcz8gRm9yIGV4YW1wbGUsIHRoZSAubW9k
+ZV9maXh1cAo+PiBjb3JyZXNwb25kaW5nIHRvIGNkbi1kcCB3aWxsIG5vdCBiZSBjYWxsZWQuCj4g
+Cj4gVGhlIHJvdW5kaW5nIHN0aWxsIHJ1bnMgZm9yIGNkbi1kcCBhbmQgYWxsIG90aGVyIGludGVy
+ZmFjZXM6IGl0IG1vdmVkCj4gaW50byB2b3BfY3J0Y19hdG9taWNfY2hlY2soKSwgd2hpY2ggaXMg
+YSBDUlRDIGNhbGxiYWNrIGFuZCBpcyBpbnZva2VkCj4gYnkgZHJtX2F0b21pY19oZWxwZXJfY2hl
+Y2soKSByZWdhcmRsZXNzIG9mIHRoZSBhdHRhY2hlZCBlbmNvZGVyIC0gc2FtZQo+IGFzIHRoZSBv
+bGQgQ1JUQy1sZXZlbCAubW9kZV9maXh1cCB3YXMuCj4KCkkgc3RpbGwgZG9uJ3QgcXVpdGUgdW5k
+ZXJzdGFuZCB3aHkgd2UgbmVlZCB0byBtb3ZlIHRoaXMgdG8gQ1JUQyBhdG9taWNfY2hlY2soKS4K
+V2hhdCdzIHdyb25nIHdpdGggY2hlY2tpbmcgIXMtPmRjbGtfZXhhY3QgaW4gQ1JUQyBtb2RlX2Zp
+eHVwKCk/IFRoYW5rcy4KCj4gUmVnYXJkcywKPiBWYXNpbHkKCi0tIApCZXN0LCAKQ2hhb3lpCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
