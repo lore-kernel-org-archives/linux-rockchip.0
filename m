@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 185B4C79F82
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 13:09:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24D0AC79F88
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 13:09:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=exl9yC/4HqJZR1kEae3zfjui59zpNTrQVJo0/xOUEXw=; b=0odWP4zdlOtnmw
-	My0je9J8vVyLiWWeAAUAYH9ydkDXTfRNqRKb034F0yW/dS/DO9TAkTAJ6EnaX1EGl0Zu37po3uske
-	XBAqpPKUOg3PSrbAP3rJoyHOXzdRkdVr+4YUnpqjo974rfnT5VejTDojFYWsOqLBeLMH1liuDqhOk
-	qgszFN+2lja+7UGXX3zIdTEvruf34xqK8qz0bLcylLZaILm+77wB94nGQVwW1AM4y92fiy3031v1Y
-	uQa97aakqCYCSVpQnIcJ/Pm9X/XszIJcuBF5dQv6JrOjLyCciRoHdsNLV/SvGA3mh4CHwwmESqrNp
-	nimuWtrKBKljpg3+dC3w==;
+	List-Owner; bh=oCERNUwN6SGo+ebJqN8oxUqN61/LBqvULDor8oEL/+c=; b=AwZM+ywLgIIIMu
+	w8CRCP8dJ421CvHENQMzMLBoLKGMzwzOT+65p100MpnpKIvBrSED/T+IWDUiHQ7f9oqFC41a7hA+p
+	RqOv5mYsmCaEzyJVtf8n0r82ug5SbekjlL/NDJEYxXIRwa2HhJc312rI9Qcr+lOIT0DNeAS4yrblr
+	zaiDoIuY/Z4UaRCdYauHsVPj/P7eh2Fw0B79LzxAaLXi9TaWNchZGPuSmRZ+0cDDrS+vSkJIeWvXx
+	y1JZm5kEVuzf2xoGq7Zs7JN2m05wY38y3JIj/G/tsoTgddiG7hpeni4nzOh8++6F8kcK9mpB3nF/h
+	O4fp9g4SAGqEp+6QAyvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Tfo-000000026n3-3kqO;
-	Fri, 04 Sep 2026 13:09:40 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1x2Tfp-000000026nm-0QMK;
+	Fri, 04 Sep 2026 13:09:41 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Tfj-000000026fu-2IMh
+	id 1x2Tfl-000000026hh-0cbl
 	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Sep 2026 13:09:37 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4956d1d9fb2so929975e9.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2026 06:09:35 -0700 (PDT)
+	Fri, 04 Sep 2026 13:09:38 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-499dd4900dfso962085e9.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2026 06:09:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788527374; x=1789132174; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1788527375; x=1789132175; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=G+f52AKxDAlw/HpKk7FcOocDLK6B8oOeUPjxL8dkr0A=;
-        b=ScZ7NehGjpUAHewUN+qAQGQq0WRa80p8/ly9y8b0HjvwjYZEx0DmKPR7FdV/thbpc+
-         9fYEeHDd8CxIp7OOw+9wzU+UivdN5HLYsXni09Vg5q6Zd2kTkxRyftmIijXaU7x+rWit
-         /UvuonnFUjUxJaULqy5yd86zFfjqWDe/Vq2vrhlFT2FOAcL0SGwzueib/B7pAGO++uHE
-         9k5ZCo/s9GVklaf3NAWKH96PVqjWx98BRE9MmFT9smUivflsop/CKkuzphRf/FMhcNN9
-         ATQrGoP1FI1+Cw4Tx7KfQFt3usbdgM9pkm3RpVLTpQ1BMWE9vlND9LIG57YY4laMSj9+
-         Rbxw==
+        bh=E/t7wxFBsuNgANZ3txwtSGvXS0Fyj90ixWLfFCZVhFw=;
+        b=b1w2K7r5geNnJ5qf3BGQWPBOsdvEAHjhM/9u722KDgG1FFLSAzs5hM/PjSLboTlQDW
+         VrjdmW4QA9awmLD7J7VyEKrsG0Nn8KrApCr5pNF/GBRmf+/VR9Tp5zXBZcGdvGzs5C41
+         VJ7TuzF0fER68Lkf3y3tkJ23zG4HEGT/vlJ+6lXdqSSlE6j3jI8q4Y9AqoMqM2Af+I2b
+         Bxb935bMU8lKD99J5F4Mx+GvzJdujPc/Cvyr9eZCThuK8RB3F36agcn0b6JDBZnEtU9H
+         3mNRmI4mfaj7wLDmpTIvxAmMpe/k8ulwqgVk2MdhyTbzxkX/RHgUGYpNaY3EBdEsjIbR
+         h9Pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788527374; x=1789132174;
+        d=1e100.net; s=20251104; t=1788527375; x=1789132175;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=G+f52AKxDAlw/HpKk7FcOocDLK6B8oOeUPjxL8dkr0A=;
-        b=D3xMRSD+Ibpq+Cya4y3kbFTCLScTNg+GH3/nVvlH1AiynYhMsCaD6+gTTAOQFgaCz0
-         4sX6TvCo7x9595WJqK5rkl49ObFpDqJL3N9IbZxu5c45HFaHmVA+UlS3JlWZfV0Op8dp
-         meH4IZxGDnlDBtKto9aUAtNOUkTbixwsT08BEOv9FRQFkP9TF6Z2uPQkaUfyKBYYsA/O
-         NMulahKwGd56rT25FGfKy1iDsEe8hsPb7XodqntoHyYJCpJrp/h7+Xhz/PIpKegz9C9F
-         2SO5F3uGAw6eLZc2wmJYWG6dDqnszhH4DZgiMF6gHWxozRRJgPcy8t+6Dm2pm/5r0H3T
-         ddiQ==
-X-Forwarded-Encrypted: i=1; AKwUvBwrLpdiRTg7YkpKHeySb9wKepF9vkRwe7UpsVs1Ch8llD5JK0V0zsAdYAMVuW5DM19d5q+91XnF6OF4WDK8CQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++mGn2emdYk8TLO1V39O2sQpIJhGEK/Mvbn6sXOvibC6S1frbVka
-	wqczuBvoJjDTs4IEjacB5mKdsdStZc4m1Fg2InlPIvajo9ZW/freBZdmTdYWxA==
-X-Gm-Gg: AYBFou2N+wjMGqbto4aDul8/iW4mKbCikgWZDh2Zdxq9OarDK4NJZ8GvSW6SmvV2U5R
-	m60YOuWjWuN/qO4yeARhA3iODWmWpDD0iI02FE7eAJCM5dYJbDDGxj5CG/AexFNE0vl1w3lbrii
-	EFwiQRp+vBuwB4aoYhXijtVwX59aqyfaEiaySReFtUVNGItmGJyA9pItASFt5uIsH9+XMdqEwvc
-	RKX4ZJO9J+x1nebRs0yDC2GEac7de7enXFmTxIL1nlxbUZyrWUlrMOhWtregM3IIc0eDiXJPO4A
-	XKYMtjLn2UZ/+XwAbzmk9atJqfKYd41+/ORYFqcHa9MwH6Or53DGD++/HXzLHEhmatg49xIegiU
-	jLwppCq4I7vVhlhYXnxc7OLfU8S0YXK7tyxjbsB/v9vcg06XIwW5PeccAoc95M5k66CRcLly7v+
-	+Yc79qxP9HXa/1frV6JjH4+lNw2ygTgwCYovVggZiMy7O6KghQOcj4JVKYqkcQWCRwtcr5lhmsv
-	p+aV0BuCMbw1o1NG+mgsh3FlcOgjtwmADou2lI/oH3Rh9NFzCXwvglAjgXzYPN/UlEKct8+hQks
-	5f5r
-X-Received: by 2002:a05:600c:a40e:b0:49c:f9b8:bae0 with SMTP id 5b1f17b1804b1-49cf9b8baffmr34000785e9.2.1788527373810;
-        Fri, 04 Sep 2026 06:09:33 -0700 (PDT)
+        bh=E/t7wxFBsuNgANZ3txwtSGvXS0Fyj90ixWLfFCZVhFw=;
+        b=adCETV8HVUh2m9f6pF8Zo0RP+YQFULGbwz1IBXkGpEg1iQb4hxMJWWltnO97/t3y9D
+         VD7Eg7Cyyluhr93KN5a7P1c/D5EObBJbTzjx7uYLHeKrSSaU9iecElHzCO8mlelQSzFv
+         oK9+UYpHQmID4sn8ZYc9WX19X1j0I5xaRV5AOv0Q7oVc1rDU6B7mL2EcTgHeCvELFJv2
+         N44LUOrjvCG1/VLyeknsnHTFDOnwzcWmmpyg4EFVAnZgEOcx1ManoVtZqn7TfTkEwMTI
+         oY/ACdYomDn/CltOJ4T6i2wM7SdQYBu560m50E8/xzlNwqcvrMyloccO7GDDzM4fWmA0
+         olIQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzBk90xH4QobcY7bJO49FfAj09+dSttErzuTmCqGexnJAnKmIcgB1XLAImVpwOYEzULFbiHOVf4GVd2Lh2trw==@lists.infradead.org
+X-Gm-Message-State: AFuF++lfDJwWIdvwwy4F797q9ylZClG2DyrNO0/f8ty1LiD2BcUervPp
+	KclddCv3L/BiZRu5xdLyhrDtLLEmyrIubLIjezxnRC3sJPH2tuTRxJk5
+X-Gm-Gg: AYBFou396xAnor6OJLhc7jzfQ2xsdFLc8DU5bjvsedCvgBIZTLwhBxtOPCaMXPjWS+8
+	pbzQTqPE9izEtMWDyd3Myr9IH/G3AulzkTddRO6pqTJrGkPm+aelqqLPmbqJZzFFzp0LH+6DL18
+	EwGk8Z0KuRYanqmTdMN4Fji8YAaWv6KVqZgt9wb3EIFDC5fV3EAOxCOZQCsKcpBP8qbNqXu/GQY
+	r/a6q8BiWu1Htc06U4jE/uRoyO5+XIZajPIjVr9gy70NqKzWI1XeGk2BLtcGYz3LzCHaRJkqaDm
+	SycKlvlmlvgir+AAXSzxRcNN/N0QHLhRDYk15oewWnDLauf2WJMWLYGiQXUt+qUjcXq0lSjXOFR
+	L6RRk4TNvkqWOIPu1bgp/Jp1TJzafn4y+x6k0XG/7KqwhLRq5j15UhMyiHmM6WlcouaL5kf75rO
+	r4segmt/kTrw24xDkyDj/l3lFOwnx24XGVXVG90hkWRpOQpJmuorqqejbT8Wl1pZhzd49do4Lj4
+	3DldSVYIEFng7+DlcbtJIQZGt4kpWiskgZwo/cbgkhiA3gXpbVAS7axW6JLGyCys13O
+X-Received: by 2002:a05:600c:1c24:b0:49b:9241:7ff0 with SMTP id 5b1f17b1804b1-49cf7f4d9b7mr51876155e9.0.1788527375338;
+        Fri, 04 Sep 2026 06:09:35 -0700 (PDT)
 Received: from OrangePi5-Plus.BB-HOME (20014C4E1B871500CB6EF488A18F9C42.dsl.pool.telekom.hu. [2001:4c4e:1b87:1500:cb6e:f488:a18f:9c42])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49ce554d52esm135575435e9.3.2026.09.04.06.09.32
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49ce554d52esm135575435e9.3.2026.09.04.06.09.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 06:09:33 -0700 (PDT)
+        Fri, 04 Sep 2026 06:09:35 -0700 (PDT)
 From: Igor Paunovic <royalnet026@gmail.com>
 To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
 	Oded Gabbay <ogabbay@kernel.org>,
@@ -90,16 +89,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Igor Paunovic <royalnet026@gmail.com>
-Subject: [PATCH 6/7] accel/rocket: register a devfreq cooling device
-Date: Fri,  4 Sep 2026 15:08:57 +0200
-Message-ID: <20260904130858.27803-7-royalnet026@gmail.com>
+Subject: [PATCH 7/7] arm64: dts: rockchip: rk3588: add passive cooling to the NPU thermal zone
+Date: Fri,  4 Sep 2026 15:08:58 +0200
+Message-ID: <20260904130858.27803-8-royalnet026@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260904130858.27803-1-royalnet026@gmail.com>
 References: <20260904130858.27803-1-royalnet026@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_060935_865882_F85C324B 
-X-CRM114-Status: GOOD (  18.25  )
+X-CRM114-CacheID: sfid-20260904_060937_273233_BC93800A 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,97 +115,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With devfreq driving the NPU clock, a thermal zone can now throttle the NPU
-by capping that clock. Register the cooling device so a devicetree can bind
-it to a zone.
+The NPU zone has had only a critical trip at 115 degrees, which is a
+shutdown and not a cooling policy. Now that the NPU can be throttled by
+capping its clock, give the zone a passive trip and a cooling map, in the
+same shape and at the same temperatures as the GPU zone right above it:
+85 degrees with 2 degrees of hysteresis, and a 100 ms passive polling
+delay.
 
-The _em variant is used, not because there is an energy model today but so
-that there will be one the day a power coefficient for this NPU is
-measured. There is none now: the NPU node carries no
-dynamic-power-coefficient, Rockchip does not publish one, and a made-up
-number would be worse than no number. devfreq_cooling_em_register() logs
-the missing model at debug level and registers the cooling device anyway,
-so what this gets today is step-wise throttling with no power model for the
-IPA governor to use. Measuring the coefficient is follow-up work.
+The #cooling-cells property goes on rknn_core_0, the core that carries the
+shared clock and the OPP table. The other two cores have no clock of their
+own and cannot be throttled independently of it.
 
-Registration is allowed to fail. A kernel built without DEVFREQ_THERMAL
-gets a stub that returns an error, and losing throttling is not a reason to
-refuse to drive the NPU at all, so the failure is logged and probe carries
-on. The cooling device is unregistered by hand before the devfreq device it
-is attached to goes away.
+The cooling map is inert until the driver registers a cooling device:
+thermal_of_should_bind() only resolves a map entry once a matching cdev
+appears, so this patch on its own changes nothing but the trip point.
+
+The thermal path itself has not been exercised on the board this was
+written on. Reaching 85 degrees on an NPU workload with the fan curve here
+has not been possible, so what is verified is that the zone parses and
+binds, not that throttling engages at temperature.
 
 Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
-Assisted-by: LLM sparse checkpatch
+Assisted-by: LLM checkpatch dtbs_check
 ---
- drivers/accel/rocket/rocket_devfreq.c | 24 ++++++++++++++++++++++++
- drivers/accel/rocket/rocket_devfreq.h |  2 ++
- 2 files changed, 26 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/accel/rocket/rocket_devfreq.c b/drivers/accel/rocket/rocket_devfreq.c
-index 9d923a0b6ea30..86bc34819a187 100644
---- a/drivers/accel/rocket/rocket_devfreq.c
-+++ b/drivers/accel/rocket/rocket_devfreq.c
-@@ -3,6 +3,7 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index 376ad04e07869..c3d22b08f415b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -1162,6 +1162,7 @@ rknn_core_0: npu@fdab0000 {
+ 		clock-names = "aclk", "hclk", "npu", "pclk";
+ 		assigned-clocks = <&scmi_clk SCMI_CLK_NPU>;
+ 		assigned-clock-rates = <200000000>;
++		#cooling-cells = <2>;
+ 		resets = <&cru SRST_A_RKNN0>, <&cru SRST_H_RKNN0>;
+ 		reset-names = "srst_a", "srst_h";
+ 		power-domains = <&power RK3588_PD_NPUTOP>;
+@@ -3212,17 +3213,31 @@ map0 {
+ 		};
  
- #include <linux/clk.h>
- #include <linux/devfreq.h>
-+#include <linux/devfreq_cooling.h>
- #include <linux/ktime.h>
- #include <linux/minmax.h>
- #include <linux/of.h>
-@@ -404,6 +405,24 @@ int rocket_devfreq_init(struct rocket_device *rdev)
- 		goto err_remove_table;
- 	}
+ 		npu_thermal: npu-thermal {
+-			polling-delay-passive = <0>;
++			polling-delay-passive = <100>;
+ 			polling-delay = <0>;
+ 			thermal-sensors = <&tsadc 6>;
  
-+	/*
-+	 * Thermal throttling is optional, so a kernel built without
-+	 * DEVFREQ_THERMAL keeps a working NPU rather than a failed probe.
-+	 *
-+	 * The _em variant is used so that the driver is ready for an energy
-+	 * model the day a power coefficient for this NPU is measured. There is
-+	 * none today: the NPU node has no dynamic-power-coefficient, the vendor
-+	 * does not publish one, and inventing a number would be worse than
-+	 * having none. Without it the EM registration inside is skipped and
-+	 * throttling is step-wise, with no power model for IPA to use.
-+	 */
-+	rdevfreq->cooling = devfreq_cooling_em_register(rdevfreq->devfreq, NULL);
-+	if (IS_ERR(rdevfreq->cooling)) {
-+		dev_info(dev, "no devfreq cooling device (%pe), NPU will not be throttled\n",
-+			 rdevfreq->cooling);
-+		rdevfreq->cooling = NULL;
-+	}
+ 			trips {
++				npu_alert: npu-alert {
++					temperature = <85000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
 +
- 	return 0;
- 
- err_remove_table:
-@@ -426,6 +445,11 @@ void rocket_devfreq_fini(struct rocket_device *rdev)
- 
- 	dev = rdevfreq->owner->dev;
- 
-+	if (rdevfreq->cooling) {
-+		devfreq_cooling_unregister(rdevfreq->cooling);
-+		rdevfreq->cooling = NULL;
-+	}
+ 				npu_crit: npu-crit {
+ 					temperature = <115000>;
+ 					hysteresis = <0>;
+ 					type = "critical";
+ 				};
+ 			};
 +
- 	devfreq_remove_device(rdevfreq->devfreq);
- 	rdevfreq->devfreq = NULL;
++			cooling-maps {
++				map0 {
++					trip = <&npu_alert>;
++					cooling-device =
++						<&rknn_core_0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
+ 		};
+ 	};
  
-diff --git a/drivers/accel/rocket/rocket_devfreq.h b/drivers/accel/rocket/rocket_devfreq.h
-index bdf8e89ed3761..d5876d62a0b7c 100644
---- a/drivers/accel/rocket/rocket_devfreq.h
-+++ b/drivers/accel/rocket/rocket_devfreq.h
-@@ -10,9 +10,11 @@
- 
- struct rocket_core;
- struct rocket_device;
-+struct thermal_cooling_device;
- 
- struct rocket_devfreq {
- 	struct devfreq *devfreq;
-+	struct thermal_cooling_device *cooling;
- 	struct devfreq_simple_ondemand_data gov_data;
- 
- 	/*
 -- 
 2.43.0
 
