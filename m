@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2A4AC624DE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 16:42:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31461C79F82
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 20:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8JHaorGcOhv7mKgbZJ+MEAMfSfhHAjZqwDMqsJdG4c8=; b=opcUfIiAOQIgA/
-	0eoVMfYgnweTkwCRwmsRuD888/WmNU9qPT8leV9VDRluYNmAr62OuIBgdA+dxI03SHzlnl3pULVUZ
-	NFcwwqOUq9qWUkbExK7Y3lXr/g4/ajckZW1ZeaCFcwzYByXA+eB/JaEWp7pdr6x0kJ+vMSoEMPJOw
-	OsTQUDWa4yDOlZj/VeOdtf8OFPHEr+jgX3CrubuamuLsk028HPVCmxSotZIBL9Uut+wPWb52Fshwv
-	edTFOj0UQpQ1sN7WbdTfRZRgDZgaluHBgyBJFiCrWzdAxYBTbGV2EHPXIeFHi3/DbsGaqf+W7H0ZA
-	3T8G8tMQGesCoXQPOJsw==;
+	List-Owner; bh=TcrTbclxDIQwvBQ08vHpncpOTF5tu49ryiK27+JdZQg=; b=FkAgp1TUUhZavz
+	H7MiuA41/HNTaLLLcmJiuIGt14BJ59S3xyajSjPssfRRmWP1Xj97S/f1kmXpiU9mOBK8b3tTBSSnG
+	hrlN2UBsc/QXtBDETMytezl7S5e3iva2sHwWF/9DGxrMQuPcSFzIQ+z46SF5uE2aqgi5haYY6gH5q
+	vwYVl+MhMnT5iZgHXyJoOOL/TvKi1X6Ydw/pm1nB75sqfXJ2qiibQ4If55sNTQ+bUHqiBSZwxnrqs
+	sIxMESJnBZkzXxtS7ouhdm2Bq/y9FJ/n0VeoOwwQlpuhLmYaFL552FrsvU4PQan/vUOtrl025vtzG
+	OZz3kQWO/XKwuw7JVmnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2WzP-00000002lAM-2Cas;
-	Fri, 04 Sep 2026 16:42:07 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1x2aGG-00000003Eul-1P9f;
+	Fri, 04 Sep 2026 20:11:44 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2WzL-00000002l9B-3TKV;
-	Fri, 04 Sep 2026 16:42:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:From:To:
-	Content-Type; bh=NfI3sXa25YFWPfyRn+wgSyK1ek+FDv+B1YGaaHsijuo=;
-	b=U4uu4KTaIEW+h9cMnkm1PY9BQufllSyQ7cQiXgrk2hXim0Drm1nI8I9ZJo9O/c
-	bod4GATPrp8wqC1ARVrUosUrAHvRGVy10KYIg6pki8EOWxIsJ9Xhohw328A/Arnc
-	X7Dt/3kjIErd7eSbl/2s3QwUAqDFy1n4pRmxkv23ZIMVE=
-Received: from [IPV6:240e:b8f:91b3:d000:cb89:e59c:b7d0:5b84] (unknown [])
-	by gzsmtp3 (Coremail) with SMTP id PigvCgAXZJmq9JpqJYjJQw--.64773S2;
-	Sat, 05 Sep 2026 00:41:15 +0800 (CST)
-Message-ID: <1a193cc9-38c8-470c-9041-fdf1dad5b6e3@163.com>
-Date: Sat, 5 Sep 2026 00:41:14 +0800
+	id 1x2aGE-00000003EuY-4A7f
+	for linux-rockchip@lists.infradead.org;
+	Fri, 04 Sep 2026 20:11:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5B1CE412ED;
+	Fri,  4 Sep 2026 20:11:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 707841F00A3D;
+	Fri,  4 Sep 2026 20:11:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788552702;
+	bh=YhgoeMH2mlO0KR6C9C/IXzyhZk9dXM8agxKda5kT4Xc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=Q28qFf3Zxw2q4w3Pt9mx5Jd/+eVUNBfN6oWL79TYrKJvw5lWURicntlljg1xdv5+z
+	 XxabJ29ez9QLdrp7/l44X8c7SX+0lvDtlSTYEDSZVKkHTmxPeKaNw9ORI3gwbYBH6R
+	 B8XawKumSs8K/BptS3+qghekYAvRULz5eH4c20Yca2yA7BMykXADAyOj3xgLrnfLyw
+	 ZHvIJnLs9DHbprj1RAYZXr4/tdprxlfMLw3+rneFiYGmUzS2ez+KWJ7xVTJO31hJeY
+	 zDXsoX3DYC0/YmIZDWeWC0UBSsDfnTaOOtdbVkvgLmtYC6UFm7Nj9f+rwO3GNYqjFH
+	 vY/uhRrCUYHAg==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Diederik de Haas <diederik@cknow-tech.com>
+Cc: linux-kernel@vger.kernel.org, Andreas Kemnade <andreas@kemnade.info>, 
+ Yufan Chen <ericterminal@gmail.com>, 
+ Surendra Singh Chouhan <kr494167@gmail.com>, 
+ Mario Rugiero <mrugiero@gmail.com>, linux-rockchip@lists.infradead.org
+In-Reply-To: <20260904144728.1629471-1-diederik@cknow-tech.com>
+References: <20260904144728.1629471-1-diederik@cknow-tech.com>
+Subject: Re: [PATCH] regulator: tps65185: Remove redundant dev_err_probe()
+Message-Id: <178853989858.632048.13657280228879604798.b4-ty@b4>
+Date: Fri, 04 Sep 2026 17:38:18 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 0/2] PCI: Configure Root Port MPS during host probing
-From: Hans Zhang <18255117159@163.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: bhelgaas@google.com, Manivannan Sadhasivam <mani@kernel.org>,
- lpieralisi@kernel.org, kwilczynski@kernel.org, heiko@sntech.de,
- yue.wang@amlogic.com, pali@kernel.org, neil.armstrong@linaro.org,
- robh@kernel.org, jingoohan1@gmail.com, khilman@baylibre.com,
- jbrunet@baylibre.com, martin.blumenstingl@googlemail.com, cassel@kernel.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20260622171448.GA678675@bhelgaas>
- <72a058fd-5781-43bc-9148-180140929ecd@163.com>
-Content-Language: en-US
-In-Reply-To: <72a058fd-5781-43bc-9148-180140929ecd@163.com>
-X-CM-TRANSID: PigvCgAXZJmq9JpqJYjJQw--.64773S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7CFykGr13tF43Jr1rArWDJwb_yoW8uw4kpF
-	W5Xan3ta1xKry3CF1qqw1Fyr1jqa48tFy3XryDtryayFn0vr15XF1I9wsYkrn7Wr1xGr12
-	9r1Uta4xXrn0vaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Ucdb8UUUUU=
-X-Originating-IP: [240e:b8f:91b3:d000:cb89:e59c:b7d0:5b84]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7AuoTGqa9KsUEwAA3r
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_094204_290378_E4862A67 
-X-CRM114-Status: GOOD (  13.02  )
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1136; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=tBgfHBdFaeHVulrE8oTTOyLS+2jY8CUbxzkSED5Fe14=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqmyX5dNG4OS5eph1ssfUGGn5p4JZl1mVH5mkkQ
+ oazdDv14aSJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCapsl+QAKCRAk1otyXVSH
+ 0P5gB/wJd73agvz/tRJsNifvwj3c2l+NwKuqlaVu23v8HGtYeD8mmDQODZ+Bsq+ntpLYwWTb/pv
+ liECMctBYMsIFMXAuTC4sHJX9M8hTuZjatmHKks0rtxUlGu6vETDggxp/U6rwi/xSMf29A/lfdF
+ UJck4xQ40Ime6mG7RTu9DkLEDyDXbFnEHQPUnXQJLunHBw5uSVWaWJltsv7A5op7au01OpuY2Xo
+ ksEdRQUo0B8v204oxM80q2/j5GSixpu3ME806wjnaIe/mYtKVXoJIhg+RFc06Yc82Tj1eeMi8e/
+ Sm/pzmWSTVRAHTWiUyud+uOMRvAfNhDBHcazDdTv9YDJ2CDm
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,50 +78,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiA3LzE0LzI2IDE5OjA2LCBIYW5zIFpoYW5nIHdyb3RlOgo+IAo+IAo+IE9uIDYvMjMvMjYg
-MDE6MTQsIEJqb3JuIEhlbGdhYXMgd3JvdGU6Cj4+IE9uIEZyaSwgSnVuIDE5LCAyMDI2IGF0IDEx
-OjI5OjM5UE0gKzA4MDAsIEhhbnMgWmhhbmcgd3JvdGU6Cj4+PiBPbiA1LzYvMjYgMjI6MDAsIE1h
-bml2YW5uYW4gU2FkaGFzaXZhbSB3cm90ZToKPj4+PiBPbiBGcmksIE5vdiAyOCwgMjAyNSBhdCAw
-MTowOTowNkFNICswODAwLCBIYW5zIFpoYW5nIHdyb3RlOgo+Pj4+PiBDdXJyZW50IFBDSWUgaW5p
-dGlhbGl6YXRpb24gZXhoaWJpdHMgYSBrZXkgb3B0aW1pemF0aW9uIGdhcDogUm9vdCAKPj4+Pj4g
-UG9ydHMKPj4+Pj4gbWF5IG9wZXJhdGUgd2l0aCBub24tb3B0aW1hbCBNYXhpbXVtIFBheWxvYWQg
-U2l6ZSAoTVBTKSBzZXR0aW5ncy4gCj4+Pj4+IFdoaWxlCj4+Pj4+IGRvd25zdHJlYW0gZGV2aWNl
-IGNvbmZpZ3VyYXRpb24gaXMgaGFuZGxlZCBkdXJpbmcgYnVzIGVudW1lcmF0aW9uLCAKPj4+Pj4g
-Um9vdAo+Pj4+PiBQb3J0IE1QUyB2YWx1ZXMgaW5oZXJpdGVkIGZyb20gZmlybXdhcmUgb3IgaGFy
-ZHdhcmUgZGVmYXVsdHMgb2Z0ZW4gCj4+Pj4+IGZhaWwKPj4+Pj4gdG8gdXRpbGl6ZSB0aGUgZnVs
-bCBjYXBhYmlsaXRpZXMgc3VwcG9ydGVkIGJ5IGNvbnRyb2xsZXIgaGFyZHdhcmUuIAo+Pj4+PiBU
-aGlzCj4+Pj4+IHJlc3VsdHMgaW4gc3Vib3B0aW1hbCBkYXRhIHRyYW5zZmVyIGVmZmljaWVuY3kg
-dGhyb3VnaG91dCB0aGUgUENJZQo+Pj4+PiBoaWVyYXJjaHkuCj4+Pj4+Cj4+Pj4+IFRoaXMgcGF0
-Y2ggc2VyaWVzIGFkZHJlc3NlcyB0aGlzIGJ5Ogo+Pj4+Pgo+Pj4+PiAxLiBDb3JlIFBDSSBlbmhh
-bmNlbWVudCAoUGF0Y2ggMSk6Cj4+Pj4+IC0gUHJvYWN0aXZlbHkgY29uZmlndXJlcyBSb290IFBv
-cnQgTVBTIGR1cmluZyBob3N0IGNvbnRyb2xsZXIgcHJvYmluZwo+Pj4+PiAtIFNldHMgaW5pdGlh
-bCBNUFMgdG8gaGFyZHdhcmUgbWF4aW11bSAoMTI4IDw8IGRldi0+cGNpZV9tcHNzKQo+Pj4+PiAt
-IENvbmRpdGlvbmFsIG9uIFBDSWUgYnVzIHR1bmluZyBiZWluZyBlbmFibGVkIChQQ0lFX0JVU19U
-VU5FX09GRiAKPj4+Pj4gdW5zZXQpCj4+Pj4+IMKgwqDCoCBhbmQgbm90IGluIFBDSUVfQlVTX1BF
-RVIyUEVFUiBtb2RlICh3aGljaCByZXF1aXJlcyBkZWZhdWx0IDEyOCAKPj4+Pj4gYnl0ZXMpCj4+
-Pj4+IC0gTWFpbnRhaW5zIGJhY2t3YXJkIGNvbXBhdGliaWxpdHkgdmlhIFBDSUVfQlVTX1RVTkVf
-T0ZGIGNoZWNrCj4+Pj4+IC0gUHJlc2VydmVzIHN0YW5kYXJkIE1QUyBuZWdvdGlhdGlvbiBkdXJp
-bmcgZG93bnN0cmVhbSBlbnVtZXJhdGlvbgo+Pj4+Pgo+Pj4+PiAyLiBEcml2ZXIgY2xlYW51cCAo
-UGF0Y2ggMik6Cj4+Pj4+IC0gUmVtb3ZlcyByZWR1bmRhbnQgTVBTIGNvbmZpZ3VyYXRpb24gZnJv
-bSBNZXNvbiBQQ0llIGNvbnRyb2xsZXIgCj4+Pj4+IGRyaXZlcgo+Pj4+PiAtIEZ1bmN0aW9uYWxp
-dHkgaXMgbm93IGNlbnRyYWxpemVkIGluIFBDSSBjb3JlCj4+Pj4+IC0gU2ltcGxpZmllcyBkcml2
-ZXIgbWFpbnRlbmFuY2UgbG9uZy10ZXJtCj4+Pj4+Cj4+Pj4KPj4+PiBGb3IgdGhlIHNlcmllcywK
-Pj4+Pgo+Pj4+IFJldmlld2VkLWJ5OiBNYW5pdmFubmFuIFNhZGhhc2l2YW0gPG1hbmlAa2VybmVs
-Lm9yZz4KPj4+Pgo+Pj4+IEJqb3JuOiBDb3VsZCB5b3UgcGxlYXNlIHRha2UgYSBsb29rPyBUaGlz
-IHNlcmllcyBoYXMgYmVlbiBmbG9hdGluZyAKPj4+PiBmb3IgYQo+Pj4+IHdoaWxlLi4uCj4+Pgo+
-Pj4gSGVsbG8gQmpvcm4sCj4+Pgo+Pj4gQW55IGNoYW5jZSBmb3IgdGhpcyBzZXJpZXMgdG8gYmUg
-YXBwbGllZD8KPj4KPj4gSXQncyB0b28gbGF0ZSBmb3IgdjcuMjsgd2UncmUgYWxyZWFkeSBtb3Jl
-IHRoYW4gaGFsZndheSB0aHJvdWdoIHRoZQo+PiBtZXJnZSB3aW5kb3cuwqAgV2UgY2FuIGxvb2sg
-YWdhaW4gZm9yIHY3LjMgYWZ0ZXIgdjcuMi1yYzEuCj4gCj4gSGVsbG8gQmpvcm4sCj4gCj4gR2Vu
-dGxlIHBpbmcgb24gdGhpcyBzZXJpZXMuCj4gCgpIZWxsbyBCam9ybiwKCldvdWxkIHlvdSBoYXZl
-IHRpbWUgdG8gdGFrZSBhIGxvb2sgYXQgdGhpcyBzZXJpZXM/IElmIHRoZXJlIGlzIGFueXRoaW5n
-IAplbHNlIEkgY2FuIGRvIHRvIGltcHJvdmUsIEkgd2lsbCBkbyBpdC4KCgpCZXN0IHJlZ2FyZHMs
-CkhhbnMKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+On Fri, 04 Sep 2026 16:46:31 +0200, Diederik de Haas wrote:
+> regulator: tps65185: Remove redundant dev_err_probe()
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.4
+
+Thanks!
+
+[1/1] regulator: tps65185: Remove redundant dev_err_probe()
+      https://git.kernel.org/broonie/regulator/c/761f34e333ac
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
