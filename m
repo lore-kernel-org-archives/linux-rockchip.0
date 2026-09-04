@@ -4,76 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0364C624D3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 10:17:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4129EC624D3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 11:09:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ChxxIpDO1sS2hVSWq9h1U11jeIvj+SoOXXRGwU0s6aw=; b=e/UmdOTnUWkWuq
-	x6AxwgosqzPNydDbrTiHbl1nawvoWNrwEkmLU0FL+pC2amPizvG1+/nsyxqYAU2x/3XUB8o/QQT1V
-	jyI8b+EHetSK/OEjdHrIsg/F/3IDKvpj8ZXJBTA1nPwPehFyGc6bxFN/NaEo7FAIVhdfE3LFbvU6C
-	RDkZByYzEFMjw4yGMDNbhWtrJUBguJzE+2g83hJdtArgaRyiK23+SKgHovNE9i78y0kNyI43qJhnM
-	g0xQ3Q/UwzxVjSDn9FLVEpu2QfTHykhkcAW+d7JXN/h0ZVIvVrIujru43VyzOFFyBi3TidnTEcr0W
-	PFPage8zrRtauxMRr0Ow==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hnAcQtbpZdomTePCZuASsezZIvQjuRMPPS1P/XSqJZY=; b=eB8+pQQj7AICoc
+	/8wVY2fNOy/B3b1ANUWDnlkYjMM9bMjW85cPMPRmpFxb4tD46EGrJstS01lK24/6fTUkXaRAhXZ3D
+	fv+F4PTsMU31cSzL7BDKJXUZg2wOFn8Z6xtiv6/DZk+ppaogWWCfR1cGheHtOlal391zz45r37me3
+	wXEk9yXXHSEJBVHb90oV4Iyooj+I2F5vXyC0zSdYpmgi0vQdMVs+2UfRb1ooXn4gvNtIibc4NspBc
+	iZG3yDfdrlLjOuK/U7oTAa12M6bFg0LryM7+XDr7jeQKSaQnDuLrOlgMVa/+ID3szFHVN7DbKV2EW
+	Wi444meA2cW4AwqldB0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Qz6-00000001dkt-1yoR;
-	Fri, 04 Sep 2026 10:17:24 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x2Rn3-00000001mKs-3mM0;
+	Fri, 04 Sep 2026 11:09:01 +0000
+Received: from fout-b2-smtp.messagingengine.com ([202.12.124.145])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Qz5-00000001dkO-0DKI;
-	Fri, 04 Sep 2026 10:17:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2853D6020A;
-	Fri,  4 Sep 2026 10:17:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id C7AF7C2BCC7;
-	Fri,  4 Sep 2026 10:17:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1788517041;
-	bh=vXy3dTG8NU1XKB5YaVHYVFYOlsItcROkxlpr8aDEbhQ=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=E1IJbec/pSXWAwq86b7ICBeXZft4k62I+SwenIroshzCPGVoHYZp405CnB3+Ql7sv
-	 Fvz/ZYigkaC487jcTesGK62C1govSgdDa4VkBwuSKSt8BdFXYMoDtMmYFzfa1fDwqN
-	 4Nrf4f/lUYYWum81Jdfo0xRxVA9fquSrJiduuZTnW3BnkwCXbbc8iO1FUXUBtUYfq+
-	 jIUf8WdHdxlZ8lZ/XiiD3tj/VXBQysXVla6n11X7i2I9RiuioLbB2vcIqhEDc5Q8s1
-	 pAPwejT1fe2l2g6cDVs88AzO/HuG85/VoX7hN3iBRcsQYfiI2ZodnmTBzlRxQxb1JV
-	 Kj9stjPMvSekw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3082C61DD6;
-	Fri,  4 Sep 2026 10:17:21 +0000 (UTC)
-From: Johan Jonker via B4 Relay <devnull+jbx6244.gmail.com@kernel.org>
-Date: Fri, 04 Sep 2026 12:17:19 +0200
-Subject: [PATCH v3] drm/rockchip: rk3066_hdmi: convert to
- devm_drm_bridge_alloc() API
+	id 1x2Rn1-00000001mKA-0uKH
+	for linux-rockchip@lists.infradead.org;
+	Fri, 04 Sep 2026 11:09:00 +0000
+Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
+	by mailfout.stl.internal (Postfix) with ESMTP id 92BBC1D00140;
+	Fri,  4 Sep 2026 07:08:57 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-01.internal (MEProxy); Fri, 04 Sep 2026 07:08:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:content-type
+	:date:date:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:subject:subject:to:to; s=fm2;
+	 t=1788520137; x=1788606537; bh=cPCvXj5HZ74KNvDUYgsntjSUb4RTOmH2
+	icqlWiSyLqE=; b=sDtgiyGzdp8OhYPZpLfw3/k3wVef/WlqPQZEIlpSlrvH5Bib
+	APFq5yRSCnqBDodvtUlhwbxHnEivdqu+5Fk9rt/9buccmRc+VizQtIrqpuCjgiLf
+	NuQMC10bCCUE4Ca+pIp9GRPOQo0Q7u7HSJBssayw+9tVIbzXbuo8keQFuN8fBzVA
+	vsxt9vhc6yN2JUniYxtYrZdRMrLCAPBlVk3MVll8gQ1MxbQa4WxHkZzg8liyqtAx
+	OiObTDG17LuYDCxV9sn6lfY5hdXe00NASLjm5ycP2ig8BUnSkTxObyfTvSRB5N97
+	X5o8xug+YBwZ5u2MupbsoS9DtgB1XUnbMXYr6w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1788520137; x=
+	1788606537; bh=cPCvXj5HZ74KNvDUYgsntjSUb4RTOmH2icqlWiSyLqE=; b=q
+	6c5W6K8KVyFRXknvTJT5RUg6ngyXgkfaT2dM+Bw2cHUIhgtmRt7+tKBWrC2jsM/t
+	T90R+hgGN+9iA+D2TMgwAqVSZnYgILXAr1ML0rra5g+hj0GIHm0+G0CS5DMfpLEF
+	0fBfy6eIRdGu4FxncMhy1Q6q64cBBxVHVwrGSokpJyOah6vA8i/OMWoY/DHNwUHV
+	tbvDRHuXL3kqkfWrozleAD25qctEfryLpkat0Mp8IecVgc0YCTHfKcZvGYJcyeBL
+	BaWphizBL0ei9ucbBHYv2bcOWUAyElY1vIgCKteZ4CUInOj17swZdeDwKhsVuWyJ
+	3DbVVTqnQ0F2wIGw7/inw==
+X-ME-Sender: <xms:yaaaal68HgmwuleYjdUo3fUu-ykzUBMeQi00Jy4iJ5KTr6L_DRdfhw>
+    <xme:yaaaasMX6I3mgOpRz6WE5tlXVMcwQsmoEu-OjBursDmtriXP33pOD8pLhROQpsO1d
+    AAnZccEUUQIkIcqHtDlMiqZvd8Cq0kXxSz9bEUzHhyDJXTzBrlDvB0R>
+X-ME-Received: <xmr:yaaaajsfZVkPxGyNpUdslPYOfeIHiF-_LuiUw1kFlsGRdZVe0Mhy7N4EaEtBoiWdEgOMsdlZRA>
+X-ME-Proxy-Cause: dmFkZTElXIzjLscUjtqSumcHig4M1D0jXKfOMAkEuTETqy3LOscYUfzx5r99r0rrNMKlhp
+    KKPCXOd2v/OisO8Xilxfv4xa6MDrA5mZ082FIuxh0Ih4hwF84rA9FCeZ8+gb1Xtc+ChAp1
+    0np7kaDey7TRKUa2G/J4o97NqpwFxixR/vMz7JrsOflFGyJZtFlSNz6dWRvB7SNQhmPyX2
+    BHG65jD+e/YMtto4r0lK6Zhu6ExdBNJnrBuanggnSlWpsexK4C0B2Ph64PTuwcQ7q0XUfN
+    n5pGh6VO+jFwIlSjp8URnOwrtfaWF42kX6mdSvGPeK/f5JiK/C7dmjVhOurOPnZJBRPFQq
+    j00QxCG9N7XxQYOz8vtHbFDbJ6kpViOtW5O8VtU0yvTblTIpnr/LG2EX9AxoBh2zuX7Z4Z
+    TMZp6wMjdvfpC2AJrJaf8eWSC92fflck3XTuc/k3HnysETr/ZyWqcD2jeb1wRjgB46645S
+    3itunR7fETC1t3w0x0E0JKzHcvF8p/Xy5Y29q4c4RDkf1o1R82aYlf+U1KMI5GQL+Al8dU
+    8dMPK0KjkHc9vwsTkBTbIegbNiV4yL171XCUJFBYlIJIiDvKRBwYkTIj0qujIeMTDmChyG
+    eGOCAjBgxUoOSpU5GHDTHhYzImrmu2gqWLSMx5glUjPcdRV4hUsfdV6OeqxQ
+X-ME-Proxy: <xmx:yaaaavZssW1SQZFs6pHJAb7zPsbjDRWoxnlUq3zfd-SRhzApEO5c6A>
+    <xmx:yaaaalzfQPFApx4oOrCCFS14lMCx3Ctg_A2Xq6PsGY__JcjNELfT7Q>
+    <xmx:yaaaanjG6bCE1Rxc98qhrGtaYIsj7CqAyuOWjQJAGHZMe7rK2pg60w>
+    <xmx:yaaaahktvU31lFH9Oo2Kljbh_p93cs-5W597fBXHDX6qiD3qpSK5vg>
+    <xmx:yaaaam4tkB3mW52LN0nc9ugFjb6tfYrjrawNyXhnMReoeJkpY1gXBWKd>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 4 Sep 2026 07:08:55 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: royalnet026@gmail.com
+Cc: tomeu@tomeuvizoso.net,
+	boogiepop@gmx.com,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and some numbers
+Date: Fri,  4 Sep 2026 23:08:53 +1200
+Message-ID: <20260904110853.85150-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260903091646.7183-1-royalnet026@gmail.com>
+References: <20260801131656.58450-1-royalnet026@gmail.com> <20260903091646.7183-1-royalnet026@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20260904-drm-v3-1-5b36532a3b72@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAK6ammoC/x2MSwqFMAwAryJZv0Kx/q/ycBHbqFlYJRERxLtbX
- Q4zzAVKwqTQZRcIHay8xgTul4GfMU5kOCSG3OaVbW1hgiymDXXjSu8chgpSOaCSGQSjn992Qd1
- JXrEJjXx++39/3w/ouI4PbgAAAA==
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- =?utf-8?q?H=C3=BCseyin_BIYIK?= <boogiepop@gmx.com>, 
- Johan Jonker <jbx6244@gmail.com>
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788517040; l=1613;
- i=jbx6244@gmail.com; s=20260824; h=from:subject:message-id;
- bh=qWT53GXoOigdQ+erxp3d408shOqYOF+aDMQefkq/Jcs=;
- b=IGdDcQbuWqvrHDkGDHwvL4L5TmWy9kQdIO4Ze6skcvw1cYPzJMVH8k/kHGr0/8asjWG9BamhJ
- SAP9yAsgbn2AWzCty0wEJWmCHyyJubNkEO7HMxCWnoIbvNrG3T8Lzmh
-X-Developer-Key: i=jbx6244@gmail.com; a=ed25519;
- pk=MK5Flx1ndjAF0uwXdNm8VvvoghD4KWCNd2hQE8QGyl0=
-X-Endpoint-Received: by B4 Relay for jbx6244@gmail.com/20260824 with
- auth_id=971
-X-Original-From: Johan Jonker <jbx6244@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260904_040859_423787_A7C43A30 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,41 +105,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: jbx6244@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogSMO8c2V5aW4gQklZSUsgPGJvb2dpZXBvcEBnbXguY29tPgoKVGhlIGZ1bmN0aW9uIGRl
-dm1fZHJtX2JyaWRnZV9hbGxvYygpIGlzIHRoZSBuZXcgQVBJIGZvciBhbGxvY2F0aW5nIERSTSBi
-cmlkZ2VzLgpUaGlzIGNvbnZlcnNpb24gd2FzIG1pc3NlZCBkdXJpbmcgdGhlIGluaXRpYWwgY29u
-dmVyc2lvbiBvZiBhbGwgYnJpZGdlcyB0bwp0aGUgbmV3IEFQSS4KClNpZ25lZC1vZmYtYnk6IEjD
-vHNleWluIEJJWUlLIDxib29naWVwb3BAZ214LmNvbT4KU2lnbmVkLW9mZi1ieTogSm9oYW4gSm9u
-a2VyIDxqYng2MjQ0QGdtYWlsLmNvbT4KLS0tCgpDaGFuZ2VkIFYzOgpyZWJhc2UKcmVtb3ZlIGRy
-aXZlcl9wcml2YXRlCi0tLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JrMzA2Nl9oZG1pLmMg
-fCA5ICsrKystLS0tLQogMSBmaWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlv
-bnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcmszMDY2X2hkbWku
-YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yazMwNjZfaGRtaS5jCmluZGV4IGYyOGQ2YTg4
-M2UwOS4uMDVkYmJjYzZmN2IwIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cmszMDY2X2hkbWkuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcmszMDY2X2hkbWku
-YwpAQCAtNzAyLDggKzcwMiw2IEBAIHJrMzA2Nl9oZG1pX3JlZ2lzdGVyKHN0cnVjdCBkcm1fZGV2
-aWNlICpkcm0sIHN0cnVjdCByazMwNjZfaGRtaSAqaGRtaSkKIAlkcm1fZW5jb2Rlcl9pbml0KGRy
-bSwgZW5jb2RlciwgJnJrMzA2Nl9oZG1pX2VuY29kZXJfZnVuY3MsCiAJCQkgRFJNX01PREVfRU5D
-T0RFUl9UTURTLCBOVUxMKTsKIAotCWhkbWktPmJyaWRnZS5kcml2ZXJfcHJpdmF0ZSA9IGhkbWk7
-Ci0JaGRtaS0+YnJpZGdlLmZ1bmNzID0gJnJrMzA2Nl9oZG1pX2JyaWRnZV9mdW5jczsKIAloZG1p
-LT5icmlkZ2Uub3BzID0gRFJNX0JSSURHRV9PUF9ERVRFQ1QgfAogCQkJICAgRFJNX0JSSURHRV9P
-UF9FRElEIHwKIAkJCSAgIERSTV9CUklER0VfT1BfSERNSSB8CkBAIC03NDcsOSArNzQ1LDEwIEBA
-IHN0YXRpYyBpbnQgcmszMDY2X2hkbWlfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBk
-ZXZpY2UgKm1hc3RlciwKIAlpbnQgaXJxOwogCWludCByZXQ7CiAKLQloZG1pID0gZGV2bV9remFs
-bG9jKGRldiwgc2l6ZW9mKCpoZG1pKSwgR0ZQX0tFUk5FTCk7Ci0JaWYgKCFoZG1pKQotCQlyZXR1
-cm4gLUVOT01FTTsKKwloZG1pID0gZGV2bV9kcm1fYnJpZGdlX2FsbG9jKGRldiwgc3RydWN0IHJr
-MzA2Nl9oZG1pLCBicmlkZ2UsCisJCQkJICAgICAmcmszMDY2X2hkbWlfYnJpZGdlX2Z1bmNzKTsK
-KwlpZiAoSVNfRVJSKGhkbWkpKQorCQlyZXR1cm4gUFRSX0VSUihoZG1pKTsKIAogCWhkbWktPmRl
-diA9IGRldjsKIAloZG1pLT5kcm1fZGV2ID0gZHJtOwoKLS0tCmJhc2UtY29tbWl0OiA5ZDgwYWE0
-NjE3YjMyZjUwNTRjNWFhNDcxZDA2YjY2NzA0ODU0OTM1CmNoYW5nZS1pZDogMjAyNjA5MDQtZHJt
-LTlkNzgzNWMzM2FkNgoKQmVzdCByZWdhcmRzLAotLSAKSm9oYW4gSm9ua2VyIDxqYng2MjQ0QGdt
-YWlsLmNvbT4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAo=
+Hi Igor,
+
+> One honest gap: I could not yet take the voltage-vs-frequency
+> curve [...] Future work.
+
+I took one on RK3576 this week, from the correctness side, and it
+turned out to be the answer to a fault I had been chasing for four
+days. Short version: solved, and the fix is a voltage.
+
+The fault. Two NPU cores with jobs in flight at the same time, and the
+second one writes single words of its output wrong: the right value
+plus a bit of the accumulator. Of 64 wrong words I took apart, 63 are
+an integer away from the right one and 25 of those by exactly 1024,
+and re-reading the same word after invalidating the CPU's cache of the
+buffer gave the same wrong value 48 times out of 48, so it is what the
+hardware wrote. One core is always exact. It took four days because it
+is invisible to a single threaded harness.
+
+The cause. Mainline sets no rate for CLK_RKNN_DSU0 and no board sets
+vdd_npu_s0, so my ROCK 4D runs the NPU at 786.432 MHz on 750 mV, while
+Rockchip's own table for this NPU asks 800 mV of its 800 MHz step at
+the worst leakage bin. Same wall as yours on the rail, so the curve is
+one device tree per point. A pass below is 5400 rows of a batched
+matrix multiply, each row against the same multiply done one row at a
+time:
+
+  786 MHz, 750 mV    11 to 25 wrong rows a pass
+  594 MHz, 750 mV    0, 0, 0, 0
+  786 MHz, 800 mV    0, 0, 0, 0
+  786 MHz, 850 mV    0, 0, 0, 0
+
+The fix, two of them, both measured. Give the rail 800 mV and keep
+786 MHz: both cores run, nine models come out identical, and my time
+to first token drops about 20%. Or leave the rail alone and clock the
+NPU at 594: also exact, and still ahead of one core at 786, because
+what 786 MHz costs is the second core. My v12 takes 594 in the SoC
+dtsi, since a board that describes no NPU rail has to be correct too,
+and my runtime now reads the rail and the clock out of sysfs and only
+runs the two cores together inside the vendor's envelope.
+
+What I would do on RK3588. Your rows are one inference thread with a
+bit-exact oracle, so they cannot see this class at all. Before the OPP
+table is settled, run the oracle with all three cores loaded at 900
+and 1000 MHz on 850 mV. And whatever the table ends up as, it needs
+the voltage column with the rate: a rate without its rail is what
+mainline has today, and it is what corrupts.
+
+One SCMI note, since you are reading rates through it now. On RK3576
+an assigned-clock-rates on the SCMI clock in the NPU node hangs the
+board before the console comes up, with no kernel output at all. I
+have not proven why, but the vendor's driver never sets that rate from
+DT either: rockchip_opp_config_clks() returns early when the clock is
+an SCMI clock and the device is not runtime active, so the rate is
+only ever written from the runtime resume path with the domains
+already on. Your EL3 path is a read, so none of this touches it.
+
+Cheers,
+Jiaxing
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
