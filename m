@@ -4,96 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4129EC624D3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 11:09:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ED35C624D3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 11:13:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hnAcQtbpZdomTePCZuASsezZIvQjuRMPPS1P/XSqJZY=; b=eB8+pQQj7AICoc
-	/8wVY2fNOy/B3b1ANUWDnlkYjMM9bMjW85cPMPRmpFxb4tD46EGrJstS01lK24/6fTUkXaRAhXZ3D
-	fv+F4PTsMU31cSzL7BDKJXUZg2wOFn8Z6xtiv6/DZk+ppaogWWCfR1cGheHtOlal391zz45r37me3
-	wXEk9yXXHSEJBVHb90oV4Iyooj+I2F5vXyC0zSdYpmgi0vQdMVs+2UfRb1ooXn4gvNtIibc4NspBc
-	iZG3yDfdrlLjOuK/U7oTAa12M6bFg0LryM7+XDr7jeQKSaQnDuLrOlgMVa/+ID3szFHVN7DbKV2EW
-	Wi444meA2cW4AwqldB0w==;
+	List-Owner; bh=p5xEK6mdBI6DVCtJJ+XGORM1xnmAyT3BUwuKc3X43uI=; b=rYpmx/JFpsk8Iz
+	KK0pYP9So213g2p7tRsuruURAviYcDfBkV1uhbZXZ/PlovAbJ76EmnGk1VQ92yAEItUJWH6DKS2Ms
+	MDBx4CuSE0HZRuJM52GMEbi6jiKyozCaarZB8aoYn71mjsepSWt8wFySdIjP1nsYl5mQycjA1ekLf
+	2r0WHnDBvNKAkKdYbmAB76ggqDcApEWSAv/1yQolNLlAcRT3uz5pCIjKOCs3PMgRqY8tHTaUNmbSE
+	PAaYoNINx9KfqQ2jP9ZKJrZ3OO0+yYqbMdUV9kwnS75el4ZcfTT043UyDFKg97hbMAYOqsMsT+FEo
+	7N+7nHSYFFKnDWeSsLkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Rn3-00000001mKs-3mM0;
-	Fri, 04 Sep 2026 11:09:01 +0000
-Received: from fout-b2-smtp.messagingengine.com ([202.12.124.145])
+	id 1x2Rra-00000001nAn-0dqv;
+	Fri, 04 Sep 2026 11:13:42 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Rn1-00000001mKA-0uKH
-	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Sep 2026 11:09:00 +0000
-Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
-	by mailfout.stl.internal (Postfix) with ESMTP id 92BBC1D00140;
-	Fri,  4 Sep 2026 07:08:57 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-01.internal (MEProxy); Fri, 04 Sep 2026 07:08:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:content-type
-	:date:date:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:subject:subject:to:to; s=fm2;
-	 t=1788520137; x=1788606537; bh=cPCvXj5HZ74KNvDUYgsntjSUb4RTOmH2
-	icqlWiSyLqE=; b=sDtgiyGzdp8OhYPZpLfw3/k3wVef/WlqPQZEIlpSlrvH5Bib
-	APFq5yRSCnqBDodvtUlhwbxHnEivdqu+5Fk9rt/9buccmRc+VizQtIrqpuCjgiLf
-	NuQMC10bCCUE4Ca+pIp9GRPOQo0Q7u7HSJBssayw+9tVIbzXbuo8keQFuN8fBzVA
-	vsxt9vhc6yN2JUniYxtYrZdRMrLCAPBlVk3MVll8gQ1MxbQa4WxHkZzg8liyqtAx
-	OiObTDG17LuYDCxV9sn6lfY5hdXe00NASLjm5ycP2ig8BUnSkTxObyfTvSRB5N97
-	X5o8xug+YBwZ5u2MupbsoS9DtgB1XUnbMXYr6w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1788520137; x=
-	1788606537; bh=cPCvXj5HZ74KNvDUYgsntjSUb4RTOmH2icqlWiSyLqE=; b=q
-	6c5W6K8KVyFRXknvTJT5RUg6ngyXgkfaT2dM+Bw2cHUIhgtmRt7+tKBWrC2jsM/t
-	T90R+hgGN+9iA+D2TMgwAqVSZnYgILXAr1ML0rra5g+hj0GIHm0+G0CS5DMfpLEF
-	0fBfy6eIRdGu4FxncMhy1Q6q64cBBxVHVwrGSokpJyOah6vA8i/OMWoY/DHNwUHV
-	tbvDRHuXL3kqkfWrozleAD25qctEfryLpkat0Mp8IecVgc0YCTHfKcZvGYJcyeBL
-	BaWphizBL0ei9ucbBHYv2bcOWUAyElY1vIgCKteZ4CUInOj17swZdeDwKhsVuWyJ
-	3DbVVTqnQ0F2wIGw7/inw==
-X-ME-Sender: <xms:yaaaal68HgmwuleYjdUo3fUu-ykzUBMeQi00Jy4iJ5KTr6L_DRdfhw>
-    <xme:yaaaasMX6I3mgOpRz6WE5tlXVMcwQsmoEu-OjBursDmtriXP33pOD8pLhROQpsO1d
-    AAnZccEUUQIkIcqHtDlMiqZvd8Cq0kXxSz9bEUzHhyDJXTzBrlDvB0R>
-X-ME-Received: <xmr:yaaaajsfZVkPxGyNpUdslPYOfeIHiF-_LuiUw1kFlsGRdZVe0Mhy7N4EaEtBoiWdEgOMsdlZRA>
-X-ME-Proxy-Cause: dmFkZTElXIzjLscUjtqSumcHig4M1D0jXKfOMAkEuTETqy3LOscYUfzx5r99r0rrNMKlhp
-    KKPCXOd2v/OisO8Xilxfv4xa6MDrA5mZ082FIuxh0Ih4hwF84rA9FCeZ8+gb1Xtc+ChAp1
-    0np7kaDey7TRKUa2G/J4o97NqpwFxixR/vMz7JrsOflFGyJZtFlSNz6dWRvB7SNQhmPyX2
-    BHG65jD+e/YMtto4r0lK6Zhu6ExdBNJnrBuanggnSlWpsexK4C0B2Ph64PTuwcQ7q0XUfN
-    n5pGh6VO+jFwIlSjp8URnOwrtfaWF42kX6mdSvGPeK/f5JiK/C7dmjVhOurOPnZJBRPFQq
-    j00QxCG9N7XxQYOz8vtHbFDbJ6kpViOtW5O8VtU0yvTblTIpnr/LG2EX9AxoBh2zuX7Z4Z
-    TMZp6wMjdvfpC2AJrJaf8eWSC92fflck3XTuc/k3HnysETr/ZyWqcD2jeb1wRjgB46645S
-    3itunR7fETC1t3w0x0E0JKzHcvF8p/Xy5Y29q4c4RDkf1o1R82aYlf+U1KMI5GQL+Al8dU
-    8dMPK0KjkHc9vwsTkBTbIegbNiV4yL171XCUJFBYlIJIiDvKRBwYkTIj0qujIeMTDmChyG
-    eGOCAjBgxUoOSpU5GHDTHhYzImrmu2gqWLSMx5glUjPcdRV4hUsfdV6OeqxQ
-X-ME-Proxy: <xmx:yaaaavZssW1SQZFs6pHJAb7zPsbjDRWoxnlUq3zfd-SRhzApEO5c6A>
-    <xmx:yaaaalzfQPFApx4oOrCCFS14lMCx3Ctg_A2Xq6PsGY__JcjNELfT7Q>
-    <xmx:yaaaanjG6bCE1Rxc98qhrGtaYIsj7CqAyuOWjQJAGHZMe7rK2pg60w>
-    <xmx:yaaaahktvU31lFH9Oo2Kljbh_p93cs-5W597fBXHDX6qiD3qpSK5vg>
-    <xmx:yaaaam4tkB3mW52LN0nc9ugFjb6tfYrjrawNyXhnMReoeJkpY1gXBWKd>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 4 Sep 2026 07:08:55 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: royalnet026@gmail.com
-Cc: tomeu@tomeuvizoso.net,
-	boogiepop@gmx.com,
-	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and some numbers
-Date: Fri,  4 Sep 2026 23:08:53 +1200
-Message-ID: <20260904110853.85150-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260903091646.7183-1-royalnet026@gmail.com>
-References: <20260801131656.58450-1-royalnet026@gmail.com> <20260903091646.7183-1-royalnet026@gmail.com>
+	id 1x2RrW-00000001n8v-1ifD;
+	Fri, 04 Sep 2026 11:13:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=X59egMSYDD+fE2fzFBggAtOS3MUTfnxcCwKe29Q8yD8=; b=F
+	nmN2lfnW3b9tBbPbd/9jZ97NII9zPXTJftpLtim88qJA1A3Svuhzip3AJadw2v3G
+	STJF196aHB3EL21x5KWIFwAqhZmIRd9Vc8jEYTmxE8WlnDUwxmbdBD0gcfhI5ayS
+	6jo9KfZS79BAi+p8CX8KHSJxHScHunmn+2rgi0CYgc=
+Date: Fri, 4 Sep 2026 19:13:03 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Johan Jonker" <jbx6244@gmail.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+	andy.yan@rock-chips.com, hjc@rock-chips.com,
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+	tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re:Re: [RFC PATCH v1] drm: rockchip: add
+ drm_plane_create_blend_mode_property
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
+ 20260511(2e539873) Copyright (c) 2002-2026 www.mailtech.cn 163com
+In-Reply-To: <a239b296-ba90-45d1-b8b8-713ab29fda5c@gmail.com>
+References: <1ab6fb88-3b84-49b5-aa05-202a84edbd3d@gmail.com>
+ <25031028.6Emhk5qWAg@diego>
+ <a239b296-ba90-45d1-b8b8-713ab29fda5c@gmail.com>
+X-NTES-SC: AL_Qu2TCvmZv0sj5SSfZekfmUgWjuw/WsG1v/Ul1YBSP556jCHrxzoRdHxjAkDS7+6eBDGRrDGqWTZt7uBVZIN9ZLsi34t6cze7ZrnBPpeLFqZdGQ==
 MIME-Version: 1.0
+Message-ID: <3ff2201c.8fbe.1a06c1f43f5.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: lCgvCgD3X9y_p5pqQtI_AA--.6224W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbC7h9auGqap7-zwAAA3I
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_040859_423787_A7C43A30 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20260904_041338_929595_6E50F2F9 
+X-CRM114-Status: GOOD (  19.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,71 +71,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
-
-> One honest gap: I could not yet take the voltage-vs-frequency
-> curve [...] Future work.
-
-I took one on RK3576 this week, from the correctness side, and it
-turned out to be the answer to a fault I had been chasing for four
-days. Short version: solved, and the fix is a voltage.
-
-The fault. Two NPU cores with jobs in flight at the same time, and the
-second one writes single words of its output wrong: the right value
-plus a bit of the accumulator. Of 64 wrong words I took apart, 63 are
-an integer away from the right one and 25 of those by exactly 1024,
-and re-reading the same word after invalidating the CPU's cache of the
-buffer gave the same wrong value 48 times out of 48, so it is what the
-hardware wrote. One core is always exact. It took four days because it
-is invisible to a single threaded harness.
-
-The cause. Mainline sets no rate for CLK_RKNN_DSU0 and no board sets
-vdd_npu_s0, so my ROCK 4D runs the NPU at 786.432 MHz on 750 mV, while
-Rockchip's own table for this NPU asks 800 mV of its 800 MHz step at
-the worst leakage bin. Same wall as yours on the rail, so the curve is
-one device tree per point. A pass below is 5400 rows of a batched
-matrix multiply, each row against the same multiply done one row at a
-time:
-
-  786 MHz, 750 mV    11 to 25 wrong rows a pass
-  594 MHz, 750 mV    0, 0, 0, 0
-  786 MHz, 800 mV    0, 0, 0, 0
-  786 MHz, 850 mV    0, 0, 0, 0
-
-The fix, two of them, both measured. Give the rail 800 mV and keep
-786 MHz: both cores run, nine models come out identical, and my time
-to first token drops about 20%. Or leave the rail alone and clock the
-NPU at 594: also exact, and still ahead of one core at 786, because
-what 786 MHz costs is the second core. My v12 takes 594 in the SoC
-dtsi, since a board that describes no NPU rail has to be correct too,
-and my runtime now reads the rail and the clock out of sysfs and only
-runs the two cores together inside the vendor's envelope.
-
-What I would do on RK3588. Your rows are one inference thread with a
-bit-exact oracle, so they cannot see this class at all. Before the OPP
-table is settled, run the oracle with all three cores loaded at 900
-and 1000 MHz on 850 mV. And whatever the table ends up as, it needs
-the voltage column with the rate: a rate without its rail is what
-mainline has today, and it is what corrupts.
-
-One SCMI note, since you are reading rates through it now. On RK3576
-an assigned-clock-rates on the SCMI clock in the NPU node hangs the
-board before the console comes up, with no kernel output at all. I
-have not proven why, but the vendor's driver never sets that rate from
-DT either: rockchip_opp_config_clks() returns early when the clock is
-an SCMI clock and the device is not runtime active, so the rate is
-only ever written from the runtime resume path with the domains
-already on. Your EL3 path is a read, so none of this touches it.
-
-Cheers,
-Jiaxing
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpIZWxsbG/vvIwKCkF0IDIwMjYtMDgtMjQgMDU6MDY6NDUsICJKb2hhbiBKb25rZXIiIDxqYng2
+MjQ0QGdtYWlsLmNvbT4gd3JvdGU6Cj4KPgo+T24gOC8yMy8yNiAyMToxOSwgSGVpa28gU3TDvGJu
+ZXIgd3JvdGU6Cj4+IEhpIEpvaGFuLAo+PiAKPj4gQW0gU29ubnRhZywgMjMuIEF1Z3VzdCAyMDI2
+LCAxNDoyOTowOSBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIEpvaGFuIEpv
+bmtlcjoKPj4+IEEgdmFsaWRhdGVfYmxlbmRfbW9kZV9mb3JfYWxwaGFfZm9ybWF0cygpIGZ1bmN0
+aW9uIHdhcyBhZGRlZCB0aGF0Cj4+PiBmaWxscyB0aGUga2VybmVsIGxvZyB3aXRoIHdhcm5pbmdz
+IGZvciBSb2NrY2hpcCBWT1AgdmVyc2lvbiAxIFNvQ3MuCj4+PiBBZGQgYSBkcm1fcGxhbmVfY3Jl
+YXRlX2JsZW5kX21vZGVfcHJvcGVydHkoKSBmdW5jdGlvbiBhcyBmaXguCj4+IAo+Cj4+IFRoaXMg
+aXMgbWlzc2luZyBleHBsYW5hdGlvbiBvbiB3aHkgUElYRUxfTk9ORSBpcyB0aGUgY29ycmVjdCB2
+YWx1ZS4KPj4gCj4+IFZPUDIgc2VlbXMgdG8gc3VwcG9ydCBhbGwgMyBibGVuZCBtb2Rlcz8gU28g
+YSBzZW50ZWNlIGV4cGxhaW5pbmcKPj4gdGhlIHBpeGVsX25vbmUgdmFsdWUgd291bGQgYmUgaGVs
+cGZ1bC4KPj4gCj4+IAo+Cj5IaSwKPgo+SW4gdGhlIHZvcF9wbGFuZV9hdG9taWNfdXBkYXRlKCkg
+ZnVuY3Rpb24gdGhlcmUncyBhIGNvbW1lbnQgd2l0aCB3aW4wIGJsZW5kIGJyb2tlbjoKPgo+CS8q
+Cj4JICogQmxlbmRpbmcgd2luMCB3aXRoIHRoZSBiYWNrZ3JvdW5kIGNvbG9yIGRvZXNuJ3Qgc2Vl
+bSB0byB3b3JrCj4JICogY29ycmVjdGx5LiBXZSBvbmx5IGdldCB0aGUgYmFja2dyb3VuZCBjb2xv
+ciwgbm8gbWF0dGVyIHRoZSBjb250ZW50cwo+CSAqIG9mIHRoZSB3aW4wIGZyYW1lYnVmZmVyLiAg
+SG93ZXZlciwgYmxlbmRpbmcgcHJlLW11bHRpcGxpZWQgY29sb3IKPgkgKiB3aXRoIHRoZSBkZWZh
+dWx0IG9wYXF1ZSBibGFjayBkZWZhdWx0IGJhY2tncm91bmQgY29sb3IgaXMgYSBuby1vcCwKPgkg
+KiBzbyB3ZSBjYW4ganVzdCBkaXNhYmxlIGJsZW5kaW5nIHRvIGdldCB0aGUgY29ycmVjdCByZXN1
+bHQuCj4JICovCj4KCiAgICAgQWxsIFZPUCAxIGRvIG5vdCBzdXBwb3J0IGFscGhhIGJsZW5kaW5n
+IHdpdGggYmFja2dyb3VuZC4KICAgIEFsc28sIHNvbWUgVk9QcyBkbyBub3Qgc3VwcG9ydCBhbHBo
+YSB3aGVuIHNjYWxpbmcgaXMgZW5hYmxlZCwgZXhjZXB0IHRob3NlIG1hcmtlZCB3aXRoIFZPUF9G
+RUFUVVJFX0FMUEhBX1NDQUxF77yMIHNlZVswXQoKWzBdaHR0cHM6Ly9naXRodWIuY29tL3JvY2tj
+aGlwLWxpbnV4L2tlcm5lbC9ibG9iL2RldmVsb3AtNi4xMi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfdm9wX3JlZy5jCgo+SW4gdGhlIGZ1bmN0aW9uIHZvcDJfcGxhbmVfaW5pdCgp
+IHRoZXJlIGFyZSB0aGVzZSBibGVuZHM6IAo+Cj4JdW5zaWduZWQgaW50IGJsZW5kX2NhcHMgPSBC
+SVQoRFJNX01PREVfQkxFTkRfUElYRUxfTk9ORSkgfAo+CQkJCSAgQklUKERSTV9NT0RFX0JMRU5E
+X1BSRU1VTFRJKSB8Cj4JCQkJICBCSVQoRFJNX01PREVfQkxFTkRfQ09WRVJBR0UpOwo+Cj5NeSBx
+dWVzdGlvbjoKPkNvdWxkIHNvbWVvbmUgd2l0aCBtb3JlIGtub3ctaG93IHRlbGwgdXMgd2hhdCBW
+T1AgdmVyc2lvbiAxIGlzIGNhcGFibGUgb2Y/Cj5JcyB0aGVyZSBhbnl0aGluZyB0aGF0IG5lZWRz
+IHRvIGJlIHNldCBsaWtlIGluIG90aGVyIGRyaXZlcnM/Cj4KPkZvciBleGFtcGxlOgo+CQlzd2l0
+Y2ggKHBpeGVsX2JsZW5kX21vZGUpIHsKPgkJY2FzZSBEUk1fTU9ERV9CTEVORF9QUkVNVUxUSToK
+PgkJCWJyZWFrOwo+CQljYXNlIERSTV9NT0RFX0JMRU5EX0NPVkVSQUdFOgo+CQkJYnJlYWs7Cj4J
+CWNhc2UgRFJNX01PREVfQkxFTkRfUElYRUxfTk9ORToKPgkJZGVmYXVsdDoKPgkJCWJyZWFrOwo+
+CQl9Cj4KPklmIHNvbWVvbmUgY29tZXMgdXAgd2l0aCBhbm90aGVyIHNvbHV0aW9uL3BhdGNoIHRo
+YXQncyBhbHNvIGZpbmUsIGFzIGxvbmcgdGhlIGtlcm5lbCB3YXJuaW5ncyBhcmUgZ29uZS4KPgo+
+VGhhbmtzIQo+Cj5Kb2hhbgo+Cj4KPgo+PiBIZWlrbwo+PiAKPj4+IFNpZ25lZC1vZmYtYnk6IEpv
+aGFuIEpvbmtlciA8amJ4NjI0NEBnbWFpbC5jb20+Cj4+PiAtLS0KPj4+Cj4+PiBodHRwczovL2xv
+cmUua2VybmVsLm9yZy9hbGwvMjAyNjA1MjYxODE3MDAuMjUzMTAtMy1sZWFuZHJvLnJpYmVpcm9A
+Y29sbGFib3JhLmNvbS8KPj4+IC0tLQo+Pj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fdm9wLmMgfCAyICsrCj4+PiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygr
+KQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYwo+
+Pj4gaW5kZXggMDA5MGQ4ZmYwYzc5Li4wYmM1YjYwNmYwMjEgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+PiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+PiBAQCAtMTg1MCw2ICsxODUw
+LDggQEAgc3RhdGljIHZvaWQgdm9wX3BsYW5lX2FkZF9wcm9wZXJ0aWVzKHN0cnVjdCBkcm1fcGxh
+bmUgKnBsYW5lLAo+Pj4gIAlpZiAoZmxhZ3MpCj4+PiAgCQlkcm1fcGxhbmVfY3JlYXRlX3JvdGF0
+aW9uX3Byb3BlcnR5KHBsYW5lLCBEUk1fTU9ERV9ST1RBVEVfMCwKPj4+ICAJCQkJCQkgICBEUk1f
+TU9ERV9ST1RBVEVfMCB8IGZsYWdzKTsKPj4+ICsJZHJtX3BsYW5lX2NyZWF0ZV9ibGVuZF9tb2Rl
+X3Byb3BlcnR5KHBsYW5lLAo+Pj4gKwkJCQkJICAgICBCSVQoRFJNX01PREVfQkxFTkRfUElYRUxf
+Tk9ORSkpOwo+Pj4gIH0KPj4+ICAKPj4+ICBzdGF0aWMgaW50IHZvcF9jcmVhdGVfY3J0YyhzdHJ1
+Y3Qgdm9wICp2b3ApCj4+Pgo+PiAKPj4gCj4+IAo+PiAKPgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
