@@ -4,102 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B5E8C79F87
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 13:09:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28CD5C79F82
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 13:27:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:Cc:To:In-Reply-To:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GYHpPeRzhRXKz8zfovxC8sGHLSYPm2uSN5UJdKVZFww=; b=aBRnW6k7vbz4Qv
-	Xhs8BrbqbH7V+TZNj2fOav8frGWOJ829H4mG17lOmD2gBH7DN9fTTOyGNj2HR9rsXOP9rCCy0UqSa
-	nrwonrUFYdPgIejNJpmZ+VcEPryTuzMaTZNxRdIQVUh3ZUsl+t/T0VovC83yewChFttQ3WcFEJ4Cg
-	ytHcdMsLxKOMViS6VoKo+kSpAWZtZdBFFBn9wbP87Sns73ecSFdhAwArOUlSe5ZIstprRp02JQAcu
-	fhm7hSQAxRmFy/4jqj7QOAqafsVT8VZT5n0CoOz7O5GduAm31quh2nZ1P9iDSKd7H5/wzXuiNxGQr
-	bpjcqn8FqWtsxTssSVRQ==;
+	List-Owner; bh=VM7Nb2cJDteFC9ZulI+gqIKu/IfCQ20bdkFYl9OAt2k=; b=tUxPo5i1cQQOml
+	nmbbGQfRdChY0QU1tV/jP9Lo/U4pUVaZo1stqQbO6YpkCmjdpVOO/IrKdyI9e95XEa7Na1CHMEOgY
+	tRqXHv4fZfc4JxO7DWQs100n55T10t/Xxx6J15tVuV+roydi7bdYfRRFVR0Ymjnh+zLBbE63482ld
+	HyhU4ThAqwyo31RfQNLH991cuqkzsTAlctN9D97Qlg/b+Xa+lSIKouISFYXwI2h9bfe1jqVTmWSfs
+	d8wUWgLGQGG5O20xMu1zqJIU2vm2OeZI1L836mmyh5Iorr7JDcylJU6CgnJ20WGrIbS5OhghVV/J+
+	FviZqfH82Lu3fTQf5THA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Tfp-000000026oW-1cXS;
-	Fri, 04 Sep 2026 13:09:41 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1x2Twy-000000029zJ-2XjU;
+	Fri, 04 Sep 2026 13:27:24 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Tfk-000000026gk-1jSz
-	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Sep 2026 13:09:39 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-4843886fc9cso157799f8f.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2026 06:09:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788527374; x=1789132174; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=YJGYKkSgbzFZQ6ZkgtL51SBo2xzg1ldls2lL4TqE+fM=;
-        b=IrzE1884Bfxro1Z3qoB6o+GEBUJnO6pA8W6oDo5x4J2AowX84LmYab55Ye3xCUfqlG
-         RmnmLG4x8JYn6gYu9PMB74/8JLR3EqRalJ6XR2V7WvSiD28FHScvn7NqVnK7B2Fm7naG
-         uB9JvPTsOs95AlPeyQ8G8KI4Q8igy4/lzfwWjeVPxdtaIIeA/37yMrQTV18YhFauAAFK
-         Tnw9fxltVLJ/Mo6eTYJ5wiExaodOc9377wPLNkSyOATrxjEhyTN86opRvauFi3XGniTi
-         tkoM6tZgXZA5tIx8GcaUoeQYyTUz92y0AvOQzuWuLKMZT+n4Axtf9Es1iCG0v4BDzbVb
-         M9rw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788527374; x=1789132174;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=YJGYKkSgbzFZQ6ZkgtL51SBo2xzg1ldls2lL4TqE+fM=;
-        b=W1Ql9gMoMu/NWpmh1reZXRfXClqCLa8+JBWeT1PXLZEre2d4eVn9CbxAUnZLAXIcIv
-         J8I3uiwN5YwCOMycsZ1iSJbzUOyoaOzFq457uSckeS7RML8KmZwYsWLUwwNfmPWp6bpp
-         G6EbFOLzoGqL4Hpv+s791CgboMZWhjfvZTOrq34kKju3g6B0XUWT+OiQVFINNfKQsbMr
-         ieu/dXQ6kwuFm9wP2InLE0T6EVnJvclsw1x7PxYxPviMqm8nWlmLs99cy5Fgms+KMPY0
-         S7AIXUps2KCg9s52PeumB/3YQY1hB8cBHfOpDkTywEYkeR8Lzi8vNeNv4iQkV7Xr4onw
-         e2rw==
-X-Forwarded-Encrypted: i=1; AKwUvBzXliO4ef/I2Na+jrybyeJSfTq1mVU/CvU7ksy05U6CoOXWHD0NPZ6rALZJ2prJlJrkEhOu+HzMAJJwrkn3qg==@lists.infradead.org
-X-Gm-Message-State: AFuF++mwEvXaBnNVWtLbi6wUzMeTZCZQ+kDDawE+eg7wRKci7AxUiqau
-	bBfZyxlHfigsTVxfcPxn1bfYYzyYZUYZfOc+KKZiG2DyqESBsZ91E3E1
-X-Gm-Gg: AYBFou38XELUR5mfgySCoOCQoxl1RUdubvU4bruJJY4g2jCGSbaMctWHIXzGVCE5Uee
-	GEXnbHFGD+u+Bd1qn7pANTBtsK4VeiwRo2tK8qRMJh843/8VEXJ7RectJ4RfjGn57Sjhcv//rOS
-	3oAwkbENkMXWlTOp/NMwCDoYAnvVJcVsJggMIGxwfIa5h3tkPb2bDMmpGollLPRyKNp3RWNx6Pq
-	x9R4W0ICr/yVVEq/mYj6S+sc0nX2fxivc/1az3WoKgEa7BR0UhQFMs9eiXxVx1fALIMg+RjUcsX
-	Gyz+qTJieeqv7GiksJ427ilsTqfPAdjZod4HTRd8+eqowYv7fns9CpLHelmSYHiM2XSnfTRuFcz
-	KAB9qg6eSxLIiB48h7wkaf33ekdJu0kbOtsMH3yIUbQwvk1r99JMelG/nbB1hXa+iNmQhNfs4sr
-	L9o/F9Z4BVLz9apn3FQmFGjySqcD82K+VPjGPW5X2j4MDwwUhD+Gm7nI+mFUUD+HEYzeW5icBZM
-	8G142ds0bRZRBtkY4fFY2P891fH3ZVvz22COPM2ktNdmBxXsSkD2w7druiCPT8PC9Qi8HaFmA3C
-	v9k=
-X-Received: by 2002:a05:600c:1d26:b0:49c:cbf4:572b with SMTP id 5b1f17b1804b1-49cf8245fe1mr47845035e9.2.1788527372234;
-        Fri, 04 Sep 2026 06:09:32 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B871500CB6EF488A18F9C42.dsl.pool.telekom.hu. [2001:4c4e:1b87:1500:cb6e:f488:a18f:9c42])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49ce554d52esm135575435e9.3.2026.09.04.06.09.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 06:09:31 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sidong Yang <sidong.yang@furiosa.ai>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jiaxing Hu <gahing@gahingwoo.com>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Igor Paunovic <royalnet026@gmail.com>
-Subject: [PATCH 5/7] accel/rocket: add devfreq support
-Date: Fri,  4 Sep 2026 15:08:56 +0200
-Message-ID: <20260904130858.27803-6-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260904130858.27803-1-royalnet026@gmail.com>
-References: <20260904130858.27803-1-royalnet026@gmail.com>
+	id 1x2Twp-000000029uW-13kw;
+	Fri, 04 Sep 2026 13:27:22 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20260904132713euoutp02275ba507170435bfa1f3b5c80dd9ac29~SISJJMRGM2525625256euoutp02G;
+	Fri,  4 Sep 2026 13:27:13 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20260904132713euoutp02275ba507170435bfa1f3b5c80dd9ac29~SISJJMRGM2525625256euoutp02G
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1788528433;
+	bh=tHjCK7sZx8oKDNvTbdYTf7cvqe3GS9cMqeDsL/ZRywg=;
+	h=From:Date:Subject:In-Reply-To:To:Cc:References:From;
+	b=RImcS70ZJDsg05ZwGhwFvDxAEq8jjFkVij6quvXkfO9xcdoSuI+BdrSDME3zVGoeI
+	 mCtDXKpUmP39ciSX2E3Af/pR8fjjKs0DpqCbEz6L5oSQikOEOyv/8k3TfzWCxBQdnd
+	 lVk3A31d8lDGHAdFwilrN5FhscSlAz1lhUsaQHW4=
+Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20260904132712eucas1p167f9527c4728af56f811d06832b43c36~SISI1EZtr3212532125eucas1p1I;
+	Fri,  4 Sep 2026 13:27:12 +0000 (GMT)
+Received: from AMDC4942.eu.corp.samsungelectronics.net (unknown
+	[106.210.136.40]) by eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20260904132710eusmtip125128a10cee11fadd1f9d156b7cde6e2~SISGqpIKS1778317783eusmtip17;
+	Fri,  4 Sep 2026 13:27:10 +0000 (GMT)
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+Date: Fri, 04 Sep 2026 15:27:03 +0200
+Subject: [PATCH v3 02/19] dt-bindings: display: bridge: Add
+ starfive,jh7110-inno-hdmi-controller
 MIME-Version: 1.0
+Message-Id: <20260904-jh7110-clean-send-v3-2-484f9ae72715@samsung.com>
+In-Reply-To: <20260904-jh7110-clean-send-v3-0-484f9ae72715@samsung.com>
+To: Vinod Koul <vkoul@kernel.org>,  Neil Armstrong
+	<neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,  Krzysztof
+	Kozlowski <krzk+dt@kernel.org>,  Conor Dooley <conor+dt@kernel.org>, Andrzej
+	Hajda <andrzej.hajda@intel.com>,  Robert Foss <rfoss@kernel.org>,  Laurent
+	Pinchart <Laurent.pinchart@ideasonboard.com>,  Jonas Karlman
+	<jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,  Luca Ceresoli
+	<luca.ceresoli@bootlin.com>, David Airlie <airlied@gmail.com>,  Simona
+	Vetter <simona@ffwll.ch>,  Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>,  Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,  Lee Jones <lee@kernel.org>, Andy
+	Yan <andy.yan@rock-chips.com>,  Philipp Zabel <p.zabel@pengutronix.de>, 
+	Emil Renner Berthing <kernel@esmil.dk>,  Hal Feng
+	<hal.feng@starfivetech.com>,  Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,  Heiko
+	Stuebner <heiko@sntech.de>, Conor Dooley <conor@kernel.org>,  Paul Walmsley
+	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,  Albert Ou
+	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,  Dominique
+	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>,  Jerome
+	Brunet <jbrunet+clk@baylibre.com>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	mfd@lists.linux.dev, linux-clk@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-riscv@lists.infradead.org, Andy Yan <andyshrk@163.com>,  Marek
+	Szyprowski <m.szyprowski@samsung.com>,  Maud Spierings
+	<maud_spierings@murena.io>,  Graham Markall <hello@big-grey.co.uk>,  Icenowy
+	Zheng <zhengxingda@iscas.ac.cn>,  Michal Wilczynski
+	<m.wilczynski@samsung.com>
+X-Mailer: b4 0.15-dev
+X-CMS-MailID: 20260904132712eucas1p167f9527c4728af56f811d06832b43c36
+X-Msg-Generator: CA
+X-RootMTR: 20260904132712eucas1p167f9527c4728af56f811d06832b43c36
+X-EPHeader: CA
+X-CMS-RootMailID: 20260904132712eucas1p167f9527c4728af56f811d06832b43c36
+References: <20260904-jh7110-clean-send-v3-0-484f9ae72715@samsung.com>
+	<CGME20260904132712eucas1p167f9527c4728af56f811d06832b43c36@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_060937_269838_5F2B6857 
-X-CRM114-Status: GOOD (  48.91  )
+X-CRM114-CacheID: sfid-20260904_062716_765997_E6D8C9FC 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,879 +107,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The NPU has run at whatever rate the devicetree pinned it to since the
-driver was merged, which on the RK3588 is 200 MHz. The hardware reaches
-1 GHz, and the firmware will change the rate on request, so let devfreq
-drive it from how busy the cores actually are.
+Add the dt-binding for the StarFive JH7110 Innosilicon HDMI controller
+(DRM bridge).
 
-One devfreq device drives all of the cores, because they have one clock and
-one supply between them and cannot be scaled apart. It hangs off the core
-that carries the OPP table in the devicetree, found by looking for the
-property rather than by taking core 0: the core index is handed out in
-probe order, which is not the order the cores are written in.
+This device is the second child of the starfive,jh7110-hdmi-subsystem node.
+It consumes register access clocks (sys, mclk, bclk) from the voutcrg and
+both the pixel clock (pclk) and the PHY from its hdmi_phy sibling.
 
-The awkward part is that the clock is generated by a PVTPLL that sits
-inside the NPU power islands. An island powered up while the clock is above
-the rate the bootloader left never acknowledges the power-on, and the first
-register access into it afterwards takes an asynchronous SError. So before
-the rate goes up, every core is runtime resumed, and the references are
-held for as long as the clock stays raised. While they are held no core can
-suspend, so no island can transition at all. That is what makes a raised
-clock safe rather than merely unlikely to be caught out, and it is why the
-guard and the thing it guards arrive in the same commit: no commit in the
-tree ever raises the rate without it.
-
-The cost is that a boosted NPU does not power-gate individual cores. It is
-paid only above the boot rate; at the boot rate the references are dropped
-and runtime PM behaves as before. What that costs in milliwatts has not
-been measured on this board, and I would rather say so than guess. A
-measurement, or a design that does not need the references at all, would
-both be welcome.
-
-Utilisation is aggregated as the maximum over the cores, not the sum. The
-rate has to satisfy the busiest core, and summing would report one
-saturated core out of three as a third of the load and clock down
-underneath it. Whether that is the right aggregation for a shared clock is
-a fair question for review.
-
-The driver does not call devfreq_suspend_device() and
-devfreq_resume_device() itself, which is a deviation from panfrost,
-panthor, lima and msm. It ends in cancel_delayed_work_sync() on the
-governor's own worker, and that worker is what calls back into ->target(),
-which resumes every core; from a runtime-suspend callback that waits for a
-worker that is waiting for the same callback to finish. An active-core
-count narrows the window but does not close it. In its place, ->target()
-returns early when the rate is unchanged, so a governor tick on an idle
-NPU costs one comparison and resumes nothing.
-
-System suspend is a different matter, and there the call does happen:
-dpm_suspend() runs devfreq_suspend() over every registered devfreq before
-it walks the devices, from a path that holds none of this driver's locks.
-What the driver adds is lowering the rate and dropping the references from
-every core's ->suspend, not only the one that owns the devfreq device.
-pm_runtime_force_suspend() powers a core down whatever the usage count
-says, and the owning core is suspended last, so a suspend that aborts
-partway would otherwise leave the clock raised over islands that are
-already gated.
-
-The clock and the supply are claimed in one dev_pm_opp_set_config() call
-before the table is added. Naming the clock there is not optional: with
-no name the OPP core takes the first clock in the node, which is the bus
-clock, and would scale that instead of the compute clock. Configuration
-and table are set up on the core that carries them in the devicetree,
-which is not the device being probed at the time, so none of it can be
-devres: the call hands back a token, and rocket_devfreq_fini() releases
-it, and the table, by hand. Leaving it to devres would make a later bind
-fail on an OPP table the previous teardown never emptied.
-
-The rate is changed through dev_pm_opp_set_rate(), so that the supply moves
-with it, which also means nothing may set the rate behind the OPP core's
-back: it caches the OPP it last applied and skips a repeat request for it,
-so a raw clk_set_rate() would turn the next request for a raised rate into
-a silent no-op with sysfs reporting a rate the hardware was not running.
-The boot-rate restore added in the previous patch is converted accordingly.
-
-->get_cur_freq() and the status callback report the rate this driver last
-programmed rather than asking the clock. devfreq queries them from sysfs
-with no runtime PM reference of its own, and the answer has to be a rate
-from the OPP table or devfreq_get_freq_level() will not find it and every
-transition is logged as unknown.
-
-A devicetree with no OPP table is not an error: the driver returns without
-a devfreq device and the NPU keeps its boot rate, as before this patch.
-
-The governor thresholds are a starting point taken from the other
-accelerators in tree, not a measurement. Inference workloads have not been
-profiled against them.
-
-Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
-Assisted-by: LLM sparse checkpatch
+Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
 ---
- drivers/accel/rocket/Kconfig          |   2 +
- drivers/accel/rocket/Makefile         |   1 +
- drivers/accel/rocket/rocket_core.h    |  11 +
- drivers/accel/rocket/rocket_devfreq.c | 458 ++++++++++++++++++++++++++
- drivers/accel/rocket/rocket_devfreq.h |  55 ++++
- drivers/accel/rocket/rocket_device.h  |   3 +
- drivers/accel/rocket/rocket_drv.c     |  80 ++++-
- drivers/accel/rocket/rocket_job.c     |   7 +
- 8 files changed, 605 insertions(+), 12 deletions(-)
- create mode 100644 drivers/accel/rocket/rocket_devfreq.c
- create mode 100644 drivers/accel/rocket/rocket_devfreq.h
+ .../starfive,jh7110-inno-hdmi-controller.yaml      | 121 +++++++++++++++++++++
+ 1 file changed, 121 insertions(+)
 
-diff --git a/drivers/accel/rocket/Kconfig b/drivers/accel/rocket/Kconfig
-index 16465abe06607..00ee845c871fa 100644
---- a/drivers/accel/rocket/Kconfig
-+++ b/drivers/accel/rocket/Kconfig
-@@ -8,6 +8,8 @@ config DRM_ACCEL_ROCKET
- 	depends on MMU
- 	select DRM_SCHED
- 	select DRM_GEM_SHMEM_HELPER
-+	select PM_DEVFREQ
-+	select DEVFREQ_GOV_SIMPLE_ONDEMAND
- 	help
- 	  Choose this option if you have a Rockchip SoC that contains a
- 	  compatible Neural Processing Unit (NPU), such as the RK3588. Called by
-diff --git a/drivers/accel/rocket/Makefile b/drivers/accel/rocket/Makefile
-index 3713dfe223d6e..e0944b3e68121 100644
---- a/drivers/accel/rocket/Makefile
-+++ b/drivers/accel/rocket/Makefile
-@@ -5,6 +5,7 @@ obj-$(CONFIG_DRM_ACCEL_ROCKET) := rocket.o
- rocket-y := \
- 	rocket_core.o \
- 	rocket_device.o \
-+	rocket_devfreq.o \
- 	rocket_drv.o \
- 	rocket_gem.o \
- 	rocket_job.o
-diff --git a/drivers/accel/rocket/rocket_core.h b/drivers/accel/rocket/rocket_core.h
-index f6d7382854ca9..7ada497571bf9 100644
---- a/drivers/accel/rocket/rocket_core.h
-+++ b/drivers/accel/rocket/rocket_core.h
-@@ -7,6 +7,7 @@
- #include <drm/gpu_scheduler.h>
- #include <linux/clk.h>
- #include <linux/io.h>
-+#include <linux/ktime.h>
- #include <linux/mutex_types.h>
- #include <linux/reset.h>
- 
-@@ -55,6 +56,16 @@ struct rocket_core {
- 	struct drm_gpu_scheduler sched;
- 	u64 fence_context;
- 	u64 emit_seqno;
-+
-+	/*
-+	 * Utilisation seen by devfreq, guarded by rdev->devfreq.busy_lock. A
-+	 * core runs one task at a time, so a flag is exact here and, unlike a
-+	 * counter, cannot be left skewed by a job the reset path tore down.
-+	 */
-+	bool busy;
-+	ktime_t busy_time;
-+	ktime_t idle_time;
-+	ktime_t time_last_update;
- };
- 
- int rocket_core_init(struct rocket_core *core);
-diff --git a/drivers/accel/rocket/rocket_devfreq.c b/drivers/accel/rocket/rocket_devfreq.c
+diff --git a/Documentation/devicetree/bindings/display/bridge/starfive,jh7110-inno-hdmi-controller.yaml b/Documentation/devicetree/bindings/display/bridge/starfive,jh7110-inno-hdmi-controller.yaml
 new file mode 100644
-index 0000000000000..9d923a0b6ea30
+index 0000000000000000000000000000000000000000..ea489a7722d0279b3ed67bc2576ec144e31bd05d
 --- /dev/null
-+++ b/drivers/accel/rocket/rocket_devfreq.c
-@@ -0,0 +1,458 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/* Copyright 2025 Igor Paunovic <royalnet026@gmail.com> */
-+
-+#include <linux/clk.h>
-+#include <linux/devfreq.h>
-+#include <linux/ktime.h>
-+#include <linux/minmax.h>
-+#include <linux/of.h>
-+#include <linux/pm_opp.h>
-+#include <linux/pm_runtime.h>
-+
-+#include "rocket_core.h"
-+#include "rocket_device.h"
-+#include "rocket_devfreq.h"
-+
-+/*
-+ * One clock and one supply feed all of the NPU cores, so a single devfreq
-+ * device drives them together. It hangs off the core that carries the OPP
-+ * table in the devicetree.
-+ *
-+ * The awkward part is that the clock is generated by a PVTPLL that sits
-+ * inside the NPU power islands. An island that is powered up while the clock
-+ * is above the rate the bootloader left never acknowledges the power-on, and
-+ * the first register access into it afterwards takes an asynchronous SError.
-+ *
-+ * Lowering the rate is fine at any time, because the firmware serves the boot
-+ * rate from GPLL and only writes CRU clock selectors on the way there. Raising
-+ * it is not, so before the rate goes up every core is runtime resumed and the
-+ * references are kept for as long as the clock stays raised. While they are
-+ * held no core can suspend, so no island can transition at all, which is the
-+ * property that makes the raised clock safe rather than merely unlikely to be
-+ * caught out.
-+ *
-+ * The cost is that a busy NPU does not power-gate individual cores. It is
-+ * paid only above the boot rate: at the boot rate the references are dropped
-+ * and runtime PM behaves exactly as it did before this file existed. The cost
-+ * in milliwatts has not been measured on this board, and a measurement or a
-+ * better idea would both be welcome.
-+ */
-+
-+static void rocket_devfreq_update_utilisation(struct rocket_core *core)
-+{
-+	ktime_t now = ktime_get();
-+	ktime_t elapsed = ktime_sub(now, core->time_last_update);
-+
-+	if (core->busy)
-+		core->busy_time = ktime_add(core->busy_time, elapsed);
-+	else
-+		core->idle_time = ktime_add(core->idle_time, elapsed);
-+
-+	core->time_last_update = now;
-+}
-+
-+static int rocket_devfreq_hold_all(struct rocket_device *rdev)
-+{
-+	unsigned int i;
-+	int ret;
-+
-+	for (i = 0; i < rdev->num_cores; i++) {
-+		ret = pm_runtime_resume_and_get(rdev->cores[i].dev);
-+		if (ret < 0) {
-+			while (i--)
-+				pm_runtime_put_autosuspend(rdev->cores[i].dev);
-+
-+			return ret;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static void rocket_devfreq_release_all(struct rocket_device *rdev)
-+{
-+	unsigned int i;
-+
-+	for (i = 0; i < rdev->num_cores; i++)
-+		pm_runtime_put_autosuspend(rdev->cores[i].dev);
-+}
-+
-+/* Caller holds rdev->devfreq.lock. */
-+static int rocket_devfreq_set_rate(struct rocket_device *rdev, unsigned long freq)
-+{
-+	struct rocket_devfreq *rdevfreq = &rdev->devfreq;
-+	struct device *dev = rdevfreq->owner->dev;
-+	int ret;
-+
-+	ret = dev_pm_opp_set_rate(dev, freq);
-+	if (ret) {
-+		dev_err(dev, "failed to set the NPU rate to %lu Hz: %d\n", freq, ret);
-+		return ret;
-+	}
-+
-+	WRITE_ONCE(rdevfreq->cur_freq, freq);
-+
-+	return 0;
-+}
-+
-+static int rocket_devfreq_target(struct device *dev, unsigned long *freq, u32 flags)
-+{
-+	struct rocket_device *rdev = dev_get_drvdata(dev);
-+	struct rocket_devfreq *rdevfreq = &rdev->devfreq;
-+	struct dev_pm_opp *opp;
-+	int ret;
-+
-+	opp = devfreq_recommended_opp(dev, freq, flags);
-+	if (IS_ERR(opp))
-+		return PTR_ERR(opp);
-+	dev_pm_opp_put(opp);
-+
-+	guard(mutex)(&rdevfreq->lock);
-+
-+	/*
-+	 * The governor calls this on every tick, including the ticks where it
-+	 * arrives at the rate the NPU is already running. Without this an idle
-+	 * NPU would resume all of its cores ten times a second to set the rate
-+	 * they already have.
-+	 */
-+	if (*freq == READ_ONCE(rdevfreq->cur_freq))
-+		return 0;
-+
-+	if (!rdevfreq->cores_held) {
-+		ret = rocket_devfreq_hold_all(rdev);
-+		if (ret) {
-+			/*
-+			 * Runtime PM is disabled on the way into system
-+			 * suspend, so this is the ordinary way for a governor
-+			 * tick that raced with it to end.
-+			 */
-+			dev_dbg(dev, "cannot resume the NPU cores to change rate: %d\n", ret);
-+			return ret;
-+		}
-+		rdevfreq->cores_held = true;
-+	}
-+
-+	ret = rocket_devfreq_set_rate(rdev, *freq);
-+
-+	/* At the boot rate the cores are free to suspend again. */
-+	if (READ_ONCE(rdevfreq->cur_freq) <= rdev->npu_boot_rate) {
-+		rdevfreq->cores_held = false;
-+		rocket_devfreq_release_all(rdev);
-+	}
-+
-+	return ret;
-+}
-+
-+static int rocket_devfreq_get_dev_status(struct device *dev,
-+					 struct devfreq_dev_status *status)
-+{
-+	struct rocket_device *rdev = dev_get_drvdata(dev);
-+	ktime_t busy = 0, total = 0;
-+	unsigned int i;
-+
-+	scoped_guard(spinlock_irqsave, &rdev->devfreq.busy_lock) {
-+		for (i = 0; i < rdev->num_cores; i++) {
-+			struct rocket_core *core = &rdev->cores[i];
-+
-+			rocket_devfreq_update_utilisation(core);
-+
-+			/*
-+			 * The cores share the clock, so what the rate has to
-+			 * satisfy is the busiest of them. Adding the cores up
-+			 * instead would report one saturated core out of three
-+			 * as a third of the load, and clock down underneath it.
-+			 */
-+			busy = max(busy, core->busy_time);
-+			total = max(total, ktime_add(core->busy_time, core->idle_time));
-+
-+			core->busy_time = 0;
-+			core->idle_time = 0;
-+		}
-+	}
-+
-+	status->busy_time = ktime_to_ns(busy);
-+	status->total_time = ktime_to_ns(total);
-+	status->current_frequency = READ_ONCE(rdev->devfreq.cur_freq);
-+
-+	dev_dbg(dev, "busy %lu total %lu %lu%% freq %lu MHz\n",
-+		status->busy_time, status->total_time,
-+		status->busy_time * 100 / MAX(status->total_time, 1),
-+		status->current_frequency / 1000 / 1000);
-+
-+	return 0;
-+}
-+
-+/*
-+ * Report what this driver last programmed, not what the firmware says. devfreq
-+ * asks for the current frequency from sysfs as well, without a runtime PM
-+ * reference of its own, and the answer has to be one of the rates in the OPP
-+ * table or devfreq_get_freq_level() will not find it and every transition will
-+ * be logged as unknown.
-+ */
-+static int rocket_devfreq_get_cur_freq(struct device *dev, unsigned long *freq)
-+{
-+	struct rocket_device *rdev = dev_get_drvdata(dev);
-+
-+	*freq = READ_ONCE(rdev->devfreq.cur_freq);
-+
-+	return 0;
-+}
-+
-+static struct devfreq_dev_profile rocket_devfreq_profile = {
-+	.timer = DEVFREQ_TIMER_DELAYED,
-+	.polling_ms = 50,
-+	.target = rocket_devfreq_target,
-+	.get_dev_status = rocket_devfreq_get_dev_status,
-+	.get_cur_freq = rocket_devfreq_get_cur_freq,
-+};
-+
-+void rocket_devfreq_record_busy(struct rocket_core *core)
-+{
-+	struct rocket_devfreq *rdevfreq = &core->rdev->devfreq;
-+
-+	if (!rdevfreq->devfreq)
-+		return;
-+
-+	scoped_guard(spinlock_irqsave, &rdevfreq->busy_lock) {
-+		rocket_devfreq_update_utilisation(core);
-+		core->busy = true;
-+	}
-+}
-+
-+/*
-+ * Idempotent on purpose: a job that times out is torn down by the reset path,
-+ * which cannot know whether the completion interrupt got there first.
-+ */
-+void rocket_devfreq_record_idle(struct rocket_core *core)
-+{
-+	struct rocket_devfreq *rdevfreq = &core->rdev->devfreq;
-+
-+	if (!rdevfreq->devfreq)
-+		return;
-+
-+	scoped_guard(spinlock_irqsave, &rdevfreq->busy_lock) {
-+		rocket_devfreq_update_utilisation(core);
-+		core->busy = false;
-+	}
-+}
-+
-+/*
-+ * Put the clock back to the boot rate through the OPP core. Called with no
-+ * lock held, from the last core on its way down.
-+ */
-+int rocket_devfreq_set_boot_rate(struct rocket_device *rdev)
-+{
-+	struct rocket_devfreq *rdevfreq = &rdev->devfreq;
-+	int ret;
-+
-+	ret = dev_pm_opp_set_rate(rdevfreq->owner->dev, rdev->npu_boot_rate);
-+	if (!ret)
-+		WRITE_ONCE(rdevfreq->cur_freq, rdev->npu_boot_rate);
-+
-+	return ret;
-+}
-+
-+/*
-+ * System suspend, called from every core's ->suspend before it is forced down.
-+ * The first one to get here does the work and the rest are no-ops.
-+ *
-+ * It has to be every core and not just the one that owns the devfreq device.
-+ * That core is suspended last, and a suspend that aborts partway - a pending
-+ * wakeup, or this driver's own -EBUSY on a core that is still busy - would
-+ * never reach it, leaving the clock raised over already gated islands.
-+ *
-+ * No governor tick can be in flight here: dpm_suspend() calls devfreq_suspend()
-+ * before it walks the devices, which stops the monitor on every registered
-+ * devfreq. That is also where this driver does get devfreq_suspend_device() -
-+ * from the PM core, on a path that holds no runtime PM lock of ours.
-+ */
-+void rocket_devfreq_suspend(struct rocket_device *rdev)
-+{
-+	struct rocket_devfreq *rdevfreq = &rdev->devfreq;
-+
-+	if (!rdevfreq->devfreq)
-+		return;
-+
-+	guard(mutex)(&rdevfreq->lock);
-+
-+	if (!rdevfreq->cores_held)
-+		return;
-+
-+	rocket_devfreq_set_rate(rdev, rdev->npu_boot_rate);
-+	rdevfreq->cores_held = false;
-+	rocket_devfreq_release_all(rdev);
-+}
-+
-+int rocket_devfreq_init(struct rocket_device *rdev)
-+{
-+	static const char * const clk_names[] = { "npu", NULL };
-+	static const char * const supplies[] = { "npu", NULL };
-+	struct dev_pm_opp_config config = {
-+		.clk_names = clk_names,
-+		.regulator_names = supplies,
-+	};
-+	struct rocket_devfreq *rdevfreq = &rdev->devfreq;
-+	struct rocket_core *owner = NULL;
-+	struct dev_pm_opp *opp;
-+	struct device *dev;
-+	unsigned long freq;
-+	unsigned int i;
-+	int ret;
-+
-+	/*
-+	 * Find the core the OPP table is attached to. This has to come from
-+	 * the devicetree and not from core->index, because the index is handed
-+	 * out in probe order, which is not the order the cores are written in.
-+	 */
-+	for (i = 0; i < rdev->num_cores; i++) {
-+		if (of_property_present(rdev->cores[i].dev->of_node,
-+					"operating-points-v2")) {
-+			owner = &rdev->cores[i];
-+			break;
-+		}
-+	}
-+
-+	/*
-+	 * No OPP table is not an error. It asks for the NPU to stay at the
-+	 * rate it booted at, which is what this driver did before devfreq.
-+	 */
-+	if (!owner)
-+		return 0;
-+
-+	dev = owner->dev;
-+
-+	/*
-+	 * None of this can be devres. It is attached to the core that carries
-+	 * the OPP table, while the device being probed right now is whichever
-+	 * core happened to bind last, so devres would outlive the teardown in
-+	 * rocket_devfreq_fini() and a later rebind would find the OPP table
-+	 * still populated.
-+	 *
-+	 * Naming the clock matters as much as claiming the supply: without it
-+	 * the OPP core takes the first clock in the node, which is the bus
-+	 * clock, and would scale that instead of the compute clock.
-+	 */
-+	ret = dev_pm_opp_set_config(dev, &config);
-+	if (ret < 0) {
-+		if (ret != -ENODEV)
-+			return dev_err_probe(dev, ret,
-+					     "failed to set the OPP clock and supply\n");
-+
-+		dev_info(dev, "no NPU supply described, leaving the clock alone\n");
-+		return 0;
-+	}
-+	rdevfreq->opp_token = ret;
-+
-+	ret = dev_pm_opp_of_add_table(dev);
-+	if (ret) {
-+		if (ret != -ENODEV)
-+			dev_err_probe(dev, ret, "failed to add the OPP table\n");
-+		else
-+			ret = 0;
-+
-+		goto err_clear_config;
-+	}
-+
-+	mutex_init(&rdevfreq->lock);
-+	spin_lock_init(&rdevfreq->busy_lock);
-+
-+	for (i = 0; i < rdev->num_cores; i++)
-+		rdev->cores[i].time_last_update = ktime_get();
-+
-+	freq = rdev->npu_boot_rate;
-+	opp = devfreq_recommended_opp(dev, &freq, 0);
-+	if (IS_ERR(opp)) {
-+		ret = dev_err_probe(dev, PTR_ERR(opp),
-+				    "no OPP covers the %lu Hz boot rate\n",
-+				    rdev->npu_boot_rate);
-+		goto err_remove_table;
-+	}
-+
-+	/*
-+	 * Program the supply for the rate the NPU is already running, so that
-+	 * the regulator is not switched off underneath it by
-+	 * regulator_late_cleanup().
-+	 */
-+	ret = dev_pm_opp_set_opp(dev, opp);
-+	dev_pm_opp_put(opp);
-+	if (ret) {
-+		dev_err_probe(dev, ret, "failed to set the initial OPP\n");
-+		goto err_remove_table;
-+	}
-+
-+	rdevfreq->cur_freq = freq;
-+	rdevfreq->owner = owner;
-+	rocket_devfreq_profile.initial_freq = freq;
-+
-+	/*
-+	 * A starting point taken from the other accelerators in tree, not a
-+	 * measurement: inference workloads have not been profiled against
-+	 * these thresholds.
-+	 */
-+	rdevfreq->gov_data.upthreshold = 50;
-+	rdevfreq->gov_data.downdifferential = 10;
-+
-+	rdevfreq->devfreq = devfreq_add_device(dev, &rocket_devfreq_profile,
-+					       DEVFREQ_GOV_SIMPLE_ONDEMAND,
-+					       &rdevfreq->gov_data);
-+	if (IS_ERR(rdevfreq->devfreq)) {
-+		ret = PTR_ERR(rdevfreq->devfreq);
-+		rdevfreq->devfreq = NULL;
-+		rdevfreq->owner = NULL;
-+
-+		dev_err_probe(dev, ret, "failed to add the devfreq device\n");
-+		goto err_remove_table;
-+	}
-+
-+	return 0;
-+
-+err_remove_table:
-+	mutex_destroy(&rdevfreq->lock);
-+	dev_pm_opp_of_remove_table(dev);
-+err_clear_config:
-+	dev_pm_opp_clear_config(rdevfreq->opp_token);
-+	rdevfreq->opp_token = 0;
-+
-+	return ret;
-+}
-+
-+void rocket_devfreq_fini(struct rocket_device *rdev)
-+{
-+	struct rocket_devfreq *rdevfreq = &rdev->devfreq;
-+	struct device *dev;
-+
-+	if (!rdevfreq->devfreq)
-+		return;
-+
-+	dev = rdevfreq->owner->dev;
-+
-+	devfreq_remove_device(rdevfreq->devfreq);
-+	rdevfreq->devfreq = NULL;
-+
-+	/*
-+	 * Lower the clock before letting go of the cores, not after: a core
-+	 * that suspends while the clock is still raised would be unable to
-+	 * come back.
-+	 */
-+	scoped_guard(mutex, &rdevfreq->lock) {
-+		if (rdevfreq->cores_held) {
-+			rocket_devfreq_set_rate(rdev, rdev->npu_boot_rate);
-+			rdevfreq->cores_held = false;
-+			rocket_devfreq_release_all(rdev);
-+		}
-+	}
-+
-+	/*
-+	 * Undo the OPP setup by hand, in the reverse order. Everything above
-+	 * lives on the owning core rather than on the device that was probing
-+	 * when it was set up, so nothing here is released by devres; leaving
-+	 * the table populated would make the next bind fail with the OPP core
-+	 * complaining that it is not empty. After this the owner is gone, so
-+	 * anything that still wants the boot rate asks the clock directly.
-+	 */
-+	rdevfreq->owner = NULL;
-+	mutex_destroy(&rdevfreq->lock);
-+	dev_pm_opp_of_remove_table(dev);
-+	dev_pm_opp_clear_config(rdevfreq->opp_token);
-+	rdevfreq->opp_token = 0;
-+}
-diff --git a/drivers/accel/rocket/rocket_devfreq.h b/drivers/accel/rocket/rocket_devfreq.h
-new file mode 100644
-index 0000000000000..bdf8e89ed3761
---- /dev/null
-+++ b/drivers/accel/rocket/rocket_devfreq.h
-@@ -0,0 +1,55 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/* Copyright 2025 Igor Paunovic <royalnet026@gmail.com> */
-+
-+#ifndef __ROCKET_DEVFREQ_H__
-+#define __ROCKET_DEVFREQ_H__
-+
-+#include <linux/devfreq.h>
-+#include <linux/mutex_types.h>
-+#include <linux/spinlock_types.h>
-+
-+struct rocket_core;
-+struct rocket_device;
-+
-+struct rocket_devfreq {
-+	struct devfreq *devfreq;
-+	struct devfreq_simple_ondemand_data gov_data;
-+
-+	/*
-+	 * The core the OPP table is attached to, and so the one the devfreq
-+	 * device hangs off. NULL when the devicetree describes no OPP table.
-+	 */
-+	struct rocket_core *owner;
-+
-+	/*
-+	 * The OPP clock and supply configuration is attached to the owning
-+	 * core, which is not the device this driver is probing when it is set
-+	 * up, so it cannot be devres. Zero means nothing is attached.
-+	 */
-+	int opp_token;
-+
-+	/*
-+	 * Serialises rate changes against each other and against the set of
-+	 * runtime PM references taken below.
-+	 *
-+	 * This is never taken from a runtime PM callback. A rate change
-+	 * resumes every core while holding it, so a core that took it on its
-+	 * way down would wait for a rate change that is waiting for that same
-+	 * core to finish suspending.
-+	 */
-+	struct mutex lock;
-+	unsigned long cur_freq;
-+	bool cores_held;
-+
-+	/* Guards the utilisation fields of every core. */
-+	spinlock_t busy_lock;
-+};
-+
-+int rocket_devfreq_init(struct rocket_device *rdev);
-+void rocket_devfreq_fini(struct rocket_device *rdev);
-+void rocket_devfreq_suspend(struct rocket_device *rdev);
-+int rocket_devfreq_set_boot_rate(struct rocket_device *rdev);
-+void rocket_devfreq_record_busy(struct rocket_core *core);
-+void rocket_devfreq_record_idle(struct rocket_core *core);
-+
-+#endif /* __ROCKET_DEVFREQ_H__ */
-diff --git a/drivers/accel/rocket/rocket_device.h b/drivers/accel/rocket/rocket_device.h
-index 466ebc4c26a8a..979ef4685443f 100644
---- a/drivers/accel/rocket/rocket_device.h
-+++ b/drivers/accel/rocket/rocket_device.h
-@@ -11,6 +11,7 @@
- #include <linux/platform_device.h>
- 
- #include "rocket_core.h"
-+#include "rocket_devfreq.h"
- 
- struct rocket_device {
- 	struct drm_device ddev;
-@@ -30,6 +31,8 @@ struct rocket_device {
- 	struct clk *npu_clk;
- 	unsigned long npu_boot_rate;
- 	atomic_t active_cores;
-+
-+	struct rocket_devfreq devfreq;
- };
- 
- struct rocket_device *rocket_device_init(struct platform_device *pdev,
-diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
-index b7199de57ccc7..779e1cb48c241 100644
---- a/drivers/accel/rocket/rocket_drv.c
-+++ b/drivers/accel/rocket/rocket_drv.c
-@@ -14,6 +14,7 @@
- #include <linux/pm_runtime.h>
- 
- #include "rocket_device.h"
-+#include "rocket_devfreq.h"
- #include "rocket_drv.h"
- #include "rocket_gem.h"
- #include "rocket_job.h"
-@@ -181,15 +182,33 @@ static int rocket_probe(struct platform_device *pdev)
- 	rdev->num_cores++;
- 
- 	ret = rocket_core_init(&rdev->cores[core]);
--	if (ret) {
--		rdev->num_cores--;
--
--		if (rdev->num_cores == 0) {
--			rocket_device_fini(rdev);
--			rdev = NULL;
-+	if (ret)
-+		goto err_core;
-+
-+	/*
-+	 * Every core described in the devicetree has to be bound before the
-+	 * devfreq device goes up. A rate change resumes all of them and keeps
-+	 * them resumed, and a core that had not probed yet would come up later
-+	 * underneath a raised clock.
-+	 */
-+	if (rdev->num_cores == rdev->max_cores) {
-+		ret = rocket_devfreq_init(rdev);
-+		if (ret) {
-+			rocket_core_fini(&rdev->cores[core]);
-+			goto err_core;
- 		}
- 	}
- 
-+	return 0;
-+
-+err_core:
-+	rdev->num_cores--;
-+
-+	if (rdev->num_cores == 0) {
-+		rocket_device_fini(rdev);
-+		rdev = NULL;
-+	}
-+
- 	return ret;
- }
- 
-@@ -203,6 +222,9 @@ static void rocket_remove(struct platform_device *pdev)
- 	if (core < 0)
- 		return;
- 
-+	/* The devfreq device drives every core, so it goes before any of them. */
-+	rocket_devfreq_fini(rdev);
-+
- 	rocket_core_fini(&rdev->cores[core]);
- 	rdev->num_cores--;
- 
-@@ -246,7 +268,18 @@ static void rocket_npu_restore_boot_rate(struct rocket_device *rdev)
- 	if (!rdev->npu_clk)
- 		return;
- 
--	err = clk_set_rate(rdev->npu_clk, rdev->npu_boot_rate);
-+	/*
-+	 * Go through the OPP core once there is a table, never behind its
-+	 * back: it caches the OPP it last applied and skips a request for that
-+	 * same OPP, so a raw clk_set_rate() here would make the next request
-+	 * for the raised rate a silent no-op, with sysfs reporting a rate the
-+	 * hardware was not running.
-+	 */
-+	if (rdev->devfreq.owner)
-+		err = rocket_devfreq_set_boot_rate(rdev);
-+	else
-+		err = clk_set_rate(rdev->npu_clk, rdev->npu_boot_rate);
-+
- 	if (err)
- 		dev_warn(rdev->cores[0].dev,
- 			 "failed to restore the NPU boot rate of %lu Hz: %d\n",
-@@ -292,21 +325,44 @@ static int rocket_device_runtime_suspend(struct device *dev)
- 	return 0;
- }
- 
-+static int rocket_device_suspend(struct device *dev)
-+{
-+	struct rocket_device *rdev = dev_get_drvdata(dev);
-+
-+	/*
-+	 * pm_runtime_force_suspend() below powers this core down whatever the
-+	 * runtime PM usage count says, so the references taken while the clock
-+	 * is raised do not hold it off. Put the rate back first; the call is a
-+	 * no-op on every core after the first.
-+	 */
-+	rocket_devfreq_suspend(rdev);
-+
-+	return pm_runtime_force_suspend(dev);
-+}
-+
- EXPORT_GPL_DEV_PM_OPS(rocket_pm_ops) = {
- 	RUNTIME_PM_OPS(rocket_device_runtime_suspend, rocket_device_runtime_resume, NULL)
--	SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
-+	SYSTEM_SLEEP_PM_OPS(rocket_device_suspend, pm_runtime_force_resume)
- };
- 
- /*
-- * A kexec or a reboot hands the next kernel whatever rate is set here, and
-- * that kernel will power the islands up before it looks at the clock.
-+ * A kexec or a reboot hands the next kernel whatever rate is set here, and that
-+ * kernel will power the islands up before it looks at the clock.
-+ *
-+ * Take the devfreq device down before restoring the rate rather than after.
-+ * Nothing freezes workqueues on this path, so a governor tick that landed
-+ * after the restore would raise the clock straight back up and hand on exactly
-+ * what this is here to prevent.
-  */
- static void rocket_shutdown(struct platform_device *pdev)
- {
- 	struct rocket_device *rdev = dev_get_drvdata(&pdev->dev);
- 
--	if (rdev)
--		rocket_npu_restore_boot_rate(rdev);
-+	if (!rdev)
-+		return;
-+
-+	rocket_devfreq_fini(rdev);
-+	rocket_npu_restore_boot_rate(rdev);
- }
- 
- static struct platform_driver rocket_driver = {
-diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
-index 3141f210fcd1b..2ba03d85b598e 100644
---- a/drivers/accel/rocket/rocket_job.c
-+++ b/drivers/accel/rocket/rocket_job.c
-@@ -15,6 +15,7 @@
- 
- #include "rocket_core.h"
- #include "rocket_device.h"
-+#include "rocket_devfreq.h"
- #include "rocket_drv.h"
- #include "rocket_job.h"
- #include "rocket_registers.h"
-@@ -151,6 +152,8 @@ static void rocket_job_hw_submit(struct rocket_core *core, struct rocket_job *jo
- 
- 	rocket_pc_writel(core, OPERATION_ENABLE, PC_OPERATION_ENABLE_OP_EN(1));
- 
-+	rocket_devfreq_record_busy(core);
-+
- 	dev_dbg(core->dev, "Submitted regcmd at 0x%llx to core %d", task->regcmd, core->index);
- }
- 
-@@ -348,6 +351,8 @@ static void rocket_job_handle_irq(struct rocket_core *core)
- 	rocket_pc_writel(core, OPERATION_ENABLE, 0x0);
- 	rocket_pc_writel(core, INTERRUPT_CLEAR, 0x1ffff);
- 
-+	rocket_devfreq_record_idle(core);
-+
- 	scoped_guard(mutex, &core->job_lock)
- 		if (core->in_flight_job) {
- 			if (core->in_flight_job->next_task_idx < core->in_flight_job->task_count) {
-@@ -379,6 +384,8 @@ rocket_reset(struct rocket_core *core, struct drm_sched_job *bad)
- 		if (core->in_flight_job)
- 			pm_runtime_put_noidle(core->dev);
- 
-+		rocket_devfreq_record_idle(core);
-+
- 		iommu_detach_group(NULL, core->iommu_group);
- 
- 		core->in_flight_job = NULL;
++++ b/Documentation/devicetree/bindings/display/bridge/starfive,jh7110-inno-hdmi-controller.yaml
+@@ -0,0 +1,121 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/bridge/starfive,jh7110-inno-hdmi-controller.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: StarFive JH7110 Innosilicon HDMI Controller
++
++maintainers:
++  - Michal Wilczynski <m.wilczynski@samsung.com>
++
++description:
++  The controller portion of the StarFive JH7110 INNO HDMI IP.
++
++properties:
++  compatible:
++    const: starfive,jh7110-inno-hdmi-controller
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: The HDMI controller main clock
++      - description: Audio master clock
++      - description: Audio bit clock, from the I2S transmitter
++      - description: The pixel clock, generated by the PHY
++
++  clock-names:
++    items:
++      - const: pclk
++      - const: mclk
++      - const: bclk
++      - const: pixel
++
++  resets:
++    maxItems: 1
++
++  phys:
++    maxItems: 1
++
++  starfive,vout-syscon:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the dom_vout_syscon system controller, which holds the mux
++      selecting the DC8200 output that drives the HDMI transmitter.
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Input from the DC8200. The remote port number selects the DC8200
++          panel and the remote endpoint number the interface on that panel,
++          0 for DPI and 1 for DP.
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Output to the HDMI connector.
++
++    required:
++      - port@0
++      - port@1
++
++required:
++  - compatible
++  - interrupts
++  - clocks
++  - clock-names
++  - resets
++  - phys
++  - starfive,vout-syscon
++  - ports
++
++additionalProperties: false
++
++examples:
++  # Shown as a child of the HDMI subsystem node; see
++  # Documentation/devicetree/bindings/mfd/starfive,jh7110-hdmi-subsystem.yaml
++  # for the full node.
++  - |
++    #include <dt-bindings/clock/starfive,jh7110-crg.h>
++    #include <dt-bindings/reset/starfive,jh7110-crg.h>
++
++    controller {
++        compatible = "starfive,jh7110-inno-hdmi-controller";
++        clocks = <&voutcrg JH7110_VOUTCLK_HDMI_TX_SYS>,
++                 <&voutcrg JH7110_VOUTCLK_HDMI_TX_MCLK>,
++                 <&voutcrg JH7110_VOUTCLK_HDMI_TX_BCLK>,
++                 <&hdmi_phy>;
++        clock-names = "pclk", "mclk", "bclk", "pixel";
++        interrupts = <99>;
++        phys = <&hdmi_phy>;
++        resets = <&voutcrg JH7110_VOUTRST_HDMI_TX_HDMI>;
++        starfive,vout-syscon = <&vout_syscon>;
++
++        ports {
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++            port@0 {
++                reg = <0>;
++
++                endpoint {
++                    remote-endpoint = <&dpu_out_dpi0>;
++                };
++            };
++
++            port@1 {
++                reg = <1>;
++
++                endpoint {
++                    remote-endpoint = <&hdmi_con_in>;
++                };
++            };
++        };
++    };
++
++...
+
 -- 
-2.43.0
+2.34.1
 
 
 _______________________________________________
