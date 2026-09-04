@@ -4,90 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92718C61DD6
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 12:47:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39720C624D3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 13:00:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FTJTO4r/gv5Lj20MGsycuzDTLOjHQorp2hZjl7RICqA=; b=dgnZFvzOlTBWVN
-	Yy7RbAgatPQFS14ndgPP1N7cD1uNfsFc31kpqRibGlVhhoW7Tj15ebaJDD9f1eFSgGtAdE8P7bztE
-	bs3uviyZFCBdLIPTKrFf3GuoURX1KW0EYrdwUvtjahp9bJb3kD91SmpaoZtnlP8zPvPTyJ1He3xMx
-	7+ADsJorahLZW7oca/qlYasdPaf+FovGmeHfsQX1SePNdzHT8THmAxhz5wpcndDk/VhwUZESexfMx
-	V4i2eZnzQN53+YXMCveFjLA3XX3kkWsyF0TE4JG1pkJ1FTOESXdtg+ss3FCvec3jzj0fIIT48a/TC
-	XrEuvkRZIOq/sIUq98zQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=z4we4fx4pXuhaGqHYyPPPaTtuUf+5HUb/2v/xFQo0dA=; b=okExqj1/sLsWLx
+	/G7e9cwRVfOd3fMut9SDXBGkdTtey6Lq4TRUsieHq+oHL9l0HwZ6YZPFDV4Sp0lHwAc6GCdh+Zx1a
+	J2HCBJZm1MszrTU8V8e0va+CVn8qI2TnAiC6wQDIMw50mAw4N2egIKY/F4UtMcwzR80Q6VZrpJAm9
+	pBPJdJIrQgNwffqvjnr8MH8uegV5LYTvK9aFhWbbOnzAXY1P/dgBbSmDk0InQhf6vnDkul57J6DM2
+	5UtbRUUQ39vGO0TDhOujOaAY7gplYRKrDfJuJvAmyWtdMtVPo7P5cwpFItnYNdfGeXwG0bX9q7JMX
+	yYINMo+nBTPbBQ2MFoZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2TKN-000000024Yz-103o;
-	Fri, 04 Sep 2026 12:47:31 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1x2TWU-000000025TP-1gyn;
+	Fri, 04 Sep 2026 13:00:02 +0000
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2TKK-000000024YC-0Q5f
+	id 1x2TWR-000000025SD-3atR
 	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Sep 2026 12:47:29 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-4956d1d9fb2so906025e9.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2026 05:47:27 -0700 (PDT)
+	Fri, 04 Sep 2026 13:00:01 +0000
+Received: by mail-wm2-x10.google.com with SMTP id 5b1f17b1804b1-499db1740f2so296135e9.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2026 05:59:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788526046; x=1789130846; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=RkSNe1iKI6tZKILRaV1iEvBVwUEOpWWRfifGPFlO+mE=;
-        b=Ak5jCERLqaiJucFGTzGGUOdc6rWf/Q+VN63Ofij2/8Bsy0a9gFplI7JE/qvL4WgfIL
-         4EwB4C/NvatrpkwPpXSiLvJt405/xxTPqqVW3CW456vQ+iplRqWFl6XZEgb0V9Tb4IDB
-         JCZK+/qDMcyAUJg5gklPgoBXzh1xyxrIbxgDbGsFOMAdjpcu3igs+Y6KK6pSQW1s9ENV
-         LluUuQkjpd78VG4RByhzjmJXLP0x7sZiOnDnAeeRJESk+YBhAqbM+SfX0lvAq4wbEKz0
-         udbO+A54UlJas/S01+VOXE9WdyQTkxPiL/gq7C7No15NJfdlPqn8Ns4FhtUP5xdFAdxN
-         MWbg==
+        d=gmail.com; s=20251104; t=1788526798; x=1789131598; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=G/WcwZhKQetLuVj0VCLbzfxuQncGS/yqg6oOZ6MnNyQ=;
+        b=Ex4HWJXvOodnnHHBq/PZgveM4LTWwBxi49x12l9tTxFLSmiDnAWYYBbeXLv3LqzwLy
+         01U/446HkBUAJ4WflRAdYNZMtj7q2M/a0hGFdOvBojaQlZmh2UXQ3XyATEA+X6XBAQLl
+         oBJHpJAMPbvvE9XdoeTskwOwIuSNB9dlMH9ns4jaNF7XShgrGmUNvg0JTsriUjQxWM4y
+         Ps2K1ZgK01KoalXMJYVXP+QrGZp6sicjKWjx6iQ6m92WuNKPzp5R/pds5xhZhjSswqaO
+         WqgX4tk2WI8xf4OHIoirzl2TcZPa4VZMY6iQyqkGMXQwP70aw0/aL8hpuEqEkYAX7onM
+         YMAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788526046; x=1789130846;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=RkSNe1iKI6tZKILRaV1iEvBVwUEOpWWRfifGPFlO+mE=;
-        b=lOUQbK/8DKppTVtPla3uKTCI0Xrt+ke63xCAxFxO4NzkLCnk07xzhodWMukGMAbqEi
-         z/Dcep2bk/SCboov1ER/MDDBGrUyUjRqebdUHOMMd/2i8/vw2z1wcNEHBwbJiCVvXB5G
-         v4zziJxt6D7KNUJf9pwExucjltWNF091sCVcHBY3nlGng7eMRvhnIwk1VZ/cKEAm4z7i
-         oOgYYTmspD6mn9FoTp6GC8qq74e2QIWRnTylhMgDHyrDb2wx8Ry0WUw/0yQObn8IA9eY
-         Mho/cnmXbOH4bmFsx1c0PT5oQsOiLbSdAX+YC4BFTdVTJa8Rhe+oZYb9/DzG7kMH5h8A
-         uUgQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzDovoCUs3WRbm6g0hsZyZPHIx4//cLsQLnYSXBcao0a2Kb8c0vYUw/mWTPIZOiSjWPMyYfyi8qcJgNxAuUTA==@lists.infradead.org
-X-Gm-Message-State: AFuF++mv7a1FImKPZkjYzpCbY+VCYLE2/SyxUMKb47g9dF9xQ8fluzNI
-	u7oOGBTeuXjMGTgoQ9oHwc97fyMq4DDenCof8xENf7F7SL31OqQfybuw
-X-Gm-Gg: AYBFou2Ka87J99Z+HI7nqpik28DJOIjQzCEEpCS1vz9Eo715S84nYjuvE4ymSDR1UxM
-	AncP+un3qSinyzVuTvkHDrZfeEZ1+ctZbTifwh+SlisngpFqTpDoE8Y49wrJjD5kjRrvHfd7aQa
-	M9Xmg6+RZHnQ6CcBooZoo5+ni9r+EtHZTpTVSFJYhzHjnOq8lq/1xP4F/fi4CZ6RlRaK4FetS7T
-	DnCfyrPq3QuJdBTxmPeDDrRJDAtXzApbnsle8KpEIjLnHMnc/U1Ag8a/UJA62UZkEOmck8j5DGS
-	AxzQWgEp7+2DaykmjWwuSqWgB007dq831I6H8RB+1jFLeASYXL01j7rrk6rs7V0Jnjm11gGvGhR
-	hwjahL1a+NCGUHoLUaLzlzOwXYNYQYQJeKMkwwEmDOTLiIHPAKPK9T1iBLMUaa1GTZWicJHRLry
-	Q/kZLhcArgldmujf1yaBqOiFtU6qYkrKPCCS5iITFIp2hrNccinaKx2QBFI/W1wQ2O90b8sk0/f
-	rW2lQyhIQupJFPaRzs38qS386KKd89y2wv2i9pwwIDzObARg0Hp5CFdMOldqLdWpiwrVw==
-X-Received: by 2002:a05:600c:a40e:b0:49c:f9b8:bae0 with SMTP id 5b1f17b1804b1-49cf9b8baffmr32943645e9.2.1788526045880;
-        Fri, 04 Sep 2026 05:47:25 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1788526798; x=1789131598;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=G/WcwZhKQetLuVj0VCLbzfxuQncGS/yqg6oOZ6MnNyQ=;
+        b=fbSRVk5W/uGNguAVbmaSfn3UfFyFW8uNh7uIvLTxkafQHKHmSfd6rEUKKdH2U32NeF
+         a2hQN6ze0JTtCid2yRjupNDV2D7DUd2DQm/eUpfBxTjIaDWyGY4RNe2uvK/xupJSjUoF
+         GqpWYZY/qwTc6ikxryB4kfXACowcQ+gG/edqRk8k2Qv5yb7C23cEzqPJlh6f2MXXI92D
+         7YYHOkib/24K8jEzBhJ/AAToMoYWGg+q3KBL7yYqQI6qVDzLFqFL7z+4qVwzpxmmo+W/
+         ePxPnjKOX648E46G1JMwdHG0WeGskMxDArnK2MDCsfxuzh2CJcHvrZvG7iZZJkTMxY73
+         /ruQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzSr9REnhUY8eyLdzPwphJnIbM6XTs8xTRWw0kO9fwv+cx2kXE3VEV7yekHswKBz27MFSP3arb01smJ+CaJbQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++mXlFDMwfVpOZM7VcsbbR6/YslngN/7Buh2PHHq0h6xYfxgzwBM
+	ilddtv4xJScQfVM8R050yJDiRNlmk278GY2cxj2bdQ2vk6cph4tFSnDU
+X-Gm-Gg: AYBFou014Rq0UoD3MvTdcj+wK8bfVujaQBSxe8H017JsM+i98GX4H4ghxBlfH5G3cMH
+	vspRDiXZNnZ2U4G/t7kbdWvRZrpVma9MIZ45oPgN8G1EV3uaOmM2Ij0YHIVTnzD5rK6OD8B19NJ
+	7Mth8uW8zC7dfGqrQQ6tWUsyaoKYq6s6MvhieodzoWFNpqIDdrO3xRnEPpTG+icc4sInoMGChyo
+	NHKO95hU4svWzKY8TDq/xGR7R7V+N9R7TaccvTfusN3bS+TCHK361LgSdG/cYCpsrdiNPJht0ZK
+	RZOUhbMMn4rdixZcW80QnA8SCPZw4lrKRVdEIcn/Rlf+Vr30zuwcBS+7UwChpB2oxbPM2iaWavE
+	hdBRTz2ZouuWIZbu4gNr7R88kXSiwrZAFgLEjYDHA9EuUDN0SXTcUQ+1Ze3xvC4lah+ssnHRdoG
+	HuCQLwx0TOxYdj6+JC0pa7g32ln5aHQXdO1eicjxmjg4F23xBpXZG55rBNQMBdMIGAKphEu0MVd
+	yGvywqBGC2VApJtiCgmuJNMOtYXkYunWdwls1cwA1T+OBt7xkkhife9jTLuGozfcxuIiKG8W/zY
+	5J1MmJfC6yCb/SU=
+X-Received: by 2002:a05:600c:34c5:b0:499:cef6:104c with SMTP id 5b1f17b1804b1-49cf823c012mr40540685e9.1.1788526797556;
+        Fri, 04 Sep 2026 05:59:57 -0700 (PDT)
 Received: from OrangePi5-Plus.BB-HOME (20014C4E1B871500CB6EF488A18F9C42.dsl.pool.telekom.hu. [2001:4c4e:1b87:1500:cb6e:f488:a18f:9c42])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49cfd3f815bsm21924425e9.4.2026.09.04.05.47.23
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49ce554d52esm135287435e9.3.2026.09.04.05.59.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 05:47:25 -0700 (PDT)
+        Fri, 04 Sep 2026 05:59:56 -0700 (PDT)
 From: Igor Paunovic <royalnet026@gmail.com>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: Igor Paunovic <royalnet026@gmail.com>,
-	tomeu@tomeuvizoso.net,
-	boogiepop@gmx.com,
-	nicolas@ndufresne.ca,
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+	Oded Gabbay <ogabbay@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Jiaxing Hu <gahing@gahingwoo.com>,
+	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and some numbers
-Date: Fri,  4 Sep 2026 14:46:55 +0200
-Message-ID: <20260904124659.25971-1-royalnet026@gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org,
+	Igor Paunovic <royalnet026@gmail.com>
+Subject: [PATCH] accel/rocket: search every core slot when a core is removed
+Date: Fri,  4 Sep 2026 14:59:36 +0200
+Message-ID: <20260904125936.26234-1-royalnet026@gmail.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260904110853.85150-1-gahing@gahingwoo.com>
-References: <20260801131656.58450-1-royalnet026@gmail.com> <20260903091646.7183-1-royalnet026@gmail.com> <20260904110853.85150-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_054728_167971_D256757A 
-X-CRM114-Status: GOOD (  22.00  )
+X-CRM114-CacheID: sfid-20260904_055959_948128_C4454E6F 
+X-CRM114-Status: GOOD (  21.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,83 +105,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jiaxing,
+rocket_remove() decrements rdev->num_cores for each core it removes,
+while find_core_for_dev() searches slots 0 to num_cores - 1. Unbinding
+the cores in the order they were bound therefore loses the last one: by
+the time it is removed the search range has already shrunk past its
+slot, so find_core_for_dev() returns -1 and rocket_remove() gives up
+without doing anything.
 
-> Your rows are one inference thread with a bit-exact oracle, so they
-> cannot see this class at all. Before the OPP table is settled, run
-> the oracle with all three cores loaded at 900 and 1000 MHz on 850 mV.
+num_cores never reaches zero, rocket_device_fini() never runs, and the
+file-scoped rdev keeps pointing at a device that is going away. Binding
+the cores again starts from that stale count, because rocket_probe()
+takes rdev->num_cores as the slot to fill. On an RK3588, which describes
+three cores, the second round lands on slots 1, 2 and 3 while rdev->cores
+was allocated with room for three:
 
-You were right, and it stopped me sending. The series was packed and
-checked and I was an hour from the send command. Every number I have
-posted, including the ones in this thread, came from a single inference
-thread. Not one of them could have seen what you found.
+  rocket fdab0000.npu: Rockchip NPU core 1 version: 1179210309
+  rocket fdac0000.npu: Rockchip NPU core 2 version: 1179210309
+  rocket fdad0000.npu: Rockchip NPU core 3 version: 1179210309
 
-So I built the test I did not have. Three concurrent clients, each
-checking its own output bit-exact, on the two top rates of the table:
+The write to rdev->cores[3] is past the end of the array.
 
-  900 MHz, rail 800 mV    3 x 199 inf/s, 598 total, all bit-exact
-  1000 MHz, rail 850 mV   3 x 204 inf/s, 611 total, all bit-exact
+Nothing in tree reads the core array often enough to notice, so the
+overrun is silent today. It turned up while testing a devfreq series on
+top of this, where a worker walks every core a few times a second, and
+UBSAN caught the first bool it read out of the overrun entry:
 
-Single-client control on the same rates: 232 and 240 inf/s. So the
-aggregate is 2.57x and 2.55x of one client, which is the part that
-makes the bit-exact result worth anything - the three cores really were
-computing at the same time, not queueing behind one. Kernel log clean
-through all four passes. Voltages read back from vdd_npu_s0 during the
-run, put there by the OPP core, not by me.
+  UBSAN: invalid-load in drivers/accel/rocket/rocket_devfreq.c:47:10
+  load of value 5 is not a valid value for type '_Bool'
+  Workqueue: devfreq_wq devfreq_monitor
 
-One honest note on how I proved the overlap, because I got it wrong
-first. I had the test sample runtime_status of the three cores and
-report how many were active. It said three of three, one hundred per
-cent - and it said that with a single client too, because this series
-holds every core resumed while the clock is raised. It measures power
-state, not work. The aggregate throughput is the real evidence; the
-sampler was telling me what I wanted to hear.
+Record how many slots were allocated and search all of them. Every core
+is then found on removal, num_cores reaches zero, the device is torn down
+and a later bind starts from a clean rdev.
 
-So: on RK3588 the answer to your question is that it holds, at the
-voltages the table names. What I cannot tell you is where the edge is.
-I have not run 1000 MHz at 800 mV to find out how much margin 850 is
-buying, and I would rather not guess in a commit message.
+This does not make unbinding a single core out of several work. probe
+still takes num_cores as the slot to fill, so rebinding one core while
+its siblings stay bound would write over a slot that is already in use,
+and rocket_open() still reaches for cores[0] whether or not anything is
+there. Both of those want more thought than a fix should carry.
 
-> whatever the table ends up as, it needs the voltage column with the
-> rate: a rate without its rail is what mainline has today, and it is
-> what corrupts.
+Found by unbinding and rebinding all three cores on an Orange Pi 5 Plus.
+With this applied, 25 unbind/rebind rounds and 5 module unload/reload
+rounds run clean there: the cores land in slots 0, 1 and 2 every time,
+whichever order they are bound in, and the shared supply goes back to a
+single user after each round.
 
-The table carries it: 200 to 700 MHz at 700 mV, 800 at 750, 900 at 800,
-1000 at 850, which is Rockchip's own table for this part. Your four
-days are now a paragraph in my cover letter with your name on it, since
-that measurement is the reason the test exists.
+Fixes: ed98261b4168 ("accel/rocket: Add a new driver for Rockchip's NPU")
+Cc: stable@vger.kernel.org
+Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+Assisted-by: LLM sparse checkpatch
+---
+ drivers/accel/rocket/rocket_device.c | 2 ++
+ drivers/accel/rocket/rocket_device.h | 1 +
+ drivers/accel/rocket/rocket_drv.c    | 2 +-
+ 3 files changed, 4 insertions(+), 1 deletion(-)
 
-> On RK3576 an assigned-clock-rates on the SCMI clock in the NPU node
-> hangs the board before the console comes up
+diff --git a/drivers/accel/rocket/rocket_device.c b/drivers/accel/rocket/rocket_device.c
+index 46e6ee1e72c5f..efd004194c1af 100644
+--- a/drivers/accel/rocket/rocket_device.c
++++ b/drivers/accel/rocket/rocket_device.c
+@@ -31,6 +31,8 @@ struct rocket_device *rocket_device_init(struct platform_device *pdev,
+ 		if (of_device_is_available(core_node))
+ 			num_cores++;
+ 
++	rdev->max_cores = num_cores;
++
+ 	rdev->cores = devm_kcalloc(dev, num_cores, sizeof(*rdev->cores), GFP_KERNEL);
+ 	if (!rdev->cores)
+ 		return ERR_PTR(-ENOMEM);
+diff --git a/drivers/accel/rocket/rocket_device.h b/drivers/accel/rocket/rocket_device.h
+index ce662abc01d3d..c62d567010696 100644
+--- a/drivers/accel/rocket/rocket_device.h
++++ b/drivers/accel/rocket/rocket_device.h
+@@ -19,6 +19,7 @@ struct rocket_device {
+ 
+ 	struct rocket_core *cores;
+ 	unsigned int num_cores;
++	unsigned int max_cores;
+ };
+ 
+ struct rocket_device *rocket_device_init(struct platform_device *pdev,
+diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+index 8bbbce594883e..2bcfe4ab3c68f 100644
+--- a/drivers/accel/rocket/rocket_drv.c
++++ b/drivers/accel/rocket/rocket_drv.c
+@@ -223,7 +223,7 @@ static int find_core_for_dev(struct device *dev)
+ {
+ 	struct rocket_device *rdev = dev_get_drvdata(dev);
+ 
+-	for (unsigned int core = 0; core < rdev->num_cores; core++) {
++	for (unsigned int core = 0; core < rdev->max_cores; core++) {
+ 		if (dev == rdev->cores[core].dev)
+ 			return core;
+ 	}
+-- 
+2.43.0
 
-That is worth more than the question I was going to ask about it. I
-have kept assigned-clock-rates on all three RK3588 nodes and listed it
-as an open question, on the grounds that of_clk_set_defaults() runs on
-every probe over the shared clock and could quietly lower a raised
-rate - which I have not managed to make happen. Your board says the
-property can do considerably worse than that. I will say so in the
-cover and let the maintainers decide whether it goes.
-
-Two other things while I have you.
-
-I am sending a fix ahead of the series: rocket_remove() decrements
-num_cores while find_core_for_dev() searches only that far, so the last
-core is never found on unbind, num_cores never reaches zero, and a
-rebind writes rdev->cores[3] on a three-element array. Silent in
-mainline today; UBSAN caught it once devfreq started walking the array
-from a worker. It has a Fixes: tag and Cc: stable. You may want it on
-RK3576 too, where the same code runs with two cores.
-
-And the small one I have been sitting on. My series carries the
-clocks-by-name patch as 1/7 so it applies on its own, and that copy
-still has your Signed-off-by from v11. You are not in the delivery path
-of my series, so by submitting-patches.rst it does not belong on that
-copy and I would drop it there - your Reviewed-by is the credit that
-matters and it stays, on both copies. On the v11 copy your sign-off is
-correct and I would not touch it. It is your name, so I would rather
-ask than decide.
-
-Igor
 
 _______________________________________________
 Linux-rockchip mailing list
