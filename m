@@ -4,91 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39720C624D3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 13:00:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38289C624D3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 13:07:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=z4we4fx4pXuhaGqHYyPPPaTtuUf+5HUb/2v/xFQo0dA=; b=okExqj1/sLsWLx
-	/G7e9cwRVfOd3fMut9SDXBGkdTtey6Lq4TRUsieHq+oHL9l0HwZ6YZPFDV4Sp0lHwAc6GCdh+Zx1a
-	J2HCBJZm1MszrTU8V8e0va+CVn8qI2TnAiC6wQDIMw50mAw4N2egIKY/F4UtMcwzR80Q6VZrpJAm9
-	pBPJdJIrQgNwffqvjnr8MH8uegV5LYTvK9aFhWbbOnzAXY1P/dgBbSmDk0InQhf6vnDkul57J6DM2
-	5UtbRUUQ39vGO0TDhOujOaAY7gplYRKrDfJuJvAmyWtdMtVPo7P5cwpFItnYNdfGeXwG0bX9q7JMX
-	yYINMo+nBTPbBQ2MFoZA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HSV3rS23uOtwH19QGw/VN0Ig4W2wAnjSvqOFCDZXFoI=; b=UaxbMh3yszgSd+
+	UYDyLnhqjcHMedfduiF3OeOYZrcPlrp+I8nAp4xDZ/I8Q9Ab0CnXjkrjreHw27JLVoVz+lJTjI3z5
+	yK5ab23t7Z5w41eNpRfAvecI90qB+LDuzLOWZLaPkMvTzaD+4dnxms8xrB5p63lldfW+PFZ+wC2ZQ
+	bMITJzRRzdhSvpvXpZIUhXR+RdhWfk1I0E6mgGD4q2EwOQNYRpkemCIuAthzobdn+iPvHGLLOh+S0
+	ZADl7NvPv361BhuLbNjelmDi6rtD0nVVaQQ1U10Tqt8R/ZQ91f4aRxz1CZgqR43oO1VGFpi8JQ5af
+	Lp8v3KvoVgrujaQ+T1ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2TWU-000000025TP-1gyn;
-	Fri, 04 Sep 2026 13:00:02 +0000
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
+	id 1x2TdU-000000026G8-3aJP;
+	Fri, 04 Sep 2026 13:07:16 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2TWR-000000025SD-3atR
+	id 1x2TdS-000000026G2-2dhP
 	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Sep 2026 13:00:01 +0000
-Received: by mail-wm2-x10.google.com with SMTP id 5b1f17b1804b1-499db1740f2so296135e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2026 05:59:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788526798; x=1789131598; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=G/WcwZhKQetLuVj0VCLbzfxuQncGS/yqg6oOZ6MnNyQ=;
-        b=Ex4HWJXvOodnnHHBq/PZgveM4LTWwBxi49x12l9tTxFLSmiDnAWYYBbeXLv3LqzwLy
-         01U/446HkBUAJ4WflRAdYNZMtj7q2M/a0hGFdOvBojaQlZmh2UXQ3XyATEA+X6XBAQLl
-         oBJHpJAMPbvvE9XdoeTskwOwIuSNB9dlMH9ns4jaNF7XShgrGmUNvg0JTsriUjQxWM4y
-         Ps2K1ZgK01KoalXMJYVXP+QrGZp6sicjKWjx6iQ6m92WuNKPzp5R/pds5xhZhjSswqaO
-         WqgX4tk2WI8xf4OHIoirzl2TcZPa4VZMY6iQyqkGMXQwP70aw0/aL8hpuEqEkYAX7onM
-         YMAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788526798; x=1789131598;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=G/WcwZhKQetLuVj0VCLbzfxuQncGS/yqg6oOZ6MnNyQ=;
-        b=fbSRVk5W/uGNguAVbmaSfn3UfFyFW8uNh7uIvLTxkafQHKHmSfd6rEUKKdH2U32NeF
-         a2hQN6ze0JTtCid2yRjupNDV2D7DUd2DQm/eUpfBxTjIaDWyGY4RNe2uvK/xupJSjUoF
-         GqpWYZY/qwTc6ikxryB4kfXACowcQ+gG/edqRk8k2Qv5yb7C23cEzqPJlh6f2MXXI92D
-         7YYHOkib/24K8jEzBhJ/AAToMoYWGg+q3KBL7yYqQI6qVDzLFqFL7z+4qVwzpxmmo+W/
-         ePxPnjKOX648E46G1JMwdHG0WeGskMxDArnK2MDCsfxuzh2CJcHvrZvG7iZZJkTMxY73
-         /ruQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzSr9REnhUY8eyLdzPwphJnIbM6XTs8xTRWw0kO9fwv+cx2kXE3VEV7yekHswKBz27MFSP3arb01smJ+CaJbQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++mXlFDMwfVpOZM7VcsbbR6/YslngN/7Buh2PHHq0h6xYfxgzwBM
-	ilddtv4xJScQfVM8R050yJDiRNlmk278GY2cxj2bdQ2vk6cph4tFSnDU
-X-Gm-Gg: AYBFou014Rq0UoD3MvTdcj+wK8bfVujaQBSxe8H017JsM+i98GX4H4ghxBlfH5G3cMH
-	vspRDiXZNnZ2U4G/t7kbdWvRZrpVma9MIZ45oPgN8G1EV3uaOmM2Ij0YHIVTnzD5rK6OD8B19NJ
-	7Mth8uW8zC7dfGqrQQ6tWUsyaoKYq6s6MvhieodzoWFNpqIDdrO3xRnEPpTG+icc4sInoMGChyo
-	NHKO95hU4svWzKY8TDq/xGR7R7V+N9R7TaccvTfusN3bS+TCHK361LgSdG/cYCpsrdiNPJht0ZK
-	RZOUhbMMn4rdixZcW80QnA8SCPZw4lrKRVdEIcn/Rlf+Vr30zuwcBS+7UwChpB2oxbPM2iaWavE
-	hdBRTz2ZouuWIZbu4gNr7R88kXSiwrZAFgLEjYDHA9EuUDN0SXTcUQ+1Ze3xvC4lah+ssnHRdoG
-	HuCQLwx0TOxYdj6+JC0pa7g32ln5aHQXdO1eicjxmjg4F23xBpXZG55rBNQMBdMIGAKphEu0MVd
-	yGvywqBGC2VApJtiCgmuJNMOtYXkYunWdwls1cwA1T+OBt7xkkhife9jTLuGozfcxuIiKG8W/zY
-	5J1MmJfC6yCb/SU=
-X-Received: by 2002:a05:600c:34c5:b0:499:cef6:104c with SMTP id 5b1f17b1804b1-49cf823c012mr40540685e9.1.1788526797556;
-        Fri, 04 Sep 2026 05:59:57 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B871500CB6EF488A18F9C42.dsl.pool.telekom.hu. [2001:4c4e:1b87:1500:cb6e:f488:a18f:9c42])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49ce554d52esm135287435e9.3.2026.09.04.05.59.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 05:59:56 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Oded Gabbay <ogabbay@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Jiaxing Hu <gahing@gahingwoo.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org,
-	Igor Paunovic <royalnet026@gmail.com>
-Subject: [PATCH] accel/rocket: search every core slot when a core is removed
-Date: Fri,  4 Sep 2026 14:59:36 +0200
-Message-ID: <20260904125936.26234-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	Fri, 04 Sep 2026 13:07:14 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 13638600C8;
+	Fri,  4 Sep 2026 13:07:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D0581F00A3D;
+	Fri,  4 Sep 2026 13:07:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788527233;
+	bh=gGkHkZzkVW6DGI/musisUQVSQ3nO7MJaOAJUcl+rmIQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=OF7/7GuZqjBa3t9j0zbucx1Cp4NHp2XVzcUd0a/nqMTYPlz5ft58IO5evUwy8KtjB
+	 HuFJACgXPmH193rRZWkngSqtiE/SXtEZ4SilCZFW/M64l9TT54YNz2WIrJpLO+ParR
+	 pvS6VbH8t90JwHhXe1whCD3rGQgh9yWWIFCzlgHbwgIvcfOCxur5kcTXddPHLh0Yjr
+	 1P3GXYpK1KlGl69kWrNGqHLZMyKrWnyx7N8Rembpc2+r+rEurJWZJEtZ8TCH4lF9Dk
+	 UoH5CsXsegCw85ezo6HLXa8LSjR38oexVeIZd2nOyHCJwrnbL9+vFaFPQFX4LmCI8s
+	 W6IvIzgOKEyhA==
+Date: Fri, 4 Sep 2026 15:07:09 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Subject: Re: [PATCH v2 1/2] PCI: dw-rockchip: Move the INTx irq setup to
+ probe and make it devm-managed
+Message-ID: <aprCfVgc1dl_h24T@ryzen>
+References: <1788484709-139123-1-git-send-email-shawn.lin@rock-chips.com>
+ <1788484709-139123-2-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_055959_948128_C4454E6F 
-X-CRM114-Status: GOOD (  21.88  )
+Content-Disposition: inline
+In-Reply-To: <1788484709-139123-2-git-send-email-shawn.lin@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,102 +73,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rocket_remove() decrements rdev->num_cores for each core it removes,
-while find_core_for_dev() searches slots 0 to num_cores - 1. Unbinding
-the cores in the order they were bound therefore loses the last one: by
-the time it is removed the search range has already shrunk past its
-slot, so find_core_for_dev() returns -1 and rocket_remove() gives up
-without doing anything.
+On Fri, Sep 04, 2026 at 09:18:28AM +0800, Shawn Lin wrote:
+> Since commit b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port()
+> and use for link down"), .reset_root_port() re-runs the host ops
+> .init() callback to reprogram the Root Complex after a controller
+> reset. That works for the register programming, but .init() is not
+> re-entrant: it also creates the INTx irq domain and installs the
+> chained INTx handler. Every root port reset therefore ends up with a
+> second irq domain registered for the same fwnode: the previous one is
+> leaked, as it is never removed, and worse, the INTx virqs of the
+> downstream PCI devices were allocated in the previous irq domain and
+> are never re-mapped, while the chained handler now looks up virqs in
+> the new, empty domain. After a link down recovery, INTx interrupts
+> are silently lost.
+> 
+> Fix it by moving the of_irq_get_byname() lookup, the INTx irq domain
+> creation and the chained handler installation out of .init() and into
+> rockchip_pcie_configure_rc(), right after dw_pcie_host_init(). This
+> mirrors how the qcom driver requests its global IRQ, and leaves
+> .init() with nothing but idempotent register programming, so both
+> .reset_root_port() and dw_pcie_resume_noirq() can safely re-run it.
+> Re-running of_irq_get_byname() on every resume is also gone.
+> 
+> With the irq setup now living in probe, tie its lifetime to the device
+> with devres: create the irq domain with devm_irq_domain_instantiate()
+> and uninstall the chained handler through the
+> rockchip_pcie_intx_chained_release() devres action. The driver is
+> builtin and cannot be unbound (suppress_bind_attrs), so probe failure
+> is the only path that ever needs this cleanup, and devres takes care
+> of it without sprinkling it over every error path. Since the irq setup
+> is the last step of rockchip_pcie_configure_rc(), the only failure
+> point left after the chained handler is installed is
+> devm_add_action_or_reset() itself, whose failure mode runs the action,
+> so the handler can never run against the devm-freed rockchip
+> structure. devres also unwinds in reverse registration order, so the
+> handler is always uninstalled before the domain is removed. There is
+> no devm API for chained handlers, hence the small devres action
+> wrapper.
+> 
+> Fixes: b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port() and use for link down")
+> Suggested-by: Niklas Cassel <cassel@kernel.org>
+> Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-num_cores never reaches zero, rocket_device_fini() never runs, and the
-file-scoped rdev keeps pointing at a device that is going away. Binding
-the cores again starts from that stale count, because rocket_probe()
-takes rdev->num_cores as the slot to fill. On an RK3588, which describes
-three cores, the second round lands on slots 1, 2 and 3 while rdev->cores
-was allocated with room for three:
+I would have written it in two commits:
+1/3 that moves the of_irq_get_byname() lookup, the INTx irq domain creation,
+    and chained handler installation.
+2/3 that makes the irq doman device managed, to not leak the resources, as
+    flagged by Sashiko
+(3/3 that masks the INTx IRQ during .reset_root_port())
 
-  rocket fdab0000.npu: Rockchip NPU core 1 version: 1179210309
-  rocket fdac0000.npu: Rockchip NPU core 2 version: 1179210309
-  rocket fdad0000.npu: Rockchip NPU core 3 version: 1179210309
 
-The write to rdev->cores[3] is past the end of the array.
+Since fixing the resource leak seems like a separate issue.
 
-Nothing in tree reads the core array often enough to notice, so the
-overrun is silent today. It turned up while testing a devfreq series on
-top of this, where a worker walks every core a few times a second, and
-UBSAN caught the first bool it read out of the overrun entry:
+The commit message for this patch does seem quite long, mostly because
+it is fixing two separate issues.
 
-  UBSAN: invalid-load in drivers/accel/rocket/rocket_devfreq.c:47:10
-  load of value 5 is not a valid value for type '_Bool'
-  Workqueue: devfreq_wq devfreq_monitor
 
-Record how many slots were allocated and search all of them. Every core
-is then found on removal, num_cores reaches zero, the device is torn down
-and a later bind starts from a clean rdev.
+Sorry that we did not detect this INTx issue when sending the
+.reset_root_port() patch. Since RK3588 does not support INTx in EP mode,
+it is unfortunately not tested when running the pci_endpoint_test selftest.
 
-This does not make unbinding a single core out of several work. probe
-still takes num_cores as the slot to fill, so rebinding one core while
-its siblings stay bound would write over a slot that is already in use,
-and rocket_open() still reaches for cores[0] whether or not anything is
-there. Both of those want more thought than a fix should carry.
 
-Found by unbinding and rebinding all three cores on an Orange Pi 5 Plus.
-With this applied, 25 unbind/rebind rounds and 5 module unload/reload
-rounds run clean there: the cores land in slots 0, 1 and 2 every time,
-whichever order they are bound in, and the shared supply goes back to a
-single user after each round.
-
-Fixes: ed98261b4168 ("accel/rocket: Add a new driver for Rockchip's NPU")
-Cc: stable@vger.kernel.org
-Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
-Assisted-by: LLM sparse checkpatch
----
- drivers/accel/rocket/rocket_device.c | 2 ++
- drivers/accel/rocket/rocket_device.h | 1 +
- drivers/accel/rocket/rocket_drv.c    | 2 +-
- 3 files changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/accel/rocket/rocket_device.c b/drivers/accel/rocket/rocket_device.c
-index 46e6ee1e72c5f..efd004194c1af 100644
---- a/drivers/accel/rocket/rocket_device.c
-+++ b/drivers/accel/rocket/rocket_device.c
-@@ -31,6 +31,8 @@ struct rocket_device *rocket_device_init(struct platform_device *pdev,
- 		if (of_device_is_available(core_node))
- 			num_cores++;
- 
-+	rdev->max_cores = num_cores;
-+
- 	rdev->cores = devm_kcalloc(dev, num_cores, sizeof(*rdev->cores), GFP_KERNEL);
- 	if (!rdev->cores)
- 		return ERR_PTR(-ENOMEM);
-diff --git a/drivers/accel/rocket/rocket_device.h b/drivers/accel/rocket/rocket_device.h
-index ce662abc01d3d..c62d567010696 100644
---- a/drivers/accel/rocket/rocket_device.h
-+++ b/drivers/accel/rocket/rocket_device.h
-@@ -19,6 +19,7 @@ struct rocket_device {
- 
- 	struct rocket_core *cores;
- 	unsigned int num_cores;
-+	unsigned int max_cores;
- };
- 
- struct rocket_device *rocket_device_init(struct platform_device *pdev,
-diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
-index 8bbbce594883e..2bcfe4ab3c68f 100644
---- a/drivers/accel/rocket/rocket_drv.c
-+++ b/drivers/accel/rocket/rocket_drv.c
-@@ -223,7 +223,7 @@ static int find_core_for_dev(struct device *dev)
- {
- 	struct rocket_device *rdev = dev_get_drvdata(dev);
- 
--	for (unsigned int core = 0; core < rdev->num_cores; core++) {
-+	for (unsigned int core = 0; core < rdev->max_cores; core++) {
- 		if (dev == rdev->cores[core].dev)
- 			return core;
- 	}
--- 
-2.43.0
-
+Kind regards,
+Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
