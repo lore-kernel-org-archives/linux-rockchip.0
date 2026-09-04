@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BECCC624D3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 13:09:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1952C61DD6
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2026 13:09:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TARYWWJy43uebshWcKawFV/7GN9QJKNUJJrAnoJcf8E=; b=T6Jj15tAMWZ/+8
-	9Cm27vBa5GyJD2krSE/5r1frPddF+8uSOBQXMqiBsiIw0pGmaIIjwK2jjHxIhfe+etksIimtt9nq3
-	6CB2slVy9a534cwcmljrYyniIl9lc97B3zr+EPCIeWijr0yABvkr6pVx5CBjV9LaJnb5iSjlMUw9C
-	7UwEl5T25QZk7ER4bjZx2OvcR+9ZEy9+dnn5YtDj2I9HrL+55uZpKuKNle6hMhJovte3M8ngXsBpe
-	Bfv5zc7LnPrlnfk0s4keM1okjsOHV9sdW3WEJZltHeqwpomkz9ujwEX42U86lXIbm3aixfLTsz5JH
-	i7SrwCSuGpvDbHk1hOSA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WYbd/brKer16SgEovzOx/3WsyLSwRXPswEJfVYERjG4=; b=Jtliw8gk9B4DXm
+	PLbogszLHGqAiTOH7+qiFe4lxkR5/C17yrx+NwxoY+kvFG46ZlbxerYcdO6/n5NfiLNfFYNyUKVCk
+	TLSgI3wbqdhZel7b/3Sew/7lmo13CJRsbI9XoY/oQ66AAq+VghMQsjhIGcCxDYceRW82Ds5AVihLY
+	Qb1bPe8FtAgpjaf8gfwYJVi1GiGlEr8bO0L4eTBEgQiRYjOu4pnrUbWXejd1waJS5qDbPMZar+qya
+	YGYugppoAGHds9OwKZa4LDTkwYf1Br0NFLb11V6F27iFz2BA4hbNFZxXzFact0uBvz0XqzTyP31Qr
+	8wGcJKGIcrdrYyW42/yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Tfb-000000026Ya-1KXs;
-	Fri, 04 Sep 2026 13:09:27 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1x2Tfe-000000026bo-2otE;
+	Fri, 04 Sep 2026 13:09:30 +0000
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2TfY-000000026Wa-1MPp
+	id 1x2Tfb-000000026YJ-3yRC
 	for linux-rockchip@lists.infradead.org;
-	Fri, 04 Sep 2026 13:09:26 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-4954c08a7c8so815115e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2026 06:09:23 -0700 (PDT)
+	Fri, 04 Sep 2026 13:09:29 +0000
+Received: by mail-wm2-x10.google.com with SMTP id 5b1f17b1804b1-499db1740f0so397205e9.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2026 06:09:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788527362; x=1789132162; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=PlQbIt4yNB0MJLP43bg8WECYkTcWZ9D6PtJHQo6kx6Y=;
-        b=Zdg9FFzfMwJxpjWS1Saw8J6YUkx5qNRw9Ltfc0FVXacXC+qpG09l33n6tQLHKa7JRq
-         FuneVXbBsX+Fpt3XXc3Sl3o9YvDVc4/pHhQsxaIh+7xj0hZVs9OPACYWS8Yq2HH+ilO1
-         +DfeHlV6/0iyUxC1hXOsHO9eHXB5WVR+nOjlVMCHwUdznkhis2pf7u834msJfbCyrzpz
-         BOKK84KQ/cRq2PhRnrJ2VysZ9/VA1kHjFkyfU/JPp7UV2PoTEpkg7hRbiDB4gtDLu5Bv
-         CMcZveGSC+JraVX1NJzUXZl7WC02tD2GPq2aLbaMaZba1NnVjxKOqlGjJng8sgWqnu/R
-         XpSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788527362; x=1789132162;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1788527366; x=1789132166; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=PlQbIt4yNB0MJLP43bg8WECYkTcWZ9D6PtJHQo6kx6Y=;
-        b=GIjQGH2TKJGcH/C+vcA/5Lhs7Ut43aBrp61Qx9WdY3QN0EvvZGRSGdaETVZg0LamxA
-         gLGdKEi5zgVzLaQpx7XGROLn92cu8ZbcGDLOy/adek+Hl993ygMydLou08yKliTxkCVq
-         LhhD4AjGBDtFXicMZSIin7DqpkhbsibC+ld7OveIt2smp6+pMSTql110W7taScoZGbt7
-         BgofdZBnbWSHLp24h3cBDCWpYLXjey7ICs86FaBF7YFOjilKfkRojzLvs7CLryQR4maa
-         8ReUCChXpkP96LIMkfYr/mtEEqX0eyTuuORimqwiva4wwdmkaMT8tNr39wEIe55VMtGW
-         8LeA==
-X-Forwarded-Encrypted: i=1; AKwUvBxNONLwAh9xNTgOxCSDQ0HwfHhT7clccvk6v3FxlIeVH3eitAnEClVbKkKjdKD9TCc/eAPuPi4UJFg6KDE4hQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++nRJTi3Vkbbn9h12pGTsJv/aB4+OyMoAPHVfMPkvtFqerxLfUHq
-	Fr6t38psYym4zXMc480EsE1V69HRtIpRlU/iYpQDRMn5d5Y8K8h9Zyx0
-X-Gm-Gg: AYBFou1CddDYDQ5W1jLK4DDVPhkK+t0M7euKpXeWCAxoSaP21zhkQ9UTHf8ZpB1jeht
-	uySd2LznmdEPcFCK0vlpe8+m/zfXhw0S3e3jsa0K6jZtxE+hFdIiPblu7+P21aaBmVQbdDC3VSh
-	3p5gYmHPIjYyJyOesBwb43iEwKph6D+Rp/XeglTmJR+qxNyDB8MNIFhfr7IdtT5CzDz5n6YaRf3
-	xgFJrep0OKotCAlpg0c2TWM7ctU8/8WtayGe+lCyr8qGRMeON3MH4glYU7W3oBd+N1p2fExwwdZ
-	dPMBTRQRWz6Nv6S/HG9atEf8CPA7cHOJIvPQgpKt4TLLqdaBBKbQYiJZzP2pzl/VePkNAwXLDyK
-	LVK4cs/dKuYGUek7SwVrEZCZ4/MWBWddeNUHpxmTnh7AxWz0ZHv9gW5G0W+hcYtQ06We7rj8c1X
-	lzj4N5dPynwbTTI3CwFuxA1x89OhZCHwbs7pqWmJI/BsCx2I1yyrWwxelbYN27rtCFVakFG9rt2
-	vNX4J+dnBoq6jOSUOFP1ZMzq6TIdpFVdKVQgbbyu0EvbrVYSovncw==
-X-Received: by 2002:a05:600c:1c24:b0:49b:9241:7ff0 with SMTP id 5b1f17b1804b1-49cf7f4d9b7mr51861245e9.0.1788527362095;
-        Fri, 04 Sep 2026 06:09:22 -0700 (PDT)
+        bh=WkYtc8Zy+X1nQtQQfmPXyE49NKh145BAfNH3nX3cWHM=;
+        b=r3QdrH+m2BPWCjRLkaR96wkwXqfl3tVD01UfL2gb8tpnV3eNoFL0gs+oNsGXDaQy2S
+         sBtP7mFl5D+OPiF/L3sMmzZ8tzi3ZhEl/PGwqT1fNeiiIe7CcB6Ec6Ji2ltQFfmZOLQ+
+         Q34MLDbsDTutF0doM7VF16JxvoS3Kvj4iqNVbff7HnFnizAafGmp/AgFOqyAdxTu+XVD
+         eX1tlgwKElqn1S1BUszBw9fJuqRy5aHmKEG1cqSe9SRplKa5ufh+M2MFw6bg+/n/VOer
+         iXUg6MGz55Q3ENXbpEMI0qqQiaktFd8VhDEpAthCYi1h4HZNZkQh0Jr97QzmBYQGGqgG
+         203g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788527366; x=1789132166;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=WkYtc8Zy+X1nQtQQfmPXyE49NKh145BAfNH3nX3cWHM=;
+        b=GRDIrgX086uOK10+996e/aP4itCAoCulo3VC6Hy4+IgifnX+Lz/m4Usnq46yT36Gbn
+         dvT2xF/BbmKQ06jlbIK+JQldsbPyTkU99EWvtYq6yYhALTe8bkCtP9OzKAWF/2YFS5W1
+         s/IUWDSEz9bYz5m+HMd8koL69ZXx27DNc/3pxFqjxeMgPZZK40jQqHOcvW20BNS5U21S
+         XSNNacdj0I2QyGHDdjUFfd+qQMH+wthT+BtxvnzLUsW7GvGelW1G37w6s8LgecHNrbeW
+         uSyeKT+mrW5jpVzUTN5Bm+/vkRFoAFgd2OaNlqNMw+fQbVtHsGQkLBacPVCcW2frPyVc
+         hoPQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxPjx6qIvhucttE4drLwqVE+k0v6x4dNw2XCccxy3zHw+dXB4FGcC94W9LZSIhSp3W+I9WR5nKbPv5TcJRsaw==@lists.infradead.org
+X-Gm-Message-State: AFuF++nMueKR1WJQrjNKqwDJCZFXgwyB2jWAuGg85omSu9pChpdS/blu
+	fpBGdT5886kRcgyAUNIId1QmXileKPfK/V1+dZabPj8ghzhhbrWNj82H
+X-Gm-Gg: AYBFou1TCKGwi5Ozn5OEeIQk0iyKfQGA26gfi2mKm8+zNX19HMfKAbRZyXsF7x23W6/
+	dU3hfacnd1BaLQZ4AwOw/mVJM9V71JdhjGftHdq2xmUQ+XRLy/VqlPKLTSdn+QoWzEt31OKocOd
+	mNQxtYmkVM9ZZDdREKLf03O87A46xxA0zurCSQGk1gV7YeYbGUExvNnycqqqcWLSY7HMCd8Otuw
+	N95knpOW4UKMMUdwT8oohPckRmVtD5Y8Ua6EO5Zn+wM8MtU3qVseqqDv3HKVjKoT7mZR0U+de7e
+	efiA784CXsPn+1Ei7heqKtElV4fgwIWdyVAiWmH/XOH66oJjB1eeTRsNLHsL01Tt7axwuFaxJP7
+	l3cudC1MEZ89wIFRwV3wEScqiaXiTcaovkpWnYuiI4wtuqtuR0Tgmhu3ZkXXnGpdb6mn7nPrsCK
+	+VY4Pn+L7xzzCvMPRK5XPiIlH/gjiutxkEdsdub1KlqmtxaWTjeTFWrYStaaBNXM2B3d67Emg/s
+	j3mryZS0v4NKqPrLC5fWFs298q3BTTV/jtSLdyLzKi8b/gx78A2rf0Q5fa6VoLyATIIRsGyXrwl
+	eLL819gdW8dnbIo=
+X-Received: by 2002:a05:600c:34c5:b0:499:cef6:104c with SMTP id 5b1f17b1804b1-49cf823c012mr41127815e9.1.1788527365941;
+        Fri, 04 Sep 2026 06:09:25 -0700 (PDT)
 Received: from OrangePi5-Plus.BB-HOME (20014C4E1B871500CB6EF488A18F9C42.dsl.pool.telekom.hu. [2001:4c4e:1b87:1500:cb6e:f488:a18f:9c42])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49ce554d52esm135575435e9.3.2026.09.04.06.09.20
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49ce554d52esm135575435e9.3.2026.09.04.06.09.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 06:09:21 -0700 (PDT)
+        Fri, 04 Sep 2026 06:09:25 -0700 (PDT)
 From: Igor Paunovic <royalnet026@gmail.com>
 To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
 	Oded Gabbay <ogabbay@kernel.org>,
@@ -88,14 +90,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Igor Paunovic <royalnet026@gmail.com>
-Subject: [PATCH 0/7] accel/rocket: DVFS for the RK3588 NPU
-Date: Fri,  4 Sep 2026 15:08:51 +0200
-Message-ID: <20260904130858.27803-1-royalnet026@gmail.com>
+Subject: [PATCH 2/7] dt-bindings: npu: rockchip: allow DVFS and thermal properties
+Date: Fri,  4 Sep 2026 15:08:53 +0200
+Message-ID: <20260904130858.27803-3-royalnet026@gmail.com>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260904130858.27803-1-royalnet026@gmail.com>
+References: <20260904130858.27803-1-royalnet026@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_060924_424780_3C03E9BE 
-X-CRM114-Status: GOOD (  44.61  )
+X-CRM114-CacheID: sfid-20260904_060928_003339_1A641E78 
+X-CRM114-Status: GOOD (  13.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,249 +116,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rocket driver runs the NPU at whatever rate the devicetree pinned it to.
-On the RK3588 that is 200 MHz, out of the 1 GHz the hardware reaches, and the
-firmware will change it on request. This series adds devfreq so the driver
-scales the clock with the load, plus the OPP table and the thermal plumbing
-that go with it.
+The three NPU cores on the RK3588 are fed by a single clock and a single
+supply, and the firmware accepts a fixed set of rates for that clock.
+Describing those rates as an operating-points-v2 table is what lets a
+driver scale the NPU instead of leaving it at whatever rate the bootloader
+set, so allow the property on the core node.
 
-Hardware constraint
--------------------
+Throttling the NPU from a thermal zone needs the same node to be usable as
+a cooling device, so allow #cooling-cells too.
 
-The three cores share one clock and one supply, so they cannot be scaled
-apart, and there is exactly one devfreq device for all of them.
+Both properties belong on the core that carries the shared clock, not on
+all three: the cores have no clock of their own and cannot be scaled or
+throttled independently. Naming one representative node for a shared
+frequency domain is the established shape, as in "Cpufreq cooling device
+on CPU0" in
+Documentation/devicetree/bindings/thermal/thermal-cooling-devices.yaml.
 
-The clock is generated by a PVTPLL that sits inside the NPU power islands.
-An island powered up while the clock is above the rate the bootloader left
-never acknowledges the power-on, and the first register access into it
-afterwards takes an asynchronous SError. Lowering the rate is safe at any
-time: the firmware serves the boot rate from GPLL and writes only CRU clock
-selectors to get there.
+The schema cannot enforce that placement, because all three cores share a
+compatible string and a node name pattern, so which core carries them
+stays a devicetree convention. That is the same situation as for CPU
+cooling, where cpus.yaml does not restrict #cooling-cells to cpu@0 either.
 
-The firmware also accepts only the rates in its own PVTPLL table - 300 to
-1000 MHz in 100 MHz steps, plus 200 MHz off GPLL. Any other rate is
-rejected outright, which is why patch 3/7 names exactly those nine.
+The example gains #cooling-cells; the operating-points-v2 property is
+exercised by the RK3588 devicetree later in this series.
 
-Design
-------
+Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+Assisted-by: LLM checkpatch dt_binding_check
+---
+ .../bindings/npu/rockchip,rk3588-rknn-core.yaml        | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-The devfreq device hangs off the core that carries the OPP table in the
-devicetree, found through the property and not through the core index: the
-index is handed out in probe order, which is not the order the cores are
-written in.
-
-Before the rate goes up, every core is runtime resumed, and those references
-are held for as long as the clock stays raised. While they are held no core
-can suspend, so no island can transition at all - that is what makes a
-raised clock safe rather than merely unlikely to be caught out. At the boot
-rate the references are dropped and runtime PM behaves as it did before.
-The cost is that a boosted NPU does not power-gate individual cores; what
-that costs in milliwatts has not been measured, and I would rather say so
-than guess.
-
-Utilisation is aggregated as the maximum over the cores rather than the sum,
-because the clock has to satisfy the busiest of them.
-
-devfreq_suspend_device() and devfreq_resume_device() are deliberately not
-called, which is a deviation from panfrost, panthor, lima and msm. See the
-commit message of 5/7: they end in cancel_delayed_work_sync() on the
-governor worker, and that worker is what calls back into ->target(), which
-resumes every core.
-
-Testing
--------
-
-Measured on an Orange Pi 5 Plus with this series applied: MobileNetV1
-through Teflon, three 20-second blocks per arm, pinned to one CPU, with a
-bit-exact oracle checked on every inference.
-
-  200 MHz, userspace      91.1 inf/s    rail 700 mV
-  1000 MHz, userspace    234.0 inf/s    rail 850 mV
-  simple_ondemand        231.2 inf/s    rail 700-850 mV
-  200 MHz again           91.0 inf/s    (drift 0.999)
-
-That is 2.57x for the fixed maximum and 2.54x for the governor, which
-costs 1.2 % against pinning. The oracle passed bit-exact in all four arms,
-the interrupt count per inference was identical in all four, and the
-kernel log has nothing from this driver for the whole run.
-
-The rail voltages are read back from vdd_npu_s0 inside each arm. Nothing
-in the test sets them: they are the OPP core following the table in 3/7.
-In a separate run the power islands were cycled five times at 700 mV
-without an SError, and at 1000 MHz all three cores stay runtime resumed,
-0 of 3 suspended, which is the hold described under Design doing its job.
-
-Under simple_ondemand the governor spent most of the run at 900 MHz rather
-than at 1000 - 290 samples against 145, three transitions - and still
-landed within 1.2 % of the pinned maximum.
-
-Everything above is one inference thread, which cannot see a fault that
-only appears when several cores compute at once. Jiaxing Hu found exactly
-that on the RK3576, where two cores in flight together corrupt single
-words of the second core's output, and the cure is voltage: the rate his
-board came up at wanted 800 mV and had 750. So the same oracle was run
-again with three concurrent clients, each checking its own output
-bit-exact, at the two top rates in the table:
-
-  900 MHz, rail 800 mV    3 x 199 inf/s, 598 total, all bit-exact
-  1000 MHz, rail 850 mV   3 x 204 inf/s, 611 total, all bit-exact
-
-Single-client control on the same rates was 232 and 240 inf/s, so the
-aggregate is 2.57x and 2.55x of one client - the cores really were
-computing together, which is what makes the bit-exact result mean
-anything. Rail voltages read back during the run, set by the OPP core.
-
-kernel 7.3.0-rc1 plus this series, rocket srcversion
-C1FE916B551FCF00F0B2D81, BL31 v2.12.0-10-g70d814213.
-
-For anyone comparing against numbers I posted earlier: an out-of-tree
-devfreq module on 7.2.0-rc7 measured 2.47x for the governor. The
-difference is not the NPU. Time spent NPU-side per inference is the same
-to within 1 % (3.02 ms then, 3.00 ms now); what moved is the CPU share of
-the wall clock, 32.5 % down to 29.5 %. The ratio improved because the host
-side got cheaper, not because the accelerator got faster.
-
-Build-tested with W=1, with sparse, and with CONFIG_DEVFREQ_THERMAL=n, at
-every patch in the series and not only at the tip; dt_binding_check and
-CHECK_DTBS pass on the binding and on both RK3588 boards here. checkpatch
---strict is clean on six of the seven; on 5/7 it asks whether MAINTAINERS
-needs updating for the new files, which it does not - the driver is already
-covered by its existing entry.
-
-Not done, and worth saying: the thermal path has not been exercised. 85
-degrees could not be reached on an NPU workload with the fan curve on this
-board, so what is verified about 7/7 is that the zone parses and binds, not
-that throttling engages at temperature.
-
-Routing
--------
-
-The driver patches and the binding go through drm-misc; the two dts patches
-(3/7 and 7/7) belong to Heiko's rockchip tree.
-
-Ordering matters: the binding has additionalProperties: false, so 3/7 and
-7/7 must not land before 2/7 or CHECK_DTBS breaks. The reverse asymmetry is
-harmless - without an OPP table in the devicetree the driver simply returns
-without a devfreq device, and a cooling map with no cooling device is left
-unresolved by thermal_of_should_bind().
-
-If it is easier, I am happy to resend the two dts patches separately once
-the driver side has landed.
-
-Dependency
-----------
-
-This series needs "accel/rocket: search every core slot when a core is
-removed", sent separately as a fix:
-https://lore.kernel.org/linux-rockchip/20260904125936.26234-1-royalnet026@gmail.com/
-5/7 keys the devfreq setup on rdev->max_cores, and that field arrives with
-the fix rather than with this series. Without it 5/7 does not build.
-
-1/7 is also carried as 01/14 in Jiaxing Hu's RK3576 series; whichever lands
-first, the other drops it. It is included here so this series is
-self-contained and reviewable on its own.
-
-The series applies to drm-misc-next. On top of that RK3576 series, 2/7
-through 4/7 apply with git am -3 as they are, and 5/7 needs only its two
-job-path hooks moved into rocket_job_next_locked(), which that series
-factors out. I am happy to do that rebase in whichever order suits.
-
-Questions
----------
-
-Q1. Where should the OPP table live when three devices share a clock? It is
-    on rknn_core_0 here, because the devfreq device hangs off that core and
-    of_devfreq_cooling_register_power() takes dev->of_node. The alternative
-    is all three nodes with opp-shared, which has a precedent on this very
-    SoC in cluster0_opp_table. I do not have a strong opinion.
-
-Q2. Is maximum-over-cores the right aggregation, or should it be a summed
-    busy count?
-
-Q3. The driver returns without devfreq when there is no OPP table, rather
-    than failing probe. That matches panfrost and lima. Is that the policy
-    you want here?
-
-Q4. The governor thresholds are a starting point copied from the other
-    accelerators, not a measurement. Inference workloads have not been
-    profiled against them.
-
-Q5. There is no energy model: the NPU has no measured
-    dynamic-power-coefficient and I would rather ship none than invent one.
-    Throttling is therefore step-wise.
-
-Q6. All three core nodes name the same npu-supply, but only the core with
-    the OPP table hands it to the OPP core. Is that worth changing?
-
-Q7. assigned-clock-rates stays on all three nodes, and I am no longer
-    sure it should. of_clk_set_defaults() runs on every probe over the
-    shared clock, so re-probing one core while devfreq holds a raised
-    rate would quietly lower it - which I have not managed to
-    reproduce. But Jiaxing Hu reports that on the RK3576 an
-    assigned-clock-rates on the SCMI clock in the NPU node hangs the
-    board before the console comes up, with no output at all, and that
-    the vendor driver never writes that rate from DT either:
-    rockchip_opp_config_clks() returns early for an SCMI clock on a
-    device that is not runtime active. That is a good deal worse than
-    the case I was worried about. Dropping the property is a small
-    patch on top, and with the OPP table carrying the rate I do not
-    think anything here needs it. I have left it in only because a
-    devicetree with no OPP table still wants a rate that is correct at
-    whatever voltage the board boots with.
-
-Credits
--------
-
-Nicolas Dufresne arrived at the same rates and voltages independently in a
-proof of concept he never posted, and said to take whatever was useful from
-it. His version differs: opp-suspend on the lowest entry, one shared table
-across all three cores, and no assigned-clock-rates pins.
-Link: https://gitlab.collabora.com/nicolas/linux/-/commits/rock5b-npu-poc-4
-
-Tomeu Vizoso agreed to the full-range table with a per-board cap.
-
-Jiaxing Hu carried 1/7 in the RK3576 series. If you have RK3576 hardware, I
-would be glad of a test of 4/7 there: it reads the boot rate rather than
-assuming one, which should be the right behaviour on a devicetree that does
-not pin the clock.
-
-The Assisted-by: LLM tags on the patches are Claude Opus 5. We wrote the
-driver code and these commit messages together, over a long back-and-forth
-in which it talked me out of more than one design before it reached a
-compiler, and in which I threw out plenty of what it proposed. The board,
-every measurement and every boot in Testing above, the decision to send
-this, and the responsibility for all of it are mine.
-
-Igor Paunovic (7):
-  accel/rocket: request the core clocks by name
-  dt-bindings: npu: rockchip: allow DVFS and thermal properties
-  arm64: dts: rockchip: rk3588: add an OPP table for the NPU
-  accel/rocket: restore the NPU clock boot rate before powering the
-    cores down
-  accel/rocket: add devfreq support
-  accel/rocket: register a devfreq cooling device
-  arm64: dts: rockchip: rk3588: add passive cooling to the NPU thermal
-    zone
-
- .../npu/rockchip,rk3588-rknn-core.yaml        |  10 +
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  17 +-
- arch/arm64/boot/dts/rockchip/rk3588-opp.dtsi  |  45 ++
- drivers/accel/rocket/Kconfig                  |   2 +
- drivers/accel/rocket/Makefile                 |   1 +
- drivers/accel/rocket/rocket_core.c            |  16 +
- drivers/accel/rocket/rocket_core.h            |  11 +
- drivers/accel/rocket/rocket_devfreq.c         | 482 ++++++++++++++++++
- drivers/accel/rocket/rocket_devfreq.h         |  57 +++
- drivers/accel/rocket/rocket_device.h          |  13 +
- drivers/accel/rocket/rocket_drv.c             | 110 +++-
- drivers/accel/rocket/rocket_job.c             |   7 +
- 12 files changed, 763 insertions(+), 8 deletions(-)
- create mode 100644 drivers/accel/rocket/rocket_devfreq.c
- create mode 100644 drivers/accel/rocket/rocket_devfreq.h
-
-
-base-commit: a9f09b5ea0c3db1e2d4c0f8d3ebdd612d8aa0366
-prerequisite-patch-id: 519bcdfdde80d902309c8346f749ebc4bb6b29c0
+diff --git a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+index caca2a4903cd1..595aacfbf8608 100644
+--- a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
++++ b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+@@ -42,6 +42,13 @@ properties:
+       - const: npu
+       - const: pclk
+ 
++  "#cooling-cells":
++    description:
++      Present on the core that drives the shared NPU clock, which is the one
++      the operating-points-v2 table below is attached to. The other cores
++      cannot be throttled independently of it.
++    const: 2
++
+   interrupts:
+     maxItems: 1
+ 
+@@ -50,6 +57,8 @@ properties:
+ 
+   npu-supply: true
+ 
++  operating-points-v2: true
++
+   power-domains:
+     maxItems: 1
+ 
+@@ -100,6 +109,7 @@ examples:
+         clocks = <&cru ACLK_NPU0>, <&cru HCLK_NPU0>,
+                  <&scmi_clk SCMI_CLK_NPU>, <&cru PCLK_NPU_ROOT>;
+         clock-names = "aclk", "hclk", "npu", "pclk";
++        #cooling-cells = <2>;
+         interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
+         iommus = <&rknn_mmu_0>;
+         npu-supply = <&vdd_npu_s0>;
 -- 
 2.43.0
 
