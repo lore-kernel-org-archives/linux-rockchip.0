@@ -4,73 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA465C79F94
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2026 11:21:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5748DC624D3
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2026 13:25:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Babyo+XgCer0u6r4LLU/67EFJH6lOe3wS68T0ZOiic=; b=E//1LjeAj/RxYi
-	YiElUAoZ8sjWXkm+ptLB01qX4AHsMuw/IJcHZVnTupI4sixPfJsjLubk7bVTYxWuiAZmFfEuTa+MA
-	CUcSvd1vCHd4gso1zypo4DTsxpYNQUlYmvaYPW2mAhQTN+x4LpToK9JgC0ZcXOByWvWp0lNSuCFhV
-	92qkkfIymLposdmRJX0eWBzLYmV/MOajCB5ijulwVF10l8MLLVVowGwDgQ9NDQ3gY3E4jk/N/iGpm
-	b+cnYpsy/964lwXPXn9pMlosnfYcgHVgqYLorkjKHJAzRFHw4EwFGR54+FCncDf2fj5YiIpWbcyAA
-	8zW5S1vYC/Jmhj8K5F7w==;
+	List-Owner; bh=5wS2saszwSo+Y2ZXQkwIdVA14wdoeICZ1LC+F6MvI0I=; b=zX6W3aSndLcR0w
+	xULXGs5wtSRN/ftyOPKbbOsv2lg/KiVLSGdx3POb6oj+IDxhWKA+tdiMjJd4QXnVd+gPJIdpGl+HW
+	fUuLa1WBIgXHwgEtuGniiGyp3MXi7n5NfE/W/8TFmROsIEPqLW9TkWVdFcu88HU2/op7+tuKQzVsY
+	BJh6PXRGKt647mRVFyAFGWGXQ9cTYLyAtXGxQofte1fM4jdtClvZsj0X3MzqI2WKFgz7MjBACM+2b
+	j1Sz7QfNh6KcNUQFXcfdjQ/O4n4PepDsXh891aGeE5pG8hq9Q16nQ88kJWXfhfiz0qAsKh6+YiR0B
+	rT+5wGJmm3INh2FL8bHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2oT3-000000040qZ-0nkJ;
-	Sat, 05 Sep 2026 11:21:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x2qOc-0000000468I-0zFq;
+	Sat, 05 Sep 2026 13:25:26 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2oT0-000000040oM-1oDd;
-	Sat, 05 Sep 2026 11:21:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 01CF0447C2;
-	Sat,  5 Sep 2026 11:21:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D48B4C2BCFA;
-	Sat,  5 Sep 2026 11:21:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1788607308;
-	bh=4OXdcUadkqYn49ct+gzCIj7UT15crU8EfSGFl8O/76s=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=j0jrlc3h7ffvr32MOkDU7RosmT9C84+wzNqF9iu1Qq+YJidnHM6aJXxHUqzMiB+GR
-	 swpSE4FZWiniM6XcIbBm2QiaHUHBbQTrrIieZj1laaAWmfpqD3nVReRlTDOydcqDuc
-	 uVpbwtilsjlmpmwzJguQYgGhHKzsmUxy5Oha4m4HBsOxJjeaF2u3f2msXerrP5bg9m
-	 Mkn2bPiPapDFJj2rH3JmunO5XOEQGNIzz3oQEW+EQOgvJAtHxIBob7Ofj9QAONeyjf
-	 ogCkcEUmqZzP1iQvl7+xvpye8mrjxbpx/1ByiYfjhtz4iQw4YB+jmpJkFxc+hnWfEx
-	 UVuJm5aQ5N2Pg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5E3EC624D3;
-	Sat,  5 Sep 2026 11:21:48 +0000 (UTC)
-From: =?utf-8?q?=E5=AE=89=E5=AE=B9_via_B4_Relay?= <devnull+HystericalDragons.proton.me@kernel.org>
-Date: Sat, 05 Sep 2026 19:17:27 +0800
-Subject: [PATCH 2/2] arm64: dts: rockchip: Add devicetree for the
- FriendlyElec NanoPi R28S
+	id 1x2qOY-0000000467G-1Jcd
+	for linux-rockchip@lists.infradead.org;
+	Sat, 05 Sep 2026 13:25:24 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-855d2bfae95so3550453b3a.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 05 Sep 2026 06:25:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=furiosa.ai; s=google; t=1788614718; x=1789219518; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=UCPQY2s7Li9KbXRAy98AdJWgLwoyUR6+yD7sEQfOnDg=;
+        b=nQoGuLcpBE1eszb7gXhQNtgJrnMvYuLvOQPYNl4LzObHAzREvVlkejJTv6P23ySqqe
+         ybGy+aL3pjRZjzv9+ObJO9uYfV3b9+E3pYjFXu31FZuh5SUKpPrGskrzpLuNKQwJgzqP
+         rh2nnCSU/l6QTkrUvozQudw5iTx2QjMRGCpwE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788614718; x=1789219518;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=UCPQY2s7Li9KbXRAy98AdJWgLwoyUR6+yD7sEQfOnDg=;
+        b=OKimRzjesWIpxQ/UR13ZAwVUHfJq6/BaU+1Sk9+TvoOIk3qoxjzIKKwK+86qoSh72U
+         EnalvjFnpeLq/QNxx4KvXLXN3gvw9+0r8w0Qwl7S3vcp1Oaw7oXujOSJJ0ZtRCt++ZF9
+         P2cqTqo3X0dbMGY8xtXPiR/r7Dxqun3lPks2In3ixchpR5GplkTyauu3mAq9UZBaSEN7
+         o7eKpQWxVmlG2HTj2/t4c03o6aopcb8MH8td8/PFcxhrU8mqPNWDs8MidxGQXMEdQ+em
+         hJ+rz9mzMsqSglTOHyzC329EDzNehlT8Ss1HinACh3caHDz7/fjx1XGwYFjwT6PAiJLk
+         3Qqg==
+X-Forwarded-Encrypted: i=1; AKwUvBwVh3NBXSzos5mKRH6Pgtqnfs3L7kzT4E+QKwTXWZgHOFmL0MJAZZjVGSEb0W6VQsGm4TbtNJL4XEr3/lFQuQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++m1Ka6doB2dhB80AS4/9HFzDoyJQrQ5kcr6fIq5xg/qnpz5rY3J
+	BUnZzGQEKSynCpI/lOOacEwoM81l1e8wHOVKG6Jpj1GdGi6E8mWTYPSKov1OvcVHMzQ=
+X-Gm-Gg: AYBFou2YY+WXdDy4/kQ8LqG4FiZS3gWYinQaoWXBV1OrUMOkdZ3DnuXAv8lBloyFMFX
+	9NUvk7CSxWZj0u/HIQiuIXB754yVYQO+aF2yeZ6zB3LxRFT/0WoxEKPQffzqj59C0e7p1Av+CyZ
+	4zs8V2qdmtzhEZy4rFXeIyi8wk2wR0sEazwA+uOSS8jAkdvkYZ1H78RbILrTxWb1kIcSiHZRf8n
+	68xCIeK/LtVZsUzVcgOQYWf3lBUT0mAPgvIMCvH4Y22Frh+9ZuLk9bpibr/f1UJNsqqHHosVa94
+	+auoLywKhL1IMcjXm1nkArLu4I7OKImT8Yls+5yDgtejF1/k8ujR5goeaCrue404u8NkNpYVcUw
+	VSgMN7/r1KOLlDFCwR2Hp8UiPdxxl30A6HRRvKRpxphNMPiuKJPAWL4KHrmZOspJSVdiNLPSzrg
+	uokZLIoGSKGlrbfQY/J1mWON0V/dkLsqsJ42sCNbjZ57nF7++1GRl0jY77neHps/Fd
+X-Received: by 2002:a05:6a21:a395:b0:3d3:aed2:6f28 with SMTP id adf61e73a8af0-3da2168b2c9mr18634503637.28.1788614718057;
+        Sat, 05 Sep 2026 06:25:18 -0700 (PDT)
+Received: from rock-5b-plus ([61.83.209.48])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cc465376831sm903641a12.9.2026.09.05.06.25.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 05 Sep 2026 06:25:17 -0700 (PDT)
+Date: Sat, 5 Sep 2026 22:25:02 +0900
+From: Sidong Yang <sidong.yang@furiosa.ai>
+To: Igor Paunovic <royalnet026@gmail.com>
+Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Oded Gabbay <ogabbay@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Jiaxing Hu <gahing@gahingwoo.com>, 
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Subject: Re: [PATCH] accel/rocket: search every core slot when a core is
+ removed
+Message-ID: <apwUewaRnoTNXHCt@rock-5b-plus>
+References: <20260904125936.26234-1-royalnet026@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20260905-r28s-upstream-v1-2-f68d5389269a@proton.me>
-References: <20260905-r28s-upstream-v1-0-f68d5389269a@proton.me>
-In-Reply-To: <20260905-r28s-upstream-v1-0-f68d5389269a@proton.me>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- jensen <jensenhuang@friendlyarm.com>, 
- =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=10860;
- i=HystericalDragons@proton.me; h=from:subject:message-id;
- bh=bBkfQEZLPML6oFVmq/Ae99gc7UKHqATJhP5Ix2SxDTw=;
- b=owGbwMvMwCUmepz3XUtTHjvjabUkhqzZv72Pegclf/15dHYbayUnw4JJy6feuVzv4fa7p3vn3
- wpLjjTtjlIWBjEuBlkxRRbZTdWRQquiZxaxSB2HmcPKBDKEgYtTACZS4cfw37vhYOZKaeM5bLMj
- VCz3L5U231CWtDMnt0RQolgjqWqZCiPDvpD6oEc1ibcDvxxcpmBaHJUX7yK9/dCkizc62OeHrdR
- kBgA=
-X-Developer-Key: i=HystericalDragons@proton.me; a=openpgp;
- fpr=1DB27B5912AA5B9972041AC715C70DEE84826E07
-X-Endpoint-Received: by B4 Relay for HystericalDragons@proton.me/default
- with auth_id=1004
-X-Original-From: =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
+Content-Disposition: inline
+In-Reply-To: <20260904125936.26234-1-royalnet026@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260905_062522_440209_CB2B69CE 
+X-CRM114-Status: GOOD (  35.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,196 +95,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: HystericalDragons@proton.me
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTog5a6J5a65IDxIeXN0ZXJpY2FsRHJhZ29uc0Bwcm90b24ubWU+CgpUaGUgTmFub1BpIFIy
-OFMgaXMgYSBkdWFsIGdpZ2FiaXQgRXRoZXJuZXQgcm91dGVyIGJvYXJkIGJhc2VkIG9uIHRoZQpS
-b2NrY2hpcCBSSzM1MjggU29DLCBkZXNpZ25lZCBhbmQgZGV2ZWxvcGVkIGJ5IEZyaWVuZGx5RWxl
-Yy4KClNwZWNpZmljYXRpb246Ci0gUm9ja2NoaXAgUkszNTI4Ci0gMUdCIFJBTQotIGVNTUMgc29j
-a2V0IChvcHRpb25hbCkKLSBNaWNyb1NEIHNsb3QKLSAxeCAxMDAwQmFzZS1UIChHTUFDMSwgUmVh
-bHRlayBSVEw4MjExRikKLSAxeCAxMDAwQmFzZS1UIChQQ0llLCBSZWFsdGVrIFJUTDgxMTFIKQot
-IEFJQ1NlbWkgQUlDODgwMEQ4MCBTRElPIFdpRmkKLSAzeCBMRURzIChTWVMsIExBTiwgV0FOKQot
-IDF4IFVTQiAyLjAgVHlwZS1DLCBwZXJpcGhlcmFsIG9ubHksIHNoYXJlZCB3aXRoIHRoZSA1ViBw
-b3dlciBpbnB1dAotIFJlc2V0IGFuZCBNYXNrUk9NIGJ1dHRvbnMKLSBIYW95dSBIWU04NTYzIFJU
-QwotIDF4IFVTQiBUeXBlLUMgZGVidWcgVUFSVCAob25ib2FyZCBXQ0ggQ0gzNDBFKQoKQXNzaXN0
-ZWQtYnk6IExMTQpTaWduZWQtb2ZmLWJ5OiDlronlrrkgPEh5c3RlcmljYWxEcmFnb25zQHByb3Rv
-bi5tZT4KLS0tCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAg
-ICAgICB8ICAgMSArCiAuLi4vYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LW5hbm9waS1y
-MjhzLmR0cyB8IDQwNCArKysrKysrKysrKysrKysrKysrKysKIDIgZmlsZXMgY2hhbmdlZCwgNDA1
-IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L01ha2VmaWxlIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZQppbmRleCBi
-Njc3OTE0Y2QzLi41MWE5ODg5MDg4IDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL01ha2VmaWxlCisrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZp
-bGUKQEAgLTk0LDYgKzk0LDcgQEAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzM5
-OS12aWNoYXJhay12YWFtYW4uZHRiCiBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmsz
-Mzk5cHJvLXJvY2stcGktbjEwLmR0YgogZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJr
-MzUyOC1hcm1zb20tc2lnZTEuZHRiCiBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmsz
-NTI4LWhpbmxpbmstaDI4ay5kdGIKK2R0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1
-MjgtbmFub3BpLXIyOHMuZHRiCiBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTI4
-LW5hbm9waS16ZXJvMi5kdGIKIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1Mjgt
-cmFkeGEtZTIwYy5kdGIKIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1Mjgtcm9j
-ay0yYS5kdGIKZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4
-LW5hbm9waS1yMjhzLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LW5h
-bm9waS1yMjhzLmR0cwpuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwMDAwLi5iMmNi
-MTI0ZWU5Ci0tLSAvZGV2L251bGwKKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
-azM1MjgtbmFub3BpLXIyOHMuZHRzCkBAIC0wLDAgKzEsNDA0IEBACisvLyBTUERYLUxpY2Vuc2Ut
-SWRlbnRpZmllcjogKEdQTC0yLjArIE9SIE1JVCkKKy8qCisgKiBDb3B5cmlnaHQgKGMpIDIwMjIg
-Um9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBMdGQuCisgKiBDb3B5cmlnaHQgKGMpIDIwMjYgRnJp
-ZW5kbHlFbGVjIENvbXB1dGVyIFRlY2guIENvLiwgTHRkLgorICogQ29weXJpZ2h0IChjKSAyMDI2
-IOWuieWuuSA8SHlzdGVyaWNhbERyYWdvbnNAcHJvdG9uLm1lPgorICovCisKKy9kdHMtdjEvOwor
-CisjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW5wdXQvaW5wdXQuaD4KKyNpbmNsdWRlIDxkdC1iaW5k
-aW5ncy9sZWRzL2NvbW1vbi5oPgorI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3B3bS9wd20uaD4KKyNp
-bmNsdWRlICJyazM1MjguZHRzaSIKKworLyB7CisJbW9kZWwgPSAiRnJpZW5kbHlFbGVjIE5hbm9Q
-aSBSMjhTIjsKKwljb21wYXRpYmxlID0gImZyaWVuZGx5YXJtLG5hbm9waS1yMjhzIiwgInJvY2tj
-aGlwLHJrMzUyOCI7CisKKwlhbGlhc2VzIHsKKwkJZXRoZXJuZXQwID0gJmdtYWMxOworCQlpMmMx
-ID0gJmkyYzE7CisJCW1tYzAgPSAmc2RoY2k7CisJCW1tYzEgPSAmc2RtbWM7CisJCW1tYzIgPSAm
-c2RpbzA7CisJCXNlcmlhbDAgPSAmdWFydDA7CisJfTsKKworCWNob3NlbiB7CisJCXN0ZG91dC1w
-YXRoID0gInNlcmlhbDA6MTUwMDAwMG44IjsKKwl9OworCisJYWRjLWtleXMgeworCQljb21wYXRp
-YmxlID0gImFkYy1rZXlzIjsKKwkJaW8tY2hhbm5lbHMgPSA8JnNhcmFkYyAwPjsKKwkJaW8tY2hh
-bm5lbC1uYW1lcyA9ICJidXR0b25zIjsKKwkJa2V5dXAtdGhyZXNob2xkLW1pY3Jvdm9sdCA9IDwx
-ODAwMDAwPjsKKwkJcG9sbC1pbnRlcnZhbCA9IDwxMDA+OworCisJCWJ1dHRvbi1tYXNrcm9tIHsK
-KwkJCWxhYmVsID0gIk1BU0siOworCQkJbGludXgsY29kZSA9IDxLRVlfU0VUVVA+OworCQkJcHJl
-c3MtdGhyZXNob2xkLW1pY3Jvdm9sdCA9IDwwPjsKKwkJfTsKKwl9OworCisJZ3Bpby1rZXlzIHsK
-KwkJY29tcGF0aWJsZSA9ICJncGlvLWtleXMiOworCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQi
-OworCQlwaW5jdHJsLTAgPSA8JnVzZXJfa2V5PjsKKworCQlidXR0b24tcmVzZXQgeworCQkJZGVi
-b3VuY2UtaW50ZXJ2YWwgPSA8NTA+OworCQkJZ3Bpb3MgPSA8JmdwaW80IFJLX1BCMiBHUElPX0FD
-VElWRV9MT1c+OworCQkJbGFiZWwgPSAicmVzZXQiOworCQkJbGludXgsY29kZSA9IDxLRVlfUkVT
-VEFSVD47CisJCQl3YWtldXAtc291cmNlOworCQl9OworCX07CisKKwlsZWRzIHsKKwkJY29tcGF0
-aWJsZSA9ICJncGlvLWxlZHMiOworCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCQlwaW5j
-dHJsLTAgPSA8Jmxhbl9sZWRfZz4sIDwmc3lzX2xlZF9yPiwgPCZ3YW5fbGVkX2c+OworCisJCWxl
-ZC1sYW4geworCQkJY29sb3IgPSA8TEVEX0NPTE9SX0lEX0dSRUVOPjsKKwkJCWRlZmF1bHQtc3Rh
-dGUgPSAib2ZmIjsKKwkJCWZ1bmN0aW9uID0gTEVEX0ZVTkNUSU9OX0xBTjsKKwkJCWdwaW9zID0g
-PCZncGlvNCBSS19QQjMgR1BJT19BQ1RJVkVfSElHSD47CisJCQlsaW51eCxkZWZhdWx0LXRyaWdn
-ZXIgPSAibmV0ZGV2IjsKKwkJfTsKKworCQlsZWQtc3lzIHsKKwkJCWNvbG9yID0gPExFRF9DT0xP
-Ul9JRF9SRUQ+OworCQkJZGVmYXVsdC1zdGF0ZSA9ICJvbiI7CisJCQlmdW5jdGlvbiA9IExFRF9G
-VU5DVElPTl9IRUFSVEJFQVQ7CisJCQlncGlvcyA9IDwmZ3BpbzQgUktfUEIwIEdQSU9fQUNUSVZF
-X0hJR0g+OworCQkJbGludXgsZGVmYXVsdC10cmlnZ2VyID0gImhlYXJ0YmVhdCI7CisJCX07CisK
-KwkJbGVkLXdhbiB7CisJCQljb2xvciA9IDxMRURfQ09MT1JfSURfR1JFRU4+OworCQkJZGVmYXVs
-dC1zdGF0ZSA9ICJvZmYiOworCQkJZnVuY3Rpb24gPSBMRURfRlVOQ1RJT05fV0FOOworCQkJZ3Bp
-b3MgPSA8JmdwaW80IFJLX1BCMSBHUElPX0FDVElWRV9ISUdIPjsKKwkJCWxpbnV4LGRlZmF1bHQt
-dHJpZ2dlciA9ICJuZXRkZXYiOworCQl9OworCX07CisKKwlzZGlvX3B3cnNlcTogc2Rpby1wd3Jz
-ZXEgeworCQljb21wYXRpYmxlID0gIm1tYy1wd3JzZXEtc2ltcGxlIjsKKwkJcGluY3RybC1uYW1l
-cyA9ICJkZWZhdWx0IjsKKwkJcGluY3RybC0wID0gPCZ3aWZpX2VuYWJsZV9oPjsKKwkJcG9zdC1w
-b3dlci1vbi1kZWxheS1tcyA9IDwxMDA+OworCQlyZXNldC1ncGlvcyA9IDwmZ3BpbzEgUktfUEMy
-IEdQSU9fQUNUSVZFX0xPVz47CisJfTsKKworCXZkZF8wdjk6IHJlZ3VsYXRvci0wdjktdmRkIHsK
-KwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOworCQlyZWd1bGF0b3ItbmFtZSA9ICJ2
-ZGRfMHY5IjsKKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKKwkJcmVndWxhdG9yLWJvb3Qtb247CisJ
-CXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDkwMDAwMD47CisJCXJlZ3VsYXRvci1tYXgtbWlj
-cm92b2x0ID0gPDkwMDAwMD47CisJCXZpbi1zdXBwbHkgPSA8JnZjYzV2MF9zeXM+OworCX07CisK
-Kwl2Y2NfZGRyOiByZWd1bGF0b3ItMXYxLXZjYy1kZHIgeworCQljb21wYXRpYmxlID0gInJlZ3Vs
-YXRvci1maXhlZCI7CisJCXJlZ3VsYXRvci1uYW1lID0gInZjY19kZHIiOworCQlyZWd1bGF0b3It
-YWx3YXlzLW9uOworCQlyZWd1bGF0b3ItYm9vdC1vbjsKKwkJcmVndWxhdG9yLW1pbi1taWNyb3Zv
-bHQgPSA8MTEwMDAwMD47CisJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDExMDAwMDA+Owor
-CQl2aW4tc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKKwl9OworCisJdmNjXzF2ODogcmVndWxhdG9y
-LTF2OC12Y2MgeworCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7CisJCXJlZ3VsYXRv
-ci1uYW1lID0gInZjY18xdjgiOworCQlyZWd1bGF0b3ItYWx3YXlzLW9uOworCQlyZWd1bGF0b3It
-Ym9vdC1vbjsKKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MTgwMDAwMD47CisJCXJlZ3Vs
-YXRvci1tYXgtbWljcm92b2x0ID0gPDE4MDAwMDA+OworCQl2aW4tc3VwcGx5ID0gPCZ2Y2NfM3Yz
-PjsKKwl9OworCisJdmNjXzN2MzogcmVndWxhdG9yLTN2My12Y2MgeworCQljb21wYXRpYmxlID0g
-InJlZ3VsYXRvci1maXhlZCI7CisJCXJlZ3VsYXRvci1uYW1lID0gInZjY18zdjMiOworCQlyZWd1
-bGF0b3ItYWx3YXlzLW9uOworCQlyZWd1bGF0b3ItYm9vdC1vbjsKKwkJcmVndWxhdG9yLW1pbi1t
-aWNyb3ZvbHQgPSA8MzMwMDAwMD47CisJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAw
-MDA+OworCQl2aW4tc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKKwl9OworCisJdmNjM3YzX3NkOiBy
-ZWd1bGF0b3ItM3YzLXZjYy1zZCB7CisJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsK
-KwkJZ3Bpb3MgPSA8JmdwaW80IFJLX1BBMSBHUElPX0FDVElWRV9MT1c+OworCQlwaW5jdHJsLW5h
-bWVzID0gImRlZmF1bHQiOworCQlwaW5jdHJsLTAgPSA8JnNkbW1jX3B3cmVuX2w+OworCQlyZWd1
-bGF0b3ItbmFtZSA9ICJ2Y2MzdjNfc2QiOworCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwz
-MzAwMDAwPjsKKwkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47CisJCXZpbi1z
-dXBwbHkgPSA8JnZjY18zdjM+OworCX07CisKKwl2Y2M1djBfc3lzOiByZWd1bGF0b3ItNXYwLXZj
-Yy1zeXMgeworCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7CisJCXJlZ3VsYXRvci1u
-YW1lID0gInZjYzV2MF9zeXMiOworCQlyZWd1bGF0b3ItYWx3YXlzLW9uOworCQlyZWd1bGF0b3It
-Ym9vdC1vbjsKKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8NTAwMDAwMD47CisJCXJlZ3Vs
-YXRvci1tYXgtbWljcm92b2x0ID0gPDUwMDAwMDA+OworCX07CisKKwl2Y2Npb19zZDogcmVndWxh
-dG9yLXZjY2lvLXNkIHsKKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZ3BpbyI7CisJCWdwaW9z
-ID0gPCZncGlvNCBSS19QQjYgR1BJT19BQ1RJVkVfSElHSD47CisJCXBpbmN0cmwtbmFtZXMgPSAi
-ZGVmYXVsdCI7CisJCXBpbmN0cmwtMCA9IDwmc2RtbWNfdm9sX2N0cmxfaD47CisJCXJlZ3VsYXRv
-ci1uYW1lID0gInZjY2lvX3NkIjsKKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MTgwMDAw
-MD47CisJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAwMDA+OworCQlzdGF0ZXMgPSA8
-MTgwMDAwMCAweDA+LCA8MzMwMDAwMCAweDE+OworCQl2aW4tc3VwcGx5ID0gPCZ2Y2M1djBfc3lz
-PjsKKwl9OworCisJdmRkX2FybTogcmVndWxhdG9yLXZkZC1hcm0geworCQljb21wYXRpYmxlID0g
-InB3bS1yZWd1bGF0b3IiOworCQlwd21zID0gPCZwd20xIDAgNTAwMCBQV01fUE9MQVJJVFlfSU5W
-RVJURUQ+OworCQlwd20tc3VwcGx5ID0gPCZ2Y2M1djBfc3lzPjsKKwkJcmVndWxhdG9yLW5hbWUg
-PSAidmRkX2FybSI7CisJCXJlZ3VsYXRvci1hbHdheXMtb247CisJCXJlZ3VsYXRvci1ib290LW9u
-OworCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw3NDYwMDA+OworCQlyZWd1bGF0b3ItbWF4
-LW1pY3Jvdm9sdCA9IDwxMjAxMDAwPjsKKwkJcmVndWxhdG9yLXNldHRsaW5nLXRpbWUtdXAtdXMg
-PSA8MjUwPjsKKwl9OworCisJdmRkX2xvZ2ljOiByZWd1bGF0b3ItdmRkLWxvZ2ljIHsKKwkJY29t
-cGF0aWJsZSA9ICJwd20tcmVndWxhdG9yIjsKKwkJcHdtcyA9IDwmcHdtMiAwIDUwMDAgUFdNX1BP
-TEFSSVRZX0lOVkVSVEVEPjsKKwkJcHdtLXN1cHBseSA9IDwmdmNjNXYwX3N5cz47CisJCXJlZ3Vs
-YXRvci1uYW1lID0gInZkZF9sb2dpYyI7CisJCXJlZ3VsYXRvci1hbHdheXMtb247CisJCXJlZ3Vs
-YXRvci1ib290LW9uOworCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw3MDUwMDA+OworCQly
-ZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxMDA2MDAwPjsKKwkJcmVndWxhdG9yLXNldHRsaW5n
-LXRpbWUtdXAtdXMgPSA8MjUwPjsKKwl9OworfTsKKworJmNvbWJwaHkgeworCXN0YXR1cyA9ICJv
-a2F5IjsKK307CisKKyZjcHUwIHsKKwljcHUtc3VwcGx5ID0gPCZ2ZGRfYXJtPjsKK307CisKKyZj
-cHUxIHsKKwljcHUtc3VwcGx5ID0gPCZ2ZGRfYXJtPjsKK307CisKKyZjcHUyIHsKKwljcHUtc3Vw
-cGx5ID0gPCZ2ZGRfYXJtPjsKK307CisKKyZjcHUzIHsKKwljcHUtc3VwcGx5ID0gPCZ2ZGRfYXJt
-PjsKK307CisKKyZnbWFjMSB7CisJY2xvY2tfaW5fb3V0ID0gIm91dHB1dCI7CisJcGh5LWhhbmRs
-ZSA9IDwmcmdtaWlfcGh5PjsKKwlwaHktbW9kZSA9ICJyZ21paS1pZCI7CisJcGh5LXN1cHBseSA9
-IDwmdmNjXzN2Mz47CisJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKKwlwaW5jdHJsLTAgPSA8
-JnJnbWlpX21paW0+LCA8JnJnbWlpX3R4X2J1czI+LCA8JnJnbWlpX3J4X2J1czI+LAorCQkgICAg
-PCZyZ21paV9yZ21paV9jbGs+LCA8JnJnbWlpX3JnbWlpX2J1cz47CisJc3RhdHVzID0gIm9rYXki
-OworfTsKKworJmdwdSB7CisJbWFsaS1zdXBwbHkgPSA8JnZkZF9sb2dpYz47CisJc3RhdHVzID0g
-Im9rYXkiOworfTsKKworJmkyYzEgeworCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisJcGlu
-Y3RybC0wID0gPCZpMmMxbTBfeGZlcj47CisJc3RhdHVzID0gIm9rYXkiOworCisJaHltODU2Mzog
-cnRjQDUxIHsKKwkJY29tcGF0aWJsZSA9ICJoYW95dSxoeW04NTYzIjsKKwkJcmVnID0gPDB4NTE+
-OworCQkjY2xvY2stY2VsbHMgPSA8MD47CisJCWludGVycnVwdC1wYXJlbnQgPSA8JmdwaW80PjsK
-KwkJaW50ZXJydXB0cyA9IDxSS19QQzEgSVJRX1RZUEVfTEVWRUxfTE9XPjsKKwkJcGluY3RybC1u
-YW1lcyA9ICJkZWZhdWx0IjsKKwkJcGluY3RybC0wID0gPCZydGNfaW50X2w+OworCQl3YWtldXAt
-c291cmNlOworCX07Cit9OworCismbWRpbzEgeworCXJnbWlpX3BoeTogZXRoZXJuZXQtcGh5QDEg
-eworCQljb21wYXRpYmxlID0gImV0aGVybmV0LXBoeS1pZWVlODAyLjMtYzIyIjsKKwkJcmVnID0g
-PDB4MT47CisJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisJCXBpbmN0cmwtMCA9IDwmZ21h
-YzFfcnN0bl9sPjsKKwkJcmVzZXQtYXNzZXJ0LXVzID0gPDIwMDAwPjsKKwkJcmVzZXQtZGVhc3Nl
-cnQtdXMgPSA8MTAwMDAwPjsKKwkJcmVzZXQtZ3Bpb3MgPSA8JmdwaW80IFJLX1BDMiBHUElPX0FD
-VElWRV9MT1c+OworCX07Cit9OworCismcGNpZSB7CisJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0
-IjsKKwlwaW5jdHJsLTAgPSA8JnBjaWVfcmVzZXRfaD47CisJcmVzZXQtZ3Bpb3MgPSA8JmdwaW80
-IFJLX1BDMCBHUElPX0FDVElWRV9ISUdIPjsKKwl2cGNpZTN2My1zdXBwbHkgPSA8JnZjY18zdjM+
-OworCXN0YXR1cyA9ICJva2F5IjsKK307CisKKyZwaW5jdHJsIHsKKwlldGhlcm5ldCB7CisJCWdt
-YWMxX3JzdG5fbDogZ21hYzEtcnN0bi1sIHsKKwkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQzIg
-UktfRlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47CisJCX07CisJfTsKKworCWdwaW8ta2V5cyB7
-CisJCXVzZXJfa2V5OiB1c2VyLWtleSB7CisJCQlyb2NrY2hpcCxwaW5zID0gPDQgUktfUEIyIFJL
-X0ZVTkNfR1BJTyAmcGNmZ19wdWxsX3VwPjsKKwkJfTsKKwl9OworCisJbGVkcyB7CisJCWxhbl9s
-ZWRfZzogbGFuLWxlZC1nIHsKKwkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQjMgUktfRlVOQ19H
-UElPICZwY2ZnX3B1bGxfbm9uZT47CisJCX07CisKKwkJc3lzX2xlZF9yOiBzeXMtbGVkLXIgewor
-CQkJcm9ja2NoaXAscGlucyA9IDw0IFJLX1BCMCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25l
-PjsKKwkJfTsKKworCQl3YW5fbGVkX2c6IHdhbi1sZWQtZyB7CisJCQlyb2NrY2hpcCxwaW5zID0g
-PDQgUktfUEIxIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OworCQl9OworCX07CisKKwlw
-Y2llIHsKKwkJcGNpZV9yZXNldF9oOiBwY2llLXJlc2V0LWggeworCQkJcm9ja2NoaXAscGlucyA9
-IDw0IFJLX1BDMCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKKwkJfTsKKwl9OworCisJ
-cnRjIHsKKwkJcnRjX2ludF9sOiBydGMtaW50LWwgeworCQkJcm9ja2NoaXAscGlucyA9IDw0IFJL
-X1BDMSBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47CisJCX07CisJfTsKKworCXNkbW1jIHsK
-KwkJc2RtbWNfcHdyZW5fbDogc2RtbWMtcHdyZW4tbCB7CisJCQlyb2NrY2hpcCxwaW5zID0gPDQg
-UktfUEExIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OworCQl9OworCisJCXNkbW1jX3Zv
-bF9jdHJsX2g6IHNkbW1jLXZvbC1jdHJsLWggeworCQkJcm9ja2NoaXAscGlucyA9IDw0IFJLX1BC
-NiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKKwkJfTsKKwl9OworCisJd2lmaSB7CisJ
-CXdpZmlfZW5hYmxlX2g6IHdpZmktZW5hYmxlLWggeworCQkJcm9ja2NoaXAscGlucyA9IDwxIFJL
-X1BDMiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKKwkJfTsKKwl9OworfTsKKworJnB3
-bTEgeworCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisJcGluY3RybC0wID0gPCZwd20xbTBf
-cGlucz47CisJc3RhdHVzID0gIm9rYXkiOworfTsKKworJnB3bTIgeworCXBpbmN0cmwtbmFtZXMg
-PSAiZGVmYXVsdCI7CisJcGluY3RybC0wID0gPCZwd20ybTBfcGlucz47CisJc3RhdHVzID0gIm9r
-YXkiOworfTsKKworJnNhcmFkYyB7CisJdnJlZi1zdXBwbHkgPSA8JnZjY18xdjg+OworCXN0YXR1
-cyA9ICJva2F5IjsKK307CisKKyZzZGhjaSB7CisJYnVzLXdpZHRoID0gPDg+OworCWNhcC1tbWMt
-aGlnaHNwZWVkOworCW1tYy1oczIwMC0xXzh2OworCW5vLXNkOworCW5vLXNkaW87CisJbm9uLXJl
-bW92YWJsZTsKKwl2bW1jLXN1cHBseSA9IDwmdmNjXzN2Mz47CisJdnFtbWMtc3VwcGx5ID0gPCZ2
-Y2NfMXY4PjsKKwlzdGF0dXMgPSAib2theSI7Cit9OworCismc2RpbzAgeworCWJ1cy13aWR0aCA9
-IDw0PjsKKwljYXAtc2QtaGlnaHNwZWVkOworCWNhcC1zZGlvLWlycTsKKwlrZWVwLXBvd2VyLWlu
-LXN1c3BlbmQ7CisJbW1jLXB3cnNlcSA9IDwmc2Rpb19wd3JzZXE+OworCW5vbi1yZW1vdmFibGU7
-CisJc2QtdWhzLXNkcjEwNDsKKwl2cW1tYy1zdXBwbHkgPSA8JnZjY18xdjg+OworCXN0YXR1cyA9
-ICJva2F5IjsKK307CisKKyZzZG1tYyB7CisJYnVzLXdpZHRoID0gPDQ+OworCWNhcC1tbWMtaGln
-aHNwZWVkOworCWNhcC1zZC1oaWdoc3BlZWQ7CisJZGlzYWJsZS13cDsKKwlzZC11aHMtc2RyMTA0
-OworCXZtbWMtc3VwcGx5ID0gPCZ2Y2MzdjNfc2Q+OworCXZxbW1jLXN1cHBseSA9IDwmdmNjaW9f
-c2Q+OworCXN0YXR1cyA9ICJva2F5IjsKK307CisKKyZ1YXJ0MCB7CisJcGluY3RybC1uYW1lcyA9
-ICJkZWZhdWx0IjsKKwlwaW5jdHJsLTAgPSA8JnVhcnQwbTBfeGZlcj47CisJc3RhdHVzID0gIm9r
-YXkiOworfTsKKworJnVhcnQyIHsKKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCXBpbmN0
-cmwtMCA9IDwmdWFydDJtMV94ZmVyPiwgPCZ1YXJ0Mm0xX2N0c24+LCA8JnVhcnQybTFfcnRzbj47
-CisJdWFydC1oYXMtcnRzY3RzOworCXN0YXR1cyA9ICJva2F5IjsKK307CisKKyZ1c2JfaG9zdDBf
-eGhjaSB7CisJZHJfbW9kZSA9ICJwZXJpcGhlcmFsIjsKKwlleHRjb24gPSA8JnVzYjJwaHk+Owor
-CW1heGltdW0tc3BlZWQgPSAiaGlnaC1zcGVlZCI7CisJcGh5cyA9IDwmdXNiMnBoeV9vdGc+Owor
-CXBoeS1uYW1lcyA9ICJ1c2IyLXBoeSI7CisJc3RhdHVzID0gIm9rYXkiOworfTsKKworJnVzYjJw
-aHkgeworCXN0YXR1cyA9ICJva2F5IjsKK307CisKKyZ1c2IycGh5X290ZyB7CisJc3RhdHVzID0g
-Im9rYXkiOworfTsKCi0tIAoyLjU1LjAKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Fri, Sep 04, 2026 at 02:59:36PM +0200, Igor Paunovic wrote:
+> rocket_remove() decrements rdev->num_cores for each core it removes,
+> while find_core_for_dev() searches slots 0 to num_cores - 1. Unbinding
+> the cores in the order they were bound therefore loses the last one: by
+> the time it is removed the search range has already shrunk past its
+> slot, so find_core_for_dev() returns -1 and rocket_remove() gives up
+> without doing anything.
+> 
+> num_cores never reaches zero, rocket_device_fini() never runs, and the
+> file-scoped rdev keeps pointing at a device that is going away. Binding
+> the cores again starts from that stale count, because rocket_probe()
+> takes rdev->num_cores as the slot to fill. On an RK3588, which describes
+> three cores, the second round lands on slots 1, 2 and 3 while rdev->cores
+> was allocated with room for three:
+> 
+>   rocket fdab0000.npu: Rockchip NPU core 1 version: 1179210309
+>   rocket fdac0000.npu: Rockchip NPU core 2 version: 1179210309
+>   rocket fdad0000.npu: Rockchip NPU core 3 version: 1179210309
+> 
+> The write to rdev->cores[3] is past the end of the array.
+> 
+> Nothing in tree reads the core array often enough to notice, so the
+> overrun is silent today. It turned up while testing a devfreq series on
+> top of this, where a worker walks every core a few times a second, and
+> UBSAN caught the first bool it read out of the overrun entry:
+> 
+>   UBSAN: invalid-load in drivers/accel/rocket/rocket_devfreq.c:47:10
+>   load of value 5 is not a valid value for type '_Bool'
+>   Workqueue: devfreq_wq devfreq_monitor
+> 
+> Record how many slots were allocated and search all of them. Every core
+> is then found on removal, num_cores reaches zero, the device is torn down
+> and a later bind starts from a clean rdev.
+> 
+> This does not make unbinding a single core out of several work. probe
+> still takes num_cores as the slot to fill, so rebinding one core while
+> its siblings stay bound would write over a slot that is already in use,
+> and rocket_open() still reaches for cores[0] whether or not anything is
+> there. Both of those want more thought than a fix should carry.
+> 
+> Found by unbinding and rebinding all three cores on an Orange Pi 5 Plus.
+> With this applied, 25 unbind/rebind rounds and 5 module unload/reload
+> rounds run clean there: the cores land in slots 0, 1 and 2 every time,
+> whichever order they are bound in, and the shared supply goes back to a
+> single user after each round.
+> 
+> Fixes: ed98261b4168 ("accel/rocket: Add a new driver for Rockchip's NPU")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+> Assisted-by: LLM sparse checkpatch
+> ---
+>  drivers/accel/rocket/rocket_device.c | 2 ++
+>  drivers/accel/rocket/rocket_device.h | 1 +
+>  drivers/accel/rocket/rocket_drv.c    | 2 +-
+>  3 files changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/accel/rocket/rocket_device.c b/drivers/accel/rocket/rocket_device.c
+> index 46e6ee1e72c5f..efd004194c1af 100644
+> --- a/drivers/accel/rocket/rocket_device.c
+> +++ b/drivers/accel/rocket/rocket_device.c
+> @@ -31,6 +31,8 @@ struct rocket_device *rocket_device_init(struct platform_device *pdev,
+>  		if (of_device_is_available(core_node))
+>  			num_cores++;
+>  
+> +	rdev->max_cores = num_cores;
+> +
+>  	rdev->cores = devm_kcalloc(dev, num_cores, sizeof(*rdev->cores), GFP_KERNEL);
+>  	if (!rdev->cores)
+>  		return ERR_PTR(-ENOMEM);
+> diff --git a/drivers/accel/rocket/rocket_device.h b/drivers/accel/rocket/rocket_device.h
+> index ce662abc01d3d..c62d567010696 100644
+> --- a/drivers/accel/rocket/rocket_device.h
+> +++ b/drivers/accel/rocket/rocket_device.h
+> @@ -19,6 +19,7 @@ struct rocket_device {
+>  
+>  	struct rocket_core *cores;
+>  	unsigned int num_cores;
+> +	unsigned int max_cores;
+
+Hi Igor,
+
+I've tested this patch in Radxa Rock 5 B+ and it works. The test is that unbinding all
+cores in sequence 0,1,2 and rebind all. It seems that there is other issue about num_core.
+For example, sched_to_core() finds core for sched with num_core and it could make same
+error like find_core_for_dev().
+
+Tested-by: Sidong Yang <sidong.yang@furiosa.ai> # RK3588, 3 cores
+
+Thanks,
+Sidong
+
+>  };
+>  
+>  struct rocket_device *rocket_device_init(struct platform_device *pdev,
+> diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+> index 8bbbce594883e..2bcfe4ab3c68f 100644
+> --- a/drivers/accel/rocket/rocket_drv.c
+> +++ b/drivers/accel/rocket/rocket_drv.c
+> @@ -223,7 +223,7 @@ static int find_core_for_dev(struct device *dev)
+>  {
+>  	struct rocket_device *rdev = dev_get_drvdata(dev);
+>  
+> -	for (unsigned int core = 0; core < rdev->num_cores; core++) {
+> +	for (unsigned int core = 0; core < rdev->max_cores; core++) {
+>  		if (dev == rdev->cores[core].dev)
+>  			return core;
+>  	}
+> -- 
+> 2.43.0
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
