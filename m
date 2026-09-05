@@ -4,102 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C436C79F85
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2026 05:21:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1496AC624DB
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2026 07:01:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XZ8acJ+xZTyFlHH+mZyJgYyVIihJaCsntQciXFfshgY=; b=dDU+9AV7SCEPLE
-	2F5WYNqxy9uyjGlRIuc3gtT/uVL5G28kvZAyDn2kPK/zV9XpgdjJbbo+1BbmR6so/hVPAyVmyPLn3
-	mStOk9p7tH+IFIT9L/KMdWprfcrxZWpwzU4fZ7gHcCuBmsn1zOxc1/vKSz45tPo8ovxUzxGPdPbya
-	G3bq69MxgqLtCe6KOL7wPIpaSaeboS2jysyjNqHoWByDwLU7IZ3l5yjpEaIs00xxjyNbC2p/CIBn1
-	bpmTnrsZwe8FKczLHobRDFErbxlEA2QCTwX7vBj2WpUw4Mg040q+HqidK2Gzj9stspCiB61s6QbyQ
-	P370dF6kbnqvbbx3g9gQ==;
+	List-Owner; bh=9yF4XqvCwsbm9ayQXFy4ey04LdBA7abl60I/IvavNh8=; b=Z5CH6Q5/X0zZqR
+	365ujpPQtAwEawIVl3lhpPBh+VH+NnTRi9mL3mbjOerbeYIfQNHYH8VSnK2G+ZMGwMihMdqQtKiP3
+	BOswxBdEQcNx1E3fNrREIheprTA/848H/ddk8n5eBpg5oAU4sH0QZu0gBPGxjVBqa5uKI7omozmPL
+	bhN8bQNfnNUxkFDGoHIk6ibt5ZzrEtpV4VHSIA24uFBoQYN2AoYM1WcZQMAeLETm4+c2MeRR2ZRLr
+	7YW4iY0rotI+eIUja0zzZuF2egTHMvJftPHpgQck2VuRL2vV30KJ2LRVgtkxw8e/z8WFZtzKQnvRm
+	UBgho1VGojZatyHvZocQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2iqc-00000003hNb-1wMb;
-	Sat, 05 Sep 2026 05:21:50 +0000
-Received: from mail2.ecloud.global ([135.181.6.248])
+	id 1x2kPN-00000003l2g-1PBq;
+	Sat, 05 Sep 2026 07:01:49 +0000
+Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2iqZ-00000003hM1-0boV;
-	Sat, 05 Sep 2026 05:21:48 +0000
-Received: from authenticated-user (mail2.ecloud.global [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail2.ecloud.global (Postfix) with ESMTPSA id B8626721285;
-	Sat,  5 Sep 2026 05:21:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io; s=mail2;
-	t=1788585699;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KCOIseHcTnUxxa8UzPwtOfVQnt/pNmZAJdUPIg+XLqo=;
-	b=e09BHDAHB8rW8CJ877ybXQO9BIhYTyEJyZ1UfCDGFBXGQp83jw90VJvx43GTmCwSaQjzmZ
-	vZpB35WoTlow0wOgePmLAALvOVX4UDG1WLETkdYfE0Yms42sgAvS1PemSzA2A12krn4rTT
-	1cf3fVX7lS+xZMHPIc92+QnIa3PDUgs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io;
-	s=mail2; t=1788585699;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KCOIseHcTnUxxa8UzPwtOfVQnt/pNmZAJdUPIg+XLqo=;
-	b=jP8u0+6IUTg6AgiXIbTGUEcfBSMqo7Nmd7Jr3DYd3CWjZY43q91uDjoMKSmOPb7C2g5uaR
-	iIEJS2tWhm2RJi0GFGMGg4N9fF1QxzfQ74UijbJC18veoZSi49xvXSRP1T4Cl2WVqw+irA
-	xNMCko+5QoxwijbilgirxAp71w2JUOQ=
-ARC-Authentication-Results: i=1;
-	mail2.ecloud.global;
-	auth=pass smtp.mailfrom=maud_spierings@murena.io
-ARC-Seal: i=1; s=mail2; d=murena.io; t=1788585699; a=rsa-sha256; cv=none;
-	b=Ky3gcQbu+iQn3gGJSjO38x37++V52aS5N/nQCOx3J6XxPIqfFy1ZbkijYRzWOWiFT+pVmT
-	7YFhfuIVisKc3ETR/8jHzo+pemFPQ34KVfBmoujMt5BFDBSdKw+v6R/9q4pnc6yOtpxUSR
-	njWiXCniQ4hrwKE4/mkGqbMrN0fifdM=
-Message-ID: <ea529e06-2eab-4e3b-92af-ba17de44091c@murena.io>
-Date: Sat, 5 Sep 2026 07:21:35 +0200
+	id 1x2kPL-00000003l2C-2vr7
+	for linux-rockchip@lists.infradead.org;
+	Sat, 05 Sep 2026 07:01:48 +0000
+Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-4843703c170so41913f8f.2
+        for <linux-rockchip@lists.infradead.org>; Sat, 05 Sep 2026 00:01:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788591705; x=1789196505; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Kt57QRCH4DJKVKib3n3ZvQOCIYr91lFNtPdO+vKS0wg=;
+        b=IDrpmeCHcyfcJZl4a1fKkOtZsQ+oHGLQRFaInaS+xDvoEIOPXFVVfvqzGIN6b7lhz4
+         03lvDFJdoCfoseqN1sW6IWDQA+fX8fqzSD01LwEYWSO+Ze8C8qIbcy3Yor3bYE2DOGAs
+         nPLtGAclwyfNECcC7ObAeqvZvvkzKyC/88XnTnRESPpXZ1EmxoNQxQ3Q9HeZmGPJO8Xy
+         ZEcdbhH5FGPywXj5WjyuVd8PiPn4o2lts+ST7hX5+gn0mUKmIAr9n0F0DalkH+cDp7dW
+         MpCXMJSiNbfRL8xR+x4tyLQwN8qmC9OAG5OIms24+gJBk+3WO3oFgUjkqvZ/1ntO0Nhw
+         Wcpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788591705; x=1789196505;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Kt57QRCH4DJKVKib3n3ZvQOCIYr91lFNtPdO+vKS0wg=;
+        b=rjE6YcZkX8Ul5CIxXqKzlB3m9FgTfXRejJ2qy0+Hnq7SD41ouE0C+LFj70VeBzKpUc
+         i0AtUr1PBP4QlNvSRyeomV/WWSLTE/E3pMFcjkx0GyO04F5ilMBXVifLkaS9kiJ0BYKu
+         CqQBLuZGnTA7DUelgee/VrZ54BTg1Nxkl74tf4+bqsoZCvdEXwDMrdhI5nPeVmWQpK34
+         Xch/2pweKgd8RMacf3VYpiR6Tx6Stmg0ryCE5nXy7V8yN9zElA0yLC5EBQ3pNOZDeJR/
+         rSmo+DdlDqhBYqoJ4xq7wR5vYOfDBPIbqnGsg892QK51PCf1hgHj2yxXPe1nwefNFicl
+         lfqg==
+X-Forwarded-Encrypted: i=1; AKwUvBw0ldFCyrhiwtB+1u2zmeUmmlhyXJ4GLFnxi8Gh4O46wAij2/AdFR1xRLrtx2aLY/JnNFwzPjXbyiaUuuD2zA==@lists.infradead.org
+X-Gm-Message-State: AFuF++kEtMdWbTQxMaEbBGcH2ZclRa9oB6EToE3xd8SHnrY7LGDWFink
+	zedMb0CgRp7jqFDkN7EG0nTZsENKnQPRU0kvs0ZBPXQREX0nWgK8Bhct
+X-Gm-Gg: AYBFou1mynK9hKJBz85Z1NL44/1BScj04LSJrlF6dtI1nmTmMlff/kqpw+G3scIVnk8
+	Ej5bOot2LpSdnAjmLYzlD8jsx8C3Izs8uIRcYXgzjC/TjoDizIYCU0+3jPKsMTxZkNvoj+7X1z8
+	3tBm5iyTThHQvpvkEHJOcLuuGu5WDrCHdUhnIIWvvDFnSLprp4vVjM3UYnL1shktwVE4bvHaSln
+	bi1nyaInRENpaYGfwMFxFXhqhmhMqW+C2as7GpTRm25BNNu6Rc6e9y4mjocMUyNCARBckw+lU9p
+	LAo0vihybfqe/T8+pUZpOiBBasutJcINZwcMowIiNWCTeH7NGlDskUCg9jUX24LqvhM4M4IfOvi
+	HSdh5bWMdo8NLrhOPhK+BBNGL86dBV6+pSToonFzMpTeVVMprjaNHPEfqw7R/4HfVvPl45s7ckT
+	1LALJOVmJb09VuovGgihw04vwiEIxREBi6mqCjtA77TLfF0l4x2r+LriwzySmn26ciCHraJ2Uek
+	VbxN/ET8EU+kLQACmetXB45WGaUuxh+9+UHY1F7EerXMNXmvliyH0Q7RPZeKup2b+4=
+X-Received: by 2002:a5d:5e0a:0:b0:484:3200:b7a6 with SMTP id ffacd0b85a97d-485907ec2c3mr2477008f8f.4.1788591705286;
+        Sat, 05 Sep 2026 00:01:45 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B950E00FBE43EAE5CDC0C29.dsl.pool.telekom.hu. [2001:4c4e:1b95:e00:fbe4:3eae:5cdc:c29])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4858ab73c2bsm10109185f8f.22.2026.09.05.00.01.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 05 Sep 2026 00:01:44 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	tomeu@tomeuvizoso.net,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [RFC] accel/rocket: DVFS on RK3588 - a hardware constraint, and some numbers
+Date: Sat,  5 Sep 2026 09:01:16 +0200
+Message-ID: <20260905070121.37113-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260905051323.189794-1-gahing@gahingwoo.com>
+References: <20260801131656.58450-1-royalnet026@gmail.com> <20260903091646.7183-1-royalnet026@gmail.com> <20260904110853.85150-1-gahing@gahingwoo.com> <20260904124659.25971-1-royalnet026@gmail.com> <20260905051323.189794-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 00/19] drm: starfive: jh7110: Enable display subsystem
-To: Michal Wilczynski <m.wilczynski@samsung.com>,
- Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Lee Jones <lee@kernel.org>, Andy Yan <andy.yan@rock-chips.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
- <hal.feng@starfivetech.com>, Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,
- Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor@kernel.org>,
- Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
- Dominique Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>,
- Jerome Brunet <jbrunet+clk@baylibre.com>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- mfd@lists.linux.dev, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-riscv@lists.infradead.org, Andy Yan <andyshrk@163.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Graham Markall <hello@big-grey.co.uk>,
- Icenowy Zheng <zhengxingda@iscas.ac.cn>
-References: <CGME20260904132708eucas1p1adfa26ef0fe5109eca63a3aeadf74915@eucas1p1.samsung.com>
- <20260904-jh7110-clean-send-v3-0-484f9ae72715@samsung.com>
-Content-Language: en-US
-From: Maud Spierings <maud_spierings@murena.io>
-In-Reply-To: <20260904-jh7110-clean-send-v3-0-484f9ae72715@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_222147_403036_D8123476 
-X-CRM114-Status: GOOD (  33.58  )
+X-CRM114-CacheID: sfid-20260905_000147_756790_269B35FE 
+X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,125 +97,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Michal,
+Hi Jiaxing,
 
-This new version added some more issues on my fml13v01 board, this time 
-2 registers in the VOUT_CRG are misconfigured that were correct in v2, 
-namely:
+> Drop it. A Signed-off-by says I passed the patch along, and on your
+> copy I did not.
 
-0x295c0004 was 0x00000004 on the previous version but is now 0x00000006
-0x295c001c was 0x81000000 on the previous version but is now 0x80000000
+Done for v2: 1/7 keeps your Reviewed-by and loses the Signed-off-by.
 
-xx04 sets a slightly different clock divider, but it doesn't seem to 
-matter, display also works with this changed value.
+>   Tested-by: Jiaxing Hu <gahing@gahingwoo.com> # RK3576, two cores
 
-xx1c seems to select the wrong clock mux?
+Thank you. That is the second SoC for the fix, and the one where the
+same code runs with a different core count. One request: the tag sits in
+this thread rather than under the patch, so b4 will not see it when
+Tomeu applies, and it drops a trailer I repost on your behalf as a
+from/email mismatch. If you have a minute, a one-line reply with it on
+the patch itself lets it be collected with the rest:
 
-After correcting 0x295c001c (and the ones that I mentioned before in the 
-hdmitx block), the display comes to life again.
+  https://lore.kernel.org/dri-devel/20260904125936.26234-1-royalnet026@gmail.com/
 
-Not sure why these are changed.
+If not, I will carry it on the next revision should one be needed.
 
-Besides that it works great!
+> an accel device takes the next free minor, so after two rebinds the
+> NPU sat at /dev/accel/accel2
 
-Kind regards,
-Maud
+I saw the same here - the minor walked from 1 to 10 over ten unbind/bind
+rounds, and only a module reload put it back to 0 - and I think it is
+more than the next free minor. rocket_device_init() allocates the
+drm_device with devm_drm_dev_alloc() against the module's "rknn"
+platform device, so the drm_dev_put() that frees it hangs off that
+device's devres, and that device is only unregistered in
+rocket_unregister(). rocket_device_fini() calls drm_dev_unregister() and
+nothing else. The minor's xa_erase() is a drmm action on the drm_device,
+so it runs at the last drm_dev_put(), which does not come until module
+exit. Every unbind therefore leaves one unregistered drm_device behind,
+still holding its minor, and the reload is what finally frees them.
+That is the devm leak the automated review raised on the fix; the
+climbing minor is the visible half of it. It wants its own patch, not a
+line in this thread - I will look at it once the series has had a first
+round.
 
-On 9/4/26 15:27, Michal Wilczynski wrote:
-> This series enables the display subsystem on the StarFive JH7110.
-> 
-> The dom_vout block holds the display controller (dc8200), the clock
-> generator (voutcrg) and the HDMI IP, all inside PD_VOUT. The HDMI IP is
-> a single register block containing both the controller and the PHY, and
-> it has a circular clock dependency with voutcrg:
-> 
->    - the HDMI controller needs pclk/mclk/bclk from voutcrg
->    - voutcrg needs the pixel clock for its dc8200 pixel MUXes, and that
->      clock is generated by the HDMI PHY
-> 
-> The loop only exists if the HDMI block is treated as one device. The
-> PHY's reference clock is xin24m, not a voutcrg output, so splitting the
-> node into a parent plus phy and controller children gives deferred probe
-> a linear order: hdmi-phy, then voutcrg, then hdmi-controller.
-> 
-> The parent maps the register block and owns the regmap its two children
-> share. Everything in the region sits behind one NoC port whose clock and
-> reset gate access to it, inside PD_VOUT, so the vout subsystem node from
-> the RFC is back and owns those for as long as any child exists.
-> 
-> Patch 10 adds a .mode_valid platform op to inno-hdmi.
-> inno_hdmi_bridge_mode_valid() checks the pixel clock against
-> hdmi->refclk, but that clock only exists where a "ref" clock is
-> described. The JH7110 gets its pixel clock from the PHY, so refclk is
-> NULL and the check was skipped: unsupported modes were advertised, the
-> modeset then "succeeded" because the atomic enable path cannot fail, and
-> the display stayed blank.
-> 
-> Patches 15-17 drop the PHY duplication from the RFC. The JH7110 has the
-> same Innosilicon PHY as the RK3328, offset by 0x100 because it sits
-> behind the controller in the shared register block. Patch 15 factors out
-> the pre-PLL config format, table lookup, determine_rate, recalc_rate and
-> the pre-PLL programming; patch 16 moves Rockchip onto it; patch 17 adds
-> the JH7110 driver. Pixel clock tables, post-PLL and analog config stay
-> SoC specific.
-> 
-> Patch 16 should be a no-op for Rockchip - same writes, same order, same
-> values - and RK3228, whose pre-PLL is at different addresses, keeps its
-> own register code and shares only the lookup. I have no Rockchip
-> hardware, so it is build tested only (arm and riscv). A Tested-by would
-> help.
-> 
-> The dc8200 driver, th1520 reset controller and inno-hdmi bridge that the
-> RFC listed as prerequisites are all upstream now, so there are no
-> out-of-tree dependencies.
-> 
-> Testing
-> =======
-> 
-> Tested on a VisionFive 2 v1.3B using modetest.
-> 
-> All 42 modes the sink advertises work, with nothing in dmesg. Pixel
-> clocks run from 25.175 MHz (640x480@59.94) up to 297 MHz
-> (4096x2160@30), including 3840x2160 and the full 1920x1080 and 1280x720
-> rate families.
-> 
-> The four modes the RFC reported as broken work now too: 2560x1440@59.95,
-> 2048x1080@60.00, 2048x1080@24.00 and 720x400@70.08.
-> 
-> Before patch 10, four of the advertised modes failed: 1680x1050@59.95
-> (146.250 MHz), 1400x1050@59.98 (121.750), 1152x864@59.97 (81.768) and
-> 1280x768@60.35 (80.140). Those pixel clocks are not in the PHY pre-PLL
-> table, so clk_set_rate() returned -EINVAL and the screen stayed black
-> while userspace saw a successful modeset. They are rejected in
-> .mode_valid now; the other refresh rates of those resolutions still work.
-> 
-> Every commit builds for riscv, and the Rockchip PHY also for arm.
-> 
-> Notes
-> =====
-> 
-> The JH7110 has no central MAINTAINERS entry and maintainership is
-> fragmented, so patch 19 adds one for the display subsystem and I am
-> happy to help maintain it. The new PHY library lives under drivers/phy/,
-> already covered by the generic PHY framework entry.
-> 
-> checkpatch warns "does MAINTAINERS need updating?" on the patches adding
-> files, because that entry comes in patch 19.
-> 
-> Thanks to Icenowy Zheng for the dc8200 driver and for explaining how the
-> SoC and the display pipeline fit together.
-> 
-> Thanks also to Dominique Belhachemi, who got rid of the vout-subsystem
-> wrapper and helped with the testing, to Maud Spierings for testing on a
-> Framework 13 panel, and to Graham Markall for testing
-> the JH7110 display patches independently and writing up the results:
-> https://big-grey.co.uk/2026/01/26/testing-starfive-jh7110-display-controller-patches/
-> 
+Glad the unbind path paid its hour back on your side. A bug found in
+unsent work is the cheap kind.
+
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
