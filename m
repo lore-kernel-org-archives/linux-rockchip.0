@@ -4,96 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26D14C624DB
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2026 09:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74688C624D6
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2026 11:21:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0o8kZdJCFpcsSlvqpnBw1sOB1XHOveT2hK6oXHvkcIs=; b=Qz5rYjGN/aXGVk
-	DRW1YqUGbgL6ryA39DmcugZl1MxFISXFZUBcyrBPpCqL/Cyfdvz4BqwU1NGp4+OgeYncLP98dfGYu
-	8EizSlwdOrYMZCgfHbW4CyFHZ3qei28MRYIIOYBInyHc4Xf3K+g+tIr+qscXnMPpQ1mqXgH9bX2g7
-	5h5MG8wQ5sHkQHufIxi58q8IUKarwafsU7j7NuotO2eGafhB9wFopJXZkqLouND5aL+amjTvAvOI0
-	lJ10JdxYcMqOI3IdIzqGJ8ubmm7aM+bKFP7vuRV5x+8IbCED8pY/+8BieHA0Uut8V7mWEe4tyq7uk
-	TwbXUus1JTDPSAafC/Xg==;
+	List-Owner; bh=nCt5pBQg6FHFiYdflkNL6Vww2kEYQzmz//xpPKU7yEY=; b=m6nMDUfwztV78M
+	NmYlR39Z8VXn1oB1WFJ82FAFG58hqIY6tRx+phMdQEPXe0clFPvJxQ+CA6iCOSe1AjeRYa4wqv6w7
+	2fVpOjsmUC6XhZMfghXrHwnROzIiFY8p5Y2trD46ifpyPc0Y6AFAF8E2CkwcRlwsET6kZYDt2qI7v
+	9M0pi67b3Rl0CfSCC0lLIgUZtTZZ0BZnQyOAL1Ovt/tqMGpges+r1sRDmo6+Qf2Ai5OTwb9sc9ZxN
+	Az/2gyZSmwFhHUfjgnvcCzv/SJSxngDDScmuVcT+5J70qaDevmhgvlDKudV5Clvyvn6+05mfmsHwO
+	KX145O8u0gxfMO0kKpiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2mHR-00000003tT9-0KaH;
-	Sat, 05 Sep 2026 09:01:45 +0000
-Received: from fhigh-a6-smtp.messagingengine.com ([103.168.172.157])
+	id 1x2oT3-000000040qN-07sH;
+	Sat, 05 Sep 2026 11:21:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2mHN-00000003tSm-3Wfv
-	for linux-rockchip@lists.infradead.org;
-	Sat, 05 Sep 2026 09:01:43 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailfhigh.phl.internal (Postfix) with ESMTP id 2254B1400040;
-	Sat,  5 Sep 2026 05:01:40 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-02.internal (MEProxy); Sat, 05 Sep 2026 05:01:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:content-type
-	:date:date:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:subject:subject:to:to; s=fm2;
-	 t=1788598900; x=1788685300; bh=3B7gJtfgo23VO+nTznGk7ne+zYgCnQ8o
-	DMOsdHtb2U4=; b=JAsl+hL92E+c/DRdGEZF21tz6wpxt0I1XDiWGcwx4sZlazDH
-	FQPlci9qarF0q8S1y/g+kcnl0Py3snOHn6fiWD+QWumBWBsi39IMZz3EhhalDaVx
-	EqaFGnbU/o1WoZPT35G16FVxIJv8XWPD8g9mbIGoPAIpFI8KSeQ+6/nLHacAQM5d
-	P1vzWlhMFJuWcQwcRVNgHQxRvFUUHklECHp9UduCeK0DBJa/5hTOFtp2a6vTpt9x
-	A+h8kjPJKjNXy0pPGw1fGp3Ap35stAzFJGhGEUBLno/R1HBsZtOBOsDT26pEYrrm
-	DFcZ9mZ0PR0Ehdf6NdjT2PHzs8QyNsI2FvxDEg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1788598900; x=
-	1788685300; bh=3B7gJtfgo23VO+nTznGk7ne+zYgCnQ8oDMOsdHtb2U4=; b=m
-	o4PA0WD7re7wCp6iuB5ajjhr5xdqWPf3aq5mLuCCH5ZbrafuVQcMXowbERiobI8S
-	gL2AbYm7BekUQ6zEEZBoXN1agMFRJVN8QO8hyhpuTwZJYxC5cr8dPAH5353PUZBC
-	BvfmLSgSp/AFNId4bMnqWDd9eX6NPm/XjOkD78DkTxgnLo5ww7OvzN/1/eJ7DoS/
-	kuXfJ9C++pG/64LcukQVGphkmLOJtIpRoyn0QfRTtQtkpPZB1e8JtwVUAWtQKcRk
-	jrf0VGOtrxmQEg6DUWWjTGNWU9F7PUgHHgprMLK8WwPh8A0YvqnIrXHzCoahzKw2
-	eSkeRg4HqnX/UMpu91Saw==
-X-ME-Sender: <xms:c9qbagI84QzhT0-lMgizKzR7J_ktU4WsZSwMPrdVvqMEDWHoS089wA>
-    <xme:c9qbahqDSWv6tn0EsQr_Jw5W3cWOVJOjx3odH9ZG9NlLZWFO_sAfKH_hc2jFFxeiu
-    C5eVYs8-G26-99VhbXTQsY-GEPyDO1xm2bJ0Kg072-LOpWFbqp4jCZZ>
-X-ME-Received: <xmr:c9qbagzrI1e4vmaqQbYQClmUUfu_SIXzy0GpWqIHN7D4NRyewcNCaGsjATHYPpid2IPCJ9C-9g>
-X-ME-Proxy-Cause: dmFkZTEYSrnIgFqH7Zve5CKWphECD4dHzCRXMT0THSbWEWGgAbHRBgA0hl65ofVS4GybDE
-    mhNPOB6hEr81yHFFTNkxA2XaeRjcRl6mrMaHjzxA9tp3+UrtFTOia51yeQNXP3utIfJ9Ji
-    Ny5sW/E3oug/8a1poAzhWYWvo0Ewk9Pue5iUXTRDYE0K6ATvMR43x2v39S4Wu6rsFD5eTp
-    e+03Iwl3QVILoZm8uEvhDNfxJzwEs76WFhAJK+UPUEieD0xFcPM5SfK8lsQKmt5zNHwuKR
-    ir99+tzb0zA90e97nq7EEayX01uw2XbPcxLaoGqihPWclPGU+4syOES5jrF0Epi7jQpJeO
-    5kXNzyNXaycqdCUbnDkWwnqrPpWOXw1mVO4s5n+YgaUGIab43IoKZ1GvWrT2yhv4lWwVzR
-    Vx0rvUG3n385kuMaAEkXPZIu0YTMOsnWFR6fqDPsGQ50M70TKDlc01ED9yFxGMcWjl3McE
-    gfuo72BDNdE4B4IYTyIc08f+5GcRctGwNOA2R0Z6lf/WSkO3FICWe2R1tbGzGBBD8HCMeO
-    BeQNP/a2Ks8+pyirp1Hn3egSSMWaOKgChniW9lxvgmCqqeeQ54yKpse3Lez+7s7Fsi95Gj
-    0odvZ7A/VLzPiavL6G3zMEVzyaCb8lg1hCzdlQ/Uu/YyYDz5dCq08wOPknyA
-X-ME-Proxy: <xmx:c9qbatM1hHpkSdQKHWcs6aDySyTDogHHJX6ya3KjL3o1VJBod8_iFg>
-    <xmx:c9qbat7EY-EdpwJnn7L7RtUNoyypnwsanSEXCCLy5sPhb1i7ApKwgg>
-    <xmx:c9qbaumHc5KFleBbtWLeTL_sr5IHb8WLsSPmjEcK8wBI8HdPLb31ug>
-    <xmx:c9qbauSO28iZ2vLooHcF_tfGONOX3q4jabVi-4h8vdzS3QsvLyMvuQ>
-    <xmx:dNqbajLT6aBl-HroG1f5jie3kZLivf4rtpM59aEKpprGS1_a2dGjWDsu>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 5 Sep 2026 05:01:37 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: royalnet026@gmail.com
-Cc: tomeu@tomeuvizoso.net,
-	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH] accel/rocket: search every core slot when a core is removed
-Date: Sat,  5 Sep 2026 21:01:34 +1200
-Message-ID: <20260905090134.239404-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260904125936.26234-1-royalnet026@gmail.com>
-References: <20260904125936.26234-1-royalnet026@gmail.com>
+	id 1x2oT0-000000040oL-1ojP;
+	Sat, 05 Sep 2026 11:21:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E5612447AE;
+	Sat,  5 Sep 2026 11:21:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id BE2D7C4AF0B;
+	Sat,  5 Sep 2026 11:21:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1788607308;
+	bh=8Gwxp5aoWJUfNbbLdYN5LWeAcCfH1LcXcRH62cWgIps=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=t69NQKl8k+lWcDnTDuUnHOqqJXZg04FcbATtudZZVNqhxRbhdM4PVMB7+wyMxkH9I
+	 Xjulm1Fx4DlZpjN053CKoBgE22YnTT3ZR96P/AP+Sa0SGFqEZJ9dW0LRuYKo1kCuny
+	 g6GlDWGCUdR5hsCg8reHlqXg6/SCH6fNPE6qxLeXpfZHaH+z2s1xR+xloz++M1Lwmz
+	 g4YWkgraAoG6v4ZAZy6pSvkjUCJI21V1A7CLGcYv5J6VU3dfEaVat5jI9V035luY+i
+	 1WWobptxzrLZ8f36AtAmpTbIxF+QjZpmrXv7naX8DZOqcl0AKBk/R0ohwI3i55I5Xh
+	 Nh5e5WtXex1rQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A69B6C624DB;
+	Sat,  5 Sep 2026 11:21:48 +0000 (UTC)
+From: =?utf-8?q?=E5=AE=89=E5=AE=B9_via_B4_Relay?= <devnull+HystericalDragons.proton.me@kernel.org>
+Date: Sat, 05 Sep 2026 19:17:26 +0800
+Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Add FriendlyElec NanoPi
+ R28S
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260905_020142_089494_92B725E8 
-X-CRM114-Status: UNSURE (   3.13  )
-X-CRM114-Notice: Please train this message.
+Message-Id: <20260905-r28s-upstream-v1-1-f68d5389269a@proton.me>
+References: <20260905-r28s-upstream-v1-0-f68d5389269a@proton.me>
+In-Reply-To: <20260905-r28s-upstream-v1-0-f68d5389269a@proton.me>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ jensen <jensenhuang@friendlyarm.com>, 
+ =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=920;
+ i=HystericalDragons@proton.me; h=from:subject:message-id;
+ bh=LDAlcJQezbRbao3W92BQlWiQhp4bd/SQs/nEjmwyH1U=;
+ b=owGbwMvMwCUmepz3XUtTHjvjabUkhqzZv72lDpnbH9m8ciW/mOvuDut/lW3aCyt0ImRn7+Wdr
+ Cu5cPKGjlIWBjEuBlkxRRbZTdWRQquiZxaxSB2HmcPKBDKEgYtTACaSlM3wv9RQhMF56/8C16Oz
+ TXUWLV32+ebdL8W93jNnzxFczySq9Y6R4fvdcqEjj15HS0zQ5ozqFRdNNkh1mB0pISU03zZIYf8
+ CZgA=
+X-Developer-Key: i=HystericalDragons@proton.me; a=openpgp;
+ fpr=1DB27B5912AA5B9972041AC715C70DEE84826E07
+X-Endpoint-Received: by B4 Relay for HystericalDragons@proton.me/default
+ with auth_id=1004
+X-Original-From: =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,23 +82,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: HystericalDragons@proton.me
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
-
-Two unbind and bind rounds on a Radxa ROCK 4D: bound: 0, then bound: 2
-with the cores numbered 0 and 1 both times, and nine models decoded
-identically afterwards. Moved here from the DVFS thread so that b4 can
-collect it.
-
-Tested-by: Jiaxing Hu <gahing@gahingwoo.com> # RK3576, two cores
-
-Jiaxing
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTog5a6J5a65IDxIeXN0ZXJpY2FsRHJhZ29uc0Bwcm90b24ubWU+CgpUaGUgTmFub1BpIFIy
+OFMgaXMgYSBkdWFsIGdpZ2FiaXQgRXRoZXJuZXQgcm91dGVyIGJvYXJkIGJhc2VkIG9uIHRoZQpS
+b2NrY2hpcCBSSzM1MjggU29DLgoKU2lnbmVkLW9mZi1ieTog5a6J5a65IDxIeXN0ZXJpY2FsRHJh
+Z29uc0Bwcm90b24ubWU+Ci0tLQogRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Fy
+bS9yb2NrY2hpcC55YW1sIHwgNSArKysrKwogMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygr
+KQoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9j
+a2NoaXAueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2No
+aXAueWFtbAppbmRleCA4MTc0NGZiZWU5Li43MDllMmNjNDRkIDEwMDY0NAotLS0gYS9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwKKysrIGIvRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC55YW1sCkBAIC0zNDcsNiAr
+MzQ3LDExIEBAIHByb3BlcnRpZXM6CiAgICAgICAgICAgICAgIC0gZnJpZW5kbHlhcm0sbmFub3Bp
+LXIycy1wbHVzCiAgICAgICAgICAgLSBjb25zdDogcm9ja2NoaXAscmszMzI4CiAKKyAgICAgIC0g
+ZGVzY3JpcHRpb246IEZyaWVuZGx5RWxlYyBOYW5vUGkgUjI4UworICAgICAgICBpdGVtczoKKyAg
+ICAgICAgICAtIGNvbnN0OiBmcmllbmRseWFybSxuYW5vcGktcjI4cworICAgICAgICAgIC0gY29u
+c3Q6IHJvY2tjaGlwLHJrMzUyOAorCiAgICAgICAtIGRlc2NyaXB0aW9uOiBGcmllbmRseUVsZWMg
+TmFub1BpIFIzUwogICAgICAgICBpdGVtczoKICAgICAgICAgICAtIGNvbnN0OiBmcmllbmRseWFy
+bSxuYW5vcGktcjNzCgotLSAKMi41NS4wCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
