@@ -4,89 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EFD1C79F9E
-	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2026 21:21:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBE00C79F8C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2026 03:16:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F4/eNxqL0LUDhxMuM8ODOMag9P5U5O4j7wtWthG7xjQ=; b=lmpnoDLlaKm923
-	hkCOaGCL1b3oKUUbDg4xI9D02VjQ8Cl2jwfuAnlEoNCFPJxxr7r3UDOXgPibBU6ww2pETi3HabeML
-	qUm+HWzuwJq+P1zcmWflvh1/gXOLQCKOlkyEAeqocNTwpJ0GCq4eK2HAgWTLVN7E1bxizZtb7cPsg
-	9S5l/FvYBdnj71N3TXReV5S5kU3B+pgAh5qQtVW9FVbKTzsJgokKinFN5Aodp2U0sohhO80GDlh7Y
-	aVEtjNuFYk4tBzeS3VqCrbEDr0AE6lx84HRNHTYQJobt6whIPJhIPICF0VK0+2kqdUtoGYDaKagwt
-	Ct2hvz7wpBxGt798NtFQ==;
+	List-Owner; bh=MoCIg7MfHLFNk98sgrbeDOXM7cmY9QkbNXhEC1kT2g4=; b=ooxBNTqd5sfqHm
+	5OpyG3PUugYF5oiJn/4EdNO3Yx3gvOXuh/HjyjmnGw88fKe4DxtkucjY07PUQd9Yj3Dqtva60OzAe
+	U94e1wFBOuA4JcwesFsDdENwvc+2THwB487Ny6fq26CTb+s+xGFX6VGw0oFNHtrRmq0fQL7vQJ4Mx
+	oBxXhfrsrRFxznZJutilJo8GBBcmQHjWDTFHNRFMRM3XMHwx8HMGbnzYjm8fzgbv3QFRS19ECcacJ
+	1o8k6HHyeAnwM4yf53HCbPkXhhrK+i8tjbJggIqa/xue1nZ5dOdDiJSHwqI0Cu7XDMGau8C4RH1FD
+	ptNTBFwCivdQHk/V80Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3KIp-00000005a0F-1Yr7;
-	Sun, 06 Sep 2026 21:21:27 +0000
-Received: from stravinsky.debian.org ([2001:41b8:202:deb::311:108])
+	id 1x3PqQ-00000005kod-3ZPR;
+	Mon, 07 Sep 2026 03:16:30 +0000
+Received: from mail-m16023653200.xmail.ntesmail.com ([160.236.53.200])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3KIm-00000005Zz8-1dKR
-	for linux-rockchip@lists.infradead.org;
-	Sun, 06 Sep 2026 21:21:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=debian.org;
-	s=smtpauto.stravinsky; h=X-Debian-User:Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Reply-To:Content-ID:Content-Description;
-	bh=Y9LS7SYHFlkHvaK4ZooIhwRFHr3vUhLavYrz1nuVPqA=; b=f4AoxTbb7TWe9/8DFTs7RutDb7
-	L82gmbWW2DODqTgiGpBE+E/m0FCkwVtngj8SNAYQuewyWcdMlGTbsVC2+lwNR6wO2xoq3DR7498yq
-	mirf/cmsxLfxhCtGUqUheLnnAbkfCX9gaXuU2mFHeLlZAAYlJNtKMn4nOkQazdx2SK3u2RUlqfOFM
-	KWcbkU4Q73N5/5H/UvoLmg1kZBTNJRKz56T6MAydZXl+bJWQ9dQs7uiQsvZqBs6/e5nhDWZB1AItV
-	U8MJg2E733lKvHsWsYvc/4PDZ1t2e/Smd1u09n+LeuXOg4Y4OLkmRVpwVyptbunYr32iPGvPB515T
-	BJuyiljA==;
-Received: from authenticated-user
-	by stravinsky.debian.org with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_128_GCM:128)
-	(Exim 4.96)
-	(envelope-from <domibel@debian.org>)
-	id 1x3KIl-0011JA-07
-	for linux-rockchip@lists.infradead.org;
-	Sun, 06 Sep 2026 21:21:23 +0000
-Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-84e04df8c46so3211258b3a.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 06 Sep 2026 14:21:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBwIpIRNhzI/uQnK1LPEbDr4sT9bQpc+xtQxGeBP89cwz1d1WadwUN06rFnDRdFOQ51Mkvx9n87vMST7mno33w==@lists.infradead.org
-X-Gm-Message-State: AFuF++ntBTIw4oLqSDIx4WYqPxEX0iAnF5DjdejxZzrZrjcNAtpeOyIr
-	Gi1rC+YiJZ0cD4ckiNj56DiN0v7bVju9eH8iTcfQ63zlMiXqPvauSXBynqwIC8tyGLNaFGT5d8g
-	gEYwANBWOcrWDE6TcgzbfftgGJLgFfV4=
-X-Received: by 2002:a05:6a00:c206:b0:851:d12e:389b with SMTP id
- d2e1a72fcca58-8628622c78fmr14582711b3a.14.1788729379886; Sun, 06 Sep 2026
- 14:16:19 -0700 (PDT)
+	id 1x3PqM-00000005kne-2ZfU;
+	Mon, 07 Sep 2026 03:16:29 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4cbfa21e5;
+	Mon, 7 Sep 2026 11:16:05 +0800 (GMT+08:00)
+Message-ID: <d4cfd407-9cf7-4907-9ef9-8bb52b5ec669@rock-chips.com>
+Date: Mon, 7 Sep 2026 11:16:04 +0800
 MIME-Version: 1.0
-References: <20260828-jh7110-clean-send-v2-13-331680c8b9d1@samsung.com>
- <0ccb4168-ff88-459c-972d-3c091c155db2@murena.io> <e780ecb8-918f-4816-99c8-b69b10b25a18@murena.io>
- <CAAvaLCwvVUddS14MPx0FHdnp+QeZ99+ox17pXt2hSWPTCFcHtw@mail.gmail.com>
- <cb0884b3-c9be-4cfd-ba43-27add3821ddd@murena.io> <6a5f8c11a092cef83bae8d9ea0100c2fc133a514.camel@icenowy.me>
-In-Reply-To: <6a5f8c11a092cef83bae8d9ea0100c2fc133a514.camel@icenowy.me>
-From: Dominique Belhachemi <domibel@debian.org>
-Date: Sun, 6 Sep 2026 17:16:08 -0400
-X-Gmail-Original-Message-ID: <CAAvaLCxMntrTbTQ9VNu4H_6LA30TRAqi7mCpn+x3hbTG9WqERA@mail.gmail.com>
-X-Gm-Features: AcwNN1W3Ei1cx4_W0731mEUNvW6xw1POICbdb9C66iM9zFCtDZzsTbla6YfIM_c
-Message-ID: <CAAvaLCxMntrTbTQ9VNu4H_6LA30TRAqi7mCpn+x3hbTG9WqERA@mail.gmail.com>
-Subject: Re: [PATCH v2 13/15] phy: starfive: Add jh7110-inno-hdmi-phy driver
-To: Icenowy Zheng <uwu@icenowy.me>
-Cc: Maud Spierings <maud_spierings@murena.io>, Dominique Belhachemi <domibel@debian.org>, 
-	m.wilczynski@samsung.com, Laurent.pinchart@ideasonboard.com, 
-	airlied@gmail.com, alex@ghiti.fr, andrzej.hajda@intel.com, 
-	andy.yan@rock-chips.com, andyshrk@163.com, aou@eecs.berkeley.edu, 
-	bmasney@redhat.com, conor+dt@kernel.org, conor@kernel.org, 
-	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	hal.feng@starfivetech.com, heiko@sntech.de, hello@big-grey.co.uk, 
-	jernej.skrabec@gmail.com, jonas@kwiboo.se, kernel@esmil.dk, 
-	krzk+dt@kernel.org, lee@kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-phy@lists.infradead.org, linux-riscv@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, 
-	m.szyprowski@samsung.com, maarten.lankhorst@linux.intel.com, 
-	maudspierings@gocontroll.com, mfd@lists.linux.dev, mripard@kernel.org, 
-	mturquette@baylibre.com, neil.armstrong@linaro.org, p.zabel@pengutronix.de, 
-	palmer@dabbelt.com, pjw@kernel.org, rfoss@kernel.org, robh@kernel.org, 
-	sboyd@kernel.org, simona@ffwll.ch, tzimmermann@suse.de, vkoul@kernel.org
-X-Debian-User: domibel
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 15/19] phy: Add common Innosilicon HDMI PHY helpers
+To: Michal Wilczynski <m.wilczynski@samsung.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Lee Jones <lee@kernel.org>, Andy Yan <andy.yan@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
+ <hal.feng@starfivetech.com>, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,
+ Heiko Stuebner <heiko@sntech.de>, Conor Dooley <conor@kernel.org>,
+ Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
+ Dominique Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>,
+ Jerome Brunet <jbrunet+clk@baylibre.com>, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, mfd@lists.linux.dev,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+ Andy Yan <andyshrk@163.com>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Maud Spierings <maud_spierings@murena.io>,
+ Graham Markall <hello@big-grey.co.uk>,
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>
+References: <20260904-jh7110-clean-send-v3-0-484f9ae72715@samsung.com>
+ <CGME20260904132737eucas1p240d02860355b180ff9c5e8e4c6941ec0@eucas1p2.samsung.com>
+ <20260904-jh7110-clean-send-v3-15-484f9ae72715@samsung.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20260904-jh7110-clean-send-v3-15-484f9ae72715@samsung.com>
+X-HM-Tid: 0aa079ddac6403a7kunm8546d35235ff8c
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZSEtCVkoZHU1OHUwdTx5OSFYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQkxVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Ku4RR7ubhkME7SdU7Q1vR5N4bs9Jd9O9dvZ9PeeRSteOPVUkDArQId4e3ukUTnqz+qWufSkjKXJ2R4/U363WXT4BSsLmk0+jXlh+bAmQV7Motws9BeZFvlX3PDZsY+ze3KEL/3yqEcWz8+aHEvsZGtdV4HknbJNEDvGIuMZ8U48=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=+vkcaZtmTBN2qJZBZCZ7S5klbEWaaU26s6Uci6PmceU=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260906_142124_422604_3EA12C01 
-X-CRM114-Status: GOOD (  18.62  )
+X-CRM114-CacheID: sfid-20260906_201627_287889_4F904ED0 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,43 +95,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBTZXAgNiwgMjAyNiBhdCAxMToxOeKAr0FNIEljZW5vd3kgWmhlbmcgPHV3dUBpY2Vu
-b3d5Lm1lPiB3cm90ZToKPgo+IOWcqCAyMDI2LTA5LTA25pel55qEIDE2OjU5ICswMjAw77yMTWF1
-ZCBTcGllcmluZ3PlhpnpgZPvvJoKPiA+IE9uIDkvNi8yNiAwNzozOSwgRG9taW5pcXVlIEJlbGhh
-Y2hlbWkgd3JvdGU6Cj4gPiA+IE9uIFN1biwgQXVnIDMwLCAyMDI2IGF0IDEwOjE34oCvQU0gTWF1
-ZCBTcGllcmluZ3MKPiA+ID4gPG1hdWRfc3BpZXJpbmdzQG11cmVuYS5pbyA8bWFpbHRvOm1hdWRf
-c3BpZXJpbmdzQG11cmVuYS5pbz4+IHdyb3RlOgo+ID4gPgo+ID4gPiAgICAgSSB3YXMgc3RpbGwg
-aGF2aW5nIHNvbWUgZ2xpdGNoaW5nIGhhcHBlbmluZyBvbiB0aGUgZGlzcGxheSwgYnV0Cj4gPiA+
-IEkndmUKPiA+ID4gICAgIGZvdW5kIHRoZSB3YXkgdG8gZml4IHRoYXQsIHRoZSBxdWVzdGlvbiBp
-cyB3aGF0IGlzIGFjdHVhbGx5Cj4gPiA+ICAgICBoYXBwZW5pbmcgaGVyZS4KPiA+ID4KPiA+ID4g
-ICAgICAgICAweDI5NTkwMDIwIDwtIDB4MDAwMDAwMDUKPiA+ID4gICAgIFRoaXMgb25lIEkgaGF2
-ZSBubyBpZGVhLCBpdCBpcyAweDAwMDAwMDA5IHdpdGggdGhpcyBwYXRjaAo+ID4gPiBzZXJpZXMg
-YnV0Cj4gPiA+ICAgICB3aXRoIHRoZSB2ZW5kb3Iga2VybmVsIEkgZ2V0IHRoZSB2YWx1ZSBhYm92
-ZS4gV2hlbiBJIGhvb2sgdXAgbXkKPiA+ID4gICAgIGV4dGVybmFsCj4gPiA+ICAgICBkaXNwbGF5
-IChyZWd1bGFyIDE0NDBwKSB0aGlzIGJlY29tZXMgMHgwMDAwMDAwRCBvbiB0aGUgdmVuZG9yCj4g
-PiA+IGtlcm5lbC4KPiA+ID4KPiA+ID4gICAgIEJ1dCBJIGNhbid0IGZpbmQgdGhpcyByZWdpc3Rl
-ciBiZWluZyB3cml0dGVuIHRvIGFueXdoZXJlIHRoZXJlPwo+ID4gPgo+ID4gPgo+ID4gPiBNYXli
-ZSB0aGlzIG5lZWRzIHRvIGJlIHN3YXBwZWQ/Cj4gPiA+Cj4gPiA+IGRyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvaW5uby1oZG1pLmMKPiA+ID4gICAgLSNkZWZpbmUgdl9IU1lOQ19QT0xBUklUWShuKSAg
-ICAgICAgICAoKG4pIDw8IDMpCj4gPiA+ICAgIC0jZGVmaW5lIHZfVlNZTkNfUE9MQVJJVFkobikg
-ICAgICAgICAgKChuKSA8PCAyKQo+ID4gPiAgICArI2RlZmluZSB2X0hTWU5DX1BPTEFSSVRZKG4p
-ICAgICAgICAgICgobikgPDwgMikKPiA+ID4gICAgKyNkZWZpbmUgdl9WU1lOQ19QT0xBUklUWShu
-KSAgICAgICAgICAoKG4pIDw8IDMpCj4KPiBWZXJ5IHdlaXJkbHksIHRoZSBvcmlnaW5hbCBkZWZp
-bml0aW9uIGhlcmUgbWF0Y2hlcyBjdXJyZW50IG1haW5saW5lCj4gaW5uby1oZG1pLmMsIGJ1dCB0
-aGUgY2hhbmdlZCBkZWZpbml0aW9uIG1hdGNoZXMgSkg3MTEwIHZlbmRvcgo+IGlubm9faGRtaS5o
-IFsxXS4KPgoKVGhlIHZlbmRvciBjb2RlIGlzIGNvcnJlY3QgYW5kIG1hdGNoZXMgdGhlIFJLMzEy
-OCBUUk0uCgpIRE1JX3JlZzA4CiAgICBCaXQgIEF0dHIgIFJlc2V0ICBEZXNjcmlwdGlvbgogICAg
-MyAgICBSVyAgICAweDAgICAgdnNfcG9sYXJpdHkgICBWU1lOQyBwb2xhcml0eSAgIDEnYjA6IE5l
-Z2F0aXZlCjEnYjE6IFBvc2l0aXZlCiAgICAyICAgIFJXICAgIDB4MCAgICBoc19wb2xhcml0eSAg
-IEhTWU5DIHBvbGFyaXR5ICAgMSdiMDogTmVnYXRpdmUKMSdiMTogUG9zaXRpdmUKCk5vYm9keSBu
-b3RpY2VkIHRoaXMgc28gZmFyIGJlY2F1c2UgaW4gNzIwcC8xMDgwcCBib3RoIHBvbGFyaXRpZXMg
-YXJlCnBvc2l0aXZlLCBidXQgTWF1ZCdzIDM6MiBwYW5lbCBoYXMgZGlmZmVyaW5nIEgvViBwb2xh
-cml0eS4KCkJlc3QKLURvbWluaXF1ZQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hello Michal,
+
+On 9/4/2026 9:27 PM, Michal Wilczynski wrote:
+> The Innosilicon HDMI PHY IP is used by several SoCs. They differ in
+> where the PHY register block sits in the register space and in which
+> pixel clocks they support, but the pre-PLL programming sequence and the
+> layout of its registers are the same.
+> 
+> Add a small library holding that shared part: the pre-PLL configuration
+> table format, a lookup, clk_ops determine_rate and recalc_rate helpers,
+> and the pre-PLL register programming. Callers pass a regmap, a register
+> offset for the PHY block, and their own pixel clock table.
+> 
+> No driver uses it yet; the users are converted separately.
+> 
+> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+> ---
+>  drivers/phy/Kconfig               |   8 +
+>  drivers/phy/Makefile              |   1 +
+>  drivers/phy/phy-inno-hdmi.c       | 298 ++++++++++++++++++++++++++++++++++++++
+>  include/linux/phy/inno-hdmi-phy.h |  85 +++++++++++
+>  4 files changed, 392 insertions(+)
+Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+-- 
+Best, 
+Chaoyi
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
