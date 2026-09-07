@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27A96C79F9E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2026 11:40:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 408B0C79F89
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2026 12:24:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SLpDuN6PfqmWkWcWiev73OXGtobXDGfOT2DFeCVBJkA=; b=XTsR9I/AHjRshU
-	tr78IieRwuxbTqR9gSFdOl2js8DDkdhqNZBXVjVbhp6Xwx+97VxgOhdLbbgKavBt+KOO8/KO851TV
-	ntrIj3QrWgMN7XmLzTqaDghmTaS/mvGOdUzCkogKKWLLu/FzE2SipSKSdSgqqjRsKF1eMf1LDo5/J
-	oLE/yJb/M+JVq3OO+pUNevlzOSamGj1xe2ftRg82S1VFhLG+iRkK0hKRdXwk2r3L5SQ8iGLrecmw6
-	/QpcQfAUXwOwWBL+BtVtoL8Rln/akCr0o8Lx8vGtDPfUiTAegMz/YKlMmGBq7IQRu0m3vkO2pc6lf
-	AuMM7qQ3Ri2/3GB93YtA==;
+	List-Owner; bh=Ef4BT5y2hdrIV5g36wn0ZRaaAwU9s+3lzci76idz+Vo=; b=AjEaaOkt8MDxqy
+	dimd2nD/x0LSh8UnEfbZ29KupA/izCkwnLYM0sP5NqejIAobaThuF7r1LmZKsErP9gxMMa3rB4Owb
+	iVQoIZ1n5ya02FPIpW4dUqBc1Mq1j539w3ySCSyPXPMiy0T7MN6zMi+BzIgEblPWtZffEUlf42eON
+	yCqIl8Vz8lQ5RmbH4m6wRQ7UuZGJULYBco+seczs7svUSJho07LanQDyvsW3MQQb4LB9KoTdKSSbu
+	bRJsst37vbGfkh8QaUdRGtFCC2xnzXw6t8GT/bQ3V1TTNm9k/koJLuHJO+gC6w3lvNNFv9CxxlUhz
+	5eVPwaN+Rglf+8iPheWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3Xi6-00000006gMl-2j8A;
-	Mon, 07 Sep 2026 11:40:26 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1x3YOe-00000006n4t-2iKO;
+	Mon, 07 Sep 2026 12:24:24 +0000
+Received: from out-146.mta0.migadu.com ([2001:41d0:1004:224b::92] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3Xhz-00000006gLh-1FzN;
-	Mon, 07 Sep 2026 11:40:26 +0000
-Received: from Vostro-3710.. (unknown [14.220.232.127])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4cd235a67;
-	Mon, 7 Sep 2026 19:40:15 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: devnull+hystericaldragons.proton.me@kernel.org
-Cc: HystericalDragons@proton.me,
-	conor+dt@kernel.org,
+	id 1x3YOW-00000006n1b-0E8Z
+	for linux-rockchip@lists.infradead.org;
+	Mon, 07 Sep 2026 12:24:23 +0000
+X-Envelope-To: linux-rockchip@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=waGL5biJ+0DdJSi3zAqUa3WT8EXSFWxNSrzn0Sze2VM=;
+ c=simple/simple; d=cknow-tech.com;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1788783852; v=1; x=1789388652;
+ b=KsG1M0nTa8nOlT0hFw3iLevFTgamhJpKvMtLzroCUWEGTY1a9YwYPrm+5BvYrSoV4Qi5MNJI
+ cpSFDeZLsUMC+XC2qo937gTYBS+oYsujW7eY4u1hfqmq+o6b+C3NJIrWIzaMu9Yyvla0O0V0PaM
+ vWN2Gha32h6s7ck2Gosm3LA3N5PcO9n6r9G6nIDJEXSItnckceq808cJCvm8TQ5jIEkEznPp4I2
+ t5naHdaOeq2hTmyVX82UUAJWd8g0sgOyGIS5NF6iBE709WoK5IjLnh2sXzD2LNq069B5grzkg2u
+ GO/M7Q8zPzOiLUjA/WOA6hm5tzbe7O6zDfRB/lJOZU5Zg==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id ceebd85e94b4903c;
+	Mon, 07 Sep 2026 12:24:12 +0000
+X-Mizu-Trace-ID: ceebd85e94b4903c
+X-Migadu-Flow: FLOW_OUT
+From: Diederik de Haas <diederik@cknow-tech.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Joachim Eastwood <joachim.eastwood@gmail.com>,
+	Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>,
+	Daniele Briguglio <hello@superkali.me>,
 	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	jensenhuang@friendlyarm.com,
-	krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	robh@kernel.org,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add devicetree for the FriendlyElec NanoPi R28S
-Date: Mon,  7 Sep 2026 19:40:10 +0800
-Message-Id: <20260907114010.2166428-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260905-r28s-upstream-v1-2-f68d5389269a@proton.me>
-References: <20260905-r28s-upstream-v1-2-f68d5389269a@proton.me>
+	linux-kernel@vger.kernel.org,
+	Diederik de Haas <diederik@cknow-tech.com>
+Subject: [PATCH 1/3] dt-bindings: arm: rockchip: Add FriendlyElec NanoPC-T6 Plus
+Date: Mon,  7 Sep 2026 14:22:43 +0200
+Message-ID: <20260907122406.1862398-2-diederik@cknow-tech.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260907122406.1862398-1-diederik@cknow-tech.com>
+References: <20260907122406.1862398-1-diederik@cknow-tech.com>
 MIME-Version: 1.0
-X-HM-Tid: 0aa07bab3ea703a2kunm7cb50498ea708
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaHh1LVkhMQkMYH0saHUlMSFYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpJTFlXWRYaDxIVHRRZQVlPS0hVSktISk
-	5MTlVKS0tVSkJLS1kG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260907_044019_522107_CCCB6576 
-X-CRM114-Status: UNSURE (   6.41  )
+X-CRM114-CacheID: sfid-20260907_052418_226703_55C65A7B 
+X-CRM114-Status: UNSURE (   7.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,55 +82,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The NanoPC-T6 Plus is the latest addition to the NanoPC-T6 series.
+Add it to the NanoPC-T6 list.
 
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-nanopi-r28s.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-nanopi-zero2.dtb
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 81744fbee98a..aa828ee60d21 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -398,6 +398,7 @@ properties:
+           - enum:
+               - friendlyarm,nanopc-t6
+               - friendlyarm,nanopc-t6-lts
++              - friendlyarm,nanopc-t6-plus
+           - const: rockchip,rk3588
+ 
+       - description: FriendlyElec CM3588-based boards
+-- 
+2.55.0
 
-This device tree has many similarities to the nanopi zero2.
-Can you create a shared device tree?
-
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3528-nanopi-r28s.dts
-
-https://wiki.friendlyelec.com/wiki/images/7/7c/NanoPi_R28S_2605_SCH.pdf
-Please name the labels according to the schematic.
-
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&user_key>;
-
-Schematic label: GPIO4_B2_USR_BTN
-
-> +		button-reset {
-> +			debounce-interval = <50>;
-> +			gpios = <&gpio4 RK_PB2 GPIO_ACTIVE_LOW>;
-> +			label = "reset";
-> +			linux,code = <KEY_RESTART>;
-
-label = "USER";
-
-> +	leds {
-> +		compatible = "gpio-leds";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&lan_led_g>, <&sys_led_r>, <&wan_led_g>;
-
-Schematic label: LED1 LED2 LED_SYS
-
-> +	sdio_pwrseq: sdio-pwrseq {
-> +		compatible = "mmc-pwrseq-simple";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_enable_h>;
-
-Schematic label: PWR_WF
-
-> +&pcie {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pcie_reset_h>;
-
-Schematic label: PCIE_ETH_PERSTB
 
 _______________________________________________
 Linux-rockchip mailing list
