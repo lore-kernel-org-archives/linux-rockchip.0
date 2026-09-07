@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24BF7C79F99
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2026 10:43:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF6BCC79F89
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2026 11:02:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s4l3zzwHdIowQzwuAhbHCgYnd/Jy6lptw9zQRVfV82s=; b=m5J9v7hH5qMxXn
-	64nLH4vIve+m26QMMPMKmpXYJK0aKt0F4+BuT1ZOsvRSOdEoJpqK6RJP7xCMQbSe0lPZcgJGTbLA9
-	TSplz2HxLcU7LgHWJlFyYCm7qPQeqFA1MLYYHyzDiZeNeWTNsvJ4oooU92h1p7eyaBlBcfZV3k+pM
-	qEpVPDhJkdfLJpuvZYuyTWFeGnlNkXd9qmmc1Yp5cuj2TMHy/REBjTkdgrh2mCfpjDv6w0l1KAnyA
-	qpCATVSClSoQpH8cnV/ycjnJUd9yQEeOYZmUitMLIRjd8n14j+xyseUQK51/aDVf3YWrcjGCtMMd6
-	yFnc/Y4nGv34lE/EBYAQ==;
+	List-Owner; bh=tmeJfPdgrfZyr0pnQdiPl13aw/GAaj2NRzmSpJQNafo=; b=DXTfmr8AUshjTs
+	R76bgxRsLhGa6F7FLHIB9xqeXvRDX8nd+S+U3hGQ+qAQswtWgyMqyW+XNG258e01COtqJowoJFXvX
+	TQLuNMsFufpiLnIhtUrJrrkrQ3332j6HWfCbQ9ALj8TWnWI2xdtXPYI149nB2C8SoLJXUuBgFKOcY
+	jMNMPcNCsejTJ4I5swjDx1Sl8PYCwWOxdJytb+L7yi/hVrq//IRCzV4nq0PKappuM438duhHKnnAB
+	+SIubiaeYR4rYjibljtaY5OQP1PsKoItKVWuSynLphAasF51HUMR5uxOYmyY4j2K8tM7M8SavHnXi
+	OkUoLYn1o8fN6Klyn5/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3WoV-00000006Vax-1w5f;
-	Mon, 07 Sep 2026 10:42:59 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1x3X7I-00000006bDX-45Ro;
+	Mon, 07 Sep 2026 11:02:24 +0000
+Received: from sender6-pp-f112.zoho.com ([165.173.180.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3WoS-00000006VaB-3VVN;
-	Mon, 07 Sep 2026 10:42:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1788777771; cv=none; 
+	id 1x3X7G-00000006bCx-1UbP;
+	Mon, 07 Sep 2026 11:02:23 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1788778937; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=c+ZlO0SpKY1NVAbCIVQIzfEWoPScxP28ZPi+T2jEhEj8Srh0sDmW8ApeK65voMLWBdteaXmVNB7es8U01HejvdbeGhjxFK1IpTPRi8hkqI+eAhCzcVDW8f2y2+ikusP3GbTwR+rWOjXgYKMFAwaU0R4bW2Jk2DhRERPcmJyDnxk=
+	b=cEkx9n2gZuP37kraYeyo8ckYdvOQw3Bks6OBB3ybxuaeCa9v2srFeNcZe3RspQphrarocYxCysSzUQTmaWLTO8qJyH8CHJdIAIN9mDB334Zi7RAqvL9QtWpullrdkw/FRLGnQK1iku1WExCBmy/PDM99t8s2yB+MJqlhJGjcr3Y=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1788777771; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=gyw7lKF4Mm7V/x1A8ErrqACafyHF9HcBrt4kEjhvQQo=; 
-	b=J3fzJNkM3c7HKa1XIIYI87UiICIgouAPWeiphf+veEN9ttxuOJE0SWxLv4YvHJ8G84l4RzFZ4lTwpjSw5P0S1WuC404wi7G+qzp4vKFdbXBWr3fR//jLxTJc0NX+PQYpYeFW4ipkONRBNpJhtYU/2c9uZX4KpjYYyFIZ/UF6oAY=
+	t=1788778937; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=cC9s+xjh/N6rSZarsENmP07faEM7u9hQPQhDsNCtyb0=; 
+	b=nokuVz3EzgMlIDAQQD0EyZ/sgynSKqUBe1CtThToD87q8rWS1oqPeTjTeos41lM5gE58dvkaWBn2gUQUMBYHVYncglSkyxBw0j2VOFFhT2WWTlN9LPIiYToFbq2SH7uZPfWx8CdhTubspYR5Y5hoaA4/IpQXPQ2YSQU4/Yy3tCw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
 	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788777770;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788778937;
 	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=gyw7lKF4Mm7V/x1A8ErrqACafyHF9HcBrt4kEjhvQQo=;
-	b=WUg4s5D5ZwgLZXc88xZOzh43BvUfRAihCXqCVRPxyFuigN/8au2estbO4wxr1ttL
-	KC2u27i43hRwBDI5MekEKwxshXqtOBupuyqpB2Ow3kW2G101Sa7EjWT90f2KtrcxYd0
-	xxCO+kL2avUBJck2JvDvCfOl3yP+shwl+415S7iA=
-Received: by mx.zohomail.com with SMTPS id 1788777767905650.7635072531486;
-	Mon, 7 Sep 2026 03:42:47 -0700 (PDT)
-Message-ID: <0fda1cf1-8df7-4e50-be6d-dc17ca3591cf@collabora.com>
-Date: Mon, 7 Sep 2026 12:42:43 +0200
+	bh=cC9s+xjh/N6rSZarsENmP07faEM7u9hQPQhDsNCtyb0=;
+	b=OfTx4OYBkz+3DmyYt2yyy3sr1yA5iGgH6LnzNJFIqlMOPD+1y9nrk0MGJ8Dvvy8E
+	2ntbXswE9cxAu1B1JMFu9iBBekfkhKsqXoQ7NlixIR89DMKl4/IqqxJDKIy8ZKzDZTN
+	UmUfVJW8XldqdvY1VzKB6OWAC5JWccpXdWCVPl48=
+Received: by mx.zohomail.com with SMTPS id 1788778934224927.534650195504;
+	Mon, 7 Sep 2026 04:02:14 -0700 (PDT)
+Message-ID: <0ab0b4f4-ab5d-413b-9446-5d747c59a32a@collabora.com>
+Date: Mon, 7 Sep 2026 13:02:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] Add MIPI CSI-2 receiver support for RK3576
-To: Amin Gattout <amin.gattout@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH 3/4] phy: rockchip: phy-rockchip-inno-csidphy: add support
+ for rk3576 variant
+To: Amin Gattout <amin.gattout@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260826-csi-2-rcv-dts-v1-0-bcd8d459684d@gmail.com>
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org
+References: <20260820-rk3576-dphy-v1-0-70e25e8d5e78@gmail.com>
+ <20260820-rk3576-dphy-v1-3-70e25e8d5e78@gmail.com>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260826-csi-2-rcv-dts-v1-0-bcd8d459684d@gmail.com>
+In-Reply-To: <20260820-rk3576-dphy-v1-3-70e25e8d5e78@gmail.com>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260907_034256_950267_8E551FDF 
-X-CRM114-Status: GOOD (  17.21  )
+X-CRM114-CacheID: sfid-20260907_040222_430438_66C475A4 
+X-CRM114-Status: GOOD (  16.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,57 +86,93 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Amin,
 
-On 8/26/26 14:33, Amin Gattout wrote:
-> This series adds the device tree binding and the SoC nodes for the
-> MIPI CSI-2 receiver units of the Rockchip RK3576. The receiver is the
-> same Synopsys DesignWare IP as in the RK3568 and the register map is
-> identical, so the existing driver is used unchanged via a fallback
-> compatible.
-> 
-> Only the two receivers fed by the Innosilicon D-PHYs in full mode
-> (MIPI1 and MIPI3) are added; see patch 2 for the details.
-> 
-> This series depends on the RK3576 CSI D-PHY series [1], which provides
-> the csi_dphy0/csi_dphy1 nodes referenced here.
-> 
-> [1] https://lore.kernel.org/r/20260820-rk3576-dphy-v1-0-70e25e8d5e78@gmail.com
+Thanks for your patches!
 
-Thanks for your work, LGTM!
-
-Just one thing: It would be great if you could describe your test setup
-a bit (HW components, test case, ...).
-
+On 8/20/26 16:01, Amin Gattout wrote:
+> The two RK3576 MIPI CSI-2 DPHYs can be supported using the existing
+> phy-rockchip-inno-csidphy driver, the notable difference with the
+> RK3588 variant being that each PHY instance only has an APB reset
+> line.
 > 
 > Signed-off-by: Amin Gattout <amin.gattout@gmail.com>
+> ---
+>  drivers/phy/rockchip/phy-rockchip-inno-csidphy.c | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
+> index c79fb53d8ee5..24aefdcd6361 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
+> @@ -30,6 +30,7 @@
+>  #define RK3568_GRF_VI_CON0		0x0340
+>  #define RK3568_GRF_VI_CON1		0x0344
+>  
+> +#define RK3576_CSIDPHY_GRF_CON0		0x0000
 
-For this series:
+This, ...
 
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+>  #define RK3588_CSIDPHY_GRF_CON0		0x0000
+>  
+>  /* PHY */
+> @@ -119,6 +120,12 @@ static const struct dphy_reg rk3568_grf_dphy_regs[] = {
+>  	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK3568_GRF_VI_CON0, 1, 8),
+>  };
+>  
+> +static const struct dphy_reg rk3576_grf_dphy_regs[] = {
+> +	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK3576_CSIDPHY_GRF_CON0, 4, 0),
+> +	[GRF_DPHY_CSIPHY_DATALANE_EN] = PHY_REG(RK3576_CSIDPHY_GRF_CON0, 4, 4),
+> +	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK3576_CSIDPHY_GRF_CON0, 1, 8),
+> +};
+> +
+
+and this look pretty identical to RK3588, can't we just drop these two
+and ...
+
+>  static const struct dphy_reg rk3588_grf_dphy_regs[] = {
+>  	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK3588_CSIDPHY_GRF_CON0, 4, 0),
+>  	[GRF_DPHY_CSIPHY_DATALANE_EN] = PHY_REG(RK3588_CSIDPHY_GRF_CON0, 4, 4),
+> @@ -403,6 +410,17 @@ static const struct dphy_drv_data rk3568_mipidphy_drv_data = {
+>  	.resets_num = ARRAY_SIZE(rk3368_reset_names),
+>  };
+>  
+> +static const struct dphy_drv_data rk3576_mipidphy_drv_data = {
+> +	.pwrctl_offset = -1,
+> +	.ths_settle_offset = RK3568_CSIDPHY_CLK_WR_THS_SETTLE,
+> +	.calib_offset = RK3568_CSIDPHY_CLK_CALIB_EN,
+> +	.hsfreq_ranges = rk1808_mipidphy_hsfreq_ranges,
+> +	.num_hsfreq_ranges = ARRAY_SIZE(rk1808_mipidphy_hsfreq_ranges),
+> +	.grf_regs = rk3576_grf_dphy_regs,
+
+... use rk3588_grf_dphy_regs here?
+
+> +	.resets = rk3368_reset_names,
+
+So that the reset names are the only difference to RK3588 (which seems
+to be the case as per commit message)?
+
+> +	.resets_num = ARRAY_SIZE(rk3368_reset_names),
+> +};
+> +
+>  static const struct dphy_drv_data rk3588_mipidphy_drv_data = {
+>  	.pwrctl_offset = -1,
+>  	.ths_settle_offset = RK3568_CSIDPHY_CLK_WR_THS_SETTLE,
+> @@ -435,6 +453,10 @@ static const struct of_device_id rockchip_inno_csidphy_match_id[] = {
+>  		.compatible = "rockchip,rk3568-csi-dphy",
+>  		.data = &rk3568_mipidphy_drv_data,
+>  	},
+> +	{
+> +		.compatible = "rockchip,rk3576-csi-dphy",
+> +		.data = &rk3576_mipidphy_drv_data,
+> +	},
+>  	{
+>  		.compatible = "rockchip,rk3588-csi-dphy",
+>  		.data = &rk3588_mipidphy_drv_data,
+> 
+
+Apart from that LGTM!
 
 Best regards,
 Michael
-
-> ---
-> Amin Gattout (2):
->       media: dt-bindings: rockchip,rk3568-mipi-csi2: add rk3576 compatible
->       arm64: dts: rockchip: add mipi csi-2 receiver nodes to rk3576
-> 
->  .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  |  1 +
->  arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 52 ++++++++++++++++++++++
->  2 files changed, 53 insertions(+)
-> ---
-> base-commit: bd5f485f3f026225b86573e559af0b7254ef4184
-> change-id: 20260825-csi-2-rcv-dts-7712bd834de6
-> prerequisite-change-id: 20260819-rk3576-dphy-2304f848215b:v1
-> prerequisite-patch-id: fbe2d84f88709b8bf846debe6b8ce62c4392ca63
-> prerequisite-patch-id: 9bce33933ae69e8cc7f7ef2f0d9acb969620bc85
-> prerequisite-patch-id: aca697161c21e19fe3a7f62f208da0f6c3b666e1
-> prerequisite-patch-id: 8f45701f840680a35e044f43ebd3087282847990
-> 
-> Best regards,
-> --  
-> Amin Gattout <amin.gattout@gmail.com>
-> 
 
 
 _______________________________________________
