@@ -4,111 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC246C79F82
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 14:43:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2EC1C79F82
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 14:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yzgjFjr9WfF45qUjZ2rrl5uk/EM2ZhIPKW5CBwciLVk=; b=T8wAzVRs5qK6LS
-	csy5P3LdwYckIgnX+ZOhMf41Qj1+c4SY+Xme9leSUQL3WGfGbmTpkDjWsMqQbq5QwmiK1b4trFGXc
-	+QelKwFcs0PdimyU1J1pRFjvPZos/1qFINEBgq3tNGtdyxh57RzV8xUUvqNy0NlT3lTMS2XhLE2Br
-	kD2whAPXKf7XopzfcokBd3Hm/xELuY87gxJ6Zt86sPCrsCYW80GIF1v4Dn6jZKUChOJFetu2JS5tc
-	PQqfoCkV3/nSoIsHpQc7lM9QfdGwdFDKUIDDmMhnG+kXh5ex218ktcq5SzMpi9rmWov8x/dnuI/4L
-	3h5PMxB2i9YzEVLbP2HQ==;
+	List-Owner; bh=mx8FIw36vHsktBBmildya/Y2FIU6kYB05X7oiM4kdik=; b=N5u7TQB5PqehHn
+	iEN+ZvV7DRg7z2jmLntnNAXRkfpTX9/KqGrmaj6l3HVYIWQzLCvbfZrhPjUH8UK495H9S9A1l2TOB
+	W1H2xOFOj1UW4bglMYpPtEo7h8UUyQm0xfbjl6anibQ90XDMnF6Q+LomFnber+Lotg52H//xJI3/4
+	yI9IOFWywi8sE2PVme7irDn1eKz1SKvzCpEYS0z+EoI2pzXH147r2VTstyKrjYPPVlFk5+KCcuaHs
+	HmTcZ4D7dLmu4IK8jVWQRMEF/VPFLo8HyV9C9xbTIMO0uFQ8bKpb9XP/mhnJj/bCf2/V1lU6NdLLf
+	sC5/TfaiXczVPHSK/Kow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3x2a-00000009J80-27ZG;
-	Tue, 08 Sep 2026 14:43:16 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x3x7D-00000009JfX-1Opm;
+	Tue, 08 Sep 2026 14:48:03 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3x2Z-00000009J7O-00ch
-	for linux-rockchip@bombadil.infradead.org;
-	Tue, 08 Sep 2026 14:43:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=KDuIAOmD9TOy7wbeKmvOrBhyXGkPda+5cVc0xJOwDR0=; b=Jk9YYpkFW7EtFXnXjCCX3rd7cn
-	k9BjuH4EJU2/Xtn7gNvyP5GGJ+wnEVxDwfjH0HNa5I/gGwRdl3t8cE8Evy4qXol9IHi8pGtfI7zUf
-	6P8Yaha8m0gK6Z26aiIWYKzg4GnGm9MU4by/B7jSImqd5tnabyewN1PRYY0okZnDRewvlzs9NUVJn
-	MlXBaiH0qneDdaVEmLG+7a+EbFsJCM+1FZziZH2zMw4XowPI3y1CosHSZCThZ42mHH05mh2P1QdVu
-	6bExEQKEaGR5BHNLeULp23YH7D91Ul6W7CH1NosaHCpRZuz2IdQWBa1Wz/9XJHVrjsy4IhgBb6mXi
-	JPYRinog==;
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x3x2W-0000000HYIX-0hQs
+	id 1x3x7B-00000009Jf7-2QAo
 	for linux-rockchip@lists.infradead.org;
-	Tue, 08 Sep 2026 14:43:13 +0000
-Received: by mail-wm2-x10.google.com with SMTP id 5b1f17b1804b1-49d157f691cso1026015e9.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 08 Sep 2026 07:43:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788878591; x=1789483391; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=KDuIAOmD9TOy7wbeKmvOrBhyXGkPda+5cVc0xJOwDR0=;
-        b=RMrMLbOBPO1IPTYo9G/rplCt9bdeCXeq/lu/k1cmA44mo/ToxfJYcfNrMFFlKppI0p
-         ADV1O3wXlN8f84WKUxNKF3UQL8Z6hGjIhp4ZBuHjeHumntVH0dRZ2e8eAxVidufwCc2G
-         7fohtvYLHx55iEModmHAtEcWJREMglHN3ge6hySwCTEk+OYQXeDeBOlVAQi6BqmAynH7
-         Fe2V5jLiS40Lr3njPvBh7jssbune5fo0TpvsXyvWStdmkl4PqSNOWY/e/dlP5qXPWaMm
-         /zZIaKtY3EbIxF2Pfr2OlQW79tAwQp0u9M6MW0HlBt5HmKS1TVSB4bHst8/NIRnwb56k
-         6eBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788878591; x=1789483391;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=KDuIAOmD9TOy7wbeKmvOrBhyXGkPda+5cVc0xJOwDR0=;
-        b=CGsHFkATavCXT2dM0393CNQg9wZC73UzMT5h4p37l/z4AI2v+ZsL70NfjNjeHNLW5I
-         8PeuJUogaGotyFaf8PAro/bZLXQwJxt6KJ1f/jCPwjw2vrn+ytnQo1UPoxyUHfESBBRf
-         s2U48JboHxeoJ9WxmZZU/+FJY2nxLqsNvqC03FgDzpvPBNbcF6tuJgGqIMWm9etgc3YZ
-         N4/k5lvLGVNxeygE5GduZBpkWVuIXNaMsU0cF7EpyUEzSreGdRCOUcl0dagkuJop3DMc
-         b+20rCX6tRxJAUglXCMzOTa64LS4Ct7ihWTa5/dVkSKT02Q7o7E7cPBM3pdQ3sRaPvY2
-         f2lQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzvpKiJycpmRqYKjYEbpvpiIC0tLxMqE5zIWXh+dx42Be4+9/Ne7XhcPMJCRDszpDNpBNJ8UTDwtMW9bau+fQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++km6Hk3asLaYHtq7SCWB6bvj4RUre4k86AreU9Ygi7DIsj9Dscv
-	mBrWr17/G63SVGMdiqV5zeWpP+HrjVOC5V976FmxD9zcR72PEV4F8xYfGl3ru1EM
-X-Gm-Gg: AYBFou0D9b1fkih/0B1+I+DhzTi/tz7FKpKsRTzbKM9wB//JXJUMZlDwzi7rEcpwX9/
-	VS4/Qbs4yW9sLYjcHPRE6eApZi+2o9Uy3oUrg48x1Us7/6tbMCZ3uxWMjaY3ER+ZgPzo5fd1Whd
-	MsLQZL5y1VuCCJbdcUwA+X3SWHDaatghTpTKLoq5omJlWMe8giZQAF0OUXfJGeKm6p5Dl5vFzua
-	Bsp3AGKToN7K/jCxjt4L0bvoOYanjZoGvP/59i//uCBJSc0JlmSa9AZVv22IWxoQcyixl1W8RhU
-	HMrQ5hFMlZe1/Ni2hEJNlL5grXu5zlRl6QaQOG67dpn0KnptGlYrwfTn0KkxnRqCAdaLA6WTRYR
-	45jfudrt4w5F4KG5lczxRRKW9mie4DpwNL2xzKT/wPJO5dY91OPjWNxiE9bOa6OZ6bUmae59bZz
-	zGQASnmOGnkNnG30L1gm6rFukVIBKp4uwqME5LrG9Prfcna/gU2FJQO2P5WptNRJx36Mda2sXJj
-	/MZrEryZqYv0CKw6aUJ+tvd3qsi183h0S1VjR6vRX0r0Co1gCsoF6k/6ZRqGCbwL9211Q==
-X-Received: by 2002:a05:600c:4f48:b0:49d:798:67a4 with SMTP id 5b1f17b1804b1-49d079867f5mr193440325e9.0.1788878590675;
-        Tue, 08 Sep 2026 07:43:10 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B825D00A0B3828666A65C4F.dsl.pool.telekom.hu. [2001:4c4e:1b82:5d00:a0b3:8286:66a6:5c4f])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49cee7fec25sm564356455e9.13.2026.09.08.07.43.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Sep 2026 07:43:10 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Igor Paunovic <royalnet026@gmail.com>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	linux-usb@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: s2idle resume hangs in ohci/ehci on RK3588: HC registers touched before the USB2 PHY is powered back on
-Date: Tue,  8 Sep 2026 16:42:44 +0200
-Message-ID: <20260908144245.10700-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260908133147.8291-1-royalnet026@gmail.com>
-References: <20260907190000.s2idle-usb2-resume-royalnet026@gmail.com> <ap__5zeUakMSLWOQ@venus> <20260908133147.8291-1-royalnet026@gmail.com>
+	Tue, 08 Sep 2026 14:48:01 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2B32F43CC5;
+	Tue,  8 Sep 2026 14:48:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD6961F00A3F;
+	Tue,  8 Sep 2026 14:48:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788878881;
+	bh=EnBo6eqfm20VoU8CFUCK+pCP52GsNCMrfz4EAuIY4n4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=LVulBfmG5XTCf8tJhY+us9DSmXmCo0wr2B+140s/LKnLGYliCiUmBuVuJcioG2I9l
+	 9+sidO8IT1DDiPvEI47+4qvBcGuikm51s37cvm6E2L1GIJGbBFqa2lf02XCKkrtX/b
+	 cG5QIqDRlVCIdthQfAe+nfO3hRD1Y6g+Pj3o/O860RWzIA4SBgv2UVZxiMRSitbANq
+	 0pJyS4OI+F1y5p43JxOsTmDngHdyi8qx8fQd68d5TXpYiKIUBGJ1208ij250HHR4Tc
+	 CfDiMTdSVPEZPhVD8zRDsDlbMNiOPsKIIhoFVuNf7j3bex4PVd5oY+Dxh9FmIiGwEW
+	 qBdLWKyET90Jg==
+From: Maxime Ripard <mripard@kernel.org>
+Date: Tue, 08 Sep 2026 16:46:46 +0200
+Subject: [PATCH v4 15/41] drm/rockchip: Convert to atomic_create_state
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260908_154312_479002_62BDE3A8 
-X-CRM114-Status: GOOD (  21.29  )
+Message-Id: <20260908-drm-no-more-plane-reset-v4-15-a31b3fcfc989@kernel.org>
+References: <20260908-drm-no-more-plane-reset-v4-0-a31b3fcfc989@kernel.org>
+In-Reply-To: <20260908-drm-no-more-plane-reset-v4-0-a31b3fcfc989@kernel.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
+ andy.yan@rock-chips.com, heiko@sntech.de, hjc@rock-chips.com, 
+ linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6962; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=qJBkAj8sMu0YC2yOSu4CGiooz2xOVvkwLHBd+SRcgNI=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFkL5K8INUZt3M67YObd0skrXj7d92Btddij0qlrvr6cd
+ Li4fMot2Y6pLAzCnAyyYoosT2TCTi9vX1zlYL/yB8wcViaQIQxcnAIwkSu8jPWe1gzflUXi+dO4
+ Fv00WDYpQnL1Jy3LeGFDS5vb+Se+vzuTa/Ev4bxAUbPdK75ps0PMDzM2HMx3P3F4fUi86isnjgu
+ njXguJnH7+EfW3girPbbqiPG+BWVn7VS8rwY11tl8eVo3j2szAA==
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,65 +80,319 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Sebastian,
+The plane only initializes a pristine state in its reset hook
+using drm_atomic_helper_plane_reset(), which is equivalent to what
+atomic_create_state expects. Convert to it.
 
-I tested 53014abc on the Orange Pi 5 Plus and it fixes the hang here.
+The conversion was done using the following Coccinelle semantic patch:
 
-Setup: same kernel (7.3.0-rc1 based), same dts, same procedure as the
-report, all four USB 2.0 hosts bound, RTC alarm as the wakeup source.
-The only change is that commit in phy-rockchip-inno-usb2.
+@@
+identifier funcs;
+symbol drm_atomic_helper_plane_reset;
+symbol drm_atomic_helper_plane_create_state;
+@@
 
-Result: 4 full s2idle cycles, all of them resumed. The controller that
-used to hang, fc840000 (the OHCI on u2phy2, the port with nothing
-plugged in whose 480 MHz clock had it as its only user), went from
-"enters ohci_platform_resume and never returns" to:
+struct drm_plane_funcs funcs = {
+  ...,
+- .reset = drm_atomic_helper_plane_reset,
++ .atomic_create_state = drm_atomic_helper_plane_create_state,
+  ...,
+};
 
-  ohci-platform fc840000.usb: PM: ohci_platform_resume returned 0 after 20649 usecs
-  ohci-platform fc840000.usb: PM: ohci_platform_resume returned 0 after 20773 usecs
-  ...
+@match_struct_reset@
+identifier funcs, reset_func;
+@@
+struct drm_plane_funcs funcs = {
+    ...,
+    .reset = reset_func,
+    ...,
+};
 
-8 out of 8 resume passes in that boot returned 0 (4 real s2idle cycles
-plus the pm_test device/platform phases), each around 20.7 ms, and the
-same for fc8c0000. For comparison, before the patch the all-bound
-configuration hung every single time and needed a cold reset, while the
-control with the four hosts unbound completed 4 out of 4.
+@reset_uses_helpers depends on match_struct_reset@
+identifier match_struct_reset.reset_func;
+@@
 
-Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus (RK3588)
+ void reset_func(...)
+ {
+ 	<+...
+(
+ 	__drm_atomic_helper_plane_reset(...);
+|
+	__drm_gem_reset_shadow_plane(...);
+)
+ 	...+>
+ }
 
-Two things about how the module was built, so the tag is not read as
-more than it is. The kernel was built with aarch64-linux-gnu-gcc 13.3.0
-and I built the module with gcc 15.2.0 on the board itself, against the
-installed linux-headers package (that package is arm64, so its host
-tools cannot run on my x86 build machine). vermagic and the modversions
-CRCs match, and as a control I first rebuilt the unmodified file from
-the same commit and got exactly the srcversion of the stock module, so
-the difference in the tested module comes from your patch and nothing
-else. The module is also unsigned, since the headers package has no
-private key, so the kernel is tainted O and E.
+@match_struct_destroy@
+identifier funcs, destroy_func;
+@@
+struct drm_plane_funcs funcs = {
+    ...,
+    .atomic_destroy_state = destroy_func,
+    ...,
+};
 
-Two log entries I do not think are related, mentioned so you know I read
-the whole log rather than only the part I was looking for. On one resume
-there is an rcu_preempt stall report, but RCU marks the CPUs
-"(false positive?)", the NMI is answered, and the backtraces show them in
-cpuidle_enter_s2idle, i.e. asleep where they should be - the opposite of
-the original failure, where the CPUs did not answer the NMI at all. And
-on one of the three resumes there is a WARNING in
-drm_crtc_wait_one_vblank ("vblank wait timed out on crtc 0"). It is
-display side, and it happened on one resume only rather than on all of
-them; one of the monitors on this board goes into its own power saving
-after a while, which would leave the CRTC with no vblank to wait for
-while keeping HPD asserted, so nothing about it appears in the log. I
-cannot prove that from the log either way, but it is not the USB path.
+@script:python renamed_func@
+old_name << match_struct_reset.reset_func;
+new_name;
+@@
+if old_name.endswith("_reset"):
+    coccinelle.new_name = old_name.replace("_reset", "_create_state")
+else:
+    coccinelle.new_name = old_name
 
-Also, the network check right after resume fails for about a second
-before r8169 reports "Link is Up - 2.5Gbps/Full"; that is my script
-asking too early, not a regression.
+@update_struct depends on match_struct_reset && reset_uses_helpers@
+identifier match_struct_reset.funcs, match_struct_reset.reset_func;
+identifier renamed_func.new_name;
+@@
+struct drm_plane_funcs funcs = {
+    ...,
+-   .reset = reset_func,
++   .atomic_create_state = new_name,
+    ...,
+};
 
-Happy to re-run this on the version you post this week, and to test the
-PCIe suspend series on this board as well if that is useful - it has
-NVMe, two r8169 NICs and an rtw89 card on PCIe.
+@drop_destroy depends on update_struct && match_struct_destroy@
+identifier match_struct_reset.reset_func;
+identifier match_struct_destroy.destroy_func;
+identifier container_func;
+identifier P;
+symbol drm_atomic_helper_plane_destroy_state;
+symbol __drm_atomic_helper_plane_destroy_state;
+@@
 
-Igor
+ void reset_func(struct drm_plane *P)
+ {
+ 	...
+(
+-	if (P->state) {
+- 		<+...
+(
+-		drm_atomic_helper_plane_destroy_state(P, P->state);
+|
+-		__drm_atomic_helper_plane_destroy_state(P->state);
+|
+-		P->funcs->atomic_destroy_state(P, P->state);
+|
+-		destroy_func(P, P->state);
+)
+- 		...+>
+- 	}
+|
+-	drm_WARN_ON_ONCE(P->dev, P->state);
+|
+-	WARN_ON(P->state);
+)
+ 	...
+(
+-	kfree(P->state);
+|
+-	kfree(container_func(P->state));
+|
+ 	// kfree is optional
+)
+(
+-	P->state = NULL;
+|
+ 	// plane->state clearing is optional
+)
+ 	...
+ }
+
+@drop_destroy_mtk depends on update_struct@
+identifier P;
+symbol __drm_atomic_helper_plane_destroy_state;
+symbol to_mtk_plane_state;
+@@
+
+ void mtk_plane_reset(struct drm_plane *P)
+ {
+ 	...
+-	if (P->state) {
+-		__drm_atomic_helper_plane_destroy_state(P->state);
+-		...
+-	} else {
+ 		...
+-	}
+ 	...
+ }
+
+@transform_nv50_wndw depends on update_struct@
+identifier S;
+@@
+
+ void nv50_wndw_reset(...)
+ {
+ 	...
+-	if (WARN_ON(!(S = kzalloc_obj(*S))))
++	S = kzalloc_obj(*S);
++	if (WARN_ON(!S))
+ 		return;
+ 	...
+ }
+
+@transform_kzalloc depends on update_struct@
+identifier match_struct_reset.reset_func;
+identifier P, S;
+statement ST;
+statement list STL;
+@@
+
+ void reset_func(struct drm_plane *P)
+ {
+ 	<...
+ 	S = kzalloc_obj(*S);
+(
+-	if (S)
+-	{
+-		STL
+-	}
++	if (!S) return;
++
++	STL
+|
+-	if (S) ST
++	if (!S) return;
++
++	ST
+)
+	...>
+ }
+
+@transform_body depends on update_struct@
+identifier match_struct_reset.reset_func;
+identifier renamed_func.new_name;
+identifier S, P;
+expression PS;
+@@
+- void reset_func(struct drm_plane *P)
++ struct drm_plane_state *new_name(struct drm_plane *P)
+{
+	...
+ 	S = kzalloc_obj(*S);
+	...
+(
+ 	if (!S) {
+		...
+-		return;
++		return ERR_PTR(-ENOMEM);
+ 	}
+|
+ 	if (WARN_ON(!S)) {
+		...
+-		return;
++		return ERR_PTR(-ENOMEM);
+ 	}
+|
+ 	if (S == NULL) {
+ 		...
+-		return;
++		return ERR_PTR(-ENOMEM);
+ 	}
+)
+	...
+(
+-	__drm_atomic_helper_plane_reset(P, PS);
++	__drm_atomic_helper_plane_state_init(PS, P);
+|
+-	__drm_gem_reset_shadow_plane(P, PS);
++	__drm_gem_shadow_plane_state_init(P, PS);
+)
+	...
+}
+
+@update_early_return depends on update_struct@
+identifier match_struct_reset.reset_func;
+identifier renamed_func.new_name;
+identifier P;
+expression PS;
+@@
+ struct drm_plane_state *new_name(struct drm_plane *P)
+{
+	<+...
+-	return;
++	return ERR_PTR(-EINVAL);
+	...+>
+}
+
+@update_return_plane depends on update_struct@
+identifier match_struct_reset.reset_func;
+identifier renamed_func.new_name;
+identifier P;
+expression PS;
+@@
+ struct drm_plane_state *new_name(struct drm_plane *P)
+{
+	...
+ 	__drm_atomic_helper_plane_state_init(PS, P);
+	...
++
++	return PS;
+}
+
+@update_return_shadow depends on update_struct@
+identifier renamed_func.new_name;
+identifier P;
+expression PS;
+@@
+ struct drm_plane_state *new_name(struct drm_plane *P)
+{
+	...
+ 	__drm_gem_shadow_plane_state_init(P, PS);
+	...
++
++	return &PS->base;
+}
+
+Signed-off-by: Maxime Ripard <mripard@kernel.org>
+---
+Cc: andy.yan@rock-chips.com
+Cc: heiko@sntech.de
+Cc: hjc@rock-chips.com
+Cc: linux-rockchip@lists.infradead.org
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c  | 2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index bd02597dc2d7..b327a475b5bb 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1155,11 +1155,11 @@ static const struct drm_plane_helper_funcs plane_helper_funcs = {
+ 
+ static const struct drm_plane_funcs vop_plane_funcs = {
+ 	.update_plane	= drm_atomic_helper_update_plane,
+ 	.disable_plane	= drm_atomic_helper_disable_plane,
+ 	.destroy = drm_plane_cleanup,
+-	.reset = drm_atomic_helper_plane_reset,
++	.atomic_create_state = drm_atomic_helper_plane_create_state,
+ 	.atomic_duplicate_state = drm_atomic_helper_plane_duplicate_state,
+ 	.atomic_destroy_state = drm_atomic_helper_plane_destroy_state,
+ 	.format_mod_supported = rockchip_mod_supported,
+ };
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index b2f3a579bbe5..bfb384142568 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1495,11 +1495,11 @@ static const struct drm_plane_helper_funcs vop2_plane_helper_funcs = {
+ 
+ static const struct drm_plane_funcs vop2_plane_funcs = {
+ 	.update_plane	= drm_atomic_helper_update_plane,
+ 	.disable_plane	= drm_atomic_helper_disable_plane,
+ 	.destroy = drm_plane_cleanup,
+-	.reset = drm_atomic_helper_plane_reset,
++	.atomic_create_state = drm_atomic_helper_plane_create_state,
+ 	.atomic_duplicate_state = drm_atomic_helper_plane_duplicate_state,
+ 	.atomic_destroy_state = drm_atomic_helper_plane_destroy_state,
+ 	.format_mod_supported = rockchip_vop2_mod_supported,
+ };
+ 
+
+-- 
+2.55.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
