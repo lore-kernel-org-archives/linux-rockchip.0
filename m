@@ -4,54 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4E15C79F9E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 00:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01A65C79FA0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 09:24:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e7ua5yIVM/swW+FCHrhdyUo/CT6DPdIdGFYvj/zaUhg=; b=U4N/XuW2g1S4c3
-	IkhyG3Wl3ZrCdSZMp010PSrVy8D7PBLmbS/7Ibj3Pc+JFuIjPM3C5NZG8BijgSW4crxEHj4HW2LEJ
-	QOlqsbmAo4iDnBkBS+ejX7YEWcm/A1rafCpU7kQoiGu3uqLMG5Nbgurr0rw5iiDuqX5i1O20Wt8gX
-	O0zV9o2MkDDBSMjgeZ/wDpOGZAK28Xf5LGZww1EqP0ok8SriYGzR1HUNVoh/mNuN7KGyAQsESVEga
-	d8nqIoWaLnZI+KTSa1f18J/J97er812SEef4d6fmCGxW9neYR926zG/hBrhrJ4N5/+qGPxpHUuXx2
-	rS/XKCdOLpJsYrbufR3g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C2BwZFtLruUXXgTz8jOfUFP/oh4O48ld3brdiQgwUqU=; b=3eM60+spDrsR0ra80xJ8YnYiy5
+	BPTUvL0aOOW+qm7bBp3rD+FvufAoiwp5woILT8vLa1lynbtfAWInjAqUjx3dfHh45uTLzktyOk/Qp
+	wv6b6Bu93W5c+j/YUp67+ffaMK1KGRLUrfhy38ieqkI8FAPcYnxZ8TRbF7Ec18eQUHS5xahKaLQvi
+	4zxkAV9+Os5+S+T53YTRcO+PBz/+dUfdSHTEEuNjXPM/lmPafmrETUwTaPQRRVLp2rOoyPiikC5u5
+	ap+7clvm8hDXyok0+R20G759rRa4lXrmwm0Ts/u4y5sg9zt9SKMPv5y+kKLY6jehTiT39sHZsFyJQ
+	sk3zVjHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3jIJ-00000007qvV-0tjA;
-	Tue, 08 Sep 2026 00:02:35 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1x3s47-00000008YiD-3Edc;
+	Tue, 08 Sep 2026 09:24:31 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3jIF-00000007qut-2Oqr;
-	Tue, 08 Sep 2026 00:02:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1788825744; bh=AL638/hQUvxZ7ksKQGtecEARfPp3dotRpjQaGrQQF3M=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=LLJ3/45b9JMUxcH9Gv9bEbtvgzTehRkBk1PVr7b1A0gcFD/djeAiJOIq0Gp0WkL5O
-	 MTSM5hW4iVuKVzowUXDFTw2xZssxkEDQBHlKncvwi3mgM7YZekFFNmCfUoUqkwd5+i
-	 /kniqUrNVz9nFw6MPZi5+YazHlaOZ7mQ7Eyep+XU=
-Date: Tue, 8 Sep 2026 02:02:24 +0200
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Igor Paunovic <royalnet026@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix hym8563 interrupt pin on
- Orange Pi 5 Plus
-Message-ID: <pzcclrj5h32i5sfjhv75ntyrcmlqf224pzgk7zmea64jsxcriw@ezb2fpcpw5zt>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
-	Igor Paunovic <royalnet026@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20260906181622.11991-1-royalnet026@gmail.com>
+	id 1x3s46-00000008Yhe-11bk;
+	Tue, 08 Sep 2026 09:24:30 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 814C860A97;
+	Tue,  8 Sep 2026 09:24:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8522F1F00A3A;
+	Tue,  8 Sep 2026 09:24:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788859469;
+	bh=nwt4MSvg+/6zRv8Vcf7XT0o+MS+vnu26qoTN+G3zanc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=hdump79Vw5fEgXFJ9VugGGr5h6P63z5Rb/y5Hg0yODT+xkwe1X9g+jFlOkv7xQ2AQ
+	 uoCqpfp3P4EELicYSY5xFxcScIgnN41HJE9Hv+IxmdZE3UxokuQE7yocbQixaPW1bD
+	 BW578Iwlzn0eG3XZClR5mMtu1brAknhWLvs7GumecG1XFVYvsexzXf5BQLuUikEodO
+	 6U91vturj452mofL9n1U1GBjg37Vl2/FSlgkBctDhnEQTdhaEBWmhcv5aTHVRUL7ID
+	 Ek2bZXURLjsVrHEStEywjsO0iimjIlhQPJW7MDJgN3QgLd7fwNXC4iMlsT1e/eY3bc
+	 gi7qJpbxFcf3Q==
+Date: Tue, 8 Sep 2026 11:24:25 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Chen-Yu Tsai <wens@kernel.org>, Samuel Holland <samuel@sholland.org>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Raphael Gallais-Pou <rgallaispou@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Algea Cao <algea.cao@rock-chips.com>, Daniel Stone <daniels@collabora.com>, 
+	Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>, Helge Deller <deller@gmx.de>, 
+	kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+	linux-fbdev@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>
+Subject: Re: [PATCH v11 13/74] drm/bridge: Fix NULL deref in drm_bridge_add()
+ for legacy bridges
+Message-ID: <ap_Tr_Viqy29f515@houat>
+References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
+ <20260901-dw-hdmi-qp-scramb-v11-13-bc12954a0688@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260906181622.11991-1-royalnet026@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260907_170232_065686_D1E28175 
-X-CRM114-Status: GOOD (  31.10  )
+In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-13-bc12954a0688@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,95 +78,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4701174983870276204=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
 
-On Sun, Sep 06, 2026 at 08:16:22PM +0200, Igor Paunovic wrote:
-> The interrupt line of the hym8563 RTC on the Orange Pi 5 Plus is routed
-> to GPIO0_C6, not GPIO0_B0. The vendor device tree uses RK_PC6 with a
-> pull-up for this pin; the mainline board file uses RK_PB0, which is not
-> connected to the RTC.
-> 
-> As a result the alarm interrupt never reaches the SoC, so the RTC alarm
-> cannot wake the board: rtcwake enters s2idle and the board never
-> returns, which looks like a hang.
-> 
-> This was verified on the board by enabling the alarm interrupt (AIE with
-> AF already set, so INT# is asserted) and sampling the EXT_PORT register
-> of all five GPIO banks: GPIO0_C6 is the only pad that follows AIE
-> (high with AIE=0, low with AIE=1, across repeated cycles), while GPIO0_B0
-> stays high and its interrupt counter stays at zero.
-> 
-> Switch the interrupt and its pinctrl entry to GPIO0_C6 and use a pull-up,
-> as the vendor tree does for this open-drain line.
-> 
-> With this change the alarm interrupt fires while the system is running
-> and the RTC wakes the board from s2idle ('PM: Triggering wakeup from
-> IRQ 52'); before it, rtcwake never returned.
-> 
-> Fixes: 236d225e1ee7 ("arm64: dts: rockchip: Add board device tree for rk3588-orangepi-5-plus")
-> Cc: stable@vger.kernel.org
-> Assisted-by: LLM checkpatch dtbs_check
-> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+--===============4701174983870276204==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="ygj36ay46abkkslu"
+Content-Disposition: inline
+
+
+--ygj36ay46abkkslu
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v11 13/74] drm/bridge: Fix NULL deref in drm_bridge_add()
+ for legacy bridges
+MIME-Version: 1.0
+
+On Tue, Sep 01, 2026 at 09:50:37PM +0300, Cristian Ciocaltea wrote:
+> Legacy bridge drivers that embed struct drm_bridge in a zero-initialized
+> allocation, rather than obtaining it from devm_drm_bridge_alloc(), never
+> run INIT_LIST_HEAD() on bridge->list, leaving next and prev NULL.
+> list_empty() compares next against &bridge->list, so it reports such a
+> list head as non-empty.  list_del_init() therefore runs and dereferences
+> the NULL pointers, panicking the kernel during probe.  Only builds with
+> CONFIG_DEBUG_LIST survive, with a list corruption report.
+>=20
+> This affects rk3066_hdmi and the i.MX8 LDB bridges, which still embed a
+> bridge in a devm_kzalloc()'d struct.
+>=20
+> Initialize the list head when it is found to be NULL, so that the bridge
+> ends up with a valid empty list head and list_del_init() is only reached
+> for bridges that can actually be linked.
+>=20
+> Fixes: 17805a15d175 ("drm/bridge: add list of removed refcounted bridges")
+> Reported-by: Sashiko <sashiko-bot@kernel.org>
+> Closes: https://lore.kernel.org/all/20260731175016.C5D591F00AC4@smtp.kern=
+el.org/
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
-> Notes for reviewers (not part of the commit message):
-> 
-> Measured on an Orange Pi 5 Plus with the vendor-style method described above
-> (GPIO0 EXT_PORT sampled while toggling the alarm interrupt enable); the vendor
-> device tree for this board uses RK_PC6 with a pull-up. With the fix the alarm
-> IRQ fires at runtime and the RTC wakes the SoC from s2idle. Note that on this
-> board the resume itself can still stall later in the USB 2.0 host controllers
-> (a separate, unrelated issue being looked at); it does not affect this fix.
-> 
->  arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> index 145986695720..572b892e4066 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
-> @@ -189,7 +189,7 @@ &hdptxphy1 {
->  
->  &hym8563 {
->  	interrupt-parent = <&gpio0>;
-> -	interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
-> +	interrupts = <RK_PC6 IRQ_TYPE_LEVEL_LOW>;
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&hym8563_int>;
->  };
-> @@ -298,7 +298,7 @@ hdmi1_tx_on_h: hdmi1-tx-on-h {
->  
->  	hym8563 {
->  		hym8563_int: hym8563-int {
-> -			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-> +			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
+>  drivers/gpu/drm/drm_bridge.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+> index 2c457ad74f3b..a8b6df5c13ea 100644
+> --- a/drivers/gpu/drm/drm_bridge.c
+> +++ b/drivers/gpu/drm/drm_bridge.c
+> @@ -453,9 +453,16 @@ void drm_bridge_add(struct drm_bridge *bridge)
+>  	 * If the bridge was previously added and then removed, it is now
+>  	 * in bridge_lingering_list. Remove it or bridge_lingering_list will be
+>  	 * corrupted when adding this bridge to bridge_list below.
+> +	 *
+> +	 * Legacy drivers that allocate the bridge with kzalloc() rather than
+> +	 * devm_drm_bridge_alloc() leave list.next NULL. Such a bridge cannot
+> +	 * be on any list, and list_del_init() would dereference NULL, so
+> +	 * initialize the list head first.
 
-Schematic already shows a pullup, so this should not be needed:
+"legacy" bridges are ambigous and was also used for non-atomic bridges.
+That being said, it's now *required* that bridges use
+devm_drm_bridge_alloc() instead of kzalloc, and we warn in
+drm_bridge_add if it hasn't.
 
-  https://xff.cz/dl/tmp/2995ddec50ce4597.png
+So I don't think we should merge this patch.
 
-Other than that,
+Maxime
 
-Reviewed-by: Ondrej Jirman <megi@xff.cz>
+--ygj36ay46abkkslu
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Thank you,
-	o.
+-----BEGIN PGP SIGNATURE-----
 
->  		};
->  	};
->  
-> 
-> base-commit: 1fc5a74b108fc90951890ec513ac81869f5eaff1
-> -- 
-> 2.43.0
-> 
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCap/USAAKCRAnX84Zoj2+
+dvfBAX9Xat1E7rHDo5AwoQwclzUX6gFePTOLCX7JzUTlJj4v+JVqzvUmXYfX2MVE
+CDhj71EBf2f48qg8uxY+jSn8HuuECyGRZX1EJkTYg9OjYG+JlhXy81xPlHXuun/i
+wRZxh6EhmA==
+=t0EL
+-----END PGP SIGNATURE-----
+
+--ygj36ay46abkkslu--
+
+
+--===============4701174983870276204==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4701174983870276204==--
+
