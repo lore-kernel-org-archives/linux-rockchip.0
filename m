@@ -4,66 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2EC1C79F82
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 14:48:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E16BC79F9E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 14:51:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mx8FIw36vHsktBBmildya/Y2FIU6kYB05X7oiM4kdik=; b=N5u7TQB5PqehHn
-	iEN+ZvV7DRg7z2jmLntnNAXRkfpTX9/KqGrmaj6l3HVYIWQzLCvbfZrhPjUH8UK495H9S9A1l2TOB
-	W1H2xOFOj1UW4bglMYpPtEo7h8UUyQm0xfbjl6anibQ90XDMnF6Q+LomFnber+Lotg52H//xJI3/4
-	yI9IOFWywi8sE2PVme7irDn1eKz1SKvzCpEYS0z+EoI2pzXH147r2VTstyKrjYPPVlFk5+KCcuaHs
-	HmTcZ4D7dLmu4IK8jVWQRMEF/VPFLo8HyV9C9xbTIMO0uFQ8bKpb9XP/mhnJj/bCf2/V1lU6NdLLf
-	sC5/TfaiXczVPHSK/Kow==;
+	List-Owner; bh=G2EVLeRcgG3aGPOu1LZRWRhScI8hIe7I+A2ubNdec/o=; b=s7aP+RLbumQENz
+	Ua1cCz9HD6Q/BAFVRiwsit4id1wcNzh8wzho6/9efnf8xPoNR6Mcx9QyeUcLLahdfG/1OXIBcXow7
+	OuVI+kIrUAZN7cZclET2iQJ/BqV7rWfMZeM6MRprA2dg8VE8QaB1e6IB0hXrBrQMGdu8D2TwDga1K
+	wAQ8AOnO+v3Kc8GMLe9TVerBjjapmo7LKjRv8NAxzXxoh2ApIfGBVKza8/PUDf3xomtGeLobBPdWf
+	xakhdeGdh6yBtEo5eYHjEWbJnqW4pmDs7HoWzadfZdw2sl9WvPtuHt6M6cZFK1Iqf0Gbr2gW5qdoy
+	IO+OKy0awbAqARiXkZtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3x7D-00000009JfX-1Opm;
-	Tue, 08 Sep 2026 14:48:03 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x3xAo-00000009KCd-16rU;
+	Tue, 08 Sep 2026 14:51:46 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3x7B-00000009Jf7-2QAo
-	for linux-rockchip@lists.infradead.org;
-	Tue, 08 Sep 2026 14:48:01 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2B32F43CC5;
-	Tue,  8 Sep 2026 14:48:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD6961F00A3F;
-	Tue,  8 Sep 2026 14:48:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788878881;
-	bh=EnBo6eqfm20VoU8CFUCK+pCP52GsNCMrfz4EAuIY4n4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=LVulBfmG5XTCf8tJhY+us9DSmXmCo0wr2B+140s/LKnLGYliCiUmBuVuJcioG2I9l
-	 9+sidO8IT1DDiPvEI47+4qvBcGuikm51s37cvm6E2L1GIJGbBFqa2lf02XCKkrtX/b
-	 cG5QIqDRlVCIdthQfAe+nfO3hRD1Y6g+Pj3o/O860RWzIA4SBgv2UVZxiMRSitbANq
-	 0pJyS4OI+F1y5p43JxOsTmDngHdyi8qx8fQd68d5TXpYiKIUBGJ1208ij250HHR4Tc
-	 CfDiMTdSVPEZPhVD8zRDsDlbMNiOPsKIIhoFVuNf7j3bex4PVd5oY+Dxh9FmIiGwEW
-	 qBdLWKyET90Jg==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Tue, 08 Sep 2026 16:46:46 +0200
-Subject: [PATCH v4 15/41] drm/rockchip: Convert to atomic_create_state
+	id 1x3xAl-00000009KAm-2FwZ;
+	Tue, 08 Sep 2026 14:51:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1788879101;
+	bh=xW4LeQKGVm10NdrT7G+AboGl+alKfkI0kXweV+6EAlQ=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=XITebiz8sCBUSB51TxPDsp0eAqYjh8o0CYhi99c5KRkA1gZ+A54Ne95vvVdqVM7o+
+	 MJOcfCB3XiWBmC/x56pe1VcNIH4tG49URWKgGUIwdORBefwEkVBi1hWeWuuntXI7ga
+	 pZ4YMW3mmqsCaLarwrT0HSqyxB06HAsQ4deq9OB+B6tSH3UHf/+msIheY1AU62l0X8
+	 stYlaXpQ18UVc/vV9hkle6U1w3EwM27oVG+WYUtAik6lLws1/gfawkiASGq8VjnQvO
+	 RA8deXfKmHK0U85Hex0HqMH2/bOBWs65hVSlE4RYivLTrJYmhTgz4xH4R9gjV2hfjp
+	 hG6FXk02M2Elg==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D6EA817E0B0B;
+	Tue, 08 Sep 2026 16:51:40 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 9098A480030; Tue, 08 Sep 2026 16:51:40 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Tue, 08 Sep 2026 16:51:21 +0200
+Subject: [PATCH v6 03/10] PCI: dw-rockchip: Move devm_phy_get out of
+ phy_init
 MIME-Version: 1.0
-Message-Id: <20260908-drm-no-more-plane-reset-v4-15-a31b3fcfc989@kernel.org>
-References: <20260908-drm-no-more-plane-reset-v4-0-a31b3fcfc989@kernel.org>
-In-Reply-To: <20260908-drm-no-more-plane-reset-v4-0-a31b3fcfc989@kernel.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>, 
- andy.yan@rock-chips.com, heiko@sntech.de, hjc@rock-chips.com, 
- linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6962; i=mripard@kernel.org;
- h=from:subject:message-id; bh=qJBkAj8sMu0YC2yOSu4CGiooz2xOVvkwLHBd+SRcgNI=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFkL5K8INUZt3M67YObd0skrXj7d92Btddij0qlrvr6cd
- Li4fMot2Y6pLAzCnAyyYoosT2TCTi9vX1zlYL/yB8wcViaQIQxcnAIwkSu8jPWe1gzflUXi+dO4
- Fv00WDYpQnL1Jy3LeGFDS5vb+Se+vzuTa/Ev4bxAUbPdK75ps0PMDzM2HMx3P3F4fUi86isnjgu
- njXguJnH7+EfW3girPbbqiPG+BWVn7VS8rwY11tl8eVo3j2szAA==
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+Message-Id: <20260908-rockchip-pcie-system-suspend-v6-3-fbabcca9921b@collabora.com>
+References: <20260908-rockchip-pcie-system-suspend-v6-0-fbabcca9921b@collabora.com>
+In-Reply-To: <20260908-rockchip-pcie-system-suspend-v6-0-fbabcca9921b@collabora.com>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mark Brown <broonie@kernel.org>, 
+ "Yury Norov (NVIDIA)" <yury.norov@gmail.com>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1528;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=xW4LeQKGVm10NdrT7G+AboGl+alKfkI0kXweV+6EAlQ=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqgIPzP5vtX1eOUuG/C0eZZ0K7IKtb+8xCK9
+ BCYcww5LZCknYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqoCD8AAoJENju1/PI
+ O/qaByYQAIctAdoBWshDPlv0tQeySFix3D56ihdtVGD+K8r25coThtHVEUmXTrlgvkafyA0D3U3
+ 3l9srdpmUfFX6cqhRt6PcO1Vo3ChZ4l7eEGdRLWkGbV5/+8ZmodUgF2djTIwK5Ey9JdA8XuLg1H
+ OfGV9WX40kpGh79mOgrrdlFCAzD2advUyuCnOyH29Z4AoEGVAKs1gMiTKWSiHQhs3jbekiCdFsT
+ g0x+iOpucKPQftMYpg/xYF3zS3F8P8srioK/mx/fGn2EEofBRZLQxERqhrLupd9+2E/eCpSLY0l
+ qskFZswIzVa6/a+IccD7YACoBOGauvfCCdSYP/hsz4QY7A2yfoCl0wDmmMhgBC3/18Mn2hpsyWf
+ dMye2K3J3jZ/bk5hiE9mTwtDEakh3iH9jVzwahrIzD8frGgVx7F4jrcranAg8NhsUwa5i9btwg6
+ jbOwmOq2ZnemLUeWOA3ZXagnGEOmygRCmA7ChP/ZDzGvDuSvJalb+LiULiLQlMYlgmZjo71Dukr
+ JFrRIoyKBfeOy3tc9DyGa4/Y1S05nJO+MBl/I11EIWet0nGRnQA23wKbL76BLISHVCI39tIcp/p
+ PfHhKLs2eBwAt8SLo/k1JmMdVX0QFTJjxvkOEpwXar5zKsGl1EKNjziZwR7csHcd/t7lpDP9QXO
+ KCFB4N/PQXyBK0rY7Nl8pDg==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260908_075143_769001_FF5A4FF4 
+X-CRM114-Status: GOOD (  14.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,318 +103,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The plane only initializes a pristine state in its reset hook
-using drm_atomic_helper_plane_reset(), which is equivalent to what
-atomic_create_state expects. Convert to it.
+By moving devm_phy_get() to the probe routine, rockchip_pcie_phy_init()
+can be used to re-initialize the PCIe PHY, which is for example needed
+after a system suspend/resume cycle.
 
-The conversion was done using the following Coccinelle semantic patch:
-
-@@
-identifier funcs;
-symbol drm_atomic_helper_plane_reset;
-symbol drm_atomic_helper_plane_create_state;
-@@
-
-struct drm_plane_funcs funcs = {
-  ...,
-- .reset = drm_atomic_helper_plane_reset,
-+ .atomic_create_state = drm_atomic_helper_plane_create_state,
-  ...,
-};
-
-@match_struct_reset@
-identifier funcs, reset_func;
-@@
-struct drm_plane_funcs funcs = {
-    ...,
-    .reset = reset_func,
-    ...,
-};
-
-@reset_uses_helpers depends on match_struct_reset@
-identifier match_struct_reset.reset_func;
-@@
-
- void reset_func(...)
- {
- 	<+...
-(
- 	__drm_atomic_helper_plane_reset(...);
-|
-	__drm_gem_reset_shadow_plane(...);
-)
- 	...+>
- }
-
-@match_struct_destroy@
-identifier funcs, destroy_func;
-@@
-struct drm_plane_funcs funcs = {
-    ...,
-    .atomic_destroy_state = destroy_func,
-    ...,
-};
-
-@script:python renamed_func@
-old_name << match_struct_reset.reset_func;
-new_name;
-@@
-if old_name.endswith("_reset"):
-    coccinelle.new_name = old_name.replace("_reset", "_create_state")
-else:
-    coccinelle.new_name = old_name
-
-@update_struct depends on match_struct_reset && reset_uses_helpers@
-identifier match_struct_reset.funcs, match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-@@
-struct drm_plane_funcs funcs = {
-    ...,
--   .reset = reset_func,
-+   .atomic_create_state = new_name,
-    ...,
-};
-
-@drop_destroy depends on update_struct && match_struct_destroy@
-identifier match_struct_reset.reset_func;
-identifier match_struct_destroy.destroy_func;
-identifier container_func;
-identifier P;
-symbol drm_atomic_helper_plane_destroy_state;
-symbol __drm_atomic_helper_plane_destroy_state;
-@@
-
- void reset_func(struct drm_plane *P)
- {
- 	...
-(
--	if (P->state) {
-- 		<+...
-(
--		drm_atomic_helper_plane_destroy_state(P, P->state);
-|
--		__drm_atomic_helper_plane_destroy_state(P->state);
-|
--		P->funcs->atomic_destroy_state(P, P->state);
-|
--		destroy_func(P, P->state);
-)
-- 		...+>
-- 	}
-|
--	drm_WARN_ON_ONCE(P->dev, P->state);
-|
--	WARN_ON(P->state);
-)
- 	...
-(
--	kfree(P->state);
-|
--	kfree(container_func(P->state));
-|
- 	// kfree is optional
-)
-(
--	P->state = NULL;
-|
- 	// plane->state clearing is optional
-)
- 	...
- }
-
-@drop_destroy_mtk depends on update_struct@
-identifier P;
-symbol __drm_atomic_helper_plane_destroy_state;
-symbol to_mtk_plane_state;
-@@
-
- void mtk_plane_reset(struct drm_plane *P)
- {
- 	...
--	if (P->state) {
--		__drm_atomic_helper_plane_destroy_state(P->state);
--		...
--	} else {
- 		...
--	}
- 	...
- }
-
-@transform_nv50_wndw depends on update_struct@
-identifier S;
-@@
-
- void nv50_wndw_reset(...)
- {
- 	...
--	if (WARN_ON(!(S = kzalloc_obj(*S))))
-+	S = kzalloc_obj(*S);
-+	if (WARN_ON(!S))
- 		return;
- 	...
- }
-
-@transform_kzalloc depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier P, S;
-statement ST;
-statement list STL;
-@@
-
- void reset_func(struct drm_plane *P)
- {
- 	<...
- 	S = kzalloc_obj(*S);
-(
--	if (S)
--	{
--		STL
--	}
-+	if (!S) return;
-+
-+	STL
-|
--	if (S) ST
-+	if (!S) return;
-+
-+	ST
-)
-	...>
- }
-
-@transform_body depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-identifier S, P;
-expression PS;
-@@
-- void reset_func(struct drm_plane *P)
-+ struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	...
- 	S = kzalloc_obj(*S);
-	...
-(
- 	if (!S) {
-		...
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
-|
- 	if (WARN_ON(!S)) {
-		...
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
-|
- 	if (S == NULL) {
- 		...
--		return;
-+		return ERR_PTR(-ENOMEM);
- 	}
-)
-	...
-(
--	__drm_atomic_helper_plane_reset(P, PS);
-+	__drm_atomic_helper_plane_state_init(PS, P);
-|
--	__drm_gem_reset_shadow_plane(P, PS);
-+	__drm_gem_shadow_plane_state_init(P, PS);
-)
-	...
-}
-
-@update_early_return depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-identifier P;
-expression PS;
-@@
- struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	<+...
--	return;
-+	return ERR_PTR(-EINVAL);
-	...+>
-}
-
-@update_return_plane depends on update_struct@
-identifier match_struct_reset.reset_func;
-identifier renamed_func.new_name;
-identifier P;
-expression PS;
-@@
- struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	...
- 	__drm_atomic_helper_plane_state_init(PS, P);
-	...
-+
-+	return PS;
-}
-
-@update_return_shadow depends on update_struct@
-identifier renamed_func.new_name;
-identifier P;
-expression PS;
-@@
- struct drm_plane_state *new_name(struct drm_plane *P)
-{
-	...
- 	__drm_gem_shadow_plane_state_init(P, PS);
-	...
-+
-+	return &PS->base;
-}
-
-Signed-off-by: Maxime Ripard <mripard@kernel.org>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
-Cc: andy.yan@rock-chips.com
-Cc: heiko@sntech.de
-Cc: hjc@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c  | 2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index bd02597dc2d7..b327a475b5bb 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1155,11 +1155,11 @@ static const struct drm_plane_helper_funcs plane_helper_funcs = {
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index f67ad3c31c35..7472ec78b473 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -612,14 +612,8 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
  
- static const struct drm_plane_funcs vop_plane_funcs = {
- 	.update_plane	= drm_atomic_helper_update_plane,
- 	.disable_plane	= drm_atomic_helper_disable_plane,
- 	.destroy = drm_plane_cleanup,
--	.reset = drm_atomic_helper_plane_reset,
-+	.atomic_create_state = drm_atomic_helper_plane_create_state,
- 	.atomic_duplicate_state = drm_atomic_helper_plane_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_plane_destroy_state,
- 	.format_mod_supported = rockchip_mod_supported,
- };
+ static int rockchip_pcie_phy_init(struct rockchip_pcie *rockchip)
+ {
+-	struct device *dev = rockchip->pci.dev;
+ 	int ret;
  
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index b2f3a579bbe5..bfb384142568 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1495,11 +1495,11 @@ static const struct drm_plane_helper_funcs vop2_plane_helper_funcs = {
+-	rockchip->phy = devm_phy_get(dev, "pcie-phy");
+-	if (IS_ERR(rockchip->phy))
+-		return dev_err_probe(dev, PTR_ERR(rockchip->phy),
+-				     "missing PHY\n");
+-
+ 	ret = phy_init(rockchip->phy);
+ 	if (ret < 0)
+ 		return ret;
+@@ -858,6 +852,13 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 					     "failed to enable vpcie3v3 regulator\n");
+ 	}
  
- static const struct drm_plane_funcs vop2_plane_funcs = {
- 	.update_plane	= drm_atomic_helper_update_plane,
- 	.disable_plane	= drm_atomic_helper_disable_plane,
- 	.destroy = drm_plane_cleanup,
--	.reset = drm_atomic_helper_plane_reset,
-+	.atomic_create_state = drm_atomic_helper_plane_create_state,
- 	.atomic_duplicate_state = drm_atomic_helper_plane_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_plane_destroy_state,
- 	.format_mod_supported = rockchip_vop2_mod_supported,
- };
- 
++	rockchip->phy = devm_phy_get(dev, "pcie-phy");
++	if (IS_ERR(rockchip->phy)) {
++		ret = PTR_ERR(rockchip->phy);
++		dev_err_probe(dev, ret, "missing PHY\n");
++		goto disable_regulator;
++	}
++
+ 	ret = rockchip_pcie_phy_init(rockchip);
+ 	if (ret)
+ 		goto disable_regulator;
 
 -- 
-2.55.0
+2.53.0
 
 
 _______________________________________________
