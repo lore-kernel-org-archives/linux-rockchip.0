@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E2CC79F9E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 12:27:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C3D3C79F82
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 12:48:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
-	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VzTDY7w10LKGGMimdJ7a6nl/KpzAjcI/5UQbqnsWhPw=; b=PJnkMsrntxj4JB
-	C0HU/UD0xXACNcxB3xFTjtuUXANTH0mmBgHKFPmXZsIjpEyxi5I/MQjRc1MjznE8apUUPD/nK0M+3
-	KLdIIwMd+kMrppv1xFyX7d0qbCRWuoBdI2Kku0cIKeplutD6JbdDzERm4cxYm067RhovPGu1abmUp
-	HAIXHS04DdaJg4Xk+eb2q0Ky/dfQ+PWG6b2Y61K9uXeQNuNv1aCOqKOxoLEJLkGf+nPuc1+cceJ1s
-	FnEGp/97+EkEFx1nxDU07RKC0HUbsHBqKkrgCgfv1AQ/60ELmDJDBgGJ1kZBDc0Hoo+YI05xrQmFJ
-	aA2fvsr3rMYecevniJGQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=os9KCrNm3TsyWmOziCJ+0nHJ5ElP+vUS+pu0Dx2O/VE=; b=GQjnr3CE+wRGIpd6J98VUJOZzC
+	pTjxUpYs4tsWbCaPR+tXm23O8OElShGAR8f0NDvrlyDZ+oDDNLIJCbrsOV8N0xNraGy1mkB6SYXvy
+	SDsYDWnkp5CYsp8fIF1Kd53smXgxlwHIiuZbYIp6JD5deGXEIi3B16TVXorFuoRPTgR5J7QR+OWbT
+	hVKrH5Q4y9OapkvCv/TVFrS8ssJvoS73a694KZFTBP9SpcqG3/nUz2b4a5H4VNJAkPGbhEqS+66ls
+	Z8pbKtAVUlj8jrzoxFZn9jWRKuiGdNg+5GZiMcXXGd0pTiZoC2aTXcj7H6OY8cfCLhyr5I14T1KGJ
+	OpX31Gcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3uv1-0000000908c-0Jlk;
-	Tue, 08 Sep 2026 12:27:19 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x3vFG-000000093k1-1r7D;
+	Tue, 08 Sep 2026 12:48:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3uv0-00000009087-18Cu;
-	Tue, 08 Sep 2026 12:27:18 +0000
+	id 1x3vFF-000000093jN-2n9D;
+	Tue, 08 Sep 2026 12:48:13 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id AF7F743BEB;
-	Tue,  8 Sep 2026 12:27:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D16D21F00A3A;
-	Tue,  8 Sep 2026 12:27:16 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D9C51601FA;
+	Tue,  8 Sep 2026 12:48:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D14E11F00A3D;
+	Tue,  8 Sep 2026 12:48:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788870437;
-	bh=fzGtfk86Cjb9SfEfKKT3CvCMk5MzBMJhuuAr5zCkHDo=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc;
-	b=T+OZxDzmFhtwfxQUDigQV8iYgcmk1nVuS1p5I+fsWVjs6z/Foia6U8gnM+85CdD1q
-	 8e3kEiGLj5EIgbAajVqBFp3BmOAhliLVBkj0EbrxHbdhYj0OvlJS0h96Wd2S+Zj9Pw
-	 7jOLuBaY9BnvA7BAYgHvOcpQ/qlhcash2+du7RPJj3Ph3VhFr8SidngLg0LGPcaCmi
-	 AiUiql/fUlpQrSx5KSbjx7cz3fJozZD1rnmNxtYPXWQanoXM8F7rp7I5rKC3oSnfTg
-	 bPCZucNWjKUAAFXBzd2Q2OYiVjpAQTRt9a1cBETRT1WfyVUGh1JI/NJQbQA2+FmK2j
-	 Duxwa0xZf8Fsw==
-Message-ID: <d251e4005c5bef3e1cf1cd49abe0e1bb@kernel.org>
-Date: Tue, 08 Sep 2026 12:27:14 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
-Subject: Re: [PATCH v11 07/74] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-7-bc12954a0688@collabora.com>
-References: <20260901-dw-hdmi-qp-scramb-v11-7-bc12954a0688@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Algea
- Cao" <algea.cao@rock-chips.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
- Yan" <andy.yan@rock-chips.com>, "Chen-Yu Tsai" <wens@kernel.org>, "Daniel
- Stone" <daniels@collabora.com>, "Dave Stevenson" <dave.stevenson@raspberrypi.com>, "David
- Airlie" <airlied@gmail.com>, "Diederik de Haas" <diederik@cknow-tech.com>, "Dmitry
- Baryshkov" <lumag@kernel.org>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Helge
- Deller" <deller@gmx.de>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Jonas
- Karlman" <jonas@kwiboo.se>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Liu
- Ying" <victor.liu@nxp.com>, "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maud Spierings" <maud_spierings@hotmail.com>, "Maxime
- Ripard" <mripard@kernel.org>, =?utf-8?b?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, "Neil
- Armstrong" <neil.armstrong@linaro.org>, "Phong LE" <ple@baylibre.com>, "Raphael
- Gallais-Pou" <rgallaispou@gmail.com>, "Raspberry Pi Kernel Maintenance" <kernel-list@raspberrypi.com>, "Robert
- Foss" <rfoss@kernel.org>, "Samuel Holland" <samuel@sholland.org>, "Sandy
- Huang" <hjc@rock-chips.com>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
- Zimmermann" <tzimmermann@suse.de>
+	s=k20260515; t=1788871692;
+	bh=feEGDyi6VU/sb4agsQYzpOSCawLfSkaWQda6dgDR2p4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=MksgKu6uyO2Gguiv8Rq3+UUSn2sYyMCbhn4A5JnjyzKXKmkqOedfI2gppAaqvEHVJ
+	 rRBAhiB6rGjwR0JoGODhOBOECe7zcNNFUAE05c7DWeacbZyEK8RvbCTIJ4/16HMzEC
+	 MAnNAqV2snxIOSOtuDgsFsxtmJKNKBAA9zpkOrukWnWmtp5+S6BDLredgM5cXzEJvd
+	 GrZU6s8B9QoHqrr0WyNgI1+Mi+Y/yMljhQDkmq6uaj2bB8HnRD6KR9uUEUDSa+/2fr
+	 YZq56+cUDFuTrIXKNi5nF6fbD6tGEDBJbJzecf28OwddCE6o5k8iS0jArCktqp12lv
+	 2X7cUZTftHpfQ==
+Date: Tue, 8 Sep 2026 14:48:08 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Chen-Yu Tsai <wens@kernel.org>, Samuel Holland <samuel@sholland.org>, 
+	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+	Raphael Gallais-Pou <rgallaispou@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Algea Cao <algea.cao@rock-chips.com>, Daniel Stone <daniels@collabora.com>, 
+	Liu Ying <victor.liu@nxp.com>, Phong LE <ple@baylibre.com>, Helge Deller <deller@gmx.de>, 
+	kernel@collabora.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+	linux-fbdev@vger.kernel.org, Maud Spierings <maud_spierings@hotmail.com>, 
+	Diederik de Haas <diederik@cknow-tech.com>
+Subject: Re: [PATCH v11 30/74] drm/bridge: dw-hdmi-qp: Provide
+ dw_hdmi_qp_hpd_notify() helper
+Message-ID: <aqAD7Imd8VyYgaYr@houat>
+References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
+ <20260901-dw-hdmi-qp-scramb-v11-30-bc12954a0688@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-30-bc12954a0688@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,27 +79,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============9016157475425416077=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 1 Sep 2026 21:50:31 +0300, Cristian Ciocaltea wrote:
-> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
-> 
-> - A drm_connector_hdmi_scrambler_supported() helper to report whether
->   the source supports the scrambling capability
-> - A .scrambler_{enable,disable}() pair of callbacks in
-> 
-> [ ... ]
 
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
+--===============9016157475425416077==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="7br5rkaa3pyhecrc"
+Content-Disposition: inline
 
-Thanks!
+
+--7br5rkaa3pyhecrc
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v11 30/74] drm/bridge: dw-hdmi-qp: Provide
+ dw_hdmi_qp_hpd_notify() helper
+MIME-Version: 1.0
+
+On Tue, Sep 01, 2026 at 09:50:54PM +0300, Cristian Ciocaltea wrote:
+> Export dw_hdmi_qp_hpd_notify() for platform drivers to report hot-plug
+> detection events.  Unlike drm_helper_hpd_irq_event() which polls all
+> connectors, this helper targets only the affected connector and ensures
+> .detect_ctx() is invoked on reconnection events to trigger SCDC state
+> recovery.
+>=20
+> Note that this helper may sleep, so it must only be called from a
+> threaded HPD interrupt handler or a work function.
+>=20
+> Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+> Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 LTS, R=
+ock 5B
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 37 ++++++++++++++++++++++=
+++++++
+>  include/drm/bridge/dw_hdmi_qp.h              |  1 +
+>  2 files changed, 38 insertions(+)
+>=20
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/d=
+rm/bridge/synopsys/dw-hdmi-qp.c
+> index ee74266b7aa9..a2277531182c 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> @@ -28,6 +28,7 @@
+>  #include <drm/drm_edid.h>
+>  #include <drm/drm_modes.h>
+>  #include <drm/drm_print.h>
+> +#include <drm/drm_probe_helper.h>
+> =20
+>  #include <media/cec.h>
+> =20
+> @@ -163,6 +164,8 @@ struct dw_hdmi_qp {
+>  	struct regmap *regm;
+>  	int main_irq;
+> =20
+> +	/* Written by the atomic enable/disable hooks, read locklessly by HPD */
+> +	struct drm_connector *curr_conn;
+>  	unsigned long tmds_char_rate;
+>  	bool no_hpd;
+>  };
+> @@ -785,6 +788,8 @@ static void dw_hdmi_qp_bridge_atomic_enable(struct dr=
+m_bridge *bridge,
+>  	dw_hdmi_qp_mod(hdmi, op_mode, OPMODE_DVI, LINK_CONFIG0);
+> =20
+>  	drm_atomic_helper_connector_hdmi_update_infoframes(connector, state);
+> +
+> +	WRITE_ONCE(hdmi->curr_conn, connector);
+
+You need to take a reference to the connector, and you really should use
+a mutex here.
+
 Maxime
+
+--7br5rkaa3pyhecrc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaqAECAAKCRAnX84Zoj2+
+dkkDAYC+AWGm80pVYEp640sKNhCVwlFRg0NA45EvZymN4J4AhE4kXnPASU52wEFN
+x6mrzgIBgN7eoUGtFrPVC1JlZqSlVzCPzTRW2tTeI5qXVl4QpF/Mbac11+3SSsJp
+N9wlWFp5OQ==
+=XLln
+-----END PGP SIGNATURE-----
+
+--7br5rkaa3pyhecrc--
+
+
+--===============9016157475425416077==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============9016157475425416077==--
+
