@@ -4,86 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 102C2C79F99
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 16:07:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB997C79F9E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 16:30:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+QHSznazNX3Wbs/iUcgPdltKd3Za0Ptql6IzUwQB8O4=; b=b1g+NaElMLbFx5
-	+6dmZFG7BU12FkbTojGT7ZJuSst9c4bIJRmWgbJDAKacyb8kX1W1VA3ZnMaRcoHcLZhnsoH/bFmr+
-	6esNWVik5Vl9tVO5q1CsMPucB+Ihhhy5HmRG3NcUfBYbbHmYvXNN81rORvC9CJ9/ZP72WwSMcVTrw
-	7wyhpq4qiWaU0MjX959Pqt3+frtQf/N+9KM6Eov96N1ioz2Gl40z8+5pDw6WfPymOTSS2YjUKLgkL
-	tqYYtwuWuUdP5Z3LdKfdMmpIRo4qwWCj+jPuZQV0glJ1OUwu4EYkm/wYcPrsOWoWEMhNMzlGvrmsE
-	EFKc2gl+Ja3EHFVesegQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tXYOV3Qvo49sz/YnI/fehAO9QiaXQmW9R8fDQTkoazs=; b=0S2LXC+6kL8X/h
+	5nwnGvMVI+mfvjC2t62XyLpRc8kCgrnArXq3rHCw1EJVUi9TgeCERlfoYYufMKm5+HxgpCPvtOEyq
+	3NyKJV+e7Iu41VA9IZsUlwBiU2sfBk34U/67mk5YeEEougyb/ivx+QbEHXCkoLZ6HBEinvb1dbCkz
+	Uanpyj61mzy4IaHoC4wUxDYgq/y/P8gkNJst1D1l9trOB95CHBCYbw/Zo5Q3NxEMbmY5V+5ARx55o
+	aadom8Ry0IJzuCYd22J+gI2xZntk2fE/kyzJQgRgEVdpsget9I/6yv/hhqWAr3a2Z02/OWS3VgvWR
+	ZG1s+3Q7kM7FawYZKWnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3yMO-00000009akk-2o40;
-	Tue, 08 Sep 2026 16:07:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x3yhz-00000009fwl-0beg;
+	Tue, 08 Sep 2026 16:30:07 +0000
+Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3yMM-00000009ajk-0Zse;
-	Tue, 08 Sep 2026 16:07:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788883663;
-	bh=mZy1cqdWdJhHt9O0ElVrbLOd8aw7/ukD53tdlXnuAcg=;
-	h=From:Date:Subject:To:Cc:From;
-	b=qsHo/WrIgmVfRw6p7uZI1OLxOt70hmvt0GRmI+JHoV3y5RDzCi7Ws6iYmpccNroQe
-	 tHZ/LBfaypNZ+R8BKp7vDmaGjANQDwInp0fEFCKQsm1spmUb0J82bGNAVsV37saMml
-	 mRbq/3+qQ8coeZ0EwoJYv6oDLW1m54tKWRwSH/JNEKiWM2aytDS/mXwSUqBRSlEg3Y
-	 6y1IRUo87FZBx+T0Zng+0l4XyGPNLxmDkCTvjFl6k67k893eJgUYg2ezjMztuSPP+f
-	 bdebaUab9/5+DIc0XqK48tUGK1E3eEQQeOTfwlra1FtlrRRbmztYTb/8nmFVUrEunz
-	 +4a6uVOtcYZ1g==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 79C7217E0420;
-	Tue, 08 Sep 2026 18:07:43 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 3903C48002B; Tue, 08 Sep 2026 18:07:43 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 08 Sep 2026 18:07:42 +0200
-Subject: [PATCH] phy: rockchip: inno-usb2: ensure PHY is running when clock
- is requested
+	id 1x3yhu-00000009fuq-0bzL
+	for linux-rockchip@lists.infradead.org;
+	Tue, 08 Sep 2026 16:30:03 +0000
+Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-4843178b1c8so404279f8f.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 08 Sep 2026 09:30:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788885000; x=1789489800; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=emj4cn58BmwUvuEYrkn19RQf/kNhJ8y8Fx3ptxT/4jw=;
+        b=kMz5/dAbNReDV0kMUYi5T3IadeI6vBqN8QmtpUD54Ds3ZC+NlrUDL/qmsl4ZEsrKmM
+         rlwhA6KIcLWmKxx3U5SaiY/mojTlJShP1LdNZx+jkzslpfgNRLwmG6AjMuXFsyzlHFc3
+         Lvz6Dw/OtFr7iVAmMEyDx8gQqESiG1wT6GDKzne6ZYBCLgr9FOoWXxKz6rNJdXw+K2+c
+         0e5sfJwh9fmevJFTb65j3UI7J5yBUZX6g5DVqJDDN0EY1o/ktA6lvP7/ydKenPzZJmIl
+         HOD/7UXpupl/otXFMqSCLwAIhmXSMblkqbH6V1pOikVx5WIj+Og77tpJuV3XqBIUbvsy
+         Me7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788885000; x=1789489800;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=emj4cn58BmwUvuEYrkn19RQf/kNhJ8y8Fx3ptxT/4jw=;
+        b=W5Vp82Tk5U8Ngm06g/leXFyMP5+ZwFsaUNWgoohyttr00tWgRK9OlCk6jd1ii4Usxf
+         CCYHlCkSlnUZuC+6lN8C6DH4hSMpr43xL2JZVcgsRBsDZD6j7q/PhwNajLCv55jMBrl/
+         00DH3jxdQQk8SpvTb6maDQIGTlVWho+SKe+K7ZBr004A5is67AFN+ROc8QrPgQAKaZ7H
+         ZvHFspxa9UylDA8kLWwf5zhsfY5OYHS7UwNT0EomBqNHGJmAE/l5ZDuc7s6/pNWRs/tn
+         aBe8bngxUsYNYR1o0iRUMvGE9OT7nYWMF6CX8bCPaOjthRZk8IyxWEz6TOgIGffbmeX5
+         ac0Q==
+X-Forwarded-Encrypted: i=1; AKwUvBxbrMCGrUGG3YTIPkwkWSSTcpWBfEOS62R9ww5e4J40iuzGy+93iiWAEpKwXTIRb/E6RGS40Yo2BrDvh+giug==@lists.infradead.org
+X-Gm-Message-State: AFuF++nUISN0ch0uK3c9TVTSOjhlck/Tnkf8xOen3/uta18cxf7XggT9
+	io2Hb61PeOMeHY5jNQ6Cy23OSGRZfgWK48tEzG1IwXeeM3GFD3L/z27f
+X-Gm-Gg: AYBFou33S8vBGtl1kv/wmt2kSuTMupX2KDPOrHJRkkvu+rbUTJoPyxeT8V7sglEt6E+
+	R2yUtGtTRjL8pEZuwrzOkiPtf4F9s8LfDiKfDHvy4XppxDcw6QltkJIXRMrbwlL3A+oiIo/ODGY
+	aH6sK1cNEU8Oi9B1DMr4xkeu8z85UzI6pcrPJZgQ9Hu55ae/U5mOgFY1Y1xWDfs/GbD7VUNI3Tu
+	AMXywQmcHcvAQi9co6DI2qWrB09MnLsFUQzaJKBk6p2oh0BswZaxKE46lSaiHgengKeuLHlpZLg
+	q7xwxgyWLCacPRAXX78ZDICbAuiAE9qKqdTCHnNiOIJNJnlDE6w2poSwb/LQs3lwxqKUBLZyR4b
+	/7wwWAGiUosVZWefS/1DCbwSt1v/DkQ9rLQ7xgK2OX9PktHLP3IrAUrjHKMCWszmNqA/nczAypx
+	c2uwtzvDTTllejwiVAuje0HLqeKKbVHpb6BkQMMbANRtSMl/yyzBdTttcTAtf/y1Q2s3EZYyCiP
+	E4fYAnKYJsWKHltWwO0DVvowXAjFf372T5LYy3ajIegiiNwj9DnnCPK0bBLh/N6JR5c
+X-Received: by 2002:a05:600c:c494:b0:499:d95a:41f with SMTP id 5b1f17b1804b1-49d010c3969mr205691045e9.0.1788884999944;
+        Tue, 08 Sep 2026 09:29:59 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B825D00814606522702B594.dsl.pool.telekom.hu. [2001:4c4e:1b82:5d00:8146:652:2702:b594])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49d00031c95sm378593345e9.11.2026.09.08.09.29.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Sep 2026 09:29:59 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH] phy: rockchip: inno-usb2: ensure PHY is running when clock is requested
+Date: Tue,  8 Sep 2026 18:29:28 +0200
+Message-ID: <20260908162935.7092-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260908-phy-rockchip-inno-usb2-clock-fix-v1-1-f7d59c31b908@collabora.com>
+References: <20260908-phy-rockchip-inno-usb2-clock-fix-v1-1-f7d59c31b908@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20260908-phy-rockchip-inno-usb2-clock-fix-v1-1-f7d59c31b908@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNQQ7CIBAAv9Ls2U2Q2Ip+xfQgsJVVA4S1RtP07
- 656nDnMLCDUmASO3QKNnixcssJ200FI53wh5KgM1tjBHIzDmt7YSriFxBU554KzeIvhrg4nfiH
- FOPS+30/O7UAztZHq3+I0/llmf6Xw+HZhXT+JiLhohAAAAA==
-X-Change-ID: 20260908-phy-rockchip-inno-usb2-clock-fix-edd65b57f884
-To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Igor Paunovic <royalnet026@gmail.com>, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3031;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=mZy1cqdWdJhHt9O0ElVrbLOd8aw7/ukD53tdlXnuAcg=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqgMs9WpqhLxTPuwexyL6CnHWKALsLCTjiT1
- alS9w/buWlcYIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqoDLPAAoJENju1/PI
- O/qaaJoP/1XvEvAnZaDbwRNrMatVi1f3Kaex+2hUDpKMZPWG1Qhi2YzZmzUfMQ03nM1ZzLQHwxe
- OptxYH8WRRj7r0ZFMo/resXz4IUTRx8fMoW2Aum0pykvB+4JL76iHAZurVS7Gw+5j8REs3jkIvs
- Ux8H7ILqBRcjnlI24t9+2owlvtAuPbbVgsJg154zEafA/dic8DD7drz7dxUpQVygeKtaOthz3qG
- G9fPz/lXRfWD/eJrST3GWjSjhv5o2BabTPWex1hQCb69lNe4DjK3BlCdem/inAnrUDcQE43xzS1
- kXoD9xV8j2JIYRW2TKhum+6KpSYcqXBcwgkEEkPmcaTKroS/12PHkxHh2E1FoOTc5ub3WivgOv8
- 6zOgIAgLh0yb6Db7JDx+L25f/phwCxZ8yE8soMs+93Xi0RzVWJConxMAVuBUtV73jqdpCwBpXdg
- /+DU1nv1IQq8mKgKCglv0iDki44nS8piOLAr6yN1aJFCsvVXfXB7MPI6H4qE6xzUu8o0kfHbJT4
- xTRvVSm6GpYAIGQHrXPinFs+wMPXsB5MSsA+8Nhm95xvigTu6RQz4cw39jUA29SXd7P2S9/lSnD
- sBL0P69ooCCZAr/HlESKZ/IKHPiBuHV3AU1GBZdYe5jNI/ycXnljGyCIVx/SY/sXadOixW9PyGe
- lHEOnLeedDxujdklPRG8sgw==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260908_090746_352366_25F6C184 
-X-CRM114-Status: GOOD (  19.73  )
+X-CRM114-CacheID: sfid-20260908_093002_201467_737AEF01 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,91 +109,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On RK3588 the OHCI controller registers can only be accessed when the
-PHY's 480MHz clock is running. After system suspend the controller is
-resumed before the PHY. The controller requests the clock, which opens
-the gate in the PHY's clock prepare function. But with the PHY suspended
-this just results in a dead clock being routed. The OHCI driver will
-then continue to access its registers resulting in a board hang.
+Hi Sebastian,
 
-Fix this by resuming the suspended PHY in the clock's prepare function,
-so that the clock is really prepared once the function returns.
+Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus (RK3588)
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-This was noticed on RK3588 EVB1 when resuming from system suspend. This
-is technically a fix, but its unclear when the bug was introduced and
-system suspend is broken on RK3588 for quite a while and not just due
-to this problem. So I think this fix can be merged the normal way via
-linux-next.
----
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 37 +++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+Repeating the tag here so it is picked up with the patch: I tested this
+in your rockchip-devel branch earlier today and reported the details in
+[1], but that was in my own bug report thread rather than under the
+patch. The code you posted is identical to what I tested, only the base
+differs.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 7d8a533f24ae..07d400967def 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -332,6 +332,39 @@ rockchip_usb2phy_clk480m_clkout_ctl(struct clk_hw *hw, struct regmap **base,
- 	}
- }
- 
-+static int rockchip_usb2phy_clk480m_leave_suspend(struct clk_hw *hw)
-+{
-+	struct rockchip_usb2phy *rphy = container_of(hw, struct rockchip_usb2phy, clk480m_hw);
-+	bool relock = false;
-+	int ret, i;
-+
-+	/* Limit to single port; it's unclear how multi-port should be handled */
-+	if (rphy->phy_cfg->num_ports > 1)
-+		return 0;
-+
-+	for (i = 0; i < rphy->phy_cfg->num_ports; i++) {
-+		struct rockchip_usb2phy_port *rport = &rphy->ports[i];
-+		const struct rockchip_usb2phy_port_cfg *port_cfg = rport->port_cfg;
-+
-+		if (!rport->phy || !port_cfg || !port_cfg->phy_sus.enable)
-+			continue;
-+		if (property_enabled(rphy->grf, &port_cfg->phy_sus)) {
-+			property_enable(rphy->grf, &port_cfg->phy_sus,
-+					false);
-+			relock = true;
-+		}
-+	}
-+
-+	if (relock) {
-+		ret = rockchip_usb2phy_reset(rphy);
-+		if (ret)
-+			return ret;
-+		usleep_range(1500, 2000);
-+	}
-+
-+	return 0;
-+}
-+
- static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
- {
- 	const struct usb2phy_reg *clkout_ctl;
-@@ -340,6 +373,10 @@ static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
- 
- 	rockchip_usb2phy_clk480m_clkout_ctl(hw, &base, &clkout_ctl);
- 
-+	ret = rockchip_usb2phy_clk480m_leave_suspend(hw);
-+	if (ret)
-+		return ret;
-+
- 	/* turn on 480m clk output if it is off */
- 	if (!property_enabled(base, clkout_ctl)) {
- 		ret = property_enable(base, clkout_ctl, true);
+Briefly: 4 full s2idle cycles with all four USB 2.0 hosts bound, which
+hung every time before and needed a cold reset. The OHCI whose 480 MHz
+clock had it as its only user went from "enters ohci_platform_resume and
+never returns" to returning 0 after ~20.7 ms, 8 out of 8 resume passes.
 
----
-base-commit: cee9395acd8043be0644b25c34bfa86623f2b935
-change-id: 20260908-phy-rockchip-inno-usb2-clock-fix-edd65b57f884
+One data point for the reviewers here, since it concerns the guard at the
+top of the new function:
 
-Best regards,
---  
-Sebastian Reichel <sebastian.reichel@collabora.com>
+    if (rphy->phy_cfg->num_ports > 1)
+            return 0;
 
+All four entries in rk3588_phy_cfgs[] have num_ports = 1 (0x0000 and
+0x4000 as OTG, 0x8000 and 0xc000 as HOST), so the new code does run on
+RK3588, including u2phy2 at 0x8000 whose controller is the one that hung
+for me. The num_ports = 2 configs are the older SoCs, so the guard costs
+RK3588 nothing.
+
+[1] https://lore.kernel.org/all/20260908144245.10700-1-royalnet026@gmail.com/
+
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
