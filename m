@@ -4,59 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC78BC79F99
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2026 17:35:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4E15C79F9E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 00:02:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j+qTbn9tBZrFSFSEQ8OfrthCNz1ln71DiJLnS7g85OQ=; b=4mzoO/+SvnAD+Hjsfp3aKa/oZ0
-	Gu1Gbv/vERJNDgwbE0rNMZ/1yNrOgzQeAWd8cHM3VotSJom82jrNHfQW1znIkpa1BRoC3OEjW2Gjh
-	yevQGkKhXrb0zeSSQM37ObevWRSNGlV686233jHsmICAmdXj/vTeoQKCvKPoarhOz4v2a5pwWiftP
-	Qu//Y1zcyOMY2dBjOkgUF7be2WIpYJ0KZQB+RB2E+cXV9a/OlwZS/Qjma+3GtzjVBJHo8o/rgmjND
-	N175LIwHyLc+SWh198vTvMU1ohhBlKLyxT89GAl30NtQ7zv6+9o6k7HNfuQEW/BLAUNYIZM+OthB1
-	6ACFjDFg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=e7ua5yIVM/swW+FCHrhdyUo/CT6DPdIdGFYvj/zaUhg=; b=U4N/XuW2g1S4c3
+	IkhyG3Wl3ZrCdSZMp010PSrVy8D7PBLmbS/7Ibj3Pc+JFuIjPM3C5NZG8BijgSW4crxEHj4HW2LEJ
+	QOlqsbmAo4iDnBkBS+ejX7YEWcm/A1rafCpU7kQoiGu3uqLMG5Nbgurr0rw5iiDuqX5i1O20Wt8gX
+	O0zV9o2MkDDBSMjgeZ/wDpOGZAK28Xf5LGZww1EqP0ok8SriYGzR1HUNVoh/mNuN7KGyAQsESVEga
+	d8nqIoWaLnZI+KTSa1f18J/J97er812SEef4d6fmCGxW9neYR926zG/hBrhrJ4N5/+qGPxpHUuXx2
+	rS/XKCdOLpJsYrbufR3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3dFV-00000007VH4-1VSA;
-	Mon, 07 Sep 2026 17:35:17 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x3jIJ-00000007qvV-0tjA;
+	Tue, 08 Sep 2026 00:02:35 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3dFT-00000007VGb-4AsC;
-	Mon, 07 Sep 2026 17:35:16 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5A4AC601DE;
-	Mon,  7 Sep 2026 17:35:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 185411F00A3A;
-	Mon,  7 Sep 2026 17:35:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788802515;
-	bh=YS2TdENoAkBSs68uAXBLssJx4TGpvPEoYo13GnkLfSw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=eqf9OZdOf7BNxrg1YEyyQKxpWYn74BKR3NjWLU0mTrZ3Jx3HvDUXmoM/b7U78X7rQ
-	 R74O0RlSwnQQ37Ix3xz+pWDH2Yq15pQAa/7q6W7UZT3mwrR29uMQQVnmRcPpI46KoK
-	 Egxqc7C61d3KJpfpWMi9JlDSuIGP1pYDMvb0UVftkKbhvFjBdUxttb61zkwiesYdia
-	 niSbc8cSDdi/64syxlCEP6WGHndoPg/+8+lixW/WB/HaEqzoNd5Eydf2ZWE9BeZ2QE
-	 vFSw8mP7mpoK0iL8pdQvNaAdeKE+LcW4MvVNOht9zazAYd3hIhLcE4wbcBBaVSATDm
-	 fE+0YFuiCD9/A==
-Date: Mon, 7 Sep 2026 18:35:11 +0100
-From: Conor Dooley <conor@kernel.org>
-To: HystericalDragons@proton.me
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	jensen <jensenhuang@friendlyarm.com>
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add FriendlyElec NanoPi
- R28S
-Message-ID: <20260907-skydiver-precise-a8166e576510@spud>
-References: <20260905-r28s-upstream-v1-0-f68d5389269a@proton.me>
- <20260905-r28s-upstream-v1-1-f68d5389269a@proton.me>
+	id 1x3jIF-00000007qut-2Oqr;
+	Tue, 08 Sep 2026 00:02:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1788825744; bh=AL638/hQUvxZ7ksKQGtecEARfPp3dotRpjQaGrQQF3M=;
+	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
+	b=LLJ3/45b9JMUxcH9Gv9bEbtvgzTehRkBk1PVr7b1A0gcFD/djeAiJOIq0Gp0WkL5O
+	 MTSM5hW4iVuKVzowUXDFTw2xZssxkEDQBHlKncvwi3mgM7YZekFFNmCfUoUqkwd5+i
+	 /kniqUrNVz9nFw6MPZi5+YazHlaOZ7mQ7Eyep+XU=
+Date: Tue, 8 Sep 2026 02:02:24 +0200
+From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
+To: Igor Paunovic <royalnet026@gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix hym8563 interrupt pin on
+ Orange Pi 5 Plus
+Message-ID: <pzcclrj5h32i5sfjhv75ntyrcmlqf224pzgk7zmea64jsxcriw@ezb2fpcpw5zt>
+Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>, 
+	Igor Paunovic <royalnet026@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
+X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
+ <https://xff.cz/key.txt>
+References: <20260906181622.11991-1-royalnet026@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20260905-r28s-upstream-v1-1-f68d5389269a@proton.me>
+Content-Disposition: inline
+In-Reply-To: <20260906181622.11991-1-royalnet026@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260907_170232_065686_D1E28175 
+X-CRM114-Status: GOOD (  31.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,46 +63,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1437143450207955089=="
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============1437143450207955089==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="TzDQ4robxPUrjxZB"
-Content-Disposition: inline
+Hello,
 
---TzDQ4robxPUrjxZB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Sun, Sep 06, 2026 at 08:16:22PM +0200, Igor Paunovic wrote:
+> The interrupt line of the hym8563 RTC on the Orange Pi 5 Plus is routed
+> to GPIO0_C6, not GPIO0_B0. The vendor device tree uses RK_PC6 with a
+> pull-up for this pin; the mainline board file uses RK_PB0, which is not
+> connected to the RTC.
+> 
+> As a result the alarm interrupt never reaches the SoC, so the RTC alarm
+> cannot wake the board: rtcwake enters s2idle and the board never
+> returns, which looks like a hang.
+> 
+> This was verified on the board by enabling the alarm interrupt (AIE with
+> AF already set, so INT# is asserted) and sampling the EXT_PORT register
+> of all five GPIO banks: GPIO0_C6 is the only pad that follows AIE
+> (high with AIE=0, low with AIE=1, across repeated cycles), while GPIO0_B0
+> stays high and its interrupt counter stays at zero.
+> 
+> Switch the interrupt and its pinctrl entry to GPIO0_C6 and use a pull-up,
+> as the vendor tree does for this open-drain line.
+> 
+> With this change the alarm interrupt fires while the system is running
+> and the RTC wakes the board from s2idle ('PM: Triggering wakeup from
+> IRQ 52'); before it, rtcwake never returned.
+> 
+> Fixes: 236d225e1ee7 ("arm64: dts: rockchip: Add board device tree for rk3588-orangepi-5-plus")
+> Cc: stable@vger.kernel.org
+> Assisted-by: LLM checkpatch dtbs_check
+> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+> ---
+> Notes for reviewers (not part of the commit message):
+> 
+> Measured on an Orange Pi 5 Plus with the vendor-style method described above
+> (GPIO0 EXT_PORT sampled while toggling the alarm interrupt enable); the vendor
+> device tree for this board uses RK_PC6 with a pull-up. With the fix the alarm
+> IRQ fires at runtime and the RTC wakes the SoC from s2idle. Note that on this
+> board the resume itself can still stall later in the USB 2.0 host controllers
+> (a separate, unrelated issue being looked at); it does not affect this fix.
+> 
+>  arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> index 145986695720..572b892e4066 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+> @@ -189,7 +189,7 @@ &hdptxphy1 {
+>  
+>  &hym8563 {
+>  	interrupt-parent = <&gpio0>;
+> -	interrupts = <RK_PB0 IRQ_TYPE_LEVEL_LOW>;
+> +	interrupts = <RK_PC6 IRQ_TYPE_LEVEL_LOW>;
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&hym8563_int>;
+>  };
+> @@ -298,7 +298,7 @@ hdmi1_tx_on_h: hdmi1-tx-on-h {
+>  
+>  	hym8563 {
+>  		hym8563_int: hym8563-int {
+> -			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+> +			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+Schematic already shows a pullup, so this should not be needed:
 
---TzDQ4robxPUrjxZB
-Content-Type: application/pgp-signature; name=signature.asc
+  https://xff.cz/dl/tmp/2995ddec50ce4597.png
 
------BEGIN PGP SIGNATURE-----
+Other than that,
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCap71zwAKCRB4tDGHoIJi
-0l3IAP9ldhaM0bKPJa+3pR2NXhPp8GBNkm5A4DzJj+I/8b2QEwD/RsOooxRq/Gtg
-rDS+bDjKm/bt5Y+eOdqCqAI8j5UPngY=
-=AxLq
------END PGP SIGNATURE-----
+Reviewed-by: Ondrej Jirman <megi@xff.cz>
 
---TzDQ4robxPUrjxZB--
+Thank you,
+	o.
 
-
---===============1437143450207955089==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>  		};
+>  	};
+>  
+> 
+> base-commit: 1fc5a74b108fc90951890ec513ac81869f5eaff1
+> -- 
+> 2.43.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1437143450207955089==--
-
