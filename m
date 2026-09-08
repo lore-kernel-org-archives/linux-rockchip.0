@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BCE6C79F99
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 13:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F6DDC79F9E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 13:05:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
 	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fa/X3uDR3zCNJjTBKITw+mwZ1/3ybKcdF8lvwXOAcbY=; b=3AUBxZJvuQ+8tw
-	bLiyg19Hkyf73GqjxSpc1ZJLXwfEGTPlQidL1JqfaQfbNRKjoh8Neoo4nXyHMfpQ0A4l9jofdyREK
-	ub6wsBbug7a9mXavXiD2BqRDs3W3wsifKpazfVYZOaiUXsc53769q/vca+mv5Uu38QlMBlFXRoFUo
-	vPGfeYVVcJXAM+zk1wrJnh8YhiyidUcQxIoP/kNh14P623g9BhBD9Vqz4vCZh6ZfvvQh6TWlpfd6A
-	LxPQt8w30TW+gifMMuDMkrrhk9JYSjM7QSn+wOloM+kQ/UuufjJFKeeIDDKcpa6U66sefzp2b41np
-	ggSuLZWLUb5X0aPcwJ/g==;
+	List-Owner; bh=6UjqQ9v+r2kAMmFDvx5Lbwpq8HeaB+0MUwOOGQnXcZk=; b=WkvbK4XHwmrDn+
+	M9rKmTmbg1qRmi4jLoPr6ShVD6XPLNbVoTJeVND5LDjRo7q7sZ5uKMJSdqaZN80lMXoloFpWbx6/z
+	Rv0qIt9HK1eLFeB4Cnj7D2Cul6TgpIjsWYhVvfDf0mFh5L6uZ3PxRgtSHeHVsQbZwwKvLblTIIymk
+	gArLDqLQtNEX4uZ4DyCTwqBnwonY+IDt8i1ermaq37w9KgWFGTb/LAmkReedX6cVUzuRQAeg49R74
+	Z6vcGKF2Ga5EvQ/hcBiO2DQBbJgLBaAejYF7wHulavUAyJEUZRl4cwYdYNkQz1MWsOGwSdu67gYTw
+	xrs213EKJ4umCFsRX3Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3vVK-000000095fE-0jvX;
-	Tue, 08 Sep 2026 13:04:50 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x3vVs-000000095oy-290y;
+	Tue, 08 Sep 2026 13:05:24 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3vVH-000000095eU-3Ozf;
-	Tue, 08 Sep 2026 13:04:47 +0000
+	id 1x3vVm-000000095o7-3rJY;
+	Tue, 08 Sep 2026 13:05:18 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id DD5E2601DB;
-	Tue,  8 Sep 2026 13:04:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA4F21F00A3A;
-	Tue,  8 Sep 2026 13:04:45 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 09CFB601F6;
+	Tue,  8 Sep 2026 13:05:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 038CC1F00A3A;
+	Tue,  8 Sep 2026 13:05:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788872686;
-	bh=0c6VVgpgr8QRvVK0L3AA+Ya2VGnRG3C/SeaIoCEOEIw=;
+	s=k20260515; t=1788872717;
+	bh=aGTtaq+6H/MylUW1RWg3sjvRgbOJMdbhBr1FvgmlBNM=;
 	h=Date:From:To:Subject:In-Reply-To:References:Cc;
-	b=GME5OEfmBM3W0vV/lVcz+5iVnZEC5ckUSFlvI8uKcFRfnIi/d7yvCw33IdTcWPrOG
-	 +ODsMzky9dGz8w1QvGQ90Rjxbc6478UAnrg7p0yiOWzjOSF7WU7wxuE4NUxRanh3EY
-	 J5K091ChOVt841MVIvPiboxtyhgRplOqOOGj15aUxNb1vbrf5IZl/UbnwkrW5qD87Q
-	 Ov23nnRh40+Y3J/7ubOvVyg/lyu1P7SFBrsi4Q6EDRPLYoKu2jm4Xv30Yk+DFrdsJn
-	 XkOmt3S3WSQ7t2wPuUTZli7yc041+BiDeff9S74+zS6fP2gdhUrypH5nX4llhwjzd3
-	 3Dk7FHiMKatdw==
-Message-ID: <0ec40db90bd0d2ece46b185deb3c8eca@kernel.org>
-Date: Tue, 08 Sep 2026 13:04:43 +0000
+	b=BaRrzSMAn8EfjT4wRWhWrmfDz3x8XeYQnqZBLLwgqh1oJ1Oc4pdvbE5XJoSjByxhY
+	 2wvb+OFrl2a3PjTSpfVjroAfOBcmdBcjr2C/uLiDV6NXhYvHfwc3Ogfeu6T8HxwhVE
+	 bgQkr067DWEIH4gYyjiZT6x5mozingz+yPwOfUlDIdVfasy+7VJBL9+qedyEzH2x2N
+	 yhABRXMH7nDhhHoGKyOKtybXt6WT1qOJjcX95PUXYlIPpQ8ueJo3Brozfj2WA3T6E0
+	 DylCu8/1RdTxJE85P/L4lVXfXnEJixtF20gT6+i25aXRiULJt0200kBuvjyVG0F3lK
+	 TSpNFZUQvLO6w==
+Message-ID: <0d05dad937047c8c8e18df7d5a92f89f@kernel.org>
+Date: Tue, 08 Sep 2026 13:05:14 +0000
 From: "Maxime Ripard" <mripard@kernel.org>
 To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
-Subject: Re: [PATCH v11 45/74] drm/vc4: hdmi: Propagate -EDEADLK to the top
- level
-In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-45-bc12954a0688@collabora.com>
-References: <20260901-dw-hdmi-qp-scramb-v11-45-bc12954a0688@collabora.com>
+Subject: Re: [PATCH v11 47/74] drm/vc4: hdmi: Convert to common HDMI 2.0
+ scrambling infrastructure
+In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-47-bc12954a0688@collabora.com>
+References: <20260901-dw-hdmi-qp-scramb-v11-47-bc12954a0688@collabora.com>
 Cc: dri-devel@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Algea
  Cao" <algea.cao@rock-chips.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
  Yan" <andy.yan@rock-chips.com>, "Chen-Yu Tsai" <wens@kernel.org>, "Daniel
@@ -81,12 +81,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 1 Sep 2026 21:51:09 +0300, Cristian Ciocaltea wrote:
-> drm_connector_helper_funcs.detect_ctx() is expected to propagate
-> -EDEADLK so that context owners, e.g. drm_helper_probe_detect_ctx(), can
-> perform the required backoff and retry.
+On Tue, 1 Sep 2026 21:51:11 +0300, Cristian Ciocaltea wrote:
+> Replace driver local scrambling logic with the newly introduced common
+> HDMI 2.0 scrambling support:
 > 
-> vc4_hdmi_handle_hotplug() instead runs its own retry loop and calls
+> - Advertise source-side scrambling capability by setting supported HDMI
+>   version based on the variant's max_pixel_clock.
 > 
 > [ ... ]
 
