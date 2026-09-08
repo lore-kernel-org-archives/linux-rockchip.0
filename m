@@ -4,51 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8979C79FA1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 11:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AB99C79FA1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 11:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
 	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n+hvkGqTRb5OQvN2PG+t0qBX0EmT7tnKlwJ/rV2QQYc=; b=RH7C/erSrCgVT/
-	U2m8t6WS8USNkmzU61+kjj2My2dUHNdIStz87IBqj3mIHRFvytBAXqTi1HlN4xclRbCjhubMfijCp
-	X4b7EcmbRYXPM6RBBvFS9/lxhBsNd1KZ1vyILuJfFX7knV+rdefmz6PEKeQNVQ5QZNZJIf/iJwiEj
-	zOq0+vk1SL++uc/sn8aX+r5+DBL92B1ujVmVy5S5Q6G3ZPf+wK915AwM3TCWuZKlaDqmjj2JwpDe0
-	AQ51dz6ocUbFumhKo4bVMwTBgLF8EVSiw4Zy45dVvDmuo8P6dfWvRsGmnmJA7B2n3hYcPwjqcy07W
-	cFRTcEuoDBOTy42UoPyw==;
+	List-Owner; bh=yZATJzQO92gKipNzdrUcB+slNr8+SYGSfQd0bahAkdI=; b=QxEl1DR50wabGM
+	2MGKUNTAAhuP15N6TYNhPGsK9LsNiLYNpI88SNItEbDUpLY/QbAw/TjnLyCb/4tXe8Zab4sA8WpAd
+	/Krg9GlpmMRnKMpn5GG4AE1JeiryHIVnAYT/EWP9hPMStE+XjsjJfg0wKy/TPH9oiNeTjHtZxwPCY
+	t9t5rILCCt5F3gzy35iKHUZ3anv+JyvraARusQpK22x7khH0CFkbjjaa1EPmupe6M7cxiM9ej81FO
+	E4u3jm7hAYXPsEmExtUtAn+7cWcUsebdtirgiTQhWYJAQF4Ysw/Gwzl1K7xg0NaOTweAhhbRBOhRq
+	vxAyNEkNcQLHQhqS+lPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3uHd-00000008uxU-0exh;
-	Tue, 08 Sep 2026 11:46:37 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x3uHo-00000008v4c-355y;
+	Tue, 08 Sep 2026 11:46:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3uHQ-00000008urd-27Tv;
-	Tue, 08 Sep 2026 11:46:24 +0000
+	id 1x3uHc-00000008uws-31gJ;
+	Tue, 08 Sep 2026 11:46:36 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id ECC1460A9B;
-	Tue,  8 Sep 2026 11:46:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF17F1F00A3D;
-	Tue,  8 Sep 2026 11:46:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788867983;
-	bh=Thmzt2bA5oDRdHIBsmWHHi7LxhCvKiJQFfK9uAWWp6I=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc;
-	b=H/ekudPMgJ3J+jTc+71sHPNQdwtVeyDUOof+Ch1isOl1fL3ScUIpdBNrFFqFvZU6I
-	 6kZRGvza+AIlaSsGfs73K892T969F/JfZN8wJVkD3c2QIMdhiUKU0x3wAV84RnNvuw
-	 kGAfT+S8Aq1qdy0I46HqN9BrFP+/78pv8K3lIWiQx3Bm0SFhcW2H+kNeGkdTJMQsxQ
-	 s8yC9yidBrK7ZaKyU3nZmDUVRuXLFWXdyZgElpaBUDAB+lK/Wolr1Jh5cy/xBx3eLe
-	 if6LnlxqxBuD/bx6L7aQjhh0pH4ESwSs2nUoFr6La5hceGZ4hhHNmfR7gUvg2zoCDT
-	 nN4MvN0BYenmQ==
-Message-ID: <a609592dd139aedc19fa400cfa55c048@kernel.org>
-Date: Tue, 08 Sep 2026 11:46:20 +0000
+	by sea.source.kernel.org (Postfix) with ESMTP id 7946443EA4;
+	Tue,  8 Sep 2026 11:46:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFBBD1F00A3F;
+	Tue,  8 Sep 2026 11:46:35 +0000 (UTC)
+Message-ID: <e7add84e596d02ac9d917dedba7ea949@kernel.org>
+Date: Tue, 08 Sep 2026 11:46:33 +0000
 From: "Maxime Ripard" <mripard@kernel.org>
 To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
-Subject: Re: [PATCH v11 55/74] drm/bridge: lontium-lt9611: Advertise HDMI
- 1.4 capabilities
-In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-55-bc12954a0688@collabora.com>
-References: <20260901-dw-hdmi-qp-scramb-v11-55-bc12954a0688@collabora.com>
+Subject: Re: [PATCH v11 56/74] drm/rockchip: rk3066_hdmi: Advertise HDMI 1.4
+ capabilities
+In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-56-bc12954a0688@collabora.com>
+References: <20260901-dw-hdmi-qp-scramb-v11-56-bc12954a0688@collabora.com>
 Cc: dri-devel@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Algea
  Cao" <algea.cao@rock-chips.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
  Yan" <andy.yan@rock-chips.com>, "Chen-Yu Tsai" <wens@kernel.org>, "Daniel
@@ -81,11 +71,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 1 Sep 2026 21:51:19 +0300, Cristian Ciocaltea wrote:
-> Bridges using DRM_BRIDGE_OP_HDMI are expected to provide the supported
-> HDMI version.  This is not enforced yet, but will become mandatory once
-> the migration to the caps-based HDMI connector initialization API is
-> complete.
+On Tue, 1 Sep 2026 21:51:20 +0300, Cristian Ciocaltea wrote:
+> Bridges using DRM_BRIDGE_OP_HDMI are now expected to also provide a
+> supported HDMI version.  This is not yet enforced, but will become
+> mandatory once the migration to the new caps-based HDMI connector
+> initialization API is completed.
 > 
 > 
 > [ ... ]
