@@ -4,41 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AB99C79FA1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 11:46:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 800C3C79FA1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2026 11:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
 	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yZATJzQO92gKipNzdrUcB+slNr8+SYGSfQd0bahAkdI=; b=QxEl1DR50wabGM
-	2MGKUNTAAhuP15N6TYNhPGsK9LsNiLYNpI88SNItEbDUpLY/QbAw/TjnLyCb/4tXe8Zab4sA8WpAd
-	/Krg9GlpmMRnKMpn5GG4AE1JeiryHIVnAYT/EWP9hPMStE+XjsjJfg0wKy/TPH9oiNeTjHtZxwPCY
-	t9t5rILCCt5F3gzy35iKHUZ3anv+JyvraARusQpK22x7khH0CFkbjjaa1EPmupe6M7cxiM9ej81FO
-	E4u3jm7hAYXPsEmExtUtAn+7cWcUsebdtirgiTQhWYJAQF4Ysw/Gwzl1K7xg0NaOTweAhhbRBOhRq
-	vxAyNEkNcQLHQhqS+lPw==;
+	List-Owner; bh=L/7pxZhTikrikgPSTpSvP9v0g+V/cNBg+TC7B+wqTUM=; b=qohMF594urQY61
+	16FwTXylyUDQ+1SqNpmZCtOiikPChsQ6hHieAQ45MqhjIe7OZlnUNTVSEiYq7adymGT7wnxvpm85X
+	dZQomp+5EmNn1YjSGzxXYhlyThfazVvOanI2KmeDnZrrEOUT/ZvHScuzG2GE+9+e02lBHlvnr2vVm
+	Qaw8B2EJp2zVuSHlwPGsB4iIyoCwvy4DLVouhrqHDjNjIwa5L8kywZvelqFnvOabt7j2sE8NHI0q9
+	DbSmdkJrvMGLd8rhtNL4BCC/I3P19Qb/yNsw8avWBzGkp30y134awxzhOZXIP9FcFuMzzEB9EtWpc
+	NHujWIETnabbHulqqdZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3uHo-00000008v4c-355y;
-	Tue, 08 Sep 2026 11:46:48 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x3uIW-00000008vJr-4B9Q;
+	Tue, 08 Sep 2026 11:47:32 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3uHc-00000008uws-31gJ;
-	Tue, 08 Sep 2026 11:46:36 +0000
+	id 1x3uIT-00000008vID-0RdN;
+	Tue, 08 Sep 2026 11:47:29 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7946443EA4;
-	Tue,  8 Sep 2026 11:46:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFBBD1F00A3F;
-	Tue,  8 Sep 2026 11:46:35 +0000 (UTC)
-Message-ID: <e7add84e596d02ac9d917dedba7ea949@kernel.org>
-Date: Tue, 08 Sep 2026 11:46:33 +0000
+	by tor.source.kernel.org (Postfix) with ESMTP id 8A10E601DB;
+	Tue,  8 Sep 2026 11:47:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D4EF1F00A3A;
+	Tue,  8 Sep 2026 11:47:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788868048;
+	bh=Jhp7GY07oWtgx4+eRD3D6AU0jdo5ZC0oQmnbdRp7qjQ=;
+	h=Date:From:To:Subject:In-Reply-To:References:Cc;
+	b=dQJYVkOaLFUmuGJ3y9t87rV+WC6JytC0cDe6qJEfWf0rE6hPIAJzgfjjdn/mcBZpH
+	 jxZFTfhyo71BxY+KjCcP/FtyitayNTieBC0r6K80L27le2OeLRPUT3sLGUngMp+WZL
+	 sMrEaq+lcbduBKa3M/kv4gvFNeW892shI51zriF1MFx/QQKOIemR9KZ2HkZyLGfa2a
+	 l6AIpLZtErjv03s8DD5Q97NxlRh7zboFqfdelA0SEmGZ49HA5/gn38o7zsMRDpb6Rl
+	 nCCUre2QXd3B0SB5bJM1ch6Jct7iOC5ASKgITk3p4lJSw+Ve4a52o16DL5a7AbaQTI
+	 Vo3NPWY8pUYFQ==
+Message-ID: <26dc7e8210bbcc26f57f5b15dcab269e@kernel.org>
+Date: Tue, 08 Sep 2026 11:47:24 +0000
 From: "Maxime Ripard" <mripard@kernel.org>
 To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
-Subject: Re: [PATCH v11 56/74] drm/rockchip: rk3066_hdmi: Advertise HDMI 1.4
- capabilities
-In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-56-bc12954a0688@collabora.com>
-References: <20260901-dw-hdmi-qp-scramb-v11-56-bc12954a0688@collabora.com>
+Subject: Re: [PATCH v11 60/74] drm/tests: edid: Fix conformity for 4K
+ RGB/YUV 340MHz EDID
+In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-60-bc12954a0688@collabora.com>
+References: <20260901-dw-hdmi-qp-scramb-v11-60-bc12954a0688@collabora.com>
 Cc: dri-devel@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Algea
  Cao" <algea.cao@rock-chips.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
  Yan" <andy.yan@rock-chips.com>, "Chen-Yu Tsai" <wens@kernel.org>, "Daniel
@@ -71,12 +81,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 1 Sep 2026 21:51:20 +0300, Cristian Ciocaltea wrote:
-> Bridges using DRM_BRIDGE_OP_HDMI are now expected to also provide a
-> supported HDMI version.  This is not yet enforced, but will become
-> mandatory once the migration to the new caps-based HDMI connector
-> initialization API is completed.
+On Tue, 1 Sep 2026 21:51:24 +0300, Cristian Ciocaltea wrote:
+> The test EDID added by commit 54a5f1c4d5f8 ("drm/tests: hdmi: Provide
+> EDID supporting 4K@30Hz with RGB/YUV") fails 'edid-decode --check'
+> (v1.33.0) with the following issues:
 > 
+>   Warnings:
 > 
 > [ ... ]
 
