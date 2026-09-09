@@ -4,85 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3055C79FB7
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2026 19:42:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2115BC79FBB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2026 21:21:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DBDt1YymevAV3XQX5Nt3wyBF9rSiQZzhFKJ/3xIMZoc=; b=gYEMHKd1n3a/UZ
-	nM9VNoltOByVC+gqaDmCAg7+TAAl35FjMAXDb3BFJ1mYRjz3I/oUW5uDSg9ELoX07WPVpPBAGqeqW
-	8h86ejOzlPQ0iIqsBweVmfMlSqD2QAies//nEegKAIozOWYtR4PrEcEUlQlw/s54I7zaWLP/3BmiR
-	RkRe7GEqlAqj0qarKnaHhAVyzI/cmg7iQ+xf9JaNYcmuF9Th+FxU0cBNNHYG/uyeZS6KtXA/xKs5Z
-	t/hwxDg08qkCIOrRCe8+oSK13rMfA7TNpOF/mT0OZ4a5Dg++GDxpc7kNpe7n6WXBLCK7V1MVVpouB
-	EDWpFc63sX9f6dHbtiWg==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ogFBps7rS6ATzPn8gpIrGwNG9KxSEzrIVrPegznBEKQ=; b=fJFAtXNpNvGTUc
+	AXvypuXGNBZgP5pmeFC2+/fEqxjtdvAU5zDTvkMRxbvOffUXf7ldjhKerrYJzbfb+KQ7o0SegxLZW
+	hq6taGPjOT2XNMVbxuAjumsSwUImkag4OOThHZQjCFQun6vdlejzaaFlwAdWdcFNHpCkAa8UfQyvh
+	+cp95irVVH+URzXINXR3ev9PqVaWAtUqPLKbk39u/ifW+24W1hnZOQfWREEJjlt7sUcWCFrF0daeM
+	uQCO03NnJTrweqd4G00LkIuysxGAVpZdafOTdtTmNMy9fHzO7CvgecftoTKU5HClR4RaQEspjHLFi
+	TcJGurwmE//dpF7iVTJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4OAy-0000000CkMj-1Yr1;
-	Wed, 09 Sep 2026 19:41:44 +0000
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
+	id 1x4PjD-0000000CsDy-0SCm;
+	Wed, 09 Sep 2026 21:21:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4OAv-0000000CkLx-3my0
-	for linux-rockchip@lists.infradead.org;
-	Wed, 09 Sep 2026 19:41:43 +0000
-Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-48435ae9ca4so693167f8f.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 09 Sep 2026 12:41:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788982900; x=1789587700; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=BMV0mMGaUxuAC5co0uH2uhYqExWWNSi7vJ8S06jVFgM=;
-        b=rLWA1hkJpoiIP4VQGTLUgICYZZO4VVfpdhnXOouuB4LiJKYxGmRP71ILiuTtRDJp9U
-         njT+ptlgPAVJy7CIauaBqPCvfsbFfWbthbKoxKP+ikX6bYp/syRLXlAH2qr8SIVxPpS2
-         2R5qLX6P4Elpqng7Ryp2S1hn2ooXzt1gBFcHKuvidPiCKrXURj0JhtfS+RCw7dvtGLvR
-         m/BOvVFEZs6tkCeXyLfRLL0pJzhpateE6B0gGV06QMjIHvNSQHKGxK/IAkCr+rU4PSbI
-         Mc4b1Dj6BD/ZaA+A2Nz3bCfGK9rHk1XZyfl3LaNkCmlHg0k0Hh8cL4XjeLk0odQBB6mT
-         lzaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788982900; x=1789587700;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=BMV0mMGaUxuAC5co0uH2uhYqExWWNSi7vJ8S06jVFgM=;
-        b=XpXfNDAlwSb7JIZHdcT6gKeWyb1S87G2IoUaHUIrKIqdFbMT6GEwkv0guFSlaHt0HC
-         NELGCmS0cyqDPqy+ft8dLroJpFtqJlN7NtMmo4meFI8tcuSlCJYyi9hzqToKjaF8n90H
-         T+5W+FpWveLnTpmaETDZ3/tH7MIerBDkkL2VZA4bJGEPH9rOqRg5F4/u0vVtVYlgOseV
-         C/93HFxRFC76LvCTsaZvr/BjQy3EGdLXGnB/BRUAu8N5mYqzA/aj0OuerHUGVVWg+COJ
-         KE3GagKa/wj2HJq97D77U1JZbRk6I8es9IfsHwQf831YOoPA8D1ZeVv7+euR5Y/AVvKP
-         QQDg==
-X-Forwarded-Encrypted: i=1; AKwUvBxEQ7bSLb0kvXPWvXcBRPMu2JqEhe/bPmqjzLl1QKdqhIN8eWWcruPvTwiWhdAY05A+GWN3Xjpdj/vsiy9fBQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++mJ7aqDrTivF5b4PYqQMTs7jq7ztUCkD4Nsy+KEaYdGB2TTJlmn
-	HNY18BymDKUQlVNXOocgYzLyuUstr11RlxnJ09Hgi8RsHNE7g45zf3OK
-X-Gm-Gg: AYBFou3D+yNdqyoQU8dqHQx/8V7r5ve9mQdbT+ttx1oiDh82wBY7deZ+KpmtnFre2iO
-	d8pa/KHANTRSoBTX8JxuY0Jopifuy0oQB+ZCMOMvNFaNYGcUs3oxAL4KydWMJXI11lMLHnj5cH2
-	7Wxgd2ggk86FEfSqAajzO9AdnDxr8OLXvpp1Rq2n3CJr0O2UE/7o8kDbyjJhasmmuh+YZHvX514
-	2+qJU9NClz4aZBAo+ltR6ZY02KoZ4V02YoPVqqJmIW1daH+q/mlWvwwsby9Wg4voQakCUet2osI
-	uGCtyOoy2z4ZMsfVb/aq1iHchsoOaYbRM2p+gjzIZPdMHvLmiQCV2iiRMqa+7fKSesx9KGwuN0C
-	NplNc24g7tX49Na206UbAJTIuadc+uy11DA//YFA50NdlTcsFjWCuktwCIOcIkxXi94GOnqY+YE
-	Hfz00TsSiUUHrYB/svpQOzVgfPGFYymUoHIY60zlCVB04LZ6/mxfH1q5y9044yiZE2F3voyGGFH
-	BUOXIGhBloTQIGhJsGbAewMcZQIt/vTE1Y+ujaAoVU0txoVdhipfHIPcargIYp62dUrMFJF3HOS
-	siua
-X-Received: by 2002:a05:600c:474a:b0:49c:ff81:e062 with SMTP id 5b1f17b1804b1-49d276628c8mr3990025e9.2.1788982899647;
-        Wed, 09 Sep 2026 12:41:39 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B836900C06E5685D4591C35.dsl.pool.telekom.hu. [2001:4c4e:1b83:6900:c06e:5685:d459:1c35])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49d20fce7a7sm167161505e9.4.2026.09.09.12.41.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Sep 2026 12:41:38 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH v2 3/3] drm/rockchip: dw_dp: Attach "max bpc" connector property
-Date: Wed,  9 Sep 2026 21:40:35 +0200
-Message-ID: <20260909194036.8889-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260909173542.14030-4-royalnet026@gmail.com>
-References: <20260909173542.14030-4-royalnet026@gmail.com>
+	id 1x4PjB-0000000CsDk-2FyX;
+	Wed, 09 Sep 2026 21:21:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id BA13C600D4;
+	Wed,  9 Sep 2026 21:21:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 65267C2BCF4;
+	Wed,  9 Sep 2026 21:21:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1788988868;
+	bh=LPHP2ud1c3YW5aWPJeus/gJIDU9RP1d3zaNoCvKdyaA=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=ebumszhtFwh5OBFp8+i7VvVOC2IonvQkurLEcJPnlH7KO4aQNw2Qt2tPZPt3kNJ9w
+	 FgLJ3ng02ClqaWEEk11ih7463lPbsIXzmR6Ti+wNp4kE5cirR64zfl2k1mEh/ex0KN
+	 rex7V8Ss1KjyZgJ2XWjRrKwAYowCjKhwATaj8Bgn6YYJ2MuxRBzuhQ41X8SqZjm3Vk
+	 KUyR186EvqDY+Rf6lEV1wVH5ewUaWCx+zUB0rRKUujS8MtRAjc5aP3m7cSYAsDfKyO
+	 cZ0Le/qGRj3o9XYpy3NP6r/R8ObCNagFvz2upZsmhXnXPmJQea0M5K3sVfNIfC+E4L
+	 1hhEM2Wv1KlUw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E104C79FBB;
+	Wed,  9 Sep 2026 21:21:08 +0000 (UTC)
+From: Johan Jonker via B4 Relay <devnull+jbx6244.gmail.com@kernel.org>
+Date: Wed, 09 Sep 2026 23:20:54 +0200
+Subject: [PATCH v2] drm: rockchip: add drm_plane_create_blend_mode_property
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_124141_960994_94E5FC94 
-X-CRM114-Status: GOOD (  17.74  )
+Message-Id: <20260909-blend-v2-1-37e27af4faee@gmail.com>
+X-B4-Tracking: v=1; b=H4sIALXNoWoC/x2NywqEMAwAf0Vy3kIpixh/RTz0ETWgVZJlEYr/b
+ vU4zMAUUBImhb4pIPRn5T1XcJ8G4uLzTIZTZXDWtRYtmrBSTiZ2mFzEqcXuC7UNXskE8TkuT71
+ 5/ZE84hCa+HwHw3hdNwJAikJwAAAA
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Johan Jonker <jbx6244@gmail.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788988866; l=1304;
+ i=jbx6244@gmail.com; s=20260824; h=from:subject:message-id;
+ bh=Vv2dAdwZrZngpYkZZtAtqUthy17ncXSrnl8lfyqCNow=;
+ b=7Y4+ehZW3Pl8LcRBNO/umDaR4t+TQniFaUIL8IMw+k7AXa7gOy7ImS/oeZzJ6Q0zkM5k63iLE
+ CSUZaUjRPkDC43hP0rkLVd0w6yVkois1LwGyvp87PxSPBGhVEUwn16D
+X-Developer-Key: i=jbx6244@gmail.com; a=ed25519;
+ pk=MK5Flx1ndjAF0uwXdNm8VvvoghD4KWCNd2hQE8QGyl0=
+X-Endpoint-Received: by B4 Relay for jbx6244@gmail.com/20260824 with
+ auth_id=971
+X-Original-From: Johan Jonker <jbx6244@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,68 +83,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Igor Paunovic <royalnet026@gmail.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Heiko Stuebner <heiko@sntech.de>, intel-gfx@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Maxime Ripard <mripard@kernel.org>, linux-rockchip@lists.infradead.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andy Yan <andy.yan@rock-chips.com>, intel-xe@lists.freedesktop.org
+Reply-To: jbx6244@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The bot is right, and it is worse than it reported. I went and read the
-code rather than taking either its word or my own.
+From: Johan Jonker <jbx6244@gmail.com>
 
-drm_bridge_connector_init() has two paths. With an HDMI bridge in the
-chain it calls drmm_connector_hdmi_init() (drm_bridge_connector.c:1016);
-otherwise drmm_connector_init() (:1027). And drmm_connector_hdmi_init()
-already contains, at drm_connector.c:621-631, the exact block this patch
-adds - same shape, same comment, because that is where I took it from -
-and then calls drm_connector_attach_max_bpc_property() itself at :633.
+A validate_blend_mode_for_alpha_formats() function was added that
+fills the kernel log with warnings for Rockchip VOP version 1 SoCs.
+Add a drm_plane_create_blend_mode_property() function as fix.
+VOP version 1 doesn't support blending with a pixel alpha background
+layer, only with a constant alpha. Advertise blending capability with
+DRM_MODE_BLEND_PIXEL_NONE.
 
-So on a chain with an HDMI bridge my patch does two wrong things, not
-one:
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
 
- - it overwrites a connector->state that has just been allocated, which
-   is the leak the bot found;
+Changed V2:
+Add comment line
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
- - it calls drm_connector_attach_max_bpc_property() a second time. That
-   one is not a leak: the helper reuses connector->max_bpc_property when
-   it already exists, so my 6..10 range is silently discarded and the
-   8..max_bpc property created by the HDMI path stays. It does re-attach
-   the same property to the object and overwrite state->max_bpc.
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 0090d8ff0c79..0bc5b606f021 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1850,6 +1850,8 @@ static void vop_plane_add_properties(struct drm_plane *plane,
+ 	if (flags)
+ 		drm_plane_create_rotation_property(plane, DRM_MODE_ROTATE_0,
+ 						   DRM_MODE_ROTATE_0 | flags);
++	drm_plane_create_blend_mode_property(plane,
++					     BIT(DRM_MODE_BLEND_PIXEL_NONE));
+ }
+ 
+ static int vop_create_crtc(struct vop *vop)
 
-On the boards I care about there is no HDMI bridge behind dw-dp, so
-neither fires today - but "does not fire on my board" is not a reason to
-leave it.
+---
+base-commit: 9d80aa4617b32f5054c5aa471d06b66704854935
+change-id: 20260909-blend-c89d2c9f6984
 
-For v3 both blocks get guarded on what is already there:
+Best regards,
+-- 
+Johan Jonker <jbx6244@gmail.com>
 
-	if (!connector->state) {
-		... create the state ...
-	}
 
-	if (!connector->max_bpc_property) {
-		ret = drm_connector_attach_max_bpc_property(connector, 6, 10);
-		...
-	}
-
-That leaves a question I would rather ask than paper over. The state
-creation exists only in drmm_connector_hdmi_init(), while
-drm_bridge_connector_init() leaves the plain path without a state - so
-any bridge driver that wants a connector property at bind time has to
-copy that block, as I did. Would it be better to move it into
-drm_bridge_connector_init() so both paths get a state, and have drivers
-just attach their properties? I am happy to write that instead, but it
-touches shared code and I would rather be told than guess.
-
-On the pre-existing [High]: the bot is right that the error path I add
-inherits it. dw_dp_bind() takes devm resources on the component device,
-including a non-shared devm_request_threaded_irq(), so a failed bind
-leaves them held and the retry gets -EBUSY. My dw_dp_unbind() call does
-not release devres. With the guards above the new path becomes hard to
-reach, but it does not stop being wrong, and I did not introduce it.
-I can send a separate patch moving those to the master device if the
-maintainers want it - it is a different change from this one.
-
-Igor
 
 _______________________________________________
 Linux-rockchip mailing list
