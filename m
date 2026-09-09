@@ -4,75 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98FCBC79FB6
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2026 14:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32C7EC79FB7
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2026 14:48:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wTomMGF/TP0EXj5waNJqyhkETtMnIeEXyTxlsHW3Kx0=; b=ttjBbx2STAwgP1
-	wCpn39qSxAnsauyLa8z/V70i5HiXQwNfR9nZHL0hXeGMP6ekwQ0AgvwqbPGI2iAc27l/UhrqnYKi1
-	nw1Z4OGSOiEXiRHOFeIh3ZoKONBfcglrj7SCviclhrNVbAfZo1Rb4PS8d/4K8vOcMlUPW6UYyGkUG
-	vzT2ZvHeqTn65oPi2fvFkyIE0LQACtxGkhoSJlas0cRnmyawicrDXtteLqTMP1PWaVg8Ir4LT03Me
-	Fuuws0yCi90G2rwKdovxbfEiXnxyRbepZGZr1rVfAuMgyGLlVTKSiJ8V/ZFzqDghI79HAh2QpwLEA
-	vxyhU8pGK5DRheWGW9aA==;
+	List-Owner; bh=G2OvZ/Re0BwCf3vtRCEst0VmnRweq7QyP02ix9XhWlw=; b=m31+tXN2OtwZ1N
+	SODkRqGLtln/bbC4JeG9l+340G3dOOTQo/qPdmvHgMY/ICq/FJLcTIOk/SWMCnB01wB9r/M6xBotl
+	jaaTee/OyMnOwCJmV2TIp8F3abhvzHy4wkY00I2FdiVZEwJW3CI8ZQOi/MR+KbgZiNS/ehRiPwTe8
+	hMuZm5XmXEfsbi/LKjCbyul1PSXIJCFZ6DJ/3C2ogdQNPkbFYh2LtKyCaJ0eeQ0JZjSZT9lKaiCji
+	y5NM9WV8rihHmhP7BL4ofDuy9kGtxARsMCxVo2f4WCzw2GJt18+b4T+Bqy0lmdwUGbXATjNM1iE9O
+	Drbys4LrwfmJ/oNoT4XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4JNQ-0000000Bzcx-2U4W;
-	Wed, 09 Sep 2026 14:34:16 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x4Jar-0000000C2eF-1MU0;
+	Wed, 09 Sep 2026 14:48:09 +0000
+Received: from mail-106103.protonmail.ch ([79.135.106.103])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4JN6-0000000BzHv-3N1z;
-	Wed, 09 Sep 2026 14:33:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1C57260230;
-	Wed,  9 Sep 2026 14:33:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BF5CBC2BCFB;
-	Wed,  9 Sep 2026 14:33:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1788964435;
-	bh=FgYAt4FdKYRaHvN/Jovmu1CGu4q+km/qUNCr8TO8xwE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=dSDSqR9NYHZPXJdLKkHQZSfdvCQUzG6w9qXm7qH34YR0/ODBkPFJ4kkwD4uT5UaKT
-	 /Ycjuw8ArmuMvoET1oNSpr2dwe1cIV9VKyfYFoE8rnF2yv1ZjTO8cyzDUxhTEcGXar
-	 hYKgy4Z8zb3azsOLEzJTrA68QlHj/2srEFDIQfGRy/kl7ch84qcThAjA9WE0DMdtD7
-	 XDxPIbw0D8YrnzColj3cBktajy2mtF0qoWjOde2otC2sv7YfPZxWSkcjfdIdvpzFrX
-	 6vWanek3cwHyBlUglaWX0hRkagI92lVNLpNgWfpHSwbdE3snMd4/p81jTLbR0283ns
-	 F9Cv4xvlYbZdQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AD068C79FBB;
-	Wed,  9 Sep 2026 14:33:55 +0000 (UTC)
-From: =?utf-8?q?=E5=AE=89=E5=AE=B9_via_B4_Relay?= <devnull+HystericalDragons.proton.me@kernel.org>
-Date: Wed, 09 Sep 2026 22:33:26 +0800
-Subject: [PATCH v3 5/5] arm64: dts: rockchip: Follow the DTS coding style
- in the NanoPi RK3528 devicetrees
+	id 1x4Jao-0000000C2cL-0Vtl
+	for linux-rockchip@lists.infradead.org;
+	Wed, 09 Sep 2026 14:48:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1788965281; x=1789224481;
+	bh=9e2xytwfhYr9357vCuzcaoFTrbV5rohrhm5PdDDzSoQ=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=heutEvUrdiuFmplmXJMuc/MIXcK8rDdVN01E9hZKtvupAapM8EQBEfLXHhJHeVnRG
+	 2KrI+D8MvNFYPe9ACX4wwZ2vYNfruxJNL30sDLMYqHwsJg/w7+3xKq+9kiAvvg5vU0
+	 UKamY5cxG3lKfORVNJrJDzGXw6wU8qFicYcySDCPkQq9KJt16dgf94BiJZV7kDIf0P
+	 9QyeHFXJrWjxGinp5lzCyTt1VdKSdGWCVyIDUJhV1qBvK0z/dSdF5D+Y3+HuB6QNKp
+	 4IeuCSHp6HkMsfRGGMJZ8BDzqlH66pkVuPUhxWMRoblSBy/CVa0O+mktugN1dzsDY0
+	 D5j6GOlabvFAw==
+Date: Wed, 09 Sep 2026 14:47:54 +0000
+To: Andrey Korshunov <razor1702@gmail.com>
+From: =?utf-8?B?5a6J5a65?= <HystericalDragons@proton.me>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Chukun Pan <amadeus@jmu.edu.cn>, jensen <jensenhuang@friendlyarm.com>
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Split out the common NanoPi RK3528 parts
+Message-ID: <BxIHWWXJmSvUm8NVgiaDUYHBOUaTS9qf4cAXQKfx8UgN_F90zHJpu0fMHWAZr70as9EnmOyj4cUPeFCO2p9JljBigVijrvYWzRpTG0WMm9U=@proton.me>
+In-Reply-To: <20260909134716.879-1-razor1702@gmail.com>
+References: <20260907-r28s-upstream-v2-2-21ab570fc91c@proton.me> <20260909134716.879-1-razor1702@gmail.com>
+Feedback-ID: 91982645:user:proton
+X-Pm-Message-ID: 362103fa24347cf345c686bb025fda6f2830d27f
 MIME-Version: 1.0
-Message-Id: <20260909-r28s-upstream-v3-5-ee3e1a34a353@proton.me>
-References: <20260909-r28s-upstream-v3-0-ee3e1a34a353@proton.me>
-In-Reply-To: <20260909-r28s-upstream-v3-0-ee3e1a34a353@proton.me>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Chukun Pan <amadeus@jmu.edu.cn>, jensen <jensenhuang@friendlyarm.com>, 
- Andrey Korshunov <razor1702@gmail.com>, 
- Diederik de Haas <diederik@cknow-tech.com>, 
- =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4985;
- i=HystericalDragons@proton.me; h=from:subject:message-id;
- bh=Dx8JcLzyZT+3t40Yo8VLHukY1rcwOrhijfk5CDwzcYM=;
- b=owGbwMvMwCUmepz3XUtTHjvjabUkhqyFeYE7JdWva/W4qp3d+23SVVPXZafqJcsLzBN33Zij9
- 7zK9mJQRykLgxgXg6yYIovspupIoVXRM4tYpI7DzGFlAhnCwMUpABPZZcfwm82k4GDV/Emnb8i8
- nLFiVVn0j+zz0WdEazScD7FsUP92zI+R4eaXS3cN3RfbX3Z2tN3bHW41r/GnWYewgeLUidfPJzE
- U8gMA
-X-Developer-Key: i=HystericalDragons@proton.me; a=openpgp;
- fpr=1DB27B5912AA5B9972041AC715C70DEE84826E07
-X-Endpoint-Received: by B4 Relay for HystericalDragons@proton.me/default
- with auth_id=1004
-X-Original-From: =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260909_074806_511548_24F42837 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,98 +64,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: HystericalDragons@proton.me
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTog5a6J5a65IDxIeXN0ZXJpY2FsRHJhZ29uc0Bwcm90b24ubWU+CgpzY3JpcHRzL2R0Yy9k
-dC1jaGVjay1zdHlsZSAtLW1vZGU9c3RyaWN0IHJlcG9ydHMgdHdvIGRldmlhdGlvbnMgZnJvbQpE
-b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZHRzLWNvZGluZy1zdHlsZS5yc3QgaW4g
-dGhlIHNoYXJlZApOYW5vUGkgUkszNTI4IGRldmljZXRyZWUgYW5kIGluIHRoZSBOYW5vUGkgWmVy
-bzIgYm9hcmQgZGV2aWNldHJlZToKInBpbmN0cmwtMCIgaGFzIHRvIHNvcnQgYmVmb3JlICJwaW5j
-dHJsLW5hbWVzIiwgYW5kICJzdGF0dXMiIGhhcyB0byBiZQpwcmVjZWRlZCBieSBhIGJsYW5rIGxp
-bmUgd2hlbiB0aGUgbm9kZSBoYXMgY29udGVudCBiZWZvcmUgaXQuCgpTb3J0IHRoZSBwcm9wZXJ0
-aWVzIGFuZCBhZGQgdGhlIG1pc3NpbmcgYmxhbmsgbGluZXMuIFRoZSBnZW5lcmF0ZWQKZGV2aWNl
-dHJlZSBibG9icyBhcmUgdW5jaGFuZ2VkLgoKVGhlIHJlbWFpbmluZyBmaW5kaW5ncyBvZiB0aGUg
-dG9vbCBhcmUgbGVmdCBhbG9uZSwgYXMgdGhleSBjb250cmFkaWN0CnRoZSBlc3RhYmxpc2hlZCBw
-cmFjdGljZSBpbiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwOiAibW9kZWwiCmJlZm9yZSAi
-Y29tcGF0aWJsZSIsICJyZWd1bGF0b3ItbmFtZSIgYmVmb3JlIHRoZSBvdGhlciByZWd1bGF0b3IK
-cHJvcGVydGllcywgInJlZ3VsYXRvci1taW4tbWljcm92b2x0IiBiZWZvcmUgInJlZ3VsYXRvci1t
-YXgtbWljcm92b2x0IiwKInB3bXMiIGJlZm9yZSAicHdtLXN1cHBseSIgYW5kICJsaW51eCxjb2Rl
-IiBiZWZvcmUgIndha2V1cC1zb3VyY2UiIG9yCiJwcmVzcy10aHJlc2hvbGQtbWljcm92b2x0Ii4K
-ClN1Z2dlc3RlZC1ieTogRGllZGVyaWsgZGUgSGFhcyA8ZGllZGVyaWtAY2tub3ctdGVjaC5jb20+
-ClNpZ25lZC1vZmYtYnk6IOWuieWuuSA8SHlzdGVyaWNhbERyYWdvbnNAcHJvdG9uLm1lPgotLS0K
-IC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1MjgtbmFub3BpLXplcm8yLmR0cyAgICAgIHwgIDUg
-KysrLS0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LW5hbm9waS5kdHNpICAg
-IHwgMjYgKysrKysrKysrKysrKysrLS0tLS0tLQogMiBmaWxlcyBjaGFuZ2VkLCAyMSBpbnNlcnRp
-b25zKCspLCAxMCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzUyOC1uYW5vcGktemVybzIuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazM1MjgtbmFub3BpLXplcm8yLmR0cwppbmRleCA0OGU0MjczODcyLi45NmM1Mzdk
-YTZhIDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC1uYW5v
-cGktemVybzIuZHRzCisrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LW5h
-bm9waS16ZXJvMi5kdHMKQEAgLTI1LDggKzI1LDggQEAgYnV0dG9uLXJlY292ZXJ5IHsKIAogCWxl
-ZHMgewogCQljb21wYXRpYmxlID0gImdwaW8tbGVkcyI7Ci0JCXBpbmN0cmwtbmFtZXMgPSAiZGVm
-YXVsdCI7CiAJCXBpbmN0cmwtMCA9IDwmbGVkMT4sIDwmbGVkX3N5cz47CisJCXBpbmN0cmwtbmFt
-ZXMgPSAiZGVmYXVsdCI7CiAKIAkJbGVkLTAgewogCQkJY29sb3IgPSA8TEVEX0NPTE9SX0lEX1JF
-RD47CkBAIC01OSw4ICs1OSw4IEBAIHVzYjJfaG9zdF81djogcmVndWxhdG9yLTV2MC11c2IyLWhv
-c3QgewogCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7CiAJCWVuYWJsZS1hY3RpdmUt
-aGlnaDsKIAkJZ3Bpb3MgPSA8JmdwaW80IFJLX1BCNSBHUElPX0FDVElWRV9ISUdIPjsKLQkJcGlu
-Y3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAkJcGluY3RybC0wID0gPCZ1c2IyMF9ob3N0MV9wd3Jl
-bj47CisJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CiAJCXJlZ3VsYXRvci1uYW1lID0gInVz
-YjJfaG9zdF81diI7CiAJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDUwMDAwMDA+OwogCQly
-ZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsKQEAgLTk2LDUgKzk2LDYgQEAgJnVz
-Yl9ob3N0MF9vaGNpIHsKIAogJnVzYjJwaHlfaG9zdCB7CiAJcGh5LXN1cHBseSA9IDwmdXNiMl9o
-b3N0XzV2PjsKKwogCXN0YXR1cyA9ICJva2F5IjsKIH07CmRpZmYgLS1naXQgYS9hcmNoL2FybTY0
-L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC1uYW5vcGkuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9k
-dHMvcm9ja2NoaXAvcmszNTI4LW5hbm9waS5kdHNpCmluZGV4IDE5ODBkMTRkNmYuLjQ1ZTMxYjkw
-YTcgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LW5hbm9w
-aS5kdHNpCisrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LW5hbm9waS5k
-dHNpCkBAIC03Nyw4ICs3Nyw4IEBAIHZjY18zdjM6IHJlZ3VsYXRvci0zdjMtdmNjIHsKIAl2Y2Mz
-djNfc2Q6IHJlZ3VsYXRvci0zdjMtdmNjLXNkIHsKIAkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3It
-Zml4ZWQiOwogCQlncGlvcyA9IDwmZ3BpbzQgUktfUEExIEdQSU9fQUNUSVZFX0xPVz47Ci0JCXBp
-bmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CiAJCXBpbmN0cmwtMCA9IDwmc2RtbWNfcHdyZW5fbD47
-CisJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CiAJCXJlZ3VsYXRvci1uYW1lID0gInZjYzN2
-M19zZCI7CiAJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDMzMDAwMDA+OwogCQlyZWd1bGF0
-b3ItbWF4LW1pY3Jvdm9sdCA9IDwzMzAwMDAwPjsKQEAgLTk3LDggKzk3LDggQEAgdmNjNXYwX3N5
-czogcmVndWxhdG9yLTV2MC12Y2Mtc3lzIHsKIAl2Y2Npb19zZDogcmVndWxhdG9yLXZjY2lvLXNk
-IHsKIAkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZ3BpbyI7CiAJCWdwaW9zID0gPCZncGlvNCBS
-S19QQjYgR1BJT19BQ1RJVkVfSElHSD47Ci0JCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CiAJ
-CXBpbmN0cmwtMCA9IDwmc2RtbWNfdm9sX2N0cmxfaD47CisJCXBpbmN0cmwtbmFtZXMgPSAiZGVm
-YXVsdCI7CiAJCXJlZ3VsYXRvci1uYW1lID0gInZjY2lvX3NkIjsKIAkJcmVndWxhdG9yLW1pbi1t
-aWNyb3ZvbHQgPSA8MTgwMDAwMD47CiAJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAw
-MDA+OwpAQCAtMTUyLDIwICsxNTIsMjMgQEAgJmdtYWMxIHsKIAlwaHktaGFuZGxlID0gPCZyZ21p
-aV9waHk+OwogCXBoeS1tb2RlID0gInJnbWlpLWlkIjsKIAlwaHktc3VwcGx5ID0gPCZ2Y2NfM3Yz
-PjsKLQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwmcmdtaWlfbWlp
-bT4sIDwmcmdtaWlfdHhfYnVzMj4sIDwmcmdtaWlfcnhfYnVzMj4sCiAJCSAgICA8JnJnbWlpX3Jn
-bWlpX2Nsaz4sIDwmcmdtaWlfcmdtaWlfYnVzPiwgPCZnbWFjMV9yc3RuX2w+OworCXBpbmN0cmwt
-bmFtZXMgPSAiZGVmYXVsdCI7CisKIAlzdGF0dXMgPSAib2theSI7CiB9OwogCiAmZ3B1IHsKIAlt
-YWxpLXN1cHBseSA9IDwmdmRkX2xvZ2ljPjsKKwogCXN0YXR1cyA9ICJva2F5IjsKIH07CiAKICZp
-MmMxIHsKLQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwmaTJjMW0w
-X3hmZXI+OworCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisKIAlzdGF0dXMgPSAib2theSI7
-CiAKIAloeW04NTYzOiBydGNANTEgewpAQCAtMTc0LDggKzE3Nyw4IEBAIGh5bTg1NjM6IHJ0Y0A1
-MSB7CiAJCSNjbG9jay1jZWxscyA9IDwwPjsKIAkJaW50ZXJydXB0LXBhcmVudCA9IDwmZ3BpbzQ+
-OwogCQlpbnRlcnJ1cHRzID0gPFJLX1BDMSBJUlFfVFlQRV9MRVZFTF9MT1c+OwotCQlwaW5jdHJs
-LW5hbWVzID0gImRlZmF1bHQiOwogCQlwaW5jdHJsLTAgPSA8JnJ0Y19pbnRfbD47CisJCXBpbmN0
-cmwtbmFtZXMgPSAiZGVmYXVsdCI7CiAJCXdha2V1cC1zb3VyY2U7CiAJfTsKIH07CkBAIC0yMTYs
-MTkgKzIxOSwyMiBAQCBzZG1tY192b2xfY3RybF9oOiBzZG1tYy12b2wtY3RybC1oIHsKIH07CiAK
-ICZwd20xIHsKLQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwmcHdt
-MW0wX3BpbnM+OworCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisKIAlzdGF0dXMgPSAib2th
-eSI7CiB9OwogCiAmcHdtMiB7Ci0JcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAlwaW5jdHJs
-LTAgPSA8JnB3bTJtMF9waW5zPjsKKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCiAJc3Rh
-dHVzID0gIm9rYXkiOwogfTsKIAogJnNhcmFkYyB7CiAJdnJlZi1zdXBwbHkgPSA8JnZjY18xdjg+
-OworCiAJc3RhdHVzID0gIm9rYXkiOwogfTsKIApAQCAtMjQxLDYgKzI0Nyw3IEBAICZzZGhjaSB7
-CiAJbm9uLXJlbW92YWJsZTsKIAl2bW1jLXN1cHBseSA9IDwmdmNjXzN2Mz47CiAJdnFtbWMtc3Vw
-cGx5ID0gPCZ2Y2NfMXY4PjsKKwogCXN0YXR1cyA9ICJva2F5IjsKIH07CiAKQEAgLTI1MiwxMiAr
-MjU5LDE0IEBAICZzZG1tYyB7CiAJc2QtdWhzLXNkcjEwNDsKIAl2bW1jLXN1cHBseSA9IDwmdmNj
-M3YzX3NkPjsKIAl2cW1tYy1zdXBwbHkgPSA8JnZjY2lvX3NkPjsKKwogCXN0YXR1cyA9ICJva2F5
-IjsKIH07CiAKICZ1YXJ0MCB7Ci0JcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAlwaW5jdHJs
-LTAgPSA8JnVhcnQwbTBfeGZlcj47CisJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKKwogCXN0
-YXR1cyA9ICJva2F5IjsKIH07CiAKQEAgLTI2Niw2ICsyNzUsNyBAQCAmdXNiX2hvc3QwX3hoY2kg
-ewogCW1heGltdW0tc3BlZWQgPSAiaGlnaC1zcGVlZCI7CiAJcGh5cyA9IDwmdXNiMnBoeV9vdGc+
-OwogCXBoeS1uYW1lcyA9ICJ1c2IyLXBoeSI7CisKIAlzdGF0dXMgPSAib2theSI7CiB9OwogCgot
-LSAKMi41NS4wCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On Wed, Sep 09, 2026 at 04:47:16PM +0300, Andrey Korshunov wrote:
+
+> of_mdio_bus_register() reads the PHY ID with get_phy_device() before
+> phy_device_register() fetches the PHY node's reset-gpios, so a PHY that
+> the bootloader left in reset is simply not found:
+>
+>   mdio_bus stmmac-0: MDIO device at address 1 is missing.
+
+Thanks, the diagnosis is right and I have reproduced the ordering in
+the code: `__of_mdiobus_register()` registers the bus before it walks the
+children. And for a PHY node with only the generic c22 compatible,
+`fwnode_mdiobus_register_phy()` reads the PHY ID via `get_phy_device()`
+before `phy_device_register()` gets as far as requesting reset-gpios.
+
+> Describing the reset on the MAC instead makes stmmac install it
+> as mii_bus->reset, which runs before the bus is scanned:
+>
+>     &gmac1 {
+>         snps,reset-active-low;
+>         snps,reset-delays-us = <0 20000 100000>;
+>         snps,reset-gpio = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+>     };
+
+But I would rather not use those: snps,reset-gpio, snps,reset-active-low
+and snps,reset-delays-us are all deprecated in snps,dwmac.yaml,
+so a new DTS using them is unlikely to get through netdev.
+
+The MDIO bus level reset in mdio.yaml solves the same ordering problem
+without using deprecated property. `__mdiobus_register()` asserts and
+releases it before any device on the bus is registered, so it also
+covers the DT described case where the bus is not scanned at all:
+
+	&mdio1 {
+		reset-delay-us = <20000>;
+		reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+		reset-post-delay-us = <100000>;
+
+		rgmii_phy: ethernet-phy@1 {
+			compatible = "ethernet-phy-ieee802.3-c22";
+			reg = <0x1>;
+		};
+	};
+
+with gmac1_rstn_l moved to the MAC's pinctrl-0, since the MDIO bus has
+no device of its own for pinctrl to bind to. There is only one PHY on
+mdio1, so a bus wide reset is equivalent to the per-PHY one.
+
+v3 carries this as patch 1, against the NanoPi Zero2 and ahead of the
+move, so it can be backported:
+
+<https://lore.kernel.org/r/20260909-r28s-upstream-v3-0-ee3e1a34a353@proton.me>
+
+A `Tested-by` on that form would be very welcome, since it is not the
+variant you tested.
+
+> I had an R28S series of my own out before I saw yours; I am dropping it.
+
+Sorry about the duplicated effort.
+
+Thanks,
+Rong An.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
