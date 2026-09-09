@@ -4,107 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7C06C79FBB
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2026 13:47:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC162C79FB7
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2026 13:53:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xQxkxtFfEiEcQY8Gbfb+vsxJBsyztapofvbUuIfH0wo=; b=USmybiqi0yheeq
-	ySRNEcgnhueTWtcyst8bzp1lAHUt6+Ky0VrevviHdcKTpLEV6/lDdE7x1vQr/vttHiPLt3joljwJF
-	ACVgvRKCFJOhR9aXYlJfhjoS1ULIHSCfOaOmjKfW0TPUdoR0Fjqp3Hvg8i4Oym0Xq3sCdrZQ5KK3v
-	83PFm/xTyhpQDrTGcyDDA3q3sZhIvQvm41CCqSK7MIyE3vg8fXJT/cPMmCdxVTpaR6xuv50DKshMe
-	uZjomAsdOjxUSpvGz6oAE2eA6mkldXSGjNwa2EhPJeEFD7ses8fVqHL3jRiPlGsqZGxDz7TbKDQtr
-	aWM64Iuj8F9PS597jtoA==;
+	List-Owner; bh=sEEakLmPyCbybRrcrIxfEf0KW1kU3j3TqZkK16pjqsw=; b=BECKBRDlQX7qqv
+	sy8OilR50rOAIWn8+eDbTMgrvwqRwoZBdtshLgrtlE9CgVyOApiDtaknTVzyS8K1K+wtN2ckgWJ5j
+	ZKj5YC5ITzz3he3rid5md2xBevXVy6+QY9iSjUJKfCSVtn4BxFsBEDqxQUgBiNShx6P3ysN71qW3j
+	XC5XNl8xvDHsTm8Iyo19e6b7/x2FsF2SPYVBVy9Czjg27sn+gdC17f6DOD+RyaPJvkuGe7+XwSFAi
+	xxHs/KZYQAAD4qGji4iIBuCUElmaabKoms8+MwndigZemdVys+U8vZ6Xj3qOYxDIHKzS7vH/T4Cr8
+	uaNMAtL3r+f21cWME8ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4IeL-0000000Bq7Z-1HHw;
-	Wed, 09 Sep 2026 13:47:41 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x4Ijc-0000000Br2g-3Igq;
+	Wed, 09 Sep 2026 13:53:08 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4IeK-0000000Bq6w-1PU8
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 09 Sep 2026 13:47:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=CK3Qd7JtwaCS785oIL9SXaJ5indJD5W5VLAi3IhI91c=; b=VD0vX9HS5WB8cDLkf+84mFJ7pX
-	IkEveY0fjDd99KHwKkO+yEadDKtg6brv2QPgYoGT7FDlsKupX02PvNg2AzQOaBNRPzQUuCBmxl2Ei
-	YguH0XwRNkv+gu0L0Phy3MXgcb8C17sODImKTkgW9MVuJTL8nl6gjcuLWjdpAacZAcaQ6BJHLfJW5
-	nLqUe8BZLqLTrudDCBKelPj/NYI7MFso2veS/8FKWhIh8fdC5Vu+BJkxwUpXEa0kuAeDyOIwaVN3R
-	j+fxz68z9HleBxt7T5T/YvEXT7hNklb269B/RjYXtS0oo8+0z5lYTLhIw6pM2HKQKCSWgTFG9uS48
-	idmoxJqQ==;
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x4IeH-00000001Fqw-1Ymu
+	id 1x4Ija-0000000Br0o-2jKC
 	for linux-rockchip@lists.infradead.org;
-	Wed, 09 Sep 2026 13:47:39 +0000
-Received: by mail-lj1-x232.google.com with SMTP id 38308e7fff4ca-39c86945164so60619051fa.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 09 Sep 2026 06:47:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788961655; x=1789566455; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=CK3Qd7JtwaCS785oIL9SXaJ5indJD5W5VLAi3IhI91c=;
-        b=DLMXVq2SnzzgtMnTphFXtxPTTul6op15saBz766EZFV57tpeyn5Ye9oN0PXnuCtKtj
-         h1fy+0P112f0HccTfcjhZMKIW8b88oSoztSIdq1AZxR1PJgvQBbnfYmBNpJHspN9Ulor
-         mU6F/TF84EhFPa/1LT2ryQQChvxfpghSlTsbRjDvWhsWBpR7jqKxEiVp7ASYIygFOmXY
-         U2WKU5LaGUv2znoWtvFzaICuGx5dFXU3E4syvZs6fxom5HvTfUK6Gt+xqXSh6PAa9Q1O
-         6pNKEfVBPYUSTeJ8ZTiGMcp9uVjSrq0mJS7awQtCojx/eO3ZP/KW4l1yN/8aNbXTB/9E
-         laxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788961655; x=1789566455;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=CK3Qd7JtwaCS785oIL9SXaJ5indJD5W5VLAi3IhI91c=;
-        b=O6DDWD4ErEMwMesUZWOP4E7KGZUkn6CoCGlYx1OC25ovaKJXJi1iX8qB7n6bMUtSyz
-         lGcWDLmk1zRQrZSvQlyKh4U6Lp6afiVkPMQjvMWggSvskZbekFXqseN3rMkKCIqkd40d
-         Aq+tbH9T0RYGVnY+Ag0rTDPOERAqynPjYExbK8uQjV0pJ+tx+ys+Z3YGbqVk1cMMee+y
-         fQwUZIbL0t/zoAWdomMXbbtnhZELL3yOa1dr/XbNHCw8A7OcN+QfyMTZL7LDHybYX6Mu
-         skrWzIP93pluqpFH6ht59QgbQNYOfbJmTm+sj9NWcBUdUD1kXMhsef4ll+kF5UsvHpKs
-         3dGA==
-X-Forwarded-Encrypted: i=1; AKwUvBwiT+px6CG1pxZNGZtnLOV04vIr5V918NqGNl2Vj6nLyJy2PH8FP5KC/k8GpvqxhDi8DWRboKA/utkcRk2fOw==@lists.infradead.org
-X-Gm-Message-State: AFuF++lEJtm2HmCeXVTt1HNUYjOdI2mNY75anfDbDgG6y2xVMIq6JRaJ
-	ROeFEVhoB/3iWWZuQy+YPQON0KpbEqPyVpYdtD3CI5f/saVBKTB1NB3V
-X-Gm-Gg: AYBFou2WAEzL+Oz5BH3/sVD7y0RrAhKsA05XfaAhH2Qw47BazDze4BbQ9/yl+48CfGO
-	UhuVFhQFWQXTxqYMNDOhOb0oHgT6HCjvSEbumH1giLRKVhQtL5sYjQvfgDF0UdeIHebuiNmE1M+
-	bRNZVQWcHCIwhOe81gcN3OO7pQkDzeD+FyQxXXXHpwQw+6Ca0zYLNkeZM4gD/8U9YHAwG3mzThE
-	VClz1kyFomBEUhH+cLlDW/eo018imhIf6QF48zGh4bqvE2c+1okd7Iw/BLBjXSSsU//1gGbBDev
-	XII7vVA6kcMRno60rLJAEplBccIhzMav4LpFfZkG1mBnXfTXvbWFLnLsANyaIQh3cBfstx23a7K
-	vJI0dUf8eEHg+dRStXYmDch71n+JLWLiFBWW0vfusuL7BcnOHaRxCfhOKoG1gr/JC7nk4iIt337
-	ikM8wgaxDCftSn7X4lmKzrBqWY3pV7AsZqjBuk4WuF46L6XtCjq/BpbHg6/PyqmE1VNDdFqGomu
-	oxVMbwiXHJHKA==
-X-Received: by 2002:a2e:9fcb:0:b0:3a3:7681:6d72 with SMTP id 38308e7fff4ca-3a37681756fmr35983981fa.27.1788961654972;
-        Wed, 09 Sep 2026 06:47:34 -0700 (PDT)
-Received: from KAS (94-29-32-34.dynamic.spd-mgts.ru. [94.29.32.34])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a58f539ec8sm136161fa.12.2026.09.09.06.47.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Sep 2026 06:47:34 -0700 (PDT)
-From: Andrey Korshunov <razor1702@gmail.com>
-To: diederik@cknow-tech.com
-Cc: heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add FriendlyElec NanoPi R28S
-Date: Wed,  9 Sep 2026 16:47:31 +0300
-Message-ID: <20260909134731.364-1-razor1702@gmail.com>
-X-Mailer: git-send-email 2.54.0.windows.1
-In-Reply-To: <DLAPRUR4Q73F.1KIBGA408LQSJ@cknow-tech.com>
-References: <DLAPRUR4Q73F.1KIBGA408LQSJ@cknow-tech.com>
+	Wed, 09 Sep 2026 13:53:08 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 680BE1A1A75;
+	Wed,  9 Sep 2026 13:53:03 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 3776960448;
+	Wed,  9 Sep 2026 13:53:03 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 0854711C7AF7E;
+	Wed,  9 Sep 2026 15:52:42 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1788961977; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=LARMi1G5vACDqaigY0BsBdggnGiivAk4mChXML/OD+c=;
+	b=E/hdhf1UAf6+awCCGLMt4GqsieDb9sx1GlubU0wQbEP/cGP/9TCKn3ur/zCRNU+xIB6TL9
+	O66Exidu2gRdvXmFyZnl4ek4P5RPtsEUrdBaz81RVPJZsRJUKNalpVLjAB+2pSgWuCEwE1
+	EtwWTV3ZjMnCoq9EphEll2qS9zAxncWRYyRSGaMNT1Y05pDCKkssAUa1sc48avM4C/P5YP
+	Irto4HpWyTkPk7Lm1t9g8SxfYgL+HGMkG+T2wAXEJpxwNimJBkQ4ZOgbZ5V+TFkagG/aRg
+	U8klrqF77Otz1nRkZ9/9HQrNyNZ1sgTM41SlsoKU8OKm7oCezyWR4++gTwRqMg==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+ Damon Ding <damon.ding@rock-chips.com>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20260828065153.590802-1-damon.ding@rock-chips.com>
+References: <20260828065153.590802-1-damon.ding@rock-chips.com>
+Subject: Re: [PATCH v8 0/5] Add eDP lane mapping support
+Message-Id: <178896196279.1382015.17901090259379845522.b4-ty@b4>
+Date: Wed, 09 Sep 2026 15:52:42 +0200
 MIME-Version: 1.0
+X-Mailer: b4 0.16.0
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_144737_527341_F821966D 
-X-CRM114-Status: UNSURE (   7.64  )
+X-CRM114-CacheID: sfid-20260909_065306_841664_EC6741B4 
+X-CRM114-Status: UNSURE (   7.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,18 +90,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed Sep 9, 2026 at 12:29 PM CEST, Diederik de Haas wrote:
-> There's already an attempt in the works to upstream NanoPi R28S support:
-> https://lore.kernel.org/linux-rockchip/20260907-r28s-upstream-v2-0-21ab570fc91c@proton.me/
 
-Thanks, I had not seen it - I searched lore before sending, evidently not
-well enough. That series is further along and covers more of the board,
-so please drop mine.
+On Fri, 28 Aug 2026 14:51:48 +0800, Damon Ding wrote:
+> This series adds configurable eDP physical lane mapping support via
+> device tree data-lanes property.
+> 
+> Lane mapping is mainly used for below scenarios:
+> 1. Correct PCB lane swap and differential line routing crossover
+>    without hardware changes;
+> 2. Adapt mismatched lane pin definitions between SoC and eDP panel;
+> 3. Support multiple panel hardware variants on the same board
+>    by configuring data-lanes in device tree only.
+> 
+> [...]
 
-I have the hardware and will review and test that one instead. One
-finding about the PHY reset has gone to patch 2 of that thread.
+Applied, thanks!
 
-Andrey
+[1/5] dt-bindings: display: bridge: analogix-dp: Add data-lanes support for endpoint
+      commit: af9b0fc07000db17656580fd38e5ff27c36c2ab9
+[2/5] drm/dp: Add helper to validate DP lane counts
+      commit: 6eac4c8bb10302abc0ea0bd1d506c46ec789ce2b
+[3/5] drm/bridge: analogix_dp: Restore mandatory samsung DP DT properties
+      commit: 02f569dd66c94dd67b2586f776235cf4177409ed
+[4/5] drm/bridge: analogix_dp: Add validation for samsung,lane-count property
+      commit: 4ff2f941b7828042feb2971c7039c8f790a105a4
+[5/5] drm/bridge: analogix_dp: Add support for optional data-lanes mapping
+      commit: bf63a72ea005d5e1cc12a9ad5e228c4b44246b0f
+
+Best regards,
+-- 
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
