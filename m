@@ -4,102 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33A40C79F8C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2026 09:19:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 043BAC79FAD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2026 09:28:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C+1rJoZqEAAdwfqUcpdT6dBf4gmgpkUCNKAZ75pAKYQ=; b=tUH7HfvXtAp0kt
-	/m5FVuGMAuiC3KxGLdVYOzIxeQKU++HcwOh1KugRN+nHmOQpV3DzElyom14Ffey7SQiFj4IZKXMvu
-	8IVdVqo8SMPZqbTZrdHihxEU0nQABJTpPCEEvXzfUUwYd1cAapNngytecYhFYGGoaUQPph4Gqc/mn
-	9vK5J+7GoV+WbMQrhjMGYyE/I8+ZXEY2GtCFDiiLngNQ6GrtVRNzqcUFxwacGariCozTs/3p+XcgX
-	zoD3XZEbhd4QBwP6qtMgvUFX9d//AFDC3dYyaQTlUYh4NHGb2MJvTiBZqlaeJiZpnoNnGfTINjPQ3
-	Gz6A+JcBhNwTOA08rJoA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BxXk1/nTZTaTZdiaNxcTknY8LpwefsdpDWyoCFn6XEE=; b=mIFxbRzZejM6Sb
+	KjD/1XBg/D6MnCRZiFN33n/eVFT+mwpWZvdz7P04d9fhOm8v+si4+zxGZtg4cxNy++QwDlxB1u+4N
+	y+xyISisGSWmmAmvlenuux2Tzer723itItk/R/X7TaWUcGg9lCb8tAztz3/eo2FNpHFVJxPy8dxi1
+	40s4K6gUW2IEI+6lF2xE2UTTGobLLsL1ozIIPJGH+SlEAdrPtU+RKgJ/lWSNjkO+zeffvQPUBNNu1
+	UXFSH5c369RwOy5fnAfdYNWEU/FpKqr0jaSb2mGZHRgw20DlQxvaONdYzkh+1VCnjrP49he0wisns
+	QKALekaaKjYbKAr2LyLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4ESX-0000000BGkG-3EWM;
-	Wed, 09 Sep 2026 09:19:13 +0000
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
+	id 1x4Eb3-0000000BHiy-3wJR;
+	Wed, 09 Sep 2026 09:28:02 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4ESU-0000000BGj6-3O7O
+	id 1x4Eaz-0000000BHi7-3SZx
 	for linux-rockchip@lists.infradead.org;
-	Wed, 09 Sep 2026 09:19:12 +0000
-Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-482e1b55da9so633951f8f.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 09 Sep 2026 02:19:10 -0700 (PDT)
+	Wed, 09 Sep 2026 09:27:59 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-8535a9be75eso4201234b3a.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 09 Sep 2026 02:27:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788945549; x=1789550349; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=PL9pcPV+bgLn+N8hsfR6afv5u/5q3iwl14xc1NE3dOQ=;
-        b=PAdAiDwLj0T719iOD+WY2RPT0vaQETePwn9/yWHM5Ixftt2JnZfrBWrqIKOQwjJTXf
-         uXc+IFFpip3tOl3zK4auPT3nPqdMdYRnU96FEUsFjh5ECEZoK2nxC+RXdZVuTjs1ZSjZ
-         Rty+HenE7QG1qb3olRt/fQ7Y0SjS91Il3ZHZsv4zEAbGpRII/6LwsZ+EhD+aon/SQaD+
-         ZFFZfMLAxW1gyYc4kSr5TFl/ltwqzk3tM9b/kjLvYMeDw+Kl9nkliek+z914mYaOB44s
-         hfvJUKvf9F/obUt0xjrbL1u4cHrcDiHA+VfA9ilaCKPJvy+abMWiqyA7mTW/vw+Mt9b5
-         n/5g==
+        d=gmail.com; s=20251104; t=1788946076; x=1789550876; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=sSBbj47812SaQ+jAqx/rEDA44UrUN84Iomtwdt6boBo=;
+        b=MM9yD7/gdl6//0qRXQ5qLErHNMcA6iQU7iu8Mk9WIk17M+wImSUYEWzYBwYC+g6/+v
+         XYC3gnB6fIs3mfU8jLfxt7niwW/zTVnIwuKqD/upb+vl4e2rAleOhD+i+JUYuj8w+IdQ
+         DHYh0BTZn1Qmdr3jtIym17+8nCQHIWjirM3S2EAEXAEL8ZOfGGiTaM2Y8G2vrmYDffOs
+         iTe+4nBbxn2Qz9ju1BmxN9zaIAc2olf2uGt6j+XprHJV3flEk1S2doZQglrLE4p+lMoo
+         kwBLMI1iICsFKm223b64lC70BrhZtZOIhH+2iwo9yEsUBsK5YxJsYsP0eBlRDOW80KGt
+         C2pQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788945549; x=1789550349;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=PL9pcPV+bgLn+N8hsfR6afv5u/5q3iwl14xc1NE3dOQ=;
-        b=SMprjC2+np1kVNpTWbOXYKxoecvqU/kNPbPf1cstoTTTnYq2oiHeLsLe2F9J9EXjkc
-         32RrfXa63xYdwbowDqN5NXRHK+oYhGrlNQ/HqT+37mmbYWNp4JVzjCsmM19IO85U1jbe
-         NYMwjkTFvkd8nvAb2YoPnrwjqgAjw1m/KWYug5STnxwganyodUIid50rHUkR2/2zszaO
-         qzEo4gsNb6QC5IgnB8dkI+kfnQfN1eeEvpZ4JFQlLjwJsA62UhIMYBd3HjK7/0tfqF13
-         B7SDAXpZjbiEKEtsSX7rj1MPnE/ELs2nsyMLllyNUC301r/DLbPtubhGeMJXIXBbKGV1
-         uI3A==
-X-Forwarded-Encrypted: i=1; AKwUvBxHFl1lvQLF/ey6+DaPm67SMtRE6RwhiPSA5/iQepHV1tiIQ/uUDmghwCXm7K/azaZSSt5/Vpw2neRseekpkg==@lists.infradead.org
-X-Gm-Message-State: AFuF++kVVf4ud9dIWajlYYfNSljtgDQm5kqtKsUvZoieFURuFh7JiQOd
-	WvE44pk0Z2HbMSyZGDhEa/GL7j6xZKWQ80quTV3aZMyHBk3tEsvha/cC
-X-Gm-Gg: AYBFou3Ft2w9o0MEsdw1K8MIh1rsQ928WMmirM1nOV/yV2sj0owQSlyVzJtm1VxwFxk
-	sjHkfqPlpfoVP/hBDl0zr1Qo3ZrERZPI7XDwTFlod58INmxvFOb3CYYToZEDywTsxrivVSSwPLg
-	RdjwB9PrrvIYoCCqfbzUG8kQbGgMRFTewutYEXBasrlk8SvfReLBQDaJdpFQwZxIJXGUHMkBnoo
-	Ktk/iLXtoNhZ5trvUD5lAz+NnCfOoz5eMNf+qVihVksY1cmL2bi97jPoRcX+MU1ROY53oA8Zji4
-	ZnxmmNyncli2xn5q+usDAwsQJYgaFL4QG18ZrrQX/Non0wmXnlJJwz2dJyZFx8fON39PoZtw+6u
-	k7LqLINGJf1tKB56SWXdAImRcUCNwx2uSqmseh9WmD4yFnKf08tvIqmd33JYDQ8eMqXZw/enKN5
-	IEK7tvmVjY3S2UHGE9Q+0puznJ1I0lyAoh52XA57QXom3FWmXtB91ARD7usJAMGswppr94xMspG
-	u1GoetpeR/cF6q/+WQwPytsPUL/EFelBPampWyARDyKAiIRUy75LUo/YynF4CKeTEZV8RdX9T0Z
-	IVnp
-X-Received: by 2002:a05:6000:25ed:b0:485:82f7:9053 with SMTP id ffacd0b85a97d-48589246177mr34007529f8f.1.1788945548438;
-        Wed, 09 Sep 2026 02:19:08 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8369007971AC9F7C06630F.dsl.pool.telekom.hu. [2001:4c4e:1b83:6900:7971:ac9f:7c06:630f])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4858d2693e8sm41822588f8f.3.2026.09.09.02.19.06
+        d=1e100.net; s=20251104; t=1788946076; x=1789550876;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=sSBbj47812SaQ+jAqx/rEDA44UrUN84Iomtwdt6boBo=;
+        b=YqaO3SWVGZBWTBQtvtJ7vqcXKU4LfdNUIxY93HzBsJAftkGaBUZTfoB8Xd/ymy0Irn
+         fwQohXYIFe6EJn0RDoyK3GswmXwp4Nn6VxasS3hIg87av3lMZT7moAteN8+8Ebvf76It
+         5sBMTr6t29Zl+2eTj0J+4V3ddcpiaa8QqQMFcbeZJEW2Humlsv54kjMTao1ReVwXuYJR
+         HOJRlNUaKDX1yW9O0sIGDRxxhbeb1suazqOESIsQ1MZ4qZBWalSONoHpmc3s//QpAY9W
+         bF0DauofJXAn0ILxIiBFyLy9q8Q0LEcSyzIGcd5TT3roDgHu8SmxQvwS/Y+YPgBbij22
+         91bQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzujAQ+Ol0lmFrtaE92RO+JEQBS4ruxl0kBO91JE5TqLX8cDi8v8VGipIrXiRow9Ez/65aXeaEamIEsimGAZQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++kdEtRmlfqrBDLhqUnOza3MBYfe+za0cLHUhEpboE7eGk0YSjiz
+	ECpMCxX4BCKY2DqyQpXUwE6dliyMx/LBBHbX9pZZN8aRozqQhGrQNDi+
+X-Gm-Gg: AYBFou2Id89k8KzsBAmL9J3mDaT+lBBhSQ8+Hrfc7iGhSNbcaVqxF1j6NNjYKgzaScQ
+	RDYRA3/Xz6+fBjiiPhJYrTzAGtjvwTqTkYxtS3JNnr7/t4WiNF++du9W82+UZWjFPHg0wGsAJsd
+	jsjkBophv3VcyFjO1AgnfYHwGKDtOtgT8ERSkvbzAC4wrnC2GAsbng0t2EBNFfg3VPj9DkVMsi+
+	YXV0EtnhktyFn9ysibdh5aHNvV4Myo2Nbm9VS9KDrzPpAAA+Hg75n8Iqpj3whIRkwaoSMMrzW9u
+	jxg8TROdOqCy4bbm0yPHXY7z6Sn2QqCy9QUabYZntFjW/Yc7n1U9vvHRcMh3ZbFOhPoE8nEV3qA
+	NgweaRgmO98DTPYt7NFZkwEf7u4+c1aQlkwWtRYvvByNc/Dh+aN4LvOqQlSAnQH4Xr+LtL3TR82
+	Cs6BesIdhx/LnePATfTVgd5h9DB6csSMWobkGZEZo74JJIQa1fJh9h2AMKyyS9JYJBzN83ClIFp
+	soDR5uQR3WH
+X-Received: by 2002:a05:6a00:398a:b0:857:72f8:dc94 with SMTP id d2e1a72fcca58-8616947c104mr46288815b3a.21.1788946076251;
+        Wed, 09 Sep 2026 02:27:56 -0700 (PDT)
+Received: from Aaron-M6 ([188.253.120.162])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-868e3aaab85sm484904b3a.22.2026.09.09.02.27.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Sep 2026 02:19:07 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Igor Paunovic <royalnet026@gmail.com>,
+        Wed, 09 Sep 2026 02:27:55 -0700 (PDT)
+From: Yaozhong Li <yaozhonguwl@gmail.com>
+To: Lee Jones <lee@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Sidong Yang <sidong.yang@furiosa.ai>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jiaxing Hu <gahing@gahingwoo.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	dri-devel@lists.freedesktop.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>
+Cc: mfd@lists.linux.dev,
+	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 3/7] arm64: dts: rockchip: rk3588: add an OPP table for the NPU
-Date: Wed,  9 Sep 2026 11:18:24 +0200
-Message-ID: <20260909091825.10838-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <c58d711ff5c9a01cfd69c2ddf86bfd969b36cc63.camel@ndufresne.ca>
-References: <c58d711ff5c9a01cfd69c2ddf86bfd969b36cc63.camel@ndufresne.ca>
+	linux-kernel@vger.kernel.org,
+	Yaozhong Li <yaozhonguwl@gmail.com>
+Subject: [RFC PATCH 0/3] Fix poweroff restarting the board on Firefly-RK3399
+Date: Wed,  9 Sep 2026 17:27:25 +0800
+Message-ID: <20260909092728.1859-1-yaozhonguwl@gmail.com>
+X-Mailer: git-send-email 2.55.0.windows.3
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_021911_059262_BA29569A 
-X-CRM114-Status: GOOD (  33.99  )
+X-CRM114-CacheID: sfid-20260909_022757_887336_521F2E23 
+X-CRM114-Status: GOOD (  22.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,120 +107,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2026-09-08 at 15:44 -0400, Nicolas Dufresne wrote:
+Sent as an RFC: the open questions below are about where this belongs and
+what the property should be called, and the patched kernel itself has not
+been booted on hardware yet (see Testing).
 
-Thank you for taking the time on this - and no worries about the PoC not
-being posted; the credit in the commit message was deliberate, the rates
-and voltages really were arrived at twice independently.
+On the Firefly-RK3399, "poweroff" drops the rails and immediately brings
+them back up, so the board reboots instead of staying off. U-Boot reports
+the result as a power-on reset.
 
-> My impression, and I was to study this properly is that having the same
-> table on every core and adding the opp-shared set on it was actually
-> probably the proper way to describe this "single clock for all"
-> relationship.
-> [...]
-> I'm curious what's the right approach, and what is the real meaning of
-> opp-shared if I got that wrong.
+Firefly's BSP drives two SoC pins low during shutdown, before writing the
+RK808's shutdown bit: GPIO1_D0 and GPIO1_B5. Mainline does not describe
+GPIO1_D0 at all, and describes GPIO1_B5 as the backlight enable GPIO,
+although the vendor's own backlight node has no enable GPIO. Nothing
+therefore releases either line at power-off.
 
-You got it right, and I got it wrong. The binding says (opp-v2-base.yaml):
+What was established on the board is the sequence, not what happens inside
+the PMIC: the shutdown sticks only when GPIO1_D0 goes from high to low
+during power-off prepare, with GPIO1_B5 low, and the shutdown bit written
+after a settle delay. Leaving GPIO1_B5 asserted makes the board come back
+up even when GPIO1_D0 is released correctly, which is why the backlight
+cannot keep that pin. Why the board powers back up in the failing cases is
+not explained here.
 
-  opp-shared: Indicates that device nodes using this OPP Table Node's
-  phandle switch their DVFS state together, i.e. they share
-  clock/voltage/current lines. Missing property means devices have
-  independent clock/voltage/current lines, but they share OPP tables.
+Why not gpio-poweroff
+---------------------
 
-That is exactly the hardware here: one compute clock and one supply for
-all three cores. And it is not only documentation for non-CPU devices
-either: in drivers/opp/of.c, _managed_opp() only lets several devices
-share a single opp_table instance when the table node carries opp-shared;
-without it each device that points at the same node gets its own table.
+gpio-poweroff drives the line active, back to inactive, then active again,
+waits timeout-ms and then WARN()s on the assumption that it is itself
+performing the power off, and it registers at SYS_OFF_MODE_POWER_OFF. Here
+the RK808 performs the power off from its own POWER_OFF_PREPARE handler,
+the lines only have to be released and left released, and there are two of
+them.
 
-So the accurate description is the one you had: the same phandle on
-rknn_core_0/1/2 plus opp-shared on the table. Putting the table on core 0
-alone describes core 0 and says nothing about the other two, which is a
-worse description of the same hardware. I will change this in v2 unless a
-DT maintainer disagrees.
+rk3188-bqedison2qc.dts does drive a pwr_hold pin from gpio-poweroff, which
+works there because pulling that line low is by itself enough to cut the
+power: the board is gone during the first active-delay-ms and the rest of
+the sequence never runs. That is not the case here - driving a line low at
+runtime, with no PMIC access at all, left this board running for the 10 s
+it was observed.
 
-One consequence is mine to fix on the driver side, not yours to work
-around in DT: the driver currently picks the core that carries the table
-by taking the first core whose node has operating-points-v2. With three
-carriers that choice - and with it the name under /sys/class/devfreq -
-would follow whichever core bound first. That is a driver bug the moment
-the DT stops being lopsided, so it gets fixed in the same v2.
+Open questions
+--------------
 
-> We must not justify our DTS choices based on driver behaviours (or miss-
-> behaviour). We must justify it based on how accurate the hardware
-> description is.
-> [...]
-> It should probably be fine to not use opp-suspend, if transition back to
-> 200Mhz works. It not fine if its to avoid a driver deadlock (argually due
-> to a bug).
+1. Does this belong in the PMIC driver? Releasing the lines inside
+   rk808_power_off() keeps the ordering against the I2C write explicit and
+   needs no second handler, but it does put board level wiring into the
+   PMIC MFD driver. A separate driver registering at POWER_OFF_PREPARE
+   with a higher priority would work too.
 
-Accepted, and it is a fair hit. The paragraph as written justifies a DT
-choice with a driver limitation, and that is backwards regardless of
-whether the limitation is real. It comes out in v2.
+2. Property naming. power-hold-gpios follows the <function>-gpios
+   convention, like the existing dvs-gpios in this binding. If the binding
+   should describe Rockchip specific board wiring rather than an RK8xx
+   feature, rockchip,power-hold-gpios would be more appropriate. The
+   vendor DT calls these pins pmic,stby-gpio and pmic,hold-gpio.
 
-On the meaning: your interpretation matches mine, and it is stronger than
-"descriptive". The binding says opp-suspend "marks the OPP to be used
-during device suspend", and the devfreq core acts on it directly -
-devfreq_add_device() reads it into devfreq->suspend_freq, and
-devfreq_suspend_device() then sets that rate.
+3. Should the DT also carry a pinctrl group for the pins, as the vendor DT
+   does? It works here without one, so nothing untested was added.
 
-Which leaves the question you actually asked, so I measured it rather than
-argued it. On an Orange Pi 5 Plus with this series applied, in-tree rocket,
-the OPP table of 3/7 read out of DT, simple_ondemand with min_freq/max_freq
-left alone: 25 s of inference, then 60 s idle.
+4. Dropping the backlight enable-gpios is required for the sequence to
+   work, but it also means the backlight loses an enable GPIO it may
+   genuinely have wanted. The vendor's backlight node has none and is
+   disabled entirely, which suggests the mainline property was a mistake,
+   but nobody here has the schematic to confirm it.
 
-  - The governor takes it back down on its own. trans_stat records six
-    transitions for the run - 200->1000, 1000->800, 800->1000, 1000->900,
-    900->500, 500->200 - and then 60129 ms at 200 MHz with zero
-    milliseconds at any other level for the rest of the window. The step
-    down happened within one 250 ms sample of the load ending.
+Testing
+-------
 
-  - The transition completed, it was not merely requested. vdd_npu_s0 goes
-    700 -> 850 mV under load and sits flat at 700 mV for the whole idle
-    window. In _set_opp(), when scaling down, config_regulators() runs only
-    after config_clks() has returned success, so the supply could not have
-    come back down to the 200 MHz voltage if the SCMI clock set had failed.
-    All four voltages of the table were exercised: 700, 750, 800 and 850 mV.
+Tested on a Firefly-RK3399 (4 GB, RK808) with the shutdown captured on the
+debug UART at 1500000 8N1. A run counts as "stayed off" only if the
+console produced nothing for 150 s and there was no ICMP reply and no USB
+gadget afterwards; a restart is unambiguous because "DDR Version" and
+"Reset cause: POR" appear on the console within seconds.
 
-  - The clock summary in debugfs agrees, reading 200000000 for scmi_clk_npu
-    after the load. I only sampled it after the load, so I am offering it as
-    consistent rather than as an independent check.
+The patched kernel has NOT been booted: CONFIG_MFD_RK8XX is built in on
+the test system and a full kernel build did not fit on it. The series
+compiles (aarch64, W=1, no warnings). dt_binding_check passes; dtbs_check
+reports only the pre-existing usb2phy diagnostics for this board,
+reproduced unchanged on the unpatched tree. The functional evidence comes
+from an out-of-tree module using the same gpiod array consumer name, the
+same GPIOD_OUT_HIGH, the same per-descriptor gpiod_set_value_cansleep()
+loop and the same msleep() as this series, against a device tree carrying
+exactly these properties. It registers at POWER_OFF_PREPARE with
+SYS_OFF_PRIO_HIGH + 1, immediately ahead of the RK808 handler. It does not
+reproduce the RK808 acquiring the array at probe time.
 
-So the transition back works here, and by your own criterion it is fine not
-to use opp-suspend. This is one board and one part, so I would not call it
-more than that.
+Every run started from a cold boot with both pins at their reset state
+(inputs, low), verified by reading the GPIO registers beforehand:
 
-Two things I want to keep apart rather than join with a "therefore", because
-joining them is what made the original paragraph wrong:
+  both lines, as in this series:            3 of 3 stayed off
+  GPIO1_D0 only, GPIO1_B5 left low:        3 of 3 stayed off
+  GPIO1_B5 only, GPIO1_D0 left low:        0 of 2 stayed off
+  GPIO1_D0 released, GPIO1_B5 left high:   0 of 2 stayed off
+  nothing driven (mainline today):         restarts after about 2 s
 
-  - What guarantees the rate across suspend is the driver, not the governor
-    and not the DT. rocket_devfreq_suspend() in 5/7 sets the recorded boot
-    rate itself on the system suspend path, and 4/7 restores it before the
-    last core goes down and on .shutdown. That is the answer to "is it safe
-    without opp-suspend".
+Note the second and third rows: on this particular board pwm-backlight
+does not bind, so GPIO1_B5 stays an input and describing GPIO1_D0 alone
+was enough here. That is not true in general, which is why both lines are
+described and the backlight property is dropped.
 
-  - Whether the governor walks back down to 200 MHz when the NPU goes idle
-    is a separate fact, and it is the one you asked me to check. It does.
+The 200 ms is the value the vendor uses; the threshold was not
+characterised. The gpiod calls and msleep() run in POWER_OFF_PREPARE,
+which is allowed to sleep - the msleep() was measured at 200 to 201 ms on
+the console timestamps.
 
-opp-suspend acts on the first of those. Since the driver already puts the
-device back at its boot rate on that path, the property has nothing left to
-do here - and that, rather than any deadlock, is the argument v2 will make.
+One early run appeared to show GPIO1_B5 alone was sufficient. It had
+reached that state through a warm reboot rather than a cold boot, so the
+pin states were not what they were assumed to be; it is excluded, and it
+is not fully explained by the description above either.
 
-Worth saying plainly: every number in the cover was taken with the limits
-pinned by hand, so this is the first time the governor was left to decide
-anything on this board. Your question is what exposed that.
 
-> This is irrelevant, I think you can drop this paragraph.
+This series was prepared with AI assistance (Claude); the analysis and
+the measurements on the board were reviewed by the author.
 
-Agreed, dropped in v2.
+Yaozhong Li (3):
+  dt-bindings: mfd: rk808: add board level power hold GPIOs
+  mfd: rk8xx: release the power hold GPIOs before powering off
+  arm64: dts: rockchip: fix power-off on Firefly-RK3399
 
-> Ack, this is safe thing to do.
+ .../bindings/mfd/rockchip,rk808.yaml          | 20 +++++++++++++
+ .../boot/dts/rockchip/rk3399-firefly.dts      |  4 ++-
+ drivers/mfd/rk8xx-core.c                      | 29 +++++++++++++++++++
+ include/linux/mfd/rk808.h                     |  4 +++
+ 4 files changed, 56 insertions(+), 1 deletion(-)
 
-Thanks.
+-- 
+2.55.0.windows.3
 
-Regards,
-Igor
 
 _______________________________________________
 Linux-rockchip mailing list
