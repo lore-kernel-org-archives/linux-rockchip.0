@@ -4,69 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70E8EC79FB9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2026 14:38:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88E32C79F9F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2026 14:48:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E7Hl0ITUm5EMGu6TuTSf7V9HEudXyqM/rwg6kn6dJvY=; b=mLaP/Gf70q+fm9
-	zC3t2fMs3KsMBQpeL/bikkMCTZ8htgGDv3wxPSybZBU4PzO0bOOq0nha9oVmnwDt+15saLhRfbvNf
-	KyGxlVuVYjpiWcjDwmKTaApox9XDNQe5jggAVfqqTVl4lWwdzszOfBQ+hf2EbMMlvZ2VGwBe7dKMm
-	kkiG5vV8xialA5QzG10iD8dauUxfnq11xWUfz7W5hDcnW9rl6CiglCXA5up1cUNPq1YqDyPHHywVS
-	I6ClMHR6uvTp8zrq/tGWr7LBjLGGOZ98MpZJGa0ZLyasmKD5vrJ4+Lm3RSlotntEvg0+nWldYIWWn
-	K3yZGHxgEUB8U4XS8LhA==;
+	List-Owner; bh=eYhSMvL31nVkKju+6pJ5hUqgOVaQMQZ3bV50JuXsirg=; b=Y8KiSJ8rrjZYjs
+	tXsR1TVuUfbulQiNzpPJOgcQYP5q2cXYMNUfyZuvg3F1pv01bQ9zJrpMVD+80LO9GYSfH1ZlNGxTs
+	2TS+zm7ro8+0GIZNge9M7RagScxexluBWF8RFGDbrkCf2AYo3/WGTTrO1QopNhFUb724wT33cSGmV
+	tEBRu/+lmQncNBdf6L66IBaRybmektx04dOAFfx17Ko77tNIxB9SJsr17qqwvgw3FF6geCkmMaVhB
+	PEtzONYD7MRHQXjNOlSMZPLJ7XVXoM2wNxTVPMUm+A7BZJzLybRYrespGIn0V5FJZHGtNVvuKMt+B
+	8HkIsNv+pZeq+JtvywRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4fv9-0000000EeIE-1IKO;
-	Thu, 10 Sep 2026 14:38:35 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1x4g59-0000000Eg2y-2L8O;
+	Thu, 10 Sep 2026 14:48:55 +0000
+Received: from mail-ej2-x10.google.com ([2a00:1450:4864:34::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4fv5-0000000EeGk-22AV;
-	Thu, 10 Sep 2026 14:38:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1789051100; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Qnf8yRtyLC1CPTVHqwV+O9vsI9sHTAhEly69ol4cCicYUhwKeHbcwwtTkyth7AI7dlS9REoXDNcqG2mE2wfLn6J+FbEiKtYpe81xAZfTCRoUuHcQB+qqwRVUKi1aK+MU4cndw8wdd3FX+fegVnn1vhOXXCjn4MVP1gDz3qTDuQg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1789051100; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=DWUtcKBPNVdQnOWaiojxu58DcR5uB4/S6pjUi9rDujw=; 
-	b=XTq6tIYGcrIKXqel+PrtmNfisk0SnqeuPi9yY5XIR5a5ngjISPlaVBYmBgYPjIsCHFIh6sXHs2KYpo29HvvUGgoqGKq6bYsJKmyorU5SS9mansGWN4Nv/XdRJelO4iR0VVo8R86tx5Q2atgSmRpSbbgaQ1uDFBGqyziIjESrnmQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1789051100;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=DWUtcKBPNVdQnOWaiojxu58DcR5uB4/S6pjUi9rDujw=;
-	b=P/rruDHS/3M0kGTk8lsEn92lzuZJYLczyhVrA9gS+eEafEjgy8NKkCt/sdLgPyRh
-	kcqbjiW8ZURoi4nuogVHxx2r6oCTOwcEPrum1B2RcYiHP4Tg9VsZgPMZ8ls6OqyRUKA
-	bVqTmXog1nsNSRcceJ1/EHh/HpyYLRtPemJtsvVY=
-Received: by mx.zohomail.com with SMTPS id 1789051098268291.1074430247711;
-	Thu, 10 Sep 2026 07:38:18 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- linux-arm-kernel@lists.infradead.org, Christopher Healy <healych@amazon.com>,
- Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v3 0/5] media: Add fdinfo support for v4l2 drivers
-Date: Thu, 10 Sep 2026 10:38:15 -0400
-Message-ID: <xIs2E_YWS3GdsCX4z2DR3Q@collabora.com>
-In-Reply-To: <20260706-v4l2-add-fdinfo-v3-0-d556568cf38e@collabora.com>
-References: <20260706-v4l2-add-fdinfo-v3-0-d556568cf38e@collabora.com>
+	id 1x4g56-0000000Eg1J-0337
+	for linux-rockchip@lists.infradead.org;
+	Thu, 10 Sep 2026 14:48:54 +0000
+Received: by mail-ej2-x10.google.com with SMTP id a640c23a62f3a-c2940ef15d3so204491566b.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 10 Sep 2026 07:48:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789051729; cv=none;
+        d=google.com; s=arc-20260327;
+        b=ZsoLDoKFzLnA9Md6BSj+VHcF6rMhUPjgANVq9o0bCDvWT9uq3Rv5b+MpRHbVbOviq3
+         AjltQ8AGP9LIwj58FnuaDs3avDuX3n3NTj+xJUIkUHjNJl9+s/+BHA1o+f6vsJcHw3TM
+         Ui3qQbtOz/TAW8K0r6xULjM6iyfglAZ+gC0vgxHL5M29NcLNCLB48JESqNqFG1sska5/
+         tCRDdr/nXxcXJg3YI4UcvqGU/jwf9U2cvfc2op5h8atch/Ku83vGwtCIPEvPX3a1+3WJ
+         ntu1HsDh6scL/XvspJUlXrxW2gCu/7T4U5kMwg2m/CN+0mp11/kH+NqyOlli5V7bP5KP
+         Xy7A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ZGkfTmvcfg2tYgnaJgCLfP1/mFjyPE2KGae6+BF91/w=;
+        fh=RIosrqeDXHzMrMAK2JbOp9Kwgrpw2Vso4kBz1IaFggg=;
+        b=GE5aMJIif6+hzdkOZd5YQ4Flkz8RO7pg+thD/O1Xgt4NR2XPURA+er3P4kcASQBpj3
+         Gs8+HOfPy0NP/641hbB0veNrFt5Y/Xzl3sWC9kpkJFw33cgWTOpktO3xkizTQzp+WUSV
+         a1GSkPhgWKXscZPdAvLYucjE2qJRav21+2NmzgWXP3EKcPL0uaoyb+dj20w4U+D4LRNc
+         WO4eou0jkjoqV8BWSIkbozAghvBey2wWHZYpt8jiG3xfEYDs35DCgMrG7rAYKLOdWmrm
+         XP4TaIgHd6MEB+9AU9VRSf2n4u1NppmN2D21d5WFuOe3d29YqxEmTf/gu9oq6j+3W+GR
+         TheA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=flipper.net; s=google; t=1789051729; x=1789656529; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=ZGkfTmvcfg2tYgnaJgCLfP1/mFjyPE2KGae6+BF91/w=;
+        b=dUGSyrl+m1euVAllOEVQzx31t8WnXObaUe1CkBi0xA8ALhZPAo68LTwQ8urMAPRl8H
+         4tDmuSufo8Vr7Lktis8bU8TnIFkyoMSesKyk/c0AyrxwV722OLMfSGVbnMvXpnOND6eF
+         tqSExZ5xzclxSPkfFM/pETJK/TitkBmhS123pH1C6qqp9BeIcDDYnWL61m23hlzdmS/+
+         KYz8idMqQgYmJFMajEYx6It/lm6qYY3uXXcJ3WiHvdEC/J6thC5QEKYOEnY3V2A4VW8z
+         YFHPlhCKcIzfU6XQ5I/8TNt4BDjtoKi1vJ7XP4xVn1RUUwYRfXqw2gufDx90wsVA2F1e
+         kdlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1789051729; x=1789656529;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ZGkfTmvcfg2tYgnaJgCLfP1/mFjyPE2KGae6+BF91/w=;
+        b=eOWJNBDYr4N58rHJ+RVoythzOG0jvJfDq9t/dQXEGAC7J1n52jeyE6R0M4OM2Vfjv/
+         1PW8I6Zu03nI0Ca7//Wd9aE92VB9HKhw+X/gSIDUyv8wckRfp/hc7Faf9mmspmiTMnCN
+         DnZpMkSra2yqy2KMRUsvuYWNUUAhyBgJvgzYcdNQqZa9jIjJAHRfUlSw9Hn3Yc46t2Oj
+         MGYOXWhFQIYAzMBsxljyuXY3cRXgEMLyS5oSJRtx07veoLLKLEQTYwt1ELmWcADOaPKa
+         RxjJ5UKZq9pg9tVaP/oOem2NvvwVoocAr/68vB/XanA9wvvTv+XqYcfTLKbxKQx/gtW6
+         4Tug==
+X-Forwarded-Encrypted: i=1; AKwUvBwXqg31P4/VB7Il+/pC5EBW/qdjnlQnQPo/TFScfpgCvOOI4Uyj/kp5/WWz1gM05mkcq+nowdCyWkwn4rKMpw==@lists.infradead.org
+X-Gm-Message-State: AFuF++mKa2h9p9wI5HLL+X2DuDe5AtkPSUCgyz7De5dxNcN/cmKBfmlu
+	VgpkayecIA9ES2EyvMhl9MDh1nx44o9lUT/XuZ/Pz3mh4N71XX19mDpPqibObdjhx6wI3TFFxvz
+	mbHxM/ytWuh+D/G2vGhx0uPmD2Q7acblKHdKIUDrTWQ==
+X-Gm-Gg: AYBFou0lYUmDc7z2IInwfKYliti/AF4lr6PdtRlNl3NgEnKYltwsGo1fROIE/XaGZ+2
+	rG99tD+Xth/kWkuZJqKfaapidO32D3oMbXk5BRtF2xFDx6sQKltBWtHLt46dKX8kXHK8V89FyCf
+	8RQUkdZKxxRYQ/Vxw/aEZ3cvhi1esrGC3mTRfmbEZ5sKa+XR5rQZSttDXwCjbdbHhlujNQtjstP
+	dkinrJuQxQKJuGP4ajq6XtFevr3g+ytNGqV7rm+wC6EHugoSArM308SuI57wkyWGX0rslu5J7w/
+	ydoQZufWicH5P3Y+MbhAmgzfdIhsgZmzLqiR+BNe2QNyalyuxiuwUeRgltyDGwA2slh8HED/tn8
+	WJwI9H8N40kjGOHRUocD/uG+T
+X-Received: by 2002:a17:907:c5ce:b0:c25:47a4:fedc with SMTP id
+ a640c23a62f3a-c29418b652emr491393166b.2.1789051729432; Thu, 10 Sep 2026
+ 07:48:49 -0700 (PDT)
 MIME-Version: 1.0
-X-ZohoMailClient: External
+References: <20260902-rk3576-otp-cpuid-mac-v2-0-e4b7fe2ab13f@flipper.net>
+In-Reply-To: <20260902-rk3576-otp-cpuid-mac-v2-0-e4b7fe2ab13f@flipper.net>
+From: Alexey Charkov <alchark@flipper.net>
+Date: Thu, 10 Sep 2026 18:48:33 +0400
+X-Gm-Features: AcwNN1UfoxjgFqkNtB6Aosk9zTLZTrJucLfz7oY5DTmBgBUsxij8crpGNXoG4yA
+Message-ID: <CAKTNdwH9QAgreJ-6+t1j_P1di4VyoMBSsFkf_g=mCi_-M8g9Pw@mail.gmail.com>
+Subject: Re: [PATCH v2 0/4] nvmem: Derive Rockchip MAC addresses from the OTP
+ CPU ID
+To: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Michael Walle <michael@walle.cc>, 
+	Miquel Raynal <miquel.raynal@bootlin.com>, Finley Xiao <finley.xiao@rock-chips.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	stable@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_073831_586306_CD7E54FC 
-X-CRM114-Status: GOOD (  28.68  )
+X-CRM114-CacheID: sfid-20260910_074852_077230_94B17FBC 
+X-CRM114-Status: GOOD (  26.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,130 +119,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello !
-
-Do you have any comment on this ?
-
-Regards,
-Detlev
-
-On Monday, 6 July 2026 09:42:17 EDT Detlev Casanova wrote:
-> fdinfo is useful to poll information from the driver.
-> Unlike the ftrace interface, it lets userspace tools get a snapshot of
-> the state of the driver at their own pace, instead of getting events for
-> each driver status change.
-> 
-> This works better to get information like HW usage time or clock
-> frequencies, as well as memory usage.
-> This patch set focuses on mem2mem drivers that are per-frame based and
-> an implementation is proposed for the Verisilicon Hantro and Rockchip
-> rkvdec drivers, limited to main clock frequency and HW usage time, as
-> well as HW cycles counting in Hantro.
-> 
-> Even though it is not used yet, per core fields are appended with
-> `-<core_id>` to support multi-core drivers.
-> 
-> To ease support in drivers, a v4l2_metrics struct is added.
-> It stores metrics information and provides helper functions to write
-> the fdinfo file in a standard way.
-> 
-> An example of usage of this from userspace is implemented in v4l2top:
-> 
-> https://github.com/cazou/v4l2top (Check the upstream branch)
-> 
-> checkpatch.pl warning: The 2 arguments in the show_fdinfo callback
-> definition are kept unnamed to match with the rest of the struct
-> definition.
-> 
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
-> Changes in v3:
-> - Rename the fdinfo key prefix from "media-" to "v4l2-", and "stats" to
->   "metrics"
-> - Restructure the documentation to have mandatory and optional keys
-> - Add core ID to fields
-> - Add HW cycles count support
-> - Add ABI documentation
-> - Link to v2:
-> https://patch.msgid.link/20260617-v4l2-add-fdinfo-v2-0-d298e98ce06a@collabo
-> ra.com
-> 
-> Changes in v2:
-> - Simplify key/value pairs by removing repeated <eng> suffix
-> - Add media type support
-> - Add v4l2_stats helpers
-> - Add support in rkvdec too
-> - Link to v1:
-> https://patch.msgid.link/20260612-v4l2-add-fdinfo-v1-0-723211abc861@collabo
-> ra.com
-> 
-> To: Mauro Carvalho Chehab <mchehab@kernel.org>
-> To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> To: Philipp Zabel <p.zabel@pengutronix.de>
-> To: Detlev Casanova <detlev.casanova@collabora.com>
-> To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-> To: Heiko Stuebner <heiko@sntech.de>
-> Cc: kernel@collabora.com
-> Cc: linux-media@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> 
-> ---
-> Christopher Healy (2):
->       docs: media: add documentation for V4L2 driver usage metrics
->       media: hantro: Add per-context fdinfo usage metrics
-> 
-> Detlev Casanova (3):
->       media: v4l2: Add callback for show_fdinfo
->       media: v4l2-core: Add v4l2-metrics interface
->       media: rkvdec: Add per-context fdinfo usage metrics
-> 
->  Documentation/ABI/testing/procfs-fdinfo-v4l2       | 129
-> +++++++++++++++++++ .../userspace-api/media/drivers/index.rst          |  
-> 1 +
->  .../media/drivers/v4l2-usage-metrics.rst           | 137
-> +++++++++++++++++++++ drivers/media/platform/rockchip/rkvdec/rkvdec.c    | 
-> 19 +++
->  drivers/media/platform/rockchip/rkvdec/rkvdec.h    |   1 +
->  drivers/media/platform/verisilicon/hantro.h        |   3 +
->  drivers/media/platform/verisilicon/hantro_drv.c    |  19 +++
->  drivers/media/platform/verisilicon/hantro_hw.h     |   1 +
->  .../platform/verisilicon/rockchip_vpu981_regs.h    |   1 +
->  .../media/platform/verisilicon/rockchip_vpu_hw.c   |   6 +
->  drivers/media/v4l2-core/Makefile                   |   2 +-
->  drivers/media/v4l2-core/v4l2-dev.c                 |  12 ++
->  drivers/media/v4l2-core/v4l2-fh.c                  |   3 +
->  drivers/media/v4l2-core/v4l2-metrics.c             |  78 ++++++++++++
->  include/media/v4l2-dev.h                           |   1 +
->  include/media/v4l2-fh.h                            |   2 +
->  include/media/v4l2-metrics.h                       |  47 +++++++
->  17 files changed, 461 insertions(+), 1 deletion(-)
-> ---
-> base-commit: 3c587e0b08bd3c4853a22792b9166b7457870165
-> change-id: 20260610-v4l2-add-fdinfo-a790fceab329
-> 
-> Best regards,
-> --
-> Detlev Casanova <detlev.casanova@collabora.com>
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBTZXAgMiwgMjAyNiBhdCA1OjA44oCvUE0gQWxleGV5IENoYXJrb3YgPGFsY2hhcmtA
+ZmxpcHBlci5uZXQ+IHdyb3RlOgo+Cj4gUm9ja2NoaXAgU29DcyBhcmUgc2hpcHBlZCB3aXRoIGEg
+dW5pcXVlIENQVSBJRCBpbiB0aGVpciBpbnRlcm5hbCBPVFAKPiBtZW1vcnksIGFuZCBSb2NrY2hp
+cCBib290bG9hZGVycyB1c2UgaXQgdG8gZ2l2ZSBib2FyZHMgd2hpY2ggaGF2ZSBubwo+IGRlZGlj
+YXRlZCBzdG9yYWdlIGZvciBhIE1BQyBhZGRyZXNzIGEgc3RhYmxlIG9uZSBhbnl3YXk6IHRoZXkg
+aGFzaCB0aGUgQ1BVCj4gSUQgYW5kIHBhdGNoIHRoZSByZXN1bHRpbmcgYWRkcmVzc2VzIGludG8g
+dGhlIGRldmljZSB0cmVlIHRoZXkgaGFuZCBvdmVyLgo+Cj4gS2VybmVscyBzdGFydGVkIHdpdGhv
+dXQgdGhhdCBmaXh1cCwgZS5nLiBzdHJhaWdodCBmcm9tIHRoZSBTUEwgaW4gRmFsY29uCj4gbW9k
+ZSBvciBieSBhbnkgb3RoZXIgbG9hZGVyIHdoaWNoIGRvZXMgbm90IGltcGxlbWVudCBSb2NrY2hp
+cCdzIGRlcml2YXRpb24sCj4gZmFsbCBiYWNrIHRvIHJhbmRvbSBNQUMgYWRkcmVzc2VzIHdoaWNo
+IGNoYW5nZSBvbiBldmVyeSBib290Lgo+Cj4gRm9ybWFsaXplIHRoZSBkZXJpdmF0aW9uIGluIHRo
+ZSBEVCBiaW5kaW5nIGFuZCBhZGQgYSBMaW51eCBrZXJuZWwgZHJpdmVyCj4gaW1wbGVtZW50aW5n
+IGl0LCBzbyB0aGF0IGEgTGludXggaW1hZ2UgY2FuIHVzZSB0aGUgc2FtZSBzdGFibGUgYWRkcmVz
+c2VzCj4gcmVnYXJkbGVzcyBvZiB0aGUgYm9vdCBmbG93Lgo+Cj4gT25seSBSSzM1NzYgaXMgd2ly
+ZWQgdXAgaGVyZSwgdGhhdCBiZWluZyB0aGUgU29DIEkgY2FuIHRlc3Qgb24uIE90aGVyCj4gUm9j
+a2NoaXAgU29DcyBrZWVwIHRoZSBzYW1lIENQVSBJRCBhdCBhIGRpZmZlcmVudCBPVFAgb2Zmc2V0
+IC0gMHg3IHJhdGhlcgo+IHRoYW4gMHhhIG9uIFJLMzU4OCwgZm9yIGluc3RhbmNlIC0gd2hpY2gg
+bWFrZXMgc3VwcG9ydGluZyB0aGVtIGEgdHdvLWxpbmUKPiBhZGRpdGlvbiB0byB0aGUgZHJpdmVy
+J3MgbWF0Y2ggdGFibGUgcGx1cyB0aGUgbGF5b3V0IG5vZGUuCj4KPiBQYXRjaCAxIGlzIGEgcHJl
+cmVxdWlzaXRlIGZpeC4gVGhlIE9UUCBoYXJkd2FyZSBoYXMgaXRzIG93biBpbnRlcm5hbCBzdGF0
+ZQo+IG1hY2hpbmUgd2hpY2ggb25seSB3b3JrcyBjb3JyZWN0bHkgd2l0aCBzZXJpYWwgYWNjZXNz
+LCBidXQgdGhlIGN1cnJlbnQKPiBkcml2ZXIgc2VyaWFsaXplcyBub3RoaW5nLCB3aGljaCByZXN1
+bHRzIGluIHRpbWVvdXRzIGFuZC9vciBjb3JydXB0ZWQKPiByZWFkcyAoZS5nLiByZXR1cm5pbmcg
+c3BsaWNpbmcgYSBUU0FEQyB0cmltIHZhbHVlIGludG8gdGhlIGJ1ZmZlciBvZiBhCj4gY2FsbGVy
+IGFza2luZyBmb3IgdGhlIENQVSBJRCwgb3IgbWl4aW5nIHVwIHRyaW0gdmFsdWVzIG9mIGRpZmZl
+cmVudCBUU0FEQwo+IGNhbGxlcnMpLiBIZW5jZSB0aGUgRml4ZXM6IHRhZyBhbmQgQ2M6IHN0YWJs
+ZS4KPgo+IENyb3NzLWNoZWNrZWQgb24gYW4gUkszNTc2IGJvYXJkOiB0aGUgYWRkcmVzc2VzIGZp
+eGVkIHVwIGludG8gdGhlIEZEVCBieQo+IFUtQm9vdCBtYXRjaCB0aGUgb25lcyBkZXJpdmVkIGJ5
+IHRoZSBuZXcgZHJpdmVyLCBhbmQgdGhlIGRyaXZlciBjb3JyZWN0bHkKPiBhc3NpZ25zIHRoZW0g
+dG8gdGhlIG5ldHdvcmsgaW50ZXJmYWNlcyB3aGVuIHRoZSBrZXJuZWwgaXMgYm9vdGVkIHdpdGhv
+dXQKPiBVLUJvb3QgcHJvcGVyIGF0IGFsbCAodmlhIEZhbGNvbiBtb2RlKS4KPgo+IFNhc2hpa28g
+YWxzbyByaWdodGx5IHBvaW50ZWQgb3V0IGEgdXNlLWFmdGVyLWZyZWUgaW4gdGhlIG52bWVtIGNv
+cmUgd2hlbgo+IGEgbGF5b3V0IGRyaXZlciBpcyB1bmxvYWRlZCBsZWF2aW5nIGl0cyBzeXNmcyBu
+b2RlcyBhbmQgdGhlIHBvc3Rwcm9jZXNzb3IKPiBmdW5jdGlvbiBwb2ludGVyIGRhbmdsaW5nLiBU
+aGlzIGlzIGZpeGVkIHNlcGFyYXRlbHkgaW4gWzFdLgo+Cj4gWzFdIGh0dHBzOi8vbG9yZS5rZXJu
+ZWwub3JnL2FsbC8yMDI2MDkwMi1udm1lbS1sYXlvdXQtdW5yZWctdjEtMS0yZDE2YmViZWI1MThA
+ZmxpcHBlci5uZXQvCj4KPiBTaWduZWQtb2ZmLWJ5OiBBbGV4ZXkgQ2hhcmtvdiA8YWxjaGFya0Bm
+bGlwcGVyLm5ldD4KPiAtLS0KPiBDaGFuZ2VzIGluIHYyOgo+IC0gU3dpdGNoZWQgZnJvbSBhIHNj
+b3BlLWJhc2VkIGd1YXJkIHRvIGV4cGxpY2l0IGxvY2svdW5sb2NrIGNhbGxzIGluIHRoZQo+ICAg
+T1RQIGRyaXZlciB0byBhdm9pZCBtaXhpbmcgc3R5bGVzIGluIGEgZnVuY3Rpb24gdXNpbmcgZ290
+byBlcnJvcgo+ICAgaGFuZGxpbmcgKFNhc2hpa28pCj4gLSBMaW5rIHRvIHYxOiBodHRwczovL3Bh
+dGNoLm1zZ2lkLmxpbmsvMjAyNjA5MDEtcmszNTc2LW90cC1jcHVpZC1tYWMtdjEtMC1lYTkxMzUy
+NzBmYzJAZmxpcHBlci5uZXQKPgo+IC0tLQo+IEFsZXhleSBDaGFya292ICg0KToKPiAgICAgICBu
+dm1lbTogcm9ja2NoaXAtb3RwOiBTZXJpYWxpemUgcmVhZHMKCkluY2lkZW50YWxseSwgcGF0Y2gg
+MSBvZiB0aGlzIHNlcmllcyBhbHNvIGZpeGVzIENQVSB0aGVybWFsIHRocm90dGxpbmcKb24gbXkg
+UkszNTc2IGRldmljZTogYXBwYXJlbnRseSwgdGhlIG1pcy1yZWFkIE9UUC1wcm9ncmFtbWVkIHRo
+ZXJtYWwKdHJpbSB2YWx1ZXMgYnJva2UgdGhlIHRoZXJtYWwgZ292ZXJub3IgbG9naWMsIHdoaWNo
+IG5vdyB3b3Jrcwpjb3JyZWN0bHkgd2l0aCBwcm9wZXJseSBzZXJpYWxpemVkIE9UUCByZWFkcy4g
+U28gaXQgd291bGQgYmUgZ3JlYXQgdG8KaGF2ZSB0aGVzZSBtZXJnZWQuCgpCZXN0IHJlZ2FyZHMs
+CkFsZXhleQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
