@@ -4,115 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 472EDC79FB9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2026 12:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4C49C79F9F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2026 12:08:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L0uBL5eAbY6dbeah9SQ+RfQbVSER0nEzgcmmL/pktLs=; b=mCCzs/kMjyiZbD
-	clpRBUpZZZtbvUK3uFeocYpqV7rdFg75yNyRe3W7B9juFoBkNc8QptI6HIgGfGoTWiYrt9TUCioQY
-	dYeJULAwtEwtHlFP3PQV4JhUk0ZXLms/hi/UgXUeMUoKAQqpJiCN6q3ZhVlke2rfTbG7NQOj3JalT
-	fMrYCkiM6kKkde3HZ5YaKaooLq0Ly24h0KoRjvy2iZACR17XA5FCwYPrNF/ZkdWkuvCFOwI1l6JAs
-	otFrNphJ2dhphpBav71OotTUek4wjZyzCIiSN4rn2VVROaz5EhLE2aQtcu7HhBfxT+xg+4eA5iMXP
-	f7fs6CjEAMIgF5ToQwUQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OabdoryLgp+JCkannu8nbaqbSHj5K8ScmJOYjM68UEU=; b=PAWsndFDnK6d1000kANmxdzxfA
+	8aAdzChyOkz2BpHIvXrdkz2ZIR0u220Ux2XvpAAnMZk0EnZfBoMRCY73SXq5tj0LsWGCcDYiMOsG1
+	ZoBfp+xKnRwHxaBIKGnewIXVFxjXMrOOy104Bs+Cbl9LdyJwtxZqJsHO8wShgWoVqE8pGiB+Xq4iU
+	LZPs2WafhqCcRJsdYGlaaUWJjZyE3tYzjC48JGkyF5UenROUUf4oT1SDZPQHLF9UPXaPoUt9G40fs
+	OoY09CO6OiFageUF0qppPN3T8b4I2qAYikIXHmM+GNWCnlItAf0tTA1sia/3B8Wm9HmBVidC3+/uY
+	v1AKaSnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4dW6-0000000EI7h-1bFB;
-	Thu, 10 Sep 2026 12:04:34 +0000
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
+	id 1x4dZq-0000000EIhO-3JG6;
+	Thu, 10 Sep 2026 12:08:26 +0000
+Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4dW4-0000000EI6n-1lIR
+	id 1x4dZo-0000000EIgB-1lZa
 	for linux-rockchip@lists.infradead.org;
-	Thu, 10 Sep 2026 12:04:33 +0000
-Received: by mail-wm2-x10.google.com with SMTP id 5b1f17b1804b1-49cd82be878so4195865e9.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 10 Sep 2026 05:04:31 -0700 (PDT)
+	Thu, 10 Sep 2026 12:08:25 +0000
+Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-4843cedd129so1351201f8f.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 10 Sep 2026 05:08:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789041870; x=1789646670; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=csxrJaNJi4tIfZjrD+uNlOFumjNYljFKlQuyLO7kEBc=;
-        b=fKolcgWsGyG7SwehjOYUTWci4wAnKzTiJAmpHebYLLL6ZdGxvRpkLwXZ39RZTbJeO1
-         PHK4WtihTVIx1/vnieQ4Jzlk1Jh6VI7N9BkxoNlL6C/8NHglgw8EjUUWHWrIhzhCxke+
-         6viLoMcaNDz1yKKfOatRzzZ2yifWDiPyV4U5WoH8iULAxefE5813WJNPcTcmuOflpLB3
-         /8Y/9H2sPai2j4JEksSo/2BLf4xray5vtZ/P34s/HZECO8ylzyODzva/4wp6ZX1MTW0b
-         Kmt/X9g9WEpzsiiNX4GXei/F9m8qWoKomgrRVYZGs3ba4A0FtOVdEksV1Yowz/+Fl5xW
-         yQFQ==
+        d=gmail.com; s=20251104; t=1789042102; x=1789646902; darn=lists.infradead.org;
+        h=references:in-reply-to:subject:cc:to:from:message-id:date:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=kr90axAl39Wct6vUhubTPo3djvuufRCk0pWZynFpKbM=;
+        b=PSKj1v3lJbww6dIJy3kmmhYQukITzpTX2dqOc6Cnyp0H/i5eUmmB0WfLOc0jd2FwH3
+         r6C/nupTCBBRPCb6SRgpT1wFq2IYbWRvrtpmB4FsJqy228FrGY8k+KLElxmcJmo8s/k7
+         Ff8G58j/ThZRJOh7iK5Kdtm4p/nSCKHmUvG9Ojjjj4ZMV2kWN0/F+oPjNTFr4cSqLRJB
+         iW3RYjrtDxKp5jc/3e8qp8QJCTGJe7XRRuWDRQeqwVlPgdI6PS6yZIolJ4Kg3MAgiuQd
+         kaF0CsI7Ebml32+F4kPP9umSbpnqznes+IdK2tdnf1qUoSH8nJXQFBA1stDBHza0hgLE
+         snfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789041870; x=1789646670;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=csxrJaNJi4tIfZjrD+uNlOFumjNYljFKlQuyLO7kEBc=;
-        b=EVjq+6fR5EkngfMqyDzrcarxlqI2P6rfyZafFeFd6T2BoTZwARjb3/PhaSdsAexINf
-         IF3+xigXn4HiScE6NEOQEUuiNW8F9CQ0XQXJ19fKnDtGMXuOLbcCZH6ETQ773d1lYLmV
-         OPjpw1IWDoJxUoqUZJmKq1VaKPwcfEs7iyGtGrsuuD+CAHnvhPwezVDEOTDexS56a7gN
-         DX9gLtgvbOivYNo+iqsjVYTsimwc6gO6TFDChDTYLdeTIlYJANg5LLn0Ps9LjUrZLTlG
-         orpQT/vBF0smydF+Vml9vL4t+UNxnvv8oakcf8LPMW73HZWj4PB/XR3xr8IMRHNqPlDS
-         grCg==
-X-Forwarded-Encrypted: i=1; AKwUvBzdu7eqdkZLMKWyHguBTEDaXWmpS6SVtADfudNXtudyECtoWUxg9qHaCZ+UcH4sp8ZazRdbVmxseZPkVEe5mA==@lists.infradead.org
-X-Gm-Message-State: AFuF++nIzc6AqiwwC0P0ELRzzo7XEsH+iWcndFZpMykpiPWC1L+LnZrA
-	HzBlA0ELpuGWUp25HewYJh/4qyAgjDs2j2SFHXUYWMdrXI9DMRfrd93h
-X-Gm-Gg: AYBFou1jmMYBY6fxRg9Aa1p5yccAMacZRyQ4NKKIwtUi+Vj0VYBkb6gYwq8xge24PCK
-	mlPmDyzoMPZI6Qwl3VqhSo7Dda23Oq/8Mw+lT9eVeHwZrVyrpgwh9scisrlGuXU+YtSMs9QFF9b
-	QHG5S3wia9RdajnnS4qIoJcjD9gasxjaE3pRsqyoujoQUhSrS2TDYG5x32hWL4s5L1042N8JXjt
-	HFIUBFKqSqwddZOsfwNgH5v6zhyz2aoEG8gKhXYG8jdy88+lmWZwKxiXmOYCrCEDTrkEZZeQ2o3
-	juuVD2tm1V4AltWUBPKTdsWp5gPcZfkkG6l++0X/5MxZL/oYDvGBSHr5GonyB9jHhycg9GIcLK/
-	Lf2fEuvEakMRl/Qp9NiZ9nHfI0hPlLi+DkA0ygHe/0QW3mH8O8lRqFYBCktRn0JEgs96TNFW0RB
-	YMgxGXaYSSqjZ+4UsLYMGhjOZZRTuoFIJjaPXbI7Z00dhA0F2c+wy/ciWaCkgelAY5s7aycRzwE
-	2ltS/5s+mhxhllaC7CbEzuNpj/9hlxEd0lOA1okBIJ3QsmFGLJJoWffCv4iylyDBtJIjJlCwy0G
-	NxyC
-X-Received: by 2002:a05:600c:c494:b0:499:d95a:41f with SMTP id 5b1f17b1804b1-49d010c3969mr308061045e9.0.1789041870300;
-        Thu, 10 Sep 2026 05:04:30 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B9146001C92980EE71198AB.dsl.pool.telekom.hu. [2001:4c4e:1b91:4600:1c92:980e:e711:98ab])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48591eb3d3bsm34529530f8f.0.2026.09.10.05.04.28
+        d=1e100.net; s=20251104; t=1789042102; x=1789646902;
+        h=references:in-reply-to:subject:cc:to:from:message-id:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=kr90axAl39Wct6vUhubTPo3djvuufRCk0pWZynFpKbM=;
+        b=otNL9aGlZ/nj8qlrL9CqGzRIwAQFkANnqMbZvXSayMjonH0Fb/PcNwO7JWH4bO0Qrg
+         LgIt1HKQ7K2ZbssjriDEE+BgZJ/kisXIqsILPbxoipf4NlWJlWLP4mIvCLB6Mf9nay3M
+         bWy2Hiu536uFpZPESlJCzqNACq2bWP2z60q4sMXEuwIH31FmP0ZLDvIqnImNP+E1E3h5
+         KyFyD0IPTg8If7/lhBHH+Jz7waYSudsUzykSMZE+0wimPfvrklhm99H5JiCFT1wVUDnu
+         UL0pF+RbDimXwPTDz+39SUHucxmTHl2uxXYAoXsa+IamRx5ZlMiz/tDqIZ6Kj0vFEprE
+         tEgw==
+X-Forwarded-Encrypted: i=1; AKwUvByrjLOjKf+XgDMOYXXDym9HvqylP+0BLlPdA5E30cx5gfhfAW7GAaXSg/2XGPIzY4E/d0Cmi86Ytt5fOFqs0A==@lists.infradead.org
+X-Gm-Message-State: AFuF++lfATdUX14nmYO7SLetMpiC0XTI89U9mjHAo//tdG/ybBVBff5A
+	5kws168k8USXRwkBwAgQtm63AsMGFVyUv3BmM3C9Vw810KnEXTXjO5cd
+X-Gm-Gg: AYBFou383VNHfs+DxijNZpHPP/VFDfRzaf1Zd8RY8W938SkPTJbjctj8ym+W4j7U4CV
+	qPHoZkuGfuFfd2+4MjhLBNmbUQcRQH/Vyj9HrbIBaTCGRrMxl/p2POwPytm08DpPCxWK5OjgqEC
+	7poegWelWrTGAa35Hwsp2UifSlVoPJZN1T3hD1oprwfA5TLUDpnJ5h6UcIK4LQnKhrdKT6ICUYj
+	PtjrNqNwC5aXBjDKyl73s9CP4bf/kELTRb//oe/tn3PcNgENtWPxIVZ+WDoE39bfZxNjcpHXaVW
+	Vy+dUB3oO104zx/nDY7O5ms2G2G27Qsdjx3aaLCwZOsTU4PsrEuxkDKUJOiO0O19i3AfjLMx8ri
+	nw8EvOhDp8CjjARJV/nmDXHVujHr+JdFIH9U3WUSF1YkZkrvK0HEdilbdqqQs1SV7FoerD1U8Zo
+	yNAyHdxMjt1Ru6cjRymyu2GyIlI6pdUmg4+ZDL6fUj6k1sjzeydIF7Guo0hHBzorfLZoyAKXedA
+	APxPblgYGQIP/2fzL+54yCYBD6jJNfgNh8MIhL15S5+vZjRh1GnBrhK3Eya1QMFY9MxipWSTJ+X
+	XOR2+P0/BLCW0g==
+X-Received: by 2002:a05:6000:1883:b0:482:ea08:8c97 with SMTP id ffacd0b85a97d-485aad9458dmr21686931f8f.2.1789042101895;
+        Thu, 10 Sep 2026 05:08:21 -0700 (PDT)
+Received: from localhost (adsl-178-39-48-248.adslplus.ch. [178.39.48.248])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-485883c81c3sm51597465f8f.26.2026.09.10.05.08.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Sep 2026 05:04:29 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Igor Paunovic <royalnet026@gmail.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	intel-gfx@lists.freedesktop.org,
-	intel-xe@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Ville Syrjala <ville.syrjala@linux.intel.com>,
-	Imre Deak <imre.deak@intel.com>,
-	Ankit Nautiyal <ankit.k.nautiyal@intel.com>
-Subject: Re: [PATCH v2 3/3] drm/rockchip: dw_dp: Attach "max bpc" connector property
-Date: Thu, 10 Sep 2026 14:04:06 +0200
-Message-ID: <20260910120409.63850-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <388fd1ef-a8c9-4419-8bf2-10af7063e734@rock-chips.com>
-References: <388fd1ef-a8c9-4419-8bf2-10af7063e734@rock-chips.com>
-MIME-Version: 1.0
+        Thu, 10 Sep 2026 05:08:20 -0700 (PDT)
+Date: Thu, 10 Sep 2026 14:08:20 +0200
+Message-ID: <4d885f9e201df6f48a06f4ab3b27a7f1@gmail.com>
+From: Robin Räber <robin.raebi@gmail.com>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v11 00/74] Add HDMI 2.0 support to DW HDMI QP TX
+In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
+References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_050432_472598_EE3A3CD1 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20260910_050824_481204_AEBEF0B7 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,42 +92,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5525984024559501981=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chaoyi,
+--===============5525984024559501981==
+Content-Type: text/plain
 
-On 9/10/26 10:16, Chaoyi Chen wrote:
-> Maybe we should consider adding a new "DRM_BRIDGE_OP_DP" :)
+Hi Cristian,
 
-Works for me - it keeps the HDMI-only wording of max_bpc and makes the
-check explicit. So that Maxime and Cristian have something concrete to
-object to, this is all I would give the flag:
+I tested this series on a Xunlong Orange Pi 5 (RK3588S) driving an
+AOC Q32G1WG4 monitor (2560x1440@144, TMDS char rate 592 MHz) and can
+report that scrambling works, with one interop issue described below.
 
- - DRM_BRIDGE_OP_DP: the bridge drives a DisplayPort connector and
-   fills in max_bpc. Nothing else is read from it for now.
- - drm_bridge_connector_init() treats it like DRM_BRIDGE_OP_HDMI:
-   at most one such bridge in the chain (-EBUSY), max_bpc must be set
-   (-EINVAL), and the connector gets "max bpc" with range 6..max_bpc.
- - dw-dp sets the flag and max_bpc = 10.
+A note on the test base: drm-misc-next at the series' base commit does
+not boot on this board for reasons unrelated to the series (the
+unpatched base commit hangs early as well; I can dig into that
+separately). I therefore backported the series onto v7.2.3, dropping
+the vc4/sun4i/tests patches and adjusting for minor context drift in
+drm_connector.c and the scdc/hdmi helpers. The dw-hdmi-qp, rockchip,
+bridge_connector and helper patches applied without functional
+changes.
 
-The connector itself stays a plain drmm_connector_init() one - no DP
-counterpart of drmm_connector_hdmi_init() - so bridges without the flag
-see no change at all.
+With the backport applied, all four 2560x1440 modes (60/100/120/144)
+are exposed and 144 Hz works, but scrambling initially failed:
 
-> Perhaps @Cristian and @Maxime have better ideas?
+  rockchip-drm display-subsystem: [drm] Sink doesn't support scrambling.
+  dwhdmiqp-rockchip fde80000.hdmi: Failed to enable scrambling: -22
 
-That is point 3, and I will wait for it before writing v3: whether the
-create-state block gets duplicated into the non-HDMI path or factored
-out of drmm_connector_hdmi_init(), and whether keeping the restore value
-in struct drm_bridge_connector is acceptable once 71/74 lands.
+The cause is the monitor's EDID: its HF-VSDB declares a Maximum TMDS
+Character Rate of 600 MHz but leaves the SCDC Present flag unset, so
+drm_scdc_sink_supports_scrambling() rejects it. The SCDC interface of
+this display is nevertheless fully functional: reading SCDC via DDC
+returns sink version 1, writes are accepted, and after the change
+below TMDS_CONFIG reads back 0x03 (scrambling + 40-bit clock ratio)
+with a stable picture at 592 MHz.
 
-Thanks,
-Igor
+Since HDMI 2.0 mandates SCDC support for character rates above
+340 MHz, I worked around it by trusting the declared rate:
+
+--- a/drivers/gpu/drm/display/drm_hdmi_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_helper.c
+@@ static bool drm_scdc_sink_supports_scrambling(struct drm_connector *connector)
+ {
+ 	const struct drm_display_info *info = &connector->display_info;
+ 
+-	return info->is_hdmi &&
+-	       info->hdmi.scdc.supported &&
+-	       info->hdmi.scdc.scrambling.supported;
++	if (!info->is_hdmi)
++		return false;
++
++	/*
++	 * Some displays (e.g. AOC Q32G1WG4) declare a Max TMDS Character
++	 * Rate above 340 MHz in their HF-VSDB but leave the SCDC Present
++	 * flag unset, even though SCDC is functional. The spec mandates
++	 * SCDC support for rates above 340 MHz, so trust the declared rate.
++	 */
++	if (info->max_tmds_clock > 340000)
++		return true;
++
++	return info->hdmi.scdc.supported &&
++	       info->hdmi.scdc.scrambling.supported;
+ }
+
+I'm happy to test further revisions on this hardware, and to submit
+the above as a proper patch if you think this is the right place to
+handle such non-conformant EDIDs.
+
+For the dw-hdmi-qp/rockchip/helper parts, on the backport described
+above:
+
+Tested-by: Robin Räber <robin.raebi@gmail.com>
+
+Best regards,
+Robin
+
+
+--===============5525984024559501981==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5525984024559501981==--
