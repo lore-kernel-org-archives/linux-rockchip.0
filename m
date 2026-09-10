@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4C49C79F9F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2026 12:08:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0257C79F9F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2026 13:09:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
-	:List-Id:References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OabdoryLgp+JCkannu8nbaqbSHj5K8ScmJOYjM68UEU=; b=PAWsndFDnK6d1000kANmxdzxfA
-	8aAdzChyOkz2BpHIvXrdkz2ZIR0u220Ux2XvpAAnMZk0EnZfBoMRCY73SXq5tj0LsWGCcDYiMOsG1
-	ZoBfp+xKnRwHxaBIKGnewIXVFxjXMrOOy104Bs+Cbl9LdyJwtxZqJsHO8wShgWoVqE8pGiB+Xq4iU
-	LZPs2WafhqCcRJsdYGlaaUWJjZyE3tYzjC48JGkyF5UenROUUf4oT1SDZPQHLF9UPXaPoUt9G40fs
-	OoY09CO6OiFageUF0qppPN3T8b4I2qAYikIXHmM+GNWCnlItAf0tTA1sia/3B8Wm9HmBVidC3+/uY
-	v1AKaSnA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tUsRPZlVWCs8zoi8w9NV35Wn1ObXi2rz2AjLskRGSAY=; b=c5fIRYVVVrGXZq
+	UPU8V4j+l/qyE7CBD5l2m+0UhKhhRD8lRL6pMTS3J9VBID7WlblMVFsNf1aSLskPQPjdc/xP8nep/
+	MkTi5pkj6FHa8m1P8re13q14w6B97eQqDL/bxKGcnxmpgLUgle2TRQOPvzHRIR5Tlird8WW2jY3m/
+	7rRzQpxpRj/NeD7xch9W30tN24Opt0ewjSJOfYm6B5Z+7ucOhHYvbNelEWoKGUyIiHdzmLZHYz0N5
+	54NZMz3ld2erhnpA7DAvySOhTJ/ko/HeMymicbRLeJ8sVDug0qx4aFpdsFoBEZ1LLWPA5sidGZOY2
+	JUG8DL9SQDdnk4dfzwCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4dZq-0000000EIhO-3JG6;
-	Thu, 10 Sep 2026 12:08:26 +0000
+	id 1x4eWQ-0000000ERKb-2L2I;
+	Thu, 10 Sep 2026 13:08:58 +0000
 Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4dZo-0000000EIgB-1lZa
+	id 1x4eWN-0000000ERJo-2aWv
 	for linux-rockchip@lists.infradead.org;
-	Thu, 10 Sep 2026 12:08:25 +0000
-Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-4843cedd129so1351201f8f.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 10 Sep 2026 05:08:23 -0700 (PDT)
+	Thu, 10 Sep 2026 13:08:57 +0000
+Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-4838dbf1bbeso614411f8f.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 10 Sep 2026 06:08:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789042102; x=1789646902; darn=lists.infradead.org;
-        h=references:in-reply-to:subject:cc:to:from:message-id:date:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=kr90axAl39Wct6vUhubTPo3djvuufRCk0pWZynFpKbM=;
-        b=PSKj1v3lJbww6dIJy3kmmhYQukITzpTX2dqOc6Cnyp0H/i5eUmmB0WfLOc0jd2FwH3
-         r6C/nupTCBBRPCb6SRgpT1wFq2IYbWRvrtpmB4FsJqy228FrGY8k+KLElxmcJmo8s/k7
-         Ff8G58j/ThZRJOh7iK5Kdtm4p/nSCKHmUvG9Ojjjj4ZMV2kWN0/F+oPjNTFr4cSqLRJB
-         iW3RYjrtDxKp5jc/3e8qp8QJCTGJe7XRRuWDRQeqwVlPgdI6PS6yZIolJ4Kg3MAgiuQd
-         kaF0CsI7Ebml32+F4kPP9umSbpnqznes+IdK2tdnf1qUoSH8nJXQFBA1stDBHza0hgLE
-         snfg==
+        d=gmail.com; s=20251104; t=1789045734; x=1789650534; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=9jiJj5iXaGRwv5GTBxHDtnHVVhq6FkY3C1mKKWquRtg=;
+        b=Ysl1X32ayGEtp64g1ZVQR6kkDGLIS9/WYgSZ4ijnwhfCrk3LUb1/Fj8QlQatPaBsxv
+         +O12NkVORBPTa2bNXN6JRdF8Up8PHULRkwdpBmnEQOUjx0i/YKcsj451S0Ssnf7uzDph
+         eX3uR9OHXX+Ak/PWXXQcwjjFtXHb2hB3zjrgbq6TyH1c9L2Wls7N8I2dzfXrYWO03bu5
+         EHMywKPR7nlZ00stHaVZH5FDS74zXd0fW8uDB2S0Ft2WSloXkY96AJmD3nixqgm16Mcc
+         +y9jTBvm6QBUfQp5kxeutF5EyTt21gZnhpKnxeU7DPoC5QTUU9JSHEumGujIJl2MnjSD
+         VrtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789042102; x=1789646902;
-        h=references:in-reply-to:subject:cc:to:from:message-id:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=kr90axAl39Wct6vUhubTPo3djvuufRCk0pWZynFpKbM=;
-        b=otNL9aGlZ/nj8qlrL9CqGzRIwAQFkANnqMbZvXSayMjonH0Fb/PcNwO7JWH4bO0Qrg
-         LgIt1HKQ7K2ZbssjriDEE+BgZJ/kisXIqsILPbxoipf4NlWJlWLP4mIvCLB6Mf9nay3M
-         bWy2Hiu536uFpZPESlJCzqNACq2bWP2z60q4sMXEuwIH31FmP0ZLDvIqnImNP+E1E3h5
-         KyFyD0IPTg8If7/lhBHH+Jz7waYSudsUzykSMZE+0wimPfvrklhm99H5JiCFT1wVUDnu
-         UL0pF+RbDimXwPTDz+39SUHucxmTHl2uxXYAoXsa+IamRx5ZlMiz/tDqIZ6Kj0vFEprE
-         tEgw==
-X-Forwarded-Encrypted: i=1; AKwUvByrjLOjKf+XgDMOYXXDym9HvqylP+0BLlPdA5E30cx5gfhfAW7GAaXSg/2XGPIzY4E/d0Cmi86Ytt5fOFqs0A==@lists.infradead.org
-X-Gm-Message-State: AFuF++lfATdUX14nmYO7SLetMpiC0XTI89U9mjHAo//tdG/ybBVBff5A
-	5kws168k8USXRwkBwAgQtm63AsMGFVyUv3BmM3C9Vw810KnEXTXjO5cd
-X-Gm-Gg: AYBFou383VNHfs+DxijNZpHPP/VFDfRzaf1Zd8RY8W938SkPTJbjctj8ym+W4j7U4CV
-	qPHoZkuGfuFfd2+4MjhLBNmbUQcRQH/Vyj9HrbIBaTCGRrMxl/p2POwPytm08DpPCxWK5OjgqEC
-	7poegWelWrTGAa35Hwsp2UifSlVoPJZN1T3hD1oprwfA5TLUDpnJ5h6UcIK4LQnKhrdKT6ICUYj
-	PtjrNqNwC5aXBjDKyl73s9CP4bf/kELTRb//oe/tn3PcNgENtWPxIVZ+WDoE39bfZxNjcpHXaVW
-	Vy+dUB3oO104zx/nDY7O5ms2G2G27Qsdjx3aaLCwZOsTU4PsrEuxkDKUJOiO0O19i3AfjLMx8ri
-	nw8EvOhDp8CjjARJV/nmDXHVujHr+JdFIH9U3WUSF1YkZkrvK0HEdilbdqqQs1SV7FoerD1U8Zo
-	yNAyHdxMjt1Ru6cjRymyu2GyIlI6pdUmg4+ZDL6fUj6k1sjzeydIF7Guo0hHBzorfLZoyAKXedA
-	APxPblgYGQIP/2fzL+54yCYBD6jJNfgNh8MIhL15S5+vZjRh1GnBrhK3Eya1QMFY9MxipWSTJ+X
-	XOR2+P0/BLCW0g==
-X-Received: by 2002:a05:6000:1883:b0:482:ea08:8c97 with SMTP id ffacd0b85a97d-485aad9458dmr21686931f8f.2.1789042101895;
-        Thu, 10 Sep 2026 05:08:21 -0700 (PDT)
-Received: from localhost (adsl-178-39-48-248.adslplus.ch. [178.39.48.248])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-485883c81c3sm51597465f8f.26.2026.09.10.05.08.20
+        d=1e100.net; s=20251104; t=1789045734; x=1789650534;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=9jiJj5iXaGRwv5GTBxHDtnHVVhq6FkY3C1mKKWquRtg=;
+        b=ejF/YTVgkw7+tioP1YJwXCzgog2KESlHjsXdgMO2bOeVDc2LjnvtaU9ckeevuDLXMs
+         8A7f0O/EjYe92nnFy+slZna8ihfVuajfc7+7UxrIba36RQ921Ajng8K/H0hSpVnvS6Dx
+         9JRvlfrFMDc27dDTC/GIlpZ5AQOiyZeAae7Lkr1+0Ta51VwbMOSSAyS8vl5vBCLa6j6w
+         +5gOXHBmrQpTzagttLvzdk2JMji3/lOSN+YSd90WG/5yc7A8UZIVlDweQff4tXZhiXoh
+         DJ4EjGkNB9oqT6DwmJHAyb66bCeChO5XXYGM9Y1+lO6EjnSB2rjCWjc8mo8zE7TWIckM
+         fMvg==
+X-Forwarded-Encrypted: i=1; AKwUvByk1YBGNhhEnzb3aI0fZWrkFmzDrv76S9Qr2WdoMetmwfBg4D32KOREwhJtpqIn8VQgSwYlw9Duo/+54O+LhQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++msemIIYQL5z0FnURZK81yK1KCh8gk7WN3SnZPTX3/2L8B5kpcv
+	PyBSHg70CGdhTyLz+8uTjOhBfttO7rzptR43dGauN17raoi9Mjmw5L4o
+X-Gm-Gg: AYBFou23AAUPcy90od7Em7gA4U8gYkd+mir1yCKLX2jNxDwA8/vgoRZ1//6ass9B5Z4
+	kdjbwvB5/VqNuY3/ySeTbRfgTn1hluhCquYHlz26d/VJai7gtTdzkzQ+iqgVSmu4KSjxSaUyzN2
+	CQs+HjV3u8O/PIY2x9z5v5x7M4E2cBDkk5k1HZi8QK9UTg7lMaPmmsd/oCJn1eCnrWK3Q76idcj
+	j2VzvPX71YIipCQJzGHkl4C5jEVrrSsM8SKfXcj0mzJKyqCtYO/lt1DrjjNRTIXn170wcxM8duk
+	8O2m3HzotHYaV1DbjPGzSiwPlozJ5bFGn0Iyv+IYX+uKdNAubZNXwSL9AyrNsJri6GsXQohV+mA
+	x4VwoRolDYSH3lIqiLeamedWQLHtsoRI86jmOm1kscXJoWh7zfr+qAz60Gygde7MO/KbSkEGv47
+	/mBCNDTurd9WOBLzAz4MdFwHMtd88LqWNsPzcHbmQ6He5nwp153PNT/tjeJRAuOHxP5CJLyEK4p
+	YEbn+ge2wnYAGv0Ad2Havw/OgwBAki8CPwttGI/brHvCtkfwqFeLgQnLoUvf4CytXg5vd5NbLTT
+	Crw=
+X-Received: by 2002:a05:6000:40dd:b0:47f:9283:1f9a with SMTP id ffacd0b85a97d-485907b118fmr32061495f8f.2.1789045733341;
+        Thu, 10 Sep 2026 06:08:53 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B914600506D8644FC6130D5.dsl.pool.telekom.hu. [2001:4c4e:1b91:4600:506d:8644:fc61:30d5])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-485883c81c3sm51873085f8f.26.2026.09.10.06.08.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Sep 2026 05:08:20 -0700 (PDT)
-Date: Thu, 10 Sep 2026 14:08:20 +0200
-Message-ID: <4d885f9e201df6f48a06f4ab3b27a7f1@gmail.com>
-From: Robin Räber <robin.raebi@gmail.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v11 00/74] Add HDMI 2.0 support to DW HDMI QP TX
-In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
-References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
+        Thu, 10 Sep 2026 06:08:52 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v3] drm/rockchip: vop2: Scale the AXI clock to the bandwidth the mode needs
+Date: Thu, 10 Sep 2026 15:08:24 +0200
+Message-ID: <20260910130824.6587-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_050824_481204_AEBEF0B7 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20260910_060855_830941_100E5258 
+X-CRM114-Status: GOOD (  35.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,93 +93,591 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============5525984024559501981=="
+Cc: Simona Vetter <simona@ffwll.ch>, Igor Paunovic <royalnet026@gmail.com>, Owen <support@armdesigner.com>, linux-kernel@vger.kernel.org, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, Maxime Ripard <mripard@kernel.org>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5525984024559501981==
-Content-Type: text/plain
+VOP2 fetches the scanout data for all of its video ports over a single
+AXI clock.  On RK3588 that clock is pinned to 500 MHz by the device tree
+and nothing ever raises it, so a mode whose pixel rate outruns what the
+AXI clock can deliver underruns the internal scanout FIFO.  The hardware
+reports this as POST_BUF_EMPTY and the picture is corrupted.
 
-Hi Cristian,
+3840x2160@120 over DisplayPort is such a mode.  Measured on an Orange Pi
+5 Plus by moving the rate at runtime while the mode was up, with dclk
+unchanged at 594 MHz throughout, so that the AXI rate was the only
+variable:
 
-I tested this series on a Xunlong Orange Pi 5 (RK3588S) driving an
-AOC Q32G1WG4 monitor (2560x1440@144, TMDS char rate 592 MHz) and can
-report that scrambling works, with one interop issue described below.
+  500 MHz: ~594000 suppressed vop2_isr callbacks per 5 s, corrupted
+  750 MHz: no POST_BUF_EMPTY at all for the 42 s the phase lasted, clean
+  500 MHz: ~607000 suppressed callbacks per 5 s, corrupted again
 
-A note on the test base: drm-misc-next at the series' base commit does
-not boot on this board for reasons unrelated to the series (the
-unpatched base commit hangs early as well; I can dig into that
-separately). I therefore backported the series onto v7.2.3, dropping
-the vc4/sun4i/tests patches and adjusting for minor context drift in
-drm_connector.c and the scdc/hdmi helpers. The dw-hdmi-qp, rockchip,
-bridge_connector and helper patches applied without functional
-changes.
+Both transitions are immediate.  Heiko Stuebner reports the same
+starvation on different hardware [1].
 
-With the backport applied, all four 2560x1440 modes (60/100/120/144)
-are exposed and 144 Hz works, but scrambling initially failed:
+The requirement follows each port's pixel rate rather than its interface
+clock, and it is per port rather than aggregate.  Two measurements at
+500 MHz pin that down:
 
-  rockchip-drm display-subsystem: [drm] Sink doesn't support scrambling.
-  dwhdmiqp-rockchip fde80000.hdmi: Failed to enable scrambling: -22
+  - a single port scanning out 3840x2160@120 underruns, while the same
+    composed pixel rate spread over three ports - 3840x2160@60 on one
+    and 3840x2160@30 on two others - is clean for a minute with no
+    underrun on any of them.  The totals are equal to the pixel:
+    3840*2160*120 == 3840*2160*(60+30+30).
 
-The cause is the monitor's EDID: its HF-VSDB declares a Maximum TMDS
-Character Rate of 600 MHz but leaves the SCDC Present flag unset, so
-drm_scdc_sink_supports_scrambling() rejects it. The SCDC interface of
-this display is nevertheless fully functional: reading SCDC via DDC
-returns sink version 1, writes are accepted, and after the change
-below TMDS_CONFIG reads back 0x03 (scrambling + 40-bit clock ratio)
-with a stable picture at 592 MHz.
+  - 3840x2160@60 is clean where 3840x2160@120 is not, although both run
+    dclk at 594 MHz on this board: the 120 Hz link is YCbCr 4:2:0, which
+    halves dclk without halving the rate at which the port consumes
+    pixels.
 
-Since HDMI 2.0 mandates SCDC support for character rates above
-340 MHz, I worked around it by trusting the declared rate:
+So the condition belongs on each video port's own crtc_clock.  Summing
+across ports would be wrong, and keying on dclk would miss 4:2:0
+entirely.  The threshold sits between the measured points: 3840x2160@60
+(594000 kHz) and 2560x1440@144 (about 586000 kHz) are both clean at the
+default rate, 3840x2160@120 (1188000 kHz) is not.
 
---- a/drivers/gpu/drm/display/drm_hdmi_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_helper.c
-@@ static bool drm_scdc_sink_supports_scrambling(struct drm_connector *connector)
- {
- 	const struct drm_display_info *info = &connector->display_info;
+Track the requirement as a global atomic state object: a CRTC that is
+being modeset records what its port needs during its own atomic check,
+and the rate applied is the maximum over the ports, never below the
+rate the platform set up.  Because the clock is shared, it is programmed
+from the commit tail rather than from the per-CRTC enable and disable
+hooks: it is held at the rate both the old and the new configuration
+need from before the first CRTC is touched until every CRTC has moved
+over, and only then settled at what the new configuration needs.
+Commits that share nothing but this object are ordered through it, the
+way vc4 orders commits that share its core clock: each modeset commit
+records itself per port and the next one waits for those before it
+touches the clock.  The settle write goes out before commit_hw_done(),
+which is all the next commit waits for, so it cannot land after that
+commit's own.  Page flips do not take the object and are not held up by
+it.
+
+rockchip_drm_private carries a pointer to the hooks, and only VOP2 on
+RK3588 sets it, so the commit tail is unchanged for every other Rockchip
+SoC.
+
+Tested on the same board on a drm-misc-next based tree plus the dw-dp
+and Rockchip USBDP PHY series, which DisplayPort Alt Mode needs in order
+to come up at all, with three outputs up (DisplayPort and two HDMI):
+3840x2160@120 on the DisplayPort output selects 750 MHz, 3840x2160@60
+returns the clock to 500 MHz and going back raises it again; disabling
+both HDMI outputs at once while the DisplayPort one runs 3840x2160@120
+keeps 750 MHz throughout and re-enabling them keeps it; the same
+sequence at 3840x2160@60 stays at 500 MHz; no POST_BUF_EMPTY in any of
+it.
+
+Link: https://lore.kernel.org/all/20260808104240.13776-1-royalnet026@gmail.com/
+Link: https://lore.kernel.org/all/20767137.geO5KgaWL5@diego/ [1]
+Assisted-by: LLM sparse checkpatch
+Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
+---
+v3:
+ - Program the clock from the commit tail instead of the per-CRTC enable
+   and disable hooks, and order commits that share only the private
+   object through it - the full vc4 pattern rather than half of it.  The
+   Sashiko review of v2 [2] found that without an atomic_commit_setup
+   hook two non-blocking commits sharing only the private object can
+   apply their rates out of order, and that a commit disabling several
+   CRTCs lowered the clock from the first atomic_disable while the other
+   ports were still scanning out.  Chaoyi Chen was fine with placing it
+   in atomic_commit_tail [3].  The settle write is issued before
+   drm_atomic_helper_commit_hw_done(), since the next commit only waits
+   for that.
+ - Only modeset commits take the private object, so a page flip on one
+   port no longer waits for the previous commit on every other port.
+ - Free the RGB encoder when drm_atomic_private_obj_init() fails [2].
+ - Initialise state->obj in create_state as every other private object
+   does; v2 left it NULL and the debugfs state dump dereferences it.
+ - Report a failed clk_set_rate() instead of ignoring it.
+ - Retested with three outputs, including disabling two of them at
+   once; see the commit message.  The out-of-order case is not one I
+   can provoke from userspace: it is covered by the ordering, not by a
+   measurement.
+ - Boardcon reports tearing during multi-CRTC reconfiguration in
+   production multi-display use on their RK3588 board (dual HDMI plus DP,
+   three screens to one), a sustained 3-5 C junction increase at 750 MHz
+   on a fanless RK3588J, and offered to test [4]; Cc'd.
+ - Mainline has no other code touching this clock.  A tree that carries
+   the downstream "Scale ACLK rate up for RK3588 FRL display modes"
+   change should not carry both: this patch keys on the pixel rate,
+   which is what the FIFO sees, and the two must not fight over the
+   clock.
+ - Rebased on drm-misc-next 0878e6053d01d.
+
+v2: https://lore.kernel.org/all/20260813094614.9072-1-royalnet026@gmail.com/
+ - Each CRTC records its own requirement in a global atomic state object
+   instead of the rate being computed by walking the CRTC list, which
+   read state the commit holds no lock for (Sashiko review of v1).
+
+[2] https://lore.kernel.org/all/20260813100027.349761F000E9@smtp.kernel.org/
+[3] https://lore.kernel.org/all/8d521014-3202-4f62-ba1a-ebe126506048@rock-chips.com/
+[4] https://lore.kernel.org/all/2026081916331211222713@armdesigner.com/
+
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h  |  24 ++
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c   |  54 ++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 227 +++++++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  25 ++
+ 4 files changed, 329 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+index 4705dc6b8bd7d..a7e20a076145f 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+@@ -61,18 +61,42 @@ struct rockchip_crtc_state {
+ #define to_rockchip_crtc_state(s) \
+ 		container_of(s, struct rockchip_crtc_state, base)
  
--	return info->is_hdmi &&
--	       info->hdmi.scdc.supported &&
--	       info->hdmi.scdc.scrambling.supported;
-+	if (!info->is_hdmi)
-+		return false;
++/*
++ * A VOP applies its hardware state one CRTC at a time.  A VOP with a resource
++ * that all of its CRTCs share, such as the AXI clock on RK3588, needs to see
++ * the commit as a whole in order to program it: commits that only share that
++ * resource have to be ordered, and the resource has to be held at the level
++ * both the old and the new configuration need until every CRTC has moved
++ * over.  The VOP points rockchip_drm_private.commit_hooks at its hooks at
++ * bind time, and the atomic commit helpers call them.  All three are
++ * required.
++ */
++struct rockchip_drm_commit_hooks {
++	/* From drm_mode_config_helper_funcs.atomic_commit_setup. */
++	int (*setup)(struct rockchip_drm_commit_hooks *hooks,
++		     struct drm_atomic_commit *state);
++	/* Start of the commit tail, before any CRTC is touched. */
++	void (*tail_begin)(struct rockchip_drm_commit_hooks *hooks,
++			   struct drm_atomic_commit *state);
++	/* After every CRTC has moved over, before commit_hw_done(). */
++	void (*tail_end)(struct rockchip_drm_commit_hooks *hooks,
++			 struct drm_atomic_commit *state);
++};
++
+ /*
+  * Rockchip drm private structure.
+  *
+  * @crtc: array of enabled CRTCs, used to map from "pipe" to drm_crtc.
+  * @num_pipe: number of pipes for this device.
+  * @mm_lock: protect drm_mm on multi-threads.
++ * @commit_hooks: set by a VOP that has to see whole commits, or NULL.
+  */
+ struct rockchip_drm_private {
+ 	struct iommu_domain *domain;
+ 	struct device *iommu_dev;
+ 	struct mutex mm_lock;
+ 	struct drm_mm mm;
++	struct rockchip_drm_commit_hooks *commit_hooks;
+ };
+ 
+ struct rockchip_encoder {
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+index 45588b79b3d4d..15560b1b004e1 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fb.c
+@@ -8,6 +8,7 @@
+ 
+ #include <drm/drm.h>
+ #include <drm/drm_atomic.h>
++#include <drm/drm_atomic_helper.h>
+ #include <drm/drm_damage_helper.h>
+ #include <drm/drm_fourcc.h>
+ #include <drm/drm_framebuffer.h>
+@@ -24,8 +25,59 @@ static const struct drm_framebuffer_funcs rockchip_drm_fb_funcs = {
+ 	.dirty	       = drm_atomic_helper_dirtyfb,
+ };
+ 
++static int rockchip_atomic_commit_setup(struct drm_atomic_commit *state)
++{
++	struct rockchip_drm_private *priv = state->dev->dev_private;
++	struct rockchip_drm_commit_hooks *hooks = priv->commit_hooks;
++
++	if (!hooks)
++		return 0;
++
++	return hooks->setup(hooks, state);
++}
++
++/*
++ * drm_atomic_helper_commit_tail_rpm(), with the VOP's commit hooks: tail_begin
++ * before any CRTC is touched, tail_end once every CRTC has moved over but
++ * before drm_atomic_helper_commit_hw_done().
++ */
++static void rockchip_atomic_commit_tail(struct drm_atomic_commit *state)
++{
++	struct drm_device *dev = state->dev;
++	struct rockchip_drm_private *priv = dev->dev_private;
++	struct rockchip_drm_commit_hooks *hooks = priv->commit_hooks;
++
++	if (hooks)
++		hooks->tail_begin(hooks, state);
++
++	drm_atomic_helper_commit_modeset_disables(dev, state);
++
++	drm_atomic_helper_commit_modeset_enables(dev, state);
++
++	drm_atomic_helper_commit_planes(dev, state,
++					DRM_PLANE_COMMIT_ACTIVE_ONLY);
 +
 +	/*
-+	 * Some displays (e.g. AOC Q32G1WG4) declare a Max TMDS Character
-+	 * Rate above 340 MHz in their HF-VSDB but leave the SCDC Present
-+	 * flag unset, even though SCDC is functional. The spec mandates
-+	 * SCDC support for rates above 340 MHz, so trust the declared rate.
++	 * Every CRTC has moved over by now: a disabled one stopped inside its
++	 * atomic_disable, an enabled one runs its new mode.  Settle before
++	 * commit_hw_done(): after it the state may not be touched, and the
++	 * next commit only waits for it.
 +	 */
-+	if (info->max_tmds_clock > 340000)
-+		return true;
++	if (hooks)
++		hooks->tail_end(hooks, state);
 +
-+	return info->hdmi.scdc.supported &&
-+	       info->hdmi.scdc.scrambling.supported;
++	drm_atomic_helper_fake_vblank(state);
++
++	drm_atomic_helper_commit_hw_done(state);
++
++	drm_atomic_helper_wait_for_vblanks(dev, state);
++
++	drm_atomic_helper_cleanup_planes(dev, state);
++}
++
+ static const struct drm_mode_config_helper_funcs rockchip_mode_config_helpers = {
+-	.atomic_commit_tail = drm_atomic_helper_commit_tail_rpm,
++	.atomic_commit_setup = rockchip_atomic_commit_setup,
++	.atomic_commit_tail = rockchip_atomic_commit_tail,
+ };
+ 
+ static struct drm_framebuffer *
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index b2f3a579bbe52..cf574e48f9561 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -104,6 +104,20 @@ enum vop2_afbc_format {
+ 
+ #define VOP2_MAX_DCLK_RATE		600000000UL
+ 
++/*
++ * All video ports fetch their scanout data over a single AXI clock.  The
++ * hardware buffers that data in an internal FIFO which is drained at the
++ * pixel rate, so a mode whose pixel rate outruns the fill rate underruns the
++ * FIFO, which the hardware reports as POST_BUF_EMPTY and which shows up as a
++ * corrupted image.  Raise the AXI clock for modes that need it.
++ *
++ * The requirement follows the pixel rate rather than the interface clock: a
++ * YCbCr 4:2:0 link halves dclk but not the rate at which the video port
++ * consumes pixels.
++ */
++#define VOP2_ACLK_RATE_HIGH		750000000UL
++#define VOP2_HIGH_BW_PIXCLK_KHZ		1000000
++
+ /*
+  * bus-format types.
+  */
+@@ -1008,6 +1022,174 @@ static bool vop2_gamma_lut_in_use(struct vop2 *vop2, struct vop2_video_port *vp)
+ 	return gamma_en_vp_id != nr_vps && gamma_en_vp_id != vp->id;
  }
+ 
++static struct drm_private_state *
++vop2_aclk_create_state(struct drm_private_obj *obj)
++{
++	struct vop2_aclk_state *state;
++
++	state = kzalloc_obj(*state);
++	if (!state)
++		return ERR_PTR(-ENOMEM);
++
++	__drm_atomic_helper_private_obj_create_state(obj, &state->base);
++
++	return &state->base;
++}
++
++static struct drm_private_state *
++vop2_aclk_duplicate_state(struct drm_private_obj *obj)
++{
++	const struct vop2_aclk_state *old_state = to_vop2_aclk_state(obj->state);
++	struct vop2_aclk_state *state;
++
++	state = kzalloc_obj(*state);
++	if (!state)
++		return NULL;
++
++	__drm_atomic_helper_private_obj_duplicate_state(obj, &state->base);
++
++	/* The pending commits belong to the old state and are not carried over. */
++	memcpy(state->vp_rate, old_state->vp_rate, sizeof(state->vp_rate));
++
++	return &state->base;
++}
++
++static void vop2_aclk_destroy_state(struct drm_private_obj *obj,
++				    struct drm_private_state *state)
++{
++	struct vop2_aclk_state *aclk_state = to_vop2_aclk_state(state);
++	unsigned int i;
++
++	for (i = 0; i < ARRAY_SIZE(aclk_state->pending_commit); i++)
++		if (aclk_state->pending_commit[i])
++			drm_crtc_commit_put(aclk_state->pending_commit[i]);
++
++	kfree(aclk_state);
++}
++
++static const struct drm_private_state_funcs vop2_aclk_state_funcs = {
++	.atomic_create_state = vop2_aclk_create_state,
++	.atomic_duplicate_state = vop2_aclk_duplicate_state,
++	.atomic_destroy_state = vop2_aclk_destroy_state,
++};
++
++/* The rate that satisfies every video port, never below the platform's own. */
++static unsigned long vop2_aclk_rate(struct vop2 *vop2,
++				    const struct vop2_aclk_state *aclk_state)
++{
++	unsigned long rate = vop2->aclk_rate_normal;
++	unsigned int i;
++
++	for (i = 0; i < vop2->data->nr_vps; i++)
++		rate = max(rate, aclk_state->vp_rate[i]);
++
++	return rate;
++}
++
++static void vop2_set_aclk_rate(struct vop2 *vop2, unsigned long rate)
++{
++	int ret;
++
++	ret = clk_set_rate(vop2->aclk, rate);
++	if (ret)
++		drm_err(vop2->drm, "failed to set aclk to %lu Hz: %d\n", rate, ret);
++}
++
++static struct vop2 *vop2_from_commit_hooks(struct rockchip_drm_commit_hooks *hooks)
++{
++	return container_of(hooks, struct vop2, commit_hooks);
++}
++
++/*
++ * Remember which commit last touched each video port.  The next commit that
++ * takes the shared state waits for all of them in vop2_commit_tail_begin()
++ * before it touches the clock, so two commits that only share the clock cannot
++ * apply their rates out of order.  Only commits that take the shared state get
++ * here; a page flip neither records itself nor waits.
++ */
++static int vop2_commit_setup(struct rockchip_drm_commit_hooks *hooks,
++			     struct drm_atomic_commit *state)
++{
++	struct vop2 *vop2 = vop2_from_commit_hooks(hooks);
++	struct drm_private_state *priv_state;
++	struct vop2_aclk_state *aclk_state;
++	struct drm_crtc_state *crtc_state;
++	struct drm_crtc *crtc;
++	unsigned int i;
++
++	priv_state = drm_atomic_get_new_private_obj_state(state, &vop2->aclk_obj);
++	if (!priv_state)
++		return 0;
++
++	aclk_state = to_vop2_aclk_state(priv_state);
++
++	for_each_new_crtc_in_state(state, crtc, crtc_state, i) {
++		struct vop2_video_port *vp = to_vop2_video_port(crtc);
++
++		aclk_state->pending_commit[vp->id] =
++			drm_crtc_commit_get(crtc_state->commit);
++	}
++
++	return 0;
++}
++
++/*
++ * Hold the clock at the rate that both the old and the new configuration need
++ * for the whole commit: a port that is being disabled keeps scanning out until
++ * its atomic_disable has waited for it to stop, and a port that is being
++ * enabled needs its rate before it starts.
++ */
++static void vop2_commit_tail_begin(struct rockchip_drm_commit_hooks *hooks,
++				   struct drm_atomic_commit *state)
++{
++	struct vop2 *vop2 = vop2_from_commit_hooks(hooks);
++	struct drm_private_state *old_priv_state, *new_priv_state;
++	struct vop2_aclk_state *old_aclk_state;
++	unsigned int i;
++
++	old_priv_state = drm_atomic_get_old_private_obj_state(state, &vop2->aclk_obj);
++	new_priv_state = drm_atomic_get_new_private_obj_state(state, &vop2->aclk_obj);
++	if (!old_priv_state || !new_priv_state)
++		return;
++
++	old_aclk_state = to_vop2_aclk_state(old_priv_state);
++
++	for (i = 0; i < ARRAY_SIZE(old_aclk_state->pending_commit); i++) {
++		struct drm_crtc_commit *commit = old_aclk_state->pending_commit[i];
++
++		if (!commit)
++			continue;
++
++		if (drm_crtc_commit_wait(commit))
++			drm_err(vop2->drm, "timed out waiting for the commit on vp%u\n", i);
++
++		drm_crtc_commit_put(commit);
++		old_aclk_state->pending_commit[i] = NULL;
++	}
++
++	vop2_set_aclk_rate(vop2,
++			   max(vop2_aclk_rate(vop2, old_aclk_state),
++			       vop2_aclk_rate(vop2, to_vop2_aclk_state(new_priv_state))));
++}
++
++/*
++ * Every port has moved over: settle at the rate the new configuration needs.
++ * Runs before drm_atomic_helper_commit_hw_done(), so the next commit, which
++ * waits for hw_done, never sees this write land after its own.
++ */
++static void vop2_commit_tail_end(struct rockchip_drm_commit_hooks *hooks,
++				 struct drm_atomic_commit *state)
++{
++	struct vop2 *vop2 = vop2_from_commit_hooks(hooks);
++	struct drm_private_state *priv_state;
++
++	priv_state = drm_atomic_get_new_private_obj_state(state, &vop2->aclk_obj);
++	if (!priv_state)
++		return;
++
++	vop2_set_aclk_rate(vop2, vop2_aclk_rate(vop2, to_vop2_aclk_state(priv_state)));
++}
++
+ static void vop2_crtc_atomic_disable(struct drm_crtc *crtc,
+ 				     struct drm_atomic_commit *state)
+ {
+@@ -1993,6 +2175,26 @@ static int vop2_crtc_atomic_check(struct drm_crtc *crtc,
+ 	if (ret)
+ 		return ret;
+ 
++	/*
++	 * Only a modeset can change what this port needs from the AXI clock.
++	 * A page flip does not take the shared state, so it neither waits for
++	 * nor holds up commits on the other ports.
++	 */
++	if (vp->vop2->version == VOP_VERSION_RK3588 &&
++	    drm_atomic_crtc_needs_modeset(crtc_state)) {
++		struct drm_private_state *priv_state;
++
++		priv_state = drm_atomic_get_private_obj_state(state,
++							      &vp->vop2->aclk_obj);
++		if (IS_ERR(priv_state))
++			return PTR_ERR(priv_state);
++
++		to_vop2_aclk_state(priv_state)->vp_rate[vp->id] =
++			crtc_state->active &&
++			crtc_state->adjusted_mode.crtc_clock > VOP2_HIGH_BW_PIXCLK_KHZ ?
++			VOP2_ACLK_RATE_HIGH : 0;
++	}
++
+ 	drm_atomic_crtc_state_for_each_plane(plane, crtc_state)
+ 		nplanes++;
+ 
+@@ -2875,6 +3077,8 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+ 		return dev_err_probe(drm->dev, PTR_ERR(vop2->aclk),
+ 				     "failed to get aclk source\n");
+ 
++	vop2->aclk_rate_normal = clk_get_rate(vop2->aclk);
++
+ 	vop2->pclk = devm_clk_get_optional(vop2->dev, "pclk_vop");
+ 	if (IS_ERR(vop2->pclk))
+ 		return dev_err_probe(drm->dev, PTR_ERR(vop2->pclk),
+@@ -2944,10 +3148,27 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+ 
+ 	rockchip_drm_dma_init_device(vop2->drm, vop2->dev);
+ 
++	ret = drm_atomic_private_obj_init(vop2->drm, &vop2->aclk_obj,
++					  &vop2_aclk_state_funcs);
++	if (ret)
++		goto err_rgb;
++
++	if (vop2->version == VOP_VERSION_RK3588) {
++		struct rockchip_drm_private *priv = drm->dev_private;
++
++		vop2->commit_hooks.setup = vop2_commit_setup;
++		vop2->commit_hooks.tail_begin = vop2_commit_tail_begin;
++		vop2->commit_hooks.tail_end = vop2_commit_tail_end;
++		priv->commit_hooks = &vop2->commit_hooks;
++	}
++
+ 	pm_runtime_enable(&pdev->dev);
+ 
+ 	return 0;
+ 
++err_rgb:
++	if (vop2->rgb)
++		rockchip_rgb_fini(vop2->rgb);
+ err_crtcs:
+ 	vop2_destroy_crtcs(vop2);
+ 
+@@ -2957,9 +3178,15 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+ static void vop2_unbind(struct device *dev, struct device *master, void *data)
+ {
+ 	struct vop2 *vop2 = dev_get_drvdata(dev);
++	struct rockchip_drm_private *priv = vop2->drm->dev_private;
+ 
+ 	pm_runtime_disable(dev);
+ 
++	if (priv->commit_hooks == &vop2->commit_hooks)
++		priv->commit_hooks = NULL;
++
++	drm_atomic_private_obj_fini(&vop2->aclk_obj);
++
+ 	if (vop2->rgb)
+ 		rockchip_rgb_fini(vop2->rgb);
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index ffcb39c130aa1..cfca58d6c7403 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -8,6 +8,7 @@
+ #define _ROCKCHIP_DRM_VOP2_H
+ 
+ #include <linux/regmap.h>
++#include <drm/drm_atomic.h>
+ #include <drm/drm_modes.h>
+ #include <dt-bindings/soc/rockchip,vop2.h>
+ #include "rockchip_drm_drv.h"
+@@ -286,6 +287,26 @@ struct vop2_data {
+ 	unsigned int soc_id;
+ };
+ 
++/*
++ * The AXI clock is shared by every video port, so the rate it has to run at is
++ * a property of the device rather than of one CRTC.  Track it as a global
++ * atomic state object: each CRTC records its own requirement during atomic
++ * check, and the rate applied is the maximum over the ports.  Going through
++ * the atomic state is what makes this safe - a commit never reads the state of
++ * a CRTC it does not hold a lock for.
++ */
++struct vop2_aclk_state {
++	struct drm_private_state base;
++	unsigned long vp_rate[ROCKCHIP_MAX_CRTC];
++	/*
++	 * The commit that last touched each video port.  The next commit to
++	 * that port waits for it before it changes the clock.
++	 */
++	struct drm_crtc_commit *pending_commit[ROCKCHIP_MAX_CRTC];
++};
++
++#define to_vop2_aclk_state(x) container_of(x, struct vop2_aclk_state, base)
++
+ struct vop2 {
+ 	u32 version;
+ 	struct device *dev;
+@@ -326,6 +347,10 @@ struct vop2 {
+ 	unsigned int enable_count;
+ 	struct clk *hclk;
+ 	struct clk *aclk;
++	/* AXI clock rate set up by the platform, used as the lower bound. */
++	unsigned long aclk_rate_normal;
++	struct drm_private_obj aclk_obj;
++	struct rockchip_drm_commit_hooks commit_hooks;
+ 	struct clk *pclk;
+ 	struct clk *pll_hdmiphy0;
+ 	struct clk *pll_hdmiphy1;
 
-I'm happy to test further revisions on this hardware, and to submit
-the above as a proper patch if you think this is the right place to
-handle such non-conformant EDIDs.
+base-commit: 0878e6053d01d87c75bb1d00b0187e8a2e105ead
+-- 
+2.43.0
 
-For the dw-hdmi-qp/rockchip/helper parts, on the backport described
-above:
-
-Tested-by: Robin Räber <robin.raebi@gmail.com>
-
-Best regards,
-Robin
-
-
---===============5525984024559501981==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5525984024559501981==--
