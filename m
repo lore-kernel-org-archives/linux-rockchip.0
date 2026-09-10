@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E1D9C88E4F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5805C88E4D
 	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2026 20:08:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QYtB58ZbZIYFNwYhMoLafOgvEaTQ8Ln79BK9ELWEvIs=; b=fKjMIh0FXhED8v
-	AUis7BLyBeSlOIUzxOxTiGyjqBQbj1E2ZWd+gixtxTiGcM4zxwPlmGpJPiY0+ZLAcoH7CXbwU9nyT
-	9g+GIFPEhnX+YR/yhy9XmTKpBUK5aR1bn2AMzoZ6HWx90VZTIo1sjdyudL67vfdyqQi4xCxzQj2ed
-	qmLjmJj3f46PCtnA+S0Nf3tvwn5pMcL36U+vxmr2L3cfhZ8NXJrHA4n/t81tlTGPgQBF81U4hrmFt
-	LnahCl4rDGAQ9N5m0i6gR3FfiPy90oLKId5/ReoBfebbkNd5YMM+ExO2qcflblJMBNPsDwb5kzN4K
-	r0r6MrFxci1Ymv9PlMlw==;
+	List-Owner; bh=hI+0yIAD8h+BnVZPj8pL4GpXeWl/kVHYhTAHzNgJemI=; b=bVO166HkIpcB08
+	IS5pzVymbxU6HIE3xCFPtBKH9zWaRDkN/lllEoah1XBpRmytQJcLnYNcIM6wKV+M4tK4WhKy5jsXW
+	x3qtZyTpUmScd6eiIXv/mgkcSuYwrhXrHVcpT/KVNjVN5KS1/kwRQBzJAyNh3a1NQKdA3QfPprfdb
+	RCiPcK1AQyP/4Zpsj2PCnHuI/l5P8GpagA3opWmnxH1OGGqB93DSrwVK8P72XI4vAhQNPvX5hqLtj
+	WiS7aTmBsOykz9mBea45F7/VLzehaeX17dW+LgaF1dxT7YrBdztfzG6dDCLmmPqRwxhn0LB7SFgK7
+	w2pCm/YgMNnYGlew0dNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4l45-0000000FIsW-1kxi;
+	id 1x4l45-0000000FIsF-142B;
 	Thu, 10 Sep 2026 20:08:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4l43-0000000FIpy-1p6v;
+	id 1x4l43-0000000FIpu-1jFl;
 	Thu, 10 Sep 2026 20:08:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DD31D44801;
+	by sea.source.kernel.org (Postfix) with ESMTP id 91D9B44510;
 	Thu, 10 Sep 2026 20:08:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BECF7C2BCFD;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6944DC2BCFC;
 	Thu, 10 Sep 2026 20:08:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1789070886;
-	bh=TkgcEqovDSDZTjRFITYc6jyBnY8bUKfb7VvOWvcb4Ig=;
+	bh=5wu60YY8hr70mVzYt0XxCakhALGBCi7sv7iUpB7mlwY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=cHZQl3BZ4qxr7plSjoyqVajDdC8B4fLAVXBfsCBOCifcPDSsehlPHIFRTMby/G9HO
-	 BXBYEd4qH4r7yHx67j0rVuUEj498eBeKuuj3qC2szP+CepF5mK7GJYXZR177XBqSRg
-	 0ZWmvj6B4CrWJcwL+0Mvr3pGRk2j8d8Z5blNKi8JKyqK8OUqY0va8OVsz7aH56YNd+
-	 FeoQmQR6no4j/uLXb/85uKJuB6E2hAAw5jes1anuZtnIAc/vhiLzXB2mxrKBzgbYiK
-	 OEjXDGbVxyfr5QfoFbQWnvPkjZnbZ3ENcXfJd7XzYMud7SXO/Ddhw9nUVQ9e+5vmXy
-	 aGmXSqHq7J4xQ==
+	b=LA0yt3dX7JMw75UJYa2witcIKJ/M4BNcZqgMMhQI3VyLTbBc8ZtVVYgirCW3q0mUv
+	 mOi8TNWQRsbF9m7xwoxtAGFR7C2Ow4tGu/sL9HVEcY77EXlonXEWm3rdv6nvyz74pe
+	 UTTXfDLUTXVatCHle3FHFYt2JC9cIhNz2nuWG00Dr+v78bJvwTawPRwFUtsTYgXoAu
+	 dn1E1neOjYRabT9LUli6IG5tiWFQP+UNeDlJToU+SwCWlMU2DIpug93O/XZRVHPVi8
+	 7nUnaZ6EV4X5e7s8vv1XvWVXmhtGlaaQUIul/0dtNu3KpMK1GjISuaiLZPgTZLrqB/
+	 ZQBH/OhiKJVaQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB4C2C88E46;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DFEAC88E47;
 	Thu, 10 Sep 2026 20:08:06 +0000 (UTC)
 From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
-Date: Thu, 10 Sep 2026 22:07:56 +0200
-Subject: [PATCH v5 6/7] arm64: dts: rockchip: describe PCIe RTL8125
- Ethernet on NanoPi R6C
+Date: Thu, 10 Sep 2026 22:07:53 +0200
+Subject: [PATCH v5 3/7] arm64: dts: rockchip: describe PCIe RTL8125
+ Ethernet on ROCK 5 family
 MIME-Version: 1.0
-Message-Id: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-6-c1b9e5f10cd6@pardini.net>
+Message-Id: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-3-c1b9e5f10cd6@pardini.net>
 References: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-0-c1b9e5f10cd6@pardini.net>
 In-Reply-To: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-0-c1b9e5f10cd6@pardini.net>
 To: Heiner Kallweit <hkallweit1@gmail.com>, nic_swsd@realtek.com, 
@@ -63,17 +63,17 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, Ricardo Pardini <ricardo@pardini.net>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1602;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2524;
  i=ricardo@pardini.net; h=from:subject:message-id;
- bh=MisAjbBWjrxNVve9XEAprLuxRBoFAEwbTkAxVvkz9Fo=;
- b=owGbwMvMwMFoHWf/eN7xty8ZT6slMWQt5lORqT659ajnQj3O2X/Ld2hH7/C3emXIetGu1prjx
- IGDDvOmdzL6szAwcjBYiimyrJFQ5vm2/tWpOx4dk2EGsTKBTJEWaWAAAhYGvtzEvFIjHSM9U21D
- PUMjHQMdYwYuTgGY6lt17P9M7ZgscsVF8lRstkz1Zxd5e4VVv7Lx19RAd9cjef8uTm9++6PDTUT
- ptMa0/P0CTSnbXAKCfc3L5m0vN/S+FeEnH/pin2V6n7L3gudM+ss87+t+nXC4oH+bXdrRv+n2ao
- ZNeUoGbE67GmculChuO8KR0/m9+LjF6u/+AWcdnEQqHvN8fK5jwmMm/fKZ1q7pPR0Xz1lzeV3Ym
- 3JZyuaow2PtC1dTaif8LeJojvWYXBBdOKViSdHUSdNj0tdxCNhVKudMPbLT4YGK8bv/sfafoo8u
- Fw82NVtk69m4kzVx8pLLktUM9Wwpk1/9/e29jEEtKcswIs8r9LlCzivrX+tnzubn0zw1u2j5i7/
- tDmJPAA==
+ bh=ffaFeWf1v4NEL+Sxh8Gv2aKFIyBgC3G4Y4ipl5QLt2k=;
+ b=owEBiQF2/pANAwAIATteP+Oex+3pAcsmYgBqow4krHHkgKTxlAbASVrEcoNm9tETmIBoOeDz8
+ ntOML6LmuSJAU8EAAEIADkWIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCaqMOJBsUgAAAAAAEAA5t
+ YW51MiwyLjUrMS4xMiwwLDMACgkQO14/457H7enWIwf8C1uWYC4gsRWUikmFyCTT3IuXmIY7pF+
+ 4NXwMX/u4dIkzRUjax1zKu2SQXojs0XEzomBqjaYNisF1dy6v0mzB73QqHGVhrzK0btB/yAwgm4
+ 5PnF6A2vvle8UMBRCeOfwoory3AIsjoRoZ73ySkR4AI2N9sfL4sKsfIU3l2bENkmCtuPW/dOwFv
+ FAS8HmjAWRAoQMnSGYDzisxKyMv+d4bo/gqL/GqefTNLOzopY3096BQpXbQoyYI6q5HqjtQ3IvJ
+ 8F3zI1IxBBRZ566rK33Xw11jQIbB4MC9z1dm2VnP8R0Bjb2K67FxzY5oIC36q+SlBYVLfrlmzU8
+ 9/4l9MlNv7w==
 X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
  fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
 X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
@@ -98,57 +98,91 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Ricardo Pardini <ricardo@pardini.net>
 
-The FriendlyElec NanoPi R6C carries one on-board Realtek RTL8125 NIC
-(the LAN port; WAN uses the on-SoC gmac1 RGMII PHY) behind pcie2x1l1.
+The Radxa ROCK 5B / 5B+ / 5T all carry on-board Realtek RTL8125 NICs.
 
-Describe the fixed function node and attach an ethernet1 alias
-(ethernet0 stays mapped to gmac1), so that U-Boot's fdt_fixup_ethernet()
-can inject a mac-address from its eth1addr env, for a stable MAC
-across boots that both U-Boot and the kernel agree on.
+Describe the fixed function nodes and attach ethernet0/ethernet1 aliases,
+so that U-Boot's fdt_fixup_ethernet() can fill in the MAC from its
+ethaddr/eth1addr env, for stable MACs across boots that both U-Boot
+and the kernel agree on.
 
-The function node is added in this .dts (not the shared
-rk3588s-nanopi-r6.dtsi), since on the R6C the dtsi's second
-RTL8125-capable lane is empty compared to the R6S.
+The RTL8125 on pcie2x1l2 is shared by all three variants. The ROCK 5T
+additionally describes pcie2x1l1 with its second RTL8125.
 
 Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ .../arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi | 15 +++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts        | 18 ++++++++++++++++++
+ 2 files changed, 33 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
-index ccc5e46275176..b142df0b0e180 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
-@@ -7,8 +7,29 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
+index 13aaf63ad0936..fd0520b47ddb8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
+@@ -10,6 +10,7 @@
+ 
  / {
- 	model = "FriendlyElec NanoPi R6C";
- 	compatible = "friendlyarm,nanopi-r6c", "rockchip,rk3588s";
+ 	aliases {
++		ethernet0 = &rtl_eth0;
+ 		mmc0 = &sdhci;
+ 		mmc1 = &sdmmc;
+ 		mmc2 = &sdio;
+@@ -488,6 +489,20 @@ &pcie2x1l2 {
+ 	reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
+ 	vpcie3v3-supply = <&vcc3v3_pcie2x1l2>;
+ 	status = "okay";
 +
-+	aliases {
-+		ethernet1 = &rtl_eth1;
++	pcie@0,0 {
++		reg = <0x400000 0 0 0 0>;
++		#address-cells = <3>;
++		#size-cells = <2>;
++		ranges;
++		device_type = "pci";
++		bus-range = <0x41 0x4f>;
++
++		rtl_eth0: ethernet@0,0 {
++			compatible = "pci10ec,8125";
++			reg = <0x410000 0 0 0 0>;
++		};
 +	};
  };
  
- &lan2_led {
- 	label = "user_led";
- };
+ &pcie30phy {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
+index 425036146b6d9..b1a3e4b2165f9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
+@@ -8,6 +8,10 @@ / {
+ 	model = "Radxa ROCK 5T";
+ 	compatible = "radxa,rock-5t", "rockchip,rk3588";
+ 
++	aliases {
++		ethernet1 = &rtl_eth1;
++	};
 +
-+&pcie2x1l1 {
-+	/* on-board RTL8125 2.5GbE NIC */
+ 	analog-sound {
+ 		compatible = "audio-graph-card";
+ 		label = "rk3588-es8316";
+@@ -76,6 +80,20 @@ &pcie2x1l1 {
+ 	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+ 	vpcie3v3-supply = <&vcc3v3_pcie2x1l1>;
+ 	status = "okay";
++
 +	pcie@0,0 {
 +		reg = <0x300000 0 0 0 0>;
 +		#address-cells = <3>;
 +		#size-cells = <2>;
 +		ranges;
 +		device_type = "pci";
-+		bus-range = <0x30 0x3f>;
++		bus-range = <0x31 0x3f>;
 +
 +		rtl_eth1: ethernet@0,0 {
 +			compatible = "pci10ec,8125";
 +			reg = <0x310000 0 0 0 0>;
 +		};
 +	};
-+};
+ };
+ 
+ &pcie30phy {
 
 -- 
 2.55.0
