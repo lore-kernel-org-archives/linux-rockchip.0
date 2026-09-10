@@ -4,65 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A1A0C88E40
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2026 13:35:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1531C88E40
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2026 13:36:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3XP+Tww9VI6dz2nNFH60+jTsuEaYl03n2nZCJfGhBgQ=; b=3RyBRtxLbTQpJR
-	jc1bYe3KhUeH6GVDSJ1T/FK/9B1ibr7kopOesLvgI/N6WS8Rh7OALKvU1986n3FS933icbyqipuzG
-	zvKChaOWOHmrXs/Jnlyf083P4maq3vi7uY7gC49vg1a4TvBnA3WnafX29TvFe0SVS3h2KUgBBok97
-	sKaL0Lt0iBWB2Nbci/Ai48v0wWAxrfJDxDHuX6MohczaZ6WhJ91V6PikwX+bT7kTzTOFSUUs0rfhc
-	2S8JhqKsy0ZxE476AlMy6a0jY2fIVEAaMA9bAHHoCTw9x3hl6r0Wc+TWL7Hv7Rr+dkkkYMX06a+X8
-	4w+MiQrz4MDejlTVeUaQ==;
+	List-Owner; bh=DkIfkXJGwRChjiuDwNAB8Op4RGi1uj2KtmyO/hkt9aM=; b=NQKeby4gZgkJ8x
+	WDI+58oe4xp9Op/K0DgHcolEwKTYJwfzqrgZEbWqSKAU6BMm9zFL6ArZNXUYx67QXmqwfQ6r4UHsw
+	zXe0tFK4Q4fgjc2pU27YqUVOhWGtQzgwtgyAk8P5N84XGSH4ILIqCp1dubq+2sSynT3K0Nmewm5X8
+	MEC8vbUtR3p1zxOfjXU8xbMYDWjvdzRW5iIt9MquRD5kEEvNZx4I+s/VjKkVwc5woNOwMZvmaJmXB
+	f0q+9uE3dHbCDtD+TxgGXMEq2l8RabrDMfKzB+panx6RnvReTkpXkj7vazZ/RpkXZygZG3I7EpTxu
+	Fpu1uTVFa8jMFRrdqhmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4ewR-0000000EUct-0spD;
-	Thu, 10 Sep 2026 13:35:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x4ewY-0000000EUqQ-1Y4t;
+	Thu, 10 Sep 2026 13:35:58 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4ewK-0000000EUP8-3pOk;
-	Thu, 10 Sep 2026 13:35:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=oFRm/871PHRiIn7Xj60JFenQPh1lLDVpxq1iC0520Mc=; b=HcKVH1WMEURbhND4HgRQaNv11T
-	vgoKw0F9vi7c7tFYDp+/NbK9TGXIBlUSE/ZrOxld/Bp3E2mbitHF/Uy3yNSSs9rKJKGTy48I1sJ0c
-	4878io0OyJomOO9kSWNdXdrS/1edXI746MDNJtq8jSXmDbzsrPCwoybwPIkHW693co38Kh2qnhrod
-	Y5OaxTj+9JxX45oc+40u0QOaJ9m/JhvbyZIQCBUtwPEzr5sD2R27/7GZBCap5Q79nixcMO+hda8j6
-	bh8Hb1fvSbRHbLxV2r40L/uSrb45rQp1ZLjYnHLawSvK7KvCXxDy8AyzexDuDe7t7mFwxyk+BraOF
-	8FSx7KQg==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x4ewI-00000002XgA-0eAw;
-	Thu, 10 Sep 2026 13:35:43 +0000
+	id 1x4ewK-0000000EUOV-3Ite;
+	Thu, 10 Sep 2026 13:35:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789047340;
-	bh=xQ7+XBReyJRczHBUQNd97CLLsbGlPLiZr8fnMEkPsd0=;
+	s=mail; t=1789047342;
+	bh=nnQom02Ih1qwesbG7H+t6ImlBeovlhLhrwVE7x/9+zc=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=H+7C0nV7MSLk9Bzvvswv+a0kDAhb5h1smF3IqOEOG9mPaMYDsZyG7BrQRtSot1/WF
-	 1uQ/6F9J5AOX+/ni1iajM5xts+Vqi53x/rX3Pi6yvbABiRikKV/JGpuSt/i5nJDv9b
-	 4w3TDi04+HgM2pBWQoUra1jLjNGhORPE6sDnUPoDeguUvWaSjf7Wb7jdBOUDPAZkNn
-	 /HA6t9XUBIsxZs6hE8bh8Tq3ENC3lnMMNOxKFgi7ezwL1QFtAZ+n9ubUuX+ir2m/44
-	 uU++iURtpCa2BLWRYZdZz11DHiDlLRdWiSUUAOkfKBZjBRXX5rSubn2UgtUyxRUY7j
-	 GPtl83ireJ6sQ==
+	b=iSV8ptihFp7WCxm7ch7BNjgbQ3h09TdIlCvHTN7EjvyL/qBbmS1B4V3xf2ZC+R/Oi
+	 mVV9fVchze+fEFoCBkAPzGqwQ/6xVGGkLRB/j7WJQSU3DQbqb0fizFTc4ml3U2tI6W
+	 btLggQMJ54F1EZEDWRYJvNb95V0iscnLkBnMMliTPSKaGBmQld4WT6fEZPI1VOI2/Y
+	 1/SAsmwXZMBgwMMkFWltScA+Y7+bJ9sN57GAmUS1a23zDQBmpg3Cj2t3EVFW+rT/2v
+	 /F5HYwB+BqW9kTbYoLbm4uS7OZ++KB+tZwp9NOCAeFpjshqmvW/FEDeP+59QV+cMN8
+	 kdtxk43r0ZzXg==
 Received: from [192.168.0.15] (unknown [100.64.0.170])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8718C17E0D43;
-	Thu, 10 Sep 2026 15:35:38 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D6A4517E0D81;
+	Thu, 10 Sep 2026 15:35:40 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
-Date: Thu, 10 Sep 2026 09:34:48 -0400
-Subject: [PATCH v2 6/8] arm64: dts: rockchip: Rename rk3566 and rk3568 HDMI
- audio cards
+Date: Thu, 10 Sep 2026 09:34:49 -0400
+Subject: [PATCH v2 7/8] arm64: dts: rockchip: Rename rk3576 HDMI audio card
 MIME-Version: 1.0
-Message-Id: <20260910-fix-rockchip-hdmi-audio-names-v2-6-1396a6168e20@collabora.com>
+Message-Id: <20260910-fix-rockchip-hdmi-audio-names-v2-7-1396a6168e20@collabora.com>
 References: <20260910-fix-rockchip-hdmi-audio-names-v2-0-1396a6168e20@collabora.com>
 In-Reply-To: <20260910-fix-rockchip-hdmi-audio-names-v2-0-1396a6168e20@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -80,8 +65,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_143542_392059_B711A3EA 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20260910_063544_990799_8C878537 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,58 +83,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Move the HDMI audio card name for RK3566 and RK3568 to their
-corresponding dtsi files so the name can be set to match the SoC
+Rename the card from "HDMI" to "RK3576 HDMI" so it identifies the SoC
 in user-visible ALSA fields and no longer collides with the identical
 "HDMI" string used by other Rockchip SoCs.
 
-Fixes: 697ee8546e241 ("arm64: dts: rockchip: Add HDMI audio nodes to rk356x")
+Fixes: 7f1561d82e3d3 ("arm64: dts: rockchip: Add RK3576 HDMI audio")
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-base.dtsi | 4 ++++
- arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 4 ++++
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 1 -
- 3 files changed, 8 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-base.dtsi
-index e56e0b6ba941..0086ff49fee2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-base.dtsi
-@@ -6,6 +6,10 @@ / {
- 	compatible = "rockchip,rk3566";
- };
- 
-+&hdmi_sound {
-+	simple-audio-card,name = "RK3566 HDMI";
-+}
-+
- &pipegrf {
- 	compatible = "rockchip,rk3566-pipe-grf", "syscon";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index 3bc653f027f1..efc1edff1e15 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -382,6 +382,10 @@ &gpu {
- 	operating-points-v2 = <&gpu_opp_table>;
- };
- 
-+&hdmi_sound {
-+	simple-audio-card,name = "RK3568 HDMI";
-+}
-+
- &pipegrf {
- 	compatible = "rockchip,rk3568-pipe-grf", "syscon";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index a5832895bd39..1a4562df20ee 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -150,7 +150,6 @@ scmi_clk: protocol@14 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index b0c0d3c8b1b1..ca9cbf035265 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -410,7 +410,7 @@ scmi_clk: protocol@14 {
  
  	hdmi_sound: hdmi-sound {
  		compatible = "simple-audio-card";
 -		simple-audio-card,name = "HDMI";
++		simple-audio-card,name = "RK3576 HDMI";
  		simple-audio-card,format = "i2s";
  		simple-audio-card,mclk-fs = <256>;
  		status = "disabled";
