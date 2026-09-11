@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F642C88E4A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 09:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6305FC88E4C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 10:03:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pM8neJCS/6j9p+7FDa6GjpQrRbSU76lPRUWfeFm93V8=; b=0WAJlChHiawjJ3
-	tIwc2w8k/W5bZ+PI5v7AXkK+hzRN/JTzH7RKoHUWKI54YGdV1sWrAImjCvZ5tqPPMTgieRKa8mQjq
-	YtPVEauEj0MfbAu68XNxA3rHTxx7BKv22yhdTK16T8cYHXnVzuGZqCEb7x3/ajtmhsfFvJ5K0vUo0
-	h4eWWtYflZH9TDHS5uK4Py3uli1t49WdtF7mzWLcs2O3XXgiDGB+FdSLVPvNbKWiPg3P89rpXpRpl
-	FuiIRwvg57F3N/OW+BUuBUfdoZcxidPZem1v/m4vAPrYzEGQMqmz1KdRqIgPFrlTLrxSI2ZabwYmb
-	Ag2mMMLyuoJcDkYyKUZQ==;
+	List-Owner; bh=XMpaF/v8lCAsb2JUbvo4rYvx4wFFeMTnoi18GOrXYYw=; b=fsFolOwR9iFdWc
+	jLDzick3kletsQEoq1oAc3Sroc+k/Qvm6nWmrqdvY1zSI0Z3IRr1bZJqRTD8ILL+0FhMjrDaFvIuR
+	VXjDHVV2KLNXKnc44ANXbEYCjXkmplAiqPoYISjdV6+EKUilv//M8OXEUWEyIAmmxCssE/ihofrC+
+	4lWLAP41OS5GsqursFo+vqJ6cEQwW0jEJkD9z2hs9POxyrAmsQpfl3xOpEb7ABg3CIYI9WwR5iDq/
+	Uu0HKrblcW/GoJpwyPULkdqjBBYxQrEPH33rzDmnX7z3nX2t/+iOiR3wa8BTkb6G++Ig2TCpamPjM
+	El6fsoRwPJeaIsyLfs9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4xvu-0000000GJ6g-3xjp;
-	Fri, 11 Sep 2026 09:52:34 +0000
-Received: from out-49.mta0.migadu.com ([2001:41d0:1004:224b::31] helo=mta0.migadu.com)
+	id 1x4y60-0000000GJu4-2GoI;
+	Fri, 11 Sep 2026 10:03:00 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4xvr-0000000GJ5J-2Dsd
-	for linux-rockchip@lists.infradead.org;
-	Fri, 11 Sep 2026 09:52:33 +0000
-X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=23/ENQ5gA857upXkBJbmjsuGG+iGltANLDGDlezshT4=;
- c=simple/simple; d=cknow-tech.com;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1789120346; v=1; x=1789725146;
- b=Y47QMUxn0TKeXOuEheK0ycl9t9263+tQ83GEl/ItuBW7+Hyc+Qpz6IVPyLsGQYkCU6KCAiid
- gVj7eAaobAmg1BIf/3Cqy6LDdUh4cYf5lYUkdpgh/cNGRZNNhHWHr8PbWmlbGedcFVtgDcG/Qz4
- /Vjj75ZDfz5dORvuzFbMqknb4iAurd1fFuI0iXpc1JZNfVlv7WYUGFqO05h1mxSvxN4XlbvTUlF
- oD36TemK2ca0ixXx6RNDDaFU24W1G+JYQ/0yLso8vvx9DrvpLLkfpChyFjZHcetef0KdawHKcd8
- dYKERR6JsSnROndHTel9FtB0duUJNGL44M+JFIQpFKQoA==
-X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 336b87e032570366;
-	Fri, 11 Sep 2026 09:52:26 +0000
-X-Mizu-Trace-ID: 336b87e032570366
-X-Migadu-Flow: FLOW_OUT
-Mime-Version: 1.0
-Date: Fri, 11 Sep 2026 11:52:24 +0200
-Message-Id: <DLCE8BRWYCBL.2UH33L4RQMAGN@cknow-tech.com>
-Cc: "Sebastian Reichel" <sebastian.reichel@collabora.com>,
- <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v5 2/7] arm64: dts: rockchip: describe PCIe RTL8125
- Ethernet on NanoPC-T6
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: <ricardo@pardini.net>, "Heiner Kallweit" <hkallweit1@gmail.com>,
- <nic_swsd@realtek.com>, "Andrew Lunn" <andrew+netdev@lunn.ch>, "David S.
- Miller" <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>, "Rob
- Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
- "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
-X-Mailer: aerc 0.22.0-9-ge948bb7230f4
-References: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-0-c1b9e5f10cd6@pardini.net> <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-2-c1b9e5f10cd6@pardini.net>
-In-Reply-To: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-2-c1b9e5f10cd6@pardini.net>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260911_025231_762560_5120C969 
-X-CRM114-Status: GOOD (  16.33  )
+	id 1x4y5z-0000000GJse-2S2g;
+	Fri, 11 Sep 2026 10:02:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3582A4451F;
+	Fri, 11 Sep 2026 10:02:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id DB26EC2BCFF;
+	Fri, 11 Sep 2026 10:02:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1789120978;
+	bh=5iXK6DRlAgCbx3CXIhr2d6B698dcp/MdpOxPxG9gQPw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=AqZE+E+0+neKjQfx9ZJ/p3++yxm9Iopx0BjxS1ESitbrxD3hhchCb3od6DbYcqALF
+	 Tpf65SPihag60McWiXiKe72Ur3Qhdxq6OM3GNktbMY+BCYQoO4+Zz0M3MApeMZtBK1
+	 /4mw+CVs+mHuyXgG1Dldc3BIwaRKjM08XOm7KJePsyGUb10pWfsz0bs0YdUugZybia
+	 Ze3chqYFLQjQBWF3YCdEQ1zSOjf7ZBSCnoUmDFkmSHkQDw/7SSHbLLyfDXkeSKW8gy
+	 MsCxtT4rUw4lfic2bEfrql30pO73nqpNFJ7a+lmywzBYvE2CREn/z2VyPoLyB65jf4
+	 8g8Hj0GBAoC3A==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C759BC88E50;
+	Fri, 11 Sep 2026 10:02:58 +0000 (UTC)
+From: =?utf-8?q?=E5=AE=89=E5=AE=B9_via_B4_Relay?= <devnull+HystericalDragons.proton.me@kernel.org>
+Date: Fri, 11 Sep 2026 18:02:47 +0800
+Subject: [PATCH v4 4/4] arm64: dts: rockchip: Follow the DTS coding style
+ in the NanoPi RK3528 devicetrees
+MIME-Version: 1.0
+Message-Id: <20260911-r28s-upstream-v4-4-fb6c85f226d4@proton.me>
+References: <20260911-r28s-upstream-v4-0-fb6c85f226d4@proton.me>
+In-Reply-To: <20260911-r28s-upstream-v4-0-fb6c85f226d4@proton.me>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Chukun Pan <amadeus@jmu.edu.cn>, Jonas Karlman <jonas@kwiboo.se>, 
+ jensen <jensenhuang@friendlyarm.com>, 
+ Andrey Korshunov <razor1702@gmail.com>, 
+ Diederik de Haas <diederik@cknow-tech.com>, 
+ =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4850;
+ i=HystericalDragons@proton.me; h=from:subject:message-id;
+ bh=ssKzAfVkZddHv0qc5wz7c3QaYBjTBYQe4UupIr5CUEY=;
+ b=owGbwMvMwCUmepz3XUtTHjvjabUkhqzFFy9+KLo6+ZL4fqtvb74viDw+reyCmPCH2bs/v/AWP
+ fWdTfX35Y5SFgYxLgZZMUUW2U3VkUKromcWsUgdh5nDygQyhIGLUwAmsqaLkWHDptofRaYf9yje
+ k2+q6eeenPzs4Ba53wwrDv3eksZTXXOOkeG4wEO5KPFrLukawpxbZIW9ZrHKBd/j/TL/Qf6pZXt
+ n32IHAA==
+X-Developer-Key: i=HystericalDragons@proton.me; a=openpgp;
+ fpr=1DB27B5912AA5B9972041AC715C70DEE84826E07
+X-Endpoint-Received: by B4 Relay for HystericalDragons@proton.me/default
+ with auth_id=1004
+X-Original-From: =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,113 +85,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: HystericalDragons@proton.me
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu Sep 10, 2026 at 10:07 PM CEST, Ricardo Pardini via B4 Relay wrote:
-> From: Ricardo Pardini <ricardo@pardini.net>
->
-> The FriendlyElec NanoPC-T6 carries two on-board Realtek RTL8125 NICs
-> behind pcie2x1l0 and pcie2x1l2.
->
-> Describe the fixed function nodes and attach ethernet0/ethernet1
-> aliases, so that U-Boot's fdt_fixup_ethernet() can fill in the MAC
-> from its ethaddr/eth1addr env. The on-NIC EEPROMs on this board are
-> not pre-programmed with a unique MAC, so this gives a stable MAC
-> across boots that both U-Boot and the kernel agree on.
->
-> Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 30 ++++++++++++++++++++++
->  1 file changed, 30 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-> index cfdb5c13f8606..550358a756618 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-> @@ -20,6 +20,8 @@ / {
->  	compatible = "friendlyarm,nanopc-t6", "rockchip,rk3588";
->  
->  	aliases {
-> +		ethernet0 = &rtl_eth0;
-> +		ethernet1 = &rtl_eth1;
->  		mmc0 = &sdhci;
->  		mmc1 = &sdmmc;
->  	};
-> @@ -644,6 +646,20 @@ &pcie2x1l0 {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&pcie2_0_rst>;
-
-The new pinctrl reference is ``pcie_25glan_perstb_b_pin``, so this patch needs
-to be rebased.
-
->  	status = "okay";
-> +
-> +	pcie@0,0 {
-> +		reg = <0x200000 0 0 0 0>;
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +		device_type = "pci";
-> +		bus-range = <0x21 0x2f>;
-> +
-> +		rtl_eth0: ethernet@0,0 {
-> +			compatible = "pci10ec,8125";
-> +			reg = <0x210000 0 0 0 0>;
-> +		};
-
-Described on page 23 of the schematic titled '2.5G Ethernet B' and ``U12``
-(ie RTL8125BG) is connected to LAN2 which has ``ETH2`` as label on the case.
-
-> +	};
->  };
->  
->  &pcie2x1l1 {
-> @@ -660,6 +676,20 @@ &pcie2x1l2 {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&pcie2_2_rst>;
-
-The new pinctrl reference is ``pcie_25glan_perstb_pin``.
-
->  	status = "okay";
-> +
-> +	pcie@0,0 {
-> +		reg = <0x400000 0 0 0 0>;
-> +		#address-cells = <3>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +		device_type = "pci";
-> +		bus-range = <0x41 0x4f>;
-> +
-> +		rtl_eth1: ethernet@0,0 {
-> +			compatible = "pci10ec,8125";
-> +			reg = <0x410000 0 0 0 0>;
-> +		};
-
-Described on page 22 of the schematic titled '2.5G Ethernet A' and ``U10``
-(ie RTL8125BG) is connected to LAN1 which has ``ETH1`` as label on the case.
-
-So this results in:
-ETH1 -> rtl_eth1
-ETH2 -> rtl_eth0
-
-This sounds like a recipe for confusion and/or potential future mistakes.
-I think using ``rtl_eth1`` and ``rtl_eth2`` would be less confusing, but
-I'm fine with another construct which achieves a similar thing.
-
-Cheers,
-  Diederik
-
-> +	};
->  };
->  
->  &pcie30phy {
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTog5a6J5a65IDxIeXN0ZXJpY2FsRHJhZ29uc0Bwcm90b24ubWU+CgpUaGUgc2hhcmVkIE5h
+bm9QaSBSSzM1MjggZGV2aWNldHJlZSBhbmQgdGhlIE5hbm9QaSBaZXJvMiBib2FyZCBkZXZpY2V0
+cmVlCmRldmlhdGUgZnJvbSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZHRzLWNv
+ZGluZy1zdHlsZS5yc3QgaW4gdHdvCnBsYWNlczogInBpbmN0cmwtMCIgaGFzIHRvIHNvcnQgYmVm
+b3JlICJwaW5jdHJsLW5hbWVzIiwgYW5kICJzdGF0dXMiIGhhcyB0bwpiZSBwcmVjZWRlZCBieSBh
+IGJsYW5rIGxpbmUgd2hlbiB0aGUgbm9kZSBoYXMgY29udGVudCBiZWZvcmUgaXQuCgpTb3J0IHRo
+ZSBwcm9wZXJ0aWVzIGFuZCBhZGQgdGhlIG1pc3NpbmcgYmxhbmsgbGluZXMuIE5vIGZ1bmN0aW9u
+YWwgY2hhbmdlcy4KClN1Z2dlc3RlZC1ieTogRGllZGVyaWsgZGUgSGFhcyA8ZGllZGVyaWtAY2tu
+b3ctdGVjaC5jb20+ClNpZ25lZC1vZmYtYnk6IOWuieWuuSA8SHlzdGVyaWNhbERyYWdvbnNAcHJv
+dG9uLm1lPgotLS0KIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1MjgtbmFub3BpLXplcm8yLmR0
+cyAgICAgIHwgIDUgKystLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1MjgtbmFu
+b3BpLmR0c2kgICAgfCAyOCArKysrKysrKysrKysrKystLS0tLS0tCiAyIGZpbGVzIGNoYW5nZWQs
+IDIyIGluc2VydGlvbnMoKyksIDExIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LW5hbm9waS16ZXJvMi5kdHMgYi9hcmNoL2FybTY0
+L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC1uYW5vcGktemVybzIuZHRzCmluZGV4IDQ4ZTQyNzM4
+NzIuLjk2YzUzN2RhNmEgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
+cmszNTI4LW5hbm9waS16ZXJvMi5kdHMKKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
+cC9yazM1MjgtbmFub3BpLXplcm8yLmR0cwpAQCAtMjUsOCArMjUsOCBAQCBidXR0b24tcmVjb3Zl
+cnkgewogCiAJbGVkcyB7CiAJCWNvbXBhdGlibGUgPSAiZ3Bpby1sZWRzIjsKLQkJcGluY3RybC1u
+YW1lcyA9ICJkZWZhdWx0IjsKIAkJcGluY3RybC0wID0gPCZsZWQxPiwgPCZsZWRfc3lzPjsKKwkJ
+cGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAogCQlsZWQtMCB7CiAJCQljb2xvciA9IDxMRURf
+Q09MT1JfSURfUkVEPjsKQEAgLTU5LDggKzU5LDggQEAgdXNiMl9ob3N0XzV2OiByZWd1bGF0b3It
+NXYwLXVzYjItaG9zdCB7CiAJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKIAkJZW5h
+YmxlLWFjdGl2ZS1oaWdoOwogCQlncGlvcyA9IDwmZ3BpbzQgUktfUEI1IEdQSU9fQUNUSVZFX0hJ
+R0g+OwotCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCQlwaW5jdHJsLTAgPSA8JnVzYjIw
+X2hvc3QxX3B3cmVuPjsKKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAkJcmVndWxhdG9y
+LW5hbWUgPSAidXNiMl9ob3N0XzV2IjsKIAkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8NTAw
+MDAwMD47CiAJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDUwMDAwMDA+OwpAQCAtOTYsNSAr
+OTYsNiBAQCAmdXNiX2hvc3QwX29oY2kgewogCiAmdXNiMnBoeV9ob3N0IHsKIAlwaHktc3VwcGx5
+ID0gPCZ1c2IyX2hvc3RfNXY+OworCiAJc3RhdHVzID0gIm9rYXkiOwogfTsKZGlmZiAtLWdpdCBh
+L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LW5hbm9waS5kdHNpIGIvYXJjaC9h
+cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1MjgtbmFub3BpLmR0c2kKaW5kZXggOGQ5ZDAwNTZh
+MC4uZmE5ZGY0ZDhmNCAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azM1MjgtbmFub3BpLmR0c2kKKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
+MjgtbmFub3BpLmR0c2kKQEAgLTc3LDggKzc3LDggQEAgdmNjXzN2MzogcmVndWxhdG9yLTN2My12
+Y2MgewogCXZjYzN2M19zZDogcmVndWxhdG9yLTN2My12Y2Mtc2QgewogCQljb21wYXRpYmxlID0g
+InJlZ3VsYXRvci1maXhlZCI7CiAJCWdwaW9zID0gPCZncGlvNCBSS19QQTEgR1BJT19BQ1RJVkVf
+TE9XPjsKLQkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAkJcGluY3RybC0wID0gPCZzZG1t
+Y19wd3Jlbl9sPjsKKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKIAkJcmVndWxhdG9yLW5h
+bWUgPSAidmNjM3YzX3NkIjsKIAkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzMwMDAwMD47
+CiAJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAwMDA+OwpAQCAtOTcsOCArOTcsOCBA
+QCB2Y2M1djBfc3lzOiByZWd1bGF0b3ItNXYwLXZjYy1zeXMgewogCXZjY2lvX3NkOiByZWd1bGF0
+b3ItdmNjaW8tc2QgewogCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1ncGlvIjsKIAkJZ3Bpb3Mg
+PSA8JmdwaW80IFJLX1BCNiBHUElPX0FDVElWRV9ISUdIPjsKLQkJcGluY3RybC1uYW1lcyA9ICJk
+ZWZhdWx0IjsKIAkJcGluY3RybC0wID0gPCZzZG1tY192b2xfY3RybF9oPjsKKwkJcGluY3RybC1u
+YW1lcyA9ICJkZWZhdWx0IjsKIAkJcmVndWxhdG9yLW5hbWUgPSAidmNjaW9fc2QiOwogCQlyZWd1
+bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwxODAwMDAwPjsKIAkJcmVndWxhdG9yLW1heC1taWNyb3Zv
+bHQgPSA8MzMwMDAwMD47CkBAIC0xNTIsMjAgKzE1MiwyMyBAQCAmZ21hYzEgewogCXBoeS1oYW5k
+bGUgPSA8JnJnbWlpX3BoeT47CiAJcGh5LW1vZGUgPSAicmdtaWktaWQiOwogCXBoeS1zdXBwbHkg
+PSA8JnZjY18zdjM+OwotCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CiAJcGluY3RybC0wID0g
+PCZyZ21paV9taWltPiwgPCZyZ21paV90eF9idXMyPiwgPCZyZ21paV9yeF9idXMyPiwKIAkJICAg
+IDwmcmdtaWlfcmdtaWlfY2xrPiwgPCZyZ21paV9yZ21paV9idXM+OworCXBpbmN0cmwtbmFtZXMg
+PSAiZGVmYXVsdCI7CisKIAlzdGF0dXMgPSAib2theSI7CiB9OwogCiAmZ3B1IHsKIAltYWxpLXN1
+cHBseSA9IDwmdmRkX2xvZ2ljPjsKKwogCXN0YXR1cyA9ICJva2F5IjsKIH07CiAKICZpMmMxIHsK
+LQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwmaTJjMW0wX3hmZXI+
+OworCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisKIAlzdGF0dXMgPSAib2theSI7CiAKIAlo
+eW04NTYzOiBydGNANTEgewpAQCAtMTc0LDggKzE3Nyw4IEBAIGh5bTg1NjM6IHJ0Y0A1MSB7CiAJ
+CSNjbG9jay1jZWxscyA9IDwwPjsKIAkJaW50ZXJydXB0LXBhcmVudCA9IDwmZ3BpbzQ+OwogCQlp
+bnRlcnJ1cHRzID0gPFJLX1BDMSBJUlFfVFlQRV9MRVZFTF9MT1c+OwotCQlwaW5jdHJsLW5hbWVz
+ID0gImRlZmF1bHQiOwogCQlwaW5jdHJsLTAgPSA8JnJ0Y19pbnRfbD47CisJCXBpbmN0cmwtbmFt
+ZXMgPSAiZGVmYXVsdCI7CiAJCXdha2V1cC1zb3VyY2U7CiAJfTsKIH07CkBAIC0xODQsOCArMTg3
+LDggQEAgJm1kaW8xIHsKIAlyZ21paV9waHk6IGV0aGVybmV0LXBoeUAxIHsKIAkJY29tcGF0aWJs
+ZSA9ICJldGhlcm5ldC1waHktaWVlZTgwMi4zLWMyMiI7CiAJCXJlZyA9IDwweDE+OwotCQlwaW5j
+dHJsLW5hbWVzID0gImRlZmF1bHQiOwogCQlwaW5jdHJsLTAgPSA8JmdtYWMxX3JzdG5fbD47CisJ
+CXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CiAJCXJlc2V0LWFzc2VydC11cyA9IDwyMDAwMD47
+CiAJCXJlc2V0LWRlYXNzZXJ0LXVzID0gPDEwMDAwMD47CiAJCXJlc2V0LWdwaW9zID0gPCZncGlv
+NCBSS19QQzIgR1BJT19BQ1RJVkVfTE9XPjsKQEAgLTIxNywxOSArMjIwLDIyIEBAIHNkbW1jX3Zv
+bF9jdHJsX2g6IHNkbW1jLXZvbC1jdHJsLWggewogfTsKIAogJnB3bTEgewotCXBpbmN0cmwtbmFt
+ZXMgPSAiZGVmYXVsdCI7CiAJcGluY3RybC0wID0gPCZwd20xbTBfcGlucz47CisJcGluY3RybC1u
+YW1lcyA9ICJkZWZhdWx0IjsKKwogCXN0YXR1cyA9ICJva2F5IjsKIH07CiAKICZwd20yIHsKLQlw
+aW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwmcHdtMm0wX3BpbnM+Owor
+CXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CisKIAlzdGF0dXMgPSAib2theSI7CiB9OwogCiAm
+c2FyYWRjIHsKIAl2cmVmLXN1cHBseSA9IDwmdmNjXzF2OD47CisKIAlzdGF0dXMgPSAib2theSI7
+CiB9OwogCkBAIC0yNDIsNiArMjQ4LDcgQEAgJnNkaGNpIHsKIAlub24tcmVtb3ZhYmxlOwogCXZt
+bWMtc3VwcGx5ID0gPCZ2Y2NfM3YzPjsKIAl2cW1tYy1zdXBwbHkgPSA8JnZjY18xdjg+OworCiAJ
+c3RhdHVzID0gIm9rYXkiOwogfTsKIApAQCAtMjUzLDEyICsyNjAsMTQgQEAgJnNkbW1jIHsKIAlz
+ZC11aHMtc2RyMTA0OwogCXZtbWMtc3VwcGx5ID0gPCZ2Y2MzdjNfc2Q+OwogCXZxbW1jLXN1cHBs
+eSA9IDwmdmNjaW9fc2Q+OworCiAJc3RhdHVzID0gIm9rYXkiOwogfTsKIAogJnVhcnQwIHsKLQlw
+aW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCXBpbmN0cmwtMCA9IDwmdWFydDBtMF94ZmVyPjsK
+KwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCiAJc3RhdHVzID0gIm9rYXkiOwogfTsKIApA
+QCAtMjY3LDYgKzI3Niw3IEBAICZ1c2JfaG9zdDBfeGhjaSB7CiAJbWF4aW11bS1zcGVlZCA9ICJo
+aWdoLXNwZWVkIjsKIAlwaHlzID0gPCZ1c2IycGh5X290Zz47CiAJcGh5LW5hbWVzID0gInVzYjIt
+cGh5IjsKKwogCXN0YXR1cyA9ICJva2F5IjsKIH07CiAKCi0tIAoyLjU1LjAKCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
