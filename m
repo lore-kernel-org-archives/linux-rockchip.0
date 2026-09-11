@@ -4,79 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F4E7C88E4A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 10:03:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D735FC88E4C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 10:10:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6R0Qfs5HTGRV86OWmdFyFo8OaQ6yt7pjKP86LnY9V/M=; b=qlr4EL7scF0gug
-	aT3Oil8dabdJ2BZa0eo9N9eCNL21mujsq8sMflj2NNtbng+Y302t5OtJPwKCH+MWru+PxsAFuaVDw
-	EpcC6feitTVOZ6n9TWJtMPfbiQvUz2PE+ffDbdWkAWbEmoT1he5Qz6Y6t7RYSkTyVZSPYpmAg758+
-	bT6ksGSY5ZWdz78Dg7Gb3GddCvK4+JEkpgk+V0OjXwiebwvGdV9FibZLXv5/fLx5AkyiugJkrENhi
-	rR7nCzI9AUF54SlOcdrA0XjikBs4uzphPSUC9kAV7RCwPyfVRLz2MISB5+CMTkt4BY9uoWa3A08Zu
-	H5H5DQu/yGx8Mo9kgcqg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gDHvVvKd8JvL0rI2EPmJkNchaixa8KXauNYrYUX1OcA=; b=zsBTmw71S1z3eb
+	e+XQQ7cG1Lo/IzF7E+b9ab2F6fZYSGrP/wWXGjyty+JvY1C6qoOu+UCBeiPvvnnZliZyv9A7VfEyB
+	ewATEyO9JIAkoMJF4WbeND1KMEbwKvN5QUN46WefzHEoUO2Ldd8Ol/jpQIGciKNix6Xie5AIYs2W5
+	8ch6T5EKuSqjLZemwq4uRcJCeiTQMNMymui+e3AYiFAUKFxnLIRk3ZQsWhRA0HV6596BELUTZ9TTf
+	f9evqcRlyw7WEIeQe02BawqSdTqc42JbdMnqSyNXTK5WgZpWtiXEcTpuNESW2uA9EFjbER2LXRDlR
+	NSqJz2JiPGFfRtOsPXqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4y6N-0000000GK5B-0Y9A;
-	Fri, 11 Sep 2026 10:03:23 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x4yDb-0000000GKw4-41LV;
+	Fri, 11 Sep 2026 10:10:51 +0000
+Received: from mail-24424.protonmail.ch ([109.224.244.24])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4y60-0000000GJsf-0c8z;
-	Fri, 11 Sep 2026 10:03:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0E02860237;
-	Fri, 11 Sep 2026 10:02:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A872BC2BCB8;
-	Fri, 11 Sep 2026 10:02:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1789120978;
-	bh=NkV5z6MGxBbojzN8AMDPdvXASNRMWNHDtHQ+OXrQWGA=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=CY0s/KMUdTrY09yeIVTep7fwo20uLdd5kZOMRsnDiWlbAkcmHqZtmYSI8C0fP+Nle
-	 qUHYBQ30di82ee0S73AlhYLn3zewzs07yl+FFEAN7zUp8/YlVK56xIUIY/tUvrc8W2
-	 qr+2fvaPTun0uhxU+NyQVUfeb+Xs4313YgKGTZNVUuJZw9/PvbHzLH2x4d0skgGKHL
-	 Sid5a9+GrOptcwku2BuZME60i8PCN71jSRHozfH1Dp5g+yax6cqbsFtxmMAOyWS4l4
-	 MzhOxIeCxLxHQ1Oq580mPRJa6pxnLEc1pQaNp6kuAnm/1lHfPQRGtVJ4UxjpeEctFW
-	 NRs7ge7aPXbEw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 844DDC88E4D;
-	Fri, 11 Sep 2026 10:02:58 +0000 (UTC)
-From: =?utf-8?q?=E5=AE=89=E5=AE=B9_via_B4_Relay?= <devnull+HystericalDragons.proton.me@kernel.org>
-Subject: [PATCH v4 0/4] arm64: dts: rockchip: Add FriendlyElec NanoPi R28S
-Date: Fri, 11 Sep 2026 18:02:43 +0800
-Message-Id: <20260911-r28s-upstream-v4-0-fb6c85f226d4@proton.me>
+	id 1x4yDY-0000000GKvI-0YW9
+	for linux-rockchip@lists.infradead.org;
+	Fri, 11 Sep 2026 10:10:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1789121442; x=1789380642;
+	bh=TR16N+4ADKrFb2rQCDGPtxGouDfb08VqJfQdDPg1AHY=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=Z5RSvMEKdVV48+7XYNH7tcrORPbnewIZTKfKlcC8ybImIlghjfTx6vAJeaaBCdEPh
+	 RDotQMQQWKj2gLXqU05EyW+lqe6P7gWsA0WihbKJotPYk9D6XyvFD9U8UP4Oj58lVC
+	 GknWEAVeXUUICmnAdU2DNwH/4soaNdTKigYLIgaZ3ZzFU9vDPxAhRNOVpzl7M2knZA
+	 IhUySoVrKsiyiYETYgbywxlwzRz5REjbkTGrUvhm9SU/pCZxiXkjwEm0L6/ETlA6AS
+	 mgcnWTr5Nb+bWEPJjwBPIEvRjFEl89w4eqxuCau7D9FoiCd6qPWmyJKy7eO8F7H4Gb
+	 4YYsKu1TdHMQQ==
+Date: Fri, 11 Sep 2026 10:10:37 +0000
+To: Chukun Pan <amadeus@jmu.edu.cn>
+From: =?utf-8?B?5a6J5a65?= <HystericalDragons@proton.me>
+Cc: Conor Dooley <conor+dt@kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "diederik@cknow-tech.com" <diederik@cknow-tech.com>, Heiko Stuebner <heiko@sntech.de>, jensen <jensenhuang@friendlyarm.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "jonas@kwiboo.se" <jonas@kwiboo.se>
+Subject: Re: [PATCH v3 1/5] arm64: dts: rockchip: Reset the NanoPi Zero2 PHY from the MDIO bus
+Message-ID: <8wGuvZ3pQ9BL5NIu1j8OzFUTjHePGJcrftcKEe0xkosyORLPJUmdHI7nOCC8o187x1s8ev84HLiBKdNjqQvu3U3upIeSp2A4AImHdD4DOuw=@proton.me>
+In-Reply-To: <20260911065500.3145846-1-amadeus@jmu.edu.cn>
+References: <20260909225002.976-1-razor1702@gmail.com> <20260911065500.3145846-1-amadeus@jmu.edu.cn>
+Feedback-ID: 91982645:user:proton
+X-Pm-Message-ID: ca164b9d304b3858ce2f8f1bdc7902d6623f2398
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3XNTQ6DIBCG4as0rEsDg6B01Xs0XSCOlSb+BJS0M
- d69aDfGpMsvmeedmQT0DgO5nmbiMbrg+i6N7HwitjHdE6mr0ibAQDHNJPVQBDoNYfRoWorAASG
- vFFeSJDN4rN17690fvx2m8oV2XCPrRePC2PvP9jDy9e5fO3LKaK2KSopCg9LmNvh+7LtLi2RtR
- 9jr/KghaeCmlDmrreb2qMVe66MWSSMK5EZkRkix18uyfAHbgQRBOAEAAA==
-X-Change-ID: 20260905-r28s-upstream-e212e27d6165
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Chukun Pan <amadeus@jmu.edu.cn>, Jonas Karlman <jonas@kwiboo.se>, 
- jensen <jensenhuang@friendlyarm.com>, 
- Andrey Korshunov <razor1702@gmail.com>, 
- Diederik de Haas <diederik@cknow-tech.com>, 
- Conor Dooley <conor.dooley@microchip.com>, 
- =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5209;
- i=HystericalDragons@proton.me; h=from:subject:message-id;
- bh=NkV5z6MGxBbojzN8AMDPdvXASNRMWNHDtHQ+OXrQWGA=;
- b=owGbwMvMwCUmepz3XUtTHjvjabUkhqzFFy8yOx/afvGub+LtNPVnE159VrQRzBJ46f1K++GLg
- +HfpvqYdpSyMIhxMciKKbLIbqqOFFoVPbOIReo4zBxWJpAhDFycAjCR388Y/ruldtSs3dfrdW+q
- 25zsp3uzrpzrsuJfXHU83aDZLPCv3QtGhkc1K6537/tYPi/+3t0/m2Y3lL60iFle/F93idwtTU4
- xJlYA
-X-Developer-Key: i=HystericalDragons@proton.me; a=openpgp;
- fpr=1DB27B5912AA5B9972041AC715C70DEE84826E07
-X-Endpoint-Received: by B4 Relay for HystericalDragons@proton.me/default
- with auth_id=1004
-X-Original-From: =?utf-8?q?=E5=AE=89=E5=AE=B9?= <HystericalDragons@proton.me>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260911_031048_803607_AD064B52 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,102 +65,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: HystericalDragons@proton.me
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIE5hbm9QaSBSMjhTIGlzIGEgZHVhbCBnaWdhYml0IEV0aGVybmV0IHJvdXRlciBib2FyZCBi
-YXNlZCBvbiB0aGUKUm9ja2NoaXAgUkszNTI4IFNvQzoKCiAgaHR0cHM6Ly93aWtpLmZyaWVuZGx5
-ZWxlYy5jb20vd2lraS9pbmRleC5waHAvTmFub1BpX1IyOFMKCkl0IGlzIGNsb3NlbHkgcmVsYXRl
-ZCB0byB0aGUgYWxyZWFkeSBzdXBwb3J0ZWQgTmFub1BpIFplcm8yLCBzaGFyaW5nCm1vc3Qgb2Yg
-aXRzIHBvd2VyIHRyZWUgYW5kIHBlcmlwaGVyYWwgcm91dGluZy4gUGF0Y2ggMiB0aGVyZWZvcmUg
-bW92ZXMKdGhlIGNvbW1vbiBwYXJ0cyBpbnRvIHJrMzUyOC1uYW5vcGkuZHRzaSwgYW5kIHBhdGNo
-IDMgYWRkcyB0aGUgYm9hcmQgb24KdG9wIG9mIGl0LiBUaGUgc3BsaXQgbGVhdmVzIHRoZSBOYW5v
-UGkgWmVybzIgZHRiIHVuY2hhbmdlZDsgSSB2ZXJpZmllZAp0aGlzIGJ5IGRlY29tcGlsaW5nIHRo
-ZSBkdGIgYmVmb3JlIGFuZCBhZnRlciB0aGUgc3BsaXQgYW5kIGNvbXBhcmluZwp0aGVtIHdpdGgg
-dGhlIHBoYW5kbGUgbnVtYmVyaW5nIG5vcm1hbGlzZWQuIFBhdGNoIDQgaXMgYSBjb2Rpbmcgc3R5
-bGUKY2xlYW51cCBhY3Jvc3MgdGhlIHRocmVlIE5hbm9QaSBSSzM1MjggZGV2aWNldHJlZXMuCgpU
-aGUgZGV2aWNldHJlZSB3YXMgZGVyaXZlZCBmcm9tIHRoZSB2ZW5kb3IgdHJlZToKCiAgaHR0cHM6
-Ly9naXRodWIuY29tL2ZyaWVuZGx5YXJtL2tlcm5lbC1yb2NrY2hpcC9jb21taXQvZWU2NDBjNTM0
-NGIxM2EwYTMxNzQzNmUyMzU3ZGYwMWFmODI2OGNlNwoKYnV0IHdpdGggbWFueSBjaGFuZ2VzIHRv
-IG1ha2UgaXQgc3VpdGFibGUgZm9yIG1haW5saW5lLgoKVGVzdGVkIG9uIGEgbWV0YWwtY2FzZSB1
-bml0IHdpdGhvdXQgdGhlIG9wdGlvbmFsIG9uYm9hcmQgZU1NQzogYm9vdHMKZnJvbSBtaWNyb1NE
-LCBib3RoIEV0aGVybmV0IHBvcnRzIGxpbmsgdXAgYXQgMTAwMCBNYnBzLCB0aGUgSFlNODU2MyBS
-VEMKcmVnaXN0ZXJzLCBhbmQgYWxsIHRocmVlIExFRHMgYXJlIGZ1bmN0aW9uYWwuIFRoZSBVU0Ig
-VHlwZS1DIGNvbm5lY3RvcgpyZWdpc3RlcnMgYXMgYSBEV0MzIFVEQyBpbiBwZXJpcGhlcmFsIG1v
-ZGU7IGdhZGdldCBlbnVtZXJhdGlvbiBhZ2FpbnN0CmEgVVNCIGhvc3Qgd2FzIG5vdCBjb21wbGV0
-ZWQsIGJlY2F1c2UgdGhhdCBjb25uZWN0b3IgaXMgYWxzbyB0aGUgNVYKaW5wdXQgYW5kIGEgUEMg
-cG9ydCBjYW5ub3QgcG93ZXIgdGhlIGJvYXJkLgoKVGhlIGJvb3Rsb2FkZXIgd2FzIFUtQm9vdCAy
-MDI2LjA3IHdpdGggYSBib2FyZCBzcGVjaWZpYyBSMjhTIHRhcmdldCwKd2hpY2ggcmVsZWFzZXMg
-dGhlIFJHTUlJIFBIWSByZXNldCBiZWZvcmUgTGludXggc3RhcnRzLCBzbyB0aGUgcmVzZXQKZGVz
-Y3JpcHRpb24gaW4gdGhlIFBIWSBub2RlIGlzIGFsbCB0aGUga2VybmVsIG5lZWRzLgoKVHdvIHRo
-aW5ncyBJIGRpZCBub3QgZG8sIGJlY2F1c2UgbXkgaGFyZHdhcmUgY2Fubm90IHZlcmlmeSB0aGVt
-OgoKLSBUaGUgQUlDU2VtaSBBSUM4ODAwRDgwIFdpRmkgY2hpcCBvbiBzZGlvMCBoYXMgbm8gdXBz
-dHJlYW0gZHJpdmVyLCBzbwogIG9ubHkgdGhlIFNESU8gY29udHJvbGxlciBpcyBkZXNjcmliZWQu
-Ci0gVGhlIGVNTUMgaXMgZGVzY3JpYmVkIGFzIEhTMjAwIHJhdGhlciB0aGFuIHRoZSB2ZW5kb3In
-cyBIUzQwMCB3aXRoCiAgZW5oYW5jZWQgc3Ryb2JlLCBzaW5jZSB0aGUgYm9hcmQgYXQgaGFuZCBo
-YXMgYW4gdW5wb3B1bGF0ZWQgZU1NQwogIGZvb3RwcmludCBhbmQgdGhlIGZhc3RlciBtb2RlcyBj
-b3VsZCBub3QgYmUgdmVyaWZpZWQuCgotLS0KQ2hhbmdlcyBpbiB2NDoKLSBEcm9wcGVkIHRoZSBw
-YXRjaCB0aGF0IG1vdmVkIHRoZSBOYW5vUGkgWmVybzIgUkdNSUkgUEhZIHJlc2V0IHRvIHRoZQog
-IE1ESU8gYnVzLiBHUElPNF9DMiByZXNldHMgdGhlIFBIWSwgbm90IHRoZSBidXMsIHNvIGRlc2Ny
-aWJpbmcgaXQgb24KICAmbWRpbzEgaXMgbm90IGEgZGVzY3JpcHRpb24gb2YgdGhlIGhhcmR3YXJl
-LiBJdCB3b3VsZCBhbHNvIGJyZWFrCiAgRXRoZXJuZXQgaW4gVS1Cb290LCB3aGljaCByZWFkcyBy
-ZXNldC1ncGlvcywgcmVzZXQtYXNzZXJ0LXVzIGFuZAogIHJlc2V0LWRlYXNzZXJ0LXVzIGZyb20g
-dGhlIFBIWSBub2RlIGFuZCBoYXMgbm8gc3VwcG9ydCBmb3IgYSBidXMKICBsZXZlbCByZXNldC4g
-VGhlIG5hbm9waS16ZXJvMi1yazM1MjggVS1Cb290IHRhcmdldCByZWxlYXNlcyB0aGUgUEhZCiAg
-cmVzZXQgYmVmb3JlIExpbnV4IHN0YXJ0czsgdGhlIGZhaWx1cmUgSSByZXBvcnRlZCB3YXMgc2Vl
-biB3aXRoIHRoZQogIGdlbmVyaWMtcmszNTI4IHRhcmdldCwgd2hpY2ggY2FycmllcyBubyBib2Fy
-ZCBkZXZpY2V0cmVlLiBQb2ludGVkIG91dAogIGJ5IENodWt1biBQYW4sIGFuZCBieSBKb25hcyBL
-YXJsbWFuIGluIHRoZSBzYW1lIGRpc2N1c3Npb24gZm9yIHRoZQogIEhJTkxJTksgSDI4SzoKICBo
-dHRwczovL2xvcmUua2VybmVsLm9yZy9sa21sLzFlOGRhNTRmLWVmODctNGQzMS05YTBhLTE3YzBm
-ZjY2YmVlMEBrd2lib28uc2UvCiAgTXkgb3duIFIyOFMgaGFzIGluIGZhY3QgYmVlbiBydW5uaW5n
-IGEgYm9hcmQgc3BlY2lmaWMgVS1Cb290IHRhcmdldAogIGFsbCBhbG9uZywgd2l0aCB0aGUgUEhZ
-IG5vZGUgZGVzY3JpcHRpb24gdGhpcyBzZXJpZXMgbm93IGtlZXBzLCBzbwogIHRoZSByZXNldCBv
-cmRlcmluZyBwcm9ibGVtIEkgZGVzY3JpYmVkIGRvZXMgbm90IGFyaXNlIHRoZXJlLgotIFJld29y
-ZGVkIHRoZSBjb2Rpbmcgc3R5bGUgcGF0Y2ggdG8gc3RhdGUgdGhlIGNvZGluZyBzdHlsZSB2aW9s
-YXRpb24KICBpdHNlbGYgYXMgdGhlIHJlYXNvbiwgcmF0aGVyIHRoYW4gdGhlIHRvb2wgdGhhdCBm
-b3VuZCBpdCAoRGllZGVyaWsgZGUKICBIYWFzKS4KLSBMaW5rIHRvIHYzOiBodHRwczovL3BhdGNo
-Lm1zZ2lkLmxpbmsvMjAyNjA5MDktcjI4cy11cHN0cmVhbS12My0wLWVlM2UxYTM0YTM1M0Bwcm90
-b24ubWUKCkNoYW5nZXMgaW4gdjM6Ci0gTmV3IHBhdGNoIDE6IGRlc2NyaWJlIHRoZSBOYW5vUGkg
-WmVybzIgUkdNSUkgUEhZIHJlc2V0IG9uIHRoZSBNRElPCiAgYnVzIHJhdGhlciB0aGFuIGluIHRo
-ZSBQSFkgbm9kZSwgc28gdGhhdCBpdCBpcyBhcHBsaWVkIGJlZm9yZSB0aGUgUEhZCiAgSUQgaXMg
-cmVhZC4gQSBQSFkgaGVsZCBpbiByZXNldCBieSB0aGUgYm9vdGxvYWRlciB3YXMgb3RoZXJ3aXNl
-IG5ldmVyCiAgcHJvYmVkLCBsZWF2aW5nIHRoZSBwb3J0IGRlYWQuIFJlcG9ydGVkIGJ5IEFuZHJl
-eSBLb3JzaHVub3YsIHdobwogIHByb3Bvc2VkIHRoZSBkZXByZWNhdGVkIHNucHMscmVzZXQtZ3Bp
-byBwcm9wZXJ0aWVzIG9uIHRoZSBNQUM7IHRoZQogIGJ1cyBsZXZlbCByZXNldC1ncGlvcyBpbiBt
-ZGlvLnlhbWwgZml4ZXMgdGhlIHNhbWUgb3JkZXJpbmcgd2l0aG91dCBhCiAgZGVwcmVjYXRlZCBw
-cm9wZXJ0eS4KLSBOZXcgcGF0Y2ggNTogZm9sbG93IHRoZSBEVFMgY29kaW5nIHN0eWxlIGluIHRo
-ZSB0aHJlZSBOYW5vUGkgUkszNTI4CiAgZGV2aWNldHJlZXMsIGFzIGZvdW5kIGJ5IHNjcmlwdHMv
-ZHRjL2R0LWNoZWNrLXN0eWxlIC0tbW9kZT1zdHJpY3Q6CiAgcGluY3RybC0wIGJlZm9yZSBwaW5j
-dHJsLW5hbWVzLCBhbmQgYSBibGFuayBsaW5lIGJlZm9yZSBzdGF0dXMuCiAgU3VnZ2VzdGVkIGJ5
-IERpZWRlcmlrIGRlIEhhYXMuCi0gUGlja2VkIHVwIENvbm9yIERvb2xleSdzIEFja2VkLWJ5IG9u
-IHRoZSBiaW5kaW5nLgotIExpbmsgdG8gdjI6IGh0dHBzOi8vcGF0Y2gubXNnaWQubGluay8yMDI2
-MDkwNy1yMjhzLXVwc3RyZWFtLXYyLTAtMjFhYjU3MGZjOTFjQHByb3Rvbi5tZQoKQ2hhbmdlcyBp
-biB2MjoKLSBTcGxpdCB0aGUgcGFydHMgc2hhcmVkIHdpdGggdGhlIE5hbm9QaSBaZXJvMiBpbnRv
-IGEgbmV3CiAgcmszNTI4LW5hbm9waS5kdHNpIChuZXcgcGF0Y2ggMikuIFRoZSBOYW5vUGkgWmVy
-bzIgZHRiIGlzIHVuY2hhbmdlZC4KLSBOYW1lIHRoZSBwaW5jdHJsIGxhYmVscyBhZnRlciB0aGUg
-bmV0cyBpbiB0aGUgc2NoZW1hdGljOiB1c3JfYnRuLAogIGxlZDEsIGxlZDIsIGxlZF9zeXMsIHB3
-cl93ZiBhbmQgcGNpZV9ldGhfcGVyc3RiLgotIFJlbmFtZSB0aGUgYnV0dG9uIG5vZGUgdG8gYnV0
-dG9uLXVzZXIgYW5kIGl0cyBsYWJlbCB0byAiVVNFUiIuCi0gTGluayB0byB2MTogaHR0cHM6Ly9w
-YXRjaC5tc2dpZC5saW5rLzIwMjYwOTA1LXIyOHMtdXBzdHJlYW0tdjEtMC1mNjhkNTM4OTI2OWFA
-cHJvdG9uLm1lCgotLS0K5a6J5a65ICg0KToKICAgICAgZHQtYmluZGluZ3M6IGFybTogcm9ja2No
-aXA6IEFkZCBGcmllbmRseUVsZWMgTmFub1BpIFIyOFMKICAgICAgYXJtNjQ6IGR0czogcm9ja2No
-aXA6IFNwbGl0IG91dCB0aGUgY29tbW9uIE5hbm9QaSBSSzM1MjggcGFydHMKICAgICAgYXJtNjQ6
-IGR0czogcm9ja2NoaXA6IEFkZCBkZXZpY2V0cmVlIGZvciB0aGUgRnJpZW5kbHlFbGVjIE5hbm9Q
-aSBSMjhTCiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBGb2xsb3cgdGhlIERUUyBjb2Rpbmcg
-c3R5bGUgaW4gdGhlIE5hbm9QaSBSSzM1MjggZGV2aWNldHJlZXMKCiAuLi4vZGV2aWNldHJlZS9i
-aW5kaW5ncy9hcm0vcm9ja2NoaXAueWFtbCAgICAgICAgICB8ICAgNSArCiBhcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICB8ICAgMSArCiAuLi4vYXJtNjQv
-Ym9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LW5hbm9waS1yMjhzLmR0cyB8IDE0NSArKysrKysrKysr
-KwogLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC1uYW5vcGktemVybzIuZHRzICAgICAgfCAy
-NzQgKy0tLS0tLS0tLS0tLS0tLS0tLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
-MjgtbmFub3BpLmR0c2kgICAgfCAyODkgKysrKysrKysrKysrKysrKysrKysrCiA1IGZpbGVzIGNo
-YW5nZWQsIDQ0MyBpbnNlcnRpb25zKCspLCAyNzEgZGVsZXRpb25zKC0pCi0tLQpiYXNlLWNvbW1p
-dDogMzJlMGY2NDY0MGQ1NThhMGY1NDEwYWM1Y2RkOGViZjM3MWM1ZTZhNgpjaGFuZ2UtaWQ6IDIw
-MjYwOTA1LXIyOHMtdXBzdHJlYW0tZTIxMmUyN2Q2MTY1CgpCZXN0IHJlZ2FyZHMsCi0tICAK5a6J
-5a65IDxIeXN0ZXJpY2FsRHJhZ29uc0Bwcm90b24ubWU+CgoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Oh, sorry. You are right, and so was Jonas in his review of the identical H28K patch. I should think twice that thread before doing it. I was too hasty and failed to reflect the suggestion I had received. GPIO4_C2 resets the PHY, not the bus, and describing it under &mdio1 also breaks U-Boot, which reads `reset-gpios` from the PHY node ( `drivers/net/phy/phy.c` ) and lacks support for bus-level resets.
+
+I had only tested generic-rk3528 and didn't check whether a nanopi-zero2-rk3528 target existed. Checking my own setup afterward, the R28S I develop on has indeed been booting a board-specific U-Boot target with the PHY-node reset all along, exactly as you pointed out.
+
+I have droped this patch. And the remaining four only add R28S support. Thank you for you sharp point of view.
+
+
+On Friday, September 11, 2026 at 2:55 PM, Chukun Pan <amadeus@jmu.edu.cn> wrote:
+
+> Hi,
+> 
+> >  &mdio1 {
+> > +	reset-delay-us = <20000>;
+> > +	reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
+> > +	reset-post-delay-us = <100000>;
+> 
+> This is an incorrect change, see also: [1]
+> Since you are using mainline U-Boot 2026.07, you should have
+> already noticed that nanopi-zero2-rk3528 is available.
+> Therefore, the nanopi-zero2-rk3528 target should be used
+> instead of generic-rk3528.
+> 
+> [1] https://lore.kernel.org/lkml/1e8da54f-ef87-4d31-9a0a-17c0ff66bee0@kwiboo.se/
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
