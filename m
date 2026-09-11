@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8651C88E4D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 13:22:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5668C88E50
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 13:56:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JEzKkKOhNzS3PsMENh53IlhMIaQsChYYdaL94igo6QQ=; b=gcOa9J/oKwaocl
-	pQJ2/CKF3gmmp/1CSwgUCXivhAm/R+MsTGI+fxe2UHrgZKB077Jd9ryg9dTtjvTW+XY4LYkiEl42C
-	VtR5toT0iadbWHVdBFzQ00SR2Rrt1+605w5sUb+7sGBBmrnMB6cWrLWGOvkk5J1ymcsY+m8Gm9+vi
-	Hzt4+5r+PVoqSjWABgcWKbPNJu47exypyTMEjay6KeAyX46AyKFuPlh/UFCLqi3MH8r3zIBlgC5Q5
-	D+8mMblQfsaPJn9NQzPSl/apSYCOkpT8pn6u3uxB+RYzKc2T118kOhPLL1L3BVBUyYuSfyUG1AFcq
-	mK0SVhahBjx4wtOSKmdA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4M7HMecEMXWjuABBw6wbmpAiLejcFac69bT+E8I3wJI=; b=GXO8iqi5T/4Su6
+	VHAlqBR7YK2pbYOKpjpcaKNqZKauki6JIjsv9ru7qcfDWPo9R6lPhzWvwpJRZAfPwRXoKPrftOEC5
+	o5FyAXL+3yd96cgtqT4AxTMC3YdWQ8ccT5iohbS8KVQ90tt+cZzqOC45hUXFFVbeaoZ0kLQJCItMb
+	p8mmd+bGywHlR7D5bq711gCIj+S5WUsA96xjahUtOAMjT6CS5biw7eCn4rwWjkp1eLfmQmu7MSDcu
+	Gu3s5IQEcptJ9I/faYecflQ2bubizVVpGIkXt40kvNRQuvnKvz/TblLJ7G8M5+1T/1wc3Evli40Rl
+	E66w0a5YYcdhnqSwpfoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x51DK-0000000GjcS-1Zvx;
-	Fri, 11 Sep 2026 13:22:46 +0000
-Received: from [117.135.210.2] (helo=m16.mail.163.com)
+	id 1x51k4-0000000GpwD-34xA;
+	Fri, 11 Sep 2026 13:56:36 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x51DD-0000000GjV8-3g3k;
-	Fri, 11 Sep 2026 13:22:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=tV
-	nKxjEqjL5K9MQsTn8DQ/hXl6/AJIPEzzM3B7nx2sM=; b=StNdYO1CVQDdyUpXBZ
-	cc7FLd0UxaTVrpzO2tWV9G0Kbpcn40nJAv6rbS4GW9/3cl4PAt//+NAcjkq5+WJr
-	qSE+YZ2vg2GMi4zIXNk5N0GYbwhTzcsac0vH65Y5unt7LxuhrxQ2qvG2zSyUFB7K
-	OznMTxnssA8Fz7XboP3SyHP74=
-Received: from zhb.. (unknown [])
-	by gzsmtp4 (Coremail) with SMTP id PygvCgAHqBJmAKRqYh6mRA--.52761S3;
-	Fri, 11 Sep 2026 21:21:46 +0800 (CST)
-From: Hans Zhang <18255117159@163.com>
-To: lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	bhelgaas@google.com,
-	helgaas@kernel.org,
-	heiko@sntech.de,
-	mani@kernel.org,
-	yue.wang@Amlogic.com
-Cc: pali@kernel.org,
-	neil.armstrong@linaro.org,
-	robh@kernel.org,
-	jingoohan1@gmail.com,
-	khilman@baylibre.com,
-	jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com,
-	cassel@kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Hans Zhang <18255117159@163.com>,
-	Mahesh Vaidya <mahesh.vaidya@altera.com>,
-	Ricardo Pardini <ricardo@pardini.net>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v8 1/2] PCI: Configure Root Port MPS during host probing
-Date: Fri, 11 Sep 2026 21:21:44 +0800
-Message-Id: <20260911132145.211380-2-18255117159@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260911132145.211380-1-18255117159@163.com>
-References: <20260911132145.211380-1-18255117159@163.com>
+	id 1x51k1-0000000Gpua-18Cr;
+	Fri, 11 Sep 2026 13:56:34 +0000
+Received: from [192.168.1.182] (93-46-82-201.ip106.fastwebnet.it [93.46.82.201])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id F19D363C;
+	Fri, 11 Sep 2026 15:54:49 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1789134890;
+	bh=YliyGa1zgtLzCslNtNy69+u4K26DzRw41YQWRHAfEEw=;
+	h=From:Date:Subject:To:Cc:From;
+	b=U7BpDuNlhRVM0K60TlVEkGHyUbgbrDvi+M2vv00ER96hmSlZKuOR5ahjEvqX6kIlS
+	 LTFB5zkcol9L9eqmTEwO8k7rnpZi+jOwI38zDOg0yK1jZ3vFyzgE0+0A89uVzbPdUK
+	 PiTpniUwFqBdC99PCv/AKUPAepWs6fbLXYOszp4Q=
+From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Date: Fri, 11 Sep 2026 15:56:19 +0200
+Subject: [PATCH] media: rkisp1: Fix Bayer demosaicing bypass
 MIME-Version: 1.0
-X-CM-TRANSID: PygvCgAHqBJmAKRqYh6mRA--.52761S3
-X-Coremail-Antispam: 1Uf129KBjvJXoW7WF1DCr43Xr1rAr4DKFy7Awb_yoW5JFWxpa
-	yUWanYyFs7GF4fZFsrZ3WFvFyYqF93ZrW3GrZYv34qvan8AryDJrW5ta95Jw1kGrZ29Fya
-	vFn8tryxu3ZIvFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0piGNtfUUUUU=
-X-Originating-IP: [240e:b8f:91b3:d000:8f8f:b76e:3756:1454]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxArdgWqkAGrXVAAA31
+Message-Id: <20260911-imx8mp-demosaicing-bypass-v1-1-5568a7a560a6@ideasonboard.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQrCMBBA0auUWTuQBCmtVxEXyWSsIyQNGZVK6
+ d0b6/It/l9BuQorXLoVKn9EZc4N9tQBPXyeGCU2gzOuN6O1KGkZUsHIaVYvJHnC8C1eFUNwwzm
+ ORL430PpS+S7L8b7e/tZ3eDK9fkPYth0U3IppfQAAAA==
+X-Change-ID: 20260911-imx8mp-demosaicing-bypass-bb284d9cca60
+To: Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Paul Elder <paul.elder@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ stable@vger.kernel.org
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2230;
+ i=jacopo.mondi@ideasonboard.com; h=from:subject:message-id;
+ bh=YliyGa1zgtLzCslNtNy69+u4K26DzRw41YQWRHAfEEw=;
+ b=owEBbQKS/ZANAwAKAXI0Bo8WoVY8AcsmYgBqpAiLYotbsXztTLtL3Y62JssWfvgaG33MhwjZL
+ p3pkjDgG7qJAjMEAAEKAB0WIQS1xD1IgJogio9YOMByNAaPFqFWPAUCaqQIiwAKCRByNAaPFqFW
+ PGW8EACrl1v7ZaaUem+zDs0hBnvGm+Aruh7c2kHnj93EfLP8sJtTLacTiNEpSxNUVh+NSaCFkO5
+ BHbyY2t9ZFGU4elfVaZpRJ9JIJhbwLIzWMi8G1u0WdzHWCTMng1BAsFOK3yNvPAhUJZDWOUrW5j
+ uyLg08dcqwKncwZ3ccum73AQjGbsLyr9JFGokaffyL2lT56Z1OYpVlPGS0rUhS8hEgNwc39m/LV
+ yJFw1EfnFr/iOGpzvAdqd1KcQ1KjxplJYc/9bAzjnIkgRv+XQfSJhxrQbSCj1q/wQZt2CzzfIGK
+ tAqxuKpSh1lO+rC+hhuBHozhkE+umrV78uJZecWDFD3v3NSD/BPtwSxn02DPcc8FZ7DF17xiiae
+ LeqLxDrDOgIRmT6EaOK2xYBVqbzNM+79pptMjO0+UoacZBzeiS+M39R2/QMi76fO0OkkYyZG85i
+ xa5AVgV8SD+9AALGz6FsCLs7Wr2nO54na+GQNfQzHrN1TQeNAHThpABERscv5aoVC/orAOxq6dF
+ 9169VFrI6JviDuhULO2DSxazz9sawqnVBhwFtZqex9Uh3HRJSaX8kaXBe6mCzqZUjznTHUUFmR2
+ Z9SN6JYwQJawNbF4DfjXh1hT7y0OS9C8KQFwGX5mfvc434ZBH3/DzdhyIA+z+2NU4HTR3zs02AP
+ d9s7Ox7ApK9bVFg==
+X-Developer-Key: i=jacopo.mondi@ideasonboard.com; a=openpgp;
+ fpr=72392EDC88144A65C701EA9BA5826A2587AD026B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260911_062240_393007_6F82790A 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20260911_065633_746814_8D1E7801 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,65 +92,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Current PCIe initialization logic may leave Root Ports operating with
-non-optimal Maximum Payload Size (MPS) settings. The existing code in
-pci_configure_mps() returns early for devices without an upstream bridge
-which includes Root Ports, so their MPS values remain at firmware
-defaults. This fails to utilize the controller's full capabilities,
-leading to suboptimal data transfer efficiency across the PCIe hierarchy.
+The RKISP1_CIF_ISP_DEMOSAIC_BYPASS bit, when set, bypasses the
+demosaicing block on the RkISP1 ISP.
 
-With this patch, during the host controller probing phase:
-- When PCIe bus tuning is enabled (not PCIE_BUS_TUNE_OFF) and not
-  PCIE_BUS_PEER2PEER (which requires the default 128 bytes for optimal
-  peer-to-peer operation), and
-- The device is a Root Port, the Root Port's MPS is set to its maximum
-  supported value.
+The current implementation however clears the bit when demosaicing
+have to be bypassed and sets it when demosaicing has to be enabled,
+effectively inverting the bypass bit handling logic.
 
-Note that this initial maximum MPS setting may be reduced later, during
-downstream device enumeration, if any downstream device does not support
-the Root Port's maximum MPS.
+Fix this by setting the bypass bit when disabling the demosaicing block,
+and by clearing it instead when demosaicing has to be performed.
 
-This change ensures Root Ports are initialized to their maximum MPS before
-downstream devices negotiate MPS, while maintaining backward compatibility
-via the PCIE_BUS_TUNE_OFF check and not interfering with the
-PCIE_BUS_PEER2PEER strategy.
+The issue never manifested itself as libcamera hasn't an algorithm
+to control Bayer demosaicing bypass yet.
 
-Suggested-by: Niklas Cassel <cassel@kernel.org>
-Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
-Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
-Signed-off-by: Hans Zhang <18255117159@163.com>
-Tested-by: Mahesh Vaidya <mahesh.vaidya@altera.com>
-Tested-by: Ricardo Pardini <ricardo@pardini.net> # on Odroid-HC4 
-Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
+Fixes: 6c53a7b68c5d ("media: rkisp1: Implement extensible params support")
+Cc: stable@vger.kernel.org
+Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 ---
- drivers/pci/probe.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+media: rkisp1: Fix demosaicing bypass
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-index 27008e2ea5af..dc4747858918 100644
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -2229,6 +2229,18 @@ static void pci_configure_mps(struct pci_dev *dev)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+index 042b759eba62..496381962f1b 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+@@ -1854,8 +1854,8 @@ rkisp1_ext_params_bdm(struct rkisp1_params *params,
+ 	const struct rkisp1_ext_params_bdm_config *bdm = &block->bdm;
+ 
+ 	if (bdm->header.flags & RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE) {
+-		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
+-					RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
++		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
++				      RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
  		return;
  	}
  
-+	/*
-+	 * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all) or
-+	 * PCIE_BUS_PEER2PEER (use minimum MPS for peer-to-peer), set Root Ports'
-+	 * MPS to their maximum supported value. Depending on the MPS strategy
-+	 * and MPSS of downstream devices, a Root Port's MPS may be reduced
-+	 * later during device enumeration.
-+	 */
-+	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
-+	    pcie_bus_config != PCIE_BUS_TUNE_OFF &&
-+	    pcie_bus_config != PCIE_BUS_PEER2PEER)
-+		pcie_set_mps(dev, 128 << dev->pcie_mpss);
-+
- 	if (!bridge || !pci_is_pcie(bridge))
- 		return;
+@@ -1863,8 +1863,8 @@ rkisp1_ext_params_bdm(struct rkisp1_params *params,
  
--- 
-2.34.1
+ 	if ((bdm->header.flags & RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE) &&
+ 	    !(params->enabled_blocks & BIT(bdm->header.type)))
+-		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
+-				      RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
++		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
++					RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
+ }
+ 
+ static void
+
+---
+base-commit: 27953c044974baf7e24dee3e9342fe0103dea80c
+change-id: 20260911-imx8mp-demosaicing-bypass-bb284d9cca60
+
+Best regards,
+--  
+Jacopo Mondi <jacopo.mondi@ideasonboard.com>
 
 
 _______________________________________________
