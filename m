@@ -4,89 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03576C88E53
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 17:27:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 096EDC88E4D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 17:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=15sg3fTBlwa8hC8nwKx+Lt4Noh+9y/TF9Xzof9nknLM=; b=yx+7LUaVeo9lit
-	W8M5synSFeiuzl3mP84bwCP7FnNVMkW2UOQzJrMoSXG5voJBBYgFWjg5QGdmdavy1JHISMTGi+ADH
-	rYzeV7CXNxmpo/Wcf4FFHXryvrVIxg1zU9YN37w5Zee4PpnH4eTzBWOgjoP6LY7wqIfzg1EXMj1WT
-	al30arIgcpGZ71lyKh3/Jl5/8MMHy2ci139huLqy8zFlbjxJAuQttoqxcarj6sLyLYrm9ZfQcePbx
-	gfLaiRNZrTTNdeDFrXrIZCA4+v65z8Bgwadw7mZpP5LJe8FjISeTEWj71YeciaW82mS2krRz2gThp
-	kakqC2JJUxAXwmC2n2sw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PgOxBvIYMhCiqcjRKAs1NE2i0HsOlBqtwvluUUrsVNA=; b=1JX66W0/dVlQ+W
+	sIcxwfUaSMqBsCbhNv7G4sIvQ7x0expzFpexSr1PxH//H8Bnr0lmQ7M/wh8MInQd296vKr54OKDHv
+	g8hkqw+wVO56/rkujDl6hxObDNvsmzTPu696zluLI9HG7tdmRRhjNbD7IlCCpOjAKDZlZvEJZDdKV
+	Oqs0o3rtF63ClA6qvXp5Ez6BG+wlwZmqY+9a9jdpLGclOdqCUHpquFe3Fu+iPWDXkgI7eXRcwSehK
+	KLc7gyvwYzQP9n2ALK64g54UnRAT4p60TtTQmmVP3Qex6VSKkZmsstJmguLSNloQ6aCqXXI376HDH
+	xvS24PkS/BIqSAy6xHEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x551y-0000000HKvB-3n1A;
-	Fri, 11 Sep 2026 17:27:18 +0000
-Received: from mail-vs1-xe2c.google.com ([2607:f8b0:4864:20::e2c])
+	id 1x559j-0000000HMi2-31Nl;
+	Fri, 11 Sep 2026 17:35:19 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x551w-0000000HKu5-3pc6
-	for linux-rockchip@lists.infradead.org;
-	Fri, 11 Sep 2026 17:27:18 +0000
-Received: by mail-vs1-xe2c.google.com with SMTP id ada2fe7eead31-791284e24e4so816704137.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 11 Sep 2026 10:27:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789147635; x=1789752435; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=BChxo31Ip5SB1VJHGoub4TIPtDJvGI/MxbOnDeYS06A=;
-        b=PqnCvRtrXKTFq5Ef2aFDY/L86pN6elNEqN1lpbY+Y7yvV0distSk7wngMxMAIdYYK4
-         OQYVNiIjF1iemaDVrkcztWU5oOMD3nlEe1MVm7wPh7qRsW9DNJnssohzJ+Osepp6XM2Q
-         UbPfjdr+UP6XyhylH46Uy2+QEhZC4dJQzN/8vz2ezModhxJZGgzrj18Jzh3pGk9y72tG
-         fgGrXz2i8lsHMOujcIKAL5F5UCot3g1bNNm6QvQz+XnnjvXa8pFSCe9ziKrwkkFMriWF
-         7kqioY3kao//xdSRpEskH2EDj+RXu+qF8jw4Y7E88f6uDGoRRuawODVxHyi/R65fwV1D
-         dmlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789147635; x=1789752435;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=BChxo31Ip5SB1VJHGoub4TIPtDJvGI/MxbOnDeYS06A=;
-        b=Fj4//aH2E9dwMwDUSU7qURgZunrGT3G5+lywL6v4ziUsE61XoogTmDvXURFvlSl/gN
-         P1gbzlxo0nQhLijQp+Kfpi9B/3N4oTAIlswKLehz/sryWvj2Vc7aVjjy3HxIDB58kkjQ
-         SktliptolxhPWycs3OSETXID24X15aF1FzNCej9ZlYuCc+JkFgWgZRaAM/81RF5Fb2Hn
-         D/JpwxD9HUc7ExT4n49KBvh3Cf+6RI3lnR6d1p2/jJlxEBIJiC3gTwU1w5LvMPWU8nrJ
-         e89SN3dXcpJylF2ydoB2Ldx146hcOz7BEtZPIhxheeKtorz79gIWyrnksOriCkkTBYne
-         dFGw==
-X-Forwarded-Encrypted: i=1; AKwUvBxR1O2SDLhL9Rz+yGkVOWi0c2/l8qFw94uEwd7CrhP/fIanMJVe75sMxsmpsis79Cgjt67lyfF7iKcZzSeFfQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++mV7hpLXffMacSdTT2b1G/+1O4snnOar9ls/0s5Vk15/LNts2Ll
-	vLR2/alP5el7006JxRYTnnf6q7o2+WIT9wJekEG8vtGux0YKysCr/HM=
-X-Gm-Gg: AYBFou39yWW/eINOxPwo2QrCqFidyT+StKn2nd3fdPJ5kCcShxOnxjzh0HPYMzRJQjW
-	UJbV983kRoB+qHNjZA78Q+b+NLgam9XG+mZ/TmJo+hvEwkgCxcrENMzjSFEN+aRWNb1gpp/xFQq
-	y98ZSXuiXM+7nNyyHZAUM+uEzo3DEh9yNNxJGHj7u5HIP75wAk1JP79UnjFbeLZ1ooSmUY8kC6f
-	c176kdZDxKI+IT8yiu1ZsSbwzbLGD6fgA0X7UJSOsix+4uMcoAqpihTLHkz9jFqtUiC49ldUTuj
-	dwLtPe/d21Rxe/kx1zYoGnibsslWL6PT2IN09XBo5dKNVXiG0v4o04EdaCnXS7z4wQrpudVOYqE
-	rcR+HhDcnN518Fpb7jnKvVZ90Sf6UR6RCqDLt4l/7DtLQrNAR1tT1QcwLyqg++nHoLJjZ9sO19r
-	4YBMrXIpw/EIaah2OTHipC5kYFWSH3jFLYoGs7Y0b7y51bkRAftSprXjAqNRlqaoz6O4ro052bs
-	4mDbu09kFQ/8Z3sGKocLuErpoPNfHTCxBXEZdlyKyn/8fcIBG46zrwaKllUOo2z8TeDfebpNvP+
-	1Gq8cVa28igmpYsaOJ2KtZhgw3GsfZnJ3w==
-X-Received: by 2002:a67:cd84:0:b0:791:8f69:b7f3 with SMTP id ada2fe7eead31-792a4fc8bd1mr5864944137.5.1789147635238;
-        Fri, 11 Sep 2026 10:27:15 -0700 (PDT)
-Received: from localhost.localdomain ([104.39.73.78])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-9120f478bf1sm25569566d6.25.2026.09.11.10.27.13
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 11 Sep 2026 10:27:14 -0700 (PDT)
-From: Myeonghun Pak <mhun512@gmail.com>
-To: Mark Brown <broonie@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Ijae Kim <ae878000@gmail.com>
-Subject: [PATCH] spi: rockchip-sfc: skip DMA cleanup in PIO mode
-Date: Fri, 11 Sep 2026 13:27:01 -0400
-Message-ID: <20260911172701.58177-1-mhun512@gmail.com>
-X-Mailer: git-send-email 2.50.1
+	id 1x559f-0000000HMgl-1PdB;
+	Fri, 11 Sep 2026 17:35:17 +0000
+Received: from killaraus.ideasonboard.com (2001-14ba-70f3-e800--a06.rev.dnainternet.fi [IPv6:2001:14ba:70f3:e800::a06])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5A6B756F;
+	Fri, 11 Sep 2026 19:33:32 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1789148012;
+	bh=kN+PV2iOq3JJVRTjxSU6DGs6/edFIKhfuQcDCarufaM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oLgUx8i+zFrsl3PNAFYR+UY96C8AxETKgkFa43f5G2dsiQlRtt3jNbUoZ7ZljlSEV
+	 QpbLQ765WCKzy/jPiKBccIXmyLy5PuTGKOo5pgYtV+zHDYwP/YMApCB0kTnTrIzNpD
+	 /5wyKnc+qpx+Wes0SQJ0CZrf0+PwjFTV9WNpqn+w=
+Date: Fri, 11 Sep 2026 20:35:08 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+Cc: Kieran Bingham <kieran.bingham@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: Re: [PATCH] media: rkisp1: Fix Bayer demosaicing bypass
+Message-ID: <20260911173508.GW1892234@killaraus.ideasonboard.com>
+References: <20260911-imx8mp-demosaicing-bypass-v1-1-5568a7a560a6@ideasonboard.com>
+ <178913687012.1723501.3167773155478207003@ping.linuxembedded.co.uk>
+ <aqQTTtJf9qcdSz2z@zed>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <aqQTTtJf9qcdSz2z@zed>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260911_102716_964396_90F6366D 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20260911_103515_538825_7EDA80BB 
+X-CRM114-Status: GOOD (  27.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,56 +75,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With rockchip,sfc-no-dma, probe skips allocating and mapping the transfer
-buffer. However, controller registration failure and driver removal still
-call dma_unmap_single() for that nonexistent mapping.
+On Fri, Sep 11, 2026 at 04:43:32PM +0200, Jacopo Mondi wrote:
+> On Fri, Sep 11, 2026 at 03:27:50PM +0100, Kieran Bingham wrote:
+> > Quoting Jacopo Mondi (2026-09-11 14:56:19)
+> > > The RKISP1_CIF_ISP_DEMOSAIC_BYPASS bit, when set, bypasses the
+> > > demosaicing block on the RkISP1 ISP.
+> > >
+> > > The current implementation however clears the bit when demosaicing
+> > > have to be bypassed and sets it when demosaicing has to be enabled,
+> > > effectively inverting the bypass bit handling logic.
+> >
+> > Ouch.
+> >
+> > > Fix this by setting the bypass bit when disabling the demosaicing block,
+> > > and by clearing it instead when demosaicing has to be performed.
+> > >
+> > > The issue never manifested itself as libcamera hasn't an algorithm
+> > > to control Bayer demosaicing bypass yet.
+> > >
+> > > Fixes: 6c53a7b68c5d ("media: rkisp1: Implement extensible params support")
+> > > Cc: stable@vger.kernel.org
+> > > Signed-off-by: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
+> > > ---
+> > > media: rkisp1: Fix demosaicing bypass
+> > > ---
+> > >  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 8 ++++----
+> > >  1 file changed, 4 insertions(+), 4 deletions(-)
+> > >
+> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > > index 042b759eba62..496381962f1b 100644
+> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> > > @@ -1854,8 +1854,8 @@ rkisp1_ext_params_bdm(struct rkisp1_params *params,
+> > >         const struct rkisp1_ext_params_bdm_config *bdm = &block->bdm;
+> > >
+> > >         if (bdm->header.flags & RKISP1_EXT_PARAMS_FL_BLOCK_DISABLE) {
+> > > -               rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
+> > > -                                       RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
+> > > +               rkisp1_param_set_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
+> > > +                                     RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
+> > >                 return;
+> > >         }
+> > >
+> > > @@ -1863,8 +1863,8 @@ rkisp1_ext_params_bdm(struct rkisp1_params *params,
+> > >
+> > >         if ((bdm->header.flags & RKISP1_EXT_PARAMS_FL_BLOCK_ENABLE) &&
+> > >             !(params->enabled_blocks & BIT(bdm->header.type)))
+> > > -               rkisp1_param_set_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
+> > > -                                     RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
+> > > +               rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
+> > > +                                       RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
+> >
+> > I think this also opens us up to add mono formats as explicitly
+> > supported by the ISP and potentially set the demosaic defaulting to off
+> > in that instance?
+> 
+> mmm, I think userspace is in a better position to decide when to
+> bypass debayer instead of relying on auto-configuration of the ISP ?
+> 
+> I guess we'll discuss this when support for luma-only formats will be
+> added to the driver
 
-Skip the DMA cleanup on registration failure when DMA is disabled, and
-guard the buffer cleanup in remove with use_dma. Keep the existing
-cleanup for allocation and mapping failures on the DMA path.
+While I understand why auto-configuration is tempting, I've found that
+more often than not it makes the life of both the driver and userspace
+more difficult. Look for instance at the colourspace handling code in
+rkisp1.
 
-This issue was identified during our ongoing static-analysis research while
-reviewing kernel code.
+> > Anyway, Looks sane to me in this order.
+> >
+> > Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
 
-Fixes: ee795e82e101 ("spi: rockchip-sfc: Fix DMA-API usage")
-Assisted-by: OpenAI:GPT-5.6
-Co-developed-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
----
- drivers/spi/spi-rockchip-sfc.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index 662a994da60beca33358dc6af09017e88771d017..21bd2e52d3989e3b371cf5c9ec8e4a22e22f17ed 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -719,6 +719,8 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
- 
- 	return 0;
- err_register:
-+	if (!sfc->use_dma)
-+		goto err_dma;
- 	dma_unmap_single(dev, sfc->dma_buffer, sfc->max_iosize,
- 			 DMA_BIDIRECTIONAL);
- err_dma_map:
-@@ -743,9 +745,11 @@ static void rockchip_sfc_remove(struct platform_device *pdev)
- 	struct spi_controller *host = sfc->host;
- 
- 	spi_unregister_controller(host);
--	dma_unmap_single(&pdev->dev, sfc->dma_buffer, sfc->max_iosize,
--			 DMA_BIDIRECTIONAL);
--	free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
-+	if (sfc->use_dma) {
-+		dma_unmap_single(&pdev->dev, sfc->dma_buffer, sfc->max_iosize,
-+				 DMA_BIDIRECTIONAL);
-+		free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
-+	}
- 
- 	clk_disable_unprepare(sfc->clk);
- 	clk_disable_unprepare(sfc->hclk);
+> thanks
+> 
+> > >  }
+> > >
+> > >  static void
+> > >
+> > > ---
+> > > base-commit: 27953c044974baf7e24dee3e9342fe0103dea80c
+> > > change-id: 20260911-imx8mp-demosaicing-bypass-bb284d9cca60
+
 -- 
-2.53.0
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
