@@ -4,98 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACE3CC88E4D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 15:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACCCDC88E4D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Sep 2026 16:26:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vrv5oTnOkDkmntJKVFM1/Jnw9cB6D/KEYfUiYfThqiA=; b=CIPjsfY8KzhFSV
-	6M5h5QpBpBxGo+BNJra4jp8EYlCaa5axXgvEEDc5QLvyznEBw971nBdYy7rleYdfCQG3pmLByyz6x
-	R/KAMZE1j28c6O+Lw++D51T5qDcRh6gn8ZgnXjri1TT/X0kFIA/Ldt92rJiCM9MC41djXI4DHiHlx
-	/+j+IEy138sHsyF/pVO0nE75nZv1aq7xnpoXne/Awx9ln4NI4C2FpRgPQKtfoF9CqFwc9MOLRi06i
-	qHnMZEApSvwzgmvjYfyPU4UtNkzZsPpQ9/5LupJQeGd2M72pnPIDCiGwVJN0U3mcG7taLbrsWjSch
-	6Ita2seaDtXbmCIGUoJA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uG7iJ1gVSzjwpaEhIYhJhx3ESO+bezNkcXSp99/y3zU=; b=UOE0uWfOVLuF07
+	ZqslwiHiwNkmdPIgwTYtWbTJp6mjwcSwu69v6lACxUSUlPHXW7AnmO83XlraDoYSGB1lcqJmHh4v9
+	7pCrsegmbeNjC/drjdS5c1U9lFTMNkYgULGDDu0osZRN2R/R49bT+p3vBnvJvijjA6MxjXuLBUaKe
+	crBywBcNUTV7/du9Zp05gdYQHn3yzH/jMo7KdRsHdJAnqRPK9auU6vOd1MavrtTD0OT3YdsH+c8Vi
+	VrS07G5O/DIMuvTYdPqJ+ufP9L8VT5e84144bcmS0LU0oh7RigbWlyJtRPI7hHjmfSr10dufJ1use
+	+p3hm9z4x3ghChHPKWAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x53Ro-0000000H7fT-3FyP;
-	Fri, 11 Sep 2026 15:45:52 +0000
-Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
+	id 1x545I-0000000HDKr-3UUF;
+	Fri, 11 Sep 2026 16:26:40 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x53Rj-0000000H7eD-1Tlh
-	for linux-rockchip@lists.infradead.org;
-	Fri, 11 Sep 2026 15:45:48 +0000
-Received: by mail-pj2-x10.google.com with SMTP id d9443c01a7336-2d90ba1d807so13102255ad.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 11 Sep 2026 08:45:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789141546; x=1789746346; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=;
-        b=smV/VPDPOPC4OR3L19fDKJqOUsNx9sOvoTRGZFK37QutQGbUFdHLCfl2lD3AIyU0l7
-         PqLCjBb+yVB3D+humwfPPnwzVGDopz5a0aUhGFf66Fe2apFxm5KI9Iab/MfU90gzND3k
-         0D+uQ8R7zrrunCiUzBm5c/RGqeIB8ly9vmSedxwQ5Dz+xcxNBiuwDnHAuAbtGZTaINI0
-         bPh3yzUibwDy9YHDE5a/64C499RH0fMhUpLMIPvDLGr6ep99HHuREMlNLX9djQKv9kAB
-         IBnJVVYjYgM+oPqfWV51wbNdOAbj5XMa7UbYEKrrPnYaepYuL4pFiceVTUvYPNUoQuij
-         sfLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789141546; x=1789746346;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=;
-        b=mE9sctqT+NBEQRfbDFyqmq+r8k1MTKPbyCoN7I/yIcvZ31J5R55wX30Yx5xP+ZwoYr
-         pjs9eYdCqz0SSw6kz1Qhx7tj695nCwtFfeXEjMgM//4aJOruGjCp+ENyWznPDIxgXbju
-         3kJbj/91U6TuI/onoNGXl25kPk0Lh7fRAR3A0D0L90+1bV0NBtBuj3r/MTSiIKaxUmUi
-         VwJNPSeG7g7oNeWXxe78yOPPpRS4QTHSgeZdNF0BH2R4vMd8JFPRU7rCWlusDAqJqszJ
-         014yKz6OfnA1m09rtPQiI76tPlZ5Y7ZahwW4Aew7AVmEQuXLuCJbiOevS7BT9sbjJoCy
-         fBeQ==
-X-Forwarded-Encrypted: i=1; AKwUvByQ+8jXNP+V97eJ2lWly5KTUqSye9BBNRGaUpkEVgmpdY7qMZnUT/qoBhCFY8i/7TBJCJ/F+hkxjQKBQy5wvQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++kc2BcD/9tdCT3YMm0RbDA3Kg4UcU0shQfcM04BlHyCfNi1rdUe
-	Q24AVEV5xpVgFcJ+7ncjS8Py7VjeVeloDo1ZfphltHcPpuvROlFUv6/1
-X-Gm-Gg: AYBFou0a9APEvUJNga0GNzeO4k5UyiHeNZ18hwZX5NtcyYI6l/vWido/DRm/iNO8M9s
-	NYeUdLggXr4Lrwc3Nku0FilQkMiKKNR0cweRVjCeP+FLi1+v1WfDpnKFb6vh41+r9GX0x8Kflrr
-	FnTEJiWcfFq3o1YVGvkQk/sCgg9fo9mAJ1Qo4Y4Ei8fFxOJgjDee8VZspHR/5ysTxnAGlZT9+gg
-	G2VGVHDBVOpsohoUvJUeqC0xlkfpW4dsdZM0yG/yRc6SYLSRA2hFREM/4KsdUvKKPKWx+NI1lC5
-	jHDvBvYfgPbLmhuTPSpS0WlNcuYAuxkvuREm+ILNAMYkHXRciBE9OL++vAjLsPqMajrXCPFPBDA
-	bz8hqVFaSbkROlxDEEUQpZ1PLZnDZP/+xfEDdt8D3v+AlsmyHR8WAOMFV/qrjxT/R5WLNC8nt9J
-	rdlK8SExX/hKQJPo3/MLbk+4m4b6l80ETyivZKU1sjU9hXPGxXgLkvjaQ1QTASR57AFbwkoosql
-	wNxJ1UM
-X-Received: by 2002:a17:902:f60d:b0:2db:5c0a:f184 with SMTP id d9443c01a7336-2dd2a34fd91mr100447505ad.17.1789141545988;
-        Fri, 11 Sep 2026 08:45:45 -0700 (PDT)
-Received: from arch.localdomain ([158.101.31.158])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2dd2cfc2d3bsm13628145ad.48.2026.09.11.08.45.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Sep 2026 08:45:45 -0700 (PDT)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Jun Yan <jerrysteve1101@gmail.com>,
-	dri-devel@lists.freedesktop.org,
+	id 1x545D-0000000HDIg-3cen;
+	Fri, 11 Sep 2026 16:26:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=AP
+	2ZJ8lX7rjvH1moWpuOMtPTfzrXU1f6x/jsrt9JHRY=; b=I1JbfeIqmOhC6zPCKA
+	3VgmaHpx0x08GFT2XDhXIJiXyFC7db7GVo+zleDFwnqG+mPgp81Uxc038TtS5oIf
+	MZh6zzdsoWjUqoUN237vuGDNQqxcYah1qdGLxann68zVKU9zSXc2B+pxNiG4itiJ
+	/5oIEgLBdGZNjbHPfdAeNmn0U=
+Received: from zhb.. (unknown [])
+	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wDnDy6JK6RqMNRdAA--.33660S4;
+	Sat, 12 Sep 2026 00:25:49 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	bhelgaas@google.com,
+	helgaas@kernel.org,
+	heiko@sntech.de,
+	mani@kernel.org,
+	yue.wang@Amlogic.com
+Cc: pali@kernel.org,
+	neil.armstrong@linaro.org,
+	robh@kernel.org,
+	jingoohan1@gmail.com,
+	khilman@baylibre.com,
+	jbrunet@baylibre.com,
+	martin.blumenstingl@googlemail.com,
+	cassel@kernel.org,
+	linux-pci@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
-Date: Fri, 11 Sep 2026 23:45:33 +0800
-Message-ID: <20260911154535.266121-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH 2/2] PCI: dwc: Remove unused PCIE_ATU_UNR_* register definitions
+Date: Sat, 12 Sep 2026 00:25:37 +0800
+Message-Id: <20260911162537.469018-3-18255117159@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260911162537.469018-1-18255117159@163.com>
+References: <20260911162537.469018-1-18255117159@163.com>
 MIME-Version: 1.0
+X-CM-TRANSID: _____wDnDy6JK6RqMNRdAA--.33660S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ur1rWr17uw4kXFWxZFWDurg_yoW8Gw4kpa
+	45XFWIyFn8Ja17uw4rtrn5CF13tFsrGrWUG39xKwsru3Wavw18Jry0vF4Sgry2qrW8Kw4a
+	v3W3X347WrWkCrUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pMg4SnUUUUU=
+X-Originating-IP: [240e:b8f:91b3:d000:8f8f:b76e:3756:1454]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCww6xVWqkK45HcwAA32
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260911_084547_397552_D1C2D795 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20260911_092636_284140_6415B663 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,57 +91,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
-internal eDP port) has no separate PHY device and relies on its built-in
-PHY, which is programmed directly through the GRF registers, so its DT
-node carries no "phys"/"phy-names" property.
+The PCIE_ATU_UNR_* macros are not used anywhere in the kernel.  They
+were presumably intended for unrolled iATU register access, but the
+driver now uses the ATU_* macros and computes unrolled offsets via
+ATU_UNROLL_BASE().
 
-Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
--ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
-misleading "no DP phy configured" error at probe time before falling back
-to a NULL phy.
+Remove these unused definitions. No functional change intended.
 
-Use devm_phy_optional_get() instead, which returns NULL when the PHY is
-absent and otherwise behaves identically, and drop the manual -ENODEV/
--ENOSYS handling. This also removes the spurious error message.
-
-Assisted-by: Claude:deepseek-v4-flash
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- .../gpu/drm/bridge/analogix/analogix_dp_core.c | 18 +++---------------
- 1 file changed, 3 insertions(+), 15 deletions(-)
+ drivers/pci/controller/dwc/pcie-designware.h | 12 ------------
+ 1 file changed, 12 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 18e76d1e78e1..28eb668d3e3f 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1427,21 +1427,9 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
- 	if (ret)
- 		return ERR_PTR(ret);
+diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+index 10bf06427e41..89cb809e056b 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.h
++++ b/drivers/pci/controller/dwc/pcie-designware.h
+@@ -257,18 +257,6 @@
+ #define MARGINING_MAXLANES			GENMASK(20, 16)
+ #define MARGINING_SAMPLE_RATE_TIMING		GENMASK(13, 8)
+ #define MARGINING_SAMPLE_RATE_VOLTAGE		GENMASK(5, 0)
+-/*
+- * iATU Unroll-specific register definitions
+- * From 4.80 core version the address translation will be made by unroll
+- */
+-#define PCIE_ATU_UNR_REGION_CTRL1	0x00
+-#define PCIE_ATU_UNR_REGION_CTRL2	0x04
+-#define PCIE_ATU_UNR_LOWER_BASE		0x08
+-#define PCIE_ATU_UNR_UPPER_BASE		0x0C
+-#define PCIE_ATU_UNR_LOWER_LIMIT	0x10
+-#define PCIE_ATU_UNR_LOWER_TARGET	0x14
+-#define PCIE_ATU_UNR_UPPER_TARGET	0x18
+-#define PCIE_ATU_UNR_UPPER_LIMIT	0x20
  
--	dp->phy = devm_phy_get(dp->dev, "dp");
--	if (IS_ERR(dp->phy)) {
--		dev_err(dp->dev, "no DP phy configured\n");
--		ret = PTR_ERR(dp->phy);
--		if (ret) {
--			/*
--			 * phy itself is not enabled, so we can move forward
--			 * assigning NULL to phy pointer.
--			 */
--			if (ret == -ENOSYS || ret == -ENODEV)
--				dp->phy = NULL;
--			else
--				return ERR_PTR(ret);
--		}
--	}
-+	dp->phy = devm_phy_optional_get(dp->dev, "dp");
-+	if (IS_ERR(dp->phy))
-+		return ERR_CAST(dp->phy);
- 
- 	dp->clock = devm_clk_get(&pdev->dev, "dp");
- 	if (IS_ERR(dp->clock)) {
+ /*
+  * RAS-DES register definitions
 -- 
-2.55.0
+2.34.1
 
 
 _______________________________________________
