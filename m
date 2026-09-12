@@ -4,59 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1881EC88E45
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Sep 2026 01:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D54B0C88E56
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Sep 2026 06:51:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u+3R1nXM1357GEZT85XlbiBmy7vyQ0GH8Uebhjlh1QA=; b=p0a6SdUSOwwnIk
-	KhLPylz9npFUCqJYWgU6sO3yN6PKQg7vny3YTHdbbDp8XM3oJz9MnN+YFsy/5pvxtm0429iY8o8ki
-	pjoT1AVaDKSnbpoGr9iFXMLn4HtChWjss2Hyw9/uDLySW5mXLq9giKvb2AjN1oxKFFVnVpmLj6Mwc
-	TTkav+czVBibM7wyCVGIS6wgm+kKdwy1e6OpQ8CLuQzzUrKVMUkRlp/IUDeVM8kH2ecA9AQAXj4xM
-	S8gmkq2irdeGNPBo8DZJ/u+uZUKQlLcfeAC5CbzU8JXv387WJmysz57BP5OtPY7DEj/jv1iLRcysH
-	Y+Ywogkee1RKtTXj4I9A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DtBr2NSaB1pY0YNg2cqWOE4k3RG7PAiEBeeyoz5wdog=; b=JlD5j8MOq2DCS4
+	7mz3mUkUjVPqYCwsDk3DkHvVmLjlN+9p3FLIUKnTNOsXhtrf+rDtqn8S9TQlKjQDDAVLiuDWZYLrt
+	VFYaMdEMFsysO9Ow5n63Csj/WeBRsTiioWbdJtr6sJJs8vqTdJKg5mwZd7MgQv/3rb/nd+/99dchH
+	pdRpvv+Eg7v9Y/ZUzs/QLQGSrTBWsNI0Bgk9ao+LJ9LnfHCnwnIGhjCHnsN5uAF2GYc145DGUYqtV
+	w8qIr2dTfkD4wmlo2JHVOea43b7Ji0hX3JeQV9VxiU4FJGe6Dgnu9UDsy96s1aoavleDwTVLnoCrk
+	0N8XdTTz6TJM82jaxISQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5CQh-00000000TLI-38El;
-	Sat, 12 Sep 2026 01:21:19 +0000
-Received: from mail-m25496.xmail.ntesmail.com ([103.129.254.96])
+	id 1x5Ha0-00000000atP-3XRW;
+	Sat, 12 Sep 2026 06:51:16 +0000
+Received: from fhigh-b3-smtp.messagingengine.com ([202.12.124.154])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5CQd-00000000TKp-01Zk;
-	Sat, 12 Sep 2026 01:21:17 +0000
-Received: from [172.16.12.48] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4d7dade84;
-	Sat, 12 Sep 2026 09:21:03 +0800 (GMT+08:00)
-Message-ID: <577c2a79-25f9-409d-be46-275821e3a2f7@rock-chips.com>
-Date: Sat, 12 Sep 2026 09:21:02 +0800
+	id 1x5HZr-00000000asf-3WG5;
+	Sat, 12 Sep 2026 06:51:12 +0000
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+	by mailfhigh.stl.internal (Postfix) with ESMTP id 833817A00C1;
+	Sat, 12 Sep 2026 02:51:05 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-05.internal (MEProxy); Sat, 12 Sep 2026 02:51:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm2; t=1789195865; x=1789282265; bh=pXelZX8vHK
+	ysmBTKdiKejFzl/2p5vCMGgp21kZl21jw=; b=hiRsrBnlxsefTGda2N1uAs+xp8
+	yekMNX5yy90qikBkAg7DCIdQ2Bo7uF1VBCJWFuIzzXptDkiuFy38KAolnO2KxyYt
+	YgTsu/Sq37kuRfjEHkovEDOtgkwoG8VZB/XmSLLLeL6wqKxbwKU0LNSgTFq3jeeO
+	h3DShAxkvk23Pu3SqMDE8NZkYIrAp0roUU12rdTR3HXE+WW0FUD0ZbJPD/mZdm1f
+	yu0GKfOFRMrFv07G/uNuDLt5sWPj9WxFt1ZuFUWn/DjOYMHghaF41pxsFkkfWT/W
+	J2tzu/fHwTL1EerMYO3xXFntHzbcY8Sd/Lecp80/ikYmD/eZ2wpKMHQlp9XA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+	1789195865; x=1789282265; bh=pXelZX8vHKysmBTKdiKejFzl/2p5vCMGgp2
+	1kZl21jw=; b=xfBOxyIECso5VM6+QHZgkwAFNjbCkuLwDW0+LV+WOSkuOID0aGz
+	Olhys97hu4/DfZkzrZXujPc2IWK6HpifRIoJnHZ5kTSe6Cc9s+YXBdl/HfF1UThe
+	tw0BzW2nk2y7m0wwYg4UwTbtmFIH42cR8s0LWlPW/RazivIrNRRWhKD30HbUk4WE
+	mV6bGz+q579NKWEo9RgJFsKnVgXa9/8k8LON1lYnc9nG3raXkw108MlTZ5U7NI8B
+	4NV3V1i3k1XTVEzAxkz5XkDY0fxRfpa6TCZ5H+rRZVr3aa924b/050R9iHn+ire2
+	S0ukwM/iL2gpKjEcabb0MM83wbhN2i5kApg==
+X-ME-Sender: <xms:V_akaseX7i16dWfw94yLXj53yqAI5aVlqbB6VR4qH7iE6S2gy_2gnw>
+    <xme:V_akauVJb9aiAHeu5d0sakAoof3oy02TsXyhZRARIECWOvvU44QbhfEYGxHSlJ16M
+    7d33DgQuMeBdYElfy7e601gC_cVcvCAmuy9ueGx1ox5IHlnAYdF1YKC>
+X-ME-Received: <xmr:V_akarWSuPmCR8e8YBVpgWNJGIKyKAymA8sfUMAhs93hbx2WtoUwbKgNzIVM_65ANlcVoC3EyQ>
+X-ME-Proxy-Cause: dmFkZTEPTAV3+XbjVP/bW4cRcXpyHrAzrH9+9QpuyVHtrKg7x48x8iJmpPt+1NC3WIxLWq
+    r90BQCoAJYZ4nSPfYg34koSNDHSCM2PvChnmulEsow2NWcqxLYLRquMqtW/z7CFvgHF9xp
+    LOS+C2iupKH/lT7unaEiIeevY0qs7y6OgZbxHtoot4tQNz9ihjBhVk6V9xUu18cmN/tk1o
+    K+47UZXjeql+caK/KOSRUH22I0DMlynKeBZMw4qh2DpLfMXSqs0cPx/6PCAYwoBVOx8Rtx
+    6GeClWPMRgiw9fCuJkVZfSxjLfC6gXvV53A9ZcDytiAoD7IwiylFwUUs4149lKa+UxHfUN
+    o0sM/X690ex351WoPTjnMXG/DAMOBLbz4DIxnHRum+bC7G3+ct9UP63sYJ5eO2uFT/y+aN
+    4cVYu8EsVuVmr2Kj++BLkM4hynmjuobdI3qqF4nstMu40TzyNeZ4k749sWkkR2ERCsBBP5
+    bE+0sjSUSNnf8P7VaOmeHICeczk3YyWHBZheVLFz2sbV0JZ0BfUEVmp519eLCYmXJS1pym
+    N5RqRZ1ViOlv51iW4mOTo8SnXd68vKLDSH71UY/+veMtHy29cynZjHqYy9iM0qK8qENLdS
+    O5rFazB4HaGcUVaNRXJc+FZiH2IKGJZE7YzOkn0jAXpRsvxWu++S/vBC8vMQ
+X-ME-Proxy: <xmx:V_akamNUNvB3xUSe3EjObkxaAHI9rk2yk-J9S-ABrOx9VfPS0elSAA>
+    <xmx:V_akam6OUBb7IwMWMFVb-twh-Dwm4MwX6ADYMSIHO67EYnvRcjzlZg>
+    <xmx:V_akanpsMUEkU4ILCLCKjaRjJR_mTUGUDAYSl_I-c7rMi9i0GPDYZA>
+    <xmx:V_akakDyatk626BOurHHYVOSIPduqmBsokghXQ8dIq6S9SsV_nis4Q>
+    <xmx:WfakapbatKBJhGytDqbeQ7IvGtzUSW2zdMOgACchzEOfXUxfph3yuaAK>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 12 Sep 2026 02:50:55 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	ulfh@kernel.org,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org,
+	zhangqing@rock-chips.com
+Cc: royalnet026@gmail.com,
+	abel.vesa@oss.qualcomm.com,
+	sebastian.reichel@collabora.com,
+	sidong.yang@furiosa.ai,
+	u.kleine-koenig@baylibre.com,
+	chaoyi.chen@rock-chips.com,
+	diederik@cknow-tech.com,
+	alchark@flipper.net,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: [PATCH v12 00/14] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Sat, 12 Sep 2026 18:50:39 +1200
+Message-ID: <20260912065053.1519165-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, robh@kernel.org, heiko@sntech.de,
- dlemoal@kernel.org, linux-pci@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org, lpieralisi@kernel.org,
- kwilczynski@kernel.org, bhelgaas@google.com, mani@kernel.org
-Subject: Re: [PATCH v2] PCI: rockchip: Skip the Tpvperl wait when power is
- already valid
-To: =?UTF-8?Q?Enrique_Hern=C3=A1ndez_Bello?= <ehbello@gmail.com>
-References: <20260911211559.207990-1-ehbello@gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20260911211559.207990-1-ehbello@gmail.com>
-X-HM-Tid: 0aa0933423fc03a4kunm40c32d25659aad
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQ0xKTFYYGUlDGU8aHk
-	9PGEpWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUJCSU5LVUpLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=cxf08jnlyk6piigolkqCttl0YSj1g+2QbmF0qfW48jixSdNXBS62RrdYfpyeCe4ykg6faZFb5n3tENxhSudVN+Dhw1HlUUlL8evUWbYcja4hDbROnVo6+pNHZL82UCkMN79QJ9F2cFOLT/jyGDVtItkX/YetjYejI3fJze03Y2k=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=8/QG9JqLLnNaub/oqU9gkVaGaxueCMPbNMwP2fsCHcY=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260911_182115_662941_96FB567E 
-X-CRM114-Status: GOOD (  41.05  )
+X-CRM114-CacheID: sfid-20260911_235108_960624_55882CC9 
+X-CRM114-Status: GOOD (  26.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,129 +123,197 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjYvMDkvMTIg5pif5pyf5YWtIDU6MTUsIEVucmlxdWUgSGVybsOhbmRleiBCZWxsbyDl
-hpnpgZM6Cj4gU2luY2UgY29tbWl0IGM0N2Y5MGJlNGM4OSAoIlBDSTogcm9ja2NoaXAtaG9zdDog
-Rml4Cj4gcm9ja2NoaXBfcGNpZV9ob3N0X2luaXRfcG9ydCgpIFBFUlNUIyBoYW5kbGluZyIpLCBh
-IEpNaWNyb24gSk1CNTg1Cj4gYmVoaW5kIGFuIHJrMzM5OSByb290IHBvcnQgYWxtb3N0IG5ldmVy
-IGJlY29tZXMgdXNhYmxlOiB0aGUgbGluayB0cmFpbnMKPiBub3JtYWxseSwgYnV0IHRoZSBlbmRw
-b2ludCdzIGNvbmZpZ3VyYXRpb24gc3BhY2UgbmV2ZXIgYW5zd2Vycywgc28gdGhlCj4gZGV2aWNl
-IGlzIG5vdCBlbnVtZXJhdGVkLiBPbiB0aGlzIGNvbnRyb2xsZXIgYSBjb25maWd1cmF0aW9uIHJl
-YWQgdGhhdAo+IGdldHMgbm8gdXNhYmxlIGNvbXBsZXRpb24gaXMgcmVwb3J0ZWQgYXMgYW4gZXh0
-ZXJuYWwgYWJvcnQgcmF0aGVyIHRoYW4KPiBhcyBhbiBhbGwtb25lcyByZXNwb25zZSwgd2hpY2gg
-b24gYXJtNjQgYnJpbmdzIHRoZSBtYWNoaW5lIGRvd24uCj4gCj4gVGhlIGNoYW5nZSBhZGRlZCBh
-biB1bmNvbmRpdGlvbmFsIDEwMCBtcyBzbGVlcCBzbyB0aGF0IFBFUlNUIyBzdGF5cwo+IGFzc2Vy
-dGVkIGZvciBhdCBsZWFzdCBUcHZwZXJsIGFmdGVyIHBvd2VyIGJlY29tZXMgdmFsaWQuIFRoZSB3
-YWl0IGlzCj4gcGVyZm9ybWVkIHdoaWxlIFBFUlNUIyBpcyBhc3NlcnRlZCwgc28gaXQgYWxzbyBl
-eHRlbmRzIHRoZSByZXNldCBieQo+IDEwMCBtcywgYW5kIHRoaXMgZW5kcG9pbnQgZG9lcyBub3Qg
-dG9sZXJhdGUgdGhlIGxvbmdlciBhc3NlcnRpb24uCj4gCj4gVHB2cGVybCBpcyBjb3VudGVkIGZy
-b20gdGhlIHN1cHBsaWVzIGJlY29taW5nIHZhbGlkIChQQ0llIENFTSByNS4xLAo+IHNlYyAyLjku
-MikuIE9uIGJvYXJkcyB3aG9zZSBQQ0llIHN1cHBsaWVzIGFyZSBhbHdheXMtb24gLS0gdmNjM3Yz
-X3BjaWUKPiBvbiBST0NLIFBpIDQgaXMgcmVndWxhdG9yLWFsd2F5cy1vbiBhbmQgcmVndWxhdG9y
-LWJvb3Qtb24gLS0gcG93ZXIgaGFzCj4gYmVlbiB2YWxpZCBzaW5jZSBib290LCBzZWNvbmRzIGJl
-Zm9yZSB0aGUgZHJpdmVyIHByb2Jlcywgc28gdGhlCj4gcmVxdWlyZW1lbnQgaXMgYWxyZWFkeSBt
-ZXQgYW5kIHRoZSBzbGVlcCBvbmx5IGxlbmd0aGVucyB0aGUgcmVzZXQuCj4gCj4gUmVjb3JkIHdo
-ZXRoZXIgdGhlIHN1cHBsaWVzIHdlcmUgYWxyZWFkeSBlbmFibGVkIGJlZm9yZSB0aGUgZHJpdmVy
-Cj4gZW5hYmxlZCB0aGVtLCBhbmQgc2tpcCB0aGUgd2FpdCBpbiB0aGF0IGNhc2UuIEEgc3VwcGx5
-IHRoYXQgaXMgYWxyZWFkeQo+IG9uIGF0IHByb2JlIHdhcyBicm91Z2h0IHVwIGVpdGhlciBieSB0
-aGUgYm9vdGxvYWRlciBvciBieSB0aGUgcmVndWxhdG9yCj4gY29yZSBhdCBib290LCBib3RoIG9m
-IHdoaWNoIHByZWNlZGUgYSBQQ0llIHByb2JlIGJ5IGZhciBtb3JlIHRoYW4KPiBUcHZwZXJsLiBX
-aGVuIHRoZSBkcml2ZXIgcmVhbGx5IGRvZXMgYnJpbmcgdGhlIHJhaWxzIHVwIHRoZSBmdWxsIHdh
-aXQKPiBzdGlsbCBoYXBwZW5zLCBhcyBpdCBkb2VzIGlmIHJlZ3VsYXRvcl9pc19lbmFibGVkKCkg
-Y2Fubm90IHRlbGwuCj4gCj4gVGhlIHNhbWUgY2hlY2sgaXMgcmVwZWF0ZWQgb24gcmVzdW1lIHJh
-dGhlciB0aGFuIGFzc3VtaW5nIHRoYXQgcG93ZXIKPiB3YXMgY3ljbGVkOiBzdXNwZW5kIGNhbGxz
-IHJlZ3VsYXRvcl9kaXNhYmxlKCkgb24gdGhlIDAuOVYgc3VwcGx5LCB3aGljaAo+IG9ubHkgZHJv
-cHMgYSByZWZlcmVuY2UsIHNvIG9uIGEgYm9hcmQgd2hlcmUgdGhhdCByYWlsIGlzIGFsd2F5cy1v
-biBvcgo+IHNoYXJlZCB3aXRoIGFub3RoZXIgY29uc3VtZXIgdGhlIHBvd2VyIHN0YXlzIHZhbGlk
-IGFjcm9zcyB0aGUgY3ljbGUuCj4gCj4gU2tpcHBpbmcgdGhlIHdhaXQgb25seSB3aGVuIGV2ZXJ5
-IHN1cHBseSBpcyBhbHJlYWR5IG9uIGlzIHN0cmljdGx5IG1vcmUKPiBjb25zZXJ2YXRpdmUgdGhh
-biB3aGF0IHRoaXMgZHJpdmVyIGRpZCBmb3IgeWVhcnM6IHVudGlsIHRoZSBjaGFuZ2UgY2l0ZWQK
-PiBhYm92ZSB0aGVyZSB3YXMgbm8gVHB2cGVybCB3YWl0IGF0IGFsbCwgYW5kIFBFUlNUIyBzdGF5
-ZWQgYXNzZXJ0ZWQgb25seQo+IGZvciBhcyBsb25nIGFzIHRoZSByZWdpc3RlciB3cml0ZXMgaW4g
-YmV0d2VlbiB0b29rLgo+IAo+IE1lYXN1cmVkIG9uIGEgUk9DSyBQaSA0QyB3aXRoIGEgUmFkeGEg
-UGVudGEgU0FUQSBIQVQgKEpNQjU4NSkgYnkKPiBib290aW5nIHJlcGVhdGVkbHkgYW5kIGNvdW50
-aW5nIGhvdyBvZnRlbiB0aGUgZW5kcG9pbnQgZW51bWVyYXRlZDoKPiAKPiAgICB1bm1vZGlmaWVk
-IC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgMCBvdXQgb2YgODQgYm9vdHMK
-PiAgICB3aXRoIHRoaXMgcGF0Y2ggLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgMyBv
-dXQgb2YgMyBib290cwo+ICAgIG90aGVyIHdheXMgb2YgZHJvcHBpbmcgdGhlIHNhbWUgd2FpdCAu
-Li4uLi4uLi4uICAxNiBvdXQgb2YgMTYgYm9vdHMKPiAKPiBGaXNoZXIncyBleGFjdCB0ZXN0LCBw
-b29saW5nIHRoZSBsYXN0IHR3byByb3dzIGFnYWluc3QgdGhlIGZpcnN0LCBnaXZlcwo+IHAgPSA0
-LjFlLTIxLiBXaXRoIHRoZSBwYXRjaCB0aGUgZW5kcG9pbnQgZW51bWVyYXRlZCBvbiBldmVyeSBi
-b290IGFuZCBhbGwKPiBmb3VyIGRpc2tzIGJlaGluZCBpdCBjYW1lIHVwLgo+IAo+IEVhY2ggb2Yg
-dGhlIHRocmVlIFBFUlNUIy1yZWxhdGVkIGNoYW5nZXMgdGhhdCBsYW5kZWQgdG9nZXRoZXIgaW4K
-PiB2Ni4xMS1yYzEgd2FzIGFsc28gcmV2ZXJ0ZWQgaW5kaXZpZHVhbGx5OyBvbmx5IHJlbW92aW5n
-IHRoaXMgd2FpdCBtYWRlCj4gYW55IGRpZmZlcmVuY2UuIE1vdmluZyB0aGUgd2FpdCB0byBiZWZv
-cmUgbGluayB0cmFpbmluZyBpcyBlbmFibGVkLAo+IHJhdGhlciB0aGFuIHJlbW92aW5nIGl0LCBk
-aWQgbm90IGhlbHAgKDAgb3V0IG9mIDE1IGJvb3RzKSwgd2hpY2ggaXMKPiB3aGF0IGlkZW50aWZp
-ZWQgdGhlIGxlbmd0aCBvZiB0aGUgUEVSU1QjIGFzc2VydGlvbiByYXRoZXIgdGhhbiBhbnkKPiBp
-bnRlcmFjdGlvbiB3aXRoIGxpbmsgdHJhaW5pbmcgYXMgdGhlIGNhdXNlLgo+IAo+IFRoZSBtZWFz
-dXJlbWVudHMgd2VyZSB0YWtlbiBvbiA2LjE4LCBidXQgdGhlIGNvZGUgaW4gcXVlc3Rpb24gaXMK
-PiB1bmNoYW5nZWQgYmV0d2VlbiB2Ni4xMSBhbmQgdjcuMi4KPiAKPiBGaXhlczogYzQ3ZjkwYmU0
-Yzg5ICgiUENJOiByb2NrY2hpcC1ob3N0OiBGaXggcm9ja2NoaXBfcGNpZV9ob3N0X2luaXRfcG9y
-dCgpIFBFUlNUIyBoYW5kbGluZyIpCj4gQ2M6IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcKPiBTaWdu
-ZWQtb2ZmLWJ5OiBFbnJpcXVlIEhlcm7DoW5kZXogQmVsbG8gPGVoYmVsbG9AZ21haWwuY29tPgo+
-IC0tLQo+IC0tLQo+IHYyOgo+ICAgLSBSZS1ldmFsdWF0ZSB0aGUgc3VwcGxpZXMgaW4gcm9ja2No
-aXBfcGNpZV9yZXN1bWVfbm9pcnEoKSBpbnN0ZWFkIG9mCj4gICAgIGFzc3VtaW5nIHRoYXQgdGhl
-IDAuOVYgcmFpbCB3YXMgcmVhbGx5IHR1cm5lZCBvZmYuIE9uIGEgYm9hcmQgd2hlcmUKPiAgICAg
-dGhhdCByYWlsIGlzIGFsd2F5cy1vbiBvciBzaGFyZWQsIHJlZ3VsYXRvcl9kaXNhYmxlKCkgbGVh
-dmVzIGl0IG9uLAo+ICAgICBhbmQgZm9yY2luZyB0aGUgd2FpdCB0aGVyZSB3b3VsZCByZWludHJv
-ZHVjZSBvbiByZXN1bWUgZXhhY3RseSB0aGUKPiAgICAgZmFpbHVyZSB0aGlzIHBhdGNoIGZpeGVz
-LiBTcG90dGVkIGJ5IGFuIGF1dG9tYXRlZCByZXZpZXcgb2YgdjEuCj4gICAtIEZhY3RvciB0aGUg
-dGVzdCBpbnRvIHJvY2tjaGlwX3BjaWVfc3VwcGxpZXNfZW5hYmxlZCgpIG5vdyB0aGF0IGl0Cj4g
-ICAgIGhhcyB0d28gY2FsbGVycy4KPiAKPiB2MTogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxs
-LzIwMjYwOTExMTA0OTUyLjQxOTA5OTQtMS1laGJlbGxvQGdtYWlsLmNvbS8KPiAKPiAtLS0gYS9k
-cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaAo+ICsrKyBiL2RyaXZlcnMvcGNp
-L2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oCj4gQEAgLTMxOCw2ICszMTgsNyBAQAo+ICAgCXN0
-cnVjdAlyZWd1bGF0b3IgKnZwY2llMXY4OyAvKiAxLjhWIHBvd2VyIHN1cHBseSAqLwo+ICAgCXN0
-cnVjdAlyZWd1bGF0b3IgKnZwY2llMHY5OyAvKiAwLjlWIHBvd2VyIHN1cHBseSAqLwo+ICAgCXN0
-cnVjdAlncGlvX2Rlc2MgKnBlcnN0X2dwaW87Cj4gKwlib29sCXN1cHBsaWVzX3ByZV9lbmFibGVk
-Owo+ICAgCXUzMglsYW5lczsKPiAgIAl1OCAgICAgIGxhbmVzX21hcDsKPiAgIAlpbnQJbGlua19n
-ZW47Cj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWhvc3QuYwo+
-ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1ob3N0LmMKPiBAQCAt
-MzE0LDcgKzMxNCw5IEBACj4gICAJcm9ja2NoaXBfcGNpZV93cml0ZShyb2NrY2hpcCwgUENJRV9D
-TElFTlRfTElOS19UUkFJTl9FTkFCTEUsCj4gICAJCQkgICAgUENJRV9DTElFTlRfQ09ORklHKTsK
-PiAgIAo+IC0JbXNsZWVwKFBDSUVfVF9QVlBFUkxfTVMpOwo+ICsJaWYgKCFyb2NrY2hpcC0+c3Vw
-cGxpZXNfcHJlX2VuYWJsZWQpCj4gKwkJbXNsZWVwKFBDSUVfVF9QVlBFUkxfTVMpOwo+ICsKPiAg
-IAlncGlvZF9zZXRfdmFsdWVfY2Fuc2xlZXAocm9ja2NoaXAtPnBlcnN0X2dwaW8sIDEpOwo+ICAg
-Cj4gICAJbXNsZWVwKFBDSUVfUkVTRVRfQ09ORklHX1dBSVRfTVMpOwo+IEBAIC02MDksMTEgKzYx
-MSwzMyBAQAo+ICAgCXJldHVybiAwOwo+ICAgfQo+ICAgCj4gKy8qCj4gKyAqIFRwdnBlcmwgaXMg
-Y291bnRlZCBmcm9tIHRoZSBzdXBwbGllcyBiZWNvbWluZyB2YWxpZCwgYW5kIHRoZSBkcml2ZXIg
-d2FpdHMKPiArICogZm9yIGl0IHdpdGggUEVSU1QjIGFzc2VydGVkLCBzbyB0aGUgd2FpdCBhbHNv
-IGxlbmd0aGVucyB0aGUgcmVzZXQgcHVsc2UuCj4gKyAqIFN1cHBsaWVzIHRoYXQgYXJlIGFscmVh
-ZHkgZW5hYmxlZCBiZWZvcmUgdGhpcyBkcml2ZXIgZW5hYmxlcyB0aGVtIHdlcmUKPiArICogYnJv
-dWdodCB1cCBieSB0aGUgYm9vdGxvYWRlciBvciBieSB0aGUgcmVndWxhdG9yIGNvcmUgYXQgYm9v
-dCwgYm90aCBvZgo+ICsgKiB3aGljaCBwcmVjZWRlIHRoaXMgcG9pbnQgYnkgZmFyIG1vcmUgdGhh
-biBUcHZwZXJsLCBzbyB0aGUgcmVxdWlyZW1lbnQgaXMKPiArICogYWxyZWFkeSBtZXQuIFRyZWF0
-IGFuIGVycm9yIGZyb20gcmVndWxhdG9yX2lzX2VuYWJsZWQoKSBhcyAibm90IGtub3duIHRvCj4g
-KyAqIGJlIG9uIiBzbyB0aGF0IHRoZSBjYWxsZXIgd2FpdHMuCj4gKyAqLwo+ICtzdGF0aWMgYm9v
-bCByb2NrY2hpcF9wY2llX3N1cHBsaWVzX2VuYWJsZWQoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJv
-Y2tjaGlwKQo+ICt7Cj4gKwlyZXR1cm4gKElTX0VSUihyb2NrY2hpcC0+dnBjaWUxMnYpIHx8Cj4g
-KwkJcmVndWxhdG9yX2lzX2VuYWJsZWQocm9ja2NoaXAtPnZwY2llMTJ2KSA+IDApICYmCj4gKwkg
-ICAgICAgKElTX0VSUihyb2NrY2hpcC0+dnBjaWUzdjMpIHx8Cj4gKwkJcmVndWxhdG9yX2lzX2Vu
-YWJsZWQocm9ja2NoaXAtPnZwY2llM3YzKSA+IDApICYmCj4gKwkgICAgICAgcmVndWxhdG9yX2lz
-X2VuYWJsZWQocm9ja2NoaXAtPnZwY2llMXY4KSA+IDAgJiYKPiArCSAgICAgICByZWd1bGF0b3Jf
-aXNfZW5hYmxlZChyb2NrY2hpcC0+dnBjaWUwdjkpID4gMDsKPiArfQo+ICsKPiAgIHN0YXRpYyBp
-bnQgcm9ja2NoaXBfcGNpZV9zZXRfdnBjaWUoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlw
-KQo+ICAgewo+ICAgCXN0cnVjdCBkZXZpY2UgKmRldiA9IHJvY2tjaGlwLT5kZXY7Cj4gICAJaW50
-IGVycjsKPiAgIAo+ICsJcm9ja2NoaXAtPnN1cHBsaWVzX3ByZV9lbmFibGVkID0KPiArCQlyb2Nr
-Y2hpcF9wY2llX3N1cHBsaWVzX2VuYWJsZWQocm9ja2NoaXApOwo+ICsKCklmIGl0J3MgcHJlLWVu
-YWJsZWQsIHNob3VsZCB3ZSBzdGlsbCBuZWVkIHRvIGVuYWJsZSB0aGlzIHJlZ3VsYXRvciBqdXN0
-CmZvciBhZGRpbmcgYSByZWZjb3VudCBmb3IgaXQ/Cgo+ICAgCWlmICghSVNfRVJSKHJvY2tjaGlw
-LT52cGNpZTEydikpIHsKPiAgIAkJZXJyID0gcmVndWxhdG9yX2VuYWJsZShyb2NrY2hpcC0+dnBj
-aWUxMnYpOwo+ICAgCQlpZiAoZXJyKSB7Cj4gQEAgLTg5MCw2ICs5MTQsMTMgQEAKPiAgIAlzdHJ1
-Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXAgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAgIAlp
-bnQgZXJyOwo+ICAgCj4gKwkvKgo+ICsJICogU3VzcGVuZCBjYWxscyByZWd1bGF0b3JfZGlzYWJs
-ZSgpIG9uIHRoZSAwLjlWIHN1cHBseSwgYnV0IG9uIGJvYXJkcwo+ICsJICogd2hlcmUgaXQgaXMg
-YWx3YXlzLW9uIG9yIHNoYXJlZCB0aGUgcmFpbCBkb2VzIG5vdCBhY3R1YWxseSBkcm9wLCBzbwo+
-ICsJICogcmUtZXZhbHVhdGUgaW5zdGVhZCBvZiBhc3N1bWluZyB0aGF0IHBvd2VyIHdhcyBjeWNs
-ZWQuCj4gKwkgKi8KPiArCXJvY2tjaGlwLT5zdXBwbGllc19wcmVfZW5hYmxlZCA9IHJvY2tjaGlw
-X3BjaWVfc3VwcGxpZXNfZW5hYmxlZChyb2NrY2hpcCk7Cj4gKwo+ICAgCWVyciA9IHJlZ3VsYXRv
-cl9lbmFibGUocm9ja2NoaXAtPnZwY2llMHY5KTsKPiAgIAlpZiAoZXJyKSB7Cj4gICAJCWRldl9l
-cnIoZGV2LCAiZmFpbCB0byBlbmFibGUgdnBjaWUwdjkgcmVndWxhdG9yXG4iKTsKPiAKPiAKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This adds the RK3576 NPU to accel/rocket, which today supports RK3588
+only. The RK3576 carries two cores of the same RKNN block, wired up
+differently. Two extra convolution buffer clocks, two power domains per
+core, one reset rather than two, no NPU SRAM rail, and a PC_TASK_CON
+that packs the task number into sixteen bits rather than twelve.
+
+1/14 is Igor Paunovic's "[PATCH v2] accel/rocket: request the core clocks
+by name", carried in the series since v11 so it applies to a plain
+next-20260911 with nothing outside it to follow. It keeps his authorship
+and its four tags. Tested on a Radxa ROCK 4D.
+
+Five things changed since v11:
+
+  3/14   clears the raw interrupt status beside the mask. Masking alone
+         left the DPU bit latched until rocket_core_reset(), and the
+         hardirq decides on raw status alone, so a fault from the IOMMU
+         sharing this core's line would wake the threaded handler again
+         and "No handler is running now" would stop holding partway
+         through the function.
+
+         It still tests "> 0". An earlier draft of this version changed
+         that to "!= 0", on the reasoning that -EINVAL means runtime PM
+         is not managing the device and the block is therefore powered.
+         That is wrong and the change is withdrawn.
+         pm_runtime_get_conditional() tests power.disable_depth before
+         power.runtime_status, so -EINVAL masks a suspended device
+         rather than excluding one, and this driver makes that state
+         twice: in pm_runtime_force_suspend(), its own system sleep
+         callback, which disables runtime PM before turning the clocks
+         off, and in rocket_core_fini(), which suspends then disables
+         before cancelling the timeout worker. Either would have put a
+         register write on a powered-down block.
+
+  10/14  cycles the resets before the settle delay 9/14 adds, not after.
+         PD_NPU0 and PD_NPU1 ask for both, and the old order spent the
+         delay and then deasserted a reset with nothing between it and
+         rockchip_pmu_restore_qos(). The reset is SRST_A_RKNN0/1_BIU,
+         the bus interface those writes go through.
+
+         This is a change to code Abel Vesa reviewed. His Reviewed-by
+         is kept because the patch still does what he read, in a
+         different order; say so if it should go. 9/14 is untouched.
+
+  11/14  checks the match data at the top of rocket_probe(), before
+         anything is allocated. of_device_get_match_data() returns NULL
+         for a device bound by name rather than by compatible, and such
+         a device has no of_node, so the walk of matching nodes that
+         sizes rdev->cores[] never counted it. Storing into that array
+         and checking afterwards writes past the end.
+
+  13/14  gives CLK_RKNN_DSU0 a rate. Nothing in mainline sets it and the
+         NPU comes up at 786 MHz, while Rockchip's OPP table asks 800 mV
+         of its 800 MHz step and nothing sets the rail either. On the
+         ROCK 4D at the 750 mV its PMIC boots with, two jobs at once
+         make the second core write single words wrong, thirteen to
+         twenty rows of a 5400 row pass, where either core alone is
+         exact; at 594 MHz, or at 786 with the rail at 800 mV, four such
+         passes are clean. 594 MHz is a divider off GPLL and sits
+         between that table's 500 and 600 MHz steps, both of which ask
+         725 mV, so it is inside the voltage a board that describes no
+         NPU rail already provides.
+
+  14/14  enables both cores and both IOMMUs. v11 enabled rknn_core_0
+         alone, "left to whoever can test it". It has been tested.
+
+Sashiko raised one thing on 4/14 that an argument does not settle.
+pm_runtime_put_autosuspend() is asynchronous with a 50 ms delay, so on a
+workload whose submit gap is shorter the domain does not cycle after a
+reset, 10/14's power-on pulse never fires, and rocket_core_reset()'s own
+resets are all that run.
+
+Measured on the domain rather than on the device: over one 60.8 s decode
+of Phi-3.5-mini on a ROCK 4D, genpd's npu domain took 46.8 s active and
+14.2 s idle, which sum to the wall clock, and its idle-state usage count
+rose by 202. npu0 and npu1 rose by 210 and 217, and current_state reads
+off-0 either side. The domain cycles about two hundred times a minute
+under a real decode, and the pulse fires.
+
+Whether it cycles after a timed-out job is the half Sashiko is asking
+about, and that depends on the gap to the next submit. Inducing one needs
+a kernel with JOB_TIMEOUT_MS lowered and a flash, so that half is still
+an argument rather than a measurement.
+
+Findings Sashiko labelled pre-existing, for Tomeu. These five recur; it
+raised thirteen across the nine mails, and the one not listed worth
+naming is a 64-bit DMA address truncated to 32 bits, which faults the
+IOMMU above 4 GB.
+
+  - the job completion path takes iommu_group_get(core->dev) and never
+    puts it, one group reference a job, flagged on seven of the nine.
+    5/14 moves this call rather than adding or removing it, so the leak
+    is pre-existing but not untouched;
+  - the shared IRQ handler touches registers without checking the PM
+    state;
+  - runtime suspend has no synchronize_irq();
+  - num_cores is used both as an array length and as the probe index;
+  - rdev is leaked through devres on probe deferral.
+
+5/14 moves the iommu_detach_group(NULL, iommu_group_get(core->dev)) line
+out of the IRQ handler and into rocket_job_next_locked(). ZhaoJinming's
+"accel/rocket: Fix iommu_group leak and unsafe IRQ register access"
+changes the same line, is marked for stable, and carries the same Fixes
+tag as ours. Whichever lands first the other conflicts; say which you
+would rather take.
+
+Still open from v9, no reply since. 9/14 does three things: it adds the
+settle delay, renames a macro, and gives RK3576_PD_NPU a regulator, which
+also makes every RK3576 board force that domain off at probe. I asked
+whether it wants splitting; Abel Vesa's Reviewed-by may be the answer,
+and I would rather split it than have it merged on my silence. 13/14 also
+gives each core both NPU domains, which is the description that has been
+tested here rather than the topology; if it should be one domain per
+core, 6/14's minItems has to change with it.
+
+The bindings are unchanged since v9, where dt_binding_check was clean on
+all three with dtschema 2026.6 and yamllint 1.38.0, and CHECK_DTBS was
+clean on all 13 rk3576 and all 48 rk3588 dtbs. 13/14 adds a property to a
+dts rather than to a binding, and CHECK_DTBS is clean on all 13 rk3576
+dtbs with it.
+
+A correction to an earlier posting. On 11 September I replied to the v10
+cover saying that the 102 induced resets and the all-0x80 buffer it
+described were not Igor Paunovic's. They are his: he reported both on
+25 August in the v9 02/13 thread, and the 45 resets of 19 August and the
+102 of 25 August are two different runs of his. I had read only the
+19 August thread, and should have searched before saying in public that
+he had not measured it. That mail is withdrawn, and both of his
+Tested-by lines stand as he sent them.
+
+Link to v11: https://lore.kernel.org/all/20260831081956.84871-1-gahing@gahingwoo.com/
+
+The tags:
+
+  2/14   Tested-by: Igor Paunovic   # RK3588, three cores
+  3/14   Tested-by: Igor Paunovic   # RK3588, three cores, induced
+                                    # reset, differential base,
+                                    # JOB_TIMEOUT_MS=2
+  4/14   Tested-by: Igor Paunovic   # RK3588, three cores, induced
+                                    # reset, JOB_TIMEOUT_MS=2
+  5/14   Reviewed-by: Igor Paunovic
+  6/14   Reviewed-by: Krzysztof Kozlowski
+  7/14   Acked-by: Conor Dooley
+  8/14   Acked-by: Conor Dooley
+  9/14   Reviewed-by: Abel Vesa
+  10/14  Reviewed-by: Abel Vesa
+
+Igor Paunovic (1):
+  accel/rocket: request the core clocks by name
+
+Jiaxing Hu (13):
+  accel/rocket: take the completion register writes under job_lock
+  accel/rocket: wait for a running IRQ handler before resetting a core
+  accel/rocket: let the core suspend after a reset
+  accel/rocket: factor the completion tail out of the IRQ handler
+  dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+  dt-bindings: power: rockchip: allow resets in a power domain node
+  dt-bindings: iommu: rockchip: describe the RK3576 NPU MMU
+  pmdomain: rockchip: add optional per-domain power-on settle delay
+  pmdomain: rockchip: cycle optional power-domain resets on power-on
+  accel/rocket: select the per-core clock and reset counts from match
+    data
+  accel/rocket: add RK3576 NPU (RKNN) support
+  arm64: dts: rockchip: add NPU (RKNN) nodes to rk3576
+  arm64: dts: rockchip: enable the NPU on rk3576-rock-4d
+
+ .../bindings/iommu/rockchip,iommu.yaml        |  28 ++++
+ .../npu/rockchip,rk3588-rknn-core.yaml        |  47 +++++-
+ .../power/rockchip,power-controller.yaml      |   8 ++
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      |  22 +++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      |  86 ++++++++++-
+ drivers/accel/rocket/rocket_core.c            |  32 ++++-
+ drivers/accel/rocket/rocket_core.h            |  11 +-
+ drivers/accel/rocket/rocket_device.c          |   7 +-
+ drivers/accel/rocket/rocket_drv.c             |  42 +++++-
+ drivers/accel/rocket/rocket_drv.h             |   2 +
+ drivers/accel/rocket/rocket_job.c             | 135 +++++++++++++++---
+ drivers/pmdomain/rockchip/pm-domains.c        |  83 ++++++++---
+ 12 files changed, 440 insertions(+), 63 deletions(-)
+
+
+base-commit: 68142f986ff04b2b70b31db00f719bf690f64a9a
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
