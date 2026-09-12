@@ -4,86 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1AFAC88E64
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 01:34:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B9BDC88E64
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 02:22:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7MylU7gf/Xe3z5hsXnzKYImZxTtmmCcHl+95n0j2mkA=; b=CzRLlU+tNYkDkF
-	sUJ8endfOMeLOinosmh1YvM1YeILb+Ee6hoV8M5WVITe842woGJCqC+HtS7DmqtwaFKkK++JcfVQ2
-	HehHs9juY8Snfl626dnqQnQm1gFw9AR5ufRgGvjaP4I69BImaSlTSkPcAq7+SlDMvZs0bsyy0cATZ
-	HvYaTQVpei/0ZeDRkEyUN3jqNzM+veNQ8nHSDhuCfoyeAtK6jjQvuG8c+CbpWntd/BAlWx2pXfypN
-	olD7g2W+YC/VeMdGyonnSKlZCE/YvkPQiBerU+eMpVf8qCHn+Oui5QELQW4J4M6P+k7YZhePnaKiS
-	oWger54ACt9H0oypFC+A==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:
+	Subject:To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tU2QmfyyZpzyd1aFStmHOhqjRC+oP6POuFP2aAx8+JE=; b=PBkK9iRrkibozG
+	L+PCNa+zV4cUCYyAAwxJRkc5MVHVHc/dHSq3uo7NSPe30DFIf6J52pTPbpknzselyra4ArUOv1RVe
+	2QcAn7DQh4QNYHP5uQXubWC6vSeSRPf1w0xt0JvljEfbi7Og4PmCCFKu9izoTOaP6wBaGszFMXc9K
+	5tj9Zwh97+aqOzdL/QVmONJ7yrX5cUloNCXlFK5Jh5Hn3LgsMe4twMSeUZz2LNcENGsaWoriGVP5b
+	1AWcJi17s8T0+v+Y5GnLGdswu+KZ3ZSTqw1PmlrrXxs19O47aj6mlatvEKJadiliyfLWQ8XQbqaDy
+	rNsKIOZpuWw+cpH2pN5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5vaq-000000029SC-2g7m;
-	Mon, 14 Sep 2026 01:34:48 +0000
-Received: from smtpbgjp3.qq.com ([54.92.39.34])
+	id 1x5wKf-00000002AgD-46T5;
+	Mon, 14 Sep 2026 02:22:09 +0000
+Received: from rastrek.com.br ([159.65.189.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5vaj-000000029Ny-0YF3;
-	Mon, 14 Sep 2026 01:34:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1789349641;
-	bh=89G/jVXBHYq95wHmsk/YMSS2ZgjD1A+zfs9MI2Z6US4=;
-	h=From:To:Subject:Date:Message-Id;
-	b=HyemzXWh/cATIJzcp1v3LaP2mKhswVVuCFt2XyNphIPRdK+yE+2ynxk6YK2jHr+mP
-	 kz3l3VEkFbEul1jsOgBuPyDqyA0JVbYoY4pJyXbvoPEjtoLBoPOGOvKh/AzwSDHSEL
-	 fhMOfTItv0+I8iVMh8UTnBCtNkzt3kgnYuixAiUU=
-X-QQ-mid: esmtpsz11t1789349639t02dd2c0a
-X-QQ-Originating-IP: Ms0+P2o6VKkDSoj777ATB5OiGA9xJm/wRP1HplqoNm4=
-Received: from DESKTOP-8BT1A2O.localdomain ( [61.154.14.86])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 14 Sep 2026 09:33:56 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 8457655560534522098
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH v5 3/3] drm/rockchip: dsi: Relax the lane rate margin requirements
-Date: Mon, 14 Sep 2026 09:33:31 +0800
-Message-Id: <20260914013331.108-4-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20260914013331.108-1-kernel@airkyi.com>
-References: <20260914013331.108-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: OE3tIrIEWSq4VEpIizUkLPVL2WHUpRdC3KvBS4D96fdYJVckIEfDqang
-	FM6W1+/q4yPZUgpoQ7g+ME2RGHK25hCAqSk2vil+jkoW3zjOBd7F877ykY2vI57vglX2KZ2
-	H0xcQsBgarz7tgQ7jBJETh9IkFTnl4r/lqyAmthXJ/vPz0dXHwzLIiXCkphMz31DV7sLvF9
-	59y5+uwkGjCvY02UIHZywz0l3Fuh3PmYNe6M0JEjx7V8ykYlTklDtx6bN9ol7LjwacOsoTU
-	QSjRkBu8OqXeauMbtaASKmOthRu5YrK4eMsTWr95AKM4pF7lmH8jVjyLAyOMAGM75uec1An
-	KvTSbIhS7NE3iZPmRMyANmgTcYmzqGouaevMu7qEKlXl7Y6m3k1A3J5bY6wrjpWcJFdGwPh
-	+/ylWl0RrebTmegVv/vG8f8KijL9jWEQXB0nTbxAn54gvwr2hFfRqs8q+Hoj3iEA3yoEJC4
-	80/iFyua0NgpjxrRsWxXw90g9JlwcZDV0GDKh5nphpZbSRdKaLdKYL+Sxnen8QMSpW2YO/+
-	CgFTxm+yARZJB3DwHI67jp+ofr0E+df9fmNJ9FVaEnFAN5MmFHqY+uuOnO+UFfWP2qsHX4Z
-	GSrPDSeVMAuI9klUZbpmv1/5vZadnHOz4Q4+mH6pkCY7RfCQGx2ImWgZ02rkXCGu2vvY/ux
-	ruwrW8rmHVp2no7cjYTVPz/wXgEo5xaONlCNNeovCNb9klzLtIijJH9qYjMM1agV+pF5RZe
-	WncwirR9rQ54qmjgrfYq+GBNaIxY+Fj+QrdBr0lCffH1vxHVESSxW7rFbU5FH4BwN7Wuq78
-	6/vK6BMKwRDRV/cxom/4NClNAvjkdai8MolEpDTiVpggvyd5mIQcukO1dCcJ4v+PRJh74oi
-	4R5vvdLNfW9hxsHOs+XZ8dNttl2yZVbok3B4PXXl7BBxVF8WkYjIfix7E+DkvqD8vB+uy3T
-	afmCVuMetw7MSm093i8RBi/+XDSPRgdlQRz5APXFNlX33SYpGJHlri1G2kyksqJz170Vlo9
-	3YfDMVS+K8Zl19qPvU
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-X-QQ-RECHKSPAM: 0
+	id 1x5wKd-00000002Afr-1Ckk
+	for linux-rockchip@lists.infradead.org;
+	Mon, 14 Sep 2026 02:22:08 +0000
+Received: from rastrek.com.br (localhost.localdomain [127.0.0.1])
+	by rastrek.com.br (Postfix) with ESMTP id 2F2E21AC45B
+	for <linux-rockchip@lists.infradead.org>; Sun, 13 Sep 2026 11:06:51 +0000 (UTC)
+Authentication-Results: rastrek.com.br (amavis) (amavisd-new);
+	dkim=pass (1024-bit key) header.d=rastrek.com.br
+Received: from rastrek.com.br ([127.0.0.1])
+	by rastrek.com.br (rastrek.com.br [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id C7WjQszkBIOt for <linux-rockchip@lists.infradead.org>;
+	Sun, 13 Sep 2026 11:06:50 +0000 (UTC)
+Received: from rastrek.com.br (unknown [91.217.249.1])
+	by rastrek.com.br (Postfix) with ESMTPSA id 8CDC81F2FC0
+	for <linux-rockchip@lists.infradead.org>; Sat, 12 Sep 2026 07:54:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rastrek.com.br;
+	s=default; t=1789199690;
+	bh=vSZIkmUIfKxQKUNMjsZ7esNZ4nNjWlsziqY5zae99xQ=; h=From:To:Subject;
+	b=ed/PKzl0tEC29zy8qi98ZIWJBFvManjiA4F6ImiwWev0TMGA+a5XLC6aQDp1jA7Hh
+	 zYiIS8SohdKCvtHRbtcNdy8niy019wH76Z/oTDC+eIpxJWD4x48l/+VEKhXFkq60ak
+	 nDaiVFB51y48UrF9KdMg1kDyJwbWDZ00CMzbOUgE=
+Authentication-Results: rastrek.com.br;
+	spf=pass (sender IP is 91.217.249.1) smtp.mailfrom=suporte@rastrek.com.br smtp.helo=rastrek.com.br
+Received-SPF: pass (rastrek.com.br: connection is authenticated)
+From: "Dietmar Hopp"<suporte@rastrek.com.br>
+To: linux-rockchip@lists.infradead.org
+Subject: Aw
+Date: 12 Sep 2026 01:54:17 -0600
+Message-ID: <20260912015416.3E6BF30B4313D9F7@rastrek.com.br>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260913_183441_459956_723CF6CE 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20260913_192207_429878_68EE822E 
+X-CRM114-Status: UNSURE (  -0.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,74 +69,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: dietmarhopp_1@outlook.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-
-The lane rate is calculated as follows:
-
-	Lane_Rate = Pixel_Clk * (BPP / lanes) * Overhead
-
-The overhead factor is set to 1/0.8, equivalent to a 25% overhead.
-
-Now let's consider the case of RGB888 (BPP24) with a pclk of 148.5MHz.
-The lane rate equals 148.5M * (24 / 4) * 1.25 = 1113.75 Mbps.
-
-However, this is beyond the capability of certain platforms limited to a
-1Gbps lane rate. On the other hand, we have observed that some DSI panel
-actually perform worse with higher overhead.
-
-So we are considering relaxing the bandwidth margin requirements.
-According to the downstream test results, adopting 1/0.9 seems to
-be a sound approach, corresponding to an overhead of about 11%.
-
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
-(no changes since v5)
-
-Changes in v4:
-- Fix potential overflow and underflow issues in bandwidth
-  calculation(sashiko).
-
-Changes in v3:
-- Rebase to Linux v7.2
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index feb484f7c03e..03019b99abdc 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -590,8 +590,8 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
- 
- 	mpclk = DIV_ROUND_UP(mode->clock, MSEC_PER_SEC);
- 	if (mpclk) {
--		/* take 1 / 0.8, since mbps must big than bandwidth of RGB */
--		tmp = mpclk * (bpp / lanes) * 10 / 8;
-+		/* take 1 / 0.9, since mbps must big than bandwidth of RGB */
-+		tmp = DIV_ROUND_UP(mpclk * bpp * 10, lanes * 9);
- 		if (tmp <= max_mbps)
- 			target_mbps = tmp;
- 		else
-@@ -601,7 +601,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
- 
- 	/* for external phy only a the mipi_dphy_config is necessary */
- 	if (dsi->phy) {
--		phy_mipi_dphy_get_default_config(mode->clock * 1000 * 10 / 8,
-+		phy_mipi_dphy_get_default_config((u32)mode->clock * 1000 * 10 / 9,
- 						 bpp, lanes,
- 						 &dsi->phy_opts.mipi_dphy);
- 		dsi->lane_mbps = target_mbps;
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+U2VociBnZWVocnRlIERhbWVuIHVuZCBIZXJyZW4sCgppY2ggbcO2Y2h0ZSBTaWUgZGFyw7xiZXIg
+aW5mb3JtaWVyZW4sIGRhc3MgU2llIGFscyBlaW5lciBkZXIgCkVtcGbDpG5nZXIgbWVpbmVzIFNw
+ZW5kZW5wcm9ncmFtbXMgYXVzZ2V3w6RobHQgd3VyZGVuLiBJaHJlIEUtTWFpbC0KQWRyZXNzZSB3
+dXJkZSBmw7xyIGRpZXNlIFp1d2VuZHVuZyBwZXIgWnVmYWxsc3ByaW56aXAgZXJtaXR0ZWx0LiAK
+SW0gUmFobWVuIGRpZXNlciBWZXJlaW5iYXJ1bmcgZXJoYWx0ZW4gU2llIDI1ICUgbWVpbmVyIFNw
+ZW5kZSBpbiAKSMO2aGUgdm9uIDIuMDAwLjAwMCwwMCDigqwuIEJpdHRlIGFudHdvcnRlbiBTaWUs
+IGZhbGxzIFNpZSAKaW50ZXJlc3NpZXJ0IHNpbmQsIGRhbWl0IHdpciBkaWUgbsOkY2hzdGVuIFNj
+aHJpdHRlIGVpbmxlaXRlbiAKa8O2bm5lbi4KCk1pdCBmcmV1bmRsaWNoZW4gR3LDvMOfZW4KQ0VP
+IFNBUCBTRSBMaW1pdGVkLApEaWV0bWFyIEhvcHAKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
