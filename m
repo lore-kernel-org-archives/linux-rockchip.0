@@ -4,115 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6B1CC88E56
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Sep 2026 20:33:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E10C88E53
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Sep 2026 22:49:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sa0ZHhrw2G6siV/ObAK9woE52yY7vBmGjBVTf3mnl/k=; b=dm8g+F/+vi+oeU
-	AZ86/lAM78x0MmTuwDYhTUEyVX68kYYPPCPG+Px41+1DowUheCTGERuVfvfVoO7QOvPch9U1s7MDE
-	/KxnoVSOEHUOYKYrcuANLDlyQV18d/xyB76VZ6ycN0ZvO0hhFfwaD3lzuxcXfObedXcFs4uCxiqBR
-	cYrfRuIrrraf9017+5VixfHTCXIX76xVbLtU1equ4PiLcmsUy1t808gyfMUWme5AAcXtVObeaRg8F
-	HvOUtqYAxMCvmdng3G5/nAZHmUCOgUc/SItbaCk1JNBu6dAhcoY1lCCJQEkKNtQ+PcW7DczDiUXmJ
-	0EeSduNx6HYK7n4/JK9g==;
+	List-Owner; bh=UKR7AwYirl1TWvA7k3dtbtyEMYwTJcDIQzTGNX0GrSc=; b=rdvtaEK1kkrZtV
+	BZQjTGpMhrB/Vt01wTLR6QU7/2B1e1QwS41j0LGTtO15EwUTSUj+x4o6KD3FLO3IEr95q8OOHq45g
+	JswwK0BmbnIqDtx1WY7BF2PNffD2p2lKuzAEcI6dCj3NO0YjlO2bKtqOvJUovIB2h9BUD46g+cPEa
+	uuAQcwMdTh+HAcAibK6Hq4uhnZ4Mze0SiiCCa/+1awjtptkfRCXyGjxtI9RBrEpr169zZhFfMIY7n
+	8JRqHVx5q202G1MmzSszNGdB9m6retxvnhv36VNSItIXaFJ3vLeSAIqEfD2boVGQu3rjQz8dxtwzv
+	2Z0Jt6K8+olbeRCuw0hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5UPb-00000001ANo-0EbF;
-	Sat, 12 Sep 2026 20:33:23 +0000
-Received: from mail-ej2-x05.google.com ([2a00:1450:4864:34::5])
+	id 1x5WWn-00000001GUY-2Qtz;
+	Sat, 12 Sep 2026 22:48:57 +0000
+Received: from flow-b7-smtp.messagingengine.com ([202.12.124.142])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5UPX-00000001AMJ-3Xfd
+	id 1x5WWk-00000001GU8-3TLE
 	for linux-rockchip@lists.infradead.org;
-	Sat, 12 Sep 2026 20:33:22 +0000
-Received: by mail-ej2-x05.google.com with SMTP id a640c23a62f3a-c294938a983so107226566b.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 12 Sep 2026 13:33:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789245197; cv=none;
-        d=google.com; s=arc-20260327;
-        b=ccStN0sr/NjvPgStcdW2us6BlvGxxjSyLFO1lj8DJVw/N7pD3MEJTyVqCae63Rupet
-         iMy8U8cVTolTzE0Cwu8dSqv2CAydkLNV5DuBENRqZ3i0egFkX7EToU0s+FAyZSD6xU/p
-         0aJIhwj5a8z9z8nois6RPD+R0udDBQET88ploeewm05Qx8i8Vl2eA38a9+f9XbdWQcGj
-         j8/jvMloxKYMZuY0f5YJBawf29fiwBZ7VKT1I0rRWxXplNUoX0JgzwAjRcVb/4U6DsJC
-         Y+hisoI0SkEVug31S3/49shwZfzgLWuwPLWUNo1++Lf0ueXKbzLnJ9ft24s6I+adbt42
-         v+MA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=fXb2RdQOVdFeimkTuBnAC0nV21XWeOYpcj6vU3s52nc=;
-        fh=77/dKziV3ZlTUw8ebqkv+59b4JDKai3cHNVnDfv95R4=;
-        b=JA7Uv3GMbWwMxL/8CXG6zMiFhfyJeFuwCIPgGOf8xjSOgUl+VDeC7y+PzqtY707k6O
-         AZP09P/DPC0BAZbodmbpud3Q1rh2DZ/b+QirSrjxe8iThWMC5gJhXLahM4Zkz5QLh4LE
-         A7UjCdY9bRoycEsYPJy7stGhODk682p0pnsowddAS4E8URL5GArcFumQOKY0Mg3OczOZ
-         hAbpEAKNs6SZmvJmri7W/UY4OJl/6DQXSkejDzLGR4st8LdhkiuTPKTTaqnMfwaVLgOr
-         fnG3ii7ML34JX3FVH51P21FByAM8AWo/nQpOBqchGm3rpKHONLYbBJb88xTaijUBB2xT
-         iaHg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789245197; x=1789849997; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=fXb2RdQOVdFeimkTuBnAC0nV21XWeOYpcj6vU3s52nc=;
-        b=nVUaoogTaAonFjYzZ0a/JkPVspUIVh1KfzZ6J0V23nQ+RRvDV3Tl/1AiP5MPBMCVf9
-         f9TIRJDZ+WdXuxYrUzzYISMyYf1Mn/H5RcbethvaEEjeEvGZk2OeCH2xBQiOzbnwBQTm
-         c6CWaE6lgBVQzXQJ9okBiXVhp+Pb1Zmhkpy+zwmdQ/3E3TgdbdjGTTVdsjw9L9YxA9/B
-         MElV4+RcQaa5MYCUKM8dZEgZTN0VowW72oP+eCamnf8otcCjH+HfOA4eqesU3KGBZDrS
-         nT4Tq9bEJYa/mgYFvGYKkXGi6GpztbWxNimnXt6jwHjRntKuTJqhajIF42vtkkdbX+b3
-         /7Vw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789245197; x=1789849997;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=fXb2RdQOVdFeimkTuBnAC0nV21XWeOYpcj6vU3s52nc=;
-        b=pKCzhOesZhQxNK0jJHM4QxPrllHhWpstzsf7xnRHRS34yGTJziuG1tlkrWDm6E2pRp
-         bnGgocwznJTcALcltS5KKSHFp+dti3JOjYQFeTcaRaa/xCMdNRkuQoZyh62qBlV1kMxu
-         KeW5cNt4fFVfBT005FHKXx5KmC1D9M0em2ZBT6jxagLF9YIYBNBC7k0rQxbxvoXdcvSh
-         E8D/OX7dSUy5SBIYwd0cXIn9CxOCyQBhm02XF9VVRFU99Dr8cH8Z1eABXrOr8hciptk9
-         ooXLxzSWLZ8lzPe7a3QYyvk60thXqV95IuxQGBLTos9d2o+8UIfA8OrlmdP1f87Vy5Ya
-         AAxw==
-X-Forwarded-Encrypted: i=1; AKwUvByde1hznLym8Jn7wM2lAdBKOOFbc8FxGPjv4aTIhSYGGwtBfRr/uXgPNDShhDbv4heWUjSQnlBj/Z7/mFhHuw==@lists.infradead.org
-X-Gm-Message-State: AFuF++l3q9m4OLjYnHdNb/67kc3w/gkw9Z1CvMnr823KrG/V3Cb+oSre
-	NJ/xzRuyD/320kq8J/aRu9h74WKoV1/xdmM9zxOh1A2xPAO+kf1dXdqkleXTus2mAcjX+s6A3LJ
-	pF8XMXEhffiei8olljZT17p2jhc7a+yg=
-X-Gm-Gg: AYBFou18BIbdqXWP+jcIoauVBdafnZt+QRAeKYAEGpUHLgpQRCwdXPgTGA3/x+C7rau
-	5mz+lt1B5tfiBjMpgMaoa/wRGBo89x397AJOH3KCURK+5n7bEaCiKCDzJ7AWoKmz5i4MBSbrFb9
-	w9UxIQ+pCHWPwAyhu+PKEvel7csm6Vesslo96ssVRxIBxce67SVgx5zoRLlRyrZDJxG4sUpCYep
-	MXKyGb9WNj9uIUMDNScCnlbhwdZR9D9KPFMwf0iL1/2jX3/AACuHk0j7XVt3DevadDMltDmMeI0
-	vtNOW12khc7SCr8HVZz5ZRJfX+6xdRTBjaE4sEH7pmj/j7CpXIIUCY6TCg==
-X-Received: by 2002:a17:907:d02:b0:c25:2a78:15ed with SMTP id
- a640c23a62f3a-c296659c61fmr976523566b.6.1789245197295; Sat, 12 Sep 2026
- 13:33:17 -0700 (PDT)
+	Sat, 12 Sep 2026 22:48:56 +0000
+Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
+	by mailflow.stl.internal (Postfix) with ESMTP id 418E1130018E;
+	Sat, 12 Sep 2026 18:48:51 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-06.internal (MEProxy); Sat, 12 Sep 2026 18:48:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:content-type
+	:date:date:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:subject:subject:to:to; s=fm2;
+	 t=1789253331; x=1789260531; bh=u5dfeX5ow+93ybPmJekOrvP+a0/Wlwh9
+	Ypost/1YCcY=; b=agLK272u15g39JFhQoLzVwxfh7hNTca2Jsf0SQH9DDi+2sDa
+	A7GR1C9Yq7I5n5KcLQy+yeqVo7FLaqhZ+KWG/LTpCCKNJKPnqJ6HnO5HaVeguLBf
+	fwXrtqp8HDRs2XkyAFWJczBwvQg6Cl286SLMJX2jNe5iEe0PNucby3nh+vQZQVfG
+	0lAyFzIcaXCpeI6Fa+g+W051dEJsSXjfRBUsJvk5GwtDLtszZsK8fiMxhcmLPnQB
+	/caMUoxiORz4rpd9WgcdAaisd8NzDvg9/X4Dok0Gcph+TyBSPGnffNyVRdFUZRDd
+	I1Cq44+H3nzyvmsbElotDXyALW6wLilcgFfhkg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1789253331; x=
+	1789260531; bh=u5dfeX5ow+93ybPmJekOrvP+a0/Wlwh9Ypost/1YCcY=; b=e
+	EsWtaBywYtxbrjQSmAaK342Gxyd0APPuo++9TusNa2J6cO0lw2CcTvdZLwc7v8AN
+	mH0okdV5ZvSAUk0jZVxkHhbOg19DZiab5rieUs+dckNepRmLXIjWoIuVsgYFfSva
+	QiQp8rAeSpxg4/LgiqJWZH/kc0/yNvbRXf/iSKaaDQbpocnu6nOnZaIw1GKFonll
+	5/NzyBwPfWXRa92e/4R4IsnPZscHtZoPSdq4L5F7tLhKPUywQ4E2TgXQFVD3K9bC
+	XxU7BvEp/+NwPhCkohwJGSryanuyKtABZ+ut4kh9PvF2Mb+qlrW/ycyMobrFFuFI
+	rRme0vLpL/cMspTCxWVaw==
+X-ME-Sender: <xms:0talas4y0SNrVZWO6-a2AhqnnfIBHmGTAO6yjdNtbhxwcmhaMtibNw>
+    <xme:0talavbfQDMOexWChY0alrGFh3u6zL8KvWOT4vQLfyc5NI0EeAkGkpJt01C1aDlTR
+    nLOGeZ-ul6d9b0JUYNOWo-E8GTpMg6IC7sOf6ln8Z9ooUbUC1rz8g>
+X-ME-Received: <xmr:0talargctBvFcM6LicM6Z6dBY9HlAG4u6Nd41eSqps7KGd1dB5kh0_cdvIvtw9uGS6PmXd8E2A>
+X-ME-Proxy-Cause: dmFkZTGuEQ4GiepUBMpmZorBsrDrsMVPOCGJwSy8sC1qnSMiQmiw/q1wofBw1CfKly1PBi
+    2GECeF44oC0yJEBJDzx1SeHpuKdA+L4Bf9sCHbBnMWN8EZ0SmTXFax4oDaau/Hg+1XsvA8
+    rAmYQAG4FgvnvEjbQXvhKxV7fEV3M9rmo5xFybahW3pHuDWKlKXqDvpmpVxQmooTuh9i6k
+    bCxU1Yaac5FMqrOPp/YZcT24w5CSoDOJ6gBcCHfZQxXtqj5bOcq+6CNWf5qmZxEkwWJF6f
+    2wc5M28m1/yr3OU5i457h9Of/Mn+WrkpsEYlTMd5Prc4RWBUNeE+gkExSX6SO7f++x8iUw
+    zANZthUsISzCoDnwWbs516OX7VjgqrlDJ4GZ9qWo3zjslybfaD3g1h92bJQhX/ylrU3QKH
+    nOH8IFLvfxee8/9a3xA5PQvQB9ehSEj8hUR3RAdfel5bBdoAteKAZY5d4BeZVU6u6p5F5X
+    waHX7VsVlX1PiiTilAr/eMv7xgBfvnj+LFfJE0C1h2xouD1K/OMPq3R4Bd/BU80q1M1X2P
+    1hb6IfRHpPD60S2JSbQTMItQ2qN2oeLInOpCqmyHhhuULtM7Zav6Nyqe0YJRLGkVEQHcMe
+    A97W3EVC0eb8hI6Bic1XV+RmnYtsQ5+N0Sb+JqRAD+DIqLJX4bWUAHZOt7ZA
+X-ME-Proxy: <xmx:0talag_kGavK7xtMwGnb-wWR9MiCWSgCBWyzr2OpPjlKc6Eegkzwjw>
+    <xmx:0talamrc-LJjDCvuURq-GqEZtKiyoLLzEhiLPV_Nbmyrx5kYB_DqRg>
+    <xmx:0talaoVWJt_4Cu9f2J_Rut7ACATIysoThhVVG2CpGew_2yeZ9Z2QKw>
+    <xmx:0talalCvbdb0yERFPKesUSiOxZ5zUUFWnE2iEuMKvRLWgzkGp0N6vw>
+    <xmx:09alaqRzQdFgGHNTnZVLGUsKEcF6NyfGz_wI-wbBZLgwTDwcBkg2ze42>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 12 Sep 2026 18:48:49 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: royalnet026@gmail.com
+Cc: tomeu@tomeuvizoso.net,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v12 03/14] accel/rocket: wait for a running IRQ handler before resetting a core
+Date: Sun, 13 Sep 2026 10:48:44 +1200
+Message-ID: <20260912224844.1614558-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260912113717.6819-1-royalnet026@gmail.com>
+References: <20260912065053.1519165-1-gahing@gahingwoo.com> <20260912065053.1519165-4-gahing@gahingwoo.com> <20260912113717.6819-1-royalnet026@gmail.com>
 MIME-Version: 1.0
-References: <20260907153713.2572547-2-coiaprant@gmail.com> <20260912131421.2960a12d@kernel.org>
-In-Reply-To: <20260912131421.2960a12d@kernel.org>
-From: Coia Prant <coiaprant@gmail.com>
-Date: Sun, 13 Sep 2026 04:33:05 +0800
-X-Gm-Features: AcwNN1Wp1szdgOCnvhL-ujyIZJIERlGVxaN0L7OfiFu9TcpEfz4jyCgcrEH55iM
-Message-ID: <CALj3r0itTv0+8R+mTg3wtMD95=4V3Znwsk48oxaSjrVMLoJfJA@mail.gmail.com>
-Subject: Re: [PATCH net-next v4 00/10] net: pcs: add basic support for RK3568 XPCS
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
-	Maxime Chevallier <maxime.chevallier@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
-	Romain Gantois <romain.gantois@bootlin.com>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Russell King <linux@armlinux.org.uk>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, David Heidelberg <david@ixit.cz>, netdev@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-phy@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-renesas-soc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260912_133319_902904_9F44FCC3 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20260912_154855_039903_AE35DB68 
+X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,24 +105,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SmFrdWIgS2ljaW5za2kgPGt1YmFAa2VybmVsLm9yZz4g5LqOMjAyNuW5tDnmnIgxM+aXpeWRqOaX
-pSAwNDoxNOWGmemBk++8mgo+Cj4gT24gTW9uLCAgNyBTZXAgMjAyNiAyMzozNzowMyArMDgwMCBD
-b2lhIFByYW50IHdyb3RlOgo+ID4gVGhpcyBzZXJpZXMgYWRkcyBwcm9wZXIgU0dNSUkgc3VwcG9y
-dCBmb3IgdGhlIFJvY2tjaGlwIFJLMzU2OCBTb0MKPiA+IHVzaW5nIHRoZSBpbnRlZ3JhdGVkIFN5
-bm9wc3lzIERlc2lnbldhcmUgWFBDUywgYWxvbmcgd2l0aCBuZWNlc3NhcnkKPiA+IGZpeGVzIGFu
-ZCByZWZhY3RvcmluZyBpbiB0aGUgc3RtbWFjIGNvcmUgYW5kIFhQQ1MgZHJpdmVyLgo+Cj4gU2Vu
-ZGluZyB0aGUgQUkgcmV2aWV3IEZZSSwgcGxlYXNlIGxvb2sgdGhydSBpdCBhbmQganVkZ2UgaWYg
-YW55IG9mIHRoZQo+IGNvbW1lbnRzIGFyZSB3b3J0aCByZXNwaW5uaW5nIGZvci4gV2UncmUgd2Fp
-dGluZyBmb3IgYSByZXZpZXcgb24gdGhlCj4gZGV2aWNlIHRyZWUgYmluZGluZ3MsIGFueXdheS4K
-CkkgYXBvbG9naXplOyBJIGhhdmUgYmVlbiBzbyBidXN5IHRoaXMgd2VlayB0aGF0IEnigJl2ZSBy
-ZXBlYXRlZGx5Cm92ZXJsb29rZWQgbXkgcGxhbiB0byByZXBseSB0byBzYXNoaWtvLWJvdCdzIGNv
-bW1lbnQuIEkgd2lsbCBnZXQgYmFjawp0byB5b3UgYXMgc29vbiBhcyBwb3NzaWJsZS4KCkJlc3Qs
-CkNvaWEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+Hi Igor,
+
+Taken. The two paragraphs go.
+
+3/14 loses the one beginning "Igor also ran a differential on RK3588"
+and the one beginning "His own bound on it is the right one". Your
+summary replaces them, as you wrote it:
+
+  45 induced resets on 19 August, 102 on 25 August and 74 today,
+  every reset recovered, no MMU faults, no lockdep report from rocket
+  or the scheduler in the runs where lockdep was still armed, and of
+  the 420 inferences scored, 384 matched the CPU reference within 1
+  on all 48 output channels while 36 returned the all-0x80 buffer of
+  a job the reset had cancelled.
+
+You list "bounds and does not prove" among what stands, so I keep that
+one sentence out of the removed text. Say if you would rather it went
+with the rest.
+
+Both Link: lines stay, with your message as a third.
+
+One thing in your text to settle before it goes in: "74 today" has no
+referent in a commit message. I would write the date, unless you would
+rather phrase it yourself.
+
+The tags:
+
+  2/14  # RK3588, three cores
+     -> # RK3588, three cores, induced reset, JOB_TIMEOUT_MS=2
+  3/14  # RK3588, three cores, induced reset, differential base,
+        JOB_TIMEOUT_MS=2
+     -> # RK3588, three cores, induced reset, JOB_TIMEOUT_MS=2
+  4/14  unchanged
+
+All three then read the same, which is your point.
+
+None of this touches what 3/14 rests on. The argument is the code
+path: the wait is on desc->wait_for_threads rather than on a lock, so
+it would have hung with no lockdep report. Your runs bounded that;
+they never established it.
+
+The 0x80 signature holds on RK3576 too, for the reason you name. A
+fresh shmem BO is zeroed and teflon's readback adds 0x80, so an output
+buffer nobody wrote comes back a uniform 128 and cannot be told from a
+computed constant at the tflite level. That trap already cost us one
+retraction of our own. Your kprobe run is the part neither of us had
+before: two cancellations, two 0x80 files, matched to 2 ms against a
+280 ms round period.
+
+The uAPI question is Tomeu's. What I can say from here is that the
+blind spot is not yours. PREP_BO cannot tell a cancelled job from one
+that ran, so your protocol, mine and the mesa one all read the same
+buffer, and none of us can close it from userspace.
+
+v13 with these changes, and nothing else to 2/14, 3/14 or 4/14.
+
+Thanks for going back through twenty runs of your own data. It would
+have stood unchallenged in the commit message.
+
+Jiaxing
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
