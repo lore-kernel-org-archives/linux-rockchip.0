@@ -4,92 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 415F8C88E53
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Sep 2026 19:01:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2705BC88E64
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Sep 2026 20:13:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M4fUWCvknFrrSVk4YT3+T7tun+lFtjq9IT5bwkV7I6Y=; b=HMsKEvuOB4XsNs
-	K4asF4qYHV+TC2s3vPtCmFEAjCECL6w1o0I1QhoNdn+ZC2ddBb4En1/6Hqx6cWH4oLTPcyI1DViGb
-	MJn4jUBhXBfMRyDBA/xRDuQR1gbq5JR9SQVCV9TqOfsJSkLHWAPc94+EWtGSOmvac2L6k+rlCxiXs
-	6Mfzqx4HyrQBzqmfTaalgfUK93OWDtf8ldFNSSNR+RDSAhMsYBbRpKAixTnm6XdDt+MgpdfApO7CB
-	HErndU8TLbDUofMMk0QuwZ/8FhomIMDZyEYdnSuhw9lBUoxoDRi+DLg+xL0JIrg72eakpj7Ta+yGB
-	SDsyAAA4NdrNw7M7k+6w==;
+	List-Owner; bh=5GV8dI/CxLr2sPVejh5HqNnVFh4eJ8tm3M7yjsxOUHs=; b=dCcMzSMvNMFAbz
+	BDVi1Hk0EB0GNDysIMRm+3YGKDNwX4CRkyOmVXyG2q1hiGR6W/EK1ReZULyShcxtGJMq3FaxLu6X4
+	UWczeC9QOFAuLEpjIC45BAALqAUiVsyywYQHidrE55OsX3iiJt4hhs20KFlNa0gpJykfHGNeOjziT
+	hQfAkRWnZizJKOpdC447XpbhIhAJglqISC8eNdQrrb+plu0nOMf0PY+c3cCGWl+P3XeHUdnxT+8Ca
+	Ho+baO7G+d3WzTVmioCWA4DivKCRdgTELTRCyuWMQJxNrx2zv2FpQDjP96fS/XbbsQCraN64/TgJl
+	/TAvOGEALt7pYa1vcx3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5SyO-000000015IT-0D3G;
-	Sat, 12 Sep 2026 19:01:12 +0000
-Received: from mail-qv2-x10.google.com ([2607:f8b0:4864:33::10])
+	id 1x5U6G-000000018di-2nx5;
+	Sat, 12 Sep 2026 20:13:24 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5SyJ-000000015Hc-0MGf
-	for linux-rockchip@lists.infradead.org;
-	Sat, 12 Sep 2026 19:01:10 +0000
-Received: by mail-qv2-x10.google.com with SMTP id 6a1803df08f44-91219376dd6so10107076d6.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 12 Sep 2026 12:01:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789239666; x=1789844466; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=4AaS2W86AtkX5bjhTKY8jGngBhIYNaOT+HF7QmT5cMk=;
-        b=klCSjIdDFzD803DH9w7a4mAYuJe3rCr4bACVWpcfBl3tiHl6k3k8mR2ITcDntbGy8E
-         F6udQQe3p3JaRmRK3QTFBoTbupPCvhLtQRICWyzwifDiqa2afRRZs4ghR1i78zz60tEm
-         2vBtkm9CLeavrLUMQKte9bEN8Ku9OX5hCcMPA86MesCuOpTUsHwQ4wf9orr0gCBnc3nd
-         RLBFdpUhO1n7jpC6hnXnC3DR1LhIw4INfbmketMbnTp8VkSd0eNDAbwujgl22GdpXTST
-         ASdO4dJWqZnnnftLVwDxaJPYzmdsgOgESBDxHXQfCjA7iquSsQ3g6q0D61V6uL5CR0j4
-         Zsjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789239666; x=1789844466;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=4AaS2W86AtkX5bjhTKY8jGngBhIYNaOT+HF7QmT5cMk=;
-        b=DcpbarHmPy6OjzEfzOW9NIR1AafV+YI4aubDdccHtJesaVdGL1AlRikyPtTHP3lPwg
-         KDjrIQYAjnE/mSnltIWM94a6JA0CdtePcDTP3OL8Y+8D778xP5XzmivYNmjMQH7bJJbL
-         iu9UHuCm0HOuN/baNLxjAYqv4BJB+C12R5PLDxotNyXbEsdeck9t7hA1yeIoGgqJgn4a
-         n6Xi7VvWudcVIAZpFYwzJnXu1RQuvOUVBfIRSWyW4RGsqJ2og/8RWSCVd8KWBLBg5JQm
-         WJEaU6UmcMlqVHZKHFDko+PxCpM9Zjy1BwUEGp9zvH94fmU5gmKEj2wwb/A+/nIKmxE8
-         ABzQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzfZQQ6i9CNVonQVMzGAStfi3fKGMGAPPmvTqzEG0pc9l62O3gADh+xhzwch5TKjoqCT/h76yn4VHjQDERkeg==@lists.infradead.org
-X-Gm-Message-State: AFuF++nTXcdyjx8nmf//7rSYFp2ruXooViBqdLfZCpCF7KiSlQl2BCw5
-	FG1vOT/oRaY1yt8pUwHziGZovoH6Q1yx3C4WUT506vVnIIUM+EUGtgeF2wFqe7U=
-X-Gm-Gg: AYBFou1nh+ctsv7Le9WqPe/O1koQOIQe9HwD4APFvAapilAjKm1rEtQhm4eoAgr1FM0
-	RzwEhfa32obbSQoIPFSu1XOVRBOLhlvm8vOFABO9PX4+ijK784LHLgAkGyvfc8M7IJWab68Dip9
-	iW3s0tN1Y5Ef6Rjg5ew75vfJJLIz4vZ5KFi/ZvMOcwudoZ3UDDyM1rckx5D5UJ+uC6YIbiB623l
-	L+xSyqY/bw5S4lUG/MV6399x5AC67DBCTZ48ztjw/hF5hwUvQMI0SiuzC0GFO9+0xWMdBBZwrlc
-	G/Tza49ywGiP7LXb/axcpkhlZkzPEJYS5YPaBdGKk5Dd+I4K9oYeY+pzSX5oOJOkhDjYXPG4IdY
-	Baq3tFdAPWdBE4O1HH0RhTJwH9KUNfHY/VdWsDe4etnk4w/2GZgj3OWeQHP2dNaYqtjjxIXy/GX
-	w+fImXRfsxUKHlG1VQASILf+G93Mgji5kY7pRgD4uaD9pdPKDkddAx4rGC5EzWh+4lQubGyUNez
-	aEQwMinuYXtDI6iIAqXKu/du8BYjpH4UbVFI/4aXRRSgagTLYgPDZd9lfPO4Mg9xarrkLtk7zaH
-	upL2Dgoii3TyijjYJRDR7rM6HbyqJC0fBw==
-X-Received: by 2002:a05:6214:3983:b0:90e:96a9:4c5d with SMTP id 6a1803df08f44-9121d91c1famr77743116d6.15.1789239665588;
-        Sat, 12 Sep 2026 12:01:05 -0700 (PDT)
-Received: from localhost.localdomain ([104.39.73.78])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-9120f45f1fdsm52597396d6.16.2026.09.12.12.01.04
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sat, 12 Sep 2026 12:01:04 -0700 (PDT)
-From: Myeonghun Pak <mhun512@gmail.com>
-To: Mark Brown <broonie@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1x5U6E-000000018dC-3pRh;
+	Sat, 12 Sep 2026 20:13:22 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1E7E140D52;
+	Sat, 12 Sep 2026 20:13:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A3E21F000FF;
+	Sat, 12 Sep 2026 20:13:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789244002;
+	bh=JtoUpb6McNb8j9Z4qP+rOvN+AYV7xXHpuSQDz0IbEJo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=EFk7I55vjqe2AiKGLYvCZHQw7wNr/JCb+JgkqtAe19BCOXtj+ON+hCWj8q+x/nqIc
+	 AY41oLO8iFVcwf1khYooVFFjvoieVNx6amrTRHlh6/Zqe9OPhbKiOdUzjURzA7Y+VZ
+	 bDNRGkqGAavN2q96TX79ZybNdMSvUSu7h4Hp/X8SjhFkODokmuILfhgL8Ri8VR5xB/
+	 Ky4jBUkDTLQgWYHlQXmXEehGMyKM9nYMpLKn1ASZRls2eYvG0wO1MU31pkkyfposGj
+	 yXHAgrK4vO4z7Xp5XFzz9YtMYLKkEuqmeD8KWoUm1Z3WdYht8cOXheIZJXlJUjQV/9
+	 CfMuGev1upN9w==
+From: Jakub Kicinski <kuba@kernel.org>
+To: coiaprant@gmail.com
+Cc: Jakub Kicinski <kuba@kernel.org>,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	pabeni@redhat.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	vkoul@kernel.org,
+	maxime.chevallier@bootlin.com,
+	mcoquelin.stm32@gmail.com,
+	alexandre.torgue@foss.st.com,
+	prabhakar.mahadev-lad.rj@bp.renesas.com,
+	romain.gantois@bootlin.com,
+	hkallweit1@gmail.com,
+	neil.armstrong@linaro.org,
+	linux@armlinux.org.uk,
+	shawn.lin@rock-chips.com,
+	david@ixit.cz,
+	netdev@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Ijae Kim <ae878000@gmail.com>
-Subject: [PATCH v2] spi: rockchip-sfc: skip DMA cleanup in PIO mode
-Date: Sat, 12 Sep 2026 15:00:56 -0400
-Message-ID: <20260912190056.42192-1-mhun512@gmail.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <aqRM17TZ0-5pd6Y0@sirena.org.uk>
-References: <aqRM17TZ0-5pd6Y0@sirena.org.uk>
+	linux-phy@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH net-next v4 01/10] net: stmmac: move XPCS lifetime management to platform drivers
+Date: Sat, 12 Sep 2026 13:13:13 -0700
+Message-ID: <20260912201313.126882-1-kuba@kernel.org>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260907153713.2572547-3-coiaprant@gmail.com>
+References: <20260907153713.2572547-3-coiaprant@gmail.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260912_120109_403697_57514244 
-X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,66 +94,306 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With rockchip,sfc-no-dma, probe skips allocating and mapping the transfer
-buffer. However, controller registration failure and driver removal still
-call dma_unmap_single() for that nonexistent mapping.
-
-Guard the DMA mapping and buffer cleanup with use_dma. Keep the existing
-cleanup for allocation and mapping failures on the DMA path.
-
-This issue was identified during our ongoing static-analysis research while
-reviewing kernel code.
-
-Fixes: ee795e82e101 ("spi: rockchip-sfc: Fix DMA-API usage")
-Assisted-by: OpenAI:GPT-5.6
-Co-developed-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
 ---
-Changes in v2:
-- Guard the cleanup calls directly instead of jumping between error labels,
-  as suggested by Mark Brown.
+net: stmmac: move XPCS lifetime management to platform drivers
 
- drivers/spi/spi-rockchip-sfc.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
+This removes the generic XPCS creation and destruction code from
+stmmac_pcs_setup() and stmmac_pcs_clean(), leaving those functions as
+plain dispatchers to plat->pcs_init() and plat->pcs_exit().  The Intel
+mGbE glue gains its own pcs_init()/pcs_exit() implementations, and the
+renesas-gbeth, rzn1 and socfpga pcs_exit() callbacks now clear
+priv->hw->phylink_pcs after destroying the PCS.
 
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index 662a994da60beca33358dc6af09017e88771d017..bc5537aee449e0c33c2d6ecf9d57205d432ec7b6 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -719,10 +719,12 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
- 
- 	return 0;
- err_register:
--	dma_unmap_single(dev, sfc->dma_buffer, sfc->max_iosize,
--			 DMA_BIDIRECTIONAL);
-+	if (sfc->use_dma)
-+		dma_unmap_single(dev, sfc->dma_buffer, sfc->max_iosize,
-+				 DMA_BIDIRECTIONAL);
- err_dma_map:
--	free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
-+	if (sfc->use_dma)
-+		free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
- err_dma:
- 	pm_runtime_get_sync(dev);
- 	pm_runtime_put_noidle(dev);
-@@ -743,9 +745,11 @@ static void rockchip_sfc_remove(struct platform_device *pdev)
- 	struct spi_controller *host = sfc->host;
- 
- 	spi_unregister_controller(host);
--	dma_unmap_single(&pdev->dev, sfc->dma_buffer, sfc->max_iosize,
--			 DMA_BIDIRECTIONAL);
--	free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
-+	if (sfc->use_dma) {
-+		dma_unmap_single(&pdev->dev, sfc->dma_buffer, sfc->max_iosize,
-+				 DMA_BIDIRECTIONAL);
-+		free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
-+	}
- 
- 	clk_disable_unprepare(sfc->clk);
- 	clk_disable_unprepare(sfc->hclk);
--- 
-2.53.0
+A few questions on the changelog and on the removed common code below.
+
+[Severity: Medium]
+Three statements in the commit message do not seem to match the tree
+this patch applies to.
+
+First:
+
+    Address all of these issues by introducing pcs_init() and pcs_exit()
+    callbacks in plat_stmmacenet_data.
+
+Are these callbacks actually introduced here?  Both function pointers
+already exist in struct plat_stmmacenet_data at the baseline:
+
+	int (*pcs_init)(struct stmmac_priv *priv);
+	void (*pcs_exit)(struct stmmac_priv *priv);
+
+and this patch does not touch include/linux/stmmac.h at all.  The
+baseline stmmac_pcs_setup() and stmmac_pcs_clean() already call them.
+
+Second:
+
+    Second, and more critically, when stmmac_pcs_setup() fails to create
+    an XPCS (either because no pcs-handle is present and no pcs_mask is
+    configured), it falls through to the else branch and leaves
+    priv->hw->xpcs as NULL. This will silently override any XPCS that a
+    platform driver may have already set up
+
+Is that the branch that causes the override?  In the baseline that arm
+returns immediately:
+
+drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c:stmmac_pcs_setup() {
+	if (priv->plat->pcs_init) {
+		ret = priv->plat->pcs_init(priv);
+	} else if (fwnode_property_present(devnode, "pcs-handle")) {
+	...
+	} else {
+		return 0;
+	}
+	...
+	priv->hw->xpcs = xpcs;
+}
+
+so no XPCS pointer can be clobbered there.  The clobber only happens on
+the plat->pcs_init branch, where the local xpcs stays NULL and the
+unconditional priv->hw->xpcs = xpcs; afterwards overwrites whatever
+pcs_init() stored.  Could the changelog describe that path instead?
+
+Third:
+
+    Existing platform drivers (intel, rzn1, socfpga) are updated to use
+    the new callbacks by moving their XPCS creation and cleanup logic into
+    pcs_init() and pcs_exit().
+
+rzn1 and socfpga already used pcs_init()/pcs_exit() before this patch,
+and neither creates an XPCS: rzn1_dwmac_pcs_init() calls miic_create()
+and socfpga_dwmac_pcs_init() calls lynx_pcs_create_mdiodev().  The only
+change for them is the added NULL assignment.  The patch also modifies
+dwmac-renesas-gbeth.c, which the changelog does not mention.  Should
+that list be corrected to intel only, plus a note about the pointer
+clearing in renesas-gbeth, rzn1 and socfpga?
+
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
+> index f5f9fa67ecd77..fd5f01c8941c1 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-intel.c
+> @@ -603,13 +603,47 @@ static void common_default_data(struct plat_stmmacenet_data *plat)
+>  	plat->mdio_bus_data->needs_reset = true;
+>  }
+>  
+> +static int intel_mgbe_pcs_init(struct stmmac_priv *priv)
+> +{
+> +	struct fwnode_handle *devnode, *pcsnode;
+> +	struct dw_xpcs *xpcs = NULL;
+
+[Severity: Low]
+This isn't a bug, but is the NULL initializer still reachable here?
+Both arms of the if/else below assign xpcs unconditionally, from
+xpcs_create_fwnode() or xpcs_create_mdiodev(), and neither returns NULL.
+In the common code this was moved from, the initializer mattered because
+a fall-through left xpcs NULL and the call was guarded by
+if (xpcs) xpcs_config_eee_mult_fact(...); that guard is now gone.
+
+> +	int addr;
+> +
+> +	devnode = dev_fwnode(priv->device);
+> +
+> +	if (fwnode_property_present(devnode, "pcs-handle")) {
+> +		pcsnode = fwnode_find_reference(devnode, "pcs-handle", 0);
+> +		xpcs = xpcs_create_fwnode(pcsnode);
+> +		fwnode_handle_put(pcsnode);
+> +	} else {
+> +		addr = ffs(priv->plat->mdio_bus_data->pcs_mask) - 1;
+> +		xpcs = xpcs_create_mdiodev(priv->mii, addr);
+> +	}
+> +
+> +	if (IS_ERR(xpcs))
+> +		return PTR_ERR(xpcs);
+> +
+> +	xpcs_config_eee_mult_fact(xpcs, priv->plat->mult_fact_100ns);
+> +
+> +	priv->hw->xpcs = xpcs;
+> +	return 0;
+> +}
+> +
+> +static void intel_mgbe_pcs_exit(struct stmmac_priv *priv)
+> +{
+> +	if (!priv->hw->xpcs)
+> +		return;
+> +
+> +	xpcs_destroy(priv->hw->xpcs);
+> +	priv->hw->xpcs = NULL;
+> +}
+> +
+
+[ ... ]
+
+> @@ -733,6 +767,8 @@ static int intel_mgbe_common_data(struct pci_dev *pdev,
+>  	    plat->phy_interface == PHY_INTERFACE_MODE_1000BASEX) {
+>  		plat->mdio_bus_data->pcs_mask = BIT_U32(INTEL_MGBE_XPCS_ADDR);
+>  		plat->default_an_inband = true;
+> +		plat->pcs_init = intel_mgbe_pcs_init;
+> +		plat->pcs_exit = intel_mgbe_pcs_exit;
+>  		plat->select_pcs = intel_mgbe_select_pcs;
+>  	}
+>  
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-renesas-gbeth.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-renesas-gbeth.c
+> index 19f34e18bfef2..9af32c26f9c14 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-renesas-gbeth.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-renesas-gbeth.c
+> @@ -81,8 +81,11 @@ static int renesas_gmac_pcs_init(struct stmmac_priv *priv)
+>  
+>  static void renesas_gmac_pcs_exit(struct stmmac_priv *priv)
+>  {
+> -	if (priv->hw->phylink_pcs)
+> -		miic_destroy(priv->hw->phylink_pcs);
+> +	if (!priv->hw->phylink_pcs)
+> +		return;
+> +
+> +	miic_destroy(priv->hw->phylink_pcs);
+> +	priv->hw->phylink_pcs = NULL;
+>  }
+>  
+>  static struct phylink_pcs *renesas_gmac_select_pcs(struct stmmac_priv *priv,
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rzn1.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rzn1.c
+> index 13634965bc19a..01df4776edb3f 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rzn1.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rzn1.c
+> @@ -35,8 +35,11 @@ static int rzn1_dwmac_pcs_init(struct stmmac_priv *priv)
+>  
+>  static void rzn1_dwmac_pcs_exit(struct stmmac_priv *priv)
+>  {
+> -	if (priv->hw->phylink_pcs)
+> -		miic_destroy(priv->hw->phylink_pcs);
+> +	if (!priv->hw->phylink_pcs)
+> +		return;
+> +
+> +	miic_destroy(priv->hw->phylink_pcs);
+> +	priv->hw->phylink_pcs = NULL;
+>  }
+>  
+>  static struct phylink_pcs *rzn1_dwmac_select_pcs(struct stmmac_priv *priv,
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-socfpga.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-socfpga.c
+> index 1d7f0a57d2889..6d4bc1fe8f751 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-socfpga.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-socfpga.c
+> @@ -539,8 +539,11 @@ static int socfpga_dwmac_pcs_init(struct stmmac_priv *priv)
+>  
+>  static void socfpga_dwmac_pcs_exit(struct stmmac_priv *priv)
+>  {
+> -	if (priv->hw->phylink_pcs)
+> -		lynx_pcs_destroy(priv->hw->phylink_pcs);
+> +	if (!priv->hw->phylink_pcs)
+> +		return;
+> +
+> +	lynx_pcs_destroy(priv->hw->phylink_pcs);
+> +	priv->hw->phylink_pcs = NULL;
+>  }
+>  
+>  static struct phylink_pcs *socfpga_dwmac_select_pcs(struct stmmac_priv *priv,
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+> index afe98ff5bdcb0..d2f77f0c223a7 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+> @@ -426,36 +426,15 @@ int stmmac_mdio_reset(struct mii_bus *bus)
+>  int stmmac_pcs_setup(struct net_device *ndev)
+>  {
+>  	struct stmmac_priv *priv = netdev_priv(ndev);
+> -	struct fwnode_handle *devnode, *pcsnode;
+> -	struct dw_xpcs *xpcs = NULL;
+> -	int addr, ret;
+> -
+> -	devnode = dev_fwnode(priv->device);
+> -
+> -	if (priv->plat->pcs_init) {
+> -		ret = priv->plat->pcs_init(priv);
+> -	} else if (fwnode_property_present(devnode, "pcs-handle")) {
+> -		pcsnode = fwnode_find_reference(devnode, "pcs-handle", 0);
+> -		xpcs = xpcs_create_fwnode(pcsnode);
+> -		fwnode_handle_put(pcsnode);
+> -		ret = PTR_ERR_OR_ZERO(xpcs);
+> -	} else if (priv->plat->mdio_bus_data &&
+> -		   priv->plat->mdio_bus_data->pcs_mask) {
+> -		addr = ffs(priv->plat->mdio_bus_data->pcs_mask) - 1;
+> -		xpcs = xpcs_create_mdiodev(priv->mii, addr);
+> -		ret = PTR_ERR_OR_ZERO(xpcs);
+> -	} else {
+> +	int ret;
+> +
+> +	if (!priv->plat->pcs_init)
+>  		return 0;
+> -	}
+
+[Severity: Medium]
+Does this drop the generic handling of the "pcs-handle" property?  After
+this change, any snps,dwmac node whose firmware points "pcs-handle" at a
+Synopsys XPCS, but whose glue driver does not set plat->pcs_init, gets
+priv->hw->xpcs == NULL and no message at all, since the function just
+returns 0.  "pcs-handle" is still a documented generic property in
+Documentation/devicetree/bindings/net/ethernet-controller.yaml.
+
+The changelog explains this is harmless because:
+
+    First, if a device tree specifies a "pcs-handle" but no select_pcs()
+    callback is provided by the platform driver, the created XPCS is never
+    used.
+
+Is that accurate?  The core consumes priv->hw->xpcs in two places that
+do not go through plat->select_pcs():
+
+drivers/net/ethernet/stmicro/stmmac/stmmac_main.c:stmmac_phy_setup() {
+	/* If we have an xpcs, it defines which PHY interfaces are supported. */
+	if (priv->hw->xpcs)
+		pcs = xpcs_to_phylink_pcs(priv->hw->xpcs);
+	else
+		pcs = priv->hw->phylink_pcs;
+
+	if (pcs)
+		phy_interface_or(config->supported_interfaces, ...);
+}
+
+drivers/net/ethernet/stmicro/stmmac/stmmac_main.c:stmmac_init_phy() {
+	if (priv->hw->xpcs &&
+	    xpcs_get_an_mode(priv->hw->xpcs, mode) == DW_AN_C73)
+		return 0;
+}
+
+Without the XPCS, supported_interfaces stays limited to
+plat->phy_interface and the DW_AN_C73 "no PHY" path is lost, so
+stmmac_init_phy() can now fail where it previously succeeded.
+
+Related, for Intel mGbE the callbacks are only installed inside the
+SGMII/1000BASEX branch of intel_mgbe_common_data(), while the removed
+common code created an XPCS from "pcs-handle" regardless of interface
+mode.  Should a warning be emitted when "pcs-handle" is present but no
+pcs_init() claims it, or should the changelog state the behaviour change
+explicitly?
+
+>  
+> +	ret = priv->plat->pcs_init(priv);
+>  	if (ret)
+>  		return dev_err_probe(priv->device, ret, "No xPCS found\n");
+
+[Severity: Low]
+This is a pre-existing wording problem and not introduced by this patch,
+but with the generic XPCS code gone this is now the only diagnostic in
+stmmac_pcs_setup(), and three of the four pcs_init() implementers do not
+create an XPCS:
+
+  socfpga_dwmac_pcs_init()  -> lynx_pcs_create_mdiodev()
+  rzn1_dwmac_pcs_init()     -> miic_create()
+  renesas_gmac_pcs_init()   -> miic_create()
+
+So a miic_create() or lynx_pcs_create_mdiodev() failure, including
+-EPROBE_DEFER, is reported as "No xPCS found".  Would something like
+"failed to initialise PCS" be more accurate here?
+
+>  
+> -	if (xpcs)
+> -		xpcs_config_eee_mult_fact(xpcs, priv->plat->mult_fact_100ns);
+> -
+> -	priv->hw->xpcs = xpcs;
+> -
+>  	return 0;
+>  }
+>  
+
+[ ... ]
 
 _______________________________________________
 Linux-rockchip mailing list
