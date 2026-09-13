@@ -4,95 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E10C88E53
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Sep 2026 22:49:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6E52C88E56
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Sep 2026 00:14:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UKR7AwYirl1TWvA7k3dtbtyEMYwTJcDIQzTGNX0GrSc=; b=rdvtaEK1kkrZtV
-	BZQjTGpMhrB/Vt01wTLR6QU7/2B1e1QwS41j0LGTtO15EwUTSUj+x4o6KD3FLO3IEr95q8OOHq45g
-	JswwK0BmbnIqDtx1WY7BF2PNffD2p2lKuzAEcI6dCj3NO0YjlO2bKtqOvJUovIB2h9BUD46g+cPEa
-	uuAQcwMdTh+HAcAibK6Hq4uhnZ4Mze0SiiCCa/+1awjtptkfRCXyGjxtI9RBrEpr169zZhFfMIY7n
-	8JRqHVx5q202G1MmzSszNGdB9m6retxvnhv36VNSItIXaFJ3vLeSAIqEfD2boVGQu3rjQz8dxtwzv
-	2Z0Jt6K8+olbeRCuw0hA==;
+	List-Owner; bh=X1P7mPP0n3nKHTD/01QeS8HboVXHPozKXZSI1snmaZM=; b=S9ljbyjg4xOGQ2
+	9NYBuX15MO3RYKdnAnm1FG2seR3kXHW4GmDroeljuB2Ky1tTisdWUaAypBww4jRlI0vlrjb/oqDWL
+	AyKiEcg6V6VAuDkXxZwtuWx6jsk5RiEuQcisrBtLlcQDe/yZzSNEILPN3xPuvlVQlTYy5rcApANcX
+	FWe4zNxxf4qgtHbw/5DHE+xIij1Zm83KtJoB3P82FpfAInLGrqQw3EFt6TdOi1yQEdFK9gbmzJ5wL
+	0SyS4X9l69Nm4q8pKsvrRho2URSStwIyVo2lCgNmPjDaFWawikzO7mrAz5nddAnBi8/QPkZi6bCRl
+	Y/1/XtMl/pwRyR+OmnqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5WWn-00000001GUY-2Qtz;
-	Sat, 12 Sep 2026 22:48:57 +0000
-Received: from flow-b7-smtp.messagingengine.com ([202.12.124.142])
+	id 1x5Xr9-00000001HqB-3Qce;
+	Sun, 13 Sep 2026 00:14:03 +0000
+Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5WWk-00000001GU8-3TLE
+	id 1x5Xr6-00000001Hps-42JM
 	for linux-rockchip@lists.infradead.org;
-	Sat, 12 Sep 2026 22:48:56 +0000
-Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
-	by mailflow.stl.internal (Postfix) with ESMTP id 418E1130018E;
-	Sat, 12 Sep 2026 18:48:51 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-06.internal (MEProxy); Sat, 12 Sep 2026 18:48:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:content-type
-	:date:date:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:subject:subject:to:to; s=fm2;
-	 t=1789253331; x=1789260531; bh=u5dfeX5ow+93ybPmJekOrvP+a0/Wlwh9
-	Ypost/1YCcY=; b=agLK272u15g39JFhQoLzVwxfh7hNTca2Jsf0SQH9DDi+2sDa
-	A7GR1C9Yq7I5n5KcLQy+yeqVo7FLaqhZ+KWG/LTpCCKNJKPnqJ6HnO5HaVeguLBf
-	fwXrtqp8HDRs2XkyAFWJczBwvQg6Cl286SLMJX2jNe5iEe0PNucby3nh+vQZQVfG
-	0lAyFzIcaXCpeI6Fa+g+W051dEJsSXjfRBUsJvk5GwtDLtszZsK8fiMxhcmLPnQB
-	/caMUoxiORz4rpd9WgcdAaisd8NzDvg9/X4Dok0Gcph+TyBSPGnffNyVRdFUZRDd
-	I1Cq44+H3nzyvmsbElotDXyALW6wLilcgFfhkg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1789253331; x=
-	1789260531; bh=u5dfeX5ow+93ybPmJekOrvP+a0/Wlwh9Ypost/1YCcY=; b=e
-	EsWtaBywYtxbrjQSmAaK342Gxyd0APPuo++9TusNa2J6cO0lw2CcTvdZLwc7v8AN
-	mH0okdV5ZvSAUk0jZVxkHhbOg19DZiab5rieUs+dckNepRmLXIjWoIuVsgYFfSva
-	QiQp8rAeSpxg4/LgiqJWZH/kc0/yNvbRXf/iSKaaDQbpocnu6nOnZaIw1GKFonll
-	5/NzyBwPfWXRa92e/4R4IsnPZscHtZoPSdq4L5F7tLhKPUywQ4E2TgXQFVD3K9bC
-	XxU7BvEp/+NwPhCkohwJGSryanuyKtABZ+ut4kh9PvF2Mb+qlrW/ycyMobrFFuFI
-	rRme0vLpL/cMspTCxWVaw==
-X-ME-Sender: <xms:0talas4y0SNrVZWO6-a2AhqnnfIBHmGTAO6yjdNtbhxwcmhaMtibNw>
-    <xme:0talavbfQDMOexWChY0alrGFh3u6zL8KvWOT4vQLfyc5NI0EeAkGkpJt01C1aDlTR
-    nLOGeZ-ul6d9b0JUYNOWo-E8GTpMg6IC7sOf6ln8Z9ooUbUC1rz8g>
-X-ME-Received: <xmr:0talargctBvFcM6LicM6Z6dBY9HlAG4u6Nd41eSqps7KGd1dB5kh0_cdvIvtw9uGS6PmXd8E2A>
-X-ME-Proxy-Cause: dmFkZTGuEQ4GiepUBMpmZorBsrDrsMVPOCGJwSy8sC1qnSMiQmiw/q1wofBw1CfKly1PBi
-    2GECeF44oC0yJEBJDzx1SeHpuKdA+L4Bf9sCHbBnMWN8EZ0SmTXFax4oDaau/Hg+1XsvA8
-    rAmYQAG4FgvnvEjbQXvhKxV7fEV3M9rmo5xFybahW3pHuDWKlKXqDvpmpVxQmooTuh9i6k
-    bCxU1Yaac5FMqrOPp/YZcT24w5CSoDOJ6gBcCHfZQxXtqj5bOcq+6CNWf5qmZxEkwWJF6f
-    2wc5M28m1/yr3OU5i457h9Of/Mn+WrkpsEYlTMd5Prc4RWBUNeE+gkExSX6SO7f++x8iUw
-    zANZthUsISzCoDnwWbs516OX7VjgqrlDJ4GZ9qWo3zjslybfaD3g1h92bJQhX/ylrU3QKH
-    nOH8IFLvfxee8/9a3xA5PQvQB9ehSEj8hUR3RAdfel5bBdoAteKAZY5d4BeZVU6u6p5F5X
-    waHX7VsVlX1PiiTilAr/eMv7xgBfvnj+LFfJE0C1h2xouD1K/OMPq3R4Bd/BU80q1M1X2P
-    1hb6IfRHpPD60S2JSbQTMItQ2qN2oeLInOpCqmyHhhuULtM7Zav6Nyqe0YJRLGkVEQHcMe
-    A97W3EVC0eb8hI6Bic1XV+RmnYtsQ5+N0Sb+JqRAD+DIqLJX4bWUAHZOt7ZA
-X-ME-Proxy: <xmx:0talag_kGavK7xtMwGnb-wWR9MiCWSgCBWyzr2OpPjlKc6Eegkzwjw>
-    <xmx:0talamrc-LJjDCvuURq-GqEZtKiyoLLzEhiLPV_Nbmyrx5kYB_DqRg>
-    <xmx:0talaoVWJt_4Cu9f2J_Rut7ACATIysoThhVVG2CpGew_2yeZ9Z2QKw>
-    <xmx:0talalCvbdb0yERFPKesUSiOxZ5zUUFWnE2iEuMKvRLWgzkGp0N6vw>
-    <xmx:09alaqRzQdFgGHNTnZVLGUsKEcF6NyfGz_wI-wbBZLgwTDwcBkg2ze42>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 12 Sep 2026 18:48:49 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: royalnet026@gmail.com
-Cc: tomeu@tomeuvizoso.net,
+	Sun, 13 Sep 2026 00:14:02 +0000
+Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-484399babcaso121568f8f.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 12 Sep 2026 17:13:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789258438; x=1789863238; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=KLBe/OOwpVUGn9wvmYKnhyUUthdVTu/kHIljamopULo=;
+        b=FaXgigR880uVmzpccqxtXjiMq0uApdocCTmANriLf5kaaSXvgaW619gjEaufgU15YC
+         MNBrgy4Oeds47/CVwdaIq2WW63Fkq6Nro6e1TLiJwF7YKl0HXAJ9gKCe3ug6HOwj04EX
+         H5+by3SSx6gBrNG1cGdX2pfAoR2zycN0me+HAiQyLhQjci4TrlkB2aMrQlTtEfw2OLlp
+         RE6LyR5IbpYnfUy/ukPXKcdqair5HsMOS0ZoJXF3P4DixmQ8P5zs7ATiDDV+jXKZYV4L
+         vGzaEKGcLd+0VjI6UeSF/KM95MbyOKtr8TBvmA4yIaIc5U1FvHHVYOJ7V1Uxonuuxk7E
+         XZmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1789258438; x=1789863238;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=KLBe/OOwpVUGn9wvmYKnhyUUthdVTu/kHIljamopULo=;
+        b=BwXw1oxISlNIYIaGlCT4FXNLz4e50xvpP3SNaY4BA0Zn0u9RxaEIasmmpiRDnmXpFF
+         Vk4NPF7eG85rQN1wlW1RHPPkPi06QMwG+g1j32SK6e7VOzI7TDe52X6NEPXHQWKBnLnJ
+         QsguRhTc92sC3eu1rzNemIL1fQXuXO4pABtmfV9EjQSgpa1X1Vu1/09mX9brv851IviX
+         dqRtcemsyLVotDRfDowQgNUjXbTc5HpIZLouD3pnml8lcQdgnIQZU/L4MRSMMs1Eowbe
+         /u6T/3gOohnXy4qMsQhpWJcOvuvga/SYS1xK6N4Fo2Va1kWPVuefxA+G5Cfm7US7tW80
+         zomw==
+X-Forwarded-Encrypted: i=1; AKwUvBxkCFLGmSzZ19W4cSSH9paXVhfMAzE4GClORwnFAUk/FrPzWbBohpLvhoj/gcmDxRHxH0tlAynoIgbZ4jR0Lg==@lists.infradead.org
+X-Gm-Message-State: AFuF++k+uItRvXlu/I/eVmTU1dxGzAwnfdXOX8B1n/iA6iBmKvSI6jr5
+	YpyXEfMsLYcxCii6PcEAo7D3E0FkiXpNpaIZpIG3wQzisFl9UIF6nx8EKwbe8A==
+X-Gm-Gg: AYBFou2d+R4sTo4VB7HoRwEX6FxPsGy1zYYqUu4k24UYSJY4JYUhxz1o5oPGF+jAOCH
+	VO+pSvGpzNzNlmcvIo1OZWEAeXtqvS8mS6P5mwHtX38ZOvyx7hppIWb76VNAPs2y6+XQq+jp1oG
+	S81z8cO+PGfkZB0QLQi3Tj1ktCDRVW5t42cdNRMPg85t2BLTcPdGo7yA3O3Sx2YfAgs0X59W8uf
+	vM7lUCzJ4Ss+fgl/H4z2h2PKlwpMLY94qXas0l3WFynW2kuDXOGrJdDVsdrEVy6yTAWsL+VRSBZ
+	2koCz4PiTwRRgcDI4XPgwK91+tQlOzQN5jTTtfa6zppFOjXPoYH4Sn/Ndcq0hmvqpQVXekwyEit
+	b393bdlN6xsiS6kKi6xCjQJbPFrg1pI4BJRicfPDdYorcfZvu18g29/NOMNnB0zR0rqrlrUO7cp
+	/YvRaQa3/gAQZH+flxE4uj5SwKq6O53zLYmqLO49gJPngn9rGZ/NBtAjIsSc/LcfJ3ku3oQTf0P
+	N9HFOkZGyYyZXV4YUmhow9NsQxUERxNWvP+deVFAUzqNPG2KqNBAvEFhnttNHGz8SGd2PB2WXPX
+	gWQ=
+X-Received: by 2002:a5d:5d0b:0:b0:486:f768:395b with SMTP id ffacd0b85a97d-486f768400emr4396159f8f.0.1789258438177;
+        Sat, 12 Sep 2026 17:13:58 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8209007423DB663D3B2FEC.dsl.pool.telekom.hu. [2001:4c4e:1b82:900:7423:db66:3d3b:2fec])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-486eb34f1f7sm15970102f8f.24.2026.09.12.17.13.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 12 Sep 2026 17:13:57 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
 	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org
+	dri-devel@lists.freedesktop.org,
+	Igor Paunovic <royalnet026@gmail.com>
 Subject: Re: [PATCH v12 03/14] accel/rocket: wait for a running IRQ handler before resetting a core
-Date: Sun, 13 Sep 2026 10:48:44 +1200
-Message-ID: <20260912224844.1614558-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260912113717.6819-1-royalnet026@gmail.com>
-References: <20260912065053.1519165-1-gahing@gahingwoo.com> <20260912065053.1519165-4-gahing@gahingwoo.com> <20260912113717.6819-1-royalnet026@gmail.com>
+Date: Sun, 13 Sep 2026 02:13:27 +0200
+Message-ID: <20260913001327.47121-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260912224844.1614558-1-gahing@gahingwoo.com>
+References: <20260912065053.1519165-1-gahing@gahingwoo.com> <20260912065053.1519165-4-gahing@gahingwoo.com> <20260912113717.6819-1-royalnet026@gmail.com> <20260912224844.1614558-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260912_154855_039903_AE35DB68 
-X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-CacheID: sfid-20260912_171401_031702_CE6B9C4A 
+X-CRM114-Status: UNSURE (   5.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,66 +104,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Igor,
+Hi Jiaxing,
 
-Taken. The two paragraphs go.
+Thanks. Please write the date, so the text reads:
 
-3/14 loses the one beginning "Igor also ran a differential on RK3588"
-and the one beginning "His own bound on it is the right one". Your
-summary replaces them, as you wrote it:
+  45 induced resets on 19 August, 102 on 25 August and 74 on
+  12 September, every reset recovered, no MMU faults, no lockdep
+  report from rocket or the scheduler in the runs where lockdep was
+  still armed, and of the 420 inferences scored, 384 matched the CPU
+  reference within 1 on all 48 output channels while 36 returned the
+  all-0x80 buffer of a job the reset had cancelled. The protocol
+  bounds; it does not prove.
 
-  45 induced resets on 19 August, 102 on 25 August and 74 today,
-  every reset recovered, no MMU faults, no lockdep report from rocket
-  or the scheduler in the runs where lockdep was still armed, and of
-  the 420 inferences scored, 384 matched the CPU reference within 1
-  on all 48 output channels while 36 returned the all-0x80 buffer of
-  a job the reset had cancelled.
+Keep the caveat, as the last sentence above, so that "it" has its
+referent once the paragraph around it is gone.
 
-You list "bounds and does not prove" among what stands, so I keep that
-one sentence out of the removed text. Say if you would rather it went
-with the rest.
+The tags as you listed them. Nothing else from me for v13.
 
-Both Link: lines stay, with your message as a third.
-
-One thing in your text to settle before it goes in: "74 today" has no
-referent in a commit message. I would write the date, unless you would
-rather phrase it yourself.
-
-The tags:
-
-  2/14  # RK3588, three cores
-     -> # RK3588, three cores, induced reset, JOB_TIMEOUT_MS=2
-  3/14  # RK3588, three cores, induced reset, differential base,
-        JOB_TIMEOUT_MS=2
-     -> # RK3588, three cores, induced reset, JOB_TIMEOUT_MS=2
-  4/14  unchanged
-
-All three then read the same, which is your point.
-
-None of this touches what 3/14 rests on. The argument is the code
-path: the wait is on desc->wait_for_threads rather than on a lock, so
-it would have hung with no lockdep report. Your runs bounded that;
-they never established it.
-
-The 0x80 signature holds on RK3576 too, for the reason you name. A
-fresh shmem BO is zeroed and teflon's readback adds 0x80, so an output
-buffer nobody wrote comes back a uniform 128 and cannot be told from a
-computed constant at the tflite level. That trap already cost us one
-retraction of our own. Your kprobe run is the part neither of us had
-before: two cancellations, two 0x80 files, matched to 2 ms against a
-280 ms round period.
-
-The uAPI question is Tomeu's. What I can say from here is that the
-blind spot is not yours. PREP_BO cannot tell a cancelled job from one
-that ran, so your protocol, mine and the mesa one all read the same
-buffer, and none of us can close it from userspace.
-
-v13 with these changes, and nothing else to 2/14, 3/14 or 4/14.
-
-Thanks for going back through twenty runs of your own data. It would
-have stood unchallenged in the commit message.
-
-Jiaxing
+Regards,
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
