@@ -4,89 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6E52C88E56
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Sep 2026 00:14:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C497C88E56
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Sep 2026 06:17:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X1P7mPP0n3nKHTD/01QeS8HboVXHPozKXZSI1snmaZM=; b=S9ljbyjg4xOGQ2
-	9NYBuX15MO3RYKdnAnm1FG2seR3kXHW4GmDroeljuB2Ky1tTisdWUaAypBww4jRlI0vlrjb/oqDWL
-	AyKiEcg6V6VAuDkXxZwtuWx6jsk5RiEuQcisrBtLlcQDe/yZzSNEILPN3xPuvlVQlTYy5rcApANcX
-	FWe4zNxxf4qgtHbw/5DHE+xIij1Zm83KtJoB3P82FpfAInLGrqQw3EFt6TdOi1yQEdFK9gbmzJ5wL
-	0SyS4X9l69Nm4q8pKsvrRho2URSStwIyVo2lCgNmPjDaFWawikzO7mrAz5nddAnBi8/QPkZi6bCRl
-	Y/1/XtMl/pwRyR+OmnqA==;
+	List-Owner; bh=UBnK6UhVxev7MSFUkKX0KZ91T4NFO/BbIs5UH+BcA1Y=; b=WM1ly2ttnMB06J
+	d0/7glmLW/+GGEgOBduybjt949+joXP3C/AIXN/DI5tOAf7j1krlNQkIGrp3TTjM98u9uClR9rqWh
+	YkrPKHNzjxYW57vVKlJwc92Llr2EZevz1aOOvuoXiGDgTIR2UCujAGOK3EJqT7j6uye9STVaNkmEF
+	rmorWjy0cfqOx1mhj7dVgRBxluSU+uOUCTnoUKzj1hkcfDk3G8R+Xe/oMTwxW18nedm+DcMIC4Zdi
+	DohaoPuqeiaKFaNLJn8plBZHP+azc97mTpIO9tmXT1m67Cfd8rzcL0nIvqg2s4swx6+TRZlCT0x0q
+	IYDx9RZIaVXpmacTGgfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5Xr9-00000001HqB-3Qce;
-	Sun, 13 Sep 2026 00:14:03 +0000
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
+	id 1x5dWs-00000001SBT-3USt;
+	Sun, 13 Sep 2026 06:17:30 +0000
+Received: from mail-m128212.netease.com ([103.209.128.212])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5Xr6-00000001Hps-42JM
-	for linux-rockchip@lists.infradead.org;
-	Sun, 13 Sep 2026 00:14:02 +0000
-Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-484399babcaso121568f8f.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 12 Sep 2026 17:13:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789258438; x=1789863238; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=KLBe/OOwpVUGn9wvmYKnhyUUthdVTu/kHIljamopULo=;
-        b=FaXgigR880uVmzpccqxtXjiMq0uApdocCTmANriLf5kaaSXvgaW619gjEaufgU15YC
-         MNBrgy4Oeds47/CVwdaIq2WW63Fkq6Nro6e1TLiJwF7YKl0HXAJ9gKCe3ug6HOwj04EX
-         H5+by3SSx6gBrNG1cGdX2pfAoR2zycN0me+HAiQyLhQjci4TrlkB2aMrQlTtEfw2OLlp
-         RE6LyR5IbpYnfUy/ukPXKcdqair5HsMOS0ZoJXF3P4DixmQ8P5zs7ATiDDV+jXKZYV4L
-         vGzaEKGcLd+0VjI6UeSF/KM95MbyOKtr8TBvmA4yIaIc5U1FvHHVYOJ7V1Uxonuuxk7E
-         XZmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789258438; x=1789863238;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=KLBe/OOwpVUGn9wvmYKnhyUUthdVTu/kHIljamopULo=;
-        b=BwXw1oxISlNIYIaGlCT4FXNLz4e50xvpP3SNaY4BA0Zn0u9RxaEIasmmpiRDnmXpFF
-         Vk4NPF7eG85rQN1wlW1RHPPkPi06QMwG+g1j32SK6e7VOzI7TDe52X6NEPXHQWKBnLnJ
-         QsguRhTc92sC3eu1rzNemIL1fQXuXO4pABtmfV9EjQSgpa1X1Vu1/09mX9brv851IviX
-         dqRtcemsyLVotDRfDowQgNUjXbTc5HpIZLouD3pnml8lcQdgnIQZU/L4MRSMMs1Eowbe
-         /u6T/3gOohnXy4qMsQhpWJcOvuvga/SYS1xK6N4Fo2Va1kWPVuefxA+G5Cfm7US7tW80
-         zomw==
-X-Forwarded-Encrypted: i=1; AKwUvBxkCFLGmSzZ19W4cSSH9paXVhfMAzE4GClORwnFAUk/FrPzWbBohpLvhoj/gcmDxRHxH0tlAynoIgbZ4jR0Lg==@lists.infradead.org
-X-Gm-Message-State: AFuF++k+uItRvXlu/I/eVmTU1dxGzAwnfdXOX8B1n/iA6iBmKvSI6jr5
-	YpyXEfMsLYcxCii6PcEAo7D3E0FkiXpNpaIZpIG3wQzisFl9UIF6nx8EKwbe8A==
-X-Gm-Gg: AYBFou2d+R4sTo4VB7HoRwEX6FxPsGy1zYYqUu4k24UYSJY4JYUhxz1o5oPGF+jAOCH
-	VO+pSvGpzNzNlmcvIo1OZWEAeXtqvS8mS6P5mwHtX38ZOvyx7hppIWb76VNAPs2y6+XQq+jp1oG
-	S81z8cO+PGfkZB0QLQi3Tj1ktCDRVW5t42cdNRMPg85t2BLTcPdGo7yA3O3Sx2YfAgs0X59W8uf
-	vM7lUCzJ4Ss+fgl/H4z2h2PKlwpMLY94qXas0l3WFynW2kuDXOGrJdDVsdrEVy6yTAWsL+VRSBZ
-	2koCz4PiTwRRgcDI4XPgwK91+tQlOzQN5jTTtfa6zppFOjXPoYH4Sn/Ndcq0hmvqpQVXekwyEit
-	b393bdlN6xsiS6kKi6xCjQJbPFrg1pI4BJRicfPDdYorcfZvu18g29/NOMNnB0zR0rqrlrUO7cp
-	/YvRaQa3/gAQZH+flxE4uj5SwKq6O53zLYmqLO49gJPngn9rGZ/NBtAjIsSc/LcfJ3ku3oQTf0P
-	N9HFOkZGyYyZXV4YUmhow9NsQxUERxNWvP+deVFAUzqNPG2KqNBAvEFhnttNHGz8SGd2PB2WXPX
-	gWQ=
-X-Received: by 2002:a5d:5d0b:0:b0:486:f768:395b with SMTP id ffacd0b85a97d-486f768400emr4396159f8f.0.1789258438177;
-        Sat, 12 Sep 2026 17:13:58 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8209007423DB663D3B2FEC.dsl.pool.telekom.hu. [2001:4c4e:1b82:900:7423:db66:3d3b:2fec])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-486eb34f1f7sm15970102f8f.24.2026.09.12.17.13.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 12 Sep 2026 17:13:57 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	linux-rockchip@lists.infradead.org,
-	dri-devel@lists.freedesktop.org,
-	Igor Paunovic <royalnet026@gmail.com>
-Subject: Re: [PATCH v12 03/14] accel/rocket: wait for a running IRQ handler before resetting a core
-Date: Sun, 13 Sep 2026 02:13:27 +0200
-Message-ID: <20260913001327.47121-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260912224844.1614558-1-gahing@gahingwoo.com>
-References: <20260912065053.1519165-1-gahing@gahingwoo.com> <20260912065053.1519165-4-gahing@gahingwoo.com> <20260912113717.6819-1-royalnet026@gmail.com> <20260912224844.1614558-1-gahing@gahingwoo.com>
+	id 1x5dWm-00000001SAs-3V0Q;
+	Sun, 13 Sep 2026 06:17:28 +0000
+Received: from [127.0.0.1] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4d8d80e68;
+	Sun, 13 Sep 2026 14:17:08 +0800 (GMT+08:00)
+Message-ID: <5f5a3210-44e1-4d56-ab44-aea2fe3cabae@rock-chips.com>
+Date: Sun, 13 Sep 2026 14:17:00 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/3] drm/rockchip: dsi: Add maximum per lane bit rate
+ calculation
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Chaoyi Chen <kernel@airkyi.com>, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260812073002.328-1-kernel@airkyi.com>
+ <20260812073002.328-2-kernel@airkyi.com> <9674763.CDJkKcVGEf@phil>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <9674763.CDJkKcVGEf@phil>
+X-HM-Tid: 0aa09969941d03a7kunm769b3eaa96f912
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTEsfVhlCTUkZSh4dH05LGlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=GAJ5dMwy21VmCnJabb1L9TQt7b2IDU9Uq/uVBCd3W1ZJPdjMZOkOHgn5LiqAgg3GA0pHy4C3q4EUx4G7Hz1skBBdZLC9AW8rueILzdxDsEfhB5+YqQqTqewhPSW77CuWLWUJinCQ0Gmq7MLqHcATbjzdyKYT8nT+8AEEL8AngmA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=XE0FAIY1dIyIhNWdzfvXZWvPYm623Zb2EGWRdg2QQio=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260912_171401_031702_CE6B9C4A 
-X-CRM114-Status: UNSURE (   5.42  )
+X-CRM114-CacheID: sfid-20260912_231726_297337_B87AEA88 
+X-CRM114-Status: UNSURE (   9.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,32 +73,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jiaxing,
-
-Thanks. Please write the date, so the text reads:
-
-  45 induced resets on 19 August, 102 on 25 August and 74 on
-  12 September, every reset recovered, no MMU faults, no lockdep
-  report from rocket or the scheduler in the runs where lockdep was
-  still armed, and of the 420 inferences scored, 384 matched the CPU
-  reference within 1 on all 48 output channels while 36 returned the
-  all-0x80 buffer of a job the reset had cancelled. The protocol
-  bounds; it does not prove.
-
-Keep the caveat, as the last sentence above, so that "it" has its
-referent once the paragraph around it is gone.
-
-The tags as you listed them. Nothing else from me for v13.
-
-Regards,
-Igor
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSGVpa28sCgpPbiA5LzEyLzIwMjYgODozMiBQTSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4g
+QW0gTWl0dHdvY2gsIDEyLiBBdWd1c3QgMjAyNiwgMDk6MzA6MDAgTWl0dGVsZXVyb3DDpGlzY2hl
+IFNvbW1lcnplaXQgc2NocmllYiBDaGFveWkgQ2hlbjoKPj4gRnJvbTogQ2hhb3lpIENoZW4gPGNo
+YW95aS5jaGVuQHJvY2stY2hpcHMuY29tPgo+Pgo+PiBEaWZmZXJlbnQgY2hpcHMgaGF2ZSB2YXJ5
+aW5nIHN1cHBvcnQgZm9yIHRoZSBtYXhpbXVtIGJpdCByYXRlIHBlciBsYW5lLgo+Pgo+PiBBZGQg
+Y2FsY3VsYXRpb24gZm9yIHRoZSBtYXhpbXVtIHBlciBsYW5lIGJpdCByYXRlIGZvciB2YXJpb3Vz
+IGNoaXAKPj4gcGxhdGZvcm1zLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBDaGFveWkgQ2hlbiA8Y2hh
+b3lpLmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gCj4gWy4uLl0KPiAKPj4gQEAgLTU3Myw2ICs1NzQs
+NyBAQCBkd19taXBpX2RzaV9nZXRfbGFuZV9tYnBzKHZvaWQgKnByaXZfZGF0YSwgY29uc3Qgc3Ry
+dWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUsCj4+ICAJdW5zaWduZWQgbG9uZyBfZmJkaXYsIGJl
+c3RfZmJkaXY7Cj4+ICAJdW5zaWduZWQgbG9uZyBtaW5fZGVsdGEgPSBVTE9OR19NQVg7Cj4+ICAK
+Pj4gKwltYXhfbWJwcyA9IGRzaS0+Y2RhdGEtPm1heF9iaXRfcmF0ZV9wZXJfbGFuZSAvIFVTRUNf
+UEVSX1NFQzsKPiAKPiBBcyB0aGUgdmFsdWUgaXMgY2FsbGVkIG1heF9iaXRfcmF0ZV9wZXJfbGFu
+ZSwgSSBndWVzcyBTYXNoaWtvCj4gaXMgY29ycmVjdCBpbiB0aGF0IHRoZSBtYXhfbWJwcyBjaGVj
+ayBzaG91bGQgdXNlICI8PSIgPwo+IAoKVGhhbmtzIGZvciBwb2ludGluZyB0aGlzIG91dC4gSSds
+bCBmaXggaXQgaW4gdjUuCgo+IAo+IEhlaWtvCgotLSAKQmVzdCwgCkNoYW95aQoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
