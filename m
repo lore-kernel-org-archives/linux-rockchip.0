@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86C98C88E5C
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Sep 2026 19:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2DD3C88E63
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Sep 2026 19:00:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6wrkLi8CX8XV0fdoEvIy+nz9GF0sfOPoauX6I0mby/U=; b=RGFZFmblC19rp6
-	ZDUUroM4ZwoUZmpYv3csxmbUxQV3jMjRRFIUfUiHP7PLHRK2Z0IyI/qbbJxeuBeeMcf7FoCHlk/PR
-	7pTgOcrtJWOLwndQFmKxA8YYMLf645pk+P0LLJA71eThOU4ZMhuAbjcP0T4rvgdsmM3IDfaBTl7EH
-	fxzM5X0T9hpHoDNSL2f0/NPAsHT5g5ANSnomkR6r6V+5IK2m6dV0NnfvVcrs0Wq0mZArlGyYHolMX
-	QuL43hOg89AH6s4o6Ho7Bq4/hwSOf/jskGpcz14ZpCQSAADDV279QvAzkiJMwya2bWI3NVGfS2csS
-	Pjszm1yfsJK2EVmjlvVA==;
+	List-Owner; bh=7rUo4CNBIbnAXwafP5CXQkQxUwciIkTn80BCb3gTIDI=; b=k0NBlW2BXoigFJ
+	PklSmLwTEOJK9zSFspm0OarTPisWSzRiaWgo6x5RKie1kokqeytbbH8AZWNN1F83H0Nw4VlaF40aB
+	AcFpJfcgryQXj1HuOKHLZpUIfijE7gJRY5vUsw6EdzdSUUwruW4MC/Ys8JQEpuwTwdm205LDXTXtG
+	W7IvwCOv8jYO3RJMon4jsdH29YpWNANBAfRC9MsUo5ysFOQyUpyYzB7Hv7O2FjfdeWj1wr17Rv4qo
+	L/61Ab6nfjP0seQ1Ar+Co93vahWfVvr/PbYCbyiA2tke0VmdrbzgR9O9e6+XFRn0B6EzGBNAXvOG2
+	7afmt5M57UmYxKW2NZjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5pRN-00000001xJD-0V5n;
-	Sun, 13 Sep 2026 19:00:37 +0000
-Received: from mail-pj2-x08.google.com ([2607:f8b0:4864:39::8])
+	id 1x5pRY-00000001xX3-3trY;
+	Sun, 13 Sep 2026 19:00:48 +0000
+Received: from mail-pj2-x07.google.com ([2607:f8b0:4864:39::7])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5pRK-00000001xGQ-0A2p
+	id 1x5pRU-00000001xSg-3BWk
 	for linux-rockchip@lists.infradead.org;
-	Sun, 13 Sep 2026 19:00:35 +0000
-Received: by mail-pj2-x08.google.com with SMTP id d9443c01a7336-2db33361b2fso18528105ad.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 13 Sep 2026 12:00:33 -0700 (PDT)
+	Sun, 13 Sep 2026 19:00:46 +0000
+Received: by mail-pj2-x07.google.com with SMTP id d9443c01a7336-2d903e972efso12004975ad.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 13 Sep 2026 12:00:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789326033; x=1789930833; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789326044; x=1789930844; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=NB3JxtKcgkk3OGR3H9wZrN9ovALIkubofDJS6nyEOU4=;
-        b=ruOyd3qM9Xr98YxV1mNBYdlPUtfudKsw0CpvTluyOJ2RqJduhZ9V7oIsdXQ41cQdb+
-         Lds+s406vykqvGrPRFltBB1AnNHPEh9Ntv8B/2xymzJ44nTG2+ANQt2INOQ3YC4RHDmS
-         PTr/RoNnTGjHlXJbG0EJnL0GInmJY3sXheen9oZNvo9+Ckmny5NJSRFdizdEb77G5n2J
-         6x6O+9n3JS/Z+9sslHGML/1VersPm6vwC6xfN629ZGvakXZzD/+WT3+EcZwbSVm/bLPm
-         Ks3atGPyjCgdjmJfyILx5ZhkXSPSNEC/5AW0N2JBt8g7mjeEQBQ0SfaRDI2jtl76lYy5
-         TuDg==
+        bh=SrT98SBVOz+ucEQZFLtix+LVYHArGMvjT+NSjdeahmU=;
+        b=euEg+kUAGVGcyAgP1UsC5wFGFF5dkjo+SgwcsavatFjlrQwmz/lMFZ5icdtu+8Rera
+         QyiJ0+olW2HqiY5+mV41akQItGNXT7B+N2LCk/oHtKOsxnRLLhBcQ4mUeiM531HJVawA
+         oTqKRAph9AksTT68/s0+cf5Xx0K24nNtmjDRKrkbgKs7LPSiw/5Tm1kVsg2C80sVJBlN
+         T6JmQxi6UdP4K7k1elGDq1XZzQgs7Ur8ACMLzWHnsW1SyQ/w+bp+zZ/ViB/U2ZNem3tx
+         P7By9N7QxuMAmC5y537QQV6zYIZi/QayHB4/YrlC3heBnZ9ulMAo9hiUpwehGQkDBhDe
+         ulTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789326033; x=1789930833;
+        d=1e100.net; s=20251104; t=1789326044; x=1789930844;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=NB3JxtKcgkk3OGR3H9wZrN9ovALIkubofDJS6nyEOU4=;
-        b=kHik4B/JcrZB7zerIgozrv17nSvzw8YviWkx6sBWtNwcy5wm6nkOwo8OIFVJWBKJk0
-         KSY1AcAUBf7YfXxyDVOc0r9N8ZIEbrW6+USJg2fmnGl2QakuZufzRH2sjLWLhiZ6BP1V
-         HZ84ehTm3fiGvYEz8cJwsl8CmS8SQb+QjrI0dPtDbRlejlsOg/4MMVIqU3ucg9+JSnIz
-         1FJdVcipHhFm4ICPLGNsuw2CrVEecFpGLrU10mA7RCB/9ZOiirja93Fbw3CCtEqRghA+
-         D5ZYIHUFF5w1w8rjzeG6oP/2STzxS3GmYpEwTRtNZnxyZOPGSzbgbv428g1K7BtLlBqi
-         x5Gg==
-X-Forwarded-Encrypted: i=1; AKwUvByFiG12wgFoLKvUl+BjxYoSl81Hncnqk9QGEW2OuKhml1GUj9bpCGQ3YTltOKY1+UyRNgXrMJNMeXZ+aeaTHA==@lists.infradead.org
-X-Gm-Message-State: AFuF++lsySNIvKewphZRGJSaO/SJOUOrDB21O4UIl+sdGu4c+Sj9zJde
-	p5PdB62vvrerfX10uNrqpYP7HlWLR31qqP0a/Wc/tmSGY1DWk8Sy7s8v
-X-Gm-Gg: AYBFou0YU/YM42ybYLMAKOOv59HLHuz+seV1fEFYB+S7IDFI384wU6UfYEM4SyobHnM
-	3HgtDbVrLemYrFU+YHxnqjXUexG4P8OEDyw2fXCT8vP72qMiokA7q4A3B39+BGUEwIdY0MMyBWM
-	4+EZGA9pcq27wdmq6vfwSHjdiwC7xnGmv4U8pq9eOHG46YoLD/+la3mDXyBEQ/GIbyLZDY8l8aA
-	OF8rDkqk9mKHeg8apJcGKFY2WEHMKExNKxh3P+esOhYoOONE1QF2IsrUBjnT9bxGej2agnR/EbP
-	B9c02u8byzXgQ3akaKXUYkzZOkBh82N0TOzy/AwDdYKIZq8H5MgbaYqzBJzuY9vLS9nVatQ5LtH
-	O6bCbhZJm39TM3Z/zRLBarS4y/y8RV/xqvNWEJZsSWtcmh7qLgrdb+of+gS1FELySchOggKUKRm
-	vdacRoJPEAH+RkG/Jhc5J3GI8X6Nhd3Vt9M6ZsTjl3RbARNTSkkkFMRBa5QbrOUCXNHaEaNg==
-X-Received: by 2002:a17:902:f60d:b0:2db:5c0a:f184 with SMTP id d9443c01a7336-2dd2a34fd91mr276627985ad.17.1789326032455;
-        Sun, 13 Sep 2026 12:00:32 -0700 (PDT)
+        bh=SrT98SBVOz+ucEQZFLtix+LVYHArGMvjT+NSjdeahmU=;
+        b=EYbncqywQHLraZEA5nUEzI1fljMkYk5M/tGQZA5PC/+75ig3h3tOHjK3lp+2rBNf6J
+         62GZz6OIz3G0Jyh6A+5Gyh9A5+VHH8HYOdawJHNpiBqg20ODgpV2CE21qi796KP4J2G3
+         OShekRBLb8Ij+NW0k5xuRwmo4kzw4Bhqf1VyRRarkp6r5T3ez886upnZv2HORqmtWCfh
+         6p0hbh/kfB5hHd9eKM4gqZRB3ew0p7caksoYVt4rUdwjeY2ndvCjC/HbLEK1j45MA+9p
+         znrR7ot5X84PnzwaZLiYJHCXUmNmNOfKKDkg7nVN2/qc9qZk2+fRBsWuy3LveZUcrgzW
+         UADA==
+X-Forwarded-Encrypted: i=1; AKwUvBy3g2u+ZBkhv+aCmhQa9xYCqIg7rnEIKejxZ2k/n/UZey9u3BdwJlntfCiQhHQbh6cg3sWpz69AQoV7Cbn6QQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++ntKZuooIOUTnkWNOwJTOaHuhdOWvBVsKU5bjtIPKTyt4FHop3N
+	1B2NqtHjUGF9t3PDnxNZ2tFD92VUP/JBqCj8qjH/Sq+z7oHKuiKalrU8
+X-Gm-Gg: AYBFou0w3OotWO2vzY97JGFbVSMVW0K8p2P7/fxANk79Xq/VX8i531Qql4r8+fawd3O
+	01/jREz/m4FjAp1IjAbajwfyHgY7/0uQtTib/SYBL87wIbOwMaqM8tStNoPtL+9SaFlkPnDpPbE
+	BPCZuRR8OkAaTZvVwxTcJ8ILidN8azlXaxtUiRHwikhaEy8V1frZ5G2phOdZ/ouqtStpf4D7oyJ
+	TDkoaoNpZIvDA9c/03nj10Y+9o7++IW61H0IOMuyCx1jVMB4s1AGhKudplGeyycLe5DkNcV9vjH
+	uqyMwO5Hw4qHeprE0BR2AW6yIRkUdaZ/kztgoAJEts1NSjcmkyEbrvYF89Zwvx/bMUdG/fpgQNO
+	3u5OydUzvdEyxOBn5KVYMu5ObcDKY3zyP4Cgc667dwe7AF4H7LGOfC4ZjrP4BaGkpU3goMDbRFy
+	6RyzOZrZS+zr5oVYw9aWJcQrmQPrnhdJoKjCTZr/hFC60Q3KNCLbRji+z+3Nc5EiBo4ILnpf7ZZ
+	8k1ibfQ
+X-Received: by 2002:a17:902:ce0c:b0:2db:479a:5127 with SMTP id d9443c01a7336-2dd4bd95335mr146054605ad.19.1789326043951;
+        Sun, 13 Sep 2026 12:00:43 -0700 (PDT)
 Received: from server.lan ([168.138.199.194])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2dd2cca6b7bsm36808655ad.3.2026.09.13.12.00.23
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2dd2cca6b7bsm36808655ad.3.2026.09.13.12.00.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Sep 2026 12:00:31 -0700 (PDT)
+        Sun, 13 Sep 2026 12:00:41 -0700 (PDT)
 From: Coia Prant <coiaprant@gmail.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S . Miller" <davem@davemloft.net>,
@@ -98,18 +99,17 @@ Cc: Neil Armstrong <neil.armstrong@linaro.org>,
 	linux-kernel@vger.kernel.org,
 	linux-phy@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com,
-	linux-renesas-soc@vger.kernel.org,
-	Jiawen Wu <jiawenwu@trustnetic.com>
-Subject: [PATCH net-next v5 06/11] net: pcs: xpcs: add ANRESTART support for SGMII link recovery
-Date: Mon, 14 Sep 2026 02:58:41 +0800
-Message-ID: <20260913185849.907479-7-coiaprant@gmail.com>
+	linux-renesas-soc@vger.kernel.org
+Subject: [PATCH net-next v5 07/11] net: pcs: xpcs: add Rockchip RK3568 platform glue driver
+Date: Mon, 14 Sep 2026 02:58:42 +0800
+Message-ID: <20260913185849.907479-8-coiaprant@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260913185849.907479-1-coiaprant@gmail.com>
 References: <20260913185849.907479-1-coiaprant@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260913_120034_084959_6D7D386A 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20260913_120044_846352_E80D2784 
+X-CRM114-Status: GOOD (  28.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,103 +126,671 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On some hardware using the DesignWare XPCS IP (e.g., RK3568 MAC side
-SGMII), the PCS does not automatically restart auto-negotiation when the
-link goes down and comes back up. Without an explicit ANRESTART, the link
-stays down forever.
+The RK3568 SoC integrates a Synopsys DesignWare XPCS that is accessed
+via APB3 memory-mapped registers.
+This driver provides the glue logic to make the XPCS accessible to
+the generic pcs-xpcs core.
 
-Add BMCR_ANRESTART in two places:
-1. In xpcs_config_aneg_c37_sgmii(), when starting AN, set ANRESTART
-   alongside ANENABLE to initiate a fresh negotiation.
-2. In xpcs_get_state_c37_sgmii(), when link is down and AN completion is
-   detected, clear the interrupt and trigger ANRESTART to restart the
-   negotiation process. Propagate the return value of the restart so
-   errors are not silently ignored.
+The XPCS block contains four MII ports (0..3), each of which can be
+routed to GMAC0 or GMAC1 via the pcs-handle property in the MAC node.
+The hardware maps these ports to different MMDs:
+  - port 0: MMD 7 (ROCKCHIP_MMD_MII)
+  - port 1: MMD 2 (ROCKCHIP_MMD_MII1)
+  - port 2: MMD 3 (ROCKCHIP_MMD_MII2)
+  - port 3: MMD 4 (ROCKCHIP_MMD_MII3)
 
-Update the comment in xpcs_config_aneg_c37_sgmii() to note that although
-the DesignWare databook says AN restart is not needed for MAC side SGMII,
-some implementations (e.g. Rockchip RK3568) require it to recover the
-link after a disconnect.
+This driver creates a virtual MDIO bus that translates MDIO operations
+to APB3 register accesses, with proper address remapping for each port.
+The generic xpcs driver then creates a phylink_pcs instance on top of
+this bus, allowing the MAC to use the PCS via the standard phylink API.
 
-This is not a fix for an existing mainline platform: the affected
-platform (RK3568 XPCS) is introduced later in the same series.
-
-Tested-by: Jiawen Wu <jiawenwu@trustnetic.com>
-Tested-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Link: https://dl.radxa.com/rock3/docs/hw/datasheet/Rockchip%20RK3568%20TRM%20Part2%20V1.1-20210301.pdf (Page 2078)
 Signed-off-by: Coia Prant <coiaprant@gmail.com>
 ---
- drivers/net/pcs/pcs-xpcs.c | 35 +++++++++++++++++++++++++++++------
- 1 file changed, 29 insertions(+), 6 deletions(-)
+ drivers/net/pcs/Kconfig         |  25 ++
+ drivers/net/pcs/Makefile        |   5 +-
+ drivers/net/pcs/pcs-xpcs-rk.c   | 559 ++++++++++++++++++++++++++++++++
+ include/linux/pcs/pcs-xpcs-rk.h |  11 +
+ 4 files changed, 598 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/net/pcs/pcs-xpcs-rk.c
+ create mode 100644 include/linux/pcs/pcs-xpcs-rk.h
 
-diff --git a/drivers/net/pcs/pcs-xpcs.c b/drivers/net/pcs/pcs-xpcs.c
-index 0337e2bcc0125..8c3875b6985b9 100644
---- a/drivers/net/pcs/pcs-xpcs.c
-+++ b/drivers/net/pcs/pcs-xpcs.c
-@@ -761,7 +761,9 @@ static int xpcs_config_aneg_c37_sgmii(struct dw_xpcs *xpcs,
- 	 *    DW xPCS used with DW EQoS MAC is always MAC side SGMII.
- 	 * 4) VR_MII_DIG_CTRL1 Bit(9) [MAC_AUTO_SW] = 1b (Automatic
- 	 *    speed/duplex mode change by HW after SGMII AN complete)
--	 * 5) VR_MII_MMD_CTRL Bit(12) [AN_ENABLE] = 1b (Enable SGMII AN)
-+	 * 5) VR_MII_AN_INTR_STS = 0x0 (Clear CL37 AN complete status)
-+	 * 6) VR_MII_MMD_CTRL Bit(12) [AN_ENABLE] = 1b (Enable SGMII AN)
-+	 *    VR_MII_MMD_CTRL Bit(9) [AN_RESTART] = 1b (Restart SGMII AN)
- 	 *
- 	 * Note that VR_MII_MMD_CTRL is MII_BMCR.
- 	 *
-@@ -769,7 +771,14 @@ static int xpcs_config_aneg_c37_sgmii(struct dw_xpcs *xpcs,
- 	 *	 SR_MII_AN_ADV. MAC side SGMII receives AN Tx Config from
- 	 *	 PHY about the link state change after C28 AN is completed
- 	 *	 between PHY and Link Partner. There is also no need to
--	 *	 trigger AN restart for MAC-side SGMII.
-+	 *	 trigger AN restart for MAC-side SGMII on most devices.
-+	 *
-+	 * Note: While the DesignWare databook states that AN restart is
-+	 *	 not needed for MAC side SGMII, some implementations (e.g.
-+	 *	 Rockchip RK3568) exhibit a timing quirk when integrated with
-+	 *	 phylink and do not restart AN automatically when the link
-+	 *	 comes back up. An explicit AN restart is required on those
-+	 *	 parts to recover the link after a disconnect.
- 	 */
- 	mdio_ctrl = xpcs_read(xpcs, MDIO_MMD_VEND2, MII_BMCR);
- 	if (mdio_ctrl < 0)
-@@ -816,9 +825,14 @@ static int xpcs_config_aneg_c37_sgmii(struct dw_xpcs *xpcs,
- 	if (ret < 0)
- 		return ret;
+diff --git a/drivers/net/pcs/Kconfig b/drivers/net/pcs/Kconfig
+index e417fd66f660a..080538f193d59 100644
+--- a/drivers/net/pcs/Kconfig
++++ b/drivers/net/pcs/Kconfig
+@@ -12,6 +12,31 @@ config PCS_XPCS
+ 	  This module provides a driver and helper functions for Synopsys
+ 	  DesignWare XPCS controllers.
  
-+	/* Clear CL37 AN complete status */
-+	ret = xpcs_write(xpcs, MDIO_MMD_VEND2, DW_VR_MII_AN_INTR_STS, 0);
-+	if (ret < 0)
++if PCS_XPCS
++
++config PCS_XPCS_PLATFORM
++	tristate "Generic XPCS controller support"
++	default PCS_XPCS
++	help
++	  Generic DWXPCS driver for platforms that don't require any
++	  platform specific code to function or is using platform
++	  data for setup.
++
++	  If you have a controller with this interface, say Y or M here.
++
++config PCS_XPCS_ROCKCHIP
++	tristate "Rockchip XPCS controller support"
++	default ARCH_ROCKCHIP
++	depends on OF && (ARCH_ROCKCHIP || COMPILE_TEST)
++	depends on GENERIC_PHY || COMPILE_TEST
++	depends on PM_GENERIC_DOMAINS || COMPILE_TEST
++	help
++	  Support for XPCS controller on Rockchip RK356x SoC.
++
++	  If you have a Rockchip SoC with this interface, say Y or M here.
++
++endif # PCS_XPCS
++
+ config PCS_LYNX
+ 	tristate
+ 	help
+diff --git a/drivers/net/pcs/Makefile b/drivers/net/pcs/Makefile
+index 4f7920618b900..f9f6cf2578d72 100644
+--- a/drivers/net/pcs/Makefile
++++ b/drivers/net/pcs/Makefile
+@@ -1,10 +1,11 @@
+ # SPDX-License-Identifier: GPL-2.0
+ # Makefile for Linux PCS drivers
+ 
+-pcs_xpcs-$(CONFIG_PCS_XPCS)	:= pcs-xpcs.o pcs-xpcs-plat.o \
+-				   pcs-xpcs-nxp.o pcs-xpcs-wx.o
++pcs_xpcs-$(CONFIG_PCS_XPCS)	:= pcs-xpcs.o pcs-xpcs-nxp.o pcs-xpcs-wx.o
+ 
+ obj-$(CONFIG_PCS_XPCS)		+= pcs_xpcs.o
++obj-$(CONFIG_PCS_XPCS_PLATFORM) += pcs-xpcs-plat.o
++obj-$(CONFIG_PCS_XPCS_ROCKCHIP) += pcs-xpcs-rk.o
+ obj-$(CONFIG_PCS_LYNX)		+= pcs-lynx.o
+ obj-$(CONFIG_PCS_MTK_LYNXI)	+= pcs-mtk-lynxi.o
+ obj-$(CONFIG_PCS_RZN1_MIIC)	+= pcs-rzn1-miic.o
+diff --git a/drivers/net/pcs/pcs-xpcs-rk.c b/drivers/net/pcs/pcs-xpcs-rk.c
+new file mode 100644
+index 0000000000000..7fd1408c044cc
+--- /dev/null
++++ b/drivers/net/pcs/pcs-xpcs-rk.c
+@@ -0,0 +1,559 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Rockchip XPCS platform device driver
++ *
++ * Based on the Synopsys DesignWare XPCS platform driver.
++ * Copyright (C) 2024 Serge Semin
++ *
++ * Adapted for Rockchip SoCs, with reference to the Rockchip OEM driver.
++ * Copyright (C) 2026 Coia Prant
++ */
++
++#include <linux/atomic.h>
++#include <linux/bitfield.h>
++#include <linux/clk.h>
++#include <linux/device.h>
++#include <linux/io.h>
++#include <linux/iopoll.h>
++#include <linux/math.h>
++#include <linux/mdio.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/of_platform.h>
++#include <linux/pcs/pcs-xpcs-rk.h>
++#include <linux/phy.h>
++#include <linux/phy/phy.h>
++#include <linux/platform_device.h>
++#include <linux/pm_domain.h>
++#include <linux/pm_runtime.h>
++#include <linux/property.h>
++#include <linux/sizes.h>
++
++#include "pcs-xpcs.h"
++
++struct dw_xpcs_rk {
++	struct platform_device *pdev;
++	struct mii_bus *bus;
++	void __iomem *reg_base;
++	struct phy *serdes_phy;
++	struct clk *csr_clk;
++	struct clk *eee_clk;
++	u8 eee_mult_fact;
++};
++
++static ptrdiff_t xpcs_rk_addr_format(int dev, int reg)
++{
++	return FIELD_PREP(0x70000, dev) | FIELD_PREP(0xffff, reg);
++}
++
++static int xpcs_rk_read_reg(struct dw_xpcs_rk *pxpcs, int dev, int reg)
++{
++	ptrdiff_t csr;
++	int ret;
++
++	csr = xpcs_rk_addr_format(dev, reg);
++
++	ret = pm_runtime_resume_and_get(&pxpcs->pdev->dev);
++	if (ret)
 +		return ret;
 +
- 	if (neg_mode == PHYLINK_PCS_NEG_INBAND_ENABLED)
- 		ret = xpcs_write(xpcs, MDIO_MMD_VEND2, MII_BMCR,
--				 mdio_ctrl | BMCR_ANENABLE);
-+				 mdio_ctrl | BMCR_ANENABLE | BMCR_ANRESTART);
- 
- 	return ret;
- }
-@@ -1093,9 +1107,18 @@ static int xpcs_get_state_c37_sgmii(struct dw_xpcs *xpcs,
- 		return 0;
- 	}
- 
--	/* Clear AN complete status or interrupt */
--	if (state->an_complete)
--		xpcs_write(xpcs, MDIO_MMD_VEND2, DW_VR_MII_AN_INTR_STS, 0);
-+	if (state->an_complete) {
-+		/* Clear AN complete status or interrupt */
-+		ret = xpcs_write(xpcs, MDIO_MMD_VEND2, DW_VR_MII_AN_INTR_STS, 0);
-+		if (ret < 0)
-+			return ret;
++	ret = readl(pxpcs->reg_base + (csr << 2)) & 0xffff;
 +
-+		/* Initiate the next round of AN */
-+		ret = xpcs_modify(xpcs, MDIO_MMD_VEND2, MII_BMCR, BMCR_ANRESTART,
-+				  BMCR_ANRESTART);
-+		if (ret < 0)
-+			return ret;
++	pm_runtime_put(&pxpcs->pdev->dev);
++	return ret;
++}
++
++static int xpcs_rk_write_reg(struct dw_xpcs_rk *pxpcs, int dev, int reg, u16 val)
++{
++	ptrdiff_t csr;
++	int ret;
++
++	csr = xpcs_rk_addr_format(dev, reg);
++
++	ret = pm_runtime_resume_and_get(&pxpcs->pdev->dev);
++	if (ret)
++		return ret;
++
++	writel(val, pxpcs->reg_base + (csr << 2));
++
++	pm_runtime_put(&pxpcs->pdev->dev);
++	return 0;
++}
++
++#define ROCKCHIP_MMD_MII1	2
++#define ROCKCHIP_MMD_MII2	3
++#define ROCKCHIP_MMD_MII3	4
++#define ROCKCHIP_MMD_PMAPMD	6
++#define ROCKCHIP_MMD_MII	7
++
++static bool xpcs_rk_mdio_addr_validate(int addr)
++{
++	return !(addr < 0 || addr > 3);
++}
++
++static int xpcs_rk_mdio_read_remapping(int addr, int dev, int reg)
++{
++	switch (dev) {
++	case MDIO_MMD_PMAPMD:
++		return ROCKCHIP_MMD_PMAPMD;
++	case MDIO_MMD_VEND2:
++		break;
++	default:
++		return -ENXIO;
 +	}
- 
- 	return 0;
- }
++
++	/* read remapping to MII is performed by HW */
++	switch (addr) {
++	case 0:
++		return ROCKCHIP_MMD_MII;
++	case 1:
++		return ROCKCHIP_MMD_MII1;
++	case 2:
++		return ROCKCHIP_MMD_MII2;
++	case 3:
++		return ROCKCHIP_MMD_MII3;
++	default:
++		return -ENODEV;
++	}
++}
++
++static int xpcs_rk_mdio_write_remapping(int addr, int dev, int reg)
++{
++	switch (dev) {
++	case MDIO_MMD_PMAPMD:
++		return ROCKCHIP_MMD_PMAPMD;
++	case MDIO_MMD_VEND2:
++		break;
++	default:
++		return -ENXIO;
++	}
++
++	/* Writable only on MII */
++	switch (reg) {
++	case DW_VR_MII_AN_CTRL:
++	case DW_VR_MII_AN_INTR_STS:
++	case DW_VR_MII_EEE_MCTRL0:
++	case DW_VR_MII_EEE_MCTRL1:
++	case DW_VR_MII_DIG_CTRL2:
++		return ROCKCHIP_MMD_MII;
++	default:
++		break;
++	}
++
++	switch (addr) {
++	case 0:
++		return ROCKCHIP_MMD_MII;
++	case 1:
++		return ROCKCHIP_MMD_MII1;
++	case 2:
++		return ROCKCHIP_MMD_MII2;
++	case 3:
++		return ROCKCHIP_MMD_MII3;
++	default:
++		return -ENODEV;
++	}
++}
++
++static int xpcs_rk_read_c22(struct mii_bus *bus, int addr, int reg)
++{
++	struct dw_xpcs_rk *pxpcs = bus->priv;
++	int dev;
++
++	if (!xpcs_rk_mdio_addr_validate(addr))
++		return -ENODEV;
++
++	dev = xpcs_rk_mdio_read_remapping(addr, MDIO_MMD_VEND2, reg);
++	if (dev < 0)
++		return 0xffff;
++
++	return xpcs_rk_read_reg(pxpcs, dev, reg);
++}
++
++static int xpcs_rk_write_c22(struct mii_bus *bus, int addr, int reg, u16 val)
++{
++	struct dw_xpcs_rk *pxpcs = bus->priv;
++	int dev;
++
++	if (!xpcs_rk_mdio_addr_validate(addr))
++		return -ENODEV;
++
++	dev = xpcs_rk_mdio_write_remapping(addr, MDIO_MMD_VEND2, reg);
++	if (dev < 0)
++		return 0;
++
++	return xpcs_rk_write_reg(pxpcs, dev, reg, val);
++}
++
++static int xpcs_rk_read_c45(struct mii_bus *bus, int addr, int dev, int reg)
++{
++	struct dw_xpcs_rk *pxpcs = bus->priv;
++
++	if (!xpcs_rk_mdio_addr_validate(addr))
++		return -ENODEV;
++
++	dev = xpcs_rk_mdio_read_remapping(addr, dev, reg);
++	if (dev < 0)
++		return 0xffff;
++
++	return xpcs_rk_read_reg(pxpcs, dev, reg);
++}
++
++static int xpcs_rk_write_c45(struct mii_bus *bus, int addr, int dev, int reg, u16 val)
++{
++	struct dw_xpcs_rk *pxpcs = bus->priv;
++
++	if (!xpcs_rk_mdio_addr_validate(addr))
++		return -ENODEV;
++
++	dev = xpcs_rk_mdio_write_remapping(addr, dev, reg);
++	if (dev < 0)
++		return 0;
++
++	return xpcs_rk_write_reg(pxpcs, dev, reg, val);
++}
++
++static struct dw_xpcs_rk *xpcs_rk_create_data(struct platform_device *pdev)
++{
++	struct dw_xpcs_rk *pxpcs;
++
++	pxpcs = devm_kzalloc(&pdev->dev, sizeof(*pxpcs), GFP_KERNEL);
++	if (!pxpcs)
++		return ERR_PTR(-ENOMEM);
++
++	pxpcs->pdev = pdev;
++
++	dev_set_drvdata(&pdev->dev, pxpcs);
++
++	return pxpcs;
++}
++
++static int xpcs_rk_serdes_phy_init(struct dw_xpcs_rk *pxpcs)
++{
++	struct device *dev = &pxpcs->pdev->dev;
++
++	pxpcs->serdes_phy = devm_phy_get(dev, "serdes");
++	if (IS_ERR(pxpcs->serdes_phy))
++		return dev_err_probe(dev, PTR_ERR(pxpcs->serdes_phy),
++					"Failed to get SerDes PHY\n");
++
++	return 0;
++}
++
++static void xpcs_rk_serdes_phy_poweroff(void *data)
++{
++	struct dw_xpcs_rk *pxpcs = data;
++	struct device *dev = &pxpcs->pdev->dev;
++
++	phy_power_off(pxpcs->serdes_phy);
++	phy_exit(pxpcs->serdes_phy);
++
++	dev_pm_genpd_rpm_always_on(dev, false);
++}
++
++static int xpcs_rk_serdes_phy_poweron(struct dw_xpcs_rk *pxpcs)
++{
++	struct device *dev = &pxpcs->pdev->dev;
++	int ret;
++
++	/*
++	 * The power domain is required and must be enabled, which allows us to
++	 * dynamically turn the CSR clock on/off using PM while keeping the PCS
++	 * powered on.
++	 */
++	ret = dev_pm_genpd_rpm_always_on(dev, true);
++	if (ret) {
++		dev_err(dev, "Failed to power on power-domains\n");
++		return ret;
++	}
++
++	ret = phy_init(pxpcs->serdes_phy);
++	if (ret) {
++		dev_err(dev, "Failed to init SerDes PHY\n");
++		goto pm_domain;
++	}
++
++	ret = phy_power_on(pxpcs->serdes_phy);
++	if (ret) {
++		dev_err(dev, "Failed to power on SerDes PHY\n");
++		goto serdes_phy;
++	}
++
++	ret = devm_add_action_or_reset(dev, xpcs_rk_serdes_phy_poweroff, pxpcs);
++	if (ret) {
++		dev_err(dev, "Failed to register devm for SerDes PHY: %d\n", ret);
++		return ret;
++	}
++
++	return 0;
++
++serdes_phy:
++	phy_exit(pxpcs->serdes_phy);
++pm_domain:
++	dev_pm_genpd_rpm_always_on(dev, false);
++	return ret;
++}
++
++static int xpcs_rk_init_res(struct dw_xpcs_rk *pxpcs)
++{
++	struct platform_device *pdev = pxpcs->pdev;
++	struct device *dev = &pdev->dev;
++	struct resource *res;
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	if (!res) {
++		dev_err(dev, "No reg-space found\n");
++		return -EINVAL;
++	}
++
++	if (resource_size(res) < SZ_2M) {
++		dev_err(dev, "Invalid reg-space size\n");
++		return -EINVAL;
++	}
++
++	pxpcs->reg_base = devm_ioremap_resource(dev, res);
++	if (IS_ERR(pxpcs->reg_base)) {
++		dev_err(dev, "Failed to map reg-space\n");
++		return PTR_ERR(pxpcs->reg_base);
++	}
++
++	return 0;
++}
++
++static void xpcs_rk_exit_clk(void *data)
++{
++	struct dw_xpcs_rk *pxpcs = data;
++	struct device *dev = &pxpcs->pdev->dev;
++
++	pm_runtime_force_suspend(dev);
++	clk_disable_unprepare(pxpcs->eee_clk);
++}
++
++static int xpcs_rk_init_clk(struct dw_xpcs_rk *pxpcs)
++{
++	struct device *dev = &pxpcs->pdev->dev;
++	int ret;
++
++	pxpcs->csr_clk = devm_clk_get(dev, "csr");
++	if (IS_ERR(pxpcs->csr_clk))
++		return dev_err_probe(dev, PTR_ERR(pxpcs->csr_clk),
++					 "Failed to get CSR clock\n");
++
++	pxpcs->eee_clk = devm_clk_get(dev, "eee");
++	if (IS_ERR(pxpcs->eee_clk))
++		return dev_err_probe(dev, PTR_ERR(pxpcs->eee_clk),
++					 "Failed to get EEE clock\n");
++
++	ret = clk_prepare_enable(pxpcs->eee_clk);
++	if (ret) {
++		dev_err(dev, "Failed to enable EEE clock\n");
++		return ret;
++	}
++
++	/*
++	 * Compute the multiplier for the EEE clock so that
++	 * clk_eee_period * (mult_fact + 1) falls within 80..120 ns.
++	 *
++	 * On RK3568, clk_xpcs_eee is muxed between gpll200 (200 MHz, 5 ns)
++	 * and cpll125 (125 MHz, 8 ns), selected by CRU_CLKSEL_CON29 bit 13.
++	 * The reset value is 0 (200 MHz), but derive the value at runtime to
++	 * stay correct if the mux is changed by a board.
++	 */
++	pxpcs->eee_mult_fact = DIV_ROUND_CLOSEST(100 * clk_get_rate(pxpcs->eee_clk),
++						 1000000000UL) - 1;
++
++	pm_runtime_set_suspended(dev);
++	pm_runtime_enable(dev);
++
++	ret = devm_add_action_or_reset(dev, xpcs_rk_exit_clk, pxpcs);
++	if (ret) {
++		dev_err(dev, "Failed to register devm for EEE clock: %d\n", ret);
++		return ret;
++	}
++
++	return 0;
++}
++
++static int xpcs_rk_init_bus(struct dw_xpcs_rk *pxpcs)
++{
++	struct device *dev = &pxpcs->pdev->dev;
++	static atomic_t id = ATOMIC_INIT(-1);
++	struct mii_bus *bus;
++	int ret;
++
++	bus = devm_mdiobus_alloc_size(dev, 0);
++	if (!bus)
++		return -ENOMEM;
++
++	bus->name = "Rockchip DW XPCS MCI/APB3";
++	bus->read = xpcs_rk_read_c22;
++	bus->write = xpcs_rk_write_c22;
++	bus->read_c45 = xpcs_rk_read_c45;
++	bus->write_c45 = xpcs_rk_write_c45;
++	bus->phy_mask = ~0;
++	bus->parent = dev;
++	bus->priv = pxpcs;
++
++	snprintf(bus->id, MII_BUS_ID_SIZE,
++		 "rockchip_dwxpcs-%x", atomic_inc_return(&id));
++
++	/*
++	 * MDIO-bus here serves as just a back-end engine abstracting out
++	 * the MDIO and MCI/APB3 IO interfaces utilized for the Rockchip DWXPCS CSRs
++	 * access.
++	 */
++	ret = devm_mdiobus_register(dev, bus);
++	if (ret) {
++		dev_err(dev, "Failed to create MDIO bus\n");
++		return ret;
++	}
++
++	pxpcs->bus = bus;
++	return 0;
++}
++
++static int xpcs_rk_probe(struct platform_device *pdev)
++{
++	struct dw_xpcs_rk *pxpcs;
++	int ret;
++
++	pxpcs = xpcs_rk_create_data(pdev);
++	if (IS_ERR(pxpcs))
++		return PTR_ERR(pxpcs);
++
++	/*
++	 * The XPCS may be attached to a power domain (e.g. PD_PIPE). The domain
++	 * must be powered on before any register access, otherwise the SoC will
++	 * trigger a synchronous external abort (SError).
++	 *
++	 * Accessing the XPCS registers also requires a TX clock from the SerDes,
++	 * which is needed for the soft reset.
++	 */
++	ret = xpcs_rk_serdes_phy_init(pxpcs);
++	if (ret)
++		return ret;
++
++	ret = xpcs_rk_serdes_phy_poweron(pxpcs);
++	if (ret)
++		return ret;
++
++	ret = xpcs_rk_init_res(pxpcs);
++	if (ret)
++		return ret;
++
++	ret = xpcs_rk_init_clk(pxpcs);
++	if (ret)
++		return ret;
++
++	ret = xpcs_rk_init_bus(pxpcs);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++
++static const struct of_device_id xpcs_rk_of_ids[] = {
++	{ .compatible = "rockchip,rk3568-xpcs" },
++	{ /* sentinel */ },
++};
++MODULE_DEVICE_TABLE(of, xpcs_rk_of_ids);
++
++struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *np)
++{
++	struct platform_device *pdev;
++	struct device_node *pcs_np;
++	struct dw_xpcs_rk *pxpcs;
++	struct dw_xpcs *xpcs;
++	u32 port;
++
++	if (!of_device_is_available(np))
++		return ERR_PTR(-ENODEV);
++
++	if (of_property_read_u32(np, "reg", &port))
++		return ERR_PTR(-EINVAL);
++
++	if (!xpcs_rk_mdio_addr_validate((int)port))
++		return ERR_PTR(-EINVAL);
++
++	/* The XPCS pdev is attached to the parent node */
++	pcs_np = of_get_parent(np);
++	if (!pcs_np)
++		return ERR_PTR(-ENODEV);
++
++	if (!of_device_is_available(pcs_np)) {
++		of_node_put(pcs_np);
++		return ERR_PTR(-ENODEV);
++	}
++
++	if (!of_match_node(xpcs_rk_of_ids, pcs_np)) {
++		of_node_put(pcs_np);
++		return ERR_PTR(-EINVAL);
++	}
++
++	pdev = of_find_device_by_node(pcs_np);
++	of_node_put(pcs_np);
++	if (!pdev)
++		return ERR_PTR(-EPROBE_DEFER);
++
++	device_lock(&pdev->dev);
++	pxpcs = platform_get_drvdata(pdev);
++	if (!pxpcs || !pxpcs->bus) {
++		device_unlock(&pdev->dev);
++		put_device(&pdev->dev);
++		return ERR_PTR(-EPROBE_DEFER);
++	}
++
++	xpcs = xpcs_create_mdiodev(pxpcs->bus, (int)port);
++	if (IS_ERR(xpcs)) {
++		device_unlock(&pdev->dev);
++		put_device(&pdev->dev);
++		return xpcs;
++	}
++
++	if (!device_link_add(dev, &pdev->dev, DL_FLAG_AUTOREMOVE_CONSUMER)) {
++		xpcs_destroy(xpcs);
++		device_unlock(&pdev->dev);
++		put_device(&pdev->dev);
++		return ERR_PTR(-ENOMEM);
++	}
++
++	xpcs_config_eee_mult_fact(xpcs, pxpcs->eee_mult_fact);
++	device_unlock(&pdev->dev);
++	put_device(&pdev->dev);
++	return xpcs;
++}
++EXPORT_SYMBOL_GPL(xpcs_rk_create);
++
++static int xpcs_rk_pm_runtime_suspend(struct device *dev)
++{
++	struct dw_xpcs_rk *pxpcs = dev_get_drvdata(dev);
++
++	clk_disable_unprepare(pxpcs->csr_clk);
++
++	return 0;
++}
++
++static int xpcs_rk_pm_runtime_resume(struct device *dev)
++{
++	struct dw_xpcs_rk *pxpcs = dev_get_drvdata(dev);
++
++	return clk_prepare_enable(pxpcs->csr_clk);
++}
++
++static DEFINE_RUNTIME_DEV_PM_OPS(xpcs_rk_pm_ops,
++			   xpcs_rk_pm_runtime_suspend,
++			   xpcs_rk_pm_runtime_resume,
++			   NULL);
++
++static struct platform_driver xpcs_rk_driver = {
++	.probe = xpcs_rk_probe,
++	.driver = {
++		.name = "rk_xpcs-dwxpcs",
++		.pm = pm_ptr(&xpcs_rk_pm_ops),
++		.of_match_table = xpcs_rk_of_ids,
++	},
++};
++module_platform_driver(xpcs_rk_driver);
++
++MODULE_DESCRIPTION("Rockchip XPCS platform device driver");
++MODULE_AUTHOR("Coia Prant <coiaprant@gmail.com>");
++MODULE_LICENSE("GPL");
+diff --git a/include/linux/pcs/pcs-xpcs-rk.h b/include/linux/pcs/pcs-xpcs-rk.h
+new file mode 100644
+index 0000000000000..28723d5bd75cc
+--- /dev/null
++++ b/include/linux/pcs/pcs-xpcs-rk.h
+@@ -0,0 +1,11 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++#ifndef __LINUX_PCS_XPCS_ROCKCHIP_H
++#define __LINUX_PCS_XPCS_ROCKCHIP_H
++
++#include <linux/device.h>
++#include <linux/of.h>
++#include <linux/pcs/pcs-xpcs.h>
++
++struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *np);
++
++#endif /* __LINUX_PCS_XPCS_ROCKCHIP_H */
 -- 
 2.47.3
 
