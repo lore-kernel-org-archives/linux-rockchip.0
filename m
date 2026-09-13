@@ -4,64 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C497C88E56
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Sep 2026 06:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B003FC88E5A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Sep 2026 11:34:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UBnK6UhVxev7MSFUkKX0KZ91T4NFO/BbIs5UH+BcA1Y=; b=WM1ly2ttnMB06J
-	d0/7glmLW/+GGEgOBduybjt949+joXP3C/AIXN/DI5tOAf7j1krlNQkIGrp3TTjM98u9uClR9rqWh
-	YkrPKHNzjxYW57vVKlJwc92Llr2EZevz1aOOvuoXiGDgTIR2UCujAGOK3EJqT7j6uye9STVaNkmEF
-	rmorWjy0cfqOx1mhj7dVgRBxluSU+uOUCTnoUKzj1hkcfDk3G8R+Xe/oMTwxW18nedm+DcMIC4Zdi
-	DohaoPuqeiaKFaNLJn8plBZHP+azc97mTpIO9tmXT1m67Cfd8rzcL0nIvqg2s4swx6+TRZlCT0x0q
-	IYDx9RZIaVXpmacTGgfg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yGFXyC4y1IuTztxNhCuXHOJihwCxVGoWqD8Ph0ngIH4=; b=uOEy4i+3V1OePbIwEOo/9rf6V2
+	n6QQJOH8J/4RE4mGnRaH44bhAS0ujWRHD+k83C0L11SSH5Mo6d/e92ZRTuV7kn6CT1+qnHV9Kq2UD
+	+jgpFUhCNEZ2JLkcArSU38SDEo3efrcqEzqkf9q05Pr0L5Wf04LHVcvJGy4RrURswwgjWt27Uqty5
+	UWGUsrZCRuK4xUrmzPwVZiGin8DjgNtJ+Hm2PFDVBXw0IlKZMNDFJQ+QqyfgY4IHp+5WmJwm+2gR9
+	MF1WgE+mgp5jdKc1kNCpgHn4Hfx2NT+0SG6TzvdPEbjZNARV9CZIQmsAeN4+hELBbm7mC0Qn6BjtP
+	G08ymu2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5dWs-00000001SBT-3USt;
-	Sun, 13 Sep 2026 06:17:30 +0000
-Received: from mail-m128212.netease.com ([103.209.128.212])
+	id 1x5iTc-00000001ccb-1IfU;
+	Sun, 13 Sep 2026 11:34:28 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5dWm-00000001SAs-3V0Q;
-	Sun, 13 Sep 2026 06:17:28 +0000
-Received: from [127.0.0.1] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4d8d80e68;
-	Sun, 13 Sep 2026 14:17:08 +0800 (GMT+08:00)
-Message-ID: <5f5a3210-44e1-4d56-ab44-aea2fe3cabae@rock-chips.com>
-Date: Sun, 13 Sep 2026 14:17:00 +0800
+	id 1x5iTa-00000001cc9-0nKE;
+	Sun, 13 Sep 2026 11:34:26 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id BBEC844855;
+	Sun, 13 Sep 2026 11:34:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8237E1F000FF;
+	Sun, 13 Sep 2026 11:34:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789299263;
+	bh=eqmYMNWXm2PS32PWATDXedLh2UIRpr7LtOC/6nDcHj4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=aRVLq5JFfmgQKaElgN9hARd2PubXgi6NeRv/TslJWttkklDgADNXdjSt9xm2uuuY7
+	 81s3CAWyI4DwWKC3npVWoo+KgwQvw/sGscw9tR8i8v+We5Z3vWgYjJaRzd45KXI24D
+	 Dvf7AXCH9Y8ZSObDY061Tbk7f+Y3xtY0AfQ385ilASDCaaWuyGHyr1qWOxbDVD5CQp
+	 pc1A8Ut9y2SgUWJYsBdtl+Ew6pK2SWyJ4QxomjdPpDsv6kAXBt6h2xNh1ayyzbJIHv
+	 0BbaaqFN9QuGlkmsh3tMHpI0Vpa8lCUf8LLQHd4fj4ij52IVzjfSx6hJGLSYJjq44J
+	 SoMhGNHysk4qw==
+Received: by traversing.sirena.org.uk (Postfix, from userid 1000)
+	id EF057E0EC90; Sun, 13 Sep 2026 12:34:20 +0100 (BST)
+Date: Sun, 13 Sep 2026 12:34:20 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Myeonghun Pak <mhun512@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-spi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Ijae Kim <ae878000@gmail.com>
+Subject: Re: [PATCH v2] spi: rockchip-sfc: skip DMA cleanup in PIO mode
+Message-ID: <aqaKPEFt7fQe8QQp@sirena.org.uk>
+References: <aqRM17TZ0-5pd6Y0@sirena.org.uk>
+ <20260912190056.42192-1-mhun512@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] drm/rockchip: dsi: Add maximum per lane bit rate
- calculation
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chaoyi Chen <kernel@airkyi.com>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260812073002.328-1-kernel@airkyi.com>
- <20260812073002.328-2-kernel@airkyi.com> <9674763.CDJkKcVGEf@phil>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <9674763.CDJkKcVGEf@phil>
-X-HM-Tid: 0aa09969941d03a7kunm769b3eaa96f912
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTEsfVhlCTUkZSh4dH05LGlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=GAJ5dMwy21VmCnJabb1L9TQt7b2IDU9Uq/uVBCd3W1ZJPdjMZOkOHgn5LiqAgg3GA0pHy4C3q4EUx4G7Hz1skBBdZLC9AW8rueILzdxDsEfhB5+YqQqTqewhPSW77CuWLWUJinCQ0Gmq7MLqHcATbjzdyKYT8nT+8AEEL8AngmA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=XE0FAIY1dIyIhNWdzfvXZWvPYm623Zb2EGWRdg2QQio=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260912_231726_297337_B87AEA88 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260912190056.42192-1-mhun512@gmail.com>
+X-Cookie: Orders subject to approval.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,27 +69,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0349963701581783054=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiA5LzEyLzIwMjYgODozMiBQTSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4g
-QW0gTWl0dHdvY2gsIDEyLiBBdWd1c3QgMjAyNiwgMDk6MzA6MDAgTWl0dGVsZXVyb3DDpGlzY2hl
-IFNvbW1lcnplaXQgc2NocmllYiBDaGFveWkgQ2hlbjoKPj4gRnJvbTogQ2hhb3lpIENoZW4gPGNo
-YW95aS5jaGVuQHJvY2stY2hpcHMuY29tPgo+Pgo+PiBEaWZmZXJlbnQgY2hpcHMgaGF2ZSB2YXJ5
-aW5nIHN1cHBvcnQgZm9yIHRoZSBtYXhpbXVtIGJpdCByYXRlIHBlciBsYW5lLgo+Pgo+PiBBZGQg
-Y2FsY3VsYXRpb24gZm9yIHRoZSBtYXhpbXVtIHBlciBsYW5lIGJpdCByYXRlIGZvciB2YXJpb3Vz
-IGNoaXAKPj4gcGxhdGZvcm1zLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBDaGFveWkgQ2hlbiA8Y2hh
-b3lpLmNoZW5Acm9jay1jaGlwcy5jb20+Cj4gCj4gWy4uLl0KPiAKPj4gQEAgLTU3Myw2ICs1NzQs
-NyBAQCBkd19taXBpX2RzaV9nZXRfbGFuZV9tYnBzKHZvaWQgKnByaXZfZGF0YSwgY29uc3Qgc3Ry
-dWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUsCj4+ICAJdW5zaWduZWQgbG9uZyBfZmJkaXYsIGJl
-c3RfZmJkaXY7Cj4+ICAJdW5zaWduZWQgbG9uZyBtaW5fZGVsdGEgPSBVTE9OR19NQVg7Cj4+ICAK
-Pj4gKwltYXhfbWJwcyA9IGRzaS0+Y2RhdGEtPm1heF9iaXRfcmF0ZV9wZXJfbGFuZSAvIFVTRUNf
-UEVSX1NFQzsKPiAKPiBBcyB0aGUgdmFsdWUgaXMgY2FsbGVkIG1heF9iaXRfcmF0ZV9wZXJfbGFu
-ZSwgSSBndWVzcyBTYXNoaWtvCj4gaXMgY29ycmVjdCBpbiB0aGF0IHRoZSBtYXhfbWJwcyBjaGVj
-ayBzaG91bGQgdXNlICI8PSIgPwo+IAoKVGhhbmtzIGZvciBwb2ludGluZyB0aGlzIG91dC4gSSds
-bCBmaXggaXQgaW4gdjUuCgo+IAo+IEhlaWtvCgotLSAKQmVzdCwgCkNoYW95aQoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============0349963701581783054==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="BYqHUzUgRwUKZNts"
+Content-Disposition: inline
+
+
+--BYqHUzUgRwUKZNts
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Sat, Sep 12, 2026 at 03:00:56PM -0400, Myeonghun Pak wrote:
+> With rockchip,sfc-no-dma, probe skips allocating and mapping the transfer
+> buffer. However, controller registration failure and driver removal still
+> call dma_unmap_single() for that nonexistent mapping.
+
+Please don't send new patches in reply to old patches or serieses, this
+makes it harder for both people and tools to understand what is going
+on - it can bury things in mailboxes and make it difficult to keep track
+of what current patches are, both for the new patches and the old ones.
+
+--BYqHUzUgRwUKZNts
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqmijUACgkQJNaLcl1U
+h9CwIwf6A+Mv5erq9BOAGamYCRiq0f2YOtNdxCsprU4hUbNYwPzZgQCAmGAZhjr/
+ORtTTFeMpKTizo2EekSAvp83S2VL9dxe1BhUaQoerKnG4MIqirlduo003OZ/gKtM
+89/BUKPy6WqkW3A+nQ81bAglYptFyX8qo5FQzTb/cyyf+uzdxd5+xh5n98k0WS5s
+SNR89mnwLzTyi0pmvALL7VmFl806G0KpMKPnowxT7PbjK54tboXHqO2BtCJEYk31
+9Obbw0U7ogp3P+iV8nlQ30ZrZfb+MRCip9C4g27hJxcj69T3a4GbXySG9rJw7qid
+YPCNkqKMNPhB6SoN6x0xYTwx4pg7cQ==
+=X0/3
+-----END PGP SIGNATURE-----
+
+--BYqHUzUgRwUKZNts--
+
+
+--===============0349963701581783054==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0349963701581783054==--
+
