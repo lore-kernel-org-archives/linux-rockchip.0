@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 413B8C88E73
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 21:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5254C88E73
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 21:46:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mo+Uh5mBCmrFym+7abltrUGMool9dyuz89gYw07MPjc=; b=Co1edizql3EhyH
-	h0kgBzIX69a2mhgkzjKTgZs5G2gjwaeAl1IT91VEC3DFfwRPXxHarHS0pFZLPFXn6Q8b2m1S8X9hO
-	cSvMkJ2/gEiALkdEG1/fjRyA48KsUpfzOj6nFrPa8pLSZ2lNOqBtFWQ5uIoiuBq2TC4yiSFVTYpFQ
-	rR7rz+Yv1tzmrLIfdVyjcB/vq/58Wh/aLzkGepE4s1OjRjHfyTfezUJ5bkl81hppWH9veAgfQv/i6
-	bk7OL4RuiQ8IEOUEQ7Knfiv9vfqwrOxCkLMKMNXU4eAwNzPuOxR6F/Ff8X9YM30ZkE/eakqSBvwDO
-	pNLZ0qYszU+NgGSJ4/SA==;
+	List-Owner; bh=bfdTU+PuX+JlHK8RZUkn4AVepeK0sceh5gBYmBcoLtU=; b=klRSzZsslRKxTv
+	mkDQBWe73ruzaRZE0SD/xoGQGYxYoSQ/w64qrQRrXlLHj4faufpqb5l4zt7wR8o6/ldFxwN2x1Ulv
+	GM9rSfA5v7CipBZuR3B5j5+VCcHHNuiEJnEKtSwZ2C5KRsxnHdiwubu5s98Jgbski2wjboedGNRFI
+	phfrTeYduge5RL/1CGhUfYBo7/osQln4pceGt8VAVxs81Nd7TYjwqpzlg5MfO+EqnuS1UwNn932Ol
+	rXq1oYr9rSZP1EHpoYkVgogv8X3KlxpnLiewPI0ivR2BEX5CBqW5M6coLirGmLX6HgCYGwFsSMNFy
+	NW4rlMzadoq4+qR6oNTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6ET4-00000004jN0-30aS;
-	Mon, 14 Sep 2026 21:44:02 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1x6EVG-00000004jkS-2lKj;
+	Mon, 14 Sep 2026 21:46:18 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6ESz-00000004jLd-3ALJ;
-	Mon, 14 Sep 2026 21:44:00 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260914214351euoutp01fb2c52443c76324af56642af1775fd9c~VTgoHKQsB2279322793euoutp01K;
-	Mon, 14 Sep 2026 21:43:51 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260914214351euoutp01fb2c52443c76324af56642af1775fd9c~VTgoHKQsB2279322793euoutp01K
+	id 1x6EVC-00000004jjF-0v0k;
+	Mon, 14 Sep 2026 21:46:16 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20260914214607euoutp0298349186b776b9ecf42a4bf0e7f739a9~VTims6U5X2157721577euoutp02a;
+	Mon, 14 Sep 2026 21:46:07 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20260914214607euoutp0298349186b776b9ecf42a4bf0e7f739a9~VTims6U5X2157721577euoutp02a
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1789422232;
-	bh=cks1cJ9xfELg4JUmWK+0lpYkKgp9d7kXFMM0AFQQmTg=;
+	s=mail20170921; t=1789422367;
+	bh=Y4xIEcssZKWWAvbTH7TLXmgPRORXbepFbz/dh0noRbo=;
 	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=Gt1Pgp7fZ7ueqZw6A8frr9jnYyxGlOxe+nOszBSG6658nl/drPglL2DctmgsRj1cH
-	 0yQjZgTokH2lAJm+oCbTMLQnKeB6rmeee21rISPDuQ/GZ/k9BciN5WVkZINYJJLLFz
-	 8E3opR0J9LKlhgl9E7rbAYd3TUK774AILuMQmYVU=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
+	b=DBTeMmmWwRxbmdVpM20Nu8zuMdEAEFE+/dOsYDxgSS9crjm3ehe9Ra2pMO1CTwjkp
+	 LJzCe4yelf/KotZpTT/jbdq07pxfM6l3YcTDY3WqQJztYNMva+VobG8k87ffGM52eZ
+	 grgKhMAQmYnyS8kpgMxdkRkZ5nwuLdFZGx2RVOI4=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
 	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20260914214350eucas1p2a1d39759752b500b940f9596b5ef7387~VTgmk_GQ92704027040eucas1p2d;
-	Mon, 14 Sep 2026 21:43:50 +0000 (GMT)
+	20260914214607eucas1p2a107876f411b6812cdcc505d99eb9022~VTimB3gp42703627036eucas1p2x;
+	Mon, 14 Sep 2026 21:46:07 +0000 (GMT)
 Received: from [192.168.1.44] (unknown [106.210.136.40]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20260914214347eusmtip187c1d69eecfa6816899035d6db67e411~VTgkUZfqc3045430454eusmtip1C;
-	Mon, 14 Sep 2026 21:43:47 +0000 (GMT)
-Message-ID: <1c8d3bc2-b4ae-436e-806c-e95956961e6e@samsung.com>
-Date: Mon, 14 Sep 2026 23:43:47 +0200
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20260914214605eusmtip2f9720a98b374ac418c59f98ea4b5c125~VTikOVkOp2978529785eusmtip2r;
+	Mon, 14 Sep 2026 21:46:05 +0000 (GMT)
+Message-ID: <fba2ac39-fe79-4065-b9f5-8618c449010b@samsung.com>
+Date: Mon, 14 Sep 2026 23:46:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 04/19] dt-bindings: soc: starfive: Add
- starfive,jh7110-vout-syscon
-To: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v3 11/19] soc: starfive: Add jh7110-hdmi-subsystem
+ driver
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
 Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
 	<neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
 	Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrzej
@@ -80,19 +80,19 @@ Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
 	Zheng <zhengxingda@iscas.ac.cn>
 Content-Language: en-US
 From: Michal Wilczynski <m.wilczynski@samsung.com>
-In-Reply-To: <20260910-esoteric-axolotl-of-symmetry-c02f5f@quoll>
-X-CMS-MailID: 20260914214350eucas1p2a1d39759752b500b940f9596b5ef7387
+In-Reply-To: <ap50F4QOw7jbcvI6@monoceros>
+X-CMS-MailID: 20260914214607eucas1p2a107876f411b6812cdcc505d99eb9022
 X-Msg-Generator: CA
-X-RootMTR: 20260904132716eucas1p2d093509db255e62e6bd546e734f04e63
+X-RootMTR: 20260904132729eucas1p1bd78eb90feaf90b6265c13fc7bf43ada
 X-EPHeader: CA
-X-CMS-RootMailID: 20260904132716eucas1p2d093509db255e62e6bd546e734f04e63
+X-CMS-RootMailID: 20260904132729eucas1p1bd78eb90feaf90b6265c13fc7bf43ada
 References: <20260904-jh7110-clean-send-v3-0-484f9ae72715@samsung.com>
-	<CGME20260904132716eucas1p2d093509db255e62e6bd546e734f04e63@eucas1p2.samsung.com>
-	<20260904-jh7110-clean-send-v3-4-484f9ae72715@samsung.com>
-	<20260910-esoteric-axolotl-of-symmetry-c02f5f@quoll>
+	<CGME20260904132729eucas1p1bd78eb90feaf90b6265c13fc7bf43ada@eucas1p1.samsung.com>
+	<20260904-jh7110-clean-send-v3-11-484f9ae72715@samsung.com>
+	<ap50F4QOw7jbcvI6@monoceros>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_144359_191396_EF193B74 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20260914_144614_551376_78DB50E2 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,58 +104,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 9/10/26 10:18, Krzysztof Kozlowski wrote:
-> On Fri, Sep 04, 2026 at 03:27:05PM +0200, Michal Wilczynski wrote:
->> The video output subsystem has its own system controller, documented as
->> dom_vout_syscon. Among other things it holds the mux that selects which
->> DC8200 output drives the HDMI transmitter, so the HDMI controller needs
->> to reach it.
->>
->> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
->> ---
->>  .../devicetree/bindings/soc/starfive/starfive,jh7110-syscon.yaml    | 6 ++++++
->>  1 file changed, 6 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-syscon.yaml b/Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-syscon.yaml
->> index 0039319e91fe6e6aadc4300114626348e4dfb7ce..47334f6c1243c9950e6fba44daacd41f42b55781 100644
->> --- a/Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-syscon.yaml
->> +++ b/Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-syscon.yaml
->> @@ -24,6 +24,7 @@ properties:
->>            - enum:
->>                - starfive,jh7110-aon-syscon
->>                - starfive,jh7110-stg-syscon
->> +              - starfive,jh7110-vout-syscon
->>            - const: syscon
->>  
->>    reg:
->> @@ -90,4 +91,9 @@ examples:
->>          #power-domain-cells = <1>;
->>      };
->>  
->> +    syscon@295b0000 {
-> 
-> Don't need new example for every compatible. You already have three...
-> and this one is exactly the same as the first one. Drop.
-> 
-> Best regards,
-> Krzysztof
-> 
-> 
-
-Will do, thanks !
-
-Best regards,
--- 
-Michal Wilczynski <m.wilczynski@samsung.com>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpPbiA5LzcvMjYgMTA6MjMsIFV3ZSBLbGVpbmUtS8O2bmlnIHdyb3RlOgo+IEhlbGxvIE1pY2hh
+ZWwsCj4gCj4gT24gRnJpLCBTZXAgMDQsIDIwMjYgYXQgMDM6Mjc6MTJQTSArMDIwMCwgTWljaGFs
+IFdpbGN6eW5za2kgd3JvdGU6Cj4+ICsjaW5jbHVkZSA8bGludXgvbW9kX2RldmljZXRhYmxlLmg+
+Cj4+IFsuLi5dCj4+ICsjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gCj4gUGxl
+YXNlIGRvbid0IGFkZCBpbmNsdWRlcyBmb3IgPGxpbnV4L21vZF9kZXZpY2V0YWJsZS5oPiBhcyBp
+dCBpbnRyb2R1Y2VzCj4gbWFueSB1bm5lZWRlZCBidWlsZCBkZXBlbmRlbmNpZXMuIEVpdGhlciBy
+ZWx5IG9uCj4gPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPiBwcm92aWRpbmcgb2ZfZGV2aWNlX2lk
+IChJTUhPIHByZWZlcnJlZCksIG9yCj4gaW5jbHVkZSA8bGludXgvZGV2aWNlLWlkL29mLmg+IGRp
+cmVjdGx5Lgo+IAo+IFRoZSBzYW1lIGFwcGxpZXMgdG8gdHdvIG1vcmUgcGF0Y2hlcyBpbiB0aGlz
+IHNlcmllcy4KPiAKPiBCZXN0IHJlZ2FyZHMKPiBVd2UKClRoYW5rIHlvdSBmb3IgeW91ciByZXZp
+ZXcuIFRoaXMgd2lsbCBiZSBmaXhlZCBmb3IgdjQuCgpCZXN0IHJlZ2FyZHMsCi0tIApNaWNoYWwg
+V2lsY3p5bnNraSA8bS53aWxjenluc2tpQHNhbXN1bmcuY29tPgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
