@@ -4,69 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDB4BC88E6A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 09:46:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A25DC88E50
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 11:52:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e+H5aS5t5kX7y15u9BhujE+gFbhVNolJGHD0rpbRROM=; b=MmfA1SV1XpWS6r
-	GCp86rof/Gz/5UaE6pza6FESHFNV5oxWq+mTmrcVNUlUdBsxx+9d+Nd9ENF0dErZwsBzCPVcoOf3C
-	mp3v2U8WCK43mrPFw3wW7k+OI9TPq//Bkmlm/2hzSEctVyVmQr6c5hXIRTuqFyUDufXhdFLVhPfmX
-	ljIuI0DTVBaR54yN8R9qKYzLbLFK+/1OkflOooL6zwmLy6Vn/0Yw6FSj0pG4vp8DW9qKG6l0zw0JB
-	2quV+S6I0CXwetYR+DHPSUOt1RlXWXh02bOXAnIsFCPtOeTgdC7O9CHx6ny/N+MB/POxiiNEMLHVW
-	inUd1mx/GpJDyhk3QkSA==;
+	List-Owner; bh=BQBfiZGJSyatffB7kAIJWl/SbQVkRdN1OnCArXvDPGY=; b=T0Czv2amlpH+7B
+	3Bk/R8et4O6WIAKuuWWlE2qQY3Fo68tzfRq12SVthe15MsYE1HQhvhPiUcmkwgYhEXgPGY6CjsOEY
+	uc0eeF04oaKBYD8xxZNWvBrCncC4xfcnZTzPO3Ebvgk3n3+StI1QW8yej8TbRXBxqC5Tf16Fkl314
+	0B1f+3/k1vJJoUeAhV6tVYjk2ZlVkcE02H5i3ikDuUrqRAUKDdAZK9JUqSCLQ33o/+d1r6adhDQnt
+	H5bC9TQ3KT5DhKo1En0KejVfZkMbm5twoCwbBcsJ0Dyh7t73H1VBwU422nqt6AFyYUlkDyKO4i9ce
+	0KLaI0jpUhshFAJZ6pAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x63Gw-0000000312f-1IEf;
-	Mon, 14 Sep 2026 09:46:46 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1x65E0-00000003O4i-1vpr;
+	Mon, 14 Sep 2026 11:51:52 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x63Gs-0000000311A-2EJu
-	for linux-rockchip@lists.infradead.org;
-	Mon, 14 Sep 2026 09:46:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1789379201;
- bh=W1U/BBBtVf3N1qfQmcjwgxjBVHkUfhadLlBtORLZQtU=;
- b=vEVl/jxIieAMI55yngyFDpTn3koHBGs5j6zJ7sdes+HgT0APjrTsP1XjkuYYXmtDYcogggsen
- 7s1sDGzXNhvKtKK/3GAqpdGjp8bMXIJBWQS7tuFfVACyMTxyfOrL2Fw8TBDrbSKe7Xf4PiZdLDn
- dav9Wjy+OPRcaPQasInmmSh66f2YxrY9N8SWj3f7TJ8Z3phcqYdIdJSFV4JxSP2mKZ/867XgGHf
- fu3JvruJLm1/Z7Hdk+XvwHmkWW7b0XdoD6xOAWo4ZKhLXTD5M8WZBeK+1gN9DhNdZ+YsRUVSH/q
- vk629bYmqJbIatIhdS51ACE2xYfuRJaKe6VJy8i95isA==
-X-Forward-Email-ID: 6aa7c27b469f56687e0fd9e3
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 2.14.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <dcaf96df-4a51-446a-a92d-6bb4e21af618@kwiboo.se>
-Date: Mon, 14 Sep 2026 11:46:30 +0200
+	id 1x65Dy-00000003O4L-2tUk;
+	Mon, 14 Sep 2026 11:51:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id D53E260142;
+	Mon, 14 Sep 2026 11:51:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF0111F000FF;
+	Mon, 14 Sep 2026 11:51:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789386709;
+	bh=R7+L0DS/i+DsiPCK294YRFFlGBSviuyUaFNf79SZZmc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=BV5v/s6Ovk+D6wQt7lAW7VvxwNapnxy859ARewOJYGvT9LiLkWeHTRW84L70HS3/+
+	 Ud1hn+k70Sl4tlLJU6I19fmutJ5k7vTedG/uqVYCjh3apn2B0ecJ5rpNowrtWAd/+o
+	 4L5DY/CVobpsOtdB4nLm8SXKhsGePL41l0oT5UxbjpsjNGs3SmyE1SsHMM3DaKOcmi
+	 fclMqI/Se2BSNQyLFNG73xUiYjk/jDXHuM/E3Ucx5CmfjK+rowZgWFBpyFjOzCltnc
+	 4QjDuA2+ypUTgEaVSZ+lXwEpA7c33gM50dQKMr7Z9Vzq4VLePiDlGlr3YMoPN20GqZ
+	 mFqqk5iimPBcg==
+Date: Mon, 14 Sep 2026 13:51:44 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Koichiro Den <den@valinux.co.jp>
+Cc: Manivannan Sadhasivam <mani@kernel.org>, Frank Li <Frank.Li@kernel.org>,
+	linux-pci@vger.kernel.org, linux-nvme@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/3] PCI: endpoint: Support hardware-owned MSI-X table
+ and PBA
+Message-ID: <aqff0CqBIDeMMTke@ryzen>
+References: <20260830151948.3547577-1-den@valinux.co.jp>
+ <apVWd1u9JjTKQczu@ryzen>
+ <pj5vpwwd5tr5tuvhdq3bcpefnq27r6ljvwoysguz2o4tglcqx5@l7zmb6wjnhla>
+ <apXdm2I33edo8kpZ@ryzen>
+ <sor2mm4jzgeprhn3fjw4jmcaowwkhhuus6exi4k5kum6frqvug@gatkk7r4qyxd>
+ <apfPWc09CY2o-P5s@ryzen>
+ <zxyr55h6s3tjc6pe23wzwb77dxppsljxcagpqhp4u24cqka2ne@fesick6sneto>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 3/4] arm64: dts: rockchip: Add devicetree for the
- FriendlyElec NanoPi R28S
-To: HystericalDragons@proton.me
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Chukun Pan <amadeus@jmu.edu.cn>, jensen <jensenhuang@friendlyarm.com>,
- Andrey Korshunov <razor1702@gmail.com>,
- Diederik de Haas <diederik@cknow-tech.com>
-References: <20260914-r28s-upstream-v5-0-7409c498e8dc@proton.me>
- <20260914-r28s-upstream-v5-3-7409c498e8dc@proton.me>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260914-r28s-upstream-v5-3-7409c498e8dc@proton.me>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_024642_601092_CE22DF7C 
-X-CRM114-Status: GOOD (  22.77  )
+Content-Disposition: inline
+In-Reply-To: <zxyr55h6s3tjc6pe23wzwb77dxppsljxcagpqhp4u24cqka2ne@fesick6sneto>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,119 +71,129 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiA5LzE0LzIwMjYgMTA6MjQgQU0sIOWuieWuuSB2aWEgQjQgUmVsYXkgd3JvdGU6Cj4g
-RnJvbTog5a6J5a65IDxIeXN0ZXJpY2FsRHJhZ29uc0Bwcm90b24ubWU+Cj4gCj4gVGhlIE5hbm9Q
-aSBSMjhTIGlzIGEgZHVhbCBnaWdhYml0IEV0aGVybmV0IHJvdXRlciBib2FyZCBiYXNlZCBvbiB0
-aGUKPiBSb2NrY2hpcCBSSzM1MjggU29DLCBkZXNpZ25lZCBhbmQgZGV2ZWxvcGVkIGJ5IEZyaWVu
-ZGx5RWxlYy4gSXQgc2hhcmVzCj4gbW9zdCBvZiBpdHMgZGVzaWduIHdpdGggdGhlIE5hbm9QaSBa
-ZXJvMiwgc28gaXQgYnVpbGRzIG9uIHRoZSBjb21tb24KPiByazM1MjgtbmFub3BpLmR0c2kuCj4g
-Cj4gU3BlY2lmaWNhdGlvbjoKPiAtIFJvY2tjaGlwIFJLMzUyOAo+IC0gMUdCIFJBTQo+IC0gZU1N
-QyBzb2NrZXQgKG9wdGlvbmFsKQo+IC0gTWljcm9TRCBzbG90Cj4gLSAxeCAxMDAwQmFzZS1UIChH
-TUFDMSwgUmVhbHRlayBSVEw4MjExRikKPiAtIDF4IDEwMDBCYXNlLVQgKFBDSWUsIFJlYWx0ZWsg
-UlRMODExMUgpCj4gLSBBSUNTZW1pIEFJQzg4MDBEODAgU0RJTyBXaUZpCj4gLSAzeCBMRURzIChT
-WVMsIExBTiwgV0FOKQo+IC0gMXggVVNCIDIuMCBUeXBlLUMsIHBlcmlwaGVyYWwgb25seSwgc2hh
-cmVkIHdpdGggdGhlIDVWIHBvd2VyIGlucHV0Cj4gLSBVc2VyIGFuZCBNYXNrUk9NIGJ1dHRvbnMK
-PiAtIEhhb3l1IEhZTTg1NjMgUlRDCj4gLSAxeCBVU0IgVHlwZS1DIGRlYnVnIFVBUlQgKG9uYm9h
-cmQgV0NIIENIMzQwRSkKPiAKPiBBc3Npc3RlZC1ieTogTExNCj4gU2lnbmVkLW9mZi1ieTog5a6J
-5a65IDxIeXN0ZXJpY2FsRHJhZ29uc0Bwcm90b24ubWU+Cj4gLS0tCj4gIGFyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgICAgIHwgICAxICsKPiAgLi4uL2FybTY0
-L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC1uYW5vcGktcjI4cy5kdHMgfCAxMjcgKysrKysrKysr
-KysrKysrKysrKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMTI4IGluc2VydGlvbnMoKykKPiAKPiBk
-aWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZSBiL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUKPiBpbmRleCBiNjc3OTE0Y2QzLi41MWE5
-ODg5MDg4IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZp
-bGUKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4gQEAgLTk0
-LDYgKzk0LDcgQEAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzM5OS12aWNoYXJh
-ay12YWFtYW4uZHRiCj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazMzOTlwcm8t
-cm9jay1waS1uMTAuZHRiCj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1Mjgt
-YXJtc29tLXNpZ2UxLmR0Ygo+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTI4
-LWhpbmxpbmstaDI4ay5kdGIKPiArZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzUy
-OC1uYW5vcGktcjI4cy5kdGIKPiAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzUy
-OC1uYW5vcGktemVybzIuZHRiCj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1
-MjgtcmFkeGEtZTIwYy5kdGIKPiAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzUy
-OC1yb2NrLTJhLmR0Ygo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzUyOC1uYW5vcGktcjI4cy5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
-MzUyOC1uYW5vcGktcjI4cy5kdHMKPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAw
-MDAwMDAuLjBiN2JiYzAxMjIKPiAtLS0gL2Rldi9udWxsCj4gKysrIGIvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazM1MjgtbmFub3BpLXIyOHMuZHRzCj4gQEAgLTAsMCArMSwxMjcgQEAK
-PiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wKyBPUiBNSVQpCj4gKy8qCj4g
-KyAqIENvcHlyaWdodCAoYykgMjAyMiBSb2NrY2hpcCBFbGVjdHJvbmljcyBDby4sIEx0ZC4KPiAr
-ICogQ29weXJpZ2h0IChjKSAyMDI2IEZyaWVuZGx5RWxlYyBDb21wdXRlciBUZWNoLiBDby4sIEx0
-ZC4KPiArICogQ29weXJpZ2h0IChjKSAyMDI2IOWuieWuuSA8SHlzdGVyaWNhbERyYWdvbnNAcHJv
-dG9uLm1lPgo+ICsgKi8KPiArCj4gKy9kdHMtdjEvOwo+ICsKPiArI2luY2x1ZGUgPGR0LWJpbmRp
-bmdzL2xlZHMvY29tbW9uLmg+Cj4gKyNpbmNsdWRlICJyazM1MjgtbmFub3BpLmR0c2kiCj4gKwo+
-ICsvIHsKPiArCW1vZGVsID0gIkZyaWVuZGx5RWxlYyBOYW5vUGkgUjI4UyI7Cj4gKwljb21wYXRp
-YmxlID0gImZyaWVuZGx5YXJtLG5hbm9waS1yMjhzIiwgInJvY2tjaGlwLHJrMzUyOCI7Cj4gKwo+
-ICsJYWxpYXNlcyB7Cj4gKwkJbW1jMiA9ICZzZGlvMDsKClRoaXMgbG9va3MgdG8gYmUgbWlzc2lu
-ZyBhbiBzZXJpYWwyIGFsaWFzOgoKCXNlcmlhbDIgPSAmdWFydDI7Cgo+ICsJfTsKPiArCj4gKwln
-cGlvLWtleXMgewo+ICsJCWNvbXBhdGlibGUgPSAiZ3Bpby1rZXlzIjsKPiArCQlwaW5jdHJsLW5h
-bWVzID0gImRlZmF1bHQiOwo+ICsJCXBpbmN0cmwtMCA9IDwmdXNyX2J0bj47CgpUaGlzIGlzIG5h
-bWVkIGdwaW80X2IyX3Vzcl9idG4gaW4gdGhlIHNjaGVtYXRpY3MuCgo+ICsKPiArCQlidXR0b24t
-dXNlciB7Cj4gKwkJCWRlYm91bmNlLWludGVydmFsID0gPDUwPjsKPiArCQkJZ3Bpb3MgPSA8Jmdw
-aW80IFJLX1BCMiBHUElPX0FDVElWRV9MT1c+Owo+ICsJCQlsYWJlbCA9ICJVU0VSIjsKPiArCQkJ
-bGludXgsY29kZSA9IDxCVE5fMT47Cj4gKwkJCXdha2V1cC1zb3VyY2U7Cj4gKwkJfTsKPiArCX07
-Cj4gKwo+ICsJc2Rpb19wd3JzZXE6IHNkaW8tcHdyc2VxIHsKPiArCQljb21wYXRpYmxlID0gIm1t
-Yy1wd3JzZXEtc2ltcGxlIjsKPiArCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ICsJCXBp
-bmN0cmwtMCA9IDwmcHdyX3dmPjsKPiArCQlwb3N0LXBvd2VyLW9uLWRlbGF5LW1zID0gPDEwMD47
-Cj4gKwkJcmVzZXQtZ3Bpb3MgPSA8JmdwaW8xIFJLX1BDMiBHUElPX0FDVElWRV9MT1c+Owo+ICsJ
-fTsKPiArfTsKPiArCj4gKyZjb21icGh5IHsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArfTsKPiAr
-Cj4gKyZsZWRzIHsKPiArCXBpbmN0cmwtMCA9IDwmbGVkMT4sIDwmbGVkMj4sIDwmbGVkX3N5cz47
-Cj4gKwo+ICsJbGVkLTEgewo+ICsJCWNvbG9yID0gPExFRF9DT0xPUl9JRF9HUkVFTj47Cj4gKwkJ
-ZGVmYXVsdC1zdGF0ZSA9ICJvZmYiOwo+ICsJCWZ1bmN0aW9uID0gTEVEX0ZVTkNUSU9OX1dBTjsK
-PiArCQlncGlvcyA9IDwmZ3BpbzQgUktfUEIxIEdQSU9fQUNUSVZFX0hJR0g+Owo+ICsJCWxpbnV4
-LGRlZmF1bHQtdHJpZ2dlciA9ICJuZXRkZXYiOwo+ICsJfTsKPiArCj4gKwlsZWQtMiB7Cj4gKwkJ
-Y29sb3IgPSA8TEVEX0NPTE9SX0lEX0dSRUVOPjsKPiArCQlkZWZhdWx0LXN0YXRlID0gIm9mZiI7
-Cj4gKwkJZnVuY3Rpb24gPSBMRURfRlVOQ1RJT05fTEFOOwo+ICsJCWdwaW9zID0gPCZncGlvNCBS
-S19QQjMgR1BJT19BQ1RJVkVfSElHSD47Cj4gKwkJbGludXgsZGVmYXVsdC10cmlnZ2VyID0gIm5l
-dGRldiI7Cj4gKwl9Owo+ICt9Owo+ICsKPiArJnBjaWUgewo+ICsJcGluY3RybC1uYW1lcyA9ICJk
-ZWZhdWx0IjsKPiArCXBpbmN0cmwtMCA9IDwmcGNpZV9ldGhfcGVyc3RiPjsKPiArCXJlc2V0LWdw
-aW9zID0gPCZncGlvNCBSS19QQzAgR1BJT19BQ1RJVkVfSElHSD47Cj4gKwl2cGNpZTN2My1zdXBw
-bHkgPSA8JnZjY18zdjM+Owo+ICsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArfTsKPiArCj4gKyZw
-aW5jdHJsIHsKClRoaXMgaXMgbWlzc2luZyBub2RlcyBmb3IgYmx1ZXRvb3RoOgoKCWJsdWV0b290
-aCB7CgkJYnRfd2FrZV9ob3N0OiBidC13YWtlLWhvc3QgewoJCQlyb2NrY2hpcCxwaW5zID0gPDEg
-UktfUEI1IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX2Rvd24+OwoJCX07CgoJCWhvc3Rfd2FrZV9i
-dDogaG9zdC13YWtlLWJ0IHsKCQkJcm9ja2NoaXAscGlucyA9IDwxIFJLX1BCNCBSS19GVU5DX0dQ
-SU8gJnBjZmdfcHVsbF9ub25lPjsKCQl9OwoJfTsKCj4gKwlncGlvLWtleXMgewo+ICsJCXVzcl9i
-dG46IHVzci1idG4gewoKTGFiZWwgc2hvdWxkIGJlIG5hbWVkIGdwaW80X2IyX3Vzcl9idG4gdG8g
-bWF0Y2ggc2NoZW1hdGljcy4KCj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQjIgUktfRlVO
-Q19HUElPICZwY2ZnX3B1bGxfdXA+Owo+ICsJCX07Cj4gKwl9Owo+ICsKPiArCWxlZHMgewo+ICsJ
-CWxlZDI6IGxlZDIgewo+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDQgUktfUEIzIFJLX0ZVTkNfR1BJ
-TyAmcGNmZ19wdWxsX25vbmU+Owo+ICsJCX07Cj4gKwl9Owo+ICsKPiArCXBjaWUgewo+ICsJCXBj
-aWVfZXRoX3BlcnN0YjogcGNpZS1ldGgtcGVyc3RiIHsKPiArCQkJcm9ja2NoaXAscGlucyA9IDw0
-IFJLX1BDMCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiArCQl9Owo+ICsJfTsKPiAr
-Cj4gKwl3aWZpIHsKClN1Z2dlc3QgeW91IGFsc28gYWRkIGhvc3Rfd2FrZV93bDoKCgkJaG9zdF93
-YWtlX3dsOiBob3N0LXdha2Utd2wgewoJCQlyb2NrY2hpcCxwaW5zID0gPDEgUktfUEE2IFJLX0ZV
-TkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OwoJCX07Cgo+ICsJCXB3cl93ZjogcHdyLXdmIHsKPiAr
-CQkJcm9ja2NoaXAscGlucyA9IDwxIFJLX1BDMiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25l
-PjsKPiArCQl9OwoKYW5kIHdsX3dha2VfaG9zdDoKCgkJd2xfd2FrZV9ob3N0OiB3bC13YWtlLWhv
-c3QgewoJCQlyb2NrY2hpcCxwaW5zID0gPDEgUktfUEE3IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxs
-X2Rvd24+OwoJCX07Cgo+ICsJfTsKPiArfTsKPiArCj4gKyZzZGlvMCB7Cj4gKwlidXMtd2lkdGgg
-PSA8ND47Cj4gKwljYXAtc2QtaGlnaHNwZWVkOwo+ICsJY2FwLXNkaW8taXJxOwo+ICsJa2VlcC1w
-b3dlci1pbi1zdXNwZW5kOwo+ICsJbW1jLXB3cnNlcSA9IDwmc2Rpb19wd3JzZXE+OwoKV2UgY2Fu
-IGxpa2VseSBiZSBleHBsaWNpdCBhbmQgZGVjbGFyZToKCgluby1tbWM7Cgluby1zZDsKCj4gKwlu
-b24tcmVtb3ZhYmxlOwo+ICsJc2QtdWhzLXNkcjEwNDsKClRoaXMgaXMgbWlzc2luZyB0aGUgdm1t
-Yy1zdXBwbHkgdXNlZC4KCgl2bW1jLXN1cHBseSA9IDwmdmNjXzN2Mz47Cgo+ICsJdnFtbWMtc3Vw
-cGx5ID0gPCZ2Y2NfMXY4PjsKPiArCj4gKwlzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICsm
-dWFydDIgewoKV2UgY2FuIGxpa2VseSBkZWNsYXJlIGRtYS1uYW1lcyBoZXJlOgoKCWRtYS1uYW1l
-cyA9ICJ0eCIsICJyeCI7Cgo+ICsJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCXBpbmN0
-cmwtMCA9IDwmdWFydDJtMV94ZmVyPiwgPCZ1YXJ0Mm0xX2N0c24+LCA8JnVhcnQybTFfcnRzbj47
-Cj4gKwl1YXJ0LWhhcy1ydHNjdHM7Cj4gKwo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsK
-PiArJnVzYl9ob3N0MF94aGNpIHsKPiArCS8qIFR5cGUtQyBwb3J0LCBzaGFyZWQgd2l0aCB0aGUg
-NVYgcG93ZXIgaW5wdXQgKi8KPiArCWRyX21vZGUgPSAicGVyaXBoZXJhbCI7CgpXaHkgZG8geW91
-IGRpc2FibGUgZHVhbCByb2xlIGhlcmU/IElzIGl0IG5vdCBwb3NzaWJsZSB0byBoYXZlIGl0IHdv
-cmsgaW4KaG9zdCBtb2RlPyBFLmcuIHVzaW5nIGEgVVNCIGh1YiB3aXRoIHBvd2VyIHBhc3MtdGhy
-dT8KCj4gK307Cj4gCgpPdGhlciB0aGFuIGFib3ZlIHRoaXMgY2xvc2VseSBtYXRjaGVzIHdoYXQg
-SSBwbGF5ZWQgYXJvdW5kIHdpdGggaW4KVS1Cb290IFsxXSBhIGZldyB3ZWVrcyBhZ28uIE1haW4g
-b2JqZWN0aXZlIHdhcyB0byBhZGQgTkVPMyBQbHVzIHN1cHBvcnQsCmFuZCBvbmx5IGFkZGVkIHRo
-ZSBSMjhTIERUIGJhc2VkIG9uIHNjaGVtYXRpY3MuIE15IFIyOFMgc2hvdWxkIGFycml2ZQphbnkg
-ZGF5IG5vdyA6LSkKClsxXSBodHRwczovL2dpdC51LWJvb3QtcHJvamVjdC5vcmcvdS1ib290L2Nv
-bnRyaWJ1dG9ycy9rd2lib28vdS1ib290Ly0vY29tbWl0LzQwMzgyNDY4YmE3Y2U5YWEyZTdkY2Rl
-MGU1OTAwM2ZkMGQyMjBiNDMKClJlZ2FyZHMsCkpvbmFzCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hello Koichiro,
+
+On Thu, Sep 03, 2026 at 04:56:18PM +0900, Koichiro Den wrote:
+> > 
+> > Please share your branch. I should have time to do a quick test.
+
+I did test your patches using pci-epf-test.
+
+EP side:
+
+[  105.770736] using HW-defined MSI-X layout!
+[  105.770763] MSI-X table BAR: 4 offset: 0x4000 size: 0x1000
+[  105.770777] MSI-X PBA BAR: 4 offset: 0x5000 size: 0x1000
+[  113.634512] raising MSI-X doorbell for irq: 1 msg_data: 0
+[  114.650505] raising MSI-X doorbell for irq: 2 msg_data: 1
+[  114.658509] raising MSI-X doorbell for irq: 3 msg_data: 2
+[  114.666499] raising MSI-X doorbell for irq: 4 msg_data: 3
+[  114.674508] raising MSI-X doorbell for irq: 5 msg_data: 4
+[  114.682498] raising MSI-X doorbell for irq: 6 msg_data: 5
+[  114.690508] raising MSI-X doorbell for irq: 7 msg_data: 6
+[  114.698500] raising MSI-X doorbell for irq: 8 msg_data: 7
+[  114.706508] raising MSI-X doorbell for irq: 9 msg_data: 8
+[  114.714500] raising MSI-X doorbell for irq: 10 msg_data: 9
+[  114.722508] raising MSI-X doorbell for irq: 11 msg_data: 10
+[  114.730500] raising MSI-X doorbell for irq: 12 msg_data: 11
+[  114.738511] raising MSI-X doorbell for irq: 13 msg_data: 12
+[  114.746498] raising MSI-X doorbell for irq: 14 msg_data: 13
+[  114.754509] raising MSI-X doorbell for irq: 15 msg_data: 14
+[  114.762499] raising MSI-X doorbell for irq: 16 msg_data: 15
+[  114.770509] raising MSI-X doorbell for irq: 17 msg_data: 16
+[  114.778500] raising MSI-X doorbell for irq: 18 msg_data: 17
+[  114.786508] raising MSI-X doorbell for irq: 19 msg_data: 18
+[  114.794501] raising MSI-X doorbell for irq: 20 msg_data: 19
+[  114.802507] raising MSI-X doorbell for irq: 21 msg_data: 20
+[  114.810500] raising MSI-X doorbell for irq: 22 msg_data: 21
+[  114.818509] raising MSI-X doorbell for irq: 23 msg_data: 22
+[  114.826502] raising MSI-X doorbell for irq: 24 msg_data: 23
+[  114.834509] raising MSI-X doorbell for irq: 25 msg_data: 24
+[  114.842502] raising MSI-X doorbell for irq: 26 msg_data: 25
+[  114.850509] raising MSI-X doorbell for irq: 27 msg_data: 26
+[  114.858499] raising MSI-X doorbell for irq: 28 msg_data: 27
+[  114.866510] raising MSI-X doorbell for irq: 29 msg_data: 28
+[  114.874500] raising MSI-X doorbell for irq: 30 msg_data: 29
+[  114.882510] raising MSI-X doorbell for irq: 31 msg_data: 30
+[  114.890500] raising MSI-X doorbell for irq: 32 msg_data: 31
+
+
+Host side:
+
+#  RUN           pci_ep_basic.MSIX_TEST ...
+MSI-X1 returned -110
+# pci_endpoint_test.c:168:MSIX_TEST:Expected 0 (0) == ret (-110)
+# pci_endpoint_test.c:168:MSIX_TEST:Test failed for MSI-X1
+MSI-X2 returned 0
+MSI-X3 returned 0
+MSI-X4 returned 0
+MSI-X5 returned 0
+MSI-X6 returned 0
+MSI-X7 returned 0
+MSI-X8 returned 0
+MSI-X9 returned 0
+MSI-X10 returned 0
+MSI-X11 returned 0
+MSI-X12 returned 0
+MSI-X13 returned 0
+MSI-X14 returned 0
+MSI-X15 returned 0
+MSI-X16 returned 0
+MSI-X17 returned 0
+MSI-X18 returned 0
+MSI-X19 returned 0
+MSI-X20 returned 0
+MSI-X21 returned 0
+MSI-X22 returned 0
+MSI-X23 returned 0
+MSI-X24 returned 0
+MSI-X25 returned 0
+MSI-X26 returned 0
+MSI-X27 returned 0
+MSI-X28 returned 0
+MSI-X29 returned 0
+MSI-X30 returned 0
+MSI-X31 returned 0
+MSI-X32 returned 0
+MSI-X33 returned -22
+#      SKIP      MSI-X33 is disabled
+#            OK  pci_ep_basic.MSIX_TEST
+ok 16 pci_ep_basic.MSIX_TEST # SKIP MSI-X33 is disabled
+
+
+There seems to be a bug that "pci_ep_basic.MSIX_TEST"
+returns status ok, even though MSI-X1 returned -110 (ETIMEDOUT).
+
+If you don't look closely enough, it is easy to miss the
+"MSI-X1 returned -110"
+and only see:
+ok 16 pci_ep_basic.MSIX_TEST
+
+
+Perhaps this is what I missed when I was doing the same conversion as you some
+time ago.
+
+Anyway, I do see the same problem as you. For some reason IRQ 1 is not working,
+but all other IRQs are working.
+
+Unfortunately I don't have any ideas.
+MSIX_DOORBELL_VECTOR is 10:0 so msg_data can have value 0-2047.
+Thus, it looks correct that dw_pcie_ep_raise_msix_irq_doorbell()
+sets msg_data =  (interrupt_num - 1);
+
+FWIW, I think you should send out patch 1/7 as a standalone patch, so that
+it can be picked up ASAP.
+
+
+Kind regards,
+Niklas
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
