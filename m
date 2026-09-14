@@ -4,63 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C83EC88E72
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 22:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DABD5C88E77
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 23:16:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OrAwmt7gdOnRmqkix2PHYhaS/hMirR5NtINRtRVBiKw=; b=XY6QHt0IZ7557U
-	KN7uo3Cy06F9lslRyixUAiA97dRTSiw7p56FusBpwu3/O85LubUVjPNjOuu9CXJKoMlf4aF+G+rp8
-	FIJ4vPKf9KsHbW7Vixf3fKNZfZjD+PHIlSvxhAMx+zvyIY2geBpmIJ8LnNSgMIUiZuSH6TEbDLBfs
-	cMkP1rL46eCORxhGXvR2lQHtxjmM4hMl78hrkOoA+MpXtyPEfIAIvEF1hwLNluIMfrJiat5tJS8wq
-	LXTGCPXdUhcOErGWIXv4+pwOUEDZcuXBRqX0AZBJ9gW37p2uNAhdLWyM4t+au2RxTHZNVBxprM4+d
-	rNV1k6k3KduCALvv3IMw==;
+	List-Owner; bh=bpRGYGTZLKSxA5d2rGqQ6HcXwzdPLTfM6F4d+QnmtJ8=; b=XJp1j5zKOgA/0+
+	TLlmZ7ZS7PI/tR6x58uVEc0u/tyMSMjBSdVQ5UZr6FucKq06B36GCzk+GItMRQnw7NW7JmNrol0nE
+	pfEVogDZMC55tuUl8Fi3rqer99NZeEwYRgyn7GghiL8K2zKdkZU9nx3Ar0nwstkclbE/C2yhgM7VD
+	/7ZWXuq+El6rOMKcLm+djkef+WgQAGhg2MkaaY5a15bAa+J+KKFJiScs2on/2eRHiMLXV0xXpt+FF
+	kboCNYYpdSDj748uuciC0Cs2oMGaxB38ipCwm7XS1f6UWtJjvPaWSb8hfsoBOGHoeZ0BeheTCGNZD
+	oTQcP40vRmtq/qBA1xjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6F51-00000004mO7-1c6b;
-	Mon, 14 Sep 2026 22:23:15 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x6Fu5-00000004pw3-1xuM;
+	Mon, 14 Sep 2026 23:16:01 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6F4z-00000004mNV-3pnb;
-	Mon, 14 Sep 2026 22:23:14 +0000
+	id 1x6Fu4-00000004pvS-1wIY;
+	Mon, 14 Sep 2026 23:16:00 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1420360252;
-	Mon, 14 Sep 2026 22:23:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DBAD1F000FF;
-	Mon, 14 Sep 2026 22:23:10 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C554C4166A;
+	Mon, 14 Sep 2026 23:15:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29F941F000FF;
+	Mon, 14 Sep 2026 23:15:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789424592;
-	bh=gX0+buPol0IOu2STFYojX6mwp/Bods897OXsqduo5aA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=NOwfO8z0DKR9n0v0AyUrHXu/Z3wP42nsBxLo0tx0FGp2Emi5MCpMD36NqKiet0mAb
-	 IXPC8DIN8pmkayfa+n1Z7hC/3olMJXvvaKUIo6QNmdWFSPkmHH63+mM1703odrTrZw
-	 2+YvigqxHBQ4EGAVmpzwrx5cWeOwfvgMiUqTHaTPQXGpBmGdTZwec5mv3vphaphKo8
-	 QyvjqVSrprtX/d5wqALXX2ExpnGjuF6jfAYHARk/xbN7sA8wTYSV7ndxcS3dq9FnT0
-	 3GKB82ttVc5M3nL1SJZCEQAEdRk1EugwXIILObbzO4TY/H4M9n2uFgtxsM3Jzwt4Tf
-	 ibMjyTgI8+Rsw==
-Message-ID: <f506f53c-0fa1-4853-9560-2172bf880efa@kernel.org>
-Date: Mon, 14 Sep 2026 23:23:09 +0100
+	s=k20260515; t=1789427759;
+	bh=RwH+G4NIKOPDOx7e/oMm/7Vklp7Y5keUcHCNIa7SkMw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=fIzWyZA6UdmZD7hsC15psgVvwBq/uwrPdOgfhkHgj1S6Cuz2PkBpi2vJw6ldTH7en
+	 4/YOUYZufDRk25xh7Qoqxd5cx9SmOhAV4UQeYqsCXBhHkYiJH7areds0K/D08KcUz9
+	 wghgZVZPlV1i++y4bKcODpWeJTVjxXnOBBEdSms7NXhsuvlhDPc/bqDei2LrF0J77t
+	 FZSfsmUFXNw1ySkFkB1PFaYfTDYnmIopXnBpG0BpYNTKU3NP/NFC3Lv9e747KEF7el
+	 QtCPQ7FfKsKWKStI1K/XQHHdIRl6nUJA9ZvCfOs1k5HGHcRdu51e1k2U2vYBi2VTlR
+	 WC9Da0tS7vBdg==
+Date: Mon, 14 Sep 2026 16:15:57 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio
+ <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrew
+ Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Maxime
+ Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Vinod Koul <vkoul@kernel.org>, Giuseppe
+ Cavallaro <peppe.cavallaro@st.com>, Chen-Yu Tsai <wens@kernel.org>, Jernej
+ Skrabec <jernej.skrabec@gmail.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome
+ Brunet <jbrunet@baylibre.com>, Shawn Guo <shawnguo@kernel.org>, Fabio
+ Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>,
+ s32@nxp.com, Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>, Romain Gantois
+ <romain.gantois@bootlin.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>,
+ Christophe Roullier <christophe.roullier@foss.st.com>, Bartosz Golaszewski
+ <brgl@kernel.org>, Radu Rendec <radu@rendec.net>,
+ linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, Drew Fustini
+ <dfustini@tenstorrent.com>, linux-sunxi@lists.linux.dev,
+ linux-amlogic@lists.infradead.org, linux-mips@vger.kernel.org,
+ imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
+ linux-riscv@lists.infradead.org, Bartosz Golaszewski
+ <bartosz.golaszewski@linaro.org>, stable@vger.kernel.org, Krzysztof
+ Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Lad Prabhakar
+ <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Subject: Re: [PATCH net-next v14 00/10] net: stmmac: qcom-ethqos: add
+ support for SCMI power domains
+Message-ID: <20260914161557.3b520b4a@kernel.org>
+In-Reply-To: <20260908-qcom-sa8255p-emac-v14-0-ec212b747a7d@oss.qualcomm.com>
+References: <20260908-qcom-sa8255p-emac-v14-0-ec212b747a7d@oss.qualcomm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] nvmem: layouts: Add Rockchip OTP CPUID layout
- driver
-To: Alexey Charkov <alchark@flipper.net>,
- Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Michael Walle <michael@walle.cc>, Miquel Raynal <miquel.raynal@bootlin.com>,
- Finley Xiao <finley.xiao@rock-chips.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20260902-rk3576-otp-cpuid-mac-v2-0-e4b7fe2ab13f@flipper.net>
- <20260902-rk3576-otp-cpuid-mac-v2-3-e4b7fe2ab13f@flipper.net>
-Content-Language: en-US
-From: Srinivas Kandagatla <srini@kernel.org>
-In-Reply-To: <20260902-rk3576-otp-cpuid-mac-v2-3-e4b7fe2ab13f@flipper.net>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,176 +96,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 9/2/26 2:07 PM, Alexey Charkov wrote:
-> Rockchip SoCs customarily use the CPU ID programmed into their on-chip OTP
-> memory to derive stable Ethernet MAC addresses even when a board doesn't
-> otherwise have dedicated storage for those. The derivation depends on the
-> particular bootloader implementation (e.g. it is done by upstream U-Boot,
-> which patches the derived MAC addresses at runtime into the device tree it
-> hands to the kernel). Using less featureful bootloaders, such as direct
-> boot to Linux from SPL, leaves the kernel with only a random MAC address
-> instead, even though everything required for the derivation is equally
-> available to Linux as it is to U-Boot.
+On Tue, 08 Sep 2026 16:57:19 +0200 Bartosz Golaszewski wrote:
+> Add support for the firmware-managed variant of the DesignWare MAC on
+> the sa8255p platform. This series contains new DT bindings and driver
+> changes required to support the MAC in the STMMAC driver.
 > 
-> Reproduce the same derivation in the kernel and expose the result as an
-> nvmem cell named "mac-address", so that of_get_mac_address() picks it up
-> through its standard nvmem fallback. The address index comes from the DT
-> phandle argument, which lets both interfaces of a dual Ethernet board
-> share a single cell.
-> 
-> Enable the layout by default on Rockchip, as consumers of its cells would
-> otherwise defer their probe indefinitely.
-> 
-> Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
-> Signed-off-by: Alexey Charkov <alchark@flipper.net>
-> ---
->  MAINTAINERS                                |   1 +
->  drivers/nvmem/layouts/Kconfig              |  13 ++++
->  drivers/nvmem/layouts/Makefile             |   1 +
->  drivers/nvmem/layouts/rockchip-otp-cpuid.c | 119 +++++++++++++++++++++++++++++
->  4 files changed, 134 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index f3d07ce7b3c8..73e0531445be 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -23727,6 +23727,7 @@ M:	Alexey Charkov <alchark@flipper.net>
->  L:	linux-rockchip@lists.infradead.org
->  S:	Maintained
->  F:	Documentation/devicetree/bindings/nvmem/layouts/rockchip,rk3576-otp-cpuid.yaml
-> +F:	drivers/nvmem/layouts/rockchip-otp-cpuid.c
->  
->  ROCKCHIP RK3568 RANDOM NUMBER GENERATOR SUPPORT
->  M:	Daniel Golle <daniel@makrotopia.org>
-> diff --git a/drivers/nvmem/layouts/Kconfig b/drivers/nvmem/layouts/Kconfig
-> index 5e586dfebe47..6e2511ac6f7e 100644
-> --- a/drivers/nvmem/layouts/Kconfig
-> +++ b/drivers/nvmem/layouts/Kconfig
-> @@ -26,6 +26,19 @@ config NVMEM_LAYOUT_ONIE_TLV
->  
->  	  If unsure, say N.
->  
-> +config NVMEM_LAYOUT_ROCKCHIP_OTP_CPUID
-> +	tristate "Rockchip OTP CPU ID layout support"
-> +	default ARCH_ROCKCHIP
-> +	select CRYPTO_LIB_SHA256
-> +	help
-> +	  Say Y here if you want to expose the MAC addresses that Rockchip
-> +	  bootloaders derive from the CPU ID programmed into the OTP memory of
-> +	  Rockchip SoCs. Boards which have no other source of MAC addresses
-> +	  need this to get stable ones when the bootloader does not patch them
-> +	  into the device tree.
-> +
-> +	  If unsure, say N.
-> +
->  config NVMEM_LAYOUT_U_BOOT_ENV
->  	tristate "U-Boot environment variables layout"
->  	select CRC32
-> diff --git a/drivers/nvmem/layouts/Makefile b/drivers/nvmem/layouts/Makefile
-> index dd6c6c70b1a9..a0ade4c22c79 100644
-> --- a/drivers/nvmem/layouts/Makefile
-> +++ b/drivers/nvmem/layouts/Makefile
-> @@ -6,4 +6,5 @@
->  obj-$(CONFIG_NVMEM_LAYOUTS) += fixed-layout.o
->  obj-$(CONFIG_NVMEM_LAYOUT_SL28_VPD) += sl28vpd.o
->  obj-$(CONFIG_NVMEM_LAYOUT_ONIE_TLV) += onie-tlv.o
-> +obj-$(CONFIG_NVMEM_LAYOUT_ROCKCHIP_OTP_CPUID) += rockchip-otp-cpuid.o
->  obj-$(CONFIG_NVMEM_LAYOUT_U_BOOT_ENV) += u-boot-env.o
-> diff --git a/drivers/nvmem/layouts/rockchip-otp-cpuid.c b/drivers/nvmem/layouts/rockchip-otp-cpuid.c
-> new file mode 100644
-> index 000000000000..61f509c4a8cf
-> --- /dev/null
-> +++ b/drivers/nvmem/layouts/rockchip-otp-cpuid.c
-> @@ -0,0 +1,119 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +// SPDX-FileCopyrightText: 2026 Flipper FZCO
-> +/*
-> + * NVMEM layout for the CPU ID in Rockchip OTP memory
-> + */
-> +
-> +#include <crypto/sha2.h>
-> +#include <linux/device-id/of.h>
-> +#include <linux/etherdevice.h>
-> +#include <linux/hex.h>
-> +#include <linux/module.h>
-> +#include <linux/nvmem-provider.h>
-> +#include <linux/of.h>
-> +#include <uapi/linux/if_ether.h>
-...
-> +
-> +static int rockchip_cpuid_mac_pp(void *priv, const char *id, int index,
-> +				 unsigned int offset, void *buf, size_t bytes)
-> +{
-> +	char cpuid[ROCKCHIP_CPUID_LEN * 2];
-> +	u8 digest[SHA256_DIGEST_SIZE];
-> +	u8 *mac = buf;
-> +
-> +	if (bytes != ROCKCHIP_CPUID_LEN)
-> +		return -EINVAL;
-> +
-> +	if (index < 0 || index > 1)
-> +		return -EINVAL;
-> +
-> +	/* The buffer still holds the raw CPU ID at this point */
-> +	bin2hex(cpuid, mac, ROCKCHIP_CPUID_LEN);
-> +
-> +	sha256(cpuid, sizeof(cpuid), digest);
-> +
-> +	memcpy(mac, digest, ETH_ALEN);
-> +	mac[0] &= 0xfe;		/* clear the multicast bit */
-> +	mac[0] |= 0x02;		/* set the locally administered bit */
-> +	mac[5] ^= index;
-> +
-> +	if (!is_valid_ether_addr(mac))
-> +		return -EINVAL;
-isn't this a dead check?
+> It also reorganizes the ethqos code quite a bit to make the introduction
+> of power domains into the driver a bit easier on the eye.
 
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_cpuid_add_cells(struct nvmem_layout *layout)
-> +{
-> +	const struct rockchip_cpuid_data *data;
-> +	struct nvmem_cell_info info = {0};
-> +	struct device_node *layout_np;
-> +	int ret;
-> +
-> +	data = of_device_get_match_data(&layout->dev);
-> +	if (!data)
-> +		return -EINVAL;
-same here, this is dead check as we can never reach to this point
-without matching compatible.
-
-> +
-> +	layout_np = of_nvmem_layout_get_container(layout->nvmem);
-> +	if (!layout_np)
-> +		return -ENOENT;
-> +
-> +	info.name = "mac-address";
-> +	info.offset = data->offset;
-> +	info.raw_len = ROCKCHIP_CPUID_LEN;
-> +	info.bytes = ETH_ALEN;
-> +	info.read_post_process = rockchip_cpuid_mac_pp;
-> +	info.np = of_get_child_by_name(layout_np, info.name);
-> +
-> +	of_node_put(layout_np);
-> +
-> +	ret = nvmem_add_one_cell(layout->nvmem, &info);
-> +	if (ret)
-> +		of_node_put(info.np);
-> +
-> +	return ret;
-> +}
-> +...
-
-> +MODULE_LICENSE("GPL");
-> +MODULE_AUTHOR("Alexey Charkov <alchark@flipper.net>");
-> +MODULE_DESCRIPTION("NVMEM layout driver for the CPU ID in Rockchip OTP memory");
-> 
-
+Sorry for the delay, this series got eaten by the recent patchwork
+upgrade :( I will manually send out the AI review, would you be willing
+to report back if any of the reviews warrant v15?
 
 _______________________________________________
 Linux-rockchip mailing list
