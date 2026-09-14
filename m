@@ -4,64 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11A50C88E7B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 20:25:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 143EDC88E72
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 21:02:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wKQruzTHpMnBM0BlQUSGBtQePUP8yp1aR+08X2QNprk=; b=44svjRqnbX5vZS
-	aICfk+CmmdaISkpLZBKiD/94CESUrsZZz/zOhsi4ebu2q+Zte6dKyPNevZZdjrfBWlorIDLz4rDj4
-	lIqKkNXL3vx0LvxT24a9wikA+AdwYYa8ri68U9XMZn5hbyobpzKvuSuFv3bnw75Dfu+xEDBwr8Nqy
-	L12H7ZKsk+aUyPorkLcDO4TUaKdBcVStMn5vs+OpyAROnyrFjFCqKN6259OXzK7c8apX5tcL/yZOK
-	SvlktxmjY5P0dJZTG5WpFqgIIGrn//6RTT4Rue7CG1h3+e0TJ7XaqiF8lZOgeBj9+I4AOESUdxaBx
-	NX7OV1VPPK4jXQBR3g4g==;
+	List-Owner; bh=aX5+6CZtU/X4vICDtiGLWBgM2+CBKKxkvWh8qBIJWXU=; b=iOlJlQuUVwDyUR
+	HoVnlQQ7ecDitWv3Po5QnlXG9/oj4jAiR3BvlbUzRpdAfY8rRBZhrFENiIiUqEx/fHQvqs3O5mmSq
+	eN7Vo4iqapp/ZsMC9lAhe2ebRSpvB9Tif1gG2OMBN2jJCCCciAzDHfhtLjAgxD1VguL6XDdYiFmlM
+	MTSpYSEWm92NWHmBWpOVA/M7jYbrr8/1EUXadLR/JRUJsDW2qkr9PeHxUsyJOU0i4kHQ4Mrob4Oui
+	M2YQQYC/E7iKT1uGwKj6nFGJEHeHXzJ6rVq96/ArQ374NWI79x3PpqXKgKMTC2piK2RFFoDPW8P4l
+	b9ANmAIVOmJ7eYaESZ7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6DEs-00000004b2x-0Gcd;
-	Mon, 14 Sep 2026 20:25:18 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x6Dox-00000004eKT-2SKu;
+	Mon, 14 Sep 2026 21:02:35 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6DEU-00000004aZm-2RpJ;
-	Mon, 14 Sep 2026 20:24:55 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id EFFFB602C2;
-	Mon, 14 Sep 2026 20:24:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 343821F000FF;
-	Mon, 14 Sep 2026 20:24:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789417493;
-	bh=EdUGey0Y6fUygZcO3oI/pgasXv1LbqpF456UVNPI0RY=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=KmheNl2HmKbF7QozkgpVRgt69X5wdGL7cLO/skh5x+3JrNIJd3gG5muta106qbdx/
-	 mrPtYOlO1vnbXtrFdsb21CPmp5GhsUa0Sg3LGwwRi7fPT9pgsHsabJIBW8JkUMUONd
-	 sXCLPRDWCdHXo062eN76E/tFT9x4dRBrX1+FDT/PhzBmp7nmAKe1M+xwzULRk/TPbt
-	 qd4WgeUgaqGYgUj0XIKQxauSUnaGyTdLGnJ2yr3sM1wlI23GB3jHf5NiJsXkHSJLv8
-	 QpIC6nL/1m7H82LgjNg9Jd78DoPCj09tdA+NFKfCa6exzE8P2HTURFTmhXeEyrZUlk
-	 HhNlo2ZEk5ezw==
-Subject: Re: [PATCH net-next v5 09/11] net: stmmac: dwmac-rk: add SGMII
- support for RK3568
-From: netdev-bot+sashiko@kernel.org
-To: coiaprant@gmail.com
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, heiko@sntech.de, vkoul@kernel.org,
- maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, prabhakar.mahadev-lad.rj@bp.renesas.com,
- romain.gantois@bootlin.com, hkallweit1@gmail.com, neil.armstrong@linaro.org,
- linux@armlinux.org.uk, shawn.lin@rock-chips.com, david@ixit.cz,
- netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-renesas-soc@vger.kernel.org
-Date: Mon, 14 Sep 2026 20:24:51 +0000
-Message-ID: <178941749179.22033.3182687831989800376@kernel.org>
-In-Reply-To: <20260913185849.907479-10-coiaprant@gmail.com>
-References: <20260913185849.907479-10-coiaprant@gmail.com>
-X-sashiko-severity: Medium
+	id 1x6Dos-00000004eHW-3S9p;
+	Mon, 14 Sep 2026 21:02:33 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20260914210223euoutp0232f0813c7657236ff92e65a4f265b42c~VS8afgsQQ2818028180euoutp02V;
+	Mon, 14 Sep 2026 21:02:23 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20260914210223euoutp0232f0813c7657236ff92e65a4f265b42c~VS8afgsQQ2818028180euoutp02V
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1789419743;
+	bh=JH7rxlQZ0+nRwrQxylBU7gkca4+zlyVrnpLiQJx/SLY=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=rUuWsUYYKAojChsYja+6EWNcL3qZVqZ74VO/OCeiK0hiMLACAh/M0UmD0XSAxCoHG
+	 vSk4ivL+UidbpjFeDgdzT/RJTrutLygyep0taUKbTv7kkeL/mZ4tQaw3nSg72hvI4X
+	 b5HtClGVkvgjAGxjh4kyW31zAJs+/N2OOGl4BUZc=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20260914210222eucas1p278d9f9996cf56dd8c531811edd3c5c82~VS8aCtH-63167031670eucas1p2k;
+	Mon, 14 Sep 2026 21:02:22 +0000 (GMT)
+Received: from [192.168.1.44] (unknown [106.210.136.40]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20260914210220eusmtip22564f1bf2f1e653328b6ed505c100cc9~VS8YOBrF41559115591eusmtip2b;
+	Mon, 14 Sep 2026 21:02:20 +0000 (GMT)
+Message-ID: <071901ef-57f3-456f-af5b-a8c99a0a7dd3@samsung.com>
+Date: Mon, 14 Sep 2026 23:02:20 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/19] drm: starfive: jh7110: Enable display
+ subsystem
+To: Joshua Peisach <jpeisach@ubuntu.com>, Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss
+	<rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
+	Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Emil
+	Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, Heiko Stuebner
+	<heiko@sntech.de>, Conor Dooley <conor@kernel.org>, Paul Walmsley
+	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
+	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
+	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, Jerome
+	Brunet <jbrunet+clk@baylibre.com>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	mfd@lists.linux.dev, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org, Andy Yan <andyshrk@163.com>, Marek
+	Szyprowski <m.szyprowski@samsung.com>, Maud Spierings
+	<maud_spierings@murena.io>, Graham Markall <hello@big-grey.co.uk>, Icenowy
+	Zheng <zhengxingda@iscas.ac.cn>
+Content-Language: en-US
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+In-Reply-To: <DL6MO1P17KSW.1DKQ6HW2U2ZCK@ubuntu.com>
+X-CMS-MailID: 20260914210222eucas1p278d9f9996cf56dd8c531811edd3c5c82
+X-Msg-Generator: CA
+X-RootMTR: 20260904132708eucas1p1adfa26ef0fe5109eca63a3aeadf74915
+X-EPHeader: CA
+X-CMS-RootMailID: 20260904132708eucas1p1adfa26ef0fe5109eca63a3aeadf74915
+References: <CGME20260904132708eucas1p1adfa26ef0fe5109eca63a3aeadf74915@eucas1p1.samsung.com>
+	<20260904-jh7110-clean-send-v3-0-484f9ae72715@samsung.com>
+	<DL6MO1P17KSW.1DKQ6HW2U2ZCK@ubuntu.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260914_140231_565206_6EE3308B 
+X-CRM114-Status: GOOD (  34.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,189 +103,272 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
-NSBwb3RlbnRpYWwKaXNzdWUocykgdG8gY29uc2lkZXI6CgpDcml0aWNhbDogMCDCtyBIaWdoOiAw
-IMK3IE1lZGl1bTogMiAoMSkgwrcgTG93OiAzCgotIFtNZWRpdW1dIERXTUFDX1JPQ0tDSElQIGdh
-aW5zIGFuIHVuY29uZGl0aW9uYWwgYHNlbGVjdAogIFBDU19YUENTX1JPQ0tDSElQYCB3aXRob3V0
-IGluaGVyaXRpbmcgdGhlIHNlbGVjdGVkIHN5bWJvbCdz4oCmCi0gW01lZGl1bV0gRm9yIFNHTUlJ
-IHRoZSBkcml2ZXIgcmVtb3ZlcyBldmVyeSBzcGVlZC1kZXBlbmRlbnQgY2xvY2sKICBwcm9ncmFt
-bWluZyBwYXRoIChya19nbWFjX3Byb2JlKCkgc2V0cyBwbGF0X2RhdC0+c2V0X2Nsa190eF9yYXRl
-ID3igKYKLSBbTG93XSBya19nZXRfaW50ZXJmYWNlcygpIChkd21hYy1yay5jOjE1NzAtMTU3MSkg
-bm93IHNldHMKICBQSFlfSU5URVJGQUNFX01PREVfU0dNSUkgaW4gcGh5bGluaydzIHN1cHBvcnRl
-ZF9pbnRlcmZhY2VzIGZvciBldmVyeeKApgotIFtMb3ddIFRoZSBSSzM1NjggWFBDUyBTb0Mgbm9k
-ZSBhZGRlZCBieSB0aGUgc2VyaWVzICgnYXJtNjQ6IGR0czoKICByb2NrY2hpcDogcmszNTY4OiBh
-ZGQgWFBDUyBhbmQgZml4ZWQtY2xvY2sgbm9kZXMnKSBvbWl0cyBwcm9wZXJ0aWVz4oCmCi0gW0xv
-d10gcmtfc2VsZWN0X3BjcygpIChkd21hYy1yay5jOjEyNjgtMTI3NSkgaWdub3JlcyBpdHMgYGlu
-dGVyZmFjZWAKICBhcmd1bWVudCBhbmQgcmV0dXJucyB0aGUgU0dNSUkgWFBDUyBmb3IgZXZlcnkg
-aW50ZXJmYWNlIG1vZGUs4oCmCgpQcmUtZXhpc3RpbmcgaXNzdWVzOgotIFtNZWRpdW1dIERJU0NB
-UkRFRCAodmFsaWQgYnV0IHByZS1leGlzdGluZyBhbmQgYmVsb3cgdGhlIHJlcG9ydGluZwogIHRo
-cmVzaG9sZCBmb3IgcHJlLWV4aXN0aW5nIGRlZmVjdHMpLgoKLS0KCm5ldDogc3RtbWFjOiBkd21h
-Yy1yazogYWRkIFNHTUlJIHN1cHBvcnQgZm9yIFJLMzU2OAoKQWRkcyBhIHNldF90b19zZ21paSgp
-L3NldF90b19ybWlpKCkgcGFpciBmb3IgcmszNTY4IHRvIHByb2dyYW0gR1JGIGJpdCA3LAp3aXJl
-cyB1cCBwY3NfaW5pdC9wY3NfZXhpdC9zZWxlY3RfcGNzIHNvIHRoZSBSb2NrY2hpcCBYUENTIGlz
-IHVzZWQgYXMgdGhlClBDUywgYW5kIHJlb3JkZXJzIHJrX2dtYWNfcG93ZXJ1cCgpIHNvIHRoZSBj
-bG9ja3MgYXJlIGVuYWJsZWQgYmVmb3JlIHRoZQppbnRlcmZhY2Utc3BlY2lmaWMgY29uZmlndXJh
-dGlvbi4KCkxpbms6IGh0dHBzOi8vZGwucmFkeGEuY29tL3JvY2szL2RvY3MvaHcvZGF0YXNoZWV0
-L1JvY2tjaGlwJTIwUkszNTY4JTIwVFJNJTIwUGFydDElMjBWMS4xLTIwMjEwMzAxLnBkZiAoUGFn
-ZSAzODYpCgpBIGZldyBxdWVzdGlvbnMgYmVsb3cuCgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25l
-dC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9LY29uZmlnIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQv
-c3RtaWNyby9zdG1tYWMvS2NvbmZpZwo+IGluZGV4IGFiM2M0Y2Y5NjQyMzkuLmM2NTU5ZTc0OWMw
-Y2UgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvS2Nv
-bmZpZwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL0tjb25maWcK
-PiBAQCAtMTcwLDYgKzE3MCw3IEBAIGNvbmZpZyBEV01BQ19ST0NLQ0hJUAo+ICAJZGVmYXVsdCBB
-UkNIX1JPQ0tDSElQCj4gIAlkZXBlbmRzIG9uIE9GICYmIChBUkNIX1JPQ0tDSElQIHx8IENPTVBJ
-TEVfVEVTVCkKPiAgCXNlbGVjdCBNRkRfU1lTQ09OCj4gKwlzZWxlY3QgUENTX1hQQ1NfUk9DS0NI
-SVAKCltTZXZlcml0eTogTWVkaXVtXQpEb2VzIHRoaXMgc2VsZWN0IHByb2R1Y2UgdW5tZXQgZGVw
-ZW5kZW5jeSB3YXJuaW5ncz8gIFBDU19YUENTX1JPQ0tDSElQIGluCmRyaXZlcnMvbmV0L3Bjcy9L
-Y29uZmlnIGNhcnJpZXMgdGhyZWUgZGVwZW5kZW5jeSBsaW5lczoKCiAgY29uZmlnIFBDU19YUENT
-X1JPQ0tDSElQCgl0cmlzdGF0ZSAiUm9ja2NoaXAgWFBDUyBjb250cm9sbGVyIHN1cHBvcnQiCglk
-ZWZhdWx0IEFSQ0hfUk9DS0NISVAKCWRlcGVuZHMgb24gT0YgJiYgKEFSQ0hfUk9DS0NISVAgfHwg
-Q09NUElMRV9URVNUKQoJZGVwZW5kcyBvbiBHRU5FUklDX1BIWSB8fCBDT01QSUxFX1RFU1QKCWRl
-cGVuZHMgb24gUE1fR0VORVJJQ19ET01BSU5TIHx8IENPTVBJTEVfVEVTVAoKd2hpbGUgRFdNQUNf
-Uk9DS0NISVAgb25seSBoYXMgImRlcGVuZHMgb24gT0YgJiYgKEFSQ0hfUk9DS0NISVAgfHwKQ09N
-UElMRV9URVNUKSIuICBBUkNIX1JPQ0tDSElQIGluIGFyY2gvYXJtNjQvS2NvbmZpZy5wbGF0Zm9y
-bXMgc2VsZWN0cyBQTQpidXQgbmVpdGhlciBHRU5FUklDX1BIWSBub3IgUE1fR0VORVJJQ19ET01B
-SU5TLCBzbyBhIGNvbmZpZyB3aXRoCkFSQ0hfUk9DS0NISVA9eSwgQ09NUElMRV9URVNUPW4gYW5k
-IEdFTkVSSUNfUEhZPW4gKG9yIFBNX0dFTkVSSUNfRE9NQUlOUz1uKQpmb3JjZS1lbmFibGVzIFBD
-U19YUENTX1JPQ0tDSElQIHdpdGggaXRzIG93biBkZXBlbmRzIHVuc2F0aXNmaWVkOgoKICBXQVJO
-SU5HOiB1bm1ldCBkaXJlY3QgZGVwZW5kZW5jaWVzIGRldGVjdGVkIGZvciBQQ1NfWFBDU19ST0NL
-Q0hJUAoKcGNzLXhwY3MtcmsubyBpcyB0aGVuIGJ1aWx0IGFnYWluc3QgdGhlIHBoeSBzdHVicyB3
-aGVyZSBkZXZtX3BoeV9nZXQoKQpyZXR1cm5zIEVSUl9QVFIoLUVOT1NZUyksIHNvIHRoZSBwcm9i
-ZSBjYW5ub3Qgc3VjY2VlZC4KClRoZSBzZWxlY3QgaXMgYWxzbyB1bmNvbmRpdGlvbmFsLCBzbyBl
-dmVyeSBSb2NrY2hpcCBkd21hYyBidWlsZAooUkszMjg4L1JLMzMyOC9SSzMzOTkvUkszNTg4IC4u
-LikgZm9yY2UtZW5hYmxlcyB0aGUgUkszNTZ4LW9ubHkgWFBDUwpkcml2ZXIuICBXb3VsZCBpbmhl
-cml0aW5nIHRoZSBjb25zdHJhaW50cywgb3IgbWFraW5nIHRoZSBzZWxlY3Rpb24KY29uZGl0aW9u
-YWwsIGJlIHByZWZlcmFibGUgaGVyZT8gIE5vdGUgdGhhdCBzaW1wbHkgYWRkaW5nIHRoZSB0d28g
-ZGVwZW5kcwpsaW5lcyB0byBEV01BQ19ST0NLQ0hJUCB3b3VsZCB0dXJuIG9mZiBFdGhlcm5ldCBv
-biBleGlzdGluZyBSSzMyODgvUkszMzk5CmNvbmZpZ3VyYXRpb25zLCBzbyB0aGUgY2hvaWNlIHBy
-b2JhYmx5IG5lZWRzIHRvIGJlIGV4cGxpY2l0LgoKVGhlIEtjb25maWcgY2hhbmdlIGlzIGFsc28g
-bm90IG1lbnRpb25lZCBhbnl3aGVyZSBpbiB0aGUgY29tbWl0IG1lc3NhZ2UuCgo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5jIGIvZHJp
-dmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtcmsuYwo+IGluZGV4IDhkNzA0
-MmU2ODkyNjEuLjVkNTAxZWQ4ZDE0MjkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJu
-ZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtcmsuYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L3N0bWljcm8vc3RtbWFjL2R3bWFjLXJrLmMKClsgLi4uIF0KCj4gQEAgLTEyMDgsNiArMTIzNyw0
-MyBAQCBzdGF0aWMgdm9pZCBya19waHlfcG93ZXJkb3duKHN0cnVjdCBya19wcml2X2RhdGEgKmJz
-cF9wcml2KQo+ICtzdGF0aWMgc3RydWN0IHBoeWxpbmtfcGNzICpya19zZWxlY3RfcGNzKHN0cnVj
-dCBzdG1tYWNfcHJpdiAqcHJpdiwKPiArCQkJCQkgcGh5X2ludGVyZmFjZV90IGludGVyZmFjZSkK
-PiArewo+ICsJaWYgKCFwcml2LT5ody0+eHBjcykKPiArCQlyZXR1cm4gTlVMTDsKPiArCj4gKwly
-ZXR1cm4geHBjc190b19waHlsaW5rX3Bjcyhwcml2LT5ody0+eHBjcyk7Cj4gK30KCltTZXZlcml0
-eTogTG93XQpTaG91bGQgcmtfc2VsZWN0X3BjcygpIGxvb2sgYXQgaXRzIGludGVyZmFjZSBhcmd1
-bWVudD8gIFRoZSBtYWNfc2VsZWN0X3Bjcwpjb250cmFjdCBpbiBpbmNsdWRlL2xpbnV4L3BoeWxp
-bmsuaCBpcyB0byByZXR1cm4gdGhlIFBDUyBmb3IgdGhlIHNwZWNpZmllZAppbnRlcmZhY2UsIG9y
-IE5VTEwgd2hlbiBub25lIGlzIHJlcXVpcmVkLCBidXQgdGhpcyByZXR1cm5zIHRoZSBTR01JSSBY
-UENTCmZvciBhbnkgbW9kZS4KCk9uIGFuIFJLMzU2OCBwb3J0IHByb2JlZCBhcyBTR01JSSwgcmtf
-Z2V0X2ludGVyZmFjZXMoKSBhbHNvIGFkdmVydGlzZXMgdGhlClJHTUlJIHZhcmlhbnRzIGFuZCBS
-TUlJLCBhbmQgeHBjcy0+cGNzLnN1cHBvcnRlZF9pbnRlcmZhY2VzIGlzIG5vbi1lbXB0eQooZmls
-bGVkIGluIGJ5IHhwY3NfZ2V0X2ludGVyZmFjZXMoKSkuICBXaGVuIHBoeWxpbmsgdmFsaWRhdGVz
-IG9uZSBvZiB0aG9zZQpub24tU0dNSUkgaW50ZXJmYWNlcywgcGh5bGlua192YWxpZGF0ZV9tYWNf
-YW5kX3BjcygpIGhpdHM6CgoJaWYgKCFwaHlfaW50ZXJmYWNlX2VtcHR5KHBjcy0+c3VwcG9ydGVk
-X2ludGVyZmFjZXMpICYmCgkgICAgIXRlc3RfYml0KHN0YXRlLT5pbnRlcmZhY2UsIHBjcy0+c3Vw
-cG9ydGVkX2ludGVyZmFjZXMpKSB7CgkJcGh5bGlua19lcnIocGwsICJNQUMgcmV0dXJuZWQgUENT
-IHdoaWNoIGRvZXMgbm90IHN1cHBvcnQgJXNcbiIsCgkJCSAgICBwaHlfbW9kZXMoc3RhdGUtPmlu
-dGVyZmFjZSkpOwoJCXJldHVybiAtRUlOVkFMOwoJfQoKV291bGQgcmV0dXJuaW5nIHRoZSBYUENT
-IG9ubHkgZm9yIFBIWV9JTlRFUkZBQ0VfTU9ERV9TR01JSSBhbmQgTlVMTApvdGhlcndpc2UgYXZv
-aWQgdGhhdCBlcnJvciBwYXRoPwoKPiBAQCAtMTM3OSwxNiArMTQ1MCwxOSBAQCBzdGF0aWMgaW50
-IHJrX2dtYWNfcG93ZXJ1cChzdHJ1Y3QgcmtfcHJpdl9kYXRhICpic3BfcHJpdikKPiAgCWlmIChy
-ZXQpCj4gIAkJcmV0dXJuIHJldDsKPiAgCj4gKwlyZXQgPSBnbWFjX2Nsa19lbmFibGUoYnNwX3By
-aXYsIHRydWUpOwo+ICsJaWYgKHJldCkKPiArCQlyZXR1cm4gcmV0Owo+ICsKCltTZXZlcml0eTog
-TWVkaXVtXQpUaGlzIGlzbid0IGEgYnVnIGludHJvZHVjZWQgYnkgdGhpcyBwYXRjaCwgYnV0IG5v
-dyB0aGF0IGdtYWNfY2xrX2VuYWJsZSgpCmlzIHRoZSBmaXJzdCByZXNvdXJjZSBhY3F1aXNpdGlv
-biBpbiBya19nbWFjX3Bvd2VydXAoKSwgaXRzIHBhcnRpYWwtZmFpbHVyZQpwYXRoIGJlY29tZXMg
-bW9yZSB2aXNpYmxlLiAgRG8gdGhlIGJ1bGsgY2xvY2tzIGxlYWsgd2hlbiB0aGUgY2xrX3BoeSBl
-bmFibGUKZmFpbHM/Cgpkcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1y
-ay5jOmdtYWNfY2xrX2VuYWJsZSgpIHsKCS4uLgoJCXJldCA9IGNsa19idWxrX3ByZXBhcmVfZW5h
-YmxlKGJzcF9wcml2LT5udW1fY2xrcywKCQkJCQkgICAgICBic3BfcHJpdi0+Y2xrcyk7CgkJaWYg
-KHJldCkKCQkJcmV0dXJuIHJldDsKCgkJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGJzcF9wcml2
-LT5jbGtfcGh5KTsKCQlpZiAocmV0KQoJCQlyZXR1cm4gcmV0OwoJLi4uCn0KClRoZSBzZWNvbmQg
-ZmFpbHVyZSByZXR1cm5zIHdpdGhvdXQgY2FsbGluZyBjbGtfYnVsa19kaXNhYmxlX3VucHJlcGFy
-ZSgpIGFuZAp3aXRob3V0IHNldHRpbmcgYnNwX3ByaXYtPmNsa19lbmFibGVkLCBzbyB0aGUgbGF0
-ZXIgZ21hY19jbGtfZW5hYmxlKGJzcF9wcml2LApmYWxzZSkgaW4gcmtfZ21hY19wb3dlcmRvd24o
-KSBhbmQgYXQgdGhlIG5ldyBjbGtfZGlzYWJsZSBsYWJlbCBpcyBhIG5vLW9wCmJlY2F1c2UgaXQg
-aXMgZ2F0ZWQgb24gY2xrX2VuYWJsZWQuICBUaGlzIG9ubHkgdHJpZ2dlcnMgZm9yIGludGVncmF0
-ZWQtUEhZCnNldHVwcyB3aGVyZSBjbGtfcGh5IGlzIG5vbi1OVUxMLgoKPiArCWlmIChic3BfcHJp
-di0+cGh5X2lmYWNlID09IFBIWV9JTlRFUkZBQ0VfTU9ERV9TR01JSSkKPiArCQlnb3RvIHNldF9t
-b2RlOwo+ICsKPiAgCXJldCA9IHJrX2dldF9waHlfaW50Zl9zZWwoYnNwX3ByaXYtPnBoeV9pZmFj
-ZSk7Cj4gIAlpZiAocmV0IDwgMCkKPiAtCQlyZXR1cm4gcmV0Owo+ICsJCWdvdG8gY2xrX2Rpc2Fi
-bGU7CgpbIC4uLiBdCgo+IEBAIC0xNDg2LDYgKzE1NjYsOSBAQCBzdGF0aWMgdm9pZCBya19nZXRf
-aW50ZXJmYWNlcyhzdHJ1Y3Qgc3RtbWFjX3ByaXYgKnByaXYsIHZvaWQgKmJzcF9wcml2LAo+ICAK
-PiAgCWlmIChyay0+c3VwcG9ydHNfcm1paSkKPiAgCQlfX3NldF9iaXQoUEhZX0lOVEVSRkFDRV9N
-T0RFX1JNSUksIGludGVyZmFjZXMpOwo+ICsKPiArCWlmIChyay0+c3VwcG9ydHNfc2dtaWkpCj4g
-KwkJX19zZXRfYml0KFBIWV9JTlRFUkZBQ0VfTU9ERV9TR01JSSwgaW50ZXJmYWNlcyk7Cj4gIH0K
-CltTZXZlcml0eTogTG93XQpJcyBTR01JSSBzYWZlIHRvIGFkdmVydGlzZSBvbiBhIHBvcnQgdGhh
-dCB3YXMgbm90IHByb2JlZCBhcyBTR01JST8KcmszNTY4X29wcyBwb3B1bGF0ZXMgc2V0X3RvX3Nn
-bWlpIHVuY29uZGl0aW9uYWxseSwgYW5kIHJrX2dtYWNfc2V0dXAoKQpkZXJpdmVzIHN1cHBvcnRz
-X3NnbWlpIGZyb20gaXQsIHNvIGV2ZXJ5IFJLMzU2OCBwb3J0IG5vdyBhZHZlcnRpc2VzIFNHTUlJ
-CmluIHBoeWxpbmsncyBzdXBwb3J0ZWRfaW50ZXJmYWNlcyAoc3RtbWFjX3BoeV9zZXR1cCgpIGNv
-cGllcyB0aGUKZ2V0X2ludGVyZmFjZXMoKSBvdXRwdXQgdmVyYmF0aW0gaW50byBjb25maWctPnN1
-cHBvcnRlZF9pbnRlcmZhY2VzKS4KCkFsbCB0aGUgU0dNSUkgc2V0dXAsIHRob3VnaCwgaXMga2V5
-ZWQgb2ZmIHRoZSBwcm9iZS10aW1lIERUIHBoeS1tb2RlOgoKICAtIHJrX2dtYWNfcG93ZXJ1cCgp
-IHdyaXRlcyBSSzM1NjhfR01BQ19NT0RFX1NHTUlJX1FTR01JSSBvbmx5IGluIHRoZQogICAgImNh
-c2UgUEhZX0lOVEVSRkFDRV9NT0RFX1NHTUlJOiIgYnJhbmNoLCB3aGljaCBydW5zIG9uY2UgYXQg
-aW5pdAogIC0gcmtfZ21hY19wcm9iZSgpIGluc3RhbGxzIHBjc19pbml0L3Bjc19leGl0L3NlbGVj
-dF9wY3MsCiAgICBkZWZhdWx0X2FuX2luYmFuZCBhbmQgY2xlYXJzIHNldF9jbGtfdHhfcmF0ZSBv
-bmx5IHVuZGVyCiAgICAiaWYgKHBsYXRfZGF0LT5waHlfaW50ZXJmYWNlID09IFBIWV9JTlRFUkZB
-Q0VfTU9ERV9TR01JSSkiCgpTbyBvbiBhIHBvcnQgcHJvYmVkIGFzIHJnbWlpKi9ybWlpLCBpZiBw
-aHlsaW5rIGxhdGVyIHNlbGVjdHMgU0dNSUkgKFNGUApjYWdlLCBvciBhIFBIWSByZXBvcnRpbmcg
-U0dNSUkgYXMgaXRzIGhvc3QgaW50ZXJmYWNlKSwgR1JGIGJpdCA3IHN0YXlzCmNsZWFyZWQgYnkg
-cmszNTY4X3NldF90b19yZ21paSgpL3JrMzU2OF9zZXRfdG9fcm1paSgpLCBwbGF0LT5zZWxlY3Rf
-cGNzIGlzCk5VTEwgc28gc3RtbWFjX21hY19zZWxlY3RfcGNzKCkgcmV0dXJucyBOVUxMIGFuZCB0
-aGVyZSBpcyBubyBQQ1MgdG8gcnVuCmF1dG9uZWdvdGlhdGlvbi4gIEJlZm9yZSB0aGlzIHBhdGNo
-IFNHTUlJIHdhcyBub3QgaW4gc3VwcG9ydGVkX2ludGVyZmFjZXMKYW5kIHN1Y2ggYSBjb25maWd1
-cmF0aW9uIHdhcyByZWplY3RlZCBkdXJpbmcgdmFsaWRhdGlvbi4gIFdvdWxkIGdhdGluZyB0aGUK
-X19zZXRfYml0KCkgb24gdGhlIHByb2JlLXRpbWUgaW50ZXJmYWNlIGJlIGNsb3NlciB0byB3aGF0
-IHRoZSBoYXJkd2FyZSBjYW4KYWN0dWFsbHkgZG8/Cgo+IEBAIC0xNjAyLDYgKzE2ODUsMTcgQEAg
-c3RhdGljIGludCBya19nbWFjX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4g
-IAlwbGF0X2RhdC0+c3VzcGVuZCA9IHJrX2dtYWNfc3VzcGVuZDsKPiAgCXBsYXRfZGF0LT5yZXN1
-bWUgPSBya19nbWFjX3Jlc3VtZTsKPiAgCj4gKwlpZiAocGxhdF9kYXQtPnBoeV9pbnRlcmZhY2Ug
-PT0gUEhZX0lOVEVSRkFDRV9NT0RFX1NHTUlJKSB7Cj4gKwkJLyogU0dNSUkgY2xvY2sgYWx3YXlz
-IHJ1bnMgYXQgMTI1IE1IeiAqLwo+ICsJCXBsYXRfZGF0LT5zZXRfY2xrX3R4X3JhdGUgPSBOVUxM
-Owo+ICsKPiArCQkvKiBTR01JSSByZXF1aXJlcyBhIFBDUyAqLwo+ICsJCXBsYXRfZGF0LT5kZWZh
-dWx0X2FuX2luYmFuZCA9IHRydWU7CgpbU2V2ZXJpdHk6IE1lZGl1bV0KVGhlIGNvbW1pdCBtZXNz
-YWdlIHNheXM6CgogICJFbmFibGUgZGVmYXVsdF9hbl9pbmJhbmQgZm9yIFNHTUlJIGFuZCBkaXNh
-YmxlIHRoZSBnZW5lcmljIHN0bW1hYwogICBzZXRfY2xrX3R4X3JhdGUgY2FsbGJhY2suICBUaGlz
-IGZvcmNlcyBwaHlsaW5rIHRvIHVzZSBpbi1iYW5kIG1vZGUsCiAgIHdoZXJlIHRoZSBQQ1MgaXMg
-cmVzcG9uc2libGUgZm9yIHNwZWVkL2R1cGxleCBuZWdvdGlhdGlvbi4iCgpJcyAiZm9yY2VzIiBh
-Y2N1cmF0ZT8gIGRlZmF1bHRfYW5faW5iYW5kIGlzIG9ubHkgYSBkZWZhdWx0LCBhbmQgdGhlIG5l
-eHQKcGFyYWdyYXBoIG9mIHRoZSBtZXNzYWdlIHNheXMgc28gaXRzZWxmLiAgSW4gcGh5bGlua19w
-YXJzZV9tb2RlKCk6CgoJaWYgKHBsLT5jb25maWctPmRlZmF1bHRfYW5faW5iYW5kKQoJCXBsLT5j
-ZmdfbGlua19hbl9tb2RlID0gTUxPX0FOX0lOQkFORDsKCglkbiA9IGZ3bm9kZV9nZXRfbmFtZWRf
-Y2hpbGRfbm9kZShmd25vZGUsICJmaXhlZC1saW5rIik7CglpZiAoZG4gfHwgZndub2RlX3Byb3Bl
-cnR5X3ByZXNlbnQoZndub2RlLCAiZml4ZWQtbGluayIpKQoJCXBsLT5jZmdfbGlua19hbl9tb2Rl
-ID0gTUxPX0FOX0ZJWEVEOwoKYW5kIHhwY3NfaW5iYW5kX2NhcHMoKSBhZHZlcnRpc2VzIG91dC1v
-Zi1iYW5kIGFzIGFjY2VwdGFibGU6CgoJY2FzZSBEV19BTl9DMzdfU0dNSUk6CgljYXNlIERXX0FO
-X0MzN18xMDAwQkFTRVg6CgkJcmV0dXJuIExJTktfSU5CQU5EX0RJU0FCTEUgfCBMSU5LX0lOQkFO
-RF9FTkFCTEU7CgpzbyBwaHlsaW5rX3Bjc19uZWdfbW9kZSgpIGNhbiBzZXR0bGUgb24gUEhZTElO
-S19QQ1NfTkVHX09VVEJBTkQgZm9yIGEKZml4ZWQtbGluayBub2RlIG9yIGEgUEhZIHdpdGhvdXQg
-aW4tYmFuZCBzdXBwb3J0LiAgV2l0aCBzZXRfY2xrX3R4X3JhdGUgc2V0CnRvIE5VTEwsIHJrMzU2
-OF9vcHMuc2V0X3NwZWVkID0gcmtfc2V0X2Nsa19tYWNfc3BlZWQgYWxzbyBiZWNvbWVzCnVucmVh
-Y2hhYmxlLCBzbyBhIDEwLzEwMCBNYnBzIGxpbmsgaXMgYnJvdWdodCB1cCB3aXRoIHRoZSBjbG9j
-a2luZyBsZWZ0IGF0CnRoZSAxIEdicHMgc2V0dGluZyBhbmQgbm90aGluZyB3YXJucyBvciBmYWls
-cy4gIFdvdWxkIHJlamVjdGluZyBhCm5vbi1pbmJhbmQgbmVnX21vZGUgKGZvciBleGFtcGxlIGlu
-IG1hY19jb25maWcgb3IgcGNzX3ZhbGlkYXRlKSwgb3IgZmFpbGluZwpwcm9iZSB3aGVuIGEgZml4
-ZWQtbGluayBub2RlIGlzIHByZXNlbnQgZm9yIFNHTUlJLCBtYXRjaCB3aGF0IHRoZSBtZXNzYWdl
-CmRlc2NyaWJlcz8KCk9uZSBtb3JlIG9ic2VydmF0aW9uIG9uIHRoZSBzZXJpZXMgcmF0aGVyIHRo
-YW4gb24gdGhpcyBwYXRjaDogdGhlIG5ldwpiaW5kaW5nIERvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9uZXQvcGNzL3JvY2tjaGlwLHJrMzU2OC14cGNzLnlhbWwKbGlzdHMgcGh5cyBh
-bmQgcGh5LW5hbWVzIGluIGl0cyB1bmNvbmRpdGlvbmFsIHJlcXVpcmVkIGxpc3QsIGJ1dCB0aGUK
-ZXRoZXJuZXQtcGNzQGZkYTAwMDAwIG5vZGUgYWRkZWQgdG8gYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazM1NjguZHRzaQpzdXBwbGllcyBvbmx5IHJlZywgY2xvY2tzLCBjbG9jay1uYW1l
-cyBhbmQgcG93ZXItZG9tYWlucy4gIE9ubHkKcmszNTY4LXBob3RvbmljYXQuZHRzIGFkZHMgdGhl
-bToKCiAgJnhwY3MgewoJcGh5cyA9IDwmY29tYnBoeTIgUEhZX1RZUEVfU0dNSUk+OwoJcGh5LW5h
-bWVzID0gInNlcmRlcyI7CglzdGF0dXMgPSAib2theSI7CiAgfTsKCltTZXZlcml0eTogTG93XQpE
-b2VzIGR0YnNfY2hlY2sgcmVwb3J0ICJwaHlzIGlzIGEgcmVxdWlyZWQgcHJvcGVydHkiIGZvciB0
-aGUgb3RoZXIgUkszNTY4CmJvYXJkIERUQnM/ICBkdHNjaGVtYSB2YWxpZGF0ZXMgbm9kZXMgcmVn
-YXJkbGVzcyBvZiBzdGF0dXMgPSAiZGlzYWJsZWQiLgpUaGUgbmVpZ2hib3VyaW5nIHNhdGEwIG5v
-ZGUgaW4gdGhlIHNhbWUgZHRzaSBkb2VzIGNhcnJ5IHBoeXMvcGh5LW5hbWVzIGF0ClNvQyBsZXZl
-bCwgc28gd291bGQgbW92aW5nIHRoZW0gaW50byByazM1NjguZHRzaSBiZSBhbiBvcHRpb24/Cgot
-LSAKU2FzaGlrbyBBSSByZXZpZXcgwrcgaHR0cHM6Ly9uZXRkZXYtYWkuYm90cy5saW51eC5kZXYv
-c2FzaGlrby8jL3BhdGNoc2V0LzIwMjYwOTEzMTg1ODQ5LjkwNzQ3OS0xLWNvaWFwcmFudCU0MGdt
-YWlsLmNvbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+
+
+On 9/4/26 17:13, Joshua Peisach wrote:
+> On Fri Sep 4, 2026 at 9:27 AM EDT, Michal Wilczynski wrote:
+>> This series enables the display subsystem on the StarFive JH7110.
+>>
+>> The dom_vout block holds the display controller (dc8200), the clock
+>> generator (voutcrg) and the HDMI IP, all inside PD_VOUT. The HDMI IP is
+>> a single register block containing both the controller and the PHY, and
+>> it has a circular clock dependency with voutcrg:
+>>
+>>   - the HDMI controller needs pclk/mclk/bclk from voutcrg
+>>   - voutcrg needs the pixel clock for its dc8200 pixel MUXes, and that
+>>     clock is generated by the HDMI PHY
+>>
+>> The loop only exists if the HDMI block is treated as one device. The
+>> PHY's reference clock is xin24m, not a voutcrg output, so splitting the
+>> node into a parent plus phy and controller children gives deferred probe
+>> a linear order: hdmi-phy, then voutcrg, then hdmi-controller.
+>>
+>> The parent maps the register block and owns the regmap its two children
+>> share. Everything in the region sits behind one NoC port whose clock and
+>> reset gate access to it, inside PD_VOUT, so the vout subsystem node from
+>> the RFC is back and owns those for as long as any child exists.
+>>
+>> Patch 10 adds a .mode_valid platform op to inno-hdmi.
+>> inno_hdmi_bridge_mode_valid() checks the pixel clock against
+>> hdmi->refclk, but that clock only exists where a "ref" clock is
+>> described. The JH7110 gets its pixel clock from the PHY, so refclk is
+>> NULL and the check was skipped: unsupported modes were advertised, the
+>> modeset then "succeeded" because the atomic enable path cannot fail, and
+>> the display stayed blank.
+>>
+>> Patches 15-17 drop the PHY duplication from the RFC. The JH7110 has the
+>> same Innosilicon PHY as the RK3328, offset by 0x100 because it sits
+>> behind the controller in the shared register block. Patch 15 factors out
+>> the pre-PLL config format, table lookup, determine_rate, recalc_rate and
+>> the pre-PLL programming; patch 16 moves Rockchip onto it; patch 17 adds
+>> the JH7110 driver. Pixel clock tables, post-PLL and analog config stay
+>> SoC specific.
+>>
+>> Patch 16 should be a no-op for Rockchip - same writes, same order, same
+>> values - and RK3228, whose pre-PLL is at different addresses, keeps its
+>> own register code and shares only the lookup. I have no Rockchip
+>> hardware, so it is build tested only (arm and riscv). A Tested-by would
+>> help.
+>>
+>> The dc8200 driver, th1520 reset controller and inno-hdmi bridge that the
+>> RFC listed as prerequisites are all upstream now, so there are no
+>> out-of-tree dependencies.
+>>
+>> Testing
+>> =======
+>>
+>> Tested on a VisionFive 2 v1.3B using modetest.
+>>
+>> All 42 modes the sink advertises work, with nothing in dmesg. Pixel
+>> clocks run from 25.175 MHz (640x480@59.94) up to 297 MHz
+>> (4096x2160@30), including 3840x2160 and the full 1920x1080 and 1280x720
+>> rate families.
+>>
+>> The four modes the RFC reported as broken work now too: 2560x1440@59.95,
+>> 2048x1080@60.00, 2048x1080@24.00 and 720x400@70.08.
+>>
+>> Before patch 10, four of the advertised modes failed: 1680x1050@59.95
+>> (146.250 MHz), 1400x1050@59.98 (121.750), 1152x864@59.97 (81.768) and
+>> 1280x768@60.35 (80.140). Those pixel clocks are not in the PHY pre-PLL
+>> table, so clk_set_rate() returned -EINVAL and the screen stayed black
+>> while userspace saw a successful modeset. They are rejected in
+>> .mode_valid now; the other refresh rates of those resolutions still work.
+>>
+>> Every commit builds for riscv, and the Rockchip PHY also for arm.
+>>
+>> Notes
+>> =====
+>>
+>> The JH7110 has no central MAINTAINERS entry and maintainership is
+>> fragmented, so patch 19 adds one for the display subsystem and I am
+>> happy to help maintain it. The new PHY library lives under drivers/phy/,
+>> already covered by the generic PHY framework entry.
+>>
+>> checkpatch warns "does MAINTAINERS need updating?" on the patches adding
+>> files, because that entry comes in patch 19.
+>>
+>> Thanks to Icenowy Zheng for the dc8200 driver and for explaining how the
+>> SoC and the display pipeline fit together.
+>>
+>> Thanks also to Dominique Belhachemi, who got rid of the vout-subsystem
+>> wrapper and helped with the testing, to Maud Spierings for testing on a
+>> Framework 13 panel, and to Graham Markall for testing
+>> the JH7110 display patches independently and writing up the results:
+>> https://protect2.fireeye.com/v1/url?k=a5921a01-fa0e332b-a593914e-000babe598f7-ab8e6a05d613c342&q=1&e=c355ba5a-20ba-4b45-870e-7415c4405787&u=https%3A%2F%2Fbig-grey.co.uk%2F2026%2F01%2F26%2Ftesting-starfive-jh7110-display-controller-patches%2F
+>>
+>> Link to v1: https://lore.kernel.org/all/20251108-jh7110-clean-send-v1-0-06bf43bb76b1@samsung.com/
+>>
+>> ---
+>> Changes in v3:
+>> - Brought back the vout subsystem node and driver, now owning the NoC
+>>   bus clock, its reset and PD_VOUT for the whole region, with dc8200,
+>>   the HDMI block, the syscon and voutcrg as its children (Icenowy Zheng).
+>> - Fixed a hard hang when the bridge is built as a module: the PHY's
+>>   .is_prepared read a register in the window gated by the controller's
+>>   system clock, so clk_disable_unused() wedged the CPU before the
+>>   controller had bound. The op is gone; the framework uses the software
+>>   prepare count instead. (Marek Szyprowski)
+>> - The HDMI controller now programs the display mux in dom_vout_syscon
+>>   from the port graph rather than inheriting whatever the bootloader
+>>   left, with a phandle to the syscon (Icenowy Zheng).
+>> - The register access clock is named "pclk" to match the existing
+>>   inno-hdmi binding, so the generic driver no longer picks up the pixel
+>>   clock. Previously it held the pre-PLL powered from probe and sized the
+>>   DDC divider from the wrong rate.
+>> - Dropped the clk suffixes and the single-entry -names properties from
+>>   the bindings (Conor Dooley). mclk and bclk keep their names: per TRM
+>>   5.3 they are the HDMI audio clocks, not module and bus clocks, so the
+>>   descriptions say that instead.
+>> - Replaced patternProperties with plain properties in the hdmi-subsystem
+>>   binding (Conor Dooley).
+>> - dc8200 gets an SoC specific compatible, and inherits dma-noncoherent
+>>   from the subsystem bus node, so it validates against verisilicon,dc.
+>> - Added the pre-PLL entry for the Framework 13 panel and fixed two
+>>   devicetree whitespace nits (Maud Spierings).
+>> - select REGMAP_MMIO, CLK_SET_RATE_NO_REPARENT on the dc8200 pixel MUXes
+>>   so clk_set_rate() cannot reroute them, and inno-hdmi register reads
+>>   return 0 instead of stack garbage when regmap_read() fails.
+>> - phy: rockchip: dropped the local pre-PLL lookup wrapper and the 28 now
+>>   unused RK3328 pre-PLL macros, and restored the VCO debug output, this
+>>   time in the shared helper so both drivers get it (Jonas Karlman).
+>> - Rebased onto v7.3-rc1.
+>> - Link to v2: https://lore.kernel.org/r/20260828-jh7110-clean-send-v2-0-331680c8b9d1@samsung.com
+>>
+>> Changes since the RFC:
+>> - Dropped the vout-subsystem wrapper driver and its binding, along with
+>>   the patch relaxing the voutcrg binding; genpd handles PD_VOUT per
+>>   node.
+>> - Renamed the compatible to starfive,jh7110-hdmi-subsystem, dropping
+>>   "mfd" as a Linux term (Conor Dooley).
+>> - Absolute $refs in the bindings, unused example labels dropped, and the
+>>   examples deduplicated between parent and children (Conor Dooley).
+>> - Added the .mode_valid platform operation (patch 7).
+>> - Split the inno-hdmi rework into a mechanical probe/bind split (patch
+>>   4)
+>>   and the regmap-from-parent change (patch 5). struct inno_hdmi is no
+>>   longer exported; no platform glue dereferences it.
+>> - Replaced the duplicated PHY driver with a shared Innosilicon library
+>>   and moved Rockchip onto it (patches 11-13).
+>> - Fixed pre-PLL lock detection, which masked the status read with the
+>>   register address instead of the lock bit.
+>> - Fixed a pixel clock refcount underflow: enable returns early on
+>>   failure while disable tore down unconditionally.
+>> - voutcrg patch reduced to adding CLK_SET_RATE_PARENT to the two dc8200
+>>   pixel MUXes.
+>> - Rebased onto v7.2.
+>>
+>> ---
+>> Michal Wilczynski (19):
+>>       dt-bindings: phy: Add starfive,jh7110-inno-hdmi-phy
+>>       dt-bindings: display: bridge: Add starfive,jh7110-inno-hdmi-controller
+>>       dt-bindings: mfd: Add starfive,jh7110-hdmi-subsystem
+>>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-syscon
+>>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-subsystem
+>>       dt-bindings: display: verisilicon: Add starfive,jh7110-dc8200
+>>       drm/bridge: inno-hdmi: Split probe out of bind
+>>       drm/bridge: inno-hdmi: Allow the register map to come from a parent
+>>       drm/bridge: inno-hdmi: Add .disable platform operation
+>>       drm/bridge: inno-hdmi: Add .mode_valid platform operation
+>>       soc: starfive: Add jh7110-hdmi-subsystem driver
+>>       soc: starfive: Add jh7110-vout-subsystem driver
+>>       clk: starfive: jh7110-vout: Allow pixel clock rate propagation
+>>       drm/bridge: starfive: Add JH7110 HDMI controller driver
+>>       phy: Add common Innosilicon HDMI PHY helpers
+>>       phy: rockchip: inno-hdmi: Use the common Innosilicon PHY helpers
+>>       phy: starfive: Add jh7110-inno-hdmi-phy driver
+>>       riscv: dts: starfive: jh7110: Update DT for display subsystem
+>>       MAINTAINERS: Add StarFive JH7110 display subsystem entry
+>>
+>>  .../starfive,jh7110-inno-hdmi-controller.yaml      | 121 +++++
+>>  .../bindings/display/verisilicon,dc.yaml           |   1 +
+>>  .../mfd/starfive,jh7110-hdmi-subsystem.yaml        |  95 ++++
+>>  .../phy/starfive,jh7110-inno-hdmi-phy.yaml         |  49 ++
+>>  .../soc/starfive/starfive,jh7110-syscon.yaml       |   6 +
+>>  .../starfive/starfive,jh7110-vout-subsystem.yaml   | 100 ++++
+>>  MAINTAINERS                                        |  13 +
+>>  arch/riscv/boot/dts/starfive/jh7110-common.dtsi    | 121 ++++-
+>>  arch/riscv/boot/dts/starfive/jh7110.dtsi           | 102 +++-
+>>  drivers/clk/starfive/clk-starfive-jh7110-vout.c    |   6 +-
+>>  drivers/gpu/drm/bridge/Kconfig                     |  11 +
+>>  drivers/gpu/drm/bridge/Makefile                    |   1 +
+>>  drivers/gpu/drm/bridge/inno-hdmi.c                 |  84 ++-
+>>  drivers/gpu/drm/bridge/jh7110-inno-hdmi.c          | 318 +++++++++++
+>>  drivers/phy/Kconfig                                |   8 +
+>>  drivers/phy/Makefile                               |   1 +
+>>  drivers/phy/phy-inno-hdmi.c                        | 298 +++++++++++
+>>  drivers/phy/rockchip/Kconfig                       |   1 +
+>>  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c      | 165 +-----
+>>  drivers/phy/starfive/Kconfig                       |  20 +
+>>  drivers/phy/starfive/Makefile                      |   1 +
+>>  drivers/phy/starfive/phy-jh7110-inno-hdmi.c        | 579 +++++++++++++++++++++
+>>  drivers/soc/Kconfig                                |   1 +
+>>  drivers/soc/Makefile                               |   1 +
+>>  drivers/soc/starfive/Kconfig                       |  43 ++
+>>  drivers/soc/starfive/Makefile                      |   3 +
+>>  drivers/soc/starfive/jh7110-hdmi-subsystem.c       |  74 +++
+>>  drivers/soc/starfive/jh7110-vout-subsystem.c       |  83 +++
+>>  include/drm/bridge/inno_hdmi.h                     |  10 +-
+>>  include/linux/phy/inno-hdmi-phy.h                  |  85 +++
+>>  30 files changed, 2227 insertions(+), 174 deletions(-)
+>> ---
+>> base-commit: cee9395acd8043be0644b25c34bfa86623f2b935
+>> change-id: 20251031-jh7110-clean-send-7d2242118026
+>>
+>> Best regards,
+> 
+> So as a kernel newbie, and someone who happens to have this device,
+> it's nice to see it here.
+> 
+> It looks good to me, just a few questions:
+> 
+> - One patch mentioned in a comment "the docs" - is there documentation
+> for the device?
+
+TRM describing the hardware. It's available online [1].
+
+[1] - https://doc-en.rvspace.org/JH7110/TRM/
+
+> 
+> - There are multiple pieces, like the hdmi and vout subsystem, and also
+> the inno helpers. Should those be separate patches? I honestly don't
+> have enough experience (or authority) to suggest doing so.
+
+They already are: the hdmi subsystem is patch 11, the vout subsystem
+patch 12 and the Innosilicon helpers patch 15. They go out as one
+series because they depend on each other - the DT in patch 18 needs all
+three drivers - and the tree has to build at every commit, so they
+cannot land separately.
+
+
+> 
+> 
+> I thought this would be great as a possible driver I could do to learn
+> kernel dev.. looks like I was very wrong. Great work, and hopefully
+> in the future I get my hands on some device that needs a driver to be
+> written for it.
+> 
+> I'm at university, once my board gets mailed from home I'll be able to
+> test. For now,
+
+Thanks for the review, I have picked up your Reviewed-by on the patches
+that did not change in v4. A Tested-by once your board arrives would be
+very welcome.
+
+
+> 
+> Reviewed-by: Joshua Peisach <jpeisach@ubuntu.com>
+> 
+
+Best regards,
+-- 
+Michal Wilczynski <m.wilczynski@samsung.com>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
