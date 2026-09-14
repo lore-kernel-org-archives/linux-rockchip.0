@@ -4,107 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68C1DC88E63
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Sep 2026 20:32:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B504BC88E66
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 01:34:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cagtgARCI/LBK5OkD8R7F8T9s4oxNJKl8IL2dLk49/0=; b=CSLkK/Hm4s/IND
-	AbuVREiBYr0pmwhLZa41/kqyGW8JRYLeoGib6r1UTaClSk8hRxX8FzY1hqTKfEIpRPdKO08uulveJ
-	WhuS1PZ6oU2DnufTuT5lDtYLsDomYbpem93pbIlf5JjzokMkKOPvAO+38dDJqjATCfl9cRo/4THUx
-	ZZ8bpjtOZmgQUYtAYenp4uZyHwtF8I12X+JZhoN9xBpS8w1PW2eAZU5emnMGlN/GzV5+3laJg7kpi
-	DBMq0LRIlaTs/2bJshO+TIfBQBljNgPPlrbUhs+T6Qd8gZgEagmkjJJkOJSwN+p0/Y2W3SaT8FpJF
-	i0t9C1mJjFJ4pPmo+2KA==;
+	List-Owner; bh=Vmcyf4JhgbHMiQU+JXLewXk+8+U/Ch7TsSD7d75X0uo=; b=B/JdgdMTOk4qV6
+	FsgJ/XW+LMRRO2p1pcZX5NpNYMPDVdF9itbVN+GsBvdkOF4PdxHmCf0zdiZF+mT7Pm+qkFLoJwtHc
+	9I/fIOu/McnIVjfeRYzLM/8gl53sYj+ARoz4JlJVmFlLzmH06ppHMldcm2tRqwTlO+SEtVviz1JeJ
+	FLVcUuHW1uY9CjanD3wud4ufdpj6Ege/O9vggj+6ry33RUz/6NOwzYr9w2+YKoQDoAstYG1aewe4z
+	nWSTBLQ35K8N/3VlK3nJC1xdbii+M4oeVW7bUSc9dBYKxNCqOaeGE3q3gd3LumFTCGWmlgk37Q1tp
+	uCkyLvGHtzZcO4VltsxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5qro-000000021cg-1deP;
-	Sun, 13 Sep 2026 20:32:00 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1x5vaj-000000029P2-1qJW;
+	Mon, 14 Sep 2026 01:34:41 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5qrm-000000021bP-1V41
-	for linux-rockchip@lists.infradead.org;
-	Sun, 13 Sep 2026 20:31:59 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-c1670dad7a8so473267966b.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 13 Sep 2026 13:31:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789331516; cv=none;
-        d=google.com; s=arc-20260327;
-        b=ZMSKF9EY67jRKjNncDI53z73dOIegcO1KUqZVZv7bYQZ5upY7n2XYKBNCekVcFktrO
-         BzyYx+pPjxRzfz69oOcxftMchuCs5ahT3e+UPLicqEvzHwf4wV9Gfb0KrJbCcjePmTRD
-         ie4btPIbu2vLJWPly+YL8t7XKv+ORjMLZB8biqBQ6VjLp5PcVCQYQkCAUSf1STkqogv4
-         cX9SiOuVJs2C7Jp5zDIbS2e3rzEDzztVmGndjtl7v02RCvaD3GaiFIOdoeTibMqAX1lN
-         trD7asyFrLBlGbvaFb80jAMHCgw0pHrBpeF/2XrklzaK0h64rjW18N/lO5mT366Cg/Um
-         p+/Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=YqPuY8bjxg2PMPBTTRCR7VVhfztLYnhGPDT7UUbH0mI=;
-        fh=2p1Q+NyFX5V2/kqq0NuWFpTSyeNI1ZguWcOZihxHwtk=;
-        b=H8SmlGt4++tp97TtIVJb+LqqzPa9ywRYOhyxnrBv9DpdTIwffRJsXr4xprh0CWqUNO
-         W7MueueJsaGPT1r1ry1kW8shgVomXneQ+2CZ/H/+vP8VXfdVhVeBDa3Q6cLtpDMjWydt
-         joPgAOwyNHSRDdeaO3u9qv3FwSwXoqyRtTG4S0UxdVMvn42+ohP32P65IQuWYYUwPQ3/
-         y1prkk+a5fj1bmWyjy1Rqn4PEQveTGYcTZbF0ZBrTadBfNrjCS+C9jKgTuPKhQtdb6A9
-         SqoY1Kr7ZzU0op1g2mgXO8NURukFTOvNyEgGfm17+rbfgBeMAqcOe6l1FHXaqhXXmVCn
-         Tpdg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789331516; x=1789936316; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=YqPuY8bjxg2PMPBTTRCR7VVhfztLYnhGPDT7UUbH0mI=;
-        b=ik4vo+spq3uYEhWz4ls9Gp7mZIM70gBUYWRQfP6dvaDRyHYAjwlZWF7AECEEojkdJo
-         5ANGXUES2M696t+7UlfYIZ7ASPoIxXVkZWZGrydqnauFMhlIrfwouZk9+DvrhMHGhFYQ
-         Y3QmcJEYbyynFsWm2zxRiFveR4cRdnziXQyIi3diWk4W9Z+8x97pYZ5BI42wPS9mMiiE
-         VDUwa9dNU/I4ejFlI1OMRdjsUw4+h/QgENMKSExfYXHebah8v9CN2jNfnUDBVpsvDWgx
-         Kq7npd8Od1Ge+gZ4P/Hg/xMc7lGbstYPLopNOufA/LjuyVRrT5bu/mTZyv0+DmwSVtd7
-         7HIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789331516; x=1789936316;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=YqPuY8bjxg2PMPBTTRCR7VVhfztLYnhGPDT7UUbH0mI=;
-        b=K8YMy3F6kZ824MSrS3jvVebwJkb2EDVv9556rYzlMBwsjWl8RK0xBV5c/NOg5d+EGB
-         xXGPijzyOeL9dHnJiAhnlqdInK95Bss0f9+cnMGzh78jpSTbM+2nekcr6hD+w1vYZ6xq
-         4e9YswxK0YPcEYfuX8+b1UNa0M26TZ7YZjBmozgoHUpooo5D/SFhxRQsRRV391XuqQUK
-         42XzltCvUGVpQmODjXk23n0dXpo0pNimN+KTLqvmQur8thkyLqhwMcTawhDdqjuyemzF
-         SF1UIGgcSg7De6/deax7r07lDR6aSQqWT7LaKC+tlfgOo7Wbi3hKcL1HdnQxyVDUYVxh
-         BVFQ==
-X-Forwarded-Encrypted: i=1; AKwUvBxl37KfnNZZXDBSbpDjcdoTQAAshPSz6uJegaolqJpmLBdKFCymzihYG7HMcAaCqLm379qxRva6mDeBYacIfg==@lists.infradead.org
-X-Gm-Message-State: AFuF++l9+qEgcITTJuVrK8HNwAyJ9en3UGTzWxSQL90eOTGANxcqRifZ
-	x7GcwKNRq64H2Vd1nXPvd8Bn5nwtWme4PonWtBp8iSLMZ9AKK64F66pPvLrlQAWgfV4ZLnnm4CZ
-	gcT4tNeQeRZujdzjACe/YoMV+HK5nDw==
-X-Gm-Gg: AYBFou16xdgtVIHVGeAWBd7IRQfMPLFkwBRgjNzqQZoff9KwpZ2TNUllDHg+hiwGe16
-	jl6AzInAW+iin8+ibycAqFzfrRcO+rsrBRgo/9FIxs2Q89sZLyzQ73M7Bz6cGwxMROjtp2+wifl
-	ly/WZ2CHUyoAfmRhQgwXAQXq2nIpDYD0K9i8GfU9B9JUDwNYZsbY8n/umftmrHmNbvMszuyfE3e
-	XNiR1HIdojEOFjSmXoP4gm63czvwI58X5ZZY1xfMAFFiyr+q+U8VEhoLVldPE0NibT/BDzLBQRf
-	PbngoQh/+BWXjdvdx1X2wLzK7S0GKO+zxhu5DsZDboK5x4YiuY/eiAq8HZw8E21dhEqtihqdjiM
-	cao0arMmp70O3i4AV1svRMt2T6XuLdPianuKTBl70unzS7Ltzs3j8IHrCjo0Co3uVjw==
-X-Received: by 2002:a17:906:c143:b0:c29:4204:8dbf with SMTP id
- a640c23a62f3a-c2966559aadmr741799066b.7.1789331515865; Sun, 13 Sep 2026
- 13:31:55 -0700 (PDT)
-MIME-Version: 1.0
-References: <aqRM17TZ0-5pd6Y0@sirena.org.uk> <20260912190056.42192-1-mhun512@gmail.com>
- <aqaKPEFt7fQe8QQp@sirena.org.uk>
-In-Reply-To: <aqaKPEFt7fQe8QQp@sirena.org.uk>
-From: Myeonghun Pak <mhun512@gmail.com>
-Date: Sun, 13 Sep 2026 16:31:43 -0400
-X-Gm-Features: AcwNN1XzcLLgpV1RUYtG_pNLmmim_sFz6TTENWG2NHxxEf0dq49kcafrryEazGg
-Message-ID: <CAGEsz8Gy5=4msSzPjvRAS88EEbZ0eRvpocu6iHQWv8-48J0dkA@mail.gmail.com>
-Subject: Re: [PATCH v2] spi: rockchip-sfc: skip DMA cleanup in PIO mode
-To: Mark Brown <broonie@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-spi@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Ijae Kim <ae878000@gmail.com>
+	id 1x5vaf-000000029Nw-3txo;
+	Mon, 14 Sep 2026 01:34:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1789349633;
+	bh=bLhZHimfeAemx102sKi3S3oU0Nrf9TQfYCxAQtyW+4U=;
+	h=From:To:Subject:Date:Message-Id;
+	b=kDKdItZZzKPRq9w3NtMmR1/D0+JwwUafwgiHJhpIu6MxZNlTYRYscK0xoVDwfBuIU
+	 jn5UMec3x4IJ6jvW77prHIC6Jy6hT47aITM00jogw9cG37BuboVOtiSiqtFrvNynkL
+	 0O4WkQk6awgmiBPJ2baiLoosD17cuNMd/jbH5ZxQ=
+X-QQ-mid: esmtpsz11t1789349631t83d0eebd
+X-QQ-Originating-IP: UDkduqCMmPjnwTw37M0pn7cnoB9fgqMlUFCVtwTX2S4=
+Received: from DESKTOP-8BT1A2O.localdomain ( [61.154.14.86])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 14 Sep 2026 09:33:47 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 6289182345882749368
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Subject: [PATCH v5 1/3] drm/rockchip: dsi: Add maximum per lane bit rate calculation
+Date: Mon, 14 Sep 2026 09:33:29 +0800
+Message-Id: <20260914013331.108-2-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20260914013331.108-1-kernel@airkyi.com>
+References: <20260914013331.108-1-kernel@airkyi.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: M3ziZXKDk+iOHFRGvweTdBwdFQUSbUWuTT0Y8fC3DVtF6xFLtZK7bMi3
+	1DSXGmn7DXxyiBfjQ/BK7W47UNXyAjiHrsGzGF6PdgubhG16ii/+uFEYbIAj0R7edDHx/i1
+	HX87i5WbgEVhWXgiWGkcXZhBTajDpO6V6u70w/RFygweMiJnN+S3g16nGXXnCOMSfHZNbnG
+	EUq5tG12EbaIOJL/TuNayzC5JkS9Tuxn4KAWytdMboxQAOfwiVajp32lSuQ3KxYrDuPmUtf
+	bdeaZUP+69qHiYadNt953vNGJkc+4iELiHwWVV1t40LMnnq1MIAPbvzW0rWbSdXLu1jkS2S
+	uIDMQWhmU+1iakGQm5CuwubQeAfS7avG/FswsP6+qmr6RBd15ZikfeqfL6NR3c+KxU3bAlI
+	M8it2GqN1jNKVLH3XMZEOaRzPAEFv8monWdTQG+B6yX5+gABCyKwrT2PnoOtEmIDlvykQmm
+	3/CLYCBx2xqxWVKqsK/Y2CBWJER4P+7Znzb8cqOJU/zcYzULyGXsyOkdHjZxyU1feDnK4HO
+	MzLDLJI+xqGVHVYqahjOk1igJOU0y0l83yyL/BAT5MOc00rIGIJKYue/KIFM5DdHroXN4WT
+	yPRvzm+YjRPY40B3fvG28rt3TDaqmFHvisQWS5OjB9yE9ic3TSQ4Ck0sXQfg4rQ8KILGXe9
+	0k+/oAZCHbCejszxDtSqE5nGTTQt5kXioztLoludUrJY7IQwFWQhwOauDGHRT5by2F0cXdz
+	1bzzaXR9iT+e0pTcBDbP2qYsPVU3DC92GVtO7hACmA6WTCkthV6Z/1w3qZ4WHMx3+0E3UiO
+	v3PuI0lxrguWApRZ9ftAcxtYX+IeMzPaHofBQIYsGEKWbT4jTZIBEhHnFFuC6ceS/X/z4R5
+	ZG2xD8vEPsV92e8obsmsKjzFU2iz9DmmbKLbZ1CJ+H43p/eOmfUKXvQrHXUh1xriXjIQrIH
+	ER2xS2VO+beCUnC21T7CtIv7rrAp0OchX35dAGqeyPMSBlge3hX6OH8gk6HdqRdmMZTscOg
+	31AsZ++A==
+X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260913_133158_414882_D95C12D8 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20260913_183438_463291_C683BC47 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,24 +95,167 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-U29ycnkgYWJvdXQgdGhhdC4gSSdsbCBzZW5kIGZ1dHVyZSByZXZpc2lvbnMgYXMgbmV3IHRocmVh
-ZHMuCgoKMjAyNuuFhCA57JuUIDEz7J28ICjsnbwpIOyYpOyghCA3OjM0LCBNYXJrIEJyb3duIDxi
-cm9vbmllQGtlcm5lbC5vcmc+64uY7J20IOyekeyEsToKPgo+IE9uIFNhdCwgU2VwIDEyLCAyMDI2
-IGF0IDAzOjAwOjU2UE0gLTA0MDAsIE15ZW9uZ2h1biBQYWsgd3JvdGU6Cj4gPiBXaXRoIHJvY2tj
-aGlwLHNmYy1uby1kbWEsIHByb2JlIHNraXBzIGFsbG9jYXRpbmcgYW5kIG1hcHBpbmcgdGhlIHRy
-YW5zZmVyCj4gPiBidWZmZXIuIEhvd2V2ZXIsIGNvbnRyb2xsZXIgcmVnaXN0cmF0aW9uIGZhaWx1
-cmUgYW5kIGRyaXZlciByZW1vdmFsIHN0aWxsCj4gPiBjYWxsIGRtYV91bm1hcF9zaW5nbGUoKSBm
-b3IgdGhhdCBub25leGlzdGVudCBtYXBwaW5nLgo+Cj4gUGxlYXNlIGRvbid0IHNlbmQgbmV3IHBh
-dGNoZXMgaW4gcmVwbHkgdG8gb2xkIHBhdGNoZXMgb3Igc2VyaWVzZXMsIHRoaXMKPiBtYWtlcyBp
-dCBoYXJkZXIgZm9yIGJvdGggcGVvcGxlIGFuZCB0b29scyB0byB1bmRlcnN0YW5kIHdoYXQgaXMg
-Z29pbmcKPiBvbiAtIGl0IGNhbiBidXJ5IHRoaW5ncyBpbiBtYWlsYm94ZXMgYW5kIG1ha2UgaXQg
-ZGlmZmljdWx0IHRvIGtlZXAgdHJhY2sKPiBvZiB3aGF0IGN1cnJlbnQgcGF0Y2hlcyBhcmUsIGJv
-dGggZm9yIHRoZSBuZXcgcGF0Y2hlcyBhbmQgdGhlIG9sZCBvbmVzLgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+Different chips have varying support for the maximum bit rate per lane.
+
+Add calculation for the maximum per lane bit rate for various chip
+platforms.
+
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+---
+Changes in v5:
+- Change the upper bound check for target_mbps from < to <= (sashiko).
+
+(no changes since v4)
+
+Changes in v3:
+- Rebase to Linux v7.2
+
+Changes in v2:
+- Fix the unit conversion for max_mbps.
+- Split the lane rate calculation into a separate patch.
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 3547d91b25d3..6a476c2c1303 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -268,6 +268,7 @@ struct rockchip_dw_dsi_chip_data {
+ 
+ 	unsigned int flags;
+ 	unsigned int max_data_lanes;
++	unsigned long max_bit_rate_per_lane;
+ };
+ 
+ struct dw_mipi_dsi_rockchip {
+@@ -565,7 +566,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+ 	int bpp;
+ 	unsigned long mpclk, tmp;
+ 	unsigned int target_mbps = 1000;
+-	unsigned int max_mbps = dppa_map[ARRAY_SIZE(dppa_map) - 1].max_mbps;
++	unsigned int max_mbps;
+ 	unsigned long best_freq = 0;
+ 	unsigned long fvco_min, fvco_max, fin, fout;
+ 	unsigned int min_prediv, max_prediv;
+@@ -573,6 +574,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+ 	unsigned long _fbdiv, best_fbdiv;
+ 	unsigned long min_delta = ULONG_MAX;
+ 
++	max_mbps = dsi->cdata->max_bit_rate_per_lane / USEC_PER_SEC;
+ 	dsi->format = format;
+ 	bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
+ 	if (bpp < 0) {
+@@ -586,7 +588,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+ 	if (mpclk) {
+ 		/* take 1 / 0.8, since mbps must big than bandwidth of RGB */
+ 		tmp = mpclk * (bpp / lanes) * 10 / 8;
+-		if (tmp < max_mbps)
++		if (tmp <= max_mbps)
+ 			target_mbps = tmp;
+ 		else
+ 			DRM_DEV_ERROR(dsi->dev,
+@@ -1503,6 +1505,7 @@ static const struct rockchip_dw_dsi_chip_data px30_chip_data[] = {
+ 						PX30_DSI_FORCETXSTOPMODE), 0),
+ 
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1000000000UL,
+ 	},
+ 	{ /* sentinel */ }
+ };
+@@ -1515,6 +1518,7 @@ static const struct rockchip_dw_dsi_chip_data rk3128_chip_data[] = {
+ 						RK3128_DSI_FORCERXMODE |
+ 						RK3128_DSI_FORCETXSTOPMODE), 0),
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1000000000UL,
+ 	},
+ 	{ /* sentinel */ }
+ };
+@@ -1527,6 +1531,7 @@ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
+ 		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3288_DSI0_LCDC_SEL, 1),
+ 
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1500000000UL,
+ 	},
+ 	{
+ 		.reg = 0xff964000,
+@@ -1535,6 +1540,7 @@ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
+ 		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3288_DSI1_LCDC_SEL, 1),
+ 
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1500000000UL,
+ 	},
+ 	{ /* sentinel */ }
+ };
+@@ -1547,6 +1553,7 @@ static const struct rockchip_dw_dsi_chip_data rk3368_chip_data[] = {
+ 						RK3368_DSI_FORCETXSTOPMODE |
+ 						RK3368_DSI_FORCERXMODE), 0),
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1500000000UL,
+ 	},
+ 	{ /* sentinel */ }
+ };
+@@ -1634,6 +1641,7 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
+ 
+ 		.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1500000000UL,
+ 	},
+ 	{
+ 		.reg = 0xff968000,
+@@ -1658,6 +1666,7 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
+ 
+ 		.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1500000000UL,
+ 
+ 		.dphy_rx_init = rk3399_dphy_tx1rx1_init,
+ 		.dphy_rx_power_on = rk3399_dphy_tx1rx1_power_on,
+@@ -1674,6 +1683,7 @@ static const struct rockchip_dw_dsi_chip_data rk3506_chip_data[] = {
+ 			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCERXMODE, 0) |
+ 			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCETXSTOPMODE, 0)),
+ 		.max_data_lanes = 2,
++		.max_bit_rate_per_lane = 1500000000UL,
+ 	},
+ 	{ /* sentinel */ }
+ };
+@@ -1687,6 +1697,7 @@ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
+ 			     FIELD_PREP_WM16_CONST(RK3568_DSI0_TURNDISABLE, 0) |
+ 			     FIELD_PREP_WM16_CONST(RK3568_DSI0_FORCERXMODE, 0)),
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1200000000UL,
+ 	},
+ 	{
+ 		.reg = 0xfe070000,
+@@ -1696,6 +1707,7 @@ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
+ 			     FIELD_PREP_WM16_CONST(RK3568_DSI1_TURNDISABLE, 0) |
+ 			     FIELD_PREP_WM16_CONST(RK3568_DSI1_FORCERXMODE, 0)),
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1200000000UL,
+ 	},
+ 	{ /* sentinel */ }
+ };
+@@ -1708,6 +1720,7 @@ static const struct rockchip_dw_dsi_chip_data rv1126_chip_data[] = {
+ 			     FIELD_PREP_WM16_CONST(RV1126_DSI_FORCERXMODE, 0) |
+ 			     FIELD_PREP_WM16_CONST(RV1126_DSI_FORCETXSTOPMODE, 0)),
+ 		.max_data_lanes = 4,
++		.max_bit_rate_per_lane = 1000000000UL,
+ 	},
+ 	{ /* sentinel */ }
+ };
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
