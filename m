@@ -4,99 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4F36C88E72
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2026 23:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8305C88E75
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2026 00:51:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=znj8U/0HpZ2Cgekdll9XNZDMKF2UiP6/YPo5EaTY3CU=; b=s2m0Hbxic2Lck9
-	9PSkM3sHHfp6B3cwQXLpbVX0XqMAkot5mPgmS7JRD6+QIsK78rQPAvo6grhLRWIW/g4TFVe/WI5DG
-	bPQ2zbh9V2lGFpDq7fZaYjWpl1N4fplB20EwFh8OLAXLhnnUTqEqpPTi5bUCsGm1kK+Wu6ZRrpLyk
-	CF+/i6LNgEgxMd9NbqEJ008G/QUPOCCup9r2cV5bWK59/16TX1NSOubAMlk4CIrlEWTyWK+fzvCIM
-	TsurCTp/27hpDaKy8gUsRYXBKZ1GprRre6CGepYTg+5XVeOGpiqb1xcixIgJlqggeJodvxoH0wEki
-	G41WsG7XBDmNQz4NmxvQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Xnna+VndP4RG+I4Iv0JRjZAmDzOhBf7f7gMV7dh2cbY=; b=nseuRZtU4mnNt0
+	En4/F2lnFPG8fEAPJtQIYR6TvEL1JMfZxGV8wjUTIWlkEzwDzROkmv+ZNVzVbnhClwx/lek3GuGpW
+	kkd+Fqfk5ptXM0wwPy3ZrDeb3tSNk8X/JYLm1HXi2tzulWtgzBAtgphEkMrff8qU/sylWR3HwUtNK
+	3EABW6kOuMBH2cHzqjxSIKeTQ+5Reg1tDUzYLwHdb3a6C3GibIYB6ZV2acwrWIA6Tw+6bZWGOV+F+
+	Yu9dnE1Usga3ZNnSQnCPaEJdY3lzgXki6UDV6ZZm1QDUVWLBn64hd/tTTMg3Eb3992ygPo0up3r6c
+	5SLbOJe2CF/fBSvLoqLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Fuj-00000004qXN-0urh;
-	Mon, 14 Sep 2026 23:16:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x6HNw-00000004vFh-1aD2;
+	Tue, 15 Sep 2026 00:50:56 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6FuL-00000004q9c-0Ulu;
-	Mon, 14 Sep 2026 23:16:17 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D4F6942A28;
-	Mon, 14 Sep 2026 23:16:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 586901F000FF;
-	Mon, 14 Sep 2026 23:16:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789427776;
-	bh=tIIjh/Uf6BNc6qFW23Fkd03LNzbGrXqGSgv6kpFBBBk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Z0MKwixYFejC9aXB2ou9gDyVgw+IXUfla6yha+G1h+pdjyd9O2GMLR6rfbmVCIqRh
-	 qnCgaS96Y5zdrUGXyZHeCOvJUyELkRb+9fGwuS5j2u7zwvM0KNnIOldogKIDh75OXI
-	 UU1X49g4kycw28XdTtqVEurHf9Wwkc//rViLO6ZtoDml0qlU8ptCINWW4hrt54jJG2
-	 hAPr0WuTs5yk74shR3GBcrH+k1Xa8WmdEfWKZAyL5keV+wX4e0ljXisLoEP1cRbpgh
-	 4LO1uDw+LaWAO/9Fcz1VWy59hEVIdQMtiu7jS8LG28h+tTb8lnAcVAxnFEOPTpkgHm
-	 sgjmnSADR5CMg==
-From: Jakub Kicinski <kuba@kernel.org>
-To: bartosz.golaszewski@oss.qualcomm.com
-Cc: Jakub Kicinski <kuba@kernel.org>,
-	andersson@kernel.org,
-	konradybcio@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	pabeni@redhat.com,
-	mcoquelin.stm32@gmail.com,
-	alexandre.torgue@foss.st.com,
-	vkoul@kernel.org,
-	peppe.cavallaro@st.com,
-	wens@kernel.org,
-	jernej.skrabec@gmail.com,
-	neil.armstrong@linaro.org,
-	khilman@baylibre.com,
-	jbrunet@baylibre.com,
-	shawnguo@kernel.org,
-	festevam@gmail.com,
-	jan.petrous@oss.nxp.com,
-	s32@nxp.com,
-	mohd.anwar@oss.qualcomm.com,
-	romain.gantois@bootlin.com,
-	geert+renesas@glider.be,
-	magnus.damm@gmail.com,
-	mripard@kernel.org,
-	christophe.roullier@foss.st.com,
-	brgl@kernel.org,
-	radu@rendec.net,
-	linux-arm-msm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-arm-kernel@lists.infradead.org,
-	dfustini@tenstorrent.com,
-	linux-sunxi@lists.linux.dev,
-	linux-amlogic@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	sophgo@lists.linux.dev,
-	linux-riscv@lists.infradead.org,
-	bartosz.golaszewski@linaro.org
-Subject: Re: [PATCH net-next v14 07/10] net: stmmac: qcom-ethqos: fix SGMII loopback not set on resume after speed change
-Date: Mon, 14 Sep 2026 16:16:13 -0700
-Message-ID: <20260914231614.704318-1-kuba@kernel.org>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260908-qcom-sa8255p-emac-v14-7-ec212b747a7d@oss.qualcomm.com>
-References: <20260908-qcom-sa8255p-emac-v14-7-ec212b747a7d@oss.qualcomm.com>
+	id 1x6HNt-00000004vEw-0FkH;
+	Tue, 15 Sep 2026 00:50:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789433447;
+	bh=RyxyZU6tvGVK3Cpsto128QhecmW8cGT4ht7LtYUq96k=;
+	h=From:Date:Subject:To:Cc:From;
+	b=OubUc28KqQgzJdCmtM+mgjdyWdAfjd09wXdR5s/dEr2kE466GPU6evpleWbaXF9zS
+	 VrKHFk9oOKn7tBSsYYkQ85TD2Ie95HAZuvcJ0r+xrd6DS+iVwfdmbJQpVECmnzTEtp
+	 FREi8Wa8H2PxPxG4hYVMm8H7gFcSvKjhsuy1D0xv+qvJbrT/xuaRg/sUZY5VKJu/Yz
+	 eAJXB3GVf0m4cRGVu5QdOb9QbzPIWYJWm5YruRBlZigiHqqsD/UzcyzyUUVPKGcYMN
+	 Qsod3qDrcDzJlxcocdeNJF3aS4lARFjPl42o2cHvEaOpmXtEnYMd6+Mar1k9jkOwzO
+	 Dla32fMuFSiGw==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D11D517E020C;
+	Tue, 15 Sep 2026 02:50:47 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 8733A48002B; Tue, 15 Sep 2026 02:50:47 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Tue, 15 Sep 2026 02:50:39 +0200
+Subject: [PATCH wireless-next v2] wifi: brcmfmac: Improve D3 substate
+ entering timeout handling
 MIME-Version: 1.0
+Message-Id: <20260915-brcmfmac-bcm43752-suspend-fix-v2-1-1bd84914998b@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42OzQ6CMBCEX8Xs2TXQyp8n38NwKO0iNdCSLiCG8
+ O4CvoDHmck3MwswBUsMt9MCgSbL1rtNiPMJdKPck9CaTYOIRBoVUY5V0F3dKY2V7q4ySwTyyD0
+ 5g7WdsU4TWZBRMUUGto4+0GYf/Q9420AtMaOjeYDyF/NYvUgP+8YONJYHHz7Hnyk+sD+npxhjl
+ CLJk1QWJkvlXfu2VZUP6qJ9B+W6rl/2g1IJ7wAAAA==
+X-Change-ID: 20260908-brcmfmac-bcm43752-suspend-fix-f6539eda1e0d
+To: Arend van Spriel <arend.vanspriel@broadcom.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-wireless@vger.kernel.org, brcm80211@lists.linux.dev, 
+ brcm80211-dev-list.pdl@broadcom.com, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2977;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=RyxyZU6tvGVK3Cpsto128QhecmW8cGT4ht7LtYUq96k=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqolme4nuHWmpgOjksw+iy1a4fJGq0ufmzc0
+ PdYynyZ531Lk4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqqJZnAAoJENju1/PI
+ O/qaO9QP+gJfY+1klvAccg/4UQb9UdDoh7tto9tPNQafA1WQkAP19eYYRIqItzjK/CfE59NB6NZ
+ c7rLGMMrbBx3+/I6jC51uCJM/GTaaDAwH9Njk6mPYpLxtANleGpT82PJeTwjCB/y1dnNdD+DDFY
+ hMTyCkrSwYzAsY+sZ/WFvsYGY76UxBePB2GQUDOR/Cr80LQNFe3SIh0FWSONwVX+xtKlEr5i9y4
+ 5ZBpJ5SSO6C+yNYQzcft6gJhMngKwAuAujK9FH7NynacgGRMBi67goZ0uVHJhCeQhCw22mFm4bf
+ 43mJLVzhA0R/vcpQByazUWJen24LWPjJJshyea3O/noUTz0Lhh+heYHSopB+V0ZzTOQQ4sO/LTT
+ E2zDdRCNtgdmhSp1saVvKtr3DvaGd31ccieX+nCJrCZQAbYRmbaSRm8lOiHRerL84ZwUJGP/pBS
+ psiTZfb7fxhTkYxxhyguYdfxv0wYPuxev5ylFudR0TP6QFIb6muw1PRW7FlJ7yjjxF6Zop/W39y
+ 6X3HVKMl1KdLqpJwJ++PnV4iWYOLPlBFFt7fQq6xLteXZYEXTH4vWmt4aj6e8eXdSixmCg7/+hS
+ 0gLFrUsqHVcoCOfFgM+97eSrwy+0cCo2cqu6pEHo/624pM7A6eYuuvjELa+BAaUiqLxTl1rE8jo
+ NjkBBSOMrxGVj+36jEZswzA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260914_175053_264412_9615CE06 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,71 +94,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhpcyBpcyBhbiBBSS1nZW5lcmF0ZWQgcmV2aWV3IG9mIHlvdXIgcGF0Y2guIFRoZSBodW1hbiBz
-ZW5kaW5nIHRoaXMKZW1haWwgaGFzIGNvbnNpZGVyZWQgdGhlIEFJIHJldmlldyB2YWxpZCwgb3Ig
-YXQgbGVhc3QgcGxhdXNpYmxlLgotLS0KbmV0OiBzdG1tYWM6IHFjb20tZXRocW9zOiBmaXggU0dN
-SUkgbG9vcGJhY2sgbm90IHNldCBvbiByZXN1bWUgYWZ0ZXIgc3BlZWQgY2hhbmdlCgpUaGlzIGV4
-dGVuZHMgdGhlIGd1YXJkIGluIHFjb21fZXRocW9zX3NldF9zZ21paV9sb29wYmFjaygpIHNvIHRo
-YXQgdGhlIE1BQwp3cmFwcGVyIFRYLXRvLVJYIGxvb3BiYWNrIGlzIGFsc28gYXJtZWQgd2hlbiBl
-dGhxb3MtPnBoeV9tb2RlIGhvbGRzClBIWV9JTlRFUkZBQ0VfTU9ERV9TR01JSSwgbm90IG9ubHkg
-UEhZX0lOVEVSRkFDRV9NT0RFXzI1MDBCQVNFWC4gV2l0aG91dAp0aGUgbG9vcGJhY2ssIGR3bWFj
-NF9kbWFfcmVzZXQoKSBwb2xscyBhbiBSWCBjbG9jayB0aGF0IG5ldmVyIHRvZ2dsZXMgYW5kCnRp
-bWVzIG91dC4KCk5vIExpbms6IHRhZ3Mgd2VyZSBwcmVzZW50IGluIHRoZSBjb21taXQgaGVhZGVy
-LgoKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdt
-YWMtcWNvbS1ldGhxb3MuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3
-bWFjLXFjb20tZXRocW9zLmMKPiBpbmRleCBmZDc0MTRhNTBlYjRlLi5lMDY3Y2VlZTAxNjIxIDEw
-MDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLXFj
-b20tZXRocW9zLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9k
-d21hYy1xY29tLWV0aHFvcy5jCj4gQEAgLTE5MCw3ICsxOTAsOCBAQCBzdGF0aWMgdm9pZAo+ICBx
-Y29tX2V0aHFvc19zZXRfc2dtaWlfbG9vcGJhY2soc3RydWN0IHFjb21fZXRocW9zICpldGhxb3Ms
-IGJvb2wgZW5hYmxlKQo+ICB7Cj4gIAlpZiAoIWV0aHFvcy0+bmVlZHNfc2dtaWlfbG9vcGJhY2sg
-fHwKPiAtCSAgICBldGhxb3MtPnBoeV9tb2RlICE9IFBIWV9JTlRFUkZBQ0VfTU9ERV8yNTAwQkFT
-RVgpCj4gKwkgICAgKGV0aHFvcy0+cGh5X21vZGUgIT0gUEhZX0lOVEVSRkFDRV9NT0RFXzI1MDBC
-QVNFWCAmJgo+ICsJICAgICBldGhxb3MtPnBoeV9tb2RlICE9IFBIWV9JTlRFUkZBQ0VfTU9ERV9T
-R01JSSkpCj4gIAkJcmV0dXJuOwoKW1NldmVyaXR5OiBNZWRpdW1dClNob3VsZCB0aGlzIGh1bmsg
-YmUgc3F1YXNoZWQgaW50byB0aGUgcHJlY2VkaW5nIHBhdGNoIG9mIHRoZSBzZXJpZXMsIG9yIGF0
-CmxlYXN0IGNhcnJ5IGEgRml4ZXM6IHRhZyBuYW1pbmcgaXQ/CgpUaGUgY29tbWl0IG1lc3NhZ2Ug
-c2F5cyAibWFjX2ZpbmlzaCgpIG5vdyB1cGRhdGVzIHBoeV9tb2RlIHRvIHRoZQpydW50aW1lLXJl
-c29sdmVkIGludGVyZmFjZSIsIHdoaWNoIGlzIHRoZSBjaGFuZ2UgbWFkZSBvbmUgcGF0Y2ggZWFy
-bGllciBpbgp0aGlzIHNhbWUgc2VyaWVzOgoKICBmNDBlNzJkNTdiY2IzOCAoIm5ldDogc3RtbWFj
-OiBxY29tLWV0aHFvczogdXBkYXRlIHBoeV9tb2RlIHRvIHRoZQogIHJlc29sdmVkIGludGVyZmFj
-ZSBpbiBtYWNfZmluaXNoKCkiKQoKZ2l0IGJsYW1lIGF0IHRoaXMgY29tbWl0IHNob3dzIHRoZSBh
-c3NpZ25tZW50IGluIGV0aHFvc19tYWNfZmluaXNoX3NlcmRlcygpOgoKCWV0aHFvcy0+cGh5X21v
-ZGUgPSBpbnRlcmZhY2U7CgpjYW1lIGZyb20gZjQwZTcyZDU3YmNiMzguIEJlZm9yZSB0aGF0LCBl
-dGhxb3MtPnBoeV9tb2RlIHdhcyB3cml0dGVuIG9ubHkKb25jZSwgaW4gcWNvbV9ldGhxb3NfcHJv
-YmUoKSBmcm9tIHRoZSBEVCBwaHktbW9kZSBwcm9wZXJ0eSwgc28gdGhlCjI1MDBCQVNFWC1vbmx5
-IGd1YXJkIGNvdWxkIG5vdCBnbyBzdGFsZSBhdCBydW50aW1lIGFuZCB0aGUgRE1BIHJlc2V0CnRp
-bWVvdXQgZGVzY3JpYmVkIGhlcmUgZGlkIG5vdCBleGlzdC4KCkRvZXMgdGhhdCBsZWF2ZSBmNDBl
-NzJkNTdiY2IzOCBicm9rZW4gb24gaXRzIG93biwgZS5nLiBhcyBhIGJpc2VjdCBwb2ludCBvcgph
-IHN0YWJsZSBiYWNrcG9ydD8gT24gYSBuZWVkc19zZ21paV9sb29wYmFjayBwbGF0Zm9ybSAoZW1h
-Y192NF8wXzBfZGF0YSkKd2l0aCBEVCBwaHktbW9kZSAiMjUwMGJhc2UteCIgd2hvc2UgbGluayBy
-ZXNvbHZlcyB0byAxRyBTR01JSToKCiAgZXRocW9zX21hY19maW5pc2hfc2VyZGVzKCkgICAgICAt
-PiBldGhxb3MtPnBoeV9tb2RlID0gUEhZX0lOVEVSRkFDRV9NT0RFX1NHTUlJCiAgc3VzcGVuZCAv
-IGlmZG93bgogIHJlc3VtZSAvIGlmdXAKICBldGhxb3NfY2xrc19jb25maWcoZXRocW9zLCB0cnVl
-KQogICAgcWNvbV9ldGhxb3Nfc2V0X3NnbWlpX2xvb3BiYWNrKGV0aHFvcywgdHJ1ZSkKICAgICAg
-aWYgKC4uLiBldGhxb3MtPnBoeV9tb2RlICE9IFBIWV9JTlRFUkZBQ0VfTU9ERV8yNTAwQkFTRVgp
-CiAgICAgICAgICAgICAgcmV0dXJuOyAgICAgICAgICAgICAgICAgLyogbG9vcGJhY2sgbmV2ZXIg
-ZW5hYmxlZCAqLwogIGR3bWFjNF9kbWFfcmVzZXQoKSAgICAgICAgICAgICAgICAgIC8qIHBvbGxz
-IGEgbm9uLXRvZ2dsaW5nIGNsb2NrLCB0aW1lcyBvdXQgKi8KCkFsc28sIHRoZSBzdWJqZWN0IGxp
-bmUgcmVhZHMgYXMgYSBzdGFuZGFsb25lIGZpeCBmb3IgYSBwcmUtZXhpc3RpbmcKcHJvYmxlbSwg
-d2hpY2ggaGlkZXMgdGhlIGRlcGVuZGVuY3kgb24gdGhlIHByZXZpb3VzIHBhdGNoLiBXb3VsZCBl
-aXRoZXIKc3F1YXNoaW5nIHRoZSBndWFyZCBjaGFuZ2UgaW50byBmNDBlNzJkNTdiY2IzOCwgb3Ig
-YWRkaW5nCgogIEZpeGVzOiBmNDBlNzJkNTdiY2IzOCAoIm5ldDogc3RtbWFjOiBxY29tLWV0aHFv
-czogdXBkYXRlIHBoeV9tb2RlIHRvIHRoZSByZXNvbHZlZCBpbnRlcmZhY2UgaW4gbWFjX2Zpbmlz
-aCgpIikKCm1ha2UgdGhlIG9yZGVyaW5nIHJlcXVpcmVtZW50IGV4cGxpY2l0PwoKT25lIG1vcmUg
-bm90ZSBvbiB0aGUgY29tbWl0IG1lc3NhZ2Ugd29yZGluZzogdGhlIHNlY29uZCBwYXJhZ3JhcGgg
-cmVhZHMKInFjb21fZXRocW9zX3NldF9zZ21paV9sb29wYmFjaygpIGdhdGVzIHRoaXMgb24gcGh5
-X21vZGUgYmVpbmcgMjUwMEJBU0VYLgptYWNfZmluaXNoKCkgbm93IHVwZGF0ZXMgcGh5X21vZGUg
-dG8gdGhlIHJ1bnRpbWUtcmVzb2x2ZWQgaW50ZXJmYWNlLCBhbnkKc3Vic2VxdWVudCByZXN1bWUg
-d2l0aCBhIDFHIFNHTUlJIGxpbmsgc2tpcHMgdGhlIGxvb3BiYWNrIHNldHVwIiDigJQgdGhlCnNl
-bnRlbmNlIGpvaW5pbmcgaXMgbWlzc2luZyBhIGNvbm5lY3RvciBzdWNoIGFzICJzbyB0aGF0IiBv
-ciAiYW5kIHNpbmNlIiwKd2hpY2ggbWFrZXMgdGhlIGNhdXNhbCByZWxhdGlvbnNoaXAgaGFyZCB0
-byBmb2xsb3cuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+Some firmwares (e.g. BCM43752) do not service the D3_INFORM mailbox
+handshake when idle, so the D3 ACK never arrives. If WoWL is not armed
+the device is going to be powered off during system suspend and
+re-probed on resume anyway (brcmf_pcie_pm_leave_D3() handles that), so
+the missing ACK is harmless and must not abort the whole system suspend.
+When WoWL is active the device has to stay powered with its state
+preserved, so keep treating the timeout as fatal.
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+This was tested with Rockchip RK3588 EVB1, which has a BCM43752 based
+WLAN card (AP6275P). This card is also used by a few other Rockchip
+boards (at least Khadas Edge2, RK3576 EVB1). Unfortunately
+linux-firmware does not contain any firmware files for this chip,
+so I used the files available from Armbian [0]:
+
+3779bd4f629961cf060a83cc5047a3b9b2d23c9d  brcmfmac43752-pcie.bin
+a471651d580b51da2a681e53c0cc3258eaa70e10  brcmfmac43752-pcie.clm_blob
+87294b22f4bf7b7f718cf24076f102df07e3c414  brcmfmac43752-pcie.txt
+
+[0] https://github.com/armbian/firmware/tree/master/brcm
+
+At least with that firmware the suspend command times out blocking
+system suspend. Testing on the Rockchip platform requires PCIe
+suspend support for it, which has been send separately.
+
+The patch is based on v7.3-rc1 and can go via -next as system suspend
+with mainline kernel needs quite some work on Rockchip anyways.
+
+Changes in v2:
+- Link to v1: https://patch.msgid.link/20260908-brcmfmac-bcm43752-suspend-fix-v1-1-32585639d763@collabora.com
+- Set prefix to wireless-next instead of net-next
+- Do not print error if the timeout is ignored
+---
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
+index 55f4d7b970f2..17bae04c14b0 100644
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/pcie.c
+@@ -2652,9 +2652,13 @@ static int brcmf_pcie_pm_enter_D3(struct device *dev)
+ 	wait_event_timeout(devinfo->mbdata_resp_wait, devinfo->mbdata_completed,
+ 			   BRCMF_PCIE_MBDATA_TIMEOUT);
+ 	if (!devinfo->mbdata_completed) {
+-		brcmf_err(bus, "Timeout on response for entering D3 substate\n");
+-		brcmf_bus_change_state(bus, BRCMF_BUS_UP);
+-		return -EIO;
++		if (devinfo->wowl_enabled) {
++			brcmf_err(bus, "Timeout on response for entering D3 substate\n");
++			brcmf_bus_change_state(bus, BRCMF_BUS_UP);
++			return -EIO;
++		}
++
++		brcmf_dbg(PCIE, "No D3 ACK, continuing to power the device off\n");
+ 	}
+ 
+ 	devinfo->state = BRCMFMAC_PCIE_STATE_DOWN;
+
+---
+base-commit: cee9395acd8043be0644b25c34bfa86623f2b935
+change-id: 20260908-brcmfmac-bcm43752-suspend-fix-f6539eda1e0d
+
+Best regards,
+--  
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
