@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ABC9C982C5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96641C88E77
 	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 12:55:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8/cceW2iupljbZpYmmQYEMoRBaTccpI/8+iCBIrYlWA=; b=b5NbFjxDbytuHq
-	EMr80ZdnwBAACJl6LUrSOem8kjINeyoEEft/jEzIeuV46R9N7ZLXgGNhBKcgWYvXEKtCdscXVjbpv
-	9Eb2yeb+TKeGx8mVVmcYBAdkK6OM2H1950E0zndVinNSL1kHK12czu+BmzOEdpLrpteqBVyK9ok3Y
-	+2fj2weW7nushq1nUAvbq5skF7UQO7XfLki+B/AL7u+nT5wk9yt4aCSg0YxKOARNqPmtp2iC4GTL0
-	+VrI042jepwpsXj+KLaWOJU0/lHi3F46XQAGyG6Zh8r+O09eBecf33q9ANnuGtbElzuAVMi5MYhl8
-	GTTZvg0kd9z82EugOAig==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VzkadR+SJH/1eYwAlZTOhCI8vWbXd2UWrm3md67+a74=; b=ankovyTLpACqe5
+	hlrGO0N6yie5ctonpiMXYPgSFnofMMn7S+6qUOW9oqVmbsZguA+sf7uP4JilkLNJdIAP6+5OQWzIv
+	YvfvnvL6f2xj+ZV7nKYBIZHMF15PhcuXjJwX96I4gSDLrnSY8L50ya9hUEmFPzpiMau8EZkKk8Kz2
+	sGbE0BZEuc2DhmoLIK7TcoFqDRl44PV33nv3lO89F/WGPc0CueDUhIDY323+xJGYsuH0r73/YB2oS
+	n2HUMTKmqQaKdYiMupohH7BdKB2KpDK6bloxKqyaS+9lQ2XFqxosVV256J0Gd2Fn4Z7nO/AB0GFrj
+	fnTguZ2O2laEMgVpg19Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pAC-00000009DDN-1hKV;
-	Wed, 16 Sep 2026 12:55:00 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pA4-00000009D9U-4330
-	for linux-rockchip@lists.infradead.org;
+	id 1x6pA7-00000009DBf-3soi;
 	Wed, 16 Sep 2026 12:54:55 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x6pA4-00000009D9M-195l
+	for linux-rockchip@lists.infradead.org;
+	Wed, 16 Sep 2026 12:54:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789563290;
-	bh=qUx4hsf6eU4bj1x64ZWHjM8moLvtJhuV3tVMfQYaZOc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NqoAekRtgVNCDR3hKlL17SGzg9fGWjHvpIFWQftUc0zvHPv6M6t6Y4KQAfkw/IPfT
-	 nzG0OzfozDMQsJXRxD8+ouZUvN4RDSWDXgvB5SV6V6rrZq10fX7nrZYtCEDoxhITwR
-	 yj0GIPFQ612JROA33/95ei7siYtiizW+1ae8aIGlGCvZbvzzDG9ylhKM+OQawS3MqT
-	 7bPMSkjgDWWq/lWseZtnZVaSeMR1ek2QCfWqTLBmuCRUkfGSZ9tcsflvl+5sYfQ2y0
-	 QPaXOj3j8Kofjy8tOcvE1GRfy5V5i5QWeyd/SFQrRr3YYcG0ftMIZ0xSEVOqvw3e3a
-	 BRAkFTdZkv6FA==
+	s=mail; t=1789563289;
+	bh=3OqxyAVOw07bW65jX9ZlMxzkFNrQL8bfb5NlzTYd0wI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=CeMdfTOOux/ah0Bd2DaODSB3u+uhmkItkUvnj4ZLmSKb00siFx6OrIvjP05Tx33lQ
+	 qLgCII3bEVT4ICRatdt2BHFI8L2anB/vvqi7isJWwEKTdkDEiFPcaXiYn7P1O3zaVg
+	 kSDppWt+ewbGMo0oQnw3il3Yc09mgCegu2ccseIONMVx3VNjn5ZSRTkclzgh6BTj6a
+	 KRuMA58uIPDVhq+akGpjG0S8kQCg0gjb3cwVDN69CkPEZI2nupr+qdF//2edPe3NAL
+	 HceJFNOtWsMpIUYJDhrwXOb9sDVIAw/MhqDEES86/Z0MvtJeuZbde+/3K39TysaLY+
+	 Jll3bTodsGRHw==
 Received: from benjamin-XPS-13-9310 (unknown [100.64.1.43])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2329917E12B9;
-	Wed, 16 Sep 2026 14:54:50 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0672917E07A9;
+	Wed, 16 Sep 2026 14:54:48 +0200 (CEST)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: nicolas.dufresne@collabora.com,
 	benjamin.gaignard@collabora.com,
@@ -53,16 +53,14 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v1 3/7] media: verisilicon: h264: Use alloc/free helpers for auxiliary buffers
-Date: Wed, 16 Sep 2026 14:54:39 +0200
-Message-ID: <20260916125443.78602-4-benjamin.gaignard@collabora.com>
+Subject: [PATCH v1 0/7] media: verisilicon: simplify auxiliary buffers allocation
+Date: Wed, 16 Sep 2026 14:54:36 +0200
+Message-ID: <20260916125443.78602-1-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260916125443.78602-1-benjamin.gaignard@collabora.com>
-References: <20260916125443.78602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_055453_202305_8BFB8B87 
-X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-CacheID: sfid-20260916_055452_565330_15D251D6 
+X-CRM114-Status: UNSURE (   8.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,46 +78,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simplify and clean up the code by using the helpers.
+Verisilicon stateless video decoder driver allocates lot of auxiliary
+buffers to decode bitstreams. These allocations duplicate a lot of code.
+This series add helpers functions to allocate and free auxiliary
+buffers. This simplify the driver code and will allow to implement more
+easly incoming feature like disentanglement data buffers from mv and rfc 
+buffers or adding reference frame support for more codecs.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- drivers/media/platform/verisilicon/hantro_h264.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+This series has been tested with fluster on IMX8MP for h264, hevc, vp8 
+and vp9 codecs, and on rk3588 for av1.
 
-diff --git a/drivers/media/platform/verisilicon/hantro_h264.c b/drivers/media/platform/verisilicon/hantro_h264.c
-index 2414782f1eb6..68dde1cd1ac2 100644
---- a/drivers/media/platform/verisilicon/hantro_h264.c
-+++ b/drivers/media/platform/verisilicon/hantro_h264.c
-@@ -494,26 +494,21 @@ int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx)
- 
- void hantro_h264_dec_exit(struct hantro_ctx *ctx)
- {
--	struct hantro_dev *vpu = ctx->dev;
- 	struct hantro_h264_dec_hw_ctx *h264_dec = &ctx->h264_dec;
- 	struct hantro_aux_buf *priv = &h264_dec->priv;
- 
--	dma_free_coherent(vpu->dev, priv->size, priv->cpu, priv->dma);
-+	hantro_free_aux_buf(ctx, priv);
- }
- 
- int hantro_h264_dec_init(struct hantro_ctx *ctx)
- {
--	struct hantro_dev *vpu = ctx->dev;
- 	struct hantro_h264_dec_hw_ctx *h264_dec = &ctx->h264_dec;
- 	struct hantro_aux_buf *priv = &h264_dec->priv;
- 	struct hantro_h264_dec_priv_tbl *tbl;
- 
--	priv->cpu = dma_alloc_coherent(vpu->dev, sizeof(*tbl), &priv->dma,
--				       GFP_KERNEL);
--	if (!priv->cpu)
-+	if (hantro_allocate_aux_buf(ctx, priv, sizeof(*tbl)))
- 		return -ENOMEM;
- 
--	priv->size = sizeof(*tbl);
- 	tbl = priv->cpu;
- 	memcpy(tbl->cabac_table, h264_cabac_table, sizeof(tbl->cabac_table));
- 
+This series depends of this one:
+https://patchwork.linuxtv.org/project/linux-media/patch/20260910092021.139970-1-benjamin.gaignard@collabora.com/
+which itself is based on media_tree/fixes branch.
+
+Regards,
+Benjamin
+
+Benjamin Gaignard (7):
+  media: verisilicon: Add helpers to allocate and free auxiliary buffers
+  media: verisilicon: AV1: Use alloc/free helpers for auxiliary buffers
+  media: verisilicon: h264: Use alloc/free helpers for auxiliary buffers
+  media: verisilicon: hevc: Use alloc/free helpers for auxiliary buffers
+  media: verisilicon: vp8: Use alloc/free helpers for auxiliary buffers
+  media: verisilicon: vp9: Use alloc/free helpers for auxiliary buffers
+  media: verisilicon: mpeg4: Use alloc/free helpers for auxiliary
+    buffers
+
+ drivers/media/platform/verisilicon/hantro.h   |   4 +
+ .../media/platform/verisilicon/hantro_av1.c   | 177 ++++--------------
+ .../media/platform/verisilicon/hantro_h264.c  |   9 +-
+ .../media/platform/verisilicon/hantro_hevc.c  | 130 ++++---------
+ .../media/platform/verisilicon/hantro_mpeg2.c |  17 +-
+ .../platform/verisilicon/hantro_postproc.c    |  21 +--
+ .../media/platform/verisilicon/hantro_v4l2.c  |  35 ++++
+ .../media/platform/verisilicon/hantro_vp8.c   |  37 +---
+ .../media/platform/verisilicon/hantro_vp9.c   |  37 ++--
+ 9 files changed, 139 insertions(+), 328 deletions(-)
+
 -- 
 2.53.0
 
