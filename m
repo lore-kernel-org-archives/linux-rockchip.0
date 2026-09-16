@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AECF4C982C9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 17:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B939C88E7F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 18:11:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sad+kjvqA2a+Gin7hohUnjC0cSYxCJogST5W+GGqnos=; b=KJWJB6cxGLy4SC
-	Q9zohdkN+fYtqt8nWIArb6xhEU0Q6UKEI3SfWY50LCpf5WgtKaQ/JYF5eKYl8XDailcJ+SACCINwz
-	4FkP6doGl5ipDx8oyocZ/zb9wnvfSBsro6fOKcbqJpF9cfZW6gXzeye+z5N1ZqAtq5VAYPpU8Gkzt
-	x/u1J6AHB7hmCfAlJXs36UBan2oxTbd/yFGItsFENtgR3uZ1hYwN3xcfkSRUbXqevzBs4MTDGxqYi
-	pCkbGt9cPzIPQMGeRq9uEb5gUz/j+NIfiN7cxFG6bo3+CsRmAfZSpS54n1GOqm4MbIxZFV8Ohilfa
-	nPCAfJufBO41BLP/xXiA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/C02hEPpmUyeKhu2OXbinevORDZjJkIZ6nfodLMcTYQ=; b=AsyJLcwl/5vlqz
+	vTv2C5GyhmjoDCbvYSzLDwq5Z9RhdHIDFu3s4EfjgfYzSAG5QMWqJBsZk402oMfY+h2i5XtKT19lM
+	bVSot3O24/v/eJhJmAvI0eS4u1m2rbbKaj1koXq0iNuG1XNpBFCwVGy+VzQ5LtY49K/0q9j58HrTk
+	SY+J1St5qYFtPQUA+GTBRuVVqehTTTk+u96m7XNzJAvfPMn468Bip1OLS7VGkoRLhbjvfdOVPBhpj
+	iuphQ0CHqGqDCu8ZZiNbm2Q6/w6oDak9QTGDMr+T63f4agdDMkzctkC8Bp4s4W9jAOZAfc3gEClfu
+	FrLkdl5+1C+JpPi3mH7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6tPn-00000009rx4-3DnB;
-	Wed, 16 Sep 2026 17:27:23 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1x6u6J-00000009vsM-2A40;
+	Wed, 16 Sep 2026 18:11:19 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6tPk-00000009rwC-3FHp;
-	Wed, 16 Sep 2026 17:27:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1789579634; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=OcWGWbCtQyAF4qkrN7p4azhGGDdw+5U5j8VyYOYLb1gBsSy3qgD5MLDMhBmn9+QjxkOqvYGfCX1flfr+kKYJxLwzsFX1cRUoA0iZWajNauXTL5DcfCF6+8H/CZOCKHJH9rZ8Z0yGzLIHMXFqU38Th52vBvswiwzlz/YcrTqiqrM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1789579634; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=yu4I8aA/dSCWiNzd0EiMaIb1hEBPZBMS5B0bclDwg3U=; 
-	b=j1EjAJDPWLzUqrtf/AWps9jhj7K6lk233J0lmD2EGKZD6Xs1NfIr5FzpvHJvh4jpa3HwPTEXTskgBmeApmAwq8PIskOPdChg2bnHC/+cNVLIvBRe5ar9uK6zK/DSVa3694wXupmzLoyL1VBtW45k49r78EvTopgQqZ+yBA0WQrI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1789579634;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=yu4I8aA/dSCWiNzd0EiMaIb1hEBPZBMS5B0bclDwg3U=;
-	b=JCN6Jf3VoU2FPQcE7Cla4Ac5E0bw+bPSvMGe+NiYJCMTz422U1TYnCsuRJOreAtD
-	2ca+SRFf5xxKjMxM/+jr4coKAkqbDzVU5gThzZjCCf30AOZ+/Ypuvxar3/2759XUcmy
-	W5TjQELzpkBQvDKB8T7xNYVjeI5pzIdNItz7RHY0=
-Received: by mx.zohomail.com with SMTPS id 1789579634133586.5912753636819;
-	Wed, 16 Sep 2026 10:27:14 -0700 (PDT)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil+cisco@kernel.org>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Guangshuo Li <lgs201920130244@gmail.com>
-Cc: Guangshuo Li <lgs201920130244@gmail.com>, stable@vger.kernel.org
-Subject: Re: [PATCH] media: rkvdec: do not destroy borrowed SRAM pool
-Date: Wed, 16 Sep 2026 13:27:12 -0400
-Message-ID: <h_fJ5CZXS3anfaQzbf4v3w@collabora.com>
-In-Reply-To: <20260915140511.2429792-1-lgs201920130244@gmail.com>
-References: <20260915140511.2429792-1-lgs201920130244@gmail.com>
+	id 1x6u6G-00000009vrE-1yvi;
+	Wed, 16 Sep 2026 18:11:18 +0000
+Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
+	by APP-05 (Coremail) with SMTP id zQCowACnFUC926pq_UBvCA--.24651S2;
+	Thu, 17 Sep 2026 02:11:10 +0800 (CST)
+From: Wentao Liang <vulab@iscas.ac.cn>
+To: airlied@gmail.com
+Cc: andrzej.hajda@intel.com,
+	andy.yan@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
+	heiko@sntech.de,
+	hjc@rock-chips.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	simona@ffwll.ch,
+	tzimmermann@suse.de,
+	Wentao Liang <vulab@iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH] drm/rockchip: dsi: Fix second reference leak in dw_mipi_dsi_rockchip_bind()
+Date: Wed, 16 Sep 2026 18:10:42 +0000
+Message-Id: <20260916181042.2090801-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-ZohoMailClient: External
+X-CM-TRANSID: zQCowACnFUC926pq_UBvCA--.24651S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7uFykXF1kXF1kuF48Xr1DKFg_yoW8XF4xpw
+	s8Ja4YgrW8uFnFqrnrArZ8GF4FywnIyay8GFs7J3s2kan5AF1Ut345Wa4kX347JFn7AF1x
+	Ar47Ga4rWF4xZrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9v14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
+	JVWxJr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVCY1x0267AKxV
+	WxJr0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2Wl
+	Yx0E2Ix0cI8IcVAFwI0_JF0_Jw1lYx0Ex4A2jsIE14v26F4j6r4UJwAm72CE4IkC6x0Yz7
+	v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF
+	7I0E8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxC20s026x
+	CaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_
+	JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r
+	1I6r4UMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr1UMIIF0xvE42xK8VAvwI8IcIk0
+	rVWUJVWUCwCI42IY6I8E87Iv67AKxVWxJVW8Jr1lIxAIcVC2z280aVCY1x0267AKxVWxJr
+	0_GcJvcSsGvfC2KfnxnUUI43ZEXa7VU1go2UUUUUU==
+X-Originating-IP: [36.110.52.2]
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiDAAMA2qqpO93ZQAAsa
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_102720_871386_F2F32DB2 
-X-CRM114-Status: GOOD (  21.20  )
+X-CRM114-CacheID: sfid-20260916_111116_892675_A5DA92B3 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,61 +89,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Guangshuo,
+dw_mipi_dsi_rockchip_find_second() hands back the dual-DSI partner
+device with a reference from of_find_device_by_node().  The bind path
+only drops it after a successful master setup; the four early returns
+(both/no clock-master, the slave shortcut and a missing slave drvdata)
+leave the reference behind.  Drop it on all of them.
 
-On Tuesday, 15 September 2026 10:05:11 EDT Guangshuo Li wrote:
-> rkvdec_probe() obtains a provider-owned SRAM pool with
-> of_gen_pool_get(), but its error path incorrectly destroys the borrowed
-> pool with gen_pool_destroy().
-> 
-> of_gen_pool_get() returns a pool managed by the SRAM provider. The pool
-> is not created or owned by the rkvdec driver and is destroyed by the
-> provider when its own managed resources are released.
-> 
-> Destroying it when rkvdec_v4l2_init() fails can invalidate the pool
-> while the provider and other consumers still reference it, and can also
-> result in the provider attempting to destroy it again later.
-> 
-> Remove the incorrect gen_pool_destroy() call from the probe failure
-> path.
+Fixes: cf6d100dd238 ("drm/rockchip: dsi: add dual mipi support")
+Cc: stable@vger.kernel.org
+Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-This is indeed invalid, as the gen_pool is already created when this driver is 
-being probe()'d.
-The sram module can only be built-in, not a module, so we know that the 
-gen_pool will never be destroyed while rkvdec uses it. That allows rkvdec to 
-just get the pool pointer and not have to call a matching put() function as 
-there is no need for ref counting.
-
-Reviewed-by: Detlev Casanova <detlev.casanova@collabora.com>
-
-> This issue was found by manual code inspection.
-> 
-> Fixes: e5640dbb991c ("media: rkvdec: Add RCB and SRAM support")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
-> ---
->  drivers/media/platform/rockchip/rkvdec/rkvdec.c | 3 ---
->  1 file changed, 3 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> b/drivers/media/platform/rockchip/rkvdec/rkvdec.c index
-> 061281f903f3..4541ef9ee3b9 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -1857,9 +1857,6 @@ static int rkvdec_probe(struct platform_device *pdev)
->  	pm_runtime_dont_use_autosuspend(&pdev->dev);
->  	pm_runtime_disable(&pdev->dev);
-> 
-> -	if (rkvdec->sram_pool)
-> -		gen_pool_destroy(rkvdec->sram_pool);
-> -
->  	return ret;
->  }
-
-Regards,
-Detlev.
-
-
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 3547d91b25d3..4ab29410b2c0 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -933,23 +933,27 @@ static int dw_mipi_dsi_rockchip_bind(struct device *dev,
+ 
+ 		if (master1 && master2) {
+ 			DRM_DEV_ERROR(dsi->dev, "only one clock-master allowed\n");
++			put_device(second);
+ 			return -EINVAL;
+ 		}
+ 
+ 		if (!master1 && !master2) {
+ 			DRM_DEV_ERROR(dsi->dev, "no clock-master defined\n");
++			put_device(second);
+ 			return -EINVAL;
+ 		}
+ 
+ 		/* we are the slave in dual-DSI */
+ 		if (!master1) {
+ 			dsi->is_slave = true;
++			put_device(second);
+ 			return 0;
+ 		}
+ 
+ 		dsi->slave = dev_get_drvdata(second);
+ 		if (!dsi->slave) {
+ 			DRM_DEV_ERROR(dev, "could not get slaves data\n");
++			put_device(second);
+ 			return -ENODEV;
+ 		}
+ 
+-- 
+2.34.1
 
 
 _______________________________________________
