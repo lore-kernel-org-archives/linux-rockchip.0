@@ -4,58 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED4FC88E77
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 13:46:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D524C982C3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 13:46:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=lZLzTFg7xjrsmmn2qMlT0Tp4VVV1zLsIqWV8p8kjg24=; b=gHq9mXUYIEkrOx
-	e6kns5wtRZ0Tvn4Nx7bB8GBdi+BffNzNdPAQDvHhbbYDbn1wO2BUhgEjxd7Rd/h6NWpyWtcPfY99a
-	C5JiZ10DGMVOdhRsBbC/mFzmIGJ+cmYiLFzgwyOctiaErNY1rNCuX7IzpuTfR+PEBy9rcStSysAnT
-	tnkqm9Fbc1TmElLDUuqkKBNxb8ECGB8xMC2dQ7JV368MawqZd7maicW39/enetwv1lQH4Rcxf9Yoi
-	GZ6nIuT9yeL5ZZufCRyvq7RO/wGFXnwPvboLWr7rNWW7kALg38INAxN/GahchSmaBc0vqkm4lNUAF
-	M31NS3kaPjfOKxBjRUtA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ldUqP15yG1+xYtzWSUkmfVBgq6BAGTUammDbXo5fWyM=; b=tBILwkdqULN5gC
+	L+4HYgT5NV0qLPPwj4LHHyQJXo03e4R+BPuwsRroW4IqphkBU1PHEOjOdVbBoXKYCcvm4BeZRvzLO
+	Z+/5+vPqbpwcJoGG+i2Abv/Zbn1TeoJqxdEXYA9SoYBFseAh9SYR9OOccYe689Rx+OnJhhBnzvz5R
+	qGsAuiYeVsAApcqCwCKPT7wRV5xUj4z8Rjt0NN9QqBiTv2pgywvQEjiTpUdj7XQvPWJF9heO/S/0G
+	kbmpmEPlQGrPTxE/42S+SQYn54M/lg/KWYofj8qQeqvt51v6QjBOn8zr27yZun4gQfjhgknkKozc8
+	0dLzqC9pbs7b7w5G3IkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pxm-00000009IWC-20jh;
+	id 1x6pxm-00000009IWT-2foV;
 	Wed, 16 Sep 2026 13:46:14 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pxP-00000009IP1-2vzj
+	id 1x6pxW-00000009IRx-44Qj
+	for linux-rockchip@bombadil.infradead.org;
+	Wed, 16 Sep 2026 13:45:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=zIb4y2X3SRcPHsShM1vvJKlerVb44YpM+iags7PiUSY=; b=pfrsQWToWbd9JoML0daD0EICv+
+	AGBftMXLdiLTtChdBCElBRAcUk20FyYli/+m3Kcer04DDE98o/9NQ1M+F3MRDzgJO1uZreQQy4BP0
+	rp5TVyXBNebD0Og8GHeuEzruw7MnmyCqE0cC7IAXJddFV2IPGOXinGtN+JXEhzrVdw7+1DcudRKSV
+	uESDHaMwv81xUpXKVe0PAVlLUzGfaID0EmHwFGDChwmSI8BZ5Zg7QMO1oolh4G2rYmbdOUhV/AZKw
+	WtEX2csyskJ1FMg63E8E93xexLSUTWyFY/4GJkmymMaHseQZih2uBulr37zDc5dahfkrvj4pU3+XF
+	2mZd0TtA==;
+Received: from smtpout-03.galae.net ([185.246.85.4])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x6pxT-00000007vpv-37oa
 	for linux-rockchip@lists.infradead.org;
-	Wed, 16 Sep 2026 13:45:56 +0000
+	Wed, 16 Sep 2026 13:45:57 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 29568C5CD58;
-	Wed, 16 Sep 2026 13:46:32 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id E153D4E40736;
+	Wed, 16 Sep 2026 13:45:54 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 20DC660337;
-	Wed, 16 Sep 2026 13:45:48 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 70B7511C7B031;
-	Wed, 16 Sep 2026 15:45:30 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id AF53C60337;
+	Wed, 16 Sep 2026 13:45:54 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 49AE611C7B010;
+	Wed, 16 Sep 2026 15:45:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1789566345; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding; bh=q4C1pzG9+EtJ/2hH0YXWQ40f9dRoQswHxQlqElZewcs=;
-	b=n3aO308IOwzLiSpBj6Rpkxe9ZNqdqPI0CmCQMKrNSfN9UPSPY5uVwsfDsm/D9PMNLSGDAz
-	D3NsmMr0PdC9qhjOn9RXm3tf2sw3OQwvoKGTpxWxbs0JtsMoE5Lg76KnpwBvIj9Wqrd+Vz
-	tXwe77zGb9Se2LcKSr36bWDFRtdgAP7SgOUYwZtFaBAT/vqQwTmcliaWroX5T+REJdc8qQ
-	J0GMPNron3ITx86jJFd+8gtaLAY/dp9wsxse3bzg1iseCzrGdyC/7fNtanZ+k1RNrezSSo
-	T581sGjN2JOLUhCCMjM0zc0YtHluFtfSdpVRRdTnrMNbpbCj31YbMx3WcmzZgw==
+	t=1789566352; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=zIb4y2X3SRcPHsShM1vvJKlerVb44YpM+iags7PiUSY=;
+	b=IHySCgynSIjcSNwyDcWS/dY62ItmEToFIs+v+NKzNQQ43eo9e5f4ixT8jFpW8C4EEOuUGj
+	7e/fcBCv7HT7U6T0B1RXl19QtYu5vLqJ1sYUPub9N1wS4kJDkHMWVch7SXEBFDn/Fqtj8w
+	nz+t/XFMQPERJs7gpFK6xbJnFckWTBCvDXUrxI5usPIQWKr7O5ggp+m6DK5v3yLcyQelNW
+	Ah7Jgu63RdOucGbReKSl/zLYYa1oQhd9ZcsA8Ux1/BeawM2PzQcJZPMkwnpvVsB8fuWNzk
+	dhG1cM9OKY5IUOWqclorbOhOsDIIiUs9BATw78PORpXAkIlxHkNNTdoLZ6LsUA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Subject: [PATCH v3 00/19] drm/panel: embed a drm_bridge into every
- drm_panel
-Date: Wed, 16 Sep 2026 15:45:24 +0200
-Message-Id: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
+Date: Wed, 16 Sep 2026 15:45:25 +0200
+Subject: [PATCH v3 01/19] drm: of: move drm_of_find_panel_or_bridge() from
+ drm_of.c to drm_panel.c
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WQ3WrDMAyFXyX4eh7+Texc7T3GGLasrB7Nz5zEr
- JS++5yEUQbrnQ6SviOdK5kxRZxJW11JwhznOA5FyKeKwMkNH0hjKJoIJmpmuKAh9dSnGEoHM6Y
- LndyAZ+q4tnWosUOnSFmeEnbxewe/vh16Xv0nwrLRtolTnJcxXXbnzLe5XxP1yCRzyii3ELRoG
- gATXvw4Luc4PMPYk80mizvIMvkQJApIOG8QhdLS4F/Q7Tg44ddaAlmOL+55tNV/aZTy/aDDGd2
- wTpRZDBqAM6tMm/dYvJuRFo8+Lm3lwDMNRmiUVpbSKBe8Vo3wnfe8AcOkdNZ25aDbD/C9UqmpA
- QAA
-X-Change-ID: 20260812-drm-bridge-every-panel-a1596d6efea4
+Message-Id: <20260916-drm-bridge-every-panel-v3-1-83afb4f1a707@bootlin.com>
+References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
+In-Reply-To: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
@@ -90,8 +101,8 @@ Cc: Albert Esteve <aesteve@redhat.com>,
 X-Mailer: b4 0.16.0
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_064552_316612_B6AB5B97 
-X-CRM114-Status: GOOD (  19.02  )
+X-CRM114-CacheID: sfid-20260916_144556_292949_56A3D204 
+X-CRM114-Status: GOOD (  23.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,217 +114,421 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhpcyBzZXJpZXMgZW1iZWRzIGEgZHJtX2JyaWRnZSBpbnRvIGV2ZXJ5IGRybV9wYW5lbCwgYXMg
-cHJldmlvdXNseQpkaXNjdXNzZWQgWzFdWzJdIGFuZCBpbiBwcmV2aW91cyBpdGVyYXRpb25zLgoK
-VGhpcyB3aWxsIGFsbG93IGJyaWRnZXMgYW5kIGVuY29kZXJzIHRvIGludGVyYWN0IHdpdGggdGhl
-IG5leHQgcGlwZWxpbmUKY29tcG9uZW50IGFsd2F5cyB3aXRoIHRoZSBicmlkZ2UgQVBJLCBub3Qg
-Y2FyaW5nIHdoZXRoZXIgaXQgaXMgYSBwYW5lbCBvcgphbm90aGVyIGRldmljZSAoZS5nLiBhIGJy
-aWRnZSBmcm9tIGEgYnVzIHRvIGFub3RoZXIgYnVzKS4KCkN1cnJlbnRseSBhIGRybV9wYW5lbCBk
-b2VzIG5vdCBoYXZlIGEgY29ycmVzcG9uZGluZyBkcm1fYnJpZGdlIHdoZW4gaXQgaXMKY3JlYXRl
-ZC4gQSBwYW5lbF9icmlkZ2UgaXMgb2Z0ZW4gY3JlYXRlZCBhZnRlcndhcmRzIGJ5IHRoZSBjb21w
-b25lbnQKYWNjZXNzaW5nIGl0ICh0eXBpY2FsbHkgdGhlIHByZXZpb3VzIGJyaWRnZSBvciBlbmNv
-ZGVyKS4gVGhpcyBjcmVhdGVzIGEKbWlzbWF0Y2ggYmV0d2VlbiB0aGUgZHJtX3BhbmVsIGFuZCB0
-aGUgZHJtX2JyaWRnZSAocGFydCBvZiB0aGUKcGFuZWxfYnJpZGdlKSwgaW4gdGVybXMgb2YgbGlm
-ZXRpbWUgYW5kIGRldm0gb3duZXJzaGlwLiBJdCBhbHNvIG1ha2VzCmltcGxlbWVudGluZyBicmlk
-Z2UgaG90cGx1ZyBjbG9zZSB0byBpbXBvc3NpYmxlIGluIHNvbWUgY2FzZXMuCgpUaGlzIHdvcmsg
-bGV2ZXJhZ2VzIHRoZSB3b3JrIGRvbmUgYnkgQW51c2hhIFNyaXZhdHNhIGFuZCBBbGJlcnQgRXN0
-ZXZlIHRvCmltcGxlbWVudCBkcm1fcGFuZWwgbGlmZXRpbWUuCgo9PSBwYW5lbF9icmlkZ2UgQVBJ
-IGltcGFjdAoKVGhpcyBzZXJpZXMgbW92ZXMgdGhlIHBhbmVsX2JyaWRnZSBjb2RlIGluc2lkZSBk
-cm1fcGFuZWwuYyBhbmQgY2hhbmdlcyBpdAp0byBiZSByZXVzYWJsZSBieSB0aGUgcGFuZWwgY29k
-ZS4gSG93ZXZlciB0aGlzIGltcGxpZXMgdGhlIG9sZCBwYW5lbF9icmlkZ2UKYmVoYXZpb3VyIChk
-cm1fcGFuZWxfYnJpZGdlX2FkZCgpIGFuZCBkZXJpdmF0aXZlcyBjcmVhdGUgYSBwYW5lbF9icmlk
-Z2UsIHRvCm5hbWUgb25lKSBjYW5ub3QgY29leGlzdCB3aXRoIHRoZSBuZXcgYmVoYXZpb3VyIChk
-ZXZtX2RybV9wYW5lbF9hbGxvYygpCmFsbG9jYXRlcyBhbiBlbWJlZGRlZCBkcm1fYnJpZGdlIGFu
-ZCBpbml0aWFsaXplcyBpdCkuCgpUbyBoYW5kbGUgdGhpcywgdGhlIG9sZCBwYW5lbF9icmlkZ2Ug
-QVBJIGlzIGtlcHQgdG8gbm90IGJyZWFrIGl0cyB1c2VycywKYnV0IG5vdyBiZWhhdmVzIGRpZmZl
-cmVudGx5OgoKICogZHJtX3BhbmVsX2JyaWRnZV9hZGQoKSBhbmQgZGVyaXZhdGl2ZXMgZG9uJ3Qg
-Y3JlYXRlIGEgYnJpZGdlLCB0aGV5CiAgIGp1c3QgZHJtX2JyaWRnZV9nZXQoKSBhbmQgcmV0dXJu
-IGEgcG9pbnRlciB0byB0aGUgZXhpc3Rpbmcgb25lCiAqIGRybV9wYW5lbF9icmlkZ2VfcmVtb3Zl
-KCkgYW5kIGRldm1fZHJtX3BhbmVsX2JyaWRnZV9yZWxlYXNlKCkgZG9uJ3QKICAgcmVtb3ZlIHRo
-ZSBicmlkZ2UsIHRoZXkganVzdCBkcm0tYnJpZGdlX3B1dCgpIGl0CiAqIFRoZSBvdGhlciBwYW5l
-bF9icmlkZ2UgZnVuY3Rpb25zIHN0YWNrIG9uIHRob3NlIGxpc3RlZCBpbiB0aGUgcHJldmlvdXMg
-MgogICBidWxsZXRzLCBzbyB0aGVpciBiZWhhdmlvdXIgaXMgY2hhbmdlZCBjb3JyZXNwb25kaW5n
-bHkKCkFzIGEgcmVzdWx0LCBhbGwgZHJpdmVycyB1c2luZyB0aGUgcGFuZWxfYnJpZGdlIG5vdyBi
-ZWhhdmUgdGhlIG5ldyB3YXkKd2l0aG91dCBhbnkgY2hhbmdlcy4gQ29udmVydGluZyB0aGVtIHRv
-IG5vdCBzdG9wIHVzaW5nIHRoZSBwYW5lbF9icmlkZ2UgaXMKYSBnb2FsLCBidXQgY2FuIGJlIGRv
-bmUgb3ZlciB0aW1lLiBTdGlsbCB0aGlzIHNlcmllcyBjb252ZXJ0cyBhIGZldwpkcml2ZXJzLgoK
-PT0gU2VyaWVzIG91dGxpbmUKCiAxLiBtb3ZlIGNvZGUgYXJvdW5kIGluIHByZXBhcmF0aW9uCgog
-ICAgICBkcm06IG9mOiBtb3ZlIGRybV9vZl9maW5kX3BhbmVsX29yX2JyaWRnZSgpIGZyb20gZHJt
-X29mLmMgdG8gZHJtX3BhbmVsLmMKICAgICAgZHJtOiBvZjogcmVtb3ZlIG5vdyB1bm5lY2Vzc2Fy
-eSBmb3J3YXJkIGRlY2xhcmF0aW9ucwogICAgICBkcm0vcGFuZWw6IG1vdmUgdG8gYSBuZXcgbW9k
-dWxlCiAgICAgIGRybS9icmlkZ2U6IHBhbmVsOiBtb3ZlIGFsbCBjb2RlIHRvIGRybV9wYW5lbC5j
-CgogMi4gVGhlIG1haW4gY2hhbmdlCgogICAgICBkcm0vcGFuZWw6IGVtYmVkIGEgZHJtX2JyaWRn
-ZSBpbnRvIGV2ZXJ5IGRybV9wYW5lbAoKIDMuIEFQSSBjbGVhbnVwCgogICAgICBkcm0vYnJpZGdl
-OiByZW1vdmUgZGV2bV9kcm1fcHV0X2JyaWRnZSgpCiAgICAgIGRybS9wYW5lbDogZGVwcmVjYXRl
-IHBhbmVsLWJyaWRnZSBBUElzCiAgICAgIGRybS90b2RvOiBhZGQgZW50cnkgZm9yIHJlbW92aW5n
-IHRoZSBwYW5lbF9icmlkZ2UgQVBJCgogNC4gVXBkYXRlIHNvbWUgZHJpdmVycyB0byBub3QgY3Jl
-YXRlIGEgcGFuZWxfYnJpZGdlCgogICAgICBkcm0vYnJpZGdlOiB0YzM1ODc2NzogZG9uJ3QgY3Jl
-YXRlIGEgcGFuZWxfYnJpZGdlCiAgICAgIGRybS9icmlkZ2U6IHdhdmVzaGFyZS1kc2k6IGRvbid0
-IGNyZWF0ZSBhIHBhbmVsX2JyaWRnZQogICAgICBkcm0vbWNkZTogZHNpOiByZW1vdmUgdW51c2Vk
-IGluY2x1ZGVzCiAgICAgIGRybS9tY2RlOiBkc2k6IGRvbid0IGNyZWF0ZSBhIHBhbmVsX2JyaWRn
-ZQogICAgICBkcm0vYnJpZGdlOiBmc2wtbGRiOiBkb24ndCBjcmVhdGUgYSBwYW5lbF9icmlkZ2UK
-ICAgICAgZHJtL2JyaWRnZTogc2Ftc3VuZy1kc2ltOiBkb24ndCBjcmVhdGUgYSBwYW5lbF9icmlk
-Z2UKICAgICAgZHJtL2JyaWRnZTogdGMzNTg3Njg6IGRvbid0IGNyZWF0ZSBhIHBhbmVsX2JyaWRn
-ZQogICAgICBkcm0vYnJpZGdlOiBzc2QyODI1OiBkb24ndCBjcmVhdGUgYSBwYW5lbF9icmlkZ2UK
-ICAgICAgZHJtL29tYXA6IGRzczogZG9uJ3QgY3JlYXRlIGEgcGFuZWxfYnJpZGdlCiAgICAgIGRy
-bS90dmUyMDA6IGRvbid0IGNyZWF0ZSBhIHBhbmVsX2JyaWRnZQogICAgICBkcm0vYnJpZGdlOiBh
-bmFsb2dpeF9kcDogZG9uJ3QgY3JlYXRlIGEgcGFuZWxfYnJpZGdlCgo9PSBEZXBlbmRlbmNpZXMK
-ClRoaXMgc2VyaWVzIGRlcGVuZHMgb246CgogKiAiZHJtL2JyaWRnZTogS2NvbmZpZzogY2xlYW51
-cCBEUk1fUEFORUwgdXNhZ2UiCiAgIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMjAyNjA5MTUt
-ZHJtLWJyaWRnZS1kcm1fcGFuZWwtY2xlYW51cC12NC0wLTMwNDAxZDk0MDZmM0Bib290bGluLmNv
-bQogICBSZWFzb246IHRyaXZpYWwsIGJvdGggdG91Y2ggZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9L
-Y29uZmlnLCB3b3VsZAogICAgICAgICAgIGNvbmZsaWN0IG90aGVyd2lzZQoKPT0gR3JhbmQgcGxh
-bgoKVGhpcyBpcyBwYXJ0IG9mIHRoZSB3b3JrIHRvIHN1cHBvcnQgaG90cGx1ZyBvZiBEUk0gYnJp
-ZGdlcy4gVGhlIGdyYW5kIHBsYW4Kd2FzIGRpc2N1c3NlZCBpbiBbMF0uCgpIZXJlJ3MgdGhlIHdv
-cmsgYnJlYWtkb3duICjinpwgbWFya3MgdGhlIGN1cnJlbnQgc2VyaWVzKToKCiAxLiDinpwgYWRk
-IHJlZmNvdW50aW5nIHRvIERSTSBicmlkZ2VzIHN0cnVjdCBkcm1fYnJpZGdlLAogICAgICBiYXNl
-ZCBvbiBkZXZtX2RybV9icmlkZ2VfYWxsb2MoKQogICAgQS4g4pyUIGFkZCBuZXcgYWxsb2MgQVBJ
-IGFuZCByZWZjb3VudGluZyAodjYuMTYpCiAgICBCLiDinJQgY29udmVydCBhbGwgYnJpZGdlIGRy
-aXZlcnMgdG8gbmV3IEFQSSAodjYuMTcpCiAgICBDLiDinJQga3VuaXQgdGVzdHMgKHY2LjE3KQog
-ICAgRC4g4pyUIGFkZCBnZXQvcHV0IHRvIGRybV9icmlkZ2VfYWRkL3JlbW92ZSgpICsgYXR0YWNo
-L2RldGFjaCgpCiAgICAgICAgIGFuZCB3YXJuIG9uIG9sZCBhbGxvY2F0aW9uIHBhdHRlcm4gKHY2
-LjE3KQogICAgRS4g4p6cIGFkZCBnZXQvcHV0IG9uIGRybV9icmlkZ2UgYWNjZXNzb3JzCiAgICAg
-ICAxLiDinJQgZHJtX2JyaWRnZV9jaGFpbl9nZXRfZmlyc3RfYnJpZGdlKCksIGFkZCBjbGVhbnVw
-IGFjdGlvbiAodjYuMTgpCiAgICAgICAyLiDinJQgZHJtX2JyaWRnZV9nZXRfcHJldl9icmlkZ2Uo
-KSAodjYuMTgpCiAgICAgICAzLiDinJQgZHJtX2JyaWRnZV9nZXRfbmV4dF9icmlkZ2UoKSAodjYu
-MTkpCiAgICAgICA0LiDinJQgZHJtX2Zvcl9lYWNoX2JyaWRnZV9pbl9jaGFpbigpICh2Ni4xOSkK
-ICAgICAgIDUuIOKclCBkcm1fYnJpZGdlX2Nvbm5lY3Rvcl9pbml0ICh2Ni4xOSkKICAgICAgIDYu
-IOKclCBwcm90ZWN0IGVuY29kZXIgYnJpZGdlIGNoYWluIHdpdGggYSBtdXRleCAodjcuMikKICAg
-ICAgIDcuIOKclCBvZl9kcm1fZmluZF9icmlkZ2UKICAgICAgICAgIGEuIOKclCBhZGQgb2ZfZHJt
-X2dldF9icmlkZ2UoKSAodjcuMCksCiAgICAgICAgICAgICAgIGNvbnZlcnQgYmFzaWMgZGlyZWN0
-IHVzZXJzICh2Ny4wLXY3LjEpCiAgICAgICAgICBiLiDinJQgY29udmVydCBkaXJlY3Qgb2ZfZHJt
-X2dldF9icmlkZ2UoKSB1c2VycywgcGFydCAyICh2Ny4wKQogICAgICAgICAgYy4g4pyUIGNvbnZl
-cnQgZGlyZWN0IG9mX2RybV9nZXRfYnJpZGdlKCkgdXNlcnMsIHBhcnQgMyAodjcuMCkKICAgICAg
-ICAgIGQuIOKclCBjb252ZXJ0IGRpcmVjdCBvZl9kcm1fZ2V0X2JyaWRnZSgpIHVzZXJzLCBwYXJ0
-IDQgKHY3LjEtdjcuMikKICAgICAgICAgIGUuIOKclCBicmlkZ2Utb25seSBkcm1fb2ZfZmluZF9w
-YW5lbF9vcl9icmlkZ2UoKSB1c2VycyAodjcuMikKICAgICAgIDguIOKenCBwYW5lbF9icmlkZ2Ug
-bGlmZXRpbWUKICAgICAgICAgIGEuIOKApiBjbGVhbnVwIERSTV9QQU5FTCBpbiBicmlkZ2UgZHJp
-dmVycwoJICBiLiDinpwgYWRkIGEgcGFuZWxfYnJpZGdlIHRvIGV2ZXJ5IHBhbmVsCiAgICAgICA5
-LiDinJQgZW5mb3JjZSBkcm1fYnJpZGdlX2FkZCBiZWZvcmUgZHJtX2JyaWRnZV9hdHRhY2ggKHY2
-LjE5KQogICAgRi4g4pyUIGRlYnVnZnMgaW1wcm92ZW1lbnRzCiAgICAgICAxLiDinJQgYWRkIHRv
-cC1sZXZlbCAnYnJpZGdlcycgZmlsZSAodjYuMTYpCiAgICAgICAyLiDinJQgc2hvdyByZWZjb3Vu
-dCBhbmQgbGlzdCBsaW5nZXJpbmcgYnJpZGdlcyAodjYuMTkpCiAyLiDinJQgaGFuZGxlIGdyYWNl
-ZnVsbHkgYXRvbWljIHVwZGF0ZXMgZHVyaW5nIGJyaWRnZSByZW1vdmFsCiAgICBBLiDinJQgQWRk
-IGRybV9icmlkZ2VfZW50ZXIvZXhpdCgpIHRvIHByb3RlY3QgZGV2aWNlIHJlc291cmNlcyAodjcu
-MCkKICAgIEIuIOKclCBBZGQgZHJtX2JyaWRnZV9jbGVhcl9hbmRfcHV0KCkgKHY3LjEpCiAzLiDi
-gKYgRFNJIGhvc3QtZGV2aWNlIGRyaXZlciBpbnRlcmFjdGlvbgogNC4g4pyUIHJlbW92aW5nIHRo
-ZSBuZWVkIGZvciB0aGUgImFsd2F5cy1kaXNjb25uZWN0ZWQiIGNvbm5lY3RvcgogNS4g4pyUIE1p
-Z3JhdGUgaS5NWCBMQ0RJRiBkcml2ZXIgdG8gYnJpZGdlLWNvbm5lY3RvciAodjcuMikKIDYuIOKA
-piBEUk0gYnJpZGdlIGhvdHBsdWcKICAgIEEuIOKApiBCcmlkZ2UgaG90cGx1ZyBtYW5hZ2VtZW50
-IGluIHRoZSBEUk0gY29yZQogICAgICAgMS4g4pyUIGJyaWRnZS1jb25uZWN0b3I6IGF0dGFjaCBl
-bmNvZGVyIHRvIHRoZSBjb25uZWN0b3IgKHY3LjIpCiAgICAgICAyLiDigKYgZHJtIGJyaWRnZSBo
-b3RwbHVnCiAgICBCLiAgIERldmljZSB0cmVlIGRlc2NyaXB0aW9uCgpbMF0gaHR0cHM6Ly9sb3Jl
-Lmtlcm5lbC5vcmcvbGttbC8yMDI1MDIwNi1ob3RwbHVnLWRybS1icmlkZ2UtdjYtMC05ZDZmMmM5
-YzMwNThAYm9vdGxpbi5jb20vI3QKClsxXSAgaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsL2Vt
-dWoyaW5ubXA2em16ZDdweWFrcXpqcXBkemhseTZxZmhha3lhM3lkd21kNjNwbDI2QDVqd3hhaWRw
-aWtqdy8KWzJdICBodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21sLzIwMjUwMjA2LWhvdHBsdWct
-ZHJtLWJyaWRnZS12Ni04LTlkNmYyYzljMzA1OEBib290bGluLmNvbS8KClNpZ25lZC1vZmYtYnk6
-IEx1Y2EgQ2VyZXNvbGkgPGx1Y2EuY2VyZXNvbGlAYm9vdGxpbi5jb20+Ci0tLQpDaGFuZ2VzIGlu
-IHYzOgotIE1vdmUgdGhlIHBhbmVsX2JyaWRnZSBjb2RlIHRvIGRybV9wYW5lbC5jLCBkb24ndCBk
-dXBsaWNhdGUgaXQsIGFuZCBjaGFuZ2UKICB0aGUgcGFuZWxfYnJpZGdlIEFQSSB0byBqdXN0IHdy
-YXAgdGhlIG5ld2x5IGVtYmVkZGVkIGRybV9icmlkZ2UKLSBSZW1vdmUgZGVwcmVjYXRlZCBkZXZt
-X2RybV9wdXRfYnJpZGdlKCkgYW5kIFRPRE8gZW50cnkKLSBEZXByZWNhdGUgcGFuZWxfYnJpZGdl
-IEFQSUEsIGFkZCBUT0RPIGVudHJ5IGZvciBpdHMgcmVtb3ZhbAotIExpbmsgdG8gdjI6IGh0dHBz
-Oi8vcGF0Y2gubXNnaWQubGluay8yMDI2MDkwMy1kcm0tYnJpZGdlLWV2ZXJ5LXBhbmVsLXYyLTAt
-MmFiOGVlMjQ1MzhlQGJvb3RsaW4uY29tCgpDaGFuZ2VzIGluIHYyOgotIFRvdGFsbHkgbmV3IGFw
-cHJvYWNoOiBlbWJlZCBhIGRybV9icmlkZ2UsIGRvbid0IGNyZWF0ZSBpdCBkeW5hbWljYWxseQot
-IE5ldyBhcHByb2FjaCB0byBtb2R1bGUgZGVwZW5kZW5jaWVzIG1hbmFnZW1lbnQ6IG5ldyBkcm1f
-cGFuZWwgbW9kdWxlIGV0YwotIENvbnZlcnQgbW9yZSBkcml2ZXJzLCBpbmNsdWRpbmcgYSBjb21w
-bGV4LCBtdWx0aS11c2VyIG9uZSAoYW5hbG9naXhfZHApCi0gQWRkIEFsYmVydCBhbmQgQW51c2hh
-IHRvIENjIGxpc3QKLSBNaW5vciBpbXByb3ZlbWVudHMKLSBMaW5rIHRvIHYxOiBodHRwczovL3Bh
-dGNoLm1zZ2lkLmxpbmsvMjAyNjA4MTQtZHJtLWJyaWRnZS1ldmVyeS1wYW5lbC12MS0wLTE5Y2Q1
-Mjc3Y2M4ZEBib290bGluLmNvbQoKLS0tCkx1Y2EgQ2VyZXNvbGkgKDE5KToKICAgICAgZHJtOiBv
-ZjogbW92ZSBkcm1fb2ZfZmluZF9wYW5lbF9vcl9icmlkZ2UoKSBmcm9tIGRybV9vZi5jIHRvIGRy
-bV9wYW5lbC5jCiAgICAgIGRybTogb2Y6IHJlbW92ZSBub3cgdW5uZWNlc3NhcnkgZm9yd2FyZCBk
-ZWNsYXJhdGlvbnMKICAgICAgZHJtL3BhbmVsOiBtb3ZlIHRvIGEgbmV3IG1vZHVsZQogICAgICBk
-cm0vYnJpZGdlOiBwYW5lbDogbW92ZSBhbGwgY29kZSB0byBkcm1fcGFuZWwuYwogICAgICBkcm0v
-cGFuZWw6IGVtYmVkIGEgZHJtX2JyaWRnZSBpbnRvIGV2ZXJ5IGRybV9wYW5lbAogICAgICBkcm0v
-YnJpZGdlOiByZW1vdmUgZGV2bV9kcm1fcHV0X2JyaWRnZSgpCiAgICAgIGRybS9wYW5lbDogZGVw
-cmVjYXRlIHBhbmVsLWJyaWRnZSBBUElzCiAgICAgIGRybS90b2RvOiBhZGQgZW50cnkgZm9yIHJl
-bW92aW5nIHRoZSBwYW5lbF9icmlkZ2UgQVBJCiAgICAgIGRybS9icmlkZ2U6IHRjMzU4NzY3OiBk
-b24ndCBjcmVhdGUgYSBwYW5lbF9icmlkZ2UKICAgICAgZHJtL2JyaWRnZTogd2F2ZXNoYXJlLWRz
-aTogZG9uJ3QgY3JlYXRlIGEgcGFuZWxfYnJpZGdlCiAgICAgIGRybS9tY2RlOiBkc2k6IHJlbW92
-ZSB1bnVzZWQgaW5jbHVkZXMKICAgICAgZHJtL21jZGU6IGRzaTogZG9uJ3QgY3JlYXRlIGEgcGFu
-ZWxfYnJpZGdlCiAgICAgIGRybS9icmlkZ2U6IGZzbC1sZGI6IGRvbid0IGNyZWF0ZSBhIHBhbmVs
-X2JyaWRnZQogICAgICBkcm0vYnJpZGdlOiBzYW1zdW5nLWRzaW06IGRvbid0IGNyZWF0ZSBhIHBh
-bmVsX2JyaWRnZQogICAgICBkcm0vYnJpZGdlOiB0YzM1ODc2ODogZG9uJ3QgY3JlYXRlIGEgcGFu
-ZWxfYnJpZGdlCiAgICAgIGRybS9icmlkZ2U6IHNzZDI4MjU6IGRvbid0IGNyZWF0ZSBhIHBhbmVs
-X2JyaWRnZQogICAgICBkcm0vb21hcDogZHNzOiBkb24ndCBjcmVhdGUgYSBwYW5lbF9icmlkZ2UK
-ICAgICAgZHJtL3R2ZTIwMDogZG9uJ3QgY3JlYXRlIGEgcGFuZWxfYnJpZGdlCiAgICAgIGRybS9i
-cmlkZ2U6IGFuYWxvZ2l4X2RwOiBkb24ndCBjcmVhdGUgYSBwYW5lbF9icmlkZ2UKCiBEb2N1bWVu
-dGF0aW9uL2dwdS90b2RvLnJzdCAgICAgICAgICAgICAgICAgICAgICAgICB8ICAzMyArLQogZHJp
-dmVycy9ncHUvZHJtL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDMgKy0K
-IGRyaXZlcnMvZ3B1L2RybS9hZHAvYWRwLW1pcGkuYyAgICAgICAgICAgICAgICAgICAgIHwgICAx
-ICsKIGRyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2NydGMuYyAgIHwg
-ICAxICsKIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAg
-IHwgIDEwICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L0tjb25maWcgICAgICAg
-ICAgICB8ICAgMSArCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2Rw
-X2NvcmUuYyB8ICA0MCArLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hdXgtYnJpZGdlLmMgICAg
-ICAgICAgICAgICAgfCAgIDEgKwogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9jYWRlbmNlL2NkbnMt
-ZHNpLWNvcmUuYyAgICAgfCAgIDEgKwogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9mc2wtbGRiLmMg
-ICAgICAgICAgICAgICAgICAgfCAgMTkgKy0KIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaW14L2lt
-eDkzLXBkZmMuYyAgICAgICAgICAgIHwgICAxICsKIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvcGFu
-ZWwuYyAgICAgICAgICAgICAgICAgICAgIHwgNTYzIC0tLS0tLS0tLS0tLS0tLS0tCiBkcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL3NhbXN1bmctZHNpbS5jICAgICAgICAgICAgICB8ICAyNCArLQogZHJp
-dmVycy9ncHUvZHJtL2JyaWRnZS9zc2QyODI1LmMgICAgICAgICAgICAgICAgICAgfCAgMjMgKy0K
-IGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvdGMzNTg3NjcuYyAgICAgICAgICAgICAgICAgIHwgIDY0
-ICstCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3RjMzU4NzY4LmMgICAgICAgICAgICAgICAgICB8
-ICAyNSArLQogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS90aS10ZHAxNTguYyAgICAgICAgICAgICAg
-ICAgfCAgIDEgKwogZHJpdmVycy9ncHUvZHJtL2JyaWRnZS93YXZlc2hhcmUtZHNpLmMgICAgICAg
-ICAgICAgfCAgMTcgKy0KIGRyaXZlcnMvZ3B1L2RybS9kaXNwbGF5L2RybV9icmlkZ2VfY29ubmVj
-dG9yLmMgICAgIHwgICAxICsKIGRyaXZlcnMvZ3B1L2RybS9kcm1fYnJpZGdlLmMgICAgICAgICAg
-ICAgICAgICAgICAgIHwgIDE3IC0KIGRyaXZlcnMvZ3B1L2RybS9kcm1fb2YuYyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHwgIDYzIC0tCiBkcml2ZXJzL2dwdS9kcm0vZHJtX3BhbmVsLmMgICAg
-ICAgICAgICAgICAgICAgICAgICB8IDY2NCArKysrKysrKysrKysrKysrKysrLS0KIGRyaXZlcnMv
-Z3B1L2RybS9leHlub3MvZXh5bm9zX2RwLmMgICAgICAgICAgICAgICAgIHwgIDM2ICstCiBkcml2
-ZXJzL2dwdS9kcm0vaW14L2RjL2RjLWttcy5jICAgICAgICAgICAgICAgICAgICB8ICAgMSArCiBk
-cml2ZXJzL2dwdS9kcm0vaW14L2Rjc3MvS2NvbmZpZyAgICAgICAgICAgICAgICAgICB8ICAgMSAr
-CiBkcml2ZXJzL2dwdS9kcm0vaW5nZW5pYy9LY29uZmlnICAgICAgICAgICAgICAgICAgICB8ICAg
-MSArCiBkcml2ZXJzL2dwdS9kcm0vbG9naWN2Yy9LY29uZmlnICAgICAgICAgICAgICAgICAgICB8
-ICAgMSArCiBkcml2ZXJzL2dwdS9kcm0vbWNkZS9LY29uZmlnICAgICAgICAgICAgICAgICAgICAg
-ICB8ICAgMiArLQogZHJpdmVycy9ncHUvZHJtL21jZGUvbWNkZV9kaXNwbGF5LmMgICAgICAgICAg
-ICAgICAgfCAgIDEgKwogZHJpdmVycy9ncHUvZHJtL21jZGUvbWNkZV9kc2kuYyAgICAgICAgICAg
-ICAgICAgICAgfCAgNDUgKy0KIGRyaXZlcnMvZ3B1L2RybS9tc20vZHAvZHBfZGlzcGxheS5jICAg
-ICAgICAgICAgICAgIHwgICAxICsKIGRyaXZlcnMvZ3B1L2RybS9tc20vZHNpL2RzaS5jICAgICAg
-ICAgICAgICAgICAgICAgIHwgICAzICstCiBkcml2ZXJzL2dwdS9kcm0vb21hcGRybS9kc3Mvb21h
-cGRzcy5oICAgICAgICAgICAgICB8ICAgMSAtCiBkcml2ZXJzL2dwdS9kcm0vb21hcGRybS9kc3Mv
-b3V0cHV0LmMgICAgICAgICAgICAgICB8ICA0MiArLQogZHJpdmVycy9ncHUvZHJtL3BhbmVsL0tj
-b25maWcgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9wbDEx
-MS9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKIGRyaXZlcnMvZ3B1L2RybS9y
-b2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgICAgICAgIHwgICAyICsKIGRyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9hbmFsb2dpeF9kcC1yb2NrY2hpcC5jICAgIHwgICA5IC0KIGRyaXZlcnMvZ3B1
-L2RybS9zdG0vS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKIGRyaXZlcnMv
-Z3B1L2RybS90ZWdyYS9yZ2IuYyAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKIGRyaXZl
-cnMvZ3B1L2RybS90aWRzcy9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKIGRy
-aXZlcnMvZ3B1L2RybS90dmUyMDAvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgIHwgICAyICst
-CiBkcml2ZXJzL2dwdS9kcm0vdHZlMjAwL3R2ZTIwMF9kcm0uaCAgICAgICAgICAgICAgICB8ICAg
-MSAtCiBkcml2ZXJzL2dwdS9kcm0vdHZlMjAwL3R2ZTIwMF9kcnYuYyAgICAgICAgICAgICAgICB8
-ICAzMCArLQogaW5jbHVkZS9kcm0vYnJpZGdlL2FuYWxvZ2l4X2RwLmggICAgICAgICAgICAgICAg
-ICAgfCAgIDEgLQogaW5jbHVkZS9kcm0vZHJtX2JyaWRnZS5oICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgfCAgNTQgLS0KIGluY2x1ZGUvZHJtL2RybV9vZi5oICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHwgIDE1ICstCiBpbmNsdWRlL2RybS9kcm1fcGFuZWwuaCAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICB8ICA5OSArKy0KIDQ4IGZpbGVzIGNoYW5nZWQsIDg1NSBpbnNlcnRpb25z
-KCspLCAxMDcyIGRlbGV0aW9ucygtKQotLS0KYmFzZS1jb21taXQ6IGFjYjA1YzgyNWUzOTNiMDU4
-NGFkYjU0NzJiZmJiMTdjODAzM2E5OWYKY2hhbmdlLWlkOiAyMDI2MDgxMi1kcm0tYnJpZGdlLWV2
-ZXJ5LXBhbmVsLWExNTk2ZDZlZmVhNApwcmVyZXF1aXNpdGUtY2hhbmdlLWlkOiAyMDI2MDgxMi1k
-cm0tYnJpZGdlLWRybV9wYW5lbC1jbGVhbnVwLTA5ZWQ1Y2MxMDk0ODp2NApwcmVyZXF1aXNpdGUt
-cGF0Y2gtaWQ6IGUxNWFiMTcyZjkyMjYzZjU4ZDg2MjUzNzA4ZDBhZDMxZDBhODc2ZTIKcHJlcmVx
-dWlzaXRlLXBhdGNoLWlkOiA4ZTg4NDEyNzlkYjMwMmQ5OGQwNjBjMjMxMTc4MWM1MTY3MzAzMWNk
-CnByZXJlcXVpc2l0ZS1wYXRjaC1pZDogNDVjOGRhYzE2YWFkMTE4N2Q3NTczYzM2ODAxMTc5NTQ1
-NDRiNzVmZgpwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IDlhZmVmYWMwODQ0MGI3YWFiMjk3OWJiOTE5
-YmFmNzhiYTYwYWYxYzAKcHJlcmVxdWlzaXRlLXBhdGNoLWlkOiA5MDRhODExNzljMDJlNmEzZmU5
-ZTg1ZDlhMzU2Y2YyNjVhNGY0ZDExCnByZXJlcXVpc2l0ZS1wYXRjaC1pZDogNjY1NTc2YjkyNzNh
-MTk1NjdhNDEwODg4ZTJlYWYxYWMzMjIxYWUzZQpwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IDk1Nzhj
-ZmZmYjI1MzQxOTM1YTg5NTAxNzM2YTVhNTllNTljNTBjNTYKcHJlcmVxdWlzaXRlLXBhdGNoLWlk
-OiBlYzMyMDYyYTYyNzY3MjM3N2VlNjYyMWNmNzNhN2ExYjk5NjgwNDAzCnByZXJlcXVpc2l0ZS1w
-YXRjaC1pZDogZDMxMWViYTNhYzgxYmUzYjZhZjIyNjQ0NDIzNjlmZjJiOGZkNWU0OAoKQmVzdCBy
-ZWdhcmRzLAotLSAgCkx1Y2EgQ2VyZXNvbGksIEJvb3RsaW4KRW1iZWRkZWQgTGludXggYW5kIEtl
-cm5lbCBlbmdpbmVlcmluZwpodHRwczovL2Jvb3RsaW4uY29tCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+We want to move drm_panel.o from the main drm module to a new drm_panel
+module, but there is one function in the drm module that calls into
+drm_panel.c code:
+
+  drm_of_find_panel_or_bridge() (drm_of.c, drm module)
+     -> calls of_drm_find_panel (drm_panel.c, future drm_panel module)
+
+Avoid this issue by moving drm_of_find_panel_or_bridge() to drm_panel.c.
+
+Update Kconfig symbols of drivers calling drm_of_find_panel_or_bridge() to
+select DRM_PANEL when this is not done already.
+
+No functional changes, just moving code around.
+
+Suggested-by: Maxime Ripard <mripard@kernel.org>
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+---
+ drivers/gpu/drm/bridge/Kconfig          |  2 ++
+ drivers/gpu/drm/bridge/analogix/Kconfig |  2 ++
+ drivers/gpu/drm/drm_of.c                | 63 ---------------------------------
+ drivers/gpu/drm/drm_panel.c             | 63 +++++++++++++++++++++++++++++++++
+ drivers/gpu/drm/imx/dcss/Kconfig        |  1 +
+ drivers/gpu/drm/ingenic/Kconfig         |  1 +
+ drivers/gpu/drm/logicvc/Kconfig         |  1 +
+ drivers/gpu/drm/mcde/Kconfig            |  1 +
+ drivers/gpu/drm/pl111/Kconfig           |  1 +
+ drivers/gpu/drm/rockchip/Kconfig        |  2 ++
+ drivers/gpu/drm/stm/Kconfig             |  1 +
+ drivers/gpu/drm/tidss/Kconfig           |  1 +
+ drivers/gpu/drm/tve200/Kconfig          |  1 +
+ include/drm/drm_of.h                    | 12 -------
+ include/drm/drm_panel.h                 | 13 +++++++
+ 15 files changed, 90 insertions(+), 75 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+index f2db7f60d40f..89e87460aefc 100644
+--- a/drivers/gpu/drm/bridge/Kconfig
++++ b/drivers/gpu/drm/bridge/Kconfig
+@@ -151,6 +151,7 @@ config DRM_LONTIUM_LT8912B
+ config DRM_LONTIUM_LT9211
+ 	tristate "Lontium LT9211 DSI/LVDS/DPI bridge"
+ 	depends on OF
++	select DRM_PANEL
+ 	select DRM_PANEL_BRIDGE
+ 	select DRM_KMS_HELPER
+ 	select DRM_MIPI_DSI
+@@ -498,6 +499,7 @@ config DRM_WAVESHARE_BRIDGE
+ 	tristate "Waveshare DSI bridge"
+ 	depends on OF
+ 	depends on BACKLIGHT_CLASS_DEVICE
++	select DRM_PANEL
+ 	select DRM_PANEL_BRIDGE
+ 	select DRM_KMS_HELPER
+ 	select DRM_MIPI_DSI
+diff --git a/drivers/gpu/drm/bridge/analogix/Kconfig b/drivers/gpu/drm/bridge/analogix/Kconfig
+index 57bb2daa5aaf..da156fd15764 100644
+--- a/drivers/gpu/drm/bridge/analogix/Kconfig
++++ b/drivers/gpu/drm/bridge/analogix/Kconfig
+@@ -6,6 +6,7 @@ config DRM_ANALOGIX_ANX6345
+ 	select DRM_DISPLAY_DP_HELPER
+ 	select DRM_DISPLAY_HELPER
+ 	select DRM_KMS_HELPER
++	select DRM_PANEL
+ 	select REGMAP_I2C
+ 	help
+ 	  ANX6345 is an ultra-low power Full-HD DisplayPort/eDP
+@@ -32,6 +33,7 @@ config DRM_ANALOGIX_DP
+ 	depends on DRM
+ 	depends on OF
+ 	select DRM_DISPLAY_DP_AUX_BUS
++	select DRM_PANEL
+ 
+ config DRM_ANALOGIX_ANX7625
+ 	tristate "Analogix Anx7625 MIPI to DP interface support"
+diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+index 2b53124ded68..411f258d9f91 100644
+--- a/drivers/gpu/drm/drm_of.c
++++ b/drivers/gpu/drm/drm_of.c
+@@ -264,69 +264,6 @@ int drm_of_get_panel_orientation(const struct device_node *np,
+ }
+ EXPORT_SYMBOL_GPL(drm_of_get_panel_orientation);
+ 
+-/**
+- * drm_of_find_panel_or_bridge - return connected panel or bridge device
+- * @np: device tree node containing encoder output ports
+- * @port: port in the device tree node
+- * @endpoint: endpoint in the device tree node
+- * @panel: pointer to hold returned drm_panel, must not be NULL. On success
+- *         the caller must call drm_panel_put() when done with the panel
+- * @bridge: pointer to hold returned drm_bridge
+- *
+- * Given a DT node's port and endpoint number, find the connected node and
+- * return either the associated struct drm_panel or drm_bridge device.
+- *
+- * This function is deprecated and should not be used in new drivers. Use
+- * of_drm_get_bridge_by_endpoint() instead when not looking for a panel, or
+- * devm_drm_of_get_bridge() otherwise.
+- *
+- * Returns zero if successful, or one of the standard error codes if it fails.
+- */
+-int drm_of_find_panel_or_bridge(const struct device_node *np,
+-				int port, int endpoint,
+-				struct drm_panel **panel,
+-				struct drm_bridge **bridge)
+-{
+-	if (WARN_ON(!panel))
+-		return -EINVAL;
+-
+-	*panel = NULL;
+-	if (bridge)
+-		*bridge = NULL;
+-
+-	/*
+-	 * of_graph_get_remote_node() produces a noisy error message if port
+-	 * node isn't found and the absence of the port is a legit case here,
+-	 * so at first we silently check whether a graph is present in the
+-	 * device-tree node.
+-	 */
+-	if (!of_graph_is_present(np))
+-		return -ENODEV;
+-
+-	struct device_node *remote __free(device_node) =
+-		of_graph_get_remote_node(np, port, endpoint);
+-	if (!remote)
+-		return -ENODEV;
+-
+-	*panel = of_drm_find_panel(remote);
+-	if (!IS_ERR(*panel))
+-		return 0;
+-
+-	*panel = NULL;
+-
+-	if (bridge) {
+-		/* No panel found yet, check for a bridge next. */
+-		*bridge = of_drm_find_bridge(remote);
+-		if (*bridge)
+-			return 0;
+-
+-		*bridge = NULL;
+-	}
+-
+-	return -EPROBE_DEFER;
+-}
+-EXPORT_SYMBOL_GPL(drm_of_find_panel_or_bridge);
+-
+ enum drm_of_lvds_pixels {
+ 	DRM_OF_LVDS_EVEN = BIT(0),
+ 	DRM_OF_LVDS_ODD = BIT(1),
+diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
+index f8f6082e637f..e1f8a4ff37d2 100644
+--- a/drivers/gpu/drm/drm_panel.c
++++ b/drivers/gpu/drm/drm_panel.c
+@@ -498,6 +498,69 @@ struct drm_panel *of_drm_find_panel(const struct device_node *np)
+ 	return ERR_PTR(-EPROBE_DEFER);
+ }
+ EXPORT_SYMBOL(of_drm_find_panel);
++
++/**
++ * drm_of_find_panel_or_bridge - return connected panel or bridge device
++ * @np: device tree node containing encoder output ports
++ * @port: port in the device tree node
++ * @endpoint: endpoint in the device tree node
++ * @panel: pointer to hold returned drm_panel, must not be NULL. On success
++ *         the caller must call drm_panel_put() when done with the panel
++ * @bridge: pointer to hold returned drm_bridge
++ *
++ * Given a DT node's port and endpoint number, find the connected node and
++ * return either the associated struct drm_panel or drm_bridge device.
++ *
++ * This function is deprecated and should not be used in new drivers. Use
++ * of_drm_get_bridge_by_endpoint() instead when not looking for a panel, or
++ * devm_drm_of_get_bridge() otherwise.
++ *
++ * Returns zero if successful, or one of the standard error codes if it fails.
++ */
++int drm_of_find_panel_or_bridge(const struct device_node *np,
++				int port, int endpoint,
++				struct drm_panel **panel,
++				struct drm_bridge **bridge)
++{
++	if (WARN_ON(!panel))
++		return -EINVAL;
++
++	*panel = NULL;
++	if (bridge)
++		*bridge = NULL;
++
++	/*
++	 * of_graph_get_remote_node() produces a noisy error message if port
++	 * node isn't found and the absence of the port is a legit case here,
++	 * so at first we silently check whether a graph is present in the
++	 * device-tree node.
++	 */
++	if (!of_graph_is_present(np))
++		return -ENODEV;
++
++	struct device_node *remote __free(device_node) =
++		of_graph_get_remote_node(np, port, endpoint);
++	if (!remote)
++		return -ENODEV;
++
++	*panel = of_drm_find_panel(remote);
++	if (!IS_ERR(*panel))
++		return 0;
++
++	*panel = NULL;
++
++	if (bridge) {
++		/* No panel found yet, check for a bridge next. */
++		*bridge = of_drm_find_bridge(remote);
++		if (*bridge)
++			return 0;
++
++		*bridge = NULL;
++	}
++
++	return -EPROBE_DEFER;
++}
++EXPORT_SYMBOL_GPL(drm_of_find_panel_or_bridge);
+ #endif
+ 
+ /*
+diff --git a/drivers/gpu/drm/imx/dcss/Kconfig b/drivers/gpu/drm/imx/dcss/Kconfig
+index e014ed3ae66c..d278bebfc33c 100644
+--- a/drivers/gpu/drm/imx/dcss/Kconfig
++++ b/drivers/gpu/drm/imx/dcss/Kconfig
+@@ -6,6 +6,7 @@ config DRM_IMX_DCSS
+ 	select DRM_DISPLAY_HELPER
+ 	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
++	select DRM_PANEL
+ 	select VIDEOMODE_HELPERS
+ 	depends on DRM && ((ARCH_MXC && ARM64) || COMPILE_TEST)
+ 	help
+diff --git a/drivers/gpu/drm/ingenic/Kconfig b/drivers/gpu/drm/ingenic/Kconfig
+index 04ecfb0c5dd6..987ed42f6f7a 100644
+--- a/drivers/gpu/drm/ingenic/Kconfig
++++ b/drivers/gpu/drm/ingenic/Kconfig
+@@ -7,6 +7,7 @@ config DRM_INGENIC
+ 	depends on COMMON_CLK
+ 	select DRM_BRIDGE
+ 	select DRM_CLIENT_SELECTION
++	select DRM_PANEL
+ 	select DRM_PANEL_BRIDGE
+ 	select DRM_KMS_HELPER
+ 	select DRM_DISPLAY_HELPER
+diff --git a/drivers/gpu/drm/logicvc/Kconfig b/drivers/gpu/drm/logicvc/Kconfig
+index 579a358ed5cf..53bd1ae61c83 100644
+--- a/drivers/gpu/drm/logicvc/Kconfig
++++ b/drivers/gpu/drm/logicvc/Kconfig
+@@ -6,6 +6,7 @@ config DRM_LOGICVC
+ 	select DRM_KMS_HELPER
+ 	select DRM_KMS_DMA_HELPER
+ 	select DRM_GEM_DMA_HELPER
++	select DRM_PANEL
+ 	select REGMAP
+ 	select REGMAP_MMIO
+ 	help
+diff --git a/drivers/gpu/drm/mcde/Kconfig b/drivers/gpu/drm/mcde/Kconfig
+index 3516c8d2a5d9..6ebfb930cbfa 100644
+--- a/drivers/gpu/drm/mcde/Kconfig
++++ b/drivers/gpu/drm/mcde/Kconfig
+@@ -9,6 +9,7 @@ config DRM_MCDE
+ 	select DRM_CLIENT_SELECTION
+ 	select DRM_MIPI_DSI
+ 	select DRM_BRIDGE
++	select DRM_PANEL
+ 	select DRM_PANEL_BRIDGE
+ 	select DRM_KMS_HELPER
+ 	select DRM_GEM_DMA_HELPER
+diff --git a/drivers/gpu/drm/pl111/Kconfig b/drivers/gpu/drm/pl111/Kconfig
+index 82e918820950..20201ec20aa7 100644
+--- a/drivers/gpu/drm/pl111/Kconfig
++++ b/drivers/gpu/drm/pl111/Kconfig
+@@ -9,6 +9,7 @@ config DRM_PL111
+ 	select DRM_KMS_HELPER
+ 	select DRM_GEM_DMA_HELPER
+ 	select DRM_BRIDGE
++	select DRM_PANEL
+ 	select DRM_PANEL_BRIDGE
+ 	help
+ 	  Choose this option for DRM support for the PL111 CLCD controller.
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index e7f49fe845ea..1b4a87eeaf3f 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -124,6 +124,7 @@ config ROCKCHIP_LVDS
+ 	depends on PINCTRL && OF
+ 	select DRM_DISPLAY_HELPER
+ 	select DRM_BRIDGE_CONNECTOR
++	select DRM_PANEL
+ 	help
+ 	  Choose this option to enable support for Rockchip LVDS controllers.
+ 	  Rockchip rk3288 SoC has LVDS TX Controller can be used, and it
+@@ -136,6 +137,7 @@ config ROCKCHIP_RGB
+ 	depends on PINCTRL
+ 	select DRM_DISPLAY_HELPER
+ 	select DRM_BRIDGE_CONNECTOR
++	select DRM_PANEL
+ 	help
+ 	  Choose this option to enable support for Rockchip RGB output.
+ 	  Some Rockchip CRTCs, like rv1108, can directly output parallel
+diff --git a/drivers/gpu/drm/stm/Kconfig b/drivers/gpu/drm/stm/Kconfig
+index 635be0ac00af..1e3205aa2c7e 100644
+--- a/drivers/gpu/drm/stm/Kconfig
++++ b/drivers/gpu/drm/stm/Kconfig
+@@ -6,6 +6,7 @@ config DRM_STM
+ 	select DRM_CLIENT_SELECTION
+ 	select DRM_KMS_HELPER
+ 	select DRM_GEM_DMA_HELPER
++	select DRM_PANEL
+ 	select DRM_PANEL_BRIDGE
+ 	select VIDEOMODE_HELPERS
+ 	select FB_PROVIDE_GET_FB_UNMAPPED_AREA if FB
+diff --git a/drivers/gpu/drm/tidss/Kconfig b/drivers/gpu/drm/tidss/Kconfig
+index 31ad582b7602..52a64fa1ad5d 100644
+--- a/drivers/gpu/drm/tidss/Kconfig
++++ b/drivers/gpu/drm/tidss/Kconfig
+@@ -7,6 +7,7 @@ config DRM_TIDSS
+ 	select DRM_DISPLAY_HELPER
+ 	select DRM_BRIDGE_CONNECTOR
+ 	select DRM_GEM_DMA_HELPER
++	select DRM_PANEL
+ 	help
+ 	  The TI Keystone family SoCs introduced a new generation of
+ 	  Display SubSystem. There is currently three Keystone family
+diff --git a/drivers/gpu/drm/tve200/Kconfig b/drivers/gpu/drm/tve200/Kconfig
+index a9d6fe535d88..c0746ae8f703 100644
+--- a/drivers/gpu/drm/tve200/Kconfig
++++ b/drivers/gpu/drm/tve200/Kconfig
+@@ -7,6 +7,7 @@ config DRM_TVE200
+ 	depends on OF
+ 	select DRM_BRIDGE
+ 	select DRM_CLIENT_SELECTION
++	select DRM_PANEL
+ 	select DRM_PANEL_BRIDGE
+ 	select DRM_KMS_HELPER
+ 	select DRM_GEM_DMA_HELPER
+diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
+index ebebed14c611..402f5db11e47 100644
+--- a/include/drm/drm_of.h
++++ b/include/drm/drm_of.h
+@@ -51,10 +51,6 @@ int drm_of_encoder_active_endpoint(struct device_node *node,
+ 				   struct of_endpoint *endpoint);
+ int drm_of_get_panel_orientation(const struct device_node *np,
+ 				 enum drm_panel_orientation *orientation);
+-int drm_of_find_panel_or_bridge(const struct device_node *np,
+-				int port, int endpoint,
+-				struct drm_panel **panel,
+-				struct drm_bridge **bridge);
+ int drm_of_lvds_get_dual_link_pixel_order(const struct device_node *port1,
+ 					  const struct device_node *port2);
+ int drm_of_lvds_get_dual_link_pixel_order_sink(struct device_node *port1,
+@@ -112,14 +108,6 @@ static inline int drm_of_get_panel_orientation(const struct device_node *np,
+ 	return -EINVAL;
+ }
+ 
+-static inline int drm_of_find_panel_or_bridge(const struct device_node *np,
+-					      int port, int endpoint,
+-					      struct drm_panel **panel,
+-					      struct drm_bridge **bridge)
+-{
+-	return -EINVAL;
+-}
+-
+ static inline int
+ drm_of_lvds_get_dual_link_pixel_order(const struct device_node *port1,
+ 				      const struct device_node *port2)
+diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
+index b87323443f49..bf15e40fd796 100644
+--- a/include/drm/drm_panel.h
++++ b/include/drm/drm_panel.h
+@@ -33,6 +33,7 @@
+ struct backlight_device;
+ struct dentry;
+ struct device_node;
++struct drm_bridge;
+ struct drm_connector;
+ struct drm_panel_follower;
+ struct drm_panel;
+@@ -337,11 +338,23 @@ int drm_panel_get_modes(struct drm_panel *panel, struct drm_connector *connector
+ 
+ #if defined(CONFIG_OF) && defined(CONFIG_DRM_PANEL)
+ struct drm_panel *of_drm_find_panel(const struct device_node *np);
++int drm_of_find_panel_or_bridge(const struct device_node *np,
++				int port, int endpoint,
++				struct drm_panel **panel,
++				struct drm_bridge **bridge);
+ #else
+ static inline struct drm_panel *of_drm_find_panel(const struct device_node *np)
+ {
+ 	return ERR_PTR(-ENODEV);
+ }
++
++static inline int drm_of_find_panel_or_bridge(const struct device_node *np,
++					      int port, int endpoint,
++					      struct drm_panel **panel,
++					      struct drm_bridge **bridge)
++{
++	return -EINVAL;
++}
+ #endif
+ 
+ #if defined(CONFIG_DRM_PANEL)
+
+-- 
+2.55.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
