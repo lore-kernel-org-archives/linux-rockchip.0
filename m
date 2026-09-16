@@ -4,51 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF532C88E75
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2026 21:15:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26DB2C88E75
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 00:45:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:From:To
-	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=96bX456Elxt4bO5DqcSdL4MKs0KA1LDpc0qh8Eb7WFg=; b=xxEBCfI+leraiW
-	SlhJ8K/uYND1iuMTfOw7nDmTMdvXAwKj3TL1SJqaLZhOMPg3nkhHkpMtdN4BDHqB8I/5Of1ab+lOs
-	BrqFtHQ5cbO8MSMIErHygQwKcoJVL71o/SNq/Zli2HvjLKX4e/bB0lfFeoauiSU+WozVoEGB4/DtA
-	5brTJ4gvBPkeShZgIB9Kr258WXOQsHbufy+PH23U6x549bBr03fD0QX8C0NLkR15bGnZCpKuddd70
-	T1/dbYk31WympNxwXgY2fvoMxNl15zSzWdMUe+LbhE/Zdvj9WEAgh9E6gAkAUQfUcRhMRYNZQ5/B+
-	s0OCL7/IglDyAZ4orLjg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:Cc:Message-Id
+	:Date:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aAuza/+cIup7Nu2ezzCKmSZnaaNZY3iCKYxWYOZgRnA=; b=KdnXAsU46ee0DrUvIgOrXOBo+Z
+	u+dkC1Ur6KcR6fHRRTTRnktUVvHQ45ZUp3NnPsv7ewAplWALanSnsfdV7rHyTjYznyidM93ae/Q2E
+	j8ffHYovDzHNvza0WibEfZsEd5GeOldodQIHJw+4QcvbglIJ1Scu155VCEE0vLK26rY3n1xI+SzdH
+	H50cC/4K6AqKY56HFvUaiW0UIDu8Yv/RnVl59GfDFH0nKZD1lb8KnpjnegQpGZBoyHd/lV733fVyI
+	uwJDhO+vCIMRWs3atoM6OHZbJvgumSCCTAdpFWw6x39azTCJOuGxBYF1FdGzNjUYgcNITIg1CMtjw
+	EdeHmghA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6aUV-00000007xOi-3yf1;
-	Tue, 15 Sep 2026 21:14:59 +0000
-Received: from mail-244117.protonmail.ch ([109.224.244.117])
+	id 1x6dmP-000000088BN-2Vlk;
+	Wed, 16 Sep 2026 00:45:41 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6aUT-00000007xNz-1dmY
+	id 1x6dmM-0000000889u-0c3B
 	for linux-rockchip@lists.infradead.org;
-	Tue, 15 Sep 2026 21:14:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gdead.co.uk;
-	s=protonmail; t=1789506892; x=1789766092;
-	bh=8Yrkn7CdjijnL+SQSyQNmRxTxsyoh6t+7FlqK9IFtcw=;
-	h=Date:To:From:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
-	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
-	b=Ym+UvKaPoSZ47dOTFom/Yi3CnVG6F04qh32B8NlnRBvuE1QAdNk2GUBZBBirZQkBw
-	 fS0grd60k7PbOqB2ITEh6mmkYUfTaJ5UzBZLKX8xjpHE2wmNrjGVoNPf5G7ePbxR2m
-	 LdurhR/K/ROjk0+rgcukh0jBBZANdLBYgD38o1kov4c2ZyG1POmzDeofSTWuZ14zO5
-	 qdEMvYcXfipdTlc5tXfHNSsS82PQxPMxeFDqG1ICsusoT3IAae5mckfOrNXSyU+iNC
-	 rh8g/ZTOkOeZjNiH4NMhhX+yqCOnGP0xihzuyJQ6HIzP6l1AgJOyztqodSpe7WLGSn
-	 XD4ScIjdLMxwg==
-Date: Tue, 15 Sep 2026 21:14:48 +0000
-To: linux-rockchip@lists.infradead.org
-From: Trevor Hemsley <nospam@gdead.co.uk>
-Subject: [BUG?] Possible scheduler bug on Rock 5B RK3588 on 7.2.5
-Message-ID: <f15f8166-c1e4-45dc-9ddd-4ec887e415eb@gdead.co.uk>
-Feedback-ID: 206881191:user:proton
-X-Pm-Message-ID: 4cf13c8b11f9b1c6a16d88e8efa12b3c5f036bd9
-MIME-Version: 1.0
+	Wed, 16 Sep 2026 00:45:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ubuntu.com;
+ h=In-Reply-To: References: To: From: Subject: Cc: Message-Id: Date:
+ Content-Type: Content-Transfer-Encoding: Mime-Version; q=dns/txt;
+ s=fe-953a8a3ca9; t=1789519537;
+ bh=s2V8BnF8h+8Uq8u8VZxp/reb7V9zH1peGA2ahNF542Q=;
+ b=Pxx776bfW1+2ZdTaYbZlDgkjlwRqhKWofchq906tjZUda0RIekILj3cAuJn3C5IH3bIf8L/B/
+ rpGfG1kpp+ocZ2nkuepeUZVz413+gXyB3hbha4/O29N7gA5kg/ON71OQy898hfSCA3eJb54Y5pQ
+ RxEiMtFhCkRcNZIhRMkO6UofWv9FflDO9MbPo68bNrnIyS22QAPJr18kjI4m8gEqFwtlIUpXKah
+ VME5uh9noumA+U4fdkeQ6ngsklAUKx7B46wsLLVcrsZdOvCvVslEeCvEHB3LW30FSVN+r+YYz90
+ gqxVnX2krWRVohhVQCf+/pSPmn6U9C+8F6BZ3vdTT2Dw==
+X-Forward-Email-ID: 6aa9e69076866d48a84e7189
+X-Forward-Email-Sender: rfc822; jpeisach@ubuntu.com, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.14.2
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Mime-Version: 1.0
+Date: Tue, 15 Sep 2026 20:45:01 -0400
+Message-Id: <DLGBPXP4F8E0.9X0QMZ9GFQVF@ubuntu.com>
+Cc: <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <mfd@lists.linux.dev>, <linux-clk@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-riscv@lists.infradead.org>,
+ "Marek Szyprowski" <m.szyprowski@samsung.com>, "Maud Spierings"
+ <maud_spierings@murena.io>, "Graham Markall" <hello@big-grey.co.uk>,
+ "Icenowy Zheng" <zhengxingda@iscas.ac.cn>, "Chaoyi Chen"
+ <chaoyi.chen@rock-chips.com>, "Joshua Peisach" <jpeisach@ubuntu.com>,
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+Subject: Re: [PATCH v4 00/20] drm: starfive: jh7110: Enable display
+ subsystem
+From: "Joshua Peisach" <jpeisach@ubuntu.com>
+To: "Michal Wilczynski" <m.wilczynski@samsung.com>, "Vinod Koul"
+ <vkoul@kernel.org>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Rob
+ Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
+ "Conor Dooley" <conor+dt@kernel.org>, "Andrzej Hajda"
+ <andrzej.hajda@intel.com>, "Robert Foss" <rfoss@kernel.org>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Luca
+ Ceresoli" <luca.ceresoli@bootlin.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "Lee Jones" <lee@kernel.org>,
+ "Andy Yan" <andy.yan@rock-chips.com>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>, "Emil Renner Berthing" <kernel@esmil.dk>, "Hal
+ Feng" <hal.feng@starfivetech.com>, "Michael Turquette"
+ <mturquette@baylibre.com>, "Stephen Boyd" <sboyd@kernel.org>, "Heiko
+ Stuebner" <heiko@sntech.de>, "Paul Walmsley" <pjw@kernel.org>, "Palmer
+ Dabbelt" <palmer@dabbelt.com>, "Albert Ou" <aou@eecs.berkeley.edu>,
+ "Alexandre Ghiti" <alex@ghiti.fr>, "Dominique Belhachemi" <db@domibel.de>,
+ "Brian Masney" <bmasney+clk@redhat.com>, "Jerome Brunet"
+ <jbrunet+clk@baylibre.com>
+X-Mailer: aerc 0.21.0
+References: <CGME20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61@eucas1p1.samsung.com> <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
+In-Reply-To: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_141458_091855_DC4E9000 
-X-CRM114-Status: GOOD (  21.56  )
+X-CRM114-CacheID: sfid-20260915_174538_441905_2F3500C8 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,114 +97,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="Flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkKCkFwb2xvZ2llcyBpZiB0aGlzIGlzIHNlZW4gYXMgYSByZXBvc3QgYnV0IEkgb3JpZ2luYWxs
-eSBzZW50IGl0IHRvIApsaW51eC1hcm0ta2VybmVsIGJ1dCBkaWQgbm90IHJlYWxpc2UgdGhlIHNo
-ZWVyIHZvbHVtZSBvZiB0cmFmZmljIG9uIHRoYXQgCmxpc3Qgc28gSSB0aGluayBpdCBnb3QgbG9z
-dCBpbW1lZGlhdGVseS4gSSdtIGhvcGluZyB0aGlzIGlzIGEgbW9yZSAKc3BlY2lmaWMgdmVudWUg
-dGhhdCBtaWdodCBiZSBhYmxlIHRvIGhlbHAuCgpJIHJlY2VudGx5IGFjcXVpcmVkIGFuIDhHQiBS
-YWR4YSBSb2NrIDVCICh0aGV5J3JlIGNvbXBhcmF0aXZlbHkgY2hlYXApLCAKd2hpY2ggdXNlcyBh
-IFJvY2tjaGlwIFJLMzU4OCBjaGlwIGFuZCBoYXZlIGluc3RhbGxlZCBhcm1iaWFuIG9uIHRoZXJl
-IAphbmQgd2hpbGUgc3RyZXNzIHRlc3RpbmcgdGhlIG5ldyBtYWNoaW5lIEkgbm90aWNlZCBzb21l
-dGhpbmcgcXVpdGUgb2RkLiAKSWYgSSBydW4gYG9wZW5zc2wgc3BlZWQgLW11bHRpIDhgIHRoZW4g
-d2F0Y2ggdXNpbmcgdG9wIG9yIGJ0b3AgdGhhdCAKc2hvd3MgaW5kaXZpZHVhbCBjb3JlcywgSSBz
-ZWUgaXQgc3RhcnQgb2ZmIHVzaW5nIGFsbCA4IGNvcmVzIGFuZCB0aGVuIApqdXN0IHN0b3AgdXNp
-bmcgb25lIG9mIHRoZW0gYXQgcmFuZG9tLiBFdmVyeSBmZXcgbWludXRlcyBpdCB3aWxsIGZsaXAg
-CnRoZSBpbmFjdGl2ZSBjb3JlIHRvIGEgZGlmZmVyZW50IG9uZSBidXQgdGhlcmUgaXMgYWx3YXlz
-IG9uZSBpZGxlLiBJdCAKc2VlbXMgdG8gcHJlZmVyIHRoZSAwLTMgc2xvd2VyIGNvcmVzIHRvIGJl
-IGlkbGUgYnV0IEkndmUgYWxzbyBzZWVuIGl0IApwaWNrIHRoZSBmYXN0ZXIgY29yZXMgNC03IGFu
-ZCBzdG9wIHVzaW5nIHRob3NlIGJ1dCBvbmNlIGl0IHN0YXJ0cyBpdCAKc2VlbXMgdG8gbmV2ZXIg
-dXNlIG1vcmUgdGhhbiA4Ny41JSBjcHUgYXMgb25lIGNvcmUgaXMgZHJvcHBlZCBmcm9tIHVzZS4K
-CkkgZG8gbm90IHRoaW5rIHRoaXMgaXMgYSB0aGVybWFsIHByb2JsZW0gYXMgdGhlIGNwdSB0ZW1w
-IHJlcG9ydGVkIGlzIDwgNTdDLgoKSeKAiyBoYXZlIGFsc28gcnVuIGBmb3IgaSBpbiB7MC4uN307
-IGRvIHRhc2tzZXQgLWMgJGkgb3BlbnNzbCBzcGVlZCAmIApkb25lYCBhbmQgdGhpcyBzdGFydHMg
-OCBwcm9jZXNzZXMgYW5kIHBpbnMgZWFjaCBwcm9jZXNzIHRvIGEgc3BlY2lmaWMgCmNvcmUgaW4g
-d2hpY2ggY2FzZSB0aGV5IGFsbCBydW4gYXQgMTAwJSwgYWxsIG9mIHRoZSB0aW1lLiBUaGlzIHNl
-ZW1zIHRvIAptZSB0byBpbmRpY2F0ZSB0aGF0IGl0IGlzIGEgc2NoZWR1bGVyIHByb2JsZW0gYXMg
-SSdtIG1hbnVhbGx5IHRlbGxpbmcgaXQgCndoZXJlIHRvIHJ1biBpdC4gVGhhdCBzb2x2ZXMgdGhl
-IHByb2JsZW0gYnV0IGlzIHVucmVhbGlzdGljIGluIHJlYWwgaWZlLgoKSSBoYXZlIHRlc3RlZCB0
-aGlzIG9uIHNldmVyYWwgYXJtYmlhbiBzdXBwbGllZCBrZXJuZWxzIGZyb20gNi4xMi41OCB0byAK
-Ny4yLjUgYW5kIHRoZSByZXN1bHRzIGFyZSBzaW1pbGFyIG9uIGFsbCBvZiB0aGVtLiBBZnRlciBz
-b21lIHBlcmlvZCBvZiAKdGltZSwgaXQgd2lsbCBzdG9wIHVzaW5nIG9uZSBvciBtb3JlIGNvcmVz
-IGV2ZW4gdGhvdWdoIHRoZXJlIGFyZSAKZGlzcGF0Y2hhYmxlIHRhc2tzIHdhaXRpbmcuIEkgaGF2
-ZSBhbHNvIHN1YnN0aXR1dGVkIGBzdHJlc3MgLS1jcHUgOGAgZm9yIApvcGVuc3NsIHNwZWVkIC1t
-dWx0aSA4IGFuZCB0aGUgcmVzdWx0cyBhcmUgdGhlIHNhbWUgc28gdGhhdCBzZWVtcyB0byAKcnVs
-ZSBvdXQgYW4gb3BlbnNzbCBidWcuIElmIEkgaW5jcmVhc2UgdGhlIG51bWJlciBvZiB0YXNrcyB0
-aGUgcHJvYmxlbSAKc3RpbGwgb2NjdXJzLCBJJ3ZlIHVzZWQgOCA5IDEwIDExIGFuZCAxMiBhbmQg
-YWZ0ZXIgYSB3aGlsZSAtIHRoZSBtb3JlIAp0aGUgcmVxdWVzdGVkIHRhc2tzIHRoZSBsb25nZXIg
-aXQgdGFrZXMgLSBpdCBzdGlsbCBlbmRzIHVwIGdpdmluZyB1cCBvbiAKb25lIGNvcmUuIEkgaGF2
-ZSBhbHNvIGhhZCByZXBvcnRzIGZyb20gMiBvdGhlciBSb2NrIDVCIHVzZXJzIHRoYXQgY2FuIApy
-ZXByb2R1Y2UgdGhpcyBiZWhhdmlvdXIsIG9uZSBldmVuIHRvbGQgbWUgdGhhdCBoaXMgd2FzIGlk
-bGluZyAyIGNvcmVzIAoodXNpbmcgYSA3LjEga2VybmVsKSBhbmQgdGhlIG90aGVyIHNheXMgaXQn
-cyBiZXR0ZXIgYWZ0ZXIgaW5zdGFsbGluZyAKa2VybmVsIDcuMi41IGFsdGhvdWdoIHRoYXQgaXMg
-bm90IG15IGV4cGVyaWVuY2UuIEkndmUgdGVzdGVkIDYuMTIuNTgsIAo2LjE4LjQ0LCA3LjEuOCBh
-bmQgNy4yLjUgd2l0aCB2ZXJ5IGxpdHRsZSBjaGFuZ2UgaW4gc3ltcHRvbXMuCgpJIGFsc28gaGF2
-ZSBhbiBvbGQgT2Ryb2lkIEhDMSB3aGljaCB1c2VzIGEgU2Ftc3VuZyBFeHlub3MgNTQyMiBhbmQg
-aGFzIGEgCnNpbWlsYXIgOCBjb3JlIGJpZzpsaXR0bGUgcHJvY2Vzc29yIHNldHVwIGFuZCBpcyBy
-dW5uaW5nIERlYmlhbiAxMyB3aXRoIAphIDYuMTIuMTA3IGtlcm5lbCBhbmQgdGhpcyBkb2VzIG5v
-dCBleGhpYml0IHRoZSBwcm9ibGVtLiBTYW1lIHVuZGVybHlpbmcgCkRlYmlhbiAxMyB2ZXJzaW9u
-IG9uIHRoaXMgYXMgdGhlIFJvY2sgNUIuIEkgdGVzdGVkIHRoZSBSb2NrIDVCIHdpdGggdGhlIAo2
-LjEyLjU4IGFybWJpYW4ga2VybmVsIGFzIGl0IHdhcyB0aGUgbW9zdCBzaW1pbGFyIHRvIHRoZSB3
-b3JraW5nIG9uZSBvbiAKdGhlIEhDMSBpbiBjYXNlIGl0IHdhcyBzb21lIGZvcm0gb2YgcmVncmVz
-c2lvbi4KClRoZXJlIGFyZSBubyBkaWFnbm9zdGljIG1lc3NhZ2VzIGluIHRoZSBvdXRwdXQgZnJv
-bSBgZG1lc2cgLVRgLiBJZiBpdCAKd2VyZSB0aGVybWFsIG9yIHNvbWUgaGFyZHdhcmUgcHJvYmxl
-bSBJIHdvdWxkIGV4cGVjdCB0byBiZSB0b2xkIGFib3V0IGl0IAp0aGVyZS4KCiTCoCB1bmFtZSAt
-YQpMaW51eCByb2NrLTViIDcuMi41LWVkZ2Utcm9ja2NoaXA2NCAjMSBTTVAgUFJFRU1QVCBGcmkg
-U2VwIDExIDA5OjUxOjI2IApVVEMgMjAyNiBhYXJjaDY0IEdOVS9MaW51eAoKSSBjYXVnaHQgaXQg
-aWRsaW5nIDIgY29yZXMgZm9yIGFib3V0IDIgbWludXRlczoKdG9wIC0gMjA6NDk6MjIgdXDCoCAx
-OjM2LMKgIDMgdXNlcnMswqAgbG9hZCBhdmVyYWdlOiA4LjMwLCA4LjMxLCA4LjI4ClRhc2tzOiAy
-MDUgdG90YWwswqAgwqA5IHJ1bm5pbmcsIDE5NiBzbGVlcGluZyzCoCDCoDAgc3RvcHBlZCzCoCDC
-oDAgem9tYmllCiVDcHUwwqAgOjEwMC4wIHVzLMKgIDAuMCBzeSzCoCAwLjAgbmkswqAgMC4wIGlk
-LMKgIDAuMCB3YSzCoCAwLjAgaGksIDAuMCBzaSzCoCAKMC4wIHN0CiVDcHUxwqAgOsKgIDAuMCB1
-cyzCoCAwLjAgc3kswqAgMC4wIG5pLCA5OS43IGlkLMKgIDAuMCB3YSzCoCAwLjAgaGksIDAuMyBz
-aSzCoCAKMC4wIHN0CiVDcHUywqAgOiA5OS43IHVzLMKgIDAuMCBzeSzCoCAwLjAgbmkswqAgMC4w
-IGlkLMKgIDAuMCB3YSzCoCAwLjMgaGksIDAuMCBzaSzCoCAKMC4wIHN0CiVDcHUzwqAgOiA5OS43
-IHVzLMKgIDAuMCBzeSzCoCAwLjAgbmkswqAgMC4wIGlkLMKgIDAuMCB3YSzCoCAwLjMgaGksIDAu
-MCBzaSzCoCAKMC4wIHN0CiVDcHU0wqAgOjEwMC4wIHVzLMKgIDAuMCBzeSzCoCAwLjAgbmkswqAg
-MC4wIGlkLMKgIDAuMCB3YSzCoCAwLjAgaGksIDAuMCBzaSzCoCAKMC4wIHN0CiVDcHU1wqAgOjEw
-MC4wIHVzLMKgIDAuMCBzeSzCoCAwLjAgbmkswqAgMC4wIGlkLMKgIDAuMCB3YSzCoCAwLjAgaGks
-IDAuMCBzaSzCoCAKMC4wIHN0CiVDcHU2wqAgOsKgIDAuMyB1cyzCoCAwLjAgc3kswqAgMC4wIG5p
-LCA5OS43IGlkLMKgIDAuMCB3YSzCoCAwLjAgaGksIDAuMCBzaSzCoCAKMC4wIHN0CiVDcHU3wqAg
-OjEwMC4wIHVzLMKgIDAuMCBzeSzCoCAwLjAgbmkswqAgMC4wIGlkLMKgIDAuMCB3YSzCoCAwLjAg
-aGksIDAuMCBzaSzCoCAKMC4wIHN0CgogwqAgwqAxNTk5ID/CoCDCoCDCoCDCoCBTwqAgwqAgwqAg
-MDowMMKgIHzCoCDCoFxfIHNzaGQtc2Vzc2lvbjogdHJldm9yQHB0cy8wCiDCoCDCoDE2MDAgcHRz
-LzDCoCDCoCBTc8KgIMKgIMKgMDowMMKgIHzCoCDCoCDCoCDCoFxfIC1iYXNoCiDCoCAxMDgwMiBw
-dHMvMMKgIMKgIFMrwqAgwqAgwqAwOjAwwqAgfMKgIMKgIMKgIMKgIMKgIMKgXF8gc3RyZXNzIC0t
-Y3B1IDgKIMKgIDEwODAzIHB0cy8wwqAgwqAgUivCoCDCoCA0Mjo1OMKgIHzCoCDCoCDCoCDCoCDC
-oCDCoCDCoCDCoFxfIHN0cmVzcyAtLWNwdSA4CiDCoCAxMDgwNCBwdHMvMMKgIMKgIFIrwqAgwqAg
-NDM6NDDCoCB8wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBcXyBzdHJlc3MgLS1jcHUgOAogwqAgMTA4
-MDUgcHRzLzDCoCDCoCBSK8KgIMKgIDQyOjE3wqAgfMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgXF8g
-c3RyZXNzIC0tY3B1IDgKIMKgIDEwODA2IHB0cy8wwqAgwqAgUivCoCDCoCA0MzowMMKgIHzCoCDC
-oCDCoCDCoCDCoCDCoCDCoCDCoFxfIHN0cmVzcyAtLWNwdSA4CiDCoCAxMDgwNyBwdHMvMMKgIMKg
-IFIrwqAgwqAgNTM6MDLCoCB8wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBcXyBzdHJlc3MgLS1jcHUg
-OAogwqAgMTA4MDggcHRzLzDCoCDCoCBSK8KgIMKgIDU1OjEywqAgfMKgIMKgIMKgIMKgIMKgIMKg
-IMKgIMKgXF8gc3RyZXNzIC0tY3B1IDgKIMKgIDEwODA5IHB0cy8wwqAgwqAgUivCoCDCoCA1NTox
-MsKgIHzCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoFxfIHN0cmVzcyAtLWNwdSA4CiDCoCAxMDgxMCBw
-dHMvMMKgIMKgIFIrwqAgwqAgNDc6MjnCoCB8wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBcXyBzdHJl
-c3MgLS1jcHUgOAoKU3RpbGwgOCB0aHJlYWRzIHJ1bm5pbmcuCgpBbmQgdGhpcyBpcyBzYXIgZnJv
-bSBhcm91bmQgdGhhdCB0aW1lIHdpdGggc3RyZXNzIC0tY3B1IDggcnVubmluZzoKMDA6MDA6NTHC
-oCDCoCDCoCDCoCBDUFXCoCDCoCDCoCV1c2VywqAgwqAgwqAlbmljZcKgIMKgJXN5c3RlbcKgIMKg
-JWlvd2FpdCAlc3RlYWzCoCDCoCDCoCVpZGxlCjAwOjEwOjQzwqAgwqAgwqAgwqAgYWxswqAgwqAg
-wqA4Ny40McKgIMKgIMKgIDAuMDDCoCDCoCDCoCAwLjExwqAgwqAgwqAgMC4wMCAwLjAwIMKgIMKg
-MTIuNDgKMDA6MjA6NTHCoCDCoCDCoCDCoCBhbGzCoCDCoCDCoDg3LjQxwqAgwqAgwqAgMC4wMMKg
-IMKgIMKgIDAuMTHCoCDCoCDCoCAwLjAwIDAuMDAgwqAgwqAxMi40OAowMDozMDo1McKgIMKgIMKg
-IMKgIGFsbMKgIMKgIMKgODcuNDHCoCDCoCDCoCAwLjAwwqAgwqAgwqAgMC4xMcKgIMKgIMKgIDAu
-MDAgMC4wMCDCoCDCoDEyLjQ4CjAwOjQwOjQzwqAgwqAgwqAgwqAgYWxswqAgwqAgwqA4Ny40McKg
-IMKgIMKgIDAuMDDCoCDCoCDCoCAwLjExwqAgwqAgwqAgMC4wMCAwLjAwIMKgIMKgMTIuNDgKMDA6
-NTA6NTHCoCDCoCDCoCDCoCBhbGzCoCDCoCDCoDg3LjQxwqAgwqAgwqAgMC4wMcKgIMKgIMKgIDAu
-MTHCoCDCoCDCoCAwLjAwIDAuMDAgwqAgwqAxMi40NwowMTowMDo1McKgIMKgIMKgIMKgIGFsbMKg
-IMKgIMKgODcuNDHCoCDCoCDCoCAwLjAwwqAgwqAgwqAgMC4xMcKgIMKgIMKgIDAuMDAgMC4wMCDC
-oCDCoDEyLjQ4CjAxOjEwOjQzwqAgwqAgwqAgwqAgYWxswqAgwqAgwqA4Ny40McKgIMKgIMKgIDAu
-MDDCoCDCoCDCoCAwLjExwqAgwqAgwqAgMC4wMCAwLjAwIMKgIMKgMTIuNDgKClRoaXMgbG9va3Mg
-bGlrZSBhIGtlcm5lbCBidWcgdG8gbWU/CgpJJ20gd3JpdGluZyBmcm9tIGFuIGVtYWlsIGFkZHJl
-c3MgdGhhdCBpcyBub3Qgc3Vic2NyaWJlZCB0byAKbGludXgtcm9ja2NoaXAgc28gaWYgeW91IGhh
-dmUgYW55IHF1ZXN0aW9ucyBvciBzdWdnZXN0aW9ucyBwbGVhc2UgY2MgbWUgCmRpcmVjdC4gSSB3
-aWxsIGJlIHJlYWRpbmcgdGhlIGFyY2hpdmVzIGlmIG5vdC4KClRoYW5rcwoKVHJldm9yIEhlbXNs
-ZXkKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+On Tue Sep 15, 2026 at 11:32 AM EDT, Michal Wilczynski wrote:
+>
+> Testing
+> =======
+>
+> Tested on a VisionFive 2 v1.3B using modetest.
+
+I.. got nothing. I did have to manually modprobe the modules, but
+unless I am doing something wrong.. I didn't get anything and modetest
+just gave -2.
+
+> ---
+> Michal Wilczynski (20):
+>       dt-bindings: phy: Add starfive,jh7110-inno-hdmi-phy
+>       dt-bindings: display: bridge: Add starfive,jh7110-inno-hdmi-controller
+>       dt-bindings: mfd: Add starfive,jh7110-hdmi-subsystem
+>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-syscon
+>       dt-bindings: display: verisilicon: Add starfive,jh7110-dc8200
+>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-subsystem
+>       drm/bridge: inno-hdmi: Split probe out of bind
+>       drm/bridge: inno-hdmi: Allow the register map to come from a parent
+>       drm/bridge: inno-hdmi: Add .disable platform operation
+>       drm/bridge: inno-hdmi: Add .mode_valid platform operation
+>       drm/bridge: inno-hdmi: Make the PHY configuration table optional
+>       soc: starfive: Add jh7110-hdmi-subsystem driver
+>       soc: starfive: Add jh7110-vout-subsystem driver
+>       clk: starfive: jh7110-vout: Allow pixel clock rate propagation
+>       drm/bridge: starfive: Add JH7110 HDMI controller driver
+>       phy: Add common Innosilicon HDMI PHY helpers
+>       phy: rockchip: inno-hdmi: Use the common Innosilicon PHY helpers
+>       phy: starfive: Add jh7110-inno-hdmi-phy driver
+>       riscv: dts: starfive: jh7110: Update DT for display subsystem
+>       MAINTAINERS: Add StarFive JH7110 display subsystem entry
+>
+>  .../starfive,jh7110-inno-hdmi-controller.yaml      | 121 +++++
+>  .../bindings/display/verisilicon,dc.yaml           |   1 +
+>  .../mfd/starfive,jh7110-hdmi-subsystem.yaml        |  95 ++++
+>  .../phy/starfive,jh7110-inno-hdmi-phy.yaml         |  49 ++
+>  .../soc/starfive/starfive,jh7110-syscon.yaml       |   1 +
+>  .../starfive/starfive,jh7110-vout-subsystem.yaml   | 218 ++++++++
+>  MAINTAINERS                                        |  13 +
+>  arch/riscv/boot/dts/starfive/jh7110-common.dtsi    | 121 ++++-
+>  arch/riscv/boot/dts/starfive/jh7110.dtsi           | 105 +++-
+>  drivers/clk/starfive/clk-starfive-jh7110-vout.c    |   6 +-
+>  drivers/gpu/drm/bridge/Kconfig                     |  11 +
+>  drivers/gpu/drm/bridge/Makefile                    |   1 +
+>  drivers/gpu/drm/bridge/inno-hdmi.c                 | 112 +++-
+>  drivers/gpu/drm/bridge/jh7110-inno-hdmi.c          | 297 +++++++++++
+>  drivers/phy/Kconfig                                |   8 +
+>  drivers/phy/Makefile                               |   1 +
+>  drivers/phy/phy-inno-hdmi.c                        | 298 +++++++++++
+>  drivers/phy/rockchip/Kconfig                       |   1 +
+>  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c      | 168 +-----
+>  drivers/phy/starfive/Kconfig                       |  20 +
+>  drivers/phy/starfive/Makefile                      |   1 +
+>  drivers/phy/starfive/phy-jh7110-inno-hdmi.c        | 579 +++++++++++++++++++++
+>  drivers/soc/Kconfig                                |   1 +
+>  drivers/soc/Makefile                               |   1 +
+>  drivers/soc/starfive/Kconfig                       |  43 ++
+>  drivers/soc/starfive/Makefile                      |   3 +
+>  drivers/soc/starfive/jh7110-hdmi-subsystem.c       |  73 +++
+>  drivers/soc/starfive/jh7110-vout-subsystem.c       |  82 +++
+>  include/drm/bridge/inno_hdmi.h                     |  10 +-
+>  include/linux/phy/inno-hdmi-phy.h                  |  85 +++
+>  30 files changed, 2337 insertions(+), 188 deletions(-)
+> ---
+> base-commit: fd73f4a6659897191fa0d40695fe370925dd3780
+> change-id: 20251031-jh7110-clean-send-7d2242118026
+>
+> Best regards,
+
+By the way, something weird happenined while I applied the patches
+using git am. Somehow, some were out of order. The 10th patch
+adding .mode_valid tried to be applied before .disable even though
+in the series, the order is correctly set? git would obviously
+fail because the .disable entry did not exist in the header, so I had
+to manually put those in.
+
+I guess it's possible that something went wrong here? I personally
+pulled the mailbox from the lore.kernel.org mbox.gz file.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
