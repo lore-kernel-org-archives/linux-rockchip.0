@@ -4,80 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DEE4C982C4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 12:55:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E203C88E5C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 13:29:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zp+hO6XyMdz9g472DpV5XJ7w/XrjTOL4wfEW6gmpqmY=; b=E5nAW8U3tyJZW0
-	13AuiqkS0aG4N35l5Ej5mbr/acmX1r5QAeASRvFzho8QGUVUrKxvSNvzpD/XxAIDiZDnEIcWygpt1
-	SulHn4h8IhVe0i2EvAR80INKIzySDhgnh85EZYUzHAsgPgAuKElORBc7RJhvPbRMVvhX1ephGLGqS
-	2MNhC5IpDGccbSjU0vhcJDvrt9P3Q660KQJJSk6FgCpME+orywqeuNWJaj5Nj7QdWNmop4OZ9zUoz
-	izxXO+0nTBGdN1Vp9cz5ErZXee0LKW7G0iBjNeCqiZeXDYU9XIUz+HF8d35ouqKPPoYfx0b0Kfrrs
-	g2cVni9H3wwzMbBPqFig==;
+	List-Owner; bh=NZHo7NcsF0OOD2AD8J1VNWFAbsWoBX3Rero1IhqV2a0=; b=ENH0fluf1qmn6v
+	WkJI3Agz/4VEdtjvnmJ9z3ssn7B7xx2VXIZIQA26s+5eucSAm0N1RNWfr7XPG8cQP1jVkwhAvfEHd
+	+77AkHTb411W2STpMFqrEgz4O9SAXB0Cg2Aj0B96TtywtTp2b0NzTy3Z4+zvTkcboM8b3XTCNZQZZ
+	f/qMHaEGMi96oi4eCciheeog+fHp8K7KEmTXyhinYRE+iRtiK3b+INjqMGSS456ohy6DSLOwZg3L2
+	QNaBJNPmh7qzjR9mn4g7yQwnLj+zKFWfAEeq70aBrM5NBF/50EZhYQ9ptwZ5k+tsIJ74OMOiVEK2E
+	TqSzzy1+ET/lfheFviNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pAH-00000009DI5-0TKa;
-	Wed, 16 Sep 2026 12:55:05 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x6ph4-00000009GJR-0g5R;
+	Wed, 16 Sep 2026 13:28:58 +0000
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pAE-00000009DFG-058l
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 16 Sep 2026 12:55:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=YinKkidPbSJ4It1a+/3AbqSjxPv7+XQBXhoUzT6cA/c=; b=AQNkuidX/byMPrX3xWKvkCbqXq
-	DArqOyQsvAxyc1KtGzdrtXBaR6wd9mzLtIPeJImRtMg0tdAK0rwUawU50/5cfmzSZ57KyCj8dI2RC
-	/HBXY99RLLeVJsVXxEw8b85B4pobE7Ssp2a0MtFYu7kFljf+PwmSFhwkXKibpUmyZB0I3E2pxxFpb
-	i3rrkWhGJy6lAjpEYOKkQTUFgV74YX6DBsP1O2ZIaITR4gOt3ZXjU4kTPHr6l9gcmaogfe+uZ7oeb
-	hp8brT86Yc3T46jYB4IAjU6Zh2w/2u17eZUGpH8J3RiVcZs6asOC7bJ5A8n0VxwZH/DDofIveW4k1
-	5vnB3CTA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6pA9-00000007s58-3MA4
+	id 1x6ph0-00000009GIg-3udK
 	for linux-rockchip@lists.infradead.org;
-	Wed, 16 Sep 2026 12:55:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789563291;
-	bh=3zKw4K0SxfBg0yduDZURnZ1s2u3ud89HZ8goJk4/ZGQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gxMvh4KbzfJgdo5wyOaRN1EtdQAsSwX0NVCpX9OageWzyYwkeFiKFcx/M3Y2pExuq
-	 QMSfyGnkW9w6tpU0SqCICYkef4aUgFIzO90iE4Kzr8+Or2+no5PMC3IonuJwVxnc0i
-	 FYKg9Mm1r/kkdKIDIRPiDuH4RkS3nZ39qz6Vg/pT1c3h0jW7stcBs31CES9jS9WfA1
-	 0fnRfpTMpCyEbTNaH6lH7euR783RtnrO2Fus8VsCcw/URwf5kWkj15L6Eh6uD1LsMT
-	 EbxrF1FnuhsPDyqtLnkaGLPQDz4xXPOtlCY37AXDq4DJTC7K+ODuN89cmH36IpO/KX
-	 ITTdmqnr3D2Sg==
-Received: from benjamin-XPS-13-9310 (unknown [100.64.1.43])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D710D17E138B;
-	Wed, 16 Sep 2026 14:54:50 +0200 (CEST)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: nicolas.dufresne@collabora.com,
-	benjamin.gaignard@collabora.com,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org
-Cc: linux-media@vger.kernel.org,
+	Wed, 16 Sep 2026 13:28:56 +0000
+Received: by mail-wm2-x11.google.com with SMTP id 5b1f17b1804b1-49e7c6dbc60so395305e9.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 16 Sep 2026 06:28:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789565333; x=1790170133; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=TqbeODdYQEEftgsPxXsYkF97yhYGAJosPirzjv//pFQ=;
+        b=iZ7ygLsCSNJexHvSk6quL72jXCskCMMpP2leItgIBjZBXKmzclR8NFFsLpMjrbaptn
+         doz4GkuHkzRq0zMHmdFErloLFj3Yb3G1xsh2NK6WTNY5aKmQ3rqOtslBP+efAoq0+YTW
+         LUT9tSYQGAKHqIt3X9N3BwwlSJQ3RepVvkC27El4ILZxuB7xt95OD6uJQnKcEQQOhH6E
+         pfETO30+R65sBGKIn9KO8z/DneoDJWNNogMw2UYYxcOj5wIerwm7odAsM4R48HTcG2KV
+         /jT75buwH3Ey6bzCPxg+vwHlXd27dCeMotcgVZznJT6fZ+/ZPoHecOAKx/HQs1NRC4G1
+         /NWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789565333; x=1790170133;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=TqbeODdYQEEftgsPxXsYkF97yhYGAJosPirzjv//pFQ=;
+        b=o5g0VaTMYtqZLhyXO7Fs65NDm55JDQUrdzj6GjFyR4BmDn8lxAn9OpTja6D78C4jgP
+         CTS+axCA20z1A7LzWEPTgdYGoPvcpGCxQdvzLAWYmnCvCSBNsnddu/eFWLLXrxyQeADv
+         iCrVRNr/v5apz6GLoBMZJ+5ONhXKevW5QSi/Pgep+RtH76beN7+cTOkfOF96tpXfYZ3K
+         x0mSZcvLzAOpCyaWonuAlFcJR93WWmIwbBGZDv5evbEjO1i1kB8eUk7aOUUiZgweiN2N
+         Y2UIYhLzmgo+U+xgQ+PtWaC8pUZIGMtV+ePZK97nZCzsMOGQnNdlywdpD3S4QHnWJaBR
+         ZTcA==
+X-Forwarded-Encrypted: i=1; AKwUvBwYXsMzVU0LYKfxcpRaQZI3SRulj8dtM2APcBBTgUzqaKWZ4y6ylpuF3gj0Q/+m+jwmVAj5Tn4snBpxW0izZg==@lists.infradead.org
+X-Gm-Message-State: AFuF++nhg3eGaC4RGCJNpGudrF9z/AQ3gayPWJuwEDAe1lDdweoUNzmF
+	UbP2F4vppJMuXAFRb7ZjOQUQ9JgcenvhitqdWhmL5TvuUP4Lpti6ZkeD
+X-Gm-Gg: AYBFou0v7alZ4t0l4ebqz6x7SOpHMlCI/SY49skAkRRNyT3TtNIYmJoDhXj8hg+BAyb
+	C/HF5leSCX4qOfuMDf8wBWfZ096LHRLRPkmtWBMz8GQz564T1hQ1vW9Qz/B5fp2Rr7jzNaLXoo/
+	j8CMZUPz7ab6RKZ7n/ssnUzOEH8Nwm2M1e/+1hv1y1wm9OspOSaQgP6YTRdk9w3dlBmh8KP/3Ij
+	A9grI+dfLDGg0xSFUOa+2d9fHfPM+COYqf0pCrPpi2lAGGxzLPovIJ6mehJait3Cg1zUMRrW9r9
+	C6BPr62Npjvs8aYij/44Yb5HA28/MPM4BH6JRqnWpYqUYBMkcg5z18X7wSXkO5GpAFtsxGRwfmj
+	Qhjo5xBf4CwD5p9omBmSkA8Hsu6ZEOc2oKtVy5stMucYBqntPoHLdwOb3ETm8MVcngCHKwxO8AH
+	7fT+Vs8bwiKt7q98fs6TyTktCvKo9q8g0qj4DMS18bBOXRJSk1lHtskJFLOJ87YYx/FvhHkjjs0
+	xKTS7uEKaUymqQll435McpFz8FeR4P4A/xDzJ0YUUTJZrIgwCqUj4yxS8zjppgRlHMN30kga9Mq
+	OeM=
+X-Received: by 2002:a05:600c:4e89:b0:49e:745d:5768 with SMTP id 5b1f17b1804b1-49eac4112e9mr27160505e9.0.1789565332521;
+        Wed, 16 Sep 2026 06:28:52 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B8E02001A623C292D45A2B3.dsl.pool.telekom.hu. [2001:4c4e:1b8e:200:1a62:3c29:2d45:a2b3])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49e847da0cdsm594135e9.2.2026.09.16.06.28.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Sep 2026 06:28:52 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Oded Gabbay <ogabbay@kernel.org>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Abel Vesa <abel.vesa@oss.qualcomm.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Sidong Yang <sidong.yang@furiosa.ai>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Alexey Charkov <alchark@flipper.net>,
+	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: [PATCH v1 5/7] media: verisilicon: vp8: Use alloc/free helpers for auxiliary buffers
-Date: Wed, 16 Sep 2026 14:54:41 +0200
-Message-ID: <20260916125443.78602-6-benjamin.gaignard@collabora.com>
+	Igor Paunovic <royalnet026@gmail.com>
+Subject: Re: [PATCH v13 03/14] accel/rocket: wait for a running IRQ handler before resetting a core
+Date: Wed, 16 Sep 2026 15:28:24 +0200
+Message-ID: <20260916132824.13527-1-royalnet026@gmail.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260916125443.78602-1-benjamin.gaignard@collabora.com>
-References: <20260916125443.78602-1-benjamin.gaignard@collabora.com>
+In-Reply-To: <20260915104328.45901-4-gahing@gahingwoo.com>
+References: <20260915104328.45901-1-gahing@gahingwoo.com> <20260915104328.45901-4-gahing@gahingwoo.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_135458_014814_AA5ABE83 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20260916_062855_015163_AC8E8013 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,85 +126,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simplify and clean up the code by using the helpers.
+Hi Jiaxing,
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- .../media/platform/verisilicon/hantro_vp8.c   | 37 +++++--------------
- 1 file changed, 10 insertions(+), 27 deletions(-)
+Thanks for flagging the job_lock change in the cover. I re-ran the
+same protocol today on v13 as posted, 2+3 and 2+3+4, three runs each,
+same board, base and config as on 12 September (JOB_TIMEOUT_MS=2,
+PROVE_LOCKING, DEBUG_ATOMIC_SLEEP): 73 induced resets with nothing
+from the driver beyond the timeout message itself, no MMU faults, no
+lockdep report or warning, and lockdep still armed at the end on both
+kernels. Of the 126 inferences scored, 118 matched the CPU reference
+within 1 on all 48 channels, and 8 missed on all 48 with the channels
+the scorer prints reading 0x80; in the two runs traced with the
+kprobe, those 5 results sit exactly where the 5 -ECANCELED completions
+do.
 
-diff --git a/drivers/media/platform/verisilicon/hantro_vp8.c b/drivers/media/platform/verisilicon/hantro_vp8.c
-index 381bc1d3bfda..881e6c21f0fa 100644
---- a/drivers/media/platform/verisilicon/hantro_vp8.c
-+++ b/drivers/media/platform/verisilicon/hantro_vp8.c
-@@ -144,11 +144,9 @@ void hantro_vp8_prob_update(struct hantro_ctx *ctx,
- 
- int hantro_vp8_dec_init(struct hantro_ctx *ctx)
- {
--	struct hantro_dev *vpu = ctx->dev;
- 	struct hantro_aux_buf *aux_buf;
- 	unsigned int mb_width, mb_height;
- 	size_t segment_map_size;
--	int ret;
- 
- 	/* segment map table size calculation */
- 	mb_width = DIV_ROUND_UP(ctx->dst_fmt.width, 16);
-@@ -160,42 +158,27 @@ int hantro_vp8_dec_init(struct hantro_ctx *ctx)
- 	 * And the data in segment map buffer must be set to all zero.
- 	 */
- 	aux_buf = &ctx->vp8_dec.segment_map;
--	aux_buf->size = segment_map_size;
--	aux_buf->cpu = dma_alloc_coherent(vpu->dev, aux_buf->size,
--					  &aux_buf->dma, GFP_KERNEL);
--	if (!aux_buf->cpu)
--		return -ENOMEM;
-+	if (hantro_allocate_aux_buf(ctx, aux_buf, segment_map_size))
-+		goto error;
- 
- 	/*
- 	 * Allocate probability table buffer,
- 	 * total 1208 bytes, 4K page is far enough.
- 	 */
- 	aux_buf = &ctx->vp8_dec.prob_tbl;
--	aux_buf->size = sizeof(struct vp8_prob_tbl_packed);
--	aux_buf->cpu = dma_alloc_coherent(vpu->dev, aux_buf->size,
--					  &aux_buf->dma, GFP_KERNEL);
--	if (!aux_buf->cpu) {
--		ret = -ENOMEM;
--		goto err_free_seg_map;
--	}
-+	if (hantro_allocate_aux_buf(ctx, aux_buf, sizeof(struct vp8_prob_tbl_packed)))
-+		goto error;
- 
- 	return 0;
- 
--err_free_seg_map:
--	dma_free_coherent(vpu->dev, ctx->vp8_dec.segment_map.size,
--			  ctx->vp8_dec.segment_map.cpu,
--			  ctx->vp8_dec.segment_map.dma);
--
--	return ret;
-+error:
-+	hantro_free_aux_buf(ctx, &ctx->vp8_dec.segment_map);
-+	hantro_free_aux_buf(ctx, &ctx->vp8_dec.prob_tbl);
-+	return -ENOMEM;
- }
- 
- void hantro_vp8_dec_exit(struct hantro_ctx *ctx)
- {
--	struct hantro_vp8_dec_hw_ctx *vp8_dec = &ctx->vp8_dec;
--	struct hantro_dev *vpu = ctx->dev;
--
--	dma_free_coherent(vpu->dev, vp8_dec->segment_map.size,
--			  vp8_dec->segment_map.cpu, vp8_dec->segment_map.dma);
--	dma_free_coherent(vpu->dev, vp8_dec->prob_tbl.size,
--			  vp8_dec->prob_tbl.cpu, vp8_dec->prob_tbl.dma);
-+	hantro_free_aux_buf(ctx, &ctx->vp8_dec.segment_map);
-+	hantro_free_aux_buf(ctx, &ctx->vp8_dec.prob_tbl);
- }
--- 
-2.53.0
+The limits are those of my 12 September mail (all resets on core 0,
+one client), plus one more: the model is a single 1x1 convolution,
+which Mesa submits as a one-task job (one completion interrupt per
+good inference), so hw_submit() never ran from the IRQ thread, which
+the race you describe needs. So this shows the lock adds no lockdep
+report or hang on this path, not that it closes the race. On that
+basis the tag stands for the v13 form of 3/14, with the same comment:
 
+Tested-by: Igor Paunovic <royalnet026@gmail.com> # RK3588, three cores, induced reset, JOB_TIMEOUT_MS=2
+
+If 4/14 changes shape in v14, I will re-run that arm. The scripts and
+the tallies were prepared with an LLM assistant; every number above
+was counted from the raw files of each run (scorer output, kernel and
+serial logs, kprobe trace), not from the scripts' summaries.
+
+Regards,
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
