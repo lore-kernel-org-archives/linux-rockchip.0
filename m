@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF775C982C4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 14:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A203C982C4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 14:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qVQbLKqnYhK2Pc0sirxvJXwh7aRuH5G/uKTIak7R9g8=; b=U00G0jOxwS3N2A
-	ep7xfX9gnxNMHy1XXwc/0NmNrb89RX/usuUJtNScnoRR0y12BEZ4zPFbhojoNwXGFNYLc1DuB+CNO
-	HuE2xMj4UFN7SfX1J3mXvGFwNxhijiRVhvYpO3xILRuf6fW6uNwEmYDLB5Ou7UqYpewR9WyImRlIT
-	Waa0qLx9tPXBzQ8g/RaTPikNQdLN62axi7n+ss6Hafg8NXI3VnFvhdU/8X/QmvyNGH6nAnSShyeSi
-	V+B0UeVFtvYzjm+EZjEsng/dtL2FD0fPraOdG9y7mAab/w/3zdRxc7t298j86q7zXJBq1OhCdE+Ng
-	OkQIEnhkyRCUJIb2NyEQ==;
+	List-Owner; bh=JoGJchFAhMiylZ5FYN/cJQx8xbt7daKdkerv5dgEUwo=; b=tmhBNV05JUZZmM
+	U2CrzOUe0I2FZzZiPul+v0Y1QqtemvNVWRLn3sjjkbcD9lHuA3EWAB4fhCewdwvBPixSnE54WWALN
+	P18zHORNcsvDDCdviiAeHL/8zHm7XG2cxy/iy8IrIEx2dfmy4HVmMIhzckDTz0ESE11/Bl6QgBzWl
+	h3RX0qNdpWusDocIA45DKvBm7mSDq5hNBJjrj5yRPNuCkhFX8JHiAJvzi2HZVFHp0yp2tekTBCMcs
+	k7SUkTB1+hv0IrQXa5KpbuLLUncjpt8mIHqx28jZVg9ohl7XOezBd2ARi8dHmI1l1AyxQjaQoS/DY
+	ON59ljrdaOv1+/pcvJHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6qZv-00000009OMY-1I6l;
-	Wed, 16 Sep 2026 14:25:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x6qa6-00000009OSI-0GPp;
+	Wed, 16 Sep 2026 14:25:50 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6qZq-00000009OJb-29LV;
-	Wed, 16 Sep 2026 14:25:36 +0000
+	id 1x6qZu-00000009OKs-2CwL;
+	Wed, 16 Sep 2026 14:25:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789568732;
-	bh=tu5A/hm9vojiLP4EZ/79AFjJPwERokzgJSRaROMmGHc=;
+	s=mail; t=1789568736;
+	bh=XNxacR9rRNpYWb2+YGNWFMZ9uT1v868SDz6zTGPQgD8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Nm6kalrvfFhnWtZgUzPKeIWauwig2BytF98OmZgjtOxIe9l0zUoWMavAOu6J1TjU5
-	 dic7glIlnYrkOBXIftfhkUaxt4fkmSrxF065LPcIIJkfBr5/vMASM9e9hQ2SJQZyOp
-	 tF34HDTB5Sh49h3b/MroYMlQcvv8hjaJ0Wn3QA9S76E6ddK3+/yYRzKZwppBtjVVIn
-	 9UnHvt+nklv6qt7XPYSMO3T7oMibnsQeN6uP6QsSG0/UHphY5pgEVeinwohWpRR6t3
-	 66uSpzXgyJHvzySkCOB+91J6yXYP7E7x/DBcJZ+sXDXd9FPezu0YyAxSk2FvJSq371
-	 /jMTRsvY1gWOw==
+	b=qMlPOTzoIx3WLYjPXmwJpQJBfmPvgAyOOlYZBcg0kMxDCVimSYl2ukIrNX/z0dnJw
+	 Vy4QivtqsE29LaeIAfyOqC+DXYaI6nBnjEdMzenWCu/kO7w8P5t69MBCWE0ieiN9s1
+	 0K+Aa7P78rIMDVesrR6kosccywKMDBvmCLoOA8BzkM87ZNJE8RE1oAsYLfNled5QTY
+	 QY4gicHCyBvc/yEKf5nRdWtl7cZ7c8THjZ8v1iTZMtMAVOYN8umL7B2akz6vNR2efj
+	 MlCwGyA+4r82lnkHMeNe+K2svZ+UWKFKg1BPEL+cAii5csQwH7kPoJk9XnbpMBuGSZ
+	 BIjWFGOS12dQg==
 Received: from [192.168.0.15] (unknown [100.64.0.170])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7816917E01D1;
-	Wed, 16 Sep 2026 16:25:30 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B61C17E09B5;
+	Wed, 16 Sep 2026 16:25:34 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
-Date: Wed, 16 Sep 2026 10:25:26 -0400
-Subject: [PATCH 1/4] media: Add a v4l2 memory allocations tracker
+Date: Wed, 16 Sep 2026 10:25:28 -0400
+Subject: [PATCH 3/4] media: verisilicon: Switch to tracked dma allocations
 MIME-Version: 1.0
-Message-Id: <20260916-v4l2-add-mem-tracker-v1-1-900fa45e3e6a@collabora.com>
+Message-Id: <20260916-v4l2-add-mem-tracker-v1-3-900fa45e3e6a@collabora.com>
 References: <20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com>
 In-Reply-To: <20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com>
 To: Tomasz Figa <tfiga@chromium.org>, 
@@ -63,8 +63,8 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_072535_504414_C96A03B0 
-X-CRM114-Status: GOOD (  27.56  )
+X-CRM114-CacheID: sfid-20260916_072538_888588_F0C5AB59 
+X-CRM114-Status: GOOD (  17.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,389 +81,732 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is a wrapper around dma allocation functions to keep track of
-allocated buffers and expose the list through a per v4l2 device debugfs.
-
-This currently doesn't support all kind of memory allocation, only
-dma_alloc_attrs.
-
-The wrapper can therefore be used by drivers, but also by the vb2
-allocation functions, so that all buffers are accounted for.
+Use the newly introduced v4l2_dma_alloc_attrs and v4l2_dma_free_attrs
+functions to track all dma allocations and have them exposed to
+userspace for easier debug.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- drivers/media/common/videobuf2/Makefile            |   1 +
- drivers/media/common/videobuf2/v4l2-allocator.c    | 180 +++++++++++++++++++++
- .../media/common/videobuf2/videobuf2-dma-contig.c  |  24 ++-
- drivers/media/v4l2-core/v4l2-device.c              |   4 +-
- include/media/v4l2-allocator.h                     |  26 +++
- include/media/v4l2-device.h                        |   2 +
- include/media/videobuf2-core.h                     |   2 +
- 7 files changed, 231 insertions(+), 8 deletions(-)
+ drivers/media/platform/verisilicon/hantro.h        |   1 +
+ drivers/media/platform/verisilicon/hantro_drv.c    |   4 +
+ drivers/media/platform/verisilicon/hantro_h264.c   |   7 +-
+ drivers/media/platform/verisilicon/hantro_hevc.c   | 100 +++++++------
+ drivers/media/platform/verisilicon/hantro_mpeg2.c  |  16 +--
+ .../media/platform/verisilicon/hantro_postproc.c   |  14 +-
+ drivers/media/platform/verisilicon/hantro_vp8.c    |  25 ++--
+ drivers/media/platform/verisilicon/hantro_vp9.c    |  34 +++--
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 160 ++++++++++++---------
+ 9 files changed, 215 insertions(+), 146 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/Makefile b/drivers/media/common/videobuf2/Makefile
-index a6fe3f304685..aa2754731535 100644
---- a/drivers/media/common/videobuf2/Makefile
-+++ b/drivers/media/common/videobuf2/Makefile
-@@ -1,6 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- videobuf2-common-objs := videobuf2-core.o
- videobuf2-common-objs += frame_vector.o
-+videobuf2-common-objs += v4l2-allocator.o
- 
- ifeq ($(CONFIG_TRACEPOINTS),y)
-   videobuf2-common-objs += vb2-trace.o
-diff --git a/drivers/media/common/videobuf2/v4l2-allocator.c b/drivers/media/common/videobuf2/v4l2-allocator.c
-new file mode 100644
-index 000000000000..9dde9d4a342b
---- /dev/null
-+++ b/drivers/media/common/videobuf2/v4l2-allocator.c
-@@ -0,0 +1,180 @@
-+// SPDX-License-Identifier: GPL-2.0
-+
-+#include <media/v4l2-allocator.h>
-+#include <media/v4l2-device.h>
-+
-+#include <linux/types.h>
-+#include <linux/debugfs.h>
-+#include <linux/list.h>
-+#include <linux/mutex.h>
-+#include <linux/seq_file.h>
-+
-+#define ENTRY_NAME_LEN	64
-+
-+static struct dentry *v4l2_debugfs_dir;
-+
-+struct v4l2_allocator {
-+	struct list_head list;
-+	struct mutex lock;
-+	struct dentry *debugfs_dir;
-+	struct dentry *debugfs_entry;
-+};
-+
-+struct v4l2_allocator_entry {
-+	struct list_head list;
-+	size_t size;
-+	dma_addr_t dma_addr;
-+	char name[ENTRY_NAME_LEN];
-+	char creator[TASK_COMM_LEN];
-+	pid_t tgid;
-+	u16 fd;
-+};
-+
-+static int v4l2_allocator_debugfs_show(struct seq_file *m, void *data)
-+{
-+	struct v4l2_device *v4l2_dev = m->private;
-+	struct v4l2_allocator *allocator = v4l2_dev->v4l2_allocator;
-+	struct v4l2_allocator_entry *entry;
-+	size_t total_size = 0;
-+
-+	if (!allocator)
-+		return 0;
-+
-+	seq_puts(m, "created-by                      fd              pid             size            label\n");
-+	seq_puts(m, "-------------------------------------------------------------------------------------\n");
-+	mutex_lock(&allocator->lock);
-+	list_for_each_entry(entry, &allocator->list, list) {
-+		seq_printf(m, "%-32s%-16u%-16u%-16zu%s\n",
-+			   entry->creator,
-+			   entry->fd,
-+			   entry->tgid,
-+			   entry->size,
-+			   entry->name);
-+		total_size += entry->size;
-+	}
-+	mutex_unlock(&allocator->lock);
-+
-+	seq_puts(m, "=====================================================================================\n");
-+	seq_printf(m, "Total size: %zu\n", total_size);
-+
-+	return 0;
-+}
-+DEFINE_SHOW_ATTRIBUTE(v4l2_allocator_debugfs);
-+
-+int v4l2_allocator_init(struct v4l2_device *v4l2_dev)
-+{
-+	struct v4l2_allocator *allocator;
-+
-+	allocator = kzalloc_obj(*allocator);
-+	if (!allocator)
-+		return -ENOMEM;
-+
-+	INIT_LIST_HEAD(&allocator->list);
-+	mutex_init(&allocator->lock);
-+	v4l2_dev->v4l2_allocator = allocator;
-+
-+	if (!v4l2_debugfs_dir)
-+		v4l2_debugfs_dir = debugfs_create_dir("v4l2", NULL);
-+
-+	allocator->debugfs_dir = debugfs_create_dir(dev_name(v4l2_dev->dev),
-+						    v4l2_debugfs_dir);
-+	allocator->debugfs_entry = debugfs_create_file("mem", 0444,
-+						       allocator->debugfs_dir,
-+						       v4l2_dev,
-+						       &v4l2_allocator_debugfs_fops);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(v4l2_allocator_init);
-+
-+void v4l2_allocator_cleanup(struct v4l2_device *v4l2_dev)
-+{
-+	struct v4l2_allocator *allocator = v4l2_dev->v4l2_allocator;
-+	struct v4l2_allocator_entry *entry, *tmp;
-+
-+	if (allocator) {
-+		debugfs_remove(allocator->debugfs_entry);
-+		debugfs_remove(allocator->debugfs_dir);
-+		mutex_lock(&allocator->lock);
-+		list_for_each_entry_safe(entry, tmp, &allocator->list, list) {
-+			list_del(&entry->list);
-+			kfree(entry);
-+		}
-+		mutex_unlock(&allocator->lock);
-+		mutex_destroy(&allocator->lock);
-+		kfree(allocator);
-+		v4l2_dev->v4l2_allocator = NULL;
-+	}
-+}
-+EXPORT_SYMBOL_GPL(v4l2_allocator_cleanup);
-+
-+static int v4l2_allocator_add(struct v4l2_device *v4l2_dev, size_t size,
-+			      dma_addr_t dma_addr, const char *name)
-+{
-+	struct v4l2_allocator *allocator = v4l2_dev->v4l2_allocator;
-+	struct v4l2_allocator_entry *entry;
-+
-+	if (!allocator)
-+		return -EINVAL;
-+
-+	entry = kzalloc_obj(*entry);
-+	if (!entry)
-+		return -ENOMEM;
-+
-+	entry->size = size;
-+	entry->dma_addr = dma_addr;
-+	strscpy(entry->name, name, sizeof(entry->name));
-+	get_task_comm(entry->creator, current->group_leader);
-+	entry->tgid = current->tgid;
-+
-+	mutex_lock(&allocator->lock);
-+	list_add(&entry->list, &allocator->list);
-+	mutex_unlock(&allocator->lock);
-+
-+	return 0;
-+}
-+
-+static void v4l2_allocator_remove(struct v4l2_device *v4l2_dev, size_t size, dma_addr_t dma_addr)
-+{
-+	struct v4l2_allocator *allocator = v4l2_dev->v4l2_allocator;
-+	struct v4l2_allocator_entry *entry, *tmp;
-+
-+	if (!allocator)
-+		return;
-+
-+	mutex_lock(&allocator->lock);
-+	list_for_each_entry_safe(entry, tmp, &allocator->list, list) {
-+		if (entry->size == size && entry->dma_addr == dma_addr) {
-+			list_del(&entry->list);
-+			mutex_unlock(&allocator->lock);
-+			kfree(entry);
-+			return;
-+		}
-+	}
-+	mutex_unlock(&allocator->lock);
-+}
-+
-+void *v4l2_dma_alloc_attrs(struct v4l2_device *v4l2_dev, struct device *dev,
-+			   size_t size, dma_addr_t *dma_handle,
-+			   gfp_t flag, unsigned long attrs, const char *name)
-+{
-+	void *ret = dma_alloc_attrs(dev, size, dma_handle, flag, attrs);
-+
-+	if (ret && v4l2_dev)
-+		v4l2_allocator_add(v4l2_dev, size, *dma_handle, name);
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(v4l2_dma_alloc_attrs);
-+
-+void v4l2_dma_free_attrs(struct v4l2_device *v4l2_dev, struct device *dev,
-+			 size_t size, void *cpu_addr,
-+			 dma_addr_t dma_handle, unsigned long attrs)
-+{
-+	if (v4l2_dev)
-+		v4l2_allocator_remove(v4l2_dev, size, dma_handle);
-+
-+	dma_free_attrs(dev, size, cpu_addr, dma_handle, attrs);
-+}
-+EXPORT_SYMBOL_GPL(v4l2_dma_free_attrs);
-+
-diff --git a/drivers/media/common/videobuf2/videobuf2-dma-contig.c b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-index 9ce6284cd5f2..b6b7ddc96b9c 100644
---- a/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-+++ b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-@@ -22,6 +22,7 @@
- #include <media/videobuf2-v4l2.h>
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index d5cddc783688..acf5312d5ed4 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -24,6 +24,7 @@
+ #include <media/v4l2-mem2mem.h>
+ #include <media/videobuf2-core.h>
  #include <media/videobuf2-dma-contig.h>
- #include <media/videobuf2-memops.h>
 +#include <media/v4l2-allocator.h>
  
- struct vb2_dc_buf {
- 	struct device			*dev;
-@@ -43,6 +44,7 @@ struct vb2_dc_buf {
- 	struct dma_buf_attachment	*db_attach;
+ #include "hantro_hw.h"
  
- 	struct vb2_buffer		*vb;
-+	struct v4l2_device		*v4l2_dev;
- 	bool				non_coherent_mem;
- };
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 32855b14e0f1..2b8aa2033d3f 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -232,6 +232,8 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	src_vq->lock = &ctx->dev->vpu_mutex;
+ 	src_vq->dev = ctx->dev->v4l2_dev.dev;
++	src_vq->v4l2_dev = &ctx->dev->v4l2_dev;
++	src_vq->v4l2_fh = &ctx->fh;
+ 	src_vq->supports_requests = true;
  
-@@ -181,8 +183,10 @@ static void vb2_dc_put(void *buf_priv)
- 			sg_free_table(buf->sgt_base);
- 			kfree(buf->sgt_base);
- 		}
--		dma_free_attrs(buf->dev, buf->size, buf->cookie,
--			       buf->dma_addr, buf->attrs);
-+
-+		v4l2_dma_free_attrs(buf->v4l2_dev, buf->dev, buf->size, buf->cookie,
-+				    buf->dma_addr, buf->attrs);
-+
- 	}
- 	put_device(buf->dev);
- 	kfree(buf);
-@@ -191,12 +195,17 @@ static void vb2_dc_put(void *buf_priv)
- static int vb2_dc_alloc_coherent(struct vb2_dc_buf *buf)
- {
- 	struct vb2_queue *q = buf->vb->vb2_queue;
-+	char name[64] = {0};
-+
-+	sprintf(name, "%s-%d", q->name, buf->vb->index);
+ 	ret = vb2_queue_init(src_vq);
+@@ -258,6 +260,8 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = &ctx->dev->vpu_mutex;
+ 	dst_vq->dev = ctx->dev->v4l2_dev.dev;
++	dst_vq->v4l2_dev = &ctx->dev->v4l2_dev;
++	dst_vq->v4l2_fh = &ctx->fh;
  
--	buf->cookie = dma_alloc_attrs(buf->dev,
--				      buf->size,
--				      &buf->dma_addr,
--				      GFP_KERNEL | q->gfp_flags,
--				      buf->attrs);
-+	buf->cookie = v4l2_dma_alloc_attrs(buf->v4l2_dev,
-+					   buf->dev,
-+					   buf->size,
-+					   &buf->dma_addr,
-+					   GFP_KERNEL | q->gfp_flags,
-+					   buf->attrs,
-+					   name);
- 	if (!buf->cookie)
+ 	return vb2_queue_init(dst_vq);
+ }
+diff --git a/drivers/media/platform/verisilicon/hantro_h264.c b/drivers/media/platform/verisilicon/hantro_h264.c
+index 2414782f1eb6..6b6afd74f8ae 100644
+--- a/drivers/media/platform/verisilicon/hantro_h264.c
++++ b/drivers/media/platform/verisilicon/hantro_h264.c
+@@ -498,7 +498,7 @@ void hantro_h264_dec_exit(struct hantro_ctx *ctx)
+ 	struct hantro_h264_dec_hw_ctx *h264_dec = &ctx->h264_dec;
+ 	struct hantro_aux_buf *priv = &h264_dec->priv;
+ 
+-	dma_free_coherent(vpu->dev, priv->size, priv->cpu, priv->dma);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, priv->size, priv->cpu, priv->dma, 0);
+ }
+ 
+ int hantro_h264_dec_init(struct hantro_ctx *ctx)
+@@ -508,8 +508,9 @@ int hantro_h264_dec_init(struct hantro_ctx *ctx)
+ 	struct hantro_aux_buf *priv = &h264_dec->priv;
+ 	struct hantro_h264_dec_priv_tbl *tbl;
+ 
+-	priv->cpu = dma_alloc_coherent(vpu->dev, sizeof(*tbl), &priv->dma,
+-				       GFP_KERNEL);
++	priv->cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++					 sizeof(*tbl), &priv->dma,
++					 GFP_KERNEL, 0, &ctx->fh, "h264-priv");
+ 	if (!priv->cpu)
  		return -ENOMEM;
  
-@@ -246,6 +255,7 @@ static void *vb2_dc_alloc(struct vb2_buffer *vb,
- 	buf->dma_dir = vb->vb2_queue->dma_dir;
- 	buf->vb = vb;
- 	buf->non_coherent_mem = vb->vb2_queue->non_coherent_mem;
-+	buf->v4l2_dev = vb->vb2_queue->v4l2_dev;
+diff --git a/drivers/media/platform/verisilicon/hantro_hevc.c b/drivers/media/platform/verisilicon/hantro_hevc.c
+index 83cd12b0ddd6..e73498285bf7 100644
+--- a/drivers/media/platform/verisilicon/hantro_hevc.c
++++ b/drivers/media/platform/verisilicon/hantro_hevc.c
+@@ -7,6 +7,7 @@
  
- 	buf->size = size;
- 	/* Prevent the device from being released while the buffer is used */
-diff --git a/drivers/media/v4l2-core/v4l2-device.c b/drivers/media/v4l2-core/v4l2-device.c
-index 67e3073de132..3cce2b4bc4c7 100644
---- a/drivers/media/v4l2-core/v4l2-device.c
-+++ b/drivers/media/v4l2-core/v4l2-device.c
-@@ -13,6 +13,7 @@
- #include <linux/videodev2.h>
- #include <media/v4l2-device.h>
- #include <media/v4l2-ctrls.h>
+ #include <linux/types.h>
+ #include <media/v4l2-mem2mem.h>
 +#include <media/v4l2-allocator.h>
  
- int v4l2_device_register(struct device *dev, struct v4l2_device *v4l2_dev)
- {
-@@ -38,7 +39,7 @@ int v4l2_device_register(struct device *dev, struct v4l2_device *v4l2_dev)
- 			dev->driver->name, dev_name(dev));
- 	if (!dev_get_drvdata(dev))
- 		dev_set_drvdata(dev, v4l2_dev);
--	return 0;
-+	return v4l2_allocator_init(v4l2_dev);
+ #include "hantro.h"
+ #include "hantro_hw.h"
+@@ -89,46 +90,52 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
+ 
+ 	/* Need to reallocate due to tiles passed via PPS */
+ 	if (hevc_dec->tile_filter.cpu) {
+-		dma_free_coherent(vpu->dev, hevc_dec->tile_filter.size,
+-				  hevc_dec->tile_filter.cpu,
+-				  hevc_dec->tile_filter.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->tile_filter.size,
++				    hevc_dec->tile_filter.cpu,
++				    hevc_dec->tile_filter.dma, 0);
+ 		hevc_dec->tile_filter.cpu = NULL;
+ 	}
+ 
+ 	if (hevc_dec->tile_sao.cpu) {
+-		dma_free_coherent(vpu->dev, hevc_dec->tile_sao.size,
+-				  hevc_dec->tile_sao.cpu,
+-				  hevc_dec->tile_sao.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->tile_sao.size,
++				    hevc_dec->tile_sao.cpu,
++				    hevc_dec->tile_sao.dma, 0);
+ 		hevc_dec->tile_sao.cpu = NULL;
+ 	}
+ 
+ 	if (hevc_dec->tile_bsd.cpu) {
+-		dma_free_coherent(vpu->dev, hevc_dec->tile_bsd.size,
+-				  hevc_dec->tile_bsd.cpu,
+-				  hevc_dec->tile_bsd.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->tile_bsd.size,
++				    hevc_dec->tile_bsd.cpu,
++				    hevc_dec->tile_bsd.dma, 0);
+ 		hevc_dec->tile_bsd.cpu = NULL;
+ 	}
+ 
+ 	size = (VERT_FILTER_RAM_SIZE * height64 * (num_tile_cols - 1) * ctx->bit_depth) / 8;
+-	hevc_dec->tile_filter.cpu = dma_alloc_coherent(vpu->dev, size,
+-						       &hevc_dec->tile_filter.dma,
+-						       GFP_KERNEL);
++	hevc_dec->tile_filter.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, size,
++							 &hevc_dec->tile_filter.dma,
++							 GFP_KERNEL,
++							 DMA_ATTR_NO_KERNEL_MAPPING,
++							 &ctx->fh, "hevc-tile-filter");
+ 	if (!hevc_dec->tile_filter.cpu)
+ 		return -ENOMEM;
+ 	hevc_dec->tile_filter.size = size;
+ 
+ 	size = (VERT_SAO_RAM_SIZE * height64 * (num_tile_cols - 1) * ctx->bit_depth) / 8;
+-	hevc_dec->tile_sao.cpu = dma_alloc_coherent(vpu->dev, size,
+-						    &hevc_dec->tile_sao.dma,
+-						    GFP_KERNEL);
++	hevc_dec->tile_sao.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, size,
++						      &hevc_dec->tile_sao.dma,
++						      GFP_KERNEL,
++						      DMA_ATTR_NO_KERNEL_MAPPING,
++						      &ctx->fh, "hevc-tile-sao");
+ 	if (!hevc_dec->tile_sao.cpu)
+ 		goto err_free_tile_buffers;
+ 	hevc_dec->tile_sao.size = size;
+ 
+ 	size = BSD_CTRL_RAM_SIZE * height64 * (num_tile_cols - 1);
+-	hevc_dec->tile_bsd.cpu = dma_alloc_coherent(vpu->dev, size,
+-						    &hevc_dec->tile_bsd.dma,
+-						    GFP_KERNEL);
++	hevc_dec->tile_bsd.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, size,
++						      &hevc_dec->tile_bsd.dma,
++						      GFP_KERNEL,
++						      DMA_ATTR_NO_KERNEL_MAPPING,
++						      &ctx->fh, "hevc-tile-bsd");
+ 	if (!hevc_dec->tile_bsd.cpu)
+ 		goto err_free_sao_buffers;
+ 	hevc_dec->tile_bsd.size = size;
+@@ -139,16 +146,16 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
+ 
+ err_free_sao_buffers:
+ 	if (hevc_dec->tile_sao.cpu)
+-		dma_free_coherent(vpu->dev, hevc_dec->tile_sao.size,
+-				  hevc_dec->tile_sao.cpu,
+-				  hevc_dec->tile_sao.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->tile_sao.size,
++				    hevc_dec->tile_sao.cpu,
++				    hevc_dec->tile_sao.dma, 0);
+ 	hevc_dec->tile_sao.cpu = NULL;
+ 
+ err_free_tile_buffers:
+ 	if (hevc_dec->tile_filter.cpu)
+-		dma_free_coherent(vpu->dev, hevc_dec->tile_filter.size,
+-				  hevc_dec->tile_filter.cpu,
+-				  hevc_dec->tile_filter.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->tile_filter.size,
++				    hevc_dec->tile_filter.cpu,
++				    hevc_dec->tile_filter.dma, 0);
+ 	hevc_dec->tile_filter.cpu = NULL;
+ 
+ 	return -ENOMEM;
+@@ -218,33 +225,33 @@ void hantro_hevc_dec_exit(struct hantro_ctx *ctx)
+ 	struct hantro_hevc_dec_hw_ctx *hevc_dec = &ctx->hevc_dec;
+ 
+ 	if (hevc_dec->tile_sizes.cpu)
+-		dma_free_coherent(vpu->dev, hevc_dec->tile_sizes.size,
+-				  hevc_dec->tile_sizes.cpu,
+-				  hevc_dec->tile_sizes.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->tile_sizes.size,
++				    hevc_dec->tile_sizes.cpu,
++				    hevc_dec->tile_sizes.dma, 0);
+ 	hevc_dec->tile_sizes.cpu = NULL;
+ 
+ 	if (hevc_dec->scaling_lists.cpu)
+-		dma_free_coherent(vpu->dev, hevc_dec->scaling_lists.size,
+-				  hevc_dec->scaling_lists.cpu,
+-				  hevc_dec->scaling_lists.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->scaling_lists.size,
++				    hevc_dec->scaling_lists.cpu,
++				    hevc_dec->scaling_lists.dma, 0);
+ 	hevc_dec->scaling_lists.cpu = NULL;
+ 
+ 	if (hevc_dec->tile_filter.cpu)
+-		dma_free_coherent(vpu->dev, hevc_dec->tile_filter.size,
+-				  hevc_dec->tile_filter.cpu,
+-				  hevc_dec->tile_filter.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->tile_filter.size,
++				    hevc_dec->tile_filter.cpu,
++				    hevc_dec->tile_filter.dma, 0);
+ 	hevc_dec->tile_filter.cpu = NULL;
+ 
+ 	if (hevc_dec->tile_sao.cpu)
+-		dma_free_coherent(vpu->dev, hevc_dec->tile_sao.size,
+-				  hevc_dec->tile_sao.cpu,
+-				  hevc_dec->tile_sao.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->tile_sao.size,
++				    hevc_dec->tile_sao.cpu,
++				    hevc_dec->tile_sao.dma, 0);
+ 	hevc_dec->tile_sao.cpu = NULL;
+ 
+ 	if (hevc_dec->tile_bsd.cpu)
+-		dma_free_coherent(vpu->dev, hevc_dec->tile_bsd.size,
+-				  hevc_dec->tile_bsd.cpu,
+-				  hevc_dec->tile_bsd.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, hevc_dec->tile_bsd.size,
++				    hevc_dec->tile_bsd.cpu,
++				    hevc_dec->tile_bsd.dma, 0);
+ 	hevc_dec->tile_bsd.cpu = NULL;
  }
- EXPORT_SYMBOL_GPL(v4l2_device_register);
  
-@@ -93,6 +94,7 @@ void v4l2_device_unregister(struct v4l2_device *v4l2_dev)
- 	 * unregistered before. */
- 	if (v4l2_dev == NULL || !v4l2_dev->name[0])
- 		return;
-+	v4l2_allocator_cleanup(v4l2_dev);
- 	v4l2_device_disconnect(v4l2_dev);
+@@ -262,17 +269,20 @@ int hantro_hevc_dec_init(struct hantro_ctx *ctx)
+ 	 * chunk (HW guys wanted to have this).
+ 	 */
+ 	size = round_up(MAX_TILE_COLS * MAX_TILE_ROWS * 4 * sizeof(u16) + 16, 16);
+-	hevc_dec->tile_sizes.cpu = dma_alloc_coherent(vpu->dev, size,
+-						      &hevc_dec->tile_sizes.dma,
+-						      GFP_KERNEL);
++	hevc_dec->tile_sizes.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, size,
++							&hevc_dec->tile_sizes.dma,
++							GFP_KERNEL, 0,
++							&ctx->fh, "hevc-tile-sizes");
+ 	if (!hevc_dec->tile_sizes.cpu)
+ 		return -ENOMEM;
  
- 	/* Unregister subdevs */
-diff --git a/include/media/v4l2-allocator.h b/include/media/v4l2-allocator.h
-new file mode 100644
-index 000000000000..f3fe0da10321
---- /dev/null
-+++ b/include/media/v4l2-allocator.h
-@@ -0,0 +1,26 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * V4L2 Memory Allocator - Track memory allocations and deallocations in the v4l2 device.
-+ *
-+ * It provides functions to allocate and free memory while keeping
-+ * track of the allocations for debugging and analysis purposes.
-+ *
-+ * Copyright 2026 Collabora, Ltd.
-+ *   Detlev Casanova <detlev.casanova@collabora.com>
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/dma-mapping.h>
-+
-+#include <media/v4l2-device.h>
-+
-+int v4l2_allocator_init(struct v4l2_device *v4l2_dev);
-+void v4l2_allocator_cleanup(struct v4l2_device *v4l2_dev);
-+
-+void *v4l2_dma_alloc_attrs(struct v4l2_device *v4l2_dev, struct device *dev,
-+			   size_t size, dma_addr_t *dma_handle,
-+			   gfp_t flag, unsigned long attrs, const char *name);
-+
-+void v4l2_dma_free_attrs(struct v4l2_device *v4l2_dev, struct device *dev,
-+			 size_t size, void *cpu_addr,
-+			 dma_addr_t dma_handle, unsigned long attrs);
-diff --git a/include/media/v4l2-device.h b/include/media/v4l2-device.h
-index 25f69b1b8db0..c2b882d32012 100644
---- a/include/media/v4l2-device.h
-+++ b/include/media/v4l2-device.h
-@@ -14,6 +14,7 @@
- #include <media/v4l2-dev.h>
+ 	hevc_dec->tile_sizes.size = size;
  
- struct v4l2_ctrl_handler;
-+struct v4l2_allocator;
+-	hevc_dec->scaling_lists.cpu = dma_alloc_coherent(vpu->dev, SCALING_LIST_SIZE,
+-							 &hevc_dec->scaling_lists.dma,
+-							 GFP_KERNEL);
++	hevc_dec->scaling_lists.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++							   SCALING_LIST_SIZE,
++							   &hevc_dec->scaling_lists.dma,
++							   GFP_KERNEL, 0,
++							   &ctx->fh, "hevc-scaling-lists");
+ 	if (!hevc_dec->scaling_lists.cpu)
+ 		return -ENOMEM;
  
- /**
-  * struct v4l2_device - main struct to for V4L2 device drivers
-@@ -46,6 +47,7 @@ struct v4l2_device {
- 	struct device *dev;
- 	struct media_device *mdev;
- 	struct list_head subdevs;
-+	struct v4l2_allocator *v4l2_allocator;
- 	spinlock_t lock;
- 	char name[36];
- 	void (*notify)(struct v4l2_subdev *sd,
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 4424d481d7f7..83a5aea34f3c 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -19,6 +19,7 @@
- #include <linux/bitops.h>
- #include <media/media-request.h>
- #include <media/frame_vector.h>
-+#include <media/v4l2-device.h>
+diff --git a/drivers/media/platform/verisilicon/hantro_mpeg2.c b/drivers/media/platform/verisilicon/hantro_mpeg2.c
+index 04e545eb0a83..edb29204b9c2 100644
+--- a/drivers/media/platform/verisilicon/hantro_mpeg2.c
++++ b/drivers/media/platform/verisilicon/hantro_mpeg2.c
+@@ -41,10 +41,10 @@ int hantro_mpeg2_dec_init(struct hantro_ctx *ctx)
  
- #define VB2_MAX_FRAME	(32)
- #define VB2_MAX_PLANES	(8)
-@@ -602,6 +603,7 @@ struct vb2_queue {
- 	unsigned int			type;
- 	unsigned int			io_modes;
- 	struct device			*dev;
-+	struct v4l2_device		*v4l2_dev;
- 	unsigned long			dma_attrs;
- 	unsigned int			bidirectional:1;
- 	unsigned int			fileio_read_once:1;
+ 	ctx->mpeg2_dec.qtable.size = ARRAY_SIZE(zigzag) * 4;
+ 	ctx->mpeg2_dec.qtable.cpu =
+-		dma_alloc_coherent(vpu->dev,
+-				   ctx->mpeg2_dec.qtable.size,
+-				   &ctx->mpeg2_dec.qtable.dma,
+-				   GFP_KERNEL);
++		v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++				     ctx->mpeg2_dec.qtable.size,
++				     &ctx->mpeg2_dec.qtable.dma,
++				     GFP_KERNEL, 0, &ctx->fh, "mpeg2-qtable");
+ 	if (!ctx->mpeg2_dec.qtable.cpu)
+ 		return -ENOMEM;
+ 	return 0;
+@@ -54,8 +54,8 @@ void hantro_mpeg2_dec_exit(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+ 
+-	dma_free_coherent(vpu->dev,
+-			  ctx->mpeg2_dec.qtable.size,
+-			  ctx->mpeg2_dec.qtable.cpu,
+-			  ctx->mpeg2_dec.qtable.dma);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++			    ctx->mpeg2_dec.qtable.size,
++			    ctx->mpeg2_dec.qtable.cpu,
++			    ctx->mpeg2_dec.qtable.dma, 0);
+ }
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index e94d1ba5ef10..030db07f96e3 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -189,8 +189,8 @@ void hantro_postproc_free(struct hantro_ctx *ctx)
+ 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
+ 
+ 		if (priv->cpu) {
+-			dma_free_attrs(vpu->dev, priv->size, priv->cpu,
+-				       priv->dma, priv->attrs);
++			v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, priv->size, priv->cpu,
++					    priv->dma, priv->attrs);
+ 			priv->cpu = NULL;
+ 		}
+ 	}
+@@ -226,6 +226,7 @@ static int hantro_postproc_alloc(struct hantro_ctx *ctx, int index)
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct hantro_aux_buf *priv = &ctx->postproc.dec_q[index];
+ 	unsigned int buf_size = hantro_postproc_buffer_size(ctx);
++	char name[32];
+ 
+ 	if (!buf_size)
+ 		return -EINVAL;
+@@ -235,8 +236,9 @@ static int hantro_postproc_alloc(struct hantro_ctx *ctx, int index)
+ 	 * buffers for the decoder, so no mapping is needed.
+ 	 */
+ 	priv->attrs = DMA_ATTR_NO_KERNEL_MAPPING;
+-	priv->cpu = dma_alloc_attrs(vpu->dev, buf_size, &priv->dma,
+-				    GFP_KERNEL, priv->attrs);
++	snprintf(name, sizeof(name), "postproc-dec-%d", index);
++	priv->cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, buf_size, &priv->dma,
++					 GFP_KERNEL, priv->attrs, &ctx->fh, name);
+ 	if (!priv->cpu)
+ 		return -ENOMEM;
+ 	priv->size = buf_size;
+@@ -273,8 +275,8 @@ hantro_postproc_get_dec_buf_addr(struct hantro_ctx *ctx, int index)
+ 
+ 	if (priv->size < buf_size && priv->cpu) {
+ 		/* buffer is too small, release it */
+-		dma_free_attrs(vpu->dev, priv->size, priv->cpu,
+-			       priv->dma, priv->attrs);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, priv->size, priv->cpu,
++				    priv->dma, priv->attrs);
+ 		priv->cpu = NULL;
+ 	}
+ 
+diff --git a/drivers/media/platform/verisilicon/hantro_vp8.c b/drivers/media/platform/verisilicon/hantro_vp8.c
+index 381bc1d3bfda..c94b1692adbb 100644
+--- a/drivers/media/platform/verisilicon/hantro_vp8.c
++++ b/drivers/media/platform/verisilicon/hantro_vp8.c
+@@ -161,8 +161,9 @@ int hantro_vp8_dec_init(struct hantro_ctx *ctx)
+ 	 */
+ 	aux_buf = &ctx->vp8_dec.segment_map;
+ 	aux_buf->size = segment_map_size;
+-	aux_buf->cpu = dma_alloc_coherent(vpu->dev, aux_buf->size,
+-					  &aux_buf->dma, GFP_KERNEL);
++	aux_buf->cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++					    aux_buf->size, &aux_buf->dma,
++					    GFP_KERNEL, 0, &ctx->fh, "vp8-segment-map");
+ 	if (!aux_buf->cpu)
+ 		return -ENOMEM;
+ 
+@@ -172,8 +173,9 @@ int hantro_vp8_dec_init(struct hantro_ctx *ctx)
+ 	 */
+ 	aux_buf = &ctx->vp8_dec.prob_tbl;
+ 	aux_buf->size = sizeof(struct vp8_prob_tbl_packed);
+-	aux_buf->cpu = dma_alloc_coherent(vpu->dev, aux_buf->size,
+-					  &aux_buf->dma, GFP_KERNEL);
++	aux_buf->cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++					    aux_buf->size, &aux_buf->dma,
++					    GFP_KERNEL, 0, &ctx->fh, "vp8-prob-tbl");
+ 	if (!aux_buf->cpu) {
+ 		ret = -ENOMEM;
+ 		goto err_free_seg_map;
+@@ -182,9 +184,10 @@ int hantro_vp8_dec_init(struct hantro_ctx *ctx)
+ 	return 0;
+ 
+ err_free_seg_map:
+-	dma_free_coherent(vpu->dev, ctx->vp8_dec.segment_map.size,
+-			  ctx->vp8_dec.segment_map.cpu,
+-			  ctx->vp8_dec.segment_map.dma);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++			    ctx->vp8_dec.segment_map.size,
++			    ctx->vp8_dec.segment_map.cpu,
++			    ctx->vp8_dec.segment_map.dma, 0);
+ 
+ 	return ret;
+ }
+@@ -194,8 +197,8 @@ void hantro_vp8_dec_exit(struct hantro_ctx *ctx)
+ 	struct hantro_vp8_dec_hw_ctx *vp8_dec = &ctx->vp8_dec;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 
+-	dma_free_coherent(vpu->dev, vp8_dec->segment_map.size,
+-			  vp8_dec->segment_map.cpu, vp8_dec->segment_map.dma);
+-	dma_free_coherent(vpu->dev, vp8_dec->prob_tbl.size,
+-			  vp8_dec->prob_tbl.cpu, vp8_dec->prob_tbl.dma);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, vp8_dec->segment_map.size,
++			    vp8_dec->segment_map.cpu, vp8_dec->segment_map.dma, 0);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev, vp8_dec->prob_tbl.size,
++			    vp8_dec->prob_tbl.cpu, vp8_dec->prob_tbl.dma, 0);
+ }
+diff --git a/drivers/media/platform/verisilicon/hantro_vp9.c b/drivers/media/platform/verisilicon/hantro_vp9.c
+index 566cd376c097..3933a835cc57 100644
+--- a/drivers/media/platform/verisilicon/hantro_vp9.c
++++ b/drivers/media/platform/verisilicon/hantro_vp9.c
+@@ -182,7 +182,10 @@ int hantro_vp9_dec_init(struct hantro_ctx *ctx)
+ 	vp9_dec->bsd_ctrl_offset = size;
+ 	size += hantro_vp9_bsd_control_size(max_height);
+ 
+-	tile_edge->cpu = dma_alloc_coherent(vpu->dev, size, &tile_edge->dma, GFP_KERNEL);
++	tile_edge->cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++					      size, &tile_edge->dma,
++					      GFP_KERNEL, 0, &ctx->fh,
++					      "vp9-tile-edge");
+ 	if (!tile_edge->cpu)
+ 		return -ENOMEM;
+ 
+@@ -193,7 +196,10 @@ int hantro_vp9_dec_init(struct hantro_ctx *ctx)
+ 	vp9_dec->segment_map_size = size;
+ 	size *= 2; /* we need two areas of this size, used alternately */
+ 
+-	segment_map->cpu = dma_alloc_coherent(vpu->dev, size, &segment_map->dma, GFP_KERNEL);
++	segment_map->cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++						size, &segment_map->dma,
++						GFP_KERNEL, 0, &ctx->fh,
++						"vp9-segment-map");
+ 	if (!segment_map->cpu)
+ 		goto err_segment_map;
+ 
+@@ -206,7 +212,10 @@ int hantro_vp9_dec_init(struct hantro_ctx *ctx)
+ 	vp9_dec->tile_info_offset = size;
+ 	size += hantro_vp9_tile_info_size();
+ 
+-	misc->cpu = dma_alloc_coherent(vpu->dev, size, &misc->dma, GFP_KERNEL);
++	misc->cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++					 size, &misc->dma,
++					 GFP_KERNEL, 0, &ctx->fh,
++					 "vp9-misc");
+ 	if (!misc->cpu)
+ 		goto err_misc;
+ 
+@@ -218,10 +227,14 @@ int hantro_vp9_dec_init(struct hantro_ctx *ctx)
+ 	return 0;
+ 
+ err_misc:
+-	dma_free_coherent(vpu->dev, segment_map->size, segment_map->cpu, segment_map->dma);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++			    segment_map->size, segment_map->cpu,
++			    segment_map->dma, 0);
+ 
+ err_segment_map:
+-	dma_free_coherent(vpu->dev, tile_edge->size, tile_edge->cpu, tile_edge->dma);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++			    tile_edge->size, tile_edge->cpu,
++			    tile_edge->dma, 0);
+ 
+ 	return -ENOMEM;
+ }
+@@ -234,7 +247,12 @@ void hantro_vp9_dec_exit(struct hantro_ctx *ctx)
+ 	struct hantro_aux_buf *segment_map = &vp9_dec->segment_map;
+ 	struct hantro_aux_buf *misc = &vp9_dec->misc;
+ 
+-	dma_free_coherent(vpu->dev, misc->size, misc->cpu, misc->dma);
+-	dma_free_coherent(vpu->dev, segment_map->size, segment_map->cpu, segment_map->dma);
+-	dma_free_coherent(vpu->dev, tile_edge->size, tile_edge->cpu, tile_edge->dma);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++			    misc->size, misc->cpu, misc->dma, 0);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++			    segment_map->size, segment_map->cpu,
++			    segment_map->dma, 0);
++	v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++			    tile_edge->size, tile_edge->cpu,
++			    tile_edge->dma, 0);
+ }
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index e4e21ad37323..f48e8dbfc880 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -232,30 +232,38 @@ static void rockchip_vpu981_av1_dec_tiles_free(struct hantro_ctx *ctx)
+ 	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+ 
+ 	if (av1_dec->db_data_col.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->db_data_col.size,
+-				  av1_dec->db_data_col.cpu,
+-				  av1_dec->db_data_col.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->db_data_col.size,
++				    av1_dec->db_data_col.cpu,
++				    av1_dec->db_data_col.dma, 0);
+ 	av1_dec->db_data_col.cpu = NULL;
+ 
+ 	if (av1_dec->db_ctrl_col.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->db_ctrl_col.size,
+-				  av1_dec->db_ctrl_col.cpu,
+-				  av1_dec->db_ctrl_col.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->db_ctrl_col.size,
++				    av1_dec->db_ctrl_col.cpu,
++				    av1_dec->db_ctrl_col.dma, 0);
+ 	av1_dec->db_ctrl_col.cpu = NULL;
+ 
+ 	if (av1_dec->cdef_col.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->cdef_col.size,
+-				  av1_dec->cdef_col.cpu, av1_dec->cdef_col.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->cdef_col.size,
++				    av1_dec->cdef_col.cpu,
++				    av1_dec->cdef_col.dma, 0);
+ 	av1_dec->cdef_col.cpu = NULL;
+ 
+ 	if (av1_dec->sr_col.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->sr_col.size,
+-				  av1_dec->sr_col.cpu, av1_dec->sr_col.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->sr_col.size,
++				    av1_dec->sr_col.cpu,
++				    av1_dec->sr_col.dma, 0);
+ 	av1_dec->sr_col.cpu = NULL;
+ 
+ 	if (av1_dec->lr_col.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->lr_col.size,
+-				  av1_dec->lr_col.cpu, av1_dec->lr_col.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->lr_col.size,
++				    av1_dec->lr_col.cpu,
++				    av1_dec->lr_col.dma, 0);
+ 	av1_dec->lr_col.cpu = NULL;
+ }
+ 
+@@ -278,41 +286,46 @@ static int rockchip_vpu981_av1_dec_tiles_reallocate(struct hantro_ctx *ctx)
+ 	rockchip_vpu981_av1_dec_tiles_free(ctx);
+ 
+ 	size = ALIGN(height * 12 * ctx->bit_depth / 8, 128) * num_tile_cols;
+-	av1_dec->db_data_col.cpu = dma_alloc_coherent(vpu->dev, size,
+-						      &av1_dec->db_data_col.dma,
+-						      GFP_KERNEL);
++	av1_dec->db_data_col.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, size,
++							&av1_dec->db_data_col.dma,
++							GFP_KERNEL, 0, &ctx->fh,
++							"av1-db-data-col");
+ 	if (!av1_dec->db_data_col.cpu)
+ 		goto buffer_allocation_error;
+ 	av1_dec->db_data_col.size = size;
+ 
+ 	size = ALIGN(height * 2 * 16 / 4, 128) * num_tile_cols;
+-	av1_dec->db_ctrl_col.cpu = dma_alloc_coherent(vpu->dev, size,
+-						      &av1_dec->db_ctrl_col.dma,
+-						      GFP_KERNEL);
++	av1_dec->db_ctrl_col.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, size,
++							&av1_dec->db_ctrl_col.dma,
++							GFP_KERNEL, 0, &ctx->fh,
++							"av1-db-ctrl-col");
+ 	if (!av1_dec->db_ctrl_col.cpu)
+ 		goto buffer_allocation_error;
+ 	av1_dec->db_ctrl_col.size = size;
+ 
+ 	size = ALIGN(height_in_sb * 44 * ctx->bit_depth * 16 / 8, 128) * num_tile_cols;
+-	av1_dec->cdef_col.cpu = dma_alloc_coherent(vpu->dev, size,
+-						   &av1_dec->cdef_col.dma,
+-						   GFP_KERNEL);
++	av1_dec->cdef_col.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, size,
++						     &av1_dec->cdef_col.dma,
++						     GFP_KERNEL, 0, &ctx->fh,
++						     "av1-cdef-col");
+ 	if (!av1_dec->cdef_col.cpu)
+ 		goto buffer_allocation_error;
+ 	av1_dec->cdef_col.size = size;
+ 
+ 	size = ALIGN(height_in_sb * (3040 + 1280), 128) * num_tile_cols;
+-	av1_dec->sr_col.cpu = dma_alloc_coherent(vpu->dev, size,
+-						 &av1_dec->sr_col.dma,
+-						 GFP_KERNEL);
++	av1_dec->sr_col.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, size,
++						   &av1_dec->sr_col.dma,
++						   GFP_KERNEL, 0, &ctx->fh,
++						   "av1-sr-col");
+ 	if (!av1_dec->sr_col.cpu)
+ 		goto buffer_allocation_error;
+ 	av1_dec->sr_col.size = size;
+ 
+ 	size = ALIGN(stripe_num * 1536 * ctx->bit_depth / 8, 128) * num_tile_cols;
+-	av1_dec->lr_col.cpu = dma_alloc_coherent(vpu->dev, size,
+-						 &av1_dec->lr_col.dma,
+-						 GFP_KERNEL);
++	av1_dec->lr_col.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev, size,
++						   &av1_dec->lr_col.dma,
++						   GFP_KERNEL, 0, &ctx->fh,
++						   "av1-lr-col");
+ 	if (!av1_dec->lr_col.cpu)
+ 		goto buffer_allocation_error;
+ 	av1_dec->lr_col.size = size;
+@@ -331,37 +344,45 @@ void rockchip_vpu981_av1_dec_exit(struct hantro_ctx *ctx)
+ 	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+ 
+ 	if (av1_dec->global_model.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->global_model.size,
+-				  av1_dec->global_model.cpu,
+-				  av1_dec->global_model.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->global_model.size,
++				    av1_dec->global_model.cpu,
++				    av1_dec->global_model.dma, 0);
+ 	av1_dec->global_model.cpu = NULL;
+ 
+ 	if (av1_dec->tile_info.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->tile_info.size,
+-				  av1_dec->tile_info.cpu,
+-				  av1_dec->tile_info.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->tile_info.size,
++				    av1_dec->tile_info.cpu,
++				    av1_dec->tile_info.dma, 0);
+ 	av1_dec->tile_info.cpu = NULL;
+ 
+ 	if (av1_dec->film_grain.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->film_grain.size,
+-				  av1_dec->film_grain.cpu,
+-				  av1_dec->film_grain.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->film_grain.size,
++				    av1_dec->film_grain.cpu,
++				    av1_dec->film_grain.dma, 0);
+ 	av1_dec->film_grain.cpu = NULL;
+ 
+ 	if (av1_dec->prob_tbl.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->prob_tbl.size,
+-				  av1_dec->prob_tbl.cpu, av1_dec->prob_tbl.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->prob_tbl.size,
++				    av1_dec->prob_tbl.cpu,
++				    av1_dec->prob_tbl.dma, 0);
+ 	av1_dec->prob_tbl.cpu = NULL;
+ 
+ 	if (av1_dec->prob_tbl_out.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->prob_tbl_out.size,
+-				  av1_dec->prob_tbl_out.cpu,
+-				  av1_dec->prob_tbl_out.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->prob_tbl_out.size,
++				    av1_dec->prob_tbl_out.cpu,
++				    av1_dec->prob_tbl_out.dma, 0);
+ 	av1_dec->prob_tbl_out.cpu = NULL;
+ 
+ 	if (av1_dec->tile_buf.cpu)
+-		dma_free_coherent(vpu->dev, av1_dec->tile_buf.size,
+-				  av1_dec->tile_buf.cpu, av1_dec->tile_buf.dma);
++		v4l2_dma_free_attrs(&vpu->v4l2_dev, vpu->dev,
++				    av1_dec->tile_buf.size,
++				    av1_dec->tile_buf.cpu,
++				    av1_dec->tile_buf.dma, 0);
+ 	av1_dec->tile_buf.cpu = NULL;
+ 
+ 	rockchip_vpu981_av1_dec_tiles_free(ctx);
+@@ -374,40 +395,48 @@ int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
+ 
+ 	memset(av1_dec, 0, sizeof(*av1_dec));
+ 
+-	av1_dec->global_model.cpu = dma_alloc_coherent(vpu->dev, GLOBAL_MODEL_SIZE,
+-						       &av1_dec->global_model.dma,
+-						       GFP_KERNEL);
++	av1_dec->global_model.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++							 GLOBAL_MODEL_SIZE,
++							 &av1_dec->global_model.dma,
++							 GFP_KERNEL, 0, &ctx->fh,
++							 "av1-global-model");
+ 	if (!av1_dec->global_model.cpu)
+ 		return -ENOMEM;
+ 	av1_dec->global_model.size = GLOBAL_MODEL_SIZE;
+ 
+-	av1_dec->tile_info.cpu = dma_alloc_coherent(vpu->dev, AV1_TILE_INFO_SIZE,
+-						    &av1_dec->tile_info.dma,
+-						    GFP_KERNEL);
++	av1_dec->tile_info.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++						      AV1_TILE_INFO_SIZE,
++						      &av1_dec->tile_info.dma,
++						      GFP_KERNEL, 0, &ctx->fh,
++						      "av1-tile-info");
+ 	if (!av1_dec->tile_info.cpu)
+ 		return -ENOMEM;
+ 	av1_dec->tile_info.size = AV1_TILE_INFO_SIZE;
+ 
+-	av1_dec->film_grain.cpu = dma_alloc_coherent(vpu->dev,
+-						     ALIGN(sizeof(struct rockchip_av1_film_grain), 2048),
+-						     &av1_dec->film_grain.dma,
+-						     GFP_KERNEL);
++	av1_dec->film_grain.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++						       ALIGN(sizeof(struct rockchip_av1_film_grain),
++							     2048),
++						       &av1_dec->film_grain.dma,
++						       GFP_KERNEL, 0, &ctx->fh,
++						       "av1-film-grain");
+ 	if (!av1_dec->film_grain.cpu)
+ 		return -ENOMEM;
+ 	av1_dec->film_grain.size = ALIGN(sizeof(struct rockchip_av1_film_grain), 2048);
+ 
+-	av1_dec->prob_tbl.cpu = dma_alloc_coherent(vpu->dev,
+-						   ALIGN(sizeof(struct av1cdfs), 2048),
+-						   &av1_dec->prob_tbl.dma,
+-						   GFP_KERNEL);
++	av1_dec->prob_tbl.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++						     ALIGN(sizeof(struct av1cdfs), 2048),
++						     &av1_dec->prob_tbl.dma,
++						     GFP_KERNEL, 0, &ctx->fh,
++						     "av1-prob-tbl");
+ 	if (!av1_dec->prob_tbl.cpu)
+ 		return -ENOMEM;
+ 	av1_dec->prob_tbl.size = ALIGN(sizeof(struct av1cdfs), 2048);
+ 
+-	av1_dec->prob_tbl_out.cpu = dma_alloc_coherent(vpu->dev,
+-						       ALIGN(sizeof(struct av1cdfs), 2048),
+-						       &av1_dec->prob_tbl_out.dma,
+-						       GFP_KERNEL);
++	av1_dec->prob_tbl_out.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++							 ALIGN(sizeof(struct av1cdfs), 2048),
++							 &av1_dec->prob_tbl_out.dma,
++							 GFP_KERNEL, 0, &ctx->fh,
++							 "av1-prob-tbl-out");
+ 	if (!av1_dec->prob_tbl_out.cpu)
+ 		return -ENOMEM;
+ 	av1_dec->prob_tbl_out.size = ALIGN(sizeof(struct av1cdfs), 2048);
+@@ -416,10 +445,11 @@ int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
+ 
+ 	rockchip_av1_set_default_cdfs(av1_dec->cdfs, av1_dec->cdfs_ndvc);
+ 
+-	av1_dec->tile_buf.cpu = dma_alloc_coherent(vpu->dev,
+-						   AV1_TILE_SIZE,
+-						   &av1_dec->tile_buf.dma,
+-						   GFP_KERNEL);
++	av1_dec->tile_buf.cpu = v4l2_dma_alloc_attrs(&vpu->v4l2_dev, vpu->dev,
++						     AV1_TILE_SIZE,
++						     &av1_dec->tile_buf.dma,
++						     GFP_KERNEL, 0, &ctx->fh,
++						     "av1-tile-buf");
+ 	if (!av1_dec->tile_buf.cpu)
+ 		return -ENOMEM;
+ 	av1_dec->tile_buf.size = AV1_TILE_SIZE;
 
 -- 
 2.55.0
