@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6737C982CD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 15:40:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09E8CC982D0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 15:40:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4msGU1O7qaoT6P4qtFSX2gN465U/XwHSCIGUxVBwhAk=; b=ukksA9VQuXuLqR
-	eQ+OOVMpQghm3Iov04HLd8jiAjNcHwiJ9V95TA00mEaxS93PiCcmmUfgastQv+bjKbEYapwMnMA3z
-	aQnYLsZCiJn8HTmiJVZtqjYWM+zc9nEvEg97mx2PSSWYt3da6EbFz1qd25x6QhLW/iuEdoplPIGWl
-	+v+Vn3WzLnmMtpE+IevjhjkyKrrdk+Hu1m6j8nbS+CsU4TGJfgq2BLp13tJXK4DdD/u9k+uZjWO0Y
-	YG26gXdGcygSeG4svrPkxMXVMkCPFfQI3Jwe62eJOzM+gKo3CdBqzjd0R9UKtfnBFqNzPSMPE1LkG
-	9Mf7LrLmF26C76FFBkeg==;
+	List-Owner; bh=7ozO5lru/JT0/22AtorClx5l2VgqqIp7vA/LcuwrA24=; b=zzS3CuKu5wDvhg
+	B83juJQTrTAYJ8JIEg0DLhLNIB0DzfWIl5ysph3AIBg/t9YaNO180dNfRHvgfwjbcYpzpRZ9EZDMz
+	WyaxrTM8pIqxXXBa6Li+yr3vQ0eaWwSWg91OYWG6kgXvcthx2e3OKwY2V1d50Pyq85GMdDyp0JYaz
+	kiFM81U0AnHq7O8YjztfDD8ETtB4yIHY5OIVWcAnBsCbuvWSQqvPC9uyMivtqLAsM2Ri25NNHGE2q
+	3W32INUKmRm84Fb1gUzp/4TiZKqZjJHSsUdVcGARPT3QMhyfJHRHp6Oh79aTTXxgmNb5kSGnXeYz1
+	5AUAAm/boPYlqnVjrBfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6rjx-00000009bzd-1oGT;
-	Wed, 16 Sep 2026 15:40:05 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
+	id 1x6rjy-00000009c2R-2vVp;
+	Wed, 16 Sep 2026 15:40:06 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6rjn-00000009boA-3LrQ;
-	Wed, 16 Sep 2026 15:39:57 +0000
+	id 1x6rjs-00000009bsp-2Zcn;
+	Wed, 16 Sep 2026 15:40:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=+C
-	cYzq1fPBKkeFjAunrawbz06tsDi+w7l4bgn1rNWTU=; b=Iwjw8jhDmstaC72nRm
-	WmlNYw2GD3Nnzb13EYpSEXZ5CL5Y5iow7+ve5z3uIgFAwybzkiE6G0y7kOMUgJr9
-	Wa9H1KnPSwrB+4gkX94+XfIeiAv3lRXLYFfDwpgFbXrnDKBRuhAiqJfqGQj5GeOn
-	znutz6hKemPIM1Q2xikS210eg=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=tX
+	XLyITMJT1yST+MFquna26ESmZnA30Nae1jXyWuEoU=; b=R4mSVdX04i829VBmYT
+	cmXwOwWC7FEurPwMRCcJeY0lIReA6OQdYVbBFjfxBeKwNXP0pHKRfK+uFKw4qmlf
+	tMVnF5VOgpVzljpaGoGx40wnuzRu0CmRZsTGDVEdLTDEuPuwhtOlNVPAgC53Bgbt
+	C1DZTQj8Sl3frPxwHVVqYEhco=
 Received: from zhb.. (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDnbxQduKpqGzAlBA--.54876S5;
-	Wed, 16 Sep 2026 23:39:13 +0800 (CST)
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDnbxQduKpqGzAlBA--.54876S4;
+	Wed, 16 Sep 2026 23:39:12 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: lpieralisi@kernel.org,
 	kwilczynski@kernel.org,
@@ -56,24 +56,27 @@ Cc: pali@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v9 3/3] PCI: dwc: Remove redundant MPS configuration
-Date: Wed, 16 Sep 2026 23:39:07 +0800
-Message-Id: <20260916153907.60344-4-18255117159@163.com>
+	Hans Zhang <18255117159@163.com>,
+	Mahesh Vaidya <mahesh.vaidya@altera.com>,
+	Ricardo Pardini <ricardo@pardini.net>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v9 2/3] PCI: Configure Root Port MPS during host probing
+Date: Wed, 16 Sep 2026 23:39:06 +0800
+Message-Id: <20260916153907.60344-3-18255117159@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260916153907.60344-1-18255117159@163.com>
 References: <20260916153907.60344-1-18255117159@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnbxQduKpqGzAlBA--.54876S5
-X-Coremail-Antispam: 1Uf129KBjvJXoWxury8Kr15XF43Gw4ftrWkWFg_yoW5trWfpF
-	y3WF4vkF4rJr45Wr4qkan5Ca13tFnxAr17Jr9rWw4Sv3ZIyFsrJa4akFWFk3yxXrWDWF9Y
-	krn8Gr48Z3Wrtr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziBT5dUUUUU=
+X-CM-TRANSID: _____wDnbxQduKpqGzAlBA--.54876S4
+X-Coremail-Antispam: 1Uf129KBjvJXoWxJF4fJF15AF47uFWUuw4UArb_yoW5GrWkpa
+	yUWanYyFs7GF4fZFsrZ3WFvFyYqF93Zry3GrZ3Z3s0van8Zr9rJrWaya95Jw1kGrZ7KFya
+	vFn8try8u3ZIvFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pEVyIbUUUUU=
 X-Originating-IP: [240e:b8f:91b3:d000:a95a:12fc:887a:b0f1]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC6wF7H2qquCHiEAAA3l
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxAB7H2qquCBtpwAA3y
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_083956_207088_52899485 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20260916_084000_997506_A4A86371 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,98 +93,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Meson PCIe controller driver manually configures maximum payload
-size (MPS) through meson_set_max_payload, duplicating functionality now
-centralized in the PCI core.  Deprecating redundant code simplifies the
-driver and aligns it with the consolidated MPS management strategy,
-improving long-term maintainability.
+Current PCIe initialization logic may leave Root Ports operating with
+non-optimal Maximum Payload Size (MPS) settings. The existing code in
+pci_configure_mps() returns early for devices without an upstream bridge
+which includes Root Ports, so their MPS values remain at firmware
+defaults. This fails to utilize the controller's full capabilities,
+leading to suboptimal data transfer efficiency across the PCIe hierarchy.
 
-With meson_set_max_payload() gone, meson_size_to_payload() is only used
-for MRRS.  Rename it to meson_size_to_mrrs(), update the warning message,
-and drop the now-unused PCIE_CAP_MAX_PAYLOAD_SIZE and MAX_PAYLOAD_SIZE
-macros.
+With this patch, during the host controller probing phase:
+- When PCIe bus tuning is enabled (not PCIE_BUS_TUNE_OFF) and not
+  PCIE_BUS_PEER2PEER (which requires the default 128 bytes for optimal
+  peer-to-peer operation), and
+- The device is a Root Port, the Root Port's MPS is set to its maximum
+  supported value.
 
+Note that this initial maximum MPS setting may be reduced later, during
+downstream device enumeration, if any downstream device does not support
+the Root Port's maximum MPS.
+
+This change ensures Root Ports are initialized to their maximum MPS before
+downstream devices negotiate MPS, while maintaining backward compatibility
+via the PCIE_BUS_TUNE_OFF check and not interfering with the
+PCIE_BUS_PEER2PEER strategy.
+
+Suggested-by: Niklas Cassel <cassel@kernel.org>
+Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
 Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
 Signed-off-by: Hans Zhang <18255117159@163.com>
+Tested-by: Mahesh Vaidya <mahesh.vaidya@altera.com>
+Tested-by: Ricardo Pardini <ricardo@pardini.net> # on Odroid-HC4
+Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
- drivers/pci/controller/dwc/pci-meson.c | 25 +++----------------------
- 1 file changed, 3 insertions(+), 22 deletions(-)
+ drivers/pci/probe.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/drivers/pci/controller/dwc/pci-meson.c b/drivers/pci/controller/dwc/pci-meson.c
-index 8559d132dcde..1d3687566dda 100644
---- a/drivers/pci/controller/dwc/pci-meson.c
-+++ b/drivers/pci/controller/dwc/pci-meson.c
-@@ -21,7 +21,6 @@
- 
- #define to_meson_pcie(x) dev_get_drvdata((x)->dev)
- 
--#define PCIE_CAP_MAX_PAYLOAD_SIZE(x)	((x) << 5)
- #define PCIE_CAP_MAX_READ_REQ_SIZE(x)	((x) << 12)
- 
- /* PCIe specific config registers */
-@@ -37,7 +36,6 @@
- #define PM_CURRENT_STATE(x)		(((x) >> 7) & 0x1)
- 
- #define PORT_CLK_RATE			100000000UL
--#define MAX_PAYLOAD_SIZE		256
- #define MAX_READ_REQ_SIZE		256
- #define PCIE_RESET_DELAY		500
- #define PCIE_SHARED_RESET		1
-@@ -256,7 +254,7 @@ static void meson_pcie_ltssm_enable(struct meson_pcie *mp)
- 	meson_cfg_writel(mp, val, PCIE_CFG0);
- }
- 
--static int meson_size_to_payload(struct meson_pcie *mp, int size)
-+static int meson_size_to_mrrs(struct meson_pcie *mp, int size)
- {
- 	struct device *dev = mp->pci.dev;
- 
-@@ -266,35 +264,19 @@ static int meson_size_to_payload(struct meson_pcie *mp, int size)
- 	 * than 2^12, just set to default size 2^(1+7).
- 	 */
- 	if (!is_power_of_2(size) || size < 128 || size > 4096) {
--		dev_warn(dev, "payload size %d, set to default 256\n", size);
-+		dev_warn(dev, "MRRS %d, set to default 256\n", size);
- 		return 1;
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index 232bce2819f0..08af75aa7366 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -2248,6 +2248,21 @@ static void pci_configure_mps(struct pci_dev *dev)
+ 		return;
  	}
  
- 	return fls(size) - 8;
- }
++	/*
++	 * Unless MPS strategy is PCIE_BUS_TUNE_OFF (don't touch MPS at all) or
++	 * PCIE_BUS_PEER2PEER (use minimum MPS for peer-to-peer), set Root Ports'
++	 * MPS to their maximum supported value. Depending on the MPS strategy
++	 * and MPSS of downstream devices, a Root Port's MPS may be reduced
++	 * later during device enumeration.
++	 */
++	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT &&
++	    pcie_bus_config != PCIE_BUS_TUNE_OFF &&
++	    pcie_bus_config != PCIE_BUS_PEER2PEER) {
++		rc = pcie_set_mps(dev, 128 << dev->pcie_mpss);
++		if (rc)
++			dev_warn(&dev->dev, "failed to set root port MPS\n");
++	}
++
+ 	if (!bridge || !pci_is_pcie(bridge))
+ 		return;
  
--static void meson_set_max_payload(struct meson_pcie *mp, int size)
--{
--	struct dw_pcie *pci = &mp->pci;
--	u32 val;
--	u16 offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
--	int max_payload_size = meson_size_to_payload(mp, size);
--
--	val = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
--	val &= ~PCI_EXP_DEVCTL_PAYLOAD;
--	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, val);
--
--	val = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
--	val |= PCIE_CAP_MAX_PAYLOAD_SIZE(max_payload_size);
--	dw_pcie_writel_dbi(pci, offset + PCI_EXP_DEVCTL, val);
--}
--
- static void meson_set_max_rd_req_size(struct meson_pcie *mp, int size)
- {
- 	struct dw_pcie *pci = &mp->pci;
- 	u32 val;
- 	u16 offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
--	int max_rd_req_size = meson_size_to_payload(mp, size);
-+	int max_rd_req_size = meson_size_to_mrrs(mp, size);
- 
- 	val = dw_pcie_readl_dbi(pci, offset + PCI_EXP_DEVCTL);
- 	val &= ~PCI_EXP_DEVCTL_READRQ;
-@@ -363,7 +345,6 @@ static int meson_pcie_host_init(struct dw_pcie_rp *pp)
- 
- 	pp->bridge->ops = &meson_pci_ops;
- 
--	meson_set_max_payload(mp, MAX_PAYLOAD_SIZE);
- 	meson_set_max_rd_req_size(mp, MAX_READ_REQ_SIZE);
- 
- 	return 0;
 -- 
 2.34.1
 
