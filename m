@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA68C982C9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 18:13:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8C59C982C9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 18:15:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Vi7bxqSpjZibtRPlCSDuCkPixXeSO17YD6UffaJHV64=; b=x7aLP2ebWUDQGY
-	/8U2fMt9eCWoW7cCNMO6tO1QUCs1kpQSKeWmIWKTbI0fsllX06P+COXVmEjekREsrnsgwywgXoNCO
-	h/aQO6+lyzXr8kkNMyjWoOrgTC34E1D8AGep5LaMHcHCQ93L+kVvM/aVSlwZhPS5/PTAVqM4mTOmv
-	4EK65IoGFFSQlnrnGBFBSaBifQqHmVlEKQND3vvwKubbQV9/qW/P17v8zEP2q8YwagHrlpht2fE2w
-	4LL2igSqjhV94Eio5yqS7Za1TaL7gDfm0MjHrMxS1HOYcxu/w+BrjQCFl0gtVRnEPXCft9XxPu7r1
-	oVTNBCCORroJ0kgg2mTg==;
+	List-Owner; bh=V7ljRypsf86hJroFFXyvlPGtbSibsoXGJuJZr0sNeaM=; b=t1S0/uq24Ba52k
+	k69fSadAiaNpZD7W8vKpJI+CLnNHHnn2j4E7qVSJfIgPjaNS9n5k+C6mQpafwD0obaAQaGd8ofzX8
+	hDLrEf4tePrVP37Mktdxgv+qtG0TCXHO+SVOG9C6RML3XX0sArZj1aMzDALqFHMqTSbDP8JgT0Mnh
+	K8Zu1MKpKWjkOC7LyIr9QlbRGJbaRqHDclz08mRzTElNQ5mdvLPEd9YMCkP/CICtBXFWKRtGRsRc9
+	MhBR3C623Kng6GfCOa1Mn1eVn8B2WJ/fE10BoMh7bcwi/X7uc+KVdoXERY73a+7iiNTzzrHt83H8f
+	x0N5IYSPS1VBmiQ3yyIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6u8g-00000009w7y-3oy4;
-	Wed, 16 Sep 2026 18:13:46 +0000
+	id 1x6u9w-00000009wGa-0v9F;
+	Wed, 16 Sep 2026 18:15:04 +0000
 Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6u8e-00000009w7K-0yyQ;
-	Wed, 16 Sep 2026 18:13:45 +0000
+	id 1x6u9s-00000009wFY-1wX7;
+	Wed, 16 Sep 2026 18:15:02 +0000
 Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
-	by APP-05 (Coremail) with SMTP id zQCowABXwz1S3KpqnUpvCA--.24366S2;
-	Thu, 17 Sep 2026 02:13:38 +0800 (CST)
+	by APP-05 (Coremail) with SMTP id zQCowAA3oDqe3KpqlU9vCA--.23663S2;
+	Thu, 17 Sep 2026 02:14:54 +0800 (CST)
 From: Wentao Liang <vulab@iscas.ac.cn>
 To: airlied@gmail.com
 Cc: andrzej.hajda@intel.com,
@@ -45,15 +45,15 @@ Cc: andrzej.hajda@intel.com,
 	tzimmermann@suse.de,
 	Wentao Liang <vulab@iscas.ac.cn>,
 	stable@vger.kernel.org
-Subject: [PATCH] drm/rockchip: dsi: Fix second reference leak in dw_mipi_dsi_rockchip_host_attach()
-Date: Wed, 16 Sep 2026 18:13:10 +0000
-Message-Id: <20260916181310.2090958-1-vulab@iscas.ac.cn>
+Subject: [PATCH] drm/rockchip: dsi: Fix second reference leak in dw_mipi_dsi_rockchip_host_detach()
+Date: Wed, 16 Sep 2026 18:14:26 +0000
+Message-Id: <20260916181426.2091074-1-vulab@iscas.ac.cn>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-CM-TRANSID: zQCowABXwz1S3KpqnUpvCA--.24366S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrtFy8ZFyUZFykWw1UuF48WFg_yoWDWFX_K3
-	4jqr1UWr4xJrnIk3WxA3y3urZFkasF9r48ta1jvFsxAa9rJr1Iq3yFgr1YqF1UAF47AFy7
-	G3W0qr1rGa13WjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+X-CM-TRANSID: zQCowAA3oDqe3KpqlU9vCA--.23663S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrtFy8ZF4xCF1rKrWUZF45GFg_yoWkZrX_Kw
+	1Iqr15Wr4rJ3sxZ3W8C3y3uFZIk3sF9FWIga10vFZxZa9rJr1IqrZ5Aw4YqF17Cay3AFZ7
+	G3W0qryrCan3WjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
 	9fnUUIcSsGvfJTRUUUb-xFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
 	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
 	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j
@@ -68,10 +68,10 @@ X-Coremail-Antispam: 1UD129KBjvdXoWrtFy8ZFyUZFykWw1UuF48WFg_yoWDWFX_K3
 	6r1j6r1xMIIF0xvEx4A2jsIE14v26F4j6r4UJwCI42IY6I8E87Iv6xkF7I0E14v26F4UJV
 	W0obIYCTnIWIevJa73UjIFyTuYvjfUw5l8UUUUU
 X-Originating-IP: [36.110.52.2]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgEMA2qqok9-DQABsW
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBwEMA2qqpVh2owAAsh
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_111344_662605_44ABD4DC 
-X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-CacheID: sfid-20260916_111500_895575_300D148B 
+X-CRM114-Status: UNSURE (   9.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,32 +90,32 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 The reference to the dual-DSI partner device obtained through
-dw_mipi_dsi_rockchip_find_second() is dropped on neither the success
-path nor when adding the partner as a component fails.  Release it on
-both paths.
+dw_mipi_dsi_rockchip_find_second() is never released after removing
+the partner component.  Drop it once component_del() is done.
 
 Fixes: cf6d100dd238 ("drm/rockchip: dsi: add dual mipi support")
 Cc: stable@vger.kernel.org
 Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 4ab29410b2c0..2c1f1c53ddda 100644
+index 2c1f1c53ddda..7f2d3cd28694 100644
 --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -1079,8 +1079,10 @@ static int dw_mipi_dsi_rockchip_host_attach(void *priv_data,
- 			DRM_DEV_ERROR(second,
- 				      "Failed to register component: %d\n",
- 				      ret);
-+			put_device(second);
- 			goto out;
- 		}
-+		put_device(second);
- 	}
+@@ -1101,8 +1101,10 @@ static int dw_mipi_dsi_rockchip_host_detach(void *priv_data,
+ 	struct device *second;
  
- 	return 0;
+ 	second = dw_mipi_dsi_rockchip_find_second(dsi);
+-	if (second && !IS_ERR(second))
++	if (second && !IS_ERR(second)) {
+ 		component_del(second, &dw_mipi_dsi_rockchip_ops);
++		put_device(second);
++	}
+ 
+ 	component_del(dsi->dev, &dw_mipi_dsi_rockchip_ops);
+ 
 -- 
 2.34.1
 
