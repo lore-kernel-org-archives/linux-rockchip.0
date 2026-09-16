@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB41BC88E5C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 13:48:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31BE2C88E77
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 13:48:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p8nzkwJiQRQi19zobJDuxkJKyLkEmrY9exn8sSx1QHU=; b=jIq7S6XMSmpXEk
-	+nJV1alHnYPaOwni+YaiMCl+3jclewxoAsEq+VUAGi/pzLDeAfbEzs8/5E3IpnY3ea70wBSlLzTRX
-	R0VrHT1Vjk18ikpZhNQBCRf6F5jwLgtxG7Gnw3pElAjU/pd08ukhyjDw8ImueHAjr9yKz5xZuluyB
-	iNZyV4Li/0kQ7tXe0lrLdyF15XyFgMl0+NAnPJU6oNsqJXNLjItCtmauQcvQp/x4n6/dSEaE+Pfc0
-	wFfMh2cQpKDzXh4m4jfGe7jw7ncM7BOCOn70JnsnTvvF/5x6ea0wLoamcAs2/1dJuim8M2PzYTdWu
-	R6pLzZYsaC6foiok0Kfw==;
+	List-Owner; bh=d5BRdDHUQzhKXVdQzXIUiPGXqVMKu4FEqEVk26cXIj4=; b=rrnWxtJOrfLzbS
+	zxnM8MHcpqsJMwO/rRurc4PqHY+2P4JU9dZItkK7lzGc5KdGTCL+wlE8+8qOUCbEQL6LVeCacyry0
+	9xJQKeSnwUp9DWW/wKIuuP/eMiX1zmgLFLLI9EYjxO9G6a9RB1Etm6DvkBACRnm6AMuGVFXpGiWrk
+	6M7iKx7g/IgUgy/geTP5+Gd2p1F14+wAp9pylI9r3cM1mSj3AF56RZafJ/a0IeZd2Pw9Is9YSqD2F
+	xwtL1WIhpHVR0ax63S5aN0Cv9EyLArWb7BND05XViKOfFy4f4MUyD5s0nfGxnUa2e3p6koJWC+eD7
+	X3wQl/iOZ+12kHvGalcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pzx-00000009KFm-1f5W;
-	Wed, 16 Sep 2026 13:48:29 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1x6q04-00000009KLs-2rP9;
+	Wed, 16 Sep 2026 13:48:37 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pzJ-00000009JgZ-15H8
+	id 1x6pzR-00000009Jp9-0U9X
 	for linux-rockchip@lists.infradead.org;
-	Wed, 16 Sep 2026 13:47:55 +0000
+	Wed, 16 Sep 2026 13:48:04 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id ADCED4E40747;
-	Wed, 16 Sep 2026 13:47:47 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 9077E1A08D9;
+	Wed, 16 Sep 2026 13:47:55 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 7988B60337;
-	Wed, 16 Sep 2026 13:47:47 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 28BE011C7B010;
-	Wed, 16 Sep 2026 15:47:37 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 5C34860337;
+	Wed, 16 Sep 2026 13:47:55 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8DD3511C7B038;
+	Wed, 16 Sep 2026 15:47:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1789566464; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1789566472; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=EWRTsEHuRPkhkItzwYv+I9LHRR2SBwOu9YrwdxAKFPU=;
-	b=GaLXVyvlnZ11WFk3pSwWsFPtpLVHBau1pJicQ7XfphujamQascdo7WaeiZeosNYAn0TjtD
-	tuIuipnC8LUTc0y91LT92dF0N5/w6b4jhR7zKOifZUdBI/0j+E1WuzQULiqS2mmgpDjN8a
-	J1OWzRWDDt2soWH4ivaWECOyMYgy5SAuUviWVJvzuV9P3WhWQJPh0rMltE2QxjtwIJ+HE1
-	spZCl3T9x4LMaW1Fq41yIDoI1VCj1T7TjoON+rqt6QHz0Ce0AScAZSGMFREXhawBSzZwku
-	k76+c5B7LPAwBQXflZogBi/avMX6EANwWNvlUN5Edm1y9KfU952vzhCPeJntCQ==
+	bh=9MZSf+qxx8/Ty98JkFRndwTvdhbHq5kenzts5ncPb5U=;
+	b=FsjDM4CGhKTpGI7EPMnp1qVnUDiWZ/MvYCX8oJMcOhlwceApl0fdlmtaPgTFfCjdloIJUq
+	BcyX4XERNbeVj00xyKgOysccMA9MzsBVQgCrAV6xhR3oUQZ84Fe0LXU+5ifFco3zRTD/M9
+	Td5NgPF+IhklwWZehRnZRLwnowV0HuhOgof5SJrHwZuhP64CGoZq47pcVBj4e1wowetaCi
+	OwkdwMfw2X5QkU0cp+OQSQwTnGsVIi4eKkytfJw8DITMQNE4FSiMNU8yNvJrLkp9qGwEyP
+	lMdG5wZ9Vxznx3WQ0A0ZLNdev5B+D7vM4m9N71DkdWlavyuPEZZyVle1JP7GPQ==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Wed, 16 Sep 2026 15:45:39 +0200
-Subject: [PATCH v3 15/19] drm/bridge: tc358768: don't create a panel_bridge
+Date: Wed, 16 Sep 2026 15:45:40 +0200
+Subject: [PATCH v3 16/19] drm/bridge: ssd2825: don't create a panel_bridge
 MIME-Version: 1.0
-Message-Id: <20260916-drm-bridge-every-panel-v3-15-83afb4f1a707@bootlin.com>
+Message-Id: <20260916-drm-bridge-every-panel-v3-16-83afb4f1a707@bootlin.com>
 References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
 In-Reply-To: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -85,8 +85,8 @@ Cc: Albert Esteve <aesteve@redhat.com>,
 X-Mailer: b4 0.16.0
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_064749_707362_0567F419 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20260916_064757_956704_E91A7B79 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,57 +114,56 @@ of putting the bridge reference when not used anymore.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/bridge/Kconfig    |  2 --
- drivers/gpu/drm/bridge/tc358768.c | 25 ++++++-------------------
- 2 files changed, 6 insertions(+), 21 deletions(-)
+ drivers/gpu/drm/bridge/Kconfig   |  2 --
+ drivers/gpu/drm/bridge/ssd2825.c | 23 +++++------------------
+ 2 files changed, 5 insertions(+), 20 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
-index 4be220f7335c..847a6397eb10 100644
+index 847a6397eb10..c7da6b02d7b6 100644
 --- a/drivers/gpu/drm/bridge/Kconfig
 +++ b/drivers/gpu/drm/bridge/Kconfig
-@@ -408,8 +408,6 @@ config DRM_TOSHIBA_TC358768
- 	depends on OF
+@@ -349,8 +349,6 @@ config DRM_SOLOMON_SSD2825
+ 	depends on SPI_MASTER && OF
+ 	select DRM_MIPI_DSI
  	select DRM_KMS_HELPER
- 	select REGMAP_I2C
 -	select DRM_PANEL
 -	select DRM_PANEL_BRIDGE
- 	select DRM_MIPI_DSI
- 	select VIDEOMODE_HELPERS
  	help
-diff --git a/drivers/gpu/drm/bridge/tc358768.c b/drivers/gpu/drm/bridge/tc358768.c
-index d1fc6af37cc5..cc989ab5cf25 100644
---- a/drivers/gpu/drm/bridge/tc358768.c
-+++ b/drivers/gpu/drm/bridge/tc358768.c
-@@ -22,7 +22,6 @@
+ 	  Say Y here if you want support for the Solomon SSD2825 RGB/DSI
+ 	  SPI bridge driver.
+diff --git a/drivers/gpu/drm/bridge/ssd2825.c b/drivers/gpu/drm/bridge/ssd2825.c
+index b0142d6d40dc..71877699dfab 100644
+--- a/drivers/gpu/drm/bridge/ssd2825.c
++++ b/drivers/gpu/drm/bridge/ssd2825.c
+@@ -17,7 +17,6 @@
  #include <drm/drm_drv.h>
  #include <drm/drm_mipi_dsi.h>
  #include <drm/drm_of.h>
 -#include <drm/drm_panel.h>
  #include <video/mipi_display.h>
- #include <video/videomode.h>
  
-@@ -137,7 +136,6 @@ static const char * const tc358768_supplies[] = {
+ #define SSD2825_DEVICE_ID_REG			0xb0
+@@ -114,7 +113,6 @@ static const struct regulator_bulk_data ssd2825_supplies[] = {
  
- struct tc358768_dsi_output {
+ struct ssd2825_dsi_output {
  	struct mipi_dsi_device *dev;
 -	struct drm_panel *panel;
  	struct drm_bridge *bridge;
  };
  
-@@ -443,7 +441,6 @@ static int tc358768_dsi_host_attach(struct mipi_dsi_host *host,
+@@ -277,7 +275,6 @@ static int ssd2825_dsi_host_attach(struct mipi_dsi_host *host, struct mipi_dsi_d
  {
- 	struct tc358768_priv *priv = dsi_host_to_tc358768(host);
+ 	struct ssd2825_priv *priv = dsi_host_to_ssd2825(host);
  	struct drm_bridge *bridge;
 -	struct drm_panel *panel;
  	struct device_node *ep;
  	int ret;
  
-@@ -471,24 +468,15 @@ static int tc358768_dsi_host_attach(struct mipi_dsi_host *host,
- 		return -ENOTSUPP;
+@@ -295,20 +292,14 @@ static int ssd2825_dsi_host_attach(struct mipi_dsi_host *host, struct mipi_dsi_d
+ 		return -EOPNOTSUPP;
  	}
  
--	ret = drm_of_find_panel_or_bridge(host->dev->of_node, 1, 0, &panel,
--					  &bridge);
+-	ret = drm_of_find_panel_or_bridge(host->dev->of_node, 1, 0, &panel, &bridge);
 -	if (ret)
 -		return ret;
 +	bridge = of_drm_get_bridge_by_endpoint(host->dev->of_node, 1, 0);
@@ -172,25 +171,21 @@ index d1fc6af37cc5..cc989ab5cf25 100644
 +		return PTR_ERR(bridge);
  
 -	if (panel) {
--		bridge = drm_panel_bridge_add_typed(panel,
--						    DRM_MODE_CONNECTOR_DSI);
+-		bridge = drm_panel_bridge_add_typed(panel, DRM_MODE_CONNECTOR_DSI);
 -		drm_panel_put(panel);
 -		if (IS_ERR(bridge))
 -			return PTR_ERR(bridge);
--
--		bridge->pre_enable_prev_first = true;
 -	}
 +	bridge->type = DRM_MODE_CONNECTOR_DSI;
-+	bridge->pre_enable_prev_first = true;
  
  	priv->output.dev = dev;
  	priv->output.bridge = bridge;
 -	priv->output.panel = panel;
  
  	priv->dsi_lanes = dev->lanes;
- 	priv->dsi_bpp = mipi_dsi_pixel_format_to_bpp(dev->format);
-@@ -518,8 +506,7 @@ static int tc358768_dsi_host_detach(struct mipi_dsi_host *host,
- 	struct tc358768_priv *priv = dsi_host_to_tc358768(host);
+ 
+@@ -333,8 +324,7 @@ static int ssd2825_dsi_host_detach(struct mipi_dsi_host *host, struct mipi_dsi_d
+ 	struct ssd2825_priv *priv = dsi_host_to_ssd2825(host);
  
  	drm_bridge_remove(&priv->bridge);
 -	if (priv->output.panel)
@@ -199,6 +194,16 @@ index d1fc6af37cc5..cc989ab5cf25 100644
  
  	return 0;
  }
+@@ -579,9 +569,6 @@ static void ssd2825_bridge_atomic_pre_enable(struct drm_bridge *bridge,
+ 	/* Initial DSI configuration register set */
+ 	ssd2825_write_reg(priv, SSD2825_CONFIGURATION_REG, config);
+ 	ssd2825_write_reg(priv, SSD2825_VC_CTRL_REG, 0);
+-
+-	if (priv->output.panel)
+-		drm_panel_enable(priv->output.panel);
+ }
+ 
+ static void ssd2825_bridge_atomic_enable(struct drm_bridge *bridge,
 
 -- 
 2.55.0
