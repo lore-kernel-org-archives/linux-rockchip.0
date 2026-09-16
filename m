@@ -4,103 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4EE6C982C3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 13:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3F20C982C5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 14:25:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=INU2DmEtHsjILoxq/N7Bl2h5Qza72a109L5bjYu5LwI=; b=zSvwS59rbN+yaP
-	+OEFWNFsYl8B8k0qtoqsFMJWZ4XIXZtTm8PD3QReBOtAHwoLFKcESemX7qHwybRBYaNyf0EZnkQxp
-	Yh2Q5rW6s9pk7Jly6Ievkl+Qw+qF/mQ1vViTApopyU2SHIsPTrQtvP7rf66Ndo7DCKlZyZcrAlPyb
-	qUE9yEMUU3kRYDoACYXvYPnHXFmUJXVPNKvvKMs8I3RLIcuDOPpXwP3I6J3JdWALXVz4xw4+/PHrH
-	rGhuP7koqgpB51RAFOUudMCfNYhIvHHmShQ6SqrdTA5i5ZM3JLrznKdIirA+nj6bxXs7fNleYHysR
-	WrdnC8r0PJ5tTaadBTOw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=luRsXJYHCswpHX4hnUM0P50AyIeg7/6rE6KptBKinX0=; b=HjU1E5NnKtUWFa
+	LmZIc0VPTZUP9HQdl9ntCFfPFdbjekknMix20dF6zOaMyEHlxflnaMNziR/BYFiH/H18iK60FNMJP
+	CSMR+VC91e4N+cKaIzY2CM8FJBhytmeXN2pC/AHps+sQcisx7oqAZfHtdow7Q0n1WRuSqtHVV5hnA
+	D1HeL/rg5I72LyK0Keo8KwYmprfrLjyUa07pjhz5W2NT617WuLsRJfKALfHELsgtMGVJOV6xQpLfy
+	e+csOM0LYz53Rs9yKJcAgV92INaOV5GUxZT5rATsyIh9mc7nAqyWsca38icWVqu/JYoEbKXHnAZaW
+	ideBY+32wnIigZbJZkDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6q0O-00000009KZh-3vDG;
-	Wed, 16 Sep 2026 13:48:59 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x6qZu-00000009OLS-0TRJ;
+	Wed, 16 Sep 2026 14:25:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6q00-00000009KIH-2YO2;
-	Wed, 16 Sep 2026 13:48:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=MD4jPpx6j1WYD4nbW7d8UqWXM8K9b2WkM/tu92eB2HU=; b=gx5KhnHo2TdghbwQnDVq/lN28p
-	7XpHyOwqOysRtu1wmOleLDRc0TH3e/y04kWL3GEXwVUAVZzrqwIx+9c62uK/m0zC5LFL5LlBrDoXv
-	NXUmEPsBR8PKlm/dgyJAQdoVp37TUzz59W+oQQy6cGfqiQw4owgihRTormYD5znqe46gwblqkbOa9
-	2+77Q51UTKRAbJFne5hne5uqOm2k0FIAW+zAsTiP0vYSBPzf3R3HLaWv9ZmbvKTu/QORFMckuA7Lk
-	JvlXM+8UTrILSZPcOOBcaXNxDx9Cx8lKbGLpWme2xUu+UqDmnqa43XpkIsKi89AL7A7AwhQHMtZr4
-	Qxu7HpgA==;
-Received: from smtpout-04.galae.net ([185.171.202.116])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6pzx-00000007wIM-2f8L;
-	Wed, 16 Sep 2026 13:48:31 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id E308DC5CD60;
-	Wed, 16 Sep 2026 13:49:11 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id E9E0B60337;
-	Wed, 16 Sep 2026 13:48:27 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4B60B11C7B031;
-	Wed, 16 Sep 2026 15:48:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1789566501; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=MD4jPpx6j1WYD4nbW7d8UqWXM8K9b2WkM/tu92eB2HU=;
-	b=lqMs18ptXF8NUeKU+aI21TpbFbBcw1SoqWE6OMCl3CiiAOPaZ2r2AkiTc2GN1UMh6yMoMd
-	nHpD4gqZRQF51T9INEtHYF9r5v8vzyhTqH/xqmOYLb7fETXdA5YkCrkhB4qiBZQTWPJkmp
-	l1epuxUJcnn5aNIYwdG9nC6z25Ty4A9I3yCUvD81EDNhoZc+bqI9TPyoT5ormKNMLFTSww
-	H9zwhIf8a62TuSAbuEYuN5gbZcwErbWDIQzjy2RUzybhp0HDVBHRJGYSrfUxwPMZyc0QTz
-	CA6oWZsWkVSOEzQmAPDLNiWz1vhVCLauw7lDX8anlUJiulXnMLM4imFm64hYgA==
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Wed, 16 Sep 2026 15:45:43 +0200
-Subject: [PATCH v3 19/19] drm/bridge: analogix_dp: don't create a
- panel_bridge
+	id 1x6qZp-00000009OJ4-1ARh;
+	Wed, 16 Sep 2026 14:25:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789568730;
+	bh=PXSGCK4XJImXzJ5Tnr0mvlaxq0Mq/XyWM5fDlTAcs/8=;
+	h=From:Subject:Date:To:Cc:From;
+	b=jCbHDjhXr35px6io3hf26zcFdpIELxPyr3fRYjU8uNWLarE5F14tZtXaGIFhiVFq5
+	 UiBcT2FBFyuoEZCNi4+PsM+c6M5XYZFvzGHDEcFVxFBZLroER9532dX69mnXVW55wf
+	 WwQ1cVHHSdW7DHsM0/vzNpvjtjYKd2Wfxjj8hHGZ1FrSr/8Uw1aw8Pgz/lISJP82He
+	 xR/fx2wJv6rydnYiZDaGUCl2x6ijiWoAJtOPEB7xGgOGYYTXAcgo35CP+ilOip+SgY
+	 CJqWGJjzN/FI6Lzi6LzGCQ+2SlHftHzVfF2LAImXFffRkhuGGjzMPBj7ugvSQqnGIL
+	 OGtC58cuISjGQ==
+Received: from [192.168.0.15] (unknown [100.64.0.170])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8D46E17E0070;
+	Wed, 16 Sep 2026 16:25:28 +0200 (CEST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH 0/4] media: Track v4l2 buffers through an allocator
+Date: Wed, 16 Sep 2026 10:25:25 -0400
+Message-Id: <20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20260916-drm-bridge-every-panel-v3-19-83afb4f1a707@bootlin.com>
-References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
-In-Reply-To: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Jessica Zhang <jesszhan0024@gmail.com>, 
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
- Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
- Paul Kocialkowski <paulk@sys-base.io>, Linus Walleij <linusw@kernel.org>, 
- Inki Dae <inki.dae@samsung.com>, Jagan Teki <jagan@amarulasolutions.com>, 
- Marek Szyprowski <m.szyprowski@samsung.com>, Sean Paul <sean@poorly.run>, 
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
- Randy Dunlap <rdunlap@infradead.org>
-Cc: Albert Esteve <aesteve@redhat.com>, 
- Anusha Srivatsa <asrivats@redhat.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, asahi@lists.linux.dev, 
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
- linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org, 
- linux-samsung-soc@vger.kernel.org, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-X-Mailer: b4 0.16.0
-X-Last-TLS-Session-Version: TLSv1.3
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/0WO0Q6CMAxFf4Xs2SVlzoL8iuGhlE6nIroNYmL8d
+ 4eY+HiT03P6UlGCl6ia4qWCzD768ZZHuSkUn+h2FO37vJUBg4Cl0bO9Gk19rwcZdArEFwm6J4C
+ 65soSWpVP70Gcf361h3bdcerOwmlx/Yggjyn30or9c02xxqD+x9xSEk3CKJVDIORmNouooyiax
+ 2HwqSkQyTnaVuyIIcP5Y2bbsbMEuOuAd8ZVUu5V+35/ALgbmPL7AAAA
+X-Change-ID: 20260612-v4l2-add-mem-tracker-da0088c74a64
+To: Tomasz Figa <tfiga@chromium.org>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_144829_934239_76221BC1 
-X-CRM114-Status: GOOD (  23.34  )
+X-CRM114-CacheID: sfid-20260916_072533_637655_A30388FB 
+X-CRM114-Status: GOOD (  17.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,232 +84,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now a panel_bridge is automatically created for every drm_panel and the
-panel-bridge API is just a deprecated wrapper to access it.
+Hello,
 
-Update and simplify the code by just getting a reference to the
-already-existing bridge using of_drm_get_bridge_by_endpoint().
+Currently, the only way to track buffers allocated by v4l2 from usespace
+is to use the subsystem available debug information (e.g.:
+/sys/kernel/debug/dma_buf/bufinfo).
+But that information is generic and cannot be matched to a v4l2 driver or
+to a userspace application: It is merely information about the allocation.
 
-As of_drm_get_bridge_by_endpoint() returns a refcounted bridge, take care
-of putting the bridge reference. This is not easily done in the remove path
-due to the different probe paths of the user drivers, so add a devm action
-to ensure the reference is put only when it was taken.
+Other types of allocations require the developper to find where they are
+exposed and how to link them to their test.
 
-Assisted-by: opencode:deepseek-v4-flash-0731
-Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+This can become hard to track when mutliple drivers are working at the
+same time.
+
+To improve that, add a small wrapper around buffer allocations to keep
+track of them at the video device level so that we can add debug
+information to them like a name, userspace pid/fd that did the
+allocation,... and expose them to userspace via a debugfs entry.
+
+It currently only supports DMA buffer allocations and adds support for
+VB2 allocations too.
+Other kind of memory tracking can be added later.
+The verisilicon and rkvdec drivers have been ported to use the tracked
+dma alloactions.
+
+Note that this depends on the ftrace support patch series[1] that
+provides fd/pid info in the v4l2_fh struct.
+That series is a bit old, so this is based on an older linux version, but
+that only changes things for the last 2 commits.
+
+A v4l2top utility[2] has been made, to be used in parallel with the
+fdinfo patch series[3], to show the list of active streams with their HW
+and memory usage.
+
+With this, debugfs looks like this when decoding a HEVC 1080p stream with
+rkvdec on rk3588:
+
+  root # cat /sys/kernel/debug/v4l2/fdc38100.video-codec/mem 
+  created-by                      fd              pid             size            label
+  -------------------------------------------------------------------------------------
+  gst-launch-1.0                  7               635             39184           vdpu381-hevc-priv-tbl
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-7
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-6
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-5
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-4
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-3
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-2
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-1
+  gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-0
+  gst-launch-1.0                  7               635             3133440         out-000000005c0230f6-1
+  gst-launch-1.0                  7               635             3133440         out-000000005c0230f6-0
+  =====================================================================================
+  Total size: 39729424
+
+[1]: https://lore.kernel.org/all/20260610-v4l2-add-ftrace-v2-0-9756edf72ac1@collabora.com/
+[2]: https://github.com/cazou/v4l2top/tree/upstream
+[3]: https://lore.kernel.org/all/20260706-v4l2-add-fdinfo-v3-0-d556568cf38e@collabora.com/
+
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- drivers/gpu/drm/bridge/analogix/Kconfig            |  1 -
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 40 +++++++++++++---------
- drivers/gpu/drm/exynos/exynos_dp.c                 | 36 ++-----------------
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  9 -----
- include/drm/bridge/analogix_dp.h                   |  1 -
- 5 files changed, 25 insertions(+), 62 deletions(-)
+Detlev Casanova (4):
+      media: Add a v4l2 memory allocations tracker
+      media: Store v4l2_fh in the vb_queue
+      media: verisilicon: Switch to tracked dma allocations
+      media: rkvdec: Switch to tracked dma allocations
 
-diff --git a/drivers/gpu/drm/bridge/analogix/Kconfig b/drivers/gpu/drm/bridge/analogix/Kconfig
-index da156fd15764..5672d83cb4a1 100644
---- a/drivers/gpu/drm/bridge/analogix/Kconfig
-+++ b/drivers/gpu/drm/bridge/analogix/Kconfig
-@@ -33,7 +33,6 @@ config DRM_ANALOGIX_DP
- 	depends on DRM
- 	depends on OF
- 	select DRM_DISPLAY_DP_AUX_BUS
--	select DRM_PANEL
- 
- config DRM_ANALOGIX_ANX7625
- 	tristate "Analogix Anx7625 MIPI to DP interface support"
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 18e76d1e78e1..6df6963740d2 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -29,7 +29,6 @@
- #include <drm/drm_device.h>
- #include <drm/drm_edid.h>
- #include <drm/drm_of.h>
--#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- 
-@@ -1567,15 +1566,6 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
- 	if (ret)
- 		goto err_unregister_aux;
- 
--	if (dp->plat_data->panel) {
--		dp->plat_data->next_bridge = devm_drm_panel_bridge_add(dp->dev,
--								       dp->plat_data->panel);
--		if (IS_ERR(dp->plat_data->next_bridge)) {
--			ret = PTR_ERR(dp->plat_data->next_bridge);
--			goto err_unregister_aux;
--		}
--	}
--
- 	ret = drm_bridge_attach(dp->encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
- 	if (ret) {
- 		DRM_ERROR("failed to create bridge (%d)\n", ret);
-@@ -1647,6 +1637,11 @@ struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
- }
- EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
- 
-+static void analogix_dp_put_bridge(void *data)
-+{
-+	drm_bridge_put(data);
-+}
-+
- static int analogix_dp_aux_done_probing(struct drm_dp_aux *aux)
- {
- 	struct analogix_dp_device *dp = to_dp(aux);
-@@ -1655,14 +1650,25 @@ static int analogix_dp_aux_done_probing(struct drm_dp_aux *aux)
- 	int ret;
- 
- 	/*
--	 * If drm_of_find_panel_or_bridge() returns -ENODEV, there may be no valid panel
--	 * or bridge nodes. The driver should go on for the driver-free bridge or the DP
--	 * mode applications.
-+	 * If of_drm_get_bridge_by_endpoint() returns -ENODEV, there may be no
-+	 * valid panel or bridge nodes. The driver should go on for the
-+	 * driver-free bridge or the DP mode applications.
- 	 */
--	ret = drm_of_find_panel_or_bridge(dp->dev->of_node, port, 0,
--					  &plat_data->panel, &plat_data->next_bridge);
--	if (ret && ret != -ENODEV)
--		return ret;
-+	plat_data->next_bridge = of_drm_get_bridge_by_endpoint(dp->dev->of_node,
-+							       port, 0);
-+	if (IS_ERR(plat_data->next_bridge)) {
-+		if (PTR_ERR(plat_data->next_bridge) == -ENODEV)
-+			plat_data->next_bridge = NULL;
-+		else
-+			return PTR_ERR(plat_data->next_bridge);
-+	}
-+
-+	if (plat_data->next_bridge) {
-+		ret = devm_add_action_or_reset(dp->dev, analogix_dp_put_bridge,
-+					       plat_data->next_bridge);
-+		if (ret)
-+			return ret;
-+	}
- 
- 	return component_add(dp->dev, plat_data->ops);
- }
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index e1c9e2946b8a..82c238829921 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -26,7 +26,6 @@
- #include <drm/drm_crtc.h>
- #include <drm/drm_encoder.h>
- #include <drm/drm_of.h>
--#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/exynos_drm.h>
-@@ -147,7 +146,6 @@ static const struct component_ops exynos_dp_ops = {
- static int exynos_dp_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
--	struct device_node *np;
- 	struct exynos_dp_device *dp;
- 
- 	dp = devm_kzalloc(&pdev->dev, sizeof(struct exynos_dp_device),
-@@ -163,18 +161,6 @@ static int exynos_dp_probe(struct platform_device *pdev)
- 	 */
- 	platform_set_drvdata(pdev, dp);
- 
--	/* This is for the backward compatibility. */
--	np = of_parse_phandle(dev->of_node, "panel", 0);
--	if (np) {
--		dp->plat_data.panel = of_drm_find_panel(np);
--
--		of_node_put(np);
--		if (IS_ERR(dp->plat_data.panel))
--			return PTR_ERR(dp->plat_data.panel);
--
--		goto out;
--	}
--
- 	if (of_get_display_timings(dev->of_node)) {
- 		dp->plat_data.next_bridge = devm_drm_of_display_mode_bridge(dp->dev,
- 									dp->dev->of_node,
-@@ -189,19 +175,11 @@ static int exynos_dp_probe(struct platform_device *pdev)
- 	dp->plat_data.power_off = exynos_dp_poweroff;
- 	dp->plat_data.ops = &exynos_dp_ops;
- 
--out:
- 	dp->adp = analogix_dp_probe(dev, &dp->plat_data);
--	if (IS_ERR(dp->adp)) {
--		/*
--		 * The driver core does not invoke remove() for failed probes,
--		 * so release the probe-time panel reference here.
--		 */
--		if (dp->plat_data.panel)
--			drm_panel_put(dp->plat_data.panel);
-+	if (IS_ERR(dp->adp))
- 		return PTR_ERR(dp->adp);
--	}
- 
--	if (dp->plat_data.panel || dp->plat_data.next_bridge)
-+	if (dp->plat_data.next_bridge)
- 		return component_add(&pdev->dev, &exynos_dp_ops);
- 	else
- 		return analogix_dp_finish_probe(dp->adp);
-@@ -209,16 +187,6 @@ static int exynos_dp_probe(struct platform_device *pdev)
- 
- static void exynos_dp_remove(struct platform_device *pdev)
- {
--	struct exynos_dp_device *dp = platform_get_drvdata(pdev);
--
--	/*
--	 * Release the probe-time reference from of_drm_find_panel(). If bind
--	 * ran, the panel_bridge holds a second reference that devm cleanup
--	 * will release when the bridge is destroyed after remove() returns.
--	 */
--	if (dp->plat_data.panel)
--		drm_panel_put(dp->plat_data.panel);
--
- 	component_del(&pdev->dev, &exynos_dp_ops);
- }
- 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 587e60232ec7..071d31aa5288 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -28,7 +28,6 @@
- #include <drm/drm_bridge_connector.h>
- #include <drm/bridge/analogix_dp.h>
- #include <drm/drm_of.h>
--#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- 
-@@ -488,14 +487,6 @@ static void rockchip_dp_remove(struct platform_device *pdev)
- {
- 	struct rockchip_dp_device *dp = platform_get_drvdata(pdev);
- 
--	/*
--	 * Release the probe-time reference from of_drm_find_panel(). If bind
--	 * ran, the panel_bridge holds a second reference that devm cleanup
--	 * will release when the bridge is destroyed after remove() returns.
--	 */
--	if (dp->plat_data.panel)
--		drm_panel_put(dp->plat_data.panel);
--
- 	component_del(&pdev->dev, &rockchip_dp_component_ops);
- }
- 
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 0e0b87abee59..6033137b651e 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -35,7 +35,6 @@ static inline bool analogix_dp_is_rockchip(enum analogix_dp_devtype type)
- 
- struct analogix_dp_plat_data {
- 	enum analogix_dp_devtype dev_type;
--	struct drm_panel *panel;
- 	struct drm_bridge *next_bridge;
- 	struct drm_encoder *encoder;
- 	struct drm_connector *connector;
+ drivers/media/common/videobuf2/Makefile            |   1 +
+ drivers/media/common/videobuf2/v4l2-allocator.c    | 186 +++++++++++++++++++++
+ .../media/common/videobuf2/videobuf2-dma-contig.c  |  27 ++-
+ .../media/platform/rockchip/rkvdec/rkvdec-h264.c   |  14 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-hevc.c   |  14 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-rcb.c    |  21 ++-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c |  14 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c |  14 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c |  14 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c |  14 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    |  33 ++--
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c    |   4 +
+ drivers/media/platform/verisilicon/hantro.h        |   1 +
+ drivers/media/platform/verisilicon/hantro_drv.c    |   4 +
+ drivers/media/platform/verisilicon/hantro_h264.c   |   7 +-
+ drivers/media/platform/verisilicon/hantro_hevc.c   | 100 ++++++-----
+ drivers/media/platform/verisilicon/hantro_mpeg2.c  |  16 +-
+ .../media/platform/verisilicon/hantro_postproc.c   |  14 +-
+ drivers/media/platform/verisilicon/hantro_vp8.c    |  25 +--
+ drivers/media/platform/verisilicon/hantro_vp9.c    |  34 +++-
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 160 +++++++++++-------
+ drivers/media/v4l2-core/v4l2-device.c              |   4 +-
+ include/media/v4l2-allocator.h                     |  26 +++
+ include/media/v4l2-device.h                        |   2 +
+ include/media/videobuf2-core.h                     |   3 +
+ 25 files changed, 555 insertions(+), 197 deletions(-)
+---
+base-commit: 66affa37cfac0aec061cc4bcf4a065b0c52f7e19
+change-id: 20260612-v4l2-add-mem-tracker-da0088c74a64
+prerequisite-change-id: 20260608-v4l2-add-ftrace-aec6e7f60a6c:v2
+prerequisite-patch-id: bd45b4df66799a7f9f22b49973a78d1bd3590a4a
+prerequisite-patch-id: 6a5ed5615f08257cf854d441785066b5ff4d5d47
+prerequisite-patch-id: 02594c869498b9e91e416d70242afbaa6b3a8d6a
+prerequisite-patch-id: 9f25ec78f3b99ac1c5d42eb732f5bd9eae73fadd
+prerequisite-patch-id: 4ed2c2e8c3abfa7f6328d0ea4f488ca5a3eec8fb
+prerequisite-patch-id: 8787d50eb80e1a63a57a123268cade23c9e64618
+prerequisite-patch-id: bfe85822378fa771f9bbc3e1e8c8ff6bce0eb7fd
+prerequisite-patch-id: 784d0801da320f7b41194f4632ee422c32f1b5b8
+prerequisite-patch-id: 362c8366e2efbfb5e6f1a3f71cfddbd46e8d1506
 
--- 
-2.55.0
+Best regards,
+--  
+Detlev Casanova <detlev.casanova@collabora.com>
 
 
 _______________________________________________
