@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC68AC982C3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 14:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5ECAC982C5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 14:25:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EfyIx/nisNIC0wVrErT/sSBdXrM8uR4Ne9HqdhfmfGE=; b=1d56TQQleCtoVf
-	d2RW4sEhprc7ef1vf8dsM8BQr+wRLlMn3zy4tOHsMpGoe1Jqy6wq88fb+MwTTNRlo7I/g0I4RJt0Q
-	sTHIn9TSqyPa+u2RoT1h28TbHDXx6ihuyd1g9Vz9xGqjRkq0taWx04uAuuAlEXUf16z7wlMLp+u1t
-	/0/gsibuLsgpe8g4Z+bmdmHhfZ54NW3npqN/IyczOFNYkaV/KI78oXFoOg+3eNIuOYJpuj1xuY/Hb
-	oUcCKc/YrdcyOzUTEaOYVY+2k8T18m9TxOOtWoNCDz/dllnuaJ8FN4UM13jl//lqZ/qHLr4ddS1te
-	2jDnwK1GNhw9Q2C4hImw==;
+	List-Owner; bh=qWm2gdTQDDvxvkfdnA25PfnBLOwdviesvD9bPlsUrwc=; b=F3EgTRTwrV9FwD
+	otoRFg6wNI1HA6oQP0I9vEKIcKjSggTOBgKbYUqfrTvdefATY87Jym3Af0C5WIHH8HoZgA77VLvjT
+	DvP4BszI4OfHGP7jQ0pHOqq1A3IxjF9Vg5+AAA07JI2bKiSDDVlkWIpsNPhXmGNDZV3VLYjksH8Df
+	sSrie+oQuaoxbS51tsRw2vhSCaBqKlowBIHVL507WcdN/CBkwdB7ojdy4ka7ZU4Yq9xC2xLY85CyX
+	XMZOb48tMICnJXN9Sjo6iNC2KgSIE6b8n7ExrSHZHQ3jfRnRXBhZQi8qMBrphGrsPrkBJ4Gc9ZDd5
+	9/qVmiUZvh8WP3HkN7wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6qa7-00000009OTY-1J9F;
-	Wed, 16 Sep 2026 14:25:51 +0000
+	id 1x6qa8-00000009OUU-0JAx;
+	Wed, 16 Sep 2026 14:25:52 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6qZy-00000009OOU-2Gmx;
-	Wed, 16 Sep 2026 14:25:42 +0000
+	id 1x6qZy-00000009OOX-2wft;
+	Wed, 16 Sep 2026 14:25:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=5aWRJWR6JA0i2juUYsty9pizjjFdUj7YgK+zeY4lOn0=; b=dOvsGLDUI8Ax1s5LzQxEWpBGoH
-	ONM4+TV1Sz4STaREOuUeKeQdEYj0TZebZEZXvzQ+7570eC6ytKg3l+Ta1U810FYZ+Rzf6m7tkxfjA
-	vL1g8/EJdcyNpOIIKq6nmfIGLALtPVGEC/LJEjxEqYldn02i5s+xUJOh6YlAwLV6EJSGlkuAGDXEp
-	OPLWXOHhTEIJrUqU0uWCa5dykTk+4MJ599Gg/K2XybQR4KpuTVIcHMvoR71lEWjZ9E/uLMsmU6XjE
-	JMXs4imj/SfJufiNwQvcM22IV9PaIZHz7eU06D0yZXpmHZ7iMCiTuB7zWizZFsLjskZy19XHRhfE0
-	bHpsajdg==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	bh=uaVGd9oBwLQ2XRSkizdYfEhjHa41h1V3zFQm5l7Erqw=; b=dYn1W9vc3CCMPyCBSOp/eBCrHi
+	T+Zv6E/hk014eUHKnaE/IHfMq3Kj1YkmII3s26drqzun9G93atVLukKF0NQvE0MlLz5cJfILMWSuA
+	EZBDRUK3m7bl4GYwjS782DfpQWUgsYHgHK+yJlO/r1AiTSxspTIrY8MjLxVHbZRtchBFcCZYo8JSZ
+	EpZo9Ns5+z7JPsD2K0dISz3k2O4SVVhER4hJVYzH1ETAzmNQ6sioly+dP5KPjxYl7ApzNHkp5sft+
+	ngwYcXaUpdWFwdQVwdcostU+KOOonOD1qadSvmXQlWYwxutsOOV348bVSvUK8LExjyToPUTyL3UIV
+	LEzkK2uQ==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6qZv-00000007yVK-2S70;
+	id 1x6qZv-00000007yVg-3OMx;
 	Wed, 16 Sep 2026 14:25:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789568734;
-	bh=Fxe8yW3F1jNzKsru3sFOSL1At3sZumtvqZQlyoS5WYU=;
+	s=mail; t=1789568737;
+	bh=rffjsrzNUHUz6Ej9X9i0hw88J4ZQTjnnMh0u/4385Lo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=kaeMnSd1+Nle9exhcSlW7s2cTufLBn7oxmmsA9ZcJkgt4L2v9ZZ3gYuOAyACaaV5q
-	 72EIlf0O9gclljHKtvi5l+2/o/ElRAM2n03IWfrqInJknfMX/RZsunNa2sTt34PDep
-	 A8Uzz0b7UGOtdxkySvSe8YqEAd/5+EAzpYlK22wmq10z9cFOzgfN6Y9P0ujhE50uxx
-	 Kg/P8Te0Qyy5vn+dM3VPar6G3TC5jBRmgTJVuRsHuNaCheye/4cjMfadCRslAhO731
-	 3UMaO3VR8k2mgpNM9Fh66MICToQpXvM8cg+lcgaRTtOPjrszvWyjv4d9pHTIYzLANM
-	 haw8eI7M+/mNQ==
+	b=Zc1JPrSIAsq6dDX/gzI9oesvM2y8DXXWwJuP7wtyHlNWx9ZgaD36hLyxTnwjIyXxB
+	 4ETG3PUhCT/dCVuj2BC/r2T5p/1dYszIYaZVD/463hNatHRbYWbFHEUxltxVGvR4vt
+	 znOY+99Ps/0GwHgzgYxGlBzs2haIEeb+TAuus/W5YPHYkglDM9fLfYuxjoR42FERq0
+	 OznCfHETYE+04swM0DOiP9O4MMVZhyVNY/upSGko8605doIArdwK6j55iACfePjNty
+	 cQ8ug7InZiFC/oiCHLF0hTVOUC7iaIb2+kH8AYxDeY9IbTCBTE4aQCQOLhAa8JIGmq
+	 nCnoHI6c2Bc8Q==
 Received: from [192.168.0.15] (unknown [100.64.0.170])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6356817E047B;
-	Wed, 16 Sep 2026 16:25:32 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4F4F517E0070;
+	Wed, 16 Sep 2026 16:25:36 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
-Date: Wed, 16 Sep 2026 10:25:27 -0400
-Subject: [PATCH 2/4] media: Store v4l2_fh in the vb_queue
+Date: Wed, 16 Sep 2026 10:25:29 -0400
+Subject: [PATCH 4/4] media: rkvdec: Switch to tracked dma allocations
 MIME-Version: 1.0
-Message-Id: <20260916-v4l2-add-mem-tracker-v1-2-900fa45e3e6a@collabora.com>
+Message-Id: <20260916-v4l2-add-mem-tracker-v1-4-900fa45e3e6a@collabora.com>
 References: <20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com>
 In-Reply-To: <20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com>
 To: Tomasz Figa <tfiga@chromium.org>, 
@@ -77,8 +77,8 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_152539_776835_20C2ED10 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20260916_152540_172001_CE7ED1FC 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,99 +95,397 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-To be able to show the fd in the debug fs, add the v4l2_fh pointer to the
-queue so that vb2 allocations can retrieve it.
+Use the newly introduced v4l2_dma_alloc_attrs and v4l2_dma_free_attrs
+functions to track all dma allocations and have them exposed to
+userspace for easier debug.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- drivers/media/common/videobuf2/v4l2-allocator.c       | 16 +++++++++++-----
- drivers/media/common/videobuf2/videobuf2-dma-contig.c |  1 +
- include/media/v4l2-allocator.h                        |  2 +-
- include/media/videobuf2-core.h                        |  1 +
- 4 files changed, 14 insertions(+), 6 deletions(-)
+ .../media/platform/rockchip/rkvdec/rkvdec-h264.c   | 14 ++++++---
+ .../media/platform/rockchip/rkvdec/rkvdec-hevc.c   | 14 ++++++---
+ .../media/platform/rockchip/rkvdec/rkvdec-rcb.c    | 21 ++++++++------
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c | 14 ++++++---
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c | 14 ++++++---
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c | 14 ++++++---
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c | 14 ++++++---
+ .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    | 33 +++++++++++++++-------
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c    |  4 +++
+ 9 files changed, 100 insertions(+), 42 deletions(-)
 
-diff --git a/drivers/media/common/videobuf2/v4l2-allocator.c b/drivers/media/common/videobuf2/v4l2-allocator.c
-index 9dde9d4a342b..935fbbacd667 100644
---- a/drivers/media/common/videobuf2/v4l2-allocator.c
-+++ b/drivers/media/common/videobuf2/v4l2-allocator.c
-@@ -108,8 +108,8 @@ void v4l2_allocator_cleanup(struct v4l2_device *v4l2_dev)
- }
- EXPORT_SYMBOL_GPL(v4l2_allocator_cleanup);
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
+index d3202cecb988..5b5bc091e792 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264.c
+@@ -11,6 +11,7 @@
  
--static int v4l2_allocator_add(struct v4l2_device *v4l2_dev, size_t size,
--			      dma_addr_t dma_addr, const char *name)
-+static int v4l2_allocator_add(struct v4l2_device *v4l2_dev, size_t size, dma_addr_t dma_addr,
-+			      struct v4l2_fh *fh, const char *name)
- {
- 	struct v4l2_allocator *allocator = v4l2_dev->v4l2_allocator;
- 	struct v4l2_allocator_entry *entry;
-@@ -125,7 +125,13 @@ static int v4l2_allocator_add(struct v4l2_device *v4l2_dev, size_t size,
- 	entry->dma_addr = dma_addr;
- 	strscpy(entry->name, name, sizeof(entry->name));
- 	get_task_comm(entry->creator, current->group_leader);
--	entry->tgid = current->tgid;
-+	if (fh) {
-+		entry->fd = fh->fd;
-+		entry->tgid = fh->tgid;
-+	} else {
-+		entry->fd = 0;
-+		entry->tgid = current->tgid;
-+	}
+ #include <media/v4l2-h264.h>
+ #include <media/v4l2-mem2mem.h>
++#include <media/v4l2-allocator.h>
  
- 	mutex_lock(&allocator->lock);
- 	list_add(&entry->list, &allocator->list);
-@@ -156,12 +162,12 @@ static void v4l2_allocator_remove(struct v4l2_device *v4l2_dev, size_t size, dma
- 
- void *v4l2_dma_alloc_attrs(struct v4l2_device *v4l2_dev, struct device *dev,
- 			   size_t size, dma_addr_t *dma_handle,
--			   gfp_t flag, unsigned long attrs, const char *name)
-+			   gfp_t flag, unsigned long attrs, struct v4l2_fh *fh, const char *name)
- {
- 	void *ret = dma_alloc_attrs(dev, size, dma_handle, flag, attrs);
- 
- 	if (ret && v4l2_dev)
--		v4l2_allocator_add(v4l2_dev, size, *dma_handle, name);
-+		v4l2_allocator_add(v4l2_dev, size, *dma_handle, fh, name);
- 
- 	return ret;
- }
-diff --git a/drivers/media/common/videobuf2/videobuf2-dma-contig.c b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-index b6b7ddc96b9c..30e136dd02b7 100644
---- a/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-+++ b/drivers/media/common/videobuf2/videobuf2-dma-contig.c
-@@ -205,6 +205,7 @@ static int vb2_dc_alloc_coherent(struct vb2_dc_buf *buf)
- 					   &buf->dma_addr,
- 					   GFP_KERNEL | q->gfp_flags,
- 					   buf->attrs,
-+					   q->v4l2_fh,
- 					   name);
- 	if (!buf->cookie)
+ #include "rkvdec.h"
+ #include "rkvdec-regs.h"
+@@ -379,8 +380,11 @@ static int rkvdec_h264_start(struct rkvdec_ctx *ctx)
+ 	if (!h264_ctx)
  		return -ENOMEM;
-diff --git a/include/media/v4l2-allocator.h b/include/media/v4l2-allocator.h
-index f3fe0da10321..cdf0569bea0a 100644
---- a/include/media/v4l2-allocator.h
-+++ b/include/media/v4l2-allocator.h
-@@ -19,7 +19,7 @@ void v4l2_allocator_cleanup(struct v4l2_device *v4l2_dev);
  
- void *v4l2_dma_alloc_attrs(struct v4l2_device *v4l2_dev, struct device *dev,
- 			   size_t size, dma_addr_t *dma_handle,
--			   gfp_t flag, unsigned long attrs, const char *name);
-+			   gfp_t flag, unsigned long attrs, struct v4l2_fh *fh, const char *name);
+-	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
+-				      &h264_ctx->priv_tbl.dma, GFP_KERNEL);
++	priv_tbl = v4l2_dma_alloc_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++					sizeof(*priv_tbl),
++					&h264_ctx->priv_tbl.dma,
++					GFP_KERNEL, 0, &ctx->fh,
++					"h264-priv-tbl");
+ 	if (!priv_tbl) {
+ 		ret = -ENOMEM;
+ 		goto err_free_ctx;
+@@ -404,8 +408,10 @@ static void rkvdec_h264_stop(struct rkvdec_ctx *ctx)
+ 	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
+ 	struct rkvdec_dev *rkvdec = ctx->dev;
  
- void v4l2_dma_free_attrs(struct v4l2_device *v4l2_dev, struct device *dev,
- 			 size_t size, void *cpu_addr,
-diff --git a/include/media/videobuf2-core.h b/include/media/videobuf2-core.h
-index 83a5aea34f3c..aa47f1c7c9d1 100644
---- a/include/media/videobuf2-core.h
-+++ b/include/media/videobuf2-core.h
-@@ -604,6 +604,7 @@ struct vb2_queue {
- 	unsigned int			io_modes;
- 	struct device			*dev;
- 	struct v4l2_device		*v4l2_dev;
-+	struct v4l2_fh			*v4l2_fh;
- 	unsigned long			dma_attrs;
- 	unsigned int			bidirectional:1;
- 	unsigned int			fileio_read_once:1;
+-	dma_free_coherent(rkvdec->dev, h264_ctx->priv_tbl.size,
+-			  h264_ctx->priv_tbl.cpu, h264_ctx->priv_tbl.dma);
++	v4l2_dma_free_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++			    h264_ctx->priv_tbl.size,
++			    h264_ctx->priv_tbl.cpu,
++			    h264_ctx->priv_tbl.dma, 0);
+ 	kfree(h264_ctx);
+ }
+ 
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+index ac8b825d080a..fef8bf6c7625 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
+@@ -13,6 +13,7 @@
+  */
+ 
+ #include <media/v4l2-mem2mem.h>
++#include <media/v4l2-allocator.h>
+ 
+ #include "rkvdec.h"
+ #include "rkvdec-regs.h"
+@@ -532,8 +533,11 @@ static int rkvdec_hevc_start(struct rkvdec_ctx *ctx)
+ 	if (!hevc_ctx)
+ 		return -ENOMEM;
+ 
+-	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
+-				      &hevc_ctx->priv_tbl.dma, GFP_KERNEL);
++	priv_tbl = v4l2_dma_alloc_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++					sizeof(*priv_tbl),
++					&hevc_ctx->priv_tbl.dma,
++					GFP_KERNEL, 0, &ctx->fh,
++					"hevc-priv-tbl");
+ 	if (!priv_tbl) {
+ 		kfree(hevc_ctx);
+ 		return -ENOMEM;
+@@ -553,8 +557,10 @@ static void rkvdec_hevc_stop(struct rkvdec_ctx *ctx)
+ 	struct rkvdec_hevc_ctx *hevc_ctx = ctx->priv;
+ 	struct rkvdec_dev *rkvdec = ctx->dev;
+ 
+-	dma_free_coherent(rkvdec->dev, hevc_ctx->priv_tbl.size,
+-			  hevc_ctx->priv_tbl.cpu, hevc_ctx->priv_tbl.dma);
++	v4l2_dma_free_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++			    hevc_ctx->priv_tbl.size,
++			    hevc_ctx->priv_tbl.cpu,
++			    hevc_ctx->priv_tbl.dma, 0);
+ 	kfree(hevc_ctx);
+ }
+ 
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
+index fdcf1f177379..1d43793720c7 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
+@@ -13,6 +13,7 @@
+ #include <linux/genalloc.h>
+ #include <linux/sizes.h>
+ #include <linux/types.h>
++#include <media/v4l2-allocator.h>
+ 
+ struct rkvdec_rcb_config {
+ 	struct rkvdec_aux_buf *rcb_bufs;
+@@ -65,10 +66,10 @@ void rkvdec_free_rcb(struct rkvdec_ctx *ctx)
+ 			gen_pool_free(dev->sram_pool, virt_addr, rcb_size);
+ 			break;
+ 		case RKVDEC_ALLOC_DMA:
+-			dma_free_coherent(dev->dev,
+-					  rcb_size,
+-					  cfg->rcb_bufs[i].cpu,
+-					  cfg->rcb_bufs[i].dma);
++			v4l2_dma_free_attrs(&dev->v4l2_dev, dev->dev,
++					    rcb_size,
++					    cfg->rcb_bufs[i].cpu,
++					    cfg->rcb_bufs[i].dma, 0);
+ 			break;
+ 		}
+ 	}
+@@ -150,10 +151,14 @@ int rkvdec_allocate_rcb(struct rkvdec_ctx *ctx,
+ ram_fallback:
+ 		/* Fallback to RAM */
+ 		if (!cpu) {
+-			cpu = dma_alloc_coherent(ctx->dev->dev,
+-						 rcb_size,
+-						 &dma,
+-						 GFP_KERNEL);
++			char name[32];
++
++			snprintf(name, sizeof(name), "rcb-%d", i);
++			cpu = v4l2_dma_alloc_attrs(&rkvdec->v4l2_dev, ctx->dev->dev,
++						   rcb_size,
++						   &dma,
++						   GFP_KERNEL, 0, &ctx->fh,
++						   name);
+ 			alloc_type = RKVDEC_ALLOC_DMA;
+ 		}
+ 
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
+index b961fddc8583..b0cb6963c8e0 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
+@@ -8,6 +8,7 @@
+ 
+ #include <media/v4l2-h264.h>
+ #include <media/v4l2-mem2mem.h>
++#include <media/v4l2-allocator.h>
+ 
+ #include "rkvdec.h"
+ #include "rkvdec-cabac.h"
+@@ -387,8 +388,11 @@ static int rkvdec_h264_start(struct rkvdec_ctx *ctx)
+ 	if (!h264_ctx)
+ 		return -ENOMEM;
+ 
+-	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
+-				      &h264_ctx->priv_tbl.dma, GFP_KERNEL);
++	priv_tbl = v4l2_dma_alloc_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++					sizeof(*priv_tbl),
++					&h264_ctx->priv_tbl.dma,
++					GFP_KERNEL, 0, &ctx->fh,
++					"vdpu381-h264-priv-tbl");
+ 	if (!priv_tbl) {
+ 		ret = -ENOMEM;
+ 		goto err_free_ctx;
+@@ -412,8 +416,10 @@ static void rkvdec_h264_stop(struct rkvdec_ctx *ctx)
+ 	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
+ 	struct rkvdec_dev *rkvdec = ctx->dev;
+ 
+-	dma_free_coherent(rkvdec->dev, h264_ctx->priv_tbl.size,
+-			  h264_ctx->priv_tbl.cpu, h264_ctx->priv_tbl.dma);
++	v4l2_dma_free_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++			    h264_ctx->priv_tbl.size,
++			    h264_ctx->priv_tbl.cpu,
++			    h264_ctx->priv_tbl.dma, 0);
+ 	kfree(h264_ctx);
+ }
+ 
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
+index fe6414a17551..c1e16ba6f80f 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include <media/v4l2-mem2mem.h>
++#include <media/v4l2-allocator.h>
+ 
+ #include "rkvdec.h"
+ #include "rkvdec-cabac.h"
+@@ -555,8 +556,11 @@ static int rkvdec_hevc_start(struct rkvdec_ctx *ctx)
+ 	if (!hevc_ctx)
+ 		return -ENOMEM;
+ 
+-	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
+-				      &hevc_ctx->priv_tbl.dma, GFP_KERNEL);
++	priv_tbl = v4l2_dma_alloc_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++					sizeof(*priv_tbl),
++					&hevc_ctx->priv_tbl.dma,
++					GFP_KERNEL, 0, &ctx->fh,
++					"vdpu381-hevc-priv-tbl");
+ 	if (!priv_tbl) {
+ 		ret = -ENOMEM;
+ 		goto err_free_ctx;
+@@ -580,8 +584,10 @@ static void rkvdec_hevc_stop(struct rkvdec_ctx *ctx)
+ 	struct rkvdec_hevc_ctx *hevc_ctx = ctx->priv;
+ 	struct rkvdec_dev *rkvdec = ctx->dev;
+ 
+-	dma_free_coherent(rkvdec->dev, hevc_ctx->priv_tbl.size,
+-			  hevc_ctx->priv_tbl.cpu, hevc_ctx->priv_tbl.dma);
++	v4l2_dma_free_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++			    hevc_ctx->priv_tbl.size,
++			    hevc_ctx->priv_tbl.cpu,
++			    hevc_ctx->priv_tbl.dma, 0);
+ 	kfree(hevc_ctx);
+ }
+ 
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+index fb4f849d7366..3c1d3ca7cb6f 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+@@ -8,6 +8,7 @@
+ 
+ #include <media/v4l2-h264.h>
+ #include <media/v4l2-mem2mem.h>
++#include <media/v4l2-allocator.h>
+ 
+ #include <linux/iopoll.h>
+ 
+@@ -455,8 +456,11 @@ static int rkvdec_h264_start(struct rkvdec_ctx *ctx)
+ 	if (!h264_ctx)
+ 		return -ENOMEM;
+ 
+-	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
+-				      &h264_ctx->priv_tbl.dma, GFP_KERNEL);
++	priv_tbl = v4l2_dma_alloc_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++					sizeof(*priv_tbl),
++					&h264_ctx->priv_tbl.dma,
++					GFP_KERNEL, 0, &ctx->fh,
++					"vdpu383-h264-priv-tbl");
+ 	if (!priv_tbl) {
+ 		ret = -ENOMEM;
+ 		goto err_free_ctx;
+@@ -481,8 +485,10 @@ static void rkvdec_h264_stop(struct rkvdec_ctx *ctx)
+ 	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
+ 	struct rkvdec_dev *rkvdec = ctx->dev;
+ 
+-	dma_free_coherent(rkvdec->dev, h264_ctx->priv_tbl.size,
+-			  h264_ctx->priv_tbl.cpu, h264_ctx->priv_tbl.dma);
++	v4l2_dma_free_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++			    h264_ctx->priv_tbl.size,
++			    h264_ctx->priv_tbl.cpu,
++			    h264_ctx->priv_tbl.dma, 0);
+ 	kfree(h264_ctx);
+ }
+ 
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
+index 96d938ee70b0..b0ec46f482fa 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
+@@ -7,6 +7,7 @@
+  */
+ 
+ #include <media/v4l2-mem2mem.h>
++#include <media/v4l2-allocator.h>
+ 
+ #include "rkvdec.h"
+ #include "rkvdec-cabac.h"
+@@ -563,8 +564,11 @@ static int rkvdec_hevc_start(struct rkvdec_ctx *ctx)
+ 	if (!hevc_ctx)
+ 		return -ENOMEM;
+ 
+-	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
+-				      &hevc_ctx->priv_tbl.dma, GFP_KERNEL);
++	priv_tbl = v4l2_dma_alloc_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++					sizeof(*priv_tbl),
++					&hevc_ctx->priv_tbl.dma,
++					GFP_KERNEL, 0, &ctx->fh,
++					"vdpu383-hevc-priv-tbl");
+ 	if (!priv_tbl) {
+ 		ret = -ENOMEM;
+ 		goto err_free_ctx;
+@@ -588,8 +592,10 @@ static void rkvdec_hevc_stop(struct rkvdec_ctx *ctx)
+ 	struct rkvdec_hevc_ctx *hevc_ctx = ctx->priv;
+ 	struct rkvdec_dev *rkvdec = ctx->dev;
+ 
+-	dma_free_coherent(rkvdec->dev, hevc_ctx->priv_tbl.size,
+-			  hevc_ctx->priv_tbl.cpu, hevc_ctx->priv_tbl.dma);
++	v4l2_dma_free_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++			    hevc_ctx->priv_tbl.size,
++			    hevc_ctx->priv_tbl.cpu,
++			    hevc_ctx->priv_tbl.dma, 0);
+ 	kfree(hevc_ctx);
+ }
+ 
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+index 2751f5396ee8..9f41f6ca82d1 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+@@ -20,6 +20,7 @@
+ #include <linux/vmalloc.h>
+ #include <media/v4l2-mem2mem.h>
+ #include <media/v4l2-vp9.h>
++#include <media/v4l2-allocator.h>
+ 
+ #include "rkvdec.h"
+ #include "rkvdec-regs.h"
+@@ -979,8 +980,11 @@ static int rkvdec_vp9_start(struct rkvdec_ctx *ctx)
+ 	ctx->priv = vp9_ctx;
+ 
+ 	BUILD_BUG_ON(sizeof(priv_tbl->probs) % 16); /* ensure probs size is 128-bit aligned */
+-	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
+-				      &vp9_ctx->priv_tbl.dma, GFP_KERNEL);
++	priv_tbl = v4l2_dma_alloc_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++					sizeof(*priv_tbl),
++					&vp9_ctx->priv_tbl.dma,
++					GFP_KERNEL, 0, &ctx->fh,
++					"vp9-priv-tbl");
+ 	if (!priv_tbl) {
+ 		ret = -ENOMEM;
+ 		goto err_free_ctx;
+@@ -989,8 +993,11 @@ static int rkvdec_vp9_start(struct rkvdec_ctx *ctx)
+ 	vp9_ctx->priv_tbl.size = sizeof(*priv_tbl);
+ 	vp9_ctx->priv_tbl.cpu = priv_tbl;
+ 
+-	count_tbl = dma_alloc_coherent(rkvdec->dev, RKVDEC_VP9_COUNT_SIZE,
+-				       &vp9_ctx->count_tbl.dma, GFP_KERNEL);
++	count_tbl = v4l2_dma_alloc_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++					 RKVDEC_VP9_COUNT_SIZE,
++					 &vp9_ctx->count_tbl.dma,
++					 GFP_KERNEL, 0, &ctx->fh,
++					 "vp9-count-tbl");
+ 	if (!count_tbl) {
+ 		ret = -ENOMEM;
+ 		goto err_free_priv_tbl;
+@@ -1003,8 +1010,10 @@ static int rkvdec_vp9_start(struct rkvdec_ctx *ctx)
+ 	return 0;
+ 
+ err_free_priv_tbl:
+-	dma_free_coherent(rkvdec->dev, vp9_ctx->priv_tbl.size,
+-			  vp9_ctx->priv_tbl.cpu, vp9_ctx->priv_tbl.dma);
++	v4l2_dma_free_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++			    vp9_ctx->priv_tbl.size,
++			    vp9_ctx->priv_tbl.cpu,
++			    vp9_ctx->priv_tbl.dma, 0);
+ 
+ err_free_ctx:
+ 	kfree(vp9_ctx);
+@@ -1016,10 +1025,14 @@ static void rkvdec_vp9_stop(struct rkvdec_ctx *ctx)
+ 	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
+ 	struct rkvdec_dev *rkvdec = ctx->dev;
+ 
+-	dma_free_coherent(rkvdec->dev, vp9_ctx->count_tbl.size,
+-			  vp9_ctx->count_tbl.cpu, vp9_ctx->count_tbl.dma);
+-	dma_free_coherent(rkvdec->dev, vp9_ctx->priv_tbl.size,
+-			  vp9_ctx->priv_tbl.cpu, vp9_ctx->priv_tbl.dma);
++	v4l2_dma_free_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++			    vp9_ctx->count_tbl.size,
++			    vp9_ctx->count_tbl.cpu,
++			    vp9_ctx->count_tbl.dma, 0);
++	v4l2_dma_free_attrs(&rkvdec->v4l2_dev, rkvdec->dev,
++			    vp9_ctx->priv_tbl.size,
++			    vp9_ctx->priv_tbl.cpu,
++			    vp9_ctx->priv_tbl.dma, 0);
+ 	kfree(vp9_ctx);
+ }
+ 
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+index 1d1e9bfef8e9..8770fdb5c919 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+@@ -1208,6 +1208,8 @@ static int rkvdec_queue_init(void *priv,
+ 	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	src_vq->lock = &rkvdec->vdev_lock;
+ 	src_vq->dev = rkvdec->v4l2_dev.dev;
++	src_vq->v4l2_dev = &rkvdec->v4l2_dev;
++	src_vq->v4l2_fh = &ctx->fh;
+ 	src_vq->supports_requests = true;
+ 	src_vq->requires_requests = true;
+ 
+@@ -1227,6 +1229,8 @@ static int rkvdec_queue_init(void *priv,
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+ 	dst_vq->lock = &rkvdec->vdev_lock;
+ 	dst_vq->dev = rkvdec->v4l2_dev.dev;
++	dst_vq->v4l2_dev = &rkvdec->v4l2_dev;
++	dst_vq->v4l2_fh = &ctx->fh;
+ 
+ 	return vb2_queue_init(dst_vq);
+ }
 
 -- 
 2.55.0
