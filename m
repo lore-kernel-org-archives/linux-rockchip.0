@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC16CC982C5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 12:55:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DEE4C982C4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 12:55:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9ssn7KS1FhFgUhuXVnZ/Al+BbtvmIX2wPNKnBtdF/r0=; b=a5McAeI/zzBpep
-	jLfuIhCZlCniPkWZ2bL1hTWGH7PjaKH8I8jt1sZh6sdUZ6Zlq1BQyVDE5GLNnKYNNQf35604ndvUw
-	lWJhZBdlm9PLBzm2ybdGJJcSG+SzpFFGBrcZyzPHtfGm+n3znAtTg07ln2uEITgMOBjsLFvLd8ET/
-	6IK2zSrdSfM/Kf3fdG9x1skjVmcXHGSLisFxUN5qFIFFKZlFFA66N4hKlzJEdIi8YJYXndBM2om2u
-	ehD7OQlQh8mi9d1/QRnOvZbkWDW6GSryvXxe8D5zDlZ+9sBOJyjXYbVEKK5WrsMBHFNdHARqNuMZm
-	6A0iJr9+RiykaevMwLLg==;
+	List-Owner; bh=zp+hO6XyMdz9g472DpV5XJ7w/XrjTOL4wfEW6gmpqmY=; b=E5nAW8U3tyJZW0
+	13AuiqkS0aG4N35l5Ej5mbr/acmX1r5QAeASRvFzho8QGUVUrKxvSNvzpD/XxAIDiZDnEIcWygpt1
+	SulHn4h8IhVe0i2EvAR80INKIzySDhgnh85EZYUzHAsgPgAuKElORBc7RJhvPbRMVvhX1ephGLGqS
+	2MNhC5IpDGccbSjU0vhcJDvrt9P3Q660KQJJSk6FgCpME+orywqeuNWJaj5Nj7QdWNmop4OZ9zUoz
+	izxXO+0nTBGdN1Vp9cz5ErZXee0LKW7G0iBjNeCqiZeXDYU9XIUz+HF8d35ouqKPPoYfx0b0Kfrrs
+	g2cVni9H3wwzMbBPqFig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pAG-00000009DH0-1YUp;
-	Wed, 16 Sep 2026 12:55:04 +0000
+	id 1x6pAH-00000009DI5-0TKa;
+	Wed, 16 Sep 2026 12:55:05 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6pAC-00000009DDV-1tqw
+	id 1x6pAE-00000009DFG-058l
 	for linux-rockchip@bombadil.infradead.org;
-	Wed, 16 Sep 2026 12:55:00 +0000
+	Wed, 16 Sep 2026 12:55:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=LLbp9XiBiv+t0Eosw+YTUY316q/cLyeaPQfi9o0UHUI=; b=nYIddpfhTmJG9LYrUUH8JiqweA
-	OJkMNjo9nAN5gxrT6zJ14BgtAmRjqGVtrRxA4qH1SkNFFsCySnnsyDpjxdic29hK7qYUB6ppmhMo0
-	W16hHnxdVHUjEmDu8cFPouki5x8vnSQOQTKR3iX5TsmD9V6a+i3hnf0qnoN8WrMFzkW4ZwpHLGqFG
-	git9LlUT+lyhWqPbttfv61LnAtEXAOoz7anjEEnqfbtqtmN8rcCflrOft3HcNMqRgIqswInJVDP5t
-	9f4RaqjQ35UruMbbGUkLrV7nuZ1PBkyaEi8dP12bytFyZ64rE81kX+0sa583kVLSHk17oSh9K0KC4
-	D8iFbPlA==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	bh=YinKkidPbSJ4It1a+/3AbqSjxPv7+XQBXhoUzT6cA/c=; b=AQNkuidX/byMPrX3xWKvkCbqXq
+	DArqOyQsvAxyc1KtGzdrtXBaR6wd9mzLtIPeJImRtMg0tdAK0rwUawU50/5cfmzSZ57KyCj8dI2RC
+	/HBXY99RLLeVJsVXxEw8b85B4pobE7Ssp2a0MtFYu7kFljf+PwmSFhwkXKibpUmyZB0I3E2pxxFpb
+	i3rrkWhGJy6lAjpEYOKkQTUFgV74YX6DBsP1O2ZIaITR4gOt3ZXjU4kTPHr6l9gcmaogfe+uZ7oeb
+	hp8brT86Yc3T46jYB4IAjU6Zh2w/2u17eZUGpH8J3RiVcZs6asOC7bJ5A8n0VxwZH/DDofIveW4k1
+	5vnB3CTA==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6pA9-00000007s4l-1CyJ
+	id 1x6pA9-00000007s58-3MA4
 	for linux-rockchip@lists.infradead.org;
-	Wed, 16 Sep 2026 12:54:59 +0000
+	Wed, 16 Sep 2026 12:55:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789563290;
-	bh=024vXHBL3M4Nza6LGz1p+RSiowISrkhNEPP+TzTqIUU=;
+	s=mail; t=1789563291;
+	bh=3zKw4K0SxfBg0yduDZURnZ1s2u3ud89HZ8goJk4/ZGQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BjNh4kyKv2bWwfoYAxCrmXnDEjpt0ID9cNVrNrteimR3Wc9wrRwZk0xsBJr8jBYfz
-	 qtaOc9mMnARoudVijGVcF7t59YP7qR2vJiL2nTn6tuYFO9ybGWZT8/3Go3WJVHEAwa
-	 ZByZ2wZ/j0DEgnIY2Is8d01/sSgVwtw5NaBenUOMjQhocrJi/CPvEg1hKznVfM468b
-	 iBW3OlkN7leGGkRj3QNMeaR2qR9Il/ho/Qt8WzOkVDX+X0EgMN01eGNmtaqlAUsh5H
-	 NKfvBrUn5PIhXDwisGwezHc2cjl6utj5eQr2QfBI/Z5NgPeTME3T9+hEta++sd/Lxq
-	 oAderI16sN1OQ==
+	b=gxMvh4KbzfJgdo5wyOaRN1EtdQAsSwX0NVCpX9OageWzyYwkeFiKFcx/M3Y2pExuq
+	 QMSfyGnkW9w6tpU0SqCICYkef4aUgFIzO90iE4Kzr8+Or2+no5PMC3IonuJwVxnc0i
+	 FYKg9Mm1r/kkdKIDIRPiDuH4RkS3nZ39qz6Vg/pT1c3h0jW7stcBs31CES9jS9WfA1
+	 0fnRfpTMpCyEbTNaH6lH7euR783RtnrO2Fus8VsCcw/URwf5kWkj15L6Eh6uD1LsMT
+	 EbxrF1FnuhsPDyqtLnkaGLPQDz4xXPOtlCY37AXDq4DJTC7K+ODuN89cmH36IpO/KX
+	 ITTdmqnr3D2Sg==
 Received: from benjamin-XPS-13-9310 (unknown [100.64.1.43])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BFCAC17E1289;
-	Wed, 16 Sep 2026 14:54:49 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D710D17E138B;
+	Wed, 16 Sep 2026 14:54:50 +0200 (CEST)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: nicolas.dufresne@collabora.com,
 	benjamin.gaignard@collabora.com,
@@ -68,16 +68,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v1 2/7] media: verisilicon: AV1: Use alloc/free helpers for auxiliary buffers
-Date: Wed, 16 Sep 2026 14:54:38 +0200
-Message-ID: <20260916125443.78602-3-benjamin.gaignard@collabora.com>
+Subject: [PATCH v1 5/7] media: verisilicon: vp8: Use alloc/free helpers for auxiliary buffers
+Date: Wed, 16 Sep 2026 14:54:41 +0200
+Message-ID: <20260916125443.78602-6-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260916125443.78602-1-benjamin.gaignard@collabora.com>
 References: <20260916125443.78602-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_135457_622657_12D61752 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20260916_135458_014814_AA5ABE83 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,251 +98,78 @@ Simplify and clean up the code by using the helpers.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../media/platform/verisilicon/hantro_av1.c   | 177 ++++--------------
- 1 file changed, 39 insertions(+), 138 deletions(-)
+ .../media/platform/verisilicon/hantro_vp8.c   | 37 +++++--------------
+ 1 file changed, 10 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_av1.c b/drivers/media/platform/verisilicon/hantro_av1.c
-index 2cde32f0e935..e05816c7dfa3 100644
---- a/drivers/media/platform/verisilicon/hantro_av1.c
-+++ b/drivers/media/platform/verisilicon/hantro_av1.c
-@@ -235,40 +235,17 @@ size_t hantro_av1_chroma_size(struct hantro_ctx *ctx)
+diff --git a/drivers/media/platform/verisilicon/hantro_vp8.c b/drivers/media/platform/verisilicon/hantro_vp8.c
+index 381bc1d3bfda..881e6c21f0fa 100644
+--- a/drivers/media/platform/verisilicon/hantro_vp8.c
++++ b/drivers/media/platform/verisilicon/hantro_vp8.c
+@@ -144,11 +144,9 @@ void hantro_vp8_prob_update(struct hantro_ctx *ctx,
  
- static void hantro_av1_tiles_free(struct hantro_ctx *ctx)
+ int hantro_vp8_dec_init(struct hantro_ctx *ctx)
  {
 -	struct hantro_dev *vpu = ctx->dev;
- 	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+ 	struct hantro_aux_buf *aux_buf;
+ 	unsigned int mb_width, mb_height;
+ 	size_t segment_map_size;
+-	int ret;
  
--	if (av1_dec->db_data_col.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->db_data_col.size,
--				  av1_dec->db_data_col.cpu,
--				  av1_dec->db_data_col.dma);
--	av1_dec->db_data_col.cpu = NULL;
--
--	if (av1_dec->db_ctrl_col.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->db_ctrl_col.size,
--				  av1_dec->db_ctrl_col.cpu,
--				  av1_dec->db_ctrl_col.dma);
--	av1_dec->db_ctrl_col.cpu = NULL;
--
--	if (av1_dec->cdef_col.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->cdef_col.size,
--				  av1_dec->cdef_col.cpu, av1_dec->cdef_col.dma);
--	av1_dec->cdef_col.cpu = NULL;
--
--	if (av1_dec->sr_col.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->sr_col.size,
--				  av1_dec->sr_col.cpu, av1_dec->sr_col.dma);
--	av1_dec->sr_col.cpu = NULL;
--
--	if (av1_dec->lr_col.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->lr_col.size,
--				  av1_dec->lr_col.cpu, av1_dec->lr_col.dma);
--	av1_dec->lr_col.cpu = NULL;
-+	hantro_free_aux_buf(ctx, &av1_dec->db_data_col);
-+	hantro_free_aux_buf(ctx, &av1_dec->db_ctrl_col);
-+	hantro_free_aux_buf(ctx, &av1_dec->cdef_col);
-+	hantro_free_aux_buf(ctx, &av1_dec->sr_col);
-+	hantro_free_aux_buf(ctx, &av1_dec->lr_col);
- }
+ 	/* segment map table size calculation */
+ 	mb_width = DIV_ROUND_UP(ctx->dst_fmt.width, 16);
+@@ -160,42 +158,27 @@ int hantro_vp8_dec_init(struct hantro_ctx *ctx)
+ 	 * And the data in segment map buffer must be set to all zero.
+ 	 */
+ 	aux_buf = &ctx->vp8_dec.segment_map;
+-	aux_buf->size = segment_map_size;
+-	aux_buf->cpu = dma_alloc_coherent(vpu->dev, aux_buf->size,
+-					  &aux_buf->dma, GFP_KERNEL);
+-	if (!aux_buf->cpu)
+-		return -ENOMEM;
++	if (hantro_allocate_aux_buf(ctx, aux_buf, segment_map_size))
++		goto error;
  
- static int hantro_av1_tiles_reallocate(struct hantro_ctx *ctx)
- {
--	struct hantro_dev *vpu = ctx->dev;
- 	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
- 	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
- 	const struct v4l2_av1_tile_info *tile_info = &ctrls->frame->tile_info;
-@@ -277,6 +254,7 @@ static int hantro_av1_tiles_reallocate(struct hantro_ctx *ctx)
- 	unsigned int height_in_sb = height / 64;
- 	unsigned int stripe_num = ((height + 8) + 63) / 64;
- 	size_t size;
-+	int ret;
+ 	/*
+ 	 * Allocate probability table buffer,
+ 	 * total 1208 bytes, 4K page is far enough.
+ 	 */
+ 	aux_buf = &ctx->vp8_dec.prob_tbl;
+-	aux_buf->size = sizeof(struct vp8_prob_tbl_packed);
+-	aux_buf->cpu = dma_alloc_coherent(vpu->dev, aux_buf->size,
+-					  &aux_buf->dma, GFP_KERNEL);
+-	if (!aux_buf->cpu) {
+-		ret = -ENOMEM;
+-		goto err_free_seg_map;
+-	}
++	if (hantro_allocate_aux_buf(ctx, aux_buf, sizeof(struct vp8_prob_tbl_packed)))
++		goto error;
  
- 	if (av1_dec->db_data_col.size >=
- 	    ALIGN(height * 12 * ctx->bit_depth / 8, 128) * num_tile_cols)
-@@ -285,44 +263,22 @@ static int hantro_av1_tiles_reallocate(struct hantro_ctx *ctx)
- 	hantro_av1_tiles_free(ctx);
- 
- 	size = ALIGN(height * 12 * ctx->bit_depth / 8, 128) * num_tile_cols;
--	av1_dec->db_data_col.cpu = dma_alloc_coherent(vpu->dev, size,
--						      &av1_dec->db_data_col.dma,
--						      GFP_KERNEL);
--	if (!av1_dec->db_data_col.cpu)
--		goto buffer_allocation_error;
--	av1_dec->db_data_col.size = size;
-+	ret = hantro_allocate_aux_buf(ctx, &av1_dec->db_data_col, size);
- 
- 	size = ALIGN(height * 2 * 16 / 4, 128) * num_tile_cols;
--	av1_dec->db_ctrl_col.cpu = dma_alloc_coherent(vpu->dev, size,
--						      &av1_dec->db_ctrl_col.dma,
--						      GFP_KERNEL);
--	if (!av1_dec->db_ctrl_col.cpu)
--		goto buffer_allocation_error;
--	av1_dec->db_ctrl_col.size = size;
-+	ret |= hantro_allocate_aux_buf(ctx, &av1_dec->db_ctrl_col, size);
- 
- 	size = ALIGN(height_in_sb * 44 * ctx->bit_depth * 16 / 8, 128) * num_tile_cols;
--	av1_dec->cdef_col.cpu = dma_alloc_coherent(vpu->dev, size,
--						   &av1_dec->cdef_col.dma,
--						   GFP_KERNEL);
--	if (!av1_dec->cdef_col.cpu)
--		goto buffer_allocation_error;
--	av1_dec->cdef_col.size = size;
-+	ret |= hantro_allocate_aux_buf(ctx, &av1_dec->cdef_col, size);
- 
- 	size = ALIGN(height_in_sb * (3040 + 1280), 128) * num_tile_cols;
--	av1_dec->sr_col.cpu = dma_alloc_coherent(vpu->dev, size,
--						 &av1_dec->sr_col.dma,
--						 GFP_KERNEL);
--	if (!av1_dec->sr_col.cpu)
--		goto buffer_allocation_error;
--	av1_dec->sr_col.size = size;
-+	ret |= hantro_allocate_aux_buf(ctx, &av1_dec->sr_col, size);
- 
- 	size = ALIGN(stripe_num * 1536 * ctx->bit_depth / 8, 128) * num_tile_cols;
--	av1_dec->lr_col.cpu = dma_alloc_coherent(vpu->dev, size,
--						 &av1_dec->lr_col.dma,
--						 GFP_KERNEL);
--	if (!av1_dec->lr_col.cpu)
-+	ret |= hantro_allocate_aux_buf(ctx, &av1_dec->lr_col, size);
-+
-+	if (ret)
- 		goto buffer_allocation_error;
--	av1_dec->lr_col.size = size;
- 
- 	av1_dec->num_tile_cols_allocated = num_tile_cols;
  	return 0;
-@@ -334,105 +290,50 @@ static int hantro_av1_tiles_reallocate(struct hantro_ctx *ctx)
  
- void hantro_av1_exit(struct hantro_ctx *ctx)
- {
--	struct hantro_dev *vpu = ctx->dev;
- 	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
- 
--	if (av1_dec->global_model.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->global_model.size,
--				  av1_dec->global_model.cpu,
--				  av1_dec->global_model.dma);
--	av1_dec->global_model.cpu = NULL;
+-err_free_seg_map:
+-	dma_free_coherent(vpu->dev, ctx->vp8_dec.segment_map.size,
+-			  ctx->vp8_dec.segment_map.cpu,
+-			  ctx->vp8_dec.segment_map.dma);
 -
--	if (av1_dec->tile_info.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->tile_info.size,
--				  av1_dec->tile_info.cpu,
--				  av1_dec->tile_info.dma);
--	av1_dec->tile_info.cpu = NULL;
--
--	if (av1_dec->film_grain.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->film_grain.size,
--				  av1_dec->film_grain.cpu,
--				  av1_dec->film_grain.dma);
--	av1_dec->film_grain.cpu = NULL;
--
--	if (av1_dec->prob_tbl.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->prob_tbl.size,
--				  av1_dec->prob_tbl.cpu, av1_dec->prob_tbl.dma);
--	av1_dec->prob_tbl.cpu = NULL;
--
--	if (av1_dec->prob_tbl_out.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->prob_tbl_out.size,
--				  av1_dec->prob_tbl_out.cpu,
--				  av1_dec->prob_tbl_out.dma);
--	av1_dec->prob_tbl_out.cpu = NULL;
--
--	if (av1_dec->tile_buf.cpu)
--		dma_free_coherent(vpu->dev, av1_dec->tile_buf.size,
--				  av1_dec->tile_buf.cpu, av1_dec->tile_buf.dma);
--	av1_dec->tile_buf.cpu = NULL;
-+	hantro_free_aux_buf(ctx, &av1_dec->global_model);
-+	hantro_free_aux_buf(ctx, &av1_dec->tile_info);
-+	hantro_free_aux_buf(ctx, &av1_dec->film_grain);
-+	hantro_free_aux_buf(ctx, &av1_dec->prob_tbl);
-+	hantro_free_aux_buf(ctx, &av1_dec->prob_tbl_out);
- 
- 	hantro_av1_tiles_free(ctx);
- }
- 
- int hantro_av1_init(struct hantro_ctx *ctx)
- {
--	struct hantro_dev *vpu = ctx->dev;
- 	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
-+	int ret = 0;
- 
- 	memset(av1_dec, 0, sizeof(*av1_dec));
- 
--	av1_dec->global_model.cpu = dma_alloc_coherent(vpu->dev, GLOBAL_MODEL_SIZE,
--						       &av1_dec->global_model.dma,
--						       GFP_KERNEL);
--	if (!av1_dec->global_model.cpu)
--		return -ENOMEM;
--	av1_dec->global_model.size = GLOBAL_MODEL_SIZE;
--
--	av1_dec->tile_info.cpu = dma_alloc_coherent(vpu->dev, AV1_TILE_INFO_SIZE,
--						    &av1_dec->tile_info.dma,
--						    GFP_KERNEL);
--	if (!av1_dec->tile_info.cpu)
--		return -ENOMEM;
--	av1_dec->tile_info.size = AV1_TILE_INFO_SIZE;
--
--	av1_dec->film_grain.cpu = dma_alloc_coherent(vpu->dev,
--						     ALIGN(sizeof(struct hantro_av1_film_grain),
--							   2048),
--						     &av1_dec->film_grain.dma,
--						     GFP_KERNEL);
--	if (!av1_dec->film_grain.cpu)
--		return -ENOMEM;
--	av1_dec->film_grain.size = ALIGN(sizeof(struct hantro_av1_film_grain), 2048);
--
--	av1_dec->prob_tbl.cpu = dma_alloc_coherent(vpu->dev,
--						   ALIGN(sizeof(struct av1cdfs), 2048),
--						   &av1_dec->prob_tbl.dma,
--						   GFP_KERNEL);
--	if (!av1_dec->prob_tbl.cpu)
--		return -ENOMEM;
--	av1_dec->prob_tbl.size = ALIGN(sizeof(struct av1cdfs), 2048);
--
--	av1_dec->prob_tbl_out.cpu = dma_alloc_coherent(vpu->dev,
--						       ALIGN(sizeof(struct av1cdfs), 2048),
--						       &av1_dec->prob_tbl_out.dma,
--						       GFP_KERNEL);
--	if (!av1_dec->prob_tbl_out.cpu)
--		return -ENOMEM;
--	av1_dec->prob_tbl_out.size = ALIGN(sizeof(struct av1cdfs), 2048);
-+	ret |= hantro_allocate_aux_buf(ctx, &av1_dec->global_model, GLOBAL_MODEL_SIZE);
-+	ret |= hantro_allocate_aux_buf(ctx, &av1_dec->tile_info, AV1_TILE_INFO_SIZE);
-+	ret |= hantro_allocate_aux_buf(ctx, &av1_dec->film_grain,
-+				       ALIGN(sizeof(struct hantro_av1_film_grain), 2048));
-+	ret |= hantro_allocate_aux_buf(ctx, &av1_dec->prob_tbl,
-+				       ALIGN(sizeof(struct av1cdfs), 2048));
-+	ret |= hantro_allocate_aux_buf(ctx, &av1_dec->prob_tbl_out,
-+				       ALIGN(sizeof(struct av1cdfs), 2048));
-+	if (ret)
-+		goto buffer_allocation_error;
-+
- 	av1_dec->cdfs = &av1_dec->default_cdfs;
- 	av1_dec->cdfs_ndvc = &av1_dec->default_cdfs_ndvc;
- 
- 	hantro_av1_set_default_cdfs(av1_dec->cdfs, av1_dec->cdfs_ndvc);
- 
--	av1_dec->tile_buf.cpu = dma_alloc_coherent(vpu->dev,
--						   AV1_TILE_SIZE,
--						   &av1_dec->tile_buf.dma,
--						   GFP_KERNEL);
--	if (!av1_dec->tile_buf.cpu)
--		return -ENOMEM;
--	av1_dec->tile_buf.size = AV1_TILE_SIZE;
--
- 	return 0;
-+
-+buffer_allocation_error:
-+	hantro_free_aux_buf(ctx, &av1_dec->global_model);
-+	hantro_free_aux_buf(ctx, &av1_dec->tile_info);
-+	hantro_free_aux_buf(ctx, &av1_dec->film_grain);
-+	hantro_free_aux_buf(ctx, &av1_dec->prob_tbl);
-+	hantro_free_aux_buf(ctx, &av1_dec->prob_tbl_out);
-+
+-	return ret;
++error:
++	hantro_free_aux_buf(ctx, &ctx->vp8_dec.segment_map);
++	hantro_free_aux_buf(ctx, &ctx->vp8_dec.prob_tbl);
 +	return -ENOMEM;
  }
  
- int hantro_av1_prepare_run(struct hantro_ctx *ctx)
+ void hantro_vp8_dec_exit(struct hantro_ctx *ctx)
+ {
+-	struct hantro_vp8_dec_hw_ctx *vp8_dec = &ctx->vp8_dec;
+-	struct hantro_dev *vpu = ctx->dev;
+-
+-	dma_free_coherent(vpu->dev, vp8_dec->segment_map.size,
+-			  vp8_dec->segment_map.cpu, vp8_dec->segment_map.dma);
+-	dma_free_coherent(vpu->dev, vp8_dec->prob_tbl.size,
+-			  vp8_dec->prob_tbl.cpu, vp8_dec->prob_tbl.dma);
++	hantro_free_aux_buf(ctx, &ctx->vp8_dec.segment_map);
++	hantro_free_aux_buf(ctx, &ctx->vp8_dec.prob_tbl);
+ }
 -- 
 2.53.0
 
