@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D8C5C88E77
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 10:26:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E19A0C88E77
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2026 10:55:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Z0tTc9hOdAmAIflxjXRgvxrkWP3Yyrf7tze7vzAWVtQ=; b=rtN0DvrL35grDK
-	lz6PNFsm1kctB+cH4w/dxz9wDqBtCAM3sBlJvgvL3gd6/nXshNz8yp1QhWdNQteSMMikmpv/K/Mfl
-	jotxyABb31ioF4Q35jbUTfymq+ZLZwE5VvRVikjZqVi8ti1WvmZ6aUX0uVr5E3rixWlyjxJLUV2TP
-	5XTk2MIWWIk1yrqv9BmYrya7/MLTqTHsPkp+vuzGvm/Kfg14me+Ita1a+Sp2Y5xouJmMxn3yL7g+d
-	Z1PTBJiurs5fRMuPv1+bRjzSR8fAsSQp0eBEFaE90i5DTJjf+76HvazyJWycIGu/NShzqAVA2RYz7
-	9UUtyDQrFK2pPCXsUm0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O2kCe6RUiBFvVb8W4FhZij0B8tz1/EdwmfuEZ5l9hhE=; b=lDBjZbjWaDX57KkXb8WR/MuOpY
+	5eUIJlA7THuM4rT2NMVN9zZImIHg+UF72f+MUUtJbh1jI9FkZzJrJn/yHh+DzJm22Io7L5nvwa1IF
+	aoEOdggwZCVjj0VUObgCLNqRrlF1lrSv53+ykOt0+KpeNH51dUn4cnnJay+7bXVhUmQPBeTkqJhH1
+	tte3ZV/VlR2yRNVJf8BAru4lwa6GFF3UT5SfqTA5cYTGVzNAllVya6FeHMGfgZFArozTH575l46io
+	2dA/FLxP4QWNus6kzLOpI2Dv18fAPtoFPKckHt2AZ7yazpHlrgyS98NO6nDvFyOTCU5S2ElQ3w/Zj
+	QxCglbGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6mq2-00000008yKF-43UN;
-	Wed, 16 Sep 2026 10:26:02 +0000
-Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
+	id 1x6nIZ-0000000916F-0Low;
+	Wed, 16 Sep 2026 10:55:31 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6mq0-00000008yJc-1fxg;
-	Wed, 16 Sep 2026 10:26:01 +0000
-Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
-	by APP-03 (Coremail) with SMTP id rQCowAD3+Te1bqpq6A3hBw--.1939S2;
-	Wed, 16 Sep 2026 18:25:58 +0800 (CST)
-From: Wentao Liang <vulab@iscas.ac.cn>
-To: brgl@kernel.org
-Cc: heiko@sntech.de,
-	jay.xu@rock-chips.com,
-	linusw@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Wentao Liang <vulab@iscas.ac.cn>,
+	id 1x6nIW-0000000915Q-1RES;
+	Wed, 16 Sep 2026 10:55:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1789556121; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jEaBHBWW5yD1J0TV/UbG5j9Ewwl04zZ0anGKtYuxZaxWTDAnAaAn9hIMaKxRayNED76FPKo9p4NTfRBSMdROVlzvQ8TJazYtmd9JoZffPyuH8Ys6Ryl7awiwFy0rutLa6WlEAaob6pyrymdltl3Sf1UC+CoeOu0EpWOGZwCu7OA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1789556121; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Uva0NgB3KxuwVZLkt485f87mZRbvUkG56Nz1XWwQ3aQ=; 
+	b=ZBAYs5YLuR0GEBF34x5oeX6OxtXp/UjG18mSMlftfgaxj3TTDJ9YyL/Jpba/oammHpNpGGF5XPhCfv8YoZdGWcKbyoSBCrWVAfVAuuN15TjyZdwuNAn16r1DMYQuKU5lFtLBxZHf4xjfiatE58u9aqr0pGegHFXo9ycFJPy04bc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1789556121;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=Uva0NgB3KxuwVZLkt485f87mZRbvUkG56Nz1XWwQ3aQ=;
+	b=kaM1Hf24gWrC/DYDPNrI1n9Mt7jEguW0zimgpIshelsPRysqaJLfZKM+rwO/tiPl
+	Q06kEQNpxhH8w/ZzLv5vXZ31v0cgwiyrNMTY6XH8pWKqVCuU/fROC9nVNp7ellxtBM0
+	UCW+fqrJkMfkzireW/BhnOYPIWmXGVWmgklpDe34=
+Received: by mx.zohomail.com with SMTPS id 1789556120046516.7994642098594;
+	Wed, 16 Sep 2026 03:55:20 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id EBB86180918; Wed, 16 Sep 2026 12:55:15 +0200 (CEST)
+Date: Wed, 16 Sep 2026 12:55:15 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Wentao Liang <vulab@iscas.ac.cn>
+Cc: andriy.shevchenko@linux.intel.com, brgl@kernel.org, heiko@sntech.de, 
+	linusw@kernel.org, linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, ye.zhang@rock-chips.com, 
 	stable@vger.kernel.org
-Subject: [PATCH] gpio: rockchip: Fix debounce clock leak in rockchip_get_bank_data()
-Date: Wed, 16 Sep 2026 10:25:29 +0000
-Message-Id: <20260916102529.2019277-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.34.1
+Subject: Re: [PATCH] gpio: rockchip: Fix bank clock leak in
+ rockchip_get_bank_data()
+Message-ID: <aqpxJaYqJ5NHG1No@venus>
+References: <20260916102258.2018689-1-vulab@iscas.ac.cn>
 MIME-Version: 1.0
-X-CM-TRANSID: rQCowAD3+Te1bqpq6A3hBw--.1939S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7uFy8KrW7tw4UZF13WFW3KFg_yoW8WF13pa
-	n8WrW5Kwn7GFn2gF1DAF15AFWFv3ZFyay3Wrn7G3WxCw13tFy7tFWUWFWvqF45Aryvkay5
-	Ar43Ga4UGr43Zr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9S14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
-	JVWxJr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
-	CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
-	2Ix0cI8IcVAFwI0_JF0_Jw1lYx0Ex4A2jsIE14v26r4UJVWxJr1lOx8S6xCaFVCjc4AY6r
-	1j6r4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02
-	628vn2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4
-	IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1r
-	MI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUCV
-	W8JwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F4UJwCI42IY6xAIw20EY4v20xvaj40_
-	Jr0_JF4lIxAIcVC2z280aVAFwI0_Cr0_Gr1UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Cr1j6r
-	xdYxBIdaVFxhVjvjDU0xZFpf9x0JUJWrAUUUUU=
-X-Originating-IP: [36.110.52.2]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiDAEMA2qqP7m20QAAsj
+In-Reply-To: <20260916102258.2018689-1-vulab@iscas.ac.cn>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/289.544.40
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_032600_804252_61D02C72 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20260916_035528_418346_8A4026F0 
+X-CRM114-Status: GOOD (  20.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,56 +78,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5635815192020441256=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rockchip_get_bank_data() obtains the debounce clock with of_clk_get()
-for GPIO v2 banks and stores it in bank->db_clk for later use by the
-debounce handling, but the reference is never released anywhere in the
-driver.  When rockchip_gpiolib_register() fails in rockchip_gpio_probe()
-or when the device unbinds, the debounce clock reference leaks.
 
-Release the references returned by of_clk_get() with clk_put() when
-probe fails after the gpiochip registration and when the device is
-removed.  The bank clock reference is dropped as well since it suffers
-from the same problem.
+--===============5635815192020441256==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="pceyosqab754y6el"
+Content-Disposition: inline
 
-Fixes: 3bcbd1a85b68 ("gpio/rockchip: support next version gpio controller")
-Cc: stable@vger.kernel.org
-Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
----
- drivers/gpio/gpio-rockchip.c | 4 ++++
- 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index 69a7cd8c9a1a..cab1ac78c48f 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -755,6 +755,8 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
- 	ret = rockchip_gpiolib_register(bank);
- 	if (ret) {
- 		clk_disable_unprepare(bank->clk);
-+		clk_put(bank->clk);
-+		clk_put(bank->db_clk);
- 		mutex_unlock(&bank->deferred_lock);
- 		return ret;
- 	}
-@@ -797,6 +799,8 @@ static void rockchip_gpio_remove(struct platform_device *pdev)
- 
- 	clk_disable_unprepare(bank->clk);
- 	gpiochip_remove(&bank->gpio_chip);
-+	clk_put(bank->clk);
-+	clk_put(bank->db_clk);
- }
- 
- static const struct of_device_id rockchip_gpio_match[] = {
--- 
-2.34.1
+--pceyosqab754y6el
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] gpio: rockchip: Fix bank clock leak in
+ rockchip_get_bank_data()
+MIME-Version: 1.0
 
+Hi,
+
+On Wed, Sep 16, 2026 at 10:22:58AM +0000, Wentao Liang wrote:
+> rockchip_get_bank_data() obtains the bank clock with of_clk_get() and
+> enables it before reading the GPIO version ID.  The reference returned
+> by of_clk_get() is never dropped on the error paths that follow:
+>=20
+> When the debounce clock is missing, the bank clock is disabled with
+> clk_disable_unprepare() but the reference is never released with
+> clk_put().  When the version ID is unsupported, the function returns
+> -ENODEV leaving the bank clock prepared, enabled and referenced.
+>=20
+> Drop the reference with clk_put() on both error paths and disable and
+> unprepare the bank clock on the unsupported version path so that probe
+> failures no longer leak the clock.
+>=20
+> Fixes: 41209307cad7 ("gpio: rockchip: change the GPIO version judgment lo=
+gic")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+> ---
+
+This got fixed in 3e46c18d5d87 ("gpio: rockchip: convert bank->clk
+to devm_clk_get_enabled()") and 950007767823 ("gpio: rockchip:
+teardown bugs and resource leaks") already. Please make sure to use
+latest kernel trees.
+
+Greetings,
+
+-- Sebastian
+
+>  drivers/gpio/gpio-rockchip.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+> index 44d7ebd12724..69a7cd8c9a1a 100644
+> --- a/drivers/gpio/gpio-rockchip.c
+> +++ b/drivers/gpio/gpio-rockchip.c
+> @@ -673,6 +673,7 @@ static int rockchip_get_bank_data(struct rockchip_pin=
+_bank *bank)
+>  		if (IS_ERR(bank->db_clk)) {
+>  			dev_err(bank->dev, "cannot find debounce clk\n");
+>  			clk_disable_unprepare(bank->clk);
+> +			clk_put(bank->clk);
+>  			return -EINVAL;
+>  		}
+>  		break;
+> @@ -682,6 +683,8 @@ static int rockchip_get_bank_data(struct rockchip_pin=
+_bank *bank)
+>  		break;
+>  	default:
+>  		dev_err(bank->dev, "unsupported version ID: 0x%08x\n", id);
+> +		clk_disable_unprepare(bank->clk);
+> +		clk_put(bank->clk);
+>  		return -ENODEV;
+>  	}
+> =20
+> --=20
+> 2.34.1
+>=20
+
+--pceyosqab754y6el
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmqqdZAACgkQ2O7X88g7
++powAQ//a5Z8xeBh85w663VZhDaGQvR2X2ve7juhsvd1Tnd6nC8HkT0qj226YZIg
+RyT32AJg6xMJwpXYFHljIdJURzWF71WB/qIEn+JPwEeYM2pBrqcFK9ULt7fgeJ1N
+Jas1rkSyeFmHajw+9Hq3uWyLAcPLV7qJKZJcuuTFu4EtxDG9gmZTr1WxXk9x/wRe
+bGEAGtgmCqeXUiizIc1OklUVQ+mG3RxxckCd/KrmFQH1MPfTtAElPWI+kCaB018C
+4myy1GtEisUSYe4Oy9j8FR+d1olFCFVz2gtSWE7I/7U6E5zOAH0oJcY3wrdZ2UnQ
+kOtGhlU2lnyUtAvbhCpSx8P3Kv/9/sfBKKNW2g616VsV5ISco2tQMByEc+2f7yF8
+5iDs3ItxwmjTWuV4FTUPhOkjfm55ObQbK8TinY1GseG2ZZchJKuSnzMbkOKsxi2h
+pt62dmxrSpNR8DVL4o9kibM+ro/rjPTgCbWmTjq5oA2bL5/S28rATmewYcxS53Op
+9k1QWa5p+3++gRENV0RyswrGMB0KLbiGjR8lWbI1nrZGtYC7tSDRYfoMWTATx/YM
+R+Sh5hSDEZJXs8uLA0cFCPjWP7sz0FX0mA5VXY2FUhO1zxSWqAynsPNVrIz7MvIa
+r1Vo0ZPa5snWt7h0JRm7eYw64w4/raHcfk2PZlqu9pLwt8392kg=
+=JxUH
+-----END PGP SIGNATURE-----
+
+--pceyosqab754y6el--
+
+
+--===============5635815192020441256==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5635815192020441256==--
+
