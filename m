@@ -4,49 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ADB3C982DD
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EF4AC982DB
 	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2026 15:38:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IyJ0Dztjk55HPesvenpriKFyVvh7MdzZPIca48I+K+k=; b=b2I6BiDRBZoTtq
-	NwNpK99TIZu3zGh7fO4Su4FDO6MErcK/A1K6Zy9OxacT4c6FFGCVDWQOvLGAu+jnLk0M0cNWJ9kMD
-	stPbRWrjdlg6hIJGVj/xE4nZAvCTo/pJNgJQr1OV0m06axqX9PCCNXwQGI3QqYyHo8n/8Eq0uFQUX
-	aW6KIvr1j197UE7r5UPgx9vO9gezGffj/aTcnDDKRv/igVv/Ac9ju+uitTDq5HKwejWNdv4AcNR0z
-	/KNfrsDW8xLAm5X/TWdpM2imfIl5tVCRFKA5P3SrRjMXJMCStRU8dyI2qkXuomfF7UahPDLv+peAB
-	hgmb8Fk9kCgDzeEKyXGg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=b2CObSdRRlNo0JdDZKPL4CzUbEM/Ph8NH6+QUSq0/4c=; b=rQ7i2w4EzJs/rj
+	8ucxl76X8e89OwhxiLfWSZBSbQcvfB6dTTsnTViPj/5787Lyv18AgMnJ5boBzKwTvoMggCkAfQEMD
+	NCPA7NlPtIpU6hNIoEaO2irq4PbRHykJxLLEuAxHEpgm4QC4d/oL+lQK833dm3QE+SsL4vQgbh5ci
+	G7NoVUW2IkUzsCwbDkXVSeDsjkb+lZq30+OI1Yq8Igro1JlN+s9A1cL20c3jGNXZauq1hulHbeIbJ
+	kRUsm+AFQn27rdUSRjSTPN4f1b8BzRvBQ1d2+CDDlsqaCDfe5GNhkG8kcTx64WZe6eNdlpgIxyKFD
+	RNwfWFM9/HK/tP3TZ7+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7EC6-0000000Bi2L-0b5w;
-	Thu, 17 Sep 2026 15:38:38 +0000
-Received: from mail.fris.de ([116.203.77.234])
+	id 1x7EC5-0000000Bi1U-3K17;
+	Thu, 17 Sep 2026 15:38:37 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7EC3-0000000BhxU-0dgL;
+	id 1x7EC4-0000000Bhzp-1QAz;
 	Thu, 17 Sep 2026 15:38:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=+ZwHurz3qFcCVqb+Po4Y9Ihna8FWaKNv9CmUUvvsfgU=; b=JsB4rJfO7RtUIp3mDH6eem7lit
+	NCoTxzhU1WscyASWnpqsvFJV5A+4O5mARzNDz3tkeW/LOgVsFNnye5qUvoadM6Y7bQD5aunH2tuec
+	rq/EWcHy0FhxzfQFcsfDb9TbRPlJIXBVYvFyzEVBh1PWX4khAXAldt79n+mYrNnDy3ojqJSgR5l9Q
+	c6r/w6k1IiAXdzM2f+8ltOQan5eDVN23K7cMDj21LoWxjtghQQwDzSTNjy8Uy7jeEQZSBCGELM5S7
+	cueEowP+8dA0SFvlykLkvHNyMIkJt/0YKYJhjZxES/Ybv4LRWQNc0Mz678Fjvd+B/p9q2XMLDZ4rZ
+	Gby69Xig==;
+Received: from mail.fris.de ([116.203.77.234])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x7EC1-0000000904H-1R5F;
+	Thu, 17 Sep 2026 15:38:35 +0000
 From: Frieder Schrempf <frieder@fris.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fris.de; s=mail;
-	t=1789659509;
+	t=1789659510;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=t4lntru9GYBlyU5HcHrrBAQ9M2TehHHZ4GbaLqq2g98=;
-	b=r0OF0eSy/h4tCFYjSCMMNcm3LNwiuIHFpXJJsAZdfg3o66KcKZJQxQo7e7hfSupEh4N9cc
-	eqifjgtXxCwh5azk8AxLXzZFtRoO959L095SxFUP5BX0qcC+VYajdPkcCxTxCvgg7QtrEe
-	66EQTnFlzAW32ajZMJQBQQ3CpkKsaxZQrK4eAe30HZkw8X5dxA1uFubD9flWMnHQfMvmx0
-	8i+FmedFtBuzAIMX1zD6JvZqDydfWpSkVwLu65k1wYwRQz6WOgjV4eyqfru2RW3/MqWtPs
-	BfPZTHXhS1/DUPkVCfKzSIBSej9+ey8Uibns3RSXLIMnfPotUkDIKz/qHhBuvg==
-Subject: [PATCH 0/3] spi: Better specification for rx-sample-delay-ns and
- core parsing
-Date: Thu, 17 Sep 2026 17:37:34 +0200
-Message-Id: <20260917-spi-sample-delay-cleanup-v1-0-0e4eddbfb1ce@kontron.de>
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+ZwHurz3qFcCVqb+Po4Y9Ihna8FWaKNv9CmUUvvsfgU=;
+	b=yTWxLlYw1KqUHOP5FcIkQPRUYyLClpMooyMYFjHeTr9ZApu9jZrr2J4LkSH2rIWiGugFZc
+	s58U4d/dTKkB0uANlthpON4LpCTf65fAdV3oLnZ68EQpGJCbzB35zXjK/lYwnVivhJztns
+	FiQemcCx89E9Z7u9y8L5bI2L+PWyaNMM3vzX8ZXhD5+nKmfrIZFVf5OiREhYfyi0VoG8V5
+	KMlLkGczxO5ldu2OPhgG6AynJ6ucozkcPIkpwRMqZ9c8whqwPDy5JdHYPfRoUcL00iuTL0
+	2jUZdB497MXZwjqjy3YzLxNj0HQxY2oswi+QvxAcIOybihZHGE1T+ztutmx0lQ==
+Date: Thu, 17 Sep 2026 17:37:37 +0200
+Subject: [PATCH 3/3] spi: dw: Use the rx-sample-delay-ns value parsed by
+ the core
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQrCMBBG4auUWTuQRFD0KuJimvzVkRhDpxWl9
- O5GXX6L9xYyjAqjY7fQiKeaPkqD33QUr1IuYE3NFFzYuYPfs1Vlk3vN4IQsb44ZUubK0vvktgI
- XBqGW1xGDvn7r0/lvm/sb4vT90bp+AEvbMX58AAAA
-X-Change-ID: 20260917-spi-sample-delay-cleanup-ab1d03ae02fa
+Message-Id: <20260917-spi-sample-delay-cleanup-v1-3-0e4eddbfb1ce@kontron.de>
+References: <20260917-spi-sample-delay-cleanup-v1-0-0e4eddbfb1ce@kontron.de>
+In-Reply-To: <20260917-spi-sample-delay-cleanup-v1-0-0e4eddbfb1ce@kontron.de>
 To: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
@@ -54,18 +67,18 @@ Cc: linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, 
  Frieder Schrempf <frieder.schrempf@kontron.de>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3071;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1983;
  i=frieder.schrempf@kontron.de; h=from:subject:message-id;
- bh=MoG2KKKCOb8i6jNykCKvYIGrUNKtrQQ7X8DDkYY4Mgc=;
- b=owGbwMvMwCWWWSatKlDTJMZ4Wi2JIWsNZ+mVGcFsxR+cHB97/C0smMajNNt2w6SF+VE183ICj
- 4cJlOh2lLIwiHExyIopskjxW7y2NYv1kT9WHQUzh5UJZAgDF6cATETfnJHhS6JmwCYvxtitIjXO
- B403cYhJrd13g/965e4DAXOW2PY6MDJc27tq98YVBbOLYxatWRNZVbvmw2LGG0tD1u/s4rj5K+s
- 0KwA=
+ bh=dNE9qYNVl7I4xsD6/HfPBsDDqC3FezGj/mUMdwpPGY0=;
+ b=owGbwMvMwCWWWSatKlDTJMZ4Wi2JIWsNZ2n38cNpBqmnf871Cvpyc+LkRdM0tEI1V/7dt/Nrz
+ YTo2jv6HaUsDGJcDLJiiixS/Bavbc1ifeSPVUfBzGFlAhnCwMUpABMJNWH4n/jzkvLpB5Zqr6w/
+ K7fE702Rle0XZ5pnmP0n4+mfQ07zZRgZjocbPvq0dSF/julNJZdDFblbuK06knonCSzdmrOwwVG
+ LFQA=
 X-Developer-Key: i=frieder.schrempf@kontron.de; a=openpgp;
  fpr=1A0F38EB3D365D4C1FC67B5A69761B25107C8216
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_083835_342887_8BEDFFB5 
-X-CRM114-Status: GOOD (  16.11  )
+X-CRM114-CacheID: sfid-20260917_163833_600135_CAB3B7D5 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,66 +95,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-"rx-sample-delay-ns" has been a generic SPI peripheral property since it
-was moved to spi-peripheral-props.yaml, but the core has never looked at
-it, and what it is meant to describe has become blurred along the way.
+From: Frieder Schrempf <frieder.schrempf@kontron.de>
 
-It was introduced in 2015 for Rockchip, to compensate "boards with
-high-capacitance SPI lines". The wording now in the generic schema came
-later, from a description of a DesignWare register, and lost its
-controller-specific qualifier on the way. It says what the value does to
-the controller, but not what a board should measure to arrive at it.
+The core now parses the "rx-sample-delay-ns" peripheral property into
+spi_device.rx_sample_delay_ns, so drop the private copy of that parsing.
 
-Patch 1 says what the property describes. Patch 2 parses it in the core,
-so that a controller driver can act on it without open-coding the
-property name, and patch 3 converts spi-dw, its only user that reads it
-from the peripheral node as the binding intends.
+The controller-wide default is deliberately left alone. It is read from
+the *controller* node into dws->def_rx_sample_dly_ns, which is a
+different node and none of the core's business when it parses properties
+of a peripheral.
 
-Deliberately not converted: spi-rockchip and spi-mtk-snfi read
-"rx-sample-delay-ns" from the *controller* node rather than the
-peripheral node, which contradicts the binding but is what their device
-trees rely on. Converting them would break those boards, so they keep
-their private parsing. The controller-wide default that spi-dw reads
-from its own node is left in place for the same reason - it lives in a
-different node, which is not what the core parses when it looks at a
-peripheral.
-
-The one behavioural corner is in patch 3 and is called out there: an
-explicit "rx-sample-delay-ns = <0>" on a peripheral is now
-indistinguishable from an absent property, so it no longer overrides a
-non-zero controller-level default. There are two users of the property
-in the tree and neither does this.
-
-This is groundwork for letting SPI devices declare their datasheet
-clock-to-output-valid time so that controllers can move their sampling
-point instead of forcing a lower spi-max-frequency, posted as an RFC at
-
-  https://lore.kernel.org/r/20260303-fsl-qspi-rx-sampling-delay-v1-0-9326bbc492d6@kontron.de
-
-Nothing in that work is needed to read this series, and nothing here
-depends on it: the chip side is a separate quantity that composes with
-this one, which is why patch 1 spends a paragraph on keeping them apart.
+One corner case changes: the peripheral value is now treated as unset
+when it is zero, whereas before an absent property could be told apart
+from an explicit "rx-sample-delay-ns = <0>", the latter overriding a
+non-zero controller default with no delay at all. There are two users of
+the property in the whole tree and neither does this, and zero means the
+same as unset for every other user of the new field.
 
 Assisted-by: Claude:claude-opus-5
 Signed-off-by: Frieder Schrempf <frieder.schrempf@kontron.de>
 ---
-Frieder Schrempf (3):
-      dt-bindings: spi: Clarify what rx-sample-delay-ns describes
-      spi: Parse the rx-sample-delay-ns peripheral property in the core
-      spi: dw: Use the rx-sample-delay-ns value parsed by the core
+ drivers/spi/spi-dw-core.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
- .../devicetree/bindings/spi/spi-peripheral-props.yaml       |  8 ++++++++
- drivers/spi/spi-dw-core.c                                   | 13 +++++++------
- drivers/spi/spi.c                                           |  9 +++++++++
- include/linux/spi/spi.h                                     |  9 +++++++++
- 4 files changed, 33 insertions(+), 6 deletions(-)
----
-base-commit: 238650ef6c7c7cca08e032527329424c9fbd70e5
-change-id: 20260917-spi-sample-delay-cleanup-ab1d03ae02fa
+diff --git a/drivers/spi/spi-dw-core.c b/drivers/spi/spi-dw-core.c
+index 206d3f9dd83d..b86b607cc817 100644
+--- a/drivers/spi/spi-dw-core.c
++++ b/drivers/spi/spi-dw-core.c
+@@ -1104,12 +1104,13 @@ static int dw_spi_setup(struct spi_device *spi)
+ 		if (!chip)
+ 			return -ENOMEM;
+ 		spi_set_ctldata(spi, chip);
+-		/* Get specific / default rx-sample-delay */
+-		if (device_property_read_u32(&spi->dev,
+-					     "rx-sample-delay-ns",
+-					     &rx_sample_dly_ns) != 0)
+-			/* Use default controller value */
+-			rx_sample_dly_ns = dws->def_rx_sample_dly_ns;
++		/*
++		 * Use the per-device value the core parsed from the peripheral
++		 * node, and fall back to the controller-wide default when the
++		 * device does not ask for a delay of its own.
++		 */
++		rx_sample_dly_ns = spi->rx_sample_delay_ns ?:
++				   dws->def_rx_sample_dly_ns;
+ 		chip->rx_sample_dly = DIV_ROUND_CLOSEST(rx_sample_dly_ns,
+ 							NSEC_PER_SEC /
+ 							dws->max_freq);
 
-Best regards,
---  
-Frieder Schrempf <frieder.schrempf@kontron.de>
+-- 
+2.55.0
 
 
 _______________________________________________
