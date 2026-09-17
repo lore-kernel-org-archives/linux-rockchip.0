@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A464C982D5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5696DC982D6
 	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2026 13:49:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KYXnT5fV78ZhFNRLHcY20lSgIwVryASXzqlwASnOEC4=; b=qn86jhqzLqzUY9
-	ybXqkzQlv+WXdZFRD12aPDoetD8i6BzOZUl34AS2qm2SNNALsRQBWlRaYLb4L4bxgrMJ3QlHSEomt
-	JJXVK5BHU0e6KmH6EfrOJKP4NQir8WI/0bBpBHJz+NDnPUBdAqN39BiQUvXnZakZ6FNCWHT6V/jb9
-	vX/ASVhIePlicxGrn00SqwgiZxGzqKCoSoRni7Dn3qeKF+2qGvOO7PQsf65aVB8OZmC/idMSnawB3
-	cv0VKqxvYwSs4JGOg7rDiXl7o+3R8rLE0FBNc2qChndO2yYp2TGuBlXQko26FsnqEibgE4S+aWj5C
-	Y0lA7MwXqfD9PKp+kqkQ==;
+	List-Owner; bh=vZqxMwlcP/ibtJbN2d2H1/z6/9dLUmS9hHIdRPx8s4s=; b=dKCbn8PEoKfDXh
+	LJUtDZM7jS1SwOD4c69euFOrzyo5oAiAqMMbRkVDqfoJhHIRzICXe0HP6AU4O5NbNcoQv15qdiE9e
+	5V2W7MtnCvuEodjn+lFc2h5puSp0RfTLAJ7dSOb//x4JU7v0tsqMePONbnleO4VFJ7kKuEKUNp1+h
+	1CGERhl8stpMUyi3izrjvMref+Ya8dTK4yUiYoMo96OymQalJC0gEaT7L6y/RnIO9JIglDJjp5glg
+	mWrTrmk77Ey502yKx7kAQ6cFUnlUD99USrB/0+lSJbl0mE+7ZT0Tp6YUMiFEDjR4G/9/TJFxx9NFf
+	6sk0CLV4A9lA1jgtiufw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7CUa-0000000BRSA-47GW;
+	id 1x7CUa-0000000BRPw-17Wx;
 	Thu, 17 Sep 2026 13:49:36 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7CUS-0000000BRKQ-1gT7;
-	Thu, 17 Sep 2026 13:49:29 +0000
+	id 1x7CUO-0000000BRIu-2zjS;
+	Thu, 17 Sep 2026 13:49:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1789652962;
-	bh=Vwa4GrOJLj5QOmHKF3cPLVhahqIlD9N15DaKOL6XZow=;
+	bh=aT58dFKDyhiJqaN2cKniCqERGQtyp3W/fZdagjPbqYo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=gfIW4wmONU9quRWLErVqefc050kJuXV+HjWpM794SlGC8upnE2Mi5HHh3XO5s25qI
-	 rbDMGb3Sdp3Da8aowS0hL1aG89vmR+OiQYTi+wnM12oCRWM26kdbfjA/4OfybptgL+
-	 tfvUJoh7uvFSAnQmHamczcO/ZLy1hy+DiDlylmtrG7qjHEhBSS4SoNhH0OVgQw7ySe
-	 tgWmzhgQIBOGvZireXI6d/euEvtIA5abdrfROSFGy8LUKC2zOAKrd5GWrYsFykoUS0
-	 dU5DtIO7FhrSeFIgetjzoiQd9nJDnXedsbjF2Sl0AytF9IHoZk/SyVONee9hiBh4UR
-	 8PM3mEy/4DzgQ==
+	b=nENDayZu5h86a+lobdB+0pkGYEghVc+bobhgshkO8kmUW5CkYKrK6Qh2fIrFQUvoO
+	 7QM9sq/80J8HXBPyFqxMAdbCSF7pnrrR+p4aSpWIb+qOqOQWU5Tn7ENhL/urEntFAJ
+	 8JaOyZccLpSnjkr+ZgKNUBZaTGAQu+cW4RlggrDhVUnDj1NrLZ6xkvTyuekP/iUcrR
+	 KSTPucE7BoA2qC7brIzJEivrxJnYH2l4FJzqGc6xvIXyMi8CZov++63WgvkFvxCVR2
+	 0pGYwpIsxuRnPaLCvxLGHP1ttI+05y2ps4ZhSdgmvtmbVRnhVkraoLZhfS7BzNtg6/
+	 26rSqNMUJ+oJg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 205A417E0CFC;
-	Thu, 17 Sep 2026 15:49:22 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C762017E09B5;
+	Thu, 17 Sep 2026 15:49:21 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 8140E480035; Thu, 17 Sep 2026 15:49:21 +0200 (CEST)
+	id 7DA5C480030; Thu, 17 Sep 2026 15:49:21 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 17 Sep 2026 15:49:17 +0200
-Subject: [PATCH 5/8] PM / devfreq: rockchip-dfi: use bulk clock APIs
+Date: Thu, 17 Sep 2026 15:49:15 +0200
+Subject: [PATCH 3/8] PM / devfreq: rockchip-dfi: move to per-variant const
+ structs
 MIME-Version: 1.0
-Message-Id: <20260917-rockchip-dfi-cleanup-v1-5-4f00a97a69a6@collabora.com>
+Message-Id: <20260917-rockchip-dfi-cleanup-v1-3-4f00a97a69a6@collabora.com>
 References: <20260917-rockchip-dfi-cleanup-v1-0-4f00a97a69a6@collabora.com>
 In-Reply-To: <20260917-rockchip-dfi-cleanup-v1-0-4f00a97a69a6@collabora.com>
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
@@ -66,26 +67,26 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4096;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9544;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=lvpRuYQwgyj92YlzDFeJ2yAKSqPbRarTndix/sTx4H4=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqr7+FnCJy/jwMa05leUmYukEYxoMo7+2UL3
- rNxQP4QiU6RKYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqq+/hAAoJENju1/PI
- O/qahRYQAIcu0Ng3nsVFJwJZlYpx2G5XCANzt/usufe2TdKNle1X8R6GEtNEj6KUTo7LZV+U5+r
- 6nhf9OvEZrFgqOMBXHCey0Zk0jbklGACrA7uBR6RAdLbN6GMhvq3J75Sf4Sj8bUNBrGYHTG7i/q
- kBhv3OYcjV93VHPgRl1DYtaOsV5z7CRdD3nmXxT8tEBlo+OQFOD1NJ8goBtKo30BAScKw1VDabO
- 30Gz9cCf/PFYAtqUSQAI6kpCeWKPVe8VnNYxtmPbMu0nkVb6asaBw3CY/PnXG8zER52pshlqtdK
- cMfDxSmhaesilCm4R7WkMJkh7jSuC8NmvTnnXRxQBw1rnInxTvCi79OaLbDpEmC+rtQ0wljUPPi
- u3FmsOolDxiGwfutV30VBePzCbDm/19zPgRySlh2ChV0UcrDVIBgK1VtG4Olav5zYqFnbI/vxvs
- kmceHjBYQRE5dZkVD1Of6NJZruzp0WbbOEMMTJXOVa76F/9wxCkkZTAN7gg3Vbr5q6Mpe792JAb
- HVzXca3qoElo5ZqBI4hKZr1E01TAR6P1FC+EdM+L6Y5D4hV4+8pTzJscO805IOt68h/wkvUKiqc
- 6M6J1KddzhhW7ykW6yWSfc6Cs2++IrN1h6N3C8tcxJJFzW1KLXJRUnacmkx9VWYec1z/jsQSOp1
- sSgUTPASSXQQNJZf76GoqkA==
+ bh=y65RBL8I0JRF1EhPVMN7EiGUEBnlIwsg0XksNw4AoAc=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqr7+Fnij/OsEOFye8+laUQi9WXJoNmxfBL4
+ 6+Iao1KkhJfnYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqq+/hAAoJENju1/PI
+ O/qaaGsP/RUiYEaltcRqOAl2464GnmWS6SSYVs2ChA4uuDGPYN0+ZvkO6nKOZv14WAc4ZpHkzl9
+ EJ6la7DDZpKApyjosKs0w8yAFWvDdM8r7BPMO8Jx1fr60tAmTyfVBgxPMeiM7goUueupY4vrYr3
+ hKKb377dIXlyztX4F5TRqYxkfzcm0lBSWXOtoAw5cGlSZIHo0jsFdtMpEMGQpBDdnv9vWVOPwJl
+ HftuyqgSfvNKp/aW8Y4RoWHakuxM7JkLQLoU41AM+kBWK5El8l36l74mERzgjDctAh3fUpouuM4
+ AgXhVo7x46ez8F5D4TBTOnnVz3FasC5ZaGi90aZPpbOXQK92j9PfVaSGwAbPM0AATfKoCQKO2Ke
+ dbAfxMNyK4dliL08RywCuqd5D25a98S8ozo/6qqN448+OBFEXULU4VxGkCKK11f+/rLSZTyDM0z
+ ahhvQBWiyuvsWbMUv0zRgxccVwBybAoiM7H56VvMMJhfWQ9J3GEYO2+WaezXmOWU7c7P/YBsnFl
+ Jqbj6xWKLq8hQxkLkzOi6QrZkdm8a0PKWsQmXEWlh5uFH5HEiUsxV0Buy8b/1viBGGacfIDNU0f
+ pEnD3YXgVGBcYLu/LPAwu1wM2GFA6Mxfe5iLmagNhtd2qH4NW+/jYdtRAqAd+jxSayw2Lkhl6Yg
+ KhmK04eR8EI32k6EEqp4t3w==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_064928_599240_F2B1904A 
-X-CRM114-Status: GOOD (  21.16  )
+X-CRM114-CacheID: sfid-20260917_064924_956187_C7932B8E 
+X-CRM114-Status: GOOD (  23.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,127 +105,271 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Currently, the only clock rockchip-dfi will ever use is on the rk3399,
-namely pclk_ddr_mon. However, this is mainly because every other SoC's
-mainline clock tree and bindings are probably lying and not telling us
-about some clock gate branches that do exist in hardware, but nothing
-happens ever gate.
+The rockchip-dfi driver supports several variants of the DDR monitoring
+hardware. The differences in these variants are handled with one init
+function for each variant.
 
-Get preparations out of the way to fix this by moving to the bulk clock
-APIs, which will make handling the one-clock-per-channel cases easier to
-deal with.
+However, some of the members that these init functions set are actually
+constants, specific to that variant, with no runtime involvement from
+reading registers or anything.
+
+Refactor the code to move those values (and the soc_init function
+pointer) into a new struct. Declare some const instances of this variant
+struct, and use it wherever needed.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 39 +++++++++++++++++++++++++++---------
- 1 file changed, 30 insertions(+), 9 deletions(-)
+ drivers/devfreq/event/rockchip-dfi.c | 94 +++++++++++++++++++++---------------
+ 1 file changed, 54 insertions(+), 40 deletions(-)
 
 diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index dd9edfd6a674..b61ec500eaed 100644
+index 255aee1bdd91..5339616f7ca6 100644
 --- a/drivers/devfreq/event/rockchip-dfi.c
 +++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -98,7 +98,7 @@ struct rockchip_dfi {
- 	struct device *dev;
- 	void __iomem *regs;
- 	struct regmap *regmap_pmu;
--	struct clk *clk;
-+	struct clk_bulk_data *clocks;
- 	int usecount;
+@@ -103,7 +103,6 @@ struct rockchip_dfi {
  	struct mutex mutex;
  	u32 ddr_type;
-@@ -122,6 +122,8 @@ struct rockchip_dfi_variant {
- 	int stride;
- 	bool ctrl_single;
- 	unsigned int max_channels;
-+	const char * const *clk_names;
-+	unsigned int num_clks;
+ 	unsigned int channel_mask;
+-	unsigned int max_channels;
+ 	enum cpuhp_state cpuhp_state;
+ 	struct hlist_node node;
+ 	struct pmu pmu;
+@@ -112,11 +111,17 @@ struct rockchip_dfi {
+ 	int active_events;
+ 	int burst_len;
+ 	int buswidth[DMC_MAX_CHANNELS];
+-	int ddrmon_stride;
+-	bool ddrmon_ctrl_single;
+ 	u32 lp5_bank_mode;
+ 	bool lp5_ckr;	/* true if in 4:1 command-to-data clock ratio mode */
+ 	unsigned int count_multiplier;	/* number of data clocks per count */
++	const struct rockchip_dfi_variant *variant;
++};
++
++struct rockchip_dfi_variant {
++	int (*init)(struct rockchip_dfi *dfi);
++	int stride;
++	bool ctrl_single;
++	unsigned int max_channels;
  };
  
  static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
-@@ -183,9 +185,10 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- 	if (dfi->usecount > 1)
+@@ -188,7 +193,7 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 	if (ret)
  		goto out;
  
--	ret = clk_prepare_enable(dfi->clk);
-+	ret = clk_bulk_prepare_enable(dfi->variant->num_clks, dfi->clocks);
- 	if (ret) {
--		dev_err(&dfi->edev->dev, "failed to enable dfi clk: %d\n", ret);
-+		dev_err(&dfi->edev->dev, "failed to enable dfi clocks: %pe\n",
-+			ERR_PTR(ret));
- 		goto out;
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 
+ 		if (!(dfi->channel_mask & BIT(i)))
+ 			continue;
+@@ -197,16 +202,16 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_TIMER_CNT_EN, 0) |
+ 			       FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0) |
+ 			       FIELD_PREP_WM16(DDRMON_CTRL_HARDWARE_EN, 0),
+-			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
+ 
+-		writel_relaxed(ctrl, dfi_regs + i * dfi->ddrmon_stride +
++		writel_relaxed(ctrl, dfi_regs + i * dfi->variant->stride +
+ 			       DDRMON_CTRL);
+ 
+ 		/* enable count, use software mode */
+ 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 1),
+-			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
+ 
+-		if (dfi->ddrmon_ctrl_single)
++		if (dfi->variant->ctrl_single)
+ 			break;
  	}
+ out:
+@@ -229,14 +234,14 @@ static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
+ 	if (dfi->usecount > 0)
+ 		goto out;
  
-@@ -245,7 +248,7 @@ static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 		if (!(dfi->channel_mask & BIT(i)))
+ 			continue;
+ 
+ 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0),
+-			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
+ 
+-		if (dfi->ddrmon_ctrl_single)
++		if (dfi->variant->ctrl_single)
  			break;
  	}
  
--	clk_disable_unprepare(dfi->clk);
-+	clk_bulk_disable_unprepare(dfi->variant->num_clks, dfi->clocks);
- out:
- 	mutex_unlock(&dfi->mutex);
- }
-@@ -721,11 +724,6 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
- 	struct regmap *regmap_pmu = dfi->regmap_pmu;
- 	u32 val;
+@@ -250,17 +255,17 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
+ 	u32 i;
+ 	void __iomem *dfi_regs = dfi->regs;
  
--	dfi->clk = devm_clk_get(dfi->dev, "pclk_ddr_mon");
--	if (IS_ERR(dfi->clk))
--		return dev_err_probe(dfi->dev, PTR_ERR(dfi->clk),
--				     "Cannot get the clk pclk_ddr_mon\n");
--
- 	/* get ddr type */
- 	regmap_read(regmap_pmu, RK3399_PMUGRF_OS_REG2, &val);
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 		if (!(dfi->channel_mask & BIT(i)))
+ 			continue;
+ 		res->c[i].read_access = readl_relaxed(dfi_regs +
+-				DDRMON_CH0_RD_NUM + i * dfi->ddrmon_stride);
++				DDRMON_CH0_RD_NUM + i * dfi->variant->stride);
+ 		res->c[i].write_access = readl_relaxed(dfi_regs +
+-				DDRMON_CH0_WR_NUM + i * dfi->ddrmon_stride);
++				DDRMON_CH0_WR_NUM + i * dfi->variant->stride);
+ 		res->c[i].access = readl_relaxed(dfi_regs +
+-				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->ddrmon_stride);
++				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->variant->stride);
+ 		res->c[i].clock_cycles = readl_relaxed(dfi_regs +
+-				DDRMON_CH0_COUNT_NUM + i * dfi->ddrmon_stride);
++				DDRMON_CH0_COUNT_NUM + i * dfi->variant->stride);
+ 	}
+ }
+ 
+@@ -297,7 +302,7 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
+ 	rockchip_dfi_read_counters(dfi, &count);
+ 
+ 	/* We can only report one channel, so find the busiest one */
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 		u32 a, c;
+ 
+ 		if (!(dfi->channel_mask & BIT(i)))
+@@ -336,7 +341,7 @@ static void rockchip_ddr_perf_counters_add(struct rockchip_dfi *dfi,
+ 	const struct dmc_count *last = &dfi->last_perf_count;
+ 	int i;
+ 
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 		res->c[i].read_access = dfi->total_count.c[i].read_access +
+ 			(u32)(now->c[i].read_access - last->c[i].read_access);
+ 		res->c[i].write_access = dfi->total_count.c[i].write_access +
+@@ -477,11 +482,11 @@ static u64 rockchip_ddr_perf_event_get_count(struct perf_event *event)
+ 		count = total.c[0].clock_cycles * dfi->count_multiplier;
+ 		break;
+ 	case PERF_EVENT_READ_BYTES:
+-		for (i = 0; i < dfi->max_channels; i++)
++		for (i = 0; i < dfi->variant->max_channels; i++)
+ 			count += total.c[i].read_access * blen * dfi->buswidth[i];
+ 		break;
+ 	case PERF_EVENT_WRITE_BYTES:
+-		for (i = 0; i < dfi->max_channels; i++)
++		for (i = 0; i < dfi->variant->max_channels; i++)
+ 			count += total.c[i].write_access * blen * dfi->buswidth[i];
+ 		break;
+ 	case PERF_EVENT_READ_BYTES0:
+@@ -509,7 +514,7 @@ static u64 rockchip_ddr_perf_event_get_count(struct perf_event *event)
+ 		count = total.c[3].write_access * blen * dfi->buswidth[3];
+ 		break;
+ 	case PERF_EVENT_BYTES:
+-		for (i = 0; i < dfi->max_channels; i++)
++		for (i = 0; i < dfi->variant->max_channels; i++)
+ 			count += total.c[i].access * blen * dfi->buswidth[i];
+ 		break;
+ 	}
+@@ -726,14 +731,10 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
  	dfi->ddr_type = FIELD_GET(RK3399_PMUGRF_OS_REG2_DDRTYPE, val);
-@@ -802,11 +800,17 @@ static int rk3588_dfi_init(struct rockchip_dfi *dfi)
+ 
+ 	dfi->channel_mask = GENMASK(1, 0);
+-	dfi->max_channels = 2;
+ 
+ 	dfi->buswidth[0] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH0, val) == 0 ? 4 : 2;
+ 	dfi->buswidth[1] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH1, val) == 0 ? 4 : 2;
+ 
+-	dfi->ddrmon_stride = 0x14;
+-	dfi->ddrmon_ctrl_single = true;
+-
  	return 0;
  };
  
-+static const char * const rk3399_clk_names[] = {
-+	"pclk_ddr_mon",
-+};
-+
- static const struct rockchip_dfi_variant rk3399_variant = {
- 	.init = rk3399_dfi_init,
- 	.stride = 0x14,
- 	.ctrl_single = true,
- 	.max_channels = 2,
-+	.clk_names = rk3399_clk_names,
-+	.num_clks = ARRAY_SIZE(rk3399_clk_names),
+@@ -756,13 +757,9 @@ static int rk3568_dfi_init(struct rockchip_dfi *dfi)
+ 		dfi->ddr_type |= FIELD_GET(RK3568_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, reg3) << 3;
+ 
+ 	dfi->channel_mask = BIT(0);
+-	dfi->max_channels = 1;
+ 
+ 	dfi->buswidth[0] = FIELD_GET(RK3568_PMUGRF_OS_REG2_BW_CH0, reg2) == 0 ? 4 : 2;
+ 
+-	dfi->ddrmon_stride = 0x0; /* not relevant, we only have a single channel on this SoC */
+-	dfi->ddrmon_ctrl_single = true;
+-
+ 	return 0;
  };
  
- static const struct rockchip_dfi_variant rk3568_variant = {
-@@ -837,6 +841,7 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+@@ -791,9 +788,7 @@ static int rk3588_dfi_init(struct rockchip_dfi *dfi)
+ 	dfi->buswidth[3] = FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH1, reg4) == 0 ? 4 : 2;
+ 	dfi->channel_mask = FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg2) |
+ 			    FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg4) << 2;
+-	dfi->max_channels = 4;
+ 
+-	dfi->ddrmon_stride = 0x4000;
+ 	dfi->count_multiplier = 2;
+ 
+ 	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR5) {
+@@ -807,10 +802,30 @@ static int rk3588_dfi_init(struct rockchip_dfi *dfi)
+ 	return 0;
+ };
+ 
++static const struct rockchip_dfi_variant rk3399_variant = {
++	.init = rk3399_dfi_init,
++	.stride = 0x14,
++	.ctrl_single = true,
++	.max_channels = 2,
++};
++
++static const struct rockchip_dfi_variant rk3568_variant = {
++	.init = rk3568_dfi_init,
++	.stride = 0x0,
++	.ctrl_single = true,
++	.max_channels = 1,
++};
++
++static const struct rockchip_dfi_variant rk3588_variant = {
++	.init = rk3588_dfi_init,
++	.stride = 0x4000,
++	.max_channels = 4,
++};
++
+ static const struct of_device_id rockchip_dfi_id_match[] = {
+-	{ .compatible = "rockchip,rk3399-dfi", .data = rk3399_dfi_init },
+-	{ .compatible = "rockchip,rk3568-dfi", .data = rk3568_dfi_init },
+-	{ .compatible = "rockchip,rk3588-dfi", .data = rk3588_dfi_init },
++	{ .compatible = "rockchip,rk3399-dfi", .data = &rk3399_variant },
++	{ .compatible = "rockchip,rk3568-dfi", .data = &rk3568_variant },
++	{ .compatible = "rockchip,rk3588-dfi", .data = &rk3588_variant },
+ 	{ },
+ };
+ 
+@@ -822,17 +837,16 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
  	struct rockchip_dfi *dfi;
  	struct devfreq_event_desc *desc;
  	struct device_node *np = pdev->dev.of_node, *node;
-+	unsigned int i;
+-	int (*soc_init)(struct rockchip_dfi *dfi);
  	int ret;
  
+-	soc_init = of_device_get_match_data(&pdev->dev);
+-	if (!soc_init)
+-		return -EINVAL;
+-
  	dfi = devm_kzalloc(dev, sizeof(*dfi), GFP_KERNEL);
-@@ -868,6 +873,22 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+ 	if (!dfi)
+ 		return -ENOMEM;
+ 
++	dfi->variant = of_device_get_match_data(dev);
++	if (!dfi->variant)
++		return -EINVAL;
++
+ 	dfi->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(dfi->regs))
+ 		return PTR_ERR(dfi->regs);
+@@ -854,7 +868,7 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
  	desc->driver_data = dfi;
  	desc->name = np->name;
  
-+	if (dfi->variant->num_clks) {
-+		/* NB: CCF is fine with us leaving this NULL if num_clks = 0 */
-+		dfi->clocks = devm_kcalloc(dev, dfi->variant->num_clks,
-+					   sizeof(*dfi->clocks), GFP_KERNEL);
-+		if (!dfi->clocks)
-+			return -ENOMEM;
-+
-+		for (i = 0; i < dfi->variant->num_clks; i++)
-+			dfi->clocks[i].id = dfi->variant->clk_names[i];
-+
-+		ret = devm_clk_bulk_get(dev, dfi->variant->num_clks,
-+					dfi->clocks);
-+		if (ret)
-+			return dev_err_probe(dev, ret, "failed to get clocks\n");
-+	}
-+
- 	ret = dfi->variant->init(dfi);
+-	ret = soc_init(dfi);
++	ret = dfi->variant->init(dfi);
  	if (ret)
  		return ret;
+ 
 
 -- 
 2.53.0
