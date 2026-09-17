@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5696DC982D6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD867C982D8
 	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2026 13:49:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vZqxMwlcP/ibtJbN2d2H1/z6/9dLUmS9hHIdRPx8s4s=; b=dKCbn8PEoKfDXh
-	LJUtDZM7jS1SwOD4c69euFOrzyo5oAiAqMMbRkVDqfoJhHIRzICXe0HP6AU4O5NbNcoQv15qdiE9e
-	5V2W7MtnCvuEodjn+lFc2h5puSp0RfTLAJ7dSOb//x4JU7v0tsqMePONbnleO4VFJ7kKuEKUNp1+h
-	1CGERhl8stpMUyi3izrjvMref+Ya8dTK4yUiYoMo96OymQalJC0gEaT7L6y/RnIO9JIglDJjp5glg
-	mWrTrmk77Ey502yKx7kAQ6cFUnlUD99USrB/0+lSJbl0mE+7ZT0Tp6YUMiFEDjR4G/9/TJFxx9NFf
-	6sk0CLV4A9lA1jgtiufw==;
+	List-Owner; bh=OPVJLKRyJHrbi2w/69Ewn2kDKVRB10K3T2D0B3pCoQc=; b=QfjFL5xifhVFaQ
+	yQOxr8c2I3bFD27KZ6ChtpmBPD3O7X6DdkqY4OBjn+cQ+njWLR+HmazW0fTXIzR2uH0fJyInbIXVr
+	3a7YtUWDN+AOpTDWfuR9scU5is5bT+JTgFZ7xeuJ/2UniMQRYvVd7jFKaKDKtSg/4YdOurHMkBGPn
+	tYUTzm5CrLgN6rc2XVEu6AqI5jHta6/WRz/B6Az/YankqrozMX//OZS7fimfbqzGH67H7nfYWVRZr
+	xj9o2D05bEefG7fNuxUaoWOfGxzusa0EZdMD6WbFhsgfnUl/3R4rgFCRDXTsbyKI5eL/7fybF2vlH
+	E05Yu8I/erF1NpyAOE9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7CUa-0000000BRPw-17Wx;
+	id 1x7CUa-0000000BRRQ-39aF;
 	Thu, 17 Sep 2026 13:49:36 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7CUO-0000000BRIu-2zjS;
+	id 1x7CUO-0000000BRIv-3PEp;
 	Thu, 17 Sep 2026 13:49:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789652962;
-	bh=aT58dFKDyhiJqaN2cKniCqERGQtyp3W/fZdagjPbqYo=;
+	s=mail; t=1789652961;
+	bh=I5wKmiysBTuYLPKycTb4r8SCqRgtc3YcQ663wjfvpFY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=nENDayZu5h86a+lobdB+0pkGYEghVc+bobhgshkO8kmUW5CkYKrK6Qh2fIrFQUvoO
-	 7QM9sq/80J8HXBPyFqxMAdbCSF7pnrrR+p4aSpWIb+qOqOQWU5Tn7ENhL/urEntFAJ
-	 8JaOyZccLpSnjkr+ZgKNUBZaTGAQu+cW4RlggrDhVUnDj1NrLZ6xkvTyuekP/iUcrR
-	 KSTPucE7BoA2qC7brIzJEivrxJnYH2l4FJzqGc6xvIXyMi8CZov++63WgvkFvxCVR2
-	 0pGYwpIsxuRnPaLCvxLGHP1ttI+05y2ps4ZhSdgmvtmbVRnhVkraoLZhfS7BzNtg6/
-	 26rSqNMUJ+oJg==
+	b=fmY0pZ0ijzex4HtptD/UaC0jxHsIKAnVKRmVtmxi+ObVR6pvnHypESo33jMrxO6xO
+	 MYvtlyJTET0DxpBrQXjH66LFnmunjq/9HGnMvVB70Gg+7h5Gb9QHttNPNRIy7rQb6E
+	 SR7/+6GvJUJaDrkjwFRcFenjuM5g0oFARGh6P63/l/ow9HQUjYcKmSVLVjfV1Uo8bf
+	 W3tdUlvxr8gvH1uJ3sg/pOHZTBYw8ubsbnevItrQP6/c1sjeJBeTt6LOWIbT9GUHQ1
+	 iROOd32glafkfuwh2hHJsQRuAxzRPte/qfVHnPFV2i6rhX6daaHnUKiFCGgWUYk8HY
+	 s0OhYFuEns5Dg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C762017E09B5;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C623017E07DB;
 	Thu, 17 Sep 2026 15:49:21 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7DA5C480030; Thu, 17 Sep 2026 15:49:21 +0200 (CEST)
+	id 7BE6348002F; Thu, 17 Sep 2026 15:49:21 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 17 Sep 2026 15:49:15 +0200
-Subject: [PATCH 3/8] PM / devfreq: rockchip-dfi: move to per-variant const
- structs
+Date: Thu, 17 Sep 2026 15:49:14 +0200
+Subject: [PATCH 2/8] dt-bindings: devfreq: event: rockchip,dfi: add clocks
+ to rk3588
 MIME-Version: 1.0
-Message-Id: <20260917-rockchip-dfi-cleanup-v1-3-4f00a97a69a6@collabora.com>
+Message-Id: <20260917-rockchip-dfi-cleanup-v1-2-4f00a97a69a6@collabora.com>
 References: <20260917-rockchip-dfi-cleanup-v1-0-4f00a97a69a6@collabora.com>
 In-Reply-To: <20260917-rockchip-dfi-cleanup-v1-0-4f00a97a69a6@collabora.com>
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
@@ -67,26 +67,26 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=9544;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3824;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=y65RBL8I0JRF1EhPVMN7EiGUEBnlIwsg0XksNw4AoAc=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqr7+Fnij/OsEOFye8+laUQi9WXJoNmxfBL4
- 6+Iao1KkhJfnYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqq+/hAAoJENju1/PI
- O/qaaGsP/RUiYEaltcRqOAl2464GnmWS6SSYVs2ChA4uuDGPYN0+ZvkO6nKOZv14WAc4ZpHkzl9
- EJ6la7DDZpKApyjosKs0w8yAFWvDdM8r7BPMO8Jx1fr60tAmTyfVBgxPMeiM7goUueupY4vrYr3
- hKKb377dIXlyztX4F5TRqYxkfzcm0lBSWXOtoAw5cGlSZIHo0jsFdtMpEMGQpBDdnv9vWVOPwJl
- HftuyqgSfvNKp/aW8Y4RoWHakuxM7JkLQLoU41AM+kBWK5El8l36l74mERzgjDctAh3fUpouuM4
- AgXhVo7x46ez8F5D4TBTOnnVz3FasC5ZaGi90aZPpbOXQK92j9PfVaSGwAbPM0AATfKoCQKO2Ke
- dbAfxMNyK4dliL08RywCuqd5D25a98S8ozo/6qqN448+OBFEXULU4VxGkCKK11f+/rLSZTyDM0z
- ahhvQBWiyuvsWbMUv0zRgxccVwBybAoiM7H56VvMMJhfWQ9J3GEYO2+WaezXmOWU7c7P/YBsnFl
- Jqbj6xWKLq8hQxkLkzOi6QrZkdm8a0PKWsQmXEWlh5uFH5HEiUsxV0Buy8b/1viBGGacfIDNU0f
- pEnD3YXgVGBcYLu/LPAwu1wM2GFA6Mxfe5iLmagNhtd2qH4NW+/jYdtRAqAd+jxSayw2Lkhl6Yg
- KhmK04eR8EI32k6EEqp4t3w==
+ bh=CMJKlCe6bEkR7uYuohkbQVDQ2FF/s+dLQ5XKL7udDIg=;
+ b=kA0DAAoB2O7X88g7+poByyZiAGqr7+GjOYD9XgQwPQo4FjhjYoSNVwOC73J35EGjf1ULcUn+T
+ IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqq+/hAAoJENju1/PIO/qaDRIP/iF+
+ L3Z3wPL14QCK2IB9xToLK1Mqu5oCNh+8aeBgN0cywq5NCujKDyT6nFPngIeAKrHTee0vKdYNquf
+ W5wOrwwwDtuMZIS9G5hkJLaqSOuClUNVlDvWay0uyIWh13cS3eMSdEEIs1R9xYziyHrS8kJC80w
+ abkCpCRd+cDfBBGBdV+1Y6JRavDl8DzPbql91RUlinkTc8wr8eKGjBYTE6oHC2DqEzxddsGsPTx
+ FNciqNMzXtrZxEu39JupEN2zgyuiEFp+2qde7JyBePmyuGsQ5RachDXkZi0TzrWfK88+S3/2rbV
+ M7VD1Jyg3vYVRwcCAc1FeJXE3kBzgYUauA9eOGnQiWeg7Sj2a5b68SzuB6me1DgUqUG27aER3dB
+ IK5o6U9kiGdnQ6FtFoS+aWnJJKMlUXdkjNTqxo1KNZD2KV9LdwnXs5vEcdtABI/CVc5BN9XGJUO
+ RSWxIdjUh1bxSvGLk4lMD5Zt8phLTux5SmXDXZr1Metsdvul9HPTpPRHvz0QKkl2aJ6QTo4H+Hw
+ EUysmUCFKzctrKPWPd55V0WZ8lIlXZROvTZueMEa7IVNiwl5yzvzCw2VmSw4sPnx3TvCCtEZKa8
+ eyEfekjgjwYqxNTVFVC5i5eucnpugBF92jBzcMF8B1xj8+c1K4+FttqO6sa1KIhouZaCY3IDvkf
+ TGz7p
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_064924_956187_C7932B8E 
-X-CRM114-Status: GOOD (  23.42  )
+X-CRM114-CacheID: sfid-20260917_064925_012226_5E0122A8 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,271 +105,132 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-The rockchip-dfi driver supports several variants of the DDR monitoring
-hardware. The differences in these variants are handled with one init
-function for each variant.
+RK3588's DFI has pclks for each channel. They just weren't noticed as
+missing until now because nothing ever gates them, and they're ungated
+by default on power-on.
 
-However, some of the members that these init functions set are actually
-constants, specific to that variant, with no runtime involvement from
-reading registers or anything.
+The RK3399 clock situation needs no changes, as there the hardware
+really just has one monitoring unit for both channels.
 
-Refactor the code to move those values (and the soc_init function
-pointer) into a new struct. Declare some const instances of this variant
-struct, and use it wherever needed.
+Add these clocks to the binding, so that drivers for this device can
+properly know about their existence.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 94 +++++++++++++++++++++---------------
- 1 file changed, 54 insertions(+), 40 deletions(-)
+ .../bindings/devfreq/event/rockchip,dfi.yaml       | 84 ++++++++++++++++++----
+ 1 file changed, 72 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 255aee1bdd91..5339616f7ca6 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -103,7 +103,6 @@ struct rockchip_dfi {
- 	struct mutex mutex;
- 	u32 ddr_type;
- 	unsigned int channel_mask;
--	unsigned int max_channels;
- 	enum cpuhp_state cpuhp_state;
- 	struct hlist_node node;
- 	struct pmu pmu;
-@@ -112,11 +111,17 @@ struct rockchip_dfi {
- 	int active_events;
- 	int burst_len;
- 	int buswidth[DMC_MAX_CHANNELS];
--	int ddrmon_stride;
--	bool ddrmon_ctrl_single;
- 	u32 lp5_bank_mode;
- 	bool lp5_ckr;	/* true if in 4:1 command-to-data clock ratio mode */
- 	unsigned int count_multiplier;	/* number of data clocks per count */
-+	const struct rockchip_dfi_variant *variant;
-+};
+diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+index 50d3fabe958d..d6e06a9bea19 100644
+--- a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
++++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+@@ -17,11 +17,19 @@ properties:
+       - rockchip,rk3588-dfi
+ 
+   clocks:
+-    maxItems: 1
++    minItems: 1
++    maxItems: 4
+ 
+   clock-names:
++    minItems: 1
++    maxItems: 4
+     items:
+-      - const: pclk_ddr_mon
++      - enum:
++          - pclk_ddr_mon
++          - pclk_ddr_mon_ch0
++      - const: pclk_ddr_mon_ch1
++      - const: pclk_ddr_mon_ch2
++      - const: pclk_ddr_mon_ch3
+ 
+   interrupts:
+     minItems: 1
+@@ -40,17 +48,50 @@ required:
+   - interrupts
+   - reg
+ 
+-if:
+-  properties:
+-    compatible:
+-      contains:
+-        enum:
+-          - rockchip,rk3399-dfi
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3399-dfi
++    then:
++      properties:
++        clocks:
++          items:
++            - description:
++                clock driving the DDR monitoring logic for all channels
++        clock-names:
++          items:
++            - const: pclk_ddr_mon
++      required:
++        - clocks
++        - clock-names
+ 
+-then:
+-  required:
+-    - clocks
+-    - clock-names
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3588-dfi
++    then:
++      properties:
++        clocks:
++          items:
++            - description:
++                clock driving the DDR monitoring logic for memory channel 0
++            - description:
++                clock driving the DDR monitoring logic for memory channel 1
++            - description:
++                clock driving the DDR monitoring logic for memory channel 2
++            - description:
++                clock driving the DDR monitoring logic for memory channel 3
++        clock-names:
++          items:
++            - const: pclk_ddr_mon_ch0
++            - const: pclk_ddr_mon_ch1
++            - const: pclk_ddr_mon_ch2
++            - const: pclk_ddr_mon_ch3
+ 
+ additionalProperties: false
+ 
+@@ -72,3 +113,22 @@ examples:
+         clock-names = "pclk_ddr_mon";
+       };
+     };
 +
-+struct rockchip_dfi_variant {
-+	int (*init)(struct rockchip_dfi *dfi);
-+	int stride;
-+	bool ctrl_single;
-+	unsigned int max_channels;
- };
- 
- static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
-@@ -188,7 +193,7 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- 	if (ret)
- 		goto out;
- 
--	for (i = 0; i < dfi->max_channels; i++) {
-+	for (i = 0; i < dfi->variant->max_channels; i++) {
- 
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
-@@ -197,16 +202,16 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_TIMER_CNT_EN, 0) |
- 			       FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0) |
- 			       FIELD_PREP_WM16(DDRMON_CTRL_HARDWARE_EN, 0),
--			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
-+			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
- 
--		writel_relaxed(ctrl, dfi_regs + i * dfi->ddrmon_stride +
-+		writel_relaxed(ctrl, dfi_regs + i * dfi->variant->stride +
- 			       DDRMON_CTRL);
- 
- 		/* enable count, use software mode */
- 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 1),
--			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
-+			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
- 
--		if (dfi->ddrmon_ctrl_single)
-+		if (dfi->variant->ctrl_single)
- 			break;
- 	}
- out:
-@@ -229,14 +234,14 @@ static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
- 	if (dfi->usecount > 0)
- 		goto out;
- 
--	for (i = 0; i < dfi->max_channels; i++) {
-+	for (i = 0; i < dfi->variant->max_channels; i++) {
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
- 
- 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0),
--			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
-+			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
- 
--		if (dfi->ddrmon_ctrl_single)
-+		if (dfi->variant->ctrl_single)
- 			break;
- 	}
- 
-@@ -250,17 +255,17 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
- 	u32 i;
- 	void __iomem *dfi_regs = dfi->regs;
- 
--	for (i = 0; i < dfi->max_channels; i++) {
-+	for (i = 0; i < dfi->variant->max_channels; i++) {
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
- 		res->c[i].read_access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_RD_NUM + i * dfi->ddrmon_stride);
-+				DDRMON_CH0_RD_NUM + i * dfi->variant->stride);
- 		res->c[i].write_access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_WR_NUM + i * dfi->ddrmon_stride);
-+				DDRMON_CH0_WR_NUM + i * dfi->variant->stride);
- 		res->c[i].access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->ddrmon_stride);
-+				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->variant->stride);
- 		res->c[i].clock_cycles = readl_relaxed(dfi_regs +
--				DDRMON_CH0_COUNT_NUM + i * dfi->ddrmon_stride);
-+				DDRMON_CH0_COUNT_NUM + i * dfi->variant->stride);
- 	}
- }
- 
-@@ -297,7 +302,7 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
- 	rockchip_dfi_read_counters(dfi, &count);
- 
- 	/* We can only report one channel, so find the busiest one */
--	for (i = 0; i < dfi->max_channels; i++) {
-+	for (i = 0; i < dfi->variant->max_channels; i++) {
- 		u32 a, c;
- 
- 		if (!(dfi->channel_mask & BIT(i)))
-@@ -336,7 +341,7 @@ static void rockchip_ddr_perf_counters_add(struct rockchip_dfi *dfi,
- 	const struct dmc_count *last = &dfi->last_perf_count;
- 	int i;
- 
--	for (i = 0; i < dfi->max_channels; i++) {
-+	for (i = 0; i < dfi->variant->max_channels; i++) {
- 		res->c[i].read_access = dfi->total_count.c[i].read_access +
- 			(u32)(now->c[i].read_access - last->c[i].read_access);
- 		res->c[i].write_access = dfi->total_count.c[i].write_access +
-@@ -477,11 +482,11 @@ static u64 rockchip_ddr_perf_event_get_count(struct perf_event *event)
- 		count = total.c[0].clock_cycles * dfi->count_multiplier;
- 		break;
- 	case PERF_EVENT_READ_BYTES:
--		for (i = 0; i < dfi->max_channels; i++)
-+		for (i = 0; i < dfi->variant->max_channels; i++)
- 			count += total.c[i].read_access * blen * dfi->buswidth[i];
- 		break;
- 	case PERF_EVENT_WRITE_BYTES:
--		for (i = 0; i < dfi->max_channels; i++)
-+		for (i = 0; i < dfi->variant->max_channels; i++)
- 			count += total.c[i].write_access * blen * dfi->buswidth[i];
- 		break;
- 	case PERF_EVENT_READ_BYTES0:
-@@ -509,7 +514,7 @@ static u64 rockchip_ddr_perf_event_get_count(struct perf_event *event)
- 		count = total.c[3].write_access * blen * dfi->buswidth[3];
- 		break;
- 	case PERF_EVENT_BYTES:
--		for (i = 0; i < dfi->max_channels; i++)
-+		for (i = 0; i < dfi->variant->max_channels; i++)
- 			count += total.c[i].access * blen * dfi->buswidth[i];
- 		break;
- 	}
-@@ -726,14 +731,10 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
- 	dfi->ddr_type = FIELD_GET(RK3399_PMUGRF_OS_REG2_DDRTYPE, val);
- 
- 	dfi->channel_mask = GENMASK(1, 0);
--	dfi->max_channels = 2;
- 
- 	dfi->buswidth[0] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH0, val) == 0 ? 4 : 2;
- 	dfi->buswidth[1] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH1, val) == 0 ? 4 : 2;
- 
--	dfi->ddrmon_stride = 0x14;
--	dfi->ddrmon_ctrl_single = true;
--
- 	return 0;
- };
- 
-@@ -756,13 +757,9 @@ static int rk3568_dfi_init(struct rockchip_dfi *dfi)
- 		dfi->ddr_type |= FIELD_GET(RK3568_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, reg3) << 3;
- 
- 	dfi->channel_mask = BIT(0);
--	dfi->max_channels = 1;
- 
- 	dfi->buswidth[0] = FIELD_GET(RK3568_PMUGRF_OS_REG2_BW_CH0, reg2) == 0 ? 4 : 2;
- 
--	dfi->ddrmon_stride = 0x0; /* not relevant, we only have a single channel on this SoC */
--	dfi->ddrmon_ctrl_single = true;
--
- 	return 0;
- };
- 
-@@ -791,9 +788,7 @@ static int rk3588_dfi_init(struct rockchip_dfi *dfi)
- 	dfi->buswidth[3] = FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH1, reg4) == 0 ? 4 : 2;
- 	dfi->channel_mask = FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg2) |
- 			    FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg4) << 2;
--	dfi->max_channels = 4;
- 
--	dfi->ddrmon_stride = 0x4000;
- 	dfi->count_multiplier = 2;
- 
- 	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR5) {
-@@ -807,10 +802,30 @@ static int rk3588_dfi_init(struct rockchip_dfi *dfi)
- 	return 0;
- };
- 
-+static const struct rockchip_dfi_variant rk3399_variant = {
-+	.init = rk3399_dfi_init,
-+	.stride = 0x14,
-+	.ctrl_single = true,
-+	.max_channels = 2,
-+};
++  - |
++    bus {
++      #address-cells = <2>;
++      #size-cells = <2>;
 +
-+static const struct rockchip_dfi_variant rk3568_variant = {
-+	.init = rk3568_dfi_init,
-+	.stride = 0x0,
-+	.ctrl_single = true,
-+	.max_channels = 1,
-+};
-+
-+static const struct rockchip_dfi_variant rk3588_variant = {
-+	.init = rk3588_dfi_init,
-+	.stride = 0x4000,
-+	.max_channels = 4,
-+};
-+
- static const struct of_device_id rockchip_dfi_id_match[] = {
--	{ .compatible = "rockchip,rk3399-dfi", .data = rk3399_dfi_init },
--	{ .compatible = "rockchip,rk3568-dfi", .data = rk3568_dfi_init },
--	{ .compatible = "rockchip,rk3588-dfi", .data = rk3588_dfi_init },
-+	{ .compatible = "rockchip,rk3399-dfi", .data = &rk3399_variant },
-+	{ .compatible = "rockchip,rk3568-dfi", .data = &rk3568_variant },
-+	{ .compatible = "rockchip,rk3588-dfi", .data = &rk3588_variant },
- 	{ },
- };
- 
-@@ -822,17 +837,16 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
- 	struct rockchip_dfi *dfi;
- 	struct devfreq_event_desc *desc;
- 	struct device_node *np = pdev->dev.of_node, *node;
--	int (*soc_init)(struct rockchip_dfi *dfi);
- 	int ret;
- 
--	soc_init = of_device_get_match_data(&pdev->dev);
--	if (!soc_init)
--		return -EINVAL;
--
- 	dfi = devm_kzalloc(dev, sizeof(*dfi), GFP_KERNEL);
- 	if (!dfi)
- 		return -ENOMEM;
- 
-+	dfi->variant = of_device_get_match_data(dev);
-+	if (!dfi->variant)
-+		return -EINVAL;
-+
- 	dfi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(dfi->regs))
- 		return PTR_ERR(dfi->regs);
-@@ -854,7 +868,7 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
- 	desc->driver_data = dfi;
- 	desc->name = np->name;
- 
--	ret = soc_init(dfi);
-+	ret = dfi->variant->init(dfi);
- 	if (ret)
- 		return ret;
- 
++      dfi_rk3588: dfi@fe060000 {
++        compatible = "rockchip,rk3588-dfi";
++        reg = <0x00 0xfe060000 0x00 0x10000>;
++        clocks = <&cru 0x53>, <&cru 0x48>, <&cru 0x49>, <&cru 0x54>;
++        clock-names = "pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1",
++                      "pclk_ddr_mon_ch2", "pclk_ddr_mon_ch3";
++        interrupts =  <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH 0>,
++                      <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH 0>,
++                      <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH 0>,
++                      <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
++        rockchip,pmu = <&pmugrf>;
++      };
++    };
 
 -- 
 2.53.0
