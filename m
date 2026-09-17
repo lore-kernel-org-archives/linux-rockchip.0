@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD867C982D8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2026 13:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F642C982D9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2026 13:49:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OPVJLKRyJHrbi2w/69Ewn2kDKVRB10K3T2D0B3pCoQc=; b=QfjFL5xifhVFaQ
-	yQOxr8c2I3bFD27KZ6ChtpmBPD3O7X6DdkqY4OBjn+cQ+njWLR+HmazW0fTXIzR2uH0fJyInbIXVr
-	3a7YtUWDN+AOpTDWfuR9scU5is5bT+JTgFZ7xeuJ/2UniMQRYvVd7jFKaKDKtSg/4YdOurHMkBGPn
-	tYUTzm5CrLgN6rc2XVEu6AqI5jHta6/WRz/B6Az/YankqrozMX//OZS7fimfbqzGH67H7nfYWVRZr
-	xj9o2D05bEefG7fNuxUaoWOfGxzusa0EZdMD6WbFhsgfnUl/3R4rgFCRDXTsbyKI5eL/7fybF2vlH
-	E05Yu8I/erF1NpyAOE9w==;
+	List-Owner; bh=O9OWp++RImyfAhks8mMfEeLIcBzsALFZa7sXy/FYOZo=; b=kCKK5CoKQX33pd
+	2bOpTohhg4ok5wild8CkemmfYk+bvZ5PL6MwK8rhnhaUBYlQU4uUE4qz147ELVNSumZurXNXM2Zdf
+	4ol7TY4e1RL7NmJSzN4BCzOWItVwVa+d4lw6qY7j8ozT7gey8zxMwrr8ZMtH/7l6JC4vXOKdsPAJ3
+	fExeVOKkgDAmZ3tilhEGxXyojJFZxSbkdRYgKxdoJ5qJRtKhWOHIf9LtZKJH9KuQXUBZg9Fbua3DU
+	1iA46JqJHSHfPOnjc0K0JtWOBPJPb0oR+PB1eOz+XdVQNM0U6gh8wszQBirKCT1jysOUmskc0s54K
+	7NN/NPnkYhpBHvKl1qWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7CUa-0000000BRRQ-39aF;
-	Thu, 17 Sep 2026 13:49:36 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x7CUb-0000000BRUi-4Aes;
+	Thu, 17 Sep 2026 13:49:38 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7CUO-0000000BRIv-3PEp;
-	Thu, 17 Sep 2026 13:49:27 +0000
+	id 1x7CUS-0000000BRKj-42Fr;
+	Thu, 17 Sep 2026 13:49:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789652961;
-	bh=I5wKmiysBTuYLPKycTb4r8SCqRgtc3YcQ663wjfvpFY=;
+	s=mail; t=1789652962;
+	bh=VXjQmgPNcP6TxrE9fEJyZi07Hi5P0Q3culnMpUj9c98=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fmY0pZ0ijzex4HtptD/UaC0jxHsIKAnVKRmVtmxi+ObVR6pvnHypESo33jMrxO6xO
-	 MYvtlyJTET0DxpBrQXjH66LFnmunjq/9HGnMvVB70Gg+7h5Gb9QHttNPNRIy7rQb6E
-	 SR7/+6GvJUJaDrkjwFRcFenjuM5g0oFARGh6P63/l/ow9HQUjYcKmSVLVjfV1Uo8bf
-	 W3tdUlvxr8gvH1uJ3sg/pOHZTBYw8ubsbnevItrQP6/c1sjeJBeTt6LOWIbT9GUHQ1
-	 iROOd32glafkfuwh2hHJsQRuAxzRPte/qfVHnPFV2i6rhX6daaHnUKiFCGgWUYk8HY
-	 s0OhYFuEns5Dg==
+	b=L/TADqrjmFPk2K1ZX7k+LW5ZVhcd2vFs6kFuZZA6Jlhddudj5mKXh83EctWmN0tqt
+	 5rMwd1BHGe+slfldSeYdjDPi0oWUZZCCdMgsNvPyofWih3Wgx7LpkvAednoRqRxPeE
+	 aQ7sm3sRmykZOJG5NhjLapX/c6W22z6JVknnsw2SjFVJUD+KQVEa7u0fIcMzbIFdaG
+	 qcDysICHQsCWfIZXY2loWh61qOZKX4NvI6AvXn475qG+ud4TBKhP/rxSOKm1r++m64
+	 tpJYKsVTFVoafTpDDIs1FC3siumxQrosMrib23Jup1YdVziIgI6qI2P2jfwLiNyUv0
+	 MmFc5c7eJuW+Q==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C623017E07DB;
-	Thu, 17 Sep 2026 15:49:21 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 222FB17E0D43;
+	Thu, 17 Sep 2026 15:49:22 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7BE6348002F; Thu, 17 Sep 2026 15:49:21 +0200 (CEST)
+	id 83215480038; Thu, 17 Sep 2026 15:49:21 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 17 Sep 2026 15:49:14 +0200
-Subject: [PATCH 2/8] dt-bindings: devfreq: event: rockchip,dfi: add clocks
- to rk3588
+Date: Thu, 17 Sep 2026 15:49:18 +0200
+Subject: [PATCH 6/8] clk: rockchip: rk3588: add PCLK_DDR_MON_CH gate
+ branches
 MIME-Version: 1.0
-Message-Id: <20260917-rockchip-dfi-cleanup-v1-2-4f00a97a69a6@collabora.com>
+Message-Id: <20260917-rockchip-dfi-cleanup-v1-6-4f00a97a69a6@collabora.com>
 References: <20260917-rockchip-dfi-cleanup-v1-0-4f00a97a69a6@collabora.com>
 In-Reply-To: <20260917-rockchip-dfi-cleanup-v1-0-4f00a97a69a6@collabora.com>
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
@@ -67,26 +67,26 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3824;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1856;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=CMJKlCe6bEkR7uYuohkbQVDQ2FF/s+dLQ5XKL7udDIg=;
- b=kA0DAAoB2O7X88g7+poByyZiAGqr7+GjOYD9XgQwPQo4FjhjYoSNVwOC73J35EGjf1ULcUn+T
- IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqq+/hAAoJENju1/PIO/qaDRIP/iF+
- L3Z3wPL14QCK2IB9xToLK1Mqu5oCNh+8aeBgN0cywq5NCujKDyT6nFPngIeAKrHTee0vKdYNquf
- W5wOrwwwDtuMZIS9G5hkJLaqSOuClUNVlDvWay0uyIWh13cS3eMSdEEIs1R9xYziyHrS8kJC80w
- abkCpCRd+cDfBBGBdV+1Y6JRavDl8DzPbql91RUlinkTc8wr8eKGjBYTE6oHC2DqEzxddsGsPTx
- FNciqNMzXtrZxEu39JupEN2zgyuiEFp+2qde7JyBePmyuGsQ5RachDXkZi0TzrWfK88+S3/2rbV
- M7VD1Jyg3vYVRwcCAc1FeJXE3kBzgYUauA9eOGnQiWeg7Sj2a5b68SzuB6me1DgUqUG27aER3dB
- IK5o6U9kiGdnQ6FtFoS+aWnJJKMlUXdkjNTqxo1KNZD2KV9LdwnXs5vEcdtABI/CVc5BN9XGJUO
- RSWxIdjUh1bxSvGLk4lMD5Zt8phLTux5SmXDXZr1Metsdvul9HPTpPRHvz0QKkl2aJ6QTo4H+Hw
- EUysmUCFKzctrKPWPd55V0WZ8lIlXZROvTZueMEa7IVNiwl5yzvzCw2VmSw4sPnx3TvCCtEZKa8
- eyEfekjgjwYqxNTVFVC5i5eucnpugBF92jBzcMF8B1xj8+c1K4+FttqO6sa1KIhouZaCY3IDvkf
- TGz7p
+ bh=WfqRSjYFz7+ljRQE5uaOc11qdMoKK31EtGs4gkDrNM4=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqr7+FXLCthP7tD49VfVvHeEO0xRiIMMWLgb
+ bnWmG28Z5g7+okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqq+/hAAoJENju1/PI
+ O/qaTb0P/A/x5egj1nQnkPWKzWJD+O+aQG9ru/DmIrFaBLMjgGQrkSHhtEIZ8awBiU0V3dMMoH+
+ IDh/siTsRM7qE5prdXcGNwomi4yfg2uhlfSNAKfXSXMEWfA3W2dqypLAPqoepd4Nwb125f9+tU3
+ NRgBy6NZRNnXfY1cdeqLtLEcuGT5xXVzS0T3xMIGRPErATCCwG826QuCv5qV0d/8dpswZW/f6fz
+ K3Df5RDIa/jLXjpA262tTj+BFgz2TI+ISm9oYvLtISL1ACHRUxDTMlbZ+euWTaoySFa6XcWcbpo
+ h8bgi5d8K0YkW6t7lwgCmtK4WeAGHLthgQCQa2ndYiz9mMRlrk0p6cqV9xOJwJrTJElzrt3yAeE
+ E775KVtDdK+JhhFWwnSRl0drOyZOIE5khUf1KJyn/N5RA+GTNc3lcoQ3x0JWilijOiM7dQYTR/q
+ RzUe+xEWItOEDnpmtfkwHo86FzBH2DHEC/ht3ZFu1hz126rDKjvK7ZHnY1SsGwuw0uiOgb0aE51
+ 7LbAXuouUGATBzvyJ9Hb27Kfd3bHYjDKezCA2OiI0udmD1EyTenElgTNi3G4iF+BuIRABkCB4o7
+ 4DLTPUSRI+LnSIOkJBKRDowlqsr6O4u/z2UMstpgKjQW3folhlQ+QT0iEUmA1HRmV043byt8Qoi
+ rBK2hfyG7aKXuLpeFftkuKA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_064925_012226_5E0122A8 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20260917_064929_178921_C7ACF20E 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,132 +105,42 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-RK3588's DFI has pclks for each channel. They just weren't noticed as
-missing until now because nothing ever gates them, and they're ungated
-by default on power-on.
+On the Rockchip RK3588, each memory channel has some bandwidth
+monitoring silicon (hence the "DDR_MON"), which is driven by a clock
+gated by PCLK_DDR_MON_CH0/1/2/3.
 
-The RK3399 clock situation needs no changes, as there the hardware
-really just has one monitoring unit for both channels.
+These clock branches were left out of the mainline clock tree until now.
 
-Add these clocks to the binding, so that drivers for this device can
-properly know about their existence.
+Add them, with the proper CRU reg bits, and the proper parent.  They are
+given the "CLK_IGNORE_UNUSED" flag, so that older device trees with
+newer kernels don't turn off the clocks because they're seen as not in
+use.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../bindings/devfreq/event/rockchip,dfi.yaml       | 84 ++++++++++++++++++----
- 1 file changed, 72 insertions(+), 12 deletions(-)
+ drivers/clk/rockchip/clk-rk3588.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-index 50d3fabe958d..d6e06a9bea19 100644
---- a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-+++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-@@ -17,11 +17,19 @@ properties:
-       - rockchip,rk3588-dfi
- 
-   clocks:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 4
- 
-   clock-names:
-+    minItems: 1
-+    maxItems: 4
-     items:
--      - const: pclk_ddr_mon
-+      - enum:
-+          - pclk_ddr_mon
-+          - pclk_ddr_mon_ch0
-+      - const: pclk_ddr_mon_ch1
-+      - const: pclk_ddr_mon_ch2
-+      - const: pclk_ddr_mon_ch3
- 
-   interrupts:
-     minItems: 1
-@@ -40,17 +48,50 @@ required:
-   - interrupts
-   - reg
- 
--if:
--  properties:
--    compatible:
--      contains:
--        enum:
--          - rockchip,rk3399-dfi
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - rockchip,rk3399-dfi
-+    then:
-+      properties:
-+        clocks:
-+          items:
-+            - description:
-+                clock driving the DDR monitoring logic for all channels
-+        clock-names:
-+          items:
-+            - const: pclk_ddr_mon
-+      required:
-+        - clocks
-+        - clock-names
- 
--then:
--  required:
--    - clocks
--    - clock-names
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - rockchip,rk3588-dfi
-+    then:
-+      properties:
-+        clocks:
-+          items:
-+            - description:
-+                clock driving the DDR monitoring logic for memory channel 0
-+            - description:
-+                clock driving the DDR monitoring logic for memory channel 1
-+            - description:
-+                clock driving the DDR monitoring logic for memory channel 2
-+            - description:
-+                clock driving the DDR monitoring logic for memory channel 3
-+        clock-names:
-+          items:
-+            - const: pclk_ddr_mon_ch0
-+            - const: pclk_ddr_mon_ch1
-+            - const: pclk_ddr_mon_ch2
-+            - const: pclk_ddr_mon_ch3
- 
- additionalProperties: false
- 
-@@ -72,3 +113,22 @@ examples:
-         clock-names = "pclk_ddr_mon";
-       };
-     };
-+
-+  - |
-+    bus {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      dfi_rk3588: dfi@fe060000 {
-+        compatible = "rockchip,rk3588-dfi";
-+        reg = <0x00 0xfe060000 0x00 0x10000>;
-+        clocks = <&cru 0x53>, <&cru 0x48>, <&cru 0x49>, <&cru 0x54>;
-+        clock-names = "pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1",
-+                      "pclk_ddr_mon_ch2", "pclk_ddr_mon_ch3";
-+        interrupts =  <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH 0>,
-+                      <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH 0>,
-+                      <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH 0>,
-+                      <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
-+        rockchip,pmu = <&pmugrf>;
-+      };
-+    };
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index 24baa0ef9bf3..0485faf27163 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -1349,6 +1349,14 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 	COMPOSITE(CLK_DDR_CM0_RTC, "clk_ddr_cm0_rtc", mux_24m_32k_p, CLK_IS_CRITICAL,
+ 			RK3588_CLKSEL_CON(166), 5, 1, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(70), 4, GFLAGS),
++	GATE(PCLK_DDR_MON_CH0, "pclk_ddr_mon_ch0", "pclk_center_root", CLK_IGNORE_UNUSED,
++			RK3588_CLKGATE_CON(20), 1, GFLAGS),
++	GATE(PCLK_DDR_MON_CH1, "pclk_ddr_mon_ch1", "pclk_center_root", CLK_IGNORE_UNUSED,
++			RK3588_CLKGATE_CON(20), 14, GFLAGS),
++	GATE(PCLK_DDR_MON_CH2, "pclk_ddr_mon_ch2", "pclk_center_root", CLK_IGNORE_UNUSED,
++			RK3588_CLKGATE_CON(23), 1, GFLAGS),
++	GATE(PCLK_DDR_MON_CH3, "pclk_ddr_mon_ch3", "pclk_center_root", CLK_IGNORE_UNUSED,
++			RK3588_CLKGATE_CON(23), 14, GFLAGS),
+ 	GATE(PCLK_WDT, "pclk_wdt", "pclk_center_root", 0,
+ 			RK3588_CLKGATE_CON(70), 7, GFLAGS),
+ 	GATE(PCLK_TIMER, "pclk_timer", "pclk_center_root", 0,
 
 -- 
 2.53.0
