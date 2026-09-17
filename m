@@ -4,93 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74406C982D2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2026 17:22:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5195CC982D0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2026 18:38:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iC9vNEDq+JdNZD04O6NfQ+o+aNkyhSnDJ9MEXMDBSbo=; b=xyJxI4HvSuuvDa
-	SvLOBt4ZzHORfwGELPraIzAkWJCklCRTIyfDG2dD7/34ru26K9cHUEKZa6reZ6/tOiarNm7AzyYrs
-	WuYvmRw//+HDrhE885WpPWpWOaeOvqWaQQ5+JJ0NMQJjeyjmLt5n2steaD+SYjh0UtUhwaLERJk6Z
-	kkV6v/D4/Yoml8iDgqABJRVD6CrN0c/c6bo+gVMxuDjMKrp6jhpaVgHfVciUTQ+qEg+j2CowftwEO
-	gMSuJUi7OcL8xdH4NMXauGx+sIA2Za+xu+vay/yyo6OwXlBBxzf6ZsrIwmxE6czCqwHGSHaDfeLXN
-	UuHNozvUlI5rZohMKxtg==;
+	List-Owner; bh=ASNV8/GD/yqEFvMHQ9sMcj+0177pgxegH2nTLFbq0vw=; b=05YVyl8dy5LArZ
+	yVkTN7orACmlei1t3gtpjoGxwmmXHXfdae5T/CFZfqMz3MscozRJ9HtWzmUYxEC5ZNJG/7BpwBtjI
+	UnMyp9Tfjy8Wu12+v1e0ARnJW6bioTOIJ2ygDEFS6xhhAQsvcy7qGnUFYgRw8xo36fz+DqC+90BO7
+	G5p9E9AmXCqIOe/Al15jlTJtGHlsY1COtWkEbSxW8e465LdkVrxzZ6LeADPsWRs7LNt+NYLE8yYaT
+	+dfjPoXQXmfPr078x2Sqyq36pHlBOZT/dSMmUIFGY4IjGH1+lFCx0gvnsvTgukcrh/59Y46Kj8VeZ
+	lK0+imkaJeY9MgCv9Y7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7FoR-0000000C4kz-0Awv;
-	Thu, 17 Sep 2026 17:22:19 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1x7Gzp-0000000CFEN-0BbW;
+	Thu, 17 Sep 2026 18:38:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7FoM-0000000C4jQ-321R;
-	Thu, 17 Sep 2026 17:22:17 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260917172208euoutp0150132b34809348820d8ba580cbf71ba6~WK399rJ9Y0164201642euoutp01M;
-	Thu, 17 Sep 2026 17:22:08 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260917172208euoutp0150132b34809348820d8ba580cbf71ba6~WK399rJ9Y0164201642euoutp01M
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1789665728;
-	bh=0WtKtiSzYCp277IiLimE78OZqsRgc7cWGLsFATmTw1E=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=VOxLMdss8ZyVY8BfR85gXrDrglNJ8tt+tRyIRy34jspUqU6Tu6fH7k4IIRxxxXpHz
-	 tavqrMHAweRf1Js/R3ZW2sD9k5Czxee/0C9FYVHtvUe/S5KKtnbQdi/kswqFi00MoB
-	 ulGFKEi5ek5Q3N8AhJ1OxMwZsSONTxYMV+bMrihk=
-Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20260917172208eucas1p2a1f43f12fe05dd5a7cb640c4cec85744~WK39uT1rB0077700777eucas1p2z;
-	Thu, 17 Sep 2026 17:22:08 +0000 (GMT)
-Received: from [192.168.1.44] (unknown [106.210.136.40]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20260917172206eusmtip266a4da637fbe5ad68f6836811ac14898~WK38DTFaD3000830008eusmtip2I;
-	Thu, 17 Sep 2026 17:22:06 +0000 (GMT)
-Message-ID: <136d6789-2f0c-4a91-ab2d-de3a3f119d5d@samsung.com>
-Date: Thu, 17 Sep 2026 19:22:05 +0200
+	id 1x7Gzn-0000000CFDp-2qT4;
+	Thu, 17 Sep 2026 18:38:07 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6F3524055D;
+	Thu, 17 Sep 2026 18:38:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0F1F1F000FF;
+	Thu, 17 Sep 2026 18:38:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789670287;
+	bh=Yl0NIoaTbzqJUGwioU/MGVk1zJpCWvzCqfyTcfij6Dc=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=UsSoSZesD2MFZH9rCwaj7Gc1bo170eGg8BvlSC3/WwSqqtLBuusJaI82UdKYRYFNW
+	 +2MVe7VjJW5STpBjkJUoQ/P5DeoQ9kS7E45GUej6ZJi2cnRBOJr1URc9d+q9WSPZu5
+	 o+D3iUo90/k87HqbFn2u6oC8Sx9RKNwC5BHoZUwTNwQ1GmfNSoivfv42CR54AHVgjf
+	 E6LGN/T2HGs2LHbGFLsc60NjSmDmt8/xHlanG/KM93KdBxNiY1KjG2TciM16RMUyJZ
+	 fPFkbvsH76j3XI0Ak0FFqYqpLg8Ggx0V4RMkCaRy5qIwZkbYAI6nHQhv/uvTjlyVwP
+	 DLE4y24ETx49Q==
+Subject: Re: [PATCH net-next v6 01/11] net: stmmac: move XPCS lifetime
+ management to platform drivers
+From: netdev-bot+sashiko@kernel.org
+To: coiaprant@gmail.com
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, heiko@sntech.de, vkoul@kernel.org,
+ maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, prabhakar.mahadev-lad.rj@bp.renesas.com,
+ romain.gantois@bootlin.com, hkallweit1@gmail.com, neil.armstrong@linaro.org,
+ linux@armlinux.org.uk, shawn.lin@rock-chips.com, david@ixit.cz,
+ netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-renesas-soc@vger.kernel.org
+Date: Thu, 17 Sep 2026 18:38:05 +0000
+Message-ID: <178967028545.22033.5966180145855511133@kernel.org>
+In-Reply-To: <20260915123802.1561724-2-coiaprant@gmail.com>
+References: <20260915123802.1561724-2-coiaprant@gmail.com>
+X-sashiko-severity: Medium
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 00/20] drm: starfive: jh7110: Enable display
- subsystem
-To: Joshua Peisach <jpeisach@ubuntu.com>, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss
-	<rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
-	Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Emil
-	Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
-	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
-	<sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
-	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
-	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
-	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, Jerome
-	Brunet <jbrunet+clk@baylibre.com>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	mfd@lists.linux.dev, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org, Marek Szyprowski
-	<m.szyprowski@samsung.com>, Maud Spierings <maud_spierings@murena.io>,
-	Graham Markall <hello@big-grey.co.uk>, Icenowy Zheng
-	<zhengxingda@iscas.ac.cn>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	=?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-Content-Language: en-US
-From: Michal Wilczynski <m.wilczynski@samsung.com>
-In-Reply-To: <DLGBPXP4F8E0.9X0QMZ9GFQVF@ubuntu.com>
-X-CMS-MailID: 20260917172208eucas1p2a1f43f12fe05dd5a7cb640c4cec85744
-X-Msg-Generator: CA
-X-RootMTR: 20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61
-X-EPHeader: CA
-X-CMS-RootMailID: 20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61
-References: <CGME20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61@eucas1p1.samsung.com>
-	<20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
-	<DLGBPXP4F8E0.9X0QMZ9GFQVF@ubuntu.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_102215_362316_7E0EC3D9 
-X-CRM114-Status: GOOD (  21.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,113 +73,140 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 9/16/26 02:45, Joshua Peisach wrote:
-> On Tue Sep 15, 2026 at 11:32 AM EDT, Michal Wilczynski wrote:
->>
->> Testing
->> =======
->>
->> Tested on a VisionFive 2 v1.3B using modetest.
-> 
-> I.. got nothing. I did have to manually modprobe the modules, but
-> unless I am doing something wrong.. I didn't get anything and modetest
-> just gave -2.
-
-Hmm have you also changed the DTB not just the kernel and the modules
-(you can also built in everything).
-
-Also note modetest needs -M verisilicon.
-
-If that is not it, could you send "dmesg | grep -iE
-'verisilicon|inno|hdmi|vout'" and "ls /sys/class/drm/"?
-
-> 
->> ---
->> Michal Wilczynski (20):
->>       dt-bindings: phy: Add starfive,jh7110-inno-hdmi-phy
->>       dt-bindings: display: bridge: Add starfive,jh7110-inno-hdmi-controller
->>       dt-bindings: mfd: Add starfive,jh7110-hdmi-subsystem
->>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-syscon
->>       dt-bindings: display: verisilicon: Add starfive,jh7110-dc8200
->>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-subsystem
->>       drm/bridge: inno-hdmi: Split probe out of bind
->>       drm/bridge: inno-hdmi: Allow the register map to come from a parent
->>       drm/bridge: inno-hdmi: Add .disable platform operation
->>       drm/bridge: inno-hdmi: Add .mode_valid platform operation
->>       drm/bridge: inno-hdmi: Make the PHY configuration table optional
->>       soc: starfive: Add jh7110-hdmi-subsystem driver
->>       soc: starfive: Add jh7110-vout-subsystem driver
->>       clk: starfive: jh7110-vout: Allow pixel clock rate propagation
->>       drm/bridge: starfive: Add JH7110 HDMI controller driver
->>       phy: Add common Innosilicon HDMI PHY helpers
->>       phy: rockchip: inno-hdmi: Use the common Innosilicon PHY helpers
->>       phy: starfive: Add jh7110-inno-hdmi-phy driver
->>       riscv: dts: starfive: jh7110: Update DT for display subsystem
->>       MAINTAINERS: Add StarFive JH7110 display subsystem entry
->>
->>  .../starfive,jh7110-inno-hdmi-controller.yaml      | 121 +++++
->>  .../bindings/display/verisilicon,dc.yaml           |   1 +
->>  .../mfd/starfive,jh7110-hdmi-subsystem.yaml        |  95 ++++
->>  .../phy/starfive,jh7110-inno-hdmi-phy.yaml         |  49 ++
->>  .../soc/starfive/starfive,jh7110-syscon.yaml       |   1 +
->>  .../starfive/starfive,jh7110-vout-subsystem.yaml   | 218 ++++++++
->>  MAINTAINERS                                        |  13 +
->>  arch/riscv/boot/dts/starfive/jh7110-common.dtsi    | 121 ++++-
->>  arch/riscv/boot/dts/starfive/jh7110.dtsi           | 105 +++-
->>  drivers/clk/starfive/clk-starfive-jh7110-vout.c    |   6 +-
->>  drivers/gpu/drm/bridge/Kconfig                     |  11 +
->>  drivers/gpu/drm/bridge/Makefile                    |   1 +
->>  drivers/gpu/drm/bridge/inno-hdmi.c                 | 112 +++-
->>  drivers/gpu/drm/bridge/jh7110-inno-hdmi.c          | 297 +++++++++++
->>  drivers/phy/Kconfig                                |   8 +
->>  drivers/phy/Makefile                               |   1 +
->>  drivers/phy/phy-inno-hdmi.c                        | 298 +++++++++++
->>  drivers/phy/rockchip/Kconfig                       |   1 +
->>  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c      | 168 +-----
->>  drivers/phy/starfive/Kconfig                       |  20 +
->>  drivers/phy/starfive/Makefile                      |   1 +
->>  drivers/phy/starfive/phy-jh7110-inno-hdmi.c        | 579 +++++++++++++++++++++
->>  drivers/soc/Kconfig                                |   1 +
->>  drivers/soc/Makefile                               |   1 +
->>  drivers/soc/starfive/Kconfig                       |  43 ++
->>  drivers/soc/starfive/Makefile                      |   3 +
->>  drivers/soc/starfive/jh7110-hdmi-subsystem.c       |  73 +++
->>  drivers/soc/starfive/jh7110-vout-subsystem.c       |  82 +++
->>  include/drm/bridge/inno_hdmi.h                     |  10 +-
->>  include/linux/phy/inno-hdmi-phy.h                  |  85 +++
->>  30 files changed, 2337 insertions(+), 188 deletions(-)
->> ---
->> base-commit: fd73f4a6659897191fa0d40695fe370925dd3780
->> change-id: 20251031-jh7110-clean-send-7d2242118026
->>
->> Best regards,
-> 
-> By the way, something weird happenined while I applied the patches
-> using git am. Somehow, some were out of order. The 10th patch
-> adding .mode_valid tried to be applied before .disable even though
-> in the series, the order is correctly set? git would obviously
-> fail because the .disable entry did not exist in the header, so I had
-> to manually put those in.
-> 
-> I guess it's possible that something went wrong here? I personally
-> pulled the mailbox from the lore.kernel.org mbox.gz file.
-
-I would recommend using b4 shazam instead
-
-> 
-
-Best regards,
--- 
-Michal Wilczynski <m.wilczynski@samsung.com>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
+MSBwb3RlbnRpYWwKaXNzdWUocykgdG8gY29uc2lkZXI6CgpDcml0aWNhbDogMCDCtyBIaWdoOiAw
+IMK3IE1lZGl1bTogMSAoMSkgwrcgTG93OiAwCgotIFtNZWRpdW1dIHN0bW1hY19wY3Nfc2V0dXAo
+KQogIChkcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9zdG1tYWNfbWRpby5jOjQy
+NikgbG9zZXMgdGhlIG9ubHnigKYKClByZS1leGlzdGluZyBpc3N1ZXM6Ci0gW01lZGl1bV0gQ2xv
+Y2sgcmVmZXJlbmNlIGxlYWsgaW4gdGhlIFhQQ1MgY29uc3RydWN0b3Igbm93IGludm9rZWQgZnJv
+bQogIGludGVsX21nYmVfcGNzX2luaXQoKTogeHBjc19pbml0X2Nsa3MoKSAoZHJpdmVycy9uZXQv
+cGNzL3Bjcy3igKYKCi0tCgpuZXQ6IHN0bW1hYzogbW92ZSBYUENTIGxpZmV0aW1lIG1hbmFnZW1l
+bnQgdG8gcGxhdGZvcm0gZHJpdmVycwoKVGhpcyBtb3ZlcyBYUENTIGNyZWF0aW9uIGFuZCBkZXN0
+cnVjdGlvbiBvdXQgb2YgdGhlIGNvbW1vbgpzdG1tYWNfcGNzX3NldHVwKCkvc3RtbWFjX3Bjc19j
+bGVhbigpIGFuZCBpbnRvIHBsYXQtPnBjc19pbml0KCkvCnBsYXQtPnBjc19leGl0KCksIGNvbnZl
+cnRzIHRoZSBJbnRlbCBtR2JFIGdsdWUgdG8gY3JlYXRlIGl0cyBvd24gWFBDUywKYW5kIG1ha2Vz
+IHRoZSByZW5lc2FzLWdiZXRoLCByem4xIGFuZCBzb2NmcGdhIHBjc19leGl0KCkgY2FsbGJhY2tz
+IGNsZWFyCnByaXYtPmh3LT5waHlsaW5rX3BjcyBhZnRlciBkZXN0cm95aW5nIHRoZSBQQ1MuCgo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1p
+bnRlbC5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtaW50ZWwu
+Ywo+IGluZGV4IGY1ZjlmYTY3ZWNkNzcuLjQzMDhkY2NiZjI1NzAgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtaW50ZWwuYwo+ICsrKyBiL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLWludGVsLmMKPiBAQCAtNjAz
+LDEzICs2MDMsNDcgQEAgc3RhdGljIHZvaWQgY29tbW9uX2RlZmF1bHRfZGF0YShzdHJ1Y3QgcGxh
+dF9zdG1tYWNlbmV0X2RhdGEgKnBsYXQpCj4gIAlwbGF0LT5tZGlvX2J1c19kYXRhLT5uZWVkc19y
+ZXNldCA9IHRydWU7Cj4gIH0KPiAgCj4gK3N0YXRpYyBpbnQgaW50ZWxfbWdiZV9wY3NfaW5pdChz
+dHJ1Y3Qgc3RtbWFjX3ByaXYgKnByaXYpCj4gK3sKPiArCXN0cnVjdCBmd25vZGVfaGFuZGxlICpk
+ZXZub2RlLCAqcGNzbm9kZTsKPiArCXN0cnVjdCBkd194cGNzICp4cGNzOwo+ICsJaW50IGFkZHI7
+Cj4gKwo+ICsJZGV2bm9kZSA9IGRldl9md25vZGUocHJpdi0+ZGV2aWNlKTsKPiArCj4gKwlpZiAo
+Zndub2RlX3Byb3BlcnR5X3ByZXNlbnQoZGV2bm9kZSwgInBjcy1oYW5kbGUiKSkgewo+ICsJCXBj
+c25vZGUgPSBmd25vZGVfZmluZF9yZWZlcmVuY2UoZGV2bm9kZSwgInBjcy1oYW5kbGUiLCAwKTsK
+PiArCQl4cGNzID0geHBjc19jcmVhdGVfZndub2RlKHBjc25vZGUpOwo+ICsJCWZ3bm9kZV9oYW5k
+bGVfcHV0KHBjc25vZGUpOwo+ICsJfSBlbHNlIHsKPiArCQlhZGRyID0gZmZzKHByaXYtPnBsYXQt
+Pm1kaW9fYnVzX2RhdGEtPnBjc19tYXNrKSAtIDE7Cj4gKwkJeHBjcyA9IHhwY3NfY3JlYXRlX21k
+aW9kZXYocHJpdi0+bWlpLCBhZGRyKTsKPiArCX0KPiArCj4gKwlpZiAoSVNfRVJSKHhwY3MpKQo+
+ICsJCXJldHVybiBQVFJfRVJSKHhwY3MpOwoKW1NldmVyaXR5OiBNZWRpdW1dClRoaXMgaXNuJ3Qg
+YSBidWcgaW50cm9kdWNlZCBieSB0aGlzIHBhdGNoLCBidXQgc2luY2UgdGhlIFhQQ1MgY29uc3Ry
+dWN0b3IKY2FsbCBub3cgbGl2ZXMgaGVyZSwgaXQgbWF5IGJlIHdvcnRoIG5vdGluZzogY2FuIHRo
+ZSBmYWlsdXJlIHBhdGggaW5zaWRlCnhwY3NfaW5pdF9jbGtzKCkgaW4gZHJpdmVycy9uZXQvcGNz
+L3Bjcy14cGNzLmMgbGVhayB0aGUgY2xrIHJlZmVyZW5jZXM/Cgp4cGNzX2luaXRfY2xrcygpIHRh
+a2VzIHRoZSByZWZlcmVuY2VzIGFuZCwgaWYgZW5hYmxpbmcgZmFpbHMsIHJldHVybnMKd2l0aG91
+dCBwdXR0aW5nIHRoZW0gYmFjazoKCglyZXQgPSBjbGtfYnVsa19nZXRfb3B0aW9uYWwoZGV2LCBE
+V19YUENTX05VTV9DTEtTLCB4cGNzLT5jbGtzKTsKCWlmIChyZXQpCgkJcmV0dXJuIGRldl9lcnJf
+cHJvYmUoZGV2LCByZXQsICJGYWlsZWQgdG8gZ2V0IGNsb2Nrc1xuIik7CgoJcmV0ID0gY2xrX2J1
+bGtfcHJlcGFyZV9lbmFibGUoRFdfWFBDU19OVU1fQ0xLUywgeHBjcy0+Y2xrcyk7CglpZiAocmV0
+KQoJCXJldHVybiBkZXZfZXJyX3Byb2JlKGRldiwgcmV0LCAiRmFpbGVkIHRvIGVuYWJsZSBjbG9j
+a3NcbiIpOwoKeHBjc19jcmVhdGUoKSB0aGVuIHRha2VzIHRoZSBlcnJvciBwYXRoOgoKCXJldCA9
+IHhwY3NfaW5pdF9jbGtzKHhwY3MpOwoJaWYgKHJldCkKCQlnb3RvIG91dF9mcmVlX2RhdGE7Cgpv
+dXRfZnJlZV9kYXRhIGNhbGxzIHhwY3NfZnJlZV9kYXRhKCkgKG1kaW9fZGV2aWNlX3B1dCgpIHBs
+dXMga2ZyZWUoeHBjcykpLApzbyB4cGNzX2NsZWFyX2Nsa3MoKSAtIHRoZSBvbmx5IGNhbGxlciBv
+ZiBjbGtfYnVsa19wdXQoKSAtIG5ldmVyIHJ1bnMgYW5kCnRoZSB4cGNzLT5jbGtzIGFycmF5IGlz
+IGZyZWVkIHdpdGggdGhlIHJlZmVyZW5jZXMgc3RpbGwgaGVsZC4KCmludGVsX21nYmVfcGNzX2lu
+aXQoKSBvbmx5IHJlY2VpdmVzIGFuIEVSUl9QVFIgaGVyZSwgc28gaXQgaGFzIG5vIHdheSB0bwpy
+ZWxlYXNlIHRoZW0uIFdvdWxkIGFkZGluZyBjbGtfYnVsa19wdXQoKSBvbiB0aGUgZmFpbGVkCmNs
+a19idWxrX3ByZXBhcmVfZW5hYmxlKCkgcGF0aCBpbiB4cGNzX2luaXRfY2xrcygpIGJlIHRoZSBy
+aWdodCBmaXg/CgpbIC4uLiBdCgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9z
+dG1pY3JvL3N0bW1hYy9zdG1tYWNfbWRpby5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvc3RtaWNy
+by9zdG1tYWMvc3RtbWFjX21kaW8uYwo+IGluZGV4IGFmZTk4ZmY1YmRjYjAuLjczOTZiNjg4OTlj
+NjYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvc3Rt
+bWFjX21kaW8uYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL3N0
+bW1hY19tZGlvLmMKPiBAQCAtNDI2LDM1ICs0MjYsMTQgQEAgaW50IHN0bW1hY19tZGlvX3Jlc2V0
+KHN0cnVjdCBtaWlfYnVzICpidXMpCj4gIGludCBzdG1tYWNfcGNzX3NldHVwKHN0cnVjdCBuZXRf
+ZGV2aWNlICpuZGV2KQo+ICB7Cj4gIAlzdHJ1Y3Qgc3RtbWFjX3ByaXYgKnByaXYgPSBuZXRkZXZf
+cHJpdihuZGV2KTsKPiAtCXN0cnVjdCBmd25vZGVfaGFuZGxlICpkZXZub2RlLCAqcGNzbm9kZTsK
+PiAtCXN0cnVjdCBkd194cGNzICp4cGNzID0gTlVMTDsKPiAtCWludCBhZGRyLCByZXQ7Cj4gLQo+
+IC0JZGV2bm9kZSA9IGRldl9md25vZGUocHJpdi0+ZGV2aWNlKTsKPiAtCj4gLQlpZiAocHJpdi0+
+cGxhdC0+cGNzX2luaXQpIHsKPiAtCQlyZXQgPSBwcml2LT5wbGF0LT5wY3NfaW5pdChwcml2KTsK
+PiAtCX0gZWxzZSBpZiAoZndub2RlX3Byb3BlcnR5X3ByZXNlbnQoZGV2bm9kZSwgInBjcy1oYW5k
+bGUiKSkgewo+IC0JCXBjc25vZGUgPSBmd25vZGVfZmluZF9yZWZlcmVuY2UoZGV2bm9kZSwgInBj
+cy1oYW5kbGUiLCAwKTsKPiAtCQl4cGNzID0geHBjc19jcmVhdGVfZndub2RlKHBjc25vZGUpOwo+
+IC0JCWZ3bm9kZV9oYW5kbGVfcHV0KHBjc25vZGUpOwo+IC0JCXJldCA9IFBUUl9FUlJfT1JfWkVS
+Tyh4cGNzKTsKPiAtCX0gZWxzZSBpZiAocHJpdi0+cGxhdC0+bWRpb19idXNfZGF0YSAmJgo+IC0J
+CSAgIHByaXYtPnBsYXQtPm1kaW9fYnVzX2RhdGEtPnBjc19tYXNrKSB7Cj4gLQkJYWRkciA9IGZm
+cyhwcml2LT5wbGF0LT5tZGlvX2J1c19kYXRhLT5wY3NfbWFzaykgLSAxOwo+IC0JCXhwY3MgPSB4
+cGNzX2NyZWF0ZV9tZGlvZGV2KHByaXYtPm1paSwgYWRkcik7Cj4gLQkJcmV0ID0gUFRSX0VSUl9P
+Ul9aRVJPKHhwY3MpOwo+IC0JfSBlbHNlIHsKPiArCWludCByZXQ7Cj4gKwo+ICsJaWYgKCFwcml2
+LT5wbGF0LT5wY3NfaW5pdCkKPiAgCQlyZXR1cm4gMDsKPiAtCX0KPiAgCj4gKwlyZXQgPSBwcml2
+LT5wbGF0LT5wY3NfaW5pdChwcml2KTsKPiAgCWlmIChyZXQpCj4gLQkJcmV0dXJuIGRldl9lcnJf
+cHJvYmUocHJpdi0+ZGV2aWNlLCByZXQsICJObyB4UENTIGZvdW5kXG4iKTsKPiAtCj4gLQlpZiAo
+eHBjcykKPiAtCQl4cGNzX2NvbmZpZ19lZWVfbXVsdF9mYWN0KHhwY3MsIHByaXYtPnBsYXQtPm11
+bHRfZmFjdF8xMDBucyk7Cj4gLQo+IC0JcHJpdi0+aHctPnhwY3MgPSB4cGNzOwo+ICsJCXJldHVy
+biBkZXZfZXJyX3Byb2JlKHByaXYtPmRldmljZSwgcmV0LCAiRmFpbGVkIHRvIGluaXRpYWxpemUg
+UENTXG4iKTsKPiAgCj4gIAlyZXR1cm4gMDsKPiAgfQoKW1NldmVyaXR5OiBNZWRpdW1dClRoaXMg
+cmVtb3ZlcyB0aGUgb25seSBnZW5lcmljIHJlYWRlciBvZiB0aGUgZG9jdW1lbnRlZCAicGNzLWhh
+bmRsZSIKcHJvcGVydHkgKGFuZCBvZiBtZGlvX2J1c19kYXRhLT5wY3NfbWFzaykuIEZvciBhIGds
+dWUgZHJpdmVyIHRoYXQgZG9lcyBub3QKaW5zdGFsbCBwbGF0LT5wY3NfaW5pdCwgc3RtbWFjX3Bj
+c19zZXR1cCgpIG5vdyByZXR1cm5zIDAgYmVmb3JlIGxvb2tpbmcgYXQKdGhlIGZpcm13YXJlIG5v
+ZGUgYXQgYWxsLgoKRG9lcyB0aGF0IG1ha2UgInBjcy1oYW5kbGUiIGEgc2lsZW50IG5vLW9wIGZv
+ciB0aGUgcGxhaW4gU3lub3BzeXMKY29tcGF0aWJsZXMgaGFuZGxlZCBieSBkd21hYy1nZW5lcmlj
+LmM/CgoJc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgZHdtYWNfZ2VuZXJpY19tYXRj
+aFtdID0gewoJCXsgLmNvbXBhdGlibGUgPSAic25wcyxkd21hYy00LjEwYSJ9LAoJCXsgLmNvbXBh
+dGlibGUgPSAic25wcyxkd21hYyJ9LAoJCXsgLmNvbXBhdGlibGUgPSAic25wcyxkd3hnbWFjLTIu
+MTAifSwKCmR3bWFjX2dlbmVyaWNfcHJvYmUoKSBzZXRzIG5vIHBjc19pbml0LCB3aGlsZSAicGNz
+LWhhbmRsZSIgaXMgZGVmaW5lZApnZW5lcmljYWxseSBpbiBEb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvbmV0L2V0aGVybmV0LWNvbnRyb2xsZXIueWFtbAphbmQgaW1wb3J0ZWQgdW5y
+ZXN0cmljdGVkIGJ5IHNucHMsZHdtYWMueWFtbC4gUHJldmlvdXNseSBzdWNoIGEgbm9kZSBnb3Qg
+YW4KWFBDUyB2aWEgeHBjc19jcmVhdGVfZndub2RlKCk7IG5vdyBwcml2LT5ody0+eHBjcyBzdGF5
+cyBOVUxMIGFuZCB0aGUKZm9ybWVyIHByb2JlIGRpYWdub3N0aWMgKCJObyB4UENTIGZvdW5kIiBv
+biAtRVBST0JFX0RFRkVSLy1FTk9ERVYpIGlzIGdvbmUKd2l0aCBub3RoaW5nIGluIGl0cyBwbGFj
+ZS4gU2hvdWxkIHRoZSBiaW5kaW5ncyBiZSB1cGRhdGVkLCBvciBzaG91bGQgYQpnZW5lcmljIHBj
+c19pbml0IGhlbHBlciBrZWVwIGhvbm91cmluZyB0aGUgcHJvcGVydHk/CgpUaGUgY29tbWl0IG1l
+c3NhZ2Ugc2F5czoKCiAgICBGaXJzdCwgaWYgYSBkZXZpY2UgdHJlZSBzcGVjaWZpZXMgYSAicGNz
+LWhhbmRsZSIgYnV0IG5vIHNlbGVjdF9wY3MoKQogICAgY2FsbGJhY2sgaXMgcHJvdmlkZWQgYnkg
+dGhlIHBsYXRmb3JtIGRyaXZlciwgdGhlIGNyZWF0ZWQgWFBDUyBpcyBuZXZlcgogICAgdXNlZC4K
+CklzIHRoYXQgYWNjdXJhdGU/IHByaXYtPmh3LT54cGNzIGhhcyB0d28gY29uc3VtZXJzIGJlc2lk
+ZXMgc2VsZWN0X3BjcygpLgpzdG1tYWNfcGh5bGlua19zZXR1cCgpIHVzZXMgaXQgdG8gd2lkZW4g
+dGhlIGludGVyZmFjZSBtYXNrczoKCgkvKiBJZiB3ZSBoYXZlIGFuIHhwY3MsIGl0IGRlZmluZXMg
+d2hpY2ggUEhZIGludGVyZmFjZXMgYXJlIHN1cHBvcnRlZC4gKi8KCWlmIChwcml2LT5ody0+eHBj
+cykKCQlwY3MgPSB4cGNzX3RvX3BoeWxpbmtfcGNzKHByaXYtPmh3LT54cGNzKTsKCWVsc2UKCQlw
+Y3MgPSBwcml2LT5ody0+cGh5bGlua19wY3M7CgoJaWYgKHBjcykKCQlwaHlfaW50ZXJmYWNlX29y
+KGNvbmZpZy0+c3VwcG9ydGVkX2ludGVyZmFjZXMsIC4uLgoKYW5kIHN0bW1hY19pbml0X3BoeSgp
+IHVzZXMgaXQgdG8gc2tpcCBQSFkgYXR0YWNobWVudDoKCglpZiAocHJpdi0+aHctPnhwY3MgJiYK
+CSAgICB4cGNzX2dldF9hbl9tb2RlKHByaXYtPmh3LT54cGNzLCBtb2RlKSA9PSBEV19BTl9DNzMp
+CgkJcmV0dXJuIDA7CgpUaGUgY29tbWl0IG1lc3NhZ2UgYWxzbyBzYXlzOgoKICAgIFBsYXRmb3Jt
+cyB0aGF0IGRvIG5vdCBuZWVkIGFuIFhQQ1Mgc2ltcGx5IGxlYXZlIHRoZSBjYWxsYmFja3MgYXMg
+TlVMTAogICAgYW5kIG5vIGNoYW5nZSBpbiBiZWhhdmlvciBvY2N1cnMuCgpGb3IgYSBwbGF0Zm9y
+bSB0aGF0IHJlbGllZCBvbiB0aGUgZ2VuZXJpYyAicGNzLWhhbmRsZSIgcGF0aCwgZG9lcyBiZWhh
+dmlvcgpjaGFuZ2UgLSBuYXJyb3dlZCBjb25maWctPnN1cHBvcnRlZF9pbnRlcmZhY2VzIChhbmQg
+Y29uZmlnLT5scGlfaW50ZXJmYWNlcwp3aGVuIHByaXYtPmRtYV9jYXAuZWVlIGlzIHNldCksIHBs
+dXMgYW4gdW5jb25kaXRpb25hbCBQSFkgYXR0YWNoIHdoZXJlIHRoZQpEV19BTl9DNzMgYnlwYXNz
+IHVzZWQgdG8gYXBwbHk/CgpUaGVyZSBhcHBlYXIgdG8gYmUgbm8gaW4tdHJlZSBEVFMgZmlsZXMg
+cGFpcmluZyAic25wcyxkd21hYyIgd2l0aCBhbgoic25wcyxkdy14cGNzIiBub2RlIHRvZGF5IChS
+Wi9OMSwgUlovVDJILCBTb0NGUEdBIGFuZCBSb2NrY2hpcCBhbGwgZ28KdGhyb3VnaCBnbHVlIHRo
+YXQgc2V0cyBwY3NfaW5pdCwgYW5kIHBjc19tYXNrIGlzIHNldCBvbmx5IGJ5IGR3bWFjLWludGVs
+LAp3aGljaCB0aGlzIHBhdGNoIGNvbnZlcnRzKSwgYW5kIHRoZSBnYXAgaXMgbm90IGZpbGxlZCBs
+YXRlciBpbiB0aGUgc2VyaWVzIC0KYXQgdGhlIGVuZCBvZiB0aGUgc2VyaWVzIHN0bW1hY19tZGlv
+LmMgc3RpbGwgb25seSBkaXNwYXRjaGVzIHRvCnBsYXQtPnBjc19pbml0IGFuZCAicGNzLWhhbmRs
+ZSIgaXMgcGFyc2VkIG9ubHkgYnkgZHdtYWMtaW50ZWwsCmR3bWFjLXJlbmVzYXMtZ2JldGgsIGR3
+bWFjLXJ6bjEgYW5kIHRoZSBuZXcgZHdtYWMtcmsuIENvdWxkIHRoZSBjb21taXQKbWVzc2FnZSBz
+dGF0ZSBwbGFpbmx5IHRoYXQgZ2VuZXJpYyBkZXZpY2UgdHJlZSBYUENTIGF0dGFjaG1lbnQgaXMg
+YmVpbmcKcmVtb3ZlZD8KCi0tIApTYXNoaWtvIEFJIHJldmlldyDCtyBodHRwczovL25ldGRldi1h
+aS5ib3RzLmxpbnV4LmRldi9zYXNoaWtvLyMvcGF0Y2hzZXQvMjAyNjA5MTUxMjM4MDIuMTU2MTcy
+NC0xLWNvaWFwcmFudCU0MGdtYWlsLmNvbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
