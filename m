@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F807C982DD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 19:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44FF0C982D8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 21:04:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fn7WpwTVCMwEcvXP5uva2u/g5GFLZPLyGZt5v00Hvvw=; b=i8g1jNgg8ziIl/
-	nPigGihVOg8jwMUiDN2L4zOw7pg6HmluEY6aqycroC7xBfWXE5Z4rp1YfCrqvuviFYeOBLWVKYit6
-	IBKJAoUi1YV33kPe859HId6BbjWxV/DKlvDCKKRAVRjtIVvEpa0ynLzKpBEGBkR/u50xR7jirNT1m
-	aMuvUZdaMai6daKvvsQEgvP/vY0scbBrnkS1Eonzr3TClBciOmSTSXngrUfQpbeLtw5Tje5Q4vmqj
-	QeO2IDS4qbvDroNzQfTc6MXRO+BNWR4AxpRhLxguKbRJKUOOr9PYePAmCqMvtVvJqbpnJTZ/3fUeG
-	tC6Hha5sClvQkXTB7wZw==;
+	List-Owner; bh=QbN5qhuozhsZ3gqDDxGqsV5M2rWqWsx1wRNA0LmnFdk=; b=atrccA5PsNzKSs
+	Va+OfMmvhJeJRJHl5wQkTNXUOeQ5HOtTua6V1+iRiQUw8ti5IGog/Wl8GgpjMLbiXFDpUhGhzUTFD
+	nNJfW2iCKUtrGgH3jiWDIR2Y28JGQe+2P96YsdZ1bPxbsld0MWDF7niJVbybRxAEPDjojm1W4WweD
+	iTS+WQLt5NVxulj7veAYyj9g/o/1ffnTai15QLl+Oawta8TS/WP6iXDi6g6dZH8VoH5MlXYf3aHQC
+	wCLUO5EXKaq/CdX8/KnnAt6kYQ7V8B3OYtFcuHkXVoXTW0D1KUsVVzkyfZJ7vXpAhVnOe8bWST0oq
+	bPHEkDX8FpIKMsg7Fxng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7eXR-0000000FRMS-2Srb;
-	Fri, 18 Sep 2026 19:46:25 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x7flN-0000000FXwE-1cq2;
+	Fri, 18 Sep 2026 21:04:53 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7eXQ-0000000FRM7-2CjJ;
-	Fri, 18 Sep 2026 19:46:24 +0000
+	id 1x7flL-0000000FXvq-3zSL;
+	Fri, 18 Sep 2026 21:04:51 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8D52F602CC;
-	Fri, 18 Sep 2026 19:46:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 136491F000FF;
-	Fri, 18 Sep 2026 19:46:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6876E4008D;
+	Fri, 18 Sep 2026 21:04:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF11A1F000FF;
+	Fri, 18 Sep 2026 21:04:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789760783;
-	bh=0xKONjRtCurc8WbnVsXxctUnGulmYkSraLp8ZuykmOI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=lCgqvQSgcziEjU4PZtqtEprTy6iKuFyOEE9BW3tqy44D9VL04HVsRwqvwKmKyGPZE
-	 NwXHSur8WSM1IPdNOmQP+APLeUJ1RgNieNoT1ANmj/YhATUjVAcPfRgrYZM7TZM+N+
-	 bMcfMFu0SMYn3hjJ7O9KN5RVCaf7IcpOhjjBsP+dzV3ywNB7ghaQOrg8gutdNiu1k0
-	 3CNauiux7L+ru4TiIBlqXV3+OrXmwOHNXonb0u4a1KKeHVKyatPX6HGHjJif/WeWei
-	 deOCnWZK7ivR8UQYr8Q9r/ovO/8j6VpqEaUN+qwysGhODUQPRDPqCsR7gIx3J3phz2
-	 s2ZawkkrqOC2g==
-Date: Fri, 18 Sep 2026 14:46:21 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Ricardo Pardini <ricardo@pardini.net>
-Cc: Eric Dumazet <edumazet@google.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	linux-rockchip@lists.infradead.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org, nic_swsd@realtek.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	devicetree@vger.kernel.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Jakub Kicinski <kuba@kernel.org>
-Subject: Re: [PATCH v5 1/7] dt-bindings: net: add Realtek RTL8125 PCIe
- Ethernet
-Message-ID: <178976078089.1640411.4176382061491076376.robh@kernel.org>
-References: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-0-c1b9e5f10cd6@pardini.net>
- <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-1-c1b9e5f10cd6@pardini.net>
+	s=k20260515; t=1789765491;
+	bh=hLR/L/o7Vo7FODu7d9J5m8U0h+FySOCRHByc1a3Z2Ow=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=Vye6PCKUxSZmy+6D3kv+/kPdICUI6RU/5EDdEGvtUNzc4BiiaDm/0qXOFTDYCN/Ql
+	 p+aX5Dg8asYqe1CSAJO8Qa72oVMZfvMO8Ab8orvk7SGb4OlVqGtQfaxy2frOY8qOzR
+	 aUGAS5J9jWNm+CUEo2rYyTM5doJF4rWRGlmOCBTaIZnQa533dZXRkskEjMF8/z+ONl
+	 6rKgW+a35+2Ye+OHCLlmrNL3ob2aNgBq5yLPb16oP+z5pczGA7BoGU4pyCrLoJocvJ
+	 sIz/CNW8nPGJ1a4XChOq9uxSLxTri3PdT6mykvn9D3idr4OOKOl0zNldIYpexp6d7S
+	 /2GNZrMkhnAZA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Kees Cook <kees@kernel.org>
+Cc: Kees Cook <kees+treewide@kernel.org>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-hardening@vger.kernel.org
+In-Reply-To: <20260917211403.i.984-kees@kernel.org>
+References: <20260917211403.i.984-kees@kernel.org>
+Subject: Re: [PATCH] ASoC: rockchip: rk3399_gru_sound: Allocate dai_link
+ with ARRAY_SIZE()
+Message-Id: <178974993217.1717936.16569984082804245369.b4-ty@b4>
+Date: Fri, 18 Sep 2026 17:45:32 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-1-c1b9e5f10cd6@pardini.net>
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1153; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=10fwTwDJxY7TMGtl2vnmV0+ibDegGDd/hiGF/jeQKpM=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqradtZogYYpkjLywUPXU00x+FPsBNffmfu0f2c
+ BfHp/JoT1iJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaq2nbQAKCRAk1otyXVSH
+ 0HaaB/9TzZ1Z8LJB1aCGtbehX+m844nv2n0A/Ys33byT6xpFx4rNMUQNG6yKvHaIQJrQuz6bsXI
+ ezIucAozYBZ99c893Rx79GeEmhc4vP+NmnHCQ3vzJftWnBvobOdS3UB3t/r/dQGI0dMSeY3TJGK
+ sy4U0LkuoxuTnMuAAHkEbw0yO3G3hP7GTlT8RD3b6GosOEbcqbIkhk41xpWgZYK+ae6RQNQ0SHr
+ FG4w0OV7hgs4tIMwXjXel8YFxXjeDHkvs1ByoFyKjCZEB60aEiCqiWxrleQGgkXm8qkVKfJLc1Z
+ KC9vER2LbDmvkaHLp9cpnRUM6iE4e+mOdc/JRqH6w6lCCE3L
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,30 +83,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Thu, 17 Sep 2026 14:14:04 -0700, Kees Cook wrote:
+> ASoC: rockchip: rk3399_gru_sound: Allocate dai_link with ARRAY_SIZE()
 
-On Thu, 10 Sep 2026 22:07:51 +0200, Ricardo Pardini wrote:
-> Add a binding for fixed/soldered Realtek RTL8125 PCIe Ethernet
-> controller. As a PCIe device, its "pci10ec,8125" compatible is the
-> Open Firmware spelling auto-derived from its PCI-SIG vendor/device IDs
-> and is already covered by the generic dtschema pci-device.yaml. The
-> compatible itself therefore needs no binding to be valid.
-> 
-> A dedicated binding is needed because board DTs describe these
-> soldered function nodes in order to attach ethernet-controller
-> properties to them: a placeholder local-mac-address that the bootloader
-> fills in today, and potentially nvmem-cells, phy-handle, etc. in the
-> future. This binding references ethernet-controller.yaml so those
-> properties are validated on the RTL8125 PCI function nodes.
-> 
-> Suggested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
-> ---
->  .../devicetree/bindings/net/realtek,rtl8125.yaml   | 43 ++++++++++++++++++++++
->  MAINTAINERS                                        |  1 +
->  2 files changed, 44 insertions(+)
-> 
+Applied to
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
+
+Thanks!
+
+[1/1] ASoC: rockchip: rk3399_gru_sound: Allocate dai_link with ARRAY_SIZE()
+      https://git.kernel.org/broonie/sound/c/8633243a494b
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
