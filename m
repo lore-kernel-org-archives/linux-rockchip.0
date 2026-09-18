@@ -4,56 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7330C982DC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10228C982DA
 	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 12:08:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=94WzahJiwImFR0XIKaK8qF8TYGiNHjbKVZJ4lO7ZsFs=; b=VqoQ8h8YLZDAa1
-	L95oA4dhO04T0hIR8WgQTJKqADE0Vyig5uEmcUzRlXiJE6VoW8ZwMiqTiri9BfWwlRbUrMhBBv5lV
-	2MxazC/xx+VKABaBklF58ykJ5p6fYIVKThVXReqjvyBtuR2yESLhzkGb9Dbs8IDWc2vfpkID7zmFQ
-	+q3BRAebuk2inndQwLOc64SqsTC0apJ1wrJubI3BfsHwdtWwvhtxh1Gtk1gepbw4CLlrLJrClvkzo
-	DBi+Yp68v2v7mJHJLbtYT8VysSt83eY30iFSKUtnnj4cYlC2zJNGQERwZ+tKRvSL6TmT4RTIi9A1u
-	wFVg2t5zXWoNdU+85xxg==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gzetetzW/Xslf3u7u1doVw7BHI+cCFsSFbzV7pv7j4k=; b=efG9ACCnt0+Tzw
+	0N0h+2s7z20ZFZ6BOtgR2umqjQxpkOQMhkem3iB+Az4WWkx43Qq8rZU2lWgyQGiZVT1I5FZt43P+c
+	PalgYalKAsnOZkBHDNqrH7fojd1JMGla1igsNRgzA/GGSusKsZPsFBxAnOMkNYqYkJBieMtEjyNxo
+	SQyjmcuRkI2yuCCGSDA4LVdXVIVooeqxO+rfT1AalEcMzvC4rk9fpiSER2seyjaO2cmkN+buUyAuH
+	xKEqmq+Rw76iajQiwkE2BAyRGQGUZZpu0afPdefNLIFqyHYyZlzcuLrRO1m1EJ+ndAgvlad7PZVyu
+	nPrECYYxBQ5lGpyi72XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7XNy-0000000EKLq-3taJ;
-	Fri, 18 Sep 2026 12:08:10 +0000
-Received: from mail-m16023652180.xmail.ntesmail.com ([160.236.52.180])
+	id 1x7XO0-0000000EKM4-0MPh;
+	Fri, 18 Sep 2026 12:08:12 +0000
+Received: from mail-m9364.xmail.ntesmail.com ([103.126.93.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7XNv-0000000EKJx-0LlW
+	id 1x7XNx-0000000EKL4-0Fqq
 	for linux-rockchip@lists.infradead.org;
-	Fri, 18 Sep 2026 12:08:09 +0000
+	Fri, 18 Sep 2026 12:08:10 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4e4c12fb9;
-	Fri, 18 Sep 2026 20:07:52 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4e4c12fd2;
+	Fri, 18 Sep 2026 20:08:02 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Ulf Hansson <ulfh@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>
 Cc: linux-pm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 0/4] Small fixes and improvement for Rockchip pm-domains driver
-Date: Fri, 18 Sep 2026 20:07:34 +0800
-Message-Id: <1789733258-10133-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 2/4] pmdomain: rockchip: fix clock leak on domain probe failure
+Date: Fri, 18 Sep 2026 20:07:36 +0800
+Message-Id: <1789733258-10133-3-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0aa0b46a782d03a4kunm5c34220f1640be
+In-Reply-To: <1789733258-10133-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1789733258-10133-1-git-send-email-shawn.lin@rock-chips.com>
+X-HM-Tid: 0aa0b46aa43203a4kunm5c34220f164111
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQ09IGFZIQx4eSUgfSB
-	hOQk5WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGkJOH1YaHR1KGR8aGE
+	1PSx5WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
 	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=F/AXD2TOeLqSKJahaSCypAaWwb/TRrrhoBG1lgKEaI59PBJMh9hvmnfF3dhlcqX8nIMN4W0LVIe0a9xFW4pFAEbDZp8EbE3hm5wI58oeIaIE6j0+1VO26ofZk2Dqh53kb1Rdtx+vB9DK0IBaIPNaH+D1nse0r2af3PfuK5BYBCI=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=wRrqf1bN80+rcTxNRB4rPoLGxl79KuM+SF//1oHIzCI=;
+	b=GGe077Ti2GRusO6ujOO7ct4Oqt6QXuocoWQnBGaNG2oDd8WIV7w3J0eQ2qFTRZwDBp9w/9OItKkkxaVZMivEVsaSFmHO+fnx7vdRDAB2uEY7TgxzTeKbKkQ/H1RZh3XRKgtfOufGoWyOYVC7jyCcMtM+gbsTXvObvD2lgMA/afM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=vyiGmdwYuCiYWaT86c455RYOSqUK1NvHNKSSaModKpU=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_050807_750295_FAA11170 
-X-CRM114-Status: UNSURE (   6.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260918_050809_300747_7E99935D 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,21 +72,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+When of_clk_get() failed in the middle of the loop, the references of
+the clocks acquired so far were leaked instead of being released by
+the error path.
 
-The first 3 patches are for fixing. And the last one is for
-improvement.
+Fixes: d909072d0521 ("soc: rockchip: power-domain: use clk_bulk APIs")
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
 
+ drivers/pmdomain/rockchip/pm-domains.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-Shawn Lin (4):
-  pmdomain: rockchip: propagate subdomain add errors
-  pmdomain: rockchip: fix clock leak on domain probe failure
-  pmdomain: rockchip: don't ignore clock lookup errors on attach
-  pmdomain: rockchip: drop duplicated errno from supply failure message
-
- drivers/pmdomain/rockchip/pm-domains.c | 22 ++++++++++++++++++----
- 1 file changed, 18 insertions(+), 4 deletions(-)
-
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 068dd4b3..b6b099b 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -842,7 +842,7 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 			dev_err(pmu->dev,
+ 				"%pOFn: failed to get clk at index %d: %d\n",
+ 				node, i, error);
+-			return error;
++			goto err_put_clocks;
+ 		}
+ 	}
+ 
 -- 
 2.7.4
 
