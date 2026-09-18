@@ -4,101 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99695C982DF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 13:06:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF25C982DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 13:15:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qzzyq0P79zPiz7dUzEskrK5Dft4kefjzEAEYYnDJYak=; b=aFDrhPRkQoIlKJ
-	EWiLH88kCC76AQNmLGbyFwBVPRw9dhvT4N+NrT0lx6diJPya10GU1AXmP9LZAABbrm3nbGSyp8VyH
-	WjGhiZJwPlT7bBWNN80hMolm1TGd2KKkxPaqMWZBlDHxw6DYlrd0rMgMTHqEhgIYn6s6HGFyTGEUV
-	Ye1Yj5FWrJI8uQQFCFvN03ZkHs7O5Z6fQeMDpvi2SwnZNOg3PSe7T86KvY/Cd9kTccDA8SrhuJ7Bf
-	lCcX6o+RdRtTmOA4PGF/CHr/5BC/Z+FQknv4LJPt/ufMLHMNOBlfvVmETmeW6QEQJqF3wCZAcfPNW
-	yeiz2N3o0XpYzNilWuXg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pWUqnCOmM1m12mwwXqlonynuFGEcWb8x+0Tov05t5Ik=; b=0HP/f1WSA1tHDA
+	JKCHYKFmED1e30WdY1qqFK2G52hbtUCtk8CGybS5JUHX0LHqdOSuw4ElMR7D3wRfGHm/PK5Tlwvh4
+	4QK1EebUeVregUAA+FIVbwU93Qu4Y8IZUQj0Luf0Qx0Mlb+4+SLtjcp0ctDnXowSPKBWCtjncpMmN
+	o8vDtCqPbnHIWuLOK6pcF0sVbGz+n08ylsyTP1eqUZF9HaSPLzxChurJX2hm/MN+Sv3jFuj7EmixA
+	c0FdAppArnTA3H9vTSuwzUQyFzhot7eqsnxUFqYpLiKpXKpeLPmadRSAWvYcfUaKLC9tOl7hN0nd2
+	sDPUsxvRT262+2hZgbmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7YHx-0000000ERJP-2XK9;
-	Fri, 18 Sep 2026 13:06:01 +0000
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+	id 1x7YRV-0000000ESBK-0VcW;
+	Fri, 18 Sep 2026 13:15:53 +0000
+Received: from mr-2006d-snip6-11.eps.apple.com ([2a01:b747:3000:204::29] helo=outbound.mr.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7YHv-0000000ERIf-3Jlv
+	id 1x7YRT-0000000ESA3-0Wl6
 	for linux-rockchip@lists.infradead.org;
-	Fri, 18 Sep 2026 13:06:00 +0000
-Received: by mail-wm2-x11.google.com with SMTP id 5b1f17b1804b1-49ccfd61ecaso6882685e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 18 Sep 2026 06:05:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789736757; x=1790341557; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=xTtOVPmjJhEY4Y5vNG5Ynui/aIBMd7EqZyB7db6fqik=;
-        b=cqmQHzbkymjXwvWdRWNv7fXu/4Iw686A2ssMjiRKAx1OjnbpXqDNt7VeUnJdJYFqtR
-         ixi0onXey87xLiPMHhj7YbTlXQh0+v/grMkJFzT0gw4zqo7b2uUBIj3JLHcuTA8xSYq5
-         j8Tkfmk0mLr79QAo6nZYawctR2TusF4C5Us55iGvWaHPBr9jKEzTVM2WnBiYKF3HW6Tt
-         a+25j/MlvH2Cu4ezR0CgcAuFSmn8BwpoBPPoDkkiMfNppwqGdbSYZR5rcZO4xplSLnpa
-         L1wBCkB1Wk50Vum4cVufEvahcg/2FlS0tSLel7KeWKvp9DJG9sq9S3RF4qT8Ue6OjHjF
-         apGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789736757; x=1790341557;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=xTtOVPmjJhEY4Y5vNG5Ynui/aIBMd7EqZyB7db6fqik=;
-        b=RnDOi9SIE/eOmRiVyI9hnrt9yqj3LiHpOJu6ZII7tJmJb7JzDKh5H9DWx5xOXuhRLC
-         0hxhzaluqcuMoppTik4J2lpMUOt9H/ulzUF2BNJ6K2Ojcw61rs2J8oNsTARP/Bk2rNf8
-         zM7OkLy5WbCkyh7G3LPA5W/iMag1ZvHk1cskuj4mEXekyxKWUC4H82LMJInsFgdtL4qf
-         ELfMydKQ4Qdy/Ig23aZ2l8R5mOFCD3AfZ479+cmMDU32++hvvRZrLVKUl7/PvJyUauCA
-         Sr5z8WzFFyz6rCNkG0TfunyjYjM0TT6rEfc/kRqYN7LB9lyNcFj7vtXicl9/+kBOep0q
-         p1iA==
-X-Forwarded-Encrypted: i=1; AKwUvBzfE8lcK+sJUb/9L8a9nO7pV3t5j/2/W5N9KDCjsu4/OcaC7vqhHWp7V4KjriSJAZs19/Kr5b20iYyZTX7WHw==@lists.infradead.org
-X-Gm-Message-State: AFuF++ne2qh8dA/TKut+CnqBNDXgyudGvbVMEl+A7MOQ7rYkEzqYQ3Xa
-	CDiuho9GTw55wJVKgFab4XQWhdXlz7KLfZbrwbIejxxIjR1gr8f1esiN
-X-Gm-Gg: AYBFou3nR3CNIV3CaSKleiz22AHlGVSZndmpIrHgkuIqo9hPW458CMTxDG/IrG5SdIs
-	rSgYGTEA5NkGyGmF74q/JuzhXGK+k3ooQ4Tnj+G7xdKmJX4B5aeUdZKJIzNONt7SNplxw8fYBWK
-	AHaDGiOayKWwuvyKuCty2mFzjijA+mbGU7VXPjAiVEqOdSBxI1+rG0dzbObh5owbnQ7bKIBTdiD
-	+X8RQu+aqChxqrIulAOagdxpeyioCERtGxI3l+e4z1Q1hdj5O7+Q7rR4xksts3sx48vf2ErXitV
-	bROTBNA2ZjXwXQqJ2hNUvygOchVhOANsIc4nfjOs2NMzcWxfMC7WldRnhzYJ8DS5VVw5R1wEgfZ
-	xrYgV1k3A/bo3LKFflZnFZB1lmKMRsvU68RzQ/a1uEAAc99ONJs12UOqsvS0bAke2j420qQRguJ
-	pWbiHEMkRRSbER4yrZaXbDwJ3HDLQLk3M+lweAG9TJpIdKPE+XDIwhYYXS90ZX1wMVTtAc1fgG0
-	9H7Y/iVZQgUdhzLwoW9JbTmRl26d+Kho4dqdy5P87ZWMd6V+jNYYJRDMw==
-X-Received: by 2002:a05:600c:19c6:b0:49c:f4e1:4c2d with SMTP id 5b1f17b1804b1-49fc5741239mr34035075e9.16.1789736757294;
-        Fri, 18 Sep 2026 06:05:57 -0700 (PDT)
-Received: from [127.0.1.1] (lmontsouris-656-1-83-121.w82-127.abo.wanadoo.fr. [82.127.110.121])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49fc7ce0050sm64995715e9.4.2026.09.18.06.05.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Sep 2026 06:05:56 -0700 (PDT)
-From: Amin Gattout <amin.gattout@gmail.com>
-Date: Fri, 18 Sep 2026 15:05:40 +0200
-Subject: [PATCH] media: rockchip: rkcif: convert timeout to
- secs_to_jiffies()
+	Fri, 18 Sep 2026 13:15:52 +0000
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+	by p00-icloudmta-asmtp-us-west-2a-10-percent-1 (Postfix) with ESMTPS id EF95B1801878;
+	Fri, 18 Sep 2026 13:15:44 +0000 (UTC)
+X-ICL-RepId: 01a0b4a8-9f61-7b78-8aa0-6d87e68571e2
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXRIYXBRcUFgeRhJWDV0JGQZAXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJClcAQAtOA1QGUx8RTxweGwZGA10NQQpaAFIBQV9MBlh3AlEcVg1XQ1QEX04ZDEodUlZbE1UXRgk=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1789737350; x=1792329350; bh=2ra59WfJb1Td+zzHnAJy6s+dAtb1vmFdzxQdY4PbQxA=; h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:x-icloud-hme; b=n3SIX7yNVHty7ZdX6XylCdP4qakGokQcjr0o76FWr8olNpeSP4YI+F/i10/PDlG2xhm8X2xv/xcISNKfzN2eSdDH36CHvhIyu4I4Z5pcTvhI6rHzD2VcDsHh4YEePz3WIMUCD1naIxmAcqNAnpSZm42xZl9qzAX3OryeSq1IxHstefVyblZfw07pivnmgKHGbc/vckD0PLTsxI2/T4lIZW8ciUMM9Q25iuvuj7T8tXU/3m/SvtFkDqUGiaSYpOCdLOgThLWyGYaX3Psi2uY4HfcE2Uka7OKD1ulDn/MiSat1On2LaeW02czJZMR6SGdRZI1T3DPRwS1Fp9cZbVHIAQ==
+Received: from [127.0.0.1] (unknown [17.156.200.36])
+	by p00-icloudmta-asmtp-us-west-2a-10-percent-1 (Postfix) with ESMTPSA id 6F45F1801853;
+	Fri, 18 Sep 2026 13:15:41 +0000 (UTC)
+From: Sofus Forstreuter <sofus.c@icloud.com>
+Date: Fri, 18 Sep 2026 15:15:06 +0200
+Subject: [PATCH 01/14] media: v4l2: Add P210 pixel format
 MIME-Version: 1.0
-Message-Id: <20260918-rkcif-secs-to-jiffies-v1-1-110f336750b0@gmail.com>
-X-B4-Tracking: v=1; b=H4sIACM3rWoC/yXMQQ5EQBBA0atIrVWihR7tKmJBT5UpkyBdiETcX
- c9YvsX/JygFIYU6OSHQLirzFGHSBPynmwZCeUdDnuU2c6bC8PXCqOQV1xlHYY45mt5VnbOFLfk
- FsV0CsRz/b9M+1q0fya+/GVzXDcQtwll5AAAA
-X-Change-ID: 20260918-rkcif-secs-to-jiffies-1b98a96465f7
-To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
+Message-Id: <20260918-avd-v1-1-49977931f455@icloud.com>
+References: <20260918-avd-v1-0-49977931f455@icloud.com>
+In-Reply-To: <20260918-avd-v1-0-49977931f455@icloud.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
+ Neal Gompa <neal@gompa.dev>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
  Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Amin Gattout <amin.gattout@gmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789736756; l=1003;
- i=amin.gattout@gmail.com; s=20260818; h=from:subject:message-id;
- bh=kPgx4cLfFtyea67NwR3E633DUHHI/gx0j+1j/jnDfgM=;
- b=pggsFLR06h1pcvdC/nqDIW9ExWwe/rpDAtuNuj4ftZ2dnTT7yl+yPfCBCZSNWi7x/a3d2+q9F
- RJ1IywmT/tFAYuO0IGq4I2KX34bi0eW6c7CxgTnUEabgIXNiscn45mw
-X-Developer-Key: i=amin.gattout@gmail.com; a=ed25519;
- pk=MSIqDPkCOkwtyP8Fns1m+KFU9SgqoDl2mpLe18vL+hQ=
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ Sofus Forstreuter <sofus.c@icloud.com>
+X-Mailer: b4 0.15.2
+X-Proofpoint-GUID: kzhGWJTcw42M2A7t4juD7sN9WIJU03rY
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE4MDE4OCBTYWx0ZWRfX3Fy6A4xlhU1e
+ PF9/pa5E2aM9Y2TTdmRxgOwD6kJL8wM+6iqalxLUlj1JPyi/57DQOyn0XCFu4tJTk/xnME9gAK0
+ HCEB1Ns2lClGHzYxIdM6H26MgwdOLzDbr5ygBj2EDSurPs0QltvBFd9sh0M+ACTynBiOOQQgk/9
+ DDZ7dt98OHB9kZgBpbWpSlw8p6po/lCICk/O2sAdqkhReV1yPG+KRYi1zHPwplzLjMwNMTlHkpX
+ 0MQGGqsMHG6Vj6l37GBZYA8KJVHJ+GlUkmIzjTvLRDhuR0Eu2snINJzk78w0NI/xWPkMh1ZYrPF
+ MrR+F+bdEWRccJW9Jy/P9PL8n6js5yRIMqliDGKx0e655RJ1ybn4z7teHjUYww=
+X-Authority-Info-Out: v=2.4 cv=LtafC3dc c=1 sm=1 tr=0 ts=6aad3985
+ cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
+ a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
+ a=x7bEGLp0ZPQA:10 a=kLM9Tyy99jAA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=v3ZZPjhaAAAA:8 a=dTfWxpUtucAophMp4g4A:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: kzhGWJTcw42M2A7t4juD7sN9WIJU03rY
+X-JNJ: AAAAAAABKZT68bqb9BXh7HQzfM6clOzkIqYw9/alC7rbs2QEZ3eMDpXlZX9rKY0yn02O/PEmO9LZ5vo4811XlxRmAqcIA4C42KdNavU5LxGc5srdz19RV7vhDJKeTaPerjJlagjMxkcIwjINDufqCKM1fHPnm/YB2yKNZWqPpsC9gCBr44SpuCOl5D+qnUt4LFZF44Gsv/oT2faWVRyN8o+dkYk/onPzTNqbmmQaK1a700rfjzvNXW9KVc2B8QoiX66o5AWLT+LHG0ps7WnB/lR7zTijYdyr52BuB3rZqSkA51HzKLkqnVkmjyrbiI0KixrXGN2B9lMkhArepnew9cNQJ66gFcD6MgUObdcJHqoUu/0hoOpP5/V+ngZRPzD9q62YgqOMyq46oG0w7GcEYk6ccA5N7u5xTFKncA1oS+xKJUwuDMlOuHBTTUsvONww5wU8IuMQbM/wERYWpwIVDJIOaaZ+7spdZEJkV2X1UyC2/vTSTjoz0fv/I4zrCMOAjnlVjjgNltSV56vOm1TFG2HnHTW77QaK8CGNjf8ct+OhvNLAjNv7OP6c7+VgZtPI6CLyMhDVeQ3HfbD0nmN97+h+/fFByB8BsB1noMN/M9jKsm9ihDtErNNwV/+Wb0KHIr9l+0OenmcjL+W7yAFYQHE5OYvmCNbU/GH5XyE8sQCLty1eXy9pnslbGylA8erUoF4Hp65lUI8RKY74ReJ/7nS8nRofNq5ThjCkDDi814xuebz+fQd12QHXsnNfJTNGI+LiP6kyz2t1p2RkyfTBaMb/Zy7tih8cXRz7OPZatACgIx9I0J8Pb5Ly4qfA9FtFVJkqXRplUExOmWZ+uVhIGJLjSznqD1UxDj8SQrSrQId2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_060559_838595_38E0A00E 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260918_061551_177452_7E2F0975 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,34 +87,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use secs_to_jiffies() to simplify the code.
+P210 is a YUV format with 10-bits per component with interleaved UV.
 
-Signed-off-by: Amin Gattout <amin.gattout@gmail.com>
+Signed-off-by: Sofus Forstreuter <sofus.c@icloud.com>
 ---
- drivers/media/platform/rockchip/rkcif/rkcif-stream.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst | 10 +++++++++-
+ drivers/media/v4l2-core/v4l2-common.c                       |  1 +
+ drivers/media/v4l2-core/v4l2-ioctl.c                        |  1 +
+ include/uapi/linux/videodev2.h                              |  1 +
+ 4 files changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-index 3130d420ad55..f82eaf9a37d1 100644
---- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-@@ -314,7 +314,7 @@ static void rkcif_stream_stop_streaming(struct vb2_queue *queue)
+diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+index 0631919bd667..8509f2415c9b 100644
+--- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
++++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+@@ -138,6 +138,13 @@ All components are stored with the same number of bits per component.
+       - Cb, Cr
+       - No
+       - Linear
++    * - V4L2_PIX_FMT_P210
++      - 'P210'
++      - 10
++      - 4:2:2
++      - Cb, Cr
++      - Yes
++      - Linear
+     * - V4L2_PIX_FMT_NV15
+       - 'NV15'
+       - 10
+@@ -834,8 +841,9 @@ number of lines as the luma plane.
  
- 	stream->stopping = true;
- 	ret = wait_event_timeout(stream->wq_stopped, !stream->stopping,
--				 msecs_to_jiffies(1000));
-+				 secs_to_jiffies(1));
+ .. _V4L2_PIX_FMT_P010:
+ .. _V4L2-PIX-FMT-P010-4L4:
++.. _V4L2-PIX-FMT-P210:
  
- 	if (!ret && stream->stop_streaming)
- 		stream->stop_streaming(stream);
+-P010 and tiled P010
++P010, tiled P010 and P210
+ -------------------
+ 
+ P010 is like NV12 with 10 bits per component, expanded to 16 bits.
+diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+index c825820fd481..b78fc0845a16 100644
+--- a/drivers/media/v4l2-core/v4l2-common.c
++++ b/drivers/media/v4l2-core/v4l2-common.c
+@@ -325,6 +325,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+ 		{ .format = V4L2_PIX_FMT_NV42,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_P010,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_P012,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 4, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
++		{ .format = V4L2_PIX_FMT_P210,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 4, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 1 },
+ 
+ 		{ .format = V4L2_PIX_FMT_YUV410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 4, .vdiv = 4 },
+ 		{ .format = V4L2_PIX_FMT_YVU410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 4, .vdiv = 4 },
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index 17ba1ae70735..1f2519ffeb2b 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1369,6 +1369,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 	case V4L2_PIX_FMT_NV42:		descr = "Y/VU 4:4:4"; break;
+ 	case V4L2_PIX_FMT_P010:		descr = "10-bit Y/UV 4:2:0"; break;
+ 	case V4L2_PIX_FMT_P012:		descr = "12-bit Y/UV 4:2:0"; break;
++	case V4L2_PIX_FMT_P210:		descr = "10-bit Y/UV 4:2:2"; break;
+ 	case V4L2_PIX_FMT_NV12_4L4:	descr = "Y/UV 4:2:0 (4x4 Linear)"; break;
+ 	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/UV 4:2:0 (16x16 Linear)"; break;
+ 	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/UV 4:2:0 (32x32 Linear)"; break;
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 5373dba640fa..b5949c378f2e 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -659,6 +659,7 @@ struct v4l2_pix_format {
+ #define V4L2_PIX_FMT_NV42    v4l2_fourcc('N', 'V', '4', '2') /* 24  Y/CrCb 4:4:4  */
+ #define V4L2_PIX_FMT_P010    v4l2_fourcc('P', '0', '1', '0') /* 24  Y/CbCr 4:2:0 10-bit per component */
+ #define V4L2_PIX_FMT_P012    v4l2_fourcc('P', '0', '1', '2') /* 24  Y/CbCr 4:2:0 12-bit per component */
++#define V4L2_PIX_FMT_P210    v4l2_fourcc('P', '2', '1', '0') /* 24  Y/CbCr 4:2:2 10-bit per component */
+ 
+ /* two non contiguous planes - one Y, one Cr + Cb interleaved  */
+ #define V4L2_PIX_FMT_NV12M   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
 
----
-base-commit: 238650ef6c7c7cca08e032527329424c9fbd70e5
-change-id: 20260918-rkcif-secs-to-jiffies-1b98a96465f7
-
-Best regards,
---  
-Amin Gattout <amin.gattout@gmail.com>
+-- 
+2.55.0
 
 
 _______________________________________________
