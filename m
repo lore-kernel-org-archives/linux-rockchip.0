@@ -4,88 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4102FC982DA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 15:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC2CCC982D7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 16:41:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:Cc:Message-Id
-	:Date:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ObfNkFDReJ/lNyiuae0ntEkk4GsmTkdYe0LN10yr6PI=; b=vx5A3BfXwWC1HHms8PnH8J/9oG
-	7ztN/rrYKa3TvrQAnbKIfB8AQe018k5YmfUsa3OJM71+7+b2tqmQKygiXH50w8auW/HHe6S0YFFil
-	D8xjIbzlcBexEDaO2ieR+Lq29mYc0NYYCChFaL7QKD1YPy38RjasgRBsaXKzwXWVoLfAj8ZMRKxTM
-	lbxRx1/o0SClvQ51Ad9IVDUUneO4hkNZLt15Umgl/Qt4XuY5OGQ5ZYJxyvfEY257tfNzk4vTCaS+d
-	VCYUoPMhIKdepywy14UNnI+wJDhyn5Jb5JYuZFRyfmATGYKkThMKEAMvxN2CkBmIQ+zefjSFJoWCS
-	/AVjiTGA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=mJxp8BZ8gn/7Uhpg10+leEBXEjWNOTEDvJqh+W1GCgU=; b=CVycWeyzI1orVMEkTw0elZp5BE
+	M/y476fqWwY2voH6bacDg3XmRmt+/zQP4eqI0t7F1mFr9s+0TH/03GB0GLtqvFCr6Oo4DRTZW/QA4
+	8vBHD0zAg/44JTK29FUQU6e2cE1XdsKCKSRAhaq89otLg/Q8ZIgdNtTtDxgMuAis5f4MmT9UM/CZc
+	WBvpbddO/980Ysq15qIxeEZ/f9djisdCXDu67zg7QWi6OCB2iiJS/PIcKF9SKOnxdObVSf9fUTN5R
+	HIs7NlW4UMMDL+KJgbFzX7fUkOuvFgRBZX7oHKw1bmuKKgTdpOYLtx1UlOYXpwOwX+wjcZGUNWdYz
+	FmQxiJuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7aaL-0000000EtWm-1Wv0;
-	Fri, 18 Sep 2026 15:33:09 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1x7beM-0000000F3lk-1Ix5;
+	Fri, 18 Sep 2026 16:41:22 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7aaD-0000000EtTX-14JL
-	for linux-rockchip@lists.infradead.org;
-	Fri, 18 Sep 2026 15:33:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ubuntu.com;
- h=In-Reply-To: References: To: From: Subject: Cc: Message-Id: Date:
- Content-Type: Content-Transfer-Encoding: Mime-Version; q=dns/txt;
- s=fe-953a8a3ca9; t=1789745579;
- bh=WtQrZyaQlO+mtHmYw2SBSJxPWTjmzlVgI7Rp9b5tPg4=;
- b=BEUEoqAGW1PzF8V2O16n7oJ7lr7h1N/QjkXrrCZ3c9gIJp2rrv8DcYy7nu8T3+mrUP2Q0AMaf
- S0DLVV9zBDUNmtvTbHhAWj4zTd3CNfkWkh8vIu70l2ByyaEPTVcFOJhGTHNgBi/geBSA8kP0r2b
- RddDLqc42Omslgo/Fzx3JoTkktfvKAREbVGViOHu1jzyvbJQ2Z/uGoyn++8g+IHt4WogzWTTWMB
- TGahxDH5qfjtbqLsEeEgbZvJLZjBejFVt58auTb0D2J73ot7wrtXIRkbeNuB7mgZrdxm4IAgsYK
- XUnN+P57W3Qq/vWkUf1fxwmBn9sJpy+7FWRdzNaaCpYA==
-X-Forward-Email-ID: 6aad59a12df78bc22ddeff38
-X-Forward-Email-Sender: rfc822; jpeisach@ubuntu.com, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 2.14.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Mime-Version: 1.0
-Date: Fri, 18 Sep 2026 11:32:45 -0400
-Message-Id: <DLIJUQCKB76W.3RHK9KPO5JSOZ@ubuntu.com>
-Cc: <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <mfd@lists.linux.dev>, <linux-clk@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-riscv@lists.infradead.org>,
- "Marek Szyprowski" <m.szyprowski@samsung.com>, "Maud Spierings"
- <maud_spierings@murena.io>, "Graham Markall" <hello@big-grey.co.uk>,
- "Icenowy Zheng" <zhengxingda@iscas.ac.cn>, "Chaoyi Chen"
- <chaoyi.chen@rock-chips.com>, =?utf-8?q?Uwe_Kleine-K=C3=B6nig?=
- <u.kleine-koenig@baylibre.com>
-Subject: Re: [PATCH v4 00/20] drm: starfive: jh7110: Enable display
- subsystem
-From: "Joshua Peisach" <jpeisach@ubuntu.com>
-To: "Michal Wilczynski" <m.wilczynski@samsung.com>, "Joshua Peisach"
- <jpeisach@ubuntu.com>, "Vinod Koul" <vkoul@kernel.org>, "Neil Armstrong"
- <neil.armstrong@linaro.org>, "Rob Herring" <robh@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>,
- "Andrzej Hajda" <andrzej.hajda@intel.com>, "Robert Foss"
- <rfoss@kernel.org>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>,
- "Jonas Karlman" <jonas@kwiboo.se>, "Jernej Skrabec"
- <jernej.skrabec@gmail.com>, "Luca Ceresoli" <luca.ceresoli@bootlin.com>,
- "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard"
- <mripard@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "Lee
- Jones" <lee@kernel.org>, "Andy Yan" <andy.yan@rock-chips.com>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, "Emil Renner Berthing" <kernel@esmil.dk>,
- "Hal Feng" <hal.feng@starfivetech.com>, "Michael Turquette"
- <mturquette@baylibre.com>, "Stephen Boyd" <sboyd@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, "Paul Walmsley" <pjw@kernel.org>, "Palmer
- Dabbelt" <palmer@dabbelt.com>, "Albert Ou" <aou@eecs.berkeley.edu>,
- "Alexandre Ghiti" <alex@ghiti.fr>, "Dominique Belhachemi" <db@domibel.de>,
- "Brian Masney" <bmasney+clk@redhat.com>, "Jerome Brunet"
- <jbrunet+clk@baylibre.com>
-X-Mailer: aerc 0.21.0
-References: <CGME20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61@eucas1p1.samsung.com> <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com> <DLGBPXP4F8E0.9X0QMZ9GFQVF@ubuntu.com> <136d6789-2f0c-4a91-ab2d-de3a3f119d5d@samsung.com>
-In-Reply-To: <136d6789-2f0c-4a91-ab2d-de3a3f119d5d@samsung.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_083301_629177_E44A9B65 
-X-CRM114-Status: GOOD (  18.92  )
+	id 1x7beL-0000000F3kz-1JdP;
+	Fri, 18 Sep 2026 16:41:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5A449601EF;
+	Fri, 18 Sep 2026 16:41:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D92771F000FF;
+	Fri, 18 Sep 2026 16:41:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789749680;
+	bh=LPArZUqqB353rHy4QKLaGuKuBspay5gmps9/H6dZ24E=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject;
+	b=lLLNwwwJiE5/2cU6UHhp/fjL3PKGf72K/YZ6rzfn/unLjMVnMa8IHZRfCnJsgR8j9
+	 4kPw2kqclFT0xeZvvl+N1lhn+1qDk2xxcsKKDFNKHytEzGY4NK8Vfv1n2i2Kcjs1Sb
+	 dmG5pNpsUGoo2xONeCiRLf9VAz1Miv7nwg9fCaJsumBL3AekoTnYZECJlegh/fzjvH
+	 S7FUg/TvBwSVs6oCghNBU6NUn3dCU4iCHzWHUbGUw7xWmls4m0O/jdNBsUS6tWIXFy
+	 vPQJjJEKgZiki1Vwkn5fYIs8l52aP6SgIpMyBjbI1dKusS4I6VDmY3PEEgJt1Up5OD
+	 /5K2YW7WAHfnQ==
+Date: Fri, 18 Sep 2026 11:41:18 -0500
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, 
+ Brian Masney <bmasney+clk@redhat.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ devicetree@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, 
+ linux-pm@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, 
+ linux-clk@vger.kernel.org, MyungJoo Ham <myungjoo.ham@samsung.com>, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, 
+ linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
+ kernel@collabora.com, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Stephen Boyd <sboyd@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+In-Reply-To: <20260917-rockchip-dfi-cleanup-v1-2-4f00a97a69a6@collabora.com>
+References: <20260917-rockchip-dfi-cleanup-v1-0-4f00a97a69a6@collabora.com>
+ <20260917-rockchip-dfi-cleanup-v1-2-4f00a97a69a6@collabora.com>
+Message-Id: <178974864508.290014.10595821680814130371.robh@kernel.org>
+Subject: Re: [PATCH 2/8] dt-bindings: devfreq: event: rockchip,dfi: add
+ clocks to rk3588
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,130 +74,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="Flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu Sep 17, 2026 at 1:22 PM EDT, Michal Wilczynski wrote:
->
->
-> On 9/16/26 02:45, Joshua Peisach wrote:
->> On Tue Sep 15, 2026 at 11:32 AM EDT, Michal Wilczynski wrote:
->>>
->>> Testing
->>> =======
->>>
->>> Tested on a VisionFive 2 v1.3B using modetest.
->> 
->> I.. got nothing. I did have to manually modprobe the modules, but
->> unless I am doing something wrong.. I didn't get anything and modetest
->> just gave -2.
->
-> Hmm have you also changed the DTB not just the kernel and the modules
-> (you can also built in everything).
->
-Yes (I didn't built-in everything, but I did make sure the DTB was
-copied and flash-kernel was run)
 
-> Also note modetest needs -M verisilicon.
->
+On Thu, 17 Sep 2026 15:49:14 +0200, Sebastian Reichel wrote:
+> From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> RK3588's DFI has pclks for each channel. They just weren't noticed as
+> missing until now because nothing ever gates them, and they're ungated
+> by default on power-on.
+> 
+> The RK3399 clock situation needs no changes, as there the hardware
+> really just has one monitoring unit for both channels.
+> 
+> Add these clocks to the binding, so that drivers for this device can
+> properly know about their existence.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../bindings/devfreq/event/rockchip,dfi.yaml       | 84 ++++++++++++++++++----
+>  1 file changed, 72 insertions(+), 12 deletions(-)
+> 
 
-"failed to open device 'versilicon' with busid '(null)': No such file
-or directory"
+My bot found errors running 'make dt_binding_check' on your patch:
 
+yamllint warnings/errors:
 
-> If that is not it, could you send "dmesg | grep -iE
-> 'verisilicon|inno|hdmi|vout'" and "ls /sys/class/drm/"?
->
-the dmesg output:
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml: properties:clock-names: {'minItems': 1, 'maxItems': 4, 'items': [{'enum': ['pclk_ddr_mon', 'pclk_ddr_mon_ch0']}, {'const': 'pclk_ddr_mon_ch1'}, {'const': 'pclk_ddr_mon_ch2'}, {'const': 'pclk_ddr_mon_ch3'}]} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml
 
-[    0.090950] /soc/display-subsystem@29400000/hdmi@29590000/controller: Fixed dependency cycle(s) with /soc/display-subsystem@29400000/display@29400000
-[    0.091029] /soc/display-subsystem@29400000/display@29400000: Fixed dependency cycle(s) with /soc/display-subsystem@29400000/hdmi@29590000/controller
-[    0.104227] /hdmi-connector: Fixed dependency cycle(s) with /soc/display-subsystem@29400000/hdmi@29590000/controller
-[    0.104272] /soc/display-subsystem@29400000/hdmi@29590000/controller: Fixed dependency cycle(s) with /hdmi-connector
+doc reference errors (make refcheckdocs):
 
+See https://patchwork.kernel.org/project/devicetree/patch/20260917-rockchip-dfi-cleanup-v1-2-4f00a97a69a6@collabora.com
 
-/sys/class/drm only contains the file "version"
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
--Josh
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
->> 
->>> ---
->>> Michal Wilczynski (20):
->>>       dt-bindings: phy: Add starfive,jh7110-inno-hdmi-phy
->>>       dt-bindings: display: bridge: Add starfive,jh7110-inno-hdmi-controller
->>>       dt-bindings: mfd: Add starfive,jh7110-hdmi-subsystem
->>>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-syscon
->>>       dt-bindings: display: verisilicon: Add starfive,jh7110-dc8200
->>>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-subsystem
->>>       drm/bridge: inno-hdmi: Split probe out of bind
->>>       drm/bridge: inno-hdmi: Allow the register map to come from a parent
->>>       drm/bridge: inno-hdmi: Add .disable platform operation
->>>       drm/bridge: inno-hdmi: Add .mode_valid platform operation
->>>       drm/bridge: inno-hdmi: Make the PHY configuration table optional
->>>       soc: starfive: Add jh7110-hdmi-subsystem driver
->>>       soc: starfive: Add jh7110-vout-subsystem driver
->>>       clk: starfive: jh7110-vout: Allow pixel clock rate propagation
->>>       drm/bridge: starfive: Add JH7110 HDMI controller driver
->>>       phy: Add common Innosilicon HDMI PHY helpers
->>>       phy: rockchip: inno-hdmi: Use the common Innosilicon PHY helpers
->>>       phy: starfive: Add jh7110-inno-hdmi-phy driver
->>>       riscv: dts: starfive: jh7110: Update DT for display subsystem
->>>       MAINTAINERS: Add StarFive JH7110 display subsystem entry
->>>
->>>  .../starfive,jh7110-inno-hdmi-controller.yaml      | 121 +++++
->>>  .../bindings/display/verisilicon,dc.yaml           |   1 +
->>>  .../mfd/starfive,jh7110-hdmi-subsystem.yaml        |  95 ++++
->>>  .../phy/starfive,jh7110-inno-hdmi-phy.yaml         |  49 ++
->>>  .../soc/starfive/starfive,jh7110-syscon.yaml       |   1 +
->>>  .../starfive/starfive,jh7110-vout-subsystem.yaml   | 218 ++++++++
->>>  MAINTAINERS                                        |  13 +
->>>  arch/riscv/boot/dts/starfive/jh7110-common.dtsi    | 121 ++++-
->>>  arch/riscv/boot/dts/starfive/jh7110.dtsi           | 105 +++-
->>>  drivers/clk/starfive/clk-starfive-jh7110-vout.c    |   6 +-
->>>  drivers/gpu/drm/bridge/Kconfig                     |  11 +
->>>  drivers/gpu/drm/bridge/Makefile                    |   1 +
->>>  drivers/gpu/drm/bridge/inno-hdmi.c                 | 112 +++-
->>>  drivers/gpu/drm/bridge/jh7110-inno-hdmi.c          | 297 +++++++++++
->>>  drivers/phy/Kconfig                                |   8 +
->>>  drivers/phy/Makefile                               |   1 +
->>>  drivers/phy/phy-inno-hdmi.c                        | 298 +++++++++++
->>>  drivers/phy/rockchip/Kconfig                       |   1 +
->>>  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c      | 168 +-----
->>>  drivers/phy/starfive/Kconfig                       |  20 +
->>>  drivers/phy/starfive/Makefile                      |   1 +
->>>  drivers/phy/starfive/phy-jh7110-inno-hdmi.c        | 579 +++++++++++++++++++++
->>>  drivers/soc/Kconfig                                |   1 +
->>>  drivers/soc/Makefile                               |   1 +
->>>  drivers/soc/starfive/Kconfig                       |  43 ++
->>>  drivers/soc/starfive/Makefile                      |   3 +
->>>  drivers/soc/starfive/jh7110-hdmi-subsystem.c       |  73 +++
->>>  drivers/soc/starfive/jh7110-vout-subsystem.c       |  82 +++
->>>  include/drm/bridge/inno_hdmi.h                     |  10 +-
->>>  include/linux/phy/inno-hdmi-phy.h                  |  85 +++
->>>  30 files changed, 2337 insertions(+), 188 deletions(-)
->>> ---
->>> base-commit: fd73f4a6659897191fa0d40695fe370925dd3780
->>> change-id: 20251031-jh7110-clean-send-7d2242118026
->>>
->>> Best regards,
->> 
->> By the way, something weird happenined while I applied the patches
->> using git am. Somehow, some were out of order. The 10th patch
->> adding .mode_valid tried to be applied before .disable even though
->> in the series, the order is correctly set? git would obviously
->> fail because the .disable entry did not exist in the header, so I had
->> to manually put those in.
->> 
->> I guess it's possible that something went wrong here? I personally
->> pulled the mailbox from the lore.kernel.org mbox.gz file.
->
-> I would recommend using b4 shazam instead
->
->> 
->
-> Best regards,
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
