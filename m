@@ -4,47 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08F53C982D8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 13:15:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A0CBC982D8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 13:16:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=03MJviCMJdau8qfAjwXoNTEh2a9TZrNQKV87oqL7M70=; b=osySwVn4DEr+7y
-	h+7J0bdky/NhFEOJUz8x2HMLemJyx2WAk9fmEiZEXfRRxh7xY/fwsRf2bkGh9H9wSxLgTDvGma6RY
-	ejYXErrw1Hdaw243SSufcqFfBxiSsHikliZcRWmmRjLlZO/nYt8VGtW76OUc67ss8vXTsvRB2LvAH
-	wIJw9zRPaLW37/icKNb5rknOD9OYKOML2MOsgllnh5LWF+tcGRmMhceBHEwK1sgyHCyCCFRNvnNeQ
-	LEa6Z+d8fkcyR4DwJWhJftjBg0MAbiKmdJx7SV5bQznGCFS5guktbzROF4NJa3s1rnn3p1b9ITvf/
-	0zwojhVCWNSvzTckzq/A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=31pL/LyUOlgWopxrC3yk8QXySLkhh1plUr32KGasiPM=; b=kUJrer60qOfN2J
+	wP7fNLgCuP7k3j5kHa2mJh7kxgq2LE46EZoEN8hGQULnb8jh/Pu6mLOBUIqlXX6yBfriiQW4zxZPf
+	yTFXuX/lr0XmxlnGRals7+W1jpKsMSjZaZZ5/b7YTyTOAvn5PaQwWy779RlmaY2dN7j9o71nGPW1F
+	eg+WR0XUNm3zt9tfAihoFQ93vxHEpViprD7hoeLBC/aJzgJI+fStcnrTSmrS36gWrESgXVwrJ6x6a
+	xUhjDK5XX4v4+fRJV1OVrSq91PB4m4AkjokP/T1P9/uQ06/Zxl2XvjQWw7xx6c1mCHAomK/UDHnEa
+	XwzGdobRpByVYN3X5Fiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7YRU-0000000ESB5-3xnj;
-	Fri, 18 Sep 2026 13:15:52 +0000
-Received: from mr-2006b-snip6-2.eps.apple.com ([2a01:b747:3000:204::16] helo=outbound.mr.icloud.com)
+	id 1x7YRa-0000000ESGa-36JO;
+	Fri, 18 Sep 2026 13:15:58 +0000
+Received: from mr-2006l-snip6-1.eps.apple.com ([2a01:b747:3000:204::72] helo=outbound.mr.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7YRS-0000000ES9S-1KlA
+	id 1x7YRY-0000000ESDT-1ti9
 	for linux-rockchip@lists.infradead.org;
-	Fri, 18 Sep 2026 13:15:51 +0000
+	Fri, 18 Sep 2026 13:15:57 +0000
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
-	by p00-icloudmta-asmtp-us-west-2a-10-percent-1 (Postfix) with ESMTPS id E2C811803F15;
-	Fri, 18 Sep 2026 13:15:41 +0000 (UTC)
-X-ICL-RepId: 01a0b4a8-936c-7f5b-b7c6-f10ea2f507c0
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXRIYXBRcUFgeRhJWDV0JGQZAXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJClcAQAtOA1QGUx8RTxweGwZGAl0NQQpaAFIBQV9MBlh3AlEcVg1XQ1QEX04ZDEodUlZbE1UXRgk=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1789737345; x=1792329345; bh=+VsZZSAEII1s70obPcx7OhpRIxbOYvboRWhiysa5x/c=; h=From:Subject:Date:Message-Id:MIME-Version:Content-Type:To:x-icloud-hme; b=QgHJifj4O9pluplzBM7OxByU1m8YeNHqk/To0aPA3APUlR79MgDYoHQESyPgmcG3Oq/YKlipx1DcnVkqTh5min8PwozqPdZEis77tQIovdkYTU5GkfdGi5lRBBPYNBXiXPu+FnkfAjpfK6iDIYFYIFvF94nW6yKLkLsLxOD/uUOfvmUP0jZcgsC5t/qIf4dbpPZdwxMGtc+VNeMN3D5NuD5vhPdBaCT9ou3O/LTQj0V0GfkxWSzbP7V1xd1xQGWCFiyVfVwg4X9NL1/Shyp4q3XYG/v0dX8cqti/9s8gTx74T+oFAAvGenzIWGd9Lwjtf2lyOXf5R5IQe4YWIW1wjw==
+	by p00-icloudmta-asmtp-us-west-2a-10-percent-1 (Postfix) with ESMTPS id BF997180016F;
+	Fri, 18 Sep 2026 13:15:51 +0000 (UTC)
+X-ICL-RepId: 01a0b4a8-b9e7-755e-b35f-6d2e1f55cc9f
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXRIYXBRcUFgeRhJWDV0JGQZAXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJClcAQAtOA1QGUx8RTxweGwZGAV0NQQpaAFIBQV9MBlh3AlEcVg1XQ1QEX04ZDEodUlZbE1UXRgk=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1789737356; x=1792329356; bh=P2T+L9FFZVjNlUBDt+jAAlkIamQV58T46DjwU9aVz58=; h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:x-icloud-hme; b=IrBSkdcetNZBxCHj/wLEYNKoZWT8qp0YYez2FXBFCBf5C9bWDPH/bwDAyF9Xahjk3zBzLkdESyYmgXShimfIXw+PFfHpUg8ZKgAQvDLgPTKBpDcCDGOwI99XXisNdSAnNJh/ThKsWoYG8uMwSEpt9tkU+Z4qUvxY9hqFvbi0V0IVecAzJpgZv4sIxDQYHcpx4MI1dbIjI7eYq0OM3y5NAF4XDjE7l9JHEg5cATVp9dfY3uYt5ZxDCg0ijuSPp325pQzp1JpcFr8zesrN1AJ0d/kgQW/ij0yq5TaJcsASwkz90ZkGlWoEwTo7FAAYD3qW3Ikw1UPodcdeAqGhZlIrAg==
 Received: from [127.0.0.1] (unknown [17.156.200.36])
-	by p00-icloudmta-asmtp-us-west-2a-10-percent-1 (Postfix) with ESMTPSA id 220D21800179;
-	Fri, 18 Sep 2026 13:15:37 +0000 (UTC)
+	by p00-icloudmta-asmtp-us-west-2a-10-percent-1 (Postfix) with ESMTPSA id E80511803F12;
+	Fri, 18 Sep 2026 13:15:47 +0000 (UTC)
 From: Sofus Forstreuter <sofus.c@icloud.com>
-Subject: [PATCH 00/14] media: apple: add avd driver
-Date: Fri, 18 Sep 2026 15:15:05 +0200
-Message-Id: <20260918-avd-v1-0-49977931f455@icloud.com>
+Date: Fri, 18 Sep 2026 15:15:08 +0200
+Subject: [PATCH 03/14] arm64: dts: apple: t8103: add avd nodes
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDS0Nz3cSyFF3z1FRTE3OTJBMzi2QloMqCotS0zAqwKdGxEH5xaVJWanI
- JSKtSbS0AlJ8B1mcAAAA=
-X-Change-ID: 20260917-avd-7ee5474b468c
+Message-Id: <20260918-avd-v1-3-49977931f455@icloud.com>
+References: <20260918-avd-v1-0-49977931f455@icloud.com>
+In-Reply-To: <20260918-avd-v1-0-49977931f455@icloud.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
  Neal Gompa <neal@gompa.dev>, Rob Herring <robh@kernel.org>, 
@@ -56,25 +54,24 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  Sofus Forstreuter <sofus.c@icloud.com>
 X-Mailer: b4 0.15.2
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE4MDE4OCBTYWx0ZWRfXyyhb2qJwQNnf
- 7hMJVsQoQXb9c7lsu53OoTOfmurzACsgBL25mczsP2k4A67c8Os5tRMLLvkQdgvymsmdJkSZR9l
- pFwXxqtPV21Ue3FD6fP/QMhXjT9w0Ll3awmq8mOsySTpPX0oBLIj3R87Fq1nJrFE492IHGGK+tc
- XsFyUqveR3Vhu+bo7Kfk/RMNyS539EMSsT0zbGHSyD3oZ6f8ZRo9WMT4qm/1A2UhJCszBwZ/AZ2
- XHYcVrySreGMDeSkaLUYQqqBJ5Y53ygc0xJvZWF80KZQoLFJ9WOZTPQMAF+RyvDKpgnZac2EfsH
- 2Y7gZF38RjawjsJzmHGunrR3p46bSU4LyTt3iMGtaQW13MStRWCWIlNCDwU9PI=
-X-Proofpoint-GUID: liDOzJqqvLy9C-Z5txNItY91-6C2QZnk
-X-Proofpoint-ORIG-GUID: liDOzJqqvLy9C-Z5txNItY91-6C2QZnk
-X-Authority-Info-Out: v=2.4 cv=V8VwEOni c=1 sm=1 tr=0 ts=6aad3980
+X-Proofpoint-ORIG-GUID: WjqEFYMt-ZFkE9ik0K09RdSSgdJBvyWG
+X-Authority-Info-Out: v=2.4 cv=VaD6/Vp9 c=1 sm=1 tr=0 ts=6aad398a
  cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
  a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
  a=x7bEGLp0ZPQA:10 a=kLM9Tyy99jAA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=NEAV23lmAAAA:8 a=bC-a23v3AAAA:8 a=pGLkceISAAAA:8 a=v3ZZPjhaAAAA:8
- a=fYXbmyo_D6U5GG4wB3gA:9 a=QEXdDO2ut3YA:10 a=FO4_E8m0qiDe52t0p3_H:22
-X-JNJ: AAAAAAABiGr4SscrqLxkWtLE/1STqxfG3fbWxjFZjWKp8kaTv1vr9p0xnAkIrpil2HsnB2re1k0FzoFHt7pGgXC3fQotxSjvOndacarUwUKsUg3Z7NU2bKzQcmjECuxqDRrzHApEYXr7aLwWdDVuBWnW1gGTDS1Cks6iHmYUumji5MqX8vGuLFjtBCravL+zSHsn+/Hz2zxg4hTsRw9tBSxkJJEMtvanSHTAt0Zb+f3ZUUuSaSkq42IKmWRkNP0KTRAQW7vO/ZUlohwiGD64kLgXAMI88AeWcEGnwy2uOe/fMjZ7CNj3N0CfDpfBCJYbyNmGt9YnZ5Q3no8XrzgqZURT6eapwJhQLKQYLbiyakQwmB9k1dbubq4sYfRWx1n0XqtFA2fBOK+f8lR9J+K5l0NzV0zREa+Pv9/MBsvr1ML+AM80wisZ+I6GS95n1M00bbDddfcZz34VnxEApQ3gawGHKtSKPujP8T/pvlA/BUKJgPSlqCLhEFHr7fYIC4b7uyJ0ij+RNWlyJJm4JRUgfWTrEm+gnbg4tVIbEs5N9yfyVDmHHZtgE8ORf//Nl4AWBXa36QVQC/TAGRhfF+Mo9AlJIlCF9e5ZNOFc9FY0u+ENGcj1wKrvbz7xHzpiqgCj2ANfa5RCv3OJijsHCkLRYHwtYw+addUZNHVHyfyl2LRohjQX0i8BZjy8eCkhaRUKLeSOjhrpNtrNI9O4bsyQc5A500U/75n+d9J3a0P8w8mDZ8+McsUXppyFU7Q6hhwzsdOJZR7NZx89XrSqBVZDzt/xR2ZRxIWxJol/6urFpRdAqdjMFjVSHgtOoaic/G2CBdbd6LYU4pJChOpIsJNOSS+xvpWqM/MgCRTtmuxFYdcIF0knwDMwRNOdnuRonhuuRs6tmJAhzCgS0Lydjmf/1sFDD03AJ6XXHsC0Yzw1oc/LzsO6zxSUzd4QCgrwV3yxvnhjLUnxKIutz4v7F2NEr/1WMMGXJjL
- hKFI1YI0/EaCC4MgE+FugQG13tgVQyIYtH6Mq+ukps0X4XEbGuZA/n6wMuqhHkKJe4V7ipLXz0yS5oVHxLZWCZGnDbllf1L/I2yv6013woQTPysZQdCkccoFtTQJiaNFdeqxAyX3xSt6/dzvWHHTQ3ycBw3+2l6vRuiUHngc5B17o2r2F/xz93UamKE5UOyDQOSVVTPh1Fuofz8p/+FcLHCA40rTooYL2L3hRExXMxhYgdSeuowjlu8q4GQZk6SAZS5Km7w1Ns6rVZLeQHLM/I1q+0Ly+j4hcuopCWZ2Nx/GWafuQwSLSKK0gZ7YfZfjTJ7s9DwcqzPIwel4n+u02pz3BiWR+UpY1QG6+zJZqMu+gpZhVzGkMpliV7/tXhKXoCGle9wuAzVsCW2m6FI5fcsS0ZVWyJHgXq/EZY4HV
+ a=v3ZZPjhaAAAA:8 a=i4oxPFHrzJf6BXMseXkA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: WjqEFYMt-ZFkE9ik0K09RdSSgdJBvyWG
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE4MDE4NyBTYWx0ZWRfX/eT+kJAGs7q9
+ Rjs83a9m2dHM5/d7x1kOyqkswAubhBXQXHm1cxNwQysX2dsfGsHRqAmWVypOmSyGR0JS9FCfgel
+ lb+tGVB5RGVhcSNYpdqxpD6foX2kQr6puq0ZXfHN/tBiUfZZFuhnDWlNcsInpZdmHg1FuHm11Sf
+ 6d1V9EoXwFEWwV0MWLDaMB55AfnS2nHTWquHibgnjIhPe+tuEN+9SGuirxImi41Qxeg2ENuZjhI
+ 7LvI+3sAb+qsoogjZ4LrgleTl/91jv0qZ1rgxjDNojz7m6mk28ZceCXvc3u0G3Gdlb7nXvhK9nD
+ CRyLK2Tu4BR8mCoK9DxR5bh4a/lWiappv4+HJBm8zZoAZnDxKNA1VhuJH7TYhk=
+X-JNJ: AAAAAAAB7EMYztKo3uka50gZfVvwf37zZ6K+nPSApk06otRG6s1wD2IYFULVByAunS4JOarvXBzfkmVw0RMylaOJ+Mm3enH++juKasLkIYh9YHJ+4yVyDeQ1/2SdB1DEvi+Hv+AULqA/oR9+bz3zV8dUp5LE/qUzBWDKyTnUke/b+DFKo3fWo5PigUhqHoxoPPz3IvyREjpkVF8wMxVFzKOzM/G7JXeGxuWvlBOvR1eq5E47V/mpGJjgQi3RPAr+s40v10enkCrYOHVcobFOZChNA9OwbJcBs7IoyhrVBjxihwzT+1BX/nUmpZLMZoTlmw35ZGozodIPXAakjpuAdw3/k0Q3PnvNDWX2ni4PhIHggyS+v+8wWcL7xz0dhMhnr3ZhHXGnkuR/6yZnnhCl5GO4/FoC63G0EbQ3XKEQVNiVuC3Dncme6xwpzMnJexRMNkVfatGf9eCET2MXoD/eRzb0ncvp0pd16y/oWNNxwCRQ8Xu/uSV4VdU5qtD4PXu8fT04S8TufaHIxGZG0BQ70rJkDnUmgjcT8rJ8ZiaoIFtMVbH8/WUwL2ROEw0CZmUb+Dr8uXKzBlpPcxT0qqA//MC1GxGuRLlA80LJF8eNoBJEltNvViQ0+j8GmeKGzholhUx6YEFyGt5KMCwI12TP1R1aaGh6gWadj3/iGacLmqNJfBKh1P2GkknUNEmEXS+MpHeJNe9EdGltYucf8mpIoQjNVrxpDOmp8ftbt/eR4dy8GUnWmGi5jNtrzk3RBN6sAMpjpa1/T3IJMv6OSzmOr/tTIZ+ud+/pOEkRurkRUNVvJOWc9eZl4nHpvK3ClTPbpMX7F2nG55OmQC1LdZDIwEw1vDn9aJ6Hq8prYA1gHE5w7ahXC2r+rbgXGPOz6iKOeVD6Sz0ZeA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_061550_359643_6E00303F 
-X-CRM114-Status: GOOD (  18.47  )
+X-CRM114-CacheID: sfid-20260918_061556_497645_0BF58D6E 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,129 +88,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-This series enables hardware video decoding on Apple Silicon M1, M2 and
-M3 SoCs. It adds support for all the codecs AVD (Apple Video Decoder)
-supports, which is H264, H265, VP9 and AV1 (only on M3+).
-
-The AVD is a bit unique both as a video decoder and an IP block on Apple
-Silicon SoCs. Instead of following the normal "a register for each
-parameter", AVD is programmed through one single register. This means
-the order of the writes are important, but its also important to ensure
-we dont write faster than the hardware can process.
-To solve this problem the driver writes the 'instructions' into a list
-of 'segments'. A shared function then submits those to the hardware
-while making sure to wait each time the hardware lacks behind.
-
-The block also includes Cortex-M3 co-processor that accepts unsigned
-code. The CM3 is not really required, but is the only way to get decode
-status IRQ's. For now, the CM3 only handles decode-tunable configuration
-and forwards all IRQ's to the AP [1]. In the future this will be
-extended to handle the instruction submission, this would likely result
-in decreased power consumption, some initial testing even suggests
-slightly faster decode times.
-
-The driver implements the V4L2 M2M stateless decoder API. The driver's
-framework is based very heavy on rkvdecs driver. It therefore comes as
-no suprise that `v4l2-compliance` reports no errors:
-Total for avd device /dev/video0: 49, Succeeded: 49, Failed: 0, Warnings: 0
-
-The fluster scores are:
-JVT-AVC_V1: 77/135
-JVT-FR-EXT: 42/69
-VP9-TEST-VECTORS: 216/305
-VP9-TEST-VECTORS-HIGH: 1/6
-JCT-VC-HEVC_V1: 143/147
-AV1-TEST-VECTORS: 238/242
-
-Since not all unsupported H264 streams are rejected, the scores
-depend on the reset working, this only works with a patch to the
-apple-dart driver so that the IOMMU attach/detach trick works.
-
-All codecs support 4:2:2, 4:2:0, in 10 and 8 bit. AVD outputs in NV12,
-NV16, P010 and P210. Support for 4:4:4 and 12 bit formats is not added
-yet.
-
-Internally the AVD uses an Apple specific compressed and tiled format
-called Interchange to store reference image data. This is stored after
-image data across all codecs. Apple Interchange is used for sharing
-buffers with other hardware blocks (GPU, display controller), support
-for this is on its way [2].
-
-This driver has been tested on most Apple Silicon SoCs in our downstream
-tree [3]. Its expected this driver will work on M4, M5, M6 and the Neo,
-with firmware already being written for all except the M6 SoCs [1].
-
-The groundwork for this was laid many years ago by Jamie, R and Eileen,
-who through a combined effort managed to reverse engineer many core
-parts of the AVD block.
-This driver would not have been possible without the work done by
-Eileen, who wrote initial support for H264, H265, VP9 and excellent
-tooling [4], allowing me to reverse engineer AV1 and make the driver
-conformant.
-
-[1] https://github.com/AsahiLinux/avd-fw
-[2] https://patch.msgid.link/20260917-apple-interchange-modifier-v1-1-875294689c48@gmail.com
-[3] https://github.com/AsahiLinux/linux
-[4] https://github.com/eiln/avd/tree/main
-
 Signed-off-by: Sofus Forstreuter <sofus.c@icloud.com>
 ---
-Sofus Forstreuter (14):
-      media: v4l2: Add P210 pixel format
-      dt-bindings: media: add apple,avd
-      arm64: dts: apple: t8103: add avd nodes
-      arm64: dts: apple: t8112: add avd nodes
-      arm64: dts: apple: t8122: add avd nodes
-      arm64: dts: apple: t600x: add avd nodes
-      arm64: dts: apple: t602x: add avd nodes
-      arm64: dts: apple: t6030: add avd nodes
-      arm64: dts: apple: t6031: add avd nodes
-      media: apple: add avd driver
-      media: apple: avd: add h264 support
-      media: apple: avd: add vp9 support
-      media: apple: avd: add hevc support
-      media: apple: avd: add av1 support
+ arch/arm64/boot/dts/apple/t8103.dtsi | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
- .../devicetree/bindings/media/apple,avd.yaml       |  112 +
- .../userspace-api/media/v4l/pixfmt-yuv-planar.rst  |   10 +-
- MAINTAINERS                                        |    2 +
- arch/arm64/boot/dts/apple/t600x-dieX.dtsi          |   24 +
- arch/arm64/boot/dts/apple/t602x-dieX.dtsi          |   24 +
- arch/arm64/boot/dts/apple/t6030.dtsi               |   24 +
- arch/arm64/boot/dts/apple/t6031-dieX.dtsi          |   24 +
- arch/arm64/boot/dts/apple/t8103.dtsi               |   24 +
- arch/arm64/boot/dts/apple/t8112.dtsi               |   24 +
- arch/arm64/boot/dts/apple/t8122.dtsi               |   24 +
- drivers/media/platform/Kconfig                     |    1 +
- drivers/media/platform/Makefile                    |    1 +
- drivers/media/platform/apple/Kconfig               |    5 +
- drivers/media/platform/apple/Makefile              |    3 +
- drivers/media/platform/apple/avd/Kconfig           |   18 +
- drivers/media/platform/apple/avd/Makefile          |    5 +
- .../media/platform/apple/avd/avd-av1-entropymode.c | 4698 ++++++++++++++++++++
- .../media/platform/apple/avd/avd-av1-entropymode.h |  284 ++
- drivers/media/platform/apple/avd/avd-av1.c         | 1447 ++++++
- drivers/media/platform/apple/avd/avd-drv.c         |  817 ++++
- drivers/media/platform/apple/avd/avd-h264.c        |  851 ++++
- drivers/media/platform/apple/avd/avd-hevc.c        | 1326 ++++++
- drivers/media/platform/apple/avd/avd-hw.c          |  127 +
- drivers/media/platform/apple/avd/avd-inst.h        |  218 +
- drivers/media/platform/apple/avd/avd-v4l2.c        |  962 ++++
- drivers/media/platform/apple/avd/avd-vp9.c         | 1072 +++++
- drivers/media/platform/apple/avd/avd.h             |  305 ++
- drivers/media/v4l2-core/v4l2-common.c              |    1 +
- drivers/media/v4l2-core/v4l2-ioctl.c               |    1 +
- include/uapi/linux/videodev2.h                     |    1 +
- 30 files changed, 12434 insertions(+), 1 deletion(-)
----
-base-commit: aedd77ea8168f00687c1248cdf115071e869cf93
-change-id: 20260917-avd-7ee5474b468c
+diff --git a/arch/arm64/boot/dts/apple/t8103.dtsi b/arch/arm64/boot/dts/apple/t8103.dtsi
+index 5b68bf0df4e6..667992bed0bc 100644
+--- a/arch/arm64/boot/dts/apple/t8103.dtsi
++++ b/arch/arm64/boot/dts/apple/t8103.dtsi
+@@ -984,6 +984,30 @@ pinctrl_aop: pinctrl@24a820000 {
+ 				     <AIC_IRQ 274 IRQ_TYPE_LEVEL_HIGH>;
+ 		};
+ 
++		avd: avd@269080000 {
++			compatible = "apple,t8103-avd";
++			reg = <0x2 0x69080000 0x0 0xc000>,
++			      <0x2 0x6908c000 0x0 0xc000>,
++			      <0x2 0x69098000 0x0 0x4000>,
++			      <0x2 0x69100000 0x0 0x10000>;
++			reg-names = "code", "sram", "mbox", "ctrl";
++			interrupt-parent = <&aic>;
++			interrupts = <AIC_IRQ 540 IRQ_TYPE_LEVEL_HIGH>,
++				     <AIC_IRQ 541 IRQ_TYPE_LEVEL_HIGH>;
++			power-domains = <&ps_avd_sys>;
++			resets = <&ps_avd_sys>;
++			iommus = <&avd_dart 0>;
++		};
++
++		avd_dart: iommu@269010000 {
++			compatible = "apple,t8103-dart";
++			reg = <0x2 0x69010000 0x0 0x4000>;
++			#iommu-cells = <1>;
++			interrupt-parent = <&aic>;
++			interrupts = <AIC_IRQ 547 IRQ_TYPE_LEVEL_HIGH>;
++			power-domains = <&ps_avd_sys>;
++		};
++
+ 		ans_mbox: mbox@277408000 {
+ 			compatible = "apple,t8103-asc-mailbox", "apple,asc-mailbox-v4";
+ 			reg = <0x2 0x77408000 0x0 0x4000>;
 
-Best regards,
---  
-Sofus Forstreuter <sofus.c@icloud.com>
+-- 
+2.55.0
 
 
 _______________________________________________
