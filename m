@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0307DC982D9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 10:44:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82BF2C982DC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 10:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mj/WZQwPMbmMWe6vCT6Z5wJ9D7GHToNfM+CCQBBkZZQ=; b=29ZzWYwiEMj6O0
-	n3CkZskFNUuCKOU4X3XanUx+0vs2cLFw98MIq9R7uMDk1ubXVlY0d/rditUT7jdSt1AHtKrlelQ3n
-	nE7o5/dJ9Gti7qFwNCt272rQht+cnyWQURtLsxFpD243bwLp8Q1q6XFJphmbVqBwsQM8ItinzRa+8
-	qTA1U8LzdVNbFnhxNlCx9X7uabV2tdNEO9u6UkyR4omNQACpvmIkDeId1g0hVt3ZywtDt0JAUbiDm
-	yC2WzHEGahYjfEQxRgCx4Q4YMVDcOPUUx8yT+aQuSrjZBuxOxr/4fD2CK1dDnCKiS5+a7fg/VGtNv
-	rCkjEDJ0mEdsbuefxK0g==;
+	List-Owner; bh=vHtSqzapd5LWQgdANGIuoGAesAfNlJoO701+I6333ow=; b=ChjZWP8HMX7CcP
+	SI0AIDlL38U0TwTzBTUoPtYmY0JogFBrIPzbiA1T1HcXxiXhvmM6jB3ONq3oTB71UidQOZ1ycd9KF
+	0sQ4qqdUI6Qqow70q/7aLFOYou8Npo7hBfqBxrBA9GfBpuNrjS70hBCYv7mmOfz0Fx2HyfZYSURqO
+	67SK8QqPhiDJZbyRf9KX2rSI9dFoWiosC/sg3/ImgS4tRVdgFrtUK/JLH+SSVviDAnEoMRIY/RaVg
+	gjitnckYX8AcCc1FijZRrQUxEvIr1u15cE64qfbAgzzs5cdA5iHxozJf3e44/ccZGdyuuLAwwFVBc
+	Di02z/qgobxxLh/1p2kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7W5A-0000000E7vl-1xll;
-	Fri, 18 Sep 2026 10:44:40 +0000
+	id 1x7W5N-0000000E87R-0xYW;
+	Fri, 18 Sep 2026 10:44:53 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7W4x-0000000E7j0-0Yux;
-	Fri, 18 Sep 2026 10:44:27 +0000
+	id 1x7W50-0000000E7mT-3nXZ;
+	Fri, 18 Sep 2026 10:44:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=OdUiFm+GCpbKCTMvMwqKzb58UX4O9xUj2dhYUfKXvFg=; b=a0jRUTQD4SFSstnXoMPLpTCSLT
-	NxVICMxnHV+gEUPGDARflSNzRcPBJLqw4vjy5CQtvR0eYGkCdTMd+8WK8fC5+LPLbg+cevyf3yI65
-	sL4I4YzsLpPwGht+YJ/7PqtmspBov1hT9VQ/iUIJs5c0EofcJkTWg7bVXt8UTMJIXtbdg2A9n1L+v
-	CZPQooZExIN0hWxnNUd15TNzc2MKv1MJwhyb7dSFuC0gIuiodP7+BLjRS4vh3yPWWFIpW+E+TMP8E
-	lmtZVL6H/DKhZ0ndbmMj91A66dvB8ObMIU7plPGMu80H2GY8hYkFoVNViBAj5qPpLiXwa1n3DjFwp
-	Bcva9ilg==;
+	bh=j9JUnfo3wl5UyreXFTnb+x4SWzh+eUjW68p1XzLVUpM=; b=ny23CbpA85b1ikfkWp00icnfH4
+	jdQQ35TOhKkhPRMULNqsRYsytmrjhDwD+g5xN+4Iltc7ZZxPhv+pZEfF3F8JtH0LybntJzr6SJiJb
+	2SZOvKBWP++ScTcs3E42dAaKzwJVYrWw3ZarNjsntr73RJbPwlD7jBP3bvQqMeq3bgy7rx+A+b2ME
+	KtdFernjVPzGrG5eDazuRl30bZIAhr1EvdX7x2fRO1AsitjlMT/ZZiW9fn4pHNxm4G2q7TX09S2Zo
+	L0sUNe5DNeY70l3aPQN28PUdP5wNS93jyqadUxYKbp5PjHt7ZMsJjTxlm6woioQw1zE6z9jJ7TcTi
+	6HCTbwTA==;
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x7W4u-00000009woq-1bV9;
-	Fri, 18 Sep 2026 10:44:25 +0000
+	id 1x7W4x-00000009wpK-1NOo;
+	Fri, 18 Sep 2026 10:44:28 +0000
 Received: from ping.linuxembedded.co.uk (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id AABE24D85;
-	Fri, 18 Sep 2026 12:42:39 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B43264F03;
+	Fri, 18 Sep 2026 12:42:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1789728161;
-	bh=JsLs0rmqu7T5B6WRc65pS0x+tFeJdvC8zGgVnTQ5qvY=;
+	s=mail; t=1789728164;
+	bh=LOdjOuiDa5EMlmABS/nhDQm3v5RQfRvKfR3wfM/bt0Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=uiHWxvRCYZqUmXlw5ZcJaFHaDf+hUya6JYR+c06jy5Fh1Xqtuf3p43iRhT5ujErQy
-	 U1NPURrwKte37Pjo0GZgqDyYPXZmHS1ItsbetoLbgAREtA5nZC33m5VvGEF3nNwFYe
-	 kSY2Y2k4O6tTfbzWnQ0zyEEvsPiMTrySAjVzbX34=
+	b=C+j1tgFbiXlv9Jwu1lodC3tdEbD//oroYu6nu92Lwqbe6epnQYAu2aOYC6ZKxmXgi
+	 /u1Fy8Z1BK0Eo1FuGLLMBKfJ0N0t7PQHdEgzLu0XR8WAb09zywuC0P5yFCx95ra/vZ
+	 4X3dF0/oHtpv5C1+GeEN8L6pHaWeDt5xfwYpyu/4=
 From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Date: Fri, 18 Sep 2026 11:44:15 +0100
-Subject: [PATCH v6 3/6] arm64: dts: renesas: Convert to new media
- orientation definitions
+Date: Fri, 18 Sep 2026 11:44:17 +0100
+Subject: [PATCH v6 5/6] ARM: tegra: Convert to new media orientation
+ definitions
 MIME-Version: 1.0
-Message-Id: <20260918-kbingham-orientation-v6-3-5e8b1f01be29@ideasonboard.com>
+Message-Id: <20260918-kbingham-orientation-v6-5-5e8b1f01be29@ideasonboard.com>
 References: <20260918-kbingham-orientation-v6-0-5e8b1f01be29@ideasonboard.com>
 In-Reply-To: <20260918-kbingham-orientation-v6-0-5e8b1f01be29@ideasonboard.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -89,20 +89,18 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
  linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-tegra@vger.kernel.org, 
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- David Heidelberg <david@ixit.cz>
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789728257; l=3939;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789728257; l=4149;
  i=kieran.bingham@ideasonboard.com; s=20260207; h=from:subject:message-id;
- bh=XDi4hx7NWPxhoMOeoVSwhxG05epRot/I7J5vXUg/6Pw=;
- b=cP3OvuunAXZXZZfg0wJUFIYb1FzwqcCQTd7//iNNRYu55LdhSpCto9Ui0SciwH/jT/pR1Gq8g
- F4kXEDxqErMDMp0hqYA4pS5JWVJgb+1zOLahMHh0Ot8Tc/SaFuzcfWr
+ bh=Wjt5veqgt2cH3AYWBoFwcgxVrdtQEOScHWgKInDvv9w=;
+ b=cjXp//9cyWoQkn+W/rTfgcsA7BFQKIKpPDJ7Jo1vuJ6qPjQ6ve9/V7yGLiKepMcNr8SYMwC+S
+ /Fe/qkfbu+XDVlCcPuxFNt0xAvuPzqzw+kF6X0me4tx8NoGv9M1rf9h
 X-Developer-Key: i=kieran.bingham@ideasonboard.com; a=ed25519;
  pk=FVXKN7YuwHc6UtbRUeTMAmranfsQomA+vnilfglWdaY=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_114424_533636_372591A0 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20260918_114427_492033_FF6F1E39 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,104 +122,106 @@ From: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
 The orientation property for video interface devices now has definitions
 to prevent hardcoded integer values for the enum options.
 
-Update the users throughout the renesas device trees to use the new
+Update the users throughout the nvidia device trees to use the new
 definitions.
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
-Reviewed-by: David Heidelberg <david@ixit.cz>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Signed-off-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
 ---
- .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso | 3 ++-
- .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso | 3 ++-
- .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso | 3 ++-
- .../arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso | 3 ++-
- 4 files changed, 8 insertions(+), 4 deletions(-)
+v2:
+ - Fix MEDIA_ORIENTATION_REAR to MEDIA_ORIENTATION_BACK
+---
+ arch/arm/boot/dts/nvidia/tegra30-asus-nexus7-grouper-common.dtsi | 3 ++-
+ arch/arm/boot/dts/nvidia/tegra30-asus-transformer-common.dtsi    | 3 ++-
+ arch/arm/boot/dts/nvidia/tegra30-lg-p895.dts                     | 4 +++-
+ arch/arm/boot/dts/nvidia/tegra30-lg-x3.dtsi                      | 3 ++-
+ 4 files changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso
-index 3acaf714cf24..b816382bba0a 100644
---- a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso
-+++ b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtso
-@@ -12,6 +12,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
+diff --git a/arch/arm/boot/dts/nvidia/tegra30-asus-nexus7-grouper-common.dtsi b/arch/arm/boot/dts/nvidia/tegra30-asus-nexus7-grouper-common.dtsi
+index 892d718294dd..a7fdd194300c 100644
+--- a/arch/arm/boot/dts/nvidia/tegra30-asus-nexus7-grouper-common.dtsi
++++ b/arch/arm/boot/dts/nvidia/tegra30-asus-nexus7-grouper-common.dtsi
+@@ -3,6 +3,7 @@
+ #include <dt-bindings/input/gpio-keys.h>
+ #include <dt-bindings/input/input.h>
  #include <dt-bindings/media/video-interfaces.h>
 +#include <dt-bindings/media/video-interface-devices.h>
+ #include <dt-bindings/power/summit,smb347-charger.h>
+ #include <dt-bindings/thermal/thermal.h>
  
- &{/} {
- 	clk_cam_j1: clk-cam-j1 {
-@@ -44,7 +45,7 @@ cam@10 {
- 		VDIG-supply = <&reg_cam_j1>;
- 		VDDL-supply = <&reg_cam_j1>;
+@@ -991,7 +992,7 @@ front-camera@48 {
+ 			vdd-supply = <&vddio_cam>;
+ 			vaa-supply = <&avdd_cam1>;
  
--		orientation = <2>;
-+		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
- 		rotation = <0>;
+-			orientation = <0>; /* Front camera */
++			orientation = <MEDIA_ORIENTATION_FRONT>;
  
- 		port {
-diff --git a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso
-index a19bc0840392..4019b80a88b7 100644
---- a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso
-+++ b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtso
-@@ -12,6 +12,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
+ 			assigned-clocks = <&tegra_car TEGRA30_CLK_VI_SENSOR>,
+ 					  <&tegra_car TEGRA30_CLK_CSUS>;
+diff --git a/arch/arm/boot/dts/nvidia/tegra30-asus-transformer-common.dtsi b/arch/arm/boot/dts/nvidia/tegra30-asus-transformer-common.dtsi
+index bf1c3a31d406..76286e15684c 100644
+--- a/arch/arm/boot/dts/nvidia/tegra30-asus-transformer-common.dtsi
++++ b/arch/arm/boot/dts/nvidia/tegra30-asus-transformer-common.dtsi
+@@ -3,6 +3,7 @@
+ #include <dt-bindings/input/gpio-keys.h>
+ #include <dt-bindings/input/input.h>
  #include <dt-bindings/media/video-interfaces.h>
 +#include <dt-bindings/media/video-interface-devices.h>
+ #include <dt-bindings/thermal/thermal.h>
  
- &{/} {
- 	clk_cam_j1: clk-cam-j1 {
-@@ -46,7 +47,7 @@ cam@1a {
- 		vdda-supply = <&reg_cam_j1>;
- 		vddd-supply = <&reg_cam_j1>;
+ #include "tegra30.dtsi"
+@@ -1262,7 +1263,7 @@ front-camera@48 {
+ 			vdd-supply = <&vdd_1v8_cam>;
+ 			vaa-supply = <&avdd_2v85_fcam>;
  
--		orientation = <2>;
-+		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
- 		rotation = <0>;
+-			orientation = <0>; /* Front camera */
++			orientation = <MEDIA_ORIENTATION_FRONT>;
  
- 		port {
-diff --git a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso
-index 512810b861aa..fea1ef4a1178 100644
---- a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso
-+++ b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtso
-@@ -12,6 +12,7 @@
+ 			assigned-clocks = <&tegra_car TEGRA30_CLK_VI_SENSOR>,
+ 					  <&tegra_car TEGRA30_CLK_CSUS>;
+diff --git a/arch/arm/boot/dts/nvidia/tegra30-lg-p895.dts b/arch/arm/boot/dts/nvidia/tegra30-lg-p895.dts
+index 896639599c12..28680063bcc0 100644
+--- a/arch/arm/boot/dts/nvidia/tegra30-lg-p895.dts
++++ b/arch/arm/boot/dts/nvidia/tegra30-lg-p895.dts
+@@ -1,6 +1,8 @@
+ // SPDX-License-Identifier: GPL-2.0
+ /dts-v1/;
  
- #include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/media/video-interface-devices.h>
++
+ #include "tegra30-lg-x3.dtsi"
+ 
+ / {
+@@ -132,7 +134,7 @@ front-camera@48 {
+ 			vdd-supply = <&vt_1v8_front>;
+ 			vaa-supply = <&vt_2v8_front>;
+ 
+-			orientation = <0>; /* Front camera */
++			orientation = <MEDIA_ORIENTATION_FRONT>;
+ 
+ 			assigned-clocks = <&tegra_car TEGRA30_CLK_VI_SENSOR>,
+ 					  <&tegra_car TEGRA30_CLK_CSUS>;
+diff --git a/arch/arm/boot/dts/nvidia/tegra30-lg-x3.dtsi b/arch/arm/boot/dts/nvidia/tegra30-lg-x3.dtsi
+index 60e8a19aa70e..77cab695d3da 100644
+--- a/arch/arm/boot/dts/nvidia/tegra30-lg-x3.dtsi
++++ b/arch/arm/boot/dts/nvidia/tegra30-lg-x3.dtsi
+@@ -4,6 +4,7 @@
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/leds/common.h>
  #include <dt-bindings/media/video-interfaces.h>
 +#include <dt-bindings/media/video-interface-devices.h>
+ #include <dt-bindings/mfd/max77620.h>
+ #include <dt-bindings/thermal/thermal.h>
  
- &{/} {
- 	clk_cam_j2: clk-cam-j2 {
-@@ -44,7 +45,7 @@ cam@10 {
- 		VDIG-supply = <&reg_cam_j2>;
- 		VDDL-supply = <&reg_cam_j2>;
+@@ -1216,7 +1217,7 @@ rear-camera@10 {
+ 			dvdd-supply = <&vdd_1v2_rear>;
+ 			avdd-supply = <&vdd_2v7_rear>;
  
--		orientation = <2>;
-+		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
- 		rotation = <0>;
+-			orientation = <1>; /* Rear camera */
++			orientation = <MEDIA_ORIENTATION_BACK>;
+ 			rotation = <90>;
  
- 		port {
-diff --git a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso
-index a31524b59834..177201a8a6d2 100644
---- a/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso
-+++ b/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtso
-@@ -12,6 +12,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/media/video-interfaces.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- 
- &{/} {
- 	clk_cam_j2: clk-cam-j2 {
-@@ -46,7 +47,7 @@ cam@1a {
- 		vdda-supply = <&reg_cam_j2>;
- 		vddd-supply = <&reg_cam_j2>;
- 
--		orientation = <2>;
-+		orientation = <MEDIA_ORIENTATION_EXTERNAL>;
- 		rotation = <0>;
- 
- 		port {
+ 			nvmem = <&m24c08>;
 
 -- 
 2.52.0
