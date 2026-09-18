@@ -4,69 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BC4CC982D8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 17:59:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE626C982D8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 18:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O/Ou2Ux6cMxYP7KlhKwAj8zvjvPXYoncUXz8Uc3tuQU=; b=zmEpTMiKHwPkxj0V6yn+u6V8Yx
-	ygej1u7jkgJ8h97zw25NLI2f00dZy0n1rQ+9y6pTNcvGj+33FR7KrxhLFBN/KVN2aRLRXlSZucT3A
-	uxkzWDpMOY782HEbYqFyvPe+1PLChcUb4zM/H4qW1Ns4DDZV0fzqyBDJGEKDiBDGWRYNuOK7aduuk
-	CiSTBFTvH0MZnfKYe317y3P7qkSsra15sJ4HZcIso4odabdvVbR8a9CJ5L88Eah1AYyxFc51ODxe0
-	Xb4hBeUjCirc3NuPSRiwuWlrNPFYrydmgVWVDqfGvLmbz/Z47OKhZcot8zc1rdn/wvisnvEjKbRj/
-	LmyuHNCA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QYF69tj4l9byvQhcVjV/z30W5iMt4BD4zUXzBPoZmpo=; b=eKd8Q3nrMZlRdX
+	ohh0SHAmWn0EvcTWyFQ8unnYfMZfuW0gNcubyNLzaGgpmaxUmQ4Q3LxhMPo0LW7H3F+5fCX5Soj2o
+	jHa5nW75Fb06aGuGqGUBGOJdZSfAIeQWcfMjKsyWqDEgbYfUHGGoO3OSE0Kg4Z06h3SBVvQkjrhGf
+	rhIlahCt9+hqe1v59u2m8AlyjDWuO619dcTf5Yw0uTuQl+nnWfNUct74PU7p6wVM3y4um05wG06ou
+	wyPTURO+YHRI6c0vRRT8yDYWpEjIkbjk1dEHaPZe3f6Q7A51HpT93UaqLSVG1Fq+6aCYV8Cd0ZOv8
+	3spaun7N7OHapFdxaiPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7crl-0000000FEx4-1ab8;
-	Fri, 18 Sep 2026 17:59:17 +0000
-Received: from sender6-op-o11.zoho.com ([165.173.180.11])
+	id 1x7dMP-0000000FJhr-2EiO;
+	Fri, 18 Sep 2026 18:30:57 +0000
+Received: from mail-pz2-x10.google.com ([2607:f8b0:4864:3b::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7cri-0000000FEwG-3Ins
+	id 1x7dMM-0000000FJgw-3dlX
 	for linux-rockchip@lists.infradead.org;
-	Fri, 18 Sep 2026 17:59:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1789754351; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=mlB7qU5gcehEKzGxFzgUo0KtBETvwoRtLpQW/IKGcV5xe1eNrFxE9ZPAmDGwbNbo00jU32OeN7gTF2CF6Jfp8luTKkw/XRz2z0STvrYPFFL95+t6gDoUItAzRKGCLnYs3h/75df4PvqutUt538E/84628zQZ5VFUhZik6NV6yY8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1789754351; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=IXnlYsOw284Jns76QNX5PPz8/Szr6hkOSfn2OKsgiLI=; 
-	b=h/Y1olcmYtssgpRHtlLC4N/VrPektyfBQE6Cjjoo+TT4ltr/XOlSP6fFmHVoD31EIupWzv/AGGHgbtaICQfBUx+jtpeljOG32fMWiJvWVPehLREazBKJrr95IBy2lF7jWTj1gPA9pHNKqXOD2wheaGdtKIbuNa8Xf4ch1hccSBM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1789754351;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=IXnlYsOw284Jns76QNX5PPz8/Szr6hkOSfn2OKsgiLI=;
-	b=W+2RgyfSi0Qz+urepmJOA+qOijOidXtWLk1ckKOLGFDIeC+FLE+kici3HS2qhwnH
-	3cTTkRjMXWP401Kq4y1F4CH9LVSC9fPRgEfXB3NUkXaUkElDkBdrWCJ/4S1jUu/ryQV
-	p9sXg8EhPRQLJPNj/2L+lQswf8BbWEmhJF6O5rIo=
-Received: by smtp.zohomail.com with SMTPS id 1789754351047914.3784682567832;
-	Fri, 18 Sep 2026 10:59:11 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 62314180608; Fri, 18 Sep 2026 19:59:08 +0200 (CEST)
-Date: Fri, 18 Sep 2026 19:59:08 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Ulf Hansson <ulfh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/4] pmdomain: rockchip: don't ignore clock lookup errors
- on attach
-Message-ID: <aq16yrdiWH95uYQ8@venus>
-References: <1789733258-10133-1-git-send-email-shawn.lin@rock-chips.com>
- <1789733258-10133-4-git-send-email-shawn.lin@rock-chips.com>
+	Fri, 18 Sep 2026 18:30:55 +0000
+Received: by mail-pz2-x10.google.com with SMTP id 41be03b00d2f7-cc4d2fe2056so691660a12.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 18 Sep 2026 11:30:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789756253; cv=none;
+        d=google.com; s=arc-20260327;
+        b=eWKywYZhrDNYgy/3wbdBvBtCzTyLaumZdc8vSwhZFdMm7eRvkBI7gbDUvlMVGsxEsU
+         UzNdKo1YqECDRwm6NmV2/kBP+liddClGUn3TzUNtRLicNsK7582nde+bdtXbu5XTSeFX
+         IpXgwxI+3yR4ijhq0wnD11G9EUyJupMrZePmg9sYfWDlgSx/O3NzIe6nxGMMiK4ZmLGQ
+         zj2jcULKf3c8W27+7rNuthVTEIwPXvtqmIkPzQc4pETWOZXdS3vQzyAwAZvwNqjXZDwU
+         4pqXLCnlF+i4NzkskICov0Hwi7NlGdBbCdbqW34z+MihVVaTpH89aKdSb+ujgxk6wYWW
+         2irg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=UthLOTqsgx1H7Ky6X1sMBpSJ/ushOzRSeE2EVOIQouM=;
+        fh=1jZTGkZieX/iBUYXdUgNsR1/X3HN0G9yEooXUlqu4GM=;
+        b=jhEDfgHef7pwQvClluKDtGogJZxmljJQxg++3cvHsRUHOiCWtGBqguXegt/7MXWEjH
+         lF8fvaEyyvH4S0A+3kJRieJ0Am7w1mybZq7iipxL2icDvLiL1tSQp83jxYDJ1wgsKyVQ
+         ZpL8CE/r9ueB5bc5bCHZz4x974x5WwlBxQcB84ZUd8WwJPCa1el2FyuYNbB8vCDp4fmw
+         bBsmZXyeD17BT7tbULp75yo0OW9i9B8gRjQf0eMS4z+HQfwajLFAxnwy4WKD17alFJU5
+         BW+alEC9U9pxMFYThwWtr4oU0fUK4MYRWlwFFjxUaQg4FceXKcpyC3ppyxVBH/2UJuUi
+         bR0w==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789756253; x=1790361053; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=UthLOTqsgx1H7Ky6X1sMBpSJ/ushOzRSeE2EVOIQouM=;
+        b=RydFIpVhlpg4mqTJ7kOGY5CAD/CZ0idd685xsyHS5BVdKr2tp8WIVV8gRb4yqssMCz
+         esKkftT1qQtwN+SiUA1F/qFsJCTWIoLzb7Nl2FVdzFL0wddpGVPkpN/hw1NHFXZA6QJ7
+         yVEvMQKS2IcAPlAgkKl0EVReN1+ijnWRIQDGbMzR79BOBCCG3tiAnyK/WCHbB/CNQbTT
+         +jtJvFRVE+8QefjMMUcAoK1ybZzrJQCZ33kDBULbmb7juXd2jeuLWD1kwWSVlbqCUe88
+         35mxnf3X3oIKZVK3pT1CQsRoiswGRuJ4TI+cQ8HY2Jl8Hg+vCFsObz//uDpYconMZtEJ
+         TvnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789756253; x=1790361053;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=UthLOTqsgx1H7Ky6X1sMBpSJ/ushOzRSeE2EVOIQouM=;
+        b=S/88Bxdpe5DOJBMcJ7ZpOn8Bs8HpLBumRiJtmBg9mXhyMs2ri7OuVo4+VcJ8wXLMqV
+         Q4FCWl/YXodFUJf9gYjJIdbhBqFuRwVkpljFm1el8vcO1g/gz8XRjP/pEb3qv2XdmPjs
+         m7JlebK6SF/DtjFZ+JFIa3U/uVm0LCUoMjrQwCBjGHb+eohgVSHzvzTDUsnYuDeF1H4o
+         2N6W3g1+CfWFA76cKG9PPXNkvWNfblKe9tWhQumLoVGyXkppXxim4Cpoq5gLg8qJsgx5
+         njbxgwFZ3OMaIIb8LUEB/EGdkxL59eTAF8Yt/slzJ98QbbIj8mAYziw+nDaj8alJCuoQ
+         tA4Q==
+X-Forwarded-Encrypted: i=1; AKwUvBxOQw5pShGsCRrjBshc+DeZptX3ZPY1l8Jsh8UXNZioeMHVV/4QOPtg2n1ji7/+dpp9AbyZjWSR4LOZNqxSXg==@lists.infradead.org
+X-Gm-Message-State: AFuF++npNzjeOupcdkkVODs2ecJuuz4D6ixyyn5X/Jb3rEGgS273L57Y
+	mOsRVfgYXB7i4hd9ITVDvEanwNz1DoP5P95oS0BPk6l84Kt8d1f0SGLNBur0XuExN+z5jxIn6hr
+	Gka/Wkq2Z0g8ci9v1/DPWLIe/LGF7VNI=
+X-Gm-Gg: AYBFou1Vl0M4Z8P+Oj6CTGAsRDgs22IDz3V9Q2OyDkS6FUmmy7C5Fs8wXCdC0duNKLL
+	EahsDFncqmp+cEthO35O3O1pzFVzFhnSbc0e1cZc4mjmVa5blJ0+YgNyhXRdu5UxNBwHylHC2Vo
+	VASOG+SLS0TnP8DrDgf/im05qpP7wsIGSz3Fc46AUVV7wKvxvonTRDyRc4do3CdIJWW3WKFT+yl
+	NqW1hvdA7BoVlTDoqoyrNNCPljqCYw/2ii+pmAYu0LWLvLhsM8yc89QUdjIymguPz2s8XXS7tRb
+	xsAk08wPjvi9hNBnlbusMshy1HHun8P24NaCeDFdFqVNlWGB6UOrMFT6Fc5MoBXxQuDlT931SmS
+	B42HSktcn+Rzj
+X-Received: by 2002:a17:90b:2681:b0:39e:6c69:f482 with SMTP id
+ 98e67ed59e1d1-39e6c69f55fmr655165a91.65.1789756253090; Fri, 18 Sep 2026
+ 11:30:53 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1789733258-10133-4-git-send-email-shawn.lin@rock-chips.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/289.731.60
-X-ZohoMailClient: External
+References: <20260918-kbingham-orientation-v6-0-5e8b1f01be29@ideasonboard.com> <20260918-kbingham-orientation-v6-5-5e8b1f01be29@ideasonboard.com>
+In-Reply-To: <20260918-kbingham-orientation-v6-5-5e8b1f01be29@ideasonboard.com>
+From: Svyatoslav Ryhel <clamor95@gmail.com>
+Date: Fri, 18 Sep 2026 21:30:41 +0300
+X-Gm-Features: AcwNN1UUuDTcQsQdT6LSC3YiQR-XJenFcyp7p3MxtUdbO4cYi1dTxigUEDSEcPc
+Message-ID: <CAPVz0n2pZukL2tnaJef-N=kRiudVLN7RsTjKJJkTqp9-_k7HwA@mail.gmail.com>
+Subject: Re: [PATCH v6 5/6] ARM: tegra: Convert to new media orientation definitions
+To: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Jacopo Mondi <jacopo@jmondi.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	Jimmy Su <jimmy.su@intel.com>, Matthias Fend <matthias.fend@emfend.at>, 
+	Mikhail Rudenko <mike.rudenko@gmail.com>, Daniel Scally <dan.scally@ideasonboard.com>, 
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>, 
+	Michael Riesch <michael.riesch@collabora.com>, 
+	Benjamin Mugnier <benjamin.mugnier@foss.st.com>, 
+	Sylvain Petinot <sylvain.petinot@foss.st.com>, 
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Paul Elder <paul.elder@ideasonboard.com>, Martin Kepplinger <martin.kepplinger@puri.sm>, 
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>, 
+	Tommaso Merciai <tomm.merciai@gmail.com>, Richard Acayan <mailingradian@gmail.com>, 
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Thierry Reding <thierry.reding@kernel.org>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, linux-media@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux@ew.tq-group.com, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-tegra@vger.kernel.org, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_105914_874183_63DCB42D 
-X-CRM114-Status: GOOD (  21.19  )
+X-CRM114-CacheID: sfid-20260918_113054_918275_0B014298 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,111 +136,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6477064007475694695=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============6477064007475694695==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5zmlbusiipz75m4r"
-Content-Disposition: inline
-
-
---5zmlbusiipz75m4r
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 3/4] pmdomain: rockchip: don't ignore clock lookup errors
- on attach
-MIME-Version: 1.0
-
-Hi,
-
-On Fri, Sep 18, 2026 at 08:07:37PM +0800, Shawn Lin wrote:
-> rockchip_pd_attach_dev() treated every of_clk_get() error as the end
-> of the clock list, so a clock that exists but is not available yet
-> (e.g. -EPROBE_DEFER) was silently skipped and the device ended up
-> without pm_clk management.  Only -ENOENT means there are no more
-> clocks.
->=20
-> Fixes: 7c696693a4f5 ("soc: rockchip: power-domain: Add power domain drive=
-r")
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
--- Sebastian
-
->  drivers/pmdomain/rockchip/pm-domains.c | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/ro=
-ckchip/pm-domains.c
-> index b6b099b..e193f97 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -759,7 +759,19 @@ static int rockchip_pd_attach_dev(struct generic_pm_=
-domain *genpd,
->  	}
-> =20
->  	i =3D 0;
-> -	while ((clk =3D of_clk_get(dev->of_node, i++)) && !IS_ERR(clk)) {
-> +	while (1) {
-> +		clk =3D of_clk_get(dev->of_node, i++);
-> +		if (IS_ERR(clk)) {
-> +			error =3D PTR_ERR(clk);
-> +			if (error =3D=3D -ENOENT)
-> +				break;
-> +
-> +			dev_err(dev, "failed to get clock %d: %d\n", i - 1,
-> +				error);
-> +			pm_clk_destroy(dev);
-> +			return error;
-> +		}
-> +
->  		dev_dbg(dev, "adding clock '%pC' to list of PM clocks\n", clk);
->  		error =3D pm_clk_add_clk(dev, clk);
->  		if (error) {
-> --=20
-> 2.7.4
->=20
->=20
-
---5zmlbusiipz75m4r
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmqte+sACgkQ2O7X88g7
-+pp/rg/9E0K5Y3juU+WAyHN7VwCZTa/CXCWLdA2WG7AEvCX5FVLMV3zttcfHAImp
-ejiJdooJY4jlBq0SL/PfPXWu1DUH2kjUl//7+vUJSI8IosuiecUlbKl1LuASXoSE
-rY5omU+uFfBrydSKH2jrM9ztezETs/6RbZBcL5lFA8hwMSXLWfeXs0SXDOvedo9N
-ZkZRVKVG8GffcdiaK42eT10AONWeerInHK1PAHjCHwdzpbd+HiZoOMYRJvIv2cZd
-guCCZ3uf0nbLKpr/1oQeK3KPmG0Oh8sRZV4YdLNesdOp9CCno32XPmqBRPjEXCEM
-lkV1GLWSmm2H7gQExCTLed5iDoYGrkJ+oGrmoil0sbpv32ReAZeJeg4YrBC8JCBi
-XCU+EXehkZ4jZYNjEbqHQuKRobpA3PKU7VHTJbDW7St5k3Zqlw4hq8SuktiofNyL
-Es9gAYXSjdhgPciyD+po19kokDHLooVWdIwTcWEuXbf/6IynTBq7jAMfO86D6KCO
-RzeQXdeS2ldmiXwfTBxbc4ZUngOLlinP9mc+TVOgf077QDgx05/wgJmNUcGw6fO/
-QfLvFGODmoh6I7FsxfTgF+OxaJdJuyfup1eIsJ+lJG3slj/0O517A1KpOzANGc6V
-XdNLHFLDvzgrhzM8qCaeO855UyfNAcQCLchXwB8snaY07kWxBuU=
-=/dh9
------END PGP SIGNATURE-----
-
---5zmlbusiipz75m4r--
-
-
---===============6477064007475694695==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6477064007475694695==--
-
+0L/RgiwgMTgg0LLQtdGALiAyMDI24oCv0YAuINC+IDEzOjQ0IEtpZXJhbiBCaW5naGFtCjxraWVy
+YW4uYmluZ2hhbUBpZGVhc29uYm9hcmQuY29tPiDQv9C40YjQtToKPgo+IEZyb206IEtpZXJhbiBC
+aW5naGFtIDxraWVyYW4uYmluZ2hhbStyZW5lc2FzQGlkZWFzb25ib2FyZC5jb20+Cj4KPiBUaGUg
+b3JpZW50YXRpb24gcHJvcGVydHkgZm9yIHZpZGVvIGludGVyZmFjZSBkZXZpY2VzIG5vdyBoYXMg
+ZGVmaW5pdGlvbnMKPiB0byBwcmV2ZW50IGhhcmRjb2RlZCBpbnRlZ2VyIHZhbHVlcyBmb3IgdGhl
+IGVudW0gb3B0aW9ucy4KPgo+IFVwZGF0ZSB0aGUgdXNlcnMgdGhyb3VnaG91dCB0aGUgbnZpZGlh
+IGRldmljZSB0cmVlcyB0byB1c2UgdGhlIG5ldwo+IGRlZmluaXRpb25zLgo+Cj4gUmV2aWV3ZWQt
+Ynk6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4K
+PiBTaWduZWQtb2ZmLWJ5OiBLaWVyYW4gQmluZ2hhbSA8a2llcmFuLmJpbmdoYW0rcmVuZXNhc0Bp
+ZGVhc29uYm9hcmQuY29tPgo+IC0tLQo+IHYyOgo+ICAtIEZpeCBNRURJQV9PUklFTlRBVElPTl9S
+RUFSIHRvIE1FRElBX09SSUVOVEFUSU9OX0JBQ0sKPiAtLS0KPiAgYXJjaC9hcm0vYm9vdC9kdHMv
+bnZpZGlhL3RlZ3JhMzAtYXN1cy1uZXh1czctZ3JvdXBlci1jb21tb24uZHRzaSB8IDMgKystCj4g
+IGFyY2gvYXJtL2Jvb3QvZHRzL252aWRpYS90ZWdyYTMwLWFzdXMtdHJhbnNmb3JtZXItY29tbW9u
+LmR0c2kgICAgfCAzICsrLQo+ICBhcmNoL2FybS9ib290L2R0cy9udmlkaWEvdGVncmEzMC1sZy1w
+ODk1LmR0cyAgICAgICAgICAgICAgICAgICAgIHwgNCArKystCj4gIGFyY2gvYXJtL2Jvb3QvZHRz
+L252aWRpYS90ZWdyYTMwLWxnLXgzLmR0c2kgICAgICAgICAgICAgICAgICAgICAgfCAzICsrLQo+
+ICA0IGZpbGVzIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKPgoKUmV2
+aWV3ZWQtYnk6IFN2eWF0b3NsYXYgUnloZWwgPGNsYW1vcjk1QGdtYWlsLmNvbT4KCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
