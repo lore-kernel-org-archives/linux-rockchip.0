@@ -4,52 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB1BDC982D8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 13:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDE7AC982DA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 15:08:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PXvlXXInn9VzQg2NOBJh5sIcyjqmA4ZT7tqmH/KaI94=; b=3NVztwsyhrCWBR
-	DSqdig2qYrE11pPO2MKRp6dHc7fB9b8YAzWeJPhQIORi4jmqQVxz9xHwaz6oG34dAKXERlkKXnwr+
-	B8Q3XstN7gYu4chw1xw/rN0rO6RihG8tuLjrv883D4Y5x7Psgsyn6sMxiGF+czi/BpRbPiS1dm0dH
-	rQuVJnZC6HnQyi/PTFcIfnMkJTHg1p/cbFhyKjyt+eIP8TU598npP1BYd4nIBD8GhXwq22sRghHrp
-	azcu3p/VjLI1z/fh33UykPjHpjQ0kthpE4ikcQW0/c/bL0Ff8a0tcEMJPI9nQYeXuyehTQkJE9Lee
-	PEyNuUYbZ62SwGNw5jGA==;
+	List-Owner; bh=HqNwzJv+HisNKTxLPKtxDQH/UpfJIaG+t4HkDsOgnzo=; b=MFBklIUYWl1jaQ
+	eyEgSFFFn2/yaReAFWDep7T4UWVC73+gA96OPOLHjZiX2WZFE3PfF5TfQ6/RlC6UVERAy/Oz75ji+
+	bxypIhPs8JcZvV2oQP/AqMGbKUvRPUkzCY7rPtT05HzCf09XYXLXvm0S6AuZpyoQIzEn7hvHm1YV6
+	+Bverlj/jKeAcTr92NTEVFZrHdp/RtJTd+mkHLV6dHQDOrlVlbZYfJyK2KyXYTo4AqHScntYDDB8R
+	frUHO5WJcSQC1u4tu7PU1Zlk0nSt+Uf30GJKNAXGgqPO41OK9KseLVmQPRDlzHZBOlENgLHQ4X3+S
+	su0awiNczHLJ/kj/kJ4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Yj4-0000000EYtr-3KAF;
-	Fri, 18 Sep 2026 13:34:02 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1x7aBv-0000000EpYx-3nHI;
+	Fri, 18 Sep 2026 15:07:55 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Yig-0000000EYe9-41AP;
-	Fri, 18 Sep 2026 13:33:40 +0000
-Received: from monstersaurus.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7AD234F05;
-	Fri, 18 Sep 2026 15:31:53 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1789738313;
-	bh=82Mn9uZcABYJuJY9Ja/otiQ81SD5L074KXYkhdIuJ6I=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=sSs1i0F90LIHx/AZUsiKA+YnwsGpLmBo4KVoj+4PCYr811SKW5YYmJfzvEQ+leTOG
-	 VCaTQT21x5BR83STKDA30U4LByAcaDz/jNhdEjxPUk9zaNjq9ie6lUfcemA34CJvoF
-	 NZ/sE+F0CEFUVp37+OhHkPGXGNYIHHWb0YThntK4=
+	id 1x7aBt-0000000EpXj-0mz3;
+	Fri, 18 Sep 2026 15:07:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1789744065; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=I6AW+OWNKfm4s1J1lr3yv1SWdLqkpIuUnes4bAC1oU/tIdhk8iXNdTdmVVRlsViDKJ23EjB160SMgGIV5svRWbnLU7LUqZJhQkaJG/ndOLztCQZtjNC/hVDOrgV0HDTq4srb/WtXy/ZDO9tQ3ez318TfrIqg4jD78kL2YtenAc0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1789744065; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=6DYLdUfKD8lQHyVdszF6+D1lk2bnnMb1mJc/zRkdlrQ=; 
+	b=T700XLKdSf0EGDN75SihmMKYg3lAWCsUqclWVCyT6oN7KvzMiSmi8ugGG8ylbpfBEtqLjHddEh0JBfDj5lIQwQSSGDMZ/zg/U/ZsTBUJitrdGLvIP9saHZVnFQhEPexxtIsQqDm5Eg24LQGLJp8azKalhSJDgNZy3ufDuaZo0r8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1789744065;
+	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=6DYLdUfKD8lQHyVdszF6+D1lk2bnnMb1mJc/zRkdlrQ=;
+	b=Iveo383UsiLdY2oMy62uJysUNVHEvUOdK4YiiR0HmfG3LJ82de/K91VgKfFIqFzJ
+	2MuWVDpTt3ko9gQQz6FdUrfvDMCVIYFYOfSPZzXxgmydGBHb1Amt2X77NPqlkoWJgah
+	BfXG4l1kNpj/N4L5Kd3/Haz+kEBfSW3C+IrZ+XG4=
+Received: by smtp.zohomail.com with SMTPS id 1789744062457111.72786165405773;
+	Fri, 18 Sep 2026 08:07:42 -0700 (PDT)
+Message-ID: <eee3fd59-adfc-4f36-b467-e1e7c2ad38de@collabora.com>
+Date: Fri, 18 Sep 2026 17:07:38 +0200
 MIME-Version: 1.0
-In-Reply-To: <20260918132013.GG59058@killaraus.ideasonboard.com>
-References: <20260918-kbingham-orientation-v6-0-5e8b1f01be29@ideasonboard.com> <20260918-kbingham-orientation-v6-2-5e8b1f01be29@ideasonboard.com> <178972979131.1723501.9444120486527129452@ping.linuxembedded.co.uk> <20260918132013.GG59058@killaraus.ideasonboard.com>
-Subject: Re: [PATCH v6 2/6] arm64: dts: qcom: Convert to new media orientation definitions
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Cc: Benjamin Mugnier <benjamin.mugnier@foss.st.com>, Bjorn Andersson <andersson@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Daniel Scally <dan.scally@ideasonboard.com>, Fabio Estevam <festevam@gmail.com>, Frank Li <Frank.Li@nxp.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Jacopo Mondi <jacopo@jmondi.org>, Jimmy Su <jimmy.su@intel.com>, Jonathan Hunter <jonathanh@nvidia.com>, Konrad Dybcio <konradybcio@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Magnus Damm <magnus.damm@gmail.com>, Martin Kepplinger <martin.kepplinger@puri.sm>, Matthias Fend <matthias.fend@emfend.at>, Mauro Carvalho Chehab <mchehab@kernel.org>, Michael Riesch <michael.riesch@collabora.com>, Mikhail Rudenko <mike.rudenko@gmail.com>, Paul Elder <paul.elder@ideasonboard.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Quentin Schulz <quentin.schulz@theobroma-systems.com>, Richard Acayan <mailingradian@gmail.com>, 
- Rob Herring <robh@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Sascha Hauer <s.hauer@pengutronix.de>, Svyatoslav Ryhel <clamor95@gmail.com>, Sylvain Petinot <sylvain.petinot@foss.st.com>, Thierry Reding <thierry.reding@kernel.org>, Tommaso Merciai <tomm.merciai@gmail.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux@ew.tq-group.com, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, David Heidelberg <david@ixit.cz>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Date: Fri, 18 Sep 2026 14:33:34 +0100
-Message-ID: <178973841405.1723501.9051265194315500867@ping.linuxembedded.co.uk>
-User-Agent: alot/0.9.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/4] phy: rockchip: add support for the RK3576 MIPI
+ CSI-2 DPHYs
+To: Amin Gattout <amin.gattout@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, Conor Dooley <conor.dooley@microchip.com>
+References: <20260915-rk3576-dphy-v2-0-b56e68b54b8c@gmail.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20260915-rk3576-dphy-v2-0-b56e68b54b8c@gmail.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_063339_202717_81AF45DD 
-X-CRM114-Status: GOOD (  28.89  )
+X-CRM114-CacheID: sfid-20260918_080753_302985_9684BA37 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,154 +83,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Laurent Pinchart (2026-09-18 14:20:13)
-> On Fri, Sep 18, 2026 at 12:09:51PM +0100, Kieran Bingham wrote:
-> > Quoting Kieran Bingham (2026-09-18 11:44:14)
-> > > From: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-> > > 
-> > > The orientation property for video interface devices now has definitions
-> > > to prevent hardcoded integer values for the enum options.
-> > > 
-> > > Update the users throughout the qualcomm device trees to use the new
-> > > definitions.
-> > > 
-> > > Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > > Reviewed-by: Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>
-> > > Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-> > > Reviewed-by: David Heidelberg <david@ixit.cz>
-> > 
-> > Sashiko has noted that there is another new dts added in dts/qcom since
-> > I wrote this patch.
-> > 
-> > I don't want to invalidate the above reviews by adding another change,
-> > so I will send the single update to the new file separately as the core
-> > definitions are already accepted now.
-> > 
-> > If someone /really/ wants me to add the change to
-> > arch/arm64/boot/dts/qcom/sm8250-xiaomi-elish-common.dtsi in this patch,
-> > please let me know.
-> > 
-> > it looks like this:
-> > 
-> > ----------- arch/arm64/boot/dts/qcom/sm8250-xiaomi-elish-common.dtsi -----------
-> > index 945127dacc82..f86d3e0d51a6 100644
-> > @@ -3,10 +3,11 @@
-> >   * Copyright (c) 2022-2024 Jianhua Lu <lujianhua000@gmail.com>
-> >   */
-> > 
-> >  #include <dt-bindings/arm/qcom,ids.h>
-> >  #include <dt-bindings/media/video-interfaces.h>
-> > +#include <dt-bindings/media/video-interface-devices.h>
-> >  #include <dt-bindings/phy/phy.h>
-> >  #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
-> >  #include <dt-bindings/usb/pd.h>
-> >  #include "sm8250.dtsi"
-> >  #include "pm8150.dtsi"
-> > @@ -571,11 +572,11 @@ camera_front: camera@10 {
-> >               reset-gpios = <&tlmm 109 GPIO_ACTIVE_LOW>;
-> > 
-> >               pinctrl-0 = <&cam_mclk3_default &camera_front_active>;
-> >               pinctrl-names = "default";
-> > 
-> > -             orientation = <0>; /* Front facing */
-> > +             orientation = <MEDIA_ORIENTATION_FRONT>;
-> >               rotation = <270>;
-> > 
-> >               port {
-> >                       ov8856_front_ep: endpoint {
-> >                               data-lanes = <1 2>;
+Hi Amin,
+
+Thanks for your work, very nice!
+
+On 9/15/26 12:42, Amin Gattout wrote:
+> Hi all,
 > 
-> I don't mind either way, and I think you can keep the existing R-b tags
-> if you add that hunk.
+> The Rockchip RK3576 features two MIPI CSI-2 DPHYs. The CSI-2 DPHYs can be
+> supported using the existing phy-rockchip-inno-csidphy driver.
+> 
+> This patch series adds support for this variant.
+> 
+> As you may have guessed, this is part of the efforts to bring the
+> support for the RK3576 camera pipeline (VICAP) mainline.
+> 
+> Looking forward to your comments!
+> 
+> ---
+> Changes in v2:
+> - Patch 3: drop the RK3576 GRF register table, which duplicated the
+>   RK3588 one, and reuse rk3588_grf_dphy_regs instead, so that the reset
+>   names are now the only difference between the two variants (Michael)
+> - Patch 3: reword the commit message accordingly
+> - Patch 2: spell out in the commit message why the RK3576 compatible
+>   cannot use a fallback (Conor)
+> - Collected Acked-by from Conor on patches 1 and 2
+> - Link to v1: https://patch.msgid.link/20260820-rk3576-dphy-v1-0-70e25e8d5e78@gmail.com
+> 
+> ---
+> Amin Gattout (4):
+>       dt-bindings: soc: rockchip: add rk3576 csidphy grf syscon
+>       dt-bindings: phy: rockchip-inno-csi-dphy: add rk3576 variant
+>       phy: rockchip: phy-rockchip-inno-csidphy: add support for rk3576 variant
+>       arm64: dts: rockchip: add csi dphy nodes to rk3576
 
-As noticed by Thierry, it will also impact things depending on who
-applies this patch and where.
 
-It seems like the headers used appear in linux-next already now that
-Sakari has merged them, but this hunk won't apply on
-media-committers/next ... so I'll keep it separate until we can let the
-dust settle.
+For the complete series:
 
---
-Kieran
+Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+
+Best regards,
+Michael
 
 > 
-> > > Signed-off-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-> > > ---
-> > >  arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts         | 3 ++-
-> > >  arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts | 3 ++-
-> > >  arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi         | 3 ++-
-> > >  3 files changed, 6 insertions(+), 3 deletions(-)
-> > > 
-> > > diff --git a/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts b/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts
-> > > index f41ad446a39e..e2b7f1bd05ab 100644
-> > > --- a/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts
-> > > +++ b/arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts
-> > > @@ -13,6 +13,7 @@
-> > >  #include <dt-bindings/iio/qcom,spmi-adc7-pmk8350.h>
-> > >  #include <dt-bindings/leds/common.h>
-> > >  #include <dt-bindings/media/video-interfaces.h>
-> > > +#include <dt-bindings/media/video-interface-devices.h>
-> > >  #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
-> > >  #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
-> > >  #include <dt-bindings/sound/qcom,q6asm.h>
-> > > @@ -701,7 +702,7 @@ camera@10 {
-> > >                 pinctrl-0 = <&cam_mclk3_default>;
-> > >                 pinctrl-names = "default";
-> > >  
-> > > -               orientation = <0>; /* Front facing */
-> > > +               orientation = <MEDIA_ORIENTATION_FRONT>;
-> > >                 rotation = <270>;
-> > >  
-> > >                 port {
-> > > diff --git a/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts b/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts
-> > > index 218573a97785..3b5f6a29e969 100644
-> > > --- a/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts
-> > > +++ b/arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts
-> > > @@ -11,6 +11,7 @@
-> > >  #include <dt-bindings/input/gpio-keys.h>
-> > >  #include <dt-bindings/input/input.h>
-> > >  #include <dt-bindings/leds/common.h>
-> > > +#include <dt-bindings/media/video-interface-devices.h>
-> > >  #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
-> > >  
-> > >  #include "sc8280xp.dtsi"
-> > > @@ -683,7 +684,7 @@ camera@10 {
-> > >  
-> > >                 clocks = <&camcc CAMCC_MCLK3_CLK>;
-> > >  
-> > > -               orientation = <0>;      /* Front facing */
-> > > +               orientation = <MEDIA_ORIENTATION_FRONT>;
-> > >  
-> > >                 avdd-supply = <&vreg_l6q>;
-> > >                 dvdd-supply = <&vreg_l2q>;
-> > > diff --git a/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi b/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
-> > > index b4854801a5f5..7880d85b52fe 100644
-> > > --- a/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
-> > > +++ b/arch/arm64/boot/dts/qcom/sdm670-google-common.dtsi
-> > > @@ -9,6 +9,7 @@
-> > >  #include <dt-bindings/gpio/gpio.h>
-> > >  #include <dt-bindings/input/input.h>
-> > >  #include <dt-bindings/leds/common.h>
-> > > +#include <dt-bindings/media/video-interface-devices.h>
-> > >  #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
-> > >  #include <dt-bindings/power/qcom-rpmpd.h>
-> > >  #include "sdm670.dtsi"
-> > > @@ -460,7 +461,7 @@ camera@1a {
-> > >                 pinctrl-names = "default";
-> > >  
-> > >                 rotation = <270>;
-> > > -               orientation = <0>;
-> > > +               orientation = <MEDIA_ORIENTATION_FRONT>;
-> > >  
-> > >                 port {
-> > >                         cam_front_endpoint: endpoint {
-> > > 
+>  .../bindings/phy/rockchip-inno-csi-dphy.yaml       |  2 ++
+>  .../devicetree/bindings/soc/rockchip/grf.yaml      |  1 +
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 34 ++++++++++++++++++++++
+>  drivers/phy/rockchip/phy-rockchip-inno-csidphy.c   | 15 ++++++++++
+>  4 files changed, 52 insertions(+)
+> ---
+> base-commit: bd5f485f3f026225b86573e559af0b7254ef4184
+> change-id: 20260819-rk3576-dphy-2304f848215b
 > 
-> -- 
-> Regards,
+> Best regards,
+> --  
+> Amin Gattout <amin.gattout@gmail.com>
 > 
-> Laurent Pinchart
+
 
 _______________________________________________
 Linux-rockchip mailing list
