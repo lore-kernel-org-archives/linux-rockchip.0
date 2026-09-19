@@ -4,70 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 157CAC982D8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2026 21:21:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9C4CC982D7
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Sep 2026 00:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EXX1wYPmOQHSU9RfFiR6Kb3CVg2bQbltf2PiDGfHzDs=; b=zywP9i4jFsL3eC
-	LvcDz0kwxVdI++6LiDDJDWWr2AsFuGiGW7gVVHEW/wqmFFL0aDf+hxX4CFDFZuiAlFDIQuHsfFnua
-	ENnUb5xunQaTtoSqeOmHoaddLrPO80Fl8iPBHiNcTNx2yj2GkGb3qth8vzklC20tEKgXm4/PRnEkD
-	EAN4O4rTXVL+o/RxqFWCuiVjJ0W0L9PeCbOTW56T97/483qRtf9Xt191wROSywWvYLTpMm1F2Xb3f
-	PEwhcLGiwlstElBi8MA1cctGfejYERl2z5u0xo2oiweEa0h0RKpNIvnSz7I1e38+7AxnVgaoKan11
-	0GQL8OPDtW6oN9TtUeew==;
+	List-Owner; bh=w6bi6dGMVm4LbIUsS/u5rZ9pKabUPJoFMNioyAYkCTs=; b=a0YHwMXdoSobIR
+	S2+xRdtY4UQF4vZWua1Uqu8pZqANiH1O6H59cJ2EsyPx6abX0N+PVzdagL8BiFla0ihEpt7vlyJC9
+	dy+kibyMBTKXuXLzaKmvo5/eV7Hhjvr+m/LivJQ0qMSk51wUt62fvy0z6kAJHZEONOkXDd4bXyobo
+	9M7tn4x7lX3nx9nXKhQGDp7efU/l+EJnKMuplEUY/RaZg17xpBYxi+VoLX3+xLuc5nWGtt+82FlAv
+	nY4S+9EpRcbjw+NKsP0XMXnnCsfZZw8nQVUlRHfIfcoKUpyEogKxe1huC06+FowEVZyBtQWT6QhMt
+	kztZnkPeiW7vLHfQPQfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7g1L-0000000FYrL-2x3F;
-	Fri, 18 Sep 2026 21:21:23 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1x7ihn-0000000FjcQ-1Iyg;
+	Sat, 19 Sep 2026 00:13:23 +0000
+Received: from mail-m83142.xmail.ntesmail.com ([156.224.83.142])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7g1J-0000000FYqX-30hZ;
-	Fri, 18 Sep 2026 21:21:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1789766477; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ZRTPs+/EQn6AzTGcOTrIbRhRrGLanIGQioKhMY1bIqzFOpYljLMSAWgLVX4dAw6keghmfU8OJpFdEroBzPej1tDz9Doh0X9S3K258mM/BCTKdBBXYz6ruR9nZWMw2cVaZbO5YmT7jDKytf6ZfySLtcFuiAPVp4/qgqc2yoTG7Oo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1789766477; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=o3AIqpCx1xGDSyIic5bd3W6l+0N3zsLVo4Tor3degLA=; 
-	b=TJRg6etdGn4KnZZ5H8DyjVpjloCwlQlKaMtzwgvsGQPa3a3IdzJzDoRdTsekyjNxr8SVahj+9y0QJGp8D+oMG/+rguHShBqvbsOXMyAM84qtdd+cBYWXgKVhvBn4gbWQsC3cn58rJrQ+qyw3HHAUOs30RurVTR57QzUNjpKU7nQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
-	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1789766477;
-	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=o3AIqpCx1xGDSyIic5bd3W6l+0N3zsLVo4Tor3degLA=;
-	b=B3pnhjhLpfd3841dq7Q6zohkaeJnGM8mGeORhvnmjlo+ROGq6yAEjqC+Dj6cQIDU
-	fekNUYdo84Yig+aeNdLrVIJGmHp38/wEaqBC1/0yQxH0a+iBP7QyUVPbbR6RYMEUR8o
-	fF3bMYeBGjKVktReAuCls7H0jSUlxHB34sZbTygk=
-Received: by smtp.zohomail.com with SMTPS id 1789766475322457.08237500283667;
-	Fri, 18 Sep 2026 14:21:15 -0700 (PDT)
-Message-ID: <c38e3ec8-74a3-4ab9-9d76-c5fe020284ea@collabora.com>
-Date: Fri, 18 Sep 2026 23:21:11 +0200
+	id 1x7ihj-0000000Fjc0-3INj
+	for linux-rockchip@lists.infradead.org;
+	Sat, 19 Sep 2026 00:13:22 +0000
+Received: from [172.16.12.48] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4e57682ed;
+	Sat, 19 Sep 2026 08:13:12 +0800 (GMT+08:00)
+Message-ID: <27e3944f-81c6-48e4-8033-e30ae70f8e26@rock-chips.com>
+Date: Sat, 19 Sep 2026 08:13:08 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] media: dt-bindings: add rockchip rk3576 vicap
-To: Amin Gattout <amin.gattout@gmail.com>,
- Mehdi Djait <mehdi.djait@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260915-vicap-rk3576-v1-0-d3f5eb58a0b5@gmail.com>
- <20260915-vicap-rk3576-v1-1-d3f5eb58a0b5@gmail.com>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260915-vicap-rk3576-v1-1-d3f5eb58a0b5@gmail.com>
-X-ZohoMailClient: External
+Cc: shawn.lin@rock-chips.com, Ulf Hansson <ulfh@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 2/4] pmdomain: rockchip: fix clock leak on domain probe
+ failure
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+References: <1789733258-10133-1-git-send-email-shawn.lin@rock-chips.com>
+ <1789733258-10133-3-git-send-email-shawn.lin@rock-chips.com>
+ <aq1yU47vQT5OnxLo@venus>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <aq1yU47vQT5OnxLo@venus>
+X-HM-Tid: 0aa0b7028bb103a4kunma3f32aa81a68a3
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDT0pPVkpOHhlNTx9JHk0dTlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=dTc6fopJKXCuy8hHdVrdLPGJ7r3GVFBCWDlvW0U0wX632KlVKNTvB8kaFA4Lpaa55dW5YX/q8DdcFtrbp/Eg7FKsheUlTn8IC5kwPXITQvssYW3WTOaBqXoTMQy9qwX2V1v4D/226vd3qrHmS684qog1vYY91swGVKAnBiytR4g=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=1pcrBPUiN1+2nlY2bqlloJAqwKSPEzkpGfZe5dtPHH4=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_142121_807551_E2A48E08 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20260918_171320_422522_3328FD40 
+X-CRM114-Status: GOOD (  17.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,133 +69,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Amin,
-
-Thanks for the patch, LGTM!
-
-On 9/15/26 14:27, Amin Gattout wrote:
-> Add the compatible for the Video Capture (VICAP) unit of the Rockchip
-> RK3576. This variant features five MIPI CSI-2 ports and a connection
-> to the image signal processor (ISP). The pixel clock of each MIPI port
-> enters the VICAP through a dedicated gate in the clock and reset unit,
-> so the variant takes five interface clocks and five interface resets
-> in addition to the aclk, hclk and dclk of the other variants.
-> 
-> Signed-off-by: Amin Gattout <amin.gattout@gmail.com>
-
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
-
-Best regards,
-Michael
-
-> ---
->  .../bindings/media/rockchip,rk3568-vicap.yaml      | 46 +++++++++++++++++++++-
->  1 file changed, 45 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
-> index 080b64503b1b..b7dfaf3b378d 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
-> @@ -15,6 +15,10 @@ description:
->    the data from camera sensors, video decoders, or other companion ICs and
->    transfers it into system main memory by AXI bus.
->  
-> +  The Rockchip RK3576 Video Capture (VICAP) is similar to its RK3568
-> +  counterpart, but features five MIPI CSI-2 ports and an additional
-> +  connection to the image signal processor (ISP) block.
-> +
->    The Rockchip RK3588 Video Capture (VICAP) is similar to its RK3568
->    counterpart, but features six MIPI CSI-2 ports and additional connections
->    to the image signal processor (ISP) blocks.
-> @@ -23,6 +27,7 @@ properties:
->    compatible:
->      enum:
->        - rockchip,rk3568-vicap
-> +      - rockchip,rk3576-vicap
->        - rockchip,rk3588-vicap
->  
->    reg:
-> @@ -33,7 +38,7 @@ properties:
->  
->    clocks:
->      minItems: 4
-> -    maxItems: 5
-> +    maxItems: 8
->  
->    clock-names:
->      items:
-> @@ -42,6 +47,9 @@ properties:
->        - const: dclk
->        - const: iclk
->        - const: iclk1
-> +      - const: iclk2
-> +      - const: iclk3
-> +      - const: iclk4
->      minItems: 4
->  
->    iommus:
-> @@ -221,6 +229,40 @@ allOf:
->  
->              port@11: false
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3576-vicap
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 8
-> +
-> +        clock-names:
-> +          minItems: 8
-> +
-> +        resets:
-> +          minItems: 8
-> +          maxItems: 8
-> +
-> +        reset-names:
-> +          items:
-> +            - const: arst
-> +            - const: hrst
-> +            - const: drst
-> +            - const: irst0
-> +            - const: irst1
-> +            - const: irst2
-> +            - const: irst3
-> +            - const: irst4
-> +
-> +        ports:
-> +          properties:
-> +            port@6: false
-> +
-> +            port@11: false
-> +
->    - if:
->        properties:
->          compatible:
-> @@ -230,9 +272,11 @@ allOf:
->        properties:
->          clocks:
->            minItems: 5
-> +          maxItems: 5
->  
->          clock-names:
->            minItems: 5
-> +          maxItems: 5
->  
->          resets:
->            minItems: 9
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgU2ViYXN0aWFuCgrlnKggMjAyNi8wOS8xOSDmmJ/mnJ/lha0gMToyMSwgU2ViYXN0aWFuIFJl
+aWNoZWwg5YaZ6YGTOgo+IEhpLAo+IAo+IE9uIEZyaSwgU2VwIDE4LCAyMDI2IGF0IDA4OjA3OjM2
+UE0gKzA4MDAsIFNoYXduIExpbiB3cm90ZToKPj4gV2hlbiBvZl9jbGtfZ2V0KCkgZmFpbGVkIGlu
+IHRoZSBtaWRkbGUgb2YgdGhlIGxvb3AsIHRoZSByZWZlcmVuY2VzIG9mCj4+IHRoZSBjbG9ja3Mg
+YWNxdWlyZWQgc28gZmFyIHdlcmUgbGVha2VkIGluc3RlYWQgb2YgYmVpbmcgcmVsZWFzZWQgYnkK
+Pj4gdGhlIGVycm9yIHBhdGguCj4+Cj4+IEZpeGVzOiBkOTA5MDcyZDA1MjEgKCJzb2M6IHJvY2tj
+aGlwOiBwb3dlci1kb21haW46IHVzZSBjbGtfYnVsayBBUElzIikKPj4gU2lnbmVkLW9mZi1ieTog
+U2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+IC0tLQo+IAo+IFJpZ2h0LCBi
+dXQgdGhpcyBzaG91bGQgc3dpdGNoCj4gCj4gcGQtPmNsa3MgPSBkZXZtX2tjYWxsb2MoLi4uKTsK
+PiAKPiB0bwo+IAo+IHBkLT5jbGtzID0gZGV2bV9remFsbG9jKC4uLik7Cj4gCj4gYXQgdGhlIHNh
+bWUgdGltZSB0byBlbnN1cmUgdGhhdCBjbGtfYnVsa19wdXQoKSBkb2VzIG5vdCBydW4gb3Zlcgo+
+IG5vbi1pbml0aWFsaXplZCBkYXRhLiBPdGhlcndpc2UKCkdvb2QgY2F0Y2gsIHdpbGwgaW1wcm92
+ZSBpdCBpbiB2Mi4KClRoYW5rcy4KCj4gCj4gUmV2aWV3ZWQtYnk6IFNlYmFzdGlhbiBSZWljaGVs
+IDxzZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tPgo+IAo+IEdyZWV0aW5ncywKPiAKPiAt
+LSBTZWJhc3RpYW4KPiAKPj4KPj4gICBkcml2ZXJzL3BtZG9tYWluL3JvY2tjaGlwL3BtLWRvbWFp
+bnMuYyB8IDIgKy0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRp
+b24oLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcG1kb21haW4vcm9ja2NoaXAvcG0tZG9t
+YWlucy5jIGIvZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMKPj4gaW5kZXgg
+MDY4ZGQ0YjMuLmI2YjA5OWIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvcG1kb21haW4vcm9ja2No
+aXAvcG0tZG9tYWlucy5jCj4+ICsrKyBiL2RyaXZlcnMvcG1kb21haW4vcm9ja2NoaXAvcG0tZG9t
+YWlucy5jCj4+IEBAIC04NDIsNyArODQyLDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9wbV9hZGRf
+b25lX2RvbWFpbihzdHJ1Y3Qgcm9ja2NoaXBfcG11ICpwbXUsCj4+ICAgCQkJZGV2X2VycihwbXUt
+PmRldiwKPj4gICAJCQkJIiVwT0ZuOiBmYWlsZWQgdG8gZ2V0IGNsayBhdCBpbmRleCAlZDogJWRc
+biIsCj4+ICAgCQkJCW5vZGUsIGksIGVycm9yKTsKPj4gLQkJCXJldHVybiBlcnJvcjsKPj4gKwkJ
+CWdvdG8gZXJyX3B1dF9jbG9ja3M7Cj4+ICAgCQl9Cj4+ICAgCX0KPj4gICAKPj4gLS0gCj4+IDIu
+Ny40Cj4+Cj4+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
