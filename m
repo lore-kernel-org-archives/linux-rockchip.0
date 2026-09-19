@@ -4,77 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF7D0C982DA
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Sep 2026 10:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF735C982DA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Sep 2026 12:29:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dm3G9pxCgt/DAXUiLhX+fgYYpVEPs9/9sz7gehMbg1Y=; b=V16EHJdv4JIEVu
-	h0xbA0eV2i5+lqensPXFi8FJdrUALLAPFbISQ5LQubr372wsw10Wt2cgtl6YA1dDYMJvJpQ10iKOu
-	y8feu1yafiCc81Q5ksre/w74HjFGBXxbldygdMVHt6OgwgfafP0vgm1ouWMoD52dgZantBubVF60m
-	3mfJegbvtro7dJBGYKOw4xaX/L7eNOCkhZ8hluksEFxHBu5aFA8QpYLEsp0oQOGfK0tLT4jtU2dux
-	VY0zulNPBzp5EHPoQu/SvCw8VIOqKTyp/3bHf/vMUBXKonq3Hpjq0ZqJ86n+1rPJHJZftHmD9+mQY
-	ymrvHJYQ3ByOC33JHNYg==;
+	List-Owner; bh=9JoWWKR8S5iwXCfShNT0TAtp2CbWuxWnrsFZvZ3vzVY=; b=00YbSoU/SEbbrG
+	umxp2FtzrXkuSm7zw4FuL4Y5Pj9aweVf7MexhGFk0Mrwcy+MwZ+mMbvxchvEIGWQ4N78jSl3laL20
+	ZgrFcKQcvhKgj/PpQp9ignltpzuNeVomhh+0vQmymJk5ZfIFUYBw4zB7UvbOzNOJXZ4BOBKR3Zuip
+	i5t9ePavMDFSQrrbpnqcwN05CoDAfTE9FDKI5bFK3xFvMYdUW+hT+3OdJioTscGjt2MjMJDJM+vdv
+	oZZXHcR2OST2s0IV8UU7Ogjvu580YhTW963X95XjM/yBN2h/YpGBaPvIim4ZlXYBVBAd+8OLU705T
+	Fsgn6Bpz4PU+Zbhhqsuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7sdG-0000000GCB6-22EI;
-	Sat, 19 Sep 2026 10:49:22 +0000
-Received: from pv-2002b-snip6-11.eps.apple.com ([2a01:b747:3003:201::15] helo=outbound.pv.icloud.com)
+	id 1x7uCT-0000000GEwv-3o46;
+	Sat, 19 Sep 2026 12:29:49 +0000
+Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7sdD-0000000GCAP-24BK
+	id 1x7uCQ-0000000GEvl-309l
 	for linux-rockchip@lists.infradead.org;
-	Sat, 19 Sep 2026 10:49:21 +0000
-Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
-	by p00-icloudmta-asmtp-us-west-1a-100-percent-4 (Postfix) with ESMTPS id B0B4C1801030;
-	Sat, 19 Sep 2026 10:49:13 +0000 (UTC)
-X-ICL-RepId: 01a0b948-d6b5-76e4-b2ab-c46c3c6db639
-X-ICL-Out-Info: HUtFAUMEWwJACUgATUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXRIYXBRcUFgeRhJWDV0JGRtEXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJCldTAQwXXB9jX2cbUEpEI2g+ch0KRhMZThtXTVAbXwJCDw==
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1789814957; x=1792406957; bh=13jzL88KIKbF6+zInCJIZZZyVKr0mBlcmPTBdOFV7RM=; h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:x-icloud-hme; b=oRBVJ8y6VCibf7y9zXBLid9M7P6QaT6aS/j0kLeUT7fWfuNjYKtVKyWhqa7xo5bYWYLdSrLZeVkzc9VZqUIu+JgkZcM3mUkRomTcBPkALAsAq9+8VpEuxv2DvpgWkzYNG5s8GpVZhX4SS5GSvX8pB2mdjLMS2ne1mfITsBa2ikXZ757IaY/wqRAYwCaEJT+UTguC5vfwglbaRHp/jLV1z214TjC1M7o3nEcmwe5BmqH9TWl0mwm7OaGdb8aJy90QczKEp7oWJiqXLwlM/ABsjmIZXAHYY1D+chZawsWEQ23m74aTvk7dYOY7/mGZHlswQsyConw+IRe1Jur4CCyEBw==
-Received: from m3 (unknown [17.156.192.29])
-	by p00-icloudmta-asmtp-us-west-1a-100-percent-4 (Postfix) with ESMTPSA id 1A3A6180009C;
-	Sat, 19 Sep 2026 10:49:09 +0000 (UTC)
-Date: Sat, 19 Sep 2026 12:49:06 +0200
-From: Sofus Forstreuter <sofus.c@icloud.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
-	Neal Gompa <neal@gompa.dev>, Rob Herring <robh@kernel.org>,
+	Sat, 19 Sep 2026 12:29:49 +0000
+Received: by mail-pj2-x11.google.com with SMTP id d9443c01a7336-2dd58e1e2c7so14390475ad.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 19 Sep 2026 05:29:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789820985; x=1790425785; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=9Cz2gzGY048RFK6yaT1IK/Bb3cZA3GbpsU47/37Y+Pk=;
+        b=Dv2oh4nCHk54RJsC3Xqh+zQxC1BN5ozG4Wvh7DP1e+0tfq2pPLqF+83h64P+vMv8St
+         Zyx+S8ly4JdI/wAbTl0S7RPs78i7xadWL8Y2Pxmc9OsIwskjg/fbJFhcJH1pMJfg8IHE
+         Lme/RlSyxZ0XeE3KL1BHY8Aaeo1YLO+GtpLSTPoxjqve+rNG84mhanwTaMrtdosJkPSv
+         FNChLvb/sTFzx4WUCK+MW7D4HV/1VNQAToO9AzCB3Otqvf209kG+PDS1rRMZbipR5Cqr
+         lCaMbtxSHX8PEOvob+0gKwe1fln+ApQB3OHr5Zcj4LlVVAMSEGnaNhzwCi1kGZtNngma
+         YVVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789820985; x=1790425785;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=9Cz2gzGY048RFK6yaT1IK/Bb3cZA3GbpsU47/37Y+Pk=;
+        b=DMEjLDFuYF/ZX+sVCfzllKsJBH0X4s+SNrfBraghPGEe2pVVdmDZR+FxdkyNpb0gPP
+         HPgQ8O5SoAi4IVCi4avKFmtHhTubXgtn2uluWVVskTQfN2W8rK7OQFgrhXxj7lNbUWZg
+         /+12BDylZJDVw4RTVm+WTLop477t6S8danOaGncycVyjH+VBUNNq06nDMN6pjrwWpFiI
+         xoJo8G6ICX4f0rSc3F/jRJRRCaxtzeOoTlRzo0fBObFRWBrgo6NFjKv/UYR3jnurMz/d
+         65MB//Yx67W/bZNI9vc5PxQBlGZgOYTWHk1ZdFYYRabgWZ/9y8zmXGjV+n6n2vp9r2uI
+         9Xew==
+X-Forwarded-Encrypted: i=1; AKwUvBz3Jt9YDcby6cS3qKqZwH/ACPUsPK+ObPJrnBVlbnG7SpZ0DTKUjevfVj3C4d5eFPt7LB8rxEYqpYGb3P6pfg==@lists.infradead.org
+X-Gm-Message-State: AFuF++mdOM3THOn+N97O1M0X7ksm2t4H7xD3vh0qdKdfdplr8mEhizpB
+	ivhIMGj7gTK7rxSQJW8DVZ1u8mvb4rmRwQ3Yal5DZoepAd02b1WtWUCM
+X-Gm-Gg: AYBFou2ql3jQLA+pQRX/uc2qCiZ5gII4KLILuVjKzWPYZPHYLcLy2DnFOx9VbSfGqPr
+	/Xkm9guYNNmIqk1czw+s4LzIdzCuLJUHX10N8/hQ0hboZo+Z8RLcRCj155WDpeFFQiIxuhOqr5c
+	4U6U9SumhYNHJqWdpe2+Q8YrunlqqZsaq3bcqhAXKjLNYEidrHtQT0hcCsI612qRQSM8EB+zRPY
+	iWNn4KY5bBcbGD3M6RCczY0NppMBxQXAufVl7jXH6BbdqMGatqNNDtM7uRdzg4gkJQ0K17Bwu5v
+	QkuCxt7DKG4BNQNs773YMXlVdeT+tM9op2vS3/svK03w118jfcJI/XQPAwzAo8bgh8HpYvFrnnb
+	LGo9vQly9+ESzivHMCfLXPoZyaR44kc2bOvrOV4bUMtM9i8SL/3HI/eDdID08RchzQV50eOfgKU
+	XDx4iPH/92PJZEUyLDyWg20C01MFzXHy/lsyZwVQTL3VsjNPn+fks573FQaPIHP3gnNEZEIHn0n
+	OHkTuQ65q4=
+X-Received: by 2002:a17:903:1a88:b0:2d9:3850:2741 with SMTP id d9443c01a7336-2ddb16d6a6bmr103231325ad.0.1789820985169;
+        Sat, 19 Sep 2026 05:29:45 -0700 (PDT)
+Received: from Aaron-M6 ([188.253.120.162])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ddc17d7115sm9552155ad.66.2026.09.19.05.29.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 19 Sep 2026 05:29:43 -0700 (PDT)
+From: Yaozhong Li <yaozhonguwl@gmail.com>
+To: Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 10/14] media: apple: add avd driver
-Message-ID: <aq5oorT4Uki2wN_U@m3>
-References: <20260918-avd-v1-0-49977931f455@icloud.com>
- <20260918-avd-v1-10-49977931f455@icloud.com>
- <3f541ef3-45ff-4800-b91f-0dfc8954f1f0@kernel.org>
+	Heiko Stuebner <heiko@sntech.de>,
+	Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>
+Cc: mfd@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Yaozhong Li <yaozhonguwl@gmail.com>
+Subject: [RFC PATCH v2 0/3] Fix poweroff restarting the board on Firefly-RK3399
+Date: Sat, 19 Sep 2026 20:29:27 +0800
+Message-ID: <20260919122930.1418-1-yaozhonguwl@gmail.com>
+X-Mailer: git-send-email 2.55.0.windows.3
+In-Reply-To: <20260909092728.1859-1-yaozhonguwl@gmail.com>
+References: <20260909092728.1859-1-yaozhonguwl@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3f541ef3-45ff-4800-b91f-0dfc8954f1f0@kernel.org>
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE5MDE1NiBTYWx0ZWRfX/zsKOZQewPLV
- 8Xh7O4rJStMmKpeJIk+45fJnciqBgxmttg+7bVpjVOX1rcms1Dlz+GnM98Q3g1OuzcFIDaZPg/0
- OFMEWP18Nlb08+v3Mp9HIqv89qukNweKgaVfYp5Md4Y+oRF2L5RcUW14NZMqbmuc3uLsyrJTev4
- Jpje7UD3EG1snarr4SZ9q3nINhoumrsvJCdrZpmU9PR0Bn5otbgX3bhSOwkfS9G0kw8MfXXznik
- dGPgQzqc/vh1U/DSQP6HCbscKDHlMp3yU+t7G5hbMyY7XBUkN3BcKodaVfs3ahL3y+5ckWCedMm
- kH08DB0VfJhJFvJtMd5UX0GFS7Wkol27rIUAQuteJ/5PVhsqVSwUbLwcY59fGU=
-X-Authority-Info-Out: v=2.4 cv=WYEBqkhX c=1 sm=1 tr=0 ts=6aae68aa
- cx=c_apl:c_pps:t_out a=aW9mcIavGNWWFvFFKOxBSA==:117
- a=aW9mcIavGNWWFvFFKOxBSA==:17 a=kj9zAlcOel0A:10 a=VdqzKS8jKosA:10
- a=x7bEGLp0ZPQA:10 a=kLM9Tyy99jAA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=v3ZZPjhaAAAA:8 a=cm27Pg_UAAAA:8 a=OwpecaDxsXQD9S_tCzYA:9 a=CjuIK1q_8ugA:10
-X-Proofpoint-ORIG-GUID: -7q-FWrCCrErOM3o8JL_XbhxTcSiUf9l
-X-Proofpoint-GUID: -7q-FWrCCrErOM3o8JL_XbhxTcSiUf9l
-X-JNJ: AAAAAAABmyfXYEJ/yXIxxkorMVtInvHGjcjVULvaDtuUKkI7V2dkiKUMJnkKMLVye5GWPdLvWfypZLD7V8Gc/bNaMsj5QfGJxX4IfashfEUhjzjBFgzFarOqowgMTxygvpNggIqMv8OyCF6Xv/0YdnxJlJPotCTQGBb9O7p594DFUPF1nyRN3KHmEnL6ybRtxCdIVQ5blWK3PxVd1erOQFDl87eB8MLwla5CP68hgPuXhOWm5Y20c9xD54LI5wNPEvTPTrnLKXz1khQeXa70gxlSY3kMrpGyp+cqU4kLGxt1lyccPTcCb+4jQn4TyYqDjQ8V6rAFqIFUSufptO5Yy+yXJ9N0DtrZlA3UQEqd7bqGytmbW1Stojbu49rmMfyzVLNdVSmC7HwybOIppfM9UM1G7LzCimzjOlxUTPenq16v4TAhg/uuzIEx7jMM0U9ubKDP/PHKdrM4Oq6FqpJbd3S16tT529Y8ijsEjOfwuxbXeviEm5n0F4+weLTOwALX6FevdjuydxolF6ZatjGfEW/rIRqtkVZU90gBdb8ryVEUWV9ZpMLiR+SlyqNJrxrTMdaastCK66s9Xna3mj8cLiNoL3A/fM272nFgN5Ap8dkUDd8sMNL2vOvfa3/n47C1p/B0vTibN4WVcb291HBCzlJWDTU3+LwLj8B7FC881lWlLQz3Rv8dmwPcERQJccIxRjeDKWpGhh3qQAQv1gY/ZJlJXnaHOwugLRU7fV6kIwQ7r0UqKWDzYSXINvnbI3mEDOleKKxEEjHCXGn2WQNdsYUMviTeaSWxDKFVHHY8t5bA8RK/uCgHzKOs14siE6K6St28x61U8VpxUZ+He+8IUVIaY/s49X3giX7yRWsOaptkKPSidIxtPvgWEiwGalCdMEQDrg7FD8KlmSL/7vlehRYYO8IUxYoch0Qkgz0hQdcHHVlnsiFTKauSE0hgMHRyq8RgJ6WbrPsFV3wDktVXe0SLvmDYPMZ
- xnz3rap2AbSq0OXor499menBVDL932xcbNXltPEw6tkOh9vwpQmR4XIgpXbCICneMKCDAb6COmh8H3zLJvMSDMJjxzHUNJs11LaBujuMcwoEL5RMjp9nrCpTtFtWcjf3P3TmVuG/yCTH+uUO9rmkwKV49S/8b45k5RpbyYkuMZx1xoZYE79ExQSLuyYKaZ7iEHZ/Prg0/Eo9YBC8IpXtEdeujTZCHimMOhjJozHGWTJoHCukzwWXR3Exgt9KV7W1EZiLHace+VojEBI+Q8scPiytgt35PCpwgCM0NqvMJSsW9LElgmt5wBnfMcZOx1/WXaXBKwSYMc6skJH/ux7pZowJden5jzBEWuBF+ta0mPPoZKbsRR4gctFWr/h9cspXP9OBdaDcoj58Kv5l2aYCmDZQ5+KNnegifZ1g8qw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260919_034919_575551_413BA918 
-X-CRM114-Status: GOOD (  36.88  )
+X-CRM114-CacheID: sfid-20260919_052946_760565_8E130BD2 
+X-CRM114-Status: GOOD (  23.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,850 +110,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+Still an RFC: the patched kernel has not been booted on hardware (see
+Testing), and the open questions from v1 about placement and naming are
+unanswered.
 
-Thanks for the very quick review!
+v1: https://lore.kernel.org/all/20260909092728.1859-1-yaozhonguwl@gmail.com/
 
-On Sat, Sep 19, 2026 at 08:49:13AM +0200, Krzysztof Kozlowski wrote:
-> On 18/09/2026 15:15, Sofus Forstreuter wrote:
-> > Add the AVD (Apple Video Decoder) driver with V4L2 M2M stateless
-> > support based largely on rockchips implementation.
-> > 
-> > Signed-off-by: Sofus Forstreuter <sofus.c@icloud.com>
-> 
-> You order patches very odd, making it more difficult for maintainers to
-> review and handle. First media patch, then DTS, then again media? No,
-> DTS goes to the end, see submitting patches for DT.
-> 
+Changes since v1, addressing the Sashiko review Lee Jones asked me to act on
+--------------------------------------------------------------------------
 
-Sorry v2 will have the correct order: DT bindings, media and then DTS.
+* [Medium] "Acquiring 'power-hold' GPIOs after registering MFD child devices
+  can cause probe deferral thrashing."
 
-> > ---
-> >  MAINTAINERS                                 |   1 +
-> >  drivers/media/platform/Kconfig              |   1 +
-> >  drivers/media/platform/Makefile             |   1 +
-> >  drivers/media/platform/apple/Kconfig        |   5 +
-> >  drivers/media/platform/apple/Makefile       |   3 +
-> >  drivers/media/platform/apple/avd/Kconfig    |  16 +
-> >  drivers/media/platform/apple/avd/Makefile   |   4 +
-> >  drivers/media/platform/apple/avd/avd-drv.c  | 817 ++++++++++++++++++++++++++++
-> >  drivers/media/platform/apple/avd/avd-hw.c   | 127 +++++
-> >  drivers/media/platform/apple/avd/avd-inst.h | 218 ++++++++
-> >  drivers/media/platform/apple/avd/avd-v4l2.c | 752 +++++++++++++++++++++++++
-> >  drivers/media/platform/apple/avd/avd.h      | 273 ++++++++++
-> >  12 files changed, 2218 insertions(+)
-> > 
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 3c7c5fe3f0bc..6903baa15955 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -2676,6 +2676,7 @@ F:	drivers/input/touchscreen/apple_z2.c
-> >  F:	drivers/iommu/apple-dart.c
-> >  F:	drivers/iommu/io-pgtable-dart.c
-> >  F:	drivers/irqchip/irq-apple-aic.c
-> > +F:	drivers/media/platform/apple/*
-> >  F:	drivers/mfd/macsmc.c
-> >  F:	drivers/nvme/host/apple.c
-> >  F:	drivers/nvmem/apple-efuses.c
-> > diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-> > index 2c7699b6610b..280a9db25935 100644
-> > --- a/drivers/media/platform/Kconfig
-> > +++ b/drivers/media/platform/Kconfig
-> > @@ -66,6 +66,7 @@ source "drivers/media/platform/allegro-dvt/Kconfig"
-> >  source "drivers/media/platform/amd/Kconfig"
-> >  source "drivers/media/platform/amlogic/Kconfig"
-> >  source "drivers/media/platform/amphion/Kconfig"
-> > +source "drivers/media/platform/apple/Kconfig"
-> >  source "drivers/media/platform/arm/Kconfig"
-> >  source "drivers/media/platform/aspeed/Kconfig"
-> >  source "drivers/media/platform/atmel/Kconfig"
-> > diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
-> > index d47c47d817da..aa82e189936b 100644
-> > --- a/drivers/media/platform/Makefile
-> > +++ b/drivers/media/platform/Makefile
-> > @@ -9,6 +9,7 @@ obj-y += allegro-dvt/
-> >  obj-y += amd/
-> >  obj-y += amlogic/
-> >  obj-y += amphion/
-> > +obj-y += apple/
-> >  obj-y += arm/
-> >  obj-y += aspeed/
-> >  obj-y += atmel/
-> > diff --git a/drivers/media/platform/apple/Kconfig b/drivers/media/platform/apple/Kconfig
-> > new file mode 100644
-> > index 000000000000..43c0a56c36a8
-> > --- /dev/null
-> > +++ b/drivers/media/platform/apple/Kconfig
-> > @@ -0,0 +1,5 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only
-> > +
-> > +comment "Apple media platform drivers"
-> > +
-> > +source "drivers/media/platform/apple/avd/Kconfig"
-> > diff --git a/drivers/media/platform/apple/Makefile b/drivers/media/platform/apple/Makefile
-> > new file mode 100644
-> > index 000000000000..d502cab93970
-> > --- /dev/null
-> > +++ b/drivers/media/platform/apple/Makefile
-> > @@ -0,0 +1,3 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only
-> > +
-> > +obj-y += avd/
-> > diff --git a/drivers/media/platform/apple/avd/Kconfig b/drivers/media/platform/apple/avd/Kconfig
-> > new file mode 100644
-> > index 000000000000..3c41006f3a02
-> > --- /dev/null
-> > +++ b/drivers/media/platform/apple/avd/Kconfig
-> > @@ -0,0 +1,16 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +
-> > +config VIDEO_APPLE_AVD
-> > +	tristate "Apple Silicon Video Decoding driver"
-> > +	depends on VIDEO_DEV
-> > +	depends on MEDIA_CONTROLLER
-> > +	depends on ARCH_APPLE || (COMPILE_TEST && 64BIT)
-> 
-> Why this cannot be compile tested on every arch?
-> 
+  Fixed, and the finding was correct. v1 claimed the array after
+  devm_mfd_add_devices(), so a -EPROBE_DEFER from the GPIO provider would
+  have unwound the regulators, RTC and clocks on every retry. v2 claims it
+  before devm_regmap_add_irq_chip(), i.e. before anything is registered on
+  the device: the property test is hoisted into a bool and reused for the
+  sys-off registration further down, which is otherwise unchanged. A comment
+  records why the acquisition has to stay there.
 
-I will fix this in v2 by casting to u64 when shifting right by 32.
+  Worth noting that this is exactly the part v1 disclosed as untested - the
+  out-of-tree proxy used for the functional testing claims the GPIOs at
+  module load, so it never exercises the probe path at all.
 
-> > +	depends on OF_ADDRESS
-> > +	depends on V4L_PLATFORM_DRIVERS
-> > +	select V4L2_MEM2MEM_DEV
-> > +	select VIDEOBUF2_DMA_CONTIG
-> > +	help
-> > +	  Support for hardware video decoding on Apple Silicon devices using
-> > +	  the Apple Video Decoder (AVD).
-> > +          To compile this driver as a module, choose M here: the module will
-> > +          be called apple-avd.
-> > diff --git a/drivers/media/platform/apple/avd/Makefile b/drivers/media/platform/apple/avd/Makefile
-> 
-> Misindented.
-> 
+* [Low] "The commit message description violates the MFD subsystem formatting
+  rules by using a lowercase letter."
 
-Ack
+  Fixed: "mfd: rk8xx: Release ...". The dt-bindings and arm64 dts subjects
+  keep their own subsystems' lowercase convention.
 
-> 
-> > new file mode 100644
-> > index 000000000000..bcf912cfea3d
-> > --- /dev/null
-> > +++ b/drivers/media/platform/apple/avd/Makefile
-> > @@ -0,0 +1,4 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only
-> > +
-> > +apple-avd-y := avd-drv.o avd-v4l2.o avd-hw.o
-> > +obj-$(CONFIG_VIDEO_APPLE_AVD) += apple-avd.o
-> > diff --git a/drivers/media/platform/apple/avd/avd-drv.c b/drivers/media/platform/apple/avd/avd-drv.c
-> > new file mode 100644
-> > index 000000000000..f6a5145c7038
-> > --- /dev/null
-> > +++ b/drivers/media/platform/apple/avd/avd-drv.c
-> > @@ -0,0 +1,817 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * Apple Video Decoder driver
-> > + *
-> > + * Copyright (C) 2026 The Asahi Linux Contributors
-> > + * Copyright (C) 2026 Sofus Forstreuter <sofus.c@icloud.com>
-> > + *
-> > + * Based on rkvdec driver by Collabora, Ltd.
-> > + * Copyright (C) 2019 Collabora, Ltd.
-> > + * Based on rkvdec driver by Google LLC. (Tomasz Figa <tfiga@chromium.org>)
-> > + * Based on s5p-mfc driver by Samsung Electronics Co., Ltd.
-> > + * Copyright (C) 2011 Samsung Electronics Co., Ltd.
-> 
-> 
-> > + */
-> > +
-> > +#include <linux/pm_runtime.h>
-> > +#include <linux/iommu.h>
-> > +#include <linux/reset.h>
-> > +#include <linux/delay.h>
-> > +
-> > +#include <media/videobuf2-dma-contig.h>
-> > +#include <media/videobuf2-v4l2.h>
-> > +
-> > +#include "avd.h"
-> > +#include "avd-inst.h"
-> > +
-> > +static void calc_tile_meta(u32 w, u32 h, u32 bpb, u32 tile_dim,
-> > +			   u32 meta_hdr_bytes, u32 *tile, u32 *meta)
-> > +{
-> > +	u32 tiles_width, tiles_height, meta_tile_w, meta_tile_h, tile_bytes;
-> > +
-> > +	tiles_width = DIV_ROUND_UP(w, tile_dim);
-> > +	tiles_height = DIV_ROUND_UP(h, tile_dim);
-> > +	tile_bytes = tile_dim * tile_dim * DIV_ROUND_UP(bpb, 8);
-> > +	*tile = ALIGN(tiles_width * tiles_height * tile_bytes, 16);
-> > +
-> > +	meta_tile_w = roundup_pow_of_two(tiles_width);
-> > +	meta_tile_h = roundup_pow_of_two(tiles_height);
-> > +
-> > +	*meta = ALIGN(meta_tile_w * meta_tile_h * meta_hdr_bytes, 16);
-> > +}
-> > +
-> > +void fill_comp(struct avd_comp *comp, enum avd_image_fmt image_fmt, u32 width,
-> > +	       u32 height)
-> > +{
-> > +	u32 y_meta, y, uv_meta, uv;
-> > +	int bit_depth, vdiv, hdiv = 2;
-> > +
-> > +	switch (image_fmt) {
-> > +	case AVD_IMG_FMT_420_10BIT:
-> > +	case AVD_IMG_FMT_422_10BIT:
-> > +		bit_depth = 10;
-> > +		break;
-> > +	default:
-> > +		bit_depth = 8;
-> > +		break;
-> > +	}
-> > +
-> > +	switch (image_fmt) {
-> > +	case AVD_IMG_FMT_420_10BIT:
-> > +	case AVD_IMG_FMT_420_8BIT:
-> > +		vdiv = 2;
-> > +		break;
-> > +	default:
-> > +		vdiv = 1;
-> > +		break;
-> > +	}
-> > +
-> > +	/* y has 32x32 tiles and 32 bytes of metadata per tile */
-> > +	calc_tile_meta(width, height, bit_depth, 32, 32, &y, &y_meta);
-> > +	/* uv has 16x16 tiles and 8 bytes of metadata per tile */
-> > +	calc_tile_meta(width / vdiv, height / hdiv, bit_depth * 2, 16, 8, &uv,
-> > +		       &uv_meta);
-> > +
-> > +	/* output like DCP driver expects */
-> > +	comp->offsets[0] = y;
-> > +	comp->offsets[1] = 0;
-> > +	comp->offsets[2] = y + y_meta + uv;
-> > +	comp->offsets[3] = y + y_meta;
-> > +
-> > +	comp->size = y_meta + y + uv_meta + uv;
-> > +}
-> > +
-> > +int avd_buf_alloc(struct avd_dev *avd, struct avd_buf *buf, size_t size)
-> > +{
-> > +	if (!buf->cpu && size < buf->size)
-> > +		return 0;
-> > +	else if (buf->cpu)
-> > +		avd_buf_free(avd, buf);
-> > +
-> > +	if (size <= 0)
-> > +		return -ENOMEM;
-> > +
-> > +	buf->size = size;
-> > +	buf->cpu =
-> > +		dma_alloc_coherent(avd->dev, buf->size, &buf->addr, GFP_KERNEL);
-> > +	return buf->cpu ? 0 : -ENOMEM;
-> > +}
-> > +
-> > +void avd_buf_free(struct avd_dev *avd, struct avd_buf *buf)
-> > +{
-> > +	if (buf->cpu)
-> > +		dma_free_coherent(avd->dev, buf->size, buf->cpu, buf->addr);
-> > +	memset(buf, 0, sizeof(*buf));
-> > +}
-> > +
-> > +struct avd_decoded_buffer *
-> > +avd_get_ref_buf(struct avd_ctx *ctx, struct vb2_v4l2_buffer *dst, u64 timestamp)
-> > +{
-> > +	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-> > +	struct vb2_queue *cap_q = &m2m_ctx->cap_q_ctx.q;
-> > +	struct vb2_buffer *buf;
-> > +
-> > +	/*
-> > +	 * If a ref is unused or invalid, address of current destination
-> > +	 * buffer is returned.
-> > +	 */
-> > +	buf = vb2_find_buffer(cap_q, timestamp);
-> > +	if (!buf)
-> > +		buf = &dst->vb2_buf;
-> > +
-> > +	return vb2_to_avd_decoded_buf(buf);
-> > +}
-> > +
-> > +static int avd_wait_submission_queue(struct avd_ctx *ctx, int vp)
-> > +{
-> > +	struct avd_dev *avd = ctx->dev;
-> > +	u32 max = readl_relaxed(avd->ctrl +
-> > +				avd->variant->submit_queue_max_offset + vp * 4);
-> > +	u32 cur = readl_relaxed(avd->ctrl +
-> > +				avd->variant->submit_queue_status_offset + vp * 4);
-> > +
-> > +	if (cur == max) {
-> > +		dev_err(avd->dev, "instruction que full! %d/%d", cur, max);
-> > +		return 1;
-> > +	}
-> > +
-> > +	if (cur >= max / 2) {
-> > +		/* TODO: to high? low? Has weird side effects??? */
-> > +		usleep_range(500, 650);
-> > +	}
-> > +	return 0;
-> > +}
-> > +
-> > +int avd_init_job(struct avd_ctx *ctx, enum avd_codec codec, size_t segments)
-> > +{
-> > +	int ret = 0;
-> > +	struct avd_job *job = &ctx->job;
-> > +
-> > +	job->codec = codec;
-> > +	job->num = 0;
-> > +	job->segments = kzalloc_objs(*job->segments, segments, GFP_KERNEL);
-> > +	if (!job->segments)
-> > +		ret = -ENOMEM;
-> > +	return ret;
-> > +}
-> > +
-> > +int avd_submit_job(struct avd_ctx *ctx)
-> > +{
-> > +	struct avd_dev *avd = ctx->dev;
-> > +	struct avd_job *sub = &ctx->job;
-> > +	struct avd_segment *seg;
-> > +	int i, idx = 0, vp = 0;
-> > +	void __iomem *reg;
-> > +	u32 exec_mask = sub->codec == AVD_CODEC_VP9 &&
-> > +					avd->variant->revision == 3 ?
-> > +				AVD_OP_EXEC_REV3_VP9_MASK :
-> > +				0;
-> > +	u32 exec_rev_flag =
-> > +		AVD_OP_EXEC_FLAG_START_REV4(avd->variant->revision == 4) |
-> > +		AVD_OP_EXEC_FLAG_START_REV3(avd->variant->revision == 3);
-> > +
-> > +	ctx->fifo_idx = 0;
-> > +	for (i = 0; i < sub->codec; i++)
-> > +		vp += avd->variant->vp_slots[i];
-> > +
-> > +	schedule_delayed_work(&ctx->watchdog_work, msecs_to_jiffies(2000));
-> > +	avd->variant->configure_stream(avd, ctx->inst.addr, ctx->fifo_idx, vp);
-> > +	reg = avd->ctrl + avd->variant->vp_slot_offset + vp * 4;
-> > +
-> > +	/* the first segment is always the header (needs special handling) */
-> > +
-> > +	writel(AVD_OP_EXEC | exec_mask | exec_rev_flag |
-> > +		       AVD_OP_EXEC_FIFO_IDX(ctx->fifo_idx),
-> > +	       reg);
-> > +	seg = &sub->segments[idx++];
-> > +	for (i = 0; i < seg->num; i++)
-> > +		writel(seg->instructions[i], reg);
-> > +	for (; idx <= sub->num; idx++) {
-> > +		seg = &sub->segments[idx];
-> > +		for (i = 0; i < seg->num; i++)
-> > +			writel(seg->instructions[i], reg);
-> > +		if (avd_wait_submission_queue(ctx, vp))
-> > +			break;
-> > +		writel(AVD_OP_EXEC | exec_mask |
-> > +			       AVD_OP_EXEC_FLAG_END(idx == sub->num),
-> > +		       reg);
-> > +	}
-> > +
-> > +	kfree(sub->segments);
-> > +	sub->segments = NULL;
-> > +	return 0;
-> > +}
-> > +
-> > +static int avd_reset(struct avd_dev *avd)
-> > +{
-> > +	int ret = 0;
-> > +
-> > +	ret = pm_runtime_resume_and_get(avd->dev);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	ret = reset_control_reset(avd->rstc);
-> > +	if (ret)
-> > +		dev_err(avd->dev, "reset: failed: %d", ret);
-> > +
-> > +	if (avd->empty_domain) {
-> > +		iommu_attach_device(avd->empty_domain, avd->dev);
-> > +		iommu_detach_device(avd->empty_domain, avd->dev);
-> > +	}
-> > +
-> > +	ret = avd_boot(avd);
-> > +	if (ret)
-> > +		dev_err(avd->dev, "reset: failed to boot");
-> > +
-> > +	pm_runtime_put_autosuspend(avd->dev);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static void avd_watchdog_func(struct work_struct *work)
-> > +{
-> > +	struct avd_dev *avd;
-> > +	struct avd_ctx *ctx;
-> > +	int ret;
-> > +
-> > +	ctx = container_of(to_delayed_work(work), struct avd_ctx,
-> > +			   watchdog_work);
-> > +	if (!ctx)
-> > +		return;
-> > +
-> > +	avd = ctx->dev;
-> > +
-> > +	dev_err(avd->dev, "Frame processing timed out!");
-> > +
-> > +	writel(0, avd->mbox + AVD_REG_MBOX_IRQ_ENABLE);
-> > +	ret = avd_reset(avd);
-> > +	if (ret)
-> > +		dev_err(avd->dev, "failed to reset: %d", ret);
-> > +
-> > +	avd_job_finish(ctx, VB2_BUF_STATE_ERROR);
-> > +}
-> > +
-> > +static irqreturn_t avd_irq_handler(int irq, void *data)
-> > +{
-> > +	struct avd_dev *avd = data;
-> > +	struct avd_ctx *ctx = v4l2_m2m_get_curr_priv(avd->m2m_dev);
-> > +	enum vb2_buffer_state state;
-> > +	u32 status;
-> > +
-> > +	if (!ctx)
-> > +		return IRQ_HANDLED;
-> > +
-> > +	status = readl(avd->mbox + AVD_REG_MBOX1_RETRIEVE);
-> > +
-> > +	writel(AVD_MBOX1_NOT_EMPTY, avd->mbox + AVD_REG_MBOX_IRQ_CLR);
-> > +
-> > +	if (status & 0x10000) { /* dbg */
-> > +		dev_warn(avd->dev, "no handler for IRQ: %3d",
-> > +			 status & ~0x10000);
-> > +		writel_relaxed(0, avd->mbox + AVD_REG_MBOX_IRQ_ENABLE);
-> > +		return IRQ_HANDLED;
-> > +	}
-> > +
-> > +	if (status & 0x1000) {
-> > +		/* pp is done ! we are done */
-> > +		state = VB2_BUF_STATE_DONE;
-> > +	} else if (status & 0x100) {
-> > +		/* a vp is done, kick the pp and hope for the best */
-> > +		if (ctx->coded_fmt_desc->ops->submit)
-> > +			ctx->coded_fmt_desc->ops->submit(ctx);
-> > +		goto done;
-> > +	} else {
-> > +		dev_err(avd->dev, "H%d error", status);
-> > +		/* let watchdog handle */
-> > +		goto done;
-> > +	}
-> > +
-> > +	/* if the watchdog_work has run the work has already been submitted */
-> > +	if (cancel_delayed_work(&ctx->watchdog_work))
-> > +		avd_job_finish(ctx, state);
-> > +
-> > +done:
-> > +	return IRQ_HANDLED;
-> > +}
-> > +
-> > +static void avd_device_run(void *priv)
-> > +{
-> > +	struct avd_ctx *ctx = priv;
-> > +	struct avd_dev *avd = ctx->dev;
-> > +	const struct avd_coded_fmt_desc *desc = ctx->coded_fmt_desc;
-> > +	int ret;
-> > +
-> > +	if (WARN_ON(!desc))
-> > +		return;
-> > +
-> > +	ret = pm_runtime_resume_and_get(avd->dev);
-> > +	if (ret < 0) {
-> > +		avd_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
-> > +		return;
-> > +	}
-> > +
-> > +	ret = desc->ops->run(ctx);
-> > +	if (ret)
-> > +		avd_job_finish(ctx, VB2_BUF_STATE_ERROR);
-> > +}
-> > +
-> > +static int avd_queue_init(void *priv, struct vb2_queue *src_vq,
-> > +			  struct vb2_queue *dst_vq)
-> > +{
-> > +	struct avd_ctx *ctx = priv;
-> > +	int ret;
-> > +
-> > +	src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
-> > +	src_vq->io_modes = VB2_MMAP | VB2_DMABUF;
-> > +	src_vq->drv_priv = ctx;
-> > +	src_vq->ops = &avd_queue_ops;
-> > +	src_vq->mem_ops = &vb2_dma_contig_memops;
-> > +
-> > +	src_vq->dma_attrs = 0;
-> > +	src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
-> > +	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
-> > +	src_vq->lock = &ctx->dev->vdev_lock;
-> > +	src_vq->dev = ctx->dev->v4l2_dev.dev;
-> > +	src_vq->supports_requests = true;
-> > +
-> > +	ret = vb2_queue_init(src_vq);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	dst_vq->bidirectional = true;
-> > +	dst_vq->mem_ops = &vb2_dma_contig_memops;
-> > +	dst_vq->dma_attrs = 0;
-> > +	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
-> > +	dst_vq->io_modes = VB2_MMAP | VB2_DMABUF;
-> > +	dst_vq->drv_priv = ctx;
-> > +	dst_vq->ops = &avd_queue_ops;
-> > +	dst_vq->buf_struct_size = sizeof(struct avd_decoded_buffer);
-> > +	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
-> > +	dst_vq->lock = &ctx->dev->vdev_lock;
-> > +	dst_vq->dev = ctx->dev->v4l2_dev.dev;
-> > +
-> > +	return vb2_queue_init(dst_vq);
-> > +}
-> > +
-> > +static int avd_open(struct file *filp)
-> > +{
-> > +	struct avd_dev *avd = video_drvdata(filp);
-> > +	struct avd_ctx *ctx;
-> > +	int ret;
-> > +
-> > +	ctx = kzalloc_obj(*ctx, GFP_KERNEL);
-> > +	if (!ctx)
-> > +		return -ENOMEM;
-> > +
-> > +	ctx->dev = avd;
-> > +
-> > +	ret = avd_buf_alloc(avd, &ctx->inst, AVD_FIFO_SIZE);
-> > +	if (ret)
-> > +		goto err_free_ctx;
-> > +
-> > +	ret = avd_buf_alloc(avd, &ctx->pipe_state, 512);
-> > +	if (ret)
-> > +		goto err_free_ctx;
-> > +
-> > +	INIT_DELAYED_WORK(&ctx->watchdog_work, avd_watchdog_func);
-> > +
-> > +	avd_reset_coded_fmt(ctx);
-> > +	avd_reset_decoded_fmt(ctx);
-> > +
-> > +	v4l2_fh_init(&ctx->fh, video_devdata(filp));
-> > +
-> > +	ctx->fh.m2m_ctx = v4l2_m2m_ctx_init(avd->m2m_dev, ctx, avd_queue_init);
-> > +	if (IS_ERR(ctx->fh.m2m_ctx)) {
-> > +		ret = PTR_ERR(ctx->fh.m2m_ctx);
-> > +		goto err_free_ctx;
-> > +	}
-> > +
-> > +	ret = avd_init_ctrls(ctx);
-> > +	if (ret)
-> > +		goto err_cleanup_m2m_ctx;
-> > +
-> > +	v4l2_fh_add(&ctx->fh, filp);
-> > +
-> > +	return 0;
-> > +
-> > +err_cleanup_m2m_ctx:
-> > +	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
-> > +
-> > +err_free_ctx:
-> > +	avd_buf_free(avd, &ctx->pipe_state);
-> > +	avd_buf_free(avd, &ctx->inst);
-> > +	kfree(ctx);
-> > +	return ret;
-> > +}
-> > +
-> > +static int avd_release(struct file *filp)
-> > +{
-> > +	struct avd_ctx *ctx = file_to_ctx(filp);
-> > +
-> > +	v4l2_fh_del(&ctx->fh, filp);
-> > +	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
-> > +	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
-> > +	v4l2_fh_exit(&ctx->fh);
-> > +	avd_buf_free(ctx->dev, &ctx->inst);
-> > +	avd_buf_free(ctx->dev, &ctx->pipe_state);
-> > +	kfree(ctx);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct v4l2_file_operations avd_fops = {
-> > +	.owner = THIS_MODULE,
-> > +	.open = avd_open,
-> > +	.release = avd_release,
-> > +	.poll = v4l2_m2m_fop_poll,
-> > +	.unlocked_ioctl = video_ioctl2,
-> > +	.mmap = v4l2_m2m_fop_mmap,
-> > +};
-> > +
-> > +static const struct v4l2_m2m_ops avd_m2m_ops = {
-> > +	.device_run = avd_device_run,
-> > +};
-> > +
-> > +static const struct media_device_ops avd_media_ops = {
-> > +	.req_validate = vb2_request_validate,
-> > +	.req_queue = v4l2_m2m_request_queue,
-> > +};
-> > +
-> > +static int avd_v4l2_init(struct avd_dev *avd)
-> > +{
-> > +	int ret;
-> > +
-> > +	ret = v4l2_device_register(avd->dev, &avd->v4l2_dev);
-> > +	if (ret) {
-> > +		dev_err(avd->dev, "Failed to register V4L2 device\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	avd->m2m_dev = v4l2_m2m_init(&avd_m2m_ops);
-> > +	if (IS_ERR(avd->m2m_dev)) {
-> > +		v4l2_err(&avd->v4l2_dev, "Failed to init mem2mem device\n");
-> > +		ret = PTR_ERR(avd->m2m_dev);
-> > +		goto err_unregister_v4l2;
-> > +	}
-> > +
-> > +	avd->mdev.dev = avd->dev;
-> > +	strscpy(avd->mdev.model, "avd", sizeof(avd->mdev.model));
-> > +	strscpy(avd->mdev.bus_info, "platform:avd", sizeof(avd->mdev.bus_info));
-> > +	media_device_init(&avd->mdev);
-> > +	avd->mdev.ops = &avd_media_ops;
-> > +	avd->v4l2_dev.mdev = &avd->mdev;
-> > +
-> > +	avd->vdev.lock = &avd->vdev_lock;
-> > +	avd->vdev.v4l2_dev = &avd->v4l2_dev;
-> > +	avd->vdev.fops = &avd_fops;
-> > +	avd->vdev.release = video_device_release_empty;
-> > +	avd->vdev.vfl_dir = VFL_DIR_M2M;
-> > +	avd->vdev.device_caps = V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_M2M_MPLANE;
-> > +	avd->vdev.ioctl_ops = &avd_ioctl_ops;
-> > +	video_set_drvdata(&avd->vdev, avd);
-> > +	strscpy(avd->vdev.name, "avd", sizeof(avd->vdev.name));
-> > +
-> > +	ret = video_register_device(&avd->vdev, VFL_TYPE_VIDEO, -1);
-> > +	if (ret) {
-> > +		v4l2_err(&avd->v4l2_dev, "Failed to register video device\n");
-> > +		goto err_cleanup_mc;
-> > +	}
-> > +
-> > +	ret = v4l2_m2m_register_media_controller(avd->m2m_dev, &avd->vdev,
-> > +						 MEDIA_ENT_F_PROC_VIDEO_DECODER);
-> > +	if (ret) {
-> > +		v4l2_err(&avd->v4l2_dev,
-> > +			 "Failed to initialize V4L2 M2M media controller\n");
-> > +		goto err_unregister_vdev;
-> > +	}
-> > +
-> > +	ret = media_device_register(&avd->mdev);
-> > +	if (ret) {
-> > +		v4l2_err(&avd->v4l2_dev, "Failed to register media device\n");
-> > +		goto err_unregister_mc;
-> > +	}
-> > +
-> > +	return 0;
-> > +
-> > +err_unregister_mc:
-> > +	v4l2_m2m_unregister_media_controller(avd->m2m_dev);
-> > +
-> > +err_unregister_vdev:
-> > +	video_unregister_device(&avd->vdev);
-> > +
-> > +err_cleanup_mc:
-> > +	media_device_cleanup(&avd->mdev);
-> > +	v4l2_m2m_release(avd->m2m_dev);
-> > +
-> > +err_unregister_v4l2:
-> > +	v4l2_device_unregister(&avd->v4l2_dev);
-> > +	return ret;
-> > +}
-> > +
-> > +static void avd_v4l2_cleanup(struct avd_dev *avd)
-> > +{
-> > +	media_device_unregister(&avd->mdev);
-> > +	v4l2_m2m_unregister_media_controller(avd->m2m_dev);
-> > +	video_unregister_device(&avd->vdev);
-> > +	media_device_cleanup(&avd->mdev);
-> > +	v4l2_m2m_release(avd->m2m_dev);
-> > +	v4l2_device_unregister(&avd->v4l2_dev);
-> > +}
-> > +
-> > +static const struct avd_variant avd_t8103_variant = {
-> > +	.vp_slots = {
-> > +		[AVD_CODEC_HEVC] = 2, /* no sure */
-> > +		[AVD_CODEC_H264] = 1,
-> > +		[AVD_CODEC_VP9] = 1,
-> > +	},
-> > +	.fifo_slots = 7,
-> > +	.capabilities = AVD_CAPABILITY_HEVC |
-> > +			AVD_CAPABILITY_H264 |
-> > +			AVD_CAPABILITY_VP9,
-> > +	.configure_stream = t8103_configure_stream,
-> > +	.fw_name = "apple/avd-fw-v2-t0.bin",
-> > +	.revision = 3,
-> > +	.quirks = AVD_QUIRK_LSR | AVD_QUIRK_NO_PIPE_STATE,
-> > +	.vp_slot_offset = 0x4004,
-> > +	.submit_offset = 0x4014,
-> > +	.submit_queue_max_offset = 0x4018,
-> > +	.submit_queue_status_offset = 0x402c, /* (vp slots + 1) * 4 */
-> > +};
-> > +
-> > +static const struct avd_variant avd_t6000_variant = {
-> > +	.vp_slots = {
-> > +		[AVD_CODEC_HEVC] = 4,
-> > +		[AVD_CODEC_H264] = 4,
-> > +		[AVD_CODEC_VP9] = 1,
-> > +	},
-> > +	.fifo_slots = 15,
-> > +	.capabilities = AVD_CAPABILITY_HEVC |
-> > +			AVD_CAPABILITY_H264 |
-> > +			AVD_CAPABILITY_VP9,
-> > +	.configure_stream = t8112_configure_stream,
-> > +	.fw_name = "apple/avd-fw-v3-t0.bin",
-> > +	.revision = 4,
-> > +	.quirks = AVD_QUIRK_LSR | AVD_QUIRK_NO_PIPE_STATE,
-> > +	.vp_slot_offset = 0xc,
-> > +	.submit_offset = 0x30,
-> > +	.submit_queue_max_offset = 0x34,
-> > +	.submit_queue_status_offset = 0x5c,
-> > +};
-> > +
-> > +static const struct avd_variant avd_t8112_variant = {
-> > +	.vp_slots = {
-> > +		[AVD_CODEC_HEVC] = 4,
-> > +		[AVD_CODEC_H264] = 4,
-> > +		[AVD_CODEC_VP9] = 1,
-> > +	},
-> > +	.fifo_slots = 15,
-> > +	.capabilities = AVD_CAPABILITY_HEVC |
-> > +			AVD_CAPABILITY_H264 |
-> > +			AVD_CAPABILITY_VP9,
-> > +	.configure_stream = t8112_configure_stream,
-> > +	.fw_name = "apple/avd-fw-v3-t1.bin",
-> > +	.revision = 4,
-> > +	.quirks = AVD_QUIRK_LSR,
-> > +	.vp_slot_offset = 0xc,
-> > +	.submit_offset = 0x30,
-> > +	.submit_queue_max_offset = 0x34,
-> > +	.submit_queue_status_offset = 0x5c,
-> > +};
-> > +
-> > +static const struct avd_variant avd_t6020_variant = {
-> > +	.vp_slots = {
-> > +		[AVD_CODEC_HEVC] = 4,
-> > +		[AVD_CODEC_H264] = 4,
-> > +		[AVD_CODEC_VP9] = 1,
-> > +	},
-> > +	.fifo_slots = 15,
-> > +	.capabilities = AVD_CAPABILITY_HEVC |
-> > +			AVD_CAPABILITY_H264 |
-> > +			AVD_CAPABILITY_VP9,
-> > +	.configure_stream = t8112_configure_stream,
-> > +	.fw_name = "apple/avd-fw-v3-t1.bin",
-> > +	.revision = 4,
-> > +	.vp_slot_offset = 0xc,
-> > +	.submit_offset = 0x30,
-> > +	.submit_queue_max_offset = 0x34,
-> > +	.submit_queue_status_offset = 0x5c,
-> > +};
-> > +
-> > +static const struct avd_variant avd_t8122_variant = {
-> > +	.vp_slots = {
-> > +		[AVD_CODEC_HEVC] = 4,
-> > +		[AVD_CODEC_H264] = 4,
-> > +		[AVD_CODEC_VP9] = 1,
-> > +		[AVD_CODEC_AV1] = 2,
-> > +	},
-> > +	.fifo_slots = 15,
-> > +	.configure_stream = t8122_configure_stream,
-> > +	.capabilities = AVD_CAPABILITY_HEVC |
-> > +			AVD_CAPABILITY_H264 |
-> > +			AVD_CAPABILITY_VP9 |
-> > +			AVD_CAPABILITY_AV1,
-> > +	.fw_name = "apple/avd-fw-v4-t0.bin",
-> > +	.revision = 4,
-> > +	.vp_slot_offset = 0xc,
-> > +	.submit_offset = 0x40,
-> > +	.submit_queue_max_offset = 0x44,
-> > +	.submit_queue_status_offset = 0x7c,
-> > +};
-> > +
-> > +static const struct avd_variant avd_t8140_variant = {
-> > +	/* This is filled in using the tunables, what vp/pp to use? */
-> > +	.vp_slots = {
-> > +		[AVD_CODEC_HEVC] = 2,
-> > +		[AVD_CODEC_H264] = 1,
-> > +		[AVD_CODEC_VP9] = 1,
-> > +		[AVD_CODEC_AV1] = 1,
-> > +	},
-> > +	.fifo_slots = 7,
-> > +	.configure_stream = t8122_configure_stream,
-> > +	.capabilities = AVD_CAPABILITY_HEVC |
-> > +			AVD_CAPABILITY_H264 |
-> > +			AVD_CAPABILITY_VP9 |
-> > +			AVD_CAPABILITY_AV1,
-> > +	.fw_name = "apple/avd-fw-v5-t0.bin",
-> > +	.revision = 4,
-> > +	.vp_slot_offset = 0xc,
-> > +	.submit_offset = 0x40,
-> > +	.submit_queue_max_offset = 0x44,
-> > +	.submit_queue_status_offset = 0x7c,
-> > +};
-> > +
-> > +static const struct avd_variant avd_t8132_variant = {
-> > +	.vp_slots = {
-> > +		[AVD_CODEC_HEVC] = 4,
-> > +		[AVD_CODEC_H264] = 4,
-> > +		[AVD_CODEC_VP9] = 1,
-> > +		[AVD_CODEC_AV1] = 3,
-> > +	},
-> > +	.fifo_slots = 15,
-> > +	.configure_stream = t8122_configure_stream,
-> > +	.capabilities = AVD_CAPABILITY_HEVC |
-> > +			AVD_CAPABILITY_H264 |
-> > +			AVD_CAPABILITY_VP9 |
-> > +			AVD_CAPABILITY_AV1,
-> > +	.fw_name = "apple/avd-fw-v5-t1.bin",
-> > +	.revision = 4,
-> > +	.vp_slot_offset = 0xc,
-> > +	.submit_offset = 0x40,
-> > +	.submit_queue_max_offset = 0x44,
-> > +	.submit_queue_status_offset = 0x7c,
-> > +};
-> > +
-> > +/* can also be derived from a version register */
-> > +static const struct of_device_id avd_of_match[] = {
-> > +	{ .compatible = "apple,t8103-avd", .data = &avd_t8103_variant },
-> > +	{ .compatible = "apple,t6000-avd", .data = &avd_t6000_variant },
-> > +	{ .compatible = "apple,t8112-avd", .data = &avd_t8112_variant },
-> > +	{ .compatible = "apple,t6020-avd", .data = &avd_t6020_variant },
-> > +	{ .compatible = "apple,t8122-avd", .data = &avd_t8122_variant },
-> > +	{ .compatible = "apple,t8132-avd", .data = &avd_t8132_variant },
-> > +	{ .compatible = "apple,t8140-avd", .data = &avd_t8140_variant },
-> > +	{},
-> > +};
-> > +
-> > +MODULE_DEVICE_TABLE(of, avd_of_match);
-> > +
-> > +static int avd_probe(struct platform_device *pdev)
-> > +{
-> > +	struct avd_dev *avd;
-> > +	const struct of_device_id *match;
-> > +	int ret, irq;
-> > +
-> > +	avd = devm_kzalloc(&pdev->dev, sizeof(*avd), GFP_KERNEL);
-> > +	if (!avd)
-> > +		return -ENOMEM;
-> > +
-> > +	platform_set_drvdata(pdev, avd);
-> > +	avd->dev = &pdev->dev;
-> > +	avd->pdev = pdev;
-> > +
-> > +	mutex_init(&avd->vdev_lock);
-> > +
-> > +	match = of_match_node(avd_of_match, pdev->dev.of_node);
-> > +	avd->variant = match->data;
-> 
-> Just use the helper to get match data.
-> 
+* The binding now states that power-hold-gpios is only meaningful together
+  with system-power-controller, which is what the driver implements. This is
+  not expressed as a "dependencies" entry because the driver also accepts the
+  deprecated rockchip,system-power-controller, and a dependency on one
+  spelling would reject device trees using the other.
 
-Ack
+* checkpatch --strict alignment fix in the GPIO acquisition; no functional
+  change.
 
-Thanks,
-Sofus
+The problem
+-----------
+
+On the Firefly-RK3399, "poweroff" drops the rails and immediately brings
+them back up, so the board reboots instead of staying off. U-Boot reports
+the result as a power-on reset.
+
+Firefly's BSP drives two SoC pins low during shutdown, before writing the
+RK808's shutdown bit: GPIO1_D0 and GPIO1_B5. Mainline does not describe
+GPIO1_D0 at all, and describes GPIO1_B5 as the backlight enable GPIO,
+although the vendor's own backlight node has no enable GPIO. Nothing
+therefore releases either line at power-off.
+
+What was established on the board is the sequence, not what happens inside
+the PMIC: the shutdown sticks only when GPIO1_D0 goes from high to low
+during power-off prepare, with GPIO1_B5 low, and the shutdown bit written
+after a settle delay. Leaving GPIO1_B5 asserted makes the board come back
+up even when GPIO1_D0 is released correctly, which is why the backlight
+cannot keep that pin.
+
+Why not gpio-poweroff
+---------------------
+
+gpio-poweroff drives the line active, back to inactive, then active again,
+waits timeout-ms and then WARN()s on the assumption that it is itself
+performing the power off, and it registers at SYS_OFF_MODE_POWER_OFF. Here
+the RK808 performs the power off from its own POWER_OFF_PREPARE handler,
+the lines only have to be released and left released, and there are two of
+them.
+
+rk3188-bqedison2qc.dts does drive a pwr_hold pin from gpio-poweroff, which
+works there because pulling that line low is by itself enough to cut the
+power. That is not the case here - driving a line low at runtime, with no
+PMIC access at all, left this board running for the 10 s it was observed.
+
+Open questions (unchanged from v1)
+----------------------------------
+
+1. Does this belong in the PMIC driver at all, rather than a small separate
+   driver registering at POWER_OFF_PREPARE with a higher priority?
+2. Should the property be rockchip,power-hold-gpios? The vendor DT calls
+   these pins pmic,stby-gpio and pmic,hold-gpio.
+3. Should the DT also carry a pinctrl group for the pins, as the vendor does?
+4. Dropping the backlight enable-gpios is required for the sequence to work,
+   but nobody here has the schematic to confirm that property was wrong to
+   begin with.
+
+Testing
+-------
+
+Tested on a Firefly-RK3399 (4 GB, RK808), shutdown captured on the debug
+UART at 1500000 8N1. A run counts as "stayed off" only if the console
+produced nothing for 150 s and there was no ICMP reply and no USB gadget
+afterwards.
+
+The patched kernel has NOT been booted: CONFIG_MFD_RK8XX is built in on the
+test system and a full kernel build does not fit on it. The series compiles
+(aarch64, W=1, no warnings), checkpatch --strict is clean, dt_binding_check
+passes, and dtbs_check reports only the pre-existing usb2phy diagnostics for
+this board, reproduced unchanged on the unpatched tree.
+
+The functional evidence comes from an out-of-tree module using the same
+gpiod array consumer name, the same GPIOD_OUT_HIGH, the same per-descriptor
+gpiod_set_value_cansleep() loop and the same msleep() as this series,
+against a device tree carrying exactly these properties, registered at
+POWER_OFF_PREPARE with SYS_OFF_PRIO_HIGH + 1. It does not exercise the probe
+path, so the v2 reordering above is not covered by it.
+
+Every run started from a cold boot with both pins at their reset state
+(inputs, low), verified by reading the GPIO registers beforehand:
+
+  both lines, as in this series:            3 of 3 stayed off
+  GPIO1_D0 only, GPIO1_B5 left low:        3 of 3 stayed off
+  GPIO1_B5 only, GPIO1_D0 left low:        0 of 2 stayed off
+  GPIO1_D0 released, GPIO1_B5 left high:   0 of 2 stayed off
+  nothing driven (mainline today):         restarts after about 2 s
+
+On this particular board pwm-backlight does not bind, so GPIO1_B5 stays an
+input and describing GPIO1_D0 alone was enough here. That is not true in
+general, which is why both lines are described and the backlight property is
+dropped.
+
+The 200 ms is the value the vendor uses; the threshold was not characterised.
+The msleep() was measured at 200 to 201 ms on the console timestamps.
+
+
+This series was prepared with AI assistance (Claude); the analysis and
+the measurements on the board were reviewed by the author.
+
+Yaozhong Li (3):
+  dt-bindings: mfd: rk808: add board level power hold GPIOs
+  mfd: rk8xx: Release the power hold GPIOs before powering off
+  arm64: dts: rockchip: fix power-off on Firefly-RK3399
+
+ .../bindings/mfd/rockchip,rk808.yaml          | 21 +++++++++
+ .../boot/dts/rockchip/rk3399-firefly.dts      |  4 +-
+ drivers/mfd/rk8xx-core.c                      | 47 ++++++++++++++++++-
+ include/linux/mfd/rk808.h                     |  4 ++
+ 4 files changed, 73 insertions(+), 3 deletions(-)
+
+-- 
+2.55.0.windows.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
