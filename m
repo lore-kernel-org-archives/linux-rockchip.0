@@ -4,111 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8E65C982DA
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Sep 2026 12:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C376C982D8
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Sep 2026 13:41:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iqeCpzicayMnlZ14WhfomCPLanACmz1vuk5spmw71Fg=; b=X2sYZDrPn018uo
-	uGbzNXQ+UTfY3EX87J8HjEsh8N/99RAD44Q8Y2Ls1Cf5qA94+oVFA5cNdnZl7rvvkA5cL9vdg4A2Q
-	0iaiysy+uIWtc7au++XAHRXrkqxvRC52miVzzMoVcmz2ifK1nMV8aLQFWyGAfSHlpF4uwVktGeR2V
-	N95Vv5kGLhKZpfXYrcUNiD6YpfdWDmwhOnE7sxV64oHae/WxcoaAsJX81pdxLgV6j9ry9o/TTntSA
-	YnsEO1UThaws/LQbKaiY87UunbrPJ3v860+S69/tCSLOm3Qg9ESoOuC5dqgnds6DoUQ/EhCYnWWxY
-	FL06hRtsU1oY20KbHnLg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5RzlVV4ooDgrqFhmaMwTJe/eB1jCMxe4zWy72zBx2vc=; b=CRGFkVAE1Hy7bU
+	3OaaQbnfy3lwmV4g8zv5GIPxBeKFjAWVNUpGbMgvOZb8cEArZIBlhDDTUbBXIxwSdYl31Jcqi8Onl
+	ydHb0dOXz3qExzxpeVGo47cxqhfYTUSMNHl3pV4hv++vcRnGkBpW7xZyvzxg3Ix/N2s/XqzBEYh9h
+	Mi2exTVfHG9juk41S0sRneS57DckCI7usJ/Mr3M6f/5igbCii3FyPYSa1vyMPcCq4ybNSXCK29CyE
+	Ow15OCMOV3nx/B2+Nn10JNUtUgU3vkOJ26YVUX650kPs3aGp8PpOwmzRaj+Y4MBtaXBJjPyUEsItB
+	fhI/U1MTisfC92ZWw1gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7uZC-0000000GI71-1F8m;
-	Sat, 19 Sep 2026 12:53:18 +0000
-Received: from mail-pz2-x0b.google.com ([2607:f8b0:4864:3b::b])
+	id 1x7vK6-0000000GKXk-44Wp;
+	Sat, 19 Sep 2026 13:41:46 +0000
+Received: from mail-japaneastazon11023134.outbound.protection.outlook.com ([52.101.127.134] helo=TYDPR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7uZ7-0000000GI1y-1xvf
-	for linux-rockchip@lists.infradead.org;
-	Sat, 19 Sep 2026 12:53:15 +0000
-Received: by mail-pz2-x0b.google.com with SMTP id 41be03b00d2f7-cc1631a57d2so1062862a12.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 19 Sep 2026 05:53:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789822393; x=1790427193; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=rQei+xFrWR/8tHZU0Qo/Qb7KMibEAMjL/DUhroeeXK4=;
-        b=M1oy2gCc6/vPGJa4ziX6lcoyN16fAm/0zRxW656npnoL+VVXN7WDq74ZyPFtkGOJ52
-         Kf09COI77W6oPNE9nqxkYQ1xIMV8P2XUc9ZJbqw56+cb7ek40J7Wda1FE0BlTJViBx+M
-         Fkot3mEhViXu2cheMqsCX3lx+HI2FWQSYMYnbeFHWHFO0IYi3B8ZUXjNMwOMuU2yl89Z
-         lVcsGiqsctLXS6V6mj14DFV2eaoBVom1Xb5DTY9D1yonrvQ+uyDJkD8WWz/pUvqmHrNW
-         x+GlrgmNe9oidsI+j2Jf539IFtRJOyvBZ0lkDqptmYaxylwYJqM1mY34On5qBUfub9Nx
-         XrZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789822393; x=1790427193;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=rQei+xFrWR/8tHZU0Qo/Qb7KMibEAMjL/DUhroeeXK4=;
-        b=si0IhGpYx0tHMMJ7fzueKJQkRLcSu6BEINq1YQQ4F3f2VBgqaditA9BLJsJR7J56AH
-         YpzAPWJxneH89yJsg4o6CNYYZzsgymxGtWHIYI/UEjqiZSoTmYprHnBmpISNm7gCOZYl
-         EP0Hc/dZyd7qruzR0ejWo4JLnPlYazc+SxTGL32i+th2bWxQVYavhDYpQoVLOT0giqBY
-         exFz9T62Lm/Y/m7XiJ3PcLCBVN7lbY8x4+IDh3mYEsKkczmJtDEamQkWwJLpTqIcAtVj
-         hAvGq0W0m7AYhVT2u4/p8X07zHghjaqv8LluWTzA7zgTB2r+phmALcCUD1wN6HxiRPP+
-         BFvQ==
-X-Forwarded-Encrypted: i=1; AKwUvBxyqh4kb9rByacXbGDhqyMQC/Ll/kONAuiwyHk5Vdro1h6xVPR4P65+y1rv4gDOHLNxTnf8pHTXkovxVWsP1Q==@lists.infradead.org
-X-Gm-Message-State: AFuF++l1arFIhPrkiflJDa/os2J823KfmkXXKFFeWBALbfaeLykBgHUQ
-	JiyIQlWedCAz12inG8f2357QKWplJdVD3ZFYQKUs7jDy+meolT5elNY5
-X-Gm-Gg: AYBFou0IUEkMViF0RiSio0/EUZR8JrudY9jvJGkIPY1VI//5kYrTKgtYq8OCu156D+B
-	xC/aTtbNX+buEBtAChD1RKsT+yu2TISXnlLsmxf5GI2ka7gAYjRJeOns1B8wljQQtmRojEQDSMp
-	ID/iUQ63Dub7xRLhWDOc10F5nXQ8UOacBAsAoWot3MrinNEqwil8iyz011H3BkHCxXkooMt/uuj
-	BFgOvauFaUT2/3caf97UCABJqP/sMMtKc/sI1p6qRUzgZP8sMwAOazEGzWa/Ist5CiY0oODm9Hr
-	T+4S6dlWrNKBf5yD9UcBHkwWy/XOX7T3wyQX902UClluIIBLqRQWgxPcMs4FRqHZE2jWM4YELD9
-	o1ltujFrgmreCsfdQfIMRbxbvQ/KIC9kXfKb7xab6dkzZARhj6B5E8NnHSsExedu77/XP6L5++d
-	RpRpOCZewYhpuZYXic3zaBEoj8DAekMwLgFLQu1pWMYoLHVblvyxCKvkxwJ44tAb7GsU7Pyg==
-X-Received: by 2002:a05:6a00:1796:b0:874:706d:8573 with SMTP id d2e1a72fcca58-874ddef6806mr9062175b3a.27.1789822392717;
-        Sat, 19 Sep 2026 05:53:12 -0700 (PDT)
-Received: from server.lan ([168.138.199.194])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-877aa0026b2sm991805b3a.44.2026.09.19.05.53.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 19 Sep 2026 05:53:11 -0700 (PDT)
-From: Coia Prant <coiaprant@gmail.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Vinod Koul <vkoul@kernel.org>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	Romain Gantois <romain.gantois@bootlin.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Coia Prant <coiaprant@gmail.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
-	Russell King <linux@armlinux.org.uk>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	David Heidelberg <david@ixit.cz>,
-	netdev@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-renesas-soc@vger.kernel.org
-Subject: [PATCH net-next v8 11/11] MAINTAINERS: add entry for Rockchip XPCS driver
-Date: Sat, 19 Sep 2026 20:51:18 +0800
-Message-ID: <20260919125119.2107089-12-coiaprant@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260919125119.2107089-1-coiaprant@gmail.com>
-References: <20260919125119.2107089-1-coiaprant@gmail.com>
+	id 1x7vK3-0000000GKWF-28va;
+	Sat, 19 Sep 2026 13:41:44 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=zHRvPSivKqb9iuBIyK3eihPAOuX6Y1rgIg+afh5Cn6MucPIOcL0Bu/wz9Q0zGFGZTOejnDz/Ldyn54g6nn22Nbp2OeYH5ZClYFNQpIOQS4nKcfQa2gioYomERkTpT62EdScUfVHESMWIaqVp7lGxK6UZCFt3OnaF9oR4GthptZ+NNGB18p8iHyapGsB/JhPMk2583SLTF16jW9JiJxyTewEDJbfEOjGIQrtzCom32L6/xTAzVRgn8/0WCdzJGxfBSv+p3sES2LjtS5JJla7QoPHWmQ5H+CfvfQZDstgDjPYL4Yu0/3aNXh84e5OqFCagOAsX1ULkPO/CgMY+/VOOfA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=p2cTSoKc97034v0w/lCIwJttOO+5NlcnJDjdg5EThDQ=;
+ b=jsI/LfHOCiUtzhn6b17maP80qBPQIR2fJnQaGZ1p9mJA4cejw9Axc6BsBrMA0+fLKRx40mPBjlIRHK8GzdG3eGN0uFYHMRUEWzwDbyg7b/iFw7PMbJZKuIzRwcJdeCyj2vUzFZc11yZFTffbJAU4RPrvhNowv/bEaYiJe8UGJl3KBQ8tO6A4w/bM9bf3Q4DravAnZsiuEnrjVv3T2GeSVmwdvLy8imbuJnG0OOSNZhZrSFx30lgB+bfLEgKtHurbROQuirrVw1k4BQAJtKEN8yEIh9igfBEGRL9c1w0WbH55eI6go9vg2KzI3xcmfhHlmeYhgPv+2RjUp2GJZ1tfbw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=crepuse.com; dmarc=pass action=none header.from=crepuse.com;
+ dkim=pass header.d=crepuse.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crepuse.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=p2cTSoKc97034v0w/lCIwJttOO+5NlcnJDjdg5EThDQ=;
+ b=qPcOdz0X3jPWnQzLCjrUFv/kkyhGTu4ougKqAWnyHg2MD3s6G8TVpy7/BF/FaxnTzv7bhhCHelHm4mziI2hgLYPATNDCLRaJXqAjJs0Gtx9whjxyr+SKT9MESMLOtMqGP1uI2dby7EX70HetFs3PK34mDjyPG3H2eXAy5n/iWj5ycWd56+ttaFUxc4BchO7nBXGjZyP7S3wt0KGR6f3QaKlYrC815j1JfwuokwSw3Fn4QOp06+K5vnlt8alMdfl9MeaJGIbD3JNG4G6zD8HTyXKrnEtmGPJtb9rVui6pspSZYPzHb/OVJzbNcDYs1dy4VZ6i1bzFNtyoKSGZAgoekQ==
+Received: from PS1PPF6469DE8C6.apcprd06.prod.outlook.com (2603:1096:308::253)
+ by JH0PR06MB6581.apcprd06.prod.outlook.com (2603:1096:990:33::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.14; Sat, 19 Sep
+ 2026 13:41:30 +0000
+Received: from PS1PPF6469DE8C6.apcprd06.prod.outlook.com
+ ([fe80::e60a:2617:6895:a0cf]) by PS1PPF6469DE8C6.apcprd06.prod.outlook.com
+ ([fe80::e60a:2617:6895:a0cf%6]) with mapi id 15.21.0406.007; Sat, 19 Sep 2026
+ 13:41:29 +0000
+From: Mizuno Miotsuki <founder@crepuse.com>
+To: Heiko Stuebner <heiko@sntech.de>
+CC: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>
+Subject: [PATCH 0/2] arm64: dts: rockchip: Add DFRobot UNIHIKER M10 V1.2
+ support
+Thread-Topic: [PATCH 0/2] arm64: dts: rockchip: Add DFRobot UNIHIKER M10 V1.2
+ support
+Thread-Index: AQHdSDyTnctY7HRwbk2VBS0DsQnXDA==
+Date: Sat, 19 Sep 2026 13:41:29 +0000
+Message-ID: <20260919134125.59419-1-founder@crepuse.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=crepuse.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PS1PPF6469DE8C6:EE_|JH0PR06MB6581:EE_
+x-ms-office365-filtering-correlation-id: 6c8016b1-dee1-4b46-600f-08df1653b5d1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|23010399003|376014|1800799024|38070700021|56012099006|10067099003|18002099003;
+x-microsoft-antispam-message-info: CdKCIRd9oOSAxmNWIU5dDCxAV64kz2jYYtH2UrTohqSNniWxnN/4EEuKFq18IwrbTLHkwxj8b/bam5/v5TDo88LZ5TkHedtjQtJKn7zafvhJti10rjXGPufN8HLJflkigiBQST2qgG9Ku5e7DaQ3PlRccBz0dsPVJsxk5hHBBNijHA5MwEJywyovz76YZQOZHXSSJ5tngow2E0P3AS/ybcEJz3e3JHQt0AxYZeLdf5JLlorbqEfqdH9/0D7NvkKGyReN1qsetChuRxUjKnWjinhZ+AiD6W4o0R4TS+H9xErbU1KnXTJ3k9oXGf9Zx0GAVUSoC7Soga6+QJ3e4znAH11WDQfs/yt30McH9JD0Ev1aa6BPaxT8Csv/OUNKxNO9OSYkgQgjhL1liWsVSOMWTPiNP230iP1to8rN87qirQl/9pN0E2K7Hui/YfbRHLHpPeAXX3zPW05kYfXfZCRbEmPjNAf0WDHYahYVFSqs8DQDsm3qO1DJyrkKreWgIPAq4eZiBITDCxq7gEzDpeyuDCuCiuJNd1R+pGHuC08NSigqvfgjWfi2ZPky5A5oyMZreBmlK9jz+5rnHZ7ZmZpllaeP8LCjIX/HCLehJ4hY868Z9ms8LentHenWxoVICKjtMSfMuIfJK4aTfUUYs3CumrDIB9ThDGpwIJjL3WV/mTvwQqOpIW3gAypaGf+mRlc0fwkuPaMn1598ihuXGQcKaA==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PS1PPF6469DE8C6.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(376014)(1800799024)(38070700021)(56012099006)(10067099003)(18002099003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?K7GkyZjTV16muuHA4BAgMhWImEvHQzImht7eprUkqEC/pVLJ4g/REj4DVQ?=
+ =?iso-8859-1?Q?HzbGl450i2PaF8Vp9c99D1tolVn3YJan77LDSSVjMGz07ifz9DOBY6PjIm?=
+ =?iso-8859-1?Q?Ht89bSmNKCGgXdsqn1QVVXi0zMnQIUo8fobjB+joNuD9voq/+/OrQOfRqt?=
+ =?iso-8859-1?Q?QWRaxna5/JFhANgXaeXDCYlSijc7iznztbuuQYPiPuxT3PjhMnuqX+u7xq?=
+ =?iso-8859-1?Q?pZDJFQhcCCfqKCqE1UhEWdji/bwVyiDlshLMdX1O7g+32Zw4U0eY94VItk?=
+ =?iso-8859-1?Q?QVz1vaw9gyKJuAPSKGsG9ANl99xJkW6jGsYKFFso/XA07744p1LykRxEdF?=
+ =?iso-8859-1?Q?pPA6gMAgRBXQgkX5bwh9LdYmOERye8Akp0E6D46lLtn6kebm4kJwbxQD2D?=
+ =?iso-8859-1?Q?BS4bpIC5Daq4xxY9aFsfwF0EEYT7zjENE8J5QZ3WAizT1YUAfgY//sD1vq?=
+ =?iso-8859-1?Q?oRJuOmZSt9rzO4KwUcT58jckOwXVyOh26hNpAMIrVeshJhkZQp2Ph7KvHy?=
+ =?iso-8859-1?Q?5r2FNKEg5T2EQE1V/0tdHSsPv50U2jprSAV5GUE+07GAMUM0G6ZkYl47DM?=
+ =?iso-8859-1?Q?pdTDcm3a7kzG1Us9FwA+2NB00TZOl/NaLw5FXtG4gGs2eiTiCM4v20o5rg?=
+ =?iso-8859-1?Q?0JQmI7x9pOto4ZZer10PTtkX/Cjj+cYcfAIjDPUglyQsd3a6K3F5Y1S+mh?=
+ =?iso-8859-1?Q?PtF2HCuCEk9AZWs0vgO96boNQyUie0mXwseqj3iXdmFtAs617f/5TbNK80?=
+ =?iso-8859-1?Q?12ubOxlWkHSXZPLij6jEeowOEZ/8bEKStNVfPi07eaDC1k1WlaWqeuFrKi?=
+ =?iso-8859-1?Q?21jE/Ym4UwvuUAEMcZVoBmt1bGSQU78h7xnvN7peKiOCMht9SBgPEElU7Q?=
+ =?iso-8859-1?Q?wuaMbtvHgknIevVXFxDeRBv9TbE9Z+ZMQgXK/mZHeP0MBUr2i5kEj4XiVK?=
+ =?iso-8859-1?Q?IYDl3nC6EDVbHEpErfNsVVVJnkeCywFMLPe5oo0hnqZC7DtLeIoo/G6Wt+?=
+ =?iso-8859-1?Q?O3yZTT8hQQI9rLBzKykj7H5+1dtyzeGrkzz1BHveaDyWY9X0TIKBTERDU9?=
+ =?iso-8859-1?Q?TbDna2gTIGkIcAh3DxpsWnpvr+gJXbbrEwqCSBfPrUgfbVyqBXpyUhOYFm?=
+ =?iso-8859-1?Q?6WYy3hgdXWvYlrMXanAbgZe+0wHMG4yW8LALQwcyvO8r6/yMtfA0APcuVu?=
+ =?iso-8859-1?Q?9k1sc0jrP2B3LbOilInItFlW00RjHJ16pg2mB5DqyITsy6zPQRFQyraVEv?=
+ =?iso-8859-1?Q?o7chJFjDoAR9RTp1UI9gk9v767DzHRHA4wNm9bEsFJBaH1HQoCtugWoPPq?=
+ =?iso-8859-1?Q?MURdJmnIDLllza2r7DFGl4jSTnnhkhcnv8Qp0qJa/aJOXNXxTDaxuF+kJV?=
+ =?iso-8859-1?Q?MUhV32evwPOgSu5d9K5sqKQyATWD4RuTsgFWVui6IPzf+XtjeF3e2pcw80?=
+ =?iso-8859-1?Q?iuuXVHEXWFonuffyNYK20tukUceu4ILLvqNiTxGZAJC7XaLWl7L+ARIyVC?=
+ =?iso-8859-1?Q?p1YUTACp7Wj9rR9bSZQ/ZhjMM7Ji1rMwXmE38OyRBlKmixTKhX9KvrBvn0?=
+ =?iso-8859-1?Q?dwI1xEsZbON4/5Lt0FMiGzqHXXLe6dMJmFp6TLoxtek1O8qm5uJ4q5mWfZ?=
+ =?iso-8859-1?Q?VjtkQMIL0QcaALVPWG4UAHV22YLt1VQghX/Y6xwOg24k06qWtKlAiJnbtZ?=
+ =?iso-8859-1?Q?bhX3pGdfrvB0gU1qY69Hb8q8ciAHD2EC984A3fBGo9OOSJ+9Imt09n68oa?=
+ =?iso-8859-1?Q?hJ4SlbJzSeuC3G5JWv1quBG10VKLSukT9Dwgg2kTFFsNRg?=
 MIME-Version: 1.0
+X-OriginatorOrg: crepuse.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PS1PPF6469DE8C6.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6c8016b1-dee1-4b46-600f-08df1653b5d1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2026 13:41:29.8031
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 1d352272-7d70-4a91-9c85-0db444db1bc9
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Sps5WCyN3glE92MOe9kwI8B3yDwVwzaHH6HqT7sDAodnz64rnU5wxEZkoYrp7asqy4bbkOu+u59pSLS2YavNYA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR06MB6581
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260919_055313_570465_AC075F5E 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20260919_064143_569997_2EB91CA2 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,40 +142,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a MAINTAINERS entry for the Rockchip RK3568 XPCS platform driver
-and its device tree binding.
+Add initial mainline support for the DFRobot UNIHIKER M10 V1.2. Only
+revision 1.2 is claimed because later board revisions have not been
+electrically verified.
 
-Include the relevant mailing lists (netdev and linux-rockchip) so that
-future patches are properly distributed.
+The board device tree enables a conservative core subset for a usable
+mainline system: CPU regulation, eMMC, SD, RTL8723DS SDIO Wi-Fi, UART0,
+USB host and peripheral operation, GPIO keys, and the watchdog.
+Bluetooth, audio, display, touch, IMU, SARADC, and GD32 support are
+intentionally deferred.
 
-Signed-off-by: Coia Prant <coiaprant@gmail.com>
----
- MAINTAINERS | 9 +++++++++
- 1 file changed, 9 insertions(+)
+Runtime validation used normal U-Boot boot from the eMMC boot partition,
+not kexec. Four candidate boots reached userspace. Testing covered eMMC
+and SD card I/O, RTL8723DS SDIO Wi-Fi including network traffic, USB
+gadget operation, USB host controller enumeration, watchdog and GPIO-key
+probe, and an empty deferred-probe list.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 3b2eb2a7a89a8..f53a519da6298 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -23739,6 +23739,15 @@ S:	Maintained
- F:	Documentation/devicetree/bindings/sound/rockchip,rk3576-sai.yaml
- F:	sound/soc/rockchip/rockchip_sai.*
- 
-+ROCKCHIP XPCS DRIVER
-+M:	Coia Prant <coiaprant@gmail.com>
-+L:	netdev@vger.kernel.org
-+L:	linux-rockchip@lists.infradead.org
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/net/pcs/rockchip,rk3568-xpcs.yaml
-+F:	drivers/net/pcs/pcs-xpcs-rk.c
-+F:	include/linux/pcs/pcs-xpcs-rk.h
-+
- ROCKER DRIVER
- M:	Jiri Pirko <jiri@resnulli.us>
- L:	netdev@vger.kernel.org
+SD hot removal and reinsertion, physical USB-host devices, physical
+button events, and an independent UART0 adapter remain untested.
+
+`dt_binding_check` and the full `dtbs_check` pass with zero errors or
+warnings.
+
+Mizuno Miotsuki (2):
+  dt-bindings: arm: rockchip: Add DFRobot UNIHIKER M10 V1.2
+  arm64: dts: rockchip: Add DFRobot UNIHIKER M10 V1.2
+
+ Documentation/devicetree/bindings/arm/rockchip.yaml |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile                |   1 +
+ .../dts/rockchip/rk3308-unihiker-m10-v1.2.dts        | 248 +++++++++++++++++++
+ 3 files changed, 254 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
+
 -- 
-2.47.3
-
+2.55.0
 
 _______________________________________________
 Linux-rockchip mailing list
