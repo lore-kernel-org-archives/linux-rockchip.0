@@ -4,76 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DCAEC982D0
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 06:09:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387E8C982CC
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 07:36:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:In-Reply-To:
-	Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+np5xg/LO4Wy6cOD5uBs1LmVTxnGk3PPfZOYn0g7nCk=; b=xKF3PHlHaLAHb9DwBBSI2goL75
-	B5wxfO7+YQdnUM/RGkoxtpnpgF//2PwydBib++/q//geu0UwqyICWio7+r1GWH/bPlOoVU9FK5I+t
-	MjlhKe/YT5VB39yu0K9/DPKb0WaTbXTLyGuPUoD+qyFAkFWslFESIQYOwwXyTuT9TCOEHiEnHh3Dr
-	c3I0sqOfRjcCVGfWC9ZDYtNGuGP/SHaC2PGPSDxhMi4X84B2IbHbZw5ZJfL/Ym9cVyRTAjq5Ap2gm
-	gSu5mgh7w2YjuZiGuu55J5UhUZQ3ZRe9sbc8OBZf1wrR2V8ZW6ayqj04uarLUacxB2Vcbnw2nwiY2
-	Clj6A0rA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=L+K1csLCdKuJ9JoPeuKRGL/yKgQAgkPH6GqHgcYF3o0=; b=w1XfCnt+15tTib
+	y/wz4CAWbPu+rizclyU1Ti6GKCgK4mqWdiVdEDRzRVJLEuKLWgd2rntk8HTYYS7a+bHtCai/vEeOV
+	4FgKp4M0qrm7Y3hCXRw4dC8nUmDKeTO6euGawnVU7aaY/1hlpp561dnvTpRs61LmEaGgLqI5XFfAR
+	PKHbEegiktca+vGsZSVzi/UBsRhAOY9CgEQy/VJ9QTOUKHY0hMPH4Rqin2SZ965P/+0iXFIg8bWog
+	wLCLyFXCKfnidYdEEiItCxPlsen1LIRDQZ3Bmjcktmx9AMB6AEOEzUah7hyuUNqMJ2MgYVuqTkjAH
+	TOhBhZYW2Tlzx0M8C0Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8Aju-0000000Gybf-3NMl;
-	Sun, 20 Sep 2026 06:09:26 +0000
-Received: from winds.org ([68.75.195.9])
+	id 1x8C6P-0000000H2zk-3xmr;
+	Sun, 20 Sep 2026 07:36:45 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8Ajr-0000000Gyax-339C;
-	Sun, 20 Sep 2026 06:09:25 +0000
-Received: by winds.org (Postfix, from userid 100)
-	id 858658F80256; Sun, 20 Sep 2026 02:09:19 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
-	by winds.org (Postfix) with ESMTP id 8415D1334AD4D;
-	Sun, 20 Sep 2026 02:09:19 -0400 (EDT)
-Date: Sun, 20 Sep 2026 02:09:19 -0400 (EDT)
-From: Byron Stanoszek <gandalf@winds.org>
-To: Michal Wilczynski <m.wilczynski@samsung.com>
-cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-    Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-    Conor Dooley <conor+dt@kernel.org>, 
-    Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
-    Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-    Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-    Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-    Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-    Maxime Ripard <mripard@kernel.org>, 
-    Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, 
-    Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-    Emil Renner Berthing <kernel@esmil.dk>, 
-    Hal Feng <hal.feng@starfivetech.com>, 
-    Michael Turquette <mturquette@baylibre.com>, 
-    Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-    Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
-    Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, 
-    Dominique Belhachemi <db@domibel.de>, 
-    Brian Masney <bmasney+clk@redhat.com>, 
-    Jerome Brunet <jbrunet+clk@baylibre.com>, linux-phy@lists.infradead.org, 
-    devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-    dri-devel@lists.freedesktop.org, mfd@lists.linux.dev, 
-    linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-    linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, 
-    Marek Szyprowski <m.szyprowski@samsung.com>, 
-    Maud Spierings <maud_spierings@murena.io>, 
-    Graham Markall <hello@big-grey.co.uk>, 
-    Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
-    Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-    Joshua Peisach <jpeisach@ubuntu.com>, 
-    =?ISO-8859-15?Q?Uwe_Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>
-Subject: Re: [PATCH v4 00/20] drm: starfive: jh7110: Enable display
- subsystem
-In-Reply-To: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
-Message-ID: <b8b046ee-c574-3e16-6079-2fc415633dae@winds.org>
-References: <CGME20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61@eucas1p1.samsung.com> <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
+	id 1x8C6O-0000000H2yL-2JgP;
+	Sun, 20 Sep 2026 07:36:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=GmCWKYdsAu1pOrg3q0i0TXq3UX1NjofE99nERVmE+bU=; b=D2YuMs1F4Xn9TuP94r9Y3D4Q9g
+	Mkb1kyyrFDUjsaEK+bYQY8/THhoPReb2a8N5pQZR36i5hbS8+jxnAsbzCo50o72ahTlxl6Nu7r71M
+	4w/h3cE+Ta+EcxqjiI+wBV8iiJJaCazmturhb5+8V3TRQDeZmUbu0sGnvXq14+/CZnUP7bccoKUJO
+	SCdeILiJbcOYiCgbuxvhfIPCPDOLsp1zYcnl4+DXHYF0DSKxBGBgkrdBuGTwlLvBjDMgWS4uoZ3CZ
+	MnxuJy51fajR21JGpR7KKPsE8G104xWGzWRf+uLgo5Jd82Pm8hxKjPjO4Me2uZp30AyrCaFHugyy0
+	Apg/+VVg==;
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x8C6K-0000000BFl9-1GRT;
+	Sun, 20 Sep 2026 07:36:43 +0000
+Received: from edelgard.fodlan.icenowy.me (unknown [112.94.103.44])
+	by APP-01 (Coremail) with SMTP id qwCowACXbfHejK9q8PFxCA--.24571S2;
+	Sun, 20 Sep 2026 15:36:00 +0800 (CST)
+Message-ID: <cdb63b93c4a8857ac61b17902369086e9a278dd3.camel@iscas.ac.cn>
+Subject: Re: [PATCH v4 00/20] drm: starfive: jh7110: Enable display subsystem
+From: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+To: Byron Stanoszek <gandalf@winds.org>, Michal Wilczynski
+	 <m.wilczynski@samsung.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>,  Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart	 <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+ <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
+ <luca.ceresoli@bootlin.com>, Maarten Lankhorst	
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
+ Yan <andy.yan@rock-chips.com>, Philipp Zabel	 <p.zabel@pengutronix.de>,
+ Emil Renner Berthing <kernel@esmil.dk>, Hal Feng	
+ <hal.feng@starfivetech.com>, Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Paul
+ Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
+ <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,  Dominique
+ Belhachemi	 <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, Jerome
+ Brunet	 <jbrunet+clk@baylibre.com>, linux-phy@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, mfd@lists.linux.dev,
+ linux-clk@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, 	linux-riscv@lists.infradead.org, Marek
+ Szyprowski <m.szyprowski@samsung.com>,  Maud Spierings
+ <maud_spierings@murena.io>, Graham Markall <hello@big-grey.co.uk>, Chaoyi
+ Chen	 <chaoyi.chen@rock-chips.com>, Joshua Peisach <jpeisach@ubuntu.com>,
+ Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?=	 <u.kleine-koenig@baylibre.com>
+Date: Sun, 20 Sep 2026 15:35:58 +0800
+In-Reply-To: <b8b046ee-c574-3e16-6079-2fc415633dae@winds.org>
+References: <CGME20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61@eucas1p1.samsung.com>
+	 <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
+	 <b8b046ee-c574-3e16-6079-2fc415633dae@winds.org>
+User-Agent: Evolution 3.58.3 
 MIME-Version: 1.0
+X-CM-TRANSID: qwCowACXbfHejK9q8PFxCA--.24571S2
+X-Coremail-Antispam: 1UD129KBjvJXoW3WF1Dtry3JrWxuw1fWFyDKFg_yoWxGr1fpr
+	18Jr1UGrW8Jr1kJw18Ar1UJry5Zr4UJw1UJr15GFyUA34UJw1jqr1UWr1YgFnrAr4kJr1U
+	Xr1UGrnxZF1DJw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUPKb7Iv0xC_Kw4lb4IE77IF4wAFF20E14v26rWj6s0DM7CY07I2
+	0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
+	A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xII
+	jxv20xvEc7CjxVAFwI0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwV
+	C2z280aVCY1x0267AKxVW0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC
+	0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr
+	1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcVAKI48JM4xvF2IEb7IF0Fy264kE64k0F24l
+	FcxC0VAYjxAxZF0Ex2IqxwACI402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVWrXV
+	W3AwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v2
+	6r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Wrv_Gr1UMIIYrx
+	kI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v2
+	6r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8Jw
+	CI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJwCE64xvF2IEb7IF0Fy7YxBIdaVFxhVjvjDU
+	0xZFpf9x07bTTmDUUUUU=
+X-Originating-IP: [112.94.103.44]
+X-CM-SenderInfo: x2kh0wp0lqwv3d6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260919_230923_838438_FFB4ACF1 
-X-CRM114-Status: GOOD (  17.21  )
+X-CRM114-CacheID: sfid-20260920_083640_912907_7708046E 
+X-CRM114-Status: GOOD (  33.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,120 +114,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 15 Sep 2026, Michal Wilczynski wrote:
-
-> This series enables the display subsystem on the StarFive JH7110.
-
-Hi Michal,
-
-I tested your v4 patch series on my VisionFive2 1.3B with kernel 7.3-rc3 today
-and it works very well, except for 2 issues. Note, to make the screen refresh
-properly, I am using the noncoherent cache fixes from
-https://github.com/ganboing-jh7110/linux/commits/ganboing-jh7110-cache-fix-v1/
-(specifically commits 3683d97, ef93e2c, 277db0b, and 26ce3e6) in addition to
-your patch.
-
-Issue 1: I have a Dell U2711 monitor which has limited HDMI 1.3 capability, so
-I invented my own Xorg mode to get a good frame rate:
-
-"2560x1440_40.22"  162.00  2560 2608 2640 2720  1440 1443 1448 1481 +hsync -vsync
-
-With this mode and your new driver, I started getting rows of black pixels
-flickering in the upper-left corner of my LCD screen. These weren't there back
-when I was running the same mode under the Keith Zhao driver from StarFive
-(drm/verisilicon v5 plus a bunch of patches for dma cache coherency)
-(https://patchwork.kernel.org/project/dri-devel/cover/20241120061848.196754-1-keith.zhao@starfivetech.com/).
-
-The glitches I saw suggested the sync polarity was being set incorrectly; the
-number of glitched rows was exactly the vsync pulse width plus 1 (i.e.
-"1440 1443 1448 1481" produced 6 bad rows, "1440 1443 1456 1481" produced 14,
-"1440 1441 1442 1481" produced 2, and so forth).
-
-I did a register dump between the two drivers and found that, although the
-DC8200 HSYNC and VSYNC registers were identical between the two versions, the
-hsync and vsync bits on the inno hdmi tx were swapped between the two. When I
-manually set the VIDEO_TIMING_CTL register from 0x09 to 0x05 (matching the
-output of Keith's driver), the glitches went away.
-
-Keith Zhao driver:
-
-=== DC8200 display 0 ===
-DC   PANEL_CONFIG               0x1418 = 0x00001111
-DC   HSIZE                      0x1430 = 0x0AA00A00
-DC   HSYNC                      0x1438 = 0x45280A30
-DC   VSIZE                      0x1440 = 0x05C905A0
-DC   VSYNC                      0x1448 = 0xC2D405A3
-DC   DPI_CONFIG                 0x14B8 = 0x00000005
-DC   FB_CONFIG                  0x1518 = 0x14000000
-DC   FB_ADDRESS                 0x1400 = 0x71200000
-DC   FB_STRIDE                  0x1408 = 0x00002800
-DC   FB_SIZE                    0x1810 = 0x02D00A00
-DC   FB_CONFIG_EX               0x1CC0 = 0x00002000
-DC   PANEL_START                0x1CCC = 0x00000001
-DC   DP_CONFIG                  0x1CD0 = 0x0000000A
-DC   FB_WATER_MARK              0x1CE8 = 0x00000000
-DC   PANEL_CONFIG_EX            0x2518 = 0x00000000
-
-=== INNO HDMI TX video timing ===
-HDMI VIDEO_TIMING_CTL           0x08   = 0x05
-HDMI EXT_HTOTAL_L               0x09   = 0xA0
-HDMI EXT_HTOTAL_H               0x0A   = 0x0A
-HDMI EXT_HBLANK_L               0x0B   = 0xA0
-HDMI EXT_HBLANK_H               0x0C   = 0x00
-HDMI EXT_HDELAY_L               0x0D   = 0x70
-HDMI EXT_HDELAY_H               0x0E   = 0x00
-HDMI EXT_HDURATION_L            0x0F   = 0x20
-HDMI EXT_HDURATION_H            0x10   = 0x00
-HDMI EXT_VTOTAL_L               0x11   = 0xC9
-HDMI EXT_VTOTAL_H               0x12   = 0x05
-HDMI EXT_VBLANK                 0x13   = 0x29
-HDMI EXT_VDELAY                 0x14   = 0x26
-HDMI EXT_VDURATION              0x15   = 0x05
-
-Your driver (showing only the changed values):
-
-DC   DP_CONFIG                  0x1CD0 = 0x00000000
-DC   PANEL_CONFIG_EX            0x2518 = 0x00000001
-HDMI VIDEO_TIMING_CTL           0x08   = 0x09
-
-Specifically the bit#s are different between the two drivers:
-
-inno_hdmi-starfive.h (Keith Zhao):     inno-hdmi.c (generic):
-   v_HSYNC_POLARITY_SF(n)  ((n) << 2)     v_HSYNC_POLARITY  bit 3
-   v_VSYNC_POLARITY_SF(n)  ((n) << 3)     v_VSYNC_POLARITY  bit 2
-
-"_SF" suggests this change is specific to StarFive. The correct positions are
-HSYNC=bit 2 and VSYNC=bit 3 for the JH7110.
-
-I'm guessing that your 42-mode test passed because most CEA modes are +hsync
-+vsync, and this wouldn't show any difference if the two bits were transposed.
-
-Once the sync polarity is sorted, I'd be happy to give a Tested-by: on the
-series.
-
-  --
-
-Issue 2: This is more a feature request than an issue. Originally, I tried
-running this Xorg modeline, which worked well under Keith's driver:
-
-"2560x1440_49.90"  201.00  2560 2608 2640 2720  1440 1443 1448 1481 +hsync -vsync
-
-However, your driver would not accept this pixel clock. I then noticed you have
-a pre-PLL table of fixed clocks. Is there any chance you can change the code to
-compute the pre-PLL on the fly like how Keith does it, rather than use a table?
-
-Thanks for all your great work!
-
-Best regards,
-  -Byron
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjYtMDktMjDml6XnmoQgMDI6MDkgLTA0MDDvvIxCeXJvbiBTdGFub3N6ZWvlhpnpgZPv
+vJoKPiBPbiBUdWUsIDE1IFNlcCAyMDI2LCBNaWNoYWwgV2lsY3p5bnNraSB3cm90ZToKPiAKPiA+
+IFRoaXMgc2VyaWVzIGVuYWJsZXMgdGhlIGRpc3BsYXkgc3Vic3lzdGVtIG9uIHRoZSBTdGFyRml2
+ZSBKSDcxMTAuCj4gCj4gSGkgTWljaGFsLAo+IAo+IEkgdGVzdGVkIHlvdXIgdjQgcGF0Y2ggc2Vy
+aWVzIG9uIG15IFZpc2lvbkZpdmUyIDEuM0Igd2l0aCBrZXJuZWwgNy4zLQo+IHJjMyB0b2RheQo+
+IGFuZCBpdCB3b3JrcyB2ZXJ5IHdlbGwsIGV4Y2VwdCBmb3IgMiBpc3N1ZXMuIE5vdGUsIHRvIG1h
+a2UgdGhlIHNjcmVlbgo+IHJlZnJlc2gKPiBwcm9wZXJseSwgSSBhbSB1c2luZyB0aGUgbm9uY29o
+ZXJlbnQgY2FjaGUgZml4ZXMgZnJvbQo+IGh0dHBzOi8vZ2l0aHViLmNvbS9nYW5ib2luZy1qaDcx
+MTAvbGludXgvY29tbWl0cy9nYW5ib2luZy1qaDcxMTAtY2FjaGUtZml4LXYxLwo+IChzcGVjaWZp
+Y2FsbHkgY29tbWl0cyAzNjgzZDk3LCBlZjkzZTJjLCAyNzdkYjBiLCBhbmQgMjZjZTNlNikgaW4K
+PiBhZGRpdGlvbiB0bwo+IHlvdXIgcGF0Y2guCj4gCj4gSXNzdWUgMTogSSBoYXZlIGEgRGVsbCBV
+MjcxMSBtb25pdG9yIHdoaWNoIGhhcyBsaW1pdGVkIEhETUkgMS4zCj4gY2FwYWJpbGl0eSwgc28K
+PiBJIGludmVudGVkIG15IG93biBYb3JnIG1vZGUgdG8gZ2V0IGEgZ29vZCBmcmFtZSByYXRlOgo+
+IAo+ICIyNTYweDE0NDBfNDAuMjIiwqAgMTYyLjAwwqAgMjU2MCAyNjA4IDI2NDAgMjcyMMKgIDE0
+NDAgMTQ0MyAxNDQ4IDE0ODEKPiAraHN5bmMgLXZzeW5jCj4gCj4gV2l0aCB0aGlzIG1vZGUgYW5k
+IHlvdXIgbmV3IGRyaXZlciwgSSBzdGFydGVkIGdldHRpbmcgcm93cyBvZiBibGFjawo+IHBpeGVs
+cwo+IGZsaWNrZXJpbmcgaW4gdGhlIHVwcGVyLWxlZnQgY29ybmVyIG9mIG15IExDRCBzY3JlZW4u
+IFRoZXNlIHdlcmVuJ3QKPiB0aGVyZSBiYWNrCj4gd2hlbiBJIHdhcyBydW5uaW5nIHRoZSBzYW1l
+IG1vZGUgdW5kZXIgdGhlIEtlaXRoIFpoYW8gZHJpdmVyIGZyb20KPiBTdGFyRml2ZQo+IChkcm0v
+dmVyaXNpbGljb24gdjUgcGx1cyBhIGJ1bmNoIG9mIHBhdGNoZXMgZm9yIGRtYSBjYWNoZSBjb2hl
+cmVuY3kpCj4gKAo+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9kcmktZGV2
+ZWwvY292ZXIvMjAyNDExMjAwNjE4NDguMTk2NzU0LTEta2VpdGguemhhb0BzdGFyZml2ZXRlY2gu
+Y29tCj4gLykuCj4gCj4gVGhlIGdsaXRjaGVzIEkgc2F3IHN1Z2dlc3RlZCB0aGUgc3luYyBwb2xh
+cml0eSB3YXMgYmVpbmcgc2V0Cj4gaW5jb3JyZWN0bHk7IHRoZQo+IG51bWJlciBvZiBnbGl0Y2hl
+ZCByb3dzIHdhcyBleGFjdGx5IHRoZSB2c3luYyBwdWxzZSB3aWR0aCBwbHVzIDEKPiAoaS5lLgo+
+ICIxNDQwIDE0NDMgMTQ0OCAxNDgxIiBwcm9kdWNlZCA2IGJhZCByb3dzLCAiMTQ0MCAxNDQzIDE0
+NTYgMTQ4MSIKPiBwcm9kdWNlZCAxNCwKPiAiMTQ0MCAxNDQxIDE0NDIgMTQ4MSIgcHJvZHVjZWQg
+MiwgYW5kIHNvIGZvcnRoKS4KPiAKPiBJIGRpZCBhIHJlZ2lzdGVyIGR1bXAgYmV0d2VlbiB0aGUg
+dHdvIGRyaXZlcnMgYW5kIGZvdW5kIHRoYXQsCj4gYWx0aG91Z2ggdGhlCj4gREM4MjAwIEhTWU5D
+IGFuZCBWU1lOQyByZWdpc3RlcnMgd2VyZSBpZGVudGljYWwgYmV0d2VlbiB0aGUgdHdvCj4gdmVy
+c2lvbnMsIHRoZQo+IGhzeW5jIGFuZCB2c3luYyBiaXRzIG9uIHRoZSBpbm5vIGhkbWkgdHggd2Vy
+ZSBzd2FwcGVkIGJldHdlZW4gdGhlCj4gdHdvLiBXaGVuIEkKPiBtYW51YWxseSBzZXQgdGhlIFZJ
+REVPX1RJTUlOR19DVEwgcmVnaXN0ZXIgZnJvbSAweDA5IHRvIDB4MDUKPiAobWF0Y2hpbmcgdGhl
+Cj4gb3V0cHV0IG9mIEtlaXRoJ3MgZHJpdmVyKSwgdGhlIGdsaXRjaGVzIHdlbnQgYXdheS4KPiAK
+PiBLZWl0aCBaaGFvIGRyaXZlcjoKPiAKPiA9PT0gREM4MjAwIGRpc3BsYXkgMCA9PT0KPiBEQ8Kg
+wqAgUEFORUxfQ09ORklHwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDE0MTggPSAweDAw
+MDAxMTExCj4gREPCoMKgIEhTSVpFwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIDB4MTQzMCA9IDB4MEFBMDBBMDAKPiBEQ8KgwqAgSFNZTkPCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMHgxNDM4ID0gMHg0NTI4MEEzMAo+IERDwqDCoCBW
+U0laRcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDE0NDAgPSAw
+eDA1QzkwNUEwCj4gREPCoMKgIFZTWU5DwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgIDB4MTQ0OCA9IDB4QzJENDA1QTMKPiBEQ8KgwqAgRFBJX0NPTkZJR8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MTRCOCA9IDB4MDAwMDAwMDUKPiBEQ8KgwqAgRkJf
+Q09ORklHwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDE1MTggPSAweDE0MDAw
+MDAwCj4gREPCoMKgIEZCX0FERFJFU1PCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAw
+eDE0MDAgPSAweDcxMjAwMDAwCj4gREPCoMKgIEZCX1NUUklERcKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgMHgxNDA4ID0gMHgwMDAwMjgwMAo+IERDwqDCoCBGQl9TSVpFwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMHgxODEwID0gMHgwMkQwMEEwMAo+IERD
+wqDCoCBGQl9DT05GSUdfRVjCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MUNDMCA9IDB4
+MDAwMDIwMDAKPiBEQ8KgwqAgUEFORUxfU1RBUlTCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgMHgxQ0NDID0gMHgwMDAwMDAwMQo+IERDwqDCoCBEUF9DT05GSUfCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIDB4MUNEMCA9IDB4MDAwMDAwMEEKPiBEQ8KgwqAgRkJfV0FURVJf
+TUFSS8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MUNFOCA9IDB4MDAwMDAwMDAKPiBEQ8Kg
+wqAgUEFORUxfQ09ORklHX0VYwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDI1MTggPSAweDAwMDAw
+MDAwCj4gCj4gPT09IElOTk8gSERNSSBUWCB2aWRlbyB0aW1pbmcgPT09Cj4gSERNSSBWSURFT19U
+SU1JTkdfQ1RMwqDCoMKgwqDCoMKgwqDCoMKgwqAgMHgwOMKgwqAgPSAweDA1Cj4gSERNSSBFWFRf
+SFRPVEFMX0zCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MDnCoMKgID0gMHhBMAo+IEhE
+TUkgRVhUX0hUT1RBTF9IwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDBBwqDCoCA9IDB4
+MEEKPiBIRE1JIEVYVF9IQkxBTktfTMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMHgwQsKg
+wqAgPSAweEEwCj4gSERNSSBFWFRfSEJMQU5LX0jCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IDB4MEPCoMKgID0gMHgwMAo+IEhETUkgRVhUX0hERUxBWV9MwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoCAweDBEwqDCoCA9IDB4NzAKPiBIRE1JIEVYVF9IREVMQVlfSMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgMHgwRcKgwqAgPSAweDAwCj4gSERNSSBFWFRfSERVUkFUSU9OX0zCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIDB4MEbCoMKgID0gMHgyMAo+IEhETUkgRVhUX0hEVVJBVElPTl9I
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAweDEwwqDCoCA9IDB4MDAKPiBIRE1JIEVYVF9WVE9UQUxf
+TMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMHgxMcKgwqAgPSAweEM5Cj4gSERNSSBFWFRf
+VlRPVEFMX0jCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MTLCoMKgID0gMHgwNQo+IEhE
+TUkgRVhUX1ZCTEFOS8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MTPCoMKgID0g
+MHgyOQo+IEhETUkgRVhUX1ZERUxBWcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4
+MTTCoMKgID0gMHgyNgo+IEhETUkgRVhUX1ZEVVJBVElPTsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIDB4MTXCoMKgID0gMHgwNQo+IAo+IFlvdXIgZHJpdmVyIChzaG93aW5nIG9ubHkgdGhlIGNo
+YW5nZWQgdmFsdWVzKToKPiAKPiBEQ8KgwqAgRFBfQ09ORklHwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCAweDFDRDAgPSAweDAwMDAwMDAwCj4gREPCoMKgIFBBTkVMX0NPTkZJR19F
+WMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMHgyNTE4ID0gMHgwMDAwMDAwMQo+IEhETUkgVklERU9f
+VElNSU5HX0NUTMKgwqDCoMKgwqDCoMKgwqDCoMKgIDB4MDjCoMKgID0gMHgwOQo+IAo+IFNwZWNp
+ZmljYWxseSB0aGUgYml0I3MgYXJlIGRpZmZlcmVudCBiZXR3ZWVuIHRoZSB0d28gZHJpdmVyczoK
+PiAKPiBpbm5vX2hkbWktc3RhcmZpdmUuaCAoS2VpdGggWmhhbyk6wqDCoMKgwqAgaW5uby1oZG1p
+LmMgKGdlbmVyaWMpOgo+IMKgwqAgdl9IU1lOQ19QT0xBUklUWV9TRihuKcKgICgobikgPDwgMinC
+oMKgwqDCoCB2X0hTWU5DX1BPTEFSSVRZwqAgYml0IDMKPiDCoMKgIHZfVlNZTkNfUE9MQVJJVFlf
+U0YobinCoCAoKG4pIDw8IDMpwqDCoMKgwqAgdl9WU1lOQ19QT0xBUklUWcKgIGJpdCAyCj4gCj4g
+Il9TRiIgc3VnZ2VzdHMgdGhpcyBjaGFuZ2UgaXMgc3BlY2lmaWMgdG8gU3RhckZpdmUuIFRoZSBj
+b3JyZWN0Cj4gcG9zaXRpb25zIGFyZQo+IEhTWU5DPWJpdCAyIGFuZCBWU1lOQz1iaXQgMyBmb3Ig
+dGhlIEpINzExMC4KCkluIGZhY3QgaXQncyBub3QgU0Ygc3BlY2lmaWMsIFsxXSBwZy4xMyAoZnVs
+bCBtYW51YWwgcGFnZSA5NzkpIGFsc28Kc2hvd3MgdGhlIHNhbWUgZm9yIFJLLgoKSXQgY291bGQg
+YmUgYW4gZXJyb3IgZnJvbSBSb2NrY2hpcCBkZXZlbG9wZXJzIHNpbmNlIHRoZSBiZWdpbm5pbmcu
+CgpbMV0KaHR0cHM6Ly9naXRodWIuY29tL0RlY2lIRC9yb2NrY2hpcF9kb2NzL2Jsb2IvbWFpbi9y
+azMxMjgvVFJNLWNoYXB0ZXItMjQtaGRtaS10eC5wZGYKClRoYW5rcywKSWNlbm93eQoKPiAKPiBJ
+J20gZ3Vlc3NpbmcgdGhhdCB5b3VyIDQyLW1vZGUgdGVzdCBwYXNzZWQgYmVjYXVzZSBtb3N0IENF
+QSBtb2RlcyBhcmUKPiAraHN5bmMKPiArdnN5bmMsIGFuZCB0aGlzIHdvdWxkbid0IHNob3cgYW55
+IGRpZmZlcmVuY2UgaWYgdGhlIHR3byBiaXRzIHdlcmUKPiB0cmFuc3Bvc2VkLgo+IAo+IE9uY2Ug
+dGhlIHN5bmMgcG9sYXJpdHkgaXMgc29ydGVkLCBJJ2QgYmUgaGFwcHkgdG8gZ2l2ZSBhIFRlc3Rl
+ZC1ieToKPiBvbiB0aGUKPiBzZXJpZXMuCj4gCj4gwqAgLS0KPiAKPiBJc3N1ZSAyOiBUaGlzIGlz
+IG1vcmUgYSBmZWF0dXJlIHJlcXVlc3QgdGhhbiBhbiBpc3N1ZS4gT3JpZ2luYWxseSwgSQo+IHRy
+aWVkCj4gcnVubmluZyB0aGlzIFhvcmcgbW9kZWxpbmUsIHdoaWNoIHdvcmtlZCB3ZWxsIHVuZGVy
+IEtlaXRoJ3MgZHJpdmVyOgo+IAo+ICIyNTYweDE0NDBfNDkuOTAiwqAgMjAxLjAwwqAgMjU2MCAy
+NjA4IDI2NDAgMjcyMMKgIDE0NDAgMTQ0MyAxNDQ4IDE0ODEKPiAraHN5bmMgLXZzeW5jCj4gCj4g
+SG93ZXZlciwgeW91ciBkcml2ZXIgd291bGQgbm90IGFjY2VwdCB0aGlzIHBpeGVsIGNsb2NrLiBJ
+IHRoZW4KPiBub3RpY2VkIHlvdSBoYXZlCj4gYSBwcmUtUExMIHRhYmxlIG9mIGZpeGVkIGNsb2Nr
+cy4gSXMgdGhlcmUgYW55IGNoYW5jZSB5b3UgY2FuIGNoYW5nZQo+IHRoZSBjb2RlIHRvCj4gY29t
+cHV0ZSB0aGUgcHJlLVBMTCBvbiB0aGUgZmx5IGxpa2UgaG93IEtlaXRoIGRvZXMgaXQsIHJhdGhl
+ciB0aGFuCj4gdXNlIGEgdGFibGU/Cj4gCj4gVGhhbmtzIGZvciBhbGwgeW91ciBncmVhdCB3b3Jr
+IQo+IAo+IEJlc3QgcmVnYXJkcywKPiDCoCAtQnlyb24KPiAKPiAKPiBfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGxpbnV4LXJpc2N2IG1haWxpbmcgbGlz
+dAo+IGxpbnV4LXJpc2N2QGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJpc2N2Cl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
