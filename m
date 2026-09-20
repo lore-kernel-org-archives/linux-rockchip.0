@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DCC0C982DA
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 10:51:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F245C982E6
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 11:08:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4TFD6vTDfdBQvunSE3nQt8DF9nS8ghSeBMrXWVmQQWE=; b=mFGRcU+9Qdo8PG
-	qYzA7ILz5j34e8scEIMzxg81Hiy44o8mMA/zNE38qC//c/AsGlFuScTXMGN+eM1ZknY8m2C93IwID
-	DdKbFPwmEJQzrTNzlH5b/gWg4/hfL57mcfZsxP+8L/a9Y+XkvbyU8iGfgy/OpiXHwLtRB/unZvh8o
-	2BvoM3Q3GERK6WBUTCztXyl+n8frzkpksbQgdiAU7BZxodkfBqE7rcDz72vayjz2ck17OHXxYyy5S
-	NAXyJTFPsDu6gYY/Tx1o9vQmewOT/KV+cbM4B5EpzW/26Sa0A37ktbc12h23r/+i2w1GQi9hqoFjF
-	Z44DEIXDougKybvDvEzw==;
+	List-Owner; bh=tt18egM6Q1tlvtWZNLo6zxg3vLf6ceoQSEZ15E86DVQ=; b=bwjnnQyNZeghZz
+	0K2HI01/XCHHP2RFXYMrU8tajoNT5A+Hf58grhaKrHZs3Luzj0p2VdmRLfhau9nVKCKO5GKOoq6q0
+	k1cnfoW4p9cSZFusfcBeG4eRjY9iQOfFTfQRFrxneQeuqMm/2qE/E1P+0HYkiN+QuLSndGIHYcTGu
+	kHb6MBt4CQGGDWBfKTNt9meW6H+lNqfdYHxfF3+FG22cvjkOTkdGd3wdxhyJRMGQtw2zddz/5KRJS
+	lCiHzJmAE2I13pKdMliLEVAncdam9kaIS5NFJ0o/VxiOHXTCFoGeRjwhPuMEvCmQ9jhNGPo09X01X
+	WTOm2mIph3tU4OBw6Vcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8F8X-0000000HIAd-1ZaK;
-	Sun, 20 Sep 2026 10:51:09 +0000
-Received: from ms-2006f-snip6-8.eps.apple.com ([2a01:b747:3002:206::3b] helo=outbound.ms.icloud.com)
+	id 1x8FP7-0000000HJEH-1FjC;
+	Sun, 20 Sep 2026 11:08:17 +0000
+Received: from st-2006f-snip6-5.eps.apple.com ([2a01:b747:3001:203::38] helo=outbound.st.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8F8V-0000000HI9t-0pYz
+	id 1x8FP5-0000000HJDc-1eX7
 	for linux-rockchip@lists.infradead.org;
-	Sun, 20 Sep 2026 10:51:08 +0000
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
-	by p00-icloudmta-asmtp-us-west-3a-20-percent-0 (Postfix) with ESMTPS id 7DD80180010D;
-	Sun, 20 Sep 2026 10:50:59 +0000 (UTC)
-X-ICL-RepId: 01a0be70-cfe5-743c-a40f-0bfcbd3f9845
-X-ICL-Out-Info: HUtFAUMEWwJACUgATUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXRIYXBRcUFgeRhJWDV0JGQZBXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJCldTARROWgdUJ3whCSdJXHxech0KRhMZThtXTVAbXwJCDw==
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1789901463; x=1792493463; bh=WBhLPgrlGgFAfYUVRbZshd/sQEaG2cdzCoRPJ5AG9Bs=; h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:x-icloud-hme; b=yLmHyOIMBXapUE8pdFmj9skk9bN+eIqJWIPjk5wyB8bYY9ZAcKaBKTuUL1x03dYWOr4TruMjAH3tSLFiFsWi5NDf30P9yVP9nQ5YNrOu1UUCIx1fcnnK9/pHSlw8vdDo4OqroY4uhnsXR85rqSyeb/NxjLduSqt71A2nnNcngDAhyq+wb7ES6IEo7hnlBfQa7xtPShLuPIQcvGUvy3xsDD42H8b+KaRSj+EgWXMm5DrcV5KLYpweLEXxQLB+q3GmKWyXw4mm+KDkR58sWKvNxBPrnSBdtP5ATBMihNNIGssxxDXeEsTWRLqOV9Igr/vRFWG9To15Z+BLkbYzd0HI8Q==
-Received: from m3 (unknown [17.156.208.39])
-	by p00-icloudmta-asmtp-us-west-3a-20-percent-0 (Postfix) with ESMTPSA id CC0AF1800105;
-	Sun, 20 Sep 2026 10:50:53 +0000 (UTC)
-Date: Sun, 20 Sep 2026 12:50:50 +0200
+	Sun, 20 Sep 2026 11:08:16 +0000
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+	by p00-icloudmta-asmtp-us-east-1a-60-percent-9 (Postfix) with ESMTPS id DA17F18001C7;
+	Sun, 20 Sep 2026 11:08:09 +0000 (UTC)
+X-ICL-RepId: 01a0be80-88ab-75ef-878c-0e161a90d7ec
+X-ICL-Out-Info: HUtFAUMEWwJACUgATUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXRIYXBRcUFgeRhJWDV0JGRhGXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJCldTARRVXyNCP2IncBcAXFAqch0KRhMZThtXTVAbXwJCDw==
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1789902493; x=1792494493; bh=8TSTNC1sMgPPtpfFFjIy70xzt9wZOR/BkHYkoZ09Gsk=; h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:x-icloud-hme; b=JwDg3oKFxxe8PfCe7uHSXo4ndfgweMj/7+UNwB+9ID92VN2Ve85OOxskhZMUWTA9WmYjQmTWmVe9JvRwBVoI46MmbekzRSle4Jp+svLElGBi55XN5yX39lCHUCt7bazr/FXWwP3AYg4y+GOflgYSCRA3XtQEo4EQbPUQG0oQeixPJHRtSHQ1JwAlUR0U1asgb9JWWvRfh4VuzpUfguxDMu6hHggt3DCd5NN4uEGgr1ucXT/fx4ydPrjR9Ddf7wHbI6evonE673kCrTx9Rr9Ty7UOgRNO34kweGbUBy1oRM2zQVnwBD68YmPeJn67X4kgsEOQfsyrix/eqarsEotE+g==
+Received: from m3 (unknown [17.156.216.30])
+	by p00-icloudmta-asmtp-us-east-1a-60-percent-9 (Postfix) with ESMTPSA id AEB0018001E2;
+	Sun, 20 Sep 2026 11:08:06 +0000 (UTC)
+Date: Sun, 20 Sep 2026 13:08:04 +0200
 From: Sofus Forstreuter <sofus.c@icloud.com>
-To: Andy Yan <andyshrk@163.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
 	Neal Gompa <neal@gompa.dev>, Rob Herring <robh@kernel.org>,
@@ -50,32 +50,33 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
 Subject: Re: [PATCH 02/14] dt-bindings: media: add apple,avd
-Message-ID: <aq-6ijcLNQ0_z1K5@m3>
+Message-ID: <aq--lNuTPWIo31gA@m3>
 References: <20260918-avd-v1-0-49977931f455@icloud.com>
  <20260918-avd-v1-2-49977931f455@icloud.com>
- <490c0413.5a83.1a0bdde450c.Coremail.andyshrk@163.com>
+ <c8d25275-3c45-4e9a-826c-cf856938d60e@kernel.org>
+ <aq-RBuOWrHU07pXS@m3>
+ <da42fe72-4351-46f2-8c5b-fc3292f7d8e1@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <490c0413.5a83.1a0bdde450c.Coremail.andyshrk@163.com>
-X-Proofpoint-GUID: TUTuRvhIyPU2YPOdSF7_ItX2FwVbVyXC
-X-Proofpoint-ORIG-GUID: TUTuRvhIyPU2YPOdSF7_ItX2FwVbVyXC
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIwMDE1NyBTYWx0ZWRfXxID0Ug9pFl2x
- Gt2DeK68aaq7XpmlYV2+WNUtQB8P5O5RNnIMRmLz0+j+Qnrcwt69Ih8cYGPBwBPHwzmZAPA+tMP
- iIDuJp90DvmavgoeZq6zTq6OB8Rdq/UaBUa1mrCybaXAK74bXCTg3+YQYqaVdQA2VT7HEWqIGfH
- oihwb0jXk+C+y41V0mSxZboLLBKOP62zrBLU1CxCO7/2EVqof8gQZRET3n396Mxr3I4ELmMiscx
- S48DXCkysUvpTbPRvc8QUlnkSGq7c+KD85p6eUQ2UwZFJcLfierddp3MjgjTSbUO2kdG10is8ML
- xF2lh27FPAsAQpEy40GHii5ZeAXH3nNZGzkM2DzLjqxR7BwseWOSOL4iobHsPk=
-X-Authority-Info-Out: v=2.4 cv=ZMLaWH7b c=1 sm=1 tr=0 ts=6aafba94
- cx=c_apl:c_pps:t_out a=kRaGL2Q7qLiahLf3O6OaIA==:117
- a=kRaGL2Q7qLiahLf3O6OaIA==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
+In-Reply-To: <da42fe72-4351-46f2-8c5b-fc3292f7d8e1@kernel.org>
+X-Authority-Info-Out: v=2.4 cv=ddCNHHXe c=1 sm=1 tr=0 ts=6aafbe9c
+ cx=c_apl:c_pps:t_out a=oyWFxbOnq+dmhQrAPgaJYA==:117
+ a=oyWFxbOnq+dmhQrAPgaJYA==:17 a=kj9zAlcOel0A:10 a=VdqzKS8jKosA:10
  a=x7bEGLp0ZPQA:10 a=kLM9Tyy99jAA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=gEfo2CItAAAA:8 a=v3ZZPjhaAAAA:8 a=WH1DJqfT7gfZrbUwWXkA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=sptkURWiP4Gy88Gu7hUp:22
-X-JNJ: AAAAAAABK/4gmxiVowMzIMHXMSy26Rhac+DXdQy6vWvpsOjoMG5ChvcQxkIW75BW4NzgkT4ijfeodeZKHGA+3zfDWuXSWEkgKCZu3+5UEWxxFk3ACHig4MA4J3omOEPweTH3l3ZAnI27iiLAHGS+Zng8MN0ADe+jGtlSAx14k4wo9TvXgPpJmxGwfgcuO0xIfuLLy5iLo94wE1XLoN+vcNXbEAcllKLmxa4Kg2KajS3uJk0IRX+zaM3xJcXBExMVf4icWnA3rJkq91iRpu8E7oQ6z2smV4Xz5gyTGJ7DmNmt+C5mhyxDxfRZs3v9Phu7ipaByTKUX7ep7AnKy/ckFbDg5VX0g3DF9G2VSA7VRCbP6tXTGXgJcPXsAfOudSvj8FCAGL4fGHVtl6k8oBNOObSFi2O36jt9DSic0u84BoGCpWjpvo1n4X6BirBuaN/hzfnsq0w8sMOlSl08PpyAxmiEFtBdbIIzZp5xaVtTlStYNVQnYd+CthVRJdKXZRXr+xuwoMEXcHXLhNdeJGRjC5q1XMHlzrGxM/KeAyVjMB5J8y8I9awlYZV/3JCzjiurBnE530nKnqawJzSWTTJaX/gYX31lx2OX93jXd4ourmN9OfHQqsmgkMLBHIFMoF/45PqMSsM5z5JoBNZKIx1nn9t/IjayMiLI66zLBSVPV5PgdHYT/FaUKpuUrF1/QR0bX37m4x5nRazEAc/skztzF+2+Bnx8JehNQFvcrgcbE70773p+FWv7WIbuX4x/7q04tcBGuHhxlzvV6Qo1C423W5OzVtxOkCWKE7XVmyjd9T0bYo0Wc1H1LOfaG8hvNHwDifxUlDj95Dc3W8yQU9DAPKymZnhB2AQDEFqZkQAEGa0vzpxf2USs/SLhcVQ+8gebzq1u6eZkrgUr7ftbUeUcYIQc3xIAGEP8KrDG8sNnRCgaoZgeVJ3YA5yCalm0SzQKpnyK+vodFriVnwsMmGPdycVe/Znuhtg
- 4Sp0WO1J5Nzme1e1NJLyK151VFr3ye+54PDXRNOXrTXX7ECwAD3zhOWIsZnf2fkGAyhC02lHz4W2ZO/BN56OEc0S6uhjnY0ak7Q1twCzliz6ql+8OePQezAqZRzLbu9dpRlFRvKfe0I5iMmvZRN6I+02GmT3NY3WyoNtsYS/NZMwFRIvMJpNhK4XRdC3z68OISgtx3b6rErWteg8x01oYew9drjl9f0WYk873qZfA0pLqX7w+ilfLZmvWESjur5U7xW6YsDNJJoBgKq7/r0TqX843zo3uSasjrX7ZBpO4eurUNLbw3Sq93EML9c+Is7CSzdRN98C7r4SZ1oniUytxqyKj2bMsdAh0HLTAX8dsMPGpKENnyHo2jtlia3CkJ4PUcsGWlJRNdqhU/V4UyxoKWJzmXx/7s3e9ILMuaqmZk+G3rio6EgswHQiU4w2JdJDqzw+PxsVEMvYjfXwGc6KmHA0THVN7nJXUTA==
+ a=W9t2kEz5hZV2X6pE-68A:9 a=CjuIK1q_8ugA:10
+X-Proofpoint-GUID: KFkVWwZQpZG_Q5zyjYiRPHy_p_knoIpO
+X-Proofpoint-ORIG-GUID: KFkVWwZQpZG_Q5zyjYiRPHy_p_knoIpO
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIwMDE2MSBTYWx0ZWRfX4emtwNXts4Qh
+ 5OiJUNquQ9LXLTGdUw3wQhRh0OkHsS2fYO9P/0PzLFz9eRRKD8djlQjP3sxld7xIlaQdXDHRBcA
+ ij6Gih0zVTr54EuZcLMkurE2gBFNdgxOxjn03ip/j0MRUnVrh8sittNxL/WzDa3XNVMLsibwkc1
+ ChOqdHJ4d2sOL9y34fiwgyMFEXb3Y7ij44+yexcQCFGH2UCKCQuB3Qs2FtNkYP1IHqnaqIbhKJB
+ owb84HuNH+dTeoY9X6ND7Pl3axcuDZx+PUgaY2NTKBKsrHikzaomvsXv6Xn9+Q9UaZv8ht2YXcH
+ 93BbYQ8MMxpUt9OLGcNHbLbCOZtFIaZXN/RHg5IgcgDdhdWaKFN4DgrV2Mm2zA=
+X-JNJ: AAAAAAABW+WmnVuHvoLcSh9oRm3/IiydYy5wqs57lvxD73IY8puDgS0Ag+X9Osg4G3WYoB2RHJ+FTPu2uAIjzZZa4q1bbZzy9nXQzdapXhWH167OFAjQA+tD9lQcGMXVmYUFKLD2QsaTYS+oKqKbaWAj8sfiGPImuJLurJRQEx6kiTJUc9HEkhAkmqRxOQiqhLEcUi3VM2fFYiEilUAzyrLIcDNuuq/KJJV49HhBn1ussg05FcDPKgBhGldcig37TiB6hNbsK00ZGQI12gMYnU9bmpbdQcecx9L76xE53KFBd3cuSNbyqQWQbEO3xbywn1pYrdU8WLT+QgByhwiCaOkd08QA3Thbaj8r2R/QsMRF59CgXlLP8fJx5YNdPWSYZ2hs5ZHmAkrYW1mDQ8AUCFavFEi3kdoVlFCuQwqy5FVW8r/oF+1npO55g3vh0L05cK72lNAYF6G49r8JMTkfrDnrrfqgO521kiDVc5qKxuqVi00A66bHWu0oloC/c/Ufy7CNZX8eWVttuGGJTsAPL9BUbLPy9Q0ABC/c2giTLSNczXgupa1p4iBELDsAYdafgKIHUCz9tZood6sbWyHmPI3qepOreWsI75K/s4ZnyJPIJShgEZdrDHk63n7Mqe0QzESmHkU45hyeASY9I5ij6UmF2aV/aukFUZ+O104YMYYViJq5bYta9sO367qKJ4kuvhOXzYajG59Hrd7AbL8VZm4nZVhbcrghtTk0YCwkOndwB3qnbwQ1cmIefc7ccaYmj98i9iOEDc4FEMNvXQz/UOJxMZriB1ZPOo4wDvFjJkwcv8yZ6SJG5JAGjiew0CRGo36R4u62Q8YkejlewmnCTnJ7oD3i9TeOwxbrvbAsOm8SByFveMNn3+hiXeUArexH5bzx64oGGDjpDzgmKRCjjIFp5lvd+eP7GuQ64lWR3bEOfSRW0HRjlx8tu68X1YUHCPjCIgSoSECdHtrVMMVaUQR1/NBt+y0
+ 5VypQNtBMsthA1Bth/hoYRi+If7ai6LHr/ZOiWTo+PUc0+2bfTXQYDgpMF67vJoHZ2TF9E0RlsIRkrlBP2K2x735egETQEg9LFjisDI05WnNDGl3aNO4J3fB1m5IMl0n9WQ2LKm7fc/bsQfZJ44ChMQSTZtRMFaviHP0DZSEIPI37mBdphqUoz5rbboby4nl/BWrWblfHNmPMQl/zIbkoznLC3uz9bVdypTsMUW/0neEa0l+8CRZt1xRknrzx9uPwxWmurlZ9Dl9ztYP66WXIprkl+9yVl98eBq5ubOzb1qbYG70p57LwLMOQt70CRESUSb1eAEjx+TO6mcMUB1YbX/EZMxi+sYes3SZE8UZnaD46kKPGqjHsoVwZvxrrgy+VvaxunrKgIMot2HHM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260920_035107_288021_6581E8DF 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20260920_040815_497372_380CC80E 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,35 +88,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5keSwKCk9uIFN1biwgU2VwIDIwLCAyMDI2IGF0IDA0OjEwOjU1UE0gKzA4MDAsIEFuZHkg
-WWFuIHdyb3RlOgo+IAo+IEhlbGxv77yMCj4gCj4gQXQgMjAyNi0wOS0xOCAyMToxNTowNywgIlNv
-ZnVzIEZvcnN0cmV1dGVyIiA8c29mdXMuY0BpY2xvdWQuY29tPiB3cm90ZToKPiA+RG9jdW1lbnQg
-dGhlIEFwcGxlIFZpZGVvIERlY29kZXIuIEEgaGFyZHdhcmUgdmlkZW8gZGVjb2RlciBwcmVzZW50
-IG9uCj4gPkFwcGxlIGhhcmR3YXJlLgo+ID4KPiA+U2lnbmVkLW9mZi1ieTogU29mdXMgRm9yc3Ry
-ZXV0ZXIgPHNvZnVzLmNAaWNsb3VkLmNvbT4KPiA+LS0tCj4gPiAuLi4vZGV2aWNldHJlZS9iaW5k
-aW5ncy9tZWRpYS9hcHBsZSxhdmQueWFtbCAgICAgICB8IDExMiArKysrKysrKysrKysrKysrKysr
-KysKPiA+IE1BSU5UQUlORVJTICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHwgICAxICsKPiA+IDIgZmlsZXMgY2hhbmdlZCwgMTEzIGluc2VydGlvbnMoKykKPiA+Cj4gPmRp
-ZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvYXBwbGUs
-YXZkLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvYXBwbGUs
-YXZkLnlhbWwKPiA+bmV3IGZpbGUgbW9kZSAxMDA2NDQKPiA+aW5kZXggMDAwMDAwMDAwMDAwLi4z
-NGE0MTI5ZDZhNDYKPiA+LS0tIC9kZXYvbnVsbAo+ID4rKysgYi9Eb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvbWVkaWEvYXBwbGUsYXZkLnlhbWwKPiA+QEAgLTAsMCArMSwxMTIgQEAK
-PiA+KyMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seSBPUiBCU0QtMi1DbGF1
-c2UKPiA+KyVZQU1MIDEuMgo+ID4rLS0tCj4gPiskaWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9z
-Y2hlbWFzL21lZGlhL2FwcGxlLGF2ZC55YW1sIwo+ID4rJHNjaGVtYTogaHR0cDovL2RldmljZXRy
-ZWUub3JnL21ldGEtc2NoZW1hcy9jb3JlLnlhbWwjCj4gPisKPiA+K3RpdGxlOiBBcHBsZSBWaWRl
-byBEZWNvZGVyIChBVkQpCj4gPisKPiA+K2Rlc2NyaXB0aW9uOiB8Cj4gPisgIEFWRCBpcyBhIHN0
-YXRlbGVzcyB2aWRlbyBkZWNvZGUgSVAgYmxvY2sgcHJlc2VudCBvbiBBcHBsZSBkZXZpY2VzLgo+
-ID4rICBOb3RhYmx5IGl0IGluY2x1ZGVzIGFuIEFSTSBDb3J0ZXgtTTMgYW5kIGFzc29jaWF0ZWQg
-RE1BIGNvbnRyb2xsZXIuCj4gPisgIEFWRCBpcyBjYXBhYmxlIG9mIGRlY29kaW5nIEgyNjQsIEgy
-NjUsIFZQOSBhbmQgQVYxIG9uIG5ldmVyIFNvQ3MuCj4gCj4gVHlwb++8miBzL25ldmVyL05ld2Vy
-77yfCj4gCgpZZXMsIHRoYW5rcyEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+On Sun, Sep 20, 2026 at 12:08:02PM +0200, Krzysztof Kozlowski wrote:
+> On 20/09/2026 09:53, Sofus Forstreuter wrote:
+> 
+> >>> +  interrupts:
+> >>> +    minItems: 2
+> >>> +    items:
+> >>> +      - description: mailbox 0
+> >>> +      - description: mailbox 1
+> >>> +      - description: mailbox 2
+> >>> +      - description: mailbox 3
+> >>> +      - description: flag 0
+> >>> +      - description: flag 1
+> >>> +      - description: DMA status
+> >>> +    description: |
+> >>> +      Notably there are no decode related interrupts. All decode related
+> >>> +      interrupts are sent to the CM3.
+> >>> +
+> >>> +required:
+> >>> +  - compatible
+> >>> +  - reg
+> >>> +  - interrupts
+> >>> +  - reg-names
+> >>> +  - iommus
+> >>> +  - power-domains
+> >>> +  - resets
+> >>> +
+> >>
+> >> Why properties are unconstrained per each variant? Why are they flexible?
+> >>
+> > 
+> > There is no reason for this. I will remove the unused interrupts.
+> 
+> Hardware should be completely described, so if there are interrupts
+> there should be here as well. And in DTS. This should not be flexible,
+> unless hardware actually is flexible (but rarely is).
+> 
+
+Understood, i will make them all required and add them to DTS.
+
+Best regards,
+Sofus
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
