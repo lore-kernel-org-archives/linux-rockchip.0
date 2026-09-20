@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD10AC982CC
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 01:16:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DCAEC982D0
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 06:09:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gy6rKfkuY+FIJ2PlXh4IuZz0sQqdOPXcF/UaFljVyws=; b=KAmaHecHu19lz6
-	g45gBdhpd2jxAPoe2KupDtSF6awS1E8aWB1GbvvhhrmPbsmDD7HQ3PCJ63npfLlZ9Von26P9Ga8Zb
-	NA1tjVPJ4ipS+Zo9NMjnL9xckQOa/SD3ZTFPzSufnNQAWmFSj/jTp0w4oLDfQFC1sJaQZ3e0+lKIK
-	ncAvuaJD/jBb9YaoJWWyuLL4EuYdpVegoZsugp8fmOYc9Ihm/t60l798VyMJO+gQoIpwN9iDqfU4w
-	qZl4blWMncL4Poe4uaLQQVM0lUhD0v00P69Cp0zTSzAgzbOPTQ+eB5NMFA3BmWrcItj86HDyo9hAz
-	bFvG9n+mgt8fdPeIQ94w==;
+	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:In-Reply-To:
+	Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+np5xg/LO4Wy6cOD5uBs1LmVTxnGk3PPfZOYn0g7nCk=; b=xKF3PHlHaLAHb9DwBBSI2goL75
+	B5wxfO7+YQdnUM/RGkoxtpnpgF//2PwydBib++/q//geu0UwqyICWio7+r1GWH/bPlOoVU9FK5I+t
+	MjlhKe/YT5VB39yu0K9/DPKb0WaTbXTLyGuPUoD+qyFAkFWslFESIQYOwwXyTuT9TCOEHiEnHh3Dr
+	c3I0sqOfRjcCVGfWC9ZDYtNGuGP/SHaC2PGPSDxhMi4X84B2IbHbZw5ZJfL/Ym9cVyRTAjq5Ap2gm
+	gSu5mgh7w2YjuZiGuu55J5UhUZQ3ZRe9sbc8OBZf1wrR2V8ZW6ayqj04uarLUacxB2Vcbnw2nwiY2
+	Clj6A0rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x86AA-0000000Gik8-06GD;
-	Sun, 20 Sep 2026 01:16:14 +0000
-Received: from mail-m25494.xmail.ntesmail.com ([103.129.254.94])
+	id 1x8Aju-0000000Gybf-3NMl;
+	Sun, 20 Sep 2026 06:09:26 +0000
+Received: from winds.org ([68.75.195.9])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x86A6-0000000Gijg-008Z
-	for linux-rockchip@lists.infradead.org;
-	Sun, 20 Sep 2026 01:16:12 +0000
-Received: from [172.16.12.48] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4e65c9cbf;
-	Sun, 20 Sep 2026 09:15:56 +0800 (GMT+08:00)
-Message-ID: <3fa0fcbc-b6ff-4934-bb7d-b763d6f5f818@rock-chips.com>
-Date: Sun, 20 Sep 2026 09:15:52 +0800
+	id 1x8Ajr-0000000Gyax-339C;
+	Sun, 20 Sep 2026 06:09:25 +0000
+Received: by winds.org (Postfix, from userid 100)
+	id 858658F80256; Sun, 20 Sep 2026 02:09:19 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+	by winds.org (Postfix) with ESMTP id 8415D1334AD4D;
+	Sun, 20 Sep 2026 02:09:19 -0400 (EDT)
+Date: Sun, 20 Sep 2026 02:09:19 -0400 (EDT)
+From: Byron Stanoszek <gandalf@winds.org>
+To: Michal Wilczynski <m.wilczynski@samsung.com>
+cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+    Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+    Conor Dooley <conor+dt@kernel.org>, 
+    Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
+    Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+    Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+    Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+    Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+    Maxime Ripard <mripard@kernel.org>, 
+    Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, 
+    Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+    Emil Renner Berthing <kernel@esmil.dk>, 
+    Hal Feng <hal.feng@starfivetech.com>, 
+    Michael Turquette <mturquette@baylibre.com>, 
+    Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+    Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
+    Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, 
+    Dominique Belhachemi <db@domibel.de>, 
+    Brian Masney <bmasney+clk@redhat.com>, 
+    Jerome Brunet <jbrunet+clk@baylibre.com>, linux-phy@lists.infradead.org, 
+    devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+    dri-devel@lists.freedesktop.org, mfd@lists.linux.dev, 
+    linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+    linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, 
+    Marek Szyprowski <m.szyprowski@samsung.com>, 
+    Maud Spierings <maud_spierings@murena.io>, 
+    Graham Markall <hello@big-grey.co.uk>, 
+    Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
+    Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+    Joshua Peisach <jpeisach@ubuntu.com>, 
+    =?ISO-8859-15?Q?Uwe_Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>
+Subject: Re: [PATCH v4 00/20] drm: starfive: jh7110: Enable display
+ subsystem
+In-Reply-To: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
+Message-ID: <b8b046ee-c574-3e16-6079-2fc415633dae@winds.org>
+References: <CGME20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61@eucas1p1.samsung.com> <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Ulf Hansson <ulfh@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 2/4] pmdomain: rockchip: fix clock leak on domain probe
- failure
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <1789733258-10133-1-git-send-email-shawn.lin@rock-chips.com>
- <1789733258-10133-3-git-send-email-shawn.lin@rock-chips.com>
- <aq1yU47vQT5OnxLo@venus>
- <27e3944f-81c6-48e4-8033-e30ae70f8e26@rock-chips.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <27e3944f-81c6-48e4-8033-e30ae70f8e26@rock-chips.com>
-X-HM-Tid: 0aa0bc6255e003a4kunmd3d2597e236429
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDQklIVksaQx0fT0lDH0tPGlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=irK9E5Sn8gjx26N6v03fi92SxtUUQkf878PQkcEHbHH/C1VWK42Th86sM3fTjzd8Gtummu2GG0JsbdMOAUK6OxfoS9A0YI+JdD6j4Yhcf9kQrKCOOKv5svqr481yOCtYfdenEgw5M4xE2CK/z0aDIrfmtJ/FzD8V+4Ct1cq9mzI=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=VtX02XvGRhQ2FxudCuxh58xlxXnkNt9W6SpJeJT1xZI=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260919_181610_621411_C0A0D72C 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20260919_230923_838438_FFB4ACF1 
+X-CRM114-Status: GOOD (  17.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,45 +85,120 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgU2ViYXN0aWFuCgrlnKggMjAyNi8wOS8xOSDmmJ/mnJ/lha0gODoxMywgU2hhd24gTGluIOWG
-memBkzoKPiBIaSBTZWJhc3RpYW4KPiAKPiDlnKggMjAyNi8wOS8xOSDmmJ/mnJ/lha0gMToyMSwg
-U2ViYXN0aWFuIFJlaWNoZWwg5YaZ6YGTOgo+PiBIaSwKPj4KPj4gT24gRnJpLCBTZXAgMTgsIDIw
-MjYgYXQgMDg6MDc6MzZQTSArMDgwMCwgU2hhd24gTGluIHdyb3RlOgo+Pj4gV2hlbiBvZl9jbGtf
-Z2V0KCkgZmFpbGVkIGluIHRoZSBtaWRkbGUgb2YgdGhlIGxvb3AsIHRoZSByZWZlcmVuY2VzIG9m
-Cj4+PiB0aGUgY2xvY2tzIGFjcXVpcmVkIHNvIGZhciB3ZXJlIGxlYWtlZCBpbnN0ZWFkIG9mIGJl
-aW5nIHJlbGVhc2VkIGJ5Cj4+PiB0aGUgZXJyb3IgcGF0aC4KPj4+Cj4+PiBGaXhlczogZDkwOTA3
-MmQwNTIxICgic29jOiByb2NrY2hpcDogcG93ZXItZG9tYWluOiB1c2UgY2xrX2J1bGsgQVBJcyIp
-Cj4+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4K
-Pj4+IC0tLQo+Pgo+PiBSaWdodCwgYnV0IHRoaXMgc2hvdWxkIHN3aXRjaAo+Pgo+PiBwZC0+Y2xr
-cyA9IGRldm1fa2NhbGxvYyguLi4pOwo+Pgo+PiB0bwo+Pgo+PiBwZC0+Y2xrcyA9IGRldm1fa3ph
-bGxvYyguLi4pOwo+Pgo+PiBhdCB0aGUgc2FtZSB0aW1lIHRvIGVuc3VyZSB0aGF0IGNsa19idWxr
-X3B1dCgpIGRvZXMgbm90IHJ1biBvdmVyCj4+IG5vbi1pbml0aWFsaXplZCBkYXRhLiBPdGhlcndp
-c2UKPiAKPiBHb29kIGNhdGNoLCB3aWxsIGltcHJvdmUgaXQgaW4gdjIuCj4gCgpJIHdhcyB0b28g
-cXVpY2sgdG8gcmVzcG9uc2UsIGJ1dCBkaWRuJ3QgbG9va2VkIGludG8gZGV2bV9rY2FsbG9jLCBq
-dXN0Cmd1ZXNzIGl0IGRpZG4ndCB6ZXJvIHRoZSBkYXRhIGZyb20gdGhlIG5hbWUuIEhvd2V2ZXIg
-aXQgZG9lcyB6ZXJvIHRoZQpkYXRhIGJ5IHBhc3NpbmcgaW4gX19HRlBfWkVSTy4gU28gSSBuZWVk
-IHRvIHJlc3BpbiB2MyBhbmQgZHJvcApkZXZtX2t6YWxsb2MgY2hhbmdlLgoKCj4gVGhhbmtzLgo+
-IAo+Pgo+PiBSZXZpZXdlZC1ieTogU2ViYXN0aWFuIFJlaWNoZWwgPHNlYmFzdGlhbi5yZWljaGVs
-QGNvbGxhYm9yYS5jb20+Cj4+Cj4+IEdyZWV0aW5ncywKPj4KPj4gLS0gU2ViYXN0aWFuCj4+Cj4+
-Pgo+Pj4gwqAgZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMgfCAyICstCj4+
-PiDCoCAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPj4+Cj4+
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMgYi9k
-cml2ZXJzLyAKPj4+IHBtZG9tYWluL3JvY2tjaGlwL3BtLWRvbWFpbnMuYwo+Pj4gaW5kZXggMDY4
-ZGQ0YjMuLmI2YjA5OWIgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL3BtZG9tYWluL3JvY2tjaGlw
-L3BtLWRvbWFpbnMuYwo+Pj4gKysrIGIvZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21h
-aW5zLmMKPj4+IEBAIC04NDIsNyArODQyLDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9wbV9hZGRf
-b25lX2RvbWFpbihzdHJ1Y3QgCj4+PiByb2NrY2hpcF9wbXUgKnBtdSwKPj4+IMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgIGRldl9lcnIocG11LT5kZXYsCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgICIlcE9GbjogZmFpbGVkIHRvIGdldCBjbGsgYXQgaW5kZXggJWQ6ICVk
-XG4iLAo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBub2RlLCBpLCBlcnJv
-cik7Cj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gZXJyb3I7Cj4+PiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoCBnb3RvIGVycl9wdXRfY2xvY2tzOwo+Pj4gwqDCoMKgwqDCoMKgwqDC
-oMKgIH0KPj4+IMKgwqDCoMKgwqAgfQo+Pj4gLS0gCj4+PiAyLjcuNAo+Pj4KPj4+Cj4gCj4gCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, 15 Sep 2026, Michal Wilczynski wrote:
+
+> This series enables the display subsystem on the StarFive JH7110.
+
+Hi Michal,
+
+I tested your v4 patch series on my VisionFive2 1.3B with kernel 7.3-rc3 today
+and it works very well, except for 2 issues. Note, to make the screen refresh
+properly, I am using the noncoherent cache fixes from
+https://github.com/ganboing-jh7110/linux/commits/ganboing-jh7110-cache-fix-v1/
+(specifically commits 3683d97, ef93e2c, 277db0b, and 26ce3e6) in addition to
+your patch.
+
+Issue 1: I have a Dell U2711 monitor which has limited HDMI 1.3 capability, so
+I invented my own Xorg mode to get a good frame rate:
+
+"2560x1440_40.22"  162.00  2560 2608 2640 2720  1440 1443 1448 1481 +hsync -vsync
+
+With this mode and your new driver, I started getting rows of black pixels
+flickering in the upper-left corner of my LCD screen. These weren't there back
+when I was running the same mode under the Keith Zhao driver from StarFive
+(drm/verisilicon v5 plus a bunch of patches for dma cache coherency)
+(https://patchwork.kernel.org/project/dri-devel/cover/20241120061848.196754-1-keith.zhao@starfivetech.com/).
+
+The glitches I saw suggested the sync polarity was being set incorrectly; the
+number of glitched rows was exactly the vsync pulse width plus 1 (i.e.
+"1440 1443 1448 1481" produced 6 bad rows, "1440 1443 1456 1481" produced 14,
+"1440 1441 1442 1481" produced 2, and so forth).
+
+I did a register dump between the two drivers and found that, although the
+DC8200 HSYNC and VSYNC registers were identical between the two versions, the
+hsync and vsync bits on the inno hdmi tx were swapped between the two. When I
+manually set the VIDEO_TIMING_CTL register from 0x09 to 0x05 (matching the
+output of Keith's driver), the glitches went away.
+
+Keith Zhao driver:
+
+=== DC8200 display 0 ===
+DC   PANEL_CONFIG               0x1418 = 0x00001111
+DC   HSIZE                      0x1430 = 0x0AA00A00
+DC   HSYNC                      0x1438 = 0x45280A30
+DC   VSIZE                      0x1440 = 0x05C905A0
+DC   VSYNC                      0x1448 = 0xC2D405A3
+DC   DPI_CONFIG                 0x14B8 = 0x00000005
+DC   FB_CONFIG                  0x1518 = 0x14000000
+DC   FB_ADDRESS                 0x1400 = 0x71200000
+DC   FB_STRIDE                  0x1408 = 0x00002800
+DC   FB_SIZE                    0x1810 = 0x02D00A00
+DC   FB_CONFIG_EX               0x1CC0 = 0x00002000
+DC   PANEL_START                0x1CCC = 0x00000001
+DC   DP_CONFIG                  0x1CD0 = 0x0000000A
+DC   FB_WATER_MARK              0x1CE8 = 0x00000000
+DC   PANEL_CONFIG_EX            0x2518 = 0x00000000
+
+=== INNO HDMI TX video timing ===
+HDMI VIDEO_TIMING_CTL           0x08   = 0x05
+HDMI EXT_HTOTAL_L               0x09   = 0xA0
+HDMI EXT_HTOTAL_H               0x0A   = 0x0A
+HDMI EXT_HBLANK_L               0x0B   = 0xA0
+HDMI EXT_HBLANK_H               0x0C   = 0x00
+HDMI EXT_HDELAY_L               0x0D   = 0x70
+HDMI EXT_HDELAY_H               0x0E   = 0x00
+HDMI EXT_HDURATION_L            0x0F   = 0x20
+HDMI EXT_HDURATION_H            0x10   = 0x00
+HDMI EXT_VTOTAL_L               0x11   = 0xC9
+HDMI EXT_VTOTAL_H               0x12   = 0x05
+HDMI EXT_VBLANK                 0x13   = 0x29
+HDMI EXT_VDELAY                 0x14   = 0x26
+HDMI EXT_VDURATION              0x15   = 0x05
+
+Your driver (showing only the changed values):
+
+DC   DP_CONFIG                  0x1CD0 = 0x00000000
+DC   PANEL_CONFIG_EX            0x2518 = 0x00000001
+HDMI VIDEO_TIMING_CTL           0x08   = 0x09
+
+Specifically the bit#s are different between the two drivers:
+
+inno_hdmi-starfive.h (Keith Zhao):     inno-hdmi.c (generic):
+   v_HSYNC_POLARITY_SF(n)  ((n) << 2)     v_HSYNC_POLARITY  bit 3
+   v_VSYNC_POLARITY_SF(n)  ((n) << 3)     v_VSYNC_POLARITY  bit 2
+
+"_SF" suggests this change is specific to StarFive. The correct positions are
+HSYNC=bit 2 and VSYNC=bit 3 for the JH7110.
+
+I'm guessing that your 42-mode test passed because most CEA modes are +hsync
++vsync, and this wouldn't show any difference if the two bits were transposed.
+
+Once the sync polarity is sorted, I'd be happy to give a Tested-by: on the
+series.
+
+  --
+
+Issue 2: This is more a feature request than an issue. Originally, I tried
+running this Xorg modeline, which worked well under Keith's driver:
+
+"2560x1440_49.90"  201.00  2560 2608 2640 2720  1440 1443 1448 1481 +hsync -vsync
+
+However, your driver would not accept this pixel clock. I then noticed you have
+a pre-PLL table of fixed clocks. Is there any chance you can change the code to
+compute the pre-PLL on the fly like how Keith does it, rather than use a table?
+
+Thanks for all your great work!
+
+Best regards,
+  -Byron
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
