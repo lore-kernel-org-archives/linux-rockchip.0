@@ -4,84 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92774C982D0
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 09:44:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAB99C982D0
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 10:08:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2Ye5O6RirsKUV/V2PJ/FEx8EWS1oDAfVqi0HGaze2+0=; b=P4aArxVM2mucbv
-	QB7URjV63QIJTizorx+LAU65eJbap4KGPOo0MZ0Hc1KXAzZ+cQTBkYLubAN8xig+7O3fhlAXGGSyE
-	/QEMM4hau93B28kTU5EA4HywsiHH1OZIV+6mMR14nhSO1FurC44yhF97or7FMpGZrhfjvgsRXvDVG
-	Xx3jS5Uohusjx8I1A1Co/m27xBEnXRc2fBtyJ7ADfb+1unt1fWbkEk4hE9uKA+ej1EWrxorywk3Gm
-	n2O2kBrs+9cfU/gVPTMzhtK9iwA75Ogz0lCcGzIPBx+jH/NzQ4tKv+SE5/H5PhGAFsxNDD5g3+gFA
-	bP5JekiZ311BYfmuUnRA==;
+	List-Owner; bh=6I/7uw1PQ6G533CYvH/X4aL/DWgzqmIt2zGkuUQbti0=; b=XbjK/sfPj6lr41
+	WDLlDL9p3qP2GFmJLS3hBOWsQYRJRJVRVIsSqnjDXAr0n0que2FQgcxXjyChwnRfAYo2r0y4NIXgR
+	rDW6fid4mj8iWZozhvsAyat2xGPVdvnshpIlQvMGnO1t5j7Kj77CFceLBEe3y/ahgFCQYFehmShSD
+	dIIfypRC1CI1ThS91CQvSOtcqZ6pX0049P15KOl5MFBy2/ig9/5ZAr/AG34Zg8+vcznLSjGQWXctx
+	jsM4G/jpHiqAsLk7Q47t1joujkBxRyux1wGJ0lSXtvPc0eGBUEx6kXZFqaBHWb2I+9775HgPl5IIz
+	un/07EN0SEXjuHY2ivDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8E5q-0000000HCqz-0oPG;
-	Sun, 20 Sep 2026 09:44:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x8ESz-0000000HEgq-2pGG;
+	Sun, 20 Sep 2026 10:08:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8E5n-0000000HCqD-17F1;
-	Sun, 20 Sep 2026 09:44:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789897452;
-	bh=VaCHIbqayKHpuRvZbdiid0ApzeVrHRM1euobbTzlPRc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=peMEUP+Yy1BaYtTRZVdeYhHiwtL+emnJv+XSfsBsP0TW2HZHy3+OOhAonCgfrNZ6S
-	 BzizMfHPTWfyeI+HWchhwSCwHYtP3BWE8ZQ0gXX8OF6XatXDvwNE+RbWihJ3fJTl3a
-	 Q4Wk6lz2+tya3mYVne4ryXQSzpRjYYmWOzIyTwX6Bmjze5DwzXuBceSOJu7t6YcafJ
-	 eu/oHb/IqBziro+swTA9msKOM8PibldK5ml919xoioItvmhl8XFD1XGPBXsbLp3dd/
-	 WZca0ZjGKg1lzihFUT7mcbsuP/XtjoIF/h5A5Y1pzj5468Gt/MTI8LI1v7S3g0HuGF
-	 /T1UTs74TSTpw==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4598517E00C9;
-	Sun, 20 Sep 2026 11:44:09 +0200 (CEST)
-Message-ID: <9e21c5c3-f8e6-4343-b4cc-52c9e84316ef@collabora.com>
-Date: Sun, 20 Sep 2026 12:44:08 +0300
+	id 1x8ESy-0000000HEgD-25DS;
+	Sun, 20 Sep 2026 10:08:12 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id CFF20411E2;
+	Sun, 20 Sep 2026 10:08:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 795EB1F000FF;
+	Sun, 20 Sep 2026 10:08:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789898891;
+	bh=mH+Q5wd7lUfaqxnNVA1Wifkg7F6QqQpknKLOza7T+3U=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=P52aX3g9Tpd/QHd1YCdoOV3d9WztBDvQe33yoPR5YjMp7rZqnG7TmD9aPQB6dHAX3
+	 4sAnjNMRfme5MWZQSg89Kh073DUsH6t8w1KH0c5RnbZbE2iuM+9Y8Jhiq8FS6A8OQw
+	 0NGJI4nsX6eGkAdZL31MsUCI0ME1and3iW9TZfA/NbszkoeB562KqBrM2WtEDINqOE
+	 PS4IbHyM3oHvFTfESMmrpjQNjwkuwrWjWxUreGoKn9dlvlEpPlw5xcPUbnQjQGFGlv
+	 29bwiqr1V/dgI+l6YeDZG10/5MrNsCkS2PNuu0uyNay7mD588QAvjQryD5h+mKTIa8
+	 0SbyX2OrxztLg==
+Message-ID: <da42fe72-4351-46f2-8c5b-fc3292f7d8e1@kernel.org>
+Date: Sun, 20 Sep 2026 12:08:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 00/74] Add HDMI 2.0 support to DW HDMI QP TX
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- Dmitry Baryshkov <lumag@kernel.org>, Andrzej Hajda
- <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Chen-Yu Tsai <wens@kernel.org>,
- Samuel Holland <samuel@sholland.org>, =?UTF-8?Q?Ma=C3=ADra_Canal?=
- <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Raphael Gallais-Pou <rgallaispou@gmail.com>, Sandy Huang
- <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Algea Cao <algea.cao@rock-chips.com>,
- Daniel Stone <daniels@collabora.com>, Liu Ying <victor.liu@nxp.com>,
- Phong LE <ple@baylibre.com>, Helge Deller <deller@gmx.de>,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-fbdev@vger.kernel.org,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Sashiko <sashiko-bot@kernel.org>, Diederik de Haas
- <diederik@cknow-tech.com>, Maud Spierings <maud_spierings@hotmail.com>
-References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
- <ap_ZyC-XaHTUNyQ5@houat>
+Subject: Re: [PATCH 02/14] dt-bindings: media: add apple,avd
+To: Sofus Forstreuter <sofus.c@icloud.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Sven Peter <sven@kernel.org>,
+ Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20260918-avd-v1-0-49977931f455@icloud.com>
+ <20260918-avd-v1-2-49977931f455@icloud.com>
+ <c8d25275-3c45-4e9a-826c-cf856938d60e@kernel.org> <aq-RBuOWrHU07pXS@m3>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <ap_ZyC-XaHTUNyQ5@houat>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260920_024415_471755_215DE52C 
-X-CRM114-Status: GOOD (  23.05  )
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <aq-RBuOWrHU07pXS@m3>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,103 +120,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+On 20/09/2026 09:53, Sofus Forstreuter wrote:
 
-On 9/8/26 12:48 PM, Maxime Ripard wrote:
-> Hi,
+>>> +  interrupts:
+>>> +    minItems: 2
+>>> +    items:
+>>> +      - description: mailbox 0
+>>> +      - description: mailbox 1
+>>> +      - description: mailbox 2
+>>> +      - description: mailbox 3
+>>> +      - description: flag 0
+>>> +      - description: flag 1
+>>> +      - description: DMA status
+>>> +    description: |
+>>> +      Notably there are no decode related interrupts. All decode related
+>>> +      interrupts are sent to the CM3.
+>>> +
+>>> +required:
+>>> +  - compatible
+>>> +  - reg
+>>> +  - interrupts
+>>> +  - reg-names
+>>> +  - iommus
+>>> +  - power-domains
+>>> +  - resets
+>>> +
+>>
+>> Why properties are unconstrained per each variant? Why are they flexible?
+>>
 > 
-> On Tue, Sep 01, 2026 at 09:50:24PM +0300, Cristian Ciocaltea wrote:
->> Enable HDMI 2.0 display modes (e.g. 4K@60Hz) on the Synopsys DW HDMI QP
->> TX controller, as found in Rockchip RK3576 & RK3588 SoCs, by adding SCDC
->> management for high TMDS clock ratio and scrambling.  Since SCDC state
->> is lost on sink disconnects, the bridge driver needs to trigger a CRTC
->> reset during connector detection.
->>
->> To support this at the DRM infrastructure level, the series first
->> introduces the HDMI version enum, then prepares for changing the
->> signature of drmm_connector_hdmi_init(), i.e. dropping the vendor,
->> product, supported_formats and max_bpc arguments, which are being moved
->> into struct drm_connector_hdmi_funcs, by temporarily renaming the helper
->> to drmm_connector_hdmi_ini2().  This lets the new signature be
->> introduced under the original name while callers are converted
->> incrementally.  Note the transitional name matches the original's length
->> so continuation-line arguments stay aligned to the opening parenthesis,
->> keeping the diff to the identifier itself and avoiding re-alignment
->> churn.
->>
->> Appending more HDMI-specific arguments to the init function would not
->> scale well, hence the hdmi_funcs struct is extended with new fields:
->> supported_hdmi_ver, supported_tmds_char_rate.  These are used to
->> infer and/or limit the maximum TMDS character rate permitted for the
->> connector.
->>
->> Patches 6-11 build the connector and bridge scrambling infrastructure on
->> top: the connector scrambler callbacks/flags, the scdc-helper
->> additions (connector-prefixed debug macro and SCDC version helper), and
->> the HDMI scrambling management helpers including SCDC source-version
->> advertisement.
->>
->> Patches 12-25 wires this up through the hdmi-state-helper and bridge
->> connector layers: source TMDS rate validation, hotplug SCDC state sync
->> and the scrambling requirement, new source-side scrambling bridge ops,
->> the switch to a cached-status, atomic-aware .detect_ctx() connector
->> helper, and finally hooking up the HDMI 2.0 scrambler callbacks.
->>
->> The SCDC scrambling feature itself is implemented in the DW HDMI QP
->> bridge driver, alongside i2c error-message rate limiting,
->> .enable_hpd()/.disable_hpd() PHY ops and a dw_hdmi_qp_hpd_notify()
->> helper (patches 26-30).
->>
->> Patches 31-41 cover the Rockchip platform driver and HPD handling: bug
->> fixes, minor cleanups, avoiding spurious HDP IRQ wakeups, masking the
->> RK3576 HPD IRQ in io_init, implementing the .{enable|disable}_hpd() PHY
->> ops, switching HPD reports to dw_hdmi_qp_hpd_notify() to restrict events
->> to the affected connector, dropping the now-unused .setup_hpd() PHY op.
->>
->> Patches 42-48 convert VC4 HDMI to the common infrastructure as a proof
->> of reuse: adopting the shared TMDS char rate constants, switching to
->> drm_hdmi_mode_needs_scrambling() and force_ctx(), proper -EDEADLK
->> handling, and replacing the driver-local scrambling implementation with
->> the common SCDC scrambling helpers.
->>
->> Patches 50-57 advertise supported version for all HDMI
->> connectors/bridges, except the MediaTek HDMI driver (for now), as it
->> requires non-trivial changes: there's a core library shared between two
->> drivers, one being HDMI 2.0 compliant.
->>
->> Patches 58-67 add KUnit tests: HDMI caps-based init coverage and
->> source-side scrambler validation for the connector, conversion of
->> hdmi_state_helper to the new drmm_connector_hdmi_init() with
->> max_tmds_char_rate validation, a new 4K@60Hz 600MHz TMDS EDID,
->> source-side scrambling decision coverage, and conformity fixes for the
->> existing 1080p+4K YUV420 200MHz and 4K RGB/YUV 340MHz test EDID blobs.
->>
->> Patches 68-71 remove the now unused drmm_connector_hdmi_ini2() helper
->> and redundant hdmi fields from connector structs: vendor, product,
->> supported_formats and max_bpc.
->>
->> Eventually patches 72-74 consolidate SPD InfoFrame handling of
->> vendor/product.
->>
->> This has been tested on the following boards:
->>
->> * Radxa ROCK 5B (RK3588)
->> * Radxa ROCK 4D (RK3576)
->> * Raspberry Pi 5 Model B Rev 1.1 (BCM2712 D0)
-> 
-> This series is getting a bit insane. You have preliminary patches that
-> have been reviewed/acked already, you should merge them, and possibly
-> split the rest into preliminary series.
+> There is no reason for this. I will remove the unused interrupts.
 
-Thanks for the additional reviews, and sorry for my late reply - I've been on
-leave and traveling.  I've merged the preliminary patches and will handle the
-split upon my return, in about a week.
+Hardware should be completely described, so if there are interrupts
+there should be here as well. And in DTS. This should not be flexible,
+unless hardware actually is flexible (but rarely is).
 
-I plan to send separate series for vc4, dw-hdmi-qp, the rest of the bridge
-drivers, kunit & final cleanup.
-
-Regards,
-Cristian
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
