@@ -4,65 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63954C982D8
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 13:51:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B3B7C982D8
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 17:02:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zzbw7/Zu9oR4Qs6YQBUpUlJGOOZ/PxH+24WHovykQc8=; b=G5ODU/DewqqaGc
-	Z+dwMcB6UvoxCLor62Nea+Rf3NdPCzEQkDrzR5/E2yqSva+EDPgMBNAwZTYC+UEAZP56jNBgSjXkV
-	1+cZFU8w+/5swJN+dDsFhwTpkEvgKKhN3575h2iZSXx0KBS4khB02dd+D2VJA5bhYFkmAoiyUhGt4
-	wiRVQ0WaJ0N+Rt2psDybpOeXMwA5VdOebDnq3BZy2XyntN1W8APbg5MJv3Z/Xs1cIguf5eXypLJPa
-	uLz0Xxl6SWo1aHPdHkdn7jI8WBIQHFbdcfOO78P0pcxN4qJYFIuAhu1/1vg68OHPLJxlf8sreJTHm
-	aqIgczN3+BWwx5hYOQPQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EgQvnCJrh9TdpcGPg2fp3dfCz+qauGf36AmgmJWZ0Sg=; b=UDWV/NMm/Z+Rwm
+	vqsIAYrHlP7sTScjs404NFepOwZ0t1CNvGY+rYgn74lhd6NCpaOPO6lLGsanyjHoX35wI6bFO9mBf
+	pgc5N+NWcHhYDDGUB6wZWEYXqZpARs7sD1C8IXPRckDaY2U2Vhob42lDvw0WysnZX2VUe2v+C0RMb
+	5METM5bvRiHamnI6FU8pQdFM89MWjNsUACysFMYmHEE7O9IJ61q/WxYY+s+6mk51oEpEvqMJhn5/I
+	fnz0NfMijysDBmy5PmWgfzcRU4JDrvHyFN/bf0gTqjlDlIlnVUsFDrKdPb8S+eNTCX7She9+PvDSo
+	c98PC7RJukRDP4z7aLxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8HwO-0000000HWoU-3IGW;
-	Sun, 20 Sep 2026 13:50:48 +0000
-Received: from out-176.mta0.migadu.com ([2001:41d0:1004:224b::b0] helo=mta0.migadu.com)
+	id 1x8KvZ-000000008df-2Xvp;
+	Sun, 20 Sep 2026 17:02:09 +0000
+Received: from mail-pz2-x0b.google.com ([2607:f8b0:4864:3b::b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8HwH-0000000HWnm-40wo
+	id 1x8KvW-000000008cf-3fLR
 	for linux-rockchip@lists.infradead.org;
-	Sun, 20 Sep 2026 13:50:47 +0000
-X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=XSgnM9/tTrs2Fbc7ahvU6+D7SlzrKgvkr5L6sZlWc5A=;
- c=simple/simple; d=cknow-tech.com;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1789912239; v=1; x=1790517039;
- b=fc4vjR5wg5xOMN+kAi5TjfEff2ZkbsgLeNIZcPkSBAf94BW7llE/vD/KoIWRBwDQ5tMIZ4H7
- 2fK09OW9xSCdN7ayxIG6CEG1JfTZ6JS7Bo+h4WcLrflXnctUGa+wZ42QLlzlJtbr0D8albxenjL
- 9C61UhzCMs7oavRXvDn2d4dP6oRevSQSdjJdVMps41+BKaEQUOEK31NcK+Dq7vHySOBe0mNcAtN
- +5QyQq1W0pO+UN5GF1vNF4w+rJI/hr5MBTh8+NVt4cUJH8xngARIxEdu5YmJU4mYX21BATZ0gnc
- lTn3p8lNGPrUgEEyKVLC6pgoN6ImqLA5twgP0OQc15HsQ==
-X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 9fed9906a7b4c0cf;
-	Sun, 20 Sep 2026 13:50:25 +0000
-X-Mizu-Trace-ID: 9fed9906a7b4c0cf
-X-Migadu-Flow: FLOW_OUT
-Mime-Version: 1.0
-Date: Sun, 20 Sep 2026 15:50:24 +0200
-Message-Id: <DLK6XGIB22XG.58WF7VP9L3NH@cknow-tech.com>
-To: "Detlev Casanova" <detlev.casanova@collabora.com>, "Tomasz Figa"
- <tfiga@chromium.org>, "Marek Szyprowski" <m.szyprowski@samsung.com>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, "Nicolas Dufresne"
- <nicolas.dufresne@collabora.com>, "Benjamin Gaignard"
- <benjamin.gaignard@collabora.com>, "Philipp Zabel"
- <p.zabel@pengutronix.de>, "Heiko Stuebner" <heiko@sntech.de>, "Ezequiel
- Garcia" <ezequiel@vanguardiasur.com.ar>
-Cc: <kernel@collabora.com>, <linux-kernel@vger.kernel.org>,
- <linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH 0/4] media: Track v4l2 buffers through an allocator
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-X-Mailer: aerc 0.22.0-24-g39041fd9f179
-References: <20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com>
-In-Reply-To: <20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com>
+	Sun, 20 Sep 2026 17:02:08 +0000
+Received: by mail-pz2-x0b.google.com with SMTP id 41be03b00d2f7-cc4f2a5c3c8so1643740a12.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 20 Sep 2026 10:02:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789923725; x=1790528525; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=zvaA1R/5NGHCUWO468vfak0l7lZ8RN7fNc21wJSy80Q=;
+        b=sQRhlZ8OWSsRlFRmjowlFsC4L1ZmEdpERRztarx4GOkWZknfPFjsJngHKLAQCDZmSm
+         5aiCxubMRLOtacOdovFLP8Qq6JQF0XOc2nRbu8SbQdDRKPlsC751uvqQQb5WoZXrSbLg
+         ljEHnqYAyyGg90gz9OmIylHAnSkQqPBQFP9KbW38+OPkddeYdK7a+WyUriIeV20G32af
+         GmcugYTapsXKztHGvNEVuG/8CHokjWBASzhr674m1h9OlxTVGsY+JS3WxThdSOxiKng5
+         zjkveUgujTjW5PNsRxNhDor/DZjmmXuY8I0rCxus3oLQ49fGWNASsTVuOWtU6z8OItzd
+         IYWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789923725; x=1790528525;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=zvaA1R/5NGHCUWO468vfak0l7lZ8RN7fNc21wJSy80Q=;
+        b=j3pH4RKv2lnnrh6flGO+B0VffZWH4Dip0Q0/VEOjgyuDRmyDBhmVfTgvhXUU4/fn9q
+         X+zI8/RNfj9jd6d0M5vjzAtT57f4YIvde+quRd3KnkMgFEfCm8MbR4ZhhfR6GSR0tj/X
+         VAZtpOdbS85ACZ9LaqxFd/wzWn19wtOA2wv11Wt0WGAPbJvDDqQ9mYUZS75pgYAw/I7g
+         kRqeQR6lrCMcNm4oFdQHUxWD7LlBLZxBiVa3RhcFnTtFccHoOIItyQ2OAWRx0AjQanjW
+         4M46JjeCI1Ag7gABGpjlWhUTgDiSVHFADPjPatfnyqX712AMbKgirxOH1ESqGywz82LR
+         MWQA==
+X-Forwarded-Encrypted: i=1; AKwUvByCQpH8j3pWd2/xxhwI+T8Vj0RRJR0lYhd03bBYTJLiBa13EHaEXUBtxKgcDDnRd02AFdwHhYwRjU+aT9lHZA==@lists.infradead.org
+X-Gm-Message-State: AFuF++nPk5XEYQTzC3DeCogXfKMrZ6L8wkY5wfmyHvDCfpADTAIYUAyU
+	aqvfA5+UYV2UA8JEAARw7bRUfd6EvQOO8qJXweaP4vB+bAHLnkfhHTUs
+X-Gm-Gg: AYBFou1FmoUYxQSizo24EN1KtdxPIPej+mCGIV3sZSW8e1q7zSP1Ea4O9XBPy+Gx/uD
+	akvxrTnJt3zQtnuXrmql8sg5fCS/ujK9bCPKXmpGak5HVRVcF7Bs2Elugu4zXUkgdfTyGc1M6XX
+	oEFOOU32egHMz6nUbLP1UNrrLgvvlj8OWhEzAxySXREwblR3jpa+K2ZSLtqWbAk9DADRNyjGVIS
+	bNbP+9zP669ed7YL9/0G1VPKj6xMG8gvdp9MRPaswcMtIu619uytUtPz7Tx+PzcRfb1m2j/Xcci
+	DS2chI8fZ5NCu/ch3oKj1ksrb9Tc8kbnF8aRrjufeAl3/uZxcIAqdFPdElhWB+3zT6N3ednYYq1
+	/yquFojNjPVJGwwy5X4E7ODEEJCmRL4eacEDhhTThaE+Ox2OAGLJlscOElh0AntMh8L/tALfnH8
+	swPbvtjL+z233NKRyec3BHRTuu29VUegcOWtS6U5g8P6s1pDQ4V2/PhNrA3cqJhPrc+xAyug==
+X-Received: by 2002:a05:6a00:3a18:b0:871:41fa:d1c9 with SMTP id d2e1a72fcca58-874ddffca64mr11441916b3a.25.1789923725129;
+        Sun, 20 Sep 2026 10:02:05 -0700 (PDT)
+Received: from server.lan ([168.138.199.194])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-877a9d07425sm2140646b3a.42.2026.09.20.10.01.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 20 Sep 2026 10:02:03 -0700 (PDT)
+From: Coia Prant <coiaprant@gmail.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Vinod Koul <vkoul@kernel.org>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Romain Gantois <romain.gantois@bootlin.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Coia Prant <coiaprant@gmail.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	David Heidelberg <david@ixit.cz>,
+	netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org
+Subject: [PATCH net-next v9 00/11] net: pcs: add basic support for RK3568 XPCS
+Date: Mon, 21 Sep 2026 01:01:04 +0800
+Message-ID: <20260920170116.3624104-1-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260920_065042_804793_10628960 
-X-CRM114-Status: GOOD (  34.48  )
+X-CRM114-CacheID: sfid-20260920_100206_912743_4947D86D 
+X-CRM114-Status: GOOD (  21.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,201 +117,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
-
-On Wed Sep 16, 2026 at 4:25 PM CEST, Detlev Casanova wrote:
-> Hello,
->
-> Currently, the only way to track buffers allocated by v4l2 from usespace
-> is to use the subsystem available debug information (e.g.:
-> /sys/kernel/debug/dma_buf/bufinfo).
-> But that information is generic and cannot be matched to a v4l2 driver or
-> to a userspace application: It is merely information about the allocation.
->
-> Other types of allocations require the developper to find where they are
-> exposed and how to link them to their test.
->
-> This can become hard to track when mutliple drivers are working at the
-> same time.
->
-> To improve that, add a small wrapper around buffer allocations to keep
-> track of them at the video device level so that we can add debug
-> information to them like a name, userspace pid/fd that did the
-> allocation,... and expose them to userspace via a debugfs entry.
->
-> It currently only supports DMA buffer allocations and adds support for
-> VB2 allocations too.
-> Other kind of memory tracking can be added later.
-> The verisilicon and rkvdec drivers have been ported to use the tracked
-> dma alloactions.
->
-> Note that this depends on the ftrace support patch series[1] that
-> provides fd/pid info in the v4l2_fh struct.
-> That series is a bit old, so this is based on an older linux version, but
-> that only changes things for the last 2 commits.
->
-> A v4l2top utility[2] has been made, to be used in parallel with the
-> fdinfo patch series[3], to show the list of active streams with their HW
-> and memory usage.
->
-> With this, debugfs looks like this when decoding a HEVC 1080p stream with
-> rkvdec on rk3588:
->
->   root # cat /sys/kernel/debug/v4l2/fdc38100.video-codec/mem 
->   created-by                      fd              pid             size            label
->   -------------------------------------------------------------------------------------
->   gst-launch-1.0                  7               635             39184           vdpu381-hevc-priv-tbl
->   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-7
->   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-6
->   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-5
->   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-4
->   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-3
->   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-2
->   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-1
->   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-0
->   gst-launch-1.0                  7               635             3133440         out-000000005c0230f6-1
->   gst-launch-1.0                  7               635             3133440         out-000000005c0230f6-0
->   =====================================================================================
->   Total size: 39729424
-
-I build a kernel with your 3 patch series and I also build the v4l2top utility.
-Cool tool :-D 
-Especially after I found out I should build the 'upstream' branch ;-)
-
-There were a couple of things I noticed:
-1) With 'plain' kernel 7.3-rc3 but also with all my patches included, but
-   excluding the patches from this series, I see this:
-
-```
-root@nanopc-t6-plus:~# ls -lh /sys/kernel/debug/v4l2/
-total 0
-drwxr-xr-x 3 root root 0 Sep 20 15:10 fdee0000.hdmi_receiver
-```
-
-Which is presumably the reason that with a kernel which also includes this
-patch series, I get the following kernel error:
-``[   10.849405] debugfs: 'v4l2' already exists in '/'``
-
-I don't think this should generate an error/warning/info message at all,
-but just silently dealt with.
-
-Checking v4l2 debug dir again results in this:
-```
-root@nanopc-t6-plus:~# ls -lh /sys/kernel/debug/v4l2/
-total 0
-drwxr-xr-x 2 root root 0 Sep 20 15:13 fdb60000.rga
-drwxr-xr-x 2 root root 0 Sep 20 15:13 fdb80000.rga
-drwxr-xr-x 2 root root 0 Sep 20 15:13 fdc38000.video-codec
-drwxr-xr-x 2 root root 0 Sep 20 15:13 fdee0000.hdmi_receiver
-```
-
-I noticed my video-codec address was slightly different from yours.
-
-Playing a 1080p BBB x264 video with a patched ffmpeg+mpv, results in this:
-```
-root@nanopc-t6-plus:~# cat /sys/kernel/debug/v4l2/fdc38000.video-codec/mem
-created-by                      fd              pid             size            label
--------------------------------------------------------------------------------------
-mpv                             26              2027            4177920         cap-00000000205a3b3a-10
-mpv                             26              2027            4177920         cap-00000000205a3b3a-9
-mpv                             26              2027            4177920         cap-00000000205a3b3a-8
-mpv                             26              2027            16736           vdpu381-h264-priv-tbl
-mpv                             26              2027            3133440         out-0000000079002cb1-3
-mpv                             26              2027            3133440         out-0000000079002cb1-2
-mpv                             26              2027            3133440         out-0000000079002cb1-1
-mpv                             26              2027            3133440         out-0000000079002cb1-0
-mpv                             26              2027            4177920         cap-00000000205a3b3a-7
-mpv                             26              2027            4177920         cap-00000000205a3b3a-6
-mpv                             26              2027            4177920         cap-00000000205a3b3a-5
-mpv                             26              2027            4177920         cap-00000000205a3b3a-4
-mpv                             26              2027            4177920         cap-00000000205a3b3a-3
-mpv                             26              2027            4177920         cap-00000000205a3b3a-2
-mpv                             26              2027            4177920         cap-00000000205a3b3a-1
-mpv                             26              2027            4177920         cap-00000000205a3b3a-0
-=====================================================================================
-Total size: 58507616
-```
-
-And looking at the v4l2top utility, I noticed the following:
-1. I see differing indications of the load while it's playing :-D
-2. The ``Clock rate`` is always 750.0MHz (or 786431991Hz) (expected I think?)
-3. The ``Total Memory`` is always 0B and the ``Memory usage details`` column
-   is always empty. That's also the case when I press one of the arrow keys
-   which seems to select the entry. Am I missing sth or doing sth wrong?
-
-Cheers,
-  Diederik
-
-> [1]: https://lore.kernel.org/all/20260610-v4l2-add-ftrace-v2-0-9756edf72ac1@collabora.com/
-> [2]: https://github.com/cazou/v4l2top/tree/upstream
-> [3]: https://lore.kernel.org/all/20260706-v4l2-add-fdinfo-v3-0-d556568cf38e@collabora.com/
->
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
-> Detlev Casanova (4):
->       media: Add a v4l2 memory allocations tracker
->       media: Store v4l2_fh in the vb_queue
->       media: verisilicon: Switch to tracked dma allocations
->       media: rkvdec: Switch to tracked dma allocations
->
->  drivers/media/common/videobuf2/Makefile            |   1 +
->  drivers/media/common/videobuf2/v4l2-allocator.c    | 186 +++++++++++++++++++++
->  .../media/common/videobuf2/videobuf2-dma-contig.c  |  27 ++-
->  .../media/platform/rockchip/rkvdec/rkvdec-h264.c   |  14 +-
->  .../media/platform/rockchip/rkvdec/rkvdec-hevc.c   |  14 +-
->  .../media/platform/rockchip/rkvdec/rkvdec-rcb.c    |  21 ++-
->  .../platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c |  14 +-
->  .../platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c |  14 +-
->  .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c |  14 +-
->  .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c |  14 +-
->  .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    |  33 ++--
->  drivers/media/platform/rockchip/rkvdec/rkvdec.c    |   4 +
->  drivers/media/platform/verisilicon/hantro.h        |   1 +
->  drivers/media/platform/verisilicon/hantro_drv.c    |   4 +
->  drivers/media/platform/verisilicon/hantro_h264.c   |   7 +-
->  drivers/media/platform/verisilicon/hantro_hevc.c   | 100 ++++++-----
->  drivers/media/platform/verisilicon/hantro_mpeg2.c  |  16 +-
->  .../media/platform/verisilicon/hantro_postproc.c   |  14 +-
->  drivers/media/platform/verisilicon/hantro_vp8.c    |  25 +--
->  drivers/media/platform/verisilicon/hantro_vp9.c    |  34 +++-
->  .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 160 +++++++++++-------
->  drivers/media/v4l2-core/v4l2-device.c              |   4 +-
->  include/media/v4l2-allocator.h                     |  26 +++
->  include/media/v4l2-device.h                        |   2 +
->  include/media/videobuf2-core.h                     |   3 +
->  25 files changed, 555 insertions(+), 197 deletions(-)
-> ---
-> base-commit: 66affa37cfac0aec061cc4bcf4a065b0c52f7e19
-> change-id: 20260612-v4l2-add-mem-tracker-da0088c74a64
-> prerequisite-change-id: 20260608-v4l2-add-ftrace-aec6e7f60a6c:v2
-> prerequisite-patch-id: bd45b4df66799a7f9f22b49973a78d1bd3590a4a
-> prerequisite-patch-id: 6a5ed5615f08257cf854d441785066b5ff4d5d47
-> prerequisite-patch-id: 02594c869498b9e91e416d70242afbaa6b3a8d6a
-> prerequisite-patch-id: 9f25ec78f3b99ac1c5d42eb732f5bd9eae73fadd
-> prerequisite-patch-id: 4ed2c2e8c3abfa7f6328d0ea4f488ca5a3eec8fb
-> prerequisite-patch-id: 8787d50eb80e1a63a57a123268cade23c9e64618
-> prerequisite-patch-id: bfe85822378fa771f9bbc3e1e8c8ff6bce0eb7fd
-> prerequisite-patch-id: 784d0801da320f7b41194f4632ee422c32f1b5b8
-> prerequisite-patch-id: 362c8366e2efbfb5e6f1a3f71cfddbd46e8d1506
->
-> Best regards,
-> --  
-> Detlev Casanova <detlev.casanova@collabora.com>
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhpcyBzZXJpZXMgYWRkcyBwcm9wZXIgU0dNSUkgc3VwcG9ydCBmb3IgdGhlIFJvY2tjaGlwIFJL
+MzU2OCBTb0MKdXNpbmcgdGhlIGludGVncmF0ZWQgU3lub3BzeXMgRGVzaWduV2FyZSBYUENTLCBh
+bG9uZyB3aXRoIG5lY2Vzc2FyeQpmaXhlcyBhbmQgcmVmYWN0b3JpbmcgaW4gdGhlIHN0bW1hYyBj
+b3JlIGFuZCBYUENTIGRyaXZlci4KCk1vdGl2YXRpb24KPT09PT09PT09PQpUaGUgUkszNTY4IGlu
+dGVncmF0ZXMgYSBEVyBYUENTIGFjY2Vzc2VkIHZpYSBBUEIzIGFuZCBjb25uZWN0ZWQgdG8KYSBO
+YW5lbmcgQ29tYm8gU2VyRGVzIFBIWS4gIFNldmVyYWwgYm9hcmRzIChlLmcuLCBBcmlhYm9hcmQK
+UGhvdG9uaWNhdCkgdXNlIHRoaXMgaW50ZXJmYWNlIGZvciBHaWdhYml0IEV0aGVybmV0LiAgSG93
+ZXZlciwgdGhlCmN1cnJlbnQgdXBzdHJlYW0gc3RtbWFjIGRyaXZlciBkb2VzIG5vdCBzdXBwb3J0
+IHRoaXMgY29uZmlndXJhdGlvbiwKYW5kIHRoZSBYUENTIGRyaXZlciBoYXMgaXNzdWVzIGluIFNH
+TUlJIHBvbGwgbW9kZSB0aGF0IGNhdXNlIHRoZQpsaW5rIHRvIGJlIHJlcG9ydGVkIGluY29ycmVj
+dGx5LgoKVGhpcyBzZXJpZXMgYWRkcmVzc2VzIHRoZXNlIGlzc3VlcyBieToKLSBSZWZhY3Rvcmlu
+ZyBzdG1tYWMgUENTIGxpZmV0aW1lIG1hbmFnZW1lbnQgdG8gYWxsb3cgcGxhdGZvcm0gZHJpdmVy
+cwogIGZ1bGwgY29udHJvbCBvdmVyIFBDUyBjcmVhdGlvbi9kZXN0cnVjdGlvbgotIEZpeGluZyB0
+aGUgWFBDUyBkcml2ZXIncyBTR01JSSBsaW5rIHJlY292ZXJ5Ci0gQWRkaW5nIGEgUm9ja2NoaXAg
+WFBDUyBwbGF0Zm9ybSBnbHVlIGRyaXZlciBhbmQgd2lyaW5nIGl0IHVwIGluCiAgZHdtYWMtcmsK
+ClNlcmllcyBvdmVydmlldwo9PT09PT09PT09PT09PT0KCkdlbmVyaWM6CiAgUGF0Y2ggMTogbW92
+ZSBYUENTIGxpZmV0aW1lIG1hbmFnZW1lbnQgdG8gcGxhdGZvcm0gZHJpdmVycwoKUEhZOgogIFBh
+dGNoIDI6IERUIGJpbmRpbmcgZm9yIE5hbmVuZyBDb21ibyBQSFkgU0dNSUkgTUFDIHNlbGVjdGlv
+bgogIFBhdGNoIDM6IGltcGxlbWVudCB0aGUgUEhZIFNHTUlJIE1BQyBzZWxlY3Rpb24gaW4gZHJp
+dmVyCgpSSzM1NjggWFBDUy9TR01JSToKICBQYXRjaCA0OiBEVCBiaW5kaW5nIGZvciBSb2NrY2hp
+cCBSSzM1NjggWFBDUwogIFBhdGNoIDU6IGFkZCBYUENTIGFuZCBmaXhlZC1jbG9jayBub2RlcyB0
+byByazM1NjguZHRzaQogIFBhdGNoIDY6IGFkZCBBTlJFU1RBUlQgc3VwcG9ydCBmb3IgU0dNSUkg
+bGluayByZWNvdmVyeQogIFBhdGNoIDc6IGltcGxlbWVudCB0aGUgUm9ja2NoaXAgWFBDUyBwbGF0
+Zm9ybSBnbHVlIGRyaXZlcgogIFBhdGNoIDg6IERUIGJpbmRpbmcgZm9yIFJvY2tjaGlwIERXTUFD
+IFBDUwogIFBhdGNoIDk6IHdpcmUgdXAgU0dNSUkgc3VwcG9ydCBpbiBkd21hYy1yawogIFBhdGNo
+IDExOiB1cGRhdGUgTUFJTlRBSU5FUlMKCkJvYXJkIGVuYWJsZW1lbnQ6CiAgUGF0Y2ggMTA6IGVu
+YWJsZSBTR01JSSBMQU4gcG9ydCBvbiBQaG90b25pY2F0IGJvYXJkCgpDaGFuZ2Vsb2cKPT09PT09
+PT09CgpDaGFuZ2VzIHNpbmNlIHY4OgoKUGF0Y2ggNyAobmV0OiBwY3M6IHhwY3M6IGFkZCBSb2Nr
+Y2hpcCBSSzM1NjggcGxhdGZvcm0gZ2x1ZSBkcml2ZXIpCi0gUmVwbGFjZSB0aGUgZGV2aWNlX2xv
+Y2soKS9kZXZpY2VfaXNfYm91bmQoKSBjaGVjayBpbiB4cGNzX3JrX2NyZWF0ZSgpCiAgd2l0aCBh
+IGNoZWNrIG9uIGxpbmstPnN1cHBsaWVyLT5saW5rcy5zdGF0dXMuIGRldmljZV9pc19ib3VuZCgp
+IG9ubHkKICB0ZXN0cyB3aGV0aGVyIHRoZSBzdXBwbGllcidzIGRyaXZlciBwb2ludGVyIGlzIHNl
+dCwgYW5kIHRoYXQgcG9pbnRlcgogIGlzIGNsZWFyZWQgYXQgdGhlIHZlcnkgZW5kIG9mIHRoZSB1
+bmJpbmQgcGF0aCwgYWZ0ZXIgZGV2cmVzIGhhcwogIGFscmVhZHkgZnJlZWQgdGhlIGRydmRhdGEu
+IENoZWNraW5nIHRoZSBkZXZpY2UgbGluaydzIHN1cHBsaWVyIHN0YXRlCiAgaW5zdGVhZCB0ZWxs
+cyB1cyB3aGV0aGVyIHRoZSBsaW5rIGFjdHVhbGx5IHBpbnMgdGhlIHN1cHBsaWVyOiBpZiB0aGUK
+ICBzdXBwbGllciB3YXMgRExfREVWX0RSSVZFUl9CT1VORCB3aGVuIHRoZSBsaW5rIHdhcyBjcmVh
+dGVkLCB0aGUgbGluawogIGlzIGluIERMX1NUQVRFX0NPTlNVTUVSX1BST0JFIGFuZCB1bmJpbmQg
+d2FpdHMgZm9yIHRoaXMgcHJvYmU7IGFueQogIG90aGVyIHN0YXRlIG1lYW5zIHRoZSBzdXBwbGll
+ciBpcyBub3QgdXNhYmxlIGFuZCB3ZSBkZWZlci4KLSBEcm9wIHRoZSBkZXZpY2VfbG9jaygpL2Rl
+dmljZV91bmxvY2soKSBwYWlyLCB3aGljaCBpcyBubyBsb25nZXIKICBuZWVkZWQgc2luY2UgdGhl
+IGxpbmsgc3RhdGUgaXRzZWxmIGNhcnJpZXMgdGhlIHByb3RlY3Rpb24uCi0gVXBkYXRlIHRoZSBj
+b21tZW50IGFib3ZlIGRldmljZV9saW5rX2FkZCgpIHRvIGRlc2NyaWJlIHRoZSBuZXcKICByZWFz
+b25pbmcuCgpLZXkgZGVzaWduIGRlY2lzaW9ucwo9PT09PT09PT09PT09PT09PT09PQotIFRoZSBz
+dG1tYWMgY29yZSBub3cgZGVsZWdhdGVzIFhQQ1MgY3JlYXRpb24gZW50aXJlbHkgdG8gcGxhdGZv
+cm0KICBkcml2ZXJzIHZpYSBwY3NfaW5pdC9wY3NfZXhpdC4gIFRoaXMgaXMgbmVjZXNzYXJ5IGJl
+Y2F1c2UgdGhlCiAgZ2VuZXJpYyBYUENTIGNyZWF0aW9uIGxvZ2ljIHdvdWxkIG92ZXJyaWRlIGFu
+eSBYUENTIHNldCB1cCBieSB0aGUKICBwbGF0Zm9ybSBkcml2ZXIuCgotIFRoZSBSb2NrY2hpcCBY
+UENTIGRyaXZlciBjcmVhdGVzIGEgdmlydHVhbCBNRElPIGJ1cyBvdmVyIHRoZSBBUEIzCiAgcmVn
+aXN0ZXJzIGFuZCBpbXBsZW1lbnRzIGFkZHJlc3MgcmVtYXBwaW5nLiAgVGhlIGdlbmVyaWMgWFBD
+UyBjb3JlCiAgaGFuZGxlcyBhbGwgUENTIGNvbmZpZ3VyYXRpb24gdmlhIHBoeWxpbmtfcGNzX29w
+cy4KCi0gT24gUkszNTY4IGluIFNHTUlJIG1vZGUsIHRoZSBNQUMgY2xvY2sgaXMgZml4ZWQgYXQg
+MTI1IE1IeiBhbmQKICBjYW5ub3QgYmUgZHluYW1pY2FsbHkgY2hhbmdlZC4gIEluLWJhbmQgbW9k
+ZSBpcyB1c2VkLCBhbmQgdGhlCiAgZ2VuZXJpYyBzdG1tYWMgc2V0X2Nsa190eF9yYXRlIGNhbGxi
+YWNrIGlzIGRpc2FibGVkIHRvIHByZXZlbnQKICBpbmNvcnJlY3QgY2xvY2sgdXBkYXRlcyB0aGF0
+IHdvdWxkIGJyZWFrIFJYLgoKLSBUaGUgU2VyRGVzIGFuZCBwb3dlciBkb21haW4gYXJlIGF0dGFj
+aGVkIHRvIHRoZSBYUENTIGRldmljZSB0cmVlCiAgbm9kZSByYXRoZXIgdGhhbiB0aGUgTUFDIG5v
+ZGUuIFRoaXMgcmVmbGVjdHMgdGhlIGFjdHVhbCBoYXJkd2FyZQogIHRvcG9sb2d5IGFuZCBzaW1w
+bGlmaWVzIHRoZSBkd21hYy1yayBkcml2ZXIgYnkga2VlcGluZyBhbGwgUENTLXJlbGF0ZWQKICBy
+ZXNvdXJjZXMgc2VsZi1jb250YWluZWQuIEl0IGFsc28gcHJlcGFyZXMgZm9yIHBvc3NpYmxlIGZ1
+dHVyZSBRU0dNSUkKICBzdXBwb3J0LCB3aGVyZSBhIHNpbmdsZSBTZXJEZXMgc2VydmVzIG11bHRp
+cGxlIE1BQ3MgYW5kIHdvdWxkIGJlCiAgbW9yZSBuYXR1cmFsbHkgbWFuYWdlZCB1bmRlciB0aGUg
+WFBDUyBub2RlLgoKVGVzdGluZwo9PT09PT09CkJvYXJkOiBBcmlhYm9hcmQgUGhvdG9uaWNhdCAo
+UkszNTY4KQpPUzogQXJtYmlhbiAodHJpeGllKQpLZXJuZWw6IDYuMTggKGJhY2twb3J0cykKUmVz
+dWx0OiBUaGUgU0dNSUkgaW50ZXJmYWNlIG9idGFpbnMgYW4gSVAgYWRkcmVzcywgU1NIIHdvcmtz
+LCBhbmQKICAgICAgICBwaW5nIHRyYWZmaWMgcGFzc2VzIHdpdGhvdXQgbG9zcy4KCk5vdGVzCj09
+PT09Ci0gV2hlbiB0ZXN0aW5nIG91dC1iYW5kIG1vZGUgd2l0aCBzZXRfY2xrX3R4X3JhdGUsIG9u
+bHkgMTAwME1icHMKICB3b3JrcyBvbiBib3RoIFRYL1JYOyAxMC8xMDBNYnBzIG9ubHkgd29ya3Mg
+b24gVFggc2lkZS4KCkRlcGVuZGVuY2llcwo9PT09PT09PT09PT0KTm9uZS4gQWxsIHBhdGNoZXMg
+YXBwbHkgY2xlYW5seSBvbiB0b3Agb2YgdG9ydmFsZHMgbWFzdGVyIHRyZWUgKHY3LjMpLgoKQWNr
+bm93bGVkZ21lbnRzCj09PT09PT09PT09PT09PQpUaGlzIHdvcmsgd2FzIGluc3BpcmVkIGJ5IGFu
+ZCBidWlsZHMgdXBvbiB0aGUgZXhjZWxsZW50IHdvcmsgb2Ygb3RoZXJzOgotIFNlcmdlIFNlbWlu
+J3MgU3lub3BzeXMgRGVzaWduV2FyZSBYUENTIHBsYXRmb3JtIGRyaXZlciAocGNzLXhwY3MtcGxh
+dC5jKQotIENsw6ltZW50IEzDqWdlcidzIFJlbmVzYXMgTUlJQyBkcml2ZXIgKHBjcy1yem4xLW1p
+aWMuYykKLSBUaGUgUm9ja2NoaXAgVFJNIGFuZCBkb3duc3RyZWFtIE9FTSBkcml2ZXJzCgpUaGFu
+a3MgaW4gYWR2YW5jZSwKQ29pYSBQcmFudAotLS0KQ29pYSBQcmFudCAoMTEpOgogIG5ldDogc3Rt
+bWFjOiBtb3ZlIFhQQ1MgbGlmZXRpbWUgbWFuYWdlbWVudCB0byBwbGF0Zm9ybSBkcml2ZXJzCiAg
+ZHQtYmluZGluZ3M6IHBoeTogcm9ja2NoaXA6IG5hbmVuZy1jb21icGh5OiBhZGQgcm9ja2NoaXAs
+c2dtaWktbWFjLXNlbAogICAgcHJvcGVydHkKICBwaHk6IHJvY2tjaGlwOiBuYW5lbmctY29tYnBo
+eTogYWRkIFNHTUlJIE1BQyBzZWxlY3Rpb24gZm9yIFJLMzU2OAogIGR0LWJpbmRpbmdzOiBuZXQ6
+IHBjczogYWRkIHJvY2tjaGlwLHJrMzU2OC14cGNzIHN1cHBvcnQKICBhcm02NDogZHRzOiByb2Nr
+Y2hpcDogcmszNTY4OiBhZGQgWFBDUyBhbmQgZml4ZWQtY2xvY2sgbm9kZXMKICBuZXQ6IHBjczog
+eHBjczogYWRkIEFOUkVTVEFSVCBzdXBwb3J0IGZvciBTR01JSSBsaW5rIHJlY292ZXJ5CiAgbmV0
+OiBwY3M6IHhwY3M6IGFkZCBSb2NrY2hpcCBSSzM1NjggcGxhdGZvcm0gZ2x1ZSBkcml2ZXIKICBk
+dC1iaW5kaW5nczogbmV0OiByb2NrY2hpcC1kd21hYzogZG9jdW1lbnQgcGNzLWhhbmRsZQogIG5l
+dDogc3RtbWFjOiBkd21hYy1yazogYWRkIFNHTUlJIHN1cHBvcnQgZm9yIFJLMzU2OAogIGFybTY0
+OiBkdHM6IHJvY2tjaGlwOiByazM1NjgtcGhvdG9uaWNhdDogZW5hYmxlIFNHTUlJIExBTiBwb3J0
+CiAgTUFJTlRBSU5FUlM6IGFkZCBlbnRyeSBmb3IgUm9ja2NoaXAgWFBDUyBkcml2ZXIKCiAuLi4v
+bmV0L3Bjcy9yb2NrY2hpcCxyazM1NjgteHBjcy55YW1sICAgICAgICAgfCAxMTAgKysrKwogLi4u
+L2JpbmRpbmdzL25ldC9yb2NrY2hpcC1kd21hYy55YW1sICAgICAgICAgIHwgIDE4ICsKIC4uLi9w
+aHkvcGh5LXJvY2tjaGlwLW5hbmVuZy1jb21icGh5LnlhbWwgICAgICB8ICAxMyArCiBNQUlOVEFJ
+TkVSUyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDkgKwogLi4uL2Jvb3Qv
+ZHRzL3JvY2tjaGlwL3JrMzU2OC1waG90b25pY2F0LmR0cyAgIHwgIDc0ICsrLQogYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjguZHRzaSAgICAgIHwgIDQ1ICsrCiBkcml2ZXJzL25l
+dC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9LY29uZmlnICAgfCAgIDEgKwogLi4uL25ldC9ldGhl
+cm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1pbnRlbC5jIHwgIDQ0ICstCiAuLi4vc3RtaWNyby9z
+dG1tYWMvZHdtYWMtcmVuZXNhcy1nYmV0aC5jICAgICAgfCAgIDcgKy0KIC4uLi9uZXQvZXRoZXJu
+ZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtcmsuYyAgICB8IDEzMCArKystCiAuLi4vbmV0L2V0aGVy
+bmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLXJ6bjEuYyAgfCAgIDcgKy0KIC4uLi9ldGhlcm5ldC9z
+dG1pY3JvL3N0bW1hYy9kd21hYy1zb2NmcGdhLmMgICB8ICAgNyArLQogLi4uL25ldC9ldGhlcm5l
+dC9zdG1pY3JvL3N0bW1hYy9zdG1tYWNfbWRpby5jIHwgIDM5ICstCiBkcml2ZXJzL25ldC9wY3Mv
+S2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgfCAgMjUgKwogZHJpdmVycy9uZXQvcGNzL01h
+a2VmaWxlICAgICAgICAgICAgICAgICAgICAgIHwgICA1ICstCiBkcml2ZXJzL25ldC9wY3MvcGNz
+LXhwY3MtcmsuYyAgICAgICAgICAgICAgICAgfCA1OTkgKysrKysrKysrKysrKysrKysrCiBkcml2
+ZXJzL25ldC9wY3MvcGNzLXhwY3MuYyAgICAgICAgICAgICAgICAgICAgfCAgMzUgKy0KIC4uLi9y
+b2NrY2hpcC9waHktcm9ja2NoaXAtbmFuZW5nLWNvbWJwaHkuYyAgICB8ICAgOCArCiBpbmNsdWRl
+L2xpbnV4L3Bjcy9wY3MteHBjcy1yay5oICAgICAgICAgICAgICAgfCAgMTEgKwogMTkgZmlsZXMg
+Y2hhbmdlZCwgMTExNSBpbnNlcnRpb25zKCspLCA3MiBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L3Bjcy9yb2NrY2hp
+cCxyazM1NjgteHBjcy55YW1sCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9uZXQvcGNzL3Bj
+cy14cGNzLXJrLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL2xpbnV4L3Bjcy9wY3MteHBj
+cy1yay5oCgotLSAKMi40Ny4zCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
