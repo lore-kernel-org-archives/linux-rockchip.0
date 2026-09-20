@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C626AC982DA
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 11:36:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63954C982D8
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Sep 2026 13:51:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
+	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uOUnHdOjk6Ip9k/SgWlxZQwFahEE3d4UR03lwhY26k8=; b=qBKEpCdc9gO8VN
-	rOEz3c6pFnAhEw9ON45KcU9+Rfv+OKOp5hxfLufASEwBaNwIfoKqsoT9emnbT4Jed6MUSF+bZWIor
-	esVlsfwfh6S0aOmF7c5Rxwx6dsvGvP+doNcVe6L8Go5DI/TW07RiOMJYoiqW2DYhWE8x0g/VzvtGM
-	Ek+5FNLgda6+F1iwYLJqhIdmbG4DfEWKLFk3qAg2o1tjDtxIyEIbPkiCLhX360Lm7tmEOFG4i9gFA
-	nMU+3YrQXRqI3C+Di1XIU5u7jNy4L1zcaRdlte1TtFbWW+MBVfsUv3sm9XYT3Xt/XouUfxySuuDuS
-	f1t2oun1klPr3pgnH8Pw==;
+	List-Owner; bh=Zzbw7/Zu9oR4Qs6YQBUpUlJGOOZ/PxH+24WHovykQc8=; b=G5ODU/DewqqaGc
+	Z+dwMcB6UvoxCLor62Nea+Rf3NdPCzEQkDrzR5/E2yqSva+EDPgMBNAwZTYC+UEAZP56jNBgSjXkV
+	1+cZFU8w+/5swJN+dDsFhwTpkEvgKKhN3575h2iZSXx0KBS4khB02dd+D2VJA5bhYFkmAoiyUhGt4
+	wiRVQ0WaJ0N+Rt2psDybpOeXMwA5VdOebDnq3BZy2XyntN1W8APbg5MJv3Z/Xs1cIguf5eXypLJPa
+	uLz0Xxl6SWo1aHPdHkdn7jI8WBIQHFbdcfOO78P0pcxN4qJYFIuAhu1/1vg68OHPLJxlf8sreJTHm
+	aqIgczN3+BWwx5hYOQPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8FqU-0000000HMeO-0iMp;
-	Sun, 20 Sep 2026 11:36:34 +0000
-Received: from mail-m16023652196.xmail.ntesmail.com ([160.236.52.196])
+	id 1x8HwO-0000000HWoU-3IGW;
+	Sun, 20 Sep 2026 13:50:48 +0000
+Received: from out-176.mta0.migadu.com ([2001:41d0:1004:224b::b0] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8FqP-0000000HMdS-2KbT;
-	Sun, 20 Sep 2026 11:36:32 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4e72f2e5d;
-	Sun, 20 Sep 2026 19:36:18 +0800 (GMT+08:00)
-Message-ID: <57f57f40-87ec-47a2-a8b9-cc8b1adc3b8f@rock-chips.com>
-Date: Sun, 20 Sep 2026 19:36:16 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/10] Add HPD support for Rockchip Analogix DP
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Andy Yan <andy.yan@rock-chips.com>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20260804081717.741404-1-damon.ding@rock-chips.com>
- <5609825.iZASKD2KPV@diego>
- <29d483f3-2eb2-4886-a4fe-9b4b6d9d14f3@rock-chips.com>
- <7775230.ejJDZkT8p0@diego>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <7775230.ejJDZkT8p0@diego>
-X-HM-Tid: 0aa0be9a4b1603a8kunma17d51969197c6
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDQhkfVkpKHR9JSUlMSRodSVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=QaYeJjLCc4XajREryUfFqAtNBIWn9Jb8ESbypl4sfBVl+JMwiqmovMf9LbFiY9YdTfh0FKfE9VKu3Xu3UhSxHC7B2kSHwtydFeVssV5BCxNEe7msZ9+wU59pyWIv/jRh/ZbafLMi7V/4nY7izMYZwmvj964QE4yoVLhH3tTwi0k=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Zs3RsGuA4dUDbRO1KmwFvzwlH/DxEtLctC1ij8O7myE=;
-	h=date:mime-version:subject:message-id:from;
+	id 1x8HwH-0000000HWnm-40wo
+	for linux-rockchip@lists.infradead.org;
+	Sun, 20 Sep 2026 13:50:47 +0000
+X-Envelope-To: linux-rockchip@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=XSgnM9/tTrs2Fbc7ahvU6+D7SlzrKgvkr5L6sZlWc5A=;
+ c=simple/simple; d=cknow-tech.com;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1789912239; v=1; x=1790517039;
+ b=fc4vjR5wg5xOMN+kAi5TjfEff2ZkbsgLeNIZcPkSBAf94BW7llE/vD/KoIWRBwDQ5tMIZ4H7
+ 2fK09OW9xSCdN7ayxIG6CEG1JfTZ6JS7Bo+h4WcLrflXnctUGa+wZ42QLlzlJtbr0D8albxenjL
+ 9C61UhzCMs7oavRXvDn2d4dP6oRevSQSdjJdVMps41+BKaEQUOEK31NcK+Dq7vHySOBe0mNcAtN
+ +5QyQq1W0pO+UN5GF1vNF4w+rJI/hr5MBTh8+NVt4cUJH8xngARIxEdu5YmJU4mYX21BATZ0gnc
+ lTn3p8lNGPrUgEEyKVLC6pgoN6ImqLA5twgP0OQc15HsQ==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 9fed9906a7b4c0cf;
+	Sun, 20 Sep 2026 13:50:25 +0000
+X-Mizu-Trace-ID: 9fed9906a7b4c0cf
+X-Migadu-Flow: FLOW_OUT
+Mime-Version: 1.0
+Date: Sun, 20 Sep 2026 15:50:24 +0200
+Message-Id: <DLK6XGIB22XG.58WF7VP9L3NH@cknow-tech.com>
+To: "Detlev Casanova" <detlev.casanova@collabora.com>, "Tomasz Figa"
+ <tfiga@chromium.org>, "Marek Szyprowski" <m.szyprowski@samsung.com>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, "Nicolas Dufresne"
+ <nicolas.dufresne@collabora.com>, "Benjamin Gaignard"
+ <benjamin.gaignard@collabora.com>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>, "Heiko Stuebner" <heiko@sntech.de>, "Ezequiel
+ Garcia" <ezequiel@vanguardiasur.com.ar>
+Cc: <kernel@collabora.com>, <linux-kernel@vger.kernel.org>,
+ <linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH 0/4] media: Track v4l2 buffers through an allocator
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+X-Mailer: aerc 0.22.0-24-g39041fd9f179
+References: <20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com>
+In-Reply-To: <20260916-v4l2-add-mem-tracker-v1-0-900fa45e3e6a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260920_043630_309612_6ADA6452 
-X-CRM114-Status: GOOD (  31.10  )
+X-CRM114-CacheID: sfid-20260920_065042_804793_10628960 
+X-CRM114-Status: GOOD (  34.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,176 +74,201 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiA4LzYvMjAyNiA3OjQyIEFNLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBB
-bSBNaXR0d29jaCwgNS4gQXVndXN0IDIwMjYsIDA2OjA2OjQ4IE1pdHRlbGV1cm9ww6Rpc2NoZSBT
-b21tZXJ6ZWl0IHNjaHJpZWIgRGFtb24gRGluZzoKPj4gSGkgSGVpa28sCj4+Cj4+IE9uIDgvNS8y
-MDI2IDY6MzkgQU0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+Pj4gSGkgRGFtb24sCj4+Pgo+Pj4g
-QW0gRGllbnN0YWcsIDQuIEF1Z3VzdCAyMDI2LCAxMDoxNzowNyBNaXR0ZWxldXJvcMOkaXNjaGUg
-U29tbWVyemVpdCBzY2hyaWViIERhbW9uIERpbmc6Cj4+Pj4gRGlzcGxheS1jb25uZWN0b3IgbW9k
-ZSAoRFAgY29ubmVjdG9yIHdpdGhvdXQgSFBEIEdQSU8pOgo+Pj4+Cj4+Pj4gICAgICZlZHBfb3V0
-X2Nvbm4gewo+Pj4+ICAgICAgICAgcmVtb3RlLWVuZHBvaW50ID0gPCZkcF9jb25faW4+Owo+Pj4+
-ICAgICB9Owo+Pj4+Cj4+Pj4gICAgIGRwLWNvbiB7Cj4+Pj4gICAgICAgICBjb21wYXRpYmxlID0g
-ImRwLWNvbm5lY3RvciI7Cj4+Pj4gICAgICAgICBsYWJlbCA9ICJEUCBPVVQiOwo+Pj4+ICAgICAg
-ICAgdHlwZSA9ICJmdWxsLXNpemUiOwo+Pj4+Cj4+Pj4gICAgICAgICBwb3J0IHsKPj4+PiAgICAg
-ICAgICAgICBkcF9jb25faW46IGVuZHBvaW50IHsKPj4+PiAgICAgICAgICAgICAgICAgcmVtb3Rl
-LWVuZHBvaW50ID0gPCZlZHBfb3V0X2Nvbm4+Owo+Pj4+ICAgICAgICAgICAgIH07Cj4+Pj4gICAg
-ICAgICB9Owo+Pj4+ICAgICB9Owo+Pj4+Cj4+Pj4gRGlzcGxheS1jb25uZWN0b3IgbW9kZSAoRFAg
-Y29ubmVjdG9yIHdpdGggSFBEIEdQSU8pOgo+Pj4+Cj4+Pj4gICAgIGRwLWNvbiB7Cj4+Pj4gICAg
-ICAgICBjb21wYXRpYmxlID0gImRwLWNvbm5lY3RvciI7Cj4+Pj4gICAgICAgICBsYWJlbCA9ICJE
-UCBPVVQiOwo+Pj4+ICAgICAgICAgdHlwZSA9ICJmdWxsLXNpemUiOwo+Pj4+ICAgICAgICAgcGlu
-Y3RybC0wID0gPCZlZHAwX2hwZD47Cj4+Pj4gICAgICAgICBwaW5jdHJsLW5hbWVzID0gImRlZmF1
-bHQiOwo+Pj4+ICAgICAgICAgaHBkLWdwaW9zID0gPCZncGlvNCBSS19QQzEgR1BJT19BQ1RJVkVf
-SElHSD47Cj4+Pj4KPj4+PiAgICAgICAgIHBvcnQgewo+Pj4+ICAgICAgICAgICAgIGRwX2Nvbl9p
-bjogZW5kcG9pbnQgewo+Pj4+ICAgICAgICAgICAgICAgICByZW1vdGUtZW5kcG9pbnQgPSA8JmVk
-cF9vdXRfY29ubj47Cj4+Pj4gICAgICAgICAgICAgfTsKPj4+PiAgICAgICAgIH07Cj4+Pj4gICAg
-IH07Cj4+Pj4KPj4+PiBBbGwgZm91ciBjb25maWd1cmF0aW9ucyBkZXRlY3QgY2FibGUgcGx1Zy91
-bnBsdWcgZXZlbnRzIGNvcnJlY3RseS4KPj4KPj4gVGhhbmtzIGEgbG90IGZvciB5b3VyIHRlc3Rp
-bmcgYW5kIGZlZWRiYWNrLiA6LSkKPj4KPj4gSXQgc2VlbXMgbXkgdGVzdCBzZXR1cCBnYXZlIG1l
-IHRoZSBmYWxzZSBpbXByZXNzaW9uIHRoYXQgdGhvc2UgY2FzZXMKPj4gd29ya2VkIHdlbGwuCj4+
-Cj4+Pgo+Pj4gaG1tLCBpdCB3YXNuJ3Qgd29ya2luZyBlbnRpcmVseSBmb3IgbWUgdGhvdWdoIGFu
-ZCB3YXMgc3RpbGwgcnVubmluZyBpbnRvCj4+PiBpc3N1ZXMgd2hlbiB0aGUgZGlzcGxheSB3YXMg
-dW5wbHVnZ2VkIG9uIGJvb3QuCj4+Pgo+Pgo+PiBBcmUgeW91IHNlZWluZyB0aGlzIGJvb3TigJF1
-bnBsdWcgaXNzdWUgZm9yIGJvdGggc2NlbmFyaW9zOiBEUOKAkWNvbm5lY3Rvcgo+PiB3aXRoIEhQ
-ROKAkWdwaW8gcGFpcmVkIHdpdGggZURQIHdpdGhvdXQgSFBE4oCRZ3BpbywgYW5kIERQ4oCRY29u
-bmVjdG9yIHdpdGhvdXQKPj4gSFBE4oCRZ3BpbyBwYWlyZWQgd2l0aCBlRFAgd2l0aCBIUETigJFn
-cGlvPyBJLmUuIGl0IHdyb25nbHkgcmVwb3J0cwo+PiBjb25uZWN0ZWQgZXZlbiB3aXRoIG5vIGRp
-c3BsYXkgcGx1Z2dlZCBpbiBhbmQgcHJvY2VlZHMgaW50byBEUk0KPj4gLmF0b21pY19lbmFibGUo
-KT8KPiAKPiBZZXAgaXQncyBkaWZmZXJlbnQuIFRoZSBhbmFsb2dpeC1kcCBncGlvLWhwZCB3b3Jr
-cyBjb3JyZWN0bHksICBiZWNhdXNlIHRoZQo+IGFuYWxvZ2l4IGRyaXZlciBjYW4gZG8gZ3Bpb2Rf
-Z2V0X3ZhbHVlKCkgaW4gYW5hbG9naXhfZHBfZ2V0X3BsdWdfaW5fc3RhdHVzKCkKPiAKPiBUaGUg
-ZHAtY29ubmVjdG9yIGRvZXMgbm90LCBhcyB3aXRoIHRoZSBwYXRjaCB5b3UgcG9pbnRlZCB0bywg
-aXQgbG9zdAo+IHRoYXQgYWJpbGl0eS4gU28gb24gYm9vdCBhIHBsdWdnZWQgaW4gZGlzcGxheSBp
-cyBub3QgZGV0ZWN0ZWQgY29ycmVjdGx5Cj4gYmVjYXVzZSB0aGVyZSB3b24ndCBiZSBhIGhvdHBs
-dWcgaW50ZXJydXB0Lgo+IAo+Pgo+Pj4gSSB3aWdnbGVkIGFyb3VuZCBhIGJpdCBsaWtlIGluIHRo
-ZSBkaWZmIGJlbG93IGFuZCBhbSBub3cgZ2V0dGluZyBjb3JyZWN0Cj4+PiBwbHVnIGFuZCB1bnBs
-dWcgZXZlbnRzLgo+Pgo+PiBPaCwgSSBzZWUuIEZvciB0aGUgR1BJTyBIUEQgY2FzZSwgdGhlIElS
-USBuZWVkcyB0byBiZSBlbmFibGVkIGVhcmx5IHNvCj4+IHRoYXQgcGx1Z+KAkWluIGludGVycnVw
-dHMgY2FuIGJlIHByb3Blcmx5IHJlc3BvbmRlZCB0by4gSG93ZXZlciBHUElPIEhQRAo+PiBkb2Vz
-IG5vdCByZXF1aXJlIGEgcnVudGltZSBQTSBnZXQuIEkgd2lsbCBiZXR0ZXIgc2VwYXJhdGUgdGhl
-c2UgdHdvCj4+IHNjZW5hcmlvcyBpbiB0aGUgbmV4dCB2ZXJzaW9uLgo+Pgo+Pj4KPj4+IEJ1dCBv
-ZiBjb3Vyc2UsIGFzIHRoZSBkcC12YXJpYW50IG9mIHRoZSBjb25uZWN0b3IgZG9lcyBub3QgcHJv
-dmlkZQo+Pj4gYSAiZGV0ZWN0IiBhbmQganVzdCB0aGUgImhwZCIgZnVuY3Rpb25hbGl0eSwgaXQn
-cyBtaXNzaW5nIHRoZSBpbml0aWFsIHN0YXRlLgo+Pj4KPj4+IEknbSBjdXJyZW50bHkgbm90IHN1
-cmUgaG93IHRvIGZpbmQgb3V0IF9pZl8gYSBwYW5lbCBpcyBjb25uZWN0ZWQgb24gYm9vdC4KPj4+
-Cj4+Cj4+IEJhc2VkIG9uIERtaXRyeSdzIGNvbW1pdCBjYjY0MGIyY2E1NDYgKCJkcm0vYnJpZGdl
-OiBkaXNwbGF54oCRY29ubmVjdG9yOgo+PiBkb24ndCBzZXQgT1BfREVURUNUIGZvciBEaXNwbGF5
-UG9ydHMiKSwgSFBEIGV2ZW50cyBmcm9tIERQ4oCRdmFyaWFudAo+PiBjb25uZWN0b3Igc2hvdWxk
-IGJlIGhhbmRsZWQgYnkgdGhlIHVwc3RyZWFtIERQIGNvbnRyb2xsZXIuIEhlbmNlIEkgYWRkZWQK
-Pj4gYW5hbG9naXhfZHBfYnJpZGdlX25vdGlmeSgpIHRvIHJldHJpZXZlIEhQRCBzdGF0dXMgY29t
-aW5nIGZyb20gZG93bnN0cmVhbS4KPj4KPj4gQXMgZXhwZWN0ZWQsIHVuZGVyIHRoZSBicmlkZ2Xi
-gJFjb25uZWN0b3IgZnJhbWV3b3JrLCB0aGUgZGV0ZWN0IHJlc3VsdAo+PiBmcm9tIEFuYWxvZ2l4
-IERQIHNob3VsZCBpbiB0aGVvcnkgcmVmbGVjdCB0aGUgYWN0dWFsIGNvbm5lY3Rpb24gc3RhdHVz
-Lgo+PiBMZXQncyBkaWcgaW50byB0aGlzIGJvb3TigJF0aW1lIGluaXRpYWzigJFzdGF0ZSBpc3N1
-ZSB0b2dldGhlci4KPiAKPiBPbmUgaWRlYSBJIGhhZCB3YXMsIGlzIGl0IHBvc3NpYmxlIHRvIGRv
-IGEgZHJtX2RwX3JlYWRfZHBjZF9jYXBzKCkKPiByZWFkIGR1cmluZyBiaW5kLy4uLiB0byBzZWUg
-aWYgc29tZXRoaW5nIGFuc3dlcnM/Cj4gCgpTb3JyeSBmb3IgdGhlIGxvbmcgZGVsYXkgdG8gZ2V0
-IGJhY2sgdG8gdGhpcyBzZXJpZXMuIEkgd2FzIHN0dWNrIG9uIHNvbWUgCnRyaWNreSBsb2NhbCBp
-c3N1ZXMuCgpJJ2xsIHRlc3QgeW91ciBzdWdnZXN0aW9uIGFuZCB0cnkgdG8gc2VuZCBvdXQgdjMg
-d2l0aGluIG5leHQgd2Vlay4KCkJlc3QgcmVnYXJkcywKRGFtb24KCj4gCj4+PiBJbiBvdGhlciBy
-ZXZpZXcgY29tbWVudHM6Cj4+PiAtIHRoZSBicmlkZ2UgY291bGQgdXNlIGRldm1fZHJtX29mX2dl
-dF9icmlkZ2UoKSBhcyBzdWdnZXN0ZWQgaW4KPj4+ICAgICB0aGUgZG9jdW1lbnRhdGlvbiBvZiBk
-cm1fb2ZfZmluZF9wYW5lbF9vcl9icmlkZ2UoKSwgYXMgdGhhdCB3b3VsZAo+Pj4gICAgIHJlbW92
-ZSB0aGUgc2VwYXJhdGUgcGFuZWxfYnJpZGdlIGNyZWF0aW9uCj4+PiAtIGluc3RlYWQgb2YgdXNp
-bmcgcGxhdF9kYXRhLT5uZXh0X2JyaWRnZSBfaW5zaWRlXyB0aGUgZHJpdmVyCj4+PiAgICAgc3Ry
-dWN0IGRybV9icmlkZ2UgaGFzIGEgZmllbGQgbmV4dF9icmlkZ2UgYWxyZWFkeS4KPj4KPj4gR3Jl
-YXQgc3VnZ2VzdGlvbnMsIEkgd2lsbCBpbmNvcnBvcmF0ZSB0aGVtIGZvciB0aGUgbmV4dCB2ZXJz
-aW9uCj4+IGFsb25nc2lkZSBTYXNoaWtvJ3MgY29tbWVudHMuCj4+Cj4+IEJlc3QgcmVnYXJkcywK
-Pj4gRGFtb24KPj4KPj4+Cj4+Pgo+Pj4gSGVpa28KPj4+Cj4+Pgo+Pj4gLS0tLS0tLSA4PCAtLS0t
-LS0tCj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFs
-b2dpeF9kcF9jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4
-X2RwX2NvcmUuYwo+Pj4gaW5kZXggODc3ZTFiM2NhNzUyNS4uMTM4ODY0MGEyN2RlNyAxMDA2NDQK
-Pj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29y
-ZS5jCj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2Rw
-X2NvcmUuYwo+Pj4gQEAgLTQzLDcgKzQzLDcgQEAgc3RhdGljIGNvbnN0IGJvb2wgdmVyaWZ5X2Zh
-c3RfdHJhaW5pbmc7Cj4+PiAgICBzdGF0aWMgYm9vbCBhbmFsb2dpeF9kcF9yZXF1aXJlX3BtX2Zv
-cl9ocGRfaXJxKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQo+Pj4gICAgewo+Pj4gICAg
-CXJldHVybiBhbmFsb2dpeF9kcF9pc19yb2NrY2hpcChkcC0+cGxhdF9kYXRhLT5kZXZfdHlwZSkg
-JiYgIWRwLT5ocGRfZ3Bpb2QgJiYKPj4+IC0JICAgICAgICFkcC0+Zm9yY2VfaHBkOwo+Pj4gKwkg
-ICAgICAgIWRwLT5ocGRfYnJpZGdlICYmICFkcC0+Zm9yY2VfaHBkOwo+Pj4gICAgfQo+Pj4gICAg
-Cj4+PiAgICBzdGF0aWMgdm9pZCBhbmFsb2dpeF9kcF9pbml0X2RwKHN0cnVjdCBhbmFsb2dpeF9k
-cF9kZXZpY2UgKmRwKQo+Pj4gQEAgLTcyLDcgKzcyLDcgQEAgc3RhdGljIGludCBhbmFsb2dpeF9k
-cF9kZXRlY3RfaHBkKHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZpY2UgKmRwKQo+Pj4gICAgCSAqIFRy
-dXN0IGNvbm5lY3Rpb24gc3RhdHVzIGZyb20gZG93bnN0cmVhbSBicmlkZ2UgKGUuZy4sCj4+PiAg
-ICAJICogZGlzcGxheS1jb25uZWN0b3Igd2l0aCBocGQtZ3Bpb3MpLgo+Pj4gICAgCSAqLwo+Pj4g
-LQlpZiAoZHAtPnBsYXRfZGF0YS0+bmV4dF9icmlkZ2UgJiYgZHAtPmNvbm5lY3Rpb25fbm90aWZp
-ZWQpCj4+PiArCWlmIChkcC0+aHBkX2JyaWRnZSAmJiBkcC0+Y29ubmVjdGlvbl9ub3RpZmllZCkK
-Pj4+ICAgIAkJcmV0dXJuIDA7Cj4+PiAgICAKPj4+ICAgIAl3aGlsZSAodGltZW91dF9sb29wIDwg
-RFBfVElNRU9VVF9MT09QX0NPVU5UKSB7Cj4+PiBAQCAtOTI2LDEwICs5MjYsMTAgQEAgYW5hbG9n
-aXhfZHBfYnJpZGdlX2RldGVjdChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLCBzdHJ1Y3QgZHJt
-X2Nvbm5lY3RvciAqY29ubmUKPj4+ICAgIAkgKi8KPj4+ICAgIAlpZiAoZHAtPnBsYXRfZGF0YS0+
-bmV4dF9icmlkZ2UgJiYgZHAtPmxhc3RfYnJpZGdlX2lzX3BhbmVsKQo+Pj4gICAgCQlzdGF0dXMg
-PSBjb25uZWN0b3Jfc3RhdHVzX2Nvbm5lY3RlZDsKPj4+IC0KPj4+IC0JaWYgKCFhbmFsb2dpeF9k
-cF9kZXRlY3RfaHBkKGRwKSkKPj4+ICsJZWxzZSBpZiAoIWFuYWxvZ2l4X2RwX2RldGVjdF9ocGQo
-ZHApKQo+Pj4gICAgCQlzdGF0dXMgPSBjb25uZWN0b3Jfc3RhdHVzX2Nvbm5lY3RlZDsKPj4+ICAg
-IAo+Pj4gK3ByaW50aygiLS0tPiAlcyBzdGF0dXMgJWRcbiIsIF9fZnVuY19fLCBzdGF0dXMpOwo+
-Pj4gICAgCXJldHVybiBzdGF0dXM7Cj4+PiAgICB9Cj4+PiAgICAKPj4+IEBAIC0xMDQ0LDcgKzEw
-NDQsNyBAQCBzdGF0aWMgaW50IGFuYWxvZ2l4X2RwX3NldF9icmlkZ2Uoc3RydWN0IGFuYWxvZ2l4
-X2RwX2RldmljZSAqZHApCj4+PiAgICAJCWdvdG8gb3V0X2RwX2luaXQ7Cj4+PiAgICAJfQo+Pj4g
-ICAgCj4+PiAtCWlmICghYW5hbG9naXhfZHBfcmVxdWlyZV9wbV9mb3JfaHBkX2lycShkcCkpCj4+
-PiArCWlmICghYW5hbG9naXhfZHBfcmVxdWlyZV9wbV9mb3JfaHBkX2lycShkcCkgJiYgIWRwLT5o
-cGRfYnJpZGdlKQo+Pj4gICAgCQllbmFibGVfaXJxKGRwLT5pcnEpOwo+Pj4gICAgCXJldHVybiAw
-Owo+Pj4gICAgCj4+PiBAQCAtMTE4Nyw3ICsxMTg3LDcgQEAgc3RhdGljIHZvaWQgYW5hbG9naXhf
-ZHBfYnJpZGdlX2Rpc2FibGUoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKPj4+ICAgIAlpZiAo
-ZHAtPmRwbXNfbW9kZSAhPSBEUk1fTU9ERV9EUE1TX09OKQo+Pj4gICAgCQlyZXR1cm47Cj4+PiAg
-ICAKPj4+IC0JaWYgKCFhbmFsb2dpeF9kcF9yZXF1aXJlX3BtX2Zvcl9ocGRfaXJxKGRwKSkKPj4+
-ICsJaWYgKCFhbmFsb2dpeF9kcF9yZXF1aXJlX3BtX2Zvcl9ocGRfaXJxKGRwKSAmJiAhZHAtPmhw
-ZF9icmlkZ2UpCj4+PiAgICAJCWRpc2FibGVfaXJxKGRwLT5pcnEpOwo+Pj4gICAgCj4+PiAgICAJ
-YW5hbG9naXhfZHBfc2V0X2FuYWxvZ19wb3dlcl9kb3duKGRwLCBQT1dFUl9BTEwsIDEpOwo+Pj4g
-QEAgLTEyNjQsNiArMTI2NCw3IEBAIHN0YXRpYyB2b2lkIGFuYWxvZ2l4X2RwX2JyaWRnZV9ub3Rp
-Znkoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSwgc3RydWN0IGRybV9jb25uCj4+PiAgICAJc3Ry
-dWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAgPSB0b19kcChicmlkZ2UpOwo+Pj4gICAgCj4+PiAg
-ICAJZHAtPmNvbm5lY3Rpb25fbm90aWZpZWQgPSAoc3RhdHVzID09IGNvbm5lY3Rvcl9zdGF0dXNf
-Y29ubmVjdGVkKTsKPj4+ICtwcmludGsoIi0tLT4gJXMgY29ubmVjdGlvbl9ub3RpZmllZCAlZFxu
-IiwgX19mdW5jX18sIGRwLT5jb25uZWN0aW9uX25vdGlmaWVkKTsKPj4+ICAgIH0KPj4+ICAgIAo+
-Pj4gICAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fYnJpZGdlX2Z1bmNzIGFuYWxvZ2l4X2RwX2Jy
-aWRnZV9mdW5jcyA9IHsKPj4+IEBAIC0xNjQxLDYgKzE2NDIsMTMgQEAgc3RhdGljIGludCBhbmFs
-b2dpeF9kcF9hdXhfZG9uZV9wcm9iaW5nKHN0cnVjdCBkcm1fZHBfYXV4ICphdXgpCj4+PiAgICAJ
-aWYgKHJldCAmJiByZXQgIT0gLUVOT0RFVikKPj4+ICAgIAkJcmV0dXJuIHJldDsKPj4+ICAgIAo+
-Pj4gKwkvKgo+Pj4gKwkgKiBUaGVyZSBpcyBhIG5leHQgbGluayBpbiB0aGUgY2hhaW4gd2hpY2gg
-aXMgbm90IGEgcGFuZWwsIHdlIHNob3VsZAo+Pj4gKwkgKiBleHBlY3QgaG90cGx1Zy1pbmZvcm1h
-dGlvbiBjb21pbmcgZnJvbSB0aGVyZS4KPj4+ICsJICovCj4+PiArCWlmIChwbGF0X2RhdGEtPm5l
-eHRfYnJpZGdlICYmICFkcm1fYnJpZGdlX2lzX3BhbmVsKHBsYXRfZGF0YS0+bmV4dF9icmlkZ2Up
-KQo+Pj4gKwkJZHAtPmhwZF9icmlkZ2UgPSB0cnVlOwo+Pj4gKwo+Pj4gICAgCXJldHVybiBjb21w
-b25lbnRfYWRkKGRwLT5kZXYsIHBsYXRfZGF0YS0+b3BzKTsKPj4+ICAgIH0KPj4+ICAgIAo+Pj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBf
-Y29yZS5oIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3Jl
-LmgKPj4+IGluZGV4IGQwZmIyNWU1NDNlYTAuLmVjY2EzYjg3YjQ0NTYgMTAwNjQ0Cj4+PiAtLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuaAo+Pj4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmgK
-Pj4+IEBAIC0xNjksNiArMTY5LDcgQEAgc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSB7Cj4+PiAg
-ICAJYm9vbAkJCWZhc3RfdHJhaW5fZW5hYmxlOwo+Pj4gICAgCWJvb2wJCQlwc3Jfc3VwcG9ydGVk
-Owo+Pj4gICAgCWJvb2wJCQlsYXN0X2JyaWRnZV9pc19wYW5lbDsKPj4+ICsJYm9vbAkJCWhwZF9i
-cmlkZ2U7Cj4+PiAgICAJYm9vbAkJCWNvbm5lY3Rpb25fbm90aWZpZWQ7Cj4+PiAgICAKPj4+ICAg
-IAl1OCBkcGNkW0RQX1JFQ0VJVkVSX0NBUF9TSVpFXTsKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX3JlZy5jIGIvZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9yZWcuYwo+Pj4gaW5kZXggZWM1OTUwMDY2
-ZjgzOC4uNmYwZDY0MjczOWZmZCAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9i
-cmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfcmVnLmMKPj4+IEBAIC0xODIsNyArMTgyLDcgQEAg
-dm9pZCBhbmFsb2dpeF9kcF9jb25maWdfaW50ZXJydXB0KHN0cnVjdCBhbmFsb2dpeF9kcF9kZXZp
-Y2UgKmRwKQo+Pj4gICAgCXdyaXRlbCgwLCBkcC0+cmVnX2Jhc2UgKyBBTkFMT0dJWF9EUF9DT01N
-T05fSU5UX01BU0tfMik7Cj4+PiAgICAJd3JpdGVsKDAsIGRwLT5yZWdfYmFzZSArIEFOQUxPR0lY
-X0RQX0NPTU1PTl9JTlRfTUFTS18zKTsKPj4+ICAgIAo+Pj4gLQlpZiAoZHAtPmhwZF9ncGlvZCkg
-ewo+Pj4gKwlpZiAoZHAtPmhwZF9ncGlvZCB8fCBkcC0+aHBkX2JyaWRnZSkgewo+Pj4gICAgCQlh
-bmFsb2dpeF9kcF9tdXRlX2hwZF9pbnRlcnJ1cHQoZHAsIEhQRF9JUlEpOwo+Pj4gICAgCX0gZWxz
-ZSB7Cj4+PiAgICAJCS8qCj4+PiBAQCAtNDM4LDcgKzQzOCw3IEBAIHZvaWQgYW5hbG9naXhfZHBf
-aW5pdF9ocGQoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCj4+PiAgICB7Cj4+PiAgICAJ
-dTMyIHJlZzsKPj4+ICAgIAo+Pj4gLQlpZiAoZHAtPmhwZF9ncGlvZCkKPj4+ICsJaWYgKGRwLT5o
-cGRfZ3Bpb2QgfHwgZHAtPmhwZF9icmlkZ2UpCj4+PiAgICAJCXJldHVybjsKPj4+ICAgIAo+Pj4g
-ICAgCWFuYWxvZ2l4X2RwX2NsZWFyX2hvdHBsdWdfaW50ZXJydXB0cyhkcCwgSFBEX0lSUSk7Cj4+
-PiBAQCAtNTM5LDYgKzUzOSw5IEBAIGludCBhbmFsb2dpeF9kcF9nZXRfcGx1Z19pbl9zdGF0dXMo
-c3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHApCj4+PiAgICAJaWYgKGRwLT5ocGRfZ3Bpb2Qp
-IHsKPj4+ICAgIAkJaWYgKGdwaW9kX2dldF92YWx1ZShkcC0+aHBkX2dwaW9kKSkKPj4+ICAgIAkJ
-CXJldHVybiAwOwo+Pj4gKwl9IGVsc2UgaWYgKGRwLT5ocGRfYnJpZGdlKSB7Cj4+PiArCQlpZiAo
-ZHAtPmNvbm5lY3Rpb25fbm90aWZpZWQpCj4+PiArCQkJcmV0dXJuIDA7Cj4+PiAgICAJfSBlbHNl
-IHsKPj4+ICAgIAkJcmVnID0gcmVhZGwoZHAtPnJlZ19iYXNlICsgQU5BTE9HSVhfRFBfU1lTX0NU
-TF8zKTsKPj4+ICAgIAkJaWYgKHJlZyAmIEhQRF9TVEFUVVMpCj4+Pgo+Pj4KPj4+Cj4+Pgo+Pj4K
-Pj4KPj4KPiAKPiAKPiAKPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Detlev,
+
+On Wed Sep 16, 2026 at 4:25 PM CEST, Detlev Casanova wrote:
+> Hello,
+>
+> Currently, the only way to track buffers allocated by v4l2 from usespace
+> is to use the subsystem available debug information (e.g.:
+> /sys/kernel/debug/dma_buf/bufinfo).
+> But that information is generic and cannot be matched to a v4l2 driver or
+> to a userspace application: It is merely information about the allocation.
+>
+> Other types of allocations require the developper to find where they are
+> exposed and how to link them to their test.
+>
+> This can become hard to track when mutliple drivers are working at the
+> same time.
+>
+> To improve that, add a small wrapper around buffer allocations to keep
+> track of them at the video device level so that we can add debug
+> information to them like a name, userspace pid/fd that did the
+> allocation,... and expose them to userspace via a debugfs entry.
+>
+> It currently only supports DMA buffer allocations and adds support for
+> VB2 allocations too.
+> Other kind of memory tracking can be added later.
+> The verisilicon and rkvdec drivers have been ported to use the tracked
+> dma alloactions.
+>
+> Note that this depends on the ftrace support patch series[1] that
+> provides fd/pid info in the v4l2_fh struct.
+> That series is a bit old, so this is based on an older linux version, but
+> that only changes things for the last 2 commits.
+>
+> A v4l2top utility[2] has been made, to be used in parallel with the
+> fdinfo patch series[3], to show the list of active streams with their HW
+> and memory usage.
+>
+> With this, debugfs looks like this when decoding a HEVC 1080p stream with
+> rkvdec on rk3588:
+>
+>   root # cat /sys/kernel/debug/v4l2/fdc38100.video-codec/mem 
+>   created-by                      fd              pid             size            label
+>   -------------------------------------------------------------------------------------
+>   gst-launch-1.0                  7               635             39184           vdpu381-hevc-priv-tbl
+>   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-7
+>   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-6
+>   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-5
+>   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-4
+>   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-3
+>   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-2
+>   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-1
+>   gst-launch-1.0                  7               635             4177920         cap-00000000ac34392e-0
+>   gst-launch-1.0                  7               635             3133440         out-000000005c0230f6-1
+>   gst-launch-1.0                  7               635             3133440         out-000000005c0230f6-0
+>   =====================================================================================
+>   Total size: 39729424
+
+I build a kernel with your 3 patch series and I also build the v4l2top utility.
+Cool tool :-D 
+Especially after I found out I should build the 'upstream' branch ;-)
+
+There were a couple of things I noticed:
+1) With 'plain' kernel 7.3-rc3 but also with all my patches included, but
+   excluding the patches from this series, I see this:
+
+```
+root@nanopc-t6-plus:~# ls -lh /sys/kernel/debug/v4l2/
+total 0
+drwxr-xr-x 3 root root 0 Sep 20 15:10 fdee0000.hdmi_receiver
+```
+
+Which is presumably the reason that with a kernel which also includes this
+patch series, I get the following kernel error:
+``[   10.849405] debugfs: 'v4l2' already exists in '/'``
+
+I don't think this should generate an error/warning/info message at all,
+but just silently dealt with.
+
+Checking v4l2 debug dir again results in this:
+```
+root@nanopc-t6-plus:~# ls -lh /sys/kernel/debug/v4l2/
+total 0
+drwxr-xr-x 2 root root 0 Sep 20 15:13 fdb60000.rga
+drwxr-xr-x 2 root root 0 Sep 20 15:13 fdb80000.rga
+drwxr-xr-x 2 root root 0 Sep 20 15:13 fdc38000.video-codec
+drwxr-xr-x 2 root root 0 Sep 20 15:13 fdee0000.hdmi_receiver
+```
+
+I noticed my video-codec address was slightly different from yours.
+
+Playing a 1080p BBB x264 video with a patched ffmpeg+mpv, results in this:
+```
+root@nanopc-t6-plus:~# cat /sys/kernel/debug/v4l2/fdc38000.video-codec/mem
+created-by                      fd              pid             size            label
+-------------------------------------------------------------------------------------
+mpv                             26              2027            4177920         cap-00000000205a3b3a-10
+mpv                             26              2027            4177920         cap-00000000205a3b3a-9
+mpv                             26              2027            4177920         cap-00000000205a3b3a-8
+mpv                             26              2027            16736           vdpu381-h264-priv-tbl
+mpv                             26              2027            3133440         out-0000000079002cb1-3
+mpv                             26              2027            3133440         out-0000000079002cb1-2
+mpv                             26              2027            3133440         out-0000000079002cb1-1
+mpv                             26              2027            3133440         out-0000000079002cb1-0
+mpv                             26              2027            4177920         cap-00000000205a3b3a-7
+mpv                             26              2027            4177920         cap-00000000205a3b3a-6
+mpv                             26              2027            4177920         cap-00000000205a3b3a-5
+mpv                             26              2027            4177920         cap-00000000205a3b3a-4
+mpv                             26              2027            4177920         cap-00000000205a3b3a-3
+mpv                             26              2027            4177920         cap-00000000205a3b3a-2
+mpv                             26              2027            4177920         cap-00000000205a3b3a-1
+mpv                             26              2027            4177920         cap-00000000205a3b3a-0
+=====================================================================================
+Total size: 58507616
+```
+
+And looking at the v4l2top utility, I noticed the following:
+1. I see differing indications of the load while it's playing :-D
+2. The ``Clock rate`` is always 750.0MHz (or 786431991Hz) (expected I think?)
+3. The ``Total Memory`` is always 0B and the ``Memory usage details`` column
+   is always empty. That's also the case when I press one of the arrow keys
+   which seems to select the entry. Am I missing sth or doing sth wrong?
+
+Cheers,
+  Diederik
+
+> [1]: https://lore.kernel.org/all/20260610-v4l2-add-ftrace-v2-0-9756edf72ac1@collabora.com/
+> [2]: https://github.com/cazou/v4l2top/tree/upstream
+> [3]: https://lore.kernel.org/all/20260706-v4l2-add-fdinfo-v3-0-d556568cf38e@collabora.com/
+>
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+> Detlev Casanova (4):
+>       media: Add a v4l2 memory allocations tracker
+>       media: Store v4l2_fh in the vb_queue
+>       media: verisilicon: Switch to tracked dma allocations
+>       media: rkvdec: Switch to tracked dma allocations
+>
+>  drivers/media/common/videobuf2/Makefile            |   1 +
+>  drivers/media/common/videobuf2/v4l2-allocator.c    | 186 +++++++++++++++++++++
+>  .../media/common/videobuf2/videobuf2-dma-contig.c  |  27 ++-
+>  .../media/platform/rockchip/rkvdec/rkvdec-h264.c   |  14 +-
+>  .../media/platform/rockchip/rkvdec/rkvdec-hevc.c   |  14 +-
+>  .../media/platform/rockchip/rkvdec/rkvdec-rcb.c    |  21 ++-
+>  .../platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c |  14 +-
+>  .../platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c |  14 +-
+>  .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c |  14 +-
+>  .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c |  14 +-
+>  .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    |  33 ++--
+>  drivers/media/platform/rockchip/rkvdec/rkvdec.c    |   4 +
+>  drivers/media/platform/verisilicon/hantro.h        |   1 +
+>  drivers/media/platform/verisilicon/hantro_drv.c    |   4 +
+>  drivers/media/platform/verisilicon/hantro_h264.c   |   7 +-
+>  drivers/media/platform/verisilicon/hantro_hevc.c   | 100 ++++++-----
+>  drivers/media/platform/verisilicon/hantro_mpeg2.c  |  16 +-
+>  .../media/platform/verisilicon/hantro_postproc.c   |  14 +-
+>  drivers/media/platform/verisilicon/hantro_vp8.c    |  25 +--
+>  drivers/media/platform/verisilicon/hantro_vp9.c    |  34 +++-
+>  .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 160 +++++++++++-------
+>  drivers/media/v4l2-core/v4l2-device.c              |   4 +-
+>  include/media/v4l2-allocator.h                     |  26 +++
+>  include/media/v4l2-device.h                        |   2 +
+>  include/media/videobuf2-core.h                     |   3 +
+>  25 files changed, 555 insertions(+), 197 deletions(-)
+> ---
+> base-commit: 66affa37cfac0aec061cc4bcf4a065b0c52f7e19
+> change-id: 20260612-v4l2-add-mem-tracker-da0088c74a64
+> prerequisite-change-id: 20260608-v4l2-add-ftrace-aec6e7f60a6c:v2
+> prerequisite-patch-id: bd45b4df66799a7f9f22b49973a78d1bd3590a4a
+> prerequisite-patch-id: 6a5ed5615f08257cf854d441785066b5ff4d5d47
+> prerequisite-patch-id: 02594c869498b9e91e416d70242afbaa6b3a8d6a
+> prerequisite-patch-id: 9f25ec78f3b99ac1c5d42eb732f5bd9eae73fadd
+> prerequisite-patch-id: 4ed2c2e8c3abfa7f6328d0ea4f488ca5a3eec8fb
+> prerequisite-patch-id: 8787d50eb80e1a63a57a123268cade23c9e64618
+> prerequisite-patch-id: bfe85822378fa771f9bbc3e1e8c8ff6bce0eb7fd
+> prerequisite-patch-id: 784d0801da320f7b41194f4632ee422c32f1b5b8
+> prerequisite-patch-id: 362c8366e2efbfb5e6f1a3f71cfddbd46e8d1506
+>
+> Best regards,
+> --  
+> Detlev Casanova <detlev.casanova@collabora.com>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
