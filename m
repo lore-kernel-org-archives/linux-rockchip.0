@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5877FC982ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 16:52:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81212C982ED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 20:20:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:From:To:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zhwwtpQrOe46hKZYat7vxxHUmIpsTqCiFtQ9RGstPkc=; b=DN4Tztz8gjh+Pf
-	RPsut7eTMrFqGnlEzq1KiSheIbSZZjedwD9oW32n1Fn9tjZRFrSrEAq4ZV0N1XQAHrAh+IuZcmtJW
-	C7GnL9/s4+x7aVoLuwhjhU+iELQT4+PzERLf8nykCHWElkN2HdGgAKl87TakP1zlvDK+g26XaENFh
-	VSPbjTmjSUpP5Vqh0QGplEQm775SiJ58JHboMQG1hmfWCpTUeOWxBQggw0sUjxRZoChn4bKam2oga
-	orQXs4qilKpxuRbkLFOVKQh+HddCf/lqkGf2SVLCCSlVM2ydFQj5hKiTkkpvL/CdtQnk4drMvfFHS
-	oqQSRD/l4Pub63A9049w==;
+	List-Owner; bh=VFedXOwCcAac6Lyp9S6mOGYeTqFSfksImDVJ0QqLaX8=; b=cDBc2Ulbr3b8lI
+	AgksL8rGgN0qzB+F1Ie5IZGk/+G8YRQlzM/lB23IIkuthJqZfFdUoffbkg9R35djwG46i7UE+B0i6
+	4ujLffnBYKBMP0CdUDstHY7VcrwsDRMAD39JIOuGW8UCaek4AicnzZS4I65JVCVdikx86NAaF3vIn
+	R39KTW9Vipko5f+VhZ8boWnLnSuFjvbifQCbxqTOz1i9E8NATIJOzBW42AydupcWeg3qlHaSLATwQ
+	Cj3IBlQRuONHRqHDFU7ezpGTqx0onNwlPDsMNg7p84DvhguxNaTBZfVvnmYi6UWPe8CXl5k+5qFRL
+	T2w1wIHggdiugJrrnFyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8hFa-00000002tJo-46uH;
-	Mon, 21 Sep 2026 16:52:18 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1x8kV4-00000003KSX-2Ndh;
+	Mon, 21 Sep 2026 20:20:30 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8hFN-00000002tF9-1iL5;
-	Mon, 21 Sep 2026 16:52:06 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id C077D4E40755;
-	Mon, 21 Sep 2026 16:52:03 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 8CF895FFB2;
-	Mon, 21 Sep 2026 16:52:03 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id C859C1032913F;
-	Mon, 21 Sep 2026 18:51:49 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1790009517; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=E8+TuwKUE2XBa2SuyOFw2XhfA4p/VrA5lusEOG2wO70=;
-	b=DOj1Y41gnblEuUbAcpP3/m5HMMS+8CCXjkY0nVms96dcQJVAg6eDcUo/6D1ViLtXTvg/t6
-	dHQ7g26/B+Pl8hrOF9+FnEzM5qlsuFK/Qpep/KPqvJrDNIsGzH497zB30KindqOD11tjQU
-	sVWzDA/oXW+BOeMjwphAXxrivYUOp7/mV0KOP+uqH+upCyq8Ed6J8v95Zu+EatW8JEmDya
-	EzYiR1FyK+9ONJTnTx+Ho5A5MA+ZZdNDlSTWwXpMDgv3vhSYT2XghlFtBaVDM5Du/0Vp9s
-	nKPzT/Qx4U8tvu2vyp1PkjsWu18hnjG7QKoc6NyrPox5y8/8QrUygXcs4LqaSw==
-Mime-Version: 1.0
-Date: Mon, 21 Sep 2026 18:51:49 +0200
-Message-Id: <DLL5EWC41AQ4.ZVQI9FO4EEVN@bootlin.com>
-Cc: <kernel@collabora.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
- <linux-fbdev@vger.kernel.org>
-To: "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Cristian Ciocaltea"
- <cristian.ciocaltea@collabora.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
- <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Dave Stevenson"
- <dave.stevenson@raspberrypi.com>, "Dmitry Baryshkov" <lumag@kernel.org>,
- "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
- <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Chen-Yu
- Tsai" <wens@kernel.org>, "Samuel Holland" <samuel@sholland.org>,
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, "Raspberry Pi Kernel
- Maintenance" <kernel-list@raspberrypi.com>, "Raphael Gallais-Pou"
- <rgallaispou@gmail.com>, "Sandy Huang" <hjc@rock-chips.com>,
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Andy Yan"
- <andy.yan@rock-chips.com>, "Algea Cao" <algea.cao@rock-chips.com>, "Daniel
- Stone" <daniels@collabora.com>, "Liu Ying" <victor.liu@nxp.com>, "Phong LE"
- <ple@baylibre.com>, "Helge Deller" <deller@gmx.de>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v11 14/74] drm/bridge: Fix unlocked list access in
- drm_bridge_attach()
-X-Mailer: aerc 0.22.0
-References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
- <20260901-dw-hdmi-qp-scramb-v11-14-bc12954a0688@collabora.com>
- <DLKTC338JONX.CQ6L7JYQ4UDD@bootlin.com>
-In-Reply-To: <DLKTC338JONX.CQ6L7JYQ4UDD@bootlin.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1x8kV1-00000003KRi-0NYA;
+	Mon, 21 Sep 2026 20:20:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=t56rUUwRmXd5Bwozpjc5KFkjkkSuskX8gA5Flws04pw=; b=0YgOTHuRfrXx1uFY1wMgE/U3e0
+	+dw/SC2Xa43f3HhGb4BANiW7jobFbsqgyg+H+OHB+9velcZTPQP3OLgQRcZfL3ZuFMhwbsfoU5LpQ
+	KscCXVeHleND2dk4DeIMrIyRmDqEd8x0S2W14yqzbij1R0tY0zrPzqENhXhxgQ/oBN/6abHZa0jsm
+	5xtYyleOrUyi4tvI1qjEATxfxEhUWURulNBpTFmXcQNpeI6XMz77ZsMBHl59H4Fe1nSDbBEACMs0s
+	R9vl+SbDHSNLxIZbf9boY17c+SpCWINR8BSudWHYfoTZz/fQGUOw/ergGpgsnhGaGG8tvgzRk6wau
+	8gIKa2bg==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Jacopo Mondi <jacopo@jmondi.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, Jimmy Su <jimmy.su@intel.com>,
+ Matthias Fend <matthias.fend@emfend.at>,
+ Mikhail Rudenko <mike.rudenko@gmail.com>,
+ Daniel Scally <dan.scally@ideasonboard.com>,
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+ Michael Riesch <michael.riesch@collabora.com>,
+ Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+ Sylvain Petinot <sylvain.petinot@foss.st.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Paul Elder <paul.elder@ideasonboard.com>,
+ Martin Kepplinger <martin.kepplinger@puri.sm>,
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+ Tommaso Merciai <tomm.merciai@gmail.com>,
+ Svyatoslav Ryhel <clamor95@gmail.com>,
+ Richard Acayan <mailingradian@gmail.com>, Frank Li <Frank.Li@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ Thierry Reding <thierry.reding@kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux@ew.tq-group.com, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-tegra@vger.kernel.org,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Quentin Schulz <quentin.schulz@cherry.de>, David Heidelberg <david@ixit.cz>
+Subject: Re: [PATCH v6 4/6] arm64: dts: rockchip: Convert to new media orientation
+ definitions
+Date: Mon, 21 Sep 2026 22:19:14 +0200
+Message-ID: <4535025.ejJDZkT8p0@phil>
+In-Reply-To: <20260918-kbingham-orientation-v6-4-5e8b1f01be29@ideasonboard.com>
+References: <20260918-kbingham-orientation-v6-0-5e8b1f01be29@ideasonboard.com>
+ <20260918-kbingham-orientation-v6-4-5e8b1f01be29@ideasonboard.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_095205_611971_60EC127D 
-X-CRM114-Status: UNSURE (   8.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260921_132027_150236_66ACAFE3 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,39 +92,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon Sep 21, 2026 at 9:23 AM CEST, Luca Ceresoli wrote:
-> On Tue Sep 1, 2026 at 8:50 PM CEST, Cristian Ciocaltea wrote:
->> drm_bridge_attach() inspects bridge->list to warn about bridges being
->> attached without a previous drm_bridge_add() call, but it does so
->> without holding bridge_lock.
->>
->> The list head can be concurrently written by drm_bridge_add(),
->> drm_bridge_remove() and __drm_bridge_free() while they operate on
->> neighbouring entries of bridge_list or bridge_lingering_list, all of
->> them under bridge_lock.  Hence the unlocked read is a data race, even
->> though it is unlikely to change the outcome of list_empty() in practice.
->>
->> Perform the check with bridge_lock held.
->>
->> Fixes: 76f1a9711b83 ("drm/bridge: add warning for bridges attached without being added")
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->
-> Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-
-And tested with bridge hotplug:
-Tested-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRnJlaXRhZywgMTguIFNlcHRlbWJlciAyMDI2LCAxMjo0NDoxNiBNaXR0ZWxldXJvcMOkaXNj
+aGUgU29tbWVyemVpdCBzY2hyaWViIEtpZXJhbiBCaW5naGFtOgo+IEZyb206IEtpZXJhbiBCaW5n
+aGFtIDxraWVyYW4uYmluZ2hhbStyZW5lc2FzQGlkZWFzb25ib2FyZC5jb20+Cj4gCj4gVGhlIG9y
+aWVudGF0aW9uIHByb3BlcnR5IGZvciB2aWRlbyBpbnRlcmZhY2UgZGV2aWNlcyBub3cgaGFzIGRl
+ZmluaXRpb25zCj4gdG8gcHJldmVudCBoYXJkY29kZWQgaW50ZWdlciB2YWx1ZXMgZm9yIHRoZSBl
+bnVtIG9wdGlvbnMuCj4gCj4gVXBkYXRlIHRoZSB1c2VycyB0aHJvdWdob3V0IHRoZSByb2NrY2hp
+cCBkZXZpY2UgdHJlZXMgdG8gdXNlIHRoZSBuZXcKPiBkZWZpbml0aW9ucy4KPiAKPiBSZXZpZXdl
+ZC1ieTogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29t
+Pgo+IFJldmlld2VkLWJ5OiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAY2hlcnJ5LmRl
+PiAjIFBQLTE1MTYgYW5kCj4gUmV2aWV3ZWQtYnk6IERhdmlkIEhlaWRlbGJlcmcgPGRhdmlkQGl4
+aXQuY3o+Cj4gU2lnbmVkLW9mZi1ieTogS2llcmFuIEJpbmdoYW0gPGtpZXJhbi5iaW5naGFtK3Jl
+bmVzYXNAaWRlYXNvbmJvYXJkLmNvbT4KClJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVp
+a29Ac250ZWNoLmRlPgoKU2FtZSB0aGluZyBUaGllcnJ5IHNhaWQsIGFwcGxpZXMgZm9yIHRoZSBS
+b2NrY2hpcCBjaGFuZ2UsIGlmIHNvbWVvbmUKd2FudHMgdG8gYXBwbHkgKHBhcnRzIG9mKSB0aGUg
+c2VyaWVzIHRvIHRoZSBtZWRpYSB0cmVlLCB0aGF0IGlzIGZpbmUKd2l0aCBtZS4KCk90aGVyd2lz
+ZSBJJ2xsIGp1c3QgcGljayAibWluZSIgYWZ0ZXIgdGhlIG5leHQgbWVyZ2Utd2luZG93LgoKCkhl
+aWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
