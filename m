@@ -4,83 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F25A9C982E1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 07:24:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E8A2C982DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 07:35:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yd9WXx9M9Wvzyu34cVJeTwmdWyH6HW2DMEdx6aLCslg=; b=UEQ4Tvx65Nvt8r
-	PiNHfTH0V9QR9h4dDTD3YpM0FfDil7TF07LNwm5+Z8Nt64Ougfe9A5W/NSq/fI0MSH2DkvuhdvcUI
-	32620P2NuNGKIppXCvmjYda8uJ2JNPCjEbjQi3uugqV0qC6Za5GGRDc6I2OIXuBiTDUA7fYlBNbP2
-	CdYoh8qRe+7mNhuISfS0Op28lpsQbNdYCS+ygqPd8wvIGl0iNvoY4vPpAraG+ZYSoS1l0pylctHmZ
-	qRt5IAksNFMdDJkS76uAB0vGqTYK4SAAxP3HxNBiMfNzyyekURG6GWRHaRtvR+v0sLccikj4ML3uv
-	/dVEru93Dn+jeyqNIlxA==;
+	List-Owner; bh=DVqwRETruAfqtL3mbsFjEzJP/CBd3z25uD4u9iHNinU=; b=m69PWV3430Bjsz
+	grR4Q0238eBoaqNQuLeN2gIVEdmhtTmyePmjT0hWY354506XhjG6+F6UxeeUmgU1jIDQtxQS+a7FF
+	Hij6o9zvvjBzbSpOZ50ExQVlW2g/weKTjT9AFciEEQE5OIuLA8lE5ILgrFUuONxDrgPeVffCgDwkq
+	mJdbo1hAorsFTnzStQD/9Pxi67oiGePGAI+LzrT/u8zu5+u/OYLABPquE0m49HbVgnZFGJNuzPjkJ
+	LlRHpIZysM+faiVTqJzIu5kbk3ZqP4fsa88xCTWkQiLAo4gXSZkaXugDzxvaHZaTMQ8ndM2+hgyWe
+	QnW+Jlu1HtAICrgbwlZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8YNq-00000001CH3-0UKv;
-	Mon, 21 Sep 2026 07:24:14 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1x8YZ3-00000001EnC-0A1Q;
+	Mon, 21 Sep 2026 07:35:49 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8YNn-00000001CEW-1nX4
-	for linux-rockchip@lists.infradead.org;
-	Mon, 21 Sep 2026 07:24:13 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id C06664E40CA7;
-	Mon, 21 Sep 2026 07:24:09 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 7AB9F60339;
-	Mon, 21 Sep 2026 07:24:09 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 1BA8610328F4D;
-	Mon, 21 Sep 2026 09:23:56 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1789975447; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=RG0d/rWWwG5EWi14PZmG5qQITNqAdcjhf3I0KoA9dFs=;
-	b=CF4oYu2f2Fb/6/P7G2edz+XGRaxwUM5y+QalfFftYc0K9ACk3pKG19v1Um+gp+onLXLOAJ
-	XIWebq+ZnBsUGIWQ/NZNNkbdrZLZrg9SmIbGwpb8GFep47g3S359CAIOawHvPUMBfq002u
-	5YsxQvNUoAdJlltQ+8pJAMoO9OeuxcUunDnEDL25IhJ6iIvH4yM+gdd0dcHzAnw7Kf6JMb
-	wffUF0B8jCFMuYKQjMW1VJ8wgJntfoU7V5WjeW6JE1H9DxBVy0+KgqXljo4rgC0CUOy6tI
-	vl2QvKL5UETgKy276ScNoF4LORkAjcvyc021rRxRFh4Sb/93oVLYRy/9WfDKZg==
-Mime-Version: 1.0
-Date: Mon, 21 Sep 2026 09:23:55 +0200
-Message-Id: <DLKTC338JONX.CQ6L7JYQ4UDD@bootlin.com>
-Subject: Re: [PATCH v11 14/74] drm/bridge: Fix unlocked list access in
- drm_bridge_attach()
-Cc: <kernel@collabora.com>, <linux-kernel@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
- <linux-fbdev@vger.kernel.org>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard"
- <mripard@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "David
- Airlie" <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Dave
- Stevenson" <dave.stevenson@raspberrypi.com>, "Dmitry Baryshkov"
- <lumag@kernel.org>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil
- Armstrong" <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>,
- "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Luca
- Ceresoli" <luca.ceresoli@bootlin.com>, "Chen-Yu Tsai" <wens@kernel.org>,
- "Samuel Holland" <samuel@sholland.org>, =?utf-8?q?Ma=C3=ADra_Canal?=
- <mcanal@igalia.com>, "Raspberry Pi Kernel Maintenance"
- <kernel-list@raspberrypi.com>, "Raphael Gallais-Pou"
- <rgallaispou@gmail.com>, "Sandy Huang" <hjc@rock-chips.com>,
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Andy Yan"
- <andy.yan@rock-chips.com>, "Algea Cao" <algea.cao@rock-chips.com>, "Daniel
- Stone" <daniels@collabora.com>, "Liu Ying" <victor.liu@nxp.com>, "Phong LE"
- <ple@baylibre.com>, "Helge Deller" <deller@gmx.de>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.22.0
-References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
- <20260901-dw-hdmi-qp-scramb-v11-14-bc12954a0688@collabora.com>
-In-Reply-To: <20260901-dw-hdmi-qp-scramb-v11-14-bc12954a0688@collabora.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1x8YZ0-00000001Ely-1hCM;
+	Mon, 21 Sep 2026 07:35:48 +0000
+Received: from killaraus.ideasonboard.com (2001-14ba-70f3-e800--a06.rev.dnainternet.fi [IPv6:2001:14ba:70f3:e800::a06])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id DA348C36;
+	Mon, 21 Sep 2026 09:33:54 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1789976035;
+	bh=EgnOCBnnJ5SOs0ufuZFAwGK3a5ufdWOiG7rFGmgMKeU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NYJnH9jiYSuPY+BwBDdOisWoegG0YGvrWBJuC91+Dqj36D8Ei+WW6V0hr2WdRLzA4
+	 ceTiFTS1Dko1IjjTrFjG3vY0NRiNYl6eVDHf1tdYPmY6GvW9EDDxObEKF12Kxkr7uO
+	 cfiq2l+XPxObD84mFWWDFi3fAyfeni8e6gtQ0o3Q=
+Date: Mon, 21 Sep 2026 10:35:38 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Kieran Bingham <kieran.bingham@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jacopo Mondi <jacopo@jmondi.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Jimmy Su <jimmy.su@intel.com>,
+	Matthias Fend <matthias.fend@emfend.at>,
+	Mikhail Rudenko <mike.rudenko@gmail.com>,
+	Daniel Scally <dan.scally@ideasonboard.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+	Sylvain Petinot <sylvain.petinot@foss.st.com>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Martin Kepplinger <martin.kepplinger@puri.sm>,
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+	Tommaso Merciai <tomm.merciai@gmail.com>,
+	Svyatoslav Ryhel <clamor95@gmail.com>,
+	Richard Acayan <mailingradian@gmail.com>,
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>, linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux@ew.tq-group.com, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Alexander Stein <alexander.stein@ew.tq-group.com>,
+	David Heidelberg <david@ixit.cz>,
+	Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+	Quentin Schulz <quentin.schulz@cherry.de>
+Subject: Re: [PATCH v6 0/6] dt-bindings: Orientation defines
+Message-ID: <20260921073538.GA1466037@killaraus.ideasonboard.com>
+References: <20260918-kbingham-orientation-v6-0-5e8b1f01be29@ideasonboard.com>
+ <CAMuHMdWWOB48AUCbXh=9ZGCK2qZyVH06kJ2paRY-wxkq5NC16A@mail.gmail.com>
+ <CAMuHMdVhK0vm_Ksze_=jG8D_=8Q45v+ezNbxwL7JntTt_v_fkg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAMuHMdVhK0vm_Ksze_=jG8D_=8Q45v+ezNbxwL7JntTt_v_fkg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_002411_628346_CE9908F1 
-X-CRM114-Status: UNSURE (   8.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260921_003546_878362_9F38798E 
+X-CRM114-Status: GOOD (  17.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,28 +108,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue Sep 1, 2026 at 8:50 PM CEST, Cristian Ciocaltea wrote:
-> drm_bridge_attach() inspects bridge->list to warn about bridges being
-> attached without a previous drm_bridge_add() call, but it does so
-> without holding bridge_lock.
->
-> The list head can be concurrently written by drm_bridge_add(),
-> drm_bridge_remove() and __drm_bridge_free() while they operate on
-> neighbouring entries of bridge_list or bridge_lingering_list, all of
-> them under bridge_lock.  Hence the unlocked read is a data race, even
-> though it is unlikely to change the outcome of list_empty() in practice.
->
-> Perform the check with bridge_lock held.
->
-> Fixes: 76f1a9711b83 ("drm/bridge: add warning for bridges attached without being added")
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+On Mon, Sep 21, 2026 at 09:07:01AM +0200, Geert Uytterhoeven wrote:
+> On Mon, 21 Sept 2026 at 09:05, Geert Uytterhoeven wrote:
+> > On Fri, 18 Sept 2026 at 12:55, Kieran Bingham wrote:
+> > > Add a new dt-bindings/media/video-interface-devices.h header that
+> > > initially supports the Orientation types and convert existing users
+> > > throughout the code base.
+> >
+> > Just noticed these are already in since commit 6ab5acfb8dd38729
+> > ("dt-bindings: media: Add macros for video interface devices") in
+> > media/master (next-20260903 and later)?
+> >
+> > > v3 collects tags, and fixes the typo, but drops all hunks that do not
+> >
+> > [...]
+> >
+> > > v2:
+> >
+> > Interesting changelog order ;-)
+> >
+> > [...]
+> >
+> > > v3:
+> >
+> > [...]
+> >
+> > > -v4:
+> >
+> > [...]
+> >
+> >
+> > > -v5:
+> > >  - Definitions now accepted in linux-media, rebased to get conversions in.
+> >
+> > Oh, you say so here ;-)
+> >
+> > >       arm64: dts: renesas: Convert to new media orientation definitions
+> >
+> > So it's been safe for me to pick this up since v5?
+> 
+> No it's not, there is a hard dependency.
 
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+The whole series needs to be postponed by one kernel cycle :-/ It's not
+urgent so it's not a big deal. Kieran will have the priviledge of
+rebasing and sending a v7 :-)
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
