@@ -4,68 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B03C8C982ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 15:53:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D069EC982F8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 15:53:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1MToBnY1jR8DjNTrajn9QAOsqRJzY4iB8of/7jUT2pw=; b=MxY9Jq0qDYW2rB
-	zijtKoKeYXloHHttG2zhYIhaOiLwHKeEgqp+2z5ZcC937uwalD6L0kCE1QTeVRK7FQZAc/fmfZqS8
-	zpPgs9J3vsBSgEMDv5/9LMHvcX3tZ5VUaM1uDb1kHSM/hPltvnqolNFNkJ8gXszssLit+tnWgR5eg
-	BjGl8qWakbjsYfSwWt/pLlcVxg0qH9/h+GDEXU05cz9dnGCeToiOhH8zTm4CgELhBWUaI7Dx7bFFF
-	lvIOG7AiWfgEdVB1O/5rtVA4tNOOhVnHk63zhUPhWtLCCLJOSJxsXUAO1iPS9x3SxkJs8LoHla0lC
-	r15AxCFoUSkfxr1ZDPoA==;
+	List-Owner; bh=lXbaMtUy+ddklhpf7g2oLsOwkRKiI5KJHJPWz6bB8v4=; b=lCEDZpBlfQMlPU
+	X+aQ+fxZBReUUgrJPZmGTawK4PWydcV3UX61WNSapiIxEu9hScIruPvd9ABbe2Mghw3bY2o9PIhbE
+	o7oh9Xll430utMOcIGuEh8a9oVRRn29bm+yI99CPiXMS+umQIS74fNoPgm2ZffWMPqpCsQGKj6A3H
+	xK7i2Uue5mE4EvAwu+ZbPq+U8M2TBFocPJauOLaPxGjXvxP1qmeJfhWlb6MfEP3rraG6U0AER/H0N
+	qrvbnX1nJ6aQFsfgCfpH2fiO2WwugY/ihxqwiMaw9C+raS1GS8JkHsJsHTlbK4vo8tfmZVmzQdG6o
+	4IjBM9IktUxYOf1cNQAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8gKb-00000002hWa-1cWj;
-	Mon, 21 Sep 2026 15:53:25 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8gKO-00000002hKD-013I;
-	Mon, 21 Sep 2026 15:53:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=hVfhbzvE6GURebcBrX2O4AYlNWe76f6ylBqD+StMY7g=; b=eMrC+44gCNxxt9oPaLc9lCXbNa
-	GQuU77Iiq50su7fv0DB924iTbm1O4UwOhhzK8hIoQxM2lss0EjO8AOcS0rPfFmePTbPeEm4uwDPc7
-	r04Dfm+uchufOjW5BBK3+AekBmAyVR40RK7+vzYbSFKhm+r0PozCT0O1xcEegJn1zWSUMTmGDVxbS
-	NomJ2znATxCHNBK6B/oVWs5j8VgFDTYHo/FPDcEKjHckgYNvtSejMcEB62L97kigxPC91E+waiA3m
-	bzXWluTyYyTPDXSVVxA9MCXMscTqL1pdlvFIiaTRa0uavNSGmfozOqW1Gs18u0Fy17zovlefi0KMG
-	reZvsjfA==;
+	id 1x8gKg-00000002hak-2t7e;
+	Mon, 21 Sep 2026 15:53:30 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8gKK-0000000CVLn-0BtV;
-	Mon, 21 Sep 2026 15:53:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790005939; cv=none; 
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x8gKS-00000002hO1-1ZCZ;
+	Mon, 21 Sep 2026 15:53:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1790005957; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=dL8QWo0f+z20HLw9HXd7aGFStuR/k/6l/FzgRHplWzXjfpgtJuClsAOR1DZ512xYHu8NCCcCazC2nApnrzpzPNhdvceP+z1X78p38mpx60wgUMZkUI/Ao4mFSgQSZWorMd1ffR8UsjM1jflS2DFrKLxXRt8gVLx0LlB0uhVfp8U=
+	b=beMzLIihiAxRjocBPr3aCVxfqMlKF6jkyg4f26p+VvrEUfDJeu2UdaFtUmJASqVy2gNRcF23dS3PRb/77JJllZ2eW+5b1GCI6rmRaY8kXCq9GeFm4E3LdhMaROfHR7WZXjNZ9NZJ8pg/tdnW0TA43zITBnDiMYbP/CCj6jIWXgI=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790005939; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=hVfhbzvE6GURebcBrX2O4AYlNWe76f6ylBqD+StMY7g=; 
-	b=HJFIqM47xYTMuV3pj9MXTVTK4CKFU/hv8W2mvG3UieaVb+Aop621PPBOBihh5WJDCUee+UI0PKD4Gv+dDnq8qmUosBaFflQN+2gn0bkgxMK+bpL9G6r40GTtnFb5uxzfQKdVT490HXiNrokbN+diPmvlgRv9vnVIZdseXXec0h8=
+	t=1790005957; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=NSgBlPaazMWThLQxRccKboWgimwqe5RrJvSFqr1YUfY=; 
+	b=LRsoAa6nE5g9sCkL8NKvVS9QE7QDxrbMyERS++oRbtvqhoyxooMTVj6jJ/5ZxQDVQDqoedyoHLNjatcb12V0CX4joAeYij5nQ1BstZFLfLmaQVxc35xJF+hHuCQuyiRdRW77S/3XEzORHIak9w4VNMQt+j6SIDwgDiz1A/Jj9VA=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790005939;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790005957;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=hVfhbzvE6GURebcBrX2O4AYlNWe76f6ylBqD+StMY7g=;
-	b=VEQ3WRT9ZruGE+auQHYNi5JDxIAHiWLc38gvCVDu8IEpeZkhjV7guYnBbNvapKlB
-	kuVL8L0Gg64ALMxnI3i58j7hSNJD8ia9h5AwssgPQFL5iEcXmYjvii55IRXKLDqb4Mb
-	eUk+zgTbkKwFy7EiaiQoctyHlhWRtM0LJzTWf/Vg=
-Received: by smtp.zohomail.com with SMTPS id 1790005938404198.15695800259266;
-	Mon, 21 Sep 2026 08:52:18 -0700 (PDT)
+	bh=NSgBlPaazMWThLQxRccKboWgimwqe5RrJvSFqr1YUfY=;
+	b=AIec5rfwJnUWzqFY3jEIaG9P3LMqSFKgmjeuwplyo8oepFDQZD08gT7UIqDfcjW7
+	KfeFWUUQx9/7igjo+Zd0LzVVdc7y3pxTrxQhGkuo7qH2Z91wLTOKLKgzyxqX5g6ubve
+	9anHKgesNAf1jdt7QcN+XHzrup9TUTtB5Y8aEhJ0=
+Received: by smtp.zohomail.com with SMTPS id 1790005955159213.84382542019796;
+	Mon, 21 Sep 2026 08:52:35 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 21 Sep 2026 17:51:29 +0200
-Subject: [PATCH RFC 03/25] drm/atomic-helper: Set mode_changed on
- vrr_enabled change
+Date: Mon, 21 Sep 2026 17:51:32 +0200
+Subject: [PATCH RFC 06/25] drm/connector: hdmi: Add VTEM EMP generation
 MIME-Version: 1.0
-Message-Id: <20260921-vrr-limiter-uapi-v1-3-2fcd7d011646@collabora.com>
+Message-Id: <20260921-vrr-limiter-uapi-v1-6-2fcd7d011646@collabora.com>
 References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
 In-Reply-To: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
 To: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>, 
@@ -88,9 +73,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_165308_777969_6ABE9274 
-X-CRM114-Status: UNSURE (   9.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260921_085316_499498_FE1D61A8 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,39 +91,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-A change in whether VRR is enabled or not on a CRTC will be of interest
-to any VRR implementation, as they may need to recalculate certain
-internal state in response. So far, this was handled ad-hoc in the
-drivers that implement VRR.
+From: Derek Foreman <derek.foreman@collabora.com>
 
-Handle this in the common DRM atomic core by setting the mode_changed
-flag when this occurs. The rationale for using mode_changed is that VRR
-is deeply intertwined with the current mode with regards to its timing.
-Consequently, any component that cares about a mode change is likely
-also going to care about VRR being enabled/disabled.
+Add VTEM EMP generation to enable variable refresh rate signalling over
+HDMI.
 
+These infoframes are only generated if the sink supports VRR.
+
+Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/drm_atomic_helper.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c | 60 +++++++++++++++++++++++++
+ include/drm/drm_connector.h                     |  5 +++
+ 2 files changed, 65 insertions(+)
 
-diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
-index 9d006f98413a..0664d5779282 100644
---- a/drivers/gpu/drm/drm_atomic_helper.c
-+++ b/drivers/gpu/drm/drm_atomic_helper.c
-@@ -694,6 +694,12 @@ drm_atomic_helper_check_modeset(struct drm_device *dev,
- 			new_crtc_state->active_changed = true;
- 		}
+diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+index d55548399687..33d0c9491643 100644
+--- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
++++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+@@ -853,6 +853,56 @@ static int hdmi_generate_hdmi_vendor_infoframe(const struct drm_connector *conne
+ 	return 0;
+ }
  
-+		if (old_crtc_state->vrr_enabled != new_crtc_state->vrr_enabled) {
-+			drm_dbg_atomic(dev, "[CRTC:%d:%s] VRR changed\n",
-+				       crtc->base.id, crtc->name);
-+			new_crtc_state->mode_changed = true;
-+		}
++static int hdmi_generate_emp_infoframe_vtem(const struct drm_connector *connector,
++					    struct drm_connector_state *conn_state)
++{
++	const struct drm_display_info *info = &connector->display_info;
++	const struct drm_crtc_state *crtc_state =
++		drm_atomic_get_crtc_state(conn_state->state, conn_state->crtc);
++	struct drm_connector_hdmi_infoframe *infoframe =
++		&conn_state->hdmi.infoframes.vtem;
++	struct hdmi_emp_infoframe_vtem *vtem =
++		&infoframe->data.vtem;
++	const struct drm_crtc_vrr_state *vrr = &crtc_state->vrr_state;
++	int vfront;
 +
- 		if (new_crtc_state->enable != has_connectors) {
- 			drm_dbg_atomic(dev, "[CRTC:%d:%s] enabled/connectors mismatch (%d/%d)\n",
- 				       crtc->base.id, crtc->name,
++	infoframe->set = false;
++
++	if (!connector->hdmi.funcs->vtem.write_infoframe)
++		return 0;
++
++	if (!info->hdmi.vrr_capable)
++		return 0;
++
++	hdmi_emp_infoframe_vtem_init(vtem);
++	if (!crtc_state->vrr_enabled || vrr->vic) {
++		vtem->base_refresh_rate = 0;
++		vtem->base_vfront = 0;
++	} else {
++		vtem->base_refresh_rate = drm_mode_vrefresh(&crtc_state->mode);
++		vfront = crtc_state->adjusted_mode.crtc_vsync_start -
++			 crtc_state->adjusted_mode.crtc_vdisplay;
++		if (vfront > U8_MAX || vfront < 0)
++			return -EINVAL;
++
++		vtem->base_vfront = vfront;
++	}
++	vtem->fva_factor_m1 = 0;
++	infoframe->set = true;
++
++	if (!crtc_state->vrr_enabled) {
++		vtem->m_const = false;
++		vtem->game_vrr_en = false;
++		return 0;
++	}
++
++	vtem->game_vrr_en = true;
++
++	vtem->m_const = !vrr->dynamic;
++
++	return 0;
++}
++
+ static int
+ hdmi_generate_infoframes(const struct drm_connector *connector,
+ 			 struct drm_connector_state *conn_state)
+@@ -884,6 +934,10 @@ hdmi_generate_infoframes(const struct drm_connector *connector,
+ 	if (ret)
+ 		return ret;
+ 
++	ret = hdmi_generate_emp_infoframe_vtem(connector, conn_state);
++	if (ret)
++		return ret;
++
+ 	return 0;
+ }
+ 
+@@ -1494,6 +1548,12 @@ int drm_atomic_helper_connector_hdmi_update_infoframes(struct drm_connector *con
+ 			goto out;
+ 	}
+ 
++	if (info->hdmi.vrr_capable)
++		ret = write_or_clear_infoframe(connector,
++					&funcs->vtem, "VTEM",
++					&old_conn_state->hdmi.infoframes.vtem,
++					&new_conn_state->hdmi.infoframes.vtem);
++
+ out:
+ 	mutex_unlock(&connector->hdmi.infoframes.lock);
+ 	return ret;
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index e561a444515f..6e431eb81705 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -1180,6 +1180,11 @@ struct drm_connector_hdmi_state {
+ 		 * matching our state.
+ 		 */
+ 		struct drm_connector_hdmi_infoframe hdmi;
++
++		/**
++		 * @vtem: VTEM EMP infoframes structure matching our state.
++		 */
++		struct drm_connector_hdmi_infoframe vtem;
+ 	} infoframes;
+ 
+ 	/**
 
 -- 
 2.55.0
