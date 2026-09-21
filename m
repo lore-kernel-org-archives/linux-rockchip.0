@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D12D5C982F0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 20:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7906C982ED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 20:33:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ilpDrG2uo7rRlnO81IiPnsyMgbNEecTWlmV+cHz2L6M=; b=4ECrs4uLFa/oVP
-	2A5fFsFU1Pe/cfhZBA/CcTQXFSiCNP9XbC3sdMo50vqBJkZVzCFVMKGtMPCtovXFs06jAX3j83n1B
-	tby9pYX4TZu8vvHMZvxK5hnGIkWv6tCNlRLdmW0wIOsxXP098bSjfat43onu4LF3mvc6Lm9h+6UnK
-	whGjv0/218nKaimZgmoTo84s/4nAJ89kvtSskdBJAr96X6665SMn0p6ZfP6iXsD770L62ArnEmY/2
-	NSvQSSN359EJAuulk3S5ZfxNxR4gphldplSHa6UCJPR86JVyFTinp3EPU1TTKS3UniGXeNasGECZB
-	l70oBK2np+IsGnbdizSQ==;
+	List-Owner; bh=t9DYVxT1dohKesnMxTrLeMCc1ZJQoysmSz9ILIXJF4M=; b=CWfJBRFVvAuZn2
+	XSCPNt4zcV4qG2NrQ2erVzyzYjYF9OAvkZLBqD52LHdGo09LFCFkpJ11Wjv3NbSdDJT0rEdmuXzom
+	wMNxs1CX0gkVpToqTkNNC/TUP9bwMeA4Rsjd6QciJxKnSu4gJZNCxN+r+IAT2nsovOB54k/NqUuRH
+	8uwq9P1zc93bLLavA1w0JPa/rJuuqKd59s5n1IEWgoMX7IN+Qq7S1YXCmTVSsSNXhlfrI6OIa1TII
+	sSkibFFJNbQ0MPvwPI+HEsoEX9OTFOVwwPB6Gs0xsFQFhxiRW94Mt9G+YaNd+pe+Qolv6D1LRO616
+	1fMU/Nr0Fjmzx8jXpYxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8khT-00000003LmH-1R6n;
-	Mon, 21 Sep 2026 20:33:19 +0000
+	id 1x8khb-00000003LtB-2Epd;
+	Mon, 21 Sep 2026 20:33:27 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8khQ-00000003Lk8-1CAJ;
+	id 1x8khQ-00000003Lk6-1P98;
 	Mon, 21 Sep 2026 20:33:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1790022792;
-	bh=UNAUWNTqDPEuEuXC9mWoAT2pgMMEmi++BoO2+4ivAP0=;
+	bh=R+0ORjkMahdOCQPNUtjC94W9dr82Rbx5na9hVn3u/Ng=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KgrWLCTixCpueeWZJYJatDYFFKABzGxUFyJNgtN9jHGp8svFbo0bLIMtI/O7zr0Z/
-	 kugHDhO/4uNs0AS9Feniq/xJ/Msau78QnezHUm/5kC6SPtgcS4S+75C+c/9jFIvQV4
-	 7bpEtZ5SgDn0TZx9c+ymOq3t5aZ+TCkCs5O39RzIFuIPgw92kaKtT0lrrZMKYjzwmH
-	 T3o+WxCzQevb7usgSmGlZUxZzgipzZ9rWotkQ02CUGUrZGVCsQ9TFNukwfL+rzuIbk
-	 by6fnl3/o7fB34Ovs/bZrKRieqdKZ5Idy9nzKTNIyixhtPzOxYPJEcDaM0hmjHDpln
-	 fsQ340jnhUjgA==
+	b=DmHh7oB8N0I6iFYsM/yLTvS9u6vZiXDQVNkQ6JQWkISX7/8YkLi32jUnYQuC0APAA
+	 xHJgvcBNTlwEUKDGvY8SCdEAraQUNkB87ulF5+jvGZHshOcB3wS4QhzprTGlEpogZM
+	 x8FgB9ZAH/qGpGlOeamxANNLL9xmDVTcrLSvNZjZmN2Xyd66/ktepJBOJGCKEQ9Uua
+	 mKK7E6cIFmNblXdJeJAWAJzdcH7+RUqIko8+u8aMqka1pbQa03/cvpS2O5dF5rHm/V
+	 USMCNR1SJGyH5KWUCrPuC49UMaWNQrGs9ZPFbYJlrlsxs20loCUEWaNPvO+30UA7hT
+	 ytidfkGKyeAJg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C47317E0034;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 413BB17E0C41;
 	Mon, 21 Sep 2026 22:33:12 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id EA5ED480029; Mon, 21 Sep 2026 22:33:11 +0200 (CEST)
+	id EEB73480031; Mon, 21 Sep 2026 22:33:11 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Mon, 21 Sep 2026 22:32:44 +0200
-Subject: [PATCH v2 1/8] dt-bindings: clock: rk3588: add PCLK_DDR_MON_CH
- clocks
+Date: Mon, 21 Sep 2026 22:32:47 +0200
+Subject: [PATCH v2 4/8] PM / devfreq: rockchip-dfi: add NO_INTERRUPT perf
+ capability
 MIME-Version: 1.0
-Message-Id: <20260921-rockchip-dfi-cleanup-v2-1-43ff34ac8599@collabora.com>
+Message-Id: <20260921-rockchip-dfi-cleanup-v2-4-43ff34ac8599@collabora.com>
 References: <20260921-rockchip-dfi-cleanup-v2-0-43ff34ac8599@collabora.com>
 In-Reply-To: <20260921-rockchip-dfi-cleanup-v2-0-43ff34ac8599@collabora.com>
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
@@ -67,26 +67,26 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=973;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1817;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=C8FVn7J52GHndEtJHzBBi/WU5EQNwPsmo9I3eNfLHLk=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqxlIetecYtb3J20hC8atWcsqbglmT+CkhLC
- Jk8dABUQO2ml4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqsZSHAAoJENju1/PI
- O/qatlUP/iKZB4Gl3yFDu8Y/+0Iq43KSyrYLCXR9ldal0npuRdHgFT73/9h1tWPPk3qlD+A4Oco
- o9EVEMS7JaW4K/V/1oO5mvKc/QfVXLyesmKBEtGSlAWQqj/x887J9MfiN69aWNEAuAC2dVPj1Xj
- gxgZADlRRN8kfCZc8joF3A+LW9ZOHCdhYQPrF6XiUSH6/8pi3AUQX8fEjfNOfIHC9qbS6M8aQYP
- uYjr6EivK+rzzT4Pq+HJJh0ECw5jP4p4v+b73loUOcirk/xEURicbYHGyw38SOPdcSqeS3Er9wt
- PGNydlrTP5xhHOwdtBhENHmxsR4f5GwXKeQrejnXDKjd1kemfZAxZJnB4bKONKDjPgYW85LyP48
- +nPyY259UheJ1vYpanOLlwpUn9gqq+K6eKMgLXZztsJaIbVTX5oLPpFWKiDW5ClsnXu2qFOf1z+
- ZW1v5M8Uro3HVQiZIdixBlN19MdYtKgSheYvTs0BhyS1Z1bpYEkHDXZAc8F0TqVbKYyZOZxmsrh
- bCWAxagd9zb8xMIlfEXKX+EfZfMkrnpYZiLb4xLjClW9oMRCiIdDbjFYGzpdZc0hF9lRCiu9gvp
- qKEg/0gtoA6/g2SwmTWaFnksntSrIRcXT4XPNkPblgq/aNHaEc07llQUBV5nQ30GbuDwnkj8Rhe
- or5n3Xx0mwJds6nTEZSAt5w==
+ bh=tS8n9fy0LBJivuuQhw0+orcBEclVJquJmZ0El2PFwMU=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqxlIfN8AICiJVidNsvdIb21QpyjLFYOPgg6
+ 9qMij7pt/NHAIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqsZSHAAoJENju1/PI
+ O/qaH1AP/RFHTpW/TW6nZa9Wux+qImLvlT7+QAO0/A9qepx4hqt1BRaHVmF/9+GTpNRc2XMW04R
+ i4BsfDf/ryZHWHFsXa1ppMd/Zq0wHvGWciOX4e1euF64KXEAg9aTN56W9dIdTb/2v1+io2XaGd6
+ yfP4/TNGtZKIEW/1+lCVTMOTs8YtgqnY8OpVhZ1leDm9mWC9k/ZwDPRIE4lTFEjGtDkdYntw6UO
+ 3D2IkmEWLK6d5u1HesCtA7Fbr4jLn5Xd3tTKHa1mQIT56+R3FypRR8/PrpT7O41oaZ4QgCLtmcC
+ PQCc+FcN8OZNuLGsdNwf0GFV3TNuQV6RJyuo5gn80tqh529JO6h3G2UKCkmTL4gWFI+inTWifL7
+ BUtkoVVj8UTK/1iqFpO7pBGnRmyqO7PZVQr8WTDASar77JyS9C01NwS5KQFpYaAI96uDhFxGCPa
+ gcarMHPMWw+kUAoVTtXn2jxqJv5Xdx2SN24FjA57ppV3afDeVr3Lix5BqUTkSc3s8aKb/mXO+dj
+ cL4NhbEkHvlRCEUJq7khtr+2rMe0RCYBuMlFyDGD735TFxvPHnOXmGy9ak9XbHsfB+WtLgeaPbR
+ XkhHHz+7j3JY45Oyi1kqg85f3j2Zsl42GpMqnPR3qJvqvs/uOjd3dWGDfx4vqL9q5tm1Ibm0ZL0
+ LtNPY7WeoFW5URyn+ZD0tTw==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_133316_487838_347D87C7 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20260921_133316_539946_C603C94E 
+X-CRM114-Status: GOOD (  18.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,31 +105,41 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-On RK3588, each memory channel has its own DDR bandwidth monitor
-silicon, and each instance of that has its own clock gate that drives
-the monitor logic.
+The perf subsystem's PERF_PMU_CAP_NO_INTERRUPT is a bit of a
+misnomer.[1] Instead of meaning that the PMU has no interrupt, it
+actually means that the PMU does support sampling. On CPU PMUs, this is
+equivalent to not having an interrupt, but for uncore PMUs like the
+rockchip-dfi PMU is, no meaningful sample data could ever be generated
+regardless of whether or not there is an interrupt, as it is not a CPU.
 
+Since rockchip-dfi doesn't seem to make use of the interrupt the DT
+provides it with anyway, this was probably never a confusion that
+existed in this case; the capability flag was likely just forgotten.
+
+Add PERF_PMU_CAP_NO_INTERRUPT to the set flags for the pmu struct's
+capabilities member, so that the perf core knows about this limitation.
+
+Fixes: 4d586b5724d3 ("PM / devfreq: rockchip-dfi: Add perf support")
+Link: https://lore.kernel.org/all/20250619140442.GH1613376@noisy.programming.kicks-ass.net/ [1]
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- include/dt-bindings/clock/rockchip,rk3588-cru.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/devfreq/event/rockchip-dfi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-index 7528034cff56..6ea25019ebb4 100644
---- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
-+++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-@@ -738,6 +738,10 @@
- #define I2S1_8CH_MCLKOUT_TO_IO		723
- #define I2S2_2CH_MCLKOUT_TO_IO		724
- #define I2S3_2CH_MCLKOUT_TO_IO		725
-+#define PCLK_DDR_MON_CH0		726
-+#define PCLK_DDR_MON_CH1		727
-+#define PCLK_DDR_MON_CH2		728
-+#define PCLK_DDR_MON_CH3		729
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index 5339616f7ca6..dd9edfd6a674 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -646,7 +646,7 @@ static int rockchip_ddr_perf_init(struct rockchip_dfi *dfi)
+ 	seqlock_init(&dfi->count_seqlock);
  
- /* scmi-clocks indices */
- 
+ 	pmu->module = THIS_MODULE;
+-	pmu->capabilities = PERF_PMU_CAP_NO_EXCLUDE;
++	pmu->capabilities = PERF_PMU_CAP_NO_EXCLUDE | PERF_PMU_CAP_NO_INTERRUPT;
+ 	pmu->task_ctx_nr = perf_invalid_context;
+ 	pmu->attr_groups = attr_groups;
+ 	pmu->event_init  = rockchip_ddr_perf_event_init;
 
 -- 
 2.53.0
