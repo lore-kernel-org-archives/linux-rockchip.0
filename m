@@ -4,71 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C9B6C982EE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 20:33:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 644D1C982FA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 21:15:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
 	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qFrHvZxO8R3kEWq4lbN8h4wr9uXVoIIVZBEXggKCVig=; b=q4f6JM3WBErzM0
-	xp8EYhrDH9X29mDwEO7h1oCgWADyf8urCLbs5C2cqYOKEfL8nCKa3aU+j67SY0LtSyTTVeqwDRKDl
-	mB8zuFZQ16pPZWKnHzwf3JIHLUU9AgqqVWOdm4zyj+1pLGGjpTgDY31k2PFkpmfA9CIKTpoT3h9pO
-	YACuL+LGhH1C6uxDktaM/RtkiHJbltBQUjfxRNliXKTbGJDhPTsUqhC0k3mP0GGFKl/ZlkzKYFpkD
-	bly4n9H/6XcOG40TZksBO0Zt1pz+hCRhuas4txfQPlvfXDIGEkShRTClyaCaM4S1/sjHNClvgXprz
-	t9v/458yWQ/Pxgli93IQ==;
+	List-Owner; bh=71J4MNHUrm2noqGvkTgc5zGH4TPVDO1Wuffc94uKVBk=; b=KYrHK54JOImcHV
+	AvVyG8Sj7NBaMQeIccTcFYYCgYLVecvsy9HhB1Q/RhiRONwtCg3LcVgL5q0MNbeaIbEyqTzXb0EOA
+	GHmwM5bWtbSyWa4qfet67q//21AOtUBKpexUbZ1X81+u8mm6iBUFZY+1k9mEtayYpToDQ4ciu4glU
+	Hn2AJFoM3EZP7lpyNADKZm2WdVQC9n49FGwrPMRpOZRAR4MX6WrIisqs2Qbm38NFceIfQDyk+/m8t
+	Ugj4i5SIKaudJqcrx1daIngwRpOKyxKQOjQeqRymVT4ghdWREEBxqqQFR4T/82vDBQDjXqxSb9s9g
+	X3SWQN02/aqPys01ki9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8khy-00000003MEH-3jh8;
-	Mon, 21 Sep 2026 20:33:50 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8khX-00000003Lpn-1AjF;
-	Mon, 21 Sep 2026 20:33:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:From:Sender:Reply-To:
-	Content-ID:Content-Description:In-Reply-To:References;
-	bh=zNbDtjMpZK3YUnsj2R8oZ9TDb5EzAkrOlHovkDj3BFQ=; b=CLrrgM4liC4Ogv1jakLNxwvQ+M
-	AaArMvkRSks3/C9Bz4WyZpNraUurOMy++K0Ek0OHM/rnL761FHwBB/Bstu/0VFmYIZ7tRQeDJedRN
-	D8lP3JhKk503oaHeQj/LdJ7euYgBLkSAofPzQkqCTi5vrSwNP6c/9bQy7hbN3OHcKy+tx96DMvYY4
-	h9un4pugWLCqY9pXQ74LR80rjBGd2YFglCP/QNvlOEn/3OIF0Ue7o1zglZRDMnmR6NZEHMmWNGVec
-	M2sAzDoZMbw8vKBLZl3PFBzR6fV9fcttyzdrQ3b+VnRF0xE/vILJVNAdo5QDpAuu110yiD1EFi4jI
-	D0pxLT4g==;
+	id 1x8lM1-00000003R54-1Jg7;
+	Mon, 21 Sep 2026 21:15:13 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8khT-0000000CnNq-3ceD;
-	Mon, 21 Sep 2026 20:33:22 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x8lLx-00000003R3l-12bi;
+	Mon, 21 Sep 2026 21:15:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790022792;
-	bh=Y2I7vCNExECwOXoayJrB0wiZpZqDSSU8P2y1UKi5Yb0=;
+	s=mail; t=1790025306;
+	bh=uz+1Ip6QENWsADg1pboQHCC4AQH2T4g6L75Y7bdCPX4=;
 	h=From:Subject:Date:To:Cc:From;
-	b=Ma8IV8WMKMH+ib6pPa59xr4eqDVc3GMOyx+ho/RNfk+VqFqIiIWvRv087CjXN18eB
-	 TqNyGUCqZgZUBtpFRq2K50HfIkXFGkBQv4GeukaPKOVMCu4cz8xp9qXFdUO6DXlgze
-	 g1xBmeVoS5+tp5lnVd69XkaXWeWlakuWxS6WBm/ub9fJUuDKOcLlm76GenU9ID8Vkj
-	 Oj3+bSUqZVH5ABNs3x9Mx4T3/Fm8nKxaX6tqofRyJo1MXM5CzMPSF+Ud+F0QMxE02U
-	 zcZEoHTafKqByv+hJbX5d/qQrSxXBu/O1n/q+1Cbvi4H+HBEtwvOJuZA0ck/hlTKZA
-	 krwjg/zhLHunw==
+	b=Juol2uSR+lCANzQWFWAxlzqnzHMccXwuCD/YC5BXarLbIehH5s8EZu6KpRFt4rNWb
+	 3m63oXcQqVQ2Xg/SLX27EF5aDr33uLCGDEWqZ7ptzZ9sBPSfoov0WevNIrWoFfkOWx
+	 W/Fql1S2zWbKJKCsaq51EFDuDY9jR1Oiu/M3zwZfY6m6JuPqW2LilBw273ji21RZZd
+	 LF+nmLVlF69juOfhP6BKkVaWxT0sPzrjOOuUKXWypZqgymHLNDukJpzA0+0e9wMbst
+	 /q3fVVT3OAJbzimkY+MTesc1azSOMJ0t3br7+ttafOnL6KtNc148rL87T9xWeeCvTZ
+	 YC5yWzbly04OA==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3D7EE17E0104;
-	Mon, 21 Sep 2026 22:33:12 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 996ED17E0C7E;
+	Mon, 21 Sep 2026 23:15:06 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id E8F9E48002B; Mon, 21 Sep 2026 22:33:11 +0200 (CEST)
+	id 50FF848002B; Mon, 21 Sep 2026 23:15:06 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v2 0/8] PM / devfreq: rockchip-dfi: cleanups
-Date: Mon, 21 Sep 2026 22:32:43 +0200
-Message-Id: <20260921-rockchip-dfi-cleanup-v2-0-43ff34ac8599@collabora.com>
+Subject: [PATCH v2 0/7] PM / devfreq: rockchip-dfi: RK3576 support
+Date: Mon, 21 Sep 2026 23:15:02 +0200
+Message-Id: <20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WNQQ6CMBBFr0Jm7ZhCTE1deQ/DYhimMoqUtEA0h
- LsLeACXL3n//RmSRJUEl2yGKJMmDd0KxSEDbqi7C2q9MhSmsMblZ4yBn9xoj7VX5FaoG3v0QmJ
- FPIljWKd9FK/vPXsrf5zG6iE8bK3NaDQNIX723ynfvD8XU44GT94YcmeyjuyVQ9tSFSIdObygX
- JblC/0TMTnOAAAA
-X-Change-ID: 20260917-rockchip-dfi-cleanup-feae6eefae9c
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/43PQW6DMBAF0KsgrzsROAEXVrlHlcVgxsUNwe7YW
+ K0i7l5DWlXddfmlr/9m7iIQWwqiK+6CKdlg3ZyDfCqEHnF+JbBDzkKWsinbSkF/Anb6qkfrYTA
+ W+HqsVQNh8d5xhJORzXOt0QzKiDzimYz92IGXyyOHpX8jHbfV7wbT+5Ll+Kj9wvmOH/aPqSfCe
+ fFgCKkhMkit7pLc1noMBNrdbjZ2RVKHI7CuxCaPNkTHn/unqdqh/z6VKigBa1VLlK1R/XDWbpq
+ wd4yHbInLuq5fPi4Ol0oBAAA=
+X-Change-ID: 20260917-b4-rockchip-dfi-rk3576-support-4f2685cafd7f
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
  Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -83,26 +70,26 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2112;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2303;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=Y2I7vCNExECwOXoayJrB0wiZpZqDSSU8P2y1UKi5Yb0=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqxlHfqKO/2pN/JvmX9JE5b+1S7bENphHyLk
- 2q49h4tYveZLokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqsZR3AAoJENju1/PI
- O/qaMXUP/RjAjLOld60tYvyBtU98oEZLq4QKaahyomw107LJJwa0apBR84srWcmq5HRMw2CRIjX
- RzEEGZAkhjfCc8HTP3W9aMzDeCNU+ly0A2u4jkI2tuKqgdLmw/mOLJMFjs/YJcBh+tu/dHQHc0E
- csso8EQfaDTtPLYG7EW0DeYE4A5szhv8tSetdc8qlqV73LbV/ngP7K4xUteDhq9+NeHU+1FZKTA
- 9OpcPx2LG40nAYlfFdP9xOxMDabm7RPXYWozvnbw4Pj7mk0S/fHOIk9pOpWhM2PI4CF37rTkZCr
- S+3WsUezMpXXJ2UlE11zfG0UmcdvT6yocmx8KD8mJu+jq8ddTNQnBhXQ/9QGSGht9HDoXUAzNHh
- dBhaBAEPgIvcrCO5/MQ9G4km6nBpWk6UsSSM47PieDDl3Pq9GStNjjBGWrud7CYtWHR1Ohf9FVc
- ONpwPKM51mX/kolV6jKcNB+xAvz5oPrJ+wKrFv5rvmkuVdD6IPRW+n5tunwxfVTlpUr6oXenLO5
- rpIzkOQo9ERYeRJ75serWVnFfei6RbbS7lkiQ+fdP6Ra2ZVr3BmGRZ8a3/ukpyjfpsJfqfZRXbM
- DklaKgLM9tAIaEfjpBZloq2N+O0ZD6//y2TnDQdlzvk4WIUqkcFOfW9I1wC7Z7nDdPN9AyN4Qsn
- TRU/b2hXUP1bMaoQQRKEwtw==
+ bh=uz+1Ip6QENWsADg1pboQHCC4AQH2T4g6L75Y7bdCPX4=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqxnln2X8WMLZpbX/WOMENzlWYo6LZ2SXsiC
+ jnf9ocGVQUoMIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqsZ5ZAAoJENju1/PI
+ O/qaMN4P/R+I8W7SmUX+3xT7r8TMVydE2oRThJbk7gB2kYwBdrZj/4aKc4gJDvPti4f0kBrKBXm
+ xB7NWy6gKf+GPuGSvQRVlyB4/C/Wx3gUmz7mtn0lbO0y/pPF72oYhiviHezGseELVUoOPUKSf+5
+ e6yQjlSjX4q+wJ2eUs9uqENVjAYv1R71fkzKU4A4MR2Q8QtEDrjXZUO48PF9UjI19iRKyQynEtz
+ IVGL1x/je+hZqdNlJZHdblShsiPdYpCGtNxeyuS/LQD8FvEa/+ZvmXimsI8/ec/VdnYdF2es8qM
+ hQbhszEowRrRW+22Q4+qJp2NYv/iVmAXSxPvVFs0LUZne5d8wxICzNka8v6AwvsFxUxLsgh42Vr
+ uexcaXN1Ly67lSyHGIPz/Sr/bMCkZdyNakLdq6HY3oIWISubi6eaCJ/QAMNIZziz0teKZhUGhvc
+ 9y5PH4/ukbyT+2YXn2e/ZM3oCs7kYds2Ax3ma0+8VAew5gWZaI6I+RDYxtqT/4JEzrq2A3+l0ZW
+ CbevW620GKnQzn9XAXOLKK/gDUY7UrLa6c3BDCljgQPIsECOQhQ4L4riuRVr/l4/mx5Nlq6ZY9q
+ 0E4Ay0jxtvJbEnJqDxvvqvdPMMGgGCojgsIDZTOyDBN/zIkVz6ZFMiYvM4++BzKAQY+553ItCDn
+ svbMdd3buxZJsXih+2yAyRQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_213320_247237_1443A2CE 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20260921_141509_450356_C143EF67 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,45 +106,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds proper handling of the RK3588 clocks required for DDR memory
-monitoring, which involves adding them to the clock driver and the DT
-bindings first. The change is done in a backwards compatible way by
-marking them as CLK_IGNORE_UNUSED and using optional clock get in the
-DFI driver. The series also applies a few cleanups to the DFI driver
-while at it. This is done in preparation for RK3576 support, which
-will also come with some DFI specific clocks.
+This adds RK3576 DDR perf monitoring support to the existing DFI driver.
 
-As everything is done backwards compatible, patches do not need to
-be merged together. So Heiko can take the Rockchip specific patches
-and Chanwoo Choi can take the DFI driver patches.
+This series depends on the cleanup series adding RK3588 clocks together
+with some general DFI driver cleanups:
+
+https://lore.kernel.org/linux-rockchip/20260917-rockchip-dfi-cleanup-v1-0-4f00a97a69a6@collabora.com/
+
+As RK3576 did not yet have upstream DFI support, the clocks are
+considered mandatory for RK3576.
 
 Changes in v2:
-- Link to v1: https://patch.msgid.link/20260917-rockchip-dfi-cleanup-v1-0-4f00a97a69a6@collabora.com
-- DT binding: Do not specify maxItems in the generic part as it has a list
-  of items
-- DT binding: Only set minItems/maxItems for specific SoCs
+- Link to v1: https://patch.msgid.link/20260917-b4-rockchip-dfi-rk3576-support-v1-0-a5752a29f7bd@collabora.com
+- Update DT binding to just define minItems/maxItems
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
-Nicolas Frattaroli (8):
-      dt-bindings: clock: rk3588: add PCLK_DDR_MON_CH clocks
-      dt-bindings: devfreq: event: rockchip,dfi: add clocks to rk3588
-      PM / devfreq: rockchip-dfi: move to per-variant const structs
-      PM / devfreq: rockchip-dfi: add NO_INTERRUPT perf capability
-      PM / devfreq: rockchip-dfi: use bulk clock APIs
-      clk: rockchip: rk3588: add PCLK_DDR_MON_CH gate branches
-      PM / devfreq: rockchip-dfi: make RK3588 use its clocks
-      arm64: dts: rockchip: add dfi clocks on RK3588
+Nicolas Frattaroli (4):
+      dt-bindings: clock: rk3576: add more DFI clocks
+      clk: rockchip: rk3576: add missing DFI clock branch
+      dt-bindings: devfreq: event: rockchip,dfi: add rk3576
+      arm64: dts: rockchip: add DFI node to RK3576
 
- .../bindings/devfreq/event/rockchip,dfi.yaml       |  70 +++++++--
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   4 +
- drivers/clk/rockchip/clk-rk3588.c                  |   8 ++
- drivers/devfreq/event/rockchip-dfi.c               | 160 ++++++++++++++-------
- include/dt-bindings/clock/rockchip,rk3588-cru.h    |   4 +
- 5 files changed, 184 insertions(+), 62 deletions(-)
+Sebastian Reichel (3):
+      PM / devfreq: rockchip-dfi: move register offsets to variant struct
+      PM / devfreq: rockchip-dfi: prepare support for v4 DDRMON
+      PM / devfreq: rockchip-dfi: add RK3576 support
+
+ .../bindings/devfreq/event/rockchip,dfi.yaml       |  19 +++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  11 ++
+ drivers/clk/rockchip/clk-rk3576.c                  |   4 +-
+ drivers/devfreq/event/rockchip-dfi.c               | 136 ++++++++++++++++-----
+ include/dt-bindings/clock/rockchip,rk3576-cru.h    |   6 +
+ 5 files changed, 142 insertions(+), 34 deletions(-)
 ---
-base-commit: cee9395acd8043be0644b25c34bfa86623f2b935
-change-id: 20260917-rockchip-dfi-cleanup-feae6eefae9c
+base-commit: e5e04726cdd043e309677071ab1b65a4b18f422b
+change-id: 20260917-b4-rockchip-dfi-rk3576-support-4f2685cafd7f
+prerequisite-change-id: 20260917-rockchip-dfi-cleanup-feae6eefae9c:v2
+prerequisite-patch-id: 9b56fea3de6c3cf86c5bba33be03da8fabe4ab11
+prerequisite-patch-id: 6c0231d124501b5a5e09e32243e4878a606f8b8d
+prerequisite-patch-id: 85ff85240fb912a93e1a306cdd6e75416b156a2f
+prerequisite-patch-id: 0551828c703b115f8e240ee69ebc0065f5a53536
+prerequisite-patch-id: ad55ffe5e8ff53fb7088aa3ecfcd00bb1d67b80b
+prerequisite-patch-id: 2af929c305fc289aaf52d437c7ecd5a471a00465
+prerequisite-patch-id: b7f769793ec072640d6672d0b9297ad940af3b9a
+prerequisite-patch-id: 2c12b9645664ad5a5822a2a858652363e01067cb
 
 Best regards,
 --  
