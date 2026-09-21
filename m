@@ -4,54 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 787BCC982E6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 16:13:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E35C982ED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 16:52:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:From:To:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IZBGIupL9MfE/4kan/55iRAzPXwPSV6cdmkdRvphMso=; b=rSPeebFAn13EAm
-	SJgPURRKH9BrahNtj9+OAefods97CUc1yWaNLmJsSX4fKT+/fpp4+EHQg54ybd+GNhw71VOoV1/F2
-	ofqCzslqGkwdG3ApUu4b5URCn+sC78Epgo6Y8up+MIY3Dwv3xmAdWaWUImFMY2NwwXNa3a4jJgc+F
-	lW0v1ofSAdQB4Q53fH50/OfyMYdTUY71AqN8VJpREJ1Nj5UtEulft2tgBS//xaVNuFtbNfCyj/uuV
-	qECAtj1dlpm2RRLQkxRrZSxeP3A78x/3G/x2tpUvG6nwkzqT25bagQoR9u4sfdo8R8jvzjHzMTQ+v
-	WKPXpemL25ypZuVf9b/A==;
+	List-Owner; bh=Gc6SHVCd6UzEAABH/X9iWbBvSLAyZg0d1W4VBTZVVJ4=; b=JBbEocAiAUsB40
+	uFFJAGGBjrY/4QO3zbx8Ww9/uvzBk6mz3F4ymvhfL6tlZcXxQfaPzzETOoHg0ZXHL9HscWm3UOEna
+	OgfUv9H7jFubDEQAjOpzBo6Gb1TcUH+Fg6zpVw+m0POOqkkf5VOi1mDewb+6yQLMP/rVRHiNVhMcz
+	w0Sr/82syj8GEjQkFDQUoAoIKvh5N+Ogg4pM2IKYtK7EH7ENsZ709CBLpODuw4htcRcvtg+ekr0ul
+	1Bu1ToLjkvrC9P61MpjQuvcoTJ2QaNEhH5LuAiKOrQeprtwJmk7GerpChrRL64dlAOXQ2pKyz3Q5r
+	RsLNj9kQ6fo7qLt/m6UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8gdr-00000002nIN-1Wpg;
-	Mon, 21 Sep 2026 16:13:19 +0000
-Received: from [95.181.193.9] (helo=mail.auroraos.dev)
+	id 1x8hFE-00000002tC1-3i6e;
+	Mon, 21 Sep 2026 16:51:56 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8gdn-00000002nH9-3w6u;
-	Mon, 21 Sep 2026 16:13:17 +0000
-Received: from [192.168.2.104] (91.79.36.28) by exch16.corp.auroraos.dev
- (10.189.209.38) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1847.3; Mon, 21 Sep
- 2026 19:13:04 +0300
-Message-ID: <140e4538-d493-40a7-a682-00be091332f0@auroraos.dev>
-Date: Mon, 21 Sep 2026 19:13:03 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pmdomain: rockchip: fix domain check in
- rockchip_pm_add_one_domain()
-To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulfh@kernel.org>, Heiko
- Stuebner <heiko@sntech.de>, <linux-pm@vger.kernel.org>,
-	<linux-rockchip@lists.infradead.org>
-CC: Caesar Wang <wxt@rock-chips.com>, Kevin Hilman <khilman@linaro.org>,
-	<linux-arm-kernel@lists.infradead.org>
-References: <20260920175928.42566-1-s.shtylyov@auroraos.dev>
- <ee8bf4cf-b2bd-4cbd-ba8c-2e7a871203e1@rock-chips.com>
-Content-Language: en-US
-From: Sergey Shtylyov <s.shtylyov@auroraos.dev>
-In-Reply-To: <ee8bf4cf-b2bd-4cbd-ba8c-2e7a871203e1@rock-chips.com>
-X-Originating-IP: [91.79.36.28]
-X-ClientProxiedBy: exch16.corp.auroraos.dev (10.189.209.38) To
- exch16.corp.auroraos.dev (10.189.209.38)
+	id 1x8hFA-00000002tAG-3epI;
+	Mon, 21 Sep 2026 16:51:54 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 46F5E4E40755;
+	Mon, 21 Sep 2026 16:51:48 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 04BCA5FFB2;
+	Mon, 21 Sep 2026 16:51:48 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 59E35103291BD;
+	Mon, 21 Sep 2026 18:51:26 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1790009502; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=cSwoV7JYFKwWDkDL4IDFclIBqtgIii8ZsKhV2r0CgdE=;
+	b=IjYWD3xIKW0KiAwSGgakYrxt0r+vUYd0qxiCiN/UWCsb/Lzv6F9MRJMiln7kdo9fS0L97I
+	MsXakBjOTJ1+zKqPla6JTpP36tNNijKQuc05p4N/sYCzdy/c7URDCf+uJa5rryyF/pGD5K
+	CvqGwT/3RpwqR10lvWnK934ts0XBX+qWLGQw+t4WaJu2BG8/qPF+HiQ1510dHvF6L28CmX
+	ioTpVmqh4beeqW3L3IIl55sutm8DOpW/zT1po1oe7QbGwrjZOVXRXmuApmKzwv2DLncD2H
+	1SpLtpGpNxBgOe0ek/Ku+tmxFQw0ujiCLjuQSMInGOlC5v95Mxni3AZCvi3qHg==
+Mime-Version: 1.0
+Date: Mon, 21 Sep 2026 18:51:25 +0200
+Message-Id: <DLL5ELBGGCIU.3LL2QIE4I4MDS@bootlin.com>
+Cc: <kernel@collabora.com>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-sunxi@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
+ <linux-fbdev@vger.kernel.org>, "Sashiko" <sashiko-bot@kernel.org>
+To: "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Cristian Ciocaltea"
+ <cristian.ciocaltea@collabora.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
+ <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Dave Stevenson"
+ <dave.stevenson@raspberrypi.com>, "Dmitry Baryshkov" <lumag@kernel.org>,
+ "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
+ <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Chen-Yu
+ Tsai" <wens@kernel.org>, "Samuel Holland" <samuel@sholland.org>,
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, "Raspberry Pi Kernel
+ Maintenance" <kernel-list@raspberrypi.com>, "Raphael Gallais-Pou"
+ <rgallaispou@gmail.com>, "Sandy Huang" <hjc@rock-chips.com>,
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Andy Yan"
+ <andy.yan@rock-chips.com>, "Algea Cao" <algea.cao@rock-chips.com>, "Daniel
+ Stone" <daniels@collabora.com>, "Liu Ying" <victor.liu@nxp.com>, "Phong LE"
+ <ple@baylibre.com>, "Helge Deller" <deller@gmx.de>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH v11 12/74] drm/bridge: Fix unlocked list_del in
+ drm_bridge_add()
+X-Mailer: aerc 0.22.0
+References: <20260901-dw-hdmi-qp-scramb-v11-0-bc12954a0688@collabora.com>
+ <20260901-dw-hdmi-qp-scramb-v11-12-bc12954a0688@collabora.com>
+ <DLKT61DMSLFT.JA03R1SO6WNU@bootlin.com>
+ <DLKT9WH655L4.37F4JBC3Y14D8@bootlin.com>
+In-Reply-To: <DLKT9WH655L4.37F4JBC3Y14D8@bootlin.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_091315_981390_BB6C98DC 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20260921_095153_065366_07A95136 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,44 +93,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gOS8yMS8yNiA5OjM2IEFNLCBTaGF3biBMaW4gd3JvdGU6CgpbLi4uXQoKPj4gSW4gcm9ja2No
-aXBfcG1fYWRkX29uZV9kb21haW4oKSwgdGhlcmUncyB0aGUgY2hlY2sgKG1vc3QgcHJvYmFibHkg
-Zm9yCj4+IHRoZSBjYXNlIHdoZXJlIHRoZSAicmVnIiBwcm9wIGhhcyBhbiB1bmV4cGVjdGVkIHZh
-bHVlPykgd2hpY2ggZG9lc24ndAo+IAo+IEFncmVlZCB0aGF0IGNoZWNrIGluZGVlZCBtYWtlcyBs
-aXR0bGUgc2Vuc2UuIEJ1dCAibW9zdCBwcm9iYWJseSBmb3IgdGhlCj4gY2FzZSB3aGVyZSB0aGUg
-cmVnIHByb3AgaGFzIGFuIHVuZXhwZWN0ZWQgdmFsdWUiIGRvZXMgbm90IGhvbGQ6IGFuCgogICBJ
-IHRyaWVkIHRvIGd1ZXNzIHdoYXQgdGhlIGNoZWNrIGluIHF1ZXN0aW9uIHdhcyBhY3R1YWxseSBp
-bnRlbmRlZCBmb3IKKGRlc3BpdGUgbWFraW5nIGEgbGl0dGxlIHNlbnNlIGFzIGl0IGlzIG5vdyku
-Li4KCj4gb3V0LW9mLXJhbmdlIHJlZyB2YWx1ZSBpcyBhbHJlYWR5IHJlamVjdGVkIGJ5IHRoZSAi
-aWQgPj0gcG11LT5pbmZvLQo+Pm51bV9kb21haW5zIiBjaGVjayBhYm92ZSwgYW5kIG51bV9kb21h
-aW5zIGVxdWFscwoKICAgSSBub3RpY2VkLiA6LSkKCj4gQVJSQVlfU0laRShkb21haW5faW5mbykg
-Zm9yIGV2ZXJ5IFNvQywgc28gdGhlcmUgYXJlIG5vIGhvbGVzIGluIHRoZQo+IHRhYmxlIHRoYXQg
-dGhlIG5ldyBjaGVjayBjb3VsZCBjYXRjaCB3aXRoIHRoZSBjdXJyZW50IGRhdGEuIEFGQUlDVCwg
-dGhpcwoKICAgT2gsIHRoZXJlIGFyZSBob2xlcyEgOi0pCiAgIElmIHlvdSBsb29rIGF0IChhbmQg
-YmVoaW5kKSB0aGUgaW5kZXhlZCBpbml0aWFsaXplcnMgb2YgKl9wbV9kb21haW5zW10sCnlvdSds
-bCBzZWUgdGhhdCB0aGUgaW5kZXhlcyBkb24ndCBhbHdheXMgc3RhcnQgYXQgMCwgYW5kIHNvIHRo
-ZSBhcnJheXMgYXJlCmFjdHVhbGx5IHNwYXJzZS4uLgoKPiBwYXRjaCBkb2VzIG5vdCBjaGFuZ2Ug
-YW55IHJ1bnRpbWUgYmVoYXZpb3VyOyBpdCBvbmx5IHR1cm5zIGRlYWQgY29kZQo+IGludG8gYSBk
-ZWZlbnNpdmUgY2hlY2sgb24gdGhlIG1hdGNoLWRhdGEgdGFibGVzLgoKICAgSSBob3BlIHlvdSBz
-ZWUgbm93IHRoYXQgdGhpcyBkZWZlbnNpdmUgY2hlY2sgbWFrZXMgYSBiaXQgbW9yZSBzZW5zZS4u
-LgoKPj4gbWFrZSBtdWNoIHNlbnNlIGFzIHRoZSB2YXJpYWJsZSBwZF9pbmZvIHdpbGwgYmUgTlVM
-TCBpZmYgcG11LT5pbmZvLT4KPj4gZG9tYWluX2luZm8gaXMgTlVMTCBhbmQgdGhlIHZhcmlhYmxl
-IGlkIGlzIDAuwqAgV2hhdCBkb2VzIG1ha2Ugc2Vuc2UKPj4gdGhlcmUgaXMgY2hlY2tpbmcgcGRf
-aW5mby0+cHdyX21hc2sgYW5kIHBkX2luZm8tPnJlcV9tYXNrIHdoaWNoIChhcwo+PiBzZWVtcyB0
-byBmb2xsb3cgZnJvbSB0aGUgY29kZSkgY2FuJ3QgYm90aCBiZSAwIGZvciBhIHZhbGlkIGRvbWFp
-bi4uLgo+IAo+IFRoYXQgbWVhbnMgdGhlcmUgaXMgbm8gYnVnIGJlaW5nIGZpeGVkIGhlcmUsIHNo
-b3VsZCB3ZSBkcm9wIHRoZSBmaXhlcyB0YWc/CgogICBJJ2QgbGlrZSB0byBrZWVwIGl0IChidXQg
-dGhhdCdzIHVwIHRvIHRoZSBtYWludGFpbmVycywgb2YgY291cnNlKS4uLgoKPj4gRm91bmQgYnkg
-TGludXggVmVyaWZpY2F0aW9uIENlbnRlciAobGludXh0ZXN0aW5nLm9yZykgd2l0aCB0aGUgU3Zh
-Y2UKPj4gc3RhdGljIGFuYWx5c2lzIHRvb2wuCj4+Cj4+IEZpeGVzOiA3YzY5NjY5M2E0ZjUgKCJz
-b2M6IHJvY2tjaGlwOiBwb3dlci1kb21haW46IEFkZCBwb3dlciBkb21haW4gZHJpdmVyIikKPj4g
-U2lnbmVkLW9mZi1ieTogU2VyZ2V5IFNodHlseW92IDxzLnNodHlseW92QGF1cm9yYW9zLmRldj4K
-ClsuLi5dCgpNQlIsIFNlcmdleQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+On Mon Sep 21, 2026 at 9:21 AM CEST, Luca Ceresoli wrote:
+> On Mon Sep 21, 2026 at 9:16 AM CEST, Luca Ceresoli wrote:
+>> Hello Cristian,
+>>
+>> On Tue Sep 1, 2026 at 8:50 PM CEST, Cristian Ciocaltea wrote:
+>>> When re-adding a bridge that was previously removed, drm_bridge_add()
+>>> drops it from bridge_lingering_list without holding bridge_lock.
+>>>
+>>> Both bridge_list and bridge_lingering_list are protected by bridge_lock,
+>>> as they are concurrently modified by drm_bridge_remove() and
+>>> __drm_bridge_free(), and walked by the debugfs 'bridges' file.  Running
+>>> the list_empty() test and the list_del_init() outside of the lock may
+>>> therefore corrupt either list.
+>>
+>> The analysis appears correct, with a small nit: __drm_bridge_free() cannot
+>> touch the list concurrently to other functions, because it only runs when
+>> the refcount is 0, and all other functions tounch the lists only when they
+>> have a reference. (Should this sentence be wrong, that would be a big bug!)
+>
+> Ah, no, I just realized my concern does not stand. Indeed
+> __drm_bridge_free() can run concurrently on a different bridge than the one
+> being handled by other functions, ending up in modifying the same list. So
+> your comment is fully correct:
+>
+> Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+
+And tested with bridge hotplug:
+Tested-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
