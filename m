@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FEEC982ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 15:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50993C982F8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 15:53:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GbxKn1thvd77O6Be1exEe5AiS9LuRsliY8AmPQvg7Fs=; b=ouYdyrVS9EyZRo
-	uApVLL4B5Sd2f8+CAf3STfxz1Uyz1OxfDbJ/0VsQIL1o4lh1NBrt4D59095B239065ar7httehlGm
-	Yf1V6Bd0TWyDVkAQqzrgFFzMzxfJxBjV6+3FFE77n0kdll9/hWMjlsDTAzVPcKMPMQG6fCCCISM65
-	Zr9SQ0W7b2faOoJdq95fmiIoP5O0tB4DDUEhdKeF5Vkb4Wh08lrXbSKezb5m3gxnqtlhan5XyCusu
-	FPdplIntQw+8ibRQfbcbJouZtZyf3lYPxl/iJwj1telh1igc8F3XmXDjEKkeioGD9YOhpXCzHM0fV
-	gUkZgfYAhVD2hC4rjfaA==;
+	List-Owner; bh=6cc9953AhxrCwAG+TGe3Er2CxwN6rbq4sLDu3+ae1EE=; b=4lZgD85aXsnqTY
+	KLLA4oXQ5Bt+zL9CUhzNwuzOYEAeCLDAJcNILljUXWT+jqrLv/24ePSBcigP4Fv17EwUq0Dt6Rs0j
+	egAK6nLBjfovwWNKAvXt6Lt9WpWZHJJwIiQ8g5hScdvdHpjnctlnU3ikrW/7YKekcf/oqz67cnbac
+	EalPz16TpQSH3qzkOc2alHCT72q55OkRzz7a2oponuBYWq9MKGGwmXhE1nSvmq5J4Sa4heGNh2l7D
+	ix0hRRJ8+zawgOc5tdf5VWOY7QA5TPQLR/Ym2NV8HrBHJM8NWWwcuWA/VX6Rg/E47R5DQmSGd7ndc
+	05gV+XJjHSKt7cbM61bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8gKJ-00000002hFC-3BK1;
-	Mon, 21 Sep 2026 15:53:07 +0000
+	id 1x8gKK-00000002hGM-0Ow6;
+	Mon, 21 Sep 2026 15:53:08 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8gKB-00000002h8v-03lq;
-	Mon, 21 Sep 2026 15:53:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790005929; cv=none; 
+	id 1x8gKH-00000002hDd-3fJf;
+	Mon, 21 Sep 2026 15:53:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1790005945; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Ml3smdYUlqSH1mc6vbEi4yTO3jB8SQVOP3F5f7I0Sm7/CgNHUOqB6wbBfHlFhYXrh0DEPWTR1gWA9Yf5Mdvbc4mHAY2uPYwHSc5GaZNA8p09CWciJ53xvIr8ssVE8z+O7IDCoVNnP/H+480BENWeAaLtxrmmtGzg9YGzHl9P89A=
+	b=ljSNHs+y51ZZ4z/4x1pAepFaDbtFfHOtzS1eiQpDlDrLHxu0AKYd63k6/1MeeuoiNUQ2t/KSAUMhoedmb7ZoMJ2g3Px1KUD+7FVG/tRqQuR3FIY/uA5HJZpXpgMY+SA9pvvQRq9QMeY/urRpAzxgdB+Qne3cfdpJqmOE4L8T6ME=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790005929; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ytG9EVMPqKl2Mw9Xbxf4dujO3AFiJ9cigwIohDH1vlA=; 
-	b=n2Ey+GF00mNbV9T77/DBajAOOcuV6t+CHyWyqkBNaL3MBXGttwujwgM/kM3Z5EVzL7P2Kk7RSA/a/idHnLOMdqCcufg6eXolwQf6+o1WPRbMfSQtHxz0/0aJ6SKCJBlYtFLGkVBdMBDtT2F/6sqpFepvXTCTNy/FKfaC/A7ndbM=
+	t=1790005945; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=DiwDpN9riDDJQcO6V+hK0OwAgWXYH5bbcn0W29vlIso=; 
+	b=BMXp3pZ6gKVvowjbqMV9mALWOTrErIUMJZZbGQnfHRueiBNQXy4wcfJPl+PGBfDo4XJ2Pc6lrGGaixVBLHCXyuJ/Z1d0M9HryzRPcG78oqcpZ0GULkFX/fGch3sXdcB8rCNfqsJPk1mYYJX5kbHWyU0+YGYbeirqi+fdzXqRk0E=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790005929;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790005945;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=ytG9EVMPqKl2Mw9Xbxf4dujO3AFiJ9cigwIohDH1vlA=;
-	b=gU8WwUFLpF1njrpENtAeLn9Je+89Y8DPu3LgczqOAd13iQ0DKPP/lMLfYOhGfLxD
-	GjPUDSVLgBHWOgY9eGj15EgzocYYk2LfctCYNU13ft1oC7MzTYxBeOJFbOC+RdiVzCx
-	J5MeO74szXzSbK08Cpgl+psIsvYdxXxIQlNKBTUs=
-Received: by smtp.zohomail.com with SMTPS id 1790005926723132.8117967235828;
-	Mon, 21 Sep 2026 08:52:06 -0700 (PDT)
+	bh=DiwDpN9riDDJQcO6V+hK0OwAgWXYH5bbcn0W29vlIso=;
+	b=SqzMjGGzJwUZ+VXI+7o8MgXBG1T1uWWFdvKtVqJPV1dDBuFmhnaNntTU9ggZGT+8
+	2Ds2KflAFHbrlmAnMeD67vFy9mlTbU228CCkIe62ZYILaYuREeGgHZ49Nsq1vsSJJGt
+	YEA5V0xGGS1wLD+a2fxY39D/E7enNUtjIcWTcpZI=
+Received: by smtp.zohomail.com with SMTPS id 179000594398149.12293130246803;
+	Mon, 21 Sep 2026 08:52:23 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 21 Sep 2026 17:51:27 +0200
-Subject: [PATCH RFC 01/25] drm/edid: Add a query for vrr range
+Date: Mon, 21 Sep 2026 17:51:30 +0200
+Subject: [PATCH RFC 04/25] video/hdmi: Add VTEM EMP packing
 MIME-Version: 1.0
-Message-Id: <20260921-vrr-limiter-uapi-v1-1-2fcd7d011646@collabora.com>
+Message-Id: <20260921-vrr-limiter-uapi-v1-4-2fcd7d011646@collabora.com>
 References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
 In-Reply-To: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
 To: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>, 
@@ -73,8 +73,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_085259_132504_95A98473 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20260921_085305_955613_0D16DFBE 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,73 +93,209 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Derek Foreman <derek.foreman@collabora.com>
 
-Query the minimum and maximum VRR vertical rates from EDID.
+VTEM EMPs are a type of infoframe that is required for Variable Refresh
+Rate. Add code to pack them.
 
 Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/drm_edid.c  | 26 ++++++++++++++++++++++++++
- include/drm/drm_connector.h |  3 +++
- 2 files changed, 29 insertions(+)
+ drivers/video/hdmi.c | 97 +++++++++++++++++++++++++++++++++++++++++++++++++++-
+ include/linux/hdmi.h | 19 ++++++++++
+ 2 files changed, 115 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index 3148038747b6..a1494028e0f5 100644
---- a/drivers/gpu/drm/drm_edid.c
-+++ b/drivers/gpu/drm/drm_edid.c
-@@ -6309,6 +6309,25 @@ static void drm_parse_dsc_info(struct drm_hdmi_dsc_cap *hdmi_dsc,
- 		hdmi_dsc->total_chunk_kbytes = hf_scds[13] & DRM_EDID_DSC_TOTAL_CHUNK_KBYTES;
+diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
+index 45b42f14a750..ed9abc7ad228 100644
+--- a/drivers/video/hdmi.c
++++ b/drivers/video/hdmi.c
+@@ -983,6 +983,10 @@ hdmi_infoframe_pack(union hdmi_infoframe *frame,
+ 		length = hdmi_vendor_any_infoframe_pack(&frame->vendor,
+ 							buffer, size);
+ 		break;
++	case HDMI_INFOFRAME_TYPE_EMP:
++		length = hdmi_emp_infoframe_vtem_pack(&frame->vtem,
++						      buffer, size);
++		break;
+ 	default:
+ 		WARN(1, "Bad infoframe type %d\n", frame->any.type);
+ 		length = -EINVAL;
+@@ -994,9 +998,11 @@ EXPORT_SYMBOL(hdmi_infoframe_pack);
+ 
+ static const char *hdmi_infoframe_type_get_name(enum hdmi_infoframe_type type)
+ {
+-	if (type < 0x80 || type > 0x9f)
++	if (type < 0x7F || type > 0x9f)
+ 		return "Invalid";
+ 	switch (type) {
++	case HDMI_INFOFRAME_TYPE_EMP:
++		return "EMP";
+ 	case HDMI_INFOFRAME_TYPE_VENDOR:
+ 		return "Vendor";
+ 	case HDMI_INFOFRAME_TYPE_AVI:
+@@ -1516,6 +1522,29 @@ hdmi_vendor_any_infoframe_log(const char *level,
+ 	}
  }
  
-+static void drm_parse_vrr_info(struct drm_display_info *info, const u8 *hf_scds)
++static void
++hdmi_emp_infoframe_vtem_log(const char *level,
++			    struct device *dev,
++			    const struct hdmi_emp_infoframe_vtem *frame)
 +{
-+	struct drm_monitor_range_info *range = &info->monitor_range;
-+	const int pld_len = cea_db_payload_len(hf_scds);
++	hdmi_infoframe_log_header(level, dev,
++				  (const struct hdmi_any_infoframe *)frame);
 +
-+	if (pld_len < 10)
-+		return;
-+
-+	if (!range->min_vfreq)
-+		range->min_vfreq = FIELD_GET(DRM_EDID_VRR_MIN_MASK, hf_scds[9]);
-+
-+	if (pld_len < 11)
-+		return;
-+
-+	if (!range->max_vfreq)
-+		range->max_vfreq = (FIELD_GET(DRM_EDID_VRR_MAX_UPPER_MASK, hf_scds[9]) << 8) |
-+				    hf_scds[10];
++	hdmi_log("    game vrr enabled: %u\n", frame->game_vrr_en);
++	hdmi_log("    fva factor minus 1: %u\n", frame->fva_factor_m1);
++	hdmi_log("    m_const: %u\n", frame->m_const);
++	hdmi_log("    base vertical front porch: %u\n", frame->base_vfront);
++	hdmi_log("    base refresh rate: %u\n", frame->base_refresh_rate);
 +}
 +
- /* Sink Capability Data Structure */
- static void drm_parse_hdmi_forum_scds(struct drm_connector *connector,
- 				      const u8 *hf_scds)
-@@ -6371,6 +6390,13 @@ static void drm_parse_hdmi_forum_scds(struct drm_connector *connector,
- 		dsc_support = true;
++static void
++hdmi_emp_infoframe_log(const char *level,
++		       struct device *dev,
++		       const union hdmi_infoframe *frame)
++{
++	/* Only support VTEM for now */
++	hdmi_emp_infoframe_vtem_log(level, dev, &frame->vtem);
++}
+ /**
+  * hdmi_infoframe_log() - log info of HDMI infoframe
+  * @level: logging level
+@@ -1542,6 +1571,9 @@ void hdmi_infoframe_log(const char *level,
+ 	case HDMI_INFOFRAME_TYPE_DRM:
+ 		hdmi_drm_infoframe_log(level, dev, &frame->drm);
+ 		break;
++	case HDMI_INFOFRAME_TYPE_EMP:
++		hdmi_emp_infoframe_log(level, dev, frame);
++		break;
  	}
- 
-+	drm_parse_vrr_info(info, hf_scds);
+ }
+ EXPORT_SYMBOL(hdmi_infoframe_log);
+@@ -1919,3 +1951,66 @@ int hdmi_infoframe_unpack(union hdmi_infoframe *frame,
+ 	return ret;
+ }
+ EXPORT_SYMBOL(hdmi_infoframe_unpack);
 +
-+	if (info->monitor_range.min_vfreq > 0)
-+		hdmi->vrr_capable = true;
-+	else
-+		hdmi->vrr_capable = false;
++/**
++ * hdmi_emp_infoframe_vtem_init() - initialize an HDMI VTEM EMP
++ * @emp: HDMI VTEM EMP
++ */
++void hdmi_emp_infoframe_vtem_init(struct hdmi_emp_infoframe_vtem *emp)
++{
++	memset(emp, 0, sizeof(*emp));
++	emp->type = HDMI_INFOFRAME_TYPE_EMP;
++}
++EXPORT_SYMBOL(hdmi_emp_infoframe_vtem_init);
 +
- 	drm_dbg_kms(connector->dev,
- 		    "[CONNECTOR:%d:%s] HF-VSDB: max TMDS clock: %d KHz, HDMI 2.1 support: %s, DSC 1.2 support: %s\n",
- 		    connector->base.id, connector->name,
-diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 2ee7c59329aa..593fbeaffa16 100644
---- a/include/drm/drm_connector.h
-+++ b/include/drm/drm_connector.h
-@@ -380,6 +380,9 @@ struct drm_hdmi_info {
- 
- 	/** @dsc_cap: DSC capabilities of the sink */
- 	struct drm_hdmi_dsc_cap dsc_cap;
++/**
++ * hdmi_emp_infoframe_vtem_pack() - pack a vtem into a binary buffer
++ * @vtem: pointer to &struct hdmi_emp_infoframe_vtem to pack
++ * @buffer: pointer to pre-allocated output buffer
++ * @size: maximum size in bytes of @buffer
++ *
++ * Pack a VTEM infoframe struct into a binary buffer in a way that's suitable
++ * to be sent out over the wire.
++ *
++ * Returns the number of bytes packed into the binary buffer or a negative
++ * error code on failure.
++ */
++ssize_t hdmi_emp_infoframe_vtem_pack(struct hdmi_emp_infoframe_vtem *vtem,
++				     void *buffer, size_t size)
++{
++	u8 *ptr = buffer;
 +
-+	/** @vrr_capable: The sink supports variable refresh rate */
-+	bool vrr_capable;
++	if (size < HDMI_INFOFRAME_SIZE(VTEM))
++		return -EINVAL;
++
++	/* 4 bits max */
++	if (vtem->fva_factor_m1 > 0xF)
++		return -EINVAL;
++
++	memset(buffer, 0, size);
++
++	/* Header Data */
++	ptr[0] = vtem->type;
++	ptr[1] = BIT(7) | BIT(6);
++	ptr[2] = 0;
++
++	ptr[3] = BIT(7) | BIT(2);
++
++	ptr[4] = 0;
++	ptr[5] = 1;
++	ptr[6] = 0;
++	ptr[7] = 1;
++	ptr[8] = 0;
++	ptr[9] = 4;
++
++	/* This is where the VTEM part starts */
++	ptr[10] = (vtem->fva_factor_m1 << 4) |
++		  (vtem->m_const ? BIT(1) : 0) |
++		  (vtem->game_vrr_en ? BIT(0) : 0);
++	ptr[11] = vtem->base_vfront;
++	ptr[12] = vtem->base_refresh_rate >> 8 & 0x3;
++	ptr[13] = vtem->base_refresh_rate & 0xFF;
++
++	return 14;
++}
++EXPORT_SYMBOL(hdmi_emp_infoframe_vtem_pack);
+diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
+index b80a5ee63bb2..71e2b36896af 100644
+--- a/include/linux/hdmi.h
++++ b/include/linux/hdmi.h
+@@ -55,6 +55,7 @@ enum hdmi_packet_type {
  };
  
- /**
+ enum hdmi_infoframe_type {
++	HDMI_INFOFRAME_TYPE_EMP = 0x7F,
+ 	HDMI_INFOFRAME_TYPE_VENDOR = 0x81,
+ 	HDMI_INFOFRAME_TYPE_AVI = 0x82,
+ 	HDMI_INFOFRAME_TYPE_SPD = 0x83,
+@@ -76,6 +77,7 @@ enum hdmi_infoframe_type {
+ #define HDMI_AUDIO_INFOFRAME_SIZE  10
+ #define HDMI_DRM_INFOFRAME_SIZE    26
+ #define HDMI_VENDOR_INFOFRAME_SIZE  4
++#define HDMI_VTEM_INFOFRAME_SIZE   10
+ 
+ /*
+  * HDMI 1.3a table 5-14 states that the largest InfoFrame_length is 27,
+@@ -235,6 +237,18 @@ struct hdmi_drm_infoframe {
+ 	u16 max_fall;
+ };
+ 
++struct hdmi_emp_infoframe_vtem {
++	enum hdmi_infoframe_type type;
++	unsigned char version;
++	unsigned char length;
++
++	bool game_vrr_en;
++	bool m_const;
++	unsigned char fva_factor_m1;
++	unsigned char base_vfront;
++	u16 base_refresh_rate;
++};
++
+ void hdmi_avi_infoframe_init(struct hdmi_avi_infoframe *frame);
+ ssize_t hdmi_avi_infoframe_pack(struct hdmi_avi_infoframe *frame, void *buffer,
+ 				size_t size);
+@@ -249,6 +263,10 @@ ssize_t hdmi_drm_infoframe_pack_only(const struct hdmi_drm_infoframe *frame,
+ int hdmi_drm_infoframe_check(struct hdmi_drm_infoframe *frame);
+ int hdmi_drm_infoframe_unpack_only(struct hdmi_drm_infoframe *frame,
+ 				   const void *buffer, size_t size);
++void hdmi_emp_infoframe_vtem_init(struct hdmi_emp_infoframe_vtem *frame);
++ssize_t hdmi_emp_infoframe_vtem_pack(struct hdmi_emp_infoframe_vtem *frame,
++				     void *buffer,
++				     size_t size);
+ 
+ enum hdmi_spd_sdi {
+ 	HDMI_SPD_SDI_UNKNOWN,
+@@ -457,6 +475,7 @@ union hdmi_infoframe {
+ 	union hdmi_vendor_any_infoframe vendor;
+ 	struct hdmi_audio_infoframe audio;
+ 	struct hdmi_drm_infoframe drm;
++	struct hdmi_emp_infoframe_vtem vtem;
+ };
+ 
+ ssize_t hdmi_infoframe_pack(union hdmi_infoframe *frame, void *buffer,
 
 -- 
 2.55.0
