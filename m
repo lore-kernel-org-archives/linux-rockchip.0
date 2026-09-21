@@ -4,75 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17D9CC982ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 21:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75201C982ED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 21:59:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ujnqcFVmLYf1X1knySMxSON4bbStymUaMcth8Dkf8RQ=; b=ziiu/zQbSPg4oV
-	F6msWoZGxh1K7RY5r/GgiF+5PqeVDwDHFxN+TJOF+qCyj9/omU5YhgqS/lBDFqnZ3FP1Ykup2L5Yd
-	pMpV2JbSEyzitTIBq8eNPkVutOkTtOQfBogziDG0hp4+UxaTcdDXsD2fwdMKsA4uDYYt9z79XioBM
-	BkWgY1oWP8OS4olJrhkBeByuQ9T3QB06npmwjCshq3V3hGYPHViMOtswi+b/CCuYxHTt4ZEKtPILa
-	RYcuh+c8kHpdwqa/wLCOfJNmy3CJLVvXUCPv9Wr1NrrQ/EFpD3zEbeVXgwAybRDgn7hyVvUD2QAuW
-	05yPUnSK73uD6SAOQN6Q==;
+	List-Owner; bh=GA9XldP5WJB9rmRYATAECYTQeyGyQ0yyGMk3yrVbxsk=; b=iuwMFskBrnDDqH
+	652K9BIVeDYNRZhlBFURph+sw+lAsupYVzLZ5i9jCgERe+gmj0lodl9foOgOi1ScenUu0tpHxDyNl
+	UGDnCaFTMHtSm6D+8NIX1YetcgQMB7AsF9yOKZECD5kB9Uc3dyCbOC2mW7V0GpAPesOmbWwN9H+Hr
+	W+1NnQK1q0Mhf/s8SmdnjLTTX4FR9yA1Qf5QBuJXNbCGIfbg6EokOVoj8Re2mYG+aqaCyu4ue8u/0
+	YEZpYmYvpFduwshpvDRIBtUUEFgkSqp4b+zYJS+JPdxY+XVtsK4cPKshWq4YsfHXAXtVNLuky5rXp
+	DfSxYRJDbRt+lGw6aqKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8lwP-00000003Vbn-3b8H;
-	Mon, 21 Sep 2026 21:52:49 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1x8m2y-00000003WSC-0DM9;
+	Mon, 21 Sep 2026 21:59:36 +0000
+Received: from mail-westus3azlp170100009.outbound.protection.outlook.com ([2a01:111:f403:c107::9] helo=PH7PR06CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8lwO-00000003VbI-2IBg;
-	Mon, 21 Sep 2026 21:52:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Type:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=eoWfYjj7geBEgtBjXdF5/WIH4GJNtcxQHnt+xjX8Kvw=; b=HkrQOOOjlx+TKDtRusn+0FvMZb
-	cIQVej5QlqC5aNt9TSJBmhMFVrTv+LGfIiE4s8aVKeG87AVmsK59TDZNkV4s8uAral2Wj9yzZ+6MG
-	4AIFzT7pFhMHERPxAWz7pyQxezfxsCszmb+fUjuizXVCZVV2o/Z7qfi1AstO8X9MfmMDqctoyyOmd
-	SVmhKeXsoinCwOo04WoXysB/QPB36+COgNw1X2wbQCGFK8zzWen79TAtgYBvX+CXvswROL0gXHEKY
-	Cw7rssjp6IZinvyZAoQI6HGsYqDnb2ovGb5UzzPfYq1kCeNMA5IqGeK2cJYMHvFASwE7apkI9Hyqs
-	ZqWfS36A==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by casper.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8lwL-00000005ftg-1vZn;
-	Mon, 21 Sep 2026 21:52:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=eoWfYjj7geBEgtBjXdF5/WIH4GJNtcxQHnt+xjX8Kvw=; b=kOKh+tO180j0JZFNK/WRL9wKCn
-	OsrbwpICbLRHcW+J3f/ISUueH6+dPWCMG8lkIeWPJM2/kT9gRaTTvaYlUEdJbSW5yPbvIsFIKotX8
-	4vlKwGkEN29oWCVA0oEA26cAn0CM4u+ile4EdpHQ0Nsja0IwHNvfxvjJJODjLLWCYIutNkJR9U7kL
-	cxkRTYOklkTtzeASjPrsO/Svnu01pm00kH3Z/Q43Y3FC3unz6hZsQA0fYFDOGPJv09UXidcW4UenI
-	O8hJh/gXD8lBrT+PEvLGlcnSWizPbOnDYLpT0uQHRBKW2XlD7zPwXxcBlpyPKkzYgDWaH5v9FEcLN
-	c/2G0pNA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: tomeu@tomeuvizoso.net, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, joro@8bytes.org, will@kernel.org, robin.murphy@arm.com,
- ulfh@kernel.org, p.zabel@pengutronix.de, ogabbay@kernel.org,
- zhangqing@rock-chips.com, Jiaxing Hu <gahing@gahingwoo.com>
-Cc: royalnet026@gmail.com, abel.vesa@oss.qualcomm.com,
- sebastian.reichel@collabora.com, sidong.yang@furiosa.ai,
- u.kleine-koenig@baylibre.com, chaoyi.chen@rock-chips.com,
- diederik@cknow-tech.com, alchark@flipper.net,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- iommu@lists.linux.dev, linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Jiaxing Hu <gahing@gahingwoo.com>, Conor Dooley <conor.dooley@microchip.com>
-Subject: Re: [PATCH v13 07/14] dt-bindings: power: rockchip: allow resets in a power
- domain node
-Date: Mon, 21 Sep 2026 23:52:31 +0200
-Message-ID: <2492931.NG923GbCHz@phil>
-In-Reply-To: <20260915104328.45901-8-gahing@gahingwoo.com>
-References: <20260915104328.45901-1-gahing@gahingwoo.com>
- <20260915104328.45901-8-gahing@gahingwoo.com>
+	id 1x8m2v-00000003WQQ-3oVs;
+	Mon, 21 Sep 2026 21:59:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=BabfJQtNODTahRsQJxAZwaUwKVLzNC64MNtFjWwhTv3+FvDMowJejCZ302KLdY31C34/hBBVAmN6hGHWJJeyZyNXBKWVkgyA2ft/1NHPvVSnSXviYBjH0L+nJtk/LeMzZ+1aZfpeskQqMOOVm9OQYYEGXBgpzzOGyWYEXNLuc+wGhLW0Af8KQhFgJ9ot7Gq2+V8j/xbQ7CSz320I8CsbaipyNX//Do7C54+80yQntbE48rTTfirjAdag92529ni7NKyA8uqwP8WppGkAQmUCKN+V95g0hXde3JR/ByU41xEvOcaV03NpWUOpRqbvJiPTPwjOaTd3xpW0R5HvUCkc+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=hFMcHKEkW9VJemIkcZBmOy9eKfMpVkSEhH7a5ywHPrw=;
+ b=nTGfNG1CQSpmE8l5J15/VqxQdjrk/eAn0Dem46CneH5Vt+IDZm+MisMKY3vGbHt5RVwyWn2n4lOR9mvwt1zjD2ac3kDLcmgKil20m5+S+2ZCXzw4niE6Y/pZworo8Ni9oVeLRyEtMDFX2ua4HyYFTZtqHK+maSo6uYxvMGppXmRnUiPM+Zc+F9FgEb4oeM7lTeePSci431kknKrwoSF1snJ2vGFH8AWr7GepYdkhTS9fxixoQe0Eyxd+q4jQmcwNXT+zNV6BnqnpMqeRxFm7d3Y2G4cFRjxfb1moqbegwlWkIYGWUnlFs2eAjRWASws/ZzuxY8mxA3rS8072bDsfnw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=collabora.com smtp.mailfrom=amd.com;
+ dmarc=pass (p=quarantine sp=quarantine pct=100) action=none
+ header.from=amd.com; dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hFMcHKEkW9VJemIkcZBmOy9eKfMpVkSEhH7a5ywHPrw=;
+ b=eOliHVanpE4HTIr4nOH9b4Ic65Lgu2BkVPxUTTsXItcAwnturf4D28hDKgLrGlN4USaSPvdem3xII4d5Bp7ThlbzlbPyrpsV028NbRAWreT/GeTBlkRRX1xgMVRLe+Kf/gmgUIsxypqts0InI10ODpuiKLCGQXEck6MleyiRXtw=
+Received: from MW4PR03CA0305.namprd03.prod.outlook.com (2603:10b6:303:dd::10)
+ by LV1PR12MB999306.namprd12.prod.outlook.com (2603:10b6:408:3f8::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.16; Mon, 21 Sep
+ 2026 21:59:20 +0000
+Received: from SJ1PEPF000023D8.namprd21.prod.outlook.com
+ (2603:10b6:303:dd:cafe::29) by MW4PR03CA0305.outlook.office365.com
+ (2603:10b6:303:dd::10) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.406.6 via Frontend Transport; Mon, 21
+ Sep 2026 21:59:19 +0000
+X-MS-Exchange-Authentication-Results: mx.microsoft.com 1; spf=pass (sender IP
+ is 165.204.84.17) smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=satlexmb08.amd.com; pr=C
+Received: from satlexmb08.amd.com (165.204.84.17) by
+ SJ1PEPF000023D8.mail.protection.outlook.com (10.167.244.73) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.451.0 via Frontend Transport; Mon, 21 Sep 2026 21:59:19 +0000
+Received: from satlexmb07.amd.com (10.181.42.216) by satlexmb08.amd.com
+ (10.181.42.217) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.49; Mon, 21 Sep
+ 2026 16:59:18 -0500
+Received: from [10.254.92.51] (10.180.168.240) by satlexmb07.amd.com
+ (10.181.42.216) with Microsoft SMTP Server id 15.2.2562.49 via Frontend
+ Transport; Mon, 21 Sep 2026 16:59:16 -0500
+Message-ID: <75b82a61-fe82-4597-bfb5-3c717fbb0dda@amd.com>
+Date: Mon, 21 Sep 2026 17:59:11 -0400
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC 03/25] drm/atomic-helper: Set mode_changed on
+ vrr_enabled change
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, "Borah, Chaitanya
+ Kumar" <chaitanya.kumar.borah@intel.com>, Daniel Stone
+	<daniels@collabora.com>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Helge Deller <deller@gmx.de>, Andrzej Hajda
+	<andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, Robert
+ Foss <rfoss@kernel.org>, Laurent Pinchart
+	<Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej
+ Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
+	<luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Andy Yan
+	<andy.yan@rock-chips.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
+	<linux-fbdev@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <kernel@collabora.com>, Derek Foreman
+	<derek.foreman@collabora.com>, <wayland-devel@lists.freedesktop.org>
+References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
+ <20260921-vrr-limiter-uapi-v1-3-2fcd7d011646@collabora.com>
+Content-Language: en-US
+From: Leo Li <sunpeng.li@amd.com>
+In-Reply-To: <20260921-vrr-limiter-uapi-v1-3-2fcd7d011646@collabora.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ1PEPF000023D8:EE_|LV1PR12MB999306:EE_
+X-MS-Office365-Filtering-Correlation-Id: 734b0074-17ff-45f6-0b6c-08df182b9686
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|36860700016|42112799006|7416014|376014|23010399003|1800799024|10067099003|56012099006|18002099003|22082099003|4143699003|11063799006|921020;
+X-Microsoft-Antispam-Message-Info: A2VlOXDdR+oPxukfB0Hqba9c+9GWqbnl0DZmjvyady7BHuulT10igfaTNbYAKBIDkpZZnqBGDl6wa7uzrvodf/0Nl22QTyV5AnZBbZP4HX0WJ5nCr+GNfTciA+xZX8rzvbuOKPB0fsH/tsniEjDeK48fhbIo6ofDoHLXkI30x8tfAEb2thYTOTgMoGvM4Wgao12f72IskulUkRaS503ymqQr191c/APW7mJV4zTuxPvsZsZ4d2xSnMEYtW9Qi3V2EE5rryjHQnWKfykaQV67MBddiFwD5MDyzhHlztMrBYZem50IYzHWgHOleq/z7eWeOozzS/NC88UWFibUlAs1E/JvWlSaBgBXxf140a5Vk6D1JpH7G3UxtDwyukP8WvOsl2kYTFJrnUUPni9M3aTSQp4bSGwFXbq7D9T6Atg5iIQ7sYfxA9N2G3Lv1KiOMVI94+RBfwBA8eiQMXzwvIncJmeN5fl+YoUwPNjuNZud4Jt3Car9ksTrnSYhi/4bM3z5YuEU3CXS2iBzI+hKSd+T2TXix7rxDsNLM/iyz8x8kBAyIwkS370JvUS0Qbcbq5RsWNrCJHeY0a/SBvHoKKgXumiIdl87SmEhh81mJszw1zeR3oVAgQlfQ1eeyaQ/aDUNV/ScgbZLjk8sVZfdKhSQ8AFsgqaMk/8SNvtTHkqTs8wiakWaPqmuLdp4v0LcUQq4yYJdktjnLNIO+3IuDUt1eZR7i0YMrZLwEr042QKb/1+nB6RaWL86wQHwGfTGnafq
+X-Forefront-Antispam-Report: CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:satlexmb08.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(36860700016)(42112799006)(7416014)(376014)(23010399003)(1800799024)(10067099003)(56012099006)(18002099003)(22082099003)(4143699003)(11063799006)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: DkDOYVCz2k68aiT/v07088fgbH3ftLGYeOf2JdLn97YLgcaWEuqr21RPwyHktr4hW2hFYjMm5RewL2cAmzKOUBbbFBl/2Ud7ZG7ZoO1UWwzHBjx5W825UhXW7YdanGbgS/DlcckqsM9BARfP+JpwC3gnJUAIR7PEpHr5uL9QTD5XKDsCCS4L0DnWBF/eSZAIK8V0IN8oUCVHA3Dfmrkq3PomDG1SdTFvDX55k/WhKrU0FgBS1cll3lB+G4QcqYY238O73WRXT3zDmoxo7zk7uXM1Z9gpEpRrN2/ex/25eluzTRIOzeNekvGW9DZteByiHPTdx50VJ3c72XduOwPCEiLpwagj2TrIbh74VxbzZC82ySqeN8qJplKoKHqfWe1NVqO/fZUL2Aty4ACDE5xHQB3QlJubtT+UaGZMOg61ryKbMR34Vfti33akTwlfBmsN
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Sep 2026 21:59:19.6890
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 734b0074-17ff-45f6-0b6c-08df182b9686
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[satlexmb08.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000023D8.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV1PR12MB999306
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_225245_543296_4F1259F0 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20260921_145933_957108_37D5363B 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,43 +131,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRGllbnN0YWcsIDE1LiBTZXB0ZW1iZXIgMjAyNiwgMTI6NDM6MjEgTWl0dGVsZXVyb3DDpGlz
-Y2hlIFNvbW1lcnplaXQgc2NocmllYiBKaWF4aW5nIEh1Ogo+IFNvbWUgZG9tYWlucyBkbyBub3Qg
-Y29tZSB1cCBpbiBhIHVzYWJsZSBzdGF0ZSBvbiB0aGVpciBvd24gYW5kIG5lZWQgdGhlaXIKPiBy
-ZXNldHMgY3ljbGVkIG9uY2UgcG93ZXIgaXMgb24uIFRoZSBSSzM1NzYgTlBVIGRvbWFpbnMgYXJl
-IG9uZQo+IGNhc2U6IHdpdGhvdXQgaXQgdGhlIGZpcnN0IGFjY2VzcyBhZnRlciBwb3dlci1vbiB0
-YWtlcyBhbiBhc3luYyBTRXJyb3IuCj4gCj4gU2lnbmVkLW9mZi1ieTogSmlheGluZyBIdSA8Z2Fo
-aW5nQGdhaGluZ3dvby5jb20+Cj4gQWNrZWQtYnk6IENvbm9yIERvb2xleSA8Y29ub3IuZG9vbGV5
-QG1pY3JvY2hpcC5jb20+CgpSZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVj
-aC5kZT4KCj4gLS0tCj4gIC4uLi9iaW5kaW5ncy9wb3dlci9yb2NrY2hpcCxwb3dlci1jb250cm9s
-bGVyLnlhbWwgICAgICAgICB8IDggKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDggaW5zZXJ0
-aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvcG93ZXIvcm9ja2NoaXAscG93ZXItY29udHJvbGxlci55YW1sIGIvRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL3Bvd2VyL3JvY2tjaGlwLHBvd2VyLWNvbnRyb2xsZXIueWFtbAo+
-IGluZGV4IGI0MWRiNTc2Zi4uODM3NDFmMDQ4IDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dlci9yb2NrY2hpcCxwb3dlci1jb250cm9sbGVyLnlhbWwK
-PiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcG93ZXIvcm9ja2NoaXAs
-cG93ZXItY29udHJvbGxlci55YW1sCj4gQEAgLTEzNiw2ICsxMzYsMTMgQEAgJGRlZnM6Cj4gICAg
-ICAgICAgICBBIG51bWJlciBvZiBwaGFuZGxlcyB0byBjbG9ja3MgdGhhdCBuZWVkIHRvIGJlIGVu
-YWJsZWQKPiAgICAgICAgICAgIHdoaWxlIHBvd2VyIGRvbWFpbiBzd2l0Y2hlcyBzdGF0ZS4KPiAg
-Cj4gKyAgICAgIHJlc2V0czoKPiArICAgICAgICBtYXhJdGVtczogMQo+ICsgICAgICAgIGRlc2Ny
-aXB0aW9uOgo+ICsgICAgICAgICAgQSBwaGFuZGxlIHRvIGEgcmVzZXQgdGhhdCBuZWVkcyB0byBi
-ZSBjeWNsZWQgb25jZSB0aGUgcG93ZXIgZG9tYWluIGhhcwo+ICsgICAgICAgICAgYmVlbiBzd2l0
-Y2hlZCBvbiwgZm9yIGRvbWFpbnMgd2hvc2UgbG9naWMgZG9lcyBub3QgY29tZSB1cCBpbiBhIHVz
-YWJsZQo+ICsgICAgICAgICAgc3RhdGUgYnkgaXRzZWxmLgo+ICsKPiAgICAgICAgZG9tYWluLXN1
-cHBseToKPiAgICAgICAgICBkZXNjcmlwdGlvbjogZG9tYWluIHJlZ3VsYXRvciBzdXBwbHkuCj4g
-IAo+IEBAIC0yMTYsNiArMjIzLDcgQEAgZXhhbXBsZXM6Cj4gICAgICAgICAgICAgICAgICAgICAg
-cmVnID0gPFJLMzM5OV9QRF9JRVA+Owo+ICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwm
-Y3J1IEFDTEtfSUVQPiwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JmNydSBIQ0xL
-X0lFUD47Cj4gKyAgICAgICAgICAgICAgICAgICAgcmVzZXRzID0gPCZjcnUgU1JTVF9BX0lFUD47
-Cj4gICAgICAgICAgICAgICAgICAgICAgcG1fcW9zID0gPCZxb3NfaWVwPjsKPiAgICAgICAgICAg
-ICAgICAgICAgICAjcG93ZXItZG9tYWluLWNlbGxzID0gPDA+Owo+ICAgICAgICAgICAgICAgICAg
-fTsKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+Hi Nicholas,
+
+Thanks for sending this out. I'm looking into an amdgpu implementation
+and had some comments along the way. Will reply inline on respective
+patches.
+
+On 2026-09-21 11:51, Nicolas Frattaroli wrote:
+> A change in whether VRR is enabled or not on a CRTC will be of interest
+> to any VRR implementation, as they may need to recalculate certain
+> internal state in response. So far, this was handled ad-hoc in the
+> drivers that implement VRR.
+> 
+> Handle this in the common DRM atomic core by setting the mode_changed
+> flag when this occurs. The rationale for using mode_changed is that VRR
+> is deeply intertwined with the current mode with regards to its timing.
+> Consequently, any component that cares about a mode change is likely
+> also going to care about VRR being enabled/disabled.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  drivers/gpu/drm/drm_atomic_helper.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
+> index 9d006f98413a..0664d5779282 100644
+> --- a/drivers/gpu/drm/drm_atomic_helper.c
+> +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> @@ -694,6 +694,12 @@ drm_atomic_helper_check_modeset(struct drm_device *dev,
+>  			new_crtc_state->active_changed = true;
+>  		}
+>  
+> +		if (old_crtc_state->vrr_enabled != new_crtc_state->vrr_enabled) {
+> +			drm_dbg_atomic(dev, "[CRTC:%d:%s] VRR changed\n",
+> +				       crtc->base.id, crtc->name);
+> +			new_crtc_state->mode_changed = true;
+> +		}
+> +
+
+I don't think this is the case for all hardware, at least not for amdgpu.
+The parts in HW that adjust vtotal can be programmed without requiring
+bandwidth recalculations or reprogramming of pipes. 
+
+- Leo
+
+>  		if (new_crtc_state->enable != has_connectors) {
+>  			drm_dbg_atomic(dev, "[CRTC:%d:%s] enabled/connectors mismatch (%d/%d)\n",
+>  				       crtc->base.id, crtc->name,
+> 
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
