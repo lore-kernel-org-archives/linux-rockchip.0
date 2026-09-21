@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01C89C982ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 15:54:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DA2CC982EE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 15:54:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uUFEHZCsfG60wTLGwmGqdNIfoEDwk/cgBZg2ncfgLiU=; b=XHQXt+EFu6+h2m
-	VFRVaoOrOwvGHlZjiOTs8TR185WjfDyawc1VzNfGqTY2L61OmdRwlEk+EIC1CSCiX2Um5/iNtfAYV
-	4TIJl9X1cJ893Yq74i38aDaz0zfzuDbtl5IHbduaQ7F4Gugbf9BEM/o5/QkSMB1EuD9pJVpW6qZKx
-	U5S3zkJYk4lxnP0RMrTRR0h7nAQ67Nd8ZQMTFUL07kPQpfsxysE+gfcOkGvBB4mV/ERetGCUySYNa
-	bSY8Ahx8mVtCDio8268y2rOapYKOMdLO/I2rRiSW0xjc34DcqpWEejt2rDrTrPfav7l97LMiXyTpw
-	jSAJwsTq4fSW+89SrlEQ==;
+	List-Owner; bh=c9z4pn64KtiKjEF+gBiF0eFGOdAEJvSV5Mq6A5MJcEY=; b=TDfP6DTG42sQ9J
+	9K43drQz3ETXeypHduV/DvLGb9zapOYzuAkXr6KAC+5iPY6s6p+TKUQUuFUT51h7Ls/WmfM+rO6Zs
+	d4r+vqoKoaNaBseTUY77IqPbDmBjD3PEQOLTTB90O2MtPY0k8hL0/En4U5t8vBZhkOkc2iG2s35qZ
+	0BrOrpiTrhVeqgBFa5ndQGHQGXHY0VSYUCJ5qGJRYQZQfPrQmSTpYxrrYzGi6XyZsYI+2orqlKz5l
+	A8drGq7rBZkDW65ABvYYnSZnlHPXws2I+ZgnRSKpNIiFpBVbemUrgr+TZpIgwRkGCrPCo7hfOonl3
+	autlPKpBlr1sq7TOS6pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8gLD-00000002i3S-1OXj;
-	Mon, 21 Sep 2026 15:54:03 +0000
+	id 1x8gLE-00000002i62-17fg;
+	Mon, 21 Sep 2026 15:54:04 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8gL3-00000002hsb-1vJ4;
-	Mon, 21 Sep 2026 15:53:53 +0000
+	id 1x8gL4-00000002hsh-0gSU;
+	Mon, 21 Sep 2026 15:53:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=y/u3vmta3+dbrofrUmndHlgFpIUmssOjUpr8W2OjIi4=; b=QU+zU0WD+ThCMa9LGcItYbNEvX
-	IGFZdDQmlNUS/pda6eY3L2HqcpEVeKBodK0g+BLg4K6WCYL4UExPFoz+kvveTTfWsBCicqcheNj3B
-	cpSuxZFuBIRxEKlSxT5rOJwbHj48W9qOsSYwPcegctrQ/KJIlERUUpjEemLKSBjDfxc65Ia8zo0nx
-	rLnimACbUxlNh2eY48l/neeiN2Yrpmx1sY38eBBHKBKIvwoECOM6txmCtmMEoGUOJt0uxUjmj6TNa
-	ngq6m5q/d9lfco0N/6FY5rXIGupb1PC5FMP6aIFR30enRvg5K+e+uL7ubKCBb8v51Cu9Q0FZ+qt6j
-	aAPWg8yA==;
+	bh=OTPs0m8K1NZZqNCZ2ZoGsft+mfIizutFeldFeGSDZYA=; b=hz/7Gm86NPHuCRXFh88rAnnQl0
+	fywC6dyG4CZEtD68XRS6iEuLa270HOh8D7dTXpMeJ+KoFv36YROs1p02SXfyrlL/k6syLZcvEFtw9
+	RoqjNPGTvNR3o/qkP0EtMaz2c8/yFw3/1pMcyOqc6Mc1B8setxYGKbax9XEqJmUtVfVFCnyL2ivVI
+	1IphBBLVGOMtxVC0UEZarRR/wsPoJcDco68kj1c3XYKRGCkw64azdZPHbS94eApjVcvLjAkrGk8G1
+	vj/x1Uu070bv4qeQAjqRz2TdoEPA+CTAOvR23tSnXNI2WFvkHcdKMCpTbv2KUy+sfpByE+c4wVt9P
+	q5bLx3mw==;
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8gKu-0000000CVSj-46Gb;
-	Mon, 21 Sep 2026 15:53:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790005985; cv=none; 
+	id 1x8gKy-0000000CVTk-0RD2;
+	Mon, 21 Sep 2026 15:53:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1790005991; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=MkvctPEgN/opcclJ7AbrHT0NUw5PyfmjTlw1EVX0+A9iCip/vCP3fTYIf4WeCcAmxdjPIfeki2VQrDQYcGZdVseNywFZQf87igLM7iofK+RpNwQExbBpkQ/GBA7eppgMrgnKur3C8we3HtOKWDzWZ/1qkMBPJkuFt9XdZSVZ+ME=
+	b=IPFid0e9vODgcSMCEusJ+bQftHO17olv16R8WSLSSyhN/KFvjOfYrhEknHrN4LtxKQI5Y/1AL934WFqS55OiMDDsJZ7ABmjeZDm9tzNgWcnk+eRZfX7yZ970nBr+RFPOjKsMBneDbUEuU7sj/O0UcywETkcXkRT1EqdnzXsa7Eg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790005985; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=y/u3vmta3+dbrofrUmndHlgFpIUmssOjUpr8W2OjIi4=; 
-	b=bqmI9sT7fNW9pKNoXHo6CGSAoz+HKc8xaQoLIMQjPz0JPYYdbgzRXXDQEkWFL5dFKj4xcPPJK7300o+RNR3Dkuk6CA5coRlKJsIKeKBuUMqEz60Fn9jkiHfxAfvXzAiI3r+GCfuQ6WW78Fdpj0n39jjCY4kIEhUbCEJvrFZ0zA0=
+	t=1790005991; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=OTPs0m8K1NZZqNCZ2ZoGsft+mfIizutFeldFeGSDZYA=; 
+	b=mHppDmJko71JK/NbwhakTvzqCMT1YcR3SahXGhdLjuMSo6zZGSrq9DVY9G82jntXD8v/gJ8vp3e6aXdpD7tMVVPKzV64swKVQMaXOqB8KR8UX+LiUr3eDzLY96bPnDMNu8k2vHiCOwKzwOXbtclU2S1q4PK80eNQtaSchdon6Sc=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790005985;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790005991;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=y/u3vmta3+dbrofrUmndHlgFpIUmssOjUpr8W2OjIi4=;
-	b=fcrE2OXrBcW4dbZejVZKBloogh6hW3A6feRsFGFcBd4A5tiB57BqLjkWHwbBuKiN
-	l6DmQrYGZiaHpBxaeZ8bYc85y0Bq9FNES1a+GcgVJu/iywyvc+9urb8Clkp/lIp9gzr
-	1TfyNvvK3GIlrrm9T1WjiL8RsRhKhSn4zUtBDa7M=
-Received: by smtp.zohomail.com with SMTPS id 179000598377154.95688948710904;
-	Mon, 21 Sep 2026 08:53:03 -0700 (PDT)
+	bh=OTPs0m8K1NZZqNCZ2ZoGsft+mfIizutFeldFeGSDZYA=;
+	b=DNYT7D1LE8zPm5SV05KRKU3gOwJah2VF7pX6LLN/tkiSeQDcLlew8WiSW3+V9p2Q
+	z/y5l/h9zsFhoKbViarXQa3VWCr3L019j/OKjn+ef/e+D5Em636idyz9iCu6tI+6T4g
+	R2jg/fVz+aOTEccx40zL7lciLVbt6pA2agj/XgpA=
+Received: by smtp.zohomail.com with SMTPS id 1790005989707834.0920962164566;
+	Mon, 21 Sep 2026 08:53:09 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 21 Sep 2026 17:51:37 +0200
-Subject: [PATCH RFC 11/25] drm/rockchip: vop2: Enable VRR
+Date: Mon, 21 Sep 2026 17:51:38 +0200
+Subject: [PATCH RFC 12/25] drm/edid: Parse CinemaVRR flag from HDMI SCDS
 MIME-Version: 1.0
-Message-Id: <20260921-vrr-limiter-uapi-v1-11-2fcd7d011646@collabora.com>
+Message-Id: <20260921-vrr-limiter-uapi-v1-12-2fcd7d011646@collabora.com>
 References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
 In-Reply-To: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
 To: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>, 
@@ -87,8 +87,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_165345_431337_CDE17ED4 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20260921_165350_504397_1BAD65C8 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,148 +105,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use the new VRR state tracking to handle VRR front porch adjustment.
+HDMI's extension to EDID contains a flag which is used by sinks to
+signal that they support "CinemaVRR". When CinemaVRR is enabled, some
+VRR is possible even if the minimum VRR range is set to 0.
 
-To avoid indenting too deeply, refactor the vblank handling into its own
-function while at it, where scope-based cleanup helpers for the lock can
-be used.
+Parse it from the SCDS and store it in the sink's drm_hdmi_info.
 
-Co-developed-by: Derek Foreman <derek.foreman@collabora.com>
-Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 62 ++++++++++++++++++++++------
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  9 ++++
- 2 files changed, 59 insertions(+), 12 deletions(-)
+ drivers/gpu/drm/drm_edid.c  | 7 ++++++-
+ include/drm/drm_connector.h | 3 +++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index bfb384142568..e79081c04437 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -24,6 +24,7 @@
- #include <drm/drm_atomic_uapi.h>
- #include <drm/drm_blend.h>
- #include <drm/drm_crtc.h>
-+#include <drm/drm_crtc_helper.h>
- #include <linux/debugfs.h>
- #include <drm/drm_debugfs.h>
- #include <drm/drm_flip_work.h>
-@@ -2011,6 +2012,25 @@ static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
- 	vop2->ops->setup_overlay(vp);
- }
+diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
+index a1494028e0f5..cc6f2ba8c9f4 100644
+--- a/drivers/gpu/drm/drm_edid.c
++++ b/drivers/gpu/drm/drm_edid.c
+@@ -6314,6 +6314,11 @@ static void drm_parse_vrr_info(struct drm_display_info *info, const u8 *hf_scds)
+ 	struct drm_monitor_range_info *range = &info->monitor_range;
+ 	const int pld_len = cea_db_payload_len(hf_scds);
  
-+static void vop2_vp_set_vrr_vtotal(struct vop2_video_port *vp, unsigned int vtotal)
-+{
-+	const u32 mask = RK3568_VP_DSP_VTOTAL_VS_END__DSP_VTOTAL |
-+			 RK3568_VP_DSP_VTOTAL_VS_END__IMD;
-+
-+	if (!vtotal) {
-+		vop2_vp_update_bits(vp, RK3568_VP_DSP_VTOTAL_VS_END,
-+				    RK3568_VP_DSP_VTOTAL_VS_END__IMD, 0);
-+		return;
-+	}
-+
-+	/* Value is 13 bits at most, saturate it if too large */
-+	if (vtotal > RK3568_VP_DSP_VTOTAL_VS_END__DSP_VTOTAL >> 16)
-+		vtotal = RK3568_VP_DSP_VTOTAL_VS_END__DSP_VTOTAL >> 16;
-+
-+	vop2_vp_update_bits(vp, RK3568_VP_DSP_VTOTAL_VS_END, mask,
-+			    vtotal << 16 | RK3568_VP_DSP_VTOTAL_VS_END__IMD);
-+}
-+
- static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
- 				   struct drm_atomic_commit *state)
- {
-@@ -2029,6 +2049,11 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
- 
- 	spin_lock_irq(&crtc->dev->event_lock);
- 
-+	if (crtc_state->vrr_enabled) {
-+		if (drm_crtc_helper_vrr_flush(crtc_state))
-+			vop2_vp_set_vrr_vtotal(vp, crtc_state->vrr_state.cur_vtotal);
-+	}
-+
- 	if (crtc->state->event) {
- 		WARN_ON(drm_crtc_vblank_get(crtc));
- 		vp->event = crtc->state->event;
-@@ -2371,6 +2396,30 @@ static irqreturn_t rk3576_vp_isr(int irq, void *data)
- 	return ret;
- }
- 
-+static void vop2_vp_handle_vblank(struct vop2_video_port *vp)
-+{
-+	struct drm_crtc *crtc = &vp->crtc;
-+	struct vop2 *vop2 = vp->vop2;
-+	u32 val;
-+
-+	guard(spinlock)(&crtc->dev->event_lock);
-+
-+	if (!vp->event)
++	if (pld_len < 9)
 +		return;
 +
-+	val = vop2_readl(vop2, RK3568_REG_CFG_DONE);
++	info->hdmi.cinema_vrr = !!(hf_scds[8] & DRM_EDID_CINEMA_VRR);
 +
-+	if (!(val & BIT(vp->id))) {
-+		drm_crtc_send_vblank_event(crtc, vp->event);
-+		vp->event = NULL;
-+		drm_crtc_vblank_put(crtc);
+ 	if (pld_len < 10)
+ 		return;
+ 
+@@ -6392,7 +6397,7 @@ static void drm_parse_hdmi_forum_scds(struct drm_connector *connector,
+ 
+ 	drm_parse_vrr_info(info, hf_scds);
+ 
+-	if (info->monitor_range.min_vfreq > 0)
++	if (info->monitor_range.min_vfreq > 0 || hdmi->cinema_vrr)
+ 		hdmi->vrr_capable = true;
+ 	else
+ 		hdmi->vrr_capable = false;
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index b18684d039d5..b147b8474f1a 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -383,6 +383,9 @@ struct drm_hdmi_info {
+ 
+ 	/** @vrr_capable: The sink supports variable refresh rate */
+ 	bool vrr_capable;
 +
-+		if (crtc->state->vrr_enabled)
-+			if (drm_crtc_helper_vrr_vsync(crtc->state))
-+				vop2_vp_set_vrr_vtotal(vp, crtc->state->vrr_state.cur_vtotal);
-+	}
-+}
-+
- static irqreturn_t vop2_isr(int irq, void *data)
- {
- 	struct vop2 *vop2 = data;
-@@ -2402,18 +2451,7 @@ static irqreturn_t vop2_isr(int irq, void *data)
++	/** @cinema_vrr: The sink supports "CinemaVRR" */
++	bool cinema_vrr;
+ };
  
- 			if (irqs & VP_INT_FS_FIELD) {
- 				drm_crtc_handle_vblank(crtc);
--				spin_lock(&crtc->dev->event_lock);
--				if (vp->event) {
--					u32 val = vop2_readl(vop2, RK3568_REG_CFG_DONE);
--
--					if (!(val & BIT(vp->id))) {
--						drm_crtc_send_vblank_event(crtc, vp->event);
--						vp->event = NULL;
--						drm_crtc_vblank_put(crtc);
--					}
--				}
--				spin_unlock(&crtc->dev->event_lock);
--
-+				vop2_vp_handle_vblank(vp);
- 				ret = IRQ_HANDLED;
- 			}
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index ffcb39c130aa..fdb2030e3ad4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -655,6 +655,9 @@ enum dst_factor_mode {
- 
- #define RK3588_VP_DSP_CTRL__GAMMA_UPDATE_EN		BIT(22)
- 
-+#define RK3568_VP_DSP_VTOTAL_VS_END__DSP_VTOTAL		GENMASK(28, 16)
-+#define RK3568_VP_DSP_VTOTAL_VS_END__IMD		BIT(15)
-+
- #define RK3588_VP_CLK_CTRL__DCLK_OUT_DIV		GENMASK(3, 2)
- #define RK3588_VP_CLK_CTRL__DCLK_CORE_DIV		GENMASK(1, 0)
- 
-@@ -810,6 +813,12 @@ static inline void vop2_vp_write(struct vop2_video_port *vp, u32 offset, u32 v)
- 	regmap_write(vp->vop2->map, vp->data->offset + offset, v);
- }
- 
-+static inline void vop2_vp_update_bits(struct vop2_video_port *vp, u32 offset,
-+				       u32 mask, u32 v)
-+{
-+	regmap_update_bits(vp->vop2->map, vp->data->offset + offset, mask, v);
-+}
-+
- static inline u32 vop2_readl(struct vop2 *vop2, u32 offset)
- {
- 	u32 val;
+ /**
 
 -- 
 2.55.0
