@@ -4,102 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53A3CC982FB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 21:17:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8239FC982E6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 21:42:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0d+0AG2YQVNX3CbUNGH0s5jTzRV2Cda7hyWVJee4qes=; b=hMCbzy0N/ADQDh
-	OPVhyAI05Pr+nlgPtkFsPzpsclMBZ29RYuovV3LGD17tCFsxFCfNNyqGBTM5YQVDhxUTnB1Pf8qHO
-	eeaFVGAIltV0vITbWi/TXvEr5f9nUPfFdordjGKwqCqS/pMPnQiVmfFvTAEz4UU1OCljjFoC8ZUfJ
-	GXOb++6F9yroWpWKGRHELAeNStjMcCZbPI0hko/U/gThgPfqpt6qVry0FuBpefLC9J04bYQOXy7T0
-	gfY1VEdLZkGR1zi36Er2hXIzg30+8yNIgEOnphXXo1SMAOXnHzlV6q0IlUguUd850qE1gKgbgU7hK
-	VCYZT3O1/1hlzJdnXDpQ==;
+	List-Owner; bh=unFYLr+yq5gCGixzbGkBVXC+HO0V0kVkQ8LxvDZF1TY=; b=LaFp1kl/I0HVQA
+	KT5XmpZwfMsg+xzxG0mVuSw15vWkzjuOxZWLuQpayMzpmlbfOCa9lr2k72mDw/kmreI/Tf6esniw5
+	ACxJ2kWeWmgD5ysuBp4uNM+ZcWl9RxoTY/dNpph6qrcXdtI/35sb+kNaRN/ZODjasztvcrhTpMvLT
+	c8jKtnTLHz+Or1Guw//GWK9C0d2/6T6LMaLlFXsr4yYsntfHXAudHifBt82ZT7jg5aUYZExWINyUf
+	xUiTUlt45BkK3gEHIrq9WnBITqIg2EMNtlYpeLR+veDw89TXmteIBurY7cTF4JQBDie2KTNrx6/lN
+	Sa320jjidin3hPaffX/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8lOQ-00000003Rpp-3wa7;
-	Mon, 21 Sep 2026 21:17:42 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x8lmE-00000003UQi-46Tp;
+	Mon, 21 Sep 2026 21:42:18 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8lOI-00000003Rme-0eua;
-	Mon, 21 Sep 2026 21:17:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=gigkPs+UENfJ6S76VxoXcUExljFxrNqFW4T+9fUWw3k=; b=Y53qVMBsWSp6IzrM+6UUTouovJ
-	7nBMpZ8itHtMbWuuuh7LXWEd6OS7buXKlmrVgwvfmuZoUEGP+b4kVy418fQ4fharB2p5v+Wn7f6Du
-	l5JrqaNGDzgU1MQOYQtPQMs8J9BSJiALQDhqM20ZB5H29m7qJBqMYTQNz9s6/YKlTklgbXT8TqA8Z
-	MjOnPI59YSWFArF0OW+K0zNhw+xX0ow1EpxE56v/8rIF5UIiiJzp9gkACKNWsyrKu6QX/qEwTBQLN
-	VhhFU/OJ0hsGcMIMHKIu1em65uTu0cLEPkN17Ejr+GUeWInBtskS+WLoIWkmbuN1IXHxDiRETzePk
-	EzE3tiUA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8lLz-0000000Cpoy-1MZR;
-	Mon, 21 Sep 2026 21:17:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790025306;
-	bh=vMgJeIbDY4gfZKXLLhtV9STSMmBqMwbwlOznf1gK9P0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=jNt2o1Vv2tCeQC9rWc00B2bqwZZ/kf4tWo3IY1HbX/LFLQebwc17Q+XepLSvHQdse
-	 PHaCwKDWNmXNZQWAVc77F9m6RgDXRJhKqz4/la9rHtJ1wESHql0+MFijwxbGJ/fdN7
-	 EznEdejbA1s8mGCRH92b3t+Yides6Xhgfu9oDZfoV+qZtKkaWCrCtnulE14SoDVOvB
-	 aq0qbi2rhdQ8rfKVLGYfiZi40W51kQ1o7dHscVtU77MT6/zIxq2m28FS2fCu7uycZy
-	 SLPZ5Q7PrBoDpHNK3BlnDqysxO99le9aBUqCMx3GxkUkHK0O0ElS/f+bg9wIOlHxdp
-	 0YjxW2RZMJCpQ==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9F86C17E0FB7;
-	Mon, 21 Sep 2026 23:15:06 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 57969480031; Mon, 21 Sep 2026 23:15:06 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Mon, 21 Sep 2026 23:15:06 +0200
-Subject: [PATCH v2 4/7] arm64: dts: rockchip: add DFI node to RK3576
+	id 1x8lmC-00000003UP5-0Gjh;
+	Mon, 21 Sep 2026 21:42:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=3+YlNT04wuL7W5HJgKLHPJrW8rii6yAHjR27a80KkNw=; b=fLz4pkLblNBR0y/c78KP+DzbWd
+	QxeTaz7QHEAFVco7GZdSpbjgufOdVbAExtVEtfcxiGibW4RLM4YgHG2pPKOGcNJtXP8ZSdkbxyW6h
+	rHuwPGEx7wTvTBzHviOv2R9oVD3oChfQ54RuNddw65vUsKdyitbXXfzOx+Lq1EHtUlEYuvj4j/PxX
+	RgxeAzYIc4CPL+AzqqbJ1NGp9KoRPP2gJDWs+capzZ5929s3VjMBLFvsqT0z8qZhKqozqo5L/Fqpu
+	TFWGrLdOfoYqxCIOSkXXBXcAxuYh82QEEQTEIf09Y+pOQd54VWRT3VpCQtDXqGlEJHdceT3uULgLW
+	4sTYCLpQ==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Alexey Charkov <alchark@flipper.net>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Set gpioN aliases on RK3576
+Date: Mon, 21 Sep 2026 23:42:02 +0200
+Message-ID: <179002692015.1033956.17489310377805341851.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260914-rk3576-gpio-aliases-v1-1-ce5f86f9ae0e@flipper.net>
+References: <20260914-rk3576-gpio-aliases-v1-1-ce5f86f9ae0e@flipper.net>
 MIME-Version: 1.0
-Message-Id: <20260921-b4-rockchip-dfi-rk3576-support-v2-4-04f847016321@collabora.com>
-References: <20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com>
-In-Reply-To: <20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com>
-To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
- Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Chanwoo Choi <cw00.choi@samsung.com>, 
- MyungJoo Ham <myungjoo.ham@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1234;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=TXuERcBa3lyF5yru0hC/lwhYh6FDQ895W7w6eKt3Ed8=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqxnlpTaK1WGqKIfj9CyRu3SmbzDFOtQ6RwR
- YukDdKpAZ+MVYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqsZ5aAAoJENju1/PI
- O/qamHAP+QFSPWUF/svr4wGcxpuH0VlMAAlQlbFJWZcGUcZ5xAm8BdROICo4LJn6dRaAX8R2kMH
- DjVu7op1Clee0V73X7xIRj3YvFNjIlyw+1azKWgBVtAmFxtU7jEgaEHSbDG8cz7OoLvq/KOufTQ
- I87FKKtVeuorKkHZLFlz/Vcnq5tmflbTTsGcdSGv1NrUVqzjSjm6sJHr6v1M/UKhJUV2NN3GA+2
- yohSXJjzo1pPKCrNyKSgvUYUsJdAhGbeATdxeGqSJK1lK5EJi+vFKidm2lVSehBE7xk5ZzIO07Z
- aNqlxQPler0buSrcRnN7sbbwUDCQ2x6DJqmPT4/anXLSsDLp68SJlyCo27KfU3b+6GaZzg1x/eK
- 5/2CkFEPpPLvwreQx7B1COB3qyPh3KvNgNlZ6R395i6qOu1PnJvD31W+ahvt84jYIy8Sa27I47x
- aJTbgqWBtn9+LE1Cg44YLdFWF9ljxY4VWcfqjqcAL8JJjWL5EZEsuDOR1nXsHAbk58SQWRWuUTF
- GF5uZcu/9lws51cvaQTWC1U8txSnNBXrDF2TrtRlKwMeWYE5Y2RQwwsix3b3yCDQWzMpfhKZeWZ
- 9q9TpHrw/Fryk0IUiOvWC2b4s9t5hJ4HSCm4UljJ/o9cI8P9HxNnNF9rUl1HWTfCzPes2oMwQno
- FeWPRWKWb+Ff2QJL7vAwxaw==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_221518_297930_A4F8A475 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20260921_144216_131148_BC7272B3 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,43 +71,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Like previous Rockchip SoCs RK3576 has DFI hardware to measure DDR
-bandwidth utilisation. Add the node for it to the SoC's DT.
+On Mon, 14 Sep 2026 12:47:15 +0400, Alexey Charkov wrote:
+> With no alias, the OS is free to number the GPIO chips arbitrarily, such
+> as in probe order, which is what Linux kernel's rockchip_gpio_probe() does
+> if its of_alias_get_id(np, "gpio") fails.
+> 
+> This results in GPIO chip numbers arbitrarily shuffled in userspace,
+> causing confusion and pain.
+> 
+> [...]
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Applied, thanks!
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index b0c0d3c8b1b1..197b8c3b76b4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1832,6 +1832,17 @@ qos_npu_m1ro: qos@27f22100 {
- 			reg = <0x0 0x27f22100 0x0 0x20>;
- 		};
- 
-+		dfi: dfi@2a000000 {
-+			compatible = "rockchip,rk3576-dfi";
-+			reg = <0x0 0x2a000000 0x0 0x20000>;
-+			clocks = <&cru PCLK_DDR_MON_CH0>,
-+				 <&cru PCLK_DDR_MON_CH1>;
-+			clock-names = "pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1";
-+			interrupts = <GIC_SPI 221 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 233 IRQ_TYPE_LEVEL_HIGH>;
-+			rockchip,pmu = <&pmu1_grf>;
-+		};
-+
- 		gmac0: ethernet@2a220000 {
- 			compatible = "rockchip,rk3576-gmac", "snps,dwmac-4.20a";
- 			reg = <0x0 0x2a220000 0x0 0x10000>;
+[1/1] arm64: dts: rockchip: Set gpioN aliases on RK3576
+      commit: c818f4a85a40c12a5536d6016395a7eff5b44f8a
 
+Best regards,
 -- 
-2.53.0
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
