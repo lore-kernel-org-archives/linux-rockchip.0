@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FDF1C982E6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E7D5C982FD
 	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 21:17:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,58 +12,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5StB3r6RsnuMHsgk95Jwe7ZL3vJ17BysVOFyg4dVPGc=; b=SVUWUw7n0Rd5Qr
-	Y2WrW8tRsRMQj90RIo+KEWc5iC4ubUoDVGu8woxCFUxW9gYF/mhTl/j15W5dSGg3DQjRVXnHHq054
-	acGeLEPKj68Qdk3jR2oEDv3PVIHr1UM3xeoCZElhB77LOgEMwBX1Kf3SVk8GIk952cyy8l6U6ry07
-	4CCqTbzxmwSbCM8WER08iWgEbtO2+Pm5Iqbqp6/ebmh33YnH2mtHPfUcGsA63FAYqZg04miX4HCp/
-	FNiB4gj/eL0lLRaWAcucOAZas10P4Rmk/hvBdsZrcwN2XIZbN7cvh5k8pO/xHeG1l5G6WgTnkAjHo
-	IUBQCx/2R6HNS124qwFw==;
+	List-Owner; bh=kxLgxJWAMT6zzuRfRUBDeIICcjGqq/XEViyp5P2S8LY=; b=BD4nsPI/IV592Q
+	2PsPnpKtO+il1v9BAu3U7RbOuNwTDgitmkbcigVbx/luxg3T3azwCkgIKjIWsJLIk/+pWt53+xapR
+	vNw1hPtTT/mBj52O0JRkeV04ItHqPFETx8JHEKOK72FCeAa6yKJn3qaZCJJs5myrRitFSiHukS2gN
+	MUk2cb50CBkTY2kVitJuhSAhDKnedP/LSzDxyuRYvlslnfK+sx7sA6Cm3rJoouK3hmlox1cp9KsRX
+	BGtXRP4nKj4wlDEkbqrnhSC6CRAg7bx+ZMT6+qd1aSpMika3bQOZ9S6mD61iHLS11mlaxl+4aO+F7
+	kTX26KezlO7B1hsLMcxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8lOR-00000003Rqa-12OW;
+	id 1x8lOR-00000003Rqw-1lum;
 	Mon, 21 Sep 2026 21:17:43 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8lOI-00000003Rmd-0zWU;
+	id 1x8lOI-00000003Rmc-0bJu;
 	Mon, 21 Sep 2026 21:17:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=JyERwNUBJaFhaJLH8DuloJbZ7laRRy5ywKs3n//EALc=; b=pwURikNimMJ2pcH9iS21Na606D
-	LVHsV1tufj9Uit56ouN2ObwDu+Z4lLSvbVqFox6XRlvVbvRucrCNAgaQKy0aOa2wWLWMbYSlaspA0
-	dxse51SKtTGESxLpht0sLZHWniEqfhPLlRvEFZRVa0ZpCUD4/uD/N2h8k9Y8yekTuaXGy7W2PkSat
-	xvpOoZiVZblk3BBvN+MeKli47WAbiyI0pMgLsmVxwKPBru780mfxOnyvROhbi7E5txyrvkCUyneqX
-	Wm9BPxHNKgzXIgNdpA1hTX1B5AessZiDIprDZEJ6JN5IULYLwgMKmmFoib3oxxvS43Y6wJdIj8vOo
-	b9yScLDQ==;
+	bh=vLmnYB7YTG2w417fNWY4rLRctEm72Jbi5HTWGNHw6NM=; b=e/gEvj3onmVX7Mbhrissa8vbOp
+	p0M5qLyIpbFz1Q0bQJlyL6iSMaKMxNr2QdhVUoGd+bQ/PEGriVdWs4tJtKaFh4Y6/zkURetiiU0RD
+	xarhOYZxYNkbGCHk1wxVVCQqeZdidyBwVEUOZWuE3EE2reMRtlyUL42ifPASjcPGO/eS+5znkIIpg
+	Uu/2TmwhiWvuNe0NH+4w3cRtCw2eNg9N5NUlqrCgthwNcuNYkmNI4s4NUgl1SwtMQRHj4OX0IBSUI
+	ksu6Kc16YGMDcO90oqXLbVNgjjC8YIxVdhmz8kDNLI9Ey2t7OoaUAc6/GtYcph5109RysHvSOmZv0
+	720KDNdA==;
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8lLz-0000000Cpp1-1MT0;
-	Mon, 21 Sep 2026 21:17:30 +0000
+	id 1x8lM1-0000000Cpp3-02Io;
+	Mon, 21 Sep 2026 21:17:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790025306;
-	bh=la91QlmnzQ+cMr3xbEYXMZpWQxq/64sHaIS6pJZM8PY=;
+	s=mail; t=1790025307;
+	bh=khr+bJaYjJjoJSh5v4LpM9wTDjoEkflVWzoe5WtEJgM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=G76fFAOPTBdCjFAlPzU51OJwGBsnC/9F35buwF3Phgw8N+OswUjMh/uzmsukk9H7P
-	 rR1JusiY1opK3/zluoVY7gsMv5WllQSxjMmMY/pnduhTbz9U9FGyP97xfDhhAfhf+X
-	 FbSTW8myCE3YRYScnwWoYdHbRjYGzMf4LGmpq4KWglCixG1Dpmm/N2r4nh9wyrQM0H
-	 7ZTb8y/r1r4ua5GfW5MkhYWHqcjypTK4xX7BU0fraDleWPsyK0wQiia/Wq4pM/wK37
-	 erXTSYav4+LwH1MtmuTXKw6+JnKOiJPNLAY3yRa9vwiLXeLz+aL98FLADNP+TTaqys
-	 NQyMjHueRWsLg==
+	b=AEsJUcKZz8jjPJQbEedMpIGnmClUf9kNzHGD66QDEMex5erhp/SEuGaXsZzI52W4t
+	 dJjad/hTkK9oxM21eJf2Z6FM6+FcyE7HQcbcS6DceH7qYp81jhWTkuYTlApprNazY0
+	 OqTD7rXuurpIcKNXnr7PHI+Qjz5ylnVUoK7Honyqk3KSWIcUh98oniVMLWFktZdjOs
+	 ZvJglaySkOI9GZ7CWWoZzeS7zdQSgrYhEy+0xPqyeYYJZe+4a/tR+IfBaVeKVLWPvr
+	 zltJDvj6yFPiC7Ea6BWO4KySHee7yAFTCFBt0D6UWoIWomSxzlDY+JCyfktNXqUR85
+	 XjMLPQWk7MlqA==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9B7F617E0DF0;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E74D717E09D6;
 	Mon, 21 Sep 2026 23:15:06 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 53CC148002F; Mon, 21 Sep 2026 23:15:06 +0200 (CEST)
+	id 5B136480038; Mon, 21 Sep 2026 23:15:06 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Mon, 21 Sep 2026 23:15:04 +0200
-Subject: [PATCH v2 2/7] clk: rockchip: rk3576: add missing DFI clock branch
+Date: Mon, 21 Sep 2026 23:15:08 +0200
+Subject: [PATCH v2 6/7] PM / devfreq: rockchip-dfi: prepare support for v4
+ DDRMON
 MIME-Version: 1.0
-Message-Id: <20260921-b4-rockchip-dfi-rk3576-support-v2-2-04f847016321@collabora.com>
+Message-Id: <20260921-b4-rockchip-dfi-rk3576-support-v2-6-04f847016321@collabora.com>
 References: <20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com>
 In-Reply-To: <20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com>
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
@@ -80,26 +81,26 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1647;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5026;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=jv2cP7PAalymZeRc3au2vjT1JUKCsZkY6Uv6EoH/o0k=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqxnlpPFrnlK2x2AJJxKr4MewGejZIRr3Ain
- 6v4uxmgetFdIokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqsZ5aAAoJENju1/PI
- O/qa74AQAJgaXuoidOqI43S7t7Y6p9s1UarNVNxQqTqwrVPUVdBDEtX24LeWvy90KWBqUIcCTBD
- sgsrsToomzhPMzLolliHDVxmGU+58CDst60SCmWGxvWuHTcjGamCgDiduzosl7Sh00WwhtWZoQc
- 1wfEcy4p7Rmq2pkAhINK2bQeYUftIxA9eM4G6ETI7ph9flh0sZg6Hw4uPAACmhLYw2pPad4YYaB
- Oj53GOZx85rv1ucKi1OsjVM1m53pCs8qgeC+slvy0/aDuzk4SgktKK6xfeAEqq1exFXBHZx0OvV
- +nfKhsqHdBaInMkDuC/XVcYlRSxyiXHQFmCjtCs4LM/ataHBRj0YUOai1ABHrggUb0AmHNBcZtU
- z0qUG87VKKH15OvzSF7F9/a+7Bl3Nd9gto/e7XrGUXVxCd4zZL18CBFgoIxo3Mn4OonoU3TwTNz
- Srhgwg8WhPN7KCTeeeayPS1wvEtEvsVQbVw9AENtbJX47QS42GKOwq5hYViE/lW0EaO55roIQde
- bCTpv7XyDMpNFRZxnJ15PwY/lt2HSJyIUFlI7k7yG7xn+XLp1nZD8fTmYVfEEubXwNMgOVtZkCR
- cZY9REVN7hnK21MM/qOzdnorYxUEKUvOREBlDAJ1lipiKEGkAAU8KGPSUdEmZkx31NgxdWEfXCy
- XD1SS22bhIxRi9KGRvxQjsA==
+ bh=khr+bJaYjJjoJSh5v4LpM9wTDjoEkflVWzoe5WtEJgM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqxnlpFesZYsAxSYjmhkEgH6o+ssMm59D3j7
+ b5eU7Of51MSE4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqsZ5aAAoJENju1/PI
+ O/qass0P/iyG1lRzao5MjQ1iRCSPCSbJip9pcDzwd1VhVCKq5EdtjZlYNT7pqzggKNH3XQev4br
+ e13J+eqXjnkmyiYem+/dDku8++0p4kFXlWq63Vsk4QnditML6mg4S1QBEJle5vmGr+SUztp8tBM
+ E6BMSAMHTK7A9A/BRGCxtZHt84Qx439yGOqCwOOQnjFavKf1REIK2neQQ65LaBmpTd5qsmx4xbV
+ um3D94dFvIMoSdZel/d6xNOM3/DABc/4+s6C8FAM+woXevpM1EKTLPQY2k/5xZXnztHPtFo3QMm
+ 8Kfr4N7oIuaDPombXo3pvpCDrZll6KXE4XQSdzHCzQ83MM7FSxnbSTRMn7wxWtudYwiSmAZ/A/v
+ 5NCuS7IP+4+hgX4ZIhI/FZX08PCIlihLa2UURGJslIm5VDtphJ3P37fhCwUwYFOmtFRUxn/iK8O
+ Fp1fkmMQwzZpUxumJlh2tmkA6CsPwbhVBhRQijoGXpDhdbWECJRw/CFhSqGlIHwlB6WI1nEfBhT
+ sjCtrNYvnvpGq9MqJ8MAkQ6t6V9eY9wz/MtAoX0dt3QwYGugy8AyiGwu65dd/JXv+MhNRUkMQph
+ iPjHww/MpMQL8tSzL5tAKVlSiBDW9fOelQ1TLom15NeKZSo3jyCVLWBsy5nb3zE1QPjLU4Tu+h5
+ d5b0M9wkQ6Brdm8ZMmVEmaw==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_221517_064264_C7A5CAB1 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20260921_221518_246873_FFC2DD27 
+X-CRM114-Status: GOOD (  21.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,39 +117,154 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Add support for the new control register layout found for DDRMON
+controllers having version 0x40. This prepares the driver for
+adding RK3576 support.
 
-RK3576 DFI has one pclk for each channel's monitor. However, mainline's
-clock tree does not model this second DDRMON PCLK gate, and got away
-with it so far because they both default to ungated and there is no
-upstream RK3576 DFI driver.
-
-Add a clock gate branch for it, and remove the CLK_IGNORE_UNUSED flag
-from its sibling. In opposite to RK3588 we can add a mandatory
-requirement for a clock reference to the RK3576 DFI DT binding.
-
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/clk/rockchip/clk-rk3576.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/devfreq/event/rockchip-dfi.c | 85 ++++++++++++++++++++++++++----------
+ 1 file changed, 62 insertions(+), 23 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3576.c b/drivers/clk/rockchip/clk-rk3576.c
-index 2cdd667f4004..0c94e9db81c1 100644
---- a/drivers/clk/rockchip/clk-rk3576.c
-+++ b/drivers/clk/rockchip/clk-rk3576.c
-@@ -883,8 +883,10 @@ static struct rockchip_clk_branch rk3576_clk_branches[] __initdata = {
- 	COMPOSITE(PCLK_DDR_ROOT, "pclk_ddr_root", gpll_cpll_24m_p, CLK_IS_CRITICAL,
- 			RK3576_CLKSEL_CON(76), 5, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK3576_CLKGATE_CON(21), 0, GFLAGS),
--	GATE(PCLK_DDR_MON_CH0, "pclk_ddr_mon_ch0", "pclk_ddr_root", CLK_IGNORE_UNUSED,
-+	GATE(PCLK_DDR_MON_CH0, "pclk_ddr_mon_ch0", "pclk_ddr_root", 0,
- 			RK3576_CLKGATE_CON(21), 1, GFLAGS),
-+	GATE(PCLK_DDR_MON_CH1, "pclk_ddr_mon_ch1", "pclk_ddr_root", 0,
-+			RK3576_CLKGATE_CON(21), 14, GFLAGS),
- 	COMPOSITE(HCLK_DDR_ROOT, "hclk_ddr_root", gpll_cpll_p, CLK_IGNORE_UNUSED,
- 			RK3576_CLKSEL_CON(77), 5, 1, MFLAGS, 0, 5, DFLAGS,
- 			RK3576_CLKGATE_CON(22), 11, GFLAGS),
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index 8490219f61be..8ba97af78e3d 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -42,6 +42,19 @@
+ #define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
+ #define DDRMON_CTRL_LP5_BANK_MODE_MASK	GENMASK(8, 7)
+ 
++#define DDRMON_CTRL0	0x04
++#define DDRMON_CTRL0_EXT_TRIGGER_EN		BIT(6)
++#define DDRMON_CTRL0_DDR4			BIT(5)
++#define DDRMON_CTRL0_LPDDR4			BIT(4)
++#define DDRMON_CTRL0_HARDWARE_EN		BIT(3)
++#define DDRMON_CTRL0_LPDDR23			BIT(2)
++#define DDRMON_CTRL0_SOFTWARE_EN		BIT(1)
++#define DDRMON_CTRL0_TIMER_CNT_EN		BIT(0)
++#define DDRMON_CTRL0_HOT_RANK			GENMASK(8, 7)
++
++#define DDRMON_CTRL1	0x08
++#define DDRMON_CTRL1_LPDDR5			BIT(0)
++#define DDRMON_CTRL1_LP5_BANK_MODE_MASK		GENMASK(2, 1)
+ 
+ #define PERF_EVENT_CYCLES		0x0
+ #define PERF_EVENT_READ_BYTES		0x1
+@@ -143,8 +156,6 @@ struct rockchip_dfi_variant {
+ 
+ static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
+ {
+-	u32 ddrmon_ver;
+-
+ 	switch (dfi->ddr_type) {
+ 	case ROCKCHIP_DDRTYPE_LPDDR2:
+ 	case ROCKCHIP_DDRTYPE_LPDDR3:
+@@ -159,26 +170,43 @@ static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
+ 			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR5, 0);
+ 		break;
+ 	case ROCKCHIP_DDRTYPE_LPDDR5:
+-		ddrmon_ver = readl_relaxed(dfi->regs);
+-		if (ddrmon_ver < 0x40) {
+-			*ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 0) |
+-				FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 0) |
+-				FIELD_PREP_WM16(DDRMON_CTRL_LPDDR5, 1) |
+-				FIELD_PREP_WM16(DDRMON_CTRL_LP5_BANK_MODE_MASK,
+-						dfi->lp5_bank_mode);
+-			break;
+-		}
+-
+-		/*
+-		 * As it is unknown whether the unpleasant special case
+-		 * behaviour used by the vendor kernel is needed for any
+-		 * shipping hardware, ask users to report if they have
+-		 * some of that hardware.
+-		 */
+-		dev_err(&dfi->edev->dev,
+-			"unsupported DDRMON version 0x%04X, please let linux-rockchip know!\n",
+-			ddrmon_ver);
++		*ctrl = FIELD_PREP_WM16(DDRMON_CTRL_LPDDR23, 0) |
++			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR4, 0) |
++			FIELD_PREP_WM16(DDRMON_CTRL_LPDDR5, 1) |
++			FIELD_PREP_WM16(DDRMON_CTRL_LP5_BANK_MODE_MASK,
++					dfi->lp5_bank_mode);
++		break;
++	default:
++		dev_err(&dfi->edev->dev, "unsupported memory type 0x%X\n",
++			dfi->ddr_type);
+ 		return -EOPNOTSUPP;
++	}
++
++	return 0;
++}
++
++static int rockchip_dfi_v4_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl0, u32 *ctrl1)
++{
++	switch (dfi->ddr_type) {
++	case ROCKCHIP_DDRTYPE_LPDDR2:
++	case ROCKCHIP_DDRTYPE_LPDDR3:
++		*ctrl0 = FIELD_PREP_WM16(DDRMON_CTRL0_LPDDR23, 1) |
++			 FIELD_PREP_WM16(DDRMON_CTRL0_LPDDR4, 0);
++		*ctrl1 = FIELD_PREP_WM16(DDRMON_CTRL1_LPDDR5, 0);
++		break;
++	case ROCKCHIP_DDRTYPE_LPDDR4:
++	case ROCKCHIP_DDRTYPE_LPDDR4X:
++		*ctrl0 = FIELD_PREP_WM16(DDRMON_CTRL0_LPDDR23, 0) |
++			 FIELD_PREP_WM16(DDRMON_CTRL0_LPDDR4, 1);
++		*ctrl1 = FIELD_PREP_WM16(DDRMON_CTRL1_LPDDR5, 0);
++		break;
++	case ROCKCHIP_DDRTYPE_LPDDR5:
++		*ctrl0 = FIELD_PREP_WM16(DDRMON_CTRL0_LPDDR23, 0) |
++			 FIELD_PREP_WM16(DDRMON_CTRL0_LPDDR4, 0);
++		*ctrl1 = FIELD_PREP_WM16(DDRMON_CTRL1_LPDDR5, 1) |
++			 FIELD_PREP_WM16(DDRMON_CTRL_LP5_BANK_MODE_MASK,
++					dfi->lp5_bank_mode);
++		break;
+ 	default:
+ 		dev_err(&dfi->edev->dev, "unsupported memory type 0x%X\n",
+ 			dfi->ddr_type);
+@@ -188,11 +216,12 @@ static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
+ 	return 0;
+ }
+ 
++
+ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ {
+ 	void __iomem *dfi_regs = dfi->regs;
++	u32 ctrl, ctrl1, ddrmon_ver;
+ 	int i, ret = 0;
+-	u32 ctrl;
+ 
+ 	mutex_lock(&dfi->mutex);
+ 
+@@ -207,10 +236,16 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 		goto out;
+ 	}
+ 
+-	ret = rockchip_dfi_ddrtype_to_ctrl(dfi, &ctrl);
++	ddrmon_ver = readl_relaxed(dfi->regs);
++	if (ddrmon_ver < 0x40)
++		ret = rockchip_dfi_ddrtype_to_ctrl(dfi, &ctrl);
++	else
++		ret = rockchip_dfi_v4_ddrtype_to_ctrl(dfi, &ctrl, &ctrl1);
++
+ 	if (ret)
+ 		goto out;
+ 
++
+ 	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 
+ 		if (!(dfi->channel_mask & BIT(i)))
+@@ -225,6 +260,10 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 		writel_relaxed(ctrl, dfi_regs + i * dfi->variant->stride +
+ 			       DDRMON_CTRL);
+ 
++		if (ddrmon_ver >= 0x40)
++			writel_relaxed(ctrl1, dfi_regs + i * dfi->variant->stride +
++				       DDRMON_CTRL1);
++
+ 		/* enable count, use software mode */
+ 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 1),
+ 			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
 
 -- 
 2.53.0
