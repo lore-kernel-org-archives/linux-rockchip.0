@@ -4,83 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81212C982ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 20:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D104AC982EE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 20:33:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VFedXOwCcAac6Lyp9S6mOGYeTqFSfksImDVJ0QqLaX8=; b=cDBc2Ulbr3b8lI
-	AgksL8rGgN0qzB+F1Ie5IZGk/+G8YRQlzM/lB23IIkuthJqZfFdUoffbkg9R35djwG46i7UE+B0i6
-	4ujLffnBYKBMP0CdUDstHY7VcrwsDRMAD39JIOuGW8UCaek4AicnzZS4I65JVCVdikx86NAaF3vIn
-	R39KTW9Vipko5f+VhZ8boWnLnSuFjvbifQCbxqTOz1i9E8NATIJOzBW42AydupcWeg3qlHaSLATwQ
-	Cj3IBlQRuONHRqHDFU7ezpGTqx0onNwlPDsMNg7p84DvhguxNaTBZfVvnmYi6UWPe8CXl5k+5qFRL
-	T2w1wIHggdiugJrrnFyw==;
+	List-Owner; bh=dA2rrKPahdWl+ZWgyZHOfSnTWoSw7GcTuQQZ2BYwxGA=; b=DKMHKeQaY3Z9ke
+	+nqHfPOSHmm0hlG5PNAWsJFk/YaBU1n6TcwK3uQMnHVzBEjUYsYtKcq3DY0n134tOdYo6Z6sf+YcN
+	AC+c//vS+44j4mP9XGeKUWPvKQlL9SXA0XAqlsZuZfZ4TZlbYuAKJUDV1cQxej3jHmXRpXYA0rXL9
+	pjPiVRpbqSTTLedZMMGYoPRI0SHEFmBEIsW1H2lUmrwiOIg8Mv4YRtwRXQSDP4nKTtaqPR0goOrvc
+	cLBnmvCEvc2rxOdlAJfDJf1OqHxRy9QFY4y+VNbBUV/H9R1uadlqfUfN0aKgGNnlcJETrf4q5D5Nz
+	CgZST4WexBIhO2mQllGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8kV4-00000003KSX-2Ndh;
-	Mon, 21 Sep 2026 20:20:30 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1x8khT-00000003Lm6-0iTW;
+	Mon, 21 Sep 2026 20:33:19 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8kV1-00000003KRi-0NYA;
-	Mon, 21 Sep 2026 20:20:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=t56rUUwRmXd5Bwozpjc5KFkjkkSuskX8gA5Flws04pw=; b=0YgOTHuRfrXx1uFY1wMgE/U3e0
-	+dw/SC2Xa43f3HhGb4BANiW7jobFbsqgyg+H+OHB+9velcZTPQP3OLgQRcZfL3ZuFMhwbsfoU5LpQ
-	KscCXVeHleND2dk4DeIMrIyRmDqEd8x0S2W14yqzbij1R0tY0zrPzqENhXhxgQ/oBN/6abHZa0jsm
-	5xtYyleOrUyi4tvI1qjEATxfxEhUWURulNBpTFmXcQNpeI6XMz77ZsMBHl59H4Fe1nSDbBEACMs0s
-	R9vl+SbDHSNLxIZbf9boY17c+SpCWINR8BSudWHYfoTZz/fQGUOw/ergGpgsnhGaGG8tvgzRk6wau
-	8gIKa2bg==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Jacopo Mondi <jacopo@jmondi.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, Jimmy Su <jimmy.su@intel.com>,
- Matthias Fend <matthias.fend@emfend.at>,
- Mikhail Rudenko <mike.rudenko@gmail.com>,
- Daniel Scally <dan.scally@ideasonboard.com>,
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
- Michael Riesch <michael.riesch@collabora.com>,
- Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
- Sylvain Petinot <sylvain.petinot@foss.st.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Paul Elder <paul.elder@ideasonboard.com>,
- Martin Kepplinger <martin.kepplinger@puri.sm>,
- Quentin Schulz <quentin.schulz@theobroma-systems.com>,
- Tommaso Merciai <tomm.merciai@gmail.com>,
- Svyatoslav Ryhel <clamor95@gmail.com>,
- Richard Acayan <mailingradian@gmail.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>,
- Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Kieran Bingham <kieran.bingham@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux@ew.tq-group.com, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-tegra@vger.kernel.org,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Quentin Schulz <quentin.schulz@cherry.de>, David Heidelberg <david@ixit.cz>
-Subject: Re: [PATCH v6 4/6] arm64: dts: rockchip: Convert to new media orientation
- definitions
-Date: Mon, 21 Sep 2026 22:19:14 +0200
-Message-ID: <4535025.ejJDZkT8p0@phil>
-In-Reply-To: <20260918-kbingham-orientation-v6-4-5e8b1f01be29@ideasonboard.com>
-References: <20260918-kbingham-orientation-v6-0-5e8b1f01be29@ideasonboard.com>
- <20260918-kbingham-orientation-v6-4-5e8b1f01be29@ideasonboard.com>
+	id 1x8khQ-00000003LkC-1Olo;
+	Mon, 21 Sep 2026 20:33:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1790022792;
+	bh=xkdZXgZBeMQfg9bw8euImJNfedaGSSuo8RfHpYMY53o=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=bvazzeHtjktHVice5e4Szz/xLKrfIEdG7DFTSqgo5lMe4pw8zPrNncav5XZoW5dIn
+	 ZrcK678BYydbNYAxF5iUHm+vdXGv210mL8sMqeppgfLamdXxDg9w/4hOdDmIhCWBHS
+	 Yq4R4ZBDDF/JkGMCVZY1XP9OvHaEf2MLj2XLFBdD8j1G1To2H0HRdja8CZiG8f4cNL
+	 6HSlm1ol6uB6KZ342iZpsO0/uhfZsJlhXk2ogqNzxMz3YF2x75KehVlh8gLHvnZH0/
+	 uGBjWhIHVqqfExvl79NKKl09SVpf3dVqPj/htiZg4XZGOdvr3L8qFKGF9syjr+YJIk
+	 +tCy7tlKg4pNg==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3ED6017E047B;
+	Mon, 21 Sep 2026 22:33:12 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id EB4D548002F; Mon, 21 Sep 2026 22:33:11 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Mon, 21 Sep 2026 22:32:45 +0200
+Subject: [PATCH v2 2/8] dt-bindings: devfreq: event: rockchip,dfi: add
+ clocks to rk3588
 MIME-Version: 1.0
+Message-Id: <20260921-rockchip-dfi-cleanup-v2-2-43ff34ac8599@collabora.com>
+References: <20260921-rockchip-dfi-cleanup-v2-0-43ff34ac8599@collabora.com>
+In-Reply-To: <20260921-rockchip-dfi-cleanup-v2-0-43ff34ac8599@collabora.com>
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Chanwoo Choi <cw00.choi@samsung.com>, 
+ MyungJoo Ham <myungjoo.ham@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3146;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=tZQHxgmi8rv9SrnmtJ/AL6km1DCw9SsRcOafmoSEYv4=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGqxlIdjhzE4P0rt8c+tngsmBiBiAsbq+myhl
+ 1CdQ6h6HK6seokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqsZSHAAoJENju1/PI
+ O/qa5bQP/2W9ylsqOSSGj9HO7KNPdI07M1IapJPg1kCDl8xt8RKELt80pj1CMcu5hQ0II1mhTwy
+ NOxIokvWJBCw392cH6qXPHzEhbGeqIOnROXeEFadidO1uEMW8iNvpSvu4EorUuh67Cgr++o+ndX
+ LqA7HxmGaeRO2Nz/0GbC5IOjk/eUwvjeeWg54rSpj1PA1TvReNZgFKj3nu7+dFwHFrkA3S5uwob
+ 7NXvs0+nuyOdH5s7sVyngVxnf8TJV4eVqETGMKgCp57NgTRWJCD1z23zNfYvxaONO/mOtIifgHE
+ 98HYvtymnxLJfUBjfII4pNJX8wzG+NyW9/aksUvyv2Of4yLgYLTBTfJKwjSKJFlhwehyMBBKfPM
+ 49HvdoaygmV42N6V5JJijuyX18DnIg6LTrkpgehuL1+smdDRixFxLImTcXtCJms7fXWd1rbid+X
+ biFxugE42yVKzRDZHnNPuWgcQ4G0D3H9Uw2M7GDXelD92b+AfHT8gR0Tgk8wU1TSccCdTDe3Qst
+ Aa/3HNBbh4LCB5yagiqZC2EZrkEO7Bi6yP58HOFqeOkFaKaABcUkGrxDcHb8AN4OH0MdhLQ9Pqi
+ Nyp2ZpxqrzwnQTD/kS4cQgI/Taa/VvfawaI9iGaWRb0NFsL+UugTbuI/Qfin1uRx5/hIfdDFUWG
+ Z2I9ubn5RURJNleJnX0Ev+A==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_132027_150236_66ACAFE3 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20260921_133316_533337_D61B46F9 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,28 +98,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRnJlaXRhZywgMTguIFNlcHRlbWJlciAyMDI2LCAxMjo0NDoxNiBNaXR0ZWxldXJvcMOkaXNj
-aGUgU29tbWVyemVpdCBzY2hyaWViIEtpZXJhbiBCaW5naGFtOgo+IEZyb206IEtpZXJhbiBCaW5n
-aGFtIDxraWVyYW4uYmluZ2hhbStyZW5lc2FzQGlkZWFzb25ib2FyZC5jb20+Cj4gCj4gVGhlIG9y
-aWVudGF0aW9uIHByb3BlcnR5IGZvciB2aWRlbyBpbnRlcmZhY2UgZGV2aWNlcyBub3cgaGFzIGRl
-ZmluaXRpb25zCj4gdG8gcHJldmVudCBoYXJkY29kZWQgaW50ZWdlciB2YWx1ZXMgZm9yIHRoZSBl
-bnVtIG9wdGlvbnMuCj4gCj4gVXBkYXRlIHRoZSB1c2VycyB0aHJvdWdob3V0IHRoZSByb2NrY2hp
-cCBkZXZpY2UgdHJlZXMgdG8gdXNlIHRoZSBuZXcKPiBkZWZpbml0aW9ucy4KPiAKPiBSZXZpZXdl
-ZC1ieTogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29t
-Pgo+IFJldmlld2VkLWJ5OiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAY2hlcnJ5LmRl
-PiAjIFBQLTE1MTYgYW5kCj4gUmV2aWV3ZWQtYnk6IERhdmlkIEhlaWRlbGJlcmcgPGRhdmlkQGl4
-aXQuY3o+Cj4gU2lnbmVkLW9mZi1ieTogS2llcmFuIEJpbmdoYW0gPGtpZXJhbi5iaW5naGFtK3Jl
-bmVzYXNAaWRlYXNvbmJvYXJkLmNvbT4KClJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVp
-a29Ac250ZWNoLmRlPgoKU2FtZSB0aGluZyBUaGllcnJ5IHNhaWQsIGFwcGxpZXMgZm9yIHRoZSBS
-b2NrY2hpcCBjaGFuZ2UsIGlmIHNvbWVvbmUKd2FudHMgdG8gYXBwbHkgKHBhcnRzIG9mKSB0aGUg
-c2VyaWVzIHRvIHRoZSBtZWRpYSB0cmVlLCB0aGF0IGlzIGZpbmUKd2l0aCBtZS4KCk90aGVyd2lz
-ZSBJJ2xsIGp1c3QgcGljayAibWluZSIgYWZ0ZXIgdGhlIG5leHQgbWVyZ2Utd2luZG93LgoKCkhl
-aWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+RK3588's DFI has pclks for each channel. They just weren't noticed as
+missing until now because nothing ever gates them, and they're ungated
+by default on power-on.
+
+The RK3399 clock situation needs no changes, as there the hardware
+really just has one monitoring unit for both channels.
+
+Add these clocks to the binding, so that drivers for this device can
+properly know about their existence.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ .../bindings/devfreq/event/rockchip,dfi.yaml       | 70 ++++++++++++++++++----
+ 1 file changed, 58 insertions(+), 12 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+index 50d3fabe958d..3450e28b4020 100644
+--- a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
++++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+@@ -17,11 +17,18 @@ properties:
+       - rockchip,rk3588-dfi
+ 
+   clocks:
+-    maxItems: 1
++    minItems: 1
++    maxItems: 4
+ 
+   clock-names:
++    minItems: 1
+     items:
+-      - const: pclk_ddr_mon
++      - enum:
++          - pclk_ddr_mon
++          - pclk_ddr_mon_ch0
++      - const: pclk_ddr_mon_ch1
++      - const: pclk_ddr_mon_ch2
++      - const: pclk_ddr_mon_ch3
+ 
+   interrupts:
+     minItems: 1
+@@ -40,17 +47,37 @@ required:
+   - interrupts
+   - reg
+ 
+-if:
+-  properties:
+-    compatible:
+-      contains:
+-        enum:
+-          - rockchip,rk3399-dfi
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3399-dfi
++    then:
++      properties:
++        clocks:
++          maxItems: 1
++        clock-names:
++          maxItems: 1
++      required:
++        - clocks
++        - clock-names
+ 
+-then:
+-  required:
+-    - clocks
+-    - clock-names
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3588-dfi
++    then:
++      properties:
++        clocks:
++          minItems: 4
++          maxItems: 4
++        clock-names:
++          minItems: 4
++          maxItems: 4
+ 
+ additionalProperties: false
+ 
+@@ -72,3 +99,22 @@ examples:
+         clock-names = "pclk_ddr_mon";
+       };
+     };
++
++  - |
++    bus {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      dfi_rk3588: dfi@fe060000 {
++        compatible = "rockchip,rk3588-dfi";
++        reg = <0x00 0xfe060000 0x00 0x10000>;
++        clocks = <&cru 0x53>, <&cru 0x48>, <&cru 0x49>, <&cru 0x54>;
++        clock-names = "pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1",
++                      "pclk_ddr_mon_ch2", "pclk_ddr_mon_ch3";
++        interrupts =  <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH 0>,
++                      <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH 0>,
++                      <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH 0>,
++                      <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
++        rockchip,pmu = <&pmugrf>;
++      };
++    };
+
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
