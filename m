@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFA56C982EA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 03:08:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B50C2C982DE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2026 06:34:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N9LRZCcLsmN5WSizNChjzKw2x2TTus6lP6cbh1E1NuY=; b=cxfvcS9t184fXa
-	IQBw7NtErYZqpHRYiM8/dhrI27DeFbtg4KM7Hzc5pybJmRS/kV3Qa8zdrjgeVhgEDHmh+FFXHqbYb
-	POYlISH3Q53PnlGqb0wbTxVLfxSsRbjS/B5iCeFzRACWBQSEA4PZVBb3/ojjIddHIBl2K03eqyOJe
-	AG9qoduGrVQNHEpZ2LiVzeL/vXOP5O1hlg2c3LTnU5AvQDTyGYBuiAUrAHdRhWDyWjbU2yERtjjj9
-	MlfJM5qZXJC2DOqiiL+qjtmJHh6xJWncFIHN+bY02AayxzyYw36ly+fQ2THcL7U4vi+t/BLYRIScu
-	P1FhWywBk86rdqyKUYTw==;
+	List-Owner; bh=zYgD2Qk0dRoZ/oTa6ZkQi2S7W2ds9bxDu0QQjJJAoMg=; b=eyBQnVhtqa8w2+
+	axog9s+2M49Q0GGcmJBdWPiOsH7Mv2sdmeJDQQJglEzsAOOsodMwmaEOewDjjVz0l20rW2cKrLkQK
+	K3yAOG25ksUinxCyeNKdnS+w4rrUxBZYm0X+gOATyD3Ek2JNIbYAK2jphwY16pBJNcOW959CSLIO5
+	7kmbJSuKDgJ5FFYXbk83v+/QLJkNDf18x5SDwVKDCEbVJ87fNsB35Wv6bFVjv2kWZ1WBiR4XDzuHP
+	5VyLQHBzMKeWOJ/fBkd1Qfz53qP9t70w1Dg0p83FnWm8JmARJR3qumF/EHCr0Bf2QEaefDoZK1A6D
+	LR9JcVDdimZH5vALDFsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8UNm-00000000kjk-1CMQ;
-	Mon, 21 Sep 2026 03:07:54 +0000
-Received: from mail-m16023652195.xmail.ntesmail.com ([160.236.52.195])
+	id 1x8XbP-000000011gD-0zYg;
+	Mon, 21 Sep 2026 06:34:11 +0000
+Received: from mail-pj2-x12.google.com ([2607:f8b0:4864:39::12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8UNg-00000000kj1-21hV;
-	Mon, 21 Sep 2026 03:07:52 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4e80fdd69;
-	Mon, 21 Sep 2026 11:07:39 +0800 (GMT+08:00)
-Message-ID: <975a4d45-9a61-4858-b498-8bc0a1e44746@rock-chips.com>
-Date: Mon, 21 Sep 2026 11:07:38 +0800
+	id 1x8XbN-000000011fa-0pjY
+	for linux-rockchip@lists.infradead.org;
+	Mon, 21 Sep 2026 06:34:10 +0000
+Received: by mail-pj2-x12.google.com with SMTP id d9443c01a7336-2d747f05ffcso19523455ad.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 20 Sep 2026 23:34:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789972447; x=1790577247; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=eI/rghceFoKRDvJzmmhIiWgU5dI02A3SjLrHZWxVm/o=;
+        b=j2PS2fcwwPo8uwJxkuttXOWFzkDaW0iXzmdAdtjIyspmIF1QvqV11DZ9wyg+JzC/dy
+         qYf0sKKtJ45xTfMos24g7WcyPrC1TDt8L1sDM5z4eF1iCjKGA2ZK742fK6BAJWwGih6Z
+         tu0azw+KPDwJ3vn2nTQR1IIzHP9YMTfwsK7GB3LLDDenp6Janp5ttdcAxCrWh6lE1Jz+
+         TRP22KxUOlkXuERMB7/Uzx7STIvNVwf+p+TqrFNXji3UZ/D1ChTLsoYSLgwh3XbGw8tD
+         ++9se96Hzx2u0fNi/CKr3D2AtpkbooYkSv8a4R9G4NIXv4A32n/daG2aJaGPWDGYNgFX
+         kq+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789972447; x=1790577247;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=eI/rghceFoKRDvJzmmhIiWgU5dI02A3SjLrHZWxVm/o=;
+        b=Yln7knTyAdLZQNc0DF8w3xOV5Zn/08nx771lPqlAObDRaKr3FpyF+u0zUIaeq8l/AF
+         D26zUnDk6TJGNUPOGtfraBRgvhyrG+ush8gG3yzwaVP/NvD1cvmo0vjTFTkZfeQVrRcX
+         bmDVo4lGSf6zeAZqycrwl+l0QRB2XaIkcShYo3UXwNmaCpoAR5vOp7fyd4VYlpGZfge2
+         J5mNpRSpf+nTR5V3rp2heihAvVkZPvSbU9prcqCi4BM2F4jCn4yKZ6jS8QLfFU9bW4jY
+         QFCKTcg5I+rFHi5vEeUPDPsPV1MTNVQQ9rPRMQ5DuKL+rpOqf/Fq4UlGNVKkcXIwtPtq
+         9YGA==
+X-Gm-Message-State: AFuF++k1ljwTeNo6XAiBzb9pw4bDPKNfx2YNfrRKxzMZFyMQ0yYULZKZ
+	GNO2X7iJCleEQ7Ux7Oh5YV35lpdvMtz6Wa3J26kkPT0qbe+Kwt5Q7vnVMqR4HX+K+c4=
+X-Gm-Gg: AYBFou1qFlwojIIqB23mq/iRwmbXgOxjlbnOJe1shmh1Caa6pw4k7HkLWnXv77nN2kT
+	GnuqBPIzzUYezjDT6K6qFWzEj9FWtggYnd7GvjyEUbylgEqnVM5/HkxDqxHgGv5cyib316Ykm+Y
+	iEyrQgldPhkp3XKD7FGWqYwwWhSMy0n508Ipd5h2gi307IjCK8gXqKm+sc9BVnA3SjDxRnRPfOZ
+	i2C/oa+7neIAez9cYZD1SZej+Dh3r3nYpZKSEqhHuvsXaztzxA+Pf1pC2WtKQZ/AuuOz3Cd7OV+
+	02p7GaejmkepN7t4aS0OMPWczV8uhF17hoXA6X8Motsg9pAu5wrFEFZcUTvWV3giNDBIsKW8oSi
+	f0GGUouRVlc9PXowiPjKEtVYbJRPjIeHKMYFZ1Ncdzz9MIjwjC4JUeYUFF0oHWHLSax6QqgqAxI
+	ZpuD1S/mj03FQew6WmgDb3A+2BlThalHg6EgHin4QdGyY08svmtFkRQ4ZpnkinMM0UbbLzbwc2m
+	TkajrUmo48=
+X-Received: by 2002:a17:902:e751:b0:2c8:2808:3ec9 with SMTP id d9443c01a7336-2ddb1ae69b7mr148847475ad.12.1789972447082;
+        Sun, 20 Sep 2026 23:34:07 -0700 (PDT)
+Received: from Aaron-M6 ([188.253.120.162])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ddc17888a8sm28824695ad.26.2026.09.20.23.34.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 20 Sep 2026 23:34:06 -0700 (PDT)
+From: Yaozhong Li <yaozhonguwl@gmail.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: drop unused i2s0 from rk3399-firefly
+Date: Mon, 21 Sep 2026 14:34:00 +0800
+Message-ID: <20260921063400.2020-1-yaozhonguwl@gmail.com>
+X-Mailer: git-send-email 2.55.0.windows.3
+In-Reply-To: <20260903082713.192-1-yaozhonguwl@gmail.com>
+References: <20260903082713.192-1-yaozhonguwl@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 19/19] drm/bridge: analogix_dp: don't create a
- panel_bridge
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Jessica Zhang <jesszhan0024@gmail.com>,
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
- Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
- Paul Kocialkowski <paulk@sys-base.io>, Linus Walleij <linusw@kernel.org>,
- Inki Dae <inki.dae@samsung.com>, Jagan Teki <jagan@amarulasolutions.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Sean Paul <sean@poorly.run>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- Randy Dunlap <rdunlap@infradead.org>
-Cc: Albert Esteve <aesteve@redhat.com>, Anusha Srivatsa
- <asrivats@redhat.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, asahi@lists.linux.dev,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
-References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
- <20260916-drm-bridge-every-panel-v3-19-83afb4f1a707@bootlin.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260916-drm-bridge-every-panel-v3-19-83afb4f1a707@bootlin.com>
-X-HM-Tid: 0aa0c1eefae103a8kunme73f8a94967023
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDTR9DVhgfTBpPQkhLT0xDTFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQkxVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=X75U2bih9s1RNl4gfzClJThJySNIjM4kfsKgyjGvKrzGJiFZ2Bwbo3pJPtYca+j/pFYEeq37etQ+OwaS06uBvJwGOmMLXeP6lj8vSUlfLQggrDNilTsa2Uo3+y44fskT/5MTWhtT594XHIv6GphMsqSfSI/V9qtKQ2IakciJ8m0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=HFBDIScTYbc3MGtJrgl0/GYEHYmGNpTutJZEvykLwwM=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260920_200749_278278_A07EC245 
-X-CRM114-Status: GOOD (  34.22  )
+X-CRM114-CacheID: sfid-20260920_233409_255861_B3C0729D 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,263 +94,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
+Please drop this series.
 
-On 9/16/2026 9:45 PM, Luca Ceresoli wrote:
-> Now a panel_bridge is automatically created for every drm_panel and the
-> panel-bridge API is just a deprecated wrapper to access it.
-> 
-> Update and simplify the code by just getting a reference to the
-> already-existing bridge using of_drm_get_bridge_by_endpoint().
-> 
-> As of_drm_get_bridge_by_endpoint() returns a refcounted bridge, take care
-> of putting the bridge reference. This is not easily done in the remove path
-> due to the different probe paths of the user drivers, so add a devm action
-> to ensure the reference is put only when it was taken.
-> 
-> Assisted-by: opencode:deepseek-v4-flash-0731
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-> ---
->   drivers/gpu/drm/bridge/analogix/Kconfig            |  1 -
->   drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 40 +++++++++++++---------
->   drivers/gpu/drm/exynos/exynos_dp.c                 | 36 ++-----------------
->   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  9 -----
->   include/drm/bridge/analogix_dp.h                   |  1 -
->   5 files changed, 25 insertions(+), 62 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/analogix/Kconfig b/drivers/gpu/drm/bridge/analogix/Kconfig
-> index da156fd15764..5672d83cb4a1 100644
-> --- a/drivers/gpu/drm/bridge/analogix/Kconfig
-> +++ b/drivers/gpu/drm/bridge/analogix/Kconfig
-> @@ -33,7 +33,6 @@ config DRM_ANALOGIX_DP
->   	depends on DRM
->   	depends on OF
->   	select DRM_DISPLAY_DP_AUX_BUS
-> -	select DRM_PANEL
->   
->   config DRM_ANALOGIX_ANX7625
->   	tristate "Analogix Anx7625 MIPI to DP interface support"
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> index 18e76d1e78e1..6df6963740d2 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -29,7 +29,6 @@
->   #include <drm/drm_device.h>
->   #include <drm/drm_edid.h>
->   #include <drm/drm_of.h>
-> -#include <drm/drm_panel.h>
->   #include <drm/drm_print.h>
->   #include <drm/drm_probe_helper.h>
->   
-> @@ -1567,15 +1566,6 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
->   	if (ret)
->   		goto err_unregister_aux;
->   
-> -	if (dp->plat_data->panel) {
-> -		dp->plat_data->next_bridge = devm_drm_panel_bridge_add(dp->dev,
-> -								       dp->plat_data->panel);
-> -		if (IS_ERR(dp->plat_data->next_bridge)) {
-> -			ret = PTR_ERR(dp->plat_data->next_bridge);
-> -			goto err_unregister_aux;
-> -		}
-> -	}
-> -
->   	ret = drm_bridge_attach(dp->encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
->   	if (ret) {
->   		DRM_ERROR("failed to create bridge (%d)\n", ret);
-> @@ -1647,6 +1637,11 @@ struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
->   }
->   EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
->   
-> +static void analogix_dp_put_bridge(void *data)
-> +{
-> +	drm_bridge_put(data);
-> +}
-> +
->   static int analogix_dp_aux_done_probing(struct drm_dp_aux *aux)
->   {
->   	struct analogix_dp_device *dp = to_dp(aux);
-> @@ -1655,14 +1650,25 @@ static int analogix_dp_aux_done_probing(struct drm_dp_aux *aux)
->   	int ret;
->   
->   	/*
-> -	 * If drm_of_find_panel_or_bridge() returns -ENODEV, there may be no valid panel
-> -	 * or bridge nodes. The driver should go on for the driver-free bridge or the DP
-> -	 * mode applications.
-> +	 * If of_drm_get_bridge_by_endpoint() returns -ENODEV, there may be no
-> +	 * valid panel or bridge nodes. The driver should go on for the
-> +	 * driver-free bridge or the DP mode applications.
->   	 */
-> -	ret = drm_of_find_panel_or_bridge(dp->dev->of_node, port, 0,
-> -					  &plat_data->panel, &plat_data->next_bridge);
-> -	if (ret && ret != -ENODEV)
-> -		return ret;
-> +	plat_data->next_bridge = of_drm_get_bridge_by_endpoint(dp->dev->of_node,
-> +							       port, 0);
-> +	if (IS_ERR(plat_data->next_bridge)) {
-> +		if (PTR_ERR(plat_data->next_bridge) == -ENODEV)
-> +			plat_data->next_bridge = NULL;
-> +		else
-> +			return PTR_ERR(plat_data->next_bridge);
-> +	}
-> +
-> +	if (plat_data->next_bridge) {
-> +		ret = devm_add_action_or_reset(dp->dev, analogix_dp_put_bridge,
-> +					       plat_data->next_bridge);
-> +		if (ret)
-> +			return ret;
-> +	}
->   
->   	return component_add(dp->dev, plat_data->ops);
->   }
-> diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-> index e1c9e2946b8a..82c238829921 100644
-> --- a/drivers/gpu/drm/exynos/exynos_dp.c
-> +++ b/drivers/gpu/drm/exynos/exynos_dp.c
-> @@ -26,7 +26,6 @@
->   #include <drm/drm_crtc.h>
->   #include <drm/drm_encoder.h>
->   #include <drm/drm_of.h>
-> -#include <drm/drm_panel.h>
->   #include <drm/drm_print.h>
->   #include <drm/drm_probe_helper.h>
->   #include <drm/exynos_drm.h>
-> @@ -147,7 +146,6 @@ static const struct component_ops exynos_dp_ops = {
->   static int exynos_dp_probe(struct platform_device *pdev)
->   {
->   	struct device *dev = &pdev->dev;
-> -	struct device_node *np;
->   	struct exynos_dp_device *dp;
->   
->   	dp = devm_kzalloc(&pdev->dev, sizeof(struct exynos_dp_device),
-> @@ -163,18 +161,6 @@ static int exynos_dp_probe(struct platform_device *pdev)
->   	 */
->   	platform_set_drvdata(pdev, dp);
->   
-> -	/* This is for the backward compatibility. */
-> -	np = of_parse_phandle(dev->of_node, "panel", 0);
-> -	if (np) {
-> -		dp->plat_data.panel = of_drm_find_panel(np);
-> -
-> -		of_node_put(np);
-> -		if (IS_ERR(dp->plat_data.panel))
-> -			return PTR_ERR(dp->plat_data.panel);
-> -
-> -		goto out;
-> -	}
-> -
+The commit message claims that nothing on this board uses i2s0. That is
+true for the DAI, but I missed that its pin groups also list GPIO4_A0:
 
-TIP: In my WIP v3 patch series, I use of_drm_find_panel() together with 
-devm_drm_panel_bridge_add() to maintain this backward compatibility. But 
-I also think this old approach should be deprecated now. Shall we add 
-some notes in the commit message to mention the deprecation of this method?
+  i2s0-8ch-bus           ... <4 RK_PA0 1 &pcfg_pull_none>
+  i2s0-8ch-bus-bclk-off  ... <4 RK_PA0 1 &pcfg_pull_none>
 
->   	if (of_get_display_timings(dev->of_node)) {
->   		dp->plat_data.next_bridge = devm_drm_of_display_mode_bridge(dp->dev,
->   									dp->dev->of_node,
-> @@ -189,19 +175,11 @@ static int exynos_dp_probe(struct platform_device *pdev)
->   	dp->plat_data.power_off = exynos_dp_poweroff;
->   	dp->plat_data.ops = &exynos_dp_ops;
->   
-> -out:
->   	dp->adp = analogix_dp_probe(dev, &dp->plat_data);
-> -	if (IS_ERR(dp->adp)) {
-> -		/*
-> -		 * The driver core does not invoke remove() for failed probes,
-> -		 * so release the probe-time panel reference here.
-> -		 */
-> -		if (dp->plat_data.panel)
-> -			drm_panel_put(dp->plat_data.panel);
-> +	if (IS_ERR(dp->adp))
->   		return PTR_ERR(dp->adp);
-> -	}
->   
-> -	if (dp->plat_data.panel || dp->plat_data.next_bridge)
-> +	if (dp->plat_data.next_bridge)
->   		return component_add(&pdev->dev, &exynos_dp_ops);
->   	else
->   		return analogix_dp_finish_probe(dp->adp);
-> @@ -209,16 +187,6 @@ static int exynos_dp_probe(struct platform_device *pdev)
->   
->   static void exynos_dp_remove(struct platform_device *pdev)
->   {
-> -	struct exynos_dp_device *dp = platform_get_drvdata(pdev);
-> -
-> -	/*
-> -	 * Release the probe-time reference from of_drm_find_panel(). If bind
-> -	 * ran, the panel_bridge holds a second reference that devm cleanup
-> -	 * will release when the bridge is destroyed after remove() returns.
-> -	 */
-> -	if (dp->plat_data.panel)
-> -		drm_panel_put(dp->plat_data.panel);
-> -
->   	component_del(&pdev->dev, &exynos_dp_ops);
->   }
->   
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index 587e60232ec7..071d31aa5288 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -28,7 +28,6 @@
->   #include <drm/drm_bridge_connector.h>
->   #include <drm/bridge/analogix_dp.h>
->   #include <drm/drm_of.h>
-> -#include <drm/drm_panel.h>
->   #include <drm/drm_print.h>
->   #include <drm/drm_probe_helper.h>
->   
-> @@ -488,14 +487,6 @@ static void rockchip_dp_remove(struct platform_device *pdev)
->   {
->   	struct rockchip_dp_device *dp = platform_get_drvdata(pdev);
->   
-> -	/*
-> -	 * Release the probe-time reference from of_drm_find_panel(). If bind
-> -	 * ran, the panel_bridge holds a second reference that devm cleanup
-> -	 * will release when the bridge is destroyed after remove() returns.
-> -	 */
-> -	if (dp->plat_data.panel)
-> -		drm_panel_put(dp->plat_data.panel);
-> -
->   	component_del(&pdev->dev, &rockchip_dp_component_ops);
->   }
->   
-> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-> index 0e0b87abee59..6033137b651e 100644
-> --- a/include/drm/bridge/analogix_dp.h
-> +++ b/include/drm/bridge/analogix_dp.h
-> @@ -35,7 +35,6 @@ static inline bool analogix_dp_is_rockchip(enum analogix_dp_devtype type)
->   
->   struct analogix_dp_plat_data {
->   	enum analogix_dp_devtype dev_type;
-> -	struct drm_panel *panel;
->   	struct drm_bridge *next_bridge;
->   	struct drm_encoder *encoder;
->   	struct drm_connector *connector;
-> 
+That pin carries SCLK_I2S_8CH_OUT, the MCLK the RT5640 runs on:
 
-I apply this patch series with the related one[0], and the eDP work well 
-on my RK3576 board.
+  rt5640: rt5640@1c {
+          clocks = <&cru SCLK_I2S_8CH_OUT>;
+          clock-names = "mclk";
+  };
 
-Tested-by: Damon Ding <damon.ding@rock-chips.com>
+Dropping the whole &i2s0 override therefore leaves the codec clock pin
+without its mux configuration and analog audio stops working. I have
+reproduced that on the board. Sorry for not catching it before sending.
 
-In my patch series for Analogix DP HPD support, Heiko also pointed out 
-that devm_drm_of_get_bridge()(deprecated now) can be used to get the 
-panel bridge directly, and the redundant &analogix_dp_plat_data.panel 
-can be removed[1]. Since your patch series already contains these 
-optimizations, I will rebase my patch series on top of yours for 
-subsequent updates.
+The correct change must split the MCLK pin into its own group, attach
+that group to i2s1, and disable the otherwise unused i2s0 controller in
+the same patch.
 
-Reviewed-by: Damon Ding <damon.ding@rock-chips.com>
+Patch 2/2 depends on this one - with i2s0 still enabled there is no
+pl330 channel left for i2s2 - so it cannot stand on its own either. It
+is resent unchanged as part of the v2 series rather than separately.
 
-[0] 
-https://lore.kernel.org/all/20260915-drm-bridge-drm_panel-cleanup-v4-0-30401d9406f3@bootlin.com/
-[1] https://lore.kernel.org/all/5609825.iZASKD2KPV@diego/
+Could you please mark both patches as superseded in patchwork.
 
+Sorry for the noise.
 
 _______________________________________________
 Linux-rockchip mailing list
