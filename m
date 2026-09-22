@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50CCAC982FA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 13:22:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 364A5C982FF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 13:37:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+qrdYyoRIxyysHYJKihXhfZE8mX0++xFulcH6XdLITQ=; b=M+bwLxEMhBXeYKejfah/PwhXxN
-	4ueXZc8hCOlRdKS0A+f0pieiKT4IIsLw5kgw2eIcLLMm1oO9tmUqRY7k5BGTL4O0YhCU5dNBV8KE6
-	md+csrSILIHxoermHSOm5ymciFKKzprjO+FxshMPneWb8AaangOBT8x1qQ32VLoZmTBiL1SQedDeo
-	BrlmEphqDj/CjZCJxKOpYyOdKTOaaVeu1LUwnZ7uo9sgiRwPYuvigSotc92d4hLyYY+jhuu1t475C
-	ofedRon3aOtcZI83F6FNrLj1t06ljPiLTtGt1WBux8OTVzeWj5e8BpFTTzW372a6tYGKGixDm8WsC
-	fO0/DfFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9Xdj4SL7wcquBe6DM/rfFyN35jx6yDBh0y6lYUu9XQc=; b=PR23EAB4AzwMqb
+	9BclWjNx11hlIGv0U7ip8sf0YI/qj+CvXSavvPs6PDkhjAvi0b47Z6rkG6wJHPNsWxTNebRztxB+h
+	880dBEOGvYCGO+RJFSiYqyWINniiR2ak45gXHpPJvdVqwYcIL9aeAzSOLSCb0L/H9dpc8HdlH5kMt
+	ntsgGE2vZ4gY/3x8UaGBZP6wz3CHOa0T6OV7Z8uLbLkWsdBsNIDmr8QHoiZeTi+D/lgqzHhqtKMHN
+	441ZvPBwjeT148xXABnjnPB6onZFUyzWGjQc8iC2NgqvsWoUKxTNXwsVo3x62ZHN8Z3tvKJ8S5JAJ
+	SDCE/PVWCzZt/TcBVwmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x90Rr-00000005VCJ-11mC;
-	Tue, 22 Sep 2026 13:22:15 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x90gG-00000005Y4c-37mc;
+	Tue, 22 Sep 2026 13:37:08 +0000
+Received: from out-211.mta0.migadu.com ([2001:41d0:1004:224b::d3] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x90Rp-00000005VBU-2WRe;
-	Tue, 22 Sep 2026 13:22:13 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id F0A994068C;
-	Tue, 22 Sep 2026 13:22:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 543431F000FF;
-	Tue, 22 Sep 2026 13:22:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790083332;
-	bh=izoFKgiwl1CtFCyEIjGCaDfq4nQekOb5nh2FLPhllwE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=RqS0wZ6MEt5bZk9R+eKNjlRNCmWaNssWnIKblwHEVt1yhxX+ze4qRQgSdijlnk+u9
-	 x0uj7BswFEX76KgX7c17GHgRy4Qckx0Sx/PiiC1Eb0ER625jj/erLNU2xNNe6T/ltx
-	 V2RiRRALLcVkKzNnXsV3FaSSjjAT03Tf6Ho6/htzaKLwBoA7DXu/HOLeogcfu1cYal
-	 /IaGMln+Avhf92NI250562x/Cv22XLM8bnqAYK28Am/fhb5I4fg6WoukQ8LWNad5Ef
-	 TG8T8MTKfFhq+I45jEqJxtY1TVTGkcKwY3zEkKGZ3sZNnz99fz/nBT+HBhc8F/WX9L
-	 sj2D32JDkes8Q==
-Date: Tue, 22 Sep 2026 15:22:09 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>, 
-	Daniel Stone <daniels@collabora.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Helge Deller <deller@gmx.de>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Leo Li <sunpeng.li@amd.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-fbdev@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
-	Derek Foreman <derek.foreman@collabora.com>, wayland-devel@lists.freedesktop.org
-Subject: Re: [PATCH RFC 03/25] drm/atomic-helper: Set mode_changed on
- vrr_enabled change
-Message-ID: <arKAv_CPpmYmcWeg@houat>
-References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
- <20260921-vrr-limiter-uapi-v1-3-2fcd7d011646@collabora.com>
- <75b82a61-fe82-4597-bfb5-3c717fbb0dda@amd.com>
- <XpLMHDHXSDOKXXVsZyU9Pg@collabora.com>
+	id 1x90gE-00000005Y2v-0XQK
+	for linux-rockchip@lists.infradead.org;
+	Tue, 22 Sep 2026 13:37:07 +0000
+X-Envelope-To: linux-rockchip@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=KPcw/ZopzzaYRfLPPDrflpmk4QBwx4LnGR3aDrupdxo=;
+ c=simple/simple; d=cknow-tech.com;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1790084222; v=1; x=1790689022;
+ b=HygEBTiD5SS2UBPfStNd4HRIGEvr4s6OBSemirUL6WK9ken+83Pi/QoCV4Hpf/+70M+piu7W
+ BlG6kgWyED6pEv4V3vdgDkv00SQaHnYz26kMEr0Y9NZI4OU7rqDritz/zBpV/kv5vEY099QGter
+ GhfG2IZAN0UpljWtEc7Hl6vBaHwxUI3/Fyu6enFid3w1U9bQ/P42PtKGe8o7vWs7UArnGbBoUxB
+ P9N53Hw1Ol/rW9H5RtSoeesrs0r4UiR9O96ggl+SuO5UdRydeE+z+RxsWJ4wS5JG0roJLJE1FoN
+ zWlGuKPb8wOyCidBl9zDuI3OpxKpMCwf2ws+NuZaMhmRw==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id f43a4edae3204aa3;
+	Tue, 22 Sep 2026 13:36:52 +0000
+X-Mizu-Trace-ID: f43a4edae3204aa3
+X-Migadu-Flow: FLOW_OUT
+From: Diederik de Haas <diederik@cknow-tech.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: =?UTF-8?q?Rapha=C3=ABl=20Jakse?= <raphael.kernel@jakse.fr>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Diederik de Haas <diederik@cknow-tech.com>
+Subject: [PATCH] arm64: dts: rockchip: Add supplies for es8316 on RockPro64
+Date: Tue, 22 Sep 2026 15:36:22 +0200
+Message-ID: <20260922133643.2730265-1-diederik@cknow-tech.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-In-Reply-To: <XpLMHDHXSDOKXXVsZyU9Pg@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260922_063706_308672_B74A3C44 
+X-CRM114-Status: UNSURE (   8.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,122 +73,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8647442922433267905=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The DT binding for the es8316 got 4 power supplies added in commit
+e9966d450b46 ("ASoC: dt-bindings: es8316: Add regulator supplies")
 
---===============8647442922433267905==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="uykltmdeqp3cwq6a"
-Content-Disposition: inline
+Page 28 of the schematic for both RockPro64 V2.0 as V2.1 describe those
+various supplies, so add them to the DTS's.
 
+Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts | 4 ++++
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts    | 4 ++++
+ 2 files changed, 8 insertions(+)
 
---uykltmdeqp3cwq6a
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH RFC 03/25] drm/atomic-helper: Set mode_changed on
- vrr_enabled change
-MIME-Version: 1.0
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts
+index 883d9bcfe792..37124ad548cf 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts
+@@ -19,6 +19,10 @@ es8316: codec@10 {
+ 		reg = <0x10>;
+ 		clocks = <&cru SCLK_I2S_8CH_OUT>;
+ 		clock-names = "mclk";
++		avdd-supply = <&vcca3v0_codec>;
++		cpvdd-supply = <&vcca1v8_codec>;
++		dvdd-supply = <&vcca1v8_codec>;
++		pvdd-supply = <&vcc_3v0>;
+ 		#sound-dai-cells = <0>;
+ 
+ 		port {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+index ae3ee91dba2f..144988515c62 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+@@ -19,6 +19,10 @@ es8316: codec@11 {
+ 		reg = <0x11>;
+ 		clocks = <&cru SCLK_I2S_8CH_OUT>;
+ 		clock-names = "mclk";
++		avdd-supply = <&vcca3v0_codec>;
++		cpvdd-supply = <&vcca1v8_codec>;
++		dvdd-supply = <&vcca1v8_codec>;
++		pvdd-supply = <&vcc_3v0>;
+ 		#sound-dai-cells = <0>;
+ 
+ 		port {
+-- 
+2.55.0
 
-On Tue, Sep 22, 2026 at 02:53:36PM +0200, Nicolas Frattaroli wrote:
-> On Monday, 21 September 2026 23:59:11 Central European Summer Time Leo Li=
- wrote:
-> > Hi Nicholas,
-> >=20
-> > Thanks for sending this out. I'm looking into an amdgpu implementation
-> > and had some comments along the way. Will reply inline on respective
-> > patches.
-> >=20
-> > On 2026-09-21 11:51, Nicolas Frattaroli wrote:
-> > > A change in whether VRR is enabled or not on a CRTC will be of intere=
-st
-> > > to any VRR implementation, as they may need to recalculate certain
-> > > internal state in response. So far, this was handled ad-hoc in the
-> > > drivers that implement VRR.
-> > >=20
-> > > Handle this in the common DRM atomic core by setting the mode_changed
-> > > flag when this occurs. The rationale for using mode_changed is that V=
-RR
-> > > is deeply intertwined with the current mode with regards to its timin=
-g.
-> > > Consequently, any component that cares about a mode change is likely
-> > > also going to care about VRR being enabled/disabled.
-> > >=20
-> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > > ---
-> > >  drivers/gpu/drm/drm_atomic_helper.c | 6 ++++++
-> > >  1 file changed, 6 insertions(+)
-> > >=20
-> > > diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/dr=
-m_atomic_helper.c
-> > > index 9d006f98413a..0664d5779282 100644
-> > > --- a/drivers/gpu/drm/drm_atomic_helper.c
-> > > +++ b/drivers/gpu/drm/drm_atomic_helper.c
-> > > @@ -694,6 +694,12 @@ drm_atomic_helper_check_modeset(struct drm_devic=
-e *dev,
-> > >  			new_crtc_state->active_changed =3D true;
-> > >  		}
-> > > =20
-> > > +		if (old_crtc_state->vrr_enabled !=3D new_crtc_state->vrr_enabled) {
-> > > +			drm_dbg_atomic(dev, "[CRTC:%d:%s] VRR changed\n",
-> > > +				       crtc->base.id, crtc->name);
-> > > +			new_crtc_state->mode_changed =3D true;
-> > > +		}
-> > > +
-> >=20
-> > I don't think this is the case for all hardware, at least not for amdgp=
-u.
-> > The parts in HW that adjust vtotal can be programmed without requiring
-> > bandwidth recalculations or reprogramming of pipes.
->=20
-> Thanks for pointing this out. I was already unsure of this patch before,
-> and I don't think Rockchip requires these recalculations either. Original=
-ly
-> I added this when I looked at the i915 code iirc and saw them setting it.
->=20
-> I think in the commit message I also conflate needing to know about VRR
-> being changed with needing to do a full modeset (which is what mode_chang=
-ed
-> basically means).
->=20
-> I'll drop this patch on the next revision.
-
-Alternatively, and since we only have a single driver enabling it (for
-now), I don't think having some driver specific code for now to handle
-all this is that bad.
-
-Helpers only really make sense when we start sharing code between
-drivers.
-
-Maxime
-
---uykltmdeqp3cwq6a
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCarKBAQAKCRAnX84Zoj2+
-dr15AYDf1hNAd+Ezbcn8fIQsts+wOtJnh9OA7o3i3CrBbW3rDk1DvSW+ygwNh/8m
-JmlcHmIBgNLrS0a12gMnSBzONESp+jiggI5QHHajSk3lv1hURiQQRSX119tAwssZ
-27Cpd/5zRw==
-=xdA0
------END PGP SIGNATURE-----
-
---uykltmdeqp3cwq6a--
-
-
---===============8647442922433267905==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8647442922433267905==--
-
