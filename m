@@ -4,121 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 510B8C982FA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 08:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A4CC982F1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 08:08:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
+	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ipAcKUUIRIpMoUB8GGWYokQbAqIo+fZD6466ZWfeZZ0=; b=MwAh5qNyM6Xzzw
-	Xf4bUApZSjv/3Fe7jEWhk6DQfGF2uSBkPp2vWobcUNOCEqYe/Fshqib41T93ulJX9QosLw2OTM2Bo
-	eAFu5mUoMbJi02iPvw1LkxfJbiKdbyla5KbYusXlqXPuBnvzIQX7flHrFmPLAjZSmXVNmkDLHEP+/
-	eqfQFzcC0h+wetWTsu/K1Dnw3bopmrNLOC1h3CZV5ZeT/nsEFlBgA4ytesujLbo9XoYSgr4OU9bPd
-	RU9+r/M+DVmoAwZMKnTyVBNaQe7ZNLhFigesOI4E0chLu7LdzpBy6SgZDu7A0rtdWRT7nTymHwnkT
-	ROFpFHKAXiXU+72KLR4A==;
+	List-Owner; bh=rVTVHYyHASmlbft3Ue5ZI4dQJlbl+OJt7zyurMWaf30=; b=TWDOGeYMnWQCCs
+	fHAkbPjzfI/d4XNIw9VNMRqeBi9+RJ6twk4voPek8QYjhJL2sqwSWoH5VBbntR3l3ubEm21p6NKrc
+	OOLIHzM1rYOVg6+4jzxgB9jxCutjRPBQceKTGBdecQmUXIj3P6aKyuebl0HeB5Zqd9IroEo+Tdv/d
+	g92OAuug6uWFj6Gy2yruM2O8p3S5jM6nqJLN1AVcCyRHGhugqWDBa1raSynByI7yNOPkmOgEifjoJ
+	dEmAeNNyjKfzhNWQMSZPwpeHLl1Q0635VhIt51fD1gzZ2rn+prSUs119ERf2C3TNra4OHJSaJpJhI
+	zftz8ENUXQlJKz0NxwGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8vSZ-00000004b76-4AfK;
-	Tue, 22 Sep 2026 08:02:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x8vXz-00000004ccn-0O4n;
+	Tue, 22 Sep 2026 08:08:15 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8vRi-00000004aPB-3waR
-	for linux-rockchip@bombadil.infradead.org;
-	Tue, 22 Sep 2026 08:01:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=k8SSEreitnBFuEXQj3F3dce2S1yQFmhptrw7zyYrACU=; b=cZPApCYvKyQbhhvW+j3EznfcTz
-	KJpFv7JMnvWqR5dpJrXQDS/3t2g5u+dBYtCZ1h1RCN0iVObqXelqnFvUOA7ggCiBrDNgwEILulSUH
-	OSaALXzUQ5TH93FgbmVBeCg5S42EBZZHfydKzSaAqVGnOR2CzIWe1RDVroOrzzcHTn4ebQjURBdQN
-	ORI/L8wMZm4cxDsIXjxKGaUrtK6b/zgkmrYu9GV3rMf460jsm2ZTHyAEAQRYYn5O6tbO8/uBCRcrd
-	kzuy32rIdfnazBrJ4AFE8iSZjGr5SvUlzA3ZWbtKU/zQsGMW7CWseSNOAPgrGkbYrf/fhWjm5jdkA
-	KwBsz0QQ==;
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8vRf-0000000DEj3-0ktv
+	id 1x8vXp-00000004cYt-3RDH
 	for linux-rockchip@lists.infradead.org;
-	Tue, 22 Sep 2026 08:01:45 +0000
-Received: by mail-wm2-x11.google.com with SMTP id 5b1f17b1804b1-49e6baf77afso1695685e9.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 22 Sep 2026 01:01:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790064101; x=1790668901; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=k8SSEreitnBFuEXQj3F3dce2S1yQFmhptrw7zyYrACU=;
-        b=ofMQn6m8dp7GTbkjmxzTzjCUIjnF6sqKWhw2ibo7ETDlf6/UUzmjbVYFay3F9+YUTH
-         JbYLrvpD2jZleSDtJ4PpT0g3QiCmPLxpniuORsvLBlBHLS9vQl3o+hODKiq5uLH99i47
-         Uj/7+anrHpa0m4ylh6rtllFZwFa5W9aRiXitT9gHGP9PDdzoIqLYIt5Sn9BY17F0xzzX
-         WBQLDBKC+C1P8fTgxXJrx7Yx3uyW1g2xFuE3UDB8Zk3eT84KFyfMlvb5keH4XbUvU4aI
-         4XVeXr/B/QK7z4nlCriN/n2ZojwPANCdzG1Uio5PSnkHX6BM/IT58VIgPMxHFknub2QK
-         f3Tw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790064101; x=1790668901;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=k8SSEreitnBFuEXQj3F3dce2S1yQFmhptrw7zyYrACU=;
-        b=aNOfEMCZ1+/VIJCYMLLwjWdDQ6qROdB0C80Ba6iztXLmmOv7diqCy90fFQH924uDH2
-         0MPVjkghQiEzkaDkjlzEyh4sKC6UH32tsOhtjnF1bVgdEzEeGE0Dm2CubW56kxAfvYk5
-         qOj1ikd3SjG6+lbBzQa9tUnAn5SGyDqC5ezjslgds2yCWHjq69KW1ZqLW5PWfm7WIN2j
-         YTEDyPjOtPPTbsSywTO8Xu4CIsJTwbl0vmsLIU/ZYiVaHATIQ2IKLYX9bNp8qK0Si/om
-         naZTmcS1j51HPDbB+1qM8k/uvR2Z3j6HTwd4kuPrg9RxDThVW5wA/As/0pUSObEMZnlS
-         D6Gg==
-X-Forwarded-Encrypted: i=1; AKwUvBw3WyojvogeCj3Y3uRWyfLzp/Qsdl7oo7AU0Rf8fDuO+6hBCXZt2a1OpaCugaL1GscRcocCwGn4v4b+t8y6og==@lists.infradead.org
-X-Gm-Message-State: AFuF++nW71sB3wnV7E1NuxWnXaMeasa76SeLYZOKG3noWdHlk15nYf6U
-	w3Hf0CCIKHvaFojcF9MDDAx3nherTTV9HWzK81AY7q4CHZVBMws8qGT/
-X-Gm-Gg: AYBFou3FwKjgXbMBqDRLUAk9cZsoDOCIWg4AeQ/e/xPrCuPVPLOVOQK35NGm7M9xKQj
-	HWNmeYa0oAa5hx0ZKr2AQyc757t8GLmrCPyXZc/7LnsqUQzf/+y6EXE1uRxCUVI7Uq6vPzSLZPk
-	YA5j5DtIlN80tYlev3PTcZlVbcuucwiASud6kWh2FcijO48SFzgG3/5LZuKXndijmdV2osGF080
-	+YNmIUoycRCMpHIzXA3XwPOc8duHvOqUMVY+paaqRh/J+0rvGAV2rkGr5z1e+i3KZvSGIrhhpGp
-	TuaE0Bi7lRSVOQvLJgO1V4EgBX64tUToBlVdYMv0fwbyP4tGqYwT8/e3Q+WnDDCXZaoobieW5fY
-	f8KdtMTVbpQcwytNn+8ogTW2n56WcLxogRjr5a7TZIAXs1ufOPBQSOY2zmFgmup8J0dPWRcig3O
-	2f5ueaUGBrodTmRgHXa9oQiOeucNcUPULQ9Yq7JOAUDov2FhSkkZmA5s/fLoAI9ZzgAUi8VrH87
-	6Q2uyFMqwf1E9VV6lcxuvjL2BCy5d4kn7oBGb68EHBe1gsdtGvfx6Hd8EQKFoRHv8t6oUAO5Vj/
-	Mx0=
-X-Received: by 2002:a05:600c:6992:b0:49b:9241:7ff0 with SMTP id 5b1f17b1804b1-49fc7b7a756mr226941795e9.0.1790064100738;
-        Tue, 22 Sep 2026 01:01:40 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B80530056971C6280202175.dsl.pool.telekom.hu. [2001:4c4e:1b80:5300:5697:1c62:8020:2175])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49fdaaf97e2sm18248625e9.2.2026.09.22.01.01.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Sep 2026 01:01:40 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jeff Hugo <jeff.hugo@oss.qualcomm.com>,
-	Robert Foss <rfoss@kernel.org>,
-	Sidong Yang <sidong.yang@furiosa.ai>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jiaxing Hu <gahing@gahingwoo.com>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Guangshuo Li <lgs201920130244@gmail.com>,
-	=?UTF-8?q?H=C3=BCseyin=20BIYIK?= <boogiepop@gmx.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Igor Paunovic <royalnet026@gmail.com>
-Subject: [PATCH v2 11/11] arm64: dts: rockchip: rk3588: add passive cooling to the NPU thermal zone
-Date: Tue, 22 Sep 2026 10:01:14 +0200
-Message-ID: <20260922080114.44662-12-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260922080114.44662-1-royalnet026@gmail.com>
-References: <20260922080114.44662-1-royalnet026@gmail.com>
-MIME-Version: 1.0
+	Tue, 22 Sep 2026 08:08:11 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 767EA4E40ED6;
+	Tue, 22 Sep 2026 08:08:01 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 468C860580;
+	Tue, 22 Sep 2026 08:08:01 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4056C1032925B;
+	Tue, 22 Sep 2026 10:07:38 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1790064477; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=zcp8tcZsfdsmxUcen5sJupr/nyZnxY5fTXf1NQWKnsw=;
+	b=FGUyk9MHJzJ0m0z8YAThEo2DOBHDLTsuC25rLZr2qIfJay2Q0I+gVCvTxsv2nvY/dDnJb9
+	IgXAUJLDLFyWtCu0gq4m+hX3dLL+xecsNJ8WJa5QPeWS1Zy6AUoS89OPdFALC8X5Qo/SYt
+	P+8Axb3+Z77DYvypZw+Bo1A5RcA0P5rB/gomubC1yCw1+sui5hmFk5wLv6D9zSGNbH/9I3
+	BDo6gZcaNWSmUaB3MSGwrUc50FkG95rYvnEytrHx7tFcZXjfqgUddfJurME6kZVkekBte7
+	SOpxzk5wN3ckVBb+KRlg6NycfNY3+6MfShb4b9lHPUZw9BG8DyTys0vA4UWL/w==
+Mime-Version: 1.0
+Date: Tue, 22 Sep 2026 10:07:36 +0200
+Message-Id: <DLLOW2ROGP6L.3GTVT76VYPGAU@bootlin.com>
+Subject: Re: [PATCH v3 19/19] drm/bridge: analogix_dp: don't create a
+ panel_bridge
+Cc: "Albert Esteve" <aesteve@redhat.com>, "Anusha Srivatsa"
+ <asrivats@redhat.com>, "Dmitry Baryshkov"
+ <dmitry.baryshkov@oss.qualcomm.com>, "Hui Pu" <Hui.Pu@gehealthcare.com>,
+ "Ian Ray" <ian.ray@gehealthcare.com>, "Thomas Petazzoni"
+ <thomas.petazzoni@bootlin.com>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>, <imx@lists.linux.dev>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mips@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <asahi@lists.linux.dev>,
+ <linux-arm-msm@vger.kernel.org>, <freedreno@lists.freedesktop.org>,
+ <linux-tegra@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <linux-samsung-soc@vger.kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
+To: "Damon Ding" <damon.ding@rock-chips.com>, "Luca Ceresoli"
+ <luca.ceresoli@bootlin.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>,
+ "Neil Armstrong" <neil.armstrong@linaro.org>, "Robert Foss"
+ <rfoss@kernel.org>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>,
+ "Jonas Karlman" <jonas@kwiboo.se>, "Jernej Skrabec"
+ <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
+ <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Jessica Zhang"
+ <jesszhan0024@gmail.com>, "Laurentiu Palcu" <laurentiu.palcu@oss.nxp.com>,
+ "Lucas Stach" <l.stach@pengutronix.de>, "Frank Li" <Frank.Li@nxp.com>,
+ "Sascha Hauer" <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
+ <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Paul
+ Cercueil" <paul@crapouillou.net>, "Paul Kocialkowski" <paulk@sys-base.io>,
+ "Linus Walleij" <linusw@kernel.org>, "Inki Dae" <inki.dae@samsung.com>,
+ "Jagan Teki" <jagan@amarulasolutions.com>, "Marek Szyprowski"
+ <m.szyprowski@samsung.com>, "Sean Paul" <sean@poorly.run>, "Jonathan
+ Corbet" <corbet@lwn.net>, "Shuah Khan" <skhan@linuxfoundation.org>, "Randy
+ Dunlap" <rdunlap@infradead.org>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.22.0
+References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
+ <20260916-drm-bridge-every-panel-v3-19-83afb4f1a707@bootlin.com>
+ <975a4d45-9a61-4858-b498-8bc0a1e44746@rock-chips.com>
+ <96882735-091f-49c6-a47b-5da8be711818@rock-chips.com>
+In-Reply-To: <96882735-091f-49c6-a47b-5da8be711818@rock-chips.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_090144_212284_6F4834EE 
-X-CRM114-Status: GOOD (  17.09  )
+X-CRM114-CacheID: sfid-20260922_010806_137206_18118191 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,94 +102,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The NPU zone has had only a critical trip at 115 degrees, which is a
-shutdown and not a cooling policy. Now that the NPU can be throttled by
-capping its clock, give the zone a passive trip and a cooling map, in the
-same shape and at the same temperatures as the GPU zone right above it:
-85 degrees with 2 degrees of hysteresis, and a 100 ms passive polling
-delay.
-
-The #cooling-cells property goes on rknn_core_0, the first of the three
-core nodes, as the one node that stands for the shared clock as a cooling
-device. The other two cores have no clock of their own and cannot be
-throttled independently of it.
-
-The cooling map is inert until the driver registers a cooling device:
-thermal_of_should_bind() only resolves a map entry once a matching cdev
-appears, so this patch on its own changes nothing but the trip point. On a
-board that leaves the NPU disabled the passive trip has no cooling device
-to act on and only changes the polling rate above 85 degrees, as the GPU
-zone's trip already does on a board without the GPU.
-
-The thermal path itself has not been exercised on the board this was
-written on. Reaching 85 degrees on an NPU workload with the fan curve here
-has not been possible, so what is verified is that the zone parses and
-binds, not that throttling engages at temperature.
-
-Assisted-by: LLM checkpatch dtbs_check
-Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
----
-v2: commit message only: wording for the shared table, and a sentence
-on boards that leave the NPU disabled. The diff is unchanged.
-
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 376ad04e07869..c3d22b08f415b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1162,6 +1162,7 @@ rknn_core_0: npu@fdab0000 {
- 		clock-names = "aclk", "hclk", "npu", "pclk";
- 		assigned-clocks = <&scmi_clk SCMI_CLK_NPU>;
- 		assigned-clock-rates = <200000000>;
-+		#cooling-cells = <2>;
- 		resets = <&cru SRST_A_RKNN0>, <&cru SRST_H_RKNN0>;
- 		reset-names = "srst_a", "srst_h";
- 		power-domains = <&power RK3588_PD_NPUTOP>;
-@@ -3212,17 +3213,31 @@ map0 {
- 		};
- 
- 		npu_thermal: npu-thermal {
--			polling-delay-passive = <0>;
-+			polling-delay-passive = <100>;
- 			polling-delay = <0>;
- 			thermal-sensors = <&tsadc 6>;
- 
- 			trips {
-+				npu_alert: npu-alert {
-+					temperature = <85000>;
-+					hysteresis = <2000>;
-+					type = "passive";
-+				};
-+
- 				npu_crit: npu-crit {
- 					temperature = <115000>;
- 					hysteresis = <0>;
- 					type = "critical";
- 				};
- 			};
-+
-+			cooling-maps {
-+				map0 {
-+					trip = <&npu_alert>;
-+					cooling-device =
-+						<&rknn_core_0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+				};
-+			};
- 		};
- 	};
- 
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gRGFtb24sCgpPbiBNb24gU2VwIDIxLCAyMDI2IGF0IDg6MzQgQU0gQ0VTVCwgRGFtb24g
+RGluZyB3cm90ZToKPiBPbiA5LzIxLzIwMjYgMTE6MDcgQU0sIERhbW9uIERpbmcgd3JvdGU6Cj4+
+IEhpIEx1Y2EsCj4+Cj4+IE9uIDkvMTYvMjAyNiA5OjQ1IFBNLCBMdWNhIENlcmVzb2xpIHdyb3Rl
+Ogo+Pj4gTm93IGEgcGFuZWxfYnJpZGdlIGlzIGF1dG9tYXRpY2FsbHkgY3JlYXRlZCBmb3IgZXZl
+cnkgZHJtX3BhbmVsIGFuZCB0aGUKPj4+IHBhbmVsLWJyaWRnZSBBUEkgaXMganVzdCBhIGRlcHJl
+Y2F0ZWQgd3JhcHBlciB0byBhY2Nlc3MgaXQuCj4+Pgo+Pj4gVXBkYXRlIGFuZCBzaW1wbGlmeSB0
+aGUgY29kZSBieSBqdXN0IGdldHRpbmcgYSByZWZlcmVuY2UgdG8gdGhlCj4+PiBhbHJlYWR5LWV4
+aXN0aW5nIGJyaWRnZSB1c2luZyBvZl9kcm1fZ2V0X2JyaWRnZV9ieV9lbmRwb2ludCgpLgo+Pj4K
+Pj4+IEFzIG9mX2RybV9nZXRfYnJpZGdlX2J5X2VuZHBvaW50KCkgcmV0dXJucyBhIHJlZmNvdW50
+ZWQgYnJpZGdlLCB0YWtlIGNhcmUKPj4+IG9mIHB1dHRpbmcgdGhlIGJyaWRnZSByZWZlcmVuY2Uu
+IFRoaXMgaXMgbm90IGVhc2lseSBkb25lIGluIHRoZSByZW1vdmUKPj4+IHBhdGgKPj4+IGR1ZSB0
+byB0aGUgZGlmZmVyZW50IHByb2JlIHBhdGhzIG9mIHRoZSB1c2VyIGRyaXZlcnMsIHNvIGFkZCBh
+IGRldm0KPj4+IGFjdGlvbgo+Pj4gdG8gZW5zdXJlIHRoZSByZWZlcmVuY2UgaXMgcHV0IG9ubHkg
+d2hlbiBpdCB3YXMgdGFrZW4uCj4+Pgo+Pj4gQXNzaXN0ZWQtYnk6IG9wZW5jb2RlOmRlZXBzZWVr
+LXY0LWZsYXNoLTA3MzEKPj4+IFNpZ25lZC1vZmYtYnk6IEx1Y2EgQ2VyZXNvbGkgPGx1Y2EuY2Vy
+ZXNvbGlAYm9vdGxpbi5jb20+Cj4+PiAtLS0KPj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
+YW5hbG9naXgvS2NvbmZpZ8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDEgLQo+Pj4gwqAgZHJp
+dmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCA0MCArKysr
+KysrKysrKysKPj4+ICstLS0tLS0tLS0KPj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5
+bm9zX2RwLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDM2ICsKPj4+ICstLS0t
+LS0tLS0tLS0tLS0tLQo+Pj4gwqAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2Rw
+LXJvY2tjaGlwLmPCoMKgwqAgfMKgIDkgLS0tLS0KPj4+IMKgIGluY2x1ZGUvZHJtL2JyaWRnZS9h
+bmFsb2dpeF9kcC5owqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAxIC0K
+Pj4+IMKgIDUgZmlsZXMgY2hhbmdlZCwgMjUgaW5zZXJ0aW9ucygrKSwgNjIgZGVsZXRpb25zKC0p
+Cj4+Pgo+Cj4gW3NuaXBdCj4KPj4+IEBAIC00ODgsMTQgKzQ4Nyw2IEBAIHN0YXRpYyB2b2lkIHJv
+Y2tjaGlwX2RwX3JlbW92ZShzdHJ1Y3QKPj4+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4+IMKg
+IHsKPj4+IMKgwqDCoMKgwqAgc3RydWN0IHJvY2tjaGlwX2RwX2RldmljZSAqZHAgPSBwbGF0Zm9y
+bV9nZXRfZHJ2ZGF0YShwZGV2KTsKPgo+IFRoZSBhYm92ZSB1bnVzZWQgJnJvY2tjaGlwX2RwX2Rl
+dmljZSBjb3VsZCBiZSBhbHNvIHJlbXZlZC4KCkFoLCBpbmRlZWQhCgpJIGd1ZXNzIEkgY2FuIGtl
+ZXAgeW91ciByZXZpZXcgdGFncyBpZiBhcHBseWluZyB0aGlzIHBhdGNoIHdpdGggb25seSB0aGlz
+CmxpbmUgcmVtb3ZlZC4gQ29ycmVjdD8KCkx1Y2EKCi0tCkx1Y2EgQ2VyZXNvbGksIEJvb3RsaW4K
+RW1iZWRkZWQgTGludXggYW5kIEtlcm5lbCBlbmdpbmVlcmluZwpodHRwczovL2Jvb3RsaW4uY29t
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
+b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
+Cg==
