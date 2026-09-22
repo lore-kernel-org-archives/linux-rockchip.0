@@ -4,87 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A34EC982FA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 09:33:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AECCCC982F1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 09:56:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gPpfizLAv0Qly8X7ZFUFjZYCuvOWTvkYC44JBKB5XsI=; b=po1+Oi5cDiQ5UA
-	cORtoq8hFoB+9ky0YfnSvi0DVKcqB81nJIv5JU+gsdGS8qaBb54fHQLB3FA3xWOBjC7vck4vpXPcS
-	2/19tAZeqiyy2zkfeoLiOAnB/CaIR1XXHw5qN89llDn0d/gnBDVtEuMswH7ZC0tjcI6+AIM+I5h+f
-	fqfjU9P1egdi4RqZFsQDnQ2CCiR54jGPwn09AOtiJ1QDS4G6SbkwTE3J4EFFv62qVE4DA2V/Vaz5I
-	r6raGoQrRX54s0Evqv7KfcR30ZurC8/1JGvEB9X957j21ZEYKOJ/HtAvgfAXI7VJh1nryNBNzRMFv
-	y+SX01VA4sE0yMLyqLKA==;
+	List-Owner; bh=RGvfrJoEEWQwRLA2OsMryXO5MUC2pFsMmCVP68KqJ84=; b=yKv6R38SsHZSd7
+	ypjtp4pbegZzPb1znXsiOuXxZienYW8aWtbZoRmaaq3/zqL0gbDx4LmOiGFhmRJBp6ww2hI4VVHsN
+	fwhGQdIalBXSx5JkXgmYmIAL9Kj//qoDc4saGSWPtLCnaYfARNeizVS5yu21FHT+X3u5MKrXN7Y3s
+	lmw66LizYbyfs0Na9rIDKG+tQf0dMfbvhdDfpQS7GBr2SBFuhVScJF7kcU/1kFrlXccg/ZCRsBt47
+	0XdMbbKgATHbKti5KVGRW15iAr/NQcfz+NVN825ehtxnSabgRPYrg+SRYIdq2XumACoKgEt+c0zLv
+	/CQLTtCdRg/3mTH3CZJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8ws6-00000004vmL-1LLk;
-	Tue, 22 Sep 2026 09:33:06 +0000
-Received: from mail-m12740.qiye.163.com ([115.236.127.40])
+	id 1x8xF7-00000004zKX-1XXg;
+	Tue, 22 Sep 2026 09:56:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8ws3-00000004vlT-31vM;
-	Tue, 22 Sep 2026 09:33:05 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4eb536cd9;
-	Tue, 22 Sep 2026 16:57:55 +0800 (GMT+08:00)
-Message-ID: <3bfb61d5-333d-4005-ad3b-2e8179c0e45e@rock-chips.com>
-Date: Tue, 22 Sep 2026 16:57:54 +0800
+	id 1x8xF6-00000004zKK-1SjH
+	for linux-rockchip@lists.infradead.org;
+	Tue, 22 Sep 2026 09:56:52 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 8992960200;
+	Tue, 22 Sep 2026 09:56:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA5321F000FF;
+	Tue, 22 Sep 2026 09:56:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790071011;
+	bh=AnvrllaJNenlmFTgkElMCALNKYJ6cjipSA7VxVT2mhk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=VrCidzDw2npJykvwE8JRRRjBaI2fcYgUjBYaeq58Km8H+kvvnpjjw/rn24GUXy411
+	 6aZTbjhqgFl/HJhi2KEyLezwF81+6gbdYUYDn7JtCtzbmPjRx5qsGAK1eMugiDcZ0B
+	 8A+yQN4vIu5Q9jv4ZyUolSn6xe8vj+iH3dBaiZIH2n/o5gr0MEygdysir1jAeRGx3F
+	 n1muAAH//eAbc4ov+z1FIYXnL99S+exNXBUk0iT0RSnHEnb1aoncaZU1egSzmEl7nj
+	 YAJV3jbySBM8eW55j4G6tvT5qg9oGMYMkriaLF78Mw3QOafqrz5XidvUssVNO/kavQ
+	 LsFIijb2snX8Q==
+Date: Tue, 22 Sep 2026 11:56:47 +0200
+From: Niklas Cassel <cassel@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
+Subject: Re: [PATCH v3 1/3] PCI: dw-rockchip: Move the INTx irq setup to probe
+Message-ID: <arJQ3_hkbKE9Yn0a@ryzen>
+References: <1790044622-164744-1-git-send-email-shawn.lin@rock-chips.com>
+ <1790044622-164744-2-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 19/19] drm/bridge: analogix_dp: don't create a
- panel_bridge
-To: Heiko Stuebner <heiko@sntech.de>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Jessica Zhang <jesszhan0024@gmail.com>,
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
- Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
- Paul Kocialkowski <paulk@sys-base.io>, Linus Walleij <linusw@kernel.org>,
- Inki Dae <inki.dae@samsung.com>, Jagan Teki <jagan@amarulasolutions.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Sean Paul <sean@poorly.run>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- Randy Dunlap <rdunlap@infradead.org>
-Cc: Albert Esteve <aesteve@redhat.com>, Anusha Srivatsa
- <asrivats@redhat.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, asahi@lists.linux.dev,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org
-References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
- <975a4d45-9a61-4858-b498-8bc0a1e44746@rock-chips.com>
- <DLLOZYM6YWJ3.6Q0LRD1WABGW@bootlin.com> <1889588.TLkxdtWsSY@phil>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <1889588.TLkxdtWsSY@phil>
-X-HM-Tid: 0aa0c856048703a8kunm13843dd282f85
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTRhCVksYHh5IT0IaGRhKTlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
-	5KVUpLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=TNR/0SotamoVdJUJEBCwZjRW5KZCgNHWIy7B4TOS3SPVjThz6kkpecEQfCBm1hET0QLLrXnQiPdxL1/ZgQBcxH6Fgs4gwH89bNW1b35Mip8zJ7P9QGBceDdbWh0z3SX9ZKl3hyUCylvmgOVFto0lOSx+M5/QgWBF7muvoV2pXBE=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=3BVvMws54RIF3ziE5nORoR5QOkw6Rpw6m98i1VFobSo=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_023303_983063_AE1ED8F9 
-X-CRM114-Status: GOOD (  14.19  )
+Content-Disposition: inline
+In-Reply-To: <1790044622-164744-2-git-send-email-shawn.lin@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,40 +66,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiA5LzIyLzIwMjYgNDoyMiBQTSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4g
-SGkgTHVjYSwKPiAKPiBBbSBEaWVuc3RhZywgMjIuIFNlcHRlbWJlciAyMDI2LCAxMDoxMjo0MSBN
-aXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIEx1Y2EgQ2VyZXNvbGk6Cj4+IE9u
-IE1vbiBTZXAgMjEsIDIwMjYgYXQgNTowNyBBTSBDRVNULCBEYW1vbiBEaW5nIHdyb3RlOgo+Pj4g
-T24gOS8xNi8yMDI2IDk6NDUgUE0sIEx1Y2EgQ2VyZXNvbGkgd3JvdGU6Cj4gCj4gWy4uLl0KPiAK
-Pj4+PiBAQCAtMTYzLDE4ICsxNjEsNiBAQCBzdGF0aWMgaW50IGV4eW5vc19kcF9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+Pj4+ICAgIAkgKi8KPj4+PiAgICAJcGxhdGZvcm1f
-c2V0X2RydmRhdGEocGRldiwgZHApOwo+Pj4+Cj4+Pj4gLQkvKiBUaGlzIGlzIGZvciB0aGUgYmFj
-a3dhcmQgY29tcGF0aWJpbGl0eS4gKi8KPj4+PiAtCW5wID0gb2ZfcGFyc2VfcGhhbmRsZShkZXYt
-Pm9mX25vZGUsICJwYW5lbCIsIDApOwo+Pj4+IC0JaWYgKG5wKSB7Cj4+Pj4gLQkJZHAtPnBsYXRf
-ZGF0YS5wYW5lbCA9IG9mX2RybV9maW5kX3BhbmVsKG5wKTsKPj4+PiAtCj4+Pj4gLQkJb2Zfbm9k
-ZV9wdXQobnApOwo+Pj4+IC0JCWlmIChJU19FUlIoZHAtPnBsYXRfZGF0YS5wYW5lbCkpCj4+Pj4g
-LQkJCXJldHVybiBQVFJfRVJSKGRwLT5wbGF0X2RhdGEucGFuZWwpOwo+Pj4+IC0KPj4+PiAtCQln
-b3RvIG91dDsKPj4+PiAtCX0KPj4+PiAtCj4+Pgo+Pj4gVElQOiBJbiBteSBXSVAgdjMgcGF0Y2gg
-c2VyaWVzLCBJIHVzZSBvZl9kcm1fZmluZF9wYW5lbCgpIHRvZ2V0aGVyIHdpdGgKPj4+IGRldm1f
-ZHJtX3BhbmVsX2JyaWRnZV9hZGQoKSB0byBtYWludGFpbiB0aGlzIGJhY2t3YXJkIGNvbXBhdGli
-aWxpdHkuIEJ1dAo+Pj4gSSBhbHNvIHRoaW5rIHRoaXMgb2xkIGFwcHJvYWNoIHNob3VsZCBiZSBk
-ZXByZWNhdGVkIG5vdy4gU2hhbGwgd2UgYWRkCj4+PiBzb21lIG5vdGVzIGluIHRoZSBjb21taXQg
-bWVzc2FnZSB0byBtZW50aW9uIHRoZSBkZXByZWNhdGlvbiBvZiB0aGlzIG1ldGhvZD8KPj4KPj4g
-V2hhdCBpcyB0aGUgIldJUCB2MyIgc2VyaWVzIGV4YWN0bHk/IERvIHlvdSBoYXZlIGEgbGluayAo
-dG8gdjIgaW4gY2FzZSB2Mwo+PiBpcyBub3QgeWV0IHB1YmxpYyk/Cj4gCj4gaHR0cHM6Ly9sb3Jl
-Lmtlcm5lbC5vcmcvbGludXgtcm9ja2NoaXAvMjAyNjA4MDQwODE3MTcuNzQxNDA0LTEtZGFtb24u
-ZGluZ0Byb2NrLWNoaXBzLmNvbS8KPiBpcyB0aGUgc2VyaWVzIGluIHF1ZXN0aW9uLgo+IAo+IAoK
-U29ycnkgZm9yIHRoZSBjb25mdXNpb24uIEkgd2FzIGRpc2N1c3NpbmcgYW5vdGhlciBzZXBhcmF0
-ZSBzZXJpZXMgaW4gCnRoaXMgdGhyZWFkLCB3aGljaCBjYXVzZWQgbWlzdW5kZXJzdGFuZGluZy4g
-SSBtZW50aW9uZWQgZWFybGllciB0aGF0IEkgCndpbGwgdHJ5IHRvIHBvc3QgaXRzIHYzIHVwZGF0
-ZSB3aXRoaW4gdGhpcyB3ZWVrLlswXQoKQmVzdCByZWdhcmRzLApEYW1vbgoKWzBdIApodHRwczov
-L2xvcmUua2VybmVsLm9yZy9hbGwvNTdmNTdmNDAtODdlYy00N2EyLWE4YjktY2M4YjFhZGMzYjhm
-QHJvY2stY2hpcHMuY29tLwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+Hello Shawn,
+
+On Tue, Sep 22, 2026 at 10:37:00AM +0800, Shawn Lin wrote:
+> Since commit b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port()
+> and use for link down"), .reset_root_port() re-runs the host ops .init()
+> callback to reprogram the Root Complex after a controller reset. That
+> works for the register programming, but .init() is not re-entrant: it
+> also creates the INTx irq domain and installs the chained INTx handler.
+> Every root port reset therefore ends up with a second irq domain
+> registered for the same fwnode: the previous one is leaked, as it is
+> never removed, and worse, the INTx virqs of the downstream PCI devices
+> were allocated in the previous irq domain and are never re-mapped, while
+> the chained handler now looks up virqs in the new, empty domain. After a
+> link down recovery, INTx interrupts are silently lost.
+> 
+> Fix it by moving the of_irq_get_byname() lookup, the INTx irq domain
+> creation and the chained handler installation out of .init() and into
+> rockchip_pcie_configure_rc(), right after dw_pcie_host_init(). This
+> mirrors how the qcom driver requests its global IRQ, and leaves .init()
+> with nothing but idempotent register programming, so both
+> .reset_root_port() and dw_pcie_resume_noirq() can safely re-run it.
+> Re-running of_irq_get_byname() on every resume is also gone.
+> 
+> rockchip_pcie_configure_rc() can abort probe, so propagate the irq
+> domain creation error instead of only logging it as .init() used to do.
+> 
+> Fixes: b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port() and use for link down")
+> Suggested-by: Niklas Cassel <cassel@kernel.org>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+> Changes in v3:
+> - split devm-managed part into a seperate patch
+> 
+> Changes in v2:
+> - Moved the of_irq_get_byname() lookup, the INTx irq domain creation
+>   and the chained handler installation out of the host ops .init()
+>   callback into rockchip_pcie_configure_rc(), right after
+>   dw_pcie_host_init(), as suggested by Niklas Cassel. This supersedes
+>   v1 patch 1/2, as .init() no longer creates the irq domain, and
+>   removes the rockchip_pcie_host_hw_init() helper from v1.
+> - Made the INTx irq domain devm-managed with
+>   devm_irq_domain_instantiate() and uninstall the chained handler
+>   through a devres action, addressing the probe failure leak and
+>   use-after-free flagged by the Sashiko review.
+> 
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 32 +++++++++++++++------------
+>  1 file changed, 18 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 1497686..8788a10 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -422,23 +422,9 @@ static void rockchip_pcie_stop_link(struct dw_pcie *pci)
+>  static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+>  {
+>  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+> -	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+> -	struct device *dev = rockchip->pci.dev;
+> -	int irq, ret;
+> -
+> -	irq = of_irq_get_byname(dev->of_node, "legacy");
+> -	if (irq < 0)
+> -		return irq;
+>  
+>  	pci->dbi_base2 = pci->dbi_base + PCIE_TYPE0_HDR_DBI2_OFFSET;
+>  
+> -	ret = rockchip_pcie_init_irq_domain(rockchip);
+> -	if (ret < 0)
+> -		dev_err(dev, "failed to init irq domain\n");
+> -
+> -	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
+> -					 rockchip);
+> -
+>  	rockchip_pcie_configure_l1ss(pci);
+>  	rockchip_pcie_enable_l0s(pci);
+>  	pp->bridge->reset_root_port = rockchip_pcie_rc_reset_root_port;
+> @@ -740,6 +726,24 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+>  		return ret;
+>  	}
+>  
+> +	/*
+> +	 * This is done here instead of in the host ops .init() callback,
+> +	 * which is also re-run by .reset_root_port(), so that the INTx irq
+> +	 * domain is only created once, at probe time.
+> +	 */
+
+I don't think a code comment is needed here.
+
+But with or without the code comment:
+Reviewed-by: Niklas Cassel <cassel@kernel.org>
+
+
+> +	irq = of_irq_get_byname(dev->of_node, "legacy");
+> +	if (irq < 0)
+> +		return irq;
+> +
+> +	ret = rockchip_pcie_init_irq_domain(rockchip);
+> +	if (ret < 0) {
+> +		dev_err(dev, "failed to init irq domain\n");
+> +		return ret;
+> +	}
+> +
+> +	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
+> +					 rockchip);
+> +
+>  	/* unmask hot reset/link-down reset */
+>  	val = FIELD_PREP_WM16(PCIE_LINK_REQ_RST_NOT_INT, 0);
+>  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
+> -- 
+> 2.7.4
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
