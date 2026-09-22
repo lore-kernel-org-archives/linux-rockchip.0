@@ -4,78 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87655C982FA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 12:54:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50CCAC982FA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 13:22:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=waz961aZ1esOhrGfqBSigIDtWg8csin7ddZJvV3mM7w=; b=hFIQLXNxQOnB1y
-	OiR2jh+X6f/HYjd0JhbSezqYharOuPxu9neyiLRr7tgZSmk2G4bGdkyETWffZQSNahA5zSCtpK47s
-	aYLjGwbIHZkgCPsJ/8X8YvnTQZb1eoAYsC6crgv5rGoOgdA6o74cU/8YHo8dOwye6l1fm7IUDcsCP
-	EYiSWAxW9BRNeMWpZtLGDAJ2/F4FrA4XUZ4cUQjDXbIntlQSijVEQ+qp53e5Paa+loCWbfhnB1275
-	hNkYOMr1nTX6cOb5IGPN7h3uOkmtYWoOxbS+BT85aAAmkmPVFvz7av0E2BmwF2cp6B5DTkL+FpjYy
-	BblsDoVFoki07QhlEHFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+qrdYyoRIxyysHYJKihXhfZE8mX0++xFulcH6XdLITQ=; b=M+bwLxEMhBXeYKejfah/PwhXxN
+	4ueXZc8hCOlRdKS0A+f0pieiKT4IIsLw5kgw2eIcLLMm1oO9tmUqRY7k5BGTL4O0YhCU5dNBV8KE6
+	md+csrSILIHxoermHSOm5ymciFKKzprjO+FxshMPneWb8AaangOBT8x1qQ32VLoZmTBiL1SQedDeo
+	BrlmEphqDj/CjZCJxKOpYyOdKTOaaVeu1LUwnZ7uo9sgiRwPYuvigSotc92d4hLyYY+jhuu1t475C
+	ofedRon3aOtcZI83F6FNrLj1t06ljPiLTtGt1WBux8OTVzeWj5e8BpFTTzW372a6tYGKGixDm8WsC
+	fO0/DfFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9016-00000005NPq-2L9h;
-	Tue, 22 Sep 2026 12:54:36 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1x90Rr-00000005VCJ-11mC;
+	Tue, 22 Sep 2026 13:22:15 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9015-00000005NP8-07Jo;
-	Tue, 22 Sep 2026 12:54:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790081625; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=KTndc6JZaRZHwnEIOsJVOKmqMnPoyD0yJUj7daOPlmBUXrYCLC7sXrwHhSQE/M1j0SelAcsyof5PD3lQS0w0CQBr9yUNEWhUGag6v95l7NXo+BzIQ8Gce1U7JIP5hgSyjCQ/1LXPWKv2jxbgTyp2dNeb1Sm2ibtztE+5DPc8Ji4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790081625; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=8VjNl0wa/Nxv7LlY9fTplz72WoCM/sa6XfRLdYqoWf4=; 
-	b=iQEHTfp1vj8knug37pUf8qyg1jsi2Ik8q0L8i491jEO0OnRutlTdUNwhENof8gUq8voCE7STLUVB+/PzLLd95UmcLL1pBDYWthMysH2QgI55DWtF7mVJ2RQmP/Ftc/qBYmbCmCsjRTmZAL2aFbbo/cWYijsVLzEewVy1YHXAVg4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790081625;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=8VjNl0wa/Nxv7LlY9fTplz72WoCM/sa6XfRLdYqoWf4=;
-	b=TCdu6C7hW2pYijD6VGCaiC+wv5MqeYa3Fx6j1IxMBPJkKRSEEGQpJJdhmINCvJ3i
-	zeMSbdPSbjZu51N/DttLQ5WTW3C38NdLEbu+/1NqKFSdt/fldM1iQ5G47a4IkHlsXrr
-	x/iihlM9thTLVL5I1AkmxN9YehFWKw8QVIzXhiUI=
-Received: by smtp.zohomail.com with SMTPS id 1790081623916135.24430513639902;
-	Tue, 22 Sep 2026 05:53:43 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>,
- Daniel Stone <daniels@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Helge Deller <deller@gmx.de>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Leo Li <sunpeng.li@amd.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-fbdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- Derek Foreman <derek.foreman@collabora.com>,
- wayland-devel@lists.freedesktop.org
-Subject: Re: [PATCH RFC 03/25] drm/atomic-helper: Set mode_changed on vrr_enabled
- change
-Date: Tue, 22 Sep 2026 14:53:36 +0200
-Message-ID: <XpLMHDHXSDOKXXVsZyU9Pg@collabora.com>
-In-Reply-To: <75b82a61-fe82-4597-bfb5-3c717fbb0dda@amd.com>
+	id 1x90Rp-00000005VBU-2WRe;
+	Tue, 22 Sep 2026 13:22:13 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id F0A994068C;
+	Tue, 22 Sep 2026 13:22:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 543431F000FF;
+	Tue, 22 Sep 2026 13:22:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790083332;
+	bh=izoFKgiwl1CtFCyEIjGCaDfq4nQekOb5nh2FLPhllwE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=RqS0wZ6MEt5bZk9R+eKNjlRNCmWaNssWnIKblwHEVt1yhxX+ze4qRQgSdijlnk+u9
+	 x0uj7BswFEX76KgX7c17GHgRy4Qckx0Sx/PiiC1Eb0ER625jj/erLNU2xNNe6T/ltx
+	 V2RiRRALLcVkKzNnXsV3FaSSjjAT03Tf6Ho6/htzaKLwBoA7DXu/HOLeogcfu1cYal
+	 /IaGMln+Avhf92NI250562x/Cv22XLM8bnqAYK28Am/fhb5I4fg6WoukQ8LWNad5Ef
+	 TG8T8MTKfFhq+I45jEqJxtY1TVTGkcKwY3zEkKGZ3sZNnz99fz/nBT+HBhc8F/WX9L
+	 sj2D32JDkes8Q==
+Date: Tue, 22 Sep 2026 15:22:09 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>, 
+	Daniel Stone <daniels@collabora.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Helge Deller <deller@gmx.de>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Leo Li <sunpeng.li@amd.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-fbdev@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
+	Derek Foreman <derek.foreman@collabora.com>, wayland-devel@lists.freedesktop.org
+Subject: Re: [PATCH RFC 03/25] drm/atomic-helper: Set mode_changed on
+ vrr_enabled change
+Message-ID: <arKAv_CPpmYmcWeg@houat>
 References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
  <20260921-vrr-limiter-uapi-v1-3-2fcd7d011646@collabora.com>
  <75b82a61-fe82-4597-bfb5-3c717fbb0dda@amd.com>
+ <XpLMHDHXSDOKXXVsZyU9Pg@collabora.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_055435_125976_6D55C287 
-X-CRM114-Status: GOOD (  26.79  )
+In-Reply-To: <XpLMHDHXSDOKXXVsZyU9Pg@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,82 +76,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8647442922433267905=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Monday, 21 September 2026 23:59:11 Central European Summer Time Leo Li wrote:
-> Hi Nicholas,
-> 
-> Thanks for sending this out. I'm looking into an amdgpu implementation
-> and had some comments along the way. Will reply inline on respective
-> patches.
-> 
-> On 2026-09-21 11:51, Nicolas Frattaroli wrote:
-> > A change in whether VRR is enabled or not on a CRTC will be of interest
-> > to any VRR implementation, as they may need to recalculate certain
-> > internal state in response. So far, this was handled ad-hoc in the
-> > drivers that implement VRR.
-> > 
-> > Handle this in the common DRM atomic core by setting the mode_changed
-> > flag when this occurs. The rationale for using mode_changed is that VRR
-> > is deeply intertwined with the current mode with regards to its timing.
-> > Consequently, any component that cares about a mode change is likely
-> > also going to care about VRR being enabled/disabled.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/drm_atomic_helper.c | 6 ++++++
-> >  1 file changed, 6 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
-> > index 9d006f98413a..0664d5779282 100644
-> > --- a/drivers/gpu/drm/drm_atomic_helper.c
-> > +++ b/drivers/gpu/drm/drm_atomic_helper.c
-> > @@ -694,6 +694,12 @@ drm_atomic_helper_check_modeset(struct drm_device *dev,
-> >  			new_crtc_state->active_changed = true;
-> >  		}
-> >  
-> > +		if (old_crtc_state->vrr_enabled != new_crtc_state->vrr_enabled) {
-> > +			drm_dbg_atomic(dev, "[CRTC:%d:%s] VRR changed\n",
-> > +				       crtc->base.id, crtc->name);
-> > +			new_crtc_state->mode_changed = true;
-> > +		}
-> > +
-> 
-> I don't think this is the case for all hardware, at least not for amdgpu.
-> The parts in HW that adjust vtotal can be programmed without requiring
-> bandwidth recalculations or reprogramming of pipes.
 
-Thanks for pointing this out. I was already unsure of this patch before,
-and I don't think Rockchip requires these recalculations either. Originally
-I added this when I looked at the i915 code iirc and saw them setting it.
-
-I think in the commit message I also conflate needing to know about VRR
-being changed with needing to do a full modeset (which is what mode_changed
-basically means).
-
-I'll drop this patch on the next revision.
-
-Kind regards,
-Nicolas Frattaroli
-
-> 
-> - Leo
-> 
-> >  		if (new_crtc_state->enable != has_connectors) {
-> >  			drm_dbg_atomic(dev, "[CRTC:%d:%s] enabled/connectors mismatch (%d/%d)\n",
-> >  				       crtc->base.id, crtc->name,
-> > 
-> 
-> 
+--===============8647442922433267905==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="uykltmdeqp3cwq6a"
+Content-Disposition: inline
 
 
+--uykltmdeqp3cwq6a
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH RFC 03/25] drm/atomic-helper: Set mode_changed on
+ vrr_enabled change
+MIME-Version: 1.0
+
+On Tue, Sep 22, 2026 at 02:53:36PM +0200, Nicolas Frattaroli wrote:
+> On Monday, 21 September 2026 23:59:11 Central European Summer Time Leo Li=
+ wrote:
+> > Hi Nicholas,
+> >=20
+> > Thanks for sending this out. I'm looking into an amdgpu implementation
+> > and had some comments along the way. Will reply inline on respective
+> > patches.
+> >=20
+> > On 2026-09-21 11:51, Nicolas Frattaroli wrote:
+> > > A change in whether VRR is enabled or not on a CRTC will be of intere=
+st
+> > > to any VRR implementation, as they may need to recalculate certain
+> > > internal state in response. So far, this was handled ad-hoc in the
+> > > drivers that implement VRR.
+> > >=20
+> > > Handle this in the common DRM atomic core by setting the mode_changed
+> > > flag when this occurs. The rationale for using mode_changed is that V=
+RR
+> > > is deeply intertwined with the current mode with regards to its timin=
+g.
+> > > Consequently, any component that cares about a mode change is likely
+> > > also going to care about VRR being enabled/disabled.
+> > >=20
+> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > > ---
+> > >  drivers/gpu/drm/drm_atomic_helper.c | 6 ++++++
+> > >  1 file changed, 6 insertions(+)
+> > >=20
+> > > diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/dr=
+m_atomic_helper.c
+> > > index 9d006f98413a..0664d5779282 100644
+> > > --- a/drivers/gpu/drm/drm_atomic_helper.c
+> > > +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> > > @@ -694,6 +694,12 @@ drm_atomic_helper_check_modeset(struct drm_devic=
+e *dev,
+> > >  			new_crtc_state->active_changed =3D true;
+> > >  		}
+> > > =20
+> > > +		if (old_crtc_state->vrr_enabled !=3D new_crtc_state->vrr_enabled) {
+> > > +			drm_dbg_atomic(dev, "[CRTC:%d:%s] VRR changed\n",
+> > > +				       crtc->base.id, crtc->name);
+> > > +			new_crtc_state->mode_changed =3D true;
+> > > +		}
+> > > +
+> >=20
+> > I don't think this is the case for all hardware, at least not for amdgp=
+u.
+> > The parts in HW that adjust vtotal can be programmed without requiring
+> > bandwidth recalculations or reprogramming of pipes.
+>=20
+> Thanks for pointing this out. I was already unsure of this patch before,
+> and I don't think Rockchip requires these recalculations either. Original=
+ly
+> I added this when I looked at the i915 code iirc and saw them setting it.
+>=20
+> I think in the commit message I also conflate needing to know about VRR
+> being changed with needing to do a full modeset (which is what mode_chang=
+ed
+> basically means).
+>=20
+> I'll drop this patch on the next revision.
+
+Alternatively, and since we only have a single driver enabling it (for
+now), I don't think having some driver specific code for now to handle
+all this is that bad.
+
+Helpers only really make sense when we start sharing code between
+drivers.
+
+Maxime
+
+--uykltmdeqp3cwq6a
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCarKBAQAKCRAnX84Zoj2+
+dr15AYDf1hNAd+Ezbcn8fIQsts+wOtJnh9OA7o3i3CrBbW3rDk1DvSW+ygwNh/8m
+JmlcHmIBgNLrS0a12gMnSBzONESp+jiggI5QHHajSk3lv1hURiQQRSX119tAwssZ
+27Cpd/5zRw==
+=xdA0
+-----END PGP SIGNATURE-----
+
+--uykltmdeqp3cwq6a--
 
 
+--===============8647442922433267905==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8647442922433267905==--
+
