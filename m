@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 927A0C982F1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 07:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 336A3C98306
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 07:28:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
 	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z1U2/DE78QxNk2rGt+8GrlYxG/yLuFI21uBBRZSWXvY=; b=yVReDIcoVRyfoY
-	15YXnJyLTyxxKptG7NJjEu5ldSWxIOj/H8yGPCpqngSK6iWAonIz1nL+UCef1teuH91zkX/H6P/Li
-	x59M+qARJ1F5LlIc2voMDvF0bwT07a5ZPOkSbLJ1sEYN0/4t453nWIUmEctkpfwMSvFrB9gR6l+xX
-	5OerACMdtwmBzyerxVOOUeyB+8lP/tY/k5GaVs1vGi5ARkXeBcoEprKT4fKy9aQdwvRPK9HErS3SO
-	fkuNKiWTOYUgqjZogc4QXhNfhImdw9W78eagAYp43x6qzSpULm08qzEF7gVIq62feFZLu3SXbGZTh
-	dr/e/NwpHAw660A1bRPA==;
+	List-Owner; bh=tpZK6Pi9yzPGXS4di7WgLaFx5+WibeG1o6U9v7T4cJo=; b=wANXre4DFzDCiy
+	PJJI7E2uGOhGbp7a1CJWdJ/ACTUqCstj9crZjsSD/wgy23lKXtduiT7eU+FEqjcbsptfB3yTxKNnk
+	4XW10XcU6k9diYeYKoZByFB+pNiJU2KrvVrqQ7/uqsXhjJdrc3l8+5uz15gWIT0YTIpT1Chykzf2j
+	tFR/HnxOrE9wapPO5c9cM53JvWFnutL48eGHsOdzc+4sVxxAxRdJPsz2SUuP0IjhP3uy5kLhl2ous
+	bQe7AI54H1GxaJLOheiXMZYTTM5BzAXbz2lNKdR+GZJQ4sReBTs6RmutGJ/OA0DpZO3pjDHbwt92I
+	KfxwSaf7WfTwdyImpXig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8uol-00000004Uai-1Rhs;
-	Tue, 22 Sep 2026 07:21:31 +0000
+	id 1x8uva-00000004VX3-2Wni;
+	Tue, 22 Sep 2026 07:28:34 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8uoj-00000004UZN-0Qtp;
-	Tue, 22 Sep 2026 07:21:29 +0000
+	id 1x8uvZ-00000004VWT-23Vy;
+	Tue, 22 Sep 2026 07:28:33 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 47D32600CB;
-	Tue, 22 Sep 2026 07:21:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 415E61F000FF;
-	Tue, 22 Sep 2026 07:21:27 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 83BD2600CB;
+	Tue, 22 Sep 2026 07:28:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81BC11F000FF;
+	Tue, 22 Sep 2026 07:28:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790061688;
-	bh=P3w5hS8DDD3sT8l+gr5DcmwmmuQG/03rWCTnyOpJnRQ=;
+	s=k20260515; t=1790062112;
+	bh=3ux+jnjvPDKFrFGj72qL6Pn667s3hOD+uMkfDVfth4w=;
 	h=Date:From:To:Subject:In-Reply-To:References:Cc;
-	b=HgHw28lw8gZU21mJukmB+1/I7Y+LgImIbrsYzpqC1JYiX6JXqJOQIr6GgSTSVYdR5
-	 2JLP1X8leLJEZ7fDeyr9c0Nif6APkHk2ks4mjV+wlkENG+urQHLjFKzwQg4WTPaZnY
-	 cOdU2pJSliIWSaocqSBBjvAfHm4LrJuBdjjBqeO/GCLfmGd0EUMF88ST0nBtteosSW
-	 DJt4trUTapaNsZicVqsYPSYPlvqiplAhY4ZNLmAFDGPqdKmNEUDUiMQaqfT4t/gXvc
-	 150Ihq78tULhRyM8Y5AQKGRWNWxpxIl/SA4m8IpK0lEHMfXjnvGgbwYB/UsMidTT0E
-	 lnRNEdsaNgIoA==
-Message-ID: <744d1a74957d0660f2aa3d8f92ff988d@kernel.org>
-Date: Tue, 22 Sep 2026 07:21:24 +0000
+	b=YkjQqzptaJUXFmAbBCfQSoebYMNmQsBJusR+FSLllKUHPSDR/AL2tHFk2zhwxNU7S
+	 ZJbfZu40Jiy9uENTSiPYc64Lcx94x7gvgq4r10P5tkVhjAckhpA4rHtOHP7iC6JGCQ
+	 uruJKSCufdGIu8+GqNCYguivLSOkrO0PYzcv9H55HdbBwhc6XetHqFpIs8Oz8ocKc/
+	 F+pwW6p2nmFAKy1+wl1R8qwJYF0XfLNQ2Ch9HnpJbsXLnOpMgTo8k355OEsqvk9tSx
+	 U6dZz8YsyfwjZP7LWG98ep2jcL/q999EvT9I8Pe5W0ao4g0y1bjIvrcA4zQDS96MGd
+	 aUi2l2X0SuTJg==
+Message-ID: <c66e59d50c98b5bf862c687ff9ec86f5@kernel.org>
+Date: Tue, 22 Sep 2026 07:28:27 +0000
 From: "Maxime Ripard" <mripard@kernel.org>
 To: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v3 17/19] drm/omap: dss: don't create a panel_bridge
-In-Reply-To: <20260916-drm-bridge-every-panel-v3-17-83afb4f1a707@bootlin.com>
-References: <20260916-drm-bridge-every-panel-v3-17-83afb4f1a707@bootlin.com>
+Subject: Re: [PATCH v3 18/19] drm/tve200: don't create a panel_bridge
+In-Reply-To: <20260916-drm-bridge-every-panel-v3-18-83afb4f1a707@bootlin.com>
+References: <20260916-drm-bridge-every-panel-v3-18-83afb4f1a707@bootlin.com>
 Cc: asahi@lists.linux.dev, dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, "Albert
  Esteve" <aesteve@redhat.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Anusha
  Srivatsa" <asrivats@redhat.com>, "David Airlie" <airlied@gmail.com>, "Dmitry
@@ -83,7 +83,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 16 Sep 2026 15:45:41 +0200, Luca Ceresoli wrote:
+On Wed, 16 Sep 2026 15:45:42 +0200, Luca Ceresoli wrote:
 > Now a panel_bridge is automatically created for every drm_panel and the
 > panel-bridge API is just a deprecated wrapper to access it.
 > 
