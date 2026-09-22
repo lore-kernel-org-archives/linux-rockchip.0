@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68B9FC98308
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 16:06:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1EC2C98302
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 18:11:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wnbn3IeM8omRM3G/QAXBfREQNYzZTArwyqYRfKFc1AE=; b=BP9WIFit5U1bzo
-	EeNwDUKzkXpWBE0EMaLCQf+W4nyGrl1rz6BZpRW/5QYrFoiABrWcuNM5mfCOvM8/ts+koXZC2oE8o
-	EG7Z/sfpwv5JvMEGPcQob495svh8v38mT8V5xoecuAX4FXwbsTihrrYabLZdkLXu3sb6IkiT+mSYQ
-	UUIPrTdQzeUvtC4W0Uua3nLuxKUiT3LvHKE173HFq0Y3Rec6RZq6RlaLXnlW1a8rPV6/Qu5TIUdt/
-	bha3TKaiQsesUCb97TeWg86vyp8DhnVi/SN22FFmgiRp5Ep05SJEAV+KeEgmhrgOsZNPyZQLw5VXY
-	K9f3Gk9jpkj6ypw/sXBA==;
+	List-Owner; bh=FUjq2ncLMQF4A4OASKC2ixpIwxlP7HB79POLEf35LJE=; b=00qhR/dbWf4E6a
+	IZsD4mZV3BOrf1/ADbPBZPdEXJrgLduvcGZL6zJW66CtiJl/1C7NfDFn5cRb8zBc6MGyMi3B7wXIQ
+	Icma8fQuQPz6PRPhQR09vyVSDldy8hT4cm/1hd0g9NqOB5tSgHSXf5+sL+AQrkB1vdHaSMvwLHEy/
+	UptO9+Wf4yxFwHDey3yrIm/3TpI2ffbs1nSai4OY6pi8ChuvzJ/mq39XUTNohCH2bi7nYEF7/2l6w
+	Hj070je1Xl9zlGD+3swJZxI7JcEcowYQ4YXctxe1OfTo5Iw9BxZfsca9myRGk5OMlcRZyQZkJhnn9
+	CSjGrNqTP3m8mYZ2WyLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x930P-000000060El-0sXz;
-	Tue, 22 Sep 2026 16:06:05 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x94xq-00000006Gq5-1Bwj;
+	Tue, 22 Sep 2026 18:11:34 +0000
+Received: from out-32.mta0.migadu.com ([2001:41d0:1004:224b::20] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x930N-000000060EC-3Sav;
-	Tue, 22 Sep 2026 16:06:03 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1BA3D43B88;
-	Tue, 22 Sep 2026 16:06:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4D261F000FF;
-	Tue, 22 Sep 2026 16:06:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790093163;
-	bh=JgzbjDEBetEmPW4WJB9+7Tl5maoVhb0P8rs90oyuL+0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=OnXG0Zo2MnoX5zcrAup4TjC23T/TixRMSzjtJvJXuh3NJOkngrUfDFm84OdQsf/6P
-	 VkpfF/Khwqi/RrzJzW+4pS4KLRLoqmB6p4TC0wXNdtsxaLmVGsfOIt5jWKV5NxoTJV
-	 8hRtEiDjSEYOOmmQY73NlYZGMLdyFfruEGKgsqf5Q9/7vyt1hO4GWevuH0fhzVKzrH
-	 qPauEQmwHWzchGsqfPhFWdWS7056CcKCmMaZIRt+FKHNup04qoHtcYp2Sp1qDwhXlM
-	 6M7kg+i4y1WK1nF50Gk9SJI6xLjF2jURBYLzJasWwKSB/X7G6aE81fa60wYAfFg2vr
-	 5lixRlIsur+Iw==
-Date: Tue, 22 Sep 2026 11:06:02 -0500
-From: Rob Herring <robh@kernel.org>
-To: Igor Paunovic <royalnet026@gmail.com>
-Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Oded Gabbay <ogabbay@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jeff Hugo <jeff.hugo@oss.qualcomm.com>,
-	Robert Foss <rfoss@kernel.org>,
-	Sidong Yang <sidong.yang@furiosa.ai>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jiaxing Hu <gahing@gahingwoo.com>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Guangshuo Li <lgs201920130244@gmail.com>,
-	=?iso-8859-1?Q?H=FCseyin?= BIYIK <boogiepop@gmx.com>,
-	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 06/11] dt-bindings: npu: rockchip: allow DVFS and
- thermal properties
-Message-ID: <20260922160602.GA3529337-robh@kernel.org>
-References: <20260922080114.44662-1-royalnet026@gmail.com>
- <20260922080114.44662-7-royalnet026@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260922080114.44662-7-royalnet026@gmail.com>
+	id 1x94xn-00000006Gp9-0h0k
+	for linux-rockchip@lists.infradead.org;
+	Tue, 22 Sep 2026 18:11:33 +0000
+X-Envelope-To: linux-rockchip@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=2yklJXh1jDhjZosVDlDIrp4aXiVIg5PtSRAofTMK6Zo=;
+ c=simple/simple; d=cknow-tech.com;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1790100688; v=1; x=1790705488;
+ b=Ih5WkYKGRceqGE0b6Bvw0wDkK7rDAkYvMXrNr5w7HfqtLjKsuDJ6RPwgQZ6x2W1EmmPFWPGx
+ 4mISAuTi9S/bX3wQOxWPUYygkl+U8qNgju0JL0T82IGPNqmHkb+VH7jwJKDNLg+HRA+XH0qRsmY
+ nmzw/LSllhNVthgNVlpGvMj/i6V47agMA3IdqVy7LGnpf5i3epN9c0NoZdAz26N2wyGn5tM0ERj
+ PkihUeaYxlSoF6g2ChxkEBOM54F5fjipuiIptNhAziJid7NuR352T869zycUTjjA6xMomOjaCVQ
+ Luh23R/bw2qwr42Kcaqq/XWkPyFpIfWhpO9k0QjsDnBYg==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id ab83d78d1a42a1f1;
+	Tue, 22 Sep 2026 18:11:18 +0000
+X-Mizu-Trace-ID: ab83d78d1a42a1f1
+X-Migadu-Flow: FLOW_OUT
+Mime-Version: 1.0
+Date: Tue, 22 Sep 2026 20:11:13 +0200
+Message-Id: <DLM1Q8SJMXVA.5DQFQM21KJ82@cknow-tech.com>
+Cc: <dri-devel@lists.freedesktop.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v2] drm: rockchip: add
+ drm_plane_create_blend_mode_property
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Johan Jonker" <jbx6244@gmail.com>, "Sandy Huang" <hjc@rock-chips.com>,
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Andy Yan"
+ <andy.yan@rock-chips.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
+ <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>
+X-Mailer: aerc 0.22.0-24-g39041fd9f179
+References: <20260909-blend-v2-1-37e27af4faee@gmail.com>
+In-Reply-To: <20260909-blend-v2-1-37e27af4faee@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260922_111131_763954_C62FC5D1 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,39 +78,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 22, 2026 at 10:01:09AM +0200, Igor Paunovic wrote:
-> The three NPU cores on the RK3588 are fed by a single clock and a single
-> supply, and the firmware accepts a fixed set of rates for that clock.
-> Describing those rates as an operating-points-v2 table is what lets a
-> driver scale the NPU instead of leaving it at whatever rate the bootloader
-> set, so allow the property on the core node.
-> 
-> Throttling the NPU from a thermal zone needs a core node to be usable as
-> a cooling device, so allow #cooling-cells too.
-> 
-> The OPP table belongs on every core, with opp-shared: the cores have no
-> clock of their own, and one shared table for one shared clock is the same
-> shape a CPU cluster uses. #cooling-cells goes on one core only, the one a
-> thermal zone's cooling map names, because the cores cannot be throttled
-> independently. Naming one representative node for a shared frequency
-> domain is the established shape, as in "Cpufreq cooling device on CPU0"
-> in Documentation/devicetree/bindings/thermal/thermal-cooling-devices.yaml.
-> 
-> The schema cannot enforce which core carries #cooling-cells, because all
-> three cores share a compatible string and a node name pattern, so that
-> stays a devicetree convention. That is the same situation as for CPU
-> cooling, where cpus.yaml does not restrict #cooling-cells to cpu@0
-> either.
-> 
-> The example gains #cooling-cells; the operating-points-v2 property is
-> exercised by the RK3588 devicetree later in this series.
-> 
-> Assisted-by: LLM checkpatch dt_binding_check
+On Wed Sep 9, 2026 at 11:20 PM CEST, Johan Jonker wrote:
+> A validate_blend_mode_for_alpha_formats() function was added that
+> fills the kernel log with warnings for Rockchip VOP version 1 SoCs.
+> Add a drm_plane_create_blend_mode_property() function as fix.
+> VOP version 1 doesn't support blending with a pixel alpha background
+> layer, only with a constant alpha. Advertise blending capability with
+> DRM_MODE_BLEND_PIXEL_NONE.
 
-Drop 'dt_binding_check'. That's expected/assumed.
+On a 7.3-rc1 kernel without this patch, I saw the following:
 
-> Signed-off-by: Igor Paunovic <royalnet026@gmail.com>
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Rock64 (RK3328):
+```sh
+root@rock64-test:~# dmesg --level 4 | grep PLANE
+[    7.567004] rockchip-drm display-subsystem: [drm] [PLANE:35:plane-0] pixel format with alpha exposed but blend mode not setup. Please fix.
+[    7.567083] rockchip-drm display-subsystem: [drm] [PLANE:38:plane-1] pixel format with alpha exposed but blend mode not setup. Please fix.
+[    7.567132] rockchip-drm display-subsystem: [drm] [PLANE:42:plane-2] pixel format with alpha exposed but blend mode not setup. Please fix.
+```
+
+RockPro64 (RK3399):
+```sh
+root@rockpro64:~# dmesg --level 4 | grep PLANE
+[    5.695597] rockchip-drm display-subsystem: [drm] [PLANE:35:plane-0] pixel format with alpha exposed but blend mode not setup. Please fix.
+[    5.695636] rockchip-drm display-subsystem: [drm] [PLANE:38:plane-1] pixel format with alpha exposed but blend mode not setup. Please fix.
+[    5.695665] rockchip-drm display-subsystem: [drm] [PLANE:42:plane-2] pixel format with alpha exposed but blend mode not setup. Please fix.
+[    5.695692] rockchip-drm display-subsystem: [drm] [PLANE:45:plane-3] pixel format with alpha exposed but blend mode not setup. Please fix.
+[    5.695718] rockchip-drm display-subsystem: [drm] [PLANE:48:plane-4] pixel format with alpha exposed but blend mode not setup. Please fix.
+[    5.695745] rockchip-drm display-subsystem: [drm] [PLANE:51:plane-5] pixel format with alpha exposed but blend mode not setup. Please fix.
+```
+
+And on a (7.3-rc4) kernel *with* this patch, those warnings were gone.
+Thanks! Feel free to include
+
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # Rock64, RockPro64
+
+Cheers,
+  Diederik
+
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+>
+> Changed V2:
+> Add comment line
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> index 0090d8ff0c79..0bc5b606f021 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -1850,6 +1850,8 @@ static void vop_plane_add_properties(struct drm_plane *plane,
+>  	if (flags)
+>  		drm_plane_create_rotation_property(plane, DRM_MODE_ROTATE_0,
+>  						   DRM_MODE_ROTATE_0 | flags);
+> +	drm_plane_create_blend_mode_property(plane,
+> +					     BIT(DRM_MODE_BLEND_PIXEL_NONE));
+>  }
+>  
+>  static int vop_create_crtc(struct vop *vop)
+>
+> ---
+> base-commit: 9d80aa4617b32f5054c5aa471d06b66704854935
+> change-id: 20260909-blend-c89d2c9f6984
+>
+> Best regards,
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
