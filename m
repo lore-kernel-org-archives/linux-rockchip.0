@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A4CC982F1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 08:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4915AC982F1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 08:12:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rVTVHYyHASmlbft3Ue5ZI4dQJlbl+OJt7zyurMWaf30=; b=TWDOGeYMnWQCCs
-	fHAkbPjzfI/d4XNIw9VNMRqeBi9+RJ6twk4voPek8QYjhJL2sqwSWoH5VBbntR3l3ubEm21p6NKrc
-	OOLIHzM1rYOVg6+4jzxgB9jxCutjRPBQceKTGBdecQmUXIj3P6aKyuebl0HeB5Zqd9IroEo+Tdv/d
-	g92OAuug6uWFj6Gy2yruM2O8p3S5jM6nqJLN1AVcCyRHGhugqWDBa1raSynByI7yNOPkmOgEifjoJ
-	dEmAeNNyjKfzhNWQMSZPwpeHLl1Q0635VhIt51fD1gzZ2rn+prSUs119ERf2C3TNra4OHJSaJpJhI
-	zftz8ENUXQlJKz0NxwGg==;
+	List-Owner; bh=FYvEl80KVhVLE+jVb/MSaOSLnlnwRe95a2fBrKNyfdE=; b=RueSBy17xqkVeS
+	mqy01ahVz0C/snkI6E8KVSGbdTOfNCoCon3o3scv+jz8BDlH2QONQG9KmOeOPdvENPn7SNeCmmLYF
+	EIAYibGWD4xiOfVxuAHEFdjMoIAB5qLjAwAHFHMu+be7lgNBaVVjAeK0peLMqdJ2j4RxDl9yB/EV6
+	tjZSVexHBw3KvabqbW9anfamnCTPm1aDYX89f6JNd53PZ7vgshkbm1M8Al9ebnbGZI9urgwJYbrF9
+	qzI53WWLIHPtXUCGwIjneFKSgr4rt/gaCZm+iOwotja+KIKWHOVBuuXLi9j+DEDv9M2uwHvcK8ndm
+	SWFbj3acdjsK/er/x9sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8vXz-00000004ccn-0O4n;
-	Tue, 22 Sep 2026 08:08:15 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1x8vcT-00000004dI3-0rlc;
+	Tue, 22 Sep 2026 08:12:53 +0000
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8vXp-00000004cYt-3RDH
+	id 1x8vcR-00000004dHf-11AZ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 22 Sep 2026 08:08:11 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 767EA4E40ED6;
-	Tue, 22 Sep 2026 08:08:01 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 468C860580;
-	Tue, 22 Sep 2026 08:08:01 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4056C1032925B;
-	Tue, 22 Sep 2026 10:07:38 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1790064477; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=zcp8tcZsfdsmxUcen5sJupr/nyZnxY5fTXf1NQWKnsw=;
-	b=FGUyk9MHJzJ0m0z8YAThEo2DOBHDLTsuC25rLZr2qIfJay2Q0I+gVCvTxsv2nvY/dDnJb9
-	IgXAUJLDLFyWtCu0gq4m+hX3dLL+xecsNJ8WJa5QPeWS1Zy6AUoS89OPdFALC8X5Qo/SYt
-	P+8Axb3+Z77DYvypZw+Bo1A5RcA0P5rB/gomubC1yCw1+sui5hmFk5wLv6D9zSGNbH/9I3
-	BDo6gZcaNWSmUaB3MSGwrUc50FkG95rYvnEytrHx7tFcZXjfqgUddfJurME6kZVkekBte7
-	SOpxzk5wN3ckVBb+KRlg6NycfNY3+6MfShb4b9lHPUZw9BG8DyTys0vA4UWL/w==
-Mime-Version: 1.0
-Date: Tue, 22 Sep 2026 10:07:36 +0200
-Message-Id: <DLLOW2ROGP6L.3GTVT76VYPGAU@bootlin.com>
-Subject: Re: [PATCH v3 19/19] drm/bridge: analogix_dp: don't create a
- panel_bridge
-Cc: "Albert Esteve" <aesteve@redhat.com>, "Anusha Srivatsa"
- <asrivats@redhat.com>, "Dmitry Baryshkov"
- <dmitry.baryshkov@oss.qualcomm.com>, "Hui Pu" <Hui.Pu@gehealthcare.com>,
- "Ian Ray" <ian.ray@gehealthcare.com>, "Thomas Petazzoni"
- <thomas.petazzoni@bootlin.com>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>, <imx@lists.linux.dev>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mips@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>,
- <linux-stm32@st-md-mailman.stormreply.com>, <asahi@lists.linux.dev>,
- <linux-arm-msm@vger.kernel.org>, <freedreno@lists.freedesktop.org>,
- <linux-tegra@vger.kernel.org>, <linux-doc@vger.kernel.org>,
- <linux-samsung-soc@vger.kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
-To: "Damon Ding" <damon.ding@rock-chips.com>, "Luca Ceresoli"
- <luca.ceresoli@bootlin.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>,
- "Neil Armstrong" <neil.armstrong@linaro.org>, "Robert Foss"
- <rfoss@kernel.org>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>,
- "Jonas Karlman" <jonas@kwiboo.se>, "Jernej Skrabec"
- <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
- <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Jessica Zhang"
- <jesszhan0024@gmail.com>, "Laurentiu Palcu" <laurentiu.palcu@oss.nxp.com>,
- "Lucas Stach" <l.stach@pengutronix.de>, "Frank Li" <Frank.Li@nxp.com>,
- "Sascha Hauer" <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
- <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Paul
- Cercueil" <paul@crapouillou.net>, "Paul Kocialkowski" <paulk@sys-base.io>,
- "Linus Walleij" <linusw@kernel.org>, "Inki Dae" <inki.dae@samsung.com>,
- "Jagan Teki" <jagan@amarulasolutions.com>, "Marek Szyprowski"
- <m.szyprowski@samsung.com>, "Sean Paul" <sean@poorly.run>, "Jonathan
- Corbet" <corbet@lwn.net>, "Shuah Khan" <skhan@linuxfoundation.org>, "Randy
- Dunlap" <rdunlap@infradead.org>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.22.0
-References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
- <20260916-drm-bridge-every-panel-v3-19-83afb4f1a707@bootlin.com>
- <975a4d45-9a61-4858-b498-8bc0a1e44746@rock-chips.com>
- <96882735-091f-49c6-a47b-5da8be711818@rock-chips.com>
-In-Reply-To: <96882735-091f-49c6-a47b-5da8be711818@rock-chips.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	Tue, 22 Sep 2026 08:12:52 +0000
+Received: by mail-wm2-x11.google.com with SMTP id 5b1f17b1804b1-49b93204449so2958555e9.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 22 Sep 2026 01:12:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790064769; x=1790669569; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=60x8O/YrRot0F50Ltg76B2oYgHHgxNBmBw6ELDymd/c=;
+        b=DPokBrLXret6ENp7QV1xGs+sDmqUz7kaDEbhD3jUov9YJqbeov1wrH+dY43Hsh8P/q
+         bzuk5BShoIYEuC4L4QNR2CI0oKzAOjx7o9sXMXbxadQgpzc0oaaKuKi5nk7Ir3xD0Ghv
+         50k4cxBiglWsc24DBAZ2ei1BrAC/bxHG8CKqod84EnyMgHiD3jMIeRQWnhNVv1d3unBU
+         tYFPxTWoH3KesZSYSUWe4wnWo7CcI6OP7pM2RObuoPkeV74Oc0Wax7Llun4JoFt84AOH
+         uYVKrEwSqNQs+aASq++kFV+2TviyYqmFVhoXlAXmta3O0GR7ZiCCJdhK6AqDvDopYbcY
+         A58w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790064769; x=1790669569;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=60x8O/YrRot0F50Ltg76B2oYgHHgxNBmBw6ELDymd/c=;
+        b=c32Fk88M1QaE/39BhyaYGCa5Wxffgo6L8qBYgJmnblVoV1InWJ2WqqXgkxPg0sI+R7
+         PzQCYB2gDiMZ6kZ8pYLGidmZYu6/bKoLWmC/t4cDd4FpEDft2AkiXwv4XmtCuoT23rDx
+         NLfEJd1tioKavaParJkIE3H2M6bhcgG8rkTpO3M43sRZtTJNMVxWJJBptfRycAhiQGuA
+         IXj1iL197+8zx3qUJVX1qSx9h9i+/lxzrUe2Yrpk0HZH7FrFlg3saHmHQBiz8YhD3Sjz
+         cXWRiuQ6YBz4vhpn9upjRR8uwu7+7ieRvU2QMds9Hu1MPIgDTAVhf3jhd9mCENAfeGvS
+         OzCA==
+X-Forwarded-Encrypted: i=1; AKwUvBzEAgQLChK+nQ676Bblzyq1V1x/uz3smRKSwIuNxTpevy2lrv7nmyUMReMi1KwWE7Yjp2MvjHy66/yF0VftBQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++kCxjg9ofqD8WrgtZuuledF7AHRXFO78Fsq+ucAr7EJUuaNFxfe
+	qt3qYDnkrzg0pcpgTYriJ8GKwVuX0zsiv8pr7G5JZQ+uxODEJVoGvWTOaxTaxK54
+X-Gm-Gg: AYBFou0Xvm7g5t3ioQVtlZuxKfPfyIa2GyfB/6fFpuuh0USQot9OquAaMaXdMnrRZDF
+	/aXUjo6ZzkkJp8pvOK0w4ZWDHCkdvKCmTACC/ZrHiONqEuDiwOYmnb0SjyqAZrFW/g5+g584XU7
+	6LVVpQC14z+HOoM0K/1W7rcJNNUNipYPzud9pLDwcvHKNRMNk70Fq6VEcklbk02PERriLugOhQU
+	BF9rzdhhR+H2zOU/JnYbzfsRhfygNfFiQ5V1Xo80/F4gb8bqyz6Tog+n5OUJUkaqXR171DQ65Am
+	Z9xe6C3md85ZZNN++nEuVXJ5waef0SFIYleS+mF0UlM86BkmKuqooPhOVBtglTGxP+wJ5FBOA7j
+	8wESJmnpUH/TuLPAHGf/9brg9RRAwx9cilEsLsNRjJaTBg2Wx+O6ofg8vek4p0aDNjFUAS9g/Ie
+	poNNS0ReJ8mMeWUpil5rY64puiS9HrXJZWc2WXkAMdr82FBy7hiVoVrKn7i8BSAKfSRRc40qgOI
+	0/flbiqA300gTioElExwW/AtcOyTPq2CmZ/y+ghdN8zi69/Gyv/NkZBG/UcJrEsLMeTl2VfNU0e
+	qJ20FdcHh9rbBw==
+X-Received: by 2002:a05:600c:609b:b0:49c:f9b8:bae0 with SMTP id 5b1f17b1804b1-49fc7f2bdc8mr199991445e9.2.1790064769228;
+        Tue, 22 Sep 2026 01:12:49 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B80530056971C6280202175.dsl.pool.telekom.hu. [2001:4c4e:1b80:5300:5697:1c62:8020:2175])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49fdad6306esm34086575e9.15.2026.09.22.01.12.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 22 Sep 2026 01:12:48 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	Oded Gabbay <ogabbay@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Guangshuo Li <lgs201920130244@gmail.com>,
+	Jiaxing Hu <gahing@gahingwoo.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 0/2] accel/rocket: fix shared-device lifecycle on probe failure and unbind
+Date: Tue, 22 Sep 2026 10:12:41 +0200
+Message-ID: <20260922081241.46091-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260812130311.8252-1-royalnet026@gmail.com>
+References: <20260731064933.12548-1-royalnet026@gmail.com> <20260812130311.8252-1-royalnet026@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_010806_137206_18118191 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20260922_011251_291954_8F15F5E9 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,44 +102,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gRGFtb24sCgpPbiBNb24gU2VwIDIxLCAyMDI2IGF0IDg6MzQgQU0gQ0VTVCwgRGFtb24g
-RGluZyB3cm90ZToKPiBPbiA5LzIxLzIwMjYgMTE6MDcgQU0sIERhbW9uIERpbmcgd3JvdGU6Cj4+
-IEhpIEx1Y2EsCj4+Cj4+IE9uIDkvMTYvMjAyNiA5OjQ1IFBNLCBMdWNhIENlcmVzb2xpIHdyb3Rl
-Ogo+Pj4gTm93IGEgcGFuZWxfYnJpZGdlIGlzIGF1dG9tYXRpY2FsbHkgY3JlYXRlZCBmb3IgZXZl
-cnkgZHJtX3BhbmVsIGFuZCB0aGUKPj4+IHBhbmVsLWJyaWRnZSBBUEkgaXMganVzdCBhIGRlcHJl
-Y2F0ZWQgd3JhcHBlciB0byBhY2Nlc3MgaXQuCj4+Pgo+Pj4gVXBkYXRlIGFuZCBzaW1wbGlmeSB0
-aGUgY29kZSBieSBqdXN0IGdldHRpbmcgYSByZWZlcmVuY2UgdG8gdGhlCj4+PiBhbHJlYWR5LWV4
-aXN0aW5nIGJyaWRnZSB1c2luZyBvZl9kcm1fZ2V0X2JyaWRnZV9ieV9lbmRwb2ludCgpLgo+Pj4K
-Pj4+IEFzIG9mX2RybV9nZXRfYnJpZGdlX2J5X2VuZHBvaW50KCkgcmV0dXJucyBhIHJlZmNvdW50
-ZWQgYnJpZGdlLCB0YWtlIGNhcmUKPj4+IG9mIHB1dHRpbmcgdGhlIGJyaWRnZSByZWZlcmVuY2Uu
-IFRoaXMgaXMgbm90IGVhc2lseSBkb25lIGluIHRoZSByZW1vdmUKPj4+IHBhdGgKPj4+IGR1ZSB0
-byB0aGUgZGlmZmVyZW50IHByb2JlIHBhdGhzIG9mIHRoZSB1c2VyIGRyaXZlcnMsIHNvIGFkZCBh
-IGRldm0KPj4+IGFjdGlvbgo+Pj4gdG8gZW5zdXJlIHRoZSByZWZlcmVuY2UgaXMgcHV0IG9ubHkg
-d2hlbiBpdCB3YXMgdGFrZW4uCj4+Pgo+Pj4gQXNzaXN0ZWQtYnk6IG9wZW5jb2RlOmRlZXBzZWVr
-LXY0LWZsYXNoLTA3MzEKPj4+IFNpZ25lZC1vZmYtYnk6IEx1Y2EgQ2VyZXNvbGkgPGx1Y2EuY2Vy
-ZXNvbGlAYm9vdGxpbi5jb20+Cj4+PiAtLS0KPj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uv
-YW5hbG9naXgvS2NvbmZpZ8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDEgLQo+Pj4gwqAgZHJp
-dmVycy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgfCA0MCArKysr
-KysrKysrKysKPj4+ICstLS0tLS0tLS0KPj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9leHlub3MvZXh5
-bm9zX2RwLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDM2ICsKPj4+ICstLS0t
-LS0tLS0tLS0tLS0tLQo+Pj4gwqAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2Rw
-LXJvY2tjaGlwLmPCoMKgwqAgfMKgIDkgLS0tLS0KPj4+IMKgIGluY2x1ZGUvZHJtL2JyaWRnZS9h
-bmFsb2dpeF9kcC5owqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAxIC0K
-Pj4+IMKgIDUgZmlsZXMgY2hhbmdlZCwgMjUgaW5zZXJ0aW9ucygrKSwgNjIgZGVsZXRpb25zKC0p
-Cj4+Pgo+Cj4gW3NuaXBdCj4KPj4+IEBAIC00ODgsMTQgKzQ4Nyw2IEBAIHN0YXRpYyB2b2lkIHJv
-Y2tjaGlwX2RwX3JlbW92ZShzdHJ1Y3QKPj4+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4+IMKg
-IHsKPj4+IMKgwqDCoMKgwqAgc3RydWN0IHJvY2tjaGlwX2RwX2RldmljZSAqZHAgPSBwbGF0Zm9y
-bV9nZXRfZHJ2ZGF0YShwZGV2KTsKPgo+IFRoZSBhYm92ZSB1bnVzZWQgJnJvY2tjaGlwX2RwX2Rl
-dmljZSBjb3VsZCBiZSBhbHNvIHJlbXZlZC4KCkFoLCBpbmRlZWQhCgpJIGd1ZXNzIEkgY2FuIGtl
-ZXAgeW91ciByZXZpZXcgdGFncyBpZiBhcHBseWluZyB0aGlzIHBhdGNoIHdpdGggb25seSB0aGlz
-CmxpbmUgcmVtb3ZlZC4gQ29ycmVjdD8KCkx1Y2EKCi0tCkx1Y2EgQ2VyZXNvbGksIEJvb3RsaW4K
-RW1iZWRkZWQgTGludXggYW5kIEtlcm5lbCBlbmdpbmVlcmluZwpodHRwczovL2Jvb3RsaW4uY29t
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+Hi Tomeu,
+
+A status update on this series.
+
+2/2 now travels as patch 4 of the DVFS v2 series, as v3, rebased onto
+the slot fixes it builds on:
+https://lore.kernel.org/r/20260922080114.44662-5-royalnet026@gmail.com
+Its commit message shows the crash it fixes, and the notes under ---
+list what changed since v2. Jiaxing, v3 changes the code you reviewed
+here: the scheduler list is checked for allocation failure and freed
+when only one core is live, and the patch sits on the slot fixes before
+it. So I did not carry your Reviewed-by; a look at the new version
+would be welcome.
+
+1/2 is not in that series. It builds on Guangshuo Li's "accel/rocket:
+clear rdev on device init failure", which is not in drm-misc-next yet:
+https://lore.kernel.org/r/20260708062845.716487-1-lgs201920130244@gmail.com
+I will resend 1/2 on top of it once that one is in.
+
+Thanks,
+Igor
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
