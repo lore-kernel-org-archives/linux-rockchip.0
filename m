@@ -4,58 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFF4BC982FA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 09:58:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87655C982FA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2026 12:54:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d9eC8rffgQn01esESIMIHRC7zCiMXxuDXPRaXT0PHeU=; b=4Uz4OtHKu9q2Pd
-	/UyASPkAV8kmrXeXAzvn/DcNXjD9rj5UUWdcf9ZgLaCYt/Cv5PfQp0uLiT0fsxXyd+Ye4yzu9lWJx
-	jmuNw3wrL6j++QSzebY3YXNIwycM7y1t4MDsQj5Q563fZzC4w+SoCKExBjGo0wiOH3QsMP8zUgnVY
-	XcaE4SjXjrtB0bPCpWPn7HkhWmm/fb9C7hq1PMpimRJg6CcUBu8szh6n4xHmL7h5Cyt+szXogU79W
-	hzE7dVOGZ3+eYFAOU6ERRDi/wFXvJ/o7QTvykSSkRWdPFNX34Y/BYrN46fqni//LX8aSQ69fQ0T//
-	C8KfWMVHRE+iFY4RCrfw==;
+	List-Owner; bh=waz961aZ1esOhrGfqBSigIDtWg8csin7ddZJvV3mM7w=; b=hFIQLXNxQOnB1y
+	OiR2jh+X6f/HYjd0JhbSezqYharOuPxu9neyiLRr7tgZSmk2G4bGdkyETWffZQSNahA5zSCtpK47s
+	aYLjGwbIHZkgCPsJ/8X8YvnTQZb1eoAYsC6crgv5rGoOgdA6o74cU/8YHo8dOwye6l1fm7IUDcsCP
+	EYiSWAxW9BRNeMWpZtLGDAJ2/F4FrA4XUZ4cUQjDXbIntlQSijVEQ+qp53e5Paa+loCWbfhnB1275
+	hNkYOMr1nTX6cOb5IGPN7h3uOkmtYWoOxbS+BT85aAAmkmPVFvz7av0E2BmwF2cp6B5DTkL+FpjYy
+	BblsDoVFoki07QhlEHFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8xGI-00000004zTG-2BiS;
-	Tue, 22 Sep 2026 09:58:06 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x9016-00000005NPq-2L9h;
+	Tue, 22 Sep 2026 12:54:36 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8xGH-00000004zT9-1rbl
-	for linux-rockchip@lists.infradead.org;
-	Tue, 22 Sep 2026 09:58:05 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D7A38411F2;
-	Tue, 22 Sep 2026 09:58:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 655821F000FF;
-	Tue, 22 Sep 2026 09:58:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790071084;
-	bh=WQBS5R0whaJkYzuhh7NQd3CDih82U3WKGo1Y562Jqzk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Y6uGvOZ4yCZl/PLPOeanDDDwQBxVLj4TMH71KosAc5aUyPycFwXEfPHyJxBva2VIr
-	 RV4GX2zpNvJezL2iA5hlLC+BpB2g8ZmRCbtQ6+N9z1GZu8LcMaAITH7IQLnEx9VgZW
-	 KNqbtbf2k1mmkw8rssaFV+XiFsmnGZa0viWhbte0iJuhWBNYaWWjv7CYCboUGLfXaN
-	 BRLYhrjRut02OeGfJQUP1gEHdPT/anEwfnaTKjsSEEXicaBJjMzx8vR9Z+VeX85aZr
-	 064DoJAEDK8e0X5MXifNjY4nCiTcRCb/aDJfFcTUmDjbidbJm+CjegB+4lNRP6D3ZD
-	 m6Anbey3No0LQ==
-Date: Tue, 22 Sep 2026 11:58:00 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
-Subject: Re: [PATCH v3 2/3] PCI: dw-rockchip: Make the INTx irq setup
- devm-managed
-Message-ID: <arJRKDwpZl_Cb1zP@ryzen>
-References: <1790044622-164744-1-git-send-email-shawn.lin@rock-chips.com>
- <1790044622-164744-3-git-send-email-shawn.lin@rock-chips.com>
+	id 1x9015-00000005NP8-07Jo;
+	Tue, 22 Sep 2026 12:54:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1790081625; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=KTndc6JZaRZHwnEIOsJVOKmqMnPoyD0yJUj7daOPlmBUXrYCLC7sXrwHhSQE/M1j0SelAcsyof5PD3lQS0w0CQBr9yUNEWhUGag6v95l7NXo+BzIQ8Gce1U7JIP5hgSyjCQ/1LXPWKv2jxbgTyp2dNeb1Sm2ibtztE+5DPc8Ji4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1790081625; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=8VjNl0wa/Nxv7LlY9fTplz72WoCM/sa6XfRLdYqoWf4=; 
+	b=iQEHTfp1vj8knug37pUf8qyg1jsi2Ik8q0L8i491jEO0OnRutlTdUNwhENof8gUq8voCE7STLUVB+/PzLLd95UmcLL1pBDYWthMysH2QgI55DWtF7mVJ2RQmP/Ftc/qBYmbCmCsjRTmZAL2aFbbo/cWYijsVLzEewVy1YHXAVg4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790081625;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=8VjNl0wa/Nxv7LlY9fTplz72WoCM/sa6XfRLdYqoWf4=;
+	b=TCdu6C7hW2pYijD6VGCaiC+wv5MqeYa3Fx6j1IxMBPJkKRSEEGQpJJdhmINCvJ3i
+	zeMSbdPSbjZu51N/DttLQ5WTW3C38NdLEbu+/1NqKFSdt/fldM1iQ5G47a4IkHlsXrr
+	x/iihlM9thTLVL5I1AkmxN9YehFWKw8QVIzXhiUI=
+Received: by smtp.zohomail.com with SMTPS id 1790081623916135.24430513639902;
+	Tue, 22 Sep 2026 05:53:43 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>,
+ Daniel Stone <daniels@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Helge Deller <deller@gmx.de>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Leo Li <sunpeng.li@amd.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-fbdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ Derek Foreman <derek.foreman@collabora.com>,
+ wayland-devel@lists.freedesktop.org
+Subject: Re: [PATCH RFC 03/25] drm/atomic-helper: Set mode_changed on vrr_enabled
+ change
+Date: Tue, 22 Sep 2026 14:53:36 +0200
+Message-ID: <XpLMHDHXSDOKXXVsZyU9Pg@collabora.com>
+In-Reply-To: <75b82a61-fe82-4597-bfb5-3c717fbb0dda@amd.com>
+References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
+ <20260921-vrr-limiter-uapi-v1-3-2fcd7d011646@collabora.com>
+ <75b82a61-fe82-4597-bfb5-3c717fbb0dda@amd.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1790044622-164744-3-git-send-email-shawn.lin@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260922_055435_125976_6D55C287 
+X-CRM114-Status: GOOD (  26.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,40 +92,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 22, 2026 at 10:37:01AM +0800, Shawn Lin wrote:
-> The irq domain and the chained handler set up by the previous commit
-> are resources owned by the device, but nothing releases them if probing
-> ever fails after they are set up, and they are not tied to the device
-> lifetime in any other way either.
+On Monday, 21 September 2026 23:59:11 Central European Summer Time Leo Li wrote:
+> Hi Nicholas,
 > 
-> Tie their lifetime to the device with devres: create the irq domain
-> with devm_irq_domain_instantiate() and uninstall the chained handler
-> through the rockchip_pcie_intx_chained_release() devres action. The
-> driver is builtin and cannot be unbound (suppress_bind_attrs), so probe
-> failure is the only path that ever needs this cleanup, and devres takes
-> care of it without sprinkling it over every error path.
+> Thanks for sending this out. I'm looking into an amdgpu implementation
+> and had some comments along the way. Will reply inline on respective
+> patches.
 > 
-> Since the irq setup is the last step of rockchip_pcie_configure_rc(),
-> the only failure point left after the chained handler is installed is
-> devm_add_action_or_reset() itself, whose failure mode runs the action,
-> so the handler can never run against the devm-freed rockchip structure.
-> devres also unwinds in reverse registration order, so the handler is
-> always uninstalled before the domain is removed. There is no devm API
-> for chained handlers, hence the small devres action wrapper.
+> On 2026-09-21 11:51, Nicolas Frattaroli wrote:
+> > A change in whether VRR is enabled or not on a CRTC will be of interest
+> > to any VRR implementation, as they may need to recalculate certain
+> > internal state in response. So far, this was handled ad-hoc in the
+> > drivers that implement VRR.
+> > 
+> > Handle this in the common DRM atomic core by setting the mode_changed
+> > flag when this occurs. The rationale for using mode_changed is that VRR
+> > is deeply intertwined with the current mode with regards to its timing.
+> > Consequently, any component that cares about a mode change is likely
+> > also going to care about VRR being enabled/disabled.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  drivers/gpu/drm/drm_atomic_helper.c | 6 ++++++
+> >  1 file changed, 6 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
+> > index 9d006f98413a..0664d5779282 100644
+> > --- a/drivers/gpu/drm/drm_atomic_helper.c
+> > +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> > @@ -694,6 +694,12 @@ drm_atomic_helper_check_modeset(struct drm_device *dev,
+> >  			new_crtc_state->active_changed = true;
+> >  		}
+> >  
+> > +		if (old_crtc_state->vrr_enabled != new_crtc_state->vrr_enabled) {
+> > +			drm_dbg_atomic(dev, "[CRTC:%d:%s] VRR changed\n",
+> > +				       crtc->base.id, crtc->name);
+> > +			new_crtc_state->mode_changed = true;
+> > +		}
+> > +
 > 
-> While at it, drop the now unused rockchip variable from
-> rockchip_pcie_host_init().
-> 
-> Suggested-by: Niklas Cassel <cassel@kernel.org>
+> I don't think this is the case for all hardware, at least not for amdgpu.
+> The parts in HW that adjust vtotal can be programmed without requiring
+> bandwidth recalculations or reprogramming of pipes.
 
-Thank you for giving me credit :)
+Thanks for pointing this out. I was already unsure of this patch before,
+and I don't think Rockchip requires these recalculations either. Originally
+I added this when I looked at the i915 code iirc and saw them setting it.
 
-Unfortunately, I don't think that I was the one who suggested this change.
-I think you came up with the idea :)
+I think in the commit message I also conflate needing to know about VRR
+being changed with needing to do a full modeset (which is what mode_changed
+basically means).
 
+I'll drop this patch on the next revision.
 
 Kind regards,
-Niklas
+Nicolas Frattaroli
+
+> 
+> - Leo
+> 
+> >  		if (new_crtc_state->enable != has_connectors) {
+> >  			drm_dbg_atomic(dev, "[CRTC:%d:%s] enabled/connectors mismatch (%d/%d)\n",
+> >  				       crtc->base.id, crtc->name,
+> > 
+> 
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
