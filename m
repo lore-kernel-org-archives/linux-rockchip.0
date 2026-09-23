@@ -4,60 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6ACDC98304
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 16:08:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0526C9830B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 17:16:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m9r8I1Zz+j1Nh89rvQyLeuwki/gKMsKthBJWuvgPcVA=; b=Zi+ybDmENtLely
-	bwOSY32VTZduTWS9dfqA82EvihDVSTPl8npmJE2FI4x6y+Ydk0C7xKYK/c3mjDzdIRw6WoOaSWrKO
-	FaBjxzMzcs2FS9NkfOxGzRODBO7j2Jp5DEnCqnMe3wVMEFx+yxEa4cZ/Ktz/i+JLSXHZVOFPuETj2
-	Db0ez0jfML86foXLxutPqdysMBAEnOoWKtn7zpMbWMwqwVLUBFbUGuoXFHY0Z9nCwcK36d9jpbkiO
-	nbRdxqbb5kG94jUzJw+0YgOhgioOzjaGYmB3cC5lgCS43MUUTxoTWqUFG5VZVu2slcIMdJoK1qv/W
-	je7AfcMaRxan8jmocaOQ==;
+	List-Owner; bh=7dy5RuJK3w1i28H0PNenN4GkD1W7Wkom86ymoWNwGH4=; b=cypCK3kDxe+HkY
+	D63qVqIRAWWcI3iWEO0xd1IZ1F/foMikv6surYemeYZ0XMyn7V3b/dC9cDu1H2nv8jJGzfnlThWVe
+	2XdKYpenHa7q+AZVFKeZUJ7CkPON+YEFlRrb63dQz+LWrEGO6VfgjW/pCcOvYhM6UE3t04TzmdBns
+	459MKshvYrwtYk81h7tCtMEssOni9M4+6j9zHlUC3C6subGf8PFWyJXVEw7cxzLKo3uNj/WJQdrok
+	yzbgNKjo9woNrI7qXZUQsFnSRUFhaiAgdhZ6lUnyej/0vIxLEReoOwMr4Giq1SdVWZ0l4uDw16xs9
+	KXobEUTcClYc07dxFxEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9PWA-00000008q1T-3hrI;
-	Wed, 23 Sep 2026 16:08:22 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x9QZR-00000008zC3-0a4r;
+	Wed, 23 Sep 2026 17:15:49 +0000
+Received: from out-7.mta1.migadu.com ([95.215.58.7] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9PW8-00000008q0z-38lE;
-	Wed, 23 Sep 2026 16:08:21 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E948E600AA;
-	Wed, 23 Sep 2026 16:08:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 659261F000FF;
-	Wed, 23 Sep 2026 16:08:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790179699;
-	bh=3e9il85E3ABPy4I7irvXMCFKFPKx9Fa96n5jIdOodN0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=H6DSnLqz2hqqkW7Vg5Bp2GkUPg0lC2kr8YI7cRIGOVEJ0F3gM9Nq18zRXPT9BnRQb
-	 UVL7u7NBIKYrt0EF1JgCOqhI4h15ibXjOU2rsvb4t6Yx6gKOi+E7/DoXKfJwe1JBlg
-	 e5sQzZZEhr+qyOPy5m/pGmiXqKvkKsNb0S9F+HWLEKO0E27Szuv9b0IIODuyiT/SYv
-	 jZr7r1ZBDQfkwxB4rhgrOxG56tQirvgJW34BSIaMe2XUekF0WZW18fZNRk0uFlz6SA
-	 DJMvNRxxkw0nNJPn8MdiRdj4gG/om+SAEU1Fq4haHo+YYwbwa6LMDxqLdMrnhu8Ddy
-	 xTgGsBLDKopJA==
-Date: Wed, 23 Sep 2026 17:08:14 +0100
-From: Lee Jones <lee@kernel.org>
-To: Yaozhong Li <yaozhonguwl@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Chris Zhong <zyw@rock-chips.com>,
-	Zhang Qing <zhangqing@rock-chips.com>, mfd@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH v2 2/3] mfd: rk8xx: Release the power hold GPIOs
- before powering off
-Message-ID: <20260923160814.GL3864833@google.com>
-References: <20260909092728.1859-1-yaozhonguwl@gmail.com>
- <20260919122930.1418-3-yaozhonguwl@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260919122930.1418-3-yaozhonguwl@gmail.com>
+	id 1x9QZJ-00000008zAJ-0V5x
+	for linux-rockchip@lists.infradead.org;
+	Wed, 23 Sep 2026 17:15:44 +0000
+X-Envelope-To: linux-rockchip@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=jxGuprUYi106B5t11FFkgi+yqb+rQeyTVQAW+p12YwA=;
+ c=simple/simple; d=cknow-tech.com;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1790183736; v=1; x=1790788536;
+ b=ZVe0P3h1vL/8qbgOqkx72olxY4ujSROqjM5GA/cl7qJF6JFSNt2gDq2Pzo1UvKljCgDNsOkA
+ u0rlqhNm2fR3+NuPptvnQV1bAWCpK6jEUOqfEW/oqZ95g9e/cmfCSQs1u7f8QfvAfT1b8Xsbjde
+ B0BNy5tQfRQSRdFPaJ6bmH7++YW9IyvUL+eMHXgaBBbBUiqSey1YABoPxKuX03yKhxhypFrd1Xg
+ Yn/ldhH/mCSv4TOFo+JpYYMZ1w7fFKLyEE25rzRj5s5RT6+eOt2QL2u8EUkEK6Gaae0GHzoJzbr
+ 2ThwUJ0DqxwMQkKG6K5FDaxBmAskcbxYzBMGFbqUlrvTg==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 6f9c8085352aaf04;
+	Wed, 23 Sep 2026 17:15:17 +0000
+X-Mizu-Trace-ID: 6f9c8085352aaf04
+X-Migadu-Flow: FLOW_OUT
+Mime-Version: 1.0
+Date: Wed, 23 Sep 2026 19:15:13 +0200
+Message-Id: <DLMV5WTF5TR1.BXDY94L4J4H7@cknow-tech.com>
+Cc: "Sebastian Reichel" <sebastian.reichel@collabora.com>,
+ <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, "Jonas Karlman" <jonas@kwiboo.se>
+Subject: Re: [PATCH v5 5/7] arm64: dts: rockchip: describe PCIe RTL8125
+ Ethernet on NanoPi R5S
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: <ricardo@pardini.net>, "Heiner Kallweit" <hkallweit1@gmail.com>,
+ <nic_swsd@realtek.com>, "Andrew Lunn" <andrew+netdev@lunn.ch>, "David S.
+ Miller" <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>, "Rob
+ Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>,
+ "Conor Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>
+X-Mailer: aerc 0.22.0-24-g39041fd9f179
+References: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-0-c1b9e5f10cd6@pardini.net> <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-5-c1b9e5f10cd6@pardini.net>
+In-Reply-To: <20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-5-c1b9e5f10cd6@pardini.net>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260923_101541_824262_EDB63FB2 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,162 +80,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 19 Sep 2026, Yaozhong Li wrote:
+Hi,
 
-> rk808_power_off() writes the PMIC's shutdown bit directly. On boards where
-> lines driven by the SoC gate the PMIC's power-off path, a shutdown
-> performed this way does not stick: the rails drop and immediately come
-> back up, so the board restarts instead of staying off. U-Boot reports the
-> result as a power-on reset.
-> 
-> Take those lines as an optional GPIO array, hold them asserted while the
-> system runs and release them - waiting power-hold-delay-ms - before
-> writing the shutdown bit. Device trees without the property retain the
-> existing behaviour.
-> 
-> The array is claimed before any child device is registered, so that a
-> -EPROBE_DEFER from the GPIO provider does not tear down the regulators,
-> RTC and clocks that devm_mfd_add_devices() has already registered.
-> 
-> Releasing every described line matters: on a Firefly-RK3399 the board
-> stays off when both lines described for it are released, whereas releasing
-> GPIO1_D0 while GPIO1_B5 is left asserted makes it come back up.
-> 
-> Signed-off-by: Yaozhong Li <yaozhonguwl@gmail.com>
+On Thu Sep 10, 2026 at 10:07 PM CEST, Ricardo Pardini via B4 Relay wrote:
+> From: Ricardo Pardini <ricardo@pardini.net>
+>
+> The FriendlyElec NanoPi R5S (rk3568) carries two on-board Realtek
+> RTL8125 NICs behind pcie2x1 and pcie3x1, alongside the existing gmac0
+> RGMII PHY.
+>
+> Describe the fixed function nodes and attach ethernet1/ethernet2
+> aliases (ethernet0 stays mapped to gmac0), so that U-Boot's
+> fdt_fixup_ethernet() can inject mac-address properties from its
+> eth1addr/eth2addr env, for stable MACs across boots that both U-Boot
+> and the kernel agree on.
+>
+> Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
 > ---
->  drivers/mfd/rk8xx-core.c  | 47 +++++++++++++++++++++++++++++++++++++--
->  include/linux/mfd/rk808.h |  4 ++++
->  2 files changed, 49 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
-> index 3dcf6ab..0898db0 100644
-> --- a/drivers/mfd/rk8xx-core.c
-> +++ b/drivers/mfd/rk8xx-core.c
-> @@ -11,6 +11,8 @@
->   */
+>  arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 30 ++++++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+> index 90ce6f0e1dcff..9ed11663c31c9 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+> @@ -15,6 +15,8 @@ / {
 >  
->  #include <linux/bitfield.h>
-> +#include <linux/delay.h>
-> +#include <linux/gpio/consumer.h>
->  #include <linux/interrupt.h>
->  #include <linux/mfd/rk808.h>
->  #include <linux/mfd/core.h>
-> @@ -703,6 +705,24 @@ static int rk808_power_off(struct sys_off_data *data)
->  	default:
->  		return NOTIFY_DONE;
->  	}
+>  	aliases {
+>  		ethernet0 = &gmac0;
+> +		ethernet1 = &rtl_eth1;
+> +		ethernet2 = &rtl_eth2;
+>  	};
+
+With my NanoPi-R5S I'm still getting the following warning:
+
+  r8169 0001:11:00.0: can't read MAC address, setting random one
+
+```
+root@nanopi-r5s:~# ip link
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: end1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN mode DEFAULT group default qlen 1000
+    link/ether 4e:52:85:9e:22:f9 brd ff:ff:ff:ff:ff:ff
+    altname enp1s0
+    altname enx4e52859e22f9
+3: end2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN mode DEFAULT group default qlen 1000
+    link/ether 12:e5:47:9e:e2:f1 brd ff:ff:ff:ff:ff:ff
+    altname enP1p17s0
+4: end0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 4e:52:85:9e:22:f8 brd ff:ff:ff:ff:ff:ff
+    altname enx4e52859e22f8
+```
+
+I did not do anything (explicitly) in U-Boot, but it seems it created a
+non-random MAC address for end0 and end1 ... and then stopped.
+AFAIK gmac0=end0 already had a non-random MAC address and I hoped/expected
+it would create non-random addresses for end1 and end2, which would've made
+the above warning go away too.
+
+Is this an issue with this patch, with U-Boot or me?
+
+Full details:
+https://paste.sr.ht/~diederik/8ae7d354985afcd1c3464e3a4ad81da1b4442364
+
+Side note:
+I wonder how 'random' those addresses are as during testing ``ssh rock5b``
+landed me on another device (NanoPC-T6 Plus), f.e. My router has DHCP
+reservations based on MAC addresses and it looks like it got confused ;-)
+
+Cheers,
+  Diederik
+
+>  	gpio-keys {
+> @@ -107,6 +109,20 @@ &pcie2x1 {
+>  	num-lanes = <1>;
+>  	reset-gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_HIGH>;
+>  	status = "okay";
 > +
-> +	/*
-> +	 * Some boards route "power hold" lines from the SoC into the board's
-> +	 * power circuitry. They have to be held asserted while the system is
-> +	 * running and released before the PMIC shutdown request is written:
-> +	 * with any of them left asserted, the rails drop and then come back
-> +	 * up. Releasing them here rather than from a separate handler keeps
-> +	 * the ordering against the I2C write explicit.
-> +	 */
-> +	if (rk808->power_hold_gpios) {
-> +		unsigned int i;
-
-What is i here?  Can it have a better name?
-
+> +	pcie@0,0 {
+> +		reg = <0x000000 0 0 0 0>;
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		device_type = "pci";
+> +		bus-range = <0x00 0x0f>;
 > +
-> +		for (i = 0; i < rk808->power_hold_gpios->ndescs; i++)
-
-for (int <better_name> = 0; ...
-
-> +			gpiod_set_value_cansleep(rk808->power_hold_gpios->desc[i], 0);
-> +
-> +		msleep(rk808->power_hold_delay_ms);
-> +	}
-> +
->  	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
->  	if (ret)
->  		dev_err(rk808->dev, "Failed to shutdown device!\n");
-> @@ -766,6 +786,7 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
->  	struct rk808 *rk808;
->  	const struct rk808_reg_data *pre_init_reg;
->  	const struct mfd_cell *cells;
-> +	bool system_power_controller;
->  	int dual_support = 0;
->  	int nr_pre_init_regs;
->  	u32 rst_fun = 0;
-> @@ -851,6 +872,29 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
->  	if (!irq)
->  		return dev_err_probe(dev, -EINVAL, "No interrupt support, no core IRQ\n");
->  
-> +	system_power_controller =
-> +		device_property_read_bool(dev, "system-power-controller") ||
-> +		device_property_read_bool(dev, "rockchip,system-power-controller");
-> +
-> +	/*
-> +	 * Claim the optional power hold GPIOs before any child device is
-> +	 * registered. A -EPROBE_DEFER from the GPIO provider at this point
-> +	 * costs nothing, whereas deferring after devm_mfd_add_devices()
-> +	 * would tear the freshly registered children down again on every
-> +	 * retry.
-> +	 */
-> +	if (system_power_controller) {
-> +		rk808->power_hold_gpios =
-> +			devm_gpiod_get_array_optional(dev, "power-hold",
-> +						      GPIOD_OUT_HIGH);
-
-Why wrap here?  Some of the surrounding lines are clearly longer.
-
-> +		if (IS_ERR(rk808->power_hold_gpios))
-> +			return dev_err_probe(dev, PTR_ERR(rk808->power_hold_gpios),
-> +					     "Failed to get power hold GPIOs\n");
-> +
-> +		device_property_read_u32(dev, "power-hold-delay-ms",
-> +					 &rk808->power_hold_delay_ms);
-
-What if this doesn't return a value?
-
-> +	}
-> +
->  	ret = devm_regmap_add_irq_chip(dev, rk808->regmap, irq,
->  				       IRQF_ONESHOT | dual_support, -1,
->  				       rk808->regmap_irq_chip, &rk808->irq_data);
-> @@ -872,8 +916,7 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
->  	if (ret)
->  		return dev_err_probe(dev, ret, "failed to add MFD devices\n");
->  
-> -	if (device_property_read_bool(dev, "system-power-controller") ||
-> -	    device_property_read_bool(dev, "rockchip,system-power-controller")) {
-> +	if (system_power_controller) {
->  		ret = devm_register_sys_off_handler(dev,
->  				    SYS_OFF_MODE_POWER_OFF_PREPARE, SYS_OFF_PRIO_HIGH,
->  				    &rk808_power_off, rk808);
-> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
-> index 7ffc904..eda111e 100644
-> --- a/include/linux/mfd/rk808.h
-> +++ b/include/linux/mfd/rk808.h
-> @@ -1459,6 +1459,8 @@ enum {
->  	RK818_ID = 0x8180,
+> +		rtl_eth1: ethernet@0,0 {
+> +			compatible = "pci10ec,8125";
+> +			reg = <0x010000 0 0 0 0>;
+> +		};
+> +	};
 >  };
 >  
-> +struct gpio_descs;
-
-Do we do this for all of the other structs?  Why not add the include?
-
+>  &pcie30phy {
+> @@ -119,6 +135,20 @@ &pcie3x1 {
+>  	reset-gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
+>  	vpcie3v3-supply = <&vcc3v3_pcie>;
+>  	status = "okay";
 > +
->  struct rk808 {
->  	struct device			*dev;
->  	struct regmap_irq_chip_data	*irq_data;
-> @@ -1466,6 +1468,8 @@ struct rk808 {
->  	long				variant;
->  	const struct regmap_config	*regmap_cfg;
->  	const struct regmap_irq_chip	*regmap_irq_chip;
-> +	struct gpio_descs		*power_hold_gpios;
-> +	u32				power_hold_delay_ms;
+> +	pcie@0,0 {
+> +		reg = <0x100000 0 0 0 0>;
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		device_type = "pci";
+> +		bus-range = <0x10 0x1f>;
+> +
+> +		rtl_eth2: ethernet@0,0 {
+> +			compatible = "pci10ec,8125";
+> +			reg = <0x110000 0 0 0 0>;
+> +		};
+> +	};
 >  };
 >  
->  void rk8xx_shutdown(struct device *dev);
-> -- 
-> 2.55.0.windows.3
-> 
+>  &pcie3x2 {
 
--- 
-Lee Jones
+
 
 _______________________________________________
 Linux-rockchip mailing list
