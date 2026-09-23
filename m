@@ -4,82 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F083C98304
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 15:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6ACDC98304
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 16:08:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bbmcv9uRK1g+NpDHtbCSVK2i0D4ha/biFTe1aYPIZIQ=; b=1HGfmzajgeQq5m
-	WpVj0nQfOJIx5WdZixT3hMQvSD4EuhFF7dI7OgZAJVBcBvcocl6qxjjnBONCxuKfJjj/5ZjCP2kfM
-	04tJ1QFokaZ0mxq8l+tHuGaNUlYcuLwzsb/bED2/oEs8KSri+fhdcHK5HJEN0SkETT/t5ugItBVXy
-	bZCGNeZ5f79Ikdgd7OmGMGyUGkrCw2PSx15Tb5ZfsGmxouo88gUvZh2MMXT2JQK90jfB95f7GcwHc
-	EFTH6s+AgtpLLr1XAuais7r0neLMG4g0zi08OiqVwNrIGBHqLEpOWAGyX57OqQU0oU+HO+h2C3SMO
-	Pe8OAoJs3oyKNeYy6Oug==;
+	List-Owner; bh=m9r8I1Zz+j1Nh89rvQyLeuwki/gKMsKthBJWuvgPcVA=; b=Zi+ybDmENtLely
+	bwOSY32VTZduTWS9dfqA82EvihDVSTPl8npmJE2FI4x6y+Ydk0C7xKYK/c3mjDzdIRw6WoOaSWrKO
+	FaBjxzMzcs2FS9NkfOxGzRODBO7j2Jp5DEnCqnMe3wVMEFx+yxEa4cZ/Ktz/i+JLSXHZVOFPuETj2
+	Db0ez0jfML86foXLxutPqdysMBAEnOoWKtn7zpMbWMwqwVLUBFbUGuoXFHY0Z9nCwcK36d9jpbkiO
+	nbRdxqbb5kG94jUzJw+0YgOhgioOzjaGYmB3cC5lgCS43MUUTxoTWqUFG5VZVu2slcIMdJoK1qv/W
+	je7AfcMaRxan8jmocaOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9PIS-00000008oQA-3J50;
-	Wed, 23 Sep 2026 15:54:13 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1x9PWA-00000008q1T-3hrI;
+	Wed, 23 Sep 2026 16:08:22 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9PIL-00000008oMY-1K1a;
-	Wed, 23 Sep 2026 15:54:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1790178845; x=1821714845;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=u/EwzTM/NnzSfEVRVlTGSUu5KUBYwA6lJMr21sRdsVY=;
-  b=JrR0eVe1xAoebPebzsuaFaVa17lLUs6FBwbRJ1uvkyIXCVilQkXZRug1
-   Mk3nJmRwhQeYxacxm1Sr5WqzEoGhWdNwqeRB95t4lXmvnN32KYQe5e4Qt
-   ow08rmk5FSL7rslNBmJJelZ4qhmFYDaIOQ2tizSSfx8oPv3Rb/hghzaLC
-   qt1dMHDsFVdMSu3FZYtp67iinLCW1Vub4kI0pK2sThBLYkI3icLzJtaIU
-   b9YQXY6nSy5AbqIV8kZ859TEqwlidxiKU2PGQfG8s0w7YrfSq+ftTrhIZ
-   S8I00NN4DrSnTwNX6gwhdyutAKFypNlOnONTKD7vmu5dZkt1WmchC0VOm
-   g==;
-X-CSE-ConnectionGUID: uKYBmXKwTqKY4mqen9XiRQ==
-X-CSE-MsgGUID: 9/9FJQbjSKucsHwTf67LpQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11914"; a="78445062"
-X-IronPort-AV: E=Sophos;i="6.27,118,1787036400"; 
-   d="scan'208";a="78445062"
-Received: from fmviesa011.fm.intel.com ([10.60.135.151])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Sep 2026 08:54:03 -0700
-X-CSE-ConnectionGUID: 7lue524bROaPLXzmdodnwA==
-X-CSE-MsgGUID: 36FTiqfuQTOcmIIrMf9pGA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,118,1787036400"; 
-   d="scan'208";a="4756769"
-Received: from igk-lkp-server01.igk.intel.com (HELO 1bbc298b9a73) ([10.211.93.152])
-  by fmviesa011.fm.intel.com with ESMTP; 23 Sep 2026 08:54:00 -0700
-Received: from kbuild by 1bbc298b9a73 with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1x9PIA-000000000j5-0Jdb;
-	Wed, 23 Sep 2026 15:53:54 +0000
-Date: Wed, 23 Sep 2026 17:53:25 +0200
-From: kernel test robot <lkp@intel.com>
-To: Coia Prant <coiaprant@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: oe-kbuild-all@lists.linux.dev,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Coia Prant <coiaprant@gmail.com>
-Subject: Re: [PATCH net] net: ethernet: stmmac: dwmac-rk: fix bulk clock leak
- when the PHY clock fails
-Message-ID: <202609231728.boP5N9Xr-lkp@intel.com>
-References: <20260919174223.2356964-1-coiaprant@gmail.com>
+	id 1x9PW8-00000008q0z-38lE;
+	Wed, 23 Sep 2026 16:08:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id E948E600AA;
+	Wed, 23 Sep 2026 16:08:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 659261F000FF;
+	Wed, 23 Sep 2026 16:08:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790179699;
+	bh=3e9il85E3ABPy4I7irvXMCFKFPKx9Fa96n5jIdOodN0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=H6DSnLqz2hqqkW7Vg5Bp2GkUPg0lC2kr8YI7cRIGOVEJ0F3gM9Nq18zRXPT9BnRQb
+	 UVL7u7NBIKYrt0EF1JgCOqhI4h15ibXjOU2rsvb4t6Yx6gKOi+E7/DoXKfJwe1JBlg
+	 e5sQzZZEhr+qyOPy5m/pGmiXqKvkKsNb0S9F+HWLEKO0E27Szuv9b0IIODuyiT/SYv
+	 jZr7r1ZBDQfkwxB4rhgrOxG56tQirvgJW34BSIaMe2XUekF0WZW18fZNRk0uFlz6SA
+	 DJMvNRxxkw0nNJPn8MdiRdj4gG/om+SAEU1Fq4haHo+YYwbwa6LMDxqLdMrnhu8Ddy
+	 xTgGsBLDKopJA==
+Date: Wed, 23 Sep 2026 17:08:14 +0100
+From: Lee Jones <lee@kernel.org>
+To: Yaozhong Li <yaozhonguwl@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>, mfd@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH v2 2/3] mfd: rk8xx: Release the power hold GPIOs
+ before powering off
+Message-ID: <20260923160814.GL3864833@google.com>
+References: <20260909092728.1859-1-yaozhonguwl@gmail.com>
+ <20260919122930.1418-3-yaozhonguwl@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260919174223.2356964-1-coiaprant@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_085405_530283_C6EB07BC 
-X-CRM114-Status: GOOD (  10.15  )
+In-Reply-To: <20260919122930.1418-3-yaozhonguwl@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,100 +74,162 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Coia,
+On Sat, 19 Sep 2026, Yaozhong Li wrote:
 
-kernel test robot noticed the following build errors:
+> rk808_power_off() writes the PMIC's shutdown bit directly. On boards where
+> lines driven by the SoC gate the PMIC's power-off path, a shutdown
+> performed this way does not stick: the rails drop and immediately come
+> back up, so the board restarts instead of staying off. U-Boot reports the
+> result as a power-on reset.
+> 
+> Take those lines as an optional GPIO array, hold them asserted while the
+> system runs and release them - waiting power-hold-delay-ms - before
+> writing the shutdown bit. Device trees without the property retain the
+> existing behaviour.
+> 
+> The array is claimed before any child device is registered, so that a
+> -EPROBE_DEFER from the GPIO provider does not tear down the regulators,
+> RTC and clocks that devm_mfd_add_devices() has already registered.
+> 
+> Releasing every described line matters: on a Firefly-RK3399 the board
+> stays off when both lines described for it are released, whereas releasing
+> GPIO1_D0 while GPIO1_B5 is left asserted makes it come back up.
+> 
+> Signed-off-by: Yaozhong Li <yaozhonguwl@gmail.com>
+> ---
+>  drivers/mfd/rk8xx-core.c  | 47 +++++++++++++++++++++++++++++++++++++--
+>  include/linux/mfd/rk808.h |  4 ++++
+>  2 files changed, 49 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
+> index 3dcf6ab..0898db0 100644
+> --- a/drivers/mfd/rk8xx-core.c
+> +++ b/drivers/mfd/rk8xx-core.c
+> @@ -11,6 +11,8 @@
+>   */
+>  
+>  #include <linux/bitfield.h>
+> +#include <linux/delay.h>
+> +#include <linux/gpio/consumer.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/mfd/rk808.h>
+>  #include <linux/mfd/core.h>
+> @@ -703,6 +705,24 @@ static int rk808_power_off(struct sys_off_data *data)
+>  	default:
+>  		return NOTIFY_DONE;
+>  	}
+> +
+> +	/*
+> +	 * Some boards route "power hold" lines from the SoC into the board's
+> +	 * power circuitry. They have to be held asserted while the system is
+> +	 * running and released before the PMIC shutdown request is written:
+> +	 * with any of them left asserted, the rails drop and then come back
+> +	 * up. Releasing them here rather than from a separate handler keeps
+> +	 * the ordering against the I2C write explicit.
+> +	 */
+> +	if (rk808->power_hold_gpios) {
+> +		unsigned int i;
 
-[auto build test ERROR on net/main]
+What is i here?  Can it have a better name?
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Coia-Prant/net-ethernet-stmmac-dwmac-rk-fix-bulk-clock-leak-when-the-PHY-clock-fails/20260920-014223
-base:   net/main
-patch link:    https://lore.kernel.org/r/20260919174223.2356964-1-coiaprant%40gmail.com
-patch subject: [PATCH net] net: ethernet: stmmac: dwmac-rk: fix bulk clock leak when the PHY clock fails
-config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20260923/202609231728.boP5N9Xr-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 16.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260923/202609231728.boP5N9Xr-lkp@intel.com/reproduce)
+> +
+> +		for (i = 0; i < rk808->power_hold_gpios->ndescs; i++)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202609231728.boP5N9Xr-lkp@intel.com/
+for (int <better_name> = 0; ...
 
-All error/warnings (new ones prefixed by >>):
+> +			gpiod_set_value_cansleep(rk808->power_hold_gpios->desc[i], 0);
+> +
+> +		msleep(rk808->power_hold_delay_ms);
+> +	}
+> +
+>  	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+>  	if (ret)
+>  		dev_err(rk808->dev, "Failed to shutdown device!\n");
+> @@ -766,6 +786,7 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+>  	struct rk808 *rk808;
+>  	const struct rk808_reg_data *pre_init_reg;
+>  	const struct mfd_cell *cells;
+> +	bool system_power_controller;
+>  	int dual_support = 0;
+>  	int nr_pre_init_regs;
+>  	u32 rst_fun = 0;
+> @@ -851,6 +872,29 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+>  	if (!irq)
+>  		return dev_err_probe(dev, -EINVAL, "No interrupt support, no core IRQ\n");
+>  
+> +	system_power_controller =
+> +		device_property_read_bool(dev, "system-power-controller") ||
+> +		device_property_read_bool(dev, "rockchip,system-power-controller");
+> +
+> +	/*
+> +	 * Claim the optional power hold GPIOs before any child device is
+> +	 * registered. A -EPROBE_DEFER from the GPIO provider at this point
+> +	 * costs nothing, whereas deferring after devm_mfd_add_devices()
+> +	 * would tear the freshly registered children down again on every
+> +	 * retry.
+> +	 */
+> +	if (system_power_controller) {
+> +		rk808->power_hold_gpios =
+> +			devm_gpiod_get_array_optional(dev, "power-hold",
+> +						      GPIOD_OUT_HIGH);
 
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c: In function 'gmac_clk_enable':
->> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1165:25: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
-    1165 |                         if (ret)
-         |                         ^~
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1168:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
-    1168 |                                 return ret;
-         |                                 ^~~~~~
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c: At top level:
->> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1177:11: error: expected identifier or '(' before 'else'
-    1177 |         } else {
-         |           ^~~~
->> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1189:9: error: expected identifier or '(' before 'return'
-    1189 |         return 0;
-         |         ^~~~~~
->> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1190:1: error: expected identifier or '(' before '}' token
-    1190 | }
-         | ^
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c: In function 'gmac_clk_enable':
->> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1177:9: warning: control reaches end of non-void function [-Wreturn-type]
-    1177 |         } else {
-         |         ^
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c: At top level:
->> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:199:12: warning: 'rk_gate_rmii_clock' defined but not used [-Wunused-function]
-     199 | static int rk_gate_rmii_clock(struct rk_priv_data *bsp_priv)
-         |            ^~~~~~~~~~~~~~~~~~
+Why wrap here?  Some of the surrounding lines are clearly longer.
 
+> +		if (IS_ERR(rk808->power_hold_gpios))
+> +			return dev_err_probe(dev, PTR_ERR(rk808->power_hold_gpios),
+> +					     "Failed to get power hold GPIOs\n");
+> +
+> +		device_property_read_u32(dev, "power-hold-delay-ms",
+> +					 &rk808->power_hold_delay_ms);
 
-vim +1177 drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+What if this doesn't return a value?
 
-7ad269ea1a2b7d Roger Chen            2014-12-29  1152  
-7ad269ea1a2b7d Roger Chen            2014-12-29  1153  static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
-7ad269ea1a2b7d Roger Chen            2014-12-29  1154  {
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1155  	int ret;
-7ad269ea1a2b7d Roger Chen            2014-12-29  1156  
-7ad269ea1a2b7d Roger Chen            2014-12-29  1157  	if (enable) {
-7ad269ea1a2b7d Roger Chen            2014-12-29  1158  		if (!bsp_priv->clk_enabled) {
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1159  			ret = clk_bulk_prepare_enable(bsp_priv->num_clks,
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1160  						      bsp_priv->clks);
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1161  			if (ret)
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1162  				return ret;
-7ad269ea1a2b7d Roger Chen            2014-12-29  1163  
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1164  			ret = clk_prepare_enable(bsp_priv->clk_phy);
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07 @1165  			if (ret)
-cb278e6780d874 Coia Prant            2026-09-20  1166  				clk_bulk_disable_unprepare(bsp_priv->num_clks,
-cb278e6780d874 Coia Prant            2026-09-20  1167  							   bsp_priv->clks);
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1168  				return ret;
-cb278e6780d874 Coia Prant            2026-09-20  1169  			}
-23c94d63a7e395 David Wu              2018-06-28  1170  
-5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1171) 			rk_configure_io_clksel(bsp_priv);
-5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1172) 			rk_ungate_rmii_clock(bsp_priv);
-2f2b60a0ec2826 David Wu              2022-08-30  1173  
-7ad269ea1a2b7d Roger Chen            2014-12-29  1174  			mdelay(5);
-7ad269ea1a2b7d Roger Chen            2014-12-29  1175  			bsp_priv->clk_enabled = true;
-7ad269ea1a2b7d Roger Chen            2014-12-29  1176  		}
-7ad269ea1a2b7d Roger Chen            2014-12-29 @1177  	} else {
-7ad269ea1a2b7d Roger Chen            2014-12-29  1178  		if (bsp_priv->clk_enabled) {
-5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1179) 			rk_gate_rmii_clock(bsp_priv);
-7f864458e9a6d2 Sebastian Reichel     2025-10-14  1180  
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1181  			clk_bulk_disable_unprepare(bsp_priv->num_clks,
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1182  						   bsp_priv->clks);
-fecd4d7eef8b21 David Wu              2017-08-10  1183  			clk_disable_unprepare(bsp_priv->clk_phy);
-fecd4d7eef8b21 David Wu              2017-08-10  1184  
-7ad269ea1a2b7d Roger Chen            2014-12-29  1185  			bsp_priv->clk_enabled = false;
-7ad269ea1a2b7d Roger Chen            2014-12-29  1186  		}
-7ad269ea1a2b7d Roger Chen            2014-12-29  1187  	}
-7ad269ea1a2b7d Roger Chen            2014-12-29  1188  
-7ad269ea1a2b7d Roger Chen            2014-12-29 @1189  	return 0;
-7ad269ea1a2b7d Roger Chen            2014-12-29 @1190  }
-7ad269ea1a2b7d Roger Chen            2014-12-29  1191  
+> +	}
+> +
+>  	ret = devm_regmap_add_irq_chip(dev, rk808->regmap, irq,
+>  				       IRQF_ONESHOT | dual_support, -1,
+>  				       rk808->regmap_irq_chip, &rk808->irq_data);
+> @@ -872,8 +916,7 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+>  	if (ret)
+>  		return dev_err_probe(dev, ret, "failed to add MFD devices\n");
+>  
+> -	if (device_property_read_bool(dev, "system-power-controller") ||
+> -	    device_property_read_bool(dev, "rockchip,system-power-controller")) {
+> +	if (system_power_controller) {
+>  		ret = devm_register_sys_off_handler(dev,
+>  				    SYS_OFF_MODE_POWER_OFF_PREPARE, SYS_OFF_PRIO_HIGH,
+>  				    &rk808_power_off, rk808);
+> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+> index 7ffc904..eda111e 100644
+> --- a/include/linux/mfd/rk808.h
+> +++ b/include/linux/mfd/rk808.h
+> @@ -1459,6 +1459,8 @@ enum {
+>  	RK818_ID = 0x8180,
+>  };
+>  
+> +struct gpio_descs;
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Do we do this for all of the other structs?  Why not add the include?
+
+> +
+>  struct rk808 {
+>  	struct device			*dev;
+>  	struct regmap_irq_chip_data	*irq_data;
+> @@ -1466,6 +1468,8 @@ struct rk808 {
+>  	long				variant;
+>  	const struct regmap_config	*regmap_cfg;
+>  	const struct regmap_irq_chip	*regmap_irq_chip;
+> +	struct gpio_descs		*power_hold_gpios;
+> +	u32				power_hold_delay_ms;
+>  };
+>  
+>  void rk8xx_shutdown(struct device *dev);
+> -- 
+> 2.55.0.windows.3
+> 
+
+-- 
+Lee Jones
 
 _______________________________________________
 Linux-rockchip mailing list
