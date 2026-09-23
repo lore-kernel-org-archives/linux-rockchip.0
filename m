@@ -4,114 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95482C9830B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 12:40:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3E37C9830B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 13:03:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8+tHJagoko8Ty28OBsM4B7NX20DfhYaLlllKZC3Mi70=; b=N6+153AC3x7glI
-	4C2FM6SpBzhHgglOp9ISh+rRK8XL+1QWnHey1H+AB3YD4e1M6Ig+t37r4nsL4O96r3HtxxTxnFFDL
-	/rJ+HNmDPu/qy0Au0UxsdZdL/dqPhHOY/jit3u4RmDaNT9iXNKiWjtGuClEC9UATFtkeK//0pXl5S
-	2083Y9w+zt2tXuNuB20SZp8PDQ6b+1OqAc7zJPSlYdwungJIWojA0pupI4h9CdX1AnyRbubCIM3Gr
-	XcsEVuKRl8vN91V+49j4YxkSYzNSbUYJ8ZElN9z3WZPRaOQSkm4soC9gs0jawijSofyw9eeNA1Vte
-	bSChdHfOTPhvWJDNKTLA==;
+	List-Owner; bh=qemRrrOpUhLJna+1w3vqK4wZJa0z0DpeMIkr+jQ2ixU=; b=36WH7G3+glnTRx
+	v/eSo5WtBNTdn5yHYcjdvw8w1xJ90wEQMwB6r75xxKZ2blYCm+5Aru7A2CRf5Z5Z1IwbJLOHdQBZk
+	C9zvIIQmi9nJLhA92dFqft/DWoqOiu9CQ19vH0tXtnISmfEeMzn/IHdlNu9sYp6F9hJPOgwn5Ovc7
+	TCQ8szj4cn8PUmY4m/ey4u5TJ3LoJdPcHNnWeaF5I71OMSW26iNJF2CL9eSmV8WDnwzDR8uqdhyfP
+	AocPHVG1T93KB1r3aJhmpVm8esfugouEnNFhIAYuV1AwYRQOoYLTQh8sU3u0Rozi15t0IQnBe+xAq
+	f+uf2iSyKQUDrlaXB1yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9MHK-00000008HIc-21Dp;
-	Wed, 23 Sep 2026 12:40:50 +0000
-Received: from mail-ej2-x00.google.com ([2a00:1450:4864:34::])
+	id 1x9MdT-00000008KaN-0anl;
+	Wed, 23 Sep 2026 13:03:43 +0000
+Received: from mail-eastusazlp17011000f.outbound.protection.outlook.com ([2a01:111:f403:c100::f] helo=BL2PR02CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9MHH-00000008HHN-0zq8
-	for linux-rockchip@lists.infradead.org;
-	Wed, 23 Sep 2026 12:40:48 +0000
-Received: by mail-ej2-x00.google.com with SMTP id a640c23a62f3a-c1971f5efc3so48768366b.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 23 Sep 2026 05:40:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790167245; cv=none;
-        d=google.com; s=arc-20260327;
-        b=BZ4y5U8KNht2CoKccPh18b+Szx+PF5hAQY04wow01S/f85/0MdiTT1dSk/8HjYJMnc
-         IGs8HOTcdTHvdATP/6AFgc0q7KNk49u3nbSbm95Dz6sn+NO+XLtcOdCO6Z5dUU/YV3q9
-         AH1MxKjCUD0ZUbXG/7h1kahV9ONTsoUk9+dqPvqwg/jyeQfmkW/k7T+7TOb2lR6wUFBs
-         EP6ugFoGrr86+iCMnjnAjw9S+mfuph4K2Lek3XgtFYoSw4yJewpJ237/4hKbdG0mMHy/
-         NoTMZ4ATTu67QXi/GfwqvUoqYS9WDQwEErrl6mhrD2cteTXrZluhtJpNaiH2D5e9w1Hn
-         5AGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=yrBXUqSfBJNVOGA4p1L4WG725TYm+nXRxrzQgFuRPz4=;
-        fh=vBSCFwCvLZUyuE2N3uh32Dm8iuYyOoMeIkiqedlNetw=;
-        b=ZQSTwjr5GSwXPO68U1+SohNCnkMtzpqlSEIOfnU1dlVfupFRSpigcYaPeqBd8R40dn
-         kjse64DTSZKgJw2nYFmka8Nf5q2pe/GRAPAMzxOMU7OO1bacpc6adl9xYcDhwznl2R6U
-         NMwx3/2qtW1BtH9C/XUiqUvaiBvyvp1B3B+ZqdnW0Xdnd0tkPhrbSmD8e0RamQlUw0tQ
-         eMRUYNl8JiQozv5tNh6lKiThoVBzxf6e8/E3k9/g7KaCiBZpVjgtDBlKlDUdOpPHi549
-         2fnFnyDRmxGFpqICpniWSEcMjehZfq2AUgA2GGrbyqRUNTi/Pvt70DBtzkWtcoakkDA3
-         Yzzg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790167245; x=1790772045; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=yrBXUqSfBJNVOGA4p1L4WG725TYm+nXRxrzQgFuRPz4=;
-        b=TbXwFkiryluEvIfUM1PvVRhthkcjJWHsmVFoMRTVWnIXg9XQ1sWpdkxhm7TNhFHoOE
-         yxzL2WOXuzR8aINrapR/7sTBJrGC0xv7xAjuSbUw3v0OEJpNDcQNcUDGc29J8Aa715cx
-         xXv5v1DZGdYN50pgqpyEYUNTTrdax+NCwGBNpH+bTxORJsu5Ij6VDGglS6W0YMYrpE0b
-         swKulj3paZ70T2l+lo+dvTuM2rAOUGvFl4vo14j6lDEHkfNu+ZS5KM4aQpYqP1yi2Vxi
-         DgrEP48lpS+/nMnWzDASSpmciqisXT75AYU11lTL+H8c4SmEd8YIqzOhmiExQNSxB03e
-         Brtg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790167245; x=1790772045;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=yrBXUqSfBJNVOGA4p1L4WG725TYm+nXRxrzQgFuRPz4=;
-        b=nsPlq3+J1ZzlRA1SaIfgADkwxz6uaubR55Vxn/sGi6ezhb4GKkLvgsVuAMS4qmiNEn
-         3roqlz8RBhrTiZZObB9EC8yoIvh/pam5snXh43U2FuAQrqzPjo2lAKm7XcTJhQPUy4Q0
-         7yXK2QNYCy4aoiJPIeiZPsiH4RDJCq4Y8w47AbY6wNCHH0IAATHDe7cer/JaaM2nIpdI
-         N6Z9MI5n6L6kVmw7r6k0MF1+XYrdCBcZuqfU942iky0/uOE+aO15HQOIAVaqfHNiDp/s
-         jP3jk8/TaOhd0aZvpXNnY/VJhOAF+kyBLqhRr5BAegHghcxcIG1IKSeciA+OmzZZOjif
-         n++A==
-X-Forwarded-Encrypted: i=1; AKwUvByRjI86wXIu3aIsAdWEFm0gES/nLnrVBVtOey7XO5VB5zThfj6Ubqe10XOmuKwJBWpsdQ7qYkPbMx4duOvRSw==@lists.infradead.org
-X-Gm-Message-State: AFuF++nEb/BPkQptUjDOOapikIQeH6hlwZcHRw6WPTID4KZiB2wdeeNk
-	e/vsIMMMvqiMrsAjWnnCAOax0zTpP/3QoJjd1IO5o6mxrEm/dmYwEy9TA2mEeNSK98kugP1eXS2
-	hdQkBcE745w4DqCn4astLC8M1MXFkoLw=
-X-Gm-Gg: AYBFou1UYpeoqoGVYPekyyuIpuIb9/6QhNlo3IzYNNhDOzsbLKlF2/PRzpXuo9CaZ37
-	Qhk0sidmtXX0wpcg+dB+qS/aqEGe01j5Nm7guHY/pqmJSEPUglONWFxFJUBWyjtFJNqPwelDhmj
-	MGFzlZutQZatBgeKGX7/dzohT1TLMPeqaApVp1O+RXTPj9YarsPTK1JyIT156n3xm6E/xqpDG1s
-	eEjIn39MmguG8eE9FnzHJjEgaj3hNhDU9FiJeF3WHpiRbmSYKuLAKd9vxBJbSy4M6mIG9XarAus
-	nMXKp3XoIZTcP4SMEPc/6XjQScMjhf04ZYYOZx6ruCnaQ7ONLMPsy3ZI/g==
-X-Received: by 2002:a17:907:d91:b0:c25:5faf:b207 with SMTP id
- a640c23a62f3a-c2aadcf4484mr194861466b.3.1790167245181; Wed, 23 Sep 2026
- 05:40:45 -0700 (PDT)
+	id 1x9MdO-00000008KYi-2X5W;
+	Wed, 23 Sep 2026 13:03:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=CbnHkB2H+D1c+6ulpga6m7LDcKZtjseeZ2De0J0s6RD81iB1ZXO6/OeqNqb9jX3GGY1Wj9a9qlhJuUHl7riRRP7iXlaXDJGPC9I9KEG00eRKaDjCdWEJ7Dg2VY038nKAHNqLtkWDvJZ2iI1V7z1U194KWENpbNaKXx0Vwc1I7fiY/v1OiMpAmVo5IrRCPHir5Mic/mVnTjLkKB/VPLhO3J1vF0nLqVQ66NvKJ3S1JGf9B8wd2+dt3Db2K4ZsJCJb37KvB3fXuqoZxdFF/LeMt61g9HT+j5VwnpFGbaDsexDFZzUeNo6LFAH86E42Bs4K43IolN7z2VSW+IhOAVZq6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=06VbYZm2c2dgaMlmuXOAPIhraea7b4AXiREe1cU/gaM=;
+ b=sSIp0KRki89XjoWuc6UErFSwfmRHoNaIwn3Usni7iZjbUKbgDGSkGzCZ0bswmJyDOqJ59FHbpxhF5EnwmFQtIzQ7rfKNVVEfav+tcaIlhwZ6QelVLFFtOmrRW8HUA7883BvbZkDbP/6dWAMdKD5nK/oTlxm8U36nQkXkZgYdaRrhQEHcuR8QZ534S0RdWHuYsz+M30Qv9OvnsvZdMCVTcH1VPhM1nW2B+R1n/SklGOhasmifwkauqwdF5DujWjnBSgMbaGF4pzD1WSblpIM3/X1aFmboU6Vo1giSTywrQRDgSDfDYL31Qze10UMX2jjLqU1qvDlthRK46InVcRXXrw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=06VbYZm2c2dgaMlmuXOAPIhraea7b4AXiREe1cU/gaM=;
+ b=LPM8FXeuUXhu0WLRiF2PtaGppBn/GdMC790zHfgmvC2tyLt6fGwCzXZMhZIN6+dr3PuhP6VcrvRSoIhHr0C9eYAUeaN6xstgkpIC7gijsoMrazBLq1Dtg9+o9bSYQquxjaz5xRxM1PjDYfmoaB5c/3a3Gn1aPmxhGAErIufzI8E=
+Received: from BN9PR12MB5146.namprd12.prod.outlook.com (2603:10b6:408:137::16)
+ by DM4PR12MB6397.namprd12.prod.outlook.com (2603:10b6:8:b4::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.17; Wed, 23 Sep
+ 2026 13:03:21 +0000
+Received: from BN9PR12MB5146.namprd12.prod.outlook.com
+ ([fe80::535a:591e:27f6:c23]) by BN9PR12MB5146.namprd12.prod.outlook.com
+ ([fe80::535a:591e:27f6:c23%7]) with mapi id 15.21.0451.014; Wed, 23 Sep 2026
+ 13:03:20 +0000
+From: "Deucher, Alexander" <Alexander.Deucher@amd.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>, "jfalempe@redhat.com"
+	<jfalempe@redhat.com>, "javierm@redhat.com" <javierm@redhat.com>,
+	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+	"mripard@kernel.org" <mripard@kernel.org>, "airlied@gmail.com"
+	<airlied@gmail.com>, "simona@ffwll.ch" <simona@ffwll.ch>
+CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org"
+	<linux-samsung-soc@vger.kernel.org>, "intel-gfx@lists.freedesktop.org"
+	<intel-gfx@lists.freedesktop.org>, "intel-xe@lists.freedesktop.org"
+	<intel-xe@lists.freedesktop.org>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "freedreno@lists.freedesktop.org"
+	<freedreno@lists.freedesktop.org>, "nouveau@lists.freedesktop.org"
+	<nouveau@lists.freedesktop.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "sashiko-reviews@lists.linux.dev"
+	<sashiko-reviews@lists.linux.dev>
+Subject: RE: [PATCH 0/2] drm/fbdev: Move helpers to clients/ subdirectory
+Thread-Topic: [PATCH 0/2] drm/fbdev: Move helpers to clients/ subdirectory
+Thread-Index: AQHdS0uH+iQ747HqqkGBKqmkqQ+jWbbcIRKw
+Date: Wed, 23 Sep 2026 13:03:20 +0000
+Message-ID: <BN9PR12MB5146DC3299C804856C42C79AF7822@BN9PR12MB5146.namprd12.prod.outlook.com>
+References: <20260923110537.451614-1-tzimmermann@suse.de>
+In-Reply-To: <20260923110537.451614-1-tzimmermann@suse.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_2d0b1989-8fc8-4a69-bcac-d46889461ba5_Enabled=True;MSIP_Label_2d0b1989-8fc8-4a69-bcac-d46889461ba5_SiteId=3dd8961f-e488-4e60-8e11-a82d994e183d;MSIP_Label_2d0b1989-8fc8-4a69-bcac-d46889461ba5_SetDate=2026-09-23T13:02:52.0000000Z;MSIP_Label_2d0b1989-8fc8-4a69-bcac-d46889461ba5_Name=AMD
+ Public
+ v26;MSIP_Label_2d0b1989-8fc8-4a69-bcac-d46889461ba5_ContentBits=3;MSIP_Label_2d0b1989-8fc8-4a69-bcac-d46889461ba5_Method=Privileged
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR12MB5146:EE_|DM4PR12MB6397:EE_
+x-ms-office365-filtering-correlation-id: 5f6c4c56-fc47-4320-2b03-08df19730b12
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|23010399003|1800799024|376014|7416014|38070700021|3023799007|10067099003|11063799006|56012099006|18002099003|22082099003;
+x-microsoft-antispam-message-info: HCt9EvYhTcDqPNVBM8vsGBR/zSYhqc2J7okknJlntDsfWfMM8PQW74SLVU4PslyV2WXGO4V7zZoshLts9ViZgpcz2xL3iQQmyGweyXZl7g7rVnQ+JGE/PDXf3kE/RXCPXmNsfSVqqMVjenFPdv9cKC3t5+ps42KXdSdHcStW5q0K36QFDQOA1CYmccp/6dorf6MeecMdIFkCWsdvrJ46UjSvLujpK+hncRArDWFg6w7e6hWatGlntjWz/Q1D3xV9DMuQhQBLEBus2+L52DRH1oqLm0TJMcsFwV8jK57Et/RHEsxXMd00Dmr2AKN1FjaRipg30Jzifl8fXdv0+eP6UIoQb9BHbOR5LPkTLZIKVVx99rPomXTfDPB/NKp0ej7Xg8bI3WCLbdaghBJsCB4yJmf6p5AsKoyobgLNCutWvtQOWZh2NECe7QkTSM1gJFDZDLq5QhwYF5mlXL+vhMg8M2R+TsNWG0WNXh+gRQN6iyG9gzM5jru6AUEakwf6JcEdla4VoXWy/d/A9Ka3bSYi2lOJDuTew/qjrke0k9947SvMoXMZhsQ5ZrmMItDvBD/4G4XgIeZDs/C5njYTSD++C0yABjYv6xBAp2ugTjtjZ46/Dqi4LEMByDvif5p0Frp0DKotmxsDIpELE2a/D+op74DaYSRnIGa62Z/ZKe3V/h+bmy7Um9Ov2ZpHvEXJZqtLNwGnWHrbhtn/6snj6esP7BkCSdMXUHF5Tex/ydvJZAE=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR12MB5146.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(7416014)(38070700021)(3023799007)(10067099003)(11063799006)(56012099006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?j56/wEpydSEHQlPMgpCx+C5AUn3KkNUT44saIQHFK8LEsr+AHoX55WPzSMeR?=
+ =?us-ascii?Q?1us20JfSyUlOp3qkGwL6DTJDP6sEsmmps8XnrGahcz8m4HUC0d6qDIebJBQ8?=
+ =?us-ascii?Q?x5jVXCndMrSsB5pfkW3L6QdQFMXcGJHTn4xyYSMpMQIDpriXAvc7GGgE9brF?=
+ =?us-ascii?Q?NdnM+X/FbwCDlg9Af55/P5mRI9pfJjtRx2o6nhxRWUsGAwPEMAB7WhEeSIc+?=
+ =?us-ascii?Q?Tj06gmj2yyRnKEwXm9BCMRIDjEZX86ePHuUJ8prKQnVZE1C1o5kvXekIzpnA?=
+ =?us-ascii?Q?kTwoLlpyB1J7sCTROm0tLKD96fQmulAsttBt/bkHnFrsL2RG17JUel+aKXgC?=
+ =?us-ascii?Q?T2aE3qFvPj3CxDgUEU+VstKbeuuG0dyxa3/9VPywx564sRLsnnU5iqnphhAs?=
+ =?us-ascii?Q?UnhZgpPNbDKDUAxQ2EZT+SUDs2AD4JODUzAB0WGAQJsZXHgtsjO4DYkPfyuC?=
+ =?us-ascii?Q?Zfb8c0Ts0NY2Af7B3CIUx0EIjTRlNkv8GnziXmYyot1HykHPiGaCzj7i0zYm?=
+ =?us-ascii?Q?+D1EHpqDz2oQ3H9v/zjZ3v1ajJI6mbRx1CVOnoGQbRjKLhRQf3bc2biTVLlO?=
+ =?us-ascii?Q?Qz26MG2IywCFMQYW+KoTBkq69ikteeOeGRISdUWrOPPBm+kcxuHR/+5/44H5?=
+ =?us-ascii?Q?ttKoogVqotewe90LNC6H0+rY3LbnNGtmhxmQ/4LI41x0JSOkyhaLT5aRf7yJ?=
+ =?us-ascii?Q?i50k4dNurx2BOydLtnsPcACgCSisc5frin8fyX+fMK1YpN3VauniMGFmkvqY?=
+ =?us-ascii?Q?Hls06Js5EZQYccsCTRgtkMn2M+FQ2HRcZtFnsQdFSHZCf9OPZHYjEaQ/ma4w?=
+ =?us-ascii?Q?iSDQ4lVmvZw857ODOBUNi+Obey/RwTQAXV1qBkhRj2obAlPXWQSdngFQ5u6I?=
+ =?us-ascii?Q?fFW3h1uqxtn+YDUGH33uHDOu1/72wyPLfyfZm8r5beB2wf/67nXbBqKrPfqa?=
+ =?us-ascii?Q?UJF5i0BjoElLotO0w2d43lrrUBsmHYu3yf85JAgqYxE/PmG1hsWPVambCvqe?=
+ =?us-ascii?Q?IPLgK4zDuNt900TC3BW13hoorcAV/b3/B2wxt6JMg6lfRv87x9D0e6uIoO6k?=
+ =?us-ascii?Q?zn3i7SA/Gb2H9jRivYB3LuCG5S6+QJkZQqVxaRi576db4L+2nM5PF9MS9M2S?=
+ =?us-ascii?Q?6J/0HoGR+QU6MLsqkhbPJwqmJMVE3Z21qeizNl+E5Qx6ODkw19xEuMAltIr8?=
+ =?us-ascii?Q?+zuk1O2+181UFWhNUPhP3dLBbS3xLw7MKafyZRzorvQt9Ex9aP5p49ixvnaJ?=
+ =?us-ascii?Q?UUYpkWm4zNORKOW7HMFv/qpDWrWzZ8XGL76i/ynqj5Z+4pSHOqKrdgr5WY6a?=
+ =?us-ascii?Q?QNpPk8mKPvGt+UnfM7I/PV91wjb/houUzSkFuAaghMnG0hLNKGyBrJgBCjSQ?=
+ =?us-ascii?Q?JuW8CQShe82G977ei+go1/SATrYNoCBv1LUQdv2pAT7slQsaW0b3CWmaSXLJ?=
+ =?us-ascii?Q?RHo0rlfM+bljb2NejydR3/DxeqQIizXIOAIvY2XXWpPyI+It0dqaXlQik94n?=
+ =?us-ascii?Q?yZOvwZ+RD2u0LyChyWHBFf65edsXnoFi1qQYgXia25dalUmbfdf0qA/W6Xk8?=
+ =?us-ascii?Q?GWGWgRAc7gzsWkwHQHzPh0OF7btgyPpfe39+xqHbAdRM5y9pxIKrc9f0Otij?=
+ =?us-ascii?Q?zXS7kPmHHDvlezRJ63PR/Q1e4e64lYw7xO2QyqWl7Own+B2zYeYESwX+A7Au?=
+ =?us-ascii?Q?CpKEKT3asbn2jaG+qAJ6CKB92YOJnOUvctXa7FV7ke6wgRrM?=
 MIME-Version: 1.0
-References: <20260922200336.2201212-1-coiaprant@gmail.com> <20260922195006.79890f24@kernel.org>
-In-Reply-To: <20260922195006.79890f24@kernel.org>
-From: Coia Prant <coiaprant@gmail.com>
-Date: Wed, 23 Sep 2026 20:40:33 +0800
-X-Gm-Features: AclHuK-io9PS85iIjo2RRKD7nlxq4FY18LSW8xzP9gnGJLLZJesN4MppzV2qPUE
-Message-ID: <CALj3r0hH6m7jUEweKMWGmCW9aOxShaqsV0E+z4ztBhXbJ+378w@mail.gmail.com>
-Subject: Re: [PATCH net-next v10 00/11] net: pcs: add basic support for RK3568 XPCS
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
-	Maxime Chevallier <maxime.chevallier@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
-	Romain Gantois <romain.gantois@bootlin.com>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Russell King <linux@armlinux.org.uk>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, David Heidelberg <david@ixit.cz>, netdev@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-phy@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR12MB5146.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5f6c4c56-fc47-4320-2b03-08df19730b12
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Sep 2026 13:03:20.7255
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: UbLTPpYio30FP5JxNnc9EZw2f8tgThqsY6rkwNtE/VnLPsusWfX3hbhFFymiCdkg9rM44XO0vzcoEnVMOu+hSg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6397
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_054047_321077_13CE3F48 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20260923_060338_944671_DEF581AB 
+X-CRM114-Status: GOOD (  14.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,23 +148,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SmFrdWIgS2ljaW5za2kgPGt1YmFAa2VybmVsLm9yZz4g5LqOMjAyNuW5tDnmnIgyM+aXpeWRqOS4
-iSAxMDo1MOWGmemBk++8mgo+Cj4gT24gV2VkLCAyMyBTZXAgMjAyNiAwNDowMzoyNCArMDgwMCBD
-b2lhIFByYW50IHdyb3RlOgo+ID4gVGhpcyBzZXJpZXMgYWRkcyBwcm9wZXIgU0dNSUkgc3VwcG9y
-dCBmb3IgdGhlIFJvY2tjaGlwIFJLMzU2OCBTb0MKPiA+IHVzaW5nIHRoZSBpbnRlZ3JhdGVkIFN5
-bm9wc3lzIERlc2lnbldhcmUgWFBDUywgYWxvbmcgd2l0aCBuZWNlc3NhcnkKPiA+IGZpeGVzIGFu
-ZCByZWZhY3RvcmluZyBpbiB0aGUgc3RtbWFjIGNvcmUgYW5kIFhQQ1MgZHJpdmVyLgo+Cj4gUGxl
-YXNlIHNsb3cgZG93biB3aXRoIHRoZSByZXBvc3RzLgo+IE5vdCBtb3JlIHRoYW4gMiBhIHdlZWss
-IGFuZCBwbGVhc2Ugd2FpdCBmb3IgdGhlIEFJIHJldmlldyB0byBmaW5pc2gKPiBhbmQgYmUgcHVi
-bGlzaGVkIGJlZm9yZSB5b3UgcmVwb3N0LgoKVW5kZXJzdG9vZCwgc29ycnkgZm9yIHRoZSBub2lz
-ZS4gSSdsbCBrZWVwIHJlcG9zdHMgd2l0aGluIHRoZSBsaW1pdCBhbmQKd2FpdCBmb3IgdGhlIEFJ
-IHJldmlldyB0byBiZSBwdWJsaXNoZWQgYmVmb3JlIHJlcG9zdGluZyBmcm9tIG5vdyBvbi4KCkNv
-aWEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+Public
+
+> -----Original Message-----
+> From: amd-gfx <amd-gfx-bounces@lists.freedesktop.org> On Behalf Of
+> Thomas Zimmermann
+> Sent: Wednesday, September 23, 2026 6:59 AM
+> To: jfalempe@redhat.com; javierm@redhat.com;
+> maarten.lankhorst@linux.intel.com; mripard@kernel.org; airlied@gmail.com;
+> simona@ffwll.ch
+> Cc: dri-devel@lists.freedesktop.org; amd-gfx@lists.freedesktop.org; linux-
+> arm-kernel@lists.infradead.org; linux-samsung-soc@vger.kernel.org; intel-
+> gfx@lists.freedesktop.org; intel-xe@lists.freedesktop.org; linux-arm-
+> msm@vger.kernel.org; freedreno@lists.freedesktop.org;
+> nouveau@lists.freedesktop.org; linux-rockchip@lists.infradead.org; linux-
+> tegra@vger.kernel.org; sashiko-reviews@lists.linux.dev; Thomas Zimmermann
+> <tzimmermann@suse.de>
+> Subject: [PATCH 0/2] drm/fbdev: Move helpers to clients/ subdirectory
+>
+> Helpers for fbdev emulation are still linked into drm_kms_helper.ko, which is
+> for mode setting. Move the source and header files to the clients/ subdirectory
+> and link them into drm_client_lib.ko. This has some fallout throughout drivers,
+> but it's all trivial.
+>
+> There are 3 module parameters to drm_kms_helper.ko that control fbdev
+> emulation. For compatibility with existing installations, leave them in this
+> module.
+>
+> Thomas Zimmermann (2):
+>   drm/fbdev: Move fbdev module parameters next to module init
+>   drm/fbdev: Move fbdev helpers into client library
+
+Series is:
+Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
+
+>
+>  drivers/gpu/drm/Makefile                      |  1 -
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_display.c   |  2 +-
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c       |  2 +-
+>  drivers/gpu/drm/clients/Makefile              |  3 +-
+>  drivers/gpu/drm/clients/drm_fbdev_client.c    |  2 +-
+>  .../drm_fbdev_helper.c}                       | 34 +---------------
+>  drivers/gpu/drm/drm_crtc_helper_internal.h    |  9 +++++
+>  drivers/gpu/drm/drm_fbdev_dma.c               |  2 +-
+>  drivers/gpu/drm/drm_fbdev_shmem.c             |  2 +-
+>  drivers/gpu/drm/drm_fbdev_ttm.c               |  2 +-
+>  drivers/gpu/drm/drm_kms_helper_common.c       | 39
+> +++++++++++++++++++
+>  drivers/gpu/drm/exynos/exynos_drm_fbdev.c     |  2 +-
+>  drivers/gpu/drm/gma500/fbdev.c                |  2 +-
+>  drivers/gpu/drm/i915/display/intel_fbdev.c    |  2 +-
+>  drivers/gpu/drm/msm/msm_debugfs.c             |  2 +-
+>  drivers/gpu/drm/msm/msm_fbdev.c               |  2 +-
+>  drivers/gpu/drm/nouveau/dispnv50/disp.c       |  1 -
+>  drivers/gpu/drm/omapdrm/omap_debugfs.c        |  2 +-
+>  drivers/gpu/drm/omapdrm/omap_fbdev.c          |  2 +-
+>  drivers/gpu/drm/radeon/radeon_device.c        |  2 +-
+>  drivers/gpu/drm/radeon/radeon_fbdev.c         |  2 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  2 +-
+>  drivers/gpu/drm/sitronix/st7571.c             |  1 -
+>  drivers/gpu/drm/tegra/fbdev.c                 |  2 +-
+>  drivers/gpu/drm/vboxvideo/vbox_mode.c         |  2 +-
+>  .../drm_fbdev_helper.h}                       |  4 +-
+>  26 files changed, 72 insertions(+), 56 deletions(-)  rename
+> drivers/gpu/drm/{drm_fb_helper.c => clients/drm_fbdev_helper.c} (97%)
+> rename include/drm/{drm_fb_helper.h => clients/drm_fbdev_helper.h} (99%)
+>
+> --
+> 2.55.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
