@@ -4,60 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A8E5C9830B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 15:25:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0444BC98304
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 15:34:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HICziQpDBfaUge3w4l3N4W0mWT6gtV0pKGOY5FxDV3Y=; b=DbnKaZn5pjeIAG
-	2A2uzU1Bkfxdu1Q7RmKUk2S0CHHN8lSQdqMd4XlSH/HKXbriOV3EGw8J1Q9gRMny57Sf036X5Pmnp
-	sXjXci0hBJTrdHtVP0tUaiouF33ZVST5Dyk3kXz5VtfVcMiQgIx8jcREkPxrU45q+tOqmIe/7qw6a
-	NjCrvdc6SnnVgaMRhxveb9PTz9uk2B9+gaqT7Nsc24ccKWNT/1GXnbzTLqJMh4v2bBG5jETC5h3p5
-	1uOXKKQsXRUgZsVChAUA1+DBfhe28sP0Gs3G3hysiGPbQwT0EljWoPBxrVHBIcshsOQI7oTELOaOI
-	JTPT6LdxYaCWIh8NwR/g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vrv5oTnOkDkmntJKVFM1/Jnw9cB6D/KEYfUiYfThqiA=; b=e5whIHX5abezRo
+	8Xw/B9h3wazwOsDqngo247pQFxlt8Taaf7CMnvfBXmuPlEqiqTVjGCWB3jGYy79tieRwS3Pp+GB8v
+	yK+5EAt/G7A2+02NnhK/xZw5BJl3CUMbUWrkp2fRfGHeF7Vt39suXf6eh6hiOPhiVQzF8XV3vrTv0
+	ICJtd0WimtmlNKydiFU1ydWaDc/LTpGjstrzotXB9+Pv697a6ywXli5tI5qTaW2bLQELW0EXiVcZ0
+	fMMre9X60cQQ9SsynEBDVz/Ms1eD8OLjEKyhB5caCLv3MmL4awKHB3RaMFWuMyZiraJS5wFPidvt7
+	61+zdwOTp0+FyvIyysoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Oqu-00000008jVU-1Hvs;
-	Wed, 23 Sep 2026 15:25:44 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x9Ozc-00000008kcz-0W2u;
+	Wed, 23 Sep 2026 15:34:44 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Oqs-00000008jVN-212p
+	id 1x9Oza-00000008kcN-3zfc
+	for linux-rockchip@bombadil.infradead.org;
+	Wed, 23 Sep 2026 15:34:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=; b=ZdiBDkxuxkXeKaOWza0LJlMxjX
+	dW24XaN5GAIxzUV2ZQ7G2ftmBuODeuNufhttAGmpfeuS+9w6rOWyIZQ2fyJqRncwz+tpO7gI9MrIJ
+	i+XCwEWipG86YYOpkcVNHDKMZXYoWqqiCra0Gof4vP2A2QyreB+dtnGv+Y9f3XwuFhfUFHqLBnZ1p
+	vXwbRZbnAuj/4tZ8kk6dgHUNnFqCzu/BgYVsCKNnyzsrjYMkm8QLviMvNaF61HGRR5s27DTMEl7uf
+	H1j3kIVIHsZBd55kKWtj+Te3wYW6vQzT4MYr50SfnpqIqXRAvEayw58F2/dmJvojhoehQd2wQ5c4Y
+	cHMtcqWQ==;
+Received: from mail-pz2-x0c.google.com ([2607:f8b0:4864:3b::c])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x9OzY-0000000Ewc2-0Nwm
 	for linux-rockchip@lists.infradead.org;
-	Wed, 23 Sep 2026 15:25:42 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E4207600AA;
-	Wed, 23 Sep 2026 15:25:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BFEB1F000FF;
-	Wed, 23 Sep 2026 15:25:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790177141;
-	bh=qHMkX2s9Ge8svmrLSvkdu6SgikwO19QmNNhQJas/lcM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=jfnB3VF2Mun/fQccSLUyRjXMpQYqNRFR9bCzxnBRJTM0GCVE44C3FNuDX9wKN37Ea
-	 IjHrTxYdx13JjKOb2UCZMDetm3QS/dP2bCmRznn7ajMlyv+6TR0njobemwvn6HBHd8
-	 gEUmatf55G6LPyMJGuU3548oI+fbglph9jv9ziGZXsOBvpwRWTXOfAyvbfrnb9Ejf+
-	 EW+YPAIcrrPAB/qVHbXVEb5ADlVyeW5NPAABidsROf5dhrOjtOVc4/or0/svc1nRZL
-	 HznuI/36pKVGs3fAFCl5oTv5rgeljn0TXYETqEUcqaxXT7HnYcflESPVJGmNboRwjr
-	 tcvr77JtUivGw==
-Date: Wed, 23 Sep 2026 17:25:37 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Diederik de Haas <diederik@cknow-tech.com>,
-	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH v3 0/3] Small INTx fixes for Rockchip's dwc based PCIe
- controller driver
-Message-ID: <arPvcQIu46N_gTmB@ryzen>
-References: <1790044622-164744-1-git-send-email-shawn.lin@rock-chips.com>
- <DLMKWV1AH8TZ.2R3JK2NPM4KZB@cknow-tech.com>
- <08329b2b-449a-4036-8e82-ad67d0d037ee@rock-chips.com>
+	Wed, 23 Sep 2026 15:34:41 +0000
+Received: by mail-pz2-x0c.google.com with SMTP id 41be03b00d2f7-cc515bef69dso568799a12.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 23 Sep 2026 08:34:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790177677; x=1790782477; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=;
+        b=ML7KaoHugJtPwtdoh7QBF+Sbfuqm1FQJqZbyms1Q73PfHIk4vfdgtJhUftQ3an51X9
+         ah0L4O1KXjAEKF2zry6u3c6ENiXqbn+riYn+EkxkOhxn0X/PpOqJLMG29kdAPmri3otQ
+         jmZHT6Gg3EyJ6QTsCLdNwvJSwnkERRjp8bHekkW0rbAXWqvAiGi8917uPi+YgAKHm3T7
+         PKjpxsvAWQQz6WNdMlPy34KX83UPlB/uxZD5VRgyg7RcN48mOUywfsSsautEg7XLbhAv
+         UhmDvmvX8wk87dSoS/CkHK1G4tcXt1TieorCGTEMUrLNY5tDa+dE3Dgr36d66T8MaNwR
+         Iz4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790177677; x=1790782477;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=;
+        b=ObIY6jxlxcY92Npu5xWEWYqFG4y7URjwz5HGg8zokqGQ/Yd4/JFuzz33xhmUY1q3BE
+         sgqkqZJME4vbe7GuUaYgdzhzNhOCmxtXm8WzqOODczXHBMsPFXa0jRSL3+cwFI2EBiHP
+         DzH9+f2Qp1zpSxfpDbzXxDdlrXkHoYjtn+rAljvDiTk1NRGMYlpsaqIBwHMjA3GXBRUY
+         rQn8ZJsbW1c+UJCLBqG4cGxJRVqPQAfq6A/HLcouZM7edRXz2VC8RHdRnM5AVXEOHD3Q
+         gvsROxVMeHSNG61AXsNlX0lRJHpNFmQ7WcKBWFTymHHaUBVVJZLgimrpyws6l+tOD96+
+         MBrg==
+X-Forwarded-Encrypted: i=1; AKwUvBzVnBI9PPgwHC/LIpHgVLSnGDY9XUodqumLhu8ORTGEEUJ/lT62GI7VCDYL7EMYH90rk3muWma+UUsEinZ6cg==@lists.infradead.org
+X-Gm-Message-State: AFuF++nfV7tbDfH2zyNJOtsh7wBUOyIbWRFI0qXlxUQ0sQzEGsVxx1NI
+	Z9RS2SAPpPAAzzdHxxh/RVFBJn4mQ2cgSEoYxYgIQSiBuqY8qRWbrUXE
+X-Gm-Gg: AYBFou1OK7caLnKYjus2th9KBS/kZOT2aTXyNy+6QOSokqqr7DGjXUPKfGcNabONeIO
+	WSGPAK6mN/m6yQp3aJMtHoYg54LkLKwAlHZvbhinjB9WVHeAuXhuft/eedozFGVcVUbNoJAiauv
+	imV9zQRFqgCqSSk6nPdttvJAb1lpqTqjakd4klCEZ7JmVjIFy6rHx2eDHRhjwfcOxR65nMBfLgg
+	HduNbDzPsAZlbQgXBnsJFN99jijzlK+tn68pXQUXmgZbMqaTJQqNh4T1s7J673cqigQEG0Nmcmp
+	GlKeN/JDF+6Eci7Ug8GuC2T5C9y/SUfVMAoSoYdmKEZCwGlaAM4LeYWsncUPgeTzrhTgJ2nymTG
+	y7GVCSZsJKX03CruxyYKayPsRK9BCysU+jQA2lJXOFnMJi3lP1rEcz+vaqL8gqrtVy3ZarJe5JJ
+	3LLdvC5PlSobtSEhZPD5Vac3WFtTwYlHvkpZBFjYwWctDnWAf6gsAAdCdbh7tB4h3kMwbMjbwDg
+	DF3JCpVX1zsC3f5QOu4dk23TXVPZFPzX+hV8swxtC0=
+X-Received: by 2002:a05:6a20:c70e:b0:3dd:a197:7360 with SMTP id adf61e73a8af0-3ddf8296639mr2981172637.57.1790177676973;
+        Wed, 23 Sep 2026 08:34:36 -0700 (PDT)
+Received: from arch.localdomain (123202092053.ctinets.com. [123.202.92.53])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cc75f3f5e79sm1318844a12.25.2026.09.23.08.34.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Sep 2026 08:34:36 -0700 (PDT)
+From: Jun Yan <jerrysteve1101@gmail.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Jun Yan <jerrysteve1101@gmail.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
+Date: Wed, 23 Sep 2026 23:34:22 +0800
+Message-ID: <20260923153423.804759-1-jerrysteve1101@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <08329b2b-449a-4036-8e82-ad67d0d037ee@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260923_163440_344753_DA6DB1BE 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,83 +127,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Shawn, Diederik,
+The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
+internal eDP port) has no separate PHY device and relies on its built-in
+PHY, which is programmed directly through the GRF registers, so its DT
+node carries no "phys"/"phy-names" property.
 
-On Wed, Sep 23, 2026 at 05:21:59PM +0800, Shawn Lin wrote:
-> >
-> > I build a kernel with this patch set (7.3~rc4-2) and got several warnings
-> > like this, shortly followed by a stack trace:
->
-> Sashiko already reportted some valid concern around this, and I'll plan
-> to rework this series a bit later. Thanks for reporting this.
+Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
+-ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
+misleading "no DP phy configured" error at probe time before falling back
+to a NULL phy.
 
-Just thinking out loud:
+Use devm_phy_optional_get() instead, which returns NULL when the PHY is
+absent and otherwise behaves identically, and drop the manual -ENODEV/
+-ENOSYS handling. This also removes the spurious error message.
 
-Patch 1/3 in this series fixes a regression, so it should be picked up as
-soon as possible.
+Assisted-by: Claude:deepseek-v4-flash
+Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+---
+ .../gpu/drm/bridge/analogix/analogix_dp_core.c | 18 +++---------------
+ 1 file changed, 3 insertions(+), 15 deletions(-)
 
-Patch 2/3 is converting the resources to be device managed.
-However, after patch 1/3 (if the moved code is called _before_
-dw_pcie_host_init()) the only thing left after dw_pcie_host_init() is the
-PCIE_CLIENT_INTR_MASK_MISC write.
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 18e76d1e78e1..28eb668d3e3f 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1427,21 +1427,9 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
+ 	if (ret)
+ 		return ERR_PTR(ret);
+ 
+-	dp->phy = devm_phy_get(dp->dev, "dp");
+-	if (IS_ERR(dp->phy)) {
+-		dev_err(dp->dev, "no DP phy configured\n");
+-		ret = PTR_ERR(dp->phy);
+-		if (ret) {
+-			/*
+-			 * phy itself is not enabled, so we can move forward
+-			 * assigning NULL to phy pointer.
+-			 */
+-			if (ret == -ENOSYS || ret == -ENODEV)
+-				dp->phy = NULL;
+-			else
+-				return ERR_PTR(ret);
+-		}
+-	}
++	dp->phy = devm_phy_optional_get(dp->dev, "dp");
++	if (IS_ERR(dp->phy))
++		return ERR_CAST(dp->phy);
+ 
+ 	dp->clock = devm_clk_get(&pdev->dev, "dp");
+ 	if (IS_ERR(dp->clock)) {
+-- 
+2.55.0
 
-I.e. there is no error return remains that would need a dw_pcie_host_deinit().
-
-So there is no strict need to convert to devm_().
-You can do so, but that should be in a separate series IMO.
-
-
-In fact, Diederik's later warnings are a result of Patch 2/3 which replaced
-irq_domain_create_linear() with devm_irq_domain_instantiate():
-
-   error: hwirq 0x0 is too large for :pcie@fe150000:legacy-interrupt-controller
-   WARNING: kernel/irq/irqdomain.c:676 at irq_domain_associate_locked+0x118/0x1a0
-
-
-The fix seems to be to add .hwirq_max = PCI_NUM_INTX, to
-rockchip_pcie_init_irq_domain():
-
-The fix is one line in rockchip_pcie_init_irq_domain() :
-				.size = PCI_NUM_INTX,
-				.hwirq_max = PCI_NUM_INTX,
-
-
-
-Patch 3/3 looks like a theoretical problem that Sashiko found.
-
-Is the underlying problem real? It's plausible, but nobody has reproduced it.
-For it to happen, the controller's legacy IRQ output has to be asserted while
-clocks are gated. Two ways that could happen:
-
-- The output was high when clk_bulk_disable_unprepare() froze the logic.
-- A device was still asserting INTx when an AER- or sysfs-triggered reset
-  stopped the link.
-
-Patch 3/3 is not enough though:
-
-disable_irq() never masks this chained IRQ in hardware, so
-rockchip_pcie_intx_handler() can still run and read the unclocked APB.
-
-This is the kind of case IRQ_DISABLE_UNLAZY exists for, according to the
-comment above irq_disable().
-
-Minimal amend of patch 3/3 as it currently looks:
-
-turn off lazy disable for this line when the chained handler is installed:
-	irq_set_status_flags(rockchip->intx_irq, IRQ_DISABLE_UNLAZY);
-	irq_set_chained_handler_and_data(rockchip->intx_irq,
-					 rockchip_pcie_intx_handler, rockchip);
-
-Such that irq_disable() masks the chained IRQ.
-
-Do we want patch 3/3? Probably.. but this race seems very small...
-probably most imporent to get patch 1 (with the code move _before_
-dw_pcie_host_init()) accepted ASAP, as it currently is causing problems
-for Diederik.
-
-
-Kind regards,
-Niklas
 
 _______________________________________________
 Linux-rockchip mailing list
