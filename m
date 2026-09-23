@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA85C982FA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 02:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B57FC982FA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 02:53:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aiCOa+5sYq31eE0xc4MXSexHmszw2N9kZsMrCbWABHs=; b=2YupEMgw0f4bvZ
-	KjJ0kPeb6YKx+CpGuq/LZ+Xtks6izYNFYsKHm61BArzbxdtKYK+mpRq4jj3JFnR1A3FdnbEppWx5d
-	q28FMW1iAiAZmC6sUJXvvevwYwCQj6yBcDB4zLkM2123IiTRVLYvnVK/jysUdaerEEmSV8fbz01Xq
-	xzrqhd416e24SPSlqMz918LTpaYnQ4DrMC3KdaQLKDkvUQK4yNs6qMsclJI35y7bmf6OB/13mbzfJ
-	lb4iw00tpQUdaRUPHg1udnWrSLaA2APJaR8S3gSh15KtGkbZ6ZVbd68HhZ6eonCFynpCpg5tIVKP+
-	XC3u1HR/NIcpJrWdOh+w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MJl+yZo4X41jaG9mwta8s0tsM3AhhorkV54mKp+TvcM=; b=NAOMvR9cs3Z8TE
+	9JwWHSE0gT7khfxkwfFUeCbydyX3lmxKLPba3W0AO+GRXuvVTcubv/wcCBCh2aYjb2MEJj2Qnu+aO
+	yweFpJEUrXqQS/6hkJuuNfEET3cgs2apM4NrTNB+RjA/qS0h5KD0XIcU3KzQunXNfzdP5vt4ybXGl
+	IkUnqJilo5So+s1I9VznZsEq45hA7MXm2tRW5IdwJ9ZXqd10uwtbVzbBD6e8ILviyxLlu+sqdKqUx
+	bC0E0VIKlVw6Ac/WTnkABMrwICl7WT+FRpF3iqo7uP1bKp/MwC2bkoke/1hYMo99DdEOVMSxbPbDa
+	nsd1LByGUTa0f4iEMQhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9D3k-00000006zK6-0hyf;
-	Wed, 23 Sep 2026 02:50:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x9D72-00000006znv-02Mh;
+	Wed, 23 Sep 2026 02:53:36 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9D3h-00000006zII-2MRn;
-	Wed, 23 Sep 2026 02:50:09 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AA3E3601F0;
-	Wed, 23 Sep 2026 02:50:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98D221F000FF;
-	Wed, 23 Sep 2026 02:50:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790131808;
-	bh=Eo5PNvzKKc4BFL3+MuJflE+BxX4YdcxoeglU+t5KwrY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=JZQ5CORtA6ZeETmwbFwtxoC2CfxFDPqnS+RC7NQO9H6gNAWIrOqRx/Ufk0nd7fXBP
-	 iDsMlkWUtzAnjAvlhBCUMNzhaXQ/vkFLbfx2lrBgDBLqshGRoPTToU+UzQECX2lS7O
-	 3hOj1XpvCcXAc0DcB6YInNKaNEJ5699vb/l07V4BKzELxkLf2ZDEb+lTAyv47yBAPk
-	 ZhJnVtJSnQx768X8qVjVvdmubkx3JubAP3KHc5ZiF9vbvUNSKMN0r/kGszo4Y/4OhV
-	 aWR4snVHpOGntttMBDW8Y0zH6Od2jXwwQs9+77WD1uLLF6eFaDTxtom3jZjBRSsu18
-	 oaCSP+Zmih2Ow==
-Date: Tue, 22 Sep 2026 19:50:06 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Coia Prant <coiaprant@gmail.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, Maxime Chevallier
- <maxime.chevallier@bootlin.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Lad Prabhakar
- <prabhakar.mahadev-lad.rj@bp.renesas.com>, Romain Gantois
- <romain.gantois@bootlin.com>, Heiner Kallweit <hkallweit1@gmail.com>, Neil
- Armstrong <neil.armstrong@linaro.org>, Russell King
- <linux@armlinux.org.uk>, Shawn Lin <shawn.lin@rock-chips.com>, David
- Heidelberg <david@ixit.cz>, netdev@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH net-next v10 00/11] net: pcs: add basic support for
- RK3568 XPCS
-Message-ID: <20260922195006.79890f24@kernel.org>
-In-Reply-To: <20260922200336.2201212-1-coiaprant@gmail.com>
-References: <20260922200336.2201212-1-coiaprant@gmail.com>
+	id 1x9D6x-00000006zmH-2MyL;
+	Wed, 23 Sep 2026 02:53:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=d7
+	BPEJDhjZ2IMmndPKduh3yZ01YEY2DvwVys02/p6aI=; b=ZYPzt2SOEfjlCPQufz
+	EzdJAFMqa1aBDgNFkAixTCkkbJ3W/RjEAqJmnC0mr2meKJVxy8Ocf/4hHCxuvyQB
+	1zbsjxBaXSGUrpn2H9zqFEYAb8l9pVfTtorWqDA4QbOoRxQ/gRx4rePULZYJyT6k
+	srdIMYm9Su0EpRdOuUuIpP/Z0=
+Received: from chaosheng-ASUS-TUF-Gaming-F16-FX607JV-FX607JV.lan (unknown [])
+	by gzsmtp3 (Coremail) with SMTP id PigvCgCXfaoYP7Nq_o2oAw--.5342S2;
+	Wed, 23 Sep 2026 10:53:13 +0800 (CST)
+From: Quchaosheng <quchaosheng000406@163.com>
+To: Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>,
+	mfd@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	quchaosheng000406@163.com
+Subject: [PATCH] dt-bindings: mfd: convert rk805 pinctrl to DT schema
+Date: Wed, 23 Sep 2026 10:53:02 +0800
+Message-ID: <20260923025302.374919-1-quchaosheng000406@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
+X-CM-TRANSID: PigvCgCXfaoYP7Nq_o2oAw--.5342S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGr18ZryDAF1rCryfZryrZwb_yoW7Gr48pF
+	ZxAFnxJrn2gF4Uu3y8t3W8Cw1Sgan7Ar4UC3Wj9ryxXa1jyr1Dtr13Kw1rZr98GrW8Za4Y
+	vF1DWr98XwnrCw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pREoGPUUUUU=
+X-CM-SenderInfo: xtxfxtprvkv0bjqqikiqw6il2tof0z/xtbC-xld0mqzPxndRQAA3O
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260922_195331_993510_86932F02 
+X-CRM114-Status: GOOD (  19.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,14 +79,163 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 23 Sep 2026 04:03:24 +0800 Coia Prant wrote:
-> This series adds proper SGMII support for the Rockchip RK3568 SoC
-> using the integrated Synopsys DesignWare XPCS, along with necessary
-> fixes and refactoring in the stmmac core and XPCS driver.
+pinctrl-rk805.txt describes the pinmux controller that is part of the
+Rockchip RK805 PMIC. The PMIC itself is already described by
+rockchip,rk805.yaml, so the pinmux part belongs there as well: the
+pinctrl node is a child of the PMIC node, not a separate device.
 
-Please slow down with the reposts.
-Not more than 2 a week, and please wait for the AI review to finish
-and be published before you repost.
+Fold the pinmux description into rockchip,rk805.yaml and drop the
+standalone text binding.
+
+While doing so, add the missing '-pins$' child node schema. The
+rockchip,rk805.yaml schema ends with 'additionalProperties: false' but did
+not describe the pin configuration child nodes at all, so a valid pinmux
+node like the one shown in pinctrl-rk805.txt was rejected:
+
+    pmic@18 (rockchip,rk805): 'rk805-default-pins' does not match any of
+    the regexes: '^pinctrl-[0-9]+$'
+
+The RK805 exposes two output-only GPIOs. Encode this as an enum on the
+'pins' property so that a typo such as "gpio2" is caught.
+
+Assisted-by: LLM
+Signed-off-by: Quchaosheng <quchaosheng000406@163.com>
+---
+ .../bindings/mfd/rockchip,rk805.yaml          | 33 +++++++++-
+ .../bindings/pinctrl/pinctrl-rk805.txt        | 63 -------------------
+ 2 files changed, 32 insertions(+), 64 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
+
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+index da2391530c16..fdc34e0902d9 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+@@ -86,6 +86,31 @@ properties:
+         unevaluatedProperties: false
+     unevaluatedProperties: false
+ 
++patternProperties:
++  '-pins$':
++    type: object
++    description:
++      The RK805 has two output-only GPIOs which can be muxed to the GPIO
++      function and driven low or high at boot.
++    additionalProperties: false
++
++    properties:
++      pins:
++        description:
++          List of GPIO pins to configure.
++        items:
++          enum: [gpio0, gpio1]
++        minItems: 1
++        maxItems: 2
++
++      function:
++        description:
++          The RK805 only supports the GPIO function.
++        enum: [gpio]
++
++      output-low: true
++      output-high: true
++
+ allOf:
+   - if:
+       properties:
+@@ -125,7 +150,7 @@ examples:
+             interrupt-parent = <&gpio2>;
+             interrupts = <RK_PA6 IRQ_TYPE_LEVEL_LOW>;
+             pinctrl-names = "default";
+-            pinctrl-0 = <&pmic_int_l>;
++            pinctrl-0 = <&pmic_int_l>, <&rk805_default>;
+             rockchip,system-power-controller;
+             wakeup-source;
+             #clock-cells = <0>;
+@@ -137,6 +162,12 @@ examples:
+             vcc5-supply = <&vcc_io>;
+             vcc6-supply = <&vcc_io>;
+ 
++            rk805_default: rk805-default-pins {
++                pins = "gpio0", "gpio1";
++                function = "gpio";
++                output-high;
++            };
++
+             regulators {
+                 vdd_logic: DCDC_REG1 {
+                     regulator-name = "vdd_logic";
+diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
+deleted file mode 100644
+index 6ad49e51c72e..000000000000
+--- a/Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
++++ /dev/null
+@@ -1,63 +0,0 @@
+-Pincontrol driver for RK805 Power management IC.
+-
+-RK805 has 2 pins which can be configured as GPIO output only.
+-
+-Please refer file <devicetree/bindings/pinctrl/pinctrl-bindings.txt>
+-for details of the common pinctrl bindings used by client devices,
+-including the meaning of the phrase "pin configuration node".
+-
+-Optional Pinmux properties:
+---------------------------
+-Following properties are required if default setting of pins are required
+-at boot.
+-- pinctrl-names: A pinctrl state named per <pinctrl-bindings.txt>.
+-- pinctrl[0...n]: Properties to contain the phandle for pinctrl states per
+-		<pinctrl-bindings.txt>.
+-
+-The pin configurations are defined as child of the pinctrl states node. Each
+-sub-node have following properties:
+-
+-Required properties:
+-------------------
+-- #gpio-cells: Should be two. The first cell is the pin number and the
+-  second is the GPIO flags.
+-
+-- gpio-controller: Marks the device node as a GPIO controller.
+-
+-- pins: List of pins. Valid values of pins properties are: gpio0, gpio1.
+-
+-First 2 properties must be added in the RK805 PMIC node, documented in
+-Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+-
+-Optional properties:
+--------------------
+-Following are optional properties defined as pinmux DT binding document
+-<pinctrl-bindings.txt>. Absence of properties will leave the configuration
+-on default.
+-	function,
+-	output-low,
+-	output-high.
+-
+-Valid values for function properties are: gpio.
+-
+-There are also not customised properties for any GPIO.
+-
+-Example:
+---------
+-rk805: rk805@18 {
+-	compatible = "rockchip,rk805";
+-	...
+-	gpio-controller;
+-	#gpio-cells = <2>;
+-
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pmic_int_l>, <&rk805_default>;
+-
+-	rk805_default: pinmux {
+-		gpio01 {
+-			pins = "gpio0", "gpio1";
+-			function = "gpio";
+-			output-high;
+-		};
+-	};
+-};
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
