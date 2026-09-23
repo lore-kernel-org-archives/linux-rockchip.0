@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B57FC982FA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 02:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73FE6C982EA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 03:43:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=MJl+yZo4X41jaG9mwta8s0tsM3AhhorkV54mKp+TvcM=; b=NAOMvR9cs3Z8TE
-	9JwWHSE0gT7khfxkwfFUeCbydyX3lmxKLPba3W0AO+GRXuvVTcubv/wcCBCh2aYjb2MEJj2Qnu+aO
-	yweFpJEUrXqQS/6hkJuuNfEET3cgs2apM4NrTNB+RjA/qS0h5KD0XIcU3KzQunXNfzdP5vt4ybXGl
-	IkUnqJilo5So+s1I9VznZsEq45hA7MXm2tRW5IdwJ9ZXqd10uwtbVzbBD6e8ILviyxLlu+sqdKqUx
-	bC0E0VIKlVw6Ac/WTnkABMrwICl7WT+FRpF3iqo7uP1bKp/MwC2bkoke/1hYMo99DdEOVMSxbPbDa
-	nsd1LByGUTa0f4iEMQhA==;
+	List-Owner; bh=9cpVL7EPk8SWUwphWXmG122R1ty0JLcPvd0c94pl5cQ=; b=dgPcduHtMF9xC/
+	308oiH5gOd/u386vmTe3ly9+3l7wOaHUs4WSn5tn3+3chD1W6rIKQvWz8ZZlwFaWQkiiAMcXDbxq3
+	ls3PN0533OxhLBAuT2w69Vc9hvZPT2SfZqYmD0reozYB0lQEf3PDQHRGXko9WG9eZYJaQenhHqpwl
+	FEeGOwF02hyxaY/FuEbayiJHKIDXYtVUsEzb8Ps0bhvaflxhxZ9YS2qznCDslE65rN4UfHkvAX4SP
+	t3ZykDC85LMKQPPaJzj2CSpedcakN4/Xps/BrSbegpavgW/PS34WJFIfNNPYFvn4Xbwv2x7s59YV8
+	QLWIBcJrtguZb8KtS8WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9D72-00000006znv-02Mh;
-	Wed, 23 Sep 2026 02:53:36 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
+	id 1x9Dt3-000000074O7-34AQ;
+	Wed, 23 Sep 2026 03:43:13 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9D6x-00000006zmH-2MyL;
-	Wed, 23 Sep 2026 02:53:33 +0000
+	id 1x9Dt0-000000074NF-17Xf;
+	Wed, 23 Sep 2026 03:43:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=d7
-	BPEJDhjZ2IMmndPKduh3yZ01YEY2DvwVys02/p6aI=; b=ZYPzt2SOEfjlCPQufz
-	EzdJAFMqa1aBDgNFkAixTCkkbJ3W/RjEAqJmnC0mr2meKJVxy8Ocf/4hHCxuvyQB
-	1zbsjxBaXSGUrpn2H9zqFEYAb8l9pVfTtorWqDA4QbOoRxQ/gRx4rePULZYJyT6k
-	srdIMYm9Su0EpRdOuUuIpP/Z0=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=q8
+	6DGD7uxSyxlDZIv19eJILS2tByPatUUONmvNrIHDM=; b=LrzEKssutUXqjtyY5H
+	zurCzN5sGB2iJglqX2kXOPdZm1NCubXShN+noAI+ZMKdSIeSZ+4dnNMi9GX7sokU
+	JBwmBU3YgizmJ4hRiVqeS6MaxauFyNZuG0FqJZdD/6XV4pG9cbp4unGopED99VIN
+	10Bh7pBynO62w9oNJWXTmox8I=
 Received: from chaosheng-ASUS-TUF-Gaming-F16-FX607JV-FX607JV.lan (unknown [])
-	by gzsmtp3 (Coremail) with SMTP id PigvCgCXfaoYP7Nq_o2oAw--.5342S2;
-	Wed, 23 Sep 2026 10:53:13 +0800 (CST)
+	by gzsmtp3 (Coremail) with SMTP id PigvCgDHL9e_SrNqfmmwAw--.13558S2;
+	Wed, 23 Sep 2026 11:42:56 +0800 (CST)
 From: Quchaosheng <quchaosheng000406@163.com>
 To: Lee Jones <lee@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -49,20 +49,20 @@ Cc: Chris Zhong <zyw@rock-chips.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	quchaosheng000406@163.com
-Subject: [PATCH] dt-bindings: mfd: convert rk805 pinctrl to DT schema
-Date: Wed, 23 Sep 2026 10:53:02 +0800
-Message-ID: <20260923025302.374919-1-quchaosheng000406@163.com>
+Subject: [PATCH v2] dt-bindings: mfd: convert rk805 pinctrl to DT schema
+Date: Wed, 23 Sep 2026 11:42:45 +0800
+Message-ID: <20260923034245.396417-1-quchaosheng000406@163.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-CM-TRANSID: PigvCgCXfaoYP7Nq_o2oAw--.5342S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxGr18ZryDAF1rCryfZryrZwb_yoW7Gr48pF
-	ZxAFnxJrn2gF4Uu3y8t3W8Cw1Sgan7Ar4UC3Wj9ryxXa1jyr1Dtr13Kw1rZr98GrW8Za4Y
-	vF1DWr98XwnrCw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+X-CM-TRANSID: PigvCgDHL9e_SrNqfmmwAw--.13558S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxuw47tr4fCry3Cr43Cw15Arb_yoW7Ww45pF
+	W3AF9xJrn2gF47u3y8t3W8Cw1Sgan7Ar4UC3WjgryxXa1j9Fyqyr15Kw1rX3s8GFW8Za45
+	ZF1DWr98XwnrCw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
 	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pREoGPUUUUU=
-X-CM-SenderInfo: xtxfxtprvkv0bjqqikiqw6il2tof0z/xtbC-xld0mqzPxndRQAA3O
+X-CM-SenderInfo: xtxfxtprvkv0bjqqikiqw6il2tof0z/xtbC5AFKv2qzSsG3JQAA3Q
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_195331_993510_86932F02 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20260922_204310_708071_2F2575B4 
+X-CRM114-Status: GOOD (  19.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,22 +95,26 @@ node like the one shown in pinctrl-rk805.txt was rejected:
     pmic@18 (rockchip,rk805): 'rk805-default-pins' does not match any of
     the regexes: '^pinctrl-[0-9]+$'
 
-The RK805 exposes two output-only GPIOs. Encode this as an enum on the
-'pins' property so that a typo such as "gpio2" is caught.
+The pin configuration nodes require 'pins'; without it a node that names
+no pin is accepted silently, while the text binding it replaces listed
+'pins' as required. The RK805 exposes two output-only GPIOs, so 'pins' is
+an enum of gpio0 and gpio1 and a typo such as "gpio2" is caught.
 
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Link: https://sashiko.dev/#/patchset/20260923025302.374919-1-quchaosheng000406@163.com?part=1
 Assisted-by: LLM
 Signed-off-by: Quchaosheng <quchaosheng000406@163.com>
 ---
- .../bindings/mfd/rockchip,rk805.yaml          | 33 +++++++++-
+ .../bindings/mfd/rockchip,rk805.yaml          | 36 ++++++++++-
  .../bindings/pinctrl/pinctrl-rk805.txt        | 63 -------------------
- 2 files changed, 32 insertions(+), 64 deletions(-)
+ 2 files changed, 35 insertions(+), 64 deletions(-)
  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
 
 diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-index da2391530c16..fdc34e0902d9 100644
+index da2391530c16..6353aef3ebe7 100644
 --- a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
 +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-@@ -86,6 +86,31 @@ properties:
+@@ -86,6 +86,34 @@ properties:
          unevaluatedProperties: false
      unevaluatedProperties: false
  
@@ -139,10 +143,13 @@ index da2391530c16..fdc34e0902d9 100644
 +      output-low: true
 +      output-high: true
 +
++    required:
++      - pins
++
  allOf:
    - if:
        properties:
-@@ -125,7 +150,7 @@ examples:
+@@ -125,7 +153,7 @@ examples:
              interrupt-parent = <&gpio2>;
              interrupts = <RK_PA6 IRQ_TYPE_LEVEL_LOW>;
              pinctrl-names = "default";
@@ -151,7 +158,7 @@ index da2391530c16..fdc34e0902d9 100644
              rockchip,system-power-controller;
              wakeup-source;
              #clock-cells = <0>;
-@@ -137,6 +162,12 @@ examples:
+@@ -137,6 +165,12 @@ examples:
              vcc5-supply = <&vcc_io>;
              vcc6-supply = <&vcc_io>;
  
