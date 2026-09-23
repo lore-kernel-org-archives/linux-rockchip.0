@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59021C98304
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 20:38:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E541C9830B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 20:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/KLcoXD2VbiRh8mC0TjXM3oaWpGetLBX1IZdCZJ6pOU=; b=HT5xK+CeEabq6c
-	Wcj7H2FvaygRi70t1r/nSuKNwDxZLWQjccMIEnW2WmDZucqzEe5VSzw9ELHZJlGyNhlqvHAn7JCU/
-	QdqOfa1L3VN0pcHFxQd6KiUvbaDSFGO+InXm1/VqIOnUY+MXBwmFeZ9sLh/WGiHkxg6sHIBykVl8b
-	6BQLk/i97pNa0+QUygYvWCTEgs1+k7Oi1BhjyhcX+PWWgvkLZkNas1bSrHC4FFjUdfuzLEhkEAUvj
-	S8mo8kpoAuHK92bATbMLh+jzklbg27ofh2FDo1x7oriwMbUdyl2lcDZB1gmtC5+3LaSselaLjyJM1
-	7Cf2aSmNNXhAMbSFwCrA==;
+	List-Owner; bh=3V138HOt1MwFOVNmlpPAQWsYED8ccWiRscrTFN1fq1c=; b=joR+94mC9iiJoo
+	+8Vlws2LKPkTMIUFX/EGHDBGDjw3Te6vxeScRCeLpHaJMPb/W8SZJi8vkOU5fFDKmUbTYyWikwJIR
+	waRBoVTf0io7CuAE/ob0RIaUw0ygAuAPVygdaM5OZMu6vCXI59mEozbuFoUmMvEJzGGAkO9cxUTce
+	/BWt8wigK1dKYfIzwXvjnJnTEZRy/Zwp0xA9opRrHpMbeVQn7/Rzvv/EbolHbgOsvItZim0WOR3Gf
+	MTzFk00F+uPpT/1QRrVayV9oupI4TbEL6UFJibvFVUTbA6xFJJ3R8wvSrOrAscQkzon1ibbyLKZBS
+	9mfVEgUeT3rtsgYVCZDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9TjL-00000009UEy-2pkZ;
-	Wed, 23 Sep 2026 20:38:15 +0000
+	id 1x9Tpk-00000009UnY-1eZg;
+	Wed, 23 Sep 2026 20:44:52 +0000
 Received: from [95.181.193.9] (helo=mail.auroraos.dev)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9TjI-00000009UD1-0YAl;
-	Wed, 23 Sep 2026 20:38:14 +0000
+	id 1x9Tph-00000009Un5-3blv;
+	Wed, 23 Sep 2026 20:44:51 +0000
 Received: from [192.168.2.104] (91.78.46.39) by exch16.corp.auroraos.dev
  (10.189.209.38) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1847.3; Wed, 23 Sep
- 2026 23:38:02 +0300
-Message-ID: <d07cb609-ca44-46aa-bd56-2554846399f6@auroraos.dev>
-Date: Wed, 23 Sep 2026 23:38:02 +0300
+ 2026 23:44:46 +0300
+Message-ID: <eae7ec74-5b90-4258-9576-159c700bd8f4@auroraos.dev>
+Date: Wed, 23 Sep 2026 23:44:46 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] pmdomain: rockchip: fix domain check in
@@ -50,8 +50,8 @@ X-Originating-IP: [91.78.46.39]
 X-ClientProxiedBy: exch16.corp.auroraos.dev (10.189.209.38) To
  exch16.corp.auroraos.dev (10.189.209.38)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_133812_192542_7DE55E36 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20260923_134449_905990_C365056F 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,7 +69,6 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 9/23/26 3:14 PM, Ulf Hansson wrote:
-
 [...]
 
 >> In rockchip_pm_add_one_domain(), there's the check (most probably for
@@ -92,14 +91,13 @@ On 9/23/26 3:14 PM, Ulf Hansson wrote:
 > corresponding domain declaration to be correct. Yet, the patch is
 > useful as is!
 
-   I'm not sure I understand you. The patch should hopefully be
-enough to detect the undefined entries (implicitly init'ed with
-all 0s). What fix for the domain definitions do you have in mind,
-turning the arrays into lookup tables by adding a domain ID as a
-field to *struct* rockchip_domain_info?
+   I was thinking of doing a more elaborate description but if you
+considered it good enough, OK... :-)
 
 > Kind regards
 > Uffe
+[...]
+
 MBR, Sergey
 
 
