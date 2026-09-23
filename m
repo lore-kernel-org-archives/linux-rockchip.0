@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15675C982EA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 07:49:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5B2DC982EA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 08:30:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mupyGJEAHRpU46F5WKCI4SiP8cGYpuRLvF3vIo5q/+8=; b=Hf4CVoJGenkafq
-	Ixv3iF64VuAjpQAU3m0sd6vT+FOcQcFHuB8LDfvr/jWfYbIf160tWJ8SNyEZ6XUGCNlPoN9lwA1b3
-	uwh/dwsaaOjcvIUB590udbE2XvvB8wRx83jvVeh86iAv91kLJm86H/gz8ULB6/moDprSzeRw7LlbO
-	dzFuRjuwvv7MzpFcYC9XEw5KGy4aAoAufdam53Siau3XUGp9bKYArn0TRGryClaBrhEMY7sVCO+eu
-	X8hhE+IphwcSVkfBrjHu97LpvR17OJJfyfZIB0VLE7WLilcfdo6utirAXPjTaS8c/DdBE+LUmPUvj
-	s6lN47rvvMaygw8rlbwQ==;
+	List-Owner; bh=W2PF65g8QlJsPkzMKMnQPMRqbb9vTzxMOimBjJxNEtk=; b=t1M3RcI6ku+L40
+	8H3MNtp2m3lnZwII8wInmLvldAXz5atew3svoZUXqm3WOT9I3m1pmr+rflzfrFSnf8tg5iAzK2dzF
+	ezFHlIfn/nHuQDftmOAjot5Z4j9WgfAsNOJuzzvesVFxP561CQeB7bgjDEXO8xK9QTqCnc2nzwjZn
+	mogd1EPRj2jIMUA+sybbJrd1V5spv988lJGSo7wnclkfZT/w9TWprl2DBzUZQGMGPzUQCi7LssFpe
+	H4vxxt0p2B253jYh4fseNsk6hAFF8zmBc8/C0VdnivHx2TpLrMxsNzCuYViifnM4NZRM17zjdc/fn
+	+LAnWc/esdotMEm0uUJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Hir-00000007RPb-3Zr3;
-	Wed, 23 Sep 2026 07:48:57 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
+	id 1x9IN4-00000007Wn8-2UIK;
+	Wed, 23 Sep 2026 08:30:30 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Hio-00000007ROg-3fl9;
-	Wed, 23 Sep 2026 07:48:56 +0000
+	id 1x9IN1-00000007Wm8-0wqb;
+	Wed, 23 Sep 2026 08:30:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=QZ
-	2CklEPM41fBCBH4wMrs2bqusIBHz8n45dNOsqwuuM=; b=ZXhIPGXfnuUPQO7hho
-	Z6mls1UwLr0w/B5xQSWcG9TigaAZL5AszmhnhrrLhwdeynBoFyBGaMi0rboMJ4D2
-	OB1qXptw4TgKIBisj0R28PYSocIdPD6hdYabTFW3KZ1u3QP7Y5oD4Fb4HWD9YykB
-	cChAFPX+mQfGxzOx3ldLiLk4E=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=t8
+	d9Oa1HHLgScLhFX7FghI4hEpWrd7oGGjdeIlvI0bM=; b=KbgDl74zW09IbIfs4t
+	Alt5dsVbLnJbZEchl5O0LwG5ur8UEhJBB2Uyw0HZZ5I9LB0EZLVlodYS1T6/ss3r
+	dFGTI73euPEZ216GJBKPJ8AXrbsE0c1lkiORFs2dSLbt0qlKVaz++TgWkP+NJhHr
+	3Oly6+FCsdx1SHsi4KhRP+8q8=
 Received: from chaosheng-ASUS-TUF-Gaming-F16-FX607JV-FX607JV.lan (unknown [])
-	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wCnX76Jg7NqtZwiAQ--.40954S2;
-	Wed, 23 Sep 2026 15:45:14 +0800 (CST)
+	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wDn13cTjrNqJr0uAQ--.12348S2;
+	Wed, 23 Sep 2026 16:30:12 +0800 (CST)
 From: Quchaosheng <quchaosheng000406@163.com>
 To: Lee Jones <lee@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -49,20 +49,20 @@ Cc: Chris Zhong <zyw@rock-chips.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	quchaosheng000406@163.com
-Subject: [PATCH v4] dt-bindings: mfd: rockchip,rk805: Convert pinctrl to DT schema
-Date: Wed, 23 Sep 2026 15:45:03 +0800
-Message-ID: <20260923074503.575956-1-quchaosheng000406@163.com>
+Subject: [PATCH v5] dt-bindings: mfd: rockchip,rk805: Convert pinctrl to DT schema
+Date: Wed, 23 Sep 2026 16:30:01 +0800
+Message-ID: <20260923083001.606935-1-quchaosheng000406@163.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-CM-TRANSID: _____wCnX76Jg7NqtZwiAQ--.40954S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxuw47tr47AF45GF47CF4fAFb_yoWfGr47pF
-	ZxAF4fJrn2gF43uw48tw18Cw1fuan7Ar4UC3WUKryIqan8uryjyr13Kw1rZFyDGFW0va4a
-	vr15Wr98XwnrC3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0JUbTmhUUUUU=
-X-CM-SenderInfo: xtxfxtprvkv0bjqqikiqw6il2tof0z/xtbDAAqKAGqzg4rJEwAA3K
+X-CM-TRANSID: _____wDn13cTjrNqJr0uAQ--.12348S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxuw47tr47ArWkZry7KFW5trb_yoWfCF4xpF
+	ZxAFs3Jrn2gF45uw48tw18Cw1fuFs7Ar47Gw1jgryvqan8uryjyr13Kw1rZFyDGFW0v34a
+	vF15Wr98JwnrC3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0JUj2NZUUUUU=
+X-CM-SenderInfo: xtxfxtprvkv0bjqqikiqw6il2tof0z/xtbC5BQwpWqzjhRfRQAA38
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_004855_216209_04B54B2E 
-X-CRM114-Status: GOOD (  24.34  )
+X-CRM114-CacheID: sfid-20260923_013027_741000_8088F002 
+X-CRM114-Status: GOOD (  24.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,9 +113,20 @@ example of the text binding had.
 Reported-by: Sashiko <sashiko-bot@kernel.org>
 Link: https://sashiko.dev/#/patchset/20260923034245.396417-1-quchaosheng000406@163.com?part=1
 Link: https://sashiko.dev/#/patchset/20260923062746.516666-1-quchaosheng000406@163.com?part=1
+Link: https://sashiko.dev/#/patchset/20260923074337.575122-1-quchaosheng000406@163.com?part=1
 Assisted-by: LLM
 Signed-off-by: Quchaosheng <quchaosheng000406@163.com>
 ---
+Changes in v5:
+- The child nodes of the "pinmux" node were matched with a patternProperties
+  entry guarded by "if: type: object". That has no "else", so a non-object
+  property of the grouping node, a misspelled "typo = <1>;" for instance,
+  matched the pattern and passed. Match them with additionalProperties
+  against the same definition instead. dtschema puts phandle and status into
+  the allowed properties there, so the grouping node keeps the phandle that
+  pinctrl-0 points at, and every other property has to be a pin
+  configuration node.
+
 Changes in v4:
 - Describe the pin configuration nodes both as direct children and inside a
   "pinmux" grouping node. Only the flat form was described, so the layout
@@ -126,10 +137,9 @@ Changes in v4:
 
   The nodes are now one definition referenced from both places, and the
   example shows the flat node and a "pinmux" node holding one.
-- Name the binding in the summary. dt-bindings: mfd: <binding>: is the form
-  Documentation/devicetree/bindings/submitting-patches.rst asks for on
-  conversions, and 364 of the 385 dt-bindings: mfd: commits in the tree name
-  a binding there.
+- Name the binding in the summary, as
+  Documentation/devicetree/bindings/submitting-patches.rst shows for a
+  conversion ("dt-bindings: iio: adc: adi,ad7476: Convert to DT schema").
 
 Changes in v3:
 - Capitalize the summary phrase. dt-bindings: mfd: titles are capitalized
@@ -153,16 +163,16 @@ Changes in v2:
   names no pin passes validation, while the text binding listed 'pins'
   as required.
 ---
- .../bindings/mfd/rockchip,rk805.yaml          | 65 ++++++++++++++++++-
- .../bindings/pinctrl/pinctrl-rk805.txt        | 63 ------------------
- 2 files changed, 64 insertions(+), 64 deletions(-)
+ .../bindings/mfd/rockchip,rk805.yaml          | 60 +++++++++++++++++-
+ .../bindings/pinctrl/pinctrl-rk805.txt        | 63 -------------------
+ 2 files changed, 59 insertions(+), 64 deletions(-)
  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
 
 diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-index da2391530c16..aafc80212c48 100644
+index da2391530c16..ecd9846dffec 100644
 --- a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
 +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-@@ -77,6 +77,21 @@ properties:
+@@ -77,6 +77,16 @@ properties:
      description:
        The input supply for LDO_REG3.
  
@@ -173,18 +183,13 @@ index da2391530c16..aafc80212c48 100644
 +  # and then walks its children.
 +  pinmux:
 +    type: object
-+    additionalProperties: false
-+    patternProperties:
-+      '^.+$':
-+        if:
-+          type: object
-+        then:
-+          $ref: '#/$defs/rk805-pin-config'
++    additionalProperties:
++      $ref: '#/$defs/rk805-pin-config'
 +
    regulators:
      type: object
      patternProperties:
-@@ -86,6 +101,38 @@ properties:
+@@ -86,6 +96,38 @@ properties:
          unevaluatedProperties: false
      unevaluatedProperties: false
  
@@ -223,7 +228,7 @@ index da2391530c16..aafc80212c48 100644
  allOf:
    - if:
        properties:
-@@ -125,9 +172,11 @@ examples:
+@@ -125,9 +167,11 @@ examples:
              interrupt-parent = <&gpio2>;
              interrupts = <RK_PA6 IRQ_TYPE_LEVEL_LOW>;
              pinctrl-names = "default";
@@ -236,7 +241,7 @@ index da2391530c16..aafc80212c48 100644
              #clock-cells = <0>;
  
              vcc1-supply = <&vcc_sys>;
-@@ -137,6 +186,20 @@ examples:
+@@ -137,6 +181,20 @@ examples:
              vcc5-supply = <&vcc_io>;
              vcc6-supply = <&vcc_io>;
  
