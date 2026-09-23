@@ -4,113 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0444BC98304
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 15:34:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F083C98304
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 15:54:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vrv5oTnOkDkmntJKVFM1/Jnw9cB6D/KEYfUiYfThqiA=; b=e5whIHX5abezRo
-	8Xw/B9h3wazwOsDqngo247pQFxlt8Taaf7CMnvfBXmuPlEqiqTVjGCWB3jGYy79tieRwS3Pp+GB8v
-	yK+5EAt/G7A2+02NnhK/xZw5BJl3CUMbUWrkp2fRfGHeF7Vt39suXf6eh6hiOPhiVQzF8XV3vrTv0
-	ICJtd0WimtmlNKydiFU1ydWaDc/LTpGjstrzotXB9+Pv697a6ywXli5tI5qTaW2bLQELW0EXiVcZ0
-	fMMre9X60cQQ9SsynEBDVz/Ms1eD8OLjEKyhB5caCLv3MmL4awKHB3RaMFWuMyZiraJS5wFPidvt7
-	61+zdwOTp0+FyvIyysoQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Bbmcv9uRK1g+NpDHtbCSVK2i0D4ha/biFTe1aYPIZIQ=; b=1HGfmzajgeQq5m
+	WpVj0nQfOJIx5WdZixT3hMQvSD4EuhFF7dI7OgZAJVBcBvcocl6qxjjnBONCxuKfJjj/5ZjCP2kfM
+	04tJ1QFokaZ0mxq8l+tHuGaNUlYcuLwzsb/bED2/oEs8KSri+fhdcHK5HJEN0SkETT/t5ugItBVXy
+	bZCGNeZ5f79Ikdgd7OmGMGyUGkrCw2PSx15Tb5ZfsGmxouo88gUvZh2MMXT2JQK90jfB95f7GcwHc
+	EFTH6s+AgtpLLr1XAuais7r0neLMG4g0zi08OiqVwNrIGBHqLEpOWAGyX57OqQU0oU+HO+h2C3SMO
+	Pe8OAoJs3oyKNeYy6Oug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Ozc-00000008kcz-0W2u;
-	Wed, 23 Sep 2026 15:34:44 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x9PIS-00000008oQA-3J50;
+	Wed, 23 Sep 2026 15:54:13 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Oza-00000008kcN-3zfc
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 23 Sep 2026 15:34:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=; b=ZdiBDkxuxkXeKaOWza0LJlMxjX
-	dW24XaN5GAIxzUV2ZQ7G2ftmBuODeuNufhttAGmpfeuS+9w6rOWyIZQ2fyJqRncwz+tpO7gI9MrIJ
-	i+XCwEWipG86YYOpkcVNHDKMZXYoWqqiCra0Gof4vP2A2QyreB+dtnGv+Y9f3XwuFhfUFHqLBnZ1p
-	vXwbRZbnAuj/4tZ8kk6dgHUNnFqCzu/BgYVsCKNnyzsrjYMkm8QLviMvNaF61HGRR5s27DTMEl7uf
-	H1j3kIVIHsZBd55kKWtj+Te3wYW6vQzT4MYr50SfnpqIqXRAvEayw58F2/dmJvojhoehQd2wQ5c4Y
-	cHMtcqWQ==;
-Received: from mail-pz2-x0c.google.com ([2607:f8b0:4864:3b::c])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x9OzY-0000000Ewc2-0Nwm
-	for linux-rockchip@lists.infradead.org;
-	Wed, 23 Sep 2026 15:34:41 +0000
-Received: by mail-pz2-x0c.google.com with SMTP id 41be03b00d2f7-cc515bef69dso568799a12.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 23 Sep 2026 08:34:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790177677; x=1790782477; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=;
-        b=ML7KaoHugJtPwtdoh7QBF+Sbfuqm1FQJqZbyms1Q73PfHIk4vfdgtJhUftQ3an51X9
-         ah0L4O1KXjAEKF2zry6u3c6ENiXqbn+riYn+EkxkOhxn0X/PpOqJLMG29kdAPmri3otQ
-         jmZHT6Gg3EyJ6QTsCLdNwvJSwnkERRjp8bHekkW0rbAXWqvAiGi8917uPi+YgAKHm3T7
-         PKjpxsvAWQQz6WNdMlPy34KX83UPlB/uxZD5VRgyg7RcN48mOUywfsSsautEg7XLbhAv
-         UhmDvmvX8wk87dSoS/CkHK1G4tcXt1TieorCGTEMUrLNY5tDa+dE3Dgr36d66T8MaNwR
-         Iz4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790177677; x=1790782477;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=;
-        b=ObIY6jxlxcY92Npu5xWEWYqFG4y7URjwz5HGg8zokqGQ/Yd4/JFuzz33xhmUY1q3BE
-         sgqkqZJME4vbe7GuUaYgdzhzNhOCmxtXm8WzqOODczXHBMsPFXa0jRSL3+cwFI2EBiHP
-         DzH9+f2Qp1zpSxfpDbzXxDdlrXkHoYjtn+rAljvDiTk1NRGMYlpsaqIBwHMjA3GXBRUY
-         rQn8ZJsbW1c+UJCLBqG4cGxJRVqPQAfq6A/HLcouZM7edRXz2VC8RHdRnM5AVXEOHD3Q
-         gvsROxVMeHSNG61AXsNlX0lRJHpNFmQ7WcKBWFTymHHaUBVVJZLgimrpyws6l+tOD96+
-         MBrg==
-X-Forwarded-Encrypted: i=1; AKwUvBzVnBI9PPgwHC/LIpHgVLSnGDY9XUodqumLhu8ORTGEEUJ/lT62GI7VCDYL7EMYH90rk3muWma+UUsEinZ6cg==@lists.infradead.org
-X-Gm-Message-State: AFuF++nfV7tbDfH2zyNJOtsh7wBUOyIbWRFI0qXlxUQ0sQzEGsVxx1NI
-	Z9RS2SAPpPAAzzdHxxh/RVFBJn4mQ2cgSEoYxYgIQSiBuqY8qRWbrUXE
-X-Gm-Gg: AYBFou1OK7caLnKYjus2th9KBS/kZOT2aTXyNy+6QOSokqqr7DGjXUPKfGcNabONeIO
-	WSGPAK6mN/m6yQp3aJMtHoYg54LkLKwAlHZvbhinjB9WVHeAuXhuft/eedozFGVcVUbNoJAiauv
-	imV9zQRFqgCqSSk6nPdttvJAb1lpqTqjakd4klCEZ7JmVjIFy6rHx2eDHRhjwfcOxR65nMBfLgg
-	HduNbDzPsAZlbQgXBnsJFN99jijzlK+tn68pXQUXmgZbMqaTJQqNh4T1s7J673cqigQEG0Nmcmp
-	GlKeN/JDF+6Eci7Ug8GuC2T5C9y/SUfVMAoSoYdmKEZCwGlaAM4LeYWsncUPgeTzrhTgJ2nymTG
-	y7GVCSZsJKX03CruxyYKayPsRK9BCysU+jQA2lJXOFnMJi3lP1rEcz+vaqL8gqrtVy3ZarJe5JJ
-	3LLdvC5PlSobtSEhZPD5Vac3WFtTwYlHvkpZBFjYwWctDnWAf6gsAAdCdbh7tB4h3kMwbMjbwDg
-	DF3JCpVX1zsC3f5QOu4dk23TXVPZFPzX+hV8swxtC0=
-X-Received: by 2002:a05:6a20:c70e:b0:3dd:a197:7360 with SMTP id adf61e73a8af0-3ddf8296639mr2981172637.57.1790177676973;
-        Wed, 23 Sep 2026 08:34:36 -0700 (PDT)
-Received: from arch.localdomain (123202092053.ctinets.com. [123.202.92.53])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cc75f3f5e79sm1318844a12.25.2026.09.23.08.34.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Sep 2026 08:34:36 -0700 (PDT)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Jun Yan <jerrysteve1101@gmail.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
-Date: Wed, 23 Sep 2026 23:34:22 +0800
-Message-ID: <20260923153423.804759-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	id 1x9PIL-00000008oMY-1K1a;
+	Wed, 23 Sep 2026 15:54:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1790178845; x=1821714845;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=u/EwzTM/NnzSfEVRVlTGSUu5KUBYwA6lJMr21sRdsVY=;
+  b=JrR0eVe1xAoebPebzsuaFaVa17lLUs6FBwbRJ1uvkyIXCVilQkXZRug1
+   Mk3nJmRwhQeYxacxm1Sr5WqzEoGhWdNwqeRB95t4lXmvnN32KYQe5e4Qt
+   ow08rmk5FSL7rslNBmJJelZ4qhmFYDaIOQ2tizSSfx8oPv3Rb/hghzaLC
+   qt1dMHDsFVdMSu3FZYtp67iinLCW1Vub4kI0pK2sThBLYkI3icLzJtaIU
+   b9YQXY6nSy5AbqIV8kZ859TEqwlidxiKU2PGQfG8s0w7YrfSq+ftTrhIZ
+   S8I00NN4DrSnTwNX6gwhdyutAKFypNlOnONTKD7vmu5dZkt1WmchC0VOm
+   g==;
+X-CSE-ConnectionGUID: uKYBmXKwTqKY4mqen9XiRQ==
+X-CSE-MsgGUID: 9/9FJQbjSKucsHwTf67LpQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11914"; a="78445062"
+X-IronPort-AV: E=Sophos;i="6.27,118,1787036400"; 
+   d="scan'208";a="78445062"
+Received: from fmviesa011.fm.intel.com ([10.60.135.151])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Sep 2026 08:54:03 -0700
+X-CSE-ConnectionGUID: 7lue524bROaPLXzmdodnwA==
+X-CSE-MsgGUID: 36FTiqfuQTOcmIIrMf9pGA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,118,1787036400"; 
+   d="scan'208";a="4756769"
+Received: from igk-lkp-server01.igk.intel.com (HELO 1bbc298b9a73) ([10.211.93.152])
+  by fmviesa011.fm.intel.com with ESMTP; 23 Sep 2026 08:54:00 -0700
+Received: from kbuild by 1bbc298b9a73 with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1x9PIA-000000000j5-0Jdb;
+	Wed, 23 Sep 2026 15:53:54 +0000
+Date: Wed, 23 Sep 2026 17:53:25 +0200
+From: kernel test robot <lkp@intel.com>
+To: Coia Prant <coiaprant@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: oe-kbuild-all@lists.linux.dev,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Coia Prant <coiaprant@gmail.com>
+Subject: Re: [PATCH net] net: ethernet: stmmac: dwmac-rk: fix bulk clock leak
+ when the PHY clock fails
+Message-ID: <202609231728.boP5N9Xr-lkp@intel.com>
+References: <20260919174223.2356964-1-coiaprant@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260919174223.2356964-1-coiaprant@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_163440_344753_DA6DB1BE 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20260923_085405_530283_C6EB07BC 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,58 +96,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
-internal eDP port) has no separate PHY device and relies on its built-in
-PHY, which is programmed directly through the GRF registers, so its DT
-node carries no "phys"/"phy-names" property.
+Hi Coia,
 
-Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
--ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
-misleading "no DP phy configured" error at probe time before falling back
-to a NULL phy.
+kernel test robot noticed the following build errors:
 
-Use devm_phy_optional_get() instead, which returns NULL when the PHY is
-absent and otherwise behaves identically, and drop the manual -ENODEV/
--ENOSYS handling. This also removes the spurious error message.
+[auto build test ERROR on net/main]
 
-Assisted-by: Claude:deepseek-v4-flash
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
----
- .../gpu/drm/bridge/analogix/analogix_dp_core.c | 18 +++---------------
- 1 file changed, 3 insertions(+), 15 deletions(-)
+url:    https://github.com/intel-lab-lkp/linux/commits/Coia-Prant/net-ethernet-stmmac-dwmac-rk-fix-bulk-clock-leak-when-the-PHY-clock-fails/20260920-014223
+base:   net/main
+patch link:    https://lore.kernel.org/r/20260919174223.2356964-1-coiaprant%40gmail.com
+patch subject: [PATCH net] net: ethernet: stmmac: dwmac-rk: fix bulk clock leak when the PHY clock fails
+config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20260923/202609231728.boP5N9Xr-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 16.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260923/202609231728.boP5N9Xr-lkp@intel.com/reproduce)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 18e76d1e78e1..28eb668d3e3f 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1427,21 +1427,9 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
- 	if (ret)
- 		return ERR_PTR(ret);
- 
--	dp->phy = devm_phy_get(dp->dev, "dp");
--	if (IS_ERR(dp->phy)) {
--		dev_err(dp->dev, "no DP phy configured\n");
--		ret = PTR_ERR(dp->phy);
--		if (ret) {
--			/*
--			 * phy itself is not enabled, so we can move forward
--			 * assigning NULL to phy pointer.
--			 */
--			if (ret == -ENOSYS || ret == -ENODEV)
--				dp->phy = NULL;
--			else
--				return ERR_PTR(ret);
--		}
--	}
-+	dp->phy = devm_phy_optional_get(dp->dev, "dp");
-+	if (IS_ERR(dp->phy))
-+		return ERR_CAST(dp->phy);
- 
- 	dp->clock = devm_clk_get(&pdev->dev, "dp");
- 	if (IS_ERR(dp->clock)) {
--- 
-2.55.0
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202609231728.boP5N9Xr-lkp@intel.com/
 
+All error/warnings (new ones prefixed by >>):
+
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c: In function 'gmac_clk_enable':
+>> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1165:25: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+    1165 |                         if (ret)
+         |                         ^~
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1168:33: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+    1168 |                                 return ret;
+         |                                 ^~~~~~
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c: At top level:
+>> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1177:11: error: expected identifier or '(' before 'else'
+    1177 |         } else {
+         |           ^~~~
+>> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1189:9: error: expected identifier or '(' before 'return'
+    1189 |         return 0;
+         |         ^~~~~~
+>> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1190:1: error: expected identifier or '(' before '}' token
+    1190 | }
+         | ^
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c: In function 'gmac_clk_enable':
+>> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1177:9: warning: control reaches end of non-void function [-Wreturn-type]
+    1177 |         } else {
+         |         ^
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c: At top level:
+>> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:199:12: warning: 'rk_gate_rmii_clock' defined but not used [-Wunused-function]
+     199 | static int rk_gate_rmii_clock(struct rk_priv_data *bsp_priv)
+         |            ^~~~~~~~~~~~~~~~~~
+
+
+vim +1177 drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+
+7ad269ea1a2b7d Roger Chen            2014-12-29  1152  
+7ad269ea1a2b7d Roger Chen            2014-12-29  1153  static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
+7ad269ea1a2b7d Roger Chen            2014-12-29  1154  {
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1155  	int ret;
+7ad269ea1a2b7d Roger Chen            2014-12-29  1156  
+7ad269ea1a2b7d Roger Chen            2014-12-29  1157  	if (enable) {
+7ad269ea1a2b7d Roger Chen            2014-12-29  1158  		if (!bsp_priv->clk_enabled) {
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1159  			ret = clk_bulk_prepare_enable(bsp_priv->num_clks,
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1160  						      bsp_priv->clks);
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1161  			if (ret)
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1162  				return ret;
+7ad269ea1a2b7d Roger Chen            2014-12-29  1163  
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1164  			ret = clk_prepare_enable(bsp_priv->clk_phy);
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07 @1165  			if (ret)
+cb278e6780d874 Coia Prant            2026-09-20  1166  				clk_bulk_disable_unprepare(bsp_priv->num_clks,
+cb278e6780d874 Coia Prant            2026-09-20  1167  							   bsp_priv->clks);
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1168  				return ret;
+cb278e6780d874 Coia Prant            2026-09-20  1169  			}
+23c94d63a7e395 David Wu              2018-06-28  1170  
+5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1171) 			rk_configure_io_clksel(bsp_priv);
+5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1172) 			rk_ungate_rmii_clock(bsp_priv);
+2f2b60a0ec2826 David Wu              2022-08-30  1173  
+7ad269ea1a2b7d Roger Chen            2014-12-29  1174  			mdelay(5);
+7ad269ea1a2b7d Roger Chen            2014-12-29  1175  			bsp_priv->clk_enabled = true;
+7ad269ea1a2b7d Roger Chen            2014-12-29  1176  		}
+7ad269ea1a2b7d Roger Chen            2014-12-29 @1177  	} else {
+7ad269ea1a2b7d Roger Chen            2014-12-29  1178  		if (bsp_priv->clk_enabled) {
+5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1179) 			rk_gate_rmii_clock(bsp_priv);
+7f864458e9a6d2 Sebastian Reichel     2025-10-14  1180  
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1181  			clk_bulk_disable_unprepare(bsp_priv->num_clks,
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1182  						   bsp_priv->clks);
+fecd4d7eef8b21 David Wu              2017-08-10  1183  			clk_disable_unprepare(bsp_priv->clk_phy);
+fecd4d7eef8b21 David Wu              2017-08-10  1184  
+7ad269ea1a2b7d Roger Chen            2014-12-29  1185  			bsp_priv->clk_enabled = false;
+7ad269ea1a2b7d Roger Chen            2014-12-29  1186  		}
+7ad269ea1a2b7d Roger Chen            2014-12-29  1187  	}
+7ad269ea1a2b7d Roger Chen            2014-12-29  1188  
+7ad269ea1a2b7d Roger Chen            2014-12-29 @1189  	return 0;
+7ad269ea1a2b7d Roger Chen            2014-12-29 @1190  }
+7ad269ea1a2b7d Roger Chen            2014-12-29  1191  
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
