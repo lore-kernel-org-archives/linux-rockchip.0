@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37397C98302
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 14:51:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1927C98302
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2026 14:52:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jUHy+aO2AXMb06kBKd7ntjAL/fDpud9iHmOOZFZSvgQ=; b=MkldJ95Ua2BI86
-	yDhQ+bCJtxaOxCJSS+FBhds33rYWGpIlYYbkV+BuucvWmL+fRiIlIMj/A60PjmR8UF09S2AMFFj4j
-	MYGtfIHzX/8soHGxgUrnyzRCwkiY9WEj+le+SJUv2fjqMRq3OvDQ33bwX1GVkQQZx/1nKmr9D2lfR
-	J5JSYzTChKDhgN1DTEfiWCdHd2QR7oEaDBCodWCH1M6xTFwyldoNDpg7nHNQ1MwuqLtV/OfiVVauc
-	3KNMV62Ms4XMRXUnnVSkEDZGBZV55WshStDqoWriKUU1/t9aB6F6Osn8hakAwJH6i4p5vSx3UKZg3
-	t0yZRHjfAV79VJvwMKAQ==;
+	List-Owner; bh=Nqh4U6VV5bwkHXnyEOutT62GXLJtLIA/mIziCrPdqKc=; b=y02nIT1erES537
+	//xjYvhaoCfm0xP0dDdgGdRkQTUsyQYO7vMMNdoXt+H/QJI6btBXw7xoP1Eheq52jOCNEs2UgDadX
+	1pM8P97sI58xEmmu2rP8DsHDlbN1gKed8uyH6BfYFzHFO9MYB7Dcd62orOBxPbrCk219fnXb9v34I
+	rBn2cEcB75sMtLLEFIhRTnhz+aNZJeoxQyr5WJFFhssP9oRPP/rLpIf5B6yjHGiwKSs1G2klsXlhs
+	NIFpqMTAiflLUYjb+Eul18E1rY3U4xF3xYlpEnE0zaRLaE4k0xmnwrYbMqju0cJVJM7e5ifP/d/pL
+	onKoDfPKQhoydTGXw9ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9OK0-00000008ad5-2G4m;
-	Wed, 23 Sep 2026 14:51:44 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1x9OKw-00000008atV-1Vnf;
+	Wed, 23 Sep 2026 14:52:42 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9OJx-00000008acL-1tlR;
-	Wed, 23 Sep 2026 14:51:43 +0000
+	id 1x9OKt-00000008asH-41BQ;
+	Wed, 23 Sep 2026 14:52:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1790175101; x=1821711101;
+  t=1790175160; x=1821711160;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=xK2MlXxgtxYCpbwBk+vL+8tf5gPJ59nrPDl4GsNLsdk=;
-  b=LOkbNWA53C/MgO1iYrd59y1f1tWWE+mTjfcEH+NkeMOYZz5SCiiTXefc
-   NNpOYaqXFS5ZFvsTw7o+Gp9VQR8Zh0jTPClv73pRVf3wXoD+ad7J/ySlX
-   3eay7i7b/kD0lxD4KE8uz9wo/Ut9so5ZZwFT+FBAsiXqBP/PkCyPi6KM7
-   vpWNrLV3BYZMSwIKyPkeH/N/Qs7cQJeHyzlI54GuPjmguX6HOrgaJSKnX
-   8sdFMGc/uGT72gRz5cRoiNvEXf4XKiC9Ia2lBdwRmEdSn4UtC+UpghgAS
-   gHdHZIfYxuINeG+OAvO/+UTH28ZZ6xk/vnfptR3l6asvmVUixyMua4UMw
-   g==;
-X-CSE-ConnectionGUID: mXpb0PvDTjWbnUVbmq6eCw==
-X-CSE-MsgGUID: 3EoGGFc8RcufrRI8AA6pxQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11913"; a="90993971"
+  bh=5NEEg5ZrbVeB7iJ6/1LfdHcHnn0mLJlY5QPsY+cmr/M=;
+  b=Wgt/ai8tIhL7AFwFbFBw9r5GPJFGJR8iJZ4XRZg6m/GjHoHNR2+c557/
+   Qen9q5ErN+Q8uk92/oeh9fTE9Oz6aPWfd/3u/e0EeOwhPsJwFzp4JzRt8
+   QFTFLTA3WoPyYUWRzJTk8BfwP+5XKoRQuoH6WUA8kcOAj7SkKdn1Acquh
+   Zo1iAJFeGRYufp5B0Qrk+dSMXtEI6LazUkXkzP/ihrYm0MLyVYsKDQgqy
+   lEMc2PoRWAO+2C9bBF0IzHY664JaAKt+B4pjnhWuzMFhM8SSyorYGqzLM
+   Km6Cjgf7E5pcxOtYvrpvmxLgBwAj7G4oucz7Z0Vo1JD6iLTNyqfQ/uqxm
+   w==;
+X-CSE-ConnectionGUID: e9MVV7hMSV6gyzHv9CcvPg==
+X-CSE-MsgGUID: dGYO5354R8q4X+nPHvvvug==
+X-IronPort-AV: E=McAfee;i="6800,10657,11913"; a="101541249"
 X-IronPort-AV: E=Sophos;i="6.27,118,1787036400"; 
-   d="scan'208";a="90993971"
-Received: from fmviesa011.fm.intel.com ([10.60.135.151])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Sep 2026 07:51:41 -0700
-X-CSE-ConnectionGUID: m6CmCC/rT2SBGzb12fmptQ==
-X-CSE-MsgGUID: vGPljTpYRP67n1RxHKwLeQ==
+   d="scan'208";a="101541249"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Sep 2026 07:52:40 -0700
+X-CSE-ConnectionGUID: Wvq2+qLRQziT909EuE+q2A==
+X-CSE-MsgGUID: QUIyiKtpR42DBfyWGqsVHA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.27,118,1787036400"; 
-   d="scan'208";a="4728488"
+   d="scan'208";a="272250904"
 Received: from cpetruta-mobl1.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.244.54])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Sep 2026 07:51:38 -0700
-Date: Wed, 23 Sep 2026 16:51:29 +0200
+  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Sep 2026 07:52:37 -0700
+Date: Wed, 23 Sep 2026 16:52:29 +0200
 From: Mehdi Djait <mehdi.djait@linux.intel.com>
 To: Amin Gattout <amin.gattout@gmail.com>
 Cc: Michael Riesch <michael.riesch@collabora.com>, 
 	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
 	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: Re: [PATCH v2 1/5] media: dt-bindings: add rockchip rk3576 vicap
-Message-ID: <arPnJ0WQPEojPDBV@mdjait-mobl>
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/5] media: rockchip: rkcif: add a register index for
+ the MIPI capture size
+Message-ID: <arPnhGHzFiWOtzfi@mdjait-mobl>
 References: <20260921-vicap-rk3576-v2-0-0a4582e20c72@gmail.com>
- <20260921-vicap-rk3576-v2-1-0a4582e20c72@gmail.com>
+ <20260921-vicap-rk3576-v2-2-0a4582e20c72@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260921-vicap-rk3576-v2-1-0a4582e20c72@gmail.com>
+In-Reply-To: <20260921-vicap-rk3576-v2-2-0a4582e20c72@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_075141_585495_9192018E 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20260923_075240_021816_7173D812 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,19 +92,19 @@ Hello Amin,
 
 Thank you for the patch!
 
-On Mon, Sep 21, 2026 at 05:29:57PM +0200, Amin Gattout wrote:
-> Add the compatible for the Video Capture (VICAP) unit of the Rockchip
-> RK3576. This variant features five MIPI CSI-2 ports and a connection
-> to the image signal processor (ISP). The pixel clock of each MIPI port
-> enters the VICAP through a dedicated gate in the clock and reset unit,
-> so the variant takes five interface clocks and five interface resets
-> in addition to the aclk, hclk and dclk of the other variants.
+On Mon, Sep 21, 2026 at 05:29:58PM +0200, Amin Gattout wrote:
+> The RK3568 and RK3588 variants configure the MIPI capture size in the
+> ID_CTRL1 register. The RK3576 has a dedicated ID_SET_SIZE register
+> instead.
+> 
+> Add a register index for the capture size and write it through that
+> index, in preparation for the RK3576 support. The RK3568 and RK3588
+> mark the index as unsupported, so the write is a no operation for them
+> and their behavior is unchanged.
 > 
 
 Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
 
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
 > Signed-off-by: Amin Gattout <amin.gattout@gmail.com>
 
 --
