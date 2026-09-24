@@ -4,52 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAFECC9830E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 17:26:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCFFC98324
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 17:26:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1j8oE+C5f4ayPV2kQkCjZzNY+NF1Wmyc98SCiFDwHDM=; b=CC7X413o6UJO+U
-	GUym49qL3zY78vh7hOfIIU4obF+RNRtpQ0V9aE9Mjk51Kxg7JO8UIsIni7IY+5p/j1Vg8+uY6h3uX
-	vl6ST3r+dyiDW4MBy7Eai/kaQlC+KtVbwcMM0994oJfJ+F94IOyevL3pIfhawDqIuAaDa3dLX3cSy
-	Iao/rM9D2lVhnN4tEjEZWg2rQxaQcaodxRLXgVPVbpvEHuoGnaxsn6DsJXA3m86nWzjZR4x+dTNuq
-	Zl6vcMa/JsfgvdoM+ukLykDQxKLg0UaYb+ZY1ROeqIoeTJ3sG164Yjg+Ku2RHFjnhzz0wdcbDRLXb
-	KrZ2y56s/DQkHdeVdHFw==;
+	List-Owner; bh=rgoHQMam34OUqC9kWa65f9nxQiGpzoy+vMPhtZ04AQE=; b=FD30Iw2iB+97YC
+	zR4l+e0+YrnT3adtQtHE1Ix8cUdZyvDths5ztbTIqBaf6Ytbg2EwlI+ilR2j6cImCcccWLNOWTpi0
+	BfV7lifkqfH0g4YhydW3zu+dtlzamPKwYLTNqPGcQyys/QMEh7xY4eUk08aTaXwc1NoB2NhGEyLUR
+	hDOu3xnq9dTPUdYsmJg1F/eZGVXUU6ARCId1w0or9cM1o0/pq/DW5z+B1iAgwaxOs6TX4VffTze/e
+	9MJZJfVI+84eNaB/xLjULb3GEHYeQmETjjGO2+W6nml4uDf4MVEmO+nFAQ+yPO75u79ffLNCWXmR+
+	hLGs9sIWDUvqzDpr0Ffg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9nDN-0000000Bikd-4AeM;
-	Thu, 24 Sep 2026 17:26:34 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x9nDP-0000000BimA-1SPN;
+	Thu, 24 Sep 2026 17:26:35 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9nCu-0000000BibW-3ePF;
+	id 1x9nD0-0000000BicJ-1ZRk;
+	Thu, 24 Sep 2026 17:26:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=mpHylAvqr2SkMDhvhUGdLvZ/wGluYCgwdDfTiJn+bUg=; b=Pn7eXsaqr9FNKBPBL7LcnLgaua
+	rp5p9Rwn7skGYB4X6GFAYKShAMx460pYxg1dnldoJ2PGYgHysY2U1ZzYJtGuiaHF00h9ILZNTd8eD
+	7YmJr47mo+z/8Y4nqMxPc9RBwhmBol6FfWZ1vWVODgx1z7xdvRo6EENMyBl++FlgxrB91kj8IdjDg
+	ffSqeP7xMDKzNT6Hx9Zj1OiJXNpwcIGPPPLhtQ7rMWmQyV2rs5nz8pHy4d+pk3q0I/QJV5Y1i5qzE
+	qnyxcGaVp5F/8ki2GYcmH8exgubd6S/ZjS8GUyq/m/IS9nh92etx3OGjZdydaYnNs6XK92qyia42c
+	PgBl6obw==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x9nCx-0000000GF5U-11Ty;
 	Thu, 24 Sep 2026 17:26:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1790270762;
-	bh=/A6Hac4aqJzoz7kYkCtMzFY90tiyJ1AMuQj5SToK5yc=;
+	bh=vgyj0zwu+y/0Ls+edctXhjY5i1EXaJ5EiOLv+dh0N/0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=BuCYkm7O8/c/A/J13rK2PGOkA5Kwrpsigb7+nckJWGhcX29RHlZlyjGebC2i+k1EX
-	 Cei7sEVKB3GM4PKix0HDbIIVXdmo8ikY2JEFVhl45pRU3YawsKgXP2Bvi4hWgQPJeM
-	 sWZD/OIzTyO1btKSxZ1GkT+DdYxdjeCWRtXEWDzGGW8Uce4sD8gn5Qkhutu0O2U7sZ
-	 suG9VttbfcFOTg5ux5O0VOUI6ify5kO7GwzVlYOAdqs3Uahfwbfk34UwuB8K3Og/Dl
-	 dGjgGZW/D0PNYCoLd0U8zgb0Wv6vW9jISb+26ZcOTANffSpdHqDqstM7agZp4Zo2OZ
-	 qWpSMV8XIs4vQ==
+	b=PoWF292WnnimvNHf78S3f2jO5QuqdMzVCnfK7R8BR7vGNvPWMtlH7akeGhXV3WA1s
+	 jNzNpHtBhlM5hWBun7mbrKoRmHPvNCfDZhx/SFA6ElEqMg7k1Zo1oFVmiGuwG72joc
+	 kZxWAPB8mIt8NA5YyNizjiowSKcI+bbRFsPfzoJ7F6tYCunkPn5lqcg/b4pcGCq36T
+	 nAGwJZirl5RjO4wSEfubVzNYUURz3DYTOrIVp1vfudEbCEE0lizGcemJGymcAAlC/v
+	 rlBtcRB8wYNzGbQWyeLKtl1RMhAZt2P6k0AaiMoMvPANjp+AjLlvYULA2ZwDYqmGwG
+	 9Gx7HNBRy6D1A==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EC6F817E0A66;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDE8217E0A6A;
 	Thu, 24 Sep 2026 19:26:01 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 99EF3480029; Thu, 24 Sep 2026 19:26:01 +0200 (CEST)
+	id 9E199480031; Thu, 24 Sep 2026 19:26:01 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 24 Sep 2026 19:25:37 +0200
-Subject: [PATCH v16 1/6] phy: core: add notifier infrastructure
+Date: Thu, 24 Sep 2026 19:25:40 +0200
+Subject: [PATCH v16 4/6] usb: dwc3: rockchip: support PHY reset
+ notifications
 MIME-Version: 1.0
-Message-Id: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-1-126a2e9133c3@collabora.com>
+Message-Id: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-4-126a2e9133c3@collabora.com>
 References: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com>
 In-Reply-To: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com>
 To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
@@ -62,26 +77,26 @@ Cc: Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6271;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6124;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=/A6Hac4aqJzoz7kYkCtMzFY90tiyJ1AMuQj5SToK5yc=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGq1XSkD8XXguWddTowlX8GYiiDtMyHhuu2Ly
- w37jmTNK/iOQokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqtV0pAAoJENju1/PI
- O/qaz0EP/32KTqSMkJHSkirR/he9URPBF/sEzsZ/6xrE6X8d/gu2ks3u2cJ4cxEgZIsvegGeSFv
- nuyqXDvZF4pLQCj8R/4lT/+m2UY/gK4Hw8XBwgbAxnNQGWjg+qJU8fhridUuYwlQg0Z8wgiTuqU
- c3gQ1YLXEa/wceukRYmY/zT8xSXG5+vO2Sg0YXRnfw4tovUNFVjFFLBRAmLqh4mh/4Ql2doyV/x
- rq8PctNNcxH1B700QSb/SvFANcSR/GFn41pKt0b40dG24nL0AL2ztMFjekcuQmDGJQlCCQC4nyy
- jivFAaZbR4yVc6dDW482RaRa+TiyZkJDT3zhFgKm1FnNmSWW6F9Q0SPnry6JvjAZbKET7kI/FK/
- vK8zAW2wA9WJ8rJWbvRSUUv85qf6sPzTpblxOdgQIsSw1VCLNaqlfi2lqmX2Wl2oQQvLl5SOIUO
- 326cAJiU2r6Lq7uApGfjnxXEkQRfQ/plPQwJ5n7u9QQopMMCfxOBhoDAleJVAok8FuTia+dI+2g
- 0nrXpAo5tdBfkzD0I6PXBCeTDemNqK83OdH+SbwDtvcTXjXzaN5wAwXHN48BtVBJNTNguxyczvc
- TuKs4mjECZHiwrs6iaboycFcHWpMfZc7q7FnIq73VywxpwxnHpbpx44TVH84zO2Lpx7MeEJpiqJ
- WD2JyVbi13d1n1xsbTp4riA==
+ bh=vgyj0zwu+y/0Ls+edctXhjY5i1EXaJ5EiOLv+dh0N/0=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGq1XSnX05C5Ib4QtOaFB124XcOl0yUkfAnig
+ L1Ezm0hdBzjPokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqtV0pAAoJENju1/PI
+ O/qau6YP/R+GE665LqDXQOXK0g70xDlGRfv3jiJMcu0TAB5/x4aCUsmo8eCp4c5a6acnOHCxFP9
+ gyaqIv4YUnPGn2Jwo5qGbPIsYJn+C95hOv9RfnDAdTVYs9KG1WXp0Y29wyg35///+LBEYynDfv6
+ 56YFcM7Fo/aioFQTGOB/3fZ6XiiVD2siTfwjVwbYjxKjAoMhTU3yKyVdgYamwA5/cR7kQ9vIwjj
+ I5v/oy3zA8Rl8WQWnwDWCx1XwEJN1OC3DXeUZAATIht7D0D+HnIR9Q/B5LqtsMHSd3Ua9VfDZoS
+ vNWSWm5B+pQcvsc1jMOzgk7UzA+oFHOiqaO8E+rsszd1L75wnqLLVMMQ0jai/quEkBOn/i34AxA
+ GsPa05WthOaNaArMRGqSUU8dkl0u25pL1TWhdSb7DjeB6RtsT99z4t4dFDY0JFRbseKsyQadtOk
+ mes6luqSl59+ucrw+/wyZo7ixp+MfPg9P0hBl3slsB92Kt7MruqErltzKa8pKHEpR0tMKcdp2Te
+ MxDrpmj/Eo8NarZ7c0LVplxmlbCeoMaOfKmOFyiDEudr3RelhiUqprBdqumSU+QAdO62JorJ8DT
+ I3gY2tySEBjqa37yvBAvdI1Zsd1qXjhA5Uhcj1DKY+hEa4FRR1EbET9W1RNUEf4/9Fgd3e2varo
+ iKgcWBBJXrd0ouKo2BiYxpg==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_102608_314493_28E9D5CE 
-X-CRM114-Status: GOOD (  20.51  )
+X-CRM114-CacheID: sfid-20260924_182607_476375_446FD4BD 
+X-CRM114-Status: GOOD (  22.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,194 +113,188 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some PHY devices with multiple ports (e.g. USB3 and DP) require a reset
-if the configuration changes or cable orientation changes. This is a
-problem, as the consumer device will run into undefined behavior.
+On recent Rockchip platforms (at least RK3588 & RK3576), DWC3 IP is used
+with a USBDP PHY providing USB3 and DP. This PHY needs to be reset when
+the mode changes, which may happen when plugging in different USB-C
+devices.
 
-With the new PHY notifier API introduced in this patch, the consumer
-driver can hook into reset events coming from a PHY device to handle the
-PHY going down gracefully.
+If the USBDP PHY resets with the DWC3 IP running, its internal state
+corrupts resulting in the USBDP PHY not being able to lock some PLL
+clocks, which effectively renders USB3 unusable.
 
-Note that this uses -ENOSYS instead of the more sensible -ENOTSUP for
-the stub functions when GENERIC_PHY is disabled to stay consistent with
-the existing ones.
+To fix the issue this adds handling for the new PHY framework reset
+notifications, which will assert PHYSOFTRST before the actual PHY
+is disabled and will deassert it once the PHY returns.
 
 Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus
+Acked-by: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/phy-core.c  | 65 +++++++++++++++++++++++++++++++++++++++++++++++++
- include/linux/phy/phy.h | 40 ++++++++++++++++++++++++++++++
- 2 files changed, 105 insertions(+)
+ drivers/usb/dwc3/dwc3-rockchip.c | 127 ++++++++++++++++++++++++++++++++++++++-
+ drivers/usb/dwc3/trace.c         |   3 +
+ 2 files changed, 129 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
-index 21aaf2f76e53..51d261daae7a 100644
---- a/drivers/phy/phy-core.c
-+++ b/drivers/phy/phy-core.c
-@@ -542,6 +542,70 @@ int phy_notify_state(struct phy *phy, union phy_notify state)
- }
- EXPORT_SYMBOL_GPL(phy_notify_state);
- 
-+/**
-+ * phy_register_notifier() - register a notifier for PHY events
-+ * @phy: the phy returned by phy_get()
-+ * @nb: notifier block to register
-+ *
-+ * Allows PHY consumers to receive notifications about PHY reset events.
-+ * PHY providers can signal these events using phy_notify_reset().
-+ *
-+ * Returns: %0 if successful, a negative error code otherwise
-+ */
-+int phy_register_notifier(struct phy *phy, struct notifier_block *nb)
-+{
-+	if (!phy)
-+		return 0;
-+
-+	return blocking_notifier_chain_register(&phy->notifier, nb);
-+}
-+EXPORT_SYMBOL_GPL(phy_register_notifier);
-+
-+/**
-+ * phy_unregister_notifier() - unregister a notifier for PHY events
-+ * @phy: the phy returned by phy_get()
-+ * @nb: notifier block to unregister
-+ *
-+ * Returns: %0 if successful, a negative error code otherwise
-+ */
-+int phy_unregister_notifier(struct phy *phy, struct notifier_block *nb)
-+{
-+	if (!phy)
-+		return 0;
-+
-+	return blocking_notifier_chain_unregister(&phy->notifier, nb);
-+}
-+EXPORT_SYMBOL_GPL(phy_unregister_notifier);
-+
-+/**
-+ * phy_notify_reset() - notify consumers of a PHY reset event
-+ * @phy: the phy that is being reset
-+ * @event: the notification event (PRE_RESET or POST_RESET)
-+ *
-+ * Called by PHY providers to notify consumers that the PHY is about to
-+ * be reset or has completed a reset. This allows consumers to quiesce
-+ * hardware before the PHY becomes unavailable.
-+ *
-+ * This may be called from within PHY provider callbacks (e.g. set_mode,
-+ * power_on) where phy->mutex is held. Consumer notification handlers must
-+ * therefore NOT call back into the PHY framework (e.g. phy_power_off,
-+ * phy_exit) on the same PHY, as this would result in a deadlock.
-+ *
-+ * Returns: %0 if successful or no notifiers registered, a negative error
-+ * code if a notifier returns an error (for PRE_RESET only)
-+ */
-+int phy_notify_reset(struct phy *phy, enum phy_notification event)
-+{
-+	int ret;
-+
-+	if (!phy)
-+		return 0;
-+
-+	ret = blocking_notifier_call_chain(&phy->notifier, event, phy);
-+	return notifier_to_errno(ret);
-+}
-+EXPORT_SYMBOL_GPL(phy_notify_reset);
-+
- /**
-  * phy_configure() - Changes the phy parameters
-  * @phy: the phy returned by phy_get()
-@@ -1018,6 +1082,7 @@ struct phy *phy_create(struct device *dev, struct device_node *node,
- 	device_initialize(&phy->dev);
- 	lockdep_register_key(&phy->lockdep_key);
- 	mutex_init_with_key(&phy->mutex, &phy->lockdep_key);
-+	BLOCKING_INIT_NOTIFIER_HEAD(&phy->notifier);
- 
- 	phy->dev.class = &phy_class;
- 	phy->dev.parent = dev;
-diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
-index ea47975e288a..3779a4d0a02c 100644
---- a/include/linux/phy/phy.h
-+++ b/include/linux/phy/phy.h
-@@ -11,6 +11,7 @@
- #define __DRIVERS_PHY_H
- 
- #include <linux/err.h>
-+#include <linux/notifier.h>
- #include <linux/of.h>
- #include <linux/device.h>
+diff --git a/drivers/usb/dwc3/dwc3-rockchip.c b/drivers/usb/dwc3/dwc3-rockchip.c
+index 4129aefd6a8b..17b6c2ca9e19 100644
+--- a/drivers/usb/dwc3/dwc3-rockchip.c
++++ b/drivers/usb/dwc3/dwc3-rockchip.c
+@@ -2,11 +2,136 @@
+ /* Copyright (c) 2026, Collabora Ltd. */
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
++#include <linux/phy/phy.h>
  #include <linux/pm_runtime.h>
-@@ -53,6 +54,16 @@ enum phy_media {
- 	PHY_MEDIA_DAC,
- };
- 
+ #include "glue.h"
++#include "io.h"
++
++struct dwc3_rockchip;
++
 +/**
-+ * enum phy_notification - PHY notification events
-+ * @PHY_NOTIFY_PRE_RESET: PHY is about to be reset, consumers should quiesce
-+ * @PHY_NOTIFY_POST_RESET: PHY reset is complete, consumers may resume
++ * struct dwc3_rk_phy_nb - wrapper for PHY notifier block
++ * @nb: notifier block
++ * @dwc: back-pointer to the DWC3 controller
++ * @port_index: USB3 port index this notifier is registered for
 + */
-+enum phy_notification {
-+	PHY_NOTIFY_PRE_RESET,
-+	PHY_NOTIFY_POST_RESET,
++struct dwc3_rk_phy_nb {
++	struct notifier_block	nb;
++	struct dwc3_rockchip	*dwc_rk;
++	u8			port_index;
++};
+ 
+ struct dwc3_rockchip {
+ 	struct dwc3		dwc;
++	struct dwc3_rk_phy_nb	usb3_phy_nb[DWC3_USB3_MAX_PORTS];
++	u8			phy_reset_active;
 +};
 +
- enum phy_ufs_state {
- 	PHY_UFS_HIBERN8_ENTER,
- 	PHY_UFS_HIBERN8_EXIT,
-@@ -170,6 +181,7 @@ struct phy_attrs {
-  * @power_count: used to protect when the PHY is used by multiple consumers
-  * @attrs: used to specify PHY specific attributes
-  * @pwr: power regulator associated with the phy
-+ * @notifier: notifier head for PHY reset events
-  * @debugfs: debugfs directory
-  */
- struct phy {
-@@ -182,6 +194,7 @@ struct phy {
- 	int			power_count;
- 	struct phy_attrs	attrs;
- 	struct regulator	*pwr;
-+	struct blocking_notifier_head notifier;
- 	struct dentry		*debugfs;
++static int dwc3_usb3_phy_notify(struct notifier_block *nb,
++				unsigned long action, void *data)
++{
++	struct dwc3_rk_phy_nb *pnb = container_of(nb, struct dwc3_rk_phy_nb, nb);
++	struct dwc3_rockchip *dwc_rk = pnb->dwc_rk;
++	struct dwc3 *dwc = &dwc_rk->dwc;
++	int port = pnb->port_index;
++	unsigned long flags;
++	u32 reg;
++	int ret;
++
++	switch (action) {
++	case PHY_NOTIFY_PRE_RESET:
++		/*
++		 * If already suspended, the resume path will reinit GUSB3PIPECTL
++		 * via dwc3_core_init(). A forced resume is not possible as that
++		 * would call phy_init() resulting in a deadlock. Due to the
++		 * phy_init() in the resume path there is also no need to block
++		 * async RPM resume on our side, since the PHY synchronizes it
++		 * for us.
++		 *
++		 * pm_runtime_get_if_active() returns 0 when suspended (skip),
++		 * 1 when active (ref held), or -EINVAL when PM is disabled
++		 * (device always active). In the -EINVAL case PM ref counting
++		 * is a no-op, so the unconditional put in POST_RESET is safe.
++		 */
++		ret = pm_runtime_get_if_active(dwc->dev);
++		if (!ret)
++			return NOTIFY_OK;
++
++		/*
++		 * Assert USB3 PHY soft reset within DWC3 before the external
++		 * PHY resets. This disconnects the PIPE interface, preventing
++		 * the DWC3 from interfering with PHY reinitialization and
++		 * avoiding LCPLL lock failures.
++		 */
++		spin_lock_irqsave(&dwc->lock, flags);
++		dwc_rk->phy_reset_active |= BIT(port);
++		reg = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(port));
++		reg |= DWC3_GUSB3PIPECTL_PHYSOFTRST;
++		dwc3_writel(dwc, DWC3_GUSB3PIPECTL(port), reg);
++		spin_unlock_irqrestore(&dwc->lock, flags);
++		break;
++
++	case PHY_NOTIFY_POST_RESET:
++		spin_lock_irqsave(&dwc->lock, flags);
++		if (!(dwc_rk->phy_reset_active & BIT(port))) {
++			spin_unlock_irqrestore(&dwc->lock, flags);
++			return NOTIFY_OK;
++		}
++
++		dwc_rk->phy_reset_active &= ~BIT(port);
++
++		/*
++		 * Deassert PHY soft reset to reconnect the PIPE interface
++		 * after PHY reinitialization.
++		 */
++		reg = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(port));
++		reg &= ~DWC3_GUSB3PIPECTL_PHYSOFTRST;
++		dwc3_writel(dwc, DWC3_GUSB3PIPECTL(port), reg);
++		spin_unlock_irqrestore(&dwc->lock, flags);
++
++		pm_runtime_put_autosuspend(dwc->dev);
++		break;
++	}
++
++	return NOTIFY_OK;
++}
++
++static void dwc3_rk_phy_unregister_notifiers(void *data)
++{
++	struct dwc3_rockchip *dwc_rk = data;
++	struct dwc3 *dwc = &dwc_rk->dwc;
++	int i;
++
++	for (i = 0; i < dwc->num_usb3_ports; i++)
++		phy_unregister_notifier(dwc->usb3_generic_phy[i],
++					&dwc_rk->usb3_phy_nb[i].nb);
++
++	/* Release any PM references from in-flight resets */
++	for (i = 0; i < dwc->num_usb3_ports; i++) {
++		if (dwc_rk->phy_reset_active & BIT(i))
++			pm_runtime_put_autosuspend(dwc->dev);
++	}
++	dwc_rk->phy_reset_active = 0;
++}
++
++static int dwc3_rk_phy_register_notifiers(struct dwc3 *dwc)
++{
++	struct dwc3_rockchip *dwc_rk = container_of(dwc, struct dwc3_rockchip, dwc);
++	int i;
++
++	for (i = 0; i < dwc->num_usb3_ports; i++) {
++		dwc_rk->usb3_phy_nb[i].nb.notifier_call = dwc3_usb3_phy_notify;
++		dwc_rk->usb3_phy_nb[i].dwc_rk = dwc_rk;
++		dwc_rk->usb3_phy_nb[i].port_index = i;
++		phy_register_notifier(dwc->usb3_generic_phy[i],
++				      &dwc_rk->usb3_phy_nb[i].nb);
++	}
++
++	return devm_add_action_or_reset(dwc->dev, dwc3_rk_phy_unregister_notifiers, dwc_rk);
++}
++
++static struct dwc3_glue_ops dwc3_rockchip_glue_ops = {
++	.post_phy_registration = dwc3_rk_phy_register_notifiers,
  };
  
-@@ -267,6 +280,9 @@ int phy_calibrate(struct phy *phy);
- int phy_notify_connect(struct phy *phy, int port);
- int phy_notify_disconnect(struct phy *phy, int port);
- int phy_notify_state(struct phy *phy, union phy_notify state);
-+int phy_register_notifier(struct phy *phy, struct notifier_block *nb);
-+int phy_unregister_notifier(struct phy *phy, struct notifier_block *nb);
-+int phy_notify_reset(struct phy *phy, enum phy_notification event);
- static inline int phy_get_bus_width(struct phy *phy)
- {
- 	return phy->attrs.bus_width;
-@@ -428,6 +444,30 @@ static inline int phy_notify_state(struct phy *phy, union phy_notify state)
- 	return -ENOSYS;
- }
+ static int dwc3_rockchip_probe(struct platform_device *pdev)
+@@ -26,7 +151,7 @@ static int dwc3_rockchip_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
  
-+static inline int phy_register_notifier(struct phy *phy,
-+					struct notifier_block *nb)
-+{
-+	if (!phy)
-+		return 0;
-+	return -ENOSYS;
-+}
+ 	dwc_rk->dwc.dev = &pdev->dev;
+-	dwc_rk->dwc.glue_ops = NULL;
++	dwc_rk->dwc.glue_ops = &dwc3_rockchip_glue_ops;
+ 
+ 	probe_data.dwc = &dwc_rk->dwc;
+ 	probe_data.res = res;
+diff --git a/drivers/usb/dwc3/trace.c b/drivers/usb/dwc3/trace.c
+index 088995885678..8c4e2a7b142e 100644
+--- a/drivers/usb/dwc3/trace.c
++++ b/drivers/usb/dwc3/trace.c
+@@ -9,3 +9,6 @@
+ 
+ #define CREATE_TRACE_POINTS
+ #include "trace.h"
 +
-+static inline int phy_unregister_notifier(struct phy *phy,
-+					  struct notifier_block *nb)
-+{
-+	if (!phy)
-+		return 0;
-+	return -ENOSYS;
-+}
-+
-+static inline int phy_notify_reset(struct phy *phy,
-+				   enum phy_notification event)
-+{
-+	if (!phy)
-+		return 0;
-+	return -ENOSYS;
-+}
-+
- static inline int phy_configure(struct phy *phy,
- 				union phy_configure_opts *opts)
- {
++EXPORT_TRACEPOINT_SYMBOL_GPL(dwc3_readl);
++EXPORT_TRACEPOINT_SYMBOL_GPL(dwc3_writel);
 
 -- 
 2.53.0
